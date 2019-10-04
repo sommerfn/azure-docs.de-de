@@ -1,21 +1,21 @@
 ---
 title: Textübersetzungs-API – Methode für Wörterbuchbeispiele
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Verwenden Sie die Methode für Wörterbuchbeispiele der Textübersetzungs-API.
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-jansko
-ms.openlocfilehash: 26f147fde58a7f9c836bdacd6d66321f0fc5529a
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.author: swmachan
+ms.openlocfilehash: 419e11862b2c584686922cfc8d1db72ee4751a03
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916420"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68934039"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Textübersetzungs-API 3.0: Wörterbuchbeispiele
 
@@ -56,11 +56,11 @@ Anforderungsheader enthalten Folgendes:
   <th width="20%">Header</th>
   <th>BESCHREIBUNG</th>
   <tr>
-    <td>_Eine Autorisierung_<br/>_Header_</td>
-    <td>*Erforderlicher Anforderungsheader*.<br/>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](./v3-0-reference.md#authentication).</td>
+    <td>Authentifizierungsheader</td>
+    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
   </tr>
   <tr>
-    <td>Content-Typ</td>
+    <td>Content-Type</td>
     <td>*Erforderlicher Anforderungsheader*.<br/>Gibt den Inhaltstyp der Nutzlast an. Mögliche Werte: `application/json`.</td>
   </tr>
   <tr>
@@ -123,13 +123,9 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
 Das folgende Beispiel zeigt, wie Sie Beispiele für das Paar nachschlagen, das aus dem englischen Begriff `fly` und dessen spanischer Übersetzung `volar` besteht.
 
-# [<a name="curl"></a>curl](#tab/curl)
-
-```
+```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"
 ```
-
----
 
 Dann wird folgende Antwort zurückgegeben (zur besseren Veranschaulichung gekürzt):
 

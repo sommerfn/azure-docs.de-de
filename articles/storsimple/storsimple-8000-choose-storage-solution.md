@@ -7,19 +7,21 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: d727ed62f5a869f6eb67400281d2660607756abf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9456d975ffb6d7726166f9badbcb8fe0ccbe5256
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802693"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965357"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>Vergleich der Datenübertragungsoptionen für StorSimple mit denen für Azure-Dateisynchronisierung und Data Box Edge 
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
  
 Dieses Dokument enthält eine Übersicht der Optionen für die lokale Datenübertragung an Azure; dabei werden Data Box Edge, die Azure-Dateisynchronisierung (AFS) und die StorSimple 8000-Serie verglichen.
 
 - **[Data Box Edge:](/azure/databox-online/data-box-edge-overview)** Data Box Edge ist ein lokales Netzwerkgerät, das Daten in und aus Azure verschieben sowie mithilfe von KI-fähigem Edgecomputing auch beim Hochladen verarbeiten kann. Data Box Gateway ist eine virtuelle Version des Geräts mit den gleichen Datenübertragungsfunktionen.
-- **[Azure-Dateisynchronisierung:](/azure/storage/files/storage-sync-files-deployment-guide)** Mit der Azure-Dateisynchronisierung können die Dateifreigaben Ihrer Organisation in Azure Files zentralisiert werden, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Die allgemeine Verfügbarkeit von Azure File Sync wurde Anfang des Jahres 2018 bekannt gegeben.
+- **[Azure-Dateisynchronisierung:](/azure/storage/files/storage-sync-files-deployment-guide)** Mit der Azure-Dateisynchronisierung können die Dateifreigaben Ihrer Organisation in Azure Files zentralisiert werden, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Die allgemeine Verfügbarkeit von der Azure-Dateisynchronisierung wurde Anfang des Jahres 2018 bekannt gegeben.
 - **[StorSimple:](/azure/storsimple/storsimple-overview)** StorSimple ist ein Hybridgerät, mit dem Unternehmen ihre Speicherinfrastruktur für primären Speicher, Datenschutz, Archivierung und Notfallwiederherstellung auf eine einzige Lösung konsolidieren können, da es eng mit Azure Storage integriert ist. Den Produktlebenszyklus von StorSimple finden Sie [hier](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
 
 ## <a name="comparison-summary"></a>Zusammenfassender Vergleich

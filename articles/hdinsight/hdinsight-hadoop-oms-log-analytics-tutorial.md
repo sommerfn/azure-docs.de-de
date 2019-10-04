@@ -1,20 +1,18 @@
 ---
 title: Verwenden von Azure Monitor-Protokollen zum Überwachen von Azure HDInsight-Clustern
 description: Erfahren Sie, wie Sie Azure Monitor-Protokolle zum Überwachen von Aufträgen verwenden, die in einem HDInsight-Cluster ausgeführt werden.
-services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/20/2019
-ms.author: hrasheed
-ms.openlocfilehash: 399a6bcb6e0bfd0edaddca471ba2c8e0802d3394
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 08/05/2019
+ms.openlocfilehash: 7d015f485a51ae1f929e2ecaf1a05811d21594a2
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904779"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816029"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Verwenden von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern
 
@@ -50,21 +48,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 In diesem Abschnitt konfigurieren Sie einen vorhandenen HDInsight Hadoop-Cluster zur Verwendung eines Azure Log Analytics-Arbeitsbereichs zum Überwachen von Aufträgen, Debugprotokollen usw.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren Cluster aus.  Anweisungen dazu finden Sie unter [Auflisten und Anzeigen von Clustern](./hdinsight-administer-use-portal-linux.md#showClusters). Der Cluster wird auf einer neuen Portalseite geöffnet.
 
-2. Wählen Sie im Menü links **Alle Dienste** aus.
+1. Wählen Sie links unter **Überwachung** die Option **Operations Management Suite** aus.
 
-3. Wählen Sie unter **ANALYSEN** die Option **HDInsight clusters** (HDInsight-Cluster) aus.
+1. Wählen Sie in der Hauptansicht unter **OMS-Überwachung** die Option **Aktivieren** aus.
 
-4. Wählen Sie Ihren Cluster aus der Liste aus.
+1. Wählen Sie in der Dropdownliste **Arbeitsbereich auswählen** einen vorhandenen Log Analytics-Arbeitsbereich aus.
 
-5. Wählen Sie links unter **Überwachung** die Option **Operations Management Suite** aus.
-
-6. Wählen Sie in der Hauptansicht unter **OMS-Überwachung** die Option **Aktivieren** aus.
-
-7. Wählen Sie in der Dropdownliste **Arbeitsbereich auswählen** einen vorhandenen Log Analytics-Arbeitsbereich aus.
-
-8. Wählen Sie **Speichern** aus.  Das Speichern der Einstellung dauert einige Zeit.
+1. Wählen Sie **Speichern** aus.  Das Speichern der Einstellung dauert einige Zeit.
 
     ![Aktivieren der Überwachung für HDInsight-Cluster](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "Aktivieren der Überwachung für HDInsight-Cluster")
 
@@ -113,6 +105,10 @@ Die Anleitung zum Installieren einer Verwaltungslösung finden Sie unter [Verwal
 ![HDInsight-Überwachungslösung – Ansicht](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
 Im Bericht werden keine Aktivitäten angezeigt, da es sich um einen brandneuen Cluster handelt.
+
+## <a name="configuring-performance-counters"></a>Konfigurieren von Leistungsindikatoren
+
+Azure Monitor unterstützt auch das Sammeln und Analysieren von Leistungsmetriken für die Knoten in Ihrem Cluster. Weitere Informationen zum Aktivieren und Konfigurieren dieses Features finden Sie unter [Linux-Leistungsdatenquellen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

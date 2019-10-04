@@ -11,19 +11,19 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2019
+ms.date: 08/23/2019
 ms.author: bwren
-ms.openlocfilehash: eebf3709657382eb403041e6637e32e5f5d43b15
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: f6b9c21a3d65e75abe11e705eba058b1d1fb17ff
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793344"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012729"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Erstellen von benutzerdefinierten Feldern in einem Log Analytics-Arbeitsbereich in Azure Monitor
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie Sie Textdaten in einem Log Analytics-Arbeitsbereich beim Sammeln analysieren können. Es gibt Vorteile beim Analysieren von Textdaten in einer Abfrage, nachdem sie gesammelt wurden, wie in [Analysieren von Textdaten in Azure Monitor](../log-query/parse-text.md) beschrieben.
+> In diesem Artikel wird beschrieben, wie Sie Textdaten in einem Log Analytics-Arbeitsbereich beim Sammeln analysieren können. Es wird empfohlen, Textdaten nach dem Sammeln in einem Abfragefilter zu analysieren, wie es unter [Analysieren von Textdaten in Azure Monitor](../log-query/parse-text.md) beschrieben ist. Dies bietet mehrere Vorteile gegenüber der Verwendung benutzerdefinierter Felder.
 
 Mit dem Feature **Benutzerdefinierte Felder** von Azure Monitor können Sie vorhandene Datensätze in Ihrem Log Analytics-Arbeitsbereich durch eigene durchsuchbare Felder erweitern.  Benutzerdefinierte Felder werden automatisch auf der Grundlage von Daten aufgefüllt, die aus anderen Eigenschaften im gleichen Datensatz extrahiert wurden.
 
@@ -81,7 +81,7 @@ Sie können im Azure-Portal über das Menü **Erweiterte Einstellungen** des Log
 Benutzerdefinierte Felder können auf zwei Arten entfernt werden:  Sie können in der weiter oben beschriebenen Liste für jedes Feld die Option **Entfernen** verwenden.  Alternativ können Sie einen Datensatz abrufen und auf die Schaltfläche links neben dem Feld klicken.  Das Menü enthält eine Option zum Entfernen des benutzerdefinierten Felds.
 
 ## <a name="sample-walkthrough"></a>Exemplarische Vorgehensweise
-Der folgende Abschnitt enthält ein vollständiges Beispiel für die Erstellung eines benutzerdefinierten Felds.  In diesem Beispiel wird in Windows-Ereignissen, die auf eine Zustandsänderung bei einem Dienst hindeuten, der Dienstname extrahiert.  Als Grundlage dienen Ereignisse, die auf Windows-Computern vom Dienststeuerungs-Manager in der Systemanmeldung erstellt werden.  Wenn Sie dieses Beispiel nachvollziehen möchten, müssen Sie [Informationsereignisse für das Systemprotokoll sammeln](data-sources-windows-events.md).
+Der folgende Abschnitt enthält ein vollständiges Beispiel für die Erstellung eines benutzerdefinierten Felds.  In diesem Beispiel wird in Windows-Ereignissen, die auf eine Zustandsänderung bei einem Dienst hindeuten, der Dienstname extrahiert.  Als Grundlage dienen Ereignisse, die auf Windows-Computern beim Start des Systems vom Dienststeuerungs-Manager erstellt werden.  Wenn Sie dieses Beispiel nachvollziehen möchten, müssen Sie [Informationsereignisse für das Systemprotokoll sammeln](data-sources-windows-events.md).
 
 Wir geben die folgende Abfrage ein, die alle Ereignisse des Dienststeuerungs-Managers mit der Ereignis-ID 7036 zurückgibt. (Dieses Ereignis gibt an, dass ein Dienst gestartet oder beendet wird.)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a5589828570455c61f857dbeadc896e8fef27178
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370056"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258380"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Vorbereiten der Formatumstellung auf Azure Monitor-Diagnoseprotokolle, die in einem Speicherkonto archiviert werden
 
@@ -29,11 +29,11 @@ Azure Monitor verfügt über eine Funktion, mit der Sie Ressourcendiagnosedaten 
 * Am Donnerstag, den 1. November 2018, um Mitternacht (UTC) wird das Blobformat in [JSON Lines](http://jsonlines.org/) geändert. Dies bedeutet, dass die einzelnen Datensätze jeweils durch einen Zeilenumbruch getrennt sind und dass kein externes Datensatzarray und keine Kommas zwischen JSON-Datensätzen verwendet werden.
 * Das Blobformat wird für alle Diagnoseeinstellungen aller Abonnements auf einmal geändert. Die erste Datei „PT1H.json“, die für den 1. November ausgegeben wird, hat dieses neue Format. Die Blob- und Containernamen bleiben unverändert.
 * Wenn zwischen dem heutigen Datum und dem 1. November eine Diagnoseeinstellung festgelegt wird, werden die Daten bis zum 1. November weiterhin im derzeitigen Format ausgegeben.
-* Diese Änderung tritt für alle öffentlichen Cloudregionen gleichzeitig in Kraft. Die Änderung wird noch nicht für die Clouds Azure China, Azure Deutschland und Azure Government durchgeführt.
+* Diese Änderung tritt für alle öffentlichen Cloudregionen gleichzeitig in Kraft. Die Änderung wird noch nicht für von 21Vianet betriebenen Microsoft Azure-, Azure Deutschland- oder Azure Government-Clouds durchgeführt.
 * Diese Änderung wirkt sich auf die folgenden Datentypen aus:
-  * [Azure-Ressourcendiagnoseprotokolle](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([Liste mit Ressourcen](./../../azure-monitor/platform/diagnostic-logs-schema.md))
-  * [Von Diagnoseeinstellungen exportierte Azure-Ressourcenmetriken](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)
-  * [Von Protokollprofilen exportierte Azure-Aktivitätsprotokolldaten](./../../azure-monitor/platform/archive-activity-log.md)
+  * [Azure-Ressourcendiagnoseprotokolle](archive-diagnostic-logs.md) ([Liste mit Ressourcen](diagnostic-logs-schema.md))
+  * [Von Diagnoseeinstellungen exportierte Azure-Ressourcenmetriken](diagnostic-settings.md)
+  * [Von Protokollprofilen exportierte Azure-Aktivitätsprotokolldaten](archive-activity-log.md)
 * Diese Änderung wirkt sich nicht auf Folgendes aus:
   * Netzwerkflussprotokolle
   * Azure-Dienstprotokolle, die noch nicht über Azure Monitor verfügbar gemacht werden (z. B. Azure App Service-Diagnoseprotokolle, Speicheranalyseprotokolle)

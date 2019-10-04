@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: dd591f18ad2abb8603270f4c570c7ef311bdadae
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414467"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072565"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Gefahrloses Vornehmen geringfügiger Änderungen mithilfe von Revisionen
 Wenn Ihre API einsatzbereit ist und von Entwicklern verwendet wird, müssen Sie letztendlich Änderungen an der API vornehmen und dabei darauf achten, keine Aufrufe Ihrer API zu beeinträchtigen. Außerdem empfiehlt es sich, Entwickler über die vorgenommenen Änderungen zu informieren. Hierzu können Sie **Revisionen** in Azure API Management verwenden. Weitere Informationen finden Sie unter [Versions & revisions](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) (Versionen und Revisionen) und [API Versioning with Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/) (API-Versionsverwaltung mit Azure API Management).
@@ -37,8 +36,8 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 + Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
-+ Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
-+ Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
++ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
++ Absolvieren Sie außerdem das folgende Tutorial: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 ## <a name="add-a-new-revision"></a>Hinzufügen einer neuen Revision
 
@@ -50,7 +49,7 @@ In diesem Tutorial lernen Sie Folgendes:
 4. Klicken Sie auf **+ Revision hinzufügen**.
 
     > [!TIP]
-    > Alternativ können Sie im Kontextmenü (**...**) für die API auf **Revision hinzufügen** klicken.
+    > Alternativ können Sie im Kontextmenü ( **...** ) für die API auf **Revision hinzufügen** klicken.
 
 5. Geben Sie eine Beschreibung für Ihre neue Revision an, damit Sie wissen, wofür sie verwendet wird.
 6. Klicken Sie auf **Erstellen**
@@ -82,7 +81,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
     ![Das Revisionsmenü auf dem Revisionsbildschirm](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
 
-2. Öffnen Sie das Kontextmenü (**...**) für **Revision 2**.
+2. Öffnen Sie das Kontextmenü ( **...** ) für **Revision 2**.
 3. Klicken Sie auf **Make Current** (Als aktuell festlegen).
 4. Aktivieren Sie **Post to Public Change log for this API** (In öffentlichem Änderungsprotokoll für diese API veröffentlichen), wenn Sie Hinweise zu dieser Änderung veröffentlichen möchten. Geben Sie eine Änderungsbeschreibung für Entwickler an, beispielsweise **Testrevisionen. Neuer Vorgang „Test“ hinzugefügt**).
 5. **Revision 2** ist jetzt aktuell.

@@ -1,69 +1,87 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines
 author: shants123
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 12/14/2018
+ms.date: 8/22/2019
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 34723a6ee37e54ea2d81e6d1143672e3ccb30d1e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: b2a7bbef2c421281780c0191fa32381468899bbf
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53805731"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020332"
 ---
-Azure aktualisiert die Plattform regelmäßig, um die Zuverlässigkeit, Leistung und Sicherheit der Hostinfrastruktur für virtuelle Computer zu verbessern. Diese Updates reichen von Patches für Softwarekomponenten in der Hostumgebung über Upgrades für Netzwerkkomponenten bis hin zur Außerbetriebsetzung von Hardware. Die meisten dieser Updates haben keine Auswirkungen auf die gehosteten virtuellen Computer. Allerdings gibt es Fälle, in denen Updates Auswirkungen haben und in denen Azure das Verfahren mit den geringsten Auswirkungen für Updates wählt:
+Azure aktualisiert seine Plattform regelmäßig, um die Zuverlässigkeit, Leistung und Sicherheit der Hostinfrastruktur für virtuelle Computer zu verbessern. Der Zweck dieser Updates reicht von Patches für Softwarekomponenten in der Hostumgebung über Upgrades für Netzwerkkomponenten bis hin zur Außerbetriebsetzung von Hardware. 
+
+Updates wirken sich kaum auf die gehosteten virtuellen Computer aus. Wenn Updates Auswirkungen haben, wählt Azure das Verfahren mit den geringsten Auswirkungen für Updates aus:
 
 - Wenn ein Update ohne Neustart möglich ist, wird die VM angehalten, während der Host aktualisiert wird, oder sie wird in Echtzeit zu einem bereits aktualisierten Host migriert.
 
-- Wenn die Wartung einen Neustart erfordert, werden Sie in einer Benachrichtigung über den geplanten Wartungstermin informiert. Azure räumt Ihnen außerdem ein Zeitfenster ein, in dem Sie die Wartung zu einem Zeitpunkt, der Ihnen passt, selbst starten können. Azure setzt sich für Technologien ein, um die Zahl der Fälle zu reduzieren, in denen VMs aus Gründen der planmäßigen Plattformwartung neu gestartet werden müssen. 
+- Wenn die Wartung einen Neustart erfordert, werden Sie über die geplante Wartung informiert. Azure räumt Ihnen außerdem ein Zeitfenster ein, in dem Sie die Wartung zu einem Zeitpunkt Ihrer Wahl selbst starten können. Das Zeitfenster für die selbstständige Wartung umfasst in der Regel 35 Tage, sofern die Wartung nicht dringend ist. Azure setzt sich für Technologien ein, um die Zahl der Fälle zu reduzieren, in denen VMs aus Gründen der planmäßigen Plattformwartung neu gestartet werden müssen. 
 
-Auf dieser Seite erfahren Sie, wie Azure die beiden Wartungsarten durchführt. Weitere Informationen zu ungeplanten Ereignissen (Ausfällen) finden Sie unter „Verwalten der Verfügbarkeit virtueller Computer“ für [Windows](../articles/virtual-machines/windows/manage-availability.md) oder [Linux](../articles/virtual-machines/linux/manage-availability.md).
+Auf dieser Seite erfahren Sie, wie Azure die beiden Wartungsarten durchführt. Weitere Informationen zu ungeplanten Ereignissen (Ausfällen) finden Sie unter  [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../articles/virtual-machines/windows/manage-availability.md) bzw. im entsprechenden Artikel für [Linux](../articles/virtual-machines/linux/manage-availability.md).
 
-Mithilfe der geplanten Ereignisse für [Windows](../articles/virtual-machines/windows/scheduled-events.md) oder [Linux](../articles/virtual-machines/linux/scheduled-events.md) können Sie in der VM Benachrichtigungen zu bevorstehender Wartung erhalten.
+In einer VM können Sie [mithilfe von Scheduled Events für Windows](../articles/virtual-machines/windows/scheduled-events.md) oder [Linux](../articles/virtual-machines/linux/scheduled-events.md) Benachrichtigungen zu bevorstehender Wartung erhalten.
 
-Weitere Informationen zum Verwalten der geplanten Wartung finden Sie unter „Behandlung von Benachrichtigungen der geplanten Wartung“ für [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) oder [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
+Anweisungen zum Verwalten der geplanten Wartung finden Sie unter [Behandlung von Benachrichtigungen der geplanten Wartung für Linux](../articles/virtual-machines/linux/maintenance-notifications.md) oder im entsprechenden Artikel für [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
-## <a name="memory-preserving-maintenance"></a>Wartung mit Speicherbeibehaltung
+## <a name="maintenance-that-doesnt-require-a-reboot"></a>Keinen Neustart erfordernde Wartung
 
-Das Ziel für die meisten Updates ohne Neustart besteht in weniger als 10 Sekunden Pause für die VM. In bestimmten Fällen werden arbeitsspeicherschonende Wartungsmechanismen verwendet, bei denen die VM für bis zu 30 Sekunden angehalten und der Arbeitsspeicher im RAM beibehalten wird. Danach wird die Ausführung des virtuellen Computers fortgesetzt, und die Uhr des virtuellen Computers wird automatisch synchronisiert. Azure verwendet in zunehmendem Maß Technologien zur Livemigration und bessere Mechanismen zur Erhaltung des Arbeitsspeichers, um die Anhaltedauer zu verringern.
+Wie bereits erwähnt, wirken sich die meisten Plattformupdates nicht auf Kunden-VMs aus. Ist es nicht möglich, ein Update ohne Auswirkungen durchzuführen, wählt Azure den Updatemechanismus aus, der die geringsten Auswirkungen auf die Kunden-VMs hat. 
 
-Diese Wartungsvorgänge ohne Neustart werden einzeln für jede Fehlerdomäne angewendet, und das Fortschreiten wird beendet, wenn Warnsignale zur Integrität empfangen werden. 
+Bei der Wartung mit den geringsten Auswirkungen wird der virtuelle Computer für weniger als 10 Sekunden angehalten. In bestimmten Fällen verwendet Azure Wartungsmechanismen, die den Arbeitsspeicherinhalt beibehalten. Diese Mechanismen halten den virtuellen Computer bis zu 30 Sekunden lang an und behalten den Inhalt des RAM-Speichers bei. Anschließend wird der Betrieb des virtuellen Computers fortgesetzt, und seine Uhr wird automatisch synchronisiert. 
 
-Einige Anwendungen werden durch Updates dieser Art unter Umständen beeinträchtigt. Falls der virtuelle Computer live zu einem anderen Host migriert wird, ist einige Minuten vor dem Anhalten der VM bei einigen empfindlichen Workloads unter Umständen eine geringfügige Leistungsbeeinträchtigung feststellbar. Solche Anwendungen können von der Nutzung geplanter Ereignisse für [Windows](../articles/virtual-machines/windows/scheduled-events.md) oder [Linux](../articles/virtual-machines/linux/scheduled-events.md) in der Vorbereitung der VM-Wartung profitieren und können dann Auswirkungen während der Azure-Wartung vermeiden. Azure arbeitet außerdem an Funktionen zur Wartungssteuerung für solche besonders empfindlichen Anwendungen. 
+Wartung mit Speicherbeibehaltung funktioniert für mehr als 90% der virtuellen Azure-Computer. Ausnahmen sind lediglich die G-, M-, N- und H-Serie. Azure verwendet in zunehmendem Maß Technologien zur Livemigration und bessere Mechanismen zur Erhaltung des Arbeitsspeichers, um die Anhaltedauer zu verringern.  
 
+Diese Wartungsvorgänge, die keinen Neustart erfordern, werden jeweils auf eine Fehlerdomäne angewendet. Sie werden beendet, wenn sie Integritätswarnsignale erhalten. 
 
-## <a name="maintenance-requiring-a-reboot"></a>Wartungsmaßnahmen, die einen Neustart erfordern
+Diese Typen von Updates können sich auf einige Anwendungen auswirken. Wenn der virtuelle Computer live zu einem anderen Host migriert wird, ist einige Minuten vor dem Anhalten der VM bei einigen empfindlichen Workloads unter Umständen eine geringfügige Leistungsbeeinträchtigung feststellbar. Versuchen Sie, [Scheduled Events für Windows](../articles/virtual-machines/windows/scheduled-events.md) oder [Linux](../articles/virtual-machines/linux/scheduled-events.md) für solche Anwendungen zu verwenden, um die VM-Wartung vorzubereiten und Auswirkungen der Azure-Wartung zu reduzieren. Azure bietet außerdem vollständige Kontrolle über Wartungsarbeiten (die keine Auswirkungen auf die Plattform haben) für [dedizierte Azure-Hosts](../articles/virtual-machines/windows/dedicated-hosts.md) und [isolierte VMs](../articles/security/fundamentals/isolation-choices.md). Die Funktion für die Wartungskontrolle wird derzeit als Vorschauversion angeboten. Um Zugriff zu erhalten, reichen Sie bitte das [Registrierungsformular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u) ein. Sie können Updates überspringen, die keine Auswirkung auf die Plattform haben, und die Updates innerhalb eines 35-tägigen Zeitfensters zu einem beliebigen Zeitpunkt im Batchmodus anwenden.
 
-Im seltenen Fall, dass virtuelle Computer für eine geplante Wartung neu gestartet werden müssen, werden Sie darüber im Voraus informiert. Die geplante Wartung hat zwei Phasen: das Self-Service-Zeitfenster und ein Zeitfenster für die geplante Wartung.
+### <a name="live-migration"></a>Livemigration
 
-Das **Self-Service-Zeitfenster** ermöglicht es Ihnen, die Wartung auf Ihren virtuellen Computern zu starten. Innerhalb dieses Zeitfensters können Sie die einzelnen virtuellen Computer abfragen, um ihren Status zu ermitteln und die Ergebnisse Ihrer letzten Wartungsanforderung zu prüfen.
+Die Livemigration erfordert keinen Neustart und behält den Arbeitsspeicherinhalt virtueller Computer bei. Sie bewirkt eine Pause oder ein Einfrieren; dies dauert in der Regel höchstens 5 Sekunden. Mit Ausnahme der Serien G, M, N und H sind alle IaaS-VMs (Infrastructure-as-a-Service) für die Livemigration geeignet. Geeignete virtuelle Computer machen mehr als 90 Prozent der IaaS-VMs aus, die in der Azure-Flotte bereitgestellt werden. 
+
+Die Azure-Plattform startet die Livemigration in den folgenden Szenarien:
+- Geplante Wartung
+- Hardwarefehler
+- Zuordnungsoptimierungen
+
+Einige Szenarien mit geplanter Wartung nutzen die Livemigration, und Sie können Scheduled Events verwenden, um im Voraus zu wissen, wann Livemigrationsvorgänge gestartet werden.
+
+Per Livemigration können auch VMs verschoben werden, wenn Azure Machine Learning-Algorithmen einen Hardwarefehler vorhersagen, oder wenn Sie VM-Zuordnungen optimieren möchten. Weitere Informationen zur Vorhersagemodellierung, die Instanzen von beeinträchtigter Hardware erkennt, finden Sie unter [Improving Azure Virtual Machine resiliency with predictive ML and live migration](https://azure.microsoft.com/blog/improving-azure-virtual-machine-resiliency-with-predictive-ml-and-live-migration/?WT.mc_id=thomasmaurer-blog-thmaure) (Verbessern der Resilienz von virtuellen Azure-Computern mit Machine Learning zur Vorhersage und Livemigration). Livemigrationsbenachrichtigungen werden im Azure-Portal in den Monitor- und Service Health-Protokollen sowie in Scheduled Events angezeigt, wenn Sie diese Dienste verwenden.
+
+## <a name="maintenance-that-requires-a-reboot"></a>Einen Neustart erfordernde Wartung
+
+Im seltenen Fall, dass virtuelle Computer für eine geplante Wartung neu gestartet werden müssen, werden Sie darüber im Voraus informiert. Die geplante Wartung hat zwei Phasen: die Self-Service-Phase und eine Phase für die geplante Wartung.
+
+Während der *Self-Service-Phase*, die in der Regel vier Wochen dauert, starten Sie die Wartung auf Ihren virtuellen Computern. Im Rahmen des Self-Service können Sie die einzelnen virtuellen Computer abfragen, um ihren Status zu ermitteln und die Ergebnisse Ihrer letzten Wartungsanforderung zu prüfen.
 
 Wenn Sie die Self-Service-Wartung starten, wird Ihre VM auf einem bereits aktualisierten Knoten neu bereitgestellt. Aufgrund des Neustarts des virtuellen Computers geht der temporäre Datenträger verloren, und die der virtuellen Netzwerkschnittstelle zugeordneten dynamischen IP-Adressen werden aktualisiert.
 
-Sollte im Rahmen der Self-Service-Wartung ein Fehler auftreten, wird der Vorgang beendet, der virtuelle Computer wird nicht aktualisiert, und Sie erhalten die Möglichkeit, die Self-Service-Wartung erneut durchzuführen. 
+Falls im Rahmen der Self-Service-Wartung ein Fehler auftritt, wird der Vorgang beendet, der virtuelle Computer wird nicht aktualisiert, und Sie erhalten die Möglichkeit, die Self-Service-Wartung erneut durchzuführen. 
 
-Nach Ablauf des Self-Service-Zeitfensters beginnt das **Zeitfenster für die geplante Wartung**. Innerhalb dieses Zeitfensters können Sie zwar weiterhin das Wartungszeitfenster abfragen, die Wartung aber nicht mehr selbst starten.
+Wenn die Self-Service-Phase endet, beginnt die *Phase der geplanten Wartung*. Während dieser Phase können Sie zwar weiterhin die Wartungsphase abfragen, die Wartung aber nicht mehr selbst starten.
 
-Weitere Informationen zur Verwaltung von Wartungen mit erforderlichem Neustart finden Sie unter „Behandlung von Benachrichtigungen der geplanten Wartung“ für [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) oder [Windows](../articles/virtual-machines/windows/maintenance-notifications.md). 
+Weitere Informationen zum Verwalten der Wartung, die einen Neustart erfordert, finden Sie unter [Behandlung von Benachrichtigungen der geplanten Wartung für Linux](../articles/virtual-machines/linux/maintenance-notifications.md) oder im entsprechenden Artikel für [Windows](../articles/virtual-machines/windows/maintenance-notifications.md). 
 
 ### <a name="availability-considerations-during-scheduled-maintenance"></a>Überlegungen zur Verfügbarkeit während einer geplanten Wartung 
 
-Wenn Sie bis zum Zeitfenster für die geplante Wartung warten möchten, sollten Sie einige Dinge berücksichtigen, um eine möglichst hohe Verfügbarkeit Ihrer virtuellen Computer zu gewährleisten. 
+Wenn Sie bis zur Phase für die geplante Wartung warten möchten, sollten Sie einige Dinge berücksichtigen, um eine möglichst hohe Verfügbarkeit Ihrer virtuellen Computer zu gewährleisten. 
 
 #### <a name="paired-regions"></a>Regionspaare
 
-Jeder Azure-Region ist innerhalb der gleichen geografischen Region eine andere Region als Regionspartner zugeordnet. In der geplanten Wartungsphase aktualisiert Azure nur die virtuellen Computer in einer einzelnen Region eines Regionspaars. Wenn z. B. die VMs in der Region „USA, Norden-Mitte“ aktualisiert werden, aktualisiert Azure nicht gleichzeitig die VMs in der Region „USA, Süden-Mitte“. Andere Regionen wie Nordeuropa können jedoch gleichzeitig mit USA (Ost) gewartet werden. Sie sollten mit der Funktionsweise von Regionspaaren vertraut sein, um Ihre virtuellen Computer besser auf Regionen verteilen zu können. Weitere Informationen finden Sie unter [Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Jede Azure-Region ist mit einer anderen Region innerhalb desselben geografischen Gebiets gekoppelt. Zusammen bilden sie ein Regionspaar. Während der Phase der geplanten Wartung aktualisiert Azure nur die virtuellen Computer in einer einzelnen Region eines Regionspaars. Wenn z.B. die VMs in der Region „USA, Norden-Mitte“ aktualisiert werden, aktualisiert Azure nicht gleichzeitig die VMs in der Region „USA, Süden-Mitte“. Andere Regionen wie Nordeuropa können jedoch gleichzeitig mit USA (Ost) gewartet werden. Sie sollten mit der Funktionsweise von Regionspaaren vertraut sein, um Ihre virtuellen Computer besser auf Regionen verteilen zu können. Weitere Informationen finden Sie unter [Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 #### <a name="availability-sets-and-scale-sets"></a>Verfügbarkeitsgruppen und Skalierungsgruppen
 
-Wenn Sie eine Workload auf virtuellen Azure-Computern bereitstellen, können Sie die virtuellen Computer in einer Verfügbarkeitsgruppe erstellen, um die Hochverfügbarkeit der Anwendung zu erreichen. Dadurch wird sichergestellt, dass während eines Ausfalls oder Wartungsereignisses mit Neustartanforderung mindestens eine VM verfügbar ist.
+Wenn Sie eine Workload auf virtuellen Azure-Computern bereitstellen, können Sie die virtuellen Computer in einer *Verfügbarkeitsgruppe* erstellen, um die Hochverfügbarkeit der Anwendung zu erreichen. Mit Verfügbarkeitsgruppen können Sie sicherstellen, dass während eines Ausfalls oder Wartungsereignissen, die einen Neustart erfordern, mindestens ein virtueller Computer verfügbar ist.
 
-Innerhalb einer Verfügbarkeitsgruppe werden einzelne virtuelle Computer auf bis zu 20 Updatedomänen (UDs) verteilt. Während einer geplanten Wartung wird zum jeweiligen Zeitpunkt immer nur eine Updatedomäne aktualisiert. Die Reihenfolge der aktualisierten Updatedomänen ist jedoch nicht unbedingt sequenziell. 
+Innerhalb einer Verfügbarkeitsgruppe werden einzelne virtuelle Computer auf bis zu 20 Updatedomänen (UDs) verteilt. Während einer geplanten Wartung wird jeweils nur eine Updatedomäne aktualisiert. Updatedomänen (UDs) werden nicht unbedingt sequenziell aktualisiert. 
 
-VM-Skalierungsgruppen sind eine Azure-Computerressource, mit der Sie eine Gruppe identischer virtueller Computer als Einzelressource bereitstellen und verwalten können. Die Skalierungsgruppe wird automatisch über Updatedomänen hinweg bereitgestellt – genau wie virtuelle Computer in einer Verfügbarkeitsgruppe. Und genau wie bei Verfügbarkeitsgruppen wird auch bei Skalierungsgruppen während einer geplanten Wartung immer nur jeweils eine Updatedomäne aktualisiert.
+VM-*Skalierungsgruppen* sind eine Azure-Computeressource, mit der Sie eine Gruppe identischer virtueller Computer als Einzelressource bereitstellen und verwalten können. Die Skalierungsgruppe wird automatisch Updatedomänen übergreifend bereitgestellt – genau wie virtuelle Computer in einer Verfügbarkeitsgruppe. Genau wie bei Verfügbarkeitsgruppen wird auch bei Skalierungsgruppen während einer geplanten Wartung immer nur jeweils eine UD aktualisiert.
 
-Weitere Informationen zum Konfigurieren Ihrer VMs für Hochverfügbarkeit finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../articles/virtual-machines/windows/manage-availability.md) bzw. [Verwalten der Verfügbarkeit virtueller Linux-Computer](../articles/virtual-machines/linux/manage-availability.md).
+Weitere Informationen zur Einrichtung Ihrer VMs für hohe Verfügbarkeit finden Sie unter  [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../articles/virtual-machines/windows/manage-availability.md) bzw. im entsprechenden Artikel für [Linux](../articles/virtual-machines/linux/manage-availability.md).

@@ -1,7 +1,6 @@
 ---
 title: Verwenden von Zeppelin Notebooks mit Apache Spark-Cluster unter Azure HDInsight
 description: Enthält eine Schritt-für-Schritt-Anleitung zur Verwendung von Zeppelin Notebooks mit Apache Spark-Clustern unter Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 18660b41f4413d3ae1cd820cd645ddb540397906
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6801f2b3bca1fbfa221ec2eba07f51b76712b4ff
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095897"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813972"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Verwenden von Apache Zeppelin Notebooks mit Apache Spark-Cluster in Azure HDInsight
 
@@ -93,7 +92,7 @@ HDInsight Spark-Cluster enthalten [Apache Zeppelin](https://zeppelin.apache.org/
 
 6. Wählen Sie das Symbol **Balkendiagramm** aus, um die Anzeige zu ändern.  Unter der Option **Einstellungen**, die nach dem Auswählen von **Balkendiagramm** angezeigt wird, können Sie **Schlüssel** und **Werte** auswählen.  Im folgenden Screenshot ist die Ausgabe dargestellt.
 
-    ![Ausführen einer Spark-SQL-Anweisung mit dem Notebook](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Ausführen einer Spark SQL-Anweisung mit dem Notebook")
+    ![Ausführen einer Spark-SQL-Anweisung mit dem Notebook – 1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Ausführen einer Spark-SQL-Anweisung mit dem Notebook – 1")
 
 7. Sie können auch Spark-SQL-Anweisungen ausführen, indem Sie die Variablen in der Abfrage verwenden. Der nächste Codeausschnitt zeigt, wie Sie eine Variable (`Temp`) in der Abfrage mit den möglichen Werten definieren, die für die Abfrage verwendet werden sollen. Beim ersten Ausführen der Abfrage wird automatisch eine Dropdownliste mit den Werten aufgefüllt, die Sie für die Variable angegeben haben.
 
@@ -111,7 +110,7 @@ HDInsight Spark-Cluster enthalten [Apache Zeppelin](https://zeppelin.apache.org/
 
      Im folgenden Screenshot ist die Ausgabe dargestellt.
 
-     ![Ausführen einer Spark-SQL-Anweisung mit dem Notebook](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Ausführen einer Spark SQL-Anweisung mit dem Notebook")
+     ![Ausführen einer Spark-SQL-Anweisung mit dem Notebook – 2](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Ausführen einer Spark-SQL-Anweisung mit dem Notebook – 2")
 
 9. Starten Sie den Livy-Interpreter neu, um die Anwendung zu beenden. Öffnen Sie zu diesem Zweck die Einstellungen des Interpreters, indem Sie oben rechts den Namen des angemeldeten Benutzers und dann **Interpreter** auswählen.  
 
@@ -132,23 +131,23 @@ In diesem Artikel wird beschrieben, wie Sie das Paket [spark-csv](https://search
 
 2. Scrollen Sie zu **livy**, und wählen Sie dann **edit**.
 
-    ![Ändern der Interpreter-Einstellungen](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Ändern der Interpreter-Einstellungen")
+    ![Ändern der Interpreter-Einstellungen – 1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Ändern der Interpreter-Einstellungen – 1")
 
 3. Fügen Sie einen neuen Schlüssel mit dem Namen `livy.spark.jars.packages` hinzu, und legen Sie seinen Wert im Format `group:id:version` fest. Wenn Sie das Paket [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) verwenden möchten, müssen Sie den Wert des Schlüssels auf `com.databricks:spark-csv_2.10:1.4.0` festlegen.
 
-    ![Ändern der Interpreter-Einstellungen](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Ändern der Interpreter-Einstellungen")
+    ![Ändern der Interpreter-Einstellungen – 2](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Ändern der Interpreter-Einstellungen – 2")
 
     Wählen Sie **Speichern**, und starten Sie dann den Livy-Interpreter neu.
 
 4. Hier ist angegeben, wie Sie zum Wert des oben eingegebenen Schlüssels gelangen, falls dies für Sie interessant ist.
    
-    a. Suchen Sie das Paket im Maven-Repository. In diesem Tutorial haben wir [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) verwendet.
+    a. Suchen Sie das Paket im Maven-Repository. In diesem Artikel verwendeten wir [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
    
     b. Sammeln Sie im Repository die Werte für **GroupId**, **ArtifactId** und **Version**.
    
     ![Verwenden externer Pakete mit Jupyter Notebooks](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Verwenden externer Pakete mit Jupyter Notebooks")
    
-    c. Verketten Sie die drei Werte, getrennt durch einen Doppelpunkt (**:**).
+    c. Verketten Sie die drei Werte, getrennt durch einen Doppelpunkt ( **:** ).
    
         com.databricks:spark-csv_2.10:1.4.0
 

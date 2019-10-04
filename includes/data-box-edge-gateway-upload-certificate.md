@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 03/05/2019
+ms.date: 06/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 216380cf7069468d13c4e533fc90b2596aa211c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 09d9b5bbf3f9ca7a4eef37891d03c9c865e7f74b
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125139"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448623"
 ---
 Ein ordnungsgemäßes SSL-Zertifikat stellt sicher, dass Sie verschlüsselte Informationen an den richtigen Server senden. Neben der Verschlüsselung ermöglicht das Zertifikat auch die Authentifizierung. Sie können über die PowerShell-Schnittstelle des Geräts Ihr eigenes vertrauenswürdiges SSL-Zertifikat hochladen.
 
@@ -18,11 +18,11 @@ Ein ordnungsgemäßes SSL-Zertifikat stellt sicher, dass Sie verschlüsselte Inf
 
    - `CertificateFilePath`: Pfad zur Freigabe, der die Zertifikatdatei im *PFX*-Format enthält.
    - `CertificatePassword`: Kennwort zum Schutz des Zertifikats.
-   - `Credentials`: Benutzername und Kennwort für den Zugriff auf die Freigabe, die das Zertifikat enthält.
+   - `Credentials`: Benutzername für den Zugriff auf die Freigabe, die das Zertifikat enthält. Geben Sie bei Aufforderung das Kennwort für die Netzwerkfreigabe an.
 
      Nachfolgend sehen Sie ein Beispiel für die Verwendung dieses Cmdlets:
 
      ```
-     Set-HcsCertificate -Scope LocalWebUI -CertificateFilePath "\\myfileshare\certificates\mycert.pfx" -CertificatePassword "mypassword" -Credentials "Username/Password"
+     Set-HcsCertificate -Scope LocalWebUI -CertificateFilePath "\\myfileshare\certificates\mycert.pfx" -CertificatePassword "mypassword" -Credential "Username"
      ```
 

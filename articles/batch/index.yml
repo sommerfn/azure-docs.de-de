@@ -1,77 +1,80 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cc30c4552cfa672121a5e7fc520fb4412237b7e9
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591688"
 documentType: LandingData
 title: Batchdokumentation
 metadata:
-  title: Dokumentation für Batch – Tutorials, API-Referenz | Microsoft-Dokumentation
-  description: Sie können mithilfe von Batch umfangreiche auf Parallelverarbeitung ausgelegte HPC-Anwendungen (High Performance Computing) effizient in der Cloud ausführen. Definieren Sie ohne manuelle Konfiguration oder Verwaltung der Infrastruktur die Azure-Computeressourcen für die parallele oder skalierte Ausführung Ihrer Anwendung. Sie können rechenintensive Tasks planen und basierend auf Ihren Anforderungen Computeressourcen dynamisch hinzufügen oder entfernen. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Batch verwenden.
+  title: 'Dokumentation für Batch – Tutorials, API-Referenz | Microsoft-Dokumentation'
+  description: 'Sie können mithilfe von Batch umfangreiche auf Parallelverarbeitung ausgelegte HPC-Anwendungen (High Performance Computing) effizient in der Cloud ausführen. Definieren Sie ohne manuelle Konfiguration oder Verwaltung der Infrastruktur die Azure-Computeressourcen für die parallele oder skalierte Ausführung Ihrer Anwendung. Sie können rechenintensive Tasks planen und basierend auf Ihren Anforderungen Computeressourcen dynamisch hinzufügen oder entfernen. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Batch verwenden.'
   services: batch
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: batch
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/30/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
-  description: Sie können mithilfe von Batch umfangreiche auf Parallelverarbeitung ausgelegte HPC-Anwendungen (High Performance Computing) effizient in der Cloud ausführen. Definieren Sie ohne manuelle Konfiguration oder Verwaltung der Infrastruktur die Azure-Computeressourcen für die parallele oder skalierte Ausführung Ihrer Anwendung. Sie können rechenintensive Tasks planen und basierend auf Ihren Anforderungen Computeressourcen dynamisch hinzufügen oder entfernen. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Batch verwenden.
+  description: 'Sie können mithilfe von Batch umfangreiche auf Parallelverarbeitung ausgelegte HPC-Anwendungen (High Performance Computing) effizient in der Cloud ausführen. Definieren Sie ohne manuelle Konfiguration oder Verwaltung der Infrastruktur die Azure-Computeressourcen für die parallele oder skalierte Ausführung Ihrer Anwendung. Sie können rechenintensive Tasks planen und basierend auf Ihren Anforderungen Computeressourcen dynamisch hinzufügen oder entfernen. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Batch verwenden.'
 sections:
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: Hier erfahren Sie, wie Sie Ihren ersten Batch-Auftrag in Azure ausführen.
-  - type: list
-    style: icon48
+  - title: Fünfminütige Schnellstarts
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_cligeneric.svg
-      text: Azure-Befehlszeilenschnittstelle
-      href: quick-create-cli
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure-Portal
-      href: quick-create-portal
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_NET.svg
-      text: .NET
-      href: quick-run-dotnet
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_python.svg
-      text: Python
-      href: quick-run-python
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: Hier erfahren Sie, wie rechenintensive Workloads in Batch ausgeführt werden.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Hier erfahren Sie, wie Sie Ihren ersten Batch-Auftrag in Azure ausführen.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
+            text: Azure-Befehlszeilenschnittstelle
+            href: quick-create-cli
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure-Portal
+            href: quick-create-portal
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_NET.svg'
+            text: .NET
+            href: quick-run-dotnet
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_python.svg'
+            text: Python
+            href: quick-run-python
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - html: <a href="tutorial-parallel-dotnet">Parallele Dateiverarbeitung mit dem .NET SDK</a>
-    - html: <a href="tutorial-parallel-python">Parallele Dateiverarbeitung mit dem Python SDK</a>
-    - html: <a href="tutorial-rendering-cli">Szenenrendering mit Arnold</a>
-    - html: <a href="tutorial-r-doazureparallel">Parallele R-Simulation</a>
-- title: Beispiele
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Hier erfahren Sie, wie rechenintensive Workloads in Batch ausgeführt werden.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-parallel-dotnet">Parallele Dateiverarbeitung mit dem .NET SDK</a>
+          - html: <a href="tutorial-parallel-python">Parallele Dateiverarbeitung mit dem Python SDK</a>
+          - html: <a href="tutorial-rendering-cli">Szenenrendering mit Arnold</a>
+          - html: <a href="tutorial-r-doazureparallel">Parallele R-Simulation</a>
+  - title: Beispiele
     items:
-    - html: <a href="cli-samples">Azure-Befehlszeilenschnittstelle</a>
-- title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="cli-samples">Azure-Befehlszeilenschnittstelle</a>
+  - title: Kostenloses PluralSight-Videotraining
     items:
-    - title: Befehlszeile
-      html: <p><a href="/cli/azure/batch">Azure-Befehlszeilenschnittstelle</a></p><p><a href="/powershell/module/az.batch">Azure PowerShell</a></p>
-    - title: Sprachen
-      html: <p><a href="/dotnet/api/overview/azure/batch">.NET</a></p><p><a href="/java/api/overview/azure/batch">Java</a></p><p><a href="/javascript/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/batchservice">Batch-Dienst-REST-API</a></p><p><a href="/rest/api/batchmanagement/">Batch Management-REST-API</a></p>
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: 'Microsoft Azure Batch, erste Schritte'
+            href: 'https://app.pluralsight.com/library/courses/microsoft-azure-batch-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/microsoft-azure-batch-getting-started/table-of-contents'
+  - title: Verweis
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Befehlszeile
+            html: <p><a href="/cli/azure/batch">Azure-Befehlszeilenschnittstelle</a></p><p><a href="/powershell/module/az.batch">Azure PowerShell</a></p>
+          - title: Sprachen
+            html: <p><a href="/dotnet/api/overview/azure/batch">.NET</a></p><p><a href="/java/api/overview/azure/batch">Java</a></p><p><a href="/javascript/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/batchservice">Batch-Dienst-REST-API</a></p><p><a href="/rest/api/batchmanagement/">Batch Management-REST-API</a></p>

@@ -3,7 +3,7 @@ title: Informationen zur Azure Service Fabric-Anwendungssicherheit | Microsoft D
 description: Ein Überblick über die sichere Ausführung von Microservicesanwendungen in Service Fabric. Erfahren Sie, wie Sie Dienste und das Startskript unter verschiedenen Sicherheitskonten ausführen, Benutzer authentifizieren und autorisieren, Anwendungsgeheimnisse verwalten, die Dienstkommunikation sichern, ein API-Gateway verwenden und ruhende Anwendungsdaten sichern.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
-ms.author: aljo
-ms.openlocfilehash: b4d3699c0327bb2771a358d3e3c2921bdc39ee5e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: atsenthi
+ms.openlocfilehash: 75a82a0915414d24ab9c58ea15d3fdc9c1922c63
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670420"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68600072"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric-Anwendungs- und -Dienstsicherheit
 Eine Microservicesarchitektur kann [zahlreiche Vorteile](service-fabric-overview-microservices.md) mit sich bringen. Die Verwaltung der Sicherheit von Microservices ist jedoch eine Herausforderung und unterscheidet sich von der Verwaltung traditioneller monolithischer Anwendungen. 
@@ -36,15 +36,15 @@ Der erste Schritt, Entscheidungen zur Vertrauenswürdigkeit auf API-Ebene zu tre
 
 Wenn auf Dienste direkt zugegriffen werden kann, kann ein Authentifizierungsdienst wie Azure Active Directory oder ein dedizierter Authentifizierungsmicroservice verwendet werden, der als Sicherheitstokendienst (Security Token Service, STS) fungiert, um Benutzer zu authentifizieren. Vertrauensentscheidungen werden zwischen Diensten mit Sicherheitstoken oder Cookies geteilt. 
 
-Für ASP.NET Core ist der primäre Mechanismus für die [Authentifizierung von Benutzern](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) das ASP.NET Core Identity-Mitgliedschaftssystem. ASP.NET Core Identity speichert Benutzerinformationen (einschließlich Anmeldeinformationen, Rollen und Ansprüche) in einem vom Entwickler konfigurierten Datenspeicher. ASP.NET Core Identity unterstützt zweistufige Authentifizierung.  Externe Authentifizierungsanbieter werden ebenfalls unterstützt, sodass Benutzer sich mit vorhandenen Authentifizierungsverfahren von Anbietern wie Microsoft, Google, Facebook oder Twitter anmelden können. 
+Für ASP.NET Core ist der primäre Mechanismus für die [Authentifizierung von Benutzern](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) das ASP.NET Core Identity-Mitgliedschaftssystem. ASP.NET Core Identity speichert Benutzerinformationen (einschließlich Anmeldeinformationen, Rollen und Ansprüche) in einem vom Entwickler konfigurierten Datenspeicher. ASP.NET Core Identity unterstützt zweistufige Authentifizierung.  Externe Authentifizierungsanbieter werden ebenfalls unterstützt, sodass Benutzer sich mit vorhandenen Authentifizierungsverfahren von Anbietern wie Microsoft, Google, Facebook oder Twitter anmelden können.
 
-### <a name="authorization"></a>Autorisierung
+### <a name="authorization"></a>Authorization
 Nach der Authentifizierung müssen Dienste den Benutzerzugriff autorisieren oder ermitteln, welche Aktionen ein Benutzer ausführen kann. Dieser Prozess ermöglicht es einem Dienst, APIs für einige authentifizierte Benutzer zur Verfügung zu stellen, aber nicht für alle. Die Autorisierung ist orthogonal und unabhängig von der Authentifizierung, d.h. der Feststellung, wer ein Benutzer ist. Die Authentifizierung kann mindestens eine Identität für den aktuellen Benutzer erstellen.
 
 [ASP.NET Core-Autorisierung](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) kann basierend auf den Rollen der Benutzer oder auf benutzerdefinierten Richtlinien ausgeführt werden, die die Überprüfung von Ansprüchen oder andere Heuristiken beinhalten können.
 
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>Einschränken und Sichern des Zugriffs mithilfe eines API-Gateways
-Cloudanwendungen benötigen normalerweise ein Front-End-Gateway, um für Benutzer, Geräte oder andere Anwendungen einen zentralen Eingangspunkt bereitzustellen. Ein [API-Gateway](/azure/architecture/microservices/gateway) befindet sich zwischen Clients und Diensten und ist der Einstiegspunkt zu allen Diensten, die Ihre Anwendung bereitstellt. Es fungiert als Reverseproxy und leitet Anforderungen von Clients an Dienste weiter. Darüber hinaus kann es verschiedene übergreifende Aufgaben wie Authentifizierung und Autorisierung, SSL-Beendigung und Ratenbegrenzung übernehmen. Wenn Sie kein Gateway bereitstellen, müssen Clients Anforderungen direkt an Front-End-Dienste senden.
+Cloudanwendungen benötigen normalerweise ein Front-End-Gateway, um für Benutzer, Geräte oder andere Anwendungen einen zentralen Eingangspunkt bereitzustellen. Ein [API-Gateway](/azure/architecture/microservices/gateway) befindet sich zwischen Clients und Diensten und ist der Einstiegspunkt zu allen Diensten, die Ihre Anwendung bereitstellt. Es fungiert als Reverseproxy und leitet Anforderungen von Clients an Dienste weiter. Darüber hinaus kann es verschiedene übergreifende Aufgaben wie Authentifizierung und Autorisierung, SSL-Terminierung und Ratenbegrenzung übernehmen. Wenn Sie kein Gateway bereitstellen, müssen Clients Anforderungen direkt an Front-End-Dienste senden.
 
 In Service Fabric kann ein Gateway ein beliebiger zustandsloser Dienst sein (etwa eine [ASP.NET Core-Anwendung](service-fabric-reliable-services-communication-aspnetcore.md)) oder ein anderer Dienst, der für den Eingang von Datenverkehr ausgelegt ist (etwa [Traefik](https://docs.traefik.io/), [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT Hub](https://docs.microsoft.com/azure/iot-hub/) oder [Azure API Management](https://docs.microsoft.com/azure/api-management)).
 
@@ -66,7 +66,7 @@ Dieser Vorgang besteht im Wesentlichen aus vier Schritten:
 3. Verschlüsseln von Geheimnissen bei der Bereitstellung einer Anwendung mit dem Zertifikat und Einfügen dieser Geheimnisse in die Konfigurationsdatei „Settings.xml“ des Diensts
 4. Lesen der verschlüsselten Werte aus der Datei „Settings.xml“, indem diese mit demselben Verschlüsselungszertifikat entschlüsselt werden 
 
-[Azure Key Vault][key-vault-get-started] wird als sicherer Speicherort für Zertifikate sowie zum Installieren von Zertifikaten auf Service Fabric-Clustern in Azure verwendet. Wenn die Bereitstellung nicht in Azure erfolgt, muss Key Vault nicht zum Verwalten von Geheimnissen in Service Fabric-Anwendungen eingesetzt werden.
+[Azure Key Vault][key-vault-get-started] wird hier als sicherer Speicherort für Zertifikate sowie zum Installieren von Zertifikaten auf Service Fabric-Clustern in Azure verwendet. Wenn die Bereitstellung nicht in Azure erfolgt, muss Key Vault nicht zum Verwalten von Geheimnissen in Service Fabric-Anwendungen eingesetzt werden.
 
 Ein Beispiel finden Sie unter [Verwalten von Anwendungsgeheimnissen](service-fabric-application-secret-management.md).
 

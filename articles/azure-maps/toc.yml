@@ -5,6 +5,7 @@
     - name: Was ist Azure Maps?
       href: about-azure-maps.md
 - name: Schnellstarts
+  expanded: true
   items:
     - name: Erstellen einer Web-App
       href: quick-demo-map-app.md
@@ -24,6 +25,10 @@
       items:
         - name: Einrichten eines Geofence
           href: tutorial-geofence.md
+        - name: Räumliche Analysen
+          href: tutorial-iot-hub-maps.md
+        - name: EV-Routing mit Azure Notebooks (Python)
+          href: tutorial-ev-routing.md
 - name: Konzepte
   items:
     - name: Authentifizierung mit Azure Maps
@@ -42,7 +47,9 @@
           href: render-coverage.md
         - name: Abgedeckter Routingbereich
           href: routing-coverage.md
-    - name: Unterstützte Sprachen
+        - name: Mobilitätsabdeckung
+          href: mobility-coverage.md
+    - name: Lokalisierungsunterstützung
       href: supported-languages.md
     - name: Unterstützte Kartenstile
       href: supported-map-styles.md
@@ -50,6 +57,8 @@
       href: supported-browsers.md
     - name: Zoomfaktoren und Linienraster
       href: zoom-levels-and-tile-grid.md
+    - name: Mobility Service-Datenstruktur
+      href: mobility-service-data-structure.md
 - name: Anleitungen
   items:
     - name: Verwalten von Azure Maps-Konten
@@ -70,33 +79,43 @@
           href: how-to-use-best-practices-for-search.md
         - name: Rendern von benutzerdefinierten Daten auf einer statischen Karte
           href: how-to-render-custom-data.md
+        - name: Anfordern von Routen für den öffentlichen Nahverkehr
+          href: how-to-request-transit-data.md
+        - name: Anfordern von Echtzeitdaten für den öffentlichen Nahverkehr
+          href: how-to-request-real-time-data.md
     - name: Entwickeln mit dem Web SDK
       items:
         - name: Kartensteuerelement
           items:
-            - name: Verwenden des Kartensteuerelements
+            - name: Erste Schritte mit dem Webkarten-Steuerelement
               href: how-to-use-map-control.md
             - name: Erstellen einer Karte
               href: map-create.md
-            - name: Auswählen eines Kartenstils
+            - name: Ändern des Kartenstils
               href: choose-map-style.md
             - name: Hinzufügen von Steuerelementen zur Karte
               href: map-add-controls.md
+            - name: Erstellen einer Datenquelle
+              href: create-data-source-web-sdk.md
             - name: Hinzufügen einer Symbolebene
               href: map-add-pin.md
-            - name: Hinzufügen eines Popups
-              href: map-add-popup.md
             - name: Hinzufügen einer Blasenebene
               href: map-add-bubble-layer.md
-            - name: Hinzufügen von Formen
+            - name: Hinzufügen einer Linienebene
+              href: map-add-line-layer.md
+            - name: Hinzufügen einer Polygonebene
               href: map-add-shape.md
             - name: Hinzufügen einer Wärmebildebene
               href: map-add-heat-map-layer.md
+            - name: Hinzufügen eines Popups
+              href: map-add-popup.md
             - name: Clusterpunktdaten
               href: clustering-point-data-web-sdk.md
             - name: Verwenden von datengesteuerten Formatvorlagenausdrücken
               href: data-driven-style-expressions-web-sdk.md
-            - name: Überlagern eines Bilds
+            - name: Verwenden von Imagevorlagen
+              href: how-to-use-image-templates-web-sdk.md
+            - name: Hinzufügen einer Bildebene
               href: map-add-image-layer.md
             - name: Hinzufügen von Kachelebenen
               href: map-add-tile-layer.md
@@ -108,6 +127,14 @@
               href: map-events.md
             - name: Ermöglichen des Zugriffs auf Ihre App
               href: map-accessibility.md
+        - name: Zeichentools
+          items:
+            - name: Hinzufügen einer Symbolleiste zum Zeichnen
+              href: map-add-drawing-toolbar.md
+            - name: Festlegen von Optionen zum Zeichnen
+              href: set-drawing-options.md
+            - name: Abrufen von Formdaten
+              href: map-get-shape-data.md
         - name: Dienstmodule
           items:
             - name: Verwenden der Dienstmodule
@@ -120,8 +147,20 @@
               href: map-route.md
     - name: Entwickeln mit dem Android SDK
       items:
-        - name: Verwenden des Android-Kartensteuerelements
+        - name: Erste Schritte mit dem Android-Kartensteuerelement
           href: how-to-use-android-map-control-library.md
+        - name: Ändern des Kartenstils
+          href: set-android-map-styles.md
+        - name: Hinzufügen einer Symbolebene
+          href: how-to-add-symbol-to-android-map.md
+        - name: Hinzufügen von Formen
+          href: how-to-add-shapes-to-android-map.md
+        - name: Anzeigen von Featureinformationen
+          href: display-feature-information-android.md
+        - name: Hinzufügen einer Kachelebene
+          href: how-to-add-tile-layer-android-map.md
+    - name: Bereitstellen von Datenfeedback
+      href: how-to-use-feedback-tool.md
 - name: Verweis
   items:
     - name: API- und Parametererweiterungen
@@ -140,6 +179,8 @@
           href: 'https://docs.microsoft.com/rest/api/maps/data'
         - name: Geolocation-Dienst
           href: 'https://docs.microsoft.com/rest/api/maps/geolocation'
+        - name: Mobilitätsdienst
+          href: 'https://docs.microsoft.com/rest/api/maps/mobility'
         - name: Renderingdienst
           href: 'https://docs.microsoft.com/rest/api/maps/render'
         - name: Routendienst
@@ -158,6 +199,8 @@
       items:
         - name: Kartensteuerelement
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+        - name: Zeichentools
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/'
         - name: Dienstmodule
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
     - name: Resource Manager-Vorlage
@@ -165,7 +208,7 @@
 - name: Ressourcen
   items:
     - name: Nutzungsbedingungen für Azure Maps
-      href: 'https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31'
+      href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps-Preise
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: Preisrechner
@@ -176,6 +219,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Maps-Videos
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Azure Maps-Fallstudien
+      href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Maps-Glossar
       href: glossary.md
     - name: Dienstupdates
@@ -200,6 +245,8 @@
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: "IoT\_Plug\_&\_Play"
+          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
         - name: Karten

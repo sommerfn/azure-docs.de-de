@@ -1,42 +1,51 @@
 ---
-title: Docker-Container
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Docker-Container – LUIS
+titleSuffix: Azure Cognitive Services
 description: Der LUIS-Container lädt Ihre trainierte oder veröffentlichte App in einen Docker-Container und ermöglicht den Zugriff auf die Abfragevorhersagen von den API-Endpunkten des Containers.
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/22/2019
-ms.author: diberry
-ms.openlocfilehash: ca9b08cdccd43a093ca8b5001d3e30be0e5258b5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.topic: conceptual
+ms.date: 09/30/2019
+ms.author: dapine
+ms.openlocfilehash: a718a2335ed4928c6cd40ad4dc832eaf82bc6a2b
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894677"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695293"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Installieren und Ausführen von Docker-Containern für LUIS
  
-Der LUIS-Container (Language Understanding) lädt Ihr trainiertes oder veröffentlichtes Language Understanding-Modell (auch als [LUIS-App](https://www.luis.ai) bezeichnet) in einen Docker-Container und ermöglicht den Zugriff auf die Abfragevorhersagen von den API-Endpunkten des Containers. Sie können Abfrageprotokolle vom Container erfassen und wieder in das Azure Language Understanding-Modell hochladen, um die Vorhersagegenauigkeit der App zu verbessern.
+Der LUIS-Container (Language Understanding) lädt Ihr trainiertes oder veröffentlichtes Language Understanding-Modell. Als [LUIS-App](https://www.luis.ai) ermöglicht der Docker-Container den Zugriff auf die Abfragevorhersagen von den API-Endpunkten des Containers. Sie können Abfrageprotokolle vom Container erfassen und wieder in die Language Understanding-App hochladen, um die Vorhersagegenauigkeit der App zu verbessern.
 
 Das folgende Video veranschaulicht die Verwendung dieses Containers.
 
-[![CContainerdemo für Cognitive Services(./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[![Containerdemo für Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um den LUIS-Container auszuführen, benötigen Sie Folgendes: 
+Beachten Sie für die Ausführung des LUIS-Containers die folgenden Voraussetzungen:
 
 |Erforderlich|Zweck|
 |--|--|
 |Docker-Engine| Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> **Unter Windows** muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br>|
 |Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen.| 
-|LUIS-Ressource (Language Understanding) und zugehörige App |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>* Eine [Azure-Ressource für _Language Understanding_](luis-how-to-azure-subscription.md) zusammen mit dem zugehörigen Endpunktschlüssel und dem Endpunkt-URI (der als Abrechnungsendpunkt verwendet wird).<br>* Eine trainierte oder veröffentlichte App, die als eingebundene Eingabe für den Container mit der zugehörigen App-ID gepackt ist<br>* Den Dokumenterstellungsschlüssel zum Herunterladen des App-Pakets, wenn Sie dies über die API durchführen<br><br>Diese Anforderungen werden verwendet, um Befehlszeilenargumente an die folgenden Variablen zu übergeben:<br><br>**{AUTHORING_KEY}**: Dieser Schlüssel wird verwendet, um das App-Paket vom LUIS-Dienst in der Cloud abzurufen und die Abfrageprotokolle wieder in die Cloud hochzuladen. Das Format ist `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}**: Diese ID wird verwendet, um die App auszuwählen. Das Format ist `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{ENDPOINT_KEY}**: Dieser Schlüssel wird verwendet, um den Container zu starten. Sie finden den Endpunktschlüssel an zwei Orten. Zum einen finden Sie ihn im Azure-Portal in der Liste der Schlüssel der _Language Understanding_-Ressource. Zum anderen ist der Endpunktschlüssel auch im LUIS-Portal auf der Einstellungsseite für Schlüssel und Endpunkt verfügbar. Verwenden Sie nicht den Starterschlüssel.<br><br>**{BILLING_ENDPOINT}**: Den Wert für den Abrechnungsendpunkt finden Sie im Azure-Portal auf der Übersichtsseite von Language Understanding. Ein Beispiel ist `https://westus.api.cognitive.microsoft.com/luis/v2.0`.<br><br>[Erstellungs- und Endpunktschlüssel](luis-boundaries.md#key-limits) haben unterschiedliche Zwecke. Verwenden Sie sie nicht im Austausch. |
+|Azure `Cognitive Services`-Ressource und LUIS-[App-Paket](luis-how-to-start-new-app.md#export-app-for-containers)-Datei |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>* Eine Azure _Cognitive Services_-Ressource, den zugehörigen Abrechnungsschlüssel und den URI des Abrechnungsendpunkts. Beide Werte stehen auf der Übersichts- und auf der Schlüsselseite der Ressource zur Verfügung und werden zum Starten des Containers benötigt. <br>* Eine trainierte oder veröffentlichte App, die als eingebundene Eingabe für den Container mit der zugehörigen App-ID gepackt ist Sie können die verpackte Datei über das LUIS-Portal oder die Erstellungs-APIs abrufen. Wenn Sie das LUIS-App-Paket von den [Erstellungs-APIs](#authoring-apis-for-package-file) erhalten, benötigen Sie auch Ihren _Erstellungsschlüssel_.<br><br>Diese Anforderungen werden verwendet, um Befehlszeilenargumente an die folgenden Variablen zu übergeben:<br><br>**{AUTHORING_KEY}** : Dieser Schlüssel wird verwendet, um das App-Paket vom LUIS-Dienst in der Cloud abzurufen und die Abfrageprotokolle wieder in die Cloud hochzuladen. Das Format ist `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APPLICATION_ID}** : Diese ID wird verwendet, um die App auszuwählen. Das Format ist `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : Dieser Schlüssel wird verwendet, um den Container zu starten. Sie finden den Endpunktschlüssel an zwei Orten. Zum einen finden Sie ihn im Azure-Portal in der Liste der Schlüssel der _Cognitive Services_-Ressource. Zum anderen ist der Endpunktschlüssel auch im LUIS-Portal auf der Einstellungsseite für Schlüssel und Endpunkt verfügbar. Verwenden Sie nicht den Starterschlüssel.<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der Übersichtsseite angegeben ist.<br><br>[Erstellungs- und Endpunktschlüssel](luis-boundaries.md#key-limits) haben unterschiedliche Zwecke. Verwenden Sie sie nicht im Austausch. |
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
+
+### <a name="authoring-apis-for-package-file"></a>Erstellungs-APIs für die Paketdatei
+
+Erstellungs-APIs für Paket-Apps:
+
+* [Veröffentlichte Paket-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip)
+* [Nicht veröffentlichte, nur trainierte Paket-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip)
 
 ### <a name="the-host-computer"></a>Der Hostcomputer
 
@@ -48,7 +57,7 @@ Dieser Container unterstützt Mindestwerte und empfohlene Werte für folgende Ei
 
 |Container| Minimum | Empfohlen | TPS<br>(Minimum, Maximum)|
 |-----------|---------|-------------|--|
-|LUIS|1 Kern, 2 GB Arbeitsspeicher|1 Kern, 4 GB Arbeitsspeicher|20,40|
+|LUIS|Ein Kern, 2 GB Arbeitsspeicher|Ein Kern, 4 GB Arbeitsspeicher|20, 40|
 
 * Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
 * TPS: Transaktionen pro Sekunde
@@ -69,7 +78,6 @@ Eine vollständige Beschreibung der verfügbaren Tags, wie das im vorherigen Bef
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-
 ## <a name="how-to-use-the-container"></a>Verwenden des Containers
 
 Wenn sich der Container auf dem [Hostcomputer](#the-host-computer) befindet, können Sie über den folgenden Prozess mit dem Container arbeiten.
@@ -77,7 +85,7 @@ Wenn sich der Container auf dem [Hostcomputer](#the-host-computer) befindet, kö
 ![Prozess für die Verwendung von LUIS-Containern (Language Understanding)](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
 
 1. [Exportieren Sie das Paket](#export-packaged-app-from-luis) für den Container aus dem LUIS-Portal oder über LUIS-APIs.
-1. Verschieben Sie die Paketdatei in das erforderliche **Eingabeverzeichnis** auf dem [Hostcomputer](#the-host-computer). Sie dürfen LUIS-Paketdateien nicht umbenennen, ändern oder dekomprimieren.
+1. Verschieben Sie die Paketdatei in das erforderliche **Eingabeverzeichnis** auf dem [Hostcomputer](#the-host-computer). Sie dürfen die LUIS-Paketdatei nicht umbenennen, ändern, überschreiben oder dekomprimieren.
 1. [Führen Sie den Container aus](##run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen Einstellungen für _Eingabebereitstellung_ und Abrechnung. Es sind noch weitere [Beispiele](luis-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar. 
 1. [Fragen Sie den Vorhersageendpunkt des Containers ab](#query-the-containers-prediction-endpoint). 
 1. Wenn Sie mit dem Container fertig sind, [importieren Sie die Endpunktprotokolle](#import-the-endpoint-logs-for-active-learning) aus der Ausgabebereitstellung in das LUIS-Portal und [beenden](#stop-the-container) den Container.
@@ -101,12 +109,12 @@ Das Eingabebereitstellungsverzeichnis kann gleichzeitig die App-Versionen **Bere
 
 |Pakettyp|Abfrageendpunkt-API|Abfrageverfügbarkeit|Format des Paketdateinamens|
 |--|--|--|--|
-|Trainiert|Get, Post|Nur Container|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
-|Staging|Get, Post|Azure und Container|`{APPLICATION_ID}_STAGING.gz`|
-|Bereitstellung|Get, Post|Azure und Container|`{APPLICATION_ID}_PRODUCTION.gz`|
+|Trainiert|GET, POST|Nur Container|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|Staging|GET, POST|Azure und Container|`{APPLICATION_ID}_STAGING.gz`|
+|Bereitstellung|GET, POST|Azure und Container|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
-> Sie dürfen die LUIS-Paketdateien nicht umbenennen, ändern oder dekomprimieren.
+> Sie dürfen die LUIS-Paketdateien nicht umbenennen, ändern, überschreiben oder dekomprimieren.
 
 ### <a name="packaging-prerequisites"></a>Voraussetzungen für das Packen
 
@@ -114,7 +122,7 @@ Vor dem Packen einer LUIS-Anwendung müssen Sie über Folgendes verfügen:
 
 |Voraussetzungen für das Packen|Details|
 |--|--|
-|Azure _Language Understanding_-Ressourceninstanz|Unterstützte Regionen<br><br>USA, Westen (```westus```)<br>Europa, Westen (```westeurope```)<br>Australien, Osten (```australiaeast```)|
+|Azure _Cognitive Services_-Ressourceninstanz|Unterstützte Regionen<br><br>USA, Westen (`westus`)<br>Europa, Westen (`westeurope`)<br>Australien, Osten (`australiaeast`)|
 |Trainierte oder veröffentlichte LUIS-App|Ohne [nicht unterstützte Abhängigkeiten](#unsupported-dependencies) |
 |Zugriff auf das Dateisystem des [Hostcomputers](#the-host-computer) |Der Hostcomputer muss eine [Eingabebereitstellung](luis-container-configuration.md#mount-settings) zulassen.|
   
@@ -150,7 +158,6 @@ Das Paket einer trainierten App steht in der Liste **Versionen** zur Verfügung.
 
 ![Exportieren des trainierten Pakets für den Container über das Menü „Exportieren“ auf der Versionsseite](./media/luis-container-how-to/export-trained-package-for-container.png)
 
-
 ### <a name="export-published-apps-package-from-api"></a>Exportieren des Pakets einer veröffentlichten App über die API
 
 Verwenden Sie die folgende REST-API-Methode, um eine LUIS-App zu packen, die Sie bereits [veröffentlicht](luis-how-to-publish-app.md) haben. Ersetzen Sie die entsprechenden Platzhalterwerte im API-Aufruf durch Ihre eigenen Werte. Verwenden Sie dazu die Tabelle unter der HTTP-Spezifikation.
@@ -163,21 +170,12 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 
 | Platzhalter | Wert |
 |-------------|-------|
-|{APPLICATION_ID} | Die Anwendungs-ID der veröffentlichten LUIS-App. |
-|{APPLICATION_ENVIRONMENT} | Die Umgebung der veröffentlichten LUIS-App. Verwenden Sie einen der folgenden Werte:<br/>```PRODUCTION```<br/>```STAGING``` |
-|{AUTHORING_KEY} | Der Erstellungsschlüssel des LUIS-Kontos für die veröffentlichte LUIS-App.<br/>Sie finden Ihren Erstellungsschlüssel im LUIS-Portal auf der Seite **Benutzereinstellungen**. |
-|{AZURE_REGION} | Die entsprechende Azure-Region:<br/><br/>```westus``` - USA, Westen<br/>```westeurope``` - Europa, Westen<br/>```australiaeast``` - Australien, Osten |
+| **{APPLICATION_ID}** | Die Anwendungs-ID der veröffentlichten LUIS-App. |
+| **{APPLICATION_ENVIRONMENT}** | Die Umgebung der veröffentlichten LUIS-App. Verwenden Sie einen der folgenden Werte:<br/>`PRODUCTION`<br/>`STAGING` |
+| **{AUTHORING_KEY}** | Der Erstellungsschlüssel des LUIS-Kontos für die veröffentlichte LUIS-App.<br/>Sie finden Ihren Erstellungsschlüssel im LUIS-Portal auf der Seite **Benutzereinstellungen**. |
+| **{AZURE_REGION}** | Die entsprechende Azure-Region:<br/><br/>`westus`: USA, Westen<br/>`westeurope`: Europa, Westen<br/>`australiaeast`: Australien, Osten |
 
-Verwenden Sie den folgenden cURL-Befehl, um das veröffentlichte Paket herunterzuladen. Verwenden Sie dabei Ihre eigenen Werte:
-
-```bash
-curl -X GET \
-https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLICATION_ID}/slot/{APPLICATION_ENVIRONMENT}/gzip  \
- -H "Ocp-Apim-Subscription-Key: {AUTHORING_KEY}" \
- -o {APPLICATION_ID}_{APPLICATION_ENVIRONMENT}.gz
-```
-
-Bei einer erfolgreichen Ausführung ist die Antwort eine LUIS-Paketdatei. Speichern Sie die Datei an dem Speicherort, der für die Eingabebereitstellung des Containers angegeben wurde. 
+Weitere Informationen zum Herunterladen des veröffentlichten Pakets finden Sie in der [API-Dokumentation][download-published-package]. Beim erfolgreichen Herunterladen ist die Antwort eine LUIS-Paketdatei. Speichern Sie die Datei an dem Speicherort, der für die Eingabebereitstellung des Containers angegeben wurde. 
 
 ### <a name="export-trained-apps-package-from-api"></a>Exportieren des Pakets einer trainierten App über die API
 
@@ -191,78 +189,70 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 
 | Platzhalter | Wert |
 |-------------|-------|
-|{APPLICATION_ID} | Die Anwendungs-ID der trainierten LUIS-Anwendung. |
-|{APPLICATION_VERSION} | Die Anwendungsversion der trainierten LUIS-Anwendung. |
-|{AUTHORING_KEY} | Der Erstellungsschlüssel des LUIS-Kontos für die veröffentlichte LUIS-App.<br/>Sie finden Ihren Erstellungsschlüssel im LUIS-Portal auf der Seite **Benutzereinstellungen**.  |
-|{AZURE_REGION} | Die entsprechende Azure-Region:<br/><br/>```westus``` - USA, Westen<br/>```westeurope``` - Europa, Westen<br/>```australiaeast``` - Australien, Osten |
+| **{APPLICATION_ID}** | Die Anwendungs-ID der trainierten LUIS-App. |
+| **{APPLICATION_VERSION}** | Die Anwendungsversion der trainierten LUIS-App. |
+| **{AUTHORING_KEY}** | Der Erstellungsschlüssel des LUIS-Kontos für die veröffentlichte LUIS-App.<br/>Sie finden Ihren Erstellungsschlüssel im LUIS-Portal auf der Seite **Benutzereinstellungen**. |
+| **{AZURE_REGION}** | Die entsprechende Azure-Region:<br/><br/>`westus`: USA, Westen<br/>`westeurope`: Europa, Westen<br/>`australiaeast`: Australien, Osten |
 
-Verwenden Sie den folgenden cURL-Befehl, um das trainierte Paket herunterzuladen:
-
-```bash
-curl -X GET \
-https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLICATION_ID}/versions/{APPLICATION_VERSION}/gzip  \
- -H "Ocp-Apim-Subscription-Key: {AUTHORING_KEY}" \
- -o {APPLICATION_ID}_v{APPLICATION_VERSION}.gz
-```
-
-Bei einer erfolgreichen Ausführung ist die Antwort eine LUIS-Paketdatei. Speichern Sie die Datei an dem Speicherort, der für die Eingabebereitstellung des Containers angegeben wurde. 
+Weitere Informationen zum Herunterladen des trainierten Pakets finden Sie in der [API-Dokumentation][download-trained-package]. Beim erfolgreichen Herunterladen ist die Antwort eine LUIS-Paketdatei. Speichern Sie die Datei an dem Speicherort, der für die Eingabebereitstellung des Containers angegeben wurde. 
 
 ## <a name="run-the-container-with-docker-run"></a>Ausführen des Containers mit `docker run`
 
-Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/), um den Container auszuführen. Für den Befehl werden die folgenden Parameter verwendet:
+Verwenden Sie den Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/), um den Container auszuführen. Genaue Informationen dazu, wie Sie die Werte `{ENDPOINT_URI}` und `{API_KEY}` abrufen, erhalten Sie unter [Ermitteln erforderlicher Parameter](#gathering-required-parameters).
 
-| Platzhalter | Wert |
-|-------------|-------|
-|{ENDPOINT_KEY} | Dieser Schlüssel wird verwendet, um den Container zu starten. Verwenden Sie nicht den Starterschlüssel. |
-|{BILLING_ENDPOINT} | Den Wert für den Abrechnungsendpunkt finden Sie im Azure-Portal auf der Übersichtsseite von Language Understanding.|
+Es sind [Beispiele](luis-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar.
 
-Ersetzen Sie im folgenden Beispiel für den Befehl `docker run` diese Parameter durch Ihre eigenen Werte.
-
-```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
-ApiKey={ENDPOINT_KEY}
+```console
+docker run --rm -it -p 5000:5000 ^
+--memory 4g ^
+--cpus 2 ^
+--mount type=bind,src=c:\input,target=/input ^
+--mount type=bind,src=c:\output\,target=/output ^
+mcr.microsoft.com/azure-cognitive-services/luis ^
+Eula=accept ^
+Billing={ENDPOINT_URI} ^
+ApiKey={API_KEY}
 ```
 
-> [!Note] 
-> Der gezeigte Befehl verwendet das Verzeichnis auf dem Laufwerk `c:`, um Berechtigungskonflikte in Windows zu vermeiden. Wenn Sie ein bestimmtes Verzeichnis als Eingabeverzeichnis verwenden möchten, müssen Sie dem Docker-Dienst möglicherweise die erforderliche Berechtigung gewähren. Im obigen Docker-Befehl wird der umgekehrte Schrägstrich (`\`) als Zeilenfortsetzungszeichen verwendet. Ersetzen oder entfernen Sie diesen je nach den Anforderungen des Betriebssystems Ihres [Hostcomputers](#the-host-computer). Ändern Sie die Reihenfolge der Argumente nur, wenn Sie mit Docker-Containern sehr gut vertraut sind.
-
+* In diesem Beispiel wird das Verzeichnis auf dem Laufwerk `C:` verwendet, um Berechtigungskonflikte in Windows zu vermeiden. Wenn Sie ein bestimmtes Verzeichnis als Eingabeverzeichnis verwenden möchten, müssen Sie dem Docker-Dienst möglicherweise die erforderliche Berechtigung gewähren. 
+* Ändern Sie die Reihenfolge der Argumente nur, wenn Sie mit Docker-Containern vertraut sind.
+* Wenn Sie ein anderes Betriebssystem verwenden, verwenden Sie beim Einbinden die richtige Konsole/das richtige Terminal, die richtige Ordnersyntax und das richtige Zeilenfortsetzungszeichen für Ihr System. In diesen Beispielen wird von einer Windows-Konsole mit dem Zeilenfortsetzungszeichen `^` ausgegangen. Da der Container ein Linux-Betriebssystem ist, verwendet die Zieleinbindung eine linuxartige Ordnersyntax.
 
 Dieser Befehl:
 
 * Führt einen Container über das LUIS-Containerimage aus
-* Lädt die LUIS-App aus der Eingabebereitstellung unter „C:\input“ auf dem Containerhost
+* Lädt die LUIS-App aus der Eingabebereitstellung unter *C:\input* auf dem Containerhost
 * Weist zwei CPU-Kerne und 4 GB Arbeitsspeicher zu
 * Verfügbarmachen des TCP-Ports 5000 und Zuweisen einer Pseudo-TTY-Verbindung für den Container
-* Speichert Container und LUIS-Protokolle in der Ausgabebereitstellung unter „C:\output“ auf dem Containerhost
+* Speichert Container und LUIS-Protokolle in der Ausgabebereitstellung unter *C:\output* auf dem Containerhost
 * Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar. 
 
 Es sind noch weitere [Beispiele](luis-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar. 
 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing).
-> Der Wert ApiKey ist der **Schlüssel** von der Seite „Schlüssel und Endpunkte“ im LUIS-Portal. Er ist auch auf der Seite mit den Schlüsseln der Azure Language Understanding-Ressourcen verfügbar.  
+> Der ApiKey-Wert ist der **Schlüssel** von der Seite **Azure-Ressourcen** im LUIS-Portal. Er ist auch auf der Seite mit den Schlüsseln der Azure `Cognitive Services`-Ressourcen verfügbar.  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
+
+## <a name="endpoint-apis-supported-by-the-container"></a>Vom Container unterstützte Endpunkt-APIs
+
+Sowohl V2- als auch [V3-Versionen (Vorschau)](luis-migration-api-v3.md) der API sind mit dem Container verfügbar. 
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Abfragen des Vorhersageendpunkts des Containers
 
 Der Container stellt REST-basierte Endpunkt-APIs für die Abfragevorhersage bereit. Endpunkte für veröffentlichte (Staging oder Produktion) Apps nutzen eine _andere_ Route als Endpunkte für trainierte Apps. 
 
-Verwenden Sie für Container-APIs den Host `https://localhost:5000`. 
+Verwenden Sie für Container-APIs den Host `http://localhost:5000`. 
 
 |Pakettyp|Methode|Weiterleiten|Abfrageparameter|
 |--|--|--|--|
-|Veröffentlicht|[Get](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Post](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{App-ID}?|q={q}<br>&staging<br>[&timezoneOffset]<br>[&verbose]<br>[&log]<br>|
-|Trainiert|Get, Post|/luis/v2.0/apps/{App-ID}/versions/{Versions-ID}?|q={q}<br>[&timezoneOffset]<br>[&verbose]<br>[&log]|
+|Veröffentlicht|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{App-ID}?|q={q}<br>&staging<br>[&timezoneOffset]<br>[&verbose]<br>[&log]<br>|
+|Trainiert|GET, POST|/luis/v2.0/apps/{App-ID}/versions/{Versions-ID}?|q={q}<br>[&timezoneOffset]<br>[&verbose]<br>[&log]|
 
 Die Abfrageparameter legen fest, was auf welche Weise in der Abfrageantwort zurückgegeben wird:
 
-|Query parameter (Abfrageparameter)|Type|Zweck|
+|Query parameter (Abfrageparameter)|type|Zweck|
 |--|--|--|
 |`q`|Zeichenfolge|Die Äußerung des Benutzers.|
 |`timezoneOffset`|number|Das „timeZoneOffset“ ermöglicht das [Ändern der Zeitzone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity), die von der vordefinierten datetimeV2-Entität verwendet wird.|
@@ -296,7 +286,7 @@ Der Versionsname enthält maximal 10 Zeichen, die auch in einer URL zulässig w�
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>Importieren der Endpunktprotokolle für aktives Lernen
 
-Wenn eine Ausgabebereitstellung für den LUIS-Container angegeben wird, werden Protokolldateien von App-Abfragen im Ausgabeverzeichnis gespeichert, wobei {INSTANCE_ID} die Container-ID ist. Das Abfrageprotokoll für die App enthält die Abfrage, die Antwort und die Zeitstempel für jede Vorhersageabfrage, die an den LUIS-Container gesendet wurde. 
+Wenn eine Ausgabebereitstellung für den LUIS-Container angegeben wurde, werden Protokolldateien von App-Abfragen im Ausgabeverzeichnis gespeichert, wobei `{INSTANCE_ID}` die Container-ID ist. Das Abfrageprotokoll für die App enthält die Abfrage, die Antwort und die Zeitstempel für jede Vorhersageabfrage, die an den LUIS-Container gesendet wurde. 
 
 Der folgende Pfad veranschaulicht die geschachtelte Verzeichnisstruktur für die Protokolldateien des Containers.
 ```
@@ -309,7 +299,6 @@ Wählen Sie Ihre App im LUIS-Portal aus, und wählen Sie dann **Endpunktprotokol
 
 Nachdem Sie das Protokoll hochgeladen haben, [überprüfen Sie die Endpunktäußerungen](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) im LUIS-Portal.
 
-
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
@@ -320,29 +309,43 @@ Zum Herunterfahren des Containers drücken Sie in der Befehlszeilenumgebung, in 
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn Sie den Container mit einer [Ausgabenbereitstellung](luis-container-configuration.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben. 
+Wenn Sie den Container mit einer [Ausgabenbereitstellung](luis-container-configuration.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Abrechnung
 
-Der LUIS-Container sendet Abrechnungsinformationen an Azure und verwendet dafür eine entsprechende _Language Understanding_-Ressource in Ihrem Azure-Konto. 
+Der LUIS-Container sendet Abrechnungsinformationen an Azure und verwendet dafür eine entsprechende _Cognitive Services_-Ressource in Ihrem Azure-Konto. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Containern](luis-container-configuration.md).
 
-## <a name="unsupported-dependencies"></a>Nicht unterstützte Abhängigkeiten
+## <a name="supported-dependencies-for-latest-container"></a>Unterstützte Abhängigkeiten für `latest`-Container
+
+Der neueste auf der Microsoft Build 2019 veröffentlichte Container unterstützt Folgendes:
+
+* [Neue vordefinierte Bereiche](luis-reference-prebuilt-domains.md): Zu diesen auf Unternehmen fokussierten Domänen gehören Entitäten, Beispieläußerungen und Muster. Erweitern Sie diese Domänen für Ihre eigenen Zwecke. 
+
+<a name="unsupported-dependencies"></a>
+
+## <a name="unsupported-dependencies-for-latest-container"></a>Nicht unterstützte Abhängigkeiten für `latest`-Container
+
+Für das [Exportieren von Containern](#export-packaged-app-from-luis) müssen Sie nicht unterstützte Abhängigkeiten aus Ihrer LUIS-App entfernen. Wenn Sie den Export für Container versuchen, meldet das LUIS-Portal, dass Sie diese nicht unterstützten Features entfernen müssen.
 
 Sie können eine LUIS-Anwendung verwenden, sofern diese **keine** der folgenden Abhängigkeiten enthält:
 
 Nicht unterstützte App-Konfigurationen|Details|
 |--|--|
-|Nicht unterstützte Containerkulturen| Deutsch (de-DE)<br>Niederländisch (nl-NL)<br>Japanisch (ja-JP)<br>|
-|Nicht unterstützte Domänen|Vordefinierte Domänen, einschließlich vordefinierter Domänenabsichten und -entitäten|
+|Nicht unterstützte Containerkulturen| Niederländisch (nl-NL)<br>Japanisch (ja-JP)<br>Deutsch wird nur ab [Tokenizer 1.0.2](luis-language-support.md#custom-tokenizer-versions) unterstützt.|
 |Nicht unterstützte Entitäten für alle Kulturen|Vordefinierte [KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase)-Entität für alle Kulturen|
 |Nicht unterstützte Entitäten für die Kultur Englisch (en-US)|Vordefinierte [GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2)-Entitäten|
 |Sprachvorbereitung|Externe Abhängigkeiten werden im Container nicht unterstützt.|
 |Stimmungsanalyse|Externe Abhängigkeiten werden im Container nicht unterstützt.|
 |Bing-Rechtschreibprüfung|Externe Abhängigkeiten werden im Container nicht unterstützt.|
+
+<!--blogs/samples/video courses -->
+[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Zusammenfassung
 
@@ -362,3 +365,7 @@ In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Ins
 * Konfigurationseinstellungen finden Sie unter [Konfigurieren von Containern](luis-container-configuration.md).
 * Unter [Problembehandlung ](troubleshooting.md) finden Sie Informationen zum Beheben von Problemen im Zusammenhang mit LUIS-Funktionen.
 * Verwenden weiterer [Cognitive Services-Container](../cognitive-services-container-support.md)
+
+<!-- Links - external -->
+[download-published-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip
+[download-trained-package]: https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip

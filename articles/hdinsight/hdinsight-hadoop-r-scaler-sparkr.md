@@ -1,19 +1,19 @@
 ---
 title: Verwenden von ScaleR und SparkR mit Azure HDInsight
-description: Verwenden von ScaleR und SparkR mit ML Services in HDInsight
-services: hdinsight
+description: Verwenden von ScaleR und SparkR für die Datenbearbeitung und Modellentwicklung mit ML Services unter Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: c92a55ec1d56b83457167fc2db0bd7897a447852
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9fa18550a3c27ce38599b9a0d47abdc38524d9c2
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974844"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077090"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinieren von ScaleR und SparkR in HDInsight
 
@@ -194,7 +194,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>Importieren der Fluglinien- und Wetterdaten in Spark-Dataframes
 
-Nun verwenden wir die SparkR-Funktion [read.df()](https://docs.databricks.com/spark/1.6/sparkr/functions/read.df.html#read-df) zum Importieren der Wetter- und Flugliniendaten in Spark-Dataframes. Diese Funktion wird – wie viele andere Spark-Methoden auch – zeitverzögert ausgeführt. Dies bedeutet, dass sie zur Ausführung in die Warteschlange eingereiht werden, aber erst dann ausgeführt werden, wenn dies erforderlich ist.
+Nun verwenden wir die SparkR-Funktion [read.df()](https://spark.apache.org/docs/latest/api/R/read.df.html) zum Importieren der Wetter- und Flugliniendaten in Spark-Dataframes. Diese Funktion wird – wie viele andere Spark-Methoden auch – zeitverzögert ausgeführt. Dies bedeutet, dass sie zur Ausführung in die Warteschlange eingereiht werden, aber erst dann ausgeführt werden, wenn dies erforderlich ist.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -267,7 +267,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>Verknüpfen von Wetter- und Flugliniendaten
 
-Wir verwenden jetzt die SparkR-Funktion [join()](https://docs.databricks.com/spark/1.6/sparkr/functions/join.html#join), um eine linke äußere Verknüpfung der Fluglinien- und Wetterdaten nach den Werten „AirportID“ und „datetime“ für den Abflug zu erstellen. Mit der äußeren Verknüpfung können wir alle Datensätze der Flugliniendaten auch dann beibehalten, wenn keine passenden Wetterdaten vorhanden sind. Nach der Verknüpfung entfernen wir einige redundante Spalten und benennen die beibehaltenen Spalten um, um das Dataframepräfix für den eingehenden Datenverkehr zu entfernen, das durch die Verknüpfung eingefügt wurde.
+Wir verwenden jetzt die SparkR-Funktion [join()](https://spark.apache.org/docs/latest/api/R/join.html), um eine linke äußere Verknüpfung der Fluglinien- und Wetterdaten nach den Werten „AirportID“ und „datetime“ für den Abflug zu erstellen. Mit der äußeren Verknüpfung können wir alle Datensätze der Flugliniendaten auch dann beibehalten, wenn keine passenden Wetterdaten vorhanden sind. Nach der Verknüpfung entfernen wir einige redundante Spalten und benennen die beibehaltenen Spalten um, um das Dataframepräfix für den eingehenden Datenverkehr zu entfernen, das durch die Verknüpfung eingefügt wurde.
 
 ```
 logmsg('Join airline data with weather at Origin Airport')
@@ -537,9 +537,7 @@ In diesem Artikel haben wir gezeigt, wie die Verwendung von SparkR für die Date
 
 - Weitere Informationen zur Verwendung von ML Server auf Apache Spark finden Sie im [Leitfaden zu den ersten Schritten](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started).
 
-- Allgemeine Informationen zu ML Server finden Sie im Artikel [Get started with Microsoft R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) (Erste Schritte mit Microsoft R).
-
-- Informationen zu ML Services in HDInsight finden Sie in der [Übersicht über ML Services in HDInsight](r-server/r-server-overview.md) und in [Erste Schritte mit ML Services in Azure HDInsight](r-server/r-server-get-started.md).
+- Informationen zu ML Services in HDInsight finden Sie in der [Übersicht über ML Services in HDInsight](r-server/r-server-overview.md).
 
 Weitere Informationen zur Verwendung von SparkR finden Sie unter:
 

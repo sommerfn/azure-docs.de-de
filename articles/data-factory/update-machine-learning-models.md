@@ -3,21 +3,20 @@ title: Aktualisieren von Machine Learning-Modellen mithilfe von Azure Data Facto
 description: Informationen zum Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory und Machine Learning
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.author: shlo
-ms.openlocfilehash: 8f1320db0af85f6c83a9daf8e17a691336c9b251
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 56d0ce6668c1077b99c980c2bc5b16998a3a41c1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58164458"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140532"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning-Modellen mithilfe der Ressourcenaktualisierungsaktivität
 Dieser Artikel ergänzt den Hauptartikel zu Azure Data Factory: Azure Machine Learning-Integration [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md) Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen.
@@ -60,7 +59,7 @@ Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausf
 | Eigenschaft                      | BESCHREIBUNG                              | Erforderlich |
 | :---------------------------- | :--------------------------------------- | :------- |
 | name                          | Name der Aktivität in der Pipeline     | Ja      |
-| Beschreibung                   | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein        |
+| description                   | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
 | type                          | Für die Azure Machine Learning-Ressourcenaktualisierungsaktivität ist der Aktivitätstyp **AzureMLUpdateResource**. | Ja      |
 | linkedServiceName             | Mit Azure Machine Learning verknüpfter Dienst, der die „updateResourceEndpoint“-Eigenschaft enthält. | Ja      |
 | trainedModelName              | Name des „Trained Model“-Moduls im Webdienstexperiment an, das aktualisiert werden soll | Ja      |

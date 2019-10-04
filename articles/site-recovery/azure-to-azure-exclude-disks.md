@@ -1,23 +1,22 @@
 ---
-title: Azure Site Recovery – Ausschließen von Datenträgern während der Replikation virtueller Azure-Computer über Azure PowerShell | Microsoft-Dokumentation
+title: Azure Site Recovery – Ausschließen von Datenträgern während der Replikation virtueller Azure-Computer mit Azure PowerShell | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Datenträger für virtuelle Azure-Computer mit Azure Site Recovery über Azure PowerShell ausschließen.
-services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 1c278d810df7e5ba8701529a59987c9bb16fa40c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 81d22250262351e3c1bbb2fe28960b3d158bbf57
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044117"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147064"
 ---
-# <a name="exclude-disks-from-replication-of-azure-vms-to-azure-using-azure-powershell"></a>Ausschließen von Datenträgern von der Replikation virtueller Azure-Computer in Azure mithilfe von Azure PowerShell
+# <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Ausschließen von Datenträgern von der PowerShell-Replikation von Azure-VMs
 
-In diesem Artikel wird beschrieben, wie Datenträger von der Replikation virtueller Azure-Computer ausgeschlossen werden. Durch diesen Ausschluss können die beanspruchte Replikationsbandbreite oder die zielseitigen Ressourcen optimiert werden, die solche Datenträger verwenden. Derzeit wird diese Funktion nur durch Azure PowerShell bereitgestellt.
+In diesem Artikel wird beschrieben, wie Datenträger von der Replikation virtueller Azure-Computer ausgeschlossen werden. Durch diesen Ausschluss können die beanspruchte Replikationsbandbreite oder die zielseitigen Ressourcen optimiert werden, die solche Datenträger verwenden. Derzeit wird diese Funktion nur über Azure PowerShell bereitgestellt.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -26,13 +25,13 @@ In diesem Artikel wird beschrieben, wie Datenträger von der Replikation virtuel
 
 Vorbereitung:
 
-- Stellen Sie sicher, dass Sie die [Architektur und die Komponenten des Szenarios](azure-to-azure-architecture.md) verstehen.
+- Stellen Sie sicher, dass Sie die [Architektur und die Komponenten zur Notfallwiederherstellung](azure-to-azure-architecture.md) verstehen.
 - Überprüfen Sie die [Supportanforderungen](azure-to-azure-support-matrix.md) für alle Komponenten.
-- Sie verfügen über das Azure PowerShell-Modul `Az`. Wenn Sie PowerShell installieren oder aktualisieren müssen, befolgen Sie die Anweisungen unter [Handbuch zum Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps).
-- Sie haben bereits einen Recovery Services-Tresor erstellt und den Schutz virtueller Computer mindestens einmal durchgeführt. Wenn nicht, verwenden Sie dazu die [hier](azure-to-azure-powershell.md) erwähnte Dokumentation.
+- Stellen Sie sicher, dass Sie über das PowerShell-Az-Modul AzureRm verfügen. Informationen zum Installieren oder Aktualisieren von PowerShell finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Stellen Sie sicher, dass Sie mindestens einmal einen Recovery Services-Tresor erstellt und virtuelle Computer geschützt haben. Wenn Sie diese Schritte noch nicht ausgeführt haben, führen Sie das Verfahren unter [Einrichten der Notfallwiederherstellung für virtuelle Azure-Computer über Azure PowerShell](azure-to-azure-powershell.md) aus.
 
 ## <a name="why-exclude-disks-from-replication"></a>Gründe für das Ausschließen von Datenträgern von der Replikation
-Das Ausschließen von Datenträgern von der Replikation ist häufig aus folgenden Gründen erforderlich:
+Es kann folgende Gründe für das Ausschließen von Datenträgern von der Replikation geben:
 
 - Ihr virtueller Computer hat die [Azure Site Recovery-Grenzwerte zur Replikation von Datenänderungsraten](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix) erreicht.
 
@@ -40,12 +39,11 @@ Das Ausschließen von Datenträgern von der Replikation ist häufig aus folgende
 
 - Sie können Speicher- und Netzwerkressourcen sparen, indem Sie diese Daten nicht replizieren.
 
-
 ## <a name="how-to-exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
 
-In dem Beispiel in diesem Artikel wird ein virtueller Computer mit einem Betriebssystem und drei Datenträgern in der Region „USA, Osten“ in die Region „USA, Westen 2“ repliziert. Der Name des virtuellen Computers im Beispiel lautet AzureDemoVM. Datenträger 1 wird ausgeschlossen und die Datenträger 2 und 3 beibehalten.
+In unserem Beispiel replizieren wir einen virtuellen Computer mit einem Datenträger mit dem Betriebssystem sowie drei Datenträgern mit Daten von der Region „USA, Osten“ in die Region „USA, Westen 2“. Der Name des virtuellen Computers lautet *AzureDemoVM*. Wir schließen den Datenträger 1 aus und behalten die Datenträger 2 und 3 bei.
 
-## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>Abrufen von Details der zu replizierenden virtuellen Computer
+## <a name="get-details-of-the-virtual-machines-to-replicate"></a>Abrufen von Details der zu replizierenden virtuellen Computer
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -70,27 +68,25 @@ ProvisioningState  : Succeeded
 StorageProfile     : {ImageReference, OsDisk, DataDisks}
 ```
 
-
-Rufen Sie detaillierte Informationen zu den Datenträgern des virtuellen Computers ab. Die Datenträgerdetails werden später beim Starten der Replikation für den virtuellen Computer verwendet.
+Rufen Sie Details zu den Datenträgern des virtuellen Computers ab. Diese Informationen werden später verwendet, wenn Sie die Replikation des virtuellen Computers starten.
 
 ```azurepowershell
 $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
 $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 ```
 
-## <a name="replicate-azure-virtual-machine"></a>Replizieren eines virtuellen Azure-Computers
+## <a name="replicate-an-azure-virtual-machine"></a>Replizieren virtueller Azure-Computer
 
-Im folgenden Beispiel wird davon ausgegangen, dass Sie bereits über ein Cachespeicherkonto, eine Replikationsrichtlinie und Zuordnungen verfügen. Wenn nicht, verwenden Sie dazu die [hier](azure-to-azure-powershell.md) erwähnte Dokumentation. 
+Im folgenden Beispiel wird davon ausgegangen, dass Sie bereits über ein Cachespeicherkonto, eine Replikationsrichtlinie und Zuordnungen verfügen. Wenn Sie diese Schritte noch nicht ausgeführt haben, führen Sie das Verfahren unter [Einrichten der Notfallwiederherstellung für virtuelle Azure-Computer über Azure PowerShell](azure-to-azure-powershell.md) aus.
 
-
-Replizieren Sie den virtuellen Azure-Computer mit **verwalteten Datenträgern**.
+Replizieren Sie einen virtuellen Azure-Computer mit *verwalteten Datenträgern*.
 
 ```azurepowershell
 
 #Get the resource group that the virtual machine must be created in when failed over.
 $RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 
-#Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
+#Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration).
 
 #OsDisk
 $OSdiskId =  $vm.StorageProfile.OsDisk.ManagedDisk.Id
@@ -101,7 +97,7 @@ $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationC
          -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
-# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded so we will provide it during the time of replication 
+# Data Disk 1 i.e StorageProfile.DataDisks[0] is excluded, so we will provide it during the time of replication. 
 
 # Data disk 2
 $datadiskId2  = $vm.StorageProfile.DataDisks[1].ManagedDisk.id
@@ -127,17 +123,18 @@ $diskconfigs = @()
 $diskconfigs += $OSDiskReplicationConfig, $DataDisk2ReplicationConfig, $DataDisk3ReplicationConfig
 
 
-#Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
+#Start replication by creating a replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
 $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
 ```
 
-Sobald der Replikationsvorgang erfolgreich gestartet wurde, werden Daten des virtuellen Computers in die Wiederherstellungsregion repliziert.
+Nachdem der Replikationsvorgang erfolgreich gestartet wurde, werden Daten des virtuellen Computers in die Wiederherstellungsregion repliziert.
 
-Sie können zum Azure-Portal navigieren und unter den replizierten Elemente sehen, welche virtuellen Computer repliziert werden.
-Zu Beginn des Replikationsprozesses wird zunächst durch Seeding eine Kopie der zu replizierenden Datenträger des virtuellen Computers in die Wiederherstellungsregion übernommen. Diese Phase wird als erste Replikationsphase bezeichnet.
+Sie finden die replizierten VMs im Azure-Portal unter „Replizierte Elemente“.
 
-Sobald die erste Replikation abgeschlossen ist, wird in die Phase der differenziellen Synchronisierung gewechselt. Jetzt ist der virtuelle Computer geschützt. Klicken Sie auf den geschützten virtuellen Computer und dann auf „Datenträger“, um zu sehen, ob der Datenträger ausgeschlossen wurde oder nicht.
+Zu Beginn des Replikationsprozesses wird durch Seeding eine Kopie der zu replizierenden Datenträger des virtuellen Computers in die Wiederherstellungsregion übernommen. Diese Phase wird als erste Replikationsphase bezeichnet.
+
+Nachdem die erste Replikation abgeschlossen ist, beginnt die Phase der differenziellen Synchronisierung. Jetzt ist der virtuelle Computer geschützt. Wählen Sie den geschützten virtuellen Computer aus, um festzustellen, ob Datenträger ausgeschlossen wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erfahren Sie mehr](site-recovery-test-failover-to-azure.md) über die Ausführung von Testfailovervorgängen.
+[Erfahren Sie mehr](site-recovery-test-failover-to-azure.md) zum Ausführen eines Testfailovers.

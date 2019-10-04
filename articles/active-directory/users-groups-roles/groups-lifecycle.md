@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 08/06/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c19ee3bdd14ee6a2c5b59294f475f6c18b570fa
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 56bfe92de24b9386252ee8719af66cc658948565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660255"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844301"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Office 365-Gruppen
 
-Der Lebenszyklus von Office 365-Gruppen kann jetzt durch das Festlegen einer Ablaufrichtlinie verwaltet werden. Sie können eine Ablaufrichtlinie ausschließlich für Office 365-Gruppen in Azure Active Directory (Azure AD) festlegen. 
+In diesem Artikel wird beschrieben, wie Sie den Lebenszyklus von Office 365-Gruppen durch Festlegen einer Ablaufrichtlinie verwalten können. Sie können eine Ablaufrichtlinie ausschließlich für Office 365-Gruppen in Azure Active Directory (Azure AD) festlegen.
 
 Das Festlegen eines Ablaufs für eine Gruppe bewirkt Folgendes:
 
@@ -35,7 +35,7 @@ Das Festlegen eines Ablaufs für eine Gruppe bewirkt Folgendes:
 Derzeit kann für Office 365-Gruppen auf einem Mandanten nur eine Ablaufrichtlinie konfiguriert werden.
 
 > [!NOTE]
-> Beim Konfigurieren und Verwenden der Ablaufrichtlinie für Office 365-Gruppen müssen Sie über Azure AD Premium-Lizenzen für alle Mitglieder der Gruppen verfügen, auf die die Ablaufrichtlinie angewendet wird.
+> Beim Konfigurieren und Verwenden der Ablaufrichtlinie für Office 365-Gruppen müssen Sie über Azure AD Premium-Lizenzen für die Mitglieder aller Gruppen verfügen, auf die die Ablaufrichtlinie angewendet wird, diese Lizenzen aber nicht unbedingt zuweisen.
 
 Informationen zum Herunterladen und Installieren der Azure AD-PowerShell-Cmdlets finden Sie unter [Azure Active Directory PowerShell for Graph – 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) (Azure Active Directory: PowerShell für Graph – 2.0.0.137).
 
@@ -43,7 +43,7 @@ Informationen zum Herunterladen und Installieren der Azure AD-PowerShell-Cmdlets
 
 Nachfolgend sind Rollen aufgeführt, mit denen der Ablauf für Office 365-Gruppen in Azure AD konfiguriert und verwendet werden kann.
 
-Rolle | Berechtigungen
+Role | Berechtigungen
 -------- | --------
 Globaler Administrator oder Benutzeradministrator | Kann die Einstellungen der Ablaufrichtlinie für Office 365-Gruppen erstellen, lesen, aktualisieren und löschen.<br>Kann beliebige Office 365-Gruppen verlängern
 Benutzer | Kann eine eigene Office 365-Gruppe verlängern<br>Kann eine eigene Office 365-Gruppe wiederherstellen<br>Kann die Einstellungen der Ablaufrichtlinie lesen
@@ -52,26 +52,32 @@ Weitere Informationen zu Berechtigungen zum Wiederherstellen von gelöschten Gru
 
 ## <a name="set-group-expiration"></a>Festlegen des Gruppenablaufs
 
-1. Öffnen Sie das [Azure AD Admin Center](https://aad.portal.azure.com) mit dem Konto eines globalen Administrators in Ihrem Azure AD-Mandanten.
+1. Öffnen Sie das [Azure AD Admin Center](https://aad.portal.azure.com) mit dem Konto eines globalen Administrators in Ihrer Azure AD-Organisation.
 
-2. Wählen Sie **Gruppen**, und wählen Sie dann **Ablauf**, um die Ablaufeinstellungen zu öffnen.
+2. Wählen Sie zuerst **Gruppen** und dann **Ablauf** aus, um die Ablaufeinstellungen zu öffnen.
   
    ![Ablaufeinstellungen für Gruppen](./media/groups-lifecycle/expiration-settings.png)
 
-3. Auf dem Blatt **Ablauf** können Sie:
+3. Auf der Seite **Ablauf** haben Sie folgende Möglichkeiten:
 
-  * Die Gruppenlebensdauer in Tagen festlegen. Sie könnten einen der vordefinierten Werte oder einen benutzerdefinierten Wert wählen (mindestens 31 Tage). 
-  * Geben Sie eine E-Mail-Adresse an, an die die Verlängerungs- und Ablaufbenachrichtigungen gesendet werden sollten, wenn eine Gruppe keinen Besitzer hat. 
-  * Wählen Sie, welche Office 365-Gruppen ablaufen. Sie können den Ablauf für **alle** Office 365-Gruppen aktivieren oder eine **Auswahl** aus den Office 365-Gruppen treffen, oder Sie wählen **Keine**, um den Ablauf für alle Gruppen zu deaktivieren.
-  * Speichern Sie die Einstellungen durch Auswahl von **Speichern**.
+  - Die Gruppenlebensdauer in Tagen festlegen. Sie könnten einen der vordefinierten Werte oder einen benutzerdefinierten Wert wählen (mindestens 31 Tage).
+  - Geben Sie eine E-Mail-Adresse an, an die die Verlängerungs- und Ablaufbenachrichtigungen gesendet werden sollten, wenn eine Gruppe keinen Besitzer hat.
+  - Wählen Sie, welche Office 365-Gruppen ablaufen. Sie können den Ablauf wie folgt festlegen:
+    - Für **alle** Office 365-Gruppen
+    - Für eine Liste **ausgewählter** Office 365-Gruppen
+    - Für **Keine**, um den Ablauf für alle Gruppen einzuschränken
+  - Speichern Sie die Einstellungen durch Auswahl von **Speichern**.
 
 > [!NOTE]
-> * Beim erstmaligen Einrichten des Ablaufs wird für alle Gruppen, deren Alter das Ablaufintervall übersteigt, ein Ablaufzeitraum von 30 Tagen festgelegt. Die erste Verlängerungsbenachrichtigung wird innerhalb eines Tages gesendet. Beispielsweise wurde Gruppe A vor 400 Tagen erstellt, und das Ablaufintervall ist auf 180 Tage festgelegt. Wenn Sie Ablaufeinstellungen anwenden, hat Gruppe A 30 Tage, bevor sie gelöscht wird, es sei denn, der Besitzer verlängert sie.
-> * Wenn eine dynamische Gruppe gelöscht und wiederhergestellt wird, gilt sie als neue Gruppe und wird der Regel entsprechend erneut aufgefüllt. Dieser Vorgang kann bis zu 24 Stunden dauern.
+> Beim erstmaligen Einrichten des Ablaufs wird für alle Gruppen, deren Alter das Ablaufintervall übersteigt, ein Ablaufzeitraum von 30 Tagen festgelegt – außer wenn der Besitzer ihn verlängert. Die erste Verlängerungsbenachrichtigung wird innerhalb eines Tages gesendet.
+>
+> Wenn eine dynamische Gruppe gelöscht und wiederhergestellt wird, gilt sie als neue Gruppe und wird der Regel entsprechend erneut aufgefüllt. Dieser Vorgang kann bis zu 24 Stunden dauern.
+>
+> Benachrichtigungen über den Ablauf für in Teams verwendeten Gruppen werden im Feed „Teams-Besitzer“ angezeigt.
 
 ## <a name="email-notifications"></a>E-Mail-Benachrichtigungen
 
-E-Mail-Benachrichtigungen, wie diese werden an die Office 365-Gruppenbesitzer 30 Tage, 15 Tage und 1 Tag vor Ablauf der Gruppe gesendet. Die Sprache der E-Mail richtet sich nach der bevorzugten Sprache des Gruppenbesitzers oder der Sprache des Mandanten. Wenn der Gruppenbesitzer eine bevorzugte Sprache definiert hat oder mehrere Besitzer die gleiche bevorzugte Sprache haben, wird diese Sprache verwendet. In allen anderen Fällen wird die Sprache des Mandanten verwendet.
+E-Mail-Benachrichtigungen, wie diese werden an die Office 365-Gruppenbesitzer 30 Tage, 15 Tage und 1 Tag vor Ablauf der Gruppe gesendet. Die Sprache der E-Mail richtet sich nach der bevorzugten Sprache des Gruppenbesitzers oder der Azure AD-Spracheinstellung. Wenn der Gruppenbesitzer eine bevorzugte Sprache definiert hat oder mehrere Besitzer die gleiche bevorzugte Sprache haben, wird diese Sprache verwendet. In allen anderen Fällen wird die Azure AD-Spracheinstellung verwendet.
 
 ![E-Mail-Benachrichtigungen zum Ablauf](./media/groups-lifecycle/expiration-notification.png)
 
@@ -82,15 +88,14 @@ Wenn eine Gruppe abläuft, wird die Gruppe einen Tag nach dem Ablaufdatum gelös
 ![E-Mail-Benachrichtigungen zur Gruppenlöschung](./media/groups-lifecycle/deletion-notification.png)
 
 Die Gruppe kann innerhalb von 30 Tagen nach ihrer Löschung wiederhergestellt werden, indem **Gruppe wiederherstellen** gewählt oder PowerShell-Cmdlets verwendet werden. Dies ist unter [Wiederherstellen einer gelöschten Office 365-Gruppe in der Azure Active Directory-Vorschau](groups-restore-deleted.md) beschrieben. Beachten Sie, dass der 30-tägige Wiederherstellungszeitraum für Gruppen nicht angepasst werden kann.
-    
+
 Wenn die Gruppe, die Sie wiederherstellen, Dokumente, SharePoint-Websites oder andere beständige Objekte enthält, kann es bis zu 24 Stunden dauern, bis die Gruppe und deren Inhalte vollständig wiederhergestellt werden.
 
 ## <a name="how-to-retrieve-office-365-group-expiration-date"></a>Abrufen des Ablaufdatums für eine Office 365-Gruppe
-Zusätzlich zum Zugriffsbereich, in dem Benutzer Gruppendetails mit Ablaufdatum und letztem Erneuerungsdatum anzeigen können, kann das Ablaufdatum einer Office 365-Gruppe aus der Betaversion der Microsoft Graph-REST-API abgerufen werden. expirationDateTime als Gruppeneigenschaft wurde in der Betaversion von Microsoft Graph aktiviert. Sie kann mit einer GET-Anforderung abgerufen werden. Weitere Informationen finden Sie in [diesem Beispiel](https://docs.microsoft.com/en-us/graph/api/group-get?view=graph-rest-beta#example).
+Zusätzlich zum Zugriffsbereich, in dem Benutzer Gruppendetails mit Ablaufdatum und letztem Erneuerungsdatum anzeigen können, kann das Ablaufdatum einer Office 365-Gruppe aus der Betaversion der Microsoft Graph-REST-API abgerufen werden. expirationDateTime als Gruppeneigenschaft wurde in der Betaversion von Microsoft Graph aktiviert. Sie kann mit einer GET-Anforderung abgerufen werden. Weitere Informationen finden Sie in [diesem Beispiel](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example).
 
 > [!NOTE]
 > Um Gruppenmitgliedschaften im Zugriffsbereich zu verwalten, muss „Zugriff auf Gruppen im Zugriffsbereich einschränken“ in der Allgemeinen Einstellung für Azure Active Directory-Gruppen auf „Nein“ festgelegt werden.
-
 
 ## <a name="how-office-365-group-expiration-works-with-a-mailbox-on-legal-hold"></a>Funktionsweise des Office 365-Gruppenablaufs mit einem Postfach mit gesetzlicher Aufbewahrungspflicht
 Wenn eine Gruppe abläuft und gelöscht wird, werden die Daten der Gruppe für Apps wie Planner, Sites oder Teams 30 Tage nach dem Löschvorgang endgültig gelöscht. Das Postfach der Gruppe, für das eine gesetzliche Aufbewahrungspflicht gilt, wird beibehalten und nicht endgültig gelöscht. Der Administrator kann Exchange-Cmdlets verwenden, um das Postfach zum Abrufen der Daten wiederherzustellen. 
@@ -99,22 +104,26 @@ Wenn eine Gruppe abläuft und gelöscht wird, werden die Daten der Gruppe für A
 Die Aufbewahrungsrichtlinie wird über das Security & Compliance Center konfiguriert. Wenn Sie eine Aufbewahrungsrichtlinie für Office 365-Gruppen eingerichtet haben, werden die Gruppenunterhaltungen im Postfach der Gruppe und die Dateien auf der Site der Gruppe nach dem Ablauf und der Löschung einer Gruppe im Aufbewahrungscontainer gemäß der Angabe in der Aufbewahrungsrichtlinie (in Tagen) beibehalten. Benutzer können die Gruppe oder ihren Inhalt nach dem Ablauf nicht mehr anzeigen, aber sie können die Site- und Postfachdaten per E-Discovery wiederherstellen.
 
 ## <a name="powershell-examples"></a>PowerShell-Beispiele
-Hier sind Beispiele dafür angegeben, wie Sie PowerShell-Cmdlets zum Konfigurieren der Ablaufeinstellungen für Office 365-Gruppen in Ihrem Mandanten verwenden können:
+Hier finden Sie einige Beispiele dafür, wie Sie PowerShell-Cmdlets zum Konfigurieren der Ablaufeinstellungen für Office 365-Gruppen in Ihrer Azure AD-Organisation verwenden können:
 
-1. Installieren Sie das PowerShell v2.0 Preview-Modul (2.0.0.137), und melden Sie sich an der PowerShell-Eingabeaufforderung an:
-   ```powershell
-   Install-Module -Name AzureADPreview
-   connect-azuread 
+1. Installieren Sie das PowerShell v2.0-Modul, und melden Sie sich an der PowerShell-Eingabeaufforderung an:
+
+   ``` PowerShell
+   Install-Module -Name AzureAD
+   Connect-AzureAD
    ```
-2. Konfigurieren Sie die Ablaufeinstellungen per „New-AzureADMSGroupLifecyclePolicy“:  Mit diesem Cmdlet können Sie die Lebensdauer für alle Office 365-Gruppen im Mandanten auf 365 Tage festlegen. Verlängerungsbenachrichtigungen für Office 365-Gruppen ohne Besitzer werden an emailaddress@contoso.com gesendet.
+
+1. Konfigurieren Sie die Ablaufeinstellungen. Verwenden Sie das Cmdlet „New-AzureADMSGroupLifecyclePolicy“, um die Lebensdauer für alle Office 365-Gruppen in der Azure AD-Organisation auf 365 Tage festzulegen. Verlängerungsbenachrichtigungen für Office 365-Gruppen ohne Besitzer werden an emailaddress@contoso.com gesendet.
   
-   ```powershell
+   ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
    ```
-3. Abrufen der vorhandenen Richtlinie per „Get-AzureADMSGroupLifecyclePolicy“: Mit diesem Cmdlet können Sie die aktuell konfigurierten Einstellungen zum Office 365-Gruppenablauf abrufen. In diesem Beispiel sehen Sie Folgendes:
-   * Richtlinien-ID 
-   * Festlegung der Lebensdauer für alle Office 365-Gruppen im Mandanten auf 365 Tage
-   * Verlängerungsbenachrichtigungen für Office 365-Gruppen ohne Besitzer werden an emailaddress@contoso.com gesendet.
+
+1. Abrufen der vorhandenen Richtlinie per „Get-AzureADMSGroupLifecyclePolicy“: Mit diesem Cmdlet können Sie die aktuell konfigurierten Einstellungen zum Office 365-Gruppenablauf abrufen. In diesem Beispiel sehen Sie Folgendes:
+
+   - Richtlinien-ID
+   - Festlegung der Lebensdauer für alle Office 365-Gruppen in der Azure AD-Organisation auf 365 Tage
+   - Verlängerungsbenachrichtigungen für Office 365-Gruppen ohne Besitzer werden an emailaddress@contoso.com gesendet.
   
    ```powershell
    Get-AzureADMSGroupLifecyclePolicy
@@ -122,21 +131,21 @@ Hier sind Beispiele dafür angegeben, wie Sie PowerShell-Cmdlets zum Konfigurier
    ID                                    GroupLifetimeInDays ManagedGroupTypes AlternateNotificationEmails
    --                                    ------------------- ----------------- ---------------------------
    26fcc232-d1c3-4375-b68d-15c296f1f077  365                 All               emailaddress@contoso.com
-   ``` 
-   
-4. Aktualisieren der vorhandenen Richtlinie per „Set-AzureADMSGroupLifecyclePolicy“: Dieses Cmdlet dient zum Aktualisieren einer vorhandenen Richtlinie. Im folgenden Beispiel wird die Lebensdauer der Gruppe in der vorhandenen Richtlinie von 365 Tagen in 180 Tage geändert. 
+   ```
+
+1. Aktualisieren der vorhandenen Richtlinie per „Set-AzureADMSGroupLifecyclePolicy“: Dieses Cmdlet dient zum Aktualisieren einer vorhandenen Richtlinie. Im folgenden Beispiel wird die Lebensdauer der Gruppe in der vorhandenen Richtlinie von 365 Tagen in 180 Tage geändert.
   
    ```powershell
    Set-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
    ```
   
-5. Hinzufügen von spezifischen Gruppen zur Richtlinie per „Add-AzureADMSLifecyclePolicyGroup“: Mit diesem Cmdlet können Sie der Lebenszyklusrichtlinie eine Gruppe hinzufügen. Beispiel:
+1. Hinzufügen von spezifischen Gruppen zur Richtlinie per „Add-AzureADMSLifecyclePolicyGroup“: Mit diesem Cmdlet können Sie der Lebenszyklusrichtlinie eine Gruppe hinzufügen. Beispiel:
   
    ```powershell
    Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
    ```
   
-6. Entfernen der vorhandenen Richtlinie per „Policy Remove-AzureADMSGroupLifecyclePolicy“: Mit diesem Cmdlet können Sie die Einstellungen für den Office 365-Gruppenablauf löschen (unter Angabe der die Richtlinien-ID). Hierdurch wird der Ablauf für Office 365-Gruppen deaktiviert. 
+1. Entfernen der vorhandenen Richtlinie per „Policy Remove-AzureADMSGroupLifecyclePolicy“: Mit diesem Cmdlet können Sie die Einstellungen für den Office 365-Gruppenablauf löschen (unter Angabe der die Richtlinien-ID). Hierdurch wird der Ablauf für Office 365-Gruppen deaktiviert.
   
    ```powershell
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
@@ -144,21 +153,22 @@ Hier sind Beispiele dafür angegeben, wie Sie PowerShell-Cmdlets zum Konfigurier
   
 Die folgenden Cmdlets können verwendet werden, um die Richtlinie ausführlicher zu konfigurieren. Weitere Informationen finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).
 
-* Get-AzureADMSGroupLifecyclePolicy
-* New-AzureADMSGroupLifecyclePolicy
-* Get-AzureADMSGroupLifecyclePolicy
-* Set-AzureADMSGroupLifecyclePolicy
-* Remove-AzureADMSGroupLifecyclePolicy
-* Add-AzureADMSLifecyclePolicyGroup
-* Remove-AzureADMSLifecyclePolicyGroup
-* Reset-AzureADMSLifeCycleGroup   
-* Get-AzureADMSLifecyclePolicyGroup
+- Get-AzureADMSGroupLifecyclePolicy
+- New-AzureADMSGroupLifecyclePolicy
+- Get-AzureADMSGroupLifecyclePolicy
+- Set-AzureADMSGroupLifecyclePolicy
+- Remove-AzureADMSGroupLifecyclePolicy
+- Add-AzureADMSLifecyclePolicyGroup
+- Remove-AzureADMSLifecyclePolicyGroup
+- Reset-AzureADMSLifeCycleGroup
+- Get-AzureADMSLifecyclePolicyGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Diese Artikel enthalten zusätzliche Informationen zu Azure AD-Gruppen.
 
-* [Anzeigen vorhandener Gruppen](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Verwalten der Einstellungen einer Gruppe](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Verwalten der Mitglieder einer Gruppe](../fundamentals/active-directory-groups-members-azure-portal.md)
-* [Verwalten der Mitgliedschaften einer Gruppe](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](groups-dynamic-membership.md)
+- [Anzeigen vorhandener Gruppen](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Verwalten der Einstellungen einer Gruppe](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [Verwalten der Mitglieder einer Gruppe](../fundamentals/active-directory-groups-members-azure-portal.md)
+- [Verwalten der Mitgliedschaften einer Gruppe](../fundamentals/active-directory-groups-membership-azure-portal.md)
+- [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](groups-dynamic-membership.md)

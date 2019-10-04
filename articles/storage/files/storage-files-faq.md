@@ -1,19 +1,18 @@
 ---
 title: Häufig gestellte Fragen (FAQ) zu Azure Files | Microsoft-Dokumentation
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Azure Files.
-services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
-ms.date: 01/02/2019
-ms.author: renash
+ms.date: 07/30/2019
+ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 561c8c9d942210a9bbdc70feff9bc468fa69967e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cc827f52d227ee36620bd215dfcba96b433804d3
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995868"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103055"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -69,14 +68,14 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="redundancy-options"></a>
   **Welche Speicherredundanzoptionen werden von Azure Files unterstützt?**  
-    Azure Files unterstützt derzeit nur Konten mit lokal redundantem Speicher (LRS), zonenredundantem Speicher (ZRS) und georedundantem Speicher (GRS). Für die Zukunft ist Unterstützung für georedundanten Speicher mit Lesezugriff (Read-Access Geo Redundant Storage, RA-GRS) geplant. Zum gegenwärtigen Zeitpunkt sind hierfür aber noch keine Zeitpläne verfügbar.
+    Azure Files unterstützt derzeit lokal redundanten Speicher (LRS), zonenredundanten Speicher (ZRS), georedundanten Speicher (GRS) und geozonenredundanten Speicher (GZRS) (Vorschau). Für die Zukunft ist Unterstützung für georedundanten Speicher mit Lesezugriff (Read-Access Geo Redundant Storage, RA-GRS) geplant. Zum gegenwärtigen Zeitpunkt sind hierfür aber noch keine Zeitpläne verfügbar.
 
 * <a id="tier-options"></a>
   **Welche Speicherebenen werden in Azure Files unterstützt?**  
-    Derzeit unterstützt Azure Files nur die Speicherebene „Standard“. Für die Unterstützung von Storage Premium und „kaltem“ Speicher können noch keine Starttermine genannt werden. 
+    Azure Files unterstützt zwei Speichertarife: Premium und Standard. Standard-Dateifreigaben werden in universellen Speicherkonten (GPv1 oder GPv2) und Premium-Dateifreigaben in FileStorage-Speicherkonten erstellt. Erfahren Sie mehr darüber, wie Sie [Standard-Dateifreigaben](storage-how-to-create-file-share.md) und [Premium-Dateifreigaben](storage-how-to-create-premium-fileshare.md) erstellen. 
     
     > [!NOTE]
-    > Es ist nicht möglich, Azure-Dateifreigaben basierend auf reinen Blobspeicherkonten oder Storage Premium-Konten zu erstellen.
+    > Es ist nicht möglich, Azure-Dateifreigaben basierend auf Blobspeicherkonten oder universellen *Premium*-Speicherkonten (GPv1 oder GPv2) zu erstellen. Standard-Azure-Dateifreigaben können nur in universellen *Standard*-Konten und Premium-Azure-Dateifreigaben nur in FileStorage-Speicherkonten erstellt werden. Universelle *Premium*-Speicherkonten (GPv1 und GPv2) sind nur für Premium-Seitenblobs bestimmt. 
 
 * <a id="give-us-feedback"></a>
   **Ich wünsche mir, dass Azure Files ein bestimmtes Feature hinzugefügt wird. Können Sie es hinzufügen?**  
@@ -101,7 +100,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
    
     \<Dateiname_ohne_Erweiterung\>-\<Name_des_Computers\>\[-#\].\<Erweiterung\>  
 
-    Beim ersten Konflikt für „CompanyReport.docx“ wird beispielsweise „CompanyReport-CentralServer.docx“ verwendet, wenn CentralServer der Ort ist, an dem der ältere Schreibvorgang durchgeführt wurde. Der zweite Konflikt hat dann den Namen „CompanyReport-CentralServer-1.docx“.
+    Beim ersten Konflikt für „CompanyReport.docx“ wird beispielsweise „CompanyReport-CentralServer.docx“ verwendet, wenn CentralServer der Ort ist, an dem der ältere Schreibvorgang durchgeführt wurde. Der zweite Konflikt hat dann den Namen „CompanyReport-CentralServer-1.docx“. Die Azure-Dateisynchronisierung unterstützt 100 Konfliktdateien pro Datei. Sobald die maximale Anzahl von Konfliktdateien erreicht ist, kann die Datei nicht mehr synchronisiert werden, bis die Anzahl der Konfliktdateien weniger als 100 beträgt.
 
 * <a id="afs-storage-redundancy"></a>
   **Wird georedundanter Speicher von der Azure-Dateisynchronisierung unterstützt?**  
@@ -145,7 +144,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="afs-os-support"></a>
   **Kann ich die Azure-Dateisynchronisierung entweder mit Windows Server 2008 R2, Linux oder meinem NAS-Gerät (Network Attached Storage) verwenden?**  
-    Gegenwärtig unterstützt die Azure-Dateisynchronisierung ausschließlich Windows Server 2016 und Windows Server 2012 R2. Zurzeit sind keine anderen Optionen geplant. Je nach Kundennachfrage sind wir aber offen dafür, weitere Plattformen zu unterstützen. Teilen Sie uns über [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) mit, für welche Plattformen Sie Unterstützung von uns wünschen.
+    Gegenwärtig unterstützt die Azure-Dateisynchronisierung ausschließlich Windows Server 2019, Windows Server 2016 und Windows Server 2012 R2. Zurzeit sind keine anderen Optionen geplant. Je nach Kundennachfrage sind wir aber offen dafür, weitere Plattformen zu unterstützen. Teilen Sie uns über [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) mit, für welche Plattformen Sie Unterstützung von uns wünschen.
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
   **Warum sind mehrstufige Dateien außerhalb des Serverendpunkt-Namespaces vorhanden?**  
@@ -169,35 +168,27 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     
 ## <a name="security-authentication-and-access-control"></a>Sicherheit, Authentifizierung und Zugriffssteuerung
 * <a id="ad-support"></a>
-**Unterstützt Azure Files die Active Directory-basierte Authentifizierung und Zugriffssteuerung?**  
+**Unterstützt Azure Files die identitätsbasierte Authentifizierung und Zugriffssteuerung?**  
     
-    Ja. Azure Files unterstützt die auf Identitäten basierende Authentifizierung und Zugriffssteuerung mit Azure Active Directory (Vorschauversion). Für die Azure Active Directory-Authentifizierung per SMB für Azure Files wird Azure Active Directory Domain Services genutzt, um für in die Domäne eingebundene VMs mit Azure AD-Anmeldeinformationen auf Freigaben, Verzeichnisse und Dateien zuzugreifen. Ausführlichere Informationen finden Sie unter [Übersicht zur Azure Active Directory-Authentifizierung über SMB für Azure Files (Vorschau)](storage-files-active-directory-overview.md). 
+    Ja. Azure Files unterstützt die auf Identitäten basierende Authentifizierung und Zugriffssteuerung mit Azure AD Domain Services (Azure AD DS). Die Azure AD DS-Authentifizierung per SMB für Azure Files ermöglicht es in die Domäne eingebundenen Azure AD DS-Windows-VMs, mit Azure AD-Anmeldeinformationen auf Freigaben, Verzeichnisse und Dateien zuzugreifen. Weitere Einzelheiten finden Sie unter [AAD DS-Authentifizierung über SMB für Azure Files (Vorschau) – Übersicht](storage-files-active-directory-overview.md). 
 
     Azure Files verfügt noch über zwei weitere Möglichkeiten zur Verwaltung der Zugriffssteuerung:
 
     - Sie können Shared Access Signatures (SAS) zum Generieren von Token verwenden, die über bestimmte Berechtigungen verfügen und für ein angegebenes Zeitintervall gültig sind. Sie können beispielsweise ein Token mit Lesezugriff auf eine bestimmte Datei generieren, das nach zehn Minuten abläuft. Jeder Benutzer, der während des Gültigkeitszeitraums über das Token verfügt, hat für einen Zeitraum von zehn Minuten Lesezugriff auf die Datei. Shared Access Signature-Schlüssel werden derzeit nur per REST-API oder in Clientbibliotheken unterstützt. Sie müssen die Azure-Dateifreigabe per SMB einbinden, indem Sie die Speicherkontoschlüssel verwenden.
 
     - Für die Azure-Dateisynchronisierung werden alle besitzerverwalteten ACLs bzw. DACLs (ob Active Directory-basiert oder lokal) für alle Serverendpunkte beibehalten und repliziert, für die die Synchronisierung durchgeführt wird. Da Windows Server bereits bei Active Directory authentifiziert werden kann, stellt die Azure-Dateisynchronisierung eine ausgezeichnete Überbrückungsmaßnahme dar, bis die volle Unterstützung für eine Active Directory-basierte Authentifizierung und ACL-Unterstützung bereitgestellt wird.
-
-* <a id="ad-support-regions"></a>
-**Ist die Vorschauversion von Azure AD über SMB für Azure Files in allen Azure-Regionen verfügbar?**
-
-    Die Vorschau ist in allen öffentlichen Regionen verfügbar.
-
-* <a id="ad-support-on-premises"></a>
-**Unterstützt die Azure AD-Authentifizierung über SMB für Azure Files (Vorschauversion) die Authentifizierung per Azure AD von lokalen Computern?**
-
-    Nein. Azure Files unterstützt die Authentifizierung mit Azure AD von lokalen Computern in der Vorschauversion nicht.
+    
+    Eine umfassende Darstellung aller in Azure Storage-Diensten unterstützten Protokolle finden Sie unter [Autorisierung des Zugriffs auf Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
 
 * <a id="ad-support-devices"></a>
-**Unterstützt die Azure AD-Authentifizierung über SMB für Azure Files (Vorschauversion) den SMB-Zugriff mit Azure AD-Anmeldeinformationen von Geräten, die in Azure AD eingebunden oder dafür registriert sind?**
+**Unterstützt die Azure AD DS-Authentifizierung über SMB für Azure Files den SMB-Zugriff mit Azure AD-Anmeldeinformationen von Geräten, die in Azure AD eingebunden oder dafür registriert sind?**
 
     Nein. Dieses Szenario wird nicht unterstützt.
 
 * <a id="ad-support-rest-apis"></a>
 **Sind REST-APIs zur Unterstützung von Get/Set/Copy-Vorgängen für NTFS-ACLs auf Verzeichnis-/Dateiebene vorhanden?**
 
-    Die Vorschauversion verfügt nicht über Unterstützung für REST-APIs, mit denen NTFS-ACLs für Verzeichnisse oder Dateien abgerufen, festgelegt oder kopiert werden können.
+    Derzeit wird das Abrufen, Festlegen oder Kopieren von NTFS-ACLs für Verzeichnisse oder Dateien durch REST-APIs nicht unterstützt.
 
 * <a id="ad-vm-subscription"></a>
 **Kann ich auf Azure Files mit Azure AD-Anmeldeinformationen von einer VM unter einem anderen Abonnement zugreifen?**
@@ -205,24 +196,24 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Wenn das Abonnement, unter dem die Dateifreigabe bereitgestellt wurde, demselben Azure AD-Mandanten wie die Azure AD Domain Services-Bereitstellung (mit Einbindung der VM) zugeordnet ist, können Sie auf Azure Files mit den gleichen Azure AD-Anmeldeinformationen zugreifen. Die Einschränkung bezieht sich nicht auf das Abonnement, sondern auf den zugeordneten Azure AD-Mandanten.    
     
 * <a id="ad-support-subscription"></a>
-**Kann ich die Azure AD-Authentifizierung über SMB für Azure Files mit einem Azure AD-Mandanten aktivieren, der sich von dem primären Mandanten unterscheidet, dem die Dateifreigabe zugeordnet ist?**
+**Kann ich die Azure AD DS-Authentifizierung für Azure Files mit einem Azure AD-Mandanten aktivieren, der sich von dem primären Mandanten unterscheidet, dem die Dateifreigabe zugeordnet ist?**
 
-    Nein. Azure Files unterstützt nur die Azure AD-Integration mit einem Azure AD-Mandanten, der sich unter demselben Abonnement wie die Dateifreigabe befindet. Einem Azure AD-Mandanten kann nur ein Abonnement zugeordnet sein.
+    Nein. Azure Files unterstützt nur die Azure AD DS-Integration mit einem Azure AD-Mandanten, der sich in demselben Abonnement wie die Dateifreigabe befindet. Einem Azure AD-Mandanten kann nur ein Abonnement zugeordnet sein.
 
 * <a id="ad-linux-vms"></a>
-**Unterstützt die Azure AD-Authentifizierung über SMB für Azure Files (Vorschauversion) Linux-VMs?**
+**Unterstützt die Azure AD DS-Authentifizierung für Azure Files virtuelle Linux-Computer?**
 
-    Nein. Die Authentifizierung von Linux-VMs wird in der Vorschauversion nicht unterstützt.
+    Nein. Die Authentifizierung von virtuellen Linux-Computern wird nicht unterstützt.
 
 * <a id="ad-aad-smb-afs"></a>
-**Kann ich die Azure AD-Authentifizierung über SMB-Funktionen auf Dateifreigaben nutzen, die per Azure-Dateisynchronisierung verwaltet werden?**
+**Kann ich die Azure AD DS-Authentifizierung für Azure Files auf Dateifreigaben nutzen, die per Azure-Dateisynchronisierung verwaltet werden?**
 
     Nein. Azure Files verfügt nicht über Unterstützung für die Beibehaltung von NTFS-ACLs auf Dateifreigaben, die per Azure-Dateisynchronisierung verwaltet werden. Die Datei-ACLs, die von lokalen Dateiservern stammen, werden von der Azure-Dateisynchronisierung beibehalten. Alle NTFS-ACLs, die für Azure Files nativ konfiguriert werden, werden vom Dienst für die Azure-Dateisynchronisierung überschrieben. Azure Files unterstützt auch keine Authentifizierung mit Azure AD-Anmeldeinformationen für den Zugriff auf Dateifreigaben, die mit dem Dienst für die Azure-Dateisynchronisierung verwaltet werden.
 
 * <a id="encryption-at-rest"></a>
 **Wie kann ich sicherstellen, dass meine Azure-Dateifreigabe im ruhenden Zustand verschlüsselt wird?**  
 
-    Azure Storage Service Encryption wird derzeit für alle Regionen standardmäßig aktiviert. Für diese Regionen müssen Sie nichts unternehmen, um die Verschlüsselung zu aktivieren. Informationen zu anderen Regionen finden Sie unter [Serverseitige Verschlüsselung](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    Ja. Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="access-via-browser"></a>
 **Wie kann ich mithilfe eines Webbrowsers Zugriff auf eine bestimmte Datei gewähren?**  
@@ -249,12 +240,12 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="port-445-blocked"></a>
 **Mein ISP oder meine IT-Abteilung blockiert Port 445, wodurch das Bereitstellen von Azure Files fehlschlägt. Wie soll ich vorgehen?**
 
-    Informationen zu verschiedenen Möglichkeiten, den blockierten Port 445 zu umgehen, finden Sie [hier](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Azure Files erlaubt von außerhalb der Region oder des Rechenzentrums nur Verbindungen mit SMB 3.0 (mit Verschlüsselungsunterstützung). In das Protokoll SMB 3.0 wurden viele Sicherheitsfunktionen integriert, darunter die Kanalverschlüsselung, die sich sehr sicher über das Internet nutzen lässt. Es ist jedoch möglich, dass Port 445 aufgrund von Schwachstellen in niedrigeren SMB-Versionen blockiert wurde. Im Idealfall sollte der Port nur für SMB 1.0-Datenverkehr gesperrt werden und SMB 1.0 auf allen Clients deaktiviert sein.
+    Informationen zu verschiedenen Möglichkeiten, den blockierten Port 445 zu umgehen, finden Sie [hier](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Azure Files erlaubt von außerhalb der Region oder des Rechenzentrums nur Verbindungen mit SMB 3.0 (mit Verschlüsselungsunterstützung). In das Protokoll SMB 3.0 wurden viele Sicherheitsfunktionen integriert, darunter die Kanalverschlüsselung, die sich sehr sicher über das Internet nutzen lässt. Es ist jedoch möglich, dass Port 445 aufgrund von Schwachstellen in niedrigeren SMB-Versionen blockiert wurde. Im Idealfall sollte der Port nur für SMB 1.0-Datenverkehr gesperrt werden und SMB 1.0 auf allen Clients deaktiviert sein.
 
 * <a id="expressroute-not-required"></a>
 **Muss ich Azure ExpressRoute verwenden, wenn ich eine Verbindung mit Azure Files herstellen oder die Azure-Dateisynchronisierung lokal verwenden möchte?**  
 
-     Nein. ExpressRoute ist für den Zugriff auf eine Azure-Dateifreigabe nicht erforderlich. Wenn Sie eine Azure-Dateifreigabe direkt lokal bereitstellen, muss lediglich Port 445 (TCP ausgehend) für den Internetzugriff geöffnet sein (dies ist der Port, über den SMB kommuniziert). Wenn Sie die Azure-Dateisynchronisierung verwenden, ist lediglich Port 443 (TCP ausgehend) für den HTTPS-Zugriff erforderlich (SMB ist nicht erforderlich). Sie *können* ExpressRoute aber mit beiden Zugriffsoptionen verwenden.
+    Nein. ExpressRoute ist für den Zugriff auf eine Azure-Dateifreigabe nicht erforderlich. Wenn Sie eine Azure-Dateifreigabe direkt lokal bereitstellen, muss lediglich Port 445 (TCP ausgehend) für den Internetzugriff geöffnet sein (dies ist der Port, über den SMB kommuniziert). Wenn Sie die Azure-Dateisynchronisierung verwenden, ist lediglich Port 443 (TCP ausgehend) für den HTTPS-Zugriff erforderlich (SMB ist nicht erforderlich). Sie *können* ExpressRoute aber mit beiden Zugriffsoptionen verwenden.
 
 * <a id="mount-locally"></a>
 **Wie kann ich eine Azure-Dateifreigabe auf meinem lokalen Computer bereitstellen?**  
@@ -277,10 +268,6 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 **Wo werden meine Freigabemomentaufnahmen gespeichert?**  
     Freigabemomentaufnahmen werden im gleichen Speicherkonto gespeichert wie die Dateifreigabe.
 
-* <a id="snapshot-perf-impact"></a>
-**Sind bei der Nutzung von Freigabemomentaufnahmen Auswirkungen auf die Leistung zu erwarten?**  
-    Freigabemomentaufnahmen verursachen kein Leistungsoverhead.
-
 * <a id="snapshot-consistency"></a>
 **Sind Freigabemomentaufnahmen anwendungskonsistent?**  
     Nein. Freigabemomentaufnahmen sind nicht anwendungskonsistent. Benutzer müssen vor dem Erstellen von Freigabemomentaufnahmen die Schreibvorgänge von der Anwendung in die Freigabe leeren.
@@ -294,7 +281,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Für Momentaufnahmen gelten die standardmäßigen Transaktions- und Speicherkosten. Momentaufnahmen sind in der Regel inkrementell. Bei der Basismomentaufnahme handelt es sich um die Freigabe selbst. Alle nachfolgenden Momentaufnahmen sind inkrementell und speichern lediglich die Differenz zur vorherigen Momentaufnahme. Dies bedeutet, dass die in der Rechnung angezeigten Deltaänderungen minimal ausfallen, wenn Ihre Workloadänderungen geringfügig sind. Preisinformationen finden Sie auf der [Preisgestaltungsseite](https://azure.microsoft.com/pricing/details/storage/files/) für Azure Files im Standard-Tarif. Heutzutage wird die von Freigabemomentaufnahmen genutzte Größe durch das Vergleichen der abgerechneten Kapazität mit der verwendeten Kapazität ermittelt. Wir arbeiten derzeit an Tools, um die Berichterstellung zu verbessern.
 
 * <a id="ntfs-acls-snaphsots"></a>
-**Werden NTFS-ACLs in Verzeichnissen und Dateien in Freigabemomentaufnahmen beibehalten?**
+**Werden NTFS-ACLs in Verzeichnissen und Dateien in Freigabemomentaufnahmen beibehalten?**  
     NTFS-ACLs in Verzeichnissen und Dateien werden in Freigabemomentaufnahmen beibehalten.
 
 ### <a name="create-share-snapshots"></a>Erstellen von Freigabemomentaufnahmen
@@ -356,11 +343,11 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Informationen zu Skalierbarkeits- und Leistungszielen für Azure Files finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](storage-files-scale-targets.md).
 
 * <a id="need-larger-share"></a>
-**Ich benötige eine größere Dateifreigabe, die für Azure Files derzeit noch nicht angeboten wird. Kann ich die Größe meiner Azure-Dateifreigabe erhöhen?**  
-     Nein. Die maximale Größe einer Azure-Dateifreigabe beträgt 5 TiB. Zurzeit ist dies eine feste Grenze, die wir nicht überschreiten können. Wir arbeiten an einer Lösung, um die Freigabegröße auf 100 TiB zu erhöhen, können hierfür derzeit aber keinen Zeitplan nennen.
+**Welche Größen sind für Azure-Dateifreigaben verfügbar?**  
+    Azure-Dateifreigaben (Premium und Standard) können bis zu 100TiB zentral hochskaliert werden. Premium-Dateifreigaben in Größen bis zu 100TiB stehen als GA-Angebot zur Verfügung. Standard-Dateifreigaben in Größen bis zu 5TiB sind als GA-Angebot verfügbar, Größen bis zu 100TiB in der Vorschau. Im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) des Planungshandbuchs finden Sie Onboardinganweisungen zur Vorschau für größere Dateifreigaben im Standard-Tarif.
 
 * <a id="open-handles-quota"></a>
-**Wie viele Clients können gleichzeitig auf dieselbe Datei zugreifen?**   
+**Wie viele Clients können gleichzeitig auf dieselbe Datei zugreifen?**    
     Für eine einzelne Datei gilt ein Kontingent von 2.000 geöffneten Handles. Wenn Sie über 2.000 geöffnete Handles verfügen, wird eine Fehlermeldung mit dem Hinweis angezeigt, dass das Kontingent erreicht ist.
 
 * <a id="zip-slow-performance"></a>
@@ -386,7 +373,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="nested-shares"></a>
 **Kann ich geschachtelte Freigaben einrichten? Anders ausgedrückt: Kann eine Freigabe unter einer Freigabe angeordnet werden?**  
-     Nein. Die Dateifreigabe *ist* der virtuelle Treiber, den Sie bereitstellen können. Geschachtelte Freigaben werden nicht unterstützt.
+    Nein. Die Dateifreigabe *ist* der virtuelle Treiber, den Sie bereitstellen können. Geschachtelte Freigaben werden nicht unterstützt.
 
 * <a id="ibm-mq"></a>
 **Wie kann ich Azure Files mit IBM MQ nutzen?**  

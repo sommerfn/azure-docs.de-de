@@ -10,23 +10,25 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 257fe51cae245708816cd9a7bb0c33b6edf5aa05
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 5dbcf446a609adcd0f1902fcca2ac19ad87f17b1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756001"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65779665"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Zugriff auf Azure Media Services API mit Azure CLI
  
-Verwenden Sie die Authentifizierung per Azure AD-Dienstprinzipal, um eine Verbindung mit der Azure Media Services-API herzustellen. Ihre Anwendung muss ein Azure AD-Token anfordern, das folgende Parameter aufweist:
+Zum Herstellen einer Verbindung mit der Azure Media Services-API mithilfe der Azure AD-Dienstprinzipalauthentifizierung muss Ihre Anwendung ein Azure AD-Token anfordern, das die folgenden Parameter aufweist:
 
 * Azure AD-Mandantenendpunkt
 * Media Services-Ressourcen-URI
 * Ressourcen-URI für REST Media Services
 * Werte der Azure AD-Anwendung: Client-ID und Clientgeheimnis
+
+Ausführliche Erläuterungen finden Sie unter [Zugreifen auf Media Services v3-APIs](media-services-apis-overview.md#accessing-the-azure-media-services-api).
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure CLI eine Azure AD-Anwendung und einen Dienstprinzipal erstellen und die Werte abrufen, die für den Zugriff auf Azure Media Services-Ressourcen erforderlich sind.
 
@@ -43,16 +45,21 @@ Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des M
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Skalieren der Medienverarbeitung](media-reserved-units-cli-how-to.md)
-- [CLI-Beispiel: Erstellen eines Azure Media Services-Kontos](./scripts/cli-create-account.md) 
-- [CLI-Beispiel: Zurücksetzen der Kontoanmeldeinformationen](./scripts/cli-reset-account-credentials.md)
-- [CLI-Beispiel: Erstellen eines Medienobjekts](./scripts/cli-create-asset.md)
-- [CLI-Beispiel: Hochladen einer lokalen Datei in einen Container](./scripts/cli-upload-file-asset.md)
-- [CLI-Beispiel: Erstellen einer Transformation](./scripts/cli-create-transform.md)
-- [CLI-Beispiel: Erstellen und Übermitteln eines Auftrags](./scripts/cli-create-jobs.md)
-- [CLI-Beispiel: Erstellen eines Azure Event Grid-Abonnements](./scripts/cli-create-event-grid.md)
-- [CLI-Beispiel: Veröffentlichen eines Medienobjekts](./scripts/cli-publish-asset.md)
+- [CLI-Beispiel: Erstellen eines Azure Media Services-Kontos](create-account-cli-how-to.md) 
+- [CLI-Beispiel: Zurücksetzen der Kontoanmeldeinformationen](cli-reset-account-credentials.md)
+- [CLI-Beispiel: Erstellen eines Medienobjekts](cli-create-asset.md)
+- [CLI-Beispiel: Hochladen einer lokalen Datei in einen Container](cli-upload-file-asset.md)
+- [CLI-Beispiel: Erstellen einer Transformation](cli-create-transform.md)
+- [Codieren einer benutzerdefinierten Transformation – CLI](custom-preset-cli-howto.md)
+- [CLI-Beispiel: Erstellen und Übermitteln eines Auftrags](cli-create-jobs.md)
+- [CLI-Beispiel: Erstellen eines Azure Event Grid-Abonnements](job-state-events-cli-how-to.md)
+- [CLI-Beispiel: Veröffentlichen eines Medienobjekts](cli-publish-asset.md)
 - [Erstellen von Filtern mit der CLI](filters-dynamic-manifest-cli-howto.md)
+- [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+Der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, muss sich im Status „Wird ausgeführt“ befinden. Der folgende CLI-Befehl startet den standardmäßigen Streamingendpunkt:
+
+`az ams streaming-endpoint start -n default -a <amsaccount> -g <amsResourceGroup>`
+

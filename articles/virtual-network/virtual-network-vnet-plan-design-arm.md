@@ -3,8 +3,8 @@ title: Planen virtueller Azure-Netzwerke | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie virtuelle Netzwerke basierend auf Ihren Anforderungen in Bezug auf Isolierung, Verbindung und Standort planen.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 3a4a9aea-7608-4d2e-bb3c-40de2e537200
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
-ms.author: jdial
-ms.openlocfilehash: acd7a88acb31b9d3bd3ba714387561e91b3524a6
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.author: kumud
+ms.openlocfilehash: 0a80630ffa363d2b633667d8104cc0326c4afa2e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339515"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66478590"
 ---
 # <a name="plan-virtual-networks"></a>Planen virtueller Netzwerke
 
@@ -29,7 +29,7 @@ Das Erstellen eines virtuellen Netzwerks zum Testen ist einfach. Aber die Wahrsc
 
 Alle Azure-Ressourcen haben einen Namen. Der Name muss innerhalb eines Bereichs eindeutig sein, der für jeden Ressourcentyp unterschiedlich sein kann. Der Name eines virtuellen Netzwerks muss beispielsweise innerhalb einer [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) eindeutig sein, kann jedoch innerhalb eines [Abonnements](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) oder einer Azure-[Region](https://azure.microsoft.com/regions/#services) dupliziert werden. Das Definieren einer Namenskonvention, die Sie beim Benennen von Ressourcen konsistent verwenden können, ist hilfreich, wenn mit der Zeit mehrere Netzwerkressourcen verwaltet werden. Empfehlungen finden Sie unter [Namenskonventionen](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#networking).
 
-## <a name="regions"></a>Regionen
+## <a name="regions"></a>Regions
 
 Alle Azure-Ressourcen werden in einer Azure-Region und unter einem Abonnement erstellt. Eine Ressource kann nur in einem virtuellen Netzwerk erstellt werden, das in derselben Region und unter demselben Abonnement wie die Ressource vorhanden ist. Sie können jedoch virtuelle Netzwerke verbinden, die in unterschiedlichen Abonnements und Regionen vorhanden sind. Weitere Informationen finden Sie unter [Konnektivität](#connectivity). Bei der Festlegung, in welchen Regionen Ressourcen bereitgestellt werden, sollte berücksichtigt werden, wo sich die Nutzer der Ressourcen physisch befinden:
 
@@ -63,7 +63,7 @@ Ein virtuelles Netzwerk kann bis zu den geltenden [Limits](../azure-subscription
 - Jedes Subnetz muss über einen eindeutigen im CIDR-Format angegebenen Adressbereich innerhalb des Adressraums des virtuellen Netzwerks verfügen. Der Adressbereich darf keine Überlappungen mit anderen Subnetzen innerhalb des virtuellen Netzwerks aufweisen.
 - Wenn Sie Azure-Dienstressourcen in einem virtuellen Netzwerk bereitstellen möchten, ist es möglich, dass für diese ein eigenes Subnetz erforderlich ist oder erstellt wird. Dafür muss ausreichend nicht zugewiesener Speicherplatz zur Verfügung stehen. In den jeweiligen Informationen zu jedem [Azure-Dienst, der in einem virtuellen Netzwerk bereitgestellt werden kann](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), können Sie einsehen, ob für einen Azure-Dienst ein eigenes zugehöriges Subnetz erstellt wird. Wenn Sie z.B ein virtuelles Netzwerk über ein Azure VPN Gateway mit einem lokalen Netzwerk verbinden, muss das virtuelle Netzwerk über ein dediziertes Subnetz für das Gateway verfügen. Weitere Informationen zu Gatewaysubnetzen finden Sie [hier](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub).
 - Standardmäßig leitet Azure Netzwerkdatenverkehr zwischen allen Subnetzen in einem virtuellen Netzwerk weiter. Sie können das Standardrouting in Azure außer Kraft setzen, um das Azure-Routing zwischen Subnetzen zu verhindern oder um Datenverkehr zwischen Subnetzen z.B. über ein virtuelles Netzwerkgerät weiterzuleiten. Wenn Sie festlegen möchten, dass Datenverkehr zwischen Ressourcen im selben virtuellen Netzwerk über ein virtuelles Netzwerkgerät übermittelt wird, stellen Sie die Ressourcen in unterschiedlichen Subnetzen bereit. Weitere Informationen finden Sie unter [Sicherheit](#security).
-- Sie können den Zugriff auf Azure-Ressourcen, z.B. auf ein Azure Storage-Konto oder eine Azure SQL-Datenbank, auf bestimmte Subnetze mit einem Dienstendpunkt des virtuellen Netzwerks einschränken. Zudem können Sie den Zugriff auf die Ressourcen über das Internet verweigern. Sie können mehrere Subnetze erstellen und für bestimmte Subnetze einen Dienstendpunkt aktivieren, für andere hingegen nicht. Erfahren Sie mehr über [Dienstendpunkte](virtual-network-service-endpoints-overview.md) und die Azure-Ressourcen, für die Sie sie aktivieren können.
+- Sie können den Zugriff auf Azure-Ressourcen, z. B. auf ein Azure Storage-Konto oder eine Azure SQL-Datenbank, auf bestimmte Subnetze mit einem VNET-Dienstendpunkt einschränken. Zudem können Sie den Zugriff auf die Ressourcen über das Internet verweigern. Sie können mehrere Subnetze erstellen und für bestimmte Subnetze einen Dienstendpunkt aktivieren, für andere hingegen nicht. Erfahren Sie mehr über [Dienstendpunkte](virtual-network-service-endpoints-overview.md) und die Azure-Ressourcen, für die Sie sie aktivieren können.
 - Sie können jedem Subnetz in einem virtuellen Netzwerk eine Netzwerksicherheitsgruppe zuordnen, dies ist jedoch nicht erforderlich. Sie können jedem Subnetz dieselbe oder eine unterschiedliche Netzwerksicherheitsgruppe zuordnen. Jede Netzwerksicherheitsgruppe enthält Regeln, mit denen Datenverkehr zu und von Quellen und Zielen zugelassen oder verweigert wird. Weitere Informationen zu [Netzwerksicherheitsgruppen](#traffic-filtering).
 
 ## <a name="security"></a>Sicherheit
@@ -77,7 +77,7 @@ Sie können den Netzwerkdatenverkehr zu und von Ressourcen in einem virtuellen N
 - Wenn auf unterschiedliche virtuelle Computer innerhalb eines Subnetzes unterschiedliche Sicherheitsregeln angewandt werden sollen, können Sie die Netzwerkschnittstelle im virtuellen Computer Anwendungssicherheitsgruppen zuordnen. In einer Sicherheitsregel kann eine Anwendungssicherheitsgruppe als Quelle und Ziel angegeben werden. Diese Regel gilt dann nur für die Netzwerkschnittstellen, die Mitglieder der Anwendungssicherheitsgruppe sind. Weitere Informationen zu [Netzwerksicherheitsgruppen](security-overview.md) und [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups).
 - In Azure werden in jeder Netzwerksicherheitsgruppe mehrere Standardsicherheitsregeln erstellt. Eine Standardregel lässt die Weiterleitung des gesamten Datenverkehrs zwischen allen Ressourcen in einem virtuellen Netzwerk zu. Dieses Verhalten können Sie mithilfe von Netzwerksicherheitsgruppen oder benutzerdefiniertem Routing zum Weiterleiten von Datenverkehr an ein virtuelles Netzwerkgerät außer Kraft setzen. Es wird empfohlen, sich mit allen [Standardsicherheitsregeln](security-overview.md#default-security-rules) von Azure sowie mit der Anwendung von Netzwerksicherheitsgruppen-Regeln auf eine Ressource vertraut zu machen.
 
-Sie können sich Beispielentwürfe für die Implementierung einer DMZ zwischen Azure und dem Internet mithilfe eines [virtuellen Netzwerkgeräts](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) oder mit [Netzwerksicherheitsgruppen](virtual-networks-dmz-nsg.md) ansehen.
+Sie können sich Beispielentwürfe für die Implementierung eines Umkreisnetzwerks (auch als DMZ bezeichnet) zwischen Azure und dem Internet mithilfe eines [virtuellen Netzwerkgeräts](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) ansehen.
 
 ### <a name="traffic-routing"></a>Routing von Datenverkehr
 

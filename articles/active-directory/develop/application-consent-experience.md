@@ -3,25 +3,26 @@ title: Grundlegendes zu den Einwilligungserfahrungen für Azure AD-Anwendungen |
 description: Erfahren Sie mehr über die Azure AD-Einwilligungserfahrungen und deren Verwendung beim Verwalten und Entwickeln von Anwendungen in Azure AD
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/11/2018
-ms.author: celested
-ms.reviewer: zawad
+ms.topic: conceptual
+ms.date: 03/27/2019
+ms.author: ryanwi
+ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86424a7c797dfd7e73ad5f0e56929616d9653b3d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 012a79969f2fa72589ba6b70aa5398b6f4e7e811
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170974"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835252"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Grundlegendes zu Einwilligungserfahrungen für Azure AD-Anwendungen
 
@@ -85,4 +86,5 @@ Hier finden Sie die Einwilligungserfahrungen, denen ein Benutzer in den gängigs
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Eine ausführliche Übersicht über die [Zustimmungsimplementierung mit dem Azure AD-Zustimmungsframework](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
-- Ausführlichere Informationen zur [Verwendung des Zustimmungsframeworks durch mehrinstanzenfähige Anwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) zur Implementierung von Benutzer- und Administratorzustimmung mit Unterstützung für erweiterte Anwendungsmuster mit mehreren Ebenen
+- Ausführlichere Informationen zur [Verwendung des Zustimmungsframeworks durch mehrinstanzenfähige Anwendungen](active-directory-devhowto-multi-tenant-overview.md) zur Implementierung von Benutzer- und Administratorzustimmung mit Unterstützung für erweiterte Anwendungsmuster mit mehreren Ebenen
+- Erfahren Sie, [wie Sie die Herausgeberdomäne der App konfigurieren](howto-configure-publisher-domain.md).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca85007bb016cc98d1be61ce08865945e699ad4a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b5ff7f0bbf1bf474a611ae033165bca6dfaac676
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312426"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097628"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Verfahren des Azure AD-Kennwortschutzes
 
@@ -55,9 +55,12 @@ Diese Meldung ist nur ein Beispiel von mehreren möglichen Ergebnissen. Die spez
 
 Betroffene Endbenutzer müssen sich möglicherweise bei ihren IT-Mitarbeitern über die neuen Anforderungen informieren, um sichere Kennwörter wählen zu können.
 
+> [!NOTE]
+> Der Kennwortschutz für Azure AD hat keine Kontrolle über die speziellen Fehlermeldungen, die beim Ablehnen eines schwachen Kennworts vom Clientcomputer angezeigt werden.
+
 ## <a name="enable-mode"></a>Modus aktivieren
 
-Diese Einstellung sollte normalerweise im standardmäßig aktivierten Zustand (Ja) bleiben. Wenn Sie diese Einstellung auf „deaktiviert“ (Nein) festlegen, führt dies dazu, dass alle bereitgestellten DC-Agents für den Azure AD-Kennwortschutz in einen Ruhemodus wechseln, in dem alle Kennwörter vorbehaltlos akzeptiert werden und keinerlei Validierungsaktivitäten ausgeführt werden (z.B. werden nicht einmal Überwachungsereignisse ausgelöst).
+Diese Einstellung sollte im standardmäßig aktivierten Zustand (Ja) bleiben. Wenn Sie diese Einstellung auf „deaktiviert“ (Nein) festlegen, führt dies dazu, dass alle bereitgestellten DC-Agents für den Azure AD-Kennwortschutz in einen Ruhemodus wechseln, in dem alle Kennwörter vorbehaltlos akzeptiert werden und keinerlei Validierungsaktivitäten ausgeführt werden (z.B. werden nicht einmal Überwachungsereignisse ausgelöst).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

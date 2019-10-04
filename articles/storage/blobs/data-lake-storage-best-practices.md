@@ -1,19 +1,19 @@
 ---
 title: Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen2 | Microsoft-Dokumentation
 description: Erfahren Sie mehr über bewährte Methoden zur Datenerfassung, Datensicherheit und Leistung bei Verwendung von Azure Data Lake Storage Gen2 (ehemals Azure Data Lake Store).
-services: storage
-author: sachinsbigdata
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: sachins
-ms.openlocfilehash: ad77204f0c5d916b4006ffa68a9608429f93f87a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.author: normesta
+ms.reviewer: sachins
+ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246057"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991871"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen2
 
@@ -31,17 +31,17 @@ Nachdem einer Sicherheitsgruppe Berechtigungen zugewiesen wurden, sind für das 
 
 ### <a name="security-for-groups"></a>Sicherheit für Gruppen
 
-Wenn Sie oder Ihre Benutzer Zugriff auf Daten in einem Speicherkonto mit aktiviertem hierarchischen Namespace benötigen, empfiehlt es sich, Azure Active Directory-Sicherheitsgruppen zu verwenden. Einige empfohlene Gruppen für den Einstieg sind beispielsweise **ReadOnlyUsers**, **WriteAccessUsers** und **FullAccessUsers** für das Stammverzeichnis des Dateisystems und separate Gruppen für wichtige Unterverzeichnisse. Falls andere antizipierte Gruppen von Benutzern vorhanden sind, die ggf. später hinzugefügt werden sollen, aber noch nicht identifiziert wurden, können Sie die Erstellung von Dummy-Sicherheitsgruppen erwägen, die Zugriff auf bestimmte Ordner haben. Durch die Verwendung von Sicherheitsgruppen lassen sich lange Verarbeitungszeiten vermeiden, wenn Tausenden von Dateien neue Berechtigungen zugewiesen werden.
+Wenn Sie oder Ihre Benutzer Zugriff auf Daten in einem Speicherkonto mit aktiviertem hierarchischen Namespace benötigen, empfiehlt es sich, Azure Active Directory-Sicherheitsgruppen zu verwenden. Einige empfohlene Gruppen für den Einstieg sind beispielsweise **ReadOnlyUsers**, **WriteAccessUsers** und **FullAccessUsers** für das Stammverzeichnis des Containers und separate Gruppen für wichtige Unterverzeichnisse. Falls andere antizipierte Gruppen von Benutzern vorhanden sind, die ggf. später hinzugefügt werden sollen, aber noch nicht identifiziert wurden, können Sie die Erstellung von Dummy-Sicherheitsgruppen erwägen, die Zugriff auf bestimmte Ordner haben. Durch die Verwendung von Sicherheitsgruppen lassen sich lange Verarbeitungszeiten vermeiden, wenn Tausenden von Dateien neue Berechtigungen zugewiesen werden.
 
 ### <a name="security-for-service-principals"></a>Sicherheit für Dienstprinzipale
 
-Azure Active Directory-Dienstprinzipale werden normalerweise von Diensten wie Azure Databricks verwendet, um in Data Lake Storage Gen2 auf Daten zuzugreifen. Für viele Kunden kann ein einzelner Azure Active Directory-Dienstprinzipal ausreichen, der für den Stammordner des Data Lake Storage Gen2-Dateisystems über vollständige Berechtigungen verfügt. Andere Kunden benötigen ggf. mehrere Cluster mit unterschiedlichen Dienstprinzipalen, wobei ein Cluster über Vollzugriff auf die Daten und ein anderer Cluster nur über Lesezugriff verfügt. 
+Azure Active Directory-Dienstprinzipale werden normalerweise von Diensten wie Azure Databricks verwendet, um in Data Lake Storage Gen2 auf Daten zuzugreifen. Für viele Kunden kann ein einzelner Azure Active Directory-Dienstprinzipal ausreichen, der für den Stammordner des Data Lake Storage Gen2-Containers über vollständige Berechtigungen verfügt. Andere Kunden benötigen ggf. mehrere Cluster mit unterschiedlichen Dienstprinzipalen, wobei ein Cluster über Vollzugriff auf die Daten und ein anderer Cluster nur über Lesezugriff verfügt. 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Aktivieren der Data Lake Storage Gen2-Firewall beim Zugriff auf Azure-Dienste
 
-Data Lake Storage Gen2 unterstützt die Option zum Aktivieren einer Firewall und Beschränken des Zugriffs auf ausschließlich Azure-Dienste, was zum Begrenzen der Angriffsfläche für externe Angriffe empfohlen wird. Die Firewall kann im Azure-Portal für das Speicherkonto über die Option **Firewall** > **Firewall aktivieren (EIN)** > **Zugriff auf Azure-Dienste erlauben** aktiviert werden.
+Data Lake Storage Gen2 unterstützt die Option zum Aktivieren einer Firewall und Beschränken des Zugriffs auf ausschließlich Azure-Dienste, was zum Begrenzen der Angriffsfläche für externe Angriffe empfohlen wird. Die Firewall kann im Azure-Portal für das Speicherkonto über die Option **Firewall** > **Firewall aktivieren (EIN)**  > **Zugriff auf Azure-Dienste erlauben** aktiviert werden.
 
-Das Hinzufügen von Azure Databricks-Clustern zu einem virtuellen Netzwerk, dem der Zugriff über die Azure Storage-Firewall erlaubt werden kann, erfordert die Nutzung einer Previewfunktion von Azure Databricks. Um dieses Feature zu aktivieren, richten Sie eine Anfrage an den Support.
+Wenn Sie über Azure Databricks auf Ihr Speicherkonto zugreifen möchten, stellen Sie Azure Databricks in Ihrem virtuellen Netzwerk bereit, und fügen Sie dann Ihrer Firewall das virtuelle Netzwerk hinzu. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
 ## <a name="resiliency-considerations"></a>Überlegungen zur Resilienz
 
@@ -49,7 +49,7 @@ Beim Erstellen der Systemarchitektur mit Data Lake Storage Gen2 oder einem belie
 
 ### <a name="high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung
 
-Hochverfügbarkeit (High availability, HA) und Notfallwiederherstellung (Disaster Recovery, DR) können auch kombiniert werden, obwohl die Strategien sich leicht unterscheiden – vor allem in Bezug auf die Daten. Data Lake Storage Gen2 bietet bereits standardmäßig eine Dreifachreplikation als Schutz vor lokalen Hardwarefehlern. Darüber wird Hochverfügbarkeit durch andere Replikationsoptionen wie zonenredundanter Speicher verbessert, während georedundanter Speicher und georedundanter Speicher mit Lesezugriff die Notfallwiederherstellung optimieren. Beim Erstellen eines Plans für die Hochverfügbarkeit benötigt die Workload bei einer Dienstunterbrechung so schnell wie möglich Zugriff auf die aktuellen Daten, indem zu einer separat replizierten Instanz gewechselt wird, die sich am lokalen Standort oder in einer neuen Region befindet.
+Hochverfügbarkeit (High availability, HA) und Notfallwiederherstellung (Disaster Recovery, DR) können auch kombiniert werden, obwohl die Strategien sich leicht unterscheiden – vor allem in Bezug auf die Daten. Data Lake Storage Gen2 bietet bereits standardmäßig eine Dreifachreplikation als Schutz vor lokalen Hardwarefehlern. Außerdem wird Hochverfügbarkeit durch andere Replikationsoptionen wie zonenredundanter Speicher oder GZRS (Vorschau) verbessert, während georedundanter Speicher und georedundanter Speicher mit Lesezugriff die Notfallwiederherstellung optimieren. Beim Erstellen eines Plans für die Hochverfügbarkeit benötigt die Workload bei einer Dienstunterbrechung so schnell wie möglich Zugriff auf die aktuellen Daten, indem zu einer separat replizierten Instanz gewechselt wird, die sich am lokalen Standort oder in einer neuen Region befindet.
 
 Bei einer Strategie für die Notfallwiederherstellung ist es als Vorbereitung auf den unwahrscheinlichen Fall, dass eine Region aufgrund einer Katastrophe ausfällt, außerdem wichtig, dass Daten mithilfe der Replikation per georedundantem Speicher oder georedundantem Speicher mit Lesezugriff in eine andere Region repliziert werden. Sie müssen außerdem Ihre Anforderungen in Bezug auf Sonderfälle berücksichtigen, z. B. Datenbeschädigungen, in denen es ratsam sein kann, regelmäßige Momentaufnahmen als Fallbacklösung zu erstellen. Je nach Wichtigkeit und Größe der Daten können Sie erwägen, rollierende Deltamomentaufnahmen für Zeiträume von 1 Stunde, 6 Stunden und 24 Stunden zu erstellen. Dies richtet sich nach Risikotoleranzen.
 

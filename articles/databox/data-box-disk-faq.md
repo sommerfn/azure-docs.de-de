@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 04/08/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: eee33a2e1f5d081c1394368152d0d9afb7091e34
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258775"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098825"
 ---
-# <a name="what-is-azure-data-box-disk"></a>Was ist ein Azure Data Box-Datenträger?
+# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Häufig gestellte Fragen
 
 Mit der Cloudlösung für Microsoft Azure Data Box-Datenträger können Sie Daten im Terabyte-Bereich schnell, kostengünstig und zuverlässig an Azure senden. Diese FAQ-Seite enthält Fragen, die bei der Verwendung von Data Box-Datenträgern im Azure-Portal aufkommen können, und die dazugehörigen Antworten. 
 
@@ -56,13 +56,16 @@ A.  Unter [Regionale Verfügbarkeit](data-box-disk-overview.md#region-availabili
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>F: In welchen Regionen kann ich Daten über Data Box-Datenträger speichern?
 A. Data Box Disk wird für alle Regionen in den USA, Kanada, Australien, Westeuropa und Nordeuropa sowie Korea und Japan unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt.
 
+### <a name="q-will-my-data-box-disk-cross-country-borders-during-shipping"></a>F: Überquert Data Box Disk beim Versand Ländergrenzen?
+A. Data Box Disk-Geräte werden aus dem Bestimmungsland versendet, sie überqueren keine internationalen Grenzen. Die einzige Ausnahme betrifft Bestellungen innerhalb der Europäischen Union (EU), wo Datenträger in und aus beliebige(n) EU-Länder(n) gesendet werden können.
+
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>F: An wen sollte ich mich wenden, falls Probleme mit Data Box-Datenträgern auftreten?
 A. Falls Probleme mit Data Box-Datenträgern auftreten, wenden Sie sich an den [Microsoft-Support](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
 
 ## <a name="configure-and-connect"></a>Konfigurieren und Verbinden
  
 ### <a name="q-can-i-specify-the-number-of-data-box-disks-in-the-order"></a>F: Kann ich im Auftrag die Anzahl von Data Box-Datenträgern angeben?
-A.   Nein. Sie erhalten je nach Datenumfang und Verfügbarkeit einen oder mehrere Datenträger mit 8 TB Speicherplatz (maximal fünf Datenträger).  
+A.  Nein. Sie erhalten je nach Datenumfang und Verfügbarkeit einen oder mehrere Datenträger mit 8 TB Speicherplatz (maximal fünf Datenträger).  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>F: Wie entsperre ich die Data Box-Datenträger? 
 A.  Navigieren Sie im Azure-Portal zu Ihrem Auftrag für Data Box-Datenträger und dann zu **Gerätedetails**. Kopieren Sie den Hauptschlüssel. Laden Sie das Tool zum Entsperren von Data Box-Datenträgern für Ihr Betriebssystem über das Azure-Portal herunter, und extrahieren Sie es. Führen Sie das Tool auf dem Computer mit den Daten aus, die Sie auf die Datenträger kopieren möchten. Geben Sie den Hauptschlüssel an, um Ihre Datenträger zu entsperren. Alle Datenträger werden mit demselben Hauptschlüssel entsperrt. 
@@ -85,6 +88,24 @@ A.  Sie können den Status des Auftrags für Data Box-Datenträger im Azure-Port
 
 ### <a name="q-how-do-i-return-the-disks"></a>F: Wie kann ich die Datenträger zurücksenden? 
 A.  Microsoft fügt dem Versandpaket für die Data Box-Datenträger ein Versandetikett bei. Befestigen Sie das Etikett am Versandpaket, und geben Sie das sicher verschlossene Paket beim Paketdienst ab. Falls das Etikett beschädigt oder nicht mehr vorhanden ist, können Sie unter **Übersicht > Versandetikett herunterladen** ein neues Versandetikett erhalten.
+
+### <a name="can-i-pick-up-my-data-box-disk-order-myself-can-i-return-the-disks-via-a-carrier-that-i-choose"></a>Kann ich meine Data Box Disk-Bestellung selbst abholen? Kann ich die Datenträger über einen Netzbetreiber meiner Wahl zurückgeben?
+A. Ja. Microsoft bietet auch selbstverwalteten Versand in der Region „Gov (US)“ an. Beim Aufgeben der Data Box Disk-Bestellung können Sie die Option für selbstverwalteten Versand auswählen. Führen Sie die folgenden Schritte aus, um Ihre Data Box Disk-Bestellung abzuholen:
+    
+1. Nachdem Sie die Bestellung aufgegeben haben, wird die Bestellung verarbeitet, und die Datenträger werden vorbereitet. Sie werden per E-Mail benachrichtigt, dass Ihre Bestellung zur Abholung bereit ist. 
+2. Wenn die Bestellung bereit für die Abholung ist, rufen Sie im Azure-Portal Ihre Bestellung auf, und navigieren Sie zum Blatt **Übersicht**. 
+3. Im Azure-Portal wird eine Benachrichtigung mit einem Code angezeigt. Senden Sie eine E-Mail an das [Azure Data Box Operations-Team](mailto:adbops@microsoft.com), und geben Sie den Code an. Das Team gibt den Standort bekannt und plant ein Abholdatum und eine Uhrzeit. Sie müssen das Team innerhalb von fünf Werktagen nach Erhalt der E-Mail-Benachrichtigung anrufen.
+
+Führen Sie nach Abschluss der Datenkopie und der Überprüfung die folgenden Schritte aus, um den Datenträger zurückzugeben:
+
+1. Trennen Sie die Datenträger vom Computer, nachdem die Überprüfung der Daten abgeschlossen ist. Entfernen Sie die Verbindungskabel.
+2. Verpacken Sie die Datenträger und die Verbindungskabel in Luftpolsterfolie, und legen Sie sie in das Versandpaket. Fehlendes Zubehör wird ggf. in Rechnung gestellt.
+
+    - Verwenden Sie das Verpackungsmaterial aus der ursprünglichen Lieferung. Es empfiehlt sich, die Datenträger sorgfältig in Luftpolsterfolie zu verpacken.
+    - Achten Sie auf einen festen Sitz der Teile im Karton, um ein Verrutschen innerhalb der Verpackung zu vermeiden.
+3. Rufen Sie das **Übersichtsblatt** für Ihre Bestellung im Azure-Portal auf. Eine Benachrichtigung mit einem Code sollte angezeigt werden.
+4. Verwenden Sie diesen Code, und senden Sie eine E-Mail an das [Azure Data Box Operations-Team](mailto:adbops@microsoft.com), und geben Sie den Code an. Sie erhalten die Informationen darüber, wo und wann Sie die Datenträger ablegen müssen.
+
 
 ## <a name="migrate-data"></a>Migrieren von Daten
 
@@ -110,7 +131,7 @@ A.  Sie können den Kopiervorgang wie folgt beschleunigen:
 - Verwenden Sie mehrere Sitzungen.
 - Stellen Sie sicher, dass sich die Daten lokal auf dem Computer befinden, an den die Datenträger angeschlossen sind, anstatt den Kopiervorgang über die Netzwerkfreigabe durchzuführen (um Beeinträchtigungen aufgrund der Netzwerkgeschwindigkeit zu vermeiden).
 - Achten Sie darauf, dass Sie während des gesamten Kopiervorgangs USB 3.0 oder höher verwenden. Laden Sie das Tool [USBView](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview) herunter, und verwenden Sie es, um die USB-Controller und USB-Geräte zu identifizieren, die an den Computer angeschlossen sind.
-- Erstellen Sie Benchmarkwerte zur Leistung des Computers, der zum Kopieren der Daten verwendet wird. Laden Sie das [Bluestop-Tool FIO](https://bluestop.org/fio/) herunter, um Benchmarkwerte zur Leistung der Serverhardware zu erhalten.
+- Erstellen Sie Benchmarkwerte zur Leistung des Computers, der zum Kopieren der Daten verwendet wird. Laden Sie das [Bluestop-Tool FIO](https://ci.appveyor.com/project/axboe/fio) herunter, um Benchmarkwerte zur Leistung der Serverhardware zu erhalten. Wählen Sie den aktuellen x86- oder x64-Build und dann die Registerkarte **Artefakte** aus, und laden Sie die MSI herunter.
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>F: Wie kann ich für die Daten eine Beschleunigung erreichen, wenn die Quelldaten kleine Dateien (KB oder nur wenige MB) enthalten?
 A.  Sie können den Kopiervorgang wie folgt beschleunigen:
@@ -120,7 +141,7 @@ A.  Sie können den Kopiervorgang wie folgt beschleunigen:
 - Kopieren Sie die Dateien auf den Datenträger der VM.
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>F: Kann ich mehrere Speicherkonten mit Data Box-Datenträgern verwenden?
-A.   Nein. Für Data Box-Datenträger wird derzeit nur ein Speicherkonto (allgemein oder klassisch) unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Blobs unterstützt. Derzeit werden nur die Speicherkonten in den USA, Westeuropa und Nordeuropa unterstützt, die Teil der öffentlichen Azure-Cloud sind.
+A.  Nein. Für Data Box-Datenträger wird derzeit nur ein Speicherkonto (allgemein oder klassisch) unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Blobs unterstützt. Derzeit werden nur die Speicherkonten in den USA, Westeuropa und Nordeuropa unterstützt, die Teil der öffentlichen Azure-Cloud sind.
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>F: Was umfasst das Toolset, das für meine Daten für Data Box-Datenträger verfügbar ist?
 A. Das für Data Box Disk verfügbare Toolset enthält drei Tools:

@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 19949b555a5be21c06c3acfbbd5fb9be08dc9f23
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2ca8f0e34b63802453c8876f878b531e78e66d76
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766941"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65991776"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Erste Schritte mit Service Bus-Themen
 
@@ -27,36 +27,32 @@ ms.locfileid: "57766941"
 
 Dieses Tutorial enthält die folgenden Schritte:
 
-1. Erstellen eines Service Bus-Namespace mithilfe des Azure-Portals
-2. Erstellen eines Service Bus-Themas mithilfe des Azure-Portals
-3. Erstellen eines Service Bus-Abonnements für dieses Thema mit dem Azure-Portal
-4. Schreiben einer .NET Core-Konsolenanwendung, die eine Gruppe von Nachrichten an das Thema sendet
-5. Schreiben einer .NET Core-Konsolenanwendung, die diese Nachrichten aus dem Abonnement empfängt
+1. Schreiben einer .NET Core-Konsolenanwendung, die eine Gruppe von Nachrichten an das Thema sendet
+2. Schreiben einer .NET Core-Konsolenanwendung, die diese Nachrichten aus dem Abonnement empfängt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. [Visual Studio 2017 Update 3 (Version 15.3, 26730.01)](https://www.visualstudio.com/vs) oder höher
-2. [NET Core SDK](https://www.microsoft.com/net/download/windows) ab Version 2.0
-2. Ein Azure-Abonnement.
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-[!INCLUDE [service-bus-create-topics-subscriptions-portal](../../includes/service-bus-create-topics-subscriptions-portal.md)]
-
+1. Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können [Ihre Visual Studio-oder MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Konto anmelden](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Befolgen Sie die Schritte im [Schnellstart: Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements dieses Themas im Azure-Portal](service-bus-quickstart-topics-subscriptions-portal.md), um folgende Aufgaben durchzuführen:
+    1. Erstellen Sie einen Service Bus-**Namespace**.
+    2. Rufen Sie die **Verbindungszeichenfolge** ab.
+    3. Erstellen Sie ein **Thema** im Namespace.
+    4. Erstellen Sie **ein Abonnement** für das Thema im Namespace.
+3. [Visual Studio 2017 Update 3 (Version 15.3, 26730.01)](https://www.visualstudio.com/vs) oder höher
+4. [NET Core SDK](https://www.microsoft.com/net/download/windows) ab Version 2.0
+ 
 ## <a name="send-messages-to-the-topic"></a>Senden von Nachrichten an das Thema
 
 Erstellen Sie mithilfe von Visual Studio eine C#-Konsolenanwendung, um Nachrichten an das Thema senden zu können.
 
 ### <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
-Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsolen-App (.NET Core)**.
+Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsolen-App (.NET Core)** .
 
 ### <a name="add-the-service-bus-nuget-package"></a>Hinzufügen des NuGet-Pakets "Service Bus"
 
 1. Klicken Sie mit der rechten Maustaste auf das neu erstellte Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
-2. Klicken Sie auf die Registerkarte **Durchsuchen**, suchen Sie nach **[Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)**, und wählen Sie anschließend das Element **Microsoft.Azure.ServiceBus** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach dieses Dialogfeld.
+2. Klicken Sie auf die Registerkarte **Durchsuchen**, suchen Sie nach **[Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/)** , und wählen Sie anschließend das Element **Microsoft.Azure.ServiceBus** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach dieses Dialogfeld.
    
     ![Auswählen eines NuGet-Pakets][nuget-pkg]
 
@@ -204,7 +200,7 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
 
 ## <a name="receive-messages-from-the-subscription"></a>Empfangen von Nachrichten aus dem Abonnement
 
-Erstellen Sie zum Empfangen der soeben gesendeten Nachrichten eine weitere .NET Core-Konsolenanwendung, und installieren Sie das NuGet-Paket **Microsoft.Azure.ServiceBus**. Die Vorgehensweise ist dabei ähnlich wie bei der Absenderanwendung.
+Erstellen Sie zum Empfangen der gesendeten Nachrichten eine weitere .NET Core-Konsolenanwendung, und installieren Sie das NuGet-Paket **Microsoft.Azure.ServiceBus**. Die Vorgehensweise ist dabei ähnlich wie bei der Absenderanwendung.
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>Schreiben von Code für das Empfangen von Nachrichten aus dem Abonnement
 
@@ -397,6 +393,9 @@ Erstellen Sie zum Empfangen der soeben gesendeten Nachrichten eine weitere .NET 
     ![Länge des Themas][topic-message-receive]
 
 Glückwunsch! Sie haben mit der .NET Standard-Bibliothek ein Thema und ein Abonnement erstellt, zehn Nachrichten gesendet und diese Nachrichten empfangen.
+
+> [!NOTE]
+> Sie können Service Bus-Ressourcen mit dem [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) verwalten. Mit dem Service Bus-Explorer können Benutzer eine Verbindung mit einem Service Bus-Namespace herstellen und Messagingentitäten auf einfache Weise verwalten. Das Tool stellt erweiterte Features wie Import-/Exportfunktionen oder Testmöglichkeiten für Themen, Warteschlangen, Abonnements, Relaydienste, Notification Hubs und Event Hubs zur Verfügung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

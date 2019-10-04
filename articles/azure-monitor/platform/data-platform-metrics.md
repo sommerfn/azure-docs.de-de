@@ -5,24 +5,23 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 2646941e2384acf6d303615f564b65d616931180
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e534754e46e6f2ad9b99b67d24d9f7da63a51a4f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794251"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258375"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metriken in Azure Monitor
 
 > [!NOTE]
 > Die Azure Monitor-Datenplattform basiert auf zwei fundamentalen Datentypen: Metriken und Protokolle. In diesem Artikel werden Metriken beschrieben. Unter [Protokolle in Azure Monitor](data-platform-logs.md) finden Sie eine ausführliche Beschreibung von Protokollen, und unter [Azure Monitor-Datenplattform](data-platform.md) finden Sie einen Vergleich.
-
 
 Metriken in Azure Monitor sind einfach gehalten und unterstützen Szenarien vom Typ „Nahezu in Echtzeit“, sodass sie besonders für Warnungen und die schnelle Erkennung von Problemen hilfreich sind. In diesem Artikel wird beschrieben, wie Metriken strukturiert sind und welche Möglichkeiten Sie damit haben. Außerdem sind die verschiedenen Datenquellen angegeben, in denen Daten in Metriken gespeichert sind.
 
@@ -38,10 +37,9 @@ In der folgenden Tabelle sind die unterschiedlichen Optionen zur Nutzung von Met
 | Visualisieren | Heften Sie ein Diagramm aus dem Metrik-Explorer an ein [Azure-Dashboard](../learn/tutorial-app-dashboards.md) an.<br>Erstellen Sie eine [Arbeitsmappe](../app/usage-workbooks.md) zum Kombinieren mehrerer Datasets in einem interaktiven Bericht. Exportieren Sie die Ergebnisse einer Abfrage für [Grafana](grafana-plugin.md), um die Dashboardfunktionen zu nutzen und die Daten mit anderen Datenquellen zu kombinieren. |
 | Warnung | Konfigurieren einer [Warnungsregel für eine Metrik](alerts-metric.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](action-groups.md) ausführt, sobald der Metrikwert einen Schwellenwert überschreitet. |
 | Automatisieren |  Verwenden von [Autoskalierung](autoscale-overview.md), um Ressourcen basierend auf einem Schwellenwert, der von einem Metrikwert über- oder unterschritten wird, herauf- oder herabzusetzen. |
-| Export | [Weiterleiten von Metriken an Protokolle](diagnostic-logs-stream-log-store.md), um Daten in Azure Monitor-Metriken zusammen mit Daten in Azure Monitor-Protokollen zu analysieren und Metrikwerte länger als 93 Tage zu speichern.<br>Streamen von Metriken an einen [Event Hub](stream-monitoring-data-event-hubs.md), um sie an externe Systeme zu leiten. |
+| Export | [Weiterleiten von Metriken an Protokolle](resource-logs-collect-storage.md), um Daten in Azure Monitor-Metriken zusammen mit Daten in Azure Monitor-Protokollen zu analysieren und Metrikwerte länger als 93 Tage zu speichern.<br>Streamen von Metriken an einen [Event Hub](stream-monitoring-data-event-hubs.md), um sie an externe Systeme zu leiten. |
 | Gerätehandle | Zugreifen auf Metrikwerte über eine Befehlszeile mit [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/az.applicationinsights).<br>Zugreifen auf Metrikwerte über eine benutzerdefinierte Anwendung per [REST-API](rest-api-walkthrough.md).<br>Zugreifen auf Metrikwerte über eine Befehlszeile per [CLI](/cli/azure/monitor/metrics). |
 | Archivieren | [Archivieren](..//learn/tutorial-archive-data.md) des Leistungs- oder Integritätsverlaufs Ihrer Ressourcen zu Kompatibilitäts-/Überwachungszwecken oder zur Offline-Berichterstellung. |
-
 
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Wie sind Daten in Azure Monitor-Metriken strukturiert?
 Mit Azure Monitor-Metriken erfasste Daten werden in einer Zeitreihendatenbank gespeichert, die für das Analysieren von Daten mit Zeitstempel optimiert ist. Jede Gruppe von Metrikwerten stellt eine Zeitreihe mit den folgenden Eigenschaften dar:
@@ -53,8 +51,6 @@ Mit Azure Monitor-Metriken erfasste Daten werden in einer Zeitreihendatenbank ge
 * Eigentlicher Wert
 * Einige Metriken weisen ggf. mehrere Dimensionen auf, wie unter [Mehrdimensionale Metriken](#multi-dimensional-metrics) beschrieben. Benutzerdefinierte Metriken können über bis zu 10 Dimensionen verfügen.
 
-Metriken werden in Azure 93 Tage lang gespeichert. Sie können [Plattformmetriken für Azure Monitor-Ressourcen an einen Log Analytics-Arbeitsbereich senden](diagnostic-logs-stream-log-store.md), um Informationen zu langfristigen Trends zu erhalten.
-
 ## <a name="multi-dimensional-metrics"></a>Mehrdimensionale Metriken
 Eine Schwierigkeit besteht bei Metrikdaten darin, dass häufig nur eingeschränkte Informationen zur Verfügung stehen, wenn es um die Bereitstellung von Kontext für erfasste Werte geht. In Azure Monitor wird dieses Problem mit mehrdimensionalen Metriken gelöst. Dimensionen einer Metrik sind Name/Wert-Paare, die zusätzliche Daten zum Beschreiben des Metrikwerts enthalten. Eine Metrik namens _Verfügbarer Speicherplatz_ kann beispielsweise eine Dimension mit dem Namen _Laufwerk_ und den Werten _C:_ und _D:_ aufweisen. In diesem Fall kann der verfügbare Speicherplatz entweder für beide Laufwerke oder für jedes Laufwerk separat angezeigt werden.
 
@@ -62,17 +58,17 @@ Im folgenden Beispiel werden zwei Datasets für eine hypothetische Metrik namens
 
 ### <a name="network-throughput"></a>Netzwerkdurchsatz
 
-| Zeitstempel     | Metrikwert |
+| Timestamp     | Metrikwert |
 | ------------- |:-------------|
-| 8/9/2017 8:14 | 1.331,8 KBit/s |
-| 8/9/2017 8:15 | 1.141,4 KBit/s |
-| 8/9/2017 8:16 | 1.110,2 KBit/s |
+| 8/9/2017 8:14 | 1\.331,8 KBit/s |
+| 8/9/2017 8:15 | 1\.141,4 KBit/s |
+| 8/9/2017 8:16 | 1\.110,2 KBit/s |
 
 Diese nichtdimensionale Metrik kann nur grundlegende Fragen wie etwa Folgende beantworten: „Wie hoch war mein Netzwerkdurchsatz zu einem bestimmten Zeitpunkt?“.
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Netzwerkdurchsatz mit zwei Dimensionen („IP“ und „Richtung“)
 
-| Zeitstempel     | Dimension „IP“   | Dimension „Richtung“ | Metrikwert|
+| Timestamp     | Dimension „IP“   | Dimension „Richtung“ | Metrikwert|
 | ------------- |:-----------------|:------------------- |:-----------|
 | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Send"    | 646,5 KBit/s |
 | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Receive" | 420,1 KBit/s |
@@ -100,6 +96,24 @@ Es gibt drei grundlegende Quellen von Metriken, die von Azure Monitor erfasst we
 **Anwendungsmetriken** werden von Application Insights für Ihre überwachten Anwendungen erstellt und helfen Ihnen beim Erkennen von Leistungsproblemen und beim Nachverfolgen von Trends in der Nutzung Ihrer Anwendung. Dies beinhaltet solche Werte wie die _Serverantwortzeit_ und _Browserausnahmen_.
 
 **Benutzerdefinierte Metriken** sind Metriken, die Sie zusätzlich zu den automatisch verfügbaren Standardmetriken definieren. Sie können [benutzerdefinierte Metriken in Ihrer Anwendung definieren](../app/api-custom-events-metrics.md), die von Application Insights überwacht wird, oder benutzerdefinierte Metriken für einen Azure-Dienst erstellen, indem Sie die [API für benutzerdefinierte Metriken](metrics-store-custom-rest-api.md) verwenden.
+
+## <a name="retention-of-metrics"></a>Aufbewahrung von Metriken
+Für die meisten Ressourcen in Azure werden Metriken für 93 Tage gespeichert. Es gibt einige Ausnahmen:
+
+**Gastbetriebssystemmetriken**
+-   **Klassische Gastbetriebssystemmetriken:** Dies ist Leistungsindikatoren, die von der [Diagnose-Erweiterung für Windows (WAD)](../platform/diagnostics-extension-overview.md) oder der [Diagnose-Erweiterung für Linux (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) erfasst und an ein Azure Storage-Konto weitergeleitet werden. Die Vermerkdauer für diese Metriken beträgt 14 Tage.
+-   **An Azure Monitor-Metriken gesendete Gastbetriebssystemmetriken:** Dies sind Leistungsindikatoren, die von der Diagnose-Erweiterung für Windows (WAD) erfasst und an die [Azure Monitor-Senke](diagnostics-extension-overview.md#data-storage) gesendet werden. Alternativ können Sie auch über den [InfluxData Telegraf-Agent](https://www.influxdata.com/time-series-platform/telegraf/) auf Linux-Computern gesendet werden. Die Vermerkdauer für diese Metriken beträgt 93 Tage.
+-   **Vom Log Analytics-Agent erfasste Gastbetriebssystemmetriken:** Dies sind Leistungsindikatoren, die vom Log Analytics-Agent erfasst und an einen Log Analytics-Arbeitsbereich gesendet werden. Die Vermerkdauer für diese Metriken beträgt 31 Tage. Sie kann auf bis zu 2 Jahre verlängert werden.
+
+**Auf Application Insights-Protokollen basierende Metriken**. 
+- [Protokollbasierte Metriken](../app/pre-aggregated-metrics-log-metrics.md) werden im Hintergrund in Protokollabfragen übersetzt. Ihre Aufbewahrung entspricht der Aufbewahrung von Ereignissen in den zugrunde liegenden Protokollen. Für die Application Insights-Ressourcen werden die Protokolle 90 Tage lang gespeichert.
+
+
+> [!NOTE]
+> Sie können [Plattformmetriken für Azure Monitor-Ressourcen an einen Log Analytics-Arbeitsbereich senden](resource-logs-collect-storage.md), um Informationen zu langfristigen Trends zu erhalten.
+
+
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

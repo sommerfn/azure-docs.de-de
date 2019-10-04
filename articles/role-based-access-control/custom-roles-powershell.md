@@ -15,11 +15,11 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: ad1185cab2b2bd2d0fea10f21b7859fd9ab1339f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807608"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66158447"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Erstellen benutzerdefinierter Rollen für Azure-Ressourcen mithilfe von Azure PowerShell
 
@@ -36,7 +36,7 @@ Zum Erstellen von benutzerdefinierten Rollen benötigen Sie Folgendes:
 - Berechtigungen zum Erstellen von benutzerdefinierten Rollen, etwa [Besitzer](built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator)
 - [Azure Cloud Shell](../cloud-shell/overview.md) oder [Azure PowerShell](/powershell/azure/install-az-ps)
 
-## <a name="list-custom-roles"></a>Auflisten benutzerdefinierter Rollen 
+## <a name="list-custom-roles"></a>Auflisten benutzerdefinierter Rollen
 
 Zum Auflisten der Rollen, die in einem Bereich für die Zuweisung verfügbar sind, wählen Sie den Befehl [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition). Im folgenden Beispiel werden alle Rollen aufgelistet, die für die Zuweisung im ausgewählten Abonnement verfügbar sind.
 

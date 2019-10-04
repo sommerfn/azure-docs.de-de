@@ -1,22 +1,22 @@
 ---
 title: Grundlegendes zur Azure IoT Hub-Abfragesprache | Microsoft Docs
 description: 'Entwicklerhandbuch: Beschreibung der SQL-ähnlichen IoT Hub-Abfragesprache, die zum Abrufen von Informationen zu Geräte-/Modulzwillingen und Aufträgen von IoT Hub verwendet wird.'
-author: rezasherafat
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: rezas
-ms.openlocfilehash: e5387f1e44a55b0a30f8620b49d237ac1e1ec2b6
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.author: robinsh
+ms.openlocfilehash: 03d2ca0b7d6b53215c5293f84c8b22a2dc0d8297
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730597"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67450058"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Geräte- und Modulzwillinge, Aufträge und Nachrichtenrouting
 
-IoT Hub bietet eine leistungsstarke, SQL-ähnliche Sprache zum Abrufen von Informationen zu [Gerätezwillingen](iot-hub-devguide-device-twins.md), [Aufträgen](iot-hub-devguide-jobs.md) und [Nachrichtenrouting](iot-hub-devguide-messages-d2c.md). Dieser Artikel enthält Folgendes:
+IoT Hub verfügt über eine leistungsstarke SQL-ähnliche Sprache zum Abrufen von Informationen zu [Gerätezwillingen](iot-hub-devguide-device-twins.md), [Modulzwillingen](iot-hub-devguide-module-twins.md), [Aufträgen](iot-hub-devguide-jobs.md) und zum [Nachrichtenrouting](iot-hub-devguide-messages-d2c.md). Dieser Artikel enthält Folgendes:
 
 * Eine Einführung in die wichtigsten Features der IoT Hub-Abfragesprache
 * Eine ausführliche Beschreibung der Sprache Weitere Informationen zur Abfragesprache für das Nachrichtenrouting finden Sie unter [Abfragen im Nachrichtenrouting](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
@@ -25,7 +25,7 @@ IoT Hub bietet eine leistungsstarke, SQL-ähnliche Sprache zum Abrufen von Infor
 
 ## <a name="device-and-module-twin-queries"></a>Abfragen von Geräte- und Modulzwillingen
 
-[Gerätezwillinge](iot-hub-devguide-device-twins.md) und Modulzwillinge können beliebige JSON-Objekte als Tags und Eigenschaften enthalten. In IoT Hub können Sie Geräte- und Modulzwillinge als einzelnes JSON-Dokument abfragen, das alle Informationen zum Zwilling enthält.
+[Gerätezwillinge](iot-hub-devguide-device-twins.md) und [Modulzwillinge](iot-hub-devguide-module-twins.md) können beliebige JSON-Objekte als Tags und Eigenschaften enthalten. In IoT Hub können Sie Geräte- und Modulzwillinge als einzelnes JSON-Dokument abfragen, das alle Informationen zum Zwilling enthält.
 
 Angenommen, Ihre IoT Hub-Gerätezwillinge weisen die folgende Struktur auf (Modulzwillinge sehen ähnlich aus, enthalten aber zusätzlich eine Modul-ID):
 
@@ -159,7 +159,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>Modulzwillingsabfragen
 
-Das Abfragen von Modulzwillingen ähnelt dem Abfragen von Gerätezwillingen. Allerdings wird dabei eine andere Sammlung/ein anderer Namespace verwendet. Anstelle von „from devices“ können Sie „device.modules“ abfragen:
+Das Abfragen von Modulzwillingen ähnelt dem Abfragen von Gerätezwillingen. Allerdings wird hierbei eine andere Sammlung bzw. ein anderer Namespace verwendet. Sie führen die Abfrage nicht über **devices**, sondern über **device.modules** durch:
 
 ```sql
 SELECT * FROM devices.modules
@@ -315,7 +315,7 @@ Derzeit wird für Abfragen von **devices.jobs** Folgendes nicht unterstützt:
 
 ## <a name="basics-of-an-iot-hub-query"></a>Grundlagen von IoT Hub-Abfragen
 
-Jede IoT Hub-Abfrage besteht aus einer SELECT- und einer FROM-Klausel mit optionalen WHERE- und GROUP BY-Klauseln. Jede Abfrage wird für eine Sammlung von JSON-Dokumenten ausgeführt, z.B. Gerätezwillinge. Die FROM-Klausel zeigt die Dokumentsammlung an, die durchlaufen werden soll (**devices** oder **devices.jobs**). Anschließend wird der Filter in der WHERE-Klausel angewendet. Mit Aggregationen werden die Ergebnisse dieses Schritts gruppiert, wie in der GROUP BY-Klausel angegeben. Für jede Gruppe wird eine Zeile generiert, wie in der SELECT-Klausel angegeben.
+Jede IoT Hub-Abfrage besteht aus einer SELECT- und einer FROM-Klausel mit optionalen WHERE- und GROUP BY-Klauseln. Jede Abfrage wird für eine Sammlung von JSON-Dokumenten ausgeführt, z.B. Gerätezwillinge. Die FROM-Klausel zeigt die Dokumentsammlung an, die durchlaufen werden soll (**devices**, **devices.modules** oder **devices.jobs**). Anschließend wird der Filter in der WHERE-Klausel angewendet. Mit Aggregationen werden die Ergebnisse dieses Schritts gruppiert, wie in der GROUP BY-Klausel angegeben. Für jede Gruppe wird eine Zeile generiert, wie in der SELECT-Klausel angegeben.
 
 ```sql
 SELECT <select_list>
@@ -326,17 +326,17 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>Die FROM-Klausel
 
-Die Klausel **FROM <from_specification>** kann nur zwei Werte annehmen: **FROM-Geräte** zum Abfragen von Gerätezwillingen oder **FROM devices.jobs** beim Abfragen von Auftragsdetails pro Gerät.
-
+Die Klausel **FROM <from_specification>** kann nur drei Werte haben: **FROM devices**, um Gerätezwillinge abzufragen, **FROM devices.modules**, um Modulzwillinge abzufragen, oder **FROM devices.jobs**, um Auftragsdetails pro Gerät abzufragen.
 
 ## <a name="where-clause"></a>WHERE-Klausel
-Die **WHERE <Filterbedingung>**-Klausel ist optional. Sie gibt eine oder mehrere Bedingungen an, die von den in der FROM-Sammlung enthaltenen JSON-Dokumenten erfüllt werden müssen, um als Teil des Ergebnisses zurückgegeben zu werden. Jedes JSON-Dokument muss die angegebenen Bedingungen erfüllen, um in das Ergebnis einbezogen zu werden.
+
+Die **WHERE <Filterbedingung>** -Klausel ist optional. Sie gibt eine oder mehrere Bedingungen an, die von den in der FROM-Sammlung enthaltenen JSON-Dokumenten erfüllt werden müssen, um als Teil des Ergebnisses zurückgegeben zu werden. Jedes JSON-Dokument muss die angegebenen Bedingungen erfüllen, um in das Ergebnis einbezogen zu werden.
 
 Die zulässigen Bedingungen werden im Abschnitt [Ausdrücke und Bedingungen](iot-hub-devguide-query-language.md#expressions-and-conditions) beschrieben.
 
 ## <a name="select-clause"></a>Die SELECT-Klausel
 
-Die **SELECT <Liste>**-Klausel ist obligatorisch und gibt an, welche Werte von der Abfrage abgerufen werden. Sie gibt die JSON-Werte an, mit denen die neuen JSON-Objekte erstellt werden sollen.
+Die **SELECT <Liste>** -Klausel ist obligatorisch und gibt an, welche Werte von der Abfrage abgerufen werden. Sie gibt die JSON-Werte an, mit denen die neuen JSON-Objekte erstellt werden sollen.
 Für jedes Element der gefilterten (und optional gruppierten) Teilmenge der FROM-Sammlung wird in der Projektionsphase ein neues JSON-Objekt generiert. Dieses Objekt wird mit den in der SELECT-Klausel angegebenen Werten erstellt.
 
 Dies ist die Grammatik der SELECT-Klausel:
@@ -366,7 +366,8 @@ SELECT [TOP <max number>] <projection list>
 Derzeit werden andere Auswahlklauseln als **SELECT*** nur in Aggregatabfragen für Gerätezwillinge unterstützt.
 
 ## <a name="group-by-clause"></a>GROUP BY-Klausel
-Die **GROUP BY <Gruppierungsspezifikation>**-Klausel ist ein optionaler Schritt, der nach dem in der WHERE-Klausel angegebenen Filter und vor der in der SELECT-Klausel angegebenen Projektion ausgeführt wird. Sie gruppiert Dokumente anhand des Werts eines Attributs. Diese Gruppen werden verwendet, um aggregierte Werte gemäß der SELECT-Klausel zu generieren.
+
+Die **GROUP BY <Gruppierungsspezifikation>** -Klausel ist ein optionaler Schritt, der nach dem in der WHERE-Klausel angegebenen Filter und vor der in der SELECT-Klausel angegebenen Projektion ausgeführt wird. Sie gruppiert Dokumente anhand des Werts eines Attributs. Diese Gruppen werden verwendet, um aggregierte Werte gemäß der SELECT-Klausel zu generieren.
 
 Ein Beispiel für eine Abfrage mit GROUP BY:
 
@@ -393,9 +394,9 @@ Die GROUP BY-Klausel wird derzeit nur für Abfragen von Gerätezwillingen unters
 > [!IMPORTANT]
 > Der Begriff `group` wird derzeit in Abfragen als spezielles Schlüsselwort behandelt. Wenn Sie `group` als Eigenschaftenname verwenden, sollten Sie ihn zur Vermeidung von Fehlern in doppelte Klammern einschließen, z.B. `SELECT * FROM devices WHERE tags.[[group]].name = 'some_value'`.
 >
->
 
 ## <a name="expressions-and-conditions"></a>Ausdrücke und Bedingungen
+
 Auf hoher Ebene wird ein *Ausdruck*:
 
 * in eine Instanz eines JSON-Typs (z. B. boolescher Wert, Zahl, Zeichenfolge, Array oder Objekt) ausgewertet.
@@ -443,6 +444,7 @@ Informationen dazu, wofür die einzelnen Symbole in der Ausdruckssyntax stehen, 
 | string_literal |Zeichenfolgenliterale sind Unicode-Zeichenfolgen, die durch eine Sequenz aus null oder mehr Unicode-Zeichen oder Escapesequenzen dargestellt werden. Zeichenfolgenliterale werden in einfache Anführungszeichen oder doppelte Anführungszeichen eingeschlossen. Zulässige Escapezeichen: `\'`, `\"`, `\\`, `\uXXXX` für Unicode-Zeichen, die durch 4 Hexadezimalstellen definiert werden. |
 
 ### <a name="operators"></a>Operatoren
+
 Die folgenden Operatoren werden unterstützt:
 
 | Familie | Operatoren |
@@ -452,6 +454,7 @@ Die folgenden Operatoren werden unterstützt:
 | Vergleich |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Functions
+
 Bei Abfragen von Zwillingen und Aufträgen wird nur folgende Funktion unterstützt:
 
 | Funktion | BESCHREIBUNG |

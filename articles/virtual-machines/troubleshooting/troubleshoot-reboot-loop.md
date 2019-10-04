@@ -4,21 +4,20 @@ description: Informationen zur Problembehandlung bei einer Windows-Neustartschle
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 032bc1b9c4b1b0e3bf8040ed52bf4db65ba7b6c7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d8a1d64ac8e65fd52730ee1750c0b0b1949b3512
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085591"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088465"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows-Neustartschleife auf einem virtuellen Azure-Computer
 In diesem Artikel wird die Neustartschleife beschrieben, die auf einem virtuellen Windows-Computer (Virtual Machine, VM) in Microsoft Azure auftreten kann.
@@ -102,6 +101,8 @@ Um dieses Problem zu lösen, können Sie [den Betriebssystemdatenträger sichern
 Stellen Sie die letzte als funktionierend bekannte Konfiguration des virtuellen Computers her. Führen Sie die unter [Starten des virtuellen Azure Windows-Computers in der letzten als funktionierend bekannten Konfiguration](https://support.microsoft.com/help/4016731/) aufgeführten Schritte aus.
 
 ### <a name="solution-for-cause-3"></a>Lösung für Ursache 3
+>[!NOTE]
+>Das folgende Verfahren sollte nur als letzte Maßnahme verwendet werden. Beim Wiederherstellen über „RegBack“ kann der Zugriff auf den Computer wiederhergestellt werden, aber das Betriebssystem wird nicht als stabil betrachtet, weil in der Registrierung zwischen dem Zeitstempel der Struktur und dem aktuellen Tag Daten verloren gehen. Sie müssen einen neuen virtuellen Computer erstellen und Pläne zum Migrieren von Daten erarbeiten.
 
 1. Nachdem der Datenträger an einen Problembehandlungs-VM angefügt wurde, müssen Sie sicherstellen, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist.
 
@@ -113,5 +114,4 @@ Stellen Sie die letzte als funktionierend bekannte Konfiguration des virtuellen 
 
 5. [Erstellen Sie einen neuen virtuellen Computer auf Grundlage des Betriebssystemdatenträgers](../windows/create-vm-specialized.md).
 
->[!NOTE]
->Das folgende Verfahren sollte nur als letzte Maßnahme verwendet werden. Beim Wiederherstellen über „RegBack“ kann der Zugriff auf den Computer wiederhergestellt werden, aber das Betriebssystem wird nicht als stabil betrachtet, weil in der Registrierung zwischen dem Zeitstempel der Struktur und dem aktuellen Tag Daten verloren gehen. Sie müssen einen neuen virtuellen Computer erstellen und Pläne zum Migrieren von Daten erarbeiten.
+

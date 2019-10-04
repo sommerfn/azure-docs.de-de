@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: a21b9f45d70151c2a2c2ae8ac6328a3eeb609b29
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ca534d3ffcfd1d4caeb9cf755934a846fafae26e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883333"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570109"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Die Wingtip Tickets SaaS-Anwendung
 
@@ -36,13 +35,13 @@ Es stehen drei Versionen der App zur Verfügung. Jede dieser Versionen steht fü
 
 Das Muster mit einer eigenständigen Anwendung pro Mandant besteht aus einer einzelnen Mandantenanwendung und einer Datenbank für jeden Mandanten. Die Anwendung jedes Mandanten wird mit der zugehörigen Datenbank in einer separaten Azure-Ressourcengruppe bereitgestellt. Die Ressourcengruppe kann im Abonnement des Dienstanbieters oder im Abonnement des Mandanten bereitgestellt und vom Anbieter im Auftrag des Mandanten verwaltet werden. Das Muster mit einer eigenständigen Anwendung pro Mandant bietet das höchste Maß an Isolierung für die Mandanten, ist aber in der Regel die teuerste Lösung, da Ressourcen nicht von mehreren Mandanten gemeinsam genutzt werden können.  Dieses Muster eignet sich gut für Anwendungen, die möglicherweise komplexer sind und für eine kleinere Anzahl von Mandanten bereitgestellt werden.  Bei eigenständigen Bereitstellungen kann die Anwendung für den einzelnen Mandanten einfacher als in anderen Mustern angepasst werden.  
 
-Weitere Informationen finden Sie in den [Tutorials][docs-tutorials-for-wingtip-sa], den Code finden Sie auf GitHub: [.../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
+Weitere Informationen finden Sie in den [Tutorials][docs-tutorials-for-wingtip-sa] und den Code auf GitHub: [.../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
 
 ## <a name="database-per-tenant-pattern"></a>Muster mit einer Datenbank pro Mandant
 
 Das Muster mit einer Datenbank pro Mandant ist eine effektive Version für Dienstanbieter, die sowohl ihre Mandanten isolieren müssen als auch einen zentralisierten Dienst ausführen möchten, der eine kosteneffiziente Verwendung gemeinsam genutzter Ressourcen ermöglicht. Für jeden Veranstaltungsort (also jeden Mandanten) wird eine Datenbank erstellt, und alle Datenbanken werden zentral verwaltet. Datenbanken können in Pools für elastische Datenbanken gehostet werden, um eine kosteneffiziente und einfache Leistungsverwaltung zu ermöglichen, die von den nicht vorhersehbaren Workloadmustern der Mandanten profitiert. Eine Katalogdatenbank enthält die Zuordnung zwischen Mandanten und ihren Datenbanken. Diese Zuordnung wird mithilfe der Verwaltungsfeatures der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md) für die Shardzuordnung verwaltet, die eine effiziente Verbindungsverwaltung für die Anwendung ermöglicht.
 
-Weitere Informationen finden Sie in den [Tutorials][docs-tutorials-for-wingtip-dpt], den Code finden Sie auf GitHub: [.../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
+Weitere Informationen finden Sie in den [Tutorials][docs-tutorials-for-wingtip-dpt] und den Code auf GitHub: [.../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
 
 ## <a name="sharded-multi-tenant-database-pattern"></a>Muster für mehrinstanzenfähige Datenbanken mit Sharding
 
@@ -50,7 +49,7 @@ Mehrinstanzenfähige Datenbanken sind eine effektive Möglichkeit für Dienstanb
 
 Dieses Muster ermöglicht auch ein *hybrides* Modell, bei dem Sie durch Verwenden einer Datenbank für mehrere Mandanten die Kosten optimieren oder mit einem einzelnen Mandanten mit eigener Datenbank für eine optimale Isolierung sorgen können. Diese Entscheidung kann für jeden Mandanten einzeln getroffen werden, entweder während der Bereitstellung des Mandanten oder später – ohne Auswirkungen auf die Anwendung.  Dieses Modell lässt sich effektiv einsetzen, wenn Gruppen von Mandanten unterschiedlich behandelt werden müssen. Beispielsweise können kostengünstige Mandanten freigegebenen Datenbanken zugewiesen werden, während Premium-Mandanten eigene Datenbanken erhalten. 
 
-Weitere Informationen finden Sie in den [Tutorials][docs-tutorials-for-wingtip-mt], den Code finden Sie auf GitHub: [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
+Weitere Informationen finden Sie in den [Tutorials][docs-tutorials-for-wingtip-mt] und den Code auf GitHub: [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -61,16 +60,16 @@ Weitere Informationen finden Sie in den [Tutorials][docs-tutorials-for-wingtip-m
 #### <a name="tutorials-and-code"></a>Tutorials und Code
 
 - Eigenständige Anwendung pro Mandant:
-    - [Tutorials für eigenständige Apps][docs-tutorials-for-wingtip-sa].
-    - [Code für eigenständige Anwendung auf GitHub][github-code-for-wingtip-sa].
+    - [Tutorials für eigenständige Anwendung][docs-tutorials-for-wingtip-sa]
+    - [Code für eigenständige Anwendung auf GitHub][github-code-for-wingtip-sa]
 
 - Eine Datenbank pro Mandant:
-    - [Tutorials für eine Datenbank pro Mandant][docs-tutorials-for-wingtip-dpt].
-    - [Code für eine Datenbank pro Mandant auf GitHub][github-code-for-wingtip-dpt].
+    - [Tutorials für eine Datenbank pro Mandant][docs-tutorials-for-wingtip-dpt]
+    - [Code für eine Datenbank pro Mandant auf GitHub][github-code-for-wingtip-dpt]
 
 - Mehrinstanzenfähige Datenbank mit Shards:
-    - [Tutorials für mehrinstanzenfähige Datenbanken mit Shards][docs-tutorials-for-wingtip-mt].
-    - [Code für mehrinstanzenfähige Datenbanken mit Shards auf GitHub][github-code-for-wingtip-mt].
+    - [Tutorials für mehrinstanzenfähige Datenbanken mit Shards][docs-tutorials-for-wingtip-mt]
+    - [Code für mehrinstanzenfähige Datenbanken mit Shards auf GitHub][github-code-for-wingtip-mt]
 
 
 

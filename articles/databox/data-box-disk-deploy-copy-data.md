@@ -1,22 +1,37 @@
 ---
-title: Kopieren Ihres Microsoft Azure Data Box-Datenträgers | Microsoft-Dokumentation
+title: Tutorial zum Kopieren von Daten auf Azure Data Box Disk | Microsoft-Dokumentation
 description: Verwenden Sie dieses Tutorial, um zu erfahren, wie Sie Daten auf Ihren Azure Data Box-Datenträger kopieren.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 04/16/2019
+ms.date: 09/03/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 418b158b127a688314fb3a0a506d116cc27da98c
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: c309a7cb18086526b23c875b41d9d4f4db4bc213
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678495"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70231374"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="copy-data-to-azure-data-box-disk-and-validate"></a>Kopieren von Daten auf Azure Data Box Disk und Durchführen der Überprüfung
+
+Nachdem die Datenträger verbunden und entsperrt wurden, können Sie Daten von Ihrem Quelldatenserver auf Ihre Datenträger kopieren. Nach Abschluss des Datenkopiervorgangs sollten Sie die Daten überprüfen, um sicherzustellen, dass sie ordnungsgemäß in Azure hochgeladen werden.
+
+::: zone-end
+
+::: zone target="docs"
 
 In diesem Tutorial wird beschrieben, wie Sie Daten von Ihrem Hostcomputer kopieren und anschließend Prüfsummen generieren, um die Datenintegrität zu überprüfen.
 
@@ -88,8 +103,8 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
     
     |Parameter/Optionen  |BESCHREIBUNG |
     |--------------------|------------|
-    |Quelle            | Gibt den Pfad zum Quellverzeichnis an.        |
-    |Ziel       | Gibt den Pfad zum Zielverzeichnis an.        |
+    |`Source`            | Gibt den Pfad zum Quellverzeichnis an.        |
+    |Destination       | Gibt den Pfad zum Zielverzeichnis an.        |
     |/E                  | Kopiert Unterverzeichnisse, einschließlich der leeren Verzeichnisse. |
     |/MT[:N]             | Erstellt Multithread-Kopien mit N Threads, wobei N hier für eine ganze Zahl zwischen 1 und 128 steht. <br>Der Standardwert für N ist „8“.        |
     |/R: \<N>             | Gibt die Anzahl von Wiederholungsversuchen für fehlerhafte Kopiervorgänge an. Der Standardwert von N ist „1.000.000“ (eine Million Wiederholungen).        |
@@ -223,7 +238,7 @@ Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger 
  
 7. Öffnen Sie ein Eingabeaufforderungsfenster. 
 
-8. Führen Sie die Datei `DataBoxDiskSplitCopy.exe` aus. Type
+8. Führen Sie die Datei `DataBoxDiskSplitCopy.exe` aus. type
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
@@ -250,6 +265,8 @@ Dieses optionale Verfahren kann verwendet werden, wenn Sie mehrere Datenträger 
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
 
+Wenn bei Verwenden des Tools „Aufteilen/Kopieren“ Fehler auftreten, siehe [Beheben von Fehlern beim Tool „Aufteilen/Kopieren“](data-box-disk-troubleshoot-data-copy.md).
+
 Nachdem der Datenkopiervorgang abgeschlossen ist, können Sie mit der Überprüfung Ihrer Daten fortfahren. Wenn Sie das Aufteilen/Kopieren-Tool verwendet haben, können Sie die Überprüfung überspringen (mit dem Aufteilen/Kopieren-Tool wird auch eine Überprüfung durchgeführt) und mit dem nächsten Tutorial fortfahren.
 
 
@@ -271,6 +288,8 @@ Falls Sie das Aufteilen/Kopieren-Tool nicht zum Kopieren der Daten verwendet hab
 
 3. Führen Sie den Befehl für jeden Datenträger einzeln aus, wenn Sie mehrere Datenträger verwenden möchten.
 
+Wenn während der Validierung Fehler auftreten, siehe [Beheben von Validierungsfehlern](data-box-disk-troubleshoot.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Informationen zu Azure Data Box-Datenträgern erhalten, z.B.:
@@ -283,3 +302,40 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie den Data Box
 
 > [!div class="nextstepaction"]
 > [Zurücksenden Ihres Azure Data Box-Datenträgers an Microsoft](./data-box-disk-deploy-picked-up.md)
+
+::: zone-end
+
+::: zone target="chromeless"
+
+### <a name="copy-data-to-disks"></a>Kopieren von Daten auf Datenträger
+
+Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Daten von Ihrem Computer in Data Box Disk zu kopieren.
+
+1. Zeigen Sie den Inhalt des entsperrten Laufwerks an. Die Liste der vorab erstellten Ordner und Unterordner im Laufwerk unterscheidet sich je nach den bei der Data Box Disk-Bestellung ausgewählten Optionen.
+2. Kopieren Sie die Daten in Ordner, die das richtige Datenformat aufweisen. Kopieren Sie beispielsweise unstrukturierte Daten in den Ordner *BlockBlob*, VHD- oder VHDX-Daten in den Ordner *PageBlob* und Dateien in *AzureFile*. Falls das Datenformat nicht mit dem entsprechenden Ordner (Speichertyp) übereinstimmt, tritt für den Datenupload in Azure während eines späteren Schritts ein Fehler auf.
+
+    - Vergewissern Sie sich, dass alle Container, Blobs und Dateien den [Azure-Namenskonventionen](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) und [Größenbeschränkungen für Azure-Objekte](data-box-disk-limits.md#azure-object-size-limits) entsprechen. Wenn diese Regeln oder Einschränkungen nicht beachtet werden, tritt beim Datenupload in Azure ein Fehler auf.     
+    - Wenn Ihre Bestellung „Verwaltete Datenträger“ als ein Speicherziel umfasst, sehen Sie sich die Namenskonventionen für [verwaltete Datenträger](data-box-disk-limits.md#managed-disk-naming-conventions) an.
+    - Im Azure-Speicherkonto wird für jeden Unterordner der Ordner „BlockBlob“ und „PageBlob“ ein Container erstellt. Alle Dateien in den Ordnern *BlockBlob* und *PageBlob* werden in den Standardcontainer „$root“ unter dem Azure Storage-Konto kopiert. Alle Dateien im Container „$root“ werden immer als Blockblobs hochgeladen.
+    - Erstellen Sie einen Unterordner innerhalb des Ordners *AzureFile*. Dieser Unterordner ist einer Dateifreigabe in der Cloud zugeordnet. Kopieren Sie Dateien in den Unterordner. Bei direkt in den Ordner *AzureFile* kopierten Dateien tritt ein Fehler auf, und die Dateien werden als Blockblobs hochgeladen.
+    - Falls im Stammverzeichnis Dateien und Ordner vorhanden sind, müssen Sie diese in einen anderen Ordner verschieben, bevor Sie mit dem Kopieren von Daten beginnen.
+
+3. Verwenden Sie Drag & Drop im Datei-Explorer oder ein beliebiges SMB-kompatibles Dateikopiertool (beispielsweise Robocopy), um Ihre Daten zu kopieren. Mehrere Kopieraufträge können mit dem folgenden Befehl initiiert werden:
+
+    ```
+    Robocopy <source> <destination>  * /MT:64 /E /R:1 /W:1 /NFL /NDL /FFT /Log:c:\RobocopyLog.txt
+    ```
+4. Öffnen Sie den Zielordner, um die kopierten Dateien anzuzeigen und zu überprüfen. Laden Sie die Protokolldateien herunter, falls während des Kopierprozesses Fehler auftreten, um die Problembehandlung durchzuführen. Die Protokolldateien befinden sich an den Speicherorten, die für den Robocopy-Befehl angegeben wurden.
+
+Verwenden Sie dieses optionale Verfahren zum [Aufteilen und Kopieren](data-box-disk-deploy-copy-data.md#split-and-copy-data-to-disks), wenn Sie mehrere Datenträger verwenden und über ein umfangreiches Dataset verfügen, das aufgeteilt und auf alle Datenträger kopiert werden muss.
+
+### <a name="validate-data"></a>Überprüfen der Daten
+
+Gehen Sie zum Überprüfen Ihrer Daten wie folgt vor:
+
+1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *DataBoxDiskImport* Ihres Laufwerks aus.
+2. Verwenden Sie Option 2, um Ihre Dateien zu überprüfen und Prüfsummen zu generieren. Je nach Größe Ihrer Daten kann dieser Schritt eine Weile dauern. Falls bei der Überprüfung und Generierung der Prüfsumme Fehler auftreten, werden Sie benachrichtigt und erhalten einen Link zu den Fehlerprotokollen.
+
+    Weitere Informationen zur Datenüberprüfung finden Sie unter [Überprüfen der Daten](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Sollten bei der Überprüfung Fehler auftreten, lesen Sie [Verwenden von Protokollen zur Behandlung von Problemen bei der Überprüfung in Azure Data Box Disk](data-box-disk-troubleshoot.md).
+
+::: zone-end

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 2dd3b9f0d1d8d61b2311977774c8b0f7267caa9e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f9af487e2eb35e7dc94e1b70945d5c03ffdde2ba
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090609"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566078"
 ---
 # <a name="extended-events-in-sql-database"></a>Erweiterte Ereignisse in Azure SQL-Datenbank
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -39,7 +38,7 @@ Weitere Informationen zu erweiterten Ereignissen für Azure SQL-Datenbank und Mi
 
 Dieses Thema setzt voraus, dass Sie mit Folgendem grundlegend vertraut sind:
 
-- [Azure SQL-Datenbankdienst](https://azure.microsoft.com/services/sql-database/).
+- [Azure SQL-Datenbank-Dienst](https://azure.microsoft.com/services/sql-database/).
 - [Erweiterte Ereignisse](https://msdn.microsoft.com/library/bb630282.aspx) in Microsoft SQL Server.
 
 - Der größte Teil unserer Dokumentation zu erweiterten Ereignissen gilt für SQL Server und SQL-Datenbank.
@@ -90,7 +89,7 @@ Das Feature "Erweiterte Ereignisse" wird von mehreren [Katalogsichten](https://m
 | **sys.database_event_session_targets** |Gibt eine Zeile für jedes Ereignisziel einer Ereignissitzung zurück. |
 | **sys.database_event_sessions** |Gibt eine Zeile für jede Ereignissitzung in der SQL-Datenbank zurück. |
 
-In Microsoft SQL Server haben ähnliche Katalogsichten Namen, die *.server\_* anstelle von *.database\_* enthalten. Das Namensmuster entspricht **sys.server_event_%**.
+In Microsoft SQL Server haben ähnliche Katalogsichten Namen, die *.server\_* anstelle von *.database\_* enthalten. Das Namensmuster entspricht **sys.server_event_%** .
 
 ## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Neue dynamische Verwaltungssichten [(DMVs)](https://msdn.microsoft.com/library/ms188754.aspx)
 
@@ -172,11 +171,11 @@ Das SAS-Token, das Sie für Ihren Azure Storage-Container generieren, muss **rwl
 
 - Lesen
 - Schreiben
-- Auflisten
+- List
 
 ## <a name="performance-considerations"></a>Überlegungen zur Leistung
 
-Es gibt Szenarien, in denen durch die intensive Nutzung erweiterter Ereignisse mehr aktiver Arbeitsspeicher kumuliert wird, als für das System vorteilhaft ist. Deshalb sorgt das Azure SQL-Datenbanksystem für eine dynamische Festlegung und Anpassung von Grenzwerten für die Menge an aktivem Arbeitsspeicher, die von einer Ereignissitzung kumuliert werden kann. Viele Faktoren fließen in die dynamische Berechnung ein.
+Es gibt Szenarien, in denen durch die intensive Nutzung erweiterter Ereignisse mehr aktiver Arbeitsspeicher kumuliert wird, als für das System vorteilhaft ist. Deshalb sorgt das Azure SQL-Datenbank-System für eine dynamische Festlegung und Anpassung von Grenzwerten für die Menge an aktivem Arbeitsspeicher, die von einer Ereignissitzung kumuliert werden kann. Viele Faktoren fließen in die dynamische Berechnung ein.
 
 Wenn Sie eine Fehlermeldung erhalten, die besagt, dass ein Arbeitsspeichermaximum erzwungen wurde, können Sie z. B. die folgenden Maßnahmen ergreifen:
 
@@ -197,7 +196,7 @@ Beim Ziel **Ereignisdatei** können Netzwerklatenz oder -fehler auftreten, währ
 - [Verwenden des Blob-Speichers mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 - [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx)
 - [CREATE EVENT SESSION (Transact-SQL)](https://msdn.microsoft.com/library/bb677289.aspx)
-- [Jonathan Kehayias' Blogbeiträge zu erweiterten Ereignissen in Microsoft SQL Server](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
+- [Jonathan Kehayias' Blogbeiträge zu erweiterten Ereignissen in Microsoft SQL Server](https://www.sqlskills.com/blogs/jonathan/category/extended-events/)
 
 
 - Die Webseite mit *Azure-Dienstupdates* wird mittels Parameter auf „Azure SQL-Datenbank“ festgelegt:

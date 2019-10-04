@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 4dd95d32bad76a610b88a4362e7887efdfaf6af0
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342982"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972062"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
@@ -29,13 +29,15 @@ Nehmen wir an, Sie haben wie folgt eine einfache statische Metrikwarnung mit Sch
 - Zielressource (die zu überwachende Azure-Ressource): myVM
 - Metrik: CPU in Prozent
 - Bedingungstyp: statischen
-- Zeitaggregation (Statistik, die über Rohmetriken geführt wird. Unterstützte Zeitaggregationen sind Minimum, Maximum, Durchschnitt, Gesamtwert): Durchschnitt
+- Zeitaggregation (Statistik, die über Rohmetriken geführt wird. Unterstützte Zeitaggregationen sind Minimum, Maximum, Durchschnitt, Gesamtwert, Anzahl): Durchschnitt
 - Zeitraum (das zurückliegende Zeitfenster, über das Metrikwerte geprüft werden): Über die letzten 5 Minuten
 - Häufigkeit (die Häufigkeit, mit der die Metrikwarnung überprüft werden soll, wenn die Bedingungen erfüllt sind): 1 Minute
 - Operator: Größer als
 - Schwellenwert: 70
 
 Ab dem Zeitpunkt der Erstellung der Warnungsregel wird der Monitor jede Minute ausgeführt, der dann die Metrikwerte der letzten fünf Minuten betrachtet und überprüft, ob der Durchschnitt dieser Werte 70 übersteigt. Wenn die Bedingung erfüllt ist, d. h. der durchschnittliche Wert für „CPU in Prozent“ überschreitet für die letzten fünf Minuten den Wert 70, löst die Warnungsregel eine aktivierte Benachrichtigung aus. Wenn Sie eine E-Mail- oder Webhook-Aktion in der Aktionsgruppe konfiguriert haben, die der Warnungsregel zugeordnet ist, erhalten Sie für beide eine aktivierte Benachrichtigung.
+
+Wenn Sie mehrere Bedingungen in einer Regel verwenden, werden die Bedingungen mit „and“ verbunden.  Das heißt, die Warnung wird ausgelöst, wenn alle Bedingungen in der Warnung als wahr bewertet werden, und aufgelöst, wenn eine der Bedingungen nicht mehr erfüllt ist. Beispiele für diese Art von Warnung wären die Benachrichtigungen „CPU höher als 90%“ und „Länge der Warteschlange beträgt über 300 Elemente“. 
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>Warnungsregel mit dem dynamischen Bedingungstyp
 
@@ -44,7 +46,7 @@ Nehmen wir an, Sie haben wie folgt eine einfache dynamische Metrikwarnung mit Sc
 - Zielressource (die zu überwachende Azure-Ressource): myVM
 - Metrik: CPU in Prozent
 - Bedingungstyp: Dynamisch
-- Zeitaggregation (Statistik, die über Rohmetriken geführt wird. Unterstützte Zeitaggregationen sind Minimum, Maximum, Durchschnitt, Gesamtwert): Durchschnitt
+- Zeitaggregation (Statistik, die über Rohmetriken geführt wird. Unterstützte Zeitaggregationen sind Minimum, Maximum, Durchschnitt, Gesamtwert, Anzahl): Durchschnitt
 - Zeitraum (das zurückliegende Zeitfenster, über das Metrikwerte geprüft werden): Über die letzten 5 Minuten
 - Häufigkeit (die Häufigkeit, mit der die Metrikwarnung überprüft werden soll, wenn die Bedingungen erfüllt sind): 1 Minute
 - Operator: Größer als
@@ -62,7 +64,7 @@ Die obigen Beispiele für die Auslösung der Warnungsregel finden Sie auch im Az
 
 Wenn die Verwendung von „myVM“ bei nachfolgenden Prüfungen weiterhin über dem Schwellenwert liegt, wird die Warnungsregel erst nach Auflösen der Bedingungen wieder ausgelöst.
 
-Nach einer gewissen Zeit, wenn die Nutzung von „myVM“ wieder einen normalen Wert erreicht, fällt sie wieder unter den Schwellenwert. Die Warnungsregel überwacht die Bedingung noch zweimal, um eine Benachrichtigung zur aufgelösten Bedingung zu versenden. Die Warnungsregel sendet eine aufgelöste/deaktivierte Nachricht, wenn die Warnungsbedingung drei aufeinanderfolgende Zeiträume lang nicht erfüllt ist, um Störungen im Falle von Fluktuationsbedingungen zu reduzieren.
+Nach einer gewissen Zeit erreicht die Nutzung von „myVM“ wieder einen normalen Wert (fällt unter den Schwellenwert). Die Warnungsregel überwacht die Bedingung noch zweimal, um eine Benachrichtigung zur aufgelösten Bedingung zu versenden. Die Warnungsregel sendet eine aufgelöste/deaktivierte Nachricht, wenn die Warnungsbedingung drei aufeinanderfolgende Zeiträume lang nicht erfüllt ist, um Störungen im Falle von Fluktuationsbedingungen zu reduzieren.
 
 Da die aufgelöste Benachrichtigung über einen Webhook oder eine E-Mail versendet wird, wird auch der Status der Warnungsinstanz (Monitorzustand) im Azure-Portal auf „aufgelöst“ festgelegt.
 
@@ -148,16 +150,16 @@ Wenn Sie im Moment klassische Metrikwarnungen verwenden und erfahren möchten, o
 | Microsoft.ApiManagement/service | Ja |
 | Microsoft.Batch/batchAccounts| Ja|
 |Microsoft.Cache/redis| Ja |
-|Microsoft.ClassicCompute/virtualMachines | Nein  |
-|Microsoft.ClassicCompute/domainNames/slots/roles | Nein |
-|Microsoft.CognitiveServices/accounts | Nein  |
+|Microsoft.ClassicCompute/virtualMachines | Nein |
+|Microsoft.ClassicCompute/domainNames/slots/roles | Nein|
+|Microsoft.CognitiveServices/accounts | Nein |
 |Microsoft.Compute/virtualMachines | Ja|
 |Microsoft.Compute/virtualMachineScaleSets| Ja|
-|Microsoft.ClassicStorage/storageAccounts| Nein  |
+|Microsoft.ClassicStorage/storageAccounts| Nein |
 |Microsoft.DataFactory/datafactories | Ja|
 |Microsoft.DBforMySQL/servers| Ja|
 |Microsoft.DBforPostgreSQL/servers| Ja|
-|Microsoft.Devices/IotHubs | Nein |
+|Microsoft.Devices/IotHubs | Nein|
 |Microsoft.DocumentDB/databaseAccounts| Ja|
 |Microsoft.EventHub/namespaces | Ja|
 |Microsoft.Logic/workflows | Ja|
@@ -173,9 +175,9 @@ Wenn Sie im Moment klassische Metrikwarnungen verwenden und erfahren möchten, o
 |Microsoft.TimeSeriesInsights/environments | Ja|
 |Microsoft. Web/serverfarms | Ja |
 |Microsoft. Web/sites (ohne Funktionen) | Ja|
-|Microsoft. Web/hostingEnvironments/multiRolePools | Nein |
-|Microsoft. Web/hostingEnvironments/workerPools| Nein  |
-|Microsoft.SQL/Servers | Nein  |
+|Microsoft. Web/hostingEnvironments/multiRolePools | Nein|
+|Microsoft. Web/hostingEnvironments/workerPools| Nein |
+|Microsoft.SQL/Servers | Nein |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

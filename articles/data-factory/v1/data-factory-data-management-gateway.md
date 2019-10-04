@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 00c8d7cefd7539cd53de8081f44fe861bd063bee
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 63b9cc26b927f78598422575646c876d90954bed
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487786"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65143299"
 ---
 # <a name="data-management-gateway"></a>Gateway zur Datenverwaltung
 > [!NOTE]
@@ -159,7 +159,7 @@ Auf Ebene der Windows-Firewall sind diese ausgehenden Ports normalerweise aktivi
 #### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher
 Stellen Sie sicher, dass die Firewallregeln für die Unternehmensfirewall, die Windows-Firewall auf dem Gatewaycomputer und den Datenspeicher selbst richtig aktiviert sind. Indem Sie diese Regeln aktivieren, kann das Gateway sowohl mit der Quelle als auch mit der Senke erfolgreich eine Verbindung herstellen. Aktivieren Sie die Regeln für jeden Datenspeicher, der am Kopiervorgang beteiligt ist.
 
-Führen Sie die folgenden Schritte aus, um z. B. Daten aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbanksenke oder eine Azure SQL Data Warehouse-Senke** zu kopieren:
+Führen Sie die folgenden Schritte aus, um z. B. Daten aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbank-Senke oder eine Azure SQL Data Warehouse-Senke** zu kopieren:
 
 * Lassen Sie ausgehende **TCP**-Kommunikation an Port **1433** sowohl für die Windows-Firewall als auch die Unternehmensfirewall zu.
 * Konfigurieren Sie die Firewall der Azure SQL Server-Instanz, um die IP-Adresse des Gatewaycomputers zur Liste der zulässigen IP-Adressen hinzuzufügen.
@@ -205,8 +205,8 @@ Sie können den HTTP-Proxy im Konfigurations-Manager anzeigen und aktualisieren.
 ### <a name="configure-proxy-server-settings"></a>Konfigurieren von Proxyservereinstellungen
 Wenn Sie die Einstellung **Systemproxy verwenden** für den HTTP-Proxy auswählen, verwendet das Gateway die Proxyeinstellungen in „diahost.exe.config“ und „diawp.exe.config“. Wenn in „diahost.exe.config“ und „diawp.exe.config“ kein Proxy angegeben ist, stellt das Gateway die Verbindung mit den Clouddiensten nicht über einen Proxy, sondern direkt her. Das folgende Verfahren enthält Anweisungen für die Aktualisierung der Datei „diahost.exe.config“.
 
-1. Erstellen Sie im Datei-Explorer eine sichere Kopie von „C:\Programme\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config“, um die Originaldatei zu sichern.
-2. Starten Sie „Notepad.exe“ als Administrator, und öffnen Sie die Textdatei „C:\Programme\Microsoft Data Management Gateway\2.0\Shared\diahost.exe.config“. Sie finden das Standardtag für „system.net“, wie im folgenden Code gezeigt:
+1. Erstellen Sie im Datei-Explorer eine sichere Kopie von *C:\\\\Programme\\Microsoft-Datenverwaltungsgateway\\2.0\\Shared\\diahost.exe.config*, um die Originaldatei zu sichern.
+2. Starten Sie „Notepad.exe“ als Administrator, und öffnen Sie die Textdatei *C:\\\\Programme\\Microsoft-Datenverwaltungsgateway\\2.0\\Shared\\diahost.exe.config*. Sie finden das Standardtag für „system.net“, wie im folgenden Code gezeigt:
 
     ```
     <system.net>
@@ -280,7 +280,7 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 
 [Für Gateways mit einem Knoten]
 1. Starten Sie Windows PowerShell auf dem Gatewaycomputer.
-2. Wechseln Sie in den Ordner „C:\Programme\Microsoft Integration Runtime\3.0\PowerShellScript“.
+2. Wechseln Sie zum Ordner *C:\\\\Programme\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* .
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.
 
     ```powershell
@@ -293,7 +293,7 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
     ```
    [Für hochverfügbare und skalierbare Gateways mit mehreren Knoten](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Starten Sie Windows PowerShell auf dem Gatewaycomputer.
-2. Wechseln Sie in den Ordner „C:\Programme\Microsoft Integration Runtime\3.0\PowerShellScript“.
+2. Wechseln Sie zum Ordner *C:\\\\Programme\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* .
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.
 
     Für ein Gateway mit Hochverfügbarkeit ist ein zusätzlicher AuthKey-Parameter erforderlich.
@@ -310,7 +310,7 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 Nach der Installation des Gateways können Sie den Datenverwaltungsgateway-Konfigurations-Manager auf eine der folgenden Arten starten:
 
 1. Geben Sie im Fenster **Suchen** den Begriff **Datenverwaltungsgateway** ein, um auf dieses Hilfsprogramm zuzugreifen.
-2. Führen Sie die ausführbare Datei **ConfigManager.exe** im folgenden Ordner aus: **C:\Programme\Microsoft Data Management Gateway\2.0\Shared**.
+2. Führen Sie die ausführbare Datei *ConfigManager.exe* im folgenden Ordner aus: *C:\\\\Programme\\Microsoft-Datenverwaltungsgateway\\2.0\\Shared*.
 
 ### <a name="home-page"></a>Startseite
 Auf der Startseite können Sie die folgenden Aktionen ausführen:
@@ -511,7 +511,7 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Wechseln Sie in Azure PowerShell zum Ordner: **C:\\Programme\Microsoft Data Management Gateway\2.0\PowerShellScript\\**. Führen Sie **RegisterGateway.ps1** mit der lokalen Variable **$Key** aus, wie im folgenden Befehl gezeigt. Dieses Skript registriert den auf dem Computer installierten Client-Agent bei dem logischen Gateway, das Sie zuvor erstellt haben.
+1. Wechseln Sie in Azure PowerShell zum Ordner: *C:\\\\Programme\\Microsoft Integration Runtime\\3.0\\PowerShellScript\\* . Führen Sie *RegisterGateway.ps1* mit der lokalen Variable **$Key** aus, wie im folgenden Befehl gezeigt. Dieses Skript registriert den auf dem Computer installierten Client-Agent bei dem logischen Gateway, das Sie zuvor erstellt haben.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

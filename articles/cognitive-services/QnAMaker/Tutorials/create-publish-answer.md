@@ -1,6 +1,6 @@
 ---
-title: Erstellen, Veröffentlichen, Beantworten
-titleSuffix: QnA Maker - Azure Cognitive Services
+title: 'Tutorial: Erstellen, Veröffentlichen, Antworten: QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: In diesem REST-basierten Tutorial erfahren Sie Schritt für Schritt, wie Sie eine Wissensdatenbank programmgesteuert erstellen und veröffentlichen und anschließend zur Beantwortung von Fragen heranziehen.
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: d209d73d67af96e99589dddcb71b6b50214356ee
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e5b8cd01a64274e58927a5647897b1f9d86f7c24
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877277"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390872"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Tutorial: Erstellen einer Wissensdatenbank und Beantworten von Fragen unter Verwendung von C#
 
@@ -30,13 +30,13 @@ In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie eine Wissensdatenb
 > * Abfragen der Wissensdatenbank mithilfe von Curl
 
 
-In dieser Schnellstartanleitung werden QnA Maker-APIs aufgerufen:
+In dieser Schnellstartanleitung werden QnA Maker-REST-APIs aufgerufen:
 
-* [Erstellen der Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
-* [Abrufen von Vorgangsdetails](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
-* [Abrufen der Details der Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) 
-* [Abrufen der Endpunkte der Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys)
-* [Veröffentlichen](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) 
+* [Erstellen der Wissensdatenbank](https://go.microsoft.com/fwlink/?linkid=2092179)
+* [Abrufen von Vorgangsdetails](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+* [Abrufen der Details der Wissensdatenbank](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/getdetails) 
+* [Abrufen der Endpunkte der Wissensdatenbank](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/endpointkeys/getkeys)
+* [Veröffentlichen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish) 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -158,7 +158,7 @@ Der _primäre Endpunkt_ wird als Header übergeben, um die Anforderung für die 
 
 |Headername|Headerwert|
 |--|--|
-|Autorisierung|`Endpoint` + **primärer Endpunkt**<br>Beispiel: `Endpoint xxxxxxx`<br>Beachten Sie das Leerzeichen zwischen dem Text `Endpoint` und dem Wert des primären Endpunkts. 
+|Authorization|`Endpoint` + **primärer Endpunkt**<br>Beispiel: `Endpoint xxxxxxx`<br>Beachten Sie das Leerzeichen zwischen dem Text `Endpoint` und dem Wert des primären Endpunkts. 
 
 Der Hauptteil der Anforderung muss den korrekten JSON-Code übergeben:
 
@@ -185,7 +185,7 @@ Dieser API-Aufruf gibt eine JSON-Antwort zurück:
   "name": "QnA Maker FAQ from quickstart",
   "userId": "AAAc3841df0b42cdb00f53a49d51a89c",
   "urls": [
-    "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs",
+    "https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",
     "https://docs.microsoft.com/bot-framework/resources-bot-framework-faq"
   ],
   "sources": [
@@ -224,10 +224,10 @@ Dieser API-Aufruf gibt eine JSON-Antwort zurück:
       "questions": [
         "Does QnA Maker support non-English languages?"
       ],
-      "answer": "See more details about [supported languages](https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/overview/languages-supported).\n\n\nIf you have content from multiple languages, be sure to create a separate service for each language.",
+      "answer": "See more details about [supported languages](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/languages-supported).\n\n\nIf you have content from multiple languages, be sure to create a separate service for each language.",
       "score": 82.19,
       "id": 11,
-      "source": "https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs",
+      "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",
       "metadata": []
     }
   ]
@@ -248,4 +248,4 @@ Nach der Erstellung der Wissensdatenbank können Sie sie im QnA Maker-Portal auf
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [REST-API-Referenz für QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [REST-API-Referenz für QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)

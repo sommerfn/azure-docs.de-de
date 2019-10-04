@@ -1,25 +1,25 @@
 ---
-title: 'Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API – Azure Active Directory B2C | Microsoft-Dokumentation'
+title: 'Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API – Azure Active Directory B2C'
 description: In diesem Tutorial erfahren Sie, wie Sie mit Active Directory B2C eine ASP.NET-Web-API schützen und sie über eine ASP.NET-Webanwendung aufrufen.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
-ms.author: davidmu
-ms.date: 02/04/2019
+author: mmacy
+manager: celestedg
+ms.author: marsma
+ms.date: 09/19/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: cc4db0f2fe8f5db41f6e8332a398029bd105f3af
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: fd4bf602cb5ca409b957e9dbd6f963d88428a63f
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756341"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694645"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API unter Verwendung von Azure Active Directory B2C
 
-In diesem Tutorial erfahren Sie, wie Sie eine geschützte Web-API-Ressource in Azure Active Directory (Azure AD) B2C über eine ASP.NET-Webanwendung aufrufen.
+In diesem Tutorial erfahren Sie, wie Sie eine geschützte Web-API-Ressource in Azure Active Directory B2C (Azure AD B2C) über eine ASP.NET-Webanwendung aufrufen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -54,23 +54,13 @@ Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie ges
 
 Bereiche ermöglichen die Steuerung des Zugriffs auf geschützte Ressourcen. Bereiche werden von der Web-API verwendet, um eine bereichsbasierte Zugriffssteuerung zu implementieren. Benutzer der Web-API können beispielsweise über Lese- und Schreibzugriff oder nur über Lesezugriff verfügen. In diesem Tutorial verwenden Sie Bereiche zum Definieren von Lese- und Schreibberechtigungen für die Web-API.
 
-1. Wählen Sie **Anwendungen** und dann *webapi1* aus.
-2. Wählen Sie **Veröffentlichte Bereiche** aus.
-3. Geben Sie unter **Bereich** den Bereich `Hello.Read` und als Beschreibung `Read access to hello` ein.
-4. Geben Sie unter **Bereich** den Bereich `Hello.Write` und als Beschreibung `Write access to hello` ein.
-5. Klicken Sie auf **Speichern**.
-
-Mit den veröffentlichten Bereichen können einer Clientanwendung Berechtigungen für die Web-API gewährt werden.
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
 ## <a name="grant-permissions"></a>Erteilen von Berechtigungen
 
 Wenn Sie über eine Anwendung eine geschützte Web-API aufrufen möchten, müssen Sie Ihrer Anwendung Berechtigungen für die API erteilen. Im vorbereitenden Tutorial haben Sie in Azure AD B2C eine Webanwendung namens *webapp1* erstellt. Sie verwenden diese Anwendung für den Aufruf der Web-API.
 
-1. Wählen Sie **Anwendungen** und dann *webapp1* aus.
-2. Wählen Sie **API-Zugriff** und dann **Hinzufügen** aus.
-3. Wählen Sie in der Dropdownliste **API auswählen** und dann *webapi1* aus.
-4. Wählen Sie in der Dropdownliste **Bereiche auswählen** die Bereiche **Hello.Read** und **Hello.Write** aus, die Sie zuvor festgelegt haben.
-5. Klicken Sie auf **OK**.
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 Ihre Anwendung ist für den Aufruf der geschützten Web-API registriert. Ein Benutzer authentifiziert sich mit Azure AD B2C, um die Anwendung zu verwenden. Die Anwendung bezieht eine Autorisierungsgewährung von Azure AD B2C, um auf die geschützte Web-API zuzugreifen.
 
@@ -80,72 +70,72 @@ Nach dem Registrieren der Web-API und dem Definieren von Bereichen konfigurieren
 
 Die Beispielprojektmappe enthält zwei Projekte:
 
-Die Beispielprojektmappe enthält die folgenden zwei Projekte:
-
-- **TaskWebApp:** Dient zum Erstellen und Bearbeiten einer Aufgabenliste. In dem Beispiel wird der **Registrierungs- oder Anmeldebenutzerflow** für die Registrierung oder Anmeldung von Benutzern verwendet.
-- **TaskService:** Unterstützt die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste. Die API wird durch Azure AD B2C geschützt und von „TaskWebApp“ aufgerufen.
+* **TaskWebApp:** Dient zum Erstellen und Bearbeiten einer Aufgabenliste. In dem Beispiel wird der **Registrierungs- oder Anmeldebenutzerflow** für die Registrierung oder Anmeldung von Benutzern verwendet.
+* **TaskService:** Unterstützt die Funktionen zum Erstellen, Lesen, Aktualisieren und Löschen der Aufgabenliste. Die API wird durch Azure AD B2C geschützt und von „TaskWebApp“ aufgerufen.
 
 ### <a name="configure-the-web-application"></a>Konfigurieren der Webanwendung
 
 1. Öffnen Sie die Projektmappe **B2C-WebAPI-DotNet** in Visual Studio.
-2. Öffnen Sie **Web.config** im Projekt **TaskWebApp**.
-3. Verwenden Sie zum lokalen Ausführen der API die localhost-Einstellung für **api:TaskServiceUrl**. Nehmen Sie in der Datei „Web.config“ folgende Änderungen vor: 
+1. Öffnen Sie **Web.config** im Projekt **TaskWebApp**.
+1. Verwenden Sie zum lokalen Ausführen der API die localhost-Einstellung für **api:TaskServiceUrl**. Nehmen Sie in der Datei „Web.config“ folgende Änderungen vor:
 
-    ```C#
+    ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
     ```
 
-3. Konfigurieren Sie den URI der API. Dieser URI wird von der Webanwendung für die API-Anforderung verwendet. Konfigurieren Sie außerdem die angeforderten Berechtigungen.
+1. Konfigurieren Sie den URI der API. Dieser URI wird von der Webanwendung für die API-Anforderung verwendet. Konfigurieren Sie außerdem die angeforderten Berechtigungen.
 
-    ```C#
+    ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
-    <add key="api:ReadScope" value="Hello.Read" />
-    <add key="api:WriteScope" value="Hello.Write" />
+    <add key="api:ReadScope" value="demo.read" />
+    <add key="api:WriteScope" value="demo.write" />
     ```
 
 ### <a name="configure-the-web-api"></a>Konfigurieren der Web-API
 
 1. Öffnen Sie **Web.config** im Projekt **TaskService**.
-2. Konfigurieren Sie die API für die Verwendung Ihres Mandanten.
+1. Konfigurieren Sie die API für die Verwendung Ihres Mandanten.
 
-    ```C#
+    ```csharp
+    <add key="ida:AadInstance" value="https://<Your tenant name>.b2clogin.com/{0}/{1}/v2.0/.well-known/openid-configuration" />
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
     ```
 
-3. Legen Sie die Client-ID auf die ID der registrierten Anwendung für Ihre API fest.
+1. Legen Sie die Client-ID auf die Anwendungs-ID Ihrer registrierten Web-API-Anwendung (*webapi1*) fest.
 
-    ```C#
+    ```csharp
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-4. Aktualisieren Sie die Benutzerfloweinstellung mit dem Namen des Registrierungs- und Anmeldebenutzerflows.
+1. Aktualisieren Sie die Benutzerfloweinstellung mit dem Namen des Registrierungs- und Anmeldebenutzerflows (*B2C_1_signupsignin1*).
 
-    ```C#
-    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_signupsignin1" />
+    ```csharp
+    <add key="ida:SignUpSignInPolicyId" value="B2C_1_signupsignin1" />
     ```
 
-5. Konfigurieren Sie die Bereichseinstellung so, dass sie dem entspricht, was Sie im Portal erstellt haben.
+1. Konfigurieren Sie die Bereichseinstellung so, dass sie dem entspricht, was Sie im Portal erstellt haben.
 
-    ```C#
-    <add key="api:ReadScope" value="Hello.Read" />
-    <add key="api:WriteScope" value="Hello.Write" />
+    ```csharp
+    <add key="api:ReadScope" value="demo.read" />
+    <add key="api:WriteScope" value="demo.write" />
     ```
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
 
-Führen Sie sowohl das Projekt **TaskWebApp** als auch das Projekt **TaskService** aus. 
+Führen Sie sowohl das Projekt **TaskWebApp** als auch das Projekt **TaskService** aus.
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie **Startprojekte festlegen...** aus. 
-2. Wählen Sie **Mehrere Startprojekte** aus.
-3. Ändern Sie die **Aktion** für beide Projekte in **Start**.
-4. Klicken Sie auf **OK**, um die Konfiguration zu speichern.
-5. Drücken Sie**F5**, um beide Anwendungen auszuführen. Jede Anwendung wird auf einer eigenen Browserregisterkarte geöffnet. `https://localhost:44316/` ist die Webanwendung.
-    `https://localhost:44332/` ist die Web-API.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie **Startprojekte festlegen...** aus.
+1. Wählen Sie **Mehrere Startprojekte** aus.
+1. Ändern Sie die **Aktion** für beide Projekte in **Start**.
+1. Klicken Sie auf **OK**, um die Konfiguration zu speichern.
+1. Drücken Sie**F5**, um beide Anwendungen auszuführen. Jede Anwendung wird in einem eigenen Browserfenster geöffnet.
+    * `https://localhost:44316/` ist die Webanwendung.
+    * `https://localhost:44332/` ist die Web-API.
 
-6. Klicken Sie in der Webanwendung auf **sign-up / sign-in** (Registrierung/Anmeldung), um sich bei der Webanwendung anzumelden. Verwenden Sie das Konto, das Sie zuvor erstellt haben. 
-7. Klicken Sie nach der Anmeldung auf **Aufgabenliste**, und erstellen Sie ein Aufgabenlistenelement.
+1. Wählen Sie in der Webanwendung **sign-up / sign-in** (Registrierung/Anmeldung) aus, um sich bei der Webanwendung anzumelden. Verwenden Sie das Konto, das Sie zuvor erstellt haben.
+1. Wählen Sie nach der Anmeldung die **Aufgabenliste** aus, und erstellen Sie ein Aufgabenlistenelement.
 
-Wenn Sie ein Aufgabenlistenelement erstellen, richtet die Webanwendung eine Anforderung an die Web-API, um das Element zu generieren. Ihre geschützte Webanwendung ruft die geschützte Web-API in Ihrem Azure AD B2C-Mandanten auf.
+Wenn Sie ein Aufgabenlistenelement erstellen, richtet die Webanwendung eine Anforderung an die Web-API, um das Element zu generieren. Ihre geschützte Webanwendung ruft die von Azure AD B2C geschützte Web-API auf.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

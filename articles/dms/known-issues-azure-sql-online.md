@@ -10,15 +10,15 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 04/09/2019
-ms.openlocfilehash: 1a8f46c74693b00fd8e30b1e1a78d90111dea08b
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.date: 07/27/2019
+ms.openlocfilehash: 7cd8b7c2accae097c971aec4b92cf38ed5d3af08
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59520744"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561501"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank
+# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank
 
 Im Folgenden werden bekannte Probleme und Einschränkungen in Bezug auf Onlinemigrationen von SQL Server zu Azure SQL-Datenbank beschrieben.
 
@@ -39,10 +39,14 @@ Wenn die Quelldatenbank eine oder mehrere temporale Tabellen umfasst, treten bei
 
 **Problemumgehung**
 
+Führen Sie die folgenden Schritte aus:
+
 1. Suchen Sie mithilfe der folgenden Abfrage die temporalen Tabellen im Quellschema.
+
      ``` 
      select name,temporal_type,temporal_type_desc,* from sys.tables where temporal_type <>0
      ```
+
 2. Schließen Sie diese Tabellen auf dem Blatt **Migrationseinstellungen konfigurieren**, auf dem Sie die Tabellen für die Migration angeben, aus.
 
 3. Führen Sie die Migrationsaktivität erneut aus.
@@ -50,22 +54,24 @@ Wenn die Quelldatenbank eine oder mehrere temporale Tabellen umfasst, treten bei
 **Ressourcen**
 
 Weitere Informationen finden Sie im Artikel [Temporale Tabellen](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017).
- 
+
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>Migration von Tabellen enthält eine oder mehrere Spalten mit dem Datentyp „hierarchyid“
 
 **Symptom**
 
 Möglicherweise wird während des Vorgangs „Full data load“ (Vollständiger Datenladevorgang) die SQL-Ausnahme „ntext ist mit hierarchyid nicht kompatibel.“ angezeigt:
-     
+
 ![Beispiel für Fehler bei „hierarchyid“](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
 **Problemumgehung**
+
+Führen Sie die folgenden Schritte aus:
 
 1. Suchen Sie mithilfe der folgenden Abfrage die Benutzertabellen, die Spalten mit dem Datentyp „hierarchyid“ enthalten.
 
       ``` 
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
-      ``` 
+      ```
 
 2. Schließen Sie diese Tabellen auf dem Blatt **Migrationseinstellungen konfigurieren**, auf dem Sie die Tabellen für die Migration angeben, aus.
 
@@ -74,6 +80,8 @@ Möglicherweise wird während des Vorgangs „Full data load“ (Vollständiger 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>Migrationsfehler mit verschiedenen Integritätsverletzungen bei aktiven Triggern im Schema während „Full data load“ (Vollständiger Datenladevorgang) oder „Inkrementelle Datensynchronisierung“
 
 **Problemumgehung**
+
+Führen Sie die folgenden Schritte aus:
 
 1. Suchen Sie mithilfe der folgenden Abfrage die Trigger, die derzeit in der Quelldatenbank aktiv sind:
 
@@ -89,7 +97,7 @@ Möglicherweise wird während des Vorgangs „Full data load“ (Vollständiger 
 
 **Symptom**
 
-Wenn die Länge der LOB-Spalte (Large Object) 32 KB überschreitet, werden die Daten möglicherweise am Ziel abgeschnitten. Mithilfe der folgenden Abfrage können Sie die Länge der LOB-Spalte überprüfen: 
+Wenn die Länge der LOB-Spalte (Large Object) 32 KB überschreitet, werden die Daten möglicherweise am Ziel abgeschnitten. Mithilfe der folgenden Abfrage können Sie die Länge der LOB-Spalte überprüfen:
 
 ``` 
 SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
@@ -103,13 +111,13 @@ Wenn Sie über eine LOB-Spalte verfügen, die größer als 32 KB ist, wenden Si
 
 **Symptom**
 
-In DMS wird der Zeitstempelwert der Quelle nicht migriert, stattdessen wird in der Zieltabelle ein neuer Zeitstempelwert generiert.
+Azure Database Migration Service migriert nicht den Zeitstempelwert der Quelle, sondern generiert einen neuen Zeitstempelwert in der Zieltabelle.
 
 **Problemumgehung**
 
-Wenn DMS den genauen in der Quelltabelle gespeicherten Zeitstempelwert migrieren soll, wenden Sie sich unter [Fragen zur Azure-Datenbankmigration](mailto:AskAzureDatabaseMigrations@service.microsoft.com) an das Entwicklerteam.
+Wenn Azure Database Migration Service den genauen in der Quelltabelle gespeicherten Zeitstempelwert migrieren soll, wenden Sie sich unter [Fragen zur Azure-Datenbankmigration](mailto:AskAzureDatabaseMigrations@service.microsoft.com) an das Entwicklerteam.
 
-### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Für Fehler bei der Datenmigration werden keine zusätzlichen Details auf dem Blatt mit dem detaillierten Status der Datenbank angegeben.
+### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Für Fehler bei der Datenmigration werden keine zusätzlichen Details auf dem Blatt mit dem detaillierten Status der Datenbank angegeben
 
 **Symptom**
 
@@ -119,10 +127,34 @@ Wenn die Migrationsfehler in der Ansicht mit dem detaillierten Status der Datenb
 
 **Problemumgehung**
 
-Führen Sie die folgenden Schritte aus, um spezifische Details zu den Fehlern zu erhalten.
+Führen Sie folgende Schritte aus, um spezifische Fehlerdetails abzurufen.
 
 1. Schließen Sie das Blatt mit dem detaillierten Status der Datenbank, um den Bildschirm für die Migrationsaktivität anzuzeigen.
 
      ![Bildschirm für die Migrationsaktivität](media/known-issues-azure-sql-online/dms-migration-activity-screen.png)
 
 2. Wählen Sie **Fehlerdetails anzeigen** aus, um spezifische Fehlermeldungen anzuzeigen, anhand derer Sie die Migrationsfehler beheben können.
+
+### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>Keine Unterstützung für den Datentyp „Geography“ (Geografie) in der SQLDB-Onlinemigration
+
+**Symptom**
+
+Bei der Migration wird folgende Fehlermeldung angezeigt:
+
+     “** encountered a fatal error”, "errorEvents":<Table>.<Column> is of type 'GEOGRAPHY', which is not supported by 'Full Load' under 'Full LOB' support mode."
+
+**Problemumgehung**
+
+Azure Database Migration Service unterstützt den Datentyp „Geography“ (Geografie) für Offlinemigrationen zu Azure SQL-Datenbank, jedoch nicht für Onlinemigrationen. Probieren Sie alternative Methoden zum Ändern des Datentyps der Quelle in einen unterstützten Typ aus, bevor Sie versuchen, für diese Datenbank eine Onlinemigration mithilfe von Azure Database Migration Service durchzuführen.
+
+### <a name="supported-editions"></a>Unterstützte Editionen
+
+**Symptom**
+
+Bei der Migration wird folgende Fehlermeldung angezeigt:
+
+    Migration settings validation error: The edition of the server [Business Intelligence Edition (64-bit)] does not match the supported edition(s) [Enterprise,Standard,Developer].
+
+**Problemumgehung**
+
+Die Unterstützung für Onlinemigrationen zu Azure SQL-Datenbank mithilfe von Azure Database Migration Service gilt nur für die Editionen Enterprise, Standard und Developer. Vergewissern Sie sich vor Beginn des Migrationsvorgangs, dass Sie eine unterstützte Edition verwenden.

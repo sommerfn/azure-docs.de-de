@@ -3,23 +3,23 @@ title: Was ist die gruppenbasierte Lizenzierung? – Azure Active Directory | Mi
 description: Lernen Sie mehr über die gruppenbasierte Lizenzierung in Azure Active Directory, ihre Funktionsweise und die entsprechenden Best Practices.
 services: active-directory
 keywords: Azure AD-Lizenzierung
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/29/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7094db14f53af939ded2313823bf2749e59a46
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a455f0e1959ad496a04f531cc0c3ece240c757ad
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183151"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987146"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Was ist die gruppenbasierte Lizenzierung in Azure Active Directory?
 
@@ -32,9 +32,9 @@ Um diese Probleme zu beheben, enthält Azure AD jetzt die gruppenbasierte Lizenz
 ## <a name="licensing-requirements"></a>Lizenzanforderungen
 Zur Verwendung der gruppenbasierten Lizenzierung müssen Sie über eine der folgenden Lizenzen verfügen:
 
-- Kostenpflichtiges oder Testabonnement für Azure AD Basic
+- Kostenpflichtiges oder Testabonnement für Azure AD Premium P1 oder höher
 
-- Kostenpflichtige oder Office 365 Enterprise E3 oder Office 365 A3 und höher
+- Kostenpflichtige oder kostenlose Edition von Office 365 Enterprise E3 oder Office 365 A3 oder Office 365 GCC G3 und höher
 
 ### <a name="required-number-of-licenses"></a>Erforderliche Anzahl von Lizenzen
 Für alle Gruppen, denen eine Lizenz zugewiesen ist, müssen Sie auch über eine Lizenz für jedes einzelne Mitglied verfügen. Sie müssen zwar nicht jedem Mitglied der Gruppe eine Lizenz zuweisen, aber Sie müssen mindestens über genügend Lizenzen für alle Mitglieder verfügen. Bei 1.000 einzelnen Mitgliedern, die lizenzierten Gruppen in Ihrem Mandanten angehören, müssen Sie beispielsweise über mindestens 1.000 Lizenzen verfügen, um den Lizenzvertrag zu erfüllen.

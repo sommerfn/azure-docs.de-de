@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: iot-hub
 author: dominicbetts
 ms.service: iot-hub
@@ -8,32 +8,26 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 40a5416f15b0e2d66d6ce4b4787573560ee4af00
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 1e919f22d5dd7975f055f262ec9ba69230aebd17
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "52156771"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780858"
 ---
-## <a name="create-a-device-identity"></a>Erstellen einer Geräteidentität
+In diesem Abschnitt wird die Azure-Befehlszeilenschnittstelle verwendet, um eine Geräteidentität für diesen Artikel zu erstellen. Bei Geräte-IDs wird die Groß-/Kleinschreibung beachtet.
 
-In diesem Abschnitt verwenden Sie die Azure-Befehlszeilenschnittstelle zum Erstellen einer Geräteidentität für dieses Tutorial. Die Azure-Befehlszeilenschnittstelle ist in der [Azure Cloud Shell](~/articles/cloud-shell/overview.md) vorinstalliert, Sie können sie aber auch [lokal installieren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Bei Geräte-IDs wird die Groß-/Kleinschreibung beachtet.
+1. Öffnen Sie [Azure Cloud Shell](https://shell.azure.com/).
 
-1. Führen Sie den folgenden Befehl in der Befehlszeilenumgebung aus, in der Sie die IoT-Erweiterung mit der Azure-Befehlszeilenschnittstelle installieren:
+1. Führen Sie in Azure Cloud Shell den folgenden Befehl aus, um die Microsoft Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle zu installieren:
 
-    ```cmd/sh
+    ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
     ```
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle lokal ausführen, verwenden Sie den folgenden Befehl, um sich bei Ihrem Azure-Konto anzumelden. (Wenn Sie Cloud Shell verwenden, sind Sie automatisch angemeldet und müssen diesen Befehl nicht ausführen.)
+2. Erstellen Sie mithilfe der folgenden Befehle eine neue Geräteidentität mit dem Namen `myDeviceId`, und rufen Sie die Verbindungszeichenfolge für das Gerät ab:
 
-    ```cmd/sh
-    az login
-    ```
-
-1. Erstellen Sie abschließend die neue Geräteidentität `myDeviceId`, und rufen Sie die Verbindungszeichenfolge für das Gerät mit den folgenden Befehlen ab:
-
-    ```cmd/sh
+    ```azurecli-interactive
     az iot hub device-identity create --device-id myDeviceId --hub-name {Your IoT Hub name}
     az iot hub device-identity show-connection-string --device-id myDeviceId --hub-name {Your IoT Hub name} -o table
     ```

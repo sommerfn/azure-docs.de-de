@@ -4,15 +4,15 @@ description: Ausführen von Massenvorgängen in Azure Cosmos DB über Massenimpo
 author: tknandu
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: e0176af0ce77e9306f6f0031122f8ba8a7b27e61
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 8d2cb30e0f18485d500344e571b3ac5f2cde008f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038279"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615704"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB-BulkExecutor-Bibliothek – Übersicht
  
@@ -36,7 +36,7 @@ Die BulkExecutor-Bibliothek hilft Ihnen, diesen massiven Durchsatz und Speicherp
  
 * Dank einer Architektur für die horizontale Skalierung kann eine solche Instanz innerhalb einer Stunde mehr als ein Terabyte an Daten importieren.  
 
-* Vorhandene Daten in Azure Cosmos DB-Containern können per Massenvorgang in Form von Patches aktualisiert werden. 
+* Vorhandene Daten in Azure Cosmos-Containern können per Massenvorgang in Form von Patches aktualisiert werden. 
  
 ## <a name="how-does-the-bulk-executor-operate"></a>Wie funktioniert BulkExecutor? 
 

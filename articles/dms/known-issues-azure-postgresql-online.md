@@ -10,30 +10,35 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: f52eb1699b980e84195ec34eb543c4523328c893
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 08/06/2019
+ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181995"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743542"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure DB for PostgreSQL
 
-In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Bezug auf Onlinemigrationen von PostgreSQL zu Azure Database for PostgreSQL beschrieben. 
+In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Bezug auf Onlinemigrationen von PostgreSQL zu Azure Database for PostgreSQL beschrieben.
 
 ## <a name="online-migration-configuration"></a>Konfiguration der Onlinemigration
+
 - Der PostgreSQL-Quellserver muss Version 9.5.11, 9.6.7, 10.3 oder höher ausführen. Weitere Informationen finden Sie im Artikel [Unterstützte PostgreSQL-Datenbankversionen](../postgresql/concepts-supported-versions.md).
 - Es werden nur Migrationen innerhalb einer Version unterstützt. Das Migrieren von PostgreSQL 9.5.11 zu Azure Database for PostgreSQL 9.6.7 wird z.B. nicht unterstützt.
-- Um die logische Replikation in der PostgreSQL-Quelldatei **postgresql.config** zu aktivieren, legen Sie die folgenden Parameter fest:
-    - **wal_level** = logical
-    - **max_replication_slots** = [maximale Anzahl von Datenbanken für die Migration]. Wenn Sie 4 Datenbanken migrieren möchten, legen Sie den Wert auf 4 fest.
-    - **max_wal_senders** = [Anzahl der gleichzeitig ausgeführten Datenbanken]. Der empfohlene Wert ist 10.
-- Hinzufügen der IP-Adresse des DMS-Agents zur PostgreSQL-Quelldatei „pg_hba.conf“
-    1. Notieren Sie sich die DMS-IP-Adresse, nachdem Sie die Bereitstellung einer Instanz von DMS abgeschlossen haben.
-    2. Fügen Sie die IP-Adresse der Datei „pg_hba.conf“ wie gezeigt hinzu:
 
-        host    all     172.16.136.18/10    md5  host    replication postgres    172.16.136.18/10    md5
+    > [!NOTE]
+    > Für PostgreSQL Version 10 unterstützt DMS zurzeit nur die Migration von Version 10.3 zu Azure Database for PostgreSQL. Wir planen, neuere Versionen von PostgreSQL schon bald zu unterstützen.
+
+- Um die logische Replikation in der PostgreSQL-Quelldatei **postgresql.config** zu aktivieren, legen Sie die folgenden Parameter fest:
+  - **wal_level** = logical
+  - **max_replication_slots** = [maximale Anzahl von Datenbanken für die Migration]. Wenn Sie 4 Datenbanken migrieren möchten, legen Sie den Wert auf 4 fest.
+  - **max_wal_senders** = [Anzahl der gleichzeitig ausgeführten Datenbanken]. Der empfohlene Wert ist 10.
+- Hinzufügen der IP-Adresse des DMS-Agents zur PostgreSQL-Quelldatei „pg_hba.conf“
+  1. Notieren Sie sich die DMS-IP-Adresse, nachdem Sie die Bereitstellung einer Instanz von DMS abgeschlossen haben.
+  2. Fügen Sie die IP-Adresse der Datei „pg_hba.conf“ wie gezeigt hinzu:
+
+        host    all     172.16.136.18/10    md5    host    replication postgres    172.16.136.18/10    md5
 
 - Der Benutzer muss über Administratorberechtigung auf dem Server verfügen, der die Datenbank hostet.
 - Abgesehen davon, dass ENUM im Quelldatenbankschema enthalten ist, müssen das Quell- und das Zieldatenbankschema übereinstimmen.
@@ -84,7 +89,10 @@ In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Be
 
     **Problemumgehung**: Legen Sie vorübergehend einen Primärschlüssel für die Tabelle fest, damit die Migration fortgesetzt wird. Sie können den Primärschlüssel nach Abschluss der Datenmigration entfernen.
 
+- **Einschränkung**: Der JSONB-Datentyp wird für die Migration nicht unterstützt.
+
 ## <a name="lob-limitations"></a>LOB-Einschränkungen
+
 LOB-Spalten (Large Object) sind Spalten, die groß werden können. Für PostgreSQL sind XML, JSON, IMAGE, TEXT usw. Beispiele für LOB-Datentypen.
 
 - **Einschränkung**: Wenn LOB-Datentypen als Primärschlüssel verwendet werden, tritt bei der Migration ein Fehler auf.
@@ -104,6 +112,7 @@ LOB-Spalten (Large Object) sind Spalten, die groß werden können. Für PostgreS
     **Problemumgehung**: Legen Sie vorübergehend einen Primärschlüssel für die Tabelle fest, damit die Migration fortgesetzt wird. Sie können den Primärschlüssel nach Abschluss der Datenmigration entfernen.
 
 ## <a name="postgresql10-workaround"></a>PostgreSQL10-Problemumgehung
+
 PostgreSQL 10.x nimmt verschiedene Änderungen an pg_xlog-Ordnernamen vor und bewirkt damit, dass die Migration nicht wie erwartet ausgeführt wird. Wenn Sie von PostgreSQL 10.x zu Azure Database for PostgreSQL 10.3 migrieren, führen Sie das folgende Skript für die PostgreSQL-Quelldatenbank aus, um eine Wrapper-Funktion um pg_xlog-Funktionen zu erstellen.
 
 ```
@@ -144,7 +153,32 @@ ALTER USER PG_User SET search_path = fnRenames, pg_catalog, "$user", public;
 COMMIT;
 ```
 
+## <a name="limitations-when-migrating-online-from-aws-rds-postgresql"></a>Einschränkungen bei der Onlinemigration von AWS RDS PostgreSQL
+
+Beim Versuch der Onlinemigration von AWS RDS PostgreSQL zu Azure Database for PostgreSQL können die folgenden Fehler auftreten.
+
+- **Fehler**: Der Standardwert der Spalte „{column}“ in der Tabelle „{table}“ der Datenbank „{database}“ unterscheidet sich für den Quell- und Zielserver. Auf der Quelle lautet er „{value on source}“, und auf dem Ziel „{value on target}“.
+
+  **Einschränkung**: Dieser Fehler tritt auf, wenn der Standardwert für ein Spaltenschema in Quell- und Zieldatenbank unterschiedlich ist.
+  **Problemumgehung**: Stellen Sie sicher, dass das Schema des Ziels mit dem Schema der Quelle übereinstimmt. Details zum Migrieren des Schemas finden Sie in der [Dokumentation zur Azure PostgreSQL-Onlinemigration](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
+
+- **Fehler**: Die Zieldatenbank „{database}“ enthält „{number of tables}“ Tabellen, während die Quelldatenbank „{database}“ „{number of tables}“ Tabellen enthält. Die Anzahl von Tabellen in der Quell- und Zieldatenbank sollte jeweils übereinstimmen.
+
+  **Einschränkung**: Dieser Fehler tritt auf, wenn sich die Anzahl der Tabellen in Quell- und Zieldatenbank unterscheidet.
+  **Problemumgehung**: Stellen Sie sicher, dass das Schema des Ziels mit dem Schema der Quelle übereinstimmt. Details zum Migrieren des Schemas finden Sie in der [Dokumentation zur Azure PostgreSQL-Onlinemigration](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
+
+- **Fehler:** Die Quelldatenbank {database} ist leer.
+
+  **Einschränkung**: Dieser Fehler tritt auf, wenn die Quelldatenbank leer ist. Meistens besteht die Ursache darin, dass Sie die falsche Datenbank als Quelle ausgewählt haben.
+  **Problemumgehung**: Überprüfen Sie erneut die Quelldatenbank, die Sie für die Migration ausgewählt haben, und wiederholen Sie den Vorgang.
+
+- **Fehler:** Die Zieldatenbank „{database}“ ist leer. Migrieren Sie das Schema.
+
+  **Einschränkung**: Dieser Fehler tritt auf, wenn für die Zieldatenbank kein Schema vorhanden ist. Stellen Sie sicher, dass das Schema des Ziels mit dem Schema der Quelle übereinstimmt.
+  **Problemumgehung**: Stellen Sie sicher, dass das Schema des Ziels mit dem Schema der Quelle übereinstimmt. Details zum Migrieren des Schemas finden Sie in der [Dokumentation zur Azure PostgreSQL-Onlinemigration](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#migrate-the-sample-schema).
+
 ## <a name="other-limitations"></a>Weitere Einschränkungen
+
 - Der Name der Datenbank darf kein Semikolon (;) enthalten.
 - Eine Kennwortzeichenfolge mit öffnenden und schließenden geschweiften Klammern { } wird nicht unterstützt. Diese Einschränkung gilt für Verbindungen mit der PostgreSQL-Quelldatenbank sowie der Azure Database for PostgreSQL-Zielinstanz.
 - Eine erfasste Tabelle muss über einen Primärschlüssel verfügen. Wenn eine Tabelle keinen Primärschlüssel besitzt, ist das Ergebnis der Vorgänge DELETE- und UPDATE für Datensätze unvorhersehbar.
@@ -164,7 +198,9 @@ COMMIT;
     ```
 
 - Die Änderungsverarbeitung (fortlaufende Synchronisierung) von TRUNCATE-Vorgängen wird nicht unterstützt. Die Migration partitionierter Tabellen wird nicht unterstützt. Wenn eine partitionierte Tabelle erkannt wird, werden die folgenden Aktionen ausgeführt:
-    - Die Datenbank meldet eine Liste von übergeordneten und untergeordneten Tabellen.
-    - Die Tabelle wird im Ziel als reguläre Tabelle mit den gleichen Eigenschaften wie die ausgewählten Tabellen erstellt.
-    - Wenn die übergeordnete Tabelle in der Quelldatenbank den gleichen Primärschlüsselwert wie die untergeordneten Tabellen aufweist, wird ein Fehler des Typs „doppelt vorhandener Schlüssel“ generiert.
+
+  - Die Datenbank meldet eine Liste von übergeordneten und untergeordneten Tabellen.
+  - Die Tabelle wird im Ziel als reguläre Tabelle mit den gleichen Eigenschaften wie die ausgewählten Tabellen erstellt.
+  - Wenn die übergeordnete Tabelle in der Quelldatenbank den gleichen Primärschlüsselwert wie die untergeordneten Tabellen aufweist, wird ein Fehler des Typs „doppelt vorhandener Schlüssel“ generiert.
+
 - In DMS ist die Anzahl der in einer einzelnen Migrationsaktivität zu migrierenden Datenbanken auf vier Datenbanken beschränkt.

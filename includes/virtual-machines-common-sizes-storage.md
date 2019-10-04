@@ -1,72 +1,68 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: e05281b2279f5d40f8a3ba4ed3f49a38e5abf0ee
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: b98aebfd7bef3edff8e046d7ef1c388ea57afa04
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58261531"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67501234"
 ---
 Datenspeicheroptimierte VM-Größen bieten hohen Datenträgerdurchsatz und E/A und eignen sich ideal für Big Data, SQL, NoSQL-Datenbanken, Datawarehousing und große transaktionale Datenbanken.  Beispiele bilden Cassandra, MongoDB, Cloudera und Redis. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum lokalen Speicherdurchsatz und zur Netzwerkbandbreite für die einzelnen optimierten Größen.
 
 Die Lsv2-Reihe bietet direkt zugeordneten lokalen NVMe-Speicher mit hohem Durchsatz und geringer Latenz auf dem [AMD EPYC&trade; 7551-Prozessor](https://www.amd.com/en/products/epyc-7000-series) mit einem Basistakt von 2,55 GHz für alle Kerne und einem maximalen Turbotakt von 3,0 GHz. Die VMs der Lsv2-Reihe sind in Größen von 8 bis 80 vCPUs in einer Konfiguration mit simultanem Multithreading verfügbar.  Es stehen 8 GiB Arbeitsspeicher pro vCPU und ein NVMe-SSD-M.2-Gerät mit 1,92 TB pro 8 vCPUs zur Verfügung, mit bis zu 19,2 TB (10x1,92 TB) auf dem L80s v2.
 
-Die Ls-Reihe bietet bis zu 32 vCPUs aus der [Intel® Xeon® E5 v3-Prozessorfamilie](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Die Ls-Serie erreicht die gleiche CPU-Leistung wie die G/GS-Serie und bietet 8 GiB Arbeitsspeicher pro vCPU.
-
 > [!NOTE]
-> Die VMs der Lsv2-Reihe sind für die Verwendung des direkt an die VM angebundenen lokalen Datenträgers auf dem Knoten optimiert, statt für die Verwendung dauerhafter Datenträger.  Dies ermöglicht höhere IOPs/mehr Durchsatz für Ihre Workloads.  Die Reihen Lsv2 und Ls unterstützen nicht die Erstellung eines lokalen Caches zum Erhöhen der IOPS, wie er über dauerhafte Datenträger erreicht werden könnte. Dank des hohen Durchsatzes und der IOPS des lokalen Datenträgers eignen sich VMs der Lsv2- und Ls-Reihe ideal für NoSQL-Speicher wie Apache Cassandra und MongoDB, die Daten über mehrere virtuelle Computer replizieren, um Persistenz im Falle eines Ausfalls eines einzelnen virtuellen Computers zu erzielen. 
+> Die VMs der Lsv2-Reihe sind für die Verwendung des direkt an die VM angebundenen lokalen Datenträgers auf dem Knoten optimiert, statt für die Verwendung dauerhafter Datenträger. Dies ermöglicht höhere IOPs/mehr Durchsatz für Ihre Workloads. Die Reihen „Lsv2“ und „Ls“ unterstützen nicht die Erstellung eines lokalen Caches zum Erhöhen der IOPS, wie über dauerhafte Datenträger erreicht werden könnte.
+>
+> Dank des hohen Durchsatzes und der IOPS des lokalen Datenträgers eignen sich VMs der Lsv2- und Ls-Reihe ideal für NoSQL-Speicher wie Apache Cassandra und MongoDB, die Daten über mehrere virtuelle Computer replizieren, um Persistenz im Falle eines Ausfalls eines einzelnen virtuellen Computers zu erzielen.
+>
+> Weitere Informationen finden Sie unter [Optimize performance on the Lsv2-series virtual machines (Optimieren der Leistung von virtuellen Computern der Lsv2-Reihe)](../articles/virtual-machines/linux/storage-performance.md).  
+
 
 ## <a name="lsv2-series"></a>Lsv2-Reihe
+
 ACU: 150–175
 
 Storage Premium Unterstützt
 
 Storage Premium-Zwischenspeicherung: Nicht unterstützt
 
-| Größe          | vCPU | Arbeitsspeicher (GiB) | Temporäre Datenträger<sup>1</sup> (GiB) | NVMe-Datenträger<sup>2</sup> | NVMe-Datenträger-Datendurchsatz<sup>3</sup> (Lese-IOPS/MBit/s) | Maximaler Datenträgerdurchsatz ohne Cache: (IOPS/MB/s)<sup>4</sup> | Max. Anzahl Datenträger | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) | 
+| Size          | vCPU | Arbeitsspeicher (GiB) | Temporäre Datenträger<sup>1</sup> (GiB) | NVMe-Datenträger<sup>2</sup> | NVMe-Datenträger-Datendurchsatz<sup>3</sup> (Lese-IOPS/MBit/s) | Maximaler Datenträgerdurchsatz ohne Cache: (IOPS/MB/s)<sup>4</sup> | Max. Anzahl Datenträger | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
 |---------------|-----------|-------------|--------------------------|----------------|---------------------------------------------------|-------------------------------------------|------------------------------|------------------------------| 
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x1,92 TB  | 400.000/2.000 | 8.000/160 | 16 | 2/3.200  | 
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x1,92 TB  | 800.000/4.000 | 16.000/320 | 32 | 4/6.400  | 
-| Standard_L32s_v2  | 32 | 256 | 320 |  4x1,92 TB  | 1.500.000/8.000    | 32.000/640 | 32 | 8/12.800 | 
-| Standard_L64s_v2  | 64 | 512 | 640 |  8x1,92 TB  | 2.900.000/16.000   | 64.000/1.280 | 32 | 8/25.600 |
-| Standard_L80s_v2  | 80 | 640 | 800 | 10x1,92 TB   | 3.800.000/20.000   | 80.000/1.400 | 32 | 8/32.000 |
- 
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x1,92 TB  | 400.000/2.000  | 8\.000/160   | 16 | 2/3.200  |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x1,92 TB  | 800.000/4.000  | 16.000/320  | 32 | 4/6.400  |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x1,92 TB  | 1.500.000/8.000    | 32.000/640  | 32 | 8/12.800 |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x1,92 TB  | 2,2M / 14000   | 48000/960  | 32 | 8/16.000+ |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8x1,92 TB  | 2.900.000/16.000   | 64.000/1.280 | 32 | 8/16.000+ |
+| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10x1,92 TB   | 3.800.000/20.000   | 80.000/1.400 | 32 | 8/16.000+ |
+
 <sup>1</sup> VMs der Lsv2-Reihe verfügen über einen standardmäßigen SCSI-basierten temporären Ressourcendatenträger für die Verwendung als Auslagerungsdatei des Betriebssystems (D: unter Windows, /dev/sdb unter Linux). Dieser Datenträger bietet 80 GiB Speicher, 4.000 IOPS und eine Übertragungsrate von 80 MB/s für jeweils 8 vCPUs (beispielsweise bietet Standard_L80s_v2 800 GiB bei 40.000 IOPS und 800 MB/s). Dadurch wird sichergestellt, dass die NVMe-Laufwerke vollständig für die Anwendungsnutzung reserviert werden können. Dieser Datenträger ist kurzlebig, und beim Beenden oder Aufheben der Zuordnung gehen alle Daten verloren.
 
 <sup>2</sup> Lokale NVMe-Datenträger sind kurzlebig. Die Daten auf diesen Datenträgern gehen verloren, wenn Sie den virtuellen Computer beenden oder seine Zuordnung aufheben.
 
 <sup>3</sup> Hyper-V NVMe Direct-Technologie ermöglicht den ungedrosselten Zugriff auf lokale NVMe-Laufwerke, die sicher dem Bereich der Gast-VM zugeordnet sind.  Für das Erreichen maximaler Leistung sind entweder der neueste WS2019-Build oder Ubuntu 18.04 oder 16.04 aus dem Azure Marketplace erforderlich.  Die Schreibleistung weicht je nach EA-Größe, Laufwerksauslastung und Kapazitätsnutzung ab.
 
-<sup>4</sup> VMs der Lsv2-Reihe stellen keinen Hostcache für Datenträger bereit, da dieser den Lsv2-Workloads nicht zugute kommt.  Allerdings können Lsv2-VMs die kurzlebige VM-Betriebssystemdatenträger-Option (bis zu 30 GiB) von Azure bieten. 
+<sup>4</sup> VMs der Lsv2-Reihe stellen keinen Hostcache für Datenträger bereit, da dieser den Lsv2-Workloads nicht zugute kommt.  Allerdings können Lsv2-VMs die kurzlebige VM-Betriebssystemdatenträger-Option (bis zu 30 GiB) von Azure bieten.
 
+<sup>5</sup> Für VMs mit mehr als 64 vCPUs ist eines dieser unterstützten Gastbetriebssysteme erforderlich:
+- Windows Server 2016 oder höher
+- Ubuntu 16.04 LTS oder höher mit für Azure optimiertem Kernel (4.15 Kernel oder höher)
+- SLES 12 SP2 oder höher
+- RHEL oder CentOS-Version 6.7 bis 6.10 mit Installation des von Microsoft bereitgestellten LIS-Pakets 4.3.1 (oder höher)
+- RHEL oder CentOS-Version 7.3 mit Installation des von Microsoft bereitgestellten LIS-Pakets 4.2.1 (oder höher)
+- RHEL oder CentOS-Version 7.6 oder höher
+- Oracle Linux mit UEK4 oder höher
+- Debian 9 mit Backports-Kernel, Debian 10 oder höher
+- CoreOS mit 4.14-Kernel oder höher
 
-
-## <a name="ls-series"></a>Ls-Serie
-ACU: 180–240
-
-Storage Premium  Unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
- 
-| Größe          | vCPU | Arbeitsspeicher (GiB) | Temporärer Speicher (GiB) | Max. Anzahl Datenträger | Maximaler Durchsatz temporärer Speicher (IOPS/MB/s) | Maximaler Datenträgerdurchsatz ohne Cache: (IOPS/MB/s) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) | 
-|----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
-| Standard_L4s   | 4  | 32  | 678   | 16 | 20,000 / 200 | 5.000 / 125  | 2 / 4,000  | 
-| Standard_L8s   | 8  | 64  | 1.388 | 32 | 40,000 / 400 | 10.000/250 | 4 / 8,000  | 
-| Standard_L16s  | 16 | 128 | 2.807 | 64 | 80.000/800 | 20.000/500 | 8 / 16.000 | 
-| Standard_L32s <sup>1</sup> | 32   | 256  | 5.630 | 64   | 160,000 / 1,600   | 40.000/1.000     | 8 / 20,000 | 
- 
-
-Der mit einem virtuellen Computer der Ls-Serie maximal mögliche Datenträgerdurchsatz kann durch Anzahl, Größe und Striping angefügter Datenträger beschränkt sein. Details finden Sie unter [Entwerfen für hohe Leistung](../articles/virtual-machines/windows/premium-storage-performance.md).
-
-<sup>1</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
 ## <a name="size-table-definitions"></a>Definitionen der Größentabelle
 

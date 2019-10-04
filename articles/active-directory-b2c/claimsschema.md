@@ -2,26 +2,26 @@
 title: ClaimsSchema – Azure Active Directory B2C | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie das ClaimsSchema-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5d7036f2c7301223b27c80402dace8e9ea05b7f1
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487820"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999100"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Das **ClaimsSchema**-Element definiert die Anspruchstypen, auf die als Teil der Richtlinie verwiesen werden kann. Im Anspruchsschema deklarieren Sie Ihre Ansprüche. Bei einem Anspruch kann es sich u.a. um einen Vornamen, Nachnamen, Anzeigenamen, eine Telefonnummer handeln. Das ClaimsSchema-Element enthält eine Liste von **ClaimType**-Elementen. Das **ClaimType**-Element enthält das **Id**-Attribut, bei dem es sich um den Anspruchsnamen handelt. 
+Das **ClaimsSchema**-Element definiert die Anspruchstypen, auf die als Teil der Richtlinie verwiesen werden kann. Im Anspruchsschema deklarieren Sie Ihre Ansprüche. Bei einem Anspruch kann es sich u.a. um einen Vornamen, Nachnamen, Anzeigenamen, eine Telefonnummer handeln. Das ClaimsSchema-Element enthält eine Liste von **ClaimType**-Elementen. Das **ClaimType**-Element enthält das **Id**-Attribut, bei dem es sich um den Anspruchsnamen handelt.
 
 ```XML
 <BuildingBlocks>
@@ -44,7 +44,7 @@ Das **ClaimType**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| id | Ja | Ein Bezeichner, der für den Anspruchsnamen verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
+| Id | Ja | Ein Bezeichner, der für den Anspruchsnamen verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
 
 Das **ClaimType**-Element enthält die folgenden Elemente:
 
@@ -65,13 +65,13 @@ Die **DefaultPartnerClaimTypes** können das folgende Element enthalten:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| Protokoll | 0:n | Liste von Protokollen mit deren Standardnamen für den Partneranspruchstyp. |
+| Protocol | 0:n | Liste von Protokollen mit deren Standardnamen für den Partneranspruchstyp. |
 
 Das **Protocol**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Name | Ja | Der Name eines von Azure AD B2C unterstützten gültigen Protokolls. Mögliche Werte:  OAuth1, OAuth2, SAML2, OpenIdConnect, WsFed oder WsTrust. |
+| Name | Ja | Der Name eines von Azure AD B2C unterstützten gültigen Protokolls. Mögliche Werte:  OAuth1, OAuth2, SAML2, OpenIdConnect. |
 | PartnerClaimType | Ja | Der zu verwendende Anspruchstypname. |
 
 Im folgenden Beispiel wird der Anspruch **surname** bei der Interaktion des Identity Experience Frameworks mit einem SAML2-Identitätsanbieter oder einer Anwendung der vertrauenden Seite `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` zugeordnet. Unter Verwendung der Werte „OpenIdConnect“ und „OAuth2“ wird der Anspruch `family_name` zugeordnet.
@@ -89,7 +89,7 @@ Im folgenden Beispiel wird der Anspruch **surname** bei der Interaktion des Iden
 ```
 
 Infolgedessen gibt das von Azure AD B2C ausgestellte JWT-Token `family_name` anstelle des Anspruchstypnamens **surname** aus.
- 
+
 ```JSON
 {
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
@@ -107,7 +107,7 @@ Das **Mask**-Element enthält die folgenden Attribute:
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Der Typ der Anspruchsmaske. Mögliche Werte: `Simple` oder `Regex`. Der Wert `Simple` gibt an, dass auf den vorderen Teil eines Zeichenfolgenanspruchs eine einfache Textmaske angewandt wird. Der Wert `Regex` gibt an, dass ein regulärer Ausdruck auf den Zeichenfolgenausdruck als Ganzes angewandt wird.  Wenn der Wert `Regex` angegeben wird, muss mit dem zu verwendenden regulären Ausdruck auch ein optionales Attribut definiert werden. |
-| `Regex` | Nein  | Wenn **`Type`** auf `Regex` festgelegt wird, geben Sie den zu verwendenden regulären Ausdruck an.
+| `Regex` | Nein | Wenn **`Type`** auf `Regex` festgelegt wird, geben Sie den zu verwendenden regulären Ausdruck an.
 
 Im folgenden Beispiel wird ein **PhoneNumber**-Anspruch mit der Maske `Simple` konfiguriert:
 
@@ -115,14 +115,14 @@ Im folgenden Beispiel wird ein **PhoneNumber**-Anspruch mit der Maske `Simple` k
 <ClaimType Id="PhoneNumber">
   <DisplayName>Phone Number</DisplayName>
   <DataType>string</DataType>
-  <Mask Type="Simple">XXX-XXX-</Mask>  
+  <Mask Type="Simple">XXX-XXX-</Mask>
   <UserHelpText>Your telephone number.</UserHelpText>
 </ClaimType>
 ```
 
 Das Identity Experience Framework rendert die Telefonnummer, wobei die ersten sechs Ziffern ausgeblendet werden:
 
-![Verwenden eines Anspruchstyps mit Maske](./media/claimsschema/mask.png)
+![Telefonnummeranspruch im Browser mit den ersten sechs Ziffern als X](./media/claimsschema/mask.png)
 
 Im folgenden Beispiel wird ein **AlternateEmail**-Anspruch mit der Maske `Regex` konfiguriert:
 
@@ -137,7 +137,7 @@ Im folgenden Beispiel wird ein **AlternateEmail**-Anspruch mit der Maske `Regex`
 
 Das Identity Experience Framework rendert nur den ersten Buchstaben der E-Mail-Adresse und den E-Mail-Domänennamen:
 
-![Verwenden eines Anspruchstyps mit Maske](./media/claimsschema/mask-regex.png)
+![E-Mail-Anspruch im Browser mit Zeichen als Sternchen](./media/claimsschema/mask-regex.png)
 
 
 ### <a name="restriction"></a>Einschränkung
@@ -146,7 +146,7 @@ Das **Restriction**-Element enthält möglicherweise das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| MergeBehavior | Nein  | Die Methode, die zum Zusammenführen von Enumerationswerten mit einem Anspruchstyp in einer übergeordneten Richtlinie mit dem gleichen Bezeichner verwendet wird. Verwenden Sie dieses Attribut, wenn Sie einen Anspruch überschreiben, der in der Basisrichtlinie angegeben ist. Mögliche Werte: `Append`, `Prepend` oder `ReplaceAll`. Beim Wert `Append` handelt es sich um eine Sammlung von Daten, die an das Ende der in der übergeordneten Richtlinie angegebenen Sammlung angefügt werden soll. Beim Wert `Prepend` handelt es sich um eine Sammlung von Daten, die vor der in der übergeordneten Richtlinie angegebenen Sammlung hinzugefügt werden soll. Beim Wert `ReplaceAll` handelt es sich um eine Sammlung von in der übergeordneten Richtlinie angegebenen Daten, die ignoriert werden sollen. |
+| MergeBehavior | Nein | Die Methode, die zum Zusammenführen von Enumerationswerten mit einem Anspruchstyp in einer übergeordneten Richtlinie mit dem gleichen Bezeichner verwendet wird. Verwenden Sie dieses Attribut, wenn Sie einen Anspruch überschreiben, der in der Basisrichtlinie angegeben ist. Mögliche Werte: `Append`, `Prepend` oder `ReplaceAll`. Beim Wert `Append` handelt es sich um eine Sammlung von Daten, die an das Ende der in der übergeordneten Richtlinie angegebenen Sammlung angefügt werden soll. Beim Wert `Prepend` handelt es sich um eine Sammlung von Daten, die vor der in der übergeordneten Richtlinie angegebenen Sammlung hinzugefügt werden soll. Beim Wert `ReplaceAll` handelt es sich um eine Sammlung von in der übergeordneten Richtlinie angegebenen Daten, die ignoriert werden sollen. |
 
 Das **Restriction**-Element enthält die folgenden Elemente:
 
@@ -163,7 +163,7 @@ Das **Enumeration**-Element enthält die folgenden Attribute:
 | --------- | -------- | ----------- |
 | Text | Ja | Die Anzeigezeichenfolge, die dem Benutzer auf der Benutzeroberfläche für diese Option angezeigt wird. |
 |Wert | Ja | Der Wert des Anspruchs, der der Auswahl dieser Option zugeordnet ist. |
-| SelectByDefault | Nein  | Gibt an, ob diese Option auf der Benutzeroberfläche standardmäßig ausgewählt werden soll. Mögliche Werte: „True“ oder „False“. |
+| SelectByDefault | Nein | Gibt an, ob diese Option auf der Benutzeroberfläche standardmäßig ausgewählt werden soll. Mögliche Werte: „True“ oder „False“. |
 
 Im folgenden Beispiel wird ein **city**-Dropdownlistenanspruch mit dem Standardwert `New York` konfiguriert:
 
@@ -179,10 +179,10 @@ Im folgenden Beispiel wird ein **city**-Dropdownlistenanspruch mit dem Standardw
   </Restriction>
 </ClaimType>
 ```
+
 „city“-Dropdownliste mit dem Standardwert „New York“:
 
-![„city“-Dropdownliste](./media/claimsschema/dropdownsingleselect.png)
-
+![Dropdownsteuerelement im Browser mit Standardwert](./media/claimsschema/dropdownsingleselect.png)
 
 ### <a name="pattern"></a>Muster
 
@@ -191,7 +191,7 @@ Das **Pattern**-Element kann die folgenden Attribute enthalten:
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | RegularExpression | Ja | Der reguläre Ausdruck, mit dem Ansprüche dieses Typs übereinstimmen müssen, damit sie gültig sind. |
-| HelpText | Nein  | Das Muster oder der reguläre Ausdruck für diesen Anspruch. |
+| HelpText | Nein | Das Muster oder der reguläre Ausdruck für diesen Anspruch. |
 
 Im folgenden Beispiel wird ein **email**-Anspruch mit Eingabeüberprüfung mit regulärem Ausdruck und Hilfetext konfiguriert:
 
@@ -212,7 +212,7 @@ Im folgenden Beispiel wird ein **email**-Anspruch mit Eingabeüberprüfung mit r
 
 Das Identity Experience Framework rendert den E-Mail-Adressenanspruch mit Eingabeüberprüfung des E-Mail-Formats:
 
-![Verwenden des Anspruchstyps mit Muster](./media/claimsschema/pattern.png)
+![Textfeld mit einer Fehlermeldung, die von RegEx-Einschränkung ausgelöst wird](./media/claimsschema/pattern.png)
 
 ## <a name="userinputtype"></a>UserInputType
 
@@ -222,7 +222,7 @@ Azure AD B2C unterstützt eine Vielzahl von Benutzereingabetypen wie ein Textfel
 
 Der Benutzereingabetyp **TextBox** wird für die Bereitstellung eines einzeiligen Textfelds verwendet.
 
-![Verwenden des Anspruchstyps mit Textfeld](./media/claimsschema/textbox.png)
+![Textfeld mit den im Anspruchstyp angegebenen Eigenschaften](./media/claimsschema/textbox.png)
 
 ```XML
 <ClaimType Id="displayName">
@@ -237,7 +237,7 @@ Der Benutzereingabetyp **TextBox** wird für die Bereitstellung eines einzeilige
 
 Der Benutzereingabetyp **EmailBox** wird für die Bereitstellung eines einfachen E-Mail-Eingabefelds verwendet.
 
-![Verwenden des Anspruchstyps mit E-Mail-Feld](./media/claimsschema/emailbox.png)
+![E-Mail-Feld mit im Anspruchstyp angegebenen Eigenschaften](./media/claimsschema/emailbox.png)
 
 ```XML
 <ClaimType Id="email">
@@ -297,7 +297,7 @@ Der Benutzereingabetyp **RadioSingleSelect** wird für die Bereitstellung einer 
     <Enumeration Text="Green " Value="Green" SelectByDefault="false" />
     <Enumeration Text="Orange" Value="Orange" SelectByDefault="true" />
   </Restriction>
-</ClaimType>    
+</ClaimType>
 ```
 
 ### <a name="dropdownsingleselect"></a>DropdownSingleSelect
@@ -375,4 +375,4 @@ Der Benutzereingabetyp **Paragraph** wird für die Bereitstellung eines Felds ve
 </ClaimType>
 ```
 
-Verwenden Sie zum Anzeigen der **Enumeration**-Werte in einem **responseMsg**-Anspruch die Anspruchstransformationen `GetMappedValueFromLocalizedCollection` oder `CreateStringClaim`. Weitere Informationen finden Sie unter [String Claims Transformations (Transformationen von Zeichenfolgeansprüchen)](string-transformations.md). 
+Verwenden Sie zum Anzeigen der **Enumeration**-Werte in einem **responseMsg**-Anspruch die Anspruchstransformationen `GetMappedValueFromLocalizedCollection` oder `CreateStringClaim`. Weitere Informationen finden Sie unter [String Claims Transformations (Transformationen von Zeichenfolgeansprüchen)](string-transformations.md).

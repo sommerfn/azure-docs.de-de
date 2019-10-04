@@ -2,28 +2,28 @@
 title: Definieren eines selbstbestätigten technischen Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Definieren Sie ein selbstbestätigtes technisches Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dcc94daeb19174b85fface05222f8842e9544adf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4fec742766cebeb5b1d82655e09af77a888c375c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188863"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063695"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines selbstbestätigten technischen Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Alle Interaktionen in Azure Active Directory (Azure AD) B2C, bei denen vom Benutzer eine Eingabe erwartet wird, sind selbstbestätigte technische Profile. Beispiele: Registrierungsseite, Anmeldeseite oder Seite für die Kennwortzurücksetzung.
+Alle Interaktionen in Azure Active Directory B2C (Azure AD B2C), bei denen vom Benutzer eine Eingabe erwartet wird, sind selbstbestätigte technische Profile. Beispiele: Registrierungsseite, Anmeldeseite oder Seite für die Kennwortzurücksetzung.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 Das **Name**-Attribut des **Protocol**-Elements muss auf `Proprietary` festgelegt werden. Das **handler**-Attribut muss den vollqualifizierten Namen der Protokollhandlerassembly als selbstbestätigt enthalten, die von Azure AD B2C verwendet wird: `Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 
@@ -34,7 +34,7 @@ Das folgende Beispiel zeigt ein selbstbestätigtes technisches Profil für eine 
   <DisplayName>Email signup</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
 ```
- 
+
 ## <a name="input-claims"></a>Eingabeansprüche
 
 In einem selbstbestätigten technischen Profil können Sie die Elemente **InputClaims** und **InputClaimsTransformations** verwenden, um den Wert der Ansprüche vorab aufzufüllen, die auf der selbstbestätigten Seite angezeigt werden (Ausgabeansprüche). In der Richtlinie zur Profilbearbeitung liest beispielsweise die User Journey zunächst das Benutzerprofil aus dem Azure AD B2C-Verzeichnisdienst. Anschließend legt das selbstbestätigte technische Profil die Eingabeansprüchen mit den im Benutzerprofil gespeicherten Daten fest. Diese Ansprüche werden aus dem Benutzerprofil gesammelt und anschließend dem Benutzer vorgelegt, der die vorhandenen Daten dann bearbeiten kann.
@@ -55,7 +55,7 @@ In einem selbstbestätigten technischen Profil können Sie die Elemente **InputC
 
 Das **OutputClaims**-Element enthält eine Liste mit vorzulegenden Ansprüchen zum Sammeln von Daten vom Benutzer. Um die Ausgabeansprüche mit einigen Werten vorab aufzufüllen, verwenden Sie die weiter oben beschriebenen Eingabeansprüche. Das Element kann darüber hinaus auch einen Standardwert enthalten. Die Reihenfolge der Ansprüche in **OutputClaims** bestimmt die Reihenfolge, in der Azure AD B2C die Ansprüche berechnet und auf dem Bildschirm ausgibt. Das **DefaultValue**-Attribut wird erst wirksam, wenn der Anspruch zuvor nicht bereits festgelegt wurde. Wenn der Anspruch jedoch bereits in einem früheren Orchestrierungsschritt festgelegt wurde, wird der Standardwert nicht wirksam, auch wenn der Benutzer keinen Wert angibt. Um die Verwendung eines Standardwerts zu erzwingen, legen Sie das Attribut **AlwaysUseDefaultValue** auf `true` fest. Um den Benutzer zur Eingabe eines Werts für einen bestimmten Ausgabeanspruch zu zwingen, legen Sie das Attribut **Required** des **OutputClaims**-Elements auf `true` fest.
 
-Das **ClaimType**-Element in der **OutputClaims**-Sammlung muss das **UserInputType**-Element auf einen von Azure AD B2C unterstützten Benutzereingabetyp festlegen, wie etwa `TextBox` oder `DropdownSingleSelect`. Alternativ muss das **OutputClaim**-Element einen **DefaultValue** festlegen.  
+Das **ClaimType**-Element in der **OutputClaims**-Sammlung muss das **UserInputType**-Element auf einen von Azure AD B2C unterstützten Benutzereingabetyp festlegen, wie etwa `TextBox` oder `DropdownSingleSelect`. Alternativ muss das **OutputClaim**-Element einen **DefaultValue** festlegen.
 
 Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaimsTransformation**-Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
 
@@ -119,7 +119,7 @@ Wenn das **PersistedClaims**-Element nicht vorhanden ist, speichert das selbstbe
 
 ## <a name="validation-technical-profiles"></a>Verwenden von technischen Validierungsprofilen
 
-Ein technisches Validierungsprofil wird zur Überprüfung von einigen oder allen Ausgabeansprüchen des verweisenden technischen Profils verwendet. Die Eingabeansprüche des technischen Validierungsprofils müssen in den Ausgabeansprüchen des selbstbestätigten technischen Profils enthalten sein. Das technische Validierungsprofil überprüft die Benutzereingabe und kann einen Fehler an den Benutzer zurückgeben. 
+Ein technisches Validierungsprofil wird zur Überprüfung von einigen oder allen Ausgabeansprüchen des verweisenden technischen Profils verwendet. Die Eingabeansprüche des technischen Validierungsprofils müssen in den Ausgabeansprüchen des selbstbestätigten technischen Profils enthalten sein. Das technische Validierungsprofil überprüft die Benutzereingabe und kann einen Fehler an den Benutzer zurückgeben.
 
 Das technische Validierungsprofil kann ein technisches Profil in der Richtlinie sein. Beispiele hierfür sind [Azure Active Directory](active-directory-technical-profile.md) oder ein technisches [REST-API](restful-technical-profile.md)-Profil. Im vorherigen Beispiel überprüft das technische Profil `LocalAccountSignUpWithLogonEmail`, ob der „signinName“ im Verzeichnis vorhanden ist. Ist dies nicht der Fall, erstellt das technische Validierungsprofil ein lokales Konto und gibt „objectId“, „authenticationSource“ und „newUser“ zurück. Das technische Profil `SelfAsserted-LocalAccountSignin-Email` ruft das technische Validierungsprofil `login-NonInteractive` auf, um die Anmeldeinformationen des Benutzers zu überprüfen.
 
@@ -129,14 +129,14 @@ Mit Ihrer Geschäftslogik können Sie durch eine weitere Integration in die Bran
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| setting.showContinueButton | Nein  | Zeigt die Schaltfläche „Weiter“ an. Mögliche Werte: `true` (Standard) oder `false` |
-| setting.showCancelButton | Nein  | Zeigt die Schaltfläche „Abbrechen“ an. Mögliche Werte: `true` (Standard) oder `false` |
-| setting.operatingMode | Nein  | Bei einer Anmeldeseite steuert diese Eigenschaft das Verhalten des Benutzernamensfelds also z.B. die Eingabeüberprüfung und Fehlermeldungen. Erwartete Werte: `Username` oder `Email`. |
-| ContentDefinitionReferenceId | JA | Der Bezeichner der [Inhaltsdefinition](contentdefinitions.md), die diesem technischen Profil zugeordnet ist. |
-| EnforceEmailVerification | Nein  | Für die Registrierungs- oder Profilbearbeitung, erzwingt eine E-Mail-Überprüfung. Mögliche Werte: `true` (Standard) oder `false`. | 
-| setting.showSignupLink | Nein  | Zeigt die Schaltfläche „Registrieren“ an. Mögliche Werte: `true` (Standard) oder `false` |
-| setting.retryLimit | Nein  | Legt fest, wie oft ein Benutzer die Daten eingeben kann, die anhand des technischen Validierungsprofils überprüft werden. Beispiel: Ein Benutzer versucht, ein Konto zu registrieren, das bereits vorhanden ist, und wiederholt den Vorgang, bis der Grenzwert erreicht ist.
-| SignUpTarget | Nein  | Der Austauschbezeichner für das Registrierungsziel. Wenn der Benutzer auf die Schaltfläche „Registrieren“ klickt, führt Azure AD B2C den angegebenen Austauschbezeichner aus. |
+| setting.showContinueButton | Nein | Zeigt die Schaltfläche „Weiter“ an. Mögliche Werte: `true` (Standard) oder `false` |
+| setting.showCancelButton | Nein | Zeigt die Schaltfläche „Abbrechen“ an. Mögliche Werte: `true` (Standard) oder `false` |
+| setting.operatingMode | Nein | Bei einer Anmeldeseite steuert diese Eigenschaft das Verhalten des Benutzernamensfelds also z.B. die Eingabeüberprüfung und Fehlermeldungen. Erwartete Werte: `Username` oder `Email`. |
+| ContentDefinitionReferenceId | Ja | Der Bezeichner der [Inhaltsdefinition](contentdefinitions.md), die diesem technischen Profil zugeordnet ist. |
+| EnforceEmailVerification | Nein | Für die Registrierungs- oder Profilbearbeitung, erzwingt eine E-Mail-Überprüfung. Mögliche Werte: `true` (Standard) oder `false`. |
+| setting.showSignupLink | Nein | Zeigt die Schaltfläche „Registrieren“ an. Mögliche Werte: `true` (Standard) oder `false` |
+| setting.retryLimit | Nein | Legt fest, wie oft ein Benutzer die Daten eingeben kann, die anhand des technischen Validierungsprofils überprüft werden. Beispiel: Ein Benutzer versucht, ein Konto zu registrieren, das bereits vorhanden ist, und wiederholt den Vorgang, bis der Grenzwert erreicht ist.
+| SignUpTarget | Nein | Der Austauschbezeichner für das Registrierungsziel. Wenn der Benutzer auf die Schaltfläche „Registrieren“ klickt, führt Azure AD B2C den angegebenen Austauschbezeichner aus. |
 
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 

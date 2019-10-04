@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e1095cc2c5937fa5de762f91a9830161b8d2a5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 685c928a20e9bfb47365b5ffa769f1a223d2c563
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59362126"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69561502"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Tutorial: Ausführen eines Rollouts der Azure AD-Self-Service-Kennwortzurücksetzung für eine Pilotgruppe
 
@@ -43,7 +43,7 @@ Alle Tests der Self-Service-Kennwortzurücksetzung müssen mit Konten ohne Admin
    * Klicken Sie unten auf der Seite auf **Speichern**.
 1. Auf der Seite **Authentifizierungsmethoden**
    * Legen Sie die Option **Anzahl von Methoden, die zurückgesetzt werden müssen** auf **1** fest.
-   * Legen Sie fest, welche **für Benutzer verfügbare Methoden** Ihre Organisation zulassen möchte. Aktivieren Sie für dieses Tutorial die Kontrollkästchen zum Aktivieren von **E-Mail**, **Mobiltelefon**, **Bürotelefon**, **Benachrichtigung in der mobilen App (Vorschauversion)** und **Code in der mobilen App (Vorschauversion)**.
+   * Legen Sie fest, welche **für Benutzer verfügbare Methoden** Ihre Organisation zulassen möchte. Aktivieren Sie für dieses Tutorial die Kontrollkästchen zum Aktivieren von **E-Mail**, **Mobiltelefon**, **Bürotelefon**, **Benachrichtigung über mobile App** und **Code der mobilen App**.
    * Klicken Sie unten auf der Seite auf **Speichern**.
 1. Auf der Seite **Registrierung**
    * Wählen Sie für **Registrierung von Benutzern bei der Anmeldung verlangen** die Option **Ja** aus.
@@ -60,7 +60,7 @@ Die Self-Service-Kennwortzurücksetzung ist nun für Cloudbenutzer in Ihrer Pilo
 
 ## <a name="test-sspr-as-a-user"></a>Testen von SSPR als Benutzer
 
-Testen Sie die Self-Service-Kennwortzurücksetzung mit einem Testbenutzer ohne Administratorrechte, der Mitglied der Pilotgruppe ist. **Denken Sie daran, dass bei Verwendung eines Kontos mit zugewiesenen Administratorrollen die Authentifizierungsmethoden und die Anzahl unter Umständen von den ausgewählten Werten abweichen können, da die Administratorrichtlinie von Microsoft verwaltet wird.**
+Testen Sie die Self-Service-Kennwortzurücksetzung mit einem Testbenutzer ohne Administratorrechte, der Mitglied der Pilotgruppe ist. **Bei Verwendung eines Kontos mit zugewiesenen Administratorrollen können die Authentifizierungsmethoden und die Anzahl unter Umständen von den ausgewählten Werten abweichen, da die Administratorrichtlinie von Microsoft verwaltet wird.**
 
 1. Öffnen Sie ein neues Browserfenster im InPrivate- oder Inkognitomodus.
 1. Verwenden Sie eine Testbenutzerregistrierung für die Self-Service-Kennwortzurücksetzung über das Registrierungsportal unter [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup).

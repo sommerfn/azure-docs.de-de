@@ -10,20 +10,21 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: e9d6badf76efd03c0520a728af7b3e47b25f200a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: d54f3c72462e6702b09068092b7c18ea50f12048
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878951"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704994"
 ---
 # <a name="field-of-study-entity"></a>Forschungsbereichsentität
 
 <sub> * Die folgenden Attribute sind spezifisch für die Forschungsbereichsentität. (Ty = '6') </sub>
 
-NAME    |BESCHREIBUNG                            |Type       | Vorgänge
+NAME    |BESCHREIBUNG                            |type       | Vorgänge
 ------- | ------------------------------------- | --------- | ----------------------------
-id      |Entitäts-ID                              |Int64      |Equals
+Id      |Entitäts-ID                              |Int64      |Equals
 FN      |Normalisierter Name des Forschungsbereichs         |Zeichenfolge     |Equals
 DFN     |Anzeigename des Forschungsbereichs            |Zeichenfolge     |none
 CC      |Gesamtzitatanzahl des Forschungsbereichs    |Int32      |none  

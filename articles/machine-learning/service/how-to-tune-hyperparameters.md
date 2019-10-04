@@ -1,7 +1,7 @@
 ---
 title: Optimieren von Hyperparametern für Ihr Modell
-titleSuffix: Azure Machine Learning service
-description: Mit dem Azure Machine Learning-Dienst können Sie die Hyperparameter für Ihr Deep Learning-/Machine Learning-Modell effizient optimieren. Im Folgenden erfahren Sie, wie Sie den Suchbereich für Parameter definieren, eine zu optimierende primäre Metrik festlegen und Läufe mit schlechter Leistung vorzeitig beenden.
+titleSuffix: Azure Machine Learning
+description: Mit Azure Machine Learning können Sie die Hyperparameter für Ihr Deep Learning-/Machine Learning-Modell effizient optimieren. Im Folgenden erfahren Sie, wie Sie den Suchbereich für Parameter definieren, eine zu optimierende primäre Metrik festlegen und Läufe mit schlechter Leistung vorzeitig beenden.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -9,18 +9,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 48f714a505bc79f0556a829206821aef986ad5d0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cb4023be41377846ed209b3d6702188f5d79ba00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240258"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999384"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Optimieren von Hyperparametern für Ihr Modell mit Azure Machine Learning Service
+# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Optimieren von Hyperparametern für Ihr Modell mit Azure Machine Learning
 
-Mit dem Azure Machine Learning-Dienst können Sie die Hyperparameter für Ihr Modell effizient optimieren.  Die Optimierung von Hyperparametern umfasst die folgenden Schritte:
+Mit Azure Machine Learning können Sie die Hyperparameter für Ihr Modell effizient optimieren.  Die Optimierung von Hyperparametern umfasst die folgenden Schritte:
 
 * Definieren des Suchbereichs für Parameter
 * Festlegen einer zu optimierenden primären Metrik  
@@ -45,7 +45,7 @@ Optimieren Sie Hyperparameter automatisch durch Untersuchen des für jeden Hyper
 
 ### <a name="types-of-hyperparameters"></a>Typen von Hyperparametern
 
-Jede Hyperparameter kann entweder diskret oder kontinuierlich sein.
+Jeder Hyperparameter kann diskret oder kontinuierlich sein und weist eine Verteilung von Werten auf, die durch einen [Parameterausdruck](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py) beschrieben wird.
 
 #### <a name="discrete-hyperparameters"></a>Diskrete Hyperparameter 
 
@@ -94,11 +94,11 @@ Dieser Code definiert einen Suchbereich mit zwei Parametern: `learning_rate` und
 
 ### <a name="sampling-the-hyperparameter-space"></a>Stichprobenentnahme im Hyperparameterraum
 
-Sie können außerdem die für die Definition des Hyperparameterbereichs zu verwendende Parametersamplingmethode (Stichprobenentnahme) festlegen. Der Azure Machine Learning-Dienst unterstützt Zufallssampling, Rastersampling und Bayessches Sampling.
+Sie können außerdem die für die Definition des Hyperparameterbereichs zu verwendende Parametersamplingmethode (Stichprobenentnahme) festlegen. Azure Machine Learning unterstützt Zufallssampling, Rastersampling und Bayessches Sampling.
 
 #### <a name="random-sampling"></a>Zufallssampling
 
-Beim Zufallssampling werden Hyperparameterwerte zufällig aus dem definierten Suchbereich ausgewählt. Bei Zufallssampling darf der Suchraum sowohl diskrete als auch kontinuierliche Hyperparameter enthalten.
+Beim Zufallssampling werden Hyperparameterwerte zufällig aus dem definierten Suchbereich ausgewählt. Beim [Zufallssampling](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?view=azure-ml-py) darf der Suchraum sowohl diskrete als auch kontinuierliche Hyperparameter enthalten.
 
 ```Python
 from azureml.train.hyperdrive import RandomParameterSampling
@@ -112,7 +112,7 @@ param_sampling = RandomParameterSampling( {
 
 #### <a name="grid-sampling"></a>Rastersampling
 
-Beim Rastersampling wird eine einfache Rastersuche über alle zulässigen Werte im definierten Suchraum ausgeführt. Es kann nur für Hyperparameter verwendet werden, die mithilfe von `choice` angegeben wurden. Der folgende Bereich enthält beispielsweise insgesamt sechs Stichproben:
+Beim [Rastersampling](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py) wird eine einfache Rastersuche über alle zulässigen Werte im definierten Suchraum ausgeführt. Es kann nur für Hyperparameter verwendet werden, die mithilfe von `choice` angegeben wurden. Der folgende Bereich enthält beispielsweise insgesamt sechs Stichproben:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -125,11 +125,11 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>Bayessches Sampling
 
-Bayessches Sampling basiert auf dem Bayesschen Optimierungsalgorithmus und trifft intelligente Entscheidungen zu den als nächstes zu sampelnden Hyperparameterwerten. Bei diesem Verfahren wird die Stichprobe basierend auf der Leistung der vorherigen Stichprobe so ausgewählt, dass die neue Stichprobe die gemeldete primäre Metrik verbessert.
+[Bayessches Sampling](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?view=azure-ml-py) basiert auf dem bayesschen Optimierungsalgorithmus und trifft intelligente Entscheidungen zu den als nächstes zu sampelnden Hyperparameterwerten. Bei diesem Verfahren wird die Stichprobe basierend auf der Leistung der vorherigen Stichprobe so ausgewählt, dass die neue Stichprobe die gemeldete primäre Metrik verbessert.
 
 Beim Bayesschen Sampling wirkt sich die Anzahl gleichzeitiger Läufe auf die Effektivität des Optimierungsprozesses aus. Normalerweise kann eine kleinere Anzahl gleichzeitiger Läufe zu einer besseren Samplingkonvergenz führen, da durch den geringeren Parallelitätsgrad die Anzahl von Läufen zunimmt, die von zuvor abgeschlossenen Läufen profitieren.
 
-Bayessches Sampling unterstützt nur `choice`- und `uniform`-Verteilungen über den Suchraum. 
+Bayessches Sampling unterstützt nur `choice`-, `uniform`- und `quniform`-Verteilungen über den Suchraum.
 
 ```Python
 from azureml.train.hyperdrive import BayesianParameterSampling
@@ -147,7 +147,7 @@ param_sampling = BayesianParameterSampling( {
 
 ## <a name="specify-primary-metric"></a>Festlegen der primären Metrik
 
-Legen Sie die primäre Metrik fest, die durch das Experiment zur Hyperparameteroptimierung optimiert werden soll. Jeder Trainingslauf wird im Hinblick auf die primäre Metrik ausgewertet. Läufe mit schlechter Leistung (bei denen die primäre Metrik nicht den von der Richtlinie für vorzeitige Beendigung festgelegten Kriterien entspricht) werden beendet. Neben dem Namen der primären Metrik geben Sie das Ziel der Optimierung an, d. h. ob die primäre Metrik maximiert oder minimiert werden soll.
+Legen Sie die [primäre Metrik](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py) fest, die durch das Experiment zur Hyperparameteroptimierung optimiert werden soll. Jeder Trainingslauf wird im Hinblick auf die primäre Metrik ausgewertet. Läufe mit schlechter Leistung (bei denen die primäre Metrik nicht den von der Richtlinie für vorzeitige Beendigung festgelegten Kriterien entspricht) werden beendet. Neben dem Namen der primären Metrik geben Sie das Ziel der Optimierung an, d. h. ob die primäre Metrik maximiert oder minimiert werden soll.
 
 * `primary_metric_name`: Der Name der zu optimierenden primären Metrik. Der Name der primären Metrik muss exakt mit dem Namen der vom Trainingsskript protokollierten Metrik übereinstimmen. Weitere Informationen finden Sie unter [Protokollieren von Metriken für die Hyperparameteroptimierung](#log-metrics-for-hyperparameter-tuning).
 * `primary_metric_goal`: Kann entweder `PrimaryMetricGoal.MAXIMIZE` oder `PrimaryMetricGoal.MINIMIZE` sein und bestimmt, ob die primäre Metrik beim Auswerten der Läufe maximiert oder minimiert wird. 
@@ -186,11 +186,11 @@ Bei der Verwendung einer Richtlinie für vorzeitige Beendigung können Sie die f
 * `evaluation_interval`: die Anwendungshäufigkeit der Richtlinie. Jede Protokollierung der primären Metrik durch das Trainingsskript zählt als ein Intervall. Also wird beim Wert 1 für `evaluation_interval` die Richtlinie jedes Mal angewendet, wenn das Trainingsskript die primäre Metrik meldet. Beim Wert 2 für `evaluation_interval` wird die Richtlinie bei jeder zweiten Meldung der primären Metrik durch das Trainingsskript angewendet. Wenn kein Intervall angegeben wird, wird `evaluation_interval` standardmäßig auf 1 festgelegt.
 * `delay_evaluation`: Verzögert die erste Auswertung der Richtlinie für eine angegebene Anzahl Intervalle. Dies ist ein optionaler Parameter, der die Ausführung aller Konfigurationen für eine anfängliche Mindestanzahl von Intervallen ermöglicht, um die vorzeitige Beendigung von Trainingsläufen zu verhindern. Wenn er angegeben wird, wird dir Richtlinie bei jedem Vielfachen von evaluation_interval angewendet, das größer als oder gleich groß wie delay_evaluation ist.
 
-Der Azure Machine Learning-Dienst unterstützt die folgenden Richtlinien für vorzeitige Beendigung.
+Azure Machine Learning unterstützt die folgenden Richtlinien für vorzeitige Beendigung.
 
 ### <a name="bandit-policy"></a>Banditenrichtlinie
 
-Diese Beendigungsrichtlinie basiert auf einem Pufferbereich/Pufferbetrag und einem Auswertungsintervall. Die Richtlinie beendet vorzeitig alle Läufe, bei denen die primäre Metrik bezogen auf den Trainingslauf mit der besten Leistung nicht dem angegebenen Pufferbereich/Pufferbetrag entspricht. Sie akzeptiert die folgenden Konfigurationsparameter:
+Die [Banditenrichtlinie](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#definition) ist eine Beendigungsrichtlinie, die auf einem Pufferbereich/Pufferbetrag und einem Auswertungsintervall basiert. Die Richtlinie beendet vorzeitig alle Läufe, bei denen die primäre Metrik bezogen auf den Trainingslauf mit der besten Leistung nicht dem angegebenen Pufferbereich/Pufferbetrag entspricht. Sie akzeptiert die folgenden Konfigurationsparameter:
 
 * `slack_factor` oder `slack_amount`: Der bezogen auf den Trainingslauf mit der besten Leistung zulässige Puffer. `slack_factor` gibt den zulässigen Puffer als Verhältnis an. `slack_amount` gibt den zulässigen Puffer als absoluten Betrag anstelle eines Verhältnisses an.
 
@@ -208,7 +208,7 @@ In diesem Beispiel wird die Richtlinie zur frühzeitigen Beendigung bei jedem In
 
 ### <a name="median-stopping-policy"></a>Medianstopprichtlinie
 
-Diese Richtlinie für vorzeitige Beendigung basiert auf dem gleitenden Durchschnitt der von den Läufen gemeldeten primären Metriken. Diese Richtlinie berechnet den gleitenden Durchschnitt über alle Trainingsläufe und beendet Läufe, deren Leistung schlechter als der Median der gleitenden Durchschnittswerte ist. Diese Richtlinie akzeptiert die folgenden Konfigurationsparameter:
+Die [Medianstopprichtlinie](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py) ist eine Richtlinie für vorzeitige Beendigung, die auf dem gleitenden Durchschnitt der von den Ausführungen gemeldeten primären Metriken basiert. Diese Richtlinie berechnet den gleitenden Durchschnitt über alle Trainingsläufe und beendet Läufe, deren Leistung schlechter als der Median der gleitenden Durchschnittswerte ist. Diese Richtlinie akzeptiert die folgenden Konfigurationsparameter:
 * `evaluation_interval`: die Anwendungshäufigkeit der Richtlinie (optionaler Parameter).
 * `delay_evaluation`: verzögert die erste Auswertung der Richtlinie für eine angegebene Anzahl Intervalle (optionaler Parameter).
 
@@ -222,7 +222,7 @@ In diesem Beispiel wird die Richtlinie zur frühzeitigen Beendigung bei jedem In
 
 ### <a name="truncation-selection-policy"></a>Kürzungsauswahlrichtlinie
 
-Diese Richtlinie bricht bei jedem Auswertungsintervall einen angegebenen Prozentsatz der Läufe mit der schlechtesten Leistung ab. Die Läufe werden auf der Grundlage ihrer Leistung bezogen auf die primäre Metrik verglichen, und die niedrigsten X % werden beendet. Sie akzeptiert die folgenden Konfigurationsparameter:
+Die [Kürzungsauswahlrichtlinie](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?view=azure-ml-py) bricht bei jedem Auswertungsintervall einen angegebenen Prozentsatz der Ausführungen mit der schlechtesten Leistung ab. Die Läufe werden auf der Grundlage ihrer Leistung bezogen auf die primäre Metrik verglichen, und die niedrigsten X % werden beendet. Sie akzeptiert die folgenden Konfigurationsparameter:
 
 * `truncation_percentage`: der Prozentsatz der Läufe mit der schwächsten Leistung, die bei jedem Auswertungsintervall beendet werden sollen. Geben Sie eine ganze Zahl zwischen 1 und 99 ein.
 * `evaluation_interval`: die Anwendungshäufigkeit der Richtlinie (optionaler Parameter).
@@ -234,7 +234,7 @@ from azureml.train.hyperdrive import TruncationSelectionPolicy
 early_termination_policy = TruncationSelectionPolicy(evaluation_interval=1, truncation_percentage=20, delay_evaluation=5)
 ```
 
-In diesem Beispiel wird die Richtlinie zur frühzeitigen Beendigung bei jedem Intervall angewendet, beginnend bei Auswertungsintervall 5. Ein Lauf wird bei Intervall 5 beendet, wenn seine Leistung in den unteren 20 % der Leistung aller Läufe bei Intervall 5 liegt.
+In diesem Beispiel wird die Richtlinie zur frühzeitigen Beendigung bei jedem Intervall angewendet, beginnend bei Auswertungsintervall 5. Ein Lauf wird bei Intervall 5 beendet, wenn seine Leistung in den unteren 20 % der Leistung aller Läufe bei Intervall 5 liegt.
 
 ### <a name="no-termination-policy"></a>Keine Beendigungsrichtlinie
 
@@ -275,17 +275,17 @@ max_total_runs=20,
 max_concurrent_runs=4
 ```
 
-Dieser Code konfiguriert das Experiment zur Hyperparameteroptimierung für eine Gesamtanzahl von maximal 20 Läufen, bei denen jeweils vier Konfigurationen ausgeführt werden.
+Dieser Code konfiguriert das Experiment zur Hyperparameteroptimierung für eine Gesamtanzahl von maximal 20 Läufen, in denen jeweils vier Konfigurationen ausgeführt werden.
 
 ## <a name="configure-experiment"></a>Konfigurieren des Experiments
 
-Konfigurieren Sie Ihr Experiment zur Hyperparameteroptimierung wie in den obigen Abschnitten beschrieben mithilfe des definierten Suchbereichs für Hyperparameter, der Richtlinie für vorzeitige Beendigung, der primären Metrik und der Ressourcenzuordnung. Geben Sie außerdem einen `estimator` an, der mit den als Stichprobe verwendeten Hyperparametern aufgerufen wird. Der `estimator` beschreibt das auszuführende Trainingsskript, die Ressourcen pro Auftrag (einzelne oder mehrere GPUs) und das zu verwendende Computeziel. Da die Parallelität für Ihr Experiment zur Hyperparameteroptimierung durch die verfügbaren Ressourcen beschränkt ist, müssen Sie sicherstellen, dass das von Ihnen im `estimator` angegebene Computeziel über ausreichende Ressourcen für die gewünschte Parallelität verfügt. (Weitere Informationen zu Schätzungen finden Sie unter [Trainieren von Modellen](how-to-train-ml-models.md).)
+[Konfigurieren Sie Ihr Experiment zur Hyperparameteroptimierung](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py) wie in den obigen Abschnitten beschrieben mithilfe des definierten Suchbereichs für Hyperparameter, der Richtlinie für vorzeitige Beendigung, der primären Metrik und der Ressourcenzuordnung. Geben Sie außerdem einen `estimator` an, der mit den als Stichprobe verwendeten Hyperparametern aufgerufen wird. Der `estimator` beschreibt das auszuführende Trainingsskript, die Ressourcen pro Auftrag (einzelne oder mehrere GPUs) und das zu verwendende Computeziel. Da die Parallelität für Ihr Experiment zur Hyperparameteroptimierung durch die verfügbaren Ressourcen beschränkt ist, müssen Sie sicherstellen, dass das von Ihnen im `estimator` angegebene Computeziel über ausreichende Ressourcen für die gewünschte Parallelität verfügt. (Weitere Informationen zu Schätzungen finden Sie unter [Trainieren von Modellen](how-to-train-ml-models.md).)
 
 Konfigurieren Sie Ihr Experiment zur Hyperparameteroptimierung:
 
 ```Python
-from azureml.train.hyperdrive import HyperDriveRunConfig
-hyperdrive_run_config = HyperDriveRunConfig(estimator=estimator,
+from azureml.train.hyperdrive import HyperDriveConfig
+hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
                           hyperparameter_sampling=param_sampling, 
                           policy=early_termination_policy,
                           primary_metric_name="accuracy", 
@@ -296,7 +296,7 @@ hyperdrive_run_config = HyperDriveRunConfig(estimator=estimator,
 
 ## <a name="submit-experiment"></a>Senden eines Experiments
 
-Nachdem Sie Ihre Konfiguration für die Hyperparameteroptimierung definiert haben, senden Sie ein Experiment:
+Nachdem Sie Ihre Konfiguration für die Hyperparameteroptimierung definiert haben, [übermitteln Sie ein Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py#submit-config--tags-none----kwargs-):
 
 ```Python
 from azureml.core.experiment import Experiment
@@ -304,11 +304,11 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` ist der Name, den Sie Ihrem Experiment zur Hyperparameteroptimierung zuweisen, und `workspace` ist der Arbeitsbereich, in dem Sie das Experiment erstellen möchten (weitere Informationen zu Experimenten finden Sie unter [Wie funktioniert der Azure Machine Learning-Dienst?](concept-azure-machine-learning-architecture.md)).
+`experiment_name` ist der Name, den Sie Ihrem Experiment zur Hyperparameteroptimierung zuweisen, und `workspace` ist der Arbeitsbereich, in dem Sie das Experiment erstellen möchten (weitere Informationen zu Experimenten finden Sie unter [Wie funktioniert Azure Machine Learning?](concept-azure-machine-learning-architecture.md)).
 
 ## <a name="visualize-experiment"></a>Visualisieren des Experiments
 
-Das Azure Machine Learning SDK stellt ein Notebook-Widget bereit, das den Fortschritt Ihrer Trainingsläufe visualisiert. Der folgende Codeausschnitt visualisiert alle Läufe zur Hyperparameteroptimierung in einem Jupyter Notebook:
+Das Azure Machine Learning SDK stellt ein [Notebook-Widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py) bereit, das den Fortschritt Ihrer Trainingsausführungen visualisiert. Der folgende Codeausschnitt visualisiert alle Läufe zur Hyperparameteroptimierung in einem Jupyter Notebook:
 
 ```Python
 from azureml.widgets import RunDetails
@@ -325,15 +325,13 @@ Ferner können Sie die Leistung jedes dieser Läufe während des fortschreitende
 
 Außerdem können Sie die Korrelation zwischen der Leistung und den Werten einzelner Hyperparameter mithilfe eines Plots mit parallelen Koordinaten visuell darstellen. 
 
-![Parallele Koordinaten einer Hyperparameteroptimierung](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)
+[![Parallele Koordinaten einer Hyperparameteroptimierung](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
 Alternativ können Sie alle Läufe zur Hyperparameteroptimierung auch im Azure-Webportal visualisieren. Weitere Informationen zum Anzeigen von Experimenten im Webportal finden Sie unter [Nachverfolgen von Experimenten](how-to-track-experiments.md#view-the-experiment-in-the-web-portal).
 
-![Hyperparameter-Optimierungsportal](media/how-to-tune-hyperparameters/HyperparameterTuningPortal.png)
-
 ## <a name="find-the-best-model"></a>Ermitteln des besten Modells
 
-Nach Abschluss aller Läufe zur Hyperparameteroptimierung ermitteln Sie die Konfiguration mit der besten Leistung und die entsprechenden Hyperparameterwerte:
+Nach Abschluss aller Ausführungen der Hyperparameteroptimierung [ermitteln Sie die Konfiguration mit der besten Leistung](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py#get-best-run-by-primary-metric-include-failed-true--include-canceled-true-) und die entsprechenden Hyperparameterwerte:
 
 ```Python
 best_run = hyperdrive_run.get_best_run_by_primary_metric()
@@ -348,9 +346,8 @@ print('\n batch size:',parameter_values[7])
 ```
 
 ## <a name="sample-notebook"></a>Beispielnotebook
-Verwenden Sie die folgenden Notebooks:
-* [how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch) 
-* [how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
+Weitere Informationen finden Sie in den Notebooks zum Trainieren von Hyperparametern im folgenden Ordner:
+* [how-to-use-azureml/training-with-deep-learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

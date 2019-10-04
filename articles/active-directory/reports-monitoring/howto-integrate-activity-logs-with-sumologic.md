@@ -1,9 +1,9 @@
 ---
-title: Streamen von Azure Active Directory-Protokollen in SumoLogic mit Azure Monitor (Vorschauversion) | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure Active Directory-Protokolle mit Azure Monitor (Vorschauversion) in SumoLogic integrieren.
+title: Streamen von Azure Active Directory-Protokollen in SumoLogic mit Azure Monitor | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure Active Directory-Protokolle mit Azure Monitor in SumoLogic integrieren.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: markvi
+ms.date: 04/18/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bed1b96052117534f319bbf9570618e6481032f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 1645415a8cfd86b142c25dc145c60e8b986d1013
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437207"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989760"
 ---
-# <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor-preview"></a>Integrieren von Azure Active Directory-Protokollen in SumoLogic mithilfe von Azure Monitor (Vorschauversion)
+# <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Integrieren von Azure Active Directory-Protokollen in SumoLogic mit Azure Monitor
 
 In diesem Artikel erfahren Sie, wie Sie Azure Active Directory-Protokolle (Azure AD) mithilfe von Azure Monitor in SumoLogic integrieren. Zunächst leiten Sie die Protokolle an einen Azure Event Hub weiter und integrieren dann den Event Hub in SumoLogic.
 
@@ -44,6 +44,6 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Interpretieren des Überwachungsprotokollschemas in Azure Monitor](reference-azure-monitor-audit-log-schema.md)
+* [Interpret audit logs schema in Azure Monitor](reference-azure-monitor-audit-log-schema.md) (Interpretieren des Überwachungsprotokollschemas in Azure Monitor)
 * [Interpret sign-in logs schema in Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md) (Interpretieren des Anmeldeprotokollschemas in Azure Monitor)
 * [Häufig gestellte Fragen und bekannte Probleme](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

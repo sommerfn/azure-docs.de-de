@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.openlocfilehash: 34222f396ed3c43932371aa9f64a459bb2a5dd0e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51827215"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61442938"
 ---
 # <a name="import-an-iot-edge-package-into-your-remote-monitoring-solution-accelerator"></a>Importieren eines IoT Edge-Pakets in den Solution Accelerator für die Remoteüberwachung
 
@@ -31,9 +31,9 @@ Verwenden Sie das Azure-Portal, um das Bereitstellungsmanifest aus der Entwicklu
 
 1. Navigieren Sie im Azure-Portal zu dem IoT-Hub, den Sie zum Entwickeln und Testen Ihre IoT Edge-Geräte verwenden. Klicken Sie auf **IoT Edge** und dann auf **IoT Edge-Bereitstellungen**: ![IoT Edge](media/iot-accelerators-remote-monitoring-import-edge-package/iotedge.png)
 
-1. Klicken Sie auf die Bereitstellung mit der gewünschten Bereitstellungskonfiguration. Auf der Seite **Bereitstellungsdetails** wird Folgendes angezeigt: ![IoT Edge-Bereitstellungsdetails](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
+1. Klicken Sie auf die Bereitstellung mit der gewünschten Bereitstellungskonfiguration. Die Seite **Bereitstellungsdetails** wird angezeigt: ![Details einer IoT Edge-Bereitstellung](media/iot-accelerators-remote-monitoring-import-edge-package/deploymentdetails.png)
 
-1. Klicken Sie auf **IoT Edge-Manifest herunterladen**: ![Bereitstellungsmanifest herunterladen](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
+1. Klicken Sie auf **IoT Edge-Manifest herunterladen**:  ![Bereitstellungsmanifest herunterladen](media/iot-accelerators-remote-monitoring-import-edge-package/download.png)
 
 1. Speichern Sie die JSON-Datei als lokale Datei namens **deploymentmanifest.json**.
 
@@ -43,11 +43,11 @@ Sie haben jetzt eine Datei, die das Bereitstellungsmanifest enthält. Im nächst
 
 Gehen Sie folgendermaßen vor, um ein Edge-Bereitstellungsmanifest als Paket in Ihre Lösung zu importieren:
 
-1. Navigieren Sie auf der Webbenutzeroberfläche für die Remoteüberwachung zur Seite **Pakete**: Seite ![Pakete](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
+1. Navigieren Sie auf der Webbenutzeroberfläche für die Remoteüberwachung zur Seite **Pakete**:  ![Seite „Pakete“](media/iot-accelerators-remote-monitoring-import-edge-package/packagespage.png)
 
-1. Klicken Sie auf **+ Neues Paket**, wählen Sie **Edge-Manifest** als Pakettyp aus, und klicken Sie auf **Durchsuchen**, um die im vorherigen Abschnitt gespeicherte Datei **deploymentmanifest.json** auszuwählen: ![Manifest auswählen](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
+1. Klicken Sie auf **+ Neues Paket**, wählen Sie **Edge-Manifest** als Pakettyp aus, und klicken Sie auf **Durchsuchen**, um die im vorherigen Abschnitt gespeicherte Datei **deploymentmanifest.json** auszuwählen:  ![Manifest auswählen](media/iot-accelerators-remote-monitoring-import-edge-package/selectmanifest.png)
 
-1. Klicken Sie auf **Hochladen**, um das Paket zu Ihrer Remoteüberwachungslösung hinzuzufügen: ![Paket hochladen](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
+1. Klicken Sie auf **Hochladen**, um das Paket Ihrer Remoteüberwachungslösung hinzuzufügen:  ![Hochgeladenes Paket](media/iot-accelerators-remote-monitoring-import-edge-package/uploadedpackage.png)
 
 Sie haben nun ein IoT Edge-Bereitstellungsmanifest als Paket hochgeladen. Auf der Seite **Bereitstellungen** können Sie dieses Paket für Ihre verbundenen IoT Edge-Geräte bereitstellen.
 

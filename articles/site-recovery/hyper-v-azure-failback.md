@@ -6,34 +6,36 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 09/12/2019
 ms.author: rajanaki
-ms.openlocfilehash: 4030b1905f8d5b50ef6be3ffa61eda74d8a27951
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 07ecc8547ab155600bccfd1ad8f1ecbb58a18fa3
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541046"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931842"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Durchführen eines Failbacks für virtuelle Hyper-V-Computer
 
 In diesem Artikel wird beschrieben, wie Sie für virtuelle Hyper-V-Computer, die von Site Recovery geschützt werden, ein Failback durchführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-1. Sie sollten vorher unbedingt die Informationen zu den [verschiedenen Typen von Failbacks](concepts-types-of-failback.md) und den entsprechenden Einschränkungen lesen.
-1. Stellen Sie sicher, dass der VMM-Server oder Hyper-V-Hostserver am primären Standort mit Azure verbunden ist.
-2. Sie sollten auf dem virtuellen Computer einen **Commit** ausgeführt haben.
+
+- Sie sollten vorher unbedingt die Informationen zu den [verschiedenen Typen von Failbacks](concepts-types-of-failback.md) und den entsprechenden Einschränkungen lesen.
+- Stellen Sie sicher, dass der VMM-Server oder Hyper-V-Hostserver am primären Standort mit Azure verbunden ist.
+- Sie sollten auf dem virtuellen Computer einen **Commit** ausgeführt haben.
+- Stellen Sie sicher, dass Sie ein Speicherkonto und keine verwalteten Datenträger für die Replikation verwenden. Ein Failback von virtuellen Hyper-V-Computer, die über verwaltete Datenträger repliziert werden, wird nicht unterstützt.
 
 ## <a name="perform-failback"></a>Durchführen von Failbacks
 Nach dem Failover vom primären zum sekundären Standort sind die virtuellen Replikatcomputer nicht durch Site Recovery geschützt, und der sekundäre Standort fungiert nun als der aktive Standort. Für ein Failback virtueller Computer in einem Wiederherstellungsplan führen Sie wie nachfolgend beschrieben ein geplantes Failover vom sekundären Standort zum primären Standort aus. 
 1. Wählen Sie **Wiederherstellungspläne** > *Name des Wiederherstellungsplans* aus. Klicken Sie auf **Failover** > **Planned Failover**veröffentlichen.
 2. Wählen Sie auf der Seite **Geplantes Failover bestätigen** den Quell- und Zielort aus. Beachten Sie die Failover-Richtung. Wenn das Failover vom primären Standort erwartungsgemäß funktioniert hat und sich alle virtuellen Computer am sekundären Standort befinden, dient diese Angabe nur zu Informationszwecken.
 3. Wählen Sie bei einem Failback von Azure Einstellungen unter **Datensynchronisierung**aus:
-    - **Daten vor dem Failover synchronisieren (nur Deltaänderungen synchronisieren)**: Diese Option minimiert die Ausfallzeiten der virtuellen Computer, da diese für die Synchronisierung nicht heruntergefahren werden. Die folgenden Schritte werden ausgeführt:
+    - **Daten vor dem Failover synchronisieren (nur Deltaänderungen synchronisieren)** : Diese Option minimiert die Ausfallzeiten der virtuellen Computer, da diese für die Synchronisierung nicht heruntergefahren werden. Die folgenden Schritte werden ausgeführt:
         - Phase 1: Es wird eine Momentaufnahme der VM in Azure erstellt und auf den lokalen Hyper-V-Host kopiert. Der Computer wird weiterhin in Azure ausgeführt.
         - Phase 2: Die VM wird in Azure heruntergefahren, damit keine neuen Änderungen vorgenommen werden. Die letzten Deltaänderungen werden an den lokalen Server übertragen, und der lokale virtuelle Computer wird gestartet.
 
-    - **Daten nur während Failover synchronisieren (vollständiger Download)**: Diese Option ist schneller.
+    - **Daten nur während Failover synchronisieren (vollständiger Download)** : Diese Option ist schneller.
         - Diese Option ist schneller, da erwartet wird, dass die meisten Daten auf dem Datenträger geändert wurden, und keine Zeit mit der Prüfsummenberechnung verschwendet werden soll. Mit der Option wird ein Download des Datenträgers durchgeführt. Sie ist auch nützlich, wenn der lokale virtuelle Computer gelöscht wurde.
         - Es wird empfohlen, diese Option zu verwenden, wenn Sie Azure bereits seit einer Weile nutzen (mindestens einen Monat) oder wenn der lokale virtuelle Computer gelöscht wurde. Mit dieser Option werden keine Prüfsummenberechnungen durchgeführt.
 

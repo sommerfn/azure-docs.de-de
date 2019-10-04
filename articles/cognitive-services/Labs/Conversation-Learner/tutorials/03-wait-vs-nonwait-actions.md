@@ -3,19 +3,20 @@ title: Verwenden von Aktionen mit und ohne Wartezeit in einem Unterhaltungslernm
 titleSuffix: Azure
 description: Erfahren Sie, wie Sie Aktionen mit und ohne Wartezeit in einem Unterhaltungslernmodell verwenden.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 2869e6c59388adf548e5f239d3a831a5a3f060dd
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d9a67f0b413b624baec369a219547cf18e9dbd2
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214261"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705601"
 ---
 # <a name="wait-and-non-wait-actions"></a>Aktionen mit und ohne Wartezeit
 

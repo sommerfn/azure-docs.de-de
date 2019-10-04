@@ -1,6 +1,6 @@
 ---
-title: Webhooks – Speech Services
-titlesuffix: Azure Cognitive Services
+title: Webhooks – Speech Service
+titleSuffix: Azure Cognitive Services
 description: Webhooks sind HTTP-Callbacks, die sich ideal zur Optimierung Ihrer Lösung bei zeitintensiven Prozessen wie Importen, Anpassungen, Genauigkeitsprüfungen oder Transkriptionen von zeitintensiven Dateien eignen.
 services: cognitive-services
 author: PanosPeriorellis
@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 07/05/2019
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 7b47d4fc3aa4a1a50e441e668a856703c67045ae
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 3d07e540bf88c956f61b5d3b2a98702cad616985
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59580997"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558806"
 ---
 # <a name="webhooks-for-speech-services"></a>Webhooks für Speech Services
 
@@ -24,7 +23,7 @@ Webhooks sind wie HTTP-Callbacks, die es Ihrer Anwendung ermöglichen, Daten von
 
 ## <a name="supported-operations"></a>Unterstützte Vorgänge
 
-Die Speech Services unterstützen Webhooks für alle zeitintensiven Vorgänge. Jeder der unten aufgeführten Vorgänge kann nach Abschluss einen HTTP-Callback auslösen. 
+Die Speech Services unterstützen Webhooks für alle zeitintensiven Vorgänge. Jeder der unten aufgeführten Vorgänge kann nach Abschluss einen HTTP-Callback auslösen.
 
 * DataImportCompletion
 * ModelAdaptationCompletion
@@ -37,7 +36,9 @@ Als Nächstes erstellen wir einen Webhook.
 
 ## <a name="create-a-webhook"></a>Erstellen eines Webhooks
 
-Wir erstellen einen Webhook für eine Offlinetranskription. Das Szenario: Ein Benutzer besitzt eine zeitintensive Audiodatei, die er asynchron mit der Batch-Transkriptions-API transkribieren möchte. 
+Wir erstellen einen Webhook für eine Offlinetranskription. Das Szenario: Ein Benutzer besitzt eine zeitintensive Audiodatei, die er asynchron mit der Batch-Transkriptions-API transkribieren möchte.
+
+Webhooks können mit einer POST-Anforderung an https://\<Region\>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks erstellt werden.
 
 Die Konfigurationsparameter für die Anforderung werden als JSON bereitgestellt:
 
@@ -63,7 +64,7 @@ Alle POST-Anforderungen an die Batch-Transkriptions-API erfordern einen `name`. 
 
 Die Eigenschaft `Active` wird verwendet, um den Wechsel zurück in Ihre URL zu aktivieren oder zu deaktivieren, ohne die Webhookregistrierung löschen und neu erstellen zu müssen. Wenn Sie nach Abschluss des Prozesses nur einen Callback ausführen müssen, dann löschen Sie den Webhook, und legen Sie die Eigenschaft `Active` auf „false“ fest.
 
-Der Ereignistyp `TranscriptionCompletion` wird im Ereignisarray bereitgestellt. Er führt einen Callback zum Endpunkt aus, wenn eine Transkription in einen Endzustand wechselt (`Succeeded` oder `Failed`). Beim Callback zur registrierten URL enthält die Anforderung einen `X-MicrosoftSpeechServices-Event`-Header, der einen der registrierten Ereignistypen enthält. Es gibt eine Anforderung pro registriertem Ereignistyp. 
+Der Ereignistyp `TranscriptionCompletion` wird im Ereignisarray bereitgestellt. Er führt einen Callback zum Endpunkt aus, wenn eine Transkription in einen Endzustand wechselt (`Succeeded` oder `Failed`). Beim Callback zur registrierten URL enthält die Anforderung einen `X-MicrosoftSpeechServices-Event`-Header, der einen der registrierten Ereignistypen enthält. Es gibt eine Anforderung pro registriertem Ereignistyp.
 
 Es gibt einen Ereignistyp, den Sie nicht abonnieren können. Es handelt sich um den Ereignistyp `Ping`. Eine Anforderung mit diesem Typ wird an die URL gesendet, wenn die Erstellung eines Webhooks bei Verwendung der Ping-URL abgeschlossen ist (siehe unten).  
 
@@ -92,7 +93,7 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
             var validated = contentHash.SequenceEqual(storedHash);
         }
     }
- 
+
     switch (eventTypeHeader)
     {
         case WebHookEventType.Ping:
@@ -104,7 +105,7 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
         default:
             break;
     }
- 
+
     return this.Ok();
 }
 
@@ -119,12 +120,12 @@ So rufen Sie einen bestimmten Webhook ab GET https://westus.cris.ai/api/speechto
 
 So entfernen Sie einen bestimmten Webhook DELETE https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id
 
-> [!Note] 
+> [!Note]
 > Im obigen Beispiel ist die Region „westus“. Diese sollte durch die Region ersetzt werden, in der Sie Ihre Speech Services-Ressource im Azure-Portal erstellt haben.
 
 POST https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/ping Body: empty
 
-Sendet eine POST-Anforderung an die registrierte URL. Die Anforderung enthält einen `X-MicrosoftSpeechServices-Event`-Header mit einem Ping als Wert. Wenn der Webhook mit einem Geheimnis registriert wurde, enthält er einen `X-MicrosoftSpeechServices-Signature`-Header mit einem SHA256-Hash der Nutzlast mit dem Geheimnis als HMAC-Schlüssel. Der Hash ist Base64-codiert. 
+Sendet eine POST-Anforderung an die registrierte URL. Die Anforderung enthält einen `X-MicrosoftSpeechServices-Event`-Header mit einem Ping als Wert. Wenn der Webhook mit einem Geheimnis registriert wurde, enthält er einen `X-MicrosoftSpeechServices-Signature`-Header mit einem SHA256-Hash der Nutzlast mit dem Geheimnis als HMAC-Schlüssel. Der Hash ist Base64-codiert.
 
 POST https://westus.cris.ai/api/speechtotext/v2.1/transcriptions/hooks/:id/test Body: empty
 
@@ -133,6 +134,50 @@ Sendet eine POST-Anforderung an die registrierte URL, wenn eine Entität für de
 ### <a name="run-a-test"></a>Ausführen eines Tests
 
 Ein Schnelltest kann über die Website https://bin.webhookrelay.com durchgeführt werden. Von dort aus können Sie Callback-URLs erhalten, die als Parameter an den HTTP POST übergeben werden, um einen Webhook zu erstellen, der zuvor im Dokument beschrieben wurde.
+
+Klicken Sie auf „Bucket erstellen“, und befolgen Sie die Anweisungen auf dem Bildschirm, um einen Hook zu erhalten. Verwenden Sie die auf dieser Seite bereitgestellten Informationen, um den Hook beim Speech-Dienst zu registrieren. Die Nutzlast einer weitergeleiteten Nachricht – als Reaktion auf den Abschluss einer Transkription – sieht wie folgt aus:
+
+```json
+{
+    "results": [],
+    "recordingsUrls": [
+        "my recording URL"
+    ],
+    "models": [
+        {
+            "modelKind": "AcousticAndLanguage",
+            "datasets": [],
+            "id": "a09c8c8b-1090-443c-895c-3b1cf442dec4",
+            "createdDateTime": "2019-03-26T12:48:46Z",
+            "lastActionDateTime": "2019-03-26T14:04:47Z",
+            "status": "Succeeded",
+            "locale": "en-US",
+            "name": "v4.13 Unified",
+            "description": "Unified",
+            "properties": {
+                "Purpose": "OnlineTranscription,BatchTranscription,LanguageAdaptation",
+                "ModelClass": "unified-v4"
+            }
+        }
+    ],
+    "statusMessage": "None.",
+    "id": "d41615e1-a60e-444b-b063-129649810b3a",
+    "createdDateTime": "2019-04-16T09:35:51Z",
+    "lastActionDateTime": "2019-04-16T09:38:09Z",
+    "status": "Succeeded",
+    "locale": "en-US",
+    "name": "Simple transcription",
+    "description": "Simple transcription description",
+    "properties": {
+        "PunctuationMode": "DictatedAndAutomatic",
+        "ProfanityFilterMode": "Masked",
+        "AddWordLevelTimestamps": "True",
+        "AddSentiment": "True",
+        "Duration": "00:00:02"
+    }
+}
+```
+Die Nachricht enthält die Aufzeichnung-URL und die zum Transkribieren der Aufzeichnung verwendeten Modelle.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,71 +1,73 @@
 ---
-title: Konfigurieren von Integritätsbenachrichtigungen für vorhandene Problemverwaltungssysteme mit einem Webhook | Microsoft-Dokumentation
-description: Erhalten Sie personalisierte Benachrichtigungen zu Service Health-Ereignissen an Ihr vorhandenes Problemverwaltungssystem.
+title: Konfigurieren von Azure Service Health-Benachrichtigungen für vorhandene Problemverwaltungssysteme mit einem Webhook
+description: Senden Sie personalisierte Benachrichtigungen zu Service Health-Ereignissen an Ihr vorhandenes Problemverwaltungssystem.
 author: stephbaron
 ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: 69b142cd46c006e562218c949fb450864589a661
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8f84b43519c197797b39397cfd15c4f90444177c
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838068"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854379"
 ---
-# <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>Konfigurieren von Integritätsbenachrichtigungen für vorhandene Problemverwaltungssysteme mit einem Webhook
+# <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Konfigurieren von Integritätsbenachrichtigungen für vorhandene Problemverwaltungssysteme mit einem Webhook
 
-In diesem Artikel wird beschrieben, wie Sie Ihre Service Health-Warnungen zum Senden von Daten über Webhooks an Ihr vorhandenes Benachrichtigungssystem konfigurieren.
+In diesem Artikel wird beschrieben, wie Sie Azure Service Health-Warnungen zum Senden von Daten über Webhooks an Ihr vorhandenes Benachrichtigungssystem konfigurieren.
 
-Heute können Sie Service Health-Warnungen so konfigurieren, dass Sie per SMS oder E-Mail-benachrichtigt werden, wenn Sie von einem Azure Service-Vorfall betroffen sind.
-Allerdings ist möglicherweise bereits ein externes Benachrichtigungssystem vorhanden, das Sie verwenden möchten.
-In diesem Dokument werden die wichtigsten Bestandteile der Webhooknutzlast beschrieben, und Sie erfahren, wie Sie benutzerdefinierte Warnungen erstellen, um benachrichtigt zu werden, wenn der Dienstprobleme auftreten, die Sie betreffen.
+Sie können Service Health-Warnungen so konfigurieren, dass Sie per SMS oder E-Mail benachrichtigt werden, wenn Sie von einem Azure-Dienstvorfall betroffen sind.
 
-Wenn Sie eine vorkonfigurierte Integration verwenden möchten, ziehen Sie folgende Artikel zurate:
+Möglicherweise verfügen Sie aber bereits über ein externes Benachrichtigungssystem, das Sie lieber verwenden möchten. In diesem Artikel werden die wichtigsten Teile der Webhooknutzlast identifiziert. Außerdem wird beschrieben, wie Sie benutzerdefinierte Warnungen erstellen, damit Sie benachrichtigt werden, wenn relevante Dienstprobleme auftreten.
+
+Wenn Sie eine vorkonfigurierte Integration verwenden möchten, lesen Sie die folgenden Artikel:
 * [Konfigurieren von Warnungen mit ServiceNow](service-health-alert-webhook-servicenow.md)
 * [Konfigurieren von Warnungen mit PagerDuty](service-health-alert-webhook-pagerduty.md)
 * [Konfigurieren von Warnungen mit OpsGenie](service-health-alert-webhook-opsgenie.md)
 
-## <a name="configuring-a-custom-notification-using-the-service-health-webhook-payload"></a>Konfigurieren einer benutzerdefinierten Benachrichtigung mit der Service Health-Webhooknutzlast
-Wenn Sie eine eigene benutzerdefinierte Webhookintegration einrichten möchten, müssen Sie die während der Service Health-Benachrichtigungen gesendete JSON-Nutzlast analysieren.
+**Sehen Sie sich ein Einführungsvideo an:**
 
-[Hier finden Sie ein Beispiel](../azure-monitor/platform/activity-log-alerts-webhook.md), wie die `ServiceHealth`-Webhooknutzlast aussieht.
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUV]
 
-Mit einem Blick auf `context.eventSource == "ServiceHealth"` können Sie erkennen, dass dies eine Service Health-Warnung ist. Die folgenden Eigenschaften sind dabei die wichtigsten:
- * `data.context.activityLog.status`
- * `data.context.activityLog.level`
- * `data.context.activityLog.subscriptionId`
- * `data.context.activityLog.properties.title`
- * `data.context.activityLog.properties.impactStartTime`
- * `data.context.activityLog.properties.communication`
- * `data.context.activityLog.properties.impactedServices`
- * `data.context.activityLog.properties.trackingId`
+## <a name="configure-a-custom-notification-by-using-the-service-health-webhook-payload"></a>Konfigurieren einer benutzerdefinierten Benachrichtigung mit der Service Health-Webhooknutzlast
+Wenn Sie Ihre eigene benutzerdefinierte Webhookintegration einrichten möchten, müssen Sie die über die Service Health-Benachrichtigung gesendete JSON-Nutzlast analysieren.
 
-## <a name="creating-a-direct-link-to-the-service-health-dashboard-for-an-incident"></a>Erstellen eines direkten Links zum Service Health-Dashboard für einen Vorfall
-Sie können einen direkten Link zu Ihrem Service Health-Dashboard auf dem Desktop oder mobilen Gerät erstellen, indem Sie eine spezialisierte URL generieren. Erstellen Sie den Link unter Verwendung der `trackingId` sowie der ersten und letzten drei Ziffern Ihrer `subscriptionId` wie folgt:
-```
-https://app.azure.com/h/<trackingId>/<first and last three digits of subscriptionId>
-```
+[Hier finden Sie ein Beispiel](../azure-monitor/platform/activity-log-alerts-webhook.md) für die `ServiceHealth`-Webhooknutzlast.
 
-Wenn Ihre `subscriptionId` z.B. `bba14129-e895-429b-8809-278e836ecdb3` lautet und Ihre `trackingId` `0DET-URB`, dann sieht Ihre Service Health-URL folgendermaßen aus:
+Durch einen Blick auf `context.eventSource == "ServiceHealth"` können Sie bestätigen, dass dies eine Service Health-Warnung ist. Die folgenden Eigenschaften sind die relevantesten:
+- **data.context.activityLog.status**
+- **data.context.activityLog.level**
+- **data.context.activityLog.subscriptionId**
+- **data.context.activityLog.properties.title**
+- **data.context.activityLog.properties.impactStartTime**
+- **data.context.activityLog.properties.communication**
+- **data.context.activityLog.properties.impactedServices**
+- **data.context.activityLog.properties.trackingId**
 
-```
-https://app.azure.com/h/0DET-URB/bbadb3
-```
+## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>Erstellen eines Links zum Service Health-Dashboard für einen Vorfall
+Sie können einen direkten Link zu Ihrem Service Health-Dashboard auf einem Desktop oder mobilen Gerät erstellen, indem Sie eine spezialisierte URL generieren. Verwenden Sie die *Nachverfolgungs-ID* (trackingId) und die ersten drei und die letzten drei Ziffern Ihrer *Abonnement-ID* (subscriptionId) im folgenden Format:
 
-## <a name="using-the-level-to-detect-the-severity-of-the-issue"></a>Erkennen des Schweregrads des Problems anhand der Eigenschaft „Level“
-Vom niedrigsten Schweregrad zum höchsten Schweregrad kann die Eigenschaft `level` in der Nutzlast folgende Werte annehmen: `Informational`, `Warning`, `Error` und `Critical`.
+https<i></i>://app.azure.com/h/ *&lt;Nachverfolgungs-ID&gt;* / *&lt;die ersten drei und die letzten drei Ziffern der Abonnement-ID&gt;*
 
-## <a name="parsing-the-impacted-services-to-understand-the-full-scope-of-the-incident"></a>Analysieren der betroffenen Dienste, um das komplette Ausmaß des Vorfalls zu verstehen
+Wenn Ihre *Abonnement-ID* (subscriptionId) z. B. „bba14129-e895-429b-8809-278e836ecdb3“ und Ihre *Nachverfolgungs-ID* (trackingId) „0DET-URB“ lautet, sieht Ihre Service Health-URL folgendermaßen aus:
+
+https<i></i>://app.azure.com/h/0DET-URB/bbadb3
+
+## <a name="use-the-level-to-detect-the-severity-of-the-issue"></a>Erkennen des Schweregrads des Problems anhand der Level-Eigenschaft
+Vom niedrigsten zum höchsten Schweregrad kann die **level**-Eigenschaft in der Nutzlast den Wert *Informativ*, *Warnung*, *Fehler* oder *Kritisch* aufweisen.
+
+## <a name="parse-the-impacted-services-to-determine-the-incident-scope"></a>Analysieren der betroffenen Dienste zum Ermitteln des Ausmaßes des Vorfalls
 Service Health-Warnungen informieren Sie über Probleme über mehrere Regionen und Dienste hinweg. Um die vollständigen Details zu erhalten, müssen Sie den Wert von `impactedServices` analysieren.
-Der enthaltene Inhalt ist eine [JSON-Zeichenfolge mit Escapezeichen](https://json.org/); wenn ohne Escapezeichen, dann enthält es ein anderes JSON-Objekt, das normal analysiert werden kann.
+
+Der enthaltene Inhalt ist eine [JSON](https://json.org/)-Zeichenfolge mit Escapezeichen, die ohne Escapezeichen ein anderes JSON-Objekt enthält, das normal analysiert werden kann. Beispiel:
 
 ```json
 {"data.context.activityLog.properties.impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"},{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"Alerts & Metrics\"},{\"ImpactedRegions\":[{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"App Service\"}]"}
 ```
 
-Wird zu:
+wird zu:
 
 ```json
 [
@@ -91,13 +93,17 @@ Wird zu:
 ]
 ```
 
-Dies zeigt, dass es Probleme mit „Warnungen & Metriken“ in Australien, Osten und Südosten, sowie Probleme mit „App Service“ in Australien, Südosten, gibt.
+In diesem Beispiel wird gezeigt, dass Probleme bestehen bei:
+- „Warnungen & Metriken“ in „Australien, Osten“ und „Australien, Südosten“.
+- „App Service“ in „Australien, Südosten“.
 
+## <a name="test-your-webhook-integration-via-an-http-post-request"></a>Testen der Webhookintegration über eine HTTP POST-Anforderung
 
-## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testen der Webhookintegration über eine HTTP POST-Anforderung
-1. Erstellen Sie die Service Health-Nutzlast, die Sie senden möchten. Eine Service Health-Beispielwebhook-Nutzlast finden Sie unter [Webhooks für Azure-Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md).
+Folgen Sie diesen Schritten:
 
-2. Erstellen Sie eine HTTP POST-Anforderung, indem Sie wie folgt vorgehen:
+1. Erstellen Sie die Service Health-Nutzlast, die Sie senden möchten. Ein Beispiel für eine Service Health-Webhooknutzlast finden Sie unter [Webhooks für Azure-Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md).
+
+1. Erstellen Sie eine HTTP POST-Anforderung, indem Sie wie folgt vorgehen:
 
     ```
     POST        https://your.webhook.endpoint
@@ -106,9 +112,9 @@ Dies zeigt, dass es Probleme mit „Warnungen & Metriken“ in Australien, Osten
 
     BODY        <service health payload>
     ```
-3. Sie sollten eine `2XX - Successful`-Antwort erhalten.
+   Sie sollten eine Antwort vom Typ „2xx“ (erfolgreich) erhalten.
 
-4. Wechseln Sie zu [PagerDuty](https://www.pagerduty.com/), um zu überprüfen, ob Ihre Integration erfolgreich eingerichtet wurde.
+1. Wechseln Sie zu [PagerDuty](https://www.pagerduty.com/), um zu überprüfen, ob Ihre Integration erfolgreich eingerichtet wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md). 

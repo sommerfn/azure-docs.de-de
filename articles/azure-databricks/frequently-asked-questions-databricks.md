@@ -10,11 +10,11 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.openlocfilehash: 3bcc511ec6ad8a246c2b1b3a33eb59043a45830e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138360"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60784706"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Häufig gestellte Fragen zu Azure Databricks
 
@@ -88,7 +88,7 @@ Wenn Sie den Arbeitsbereich nicht erstellt haben und als Benutzer hinzugefügt w
 
 #### <a name="error-message"></a>Fehlermeldung
 
-„Startfehler des Cloudanbieters: Beim Einrichten des Clusters ist ein Fehler des Cloudanbieters aufgetreten. Weitere Informationen finden Sie im Databricks-Handbuch. Azure-Fehlercode: PublicIPCountLimitReached. Azure-Fehlermeldung: Es können maximal 60 öffentliche IP-Adressen für dieses Abonnement in dieser Region erstellt werden.“
+„Startfehler des Cloudanbieters: Beim Einrichten des Clusters ist ein unerwarteter Cloudanbieterfehler aufgetreten. Weitere Informationen finden Sie im Databricks-Handbuch. Azure-Fehlercode: PublicIPCountLimitReached. Azure-Fehlermeldung: Für das Abonnement in dieser Region können höchstens 60 öffentliche IP-Adressen erstellt werden.“
 
 #### <a name="solution"></a>Lösung
 
@@ -98,8 +98,8 @@ Databricks-Cluster verwenden eine öffentliche IP-Adresse pro Knoten. Wenn für 
 
 #### <a name="error-message"></a>Fehlermeldung
 
-„Startfehler des Cloudanbieters: Beim Einrichten des Clusters ist ein Fehler des Cloudanbieters aufgetreten. Weitere Informationen finden Sie im Databricks-Handbuch.
-Azure-Fehlercode: MissingSubscriptionRegistration; Azure-Fehlermeldung: Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.Compute“ registriert. Informationen zum Registrieren von Abonnements finden Sie unter https://aka.ms/rps-not-found.“
+„Startfehler des Cloudanbieters: Beim Einrichten des Clusters ist ein unerwarteter Cloudanbieterfehler aufgetreten. Weitere Informationen finden Sie im Databricks-Handbuch.
+Azure-Fehlercode: MissingSubscriptionRegistration Azure-Fehlermeldung: Das Abonnement ist nicht zur Verwendung von Namespace "Microsoft.Compute" registriert. Informationen zum Registrieren von Abonnements finden Sie unter https://aka.ms/rps-not-found.“
 
 #### <a name="solution"></a>Lösung
 
@@ -121,6 +121,6 @@ Melden Sie sich als globaler Administrator beim Azure-Portal an. Navigieren Sie 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Schnellstartanleitung: Erste Schritte mit Azure Databricks](quickstart-create-databricks-workspace-portal.md)
+- [Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mit dem Azure-Portal](quickstart-create-databricks-workspace-portal.md)
 - [Was ist Azure Databricks?](what-is-azure-databricks.md)
 

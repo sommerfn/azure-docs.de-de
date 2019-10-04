@@ -3,7 +3,7 @@ title: Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud S
 description: Konfigurieren einer Azure-Clouddienstanwendung für Remotedesktopverbindungen
 services: cloud-services
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 703e969fe31def329be60037cceba27864063b4e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 6a6d045513e3e91c5a8b2004e47378a097be8963
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304052"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515916"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services mit Visual Studio
 
@@ -86,7 +86,7 @@ Sie können ein Clouddienstprojekt von einem Buildserver aus bereitstellen (z.B.
 
 Um die RDP-Erweiterung von Azure DevOps Services zu verwenden, schließen Sie die folgenden Details in Ihre Buildpipeline ein:
 
-1. Schließen Sie `/p:ForceRDPExtensionOverPlugin=true` in Ihre MSBuild-Argumente ein, um sicherzustellen, dass die Bereitstellung mit der RDP-Erweiterung anstelle des RDP-Plug-Ins funktioniert. Beispiel: 
+1. Schließen Sie `/p:ForceRDPExtensionOverPlugin=true` in Ihre MSBuild-Argumente ein, um sicherzustellen, dass die Bereitstellung mit der RDP-Erweiterung anstelle des RDP-Plug-Ins funktioniert. Beispiel:
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None
@@ -95,7 +95,7 @@ Um die RDP-Erweiterung von Azure DevOps Services zu verwenden, schließen Sie di
 
 1. Fügen Sie nach Ihren Buildschritten den Schritt **Azure Cloud Service-Bereitstellung** hinzu, und legen Sie seine Eigenschaften fest.
 
-1. Fügen Sie nach dem Bereitstellungsschritt einen **Azure Powershell**-Schritt hinzu, legen Sie für seine Eigenschaft **Anzeigename** „Azure-Bereitstellung: RDP-Erweiterung aktivieren“ (oder einen anderen geeigneten Namen) fest, und wählen Sie das entsprechende Azure-Abonnement aus.
+1. Fügen Sie nach dem Bereitstellungsschritt einen **Azure Powershell**-Schritt hinzu, legen Sie für seine Eigenschaft **Anzeigename** den Namen „Azure-Bereitstellung: RDP-Erweiterung aktivieren“ (oder einen anderen geeigneten Namen) fest, und wählen Sie das entsprechende Azure-Abonnement aus.
 
 1. Legen Sie für **Skripttyp** „Inline“ fest, und fügen Sie den folgenden Code in das Feld **Inlineskript** ein. (Sie können mit diesem Skript auch eine `.ps1`-Datei in Ihrem Projekt erstellen, für **Skripttyp** „Skriptdateipfad“ festlegen und in **Skriptpfad** den Pfad zur Datei angeben.)
 

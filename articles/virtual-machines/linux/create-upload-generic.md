@@ -4,23 +4,22 @@ description: Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
 ms.assetid: d351396c-95a0-4092-b7bf-c6aae0bbd112
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: szark
-ms.openlocfilehash: e032f9a9772232d3a57a9672dc6c601354ecad43
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb6ef87edd2ff16750573c6b8c719fa4b81d3a4c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105521"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083601"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informationen zu nicht unterstützten Distributionen
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -74,7 +73,7 @@ Der Mechanismus für die Neuerstellung des Images "initrd" oder "initramfs" vari
 ### <a name="resizing-vhds"></a>Ändern der Größe von virtuellen Festplatten
 VHD-Images in Azure benötigen eine virtuelle Größe, die auf 1 MB ausgerichtet ist.  In der Regel sind mit Hyper-V erstellte virtuelle Festplatten bereits ordnungsgemäß ausgerichtet.  Falls die virtuelle Festplatte nicht ordnungsgemäß ausgerichtet ist, wird möglicherweise eine Fehlermeldung wie die folgende angezeigt, wenn Sie versuchen, ein Image von der virtuellen Festplatte zu erstellen.
 
-* Die VHD „http://<mystorageaccount>.blob.core.windows.net/vhds/MyLinuxVM.vhd“ weist eine nicht unterstützte virtuelle Größe von 21475270656 Bytes auf. Die Größe muss eine ganze Zahl (in MB) sein.
+* Die VHD „http:\//\<meinspeicherkonto>.blob.core.windows.net/vhds/MyLinuxVM.vhd“ hat eine nicht unterstützte virtuelle Größe von 21475270656 Bytes. Die Größe muss eine ganze Zahl (in MB) sein.
 
 Ändern Sie in diesem Fall die Größe des virtuellen Computers über die Hyper-V-Manager-Konsole oder mit dem PowerShell-Cmdlet [Resize-VHD](https://technet.microsoft.com/library/hh848535.aspx).  Wenn Sie nicht in einer Windows-Umgebung arbeiten, sollten Sie `qemu-img` verwenden, um (falls erforderlich) die Konvertierung durchzuführen und die Größe der virtuellen Festplatte zu ändern.
 

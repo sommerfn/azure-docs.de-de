@@ -1,19 +1,19 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/28/2018
+ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 61f65340c3b683674be195f1d30788494b6855a7
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671804"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266873"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -51,7 +51,7 @@ Ja.
 
 **Kann ich mithilfe einer VHD-Datei in einem Azure-Speicherkonto einen verwalteten Datenträger in einer anderen Region erstellen?**
 
- Nein.
+Nein.
 
 **Gelten für Kunden, die verwaltete Datenträger verwenden, Einschränkungen bei der Skalierung?**
 
@@ -59,11 +59,11 @@ Managed Disks beseitigt die Grenzwerte im Zusammenhang mit Speicherkonten. Der G
 
 **Kann ich eine inkrementelle Momentaufnahme eines verwalteten Datenträgers erstellen?**
 
- Nein. Die aktuelle Momentaufnahmefunktion erstellt eine vollständige Kopie eines verwalteten Datenträgers.
+Nein. Die aktuelle Momentaufnahmefunktion erstellt eine vollständige Kopie eines verwalteten Datenträgers.
 
 **Können virtuelle Computer in einer Verfügbarkeitsgruppe eine Kombination aus verwalteten und nicht verwalteten Datenträgern besitzen?**
 
- Nein. Die virtuellen Computer in einer Verfügbarkeitsgruppe müssen entweder alle über verwaltete oder alle über nicht verwaltete Datenträger verfügen. Den gewünschten Datenträgertyp können Sie bei der Erstellung einer Verfügbarkeitsgruppe auswählen.
+Nein. Die virtuellen Computer in einer Verfügbarkeitsgruppe müssen entweder alle über verwaltete oder alle über nicht verwaltete Datenträger verfügen. Den gewünschten Datenträgertyp können Sie bei der Erstellung einer Verfügbarkeitsgruppe auswählen.
 
 **Ist Managed Disks die Standardoption im Azure-Portal?**
 
@@ -103,7 +103,7 @@ Ja, es werden verwaltete und nicht verwaltete Datenträger unterstützt. Allerdi
 
 **Kann ich verwaltete und nicht verwaltete Datenträger zusammen auf derselben VM platzieren?**
 
- Nein.
+Nein.
 
 **Wenn ich einen 128-GB-Datenträger erstelle und dann die Größe auf 130GiB (Gibibytes) erhöhe, wird mir dann die nächsthöhere Datenträgergröße (256GiB) in Rechnung gestellt?**
 
@@ -115,15 +115,15 @@ Azure Managed Disks unterstützt momentan nur lokal redundanten Speicher (LRS).
 
 **Kann ich meine verwalteten Datenträger verkleinern?**
 
- Nein. Dies wird derzeit nicht unterstützt.
+Nein. Dies wird derzeit nicht unterstützt.
 
 **Kann ich auf meinen Datenträgern eine Lease unterbrechen?**
 
- Nein. Dies wird derzeit nicht unterstützt, da eine Lease dafür da ist, versehentliches Löschen zu verhindern, wenn der Datenträger verwendet wird.
+Nein. Dies wird derzeit nicht unterstützt, da eine Lease dafür da ist, versehentliches Löschen zu verhindern, wenn der Datenträger verwendet wird.
 
 **Kann ich die Eigenschaft „Computername“ ändern, wenn ein spezialisierter Betriebssystemdatenträger (der nicht mit dem Systemvorbereitungstool erstellt wurde und nicht generalisiert ist) zur Bereitstellung einer VM verwendet wird?**
 
- Nein. Sie können die Eigenschaft „Computername“ nicht aktualisieren. Die neue VM erbt diese von der übergeordneten VM, mit der der Betriebssystem-Datenträger erstellt wurde. 
+Nein. Sie können die Eigenschaft „Computername“ nicht aktualisieren. Die neue VM erbt diese von der übergeordneten VM, mit der der Betriebssystem-Datenträger erstellt wurde. 
 
 **Wo finde ich Beispielvorlagen von Azure Resource Manager, um virtuelle Computer mit verwalteten Datenträgern zu erstellen?**
 * [Liste der Vorlagen die Managed Disks verwenden](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
@@ -140,6 +140,69 @@ Verwaltete Datenträger können nicht umbenannt werden. Sie können jedoch einen
 **Kann ich die GPT-Partitionierung auf Azure-Datenträgern verwenden?**
 
 Die GPT-Partitionierung kann nur auf Datenträgern für Daten, nicht auf Betriebssystem-Datenträgern verwendet werden. Betriebssystem-Datenträger müssen den MBR-Partitionstyp verwenden.
+
+**Welche Datenträgertypen unterstützen Momentaufnahmen?**
+
+Für SSD Premium, SSD Standard und HDD Standard werden Momentaufnahmen unterstützt. Für diese drei Datenträgertypen werden Momentaufnahmen für alle Datenträgergrößen unterstützt (einschließlich Datenträger mit einer Größe von bis zu 32 TiB). Ultra-Datenträger unterstützen keine Momentaufnahmen.
+
+## <a name="ultra-disks"></a>Ultra-Datenträger
+
+**Welche Regionen unterstützen derzeit Ultra-Datenträger?**
+- USA (Ost) 2
+- Asien, Südosten
+- Nordeuropa
+
+**Welche VM-Serien unterstützen derzeit Ultra-Datenträger?**
+- ESv3
+- DSv3
+
+**Auf welchen Wert sollte ich den Durchsatz meines Ultra-Datenträgers festlegen?**
+Wenn Sie nicht sicher sind, auf welchen Wert Sie den Datenträgerdurchsatz festlegen sollen, nehmen Sie zunächst eine E/A-Größe von 16 KiB an, und passen Sie die Leistung davon ausgehend an, während Sie Ihre Anwendung überwachen. Die Formel lautet: Durchsatz in MBit/s = Wert von IOPS * 16/1000.
+
+**Ich habe meinen Datenträger auf 40000 IOPS konfiguriert, sehe aber nur 12800 IOPS. Warum wird die Leistung des Datenträgers nicht angezeigt?**
+Zusätzlich zur Datenträgerdrosselung gibt es eine E/A-Drosselung, die auf VM-Ebene durchgesetzt wird. Stellen Sie sicher, dass für die von Ihnen verwendete VM-Größe die Ebenen unterstützt werden, die auf Ihren Datenträgern konfiguriert sind. Weitere Informationen zu den von Ihrer VM vorgegebenen E/A-Beschränkungen finden Sie [Größen für virtuelle Windows-Computer in Azure](../articles/virtual-machines/windows/sizes.md).
+
+**Kann ich Zwischenspeicherungsebenen (Cachingebenen) mit einem Ultra-Datenträger verwenden?**
+Nein, für Ultra-Datenträger werden die verschiedenen Zwischenspeicherungsmethoden, die für andere Datenträgertypen unterstützt werden, nicht unterstützt. Legen Sie die Datenträgerzwischenspeicherung auf „Keine“ (None) fest.
+
+**Kann ich meinem vorhandenen virtuellen Computer einen Ultra-Datenträger zuordnen?**
+Möglicherweise muss sich Ihr virtueller Computer in einer Kombination aus Region und Verfügbarkeitszone befinden, für die Ultra-Datenträger unterstützt werden. Weitere Informationen finden Sie unter [Verwenden von Azure Ultra-Datenträgern](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md).
+
+**Kann ich einen Ultra-Datenträger als Betriebssystemdatenträger für meinen virtuellen Computer verwenden?**
+Nein, Ultra-Datenträger werden nur als Datenträger für Daten und nur als native 4K-Datenträger unterstützt.
+
+**Kann ich einen vorhandenen Datenträger in einen Ultra-Datenträger konvertieren?**
+Nein, aber Sie können die Daten von einem vorhandenen Datenträger auf einen Ultra-Datenträger migrieren. Um einen vorhandenen Datenträger auf einen Ultra-Datenträger zu migrieren, ordnen Sie beide Datenträger demselben virtuellen Computer zu, und kopieren Sie die Daten vom vorhandenen Datenträger auf den Ultra-Datenträger, oder nutzen Sie eine Drittanbieterlösung für Datenmigration.
+
+**Kann ich Momentaufnahmen für Ultra-Datenträger erstellen?**
+Nein, Momentaufnahmen sind noch nicht verfügbar.
+
+**Ist Azure Backup für Ultra-Datenträger verfügbar?**
+Nein, Azure Backup-Unterstützung ist noch nicht verfügbar.
+
+**Kann ich einen Ultra-Datenträger einem virtuellen Computer zuordnen, der in einer Verfügbarkeitsgruppe ausgeführt wird?**
+Nein, das wird noch nicht unterstützt.
+
+**Kann ich Azure Site Recovery für virtuelle Computer mit Ultra-Datenträgern aktivieren?**
+Nein, Azure Site Recovery wird für Ultra-Datenträger noch nicht unterstützt.
+
+## <a name="uploading-to-a-managed-disk"></a>Hochladen in einen verwalteten Datenträger
+
+**Kann ich Daten in einen vorhandenen verwalteten Datenträger hochladen?**
+
+Nein, Hochladen kann nur während der Erstellung eines neuen leeren Datenträgers verwendet werden, der den Status **ReadyToUpload** hat.
+
+**Wie lade ich Daten auf einen verwalteten Datenträger hoch?**
+
+Erstellen Sie den verwalteten Datenträger so, dass die [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption)-Eigenschaft von [creationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) auf „Upload“ festgelegt ist. Danach können Sie Daten auf den Datenträger hochladen.
+
+**Kann ich einen Datenträger einem virtuellen Computer zuordnen, während der Datenträger einen Uploadstatus hat?**
+
+Nein.
+
+**Kann ich eine Momentaufnahme eines verwalteten Datenträgers erstellen, der einen Uploadstatus hat?**
+
+Nein.
 
 ## <a name="standard-ssd-disks"></a>Standard-SSD-Datenträger
 
@@ -207,11 +270,11 @@ Es sind keine Änderungen erforderlich.
 
 **Wird die automatisierte Migration einer vorhandenen VM-Skalierungsgruppe von nicht verwalteten Datenträgern zu Managed Disks unterstützt?**
 
- Nein. Sie können eine neue Skalierungsgruppe mit Managed Disks mithilfe des Images von Ihrer alten Skalierungsgruppe mit nicht verwalteten Datenträgern erstellen.
+Nein. Sie können eine neue Skalierungsgruppe mit Managed Disks mithilfe des Images von Ihrer alten Skalierungsgruppe mit nicht verwalteten Datenträgern erstellen.
 
 **Kann ich verwaltete Datenträger über eine Seitenblob-Momentaufnahme erstellen, die vor der Migration zu Managed Disks erstellt wurde?**
 
- Nein. Sie können eine Seitenblob-Momentaufnahme als Seitenblob exportieren und anschließend den verwalteten Datenträger aus dem exportierten Seitenblob erstellen.
+Nein. Sie können eine Seitenblob-Momentaufnahme als Seitenblob exportieren und anschließend den verwalteten Datenträger aus dem exportierten Seitenblob erstellen.
 
 **Kann ich für meine lokalen Computer, die mit Azure Site Recovery geschützt sind, ein Failover auf eine VM mit Managed Disks ausführen?**
 
@@ -219,7 +282,7 @@ Ja, Sie können ein Failover auf einem virtuellen Computer mit Managed Disks aus
 
 **Hat die Migration zu Azure-VMs, die mit Azure Site Recovery geschützt sind, über die Azure-zu-Azure-Replikation irgendwelche Auswirkungen?**
 
-Ja. Derzeit ist Azure-zu-Azure-Schutz mit Azure Site Recovery für virtuelle Computer mit verwalteten Datenträgern nur als allgemein verfügbarer Dienst verfügbar.
+Nein. Azure-zu-Azure-Schutz mit Azure Site Recovery für virtuelle Computer mit Managed Disks ist verfügbar.
 
 **Kann ich VMs mit nicht verwalteten Datenträgern, die sich auf Speicherkonten befinden, die verschlüsselt sind oder dies waren, zu verwalteten Datenträgern migrieren?**
 
@@ -237,11 +300,11 @@ Microsoft verwaltet die Verschlüsselungsschlüssel.
 
 **Kann ich für meine verwalteten Datenträger Storage Service Encryption deaktivieren?**
 
- Nein.
+Nein.
 
 **Ist Storage Service Encryption nur in bestimmten Regionen verfügbar?**
 
- Nein. Sie ist in allen Regionen verfügbar, in denen Managed Disks verfügbar ist. Managed Disks ist in allen öffentlichen Regionen und Deutschland verfügbar. Es ist auch in China verfügbar, jedoch nur für von Microsoft verwaltete Schlüssel, nicht für vom Kunden verwaltete Schlüssel.
+Nein. Sie ist in allen Regionen verfügbar, in denen Managed Disks verfügbar ist. Managed Disks ist in allen öffentlichen Regionen und Deutschland verfügbar. Es ist auch in China verfügbar, jedoch nur für von Microsoft verwaltete Schlüssel, nicht für vom Kunden verwaltete Schlüssel.
 
 **Wie finde ich heraus, ob mein verwalteter Datenträger verschlüsselt ist?**
 
@@ -264,7 +327,7 @@ Ja
 
 **Wird eine exportierte VHD-Datei von einem verwalteten Datenträger oder eine Momentaufnahme auch verschlüsselt?**
 
- Nein. Wenn Sie allerdings eine VHD-Datei von einem verschlüsselten, verwalteten Datenträger oder einer Momentaufnahme in ein verschlüsseltes Speicherkonto exportieren, ist sie verschlüsselt. 
+Nein. Wenn Sie allerdings eine VHD-Datei von einem verschlüsselten, verwalteten Datenträger oder einer Momentaufnahme in ein verschlüsseltes Speicherkonto exportieren, ist sie verschlüsselt. 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Premium-Datenträger: verwaltet und nicht verwaltet
 
@@ -274,7 +337,7 @@ Ja.
 
 **Kann ich an eine Größenserie ohne Unterstützung für Premium-SSD-Datenträger (also beispielsweise an die D-, Dv2-, G- oder F-Serie) sowohl Premium- als auch Standard-Datenträger anfügen?**
 
- Nein. An virtuelle Computer, die keine Größenserie mit Unterstützung für Premium-SSD-Datenträger verwenden, können nur Standard-Datenträger angefügt werden.
+Nein. An virtuelle Computer, die keine Größenserie mit Unterstützung für Premium-SSD-Datenträger verwenden, können nur Standard-Datenträger angefügt werden.
 
 **Welche Kosten fallen an, wenn ich einen Storage Premium-Datenträger von einer vorhandenen virtuellen Festplatte mit einer Größe von 80 GB erstelle?**
 
@@ -339,7 +402,7 @@ Ja.
 
 **Welche Datenträgergröße wird vom Azure Backup- und vom Azure Site Recovery-Dienst maximal unterstützt?**
 
-Die maximale Datenträgergröße, die vom Azure Backup- und vom Azure Site Recovery-Dienst unterstützt wird, ist 4 TiB. Unterstützung für die größeren Datenträger bis zu 32TiB wird bald verfügbar sein.
+Die maximale Datenträgergröße, die vom Azure Backup- und vom Azure Site Recovery-Dienst unterstützt wird, ist 4 TiB. Unterstützung für die größeren Datenträger bis zu 32 TiB ist noch nicht verfügbar.
 
 **Welche VM-Größen werden für große Datenträger (> 4TiB) empfohlen, damit SSD Standard- und HDD Standard-Datenträger optimale Werte für IOPS und Bandbreite erzielen?**
 
@@ -351,7 +414,7 @@ Sie können entweder die VM beenden und starten, der der Datenträger angefügt 
 
 **In welchen Regionen werden Größen von 8TiB, 16TiB und 32TiB für verwaltete Datenträger unterstützt?**
 
-Die Datenträger-SKUs mit 8TiB, 16TiB und 32TiB werden in allen Regionen unter globalem Azure unterstützt. Unterstützung für Microsoft Azure Government und Azure China 21Vianet ist noch nicht verfügbar.
+Die SKUs für Datenträger mit 8TiB, 16TiB und 32TiB werden in allen Regionen unter globalem Azure, Microsoft Azure Government und Azure China 21Vianet unterstützt.
 
 **Wird die Aktivierung der Hostzwischenspeicherung auf allen Datenträgergrößen unterstützt?**
 

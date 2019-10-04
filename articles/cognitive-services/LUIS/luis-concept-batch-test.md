@@ -1,6 +1,6 @@
 ---
-title: Testen in Batches
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Batchtests – LUIS
+titleSuffix: Azure Cognitive Services
 description: Verwenden Sie Batchtests, um Ihre Anwendung fortlaufend zu optimieren und ihr Sprachverständnis zu verbessern.
 services: cognitive-services
 author: diberry
@@ -9,33 +9,33 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: acb561970b6a8576d1219fc15758e21a3032c9e5
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: b962fc32cdcde0509cfa60d105022bb208633ae3
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528151"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639288"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testen von Batches mit 1.000 Äußerungen im LUIS-Portal
 
-Mit Batchtests wird Ihr [aktives](luis-concept-version.md#active-version) trainiertes Modell überprüft, um seine Vorhersagegenauigkeit zu messen. Mithilfe eines Batchtests können Sie die Genauigkeit der einzelnen Absichten und Entitäten in Ihrem aktuellen trainierten Modell in einem Diagramm anzeigen. Überprüfen Sie die Ergebnisse des Batchtests, um geeignete Maßnahmen zum Verbessern der Genauigkeit einzuleiten, etwa indem Sie einer Absicht weitere Beispieläußerungen hinzufügen, wenn Ihre App häufig Fehler beim Erkennen der korrekten Absicht macht.
+Mit Batchtests wird Ihr [aktives](luis-concept-version.md#active-version) trainiertes Modell überprüft, um seine Vorhersagegenauigkeit zu messen. Ein Batchtest zeigt die Ergebnisse in einem Diagramm an, sodass Sie einen besseren Einblick in die Genauigkeit der einzelnen Absichten und Entitäten in Ihrem aktuellen trainierten Modell erhalten. Überprüfen Sie die Ergebnisse des Batchtests, um geeignete Maßnahmen zum Verbessern der Genauigkeit einzuleiten, etwa indem Sie einer Absicht weitere Beispieläußerungen hinzufügen, wenn Ihre App häufig Fehler beim Erkennen der korrekten Absicht macht.
 
 ## <a name="group-data-for-batch-test"></a>Gruppieren von Daten für Batchtests
 
-Es ist wichtig, dass die für Batchtests verwendeten Äußerungen für LUIS neu sind. Wenn Sie über ein Dataset mit Äußerungen verfügen, teilen Sie die Äußerungen in diese drei Mengen auf: Äußerungen, die einer Absicht hinzugefügt wurden, Äußerungen, die vom veröffentlichten Endpunkt empfangen wurden und Äußerungen, die für Batchtests von LUIS nach dem Training verwendet werden. 
+Es ist wichtig, dass die für Batchtests verwendeten Äußerungen für LUIS neu sind. Wenn Sie über ein Dataset mit Äußerungen verfügen, teilen Sie die Äußerungen in die folgenden drei Gruppen auf: Beispieläußerungen, die einer Absicht hinzugefügt wurden, Äußerungen, die vom veröffentlichten Endpunkt empfangen wurden und Äußerungen, die für Batchtests von LUIS nach dem Training verwendet werden. 
 
-## <a name="a-dataset-of-utterances"></a>Ein Dataset mit Äußerungen
+## <a name="a-data-set-of-utterances"></a>Ein Dataset mit Äußerungen
 
-Senden Sie eine Batchdatei mit Äußerungen, die als *Dataset* bezeichnet wird, zum Batchtesten. Das Dataset ist eine Datei im JSON-Format, die maximal 1.000 bezeichnete **nicht doppelt vorhandene** Äußerungen enthält. Sie können bis zu 10 Datasets in einer App testen. Wenn Sie mehr testen müssen, löschen Sie ein Dataset, und fügen Sie dann ein neues hinzu.
+Senden Sie eine Batchdatei mit Äußerungen, die als *Dataset* bezeichnet wird, zum Ausführen eines Batchtests. Das Dataset ist eine Datei im JSON-Format, die maximal 1.000 bezeichnete **nicht doppelt vorhandene** Äußerungen enthält. Sie können bis zu 10 Datasets in einer App testen. Wenn Sie mehr Datasets testen müssen, löschen Sie ein Dataset, und fügen Sie dann ein neues hinzu.
 
 |**Regeln**|
 |--|
-|* Keine doppelten Äußerungen|
+|\* Keine doppelten Äußerungen|
 |1000 Äußerungen oder weniger|
 
-* Als doppelte Äußerungen gelten exakt übereinstimmende Zeichenfolgen, nicht Übereinstimmungen, die zuerst in Token übersetzt wurden. 
+\* Als doppelte Äußerungen gelten exakt übereinstimmende Zeichenfolgen, nicht Übereinstimmungen, die zuerst in Token übersetzt wurden. 
 
 ## <a name="entities-allowed-in-batch-tests"></a>In Batchtests zulässige Entitäten
 

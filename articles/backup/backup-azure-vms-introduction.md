@@ -1,21 +1,20 @@
 ---
 title: Informationen zur Sicherung von Azure-VMs
 description: Erfahren Sie mehr über die Sicherung von Azure-VMs und einige bewährte Methoden.
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/04/2019
-ms.author: raynew
-ms.openlocfilehash: 1e80b2083a2fce90259ac0634d9e7f796f459fcd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/13/2019
+ms.author: dacurwin
+ms.openlocfilehash: db3e4b8a8abea4718f5779790906bf45591d221c
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880952"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018691"
 ---
-# <a name="about-azure-vm-backup"></a>Informationen zur Sicherung von Azure-VMs
+# <a name="an-overview-of-azure-vm-backup"></a>Ein Überblick über die Sicherung von Azure-VMs
 
 In diesem Artikel wird beschrieben, wie Azure-VMs (Virtual Machines) mit dem Dienst [Azure Backup](backup-introduction-to-azure-backup.md) gesichert werden.
 
@@ -31,10 +30,14 @@ Hier erfahren Sie, wie Azure Backup eine Sicherung für Azure-VMs durchführt:
     - Backup erstellt standardmäßig vollständige VSS-Sicherungen.
     - Wenn Backup keine App-konsistente Momentaufnahme erstellen kann, wird eine dateikonsistente Momentaufnahme des zugrunde liegenden Speichers erstellt (weil keine Schreibvorgänge der Anwendung stattfinden, solange die VM beendet ist).
 1. Für virtuelle Linux-Computer erstellt Backup eine dateikonsistente Sicherung. Zur Erstellung App-konsistenter Momentaufnahmen müssen Sie Pre- und Postskripts manuell anpassen.
-1. Nachdem Backup die Momentaufnahme erstellt hat, werden die Daten in den Tresor übertragen. 
+1. Nachdem Backup die Momentaufnahme erstellt hat, werden die Daten in den Tresor übertragen.
     - Zur Optimierung der Sicherung werden die einzelnen VM-Datenträger parallel gesichert.
     - Für jeden Datenträger, der gesichert wird, liest Azure Backup die Blöcke auf dem Datenträger und identifiziert und überträgt nur die Datenblöcke, die sich seit der vorherigen Sicherung geändert haben (das Delta).
     - Momentaufnahmedaten werden möglicherweise nicht sofort in den Tresor kopiert. Zu Spitzenzeiten vergehen unter Umständen mehrere Stunden. Bei täglichen Sicherungsrichtlinien beträgt die Gesamtdauer der Sicherung eines virtuellen Computers weniger als 24 Stunden.
+ 1. An einem virtuellen Windows-Computer werden folgende Änderungen vorgenommen, nachdem Azure Backup darauf aktiviert wurde:
+    -   Microsoft Visual C++ 2013 Redistributable(x64) – 12.0.40660 wird auf dem virtuellen Computer installiert.
+    -   Der Starttyp des Volumeschattenkopie-Diensts (Volume Shadow Copy Service, VSS) wird von „automatisch“ in „manuell“ geändert.
+    -   Der IaaSVmProvider-Windows-Dienst wird hinzugefügt.
 
 1. Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt und ein Wiederherstellungspunkt erstellt.
 
@@ -57,7 +60,7 @@ BEKs werden auch gesichert. Wenn die BEKs verloren gehen, können autorisierte B
 
 ## <a name="snapshot-creation"></a>Erstellung der Momentaufnahme
 
-Azure Backup erstellt Momentaufnahmen gemäß des Sicherungszeitplans. 
+Azure Backup erstellt Momentaufnahmen gemäß des Sicherungszeitplans.
 
 - **Virtuelle Windows-Computer:** Für virtuelle Windows-Computer erstellt der Backup-Dienst in Zusammenarbeit mit VSS eine App-konsistente Momentaufnahme der VM-Datenträger.
 
@@ -82,7 +85,7 @@ In der folgenden Tabelle werden die verschiedenen Typen der Konsistenz von Momen
 **Dateisystemkonsistent** | Dateisystemkonsistente Sicherungen bieten Konsistenz, indem eine Momentaufnahme aller Dateien gleichzeitig erstellt wird.<br/><br/> | Wenn Sie die Wiederherstellung einer VM mit einer dateisystemkonsistenten Momentaufnahme durchführen, wird die VM hochgefahren. Es kommt weder zu einer Beschädigung noch zum Verlust von Daten. Apps müssen einen eigenen Reparaturmechanismus implementieren, um sicherzustellen, dass wiederhergestellte Daten konsistent sind. | Windows: Fehler bei einigen VSS-Writern <br/><br/> Linux: Standardmäßig (wenn Pre-/Post-Skripts nicht konfiguriert oder bei ihnen Fehler aufgetreten sind)
 **Absturzkonsistent** | Absturzkonsistente Momentaufnahmen treten in der Regel auf, wenn eine Azure-VM zum Zeitpunkt der Sicherung heruntergefahren wird. Nur die Daten, die zum Zeitpunkt der Sicherung bereits auf dem Datenträger vorhanden sind, werden erfasst und gesichert.<br/><br/> Ein absturzkonsistenter Wiederherstellungspunkt garantiert keine Datenkonsistenz für das Betriebssystem oder die App. | Es gibt keine Garantien, aber normalerweise wird die VM hochgefahren. Anschließend erfolgt eine Datenträgerprüfung, um Beschädigungen zu beheben. Alle Daten im Arbeitsspeicher oder Schreibvorgänge, die vor dem Absturz nicht vollständig auf den Datenträger übertragen wurden, gehen verloren. Apps implementieren ihre eigene Datenüberprüfung. Beispielsweise kann eine Datenbank-App das Transaktionsprotokoll für die Überprüfung verwenden. Falls das Transaktionsprotokoll Einträge enthält, die nicht in der Datenbank vorhanden sind, führt die Datenbanksoftware ein Transaktionenrollback durch, bis die Daten konsistent sind. | VM wird heruntergefahren.
 
-## <a name="backup-and-restore-considerations"></a>Überlegungen zu Sicherung und Wiederherstellung 
+## <a name="backup-and-restore-considerations"></a>Überlegungen zu Sicherung und Wiederherstellung
 
 **Aspekt** | **Details**
 --- | ---
@@ -99,8 +102,8 @@ In der folgenden Tabelle werden die verschiedenen Typen der Konsistenz von Momen
 Diese gängigen Szenarien können die gesamte Sicherungsdauer beeinflussen:
 
 - **Hinzufügen eines neuen Datenträgers zu einer geschützten Azure-VM:** Wenn eine inkrementelle Sicherung einer VM durchgeführt und ein neuer Datenträger hinzugefügt wird, erhöht dies die Dauer der Sicherung. Die Gesamtdauer der Sicherung könnte aufgrund der ersten Replikation des neuen Datenträgers und der Deltareplikation vorhandener Datenträger mehr als 24 Stunden betragen.
-- **Fragmentierte Datenträger:** Sicherungsvorgänge sind schneller, wenn Datenträgeränderungen zusammenhängend sind. Wenn die Änderungen über einen Datenträger verteilt und fragmentiert werden, verläuft die Sicherung langsamer. 
-- **Datenträgeränderungen:** Wenn geschützte Datenträger, für die eine inkrementelle Sicherung durchgeführt wird, täglich eine Änderungsrate von mehr als 200GB aufweisen, kann der Sicherungsvorgang eine lange Zeit (mehr als acht Stunden) in Anspruch nehmen. 
+- **Fragmentierte Datenträger:** Sicherungsvorgänge sind schneller, wenn Datenträgeränderungen zusammenhängend sind. Wenn die Änderungen über einen Datenträger verteilt und fragmentiert werden, verläuft die Sicherung langsamer.
+- **Datenträgeränderungen:** Wenn geschützte Datenträger, für die eine inkrementelle Sicherung durchgeführt wird, täglich eine Änderungsrate von mehr als 200GB aufweisen, kann der Sicherungsvorgang eine lange Zeit (mehr als acht Stunden) in Anspruch nehmen.
 - **Backup-Versionen:** In der neuesten Version von Backup (namens „Instant Restore“) wird ein besser optimierter Prozess als der Prüfsummenvergleich zum Identifizieren der Änderungen verwendet. Aber wenn Sie Instant Restore verwenden und eine Sicherungsmomentaufnahme gelöscht haben, geht die Sicherung wieder zum Prüfsummenvergleich über. In diesem Fall wird der Sicherungsvorgang 24 Stunden überschreiten (oder mit einem Fehler abgebrochen).
 
 ## <a name="best-practices"></a>Bewährte Methoden
@@ -108,8 +111,8 @@ Diese gängigen Szenarien können die gesamte Sicherungsdauer beeinflussen:
 Berücksichtigen Sie beim Konfigurieren von VM-Sicherungen die folgenden bewährten Methoden:
 
 - Ändern Sie die in einer Richtlinie festgelegten Standardzeiten des Zeitplans. Wenn die Standardzeit in der Richtlinie beispielsweise auf 0:00 Uhr festgelegt ist, setzen Sie sie um einigen Minuten herauf, damit die Ressourcen optimal verwendet werden.
-- Für die Sicherung von virtuellen Computern, die Storage Premium verwenden, sollten Sie die neueste Version von Azure Backup ([Instant Restore](backup-instant-restore-capability.md)) verwenden. Wenn Sie nicht die neueste Version ausführen, belegt Backup ungefähr 50 Prozent des gesamten Speicherplatzes. Der Backup-Dienst benötigt diesen Speicherplatz, um die Momentaufnahme in dasselbe Speicherkonto zu kopieren und in den Tresor zu übertragen.
 - Wenn Sie VMs in einem einzigen Tresor wiederherstellen, sollten Sie unbedingt verschiedene [„Allgemein v2“-Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden, um sicherzustellen, dass das Zielspeicherkonto nicht gedrosselt wird. Beispielsweise muss jeder virtuelle Computer über ein anderes Speicherkonto verfügen. Wenn also 10 virtuelle Computer wiederhergestellt werden, verwenden Sie 10 verschiedene Speicherkonten.
+- Wenn Sie virtuelle Computer, die Storage Premium verwenden, mit der sofortigen Wiederherstellung sichern, empfiehlt es sich, *50 %* freien Speicherplatz des gesamten zugeordneten Speicherplatzes zuzuweisen, der **nur** für die erste Sicherung erforderlich ist. Der freie Speicherplatz von 50 % ist keine Voraussetzung für Sicherungen, die nach Abschluss der ersten Sicherung ausgeführt werden.
 - Die Wiederherstellungen von einer „Allgemein v1“-Speicherebene (Momentaufnahme) sind in wenigen Minuten abgeschlossen, da sich die Momentaufnahme auf demselben Speicherkonto befindet. Wiederherstellungen von der „Allgemein v2“-Speicherebene (Tresor) können Stunden dauern. In Fällen, in denen die Daten im „Allgemein v1“-Speicher verfügbar sind, sollten Sie das Feature [Instant Restore](backup-instant-restore-capability.md) für schnellere Wiederherstellungen verwenden. (Wenn die Daten in einem Tresor wiederhergestellt werden müssen, dauert es länger.)
 - Die maximale Anzahl von Datenträgern pro Speicherkonto hängt davon ab, wie stark Anwendungen, die auf einer IaaS-VM (Infrastructure-as-a-Service) ausgeführt werden, auf den Datenträger zugreifen. Wenn 5 bis 10 Datenträger oder mehr in einem einzelnen Speicherkonto vorhanden sind, sollten Sie grundsätzlich die Last ausgleichen, indem Sie einige Datenträger in getrennte Speicherkonten verschieben.
 
@@ -135,6 +138,15 @@ Datenträger 1 | 4095 GB | 30 GB
 Datenträger 2 | 4095 GB | 0 GB
 
 Die tatsächliche Größe der VM beträgt in diesem Fall 17 GB + 30 GB + 0 GB = 47 GB. Diese Größe der geschützten Instanz (47GB) dient als Basis für die monatliche Rechnung. Mit zunehmender Datenmenge auf dem virtuellen Computer ändert sich entsprechend auch die Größe der geschützten Instanz, die für die Abrechnung verwendet wird.
+
+<a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
+## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Public Preview: Sicherung des virtuellen Computers mit Datenträgergrößen von bis zu 30 TB
+
+Azure Backup unterstützt nun größere und leistungsfähigere [verwaltete Azure-Datenträger](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) mit einer Größe von bis zu 30 TB im Rahmen einer Public Preview. Diese Vorschauversion unterstützt verwaltete virtuelle Computer auf Produktionsebene.
+
+Die Sicherungen für Ihre virtuellen Computer mit einer einzelnen Datenträgergröße bis zu 30 TB und maximal 256 TB für alle Datenträger in einem virtuellen Computer sollten nahtlos – ohne Auswirkung auf Ihre vorhandenen Sicherungen – funktionieren. Wenn der virtuelle Computer bereits mit Azure Backup konfiguriert wurde, ist für die Ausführung der Sicherungen bei großen Datenträgern keine Benutzeraktion erforderlich.
+
+Alle virtuellen Azure-Computer mit großen Datenträgern und konfigurierter Sicherung sollten erfolgreich gesichert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

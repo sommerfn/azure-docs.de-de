@@ -3,9 +3,8 @@ title: 'Tutorial: Konfigurieren von Slack für die automatische Benutzerbereitst
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Slack konfigurieren.
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
-writer: asmalser-msft
-manager: daveba
+author: ArvindHarinder1
+manager: CelesteDG
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -14,15 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
-ms.author: asmalser-msft
-ms.reviewer: asmalser
+ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b50bcada8cfc72c06804793850f1f28a288f5248
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4a294254bd52db89179c5644ea7a0f0f04027f30
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59272919"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932486"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Slack für die automatische Benutzerbereitstellung
 
@@ -118,11 +116,13 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
   * Es werden auch nicht englische Zeichen, Leerzeichen, Groß-/Kleinschreibung unterstützt. 
   
-  * Zulässige Interpunktion sind Punkte, Unterstriche, Bindestriche, Apostrophe, Klammern (z.B. **( [ { } ] )**) und Trennzeichen (z.B. **, / ;**).
+  * Zulässige Interpunktion sind Punkte, Unterstriche, Bindestriche, Apostrophe, Klammern (z.B. **( [ { } ] )** ) und Trennzeichen (z.B. **, / ;** ).
   
   * Nehmen Sie nur Änderungen vor, wenn diese beiden Einstellungen im Arbeitsbereich bzw. der Organisation von Slack konfiguriert sind: **Profile syncing is enabled** (Profil Synchronisierung ist aktiviert) und **Users cannot change their display name** (Benutzer können den Anzeigenamen nicht ändern).
   
-  * Das **userName**-Attribut von Slack muss weniger als 21 Zeichen lang und eindeutig sein.
+* Das **userName**-Attribut von Slack muss weniger als 21 Zeichen lang und eindeutig sein.
+
+* Slack ermöglicht nur das Abgleichen mit den Attributen **userName** und **email**.  
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

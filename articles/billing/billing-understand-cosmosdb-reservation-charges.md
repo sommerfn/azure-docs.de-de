@@ -6,19 +6,25 @@ author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 09/30/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 8386d1c43761cfb27746b003d136419f72d7d4ae
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: d10418e5095a3331c343f805d2c8385aa4974ffc
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648536"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71701809"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Cosmos DB
 
 Nachdem Sie eine reservierte Azure Cosmos DB-Kapazität erworben haben, wird der Reservierungsrabatt automatisch auf Azure Cosmos DB-Ressourcen angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt den für die Azure Cosmos DB-Ressourcen bereitgestellten Durchsatz ab. Sie deckt jedoch keine Gebühren für Software, Netzwerke, Speicher oder vordefinierte Container ab.
+
+## <a name="how-reservation-discount-is-applied"></a>Wie der Reservierungsrabatt angewendet wird
+
+Reservierungsrabatte funktionieren nach dem Prinzip „*use-it-or-lose-it*“. Das heißt, wenn Sie für eine Stunde nicht über die entsprechenden Ressourcen verfügen, verlieren Sie eine Reservierungsmenge für diese Stunde. Sie können ungenutzte reservierte Stunden nicht übertragen.
+
+Wenn Sie eine Ressource beenden, wird der Reservierungsrabatt automatisch auf eine andere entsprechende Ressource im angegebenen Reservierungsumfang angewandt. Wenn keine übereinstimmenden Ressourcen im angegebenen Reservierungsumfang gefunden werden, gehen die reservierten Stunden *verloren*.
 
 ## <a name="reservation-discount-applied-to-azure-cosmos-db-accounts"></a>Auf Azure Cosmos DB-Konten angewendeter Rabatt für Reservierungen
 

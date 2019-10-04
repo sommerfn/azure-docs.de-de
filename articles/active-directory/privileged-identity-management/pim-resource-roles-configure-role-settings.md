@@ -3,7 +3,7 @@ title: Konfigurieren von Einstellungen für Azure-Ressourcenrollen in PIM – Az
 description: Erfahren Sie, wie Sie Einstellungen für Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) konfigurieren.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d42c693fae6b538136d1e8c93094a0ea9e2077
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 88645d07ff213b0b7a56f2b081f0aaed01fd2929
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59494866"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804202"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>Konfigurieren von Einstellungen für Azure-Ressourcenrollen in PIM
 
@@ -38,19 +38,19 @@ Führen Sie diese Schritte aus, um die Einstellungen für eine Azure-Ressourcenr
 
 1. Klicken Sie auf die Ressource, die Sie verwalten möchten, z.B. ein Abonnement oder eine Verwaltungsgruppe.
 
-    ![Liste der zu verwaltenden Azure-Ressourcen](./media/pim-resource-roles-configure-role-settings/resources-list.png)
+    ![Seite „Azure-Ressourcen“, auf der die Ressourcen aufgelistet werden, die verwaltet werden können](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
 1. Klicken Sie auf **Rolleneinstellungen**.
 
-    ![Rolleneinstellungen](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Seite „Rolleneinstellungen“ mit einer Auflistung der Azure-Ressourcenrollen](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
 1. Klicken Sie auf die Rolle, deren Einstellungen Sie konfigurieren möchten.
 
-    ![Details zur Rolleneinstellung](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![Seite „Details zur Rolleneinstellung“ mit einer Auflistung mehrerer Zuweisungs- und Aktivierungseinstellungen](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
 1. Klicken Sie auf **Bearbeiten**, um den Bereich „Rolleneinstellungen“ zu öffnen.
 
-    ![Bearbeiten von Rolleneinstellungen](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Seite „Rolleneinstellungen“ mit Optionen zum Aktualisieren von Zuweisungs- und Aktivierungseinstellungen](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
 
     Im Bereich „Rolleneinstellungen“ für jede Rolle können Sie verschiedene Einstellungen konfigurieren.
 
@@ -109,7 +109,7 @@ Wenn Sie für die Aktivierung einer Rolle eine Genehmigung anfordern möchten, g
 
 1. Klicken Sie auf **Genehmigende Personen auswählen**, um den Bereich „Mitglied oder Gruppe auswählen“ zu öffnen.
 
-    ![Mitglied oder Gruppe auswählen](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
+    ![Bereich „Mitglied oder Gruppe auswählen“ zum Auswählen von genehmigenden Personen](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
 1. Wählen Sie mindestens ein Mitglied oder eine Gruppe aus, und klicken Sie dann auf **Auswählen**. Sie können eine beliebige Kombination von Mitgliedern und Gruppen hinzufügen. Sie müssen mindestens eine genehmigende Person auswählen. Für genehmigende Personen gibt es keine Standardeinstellung.
 

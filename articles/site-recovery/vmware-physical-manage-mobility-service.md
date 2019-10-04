@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 69b8e1c533747d1bade69949911ea43f299f49e9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0a8b3a8bcfc2aa8270d7be140a94e5b83973f3e5
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794234"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972127"
 ---
 # <a name="manage-mobility-agent-on-protected-machines"></a>Verwalten des Mobilitäts-Agents auf geschützten Computern
 
@@ -61,21 +61,22 @@ Die Deinstallation erfolgt über die Benutzeroberfläche oder eine Eingabeauffor
 
 ### <a name="on-a-linux-machine"></a>Auf einem Linux-Computer
 1. Melden Sie sich auf dem Linux-Computer als ein **root**-Benutzer an.
-2. Navigieren Sie in einem Terminal zu „/user/local/ASR“.
+2. Navigieren Sie in einem Terminal zu „/usr/local/ASR“.
 3. Führen Sie den folgenden Befehl aus:
     ```
     uninstall.sh -Y
+   ```
+   
+## <a name="install-site-recovery-vss-provider-on-source-machine"></a>Installieren des Site Recovery-VSS-Anbieters auf dem Quellcomputer
 
-## Install Site Recovery VSS provider on source machine
+Auf dem Quellcomputer ist der Azure Site Recovery-VSS-Anbieter erforderlich, um Anwendungskonsistenzpunkte zu generieren. Wenn die Pushinstallation des Anbieters nicht erfolgreich war, befolgen Sie die unten aufgeführten Richtlinien, um ihn manuell zu installieren.
 
-Azure Site Recovery VSS provider is required on the source machine to generate application consistency points. If the installation of the provider didn't succeed through push installation, follow the below given guidelines to install it manually.
+1. Öffnen Sie das Administratorbefehlsfenster.
+2. Navigieren Sie zum Mobilitätsdienst-Installationsspeicherort. (D.h. C:\Programme (x86)\Microsoft Azure Site Recovery\agent)
+3. Führen Sie das Skript InMageVSSProvider_Uninstall.cmd aus. Dadurch wird der Dienst deinstalliert, wenn er bereits vorhanden ist.
+4. Führen Sie das Skript InMageVSSProvider_Install. cmd aus, um den VSS-Anbieter manuell zu installieren.
 
-1. Open admin cmd window.
-2. Navigate to the mobility service installation location. (Eg - C:\Program Files (x86)\Microsoft Azure Site Recovery\agent)
-3. Run the script InMageVSSProvider_Uninstall.cmd . This will uninstall the service if it already exists.
-4. Run the script InMageVSSProvider_Install.cmd to install the VSS provider manually.
+## <a name="next-steps"></a>Nächste Schritte
 
-## Next steps
-
-- [Set up disaster recovery for VMware VMs](vmware-azure-tutorial.md)
-- [Set up disaster recovery for physical servers](physical-azure-disaster-recovery.md)
+- [Einrichten der Notfallwiederherstellung für VMware-VMs](vmware-azure-tutorial.md)
+- [Einrichten der Notfallwiederherstellung für physische Server](physical-azure-disaster-recovery.md)

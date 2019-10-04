@@ -1,51 +1,90 @@
-items:
 - name: Dokumentation zur Anomalieerkennung
   href: index.yml
 - name: Übersicht
-  items:
-  - name: Worum handelt es sich bei der Anomalieerkennungs-API?
-    href: overview.md
   expanded: true
+  items:
+    - name: Worum handelt es sich bei der Anomalieerkennungs-API?
+      href: overview.md
 - name: Schnellstarts
-  items:
-  - name: Erkennen von Anomalien in Ihren Daten
-    items:
-    - name: Verwenden von C#
-      href: quickstarts/detect-data-anomalies-csharp.md
-    - name: Verwenden von Java
-      href: quickstarts/detect-data-anomalies-java.md
-    - name: Verwenden von Python
-      href: quickstarts/detect-data-anomalies-python.md
   expanded: true
+  items:
+    - name: REST-API
+      items:
+        - name: 'Verwenden von C#'
+          href: quickstarts/detect-data-anomalies-csharp.md
+        - name: Verwenden von Java
+          href: quickstarts/detect-data-anomalies-java.md
+        - name: Verwenden von Python
+          href: quickstarts/detect-data-anomalies-python.md
+    - name: Clientbibliothek
+      items:
+        - name: 'Verwenden von C#'
+          href: quickstarts/detect-data-anomalies-csharp-sdk.md
+        - name: Verwenden von Python
+          href: quickstarts/detect-data-anomalies-python-sdk.md
+        - name: Verwenden von Node.js
+          href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+- name: Lernprogramme
+  items:
+    - name: Visualisieren von Anomalien als Batch mithilfe von Power BI
+      href: tutorials/batch-anomaly-detection-powerbi.md
+    - name: Anomalieerkennung für Streamingdaten mit Azure Databricks
+      href: tutorials/anomaly-detection-streaming-databricks.md
 - name: Anleitungen
   items:
-  - name: Ermitteln von Anomalien in Ihren Daten
-    href: how-to/identify-anomalies.md
+    - name: Ermitteln von Anomalien in Ihren Daten
+      href: how-to/identify-anomalies.md
+    - name: Verwenden von Containern
+      items:
+        - name: Installieren und Ausführen von Containern
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+          href: anomaly-detector-container-howto.md
+        - name: Konfigurieren von Containern
+          href: anomaly-detector-container-configuration.md
+          displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
+        - name: Verwenden von Containerinstanzen
+          href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: Konzepte
   items:
-  - name: Best Practices für die Anomalieerkennungs-API
-    href: concepts/anomaly-detection-best-practices.md
+    - name: Best Practices für die Anomalieerkennungs-API
+      href: concepts/anomaly-detection-best-practices.md
 - name: Verweis
   items:
-  - name: REST-API-Referenz
-    href: https://aka.ms/anomaly-detector-rest-api-ref
-  - name: SDKs
-    items:
-    - name: .NET
-      href: https://aka.ms/anomaly-detector-dotnet-ref
+    - name: REST-API-Referenz
+      href: 'https://aka.ms/anomaly-detector-rest-api-ref'
+    - name: SDKs
+      items:
+        - name: .NET
+          href: 'https://aka.ms/anomaly-detector-dotnet-ref'
+        - name: Go
+          href: 'https://go.microsoft.com/fwlink/?linkid=2089915'
+        - name: Python
+          href: 'https://go.microsoft.com/fwlink/?linkid=2090370'
+        - name: Node.js
+          href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
+    - name: Dokument zu SR-CNN in KDD 2019
+      href: 'https://arxiv.org/abs/1906.03821'
 - name: Ressourcen
   items:
-  - name: Preise
-    href: https://aka.ms/anomaly-detector-pricing
-  - name: Regionale Verfügbarkeit
-    href: https://aka.ms/anomaly-detector-region
-  - name: Architektur der Referenzlösung
-    href: https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-anomaly-detection
-ms.openlocfilehash: 84e9317e3eb20181dcf1003718eb33acddbd84fa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786980"
+    - name: Preise
+      href: 'https://aka.ms/adpricing'
+    - name: Regionale Verfügbarkeit
+      href: 'https://aka.ms/adregion'
+    - name: Benutzergenerierter Inhalt
+      href: user-generated-content.md
+    - name: Beitreten zur Ratgebergruppe für die Anomalieerkennung auf Microsoft Teams
+      href: 'https://aka.ms/adadvisorsjoin'
+    - name: Architektur der Referenzlösung
+      href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
+    - name: Compliance
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+- name: Support
+  items:
+    - name: Support
+      href: 'https://aka.ms/adsupport'
+    - name: Stack Overflow
+      href: 'https://aka.ms/adso'
+    - name: MSDN
+      href: 'https://aka.ms/admsdn'
+    - name: Uservoice
+      href: 'https://aka.ms/aduservoice'

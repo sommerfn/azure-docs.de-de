@@ -11,14 +11,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/06/2019
-ms.openlocfilehash: 2682f98628f3c1cf22a2c3767f52bedbc148fa62
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 24bd2cca2e4ed053d51f618d90274e8988a09c26
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888569"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568890"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme
 
@@ -53,7 +52,7 @@ Eine Erörterung der *Sperrfrist* für Clients, die ADO.NET verwenden, finden Si
 
 Die folgenden Fehler sind vorübergehend, und in der Anwendungslogik sollte ein neuer Versuch unternommen werden: 
 
-| Fehlercode | Severity | BESCHREIBUNG |
+| Fehlercode | severity | BESCHREIBUNG |
 | ---:| ---:|:--- |
 | 4060 |16 |Die von der Anmeldung angeforderte „%.&#x2a;ls“-Datenbank kann nicht geöffnet werden. Fehler bei der Anmeldung. Weitere Informationen finden Sie unter [Fehler 4000 bis 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999).|
 | 40197 |17 |Dienstfehler beim Verarbeiten Ihrer Anforderung. Wiederholen Sie den Vorgang. Fehlercode %d.<br/><br/>Sie erhalten diesen Fehler, wenn der Dienst aufgrund von Software- oder Hardwareupgrades, Hardwarefehlern oder sonstigen Failoverproblemen ausgefallen ist. Der Fehlercode (%d), der in der Meldung zum Fehler 40197 enthalten ist, liefert weitere Informationen zur Art des aufgetretenen Fehlers oder Failovers. Beispiele für Fehlercodes, die in die Meldung zum Fehler 40197 eingebettet sind, lauten 40020, 40143, 40166 und 40540.<br/><br/>Wenn Sie erneut eine Verbindung mit Ihrem SQL-Datenbank-Server herstellen, werden Sie automatisch mit einer intakten Kopie Ihrer Datenbank verbunden. Ihre Anwendung muss den Fehler 40197 abfangen, den für die Problembehandlung in der Meldung enthaltenen Fehlercode (%d) protokollieren und versuchen, eine neue Verbindung mit SQL-Datenbank herzustellen, bis die Ressourcen verfügbar sind, damit Ihre Verbindung wiederhergestellt wird. Weitere Informationen finden Sie unter [Vorübergehende Fehler](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
@@ -68,7 +67,7 @@ Die folgenden Fehler sind vorübergehend, und in der Anwendungslogik sollte ein 
 
 Die folgenden Fehler können beim Kopieren einer Datenbank in Azure SQL-Datenbank auftreten. Weitere Informationen finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md).
 
-| Fehlercode | Severity | BESCHREIBUNG |
+| Fehlercode | severity | BESCHREIBUNG |
 | ---:| ---:|:--- |
 | 40635 |16 |Der Client mit der IP-Adresse „%.&#x2a;ls“ ist vorübergehend deaktiviert. |
 | 40637 |16 |Das Kopieren von Datenbanken ist derzeit deaktiviert. |
@@ -86,7 +85,7 @@ Die folgenden Fehler können beim Kopieren einer Datenbank in Azure SQL-Datenban
 
 ## <a name="resource-governance-errors"></a>Fehler bei der Ressourcenkontrolle
 
-Die folgenden Fehler treten beim Arbeiten mit Azure SQL-Datenbank bei der übermäßigen Nutzung von Ressourcen auf. Beispiel: 
+Die folgenden Fehler treten beim Arbeiten mit Azure SQL-Datenbank bei der übermäßigen Nutzung von Ressourcen auf. Beispiel:
 
 * Eine Transaktion war zu lange geöffnet.
 * Eine Transaktion enthält zu viele Sperren.
@@ -103,9 +102,9 @@ Verwandte Themen:
   * [V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md)
   * [Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md) 
 
-| Fehlercode | Severity | BESCHREIBUNG |
+| Fehlercode | severity | BESCHREIBUNG |
 | ---:| ---:|:--- |
-| 10928 |20 |Ressourcen-ID: %d. Das %s-Limit für die Datenbank beträgt %d und wurde erreicht. Weitere Informationen finden Sie unter [Ressourcenlimits bei SQL-Datenbank für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken](sql-database-resource-limits-database-server.md).<br/><br/>Mit der Ressourcen-ID wird die Ressource angegeben, für die das Limit erreicht wurde. Bei Arbeitsthreads lautet die Ressourcen-ID „1“. Bei Sitzungen lautet die Ressourcen-ID „2“.<br/><br/>Weitere Informationen zu diesem Fehler und zur Fehlerbehebung finden Sie unter: <br/>&bull; &nbsp;[Ressourceneinschränkungen für Datenbankserver](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für einzelne Datenbanken](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md) |
+| 10928 |20 |Ressourcen-ID: %d. Das %s-Limit für die Datenbank beträgt %d und wurde erreicht. Weitere Informationen finden Sie unter [Ressourcenlimits bei SQL-Datenbank für Einzel- und Pooldatenbanken](sql-database-resource-limits-database-server.md).<br/><br/>Mit der Ressourcen-ID wird die Ressource angegeben, für die das Limit erreicht wurde. Bei Arbeitsthreads lautet die Ressourcen-ID „1“. Bei Sitzungen lautet die Ressourcen-ID „2“.<br/><br/>Weitere Informationen zu diesem Fehler und zur Fehlerbehebung finden Sie unter: <br/>&bull; &nbsp;[Ressourceneinschränkungen für Datenbankserver](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für einzelne Datenbanken](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md) |
 | 10929 |20 |Ressourcen-ID: %d. Die %s-Mindestgarantie beträgt %d, der maximale Wert beträgt %d und die aktuelle Nutzung für die Datenbank beträgt %d. Der Server ist jedoch derzeit zu stark ausgelastet, um Anforderungen über %d für diese Datenbank zu unterstützen. Mit der Ressourcen-ID wird die Ressource angegeben, für die das Limit erreicht wurde. Bei Arbeitsthreads lautet die Ressourcen-ID „1“. Bei Sitzungen lautet die Ressourcen-ID „2“. Weitere Informationen finden Sie unter <br/>&bull; &nbsp;[Ressourceneinschränkungen für Datenbankserver](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für einzelne Datenbanken](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md) <br/>Bitte versuchen Sie es andernfalls später noch einmal. |
 | 40544 |20 |Das Datenbankkontingent wurde erreicht. Partitionieren oder löschen Sie Daten, löschen Sie Indizes, oder informieren Sie sich in der Dokumentation über mögliche Lösungen. Informationen zur Datenbankskalierung finden Sie unter [Skalieren der Ressourcen für einzelne Datenbanken](sql-database-single-database-scale.md) und [Skalieren der Ressourcen für Pools für elastische Datenbanken](sql-database-elastic-pool-scale.md).|
 | 40549 |16 |Die Sitzung wird aufgrund einer Transaktion mit langer Laufzeit beendet. Verkürzen Sie die Transaktion. Weitere Informationen finden Sie unter [Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung](sql-database-use-batching-to-improve-performance.md).|
@@ -118,7 +117,7 @@ Verwandte Themen:
 
 Die folgenden Fehler beziehen sich auf die Erstellung und Verwendung von Pools für elastische Datenbanken:
 
-| Fehlercode | Severity | BESCHREIBUNG | Korrekturmaßnahme |
+| Fehlercode | severity | BESCHREIBUNG | Korrekturmaßnahme |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Der Speichergrenzwert des Pools für elastische Datenbanken wurde erreicht. Die Speicherauslastung für den Pool für elastische Datenbanken darf (%d) MB nicht überschreiten. Es wurde versucht, Daten in eine Datenbank zu schreiben, während die Speicherbegrenzung des Pools für elastische Datenbanken erreicht wurde. Informationen zu Ressourceneinschränkungen finden Sie unter: <br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md) <br/> |Erhöhen Sie nach Möglichkeit die DTUs des Pools für elastische Datenbanken und/oder fügen Sie ihm Speicher hinzu, um die Speicherkapazität zu erweitern, reduzieren Sie die Speichernutzung der einzelnen Datenbanken innerhalb des Pools für elastische Datenbanken, oder entfernen Sie Datenbanken aus dem Pools für elastische Datenbanken. Informationen zur Skalierung von Pools für elastische Datenbanken finden Sie unter [Skalieren von Ressourcen für Pools für elastische Datenbanken](sql-database-elastic-pool-scale.md).|
 | 10929 | 16 |Die %s-Mindestgarantie beträgt %d, der maximale Wert beträgt %d und die aktuelle Nutzung für die Datenbank beträgt %d. Der Server ist jedoch derzeit zu stark ausgelastet, um Anforderungen über %d für diese Datenbank zu unterstützen. Informationen zu Ressourceneinschränkungen finden Sie unter: <br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md) <br/> Bitte versuchen Sie es andernfalls später noch einmal. DTU-/V-Kern-Mindestanzahl pro Datenbank; DTU-/V-Kern-Höchstanzahl pro Datenbank Die Gesamtanzahl der gleichzeitigen Worker (Anforderungen) in allen Datenbanken im Pool für elastische Datenbanken hat versucht, den Poolgrenzwert zu überschreiten. |Erhöhen Sie nach Möglichkeit die Anzahl von DTUs oder V-Kernen des Pools für elastische Datenbanken, um die Begrenzung für Worker zu steigern, oder entfernen Sie Datenbanken aus dem Pool für elastische Datenbanken. |
@@ -126,7 +125,7 @@ Die folgenden Fehler beziehen sich auf die Erstellung und Verwendung von Pools f
 | 40857 | 16 |Der Pool für elastische Datenbanken wurde für folgenden Server nicht gefunden: „%ls“, Name des Pools für elastische Datenbanken: „%ls“. Der angegebene Pool für elastische Datenbanken ist nicht auf dem angegebenen Server vorhanden. | Geben Sie einen gültigen Namen für den Pool für elastische Datenbanken an. |
 | 40858 | 16 |Der Pool für elastische Datenbanken „%ls“ ist bereits auf folgendem Server vorhanden: „%ls“. Der angegebene Pool für elastische Datenbanken ist bereits auf dem angegebenen SQL-Datenbank-Server vorhanden. | Geben Sie einen neuen Namen für den Pool für elastische Datenbanken an. |
 | 40859 | 16 |Der Pool für elastische Datenbanken unterstützt Dienstebene „%ls“ nicht. Die angegebene Dienstebene wird für die Bereitstellung von Pools für elastische Datenbanken nicht unterstützt. |Geben Sie die richtige Edition an, oder lassen Sie die Dienstebene leer, um die Standarddienstebene zu verwenden. |
-| 40860 | 16 |Die Kombination aus dem Pool für elastische Datenbanken „%ls“ und Dienstziel „%ls“ ist ungültig. Der Pool für elastische Datenbanken und der Diensttarif können nur gemeinsam angegeben werden, wenn der Ressourcentyp „ElasticPool“ definiert ist. |Geben Sie die richtige Kombination aus Pool für elastische Datenbanken und Diensttarif an. |
+| 40860 | 16 |Die Kombination aus dem Pool für elastische Datenbanken „%ls“ und Dienstziel „%ls“ ist ungültig. Der Pool für elastische Datenbanken und die Dienstebene können nur gemeinsam angegeben werden, wenn der Ressourcentyp „ElasticPool“ definiert ist. |Geben Sie die richtige Kombination aus Pool für elastische Datenbanken und Dienstebene an. |
 | 40861 | 16 |Die Datenbankedition „%.*ls“ darf sich nicht von der Dienstebene des Pools für elastische Datenbanken („%.* ls“) unterscheiden. Die Datenbankedition unterscheidet sich von der Dienstebene des Pools für elastische Datenbanken. |Geben Sie keine Datenbankedition an, die sich von der Dienstebene des Pools für elastische Datenbanken unterscheidet.  Beachten Sie, dass die Datenbankedition nicht angegeben werden muss. |
 | 40862 | 16 |Der Name des Pools für elastische Datenbanken muss angegeben werden, wenn das Dienstziel des Pools für elastische Datenbanken angegeben wurde. Das Dienstziel des Pools für elastische Datenbanken identifiziert einen Pool für elastische Datenbanken nicht eindeutig. |Geben Sie den Namen des Pools für elastische Datenbanken an, wenn Sie das Dienstziel des Pools für elastische Datenbanken verwenden. |
 | 40864 | 16 |Die DTU-Anzahl für den Pool für elastische Datenbanken muss mindestens (%d) DTUs für die Dienstebene „%.*ls“ betragen. Es wurde versucht, eine DTU-Anzahl für den Pool für elastische Datenbanken unterhalb des unteren Grenzwerts festzulegen. |Legen Sie die DTU-Einstellung für den Pool für elastische Datenbanken mindestens auf die Untergrenze fest. |
@@ -152,7 +151,7 @@ Verwandte Themen:
 
 Die folgenden Fehler fallen in keine der vorherigen Kategorien.
 
-| Fehlercode | Severity | BESCHREIBUNG |
+| Fehlercode | severity | BESCHREIBUNG |
 | ---:| ---:|:--- |
 | [15006](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-15000-to-15999) |16 |„(AdministratorLogin)“ ist kein gültiger Name, da er ungültige Zeichen enthält.|
 | [18452](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |Anmeldefehler. Die Anmeldung stammt aus einer nicht vertrauenswürdigen Domäne und kann mit der Windows-Authentifizierung nicht verwendet werden.%.&#x2a;ls (Windows-Anmeldungen werden in dieser SQL Server-Version nicht unterstützt.) |
@@ -216,7 +215,7 @@ Die folgenden Fehler fallen in keine der vorherigen Kategorien.
 | 40652 |16 |Der Server kann nicht verschoben oder erstellt werden, weil das Abonnement (Abonnement-ID) das Serverkontingent überschreitet. |
 | 40671 |17 |Kommunikationsfehler zwischen dem Gateway und dem Verwaltungsdienst. Versuchen Sie es später noch mal. |
 | 40852 |16 |Die von der Anmeldung angeforderte Datenbank „%.\*ls“ auf Server „%.\*ls“ kann nicht geöffnet werden. Der Zugriff auf die Datenbank ist nur mit einer Verbindungszeichenfolge mit aktivierter Sicherheit zulässig. Um auf diese Datenbank zuzugreifen, ändern Sie die Verbindungszeichenfolgen so, dass der Server-FQDN „secure“ enthält – „Servername.database.windows.net“ muss in „Servername.database`secure`.windows.net“ geändert werden. |
-| 40914 | 16 | Der bei der Anmeldung angeforderte Server „*[Servername]*“ kann nicht geöffnet werden. Dem Client ist der Zugriff auf den Server nicht gestattet.<br /><br />Um das Problem zu beheben, fügen Sie ggf. eine [Regel für ein virtuelles Netzwerk](sql-database-vnet-service-endpoint-rule-overview.md) hinzu. |
+| 40914 | 16 | Der bei der Anmeldung angeforderte Server „ *[Servername]* “ kann nicht geöffnet werden. Dem Client ist der Zugriff auf den Server nicht gestattet.<br /><br />Um das Problem zu beheben, fügen Sie ggf. eine [VNET-Regel](sql-database-vnet-service-endpoint-rule-overview.md) hinzu. |
 | 45168 |16 |Das SQL Azure-System ist ausgelastet und richtet eine Obergrenze bei den gleichzeitigen DB CRUD-Vorgängen für einen einzelnen SQL-Datenbank-Server ein (z.B. CREATE DATABASE). Für den in der Fehlermeldung angegebenen Server wurde die maximale Anzahl von gleichzeitigen Verbindungen überschritten. Versuchen Sie es später erneut. |
 | 45169 |16 |Das SQL Azure-System ist ausgelastet und richtet eine Obergrenze für die Anzahl der gleichzeitigen CRUD-Vorgänge für ein Abonnement ein (z.B. CREATE SERVER). Für das in der Fehlermeldung angegebene Abonnement wurde die maximale Anzahl von gleichzeitigen Verbindungen überschritten, und die Anforderung wurde verweigert. Versuchen Sie es später erneut. |
 
@@ -224,5 +223,5 @@ Die folgenden Fehler fallen in keine der vorherigen Kategorien.
 
 * Weitere Informationen finden Sie unter [Features von Azure SQL-Datenbank](sql-database-features.md).
 * Weitere Informationen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md).
-* Weitere Informationen finden Sie unter [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
+* Weitere Informationen finden Sie unter [vCore-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
 

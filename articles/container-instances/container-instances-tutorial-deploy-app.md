@@ -3,17 +3,18 @@ title: 'Tutorial: Bereitstellen einer Container-App in Azure Container Instances
 description: Tutorial für Azure Container Instances (Teil 3 von 3) – Bereitstellen einer Containeranwendung in Azure Container Instances
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 210254a4404a5280e326bf40057331a784ff6148
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: e14a3ba50d75161afa3325b3b7bcbfe96ea24cc3
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326738"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325628"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Tutorial: Bereitstellen einer Containeranwendung in Azure Container Instances
 
@@ -56,7 +57,7 @@ Innerhalb weniger Sekunden sollten Sie eine erste Antwort von Azure erhalten. De
 
 ### <a name="verify-deployment-progress"></a>Überprüfen des Bereitstellungsstatus
 
-Verwenden Sie zum Anzeigen des Bereitstellungsstatus den Befehl [az container show][az-container-show]:
+Verwenden Sie zum Anzeigen des Status der Bereitstellung [az container show][az-container-show]:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
@@ -72,7 +73,7 @@ Wenn die Bereitstellung erfolgreich war, zeigen Sie mit dem Befehl [az container
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Beispiel: 
+Beispiel:
 ```console
 $ az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 "aci-demo.eastus.azurecontainer.io"
@@ -99,7 +100,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die in dieser Tutorialreihe erstellten Ressourcen nicht mehr benötigen, können Sie den Befehl [az group delete][az-group-delete] ausführen, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Dieser Befehl löscht die von Ihnen erstellte Containerregistrierung sowie den ausgeführten Container und alle zugehörigen Ressourcen.
+Wenn Sie in dieser Tutorialreihe erstellte Ressourcen nicht mehr benötigen, können Sie den Befehl [az group delete][az-group-delete] ausführen, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Dieser Befehl löscht die von Ihnen erstellte Containerregistrierung sowie den ausgeführten Container und alle zugehörigen Ressourcen.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

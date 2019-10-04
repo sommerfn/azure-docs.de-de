@@ -2,7 +2,6 @@
 title: Fehlermeldungen zur Hadoop-Stapelüberwachung – Azure HDInsight
 description: Index von Hadoop-Stapelüberwachungsfehlermeldungen in Azure HDInsight. Informationen zur Problembehandlung finden sich in der Liste unter der jeweiligen Fehlermeldung.
 keywords: Stapelüberwachung, Fehlermeldungen
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -10,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 20d13f3df730ff4a81c7304ae1ad7e4158403521
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 0fb884c46525c0d5d14deb1521f086451a969656
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337781"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64691708"
 ---
 # <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>Übersicht über Artikel zur Problembehandlung für Apache Hadoop in HDInsight
 Die Artikel sind nach Art der Fehler unterteilt.

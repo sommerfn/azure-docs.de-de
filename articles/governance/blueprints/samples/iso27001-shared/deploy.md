@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d27f2495c70dbe6e10fb3adf5370a31903be3abf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 882228c7cb49a6a419b2b5e0bb200da3391d4584
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792400"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802561"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „ISO 27001: Gemeinsame Dienste“
 
@@ -29,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispiels eine neue Blaupause in Ihrer Umgebung erstellen.
 
-1. Wählen Sie **Alle Dienste** aus, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Wählen Sie auf der Seite **Richtlinie** die Option **Blaupausen** aus.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
 1. Klicken Sie links auf der Seite **Erste Schritte** unter _Blaupause erstellen_ auf die Schaltfläche **Erstellen**.
 
@@ -48,7 +48,7 @@ Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispie
 
 Ihre Kopie des Blaupausenbeispiels wurde jetzt in Ihrer Umgebung erstellt. Sie wird im Modus **Entwurf** erstellt und muss **veröffentlicht** werden, bevor sie zugewiesen und bereitgestellt werden kann. Die Kopie des Blaupausenbeispiels kann an die Umgebung und an Ihre Anforderungen angepasst werden. Durch diese Änderungen ist sie aber möglicherweise nicht mehr mit der Norm ISO 27001 konform.
 
-1. Wählen Sie **Alle Dienste** aus, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Wählen Sie auf der Seite **Richtlinie** die Option **Blaupausen** aus.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
 1. Wählen Sie links die Seite **Blaupausendefinitionen** aus. Verwenden Sie die Filter, um Ihre Kopie des Blaupausenbeispiels zu suchen, und wählen Sie es aus.
 
@@ -58,7 +58,7 @@ Ihre Kopie des Blaupausenbeispiels wurde jetzt in Ihrer Umgebung erstellt. Sie w
 
 Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde, kann sie einem Abonnement innerhalb der Verwaltungsgruppe, in der sie gespeichert wurde, zugewiesen werden. In diesem Schritt werden Parameter angegeben, damit jede Bereitstellung der Kopie des Blaupausenbeispiels eindeutig ist.
 
-1. Wählen Sie **Alle Dienste** aus, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Wählen Sie auf der Seite **Richtlinie** die Option **Blaupausen** aus.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
 1. Wählen Sie links die Seite **Blaupausendefinitionen** aus. Verwenden Sie die Filter, um Ihre Kopie des Blaupausenbeispiels zu suchen, und wählen Sie es aus.
 
@@ -89,8 +89,8 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
      - **Name der Organisation:** Geben Sie einen Kurznamen für Ihre Organisation ein. Diese Eigenschaft wird in erster Linie zum Benennen von Ressourcen verwendet.
      - **Adresspräfix für Subnetz gemeinsamer Dienste:** Dieser Parameter stellt den CIDR-Notationswert dar, um die bereitgestellten Ressourcen zu vernetzen.
      - **Standort für gemeinsame Dienste:** Bestimmt den Standort, an dem die Artefakte bereitgestellt werden. Nicht alle Dienste sind an allen Standorten verfügbar. Artefakte, die diese Dienste bereitstellen, enthalten eine Parameteroption für den Standort, an dem das entsprechende Artefakt bereitgestellt wird.
-     - **Zulässiger Standort (Richtlinie: Blueprint Initiative für ISO 27001)**: Wert, der die zulässigen Standorte für Ressourcengruppen und Ressourcen angibt.
-     - **Log Analytics-Arbeitsbereich für VM-Agents (Richtlinie: Blueprint Initiative für ISO 27001)**: Gibt die Ressourcen-ID eines Arbeitsbereichs an. Dieser Parameter verwendet eine `concat`-Funktion, um die Ressourcen-ID zu erstellen.
+     - **Zulässiger Standort (Richtlinie: Blueprint Initiative für ISO 27001)** : Wert, der die zulässigen Standorte für Ressourcengruppen und Ressourcen angibt.
+     - **Log Analytics-Arbeitsbereich für VM-Agents (Richtlinie: Blueprint Initiative für ISO 27001)** : Gibt die Ressourcen-ID eines Arbeitsbereichs an. Dieser Parameter verwendet eine `concat`-Funktion, um die Ressourcen-ID zu erstellen.
 
    - Artefaktparameter
 
@@ -99,7 +99,7 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
 1. Nachdem Sie alle Parameter eingegeben haben, wählen Sie unten auf der Seite die Option **Zuweisen** aus. Die Blaupausenzuweisung wird erstellt, und die Artefaktbereitstellung wird gestartet. Die Bereitstellung dauert ungefähr eine Stunde. Um den Status der Bereitstellung zu überprüfen, öffnen Sie die Blaupausenzuweisung.
 
 > [!WARNING]
-> Der Azure Blueprints-Dienst und die integrierten Blaupausenbeispiele sind **kostenlos**. Azure-Ressourcen werden [nach Produkt abgerechnet](https://azure.microsoft.com/en-us/pricing/). Verwenden Sie den [Preisrechner](https://azure.microsoft.com/pricing/calculator/) zum Schätzen der Kosten für die Ausführung der Ressourcen, die mit diesem Blaupausenbeispiel bereitgestellt werden.
+> Der Azure Blueprints-Dienst und die integrierten Blaupausenbeispiele sind **kostenlos**. Azure-Ressourcen werden [nach Produkt abgerechnet](https://azure.microsoft.com/pricing/). Verwenden Sie den [Preisrechner](https://azure.microsoft.com/pricing/calculator/) zum Schätzen der Kosten für die Ausführung der Ressourcen, die mit diesem Blaupausenbeispiel bereitgestellt werden.
 
 ## <a name="artifact-parameters-table"></a>Tabelle der Artefaktparameter
 
@@ -107,21 +107,21 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 
 |Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
-|[Vorschau]: Log Analytics-Agent für Linux-VM-Skalierungsgruppen bereitstellen|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Linux-Betriebssystem zum Hinzufügen zum Bereich|(Optional) Der Standardwert lautet _["none"]_ (keine).|
-|[Vorschau]: Bereitstellen des Log Analytics-Agents für Linux-VMs|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Linux-Betriebssystem zum Hinzufügen zum Bereich|(Optional) Der Standardwert lautet _["none"]_ (keine).|
-|[Vorschau]: Log Analytics-Agent für Windows-VM-Skalierungsgruppen bereitstellen|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Windows-Betriebssystem zum Hinzufügen zum Bereich|(Optional) Der Standardwert lautet _["none"]_ (keine).|
-|[Vorschau]: Bereitstellen des Log Analytics-Agents für Windows-VMs|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Windows-Betriebssystem zum Hinzufügen zum Bereich|(Optional) Der Standardwert lautet _["none"]_ (keine).|
+|\[Vorschau\]: Log Analytics-Agent für Linux-VM-Skalierungsgruppen bereitstellen|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Linux-Betriebssystem zum Hinzufügen zum Bereich|(Optional) Der Standardwert lautet _["none"]_ (keine).|
+|\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Linux-Betriebssystem zum Hinzufügen zum Bereich|(Optional) Der Standardwert lautet _["none"]_ (keine).|
+|\[Vorschau\]: Log Analytics-Agent für Windows-VM-Skalierungsgruppen bereitstellen|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Windows-Betriebssystem zum Hinzufügen zum Bereich|(Optional) Der Standardwert lautet _["none"]_ (keine).|
+|\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs|Richtlinienzuweisung|Optional: Liste der VM-Images mit unterstütztem Windows-Betriebssystem zum Hinzufügen zum Bereich|(Optional) Der Standardwert lautet _["none"]_ (keine).|
 |Zulässige Ressourcentypen|Richtlinienzuweisung|Zulässige Ressourcentypen|Die Liste der Ressourcentypen, die bereitgestellt werden können. Diese Liste enthält alle drei Ressourcentypen, die in Shared Services bereitgestellt werden.|
-|Allowed storage account SKUs (Zulässige Speicherkonto-SKUs)|Richtlinienzuweisung|Zulässige Speicher-SKUs|Liste der zulässigen Speicherkonto-SKUs der Diagnoseprotokolle. Der Standardwert lautet _["Standard_LRS"]_.|
-|Allowed virtual machine SKUs (Zulässige VM-SKUs)|Richtlinienzuweisung|Liste der für die Bereitstellung zulässigen VM-SKUs. Der Standardwert lautet _["Standard_DS1_v2", "Standard_DS2_v2"]_.|
+|Allowed storage account SKUs (Zulässige Speicherkonto-SKUs)|Richtlinienzuweisung|Zulässige Speicher-SKUs|Liste der zulässigen Speicherkonto-SKUs der Diagnoseprotokolle. Der Standardwert lautet _["Standard_LRS"]_ .|
+|Allowed virtual machine SKUs (Zulässige VM-SKUs)|Richtlinienzuweisung|Liste der für die Bereitstellung zulässigen VM-SKUs. Der Standardwert lautet _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|
 |Blueprint Initiative für ISO 27001|Richtlinienzuweisung|Ressourcentyp zur Überprüfung von Diagnoseprotokollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
-|Log Analytics-Ressourcengruppe|Ressourcengruppe|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-sharedsvsc-log-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Log Analytics-Ressourcengruppe|Ressourcengruppe|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Log Analytics-Ressourcengruppe|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-sharedsvsc-log-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Log Analytics-Ressourcengruppe|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Log Analytics-Vorlage|Resource Manager-Vorlage|Dienstebene|Legt den Tarif des Log Analytics-Arbeitsbereichs fest. Der Standardwert ist _PerNode_.|
 |Log Analytics-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
-|Log Analytics-Vorlage|Resource Manager-Vorlage|Standort|Die bei der Erstellung des Log Analytics-Arbeitsbereichs verwendete Region. Der Standardwert ist _USA, Westen 2_.|
-|Netzwerkressourcengruppe|Ressourcengruppe|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-sharedsvcs-net-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Netzwerkressourcengruppe|Ressourcengruppe|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Log Analytics-Vorlage|Resource Manager-Vorlage|Location|Die bei der Erstellung des Log Analytics-Arbeitsbereichs verwendete Region. Der Standardwert ist _USA, Westen 2_.|
+|Netzwerkressourcengruppe|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-sharedsvcs-net-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Netzwerkressourcengruppe|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Azure Firewall-Vorlage|Resource Manager-Vorlage|Private IP-Adresse von Azure Firewall|Konfiguriert die private IP-Adresse von [Azure Firewall](../../../../firewall/overview.md). Dieser Wert wird ebenso als Standardroutingtabelle für das Subnetz für gemeinsame Dienste verwendet. Er sollte Teil der CIDR-Notation sein, die im **Adresspräfix für Azure Firewall-Subnetz** definiert ist. Der Standardwert ist _10.0.4.4_.|
 |Azure Firewall-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Netzwerksicherheitsgruppen-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
@@ -132,8 +132,8 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Adresspräfix für Application Gateway-Subnetz|Die CIDR-Notation für das Application Gateway-Subnetz. Der Standardwert ist _10.0.2.0/24_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Adresspräfix für Subnetz des Virtual Network-Gateways|Die CIDR-Notation für das Subnetz des virtuellen Netzwerkgateways. Der Standardwert ist _10.0.3.0/24_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Adresspräfix für Azure Firewall-Subnetz|Die CIDR-Notation für das [Azure Firewall](../../../../firewall/overview.md)-Subnetz. Der Parameter der **privaten Azure Firewall-IP-Adresse** muss enthalten sein.|
-|Schlüsseltresor-Ressourcengruppe|Ressourcengruppe|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-sharedsvcs-kv-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Schlüsseltresor-Ressourcengruppe|Ressourcengruppe|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Schlüsseltresor-Ressourcengruppe|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-sharedsvcs-kv-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Schlüsseltresor-Ressourcengruppe|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Benutzername des Jumpbox-Administrators|Benutzername für die Jumpbox. Muss mit dem Eigenschaftswert in der **Jumpbox-Vorlage** übereinstimmen. Der Standardwert ist _jb-admin-user_.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|SSH-Schlüssel oder Kennwort des Jumpbox-Administrators|Schlüssel oder Kennwort für das Konto für die Jumpbox. Muss mit dem Eigenschaftswert in der **Jumpbox-Vorlage** übereinstimmen. Hat keinen Standardwert und darf nicht leer sein.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Benutzername des Domänenadministrators|Benutzername für den Zugriff auf die Active Directory-VM und für das Einbinden anderer VMs in eine Domäne Muss mit dem Eigenschaftswert **Benutzername des Domänenadministrators** in der **Active Directory Domain Services-Vorlage** übereinstimmen. Der Standardwert ist _domain-admin-user_.|
@@ -141,14 +141,14 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |Key Vault-Vorlage|Resource Manager-Vorlage|AAD-Objekt-ID|Der AAD-Objektbezeichner des Kontos, das Zugriff auf die Key Vault-Instanz benötigt. Hat keinen Standardwert und darf nicht leer sein. Diesen Wert finden Sie im Azure-Portal, indem Sie unter _Dienste_ die Option „Benutzer“ suchen und auswählen. Verwenden Sie das Feld _Name_, um den Kontonamen zu filtern und das entsprechende Konto auszuwählen. Wählen Sie auf der Seite _Benutzerprofil_ das Symbol „Klicken Sie zum Kopieren“ neben der _Objekt-ID_ aus.  |
 |Key Vault-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Key Vault-SKU|Gibt die SKU der erstellten Key Vault-Instanz an. Der Standardwert ist _Premium_.|
-|Jumpbox-Ressourcengruppe|Ressourcengruppe|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-sharedsvcs-jb-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Jumpbox-Ressourcengruppe|Ressourcengruppe|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Jumpbox-Ressourcengruppe|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-sharedsvcs-jb-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Jumpbox-Ressourcengruppe|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Jumpbox-Vorlage|Resource Manager-Vorlage|Benutzername des Jumpbox-Administrators|Der Benutzername für den Zugriff auf Jumpbox-VMs. Muss mit dem Eigenschaftswert in **Key Vault-Vorlage** übereinstimmen. Der Standardwert ist _jb-admin-user_.|
 |Jumpbox-Vorlage|Resource Manager-Vorlage|Jumpbox-Administratorkennwort (Key Vault-Ressourcen-ID)|Die Ressourcen-ID der Key Vault-Instanz. Verwenden Sie „/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv“, und ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{orgName}` durch den Blaupausenparameter  **Name der Organisation**.|
 |Jumpbox-Vorlage|Resource Manager-Vorlage|Jumpbox-Administratorkennwort (Key Vault-Geheimnisname)|Benutzername des Jumpbox-Administrators. Muss mit dem Wert in der Eigenschaft **Jumpbox-Administratorbenutzername** von **Key Vault-Vorlage** übereinstimmen.|
 |Jumpbox-Vorlage|Resource Manager-Vorlage|Jumpbox-Betriebssystem|Bestimmt das Betriebssystem für die Jumpbox-VM. Der Standardwert ist _Windows_.|
-|Active Directory Domain Services-Ressourcengruppe|Ressourcengruppe|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-sharedsvcs-adds-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Active Directory Domain Services-Ressourcengruppe|Ressourcengruppe|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Active Directory Domain Services-Ressourcengruppe|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-sharedsvcs-adds-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Active Directory Domain Services-Ressourcengruppe|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Active Directory Domain Services-Vorlage|Resource Manager-Vorlage|Benutzername des Domänenadministrators|Benutzername für die AD DS-Jumpbox. Muss mit dem Eigenschaftswert in **Key Vault-Vorlage** übereinstimmen. Der Standardwert ist _adds-admin-user_.|
 |Active Directory Domain Services-Vorlage|Resource Manager-Vorlage|Domänenadministratorkennwort (Key Vault-Ressourcen-ID)|Die Ressourcen-ID der Key Vault-Instanz. Verwenden Sie „/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv“, und ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{orgName}` durch den Blaupausenparameter  **Name der Organisation**.|
 |Active Directory Domain Services-Vorlage|Resource Manager-Vorlage|Domänenadministratorkennwort (Key Vault-Geheimnisname)|Benutzername des Domänenadministrators. Muss mit dem Wert in der Eigenschaft **Benutzername des Domänenadministrators** von **Key Vault-Vorlage** übereinstimmen.|

@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1244dd460196e5882caab0d4b526850da48d084
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 03c09a751119c1d6effa5795f2dbf7da422b7806
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188544"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135798"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect-Synchronisierung: Verhindern eines versehentlichen Löschvorgangs
 In diesem Thema wird die Funktion zum Verhindern von versehentlichen Löschungen (Verhindern versehentlicher Löschvorgänge) in Azure AD Connect beschrieben.
@@ -56,7 +56,9 @@ Wenn Sie diese Nachricht unerwartet erhalten haben, untersuchen Sie die Grunde d
 4. Wählen Sie unter **Actions** (Aktionen) auf der rechten Seite **Search Connector Space** (Connectorbereich suchen).
 5. Wählen Sie im Popupfenster unter **Scope** (Bereich) die Option **Disconnected Since** (Getrennt seit) aus, und wählen Sie einen Zeitpunkt in der Vergangenheit. Klicken Sie auf **Suchen**. Auf dieser Seite wird eine Übersicht über alle zu löschenden Objekte angezeigt. Klicken Sie auf die einzelnen Objekte, um zusätzliche Informationen dazu zu erhalten. Sie können auch auf **Spalteneinstellung** klicken, um zusätzliche Attribute hinzuzufügen, die im Raster angezeigt werden.
 
-![Suche Connectorbereich](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
+![Connectorbereich durchsuchen](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
+
+[!NOTE] Falls Sie unsicher sind, ob alle Löschvorgänge erwünscht sind, und auf Nummer sicher gehen möchten, können Sie mithilfe des PowerShell-Cmdlets `Enable-ADSyncExportDeletionThreshold` einen neuen Schwellenwert festlegen, anstatt den Schwellenwert zu deaktivieren, was möglicherweise zu unerwünschten Löschungen führt. 
 
 Wenn alle Löschvorgänge gewünscht sind, gehen Sie folgendermaßen vor:
 

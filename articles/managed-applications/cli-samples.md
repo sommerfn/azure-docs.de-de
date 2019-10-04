@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 38ebea86783970e0b045dcf5a8a91f54ae6c6d6a
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: d8b7c645bd9ee87faf51eab58651ddc5c7cde46a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "23632551"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60588871"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-Beispiele
 
@@ -26,8 +26,8 @@ Die folgende Tabelle enthält Links zu Bash-Skripts für verwaltete Azure-Anwend
 | | |
 |-|-|
 |**Erstellen einer verwalteten Anwendung**||
-| [Create a managed application definition with Azure CLI](scripts/managed-application-cli-sample-create-definition.md) (Erstellen einer Definition für die verwaltete Anwendung mit der Azure CLI) | Erstellen der Definition einer verwalteten Anwendung im Dienstkatalog  |
-| [Deploy a managed application for service catalog with Azure CLI](scripts/managed-application-cli-sample-create-application.md) (Bereitstellen einer verwalteten Anwendung für den Dienstkatalog mit der Azure CLI) | Bereitstellen einer verwalteten Anwendung aus dem Dienstkatalog  |
+| [Erstellen der Definition für die verwaltete Anwendung](scripts/managed-application-cli-sample-create-definition.md) | Erstellen der Definition einer verwalteten Anwendung im Dienstkatalog  |
+| [Deploy a managed application for a service catalog with PowerShell](scripts/managed-application-cli-sample-create-application.md) (Bereitstellen einer verwalteten Anwendung für den Dienstkatalog mit PowerShell) | Bereitstellen einer verwalteten Anwendung aus dem Dienstkatalog  |
 | | |
 |**Aktualisieren einer verwalteten Ressourcengruppe**||
-| [Get resources in a managed resource group and resize VMs with Azure CLI](scripts/managed-application-cli-sample-get-managed-group-resize-vm.md) (Abrufen von Ressourcen in einer verwalteten Ressourcengruppe und Ändern der Größe von virtuellen Computern mit der Azure CLI) | Abrufen von Ressourcen aus der verwalteten Ressourcengruppe und Ändern der Größe der virtuellen Computer |
+| [Get resources in a managed resource group and resize VMs with PowerShell](scripts/managed-application-cli-sample-get-managed-group-resize-vm.md) (Abrufen von Ressourcen in einer verwalteten Ressourcengruppe und Ändern der Größe von virtuellen Computern mit PowerShell) | Abrufen von Ressourcen aus der verwalteten Ressourcengruppe und Ändern der Größe der virtuellen Computer |

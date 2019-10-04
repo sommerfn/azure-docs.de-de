@@ -7,17 +7,17 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: b06fec8ab726f48e1937bae4cfbdbd9842788d0a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ab510f7ee2f95a2c3373c0514c31554598451b27
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109306"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173329"
 ---
-# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Durchführen von Standpunktanalysen mit Azure Stream Analytics und Azure Machine Learning
-Dieser Artikel beschreibt, wie Sie schnell einen einfachen Azure Stream Analytics-Auftrag mit Azure Machine Learning-Integration einrichten. Sie nutzen ein Stimmungsanalysemodell für Machine Learning aus dem Cortana Intelligence-Katalog, um Streamingtextdaten zu analysieren und den Stimmungswert in Echtzeit zu ermitteln. Über die Cortana Intelligence Suite können Sie diese Aufgabe ausführen, ohne sich um die Komplexität der Erstellung eines Analysemodells für die Stimmung kümmern zu müssen.
+# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>Durchführen von Standpunktanalysen mit Azure Stream Analytics und Azure Machine Learning Studio (Vorschau)
+Dieser Artikel beschreibt, wie Sie schnell einen einfachen Azure Stream Analytics-Auftrag mit Azure Machine Learning Studio-Integration einrichten. Sie nutzen ein Stimmungsanalysemodell für Machine Learning aus dem Cortana Intelligence-Katalog, um Streamingtextdaten zu analysieren und den Stimmungswert in Echtzeit zu ermitteln. Über die Cortana Intelligence Suite können Sie diese Aufgabe ausführen, ohne sich um die Komplexität der Erstellung eines Analysemodells für die Stimmung kümmern zu müssen.
 
 Sie können das in diesem Artikel Gelernte u.a. in folgenden Szenarien anwenden:
 
@@ -45,7 +45,7 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 Im Allgemeinen führen Sie mit den Aufgaben in diesem Artikel folgende Aktionen aus:
 
 1. Erstellen eines Azure Storage-Kontos und eines Blob Storage-Containers und Hochladen einer CSV-Eingabedatei in den Container
-3. Hinzufügen eines Stimmungsanalysemodells aus dem Cortana Intelligence-Katalog zu Ihrem Azure Machine Learning-Arbeitsbereich und bereitstellen dieses Modell als Webdienst im Machine Learning-Arbeitsbereich
+3. Hinzufügen eines Stimmungsanalysemodells aus dem Cortana Intelligence-Katalog zu Ihrem Azure Machine Learning Studio-Arbeitsbereich und Bereitstellen dieses Modell als Webdienst im Machine Learning-Arbeitsbereich
 5. Erstellen eines Stream Analytics-Auftrag, der diesen Webdienst als Funktion aufruft, um die Stimmung für die Texteingabe zu ermitteln
 6. Starten des Stream Analytics-Auftrags und Überprüfen der Ausgabe
 
@@ -175,7 +175,7 @@ In diesem Abschnitt des Tutorials definieren Sie eine Funktion im Stream Analysi
 
 1. Sie benötigen dazu die Webdienst-URL und den API-Schlüssel, die Sie zuvor in der Excel-Arbeitsmappe heruntergeladen haben.
 
-2. Navigieren Sie zu Ihrem Auftragsblatt, und wählen Sie **Funktionen** > **+ Hinzufügen** > **AzureML**.
+2. Navigieren Sie zu Ihrem Auftragsblatt, und wählen Sie **Funktionen** >  **+ Hinzufügen** > **AzureML**.
 
 3. Fügen Sie auf dem Blatt **Azure Machine Learning-Funktion** die folgenden Werte ein:
 
@@ -252,7 +252,7 @@ Sie können auch auf Azure Machine Learning-Funktionen bezogene Metriken anzeige
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Integrieren von REST-API und Machine Learning](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

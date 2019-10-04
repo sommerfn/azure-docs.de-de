@@ -2,29 +2,29 @@
 title: Dynamisches Anpassen der Azure Active Directory B2C-Benutzeroberfläche (UI) mithilfe von benutzerdefinierten Richtlinien | Microsoft-Dokumentation
 description: Unterstützung mehrerer Brandingdarstellungen mit HTML5/CSS-Inhalt, der sich zur Laufzeit dynamisch ändert.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bf7391ea83adf852be0f989a82e89d7f316f2f85
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 43c0da3ca8fa4b2f74d48b0e202cc56bc8b9406c
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090541"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227223"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Mithilfe von benutzerdefinierten Azure Active Directory B2C-Richtlinien (Azure AD B2C) können Sie einen Parameter in einer Abfragezeichenfolge senden. Durch Übergeben des Parameters an Ihren HTML-Endpunkt können Sie den Seiteninhalt dynamisch ändern. Sie können z.B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. 
+Mithilfe von benutzerdefinierten Azure Active Directory B2C-Richtlinien (Azure AD B2C) können Sie einen Parameter in einer Abfragezeichenfolge senden. Durch Übergeben des Parameters an Ihren HTML-Endpunkt können Sie den Seiteninhalt dynamisch ändern. Sie können z.B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Dieser Artikel konzentriert sich auf das Anpassen der Azure AD B2C-Benutzeroberfläche mit *dynamischen Inhalten* unter Verwendung benutzerdefinierter Richtlinien. Informationen zum Einstieg finden Sie unter [Benutzeroberflächenanpassung in einer benutzerdefinierten Richtlinie](active-directory-b2c-ui-customization-custom.md). 
+Dieser Artikel konzentriert sich auf das Anpassen der Azure AD B2C-Benutzeroberfläche mit *dynamischen Inhalten* unter Verwendung benutzerdefinierter Richtlinien. Informationen zum Einstieg finden Sie unter [Benutzeroberflächenanpassung in einer benutzerdefinierten Richtlinie](active-directory-b2c-ui-customization-custom.md).
 
 >[!NOTE]
 >Im Artikel [Azure Active Directory B2C: Konfigurieren der Benutzeroberflächenanpassung in einer benutzerdefinierten Richtlinie](active-directory-b2c-ui-customization-custom.md) werden die folgenden Grundlagen erläutert:
@@ -35,32 +35,32 @@ Dieser Artikel konzentriert sich auf das Anpassen der Azure AD B2C-Benutzeroberf
 
 ## <a name="add-a-link-to-html5css-templates-to-your-user-journey"></a>Hinzufügen eines Links zu HTML5/CSS-Vorlagen für die User Journey
 
-In einer benutzerdefinierten Richtlinie definiert eine Inhaltsdefinition den HTML5-Seiten-URI, der für einen bestimmten Schritt der Benutzeroberfläche (z.B. die Anmelde- oder Registrierungsseite) verwendet wird. Die Basisrichtlinie definiert das standardmäßige Aussehen und Verhalten durch Verweis auf einen URI der HTML5-Dateien (im CSS). In der Erweiterungsrichtlinie können Sie das Aussehen und Verhalten durch Überschreiben des LoadUri für die HTML5-Datei ändern. Inhaltsdefinitionen enthalten URLs zu externem Inhalt, der durch Erstellen von HTML5/CSS-Dateien nach Bedarf definiert wird. 
+In einer benutzerdefinierten Richtlinie definiert eine Inhaltsdefinition den HTML5-Seiten-URI, der für einen bestimmten Schritt der Benutzeroberfläche (z.B. die Anmelde- oder Registrierungsseite) verwendet wird. Die Basisrichtlinie definiert das standardmäßige Aussehen und Verhalten durch Verweis auf einen URI der HTML5-Dateien (im CSS). In der Erweiterungsrichtlinie können Sie das Aussehen und Verhalten durch Überschreiben des LoadUri für die HTML5-Datei ändern. Inhaltsdefinitionen enthalten URLs zu externem Inhalt, der durch Erstellen von HTML5/CSS-Dateien nach Bedarf definiert wird.
 
 Der Abschnitt `ContentDefinitions` enthält eine Reihe von `ContentDefinition`-XML-Elementen. Das ID-Attribut des `ContentDefinition`-Elements gibt den Typ der Seite an, der mit der Inhaltsdefinition verknüpft ist. Das heißt, dass das Element den Kontext definiert, den eine benutzerdefinierte HTML5/CSS-Vorlage anwendet. In der folgenden Tabelle werden die Gruppe mit den IDs der Inhaltsdefinitionen, die von der IEF-Engine erkannt werden, und die entsprechenden Seitentypen beschrieben.
 
-| ID für Inhaltsdefinition | Standardmäßige HTML5-Vorlage| BESCHREIBUNG | 
+| ID für Inhaltsdefinition | Standardmäßige HTML5-Vorlage| BESCHREIBUNG |
 |-----------------------|--------|-------------|
 | *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Fehlerseite**: Diese Seite wird angezeigt, wenn eine Ausnahme oder ein Fehler auftreten. |
 | *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Seite zur Auswahl des Identitätsanbieters**: Auf dieser Seite sind Identitätsanbieter aufgelistet, unter denen Benutzer bei der Anmeldung wählen können. Bei den Optionen handelt es sich normalerweise um Unternehmensidentitätsanbieter oder Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder lokale Konten. |
 | *api.idpselections.signup* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Seite zur Auswahl des Identitätsanbieters für die Registrierung**: Auf dieser Seite sind Identitätsanbieter aufgelistet, unter denen Benutzer bei der Registrierung wählen können. Bei den Optionen handelt es sich um Unternehmensidentitätsanbieter, Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder lokale Konten. |
-| *api.localaccountpasswordreset* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Seite „Kennwort vergessen“**: Diese Seite enthält ein Formular, das Benutzer ausfüllen müssen, um eine Kennwortzurücksetzung zu initiieren.  |
+| *api.localaccountpasswordreset* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Seite „Kennwort vergessen“** : Diese Seite enthält ein Formular, das Benutzer ausfüllen müssen, um eine Kennwortzurücksetzung zu initiieren.  |
 | *api.localaccountsignin* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Seite für Anmeldung mit lokalem Konto**: Diese Seite enthält ein Formular für die Anmeldung mit einem lokalen Konto, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert. Das Formular kann ein Texteingabefeld und ein Kennworteingabefeld enthalten. |
 | *api.localaccountsignup* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Seite für Registrierung mit lokalem Konto**. Diese Seite enthält ein Formular für die Registrierung für ein lokales Konto, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert. Das Formular kann verschiedene Eingabesteuerelemente enthalten, z.B. ein Texteingabefeld, ein Kennworteingabefeld, ein Optionsfeld, Dropdownfelder mit einer Auswahlmöglichkeit und Kontrollkästchen mit mehreren Optionen. |
-| *api.phonefactor* | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Seite „Multi-Factor Authentication“**: Auf dieser Seite können Benutzer während der Registrierung oder Anmeldung ihre Telefonnummern verifizieren (per SMS oder Sprachnachricht). |
+| *api.phonefactor* | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Seite „Multi-Factor Authentication“** : Auf dieser Seite können Benutzer während der Registrierung oder Anmeldung ihre Telefonnummern verifizieren (per SMS oder Sprachnachricht). |
 | *api.selfasserted* | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Seite zur Registrierung über Konto für soziales Netzwerk**: Diese Seite enthält ein Formular, das Benutzer ausfüllen müssen, wenn die Registrierung mit einem vorhandenen Konto bei einem sozialen Netzwerk als Identitätsanbieter erfolgt. Diese Seite ähnelt der vorherigen Seite für die Registrierung bei einem Konto für ein soziales Netzwerk, mit Ausnahme der Felder für die Kennworteingabe. |
 | *api.selfasserted.profileupdate* | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Seite für Profilaktualisierung**: Diese Seite enthält ein Formular, auf das Benutzer zum Aktualisieren des Profils zugreifen können. Diese Seite ähnelt der Seite für die Registrierung bei einem Konto für ein soziales Netzwerk, mit Ausnahme der Felder für die Kennworteingabe. |
 | *api.signuporsignin* | [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Einheitliche Seite für Registrierung oder Anmeldung**: Auf dieser Seite werden der Registrierungs- und der Anmeldevorgang für Benutzer durchgeführt. Benutzer können Unternehmensidentitätsanbieter, Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder lokale Konten verwenden.  |
 
 ## <a name="serving-dynamic-content"></a>Bedienen von dynamischem Inhalt
-Im Artikel [Azure Active Directory B2C: Konfigurieren der Benutzeroberflächenanpassung in einer benutzerdefinierten Richtlinie](active-directory-b2c-ui-customization-custom.md) laden Sie HTML5-Dateien in Azure Blob Storage hoch. Diese HTML5-Dateien sind statisch und stellen für jede Anforderung den gleichen HTML-Inhalt dar. 
+Im Artikel [Azure Active Directory B2C: Konfigurieren der Benutzeroberflächenanpassung in einer benutzerdefinierten Richtlinie](active-directory-b2c-ui-customization-custom.md) laden Sie HTML5-Dateien in Azure Blob Storage hoch. Diese HTML5-Dateien sind statisch und stellen für jede Anforderung den gleichen HTML-Inhalt dar.
 
-In diesem Artikel verwenden Sie eine ASP.NET-Web-App, die Abfragezeichenfolgen-Parameter akzeptieren und darauf entsprechend reagieren kann. 
+In diesem Artikel verwenden Sie eine ASP.NET-Web-App, die Abfragezeichenfolgen-Parameter akzeptieren und darauf entsprechend reagieren kann.
 
 In dieser exemplarischen Vorgehensweise führen Sie folgende Aktionen aus:
-* Erstellen einer ASP.NET Core-Webanwendung, die Ihre HTML5-Vorlagen hostet 
-* Hinzufügen der benutzerdefinierten HTML5-Vorlage _unified.cshtml_ 
-* Veröffentlichen Ihrer Web-App in Azure App Service 
+* Erstellen einer ASP.NET Core-Webanwendung, die Ihre HTML5-Vorlagen hostet
+* Hinzufügen der benutzerdefinierten HTML5-Vorlage _unified.cshtml_
+* Veröffentlichen Ihrer Web-App in Azure App Service
 * Festlegen der Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS) für Ihre Web-App
 * Überschreiben der `LoadUri`-Elemente, sodass sie auf Ihre HTML5-Datei verweisen
 
@@ -68,7 +68,7 @@ In dieser exemplarischen Vorgehensweise führen Sie folgende Aktionen aus:
 
 1. Erstellen Sie in Visual Studio ein Projekt durch Auswählen von **Datei** > **Neu** > **Projekt**.
 
-2. Wählen Sie im Fenster **Neues Projekt** die Optionen **Visual C#** > **Web** > **ASP.NET Core-Webanwendung (.NET Core)** aus.
+2. Wählen Sie im Fenster **Neues Projekt** die Optionen **Visual C#**  > **Web** > **ASP.NET Core-Webanwendung (.NET Core)** aus.
 
 3. Benennen Sie die Anwendung (z.B. *Contoso.AADB2C.UI*), und wählen Sie dann **OK** aus.
 
@@ -89,7 +89,7 @@ Ihre benutzerdefinierte HTML5-Vorlage basiert auf dem in der HTML5-Vorlage integ
 ### <a name="step-22-add-the-mvc-view"></a>Schritt 2.2: Hinzufügen der MVC-Ansicht
 1. Klicken Sie mit der rechten Maustaste auf den Ordner „Home“ unter „Views“, und klicken Sie dann auf **Hinzufügen** > **Neues Element**.
 
-    ![Hinzufügen des neuen MVC-Elements](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view1.png)
+    ![Menüelement „Neues Element hinzufügen“ in Visual Studio](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view1.png)
 
 2. Wählen Sie im Fenster **Neues Element hinzufügen – Contoso.AADB2C.UI** die Optionen **Web > ASP.NET** aus.
 
@@ -99,7 +99,7 @@ Ihre benutzerdefinierte HTML5-Vorlage basiert auf dem in der HTML5-Vorlage integ
 
 5. Wählen Sie **Hinzufügen**.
 
-    ![Hinzufügen der MVC-Ansicht](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view2.png)
+    ![Dialogfeld „Neues Element hinzufügen“ in Visual Studio mit hervorgehobener MVC-Ansichtsseite](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view2.png)
 
 6. Wenn die Datei *unified.cshtml* noch nicht geöffnet ist, doppelklicken Sie auf die Datei, um sie zu öffnen, und löschen Sie dann den Inhalt der Datei.
 
@@ -123,11 +123,11 @@ Ihre benutzerdefinierte HTML5-Vorlage basiert auf dem in der HTML5-Vorlage integ
 
 Suchen Sie das `<img>`-Element, das den `ID`-Wert *background_background_image* enthält, und ersetzen Sie den `src`-Wert durch **https://kbdevstorage1.blob.core.windows.net/asset-blobs/19889_en_1** oder ein anderes Hintergrundbild, das Sie verwenden möchten.
 
-![Ändern des Seitenhintergrunds](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
+![img-Element mit benutzerdefiniertem src-Wert für background_background_image](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-static-background.png)
 
 ### <a name="step-24-add-your-view-to-the-mvc-controller"></a>Schritt 2.4: Hinzufügen Ihrer Ansicht zum MVC-Controller
 
-1. Öffnen Sie **Controllers\HomeController.cs**, und fügen Sie die folgende Methode hinzu: 
+1. Öffnen Sie **Controllers\HomeController.cs**, und fügen Sie die folgende Methode hinzu:
 
     ```C
     public IActionResult unified()
@@ -136,9 +136,9 @@ Suchen Sie das `<img>`-Element, das den `ID`-Wert *background_background_image* 
     }
     ```
     Dieser Code gibt an, dass die Methode eine Vorlagendatei des Typs *View* verwenden soll, um eine Antwort an den Browser auszugeben. Da wir den Namen der Vorlagendatei *View* nicht explizit angeben, verwendet MVC standardmäßig die View-Datei von _unified.cshtml_ im Ordner */Views/Home*.
-    
+
     Nach dem Hinzufügen der _unified_-Methode sollte der Code wie folgt aussehen:
-    
+
     ![Ändern des Controllers zum Ausgeben der Ansicht](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-controller-view.png)
 
 2. Debuggen Sie Ihre Web-App, und stellen Sie sicher, dass der Zugriff auf die _einheitliche_ Seite möglich ist (z.B. `http://localhost:<Port number>/Home/unified`).
@@ -174,7 +174,7 @@ Suchen Sie das `<img>`-Element, das den `ID`-Wert *background_background_image* 
 
 2. Wählen Sie im Abschnitt **Einstellungen** unter dem Abschnitt **API** die Option **CORS** aus.
 
-    ![Auswählen der CORS-Einstellungen](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS2.png)
+    ![Hervorgehobenes CORS-Menüelement im App Service-Menü im Azure-Portal](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS2.png)
 
 3. Nehmen Sie im Fenster **CORS** im Feld **Zulässige Ursprünge** eine der folgenden Eingaben vor:
 
@@ -183,9 +183,9 @@ Suchen Sie das `<img>`-Element, das den `ID`-Wert *background_background_image* 
 
 4. Wählen Sie **Speichern** aus.
 
-    ![Fenster „CORS“](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS3.png)
+    ![CORS-Einstellungsseite mit hervorgehobenem Sternchen unter „Zulässige Ursprünge“](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS3.png)
 
-    Nachdem Sie **Speichern** ausgewählt haben, akzeptiert die API-App JavaScript-Aufrufe von den angegebenen URLs. 
+    Nachdem Sie **Speichern** ausgewählt haben, akzeptiert die API-App JavaScript-Aufrufe von den angegebenen URLs.
 
 ## <a name="step-4-html5-template-validation"></a>Schritt 4: Überprüfen der HTML5-Vorlage
 Die HTML5-Vorlage ist einsatzbereit. Sie ist jedoch im `ContentDefinition`-Code nicht verfügbar. Vor dem Hinzufügen von `ContentDefinition` zu Ihrer benutzerdefinierten Richtlinie müssen Sie Folgendes sicherstellen:
@@ -193,7 +193,7 @@ Die HTML5-Vorlage ist einsatzbereit. Sie ist jedoch im `ContentDefinition`-Code 
 * Ihr Inhaltsserver ist für CORS aktiviert.
 
     >[!NOTE]
-    >Über die Website [test-cors.org](https://test-cors.org/) können Sie überprüfen, ob auf der Site, auf der Sie den Inhalt hosten, CORS aktiviert ist, sowie CORS-Anforderungen testen. 
+    >Über die Website [test-cors.org](https://test-cors.org/) können Sie überprüfen, ob auf der Site, auf der Sie den Inhalt hosten, CORS aktiviert ist, sowie CORS-Anforderungen testen.
 
 * Bereitgestellte Inhalte sind über **HTTPS** sicher.
 * Sie verwenden für alle Links, CSS-Inhalte und Bilder *absolute URLs* (z. B. `https://yourdomain/content`).
@@ -206,14 +206,14 @@ Führen Sie folgende Schritte aus, um `ContentDefinition` zu konfigurieren:
 
 3. Öffnen Sie die Erweiterungsdatei (z.B. *TrustFrameworkExtensions.xml*), und suchen Sie dann das `<BuildingBlocks>`-Element. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
 
-4. Fügen Sie den gesamten Inhalt des Knotens `<ContentDefinitions>` ein, den Sie als untergeordnetes Element des `<BuildingBlocks>`-Elements kopiert haben. 
+4. Fügen Sie den gesamten Inhalt des Knotens `<ContentDefinitions>` ein, den Sie als untergeordnetes Element des `<BuildingBlocks>`-Elements kopiert haben.
 
 5. Suchen Sie den Knoten `<ContentDefinition>`, der in der kopierten XML-Datei `Id="api.signuporsignin"` enthält.
 
-6. Ändern Sie den Wert von `LoadUri` von _~/tenant/default/unified_ in _https://<App-Name>.azurewebsites.net/home/unified_.  
+6. Ändern Sie den Wert von `LoadUri` von _~/tenant/default/unified_ in _https://<App-Name>.azurewebsites.net/home/unified_.
     Ihre benutzerdefinierte Richtlinie sollte wie folgt aussehen:
-    
-    ![Ihre Inhaltsdefinition](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
+
+    ![XML-Beispielcodeausschnitt mit hervorgehobenem LoadUri-Element](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>Schritt 6: Hochladen der Richtlinie in Ihren Mandanten
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum [Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und wählen Sie anschließend **Azure AD B2C** aus.
@@ -234,20 +234,20 @@ Führen Sie folgende Schritte aus, um `ContentDefinition` zu konfigurieren:
     >[!NOTE]
     >Für „Jetzt ausführen“ muss mindestens eine Anwendung vorab im Mandanten registriert werden. Informationen zum Registrieren von Anwendungen finden Sie in den Artikeln [Erste Schritte](active-directory-b2c-get-started.md) bzw. [Anwendungsregistrierung](active-directory-b2c-app-registration.md) zu Azure AD B2C.
 
-2. Öffnen Sie **B2C_1A_signup_signin**. Dies ist die benutzerdefinierte Richtlinie der vertrauenden Seite (Relying Party, RP), die Sie hochgeladen haben. Wählen Sie anschließend **Jetzt ausführen** aus.  
+2. Öffnen Sie **B2C_1A_signup_signin**. Dies ist die benutzerdefinierte Richtlinie der vertrauenden Seite (Relying Party, RP), die Sie hochgeladen haben. Wählen Sie anschließend **Jetzt ausführen** aus.
     Sie sollten Ihre benutzerdefinierten HTML5-Inhalte mit dem Hintergrund sehen, den Sie zuvor erstellt haben.
 
     ![Ihre Registrierungs- oder Anmelderichtlinie](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo1.png)
 
 ## <a name="step-8-add-dynamic-content"></a>Schritt 8: Dynamischen Inhalt hinzufügen
-Ändern Sie den Hintergrund basierend auf dem Abfragezeichenfolgen-Parameter mit dem Namen _campaignId_. Die Anwendung Ihrer vertrauenden Seite (Web- und mobile Apps) sendet den Parameter an Azure AD B2C. Die Richtlinie liest den Parameter und sendet seinen Wert an die HTML5-Vorlage. 
+Ändern Sie den Hintergrund basierend auf dem Abfragezeichenfolgen-Parameter mit dem Namen _campaignId_. Die Anwendung Ihrer vertrauenden Seite (Web- und mobile Apps) sendet den Parameter an Azure AD B2C. Die Richtlinie liest den Parameter und sendet seinen Wert an die HTML5-Vorlage.
 
 ### <a name="step-81-add-a-content-definition-parameter"></a>Schritt 8.1: Hinzufügen eines Inhaltsdefinitionsparameters
 
 Fügen Sie das `ContentDefinitionParameters`-Element mit den folgenden Schritten hinzu:
 1. Öffnen Sie die Datei *SignUpOrSignin* Ihrer Richtlinie (z.B. *SignUpOrSignin.xml*).
 
-2. Fügen Sie unter dem Knoten `<DefaultUserJourney>` den Knoten `UserJourneyBehaviors` hinzu:  
+2. Fügen Sie unter dem Knoten `<DefaultUserJourney>` den Knoten `UserJourneyBehaviors` hinzu:
 
     ```XML
     <RelyingParty>
@@ -292,30 +292,30 @@ Fügen Sie das `ContentDefinitionParameters`-Element mit den folgenden Schritten
 
 2. Suchen Sie das `<img>`-Element mit der ID `background_background_image`, und ersetzen Sie den `src`-Wert durch `@ViewData["background"]`.
 
-    ![Ändern des Seitenhintergrunds](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-dynamic-background.png)
+    ![img-Element mit hervorgehobenem src-Wert ](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-dynamic-background.png)
 
 ### <a name="83-upload-the-changes-and-publish-your-policy"></a>Schritt 8.3: Hochladen der Änderungen und Veröffentlichen Ihrer Richtlinie
 1. Veröffentlichen Sie Ihr Visual Studio-Projekt in Azure App Service.
 
 2. Laden Sie die Richtliniendatei *SignUpOrSignin.xml* in Azure AD B2C hoch.
 
-3. Öffnen Sie **B2C_1A_signup_signin**. Dies ist die benutzerdefinierte Richtlinie der vertrauenden Seite, die Sie hochgeladen haben. Wählen Sie anschließend **Jetzt ausführen** aus.  
+3. Öffnen Sie **B2C_1A_signup_signin**. Dies ist die benutzerdefinierte Richtlinie der vertrauenden Seite, die Sie hochgeladen haben. Wählen Sie anschließend **Jetzt ausführen** aus.
     Daraufhin sollte das gleiche Hintergrundbild wie zuvor angezeigt werden.
 
 4. Kopieren Sie die URL aus der Adressleiste des Browsers.
 
 5. Fügen Sie dem URI den Abfragezeichenfolgen-Parameter _campaignId_ hinzu. Fügen Sie z.B. `&campaignId=hawaii` hinzu, wie in der folgenden Abbildung dargestellt:
 
-    ![Ändern des Seitenhintergrunds](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-campaignId-param.png)
+    ![URI mit hervorgehobenem campaignId-Abfragezeichenfolgenparameter](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-campaignId-param.png)
 
 6. Drücken Sie die **EINGABETASTE**, um das Hawaii-Hintergrundbild anzuzeigen.
 
-    ![Ändern des Seitenhintergrunds](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo2.png)
+    ![Registrierungs- bzw. Anmeldeseite mit Hawaiibild als benutzerdefinierter Hintergrund](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo2.png)
 
-7. Ändern Sie den Wert in *Tokyo*, und drücken Sie dann die **EINGABETASTE**.  
+7. Ändern Sie den Wert in *Tokyo*, und drücken Sie dann die **EINGABETASTE**.
     Im Browser wird der Tokio-Hintergrund angezeigt.
 
-    ![Ändern des Seitenhintergrunds](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo3.png)
+    ![Registrierungs- bzw. Anmeldeseite mit Tokiobild als benutzerdefinierter Hintergrund](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-demo3.png)
 
 ## <a name="step-9-change-the-rest-of-the-user-journey"></a>Schritt 9: Ändern des verbleibenden Teils der User Journey
 Wenn Sie auf der Anmeldeseite den Link **Jetzt registrieren** auswählen, wird im Browser das Standardhintergrundbild und nicht das von Ihnen definierte Bild angezeigt. Dieses Verhalten ist darauf zurückzuführen, dass Sie nur die Registrierungs- oder Anmeldeseite geändert haben. So ändern Sie die restlichen selbstbestätigten Inhaltsdefinitionen
@@ -329,13 +329,13 @@ Wenn Sie auf der Anmeldeseite den Link **Jetzt registrieren** auswählen, wird i
 
     d. Fügen Sie *selfasserted* dem **Home**-Controller hinzu.
 
-2. Wechseln Sie zurück zu „Schritt 4“, und führen Sie folgende Schritte aus: 
+2. Wechseln Sie zurück zu „Schritt 4“, und führen Sie folgende Schritte aus:
 
     a. Suchen Sie in Ihrer Erweiterungsrichtlinie den `<ContentDefinition>`-Knoten, der `Id="api.selfasserted"`, `Id="api.localaccountsignup"` und `Id="api.localaccountpasswordreset"` enthält.
 
     b. Legen Sie das `LoadUri`-Attribut auf Ihren *selfasserted*-URI fest.
 
-3. Wechseln Sie zurück zu „Schritt 8.2“, und ändern Sie den Code zum Akzeptieren von Abfragezeichenfolgen-Parametern, dieses Mal jedoch in die *selfasserted*-Funktion. 
+3. Wechseln Sie zurück zu „Schritt 8.2“, und ändern Sie den Code zum Akzeptieren von Abfragezeichenfolgen-Parametern, dieses Mal jedoch in die *selfasserted*-Funktion.
 
 4. Laden Sie die Richtliniendatei *TrustFrameworkExtensions.xml* hoch, und stellen Sie sicher, dass sie die Überprüfung besteht.
 

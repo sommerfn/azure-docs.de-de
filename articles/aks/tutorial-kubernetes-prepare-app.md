@@ -2,18 +2,18 @@
 title: 'Tutorial zu Kubernetes in Azure: Vorbereiten einer Anwendung'
 description: In diesem Azure Kubernetes Service-Tutorial (AKS) erfahren Sie, wie mit Docker Compose eine App mit mehreren Containern vorbereitet und erstellt wird, die Sie dann in AKS bereitstellen können.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: iainfou
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 9212e065ff7f6b0e3df1b90296f54159762bdaf9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3ff93d006b7599eaa3f97c33efb047ce480c301c
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002010"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71264468"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Tutorial: Vorbereiten einer Anwendung für Azure Kubernetes Service (AKS)
 
@@ -103,7 +103,7 @@ Beenden und entfernen Sie die Containerinstanzen und -ressourcen mit dem Befehl 
 docker-compose down
 ```
 
-Wenn die lokale Anwendung entfernt wurde, verfügen Sie über ein Docker-Image, das die Azure Vote-Anwendung *azure-front-front* für die Verwendung im nächsten Tutorial enthält.
+Wenn die lokale Anwendung entfernt wurde, verfügen Sie über ein Docker-Image, das die Azure Vote-Anwendung *azure-vote-front* für die Verwendung im nächsten Tutorial enthält.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 08/01/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f9a33b6bce8cef5bf790efeb43259dfb8013487
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 44276c911768f588064245c37a1284adeda8138f
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202485"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315720"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
 
@@ -37,13 +37,13 @@ Während der Administratorübernahme können Sie die Inhaberschaft wie in [Schne
 
 Einige Produkte, die SharePoint und OneDrive enthalten, z.B. Office 365, unterstützen keine externe Übernahme. Wenn dieses Szenario auf Sie zutrifft oder Sie ein Administrator sind und einen nicht verwalteten Schattenmandanten übernehmen möchten, der von Benutzern erstellt wurde, die die Self-Service-Registrierung verwendet haben, können Sie dies mit einer internen Administratorübernahme tun.
 
-1. Erstellen Sie einen Benutzerkontext im nicht verwalteten Mandanten, z.B. über eine Registrierung bei Power BI. Genau dies tun Sie in diesem Beispiel.
+1. Erstellen Sie einen Benutzerkontext im nicht verwalteten Mandanten über eine Registrierung bei Power BI. Genau dies tun Sie in diesem Beispiel.
 
 2. Öffnen Sie die [Power BI-Website](https://powerbi.com), und klicken Sie auf **Kostenloser Einstieg**. Geben Sie ein Benutzerkonto ein, das den Domänennamen für die Organisation verwendet, z.B. `admin@fourthcoffee.xyz`. Nachdem Sie den Prüfcode eingegeben haben, suchen Sie in Ihren E-Mails nach dem Bestätigungscode.
 
 3. Wählen Sie in der Bestätigungs-E-Mail von Power BI **Yes, that's me** (Ja, das bin ich) aus.
 
-4. Melden Sie sich mit dem Power BI-Benutzerkonto im [Microsoft 365 Admin Center](https://admin.microsoft.com) an. Sie erhalten eine Nachricht mit der Aufforderung, der Administrator des Domänennamens zu werden (**Become the Admin**), der bereits im nicht verwalteten Mandanten bestätigt wurde. Wählen Sie **Yes, I want to be the admin** (Ja, ich möchte der Administrator werden) aus.
+4. Melden Sie sich mit dem Power BI-Benutzerkonto im [Microsoft 365 Admin Center](https://portal.office.com/admintakeover) an. Sie erhalten eine Nachricht mit der Aufforderung, der Administrator des Domänennamens zu werden (**Become the Admin**), der bereits im nicht verwalteten Mandanten bestätigt wurde. Wählen Sie **Yes, I want to be the admin** (Ja, ich möchte der Administrator werden) aus.
   
    ![Erster Screenshot für „Become the Admin“](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -88,39 +88,33 @@ Wenn Sie die Inhaberschaft des Domänennamens bestätigt haben, entfernt Azure A
 ### <a name="support-for-external-admin-takeover"></a>Unterstützung für eine externe Administratorübernahme
 Die externe Administratorübernahme wird von folgenden Onlinediensten unterstützt:
 
-- Power BI
 - Azure Rights Management
 - Exchange Online
 
 Die unterstützten Tarife umfassen:
 
-- Power BI Free
-- Power BI Pro
 - PowerApps Free
 - PowerFlow Free
 - RMS for Individuals
 - Microsoft Stream
 - die kostenlose Testversion von Dynamics 365
 
-Die externe Administratorübernahme wird für keinen Dienst mit Tarifen unterstützt, die SharePoint, OneDrive oder Skype For Business enthalten, z. B. über ein kostenloses Abonnement für Office oder das Office Basic SKU. Optional können Sie die [**ForceTakeover**-Option](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) verwenden, um den Domänennamen aus dem nicht verwalteten Mandanten zu entfernen und diesen Namen für den gewünschten Mandanten zu überprüfen. Diese ForceTakeover-Option bewirkt nicht, dass Benutzer verschoben werden oder Zugriff auf das Abonnement erhalten bleibt. Stattdessen bewirkt diese Option nur, dass der Domänenname verschoben wird. 
+Die externe Administratorübernahme wird für keinen Dienst mit Tarifen unterstützt, die SharePoint, OneDrive oder Skype For Business enthalten, z. B. über ein kostenloses Abonnement für Office. 
+
+Optional können Sie die [**ForceTakeover**-Option](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) verwenden, um den Domänennamen aus dem nicht verwalteten Mandanten zu entfernen und diesen Namen für den gewünschten Mandanten zu überprüfen. 
 
 #### <a name="more-information-about-rms-for-individuals"></a>Weitere Informationen zu RMS for Individuals
 
-Für [RMS for Individuals](/azure/information-protection/rms-for-individuals) werden, wenn sich der nicht verwaltete Mandant in derselben Region befindet wie der Mandant, den Sie besitzen, der automatisch erstellte [Mandantenschlüssel für Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) und [Standardschutzvorlagen](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) zusätzlich mit dem Domänennamen verschoben. 
+Für [RMS for Individuals](/azure/information-protection/rms-for-individuals) werden, wenn sich der nicht verwaltete Mandant in derselben Region befindet wie der Mandant, den Sie besitzen, der automatisch erstellte [Mandantenschlüssel für Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) und [Standardschutzvorlagen](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) zusätzlich mit dem Domänennamen verschoben.
 
-Die Schlüssel und die Vorlagen werden nicht verschoben, wenn sich der nicht verwaltete Mandant in einer anderen Region befindet. Angenommen, der nicht verwaltete Mandant befindet sich in Europa, und der Mandant, den Sie besitzen, befindet sich in Nordamerika. 
+Die Schlüssel und die Vorlagen werden nicht verschoben, wenn sich der nicht verwaltete Mandant in einer anderen Region befindet. Angenommen, der nicht verwaltete Mandant befindet sich in Europa, und die Organisation, die Sie besitzen, befindet sich in Nordamerika.
 
 Obwohl RMS for Individuals so konzipiert ist, dass es die Azure AD-Authentifizierung unterstützt, um geschützte Inhalte zu öffnen, hindert es Benutzer nicht daran, ebenfalls Inhalte zu schützen. Haben Benutzer Inhalte mit dem RMS for Individuals-Abonnement geschützt, und wurden die Schlüssel und die Vorlagen nicht verschoben, kann nach der Domänenübernahme nicht auf diese Inhalte zugegriffen werden.
-
-#### <a name="more-information-about-power-bi"></a>Weitere Informationen zu Power BI
-
-Beim Ausführen einer externen Übernahme werden Power BI-Inhalte, die vor der Übernahme erstellt wurden, in einem [archivierten Arbeitsbereich in Power BI](/power-bi/service-admin-power-bi-archived-workspace) platziert. Sie müssen alle Inhalte manuell migrieren, die im neuen Mandanten verwendet werden sollen.
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Azure AD-PowerShell-Cmdlets für die ForceTakeover-Option
 Diese Cmdlets werden im [PowerShell-Beispiel](#powershell-example) verwendet.
 
-
-Cmdlet | Verwendung 
+Cmdlet | Verwendung
 ------- | -------
 `connect-msolservice` | Wenn Sie dazu aufgefordert werden, melden Sie sich bei Ihrem verwalteten Mandanten an.
 `get-msoldomain` | Zeigt die dem aktuellen Mandanten zugeordneten Domänennamen an.
@@ -129,6 +123,9 @@ Cmdlet | Verwendung
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Stellt Informationen bereit, die in den neuen DNS-TXT-Eintrag für die Domäne eingegeben werden müssen (MS=xxxxx). Die Bestätigung erfolgt möglicherweise nicht sofort, da es einige Zeit braucht, bis der TXT-Eintrag übernommen wird. Warten Sie also einfach einige Minuten, bevor Sie die Option **-ForceTakeover** in Betracht ziehen. 
 `confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Wenn Ihr Domänenname weiterhin unbestätigt bleibt, können Sie die Option **-ForceTakeover** anwenden. Damit wird bestätigt, dass der TXT-Eintrag erstellt wurde, und die Übernahme wird angestoßen.<li>Die Option **-ForceTakeover** darf dem Cmdlet bei einer externen Administratorübernahme nur hinzugefügt werden, wenn z.B. der nicht verwaltete Mandant Office 365-Dienste ausführt, die die Übernahme blockieren.
 `get-msoldomain` | In der Liste der Domänen wird der Domänenname nun als **Verified** (Bestätigt) angezeigt.
+
+> [!NOTE]
+> Die nicht verwaltete Azure AD-Organisation wird 10 Tage nach dem Ausführen der externen ForceTakeover-Option gelöscht.
 
 ### <a name="powershell-example"></a>PowerShell-Beispiel
 

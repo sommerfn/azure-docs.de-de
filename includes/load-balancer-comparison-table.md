@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: load balancer
 author: KumudD
 ms.service: load-balancer
@@ -9,11 +9,11 @@ ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
 ms.openlocfilehash: 1d3ce900f7354b31e999c12b8e1eb0e23d391fcb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56078545"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178512"
 ---
 | | Standard-SKU | Basic-SKU |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ ms.locfileid: "56078545"
 | Diagnose | Azure Monitor, mehrdimensionale Metriken einschließlich Byte- und Paketleistungsindikatoren, Integritätsteststatus, Verbindungsversuche (TCP SYN), Integrität ausgehender Verbindungen (erfolgreiche und fehlgeschlagene SNAT-Datenströme), Messungen für die aktive Datenebene | Azure Log Analytics nur für öffentlichen Lastenausgleich, SNAT-Überlastungswarnung, Integritätsanzahl für Back-End-Pool |
 | HA-Ports | Interner Lastenausgleich | Nicht verfügbar. |
 | Standardmäßig sicher | Öffentliche IP, öffentliche Load Balancer-Endpunkte und interne Load Balancer-Endpunkte sind für eingehende Datenflüsse geschlossen, es sei denn, sie werden von einer Netzwerksicherheitsgruppe in die Whitelist aufgenommen. | Standardmäßig geöffnet, Netzwerksicherheitsgruppe ist optional. |
-| [Ausgehende Verbindungen](../articles/load-balancer/load-balancer-outbound-connections.md) | Sie können die poolbasierte ausgehende Netzwerkadressenübersetzung (NAT) explizit mit [Regeln für ausgehenden Datenverkehr](../articles/load-balancer/load-balancer-outbound-rules-overview.md) definieren. Sie können mehrere Front-Ends mit Deaktivierung über Lastenausgleichsregel verwenden. Es _muss_ explizit ein Szenario für ausgehenden Datenverkehr erstellt werden, damit der virtuelle Computer, die Verfügbarkeitsgruppe und die VM-Skalierungsgruppe ausgehende Verbindungen verwenden können.  Dienstendpunkte für virtuelle Netzwerke können erreicht werden, ohne dass ausgehende Verbindungen definiert werden müssen, und werden nicht für verarbeitete Daten angerechnet.  Alle öffentlichen IP-Adressen, einschließlich der Azure-PaaS-Dienste, die nicht als VNet-Dienstendpunkte verfügbar sind, müssen über ausgehende Verbindungen erreicht werden und werden als verarbeitete Daten angerechnet. Wenn nur ein interner Load Balancer einen virtuellen Computer, eine Verfügbarkeitsgruppe oder eine VM-Skalierungsgruppe versorgt, sind ausgehende Verbindungen nicht über Standard-SNAT verfügbar. Verwenden Sie stattdessen [Ausgangsregeln](../articles/load-balancer/load-balancer-outbound-rules-overview.md). Ausgehende SNAT-Programmierung ist transportprotokollspezifisch entsprechend dem Protokoll der Regel für eingehenden Lastenausgleich. | Einzelnes Front-End, ausgewählt nach dem Zufallsprinzip, wenn mehrere Front-Ends vorhanden sind.  Wenn nur ein interner Load Balancer einen virtuellen Computer, eine Verfügbarkeitsgruppe oder eine VM-Skalierungsgruppe versorgt, wird Standard-SNAT verwendet. |
+| [Ausgehende Verbindungen](../articles/load-balancer/load-balancer-outbound-connections.md) | Sie können die poolbasierte ausgehende Netzwerkadressenübersetzung (NAT) explizit mit [Regeln für ausgehenden Datenverkehr](../articles/load-balancer/load-balancer-outbound-rules-overview.md) definieren. Sie können mehrere Front-Ends mit Deaktivierung über Lastenausgleichsregel verwenden. Es _muss_ explizit ein Szenario für ausgehenden Datenverkehr erstellt werden, damit der virtuelle Computer, die Verfügbarkeitsgruppe und die VM-Skalierungsgruppe ausgehende Verbindungen verwenden können.  VNET-Dienstendpunkte können erreicht werden, ohne dass ausgehende Verbindungen definiert werden müssen, und werden nicht für verarbeitete Daten angerechnet.  Alle öffentlichen IP-Adressen, einschließlich der Azure-PaaS-Dienste, die nicht als VNet-Dienstendpunkte verfügbar sind, müssen über ausgehende Verbindungen erreicht werden und werden als verarbeitete Daten angerechnet. Wenn nur ein interner Load Balancer einen virtuellen Computer, eine Verfügbarkeitsgruppe oder eine VM-Skalierungsgruppe versorgt, sind ausgehende Verbindungen nicht über Standard-SNAT verfügbar. Verwenden Sie stattdessen [Ausgangsregeln](../articles/load-balancer/load-balancer-outbound-rules-overview.md). Ausgehende SNAT-Programmierung ist transportprotokollspezifisch entsprechend dem Protokoll der Regel für eingehenden Lastenausgleich. | Einzelnes Front-End, ausgewählt nach dem Zufallsprinzip, wenn mehrere Front-Ends vorhanden sind.  Wenn nur ein interner Load Balancer einen virtuellen Computer, eine Verfügbarkeitsgruppe oder eine VM-Skalierungsgruppe versorgt, wird Standard-SNAT verwendet. |
 | [Regeln für ausgehenden Datenverkehr](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | Deklarative NAT-Konfiguration für ausgehenden Datenverkehr, Verwendung öffentlicher IP-Adressen oder der Präfixe öffentlicher IP-Adressen oder von beidem, konfigurierbares Leerlauftimeout (zwischen vier und 120 Minuten) für ausgehenden Datenverkehr, benutzerdefinierte SNAT-Portzuordnung. | Nicht verfügbar. |
 |  [TCP-Zurücksetzung bei Leerlauf](../articles/load-balancer/load-balancer-tcp-reset.md) | Aktivieren von TCP-Zurücksetzung (TCP RST) bei Leerlauftimeout bei einer beliebigen Regel | Nicht verfügbar |
 | [Mehrere Front-Ends](../articles/load-balancer/load-balancer-multivip-overview.md) | Eingehend und [ausgehend](../articles/load-balancer/load-balancer-outbound-connections.md) | Nur eingehend |

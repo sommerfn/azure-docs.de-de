@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: ba5e9db85d179b0f5b5db875a93e00ca95d3dbcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be067acb7af25f785b7c7ba25d389354b6759d7f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22647067"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61370161"
 ---
 # <a name="connect-to-azure-germany-by-using-the-azure-portal"></a>Herstellen einer Verbindung mit Azure Deutschland über das Azure-Portal
 

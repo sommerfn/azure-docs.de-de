@@ -1,19 +1,19 @@
 ---
 title: Neuerungen in Microsoft Azure Backup Server
 description: Microsoft Azure Backup Server bietet Ihnen erweiterte Sicherungsfunktionen für den Schutz von u.a. virtuellen Computern, Dateien, Ordnern und Workloads. Erfahren Sie, wie Sie Azure Backup Server V3 installieren oder ein Upgrade auf diese Version ausführen.
-services: backup
-author: rayne-wiselman
+ms.reviewer: adigan
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: adigan
-ms.openlocfilehash: 5718064994a80266c216ae6040746be29194adc9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: dacurwin
+ms.openlocfilehash: b7fc0e9819e3cbdd886271a8580af76923b6f819
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108915"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688542"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Neuerungen in Microsoft Azure Backup Server
 
@@ -25,7 +25,7 @@ Die folgenden Features sind in MABS V3 enthalten:
 Mit Modern Backup Storage (MBS) in MABS V2 wurde ein workloadbewusster Speicher veröffentlicht. Bestimmte Workloads lassen sich so konfigurieren, dass sie auf einem bestimmten Speicher gesichert werden, basierend auf den Speichereigenschaften. Nach der Konfiguration ist es jedoch ggf. erforderlich, Sicherungen bestimmter Datenquellen auf einen anderen Speicher zu verschieben, um die Ressourcenverwendung zu optimieren. MABS V3 bietet Ihnen die Möglichkeit, Ihre Sicherungen zu migrieren und so zu konfigurieren, dass sie in [3 Schritten](https://blogs.technet.microsoft.com/dpm/2017/10/24/storage-migration-with-dpm-2016-mbs/) auf einem anderen Volume gespeichert werden.
 
 ## <a name="prevent-unexpected-data-loss"></a>Vermeidung unerwarteter Kosten
-In Unternehmen wird MABS von einem Team von Administratoren verwaltet. Es gibt zwar Speicherrichtlinien, die für Sicherungen gelten, doch wenn MABS das falsche Volume als Sicherungsspeicher zugewiesen wird, kann dies zum Verlust wichtiger Daten führen. Mit MABS V3 können Sie das verhindern, indem Sie mit [diesen PowerShell-Cmdlets](https://docs.microsoft.com/system-center/dpm/add-storage#volume-exclusion) die Volumes konfigurieren, die nicht für den Speicher verfügbar sind.
+In Unternehmen wird MABS von einem Team von Administratoren verwaltet. Es gibt zwar Speicherrichtlinien, die für Sicherungen gelten, doch wenn MABS das falsche Volume als Sicherungsspeicher zugewiesen wird, kann dies zum Verlust wichtiger Daten führen. Mit MABS V3 können Sie das verhindern, indem Sie mit [diesen PowerShell-Cmdlets](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage) die Volumes konfigurieren, die nicht für den Speicher verfügbar sind.
 
 ## <a name="custom-size-allocation"></a>Benutzerdefinierte Größenzuteilung
 Modern Backup Storage verbraucht sehr wenig Speicherplatz, nämlich nur nach Bedarf. Dazu berechnet MABS die Größe der zu sichernden Daten, wenn sie für den Schutz konfiguriert sind. Wenn viele Dateien und Ordner gemeinsam gesichert werden – wie bei einem Dateiserver – kann die Größenberechnung lange dauern. Mit MABS V3 können Sie MABS so konfigurieren, dass die Komponente Volumegröße als Standard akzeptiert, anstatt die Größe jeder Datei zu berechnen. Dadurch sparen Sie Zeit.
@@ -54,7 +54,7 @@ MABS V3 ist eine Vollversion und kann direkt auf Windows Server 2016, Windows Se
 
 
 > [!NOTE]
-> 
+>
 > MABS hat die gleiche Codebasis wie System Center Data Protection Manager. MABS V3 entspricht Data Protection Manager, Version 1807.
 
 ## <a name="next-steps"></a>Nächste Schritte

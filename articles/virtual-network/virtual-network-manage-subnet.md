@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Erfahren Sie, wie Sie Subnetze virtueller Netzwerke in Azure hinzufügen, ändern oder löschen.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
-ms.author: jdial
-ms.openlocfilehash: b4fd3d7cd1d25415ba5938586aee448bdc512aa7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: 4af8c6dbbcbb877351018eb881f4d3b0b447bbce
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100461"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098979"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke
 
@@ -50,7 +51,7 @@ Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindun
    - **Dienstendpunkte**: Für ein Subnetz können keine oder mehrere Dienstendpunkte aktiviert sein. Zum Aktivieren eines Dienstendpunkts für einen Dienst wählen Sie Dienste, für die Sie Dienstendpunkte aktivieren möchten, in der Liste **Dienste** aus. Der Standort wird für einen Endpunkt automatisch konfiguriert. Standardmäßig werden Dienstendpunkte für die Region des virtuellen Netzwerks konfiguriert. Damit Azure Storage Szenarien für ein regionales Failover unterstützt, werden Endpunkte automatisch für [Azure-Regionspaare](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions) konfiguriert.
    - **Subnetzdelegierung:** Für ein Subnetz können keine oder mehrere Delegierungen aktiviert sein. Bei der Subnetzdelegierung erhält der Dienst explizite Berechtigungen, um dienstspezifische Ressourcen im Subnetz zu erstellen, indem beim Bereitstellen des Diensts ein eindeutiger Bezeichner verwendet wird. Wählen Sie in der Liste **Dienste** den Dienst aus, der als Ziel für die Delegierung fungieren soll.
 
-       Zum Entfernen eines Dienstendpunkts heben Sie die Auswahl des Diensts auf, für den der Dienstendpunkt entfernt werden soll. Weitere Informationen zu Dienstendpunkten und den Diensten, für die sie aktiviert werden können, finden Sie in der Übersicht über [Dienstendpunkte im virtuellen Netzwerk](virtual-network-service-endpoints-overview.md). Nach dem Aktivieren eines Dienstendpunkts für einen Dienst müssen Sie auch Netzwerkzugriff für das Subnetz für eine mit dem Dienst erstellte Ressource aktivieren. Beispiel: Wenn Sie den Dienstendpunkt für *Microsoft.Storage* aktivieren, müssen Sie auch Netzwerkzugriff auf alle Azure Storage-Konten aktivieren, auf die Netzwerkzugriff gewährt werden soll. Ausführliche Informationen zum Aktivieren des Netzwerkzugriffs auf Subnetze, für die ein Dienstendpunkt aktiviert ist, finden Sie in der Dokumentation zum jeweiligen Dienst, für den Sie den Dienstendpunkt aktiviert haben.
+       Zum Entfernen eines Dienstendpunkts heben Sie die Auswahl des Diensts auf, für den der Dienstendpunkt entfernt werden soll. Weitere Informationen zu Dienstendpunkten und den Diensten, für die sie aktiviert werden können, finden Sie in der Übersicht über [VNET-Dienstendpunkte](virtual-network-service-endpoints-overview.md). Nach dem Aktivieren eines Dienstendpunkts für einen Dienst müssen Sie auch Netzwerkzugriff für das Subnetz für eine mit dem Dienst erstellte Ressource aktivieren. Beispiel: Wenn Sie den Dienstendpunkt für *Microsoft.Storage* aktivieren, müssen Sie auch Netzwerkzugriff auf alle Azure Storage-Konten aktivieren, auf die Netzwerkzugriff gewährt werden soll. Ausführliche Informationen zum Aktivieren des Netzwerkzugriffs auf Subnetze, für die ein Dienstendpunkt aktiviert ist, finden Sie in der Dokumentation zum jeweiligen Dienst, für den Sie den Dienstendpunkt aktiviert haben.
 
      Um zu überprüfen, ob ein Dienstendpunkt für ein Subnetz aktiviert wurde, zeigen Sie die [effektiven Routen](diagnose-network-routing-problem.md) für eine Netzwerkschnittstelle im Subnetz an. Wenn der Endpunkt konfiguriert ist, wird eine *Standardroute* mit den Adresspräfixen des Diensts angezeigt, und für „nextHopType“ ist **VirtualNetworkServiceEndpoint** angegeben. Weitere Informationen zum Routing finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md).
 6. Um das Subnetz dem ausgewählten virtuellen Netzwerk hinzuzufügen, wählen Sie **OK**.
@@ -71,7 +72,7 @@ Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindun
     - **Benutzer**: Sie können den Zugriff auf das Subnetz über integrierte Rollen oder eigene benutzerdefinierte Rollen steuern. Weitere Informationen zum Zuweisen von Rollen und Benutzern für den Zugriff auf das Subnetz finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten des Zugriffs auf Ihre Azure-Ressourcen](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment).
     - **Netzwerksicherheitsgruppe** und **Routingtabelle**: Siehe Schritt 5 unter [Hinzufügen eines Subnetzes](#add-a-subnet).
     - **Dienstendpunkte**: Siehe Schritt 5 im Abschnitt „Dienstendpunkte“ unter [Hinzufügen eines Subnetzes](#add-a-subnet). Wenn Sie einen Dienstendpunkt für ein vorhandenes Subnetz aktivieren, stellen Sie sicher, dass auf keiner Ressource im Subnetz kritische Tasks ausgeführt werden. Dienstendpunkte ändern die Routen in jeder Netzwerkschnittstelle im Subnetz von der Standardroute mit dem Adresspräfix *0.0.0.0/0* und *Internet* als Typ des nächsten Hops zu einer neuen Route mit dem Adresspräfix des Diensts und *VirtualNetworkServiceEndpoint* als Typ des nächsten Hops. Während dieses Wechsels werden alle offenen TCP-Verbindungen geschlossen. Der Dienstendpunkt wird erst aktiviert, wenn der gesamte Datenverkehr an den Dienst in allen Netzwerkschnittstellen mit der neuen Route aktualisiert wurde. Weitere Informationen zum Routing finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md).
-    - **Subnetzdelegierung:** Siehe Schritt 5 im Abschnitt „Dienstendpunkte“ unter [Hinzufügen eines Subnetzes](#add-a-subnet). Die Subnetzdelegierung kann so geändert werden, dass dafür null oder mehr Delegierungen aktiviert sind. Wenn im Subnetz bereits eine Ressource für einen Dienst bereitgestellt wurde, kann die Subnetzdelegierung erst entfernt werden, nachdem alle Ressourcen für den Dienst entfernt wurden. Wählen Sie in der Liste **Dienste** den Dienst aus, der als neues Ziel für die Delegierung fungieren soll.
+    - **Subnetzdelegierung:** Siehe Schritt 5 im Abschnitt „Dienstendpunkte“ unter [Hinzufügen eines Subnetzes](#add-a-subnet). Die Subnetzdelegierung kann so geändert werden, dass dafür null oder mehr Delegierungen aktiviert sind. Wenn im Subnetz bereits eine Ressource für einen Dienst bereitgestellt wird, kann Subnetzdelegierung erst hinzugefügt oder entfernt werden, nachdem alle Ressourcen für den Dienst entfernt wurden. Wählen Sie in der Liste **Dienste** den Dienst aus, der als neues Ziel für die Delegierung fungieren soll.
 5. Wählen Sie **Speichern** aus.
 
 **Befehle**

@@ -3,20 +3,20 @@ title: Referenz für die Sprachübersetzungs-API
 titleSuffix: Azure Cognitive Services
 description: Referenzdokumentation für die Sprachübersetzungs-API.
 services: cognitive-services
-author: Jann-Skotdal
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
-ms.author: v-jansko
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 3493f6d25461836d8f6e48ce4213b0f5b78b6372
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 9d2f78d05de6b966dd872e0b57a90d1c8e890975
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56675108"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965370"
 ---
 # <a name="translator-speech-api"></a>Sprachübersetzungs-API
 
@@ -176,7 +176,7 @@ Wenn eine Clientanwendung die Audiowiedergabe abgeschlossen und das letzte Ender
 |format|(leer)|Gibt das Format des Text-to-Speech-Audiostreams an, der vom Dienst zurückgegeben wurde. Die verfügbaren Optionen lauten wie folgt:<ul><li>`audio/wav`: Waveform-Audiostream. Der Client sollte den WAV-Header verwenden, um das Audioformat richtig interpretieren zu können. Das WAV-Audio für Text-to-Speech ist einkanaliges 16-Bit-PCM mit einer Samplingrate von 24 kHz oder 16 kHz.</li><li>`audio/mp3`: MP3-Audiostream.</li></ul>Der Standardwert ist `audio/wav`.|query|Zeichenfolge|
 |ProfanityAction    |(leer)    |Gibt an, wie der Dienst mit in der Sprache erkannten Obszönitäten umgehen soll. Gültige Aktionen sind:<ul><li>`NoAction`: Obszönitäten bleiben unverändert.</li><li>`Marked`: Obszönitäten werden durch einen Marker ersetzt. Siehe Parameter `ProfanityMarker`.</li><li>`Deleted`: Obszönitäten werden gelöscht. Wenn das Wort `"jackass"` beispielsweise als Obszönität behandelt wird, wird der Ausdruck `"He is a jackass."` in `"He is a .".` geändert</li></ul>Die Standardaktion ist „Marked“.|query|Zeichenfolge|
 |ProfanityMarker|(leer)    |Gibt an, wie erkannte Obszönitäten behandelt werden, wenn `ProfanityAction` auf `Marked` festgelegt ist. Gültige Optionen sind:<ul><li>`Asterisk`: Obszönitäten werden durch die Zeichenfolge `***` ersetzt. Wenn das Wort `"jackass"` beispielsweise als Obszönität behandelt wird, wird der Ausdruck `"He is a jackass."` in `"He is a ***.".` geändert</li><li>`Tag`: Obszönitäten werden von einem XML-Tag für Obszönitäten umgeben. Wenn das Wort `"jackass"` beispielsweise als Obszönität behandelt wird, wird der Ausdruck `"He is a jackass."` in `"He is a <profanity>jackass</profanity>."` geändert.</li></ul>Der Standardwert lautet `Asterisk`.|query|Zeichenfolge|
-|Autorisierung|(leer)  |Gibt den Wert des Bearertokens des Clients an. Verwenden Sie das Präfix `Bearer` gefolgt vom Wert des Werts `access_token`, der vom Authentifizierungstokendienst zurückgegeben wird.|Header   |Zeichenfolge|
+|Authorization|(leer)  |Gibt den Wert des Bearertokens des Clients an. Verwenden Sie das Präfix `Bearer` gefolgt vom Wert des Werts `access_token`, der vom Authentifizierungstokendienst zurückgegeben wird.|Header   |Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)|Erforderlich, falls der Header `Authorization` nicht angegeben ist.|Header|Zeichenfolge|
 |access_token|(leer)   |Alternative Möglichkeit für die Übergabe eines gültigen OAuth-Zugriffstokens. Das Bearertoken wird in der Regel mit dem Header `Authorization` bereitgestellt. In einigen WebSocket-Bibliotheken dürfen mit Clientcode keine Header festgelegt werden. In diesem Fall kann der Client den Abfrageparameter `access_token` für die Übergabe eines gültigen Tokens verwenden. Bei der Verwendung eines Zugriffstokens für die Authentifizierung muss `access_token` festgelegt werden, wenn der Header `Authorization` nicht festgelegt ist. Wenn sowohl der Header als auch der Abfrageparameter festgelegt sind, wird der Abfrageparameter ignoriert. Clients sollten nur eine Methode für die Übergabe des Tokens verwenden.|query|Zeichenfolge|
 |subscription-key|(leer)   |Alternative Möglichkeit für die Übergabe eines Abonnementschlüssels. In einigen WebSocket-Bibliotheken dürfen mit Clientcode keine Header festgelegt werden. In diesem Fall kann der Client den Abfrageparameter `subscription-key` für die Übergabe eines gültigen Abonnementschlüssels verwenden. Wenn Sie einen Abonnementschlüssel für die Authentifizierung verwenden, muss „subscription-key“ festgelegt werden, wenn der Header `Ocp-Apim-Subscription-Key` nicht festgelegt ist. Wenn sowohl der Header als auch der Abfrageparameter festgelegt sind, wird der Abfrageparameter ignoriert. Clients sollten nur eine Methode für die Übergabe des `subscription key` verwenden.|query|Zeichenfolge|
@@ -187,10 +187,10 @@ Wenn eine Clientanwendung die Audiowiedergabe abgeschlossen und das letzte Ender
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|Antwortmodell|Header|
+|HTTP-Statuscode|`Reason`|Antwortmodell|Header|
 |:--|:--|:--|:--|
 |101    |WebSocket-Upgrade.|Beispielwert für das Modell <br/> Objekt {}|X-RequestId<br/>Ein Wert, der die Anforderung für die Problembehandlung identifiziert.<br/>Zeichenfolge|
 |400    |Ungültige Anforderung. Überprüfen Sie die Eingabeparameter, und stellen Sie sicher, dass sie gültig sind. Das Antwortobjekt enthält eine ausführlichere Beschreibung des Fehlers.|||
 |401    |Nicht autorisiert. Stellen Sie sicher, dass Anmeldeinformationen festgelegt sind, dass diese gültig sind und dass es bei Ihrem Abonnement für den Azure-Datenmarkt keine Probleme gibt und ein Saldo verfügbar ist.|||
 |500    |Ein Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|||
-|503    |Der Server ist vorübergehend nicht verfügbar.  Versuchen Sie die Anforderung erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|||
+|503    |Der Server ist vorübergehend nicht verfügbar. Versuchen Sie die Anforderung erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|||

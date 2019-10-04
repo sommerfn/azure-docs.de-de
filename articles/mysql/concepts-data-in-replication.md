@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: f91a6da9a305c6620e4e01ab7aa3c554374cb5d7
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 09/13/2019
+ms.openlocfilehash: 5ef11e86b85a537a809352325d56ac3ff983c2c1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691521"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993045"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replizieren von Daten in Azure Database for MySQL
 
@@ -22,6 +22,8 @@ Zu den wichtigsten Szenarien, bei denen die Datenreplikation für Azure Database
 
 - **Synchronisierung von Hybriddaten:** Mit der Datenreplikation für Azure Database for MySQL können Sie Daten zwischen Ihren lokalen Servern und Azure Database for MySQL synchron halten. Eine solche Synchronisierung ist für die Erstellung von Hybridanwendungen nützlich. Diese Methode ist optimal geeignet, wenn Sie über einen lokalen Datenbankserver verfügen, die Daten jedoch in eine Region verschieben möchten, die sich näher bei den Endbenutzern befindet.
 - **Synchronisierung von Daten in verschiedenen Clouds:** Verwenden Sie bei komplexen Cloudlösungen die Datenreplikation für Azure Database for MySQL, um Daten zwischen Azure Database for MySQL und unterschiedlichen Cloudanbietern zu synchronisieren, einschließlich virtueller Computer und Datenbankdienste, die in diesen Clouds gehostet werden.
+ 
+Verwenden Sie bei Migrationsszenarien den [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/)(DMS).
 
 ## <a name="limitations-and-considerations"></a>Einschränkungen und Aspekte
 
@@ -34,6 +36,10 @@ Die [*mysql-Systemdatenbank*](https://dev.mysql.com/doc/refman/5.7/en/system-dat
 - Jede Tabelle muss über einen Primärschlüssel verfügen.
 - Der Masterserver sollte die MySQL InnoDB-Engine verwenden.
 - Benutzer müssen über Berechtigungen zum Konfigurieren der binären Protokollierung und zum Erstellen neuer Benutzer auf dem Masterserver verfügen.
+- Wenn für den Masterserver SSL aktiviert ist, vergewissern Sie sich, dass das für die Domäne bereitgestellte SSL-Zertifizierungsstellenzertifikat in die gespeicherte Prozedur `mysql.az_replication_change_master` eingefügt wurde. Sehen Sie sich die folgenden [Beispiele](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) und den Parameter `master_ssl_ca` an.
+- Stellen Sie sicher, dass die IP-Adresse des Masterservers den Firewallregeln des Azure Database for MySQL-Replikatservers hinzugefügt wurde. Aktualisieren Sie Firewallregeln über das [Azure-Portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) oder über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli).
+- Vergewissern Sie sich, dass für den Computer, der den Masterserver hostet, sowohl ein- als auch ausgehender Datenverkehr am Port 3306 zugelassen wird.
+- Stellen Sie sicher, dass der Masterserver eine **öffentliche IP-Adresse** hat, der DNS öffentlich zugänglich ist oder über einen vollqualifizierten Domänennamen (FQDN) verfügt.
 
 ### <a name="other"></a>Andere
 - Die Datenreplikation wird nur in den Tarifen Universell und Arbeitsspeicheroptimiert unterstützt.
@@ -42,3 +48,4 @@ Die [*mysql-Systemdatenbank*](https://dev.mysql.com/doc/refman/5.7/en/system-dat
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie [die Datenreplikation für Azure Database for MySQL einrichten](howto-data-in-replication.md).
 - Erfahren Sie mehr über das [Replizieren in Azure mit Lesereplikaten](concepts-read-replicas.md).
+- Erfahren Sie, wie Sie [Daten mit minimalen Ausfallzeiten mithilfe von DMS migrieren](howto-migrate-online.md) können.

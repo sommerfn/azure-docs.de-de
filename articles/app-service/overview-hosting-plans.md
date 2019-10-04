@@ -11,17 +11,16 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ab04d1288eb3a851774128b8aaaae03868c2ffa7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3118be297caabbd4b829344e42361fa6b7602aad
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730618"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066729"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
@@ -32,14 +31,13 @@ Wenn Sie einen App Service-Plan in einer bestimmten Region (z.B. „Europa, West
 - Region („USA, Westen“, „USA, Osten“ usw.)
 - Anzahl von VM-Instanzen
 - Größe von VM-Instanzen (Klein, Mittel, Groß)
-- Tarif (Free, Shared, Basic, Standard, Premium, PremiumV2, Isolated, Consumption)
+- Tarif (Free, Shared, Basic, Standard, Premium, PremiumV2, Isolated)
 
 Mit dem _Tarif_ eines App Service-Plans wird ermittelt, welche App Service-Features Sie erhalten und welche Kosten für den Plan anfallen. Es gibt verschiedene Kategorien von Tarifen:
 
 - **Freigegebene Computeressourcen**: Bei **Free** und **Shared** (die beiden Basistarife) wird eine App auf derselben Azure-VM wie andere App Service-Apps ausgeführt, z.B. Apps anderer Kunden. Für diese Tarife werden CPU-Kontingente für jede App zugeteilt, die auf den freigegebenen Ressourcen ausgeführt wird, und für die Ressourcen ist das horizontale Hochskalieren nicht möglich.
 - **Dedizierte Computeressourcen**: In den Tarifen **Basic**, **Standard**, **Premium** und **PremiumV2** werden Apps auf dedizierten Azure-VMs ausgeführt. Nur für Apps desselben App Service-Plans werden dieselben Computeressourcen gemeinsam genutzt. Je höher der Tarif, desto mehr VM-Instanzen stehen Ihnen für das horizontale Hochskalieren zur Verfügung.
-- **Isoliert**: Bei diesem Tarif werden dedizierte Azure-VMs in dedizierten Azure Virtual Networks ausgeführt, die eine Netzwerkisolation und eine Compute-Isolation für Apps ermöglichen. Sie verfügen hiermit über die maximalen Funktionen für die horizontale Skalierung.
-- **Verbrauch**: Dieser Tarif ist nur für [Funktionen-Apps](../azure-functions/functions-overview.md) verfügbar. Die Funktionen werden je nach Workload dynamisch skaliert. Weitere Informationen finden Sie unter [Vergleich von Hostingplänen für Azure Functions](../azure-functions/functions-scale.md).
+- **Isoliert**: In diesem Tarif werden dedizierte Azure-VMs in dedizierten virtuellen Azure-Netzwerken ausgeführt. Er stellt zusätzlich zur Computeisolation Netzwerkisolation für Ihre Apps bereit. Sie verfügen hiermit über die maximalen Funktionen für die horizontale Skalierung.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -80,8 +78,7 @@ Mit Ausnahme des Tarifs **Free** fällt für einen App Service-Plan eine Gebühr
 
 - Beim Tarif **Shared** erhält jede App ein Kontingent von CPU-Minuten, sodass für _jede App_ eine Stundengebühr gemäß dem CPU-Kontingent anfällt.
 - Bei dedizierten Computetarifen (**Basic**, **Standard**, **Premium**, **PremiumV2**) ist im App Service-Plan die Anzahl von VM-Instanzen definiert, auf die Apps skaliert werden. Für _jede VM-Instanz_ des App Service-Plans fällt also eine Gebühr auf Stundenbasis an. Diese VM-Instanzen werden unabhängig davon, wie viele Apps darauf ausgeführt werden, jeweils gleich berechnet. Informieren Sie sich unter [Manage an App Service plan in Azure](app-service-plan-manage.md#delete) (Verwalten eines App Service-Plans in Azure), um unerwartete Gebühren zu vermeiden.
-- Beim Tarif **Isolated** definiert die App Service-Umgebung die Anzahl von isolierten Workern, die zum Ausführen Ihrer Apps verwendet werden, und _jeder Worker_ wird auf Stundenbasis berechnet. Darüber hinaus fällt eine stündliche Grundgebühr für die Ausführung der eigentlichen App Service-Umgebung an. 
-- (Nur Azure Functions) Beim Tarif **Consumption** werden VM-Instanzen dynamisch für die Workload einer Funktionen-App zugeteilt, und die Berechnung in Azure erfolgt dynamisch pro Sekunde. Weitere Informationen finden Sie unter [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/).
+- Beim Tarif **Isolated** definiert die App Service-Umgebung die Anzahl von isolierten Workern, die zum Ausführen Ihrer Apps verwendet werden, und _jeder Worker_ wird auf Stundenbasis berechnet. Darüber hinaus fällt eine stündliche Grundgebühr für die Ausführung der eigentlichen App Service-Umgebung an.
 
 Für die Nutzung der App Service-Features, die für Sie verfügbar sind (Konfiguration von benutzerdefinierten Domänen, SSL-Zertifikaten, Bereitstellungsslots, Sicherungen usw.), fallen keine Gebühren an. Es gelten folgende Ausnahmen:
 
@@ -102,7 +99,7 @@ Beispiel: Sie können Ihre Web-App zu Beginn für einen App Service-Plan mit dem
 
 Dies funktioniert auch umgekehrt. Sobald Sie die Funktionen oder Features eines höheren Tarifs nicht mehr benötigen, können Sie zentral auf einen niedrigeren Tarif herunterskalieren und Kosten sparen.
 
-Informationen zum zentralen Hochskalieren des App Service-Plans finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md).
+Informationen zum zentralen Hochskalieren des App Service-Plans finden Sie unter [Zentrales Hochskalieren einer App in Azure](manage-scale-up.md).
 
 Wenn Ihre App mit anderen Apps unter demselben App Service-Plan angeordnet ist, können Sie die Leistung der App verbessern, indem Sie die Computeressourcen isolieren. Hierzu verschieben Sie die App in einen separaten App Service-Plan. Weitere Informationen finden Sie unter [Move an app to another App Service plan](app-service-plan-manage.md#move) (Verschieben einer App in einen anderen App Service-Plan).
 
@@ -113,7 +110,7 @@ Da Sie für die von Ihrem App Service-Plan zugeteilten Computeressourcen zahlen 
 Isolieren Sie Ihre App in einem neuen App Service-Plan, wenn Folgendes gilt:
 
 - Die App ist ressourcenintensiv.
-- Sie möchten die App unabhängig von den anderen Apps des vorhandenen Plans skalieren.
+- Sie möchten die App unabhängig von den anderen Apps im vorhandenen Plan skalieren.
 - Die App benötigt Ressourcen in einer anderen geografischen Region.
 
 Dadurch können Sie einen neuen Satz von Ressourcen für die App zuordnen und Ihre Apps noch präziser steuern.

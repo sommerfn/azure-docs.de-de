@@ -1,33 +1,33 @@
 ---
-title: 'Schnellstart: Einrichten der Anmeldung für eine Desktop-App mit Azure Active Directory B2C | Microsoft-Dokumentation'
-description: Führen Sie eine ASP.NET-Desktopbeispielanwendung aus, bei der die Kontoanmeldung über Azure Active Directory B2C erfolgt.
+title: 'Schnellstart: Einrichten der Anmeldung für eine Desktop-App mit Azure Active Directory B2C'
+description: Führen Sie eine WPF-Desktopbeispielanwendung aus, bei der die Kontoanmeldung über Azure Active Directory B2C erfolgt.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/30/2018
-ms.author: davidmu
+ms.date: 09/12/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 161c1ec72b14f4cc1b2517a0dc6282f0548575b3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e11fd2c8ff250ff505f312507a577d67ff9c1454
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182301"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065822"
 ---
-# <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine Desktop-App mit Azure Active Directory B2C 
+# <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine Desktop-App mit Azure Active Directory B2C
 
-Azure Active Directory (Azure AD) B2C ermöglicht die Cloudidentitätsverwaltung zum Schützen Ihrer Anwendung, Ihres Unternehmens und Ihrer Kunden. Mit Azure AD B2C können sich Ihre Anwendungen über offene Standardprotokolle bei Konten für soziale Netzwerke und bei Unternehmenskonten authentifizieren. In dieser Schnellstartanleitung verwenden Sie eine WPF-Desktopanwendung (Windows Presentation Foundation) zum Anmelden, indem Sie ein soziales Netzwerk als Identitätsanbieter nutzen und eine per Azure AD B2C geschützte Web-API aufrufen.
+Azure Active Directory B2C (Azure AD B2C) ermöglicht die Cloudidentitätsverwaltung zum Schützen Ihrer Anwendung, Ihres Unternehmens und Ihrer Kunden. Mit Azure AD B2C können sich Ihre Anwendungen über offene Standardprotokolle bei Konten für soziale Netzwerke und bei Unternehmenskonten authentifizieren. In dieser Schnellstartanleitung verwenden Sie eine WPF-Desktopanwendung (Windows Presentation Foundation) zum Anmelden, indem Sie ein soziales Netzwerk als Identitätsanbieter nutzen und eine per Azure AD B2C geschützte Web-API aufrufen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Visual Studio 2017](https://www.visualstudio.com/downloads/) mit der Workload **ASP.NET und Webentwicklung** 
-- Sie besitzen ein Konto bei einem sozialen Netzwerk, d.h. bei Facebook, Google, Microsoft oder Twitter.
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit der Workload **ASP.NET und Webentwicklung**
+- Ein Social Media-Konto von Facebook, Google oder Microsoft
 - [Laden Sie eine ZIP-Datei herunter](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip), oder klonen Sie die Beispiel-Web-App aus GitHub.
 
     ```
@@ -43,16 +43,16 @@ Azure Active Directory (Azure AD) B2C ermöglicht die Cloudidentitätsverwaltung
 
 1. Klicken Sie auf **Anmelden**, um den Workflow für das **Registrieren oder Anmelden** zu starten.
 
-    ![Beispielanwendung](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
+    ![Screenshot der WPF-Beispielanwendung](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
 
-    In der Beispielanwendung werden mehrere Registrierungsoptionen unterstützt, z.B. die Nutzung eines sozialen Netzwerks als Identitätsanbieter oder die Erstellung eines lokalen Kontos per E-Mail-Adresse. Verwenden Sie für diese Schnellstartanleitung ein Konto bei einem sozialen Netzwerk als Identitätsanbieter (etwa Facebook, Google, Microsoft oder Twitter). 
+    Das Beispiel unterstützt mehrere Registrierungsoptionen. Diese Optionen umfassen die Nutzung eines sozialen Netzwerks als Identitätsanbieter oder die Erstellung eines lokalen Kontos per E-Mail-Adresse. Verwenden Sie für diese Schnellstartanleitung ein Konto bei einem sozialen Netzwerk als Identitätsanbieter (etwa Facebook, Google oder Microsoft).
 
 
-2. Azure AD B2C zeigt für die Beispiel-Web-App eine benutzerdefinierte Anmeldeseite für die fiktive Marke „Wingtip Toys“ an. Um sich mit einem Social Media-Konto als Identitätsanbieter zu registrieren, klicken Sie auf die Schaltfläche des Identitätsanbieters, den Sie verwenden möchten. 
+2. Azure AD B2C zeigt für die Beispielwebanwendung eine Anmeldeseite für ein fiktives Unternehmen namens „Fabrikam“ an. Um sich mit einem Social Media-Konto als Identitätsanbieter zu registrieren, klicken Sie auf die Schaltfläche des Identitätsanbieters, den Sie verwenden möchten.
 
-    ![Anbieter für Registrierung oder Anmeldung](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
+    ![Anmelde-oder Registrierungsseite mit Identitätsanbietern](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
 
-    Sie authentifizieren sich mit den Anmeldeinformationen Ihres Social Media-Kontos und autorisieren die Anwendung dazu, Informationen von Ihrem Social Media-Konto zu lesen. Wenn Sie der Anwendung Zugriff auf diese gewähren, kann die Anwendung Profilinformationen aus dem Social Media-Konto abrufen, z.B. Ihren Namen und Ihre Stadt. 
+    Sie authentifizieren sich mit den Anmeldeinformationen Ihres Social Media-Kontos und autorisieren die Anwendung dazu, Informationen aus Ihrem Social Media-Konto zu lesen. Wenn Sie der Anwendung Zugriff auf diese gewähren, kann die Anwendung Profilinformationen aus dem Social Media-Konto abrufen, z.B. Ihren Namen und Ihre Stadt.
 
 2. Schließen Sie den Anmeldevorgang für den Identitätsanbieter ab.
 
@@ -60,13 +60,13 @@ Azure Active Directory (Azure AD) B2C ermöglicht die Cloudidentitätsverwaltung
 
 ## <a name="edit-your-profile"></a>Bearbeiten des Profils
 
-Azure AD B2C umfasst Funktionen, mit denen Benutzer ihre Profile aktualisieren können. Die Beispiel-Web-App nutzt einen Azure AD B2C-Bearbeitungsprofil-Benutzerflow für den Workflow. 
+Azure AD B2C umfasst Funktionen, mit denen Benutzer ihre Profile aktualisieren können. Die Beispiel-Web-App nutzt einen Azure AD B2C-Bearbeitungsprofil-Benutzerflow für den Workflow.
 
 1. Klicken Sie in der Menüleiste der Anwendung auf **Profil bearbeiten**, um das von Ihnen erstellte Profil zu bearbeiten.
 
-    ![Bearbeiten eines Profils](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
+    ![Hervorgehobene Schaltfläche „Profil bearbeiten“ in der WPF-Beispielanwendung](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
 
-2. Wählen Sie den Identitätsanbieter aus, der dem erstellten Konto zugeordnet ist. Wenn Sie beim Erstellen Ihres Kontos z.B. Twitter als Identitätsanbieter verwendet haben, wählen Sie Twitter aus, um die Details des verknüpften Profils zu ändern.
+2. Wählen Sie den Identitätsanbieter aus, der dem erstellten Konto zugeordnet ist. Wenn Sie beim Erstellen Ihres Kontos beispielsweise Facebook als Identitätsanbieter verwendet haben, wählen Sie Facebook aus, um die Details des verknüpften Profils zu ändern.
 
 3. Ändern Sie Ihren **Anzeigenamen** oder den **Ort**, und klicken Sie anschließend auf **Weiter**.
 
@@ -74,7 +74,7 @@ Azure AD B2C umfasst Funktionen, mit denen Benutzer ihre Profile aktualisieren k
 
 ## <a name="access-a-protected-api-resource"></a>Zugreifen auf eine geschützte API-Ressource
 
-Klicken Sie auf **API aufrufen**, um eine Anforderung an die geschützte Ressource zu übermitteln. 
+Klicken Sie auf **API aufrufen**, um eine Anforderung an die geschützte Ressource zu übermitteln.
 
     ![Call API](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
 
@@ -88,9 +88,14 @@ Sie können Ihren Azure AD B2C-Mandanten für weitere Azure AD B2C-Schnellstarts
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Beispiel-Desktopanwendung verwendet, um sich über eine benutzerdefinierte Anmeldeseite anzumelden, sich mit einem sozialen Netzwerk als Identitätsanbieter anzumelden, ein Azure AD B2C-Konto zu erstellen und eine per Azure AD B2C geschützte Web-API aufzurufen. 
+In dieser Schnellstartanleitung haben Sie mithilfe einer Desktop-Beispielanwendung folgende Aktionen durchgeführt:
 
-Machen Sie sich als Nächstes mit der Erstellung Ihres eigenen Azure AD B2C-Mandanten vertraut. 
+* Anmelden mit einer benutzerdefinierten Anmeldeseite
+* Anmelden mit einem sozialen Netzwerk als Identitätsanbieter
+* Erstellen eines Azure AD B2C-Kontos
+* Aufrufen einer durch Azure AD B2C geschützten Web-API
+
+Machen Sie sich als Nächstes mit der Erstellung Ihres eigenen Azure AD B2C-Mandanten vertraut.
 
 > [!div class="nextstepaction"]
 > [Erstellen eines Azure Active Directory B2C-Mandanten im Azure-Portal](tutorial-create-tenant.md)

@@ -1,73 +1,68 @@
 ---
-title: Verwalten eines virtuellen Linux-Computers in Azure mithilfe von Ansible
-description: Hier erfahren Sie, wie Sie mithilfe von Ansible einen virtuellen Linux-Computer in Azure verwalten.
-ms.service: virtual-machines-linux
+title: 'Schnellstart: Verwalten eines virtuellen Linux-Computers in Azure mithilfe von Ansible | Microsoft-Dokumentation'
+description: In diesem Schnellstart erfahren Sie, wie Sie einen virtuellen Linux-Computer in Azure mit Ansible verwalten.
 keywords: Ansible, Azure, DevOps, Bash, CloudShell, Playbook, Bash
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: quickstart
-ms.date: 09/27/2018
-ms.openlocfilehash: 8f97cf8a4231e9a2144f27c0540de96574e13795
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.service: ansible
+author: tomarchermsft
+manager: gwallace
+ms.author: tarcher
+ms.date: 04/30/2019
+ms.openlocfilehash: c4878902425a26086ad77647ea06568f2110ccfe
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57789876"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67668623"
 ---
-# <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Verwalten eines virtuellen Linux-Computers in Azure mithilfe von Ansible
-Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre virtuellen Azure-Computer wie jede andere Ressource verwalten. In diesem Artikel wird veranschaulicht, wie Sie mithilfe eines Ansible-Playbooks einen virtuellen Linux-Computer starten und beenden. 
+# <a name="quickstart-manage-linux-virtual-machines-in-azure-using-ansible"></a>Schnellstart: Verwalten von virtuellen Linux-Computern in Azure mithilfe von Ansible
+
+Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. In diesem Artikel starten und beenden Sie mithilfe eines Ansible-Playbooks einen virtuellen Linux-Computer. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **Azure-Abonnement:** Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen.
+[!INCLUDE [open-source-devops-prereqs-azure-sub.md](../../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)][!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
+## <a name="stop-a-virtual-machine"></a>Dient zum Beenden eines virtuellen Computers.
 
-## <a name="use-ansible-to-deallocate-stop-an-azure-virtual-machine"></a>Aufheben der Zuordnung (Beenden) eines virtuellen Azure-Computers mithilfe von Ansible
-In diesem Abschnitt wird erläutert, wie Sie mithilfe von Ansible die Zuordnung eines virtuellen Computers aufheben (beenden).
+In diesem Abschnitt heben Sie mithilfe von Ansible die Zuordnung eines virtuellen Computers auf (beenden diesen).
 
-1.  Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1.  Öffnen Sie [Cloud Shell](/azure/cloud-shell/overview).
+1. Öffnen Sie [Cloud Shell](/azure/cloud-shell/overview).
 
-1.  Erstellen Sie für Ihr Playbook eine Datei namens `azure-vm-stop.yml`, und öffnen Sie sie wie folgt im vi-Editor:
+1. Erstellen Sie eine Datei mit dem Namen `azure-vm-stop.yml`, und öffnen Sie sie im Editor:
 
     ```azurecli-interactive
-    vi azure-vm-stop.yml
+    code azure-vm-stop.yml
     ```
 
-1.  Drücken Sie die **I-TASTE**, um den Einfügemodus zu starten.
-
-1.  Fügen Sie den folgenden Beispielcode in den Editor ein:
+1. Fügen Sie den folgenden Beispielcode in den Editor ein:
 
     ```yaml
     - name: Stop Azure VM
       hosts: localhost
       connection: local
       tasks:
-      - name: Deallocate the virtual machine
-        azure_rm_virtualmachine:
-          resource_group: myResourceGroup
-          name: myVM
-          allocated: no
+        - name: Stop virtual machine
+          azure_rm_virtualmachine:
+            resource_group: {{ resource_group_name }}
+            name: {{ vm_name }}
+            allocated: no
     ```
 
-1.  Drücken Sie die **ESC**-TASTE, um den Einfügemodus zu beenden.
+1. Ersetzen Sie die Platzhalter `{{ resource_group_name }}` und `{{ vm_name }}` durch Ihre Werte.
 
-1.  Speichern Sie die Datei, und geben Sie den folgenden Befehl ein, um den vi-Editor zu schließen:
+1. Speichern Sie die Datei, und beenden Sie den Editor.
 
-    ```bash
-    :wq
-    ```
-
-1.  Führen Sie das Ansible-Beispielplaybook aus.
+1. Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
     ```bash
     ansible-playbook azure-vm-stop.yml
     ```
 
-1.  Die Ausgabe sieht etwa wie im folgenden Beispiel aus, das zeigt, dass die Zuordnung des (beendeten) virtuellen Computers aufgehoben wurde:
+1. Nach dem Ausführen des Playbooks wird in etwa die folgende Ausgabe angezeigt:
 
     ```bash
     PLAY [Stop Azure VM] ********************************************************
@@ -82,49 +77,44 @@ In diesem Abschnitt wird erläutert, wie Sie mithilfe von Ansible die Zuordnung 
     localhost                  : ok=2    changed=1    unreachable=0    failed=0
     ```
 
-## <a name="use-ansible-to-start-a-deallocated-stopped-azure-virtual-machine"></a>Verwenden von Ansible zum Starten eines (beendeten) virtuellen Azure-Computers, dessen Zuordnung aufgehoben wurde
-In diesem Abschnitt wird erläutert, wie Sie mithilfe von Ansible einen (beendeten) virtuellen Computer starten, dessen Zuordnung aufgehoben wurde.
+## <a name="start-a-virtual-machine"></a>Starten eines virtuellen Computers
 
-1.  Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
+In diesem Abschnitt starten Sie einen virtuellen Azure-Computer, dessen Zuordnung aufgehoben wurde (der beendet wurde), mit Ansible.
 
-1.  Öffnen Sie [Cloud Shell](/azure/cloud-shell/overview).
+1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 
-1.  Erstellen Sie für Ihr Playbook eine Datei namens `azure-vm-start.yml`, und öffnen Sie sie wie folgt im vi-Editor:
+1. Öffnen Sie [Cloud Shell](/azure/cloud-shell/overview).
+
+1. Erstellen Sie eine Datei mit dem Namen `azure-vm-start.yml`, und öffnen Sie sie im Editor:
 
     ```azurecli-interactive
-    vi azure-vm-start.yml
+    code azure-vm-start.yml
     ```
 
-1.  Drücken Sie die **I-TASTE**, um den Einfügemodus zu starten.
-
-1.  Fügen Sie den folgenden Beispielcode in den Editor ein:
+1. Fügen Sie den folgenden Beispielcode in den Editor ein:
 
     ```yaml
     - name: Start Azure VM
       hosts: localhost
       connection: local
       tasks:
-      - name: Start the virtual machine
-        azure_rm_virtualmachine:
-          resource_group: myResourceGroup
-          name: myVM
+        - name: Start virtual machine
+          azure_rm_virtualmachine:
+            resource_group: {{ resource_group_name }}
+            name: {{ vm_name }}
     ```
 
-1.  Drücken Sie die **ESC**-TASTE, um den Einfügemodus zu beenden.
+1. Ersetzen Sie die Platzhalter `{{ resource_group_name }}` und `{{ vm_name }}` durch Ihre Werte.
 
-1.  Speichern Sie die Datei, und geben Sie den folgenden Befehl ein, um den vi-Editor zu schließen:
+1. Speichern Sie die Datei, und beenden Sie den Editor.
 
-    ```bash
-    :wq
-    ```
-
-1.  Führen Sie das Ansible-Beispielplaybook aus.
+1. Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
     ```bash
     ansible-playbook azure-vm-start.yml
     ```
 
-1.  Die Ausgabe sieht etwa wie im folgenden Beispiel aus, das zeigt, dass der virtuelle Computer gestartet wurde:
+1. Nach dem Ausführen des Playbooks wird in etwa die folgende Ausgabe angezeigt:
 
     ```bash
     PLAY [Start Azure VM] ********************************************************
@@ -140,5 +130,6 @@ In diesem Abschnitt wird erläutert, wie Sie mithilfe von Ansible einen (beendet
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 > [!div class="nextstepaction"] 
-> [Verwalten dynamischer Azure-Bestände mithilfe von Ansible](~/articles/ansible/ansible-manage-azure-dynamic-inventories.md)
+> [Tutorial: Verwalten dynamischer Azure-Bestände mithilfe von Ansible](~/articles/ansible/ansible-manage-azure-dynamic-inventories.md)

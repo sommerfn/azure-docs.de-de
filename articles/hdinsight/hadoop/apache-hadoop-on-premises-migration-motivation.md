@@ -1,7 +1,6 @@
 ---
 title: Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Motivation und Vorteile
 description: Erfahren Sie mehr über die Motivation und Vorteile einer Migration von lokalen Hadoop-Clustern zu Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 73a2f0754cafaa5da09ebd437ecd62813296ffd9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 3c122a68e9f28772be4e3a17a21e5457aa187ce6
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890078"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736115"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Motivation und Vorteile
 
@@ -22,7 +21,7 @@ Dieser Artikel ist der erste in einer Reihe von Artikeln zu bewährten Methoden 
 
 ## <a name="why-to-migrate-to-azure-hdinsight"></a>Warum eine Migration zu Azure HDInsight?
 
-Azure HDInsight ist eine Clouddistribution der Hadoop-Komponenten von  [Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-center/hdp/). Azure HDInsight ermöglicht die einfache, schnelle und kostengünstige Verarbeitung umfangreicher Datenmengen. HDInsight umfasst die beliebtesten Open-Source-Frameworks wie beispielsweise:
+Azure HDInsight ist eine Clouddistribution von Hadoop-Komponenten. Azure HDInsight ermöglicht die einfache, schnelle und kostengünstige Verarbeitung umfangreicher Datenmengen. HDInsight umfasst die beliebtesten Open-Source-Frameworks wie beispielsweise:
 
 - Apache Hadoop
 - Apache Spark
@@ -44,7 +43,7 @@ Azure HDInsight ist eine Clouddistribution der Hadoop-Komponenten von  [Hortonw
 
 - **Globale Verfügbarkeit**: HDInsight ist in mehr [Regionen](https://azure.microsoft.com/regions/services/) verfügbar als jede andere Big Data-Analyselösung. Zudem steht Azure HDInsight für Azure Government, China und Deutschland zur Verfügung, was die Erfüllung geschäftlicher Anforderungen in zentralen unabhängigen Bereichen ermöglicht.
 
-- **Sicher und konform**: Mit HDInsight können Sie die Datenressourcen Ihres Unternehmens durch die Verwendung von  [Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md),  [Verschlüsselung](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) und Integration von  [Azure Active Directory](../domain-joined/apache-domain-joined-introduction.md) schützen. Darüber hinaus erfüllt HDInsight die gängigsten branchen- und behördenspezifischen  [Compliancestandards](https://azure.microsoft.com/overview/trusted-cloud).
+- **Sicher und konform**: Mit HDInsight können Sie die Datenressourcen Ihres Unternehmens durch die Verwendung von  [Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md),  [Verschlüsselung](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) und Integration von  [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) schützen. Darüber hinaus erfüllt HDInsight die gängigsten branchen- und behördenspezifischen  [Compliancestandards](https://azure.microsoft.com/overview/trusted-cloud).
 
 - **Vereinfachte Versionsverwaltung**: Azure HDInsight verwaltet die Versionen von Komponenten des Hadoop-Ökosystems und hält sie auf dem neuesten Stand. Bei lokalen Bereitstellungen stellen Softwareupdates in der Regel ein komplexes Verfahren dar.
 
@@ -91,7 +90,6 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 | **Frage** | **Beispiel** | **Antwort** |
 |---|---|---|
 |**Thema**: **Umgebung**|||
-|Typ der Clusterdistribution|Hortonworks, Cloudera, MapR| |
 |Version der Clusterdistribution|HDP 2.6.5, CDH 5.7|
 |Komponenten des Big Data-Ökosystems|HDFS, Yarn, Hive, LLAP, Impala, Kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, Atlas, Falcon, Zeppelin, R|
 |Clustertypen|Hadoop, Spark, Confluent Kafka, Storm, Solr|
@@ -139,10 +137,10 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |Datenziele|HDFS, RDBMS, Kafka, MPP ||
 |**Thema**: **Metadaten**|||
 |Hive-Datenbanktyp|Mysql, Postgres||
-| Nein. der Hive-Metastores|2||
-| Nein. der Hive-Tabellen|100||
-| Nein. der Ranger-Richtlinien|20||
-| Nein. der Oozie-Workflows|100||
+|Nein. der Hive-Metastores|2||
+|Nein. der Hive-Tabellen|100||
+|Nein. der Ranger-Richtlinien|20||
+|Nein. der Oozie-Workflows|100||
 |**Thema**: **Skalieren**|||
 |Datenvolumen einschließlich Replikation|100 TB||
 |Tägliches Datenerfassungsvolumen|50 GB||
@@ -154,11 +152,11 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |Speicherplatznutzung|75 %||
 |Durchschnittliche Netzwerknutzung in %|25%
 |**Thema**: **Personal**|||
-| Nein. der Administratoren|2||
-| Nein. der Entwickler|10||
-| Nein. der Endbenutzer|100||
+|Nein. der Administratoren|2||
+|Nein. der Entwickler|10||
+|Nein. der Endbenutzer|100||
 |Fähigkeiten|Hadoop, Spark||
-| Nein. der verfügbaren Ressourcen für Migrationsaufwand|2||
+|Nein. der verfügbaren Ressourcen für Migrationsaufwand|2||
 |**Thema**: **Einschränkungen**|||
 |Aktuelle Einschränkungen|Latenz ist hoch||
 |Aktuelle Herausforderungen|Parallelitätsproblem||
@@ -182,10 +180,10 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |Private und geschützte Datenpipeline?|Ja||
 |In die Domäne eingebundener Cluster (ESP)?|     Ja||
 |Synchronisierung von lokalem AD mit Cloud?|     Ja||
-| Nein. zu synchronisierender AD-Benutzer?|          100||
+|Nein. zu synchronisierender AD-Benutzer?|          100||
 |Dürfen Kennwörter in Cloud synchronisiert werden?|    Ja||
 |Nur Cloudbenutzer?|                 Ja||
-|MFA erforderlich?|                       Nein || 
+|MFA erforderlich?|                       Nein|| 
 |Anforderungen an die Datenautorisierung?|  Ja||
 |Rollenbasierte Zugriffssteuerung?|        Ja||
 |Überwachung erforderlich?|                  Ja||
@@ -199,8 +197,7 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |Verwendung eines Remote-Metastore?|Ja||
 |Freigeben von Metastores zwischen verschiedenen Clustern?|Ja||
 |Dekonstruieren von Workloads?|Ersetzen von Hive-Aufträgen durch Spark-Aufträge||
-|Verwendung von ADF zur Datenorchestrierung?|Nein ||
-|HDInsight oder Hortonworks Data Platform in IaaS?|HDInsight||
+|Verwendung von ADF zur Datenorchestrierung?|Nein||
 
 ## <a name="next-steps"></a>Nächste Schritte
 

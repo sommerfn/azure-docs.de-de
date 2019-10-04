@@ -10,18 +10,19 @@ ms.author: robreed
 ms.date: 08/21/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 64588829cec964e52dcb44465869e0090f36f9f1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e153186a3917be3aa94cb663dec58bc3db46aae9
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278621"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850414"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Zusammenstellen von DSC-Konfigurationen in Azure Automation State Configuration (DSC) mit zusammengesetzten Ressourcen
 
 Wenn eine Ressource mit mehr als nur einer Konfiguration des gewünschten Zustands (DSC) verwaltet werden muss, ist die beste Vorgehensweise die Nutzung von [zusammengesetzten Ressourcen](/powershell/dsc/authoringresourcecomposite). Eine zusammengesetzte Ressource ist eine geschachtelte und parametrisierte Konfiguration, die als DSC-Ressource in einer anderen Konfiguration verwendet wird. Dies ermöglicht die Erstellung von komplexen Konfigurationen, während die zugrunde liegenden zusammengesetzten Ressourcen (parametrisierte Konfigurationen) einzeln verwaltet und erstellt werden.
 
-Mit Azure Automation können Sie [zusammengesetzte Ressourcen importieren und kompilieren](automation-dsc-compile.md#composite-resources). Nachdem zusammengesetzte Ressourcen in Ihr Automation-Konto importiert wurden, können Sie auf der Seite **Zustandskonfiguration (DSC)** die Benutzeroberfläche für **Konfiguration zusammenstellen** verwenden.
+Mit Azure Automation können Sie [zusammengesetzte Ressourcen importieren und kompilieren](automation-dsc-compile.md#compiling-configurations-in-azure-automation-that-contain-composite-resources).
+Nachdem zusammengesetzte Ressourcen in Ihr Automation-Konto importiert wurden, können Sie auf der Seite **Zustandskonfiguration (DSC)** die Benutzeroberfläche für **Konfiguration zusammenstellen** verwenden.
 
 ## <a name="composing-a-configuration-from-composite-resources"></a>Zusammenstellen einer Konfiguration aus zusammengesetzten Ressourcen
 
@@ -29,7 +30,7 @@ Bevor Sie eine aus zusammengesetzten Ressourcen erstellte Konfiguration im Azure
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
-1. Klicken Sie auf der Seite **Automation-Konto** unter **Konfigurationsverwaltung** auf **Zustandskonfiguration (DSC)**.
+1. Klicken Sie auf der Seite **Automation-Konto** unter **Konfigurationsverwaltung** auf **Zustandskonfiguration (DSC)** .
 1. Klicken Sie auf der Seite **Zustandskonfiguration (DSC)** entweder auf die Registerkarte **Konfigurationen** oder **Kompilierte Konfigurationen** und dann im Menü oben auf der Seite auf **Konfiguration zusammenstellen**.
 1. Geben Sie im Schritt **Grundlagen** den neuen Konfigurationsnamen ein (erforderlich), und klicken Sie jeweils auf eine beliebige Stelle der Zeile für eine zusammengesetzte Ressource, die Sie in Ihre neue Konfiguration einfügen möchten. Klicken Sie anschließend auf **Weiter** oder auf den Schritt **Quellcode**. Für die folgenden Schritte wurden die zusammengesetzten Ressourcen **PSExecutionPolicy** und **RenameAndDomainJoin** ausgewählt.
    ![Screenshot: Schritt „Grundlagen“ der Seite „Konfiguration zusammenstellen“](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)

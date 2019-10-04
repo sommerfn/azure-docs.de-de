@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: d4fec5d8131d269d3df229360066452c37a92430
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5d9728db919f15eda49602f2619f1c27fbb42b57
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665541"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036549"
 ---
 # <a name="sfctl-application"></a>sfctl application
 Ermöglicht es, Anwendungen und Anwendungstypen zu erstellen, zu löschen und zu verwalten.
@@ -43,7 +42,7 @@ Ermöglicht es, Anwendungen und Anwendungstypen zu erstellen, zu löschen und zu
 | type | Ruft die Liste der Anwendungstypen im Service Fabric-Cluster ab, die genau mit dem angegebenen Namen übereinstimmen. |
 | type-list | Ruft die Liste der Anwendungstypen im Service Fabric-Cluster ab. |
 | unprovision | Entfernt einen Service Fabric-Anwendungstyp aus dem Cluster oder hebt die Registrierung eines Service Fabric-Anwendungstyps für den Cluster auf. |
-| Upgrade | Startet ein Aktualisieren einer Anwendung im Service Fabric-Cluster. |
+| upgrade | Startet ein Aktualisieren einer Anwendung im Service Fabric-Cluster. |
 | upgrade-resume | Setzt ein Aktualisieren einer Anwendung im Service Fabric-Cluster fort. |
 | upgrade-rollback | Führt ein Rollback des derzeit laufenden Upgrades einer Anwendung im Service Fabric-Cluster aus. |
 | upgrade-status | Ruft Details über das neueste Upgrade ab, das für diese Anwendung ausgeführt wurde. |
@@ -57,8 +56,8 @@ Erstellt eine Service Fabric-Anwendung mithilfe der angegebenen Beschreibung.
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --app-name [erforderlich] | Der Name der Anwendung, einschließlich des URI-Schemas „fabric\:“. |
-| -- app-type [erforderlich] | Der Anwendungstypname, der im Anwendungsmanifest gefunden wurde. |
-| -- app-version [erforderlich] | Die Version des Anwendungstyps, wie sie im Anwendungsmanifest definiert ist. |
+| --app-type [erforderlich] | Der Anwendungstypname, der im Anwendungsmanifest gefunden wurde. |
+| --app-version [erforderlich] | Die Version des Anwendungstyps, wie sie im Anwendungsmanifest definiert ist. |
 | --max-node-count | Die maximale Anzahl von Knoten, für die Service Fabric Kapazität für diese Anwendung reserviert. Hinweis: Dies bedeutet nicht, dass die Dienste dieser Anwendung auf allen dieser Knoten platziert werden. |
 | --metrics | Eine JSON-codierte Liste der Kapazitätsmetrikbeschreibungen einer Anwendung. Eine Metrik ist als Name definiert, der einem Satz von Kapazitäten für jeden Knoten zugeordnet ist, auf dem die Anwendung vorhanden ist. |
 | --min-node-count | Die minimale Anzahl von Knoten, für die Service Fabric Kapazität für diese Anwendung reserviert wird. Hinweis: Dies bedeutet nicht, dass die Dienste dieser Anwendung auf allen dieser Knoten platziert werden. |

@@ -3,8 +3,8 @@ title: Lesen von NSG-Datenflussprotokollen | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie NSG-Datenflussprotokolle analysiert werden
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
-ms.author: jdial
-ms.openlocfilehash: cddf6526a798195e3e3091af766fee28791ac522
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: kumud
+ms.openlocfilehash: becae0f085fcaf4b0d0c7b29e102aaa3186fb85e
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795479"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67653740"
 ---
 # <a name="read-nsg-flow-logs"></a>Lesen von NSG-Datenflussprotokollen
 
@@ -39,7 +39,7 @@ Bevor Sie beginnen, müssen Sie die NSG-Datenflussprotokollierung für mindesten
 
 ## <a name="retrieve-the-block-list"></a>Abrufen der Liste der Blöcke
 
-Mit dem folgenden PowerShell-Skript werden die erforderlichen Variablen zum Abfragen des Blobs mit dem NSG-Datenflussprotokoll eingerichtet, und die Blöcke im Blockblob [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azurestorage-8.1.3) werden aufgelistet. Aktualisieren Sie das Skript so, dass es gültige Werte für Ihre Umgebung enthält.
+Mit dem folgenden PowerShell-Skript werden die erforderlichen Variablen zum Abfragen des Blobs mit dem NSG-Datenflussprotokoll eingerichtet, und die Blöcke im Blockblob [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) werden aufgelistet. Aktualisieren Sie das Skript so, dass es gültige Werte für Ihre Umgebung enthält.
 
 ```powershell
 function Get-NSGFlowLogCloudBlockBlob {
@@ -116,7 +116,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>Lesen des Blockblobs
 
-Nun müssen Sie die `$blocklist`-Variable lesen, um die Daten abzurufen. In diesem Beispiel wird die Liste der Blöcke durchlaufen, die Bytes werden aus den einzelnen Blöcken gelesen und in einem Array gespeichert. Rufen Sie die Daten mit der [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_)-Methode ab.
+Nun müssen Sie die `$blocklist`-Variable lesen, um die Daten abzurufen. In diesem Beispiel wird die Liste der Blöcke durchlaufen, die Bytes werden aus den einzelnen Blöcken gelesen und in einem Array gespeichert. Rufen Sie die Daten mit der [DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.cloudblob.downloadrangetobytearray)-Methode ab.
 
 ```powershell
 function Get-NSGFlowLogReadBlock  {

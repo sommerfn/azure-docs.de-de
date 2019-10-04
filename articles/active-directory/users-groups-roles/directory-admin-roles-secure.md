@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81d09978c3333a5b76c09f8c7dac85998d342f03
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 7d3346c873f88654f75628863a01fda76449ce2d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287229"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259407"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -135,11 +135,11 @@ Phase 2 der Roadmap konzentriert sich auf die Abwehr besonders häufig verwendet
 
 #### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>Durchführen einer Inventur der Dienste, Besitzer und Administratoren
 
-Mit der Zunahme von Bring Your Own Device-Richtlinien (BYOD) und Work From Home-Richtlinien sowie wachsender Drahtloskonnektivität in Unternehmen ist es wichtig, dass Sie überwachen, wer eine Verbindung mit Ihrem Netzwerk herstellt. Eine effektive Sicherheitsüberwachung deckt häufig Geräte, Anwendungen und Programme in Ihrem Netzwerk auf, die nicht von der IT unterstützt werden und darum möglicherweise nicht sicher sind. Weitere Informationen finden Sie unter [Azure-Sicherheitsverwaltung und -Überwachung](../../security/security-management-and-monitoring-overview.md). Stellen Sie sicher, dass alle folgenden Aufgaben in Ihrem Inventurprozess enthalten sind. 
+Mit der Zunahme von Bring Your Own Device-Richtlinien (BYOD) und Work From Home-Richtlinien sowie wachsender Drahtloskonnektivität in Unternehmen ist es wichtig, dass Sie überwachen, wer eine Verbindung mit Ihrem Netzwerk herstellt. Eine effektive Sicherheitsüberwachung deckt häufig Geräte, Anwendungen und Programme in Ihrem Netzwerk auf, die nicht von der IT unterstützt werden und darum möglicherweise nicht sicher sind. Weitere Informationen finden Sie unter [Azure-Sicherheitsverwaltung und -Überwachung](../../security/fundamentals/management-monitoring-overview.md). Stellen Sie sicher, dass alle folgenden Aufgaben in Ihrem Inventurprozess enthalten sind. 
 
 * Identifizieren Sie die Benutzer mit Administratorrollen und die Dienste, über die sie verwalten können.
 * Finden Sie mit Azure AD PIM heraus, welche Benutzer in Ihrer Organisation Administratorzugriff auf Azure AD haben, einschließlich zusätzlicher Rollen zu den in Schritt 1 aufgelisteten.
-* Neben den in Azure AD definierten Rollen enthält Office 365 eine Reihe von Administratorrollen, die Sie Benutzern in Ihrer Organisation zuweisen können. Jede Administratorrolle ist allgemeinen Geschäftsfunktionen zugeordnet und stattet Benutzer in Ihrer Organisation mit Berechtigungen für bestimmte Aufgaben im [Microsoft 365 Admin Center](https://admin.microsoft.com) aus. Finden Sie im Microsoft 365 Admin Center heraus, welche Benutzer in Ihrer Organisation Administratorzugriff auf Office 365 haben, einschließlich über Rollen, die nicht in Azure AD verwaltet werden. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) und [Bewährte Methoden für die Sicherheit von Office 365](https://support.office.com/article/Security-best-practices-for-Office-365-9295e396-e53d-49b9-ae9b-0b5828cdedc3).
+* Neben den in Azure AD definierten Rollen enthält Office 365 eine Reihe von Administratorrollen, die Sie Benutzern in Ihrer Organisation zuweisen können. Jede Administratorrolle ist allgemeinen Geschäftsfunktionen zugeordnet und stattet Benutzer in Ihrer Organisation mit Berechtigungen für bestimmte Aufgaben im [Microsoft 365 Admin Center](https://admin.microsoft.com) aus. Finden Sie im Microsoft 365 Admin Center heraus, welche Benutzer in Ihrer Organisation Administratorzugriff auf Office 365 haben, einschließlich über Rollen, die nicht in Azure AD verwaltet werden. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) und [Bewährte Methoden für die Sicherheit von Office 365](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center).
 * Führen Sie die Inventur in anderen Diensten durch, von denen Ihre Organisation abhängig ist, z.B. Azure, Intune oder Dynamics 365.
 * Stellen Sie sicher, dass Ihren Administratorkonten (für Verwaltungszwecke verwendete Konten, nicht einfach herkömmliche Benutzerkonten) gültige E-Mail-Adressen angefügt sind, und dass sie für Azure MFA registriert sind bzw. MFA lokal verwenden.
 * Fragen Sie Benutzer nach der geschäftlichen Begründung für den Administratorzugriff.
@@ -169,7 +169,7 @@ Azure AD empfiehlt, dass Sie die mehrstufige Authentifizierung (Multi-Factor Aut
 
 Aktivieren Sie:
 
-* [Richtlinien für MFA mit bedingtem Zugriff](../authentication/howto-mfa-getstarted.md) für alle Benutzer in Ihrer Organisation
+* [Richtlinien für MFA mit bedingtem Zugriff](../authentication/howto-mfa-getstarted.md) für alle Benutzer in Ihrer Organisation.
 
 Wenn Sie Windows Hello for Business verwenden, kann die MFA-Anforderung durch Verwendung der Windows Hello-Anmeldebenutzeroberfläche erfüllt werden. Weitere Informationen finden Sie unter [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
 
@@ -261,7 +261,7 @@ Wenn Sie bereits Azure AD Privileged Identity Management verwenden, passen Sie Z
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Ermitteln der Gefährdung durch kennwortbasierte Anmeldeprotokolle (bei Verwendung von Exchange Online)
 
-In der Vergangenheit setzten Protokolle voraus, dass Benutzername/Kennwort-Kombinationen in Geräten, E-Mail-Konten, Telefonen usw. eingebettet waren. Doch bei den heutigen Risiken von Cyberangriffen in der Cloud sollten Sie jeden Benutzer identifizieren, der der Organisation potenziell schweren Schaden zufügen könnte, wenn seine Anmeldeinformationen gefährdet wären, und ihm durch Implementieren von sicheren Authentifizierungsanforderungen und bedingtem Zugriff die Möglichkeit verwehren, sich mit Benutzername/Kennwort bei seiner E-Mail-Adresse anzumelden. Sie können [ältere Authentifizierungsmethoden mit dem bedingten Zugriff](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/block-legacy-authentication) blockieren. Überprüfen Sie die Details zum [Blockieren der Standardauthentifizierung](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) über Exchange Online. 
+In der Vergangenheit setzten Protokolle voraus, dass Benutzername/Kennwort-Kombinationen in Geräten, E-Mail-Konten, Telefonen usw. eingebettet waren. Doch bei den heutigen Risiken von Cyberangriffen in der Cloud sollten Sie jeden Benutzer identifizieren, der der Organisation potenziell schweren Schaden zufügen könnte, wenn seine Anmeldeinformationen gefährdet wären, und ihm durch Implementieren von sicheren Authentifizierungsanforderungen und bedingtem Zugriff die Möglichkeit verwehren, sich mit Benutzername/Kennwort bei seiner E-Mail-Adresse anzumelden. Sie können [ältere Authentifizierungsmethoden mit dem bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication) blockieren. Überprüfen Sie die Details zum [Blockieren der Standardauthentifizierung](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) über Exchange Online. 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Durchführen einer Rollenbewertung für Office 365-Rollen (bei Verwendung von Office 365)
 
@@ -291,7 +291,7 @@ Verwenden Sie Privileged Identity Management mit Azure AD-Administratorrollen zu
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Verwenden von Azure-Protokollintegrationen zum Senden von relevanten Azure-Protokollen an Ihre SIEM-Systeme 
 
-Mit der Azure-Protokollintegration können Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in die bestehenden SIEM-Systeme (Security Information and Event Management, Sicherheitsinformationen und Ereignisverwaltung) Ihrer Organisation integrieren. Die [Azure-Protokollintegration](../../security/security-azure-log-integration-overview.md) erfasst Windows-Ereignisse aus Protokollen der Windows-Ereignisanzeige und Azure-Ressourcen aus Azure-Aktivitätsprotokollen, Azure Security Center-Warnungen und Azure-Diagnoseprotokollen. 
+Mit der Azure-Protokollintegration können Sie nicht aufbereitete Protokolle aus Ihren Azure-Ressourcen in die bestehenden SIEM-Systeme (Security Information and Event Management, Sicherheitsinformationen und Ereignisverwaltung) Ihrer Organisation integrieren. Die [Azure-Protokollintegration](../../security/fundamentals/azure-log-integration-overview.md) erfasst Windows-Ereignisse aus Protokollen der Windows-Ereignisanzeige und Azure-Ressourcen aus Azure-Aktivitätsprotokollen, Azure Security Center-Warnungen und Azure-Diagnoseprotokollen. 
 
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Zusätzliche Schritte für Organisationen, die den Zugriff auf andere Cloud-Apps über Azure AD verwalten

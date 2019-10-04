@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: a4c315d2696b081a4f2ac646d097e76ff9562380
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009479"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881921"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Sprach- und Regionsunterstützung für die Bing-Bildersuche-API
 
@@ -32,7 +32,7 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 > - en-AU (Englisch, Australien)
 > - zh-CN (Chinesisch, China)
 
-## <a name="countries"></a>Länder
+## <a name="countriesregions"></a>Länder/Regionen
 
 |Land/Region|Code|
 |-------|----|
@@ -49,7 +49,7 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Deutschland|DE|
 |Hongkong (SAR)|HK|
 |Indien|IN|
-|Indonesien|ID|
+|Indonesien|id|
 |Italien|IT|
 |Japan|JP|
 |Korea|KR|
@@ -119,4 +119,4 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |USA|Spanisch|es-US|
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu den Endpunkten der Bing-News-Suche finden Sie unter [Referenz zur News-Bildersuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference).
+Weitere Informationen zu den Endpunkten der Bing-News-Suche finden Sie unter [Referenz zur News-Bildersuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

@@ -2,8 +2,8 @@
 title: Überprüfen des Zugriffs auf Gruppen oder Anwendungen mit Zugriffsüberprüfungen – Azure Active Directory | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Zugriff von Gruppenmitgliedern oder Anwendungen mit Azure Active Directory-Zugriffsüberprüfungen prüfen können.
 services: active-directory
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/01/2019
-ms.author: rolyon
+ms.date: 05/21/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d42fe972b79ecd9bcee65d0664c5d13da02d2238
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3be5d6eb443d90d3413510576a9609fe43df7caa
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496026"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499628"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Überprüfen des Zugriffs auf Gruppen oder Anwendungen mit Azure AD-Zugriffsüberprüfungen
 
@@ -28,13 +28,19 @@ Azure Active Directory (Azure AD) erleichtert Unternehmen das Verwalten des Zugr
 
 In diesem Artikel wird beschrieben, wie ein Reviewer eine Zugriffsüberprüfung für Gruppenmitglieder oder Benutzer mit Zugriffsberechtigungen für eine Anwendung durchführt.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Azure AD Premium P2
+
+Weitere Informationen finden Sie unter [Welche Benutzer benötigen Lizenzen?](access-reviews-overview.md#which-users-must-have-licenses)
+
 ## <a name="open-the-access-review"></a>Öffnen der Zugriffsüberprüfung
 
 Bei einer Zugriffsüberprüfung müssen Sie zuerst die Zugriffsüberprüfung suchen und öffnen.
 
 1. Achten Sie auf eine E-Mail von Microsoft, in der Sie zur Überprüfung des Zugriffs aufgefordert werden. Nachfolgend sehen Sie eine Beispiel-E-Mail, die zur Überprüfen des Zugriffs auf eine Gruppe auffordert.
 
-    ![E-Mail zur Zugriffsüberprüfung](./media/perform-access-review/access-review-email.png)
+    ![Beispiel-E-Mail von Microsoft zum Überprüfen des Zugriffs auf eine Gruppe](./media/perform-access-review/access-review-email.png)
 
 1. Klicken Sie auf den Link **Start review** (Jetzt überprüfen), um die Zugriffsüberprüfung zu öffnen.
 
@@ -42,7 +48,7 @@ Wenn Sie keine E-Mail haben, können Sie Ihre ausstehenden Zugriffsüberprüfung
 
 1. Melden Sie sich auf [https://myapps.microsoft.com](https://myapps.microsoft.com) im MyApps-Portal an.
 
-    ![MyApps-Portal](./media/perform-access-review/myapps-access-panel.png)
+    ![MyApps-Portal mit Apps, für die Sie Berechtigungen besitzen](./media/perform-access-review/myapps-access-panel.png)
 
 1. Klicken Sie oben rechts auf der Seite auf das Benutzersymbol, neben dem Ihr Name und Ihre Standardorganisation angezeigt werden. Werden mehrere Organisationen aufgelistet, wählen Sie die Organisation aus, die eine Zugriffsüberprüfung angefordert hat.
 
@@ -50,7 +56,7 @@ Wenn Sie keine E-Mail haben, können Sie Ihre ausstehenden Zugriffsüberprüfung
 
     Wenn die Kachel nicht angezeigt wird, sind für diese Organisation keine Zugriffsüberprüfungen auszuführen. Daher ist zurzeit keine Aktion erforderlich.
 
-    ![Liste mit den Zugriffsüberprüfungen](./media/perform-access-review/access-reviews-list.png)
+    ![Liste mit ausstehenden Zugriffsüberprüfungen für Apps und Gruppen](./media/perform-access-review/access-reviews-list.png)
 
 1. Klicken Sie bei der Zugriffsüberprüfung, die Sie durchführen möchten, auf den Link **Überprüfung starten**.
 
@@ -60,22 +66,22 @@ Wenn Sie die Zugriffsüberprüfung öffnen, sehen Sie die Namen der Benutzer, di
 
 Wenn Sie aufgefordert werden, Ihren eigenen Zugriff zu überprüfen, sieht die Seite anders aus. Weitere Informationen finden Sie unter [Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen mit Azure AD-Zugriffsüberprüfungen](review-your-access.md).
 
-![Durchführen der Zugriffsüberprüfung](./media/perform-access-review/perform-access-review.png)
+![Öffnen der Zugriffsüberprüfung mit einer Liste der Benutzer, die überprüft werden müssen](./media/perform-access-review/perform-access-review.png)
 
 Es gibt zwei Möglichkeiten, Zugriff zu gewähren oder zu verweigern:
 
-- Sie können jede Anforderung einzeln gewähren oder verweigern, oder
+- Sie können einem oder mehreren Benutzern den Zugriff gewähren oder verweigern.
 - Sie können die Systemempfehlungen annehmen, was die einfachste und schnellste Möglichkeit ist.
 
-### <a name="approve-or-deny-access-for-each-request"></a>Gewähren oder Verweigern von Zugriff für jede Anforderung
+### <a name="approve-or-deny-access-for-one-or-more-users"></a>Gewähren oder Verweigern des Zugriffs eines oder mehrerer Benutzer
 
 1. Sehen Sie sich die Liste der Benutzer an, um zu entscheiden, ob deren weiterer Zugriff gewährt oder verweigert werden soll.
 
-1. Klicken Sie zum Genehmigen oder Verweigern von Anforderungen auf die jeweilige Zeile, um ein Fenster zu öffnen, in dem Sie die auszuführende Aktion angeben können.
+1. Um einem einzelnen Benutzer den Zugriff zu gewähren oder zu verweigern, klicken Sie auf die entsprechende Zeile, um ein Fenster zu öffnen, in dem Sie die auszuführende Aktion angeben können. Um mehreren Benutzern den Zugriff zu gewähren oder zu verweigern, müssen Sie die einzelnen Benutzernamen mit einem Häkchen versehen (aktivieren) und dann auf die Schaltfläche **X Benutzer überprüfen** klicken, um ein Fenster zu öffnen, in dem Sie die auszuführende Aktion angeben können.
 
-1. Klicken Sie auf **Approve** (Gewähren) oder **Deny** (Verweigern). Wenn Sie sich nicht sicher sind, können Sie auch auf **Don‘t know** (Nicht bekannt) klicken. Wenn Sie dies tun, behält der Benutzer seinen Zugriff, aber die Auswahl wird in den Überwachungsprotokollen widergespiegelt.
+1. Klicken Sie auf **Approve** (Gewähren) oder **Deny** (Verweigern). Wenn Sie sich nicht sicher sind, können Sie auch auf **Don‘t know** (Nicht bekannt) klicken. In diesem Fall behält der Benutzer zwar seinen Zugriff, allerdings wird die Auswahl in den Überwachungsprotokollen aufgezeichnet.
 
-    ![Durchführen der Zugriffsüberprüfung](./media/perform-access-review/approve-deny.png)
+    ![Aktionsfenster mit den Optionen „Approve“ (Gewähren), „Deny“ (Verweigern) und „Don't know“ (Nicht bekannt)](./media/perform-access-review/approve-deny.png)
 
 1. Geben Sie bei Bedarf im Feld **Grund** einen Grund ein.
 
@@ -96,11 +102,11 @@ Wir geben Ihnen Empfehlungen, die Sie mit einem einzigen Klick annehmen können,
 
 1. Klicken Sie in der blauen Leiste am unteren Rand der Seite auf **Empfehlungen akzeptieren**.
 
-    ![Empfehlungen akzeptieren](./media/perform-access-review/accept-recommendations.png)
+    ![Öffnen der Liste mit den Zugriffsüberprüfungen mit Anzeige der Schaltfläche „Empfehlungen akzeptieren“](./media/perform-access-review/accept-recommendations.png)
 
     Eine Zusammenfassung der Empfehlungen wird angezeigt.
 
-    ![Zusammenfassung der Empfehlungen](./media/perform-access-review/accept-recommendations-summary.png)
+    ![Fenster mit einer Zusammenfassung der empfohlenen Aktionen](./media/perform-access-review/accept-recommendations-summary.png)
 
 1. Klicken Sie auf **OK**, um die Empfehlungen zu akzeptieren.
 

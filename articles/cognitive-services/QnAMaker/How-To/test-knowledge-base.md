@@ -1,22 +1,22 @@
 ---
 title: 'Testen einer Wissensdatenbank: QnA Maker'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Das Testen Ihrer QnA Maker-Wissensdatenbank ist ein wichtiger Teil eines iterativen Prozesses zur Verbesserung der Genauigkeit zurückgegebener Antworten. Sie können die Wissensdatenbank über eine verbesserte Chatschnittstelle testen, die Ihnen auch Änderungen ermöglicht.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 12/17/2018
-ms.author: tulasim
+ms.topic: conceptual
+ms.date: 05/08/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 20ebcb502e03f2d817fe18624d8c790e920c667f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2b9c6f96cc351831bb784bb89db1bce76b01190b
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861237"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68966665"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Interaktives Testen Ihrer Wissensdatenbank in QnA Maker
 
@@ -24,28 +24,24 @@ Das Testen Ihrer QnA Maker-Wissensdatenbank ist ein wichtiger Teil eines iterati
 
 ## <a name="test-answer-matching"></a>Testen der Übereinstimmung von Antworten
 
-1.  Greifen Sie auf Ihre Wissensdatenbank zu, indem Sie ihren Namen auf der Seite  **Meine Wissensdatenbanken** auswählen.
-2.  Um auf den Einblendbereich „Test“ zuzugreifen, wählen Sie im oberen Bereich Ihrer Anwendung  **Test** aus.
+1. Greifen Sie auf Ihre Wissensdatenbank zu, indem Sie den Namen auf der Seite **Meine Wissensdatenbanken** auswählen.
+1. Um auf den einblendbaren Bereich „Test“ zuzugreifen, wählen Sie im oberen Bereich Ihrer Anwendung **Test** aus.
+1. Geben Sie eine Abfrage in das Textfeld ein, und drücken Sie die EINGABETASTE.
+1. Die am besten passende Antwort aus der Wissensdatenbank wird als Antwort zurückgegeben.
 
-    ![Zugreifen auf den Testbereich](../media/qnamaker-how-to-test-kb/access-test.png)
+## <a name="clear-test-panel"></a>Löschen des Bereichs „Test“
 
-3.  Geben Sie eine Abfrage in das Textfeld ein, und drücken Sie die EINGABETASTE.
+Um alle eingegebenen Testabfragen und ihre Ergebnisse aus der Testkonsole zu löschen, wählen Sie in der linken oberen Ecke des Bereichs „Test“ die Option **Neu beginnen** aus.
 
-4.  Die am besten passende Antwort aus der Wissensdatenbank wird als Antwort zurückgegeben.
+## <a name="close-test-panel"></a>Schließen des Bereichs „Test“
 
-## <a name="clear-test-panel"></a>Leeren des Testbereichs
-
-Um alle eingegebenen Testabfragen und ihre Ergebnisse aus der Testkonsole zu löschen, wählen Sie in der linken oberen Ecke des Bereichs „Test“ die Option  **Neu beginnen** aus.
-
-## <a name="close-test-panel"></a>Schließen des Testbereichs
-
-Um den Bereich „Test“ zu schließen, wählen Sie erneut die Schaltfläche  **Test** aus. Während der Bereich „Test“ geöffnet ist, können Sie den Inhalt der Wissensdatenbank nicht bearbeiten.
+Um den Bereich „Test“ zu schließen, wählen Sie erneut die Schaltfläche **Test** aus. Während der Bereich „Test“ geöffnet ist, können Sie den Inhalt der Wissensdatenbank nicht bearbeiten.
 
 ## <a name="inspect-score"></a>Überprüfen der Bewertung
 
 Sie überprüfen die Details des Testergebnisses im Bereich „Überprüfen“.
 
-1.  Wählen Sie bei geöffnetem Bereich „Test“ die Option  **Überprüfen** aus, um weitere Details zu dieser Antwort zu erhalten.
+1.  Wählen Sie bei geöffnetem Bereich „Test“ die Option **Überprüfen** aus, um weitere Details zu dieser Antwort zu erhalten.
 
     ![Überprüfen von Antworten](../media/qnamaker-how-to-test-kb/inspect.png)
 
@@ -65,14 +61,20 @@ Sie können alternative Formen einer Frage für eine bestimmte Antwort hinzufüg
 
 ## <a name="add-a-new-answer"></a>Hinzufügen einer neuen Antwort
 
-Sie können eine neue Antwort hinzufügen, wenn eine der als passend zurückgegebenen Antworten falsch ist oder die Antwort nicht in der Wissensdatenbank enthalten ist (keine passende Übereinstimmung in der Wissensdatenbank gefunden wurde). Geben Sie die neue Antwort auf die aktuelle Frage in das Textfeld ein, und drücken Sie die EINGABETASTE, um die Antwort hinzuzufügen. 
+Sie können eine neue Antwort hinzufügen, wenn eine der als passend zurückgegebenen Antworten falsch ist oder die Antwort nicht in der Wissensdatenbank enthalten ist (keine passende Übereinstimmung in der Wissensdatenbank gefunden wurde). 
 
-Wählen Sie **Speichern und trainieren** aus, um diese Antwort dauerhaft zu speichern. Es ist nun ein neues Frage-Antwort-Paar zu Ihrer Wissensdatenbank hinzugefügt.
+Verwenden Sie das Textfeld unten in der Antwortliste, um eine neue Antwort einzugeben, und drücken Sie die Eingabetaste, um sie hinzuzufügen. 
 
-![Hinzufügen neuer Frage-Antwort-Paare](../media/qnamaker-how-to-test-kb/add-answer.png)
+Wählen Sie **Speichern und trainieren** aus, um diese Antwort dauerhaft zu speichern. Es ist nun ein neues Frage-Antwort-Paar zu Ihrer Wissensdatenbank hinzugefügt. 
 
 > [!NOTE]
 > Alle Änderungen an der Wissensdatenbank werden nur gespeichert, wenn Sie auf die Schaltfläche **Speichern und trainieren** klicken.
+
+## <a name="test-the-published-knowledge-base"></a>Testen der veröffentlichten Wissensdatenbank
+
+Sie können die veröffentlichte Version der Wissensdatenbank im Testbereich testen. Nachdem Sie die Wissensdatenbank veröffentlicht haben, aktivieren Sie das Kontrollkästchen **Veröffentlichte Wissensdatenbank**, und senden Sie eine Abfrage, um Ergebnisse von der veröffentlichten Wissensdatenbank zu erhalten.
+
+![Testen einer veröffentlichten Wissensdatenbank](../media/qnamaker-how-to-test-kb/test-against-published-kb.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

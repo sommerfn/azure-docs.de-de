@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: ff8f8c6656c4cd095749b3e048c72572d113f1ad
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: a020221d841682d1e18d2b728a732ec4dfc35ef3
+ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546929"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67988280"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mithilfe von Azure Cosmos DB
 
@@ -24,9 +24,9 @@ Die Sequenznummer ist eine Zeichenfolgendarstellung einer Hexadezimalzahl. Sie k
 
 * Ein aktives Azure-Konto. Wenn Sie noch nicht über eines verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/pricing/free-trial/).
 
-* Ein aktives Azure Cosmos DB-SQL-API-Konto. Wenn Sie noch keines erstellt haben, finden Sie unter [Erstellen eines Datenbankkontos](../cosmos-db/create-sql-api-dotnet.md#create-an-azure-cosmos-db-account) eine exemplarische Vorgehensweise.
+* Ein aktives Azure Cosmos DB-SQL-API-Konto. Wenn Sie noch keines erstellt haben, finden Sie unter [Erstellen eines Datenbankkontos](../cosmos-db/create-sql-api-java.md#create-a-database-account) eine exemplarische Vorgehensweise.
 
-* Eine Sammlung in der Datenbank. Eine exemplarische Vorgehensweise finden Sie unter [Hinzufügen einer Sammlung](../cosmos-db/create-sql-api-dotnet.md#add-a-database-and-a-collection). Wenn Sie Ihre Sammlung erstellen, verwenden Sie `/id` als Partitionsschlüssel.
+* Eine Sammlung in der Datenbank. Eine exemplarische Vorgehensweise finden Sie unter [Hinzufügen einer Sammlung](../cosmos-db/create-sql-api-java.md#add-a-container). Wenn Sie Ihre Sammlung erstellen, verwenden Sie `/id` als Partitionsschlüssel.
 
 * Eine IoT Hub-Instanz in Azure. Wenn Sie noch keinen erstellt haben, finden Sie unter [Erste Schritte mit IoT Hub](iot-hub-csharp-csharp-getstarted.md) eine exemplarische Vorgehensweise.
 
@@ -266,13 +266,13 @@ In diesem Abschnitt konfigurieren Sie Ihren IoT Hub zum Veröffentlichen von Ere
 
 4. Füllen Sie **Details zum Ereignisabonnement** aus: Geben Sie einen aussagekräftigen Namen ein, und wählen Sie **Event Grid-Schema** aus.
 
-5. Füllen Sie die **Ereignistypen**-Felder aus. Deaktivieren Sie **Alle Ereignistypen abonnieren**, und wählen Sie im Menü die Optionen **Gerät verbunden** und **Gerät getrennt** aus.
+5. Füllen Sie die **Ereignistypen**-Felder aus. Wählen Sie in der Dropdownliste aus dem Menü nur **Gerät verbunden** und **Gerät getrennt** aus. Klicken Sie auf eine beliebige Stelle des Bildschirms, um die Liste zu schließen und Ihre Auswahl zu speichern.
 
    ![Festlegen von zu suchenden Ereignistypen](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
 6. Wählen Sie für **Endpunktdetails** als Endpunkttyp die Option **Webhook** aus, klicken Sie auf „Endpunkt auswählen“, fügen Sie die URL ein, die Sie aus Ihrer Logik-App kopiert haben, und bestätigen Sie die Auswahl.
 
-   ![Auswählen der Endpunkt-URL](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
+   ![Auswählen der Endpunkt-URL](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
 
 7. Das Formular sollte in etwa wie im folgenden Beispiel aussehen:
 
@@ -302,11 +302,9 @@ Nachdem Ihr Ereignisabonnement eingerichtet wurde, testen Sie es, indem Sie ein 
 
    ![Verbindungszeichenfolge für Gerät](./media/iot-hub-how-to-order-connection-state-events/DeviceConnString.png)
 
-HostName=test-eventgrid-hub.azure-devices.net;DeviceId=Demo-Device-1;SharedAccessKey=cv8uPNixe7E2R9EHtimoY/PlJfBV/lOYCMajVOp/Cuw=
-
 ### <a name="start-raspberry-pi-simulator"></a>Starten des Raspberry Pi-Simulators
 
-1. Wir verwenden den Raspberry Pi-Websimulator, um eine Geräteverbindung zu simulieren.
+Wir verwenden den Raspberry Pi-Websimulator, um eine Geräteverbindung zu simulieren.
 
 [Raspberry Pi-Simulator starten](https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted)
 
@@ -340,7 +338,7 @@ Anstelle des [Azure-Portals](https://portal.azure.com) können Sie die IoT Hub-S
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-In diesem Tutorial werden Ressourcen verwendet, für die Gebühren in Ihrem Azure-Abonnement anfallen. Wenn Sie mit dem Ausprobieren des Tutorials und Testen Ihrer Ergebnisse fertig sind, deaktivieren oder löschen Sie die Ressourcen, die nicht beibehalten werden sollen.
+In diesem Tutorial werden Ressourcen verwendet, für die Gebühren in Ihrem Azure-Abonnement anfallen. Wenn Sie das Ausprobieren des Tutorials und Testen Ihrer Ergebnisse abgeschlossen haben, deaktivieren oder löschen Sie die Ressourcen, die Sie nicht beibehalten möchten.
 
 Wenn Sie die Arbeit an Ihrer Logik-App nicht verlieren möchten, deaktivieren Sie sie, anstatt sie zu löschen.
 

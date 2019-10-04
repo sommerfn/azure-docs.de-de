@@ -1,25 +1,18 @@
 ---
-title: Speichern des AppSource-Pakets in Azure Storage und Generieren einer URL mit SAS-Schlüssel | Microsoft-Dokumentation
+title: Speichern des AppSource-Pakets in Azure Storage und Generieren einer URL mit SAS-Schlüssel
 description: Beschreibt die Schritte, die erforderlich sind, um ein AppSource-Paket hochzuladen und zu sichern.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: pbutlerm
-ms.openlocfilehash: ad0e6eaae5c0fad74ea484827e0f8d535cfbf579
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: ac77767aee2dcde33f4266e1d2d09c49dcf5f8a3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884658"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943297"
 ---
 <a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>Speichern des AppSource-Pakets in Azure Storage und Generieren einer URL mit SAS-Schlüssel
 =============================================================================

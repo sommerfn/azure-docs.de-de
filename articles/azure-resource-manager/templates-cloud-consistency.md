@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 390e49a09136c21f3fd2f6555c0d56fde6e3b267
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 38da6d39d095ce27cdd26719d9b8b752d2921bc0
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008212"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164762"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz
 
@@ -47,7 +47,7 @@ Im Rest dieses Leitfadens werden die Bereiche erörtert, die bei der Entwicklung
 * Stellen Sie sicher, dass die Vorlagenparameter, die Sie verwenden, in den Zielclouds funktionieren.
 * Vergewissern Sie sich, dass ressourcenspezifische Eigenschaften in den Zielclouds verfügbar sind.
 
-Eine Einführung in Azure Resource Manager-Vorlagen finden Sie unter [Vorlagenbereitstellung](resource-group-overview.md#template-deployment).
+Eine Einführung in Azure Resource Manager-Vorlagen finden Sie unter [Vorlagenbereitstellung](template-deployment-overview.md).
 
 ## <a name="ensure-template-functions-work"></a>Sicherstellen, dass Vorlagenfunktionen intakt sind
 
@@ -154,7 +154,7 @@ In der gesamten Vorlage werden Links generiert, indem der Basis-URI (aus dem `_a
 
 Bei diesem Ansatz wird der Standardwert für den Parameter `_artifactsLocation` verwendet. Wenn die verknüpften Vorlagen aus einem anderen Speicherort abgerufen werden müssen, kann die Parametereingabe zum Zeitpunkt der Bereitstellung verwendet werden, um den Standardwert zu überschreiben. Eine Änderung der Vorlage selbst ist nicht erforderlich.
 
-### <a name="use-artifactslocation-instead-of-hardcoding-links"></a>Verwenden von „_artifactsLocation“ anstelle hartcodierter Links
+### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>Verwenden von „_artifactsLocation“ anstelle hartcodierter Links
 
 Neben der Verwendung für geschachtelte Vorlagen wird die URL im Parameter `_artifactsLocation` als Basis für alle zugehörigen Artefakte einer Bereitstellungsvorlage verwendet. Einige VM-Erweiterungen enthalten einen Link zu einem Skript, das außerhalb der Vorlage gespeichert wird. Für diese Erweiterungen sollten Sie die Links nicht hartcodieren. Die Erweiterungen „CustomScriptExtension“ und „PowerShell DSC“ können wie gezeigt mit einem externen Skript auf GitHub verknüpft sein: 
 
@@ -493,7 +493,7 @@ Um eine Liste der an einem Standort verfügbaren VM-Images abzurufen, führen Si
 az vm image list -all
 ```
 
-Sie können die gleiche Liste mit dem Azure PowerShell-Cmdlet [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) abrufen und den gewünschten Standort mit dem Parameter `-Location` angeben. Beispiel: 
+Sie können die gleiche Liste mit dem Azure PowerShell-Cmdlet [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) abrufen und den gewünschten Standort mit dem Parameter `-Location` angeben. Beispiel:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -596,7 +596,7 @@ Um eine Liste der VM-Erweiterungen abzurufen, die für eine bestimmte Region ver
 az vm extension image list --location myLocation
 ```
 
-Sie können auch das Azure PowerShell-Cmdlet [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) ausführen und mit `-Location` den Speicherort des VM-Images angeben. Beispiel: 
+Sie können auch das Azure PowerShell-Cmdlet [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) ausführen und mit `-Location` den Speicherort des VM-Images angeben. Beispiel:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version

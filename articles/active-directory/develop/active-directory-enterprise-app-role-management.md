@@ -4,24 +4,25 @@ description: Erfahren Sie, wie Sie im SAML-Token ausgestellte Rollenansprüche f
 services: active-directory
 documentationcenter: ''
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: eb2b3741-3cde-45c8-b639-a636f3df3b74
 ms.service: active-directory
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/21/2019
+ms.topic: conceptual
+ms.date: 04/22/2019
 ms.author: jeedes
-ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a354fdf8ea75d9446c2a5e5ee6a70489cf9dbfb5
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990510"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207191"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Gewusst wie: Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen
 
@@ -58,7 +59,7 @@ Wenn die Anwendung erwartet, dass benutzerdefinierte Rollen in einer SAML-Antwor
 
     ![Eigenschaftenseite](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. Öffnen Sie den [Azure AD Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) in einem anderen Fenster, und führen Sie die folgenden Schritte aus:
+6. Öffnen Sie den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) in einem anderen Fenster, und führen Sie die folgenden Schritte aus:
 
     a. Melden Sie sich an der Graph-Tester-Website mit den Anmeldeinformationen des globalen Administrators bzw. Co-Admins für Ihren Mandanten an.
 
@@ -152,7 +153,7 @@ Wenn die Anwendung erwartet, dass benutzerdefinierte Rollen in einer SAML-Antwor
 
 8. Aktualisieren Sie die Tabelle **Attribute**, um eine benutzerdefinierte Zuordnung des Rollenanspruchs zu definieren.
 
-9. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute und Ansprüche** des Dialogfelds **Einmaliges Anmelden** wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus.
+9. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen:
 
     | Attributname | Attributwert |
     | -------------- | ----------------|
@@ -161,11 +162,11 @@ Wenn die Anwendung erwartet, dass benutzerdefinierte Rollen in einer SAML-Antwor
     >[!NOTE]
     >Wenn der Anspruchswert der Rolle NULL ist, sendet Azure AD diesen Wert nicht im Token. Dies ist der entwurfsgemäße Standard.
 
-    a. Klicken Sie auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+    a. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute und Ansprüche** zu öffnen.
 
       ![Schaltfläche „Attribut hinzufügen“](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
-    b. Wählen Sie **Attribut hinzufügen** zum Öffnen des Bereichs **Benutzeransprüche verwalten** aus.
+    b. Fügen Sie im Dialogfeld **Benutzeransprüche verwalten** das SAML-Tokenattribut hinzu, indem Sie auf **Neuen Anspruch hinzufügen** klicken.
 
       ![Schaltfläche „Attribut hinzufügen“](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
@@ -185,7 +186,7 @@ Wenn die Anwendung erwartet, dass benutzerdefinierte Rollen in einer SAML-Antwor
 
 Führen Sie die folgenden Schritte aus, um eine vorhandene Rolle zu aktualisieren:
 
-1. Öffnen Sie den [Azure AD Graph-Tester](https://developer.microsoft.com/graph/graph-explorer).
+1. Öffnen Sie den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer).
 
 2. Melden Sie sich an der Graph-Tester-Website mit den Anmeldeinformationen des globalen Administrators bzw. Co-Admins für Ihren Mandanten an.
 
@@ -223,7 +224,7 @@ Führen Sie die folgenden Schritte aus, um eine vorhandene Rolle zu aktualisiere
 
 Führen Sie die folgenden Schritte aus, um eine vorhandene Rolle zu löschen:
 
-1. Öffnen Sie den [Azure AD Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) in einem anderen Fenster.
+1. Öffnen Sie den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) in einem anderen Fenster.
 
 2. Melden Sie sich an der Graph-Tester-Website mit den Anmeldeinformationen des globalen Administrators bzw. Co-Admins für Ihren Mandanten an.
 

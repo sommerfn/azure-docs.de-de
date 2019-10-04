@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 7bb399472d7e0ab14e6399fc8652d2eb132a866a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 305b1e11841dd2da4aa6c0bdeb3df2c76addad87
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663807"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036515"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Ermöglicht es, Service Fabric-Cluster auszuwählen, zu verwalten und zu betreiben.
@@ -40,7 +39,7 @@ Ermöglicht es, Service Fabric-Cluster auszuwählen, zu verwalten und zu betreib
 | select | Stellt eine Verbindung mit einem Service Fabric-Clusterendpunkt her. |
 | show-connection | Zeigt an, mit welchem Service Fabric-Cluster diese sfctl-Instanz verbunden ist. |
 | unprovision | Hebt die Bereitstellung der Code- oder Konfigurationspakete eines Service Fabric-Clusters auf. |
-| Upgrade | Startet ein Upgraden der Code- oder Konfigurationsversion eines Service Fabric-Clusters. |
+| upgrade | Startet ein Upgraden der Code- oder Konfigurationsversion eines Service Fabric-Clusters. |
 | upgrade-resume | Bewirkt, dass das Clusterupgrade zur nächsten Upgradedomäne wechselt. |
 | upgrade-rollback | Führt einen Rollback für das Upgrade eines Service Fabric-Cluster aus. |
 | upgrade-status | Ruft den Status des aktuellen Clusterupgrade ab. |

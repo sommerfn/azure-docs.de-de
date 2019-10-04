@@ -1,17 +1,17 @@
 ---
 title: Vorgehensweise und entsprechende Schritte für die Azure Data Catalog-Einführung
 description: Dieser Artikel enthält eine Vorgehensweise und entsprechende Schritte für Organisationen, die den Einsatz von Azure Data Catalog in Betracht ziehen. Unter anderem wird erläutert, wie Sie eine Vision definieren, zentrale Anwendungsfälle in Ihrem Unternehmens ermitteln und ein Pilotprojekt auswählen.
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 86b8e4a6d2e976c706acea6eab608504ad31a5b9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.date: 08/01/2019
+ms.openlocfilehash: 38a9f3a7020e866ccb000ed0c54499258f5e651a
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263263"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68734671"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Vorgehensweise und entsprechende Schritte für die Azure Data Catalog-Einführung
 

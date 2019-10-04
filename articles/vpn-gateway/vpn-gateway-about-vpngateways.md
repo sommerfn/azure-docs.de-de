@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 02/22/2019
+ms.date: 05/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7b2b5c7201fe45fb52eb333b9e32b4996e00df9b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b4ad8697997a8c90a6548c66819bfe790c8235e3
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822922"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67798992"
 ---
 # <a name="what-is-vpn-gateway"></a>Was ist VPN Gateway?
 
@@ -23,7 +23,9 @@ Ein VPN-Gateway ist eine spezielle Art von Gateway für virtuelle Netzwerke, das
 
 Ein Gateway für virtuelle Netzwerke besteht aus mindestens zwei virtuellen Computern, die für ein spezielles von Ihnen erstelltes Subnetz bereitgestellt werden, das als *Gatewaysubnetz* bezeichnet wird. Die virtuellen Computer im Gatewaysubnetz werden erstellt, wenn Sie das Gateway für virtuelle Netzwerke erstellen. Virtuelle Computer im Gateway für virtuelle Netzwerke werden so konfiguriert, dass sie spezifische Routingtabellen und Gatewaydienste für das Gateway enthalten. Sie können die virtuellen Computer, die Teil des Gateways für virtuelle Netzwerke sind, nicht direkt konfigurieren, und im Gatewaysubnetz dürfen keine weiteren Ressourcen bereitgestellt werden.
 
-Die Erstellung eines Gateways des virtuellen Netzwerks kann bis zu 45 Minuten dauern. Bei der Erstellung des Gateways des virtuellen Netzwerks werden Gateway-VMs für das Gatewaysubnetz bereitgestellt und mit den von Ihnen angegebenen Einstellungen konfiguriert. Eine der Einstellungen, die Sie konfigurieren, ist der Gatewaytyp. Der Gatewaytyp „VPN“ gibt an, dass es sich beim Typ des erstellten Gateways des virtuellen Netzwerks um ein VPN-Gateway handelt. Nach der Erstellung eines VPN-Gateways können Sie eine IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem anderen VPN-Gateway (VNet-to-VNet) oder eine standortübergreifende IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem lokalen VPN-Gerät ( Site-to-Site) erstellen. Sie können auch eine Point-to-Site-VPN-Verbindung (VPN über IKEv2 oder SSTP) erstellen und so an einem Remotestandort (beispielsweise auf einer Konferenz oder von zu Hause aus) eine Verbindung mit Ihrem virtuellen Netzwerk herstellen.
+VPN-Gateways können in Azure-Verfügbarkeitszonen bereitgestellt werden. So erzielen Sie Stabilität, Skalierbarkeit und eine höhere Verfügbarkeit für die Gateways des virtuellen Netzwerks. Durch die Bereitstellung von Gateways in Azure-Verfügbarkeitszonen werden die Gateways innerhalb einer Region physisch und logisch getrennt. Gleichzeitig wird die Konnektivität Ihres lokalen Netzwerks mit Azure vor Ausfällen auf Zonenebene geschützt. Unter [Informationen zu zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen](about-zone-redundant-vnet-gateways.md) erfahren Sie mehr dazu.
+
+Die Erstellung eines Gateways des virtuellen Netzwerks kann bis zu 45 Minuten dauern. Bei der Erstellung des Gateways des virtuellen Netzwerks werden Gateway-VMs für das Gatewaysubnetz bereitgestellt und mit den von Ihnen angegebenen Einstellungen konfiguriert. Eine der Einstellungen, die Sie konfigurieren, ist der Gatewaytyp. Der Gatewaytyp „VPN“ gibt an, dass es sich beim Typ des erstellten Gateways des virtuellen Netzwerks um ein VPN-Gateway handelt. Nach der Erstellung eines VPN-Gateways können Sie eine IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem anderen VPN-Gateway (VNet-to-VNet) oder eine standortübergreifende IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem lokalen VPN-Gerät ( Site-to-Site) erstellen. Sie können auch eine Point-to-Site-VPN-Verbindung (VPN über OpenVPN, IKEv2 oder SSTP) erstellen und so von einem Remotestandort aus (beispielsweise auf einer Konferenz oder zu Hause) eine Verbindung mit Ihrem virtuellen Netzwerk herstellen.
 
 ## <a name="configuring"></a>Konfigurieren von VPN Gateway
 
@@ -49,7 +51,7 @@ Die folgende Tabelle kann Ihnen dabei helfen, die beste Verbindungsoption für I
 
 ## <a name="gwsku"></a>Gateway-SKUs
 
-Beim Erstellen eines Gateways des virtuellen Netzwerks geben Sie die gewünschte Gateway-SKU an. Wählen Sie die SKU aus, die Ihre Anforderungen im Bezug auf Workloadtypen, Durchsätze, Funktionen und SLAs erfüllt. Weitere Informationen zu Gateway-SKUs, einschließlich der unterstützten Funktionen, Produktions- und Dev-Tests sowie Konfigurationsschritten finden Sie unter [Gateway-SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+Beim Erstellen eines Gateways des virtuellen Netzwerks geben Sie die gewünschte Gateway-SKU an. Wählen Sie die SKU aus, die Ihre Anforderungen im Bezug auf Workloadtypen, Durchsätze, Funktionen und SLAs erfüllt. Weitere Informationen zu Gateway-SKUs (einschließlich unterstützter Funktionen, Produktions- und Dev-Test-Workloads sowie Konfigurationsschritte) finden Sie im Artikel „Informationen zu VPN Gateway-Einstellungen“ unter [Gateway-SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku). Informationen zu Legacy-SKUs finden Sie unter [Arbeiten mit SKUs für virtuelle Netzwerkgateways (Legacy-SKUs)](vpn-gateway-about-skus-legacy.md).
 
 ### <a name="benchmark"></a>Gateway-SKUs nach Tunnel, Verbindung und Durchsatz
 
@@ -83,7 +85,7 @@ Bei dieser Art von Verbindung handelt es sich um eine Abwandlung der Site-to-Sit
 
 [!INCLUDE [site-to-site and multi-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-## <a name="P2S"></a>Point-to-Site (VPN über IKEv2 oder SSTP)
+## <a name="P2S"></a>Point-to-Site-VPN
 
 Mit einer P2S-VPN-Gatewayverbindung (Point-to-Site) können Sie von einem einzelnen Clientcomputer aus eine sichere Verbindung mit Ihrem virtuellen Netzwerk herstellen. Eine P2S-Verbindung wird hergestellt, indem Sie die Verbindung vom Clientcomputer aus starten. Diese Lösung ist nützlich für Telearbeiter, die an einem Remotestandort (beispielsweise zu Hause oder in einer Konferenz) eine Verbindung mit Azure-VNETs herstellen möchten. Wenn nur einige wenige Clients eine Verbindung mit einem VNET herstellen müssen, ist ein P2S-VPN (und nicht ein S2S-VPN) ebenfalls eine nützliche Lösung.
 

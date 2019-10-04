@@ -7,14 +7,14 @@ ms.date: 03/05/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 4f400e45d8defc304cf58c4bd05fa19f16d0501b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 137764cba91ab94adef4719a0d34b6fb9e6efe29
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785961"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232616"
 ---
-# <a name="create-an-environment-from-a-blueprint-sample"></a>Erstellen einer Umgebung anhand eines Blaupausenbeispiels
+# <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Erstellen einer Umgebung anhand eines Blaupausenbeispiels
 
 Beispielblaupausen enthalten Beispiele für die Aufgaben, die mit Azure Blueprints ausgeführt werden können. Jedes Blaupausenbeispiel dient einer bestimmten Absicht bzw. einem spezifischen Zweck, erstellt aber nicht selbst eine vollständige Umgebung. Jedes Blaupausenbeispiel ist als Ausgangspunkt für die Erkundung von Azure Blueprints vorgesehen und enthält verschiedene Kombinationen von Artefakten, Designs und Parametern.
 
@@ -104,11 +104,11 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
 
      |Artefaktname|Artefakttyp|Parametername|Wert|BESCHREIBUNG|
      |-|-|-|-|-|
-     |Ressourcengruppe „ProdRG“|Ressourcengruppe|NAME|ProductionRG|Definiert den Namen der ersten Ressourcengruppe.|
-     |Ressourcengruppe „ProdRG“|Ressourcengruppe|Standort|USA, Westen 2|Legt den Ort der ersten Ressourcengruppe fest.|
+     |Ressourcengruppe „ProdRG“|Resource group|NAME|ProductionRG|Definiert den Namen der ersten Ressourcengruppe.|
+     |Ressourcengruppe „ProdRG“|Resource group|Location|USA, Westen 2|Legt den Ort der ersten Ressourcengruppe fest.|
      |Mitwirkender|Rollenzuweisung|Benutzer oder Gruppe|{Ihre ID}|Definiert, welchem Benutzer oder welcher Gruppe die Rollenzuweisung _Mitwirkender_ in der ersten Ressourcengruppe gewährt wird.|
-     |Ressourcengruppe „PreProdRG“|Ressourcengruppe|NAME|PreProductionRG|Definiert den Namen der zweiten Ressourcengruppe.|
-     |Ressourcengruppe „PreProdRG“|Ressourcengruppe|Standort|USA (Westen)|Legt den Ort der zweiten Ressourcengruppe fest.|
+     |Ressourcengruppe „PreProdRG“|Resource group|NAME|PreProductionRG|Definiert den Namen der zweiten Ressourcengruppe.|
+     |Ressourcengruppe „PreProdRG“|Resource group|Location|USA (Westen)|Legt den Ort der zweiten Ressourcengruppe fest.|
      |Owner (Besitzer)|Rollenzuweisung|Benutzer oder Gruppe|{Ihre ID}|Definiert, welchem Benutzer oder welcher Gruppe die Rollenzuweisung _Besitzer_ in der zweiten Ressourcengruppe gewährt wird.|
      |Leser|Rollenzuweisung|Benutzer oder Gruppe|{Ihre ID}|Definiert, welchem Benutzer oder welcher Gruppe die Rollenzuweisung _Leser_ in der zweiten Ressourcengruppe gewährt wird.|
 

@@ -1,24 +1,21 @@
 ---
 title: Von Azure Data Catalog unterstützte Datenquellen
-description: In diesem Artikel sind die derzeit unterstützten Datenquellen aufgeführt.
-services: data-catalog
-author: markingmyname
-ms.author: maghan
-ms.assetid: fd4345ca-2ed8-4c5e-9c4b-f954be2fc9f9
+description: In diesem Artikel werden die derzeit unterstützten Datenquellen für Azure Data Catalog aufgeführt.
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 56fa449bd665457ab1b98b67bb42ec52e0742c5f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 08/01/2019
+ms.openlocfilehash: 8f148bfe08d5f7933857eb46cf0d13d4582da108
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410186"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950274"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Von Azure Data Catalog unterstützte Datenquellen
 
 Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine öffentliche API nutzen, ein ClickOnce-Registrierungstool verwenden oder die Informationen direkt in das Azure Data Catalog-Webportal eingeben. In der folgenden Tabelle sind alle derzeit vom Katalog unterstützten Datenquellen zusammengefasst. Außerdem werden die jeweiligen Veröffentlichungsmöglichkeiten genannt. Ferner sind die externen Datentools aufgelistet, in denen die jeweiligen Datenquelle direkt im Portal geöffnet werden kann. Die zweite Tabelle enthält weitere technische Angaben zu den Verbindungseigenschaften der einzelnen Datenquellen.
-
 
 ## <a name="list-of-supported-data-sources"></a>Liste der unterstützten Datenquellen
 
@@ -32,7 +29,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
        <td><b>Hinweise</b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store-Verzeichnis</td>
+      <td>Azure Data Lake Storage-Verzeichnis (nur Gen 1)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -40,7 +37,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store-Datei</td>
+      <td>Azure Data Lake Storage-Datei (nur Gen 1)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -69,10 +66,8 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>
-        <font size="2">
       </td>
       <td>
-        <font size="2">
       </td>
     </tr>
     <tr>
@@ -156,7 +151,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td></td>
     </tr>
     <tr>
-      <td>SQL Data Warehouse-Sicht</td>
+      <td>Ansicht von Azure SQL Data Warehouse</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -169,7 +164,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 und neuere Versionen.</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-KPI</td>
@@ -177,7 +172,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 und neuere Versionen.</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-Measure</td>
@@ -185,7 +180,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 und neuere Versionen.</td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services-Tabelle</td>
@@ -193,7 +188,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop</td>
-      <td></td>
+      <td>SQL Server 2008 und neuere Versionen.</td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services-Bericht</td>
@@ -201,7 +196,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>"Browser"</td>
-      <td>Nur Server im nativen Modus. SharePoint-Modus wird nicht unterstützt.</td>
+      <td>Nur Server im nativen Modus. SharePoint-Modus wird nicht unterstützt. Nur SQL Server 2008 und neuere Versionen</td>
     </tr>
     <tr>
       <td>SQL Server-Tabelle</td>
@@ -209,7 +204,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop, SQL Server Data Tools</td>
-      <td></td>
+      <td>SQL Server 2008 und neuere Versionen.</td>
     </tr>
     <tr>
       <td>SQL Server-Sicht</td>
@@ -217,7 +212,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>Excel, Power BI Desktop, SQL Server Data Tools</td>
-      <td></td>
+      <td>SQL Server 2008 und neuere Versionen.</td>
     </tr>
     <tr>
       <td>Teradata-Tabelle</td>
@@ -234,6 +229,14 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>Excel</td>
       <td></td>
+    </tr>
+    <tr>
+      <td>SAP Business Warehouse</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
+      <td></td>
+      <td>Funktioniert nur auf Englisch. Maßeinheiten werden nicht unterstützt.</td>
     </tr>
     <tr>
       <td>SAP HANA-Sicht</td>

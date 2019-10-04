@@ -1,18 +1,18 @@
 ---
 title: WebSocket-Unterstützung in Azure Application Gateway | Microsoft-Dokumentation
 description: Diese Seite enthält eine Übersicht über die WebSocket-Unterstützung von Application Gateway.
-author: amsriva
+author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/18/2019
-ms.openlocfilehash: bae4b3d955076679a5640717ac6f5446e3951fb9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a48f1b6e4410820d40ba6563d431c690ab791ff0
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168118"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097245"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Übersicht über die WebSocket-Unterstützung in Application Gateway
 
@@ -28,11 +28,11 @@ WebSocket wird in Anwendungen verwendet, die von schneller Kommunikation in Echt
 
 Um eine WebSocket-Verbindung einzurichten, wird ein spezifischer HTTP-basierter Handshake zwischen dem Client und dem Server ausgetauscht. Im Erfolgsfall wird mithilfe der zuvor hergestellten TCP-Verbindung ein „Upgrade“ des Protokolls der Anwendungsschicht von HTTP auf WebSockets ausgeführt. Sobald dies erfolgt ist, spielt HTTP keinerlei Rolle mehr. Daten können von beiden Endpunkten mithilfe des WebSocket-Protokolls gesendet oder empfangen werden, bis die WebSocket-Verbindung geschlossen wird. 
 
-![addcert](./media/application-gateway-websocket/websocket.png)
+![websocket](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>Listenerkonfigurationselement
 
-Zur Unterstützung von WebSocket-Datenverkehr kann ein vorhandener HTTP-Listener verwendet werden. Es folgt ein Codeausschnitt des „httpListeners“-Elements in einer Beispielvorlagendatei. Zur Unterstützung von WebSocket-Datenverkehr benötigen Sie sowohl den HTTP- als auch den HTTPS-Listener. Analog dazu können Sie über das [Portal](application-gateway-create-gateway-portal.md) oder mithilfe von [PowerShell](application-gateway-create-gateway-arm.md) ein Anwendungsgateway mit Listenern für die Ports 80 und 443 erstellen, um WebSocket-Datenverkehr zu unterstützen.
+Zur Unterstützung von WebSocket-Datenverkehr kann ein vorhandener HTTP-Listener verwendet werden. Es folgt ein Codeausschnitt des „httpListeners“-Elements in einer Beispielvorlagendatei. Zur Unterstützung von WebSocket-Datenverkehr benötigen Sie sowohl den HTTP- als auch den HTTPS-Listener. Analog dazu können Sie über das Portal oder mithilfe von Azure PowerShell ein Anwendungsgateway mit Listenern für die Ports 80 und 443 erstellen, um WebSocket-Datenverkehr zu unterstützen.
 
 ```json
 "httpListeners": [
@@ -68,7 +68,7 @@ Zur Unterstützung von WebSocket-Datenverkehr kann ein vorhandener HTTP-Listener
 
 ## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>Konfigurieren von „backendAddressPool“, „backendHttpSettings“ und Routingregel
 
-„backendAddressPool“ dient zum Definieren eines Back-End-Pools mit WebSocket-fähigen Servern. „backendHttpSettings“ wird mit den Back-End-Ports 80 und 443 definiert. Die Eigenschaften für cookiebasierte Affinität und Anforderungstimeouts sind für WebSocket-Datenverkehr nicht relevant. Für die Routingregel ist keine Änderung erforderlich. Verwenden Sie weiterhin die Basisroutingregel, um den geeigneten Listener mit dem entsprechenden Back-End-Adresspool zu verknüpfen. 
+„backendAddressPool“ dient zum Definieren eines Back-End-Pools mit WebSocket-fähigen Servern. „backendHttpSettings“ wird mit den Back-End-Ports 80 und 443 definiert. Der Wert für das Anforderungstimeout in den HTTP-Einstellungen gilt auch für die WebSocket-Sitzung. Für die Routingregel ist keine Änderung erforderlich. Sie wird verwendet, um den geeigneten Listener mit dem entsprechenden Back-End-Adresspool zu verknüpfen. 
 
 ```json
 "requestRoutingRules": [{
@@ -123,5 +123,4 @@ Ein weiterer Grund: Der Back-End-Integritätstest des Anwendungsgateways unterst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich im Anschluss an die WebSocket-Unterstützung unter [Erstellen eines Anwendungsgateways](application-gateway-create-gateway.md) über die ersten Schritte mit einer WebSocket-fähigen Webanwendung.
-
+Informieren Sie sich im Anschluss an die WebSocket-Unterstützung unter [Erstellen eines Anwendungsgateways](quick-create-powershell.md) über die ersten Schritte mit einer WebSocket-fähigen Webanwendung.

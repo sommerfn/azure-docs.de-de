@@ -10,19 +10,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: brahmnes
-ms.date: 03/07/2019
+ms.date: 08/06/2019
 ms.author: mbullwin
-ms.openlocfilehash: 669b4d65798a553188a2b99080b72ffc7cd9e898
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 02d72ab877577e97592dfdd763a58cb01b201d8b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890575"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839355"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 Wenn eine Ausnahme auftritt, können Sie automatisch eine Debugmomentaufnahme von Ihrer aktiven Webanwendung erfassen. Die Momentaufnahme zeigt den Status des Quellcodes und der Variablen in dem Moment, in dem die Ausnahme ausgelöst wurde. Der Momentaufnahmedebugger (Vorschau) in [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) überwacht die Ausnahmetelemetrie aus Ihrer Web-App. Er erfasst Momentaufnahmen Ihrer am häufigsten ausgelösten Ausnahmen, damit Sie die erforderlichen Informationen zur Diagnose von Problemen in der Produktion erhalten. Binden Sie das [NuGet-Paket des Momentaufnahmesammlers](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre Anwendung ein, und konfigurieren Sie optional Parameter für die Datensammlung in [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Momentaufnahmen finden Sie im Application Insights-Portal unter [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md).
 
-Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeigen und die Variablen in jedem Aufruflistenrahmen zu überprüfen. Öffnen Sie zum Verbessern Ihrer Debugleistung mit Quellcode die Momentaufnahmen mit Visual Studio 2017 Enterprise. In Visual Studio können Sie auch [Andockpunkte festlegen, um interaktiv Momentaufnahmen zu erstellen](https://aka.ms/snappoint), ohne auf eine Ausnahme zu warten.
+Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeigen und die Variablen in jedem Aufruflistenrahmen zu überprüfen. Öffnen Sie zum Verbessern Ihrer Debugleistung mit Quellcode die Momentaufnahmen mit Visual Studio 2019 Enterprise. In Visual Studio können Sie auch [Andockpunkte festlegen, um interaktiv Momentaufnahmen zu erstellen](https://aka.ms/snappoint), ohne auf eine Ausnahme zu warten.
 
 Debugmomentaufnahmen werden sieben Tage lang gespeichert. Diese Aufbewahrungsrichtlinie wird für jede Anwendung separat festgelegt. Wenn Sie diesen Wert erhöhen möchten, können Sie eine Erhöhung anfordern, indem Sie einen Supportfall im Azure-Portal eröffnen.
 
@@ -54,7 +54,7 @@ Der Zugriff auf Momentaufnahmen wird durch die rollenbasierte Zugriffssteuerung 
 Abonnementbesitzer sollten Benutzern, die Momentaufnahmen untersuchen, die Rolle `Application Insights Snapshot Debugger` zuweisen. Abonnementbesitzer können diese Rolle einzelnen Benutzern oder Gruppen für die Application Insights-Zielressource oder für die dazugehörige Ressourcengruppe oder das dazugehörige Abonnement zuweisen.
 
 1. Navigieren Sie im Azure-Portal zu der Application Insights-Ressource.
-1. Klicken Sie auf **Zugriffssteuerung (IAM)**.
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 1. Klicken Sie auf die Schaltfläche **Rollenzuweisung hinzufügen**.
 1. Wählen Sie in der Dropdownliste **Rollen** die Option **Application Insights-Momentaufnahmedebugger** aus.
 1. Suchen Sie nach dem hinzuzufügenden Benutzer, und geben Sie einen Namen für ihn ein.
@@ -81,9 +81,9 @@ In der Ansicht der Debug-Momentaufnahme sehen Sie eine Aufrufliste und einen Var
 Momentaufnahmen enthalten möglicherweise vertrauliche Informationen und können standardmäßig nicht angezeigt werden. Zum Anzeigen von Momentaufnahmen muss Ihnen die Rolle `Application Insights Snapshot Debugger` zugewiesen sein.
 
 ## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>Anzeigen von Momentaufnahmen in Visual Studio 2017 Enterprise oder höher
-1. Klicken Sie auf die Schaltfläche **Momentaufnahme herunterladen**, um eine Datei vom Typ `.diagsession` herunterzuladen, die von Visual Studio 2017 Enterprise geöffnet werden kann.
+1. Klicken Sie auf die Schaltfläche **Momentaufnahme herunterladen**, um eine Datei vom Typ `.diagsession` herunterzuladen, die von Visual Studio Enterprise geöffnet werden kann.
 
-2. Um die Datei `.diagsession` öffnen zu können, muss der Visual Studio-Momentaufnahmedebugger installiert sein. Der Momentaufnahmedebugger ist eine erforderliche Komponente der ASP.net-Workload in VS und kann im VS-Installationsprogramm in der Liste mit den Einzelkomponenten ausgewählt werden. Bei Verwendung einer Version von Visual Studio 2017 vor 15.5 muss die Erweiterung über den [VS Marketplace](https://aka.ms/snapshotdebugger) installiert werden.
+2. Um die Datei `.diagsession` öffnen zu können, muss der Visual Studio-Momentaufnahmedebugger installiert sein. Der Momentaufnahmedebugger ist eine erforderliche Komponente der ASP.net-Workload in Visual Studio und kann im Visual Studio-Installer in der Liste mit den Einzelkomponenten ausgewählt werden. Bei Visual Studio-Versionen vor Visual Studio 2017 Version 15.5 muss die Erweiterung über den [Visual Studio Marketplace](https://aka.ms/snapshotdebugger) installiert werden.
 
 3. Nach dem Öffnen der Momentaufnahmedatei erscheint in Visual Studio die Minidump-Debugging-Seite. Klicken Sie auf **Debug Managed Code** (Verwalteten Code debuggen), um mit dem Debuggen der Momentaufnahme zu beginnen. Die Momentaufnahme wird bei der Codezeile geöffnet, in der die Ausnahme ausgelöst wurde, damit Sie den aktuellen Zustand des Prozesses debuggen können.
 
@@ -112,7 +112,7 @@ Der Hauptprozess wird mit minimaler Unterbrechung weiter ausgeführt und stellt 
 
 ## <a name="limitations"></a>Einschränkungen
 
-Die Standarddauer für die Datenaufbewahrung beträgt 7 Tage. Für jede Application Insights-Instanz ist eine maximale Anzahl von 50 Momentaufnahmen pro Tag zulässig.
+Die standardmäßige Datenaufbewahrungsdauer beträgt 15 Tage. Für jede Application Insights-Instanz ist eine maximale Anzahl von 50 Momentaufnahmen pro Tag zulässig.
 
 ### <a name="publish-symbols"></a>Veröffentlichen von Symbolen
 Für den Momentaufnahmedebugger müssen Symboldateien auf dem Produktionsserver vorhanden sein, um Variablen zu decodieren und eine gute Debugleistung in Visual Studio zu erzielen.
@@ -123,6 +123,10 @@ Die Version 15.2 (oder höher) von Visual Studio 2017 veröffentlicht Symbole f�
 ```
 
 Stellen Sie für Azure Compute und andere Typen sicher, dass die Symboldateien im selben Ordner wie die DLL-Datei der Hauptanwendung (in der Regel `wwwroot/bin`) liegen oder unter dem aktuellen Pfad verfügbar sind.
+
+> [!NOTE]
+> Weitere Informationen zu den verschiedenen verfügbaren Symboloptionen finden Sie in der [Visual Studio-Dokumentation](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
+). Um optimale Ergebnisse zu erzielen, wird die Verwendung von „full“, „portable“ oder „embedded“ empfohlen.
 
 ### <a name="optimized-builds"></a>Optimierte Builds
 In einigen Fällen können lokale Variablen aufgrund von Optimierungen, die durch den JIT-Compiler angewendet werden, nicht in Releasebuilds angezeigt werden.

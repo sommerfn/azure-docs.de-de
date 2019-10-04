@@ -1,21 +1,20 @@
 ---
-title: 'Behandeln von Inhaltstypen: Azure Logic Apps | Microsoft-Dokumentation'
+title: 'Behandeln von Inhaltstypen: Azure Logic Apps'
 description: Erfahren Sie, wie Logic Apps Inhaltstypen zur Entwurfszeit und Laufzeit behandelt.
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 82eb9c895f016efe569651dc89885d2e4850fd59
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.topic: conceptual
+ms.date: 07/20/2018
+ms.openlocfilehash: 97897da13c70c29834b1fc276829b316416efd8d
+ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159090"
+ms.lasthandoff: 07/13/2019
+ms.locfileid: "67868914"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Behandeln von Inhaltstypen in Azure Logic Apps
 
@@ -63,7 +62,7 @@ Logic Apps ermöglicht Ihnen, benutzerfreundliche Token zu generieren, die die E
   
   1. Wählen Sie im Anforderungstrigger **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.  
   
-  2. Geben Sie unter **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** eine Beispielnutzlast ein, und wählen Sie dann **Fertig**. Beispiel:  
+  2. Geben Sie unter **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** eine Beispielnutzlast ein, und wählen Sie dann **Fertig**. Beispiel: 
 
      ![Angeben einer JSON-Beispielnutzlast](./media/logic-apps-content-type/request-trigger.png)
 
@@ -140,15 +139,16 @@ Zum Erhalten einiger Datentypen konvertiert Logic Apps den Inhalt in eine Base64
 
 In dieser Liste wird beschrieben, wie Logic Apps Inhalt konvertiert, wenn Sie diese [Funktionen](../logic-apps/workflow-definition-language-functions-reference.md) verwenden:
 
-* `json()`: konvertiert Daten in `application/json`
-* `xml()`: konvertiert Daten in `application/xml`
-* `binary()`: konvertiert Daten in `application/octet-stream`
-* `string()`: konvertiert Daten in `text/plain`
-* `base64()`: konvertiert Inhalt in eine Base64-Zeichenfolge
-* `base64toString()`: konvertiert eine Base64-codierte Zeichenfolge in `text/plain`
-* `base64toBinary()`: konvertiert eine Base64-codierte Zeichenfolge in `application/octet-stream`
-* `encodeDataUri()`: codiert eine Zeichenfolge als dataUri-Bytearray
-* `decodeDataUri()`: decodiert eine `dataUri` in ein Bytearray
+* `json()`: Konvertiert Daten in `application/json`.
+* `xml()`: Konvertiert Daten in `application/xml`.
+* `binary()`: Konvertiert Daten in `application/octet-stream`.
+* `string()`: Konvertiert Daten in `text/plain`.
+* `base64()`: Konvertiert Inhalt in eine Base64-codierte Zeichenfolge
+* `base64toString()`: Konvertiert eine Base64-codierte Zeichenfolge in `text/plain`
+* `base64toBinary()`: Konvertiert eine Base64-codierte Zeichenfolge in `application/octet-stream`
+* `dataUri()`: Konvertiert eine Zeichenfolge in einen Daten-URI
+* `dataUriToBinary()`: Konvertiert einen Daten-URI in eine binäre Zeichenfolge
+* `dataUriToString()`: Konvertiert einen Daten-URI in eine Zeichenfolge
 
 Wenn Sie z.B. eine HTTP-Anforderung erhalten, in der für `Content-Type` der Wert `application/xml` festgelegt ist, z.B. diesen Inhalt:
 

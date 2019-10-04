@@ -1,6 +1,6 @@
 ---
-title: Überprüfen von Benutzeräußerungen
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Überprüfen von Benutzeräußerungen – LUIS
+titleSuffix: Azure Cognitive Services
 description: Beim aktiven Lernen werden Endpunktabfragen erfasst und die Äußerungen des Benutzers ausgewählt, bei denen es sich nicht sicher ist. Sie überprüfen diese Äußerungen, um die Absicht auszuwählen und Entitäten für diese realen Äußerungen zu markieren. Akzeptieren Sie diese Änderungen in Ihren Beispieläußerungen, dann trainieren und veröffentlichen Sie sie. Dann werden Äußerungen von LUIS genauer identifiziert.
 services: cognitive-services
 author: diberry
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/25/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 8fac360682ef11c438cdec333fac21d6f8cfc117
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c617e4aa62ce2ff468545bef0b2ebe2c4d0e4f03
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791050"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382358"
 ---
 # <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Überprüfen von Endpunktäußerungen im LUIS-Portal für aktives Lernen
 
@@ -25,11 +25,11 @@ Beim [aktiven Lernen](luis-concept-review-endpoint-utterances.md) werden Endpunk
 
 ## <a name="enable-active-learning"></a>Aktivieren des aktiven Lernens
 
-Um das aktive Lernen zu aktivieren, protokollieren Sie Benutzerabfragen. Dies wird durch Festlegen der [Endpunktabfrage](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) mit dem `log=true`-Abfragezeichenfolgenparameter und -wert erreicht.
+Um das aktive Lernen zu aktivieren, protokollieren Sie Benutzerabfragen. Dies wird durch Festlegen der [Endpunktabfrage](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) mit dem `log=true`-Abfragezeichenfolgenparameter und -wert erreicht.
 
 ## <a name="disable-active-learning"></a>Deaktivieren des aktiven Lernens
 
-Um das aktive Lernen zu deaktivieren, protokollieren Sie keine Benutzerabfragen. Dies wird durch Festlegen der [Endpunktabfrage](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) mit dem `log=false`-Abfragezeichenfolgenparameter und -wert erreicht.
+Um das aktive Lernen zu deaktivieren, protokollieren Sie keine Benutzerabfragen. Dies wird durch Festlegen der [Endpunktabfrage](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) mit dem `log=false`-Abfragezeichenfolgenparameter und -wert erreicht.
 
 ## <a name="filter-utterances"></a>Filtern von Äußerungen
 

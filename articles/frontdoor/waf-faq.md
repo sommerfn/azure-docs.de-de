@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 05d01851d0a3dc9df6c396e862ce93defd957c70
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/10/2019
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: f7d205920704ce8aedf3b2e3c07bd429b3c64964
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788920"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375341"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Häufig gestellte Fragen zu Azure Web Application Firewall
 
@@ -31,9 +32,6 @@ Eine Azure WAF-Richtlinie kann auf Webanwendungen angewendet werden, die in App
 ## <a name="what-is-waf-for-azure-front-door-service"></a>Was ist WAF für Azure Front Door Service? 
 
 Azure Front Door Service ist ein hochgradig skalierbares, global verteiltes APN (Application Delivery Network) und CDN (Content Delivery Network). Nach der Integration in Front Door unterbindet Azure WAF Denial-of-Service-Angriffe und gezielte Anwendungsangriffe im Edgebereich nahe der Angriffsquelle, bevor Angreifer in Ihr virtuelles Netzwerk eindringen, und bietet Schutz ohne Leistungseinbußen.
-
-## <a name="how-will-i-be-charged-for-azure-waf-for-front-door"></a>Welche Kosten fallen für Azure WAF für Front Door an?
-Während der Public Preview-Phase ist die WAF-Nutzung in Front Door kostenlos. Für Front Door fallen allerdings separate Gebühren an. Preisinformationen für Azure Front Door Service finden Sie [hier](https://azure.microsoft.com/pricing/details/frontdoor/).
 
 ## <a name="does-azure-waf-support-https"></a>Wird HTTPS von Azure WAF unterstützt?
 
@@ -55,12 +53,6 @@ Das globale Bereitstellen einer WAF-Richtlinie dauert in der Regel etwa fünf Mi
 
 Wenn WAF in Front Door Service integriert wird, ist WAF eine globale Ressource. Die gleiche Konfiguration gilt also für alle Front Door-Standorte.
  
-## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Wie kann ich den Zugriff auf mein Back-End allein auf Zugriffe über Front Door beschränken?
-
-Sie können die IP-Zugriffssteuerungsliste Ihres Back-Ends so konfigurieren, dass Zugriffe nur über ausgehende IP-Adressbereiche von Front Door zugelassen werden und jeglicher Direktzugriff über das Internet abgelehnt wird. Diensttags werden unterstützt und können für Ihr virtuelles Netzwerk verwendet werden. Darüber hinaus können Sie überprüfen, ob das HTTP-Headerfeld „X-Forwarded-Host“ für Ihre Webanwendung gültig ist.
-
-
-
 
 ## <a name="which-azure-waf-options-should-i-choose"></a>Welche Azure WAF-Optionen soll ich auswählen?
 
@@ -74,6 +66,9 @@ ModSec CRS 2.2.9- und CRS 3.0-Regeln werden derzeit nur bei Verwendung von WA
 ## <a name="is-ddos-protection-integrated-with-front-door"></a>Ist DDoS-Schutz in Front Door integriert? 
 
 Azure Front Door wird global im Edgebereich des Azure-Netzwerks verteilt. Dadurch kann der Dienst groß angelegte Angriffe absorbieren und geografisch isolieren. Sie können eine benutzerdefinierte WAF-Richtlinie erstellen, um HTTP(S)-Angriffe mit bekannten Signaturen automatisch zu blockieren sowie eine Ratenbegrenzung anzuwenden. Darüber hinaus können Sie DDoS Protection Standard für das VNET aktivieren, in dem Ihre Back-Ends bereitgestellt werden. Azure DDoS Protection Standard-Kunden profitieren von weiteren Vorteilen wie Kostenschutz, SLA-Garantie und Zugang zu Experten des DDoS Rapid Response-Teams für Soforthilfe im Angriffsfall. 
+
+Wir empfehlen, Ihre Back-Ends in der Produktionsumgebung zu sperren, um die DDoS-Angriffsfläche zu reduzieren. Siehe [Wie kann ich den Zugriff auf mein Back-End nur auf Azure Front Door beschränken?](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

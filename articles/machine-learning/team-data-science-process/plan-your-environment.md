@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0eaa5f24be85eab96f11e0c3915a3f60d79a0551
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d8eed4f2425cdbfec7d3addad11ddaba57e5370e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864744"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64704481"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Bestimmen von Szenarien und Planen der Datenverarbeitung für die erweiterte Analyse
 
@@ -92,7 +92,7 @@ Diese Fragen sind wichtig für die Planung Ihrer Speicher- und Verarbeitungsumge
 * Numerisch
 * Kategorisch
 * Zeichenfolgen
-* Binär
+* Binary
 
 ### <a name="how-is-your-data-formatted"></a>Wie sind Ihre Daten formatiert?
 
@@ -150,7 +150,7 @@ Es gibt viele Optionen für Tools, Sprachen und Entwicklungsumgebungen. Achten S
 * [Microsoft Azure Powershell](/powershell/azure/overview): eine Skriptsprache zum Verwalten von Azure-Ressourcen
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
-* [RStudio](http://www.rstudio.com)
+* [RStudio](https://www.rstudio.com)
 * [Python Tools für Visual Studio](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
 * [Jupyter-Notebooks](https://jupyter.org/)

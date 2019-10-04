@@ -4,17 +4,17 @@ description: Bietet eine Übersicht über die verschiedenen Methoden, die zum St
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b065b611c923c4a28dc79c390ffb56ed97b316fd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a42ba0a385b73032e3d4045094bc88613016b849
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918449"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850339"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Starten eines Runbooks in Azure Automation
 
@@ -84,7 +84,7 @@ Der Azure Automation-Webdienst bietet spezielle Funktionen für Parameter, die b
 
 ### <a name="named-values"></a>Benannte Werte
 
-Wenn der Parameter den Datentyp „[object]“ enthält, können Sie das folgende JSON-Format verwenden, um eine Liste benannter Werte an den Parameter zu senden: *{Name1:Wert1, Name2:Wert2, Name3:Wert3}*. Bei den Werten muss es sich um einfache Typen handeln. Das Runbook empfängt den Parameter als [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) mit Eigenschaften, die den einzelnen benannten Werten entsprechen.
+Wenn der Parameter den Datentyp „[object]“ enthält, können Sie das folgende JSON-Format verwenden, um eine Liste benannter Werte an den Parameter zu senden: *{Name1:Wert1, Name2:Wert2, Name3:Wert3}* . Bei den Werten muss es sich um einfache Typen handeln. Das Runbook empfängt den Parameter als [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) mit Eigenschaften, die den einzelnen benannten Werten entsprechen.
 
 Betrachten Sie das folgende Testrunbook, das einen Parameter namens "user" akzeptiert.
 
@@ -121,7 +121,7 @@ Smith
 
 ### <a name="arrays"></a>Arrays
 
-Wenn es sich bei dem Parameter um ein Array wie beispielsweise [array] oder [string[]] handelt, können Sie das folgende JSON-Format verwenden, um eine Liste von Werten an den Parameter zu senden: *[Wert1,Wert2,Wert3]*. Bei den Werten muss es sich um einfache Typen handeln.
+Wenn es sich bei dem Parameter um ein Array wie beispielsweise [array] oder [string[]] handelt, können Sie das folgende JSON-Format verwenden, um eine Liste von Werten an den Parameter zu senden: *[Wert1,Wert2,Wert3]* . Bei den Werten muss es sich um einfache Typen handeln.
 
 Betrachten Sie das folgende Testrunbook, das einen Parameter namens *user*akzeptiert.
 
@@ -187,3 +187,4 @@ jsmith
 
 * Die Runbook-Architektur im aktuellen Artikel bietet einen allgemeinen Überblick über Runbooks, die zum Verwalten von Ressourcen in Azure und lokal mit dem Hybrid Runbook Worker eingesetzt werden. Weitere Informationen zum Ausführen von Automation-Runbooks in Ihrem Rechenzentrum finden Sie unter [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md).
 * Weitere Informationen zum Erstellen von modularen Runbooks, die von anderen Runbooks für spezifische oder allgemeine Funktionen verwendet werden, finden Sie unter [Untergeordnete Runbooks](automation-child-runbooks.md).
+* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodule, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/en-us/powershell/scripting/overview).

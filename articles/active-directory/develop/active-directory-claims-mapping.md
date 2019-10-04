@@ -1,24 +1,26 @@
 ---
-title: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App auf einem Azure AD-Mandanten (öffentliche Vorschau)
+title: Anpassen von Ansprüchen für eine App in einem Azure AD-Mandanten (Vorschauversion)
 description: Auf dieser Seite wird die Anspruchszuordnung in Azure Active Directory beschreiben.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
+ms.subservice: develop
+ms.custom: aaddev
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2076aec1585ff8b60ee2b593621b75abfaeaa1ac
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f9350a30ac6258664b3a8405923467a8468a6758
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260305"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835455"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -71,7 +73,7 @@ Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in To
 | appctxsender |
 | appid |
 | appidacr |
-| Assertion |
+| assertion |
 | at_hash |
 | aud |
 | auth_data |
@@ -97,7 +99,7 @@ Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in To
 | domain_dns_name |
 | domain_netbios_name |
 | e_exp |
-| E-Mail |
+| email |
 | endpoint |
 | enfpolids |
 | exp |
@@ -158,7 +160,7 @@ Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in To
 | request_nonce |
 | resource |
 | role |
-| Rollen |
+| roles |
 | scope |
 | scp |
 | sid |
@@ -284,7 +286,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabelle 3: Gültige ID-Werte pro Quelle
 
-| Quelle | ID | BESCHREIBUNG |
+| `Source` | id | BESCHREIBUNG |
 |-----|-----|-----|
 | Benutzer | surname | Familienname |
 | Benutzer | givenname | Vorname |
@@ -384,7 +386,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabelle 5: Attribute, die als Datenquelle für SAML-NameID zulässig sind
 
-|Quelle|ID|BESCHREIBUNG|
+|`Source`|id|BESCHREIBUNG|
 |-----|-----|-----|
 | Benutzer | mail|E-Mail-Adresse|
 | Benutzer | userprincipalname|Benutzerprinzipalname|
@@ -520,4 +522,4 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die einen benutzerdefinierten 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-Weitere Informationen zum Anpassen von im SAML-Token ausgestellten Ansprüchen über das Azure-Portal finden Sie unter [Gewusst wie: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](active-directory-saml-claims-customization.md).
+Weitere Informationen dazu, wie Sie über das Azure-Portal die im SAML-Token ausgestellten Ansprüche anpassen, finden Sie unter [Vorgehensweise: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](active-directory-saml-claims-customization.md)

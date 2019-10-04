@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 46c387ab175bfd3613e00be8e7b3a899aa025a7f
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 778a95db8ce462d06e2464db56b542f8113a4960
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149279"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875377"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Häufig gestellte Fragen
 
@@ -37,6 +37,7 @@ ms.locfileid: "60149279"
 
 ## <a name="can-i-use-application-insights-with-"></a>Kann ich Application Insights mit ... verwenden?
 
+* [Web-Apps auf einem IIS-Server in der Azure-VM oder Azure-VM-Skalierungsgruppe](azure-vm-vmss-apps.md)
 * [Web-Apps auf einem IIS-Server – lokal oder auf einem virtuellen Computer](asp-net.md)
 * [Java-Web-Apps](java-get-started.md)
 * [Node.js-Apps](nodejs.md)
@@ -83,7 +84,7 @@ Die Details hängen von der Art des Projekts ab. Für eine Webanwendung:
 
   * Web.config
   * packages.config
-* (Nur neue Projekte – wenn Sie [Application Insights zu einem vorhandenen Webprojekt hinzufügen][start], müssen Sie diesen Schritt manuell ausführen.) Fügen Sie Codeausschnitte in den Client- und Servercode ein, um diese mit der Application Insights-Ressourcen-ID zu initialisieren. Beispielsweise wird in einer MVC-App Code auf der Masterseite "Views/Shared/_Layout.cshtml" eingefügt.
+* (Nur neue Projekte – wenn Sie [Application Insights zu einem vorhandenen Webprojekt hinzufügen][start], müssen Sie diesen Schritt manuell durchführen.) Fügen Sie Codeausschnitte in den Client- und Servercode ein, um diese mit der Application Insights-Ressourcen-ID zu initialisieren. Beispielsweise wird in einer MVC-App Code auf der Masterseite "Views/Shared/_Layout.cshtml" eingefügt.
 
 ## <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Wie aktualisiere ich von älteren SDK-Versionen?
 Informationen hierzu finden Sie in den [Versionshinweisen](release-notes.md) für das SDK, das für Ihren Anwendungstyp geeignet ist.
@@ -104,7 +105,7 @@ Von Server-Web-Apps:
 * HTTP-Anforderungen
 * [Abhängigkeiten](asp-net-dependencies.md) Aufrufe an: SQL-Datenbanken, HTTP-Aufrufe an externe Dienste, Aufrufe an Azure Cosmos DB, Tabellen, Blob Storage und Warteschlangen. 
 * [Ausnahmen](asp-net-exceptions.md) und Stapelüberwachungen.
-* [Leistungsindikatoren](performance-counters.md): Bei Verwendung von [Statusmonitor](monitor-performance-live-website-now.md), [Azure-Überwachung](azure-web-apps.md) oder [collectd-Writer von Application Insights](java-collectd.md).
+* [Leistungsindikatoren:](performance-counters.md) Wenn Sie den [Application Insights-Statusmonitor](monitor-performance-live-website-now.md), die [Azure-Überwachung für App Services](azure-web-apps.md), die [Azure-Überwachung für VMs oder VM-Skalierungsgruppen](azure-vm-vmss-apps.md) oder den [Application Insights-collectd-Writer](java-collectd.md) verwenden.
 * [Benutzerdefinierte Ereignisse und Metriken](api-custom-events-metrics.md), die Sie codieren.
 * [Ablaufverfolgungsprotokolle](asp-net-trace-logs.md), wenn Sie den entsprechenden Sammler konfigurieren.
 
@@ -132,7 +133,7 @@ Ja, auf dem Server können Sie Folgendes schreiben:
 
 Weitere Informationen über [ASP.NET](api-filtering-sampling.md) und [Java](java-filter-telemetry.md).
 
-## <a name="how-are-city-country-and-other-geo-location-data-calculated"></a>Wie werden Daten zu Ort, Land und andere Geolocation-Daten berechnet?
+## <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>Wie werden Daten zu Ort, Land/Region und andere Geolocation-Daten berechnet?
 
 Mit [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) wird die IP-Adresse (IPv4 oder IPv6) des Webclients gesucht.
 

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 08/09/2019
 ms.author: mbullwin
-ms.openlocfilehash: 95ff8d1a70325357fee4bc24fd96c1a1c7a73845
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: ed6df8b4724dbb297a0c64fd869d3377545a7595
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077605"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932331"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Überwachen der Nutzung und Leistung von klassischen Windows-Desktop-Apps
 
@@ -37,10 +37,11 @@ Lokal, in Azure oder in anderen Clouds gehostete Anwendungen können Application
    
     Wenn Sie die Datei „ApplicationInsights.config“ verwenden, stellen Sie sicher, dass ihre Eigenschaften im Projektmappen-Explorer auf **Buildvorgang = Inhalt, In Ausgabeverzeichnis kopieren = Kopieren**festgelegt sind.
 5. [Verwenden Sie die API](../../azure-monitor/app/api-custom-events-metrics.md) , um Telemetriedaten zu senden.
-6. Führen Sie die App aus, und schauen Sie sich die Telemetriedaten in der Ressource an, die Sie im Azure-Portal erstellt haben.
+6. Führen Sie die App aus, und sehen Sie sich die Telemetriedaten in der Ressource an, die Sie im Azure-Portal erstellt haben.
 
 ## <a name="telemetry"></a>Beispielcode
 ```csharp
+using Microsoft.ApplicationInsights;
 
     public partial class Form1 : Form
     {
@@ -52,7 +53,6 @@ Lokal, in Azure oder in anderen Clouds gehostete Anwendungen können Application
             tc.InstrumentationKey = "key copied from portal";
 
             // Set session data:
-            tc.Context.User.Id = Environment.UserName;
             tc.Context.Session.Id = Guid.NewGuid().ToString();
             tc.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
 
@@ -61,9 +61,10 @@ Lokal, in Azure oder in anderen Clouds gehostete Anwendungen können Application
             ...
         }
 
-        protected override void OnClosing(CancelEventArgs e)
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
-            stop = true;
+            e.Cancel = true;
+
             if (tc != null)
             {
                 tc.Flush(); // only for desktop apps
@@ -77,7 +78,7 @@ Lokal, in Azure oder in anderen Clouds gehostete Anwendungen können Application
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen eines Dashboards](../../azure-monitor/app/app-insights-dashboards.md)
+* [Erstellen eines Dashboards](../../azure-monitor/app/overview-dashboard.md)
 * [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md)
 * [Untersuchen von Metriken](../../azure-monitor/app/metrics-explorer.md)
 * [Schreiben von Analytics-Abfragen](../../azure-monitor/app/analytics.md)

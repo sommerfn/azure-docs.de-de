@@ -8,18 +8,17 @@ manager: craigg
 tags: azure-service-management
 ms.assetid: 0db7667d-ef63-4e2b-bd4d-574802090f8b
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 1b6660a1565b3c119cc1dec0823870c7dd5bd24f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: cb19dc7262721e672bd3f54b32db9188dad7fee0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654086"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101888"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Verwenden von Azure Storage für SQL Server-Sicherung und -Wiederherstellung
 ## <a name="overview"></a>Übersicht
@@ -51,14 +50,14 @@ Die folgenden Azure-Komponenten werden bei einer Sicherung im Azure Blob Storage
 | --- | --- |
 | **Speicherkonto** |Das Speicherkonto ist der Ausgangspunkt für alle Speicherdienste. Um auf einen Azure Blob Storage-Dienst zuzugreifen, erstellen Sie als Erstes ein Azure Storage-Konto. Weitere Informationen zum Azure Blob Storage-Dienst finden Sie unter [Verwenden des Azure Blob Storage-Diensts](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
 | **Container** |Ein Container stellt einen Satz Blobs als Gruppe bereit und kann eine unbegrenzte Anzahl von Blobs enthalten. Um eine SQL Server-Sicherung in einen Azure-Blob-Dienst zu speichern, muss mindestens ein Stammcontainer erstellt worden sein. |
-| **Blob** |Eine Datei von beliebiger Art und Größe. Blobs sind über das folgende URL-Format adressierbar: **https://[Speicherkonto].blob.core.windows.net/[Container]/[Blob]**. Weitere Informationen über Seitenblobs finden Sie unter [Grundlegendes zu Block- und Seitenblobs](https://msdn.microsoft.com/library/azure/ee691964.aspx) |
+| **Blob** |Eine Datei von beliebiger Art und Größe. Blobs sind über das folgende URL-Format adressierbar: **https://[Speicherkonto].blob.core.windows.net/[Container]/[Blob]** . Weitere Informationen über Seitenblobs finden Sie unter [Grundlegendes zu Block- und Seitenblobs](https://msdn.microsoft.com/library/azure/ee691964.aspx) |
 
 ## <a name="sql-server-components"></a>SQL Server-Komponenten
 Die folgenden SQL Server-Komponenten werden bei einer Sicherung im Azure Blob Storage-Dienst verwendet.
 
 | Komponente | BESCHREIBUNG |
 | --- | --- |
-| **URL** |Eine URL gibt einen Uniform Resource Identifier (URI) zu einer eindeutigen Sicherungsdatei an. Die URL dient zur Angabe des Speicherorts und Namens der SQL Server-Sicherungsdatei. Die URL darf nicht lediglich auf einen Container, sondern muss auf einen tatsächlichen Blob verweisen. Wenn das Blob nicht vorhanden ist, wird es erstellt. Das Angeben eines vorhandenen Blobs führt zu einem Fehler bei BACKUP – es sei denn, die Option > WITH FORMAT wird angegeben. Hier sehen Sie ein Beispiel einer URL, die Sie im BACKUP-Befehl angeben können: **http[s]://[storageaccount].blob.core.windows.net/[container]/[FILENAME.bak]**. HTTPS wird empfohlen, ist jedoch nicht erforderlich. |
+| **URL** |Eine URL gibt einen Uniform Resource Identifier (URI) zu einer eindeutigen Sicherungsdatei an. Die URL dient zur Angabe des Speicherorts und Namens der SQL Server-Sicherungsdatei. Die URL darf nicht lediglich auf einen Container, sondern muss auf einen tatsächlichen Blob verweisen. Wenn das Blob nicht vorhanden ist, wird es erstellt. Das Angeben eines vorhandenen Blobs führt zu einem Fehler bei BACKUP – es sei denn, die Option > WITH FORMAT wird angegeben. Hier sehen Sie ein Beispiel einer URL, die Sie im BACKUP-Befehl angeben können: **http[s]://[storageaccount].blob.core.windows.net/[container]/[FILENAME.bak]** . HTTPS wird empfohlen, ist jedoch nicht erforderlich. |
 | **Credential** |Die Informationen, die zum Herstellen einer Verbindung mit dem Azure Blob Storage-Dienst und zum Authentifizieren bei diesem erforderlich sind, werden als Anmeldeinformationen gespeichert.  Damit SQL Server Sicherungen in einen Azure-Blob schreiben oder daraus wiederherstellen kann, müssen SQL Server-Anmeldeinformationen erstellt werden. Weitere Informationen finden Sie unter [CREATE CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/ms189522.aspx). |
 
 > [!NOTE]

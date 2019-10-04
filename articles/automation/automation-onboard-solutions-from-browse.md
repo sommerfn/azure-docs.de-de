@@ -3,26 +3,26 @@ title: Erfahren Sie, wie Lösungen für die Updateverwaltung, Änderungsnachverf
 description: Erfahren Sie, wie Sie einen virtuellen Azure-Computer mit Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand integrieren, die Bestandteil von Azure Automation sind
 services: automation
 ms.service: automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 06/06/2018
+author: bobbytreed
+ms.author: robreed
+ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 3cffd09a54b09a425f3b7f3519b4ceb7a04a6d08
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5be247e8bb999ee5306d10e67c46c7273953dc71
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855349"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534704"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Aktivieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand für mehrere VMs
 
 Azure Automation stellt Lösungen zum Verwalten der Sicherheitsupdates für das Betriebssystem, zum Nachverfolgen von Änderungen und für den Bestand bereit, der auf Ihren Computern installiert ist. Es gibt mehrere Möglichkeiten, Computer zu integrieren. Sie können die Lösung [über einen virtuellen Computer](automation-onboard-solutions-from-vm.md), über Ihr [Automation-Konto](automation-onboard-solutions-from-automation-account.md), durch Durchsuchen mehrerer Computer oder per [Runbook](automation-onboard-solutions.md) integrieren. Dieser Artikel behandelt das Integrieren dieser Lösungen durch Durchsuchen virtueller Computer in Azure.
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Anmelden bei Azure unter https://portal.azure.com
+Melden Sie sich unter https://portal.azure.com bei Azure an.
 
 ## <a name="enable-solutions"></a>Aktivieren von Lösungen
 
@@ -45,7 +45,9 @@ Die Liste der virtuellen Computer wird gefiltert, um nur die virtuellen Computer
 
 ### <a name="resource-group-limit"></a> Onboarding-Einschränkungen
 
-Für die Anzahl von Ressourcengruppen, die Sie für das Onboarding nutzen können, gelten [Resource Manager-Bereitstellungsgrenzwerte](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Resource Manager-Bereitstellungen (nicht zu verwechseln mit Updatebereitstellungen) sind auf fünf Ressourcengruppen pro Bereitstellung beschränkt. Zur Sicherstellung der Onboarding-Integrität sind zwei dieser Ressourcengruppen für die Konfiguration des Log Analytics-Arbeitsbereichs, des Automation-Kontos und der zugehörigen Ressourcen reserviert. Sie können also drei Ressourcengruppen für die Bereitstellung auswählen.
+Für die Anzahl von Ressourcengruppen, die Sie für das Onboarding nutzen können, gelten [Resource Manager-Bereitstellungsgrenzwerte](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Resource Manager-Bereitstellungen (nicht zu verwechseln mit Updatebereitstellungen) sind auf fünf Ressourcengruppen pro Bereitstellung beschränkt. Zur Sicherstellung der Onboarding-Integrität sind zwei dieser Ressourcengruppen für die Konfiguration des Log Analytics-Arbeitsbereichs, des Automation-Kontos und der zugehörigen Ressourcen reserviert. Sie können also drei Ressourcengruppen für die Bereitstellung auswählen. Dieser Grenzwert gilt nur für das gleichzeitige Onboarding, nicht für die Anzahl von Ressourcengruppen, die von einer Automatisierungslösung verwaltet werden können.
+
+Sie können auch ein Runbook für das Onboarding verwenden. Weitere Informationen finden Sie unter [Integrieren von Update- und Änderungsnachverfolgungslösungen in Azure Automation](automation-onboard-solutions.md).
 
 Verwenden Sie die Filtersteuerelemente, um virtuelle Computer aus verschiedenen Abonnements, Speicherorten und Ressourcengruppen auszuwählen.
 
@@ -59,28 +61,10 @@ Wenn der ausgewählte Arbeitsbereich nicht mit einem Automation-Konto verknüpft
 
 ![Kein Arbeitsbereich](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
-Wenn Sie Lösungen aktivieren, werden nur bestimmte Regionen zum Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto unterstützt.
-
-Die folgende Tabelle zeigt die unterstützten Zuordnungen:
-
-|**Log Analytics-Arbeitsbereichsregion**|**Azure Automation-Region**|
-|---|---|
-|AustraliaSoutheast|AustraliaSoutheast|
-|CanadaCentral|CanadaCentral|
-|CentralIndia|CentralIndia|
-|EastUS<sup>1</sup>|EastUS2|
-|JapanEast|JapanEast|
-|SoutheastAsia|SoutheastAsia|
-|WestCentralUS|WestCentralUS|
-|Europa, Westen|Europa, Westen|
-|UKSouth|UKSouth|
-|USGovVirginia|USGovVirginia|
-|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
-
-<sup>1</sup> EastUS2EUAP- und EastUS-Zuordnungen für Log Analytics-Arbeitsbereiche zu Automation-Konten sind keine exakten Region-zu-Region-Zuordnungen, jedoch handelt es sich um die richtige Zuordnung.
-
 > [!NOTE]
-> Aufgrund der Nachfrage ist eine Region möglicherweise nicht verfügbar, wenn Ihr Automation-Konto oder Log Analytics-Arbeitsbereich erstellt wird.  Wenn dies der Fall ist, stellen Sie sicher, dass Sie eine Region aus der voranstehenden Tabelle verwenden, in der Sie Ressourcen erstellen können.
+> Wenn Sie Lösungen aktivieren, werden nur bestimmte Regionen zum Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto unterstützt.
+>
+> Eine Liste der unterstützten Zuordnungspaare finden Sie unter [Regionszuordnung für Automation-Konto und Log Analytics-Arbeitsbereich](how-to/region-mappings.md).
 
 Deaktivieren Sie das Kontrollkästchen neben jedem virtuellen Computern, den Sie nicht aktivieren möchten. Die Auswahl für virtuelle Computer, die nicht aktiviert werden können, ist bereits aufgehoben.
 
@@ -122,6 +106,8 @@ Wenn Sie die Lösung „Starten und Beenden von VMs außerhalb der Kernzeit“ v
 * Starten und beenden Sie Zeitpläne für VM-Runbooks.
 * Starten und beenden Sie VM-Runbooks.
 * Variables
+
+Alternativ können Sie Ihren Arbeitsbereich auch von Ihrem Automation-Konto in Ihrem Log Analytics-Arbeitsbereich trennen. Wählen Sie in Ihrem Arbeitsbereich unter **Verwandte Ressourcen** die Option **Automation-Konto** aus. Klicken Sie auf der Seite **Automation-Konto** auf {0}Verknüpfung zu diesem Konto aufheben{0}.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

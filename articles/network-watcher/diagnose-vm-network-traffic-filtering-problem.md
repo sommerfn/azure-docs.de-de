@@ -3,8 +3,8 @@ title: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr ei
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der IP-Flussüberprüfungsfunktion von Azure Network Watcher Probleme mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers diagnostizieren.
 services: network-watcher
 documentationcenter: network-watcher
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: d469ee5148e3742f30795c09acf1a217db1b997a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6478c82a93cd35eead3972bb4dccf402219d9b7d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004637"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702873"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers über das Azure-Portal
 
@@ -47,7 +47,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
-    |Standort| Wählen Sie **USA, Osten** aus.|
+    |Location| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Übernehmen Sie unter **Einstellungen** alle Standardwerte, und klicken Sie auf **OK**.
@@ -81,8 +81,8 @@ Wenn Sie einen virtuellen Computer erstellen, wird der ein- und ausgehende Netzw
     | Ressourcengruppe    | Wählen Sie „myResourceGroup“ aus.                                                                            |
     | Virtueller Computer   | Wählen Sie „myVm“ aus.                                                                                       |
     | Netzwerkschnittstelle | myvm (Die Netzwerkschnittstelle, die das Portal beim Erstellen des virtuellen Computers erstellt hat, hat einen anderen Namen.) |
-    | Protokoll          | TCP                                                                                               |
-    | Richtung         | Ausgehend                                                                                          |
+    | Protocol          | TCP                                                                                               |
+    | Direction         | Ausgehend                                                                                          |
     | Lokale IP-Adresse  | 10.0.0.4                                                                                          |
     | Lokaler Port      | 60000                                                                                                |
     | Remote-IP-Adresse | 13.107.21.200: Eine der Adressen für <www.bing.com>                                             |

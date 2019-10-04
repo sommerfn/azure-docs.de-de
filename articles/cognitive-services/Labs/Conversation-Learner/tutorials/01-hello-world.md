@@ -3,19 +3,20 @@ title: Erstellen eines Unterhaltungslernmodells des Typs „Hallo Welt“ – Mi
 titleSuffix: Azure
 description: Informationen zum Erstellen einer Demo des Typs „Hallo Welt“ in einem Unterhaltungslernmodell
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: b2c43ad2475ab75d251e57fca6009eb1fa2e1f00
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: bb1d053af8813f05872c56d3b5609f2d7d7d5d8c
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225294"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705636"
 ---
 # <a name="how-to-create-a-hello-world-model-with-conversation-learner"></a>Erstellen eines Hallo Welt-Modells mit dem Unterhaltungslernmodul
 

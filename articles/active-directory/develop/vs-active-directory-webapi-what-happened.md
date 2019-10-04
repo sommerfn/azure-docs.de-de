@@ -1,24 +1,23 @@
 ---
 title: Änderungen an einem WebAPI-Projekt, die vorgenommen werden, wenn Sie eine Verbindung mit Azure AD herstellen
 description: Beschreibt, was mit dem WebAPI-Projekt geschieht, wenn Sie mithilfe von Visual Studio eine Verbindung mit Azure AD herstellen.
-services: active-directory
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
 ms.workload: azure-vs
+ms.prod: visual-studio-windows
+ms.technology: vs-azure
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4946251cf72d7869ec5fc2f0fd844b9c06ac34
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 32fc72d22d3f739018df22c315d7a1a3124c8823
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161931"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851806"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Was ist mit dem WebAPI-Projekt passiert (verbundener Visual Studio-Dienst für Azure Active Directory)?
 
@@ -34,7 +33,7 @@ Informationen zur Verwendung des verbundenen Diensts finden Sie unter [Erste Sch
 
 Betrifft die Projektdatei (\*.NET-Verweise) und `packages.config` (NuGet-Verweise).
 
-| Type | Verweis |
+| type | Verweis |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -47,7 +46,7 @@ Betrifft die Projektdatei (\*.NET-Verweise) und `packages.config` (NuGet-Verweis
 
 Zusätzliche Verweise bei Auswahl der Option **Verzeichnisdaten lesen**:
 
-| Type | Verweis |
+| type | Verweis |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (nur Visual Studio 2015) |
@@ -61,7 +60,7 @@ Zusätzliche Verweise bei Auswahl der Option **Verzeichnisdaten lesen**:
 
 Die folgenden Verweise werden entfernt (nur ASP.NET 4-Projekte, wie in Visual Studio 2015):
 
-| Type | Verweis |
+| type | Verweis |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |

@@ -12,16 +12,16 @@ ms.topic: sample
 ms.date: 07/04/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 5299675656ea23b85f78b3dbfdc02814ab332a8b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19fd73dff045d6d784dd70d1f3ad539a22faf413
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979048"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075467"
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Zuordnen einer benutzerdefinierten Domäne zu einer Funktionen-App
 
-Dieses Beispielskript erstellt eine Funktions-App in einem App Service-Plan und ordnet sie dann einer von Ihnen bereitgestellten benutzerdefinierten Domäne zu. Wenn Ihre Funktionen-App unter einem [App Service-Plan](../functions-scale.md#app-service-plan) gehostet wird, können Sie eine benutzerdefinierte Domäne zuordnen, indem Sie entweder einen CNAME- oder A-Eintrag verwenden. Für Funktionen-Apps unter einem [Verbrauchstarif](../functions-scale.md#consumption-plan) wird nur die CNAME-Option unterstützt. Dieses Beispiel erstellt einen App Service-Plan und erfordert einen A-Eintrag zum zuordnen der Domäne. 
+Dieses Beispielskript erstellt eine Funktions-App in einem App Service-Plan und ordnet sie dann einer von Ihnen bereitgestellten benutzerdefinierten Domäne zu. Wenn Ihre Funktions-App unter einem [Premium-Plan](../functions-scale.md#premium-plan) oder einem [App Service-Plan](../functions-scale.md#app-service-plan) gehostet wird, können Sie entweder mit einem CNAME- oder A-Eintrag eine benutzerdefinierte Domäne zuordnen. Für Funktionen-Apps unter einem [Verbrauchstarif](../functions-scale.md#consumption-plan) wird nur die CNAME-Option unterstützt. Dieses Beispiel erstellt einen App Service-Plan und erfordert einen A-Eintrag zum zuordnen der Domäne. 
 
 Zum Ausführen dieses Beispielskripts müssen Sie bereits einen A-Eintrag in Ihrer benutzerdefinierten Domäne konfiguriert haben, die auf den Standarddomänennamen Ihrer Web-App verweist. Weitere Informationen finden Sie in den [Anweisungen zum Zuordnen von benutzerdefinierten Domäne für Azure App Service](https://aka.ms/appservicecustomdns). 
 
@@ -40,7 +40,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie minde
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-Das Skript benutzt die folgenden Befehle: Jeder Befehl in der Tabelle ist mit der befehlsspezifischen Dokumentation verknüpft.
+Das Skript verwendet die folgenden Befehle: Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
 | Get-Help | Notizen |
 |---|---|

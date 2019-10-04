@@ -2,17 +2,17 @@
 title: Konzepte – Grundlagen zu Kubernetes für Azure Kubernetes Service (AKS)
 description: Lernen Sie die grundlegenden Cluster- und Workloadkomponenten von Kubernetes kennen, und erfahren Sie, wie diese mit den Features in Azure Kubernetes Service (AKS) in Zusammenhang stehen.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: bf1ff4391e65fea68ac019be8fde8709fb4422b2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/03/2019
+ms.author: mlearned
+ms.openlocfilehash: e606b4fee2c46f66f13c45586bcc25577bd90a1f
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181349"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147188"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -56,7 +56,7 @@ Dieser verwaltete Clustermaster bedeutet, dass Sie Komponenten wie einen hoch ve
 
 Wenn Sie den Clustermaster auf eine bestimmte Weise konfigurieren müssen oder direkten Zugriff benötigen, können Sie mit [aks-engine][aks-engine] selbst einen Kubernetes-Cluster bereitstellen.
 
-Entsprechenden bewährte Methoden finden Sie unter [Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)][operator-best-practices-cluster-security].
+Entsprechende bewährte Methoden finden Sie unter [Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)][operator-best-practices-cluster-security].
 
 ## <a name="nodes-and-node-pools"></a>Knoten und Knotenpools
 
@@ -70,9 +70,9 @@ Zum Ausführen Ihrer Anwendungen und der unterstützenden Dienste benötigen Sie
 
 Die Größe der Azure-VMs für Ihre Knoten definiert die Anzahl der CPUs, die Größe des Arbeitsspeichers und die Größe und den Typ des verfügbaren Speichers (z.B. hochleistungsfähige SSDs oder reguläre HDDs). Wenn Sie damit rechnen, dass Sie Anwendungen bereitstellen werden, die große Mengen an CPUs und Arbeitsspeicher oder hochleistungsfähigen Datenspeicher erfordern, planen Sie die Knotengröße entsprechend. Sie können auch die Anzahl von Knoten in Ihrem AKS-Cluster zentral hochskalieren, um Anforderungen zu erfüllen.
 
-In AKS basiert das VM-Image für die Knoten in Ihrem Cluster derzeit auf Ubuntu Linux. Wenn Sie einen AKS-Cluster erstellen oder die Anzahl von Knoten zentral hochskalieren, erstellt die Azure-Plattform die erforderliche Anzahl von VMs und konfiguriert diese. Sie müssen keine manuellen Konfigurationsaufgaben ausführen.
+In AKS basiert das VM-Image für die Knoten in Ihrem Cluster derzeit auf Ubuntu Linux oder Windows Server 2019. Wenn Sie einen AKS-Cluster erstellen oder die Anzahl von Knoten zentral hochskalieren, erstellt die Azure-Plattform die erforderliche Anzahl von VMs und konfiguriert diese. Sie müssen keine manuellen Konfigurationsaufgaben ausführen. Agent-Knoten werden als Standard-VMs in Rechnung gestellt, sodass alle etwaigen Rabatte, über die Sie auf die von Ihnen verwendete VM-Größe verfügen (einschließlich [Azure-Reservierungen][reservation-discounts]), automatisch angewendet werden.
 
-Wenn Sie ein anderes Hostbetriebssystem oder eine andere Containerruntime benötigen oder benutzerdefinierte Pakete verwenden müssen, können Sie mit [aks-engine][aks-engine] selbst einen Kubernetes-Cluster bereitstellen. Die `aks-engine`-Upstreamreleases stellen Konfigurationsoptionen bereit, bevor diese offiziell in AKS-Clustern unterstützt werden. Wenn Sie z.B. Windows-Container oder eine andere Containerruntime als Moby verwenden möchten, können Sie mithilfe von `aks-engine` einen Kubernetes-Cluster konfigurieren und bereitstellen, der Ihre aktuellen Anforderungen erfüllt.
+Wenn Sie ein anderes Hostbetriebssystem oder eine andere Containerruntime benötigen oder benutzerdefinierte Pakete verwenden müssen, können Sie mit [aks-engine][aks-engine] selbst einen Kubernetes-Cluster bereitstellen. Die `aks-engine`-Upstreamreleases stellen Konfigurationsoptionen bereit, bevor diese offiziell in AKS-Clustern unterstützt werden. Wenn Sie z.B. eine andere Containerruntime als Moby verwenden möchten, können Sie mithilfe von `aks-engine` einen Kubernetes-Cluster konfigurieren und bereitstellen, der Ihre aktuellen Anforderungen erfüllt.
 
 ### <a name="resource-reservations"></a>Ressourcenreservierungen
 
@@ -83,7 +83,7 @@ Sie müssen nicht die Kubernetes-Kernkomponenten auf jedem Knoten verwalten, z.B
 
 Diese Reservierungen führen dazu, dass möglicherweise eine geringere Menge verfügbarer CPU-Leistung und Arbeitsspeicher für Ihre Anwendungen angezeigt wird, als der eigentliche Knoten enthält. Wenn Ressourceneinschränkungen aufgrund der Anzahl von ausgeführten Anwendungen vorliegen, gewährleisten diese Reservierungen, dass für die Kubernetes-Kernkomponenten weiterhin CPU-Leistung und Arbeitsspeicher zur Verfügung stehen. Die Ressourcenreservierungen können nicht geändert werden.
 
-Beispiel: 
+Beispiel:
 
 - Knotengröße **Standard DS2 v2** mit 2 vCPUs und 7 GiB Arbeitsspeicher
     - 20 % von 7 GiB Arbeitsspeicher = 1,4 GiB
@@ -95,13 +95,39 @@ Beispiel:
     
 Das zugrunde liegende Betriebssystem des Knotens erfordert auch eine gewisse Menge an CPU- und Speicherressourcen für die eigenen Kernfunktionen.
 
-Entsprechenden bewährte Methoden finden Sie unter [Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)][operator-best-practices-scheduler].
+Entsprechende bewährte Methoden finden Sie unter [Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)][operator-best-practices-scheduler].
 
 ### <a name="node-pools"></a>Knotenpools
 
-Knoten mit der gleichen Konfiguration werden in *Knotenpools* gruppiert. Ein Kubernetes-Cluster enthält mindestens einen Knotenpool. Die anfängliche Knotenanzahl und -größe wird beim Erstellen eines AKS-Clusters definiert, wobei ein *Standardknotenpool* erstellt wird. Dieser Standardknotenpool in AKS enthält die zugrunde liegenden VMs, die Ihre Agent-Knoten ausführen.
+Knoten mit der gleichen Konfiguration werden in *Knotenpools* gruppiert. Ein Kubernetes-Cluster enthält mindestens einen Knotenpool. Die anfängliche Knotenanzahl und -größe wird beim Erstellen eines AKS-Clusters definiert, wobei ein *Standardknotenpool* erstellt wird. Dieser Standardknotenpool in AKS enthält die zugrunde liegenden VMs, die Ihre Agent-Knoten ausführen. Die Unterstützung für mehrere Knotenpools in AKS ist derzeit in der Vorschauversion.
 
-Wenn Sie einen AKS-Cluster skalieren oder ein Upgrade des Clusters durchführen, wird die Aktion im Standardknotenpool ausgeführt. Bei Upgradevorgängen wird die Ausführung von Containern in anderen Knoten im Knotenpool geplant, bis das Upgrade für alle Knoten erfolgreich durchgeführt wurde.
+> [!NOTE]
+> Um zu gewährleisten, dass Ihr Cluster zuverlässig funktioniert, sollten Sie mindestens zwei (2) Knoten im Standardknotenpool ausführen.
+
+Wenn Sie einen AKS-Cluster skalieren oder ein Upgrade des Clusters durchführen, wird die Aktion im Standardknotenpool ausgeführt. Sie können auch auswählen, einen bestimmten Knotenpool zu skalieren oder ein Upgrade für diesen auszuführen. Bei Upgradevorgängen wird die Ausführung von Containern in anderen Knoten im Knotenpool geplant, bis das Upgrade für alle Knoten erfolgreich durchgeführt wurde.
+
+Weitere Informationen zur Verwendung mehrerer Knotenpools in AKS finden Sie unter [Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in AKS][use-multiple-node-pools].
+
+### <a name="node-selectors"></a>Knotenselektoren
+
+In einem AKS-Cluster mit mehreren Knotenpools müssen Sie dem Kubernetes-Scheduler möglicherweise mitteilen, welcher Knotenpool für eine bestimmte Ressource verwendet werden soll. Beispielsweise sollten Eingangscontroller nicht auf Windows Server-Knoten (derzeit in der Vorschau in AKS) ausgeführt werden. Mit Knotenselektoren können Sie verschiedene Parameter festlegen, wie z.B. das Betriebssystem des Knotens, um zu steuern, wo ein Pod geplant werden soll.
+
+Das folgende einfache Beispiel plant eine NGINX-Instanz auf einem Linux-Knoten unter Verwendung des Knotenselektors *"beta.kubernetes.io/os": linux*:
+
+```yaml
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: myfrontend
+      image: nginx:1.15.12
+  nodeSelector:
+    "beta.kubernetes.io/os": linux
+```
+
+Weitere Informationen zum Steuern, wo Pods geplant werden, finden Sie unter [Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)][operator-best-practices-advanced-scheduler].
 
 ## <a name="pods"></a>Pods
 
@@ -156,7 +182,7 @@ spec:
 
 Indem Sie Dienste wie Lastenausgleichsmodule im YAML-Manifest angeben, können Sie auch komplexere Anwendungen erstellen.
 
-Weitere Informationen finden Sie unter [Kubernetes Deployments][kubernetes-deployments] (Kubernetes-Bereitstellungen).
+Weitere Informationen finden Sie unter [Kubernetes-Bereitstellungen][kubernetes-deployments].
 
 ### <a name="package-management-with-helm"></a>Paketverwaltung mit Helm
 
@@ -197,6 +223,9 @@ Der DaemonSet-Controller kann Pods auf Knoten zu einem frühen Zeitpunkt im Clus
 
 Weitere Informationen finden Sie unter [Kubernetes DaemonSets][kubernetes-daemonset].
 
+> [!NOTE]
+> Wenn Sie das [Add-On für virtuelle Knoten](virtual-nodes-cli.md#enable-virtual-nodes-addon) verwenden, erstellen DaemonSets keine Pods auf dem virtuellen Knoten.
+
 ## <a name="namespaces"></a>Namespaces
 
 Kubernetes-Ressourcen wie Pods und Bereitstellungen werden logisch in einen *Namespace* gruppiert. Diese Gruppierungen ermöglichen es, einen AKS-Cluster logisch zu unterteilen und den Zugriff zum Erstellen, Anzeigen oder Verwalten von Ressourcen einzuschränken. Sie können Namespaces erstellen, um beispielsweise Unternehmensgruppen voneinander zu trennen. Benutzer können nur mit den Ressourcen innerhalb der ihnen zugewiesenen Namespaces interagieren.
@@ -209,7 +238,7 @@ Wenn Sie einen AKS-Cluster erstellen, stehen Ihnen folgende Namespaces zur Verf�
 - *kube-system*: In diesem Namespace befinden sich grundlegende Ressourcen, beispielsweise Netzwerkfeatures wie DNS und Proxy oder das Kubernetes-Dashboard. In diesem Namespace stellen Sie in der Regel keine eigenen Anwendungen bereit.
 - *kube-public*: Dieser Namespace wird in der Regel nicht genutzt. Er kann jedoch für Ressourcen verwendet werden, die über den gesamten Cluster hinweg sichtbar sein sollen, und er kann von allen Benutzern angezeigt werden.
 
-Weitere Informationen finden Sie unter [Kubernetes Namespaces][kubernetes-namespaces].
+Weitere Informationen finden Sie unter [Kubernetes-Namespaces][kubernetes-namespaces].
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -242,3 +271,6 @@ In diesem Artikel wurden einige der wichtigsten Kubernetes-Komponenten sowie der
 [aks-helm]: kubernetes-helm.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [operator-best-practices-scheduler]: operator-best-practices-scheduler.md
+[use-multiple-node-pools]: use-multiple-node-pools.md
+[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md

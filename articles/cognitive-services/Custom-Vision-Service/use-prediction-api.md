@@ -1,21 +1,21 @@
 ---
 title: Verwenden des Endpunkts der Vorhersage für das programmgesteuerte Testen von Bildern mit einer Klassifizierung – Custom Vision
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: API-Nutzung für das programmgesteuerte Testen von Bildern mit Ihrer Custom Vision Service-Klassifizierung
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 1ee6edbf49bbcd2014afcf29ed3b737168a3b5bc
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046069"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966949"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Verwenden des Modells mit der Vorhersage-API
 
@@ -44,8 +44,6 @@ Nachdem das Modell veröffentlicht wurde, können Sie die erforderlichen Informa
 
 ![Die Registerkarte „Leistung“ wird mit einem roten Rechteck um den Wert „Vorhersage-URL“ für die Verwendung einer Bilddatei und um den Wert „Vorhersage-Schlüssel“ angezeigt.](./media/use-prediction-api/prediction-api-info.png)
 
-> [!TIP]
-> Ihr __Vorhersage-Schlüssel__ befindet sich auch auf der Seite [Azure-Portal](https://portal.azure.com) für die Ihrem Projekt zugeordnete Azure-Ressource von Custom Vision unter dem Blatt __Schlüssel__.
 
 In dieser Anleitung verwenden Sie ein lokales Bild, also kopieren Sie die URL unter **Wenn eine Bilddatei vorliegt** an einen temporären Speicherort. Kopieren Sie auch den entsprechenden __Vorhersage-Schlüssel__-Wert.
 
@@ -138,6 +136,6 @@ In dieser Anleitung haben Sie erfahren, wie Sie Bilder an Ihren benutzerdefinier
 
 * [Schnellstart: .NET SDK](csharp-tutorial.md)
 * [Schnellstart: Python SDK](python-tutorial.md)
-* [Schnellstart: Java-SDK](java-tutorial.md)
+* [Schnellstart: Java SDK](java-tutorial.md)
 * [Schnellstart: Node SDK](node-tutorial.md)
 * [Schnellstart: Go SDK](go-tutorial.md)

@@ -1,7 +1,6 @@
 ---
 title: Analysieren von Application Insight-Protokollen mit Spark – Azure HDInsight
 description: Erfahren Sie, wie Sie Application Insights-Protokolle in Blobspeicher exportieren und die Protokolle anschließend mit Spark in HDInsight analysieren.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 806e5b6f764797d2e038cc7ed58ec1d04f678e2b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 846239c0122f3f2cadc40e7965ae690d4ba3e538
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120375"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899842"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analysieren von Application Insights-Telemetrieprotokollen mit Apache Spark in HDInsight
 
@@ -28,9 +27,6 @@ Erfahren Sie, wie Sie mit [Apache Spark](https://spark.apache.org/) in HDInsight
 
 * Sie müssen mit der Erstellung eines Linux-basierten HDInsight-Clusters vertraut sein. Weitere Informationen finden Sie unter [Erste Schritte: Erstellen von Apache Spark auf HDInsight](apache-spark-jupyter-spark-sql.md).
 
-  > [!IMPORTANT]  
-  > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
 * Ein Webbrowser.
 
 Für Entwicklung und Test dieses Dokuments wurden die folgenden Ressourcen eingesetzt:
@@ -43,7 +39,7 @@ Für Entwicklung und Test dieses Dokuments wurden die folgenden Ressourcen einge
 
 Das folgende Diagramm zeigt die grundlegende Dienstarchitektur für dieses Beispiel:
 
-![Diagramm zum Datenfluss von Application Insights zum Blobspeicher und anschließende Verarbeitung durch Spark in HDInsight](./media/apache-spark-analyze-application-insight-logs/appinsightshdinsight.png)
+![Diagramm zum Datenfluss von Application Insights zum Blobspeicher und anschließende Verarbeitung durch Spark in HDInsight](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
 ### <a name="azure-storage"></a>Azure-Speicher
 
@@ -76,7 +72,7 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren Spark in HDInsight-Cluster aus. Wählen Sie im Abschnitt **Quick Links** zunächst **Cluster Dashboards** und dann im Abschnitt für Clusterdashboards die Option **Jupyter Notebook** aus.
 
-    ![Clusterdashboards](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
+    ![Clusterdashboards](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
 
 2. Wählen Sie oben rechts auf der Jupyter-Seite **Neu** und anschließend **PySpark** aus. Eine neue Browserregisterkarte wird geöffnet, die ein Python-basiertes Jupyter Notebook enthält.
 
@@ -219,7 +215,7 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren Spark in HDInsight-Cluster aus. Wählen Sie im Abschnitt **Quick Links** zunächst **Cluster Dashboards** und dann im Abschnitt für Clusterdashboards die Option **Jupyter Notebook** aus.
 
-    ![Clusterdashboards](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
+    ![Clusterdashboards](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
 2. Wählen Sie oben rechts auf der Jupyter-Seite **Neu** und anschließend **Scala** aus. Eine neue Browserregisterkarte, die ein Scala-basiertes Jupyter-Notebook enthält, wird angezeigt.
 3. Geben Sie in das erste (als **Zelle** bezeichnete) Feld auf der Seite folgenden Text ein:
 

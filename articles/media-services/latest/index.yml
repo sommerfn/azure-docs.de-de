@@ -26,7 +26,7 @@ sections:
           - title: Informationen zu Konzepten
             html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">Clouduploads und Cloudspeicherung</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">Codieren</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events">Überwachung</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">Medienanalysen</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">Verpackung</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">Schutz</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">Livestreaming</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">Beteiligte Kunden</a></p>'
           - title: Entwickeln mit v3-API
-            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Entwickeln mit REST</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">Entwickeln mit SDKs</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-java-howto">Herstellen einer Verbindung mit Java</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-dotnet-howto">Herstellen einer Verbindung mit .NET</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-nodejs-howto">Herstellen einer Verbindung mit Node.js</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/azure/media-services/latest/media-services-apis-overview">Leitfaden</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">Entwickeln mit REST</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-java-howto">Herstellen einer Verbindung mit Java</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-dotnet-howto">Herstellen einer Verbindung mit .NET</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/configure-connect-nodejs-howto">Herstellen einer Verbindung mit Node.js</a></p>'
   - title: Fünfminütige Schnellstarts
     items:
       - type: paragraph
@@ -55,34 +55,22 @@ sections:
         className: cardsM
         columns: 1
         items:
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Im Tutorial laden Sie eine lokale Videodatei hoch, codieren die Datei und streamen den codierten Inhalt.<p/>'
+          - html: '<p>Im Tutorial laden Sie eine lokale Videodatei hoch, codieren die Datei und streamen den codierten Inhalt.<p/>'
             href: /azure/media-services/latest/stream-files-tutorial-with-api
             title: Codieren von hochgeladenen Dateien und Streamen von Videos
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Im Tutorial wird das Setup für ein Liveereignis erläutert. Anschließend wird gezeigt, wie Sie unter Verwendung von .NET ein Liveereignis vom Typ „Pass-Through“ erstellen.</p>'
+          - html: '<p>Im Tutorial wird das Setup für ein Liveereignis erläutert. Anschließend wird gezeigt, wie Sie ein Liveereignis vom Typ „Pass-Through“ erstellen.</p>'
             href: /azure/media-services/latest/stream-live-tutorial-with-api
             title: Livebroadcasts
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>In diesem Tutorial wird gezeigt, wie Videos mit der Azure Media Services-API analysiert werden.</p>'
+          - html: '<p>In diesem Tutorial wird gezeigt, wie Videos mit der Azure Media Services-API analysiert werden.</p>'
             href: /azure/media-services/latest/analyze-videos-tutorial-with-api
             title: Analysieren Ihres Videos
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Hier erfahren Sie, wie Sie Media Services-APIs konfigurieren und verwenden, um Ihre Inhalte mit AES-128 dynamisch zu verschlüsseln.</p>'
+          - html: '<p>Hier erfahren Sie, wie Sie Media Services-APIs konfigurieren und verwenden, um Ihre Inhalte mit AES-128 dynamisch zu verschlüsseln.</p>'
             href: /azure/media-services/latest/protect-with-aes128
             title: Dynamische Verschlüsselung mit AES-128
-          - image:
-              src: media/index/dotnet.svg
-            html: '<p>Hier wird erläutert, wie Sie Media Services-APIs konfigurieren und verwenden, um Ihre Inhalte mit Multi-DRM (PlayReady, Widevine und FairPlay) dynamisch zu verschlüsseln.</p>'
+          - html: '<p>Hier wird erläutert, wie Sie Media Services-APIs konfigurieren und verwenden, um Ihre Inhalte mit Multi-DRM (PlayReady, Widevine und FairPlay) dynamisch zu verschlüsseln.</p>'
             href: /azure/media-services/latest/protect-with-drm
             title: Dynamische Verschlüsselung mit Multi-DRM
-          - image:
-              src: media/index/rest.svg
-            html: '<p>Im Tutorial wird gezeigt, wie Sie eine Remotedatei anhand einer URL codieren und das Videos streamen.</p>'
+          - html: '<p>Im Tutorial wird gezeigt, wie Sie eine Remotedatei anhand einer URL codieren und das Videos streamen.</p>'
             href: /azure/media-services/latest/stream-files-tutorial-with-rest
             title: Codieren von Remotedateien und Streamen von Videos
   - title: Beispiele

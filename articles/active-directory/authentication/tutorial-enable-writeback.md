@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dabe0ad1a556ee43f3e6cae0e1cd421db5cde0fd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1efb67df6c31a3b03fdc45fffc0564fb09e39faf
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183206"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67853040"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>Tutorial: Aktivieren des Kennwortrückschreibens
 
@@ -61,4 +61,4 @@ Die Aktivierung des Features für das Kennwortrückschreiben in Azure AD Connect
 In diesem Tutorial haben Sie das Kennwortrückschreiben für die Self-Service-Kennwortzurücksetzung aktiviert. Lassen Sie das Fenster des Azure-Portals geöffnet, und fahren Sie mit dem nächsten Tutorial fort, um zusätzliche Einstellungen zur Self-Service-Kennwortzurücksetzung zu konfigurieren, bevor Sie für die Lösung den Rollout in einem Pilotprojekt durchführen.
 
 > [!div class="nextstepaction"]
-> [Aktivieren der Self-Service-Kennwortzurücksetzung auf dem Windows-Anmeldebildschirm](tutorial-sspr-windows.md)
+> [Tutorial: Use risk events to trigger Multi-Factor Authentication and password changes](tutorial-risk-based-sspr-mfa.md) (Tutorial: Auslösen von Multi-Factor Authentication und Kennwortänderungen mithilfe von Risikoereignissen)

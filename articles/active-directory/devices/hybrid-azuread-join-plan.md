@@ -2,184 +2,161 @@
 title: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung in Azure Active Directory (Azure AD) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie in Azure Active Directory eingebundene Hybridgeräte konfigurieren.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-editor: ''
-ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: devices
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/03/2019
+ms.topic: conceptual
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fc0105fa2e56760554946b4e871a2dc3ff4d8bc
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 306382a7dede44a0f1db53373e14e81cb54098ca
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518880"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914731"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
-Ähnlich wie ein Benutzer wird ein Gerät zu einer weiteren Identität, die Sie schützen sowie zum Schutz Ihrer Ressourcen jederzeit und überall verwenden können. Dafür können Sie die Identitäten Ihrer Geräte mit einer der folgenden Methoden in Azure AD bereitstellen:
+Ähnlich wie ein Benutzer ist ein Gerät eine weitere zentrale Identität, die Sie schützen sowie jederzeit und überall zum Schutz Ihrer Ressourcen verwenden können. Dafür können Sie die Geräteidentitäten mit einer der folgenden Methoden in Azure AD bereitstellen und verwalten:
 
 - Azure AD-Einbindung
 - Azure AD-Hybrideinbindung
 - Azure AD-Registrierung
 
-Durch das Bereitstellten Ihrer Geräte in Azure AD maximieren Sie die Produktivität Ihrer Benutzer durch einmaliges Anmelden (SSO) für Ihre gesamten Cloud- und lokalen Ressourcen. Gleichzeitig können Sie den Zugriff auf Ihre Cloud- und lokalen Ressourcen durch den [bedingten Zugriff](../active-directory-conditional-access-azure-portal.md) sichern.
+Durch das Bereitstellen Ihrer Geräte in Azure AD maximieren Sie die Produktivität Ihrer Benutzer durch einmaliges Anmelden (SSO) für Ihre gesamten Cloud- und lokalen Ressourcen. Gleichzeitig können Sie den Zugriff auf Ihre Cloud- und lokalen Ressourcen durch [bedingten Zugriff](../active-directory-conditional-access-azure-portal.md) schützen.
 
-Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebundenen Geräte in Azure AD einbinden möchten, kann dies durch Konfigurieren von in Azure AD eingebundenen Hybridgeräten erfolgen. Dieser Artikel enthält eine Anleitung zum Implementieren einer Azure AD-Hybrideinbindung in Ihre Umgebung. 
-
+Wenn Sie in einer lokalen Active Directory (AD)-Umgebung Ihre in die AD-Domäne eingebundenen Compute in Azure AD einbinden möchten, kann dies durch Vornehmen einer Einbindung in Azure AD Hybrid erfolgen. Dieser Artikel enthält eine Anleitung zum Implementieren einer Azure AD-Hybrideinbindung in Ihre Umgebung. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieser Artikel setzt voraus, dass Sie die [Einführung in die Geräteverwaltung in Azure Active Directory](../device-management-introduction.md) gelesen haben.
+Dieser Artikel setzt voraus, dass Sie die [Einführung in die Geräteidentitätsverwaltung in Azure Active Directory](../device-management-introduction.md) gelesen haben.
 
->[!NOTE]
->  Die mindestens erforderliche Domänen- und Gesamtstruktur-Funktionsebene für Hybrid-Azure AD-Einbindung in Windows 10 ist Windows Server 2008 R2. Bei niedrigeren Versionen erhält der Benutzer möglicherweise kein primäres Aktualisierungstoken während der Windows-Anmeldung aufgrund von LSA-Problemen. 
+> [!NOTE]
+> Die mindestens erforderliche Version des Domänencontrollers für die Azure AD-Hybrideinbindung unter Windows 10 ist Windows Server 2008 R2.
 
 ## <a name="plan-your-implementation"></a>Planen Ihrer Implementierung
 
 Um Ihre Azure AD-Hybridimplementierung zu planen, sollten Sie sich mit folgenden Themen vertraut machen:
 
 |   |   |
-|---|---|
-|![Prüfen][1]|Überprüfung unterstützter Geräte|
-|![Prüfen][1]|Überprüfung wichtiger Informationen|
-|![Prüfen][1]|Steuern von Azure AD Hybrid Join für Ihre Geräte|
-|![Prüfen][1]|Auswahl Ihres Szenarios|
+| --- | --- |
+| ![Prüfen][1] | Überprüfung unterstützter Geräte |
+| ![Prüfen][1] | Überprüfung wichtiger Informationen |
+| ![Prüfen][1] | Überprüfung der kontrollierten Überprüfung der Azure AD-Hybrideinbindung |
+| ![Prüfen][1] | Auswählen Ihres Szenarios, basierend auf Ihrer Identitätsinfrastruktur |
+| ![Prüfen][1] | Überprüfung der lokalen AD UPN-Unterstützung (Benutzerprinzipalname) für Azure AD-Hybrideinbindung |
 
+## <a name="review-supported-devices"></a>Überprüfung unterstützter Geräte
 
- 
+Azure AD Hybrid Join unterstützt zahlreiche Windows-Geräte. Da die Konfiguration für Geräte mit älteren Versionen von Windows zusätzliche oder unterschiedliche Schritte erfordert, werden die unterstützten Geräte in zwei Kategorien eingeteilt:
 
-## <a name="review-supported-devices"></a>Überprüfung unterstützter Geräte 
-
-Die Azure AD-Hybrideinbindung unterstützt zahlreiche Windows-Geräte. Da die Konfiguration für Geräte mit älteren Versionen von Windows zusätzliche oder unterschiedliche Schritte erfordert, werden die unterstützten Geräte in zwei Kategorien eingeteilt:
-
-**Aktuelle Windows-Geräte**
+### <a name="windows-current-devices"></a>Aktuelle Windows-Geräte
 
 - Windows 10
-    
 - Windows Server 2016
+- Windows Server 2019
 
+Für Geräte, auf denen das Windows-Desktopbetriebssystem ausgeführt wird, sind die unterstützten Versionen in diesem Artikel aufgeführt: [Windows 10 Releaseinformationen](https://docs.microsoft.com/windows/release-information/). Als bewährte Methode empfiehlt Microsoft, ein Upgrade auf die aktuelle Version von Windows 10 durchzuführen.
 
-Für Geräte, auf denen das Windows-Desktopbetriebssystem ausgeführt wird, wird die Version Windows 10 Anniversary Update (Version 1607) oder höher unterstützt. Es wird empfohlen, ein Upgrade auf die aktuelle Version von Windows 10 durchzuführen.
-
-
-
- **Kompatible Windows-Geräte**
+### <a name="windows-down-level-devices"></a>Kompatible Windows-Geräte
 
 - Windows 8.1
- 
-- Windows 7
-
+- Windows 7. Supportinformationen zu Windows 7 finden Sie unter [Der Support für Windows 7 läuft aus](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support).
 - Windows Server 2012 R2
- 
-- Windows Server 2012 
- 
-- Windows Server 2008 R2 
-
+- Windows Server 2012
+- Windows Server 2008 R2. Supportinformationen zu Windows Server 2008 und Windows Server 2008 R2 finden Sie unter [Der Support für Windows Server 2008 wird eingestellt](https://www.microsoft.com/cloud-platform/windows-server-2008).
 
 Als ersten Planungsschritt sollten Sie Ihre Umgebung überprüfen und ermitteln, ob Sie Unterstützung für kompatible Windows-Geräte benötigen.
 
-
-
 ## <a name="review-things-you-should-know"></a>Überprüfung wichtiger Informationen
 
-Sie können keine Azure AD-Hybrideinbindung verwenden, wenn Ihre Umgebung aus einer einzelnen Gesamtstruktur besteht, die Identitätsdaten mit mehr als einem Azure AD-Mandanten synchronisiert.
+Azure AD-Hybrideinbindung wird zurzeit nicht unterstützt, wenn Ihre Umgebung aus einer einzelnen AD-Gesamtstruktur besteht, die Identitätsdaten mit mehr als einem Azure AD-Mandanten synchronisiert.
 
-Wenn Sie das Systemvorbereitungstool (Sysprep) verwenden, stellen Sie sicher, dass Images, die aus einer Installation von Windows 10 1803 oder früher erstellt wurden, nicht für Hybrid-Azure AD-Einbindung konfiguriert wurden.
+Azure AD Hybrideinbindung wird zurzeit nicht unterstützt, wenn eine virtuelle Desktopinfrastruktur (VDI) verwendet wird.
 
-Wenn Sie zusätzliche VMs mit einer Momentaufnahme des virtuellen Computers erstellen, stellen Sie sicher, dass Sie eine Momentaufnahme verwenden, die nicht für die Azure AD-Hybrideinbindung konfiguriert wurde.
+Azure AD Hybrid Join wird für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Hybrid Join fortfahren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten. Ab dem Windows 10-Release 1903 werden TPMs 1.2 nicht mehr für Azure AD Hybrid Join verwendet, und Geräte mit diesen TPMs werden so betrachtet, als würden sie nicht über ein TPM verfügen.
 
-Azure AD Hybrid Join für kompatible Windows-Geräte:
+Azure AD Hybrideinbindung wird für Windows Server, die die Domänencontrollerrolle ausführen, nicht unterstützt.
 
-- **Wird** in nicht zu einem Verbund gehörenden Umgebungen durch das [nahtlose einmalige Anmelden von Azure Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) unterstützt. 
+Azure AD Hybrideinbindung wird für kompatible Windows-Geräte nicht unterstützt, wenn sie das Roaming von Anmeldeinformationen oder Benutzerprofilen verwenden.
 
-- Wird bei Verwendung der Azure AD-Passthrough-Authentifizierung ohne nahtloses einmaliges Anmelden **nicht** unterstützt.
+Wenn Sie das Systemvorbereitungstool (Sysprep) verwenden und ein Image einer niedrigeren Version als **Windows 10 1809** für die Installation verwenden, stellen Sie sicher, dass dieses Image nicht von einem Gerät stammt, das bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
 
-- Wird **nicht** unterstützt, wenn das Roaming von Anmeldeinformationen oder Benutzerprofilen aktiviert ist oder wenn eine virtuelle Desktopinfrastruktur (VDI) verwendet wird.
+Wenn Sie zusätzliche VMs mit einer Momentaufnahme des virtuellen Computers erstellen, stellen Sie sicher, dass diese Momentaufnahme nicht von einem Computer stammt, der bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
 
+Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten [bei Azure AD registriert](overview.md#getting-devices-in-azure-ad) sind, kann dies zu einem Doppelstatus der Azure AD-Hybrideinbindung und der Registrierung bei Azure AD des Geräts führen. Es wird empfohlen, ein Upgrade auf Windows 10 1803 (mit angewandtem KB4489894) oder höher durchzuführen, um dieses Szenario automatisch zu beheben. In Releases vor 1803 müssen Sie die Registrierung bei Azure AD manuell entfernen, bevor Sie die Azure AD-Hybrideinbindung aktivieren. In Releases ab 1803 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
 
-Die Registrierung von Windows Server mit der Domänencontrollerrolle wird nicht unterstützt.
-
-Wenn Ihre Organisation Internetzugriff über einen authentifizierten ausgehenden Proxy erfordert, müssen Sie sicherstellen, dass Ihre Windows 10-Computer erfolgreich beim ausgehenden Proxy authentifiziert werden können. Da Windows 10-Computer die Geräteregistrierung mithilfe von Computerkontext ausführen, muss die Authentifizierung bei ausgehenden Proxys mit dem Computerkontext konfiguriert werden.
-
-
-Die Azure AD-Hybrideinbindung ist ein Prozess für die automatische Registrierung Ihrer lokalen in die Domäne eingebundenen Geräte bei Azure AD. Es kann auch vorkommen, dass Sie nicht alle Ihre Geräte automatisch registrieren möchten. In diesem Fall finden Sie weitere Informationen unter [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](hybrid-azuread-join-control.md).
-
-Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte bereits für Ihren Mandanten bei [Azure AD registriert](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices) sind, wird dringend empfohlen, diesen Status vor dem Aktivieren von Azure AD Hybrid Join zu entfernen. In Windows 10 Release 1809 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden: 
- - Eine etwaige Registrierung bei Azure AD würde nach der Azure AD-Hybrideinbindung des Geräts automatisch entfernt werden. 
- - Sie können verhindern, dass Ihr in die Domäne eingebundenes Gerät bei Azure AD registriert wird, indem Sie diesen Registrierungsschlüssel hinzufügen: HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001.
- - Diese Änderung ist jetzt für Windows 10, Release 1803 mit KB4489894 verfügbar.
-
-FIPS-kompatible TPMs werden für Hybrid-Azure AD-Einbindung nicht unterstützt. Wenn Ihre Geräte über FIPS-kompatible TPMs verfügen, müssen Sie sie vor dem Fortsetzen der Hybrid-Azure AD-Einbindung deaktivieren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie an Ihren Hardware-OEM, um Unterstützung zu erhalten.
-
-## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Steuern von Azure AD Hybrid Join für Ihre Geräte
-
-Die Azure AD-Hybrideinbindung ist ein Prozess für die automatische Registrierung Ihrer lokalen in die Domäne eingebundenen Geräte bei Azure AD. In einigen Fällen sollten Sie nicht alle Ihre Geräte automatisch registrieren. Dies gilt beispielsweise während des anfänglichen Rollouts, um sicherzustellen, dass alles wie erwartet funktioniert.
-
-Weitere Informationen finden Sie unter [Steuern von Azure AD Hybrid Join für Ihre Geräte](hybrid-azuread-join-control.md).
-
-## <a name="select-your-scenario"></a>Auswahl Ihres Szenarios
-
-Sie können Azure AD-Hybrideinbindungen für die folgenden Szenarien konfigurieren:
-
-- Verwaltete Domänen
-- Verbunddomänen  
+- Eine etwaige Registrierung bei Azure AD wird nach der <i>Azure AD-Hybrideinbindung des Geräts</i> automatisch entfernt.
+- Sie können verhindern, dass Ihr in die Domäne eingebundenes Gerät bei Azure AD registriert wird, indem Sie diesen Registrierungsschlüssel hinzufügen: HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001.
+- Wenn Sie Windows Hello for Business unter Windows 10 1803 konfiguriert haben, muss der Benutzer Windows Hello for Business nach der Bereinigung des Doppelstatus erneut einrichten. Dieses Problem wird mit KB4512509 behoben.
 
 
 
-Wenn Ihre Umgebung verwaltete Domänen umfasst, unterstützt die Azure AD-Hybrideinbindung:
+## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Überprüfung der kontrollierten Überprüfung der Azure AD-Hybrideinbindung
 
-- Passthrough-Authentifizierung (PTA)
+Wenn alle Voraussetzungen erfüllt sind, werden Windows-Geräte automatisch als Geräte bei Ihrem Azure AD-Mandanten registriert. Der Zustand dieser Geräteidentitäten in Azure AD wird als Azure AD-Hybrideinbindung bezeichnet. Weitere Informationen zu den in diesem Artikel beschriebenen Konzepten finden Sie in den Artikeln [Einführung in die Geräteidentitätsverwaltung in Azure Active Directory](overview.md) und [Planen der Implementierung Ihrer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md).
 
-- Kennworthashsynchronisierung (Password Hash Sync, PHS)
+Organisationen sollten eine kontrollierte Überprüfung der Azure AD-Hybrideinbindung vornehmen, bevor sie diese in ihrer gesamten Organisation gleichzeitig aktivieren. Das Verständnis, wie Sie dies erreichen können, erhalten Sie in dem Artikel [Kontrollierte Überprüfung der Azure AD-Hybrideinbindung](hybrid-azuread-join-control.md).
 
-Ab Version 1.1.819.0 bietet Azure AD Connect einen Assistenten für die Konfiguration der Azure AD-Hybrideinbindung. Mit dem Assistenten können Sie den Konfigurationsprozess erheblich vereinfachen. Weitere Informationen finden Sie unter
+## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Auswählen Ihres Szenarios, basierend auf Ihrer Identitätsinfrastruktur
 
-- [Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen](hybrid-azuread-join-federated-domains.md)
+Azure AD Hybrid-Join funktioniert sowohl in verwalteten als auch in Verbundumgebungen, je nachdem, ob der UPN routingfähig ist. Eine Tabelle mit unterstützten Szenarien finden Sie unten auf der Seite.  
 
+### <a name="managed-environment"></a>Verwaltete Umgebung
 
-- [Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen](hybrid-azuread-join-managed-domains.md)
+Eine verwaltete Umgebung kann entweder durch [Kennworthashsynchronisierung](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) (Password Hash Sync, PHS) oder [Passthrough-Authentifizierung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) (Pass Through Authentication, PTA) mit [nahtlosem einmaligem Anmelden](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) (Seamless Single Sign-On, Seamless SSO) bereitgestellt werden.
 
+In diesen Szenarien müssen Sie keinen Verbundserver für die Authentifizierung konfigurieren.
 
- Wenn das Installieren der erforderlichen Version von Azure AD Connect keine Option für Sie ist, informieren Sie sich über die [manuelle Konfiguration der Geräteregistrierung](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual). 
+### <a name="federated-environment"></a>Verbundumgebung
 
+Bei Verbundumgebungen sollte ein Identitätsanbieter verwendet werden, der die folgenden Anforderungen erfüllt. Wenn Sie eine Verbundumgebung besitzen, die Active Directory-Verbunddienste (AD FS) verwendet, werden die nachfolgend genannten Anforderungen bereits unterstützt.
 
-## <a name="on-premises-ad-upn-support-in-hybrid-azure-ad-join"></a>Unterstützung lokaler AD-Benutzerprinzipalnamen (UPNs) in Azure AD Hybrid Join
+- **WIAORMULTIAUTHN-Anspruch:** Dieser Anspruch ist erforderlich, um eine Azure AD-Hybrideinbindung für kompatible Windows-Geräte durchzuführen.
+- **WS-Trust-Protokoll:** Dieses Protokoll ist erforderlich, um aktuelle Azure AD-hybrideingebundene Windows-Geräte mit Azure AD zu authentifizieren. Bei Verwendung von AD FS müssen Sie die folgenden WS-Trust-Endpunkte aktivieren: `/adfs/services/trust/2005/windowstransport`  
+`/adfs/services/trust/13/windowstransport`  
+  `/adfs/services/trust/2005/usernamemixed` 
+  `/adfs/services/trust/13/usernamemixed`
+  `/adfs/services/trust/2005/certificatemixed` 
+  `/adfs/services/trust/13/certificatemixed` 
 
-In einigen Fällen können Ihre lokalen AD-UPNs von den Azure AD-UPNs abweichen. In diesen Fällen bietet Azure AD Hybrid Join unter Windows 10 auf Grundlage der [Authentifizierungsmethode](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), dem Domänentyp und der Windows 10-Version eingeschränkte Unterstützung für lokale AD-UPNs. Es gibt zwei Arten lokaler AD-UPNs, die in Ihrer Umgebung vorhanden sein können:
+> [!WARNING] 
+> Die Endpunkte **adfs/services/trust/2005/windowstransport** und **adfs/services/trust/13/windowstransport** sollten nur als Endpunkte mit Intranetzugriff aktiviert werden und dürfen NICHT als Endpunkte mit Extranetzugriff über den Webanwendungsproxy verfügbar gemacht werden. Weitere Informationen zum Deaktivieren von WS-Trust-Windows-Endpunkten finden Sie unter [Deaktivieren von WS-Trust-Windows-Endpunkten auf dem Proxy](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Welche Endpunkte aktiviert sind, sehen Sie in der AD FS-Verwaltungskonsole unter **Dienst** > **Endpunkte**.
 
- - Routingfähige Benutzerprinzipalnamen (UPNs): Ein routingfähiger UPN verfügt über eine gültige überprüfte Domäne, die bei einer Domänenregistrierungsstelle registriert ist. Ist beispielsweise „contoso.com“ die primäre Domäne in Azure AD, ist „contoso.org“ die primäre Domäne im lokalen Active Directory, die Contoso gehört und [in Azure AD überprüft wird](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain).
- 
- - Nicht routingfähige Benutzerprinzipalnamen (UPNs): Ein nicht routingfähiger UPN verfügt nicht über eine überprüfte Domäne. Sie ist nur in einem privaten Netzwerk Ihrer Organisation gültig. Ist beispielsweise „contoso.com“ die primäre Domäne in Azure AD, ist „contoso.local“ die primäre Domäne im lokalen Active Directory, aber keine überprüfbare Domäne im Internet und wird nur innerhalb des Contoso-Netzwerks verwendet.
- 
+> [!NOTE]
+> Azure AD unterstützt keine Smartcards oder Zertifikate in verwalteten Domänen.
+
+Ab Version 1.1.819.0 bietet Azure AD Connect einen Assistenten für die Konfiguration der Azure AD-Hybrideinbindung. Mit dem Assistenten können Sie den Konfigurationsprozess erheblich vereinfachen. Wenn das Installieren der erforderlichen Version von Azure AD Connect keine Option für Sie ist, informieren Sie sich über die [manuelle Konfiguration der Geräteregistrierung](hybrid-azuread-join-manual.md). 
+
+Lesen Sie auf Grundlage des Szenarios, das Ihrer Identitätsinfrastruktur entspricht:
+
+- [Konfigurieren der Azure Active Directory-Hybrideinbindung für eine Verbundumgebung](hybrid-azuread-join-federated-domains.md)
+- [Konfigurieren der Azure Active Directory-Hybrideinbindung für eine verwaltete Umgebung](hybrid-azuread-join-managed-domains.md)
+
+## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Überprüfung der lokalen AD UPN-Unterstützung (Benutzerprinzipalname) für Azure AD-Hybrideinbindung
+
+In einigen Fällen können Ihre lokalen AD-UPNs von den Azure AD-UPNs abweichen. In diesen Fällen bietet Azure AD Hybrid Join unter Windows 10 auf Grundlage der [Authentifizierungsmethode](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), dem Domänentyp und der Windows 10-Version eingeschränkte Unterstützung für lokale AD-UPNs. Es gibt zwei Arten lokaler AD-UPNs, die in Ihrer Umgebung vorhanden sein können:
+
+- Routingfähige Benutzerprinzipalnamen (UPNs): Ein routingfähiger UPN verfügt über eine gültige überprüfte Domäne, die bei einer Domänenregistrierungsstelle registriert ist. Ist beispielsweise „contoso.com“ die primäre Domäne in Azure AD, ist „contoso.org“ die primäre Domäne im lokalen Active Directory, die Contoso gehört und [in Azure AD überprüft wird](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain).
+- Nicht routingfähige Benutzerprinzipalnamen (UPNs): Ein nicht routingfähiger UPN verfügt nicht über eine überprüfte Domäne. Sie ist nur in einem privaten Netzwerk Ihrer Organisation gültig. Ist beispielsweise „contoso.com“ die primäre Domäne in Azure AD, ist „contoso.local“ die primäre Domäne im lokalen Active Directory, aber keine überprüfbare Domäne im Internet und wird nur innerhalb des Contoso-Netzwerks verwendet.
+
 Die folgende Tabelle enthält Details zur Unterstützung dieser lokalen AD UPNs in Azure AD Hybrid Join unter Windows 10
 
-|Art der lokalen AD UPNs|Domänentyp|Windows 10-Version|BESCHREIBUNG|
-|-----|-----|-----|-----|
-|Routingfähig|Im Verbund |Version 1703|Allgemein verfügbar|
-|Routingfähig|Verwaltet|Version 1709|Derzeit in der privaten Vorschau. Azure AD SSPR wird nicht unterstützt. |
-|Nicht routingfähig|Im Verbund|Version 1803|Allgemein verfügbar|
-|Nicht routingfähig|Verwaltet|Nicht unterstützt||
-
-
+| Art der lokalen AD UPNs | Domänentyp | Windows 10-Version | Beschreibung |
+| ----- | ----- | ----- | ----- |
+| Routingfähig | Im Verbund | Version 1703 | Allgemein verfügbar |
+| Nicht routingfähig | Im Verbund | Version 1803 | Allgemein verfügbar |
+| Routingfähig | Verwaltet | Version 1803 | Allgemein verfügbar, Azure AD SSPR auf Windows-Sperrbildschirm wird nicht unterstützt |
+| Nicht routingfähig | Verwaltet | Nicht unterstützt | |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen](hybrid-azuread-join-federated-domains.md)
-> [Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen](hybrid-azuread-join-managed-domains.md)
-
-
-
+> [Konfigurieren von Azure Active Directory-Hybrideinbindung für eine Verbundumgebung](hybrid-azuread-join-federated-domains.md)
+> [Konfigurieren von Azure Active Directory-Hybrideinbindung für eine verwaltete Umgebung](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

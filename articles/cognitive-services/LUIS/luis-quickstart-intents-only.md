@@ -1,5 +1,5 @@
 ---
-title: Vorhersagen von Absichten
+title: 'Tutorial: Vorhersagen von Absichten: LUIS'
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie eine benutzerdefinierte App, die die Absicht eines Benutzers vorhersagt. Diese App stellt den einfachsten Typ von LUIS-App dar, da sie keine verschiedenen Datenelemente, wie E-Mail-Adressen oder Datumsangaben, aus dem Äußerungstext extrahiert.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 7139876f64841a877e688ec6faf03597c527d1f2
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593912"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375816"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Tutorial: Erstellen einer LUIS-App zum Bestimmen von Benutzerabsichten
 
@@ -131,7 +131,7 @@ Diese App verfügt über einige Absichten.
 
     Der Abfragezeichenfolgen-Parameter `verbose=true` bedeutet, dass **alle Absichten** in die Abfrageergebnisse der App aufgenommen werden sollen. Das Entitätenarray ist leer, weil diese App aktuell keine Entitäten aufweist. 
 
-    Das JSON-Ergebnis identifiziert die am höchsten bewertete Absicht als **`topScoringIntent`**-Eigenschaft. Alle Bewertungen liegen zwischen 1 und 0. Die bessere Bewertung liegt näher bei 1. 
+    Das JSON-Ergebnis identifiziert die am höchsten bewertete Absicht als **`topScoringIntent`** -Eigenschaft. Alle Bewertungen liegen zwischen 1 und 0. Die bessere Bewertung liegt näher bei 1. 
 
 ## <a name="create-intent-for-job-applications"></a>Absicht für Bewerbungen auf Stellen erstellen
 

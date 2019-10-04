@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: 16ce537a54fc77fc0f72b859d6d193501d86c1fc
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52270315"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178324"
 ---
 ## <a name="create-a-ruby-application"></a>Erstellen einer Ruby-Anwendung
 Anweisungen finden Sie unter [Ruby on Rails-Webanwendung auf Azure VM](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md).

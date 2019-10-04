@@ -3,20 +3,20 @@ title: Verwenden der Languages-Methode der Sprachübersetzungs-API
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Languages-Methode der Sprachübersetzungs-API verwenden.
 services: cognitive-services
-author: Jann-Skotdal
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: v-jansko
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7498ba08b9ce7b6aae10f38a393eb8cba37f3f4e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 46ac3928238382f56db5a799226bd3d9243b7ca2
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435761"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966415"
 ---
 # <a name="translator-speech-api-languages"></a>Sprachübersetzungs-API: Languages
 
@@ -132,7 +132,7 @@ Languages {speech (object, optional), text (object, optional), tts (object, opti
 
 ### <a name="headers"></a>Header
 
-|Header|BESCHREIBUNG|Type|
+|Header|BESCHREIBUNG|type|
 :--|:--|:--|
 X-RequestId|Ein Wert, der vom Server generiert wird, um die Anforderung zu identifizieren und Probleme zu behandeln.|Zeichenfolge|
 
@@ -147,9 +147,9 @@ X-RequestId|Ein Wert, der vom Server generiert wird, um die Anforderung zu ident
 
 ### <a name="response-messages"></a>Antwortnachrichten
 
-|HTTP-Statuscode|Grund|
+|HTTP-Statuscode|`Reason`|
 |:--|:--|
 |400|Ungültige Anforderung. Überprüfen Sie die Eingabeparameter, und stellen Sie sicher, dass sie gültig sind. Das Antwortobjekt enthält eine ausführlichere Beschreibung des Fehlers.|
 |429|Too many requests. (Zu viele Anforderungen.)|
 |500|Ein Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|
-|503|Der Server ist vorübergehend nicht verfügbar.  Versuchen Sie die Anforderung erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|
+|503|Der Server ist vorübergehend nicht verfügbar. Versuchen Sie die Anforderung erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|

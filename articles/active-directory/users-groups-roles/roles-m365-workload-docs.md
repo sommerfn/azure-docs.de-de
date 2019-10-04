@@ -1,6 +1,6 @@
 ---
-title: Administratorrolleninhalte für Microsoft 365-Workloads – Azure AD | Microsoft-Dokumentation
-description: Suchen von Inhalten und API-Referenzen für Administratorrollen für Microsoft 365-Workloads in Azure Active Directory
+title: Administratorrolleninhalte für Microsoft 365-Dienste – Azure AD | Microsoft-Dokumentation
+description: Suchen von Inhalten und API-Referenzen für Administratorrollen für Microsoft 365-Dienste in Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,20 +15,20 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7460c3a7d957634d14186d313994c65d89fa4a32
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 12ffa1d4f3e802b3419b31844ddd8133ceab5086
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217869"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68304391"
 ---
-# <a name="administrator-roles-for-microsoft-365-workloads"></a>Administratorrollen für Microsoft 365-Workloads
+# <a name="administrator-roles-for-microsoft-365-services"></a>Administratorrollen für Microsoft 365-Dienste
 
 Alle Produkte in Microsoft 365 können mit Administratorrollen in Azure AD verwaltet werden. Einige Produkte bieten darüber hinaus zusätzliche Rollen, die für dieses Produkt spezifisch sind. Informationen zu den von den einzelnen Produkten unterstützten Rollen finden Sie in der folgenden Tabelle. Allgemeine Informationen zu Delegierungsproblemen finden Sie unter [Planen der Rollendelegierung in Azure Active Directory](roles-concept-delegation.md).
 
 ## <a name="where-to-find-content"></a>Ort
 
-Microsoft 365-Workload | Rolleninhalt | API-Inhalt
+Microsoft 365-Dienst | Rolleninhalt | API-Inhalt
 ---------------------- | ------------------ | -----------------
 Administratorrollen in Office 365- und Microsoft 365-Businessplänen | [Office 365-Administratorrollen](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles?view=o365-worldwide) | Nicht verfügbar
 Azure Active Directory (Azure AD) und Azure AD Identity Protection| [Azure AD-Administratorrollen](directory-assign-admin-roles.md) | [Graph-API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Abrufen von Rollenzuweisungen](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)

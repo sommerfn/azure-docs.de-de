@@ -1,7 +1,7 @@
 ---
-title: Migrieren von der Bing-Spracheingabe zum Azure-Spracherkennungsdienst
+title: Migrieren von der Bing-Spracheingabe zum Speech Service
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie aus einem vorhandenen Bing-Spracheingabeabonnement zu den Azure-Sprachdiensten migrieren.
+description: Erfahren Sie, wie Sie aus einem vorhandenen Bing-Spracheingabe-Abonnement zu Speech Service von Azure Cognitive Services migrieren.
 services: cognitive-services
 author: wsturman
 manager: nitinme
@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
-ms.author: gracez
-ms.openlocfilehash: 6324da55c8af4934185fa39a106939844788adba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: nitinme
+ms.openlocfilehash: 5694894a78a46ad658ec18f210c6a82fb82df23f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848965"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559609"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrieren von der Bing-Spracheingabe zum Spracherkennungsdienst
 
@@ -69,7 +69,7 @@ Die WebSockets-Protokolle des Spracherkennungsdiensts sind auch mit den Protokol
 
 Wenn Sie eine Bing-Spracheingabe-Clientbibliothek für eine bestimmte Programmiersprache verwenden, erfordert die Migration zum [Spracherkennungs-SDK](speech-sdk.md) Änderungen an Ihrer Anwendung, weil es sich um eine andere API handelt. Das Spracherkennungs-SDK kann Ihren Code einfacher gestalten und Ihnen auch Zugriff auf neue Features bieten.
 
-Das Spracherkennungs-SDK unterstützt derzeit C# (Windows 10, UWP, .NET Standard), Java (Android und benutzerdefinierte Geräte), Objective C (iOS), C++ (Windows und Linux) und JavaScript. APIs sind auf den verschiedenen Plattformen ähnlich, was die Entwicklung für mehrere Plattformen erleichtert.
+Das Spracherkennungs-SDK unterstützt derzeit C# ([mehr darüber hier](https://aka.ms/csspeech)), Java (Android und benutzerdefinierte Geräte), Objective C (iOS), C++ (Windows und Linux) und JavaScript. APIs sind auf den verschiedenen Plattformen ähnlich, was die Entwicklung für mehrere Plattformen erleichtert.
 
 Die Spracherkennungsdienste bieten keinen globalen Endpunkt. Ermitteln Sie, ob Ihre Anwendung effizient funktioniert, wenn sie einen einzigen regionalen Endpunkt für den gesamten Datenverkehr verwendet. Wenn nicht, verwenden Sie die Geolokalisierung, um den effizientesten Endpunkt zu bestimmen. Sie benötigen für jede verwendete Region ein separates Spracherkennungsdienst-Abonnement.
 
@@ -95,4 +95,4 @@ Informationen zur Unterstützung von Spracherkennungsdienst, SDK und API finden 
 ## <a name="see-also"></a>Weitere Informationen
 * [Versionshinweise zu den Spracherkennungsdiensten](releasenotes.md)
 * [Worum handelt es sich beim Speech-Dienst?](overview.md)
-* [Dokumentation zu den Spracherkennungsdiensten und zum Speech SDK](speech-sdk.md#get-the-sdk)
+* [Dokumentation zu Sprachdiensten und zum Spracherkennungsdienst-SDK](speech-sdk.md#get-the-sdk)

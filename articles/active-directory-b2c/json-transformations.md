@@ -2,26 +2,26 @@
 title: Beispiele für die Transformation von JSON-Ansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C | Microsoft-Dokumentation
 description: Hier finden Sie Beispiele für die Transformation von JSON-Ansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 88d447f86dd54fc9479a6d7d2006b9a8639ad09e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ff70b2f54304c83f70ff578e1947d752aafb34a7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089232"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064161"
 ---
 # <a name="json-claims-transformations"></a>Transformationen von JSON-Ansprüchen
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In diesem Artikel werden Beispiele für die Verwendung von Transformationen von JSON-Ansprüchen für das Schema des Frameworks für die Identitätsfunktion in Azure Active Directory B2C veranschaulicht. Weitere Informationen finden Sie unter [ClaimsTransformations](claimstransformations.md).
+In diesem Artikel werden Beispiele für die Verwendung von Transformationen von JSON-Ansprüchen für das Identity Experience Framework-Schema in Azure Active Directory B2C (Azure AD B2C) veranschaulicht. Weitere Informationen finden Sie unter [ClaimsTransformations](claimstransformations.md).
 
 ## <a name="getclaimfromjson"></a>GetClaimFromJson
 
@@ -55,7 +55,7 @@ Im folgenden Beispiel hat die Anspruchstransformation das `emailAddress`-Element
   - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Someone"}
 - Eingabeparameter:
     - **claimToExtract**: emailAddress
-- Ausgabeansprüche: 
+- Ausgabeansprüche:
   - **extractedClaim**: someone@example.com
 
 
@@ -70,7 +70,7 @@ Abrufen einer Liste der angegebenen JSON-Datenelemente
 | InputParameter | includeEmptyClaims | Zeichenfolge | Gibt an, dass leere Ansprüche hinzugefügt werden sollen. |
 | InputParameter | jsonSourceKeyName | Zeichenfolge | Name des Elementschlüssels |
 | InputParameter | jsonSourceValueName | Zeichenfolge | Name des Elementwerts |
-| OutputClaim | Sammlung | string, int, boolean und datetime |Liste mit Ansprüchen, die extrahiert werden sollen. Der Name des Anspruchs soll dem Namen entsprechen, der im Eingabeanspruch _jsonSourceClaim_ angegeben ist. |
+| OutputClaim | Collection | string, int, boolean und datetime |Liste mit Ansprüchen, die extrahiert werden sollen. Der Name des Anspruchs soll dem Namen entsprechen, der im Eingabeanspruch _jsonSourceClaim_ angegeben ist. |
 
 In diesem Beispiel extrahiert die Anspruchstransformation die folgenden Ansprüche aus dem JSON-Datenelement: email (string), displayName (string), membershipNum (int), active (boolean) und birthdate (datetime).
 
@@ -97,7 +97,7 @@ In diesem Beispiel extrahiert die Anspruchstransformation die folgenden Ansprüc
     <OutputClaim ClaimTypeReferenceId="birthdate" />
   </OutputClaims>
 </ClaimsTransformation>
-```    
+```
 
 - Eingabeansprüche:
   - **jsonSourceClaim**: [{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value": true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
@@ -121,14 +121,14 @@ Abrufen eines angegebenen numerisches JSON-Datenelements (long)
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | Zeichenfolge | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um den Anspruch abzurufen. |
 | InputParameter | claimToExtract | Zeichenfolge | Der Name des JSON-Elements, das extrahiert werden soll |
-| OutputClaim | extractedClaim | lang | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation ausgelöst wurde. Es handelt sich um den Elementwert, der im Eingabeparameter _claimToExtract_ angegeben ist. |
+| OutputClaim | extractedClaim | long | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation ausgelöst wurde. Es handelt sich um den Elementwert, der im Eingabeparameter _claimToExtract_ angegeben ist. |
 
 Im folgenden Beispiel extrahiert die Anspruchtransformation das `id`-Element aus dem JSON-Datenelement.
 
 ```JSON
 {
-    "emailAddress": "someone@example.com", 
-    "displayName": "Someone", 
+    "emailAddress": "someone@example.com",
+    "displayName": "Someone",
     "id" : 6353399
 }
 ```
@@ -153,7 +153,7 @@ Im folgenden Beispiel extrahiert die Anspruchtransformation das `id`-Element aus
   - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Someone", "id" : 6353399}
 - Eingabeparameter
     - **claimToExtract**:  id
-- Ausgabeansprüche: 
+- Ausgabeansprüche:
     - **extractedClaim**: 6353399
 
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
@@ -182,7 +182,7 @@ Im folgenden Beispiel extrahiert die Anspruchstransformation das erste Element (
 
 - Eingabeansprüche:
   - **inputJsonClaim**: ["someone@example.com", "Someone", 6353399]
-- Ausgabeansprüche: 
+- Ausgabeansprüche:
   - **extractedClaim**: someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
@@ -191,7 +191,7 @@ Konvertieren von XML-Daten ins JSON-Format.
 
 | Item | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | xml | Zeichenfolge | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um das Datenelement von XML ins JSON-Format zu konvertieren. |
+| InputClaim | Xml | Zeichenfolge | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um das Datenelement von XML ins JSON-Format zu konvertieren. |
 | OutputClaim | json | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. Es handelt sich hierbei um die Daten im JSON-Format. |
 
 ```XML

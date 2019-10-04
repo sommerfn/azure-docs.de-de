@@ -1,19 +1,19 @@
 ---
-title: Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs | Microsoft-Dokumentation
+title: Tutorial zum Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Daten über REST-APIs in Ihren Azure Data Box-Blobspeicher kopieren.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 79854c71410c7e796961f23c8c31a4d0809cd69c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: fcd6fc95adc892885fd8471e622ce3b04258d8b5
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527981"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65800534"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Tutorial: Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs  
 
@@ -39,9 +39,14 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 5. [Laden Sie AzCopy 7.1.0 auf Ihren Hostcomputer herunter.](https://aka.ms/azcopyforazurestack20170417) Mit AzCopy kopieren Sie Daten von Ihrem Hostcomputer in Azure Data Box-Blobspeicher.
 
 
-## <a name="connect-to-data-box-blob-storage"></a>Herstellen einer Verbindung mit Data Box-Blobspeicher
+## <a name="connect-via-http-or-https"></a>Herstellen einer Verbindung über HTTP oder HTTPS
 
-Sie können über *HTTP* oder *HTTPS* eine Verbindung mit Data Box-Blobspeicher herstellen. Im Allgemeinen ist *HTTPS* die sichere und empfohlene Methode zum Herstellen einer Verbindung mit Data Box-Blobspeicher. *HTTP* wird zum Herstellen von Verbindungen über vertrauenswürdige Netzwerke verwendet. Abhängig davon, ob Sie über *HTTP* oder *HTTPS* eine Verbindung mit Data Box-Blobspeicher herstellen, können sich die erforderlichen Schritte unterscheiden.
+Sie können über *HTTP* oder *HTTPS* eine Verbindung mit Data Box-Blobspeicher herstellen.
+
+- *HTTPS* ist die sichere und empfohlene Methode zum Herstellen einer Verbindung mit Data Box-Blobspeicher.
+- *HTTP* wird zum Herstellen von Verbindungen über vertrauenswürdige Netzwerke verwendet.
+
+Die Schritte zum Herstellen der Verbindung mit Data Box-Blobspeicher über *HTTP* und *HTTPS* sind unterschiedlich.
 
 ## <a name="connect-via-http"></a>Herstellen einer Verbindung über HTTP
 
@@ -52,11 +57,11 @@ Zum Herstellen einer Verbindung mit Data Box-Blobspeicher-REST-APIs über *HTTP*
 
 Die einzelnen Schritte werden in den folgenden Abschnitten beschrieben.
 
-#### <a name="add-device-ip-address-and-blob-service-endpoint-to-the-remote-host"></a>Hinzufügen der Geräte-IP-Adresse und des Blob-Dienstendpunkts zum Remotehost
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Hinzufügen der Geräte-IP-Adresse und des Blob-Dienstendpunkts
 
 [!INCLUDE [data-box-add-device-ip](../../includes/data-box-add-device-ip.md)]
 
-#### <a name="configure-partner-software-and-verify-connection"></a>Konfigurieren von Partnersoftware und Überprüfen der Verbindung
+### <a name="configure-partner-software-and-verify-connection"></a>Konfigurieren von Partnersoftware und Überprüfen der Verbindung
 
 [!INCLUDE [data-box-configure-partner-software](../../includes/data-box-configure-partner-software.md)]
 
@@ -67,8 +72,8 @@ Die einzelnen Schritte werden in den folgenden Abschnitten beschrieben.
 Zum Herstellen einer Verbindung mit Azure-Blobspeicher-REST-APIs über HTTPS müssen die folgenden Schritte ausgeführt werden:
 
 - Herunterladen des Zertifikats aus dem Azure-Portal
-- Vorbereiten des Hostcomputers für die Remoteverwaltung
-- Hinzufügen der Geräte-IP und des Blob-Dienstendpunkts zum Remotehost
+- Importieren des Zertifikats auf dem Client- oder Remotehost
+- Hinzufügen der Geräte-IP und des Blob-Dienstendpunkts zum Client- oder Remotehost
 - Konfigurieren von Drittanbietersoftware und Überprüfen der Verbindung
 
 Die einzelnen Schritte werden in den folgenden Abschnitten beschrieben.
@@ -83,20 +88,15 @@ Verwenden Sie zum Herunterladen des Zertifikats das Azure-Portal.
 
     ![Herunterladen des Zertifikats im Azure-Portal](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
-### <a name="prepare-the-host-for-remote-management"></a>Vorbereiten des Hosts für die Remoteverwaltung
+### <a name="import-certificate"></a>Importieren des Zertifikats 
 
-Führen Sie die folgenden Schritte aus, um den Windows-Client für eine Remoteverbindung vorzubereiten, die eine *HTTPS*-Sitzung verwendet:
+Der Zugriff auf Data Box-Blobspeicher über HTTPS erfordert ein SSL-Zertifikat für das Gerät. Die Art und Weise, wie dieses Zertifikat der Clientanwendung zur Verfügung gestellt wird, variiert von Anwendung zu Anwendung sowie zwischen Betriebssystemen und Distributionen. Einige Anwendungen können auf das Zertifikat zugreifen, nachdem es in den Zertifikatsspeicher des Systems importiert wurde, während andere Anwendungen diesen Mechanismus nicht nutzen.
 
-- Importieren Sie die CER-Datei in den Stammspeicher des Clients oder Remotehosts.
-- Fügen Sie die Geräte-IP-Adresse und den Blob-Dienstendpunkt zur Hostdatei auf Ihrem Windows-Client hinzu.
+Dieser Abschnitt enthält spezifische Informationen für einige Anwendungen. Weitere Informationen zu anderen Anwendungen finden Sie in der Dokumentation für die jeweilige Anwendung und für das verwendete Betriebssystem.
 
-Diese anschließende Schritte werden im Folgenden beschrieben.
+Führen Sie diese Schritte aus, um die `.cer`-Datei in den Stammspeicher eines Windows- oder Linux-Clients zu importieren. Auf einem Windows-System können Sie Windows PowerShell oder die Windows Server-Benutzeroberfläche nutzen, um das Zertifikat zu importieren und auf Ihrem System zu installieren.
 
-#### <a name="import-the-certificate-on-the-remote-host"></a>Importieren des Zertifikats auf dem Remotehost
-
-Sie können Windows PowerShell oder die Windows Server-Benutzeroberfläche nutzen, um das Zertifikat zu importieren und auf Ihrem Hostsystem zu installieren.
-
-**Mithilfe von PowerShell**
+#### <a name="use-windows-powershell"></a>Verwenden von Windows PowerShell
 
 1. Starten Sie eine Windows PowerShell-Sitzung als Administrator.
 2. Geben Sie an der Eingabeaufforderung Folgendes ein:
@@ -105,9 +105,9 @@ Sie können Windows PowerShell oder die Windows Server-Benutzeroberfläche nutze
     Import-Certificate -FilePath C:\temp\localuihttps.cer -CertStoreLocation Cert:\LocalMachine\Root
     ```
 
-**Verwenden der Windows Server-Benutzeroberfläche**
+#### <a name="use-windows-server-ui"></a>Verwenden der Windows Server-Benutzeroberfläche
 
-1.  Klicken Sie mit der rechten Maustaste auf die CER-Datei, und wählen Sie **Zertifikat installieren**aus. Damit starten Sie den Zertifikatimport-Assistenten.
+1.  Klicken Sie mit der rechten Maustaste auf die `.cer`-Datei, und wählen Sie **Zertifikat installieren** aus. Mit dieser Aktion wird der Zertifikatimport-Assistent gestartet.
 2.  Wählen Sie für **Speicherort** die Option **Lokaler Computer** aus, und klicken Sie dann auf **Weiter**.
 
     ![Importieren des Zertifikats mithilfe von PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
@@ -120,13 +120,29 @@ Sie können Windows PowerShell oder die Windows Server-Benutzeroberfläche nutze
 
     ![Importieren des Zertifikats mithilfe von PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
-### <a name="to-add-device-ip-address-and-blob-service-endpoint-to-the-remote-host"></a>So fügen Sie die Geräte-IP-Adresse und den Blob-Dienstendpunkt zum Remotehost hinzu
+#### <a name="use-a-linux-system"></a>Verwenden eines Linux-Systems
 
-Sie müssen die gleichen Schritte wie beim Herstellen einer Verbindung über *HTTP* ausführen.
+Die Methode zum Importieren eines Zertifikats hängt von der Distribution ab.
 
-### <a name="configure-partner-software-to-establish-connection"></a>Konfigurieren von Partnersoftware zum Herstellen der Verbindung
+Mehrere Distribution, wie etwa Ubuntu und Debian, verwenden den Befehl `update-ca-certificates`.  
 
-Sie müssen die gleichen Schritte wie beim Herstellen einer Verbindung über *HTTP* ausführen. Der einzige Unterschied besteht darin, dass die Option *HTTP verwenden* deaktiviert bleibt.
+- Benennen Sie die Base64-codierte Zertifikatdatei so um, dass sie die Erweiterung `.crt` aufweist, und kopieren Sie sie in das Verzeichnis `/usr/local/share/ca-certificates directory`.
+- Führen Sie den Befehl `update-ca-certificates`aus.
+
+Neuere Versionen von RHEL, Fedora und CentOS verwenden den Befehl `update-ca-trust`.
+
+- Kopieren Sie die Zertifikatdatei in das Verzeichnis `/etc/pki/ca-trust/source/anchors`.
+- Führen Sie `update-ca-trust`aus.
+
+Spezifische Einzelheiten für Ihre Distribution finden Sie in der Dokumentation.
+
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Hinzufügen der Geräte-IP-Adresse und des Blob-Dienstendpunkts 
+
+Führen Sie dieselben Schritte aus, um beim [Herstellen der Verbindung über *HTTP* die IP-Adresse des Geräts und den Endpunkt des Blobdiensts hinzuzufügen](#add-device-ip-address-and-blob-service-endpoint).
+
+### <a name="configure-partner-software-and-verify-connection"></a>Konfigurieren von Partnersoftware und Überprüfen der Verbindung
+
+Führen Sie die Schritte zum [Konfigurieren von Partnersoftware aus, die Sie beim Herstellen der Verbindung über *HTTP* verwendet haben](#configure-partner-software-and-verify-connection). Der einzige Unterschied besteht darin, dass die Option *HTTP verwenden* deaktiviert bleibt.
 
 ## <a name="copy-data-to-data-box"></a>Kopieren von Daten auf die Data Box
 
@@ -136,6 +152,7 @@ Nachdem Sie eine Verbindung mit dem Data Box-Blobspeicher hergestellt haben, kop
 - Falls von Data Box hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb von Data Box hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
 
 In diesem Tutorial wird AzCopy zum Kopieren von Daten in den Data Box-Blospeicher verwendet. Sie können zum Kopieren der Daten auch den Azure Storage-Explorer (falls Sie ein GUI-basiertes Tool bevorzugen) oder eine Partnersoftware nutzen.
+
 Der Kopiervorgang umfasst die folgenden Schritte:
 
 - Erstellen eines Containers
@@ -200,6 +217,7 @@ Falls Sie nur Quellressourcen kopieren möchten, die im Ziel nicht vorhanden sin
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
 
+Wenn während des Vorgangs zum Herstellen einer Verbindung oder des Kopiervorgangs Fehler auftreten, lesen Sie [Behandeln von Problemen bei Data Box-Blobspeicher](data-box-troubleshoot-rest.md).
 
 Im nächsten Schritt bereiten Sie das Gerät für den Versand vor.
 

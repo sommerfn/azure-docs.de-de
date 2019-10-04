@@ -2,8 +2,8 @@
 title: Physische HSM-Sicherheit – Dediziertes Azure-HSM | Microsoft-Dokumentation
 description: Informationen zur physischen Sicherheit dedizierter Azure-HSM-Geräte in Rechenzentren
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: e7a7e1d27f230bc5f38080abfbe3aeeb077e557b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107887"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881031"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Azure-Dienst für dedizierte HSMs – physische Sicherheit
 

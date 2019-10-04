@@ -3,19 +3,20 @@ title: Protokollieren von Dialogen in einem Unterhaltungslernmodell – Microsof
 titleSuffix: Azure
 description: Erfahren Sie, wie Sie Dialoge in einem Unterhaltungslernmodell protokollieren.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: e3a84bfa643ebe74983bcef0d0ea72c701ffa589
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 388942e8195048d7528a54e5a290f1724c8e876b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170495"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703971"
 ---
 # <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Protokollieren von Dialogen in einem Unterhaltungslernmodell
 

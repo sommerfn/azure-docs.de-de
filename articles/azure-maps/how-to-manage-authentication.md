@@ -3,17 +3,17 @@ title: Verwalten der Authentifizierung in Azure Maps | Microsoft-Dokumentation
 description: Sie können über das Azure-Portal die Authentifizierung in Azure Maps verwalten.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 414ca7156fd59ec1dc08e45c73e9eb30835078d4
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 1dc63a2c2350ad4f1d02d0c1b22050293d7b866c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259923"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67837819"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verwalten der Authentifizierung in Azure Maps
 
@@ -59,9 +59,9 @@ Nachdem Sie ein Azure Maps-Konto erstellt haben, müssen Sie eine Verknüpfung z
 
 ## <a name="grant-rbac-to-azure-maps"></a>Gewähren von RBAC in Azure Maps
 
-Nachdem Sie ein Azure Maps-Konto mit Ihrem Azure AD-Mandanten verknüpfen können Sie die Zugriffssteuerung gewähren, indem Sie einem Benutzer oder einer Anwendung Azure Maps-Zugriffssteuerungsrollen zuweisen.
+Nachdem Sie ein Azure Maps-Konto mit Ihrem Azure AD-Mandanten verknüpft haben, können Sie die Zugriffssteuerung gewähren, indem Sie einem Benutzer, einer Gruppe oder einer Anwendung die Rollen für die Azure Maps-Zugriffssteuerung zuweisen.
 
-1. Wechseln Sie zur **Zugriffssteuerung (IAM)**, klicken Sie auf **Rollenzuweisungen**, und wählen Sie dann **Rollenzuweisung hinzufügen** aus.
+1. Wechseln Sie zur **Zugriffssteuerung (IAM)** , klicken Sie auf **Rollenzuweisungen**, und wählen Sie dann **Rollenzuweisung hinzufügen** aus.
 
     ![Gewähren von RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
@@ -71,7 +71,7 @@ Nachdem Sie ein Azure Maps-Konto mit Ihrem Azure AD-Mandanten verknüpfen könne
 
 ## <a name="view-available-azure-maps-rbac-roles"></a>Anzeigen verfügbarer Azure Maps-RBAC-Rollen
 
-Öffnen Sie die **Zugriffssteuerung (IAM)**, klicken Sie auf **Rollen**, und suchen Sie dann nach Rollen, die mit **Azure Maps** beginnen, um Rollen für die rollenbasierte Zugriffssteuerung für Azure Maps anzuzeigen. Hierbei handelt es sich um die Rollen, denen Sie den Zugriff gewähren können.
+Öffnen Sie die **Zugriffssteuerung (IAM)** , klicken Sie auf **Rollen**, und suchen Sie dann nach Rollen, die mit **Azure Maps** beginnen, um Rollen für die rollenbasierte Zugriffssteuerung für Azure Maps anzuzeigen. Hierbei handelt es sich um die Rollen, denen Sie den Zugriff gewähren können.
 
 ![Anzeigen verfügbarer Rollen](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
@@ -80,7 +80,7 @@ Nachdem Sie ein Azure Maps-Konto mit Ihrem Azure AD-Mandanten verknüpfen könne
 
 Mit der rollenbasierten Zugriffssteuerung kann die Zugriffssteuerung genau abgestimmt werden.
 
-Öffnen Sie die **Zugriffssteuerung (IAM)**, klicken Sie auf **Rollenzuweisungen**, und filtern Sie dann nach **Azure Maps**, um Benutzer und Apps anzuzeigen, denen die rollenbasierte Zugriffssteuerung für Azure Maps gewährt wurde.
+Öffnen Sie die **Zugriffssteuerung (IAM)** , klicken Sie auf **Rollenzuweisungen**, und filtern Sie dann nach **Azure Maps**, um Benutzer und Apps anzuzeigen, denen die rollenbasierte Zugriffssteuerung für Azure Maps gewährt wurde.
 
 ![Benutzer und Apps mit gewährter rollenbasierter Zugriffssteuerung anzeigen](./media/how-to-manage-authentication/how-to-view-amrbac.png)
 
@@ -98,4 +98,8 @@ Weitere Informationen zum Anfordern von Zugriffstoken aus Azure AD für Benutzer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu Azure AD-Authentifizierung und Azure Maps-Web-SDK finden Sie unter [Verwenden des Azure Maps-Kartensteuerelements](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+Weitere Informationen zu Azure AD-Authentifizierung und Azure Maps-Web-SDK finden Sie unter [Verwenden des Azure Maps-Kartensteuerelements](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+
+Erfahren Sie, wie Sie die API-Nutzungsmetriken für Ihr Azure Maps-Konto anzeigen:
+> [!div class="nextstepaction"] 
+> [Anzeigen von Nutzungsmetriken](how-to-view-api-usage.md)

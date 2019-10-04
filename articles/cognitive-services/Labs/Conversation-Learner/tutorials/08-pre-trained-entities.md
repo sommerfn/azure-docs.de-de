@@ -3,19 +3,20 @@ title: Hinzufügen vortrainierter Entitäten zu einem Conversation Learner-Model
 titleSuffix: Azure
 description: Hier erfahren Sie, wie Sie vortrainierte Entitäten in einem Conversation Learner-Modell verwenden.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: f5b3234c45a9ee80bc5a2c2afe67046896270802
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: fceca459b80725e1a9c8b7dbc6a4387ea98dbb7b
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58163785"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704121"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>Hinzufügen vortrainierter Entitäten
 In diesem Tutorial erfahren Sie, wie Sie Ihrem Conversation Learner-Modell vortrainierte Entitäten hinzufügen.

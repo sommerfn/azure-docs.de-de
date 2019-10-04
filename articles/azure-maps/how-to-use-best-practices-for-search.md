@@ -1,18 +1,19 @@
 ---
 title: Effizientes Suchen mit dem Suchdienst von Azure Maps | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit dem Suchdienst von Azure Maps bewährte Methoden für die Suche verwenden.
+author: walsehgal
 ms.author: v-musehg
 ms.date: 04/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f7a14e975a5ca3aee5588f55f43b28081c100074
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 25615ae8bc9bc8cadbe973f3a1859c2d43b067a9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358139"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915573"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Bewährte Methoden zum Verwenden des Suchdiensts von Azure Maps
 
@@ -26,7 +27,7 @@ Der [Suchdienst](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Maps-Konto mit zugehörigem Schlüssel. Informationen zum Erstellen eines Kontos und Abrufen eines Schlüssels finden Sie unter [Verwalten Ihres Azure Maps-Kontos und der dazugehörigen Schlüssel](how-to-manage-account-keys.md).
+Um die Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Maps-Konto mit zugehörigem Schlüssel. Informationen zum Erstellen eines Kontos finden Sie in den Anweisungen zum [Verwalten von Konten](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account), und führen Sie die Schritte unter [Abrufen des Primärschlüssels](./tutorial-search-location.md#getkey) aus, um einen primären Abonnementschlüssel für Ihr Konto abzurufen.
 
 > [!Tip]
 > Um den Suchdienst abzufragen, können Sie die [Postman-App](https://www.getpostman.com/apps) verwenden, um REST-Aufrufe zu erstellen, oder Sie können eine beliebige API-Entwicklungsumgebung verwenden, die Sie bevorzugen.
@@ -45,11 +46,11 @@ Weitere Informationen zu den Geocodierungsfunktionen von Azure Maps nach Länder
    > [!Note]
    > Nicht alle Such-APIs unterstützen die unten aufgeführten Parameter vollständig.
 
-   **Geografisch gelenkte Suchergebnisse**
+   **Einschränken von Suchergebnissen auf geografische Räume**
 
    Um Ihre Ergebnisse in den für Ihren Benutzer relevanten geografischen Raum zu lenken, sollten Sie immer die maximal mögliche Detailstufe für die Standorteingabe hinzufügen. Sie können die Suchergebnisse einschränken, indem Sie die folgenden Eingabetypen hinzufügen:
 
-   1. Legen Sie den Parameter `countrySet` fest, z. B. „US, FR“. Das Standardsuchverhalten besteht darin, die ganze Welt zu durchsuchen und möglicherweise unerwünschte Ergebnisse zu erhalten. Wenn Ihre Suchanfrage keinen `countrySet`-Parameter enthält, kann die Suche ungenaue Ergebnisse liefern. Die Suche nach einer Stadt namens **Bellevue** liefert z. B. Ergebnisse aus den USA und Frankreich, da es in Frankreich und in den USA Städte namens **Bellevue** gibt.
+   1. Legen Sie die `countrySet`-Parameter fest, z.B. „US,FR“. Das Standardsuchverhalten besteht darin, die ganze Welt zu durchsuchen und möglicherweise unerwünschte Ergebnisse zu erhalten. Wenn Ihre Suchanfrage keinen `countrySet`-Parameter enthält, kann die Suche ungenaue Ergebnisse liefern. Die Suche nach einer Stadt namens **Bellevue** liefert z. B. Ergebnisse aus den USA und Frankreich, da es in Frankreich und in den USA Städte namens **Bellevue** gibt.
 
    2. Sie können die Parameter `btmRight` und `topleft` verwenden, um den Begrenzungsrahmen so festzulegen, damit die Suche auf einen bestimmten Bereich auf der Karte eingeschränkt wird.
 
@@ -62,12 +63,12 @@ Weitere Informationen zu den Geocodierungsfunktionen von Azure Maps nach Länder
 
    2. Sie können auch den genauen Satz der zurückzugebenden Ergebnistypen angeben, indem Sie den Parameter `idxSet` verwenden. Zu diesem Zweck können Sie eine durch Komma getrennte Liste von Indizes übermitteln, wobei die Reihenfolge der Elemente unerheblich ist. Nachfolgend sind die unterstützten Indizes aufgeführt:
 
-       * `Addr` - **Adressbereiche**: Für einige Straßen gibt es Adresspunkte, die über Anfang und Ende der Straße interpoliert und als Adressbereiche dargestellt werden.
-       * `Geo` - **Geografische Regionen**: Bereiche auf einer Karte, die die Verwaltungseinheiten eines Landes darstellen, d. h. Land, Bundesland, Stadt.
-       * `PAD` - **Punktadresse**:  Punkte auf einer Karte, an denen eine bestimmte Adresse mit Straßenname und Nummer in einem Index zu finden ist, z. B. Soquel Dr 2501. Dies ist die höchste verfügbare Genauigkeit für Adressen.  
-       * `POI` - **Points of Interest (POI)**: Punkte auf einer Karte, die beachtenswert sind und interessant sein können.  [Suchadresse abrufen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) gibt keine POIs zurück.  
-       * `Str` - **Straßen**: Darstellung von Straßen auf der Karte.
-       * `XStr` - **Querstraßen/Kreuzungen**:  Darstellung von Kreuzungen, d. h. Orte, an denen sich zwei Straßen kreuzen.
+       * `Addr` - **Adressbereiche:** Für einige Straßen gibt es Adresspunkte, die über Anfang und Ende der Straße interpoliert und als Adressbereiche dargestellt werden.
+       * `Geo` - **Geografische Regionen:** Bereiche auf einer Karte, die die Verwaltungseinheiten eines Landes darstellen, d. h. Land, Bundesland, Stadt.
+       * `PAD` - **Punktadresse:**  Punkte auf einer Karte, an denen eine bestimmte Adresse mit Straßenname und Nummer in einem Index zu finden ist, z. B. Soquel Dr 2501. Dies ist die höchste verfügbare Genauigkeit für Adressen.  
+       * `POI` - **Points of Interest:** Punkte auf einer Karte, die beachtenswert sind und interessant sein können.  [Suchadresse abrufen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) gibt keine POIs zurück.  
+       * `Str` - **Straßen:** Darstellung von Straßen auf der Karte.
+       * `XStr` - **Querstraßen/Kreuzungen:**  Darstellung von Kreuzungen, d. h. Orte, an denen sich zwei Straßen kreuzen.
 
 
        **Anwendungsbeispiele**:
@@ -132,9 +133,9 @@ Mit dem Parameter `language` können Sie festlegen, in welcher Sprache Suchergeb
 
 ### <a name="predictive-mode-auto-suggest"></a>Vorhersagemodus (Vorschlagssuche)
 
-Der Parameter `typeHead` sollte auf „true“ festgelegt werden, um weitere Übereinstimmungen für Teilabfragen zu finden. Die Abfrage wird als Teileingabe interpretiert und die Suche wechselt in den Vorhersagemodus. Andernfalls geht der Dienst davon aus, dass alle relevanten Informationen übermittelt wurden.
+Der Parameter `typeahead` sollte auf „true“ festgelegt werden, um weitere Übereinstimmungen für Teilabfragen zu finden. Die Abfrage wird als Teileingabe interpretiert und die Suche wechselt in den Vorhersagemodus. Andernfalls geht der Dienst davon aus, dass alle relevanten Informationen übermittelt wurden.
 
-In der folgenden Beispielabfrage können Sie sehen, dass der Suchadressdienst nach „Microso“ abgefragt wird, wobei der Parameter `typehead` auf **true** festgelegt ist. Sie können anhand der Antwort sehen, dass der Suchdienst die Abfrage als Teilabfrage interpretiert hat und die Antwort Ergebnisse für die automatisch vorgeschlagene Abfrage enthält.
+In der folgenden Beispielabfrage können Sie sehen, dass der Suchadressdienst nach „Microso“ abgefragt wird, wobei der Parameter `typeahead` auf **true** festgelegt ist. Sie können anhand der Antwort sehen, dass der Suchdienst die Abfrage als Teilabfrage interpretiert hat und die Antwort Ergebnisse für die automatisch vorgeschlagene Abfrage enthält.
 
 **Beispielabfrage:**
 
@@ -265,7 +266,7 @@ encodeURIComponent(query)
 ```
 
 C#/VB:
-```C#
+```csharp
 Uri.EscapeDataString(query)
 ```
 

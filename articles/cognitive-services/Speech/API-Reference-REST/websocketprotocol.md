@@ -3,20 +3,20 @@ title: WebSocket-Protokoll für die Bing-Spracheingabe | Microsoft-Dokumentation
 titlesuffix: Azure Cognitive Services
 description: Protokolldokumentation für die Bing-Spracheingabe basierend auf WebSockets
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e7f51d49624d5019bec058a2d12f6ca2f1366938
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076189"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966885"
 ---
 # <a name="bing-speech-websocket-protocol"></a>WebSocket-Protokoll für die Bing-Spracheingabe
 
@@ -61,7 +61,7 @@ Für alle Sprachanforderungen ist die [TLS](https://en.wikipedia.org/wiki/Transp
 
 Für den Spracherkennungsdienst ist es erforderlich, dass alle Clients eine eindeutige ID zum Identifizieren der Verbindung enthalten. Clients *müssen* den *X-ConnectionId*-Header enthalten, wenn sie einen WebSocket-Handshake starten. Der *X-ConnectionId*-Header muss ein [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)-Wert (Universally Unique Identifier) sein. WebSocket-Upgradeanforderungen, die *X-ConnectionId* nicht enthalten, keinen Wert für den *X-ConnectionId*-Header angeben oder keinen gültigen UUID-Wert enthalten, werden vom Dienst mit der HTTP-Antwort `400 Bad Request` abgelehnt.
 
-### <a name="authorization"></a>Autorisierung
+### <a name="authorization"></a>Authorization
 
 Zusätzlich zu Standardheadern für den WebSocket-Handshake wird für Sprachanforderungen ein *Authorization*-Header benötigt. Verbindungsanforderungen ohne diesen Header werden vom Dienst mit der HTTP-Antwort `403 Forbidden` abgelehnt.
 
@@ -69,7 +69,7 @@ Der *Authorization*-Header muss ein JWT-Zugriffstoken (JSON Web Token) enthalten
 
 Informationen dazu, wie Sie API-Schlüssel abonnieren und beziehen, die zum Abrufen von gültigen JWT-Zugriffstoken verwendet werden, finden Sie auf der Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/).
 
-Der API-Schlüssel wird an den Tokendienst übergeben. Beispiel: 
+Der API-Schlüssel wird an den Tokendienst übergeben. Beispiel:
 
 ``` HTTP
 POST https://api.cognitive.microsoft.com/sts/v1.0/issueToken
@@ -78,11 +78,11 @@ Content-Length: 0
 
 Für den Tokenzugriff sind die folgenden Headerinformationen erforderlich.
 
-| NAME | Format | BESCHREIBUNG |
+| Name | Format | BESCHREIBUNG |
 |----|----|----|
 | Ocp-Apim-Subscription-Key | ASCII | Your subscription key (Ihr Abonnementschlüssel) |
 
-Der Tokendienst gibt das JWT-Zugriffstoken im Format `text/plain` zurück. Das JWT wird dann im Format `Base64 access_token` als *Authorization*-Header mit der Zeichenfolge `Bearer` als Präfix an den Handshake übergeben. Beispiel: 
+Der Tokendienst gibt das JWT-Zugriffstoken im Format `text/plain` zurück. Das JWT wird dann im Format `Base64 access_token` als *Authorization*-Header mit der Zeichenfolge `Bearer` als Präfix an den Handshake übergeben. Beispiel:
 
 `Authorization: Bearer [Base64 access_token]`
 
@@ -98,7 +98,7 @@ Clients *müssen* die Standardumleitungsmechanismen unterstützen, die über die
 
 Clients *müssen* einen geeigneten Endpunkt des Spracherkennungsdiensts nutzen. Der Endpunkt basiert auf dem Erkennungsmodus und der Sprache. In der Tabelle sind einige Beispiele angegeben.
 
-| Mode | path | Dienst-URI |
+| Mode | `Path` | Dienst-URI |
 | -----|-----|-----|
 | Interactive | /speech/recognition/interactive/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | Unterhaltung | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
@@ -152,7 +152,7 @@ Die unten angegebenen Header sind für alle vom Client stammenden Nachrichten er
 
 | Header | Wert |
 |----|----|
-| path | Der Nachrichtenpfad gemäß Angabe in diesem Dokument |
+| `Path` | Der Nachrichtenpfad gemäß Angabe in diesem Dokument |
 | X-RequestId | UUID im Format „no-dash“ |
 | X-Timestamp | Zeitstempel der UTC-Uhrzeit des Clients im Format ISO 8601 |
 
@@ -181,9 +181,9 @@ Clients *müssen* sofort eine `speech.config`-Nachricht senden, nachdem sie die 
 
 | Headername | Wert |
 |----|----|
-| path | `speech.config` |
+| `Path` | `speech.config` |
 | X-Timestamp | Zeitstempel der UTC-Uhrzeit des Clients im Format ISO 8601 |
-| Content-Typ | application/json; charset=utf-8 |
+| Content-Type | application/json; charset=utf-8 |
 
 Wie bei allen vom Client stammenden Nachrichten im Spracherkennungsdienst-Protokoll, *muss* die `speech.config`-Nachricht einen *X-Timestamp*-Header enthalten, mit dem die UTC-Uhrzeit des Clients für den Zeitpunkt aufgezeichnet wird, zu dem die Nachricht an den Dienst gesendet wurde. Für die `speech.config`-Nachricht ist *kein* *X-RequestId*-Header erforderlich, da diese Nachricht nicht einer bestimmten Sprachanforderung zugeordnet ist.
 
@@ -243,7 +243,7 @@ Der Spracherkennungsdienst verwendet die erste `audio`-Nachricht, die einen eind
 
 | Feld | BESCHREIBUNG |
 |-------------|----------------|
-| Codierung von WebSocket-Nachrichten | Binär |
+| Codierung von WebSocket-Nachrichten | Binary |
 | Body | Die Binärdaten für den Audioblock. Die maximale Größe beträgt 8.192 Byte. |
 
 #### <a name="required-message-headers"></a>Erforderliche Nachrichtenheader
@@ -252,10 +252,10 @@ Die folgenden Header sind für alle `audio`-Nachrichten erforderlich.
 
 | Header         |  Wert     |
 | ------------- | ---------------- |
-| path | `audio` |
+| `Path` | `audio` |
 | X-RequestId | UUID im Format „no-dash“ |
 | X-Timestamp | Zeitstempel der UTC-Uhrzeit des Clients im Format ISO 8601 |
-| Content-Typ | Der Audioinhaltstyp. Der Typ muss entweder *audio/x-wav* (PCM) oder *audio/silk* (SILK) lauten. |
+| Content-Type | Der Audioinhaltstyp. Der Typ muss entweder *audio/x-wav* (PCM) oder *audio/silk* (SILK) lauten. |
 
 #### <a name="supported-audio-encodings"></a>Unterstützte Audiocodierungen
 
@@ -308,9 +308,9 @@ Clients müssen das Ende eines „Turns“ bestätigen, indem sie eine `telemetr
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| path | `telemetry` |
+| `Path` | `telemetry` |
 | X-Timestamp | Zeitstempel der UTC-Uhrzeit des Clients im Format ISO 8601 |
-| Content-Typ | `application/json` |
+| Content-Type | `application/json` |
 | Body | Eine JSON-Struktur, die Clientinformationen zum „Turn“ enthält. |
 
 Eine Definition des Schemas für den Text der `telemetry`-Nachricht finden Sie im Abschnitt [Schema der Telemetriedaten](#telemetry-schema).
@@ -330,8 +330,8 @@ Mit der `speech.startDetected`-Nachricht wird angegeben, dass der Spracherkennun
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| path | `speech.startDetected` |
-| Content-Typ | application/json; charset=utf-8 |
+| `Path` | `speech.startDetected` |
+| Content-Type | application/json; charset=utf-8 |
 | Body | Die JSON-Struktur mit Informationen zu den Bedingungen, die bei der Erkennung der Spracheingabe geherrscht haben. Über das Feld *Offset* dieser Struktur wird der Versatz (in Einheiten von 100 Nanosekunden) angegeben, der zwischen der Erkennung der Sprachdaten im Audiodatenstrom und dem Beginn des Datenstroms besteht. |
 
 #### <a name="sample-message"></a>Beispielnachricht
@@ -355,9 +355,9 @@ Während der Spracherkennung generiert der Spracherkennungsdienst regelmäßig H
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| path | `speech.hypothesis` |
+| `Path` | `speech.hypothesis` |
 | X-RequestId | UUID im Format „no-dash“ |
-| Content-Typ | Anwendung/json |
+| Content-Type | Anwendung/json |
 | Body | JSON-Struktur für die Sprachhypothese |
 
 #### <a name="sample-message"></a>Beispielnachricht
@@ -387,8 +387,8 @@ Wenn der Spracherkennungsdienst ermittelt, dass er über ausreichende Informatio
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| path | `speech.phrase` |
-| Content-Typ | Anwendung/json |
+| `Path` | `speech.phrase` |
+| Content-Type | Anwendung/json |
 | Body | JSON-Struktur des gesprochenen Ausdrucks |
 
 Das JSON-Schema für gesprochene Ausdrücke enthält die folgenden Felder: `RecognitionStatus`, `DisplayText`, `Offset` und `Duration`. Weitere Informationen zu diesen Feldern finden Sie unter [Transcription responses](../concepts.md#transcription-responses) (Transkriptionsantworten).
@@ -415,9 +415,9 @@ Die `speech.endDetected`-Nachricht gibt an, dass die Clientanwendung das Streame
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| path | `speech.endDetected` |
+| `Path` | `speech.endDetected` |
 | Body | Die JSON-Struktur mit dem Versatz für die Erkennung des Endes der Spracheingabe. Der Versatz wird in Einheiten von 100 Nanosekunden ab dem Beginn der Audiodaten dargestellt, die für die Erkennung verwendet werden. |
-| Content-Typ | application/json; charset=utf-8 |
+| Content-Type | application/json; charset=utf-8 |
 
 #### <a name="sample-message"></a>Beispielnachricht
 
@@ -440,8 +440,8 @@ Mit `turn.start` wird der Beginn eines „Turns“ aus Sicht des Diensts signali
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| path | `turn.start` |
-| Content-Typ | application/json; charset=utf-8 |
+| `Path` | `turn.start` |
+| Content-Type | application/json; charset=utf-8 |
 | Body | JSON-Struktur |
 
 #### <a name="sample-message"></a>Beispielnachricht
@@ -467,7 +467,7 @@ Mit `turn.end` wird das Ende eines „Turns“ aus Sicht des Diensts signalisier
 | Feld | BESCHREIBUNG |
 | ------------- | ---------------- |
 | Codierung von WebSocket-Nachrichten | Text |
-| path | `turn.end` |
+| `Path` | `turn.end` |
 | Body | Keine |
 
 #### <a name="sample-message"></a>Beispielnachricht
@@ -498,7 +498,7 @@ Clients müssen Empfangszeitpunkt-Werte für alle Nachrichten enthalten, die sie
 
 Clients *müssen* den Empfang aller Nachrichten bestätigen, die vom Dienst gesendet werden, indem Zeitstempel für diese Nachrichten in den JSON-Text eingefügt werden. Falls ein Client den Empfang einer Nachricht nicht bestätigt, beendet der Dienst ggf. die Verbindung.
 
-### <a name="metrics"></a>Metriken
+### <a name="metrics"></a>metrics
 
 Clients müssen Informationen zu Ereignissen enthalten, die während der Lebensdauer einer Anforderung aufgetreten sind. Die folgenden Metriken werden unterstützt: `Connection`, `Microphone` und `ListeningTrigger`.
 
@@ -508,8 +508,8 @@ Mit der `Connection`-Metrik werden Details zu Verbindungsversuchen des Clients a
 
 | Feld | BESCHREIBUNG | Verwendung |
 | ----- | ----------- | ----- |
-| NAME | `Connection` | Erforderlich |
-| id | Der Wert des Verbindungsbezeichners, der im *X-ConnectionId*-Header für diese Verbindungsanforderung verwendet wurde. | Erforderlich |
+| Name | `Connection` | Erforderlich |
+| Id | Der Wert des Verbindungsbezeichners, der im *X-ConnectionId*-Header für diese Verbindungsanforderung verwendet wurde. | Erforderlich |
 | Start | Der Zeitpunkt, zu dem der Client die Verbindungsanforderung gesendet hat. | Erforderlich |
 | End | Der Zeitpunkt, zu dem der Client die Benachrichtigung erhalten hat, dass die Verbindung erfolgreich hergestellt wurde oder bei einem Fehler abgelehnt bzw. verweigert wurde oder fehlgeschlagen ist. | Erforderlich |
 | Error | Eine Beschreibung des Fehlers, der aufgetreten ist (falls zutreffend). Wenn die Verbindung erfolgreich hergestellt wurde, sollten Clients dieses Feld weglassen. Dieses Feld darf maximal 50 Zeichen lang sein. | Erforderlich für Fehlerfälle, andernfalls weggelassen |
@@ -548,7 +548,7 @@ Mit dem *End*-Zeitwert für die `Microphone`-Metrik wird der Zeitpunkt aufgezeic
 
 | Feld | BESCHREIBUNG | Verwendung |
 | ----- | ----------- | ----- |
-| NAME | Mikrofon | Erforderlich |
+| Name | Mikrofon | Erforderlich |
 | Start | Der Zeitpunkt, zu dem der Client mit der Verwendung der Audioeingabe vom Mikrofon oder anderer Audiodatenströme begonnen hat oder einen Trigger von der Schlüsselworterkennung erhalten hat. | Erforderlich |
 | End | Der Zeitpunkt, zu dem der Client die Verwendung des Mikrofons bzw. des Audiodatenstroms beendet hat. | Erforderlich |
 | Error | Eine Beschreibung des Fehlers, der aufgetreten ist (falls zutreffend). Wenn die Mikrofonvorgänge erfolgreich waren, sollten Clients dieses Feld weglassen. Dieses Feld darf maximal 50 Zeichen lang sein. | Erforderlich für Fehlerfälle, andernfalls weggelassen |
@@ -568,7 +568,7 @@ Verwenden Sie die folgenden Beispiele als Richtlinien für die Aufzeichnung von 
 
 | Feld | BESCHREIBUNG | Verwendung |
 | ----- | ----------- | ----- |
-| NAME | ListeningTrigger | Optional |
+| Name | ListeningTrigger | Optional |
 | Start | Der Zeitpunkt, zu dem der Lauschtrigger für den Client gestartet wurde. | Erforderlich |
 | End | Der Zeitpunkt, zu dem der Lauschtrigger für den Client beendet wurde. | Erforderlich |
 | Error | Eine Beschreibung des Fehlers, der aufgetreten ist (falls zutreffend). Wenn dieser Triggervorgang erfolgreich war, sollten Clients dieses Feld weglassen. Dieses Feld darf maximal 50 Zeichen lang sein. | Erforderlich für Fehlerfälle, andernfalls weggelassen |

@@ -1,17 +1,17 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentation zu Azure Backup
+title: Dokumentation zum Azure Backup-Dienst
 metadata:
   title: 'Dokumentation für Azure Backup – Tutorials, API-Referenz | Microsoft-Dokumentation'
   description: 'Mit Azure Backup können Sie die Daten für lokale Server, virtuelle Computer, virtualisierte Workloads, SQL-Server, SharePoint-Server usw. sichern. In unseren Schnellstarts, Tutorials und Beispielen wird beschrieben, wie Sie Ihre Daten sichern und wiederherstellen.'
   services: backup
-  author: rayne-wiselman
+  author: dcurwin
   manager: carmonm
   ms.service: backup
   ms.tgt_pltfrm: na
   ms.topic: landing-page
   ms.date: 05/22/2018
-  ms.author: raynew
+  ms.author: dacurwin
 abstract:
   description: 'Verwenden Sie Azure Backup zum Sichern der Daten für lokale Server, virtuelle Computer, virtualisierte Workloads, SQL-Server, SharePoint-Server usw. In unseren Schnellstarts, Tutorials und Beispielen wird beschrieben, wie Sie Ihre Daten sichern und wiederherstellen.'
 sections:

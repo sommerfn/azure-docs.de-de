@@ -3,19 +3,19 @@ title: Sprachunterstützung – Textübersetzungs-API
 titleSuffix: Azure Cognitive Services
 description: Eine Liste der von der Textübersetzungs-API unterstützten natürlichen Sprachen.
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/21/2019
-ms.author: v-jansko
-ms.openlocfilehash: 62a4493204fdc09dbd48b1463e5558fabf9c7c40
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: cb0552612d95500e01edd91aff36406d4c2282bd
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918041"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70909977"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Sprach- und Regionsunterstützung für die Textübersetzungs-API
 
@@ -23,17 +23,22 @@ Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetz
 
 [Weitere Informationen zur Funktionsweise von maschineller Übersetzung](https://www.microsoft.com/translator/mt.aspx)
 
+## <a name="translation"></a>Sprachübersetzung
+
 **V2 der Textübersetzungs-API**
 
 > [!NOTE]
-> V2 gilt ab dem 30. April 2018 als veraltet und wird ab dem 30. April 2019 nicht mehr unterstützt.
+> V2 wurde am 30. April 2018 eingestellt. Migrieren Sie Ihre Anwendungen zu V3, um die Vorteile der neuen Funktionen zu nutzen, die ausschließlich in V3 verfügbar sind.
 
 * Nur statistisches System: Für diese Sprache ist kein neuronales System verfügbar.
 * Neuronales System verfügbar: Es ist ein neuronales System verfügbar. Verwenden Sie den Parameter `category=generalnn`, um auf das neuronale System zuzugreifen.
 * Neuronales System als Standard: Das neuronale System ist als standardmäßiges Übersetzungssystem festgelegt. Verwenden Sie den Parameter `category=smt`, um auf das statistische System zur Verwendung mit Microsoft Translator Hub zuzugreifen.
 * Nur neuronales System: Es ist nur die neuronale Übersetzung verfügbar.
 
-**V3 der Textübersetzungs-API**: Version 3 der Textübersetzungs-API verwendet standardmäßig das neuronale System. Die statistischen Systeme sind nur verfügbar, wenn keine neuronalen Systeme vorhanden sind. „Benutzerdefinierter Translator“ kann nur mit neuronalen Sprachen verwendet werden. [Zeigen Sie die zurzeit verfügbaren Sprachen im benutzerdefinierten Translator an](#customization).
+**V3 der Textübersetzungs-API**: Version 3 der Textübersetzungs-API verwendet standardmäßig das neuronale System. Die statistischen Systeme sind nur verfügbar, wenn keine neuronalen Systeme vorhanden sind.
+
+> [!NOTE]
+> Derzeit ist eine Teilmenge der neuronalen Sprachen in Custom Translator verfügbar und es werden nach und nach zusätzliche Sprachen hinzugefügt. [Zeigen Sie die zurzeit verfügbaren Sprachen im benutzerdefinierten Translator an](#customization).
 
 |Sprache|  Sprachcode|  V2-API| V3-API|
 |:-----|:-----:|:-----|:-----|
@@ -77,7 +82,7 @@ Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetz
 |Malaiisch| `ms`    |Nur statistisches System   |Statistisch|
 |Maltesisch|   `mt`    |Nur statistisches System|  Statistisch|
 |Norwegisch| `nb`    |Neuronales System verfügbar|  Neuronal|
-|Persisch|   `fa`    |Nur statistisches System|  Statistisch|
+|Persisch|   `fa`    |Neuronales System verfügbar|  Neuronal|
 |Polnisch|    `pl`    |Neuronales System verfügbar|  Neuronal|
 |Portugiesisch|    `pt`    |Neuronales System verfügbar|  Neuronal|
 |Queretaro-Otomi|   `otq`   |Nur statistisches System|  Statistisch|
@@ -108,26 +113,26 @@ Die „Transliterate“-Methode unterstützt die folgenden Sprachen. In der Spal
 
 | Sprache    | Sprachcode | Skript | Von/In | Skript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arabisch | `ar` | Arabisch `Arab` | <--> | Lateinisch `Latn` |
-|Bengalisch  | `bn` | Bangla `Beng` | <--> | Lateinisch `Latn` |
-| Chinesisch (vereinfacht) | `zh-Hans` | Chinesisch (vereinfacht) `Hans`| <--> | Lateinisch `Latn` |
+| Arabisch | `ar` | Arabisch `Arab` | <--> | Latein `Latn` |
+|Bengalisch  | `bn` | Bangla `Beng` | <--> | Latein `Latn` |
+| Chinesisch (vereinfacht) | `zh-Hans` | Chinesisch (vereinfacht) `Hans`| <--> | Latein `Latn` |
 | Chinesisch (vereinfacht) | `zh-Hans` | Chinesisch (vereinfacht) `Hans`| <--> | Chinesisch (traditionell) `Hant`|
-| Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Lateinisch `Latn` |
+| Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Latein `Latn` |
 | Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Chinesisch (vereinfacht) `Hans` |
-| Gujarati | `gu`  | Gujarati `Gujr` | --> | Lateinisch `Latn` |
-| Hebräisch | `he` | Hebräisch `Hebr` | <--> | Lateinisch `Latn` |
-| Hindi | `hi` | Devanagari `Deva` | <--> | Lateinisch `Latn` |
-| Japanisch | `ja` | Japanisch `Jpan` | <--> | Lateinisch `Latn` |
-| Kannada | `kn` | Kannada `Knda` | --> | Lateinisch `Latn` |
-| Malayalam | `ml` | Malayalam `Mlym` | --> | Lateinisch `Latn` |
-| Marathi | `mr` | Devanagari `Deva` | --> | Lateinisch `Latn` |
-| Oriya | `or` | Oriya `Orya` | <--> | Lateinisch `Latn` |
-| Pandschabi | `pa` | Gurmukhi `Guru`  | <--> | Lateinisch `Latn`  |
-| Serbisch (Kyrillisch) | `sr-Cyrl` | Kyrillisch `Cyrl`  | --> | Lateinisch `Latn` |
-| Serbisch (Lateinisch) | `sr-Latn` | Lateinisch `Latn` | --> | Kyrillisch `Cyrl`|
-| Tamilisch | `ta` | Tamilisch `Taml` | --> | Lateinisch `Latn` |
-| Telugu | `te` | Telugu `Telu` | --> | Lateinisch `Latn` |
-| Thailändisch | `th` | Thailändisch `Thai` | <--> | Lateinisch `Latn` |
+| Gujarati | `gu`  | Gujarati `Gujr` | --> | Latein `Latn` |
+| Hebräisch | `he` | Hebräisch `Hebr` | <--> | Latein `Latn` |
+| Hindi | `hi` | Devanagari `Deva` | <--> | Latein `Latn` |
+| Japanisch | `ja` | Japanisch `Jpan` | <--> | Latein `Latn` |
+| Kannada | `kn` | Kannada `Knda` | --> | Latein `Latn` |
+| Malayalam | `ml` | Malayalam `Mlym` | --> | Latein `Latn` |
+| Marathi | `mr` | Devanagari `Deva` | --> | Latein `Latn` |
+| Oriya | `or` | Oriya `Orya` | <--> | Latein `Latn` |
+| Pandschabi | `pa` | Gurmukhi `Guru`  | <--> | Latein `Latn`  |
+| Serbisch (Kyrillisch) | `sr-Cyrl` | Kyrillisch `Cyrl`  | --> | Latein `Latn` |
+| Serbisch (Lateinisch) | `sr-Latn` | Latein `Latn` | --> | Kyrillisch `Cyrl`|
+| Tamilisch | `ta` | Tamilisch `Taml` | --> | Latein `Latn` |
+| Telugu | `te` | Telugu `Telu` | --> | Latein `Latn` |
+| Thailändisch | `th` | Thailändisch `Thai` | <--> | Latein `Latn` |
 
 ## <a name="dictionary"></a>Wörterbuch
 
@@ -188,77 +193,8 @@ Das Wörterbuch unterstützt die Übertragung der folgenden Sprachen in das oder
 
 ## <a name="detect"></a>Detect
 
-Die folgenden Sprachen werden von der „Detect“-Methode unterstützt. Mithilfe von „Detect“ können Sprachen erkannt werden, die nicht von Microsoft Translator übersetzt werden können.
+Die Textübersetzungs-API erkennt alle verfügbaren Sprachen für die Übersetzung und Transliteration.
 
-| Sprache    |
-|:----------- |
-| Afrikaans |
-| Albanisch |
-| Arabisch |
-| Baskisch |
-| Belarussisch |
-| Bulgarisch |
-| Katalanisch |
-| Chinesisch |
-| Chinesisch (vereinfacht) |
-| Chinesisch (traditionell) |
-| Kroatisch |
-| Tschechisch |
-| Dänisch |
-| Niederländisch |
-| Englisch |
-| Esperanto |
-| Estnisch |
-| Finnisch |
-| Französisch |
-| Galizisch |
-| Deutsch |
-| Griechisch |
-| Haitianisches Kreolisch |
-| Hebräisch |
-| Hindi |
-| Ungarisch |
-| Isländisch |
-| Indonesisch |
-| Irisch |
-| Italienisch |
-| Japanisch |
-| Koreanisch |
-| Kurdisch (arabisch) |
-| Kurdisch (lateinisch) |
-| Lateinisch |
-| Lettisch |
-| Litauisch |
-| Mazedonisch |
-| Malaiisch |
-| Maltesisch |
-| Norwegisch |
-| Norwegisch (Nynorsk) |
-| Paschtu |
-| Persisch |
-| Polnisch |
-| Portugiesisch |
-| Rumänisch |
-| Russisch |
-| Serbisch (Kyrillisch) |
-| Serbisch (Lateinisch) |
-| Slowakisch |
-| Slowenisch |
-| Somali |
-| Spanisch |
-| Suaheli |
-| Schwedisch |
-| Tagalog |
-| Telugu |
-| Thailändisch |
-| Türkisch |
-| Ukrainisch |
-| Urdu |
-| Usbekisch (kyrillisch) |
-| Usbekisch (lateinisch) |
-| Vietnamesisch |
-| Walisisch |
-| Jiddisch |
 
 ## <a name="access-the-translator-text-api-language-list-programmatically"></a>Programmgesteuerter Zugriff auf die Textübersetzungs-API-Sprachliste
 
@@ -277,6 +213,7 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Bosnisch (Lateinisch)      | `bs`          |
 | Bulgarisch      | `bg`          |
 | Chinesisch (vereinfacht)      | `zh-Hans`          |
+|Chinesisch (traditionell)|   `zh-Hant`   |
 | Kroatisch      | `hr`          |
 | Tschechisch      | `cs`          |
 | Dänisch      | `da`          |
@@ -291,16 +228,22 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Hindi      | `hi`          |
 | Ungarisch      | `hu`          |
 | Isländisch | `is` |
+| Indonesisch|   `id`    |
+| Irisch | `ga`  |
 | Italienisch      | `it`          |
 | Japanisch      | `ja`          |
+|Suaheli| `sw`    |
 | Koreanisch      | `ko`          |
 | Lettisch      | `lv`          |
 | Litauisch      | `lt`          |
+|Madagassisch|  `mg`    |
 | Norwegisch      | `nb`          |
+| Persisch      | `fa`          |
 | Polnisch      | `pl`          |
 | Portugiesisch      | `pt`          |
 | Rumänisch      | `ro`          |
 | Russisch      | `ru`          |
+|Samoanisch|    `sm`    |
 | Serbisch (Lateinisch)      | `sr-Latn`          |
 | Slowakisch     | `sk`          |
 | Slowenisch      | `sl`          |
@@ -316,4 +259,4 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 
 Für einen schnellen Überblick über die Sprachen werden auf der Microsoft Translator-Website alle Sprachen angezeigt, die von der Translator-Text-API und -Sprach-API unterstützt werden. Diese Liste enthält keine entwicklerspezifischen Informationen wie z.B. Sprachcodes.
 
-[Weitere Informationen finden Sie in der Liste der Sprachen](https://www.microsoft.com/translator/languages.aspx)
+[Anzeige der Sprachenliste](https://www.microsoft.com/translator/languages.aspx)

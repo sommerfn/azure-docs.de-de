@@ -3,7 +3,7 @@ title: Bereitstellen von Privileged Identity Management (PIM) – Azure Active D
 description: Beschreibt die Planung der Bereitstellung von Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 02/08/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 4ff46a693766ab12b53baba1ad8e4a56e174a076
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578194"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804491"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Bereitstellen von Azure AD Privileged Identity Management (PIM)
 
@@ -99,7 +99,7 @@ Der folgende Abschnitt hilft Ihnen beim Identifizieren aller Projektbeteiligten,
 
 #### <a name="stakeholders-pim-for-azure-ad-roles"></a>Beteiligte: PIM für Azure AD-Rollen
 
-| NAME | Rolle | Aktion |
+| NAME | Role | Aktion |
 | --- | --- | --- |
 | Name und E-Mail-Adresse | **Identitätsarchitekt oder globaler Azure-Administrator**<br/>Ein Vertreter des Identitätsverwaltungsteams, der definiert, wie diese Änderung an der Kerninfrastruktur für die Identitätsverwaltung in Ihrer Organisation ausgerichtet ist. | SO/R/I |
 | Name und E-Mail-Adresse | **Dienstbesitzer/Linienmanager**<br/>Ein Vertreter der IT-Besitzer eines Diensts oder eine Gruppe von Diensten. Er ist der Hauptentscheidungsträger und in erster Linie verantwortlich für die Einführung von PIM für sein Team. | SO/R/I |
@@ -109,7 +109,7 @@ Der folgende Abschnitt hilft Ihnen beim Identifizieren aller Projektbeteiligten,
 
 #### <a name="stakeholders-pim-for-azure-resource-roles"></a>Beteiligte: PIM für Azure-Ressourcenrollen
 
-| NAME | Rolle | Aktion |
+| NAME | Role | Aktion |
 | --- | --- | --- |
 | Name und E-Mail-Adresse | **Abonnement/Ressourcenbesitzer**<br/>Ein Vertreter der IT-Besitzer jedes Abonnement bzw. jeder Ressource, für das oder die Sie PIM bereitstellen möchten. | SO/R/I |
 | Name und E-Mail-Adresse | **Sicherheitsbesitzer**<br/>Ein Vertreter des Sicherheitsteams, der abzeichnen kann, dass der Plan die Sicherheitsanforderungen Ihrer Organisation erfüllt. | SO/R |
@@ -143,7 +143,7 @@ Führen Sie diese Schritte aus, um das Prinzip der geringsten Rechte für Ihre A
 
 1. Erstellen Sie eine Liste der Benutzer mit privilegierten Rollen in Ihrer Organisation. Mit dem [PIM-Assistenten](pim-security-wizard.md#run-the-wizard) können Sie eine Seite wie diese erstellen.
 
-    ![Ermitteln von privilegierten Rollen](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![Bereich zum Ermitteln privilegierter Rollen, der anzeigt, wer über privilegierte Rollen verfügt](./media/pim-deployment-plan/discover-privileged-roles-users.png)
 
 1. Ermitteln Sie für alle globalen Administratoren in Ihrer Organisation, warum sie die Rolle benötigen. Basierend auf der bisherigen Dokumentation sollten Sie eine Person aus der Rolle „Globaler Administrator“ entfernen, wenn deren Aufgaben von einer oder mehreren genau abgestimmten Administratorrollen ausgeführt werden kann, und entsprechende Zuweisungen in Azure Active vornehmen. (Bezugswert: Bei Microsoft gibt es derzeit nur ungefähr 10 Administratoren mit der Rolle „Globaler Administrator“. Weitere Informationen finden Sie im Artikel zur [Verwendung von PIM durch Microsoft](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)).
 
@@ -151,7 +151,7 @@ Führen Sie diese Schritte aus, um das Prinzip der geringsten Rechte für Ihre A
 
 Zum Automatisieren der Schritte 3 und 4 können Sie die Zugriffsüberprüfungsfunktion in PIM nutzen. Mit den Schritten in [Starten einer Zugriffsüberprüfung für Azure AD-Verzeichnisrollen in PIM](pim-how-to-start-security-review.md) können Sie eine Zugriffsüberprüfung für alle Azure AD-Rollen mit mindestens einem Mitglied einrichten.
 
-![Erstellen einer Zugriffsüberprüfung](./media/pim-deployment-plan/create-access-review.png)
+![Erstellen eines Zugriffsüberprüfungsbereich für Azure AD-Rollen](./media/pim-deployment-plan/create-access-review.png)
 
 Legen Sie die Prüfer auf **Mitglieder (selbst)** selbst. Dadurch wird eine E-Mail an alle Mitglieder der Rolle gesendet, damit diese bestätigen, ob sie den Zugriff benötigen. Außerdem sollten Sie in den erweiterten Einstellung die Option **Bei Genehmigung Grund anfordern** aktivieren, damit Benutzer angeben können, warum sie die Rolle benötigen. Auf der Grundlage dieser Informationen können Sie Benutzer aus unnötigen Rollen entfernen und im Fall von globalen Administratoren genauer abgestimmte Administratorrollen delegieren.
 
@@ -183,7 +183,7 @@ Das Priorisieren des Schutzes von Azure AD-Rollen mit der höchsten Anzahl von B
 1. Exchange-Administrator
 1. SharePoint-Administrator
 1. Intune-Administrator
-1. Benutzer mit Leseberechtigung für Sicherheitsfunktionen
+1. Sicherheitsleseberechtigter
 1. Dienstadministrator
 1. Rechnungsadministrator
 1. Skype for Business-Administrator
@@ -198,7 +198,7 @@ Wenn Rollen vorhanden sind, denen Gastbenutzer zugewiesen sind, sind sie besonde
 > [!TIP]
 > :heavy_check_mark: **Microsoft-Empfehlung**: Verwalten Sie alle Rollen für Gastbenutzer mit PIM, um Risiken im Zusammenhang mit kompromittierten Gastbenutzerkonten zu reduzieren.
 
-Leserrollen wie „Verzeichnis lesen“, „Nachrichtencenter-Leser“ und „Sicherheit lesen“ gelten bisweilen als weniger wichtig als andere Rollen, da sie keine Schreibberechtigung haben. Allerdings ist uns bekannt, dass einige Kunden auch diese Rollen schützen, da Angreifer, die Zugriff auf diese Konten erlangt haben, möglicherweise sensible Daten wie beispielsweise personenbezogene Informationen lesen können. Dies sollten Sie bei der Entscheidung, ob Leserrollen in Ihrer Organisation mit PIM verwaltet werden müssen, berücksichtigen.
+Leserrollen wie „Verzeichnis lesen“, „Nachrichtencenter-Leser“ und „Sicherheitsleseberechtigter“ gelten bisweilen als weniger wichtig als andere Rollen, da sie keine Schreibberechtigung haben. Allerdings ist uns bekannt, dass einige Kunden auch diese Rollen schützen, da Angreifer, die Zugriff auf diese Konten erlangt haben, möglicherweise sensible Daten wie beispielsweise personenbezogene Informationen lesen können. Dies sollten Sie bei der Entscheidung, ob Leserrollen in Ihrer Organisation mit PIM verwaltet werden müssen, berücksichtigen.
 
 #### <a name="azure-resource-roles"></a>Azure-Ressourcenrollen
 
@@ -240,7 +240,7 @@ Vor dem Implementieren Ihrer PIM-Lösung empfiehlt sich, einen Entwurf der PIM-E
 
 #### <a name="pim-settings-for-azure-ad-roles"></a>PIM-Einstellungen für Azure AD-Rollen
 
-| Rolle | Anfordern von MFA | Benachrichtigung | Vorfallsticket | Genehmigung anfordern | Genehmigende Person | Aktivierungsdauer | Permanenter Administrator |
+| Role | Anfordern von MFA | Benachrichtigung | Vorfallsticket | Genehmigung anfordern | Genehmigende Person | Aktivierungsdauer | Permanenter Administrator |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globaler Administrator | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere globale Administratoren | 1 Stunde | Konten für den Notfallzugriff |
 | Exchange-Administrator | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | Keine | 2 Stunden | Keine |
@@ -248,7 +248,7 @@ Vor dem Implementieren Ihrer PIM-Lösung empfiehlt sich, einen Entwurf der PIM-E
 
 #### <a name="pim-settings-for-azure-resource-roles"></a>PIM-Einstellungen für Azure-Ressourcenrollen
 
-| Rolle | Anfordern von MFA | Benachrichtigung | Genehmigung anfordern | Genehmigende Person | Aktivierungsdauer | Aktiver Administrator | Ablauf der Aktivierung | Ablauf der Berechtigung |
+| Role | Anfordern von MFA | Benachrichtigung | Genehmigung anfordern | Genehmigende Person | Aktivierungsdauer | Aktiver Administrator | Ablauf der Aktivierung | Ablauf der Berechtigung |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Besitzer von wichtigen Abonnements | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Andere Besitzer des Abonnements | 1 Stunde | Keine | – | 3 Monate |
 | Benutzerzugriffsadministrator von weniger wichtigen Abonnements | :heavy_check_mark: | :heavy_check_mark: | :x: | Keine | 1 Stunde | Keine | – | 3 Monate |
@@ -258,7 +258,7 @@ In der folgenden Tabelle sind die einzelnen Einstellungen beschrieben.
 
 | Einstellung | BESCHREIBUNG |
 | --- | --- |
-| Rolle | Name der Rolle, für die Sie die Einstellungen definieren. |
+| Role | Name der Rolle, für die Sie die Einstellungen definieren. |
 | Anfordern von MFA | Gibt an, ob der berechtigte Benutzer vor dem Aktivieren der Rolle eine mehrstufige Authentifizierung durchführen muss.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Erzwingen Sie die mehrstufige Authentifizierung für alle Administratorrollen, insbesondere wenn die Rollen Gastbenutzer enthalten. |
 | Benachrichtigung | Ist diese Einstellung auf „true“ festgelegt, erhalten globale Administratoren, Administratoren für privilegierte Rollen und Sicherheitsadministratoren in der Organisation eine E-Mail-Benachrichtigung, wenn ein berechtigter Benutzer die Rolle aktiviert.<br/><br/>**Hinweis:** Einige Organisationen haben keine E-Mail-Adressen mit ihren Administratorkonten verknüpft. Um diese E-Mail-Benachrichtigungen zu erhalten müssen Sie eine alternative E-Mail-Adresse festlegen, damit Administratoren diese E-Mails erhalten. |
 | Vorfallsticket | Gibt an, ob der berechtigte Benutzer beim Aktivieren seiner Rolle eine Vorfallsticketnummer erfassen muss. Mit dieser Einstellung kann eine Organisation jede Aktivierung anhand einer internen Vorfallnummer identifizieren, um unerwünschte Aktivierungen zu verringern.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Nutzen Sie Vorfallsticketnummern, um PIM mit Ihrem internen System zu verknüpfen. Dies ist insbesondere nützlich für genehmigende Personen, die Kontext für die Aktivierung benötigen. |
@@ -318,7 +318,7 @@ Da Sie jetzt die Testbenutzer identifiziert haben, konfigurieren Sie in diesem S
 
 Überprüfen Sie in dieser Phase, ob die gesamte von Ihnen für die Rollen festgelegte Konfiguration ordnungsgemäß funktioniert. Verwenden Sie die folgende Tabelle zum Dokumentieren Ihrer Tests. Nutzen Sie diese Phase auch zur Optimierung der Kommunikation mit betroffenen Benutzern.
 
-| Rolle | Erwartetes Verhalten während der Aktivierung | Tatsächliche Ergebnisse |
+| Role | Erwartetes Verhalten während der Aktivierung | Tatsächliche Ergebnisse |
 | --- | --- | --- |
 | Globaler Administrator | (1) Mehrstufige Authentifizierung erfordern<br/>(2) Genehmigung erfordern<br/>(3) Genehmigende Person erhält Benachrichtigung und kann genehmigen<br/>(4) Rolle läuft nach voreingestellter Zeit ab |  |
 | Besitzer von Abonnement *X* | (1) Mehrstufige Authentifizierung erfordern<br/>(2) Berechtigte Zuweisung läuft nach konfiguriertem Zeitraum |  |
@@ -353,7 +353,7 @@ Wenn PIM in der Produktionsumgebung nicht wie gewünscht funktioniert, helfen Ih
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 1. Klicken Sie auf **Azure AD-Rollen** und dann auf **Rollen**.
-1. Klicken Sie für jede von Ihnen konfigurierte Rolle für alle Benutzer mit einer berechtigten Zuweisung auf die Auslassungspunkte (**...** ).
+1. Klicken Sie für jede von Ihnen konfigurierte Rolle für alle Benutzer mit einer berechtigten Zuweisung auf die Auslassungspunkte ( **...** ).
 1. Klicken Sie auf die Option **Als permanent festlegen**, um die Zuweisung dauerhaft einzurichten.
 
 #### <a name="azure-resource-roles"></a>Azure-Ressourcenrollen
@@ -362,7 +362,7 @@ Wenn PIM in der Produktionsumgebung nicht wie gewünscht funktioniert, helfen Ih
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 1. Klicken Sie auf **Azure-Ressourcen**, und klicken Sie dann auf ein Abonnement oder eine Ressource, für das bzw. die Sie ein Rollback ausführen möchten.
 1. Klicken Sie auf **Rollen**.
-1. Klicken Sie für jede von Ihnen konfigurierte Rolle für alle Benutzer mit einer berechtigten Zuweisung auf die Auslassungspunkte (**...** ).
+1. Klicken Sie für jede von Ihnen konfigurierte Rolle für alle Benutzer mit einer berechtigten Zuweisung auf die Auslassungspunkte ( **...** ).
 1. Klicken Sie auf die Option **Als permanent festlegen**, um die Zuweisung dauerhaft einzurichten.
 
 ## <a name="step-4-next-steps-after-deploying-pim"></a>Schritt 4: Nächste Schritte nach der Bereitstellung von PIM

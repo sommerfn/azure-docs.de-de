@@ -3,17 +3,17 @@ title: Hochladen von Bildern in eine Azure IoT Central-Anwendung | Microsoft-Dok
 description: In diesem Artikel erfahren Sie, wie Sie als Ersteller Bilder vorbereiten und in Ihrer Azure IoT Central-Anwendung hochladen.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/05/2019
+ms.date: 07/11/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c8444fd57fe939dfb212d88c22a071c13dac691e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 255033f03acd40580fb4d4a92b0aa9b3e16969f3
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767327"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850159"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Vorbereiten und Hochladen von Bildern in eine Azure IoT Central-Anwendung
 
@@ -56,7 +56,7 @@ An allen vier Stellen können Sie entweder PNG-, GIF- oder JPEG-Bilder verwenden
 
 Die Bildgrößen, die Sie verwenden können, werden in der folgenden Tabelle angegeben:
 
-| Standort | Größen |
+| Location | Größen |
 | -------- | ------ |
 | Anwendungs-Manager | 268 x 160 px |
 | Gerätevorlage | 64 x 64 px |
@@ -74,7 +74,7 @@ Um ein Bild für die Verwendung auf der Seite **Eigene Anwendungen** hochzuladen
 
 ![Hochladen eines Anwendungsbilds](media/howto-prepare-images/uploadapplicationmanager.png)
 
-Wählen Sie die Kachel des Anwendungsbilds aus, um das vorbereitete Bild (268 x 160 px) von Ihrem lokalen Computer hochzuladen.
+Wählen Sie die Kachel **Anwendungsbild**, um ein Bild (268x160 px) von Ihrem lokalen Computer hochzuladen.
 
 ### <a name="application-dashboard"></a>Anwendungsdashboard
 
@@ -82,7 +82,7 @@ Um ein Bild auf das Anwendungsdashboard hochzuladen, navigieren Sie in Ihrer Anw
 
 ![Hochladen eines Bilds für das Dashboard](media/howto-prepare-images/uploadhomepage.png)
 
-Wählen Sie unter „Bild konfigurieren“ die Bildkachel aus, um das vorbereitete Bild von Ihrem lokalen Computer hochzuladen. Die kleinste Kachelgröße beträgt 200 x 200 px. Größere Kacheln können aus quadratischen oder rechteckigen kleinen Kacheln bestehen. Beispiel: 200 x 400 px, 400 x 200 px oder 400 x 400 px.
+Wählen Sie unter **Bild konfigurieren** die Kachel **Bild** aus, um ein Bild von Ihrem lokalen Computer hochzuladen. Die kleinste Kachelgröße beträgt 200 x 200 px. Größere Kacheln können aus quadratischen oder rechteckigen kleinen Kacheln bestehen. Beispiel: 200 x 400 px, 400 x 200 px oder 400 x 400 px.
 
 **Speichern**  Sie das hochgeladene Bild. Im Bearbeitungsmodus können Sie die Größe ändern. Wenn Sie fertig sind, wählen Sie **Fertig** aus.
 
@@ -92,7 +92,7 @@ Um ein Bild auf einer Gerätevorlage hochzuladen, navigieren Sie zu **Gerätevor
 
 ![Hochladen eines Bilds für die Gerätevorlage](media/howto-prepare-images/uploaddevicetemplate.png)
 
-Wählen Sie die Bildkachel aus, um das vorbereitete Bild (64 x 64 px) von Ihrem lokalen Computer hochzuladen.
+Wählen Sie die Kachel „Bild“, um ein Bild (64x64 px) von Ihrem lokalen Computer hochzuladen.
 
 ### <a name="device-dashboard"></a>Gerätedashboard
 
@@ -100,7 +100,7 @@ Um ein Bild auf einem Gerätedashboard hochzuladen, navigieren Sie zu **Gerätev
 
 ![Hochladen eines Bilds für das Gerätedashboard](media/howto-prepare-images/uploaddevicedashboard.png)
 
-Wählen Sie unter „Bild konfigurieren“ zuerst die Bildkachel und dann die Datei aus, die von Ihrem lokalen Computer hochgeladen werden soll. Die kleinste Kachelgröße beträgt 200 x 200 px. Größere Kacheln können aus quadratischen oder rechteckigen kleinen Kacheln bestehen. Beispiel: 200 x 400 px, 400 x 200 px oder 400 x 400 px.
+Wählen Sie unter **Bild konfigurieren** die Kachel **Bild** aus und dann die Datei, die Sie von Ihrem lokalen Computer hochladen möchten. Die kleinste Kachelgröße beträgt 200 x 200 px. Größere Kacheln können aus quadratischen oder rechteckigen kleinen Kacheln bestehen. Beispiel: 200 x 400 px, 400 x 200 px oder 400 x 400 px.
 
 **Speichern**  Sie das hochgeladene Bild. Im Bearbeitungsmodus können Sie die Größe und die Position ändern. Wenn Sie fertig sind, wählen Sie **Fertig** aus.
 
@@ -110,13 +110,14 @@ Um ein Bild auf dem Dashboard einer Gerätegruppe hochzuladen, navigieren Sie zu
 
 ![Hochladen eines Bilds für das Dashboard einer Gerätegruppe](media/howto-prepare-images/uploaddevicesetdashboard.png)
 
-Wählen Sie unter „Bild konfigurieren“ die Bildkachel aus, um das vorbereitete Bild von Ihrem lokalen Computer hochzuladen. Die kleinste Kachelgröße beträgt 200 x 200 px. Größere Kacheln können aus quadratischen oder rechteckigen kleinen Kacheln bestehen. Beispiel: 200 x 400 px, 400 x 200 px oder 400 x 400 px.
+Wählen Sie unter **Bild konfigurieren** die Kachel **Bild** aus, um ein Bild von Ihrem lokalen Computer hochzuladen. Die kleinste Kachelgröße beträgt 200 x 200 px. Größere Kacheln können aus quadratischen oder rechteckigen kleinen Kacheln bestehen. Beispiel: 200 x 400 px, 400 x 200 px oder 400 x 400 px.
 
 **Speichern**  Sie das hochgeladene Bild. Im Bearbeitungsmodus können Sie die Größe und die Position ändern. Wenn Sie fertig sind, wählen Sie **Fertig** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie Bilder in Ihrer Azure IoT Central-Anwendung vorbereitet und hochgeladen werden, wird als Nächstes der folgende Schritt empfohlen:
+Nachdem Sie nun gelernt haben, wie Sie Bilder vorbereiten und in Ihre Azure IoT Central-Anwendung hochladen können, folgen hier die vorgeschlagenen nächsten Schritte:
 
-> [!div class="nextstepaction"]
-> [Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung](howto-manage-devices.md)
+* [Anpassen der Azure IoT Central-Benutzeroberfläche](./howto-customize-ui.md)
+* [Konfigurieren des Anwendungsdashboards](./howto-configure-homepage.md)
+* [Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung](howto-manage-devices.md)

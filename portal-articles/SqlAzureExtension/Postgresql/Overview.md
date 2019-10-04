@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
 ms.openlocfilehash: 6282acaf165d2f31a1a1ac525dad75ebc64a2a7c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434788"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "62113951"
 ---
 # <a name="azure-database-for-postgresql-documentation"></a>Dokumentation zur Azure-Datenbank für PostgreSQL
 
@@ -24,20 +24,20 @@ Azure Database for PostgreSQL ist ein relationaler Datenbankdienst, der auf der 
 Erfahren Sie, wie Sie eine PostgreSQL-Datenbank mit Folgendem erstellen:
 
 - [Azure-Portal](/azure/postgresql/quickstart-create-server-database-portal)
-- [Azure-CLI](/azure/postgresql/quickstart-create-server-database-azure-cli)
+- [Azure-Befehlszeilenschnittstelle](/azure/postgresql/quickstart-create-server-database-azure-cli)
 
 ## <a name="step-by-step-tutorials"></a>Schritt-für-Schritt-Tutorials
 
 In diesem Artikel werden folgende Themen erläutert:
 
-- Erstellen einer Datenbank: [Azure-Portal](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
+- Entwerfen einer Datenbank: [Azure-Portal](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
 - [Erstellen einer Web-App mit Python und der CLI](/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
 
 ## <a name="samples"></a>Beispiele 
 
 Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
 
-- [Azure-CLI](/azure/postgresql/sample-scripts-azure-cli)
+- [Azure-Befehlszeilenschnittstelle](/azure/postgresql/sample-scripts-azure-cli)
 
 ## <a name="more"></a>Weitere Informationen
 

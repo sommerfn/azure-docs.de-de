@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 05/03/2018
 ms.author: mlearned
-ms.openlocfilehash: 6ae2d0723b195ed59f8c6a7320245509145094df
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fed4f0976dd118186c122b0152f255d0c452c0ce
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776596"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404490"
 ---
 # <a name="overview-of-azure-devops-projects"></a>Übersicht über Azure DevOps Projects
 
@@ -78,4 +78,4 @@ Nach der Erstellung des DevOps-Projekts haben Sie folgende Möglichkeiten:
 
 ##  <a name="devops-projects-videos"></a>Videos zu DevOps Projects
 
-* [Creating your CI/CD Pipeline with VSTS into Azure](https://channel9.msdn.com/Events/Connect/2017/T174/player/) (Erstellen Ihrer CI/CD-Pipeline mit VSTS für Azure)
+* [Creating your CI/CD Pipeline with VSTS into Azure](https://www.youtube.com/watch?v=NuYDAs3kNV8) (Erstellen Ihrer CI/CD-Pipeline mit VSTS für Azure)

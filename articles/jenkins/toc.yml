@@ -31,6 +31,8 @@
               maintainContext: true
             - name: Bereitstellen in AKS mit Blau/Grün-Muster
               href: jenkins-aks-blue-green-deployment.md
+            - name: CI/CD mit Azure Dev Spaces
+              href: tutorial-jenkins-dev-spaces.md
         - name: App Service
           items:
             - name: Erstellen von Azure-Ressourcen in einem Pipelineauftrag

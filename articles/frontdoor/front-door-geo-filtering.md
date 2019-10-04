@@ -11,17 +11,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: a7b4975a81c0966e5cbff0c8b940c9231e66f32b
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: 7ad2d181b6343644205c58ab1d5fe83dc25542d4
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407639"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846423"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Was ist Geofilterung in einer Domäne für Azure Front Door?
 
-Standardmäßig reagiert Azure Front Door Service auf alle Benutzeranforderungen, ganz gleich, wo sich der Benutzer befindet, von dem die Anforderung stammt. Manchmal ist jedoch unter Umständen eine länderbasierte Einschränkung des Zugriffs auf Ihre Webanwendungen wünschenswert. Der Web Application Firewall-Dienst (WAF) in Front Door ermöglicht es Ihnen, eine Richtlinie mit benutzerdefinierten Schutzregeln für einen bestimmten Pfad an Ihrem Endpunkt zu definieren, um den Zugriff aus bestimmten Ländern zuzulassen oder zu blockieren. 
+Standardmäßig reagiert Azure Front Door Service auf alle Benutzeranforderungen, ganz gleich, wo sich der Benutzer befindet, von dem die Anforderung stammt. Manchmal ist jedoch unter Umständen eine länder-/regionsbasierte Einschränkung des Zugriffs auf Ihre Webanwendungen wünschenswert. Der Web Application Firewall-Dienst (WAF) in Front Door ermöglicht es Ihnen, eine Richtlinie mit benutzerdefinierten Schutzregeln für einen bestimmten Pfad an Ihrem Endpunkt zu definieren, um den Zugriff aus bestimmten Ländern/Regionen zuzulassen oder zu blockieren. 
 
 Eine WAF-Richtlinie enthält üblicherweise einige benutzerdefinierte Regeln. Eine Regel umfasst Übereinstimmungsbedingungen, eine Aktion und eine Priorität. In der Übereinstimmungsbedingung werden eine Übereinstimmungsvariable, ein Operator und ein Übereinstimmungswert definiert.  Eine Geofilterungsregel setzt sich aus der Übereinstimmungsvariablen „REMOTE_ADDR“, dem Operator „GeoMatch“ und einem aus zwei Buchstaben bestehenden Ländercode zusammen. Sie können eine GeoMatch-Bedingung mit einer Zeichenfolgen-Übereinstimmungsbedingung vom Typ „REQUEST_URI“ kombinieren, um eine pfadbasierte Geofilterungsregel zu erstellen.
 
@@ -97,12 +98,12 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front
 | GR | Griechenland|
 | GT | Guatemala|
 | GY | Guayana|
-| HK | Hongkong|
+| HK | Hongkong (SAR)|
 | HN | Honduras|
 | HR | Kroatien|
 | HT | Haiti|
 | HU | Ungarn|
-| ID | Indonesien|
+| id | Indonesien|
 | IE | Irland|
 | IL | Israel|
 | IN | Indien|
@@ -132,7 +133,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front
 | LT | Litauen|
 | LU | Luxemburg|
 | LV | Lettland|
-| LY | Libyen|
+| LY | Libyen |
 | MA | Marokko|
 | MD | Republik Moldau|
 | MG | Madagaskar|

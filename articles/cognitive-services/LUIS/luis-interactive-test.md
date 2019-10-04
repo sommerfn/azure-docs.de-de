@@ -1,6 +1,6 @@
 ---
 title: Testen von Apps im LUIS-Portal
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Verwenden Sie LUIS (Language Understanding Intelligent Service), um Ihre Anwendung fortlaufend zu optimieren und ihr Sprachverständnis zu verbessern.
 services: cognitive-services
 author: diberry
@@ -8,19 +8,21 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/23/2019
+ms.topic: conceptual
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 51c6a58567b35c9b8486d8634b0bed1af7218994
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5736667acfa510d89e549afd4d0f5c61a833dd1c
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893622"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932734"
 ---
+<a name="train-your-app"></a>
+
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testen Ihrer LUIS-App im LUIS-Portal
-Das <a name="train-your-app"></a>
-[Testen](luis-concept-test.md) einer App ist ein iterativer Vorgang. Testen Sie Ihre LUIS-App nach dem Trainieren mit Beispieläußerungen, um festzustellen, ob die Absichten und Entitäten ordnungsgemäß erkannt werden. Ist das nicht der Fall, aktualisieren Sie die LUIS-App, und trainieren und testen Sie sie erneut. 
+
+Das [Testen](luis-concept-test.md) einer App ist ein iterativer Vorgang. Testen Sie Ihre LUIS-App nach dem Trainieren mit Beispieläußerungen, um festzustellen, ob die Absichten und Entitäten ordnungsgemäß erkannt werden. Ist das nicht der Fall, aktualisieren Sie die LUIS-App, und trainieren und testen Sie sie erneut. 
 
 <!-- anchors for H2 name changes -->
 <a name="test-your-app"></a>
@@ -31,13 +33,13 @@ Das <a name="train-your-app"></a>
 
 1. Greifen Sie auf Ihre App zu, indem Sie ihren Namen auf der Seite **Meine Apps** auswählen. 
 
-2. Um auf den Einblendbereich **Test** zuzugreifen, wählen Sie im oberen Bereich Ihrer Anwendung **Test** aus.
+1. Um auf den Einblendbereich **Test** zuzugreifen, wählen Sie im oberen Bereich Ihrer Anwendung **Test** aus.
 
     ![Seite „Train & Test App“ (App trainieren und testen)](./media/luis-how-to-interactive-test/test.png)
 
-3. Geben Sie eine Äußerung in das Textfeld ein, und drücken Sie die EINGABETASTE. Sie können im **Test** beliebig viele Äußerungen eingeben, aber immer nur einzeln.
+1. Geben Sie eine Äußerung in das Textfeld ein, und drücken Sie die EINGABETASTE. Sie können im **Test** beliebig viele Äußerungen eingeben, aber immer nur einzeln.
 
-4. Die Äußerung, die am höchsten bewertete Absicht und ihre Bewertung werden der Liste der Äußerungen unter dem Textfeld hinzugefügt.
+1. Die Äußerung, die am höchsten bewertete Absicht und ihre Bewertung werden der Liste der Äußerungen unter dem Textfeld hinzugefügt.
 
     ![Erkennen einer falschen Absicht in interaktiven Tests](./media/luis-how-to-interactive-test/test-weather-1.png)
 
@@ -49,7 +51,7 @@ Sie überprüfen die Details des Testergebnisses im Bereich **Überprüfen**.
 
     ![Auswählen der Schaltfläche „Überprüfen“, um weitere Details zu den Testergebnissen anzuzeigen](./media/luis-how-to-interactive-test/inspect.png)
 
-2. Der Bereich **Überprüfung** wird angezeigt. Dieser Bereich enthält die Absicht mit der höchsten Bewertung sowie alle identifizierten Entitäten. Das Ergebnis der ausgewählten Äußerung wird im Bereich angezeigt.
+1. Der Bereich **Überprüfung** wird angezeigt. Dieser Bereich enthält die Absicht mit der höchsten Bewertung sowie alle identifizierten Entitäten. Das Ergebnis der ausgewählten Äußerung wird im Bereich angezeigt.
 
     ![Dieser Bereich enthält die Absicht mit der höchsten Bewertung sowie alle identifizierten Entitäten. Das Ergebnis der ausgewählten Äußerung wird im Bereich angezeigt.](./media/luis-how-to-interactive-test/inspect-panel.png)
 
@@ -57,7 +59,7 @@ Sie überprüfen die Details des Testergebnisses im Bereich **Überprüfen**.
 
 1. Wenn die Absicht mit der höchsten Bewertung falsch ist, wählen Sie die Schaltfläche **Bearbeiten** aus.
 
-2.  Wählen Sie in der Dropdownliste die richtige Absicht für die Äußerung aus.
+1.  Wählen Sie in der Dropdownliste die richtige Absicht für die Äußerung aus.
 
     ![Auswählen der richtigen Absicht](./media/luis-how-to-interactive-test/intent-select.png)
 
@@ -103,16 +105,14 @@ Verwenden Sie das folgende Verfahren, um den Dienst [Bing-Rechtschreibprüfung v
 
 1. Geben Sie im Bereich **Test** eine Äußerung ein. Wenn die Äußerung vorhergesagt wird, wählen Sie unter der eingegebenen Äußerung **[Überprüfen](#inspect-score)** aus. 
 
-2. Wenn der Bereich **Überprüfen** geöffnet wird, wählen Sie **[Compare with Published](#compare-with-published-version)** (Mit veröffentlichtem Element vergleichen) aus. 
+1. Wenn der Bereich **Überprüfen** geöffnet wird, wählen Sie **[Compare with Published](#compare-with-published-version)** (Mit veröffentlichtem Element vergleichen) aus. 
 
-3. Wenn der Bereich **Veröffentlicht** geöffnet wird, wählen Sie **[Zusätzliche Einstellungen](#additional-settings-in-test-panel)** aus.
+1. Wenn der Bereich **Veröffentlicht** geöffnet wird, wählen Sie **[Zusätzliche Einstellungen](#additional-settings-in-test-panel)** aus.
 
-4. Geben Sie im Popupdialogfeld Ihren Dienstschlüssel für die **Bing-Rechtschreibprüfung** ein. 
-    ![Eingeben des Dienstschlüssels für die Bing-Rechtschreibprüfung](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+1. Aktivieren Sie im Popupdialogfenster die Option **Bing-Rechtschreibprüfung aktivieren** , geben Sie den Schlüssel ein, und wählen Sie **Fertig** aus. 
+    ![Eingeben des Dienstschlüssels für die Bing-Rechtschreibprüfung](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
 
-5. Geben Sie eine Abfrage in falscher Schreibweise ein, z.B. `book flite to seattle`, und drücken Sie die EINGABETASTE. Die falsche Schreibweise des Worts `flite` wird in der an LUIS gesendeten Abfrage ersetzt, und der resultierende JSON-Code enthält sowohl die ursprüngliche Abfrage als `query` als auch die korrigierte Schreibweise in der Abfrage als `alteredQuery`.
-
-    ![JSON-Code mit korrigierter Rechtschreibung](./media/luis-how-to-interactive-test/interactive-with-spell-check-results.png)
+1. Geben Sie eine Abfrage in falscher Schreibweise ein, z.B. `book flite to seattle`, und drücken Sie die EINGABETASTE. Die falsche Schreibweise des Worts `flite` wird in der an LUIS gesendeten Abfrage ersetzt, und der resultierende JSON-Code enthält sowohl die ursprüngliche Abfrage als `query` als auch die korrigierte Schreibweise in der Abfrage als `alteredQuery`.
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="import-a-dataset-file-for-batch-testing"></a>

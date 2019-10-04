@@ -1,5 +1,5 @@
 ---
-title: Migration von SQL Server-Datenbanken zu Singletons oder in Pools zusammengefassten Datenbanken in Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Migration von SQL Server-Datenbanken zu Einzel-  oder Pooldatenbanken in Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Erfahren Sie, wie SQL Server-Datenbanken zu Singletons oder Pools für elastische Datenbanken in Azure SQL-Datenbank migriert werden.
 keywords: Datenbankmigration,SQL Server-Datenbankmigration,Datenbankmigrationstools,Migrieren einer Datenbank,Migrieren einer SQL-Datenbank
 services: sql-database
@@ -8,36 +8,35 @@ ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: 2feece21644f8b79b4e5fc74331944cdddbdee4a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a156d73c7eedcbdf7c703b946a26d46ca9129632
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996421"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566600"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank
 
-Dieser Artikel enthält Informationen zu den Hauptmethoden, mit denen eine SQL Server-Datenbank (ab SQL Server 2005) zu einer einfachen oder in einem Pool zusammengefassten Azure SQL-Datenbank migriert wird. Informationen zum Migrieren zu einer verwalteten Instanz finden Sie unter [Migrieren einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-migrate.md). Weitere Informationen zum Migrieren von anderen Plattformen finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/).
+Dieser Artikel enthält Informationen zu den Hauptmethoden, mit denen eine SQL Server-Datenbank (ab SQL Server 2005) zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank migriert wird. Informationen zum Migrieren zu einer verwalteten Instanz finden Sie unter [Migrieren einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-migrate.md). Weitere Informationen zum Migrieren von anderen Plattformen finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/).
 
-## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>Migrieren zu einer einfachen oder in einem Pool zusammengefassten Datenbank
+## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>Migrieren zu einer Einzel- oder Pooldatenbank
 
-Es gibt zwei Hauptmethoden für das Migrieren einer SQL Server-Datenbank (ab SQL Server 2005) zu einer einfachen oder in einem Pool zusammengefassten Azure SQL-Datenbank. Die erste Methode ist einfacher, aber auch mit einer gewissen (möglicherweise sogar erheblichen) Ausfallzeit während der Migration verbunden. Die zweite Methode ist komplexer, verringert aber deutlich die Ausfallzeit während der Migration.
+Es gibt zwei Hauptmethoden für das Migrieren einer SQL Server-Datenbank (ab SQL Server 2005) zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank. Die erste Methode ist einfacher, aber auch mit einer gewissen (möglicherweise sogar erheblichen) Ausfallzeit während der Migration verbunden. Die zweite Methode ist komplexer, verringert aber deutlich die Ausfallzeit während der Migration.
 
 In beiden Fällen muss mit dem [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) sichergestellt werden, dass die Quelldatenbank mit Azure SQL-Datenbank kompatibel ist. SQL-Datenbank V12 nähert sich der [Featureübereinstimmung](sql-database-features.md) mit SQL Server (abgesehen von Problemen mit Vorgängen auf Serverebene und datenbankübergreifenden Vorgängen). Datenbanken und Anwendungen, die auf [teilweise oder nicht unterstützten Funktionen](sql-database-transact-sql-information.md) basieren, müssen zur Behebung dieser Kompatibilitätsprobleme vor der Migration der SQL Server-Datenbank etwas [umstrukturiert](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues) werden.
 
 > [!NOTE]
-> Informationen zum Migrieren einer SQL Server-fremden Datenbank (einschließlich Microsoft Access, Sybase, MySQL Oracle und DB2) zu einer Azure SQL-Datenbank finden Sie unter [SQL Server-Migrations-Assistent](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/).
+> Informationen zum Migrieren einer SQL Server-fremden Datenbank (einschließlich Microsoft Access, Sybase, MySQL Oracle und DB2) zu Azure SQL-Datenbank finden Sie unter [SQL Server-Migrations-Assistent](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/).
 
 ## <a name="method-1-migration-with-downtime-during-the-migration"></a>Methode 1: Migration mit Ausfallzeit
 
- Verwenden Sie diese Methode zum Migrieren zu einer einfachen oder in einem Pool zusammengefassten Datenbank, falls eine gewisse Ausfallzeit akzeptabel ist oder Sie eine Testmigration für eine später zu migrierende Produktionsdatenbank durchführen möchten. Ein Tutorial finden Sie unter [Migrieren einer SQL Server-Datenbank](../dms/tutorial-sql-server-to-azure-sql.md).
+ Verwenden Sie diese Methode zum Migrieren zu einer Einzel -oder Pooldatenbank, falls eine gewisse Ausfallzeit akzeptabel ist oder Sie eine Testmigration für eine später zu migrierende Produktionsdatenbank durchführen möchten. Ein Tutorial finden Sie unter [Migrieren einer SQL Server-Datenbank](../dms/tutorial-sql-server-to-azure-sql.md).
 
-Die folgende Liste enthält den allgemeinen Workflow für die Migration einer einfachen oder in einem Pool zusammengefassten Datenbank mit dieser Methode. Informationen zur Migration zu einer verwalteten Instanz finden Sie unter [Migration zu einer verwalteten Instanz](sql-database-managed-instance-migrate.md).
+Die folgende Liste enthält den allgemeinen Workflow für die SQL Server-Migration einer Einzel- oder Pooldatenbank mit dieser Methode. Informationen zur Migration zu einer verwalteten Instanz finden Sie unter [Migration zu einer verwalteten Instanz](sql-database-managed-instance-migrate.md).
 
   ![Diagramm der VSSSDT-Migration](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
@@ -54,7 +53,7 @@ Die folgende Liste enthält den allgemeinen Workflow für die Migration einer ei
 
 Die folgende Liste enthält Empfehlungen, mit denen Sie während des Importprozesses eine optimale Leistung erzielen.
 
-- Wählen Sie im Rahmen Ihres verfügbaren Budgets den höchsten Diensttarif und die höchste Computegröße, um die Übertragungsleistung zu maximieren. Nach Abschluss der Migration können Sie zentral herunterskalieren, um Geld zu sparen.
+- Wählen Sie im Rahmen Ihres verfügbaren Budgets die höchste Dienstebene und Computegröße, um die Übertragungsleistung zu maximieren. Nach Abschluss der Migration können Sie zentral herunterskalieren, um Geld zu sparen.
 - Minimieren Sie die Entfernung zwischen Ihrer BACPAC-Datei und dem Zielrechenzentrum.
 - Deaktivieren Sie die automatische Statistik während der Migration.
 - Partitionieren Sie Tabellen und Indizes.

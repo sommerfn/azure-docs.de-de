@@ -2,27 +2,21 @@
 title: Windows 10-Roamingeinstellungen – Referenz | Microsoft Docs
 description: Vollständige Liste mit allen Einstellungen, für die unter Windows 10 das Roaming oder eine Sicherung durchgeführt wird.
 services: active-directory
-keywords: Enterprise State Roaming, Windows-Cloud
-documentationcenter: ''
+ms.service: active-directory
+ms.subservice: devices
+ms.topic: troubleshooting
+ms.date: 06/28/2019
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/30/2019
-ms.author: joflore
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6c80ee5d2a4d72be131c6a781cf793d1981e780
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9489228b6ba81ae8d09e0f6880634532d0c836c6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521073"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67481805"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10-Roamingeinstellungen – Referenz
 Hier ist eine vollständige Liste mit allen Einstellungen angegeben, für die unter Windows 10 das Roaming oder eine Sicherung durchgeführt wird. 
@@ -32,10 +26,10 @@ Die folgende Tabelle enthält eine Zusammenfassung der Geräte und Kontotypen, d
 
 | Kontotyp und Vorgang | Desktop | Mobile |
 | --- | --- | --- |
-| Azure Active Directory: Synchronisierung |Ja |Nein  |
-| Azure Active Directory: Sicherung/Wiederherstellung |Nein  |Nein  |
+| Azure Active Directory: Synchronisierung |Ja |Nein |
+| Azure Active Directory: Sicherung/Wiederherstellung |Nein |Nein |
 | Microsoft-Konto: Synchronisierung |Ja |Ja |
-| Microsoft-Konto: Sicherung/Wiederherstellung |Nein  |Ja |
+| Microsoft-Konto: Sicherung/Wiederherstellung |Nein |Ja |
 
 ## <a name="what-is-backup"></a>Was ist die Sicherung?
 Windows-Einstellungen werden normalerweise standardmäßig synchronisiert. Einige Einstellungen werden aber nur gesichert, z. B. die Liste mit den installierten Anwendungen auf einem Gerät. Sicherungen können nur für mobile Geräte angewendet werden und sind zurzeit für Enterprise State Roaming-Benutzer nicht verfügbar. Bei der Sicherung wird ein Microsoft-Konto verwendet, die Einstellungen und Anwendungsdaten werden in OneDrive gespeichert. Wenn ein Benutzer die Synchronisierung auf dem Gerät mit der Einstellungen-App deaktiviert, werden die Anwendungsdaten, die normalerweise synchronisiert werden, nur noch gesichert. Auf Sicherungsdaten kann nur über den Wiederherstellungsvorgang während der ersten Ausführung eines neuen Geräts zugegriffen werden. Sicherungen können über die Geräteeinstellungen deaktiviert und über das OneDrive-Konto des Benutzers verwaltet und gelöscht werden.
@@ -77,18 +71,18 @@ Einstellungen, für die kein Roaming oder keine Synchronisierung durchgeführt w
 | **Bluetooth**: alle Bluetooth-Einstellungen |X |X | |
 | **Eingabeaufforderung:** Standardeinstellungen für die Eingabeaufforderung |sync |X |Intern |
 | **Anmeldeinformationen**: Schließfach für Anmeldeinformationen |sync |sync |password |
-| **Datum, Uhrzeit und Region**: automatische Uhrzeit (Internetzeitsynchronisierung) |sync |sync |Language |
-| **Datum, Uhrzeit und Region:** 24-Stunden-Format |sync |X |Language |
-| **Datum, Uhrzeit und Region**: Datum und Uhrzeit |sync |X |Language |
-| **Datum, Uhrzeit und Region**: Zeitzone | |X |Language |
-| **Datum, Uhrzeit und Region**: Sommerzeit |sync |X |Language |
-| **Datum, Uhrzeit und Region**: Land/Region |sync |X |Language |
-| **Datum, Uhrzeit und Region**: erster Tag der Woche |sync |X |Language |
-| **Datum, Uhrzeit und Region**: regionales Format (Gebietsschema) |sync |X |Language |
-| **Datum, Uhrzeit und Region**: kurzes Datum |sync |X |Language |
-| **Datum, Uhrzeit und Region**: langes Datum |sync |X |Language |
+| **Datum, Uhrzeit und Region**: automatische Uhrzeit (Internetzeitsynchronisierung) |sync |sync |language |
+| **Datum, Uhrzeit und Region:** 24-Stunden-Format |sync |X |language |
+| **Datum, Uhrzeit und Region**: Datum und Uhrzeit |sync |X |language |
+| **Datum, Uhrzeit und Region**: Zeitzone | |X |language |
+| **Datum, Uhrzeit und Region**: Sommerzeit |sync |X |language |
+| **Datum, Uhrzeit und Region**: Land/Region |sync |X |language |
+| **Datum, Uhrzeit und Region**: erster Tag der Woche |sync |X |language |
+| **Datum, Uhrzeit und Region**: regionales Format (Gebietsschema) |sync |X |language |
+| **Datum, Uhrzeit und Region**: kurzes Datum |sync |X |language |
+| **Datum, Uhrzeit und Region**: langes Datum |sync |X |language |
 | **Datum, Uhrzeit und Region**: kurze Uhrzeit |sync |X |Sprache |
-| **Datum, Uhrzeit und Region**: lange Uhrzeit |sync |X |Language |
+| **Datum, Uhrzeit und Region**: lange Uhrzeit |sync |X |language |
 | **Desktoppersonalisierung**: Desktopdesign (Hintergrund, Systemfarbe, standardmäßige Systemsounds, Bildschirmschoner) |sync |X |Design |
 | **Desktoppersonalisierung**: Diashow-Hintergrundbild |sync |X |Design |
 | **Desktoppersonalisierung**: Einstellungen der Taskleiste (Position, automatisches Ausblenden usw.) |sync |X |Design |
@@ -184,4 +178,3 @@ Minimale unterstützte Betriebssystemversion des Windows Creators Updates (Build
 ## <a name="next-steps"></a>Nächste Schritte
 
 Grundlegendes erfahren Sie unter [Überblick über Enterprise State Roaming](enterprise-state-roaming-overview.md).
-

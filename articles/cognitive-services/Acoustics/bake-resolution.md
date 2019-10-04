@@ -3,19 +3,20 @@ title: 'Projekt Akustik: Bakingauflösung'
 titlesuffix: Azure Cognitive Services
 description: Diese konzeptuelle Übersicht beschreibt den Unterschied zwischen groben und feinen Auflösungen beim Akustikbaking.
 services: cognitive-services
-author: KyleStorck
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 04/05/2019
-ms.author: KyleStorck
-ms.openlocfilehash: 7dbf63ba39c5dcdebb363cfc37a45f0216a07497
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: noelc
+ROBOTS: NOINDEX
+ms.openlocfilehash: d8eb3b2cbaf7b4e842d8338eefde756f6d381111
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789753"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854347"
 ---
 # <a name="project-acoustics-bake-resolution"></a>Projekt Akustik: Bakingauflösung
 Diese konzeptuelle Übersicht beschreibt den Unterschied zwischen groben und feinen Auflösungen beim Akustikbaking. Sie wählen diese Einstellung während des Schritts zur Stichprobenerstellung des Bakingworkflows aus.

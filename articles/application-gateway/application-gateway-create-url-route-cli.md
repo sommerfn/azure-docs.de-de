@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 9c628b02961ee289833e669a4c77de0bf824de22
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 061156a455664a5a3f0b4c4497d24f4e8ff6eea7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999989"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66135647"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -232,11 +232,11 @@ az network public-ip show \
 
 ![Testen der Basis-URL im Anwendungsgateway](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
 
-Ändern Sie die URL zu „http://<IP-Adresse>:8080/video/test.html“. Die Ausgabe sollte in etwa wie folgt aussehen:
+Ändern Sie die URL bis zum Ende der Basis-URL in `http://<ip-address>:8080/video/test.html`. Die Ausgabe sollte in etwa wie folgt aussehen:
 
 ![Testen der Images-URL im Anwendungsgateway](./media/application-gateway-create-url-route-cli/application-gateway-nginx-images.png)
 
-Ändern Sie die URL zu „http://<IP-Adresse>:8080/video/test.htm“. Die Ausgabe sollte in etwa wie folgt aussehen:
+Ändern Sie die URL in `http://<ip-address>:8080/video/test.html`. Die Ausgabe sollte in etwa wie folgt aussehen.
 
 ![Testen der Video-URL im Anwendungsgateway](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
 

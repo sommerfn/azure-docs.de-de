@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 54663282f0a7c9491c0f6501af74eca1a907c44a
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: c1a960077ed96bb395ade9a09f47b035e6ff4318
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2017
-ms.locfileid: "23636980"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252150"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell-Beispiele
 
@@ -26,8 +26,8 @@ Die folgende Tabelle enthält Links zu Skripts für verwaltete Azure-Anwendungen
 | | |
 |-|-|
 |**Erstellen einer verwalteten Anwendung**||
-| [Erstellen der Definition für die verwaltete Anwendung](scripts/managed-application-powershell-sample-create-definition.md) | Erstellt die Definition einer verwalteten Anwendung im Dienstkatalog.  |
-| [Deploy a managed application for a service catalog with PowerShell](scripts/managed-application-poweshell-sample-create-application.md) (Bereitstellen einer verwalteten Anwendung für den Dienstkatalog mit PowerShell) | Stellt eine verwaltete Anwendung aus dem Dienstkatalog bereit.  |
+| [Erstellen der Definition für die verwaltete Anwendung](scripts/managed-application-powershell-sample-create-definition.md) | Erstellen der Definition einer verwalteten Anwendung im Dienstkatalog  |
+| [Deploy a managed application for a service catalog with PowerShell](scripts/managed-application-poweshell-sample-create-application.md) (Bereitstellen einer verwalteten Anwendung für den Dienstkatalog mit PowerShell) | Bereitstellen einer verwalteten Anwendung aus dem Dienstkatalog  |
 | | |
 |**Aktualisieren einer verwalteten Ressourcengruppe**||
-| [Get resources in a managed resource group and resize VMs with PowerShell](scripts/managed-application-powershell-sample-get-managed-group-resize-vm.md) (Abrufen von Ressourcen in einer verwalteten Ressourcengruppe und Ändern der Größe von virtuellen Computern mit PowerShell) | Ruft Ressourcen aus der verwalteten Ressourcengruppe ab und ändert die Größe der virtuellen Computer. |
+| [Get resources in a managed resource group and resize VMs with PowerShell](scripts/managed-application-powershell-sample-get-managed-group-resize-vm.md) (Abrufen von Ressourcen in einer verwalteten Ressourcengruppe und Ändern der Größe von virtuellen Computern mit PowerShell) | Abrufen von Ressourcen aus der verwalteten Ressourcengruppe und Ändern der Größe der virtuellen Computer |

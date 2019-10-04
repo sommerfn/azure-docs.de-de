@@ -2,18 +2,18 @@
 title: Authentifizieren und Autorisieren mit Power BI-Arbeitsbereichssammlungen | Microsoft-Dokumentation
 description: Informationen zum Authentifizieren und Autorisieren mit Power BI-Arbeitsbereichssammlungen.
 services: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
-ms.service: power-bi-workspace-collections
+author: rkarlin
+ms.author: rkarlin
+ms.service: power-bi-embedded
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 5d7b5f2655fc94b9a060c30e11be66bd2eacdee8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 713c56904769c133272db4fb65f8b596ab66804b
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520614"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672504"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Informationen zum Authentifizieren und Autorisieren mit Power BI-Arbeitsbereichssammlungen
 
@@ -92,7 +92,7 @@ Bei der Verwendung von Einbettungstoken möchten Sie vielleicht die Nutzung der 
 
 Im Folgenden sehen Sie die verfügbaren Bereiche für Power BI-Arbeitsbereichssammlungen.
 
-|Bereich|BESCHREIBUNG|
+|`Scope`|BESCHREIBUNG|
 |---|---|
 |Dataset.Read|Stellt die Berechtigung zum Lesen des angegebenen Datasets bereit.|
 |Dataset.Write|Stellt die Berechtigung zum Schreiben in das angegebene Dataset bereit.|

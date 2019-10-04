@@ -1,19 +1,19 @@
 ---
 title: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen2 | Microsoft-Dokumentation
 description: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen2
-services: storage
-author: swums
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: stewu
-ms.openlocfilehash: f175360586428b57d1ff10e3529ae9e3283399e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: normesta
+ms.reviewer: stewu
+ms.openlocfilehash: b134842303bebdf10efdf388057c8ad7b3be61be
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117052"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855568"
 ---
 # <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Optimieren der Leistung von Azure Data Lake Storage Gen2
 

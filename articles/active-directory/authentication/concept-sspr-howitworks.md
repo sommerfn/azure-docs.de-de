@@ -5,27 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2c31867f4de0e49e2c82733dc859f17ba060bdaa
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369997"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69561337"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
 Wie funktioniert die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR)? Was bedeutet diese Option in der Benutzeroberfläche? Im weiteren Verlauf erfahren Sie mehr über SSRP in Azure Active Directory (Azure AD).
-
-|     |
-| --- |
-| Das Empfangen einer Benachrichtigung in der mobilen App und das Erhalten eines Codes in der mobilen App sind zwei Methoden für die Self-Service-Kennwortzurücksetzung in Azure AD und als öffentliche Previewfunktion von Azure Active Directory verfügbar. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
 
 ## <a name="how-does-the-password-reset-portal-work"></a>Wie funktioniert das Portal für die Kennwortzurücksetzung?
 
@@ -61,9 +56,9 @@ In den folgenden Schritten wird beschrieben, welche Logik hinter der Seite zur K
 
 Wenn SSPR aktiviert ist, müssen Sie mindestens eine der folgenden Optionen als Authentifizierungsmethode auswählen. Manchmal werden diese Optionen als Gates bezeichnet. Es wird dringend empfohlen, **mindestens zwei Authentifizierungsmethoden** auszuwählen, damit Ihre Benutzer ausweichen können, falls sie auf eine Methode nicht zugreifen können. Weitere Informationen zu den unten aufgeführten Methoden finden Sie im Artikel [Was sind Authentifizierungsmethoden?](concept-authentication-methods.md)
 
-* Benachrichtigung in der mobilen App (Vorschauversion)
-* Code in der mobilen App (Vorschauversion)
-* E-Mail
+* Benachrichtigung über eine mobile App
+* Code der mobilen App:
+* Email
 * Mobiltelefon
 * Bürotelefon
 * Sicherheitsfragen
@@ -71,7 +66,7 @@ Wenn SSPR aktiviert ist, müssen Sie mindestens eine der folgenden Optionen als 
 Benutzer können ihr Kennwort nur zurücksetzen, wenn für sie Daten in den Authentifizierungsmethoden vorliegen, die der Administrator aktiviert hat.
 
 > [!IMPORTANT]
-> Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Die Telefonanrufoption ist weiterhin für Benutzer in kostenpflichtigen Azure AD-Mandanten verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
+> Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
 
 > [!WARNING]
 > Konten, denen Azure-Administratorrollen zugewiesen wurden, müssen Methoden nutzen, die im Abschnitt [Unterschiede zu Richtlinien zum Zurücksetzen von Administratorkennwörtern](concept-sspr-policy.md#administrator-reset-policy-differences) definiert sind.
@@ -86,7 +81,7 @@ Benutzer können wählen, weitere Authentifizierungsmethoden bereitzustellen, we
 
 Sind für einen Benutzer nicht die mindestens erforderlichen Methoden registriert, wird eine Fehlerseite angezeigt, die ihn auffordert, einen Administrator um die Kennwortzurücksetzung zu bitten.
 
-#### <a name="mobile-app-and-sspr-preview"></a>Mobile App und SSPR (Vorschauversion)
+#### <a name="mobile-app-and-sspr"></a>Mobile App und SSPR
 
 Wenn Sie eine mobile App wie die Microsoft Authenticator-App als Methode zur Kennwortzurücksetzung verwenden, sollten Sie folgende Einschränkungen beachten:
 

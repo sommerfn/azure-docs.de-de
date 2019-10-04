@@ -5,17 +5,16 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.topic: tutorial
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: v-masebo
-manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 3ca17ae905fff0911b58a0d336e0899ff385085c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 07/29/2019
+ms.openlocfilehash: c6ad1cd7af02f281c53ece23a018f8b5ec0c7da9
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990478"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68640937"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Tutorial: Entwerfen einer relationalen Datenbank in einer Einzeldatenbank in Azure SQL-Datenbank mit SSMS
 
@@ -31,6 +30,8 @@ Azure SQL-Datenbank ist eine relationale DBaaS-Lösung (Database-as-a-Service) i
 
 *Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
+> [!TIP]
+> In dem folgenden kostenlosen Microsoft Learn-Modul lernen Sie, wie Sie eine [ASP.NET-Anwendung entwickeln und konfigurieren, die eine Azure SQL-Datenbank abfragt](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/). Sie erfahren u. a., wie Sie eine einfache Datenbank erstellen.
 > [!NOTE]
 > Für dieses Tutorial nutzen wir eine Einzeldatenbank. Sie können auch eine in einem Pool zusammengefasste Datenbank in einem Pool für elastische Datenbanken oder eine Instanzdatenbank in einer verwalteten Instanz verwenden. Informationen zu Verbindungen mit einer verwalteten Instanz finden Sie in den folgenden Schnellstartanleitungen zu verwalteten Instanzen: [Schnellstart: Konfigurieren einer Azure-VM für das Herstellen einer Verbindung mit einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-configure-vm.md) und [Schnellstart: Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer mit einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-configure-p2s.md).
 
@@ -102,13 +103,13 @@ Der SQL-Datenbank-Dienst erstellt eine IP-Firewall auf Serverebene. Diese Firewa
 
    ![Servername](./media/sql-database-design-first-database/server-name.png)
 
-3. Klicken Sie auf der Symbolleiste auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet.
+3. Klicken Sie auf der Symbolleiste auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbank-Server wird geöffnet.
 
    ![IP-Firewallregel auf Serverebene](./media/sql-database-design-first-database/server-firewall-rule.png)
 
 4. Klicken Sie auf der Symbolleiste auf **Client-IP-Adresse hinzufügen**, um Ihre aktuelle IP-Adresse einer neuen IP-Firewallregel hinzuzufügen. Eine IP-Firewallregel kann Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen.
 
-5. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine IP-Firewallregel auf Serverebene erstellt, und auf dem SQL-Datenbankserver wird der Port 1433 geöffnet.
+5. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine IP-Firewallregel auf Serverebene erstellt, und auf dem SQL-Datenbank-Server wird der Port 1433 geöffnet.
 
 6. Klicken Sie auf **OK**, und schließen Sie anschließend die Seite **Firewalleinstellungen**.
 

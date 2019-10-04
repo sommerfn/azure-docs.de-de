@@ -3,8 +3,8 @@ title: Entfernen einer bei der Microsoft Identity Platform registrierten Anwendu
 description: Es wird beschrieben, wie Sie eine Anwendung entfernen, die bei der Microsoft Identity Platform registriert ist.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
-ms.author: celested
+ms.date: 05/08/2019
+ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20d7218b9b1d53b3cfb72a12ee34a77956327ce2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eddf16ea4179d3c254538a367ceb80ed02598345
+ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093193"
+ms.lasthandoff: 05/11/2019
+ms.locfileid: "65545744"
 ---
-# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>Schnellstart: Entfernen einer bei Microsoft Identity Platform registrierten Anwendung (Vorschauversion)
+# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Schnellstart: Entfernen einer bei Microsoft Identity Platform registrierten Anwendung
 
 Unternehmensentwickler und SaaS-Anbieter (Software-as-a-Service), die Anwendungen bei der Microsoft Identity Platform registriert haben, müssen die Registrierung einer Anwendung unter Umständen entfernen.
 
@@ -35,10 +35,7 @@ In diesem Schnellstart erfahren Sie, wie die folgenden Aufgaben ausgeführt werd
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie zunächst sicher, dass die folgenden Voraussetzungen erfüllt sind:
-
-* Sie verfügen über einen Mandanten, unter dem Anwendungen registriert wurden. Weitere Informationen zum Hinzufügen und Registrieren von Apps finden Sie unter [Register an application with the Microsoft identity platform](quickstart-register-app.md) (Registrieren einer Anwendung bei der Microsoft Identity Platform).
-* Aktivieren Sie die Vorschauoberfläche für App-Registrierungen im Azure-Portal. Die Schritte in dieser Schnellstartanleitung gelten für die neue Benutzeroberfläche und funktionieren nur, wenn Sie sich für die Nutzung der Vorschauoberfläche entschieden haben.
+Sie müssen über einen Mandanten verfügen, unter dem Anwendungen registriert wurden. Weitere Informationen zum Hinzufügen und Registrieren von Apps finden Sie unter [Register an application with the Microsoft identity platform](quickstart-register-app.md) (Registrieren einer Anwendung bei der Microsoft Identity Platform).
 
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>Entfernen einer Anwendung, die von Ihnen oder Ihrer Organisation erstellt wurde
 
@@ -47,8 +44,8 @@ Anwendungen, die von Ihnen oder Ihrer Organisation registriert wurden, werden in
 ### <a name="to-remove-an-application"></a>So entfernen Sie eine Anwendung
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, indem Sie entweder ein Geschäfts-, Schul- oder Unikonto oder ein persönliches Microsoft-Konto verwenden.
-2. Wenn Ihr Konto Zugriff auf mehr als einen Mandanten ermöglicht, wählen Sie oben rechts Ihr Konto aus und legen Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-3. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und dann **App-Registrierungen (Vorschau)**. Wählen Sie die Anwendung aus, die Sie konfigurieren möchten. Nachdem Sie die App ausgewählt haben, wird die Seite **Übersicht** angezeigt.
+2. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
+3. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und dann **App-Registrierungen** aus. Wählen Sie die Anwendung aus, die Sie konfigurieren möchten. Nachdem Sie die App ausgewählt haben, wird die Seite **Übersicht** angezeigt.
 4. Wählen Sie auf der Seite **Übersicht** die Option **Löschen**.
 5. Wählen Sie **Ja**, um zu bestätigen, dass Sie die App löschen möchten.
 

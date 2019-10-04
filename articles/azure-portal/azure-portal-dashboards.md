@@ -1,10 +1,10 @@
 ---
 title: Erstellen und Freigeben von Dashboards im Azure-Portal | Microsoft-Dokumentation
-description: In diesem Artikel wird das Erstellen und Bearbeiten von Dashboards im Azure-Portal beschrieben.
+description: In diesem Artikel wird beschrieben, wie Sie Dashboards im Azure-Portal erstellen, anpassen, veröffentlichen und freigeben.
 services: azure-portal
 documentationcenter: ''
 author: sewatson
-manager: doubeby
+manager: mtillman
 editor: tysonn
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.service: azure-portal
@@ -12,87 +12,165 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/06/2016
+ms.date: 07/01/2019
 ms.author: kfollis
-ms.openlocfilehash: 693e973fb988a57c15b4ea2fae47f16b4ff39011
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8dd1349ca9ab62484eb6693291e3b869ff079dc1
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818577"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537424"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Erstellen und Freigeben von Dashboards im Azure-Portal
-Sie können mehrere Dashboards erstellen und für andere Benutzer freigeben, die Zugriff auf Ihre Azure-Abonnements haben.  In diesem Artikel werden die Grundlagen der Erstellung, Bearbeitung, Veröffentlichung und Verwaltung des Zugriffs auf Dashboards beschrieben.
 
-## <a name="create-a-dashboard"></a>Erstellen eines Dashboards
-Wählen Sie zum Erstellen eines Dashboards die Schaltfläche **Neues Dashboard** neben dem Namen des aktuellen Dashboards aus.  
+Dashboards bieten Ihnen die Möglichkeit, eine organisierte Ansicht Ihrer Cloudressourcen im Azure-Portal zu erstellen. Sie können Dashboards als Arbeitsbereich einsetzen, indem sie Aufgaben für alltägliche Vorgänge und zur Überwachung von Ressourcen schnell und einfach erstellen können.  Sie können z. B. eigene Dashboards für Projekte, Aufgabe oder Benutzerrollen erstellen.  Im Azure-Portal wartet ein Standarddashboard auf Sie, mit dem Sie beginnen können. Sie können das Standarddashboard bearbeiten, zusätzliche Dashboards erstellen und anpassen, und diese dann veröffentlichen oder freigeben, um sie anderen Benutzern bereitzustellen. In diesem Artikel erfahren Sie mehr darüber, wie Sie ein neues Dashboard erstellen, die Schnittstelle anpassen und Dashboards veröffentlichen und freigeben.
 
-![Dashboard erstellen](./media/azure-portal-dashboards/new-dashboard.png)
+## <a name="create-a-new-dashboard"></a>Erstellen eines neuen Dashboards
 
-Bei dieser Aktion wird ein neues, leeres, privates Dashboard erstellt. Außerdem wird der Anpassungsmodus aktiviert, in dem Sie dem Dashboard einen Namen geben und Kacheln hinzufügen oder neu anordnen können.  In diesem Modus ersetzt der ausblendbare Kachelkatalog das Navigationsmenü auf der linken Seite.  Im Kachelkatalog können Sie auf verschiedene Arten nach Kacheln für Ihre Azure-Ressourcen suchen: Sie können nach [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md#resource-groups), Ressourcentyp, [Tag](../azure-resource-manager/resource-group-using-tags.md) oder nach dem Namen der Ressource suchen.  
+In diesem Beispiel werden wir ein neues, privates Dashboard erstellen und ihm einen Namen zuweisen. Führen Sie zum Einstieg die folgenden Schritte aus:
 
-![Dashboard anpassen](./media/azure-portal-dashboards/customize-dashboard.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie oben in der Seitenleiste **„Dashboard“** aus. In Ihrer Standardansicht kann das Dashboard bereits ausgewählt sein.
+1. Wählen Sie **„+ Neues Dashboard“** .
 
-Fügen Sie Kacheln hinzu, indem Sie sie an eine beliebige Position auf der Dashboardoberfläche ziehen und dort ablegen.
+    ![Screenshot des Standarddashboards](./media/azure-portal-dashboards/dashboard-new.png)
 
-Es ist eine neue Kategorie mit dem Namen **Allgemein** für Kacheln vorhanden, die nicht einer bestimmten Ressource zugeordnet sind.  In diesem Beispiel heften wir die Kachel „Markdown“ an.  Sie verwenden diese Kachel, um dem Dashboard benutzerdefinierte Inhalte hinzuzufügen.  Die Kachel unterstützt Klartext, [Markdown-Syntax](https://daringfireball.net/projects/markdown/syntax)und eine begrenzte Gruppe von HTML-Elementen.  (Aus Sicherheitsgründen ist es nicht möglich, `<script>` -Tags zu injizieren oder bestimmte Formatelemente von CSS zu verwenden, die unter Umständen die Funktionsweise des Portals beeinträchtigen.) 
+4. Diese Aktion öffnet den **Kachelkatalog**, aus dem Sie Kacheln auswählen können, sowie ein leeres Raster, wo Sie sie anordnen können.
 
-![Markdown hinzufügen](./media/azure-portal-dashboards/add-markdown.png)
+    ![Screenshot des Kachelkatalogs und des leeren Rasters](./media/azure-portal-dashboards/dashboard-name.png)
+
+5. Wählen Sie den Text **„Mein Dashboard“** in der Dashboardbezeichnung und geben Sie einen Namen ein, der Ihnen dabei hilft, das benutzerdefinierte Dashboard leichter zu finden.
+1. Wählen Sie im Seitenheader **„Anpassung abgeschlossen“** , um den Bearbeitungsmodus zu verlassen.
+
+Die Dashboardansicht zeigt jetzt Ihr leeres Dashboard. Wählen Sie die Dropdownliste neben dem Dashboardnamen, um die verfügbaren Dashboards zu sehen. In der Liste können Sie auch Dashboards finden, die andere Benutzer erstellt und freigegeben haben.
 
 ## <a name="edit-a-dashboard"></a>Bearbeiten eines Dashboards
-Nach der Erstellung des Dashboards können Sie Kacheln aus dem Kachelkatalog oder der Kacheldarstellung von Blättern anheften. Hier heften wir die Darstellung unserer Ressourcengruppe an. Sie können das Anheften entweder beim Durchsuchen des Elements oder über das Ressourcengruppenblatt durchführen. Beide Ansätze führen zum Anheften der Kacheldarstellung der Ressourcengruppe.
 
-![An Dashboard anheften](./media/azure-portal-dashboards/pin-to-dashboard.png)
+Bearbeiten wir jetzt das Dashboard, um Kacheln hinzuzufügen, ihre Größe zu ändern und sie neu anzuordnen. Diese Kacheln stehen für Ihre Azure-Ressourcen.
 
-Nach dem Anheften des Elements wird es in Ihrem Dashboard angezeigt.
+### <a name="add-tiles"></a>Hinzufügen von Kacheln
 
-![Dashboard anzeigen](./media/azure-portal-dashboards/view-dashboard.png)
+Mit den folgenden Schritten können Sie einem Dashboard Kacheln hinzufügen:
+1. Wählen Sie das ![Bearbeitungssymbol](./media/azure-portal-dashboards/dashboard-edit-icon.png) **„Bearbeiten“** aus dem Seitenheader.
 
-Nachdem wir nun die Kachel „Markdown“ und eine Ressourcengruppe im Dashboard angeheftet haben, können wir die Größe der Kacheln anpassen und die Kacheln wie gewünscht anordnen.
+    ![Screenshot des Dashboards mit „Bearbeiten“ hervorgehoben](./media/azure-portal-dashboards/dashboard-edit.png)
 
-Wenn Sie mit der Maus auf „…“ zeigen oder mit der rechten Maustaste auf eine Kachel klicken, werden alle Kontextbefehle für die jeweilige Kachel angezeigt. Standardmäßig sind zwei Elemente vorhanden:
+2. Durchsuchen Sie den **Kachelkatalog**oder verwenden Sie das Suchfeld, um die gewünschte Kachel zu finden.
+1. Wählen Sie **„Hinzufügen“** aus, um die Kachel dem Dashboard automatisch mit einer Standardgröße und einem Standardort hinzuzufügen. Oder ziehen Sie die Kachel in das Raster und platzieren Sie sie dort, wo Sie sie haben möchten.
 
-1. **Von Dashboard lösen** : Entfernt die Kachel aus dem Dashboard.
-2. **Anpassen** : Aktiviert den Anpassungsmodus.
+Viele Ressourcenseiten (auch „Blätter“ genannt) enthalten eine Ortsmarke in der Befehlsleiste. Wenn Sie das Symbol auswählen, dann wird eine Kachel, die für die Quellseite steht, in das derzeit aktive Dashboard geheftet. Dies ist eine alternative Methode zum Hinzufügen von Kacheln.
 
-![Kachel anpassen](./media/azure-portal-dashboards/customize-tile.png)
+![Screenshot der Befehlsleiste der Seite mit dem Stecknadelsymbol](./media/azure-portal-dashboards/dashboard-pin-blade.png)
 
-Wenn Sie „Anpassen“ auswählen, können Sie die Größe von Kacheln ändern und diese neu anordnen. Wählen Sie zum Ändern der Größe einer Kachel die neue Größe im Kontextmenü aus. Dies ist in der folgenden Abbildung dargestellt.
+> [!TIP]
+> Wenn Sie mit mehr als einer Organisation zusammenarbeiten, können Sie die Kachel **„Organisationsidentität“** hinzufügen, um klar anzuzeigen, zu welcher Organisation die Ressource gehört.
+>
+>
+### <a name="resize-or-rearrange-tiles"></a>Änderung der Größe oder des Platzes von Kacheln
+Wenn Sie die Größe einer Kachel ändern oder sie im Dashboard an einen anderen Platz verschieben wollen, dann folgen Sie diesen Schritten:
 
-![Größe der Kachel ändern](./media/azure-portal-dashboards/resize-tile.png)
+1. Wählen Sie das ![Bearbeitungssymbol](./media/azure-portal-dashboards/dashboard-edit-icon.png) **„Bearbeiten“** aus dem Seitenheader.
+1. Wählen Sie das Kontextmenü oben rechts in der Ecke einer Kachel. Wählen Sie dann eine Kachelgröße. Kacheln, die in beliebiger Größe verfügbar sind, haben einen Ziehpunkt unten rechts in der Ecke, mit dem Sie die Größe durch Ziehen anpassen können.
 
-Falls für die Kachel alle Größen unterstützt werden, können Sie durch Ziehen an der unteren rechten Ecke die gewünschte Größe festlegen.
+   ![Screenshot des Dashboards mit offenem Kachelgrößenmenü](./media/azure-portal-dashboards/dashboard-tile-resize.png)
 
-![Größe der Kachel ändern](./media/azure-portal-dashboards/resize-corner.png)
+3. Wählen Sie eine Kachel aus und ziehen Sie sie an einen neuen Platz im Raster, um Ihr Dashboard anzupassen.
 
-Sehen Sie sich nach dem Ändern der Größe von Kacheln das Dashboard an.
+### <a name="additional-tile-configuration"></a>Zusätzliche Kachelkonfiguration
 
-![Kachel anzeigen](./media/azure-portal-dashboards/view-tile.png)
+Es kann sein, dass Sie einige Kacheln weiter konfigurieren müssen, damit sie die von Ihnen gewünschten Informationen anzeigen. So muss die Kachel **„Metrikdiagramm“** eingerichtet werden, damit sie eine Metrik aus **Azure Monitor** anzeigt. Sie können Kacheldaten auch so anpassen, dass sie die Standardzeiteinstellungen des Dashboard außer Kraft setzen.
 
-Wählen Sie nach dem Anpassen eines Dashboards einfach die Option **Anpassung abgeschlossen**, um den Anpassungsmodus zu beenden. Sie können auch mit der rechten Maustaste klicken und im Kontextmenü die Option **Anpassung abgeschlossen** wählen.
+Jede Kachel, die eingerichtet werden muss, zeigt das Banner **„Kachel konfigurieren“** , bis Sie sie angepasst haben. Wählen Sie das Banner aus und führen Sie dann die erforderliche Einrichtung durch.
 
-## <a name="publish-a-dashboard-and-manage-access-control"></a>Veröffentlichen eines Dashboards und Verwalten der Zugriffssteuerung
-Wenn Sie ein Dashboard erstellen, ist es standardmäßig ein privates Dashboard. Dies bedeutet, dass Sie die einzige Person sind, die es anzeigen kann.  Verwenden Sie die Schaltfläche **Freigeben**, die neben den anderen Dashboardbefehlen angezeigt wird, um es auch für andere Benutzer sichtbar zu machen.
+![Screenshot einer Kachel, die konfiguriert werden muss](./media/azure-portal-dashboards/dashboard-configure-tile.png)
 
-![Dashboard freigeben](./media/azure-portal-dashboards/share-dashboard.png)
+> [!NOTE]
+> Mit einer Markdown-Kachel können Sie benutzerdefinierte, statische Inhalte auf Ihrem Dashboard anzeigen. Das können einfache Anweisungen sein, ein Bild, eine Reihe Links oder sogar Kontaktinformationen. Weitere Informationen über die Verwendung einer Markdown-Kachel finden Sie unter [„Verwenden einer benutzerdefinierten Markdown-Kachel“](azure-portal-markdown-tile.md).
+>
+>
+### <a name="customize-tile-data"></a>Kacheldaten anpassen
 
-Sie werden aufgefordert, für die Veröffentlichung des Dashboards ein Abonnement und eine Ressourcengruppe auszuwählen. Damit Dashboards nahtlos in das Ökosystem integriert werden können, haben wir freigegebene Dashboards als Azure-Ressourcen implementiert (das Freigeben durch die Eingabe einer E-Mail-Adresse ist also nicht möglich).  Der Zugriff auf die Informationen, die von den meisten Kacheln im Portal angezeigt werden, wird in Azure über die [rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md) geregelt. Aus Sicht der Zugriffssteuerung unterscheiden sich freigegebene Dashboards nicht von einem virtuellen Computer oder Speicherkonto.  
+Die Daten auf dem Dashboard zeigen automatisch die Aktivitäten der letzten 24 Stunden an. Folgen Sie diesen Schritten, wenn Sie eine andere Zeitspanne nur für diese Kachel sehen möchten:
 
-Ein Beispiel: Sie verfügen über ein Azure-Abonnement, und Mitgliedern Ihres Teams wurden die Rollen **Besitzer**, **Mitwirkender** oder **Leser** für das Abonnement zugewiesen.  Benutzer, die Besitzer oder Mitwirkende sind, können Dashboards im Abonnement auflisten, anzeigen, erstellen, ändern oder löschen.  Benutzer, die als Leser festgelegt wurden, können Dashboards auflisten und anzeigen, aber sie können diese nicht ändern oder löschen.  Benutzer mit Lesezugriff können lokale Änderungen an einem freigegebenen Dashboard vornehmen, haben aber nicht die Möglichkeit, diese Änderungen zur Veröffentlichung zurück an den Server zu übergeben.  Sie können aber eine private Kopie des Dashboards zur eigenen Verwendung erstellen.  Einzelne Kacheln im Dashboard erzwingen basierend auf den jeweiligen Ressourcen wie immer eigene Regeln für die Zugriffssteuerung.  
+1. Wählen Sie das ![Filtersymbol](./media/azure-portal-dashboards/dashboard-filter.png) oben links in der Kachel aus oder **„Kacheldaten anpassen“** im Kontextmenü.
 
-Während der Veröffentlichung über das Portal werden Sie der Einfachheit halber zu einem Muster geführt, bei dem Sie Dashboards in einer Ressourcengruppe mit dem Namen **Dashboards**anordnen.  
+   ![Screenshot des Kachelkontextmenüs](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
-![Dashboard veröffentlichen](./media/azure-portal-dashboards/publish-dashboard.png)
+2. Markieren Sie das Kontrollkästchen für **„Außerkraftsetzung der Zeiteinstellungen für das Dashboard auf Kachelebene“** .
 
-Sie können sich auch dafür entscheiden, ein Dashboard unter einer bestimmten Ressourcengruppe zu veröffentlichen.  Die Zugriffssteuerung für dieses Dashboard stimmt mit der Zugriffssteuerung für die Ressourcengruppe überein.  Benutzer, die die Ressourcen in dieser Ressourcengruppe verwalten können, haben auch Zugriff auf die Dashboards.
+   ![Screenshot des Dialogfelds zur Konfigurierung der Kachelzeiteinstellungen](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
 
-![Dashboard in Ressourcengruppe veröffentlichen](./media/azure-portal-dashboards/publish-to-resource-group.png)
+3. Wählen Sie die Zeitspanne für diese Kachel. Sie können sich für die letzten 30 Minuten bis hin zu den letzten 30 Tagen entscheiden, oder auch einen benutzerdefinierten Zeitraum angeben.
+1. Wählen Sie die Zeitgranularität, die angezeigt werden soll. Sie können sich für Inkremente aus einer Minute bis hin zu einem Monat entscheiden.
+1. Wählen Sie **Übernehmen**.
 
-Nach der Veröffentlichung des Dashboards wird der Steuerungsbereich für **Freigabe und Zugriff** aktualisiert, und es werden Informationen zum veröffentlichten Dashboard angezeigt, z.B. ein Link zur Verwaltung des Benutzerzugriffs auf das Dashboard.  Mit diesem Link wird das Standardblatt für die rollenbasierte Zugriffssteuerung gestartet, über das der Zugriff für alle Azure-Ressourcen verwaltet wird.  Sie können zu dieser Ansicht immer zurückkehren, indem Sie die Option **Freigeben** wählen.
+## <a name="delete-a-tile"></a>Löschen einer Kachel
 
-![Zugriffssteuerung verwalten](./media/azure-portal-dashboards/manage-access.png)
+Folgen Sie diesen Schritten, wenn Sie eine Kachel aus einem Dashboard löschen möchten:
+
+* Wählen Sie das Kontextmenü oben rechts in der Kachel aus und wählen Sie dann **„Aus Dashboard entfernen“** . Oder
+* Wählen Sie das ![Symbol „Bearbeiten“](./media/azure-portal-dashboards/dashboard-edit-icon.png) **„Bearbeiten“** , um den Anpassungsmodus aufzurufen. Fahren Sie über die obere rechte Ecke der Kachel und wählen sie dann das ![Löschsymbol](./media/azure-portal-dashboards/dashboard-delete-icon.png) aus, um die Kachel aus dem Dashboard zu entfernen.
+
+   ![Screenshot der zeigt, wie eine Kachel aus dem Dashboard entfernt wird](./media/azure-portal-dashboards/dashboard-delete-tile.png)
+
+## <a name="clone-a-dashboard"></a>Klonen eines Dashboards
+
+Sie können ein vorhandenes Dashboard als Vorlage für ein neues verwenden, indem Sie diesen Schritten folgen:
+
+1. Achten Sie darauf, dass die Dashboardansicht das Dashboard zeigt, das Sie kopieren möchten.
+1. Wählen Sie im Seitenheader das ![Klonensymbol](./media/azure-portal-dashboards/dashboard-clone.png) **„Klonen“** .
+1. Eine Kopie des Dashboards namens „Klon von *Ihre Dashboardname*“ wird im Bearbeitungsmodus geöffnet. Anhand der vorherigen Schritte in diesem Artikel können Sie das Dashboard umbenennen und anpassen.
+
+## <a name="publish-and-share-a-dashboard"></a>Veröffentlichen und Freigeben eines Dashboards
+
+Wenn Sie ein Dashboard erstellen, ist es standardmäßig ein privates Dashboard. Dies bedeutet, dass Sie die einzige Person sind, die es anzeigen kann. Sie können anderen Benutzern Dashboards zur Verfügung stellen, indem Sie sie freigeben. Zuerst müssen Sie das Dashboard als Azure-Ressource veröffentlichen. Folgen Sie diesen Schritten, um ein benutzerdefiniertes Dashboard zu veröffentlichen und freizugeben:
+
+1. Wählen Sie das ![Freigabesymbol](./media/azure-portal-dashboards/dashboard-share-icon.png) **„Teilen“** im Seitenheader. Es erscheint das Formular **„Freigabe + Zugriffssteuerung“** .
+1. Überprüfen Sie, ob der richtige Dashboardname angezeigt wird.
+1. Wählen Sie einen **Abonnementnamen** aus. Benutzer mit Zugriff auf das Abonnement können das freigegebene Dashboard verwenden. Der Zugriff auf die Ressourcen, die anhand der einzelnen Kacheln dargestellt werden, wird durch die rollenbasierte Zugriffssteuerung von Azure dargestellt.
+1. Markieren Sie das Kontrollkästchen, um dieses Dashboard in der Dashboard-Ressourcengruppe für das ausgewählte Abonnement zu veröffentlichen. Alternativ können Sie das Häkchen entfernen und das Dashboard in eine vorhandene Ressourcengruppe veröffentlichen.
+1. Wählen Sie einen Ort für die Dashboardressource. Wir empfehlen, dass Sie das Dashboard bei den anderen Ressourcen speichern. Hinweis: Wenn Sie eine vorhandene Ressourcengruppe wählen, dann befindet sich das Dashboard automatisch bei der Ressourcengruppe.
+1. Wählen Sie **Veröffentlichen**.
+
+   ![Screenshot des Dialogfelds für die Dashboardveröffentlichung](./media/azure-portal-dashboards/dashboard-publish.png)
+
+### <a name="set-access-control-on-a-shared-dashboard"></a>Einrichten der Zugriffssteuerung bei einem freigegebenen Dashboard
+
+Nachdem Sie das Dashboard veröffentlicht haben, können Sie anhand der folgenden Schritte verwalten, wer Zugriff darauf hat:
+
+1. Wählen Sie im Feld **„Freigabe + Zugriffssteuerung“** **„Verwalten von Benutzern“** aus.
+
+   ![Screenshot des Dialogfelds für die Freigabe und die Zugriffssteuerung des Dashboards](./media/azure-portal-dashboards/dashboard-share-access-control.png)
+
+2. Die Seite für die **Zugriffssteuerung** wird geöffnet. Auf dieser Seite können Sie die Zugriffsebene für Benutzer überprüfen oder neue Rollenzuweisungen hinzufügen. Wenn Sie hier eine Rollenzuweisung hinzufügen, dann vergeben Sie Berechtigungen für das Dashboard.
+
+> [!NOTE]
+> Die Kacheln repräsentieren die Ressourcen in Ihrer Organisation. Der Zugriff auf die Ressourcen wird über eine rollenbasierte Zugriffssteuerung verwaltet. Die Berechtigung werden vom Abonnement weiter an die Ressource gegeben. Der Zugriff auf ein Dashboard bedeutet nicht automatisch, dass der Benutzer auch Berechtigungen für die Ressourcen hat, die auf dem Dashboard angezeigt werden. Weitere Informationen über Berechtigungen für freigegebene Dashboard und die rollenbasierte Zugriffssteuerung für Ressourcen finden Sie unter [„Freigeben von Dashboards per rollenbasierter Zugriffssteuerung“](azure-portal-dashboard-share-access.md).
+
+### <a name="open-a-shared-dashboard"></a>Öffnen eines freigegebenen Dashboards
+
+Folgen Sie diesen Schritten, um ein freigegebenes Dashboard zu finden und zu öffnen:
+
+1. Wählen Sie die Dropdownliste neben dem Namen des Dashboards aus.
+1. Wählen Sie ein Dashboard aus der Liste oder **durchsuchen Sie alle Dashboards**, wenn Ihres nicht aufgeführt ist.
+
+   ![Screenshot des Dashboard-Auswahlmenüs](./media/azure-portal-dashboards/dashboard-browse.png)
+
+3. Wählen Sie im Feld **„Typ“** **„Freigegebene Dashboards“** aus.
+1. Wählen Sie ein oder mehrere Abonnements aus. Sie können auch Text verwenden, um die Dashboards nach Namen zu filtern.
+1. Wählen Sie ein Dashboard aus der Liste der freigegebenen Dashboards.
+
+## <a name="delete-a-dashboard"></a>Löschen eines Dashboards
+
+Wenn Sie ein privates oder ein freigegebenes Dashboard dauerhaft löschen wollen, dann folgen Sie diesen Schritten:
+
+1. Wählen Sie das Dashboard, das Sie löschen wollen, aus der Dropdownliste neben dem Namen des Dashboards.
+1. Wählen Sie das ![Löschen-Symbol](./media/azure-portal-dashboards/dashboard-delete-icon.png) **„Löschen“** aus dem Seitenheader.
+1. Bei einem privaten Dashboard müssen Sie im Bestätigungsdialogfeld **„OK“** wählen, um das Dashboard zu löschen. Bei einem freigegebenen Dashboard wählen Sie im Bestätigungsdialogfeld das Kontrollkästchen aus, um zu bestätigen, dass andere das veröffentlichte Dashboard nicht mehr sehen können. Wählen Sie anschließend **OK** aus.
+
+   ![Screenshot der Löschbestätigung](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen unter Verwendung des Azure-Portals](../azure-resource-manager/manage-resources-portal.md).
-* Informationen zum Bereitstellen von Ressourcen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
+* [Freigeben von Dashboards per rollenbasierter Zugriffssteuerung](azure-portal-dashboard-share-access.md)
+* [Programmgesteuertes Erstellen von Azure-Dashboards](azure-portal-dashboards-create-programmatically.md)

@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer neuen App
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 'Erstellen einer neuen App: LUIS'
+titleSuffix: Azure Cognitive Services
 description: Erstellen und verwalten Sie Ihre Anwendungen auf der LUIS-Webseite (Language Understanding Intelligent Service).
 services: cognitive-services
 author: diberry
@@ -8,20 +8,21 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/28/2019
+ms.topic: conceptual
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 72c4f23f47e0a2c6d9a96dbbe36716bc3ab665f1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 5939886f68a877c4cfad752fe93c4f0eca8f80cf
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891428"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258502"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Erstellen einer LUIS-App im LUIS-Portal
 Es gibt zwei Verfahren zum Erstellen einer LUIS-App. Sie können eine LUIS-App im [LUIS](https://www.luis.ai)-Portal oder mithilfe der LUIS-Erstellungs-[APIs](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) erstellen.
 
 ## <a name="using-the-luis-portal"></a>Mithilfe des LUIS-Portals
+
 Sie können eine neue App auf verschiedene Arten im LUIS-Portal erstellen:
 
 * Beginnen Sie mit einer leeren App, und erstellen Sie Absichten, Äußerungen und Entitäten.
@@ -39,6 +40,8 @@ Sie können eine neue App mit den Erstellungs-APIs auf zwei Arten erstellen:
 <a name="import-new-app"></a>
 <a name="delete-app"></a>
  
+
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-new-app-in-luis"></a>Erstellen einer neuen App in LUIS
 
@@ -65,12 +68,21 @@ Sie können eine neue App mit den Erstellungs-APIs auf zwei Arten erstellen:
 
 Mögliche Fehler: 
 
-* Eine App mit diesem Namen ist bereits vorhanden. Importieren Sie die App erneut, und legen Sie für **Optionaler Name** einen neuen Namen fest. 
+* Eine App mit diesem Namen ist bereits vorhanden. Importieren Sie die App erneut, und legen Sie für **Optional Name** (Optionaler Name) einen neuen Namen fest, um dies zu beheben. 
 
-## <a name="export-app"></a>Exportieren einer App
+## <a name="export-app-for-backup"></a>Exportieren der App für die Sicherung
 
-1. Wählen Sie auf der Seite **Meine Apps** die Option **Import new app** (Neue App importieren) aus.
-1. Wählen Sie im Dialogfeld **Import new app** (Neue App importieren) die JSON-Datei aus, in der die LUIS-App definiert wird.
+1. Wählen Sie auf der Seite **Meine Apps** die Option **Exportieren** aus.
+1. Wählen Sie **Als JSON exportieren** aus. Ihr Browser lädt die aktive Version der App herunter.
+1. Fügen Sie diese Datei Ihrem Sicherungssystem zum Archivieren des Modells hinzu.
+
+## <a name="export-app-for-containers"></a>Exportieren der App für Container
+
+1. Wählen Sie auf der Seite **Meine Apps** die Option **Exportieren** aus.
+1. Wählen Sie **Als Container exportieren** aus, und wählen Sie dann den veröffentlichten Slot aus (Produktion oder Bereitstellung), den Sie exportieren möchten.
+1. Verwenden Sie diese Datei mit Ihrem [LUIS-Container](luis-container-howto.md). 
+
+    Wenn Sie am Exportieren eines trainierten, aber noch nicht veröffentlichten Modells zur Verwendung mit dem LUIS-Container interessiert sind, navigieren Sie zur Seite **Versionen**, und exportieren Sie von dort aus. 
 
 ## <a name="delete-app"></a>Löschen einer App
 

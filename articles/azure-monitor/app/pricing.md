@@ -3,22 +3,22 @@ title: Verwalten von Nutzung und Kosten für Azure Application Insights | Micros
 description: Verwalten Sie Telemetriedatenvolumen, und überwachen Sie Kosten in Application Insights.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: DaleKoetke
 manager: carmonm
 ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: Dale.Koetke
-ms.date: 12/21/2018
-ms.author: mbullwin
-ms.openlocfilehash: edf724d6fd659ad4e8887a9c68467d17a33f5ccc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.reviewer: mbullwin
+ms.date: 09/17/2019
+ms.author: dalek
+ms.openlocfilehash: 62f2ea36468e30b20ef08bde21bfde961faae8f9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110279"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067014"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -26,7 +26,7 @@ ms.locfileid: "58110279"
 > Dieser Artikel beschreibt, wie die Datennutzung in Application Insights analysiert wird.  Entsprechende Informationen finden Sie in den folgenden Artikeln.
 > - [Überwachen der Nutzung und der geschätzten Kosten](../../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) beschreibt, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden. Außerdem wird beschrieben, wie Sie Ihr Preismodell ändern können.
 
-Wenn Sie Fragen zu den Preisen für Application Insights haben, können Sie gerne eine Frage in unserem [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights) posten.
+Wenn Sie Fragen zu den Preisen für Application Insights haben, können Sie gerne eine Frage in unserem [Forum](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights) posten.
 
 ## <a name="pricing-model"></a>Preismodell
 
@@ -38,11 +38,12 @@ Die Preise für [Azure Application Insights][start] basieren auf dem verbrauchte
 * Die Datenvolumengebühren Ihrer Anwendung werden jetzt ab April 2018 auf einem neuen Verbrauchszähler mit dem Namen **Data Ingestion** gemeldet. Diese neue Verbrauchseinheit wird von Überwachungstechnologien wie Applications Insights und Log Analytics gemeinsam genutzt und steht derzeit unter dem Dienstnamen **Log Analytics** zur Verfügung. 
 * [Live Metrics Stream](../../azure-monitor/app/live-stream.md)-Daten werden bei der Preisgestaltung nicht berechnet.
 
-Aktuelle Preise in Ihrer Währung und Region finden Sie auf der Seite [Application Insights – Preise][pricing].
+> [!NOTE]
+> Sämtliche Preise, die auf den in diesem Artikel enthaltenen Screenshots angezeigt werden, dienen nur zu Beispielzwecken. Aktuelle Preise in Ihrer Währung und für Ihre Region finden Sie auf der Seite [Application Insights – Preise][pricing].
 
 ### <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 
-Für [mehrstufige Webtests](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) wird eine zusätzliche Gebühr erhoben. Mehrstufige Webtests sind Webtests, die eine Sequenz von Aktionen ausführen.
+Für [mehrstufige Webtests](../../azure-monitor/app/availability-multistep.md) wird eine zusätzliche Gebühr erhoben. Mehrstufige Webtests sind Webtests, die eine Sequenz von Aktionen ausführen.
 
 Es gibt keine gesonderte Gebühr für *Pingtests* einer einzelnen Seite. Telemetriedaten aus Pingtests und mehrstufigen Tests werden ebenso wie andere Telemetriedaten aus Ihrer App in Rechnung gestellt.
 
@@ -53,7 +54,7 @@ Application Insights erleichtert das Verständnis der basierend auf den aktuelle
 ![Auswählen von Preisen](./media/pricing/pricing-001.png)
 
 A. Überprüfen Sie Ihr Datenvolumen für den Monat. Dies schließt alle nach einer beliebigen [Stichprobenerstellung](../../azure-monitor/app/sampling.md) in Ihren Server- und Client-Apps sowie Verfügbarkeitstests empfangenen und beibehaltenen Daten ein.  
-B: Für [Webtests mit mehreren Schritten](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) wird eine gesonderte Gebühr erhoben. (Darin nicht enthalten sind einfache Verfügbarkeitstests, die von der Gebühr für das Datenvolumen abgedeckt sind.)  
+B: Für [Webtests mit mehreren Schritten](../../azure-monitor/app/availability-multistep.md) wird eine gesonderte Gebühr erhoben. (Darin nicht enthalten sind einfache Verfügbarkeitstests, die von der Gebühr für das Datenvolumen abgedeckt sind.)  
 C. Zeigen Sie Trends zum Datenvolumen für den letzten Monat an.  
 D: Aktivieren Sie die Datenerfassungs-[Stichprobenerstellung](../../azure-monitor/app/sampling.md).   
 E. Legen Sie die Obergrenze für das tägliche Datenvolumen fest.  
@@ -64,34 +65,47 @@ Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt
 
 ![Auswählen der Option „Abrechnung“ im Menü auf der linken Seite](./media/pricing/02-billing.png)
 
-## <a name="data-rate"></a>Datenrate
-Das Volumen der Daten, die Sie senden, ist auf dreierlei Weise beschränkt:
+## <a name="managing-your-data-volume"></a>Verwalten des Datenvolumens 
 
-* **Stichprobenerstellung**: Mit der Stichprobenerstellung kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringert werden. Die Stichprobenerstellung ist Ihr wichtigstes Tool, um die Menge der von Ihnen gesendeten Daten zu optimieren. Erfahren Sie mehr über die [Merkmale von Stichproben](../../azure-monitor/app/sampling.md). 
-* **Tägliche Obergrenze**: Beim Erstellen einer Application Insights-Ressource im Azure-Portal ist die tägliche Obergrenze auf 100 GB pro Tag festgelegt. Die Standardeinstellung beim Erstellen einer Application Insights-Ressource über Visual Studio ist klein (nur 32,3 MB pro Tag). Zur Vereinfachung von Tests ist der Standardwert für die tägliche Obergrenze festgelegt. Es ist vorgesehen, dass der Benutzer vor dem Bereitstellen der App in der Produktion die tägliche Obergrenze erhöht. 
-
-    Die Obergrenze liegt bei 1.000 GB pro Tag, es sei denn, Sie fordern einen höheren Maximalwert für eine Anwendung mit hohem Datenverkehr an. 
-
-    Überlegen Sie gründlich, wenn Sie die tägliche Obergrenze festlegen. Sie sollten darauf achten, *niemals die tägliche Obergrenze zu erreichen*. Anderenfalls verlieren Sie die Daten des restlichen Tages, und Sie können nicht Ihre Anwendung überwachen. Um die tägliche Obergrenze zu ändern, verwenden Sie die Option **Obergrenze für das tägliche Volumen**. Sie können über den Bereich **Nutzung und geschätzte Kosten** auf diese Option zugreifen. (Dies wird weiter unten in diesem Artikel ausführlicher beschrieben.)
-    Wir haben die Beschränkung für bestimmte Abonnementtypen entfernt, bei denen Guthaben gewährt wurden, die nicht für Application Insights verwendet werden konnten. Wenn zuvor für das Abonnement ein Ausgabenlimit galt, enthielt das Dialogfeld mit der täglichen Obergrenze Anweisungen, wie das Ausgabenlimit zu entfernen ist und wie die tägliche Obergrenze über 32,3 MB pro Tag erhöht werden kann.
-* **Drosselung**: Durch eine Drosselung wird die Datenrate auf 32.000 Ereignisse pro Sekunde eingeschränkt (gemittelt über 1 Minute pro Instrumentierungsschlüssel).
-
-*Was geschieht, wenn meine App die Drosselungsrate überschreitet?*
-
-* Die Datenmenge, die Ihre App sendet, wird minütlich gemessen. Wenn sie die pro Sekunde, über eine Minute gemittelt Datenmenge überschreitet, lehnt der Server einige Anforderungen ab. Das SDK puffert die Daten und versucht dann, diese erneut zu senden. Es führt zu einem mehrere Minuten andauernden Anstieg. Wenn Ihre App die Drosselungsrate beim Senden von Daten laufend überschreitet, werden einige Daten gelöscht. (Die ASP.NET-, Java- und JavaScript-SDKs versuchen, Daten auf diese Weise erneut zu senden, wohingegen andere SDKs gedrosselte Daten möglicherweise einfach löschen.) Tritt eine Drosselung auf, erhalten Sie zur Warnung eine Benachrichtigung über diesen Vorgang.
-
-*Woher weiß ich, wie viele Daten meine App sendet?*
-
-Sie können eine der folgenden Optionen verwenden, um festzustellen, wie viele Daten Ihre App sendet:
+Um zu erfahren, wie viele Daten Ihre App sendet, können Sie folgende Aktionen ausführen:
 
 * Navigieren Sie zum Bereich **Nutzung und geschätzte Kosten**, um das Diagramm des täglichen Datenvolumens anzuzeigen. 
 * Fügen Sie im Metrik-Explorer ein neues Diagramm hinzu. Wählen Sie für die Diagrammmetrik **Datenpunktvolumen** aus. Aktivieren Sie **Gruppierung**, und gruppieren Sie nach **Datentyp**.
+* Verwenden Sie den Datentyp `systemEvents`. Wenn Sie beispielsweise das am letzten Tag verbrauchte Datenvolumen anzeigen möchten, lautet die Abfrage:
 
-## <a name="reduce-your-data-rate"></a>Verringern der Datenrate
+```kusto
+systemEvents 
+| where timestamp >= ago(1d)
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
+| summarize sum(BillingTelemetrySizeInBytes)
+```
+
+Diese Abfrage kann in einer [Azure-Protokollwarnung](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) verwendet werden, um Warnungen für Datenvolumen einzurichten. 
+
+Das Volumen der gesendeten Daten kann auf drei Arten verwaltet werden:
+
+* **Stichprobenerstellung**: Mit der Stichprobenerstellung kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringert werden. Die Stichprobenerstellung ist Ihr wichtigstes Tool, um die Menge der von Ihnen gesendeten Daten zu optimieren. Erfahren Sie mehr über die [Merkmale von Stichproben](../../azure-monitor/app/sampling.md).
+ 
+* **Tägliche Obergrenze**: Beim Erstellen einer Application Insights-Ressource im Azure-Portal ist die tägliche Obergrenze auf 100 GB pro Tag festgelegt. Die Standardeinstellung beim Erstellen einer Application Insights-Ressource über Visual Studio ist klein (nur 32,3 MB pro Tag). Zur Vereinfachung von Tests ist der Standardwert für die tägliche Obergrenze festgelegt. Es ist vorgesehen, dass der Benutzer vor dem Bereitstellen der App in der Produktion die tägliche Obergrenze erhöht. 
+
+    Die Obergrenze liegt bei 1.000 GB pro Tag, es sei denn, Sie fordern einen höheren Maximalwert für eine Anwendung mit hohem Datenverkehr an. 
+    
+    E-Mails mit Warnungen zur täglichen Obergrenze werden an Konten gesendet, die Mitglieder der folgenden Rollen für Ihre Application Insights-Ressource sind: „Dienstadministrator“, „Kontoadministrator“, „Co-Administrator“, „Besitzer“.
+
+    Überlegen Sie gründlich, wenn Sie die tägliche Obergrenze festlegen. Sie sollten darauf achten, *niemals die tägliche Obergrenze zu erreichen*. Anderenfalls verlieren Sie die Daten des restlichen Tages, und Sie können nicht Ihre Anwendung überwachen. Um die tägliche Obergrenze zu ändern, verwenden Sie die Option **Obergrenze für das tägliche Volumen**. Sie können über den Bereich **Nutzung und geschätzte Kosten** auf diese Option zugreifen. (Dies wird weiter unten in diesem Artikel ausführlicher beschrieben.)
+    
+    Wir haben die Beschränkung für bestimmte Abonnementtypen entfernt, bei denen Guthaben gewährt wurden, die nicht für Application Insights verwendet werden konnten. Wenn zuvor für das Abonnement ein Ausgabenlimit galt, enthielt das Dialogfeld mit der täglichen Obergrenze Anweisungen, wie das Ausgabenlimit zu entfernen ist und wie die tägliche Obergrenze über 32,3 MB pro Tag erhöht werden kann.
+    
+* **Drosselung**: Durch eine Drosselung wird die Datenrate auf 32.000 Ereignisse pro Sekunde eingeschränkt (gemittelt über 1 Minute pro Instrumentierungsschlüssel). Die Datenmenge, die Ihre App sendet, wird minütlich gemessen. Wenn sie die pro Sekunde, über eine Minute gemittelt Datenmenge überschreitet, lehnt der Server einige Anforderungen ab. Das SDK puffert die Daten und versucht dann, diese erneut zu senden. Es führt zu einem mehrere Minuten andauernden Anstieg. Wenn Ihre App die Drosselungsrate beim Senden von Daten laufend überschreitet, werden einige Daten gelöscht. (Die ASP.NET-, Java- und JavaScript-SDKs versuchen, Daten auf diese Weise erneut zu senden, wohingegen andere SDKs gedrosselte Daten möglicherweise einfach löschen.) Tritt eine Drosselung auf, erhalten Sie zur Warnung eine Benachrichtigung über diesen Vorgang.
+
+## <a name="reduce-your-data-volume"></a>Reduzieren des Datenvolumens
+
 Hier sind einige Schritte, die Sie ausführen können, um Ihr Datenvolumen zu reduzieren:
 
 * Verwenden Sie [Stichproben](../../azure-monitor/app/sampling.md). Durch diese Technologie wird Ihre Datenrate ohne Datenschiefe bei Ihren Metriken reduziert. Sie können weiterhin zwischen verwandten Elementen in der Search navigieren. Bei Server-Apps erfolgt die Stichprobenerstellung automatisch.
-* [Begrenzen Sie die Anzahl der gemeldeten AJAX-Aufrufe](../../azure-monitor/app/javascript.md#detailed-configuration) für jeden Seitenaufruf, oder deaktivieren Sie AJAX-Berichte.
+* [Begrenzen Sie die Anzahl der gemeldeten AJAX-Aufrufe](../../azure-monitor/app/javascript.md#configuration) für jeden Seitenaufruf, oder deaktivieren Sie AJAX-Berichte.
 * [Bearbeiten Sie „ApplicationInsights.config“](../../azure-monitor/app/configuration-with-applicationinsights-config.md), um nicht benötigte Sammlungsmodule zu deaktivieren. Das kann z. B. für Leistungsindikator- oder Abhängigkeitsdaten gelten.
 * Teilen Sie Ihre Telemetrie auf getrennte Instrumentierungsschlüssel auf. 
 * Aggregieren Sie Metriken vorab. Wenn Sie in Ihre App Aufrufe an TrackMetric eingefügt haben, können Sie Datenverkehr reduzieren, indem Sie die Überladung verwenden, die Ihre Berechnung des Durchschnitts und die Standardabweichung eines Batches von Messungen akzeptiert. Oder Sie können ein [vorab aggregierendes Paket](https://www.myget.org/gallery/applicationinsights-sdk-labs) verwenden.
@@ -105,6 +119,8 @@ Verwenden Sie anstelle der Obergrenze für das tägliche Volumen die [Stichprobe
 Um die tägliche Obergrenze zu ändern, klicken Sie im Abschnitt **Konfigurieren** Ihrer Application Insights-Ressource auf der Seite **Nutzung und geschätzte Kosten** auf **Tägliche Obergrenze**.
 
 ![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/pricing/pricing-003.png)
+
+Wenn Sie [die tägliche Obergrenze über Azure Resource Manager](../../azure-monitor/app/powershell.md) ändern möchten, müssen Sie die Eigenschaft `dailyQuota` ändern.  Über Azure Resource Manager können Sie auch den Zeitpunkt für die tägliche Kontingentzurücksetzung (`dailyQuotaResetTime`) und den Warnschwellenwert (`warningThreshold`) der täglichen Obergrenze festlegen. 
 
 ## <a name="sampling"></a>Stichproben
 Die [Stichprobenerstellung](../../azure-monitor/app/sampling.md) ist eine Methode, die Rate, mit der Telemetriedaten an Ihre App gesendet werden, zu verringern. Gleichzeitig soll die Möglichkeit erhalten bleiben, bei Diagnosesuchläufen relevante Ereignisse zu ermitteln. So erhalten Sie auch korrekte Ereigniszahlen.
@@ -132,9 +148,18 @@ Verwenden Sie eine [Analytics-Abfrage](analytics.md), um den tatsächlichen Proz
 
 In jedem beibehaltenen Datensatz gibt `itemCount` die Anzahl ursprünglicher Datensätze an, die der Datensatz darstellt. Diese entspricht 1 + Anzahl der vorherigen verworfenen Datensätze. 
 
-## <a name="automation"></a>Automation
+## <a name="change-the-data-retention-period"></a>Ändern des Datenaufbewahrungszeitraums
 
-Sie können mit der Azure-Ressourcenverwaltung ein Skript schreiben, um den Tarif festzulegen. [Weitere Informationen](powershell.md#price).
+> [!NOTE]
+> Diese Funktion wurde vorübergehend entfernt, weil ein mögliches Problem behoben werden soll.  Sie wird ab der ersten Woche im Oktober 2019 wieder zur Verfügung stehen.
+
+Application Insights Ressourcen werden standardmäßig 90 Tage lang aufbewahrt. Für jede Application Insights Ressource können unterschiedliche Aufbewahrungszeiträume ausgewählt werden. Der vollständige Satz verfügbarer Aufbewahrungszeiträume beträgt 30, 60, 90, 120, 180, 270, 365, 550 oder 730 Tage. 
+
+Wenn Sie die Aufbewahrungsdauer ändern möchten, rufen Sie in der Application Insights-Ressource die Seite **Nutzung und geschätzte Kosten** auf und wählen Sie die Option **Datenaufbewahrung**  aus:
+
+![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/pricing/pricing-005.png)
+
+Wenn die Abrechnung für eine längere Aufbewahrung aktiviert ist, werden Daten, die länger als 90 Tage aufbewahrt werden, mit dem gleichen Tarif abgerechnet, der derzeit für die Datenaufbewahrung von Azure Log Analytics abgerechnet wird. Weitere Informationen finden Sie unter [Preise für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/). Bleiben Sie über den Fortschritt bezüglich der variablen Aufbewahrung auf dem Laufenden, indem Sie [für diesen Vorschlag stimmen](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 
 ## <a name="limits-summary"></a>Zusammenfassung der Grenzwerte
 
@@ -144,45 +169,48 @@ Sie können mit der Azure-Ressourcenverwaltung ein Skript schreiben, um den Tari
 
 Um die E-Mails zum täglichen Volumenobergrenze zu ändern, klicken Sie im Abschnitt **Konfigurieren** Ihrer Application Insights-Ressource auf der Seite **Nutzung und geschätzte Kosten** auf **Tägliche Obergrenze**. Es gibt Einstellungen zum Senden von E-Mail bei Erreichen der Obergrenze sowie zum Senden bei Erreichen einer anpassbaren Warnstufe. Wenn Sie alle E-Mails zur täglichen Volumenobergrenze deaktivieren möchten, deaktivieren Sie beide Kontrollkästchen.
 
-## <a name="legacy-enterprise-pricing-plan"></a>Älterer Enterprise-Tarif
+## <a name="legacy-enterprise-per-node-pricing-tier"></a>Älterer Enterprise-Tarif (pro Knoten)
 
-Für Kunden, die Azure Application Insights schon lange nutzen, gibt es weiterhin zwei mögliche Tarife: Basic und Enterprise. Der Basic-Tarif entspricht der obigen Beschreibung und ist der Standardtarif. Er umfasst alle Features des Enterprise-Tarifs, die ohne Aufpreis genutzt werden können. Im Basic-Tarif wird in erster Linie das Volumen der erfassten Daten abgerechnet. 
+Für Kunden, die schon lange Azure Application Insights nutzen, gibt es weiterhin zwei mögliche Tarife: Basic und Enterprise. Der Basic-Tarif entspricht der obigen Beschreibung und ist der Standardtarif. Er umfasst alle Features des Enterprise-Tarifs ohne zusätzliche Kosten. Im Basic-Tarif wird in erster Linie das Volumen der erfassten Daten abgerechnet. 
 
-Für den Enterprise-Tarif gilt eine knotenbasierte Gebühr, und jedem Knoten wird ein tägliches Datenkontingent zugewiesen. Im Enterprise-Tarif werden die Daten, die über das enthaltene Datenkontingent hinausgehen, berechnet. Wenn Sie die Operations Management Suite verwenden, sollten Sie den Enterprise-Tarif wählen. 
+> [!NOTE]
+> Diese älteren Tarife wurden umbenannt: Der Enterprise-Tarif heißt jetzt **Pro Knoten**, der Basic-Tarif heißt jetzt **Pro GB**. Diese neuen Namen werden nachfolgend und im Azure-Portal verwendet.  
+
+Für den Tarif „Pro Knoten“ (ehemals „Enterprise“) wird eine knotenbasierte Gebühr erhoben, und jedem Knoten ist ein tägliches Datenkontingent zugewiesen. Im Tarif „Pro Knoten“ werden die Daten, die über das enthaltene Datenkontingent hinausgehen, berechnet. Bei Verwendung der Operations Management Suite sollten Sie sich für den Tarif „Pro Knoten“ entscheiden. 
 
 Aktuelle Preise in Ihrer Währung und für Ihre Region finden Sie auf der Seite [Application Insights – Preise](https://azure.microsoft.com/pricing/details/application-insights/).
 
 > [!NOTE]
 > Im April 2018 haben wir ein [neues Preismodell für die Azure-Überwachung eingeführt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/). Bei diesem Modell gilt für das gesamte Portfolio der Überwachungsdienste das einfache Prinzip der nutzungsbasierten Bezahlung. Erfahren Sie mehr über das [neue Preismodell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), die [Bewertung der Auswirkungen einer Migration zu diesem Modell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) basierend auf Ihren Verwendungsmustern und [die Auswahl des neuen Modells](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model).
 
-### <a name="enterprise-plan-and-operations-management-suite-subscription-entitlements"></a>Enterprise-Tarif und Berechtigungen für Operations Management Suite-Abonnements
+### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Tarif „Pro Knoten“ und Berechtigungen für Operations Management Suite-Abonnements
 
-Wie [bereits angekündigt](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/) können Kunden, die Operations Management Suite E1 und E2 erwerben, Application Insights Enterprise ohne weitere Kosten als zusätzliche Komponente erhalten. Jede Einheit der Operations Management Suite-Pläne E1 und E2 umfasst eine Berechtigung für einen Knoten des Application Insights Enterprise-Tarifs. Jeder Application Insights-Knoten ermöglicht das Erfassen von bis zu 200 MB Daten pro Tag (getrennt von der Log Analytics-Datenerfassung) bei einer Datenaufbewahrungsdauer von 90 Tagen ohne zusätzliche Kosten. Der Tarif wird weiter unten in diesem Artikel ausführlicher erläutert. 
+Wie [bereits angekündigt](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/) können Kunden, die Operations Management Suite E1 und E2 erwerben, Application Insights mit dem Tarif „Pro Knoten“ als zusätzliche Komponente ohne weitere Kosten erhalten. Jede Einheit von Operations Management Suite E1 und E2 beinhaltet eine Berechtigung für einen Knoten mit dem Application Insights-Tarif „Pro Knoten“. Jeder Application Insights-Knoten ermöglicht das Erfassen von bis zu 200 MB Daten pro Tag (getrennt von der Log Analytics-Datenerfassung) bei einer Datenaufbewahrungsdauer von 90 Tagen ohne zusätzliche Kosten. Der Tarif wird weiter unten in diesem Artikel ausführlicher erläutert. 
 
-Da dieser Tarif nur für Kunden mit einem Operations Management Suite-Abonnement gilt, sehen Kunden ohne Operations Management Suite-Abonnement keine Option zum Auswählen dieses Tarifs.
+Da dieser Tarif nur für Kunden mit einem Operations Management Suite-Abonnement gilt, wird für Kunden ohne Operations Management Suite-Abonnement keine Option für diesen Tarif angezeigt.
 
 > [!NOTE]
-> Um sicherzustellen, dass Sie diese Berechtigung erhalten, muss für Ihre Application Insights-Ressourcen der Enterprise-Tarif gelten. Diese Berechtigung gilt nur basierend auf Knoten. Für Application Insights-Ressourcen im Basic-Tarif werden keine Vorteile gewährt. Diese Berechtigung ist nicht in den geschätzten Kosten ausgewiesen, die im Bereich **Nutzung und geschätzte Kosten** gezeigt werden. Wenn Sie zudem ein Abonnement im April 2018 zum neuen Preismodell für die Azure-Überwachung migriert haben, ist der Basic-Tarif der einzige verfügbare Tarif. Wenn Sie über ein Operations Management Suite-Abonnement verfügen, wird davon abgeraten, dieses zum neuen Preismodell für die Azure-Überwachung zu migrieren.
+> Um diese Berechtigung zu erhalten, muss für Ihre Application Insights-Ressourcen der Tarif „Pro Knoten“ gelten. Diese Berechtigung gilt nur basierend auf Knoten. Für Application Insights-Ressourcen im Tarif „Pro GB“ werden keine Vorteile gewährt. Diese Berechtigung ist nicht in den geschätzten Kosten ausgewiesen, die im Bereich **Nutzung und geschätzte Kosten** gezeigt werden. Außerdem gilt: Wenn Sie im April 2018 ein Abonnement zum neuen Preismodell für die Azure-Überwachung migriert haben, ist nur der Tarif „Pro GB“ verfügbar. Wenn Sie über ein Operations Management Suite-Abonnement verfügen, wird davon abgeraten, dieses zum neuen Preismodell für die Azure-Überwachung zu migrieren.
 
-### <a name="how-the-enterprise-plan-works"></a>So funktioniert der Enterprise-Tarif
+### <a name="how-the-per-node-tier-works"></a>Funktionsweise des Tarifs „Pro Knoten“
 
-* Sie bezahlen für jeden Knoten, der Telemetriedaten für irgendwelche Apps im Enterprise-Tarif sendet.
+* Sie bezahlen für jeden Knoten, der Telemetriedaten für Apps mit dem Tarif „Pro Knoten“ sendet.
   * Ein *Knoten* ist entweder ein physischer oder ein virtueller Servercomputer oder eine PaaS-Rolleninstanz (Platform-as-a-Service), der bzw. die Ihre App hostet.
   * Entwicklungscomputer, Clientbrowser und mobile Geräte zählen nicht als Knoten.
   * Wenn die App mehrere Komponenten aufweist, die Telemetriedaten senden, z. B. ein Webdienst und ein Back-End-Worker, werden die Komponenten separat gezählt.
   * [Live Metrics Stream](../../azure-monitor/app/live-stream.md)-Daten werden bei der Preisgestaltung nicht berechnet. In einem Abonnement fallen die Gebühren pro Knoten und nicht pro App an. Wenn Sie fünf Knoten haben, die Telemetriedaten für 12 Apps senden, wird die Gebühr für fünf Knoten berechnet.
 * Obwohl Gebühren pro Monat angegeben sind, müssen Sie nur für jede Stunde bezahlen, in der ein Knoten Telemetriedaten von einer App sendet. Die Stundengebühr entspricht der angegebenen Monatsgebühr, die durch 744 (die Anzahl der Stunden eines Monats mit 31 Tagen) dividiert wurde.
 * Eine Datenvolumenzuteilung von 200 MB pro Tag ist für jeden erkannten Knoten vorgesehen (mit stundenbezogener Granularität). Eine nicht genutzte Datenzuteilung wird nicht von einem Tag auf den nächsten übertragen.
-  * Wenn Sie sich für den Enterprise-Tarif entscheiden, wird jedem Abonnement basierend auf der Anzahl von Knoten, die in diesem Abonnement Telemetriedaten an Application Insights-Ressourcen senden, ein tägliches Datenkontingent zugeordnet. Wenn Sie also fünf Knoten haben, die den ganzen Tag Daten senden, wird Ihnen insgesamt 1 GB für alle Application Insights-Ressourcen in diesem Abonnement zugeteilt. Es ist dabei unerheblich, ob bestimmte Knoten mehr Daten senden als andere, da die enthaltene Datenmenge für alle Knoten zusammen berechnet wird. Wenn die Application Insights-Ressourcen an einem bestimmten Tag mehr Daten empfangen, als in der täglichen Datenzuteilung für dieses Abonnement vorgesehen ist, gelten Gebühren pro GB Überschreitungsdaten. 
+  * Wenn Sie sich für den Tarif „Pro Knoten“ entscheiden, wird jedem Abonnement basierend auf der Anzahl von Knoten, die in diesem Abonnement Telemetriedaten an Application Insights-Ressourcen senden, ein tägliches Datenkontingent zugeordnet. Wenn Sie also fünf Knoten haben, die den ganzen Tag Daten senden, wird Ihnen insgesamt 1 GB für alle Application Insights-Ressourcen in diesem Abonnement zugeteilt. Es ist dabei unerheblich, ob bestimmte Knoten mehr Daten senden als andere, da die enthaltene Datenmenge für alle Knoten zusammen berechnet wird. Wenn die Application Insights-Ressourcen an einem Tag mehr Daten empfangen als in der täglichen Datenzuteilung für dieses Abonnement vorgesehen ist, gelten die Überschreitungsgebühren pro GB. 
   * Das tägliche Datenkontingent wird berechnet aus der Anzahl der Stunden pro Tag (nach UTC), die jeder Knoten Telemetriedaten sendet, dividiert durch 24 und multipliziert mit 200 MB. Wenn Sie also vier Knoten haben, die an 15 Stunden des Tages Telemetriedaten senden, sind für diesen Tag ((4 &#215; 15) / 24) &#215; 200 MB = 500 MB an Daten enthalten. Bei einem Preis von 2,30 USD pro GB für Datenüberschreitung wäre die Gebühr 1,15 USD, wenn die Knoten an diesem Tag 1 GB an Daten senden.
-  * Das tägliche Kontingent des Enterprise-Tarifs wird nicht für Anwendungen verwendet, für die Sie den Basic-Tarif gewählt haben. Ein nicht verwendetes Kontingent wird nicht von Tag zu Tag übernommen. 
+  * Das tägliche Kontingent des Tarifs „Pro Knoten“ wird nicht für Anwendungen verwendet, für die Sie den Tarif „Pro GB“ gewählt haben. Ein nicht verwendetes Kontingent wird nicht von Tag zu Tag übernommen. 
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>Beispiele, wie unterschiedliche Anzahlen von Knoten bestimmt werden
 
 | Szenario                               | Gesamtanzahl der Knoten pro Tag |
 |:---------------------------------------|:----------------:|
 | 1 Anwendung verwendet 3 Azure App Service-Instanzen und 1 virtuellen Server | 4 |
-| 3 Anwendungen, die auf 2 virtuellen Computern ausgeführt werden; die Application Insights-Ressourcen für diese Anwendungen befinden sich im selben Abonnement und gehören zum Enterprise-Tarif | 2 | 
+| Drei Anwendungen, die auf zwei virtuellen Computern ausgeführt werden; die Application Insights-Ressourcen für diese Anwendungen gehören zum gleichen Abonnement und unterliegen dem Tarif „Pro Knoten“. | 2 | 
 | 4-Anwendungen, deren Insights-Ressourcen sich im selben Abonnement befinden; jede Anwendung wird in 2 Instanzen in 16 Nebenstunden und in 4 Instanzen in 8 Spitzenstunden ausgeführt | 13,33 | 
 | Clouddienste mit 1 Workerrolle und 1 Webrolle, die je 2 Instanzen ausführen | 4 | 
 | Ein Service Fabric-Cluster mit 5 Knoten, in dem 50 Microservices ausgeführt werden; jeder Microservice führt 3 Instanzen aus | 5|
@@ -192,6 +220,11 @@ Da dieser Tarif nur für Kunden mit einem Operations Management Suite-Abonnement
   * Für frühere Versionen des SDK verhält sich das [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) wie die neueren SDK-Versionen, das [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) meldet jedoch nur einen Knoten, unabhängig von der Anzahl der Anwendungshosts. 
   * Wird in Ihrer Anwendung das SDK verwendet, um **roleInstance** auf einen benutzerdefinierten Wert festzulegen, wird standardmäßig dieser Wert verwendet, um die Anzahl der Knoten zu bestimmen. 
   * Wenn Sie eine neue SDK-Version mit einer App verwenden, die auf Clientcomputern oder Mobilgeräten ausgeführt wird, kann für die Anzahl der Knoten eine sehr große Zahl zurückgegeben werden (wegen der großen Anzahl von Clientcomputern oder Mobilgeräten). 
+
+## <a name="automation"></a>Automation
+
+Sie können mit der Azure-Ressourcenverwaltung ein Skript schreiben, um den Tarif festzulegen. [Weitere Informationen](powershell.md#price).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

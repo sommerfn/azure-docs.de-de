@@ -4,21 +4,21 @@ description: Informationen zum Konfigurieren von ASP.NET Core-Apps, damit sie in
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: jpconnock
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 08/13/2019
 ms.author: cephalin
-ms.openlocfilehash: e203877b2bc939c1d7fb9390df39f3e2451d12d3
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: b05120148d3b82829c465effbcdc948da950aaf0
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551032"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990262"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Konfigurieren einer Linux-ASP.NET Core-App für Azure App Service
 
@@ -50,17 +50,34 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="access-environment-variables"></a>Zugreifen auf Umgebungsvariablen
 
-In App Service können Sie [App-Einstellungen außerhalb Ihres App-Codes festlegen](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings). Anschließend können Sie darauf unter Verwendung des ASP.NET -Standardmusters zugreifen:
+In App Service können Sie [App-Einstellungen außerhalb Ihres App-Codes festlegen](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings). Anschließend können Sie in jeder Klasse mithilfe des standardmäßigen ASP.NET Core-Abhängigkeitsinjektionsmusters auf sie zugreifen:
 
 ```csharp
 include Microsoft.Extensions.Configuration;
-// retrieve App Service app setting
-System.Configuration.ConfigurationManager.AppSettings["MySetting"]
-// retrieve App Service connection string
-Configuration.GetConnectionString("MyDbConnection")
+
+namespace SomeNamespace 
+{
+    public class SomeClass
+    {
+        private IConfiguration _configuration;
+    
+        public SomeClass(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+    
+        public SomeMethod()
+        {
+            // retrieve App Service app setting
+            var myAppSetting = _configuration["MySetting"];
+            // retrieve App Service connection string
+            var myConnString = _configuration.GetConnectionString("MyDbConnection");
+        }
+    }
+}
 ```
 
-Wenn Sie eine App-Einstellung mit demselben Namen in App Service und in *Web.config* konfigurieren, hat der App Service-Wert Vorrang vor dem Wert für „Web.config“. Mit dem Wert für Web.config können Sie die App lokal debuggen, aber mit dem Wert für App Service können Sie die App im Produkt mit Produktionseinstellungen ausführen. Verbindungszeichenfolgen funktionieren auf dieselbe Weise. Auf diese Weise können Sie Ihre Anwendungsgeheimnisse außerhalb Ihres Coderepositorys aufbewahren und auf die entsprechenden Werte zugreifen, ohne Ihren Code zu ändern.
+Wenn Sie beispielsweise eine App-Einstellung mit demselben Namen in App Service und in *appsettings.json* konfigurieren, hat der App Service-Wert Vorrang vor dem Wert für *appsettings.json*. Mit dem lokalen Wert für *appsettings.json* können Sie die App lokal debuggen, aber mit dem Wert für App Service können Sie die App im Produkt mit Produktionseinstellungen ausführen. Verbindungszeichenfolgen funktionieren auf dieselbe Weise. Auf diese Weise können Sie Ihre Anwendungsgeheimnisse außerhalb Ihres Coderepositorys aufbewahren und auf die entsprechenden Werte zugreifen, ohne Ihren Code zu ändern.
 
 ## <a name="get-detailed-exceptions-page"></a>Abrufen einer detaillierten Ausnahmenseite
 
@@ -72,7 +89,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ## <a name="detect-https-session"></a>Erkennen einer HTTPS-Sitzung
 
-In App Service erfolgt die [SSL-Beendigung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik wissen muss, ob die Benutzeranforderungen verschlüsselt sind, konfigurieren Sie die Forwarded Headers Middleware in *Startup.cs*:
+In App Service erfolgt die [SSL-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik wissen muss, ob die Benutzeranforderungen verschlüsselt sind, konfigurieren Sie die Forwarded Headers Middleware in *Startup.cs*:
 
 - Konfigurieren Sie die Middleware mit [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions), um die Header `X-Forwarded-For` und `X-Forwarded-Proto` in `Startup.ConfigureServices` weiterzuleiten.
 - Fügen Sie den bekannten Netzwerken private IP-Adressbereiche hinzu, damit die Middleware dem App Service-Lastenausgleich vertrauen kann.
@@ -109,7 +126,7 @@ Weitere Informationen finden Sie unter [Konfigurieren von ASP.NET Core für die 
 
 ## <a name="deploy-multi-project-solutions"></a>Bereitstellen von Projektmappen mit mehreren Projekten
 
-Wenn Sie ein ASP.NET-Repository mit einer *.csproj*-Datei im Stammverzeichnis für die Bereitstellungs-Engine bereitstellen, wird das Projekt von der Engine implementiert. Wenn Sie ein ASP.NET-Repository mit einer *.sln*-Datei im Stammverzeichnis bereitstellen, wählt die Engine die erste Website oder das erste Webanwendungsprojekt aus, das sie als App Service-App findet. Es ist möglich, dass die Engine nicht das von Ihnen gewünschte Projekt auswählt.
+Wenn Sie ein ASP.NET-Repository mit einer *.csproj*-Datei im Stammverzeichnis für die Bereitstellungs-Engine bereitstellen, wird das Projekt von der Engine implementiert. Wenn Sie ein ASP.NET-Repository mit einer Datei vom Typ *.sln* im Stammverzeichnis bereitstellen, wählt die Engine die erste Website oder das erste Webanwendungsprojekt aus, das sie als App Service-App findet. Es ist möglich, dass die Engine nicht das von Ihnen gewünschte Projekt auswählt.
 
 Zum Bereitstellen einer Projektmappe mit mehreren Projekten können Sie das Projekt, das im App Service verwendet werden soll, auf zwei verschiedene Arten angeben:
 
@@ -124,7 +141,7 @@ project = <project-name>/<project-name>.csproj
 
 ### <a name="using-app-settings"></a>Mithilfe von App-Einstellungen
 
-Fügen Sie in der <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a> Ihrer App Service-App eine App-Einstellung hinzu, indem Sie den folgenden CLI-Befehl ausführen. Ersetzen Sie *\<Anwendungsname>*, *\<Ressourcengruppenname>* und *\<Projektname>* durch die entsprechenden Werte.
+Fügen Sie in der <a target="_blank" href="https://shell.azure.com">Azure Cloud Shell</a> Ihrer App Service-App eine App-Einstellung hinzu, indem Sie den folgenden CLI-Befehl ausführen. Ersetzen Sie *\<Anwendungsname>* , *\<Ressourcengruppenname>* und *\<Projektname>* durch die entsprechenden Werte.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PROJECT="<project-name>/<project-name>.csproj"

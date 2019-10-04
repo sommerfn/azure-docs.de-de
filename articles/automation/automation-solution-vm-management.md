@@ -4,17 +4,17 @@ description: Mit dieser Lösung für die VM-Verwaltung werden Ihre virtuellen Az
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 03/31/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 39ba577580424bf8283d64198bb3068b82869c51
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762938"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476877"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -47,6 +47,55 @@ Für die Runbooks für diese Lösung wird ein [ausführendes Azure-Konto](automa
 
 Es wird empfohlen, für die Lösung zum Starten/Beenden von VMs ein separates Automation-Konto zu verwenden. Der Grund hierfür ist, dass die Azure-Modulversionen häufig aktualisiert werden und sich ihre Parameter ändern können. Die Lösung zum Starten/Beenden von VMs wird nicht mit derselben Häufigkeit aktualisiert, sodass sie eventuell nicht mit neueren Versionen der verwendeten Cmdlets funktioniert. Sie sollten zum Testen auf Modulupdates ein Automation-Testkonto verwenden, bevor Sie sie in Ihr Automation-Produktionskonto importieren.
 
+### <a name="permissions-needed-to-deploy"></a>Für die Bereitstellung erforderliche Berechtigungen
+
+Ein Benutzer muss über bestimmte Berechtigungen verfügen, um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten bereitzustellen. Diese Berechtigungen sind unterschiedlich – je nachdem, ob ein vorab erstelltes Automation-Konto und ein vorab erstellter Log Analytics-Arbeitsbereich verwendet oder beides während der Bereitstellung neu erstellt wird. Wenn Sie Mitwirkender im Abonnement und globaler Administrator in Ihrem Azure Active Directory-Mandanten sind, müssen Sie die folgenden Berechtigungen nicht konfigurieren. Wenn Sie nicht über diese Rechte verfügen oder eine benutzerdefinierte Rolle konfigurieren müssen, finden Sie weiter unten die erforderlichen Berechtigungen.
+
+#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Bereits vorhandenes Automation- und Log Analytics-Konto
+
+Um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten für ein Automation-Konto und einen Log Analytics-Arbeitsbereich bereitzustellen, muss der Benutzer, der die Lösung bereitstellt, über die folgenden Berechtigungen für die **Ressourcengruppe** verfügen. Weitere Informationen zu Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](../role-based-access-control/custom-roles.md).
+
+| Berechtigung | `Scope`|
+| --- | --- |
+| Microsoft.Automation/automationAccounts/read | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/variables/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/schedules/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/runbooks/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/connections/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/certificates/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/modules/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/modules/read | Ressourcengruppe |
+| Microsoft.automation/automationAccounts/jobSchedules/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/jobs/write | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/jobs/read | Ressourcengruppe |
+| Microsoft.OperationsManagement/solutions/write | Ressourcengruppe |
+| Microsoft.OperationalInsights/workspaces/* | Ressourcengruppe |
+| Microsoft.Insights/diagnosticSettings/write | Ressourcengruppe |
+| Microsoft.Insights/ActionGroups/Write | Ressourcengruppe |
+| Microsoft.Insights/ActionGroups/read | Ressourcengruppe |
+| Microsoft.Resources/subscriptions/resourceGroups/read | Ressourcengruppe |
+| Microsoft.Resources/deployments/* | Ressourcengruppe |
+
+#### <a name="new-automation-account-and-a-new-log-analytics-workspace"></a>Neues Automation-Konto und neuer Log Analytics-Arbeitsbereich
+
+Um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten für ein neues Automation-Konto und einen neuen Log Analytics-Arbeitsbereich bereitzustellen, benötigt der Benutzer, der die Lösung bereitstellt, neben den im obigen Abschnitt beschriebenen Berechtigungen zusätzlich die folgenden Berechtigungen:
+
+- Co-Administrator für das Abonnement: nur erforderlich, um das klassische ausführende Konto zu erstellen
+- Mitglied der Rolle [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **Anwendungsentwickler**. Weitere Informationen zum Konfigurieren von ausführenden Konten finden Sie unter [Berechtigungen zum Konfigurieren von ausführenden Konten](manage-runas-account.md#permissions).
+- Mitwirkender im Abonnement oder die folgenden Berechtigungen.
+
+| Berechtigung |`Scope`|
+| --- | --- |
+| Microsoft.Authorization/Operations/read | Abonnement|
+| Microsoft.Authorization/permissions/read |Abonnement|
+| Microsoft.Authorization/roleAssignments/read | Abonnement |
+| Microsoft.Authorization/roleAssignments/write | Abonnement |
+| Microsoft.Authorization/roleAssignments/delete | Abonnement |
+| Microsoft.Automation/automationAccounts/connections/read | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/certificates/read | Ressourcengruppe |
+| Microsoft.Automation/automationAccounts/write | Ressourcengruppe |
+| Microsoft.OperationalInsights/workspaces/write | Ressourcengruppe |
+
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
 Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von VMs außerhalb der Kernzeit dem Automation-Konto hinzuzufügen und anschließend die Variablen zum Anpassen der Lösung zu konfigurieren.
@@ -57,6 +106,7 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
 
    > [!NOTE]
    > Sie können Ressourcen auch von überall im Azure-Portal erstellen, indem Sie auf **Ressource erstellen** klicken. Geben Sie auf der Seite „Marketplace“ ein Schlüsselwort ein, z.B. **Starten** oder **Starten/Beenden**. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Alternativ hierzu können Sie ein oder mehrere Schlüsselwörter des vollständigen Namens der Lösung eingeben und dann die EINGABETASTE drücken. Wählen Sie in den Suchergebnissen **VMs außerhalb der Geschäftszeiten starten/beenden** aus.
+
 2. Überprüfen Sie auf der Seite **VMs außerhalb der Geschäftszeiten starten/beenden** die Zusammenfassung der ausgewählten Lösung, und klicken Sie dann auf **Erstellen**.
 
    ![Azure-Portal](media/automation-solution-vm-management/azure-portal-01.png)
@@ -72,6 +122,11 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    - Wählen Sie einen **Speicherort**aus. Derzeit sind nur die Standorte **Australien, Südosten**, **Kanada, Mitte**, **Indien, Mitte**, **USA, Osten**, **Japan, Osten**, **Asien, Südosten**, **Vereinigtes Königreich, Süden**, **Europa, Westen** und **USA, Westen 2** verfügbar.
    - Wählen Sie einen **Tarif**aus. Wählen Sie die Option **Pro GB (eigenständig)** aus. Für Azure Monitor-Protokolle wurden die [Preise](https://azure.microsoft.com/pricing/details/log-analytics/) aktualisiert, und der Tarif „Pro GB“ ist die einzige Option.
 
+   > [!NOTE]
+   > Wenn Sie Lösungen aktivieren, werden nur bestimmte Regionen zum Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto unterstützt.
+   >
+   > Eine Liste der unterstützten Zuordnungspaare finden Sie unter [Regionszuordnung für Automation-Konto und Log Analytics-Arbeitsbereich](how-to/region-mappings.md).
+
 5. Klicken Sie nach dem Bereitstellen der erforderlichen Informationen auf der Seite **Log Analytics-Arbeitsbereich** auf **Erstellen**. Sie können den Status unter **Benachrichtigungen** über das Menü nachverfolgen, und nach Abschluss des Vorgangs gelangen Sie zurück zur Seite **Lösung hinzufügen**.
 6. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Automation-Konto** aus. Wenn Sie einen neuen Log Analytics-Arbeitsbereich erstellen, können Sie ein neues Automation-Konto erstellen, das diesem zugeordnet wird, oder ein vorhandenes Automation-Konto auswählen, das nicht bereits mit einem Log Analytics-Arbeitsbereich verknüpft ist. Wählen Sie ein vorhandenes Automation-Konto aus, oder klicken Sie auf **Automation-Konto erstellen**, und geben Sie auf der Seite **Automation-Konto hinzufügen** Folgendes an:
    - Geben Sie im Feld **Name** den Namen des Automation-Kontos ein.
@@ -85,7 +140,7 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    Hier erhalten Sie folgende Aufforderung:
    - Geben Sie einen Wert für die Zielressourcengruppennamen(**Target ResourceGroup Names**) ein. Dies sind Werte von Ressourcengruppen mit virtuellen Computern, die mit dieser Lösung verwaltet werden. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Die Verwendung eines Platzhalterzeichens wird unterstützt, wenn Sie einen Vorgang für VMs in allen Ressourcengruppen des Abonnements durchführen möchten. Dieser Wert wird in den Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupNames** gespeichert.
    - Geben Sie die **VM Exclude List (string)** (VM-Ausschlussliste (Zeichenfolge)) an. Dies ist der Wert von einem oder mehreren virtuellen Computern der Zielressourcengruppe. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Platzhalter können verwendet werden. Dieser Wert wird in der Variablen **External_ExcludeVMNames** gespeichert.
-   - Wählen Sie einen **Zeitplan** aus. Dieser Wert ist ein wiederkehrendes Datum und eine Uhrzeit zum Starten und Beenden der virtuellen Computer in den Zielressourcengruppen. Der Zeitplan ist standardmäßig für den Zeitpunkt 30 Minuten nach der aktuellen Uhrzeit konfiguriert. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Lösung für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedules) weiter.
+   - Wählen Sie einen **Zeitplan** aus. Wählen Sie ein Datum und eine Uhrzeit für Ihren Zeitplan aus. Ein wiederkehrender täglicher Zeitplan wird ab der von Ihnen gewählten Zeit erstellt. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Lösung für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedules) weiter.
    - Um **E-Mail-Benachrichtigungen** von einer Aktionsgruppe zu empfangen, übernehmen Sie den Standardwert **Ja**, und geben Sie eine gültige E-Mail-Adresse an. Wenn Sie **Nein** auswählen, sich aber zu einem späteren Zeitpunkt entscheiden, dass Sie E-Mail-Benachrichtigungen erhalten möchten, können Sie die erstellte [Aktionsgruppe](../azure-monitor/platform/action-groups.md) mit gültigen E-Mail-Adressen, die durch Komma getrennt sind, aktualisieren. Außerdem müssen Sie die folgenden Warnungsregeln aktivieren:
 
      - AutoStop_VM_Child
@@ -93,7 +148,7 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
      - Sequenced_StartStop_Parent
 
      > [!IMPORTANT]
-     > Der Standardwert für **ResourceGroup-Zielnamen** ist ein **&ast;**. Dies betrifft alle VMs in einem Abonnement. Wenn die Lösung nicht alle VMs als Zielversion in Ihrem Abonnement festlegen soll, muss dieser Wert vor der Aktivierung der Zeitpläne auf eine Liste der Ressourcengruppennamen aktualisiert werden.
+     > Der Standardwert für **ResourceGroup-Zielnamen** ist ein **&ast;** . Dies betrifft alle VMs in einem Abonnement. Wenn die Lösung nicht alle VMs als Zielversion in Ihrem Abonnement festlegen soll, muss dieser Wert vor der Aktivierung der Zeitpläne auf eine Liste der Ressourcengruppennamen aktualisiert werden.
 
 8. Nachdem Sie die erforderlichen Anfangseinstellungen für die Lösung konfiguriert haben, klicken Sie auf **OK**, um die Seite **Parameter** zu schließen, und wählen Sie dann **Erstellen** aus. Nachdem alle Einstellungen überprüft wurden, wird die Lösung für Ihr Abonnement bereitgestellt. Dieser Vorgang kann einige Sekunden dauern, und Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 
@@ -248,7 +303,7 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 
 |Eigenschaft | BESCHREIBUNG|
 |----------|----------|
-|Aufrufer |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
+|Caller |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
 |Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobLogs“.|
 |CorrelationId | Die GUID, bei der es sich um die Korrelations-ID des Runbookauftrags handelt.|
 |JobId | Die GUID, bei der es sich um die ID des Runbookauftrags handelt.|
@@ -263,13 +318,13 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 |SourceSystem | Gibt das Quellsystem für die gesendeten Daten an. Für Automation lautet der Wert „OpsManager“.|
 |StreamType | Gibt den Typ des Ereignisses an. Mögliche Werte:<br>- Ausführlich<br>- Ausgabe<br>- Fehler<br>- Warnung|
 |SubscriptionId | Gibt die Abonnement-ID des Auftrags an.
-|Zeit | Ausführungsdatum und -uhrzeit des Runbookauftrags.|
+|Time | Ausführungsdatum und -uhrzeit des Runbookauftrags.|
 
 ### <a name="job-streams"></a>Auftragsdatenströme
 
 |Eigenschaft | BESCHREIBUNG|
 |----------|----------|
-|Aufrufer |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
+|Caller |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
 |Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobStreams“.|
 |JobId | Die GUID, bei der es sich um die ID des Runbookauftrags handelt.|
 |operationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“.|
@@ -282,7 +337,7 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 |RunbookName | Der Name des Runbooks.|
 |SourceSystem | Gibt das Quellsystem für die gesendeten Daten an. Für Automation lautet der Wert „OpsManager“.|
 |StreamType | Der Typ des Auftragsstreams. Mögliche Werte:<br>- Status<br>- Ausgabe<br>- Warnung<br>- Fehler<br>- Debuggen<br>- Ausführlich|
-|Zeit | Ausführungsdatum und -uhrzeit des Runbookauftrags.|
+|Time | Ausführungsdatum und -uhrzeit des Runbookauftrags.|
 
 Wenn Sie Protokollsuchen durchführen, bei denen Kategoriedatensätze für **JobLogs** oder **JobStreams** zurückgegeben werden, können Sie die Ansicht **JobLogs** oder **JobStreams** wählen. Es werden dann mehrere Kacheln angezeigt, mit denen die von der Suche zurückgegebenen Updates zusammengefasst werden.
 
@@ -292,8 +347,8 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Auftragsdatens
 
 |Abfragen | BESCHREIBUNG|
 |----------|----------|
-|Suchen nach Aufträgen für das Runbook „ScheduledStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|Suchen nach Aufträgen für das Runbook „SequencedStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc```|
+|Suchen nach Aufträgen für das Runbook „ScheduledStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|Suchen nach Aufträgen für das Runbook „SequencedStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 
 ## <a name="viewing-the-solution"></a>Anzeigen der Lösung
 
@@ -364,7 +419,9 @@ Wenn Sie die Lösung nicht mehr benötigen, können Sie sie aus dem Automation-K
 
 Führen Sie die folgenden Schritte aus, um die Lösung zu löschen:
 
-1. Wählen Sie in Ihrem Automation-Konto auf der linken Seite die Option **Arbeitsbereich** aus.
+1. Wählen Sie in Ihrem Automation-Konto unter **Verwandte Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
+1. Klicken Sie auf **Zu Arbeitsbereich wechseln**.
+1. Klicken Sie unter **Allgemein** auf **Lösungen**. 
 1. Wählen Sie auf der Seite **Lösungen** die Lösung **Start-Stop-VM[Workspace]** aus. Wählen Sie auf der Seite **VMManagementSolution[Workspace]** im Menü die Option **Löschen**.<br><br> ![Löschen der VM-Mgmt-Lösung](media/automation-solution-vm-management/vm-management-solution-delete.png)
 1. Bestätigen Sie im Fenster **Lösung löschen**, dass Sie die Lösung löschen möchten.
 1. Während die Informationen überprüft werden und die Lösung gelöscht wird, können Sie den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen. Nachdem der Vorgang zum Löschen der Lösung begonnen hat, kehren Sie zur Seite **Lösungen** zurück.

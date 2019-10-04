@@ -10,16 +10,15 @@ ms.assetid: 3c777964-02b2-4f55-8731-8c3bd3c0ae27
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: apimpm
-ms.openlocfilehash: 73609e802eceea6aa94d77cef6ca1d654264973d
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: df7b14c8221ab7837cabe968a82cfc5d5d9050c4
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265006"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072582"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Fehlerbehandlung bei API Management-Richtlinien
 
@@ -73,19 +72,19 @@ Der Richtlinienabschnitt `on-error` kann in jedem Bereich verwendet werden. Zude
 -   [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)  
 -   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)  
   
-## <a name="lasterror"></a>LastError
+## <a name="lasterror"></a>lastError
 
  Wenn ein Fehler auftritt und das Steuerelement zum Richtlinienabschnitt `on-error` wechselt, wird der Fehler in der Eigenschaft [context.LastError](api-management-policy-expressions.md#ContextVariables) gespeichert. Diese kann von Richtlinien im Abschnitt `on-error` aufgerufen werden. LastError weist folgende Eigenschaften auf.  
   
-| NAME     | Typ   | BESCHREIBUNG                                                                                               | Erforderlich |
-|----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| Quelle   | Zeichenfolge | Benennt das Element, in dem der Fehler aufgetreten ist. Kann entweder der Schrittname einer Richtlinie oder einer integrierten Pipeline sein.     | Ja      |
-| Grund   | Zeichenfolge | Computerfreundlicher Fehlercode, der bei der Fehlerbehandlung verwendet werden kann.                                       | Nein        |
-| Message  | Zeichenfolge | Für Menschen lesbare Fehlerbeschreibung.                                                                         | Ja      |
-| Umfang    | Zeichenfolge | Name des Bereichs, in dem der Fehler aufgetreten ist. Kann einer der Werte „global“, „product“, „api“ oder „operation“ sein. | Nein        |
-| Abschnitt  | Zeichenfolge | Name des Abschnitts, in dem der Fehler aufgetreten ist. Mögliche Werte: „inbound“, „backend“, „outbound“ oder „on-error“.       | Nein        |
-| path     | Zeichenfolge | Gibt geschachtelte Richtlinien an, z.B. „choose[3]/when[2]“.                                                        | Nein        |
-| PolicyId | Zeichenfolge | Sofern vom Kunden festgelegt, der Wert des Attributs `id` in der Richtlinie, in der der Fehler aufgetreten ist.             | Nein        |
+| NAME       | type   | BESCHREIBUNG                                                                                               | Erforderlich |
+|------------|--------|-----------------------------------------------------------------------------------------------------------|----------|
+| `Source`   | Zeichenfolge | Benennt das Element, in dem der Fehler aufgetreten ist. Kann entweder der Schrittname einer Richtlinie oder einer integrierten Pipeline sein.     | Ja      |
+| `Reason`   | Zeichenfolge | Computerfreundlicher Fehlercode, der bei der Fehlerbehandlung verwendet werden kann.                                       | Nein       |
+| `Message`  | Zeichenfolge | Für Menschen lesbare Fehlerbeschreibung.                                                                         | Ja      |
+| `Scope`    | Zeichenfolge | Name des Bereichs, in dem der Fehler aufgetreten ist. Kann einer der Werte „global“, „product“, „api“ oder „operation“ sein. | Nein       |
+| `Section`  | Zeichenfolge | Name des Abschnitts, in dem der Fehler aufgetreten ist. Mögliche Werte: „inbound“, „backend“, „outbound“ oder „on-error“.       | Nein       |
+| `Path`     | Zeichenfolge | Gibt geschachtelte Richtlinien an, z.B. „choose[3]/when[2]“.                                                        | Nein       |
+| `PolicyId` | Zeichenfolge | Sofern vom Kunden festgelegt, der Wert des Attributs `id` in der Richtlinie, in der der Fehler aufgetreten ist.             | Nein       |
 
 > [!TIP]
 > Über „context.Response.StatusCode“ können Sie auf den Statuscode zugreifen.  
@@ -96,7 +95,7 @@ Der Richtlinienabschnitt `on-error` kann in jedem Bereich verwendet werden. Zude
 ## <a name="predefined-errors-for-built-in-steps"></a>Vordefinierte Fehler für integrierte Schritte  
  Die folgenden Fehler sind für Fehlerbedingungen, die während der Auswertung der integrierten Verarbeitungsschritte auftreten können, vordefiniert.  
   
-| Quelle        | Bedingung                                 | Grund                  | Message                                                                                                                |
+| `Source`        | Bedingung                                 | `Reason`                  | `Message`                                                                                                                |
 |---------------|-------------------------------------------|-------------------------|------------------------------------------------------------------------------------------------------------------------|
 | Konfiguration | URI entspricht keiner API bzw. keinem Vorgang | OperationNotFound       | Es kann keine eingehende Anforderung für einen Vorgang gefunden werden.                                                                      |
 | authorization | Abonnementschlüssel nicht bereitgestellt             | SubscriptionKeyNotFound | Der Zugriff wurde aufgrund eines fehlenden Abonnementschlüssels verweigert. Stellen Sie sicher, dass der Abonnementschlüssel beim Senden von Anforderungen an diese API enthalten ist. |
@@ -105,7 +104,7 @@ Der Richtlinienabschnitt `on-error` kann in jedem Bereich verwendet werden. Zude
 ## <a name="predefined-errors-for-policies"></a>Vordefinierte Fehler für Richtlinien  
  Die folgenden Fehler sind für Fehlerbedingungen vordefiniert, die bei der Richtlinienauswertung auftreten können.  
   
-| Quelle       | Bedingung                                                       | Grund                    | Message                                                                                                                              |
+| `Source`       | Bedingung                                                       | `Reason`                    | `Message`                                                                                                                              |
 |--------------|-----------------------------------------------------------------|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | rate-limit   | Übertragungsratenlimit überschritten                                             | RateLimitExceeded         | Das Übertragungsratenlimit wurde überschritten.                                                                                                               |
 | quota        | Kontingent überschritten                                                  | QuotaExceeded             | Das Aufrufvolumenkontigent ist erschöpft. Das Kontingent wird in xx:xx:xx aufgefüllt. –oder– Das Bandbreitenkontingent ist erschöpft. Das Kontingent wird in xx:xx:xx aufgefüllt. |

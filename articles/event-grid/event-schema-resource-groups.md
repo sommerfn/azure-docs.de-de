@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
 ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535739"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60561692"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Azure Event Grid-Ereignisschema für Ressourcengruppen
 
@@ -236,14 +236,14 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | string | Eindeutiger Bezeichner für das Ereignis. |
 | data | object | Ereignisdaten der Ressourcengruppe. |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
@@ -251,14 +251,14 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | -------- | ---- | ----------- |
 | authorization | object | Die angeforderte Autorisierung für den Vorgang. |
 | claims | object | Die Eigenschaften der Ansprüche. Weitere Informationen finden Sie auf der Seite zur [JWT-Spezifikation](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
-| correlationId | Zeichenfolge | Eine Vorgangs-ID für die Problembehandlung. |
+| correlationId | string | Eine Vorgangs-ID für die Problembehandlung. |
 | httpRequest | object | Die Details des Vorgangs. Dieses Objekt ist nur enthalten, wenn eine vorhandene Ressource aktualisiert oder eine Ressource gelöscht wird. |
-| resourceProvider | Zeichenfolge | Der Ressourcenanbieter für den Vorgang. |
-| resourceUri | Zeichenfolge | Der URI der Ressource im Vorgang. |
-| operationName | Zeichenfolge | Der Vorgang, der übernommen wurde. |
-| status | Zeichenfolge | Der Status des Vorgangs. |
-| subscriptionId | Zeichenfolge | Die Abonnement-ID der Ressource. |
-| tenantId | Zeichenfolge | Die Mandanten-ID der Ressource. |
+| resourceProvider | string | Der Ressourcenanbieter für den Vorgang. |
+| resourceUri | string | Der URI der Ressource im Vorgang. |
+| operationName | string | Der Vorgang, der übernommen wurde. |
+| status | string | Der Status des Vorgangs. |
+| subscriptionId | string | Die Abonnement-ID der Ressource. |
+| tenantId | string | Die Mandanten-ID der Ressource. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
@@ -9,11 +9,11 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d1cf75d8e678bc5bd3e3036930eea42526194df1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125303"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178332"
 ---
 ## <a name="create-a-queue-in-the-azure-portal"></a>Erstellen einer Warteschlange im Azure-Portal
 1. Wählen Sie auf der Seite **Service Bus-Namespace** im linken Navigationsmenü die Option **Warteschlangen** aus.

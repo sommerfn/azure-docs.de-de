@@ -3,19 +3,20 @@ title: Verwenden des Rückrufs zur Entitätserkennung in Verbindung mit einem Un
 titleSuffix: Azure
 description: Hier erfahren Sie, wie Sie den Rückruf zur Entitätserkennung in einem Unterhaltungslernmodell verwenden.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 576dc6bd44360f73c4133907233e59e5f51837b1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3f6094da7b103f1c99e9bb3fa9313354fcb2a8bc
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212532"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703991"
 ---
 # <a name="how-to-use-entity-detection-callback"></a>Verwenden des Rückrufs zur Entitätserkennung
 

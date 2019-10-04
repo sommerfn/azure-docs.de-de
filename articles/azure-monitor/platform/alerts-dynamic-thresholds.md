@@ -5,17 +5,17 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 04/26/2019
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 30f853bd65c83b922faf008fbb5279c28f197f68
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 0d6c578186dab9622ce650f535e11d505efcecb3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339005"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65067619"
 ---
-# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor (Public Preview)
+# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor
 
 Die Metrikwarnung mit Erkennung dynamischer Schwellenwerte nutzt erweitertes Machine Learning (ML), um das bisherige Verhalten von Metriken zu erfassen sowie Muster und Anomalien zu erkennen, die auf mögliche Probleme hinweisen. Benutzer profitieren von einer einfachen Benutzeroberfläche sowie von skalierbaren Vorgängen und können über die Azure Resource Manager-API vollständig automatisierte Warnungsregeln konfigurieren.
 
@@ -41,14 +41,17 @@ Dynamische Schwellenwerte erfassen fortlaufend Daten der Metrikreihe und versuch
 
 Die Schwellenwerte werden so ausgewählt, dass eine Abweichung von diesen Schwellenwerten eine Anomalie im Metrikverhalten ergibt.
 
+> [!NOTE]
+> Saisonale Mustererkennung ist auf ein Stunden-, Tage- oder Wochenintervall festgelegt. Dies bedeutet, dass andere Muster wie zweistündige oder halbwöchentliche möglicherweise nicht erkannt werden.
+
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Was bedeutet die „Sensitivity“-Einstellung in dynamischen Schwellenwerten?
 
 Mit der Empfindlichkeit des Schwellenwerts legen Sie fest, bei welcher Abweichung vom Metrikverhalten eine Warnung ausgelöst werden soll.
 Diese Option erfordert kein Domänenwissen zur Metrik, z.B. statische Schwellenwerte. Die verfügbaren Optionen sind:
 
-- Hoch – Die Schwellenwerte sind streng und nah am Muster der Metrikreihe. Die Warnungsregel wird schon bei der kleinsten Abweichung ausgelöst, sodass mehr Warnungen auftreten.
+- Hoch – Die Schwellenwerte sind streng und nah am Muster der Metrikreihe. Eine Warnungsregel wird schon bei der kleinsten Abweichung ausgelöst, sodass mehr Warnungen auftreten.
 - Mittel – Weniger strenge und ausgewogenere Schwellenwerte, sodass weniger Warnungen auftreten als bei der hohen Empfindlichkeit (Standard).
-- Niedrig – Die Schwellenwerte werden mit zunehmender Distanz zum Muster der Metrikreihe lockerer. Die Warnungsregel wird nur bei großen Abweichungen ausgelöst, was zu weniger Warnungen führt.
+- Niedrig – Die Schwellenwerte werden mit zunehmender Distanz zum Muster der Metrikreihe lockerer. Eine Warnungsregel wird nur bei großen Abweichungen ausgelöst, was zu weniger Warnungen führt.
 
 ## <a name="what-are-the-operator-setting-options-in-dynamic-thresholds"></a>Was bedeuten die „Operator“-Einstellungen in dynamischen Schwellenwerten?
 
@@ -61,7 +64,7 @@ Sie können die Warnung bei einer der drei folgenden Bedingungen auslösen:
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Was bedeuten die erweiterten Einstellungen im dynamischen Schwellenwerten?
 
-**Zeiträume, die Fehler ausweisen** – Mit dem dynamischen Schwellenwert können Sie die „Anzahl von Verstößen zum Auslösen der Warnung“ festlegen. Damit bestimmen Sie, ab wie vielen Abweichungen innerhalb eines bestimmten Zeitfensters das System eine Warnung auslöst (Das Zeitfenster ist standardmäßig auf vier Abweichungen in 20 Minuten festgelegt). Der Benutzer kann Zeiträume, die Fehler aufweisen, konfigurieren und die Warnungen auswählen, indem er die Zeiträume, die Fehler aufweisen, und das Zeitfenster auswählt. So reduzieren Sie überflüssige Warnungen als Reaktion auf vorübergehende Spitzen. Beispiel: 
+**Zeiträume, die Fehler ausweisen** – Mit dem dynamischen Schwellenwert können Sie die „Anzahl von Verstößen zum Auslösen der Warnung“ festlegen. Damit bestimmen Sie, ab wie vielen Abweichungen innerhalb eines bestimmten Zeitfensters das System eine Warnung auslöst (Das Zeitfenster ist standardmäßig auf vier Abweichungen in 20 Minuten festgelegt). Der Benutzer kann Zeiträume, die Fehler aufweisen, konfigurieren und die Warnungen auswählen, indem er die Zeiträume, die Fehler aufweisen, und das Zeitfenster auswählt. So reduzieren Sie überflüssige Warnungen als Reaktion auf vorübergehende Spitzen. Beispiel:
 
 Mit den folgenden Einstellungen wird eine Warnung ausgelöst, wenn das Problem 20 Minuten lang (viermal hintereinander in einem Zeitraum von jeweils fünf Minuten) aufgetreten ist:
 
@@ -73,13 +76,23 @@ Mit den folgenden Einstellungen wird eine Warnung ausgelöst, wenn ein dynamisch
 
 **Vor dem folgenden Datum liegende Daten ignorieren** – Benutzer können optional auch ein Startdatum definieren, ab dem das System mit der Berechnung der Schwellenwerte beginnen soll. Ein typischer Anwendungsfall kann auftreten, wenn eine Ressource in einem Testmodus ausgeführt wurde und nun höher gestuft wird, um eine Produktionsworkload zu verarbeiten. Dann sollte das Verhalten jeder beliebigen Metrik während der Testphase ignoriert werden.
 
+## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>Wie finden Sie heraus, warum eine „Dynamische Schwellenwerte“-Warnung ausgelöst wurde?
+
+Um ausgelöste Warnungsinstanzen in der Warnungsansicht zu untersuchen, klicken Sie auf den Link in E-Mail, SMS oder Browser, um die Warnungsansicht im Azure-Portal anzuzeigen. Erfahren Sie mehr über die [Warnungsansicht](alerts-overview.md#alerts-experience).
+
+Die Warnungsansicht zeigt Folgendes an:
+
+- Alle Metrikendetails für den Zeitpunkt, zu dem die „Dynamische Schwellenwerte“-Warnung ausgelöst wurde.
+- Ein Diagramm des Zeitraums, in dem die Warnung ausgelöst wurde, inklusive der zu diesem Zeitpunkt verwendeten dynamischen Schwellenwerte.
+- Die Möglichkeit, Feedback zur „Dynamische Schwellenwerte“-Warnung und der Warnungsansicht-Benutzeroberfläche zu geben, um ggf. zukünftige Erkennungen zu verbessern.
+
 ## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>Wird bei einer langsamen Veränderungsveränderung der Metrik eine Warnung ausgelöst?
 
 Wahrscheinlich nicht. Dynamische Schwellenwerte eignen sich besser für die Erkennung erheblicher Abweichungen und weniger für Probleme, die sich langsam entwickeln.
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Wie viele Daten werden für die Vorschau und die anschließende Berechnung der Schwellenwerte verwendet?
 
-Die Schwellenwerte, die im Diagramm angezeigt werden, bevor eine Warnungsregel für die Metrik erstellt wird, werden basierend auf genügend historischen Daten berechnet, um Stunden- oder tägliche saisonale Muster (10 Tage) zu berechnen. Wenn Sie auf „Wöchentliches Muster anzeigen“ klicken, werden genügend historische Daten erfasst, um die wöchentlichen saisonalen Muster (28 Tage) zu berechnen. Sobald eine Warnungsregel erstellt wurde, verwenden die dynamischen Schwellenwerte alle benötigten historischen Daten, die verfügbar sind, und lernen und passen sich kontinuierlich basierend auf neuen Daten an, um die Schwellenwerte genauer zu gestalten.
+Die Schwellenwerte, die im Diagramm angezeigt werden, bevor eine Warnungsregel für die Metrik erstellt wird, werden basierend auf genügend historischen Daten berechnet, um Stunden- oder tägliche saisonale Muster (10 Tage) zu berechnen. Sobald eine Warnungsregel erstellt wurde, verwenden die dynamischen Schwellenwerte alle benötigten historischen Daten, die verfügbar sind, und lernen und passen sich kontinuierlich basierend auf neuen Daten an, um die Schwellenwerte genauer zu gestalten. Dies bedeutet, dass nach diesem Berechnungsdiagramm auch wöchentliche Muster angezeigt werden.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Wie viele Daten sind zum Auslösen einer Warnung erforderlich?
 
@@ -99,7 +112,7 @@ In den folgenden bewährten Methoden wird gezeigt, wie Sie für einige dieser Me
     > [!TIP]
     > Die meisten Ressourcenblätter verfügen auch über **Warnungen** in ihrem Ressourcenmenü (unter **Überwachung**). Sie können auch von dort aus Benachrichtigungen erstellen.
 
-3. Klicken Sie auf **Ziel auswählen** und wählen Sie im geladenen Kontextbereich eine Zielressource aus, für die Sie eine Warnungsregel erstellen möchten. Verwenden Sie die Dropdownlisten **Abonnement** und **Ressourcentyp „Virtual Machines“**, um die zu überwachende Ressource zu finden. Sie können auch die Suchleiste verwenden, um Ihre Ressource zu finden.
+3. Klicken Sie auf **Ziel auswählen** und wählen Sie im geladenen Kontextbereich eine Zielressource aus, für die Sie eine Warnungsregel erstellen möchten. Verwenden Sie die Dropdownlisten **Abonnement** und **Ressourcentyp „Virtual Machines“** , um die zu überwachende Ressource zu finden. Sie können auch die Suchleiste verwenden, um Ihre Ressource zu finden.
 
 4. Nachdem Sie eine Zielressource ausgewählt haben, klicken Sie auf **Bedingung hinzufügen**.
 
@@ -136,7 +149,7 @@ In den folgenden bewährten Methoden wird gezeigt, wie Sie für einige dieser Me
     > [!TIP]
     > Die meisten Ressourcenblätter verfügen auch über **Warnungen** in ihrem Ressourcenmenü (unter **Überwachung**). Sie können auch von dort aus Benachrichtigungen erstellen.
 
-3. Klicken Sie auf **Ziel auswählen** und wählen Sie im geladenen Kontextbereich eine Zielressource aus, für die Sie eine Warnungsregel erstellen möchten. Verwenden Sie die Dropdownlisten **Abonnement** und **Ressourcentyp „Application Insights“**, um die zu überwachende Ressource zu finden. Sie können auch die Suchleiste verwenden, um Ihre Ressource zu finden.
+3. Klicken Sie auf **Ziel auswählen** und wählen Sie im geladenen Kontextbereich eine Zielressource aus, für die Sie eine Warnungsregel erstellen möchten. Verwenden Sie die Dropdownlisten **Abonnement** und **Ressourcentyp „Application Insights“** , um die zu überwachende Ressource zu finden. Sie können auch die Suchleiste verwenden, um Ihre Ressource zu finden.
 
 4. Nachdem Sie eine Zielressource ausgewählt haben, klicken Sie auf **Bedingung hinzufügen**.
 

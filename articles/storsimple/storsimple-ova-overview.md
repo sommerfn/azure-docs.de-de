@@ -12,16 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 03/14/2019
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e5713af737a6d9d190814b4155a8e772deea06bc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cbfc69c7d8d9354ae4e727b9eb0180583165abab
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013915"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516708"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Einführung in das StorSimple Virtual Array
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
 ## <a name="overview"></a>Übersicht
 
@@ -44,7 +46,7 @@ In der folgenden Tabelle sind die wichtigen Features von StorSimple Virtual Arra
 | Gesamtkapazität (einschließlich Cloud) |Bis zu 64 TB nutzbare Kapazität pro virtuellem Array |
 | Lokale Kapazität |390 GB bis 6,4 TB nutzbare Kapazität pro virtuellem Array (Bereitstellung von Datenträger-Speicherplatz im Bereich 500 GB bis 8 TB erforderlich) |
 | Systemeigene Protokolle |iSCSI oder SMB |
-| Recovery Time Objective (RTO) |iSCSI: weniger als 2 Minuten, unabhängig von der Größe  |
+| Recovery Time Objective (RTO) |iSCSI: weniger als 2 Minuten, unabhängig von der Größe |
 | Recovery Point Objective (RPO) |Tägliche Sicherungen und bedarfsgesteuerte Sicherungen |
 | Speicherstaffelung |Verwendung von Heat Maps zum Ermitteln, welche Daten einbezogen bzw. nicht einbezogen werden sollen |
 | Support |Vom Anbieter unterstützte Virtualisierungsinfrastruktur |

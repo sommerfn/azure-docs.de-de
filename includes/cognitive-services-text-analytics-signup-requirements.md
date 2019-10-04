@@ -4,12 +4,15 @@ ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/20/2018
-ms.openlocfilehash: e66f6fb7c823c0c267747ed5774aada438b490ce
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 6d53d3d6e115742b7b91d9c7e5888ba2cc0478f5
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741484"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68697201"
 ---
-Sie benötigen ein [Cognitive Services-API-Abonnement](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Textanalyse-API. Falls Sie nicht über ein Abonnement verfügen, können Sie ein kostenloses [Konto erstellen](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Um fortfahren zu können, benötigen Sie den Textanalyse-Abonnementschlüssel, den Sie nach der Aktivierung Ihres Kontos erhalten haben.
+Schlüssel und Endpunkt für eine Textanalyseressource Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](../articles/cognitive-services/cognitive-services-apis-create-account.md) oder der [Azure CLI](../articles/cognitive-services/cognitive-services-apis-create-account-cli.md) auf Ihrem lokalen Computer eine Ressource für die Textanalyse. Weitere Funktionen:
 
+* Rufen Sie einen kostenlosen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/#lang) ab, der sieben Tage lang gültig ist. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.
+
+* Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.

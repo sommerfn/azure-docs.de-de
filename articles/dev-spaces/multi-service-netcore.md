@@ -3,18 +3,18 @@ title: Ausführen mehrerer abhängiger Dienste mithilfe von .NET Core und Visual
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-author: DrEsteban
-ms.author: stevenry
+author: zr-msft
+ms.author: zarhoads
 ms.date: 11/21/2018
 ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: 575a14416835337d9aad45c4328f3119288f04c8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
+ms.openlocfilehash: 2a1e99ba1c19dfdcaaf1b6709e6d3976968cf623
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359203"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67503105"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Entwicklung mit mehreren Diensten mit Azure Dev Spaces
 
@@ -33,7 +33,7 @@ Laden Sie Beispielcode aus einem GitHub-Repository herunter, um Zeit zu sparen. 
 1. Öffnen Sie den Ordner `mywebapi` in einem *separaten VS Code-Fenster*.
 1. Öffnen Sie die **Befehlspalette** (über das Menü **Ansicht | Befehlspalette**), verwenden Sie die automatische Vervollständigung für die Eingabe, und wählen Sie den Befehl `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces` aus. Dieser Befehl darf nicht mit dem Befehl `azds prep` verwechselt werden, der zum Konfigurieren des Projekts für die Bereitstellung dient.
 1. Drücken Sie F5, und warten Sie, bis der Dienst erstellt und bereitgestellt wurde. Der Vorgang ist abgeschlossen, wenn die Meldung *Application started. Press Ctrl+C to shut down.* (Anwendung gestartet. Drücken Sie zum Herunterfahren STRG+C.) in der Debugging-Konsole angezeigt wird.
-1. Die Endpunkt-URL sieht ungefähr wie folgt aus: `http://localhost:<portnumber>`. **Tipp: Auf der Statusleiste von VS Code wird eine klickbare URL angezeigt.** Es sieht unter Umständen so aus, als würde der Container lokal ausgeführt. Tatsächlich wird er jedoch im Entwicklungsbereich in Azure ausgeführt. Die localhost-Adresse wird verwendet, da `mywebapi` keine öffentlichen Endpunkte definiert hat und auf den Dienst nur über die Kubernetes-Instanz zugegriffen werden kann. Um die Interaktion mit dem privaten Dienst auf Ihrem lokalen Computer zu erleichtern, erstellt Azure Dev Spaces einen temporären SSH-Tunnel zu dem in Azure ausgeführten Container.
+1. Die Endpunkt-URL sieht ungefähr wie folgt aus: `http://localhost:<portnumber>`. **Tipp: Auf der Statusleiste von Visual Studio Code, die sich in orange ändert, wird eine klickbare URL angezeigt.** Es sieht unter Umständen so aus, als würde der Container lokal ausgeführt. Tatsächlich wird er jedoch im Entwicklungsbereich in Azure ausgeführt. Die localhost-Adresse wird verwendet, da `mywebapi` keine öffentlichen Endpunkte definiert hat und auf den Dienst nur über die Kubernetes-Instanz zugegriffen werden kann. Um die Interaktion mit dem privaten Dienst auf Ihrem lokalen Computer zu erleichtern, erstellt Azure Dev Spaces einen temporären SSH-Tunnel zu dem in Azure ausgeführten Container.
 1. Öffnen Sie in Ihrem Browser die localhost-Adresse, wenn `mywebapi` bereit ist. Fügen Sie `/api/values` an die URL an, um die Standard-GET-API für `ValuesController` aufzurufen.
 1. Wenn alle Schritte erfolgreich ausgeführt wurden, sollte eine Antwort vom Dienst `mywebapi` angezeigt werden.
 
@@ -69,39 +69,11 @@ Im obigen Codebeispiel wird der Header `azds-route-as` aus der eingehenden Anfor
 
 ### <a name="debug-across-multiple-services"></a>Debuggen mehrerer Dienste
 1. Zu diesem Zeitpunkt sollte `mywebapi` noch mit angefügtem Debugger ausgeführt werden. Ist dies nicht der Fall, drücken Sie im Projekt `mywebapi` F5.
-1. Legen Sie einen Breakpoint in der `Get(int id)`-Methode fest, die `api/values/{id}`-GET-Anforderungen verarbeitet.
-1. Legen Sie im Projekt `webfrontend` direkt vor dem Senden einer GET-Anforderung an `mywebapi/api/values` einen Breakpoint fest.
+1. Legen Sie einen Breakpoint in der `Get(int id)`-Methode fest, die `api/values/{id}`-GET-Anforderungen verarbeitet. Dies ist etwa [Zeile 23 in der Datei *Controllers/ValuesController.cs*](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/mywebapi/Controllers/ValuesController.cs#L23).
+1. Legen Sie im Projekt `webfrontend` direkt vor dem Senden einer GET-Anforderung an `mywebapi/api/values` einen Breakpoint fest. Dies ist etwas Zeile 32 in der Datei [*Controllers/HomeController.cs*](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs), die Sie im vorherigen Abschnitt geändert haben.
 1. Drücken Sie im Projekt `webfrontend` F5.
 1. Rufen Sie die Web-App auf, und durchlaufen Sie den Code in beiden Diensten.
 1. In der Web-App wird auf der Seite „Info“ eine gemeinsame Nachricht der beiden Dienste angezeigt: „Hello from webfrontend and Hello from mywebapi“.
-
-### <a name="automatic-tracing-for-http-messages"></a>Automatische Nachverfolgung für HTTP-Nachrichten
-*webfrontend* enthält zwar keinen speziellen Code zum Ausgeben des an *mywebapi* gerichteten HTTP-Aufrufs, trotzdem werden im Ausgabefenster HTTP-Nachverfolgungsnachrichten angezeigt:
-```
-// The request from your browser
-default.webfrontend.856bb3af715744c6810b.eus.azds.io --gyk-> webfrontend:
-   GET /Home/About HTTP/1.1
-
-// *webfrontend* reaching out to *mywebapi*
-webfrontend-668b7ddb9f-n5rhj --pu5-> mywebapi:
-   GET /api/values/1 HTTP/1.1
-
-// Response from *mywebapi*
-webfrontend-668b7ddb9f-n5rhj <-pu5-- mywebapi:
-   HTTP/1.1 200 OK
-   Hello from mywebapi
-
-// Response from *webfrontend* to your browser
-default.webfrontend.856bb3af715744c6810b.eus.azds.io <-gyk-- webfrontend:
-   HTTP/1.1 200 OK
-   <!DOCTYPE html>
-   <html>
-   <head>
-       <meta charset="utf-8" />
-       <meta name="viewport" content="width=device-width, initial-sc...<[TRUNCATED]>
-```
-Das ist einer der Vorteile, der sich durch die Verwendung der Dev Spaces-Instrumentierung ergibt. Wir fügen Komponenten ein, die HTTP-Anforderungen nachverfolgen, während sie das System durchlaufen, um Entwickler bei der Nachverfolgung komplexer Aufrufe für mehrere Dienste zu unterstützen.
-
 
 ### <a name="well-done"></a>Gut gemacht!
 Sie besitzen nun eine Anwendung mit mehreren Containern, in der die einzelnen Container separat entwickelt und bereitgestellt werden können.

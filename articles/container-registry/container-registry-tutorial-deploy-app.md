@@ -3,17 +3,18 @@ title: Tutorial – Bereitstellen einer App aus einer georeplizierten Docker-Reg
 description: Stellen Sie eine Linux-basierte Web-App unter Verwendung eines Containerimages aus einer georeplizierten Azure-Containerregistrierung in zwei unterschiedlichen Azure-Regionen bereit. Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e5a38e2b6550d763f30c2462944b154f76bbe92c
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ac4d78147820c2cf56549abbec7e1fbc873ea260
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253832"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146940"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Bereitstellen einer Web-App aus einer georeplizierten Azure-Containerregistrierung
 
@@ -54,7 +55,11 @@ Nachdem Sie „In Web-App bereitstellen“ aktiviert haben, geben Sie unter **We
 | **Standortname** | Ein global eindeutiger Name für die Web-App. In diesem Beispiel verwenden wir das Format `<acrName>-westus`, um ganz einfach erkennen zu können, aus welcher Registrierung und Region die Web-App bereitgestellt wird. |
 | **Ressourcengruppe** | **Vorhandene verwenden** > `myResourceGroup` |
 | **App Service-Plan/Standort** | Erstellen Sie einen neuen Plan namens `plan-westus` in der Region **USA, Westen**. |
-| **Image** | `acr-helloworld:v1`
+| **Image** | `acr-helloworld:v1` |
+| **Betriebssystem** | Linux |
+
+> [!NOTE]
+> Wenn Sie einen neuen App Service-Plan für die Bereitstellung Ihrer Container-App erstellen, wird automatisch ein Standardplan zum Hosten Ihrer Anwendung ausgewählt. Der Standardplan hängt von der Betriebssystemeinstellung ab.
 
 Klicken Sie auf **Erstellen**, um die Web-App in der Region *USA, Westen* bereitzustellen.
 
@@ -83,7 +88,8 @@ Gehen Sie wie im vorherigen Abschnitt beschrieben vor, um eine zweite Web-App in
 | **Standortname** | Ein global eindeutiger Name für die Web-App. In diesem Beispiel verwenden wir das Format `<acrName>-eastus`, um ganz einfach erkennen zu können, aus welcher Registrierung und Region die Web-App bereitgestellt wird. |
 | **Ressourcengruppe** | **Vorhandene verwenden** > `myResourceGroup` |
 | **App Service-Plan/Standort** | Erstellen Sie einen neuen Plan namens `plan-eastus` in der Region **USA, Osten**. |
-| **Image** | `acr-helloworld:v1`
+| **Image** | `acr-helloworld:v1` |
+| **Betriebssystem** | Linux |
 
 Klicken Sie auf **Erstellen**, um die Web-App in der Region *USA, Osten* bereitzustellen.
 

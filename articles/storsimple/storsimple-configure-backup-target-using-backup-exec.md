@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
-ms.author: hkanna
-ms.openlocfilehash: e11d541f0450c0de4ba6d60f889fc7471b1fa1aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: matd
+ms.openlocfilehash: 85c04b6ea3e40f1f1dcd12eb5d6f4a8f53836867
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011141"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "67876787"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple als Sicherungsziel mit Backup Exec
 
@@ -233,7 +233,7 @@ Richten Sie Ihre Lösung gemäß den Leitlinien in den folgenden Abschnitten ein
 -   StorSimple unterstützt vollständige und inkrementelle Backup Exec-Sicherungen. Synthetische und differenzielle Sicherungen werden nicht empfohlen.
 -   Sicherungsdatendateien sollten nur die Daten für einen bestimmten Auftrag enthalten. Es können beispielsweise keine Medien aus unterschiedlichen Aufträgen angefügt werden.
 -   Deaktivieren Sie die Auftragsüberprüfung. Falls erforderlich, sollte die Überprüfung nach dem letzten Sicherungsauftrag geplant werden. Es ist wichtig zu wissen, dass sich dieser Auftrag auf Ihr Sicherungsfenster auswirkt.
--   Wählen Sie **Storage (Speicher)** > **Your disk (Ihr Datenträger)** > **Details** > **Properties (Eigenschaften)** aus. Deaktivieren Sie **Pre-allocate disk space** (Festplattenspeicher vorab zuordnen).
+-   Wählen Sie **Storage (Speicher)**  > **Your disk (Ihr Datenträger)**  > **Details** > **Properties (Eigenschaften)** aus. Deaktivieren Sie **Pre-allocate disk space** (Festplattenspeicher vorab zuordnen).
 
 Neueste Informationen zu Backup Exec-Einstellungen und bewährten Methoden für die Implementierung dieser Anforderungen finden Sie auf der [Website von Veritas](https://www.veritas.com).
 

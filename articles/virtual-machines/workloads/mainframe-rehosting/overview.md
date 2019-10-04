@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 8b7c2a088dc917c319acf6cad251ad53367a14b6
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 58755a0ac49b9549813ddb507dfbd986d83dfce5
+ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895036"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68305850"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Mainframerehosting auf virtuellen Azure-Computern
 
@@ -53,7 +53,7 @@ TmaxSoft OpenFrame ist eine beliebte Lösung zum erneuten Hosten von Mainframes,
 Erste Schritte:
 
 - [Erste Schritte mit TmaxSoft OpenFrame](./tmaxsoft/get-started.md)
-- [Herunterladen des E-Books](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-azure/)
+- [E-Book herunterladen](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 
 ## <a name="ibm-zdt-120"></a>IBM zD&T 12.0
 
@@ -63,8 +63,8 @@ In der Azure-Emulationsumgebung können verschiedene Arten von Z-Instanzen mithi
 
 Erste Schritte:
 
-- [Einrichten von IBM zD&T 12.0 in Azure](./ibm/install-ibm-z-environment.md)
-- [Einrichten von ADCD in zD&T](./ibm/demo.md)
+- [Set up IBM zD&T 12.0 on Azure (Einrichten von IBM ZD&T 12.0 in Azure)](./ibm/install-ibm-z-environment.md)
+- [Set up ADCD on zD&T (Einrichten von ADCD auf ZD&T)](./ibm/demo.md)
 
 ## <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale in Azure
 
@@ -86,7 +86,7 @@ Informieren Sie sich über das [Verschieben von Mainframe-Computing zu Azure](./
 
 Azure bietet verpflichtungsbasierte Vereinbarungen zum Service Level (Service Level Agreements, SLAs). Hohe Verfügbarkeit ist der Standard, und SLAs können mit lokaler oder geobasierter Replikation von Diensten optimiert werden. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
 
-Mit Azure-IaaS wie einer VM bieten bestimmte Systemfunktionen Failoverunterstützung – z.B. Failoverclusteringinstanzen und [Verfügbarkeitsgruppen](/azure/virtual-machines/windows/regions-and-availability#availability-sets). Wenn Sie Platform-as-a-Service-Ressourcen (PaaS) von Azure verwenden, handhabt die Plattform Failover automatisch. Beispiele hierfür sind [Azure SQL-Datenbank](/azure/sql-database/sql-database-technical-overview) und [Azure Cosmos DB](/azure/cosmos-db/introduction).
+Mit Azure-IaaS wie einer VM bieten bestimmte Systemfunktionen Failoverunterstützung – z. B. Failoverclusteringinstanzen und Verfügbarkeitsgruppen. Wenn Sie Platform-as-a-Service-Ressourcen (PaaS) von Azure verwenden, handhabt die Plattform Failover automatisch. Beispiele hierfür sind [Azure SQL-Datenbank](/azure/sql-database/sql-database-technical-overview) und [Azure Cosmos DB](/azure/cosmos-db/introduction).
 
 ### <a name="scalability"></a>Skalierbarkeit
 
@@ -119,7 +119,7 @@ Weitere Informationen:
 - [Azure-Whitepapers zu Mainframethemen](mainframe-white-papers.md)
 - [Mainframemigration](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Problembehandlung](/azure/virtual-machines/troubleshooting/)
-- [Beseitigen von Irrtümern in Bezug auf die Migration von Mainframesystemen zu Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
+- [Demystifying mainframe to Azure migration](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/) (Beseitigen von Irrtümern in Bezug auf die Migration von Mainframesystemen zu Azure)
 
 <!-- INTERNAL LINKS -->
 [microfocus-get-started]: /microfocus/get-started.md

@@ -1,10 +1,10 @@
 ---
-title: Zugreifen auf sichere Ressourcen ohne Benutzerinteraktion mithilfe von Azure AD v2.0 | Microsoft-Dokumentation
-description: Erstellen Sie Webanwendungen mithilfe der Azure AD-Implementierung des OAuth 2.0-Authentifizierungsprotokolls.
+title: Zugreifen auf sichere Ressourcen ohne Benutzerinteraktion mithilfe von Microsoft Identity Platform | Azure
+description: Erstellen von Webanwendungen mit der Microsoft Identity Platform-Implementierung des OAuth 2.0-Authentifizierungsprotokolls.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
@@ -13,19 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: celested
+ms.date: 08/30/2019
+ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8183ac9241ab57150717eebd85267a33912f1660
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: d3bb18f11de92680d296d747fc34e16c3264c369
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445429"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193285"
 ---
-# <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 und der OAuth 2.0-Clientanmeldeinformations-Flow
+# <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -34,19 +34,19 @@ Die [Gewährung von OAuth 2.0-Clientanmeldeinformationen](https://tools.ietf.org
 Beim Fluss zur Gewährung von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein vertraulicher Client) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines Benutzers anzunehmen. In diesem Szenario ist der Client normalerweise ein Webdienst der mittleren Ebene, ein Daemondienst oder eine Website. Für ein höheres Maß an Sicherheit bietet die Microsoft Identity Platform auch die Möglichkeit, dass der aufrufende Dienst ein Zertifikat (statt eines gemeinsamen Geheimnisses) als Anmeldeinformationen verwendet.
 
 > [!NOTE]
-> Der v2.0-Endpunkt unterstützt nicht alle Szenarien und Funktionen von Azure AD. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Der Microsoft Identity Platform-Endpunkt unterstützt nicht alle Szenarien und Features von Azure AD. Informieren Sie sich über die [Einschränkungen von Microsoft Identity Platform](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten.
 
-In der üblicheren *dreibeinigen OAuth-Autorisierung* wird einer Clientanwendung die Berechtigung zum Zugriff auf eine Ressource im Auftrag eines bestimmten Benutzers gewährt. Die Berechtigung wird in der Regel während des [Zustimmungsprozesses](v2-permissions-and-consent.md) vom Benutzer an die Anwendung delegiert. Allerdings werden Berechtigungen im Clientanmeldeinformations-Flow (*zweibeinige OAuth-Authentifizierung*) direkt an die Anwendung selbst erteilt. Wenn die App einer Ressource ein Token anbietet, erzwingt die Ressource, dass die App selbst (und nicht der Benutzer) für die Ausführung einer Aktion autorisiert ist. 
+In der üblicheren *dreibeinigen OAuth-Autorisierung* wird einer Clientanwendung die Berechtigung zum Zugriff auf eine Ressource im Auftrag eines bestimmten Benutzers gewährt. Die Berechtigung wird in der Regel während des [Zustimmungsprozesses](v2-permissions-and-consent.md) vom Benutzer an die Anwendung delegiert. Allerdings werden Berechtigungen im Clientanmeldeinformations-Flow (*zweibeinige OAuth-Authentifizierung*) direkt an die Anwendung selbst erteilt. Wenn die App einer Ressource ein Token anbietet, erzwingt die Ressource, dass die App selbst (und nicht der Benutzer) für die Ausführung einer Aktion autorisiert ist.
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
 Der gesamte Clientanmeldeinformations-Flow ist im folgenden Diagramm dargestellt. Wir beschreiben die einzelnen Schritte weiter unten in diesem Artikel.
 
-![Clientanmeldeinformations-Flow](./media/v2-oauth2-client-creds-grant-flow/convergence_scenarios_client_creds.png)
+![Diagramm des Clientanmeldeinformations-Flows](./media/v2-oauth2-client-creds-grant-flow/convergence-scenarios-client-creds.svg)
 
 ## <a name="get-direct-authorization"></a>Erhalten der direkten Autorisierung
 
-Eine App empfängt die direkte Autorisierung für den Zugriff auf eine Ressource in der Regel auf zwei Arten: 
+Eine App empfängt die direkte Autorisierung für den Zugriff auf eine Ressource in der Regel auf zwei Arten:
 
 * [Über eine Zugriffssteuerungsliste (Access Control List, ACL) der Ressource](#access-control-lists)
 * [Durch Zuweisung einer Anwendungsberechtigung in Azure AD](#application-permissions)
@@ -55,9 +55,9 @@ Diese beiden Methoden sind in Azure AD am gebräuchlichsten und werden von uns f
 
 ### <a name="access-control-lists"></a>Zugriffssteuerungslisten
 
-Ein Ressourcenanbieter erzwingt möglicherweise eine Autorisierungsprüfung anhand einer Liste von Anwendungs-IDs (Client-IDs), die ihm bekannt sind, und erteilt eine bestimmte Zugriffsebene. Empfängt die Ressource ein Token vom v2.0-Endpunkt, kann sie das Token decodieren und die Anwendungs-ID des Clients aus den Ansprüchen `appid` und `iss` extrahieren. Anschließend vergleicht sie die Anwendung mit der von ihr verwalteten Zugriffssteuerungsliste. Granularität der Zugriffssteuerungsliste und Methode können sich zwischen Ressourcen erheblich unterscheiden.
+Ein Ressourcenanbieter erzwingt möglicherweise eine Autorisierungsprüfung anhand einer Liste von Anwendungs-IDs (Client-IDs), die ihm bekannt sind, und erteilt eine bestimmte Zugriffsebene. Empfängt die Ressource ein Token vom Microsoft Identity Platform-Endpunkt, kann sie das Token decodieren und die Anwendungs-ID des Clients aus den Ansprüchen `appid` und `iss` extrahieren. Anschließend vergleicht sie die Anwendung mit der von ihr verwalteten Zugriffssteuerungsliste. Granularität der Zugriffssteuerungsliste und Methode können sich zwischen Ressourcen erheblich unterscheiden.
 
-Ein allgemeiner Anwendungsfall ist die Verwendung einer Zugriffssteuerungsliste zum Ausführen von Tests für eine Webanwendung oder eine Web-API. Die Web-API gewährt einem bestimmten Client möglicherweise nur eine Teilmenge der vollständigen Berechtigungen. Zum Ausführen von End-to-End-Tests auf der API wird jedoch ein Testclient erstellt, der Token vom v2.0-Endpunkt erhält und diese anschließend an die API sendet. Die API überprüft die Anwendungs-ID des Testclients anschließend anhand der Zugriffssteuerungsliste, um Vollzugriff auf die gesamte Funktionalität der API zu gewähren. Wenn Sie eine solche Zugriffssteuerungsliste verwenden, müssen Sie nicht nur den `appid`-Wert des Aufrufers überprüfen, sondern auch sicherstellen, dass der `iss`-Wert des Tokens vertrauenswürdig ist.
+Ein allgemeiner Anwendungsfall ist die Verwendung einer Zugriffssteuerungsliste zum Ausführen von Tests für eine Webanwendung oder eine Web-API. Die Web-API gewährt einem bestimmten Client möglicherweise nur eine Teilmenge der vollständigen Berechtigungen. Zum Ausführen von End-to-End-Tests auf der API wird jedoch ein Testclient erstellt, der Token vom Microsoft Identity Platform-Endpunkt erhält und diese anschließend an die API sendet. Die API überprüft die Anwendungs-ID des Testclients anschließend anhand der Zugriffssteuerungsliste, um Vollzugriff auf die gesamte Funktionalität der API zu gewähren. Wenn Sie eine solche Zugriffssteuerungsliste verwenden, müssen Sie nicht nur den `appid`-Wert des Aufrufers überprüfen, sondern auch sicherstellen, dass der `iss`-Wert des Tokens vertrauenswürdig ist.
 
 Diese Art der Autorisierung wird häufig für Daemons und Dienstkonten eingesetzt, die auf Daten zugreifen müssen, die sich im Besitz von Privatnutzern mit persönlichen Microsoft-Konten befinden. Für Daten, die Organisationen gehören, empfiehlt es sich, die erforderliche Autorisierung über Anwendungsberechtigungen zu erhalten.
 
@@ -77,19 +77,22 @@ Wenn Sie Anwendungsberechtigungen in Ihrer App verwenden möchten, führen Sie d
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Anfordern der Berechtigungen im App-Registrierungsportal
 
 1. Registrieren und erstellen Sie eine App über die neue [Oberfläche „App-Registrierungen“ (Vorschauversion)](quickstart-register-app.md).
-2. Wechseln Sie auf der Benutzeroberfläche von „App-Registrierungen“ (Vorschauversion) zu Ihrer Anwendung. Navigieren Sie zum Abschnitt **Zertifikate und Geheimnisse**, und fügen Sie einen **neuen geheimen Clientschlüssel** hinzu, weil Sie mindestens einen geheimen Clientschlüssel verwenden müssen, um ein Token anzufordern.
+2. Wechseln Sie auf der Benutzeroberfläche von „App-Registrierungen“ (Vorschauversion) zu Ihrer Anwendung. Navigieren Sie zum Abschnitt **Zertifikate und Geheimnisse**, und fügen Sie einen **neuen geheimen Clientschlüssel** hinzu, weil Sie mindestens einen geheimen Clientschlüssel benötigen, um ein Token anzufordern.
 3. Suchen Sie den Abschnitt **API-Berechtigungen**, und fügen Sie die **Anwendungsberechtigungen** hinzu, die von Ihrer App benötigt werden.
 4. **Speichern** Sie die App-Registrierung.
 
-#### <a name="recommended-sign-the-user-in-to-your-app"></a>Empfohlen: Anmelden des Benutzers bei Ihrer App
+#### <a name="recommended-sign-the-user-into-your-app"></a>Empfohlen: Anmelden des Benutzers bei Ihrer App
 
 Wenn Sie eine Anwendung erstellen, die Anwendungsberechtigungen verwendet, erfordert die App in der Regel eine Seite oder eine Sicht, auf der der Administrator Berechtigungen für die App genehmigt. Diese Seite kann Teil des Anmelde-Flows der App, Teil der App-Einstellungen oder ein dedizierter Flow „Verbinden“ sein. In vielen Fällen ist es sinnvoll, wenn die App diese Ansicht „Verbinden“ erst anzeigt, wenn ein Benutzer sich mit einem Geschäfts-, Schul- oder Unikonto von Microsoft angemeldet hat.
 
-Durch das Anmelden des Benutzers bei Ihrer App können Sie die Organisation identifizieren, der der Benutzer angehört, bevor Sie ihn zur Genehmigung der Anwendungsberechtigungen auffordern. Auch wenn es nicht unbedingt erforderlich ist, können Sie für Ihre Benutzer auf diese Weise eine intuitivere Benutzeroberfläche erstellen. Zum Anmelden des Benutzers befolgen Sie unsere [Tutorials zum v2.0-Protokoll](active-directory-v2-protocols.md).
+Durch das Anmelden des Benutzers bei Ihrer App können Sie die Organisation identifizieren, der der Benutzer angehört, bevor Sie ihn zur Genehmigung der Anwendungsberechtigungen auffordern. Auch wenn es nicht unbedingt erforderlich ist, können Sie für Ihre Benutzer auf diese Weise eine intuitivere Benutzeroberfläche erstellen. Befolgen Sie unsere Tutorials zum [Microsoft Identity Platform-Protokoll](active-directory-v2-protocols.md), um den Benutzer anzumelden.
 
 #### <a name="request-the-permissions-from-a-directory-admin"></a>Anfordern der Berechtigungen von einem Verzeichnisadministrator
 
-Wenn Sie dazu bereit sind, vom Administrator der Organisation Berechtigungen anzufordern, können Sie den Benutzer zum *Endpunkt für die Administratorzustimmung* von v2.0 umleiten.
+Wenn Sie dazu bereit sind, vom Administrator der Organisation Berechtigungen anzufordern, können Sie den Benutzer zum *Endpunkt für die Administratorzustimmung* von Microsoft Identity Platform umleiten.
+
+> [!TIP]
+> Führen Sie diese Anforderung in Postman aus. (Verwenden Sie die ID Ihrer eigenen Anwendung, um optimale Ergebnisse zu erzielen – die Tutorialanwendung fordert keine nützlichen Berechtigungen an.) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ```
 // Line breaks are for legibility only.
@@ -111,7 +114,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, von dem Sie die Berechtigung anfordern möchten. Kann als GUID oder als Anzeigename bereitgestellt werden. Wenn Sie nicht wissen, zu welchem Mandanten der Benutzer gehört, und wenn der Benutzer sich bei jedem Mandanten anmelden können soll, verwenden Sie `common`. |
-| `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App zugewiesen ist. Diese Informationen finden Sie in dem Portal, in dem Sie Ihre App registriert haben. |
+| `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `redirect_uri` | Erforderlich | Der Umleitungs-URI, an den die Antwort zur Verarbeitung durch die App gesendet werden soll. Er muss genau einem der Umleitungs-URIs entsprechen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss und zusätzliche Pfadsegmente aufweisen kann. |
 | `state` | Empfohlen | Ein in der Anforderung enthaltener Wert, der ebenfalls in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Der Status wird verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 
@@ -148,7 +151,10 @@ Nachdem Sie eine erfolgreiche Antwort vom App-Bereitstellungsendpunkt erhalten h
 
 ## <a name="get-a-token"></a>Abrufen von Token
 
-Sobald Sie die notwendige Autorisierung für Ihre Anwendung erhalten haben, können Sie mit dem Abrufen von Zugriffstoken für APIs fortfahren. Um ein Token über die Gewährung von Clientanmeldeinformationen zu erhalten, senden Sie eine POST-Anforderung an den `/token`-v2.0-Endpunkt:
+Sobald Sie die notwendige Autorisierung für Ihre Anwendung erhalten haben, können Sie mit dem Abrufen von Zugriffstoken für APIs fortfahren. Um ein Token über die Gewährung von Clientanmeldeinformationen zu erhalten, senden Sie eine POST-Anforderung an den `/token`-Microsoft Identity Platform-Endpunkt:
+
+> [!TIP]
+> Führen Sie diese Anforderung in Postman aus. (Verwenden Sie die ID Ihrer eigenen Anwendung, um optimale Ergebnisse zu erzielen – die Tutorialanwendung fordert keine nützlichen Berechtigungen an.) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Erster Fall: Zugriffstokenanforderung mit einem gemeinsamen Geheimnis
 
@@ -164,14 +170,15 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 ```
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
+// Replace {tenant} with your tenant! 
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
 | Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | `client_id` | Erforderlich | Die Anwendungs-ID, die Ihrer App zugewiesen ist. Diese Informationen finden Sie in dem Portal, in dem Sie Ihre App registriert haben. |
-| `scope` | Erforderlich | Bei dem Wert, der in dieser Anforderung für den `scope`-Parameter übergeben wird, muss es sich um den Ressourcenbezeichner (Anwendungs-ID-URI) der gewünschten Ressource mit dem Suffix `.default` handeln. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. </br>Dieser Wert weist den v2.0-Endpunkt an, von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen auszustellen, die zur gewünschten Ressource gehören. Weitere Informationen zum `/.default`-Bereich finden Sie in der [Dokumentation zu Zustimmungen](v2-permissions-and-consent.md#the-default-scope). |
+| `scope` | Erforderlich | Bei dem Wert, der in dieser Anforderung für den `scope`-Parameter übergeben wird, muss es sich um den Ressourcenbezeichner (Anwendungs-ID-URI) der gewünschten Ressource mit dem Suffix `.default` handeln. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. <br/>Dieser Wert weist den Microsoft Identity Platform-Endpunkt an, von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen auszustellen, die zur gewünschten Ressource gehören. Weitere Informationen zum `/.default`-Bereich finden Sie in der [Dokumentation zu Zustimmungen](v2-permissions-and-consent.md#the-default-scope). |
 | `client_secret` | Erforderlich | Der geheime Clientschlüssel, den Sie im App-Registrierungsportal für Ihre App generiert haben. Der geheime Clientschlüssel muss vor dem Senden URL-codiert werden. |
 | `grant_type` | Erforderlich | Muss auf `client_credentials` festgelegt sein. |
 
@@ -193,7 +200,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | `client_id` | Erforderlich |Die Anwendungs-ID (Client-ID), die Ihrer App zugewiesen ist. |
-| `scope` | Erforderlich | Bei dem Wert, der in dieser Anforderung für den `scope`-Parameter übergeben wird, muss es sich um den Ressourcenbezeichner (Anwendungs-ID-URI) der gewünschten Ressource mit dem Suffix `.default` handeln. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. <br>Dieser Wert informiert den v2.0-Endpunkt darüber, dass er von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen ausstellen soll, die zur gewünschten Ressource gehören. Weitere Informationen zum `/.default`-Bereich finden Sie in der [Dokumentation zu Zustimmungen](v2-permissions-and-consent.md#the-default-scope). |
+| `scope` | Erforderlich | Bei dem Wert, der in dieser Anforderung für den `scope`-Parameter übergeben wird, muss es sich um den Ressourcenbezeichner (Anwendungs-ID-URI) der gewünschten Ressource mit dem Suffix `.default` handeln. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. <br/>Dieser Wert teilt dem Microsoft Identity Platform-Endpunkt mit, dass er von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen ausstellen soll, die zur gewünschten Ressource gehören. Weitere Informationen zum `/.default`-Bereich finden Sie in der [Dokumentation zu Zustimmungen](v2-permissions-and-consent.md#the-default-scope). |
 | `client_assertion_type` | Erforderlich | Der Wert muss auf `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` festgelegt werden. |
 | `client_assertion` | Erforderlich | Eine Assertion (ein JSON-Webtoken), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden. Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md).|
 | `grant_type` | Erforderlich | Muss auf `client_credentials` festgelegt sein. |
@@ -215,7 +222,7 @@ Eine erfolgreiche Antwort sieht wie folgt aus:
 | Parameter | BESCHREIBUNG |
 | --- | --- |
 | `access_token` | Das angeforderte Zugriffstoken. Die App kann dieses Token zur Authentifizierung bei geschützten Ressourcen wie einer Web-API verwenden. |
-| `token_type` | Gibt den Wert des Tokentyps an. Der einzige Typ, der von Azure AD unterstützt wird, ist `bearer`. |
+| `token_type` | Gibt den Wert des Tokentyps an. Die Microsoft Identity Platform unterstützt nur den Typ `bearer`. |
 | `expires_in` | Die Gültigkeitsdauer eines Zugriffstokens (in Sekunden). |
 
 ### <a name="error-response"></a>Fehlerantwort
@@ -259,7 +266,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ```
-curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q" 'https://graph.microsoft.com/v1.0/me/messages'
+curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph.microsoft.com/v1.0/me/messages'
 ```
 
 ## <a name="code-samples-and-other-documentation"></a>Codebeispiele und anderes Dokumentationsmaterial

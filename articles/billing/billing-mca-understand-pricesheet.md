@@ -1,34 +1,30 @@
 ---
-title: Grundlegendes zu den Begriffen auf Ihrem Preisblatt für eine Microsoft-Kundenvereinbarung – Azure | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie die Nutzung und Abrechnung Ihres Azure-Abonnements anzeigen und besser verstehen können.
-services: ''
-documentationcenter: ''
-author: jureid
+title: Grundlegendes zu den Begriffen auf Ihrem Preisblatt für eine Microsoft-Kundenvereinbarung – Azure
+description: Erfahren Sie, wie Sie die Nutzung und Rechnung für eine Microsoft-Kundenvereinbarung lesen und verstehen.
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
-ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: eb6184e10d38cdcfad7070663e36f6610d009cdb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4d83228fbec395d604e5ce3f988d2a6157f21eed
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880754"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "67490663"
 ---
-# <a name="understand-the-terms-in-your-price-sheet-for-a-microsoft-customer-agreement"></a>Grundlegendes zu den Begriffen auf Ihrem Preisblatt für eine Microsoft-Kundenvereinbarung
+# <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Begriffe auf dem Preisblatt Ihrer Microsoft-Kundenvereinbarung
 
-Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben](#check-access-to-a-microsoft-customer-agreement).
+Dieser Artikel bezieht sich auf ein Azure-Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
 
 Wenn Sie über die Rolle „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ verfügen, können Sie im Azure-Portal das Preisblatt Ihrer Organisation herunterladen. Weitere Informationen finden Sie unter [Anzeigen und Herunterladen der Preise Ihrer Organisation](billing-ea-pricing.md).
 
-## <a name="detailed-terms-and-descriptions-in-your-microsoft-customer-agreement-price-sheet"></a>Auf dem Preisblatt für eine Microsoft-Kundenvereinbarung verwendete Begriffe und Beschreibungen dieser Begriffe
+## <a name="terms-and-descriptions-in-your-price-sheet"></a>Begriffe und Beschreibungen auf Ihrem Preisblatt
 
 Im folgenden Abschnitt werden wichtige Begriffe beschrieben, die auf dem Preisblatt für eine Microsoft-Kundenvereinbarung angezeigt werden.
 
@@ -61,7 +57,7 @@ Im folgenden Abschnitt werden wichtige Begriffe beschrieben, die auf dem Preisbl
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

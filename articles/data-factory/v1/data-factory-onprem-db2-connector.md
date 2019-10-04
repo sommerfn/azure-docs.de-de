@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e473858ed02afce89313c0bfeffd95c785120d40
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311527"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839031"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Verschieben von Daten aus DB2 mithilfe der Kopieraktivität von Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-onprem-db2-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-db2.md)
 
@@ -64,7 +64,7 @@ Der DB2-Connector von Data Factory unterstützt die folgenden IBM DB2-Plattforme
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, um Daten mithilfe verschiedener Tools und APIs aus einem lokalen DB2-Datenspeicher zu verschieben: 
 
 - Am einfachsten erstellen Sie eine Pipeline mit dem Kopier-Assistenten von Azure Data Factory. Eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Kopier-Assistenten finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md). 
-- Sie können auch Tools zum Erstellen einer Pipeline verwenden. Dazu gehören u.a. das Azure-Portal, Visual Studio, Azure PowerShell, Azure Resource Manager-Vorlagen sowie .NET-API und REST-API. Eine ausführliche Anleitung zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+- Sie können auch Tools zum Erstellen einer Pipeline verwenden. Dazu gehören u. a. Visual Studio, Azure PowerShell, Azure Resource Manager-Vorlagen sowie .NET-API und REST-API. Eine ausführliche Anleitung zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
@@ -84,10 +84,10 @@ Die folgende Tabelle enthält die JSON-Eigenschaften, die spezifisch für einen 
 | **type** |Diese Eigenschaft muss auf **OnPremisesDb2** festgelegt werden. |Ja |
 | **server** |Der Name des DB2-Servers |Ja |
 | **database** |Der Name der DB2-Datenbank |Ja |
-| **schema** |Der Name des Schemas in der DB2-Datenbank. Diese Eigenschaft erfordert die Beachtung der Groß-/Kleinschreibung. |Nein  |
+| **schema** |Der Name des Schemas in der DB2-Datenbank. Diese Eigenschaft erfordert die Beachtung der Groß-/Kleinschreibung. |Nein |
 | **authenticationType** |Der Typ der Authentifizierung für die Verbindung mit der DB2-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |Ja |
-| **username** |Der Name für das Benutzerkonto, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein  |
-| **password** |Das Kennwort für das Benutzerkonto |Nein  |
+| **username** |Der Name für das Benutzerkonto, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein |
+| **password** |Das Kennwort für das Benutzerkonto |Nein |
 | **gatewayName** |Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen DB2-Datenbank verwenden soll |Ja |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
@@ -112,7 +112,7 @@ Wenn bei der Kopieraktivität „source“ den Typ **RelationalSource** aufweist
 > Bei Schema- und Tabellennamen wird zwischen Groß- und Kleinschreibung unterschieden. Schließen Sie in der Abfrageanweisung Eigenschaftennamen in doppelte Anführungszeichen ("") ein.
 
 ## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>JSON-Beispiel: Kopieren von Daten aus DB2 in Azure Blob Storage
-Dieses Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Das Beispiel veranschaulicht das Kopieren von Daten aus einer DB2-Datenbank nach Blob Storage. Allerdings können mithilfe der Kopieraktivität von mithilfe von Azure Data Factory Daten in [alle unterstützten Datenspeicher-Senkentypen](data-factory-data-movement-activities.md#supported-data-stores-and-formats) kopiert werden.
+Dieses Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Das Beispiel veranschaulicht das Kopieren von Daten aus einer DB2-Datenbank nach Blob Storage. Allerdings können mithilfe der Kopieraktivität von mithilfe von Azure Data Factory Daten in [alle unterstützten Datenspeicher-Senkentypen](data-factory-data-movement-activities.md#supported-data-stores-and-formats) kopiert werden.
 
 Das Beispiel enthält die folgenden Data Factory-Entitäten:
 
@@ -309,7 +309,7 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | DB2-Datenbanktyp | Typ ".NET Framework" |
 | --- | --- |
 | SmallInt |Int16 |
-| Ganze Zahl  |Int32 |
+| Integer |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -317,25 +317,25 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Datum |DateTime |
+| Date |DateTime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
-| xml |Byte[] |
-| Char |Zeichenfolge |
-| VarChar |Zeichenfolge |
-| LongVarChar |Zeichenfolge |
-| DB2DynArray |Zeichenfolge |
-| Binär |Byte[] |
+| Xml |Byte[] |
+| Char |string |
+| VarChar |string |
+| LongVarChar |string |
+| DB2DynArray |string |
+| Binary |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Graphic |Zeichenfolge |
-| VarGraphic |Zeichenfolge |
-| LongVarGraphic |Zeichenfolge |
-| Clob |Zeichenfolge |
+| Graphic |string |
+| VarGraphic |string |
+| LongVarGraphic |string |
+| Clob |string |
 | Blob |Byte[] |
-| DbClob |Zeichenfolge |
+| DbClob |string |
 | SmallInt |Int16 |
-| Ganze Zahl  |Int32 |
+| Integer |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -343,11 +343,11 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Datum |DateTime |
+| Date |DateTime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
-| xml |Byte[] |
-| Char |Zeichenfolge |
+| Xml |Byte[] |
+| Char |string |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quell-DataSet zu Spalten im Senken-DataSet finden Sie unter [Zuordnen von DataSet-Spalten in Azure Data Factory](data-factory-map-columns.md).

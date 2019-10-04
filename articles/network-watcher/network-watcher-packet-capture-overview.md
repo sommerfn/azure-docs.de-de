@@ -3,8 +3,8 @@ title: Einführung in die Paketerfassung in Azure Network Watcher | Microsoft-Do
 description: Diese Seite enthält eine Übersicht über die Network Watcher-Paketerfassungsfunktion.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 152cc8fb61aa6115c7b5863e4d798db9e7aa5b7c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: kumud
+ms.openlocfilehash: 8ef9da86377ac6f1b012cb0ebfd9d6866bc0c620
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23036835"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67061592"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Einführung in die variable Paketerfassung in Azure Network Watcher
 
@@ -34,7 +34,7 @@ Damit Sie wirklich ausschließlich die gewünschten Informationen erfassen, kön
 
 **Erfassungskonfiguration**
 
-|Eigenschaft|Beschreibung|
+|Eigenschaft|BESCHREIBUNG|
 |---|---|
 |**Maximale Bytes pro Paket (Bytes)** | Die Anzahl der Bytes aus jedem Paket, die erfasst werden – wenn keine Angabe erfolgt, werden alle Bytes erfasst. Die Anzahl der Bytes aus jedem Paket, die erfasst werden – wenn keine Angabe erfolgt, werden alle Bytes erfasst. Wenn Sie nur die IPv4-Header benötigen, geben Sie hier „34“ an. |
 |**Maximale Bytes pro Sitzung (Bytes)** | Gesamtanzahl der Bytes, die erfasst werden – nach Erreichen des Werts wird die Sitzung beendet.|
@@ -42,7 +42,7 @@ Damit Sie wirklich ausschließlich die gewünschten Informationen erfassen, kön
 
 **Filterung (optional)**
 
-|Eigenschaft|Beschreibung|
+|Eigenschaft|BESCHREIBUNG|
 |---|---|
 |**Protokoll** | Das zu filternde Protokoll für die Paketerfassung. Die verfügbaren Werte sind „TCP“, „UDP“ und „Alle“.|
 |**Lokale IP-Adresse** | Dieser Wert filtert bei der Paketerfassung Pakete, deren lokale IP-Adresse mit diesem Filterwert übereinstimmt.|

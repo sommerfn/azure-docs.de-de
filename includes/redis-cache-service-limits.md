@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 77019068279261a36f8ba40247e5f5694ca77892
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553647"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67178495"
 ---
-| Ressource | Begrenzung |
+| Resource | Begrenzung |
 | --- | --- |
 | Cachegröße |530 GB |
 | Datenbanken |64 |

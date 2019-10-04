@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: f8fc1f7e338f69b42df69d9a8983e8ce3bb409e3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d2637618ea9e2a0a0d0369eddce01fae073be221
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359662"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566638"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Einstellung der Premium RS-Dienstebene (Vorschau) in Azure SQL-Datenbank – Optionen für die Migration
 
@@ -27,7 +26,7 @@ Nachfolgend finden Sie eine Auflistung der Migrationsziele und Preisoptionen, di
 
 - V-Kern-Dienstebenen
 
-  Die Dienstebenen **Universell** und **Unternehmenskritisch** im [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md). Diese beiden Dienstebenen sind allgemein verfügbar. Das V-Kern-basierte Kaufmodell umfasst auch die Dienstebene **Hyperscale** (in der öffentlichen Vorschau), die eine bedarfsgerechte Anpassung entsprechend den Anforderungen Ihrer Workload mit automatischer Skalierung auf bis zu 100 TB pro Datenbank ermöglicht. Die Hyperscale-Dienstebene bietet E/A-Leistung vergleichbar mit der Premium-Dienstebene im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) zu einem Preis, der eher der Premium RS-Dienstebene ähnelt.
+  Die Dienstebenen **Universell** und **Unternehmenskritisch** im [vCore-basierten Kaufmodell](sql-database-service-tiers-vcore.md). Diese beiden Dienstebenen sind allgemein verfügbar. Das vCore-basierte Kaufmodell umfasst auch die Dienstebene **Hyperscale**, die eine bedarfsgerechte Anpassung entsprechend den Anforderungen Ihrer Workload mit automatischer Skalierung auf bis zu 100 TB pro Datenbank ermöglicht. Die Hyperscale-Dienstebene bietet E/A-Leistung vergleichbar mit der Premium-Dienstebene im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) zu einem Preis, der eher der Premium RS-Dienstebene ähnelt.
 - Preise für Dev/Test
 
   [Preise für Dev/Test](https://azure.microsoft.com/pricing/dev-test/) bieten Einsparungen von bis zu 55 % gegenüber Tarifen mit enthaltenen Lizenzen für Ihr Visual Studio-Abonnement.
@@ -70,10 +69,10 @@ Es wird empfohlen, E/A-intensive Einzeldatenbanken zur V-Kern-basierten Diensteb
 
 |**Derzeitige Dienstebene**|**Migration zu vergleichbarer V-Kern-basierter Dienstebene**|**Migration zu vergleichbarer DTU-basierter Dienstebene**|
 |---|---|---|
-|Premium RS 1|(Vorschau) Hyperscale, 1 virtueller Kern (Gen 4) oder Unternehmenskritisch, 1 virtueller Kern (Gen 4)|Premium 1|
-|Premium RS 2|(Vorschau) Hyperscale, 2 virtuelle Kerne (Gen 4) oder Unternehmenskritisch, 2 virtuelle Kerne (Gen 4)|Premium 2|
-|Premium RS 4|(Vorschau) Hyperscale, 4 virtuelle Kerne (Gen 4) oder Unternehmenskritisch, 4 virtuelle Kerne (Gen 4)|Premium 4
-|Premium RS 6|(Vorschau) Hyperscale, 6 virtuelle Kerne (Gen 4) oder Unternehmenskritisch, 6 virtuelle Kerne (Gen 4)|Premium 6|
+|Premium RS 1| Hyperscale, 1 virtueller Kern (Gen 4) oder Unternehmenskritisch, 1 virtueller Kern (Gen 4)|Premium 1|
+|Premium RS 2| Hyperscale, 2 virtuelle Kerne (Gen 4) oder Unternehmenskritisch, 2 virtuelle Kerne (Gen 4)|Premium 2|
+|Premium RS 4| Hyperscale, 4 virtuelle Kerne (Gen 4) oder Unternehmenskritisch, 4 virtuelle Kerne (Gen 4)|Premium 4
+|Premium RS 6| Hyperscale, 6 virtuelle Kerne (Gen 4) oder Unternehmenskritisch, 6 virtuelle Kerne (Gen 4)|Premium 6|
 
 |**Derzeitige Dienstebene**|**Migration zu vergleichbarer V-Kern-basierter Dienstebene**|**Migration zu vergleichbarer DTU-basierter Dienstebene**|
 |---|---|---|
@@ -84,7 +83,7 @@ Es wird empfohlen, E/A-intensive Einzeldatenbanken zur V-Kern-basierten Diensteb
 
 ## <a name="take-advantage-of-our-new-offers"></a>Nutzen Sie unsere neuen Angebote
 
-Für unsere Dienstebenen im V-Kern-basierten Kaufmodell gelten spezielle Angebote, mit denen Sie bis zu 80 % gegenüber Preismodellen mit enthaltenen Lizenzen sparen können. Verwenden Sie Ihre Lizenzen für die SQL Server Standard oder Enterprise Edition mit aktiver Software Assurance, um mit dem [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) bis zu 55 % gegenüber Preismodellen mit enthaltenen Lizenzen zu sparen. Sie können den Hybridvorteil mit Preisen für [reservierte Azure SQL-Datenbank-Kapazität](sql-database-reserved-capacity.md) kombinieren und bis zu 80 % sparen, wenn Sie sich im Voraus für einen Zeitraum von einem oder drei Jahren festlegen.  Aktivieren Sie beide Vorteile noch heute über das Azure-Portal.
+Für unsere Dienstebenen im vCore-basierten Kaufmodell gelten spezielle Angebote, mit denen Sie bis zu 80 Prozent gegenüber Preismodellen mit enthaltenen Lizenzen sparen können. Verwenden Sie Ihre Lizenzen für die SQL Server Standard oder Enterprise Edition mit aktiver Software Assurance, um mit dem [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) bis zu 55 % gegenüber Preismodellen mit enthaltenen Lizenzen zu sparen. Sie können den Hybridvorteil mit Preisen für [reservierte Azure SQL-Datenbank-Kapazität](sql-database-reserved-capacity.md) kombinieren und bis zu 80 % sparen, wenn Sie sich im Voraus für einen Zeitraum von einem oder drei Jahren festlegen.  Aktivieren Sie beide Vorteile noch heute über das Azure-Portal.
 
 Wenn Sie Fragen oder Bedenken bezüglich dieser Änderung haben oder Unterstützung bei der Migration benötigen, wenden Sie sich an [Microsoft](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
@@ -100,5 +99,5 @@ Sie können eine beliebige Datenbank mit einer Premium RS-Computegröße in eine
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Ausführliche Informationen zu bestimmten Computegrößen und Speichergrößen für Einzeldatenbanken finden Sie unter [V-Kern-basierte Ressourceneinschränkungen in SQL-Datenbank für Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
-- Ausführliche Informationen zu Auswahlmöglichkeiten bestimmter Compute- und Speichergrößen für Pools für elastische Datenbanken finden Sie unter [V-Kern-basierte Ressourceneinschränkungen in SQL-Datenbank für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
+- Ausführliche Informationen zu bestimmten Computegrößen und Speichergrößen für Einzeldatenbanken finden Sie unter [V-Kern-basierte Ressourceneinschränkungen in SQL-Datenbank für Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md).
+- Ausführliche Informationen zu Auswahlmöglichkeiten bestimmter Compute- und Speichergrößen für Pools für elastische Datenbanken finden Sie unter [V-Kern-basierte Ressourceneinschränkungen in SQL-Datenbank für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md).

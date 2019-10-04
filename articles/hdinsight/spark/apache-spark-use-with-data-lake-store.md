@@ -1,24 +1,23 @@
 ---
 title: Verwenden von Apache Spark zum Analysieren von Daten in Azure Data Lake Storage Gen1
-description: Ausführen von Spark-Aufträgen zum Analysieren von in Azure Data Lake Storage Gen1 gespeicherten Daten
-services: hdinsight
+description: Ausführen von Apache Spark-Aufträgen zum Analysieren von in Azure Data Lake Storage Gen1 gespeicherten Daten
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.openlocfilehash: 97a9d688eaa607df9677b6e1e2e3759cbe53bd5c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/13/2019
+ms.openlocfilehash: b8e830cb187b375e17b3dc33c582126adfa32f3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122536"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002488"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Verwenden des HDInsight Spark-Clusters zum Analysieren von Daten in Data Lake Storage Gen1
 
-In diesem Tutorial verwenden Sie das mit HDInsight Spark-Clustern verfügbare [Jupyter Notebook](https://jupyter.org/), um einen Auftrag auszuführen, der Daten aus einem Data Lake Storage-Konto liest.
+In diesem Artikel verwenden Sie das mit HDInsight Spark-Clustern verfügbare [Jupyter Notebook](https://jupyter.org/), um einen Auftrag auszuführen, der Daten aus einem Data Lake Storage-Konto liest.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -26,7 +25,6 @@ In diesem Tutorial verwenden Sie das mit HDInsight Spark-Clustern verfügbare [J
 
 * Azure HDInsight Spark-Cluster mit Data Lake Storage Gen1 als Speicher. Befolgen Sie die Anweisungen unter [Schnellstart: Einrichten von Clustern in HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-    
 ## <a name="prepare-the-data"></a>Vorbereiten der Daten
 
 > [!NOTE]  
@@ -121,7 +119,7 @@ Wenn Sie einen HDInsight-Cluster mit Data Lake Storage als zusätzlichen Speiche
 
      Sie können die Ergebnisse auch in anderen Visualisierungen anzeigen. Beispielsweise würde ein Bereichsdiagramm für dieselbe Ausgabe wie folgt aussehen.
 
-     ![Bereichsdiagramm des Abfrageergebnisses](./media/apache-spark-use-with-data-lake-store/jupyter-area-output.png "Bereichsdiagramm des Abfrageergebnisses")
+     ![Bereichsdiagramm des Abfrageergebnisses](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "Bereichsdiagramm des Abfrageergebnisses")
 
 8. Nach Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, um die Ressourcen freizugeben. Klicken Sie hierzu im Menü **Datei** des Notebooks auf die Option zum **Schließen und Anhalten**. Dadurch wird das Notebook heruntergefahren und geschlossen.
 

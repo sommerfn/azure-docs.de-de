@@ -1,25 +1,18 @@
 ---
-title: Aktualisieren eines vorhandenen VM-Angebots im Azure Marketplace | Microsoft-Dokumentation
+title: Aktualisieren eines vorhandenen VM-Angebots im Azure Marketplace
 description: In diesem Artikel wird erläutert, wie Sie ein vorhandenes VM-Angebot im Azure Marketplace aktualisieren.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: Ankit.Sud
-ms.openlocfilehash: 254215389d129874f7ac3fc855b26819d41a095c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: ansud
+ms.openlocfilehash: e6099caf949d93abf8c665f61cd9b91d545dd0f4
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852473"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612541"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Aktualisieren eines vorhandenen VM-Angebots im Azure Marketplace
 

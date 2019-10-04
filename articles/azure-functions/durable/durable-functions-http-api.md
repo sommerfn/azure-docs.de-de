@@ -1,94 +1,26 @@
 ---
-title: HTTP-APIs in Durable Functions – Azure
+title: HTTP-APIs in Durable Functions – Azure Functions
 description: Es wird beschrieben, wie Sie HTTP-APIs in der Erweiterung „Durable Functions“ für Azure Functions implementieren.
 services: functions
 author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5bd977826f489ca8452432babe6126b8553450fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 094ae511337556ef0c67c86f6d8692cae005430a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58137707"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033963"
 ---
-# <a name="http-apis-in-durable-functions-azure-functions"></a>HTTP-APIs in Durable Functions (Azure Functions)
+# <a name="http-api-reference"></a>HTTP-API-Referenz
 
-Die Erweiterung „Durable Task“ macht eine Reihe von HTTP-APIs verfügbar, die zum Durchführen der folgenden Aufgaben verwendet werden können:
+Die Durable Functions-Erweiterung macht eine Reihe integrierter HTTP-APIs verfügbar, die verwendet werden können, um Verwaltungsaufgaben für [Orchestrierungen](durable-functions-types-features-overview.md#orchestrator-functions), [Entitäten](durable-functions-types-features-overview.md#entity-functions) und [Aufgabenhubs](durable-functions-task-hubs.md) auszuführen. Diese HTTP-APIs sind Erweiterbarkeitswebhooks, die vom Azure Functions-Host autorisiert, aber direkt von der Durable Functions-Erweiterung verarbeitet werden.
 
-* Abrufen des Status einer Orchestrierungsinstanz
-* Senden eines Ereignisses an eine Orchestrierungsinstanz im Wartezustand
-* Beenden einer ausgeführten Orchestrierungsinstanz
-
-Bei all diesen HTTP-APIs handelt es sich um Webhookvorgänge, die direkt von der Erweiterung „Durable Task“ verarbeitet werden. Sie gelten nicht spezifisch für eine Funktion in der Funktionen-App.
-
-> [!NOTE]
-> Diese Vorgänge können auch direkt aufgerufen werden, indem die Instanzverwaltungs-APIs der [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)-Klasse verwendet werden. Weitere Informationen finden Sie unter [Instanzverwaltung](durable-functions-instance-management.md).
-
-## <a name="http-api-url-discovery"></a>Ermittlung der HTTP-API-URL
-
-Die [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)-Klasse macht eine [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_)-API verfügbar, die zum Generieren einer HTTP-Antwortnutzlast mit Links zu allen unterstützten Vorgängen verwendet werden kann. Hier ist ein Beispiel für eine HTTP-Triggerfunktion angegeben, mit dem die Nutzung dieser API veranschaulicht wird:
-
-### <a name="c"></a>C#
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
-
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
-
-[!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
-
-Diese Beispielfunktionen erzeugen die folgenden JSON-Antwortdaten. Der Datentyp aller Felder lautet `string`.
-
-| Feld                   |BESCHREIBUNG                           |
-|-------------------------|--------------------------------------|
-| **`id`**                |ID der Orchestrierungsinstanz |
-| **`statusQueryGetUri`** |Status-URL der Orchestrierungsinstanz |
-| **`sendEventPostUri`**  |URL der Orchestrierungsinstanz für die „Ereignisauslösung“ |
-| **`terminatePostUri`**  |URL der Orchestrierungsinstanz für die „Beendigung“ |
-| **`rewindPostUri`**     |URL der Orchestrierungsinstanz für den „Rücklauf“ |
-
-Hier eine Beispielantwort:
-
-```http
-HTTP/1.1 202 Accepted
-Content-Length: 923
-Content-Type: application/json; charset=utf-8
-Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
-
-{
-    "id":"34ce9a28a6834d8492ce6a295f1a80e2",
-    "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
-}
-```
-
-> [!NOTE]
-> Das Format der Webhook-URLs kann in Abhängigkeit davon variieren, welche Version des Azure Functions-Hosts Sie ausführen. Das obige Beispiel gilt für den Azure Functions 2.x-Host.
-
-## <a name="async-operation-tracking"></a>Nachverfolgen von asynchronen Vorgängen
-
-Die oben erwähnte HTTP-Antwort wurde als Hilfe bei der Implementierung von asynchronen HTTP-APIs mit langer Ausführungsdauer per Durable Functions konzipiert. Dies wird auch als *Polling Consumer Pattern* (Consumerabrufmuster) bezeichnet. Der Client/Server-Datenfluss funktioniert wie folgt:
-
-1. Der Client sendet eine HTTP-Anforderung, um einen Prozess mit langer Ausführungsdauer zu starten, z.B. eine Orchestratorfunktion.
-2. Der HTTP-Zieltrigger gibt eine HTTP 202-Antwort mit dem Header `Location` und dem Wert `statusQueryGetUri` zurück.
-3. Der Client fragt die URL im Header `Location` ab. Er erhält weiterhin die HTTP 202-Antworten mit dem Header `Location`.
-4. Wenn die Instanz abgeschlossen (oder fehlgeschlagen) ist, gibt der Endpunkt im Header `Location` die Antwort „HTTP 200“ zurück.
-
-Dieses Protokoll ermöglicht die Koordination von Prozessen mit langer Ausführungsdauer mit externen Clients oder Diensten, die das Abfragen eines HTTP-Endpunkts unterstützen, und das Beachten des Headers `Location`. Die grundlegenden Teile sind bereits in die Durable Functions-HTTP-APIs integriert.
-
-> [!NOTE]
-> Standardmäßig unterstützen alle HTTP-basierten Aktionen, die von [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) bereitgestellt werden, das Standardmuster für asynchrone Vorgänge. Diese Funktion ermöglicht das Einbetten eines Durable Functions-Elements als Teil eines Logic Apps-Workflows. Weitere Informationen zur Unterstützung von Logik-Apps für asynchrone HTTP-Muster finden Sie im Artikel [Workflowaktionen und -trigger für Azure Logic Apps](../../logic-apps/logic-apps-workflow-actions-triggers.md#asynchronous-patterns).
-
-## <a name="http-api-reference"></a>HTTP-API-Referenz
-
-Alle HTTP-APIs, die von der Erweiterung implementiert werden, verwenden die folgenden Parameter. Alle Parameter haben den Datentyp `string`.
+Alle HTTP-APIs, die von der Erweiterung implementiert werden, benötigen die folgenden Parameter. Alle Parameter haben den Datentyp `string`.
 
 | Parameter        | Parametertyp  | BESCHREIBUNG |
 |------------------|-----------------|-------------|
@@ -96,21 +28,105 @@ Alle HTTP-APIs, die von der Erweiterung implementiert werden, verwenden die folg
 | **`connection`** | Abfragezeichenfolge    | Der **Name** der Verbindungszeichenfolge für das Speicherkonto. Wenn nichts angegeben ist, wird die Standardverbindungszeichenfolge für die Funktionen-App genutzt. |
 | **`systemKey`**  | Abfragezeichenfolge    | Der Autorisierungsschlüssel, der zum Aufrufen der API erforderlich ist. |
 
-`systemKey` ist ein Autorisierungsschlüssel, der vom Azure Functions-Host automatisch generiert wird. Er gewährt spezifischen Zugriff auf die APIs der Erweiterung „Durable Task“ und kann genauso wie [andere Autorisierungsschlüssel](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API) verwaltet werden. Die einfachste Methode zum Ermitteln des `systemKey`-Werts ist die Verwendung der oben erwähnten `CreateCheckStatusResponse`-API.
+`systemKey` ist ein Autorisierungsschlüssel, der vom Azure Functions-Host automatisch generiert wird. Er gewährt spezifischen Zugriff auf die APIs der Erweiterung „Durable Task“ und kann genauso wie [andere Autorisierungsschlüssel](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API) verwaltet werden. Sie können URLs, die die korrekten Werte der Abfragezeichenfolge für `taskHub`, `connection` und `systemKey` enthalten, mithilfe von [Orchestrierungsclientbindungs](durable-functions-bindings.md#orchestration-client)-APIs wie z. B. der `CreateCheckStatusResponse`- und `CreateHttpManagementPayload`-APIs in .NET oder der `createCheckStatusResponse`- und `createHttpManagementPayload`-APIs in JavaScript generieren.
 
 In den nächsten Abschnitten werden die spezifischen HTTP-APIs behandelt, die von der Erweiterung unterstützt werden, und es sind Anwendungsbeispiele vorhanden.
 
-### <a name="get-instance-status"></a>Abrufen des Instanzstatus (Get instance status)
+## <a name="start-orchestration"></a>Orchestrierung starten
+
+Startet die Ausführung einer neuen Instanz der angegebenen Orchestratorfunktion.
+
+### <a name="request"></a>Anforderung
+
+Für Version 1.x der Azure Functions-Runtime ist die Anforderung wie folgt formatiert (der besseren Übersichtlichkeit halber werden mehrere Zeilen angezeigt):
+
+```http
+POST /admin/extensions/DurableTaskExtension/orchestrators/{functionName}/{instanceId?}
+     ?taskHub={taskHub}
+     &connection={connectionName}
+     &code={systemKey}
+```
+
+In Version 2.x der Azure Functions-Runtime hat das URL-Format die gleichen Parameter, jedoch mit einem etwas anderen Präfix:
+
+```http
+POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
+     ?taskHub={taskHub}
+     &connection={connectionName}
+     &code={systemKey}
+```
+
+Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
+
+| Feld              | Parametertyp  | BESCHREIBUNG |
+|--------------------|-----------------|-------------|
+| **`functionName`** | URL             | Der Name der zu startenden Orchestratorfunktion. |
+| **`instanceId`**   | URL             | Dieser Parameter ist optional. ID der Orchestrierungsinstanz Wenn kein Wert angegeben wird, beginnt die Orchestratorfunktion mit einer zufälligen Instanz-ID. |
+| **`{content}`**    | Inhalt anfordern | Optional. Die Eingabe für die JSON-formatierte Orchestratorfunktion. |
+
+### <a name="response"></a>response
+
+Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
+
+* **HTTP 202 (Akzeptiert)** : Der Beginn der Ausführung der angegebenen Orchestratorfunktion wurde geplant. Der `Location`-Antwortheader enthält eine URL zum Abrufen des Orchestrierungsstatus.
+* **HTTP 400 (Ungültige Anforderung)** : Die angegebene Orchestratorfunktion ist nicht vorhanden, die angegebene Instanz-ID war ungültig oder der Anforderungsinhalt war kein gültiger JSON-Code.
+
+Die folgende Beispielanforderung startet eine `RestartVMs`-Orchestratorfunktion und umfasst die JSON-Objektnutzlast:
+
+```http
+POST /runtime/webhooks/durabletask/orchestrators/RestartVMs?code=XXX
+Content-Type: application/json
+Content-Length: 83
+
+{
+    "resourceGroup": "myRG",
+    "subscriptionId": "111deb5d-09df-4604-992e-a968345530a9"
+}
+```
+
+Die Antwortnutzlast für die **HTTP 202**-Fälle ist ein JSON-Objekt mit den folgenden Feldern:
+
+| Feld                       | BESCHREIBUNG                          |
+|-----------------------------|--------------------------------------|
+| **`id`**                    |ID der Orchestrierungsinstanz |
+| **`statusQueryGetUri`**     |Status-URL der Orchestrierungsinstanz |
+| **`sendEventPostUri`**      |URL der Orchestrierungsinstanz für die „Ereignisauslösung“ |
+| **`terminatePostUri`**      |URL der Orchestrierungsinstanz für die „Beendigung“ |
+| **`purgeHistoryDeleteUri`** |URL der Orchestrierungsinstanz für den „Bereinigungsverlauf“ |
+| **`rewindPostUri`**         |(Vorschauversion) URL der Orchestrierungsinstanz für den „Rücklauf“ |
+
+Der Datentyp aller Felder lautet `string`.
+
+Diese Beispielantwortnutzlast für eine Orchestrierungsinstanz hat `abc123` als ID (zur besseren Lesbarkeit formatiert):
+
+```http
+{
+    "id": "abc123",
+    "purgeHistoryDeleteUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123?code=XXX",
+    "sendEventPostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123/raiseEvent/{eventName}?code=XXX",
+    "statusQueryGetUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123?code=XXX",
+    "terminatePostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123/terminate?reason={text}&code=XXX"
+}
+```
+
+Die HTTP-Antwort muss mit dem *Polling Consumer Pattern* (Consumerabrufmuster) kompatibel sein. Sie enthält auch die folgenden bedeutenden Antwortheader:
+
+* **Standort**: Die URL des Statusendpunkts. Diese URL enthält denselben Wert wie das `statusQueryGetUri`-Feld.
+* **Retry-After**: Die Anzahl der Sekunden, für die zwischen Abrufvorgängen gewartet werden soll. Standardwert: `10`.
+
+Weitere Informationen zum asynchronen HTTP-Abrufmuster finden Sie in der Dokumentation [Nachverfolgen von asynchronen Vorgängen](durable-functions-http-features.md#async-operation-tracking).
+
+## <a name="get-instance-status"></a>Abrufen des Instanzstatus (Get instance status)
 
 Dient zum Abrufen des Status einer angegebenen Orchestrierungsinstanz.
 
-#### <a name="request"></a>Anforderung
+### <a name="request"></a>Anforderung
 
 Für Version 1.x der Azure Functions-Runtime ist die Anforderung wie folgt formatiert (der besseren Übersichtlichkeit halber werden mehrere Zeilen angezeigt):
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
-    ?taskHub={taskHub
+    ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
     &showHistory=[true|false]
@@ -140,17 +156,17 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | **`showHistoryOutput`** | Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn diese Option auf `true` festgelegt ist, werden die Funktionsausgaben in den Ausführungsverlauf der Orchestrierung aufgenommen.|
 | **`createdTimeFrom`**   | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen Instanzen, die am oder nach dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
 | **`createdTimeTo`**     | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen-Instanzen, die am oder vor dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
-| **`runtimeStatus`**     | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen Instanzen auf der Grundlage ihres Laufzeitstatus. Die Liste der möglichen Werte für den Laufzeitstatus finden Sie im Thema [Abfragen von Instanzen](durable-functions-instance-management.md). |
+| **`runtimeStatus`**     | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen Instanzen auf der Grundlage ihres Laufzeitstatus. Die Liste der möglichen Werte für den Laufzeitstatus finden Sie im Artikel [Abfragen von Instanzen](durable-functions-instance-management.md). |
 
-#### <a name="response"></a>response
+### <a name="response"></a>response
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
-* **HTTP 200 (OK)**: Die angegebene Instanz befindet sich im Status „Completed“ (Abgeschlossen).
-* **HTTP 202 (Akzeptiert)**: Die angegebene Instanz befindet sich in Bearbeitung.
-* **HTTP 400 (Ungültige Anforderung)**: Bei der angegebenen Instanz ist ein Fehler aufgetreten, oder sie wurde beendet.
-* **HTTP 404 (Nicht gefunden)**: Die angegebene Instanz ist nicht vorhanden, oder die Ausführung wurde noch nicht gestartet.
-* **HTTP 500 (Interner Serverfehler)**: Bei der angegebenen Instanz ist ein Ausnahmefehler aufgetreten.
+* **HTTP 200 (OK)** : Die angegebene Instanz befindet sich im Status „Completed“ (Abgeschlossen).
+* **HTTP 202 (Akzeptiert)** : Die angegebene Instanz befindet sich in Bearbeitung.
+* **HTTP 400 (Ungültige Anforderung)** : Bei der angegebenen Instanz ist ein Fehler aufgetreten, oder sie wurde beendet.
+* **HTTP 404 (Nicht gefunden)** : Die angegebene Instanz ist nicht vorhanden, oder die Ausführung wurde noch nicht gestartet.
+* **HTTP 500 (Interner Serverfehler)** : Bei der angegebenen Instanz ist ein Ausnahmefehler aufgetreten.
 
 Die Antwortnutzlast für die Fälle **HTTP 200** und **HTTP 202** ist ein JSON-Objekt mit den folgenden Feldern:
 
@@ -221,14 +237,14 @@ Hier sehen Sie ein Beispiel für eine Antwortnutzlast mit dem Ausführungsverlau
 
 Die Antwort **HTTP 202** enthält auch den Antwortheader **Location**, in dem auf die gleiche URL wie im oben erwähnten Feld `statusQueryGetUri` verwiesen wird.
 
-### <a name="get-all-instances-status"></a>Abrufen aller Instanzstatus
+## <a name="get-all-instances-status"></a>Abrufen aller Instanzstatus
 
 Sie können auch den Status aller Instanzen abfragen, indem Sie die `instanceId` aus der Anforderung „Get instance status“ (Abrufen des Instanzstatus) entfernen. In diesem Fall entsprechen die grundlegenden Parameter der Anforderung „Get instance status“. Abfragezeichenfolgeparameter zum Filtern werden auch unterstützt.
 
-Beachten Sie jedoch, dass `connection` und `code` optional sind. Wenn Sie für die Funktion anonyme Authentifizierung verwenden, ist kein Code erforderlich.
+Beachten Sie jedoch, dass `connection` und `code` optional sind. Wenn Sie für die Funktion anonyme Authentifizierung verwenden, ist kein `code` erforderlich.
 Wenn Sie keine andere Verbindungszeichenfolge für den Speicher als die in der AzureWebJobsStorage-App-Einstellung definierte verwenden möchten, können Sie den Verbindungszeichenfolgen-Parameter unbesorgt ignorieren.
 
-#### <a name="request"></a>Anforderung
+### <a name="request"></a>Anforderung
 
 Für Version 1.x der Azure Functions-Runtime ist die Anforderung wie folgt formatiert (der besseren Übersichtlichkeit halber werden mehrere Zeilen angezeigt):
 
@@ -268,10 +284,10 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | **`showHistoryOutput`** | Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn diese Option auf `true` festgelegt ist, werden die Funktionsausgaben in den Ausführungsverlauf der Orchestrierung aufgenommen.|
 | **`createdTimeFrom`**   | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen Instanzen, die am oder nach dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
 | **`createdTimeTo`**     | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen-Instanzen, die am oder vor dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
-| **`runtimeStatus`**     | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen Instanzen auf der Grundlage ihres Laufzeitstatus. Die Liste der möglichen Werte für den Laufzeitstatus finden Sie im Thema [Abfragen von Instanzen](durable-functions-instance-management.md). |
+| **`runtimeStatus`**     | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der zurückgegebenen Instanzen auf der Grundlage ihres Laufzeitstatus. Die Liste der möglichen Werte für den Laufzeitstatus finden Sie im Artikel [Abfragen von Instanzen](durable-functions-instance-management.md). |
 | **`top`**               | Abfragezeichenfolge    | Dieser Parameter ist optional. Wenn er angegeben wird, begrenzt er die Anzahl von Instanzen, die von der Abfrage zurückgegeben werden. |
 
-#### <a name="response"></a>response
+### <a name="response"></a>response
 
 Hier ist ein Beispiel für Antwortnutzlasten einschließlich des Orchestrierungsstatus (für bessere Lesbarkeit formatiert):
 
@@ -332,11 +348,11 @@ Wenn mehr Ergebnisse vorhanden sind, wird ein Fortsetzungstoken im Antwortheader
 
 Wenn Sie den Wert des Fortsetzungstokens im nächsten Anforderungsheader festlegen, können Sie die nächste Seite mit Ergebnissen abrufen. Dieser Name für den Anforderungsheader ist auch `x-ms-continuation-token`.
 
-### <a name="purge-single-instance-history"></a>Löschen des Verlaufs für eine einzelne Instanz
+## <a name="purge-single-instance-history"></a>Löschen des Verlaufs für eine einzelne Instanz
 
 Löscht den Verlauf und zugehörige Artefakte für eine bestimmte Orchestrierungsinstanz.
 
-#### <a name="request"></a>Anforderung
+### <a name="request"></a>Anforderung
 
 Für Version 1.x der Azure Functions-Runtime ist die Anforderung wie folgt formatiert (der besseren Übersichtlichkeit halber werden mehrere Zeilen angezeigt):
 
@@ -362,12 +378,12 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | ID der Orchestrierungsinstanz |
 
-#### <a name="response"></a>response
+### <a name="response"></a>response
 
 Die folgenden HTTP-Statuscodewerte können zurückgegeben werden:
 
-* **HTTP 200 (OK)**: Der Instanzverlauf wurde erfolgreich gelöscht.
-* **HTTP 404 (Nicht gefunden)**: Die angegebene Instanz ist nicht vorhanden.
+* **HTTP 200 (OK)** : Der Instanzverlauf wurde erfolgreich gelöscht.
+* **HTTP 404 (Nicht gefunden)** : Die angegebene Instanz ist nicht vorhanden.
 
 Die Antwortnutzlast für den Fall **HTTP 200** ist ein JSON-Objekt mit dem folgenden Feld:
 
@@ -383,11 +399,11 @@ Hier ist ein Beispiel für eine Antwortnutzlast angegeben (zur besseren Lesbarke
 }
 ```
 
-### <a name="purge-multiple-instance-history"></a>Löschen des Verlaufs für mehrere Instanzen
+## <a name="purge-multiple-instance-histories"></a>Löschen der Verläufe für mehrere Instanzen
 
 Sie können auch den Verlauf und zugehörige Artefakte für mehrere Instanzen in einem Aufgabenhub löschen, indem Sie die `{instanceId}` aus der Anforderung „Purge single instance history“ (Löschen des Verlaufs für eine einzelne Instanz) entfernen. Verwenden Sie die gleichen Filter, die in der Anforderung „Get all instances status“ (Abrufen aller Instanzstatus) beschrieben sind, um selektiv den Verlauf einer Instanz zu löschen.
 
-#### <a name="request"></a>Anforderung
+### <a name="request"></a>Anforderung
 
 Für Version 1.x der Azure Functions-Runtime ist die Anforderung wie folgt formatiert (der besseren Übersichtlichkeit halber werden mehrere Zeilen angezeigt):
 
@@ -417,21 +433,19 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 
 | Feld                 | Parametertyp  | BESCHREIBUNG |
 |-----------------------|-----------------|-------------|
-| **`createdTimeFrom`** | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der gelöschten Instanzen, die am oder nach dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
+| **`createdTimeFrom`** | Abfragezeichenfolge    | Filtert die Liste der gelöschten Instanzen, die am oder nach dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
 | **`createdTimeTo`**   | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der gelöschten Instanzen, die am oder vor dem angegebenen ISO8601-Zeitstempel erstellt wurden.|
-| **`runtimeStatus`**   | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der gelöschten Instanzen auf der Grundlage ihres Laufzeitstatus. Die Liste der möglichen Werte für den Laufzeitstatus finden Sie im Thema [Abfragen von Instanzen](durable-functions-instance-management.md). |
-
-Wenn keine Parameter angegeben sind, werden alle Instanzen im Aufgabenhub gelöscht.
+| **`runtimeStatus`**   | Abfragezeichenfolge    | Dieser Parameter ist optional. Filtert, wenn er angegeben wird, die Liste der gelöschten Instanzen auf der Grundlage ihres Laufzeitstatus. Die Liste der möglichen Werte für den Laufzeitstatus finden Sie im Artikel [Abfragen von Instanzen](durable-functions-instance-management.md). |
 
 > [!NOTE]
 > Dieser Vorgang kann in Bezug auf Azure Storage-E/A-Vorgänge sehr teuer sein, wenn die Instanztabelle viele Zeilen und/oder Verlaufstabellen umfasst. Weitere Informationen zu diesen Tabellen finden Sie in der Dokumentation [Leistung und Skalierbarkeit in Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md#instances-table).
 
-#### <a name="response"></a>response
+### <a name="response"></a>response
 
 Die folgenden HTTP-Statuscodewerte können zurückgegeben werden:
 
-* **HTTP 200 (OK)**: Der Instanzverlauf wurde erfolgreich gelöscht.
-* **HTTP 404 (Nicht gefunden)**: Es wurden keine Instanzen gefunden, die dem Filterausdruck entsprechen.
+* **HTTP 200 (OK)** : Der Instanzverlauf wurde erfolgreich gelöscht.
+* **HTTP 404 (Nicht gefunden)** : Es wurden keine Instanzen gefunden, die dem Filterausdruck entsprechen.
 
 Die Antwortnutzlast für den Fall **HTTP 200** ist ein JSON-Objekt mit dem folgenden Feld:
 
@@ -447,11 +461,11 @@ Hier ist ein Beispiel für eine Antwortnutzlast angegeben (zur besseren Lesbarke
 }
 ```
 
-### <a name="raise-event"></a>Auslösen eines Ereignisses (Raise event)
+## <a name="raise-event"></a>Auslösen eines Ereignisses (Raise event)
 
 Sendet eine Ereignisbenachrichtigung an eine ausgeführte Orchestrierungsinstanz.
 
-#### <a name="request"></a>Anforderung
+### <a name="request"></a>Anforderung
 
 Für Version 1.x der Azure Functions-Runtime ist die Anforderung wie folgt formatiert (der besseren Übersichtlichkeit halber werden mehrere Zeilen angezeigt):
 
@@ -479,14 +493,14 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | **`eventName`**   | URL             | Der Name des Ereignisses, das die Zielorchestrierungsinstanz erwartet. |
 | **`{content}`**   | Inhalt anfordern | Ereignisnutzlast in JSON-Formatierung |
 
-#### <a name="response"></a>response
+### <a name="response"></a>response
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
-* **HTTP 202 (Akzeptiert)**: Das ausgelöste Ereignis wurde zur Verarbeitung akzeptiert.
-* **HTTP 400 (Ungültige Anforderung)**: Der Anforderungsinhalt war nicht vom Typ `application/json` oder war kein gültiger JSON-Code.
-* **HTTP 404 (Nicht gefunden)**: Die angegebene Instanz wurde nicht gefunden.
-* **HTTP 410 (Fehlend)**: Die angegebene Instanz wurde abgeschlossen, oder es ist ein Fehler aufgetreten, sodass sie keine ausgelösten Ereignisse verarbeiten kann.
+* **HTTP 202 (Akzeptiert)** : Das ausgelöste Ereignis wurde zur Verarbeitung akzeptiert.
+* **HTTP 400 (Ungültige Anforderung)** : Der Anforderungsinhalt war nicht vom Typ `application/json` oder war kein gültiger JSON-Code.
+* **HTTP 404 (Nicht gefunden)** : Die angegebene Instanz wurde nicht gefunden.
+* **HTTP 410 (Fehlend)** : Die angegebene Instanz wurde abgeschlossen, oder es ist ein Fehler aufgetreten, sodass sie keine ausgelösten Ereignisse verarbeiten kann.
 
 Hier ist eine Beispielanforderung angegeben, bei der die JSON-Zeichenfolge `"incr"` an eine Instanz gesendet wird, die auf ein Ereignis mit dem Namen **operation** wartet:
 
@@ -500,11 +514,11 @@ Content-Length: 6
 
 Die Antworten für diese API enthalten keinen Inhalt.
 
-### <a name="terminate-instance"></a>Beenden der Instanz (Terminate instance)
+## <a name="terminate-instance"></a>Beenden der Instanz (Terminate instance)
 
 Dient zum Beenden einer ausgeführten Orchestrierungsinstanz.
 
-#### <a name="request"></a>Anforderung
+### <a name="request"></a>Anforderung
 
 Für Version 1.x der Azure Functions-Runtime ist die Anforderung wie folgt formatiert (der besseren Übersichtlichkeit halber werden mehrere Zeilen angezeigt):
 
@@ -533,13 +547,13 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 | **`instanceId`**  | URL             | ID der Orchestrierungsinstanz |
 | **`reason`**      | Abfragezeichenfolge    | Optional. Gibt den Grund für die Beendigung der Orchestrierungsinstanz an. |
 
-#### <a name="response"></a>response
+### <a name="response"></a>response
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
-* **HTTP 202 (Akzeptiert)**: Die Beendigungsanforderung wurde zur Verarbeitung akzeptiert.
-* **HTTP 404 (Nicht gefunden)**: Die angegebene Instanz wurde nicht gefunden.
-* **HTTP 410 (Fehlend)**: Die angegebene Instanz wurde abgeschlossen, oder es ist ein Fehler aufgetreten.
+* **HTTP 202 (Akzeptiert)** : Die Beendigungsanforderung wurde zur Verarbeitung akzeptiert.
+* **HTTP 404 (Nicht gefunden)** : Die angegebene Instanz wurde nicht gefunden.
+* **HTTP 410 (Fehlend)** : Die angegebene Instanz wurde abgeschlossen, oder es ist ein Fehler aufgetreten.
 
 Hier ist eine Beispielanforderung angegeben, mit der eine ausgeführte Instanz beendet und als Grund **buggy** (fehlerhaft) angegeben wird:
 
@@ -586,9 +600,9 @@ Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsa
 
 Es können mehrere mögliche Statuscodewerte zurückgegeben werden.
 
-* **HTTP 202 (Akzeptiert)**: Die Anforderung zum Zurückspulen wurde zur Verarbeitung akzeptiert.
-* **HTTP 404 (Nicht gefunden)**: Die angegebene Instanz wurde nicht gefunden.
-* **HTTP 410 (Fehlend)**: Die angegebene Instanz wurde abgeschlossen oder beendet.
+* **HTTP 202 (Akzeptiert)** : Die Anforderung zum Zurückspulen wurde zur Verarbeitung akzeptiert.
+* **HTTP 404 (Nicht gefunden)** : Die angegebene Instanz wurde nicht gefunden.
+* **HTTP 410 (Fehlend)** : Die angegebene Instanz wurde abgeschlossen oder beendet.
 
 Hier ist eine Beispielanforderung angegeben, die eine fehlerhafte Instanz zurückspult und einen Grund für **fixed** (behoben) angibt:
 
@@ -598,7 +612,93 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 Die Antworten für diese API enthalten keinen Inhalt.
 
+## <a name="signal-entity"></a>Signalentität
+
+Sendet eine unidirektionale Vorgangsmeldung an eine [dauerhafte Entität](durable-functions-types-features-overview.md#entity-functions). Wenn die Entität nicht vorhanden ist, wird sie automatisch erstellt.
+
+> [!NOTE]
+> Dauerhafte Entitäten sind ab Durable Functions 2.0 verfügbar.
+
+### <a name="request"></a>Anforderung
+
+Die HTTP-Anforderung wird wie folgt formatiert (aus Gründen der Übersichtlichkeit werden mehrere Zeilen angezeigt):
+
+```http
+POST /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+    &op={operationName}
+```
+
+Anforderungsparameter für diese API enthalten den bereits erwähnten Standardsatz sowie die folgenden eindeutigen Parameter:
+
+| Feld             | Parametertyp  | BESCHREIBUNG |
+|-------------------|-----------------|-------------|
+| **`entityType`**  | URL             | Der Typ der Entität |
+| **`entityKey`**   | URL             | Der eindeutige Name der Entität |
+| **`op`**          | Abfragezeichenfolge    | Optional. Der Name des aufzurufenden benutzerdefinierten Vorgangs |
+| **`{content}`**   | Inhalt anfordern | Ereignisnutzlast in JSON-Formatierung |
+
+Nachfolgend sehen Sie eine Beispielanforderung, die eine benutzerdefinierte Meldung vom Typ „Add“ (Hinzufügen) an eine `Counter`-Entität namens `steps` sendet. Der Inhalt der Meldung ist der Wert `5`. Wenn die Entität nicht bereits vorhanden ist, wird sie von dieser Anforderung erstellt:
+
+```http
+POST /runtime/webhooks/durabletask/entities/Counter/steps?op=Add
+Content-Type: application/json
+
+5
+```
+
+### <a name="response"></a>response
+
+Für diesen Vorgang sind mehrere Antworten möglich:
+
+* **HTTP 202 (Akzeptiert)** : Der Signalvorgang wurde für die asynchrone Verarbeitung akzeptiert.
+* **HTTP 400 (Ungültige Anforderung)** : Der Anforderungsinhalt war nicht vom Typ `application/json`, war kein gültiger JSON-Code oder enthielt einen ungültigen Wert für `entityKey`.
+* **HTTP 404 (Nicht gefunden)** : Das angegebene `entityType`-Element wurde nicht gefunden.
+
+Bei einer erfolgreichen HTTP-Anforderung enthält die Antwort keinen Inhalt. Eine fehlgeschlagene HTTP-Anforderung kann im Antwortinhalt JSON-formatierte Fehlerinformationen enthalten.
+
+## <a name="query-entity"></a>Abfrageentität
+
+Ruft den Zustand der angegebenen Entität ab.
+
+### <a name="request"></a>Anforderung
+
+Die HTTP-Anforderung wird wie folgt formatiert (aus Gründen der Übersichtlichkeit werden mehrere Zeilen angezeigt):
+
+```http
+GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
+    ?taskHub={taskHub}
+    &connection={connectionName}
+    &code={systemKey}
+```
+
+### <a name="response"></a>response
+
+Für diesen Vorgang sind zwei Antworten möglich:
+
+* **HTTP 200 (OK)** : Die angegebene Entität ist vorhanden.
+* **HTTP 404 (Nicht gefunden)** : Die angegebene Entität wurde nicht gefunden.
+
+Eine erfolgreiche Antwort enthält den JSON-serialisierten Zustand der Entität als Inhalt.
+
+### <a name="example"></a>Beispiel
+Das folgende Beispiel einer HTTP-Anforderung ruft den Zustand einer vorhandenen `Counter`-Entität namens `steps` ab:
+
+```http
+GET /runtime/webhooks/durabletask/entities/Counter/steps
+```
+
+Wenn die Entität `Counter` einfach eine Reihe von Schritten enthält, die im Feld `currentValue` gespeichert wurden, kann der Antwortinhalt wie folgt aussehen (zur besseren Lesbarkeit formatiert):
+
+```json
+{
+    "currentValue": 5
+}
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Informationen zur Fehlerbehandlung](durable-functions-error-handling.md)
+> [Erfahren Sie, wie Sie mit Application Insights ihre Durable Functions-Instanzen überwachen](durable-functions-diagnostics.md).

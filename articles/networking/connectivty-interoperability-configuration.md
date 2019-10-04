@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 2ceb4aeac55bd555a41c29bd41b00c771490e5f9
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777090"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68335929"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Konfigurationsdetails zur Testeinrichtung
 
@@ -23,11 +23,11 @@ In diesem Artikel werden die Konfigurationsdetails der [Testeinrichtung][Setup] 
 
 ## <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Spoke-VNET-Konnektivität per VNET-Peering
 
-Die folgende Abbildung zeigt die Details zum Peering von virtuellen Azure-Netzwerken eines virtuellen Spoke-Netzwerks (VNET). Um mehr über die Einrichtung eines Peerings zwischen zwei VNETs zu erfahren, lesen Sie [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke][VNet-Config]. Wenn das Spoke-VNET die Gateways verwenden soll, die mit dem Hub-VNET verbunden sind, aktivieren Sie **Remotegateways verwenden**.
+Die folgende Abbildung zeigt die Details zum Peering von virtuellen Azure-Netzwerken eines virtuellen Spoke-Netzwerks (VNET). Weitere Informationen zur Einrichtung eines Peerings zwischen zwei VNETs finden Sie unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke][VNet-Config]. Wenn das Spoke-VNET die Gateways verwenden soll, die mit dem Hub-VNET verbunden sind, aktivieren Sie **Remotegateways verwenden**.
 
 [![1]][1]
 
-Die folgende Abbildung zeigt die Details zum VNET-Peering des Hub-VNET. Wenn das Spoke-VNET die Hub-VNET-Gateways verwenden soll, aktivieren Sie **Remotegateways verwenden**.
+Die folgende Abbildung zeigt die Details zum VNET-Peering des Hub-VNET. Wenn das Hub-VNET dem Spoke-VNET die Verwendung der Hub-Gateways gestatten soll, wählen Sie **Gatewaytransit zulassen** aus.
 
 [![2]][2]
 
@@ -166,7 +166,7 @@ ExpressRoute 1 stellt eine Verbindung zwischen dem Hub-VNET sowie dem lokalen Ne
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>Site-to-Site-VPN über ExpressRoute
 
-Sie können ein Site-to-Site-VPN mithilfe von ExpressRoute-Microsoft-Peering konfigurieren, um Daten privat zwischen Ihrem lokalen Netzwerk und Ihren Azure-VNETs auszutauschen. Mit dieser Konfiguration können Sie Daten mit Vertraulichkeit, Authentizität und Integrität austauschen. Der Datenaustausch ist außerdem Anti-Replay-konform. Weitere Informationen zur Konfiguration eines Site-to-Site-IPsec-VPN im Tunnelmodus per ExpressRoute-Microsoft-Peering finden Sie unter [Site-to-Site-VPN über ExpressRoute-Microsoft-Peering][S2S-Over-ExR]. 
+Sie können ein Site-to-Site-VPN mithilfe von ExpressRoute-Microsoft-Peering konfigurieren, um Daten privat zwischen Ihrem lokalen Netzwerk und Ihren Azure-VNETs auszutauschen. Mit dieser Konfiguration können Sie Daten mit Vertraulichkeit, Authentizität und Integrität austauschen. Der Datenaustausch ist außerdem Anti-Replay-konform. Weitere Informationen zur Konfiguration eines Site-to-Site-IPsec-VPN im Tunnelmodus per ExpressRoute-Microsoft-Peering finden Sie unter [Konfigurieren eines Site-to-Site-VPN über ExpressRoute-/Microsoft-Peering][S2S-Over-ExR]. 
 
 Die wesentliche Einschränkung für die Konfiguration eines Site-to-Site-VPN mit Microsoft-Peering ist der Durchsatz. Der Durchsatz des IPsec-Tunnels wird durch die Kapazität des VPN-Gateways eingeschränkt. Der Durchsatz des VPN-Gateways ist niedriger als der ExpressRoute-Durchsatz. In diesem Szenario stellt die Verwendung des IPsec-Tunnels für hoch sicheren Datenverkehr und des privaten Peerings für sämtlichen anderen Datenverkehr einen Beitrag zur Optimierung der ExpressRoute-Bandbreitenauslastung dar.
 
@@ -174,7 +174,7 @@ Die wesentliche Einschränkung für die Konfiguration eines Site-to-Site-VPN mit
 
 ExpressRoute dient als redundantes Verbindungspaar, um Hochverfügbarkeit sicherzustellen. Sie können die georedundante ExpressRoute-Konnektivität in unterschiedlichen Azure-Regionen konfigurieren. Sie können außerdem wie in unserer Testeinrichtung demonstriert in einer Azure-Region mithilfe eines Site-to-Site-VPN einen Failoverpfad für Ihre ExpressRoute-Verbindung einrichten. Wenn über ExpressRoute und das Site-to-Site-VPN die gleichen Präfixe angekündigt werden, priorisiert Azure ExpressRoute. Zur Vermeidung von asymmetrischem Routing zwischen ExpressRoute und dem Site-to-Site-VPN sollte in der lokalen Netzwerkkonfiguration die ExpressRoute-Verbindung ebenfalls den Vorzug vor Site-to-Site-VPN-Verbindungen erhalten.
 
-Weitere Informationen zur Konfiguration von parallelen ExpressRoute- und Site-to-Site-VPN-Verbindungen finden Sie unter [Parallele ExpressRoute- und Site-to-Site-Verbindungen][ExR-S2S-CoEx].
+Weitere Informationen zur Konfiguration von parallelen ExpressRoute- und Site-to-Site-VPN-Verbindungen finden Sie unter [Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell][ExR-S2S-CoEx].
 
 ## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Erweitern der Back-End-Konnektivität auf Spoke-VNETs und Branchstandorte
 
@@ -188,15 +188,15 @@ Beim VNET-Peering in einer Region können Spoke-VNETs Hub-VNET-Gateways verwende
 
 VNETs in verschiedenen Regionen und lokale Netzwerke sollten miteinander über ein Hub-VNET kommunizieren. Die native Azure-Lösung für diese Konfiguration ist Site-to-Site-VPN-Konnektivität über ein VPN. Eine Alternative ist die Verwendung eines virtuellen Netzwerkgeräts (NVA) für das Routing im Hub.
 
-Weitere Informationen finden Sie unter [Was ist VPN-Gateway?][VPN] und [Bereitstellen eines hoch verfügbaren virtuellen Netzwerkgeräts][Deploy-NVA].
+Weitere Informationen finden Sie unter [Was ist VPN Gateway?][VPN] und [Bereitstellen hochverfügbarer virtueller Netzwerkgeräte][Deploy-NVA].
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die [Analyse auf Steuerungsebene][Control-Analysis] der Testeinrichtung sowie die Ansichten von anderen VNETs oder VLANs in der Topologie.
+Informieren Sie sich über die [Analyse auf Steuerungsebene][Control-Analysis] für die Testeinrichtung sowie über die Ansichten verschiedener VNETs oder VLANs in der Topologie.
 
-Die Analyse der Testeinrichtung auf Datenebene und die Ansichten der Überwachungsfeatures für Azure-Netzwerke können Sie unter [Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Analyse auf Datenebene][Data-Analysis] einsehen.
+Informieren Sie sich über die [Analyse auf Datenebene][Data-Analysis] für die Testeinrichtung und die Ansichten des Azure-Netzwerküberwachungsfeatures.
 
-Unter [ExpressRoute – FAQ][ExR-FAQ] finden Sie Informationen zu folgenden Themen:
+Unter [ExpressRoute – FAQ][ExR-FAQ] finden Sie Informationen zu folgenden Themen:
 -   Erfahren Sie, wie viele ExpressRoute-Verbindungen Sie mit einem ExpressRoute-Gateway verbinden können.
 -   Anzahl der ExpressRoute-Gateways, die Sie per ExpressRoute verbinden können
 -   Erfahren Sie mehr über andere Skalierungslimits von ExpressRoute.

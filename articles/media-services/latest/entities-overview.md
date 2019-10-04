@@ -1,6 +1,6 @@
 ---
-title: Entwickeln mit v3-APIs – Azure | Microsoft-Dokumentation
-description: In diesem Artikel werden Regeln erläutert, die für Entitäten und APIs gelten, wenn Sie mit Media Services v3 entwickeln.
+title: Filtern und Sortieren von Azure Media Services-Entitäten sowie Einteilen der Entitäten in Seiten| Microsoft-Dokumentation
+description: Dieser Artikel erörtert die Filterung, Sortierung und Paginierung von Azure Media Services-Entitäten.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,64 +9,17 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a5ab0b25a2a2db764854982b1a6801ce4f857dda
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 28c880e8709074d808a41d9920361eaa2b20ecc4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891955"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60732364"
 ---
-# <a name="developing-with-media-services-v3-apis"></a>Entwickeln mit Media Services v3-APIs
-
-In diesem Artikel werden Regeln erläutert, die für Entitäten und APIs gelten, wenn Sie mit Media Services v3 entwickeln.
-
-## <a name="naming-conventions"></a>Benennungskonventionen
-
-Azure Media Services-v3-Ressourcennamen (beispielsweise Objekte, Aufträge und Transformationen) unterliegen den Namenseinschränkungen von Azure Resource Manager. Ressourcennamen sind gemäß den Vorgaben von Azure Resource Manager immer eindeutig. Daher können Sie beliebige Zeichenfolgen für eindeutige Bezeichner (beispielsweise GUIDs) als Ressourcennamen verwenden. 
-
-Media Services-Ressourcennamen dürfen Folgendes nicht enthalten: „<“, „>“, „%“, „&“, „:“, „&#92;“, „?“, „/“, „*“, „+“, „.“, einzelne Anführungszeichen oder Steuerzeichen. Alle anderen Zeichen sind zulässig. Ein Ressourcenname darf maximal 260 Zeichen lang sein. 
-
-Weitere Informationen zur Benennung in Azure Resource Manager finden Sie unter: [Namensanforderungen](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) und [Namenskonvention](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
-
-## <a name="v3-api-design-principles"></a>Entwurfsprinzipien der v3-API
-
-Eines der wichtigsten Entwurfsprinzipien der v3-API ist es, die API sicherer zu machen. v3-APIs geben bei einem **Get**- oder **List**-Vorgang keine geheimen Schlüssel oder Anmeldeinformationen zurück. Die Schlüssel sind immer NULL, leer oder aus der Antwort bereinigt. Sie müssen eine separate Aktionsmethode zum Abrufen von geheimen Schlüsseln oder Anmeldeinformationen aufrufen. Separate Aktionen ermöglichen es Ihnen, verschiedene RBAC-Sicherheitsberechtigungen festzulegen, falls einige APIs geheime Schlüssel abrufen/anzeigen, während dies bei anderen APIs nicht der Fall ist. Informationen darüber, wie Sie den Zugriff über RBAC verwalten können, finden Sie unter [Verwenden von RBAC zum Verwalten des Zugriffs](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest).
-
-Beispiele hierfür sind:
-
-* Keine Rückgabe von ContentKey-Werten im Get-Vorgang von StreamingLocator.
-* Keine Rückgabe der Einschränkungsschlüssel im Get-Vorgang von ContentKeyPolicy.
-* Keine Rückgabe des Abfragezeichenfolgeteils der URL (um die Signatur zu entfernen) der HTTP-Eingabe-URLs von Aufträgen.
-
-Sehen Sie sich das Beispiel zum [Abrufen der Richtlinie für den Inhaltsschlüssel (.NET)](get-content-key-policy-dotnet-howto.md) an.
-
-## <a name="long-running-operations"></a>Zeitintensive Vorgänge
-
-Die in den [swagger-Dateien](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) von Azure Media Services mit `x-ms-long-running-operation` gekennzeichneten Vorgänge sind zeitintensive Vorgänge. 
-
-Weitere Informationen zum Verfolgen asynchroner Azure-Vorgänge finden Sie unter [Asynchrone Vorgänge](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
-
-Media Services verfügt über die folgenden zeitintensiven Vorgänge:
-
-* Create LiveEvent
-* Update LiveEvent
-* Delete LiveEvent
-* Start LiveEvent
-* Stop LiveEvent
-* Reset LiveEvent
-* Create LiveOutput
-* Delete LiveOutput
-* Create StreamingEndpoint
-* Update StreamingEndpoint
-* Delete StreamingEndpoint
-* Start StreamingEndpoint
-* Stop StreamingEndpoint
-* Scale StreamingEndpoint
-
-## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filterung, Sortierung und Paginierung von Media Services-Entitäten
+# <a name="filtering-ordering-paging-of-media-services-entities"></a>Filterung, Sortierung und Paginierung von Media Services-Entitäten
 
 Media Services unterstützt die folgenden OData-Abfrageoptionen für Media Services v3-Entitäten: 
 
@@ -86,7 +39,7 @@ Operatorbeschreibung:
 
 Eigenschaften von Entitäten vom Datetime-Typ liegen immer im UTC-Format vor.
 
-### <a name="page-results"></a>Seitenergebnisse
+## <a name="page-results"></a>Seitenergebnisse
 
 Wenn eine Abfrageantwort viele Elemente enthält, gibt der Dienst eine „\@odata.nextLink“-Eigenschaft zurück, um die nächste Seite der Ergebnisse abzurufen. Auf diese Weise kann das gesamte Resultset paginiert werden. Sie können die Seitengröße nicht konfigurieren. Die Seitengröße unterscheidet sich nach der Art der Entität, bitte entnehmen Sie Details den folgenden Einzelabschnitten.
 
@@ -95,9 +48,9 @@ Wenn während der Paginierung der Sammlung Entitäten erstellt oder gelöscht we
 > [!TIP]
 > Verwenden Sie immer den Link „Weiter“ zum Enumerieren der Auflistung und keine bestimmte Seitengröße als Referenz.
 
-### <a name="assets"></a>Objekte
+## <a name="assets"></a>Objekte
 
-#### <a name="filteringordering"></a>Filterung/Sortierung
+### <a name="filteringordering"></a>Filterung/Sortierung
 
 Die folgende Tabelle zeigt, wie diese Filter- und Sortieroptionen auf die Eigenschaften von [Medienobjekten](https://docs.microsoft.com/rest/api/media/assets) angewendet werden können: 
 
@@ -122,11 +75,11 @@ var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:0
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
 ```
 
-#### <a name="pagination"></a>Paginierung 
+### <a name="pagination"></a>Paginierung 
 
 Die Paginierung wird für jede der vier aktivierten Sortierreihenfolgen unterstützt. Derzeit ist die Seitengröße 1000.
 
-##### <a name="c-example"></a>C#-Beispiel
+#### <a name="c-example"></a>C#-Beispiel
 
 Im folgenden C#-Beispiel wird gezeigt, wie alle Medienobjekte im Konto durchlaufen werden.
 
@@ -140,7 +93,7 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-##### <a name="rest-example"></a>Beispiel für REST
+#### <a name="rest-example"></a>Beispiel für REST
 
 Betrachten Sie das folgende Beispiel für die Verwendung von „$skiptoken“. Stellen Sie sicher, dass Sie *amstestaccount* durch Ihren Kontonamen ersetzen und den Wert für *api-version* auf die neueste Version festlegen.
 
@@ -182,9 +135,9 @@ https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/
 
 Weitere REST-Beispiele finden Sie unter [Medienobjekte – Liste](https://docs.microsoft.com/rest/api/media/assets/list).
 
-### <a name="content-key-policies"></a>Richtlinien für Inhaltsschlüssel
+## <a name="content-key-policies"></a>Richtlinien für Inhaltsschlüssel
 
-#### <a name="filteringordering"></a>Filterung/Sortierung
+### <a name="filteringordering"></a>Filterung/Sortierung
 
 Die folgende Tabelle zeigt, wie diese Optionen auf die Eigenschaften von [Inhaltsschlüsselrichtlinien](https://docs.microsoft.com/rest/api/media/contentkeypolicies) angewandt werden können: 
 
@@ -199,7 +152,7 @@ Die folgende Tabelle zeigt, wie diese Optionen auf die Eigenschaften von [Inhalt
 |properties.policyId|eq, ne||
 |type|||
 
-#### <a name="pagination"></a>Paginierung
+### <a name="pagination"></a>Paginierung
 
 Die Paginierung wird für jede der vier aktivierten Sortierreihenfolgen unterstützt. Derzeit ist die Seitengröße 10.
 
@@ -217,9 +170,9 @@ while (currentPage.NextPageLink != null)
 
 REST-Beispiele finden Sie unter [Richtlinien für Inhaltsschlüssel – Liste](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list).
 
-### <a name="jobs"></a>Aufträge
+## <a name="jobs"></a>Aufträge
 
-#### <a name="filteringordering"></a>Filterung/Sortierung
+### <a name="filteringordering"></a>Filterung/Sortierung
 
 Die folgende Tabelle zeigt, wie diese Optionen auf die Eigenschaften von [Aufträgen](https://docs.microsoft.com/rest/api/media/jobs) angewendet werden können: 
 
@@ -230,8 +183,7 @@ Die folgende Tabelle zeigt, wie diese Optionen auf die Eigenschaften von [Auftr�
 | properties.created      | gt, ge, lt, le| Aufsteigend und absteigend|
 | properties.lastModified | gt, ge, lt, le | Aufsteigend und absteigend| 
 
-
-#### <a name="pagination"></a>Paginierung
+### <a name="pagination"></a>Paginierung
 
 Die Paginierung von Aufträgen wird in Media Services v3 unterstützt.
 
@@ -265,9 +217,9 @@ while (!exit);
 
 Beispiele zu REST finden Sie unter [Aufträge – Liste](https://docs.microsoft.com/rest/api/media/jobs/list).
 
-### <a name="streaming-locators"></a>Streaminglocators
+## <a name="streaming-locators"></a>Streaminglocators
 
-#### <a name="filteringordering"></a>Filterung/Sortierung
+### <a name="filteringordering"></a>Filterung/Sortierung
 
 Die folgende Tabelle zeigt, wie diese Optionen auf die Eigenschaften des Streaminglocators angewendet werden können: 
 
@@ -286,7 +238,7 @@ Die folgende Tabelle zeigt, wie diese Optionen auf die Eigenschaften des Streami
 |properties.streamingPolicyName |||
 |type   |||
 
-#### <a name="pagination"></a>Paginierung
+### <a name="pagination"></a>Paginierung
 
 Die Paginierung wird für jede der vier aktivierten Sortierreihenfolgen unterstützt. Derzeit ist die Seitengröße 10.
 
@@ -304,9 +256,9 @@ while (currentPage.NextPageLink != null)
 
 REST-Beispiele finden Sie unter [Streaminglocators – Liste](https://docs.microsoft.com/rest/api/media/streaminglocators/list).
 
-### <a name="streaming-policies"></a>Streamingrichtlinien
+## <a name="streaming-policies"></a>Streamingrichtlinien
 
-#### <a name="filteringordering"></a>Filterung/Sortierung
+### <a name="filteringordering"></a>Filterung/Sortierung
 
 Die folgende Tabelle zeigt, wie diese Optionen auf die StreamingPolicy-Eigenschaften angewendet werden können: 
 
@@ -322,7 +274,7 @@ Die folgende Tabelle zeigt, wie diese Optionen auf die StreamingPolicy-Eigenscha
 |properties.noEncryption|||
 |type|||
 
-#### <a name="pagination"></a>Paginierung
+### <a name="pagination"></a>Paginierung
 
 Die Paginierung wird für jede der vier aktivierten Sortierreihenfolgen unterstützt. Derzeit ist die Seitengröße 10.
 
@@ -340,10 +292,9 @@ while (currentPage.NextPageLink != null)
 
 REST-Beispiele finden Sie unter [Streamingrichtlinien – Liste](https://docs.microsoft.com/rest/api/media/streamingpolicies/list).
 
+## <a name="transform"></a>Transformieren
 
-### <a name="transform"></a>Transformieren
-
-#### <a name="filteringordering"></a>Filterung/Sortierung
+### <a name="filteringordering"></a>Filterung/Sortierung
 
 Die folgende Tabelle zeigt, wie diese Optionen auf die Eigenschaften von [Transformationen](https://docs.microsoft.com/rest/api/media/transforms) angewendet werden können: 
 

@@ -9,11 +9,11 @@ ms.date: 12/6/2016
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312051"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "66129733"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Allgemeine Metriken für die automatische Skalierung in Azure Monitor
 
@@ -53,22 +53,22 @@ Sie können eine Warnung für die folgenden Metriken erstellen:
 
 | Metrikname | Einheit |
 | --- | --- |
-| \Processor(_Total)\%Prozessorzeit |Prozent |
-| \Processor(_Total)\%Privilegierte Zeit |Prozent |
-| \Processor(_Total)\%Benutzerzeit |Prozent |
+| \Processor(_Total)\%Prozessorzeit |Percent |
+| \Processor(_Total)\%Privilegierte Zeit |Percent |
+| \Processor(_Total)\%Benutzerzeit |Percent |
 | \Processor Informationen(_Total)\Prozessorfrequenz |Count |
 | \System\Prozesse |Count |
 | \Process(_Total)\Threadanzahl |Count |
 | \Process(_Total)\Handleanzahl |Count |
-| \Memory\%Verwendete zugesicherte Bytes |Prozent |
+| \Memory\%Verwendete zugesicherte Bytes |Percent |
 | \Memory\Verfügbare Bytes |Byte |
 | \Memory\Zugesicherte Bytes |Byte |
 | \Memory\Zusagegrenze |Byte |
 | \Memory\Auslagerungsseiten (Bytes) |Byte |
 | \Memory\Nicht-Auslagerungsseiten (Bytes) |Byte |
-| \PhysicalDisk(_Total)\%Zeit |Prozent |
-| \PhysicalDisk(_Total)\%Lesezeit |Prozent |
-| \PhysicalDisk(_Total)\%Schreibzeit |Prozent |
+| \PhysicalDisk(_Total)\%Zeit |Percent |
+| \PhysicalDisk(_Total)\%Lesezeit |Percent |
+| \PhysicalDisk(_Total)\%Schreibzeit |Percent |
 | \Physikalischer Datenträger(_Total)\Übertragungen/s |Anzahl pro Sekunde |
 | \PhysicalDisk(_Total)\Lesevorgänge/s |Anzahl pro Sekunde |
 | \PhysicalDisk(_Total)\Schreibvorgänge/s |Anzahl pro Sekunde |
@@ -78,7 +78,7 @@ Sie können eine Warnung für die folgenden Metriken erstellen:
 | \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge des Datenträgers |Count |
 | \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge der Datenträger-Lesevorgänge |Count |
 | \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge der Datenträger-Schreibvorgänge |Count |
-| \LogicalDisk(_Total)\%Freier Speicherplatz |Prozent |
+| \LogicalDisk(_Total)\%Freier Speicherplatz |Percent |
 | \LogicalDisk(_Total)\MB frei |Count |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Gastbetriebssystem-Metriken für virtuelle Linux-Computer
@@ -95,25 +95,25 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | Metrikname | Unit |
 | --- | --- |
 | \Memory\AvailableMemory |Byte |
-| \Memory\PercentAvailableMemory |Prozent |
+| \Memory\PercentAvailableMemory |Percent |
 | \Memory\UsedMemory |Byte |
-| \Memory\PercentUsedMemory |Prozent |
-| \Memory\PercentUsedByCache |Prozent |
+| \Memory\PercentUsedMemory |Percent |
+| \Memory\PercentUsedByCache |Percent |
 | \Memory\PagesPerSec |Anzahl pro Sekunde |
 | \Memory\PagesReadPerSec |Anzahl pro Sekunde |
 | \Memory\PagesWrittenPerSec |Anzahl pro Sekunde |
 | \Memory\AvailableSwap |Byte |
-| \Memory\PercentAvailableSwap |Prozent |
+| \Memory\PercentAvailableSwap |Percent |
 | \Memory\UsedSwap |Byte |
-| \Memory\PercentUsedSwap |Prozent |
-| \Processor\PercentIdleTime |Prozent |
-| \Processor\PercentUserTime |Prozent |
-| \Processor\PercentNiceTime |Prozent |
-| \Processor\PercentPrivilegedTime |Prozent |
-| \Processor\PercentInterruptTime |Prozent |
-| \Processor\PercentDPCTime |Prozent |
-| \Processor\PercentProcessorTime |Prozent |
-| \Processor\PercentIOWaitTime |Prozent |
+| \Memory\PercentUsedSwap |Percent |
+| \Processor\PercentIdleTime |Percent |
+| \Processor\PercentUserTime |Percent |
+| \Processor\PercentNiceTime |Percent |
+| \Processor\PercentPrivilegedTime |Percent |
+| \Processor\PercentInterruptTime |Percent |
+| \Processor\PercentDPCTime |Percent |
+| \Processor\PercentProcessorTime |Percent |
+| \Processor\PercentIOWaitTime |Percent |
 | \PhysicalDisk\BytesPerSecond |Bytes pro Sekunde |
 | \PhysicalDisk\ReadBytesPerSecond |Bytes pro Sekunde |
 | \PhysicalDisk\WriteBytesPerSecond |Bytes pro Sekunde |
@@ -147,8 +147,8 @@ Anhand dieser Metriken können Sie Warnungen ausgeben oder skalieren.
 
 | Metrikname | Unit |
 | --- | --- |
-| CpuPercentage |Prozent |
-| MemoryPercentage |Prozent |
+| CpuPercentage |Percent |
+| MemoryPercentage |Percent |
 | DiskQueueLength |Count |
 | HttpQueueLength |Count |
 | BytesReceived |Byte |

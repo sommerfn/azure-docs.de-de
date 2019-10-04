@@ -2,24 +2,18 @@
 title: Unterstützung für Azure Marketplace und AppSource | Azure
 description: Supportinformationen und Links für Azure Marketplace und AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
-author: yijenj
-manager: nunoc
-editor: ''
-ms.assetid: ''
+author: qianw211
+manager: evansma
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
-ms.date: 10/05/2018
-ms.author: yijenj
-ms.openlocfilehash: de31ceea4faeecabd54c0d23e9263cbb4090925d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 7/25/2019
+ms.author: v-qiwe
+ms.openlocfilehash: 525bcc0ba148c4cb3e679dee1209953e4a3d87b6
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791819"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68501286"
 ---
 # <a name="support-for-the-marketplace"></a>Support für Marketplace  
 Hier finden Sie eine Liste der Supportoptionen für den Marketplace.  
@@ -30,11 +24,11 @@ Darüber hinaus erhalten Sie im [Marketplace-Kanal des C+AI Community-Forums](ht
 
 Öffnen Sie ein Ticket beim Microsoft-[Support für Marketplace-Herausgeber](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820), wenn Sie Probleme mit dem Onboarding und den ersten Schritten haben, bzw. beim Microsoft-[Support für Partner](https://partner.microsoft.com/support), wenn Sie Fragen zum Microsoft Partner Network haben.
 
-## <a name="cloud-partner-portal"></a>Cloudpartnerportal  
+## <a name="partner-center-or-cloud-partner-portal"></a>Partner Center oder Cloud-Partnerportal  
 
 | Supportkanal | BESCHREIBUNG | Verfügbarkeit |  
 |:--- |:--- |:--- |  
-| Um Unterstützung zu erhalten, besuchen Sie die Seite zum Erstellen eines Incidents unter [Marketplace-Support](https://go.microsoft.com/fwlink/?linkid=844975).</li> </ul> | Support für das Cloud-Partnerportal | Support ist von 6:00 Uhr bis 18:00 Uhr UTC−8 verfügbar. |  
+| Um Unterstützung zu erhalten, besuchen Sie die Seite zum Erstellen eines Incidents unter [Marketplace-Support](https://go.microsoft.com/fwlink/?linkid=844975).</li> </ul> | Support für Partner Center oder Cloud-Partnerportal. | Support ist von 6:00 Uhr bis 18:00 Uhr UTC−8 verfügbar. |  
 
 ## <a name="technical"></a>Technisch  
 
@@ -42,7 +36,6 @@ Darüber hinaus erhalten Sie im [Marketplace-Kanal des C+AI Community-Forums](ht
 |:--- |:--- |  
 | MSDN-Foren: Marketplace unter [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Microsoft Developer Network-Forum. |  
 | Stack Overflow: Azure unter [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow-Umgebung für Lösungen und Antworten auf allgemeine Fragen zu Azure Marketplace<ul> <li>Stack Overflow: Azure Marketplace unter [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow: Azure Resource Manager unter [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Virtuelle Computer in Azure unter [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow: Container in Azure unter [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
-| Support für AppSource: [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Unterstützung beim Veröffentlichen von Dynamics-Apps |
 
 ## <a name="marketing-resources"></a>Marketingressourcen  
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227427"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178042"
 ---
 1. Erweitern Sie im Failovercluster-Manager **Rollen**, und markieren Sie dann Ihre Verfügbarkeitsgruppe.  
 
@@ -31,7 +31,7 @@ ms.locfileid: "50227427"
 
 8. Starten Sie SQL Server Management Studio, und stellen Sie dann eine Verbindung mit dem primären Replikat her.
 
-9. Navigieren Sie zu **Hochverfügbarkeit mit AlwaysOn** > **Verfügbarkeitsgruppen** > **\<Verfügbarkeitsgruppenname\>** > **Verfügbarkeitsgruppenlistener**.  
+9. Navigieren Sie zu **Hochverfügbarkeit mit AlwaysOn** > **Verfügbarkeitsgruppen** >  **\<Verfügbarkeitsgruppenname\>**  > **Verfügbarkeitsgruppenlistener**.  
     Der Listenername, den Sie im Failovercluster-Manager erstellt haben, sollte angezeigt werden.
 
 10. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie dann auf **Eigenschaften**.

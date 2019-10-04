@@ -3,23 +3,24 @@ title: Automatisieren von Erstellungs-, Test- und Patchvorgängen für Images mi
 description: Diese Artikel ist eine Einführung in Tasks mit mehreren Schritten, ein Feature von ACR Tasks in Azure Container Registry, das taskbasierte Workflows bereitstellt, um Containerimages in der Cloud zu erstellen, zu testen und zu patchen.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: ac0e4e9019a35d3fdb35c0b7af9cb1289f4bceeb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 89962fbce6863b16a0d8b229047eb19a821e37bb
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792477"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310567"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Ausführen von Erstellungs-, Test- und Patchtasks mit mehreren Schritten in ACR Tasks
 
 Tasks mit mehreren Schritten erweitern die ACR Tasks-Funktion zum Erstellen und Pushen einzelner Images um auf mehreren Containern basierende Workflows mit mehreren Schritten. Verwenden Sie mehrstufige Aufgaben zum Erstellen und Pushen mehrerer Images nacheinander oder parallel. Führen Sie diese Images dann als Befehle in einer einzelnen Aufgabenausführung aus. Jeder Schritt definiert einen Build- oder Pushvorgang für ein Containerimage und kann auch die Ausführung eines Containers definieren. Jeder Schritt in einem Task mit mehreren Schritten verwendet einen Container als Ausführungsumgebung.
 
 > [!IMPORTANT]
-> Wenn Sie in der Vorschauversion bereits Aufgaben mit dem `az acr build-task`-Befehl erstellt haben, müssen diese Aufgaben mit dem Befehl [az acr task][az-acr-task] neu erstellt werden.
+> Wenn Sie in der Vorschauversion bereits Aufgaben mit dem Befehl `az acr build-task` erstellt haben, müssen diese Aufgaben mit dem Befehl [az acr task][az-acr-task] neu erstellt werden.
 
 Sie können z.B. eine Aufgabe mit Schritten ausführen, die die folgende Logik automatisieren:
 
@@ -30,7 +31,7 @@ Sie können z.B. eine Aufgabe mit Schritten ausführen, die die folgende Logik a
 1. Wenn die Tests erfolgreich sind: Erstellen eines Helm-Chart-Archivpakets
 1. Ausführen von `helm upgrade` mithilfe des neuen Helm-Chart-Archivpakets
 
-Alle Schritte werden in Azure ausgeführt – damit wird die Arbeit auf die Azure-Computeressourcen ausgelagert, und Sie müssen sich nicht um die Infrastrukturverwaltung kümmern. Sie zahlen neben Ihrer Azure-Containerregistrierung nur für die Ressourcen, die Sie tatsächlich verwenden. Informationen zu den Preisen finden Sie auf der Seite [Azure Container Registry – Preise][pricing] im Abschnitt **Container Build**.
+Alle Schritte werden in Azure ausgeführt – damit wird die Arbeit auf die Azure-Computeressourcen ausgelagert, und Sie müssen sich nicht um die Infrastrukturverwaltung kümmern. Sie zahlen neben Ihrer Azure-Containerregistrierung nur für die Ressourcen, die Sie tatsächlich verwenden. Informationen zu den Preisen finden Sie auf der Seite [Azure Container Registry – Preise][pricing] im Abschnitt **Container Build**.
 
 
 ## <a name="common-task-scenarios"></a>Gängige Tasks
@@ -89,7 +90,7 @@ Unter [Taskbeispiele][task-examples] finden Sie vollständige YAML-Dateien und D
 
 Tasks unterstützen sowohl die manuelle Ausführung – die so genannte „schnelle Ausführung“ – als auch die automatisierte Ausführung per Git-Commit oder Aktualisierung des Basisimages.
 
-Um einen Task auszuführen, definieren Sie zunächst die Taskschritte in einer YAML-Datei, und führen dann den Azure CLI-Befehl [az acr run][az-acr-run] aus.
+Um einen Task auszuführen, definieren Sie zunächst die Taskschritte in einer YAML-Datei und führen dann den Azure CLI-Befehl [az acr run][az-acr-run] aus.
 
 Hier finden Sie einen Azure CLI-Beispielbefehl, der einen Task mithilfe einer YAML-Datei für den Beispieltask ausführt. Die Schritte dieses Tasks erstellen und pushen ein Image. Aktualisieren Sie `\<acrName\>` mit dem Namen Ihrer eigenen Azure-Containerregistrierung, bevor Sie den Befehl ausführen.
 
@@ -154,7 +155,7 @@ Weitere Informationen zu automatisierten Builds per Git-Commit oder Update des B
 Hier finden Sie Referenzen und Beispiele für Tasks mit mehreren Schritten:
 
 * [Taskreferenz](container-registry-tasks-reference-yaml.md): Arten von Taskschritten, zugehörige Eigenschaften und Verwendung
-* [Taskbeispiele][task-examples]: `task.yaml`-Beispieldateien für verschiedene Szenarien – von ganz einfachen bis zu hochkomplexen
+* [Taskbeispiele][task-examples]: Beispieldateien vom Typ `task.yaml` für verschiedene Szenarien (von einfach bis komplex)
 * [Cmd-Repository](https://github.com/AzureCR/cmd): Eine Sammlung von Containern als Befehle für ACR-Tasks.
 
 <!-- IMAGES -->

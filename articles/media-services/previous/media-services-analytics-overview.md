@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: aac9719f8d74c4b7bc283745ee2b8e01365a81f0
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.author: juliako
+ms.reviewer: milanga; johndeu
+ms.openlocfilehash: d8470ad759d983f25f8f68b93d58f89f23eeb578
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620001"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "69015392"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics auf der Media Services-Plattform 
 
@@ -58,7 +59,6 @@ Media Analytics hilft Organisationen und Unternehmen bei der Gewinnung von Erken
 
 * **Callcenter:** Trotz des Aufkommens sozialer Medien sind Kundencallcenter weiterhin für einen hohen Prozentsatz der Transaktionen im Kundendienst zuständig. In diesen Audiodaten ist eine große Menge an Kundeninformationen enthalten, die analysiert werden kann, um eine höhere Kundenzufriedenheit zu erzielen. Mithilfe von Media Indexer können Organisationen Text extrahieren und Suchindizes und Dashboards erstellen. Sie können dann Daten zu häufigen Beschwerden und ihren Ursachen sowie andere relevante Daten extrahieren.
 * **Moderation benutzergenerierter Inhalte:** Viele Organisationen – von Nachrichtenkanälen bis zu Polizeibehörden – verfügen über Öffentlichkeitsportale, in denen sie benutzergenerierte Medien wie Videos und Bilder akzeptieren. Bei unerwarteten Ereignissen kann die Menge der Inhalte eskalieren. In diesen Szenarien ist sehr schwierig, eine effektive manuelle Auswertung des Inhalts auf Angemessenheit durchzuführen. Kunden können sich darauf verlassen, dass der Inhaltsmoderationsdienst sich auf angemessene Inhalte konzentriert.
-* **Überwachung:** Die verstärkte Nutzung von IP-Kameras zieht eine wachsende Zahl von Überwachungsvideos nach sich. Die manuelle Auswertung von Überwachungsvideos ist zeitintensiv und anfällig für menschliches Versagen. Media Analytics bietet Dienste wie Bewegungserkennung, Gesichtserkennung und Hyperlapse, um das Auswerten, Verwalten und Erstellen von Derivaten zu vereinfachen.
 
 ## <a name="media-analytics-media-processors"></a>Media Analytics-Medienprozessoren
 In diesem Abschnitt sind alle Media Analytics-Medienprozessoren (MP) aufgeführt. Zudem wird gezeigt, wie Sie mithilfe von .NET oder REST ein MP-Objekt abrufen.
@@ -66,7 +66,6 @@ In diesem Abschnitt sind alle Media Analytics-Medienprozessoren (MP) aufgeführt
 ### <a name="mp-names"></a>MP-Namen
 * Azure Media Indexer 2 Preview
 * Azure Media Indexer
-* Azure Media Hyperlapse
 * Azure Media Face Detector
 * Azure Media Motion Detector
 * Azure Media Video Thumbnails

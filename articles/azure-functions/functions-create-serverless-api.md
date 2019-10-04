@@ -1,31 +1,29 @@
 ---
-title: Erstellen einer serverlosen API mit Azure Functions | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine serverlose API mit Azure Functions erstellen
-services: functions
+title: Anpassen eines HTTP-Endpunkts in Azure Functions
+description: Hier erfahren Sie, wie Sie einen HTTP-Trigger-Endpunkt in Azure Functions anpassen.
 author: mattchenderson
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: f6a678e03818f1e1f2182b3b0dfab221d415dc72
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: f7729f5acb8b7b95004265f6802ba2feb1bc3cd7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698237"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096757"
 ---
-# <a name="create-a-serverless-api-using-azure-functions"></a>Erstellen einer serverlosen API mit Azure Functions
+# <a name="customize-an-http-endpoint-in-azure-functions"></a>Anpassen eines HTTP-Endpunkts in Azure Functions
 
-In diesem Tutorial erfahren Sie, wie Sie mit Azure Functions höchst flexibel skalierbare APIs erstellen können. Zu Azure Functions gehört eine Sammlung von integrierten HTTP-Triggern und -Bindungen, die Ihnen das Erstellen eines Endpunkts in einer Vielzahl von Sprachen wie z.B. Node.js und C# erleichtern. In diesem Tutorial passen Sie einen HTTP-Trigger so an, dass er bestimmte Aktionen in Ihrem API-Entwurf verarbeitet. Sie bereiten sich auch auf eine Erweiterung Ihrer API vor, indem Sie sie in Azure Functions-Proxys integrieren und Modell-APIs einrichten. All dies erfolgt auf der Grundlage der serverlosen Compute-Umgebung für Functions. Daher müssen Sie sich keine Gedanken über die Skalierung der Ressourcen machen – Sie können sich ganz auf Ihre API-Logik konzentrieren.
+In diesem Artikel erfahren Sie, wie Sie mit Azure Functions höchst flexibel skalierbare APIs erstellen können. Zu Azure Functions gehört eine Sammlung von integrierten HTTP-Triggern und -Bindungen, die Ihnen das Erstellen eines Endpunkts in einer Vielzahl von Sprachen wie z.B. Node.js und C# erleichtern. In diesem Artikel passen Sie einen HTTP-Trigger so an, dass er bestimmte Aktionen in Ihrem API-Entwurf verarbeitet. Sie bereiten sich auch auf eine Erweiterung Ihrer API vor, indem Sie sie in Azure Functions-Proxys integrieren und Modell-APIs einrichten. All dies erfolgt auf der Grundlage der serverlosen Compute-Umgebung für Functions. Daher müssen Sie sich keine Gedanken über die Skalierung der Ressourcen machen – Sie können sich ganz auf Ihre API-Logik konzentrieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
-Die resultierende Funktion wird für den restlichen Teil dieses Tutorials verwendet.
+Die resultierende Funktion wird für den restlichen Teil dieses Artikels verwendet.
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -182,7 +180,7 @@ Testen Sie Ihre Modell-API durch Aufrufen des Endpunkts `<YourProxyApp>.azureweb
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie eine API für Azure Functions erstellt und angepasst wird. Außerdem haben Sie gelernt, wie Sie mehrere APIs (darunter Modelle) zu einer einheitlichen API-Oberfläche verknüpften können. Sie können diese Techniken verwenden, um APIs von beliebiger Komplexität zu erstellen, während Sie das von Azure Functions bereitgestellte serverlose Computemodell nutzen.
+In diesem Artikel haben Sie erfahren, wie eine API für Azure Functions erstellt und angepasst wird. Außerdem haben Sie gelernt, wie Sie mehrere APIs (darunter Modelle) zu einer einheitlichen API-Oberfläche verknüpften können. Sie können diese Techniken verwenden, um APIs von beliebiger Komplexität zu erstellen, während Sie das von Azure Functions bereitgestellte serverlose Computemodell nutzen.
 
 Die folgenden Referenzen können bei der weiteren Entwicklung Ihrer API hilfreich sein:
 

@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: kfollis
 ms.author: kfollis
-ms.date: 03/22/2019
+ms.date: 05/24/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: bff6fe697912bca0bc55501a74a01a92b1330521
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 6e176a8b16129cd35fc011e14fcb36038f7c0144
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449836"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000338"
 ---
 # <a name="azure-portal-overview"></a>Azure-Portal – Übersicht
 
@@ -23,6 +23,8 @@ In diesem Artikel zur Vorstellung des Azure-Portals werden Sie mit den Elementen
 ## <a name="what-is-the-azure-portal"></a>Was ist das Azure-Portal?
 
 Das Azure-Portal ist eine webbasierte, zentrale Konsole, die eine Alternative zu Befehlszeilentools darstellt. Im Azure-Portal können Sie Ihr Azure-Abonnement auf einer grafischen Benutzeroberfläche verwalten. Sie können alles von einfachen Webanwendungen bis hin zu komplexen Cloudbereitstellungen erstellen, verwalten und überwachen, benutzerdefinierte Dashboards für eine organisierte Ressourcenübersicht erstellen und Barrierefreiheitsoptionen für ein optimales Erlebnis konfigurieren.
+
+Das Azure-Portal ist auf Resilienz und fortlaufende Verfügbarkeit ausgelegt. Es ist in jedem Azure-Rechenzentrum vorhanden, wodurch es hinsichtlich der Ausfälle einzelner Rechenzentren resilient ist und zudem Netzwerkverzögerungen vermeidet, da es sich in der Nähe der Benutzer befindet. Das Azure-Portal wird ständig aktualisiert und erfordert bei Wartungsarbeiten keine Downtime.
 
 ## <a name="azure-home"></a>Azure-Startseite
 
@@ -67,7 +69,12 @@ Wir haben Ihre Favoriten auf der Randleiste vorab mit Links zu häufig genutzten
 > [!TIP]
 > Der schnellste Weg, eine Ressource, einen Dienst oder Dokumentation zu finden, ist die *Suche* in der globalen Kopfzeile. Verwenden Sie die Breadcrumb-Links, um zu vorherigen Seiten zurückzukehren.
 >
->
+Sehen Sie sich dieses Video an, um zu erfahren, wie die globale Suche im Azure-Portal verwendet wird.
+
+
+> [!VIDEO https://www.youtube.com/embed/nZ7WwTZcQbo]
+
+[Verwenden der globalen Suche im Azure-Portal](https://www.youtube.com/watch?v=nZ7WwTZcQbo)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

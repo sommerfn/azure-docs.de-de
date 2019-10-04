@@ -10,18 +10,17 @@ tags: azure-resource-manager
 keywords: DSC
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: b3cfc33f435c6ddaabe8358c344b1944f7c271f6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c759567e4d8c183452eccbbdca8459c8993d1361
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500514"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092419"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands
 
@@ -81,8 +80,8 @@ Sie können diese Informationen im [Azure-Portal](../../automation/automation-ds
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```
 
-Achten Sie beim Namen der Knotenkonfiguration darauf, dass Sie wirklich den Namen der *Knotenkonfiguration* verwenden, nicht den der Konfiguration.
-Eine Konfiguration ist in einem Skript definiert, das [zum Kompilieren der Knotenkonfiguration (MOF-Datei)](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile) verwendet wird.
+Achten Sie beim Namen der Knotenkonfiguration darauf, dass die Knotenkonfiguration in Azure State Configuration vorhanden ist.  Ist das nicht der Fall, gibt die Erweiterungsbereitstellung einen Fehler zurück.  Achten Sie außerdem darauf, dass Sie den Namen der *Knotenkonfiguration* verwenden, nicht den der Konfiguration.
+Eine Konfiguration ist in einem Skript definiert, das [zum Kompilieren der Knotenkonfiguration (MOF-Datei)](https://docs.microsoft.com/azure/automation/automation-dsc-compile) verwendet wird.
 Der Name ist immer die Konfiguration, gefolgt von einem Punkt `.` und entweder `localhost` oder dem Namen eines bestimmten Computers.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>DSC-Erweiterung in Resource Manager-Vorlagen
@@ -136,7 +135,6 @@ Mit den folgenden Befehlen platzieren Sie das Skript „IisInstall.ps1“ auf de
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
-$location = 'westus'
 $vmName = 'myVM'
 $storageName = 'demostorage'
 #Publish the configuration script to user storage

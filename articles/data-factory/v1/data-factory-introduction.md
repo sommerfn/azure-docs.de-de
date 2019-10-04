@@ -3,25 +3,24 @@ title: Einführung in Data Factory, einen Datenintegrationsdienst | Microsoft Do
 description: 'Hier erfahren Sie, worum es sich bei Azure Data Factory handelt: Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, der das Verschieben und Transformieren von Daten orchestriert und automatisiert.'
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 9bf8c51fda6985f88ecffa60b32c1c62e364a511
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2e508839cd343820a36cc715ebde0f47c2ac4ab1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014929"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139522"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-introduction.md)
 > * [Version 2 (aktuelle Version)](../introduction.md)
 
@@ -133,7 +132,6 @@ Nehmen wir beispielsweise an, dass Ihre Compute-Umgebungen wie Azure HDInsight-C
 ## <a name="get-started-with-creating-a-pipeline"></a>Erste Schritte beim Erstellen einer Pipeline
 Verwenden Sie diese Tools oder APIs, um Datenpipelines in Azure Data Factory zu erstellen: 
 
-- Azure-Portal
 - Visual Studio
 - PowerShell
 - .NET API

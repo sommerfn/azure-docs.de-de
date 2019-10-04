@@ -2,32 +2,32 @@
 title: Diagnose und Problembehandlung in Azure Time Series Insights (Vorschauversion) | Microsoft-Dokumentation
 description: Machen Sie sich mit der Diagnose und Problembehandlung mit Azure Time Series Insights Preview vertraut.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: eb1c302bf1954492ba2a7a78d16fc697fdf4b687
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cdcbe62fdba4f111233451680f95abc757e80ee3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080436"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883319"
 ---
 # <a name="diagnose-and-troubleshoot"></a>Diagnostizieren und Behandeln von Problemen
 
 In diesem Artikel werden einige häufig auftretende Probleme zusammengefasst, die auftreten können, wenn Sie mit Ihrer Azure Time Series Insights Preview-Umgebung arbeiten. Darüber hinaus werden mögliche Ursachen und Lösungen für jedes der Probleme beschrieben.
 
-## <a name="problem-i-cant-find-my-environment-in-the-time-series-insights-preview-explorer"></a>Problem: Ich finde meine Umgebung im Times Series Insights Preview-Explorer nicht
+## <a name="problem-i-cant-find-my-environment-in-the-preview-explorer"></a>Problem: Ich kann meine Umgebung im Preview-Explorer nicht finden.
 
 Dieses Problem kann auftreten, wenn Sie nicht über die Berechtigung für den Zugriff auf die Time Series Insights-Umgebung verfügen. Benutzer benötigen eine Zugriffsrolle auf Leser-Ebene, um ihre Time Series Insights-Umgebung anzuzeigen. Um die aktuellen Zugriffsebenen zu überprüfen und zusätzlichen Zugriff zu gewähren, besuchen Sie den Abschnitt „Datenzugriffsrichtlinien“ in der Time Series Insights-Ressource im [Azure-Portal](https://portal.azure.com/).
 
-  ![Environment][1]
+  [![Umgebung](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
 
-## <a name="problem-no-data-is-seen-in-the-time-series-insights-preview-explorer"></a>Problem: Es werden keine Daten im Time Series Insights Preview-Explorer angezeigt
+## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Problem: Im Preview-Explorer werden keine Daten angezeigt.
 
 Es gibt verschiedene mögliche Gründe, aus denen Ihre Daten im [Azure Time Series Insights Preview-Explorer](https://insights.timeseries.azure.com/preview) nicht angezeigt werden.
 
@@ -35,7 +35,7 @@ Es gibt verschiedene mögliche Gründe, aus denen Ihre Daten im [Azure Time Seri
 
     Stellen Sie sicher, dass Ihre Ereignisquelle, bei der es sich um einen Event Hub oder einen IoT-Hub handelt, Daten von Ihren Tags oder Instanzen empfängt. Um dies zu überprüfen, wechseln Sie zur Übersichtsseite Ihrer Ressourcen im Azure-Portal.
 
-    ![Dashboard-Erkenntnisse][2]
+    [![Dashboard-Erkenntnisse](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png)](media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png#lightbox)
 
 - Ihre Ereignisquelldaten sind nicht im JSON-Format.
 
@@ -45,12 +45,12 @@ Es gibt verschiedene mögliche Gründe, aus denen Ihre Daten im [Azure Time Seri
 
   * Für IoT Hub müssen Sie einen Schlüssel mit der Berechtigung **Dienstverbindung** bereitstellen.
 
-    ![Konfiguration][3]
+    [![Konfiguration](media/v2-update-diagnose-and-troubleshoot/configuration.png)](media/v2-update-diagnose-and-troubleshoot/configuration.png#lightbox)
 
   * Wie in der vorherigen Abbildung dargestellt, würden beide Richtlinien **iothubowner** und **service** funktionieren, da sie die Berechtigung **Dienstverbindung** besitzen.
   * Für einen Event Hub müssen Sie einen Schlüssel mit der Berechtigung **Lauschen** bereitstellen.
   
-    ![Berechtigungen][4]
+    [![Berechtigungen](media/v2-update-diagnose-and-troubleshoot/permissions.png)](media/v2-update-diagnose-and-troubleshoot/permissions.png#lightbox)
 
   * Wie in der vorherigen Abbildung dargestellt, würden beide Richtlinien **read** und **write** funktionieren, da sie die Berechtigung **Lauschen** besitzen.
 
@@ -62,7 +62,7 @@ Es gibt verschiedene mögliche Gründe, aus denen Ihre Daten im [Azure Time Seri
 
     Dieses Problem kann auftreten, wenn die Time Series-ID-Eigenschaft zum Zeitpunkt der Bereitstellung der Umgebung fehlerhaft konfiguriert ist. Weitere Informationen finden Sie unter [Bewährte Methoden für die Auswahl einer Time Series-ID](./time-series-insights-update-how-to-id.md). Zu diesem Zeitpunkt können Sie eine vorhandene Time Series Insights-Umgebung nicht so aktualisieren, dass sie eine andere Time Series-ID verwendet.
 
-## <a name="problem-some-data-shows-but-some-is-missing"></a>Problem: Einige Daten werden angezeigt, andere hingegen fehlen.
+## <a name="problem-some-data-shows-but-some-is-missing"></a>Problem: Einige Daten werden angezeigt, doch andere fehlen.
 
 Möglicherweise werden Sie Daten ohne die Time Series-ID.
 
@@ -73,7 +73,7 @@ Möglicherweise werden Sie Daten ohne die Time Series-ID.
     > [!NOTE]
     > Zurzeit unterstützt Time Series Insights eine maximale Datenerfassungsrate von 6 Mbit/s.
 
-## <a name="problem-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Problem: Die Einstellung für den Namen der Timestamp-Eigenschaft meiner Ereignisquelle funktioniert nicht.
+## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Problem: Die Timestamp-Eigenschaft für den Namen meiner Ereignisquelle funktioniert nicht.
 
 Stellen Sie sicher, dass Name und Wert den folgenden Regeln entsprechen:
 
@@ -88,33 +88,26 @@ Sie können am einfachsten sicherstellen, dass Ihr Name der Timestamp-Eigenschaf
 
 Wenn die Timestamp-Eigenschaft nicht explizit angegeben ist, wird der Zeitpunkt der Einreihung eine Ereignisses in die Warteschlange für einen IoT-Hub oder Event Hub als Standardzeitstempel verwendet.
 
-## <a name="problem-i-cant-edit-or-view-my-time-series-model"></a>Problem: Ich kann mein Zeitreihenmodell weder bearbeiten noch anzeigen
+## <a name="problem-i-cant-view-or-edit-my-time-series-model"></a>Problem: Ich kann mein Zeitreihenmodell nicht anzeigen oder bearbeiten.
 
 - Möglicherweise greifen Sie auf eine Time Series Insights S1- oder S2-Umgebung zu.
 
    Zeitreihenmodelle werden nur in PAYG-Umgebungen unterstützt. Weitere Informationen zum Zugriff auf Ihre S1/S2-Umgebung über den Time Series Insights Preview-Explorer finden Sie unter [Visualisieren von Daten im Explorer](./time-series-insights-update-explorer.md).
 
-   ![Access][5]
+   [![Zugriff](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
 
 - Möglicherweise besitzen Sie keine Berechtigungen zum Anzeigen und Bearbeiten des Modells.
 
    Benutzer benötigen Zugriff auf Mitwirkender-Ebene, um ihre Zeitreihenmodelle zu bearbeiten und anzuzeigen. Um die aktuellen Zugriffsebenen zu überprüfen und zusätzlichen Zugriff zu gewähren, besuchen Sie den Abschnitt „Datenzugriffsrichtlinien“ in Ihrer Time Series Insights-Ressource im Azure-Portal.
 
-## <a name="problem-all-my-instances-in-the-time-series-insights-preview-explorer-dont-have-a-parent"></a>Problem: Keine meiner Instanzen im Times Series Insights Preview-Explorer hat ein übergeordnetes Element
+## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>Problem: Bei allen meinen Instanzen im Preview-Explorer fehlt ein übergeordnetes Element.
 
 Dieses Problem kann auftreten, wenn in Ihrer Umgebung keine Zeitreihenmodell-Hierarchie definiert ist. Weitere Informationen finden Sie unter [Arbeiten mit Zeitreihenmodellen](./time-series-insights-update-how-to-tsm.md).
 
-  ![Zeitreihenmodelle][6]
+  [![Zeitreihenmodelle](media/v2-update-diagnose-and-troubleshoot/tsm.png)](media/v2-update-diagnose-and-troubleshoot/tsm.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lesen Sie [Arbeiten mit Zeitreihenmodellen](./time-series-insights-update-how-to-tsm.md).
-- Lesen Sie [Unterstützte JSON-Formen](./how-to-shape-query-json.md).
 
-<!-- Images -->
-[1]: media/v2-update-diagnose-and-troubleshoot/environment.png
-[2]: media/v2-update-diagnose-and-troubleshoot/dashboard-insights.png
-[3]: media/v2-update-diagnose-and-troubleshoot/configuration.png
-[4]: media/v2-update-diagnose-and-troubleshoot/permissions.png
-[5]: media/v2-update-diagnose-and-troubleshoot/access.png
-[6]: media/v2-update-diagnose-and-troubleshoot/tsm.png
+- Weitere Informationen zu [unterstützten JSON-Formen](./how-to-shape-query-json.md).

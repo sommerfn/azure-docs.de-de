@@ -1,6 +1,6 @@
 ---
 title: Azure Cloud Shell-Features | Microsoft-Dokumentation
-description: Übersicht über die Features von Bash in Azure Cloud Shell
+description: Übersicht über die Features von Azure Cloud Shell
 services: Azure
 documentationcenter: ''
 author: maertendMSFT
@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 46c9350dd2a33d0d25fe193b2ae50c954f2d1f95
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 1354f7befd8c38537a555e17733f431dd488cf60
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500616"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742054"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Features und Tools für Azure Cloud Shell
 
@@ -51,6 +51,18 @@ Alle an den Azure-Ressourcen vorgenommenen Änderungen, die entweder direkt im A
 
 ![](media/features-powershell/azure-drive.png)
 
+### <a name="manage-exchange-online"></a>Verwalten von Exchange Online
+
+PowerShell in Cloud Shell enthält einen privaten Build des Exchange Online-Moduls.  Führen Sie `Connect-EXOPSSession` aus, um Ihre Exchange-Cmdlets abzurufen.
+
+![](media/features-powershell/exchangeonline.png)
+
+ Führen Sie `Get-Command -Module tmp_*` aus.
+> [!NOTE]
+> Der Modelname sollte mit `tmp_` beginnen, wenn Sie Module mit demselben Präfix installiert haben, werden auch deren Cmdlets ausgegeben. 
+
+![](media/features-powershell/exchangeonlinecmdlets.png)
+
 ### <a name="deep-integration-with-open-source-tooling"></a>Enge Integration in Open Source-Tools
 
 Cloud Shell enthält eine vorkonfigurierte Authentifizierung für Open Source-Tools wie Terraform, Ansible oder Chef InSpec. Probieren Sie es mithilfe der exemplarischen Vorgehensweisen aus.
@@ -60,13 +72,13 @@ Cloud Shell enthält eine vorkonfigurierte Authentifizierung für Open Source-To
 |Category (Kategorie)   |NAME   |
 |---|---|
 |Linux-Tools            |Bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
-|Azure-Tools            |[Azure CLI](https://github.com/Azure/azure-cli) und [klassische Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Azure-Tools            |[Azure CLI](https://github.com/Azure/azure-cli) und [klassische Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Azure Functions-Befehlszeilenschnittstelle](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |Text-Editoren           |code (Cloud Shell-Editor)<br> Vim<br> Nano<br> Emacs    |
 |Quellcodeverwaltung         |Git                    |
 |Buildtools            |Make<br> Maven<br> npm<br> pip         |
 |Container             |[Docker-Computer](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS-CLI](https://github.com/dcos/dcos-cli)         |
 |Datenbanken              |MySQL-Client<br> PostgreSQL-Client<br> [SQLCMD-Hilfsprogramm](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Andere                  |iPython-Client<br> [Cloud Foundry-CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)|
+|Andere                  |iPython-Client<br> [Cloud Foundry-CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Puppet Bolt](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)|
 
 ## <a name="language-support"></a>Sprachunterstützung
 
@@ -80,7 +92,7 @@ Cloud Shell enthält eine vorkonfigurierte Authentifizierung für Open Source-To
 |Python     |2.7 und 3.5 (Standard)|
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Schnellstart für Bash in Azure Cloud Shell](quickstart.md) <br>
+[Bash in Cloud Shell – Schnellstart](quickstart.md) <br>
 [Schnellstart für PowerShell in Cloud Shell](quickstart-powershell.md) <br>
 [Erfahren Sie mehr über die Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
 [Informationen zu Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

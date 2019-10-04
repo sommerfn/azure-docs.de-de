@@ -12,27 +12,34 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: a12288de2f9a7682fb433dd0d5c7905cc76c12b9
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: ef0237b38c8f640c0fc4b1b1788215c8804a5cd4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351659"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141903"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Verwenden von Service Bus-Themen und -Abonnements mit Python
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verwenden. Die Beispiele sind in Python geschrieben und verwenden das [Azure Python SDK-Paket][Azure Python package]. Die behandelten Szenarios umfassen **das Erstellen von Themen und Abonnements**, **das Erstellen von Abonnementfiltern**, **das Senden von Nachrichten an ein Thema**, **das Empfangen von Nachrichten von einem Abonnement** und **das Löschen von Themen und Abonnements**. Weitere Informationen zu Themen und Abonnements finden Sie im Abschnitt [Nächste Schritte](#next-steps).
+In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verwenden. Die Beispiele sind in Python geschrieben, und das [Azure Python SDK-Paket][Azure Python package] wird verwendet. Folgende Szenarien werden behandelt:
 
-[!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+- Erstellen von Themen und Abonnements 
+- Erstellen von Abonnementfiltern 
+- Senden von Nachrichten an ein Thema 
+- Empfangen von Nachrichten aus einem Abonnement
+- Löschen von Themen und Abonnements
 
-> [!NOTE] 
-> Informationen zum Installieren von Python bzw. des [Azure Python-Pakets][Azure Python package] finden Sie im [Python-Installationshandbuch](../python-how-to-install.md).
+## <a name="prerequisites"></a>Voraussetzungen
+1. Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können [Ihre Visual Studio-oder MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Konto anmelden](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Befolgen Sie die Schritte im [Schnellstart: Verwenden Sie das Azure-Portal, um ein Service Bus-Thema und -Abonnements für das Thema](service-bus-quickstart-topics-subscriptions-portal.md) zu erstellen, um einen Service Bus-**Namespace** zu erstellen und die **Verbindungszeichenfolge** abzurufen.
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+    > [!NOTE]
+    > Sie erstellen ein **Thema** und ein **Abonnement** für das Thema, indem Sie **Python** in dieser Schnellstartanleitung verwenden. 
+3. Installieren Sie das [Azure Python-Paket][Azure Python package]. Weitere Informationen finden Sie im [Python-Installationshandbuch](/azure/python/python-sdk-azure-install).
 
 ## <a name="create-a-topic"></a>Erstellen eines Themas
 
@@ -72,9 +79,9 @@ bus_service.create_topic('mytopic', topic_options)
 Abonnements von Themen werden ebenfalls mit dem **ServiceBusService**-Objekt erstellt. Abonnements werden benannt und können einen optionalen Filter aufweisen, der die Nachrichten einschränkt, die an die virtuelle Warteschlange des Abonnements übermittelt werden.
 
 > [!NOTE]
-> Abonnements sind dauerhaft und existieren solange, bis sie oder das Thema, für das sie abonniert sind, gelöscht werden.
+> Standardmäßig sind Abonnements persistent und so lange vorhanden, bis sie selbst oder das Thema, für das sie abonniert wurden, gelöscht werden.
 > 
-> 
+> Sie können angeben, dass Abonnements automatisch gelöscht werden sollen, indem Sie die [auto_delete_on_idle-Eigenschaft](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) festlegen.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Erstellen eines Abonnements mit dem Standardfilter (MatchAll)
 
@@ -133,7 +140,8 @@ Das folgende Beispiel zeigt, wie Sie fünf Testnachrichten an `mytopic` senden. 
 
 ```python
 for i in range(5):
-    msg = Message('Msg {0}'.format(i).encode('utf-8'), custom_properties={'messagenumber':i})
+    msg = Message('Msg {0}'.format(i).encode('utf-8'),
+                  custom_properties={'messagenumber': i})
     bus_service.send_topic_message('mytopic', msg)
 ```
 
@@ -144,7 +152,8 @@ Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im 
 Nachrichten werden von einem Abonnement über die Methode `receive_subscription_message` des Objekts **ServiceBusService** empfangen:
 
 ```python
-msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=False)
+msg = bus_service.receive_subscription_message(
+    'mytopic', 'LowMessages', peek_lock=False)
 print(msg.body)
 ```
 
@@ -171,7 +180,7 @@ Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor dem Aufruf der
 
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
 
-Themen und Abonnements sind persistent und müssen über das [Azure-Portal][Azure portal] oder programmgesteuert explizit gelöscht werden. Im folgenden Beispiel wird das Thema `mytopic` gelöscht:
+Themen und Abonnements sind persistent, sofern nicht die [auto_delete_on_idle-Eigenschaft](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) festgelegt ist. Sie können entweder über das [Azure-Portal][Azure portal] oder programmgesteuert gelöscht werden. Im folgenden Beispiel wird das Thema `mytopic` gelöscht:
 
 ```python
 bus_service.delete_topic('mytopic')
@@ -183,11 +192,14 @@ Durch das Löschen eines Themas werden auch alle Abonnements gelöscht, die mit 
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
+> [!NOTE]
+> Sie können Service Bus-Ressourcen mit dem [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) verwalten. Mit dem Service Bus-Explorer können Benutzer eine Verbindung mit einem Service Bus-Namespace herstellen und Messagingentitäten auf einfache Weise verwalten. Das Tool stellt erweiterte Features wie Import-/Exportfunktionen oder Testmöglichkeiten für Themen, Warteschlangen, Abonnements, Relaydienste, Notification Hubs und Event Hubs zur Verfügung. 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie nun mit den Grundlagen der Servicebus-Themen vertraut sind, finden Sie unter den folgenden Links weitere Informationen.
 
-* Siehe [Warteschlangen, Themen und Abonnements][Queues, topics, and subscriptions].
+* Siehe [Service Bus-Warteschlangen, -Themen und -Abonnements][Queues, topics, and subscriptions].
 * Referenz für [SqlFilter.SqlExpression][SqlFilter.SqlExpression].
 
 [Azure portal]: https://portal.azure.com

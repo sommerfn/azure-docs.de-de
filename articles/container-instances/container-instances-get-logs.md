@@ -3,22 +3,22 @@ title: Abrufen von Containerprotokollen und -ereignissen mit Azure Container Ins
 description: Hier erfahren Sie, wie Sie beim Debuggen Containerprotokolle und -ereignisse mit Azure Container Instances verwenden.
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f286e2136b12a88e65e40f8fb956542233f71715
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 8ae7ab3f53f480f46165800504fbb1eb6649c3e2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369002"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68325973"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Abrufen von Containerprotokollen und -ereignissen in Azure Container Instances
 
-Wenn Sie über einen fehlerhaften Container verfügen, können Sie zunächst mit [az container logs][az-container-logs] die Protokolle anzeigen und die Standardausgabe und Standardfehler mit [az container attach][az-container-attach] streamen.
+Wenn Sie einen fehlerhaften Container haben, können Sie zunächst mit [az container logs][az-container-logs] die Protokolle anzeigen sowie die Standardausgabe und Standardfehler mit [az container attach][az-container-attach] streamen.
 
 ## <a name="view-logs"></a>Anzeigen von Protokollen
 
@@ -50,7 +50,7 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 ## <a name="attach-output-streams"></a>Anfügen von Ausgabestreams
 
-Mit dem Befehl [az container attach][az-container-attach] können Sie während des Containerstartvorgangs Diagnoseinformationen bereitstellen. Nachdem der Container gestartet wurde, werden STDOUT und STDERR auf Ihre lokale Konsole gestreamt.
+Der Befehl [az container attach][az-container-attach] liefert Diagnoseinformationen während des Containerstarts. Nachdem der Container gestartet wurde, werden STDOUT und STDERR auf Ihre lokale Konsole gestreamt.
 
 Hier ist beispielsweise die Ausgabe aus dem aufgabenbasierten Container unter [Ausführen von Aufgaben in Containern in Azure Container Instances](container-instances-restart-policy.md) angegeben, die angezeigt wird, nachdem eine gültige URL einer großen zu verarbeitenden Textdatei bereitgestellt wurde:
 

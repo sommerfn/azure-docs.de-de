@@ -1,25 +1,25 @@
 ---
-title: Abrufen von Azure Blockchain Workbench-Datenbankinformationen
-description: Erfahren Sie, wie Sie Informationen zu Datenbank und Datenbankserver von Azure Blockchain Workbench abrufen.
+title: Abrufen von Azure Blockchain Workbench Preview-Datenbankinformationen
+description: Erfahren Sie, wie Sie Informationen zu Datenbank und Datenbankserver von Azure Blockchain Workbench Preview abrufen.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/14/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 0d806491c58c4b1881adc2fd830de7c7b9f0859d
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: f4a4eaab9a03aeed27e29eb645b6e22a028b243b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331927"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845080"
 ---
-# <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Abrufen von Informationen zu Ihrer Azure Blockchain Workbench-Datenbank
+# <a name="get-information-about-your-azure-blockchain-workbench-preview-database"></a>Abrufen von Informationen zu Ihrer Azure Blockchain Workbench Preview-Datenbank
 
-In diesem Artikel wird erläutert, wie Sie ausführliche Informationen zu Ihrer Azure Blockchain Workbench-Datenbank abrufen.
+In diesem Artikel wird erläutert, wie Sie ausführliche Informationen zu Ihrer Azure Blockchain Workbench Preview-Datenbank abrufen.
 
 ## <a name="overview"></a>Übersicht
 

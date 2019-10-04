@@ -1,18 +1,17 @@
 ---
 title: Erstellen eines Azure Data Factory-Zuordnungsdatenflusses
-description: Erstellen eines Azure Data Factory-Zuordnungsdatenflusses
+description: Sie erfahren, wie Sie einen Azure Data Factory-Mappingdatenfluss erstellen.
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: bb6ae9f97d681625218118b8adca116de1c0fb21
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 366ed60534544ebbf889e2f72fe703f9b821f871
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728232"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65235656"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Erstellen eines Azure Data Factory-Datenflusses
 
@@ -22,7 +21,7 @@ Mit Mapping Data Flow in ADF können Sie Daten nach Maß transformieren, ohne Co
 
 Erstellen Sie zuerst im Azure-Portal eine neue Data Factory (V2). Klicken Sie nach dem Erstellen der neuen Factory auf die Kachel „Erstellen und überwachen“, um die Data Factory-Benutzeroberfläche zu starten.
 
-![Datenflussoptionen](media/data-flow/v2dataflowportal.png "Datenfluss erstellen")
+![Datenflussoptionen](media/data-flow/v2portal.png "Datenfluss erstellen")
 
 Sobald Sie sich auf der Data Factory-Benutzeroberfläche befinden, können Sie die Beispieldatenflüsse verwenden. Die Beispiele sind im ADF-Vorlagenkatalog verfügbar. Erstellen Sie in ADF eine „Pipeline aus Vorlage“, und wählen Sie im Vorlagenkatalog die Kategorie „Datenfluss“ aus.
 

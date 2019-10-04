@@ -2,19 +2,19 @@
 title: Importieren von Daten für die Datenerfassung in einem Suchindex – Azure Search
 description: Füllen Sie Daten aus externen Datenquellen auf, und laden Sie sie in einen Index in Azure Search hoch.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 7d95ae1f750c59c121e998c6f51f9439b1b0339a
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 71ee63dfbe880cbf6018f3dd13d360850ed994f9
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287093"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647329"
 ---
 # <a name="data-import-overview---azure-search"></a>Übersicht über den Datenimport – Azure Search
 
@@ -36,7 +36,7 @@ Sie können die folgenden APIs verwenden, um ein oder mehrere Dokumente in einen
 
 Es gibt derzeit keine Toolunterstützung für die Push-Übertragung von Daten über das Portal.
 
-Eine Einführung in jede Methodik finden Sie unter [Schnellstart: Erstellen eines Azure Search-Index mithilfe von PowerShell und der REST-API](search-create-index-rest-api.md) und [Schnellstart: Erstellen eines Azure Search-Index in C#](search-import-data-dotnet.md).
+Eine Einführung in jede Methodik finden Sie unter [Schnellstart: Erstellen eines Azure Search-Index mit PowerShell](search-create-index-rest-api.md) oder [C#-Schnellstart: Erstellen eines Azure Search-Index mit dem .NET SDK](search-get-started-dotnet.md).
 
 <a name="indexing-actions"></a>
 
@@ -44,9 +44,9 @@ Eine Einführung in jede Methodik finden Sie unter [Schnellstart: Erstellen eine
 
 Sie können den Typ der Indizierungsaktion dokumentweise steuern, indem Sie angeben, ob das Dokument vollständig hochgeladen, mit vorhandenen Dokumentinhalten zusammengeführt oder gelöscht werden soll.
 
-Bei der REST-API werden HTTP POST-Anforderungen mit JSON-Anforderungstexten an die Endpunkt-URL Ihres Azure Search-Index ausgegeben. Jedes JSON-Objekt im value-Array enthält den Schlüssel des Dokuments und gibt eine Indizierungsaktion an, die Dokumentinhalt hinzufügt, aktualisiert oder löscht. Ein Codebeispiel finden Sie unter [Laden von Dokumenten](search-create-index-rest-api.md#load-documents).
+Bei der REST-API werden HTTP POST-Anforderungen mit JSON-Anforderungstexten an die Endpunkt-URL Ihres Azure Search-Index ausgegeben. Jedes JSON-Objekt im value-Array enthält den Schlüssel des Dokuments und gibt an, ob mit einer Indizierungsaktion Dokumentinhalt hinzugefügt, aktualisiert oder gelöscht wird. Ein Codebeispiel finden Sie unter [Laden von Dokumenten](search-get-started-dotnet.md#load-documents).
 
-Beim .NET SDK packen Sie Ihre Daten in einem `IndexBatch`-Objekt. Ein `IndexBatch`-Objekt kapselt eine Sammlung mit `IndexAction`-Objekten. Jedes Objekt enthält ein Dokument und eine Eigenschaft, die Azure Search mitteilt, welche Aktion für das jeweilige Dokument durchgeführt werden soll. Ein Codebeispiel finden Sie unter [Erstellen des IndexBatch-Elements](search-import-data-dotnet.md#construct-indexbatch).
+Beim .NET SDK packen Sie Ihre Daten in einem `IndexBatch`-Objekt. Ein `IndexBatch`-Objekt kapselt eine Sammlung mit `IndexAction`-Objekten. Jedes Objekt enthält ein Dokument und eine Eigenschaft, die Azure Search mitteilt, welche Aktion für das jeweilige Dokument durchgeführt werden soll. Ein Codebeispiel finden Sie unter [C#-Schnellstart](search-get-started-dotnet.md).
 
 
 | @search.action | BESCHREIBUNG | Erforderliche Felder für jedes Dokument | Notizen |
@@ -63,9 +63,9 @@ So importieren Sie Daten mit dem .NET SDK (upload, merge, delete und mergeOrUplo
 ### <a name="formulate-your-query"></a>Formulieren der Abfrage
 Es gibt zwei Möglichkeiten, um [den Index mithilfe der REST-API zu durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Eine Möglichkeit besteht darin, eine HTTP POST-Anforderung auszugeben, wobei die Abfrageparameter in ein JSON-Objekt im Anforderungstext definiert werden. Die andere Möglichkeit besteht darin, eine HTTP GET-Anforderung auszugeben, wobei die Abfrageparameter in der Anforderungs-URL definiert werden. Die Beschränkungen in Bezug auf die Größe der Abfrageparameter sind bei POST [geringer](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) als bei GET. Aus diesem Grund empfehlen wir die Verwendung von POST, sofern GET nicht aufgrund bestimmter Umstände praktischer wäre.
 
-Sowohl für POST als auch für GET müssen Sie in der Anforderungs-URL Ihren *Dienstnamen*, den *Indexnamen* sowie die entsprechende *API-Version* (die aktuelle Version der API zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2017-11-11`) bereitstellen. Für GET befindet sich die *Abfragezeichenfolge* am Ende der URL, wo Sie die Abfrageparameter angeben. Das URL-Format finden Sie weiter unten:
+Sowohl für POST als auch für GET müssen Sie in der Anforderungs-URL Ihren *Dienstnamen*, den *Indexnamen* sowie die entsprechende *API-Version* (die aktuelle Version der API zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2019-05-06`) bereitstellen. Für GET befindet sich die *Abfragezeichenfolge* am Ende der URL, wo Sie die Abfrageparameter angeben. Das URL-Format finden Sie weiter unten:
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2017-11-11
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
 
 Das Format für POST ist das Gleiche, allerdings mit der API-Version in den Parametern für die Abfragezeichenfolge.
 

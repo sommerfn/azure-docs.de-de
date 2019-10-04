@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 67f51b078b8e92592e9593d7d254e6985265eee8
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 7e31f891cfd758b888e4045566ad2cd2d9ab6fb8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651268"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300950"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Konzepte, Terminologie und Entitäten in Microsoft Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt Azure Scheduler, der eingestellt wird. Zum Planen von Aufträgen sollten Sie stattdessen [Azure Logic Apps ausprobieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
 
 ## <a name="entity-hierarchy"></a>Entitätshierarchie
 
@@ -41,19 +41,25 @@ Allgemein betrachtet macht die Scheduler-REST-API die folgenden Vorgänge zum Ve
 
 Unterstützt Vorgänge zum Erstellen und Bearbeiten von Aufträgen. Alle Aufträge müssen einer vorhandenen Auftragssammlung angehören. Eine implizite Erstellung ist folglich nicht möglich. Weitere Informationen finden Sie unter [Scheduler REST API – Jobs](https://docs.microsoft.com/rest/api/scheduler/jobs) (Scheduler-REST-API – Aufträge). Die URI-Adresse für diese Vorgänge lautet wie folgt:
 
-`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`
+```
+https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}
+```
 
 ### <a name="job-collection-management"></a>Auftragssammlungsverwaltung
 
 Unterstützt Vorgänge zum Erstellen und Bearbeiten von Aufträgen und Auftragssammlungen, denen Kontingente und gemeinsame Einstellungen zugeordnet sind. Kontingente geben beispielsweise die maximale Anzahl von Aufträgen und das kleinste Wiederholungsintervall an. Weitere Informationen finden Sie unter [Scheduler REST API – Job Collections](https://docs.microsoft.com/rest/api/scheduler/jobcollections) (Scheduler-REST-API – Auftragssammlungen). Die URI-Adresse für diese Vorgänge lautet wie folgt:
 
-`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`
+```
+https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}
+```
 
 ### <a name="job-history-management"></a>Auftragsverlaufsverwaltung
 
 Unterstützt den GET-Vorgang zum Abrufen des Auftragsausführungsverlaufs für 60 Tage. Dieser enthält unter anderem die verstrichene Zeit sowie die Ergebnisse der Auftragsausführung. Bietet Unterstützung für Abfragezeichenfolgenparameter zur Filterung auf der Grundlage des Zustands und Status. Weitere Informationen finden Sie unter [Scheduler REST API – Jobs – List Job History](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory) (Scheduler-REST-API – Aufträge – Auflisten des Auftragsverlaufs). Die URI-Adresse für diesen Vorgang lautet wie folgt:
 
-`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`
+```
+https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history
+```
 
 ## <a name="job-types"></a>Auftragstypen
 
@@ -77,11 +83,11 @@ Der Auftrag enthält auch vom System bereitgestellte Daten, beispielsweise die n
 
 | Element | Erforderlich | BESCHREIBUNG | 
 |---------|----------|-------------| 
-| [**startTime**](#start-time) | Nein  | Die Startzeit für den Auftrag mit einem Zeitzonenoffset im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) | 
+| [**startTime**](#start-time) | Nein | Die Startzeit für den Auftrag mit einem Zeitzonenoffset im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**action**](#action) | Ja | Die Details für die primäre Aktion (kann ein **errorAction**-Objekt enthalten) | 
-| [**errorAction**](#error-action) | Nein  | Die Details für die sekundäre Aktion, die ausgeführt wird, wenn bei der primären Aktion ein Fehler auftritt |
-| [**recurrence**](#recurrence) | Nein  | Die Details für einen Serienauftrag (z. B. Häufigkeit und Intervall) | 
-| [**retryPolicy**](#retry-policy) | Nein  | Die Details zur Wiederholungshäufigkeit für eine Aktion | 
+| [**errorAction**](#error-action) | Nein | Die Details für die sekundäre Aktion, die ausgeführt wird, wenn bei der primären Aktion ein Fehler auftritt |
+| [**recurrence**](#recurrence) | Nein | Die Details für einen Serienauftrag (z. B. Häufigkeit und Intervall) | 
+| [**retryPolicy**](#retry-policy) | Nein | Die Details zur Wiederholungshäufigkeit für eine Aktion | 
 | [**state**](#state) | Ja | Die Details für den aktuellen Zustand des Auftrags |
 | [**status**](#status) | Ja | Die Details für den aktuellen Status des Auftrags (wird vom Dienst gesteuert) |
 ||||
@@ -242,15 +248,15 @@ Ein Auftrag wird wiederholt, wenn die JSON-Definition des Auftrags das **recurre
 | Eigenschaft | Erforderlich | Value | BESCHREIBUNG | 
 |----------|----------|-------|-------------| 
 | **frequency** | Ja, wenn **recurrence** verwendet wird | Minute, Hour, Day, Week, Month, Year | Die Zeiteinheit zwischen Ausführungen. | 
-| **interval** | Nein  | 1 bis einschließlich 1.000 | Eine positive ganze Zahl, die die Anzahl von Zeiteinheiten zwischen den einzelnen Ausführungen basierend auf dem Wert von **frequency** bestimmt. | 
-| **schedule** | Nein  | Variabel | Die Details für komplexere und erweiterte Zeitpläne. Siehe **hours**, **minutes**, **weekDays**, **months** und **monthDays**. | 
-| **hours** | Nein  | 1 bis 24 | Ein Array mit den Stundenmarkierungen für die Ausführung des Auftrags. | 
-| **minutes** | Nein  | 1 bis 24 | Ein Array mit den Minutenmarkierungen für die Ausführung des Auftrags. | 
-| **months** | Nein  | 1 bis 12 | Ein Array mit den Monaten für die Ausführung des Auftrags. | 
-| **monthDays** | Nein  | Variabel | Ein Array mit den Tagen des Monats für die Ausführung des Auftrags. | 
-| **weekDays** | Nein  | Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday | Ein Array mit den Wochentagen für die Ausführung des Auftrags. | 
-| **count** | Nein  | <*none*> | Die Anzahl von Wiederholungen. In der Standardeinstellung wird ein Auftrag unendlich wiederholt. Es ist nicht möglich, **count** und **endTime** gleichzeitig zu verwenden, es wird jedoch die Regel berücksichtigt, die zuerst abgeschlossen wird. | 
-| **endTime** | Nein  | <*none*> | Das Datum und die Uhrzeit für die Beendigung der Wiederholung. In der Standardeinstellung wird ein Auftrag unendlich wiederholt. Es ist nicht möglich, **count** und **endTime** gleichzeitig zu verwenden, es wird jedoch die Regel berücksichtigt, die zuerst abgeschlossen wird. | 
+| **interval** | Nein | 1 bis einschließlich 1.000 | Eine positive ganze Zahl, die die Anzahl von Zeiteinheiten zwischen den einzelnen Ausführungen basierend auf dem Wert von **frequency** bestimmt. | 
+| **schedule** | Nein | Varies | Die Details für komplexere und erweiterte Zeitpläne. Siehe **hours**, **minutes**, **weekDays**, **months** und **monthDays**. | 
+| **hours** | Nein | 1 bis 24 | Ein Array mit den Stundenmarkierungen für die Ausführung des Auftrags. | 
+| **minutes** | Nein | 0 bis 59 | Ein Array mit den Minutenmarkierungen für die Ausführung des Auftrags. | 
+| **months** | Nein | 1 bis 12 | Ein Array mit den Monaten für die Ausführung des Auftrags. | 
+| **monthDays** | Nein | Varies | Ein Array mit den Tagen des Monats für die Ausführung des Auftrags. | 
+| **weekDays** | Nein | Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday | Ein Array mit den Wochentagen für die Ausführung des Auftrags. | 
+| **count** | Nein | <*none*> | Die Anzahl von Wiederholungen. In der Standardeinstellung wird ein Auftrag unendlich wiederholt. Es ist nicht möglich, **count** und **endTime** gleichzeitig zu verwenden, es wird jedoch die Regel berücksichtigt, die zuerst abgeschlossen wird. | 
+| **endTime** | Nein | <*none*> | Das Datum und die Uhrzeit für die Beendigung der Wiederholung. In der Standardeinstellung wird ein Auftrag unendlich wiederholt. Es ist nicht möglich, **count** und **endTime** gleichzeitig zu verwenden, es wird jedoch die Regel berücksichtigt, die zuerst abgeschlossen wird. | 
 ||||
 
 Weitere Informationen zu diesen Elementen finden Sie unter [Erstellen komplexer Zeitpläne und erweiterter Serien](../scheduler/scheduler-advanced-complexity.md).
@@ -272,8 +278,8 @@ Für den Fall, dass bei einem Scheduler-Auftrag ein Fehler auftritt, können Sie
 | Eigenschaft | Erforderlich | Value | BESCHREIBUNG | 
 |----------|----------|-------|-------------| 
 | **retryType** | Ja | **Fixed**, **None** | Bestimmt, ob Sie eine Wiederholungsrichtlinie angeben (**fixed**) oder nicht (**none**). | 
-| **retryInterval** | Nein  | PT30S | Gibt das Intervall und die Häufigkeit zwischen den Wiederholungsversuchen im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) an. Der Mindestwert ist 15 Sekunden und der Höchstwert 18 Monate. | 
-| **retryCount** | Nein  | 4 | Gibt die Anzahl von Wiederholungsversuchen an. Der Höchstwert ist 20. | 
+| **retryInterval** | Nein | PT30S | Gibt das Intervall und die Häufigkeit zwischen den Wiederholungsversuchen im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) an. Der Mindestwert ist 15 Sekunden und der Höchstwert 18 Monate. | 
+| **retryCount** | Nein | 4 | Gibt die Anzahl von Wiederholungsversuchen an. Der Höchstwert ist 20. | 
 ||||
 
 Weitere Informationen finden Sie unter [Hochverfügbarkeit und Zuverlässigkeit](../scheduler/scheduler-high-availability-reliability.md).
@@ -301,7 +307,7 @@ Nachdem ein Auftrag gestartet wurde, gibt Scheduler Informationen zum Auftragsst
 * Anzahl von fehlgeschlagenen Ausführungen (sofern vorhanden)
 * Anzahl von Fehlern (sofern vorhanden)
 
-Beispiel: 
+Beispiel:
 
 ```json
 "status": {

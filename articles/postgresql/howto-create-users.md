@@ -1,19 +1,19 @@
 ---
-title: Erstellen von Benutzern auf einem Azure Database for PostgreSQL-Server
-description: In diesem Artikel wird beschrieben, wie Sie neue Benutzerkonten für die Interaktion mit einem Azure Database for PostgreSQL-Server erstellen können.
+title: Erstellen von Benutzern auf einem Azure Database for PostgreSQL-Einzelserver
+description: In diesem Artikel wird beschrieben, wie Sie neue Benutzerkonten für die Interaktion mit einem Azure Database for PostgreSQL-Einzelserver erstellen können.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/16/2018
-ms.openlocfilehash: 33c107c46b314136fa3d43f8e7881e096afa374c
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 5/6/2019
+ms.openlocfilehash: ce6188732720bc43c5849fa492237c7ab98487c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351081"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65067503"
 ---
-# <a name="create-users-in-azure-database-for-postgresql-server"></a>Erstellen von Benutzern auf einem Azure Database for PostgreSQL-Server 
+# <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Erstellen von Benutzern auf einem Azure Database for PostgreSQL-Einzelserver
 In diesem Artikel wird beschrieben, wie Sie Benutzer auf einem Azure Database for PostgreSQL-Server erstellen können.
 
 ## <a name="the-server-admin-account"></a>Das Serveradministratorkonto
@@ -64,7 +64,7 @@ Mit dem Konto des Serveradministratorbenutzers können zusätzliche Benutzer ers
    GRANT CONNECT ON DATABASE <newdb> TO <db_user>;
    ```
 
-4. Bei der Verwendung eines Administratorkontos müssen Sie unter Umständen zusätzliche Berechtigungen erteilen, um die Objekte in der Datenbank zu schützen. Weitere Einzelheiten zu Datenbankrollen und Berechtigungen finden Sie in der [PostgreSQL-Dokumentation](https://www.postgresql.org/docs/current/static/ddl-priv.html). Beispiel:  
+4. Bei der Verwendung eines Administratorkontos müssen Sie unter Umständen zusätzliche Berechtigungen erteilen, um die Objekte in der Datenbank zu schützen. Weitere Einzelheiten zu Datenbankrollen und Berechtigungen finden Sie in der [PostgreSQL-Dokumentation](https://www.postgresql.org/docs/current/static/ddl-priv.html). Beispiel: 
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;
    ```

@@ -3,25 +3,24 @@ title: Erweiterungen und Features für virtuelle Azure-Computer für Windows | M
 description: Sie erhalten einen Überblick über die Erweiterungen für virtuelle Azure-Computer, gruppiert nach den bereitgestellten oder verbesserten Funktionen.
 services: virtual-machines-windows
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
-ms.author: roiyz
+ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce13f053c2adee6a9a347a4162b60cc6d6b40eda
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a19b6bd8da82498aae45657d30883db14efd9343
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58849766"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174078"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -368,7 +367,7 @@ Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
 
 ### <a name="view-extension-status"></a>Anzeigen des Erweiterungsstatus
 
-Wenn eine VM-Erweiterung für einen virtuellen Computer ausgeführt wurde, können Sie mit [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) zum Erweiterungsstatus zurückkehren. *Substatuses[0]* zeigt, dass die Bereitstellung der Erweiterung erfolgreich war. Das bedeutet, dass Sie der VM erfolgreich bereitgestellt wurde. Wenn die Ausführung der Erweiterung innerhalb der VM fehlgeschlagen ist, ist der Status *Substatuses[1]*.
+Wenn eine VM-Erweiterung für einen virtuellen Computer ausgeführt wurde, können Sie mit [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) zum Erweiterungsstatus zurückkehren. *Substatuses[0]* zeigt, dass die Bereitstellung der Erweiterung erfolgreich war. Das bedeutet, dass Sie der VM erfolgreich bereitgestellt wurde. Wenn die Ausführung der Erweiterung innerhalb der VM fehlgeschlagen ist, ist der Status *Substatuses[1]* .
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status

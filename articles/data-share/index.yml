@@ -1,0 +1,61 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Data Share (Vorschauversion)
+summary: Die Vorschauversion von Azure Data Share ist ein sicherer Dienst für die Freigabe von Daten für Drittanbieter-Organisationen.
+metadata:
+  title: Azure Data Share (Vorschauversion)
+  description: Azure Data Share (Vorschauversion) ist ein sicherer Dienst für die Freigabe von Daten für Drittanbieterorganisationen.
+  services: data-share
+  ms.service: data-share
+  ms.subservice: subservice
+  ms.topic: landing-page
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: d75af1eea77bea89f3facf782b836a26fcdabdde
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71218010"
+landingContent:
+- title: Informationen zu Azure Data Share
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Data Share?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Data Share-Konzepte
+      url: terminology.md
+    - text: Rollen und Anforderungen für Azure Data Share
+      url: concepts-roles-permissions.md
+- title: Freigeben von Daten
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Freigeben von Daten mithilfe von Azure Data Share
+      url: share-your-data.md
+    - text: Akzeptieren und Empfangen von Daten mithilfe von Azure Data Share
+      url: subscribe-to-data-share.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren von Dataset-Mappings
+      url: how-to-configure-mapping.md
+    - text: Hinzufügen von Datasets
+      url: how-to-add-datasets.md
+- title: Überwachen und Verwalten
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Überwachen von Azure Data Share
+      url: how-to-monitor.md
+    - text: Häufig auftretende Probleme und Problembehandlung
+      url: data-share-troubleshoot.md
+    - text: Hinzufügen von Datasets
+      url: how-to-add-datasets.md
+    - text: Löschen einer Einladung
+      url: how-to-delete-invitation.md
+    - text: Aufheben einer Abonnementfreigabe
+      url: how-to-revoke-share-subscription.md

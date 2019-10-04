@@ -3,17 +3,17 @@ title: 'Azure Container Registry: Rollen und Berechtigungen'
 description: Verwenden Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) und das Identity & Access Management (IAM) von Azure, um differenzierte Berechtigungen für Ressourcen in einer Azure-Containerregistrierung bereitzustellen.
 services: container-registry
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
-ms.openlocfilehash: b6e26bfa476c5c13e6e478f40c39978af61d83e7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 793dbf056201a3315a9b77dfebbb9331a8ed7db1
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894267"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310598"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry: Rollen und Berechtigungen
 
@@ -23,7 +23,7 @@ Der Azure Container Registry-Dienst unterstützt mehrere Azure-Rollen, die unter
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
 | Owner (Besitzer) | X | X | X | X | X | X |  |  
 | Mitwirkender | X | X | X |  X | X | X |  |  
-| Leser | X |  |  | X |  |  |  |
+| Leser | X |  |  |  |  |  |  |
 | AcrPush |  |  | X | X | |  |  |  
 | AcrPull |  |  |  | X |  |  |  |  
 | AcrDelete |  |  |  |  | X |  |  |

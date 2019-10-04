@@ -1,28 +1,22 @@
 ---
 title: Aktivieren von Enterprise State Roaming in Azure Active Directory | Microsoft Docs
-description: Enthält häufig gestellte Fragen zu Enterprise State Roaming-Einstellungen auf Windows-Geräten. Beim Enterprise State Roaming profitieren Benutzer von einer einheitlichen Benutzererfahrung auf allen Windows-Geräten. Zudem wird für das Konfigurieren eines neuen Geräts weniger Zeit benötigt.
+description: Enthält häufig gestellte Fragen zu Enterprise State Roaming-Einstellungen auf Windows-Geräten.
 services: active-directory
-keywords: Enterprise State Roaming, Windows-Cloud, Aktivieren von Enterprise State Roaming
-documentationcenter: ''
-author: tanning
-manager: daveba
-editor: curtand
-ms.subservice: devices
-ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/25/2018
+ms.subservice: devices
+ms.topic: conceptual
+ms.date: 06/28/2019
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97d0be1dfd77035a3522ef8a6b3f4ac93ae20741
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f0f4a260bb52fb10147f6d6b9e74aa5cd4fd0e1a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519288"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562143"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Aktivieren von Enterprise State Roaming in Azure Active Directory
 Enterprise State Roaming ist für jedes Unternehmen mit einer Azure AD Premium- oder Enterprise Mobility + Security-Lizenz (EMS) verfügbar. Weitere Informationen zum Erhalt eines Azure AD-Abonnements finden Sie auf der [Azure AD-Produktseite](https://azure.microsoft.com/services/active-directory) .
@@ -32,24 +26,22 @@ Wenn Sie Enterprise State Roaming aktivieren, wird Ihrer Organisation über Azur
 ## <a name="to-enable-enterprise-state-roaming"></a>So aktivieren Sie Enterprise State Roaming
 
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com/) an.
-
 1. Wählen Sie **Azure Active Directory** &gt; **Geräte** &gt; **Enterprise State Roaming**.
-
 1. Wählen Sie **Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren**. Weitere Informationen finden Sie unter [Verwalten von Geräten im Azure-Portal – Vorschau](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
   
    ![Bild der Geräteeinstellung „Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren“](./media/enterprise-state-roaming-enable/device-settings.png)
   
-Damit ein Windows 10-Gerät den Enterprise State Roaming-Dienst nutzen kann, muss das Gerät mit einer Azure AD-Identität authentifiziert werden. Für Geräte, die Azure AD beigetreten sind, ist die primäre Anmeldeidentität des Benutzers die Azure AD-Identität. Es ist also keine zusätzliche Konfiguration erforderlich. Für Geräte, die eine lokale Active Directory-Instanz nutzen, muss der IT-Administrator [in Azure Active Directory eingebundene Hybridgeräte konfigurieren](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual-steps). 
+Damit ein Windows 10-Gerät den Enterprise State Roaming-Dienst nutzen kann, muss das Gerät mit einer Azure AD-Identität authentifiziert werden. Für Geräte, die Azure AD beigetreten sind, ist die primäre Anmeldeidentität des Benutzers die Azure AD-Identität. Es ist also keine zusätzliche Konfiguration erforderlich. Für Geräte, die eine lokale Active Directory-Instanz nutzen, muss der IT-Administrator [in Azure Active Directory eingebundene Hybridgeräte konfigurieren](hybrid-azuread-join-manual-steps.md). 
 
 ## <a name="data-storage"></a>Datenspeicher
-Enterprise State Roaming-Daten werden in [Azure-Regionen](https://azure.microsoft.com/regions/) gehostet, die am besten zu dem Wert für Land/Region passen, der in der Azure Active Directory-Instanz festgelegt ist. Enterprise State Roaming-Daten werden basierend auf drei großen geografischen Regionen partitioniert: Nordamerika, EMEA und APAC. Enterprise State Roaming-Daten für Mandanten befinden sich lokal in der geografischen Region und werden nicht über Regionen hinweg repliziert.  Beispiel: 
+Enterprise State Roaming-Daten werden in [Azure-Regionen](https://azure.microsoft.com/regions/) gehostet, die am besten zu dem Wert für Land/Region passen, der in der Azure Active Directory-Instanz festgelegt ist. Enterprise State Roaming-Daten werden basierend auf drei großen geografischen Regionen partitioniert: Nordamerika, EMEA und APAC. Enterprise State Roaming-Daten für Mandanten befinden sich lokal in der geografischen Region und werden nicht über Regionen hinweg repliziert.  Beispiel:
 
-Wert für Land/Region | Daten gehostet in
----------------------|-------------------------
-Ein EMEA-Land, z.B. Frankreich oder Sambia | Eine oder mehrere Azure-Regionen in Europa 
-Ein Land in Nordamerika, z.B. USA oder Kanada | Eine oder mehrere Azure-Regionen in den USA
-Ein APAC-Land, z.B. Australien oder Neuseeland | Eine oder mehrere Azure-Regionen in Asien
-Regionen „Südamerika“ und „Antarktis“ | Eine oder mehrere Azure-Regionen in den USA
+| Wert für Land/Region | Daten gehostet in |
+| -------------------- | ------------------------ |
+| EMEA-Länder/-Regionen, z.B. Frankreich oder Sambia | Eine oder mehrere Azure-Regionen in Europa |
+| Ein Land / eine Region aus Nordamerika wie USA oder Kanada | Eine oder mehrere Azure-Regionen in den USA |
+| APAC-Länder/-Regionen, z.B. Australien oder Neuseeland | Eine oder mehrere Azure-Regionen in Asien |
+| Regionen „Südamerika“ und „Antarktis“ | Eine oder mehrere Azure-Regionen in den USA |
 
 Der Wert für Land/Region wird im Rahmen der Azure AD-Verzeichniserstellung festgelegt und kann später nicht mehr geändert werden. Wenn Sie ausführliche Informationen zum Speicherort Ihrer Daten benötigen, können Sie beim [Azure-Support](https://azure.microsoft.com/support/options/) ein Ticket erstellen.
 
@@ -57,11 +49,8 @@ Der Wert für Land/Region wird im Rahmen der Azure AD-Verzeichniserstellung fest
 Führen Sie diese Schritte aus, um einen Bericht zum Gerätesynchronisierungsstatus pro Benutzer anzuzeigen.
 
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com/) an.
-
 1. Wählen Sie **Azure Active Directory** &gt; **Benutzer** &gt; **Alle Benutzer**.
-
 1. Wählen Sie den Benutzer und dann **Geräte** aus.
-
 1. Wählen Sie unter **Anzeigen** die Option **Einstellungen für Gerätesynchronisierung und App-Daten**, um den Synchronisierungsstatus anzuzeigen.
   
    ![Bild der Gerätesynchronisierungsdaten-Einstellung](./media/enterprise-state-roaming-enable/sync-status.png)
@@ -81,10 +70,10 @@ Bei expliziter Löschung löscht ein Azure-Administrator einen Benutzer oder ein
 * **Löschung auf Anforderung**: Wenn der Azure AD-Administrator die Einstellungen oder Daten eines bestimmten Benutzers manuell löschen möchte, kann er beim [Azure-Support](https://azure.microsoft.com/support/) ein Ticket erstellen. 
 
 ### <a name="stale-data-deletion"></a>Löschung veralteter Daten
-Daten, auf die ein Jahr lang nicht zugegriffen wurde („Aufbewahrungsdauer“), werden als veraltet eingestuft und ggf. aus der Microsoft Cloud gelöscht. Die Aufbewahrungsdauer kann sich ändern, wird jedoch nicht weniger als 90 Tage betragen. Bei den veralteten Daten kann es sich um eine bestimmte Gruppe von Windows-/Anwendungseinstellungen oder um alle Einstellungen eines Benutzers handeln. Beispiel: 
+Daten, auf die ein Jahr lang nicht zugegriffen wurde („Aufbewahrungsdauer“), werden als veraltet eingestuft und ggf. aus der Microsoft Cloud gelöscht. Die Aufbewahrungsdauer kann sich ändern, wird jedoch nicht weniger als 90 Tage betragen. Bei den veralteten Daten kann es sich um eine bestimmte Gruppe von Windows-/Anwendungseinstellungen oder um alle Einstellungen eines Benutzers handeln. Beispiel:
 
 * Wenn keine Geräte auf eine bestimmte Sammlung mit Einstellungen zugreifen (z.B. wird eine Anwendung vom Gerät entfernt, oder eine Einstellungsgruppe wie „Design“ wird für alle Geräte eines Benutzers deaktiviert), gilt diese Sammlung nach Ablauf der Aufbewahrungsdauer als veraltet und kann gelöscht werden. 
-* Falls ein Benutzer die Einstellungssynchronisierung auf allen eigenen Geräten deaktiviert hat, wird nicht auf die Einstellungsdaten zugegriffen. Alle Einstellungsdaten für diesen Benutzer werden als veraltet eingestuft und können nach Ablauf der Aufbewahrungsdauer gelöscht werden. 
+* Falls ein Benutzer die Einstellungssynchronisierung auf allen Geräten deaktiviert hat, wird nicht auf die Einstellungsdaten zugegriffen. Alle Einstellungsdaten für diesen Benutzer werden als veraltet eingestuft und können nach dem Aufbewahrungszeitraum gelöscht werden. 
 * Wenn der Azure AD-Verzeichnisadministrator Enterprise State Roaming für das gesamte Verzeichnis deaktiviert hat, wird die Synchronisierung der Einstellungen für alle Benutzer im jeweiligen Verzeichnis beendet. Alle Einstellungsdaten aller Benutzer gelten dann als veraltet und können nach Ablauf der Aufbewahrungsdauer gelöscht werden. 
 
 ### <a name="deleted-data-recovery"></a>Wiederherstellen von gelöschten Daten

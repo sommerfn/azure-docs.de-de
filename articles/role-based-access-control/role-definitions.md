@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 7855c2bd45ba35ecb0ede5c60268e6446f37ed5a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1cd5325be7def4bc631d994f8811734e6c3cf545
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58804529"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996438"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Grundlegendes zu Rollendefinitionen für Azure-Ressourcen
 
@@ -52,7 +52,8 @@ Der Teil `{action}` einer Vorgangszeichenfolge gibt die Art der Vorgänge an, di
 | ------------------- | ------------------- |
 | `*` | Das Platzhalterzeichen gewährt Zugriff auf alle Vorgänge, die der Zeichenfolge entsprechen. |
 | `read` | Ermöglicht Lesevorgänge (GET). |
-| `write` | Ermöglicht Schreibvorgänge (PUT, POST und PATCH). |
+| `write` | Ermöglicht Schreibvorgänge (PUT oder PATCH). |
+| `action` | Ermöglicht benutzerdefinierte Vorgänge wie das Neustarten von virtuellen Computern (POST). |
 | `delete` | Ermöglicht Löschvorgänge (DELETE). |
 
 Hier sehen Sie die Rollendefinition [Mitwirkender](built-in-roles.md#contributor) im JSON-Format. Der Platzhaltervorgang (`*`) unter `Actions` gibt an, dass der Prinzipal, der dieser Rolle zugewiesen ist, alle Aktionen ausführen und somit alles verwalten kann. Dies schließt auch Aktionen ein, die später definiert werden, wenn Azure neue Ressourcentypen hinzufügt. Die Vorgänge unter `NotActions` werden von `Actions` subtrahiert. Im Falle der Rolle [Mitwirkender](built-in-roles.md#contributor) sorgt `NotActions` dafür, dass die Rolle weder den Zugriff auf Ressourcen verwalten noch Zugriff für Ressourcen zuweisen kann.
@@ -79,7 +80,7 @@ Hier sehen Sie die Rollendefinition [Mitwirkender](built-in-roles.md#contributor
 }
 ```
 
-## <a name="management-and-data-operations-preview"></a>Verwaltungs- und Datenvorgänge (Vorschauversion)
+## <a name="management-and-data-operations"></a>Verwaltungs- und Datenvorgänge
 
 Die rollenbasierte Zugriffssteuerung für Verwaltungsvorgänge wird in den Eigenschaften `Actions` und `NotActions` einer Rollendefinition angegeben. Im Anschluss finden Sie einige Beispiele für Verwaltungsvorgänge in Azure:
 
@@ -87,9 +88,9 @@ Die rollenbasierte Zugriffssteuerung für Verwaltungsvorgänge wird in den Eigen
 - Erstellen, Aktualisieren oder Löschen eines Blobcontainers
 - Löschen einer Ressourcengruppe und aller dazugehörigen Ressourcen
 
-Verwaltungszugriff geht nicht auf Ihre Daten über. Diese Trennung verhindert, dass Rollen mit Platzhaltern (`*`) uneingeschränkten Zugriff auf Ihre Daten erhalten. Wenn einem Benutzer also beispielsweise die Rolle [Leser](built-in-roles.md#reader) für ein Abonnement zugewiesen ist, kann er das Speicherkonto anzeigen, aber standardmäßig nicht die zugrunde liegenden Daten.
+Der Verwaltungszugriff wird nicht von Ihren Daten geerbt, vorausgesetzt, die Methode für die Containerauthentifizierung ist auf „Azure AD-Benutzerkonto“ und nicht auf „Zugriffsschlüssel“ festgelegt. Diese Trennung verhindert, dass Rollen mit Platzhaltern (`*`) uneingeschränkten Zugriff auf Ihre Daten erhalten. Wenn einem Benutzer also beispielsweise die Rolle [Leser](built-in-roles.md#reader) für ein Abonnement zugewiesen ist, kann er das Speicherkonto anzeigen, aber standardmäßig nicht die zugrunde liegenden Daten.
 
-Vorher wurde die rollenbasierte Zugriffssteuerung nicht bei Datenvorgängen verwendet. Die Autorisierung bei Datenvorgängen variiert je nach Ressourcenanbieter. Das gleiche Modell der Autorisierung mit der rollenbasierten Zugriffssteuerung, das für Verwaltungsvorgänge verwendet wurde, wurde auf Datenvorgänge erweitert (zurzeit als Vorschauversion verfügbar).
+Vorher wurde die rollenbasierte Zugriffssteuerung nicht bei Datenvorgängen verwendet. Die Autorisierung bei Datenvorgängen variiert je nach Ressourcenanbieter. Das gleiche Modell der Autorisierung mit der rollenbasierten Zugriffssteuerung, das für Verwaltungsvorgänge verwendet wurde, wurde auf Datenvorgänge erweitert.
 
 Zur Unterstützung von Datenvorgängen wurden neue Dateneigenschaften zur Struktur der Rollendefinition hinzugefügt. Datenvorgänge werden in den Eigenschaften `DataActions` und `NotDataActions` angegeben. Durch Hinzufügen dieser Dateneigenschaften wird die Trennung zwischen Verwaltung und Daten beibehalten. Hierdurch wird verhindert, dass aktuelle Rollenzuweisungen mit Platzhaltern (`*`) wider Erwarten über Zugriff auf Daten verfügen. Im Folgenden werden einige Datenvorgänge aufgeführt, die in `DataActions` und `NotDataActions` angegeben werden können:
 
@@ -162,18 +163,14 @@ Um Datenvorgänge anzuzeigen und mit diesen zu arbeiten, müssen Sie über die r
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 oder höher |
 | [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) | 2.0.30 oder höher |
 | [Azure für .NET](/dotnet/azure/) | 2.8.0-preview oder höher |
-| [Azure SDK für Go](/go/azure/azure-sdk-go-install) | 15.0.0 oder höher |
+| [Azure SDK für Go](/azure/go/azure-sdk-go-install) | 15.0.0 oder höher |
 | [Azure für Java](/java/azure/) | 1.9.0 oder höher |
-| [Azure für Python](/python/azure) | 0.40.0 oder höher |
+| [Azure für Python](/azure/python/) | 0.40.0 oder höher |
 | [Azure SDK für Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 oder höher |
 
 Um die Datenvorgänge in der REST-API anzuzeigen und zu verwenden, müssen Sie den Parameter **api-version** auf die folgende Version oder höher festlegen:
 
-- 2018-01-01-preview
-
-Das Azure-Portal ermöglicht zudem das Durchsuchen und Verwalten der Inhalte von Warteschlangen- und Blobcontainern über die Azure AD-Vorschauoberfläche. Um den Inhalt eines Warteschlangen- oder Blobcontainers anzuzeigen und zu verwalten, klicken Sie in der Speicherkontoübersicht auf **Daten mithilfe der Azure AD-Vorschau erkunden**.
-
-![Erkunden von Warteschlangen- und Blobcontainern mit der Azure AD-Vorschau](./media/role-definitions/rbac-dataactions-browsing.png)
+- 2018-07-01
 
 ## <a name="actions"></a>Aktionen
 
@@ -195,7 +192,7 @@ Die Berechtigung `NotActions` gibt die Verwaltungsvorgänge an, die von den zul�
 > Wenn einem Benutzer eine Rolle zugewiesen wird, die einen Vorgang in `NotActions` ausschließt, und dem Benutzer dann durch Zuweisen einer zweiten Rolle der Zugriff auf diesen Vorgang gewährt wird, kann der Benutzer den Vorgang durchführen. `NotActions` ist keine Verweigerungsregel. Es ist lediglich eine bequeme Möglichkeit, eine Gruppe zulässiger Vorgänge zu erstellen, wenn bestimmte Vorgänge ausgeschlossen werden müssen.
 >
 
-## <a name="dataactions-preview"></a>DataActions (Vorschauversion)
+## <a name="dataactions"></a>DataActions
 
 Die Berechtigung `DataActions` gibt die Datenvorgänge an, deren Ausführung für Ihre Daten innerhalb des Objekts die Rolle zulässt. Wenn ein Benutzer z.B. über Lesezugriff auf Blobdaten auf ein Speicherkonto verfügt, kann er die Blobs in diesem Speicherkonto dann lesen. Im Anschluss finden Sie einige Beispiele für Datenvorgänge, die in `DataActions` verwendet werden können.
 
@@ -206,7 +203,7 @@ Die Berechtigung `DataActions` gibt die Datenvorgänge an, deren Ausführung fü
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/read` | Gibt eine Nachricht zurück. |
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | Gibt eine Nachricht oder das Ergebnis beim Schreiben oder Löschen einer Nachricht zurück. |
 
-## <a name="notdataactions-preview"></a>NotDataActions (Vorschauversion)
+## <a name="notdataactions"></a>NotDataActions
 
 Die Berechtigung `NotDataActions` gibt die Datenvorgänge an, die von den zulässigen Aktionen (`DataActions`) ausgeschlossen sind. Zur Ermittlung des Zugriffs, der durch eine Rolle gewährt wird (effektive Berechtigungen), werden die `NotDataActions`-Vorgänge von den `DataActions`-Vorgängen subtrahiert. Jedem Ressourcenanbieter steht eine entsprechende Gruppe von APIs zur Verfügung, um Datenvorgänge durchzuführen.
 
@@ -216,16 +213,18 @@ Die Berechtigung `NotDataActions` gibt die Datenvorgänge an, die von den zuläs
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-Die Eigenschaft `AssignableScopes` gibt die Bereiche (Abonnements, Ressourcengruppen oder Ressourcen) an, für die die Rolle zugewiesen werden kann. Sie können die Verfügbarkeit der Rolle für die Zuweisung auf die Abonnements oder Ressourcengruppen beschränken, für die dies erforderlich ist, um eine bessere Übersichtlichkeit der restlichen Abonnements oder Ressourcengruppen zu erzielen. Sie müssen mindestens ein Abonnement, eine Ressourcengruppe oder eine Ressourcen-ID verwenden.
+Die Eigenschaft `AssignableScopes` gibt die Bereiche (Verwaltungsgruppen, Abonnements, Ressourcengruppen oder Ressourcen) an, für die diese Rollendefinition verfügbar ist. Sie können die Rolle nur in den für Sie erforderlichen Verwaltungsgruppen, Abonnements oder Ressourcengruppen für die Zuweisung zur Verfügung stellen. Sie müssen mindestens eine Verwaltungsgruppe, ein Abonnement, eine Ressourcengruppe oder eine Ressourcen-ID verwenden.
 
 Bei integrierten Rollen ist `AssignableScopes` auf den Stammbereich (`"/"`) festgelegt. Der Stammbereich gibt an, dass die Rolle für die Zuweisung in allen Bereichen verfügbar ist. Beispiele für gültige zuweisbare Bereiche:
 
-| Szenario | Beispiel |
+| Rolle ist für die Zuweisung verfügbar | Beispiel |
 |----------|---------|
-| Rolle ist für die Zuweisung in einem einzelnen Abonnement verfügbar | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"` |
-| Rolle ist für die Zuweisung in zwei Abonnements verfügbar | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
-| Rolle ist nur für die Zuweisung in der Netzwerkressourcengruppe verfügbar | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
-| Rolle ist für die Zuweisung in allen Bereichen verfügbar | `"/"` |
+| Ein Abonnement | `"/subscriptions/{subscriptionId1}"` |
+| Zwei Abonnements | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
+| Netzwerkressourcengruppe | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
+| Eine Verwaltungsgruppe | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
+| Verwaltungsgruppe und ein Abonnement | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
+| Alle Bereiche (gilt nur für integrierte Rollen) | `"/"` |
 
 Informationen zu `AssignableScopes` für benutzerdefinierte Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md).
 

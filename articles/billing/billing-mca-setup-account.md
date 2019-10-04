@@ -1,8 +1,6 @@
 ---
-title: Einrichten Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung – Azure | Microsoft-Dokumentation
+title: Einrichten Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung – Azure
 description: Erfahren Sie, wie Sie Ihr Abrechnungskonto für eine Microsoft-Kundenvereinbarung einrichten.
-services: ''
-documentationcenter: ''
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -12,23 +10,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9cdda62f0178a18897e3bc6c8cec6cfa943d3b1b
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894545"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709510"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Einrichten Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung
 
-Wenn Ihre Enterprise Agreement-Registrierung abgelaufen ist oder bald ablaufen wird, können Sie eine Microsoft-Kundenvereinbarung zum Erneuern Ihrer Registrierung unterzeichnen. Die Erneuerung umfasst die folgenden Schritte:
+Wenn Ihre Enterprise Agreement-Registrierung abgelaufen ist oder bald ablaufen wird, können Sie eine Microsoft-Kundenvereinbarung zum Erneuern Ihrer Registrierung unterzeichnen. Dieser Artikel beschreibt die Änderungen an der vorhandenen Abrechnung nach der Einrichtung und führt Sie durch die Einrichtung Ihres neuen Abrechnungskontos. Die Erneuerung umfasst die folgenden Schritte:
 
 1. Akzeptieren Sie die neue Microsoft-Kundenvereinbarung. Lassen Sie sich von Ihrem lokalen Microsoft-Kundenbetreuer die Details erläutern, und akzeptieren Sie die neue Vereinbarung.
 2. Richten Sie das neue Abrechnungskonto ein, das für die neue Microsoft-Kundenvereinbarung erstellt wird.
-
-Dieser Artikel beschreibt die Änderungen an der vorhandenen Abrechnung nach der Einrichtung und führt Sie durch die Einrichtung Ihres neuen Abrechnungskontos.
 
 Zum Einrichten des Abrechnungskontos müssen Sie die Abrechnung von Azure-Abonnements von Ihrer Enterprise Agreement-Registrierung auf das neue Konto umstellen. Die Einrichtung hat keine Auswirkungen auf Azure-Dienste, die in Ihren Abonnements ausgeführt werden. Es ändert sich jedoch die Art und Weise, wie Sie die Abrechnung Ihre Abonnements verwalten.
 
@@ -45,7 +41,7 @@ Bevor Sie mit dem Einrichten beginnen, sollten Sie sich mit folgenden Themen bef
 - **Erläuterungen zu den Änderungen an Ihrer Abrechnungshierarchie**
   - Ihr neues Abrechnungskonto ist anders organisiert als Ihre Enterprise Agreement-Registrierung. [Erläuterungen zu den Änderungen an Ihrer Abrechnungshierarchie beim neuen Konto](#understand-changes-to-your-billing-hierarchy).
 - **Erläuterungen zu den Änderungen am Zugriff Ihrer Abrechnungsadministratoren**
-  - Administratoren Ihrer Enterprise Agreement-Registrierung erhalten Zugriff auf die Abrechnungsbereiche des neuen Kontos. [Erläuterungen zu den Änderungen beim Zugriff](#understand-changes-to-your-billing-administrators-access).
+  - Administratoren Ihrer Enterprise Agreement-Registrierung erhalten Zugriff auf die Abrechnungsbereiche des neuen Kontos. [Erläuterungen zu den Änderungen beim Zugriff](#changes-to-billing-administrator-access).
 - **Informationen zu Enterprise Agreement-Funktionen, die durch das neue Konto ersetzt werden**
   - Informieren Sie sich über Funktionen der Enterprise Agreement-Registrierung, die durch Funktionen des neuen Kontos ersetzt werden.
 - **Antworten auf die am häufigsten gestellten Fragen**
@@ -55,7 +51,7 @@ Bevor Sie mit dem Einrichten beginnen, sollten Sie sich mit folgenden Themen bef
 
 Zum Abschließen der Einrichtung benötigen Sie die folgenden Zugriffsrechte:
 
-- Besitzer des Abrechnungsprofils, das bei Unterzeichnung der Microsoft-Kundenvereinbarung erstellt wurde. Weitere Informationen zu Abrechnungsprofilen finden Sie unter [Grundlegendes zu Abrechnungsprofilen](billing-mca-overview.md#understand-billing-profiles).
+- Besitzer des Abrechnungsprofils, das bei Unterzeichnung der Microsoft-Kundenvereinbarung erstellt wurde. Weitere Informationen zu Abrechnungsprofilen finden Sie unter [Grundlegendes zu Abrechnungsprofilen](billing-mca-overview.md#billing-profiles).
 
 - Unternehmensadministrator für die Registrierung, die erneuert wird.
 
@@ -87,12 +83,12 @@ Das neue Abrechnungskonto vereinfacht die Abrechnung für Ihre Organisation und 
 
 ![Abbildung der Hierarchie nach Umstellung von EA auf MCA](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
 
-1. Mit dem Abrechnungskonto verwalten Sie die Abrechnung für Ihre Microsoft-Kundenvereinbarung. Weitere Informationen zum Abrechnungskonto finden Sie unter [Grundlegendes zum Abrechnungskonto](billing-mca-overview.md#understand-billing-account).
-2. Mit dem Abrechnungsprofil verwalten Sie die Abrechnung für Ihre Organisation ähnlich wie bei der Enterprise Agreement-Registrierung. Unternehmensadministratoren werden Besitzer des Abrechnungsprofils. Weitere Informationen zu Abrechnungsprofilen finden Sie unter [Grundlegendes zu Abrechnungsprofilen](billing-mca-overview.md#understand-billing-profiles).
-3. Sie verwenden einen Rechnungsabschnitt zum Organisieren Ihrer Kosten entsprechend Ihren Anforderungen. Dies ähnelt den Abteilungen in Ihrer Enterprise Agreement-Registrierung. Abteilungen werden zu Rechnungsabschnitten und Abteilungsadministratoren zu Besitzern der jeweiligen Rechnungsabschnitte. Weitere Informationen zu Rechnungsabschnitten finden Sie unter [Grundlegendes zu Rechnungsabschnitten](billing-mca-overview.md#understand-invoice-sections).
+1. Mit dem Abrechnungskonto verwalten Sie die Abrechnung für Ihre Microsoft-Kundenvereinbarung. Weitere Informationen zum Abrechnungskonto finden Sie unter [Grundlegendes zum Abrechnungskonto](billing-mca-overview.md#your-billing-account).
+2. Mit dem Abrechnungsprofil verwalten Sie die Abrechnung für Ihre Organisation ähnlich wie bei der Enterprise Agreement-Registrierung. Unternehmensadministratoren werden Besitzer des Abrechnungsprofils. Weitere Informationen zu Abrechnungsprofilen finden Sie unter [Grundlegendes zu Abrechnungsprofilen](billing-mca-overview.md#billing-profiles).
+3. Sie verwenden einen Rechnungsabschnitt zum Organisieren Ihrer Kosten entsprechend Ihren Anforderungen. Dies ähnelt den Abteilungen in Ihrer Enterprise Agreement-Registrierung. Abteilungen werden zu Rechnungsabschnitten und Abteilungsadministratoren zu Besitzern der jeweiligen Rechnungsabschnitte. Weitere Informationen zu Rechnungsabschnitten finden Sie unter [Grundlegendes zu Rechnungsabschnitten](billing-mca-overview.md#invoice-sections).
 4. Die Konten, die in Ihrem Enterprise Agreement erstellt wurden, werden beim neuen Abrechnungskonto nicht unterstützt. Die Abonnements des Kontos gehören dem jeweiligen Rechnungsabschnitt für die entsprechende Abteilung an. Kontobesitzer können Abonnements für ihre Rechnungsabschnitte erstellen und verwalten.
 
-## <a name="understand-changes-to-your-billing-administrators-access"></a>Erläuterungen zu den Änderungen am Zugriff Ihrer Abrechnungsadministratoren
+## <a name="changes-to-billing-administrator-access"></a>Änderungen am Zugriff des Abrechnungsadministrators
 
 Je nach Zugriffsrechten erhalten die Abrechnungsadministratoren Ihrer Enterprise Agreement-Registrierung Zugriff auf die Abrechnungsbereiche des neuen Kontos. Die folgende Tabelle erläutert die Änderung des Zugriffs während der Einrichtung:
 
@@ -108,9 +104,9 @@ Bei Unterzeichnung der Microsoft-Kundenvereinbarung wird ein Azure Active Direct
 
 Ihr neues Konto unterstützt nur Benutzer des Mandanten, der beim Unterzeichnen der Microsoft-Kundenvereinbarung ausgewählt wurde. Wenn Benutzer mit Administratorberechtigungen für Ihr Enterprise Agreement Teil des Mandanten sind, erhalten sie während der Einrichtung Zugriff auf das neue Abrechnungskonto. Wenn sie nicht Teil des Mandanten sind, können sie nur auf das neue Abrechnungskonto zugreifen, wenn sie von Ihnen eingeladen werden.
 
-Beim Einladen von Benutzern werden diese dem Mandanten als Gastbenutzer hinzugefügt und erhalten Zugriff auf das Abrechnungskonto. Zum Einladen der Benutzer muss der Gastzugriff für den Mandanten aktiviert sein. Weitere Informationen finden Sie unter [Steuern des Gastzugriffs in Azure Active Directory](https://docs.microsoft.com/en-us/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Wenn der Gastzugriff deaktiviert ist, wenden Sie sich an die globalen Administratoren Ihres Mandanten, um ihn aktivieren zu lassen. <!-- Todo - How can they find their global administrator -->
+Beim Einladen von Benutzern werden diese dem Mandanten als Gastbenutzer hinzugefügt und erhalten Zugriff auf das Abrechnungskonto. Zum Einladen der Benutzer muss der Gastzugriff für den Mandanten aktiviert sein. Weitere Informationen finden Sie unter [Steuern des Gastzugriffs in Azure Active Directory](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Wenn der Gastzugriff deaktiviert ist, wenden Sie sich an die globalen Administratoren Ihres Mandanten, um ihn aktivieren zu lassen. <!-- Todo - How can they find their global administrator -->
 
-## <a name="view-features-replaced-by-the-new-billing-account"></a>Informationen zu Funktionen, die durch das neue Abrechnungskonto ersetzt werden
+## <a name="view-replaced-features"></a>Ersetzte Features anzeigen
 
 Die folgenden Enterprise Agreement-Funktionen werden durch neue Funktionen im Abrechnungskonto für eine Microsoft-Kundenvereinbarung ersetzt.
 
@@ -197,7 +193,7 @@ Zum Abschließen der Einrichtung benötigen Sie Zugriff sowohl auf das neue Abre
 
    ![Screenshot mit dem Status der Abrechnungsumstellung](./media/billing-mca-setup-account/ea-mca-set-up-status.png)
 
-## <a name="validate-the-billing-account-is-set-up-properly"></a>Überprüfen der ordnungsgemäßen Einrichtung des Abrechnungskontos
+## <a name="validate-billing-account-set-up"></a>Überprüfen der Einrichtung des Abrechnungskontos
 
  Überprüfen Sie Folgendes, um sicherzustellen, dass Ihr neues Abrechnungskonto ordnungsgemäß eingerichtet ist:
 

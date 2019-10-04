@@ -1,6 +1,6 @@
 ---
-title: Vordefinierte Ordinal-Entität
-titleSuffix: Azure
+title: Vordefinierte Ordinal-Entität – LUIS
+titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erhalten Sie Informationen zur vorgefertigten Ordinalentität in Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: diberry
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 02/28/2019
+ms.topic: conceptual
+ms.date: 06/25/2019
 ms.author: diberry
-ms.openlocfilehash: 4992ca9d1a09fa751697d6608400eb4dda688108
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 51f1082034a710ed9d0f78b79bc6ae469771459e
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340489"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933468"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>Vordefinierte Ordinal-Entität für eine LUIS-App
 Eine Ordnungszahl ist eine numerische Darstellung eines Objekts in einer Menge: `first`, `second`, `third`. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit Ordnungszahlen hinzufügen. Die Ordinalentität wird in [vielen Kulturen](luis-reference-prebuilt-entities.md) unterstützt. 
@@ -25,6 +25,9 @@ Eine Ordnungszahl ist eine numerische Darstellung eines Objekts in einer Menge: 
 Die Entität „ordinal“ wird über das GitHub-Repository [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45) verwaltet.
 
 ## <a name="resolution-for-prebuilt-ordinal-entity"></a>Auflösung der vorgefertigten Ordinalentität
+
+### <a name="api-version-2x"></a>API-Version 2.x
+
 Im folgenden Beispiel wird die Auflösung der Entität **builtin.ordinal** veranschaulicht.
 
 ```json
@@ -58,6 +61,73 @@ Im folgenden Beispiel wird die Auflösung der Entität **builtin.ordinal** veran
 }
 ```
 
+### <a name="preview-api-version-3x"></a>Vorschau-API-Version 3.x
+
+Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
+
+```json
+{
+    "query": "Order the second option",
+    "prediction": {
+        "normalizedQuery": "order the second option",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.7124502
+            }
+        },
+        "entities": {
+            "ordinal": [
+                {
+                    "offset": 2,
+                    "relativeTo": "start"
+                }
+            ]
+        }
+    }
+}
+```
+
+Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
+
+```json
+{
+    "query": "Order the second option",
+    "prediction": {
+        "normalizedQuery": "order the second option",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.7124502
+            }
+        },
+        "entities": {
+            "ordinal": [
+                {
+                    "offset": 2,
+                    "relativeTo": "start"
+                }
+            ],
+            "$instance": {
+                "ordinal": [
+                  {
+                    "type": "builtin.ordinal",
+                    "text": "second",
+                    "startIndex": 10,
+                    "length": 6,
+                    "modelTypeId": 2,
+                    "modelType": "Prebuilt Entity Extractor",
+                    "recognitionSources": [
+                        "model"
+                    ]
+                  }
+                ]
+            }
+        }
+    }
+}
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr zu den [Prozentsatz](luis-reference-prebuilt-percentage.md)-, [Telefonnummer](luis-reference-prebuilt-phonenumber.md)- und [Temperaturentitäten](luis-reference-prebuilt-temperature.md). 
+Erfahren Sie mehr über die Entitäten [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md), [phone number](luis-reference-prebuilt-phonenumber.md) und [temperature](luis-reference-prebuilt-temperature.md). 

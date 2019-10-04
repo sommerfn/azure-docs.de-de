@@ -3,23 +3,22 @@ title: Verbessern der Einhaltung gesetzlicher Bestimmungen mit Azure Security Ce
 description: 'Tutorial: Es wird beschrieben, wie Sie die Einhaltung gesetzlicher Bestimmungen verbessern, indem Sie Azure Security Center verwenden.'
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
 ms.service: security-center
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2e73cbd1de4336a08e26a609dfe704da0a068860
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 4/30/2019
+ms.author: memildin
+ms.openlocfilehash: 20842997c5df81835024a6f458cd863b4e4d78b0
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106002"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202433"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Tutorial: Verbessern der Einhaltung gesetzlicher Vorschriften
 ---
@@ -47,8 +46,7 @@ Das Dashboard zur Einhaltung gesetzlicher Bestimmungen kann Ihr Augenmerk auf di
 
 >[!NOTE]
 > Derzeit werden die folgenden Bestimmungsstandards unterstützt: Azure CIS, PCI-DSS 3.2, ISO 27001 und SOC TSP. Weitere Standards werden integriert, wenn das Dashboard weiterentwickelt wird.
-
-1.  Wählen Sie im Hauptmenü von Security Center unter **RICHTLINIE UND KONFORMITÄT** das Dashboard zur **Einhaltung gesetzlicher Bestimmungen**. <br>
+1.  Wählen Sie im Hauptmenü von Security Center unter **RICHTLINIE UND KONFORMITÄT** die Option **Einhaltung gesetzlicher Bestimmungen** aus. <br>
 Am oberen Rand des Bildschirms wird ein Dashboard angezeigt, das eine Übersicht über Ihren Konformitätsstatus mit den unterstützten Bestimmungen enthält. Es sind Ihr Gesamtstatus der Konformität und die Anzahl von bestandenen und nicht bestandenen Bewertungen der einzelnen Standards angegeben.
 
     ![Computerbeschreibung – Hohe Vertrauenswürdigkeit](./media/security-center-compliance-dashboard/compliance-dashboard.png)
@@ -58,12 +56,17 @@ Am oberen Rand des Bildschirms wird ein Dashboard angezeigt, das eine Übersicht
 
     ![Registerkarte „Konformität“](./media/security-center-compliance-dashboard/compliance-pci.png)
 
-3.  Wählen Sie die Registerkarte **Alle**, um eine Ansicht mit allen relevanten Security Center-Empfehlungen und den zugeordneten Standards anzuzeigen. Diese Ansicht kann hilfreich sein, um alle unterschiedlichen Standards zu identifizieren, die von einer bestimmten Empfehlung betroffen sind. <br> Es ist auch möglich, diese Ansicht zum Priorisieren von Empfehlungen zu verwenden, für die Sie eine Lösung finden müssen. Wenn Sie beispielsweise sehen, dass für die Empfehlung **MFA für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktivieren** auf mehreren Ressourcen ein Fehler auftritt und mehrere Standards zugeordnet sind, hat die Lösung dieser Empfehlung eine große Auswirkung auf Ihren Gesamtkonformitätsstatus.
+3. Wählen Sie die Registerkarte **Alle**, um eine Ansicht mit allen relevanten Security Center-Empfehlungen und den zugeordneten Standards anzuzeigen. Diese Ansicht kann hilfreich sein, um alle unterschiedlichen Standards zu identifizieren, die von einer bestimmten Empfehlung betroffen sind. <br> Es ist auch möglich, diese Ansicht zum Priorisieren von Empfehlungen zu verwenden, für die Sie eine Lösung finden müssen. Wenn Sie beispielsweise sehen, dass für die Empfehlung **MFA für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktivieren** auf mehreren Ressourcen ein Fehler auftritt und mehrere Standards zugeordnet sind, hat die Lösung dieser Empfehlung eine große Auswirkung auf Ihren Gesamtkonformitätsstatus.
 
     ![Auswirkung der Compliancebewertung](./media/security-center-compliance-dashboard/compliance-all-tabs.png)
 
-## <a name="improve-your-compliance-posture"></a>Verbessern Ihres Konformitätsstatus
+1. Klicken Sie auf **Bericht herunterladen**, um einen PDF-Bericht zum aktuellen Compliancestatus für einen bestimmten Standard zu generieren und herunterzuladen.
 
+    Der Bericht enthält eine allgemeine Zusammenfassung des Compliancestatus für den ausgewählten Standard auf der Grundlage von Security Center-Bewertungsdaten. Der Bericht ist nach den Kontrollen dieses bestimmten Standards gegliedert. Der Bericht kann an Stakeholder weitergegeben und als Nachweis bei internen und externen Prüfungen genutzt werden.
+
+    ![Download](./media/security-center-compliance-dashboard/download-report.png)
+
+## <a name="improve-your-compliance-posture"></a>Verbessern Ihres Konformitätsstatus
 
 Mit den Informationen im Dashboard für die Einhaltung gesetzlicher Bestimmungen können Sie Ihren Konformitätsstatus verbessern, indem Sie direkt im Dashboard Lösungen für Empfehlungen finden.
 

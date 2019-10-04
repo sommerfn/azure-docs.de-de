@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 09/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 52fb32a8b34c62fe94ab35e2c051d996ab8bef10
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: f1199748782c40b2527a8778417588891b84f9fc
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449202"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910136"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Technische Spezifikationen für Azure Data Box Edge
 
@@ -36,7 +36,7 @@ The following table lists the typical power consumption data (actual values may 
 
 ## <a name="storage-specifications"></a>Speicherspezifikation
 
-Die Data Box Edge-Geräte verfügen über 10 × 2,5-Zoll NVMe-SSD-Datenträger, von der jeder eine Kapazität von 1,6 TB aufweist. Von diesen SSD-Datenträgern sind zwei Betriebssystemdatenträger. Die anderen acht sind Datenträger für Daten. Die insgesamt verwendbare Kapazität für das Gerät beträgt etwa 12,5 TB. In der folgenden Tabelle sind die Details zur Speicherkapazität des Geräts aufgeführt:
+Die Data Box Edge-Geräte verfügen über 9 × 2,5-Zoll NVMe-SSD-Datenträger, von der jeder eine Kapazität von 1,6 TB aufweist. Von diesen SSD-Datenträgern ist einer ein Betriebssystemdatenträger, und die anderen acht sind Datenträger für Daten. Die insgesamt verwendbare Kapazität für das Gerät beträgt etwa 12,5 TB. In der folgenden Tabelle sind die Details zur Speicherkapazität des Geräts aufgeführt:
 
 |     Spezifikation                          |     Wert             |
 |--------------------------------------------|-----------------------|
@@ -67,7 +67,7 @@ Die folgenden Tabellen enthalten die Abmessungen der Versandverpackung in Millim
 |-------------------|---------------------|----------------|
 |    Höhe         |    311,2            |    12,25 Zoll          |
 |    Breite          |    642,8          |    25,31 Zoll          |
-|    Länge          |   1.051,1          |    41,38 Zoll          |
+|    Länge          |   1\.051,1          |    41,38 Zoll          |
 
 ### <a name="enclosure-weight"></a>Gehäusegewicht
 

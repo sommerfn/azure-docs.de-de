@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 733d27549542d3ebdd0cfba429aeaaab9f8be473
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a5e5f4ab286289e223a2fe10ff8cf45f43309f04
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370303"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65785939"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocodierungsabdeckung in Azure Maps
 
 Bei der Suche nach einem Ort mit Azure Maps nimmt der Suchdienst Ihre Suchbegriffe entgegen und gibt die Koordinaten (Breiten- und Längengrad) zurück – dieser Prozess wird als „Geocodierung“ bezeichnet. Maps bietet allerdings nicht für alle Regionen und Länder das gleiche Maß an Informationen und Genauigkeit. Bestimmen Sie anhand dieses Artikels, nach welcher Art von Orten Sie zuverlässig in den einzelnen Regionen suchen können. 
 
-Die Möglichkeit der Geocodierung in einem Land hängt von der Abdeckung der Straßendaten und der Geocodierungsgenauigkeit des Geocodierungsdiensts ab. Die jeweilige Unterstützung der Geocodierung in den einzelnen Ländern wird mit den folgenden Kategorisierungen angegeben.
+Die Möglichkeit der Geocodierung in einem Land/einer Region hängt von der Abdeckung der Straßendaten und der Geocodierungsgenauigkeit des Geocodierungsdiensts ab. Die jeweilige Unterstützung der Geocodierung in den einzelnen Ländern/Regionen wird mit den folgenden Kategorisierungen angegeben.
 * **Adresspunkte:** Adressendaten können innerhalb des Adresspakets (Eigenschaftsgrenze) in eine Längen- und Breitenkoordinate aufgelöst werden. Dies wird manchmal als „hausgenau“ bezeichnet. Dies ist die höchste verfügbare Genauigkeit für Adressen. 
 * **Hausnummern:** Adressen werden in eine Längen- und Breitenkoordinate in der Straße interpoliert.
 * **Straße:** Adressen werden in die Längen- und Breitenkoordinate der Straße mit der Adresse aufgelöst. Die Hausnummer wird möglicherweise nicht verarbeitet.
@@ -44,7 +44,6 @@ Die Möglichkeit der Geocodierung in einem Land hängt von der Abdeckung der Str
 | Kanada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kaimaninseln                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Chile                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
-| Clippertoninsel                                   |                 |                |              |      ✓     |                    |
 | Kolumbien                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Costa Rica                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Kuba                                                |                 |                |       ✓      |      ✓     |          ✓         |
@@ -84,8 +83,8 @@ Die Möglichkeit der Geocodierung in einem Land hängt von der Abdeckung der Str
 | Vereinigte Staaten von Amerika                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
-| Britische Jungferninseln                            |                 |                |              |      ✓     |          ✓         |
-| Amerikanische Jungferninseln                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Britische Jungferninseln                              |                 |                |              |      ✓     |          ✓         |
+| Daten Jungferninseln                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Asien-Pazifik
 
@@ -98,22 +97,22 @@ Die Möglichkeit der Geocodierung in einem Land hängt von der Abdeckung der Str
 | Britisches Territorium im Indischen Ozean                      |                 |                |              |      ✓     |          ✓         |
 | Brunei                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Kambodscha                                            |                 |                |              |      ✓     |          ✓         |
-| China                                               |        ✓        |        ✓       |              |      ✓     |          ✓         |
+| China                                               |                 |                |              |      ✓     |          ✓         |
 | Weihnachtsinsel                                    |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Kokosinseln                             |                 |                |              |      ✓     |          ✓         |
 | Komoren                                             |                 |                |              |      ✓     |          ✓         |
 | Cookinseln                                        |                 |                |              |      ✓     |          ✓         |
-| Fidschi                                                |                  |                |              |      ✓     |          ✓         |
+| Fidschi                                                |                  |                |              |      ✓     |          ✓        |
 | Französisch-Polynesien                                    |                 |                |              |      ✓     |          ✓         |
 | Heard und McDonaldinseln                   |                 |                |              |      ✓     |          ✓         |
-| Hongkong                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Hongkong (SAR)                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonesien                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indien                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | Japan                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
 | Korea                                         |                 |                |              |      ✓     |          ✓         |
 | Laos                                                |                 |                |              |      ✓     |          ✓         |
-| Macau (SAR)                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Macau (SAR)                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malaysia                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mikronesien                                          |                 |                |              |      ✓     |          ✓         |
 | Mongolei                                            |                 |                |              |      ✓     |          ✓         |
@@ -189,7 +188,7 @@ Die Möglichkeit der Geocodierung in einem Land hängt von der Abdeckung der Str
 | Liechtenstein                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Litauen                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Luxemburg                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Nordmazedonien                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Nordmazedonien                                     |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malta                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Moldau                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Monaco                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -294,7 +293,6 @@ Die Möglichkeit der Geocodierung in einem Land hängt von der Abdeckung der Str
 | Tunesien                                             |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Uganda                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Vereinigte Arabische Emirate                                |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Westjordanland                                           |                 |                |              |      ✓     |          ✓         |
 | Jemen                                               |                 |                |              |      ✓     |          ✓         |
 | Sambia                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Simbabwe                                            |                 |                |       ✓      |      ✓     |          ✓         |

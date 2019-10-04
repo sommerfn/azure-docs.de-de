@@ -1,10 +1,10 @@
 ---
-title: Probleme beim Anmelden bei einer Azure AD-Kataloganwendung, die für einmaliges Anmelden per Kennwort konfiguriert ist | Microsoft-Dokumentation
-description: Erläuterungen von Problembereichen zur Hilfestellung beim Behandeln von Problemen beim Anmelden bei Azure AD-Kataloganwendungen, die für einmaliges Anmelden per Kennwort konfiguriert sind
+title: Kennwortbasiertes einmaliges Anmelden (Single Sign-On, SSO) im Zugriffsbereich | Microsoft-Dokumentation
+description: Erläuterungen von Problembereichen zur Hilfestellung beim Behandeln von Problemen beim Anmelden bei Azure AD-Kataloganwendungen, die für einmaliges Anmelden per Kennwort konfiguriert sind
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11411a780333268e19d53ea2bd472fe36bc0eb62
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9ca192c28757df189e531aee0ba2d8da288ba7e6
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088365"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381238"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Probleme beim Anmelden bei einer Azure AD-Kataloganwendung, die für einmaliges Anmelden per Kennwort konfiguriert ist
 

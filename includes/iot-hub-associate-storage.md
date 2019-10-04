@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: iot-edge
 author: kgremban
 ms.service: iot-edge
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 8693c48905155ed757bb727e42f4180f36c015f1
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: f88f6aa6daec342b24d165c4c4cc0a89a0805f7a
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513953"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69558475"
 ---
 ## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Zuweisen eines Azure Storage-Kontos zu IoT Hub
 
@@ -21,4 +21,4 @@ Da von der simulierten Geräte-App eine Datei in ein Blob hochgeladen wird, müs
 
 Folgen Sie den Anleitungen in [Konfigurieren des Dateiuploads im Azure-Portal](../articles/iot-hub/iot-hub-configure-file-upload.md). Stellen Sie sicher, dass Ihrem IoT Hub ein Blobcontainer zugeordnet ist und die Dateibenachrichtigungen aktiviert sind.
 
-![Aktivieren von Dateibenachrichtigungen im Portal](./media/iot-hub-associate-storage/enable-file-notifications.png)
+![Aktivieren von Dateibenachrichtigungen im Portal](./media/iot-hub-associate-storage/file-notifications-vs2019.png)

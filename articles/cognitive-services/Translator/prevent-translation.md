@@ -1,21 +1,21 @@
 ---
 title: Verhindern der Inhaltsübersetzung – Textübersetzungs-API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Verhindern Sie mit der Textübersetzungs-API die Übersetzung von Inhalten.
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: v-jansko
-ms.openlocfilehash: a9590a9a38859818e0b609d64fc12e30afd2e09e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: f9b48b094713f6ee141c5c15d5636ca965ad61b9
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915270"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595226"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Verhindern der Inhaltsübersetzung mit der Textübersetzungs-API
 

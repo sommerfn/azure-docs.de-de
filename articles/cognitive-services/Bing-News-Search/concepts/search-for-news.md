@@ -1,6 +1,6 @@
 ---
 title: Suchen nach Nachrichten mit der Bing-News-Suche-API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie Suchabfragen für allgemeine Nachrichten, beliebte Themen und Schlagzeilen senden.
 services: cognitive-services
 author: swhite-msft
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 06/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 612a3961d901f53147ab2f3cfeea20f9c11d96b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b70cf50bb33ca7962116586a347c508b15abcd0c
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087855"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423876"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Suchen nach Nachrichten mit der Bing-News-Suche-API
 
@@ -27,7 +27,7 @@ Die Bing-News-Suche-API dient zwar in erster Linie zum Suchen und Zurückgeben v
 
 Wenn Sie ein Suchfeld bereitstellen, in das Benutzer ihre Suchbegriffe eingeben, verwenden Sie die [Bing-Vorschlagssuche-API](../../bing-autosuggest/get-suggested-search-terms.md), um die Benutzerfreundlichkeit zu verbessern. Die API gibt vorgeschlagene Abfragezeichenfolgen zurück, während der Benutzer einen Suchbegriff eingibt.
 
-Codieren Sie den vom Benutzer eingegebenen Suchbegriff als URL, bevor Sie den Abfrageparameter [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query) festlegen. Wenn der Benutzer also beispielsweise *sailing dinghies* eingibt, legen Sie `q` auf `sailing+dinghies` oder `sailing%20dinghies` fest.
+Codieren Sie den vom Benutzer eingegebenen Suchbegriff als URL, bevor Sie den Abfrageparameter [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) festlegen. Wenn der Benutzer also beispielsweise *sailing dinghies* eingibt, legen Sie `q` auf `sailing+dinghies` oder `sailing%20dinghies` fest.
 
 ## <a name="get-general-news"></a>Abrufen allgemeiner Nachrichten
 
@@ -51,7 +51,7 @@ Wenn Sie News aus einer bestimmten Domäne abrufen möchten, verwenden Sie den A
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-Das folgende Beispiel zeigt die Antwort auf die vorherige Abfrage. Gemäß den [Anforderungen für die Verwendung und Anzeige](../useanddisplayrequirements.md) für die Bing-Suche-APIs müssen Sie alle Nachrichtenartikel in der in der Antwort angegebenen Reihenfolge anzeigen. Wenn der Artikel gruppierte Artikel enthält, sollten Sie angeben, dass verwandte Artikel existieren, und diese bei entsprechender Aufforderung anzeigen.
+Das folgende JSON-Beispiel zeigt die Antwort auf die vorherige Abfrage. Gemäß den [Anforderungen für die Verwendung und Anzeige](../useanddisplayrequirements.md) für die Bing-Suche-APIs müssen Sie alle Nachrichtenartikel in der in der Antwort angegebenen Reihenfolge anzeigen. Wenn der Artikel gruppierte Artikel enthält, sollten Sie angeben, dass verwandte Artikel existieren, und diese bei entsprechender Aufforderung anzeigen.
 
 ```json
 {
@@ -99,15 +99,15 @@ Das folgende Beispiel zeigt die Antwort auf die vorherige Abfrage. Gemäß den [
 }
 ```
 
-Die Antwort vom Typ [news](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#news) enthält eine Liste mit Nachrichtenartikeln, die nach Einschätzung von Bing für die Abfrage relevant sind. Das Feld `totalEstimatedMatches` enthält die geschätzte Anzahl von Artikeln, die angezeigt werden können. Informationen zum Durchblättern der Artikel finden Sie unter [Durchblättern von Nachrichten](../paging-news.md).
+Die Antwort vom Typ [news](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#news) enthält eine Liste mit Nachrichtenartikeln, die nach Einschätzung von Bing für die Abfrage relevant sind. Das Feld `totalEstimatedMatches` enthält die geschätzte Anzahl von Artikeln, die angezeigt werden können. Informationen zum Durchblättern der Artikel finden Sie unter [Durchblättern von Nachrichten](../paging-news.md).
 
-Jeder [Nachrichtenartikel](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference#newsarticle) in der Liste beinhaltet den Namen des Artikels, eine Beschreibung und die URL zu dem Artikel auf der Website des Hosts. Wenn der Artikel ein Bild enthält, umfasst das Objekt eine Miniaturansicht des Bilds. Verwenden Sie `name` und `url`, um einen Hyperlink zu erstellen, über den der Benutzer zu dem Nachrichtenartikel auf der Website des Hosts geleitet wird. Wenn der Artikel ein Bild enthält, machen Sie das Bild mithilfe von `url` auch klickbar. Vergessen Sie nicht, mit `provider` die Quelle anzugeben.
+Jeder [Nachrichtenartikel](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v5-reference#newsarticle) in der Liste beinhaltet den Namen des Artikels, eine Beschreibung und die URL zu dem Artikel auf der Website des Hosts. Wenn der Artikel ein Bild enthält, umfasst das Objekt eine Miniaturansicht des Bilds. Verwenden Sie `name` und `url`, um einen Hyperlink zu erstellen, über den der Benutzer zu dem Nachrichtenartikel auf der Website des Hosts geleitet wird. Wenn der Artikel ein Bild enthält, machen Sie das Bild mithilfe von `url` auch klickbar. Vergessen Sie nicht, mit `provider` die Quelle anzugeben.
 
 Wenn Bing die Kategorie des Nachrichtenartikels bestimmen kann, enthält der Artikel das Feld `category`.
 
 ## <a name="get-todays-top-news"></a>Abrufen der Top-Nachrichten von heute
 
-Um die wichtigsten Nachrichtenartikel von heute zu erhalten, erstellen Sie die gleiche Anforderung wie für allgemeine Nachrichten, allerdings ohne `q` festzulegen.
+Um die Top-Nachrichtenartikel von heute zu erhalten, können Sie die gleiche allgemeine Nachrichtenanfrage wie bisher senden, wobei Sie den Parameter `q` nicht setzen.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=&mkt=en-us HTTP/1.1
@@ -119,7 +119,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Die Antwort für das Abrufen der wichtigsten Nachrichten ist fast die gleiche wie bei allgemeinen Nachrichten. Allerdings enthält die `news`-Antwort nicht das Feld `totalEstimatedMatches`, da eine festgelegte Anzahl von Ergebnissen vorhanden ist. Die Anzahl der wichtigsten Nachrichtenartikel kann je nach Nachrichtenzyklus variieren. Vergessen Sie nicht, mit `provider` die Quelle anzugeben.
+Die Antwort für das Abrufen der wichtigsten Nachrichten ist fast die gleiche wie bei allgemeinen Nachrichten. Allerdings enthält die `news`-Antwort nicht das Feld `totalEstimatedMatches`, da eine festgelegte Anzahl von Ergebnissen vorhanden ist. Die Anzahl der wichtigsten Nachrichtenartikel kann je nach Nachrichtenzyklus variieren. Vergessen Sie nicht, mit dem `provider`-Feld die Quelle anzugeben.
 
 ## <a name="get-news-by-category"></a>Abrufen von Nachrichten nach Kategorie
 
@@ -135,7 +135,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Verwenden Sie den Abfrageparameter [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category), um die Kategorie der gewünschten Artikel anzugeben. Eine Liste der möglichen Nachrichtenkategorien, die Sie angeben können, finden Sie unter [Nachrichtenkategorien nach Markt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#news-categories-by-market).
+Verwenden Sie den Abfrageparameter [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category), um die Kategorie der gewünschten Artikel anzugeben. Eine Liste der möglichen Nachrichtenkategorien, die Sie angeben können, finden Sie unter [Nachrichtenkategorien nach Markt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news-categories-by-market).
 
 Die Antwort für das Abrufen von News nach Kategorie ist fast die gleiche wie bei allgemeinen Nachrichten. Allerdings stammen alle Artikel aus der angegebenen Kategorie.
 
@@ -153,11 +153,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Schließen Sie den Abfrageparameter [category](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#category) nicht ein.
+Schließen Sie den Abfrageparameter [category](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#category) nicht ein.
 
 Die Antwort für das Abrufen der wichtigsten Schlagzeilen ist fast die gleiche wie bei allgemeinen Nachrichten. Wenn es sich bei dem Artikel um einen Schlagzeilenartikel handelt, wird sein `headline`-Feld auf **true** gesetzt.
 
-Standardmäßig umfasst die Antwort bis zu 12 Schlagzeilenartikel. Um die Anzahl der zurückzugebenden Schlagzeilenartikel zu ändern, geben Sie den Abfrageparameter [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#headlinecount) an. Die Antwort enthält außerdem pro Nachrichtenkategorie bis zu vier Artikel, die keine Schlagzeilenartikel sind.
+Standardmäßig umfasst die Antwort bis zu 12 Schlagzeilenartikel. Um die Anzahl der zurückzugebenden Schlagzeilenartikel zu ändern, geben Sie den Abfrageparameter [headlineCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#headlinecount) an. Die Antwort enthält außerdem pro Nachrichtenkategorie bis zu vier Artikel, die keine Schlagzeilenartikel sind.
 
 Die Antwort zählt Cluster als einen Artikel. Da ein Cluster aus mehreren Artikel bestehen kann, kann die Antwort mehr als 12 Schlagzeilenartikel und mehr als vier Nicht-Schlagzeilenartikel pro Kategorie umfassen.
 
@@ -223,7 +223,7 @@ Das folgende JSON zeigt die Antwort auf die vorherige Anforderung. Jeder populä
 
 ## <a name="getting-related-news"></a>Abrufen verwandter Nachrichten
 
-Wenn es andere Artikel gibt, die sich auf einen Nachrichtenartikel beziehen, kann der Nachrichtenartikel das Feld [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#newsarticle-clusteredarticles) beinhalten. Das folgende Beispiel zeigt einen Artikel mit gruppierten Artikeln.
+Wenn es andere Artikel gibt, die sich auf einen Nachrichtenartikel beziehen, kann der Nachrichtenartikel das Feld [clusteredArticles](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle-clusteredarticles) beinhalten. Das folgende Beispiel zeigt einen Artikel mit gruppierten Artikeln.
 
 ```json
     {

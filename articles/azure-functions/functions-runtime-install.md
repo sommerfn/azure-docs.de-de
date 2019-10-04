@@ -6,18 +6,19 @@ author: apwestgarth
 manager: stefsch
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 1ad1d2c74be97afcb62f3f8e8161111f4938f645
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 0fbc76f3cb3fea84347ef55e40e1b2bed9b98152
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093667"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085491"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Installieren der Vorschauversion 2 der Azure Functions-Laufzeit
+
+[!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
 Wenn Sie die Vorschauversion 2 der Azure Functions-Laufzeit installieren möchten, führen Sie die folgenden Schritte aus:
 
@@ -102,36 +103,37 @@ Zum Abschließen der Installation der Azure Functions-Laufzeit müssen Sie die K
 
 So erstellen Sie Ihre erste Funktion in der Vorschauversion der Azure Functions-Laufzeit
 
-1. Navigieren Sie zum **Portal für die Azure Functions-Laufzeit** unter „https://<machinename>.<domain>“. Beispiel: https://mycomputer.mydomain.com
+1. Navigieren Sie zum **Portal für die Azure Functions-Runtime** unter „`https://<machinename>.<domain>`“, z. B. `https://mycomputer.mydomain.com`.
+
 1. Sie werden zur **Anmeldung** aufgefordert. Wenn Sie in einer Domäne bereitgestellt werden, verwenden Sie Ihren Benutzernamen und das zugehörige Kennwort für das Domänenkonto. Andernfalls verwenden Sie Ihren Benutzernamen und das Kennwort für Ihr lokales Konto, um sich am Portal anzumelden.
 
-![Anmeldung am Portal für die Vorschauversion der Azure Functions-Laufzeit][14]
+    ![Anmeldung am Portal für die Vorschauversion der Azure Functions-Laufzeit][14]
 
 1. Um Funktions-Apps zu erstellen, müssen Sie ein Abonnement erstellen.  Klicken Sie in der oberen linken Ecke des Portals auf die Option **+** neben den Abonnements.
 
-![Portalabonnements für die Vorschauversion der Azure Functions-Laufzeit][15]
+    ![Portalabonnements für die Vorschauversion der Azure Functions-Laufzeit][15]
 
 1. Wählen Sie **DefaultPlan** aus, geben Sie einen Namen für Ihr Abonnement ein, und klicken Sie auf **Erstellen**.
 
-![Portalabonnementplan und -name für die Vorschauversion der Azure Functions-Laufzeit][16]
+    ![Portalabonnementplan und -name für die Vorschauversion der Azure Functions-Laufzeit][16]
 
-1. Ihre Funktions-Apps werden im linken Bereich des Portals aufgelistet.  Um eine neue Funktions-App zu erstellen, wählen Sie die Überschrift **Funktions-Apps** aus und klicken Sie auf die Option **+**.
+1. Ihre Funktions-Apps werden im linken Bereich des Portals aufgelistet.  Um eine neue Funktions-App zu erstellen, wählen Sie die Überschrift **Funktions-Apps** aus und klicken Sie auf die Option **+** .
 
 1. Geben Sie einen Namen für Ihre Funktions-App ein und wählen Sie das richtige Abonnement aus. Wählen Sie dann die Version der Azure Functions-Laufzeit aus, für die Sie programmieren möchten, und klicken Sie auf **Erstellen**.
 
-![Neue Funktions-App auf dem Portal für die Vorschauversion der Azure Functions-Laufzeit][17]
+    ![Neue Funktions-App auf dem Portal für die Vorschauversion der Azure Functions-Laufzeit][17]
 
 1. Ihre neue Funktions-App ist im linken Bereich des Portals aufgeführt.  Wählen Sie „Funktionen“ aus und klicken Sie dann am oberen Rand des mittleren Bereichs des Portals auf **Neue Funktion**.
 
-![Vorlagen der Vorschauversion der Azure Functions-Laufzeit][18]
+    ![Vorlagen der Vorschauversion der Azure Functions-Laufzeit][18]
 
 1. Wählen Sie die Funktion „Timer Trigger“ im rechten Flyout aus, benennen Sie Ihre Funktion und ändern Sie den Zeitplan in `*/5 * * * * *` (dieser CRON-Ausdruck bewirkt, dass die Timerfunktion alle fünf Sekunden ausgeführt wird). Klicken Sie dann auf **Erstellen**.
 
-![Konfiguration der neuen Timerfunktion für die Vorschauversion der Azure Functions-Laufzeit][19]
+    ![Konfiguration der neuen Timerfunktion für die Vorschauversion der Azure Functions-Laufzeit][19]
 
 1. Ihre Funktion wurde jetzt erstellt.  Sie können das Ausführungsprotokoll Ihrer Funktions-App anzeigen, indem Sie den Bereich **Protokoll** am unteren Rand des Portals erweitern.
 
-![Funktionsausführung für die Vorschauversion der Azure Functions-Laufzeit][20]
+    ![Funktionsausführung für die Vorschauversion der Azure Functions-Laufzeit][20]
 
 <!--Image references-->
 [1]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer1.png

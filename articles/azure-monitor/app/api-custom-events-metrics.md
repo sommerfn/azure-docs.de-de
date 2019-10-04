@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6e2803590740d84bc99327ce78886f41f3c600df
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 776f20d04bb79fa42c78dba8482e8ba866c93b31
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630444"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162510"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -50,16 +50,17 @@ Gehen Sie wie folgt vor, falls Sie noch nicht über einen Verweis auf das Applic
 * Fügen Sie Ihrem Projekt das Application Insights-SDK hinzu:
 
   * [ASP.NET-Projekt](../../azure-monitor/app/asp-net.md)
+  * [ASP.NET Core-Projekt](../../azure-monitor/app/asp-net-core.md)
   * [Java-Projekt](../../azure-monitor/app/java-get-started.md)
   * [Node.js-Projekt](../../azure-monitor/app/nodejs.md)
   * [JavaScript auf jeder Webseite](../../azure-monitor/app/javascript.md) 
 * Schließen Sie Folgendes in den Geräte- oder Webservercode ein:
 
-    *C#:*`using Microsoft.ApplicationInsights;`
+    *C#:* `using Microsoft.ApplicationInsights;`
 
-    *Visual Basic:*`Imports Microsoft.ApplicationInsights`
+    *Visual Basic:* `Imports Microsoft.ApplicationInsights`
 
-    *Java:*`import com.microsoft.applicationinsights.TelemetryClient;`
+    *Java:* `import com.microsoft.applicationinsights.TelemetryClient;`
 
     *Node.js:* `var applicationInsights = require("applicationinsights");`
 
@@ -162,8 +163,6 @@ Wenn die [Stichprobenentnahme](../../azure-monitor/app/sampling.md) aktiv ist, w
 *C#*
 
 ```csharp
-#pragma warning disable CA1716  // Namespace naming
-
 namespace User.Namespace.Example01
 {
     using System;
@@ -249,7 +248,7 @@ namespace User.Namespace.Example01
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric gilt im .NET SDK als veraltet. Metriken sollten immer für einen bestimmten Zeitraum vorab aggregiert werden, bevor sie gesendet werden. Verwenden Sie eine der GetMetric(..)-Überladungen, um ein Metrikobjekt für den Zugriff auf Funktionen für die SDK-Vorabaggregation zu erhalten. Wenn Sie Ihre eigene Logik für die Vorabaggregation implementieren, können Sie die Track(ITelemetry metricTelemetry)-Methode zum Senden der sich ergebenden Aggregate verwenden. Falls für Ihre Anwendung das Senden eines separaten Telemetrieelements immer erforderlich ist (ohne zeitabhängige Aggregation), verfügen Sie wahrscheinlich über einen Anwendungsfall für eine Ereignistelemetrie. Weitere Informationen finden Sie unter „TelemetryClient.TrackEvent (Microsoft.Applicationlnsights.DataContracts.EventTelemetry)“.
+> 2Microsoft.ApplicationInsights.TelemetryClient.TrackMetric“ ist nicht die bevorzugte Methode für das Senden von Metriken. Metriken sollten immer für einen bestimmten Zeitraum vorab aggregiert werden, bevor sie gesendet werden. Verwenden Sie eine der GetMetric(..)-Überladungen, um ein Metrikobjekt für den Zugriff auf Funktionen für die SDK-Vorabaggregation zu erhalten. Wenn Sie Ihre eigene Logik für die Vorabaggregation implementieren, können Sie die TrackMetric()-Methode zum Senden der sich ergebenden Aggregate verwenden. Falls für Ihre Anwendung das Senden eines separaten Telemetrieelements immer erforderlich ist (ohne zeitabhängige Aggregation), verfügen Sie wahrscheinlich über einen Anwendungsfall für eine Ereignistelemetrie. Weitere Informationen finden Sie unter „TelemetryClient.TrackEvent (Microsoft.Applicationlnsights.DataContracts.EventTelemetry)“.
 
 In Application Insights können Metriken dargestellt werden, die keinen bestimmten Ereignissen zugeordnet sind. Beispielsweise könnten Sie die Länge einer Warteschlange in regelmäßigen Abständen überwachen. Bei vorhandenen Metriken sind die einzelnen Messwerte von geringerem Interesse als die Abwandlungen und Trends, daher sind statistische Diagramme sehr nützlich.
 
@@ -343,7 +342,7 @@ In der Standardeinstellung werden die gemeldeten Zeiten für **Ladezeit der Seit
 
 Sie haben stattdessen noch folgende Möglichkeiten:
 
-* Legen Sie im [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview)-Aufruf eine explizite Dauer fest: `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`.
+* Legen Sie im [trackPageView](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/API.md#trackpageview)-Aufruf eine explizite Dauer fest: `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`.
 * Verwenden Sie die Zeitsteuerungsaufrufe `startTrackPage` und `stopTrackPage` für die Seitenansicht.
 
 *JavaScript*
@@ -529,7 +528,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Die meisten wichtigen Stapelinformationen wurden bereits in separate Variablen extrahiert, Sie können jedoch die Struktur `details` analysieren, um weitere Informationen zu erhalten. Da es sich hierbei um eine dynamische Struktur handelt, muss das Ergebnis in den erwarteten Typ umgewandelt werden. Beispiel: 
+Die meisten wichtigen Stapelinformationen wurden bereits in separate Variablen extrahiert, Sie können jedoch die Struktur `details` analysieren, um weitere Informationen zu erhalten. Da es sich hierbei um eine dynamische Struktur handelt, muss das Ergebnis in den erwarteten Typ umgewandelt werden. Beispiel:
 
 ```kusto
 exceptions
@@ -585,14 +584,14 @@ Protokollieren eines Diagnoseereignisses, z.B. Eingeben oder Beenden einer Metho
 ---|---
 `message` | Diagnosedaten. Kann erheblich länger als ein Name sein.
 `properties` | Zuordnen einer Zeichenfolge zu einer Zeichenfolge: Zusätzlich zum [Filtern von Ausnahmen](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties) im Portal verwendete Daten. Ist standardmäßig leer.
-`severityLevel` | Unterstützte Werte: [SeverityLevel.ts](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/JavaScript/JavaScriptSDK.Interfaces/Contracts/Generated/SeverityLevel.ts)
+`severityLevel` | Unterstützte Werte: [SeverityLevel.ts](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/shared/AppInsightsCommon/src/Interfaces/Contracts/Generated/SeverityLevel.ts)
 
 Sie können nach Nachrichteninhalt suchen, aber (anders als bei Eigenschaftswerten) nicht danach filtern.
 
 Die Größenbeschränkung für `message` liegt wesentlich höher als der Grenzwert für Eigenschaften.
 Ein Vorteil von TrackTrace ist, dass relativ lange Daten in die Nachricht eingefügt werden können. Sie können dort beispielsweise POST-Daten codieren.  
 
-Darüber hinaus können Sie Ihrer Nachricht einen Schweregrad hinzufügen. Wie bei anderen Telemetriedaten auch können Sie Eigenschaftswerte hinzufügen, um zu filtern oder nach verschiedenen Ablaufverfolgungen zu suchen. Beispiel: 
+Darüber hinaus können Sie Ihrer Nachricht einen Schweregrad hinzufügen. Wie bei anderen Telemetriedaten auch können Sie Eigenschaftswerte hinzufügen, um zu filtern oder nach verschiedenen Ablaufverfolgungen zu suchen. Beispiel:
 
 *C#*
 
@@ -633,12 +632,16 @@ try
 {
     success = dependency.Call();
 }
+catch(Exception ex) 
+{
+    success = false;
+    telemetry.TrackException(ex);
+    throw new Exception("Operation went wrong", ex);
+}
 finally
 {
     timer.Stop();
-    telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
-     // The call above has been made obsolete in the latest SDK. The updated call follows this format:
-     // TrackDependency (string dependencyTypeName, string dependencyName, string data, DateTimeOffset startTime, TimeSpan duration, bool success);
+    telemetry.TrackDependency("DependencyType", "myDependency", "myCall", startTime, timer.Elapsed, success);
 }
 ```
 
@@ -708,7 +711,7 @@ dependencies
 
 ## <a name="flushing-data"></a>Leeren von Daten
 
-Normalerweise sendet das SDK Daten zu bestimmten Zeiten, um den Benutzer möglichst wenig zu beeinträchtigen. In einigen Fällen empfiehlt es sich aber, den Puffer zu leeren – beispielsweise bei der Verwendung des SDK in einer Anwendung, die heruntergefahren wird.
+Normalerweise sendet das SDK Daten in festen Intervallen (in der Regel 30 Sekunden) oder wenn der Puffer voll ist (in der Regel 500 Elemente). In einigen Fällen empfiehlt es sich aber, den Puffer zu leeren – beispielsweise bei der Verwendung des SDK in einer Anwendung, die heruntergefahren wird.
 
 *C#*
 
@@ -946,7 +949,7 @@ long startTime = System.currentTimeMillis();
 
 long endTime = System.currentTimeMillis();
 Map<String, Double> metrics = new HashMap<>();
-metrics.put("ProcessingTime", endTime-startTime);
+metrics.put("ProcessingTime", (double)endTime-startTime);
 
 // Setup some properties
 Map<String, String> properties = new HashMap<>();
@@ -1151,7 +1154,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient besitzt eine Context-Eigenschaft mit Werten, die zusammen mit allen Telemetriedaten gesendet werden. Sie werden normalerweise von den Standardtelemetriemodulen festgelegt, aber Sie können sie auch selbst einstellen. Beispiel: 
+TelemetryClient besitzt eine Context-Eigenschaft mit Werten, die zusammen mit allen Telemetriedaten gesendet werden. Sie werden normalerweise von den Standardtelemetriemodulen festgelegt, aber Sie können sie auch selbst einstellen. Beispiel:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1168,7 +1171,7 @@ Wenn Sie diese Werte selbst festlegen, empfiehlt es sich, die entsprechende Zeil
   * **Name:** Ein Bezeichner, in der Regel die URL der HTTP-Anforderung.
   * **SyntheticSource:** Wenn diese Zeichenfolge nicht NULL oder leer ist, wird damit angegeben, dass die Quelle der Anforderung als Roboter oder Webtest identifiziert wurde. Standardmäßig wird sie von Berechnungen im Metrik-Explorer ausgeschlossen.
 * **Properties:** Eigenschaften, die mit allen Telemetriedaten gesendet werden. Kann in einzelnen Track*-Aufrufen außer Kraft gesetzt werden.
-* **Sitzung (Session)**: Die Sitzung des Benutzers. Die ID wird auf einen generierten Wert festgelegt, der geändert wird, wenn der Benutzer für eine Weile nicht aktiv ist.
+* **Sitzung (Session)** : Die Sitzung des Benutzers. Die ID wird auf einen generierten Wert festgelegt, der geändert wird, wenn der Benutzer für eine Weile nicht aktiv ist.
 * **User:** Benutzerinformationen.
 
 ## <a name="limits"></a>Einschränkungen
@@ -1181,21 +1184,20 @@ Informationen dazu, wie lange Daten aufbewahrt werden, finden Sie unter [Datensp
 
 ## <a name="reference-docs"></a>Referenz
 
-* [ASP.NET-Referenz](https://msdn.microsoft.com/library/dn817570.aspx)
-* [Java-Referenz](http://dl.windowsazure.com/applicationinsights/javadoc/)
+* [ASP.NET-Referenz](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/insights?view=azure-dotnet)
+* [Java-Referenz](https://docs.microsoft.com/en-us/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript-Referenz](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-* [Android-SDK](https://github.com/Microsoft/ApplicationInsights-Android)
-* [iOS SDK](https://github.com/Microsoft/ApplicationInsights-iOS)
+
 
 ## <a name="sdk-code"></a>SDK-Code
 
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
-* [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-dotnet)
+* [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Windows Server-Pakete](https://github.com/Microsoft/applicationInsights-dotnet-server)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
-* [Alle Plattformen](https://github.com/Microsoft?utf8=%E2%9C%93&query=applicationInsights)
+
 
 ## <a name="questions"></a>Fragen
 

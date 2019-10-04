@@ -1,19 +1,19 @@
 ---
 title: Durchführen eines Upgrades für HDInsight-Cluster auf eine neuere Version – Azure
-description: Hier erfahren Sie, wie ein HDInsight-Cluster auf eine neuere Version aktualisiert wird.
-services: hdinsight
+description: Hier finden Sie Richtlinien für das Upgrade Ihres Azure HDInsight-Clusters auf eine neuere Version.
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 266de596633201b5590a6433d078cc05f2a267b4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a62da0d27d21589f7b75a89cc184ce9f456f1fed
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994520"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960699"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>Aktualisieren eines HDInsight-Clusters auf eine neuere Version
 Um die neuesten HDInsight-Funktionen nutzen zu können, wird empfohlen, HDInsight-Cluster auf die neueste Version zu aktualisieren. Befolgen Sie die nachstehenden Leitlinien zum Aktualisieren Ihrer HDInsight-Clusterversionen.
@@ -24,13 +24,12 @@ Um die neuesten HDInsight-Funktionen nutzen zu können, wird empfohlen, HDInsigh
 ## <a name="upgrade-tasks"></a>Aufgaben für das Upgrade
 Der Workflow für ein Upgrade eines HDInsight-Clusters ist wie folgt.
 
-![Diagramm des Upgradeworkflows](./media/hdinsight-upgrade-cluster/upgrade-workflow.png)
+![Diagramm des Upgradeworkflows](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. Lesen Sie jeden Abschnitt dieses Dokuments, um zu verstehen, welche Änderungen möglicherweise erforderlich sind, wenn Sie Ihren HDInsight-Cluster aktualisieren.
 2. Erstellen Sie einen Cluster als Test-/Qualitätssicherungsumgebung. Weitere Informationen zur Erstellung eines Clusters finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
-3. Kopieren Sie vorhandene Aufträge, Datenquellen und Senken in die neue Umgebung. Weitere Informationen hierzu finden Sie im Abschnitt [Kopieren von Daten in die Testumgebung](hdinsight-migrate-from-windows-to-linux.md#copy-data-to-the-test-environment).
+3. Kopieren Sie vorhandene Aufträge, Datenquellen und Senken in die neue Umgebung.
 4. Führen Sie Überprüfungstests durch, um sicherzustellen, dass Ihre Aufträge im neuen Cluster wie erwartet funktionieren.
-
 
 Nachdem Sie überprüft haben, dass alles wie erwartet funktioniert, planen Sie für die Migration eine Ausfallzeit ein. Führen Sie während dieser Ausfallzeit die folgenden Aktionen durch:
 

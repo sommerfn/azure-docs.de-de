@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: df12639aaafaf3df7ae2b755d635d4fba83d846e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 930a0c6e854823189bc3bf561bd42027e56f5600
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905091"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086926"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Ausführen von Durable Functions als WebJobs
 
@@ -37,7 +36,7 @@ Dieser Artikel setzt voraus, dass Sie mit den Grundlagen des WebJobs SDK, der En
 
 Zur Durchführung der in diesem Artikel aufgeführten Schritte ist Folgendes erforderlich:
 
-* [Installieren Sie Visual Studio 2017 Version 15.6 oder höher](https://docs.microsoft.com/visualstudio/install/) mit der Workload für die **Azure-Entwicklung**.
+* [Installieren Sie Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/) mit der Workload **Azure-Entwicklung**.
 
   Wenn Sie bereits über Visual Studio, jedoch nicht über diese Workload verfügen, müssen Sie die Workload hinzufügen, indem Sie **Tools** > **Tools und Features abrufen** auswählen.
 

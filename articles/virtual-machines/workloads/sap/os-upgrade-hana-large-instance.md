@@ -4,22 +4,21 @@ description: Durchführen von Betriebssystemupgrades für SAP HANA in Azure (gro
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/28/2018
-ms.author: saghorpa
+ms.date: 07/04/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7d451f3831309b4755170915b35a23da8910510
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 6341f58791c2fad71a65650e32cff02fb52d78c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100753"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098683"
 ---
 # <a name="operating-system-upgrade"></a>Betriebssystemupgrade
 In diesem Dokument werden die Details zu Betriebssystemupgrades für SAP HANA (große Instanzen) beschrieben.
@@ -29,9 +28,9 @@ In diesem Dokument werden die Details zu Betriebssystemupgrades für SAP HANA (g
 
 Das Microsoft Operations-Team installiert das Betriebssystem bei der Bereitstellung der HLI-Einheiten. Im Lauf der Zeit müssen Sie Wartungsvorgänge für das Betriebssystem für die HLI-Einheit vornehmen (z.B. Patches erstellen, optimieren, Upgrades durchführen).
 
-Bevor Sie bedeutende Änderungen am Betriebssystem vornehmen (z.B. ein Upgrade von SP1 auf SP2), müssen Sie sich zunächst an das Microsoft Operations-Team wenden, indem Sie ein Supportticket öffnen.
+Bevor Sie umfassende Änderungen am Betriebssystem vornehmen (z.B. ein Upgrade von SP1 auf SP2), müssen Sie sich zunächst an das Microsoft Operations-Team wenden, indem Sie ein Supportticket öffnen.
 
-Geben Sie in Ihrem Ticket Folgendes an:
+Geben Sie folgende Informationen in Ihrem Ticket an:
 
 * Ihre HLI-Abonnement-ID
 * Ihren Servernamen
@@ -52,4 +51,4 @@ Im Folgenden werden einige bekannte Probleme bei Upgrades erläutert:
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informationen zur SKU von Typ I für Betriebssystemsicherungen finden Sie unter [Sicherung und Wiederherstellung](hana-overview-high-availability-disaster-recovery.md).
-- Informationen zur SKU von Typ II finden Sie unter [Betriebssystemsicherung für SKUs vom Typ II](os-backup-type-ii-skus.md).
+- Unter [OS-Sicherung und -Wiederherstellung für Typ-II-SKUs](os-backup-type-ii-skus.md) finden Sie weitere Informationen zu SKU-Klassen des Typs II.

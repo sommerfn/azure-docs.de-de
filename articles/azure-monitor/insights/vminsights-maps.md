@@ -1,6 +1,6 @@
 ---
 title: Anzeigen von Anwendungsabhängigkeiten mit Azure Monitor für VMs (Vorschauversion) | Microsoft-Dokumentation
-description: Zuordnung ist ein Feature von Azure Monitor for VMs, das Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Details zu seiner Verwendung in einer Reihe von Szenarien.
+description: Die Dienstzuordnung ist ein Feature von Azure Monitor für VMs. Sie ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In diesem Artikel wird beschrieben, wie Sie dieses Feature in unterschiedlichen Szenarios verwenden.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -11,104 +11,133 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/25/2018
+ms.date: 05/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f6273e9b6c7ed0c4685479976343497f01201b0b
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798042"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206758"
 ---
-# <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Verwenden der Zuordnung in Azure Monitor für VMs (Vorschauversion) zum Verstehen von Anwendungskomponenten
-Das Anzeigen der ermittelten Anwendungskomponenten auf virtuellen Windows- und Linux-Computern, die in Ihrer Azure-Umgebung ausgeführt werden, kann mit Azure Monitor für VMs auf zwei Arten erfolgen: direkt in einem virtuellen Computer oder übergreifend für eine Gruppe von VMs in Azure Monitor. 
+# <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Verwenden des Zuordnungsfeatures in Azure Monitor für VMs (Vorschauversion) zum Analysieren von Anwendungskomponenten
+In Azure Monitor für VMs können Sie sich ermittelte Anwendungskomponenten für Windows- und Linux-VMs anzeigen lassen, die in Azure oder in Ihrer eigenen Umgebung ausgeführt werden. Sie können die VMs auf zwei Arten überwachen. Entweder rufen Sie die Zuordnung direkt über eine VM oder über Azure Monitor auf, um sich die Komponenten in den verschiedenen VM-Gruppen anzusehen. In diesem Artikel werden die beiden Anzeigemethoden beschrieben. Außerdem wird erklärt, wie Sie das Zuordnungsfeature verwenden. 
 
-Dieser Artikel soll Ihnen die unterschiedliche Benutzererfahrung der beiden Perspektiven und die Verwendung des Zuordnungsfeatures nahebringen. Informationen zum Konfigurieren von Azure Monitor for VMs finden Sie unter [Enable Azure Monitor for VMs](vminsights-onboard.md) (Aktivieren von Azure Monitor for VMs).
+Informationen zum Konfigurieren von Azure Monitor for VMs finden Sie unter [Enable Azure Monitor for VMs](vminsights-enable-overview.md) (Aktivieren von Azure Monitor for VMs).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-## <a name="introduction-to-map-experience"></a>Einführung in die Zuordnungsoberfläche
-Bevor wir in das Anzeigen der Zuordnung für eine einzelne VM oder eine Gruppe von VMs einsteigen, müssen wir Ihnen eine kurze Einführung in das Feature geben, damit Sie verstehen, wie die Informationen dargestellt werden und wofür die Visualisierungen stehen.  
+## <a name="introduction-to-the-map-experience"></a>Einführung in die Benutzeroberfläche des Zuordnungsfeatures
+Bevor Sie sich genauer mit dem Zuordnungsfeature befassen, sollten Sie nachvollziehen können, wie damit Informationen dargestellt und visualisiert werden. Ob Sie das Zuordnungsfeature direkt über eine VM oder über Azure Monitor nutzen, spielt für die Benutzeroberfläche keine Rolle, da diese immer gleich ist. Der einzige Unterschied besteht darin, dass Sie in Azure Monitor alle Mitglieder einer mehrschichtigen Anwendung oder eines Clusters in einer Zuordnung sehen können.
 
-Gleich, ob Sie das Zuordnungsfeature direkt in einer VM oder in Azure Monitor auswählen, bietet es eine einheitliche Benutzererfahrung.  Der einzige Unterschied besteht darin, dass Sie in Azure Monitor alle Mitglieder einer mehrschichtigen Anwendung oder eines Clusters in einer Zuordnung sehen können.
+Das Zuordnungsfeature visualisiert die VM-Abhängigkeiten, indem es laufende Prozesse ermittelt. Für diese werden folgende Eigenschaften erfasst: 
 
-Die Zuordnung visualisiert die Abhängigkeiten der VMs, indem sie laufende Prozesse mit aktiven Netzwerkverbindungen zwischen Servern, Latenz bei eingehenden und ausgehenden Verbindungen und Ports überall in einer per TCP verbundenen Architektur über einen angegebenen Zeitraum ermittelt.  Beim Erweitern einer VM werden Prozessdetails angezeigt, und nur die Prozesse, die mit der VM kommunizieren, werden dargestellt. Die Anzahl der Front-End-Clients, die Verbindungen mit der VM herstellen, wird in der Clientgruppe angezeigt. Die Anzahl der Back-End-Server, mit denen die VM Verbindungen herstellt, wird in den Serverportgruppen angezeigt. Erweitern Sie eine Serverportgruppe, um die Detailliste der über diesen Port verbundenen Server anzuzeigen.  
+- aktive Netzwerkverbindungen zwischen den Servern
+- Latenz für eingehende und ausgehende Verbindungen
+- in einem bestimmten Zeitraum verwendete Ports für Architekturen, die über TCP-Verbindungen kommunizieren  
+ 
+Erweitern Sie eine VM, um sich Prozessdetails und nur die Prozesse anzeigen zu lassen, die mit der VM kommunizieren. Mit der Clientgruppe wird die Anzahl der Front-End-Clients dargestellt, die sich mit einer VM verbinden. Mit den Serverportgruppen wird die Anzahl der Back-End-Server dargestellt, mit denen sich die VM verbindet. Erweitern Sie eine Serverportgruppe, um die Detailliste für die Server aufzurufen, die über diesen Port eine Verbindung herstellen.  
 
-Wenn Sie auf den virtuellen Computer klicken, wird der Bereich **Eigenschaften** auf der rechten Seite erweitert, um die Eigenschaften des ausgewählten Elements anzuzeigen, wie die vom Betriebssystem gemeldeten Systeminformationen, Eigenschaften der Azure-VM und ein Ringdiagramm, das die ermittelten Verbindungen zusammenfasst. 
+Wenn Sie eine VM auswählen, werden im Bereich **Eigenschaften** auf der rechten Seite die VM-Eigenschaften angezeigt. Diese umfassen Systeminformationen, die vom Betriebssystem übermittelt werden, Eigenschaften der Azure-VM und ein Ringdiagramm, das eine Übersicht über die ermittelten Verbindungen enthält. 
 
-![Systemeigenschaften des Computers](./media/vminsights-maps/properties-pane-01.png)
+![Bereich „Eigenschaften“](./media/vminsights-maps/properties-pane-01.png)
 
-Klicken Sie auf der rechten Seite des Bereichs auf das Symbol **Protokollereignisse**, um den Fokus des Bereichs umzuschalten und eine Liste der Tabellen anzuzeigen, die aus der VM gesammelte Daten an Azure Monitor gesendet haben, die zum Abfragen verfügbar sind.  Durch Klicken auf einen der aufgelisteten Datensatztypen wird die Seite **Protokolle** geöffnet und zeigt die Ergebnisse für den betreffenden Typ mithilfe einer vorkonfigurierten Abfrage an, die nach der bestimmten VM gefiltert ist.  
+Klicken Sie rechts im Bereich auf **Protokollereignisse**, um eine Liste mit den Daten aufzurufen, die die VM an Azure Monitor gesendet hat. Diese Daten sind für Abfragen verfügbar.  Klicken Sie auf einen Eintragstyp, um die Seite **Protokolle** zu öffnen. Dort werden die Ergebnisse für diesen Eintragstyp angezeigt. Außerdem sehen Sie eine vorkonfigurierte Abfrage, die für die VM gefiltert ist.  
 
-![Protokollsuchliste im Bereich „Eigenschaften“](./media/vminsights-maps/properties-pane-logs-01.png)
+![Bereich „Protokollereignisse“](./media/vminsights-maps/properties-pane-logs-01.png)
 
-Schließen Sie **Protokolle**, kehren Sie zum Bereich **Eigenschaften** zurück, und wählen Sie **Warnungen** aus, um Warnungen anzuzeigen, die von den Integritätskriterien für die VM ausgelöst wurden. Die Zuordnung ist in Azure-Warnungen integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden. Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im Computerwarnungsbereich werden die Warnungen aufgelistet. 
+Schließen Sie die Seite **Protokolle**, und wechseln Sie zurück zum Bereich **Eigenschaften**. Klicken Sie dort auf **Warnungen**, um sich Warnungen zu VM-Integritätskriterien anzeigen zu lassen. Azure-Warnungen sind so in das Zuordnungsfeature integriert, dass für einen ausgewählten Server und Zeitbereich Warnungen angezeigt werden. Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen. Im Bereich **Computerwarnungen** werden die Warnungen aufgelistet. 
 
-![Computerwarnungen im Bereich „Eigenschaften“](./media/vminsights-maps/properties-pane-alerts-01.png)
+![Bereich „Warnungen“](./media/vminsights-maps/properties-pane-alerts-01.png)
 
-Damit das Zuordnungsfeature die relevanten Warnungen anzeigen kann, müssen Sie eine Warnungsregel aufstellen, die für einen bestimmten Computer ausgelöst wird. So erstellen Sie richtige Warnungen:
-- Beziehen Sie eine Klausel zur Gruppierung nach Computer ein (z.B. **by Computer interval 1 minute**).
-- Wählen Sie die Warnung auf Basis der Metrikmessung.
+Damit das Zuordnungsfeature die relevanten Warnungen anzeigen kann, müssen Sie eine Warnungsregel erstellen, die für einen bestimmten Computer ausgelöst wird:
 
-Weitere Informationen zu Azure-Warnungen und zum Erstellen von Warnungsregeln finden Sie unter [Einheitliche Oberfläche für Warnungen in Azure Monitor](../../azure-monitor/platform/alerts-overview.md)
+- Beziehen Sie eine Klausel zur Gruppierung der Warnungen nach Computer ein (z. B. **by Computer interval 1 minute**).
+- Legen Sie als Auslöser der Warnung eine Metrik fest.
 
-Die Option **Legende** in der oberen rechten Ecke beschreibt die Symbole und Rollen auf einer Zuordnung.  Um die Ansicht zu vergrößern, damit Sie einen genaueren Blick auf Ihre Zuordnung werfen können, und um in ihr zu navigieren, kann die Vergrößerung mit den Zoomsteuerelementen unten rechts auf der Seite festgelegt und die Seite an die Größe der aktuellen Seite angepasst werden.  
+Weitere Informationen zu Azure-Warnungen und zum Erstellen von Warnungsregeln finden Sie unter [Einheitliche Oberfläche für Warnungen in Azure Monitor](../../azure-monitor/platform/alerts-overview.md).
+
+In der **Legende** oben rechts werden die Symbole und die Rollen in einer Zuordnung beschrieben. Mit den Zoomsteuerelementen unten rechts können Sie sich diese Zuordnung genauer ansehen und darin navigieren. Dabei haben Sie die Möglichkeit, die Zoomstufe einzustellen und die Größe der Zuordnung an die Seite anzupassen.  
 
 ## <a name="connection-metrics"></a>Verbindungsmetriken
-Im Bereich **Verbindungen** werden Standardverbindungsmetriken für die ausgewählte Verbindung von der VM über den TCP-Port angezeigt. Die Metriken beinhalten die Antwortzeit, die Anforderungen pro Minute, den Datenverkehrsdurchsatz und Links.  
+Im Bereich **Verbindungen** werden Standardmetriken für die ausgewählte Verbindung der VM über den TCP-Port angezeigt. Die Metriken beinhalten die Antwortzeit, die Anforderungen pro Minute, den Datenverkehrsdurchsatz und Links.  
 
-![Beispiel für Diagramme im Bereich „Netzwerkverbindungen“](./media/vminsights-maps/map-group-network-conn-pane-01.png)  
+![Diagramme zur Netzwerkkonnektivität im Bereich „Verbindungen“](./media/vminsights-maps/map-group-network-conn-pane-01.png)  
 
 ### <a name="failed-connections"></a>Verbindungsfehler
-Verbindungsfehler werden in den Zuordnungen für Prozesse und Computer angezeigt. Eine gestrichelte rote Linie zeigt an, dass ein Clientsystem einen Prozess oder Port nicht erreichen kann. Verbindungsfehler werden von jedem System mit einem Dependency-Agent berichtet, wenn es sich dabei um das System handelt, das die fehlerhafte Verbindung herzustellen versucht. Das Zuordnungsfeature misst diesen Prozess durch Überwachen der TCP-Sockets, die keine Verbindung herstellen können. Der Fehler kann durch eine Firewall, eine fehlerhafte Konfiguration auf einem Client oder Server oder dadurch verursacht werden, dass ein Remotedienst nicht verfügbar ist.
+In der Zuordnung werden Verbindungsfehler für Prozesse und Computer angezeigt. Eine gestrichelte rote Linie zeigt an, dass ein Clientsystem einen Prozess oder Port nicht erreichen kann. Wenn für Systeme der Dependency-Agent eingesetzt wird, meldet dieser fehlgeschlagene Verbindungsversuche. Das Zuordnungsfeature überwacht einen Prozess, indem es TCP-Sockets erfasst, die keine Verbindung herstellen können. Der Fehler kann durch eine Firewall, eine fehlerhafte Konfiguration auf dem Client oder Server oder durch einen nicht verfügbaren Remotedienst verursacht werden.
 
-![Beispiel für einen Verbindungsfehler in der Zuordnung](./media/vminsights-maps/map-group-failed-connection-01.png)
+![Eine fehlgeschlagene Verbindung in der Zuordnung](./media/vminsights-maps/map-group-failed-connection-01.png)
 
-Kenntnisse zu Verbindungsfehlern können Ihnen bei der Problembehandlung, der Überprüfung einer Migration, der Sicherheitsanalyse und dem Verständnis der allgemeinen Architektur des Diensts helfen. Manchmal sind Verbindungsfehler harmlos, häufig weisen sie aber auch direkt auf ein Problem hin, z.B. wenn eine Failoverumgebung plötzlich nicht mehr erreichbar ist oder zwei Anwendungsebenen nach einer Cloudmigration nicht mehr kommunizieren können.
+Die Analyse fehlgeschlagener Verbindungen erleichtert es Ihnen, Fehler zu beheben, das Ergebnis einer Migration zu überprüfen, die Sicherheitslage zu untersuchen und die grundlegende Architektur eines Diensts nachzuvollziehen. Verbindungsfehler sind zwar in einigen Fällen unbedenklich, weisen jedoch häufig auf ein Problem hin. Sie können beispielsweise dann auftreten, wenn eine Failoverumgebung nicht mehr erreichbar ist oder zwei Logikschichten nach einer Cloudmigration nicht mehr kommunizieren können.
 
 ### <a name="client-groups"></a>Clientgruppen
-Clientgruppen in der Zuordnung stellen Clientcomputer dar, die über Verbindungen mit dem dargestellten Computer verfügen. Eine einzelne Clientgruppe stellt die Clients für einen einzelnen Prozess oder Computer dar.
+Clientgruppen stehen für Clientcomputer, die mit dem zugeordneten Computer eine Verbindung herstellen. Eine Clientgruppe stellt die Clients für einen einzelnen Prozess oder Computer dar.
 
-![Beispiel für Clientgruppen in der Zuordnung](./media/vminsights-maps/map-group-client-groups-01.png)
+![Eine Clientgruppe in der Zuordnung](./media/vminsights-maps/map-group-client-groups-01.png)
 
-Um die überwachten Clients und IP-Adressen der Systeme in einer Clientgruppe anzuzeigen, wählen Sie die Gruppe aus. Die Inhalte der Gruppe werden neben der Gruppe aufgelistet.  
+Wählen Sie die Gruppe aus, um die überwachten Clients und IP-Adressen der Systeme in einer Clientgruppe anzuzeigen. Die Inhalte der Gruppe sind unten aufgeführt.  
 
-![Beispiel für eine IP-Adressliste einer Clientgruppe in der Zuordnung](./media/vminsights-maps/map-group-client-group-iplist-01.png)
+![Liste mit IP-Adressen einer Clientgruppe in der Zuordnung](./media/vminsights-maps/map-group-client-group-iplist-01.png)
 
-Wenn die Gruppen überwachte und nicht überwachte Clients beinhalten, können Sie den entsprechenden Abschnitt des Ringdiagramms auswählen, um nach den Clients zu filtern.
+Wenn die Gruppe überwachte und nicht überwachte Clients beinhaltet, können Sie den entsprechenden Abschnitt des Ringdiagramms auswählen, um nach den Clients zu filtern.
 
 ### <a name="server-port-groups"></a>Serverportgruppen
-Serverportgruppen stellen Serverports auf Servern dar, für die eingehende Verbindungen vom dargestellten Computer bestehen. Die Gruppe enthält den Serverport zusammen mit der Anzahl von Servern mit Verbindungen zu diesem Port. Wählen Sie die Gruppe aus, um die einzelnen Server und Verbindungen aufgelistet anzuzeigen. 
+Serverportgruppen stellen Ports auf Servern dar, für die eingehende Verbindungen vom zugeordneten Computer bestehen. Die Gruppe enthält den Serverport zusammen mit der Anzahl von Servern, die mit diesem Port verbunden sind. Wählen Sie die Gruppe aus, um sich die einzelnen Server und Verbindungen anzusehen. 
 
-![Beispiel für eine Serverportgruppe in der Zuordnung](./media/vminsights-maps/map-group-server-port-groups-01.png)  
+![Eine Serverportgruppe in der Zuordnung](./media/vminsights-maps/map-group-server-port-groups-01.png)  
 
-Wenn die Gruppen überwachte und nicht überwachte Server beinhalten, können Sie den entsprechenden Abschnitt des Ringdiagramms auswählen, um nach den Servern zu filtern.
+Wenn die Gruppe überwachte und nicht überwachte Server beinhaltet, können Sie den entsprechenden Abschnitt des Ringdiagramms auswählen, um nach den Servern zu filtern.
 
-## <a name="view-map-directly-from-a-virtual-machine"></a>Direktes Anzeigen der Zuordnung in einer VM 
+## <a name="view-a-map-from-a-vm"></a>Anzeigen einer Zuordnung über eine VM 
 
-Führen Sie die folgenden Schritte aus, um direkt aus einer VM auf Azure Monitor for VMs zuzugreifen.
+Gehen Sie wie folgt vor, um über eine VM direkt auf Azure Monitor für VMs zuzugreifen:
 
 1. Wählen Sie im Azure-Portal die Option **Virtual Machines** aus. 
-2. Wählen Sie in der Liste eine VM und im Abschnitt **Überwachung** **Insights (Vorschau)** aus.  
+2. Wählen Sie aus der Liste eine VM aus. Klicken Sie im Abschnitt **Überwachung** auf **Insights (Vorschau)** .  
 3. Wählen Sie die Registerkarte **Zuordnung** aus.
 
-Das Zuordnungsfeature visualisiert die Abhängigkeiten der VM, d.h. die ausgeführten Prozessgruppen und Prozesse mit aktiven Netzwerkverbindungen über einen angegebenen Zeitraum.  Standardmäßig zeigt die Zuordnung die letzten 30 Minuten.  Mithilfe des **TimeRange**-Selektors in der linken oberen Ecke können Sie nach historischen Zeiträumen (maximal eine Stunde) abfragen, um anzuzeigen, wie die Abhängigkeiten in der Vergangenheit aussahen, z.B. während eines Incidents oder vor einer Änderung.  
+Mithilfe der Zuordnung werden die Abhängigkeiten der VM visualisiert. Dazu werden die ausgeführten Prozessgruppen und Prozesse mit aktiven Netzwerkverbindungen in einem bestimmten Zeitbereich ermittelt.  
+
+Standardmäßig zeigt die Zuordnung die letzten 30 Minuten. Sie können auch Abhängigkeiten abfragen, die maximal eine Stunde zurückliegen. Nutzen Sie das Auswahlelement **TimeRange** oben links, um die Abfrage auszuführen. Das ist beispielsweise während eines Incidents oder zur Anzeige eines Status vor einer Änderung sinnvoll.  
 
 ![Übersicht zur direkten VM-Zuordnung](./media/vminsights-maps/map-direct-vm-01.png)
 
-## <a name="view-map-from-azure-monitor"></a>Anzeigen der Zuordnung in Azure Monitor
-In Azure Monitor stellt das Zuordnungsfeature eine globale Sicht Ihrer virtuellen Computer und ihrer Abhängigkeiten dar.  Führen Sie die folgenden Schritte aus, um in Azure Monitor auf das Zuordnungsfeature zuzugreifen. 
+## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Anzeigen einer Zuordnung über eine VM-Skalierungsgruppe
 
-1. Wählen Sie im Azure-Portal die Option **Überwachen** aus. 
-2. Wählen Sie im Bereich **Insights** **Virtuelle Computer (Vorschau)** aus.
+Gehen Sie wie folgt vor, um direkt über eine VM-Skalierungsgruppe auf Azure Monitor für VMs zuzugreifen:
+
+1. Klicken Sie im Azure-Portal auf **VM-Skalierungsgruppen**.
+2. Wählen Sie aus der Liste eine VM aus. Klicken Sie anschließend im Abschnitt **Überwachung** auf **Insights (Vorschau)** .  
 3. Wählen Sie die Registerkarte **Zuordnung** aus.
 
-![Übersicht einer Multi-VM-Zuordnung in Azure Monitor](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
+In der Zuordnung werden alle Instanzen, die in der Skalierungsgruppe enthalten sind, zusammen mit den Abhängigkeiten der Gruppe als Gruppenknoten angezeigt. Im erweiterten Knoten werden die Instanzen der Skalierungsgruppe aufgeführt. Sie können durch die Instanzen scrollen und dabei 10 Einträge gleichzeitig überspringen. 
 
-Wählen Sie mit dem Selektor **Arbeitsbereich** oben auf der Seite – falls Sie über mehrere Log Analytics-Arbeitsbereiche verfügen – den Arbeitsbereich aus, der für die Lösung aktiviert ist und VMs aufweist, die an ihn berichten. Mit dem Selektor **Gruppe** werden Abonnements, Ressourcengruppen, [Computergruppen](../../azure-monitor/platform/computer-groups.md) und VM-Skalierungsgruppen mit Computern zurückgegeben, die sich auf den ausgewählten Arbeitsbereich beziehen. Ihre Auswahl gilt nur für das Kartenfeature und nicht für die Integrität oder Leistung.
+Wenn Sie eine Zuordnung für eine bestimmte Instanz auswählen möchten, wählen Sie diese Instanz zuerst aus. Klicken Sie dann zuerst auf die **Auslassungspunkte** rechts daneben und anschließend auf **Serverübersicht laden**. In der dargestellten Zuordnung werden die Prozessgruppen und Prozesse mit aktiven Netzwerkverbindungen in einem bestimmten Zeitbereich angezeigt. 
 
-Standardmäßig zeigt die Zuordnung die letzten 30 Minuten. Mithilfe des **TimeRange**-Selektors können Sie nach historischen Zeiträumen (maximal eine Stunde) abfragen, um anzuzeigen, wie die Abhängigkeiten in der Vergangenheit aussahen, z.B. während eines Incidents oder vor einer Änderung.   
+Standardmäßig zeigt die Zuordnung die letzten 30 Minuten. Sie können auch Abhängigkeiten abfragen, die maximal eine Stunde zurückliegen. Nutzen Sie das Auswahlelement **TimeRange**, um die Abfrage auszuführen. Das ist beispielsweise während eines Incidents oder zur Anzeige eines Status vor einer Änderung sinnvoll.
+
+![Übersicht zur direkten VM-Zuordnung](./media/vminsights-maps/map-direct-vmss-01.png)
+
+>[!NOTE]
+>Sie können auch die Zuordnung einer bestimmten Instanz über die Ansicht **Instanzen** für Ihre VM-Skalierungsgruppe aufrufen. Wechseln Sie im Abschnitt **Einstellungen** zu **Instanzen** > **Insights (Vorschau)** .
+
+## <a name="view-a-map-from-azure-monitor"></a>Anzeigen einer Zuordnung über Azure Monitor
+In Azure Monitor stellt das Zuordnungsfeature eine globale Sicht Ihrer VMs und deren Abhängigkeiten dar. Gehen Sie wie folgt vor, um über Azure Monitor auf das Zuordnungsfeature zuzugreifen:
+
+1. Wählen Sie im Azure-Portal die Option **Überwachen** aus. 
+2. Klicken Sie im Bereich **Insights** auf **Virtuelle Computer (Vorschau)** .
+3. Wählen Sie die Registerkarte **Zuordnung** aus.
+
+   ![Azure Monitor-Übersicht über Zuordnung mit mehreren VMs](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
+
+Wählen Sie oben auf der Seite mit dem Auswahlelement **Arbeitsbereich** einen Arbeitsbereich aus. Wenn Sie über mehrere Log Analytics-Arbeitsbereiche verfügen, wählen Sie denjenigen aus, der für die Lösung aktiviert ist und an den VMs Daten übermitteln. 
+
+Mit dem Auswahlelement **Gruppe** werden Abonnements, Ressourcengruppen, [Computergruppen](../../azure-monitor/platform/computer-groups.md) und VM-Skalierungsgruppen mit Computern angezeigt, die sich auf den ausgewählten Arbeitsbereich beziehen. Ihre Auswahl gilt nur für das Zuordnungsfeature und nicht für das Integritäts- oder Leistungsfeature.
+
+Standardmäßig zeigt die Zuordnung die letzten 30 Minuten. Sie können auch Abhängigkeiten abfragen, die maximal eine Stunde zurückliegen. Nutzen Sie das Auswahlelement **TimeRange**, um die Abfrage auszuführen. Das ist beispielsweise während eines Incidents oder zur Anzeige eines Status vor einer Änderung sinnvoll.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Verwenden des Integritätsfeatures finden Sie unter [View Azure VM Health](vminsights-health.md) (Anzeigen der Integrität von Azure-VMs); Informationen zum Erkennen von Engpässen und der Gesamtnutzung mit Ihrer VM-Leistung finden Sie unter [View Azure Monitor for VMs Performance](vminsights-performance.md) (Anzeigen der Leistung von Azure Monitor for VMs). 
+- Informationen zum Verwenden des Integritätsfeatures finden Sie unter [Anzeigen des Integritätsstatus von Azure-VMs](vminsights-health.md). 
+- Wie Sie Engpässe ermitteln, die Leistung überprüfen und die Gesamtauslastung Ihrer VMs nachvollziehen können, erfahren Sie unter [Anzeigen des Leistungsstatus in Azure Monitor für VMs](vminsights-performance.md). 

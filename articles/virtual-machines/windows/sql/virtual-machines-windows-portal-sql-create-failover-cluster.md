@@ -9,19 +9,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 9fc761b1-21ad-4d79-bebc-a2f094ec214d
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3bb829e7cc99ee0d6e2d02f7ed3880d6c0226123
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 3e954a6c714e525e5bbefe8f62c798cf8ac9a517
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486317"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036381"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines
 
@@ -54,7 +53,7 @@ Auf Azure Virtual Machines können Sie SQL Server lizenzieren, indem Sie VM-Imag
 
 Bei der PAYG-Lizenzierung fallen für eine Failoverclusterinstanz (FCI) von SQL Server auf Azure Virtual Machines Gebühren für alle FCI-Knoten an, einschließlich der passiven Knoten. Weitere Informationen finden Sie unter [Virtuelle SQL Server Enterprise-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/). 
 
-Kunden mit Enterprise Agreement und Software Assurance verfügen über das Recht, für jeden aktiven Knoten einen kostenlosen passiven FCI-Knoten zu verwenden. Verwenden Sie zum Nutzen dieses Vorteils in Azure VM-Images vom Typ „BYOL“, und verwenden Sie dann sowohl auf den aktiven als auch auf den passiven Knoten der FCI dieselbe Lizenz. Weitere Informationen finden Sie unter [Enterprise Agreement](https://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx).
+Kunden mit Enterprise Agreement und Software Assurance verfügen über das Recht, für jeden aktiven Knoten einen kostenlosen passiven FCI-Knoten zu verwenden. Verwenden Sie zum Nutzen dieses Vorteils in Azure VM-Images vom Typ „BYOL“, und verwenden Sie dann sowohl auf den aktiven als auch auf den passiven Knoten der FCI dieselbe Lizenz. Weitere Informationen finden Sie unter [Enterprise Agreement](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
 
 Einen Vergleich der PAYG- und BYOL-Lizenzierung für SQL Server auf Azure Virtual Machines finden Sie unter [Erste Schritte mit virtuellen SQL-Computern](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
 
@@ -109,7 +108,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
 
    Falls Sie die Ressourcengruppe für Ihre virtuellen Computer noch nicht erstellt haben, können Sie dies beim Erstellen einer Azure-Verfügbarkeitsgruppe nachholen. Führen Sie die folgenden Schritte zum Erstellen der Verfügbarkeitsgruppe aus, wenn Sie das Azure-Portal verwenden:
 
-   - Klicken Sie im Azure-Portal auf **+**, um den Azure Marketplace zu öffnen. Suchen Sie nach der Option **Verfügbarkeitsgruppe**.
+   - Klicken Sie im Azure-Portal auf **+** , um den Azure Marketplace zu öffnen. Suchen Sie nach der Option **Verfügbarkeitsgruppe**.
    - Klicken Sie auf **Verfügbarkeitsgruppe**.
    - Klicken Sie auf **Create**.
    - Legen Sie auf dem Blatt **Verfügbarkeitsgruppe erstellen** die folgenden Werte fest:
@@ -162,7 +161,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
 
 1. Entfernen Sie die SQL Server-Instanz, wenn Sie eines der SQL Server-basierten VM-Images verwenden.
 
-   - Klicken Sie unter **Programme und Funktionen** mit der rechten Maustaste auf **Microsoft SQL Server 2016 (64 Bit)**, und klicken Sie dann auf **Deinstallieren/ändern**.
+   - Klicken Sie unter **Programme und Funktionen** mit der rechten Maustaste auf **Microsoft SQL Server 2016 (64 Bit)** , und klicken Sie dann auf **Deinstallieren/ändern**.
    - Klicken Sie auf **Entfernen**.
    - Wählen Sie die Standardinstanz aus.
    - Entfernen Sie alle Funktionen unter **Datenbank-Engine-Dienst**. Achten Sie darauf, dass Sie **Freigegebene Funktionen** nicht entfernen. Sehen Sie sich die folgende Abbildung an:
@@ -238,7 +237,7 @@ Führen Sie die Validierung für den Cluster auf der Benutzeroberfläche oder mi
 Führen Sie die folgenden Schritte auf einem der beiden virtuellen Computer aus, um den Cluster über die Benutzeroberfläche zu validieren.
 
 1. Klicken Sie in **Server-Manager** auf **Tools** und dann auf **Failovercluster-Manager**.
-1. Klicken Sie im **Failovercluster-Manager** auf **Aktion** und dann auf **Konfiguration überprüfen...**.
+1. Klicken Sie im **Failovercluster-Manager** auf **Aktion** und dann auf **Konfiguration überprüfen...** .
 1. Klicken Sie auf **Weiter**.
 1. Geben Sie unter **Server oder Cluster auswählen** den Namen der beiden virtuellen Computer ein.
 1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen**. Klicken Sie auf **Weiter**.
@@ -268,11 +267,22 @@ Für das Erstellen des Failoverclusters benötigen Sie Folgendes:
 - Einen Namen für den Failovercluster
 - Eine IP-Adresse für den Failovercluster. Sie können eine IP-Adresse verwenden, die nicht in demselben virtuellen Azure-Netzwerk und Subnetz wie die Clusterknoten genutzt wird.
 
-Mit dem folgenden PowerShell-Code wird ein Failovercluster erstellt. Aktualisieren Sie das Skript mit den Namen der Knoten (Namen virtueller Computer) und einer verfügbaren IP-Adresse aus dem Azure VNET:
+#### <a name="windows-server-2008-2016"></a>Windows Server 2008 bis 2016
+
+Mit dem folgenden PowerShell-Befehl wird ein Failovercluster für **Windows Server 2008 bis 2016** erstellt. Aktualisieren Sie das Skript mit den Namen der Knoten (Namen virtueller Computer) und einer verfügbaren IP-Adresse aus dem Azure VNET:
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
+
+#### <a name="windows-server-2019"></a>Windows Server 2019
+
+Mit dem folgenden PowerShell-Befehl wird ein Failovercluster für Windows Server 2019 erstellt.  Weitere Informationen finden Sie im Blog [Failover Cluster: Cluster network Object](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97).  Aktualisieren Sie das Skript mit den Namen der Knoten (Namen virtueller Computer) und einer verfügbaren IP-Adresse aus dem Azure VNET:
+
+```powershell
+New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
+```
+
 
 ### <a name="create-a-cloud-witness"></a>Erstellen eines Cloudzeugen
 
@@ -399,7 +409,7 @@ So erstellen Sie den Lastenausgleich
 
    - **Name**: Ein Name für den Integritätstest.
    - **Protokoll:** TCP.
-   - **Port:** Legen Sie diese Option auf einen verfügbaren TCP-Port fest. Für diesen Port ist ein geöffneter Firewallport erforderlich. Verwenden Sie [denselben Port](#ports), den Sie für den Integritätstest in der Firewall festgelegt haben.
+   - **Port:** Legen Sie den Port fest, den Sie [in diesem Schritt](#ports) in der Firewall für den Integritätstest erstellt haben. Im Beispiel dieses Artikels wird der TCP-Port `59999` verwendet.
    - **Intervall**: 5 Sekunden.
    - **Fehlerschwellenwert**: Zwei aufeinanderfolgende Fehler.
 
@@ -420,8 +430,8 @@ So erstellen Sie den Lastenausgleich
    - **Back-End-Pool**: Verwenden Sie den Namen des Back-End-Pools, den Sie zuvor konfiguriert haben.
    - **Integritätstest**: Verwenden Sie den Integritätstest, den Sie zuvor konfiguriert haben.
    - **Sitzungspersistenz**: None (Keine):
-   - **Leerlaufzeitüberschreitung (Minuten)**: 4.
-   - **Floating IP (Direct Server Return)**: Aktiviert
+   - **Leerlaufzeitüberschreitung (Minuten)** : 4.
+   - **Floating IP (Direct Server Return)** : Enabled
 
 1. Klicken Sie auf **OK**.
 

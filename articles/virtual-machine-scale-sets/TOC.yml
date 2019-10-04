@@ -1,288 +1,301 @@
-items:
 - name: Dokumentation zu Virtual Machines Scale Sets
   href: index.yml
 - name: Übersicht
   items:
-  - name: Was sind Skalierungsgruppen für virtuelle Computer?
-    href: overview.md
+    - name: Was sind Skalierungsgruppen für virtuelle Computer?
+      href: overview.md
 - name: Schnellstarts
-  items:
-  - name: Erstellen im Azure-Portal
-    href: quick-create-portal.md
-  - name: Erstellen mit der Azure-Befehlszeilenschnittstelle
-    href: quick-create-cli.md
-  - name: Erstellen mit Azure PowerShell
-    href: quick-create-powershell.md
-  - name: Erstellen mit einer Vorlage
-    items:
-    - name: Linux-Skalierungsgruppe
-      href: quick-create-template-linux.md
-    - name: Windows-Skalierungsgruppe
-      href: quick-create-template-windows.md
   expanded: true
+  items:
+    - name: Erstellen im Azure-Portal
+      href: quick-create-portal.md
+    - name: Erstellen mit der Azure-Befehlszeilenschnittstelle
+      href: quick-create-cli.md
+    - name: Erstellen mit Azure PowerShell
+      href: quick-create-powershell.md
+    - name: Erstellen mit einer Vorlage
+      items:
+        - name: Linux-Skalierungsgruppe
+          href: quick-create-template-linux.md
+        - name: Windows-Skalierungsgruppe
+          href: quick-create-template-windows.md
 - name: Lernprogramme
   items:
-  - name: '1: Erstellen/Verwalten einer Skalierungsgruppe'
-    items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: tutorial-create-and-manage-cli.md
-    - name: Azure PowerShell
-      href: tutorial-create-and-manage-powershell.md
-  - name: '2: Verwenden von Datenträgern'
-    items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: tutorial-use-disks-cli.md
-    - name: Azure PowerShell
-      href: tutorial-use-disks-powershell.md
-  - name: '3: Verwenden eines benutzerdefinierten VM-Images'
-    items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: tutorial-use-custom-image-cli.md
-    - name: Azure PowerShell
-      href: tutorial-use-custom-image-powershell.md
-  - name: '4: Bereitstellen von Apps in einer Skalierungsgruppe'
-    items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: tutorial-install-apps-cli.md
-    - name: Azure PowerShell
-      href: tutorial-install-apps-powershell.md
-    - name: Vorlage
-      href: tutorial-install-apps-template.md
-  - name: '5: Automatisches Skalieren einer Skalierungsgruppe'
-    items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: tutorial-autoscale-cli.md
-    - name: Azure PowerShell
-      href: tutorial-autoscale-powershell.md
-    - name: Vorlage
-      href: tutorial-autoscale-template.md
+    - name: '1: Erstellen/Verwalten einer Skalierungsgruppe'
+      items:
+        - name: Azure-Befehlszeilenschnittstelle
+          href: tutorial-create-and-manage-cli.md
+        - name: Azure PowerShell
+          href: tutorial-create-and-manage-powershell.md
+    - name: '2: Verwenden von Datenträgern'
+      items:
+        - name: Azure-Befehlszeilenschnittstelle
+          href: tutorial-use-disks-cli.md
+        - name: Azure PowerShell
+          href: tutorial-use-disks-powershell.md
+    - name: '3: Verwenden eines benutzerdefinierten VM-Images'
+      items:
+        - name: Azure-Befehlszeilenschnittstelle
+          href: tutorial-use-custom-image-cli.md
+        - name: Azure PowerShell
+          href: tutorial-use-custom-image-powershell.md
+    - name: '4: Bereitstellen von Apps in einer Skalierungsgruppe'
+      items:
+        - name: Azure-Befehlszeilenschnittstelle
+          href: tutorial-install-apps-cli.md
+        - name: Azure PowerShell
+          href: tutorial-install-apps-powershell.md
+        - name: Vorlage
+          href: tutorial-install-apps-template.md
+    - name: '5: Automatisches Skalieren einer Skalierungsgruppe'
+      items:
+        - name: Azure-Befehlszeilenschnittstelle
+          href: tutorial-autoscale-cli.md
+        - name: Azure PowerShell
+          href: tutorial-autoscale-powershell.md
+        - name: Vorlage
+          href: tutorial-autoscale-template.md
 - name: Beispiele
   items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: cli-samples.md
-  - name: PowerShell
-    href: powershell-samples.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: cli-samples.md
+    - name: PowerShell
+      href: powershell-samples.md
 - name: Konzepte
   items:
-  - name: Azure Resource Manager
-    href: ../azure-resource-manager/resource-group-overview.md
-    maintainContext: true
-  - name: Regionen und Verfügbarkeit
-    href: ../virtual-machines/windows/regions-and-availability.md
-    items:
-    - name: Verwalten von Fehlerdomänen in Skalierungsgruppen
-      href: virtual-machine-scale-sets-manage-fault-domains.md
-    maintainContext: true
-  - name: Arten und Größen von virtuellen Computern
-    href: ../virtual-machines/windows/sizes.md
-    items:
-    - name: Allgemeiner Zweck
-      href: ../virtual-machines/windows/sizes-general.md
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+      maintainContext: true
+    - name: Regions
+      href: ../virtual-machines/windows/regions.md
+    - name: Verfügbarkeit und Leistung
+      maintainContext: true
       items:
-      - name: Burstable-Computer der B-Serie
-        href: ../virtual-machines/windows/b-series-burstable.md
-        maintainContext: true
+        - name: Verfügbarkeit
+          href: availability.md
+        - name: Zusammenstellung
+          href: co-location.md
+        - name: Netzwerkleistung
+          href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
+        - name: Verwalten von Fehlerdomänen in Skalierungsgruppen
+          href: virtual-machine-scale-sets-manage-fault-domains.md
+    - name: Arten und Größen von virtuellen Computern
+      href: ../virtual-machines/windows/sizes.md
       maintainContext: true
-    - name: Computeoptimiert
-      href: ../virtual-machines/windows/sizes-compute.md
-      maintainContext: true
-    - name: Arbeitsspeicheroptimiert
-      href: ../virtual-machines/windows/sizes-memory.md
       items:
-      - name: Eingeschränkte vCPUs
-        href: ../virtual-machines/windows/constrained-vcpu.md
-        maintainContext: true
+        - name: Allgemeiner Zweck
+          href: ../virtual-machines/windows/sizes-general.md
+          maintainContext: true
+          items:
+            - name: Burstable-Computer der B-Serie
+              href: ../virtual-machines/windows/b-series-burstable.md
+              maintainContext: true
+        - name: Computeoptimiert
+          href: ../virtual-machines/windows/sizes-compute.md
+          maintainContext: true
+        - name: Arbeitsspeicheroptimiert
+          href: ../virtual-machines/windows/sizes-memory.md
+          maintainContext: true
+          items:
+            - name: Eingeschränkte vCPUs
+              href: ../virtual-machines/windows/constrained-vcpu.md
+              maintainContext: true
+        - name: Speicheroptimiert
+          href: ../virtual-machines/windows/sizes-storage.md
+          maintainContext: true
+        - name: GPU-optimiert
+          href: ../virtual-machines/windows/sizes-gpu.md
+          maintainContext: true
+          items:
+            - name: Einrichten von GPU-Treibern
+              href: ../virtual-machines/windows/n-series-driver-setup.md
+              maintainContext: true
+        - name: High Performance Computing
+          href: ../virtual-machines/windows/sizes-hpc.md
+          maintainContext: true
+        - name: Azure-Computeeinheiten (ACU)
+          href: ../virtual-machines/windows/acu.md
+          maintainContext: true
+        - name: Benchmarkergebnisse
+          href: ../virtual-machines/windows/compute-benchmark-scores.md
+          maintainContext: true
+    - name: Unterstützte Linux-Distributionen
+      href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
-    - name: Speicheroptimiert
-      href: ../virtual-machines/windows/sizes-storage.md
+    - name: Wartung und Updates
+      href: ../virtual-machines/windows/maintenance-and-updates.md
       maintainContext: true
-    - name: GPU-optimiert
-      href: ../virtual-machines/windows/sizes-gpu.md
+    - name: Datenträgerspeicher
       items:
-      - name: Einrichten von GPU-Treibern
-        href: ../virtual-machines/windows/n-series-driver-setup.md
-        maintainContext: true
+        - name: Managed Disks
+          href: ../virtual-machines/windows/managed-disks-overview.md
+          maintainContext: true
+        - name: Auswählen eines Datenträgertyps
+          href: ../virtual-machines/windows/disks-types.md
+          maintainContext: true
+        - name: Storage Premium-Leistung
+          href: ../virtual-machines/windows/premium-storage-performance.md
+          maintainContext: true
+        - name: Kurzlebige Betriebssystemdatenträger
+          href: ephemeral-os-disks.md
+        - name: Skalierbarkeitsziele für Datenträger
+          href: ../virtual-machines/windows/disk-scalability-targets.md
+          maintainContext: true
+        - name: Sicherung und Notfallwiederherstellung für Datenträger
+          href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
+          maintainContext: true
+    - name: Netzwerk
+      href: ../virtual-machines/windows/network-overview.md
       maintainContext: true
-    - name: High Performance Computing
-      href: ../virtual-machines/windows/sizes-hpc.md
+    - name: Infrastrukturautomatisierung
+      href: ../virtual-machines/windows/infrastructure-automation.md
       maintainContext: true
-    - name: Azure-Computeeinheiten (ACU)
-      href: ../virtual-machines/windows/acu.md
+    - name: Sicherheit und Richtlinien
+      href: ../virtual-machines/windows/security-policy.md
       maintainContext: true
-    - name: Benchmarkergebnisse
-      href: ../virtual-machines/windows/compute-benchmark-scores.md
+    - name: Überwachung
+      href: ../virtual-machines/windows/monitor.md
       maintainContext: true
-    maintainContext: true
-  - name: Unterstützte Linux-Distributionen
-    href: ../virtual-machines/linux/endorsed-distros.md
-    maintainContext: true
-  - name: Wartung und Updates
-    href: ../virtual-machines/windows/maintenance-and-updates.md
-    maintainContext: true
-  - name: Datenträgerspeicher
-    items:
-    - name: Managed Disks
-      href: ../virtual-machines/windows/managed-disks-overview.md
-      maintainContext: true
-    - name: Auswählen eines Datenträgertyps
-      href: ../virtual-machines/windows/disks-types.md
-      maintainContext: true
-    - name: Storage Premium-Leistung
-      href: ../virtual-machines/windows/premium-storage-performance.md
-      maintainContext: true
-    - name: Skalierbarkeitsziele für Datenträger
-      href: ../virtual-machines/windows/disk-scalability-targets.md
-      maintainContext: true
-    - name: Sicherung und Notfallwiederherstellung für Datenträger
-      href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
-      maintainContext: true
-  - name: Netzwerk
-    href: ../virtual-machines/windows/network-overview.md
-    maintainContext: true
-  - name: Infrastrukturautomatisierung
-    href: ../virtual-machines/windows/infrastructure-automation.md
-    maintainContext: true
-  - name: Sicherheit und Richtlinien
-    href: ../virtual-machines/windows/security-policy.md
-    maintainContext: true
-  - name: Überwachung
-    href: ../virtual-machines/windows/monitor.md
-    maintainContext: true
-  - name: Überlegungen zur Bereitstellung
-    items:
-    - name: vCPU-Kontingente
-      href: ../virtual-machines/windows/quotas.md
-      maintainContext: true
-- name: Anleitung
-  items:
-  - name: Planen und Entwerfen
-    items:
-    - name: Überlegungen zum Entwurf
-      href: virtual-machine-scale-sets-design-overview.md
-    - name: Grundlegendes zu Instanz-IDs
-      href: virtual-machine-scale-sets-instance-ids.md
-  - name: Erstellen einer Vorlage
-    items:
-    - name: Informationen zu Skalierungsgruppenvorlagen
-      href: virtual-machine-scale-sets-mvss-start.md
-    - name: Verwenden eines vorhandenen virtuellen Netzwerks
-      href: virtual-machine-scale-sets-mvss-existing-vnet.md
-    - name: Verwenden eines benutzerdefinierten Images
-      href: virtual-machine-scale-sets-mvss-custom-image.md
-    - name: Verwenden von gastbasierter automatischer Skalierung mit einer Linux-Skalierungsgruppenvorlage
-      href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
-  - name: Bereitstellen
-    items:
-    - name: Erstellen mit Visual Studio
-      href: virtual-machine-scale-sets-vs-create.md
-    - name: Verwenden von Verfügbarkeitszonen
-      href: virtual-machine-scale-sets-use-availability-zones.md
-    - name: Automatisches Skalieren einer Skalierungsgruppe
-      href: virtual-machine-scale-sets-autoscale-overview.md
+    - name: Überlegungen zur Bereitstellung
       items:
-      - name: Verwenden des Azure-Portals
-        href: virtual-machine-scale-sets-autoscale-portal.md
-      - name: Erweiterte automatische Skalierung
-        href: ../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md
-    - name: Anwendungen in Skalierungsgruppen
-      href: virtual-machine-scale-sets-deploy-app.md
-    - name: Erweiterungen in Skalierungsgruppen
-      items:
-      - name: Erweiterungssequenzierung für Skalierungsgruppen
-        href: virtual-machine-scale-sets-extension-sequencing.md
-      - name: Anwendungsintegritätserweiterung
-        href: virtual-machine-scale-sets-health-extension.md
-    - name: Verwenden von Datenträgern mit Skalierungsgruppen
-      href: virtual-machine-scale-sets-attached-disks.md
-    - name: Verschlüsseln von Datenträgern in Skalierungsgruppen
-      items:
-      - name: Verwenden von PowerShell
-        href: virtual-machine-scale-sets-encrypt-disks-ps.md
-      - name: Verwenden der Azure-CLI
-        href: virtual-machine-scale-sets-encrypt-disks-cli.md
-    - name: Verwenden umfangreicher Skalierungsgruppen
-      href: virtual-machine-scale-sets-placement-groups.md
-    - name: Konvertieren einer Skalierungsgruppenvorlage für die Verwendung verwalteter Datenträger
-      href: virtual-machine-scale-sets-convert-template-to-md.md
-    - name: Verwenden von niedriger Priorität
-      href: virtual-machine-scale-sets-use-low-priority.md
-  - name: Verwalten
-    items:
-    - name: Allgemeine Verwaltungsaufgaben
-      items:
-      - name: Verwenden der Azure-CLI
-        href: virtual-machine-scale-sets-manage-cli.md
-      - name: Mithilfe von Azure PowerShell
-        href: virtual-machine-scale-sets-manage-powershell.md
-    - name: Kataloge mit freigegebenen Images (Vorschau)
-      href: shared-image-galleries.md
-      items:
-      - name: Befehlszeilenschnittstelle (CLI)
-        href: shared-images-cli.md
-      - name: PowerShell
-        href: shared-images-powershell.md
-      - name: Problembehandlung für freigegebene Images
-        href: troubleshooting-shared-images.md
-    - name: Vertikale Skalierung in einer Skalierungsgruppe
-      href: virtual-machine-scale-sets-vertical-scale-reprovision.md
-    - name: Automatische Betriebssystemupgrades
-      href: virtual-machine-scale-sets-automatic-upgrade.md
-    - name: Ändern einer Skalierungsgruppe
-      href: virtual-machine-scale-sets-upgrade-scale-set.md
-    - name: Verwenden von DSC und Skalierungsgruppen
-      href: virtual-machine-scale-sets-dsc.md
-    - name: Netzwerke für Skalierungsgruppen
-      href: virtual-machine-scale-sets-networking.md
-    - name: Konvertieren einer Vorlage in verwaltete Datenträger
-      href: virtual-machine-scale-sets-convert-template-to-md.md
-    - name: Geplante Wartung
-      href: virtual-machine-scale-sets-maintenance-notifications.md
-  - name: Verwenden von Ansible
-    items:
-    - name: Erstellen und Verwalten von Skalierungsgruppen
-      href: /azure/ansible/ansible-create-configure-vmss
-      maintainContext: true
-    - name: Bereitstellen von Apps in Skalierungsgruppen
-      href: /azure/ansible/ansible-deploy-app-vmss
-      maintainContext: true
-    - name: Automatisches Skalieren einer Skalierungsgruppe
-      href: /azure/ansible/ansible-auto-scale-vmss
-      maintainContext: true
-  - name: Problembehandlung
-    items:
-    - name: Autoscale
-      href: virtual-machine-scale-sets-troubleshoot.md
-  - name: Häufig gestellte Fragen
-    items:
+        - name: vCPU-Kontingente
+          href: ../virtual-machines/windows/quotas.md
+          maintainContext: true
     - name: Häufig gestellte Fragen (FAQ) zu Skalierungsgruppen
       href: virtual-machine-scale-sets-faq.md
+    - name: Integrierte Sicherheitskontrollen
+      href: virtual-machine-scale-sets-security-controls.md
+- name: Anleitung
+  items:
+    - name: Planen und Entwerfen
+      items:
+        - name: Überlegungen zum Entwurf
+          href: virtual-machine-scale-sets-design-overview.md
+        - name: Grundlegendes zu Instanz-IDs
+          href: virtual-machine-scale-sets-instance-ids.md
+    - name: Erstellen einer Vorlage
+      items:
+        - name: Informationen zu Skalierungsgruppenvorlagen
+          href: virtual-machine-scale-sets-mvss-start.md
+        - name: Verwenden eines vorhandenen virtuellen Netzwerks
+          href: virtual-machine-scale-sets-mvss-existing-vnet.md
+        - name: Verwenden eines benutzerdefinierten Images
+          href: virtual-machine-scale-sets-mvss-custom-image.md
+        - name: Verwenden von gastbasierter automatischer Skalierung mit einer Linux-Skalierungsgruppenvorlage
+          href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
+    - name: Bereitstellen
+      items:
+        - name: Erstellen mit Visual Studio
+          href: virtual-machine-scale-sets-vs-create.md
+        - name: Verwenden von Verfügbarkeitszonen
+          href: virtual-machine-scale-sets-use-availability-zones.md
+        - name: Automatisches Skalieren einer Skalierungsgruppe
+          href: virtual-machine-scale-sets-autoscale-overview.md
+          items:
+            - name: Verwenden des Azure-Portals
+              href: virtual-machine-scale-sets-autoscale-portal.md
+            - name: Erweiterte automatische Skalierung
+              href: ../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md
+              maintainContext: true
+            - name: Problembehandlung bei der automatischen Skalierung
+              href: virtual-machine-scale-sets-troubleshoot.md
+        - name: Anwendungen in Skalierungsgruppen
+          href: virtual-machine-scale-sets-deploy-app.md
+        - name: Erweiterungen in Skalierungsgruppen
+          items:
+            - name: Erweiterungssequenzierung für Skalierungsgruppen
+              href: virtual-machine-scale-sets-extension-sequencing.md
+            - name: Anwendungsintegritätserweiterung
+              href: virtual-machine-scale-sets-health-extension.md
+        - name: Verwenden von Datenträgern mit Skalierungsgruppen
+          href: virtual-machine-scale-sets-attached-disks.md
+        - name: Verschlüsseln von Datenträgern in Skalierungsgruppen
+          items:
+            - name: Verwenden von PowerShell
+              href: virtual-machine-scale-sets-encrypt-disks-ps.md
+            - name: Verwenden der Azure-CLI
+              href: virtual-machine-scale-sets-encrypt-disks-cli.md
+            - name: Erweiterungssequenzierung
+              href: ../security/azure-security-disk-encryption-extension-sequencing.md
+              maintainContext: true
+        - name: Verwenden umfangreicher Skalierungsgruppen
+          href: virtual-machine-scale-sets-placement-groups.md
+        - name: Konvertieren einer Skalierungsgruppenvorlage für die Verwendung verwalteter Datenträger
+          href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: Verwenden von niedriger Priorität
+          href: virtual-machine-scale-sets-use-low-priority.md
+    - name: Verwalten
+      items:
+        - name: Allgemeine Verwaltungsaufgaben
+          items:
+            - name: Verwenden der Azure-CLI
+              href: virtual-machine-scale-sets-manage-cli.md
+            - name: Mithilfe von Azure PowerShell
+              href: virtual-machine-scale-sets-manage-powershell.md
+        - name: Ändern einer Skalierungsgruppe
+          href: virtual-machine-scale-sets-upgrade-scale-set.md
+        - name: Netzwerke für Skalierungsgruppen
+          href: virtual-machine-scale-sets-networking.md
+        - name: Automatische Betriebssystemupgrades
+          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Instanzschutz (Vorschauversion)
+          href: virtual-machine-scale-sets-instance-protection.md
+        - name: Beendigungsbenachrichtigung bei Löschvorgang (Vorschau)
+          href: virtual-machine-scale-sets-terminate-notification.md
+        - name: Kataloge mit freigegebenen Images
+          items:
+            - name: Übersicht
+              href: shared-image-galleries.md
+            - name: Befehlszeilenschnittstelle (CLI)
+              href: shared-images-cli.md
+            - name: PowerShell
+              href: shared-images-powershell.md
+            - name: Mandantenübergreifende Freigabe von Images
+              href: share-images-across-tenants.md
+            - name: Problembehandlung für freigegebene Images
+              href: troubleshooting-shared-images.md
+        - name: Erstellen einer Näherungsplatzierungsgruppe
+          href: proximity-placement-groups.md
+        - name: Vertikale Skalierung in einer Skalierungsgruppe
+          href: virtual-machine-scale-sets-vertical-scale-reprovision.md
+        - name: Verwenden von DSC und Skalierungsgruppen
+          href: virtual-machine-scale-sets-dsc.md
+        - name: Konvertieren einer Vorlage in verwaltete Datenträger
+          href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: Geplante Wartung
+          href: virtual-machine-scale-sets-maintenance-notifications.md
+    - name: Verwenden von Ansible
+      items:
+        - name: Erstellen und Verwalten von Skalierungsgruppen
+          href: /azure/ansible/ansible-create-configure-vmss
+          maintainContext: true
+        - name: Bereitstellen von Apps in Skalierungsgruppen
+          href: /azure/ansible/ansible-deploy-app-vmss
+          maintainContext: true
+        - name: Automatisches Skalieren einer Skalierungsgruppe
+          href: /azure/ansible/ansible-auto-scale-vmss
+          maintainContext: true
 - name: Verweis
   items:
-  - name: Azure PowerShell
-    href: /powershell/azure/overview
-  - name: Azure-Befehlszeilenschnittstelle
-    href: ../virtual-machines/azure-cli-arm-commands.md
-  - name: REST
-    href: /rest/api/virtualmachinescalesets/
-  - name: Azure-Vorlagen
-    href: /azure/templates/microsoft.compute/virtualmachinescalesets
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: Azure-Befehlszeilenschnittstelle
+      href: ../virtual-machines/azure-cli-arm-commands.md
+    - name: REST
+      href: /rest/api/virtualmachinescalesets/
+    - name: Azure-Vorlagen
+      href: /azure/templates/microsoft.compute/virtualmachinescalesets
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=compute
-  - name: Preise
-    items:
-    - name: Linux
-      href: https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/
-    - name: Windows
-      href: https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/
-  - name: Preisrechner
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-vm-scale-set
-ms.openlocfilehash: 98945ec03fafe5789f580ba70d4b0ae922ad8c65
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666621"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Preise
+      items:
+        - name: Linux
+          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/'
+        - name: Windows
+          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-vm-scale-set'

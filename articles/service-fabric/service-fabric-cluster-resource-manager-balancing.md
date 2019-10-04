@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 74fe4f7c4c231f80c7555f39f840a85baae310e9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 3ea95405f68938906ba010836753cd74ab0f775e
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662022"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446749"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Lastenausgleich für Service Fabric-Cluster
 Der Clusterressourcen-Manager von Service Fabric unterstützt dynamische Laständerungen und reagiert auf hinzugefügte oder entfernte Knoten oder Dienste. Er korrigiert Einschränkungsverletzungen automatisch und gleicht die Last des Clusters proaktiv aus. Doch wie oft werden diese Aktionen ausgeführt, und was löst sie aus?
@@ -36,7 +36,7 @@ Die ersten Steuerelemente im Zusammenhang mit dem Lastenausgleich sind eine Reih
 Jede dieser unterschiedlichen Korrekturarten, die der Clusterressourcen-Manager durchführen kann, wird durch einen anderen Timer gesteuert, um festzulegen, wie häufig die Vorgänge ausgeführt werden. Beim Auslösen der einzelnen Timer wird der Task geplant. Der Ressourcen-Manager führt standardmäßig folgende Schritte aus:
 
 * Er überprüft seinen Zustand und wendet jede Zehntelsekunde Updates an (beispielsweise, um zu erfassen, dass ein Knoten inaktiv ist).
-* Legt das Kennzeichen für die Platzierungsüberprüfung fest 
+* Er legt jede Sekunde das Kennzeichen für die Platzierungsüberprüfung fest.
 * Legt das Kennzeichen für die Einschränkungsüberprüfung sekündlich fest
 * Er legt alle fünf Sekunden das Kennzeichen für den Ausgleich fest.
 

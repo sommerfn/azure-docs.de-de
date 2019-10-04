@@ -4,27 +4,26 @@ description: Erfahren Sie, wie Sie BitLocker-Startfehler auf einer Azure-VM behe
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: v-jesits
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/25/2019
+ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: 51fc47a28cc40d286b5a268d4c42e3531f346c5e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b0b8528a8eaf5cab22bb2482bd60e760d8bf5e3d
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796863"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058104"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-Startfehler auf einer Azure-VM
 
  Dieser Artikel beschreibt BitLocker-Fehler, die beim Starten eines virtuellen Windows-Computers (VM) in Microsoft Azure auftreten können.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Symptom
 
@@ -48,7 +47,7 @@ Um dieses Problem zu beheben, beenden Sie die VM, heben ihre Zuordnung auf und s
 Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaßen vor, um die BEK-Datei manuell wiederherzustellen:
 
 1. Erstellen Sie eine Momentaufnahme des Systemdatenträgers des betroffenen virtuellen Computers als Sicherung. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
-2. [Fügen Sie den Systemdatenträger an eine Wiederherstellungs-VM an](troubleshoot-recovery-disks-portal-windows.md), die durch BitLocker verschlüsselt ist. Dies ist erforderlich, um den Befehl [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) auszuführen, der nur auf mit BitLocker verschlüsselten VMs verfügbar ist.
+2. [Fügen Sie den Systemdatenträger an einen virtuellen Wiederherstellungscomputer an.](troubleshoot-recovery-disks-portal-windows.md) Zum Ausführen des Befehls [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) in Schritt 7 muss das Feature **BitLocker Drive Encryption** auf der Wiederherstellungs-VM aktiviert werden.
 
     Wenn Sie einen verwalteten Datenträger anfügen, wird möglicherweise eine Fehlermeldung darüber angezeigt, dass Verschlüsselungseinstellungen enthalten sind und er daher nicht als Datenträger für Daten verwendet werden kann. Führen Sie in diesem Fall das folgende Skript aus, um das Anfügen des Datenträgers erneut zu versuchen:
 
@@ -83,7 +82,7 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
     ```powershell
     $vmName = "myVM"
     $vault = "myKeyVault"
-    Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq $vmName) -and ($_.ContentType -match 'BEK')} `
+    Get-AzKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq $vmName) -and ($_.ContentType -match 'BEK')} `
             | Sort-Object -Property Created `
             | ft  Created, `
                 @{Label="Content Type";Expression={$_.ContentType}}, `
@@ -106,47 +105,48 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
 
     Wenn **Inhaltstyp** den Wert **Wrapped BEK** (Umschlossene BEK-Datei) aufweist, wechseln Sie zu den [Schlüsselverschlüsselungsschlüssel-Szenarien (KEK)](#key-encryption-key-scenario).
 
-    Nun, da Ihnen der Name der BEK-Datei für das Laufwerk bekannt ist, müssen Sie die Datei „secret-file-name.BEK“ erstellen, um das Laufwerk zu entsperren. 
+    Nun, da Ihnen der Name der BEK-Datei für das Laufwerk bekannt ist, müssen Sie die Datei „secret-file-name.BEK“ erstellen, um das Laufwerk zu entsperren.
 
 6.  Laden Sie die BEK-Datei auf den Wiederherstellungsdatenträger herunter. Im folgenden Beispiel wird die BEK-Datei im Ordner „C:\BEK“ gespeichert. Stellen Sie sicher, dass der Pfad `C:\BEK\` vorhanden ist, bevor Sie die Skripts ausführen.
 
     ```powershell
     $vault = "myKeyVault"
-    $bek = " EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK"
-    $keyVaultSecret = Get-AzureKeyVaultSecret -VaultName $vault -Name $bek
+    $bek = " EF7B2F5A-50C6-4637-9F13-7F599C12F85C"
+    $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $vault -Name $bek
     $bekSecretBase64 = $keyVaultSecret.SecretValueText
     $bekFileBytes = [Convert]::FromBase64String($bekSecretbase64)
     $path = "C:\BEK\DiskEncryptionKeyFileName.BEK"
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
     ```
 
-7.  Um den angefügten Datenträger mithilfe der BEK-Datei zu entsperren, führen Sie den folgenden Befehl aus:
+7.  Führen Sie den folgenden Befehl aus, um den angefügten Datenträger mithilfe der BEK-Datei zu entsperren.
 
     ```powershell
     manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
     ```
     In diesem Beispiel ist der angefügte Betriebssystemdatenträger das Laufwerk F. Achten Sie darauf, den richtigen Laufwerkbuchstaben zu verwenden. 
 
-    - Wenn der Datenträger mit dem BEK-Schlüssel entsperrt wurde, kann das BitLocker-Problem als gelöst betrachtet werden. 
+8. Nachdem der Datenträger mit dem BEK-Schlüssel erfolgreich entsperrt wurde, trennen Sie den Datenträger vom virtuellen Wiederherstellungscomputer und erstellen den virtuellen Computer dann mithilfe dieses neuen Betriebssystemdatenträgers neu.
 
-    - Wenn der Datenträger mit dem BEK-Schlüssel nicht entsperrt werden kann, können Sie den Schutz aufheben, um BitLocker vorübergehend zu deaktivieren, indem Sie den folgenden Befehl ausführen.
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - Wenn Sie vorhaben, den virtuellen Computer mit dem Systemdatenträger neu zu erstellen, müssen Sie das Laufwerk vollständig entschlüsseln. Führen Sie zu diesem Zweck den folgenden Befehl aus:
+    > [!NOTE]
+    > Das Austauschen des Betriebssystemdatenträgers wird für virtuelle Computer mit Datenträgerverschlüsselung nicht unterstützt.
 
-        ```powershell
-        manage-bde -off F:
-        ```
-8.  Trennen Sie den Datenträger von der Wiederherstellungs-VM, und fügen Sie den Datenträger dann erneut als Systemdatenträger an den betroffenen virtuellen Computer an. Weitere Informationen finden Sie unter [Beheben von Problemen mit einer Windows-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM](troubleshoot-recovery-disks-windows.md).
+9. Wenn der neue virtuelle Computer immer noch nicht ordnungsgemäß gestartet werden kann, führen Sie nach dem Entsperren des Laufwerks einen der folgenden Schritte aus:
+
+    - Deaktivieren Sie den Schutz, um BitLocker vorübergehend AUSZUSCHALTEN. Führen Sie folgenden Befehl aus:
+
+                    manage-bde -protectors -disable F: -rc 0
+           
+    - Entschlüsseln Sie das Laufwerk vollständig. Führen Sie zu diesem Zweck den folgenden Befehl aus:
+
+                    manage-bde -off F:
 
 ### <a name="key-encryption-key-scenario"></a>Schlüsselverschlüsselungsschlüssel-Szenario
 
 Gehen Sie bei einem Szenario mit Schlüsselverschlüsselungsschlüssel folgendermaßen vor:
 
 1. Stellen Sie sicher, dass das angemeldete Benutzerkonto die „nicht umschlossene“ Berechtigung in den Key Vault-Zugriffsrichtlinien unter **USER|Key permissions|Cryptographic Operations|Unwrap Key** (BENUTZER|Schlüsselberechtigungen|Kryptografische Vorgänge|Umschließen des Schlüssels aufheben) erfordert.
-2. Speichern Sie die folgenden Skripts als PS1-Datei:
+2. Speichern Sie das folgende Skript als PS1-Datei:
 
     ```powershell
     #Set the Parameters for the script
@@ -184,6 +184,7 @@ Gehen Sie bei einem Szenario mit Schlüsselverschlüsselungsschlüssel folgender
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
     $authResult = $authContext.AcquireTokenAsync($resourceAppIdURI, $clientId, $redirectUri, $platformParameters).result
     # Generate auth header 
     $authHeader = $authResult.CreateAuthorizationHeader()
@@ -198,7 +199,7 @@ Gehen Sie bei einem Szenario mit Schlüsselverschlüsselungsschlüssel folgender
     ########################################################################################################################
 
     #Get wrapped BEK and place it in JSON object to send to KeyVault REST API
-    $keyVaultSecret = Get-AzureKeyVaultSecret -VaultName $keyVaultName -Name $secretName
+    $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $secretName
     $wrappedBekSecretBase64 = $keyVaultSecret.SecretValueText
     $jsonObject = @"
     {
@@ -208,7 +209,7 @@ Gehen Sie bei einem Szenario mit Schlüsselverschlüsselungsschlüssel folgender
     "@
 
     #Get KEK Url
-    $kekUrl = (Get-AzureKeyVaultKey -VaultName $keyVaultName -Name $kekName).Key.Kid;
+    $kekUrl = (Get-AzKeyVaultKey -VaultName $keyVaultName -Name $kekName).Key.Kid;
     $unwrapKeyRequestUrl = $kekUrl+ "/unwrapkey?api-version=2015-06-01";
 
     #Call KeyVault REST API to Unwrap 
@@ -231,7 +232,7 @@ Gehen Sie bei einem Szenario mit Schlüsselverschlüsselungsschlüssel folgender
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
     ```
-3. Legen Sie die Parameter fest. Das Skript verarbeitet das KEK-Geheimnis, um den BEK-Schlüssel zu erstellen und diesen dann in einem lokalen Ordner auf der Wiederherstellungs-VM zu speichern.
+3. Legen Sie die Parameter fest. Das Skript verarbeitet das KEK-Geheimnis, um den BEK-Schlüssel zu erstellen und diesen dann in einem lokalen Ordner auf der Wiederherstellungs-VM zu speichern. Wenn beim Ausführen des Skripts Fehler auftreten, lesen Sie den Abschnitt zur [Problembehandlung bei Skripts](#script-troubleshooting).
 
 4. Beim Start des Skripts wird die folgende Ausgabe angezeigt:
 
@@ -254,17 +255,38 @@ Gehen Sie bei einem Szenario mit Schlüsselverschlüsselungsschlüssel folgender
     ```
     In diesem Beispiel ist der angefügte Betriebssystemdatenträger das Laufwerk F. Achten Sie darauf, den richtigen Laufwerkbuchstaben zu verwenden. 
 
-    - Wenn der Datenträger mit dem BEK-Schlüssel entsperrt wurde, kann das BitLocker-Problem als gelöst betrachtet werden. 
+6. Nachdem der Datenträger mit dem BEK-Schlüssel erfolgreich entsperrt wurde, trennen Sie den Datenträger vom virtuellen Wiederherstellungscomputer und erstellen den virtuellen Computer dann mithilfe dieses neuen Betriebssystemdatenträgers neu. 
 
-    - Wenn der Datenträger mit dem BEK-Schlüssel nicht entsperrt werden kann, können Sie den Schutz aufheben, um BitLocker vorübergehend zu deaktivieren, indem Sie den folgenden Befehl ausführen.
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - Wenn Sie vorhaben, den virtuellen Computer mit dem Systemdatenträger neu zu erstellen, müssen Sie das Laufwerk vollständig entschlüsseln. Führen Sie zu diesem Zweck den folgenden Befehl aus:
+    > [!NOTE]
+    > Das Austauschen des Betriebssystemdatenträgers wird für virtuelle Computer mit Datenträgerverschlüsselung nicht unterstützt.
 
-        ```powershell
-        manage-bde -off F:
-        ```
+7. Wenn der neue virtuelle Computer immer noch nicht ordnungsgemäß gestartet werden kann, führen Sie nach dem Entsperren des Laufwerks einen der folgenden Schritte aus:
 
-6. Trennen Sie den Datenträger von der Wiederherstellungs-VM, und fügen Sie den Datenträger dann erneut als Systemdatenträger an den betroffenen virtuellen Computer an. Weitere Informationen finden Sie unter [Beheben von Problemen mit einer Windows-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM](troubleshoot-recovery-disks-windows.md).
+    - Deaktivieren Sie den Schutz, um BitLocker vorübergehend AUSZUSCHALTEN. Führen Sie folgenden Befehl aus:
+
+             manage-bde -protectors -disable F: -rc 0
+           
+    - Entschlüsseln Sie das Laufwerk vollständig. Führen Sie zu diesem Zweck den folgenden Befehl aus:
+
+                    manage-bde -off F:
+## <a name="script-troubleshooting"></a>Problembehandlung bei Skripts
+
+**Error: Datei oder Assembly konnte nicht geladen werden.**
+
+Dieser Fehler tritt auf, weil die Pfade der ADAL-Assemblys falsch sind. Wenn das VZ-Modul nur für den aktuellen Benutzer installiert wird, befinden sich die ADAL-Assemblys in `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`.
+
+Sie können auch nach dem Ordner `Az.Accounts` suchen, um den richtigen Pfad zu ermitteln.
+
+**Error: Get-AzKeyVaultSecret oder Get-AzKeyVaultSecret wird nicht als Name des Cmdlets erkannt.**
+
+Wenn Sie das alte PowerShell-VZ-Modul verwenden, müssen Sie die beiden Befehle in `Get-AzureKeyVaultSecret` und `Get-AzureKeyVaultSecret` ändern.
+
+**Parameterbeispiele**
+
+| Parameter  | Beispielwert  |Kommentare   |
+|---|---|---|
+|  $keyVaultName | myKeyVault2112852926  | Der Name des Schlüsseltresors, in dem der Schlüssel gespeichert wird |
+|$kekName   |mykey   | Der Name des Schlüssels, der zum Verschlüsseln des virtuellen Computers verwendet wird|
+|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | Der Name des Geheimnisses im Schlüssel des virtuellen Computers|
+|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D.BEK |Der Pfad zum Schreiben der BEK-Datei|
+|$adTenant  |contoso.onmicrosoft.com   | Der FQDN oder die GUID des Azure Active Directory, in dem der Schlüsseltresor gehostet wird |

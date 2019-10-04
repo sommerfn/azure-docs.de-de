@@ -1,125 +1,118 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 52af3ada5d32a2cd6c3e7edb3ea5b4a693548cf8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954431"
 documentType: LandingData
 title: Dokumentation zu virtuellen Computern
 metadata:
   document_id: na
-  title: Dokumentation für virtuelle Azure-Computer unter Linux – Tutorials, API-Referenz | Microsoft-Dokumentation
-  meta.description: Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.
+  title: 'Dokumentation zu virtuellen Azure-Computern: Tutorials, API-Referenz | Microsoft-Dokumentation'
+  meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: virtual-machines
   ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
-  description: Hier erfahren Sie, wie Sie virtuelle Azure-Computer erstellen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie virtuelle Windows- oder Linux-Computer sowie VM-Vorlagen erstellen und bereitstellen.
+  description: 'Hier erfahren Sie, wie Sie virtuelle Azure-Computer erstellen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie virtuelle Windows- oder Linux-Computer sowie VM-Vorlagen erstellen und bereitstellen.'
 sections:
-- title: 
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+  - title: null
     items:
-    - title: Erste Schritte mit virtuellen Windows-Computern
-      href: /azure/virtual-machines/windows
-      image:
-        src: media/index/virtual-machines.svg
-        href: /azure/virtual-machines/windows
-    - title: Erste Schritte mit virtuellen Linux-Computern
-      href: /azure/virtual-machines/linux
-      image:
-        src: media/index/get-started.svg
-        href: /azure/virtual-machines/linux
-- title: Fünfminütige Schnellstarts für Linux
-  items:
-  - type: paragraph
-    text: 'Erfahren Sie, wie Sie einen NGINX-Webserver auf einem virtuellen Computer unter Ubuntu bereitstellen:'
-  - type: list
-    style: icon48
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Erste Schritte mit virtuellen Windows-Computern
+            href: /azure/virtual-machines/windows
+            image:
+              src: media/index/virtual-machines.svg
+              href: /azure/virtual-machines/windows
+          - title: Erste Schritte mit virtuellen Linux-Computern
+            href: /azure/virtual-machines/linux
+            image:
+              src: media/index/get-started.svg
+              href: /azure/virtual-machines/linux
+  - title: Fünfminütige Schnellstarts für Linux
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
-      text: Azure-Befehlszeilenschnittstelle
-      href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg
-      text: Azure-Portal
-      href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-- title: Fünfminütige Schnellstarts für Windows
-  items:
-  - type: paragraph
-    text: 'Hier erfahren Sie, wie Sie einen IIS-Webserver auf einem virtuellen Computer unter Windows Server 2016 bereitstellen:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Erfahren Sie, wie Sie einen NGINX-Webserver auf einem virtuellen Computer unter Ubuntu bereitstellen:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg'
+            text: Azure-Befehlszeilenschnittstelle
+            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
+            text: Azure-Portal
+            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
+  - title: Fünfminütige Schnellstarts für Windows
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/windows/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=/azure/virtual-machines/windows/toc.json
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/windows/media/index/portal.svg
-      text: Azure-Portal
-      href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=/azure/virtual-machines/windows/toc.json
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/windows/media/index/cli.svg
-      text: Azure-Befehlszeilenschnittstelle
-      href: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=/azure/virtual-machines/windows/toc.json
-- title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Hier erfahren Sie, wie Sie einen IIS-Webserver auf einem virtuellen Computer unter Windows Server 2016 bereitstellen:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/windows/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=/azure/virtual-machines/windows/toc.json'
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/windows/media/index/portal.svg'
+            text: Azure-Portal
+            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=/azure/virtual-machines/windows/toc.json'
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/windows/media/index/cli.svg'
+            text: Azure-Befehlszeilenschnittstelle
+            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=/azure/virtual-machines/windows/toc.json'
+  - title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
     items:
-    - title: Einführung in Azure Compute
-      href: /learn/modules/intro-to-azure-compute/
-      image:
-        src: /learn/achievements/intro-to-azure-compute.svg
-        href: /learn/modules/intro-to-azure-compute/
-    - title: Einführung in Azure Virtual Machines
-      href: /learn/modules/intro-to-azure-virtual-machines/
-      image:
-        src: /learn/achievements/intro-to-azure-virtual-machines.svg
-        href: /learn/modules/intro-to-azure-virtual-machines/
-    - title: Hinzufügen und Skalieren von Datenträgern in Azure Virtual Machines
-      href: /learn/modules/add-and-size-disks-in-azure-virtual-machines/
-      image:
-        src: /learn/achievements/add-and-size-disks-in-azure-virtual-machines.svg
-        href: /learn/modules/add-and-size-disks-in-azure-virtual-machines/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-virtual-machines">Mehr interaktives Lernen...</a>
-- title: Kostenloses PluralSight-Videotraining
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Einführung in Azure Compute
+            href: /learn/modules/intro-to-azure-compute/
+            image:
+              src: /learn/achievements/intro-to-azure-compute.svg
+              href: /learn/modules/intro-to-azure-compute/
+          - title: Einführung in Azure Virtual Machines
+            href: /learn/modules/intro-to-azure-virtual-machines/
+            image:
+              src: /learn/achievements/intro-to-azure-virtual-machines.svg
+              href: /learn/modules/intro-to-azure-virtual-machines/
+          - title: Hinzufügen und Skalieren von Datenträgern in Azure Virtual Machines
+            href: /learn/modules/add-and-size-disks-in-azure-virtual-machines/
+            image:
+              src: /learn/achievements/add-and-size-disks-in-azure-virtual-machines.svg
+              href: /learn/modules/add-and-size-disks-in-azure-virtual-machines/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-virtual-machines">Mehr interaktives Lernen...</a>
+  - title: Kostenloses PluralSight-Videotraining
     items:
-    - title: Azure-Administrator
-      href: https://go.microsoft.com/fwlink/?linkid=2012827
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012827
-- title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure-Administrator
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+  - title: Verweis
     items:
-    - title: Befehlszeile
-      html: <p><a href="/cli/azure/vm">Azure-CLI</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
-    - title: Sprachen
-      html: <p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/compute">REST-API-Referenz</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Befehlszeile
+            html: <p><a href="/cli/azure/vm">Azure-Befehlszeilenschnittstelle</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
+          - title: Sprachen
+            html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/compute">REST-API-Referenz</a></p>

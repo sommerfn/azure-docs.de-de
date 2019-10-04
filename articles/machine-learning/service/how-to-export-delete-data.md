@@ -1,6 +1,6 @@
 ---
 title: Exportieren oder Löschen von Arbeitsbereichsdaten
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie Ihren Arbeitsbereich mit dem Azure-Portal, der CLI, dem SDK und authentifizierten REST-APIs exportieren oder löschen können.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: ph-com
 ms.author: pahusban
-ms.date: 09/24/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f40606d5fae3b3784ac7f1fdcf4977b7fd9eb1f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251774"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002841"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst 
 
@@ -27,9 +27,9 @@ In Azure Machine Learning können Sie Ihre Arbeitsbereichsdaten mit der authenti
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>Steuern Ihrer Arbeitsbereichsdaten
-Im Produkt enthaltene und von Azure Machine Learning Services gespeicherte Daten stehen über das Azure-Portal, die CLI, das SDK und authentifizierte REST-APIs zum Exportieren und Löschen zur Verfügung. Auf Telemetriedaten können Sie über das Azure Privacy-Portal zugreifen. 
+Im Produkt enthaltene und von Azure Machine Learning gespeicherte Daten stehen über das Azure-Portal, die CLI, das SDK und authentifizierte REST-APIs zum Exportieren und Löschen zur Verfügung. Auf Telemetriedaten können Sie über das Azure Privacy-Portal zugreifen. 
 
-In Azure Machine Learning Services bestehen personenbezogene Daten aus Benutzerinformationen in Ausführungsverlaufsdokumenten und Telemetriedatensätzen einiger Benutzerinteraktionen mit dem Dienst.
+In Azure Machine Learning bestehen personenbezogene Daten aus Benutzerinformationen in Laufverlaufsdokumenten und Telemetriedatensätzen einiger Benutzerinteraktionen mit dem Dienst.
 
 ## <a name="delete-workspace-data-with-the-rest-api"></a>Löschen von Arbeitsbereichsdaten mit der REST-API 
 
@@ -39,7 +39,7 @@ Wie Sie dieses Token erhalten und Azure-Endpunkte aufrufen, erfahren Sie in der 
 
 In den folgenden Beispielen ersetzen Sie den Text in {} durch die Instanznamen, die die zugehörige Ressource bestimmen.
 
-### <a name="delete-an-entire-workspace"></a>Löschen eines gesamten-Arbeitsbereichs
+### <a name="delete-an-entire-workspace"></a>Löschen eines gesamten Arbeitsbereichs
 
 Verwenden Sie diesen Aufruf zum Löschen eines ganzen Arbeitsbereichs.  
 > [!WARNING]
@@ -202,7 +202,7 @@ Einzelne Dienste können wie folgt abgerufen werden:
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/services/{id}?api-version=2018-03-01-preview
 
-### <a name="export-pipeline-experiments"></a>Exportieren von Pipelineexperimenten
+### <a name="export-pipeline-experiments"></a>Exportieren von Pipeline-Experimenten
 
 Einzelne Experimente können wie folgt abgerufen werden:
 
@@ -231,3 +231,29 @@ Vorlagen können folgendermaßen abgerufen werden:
 Datenquellen können folgendermaßen abgerufen werden:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
+
+## <a name="delete-visual-interface-assets"></a>Löschen von Objekten der grafischen Benutzeroberfläche
+
+Löschen Sie auf der grafischen Benutzeroberfläche, auf der Sie Ihr Experiment erstellt haben, einzelne Objekte:
+
+1. Wählen Sie auf der linken Seite den Typ der Ressource aus, die Sie löschen möchten.
+
+    ![Löschen von Assets](media/how-to-export-delete-data.md/delete-experiment.png)
+
+1. Wählen Sie in der Liste die zu löschenden Objekte einzeln aus.
+
+1. Wählen Sie unten die Option **Löschen** aus.
+
+## <a name="export-visual-interface-data"></a>Exportieren von Daten der grafischen Benutzeroberfläche
+
+Exportieren Sie auf der grafischen Benutzeroberfläche, auf der Sie Ihr Experiment erstellt haben, von Ihnen hinzugefügte Daten:
+
+1. Wählen Sie links die Option **Daten** aus.
+
+1. Wählen Sie oben die Option **Meine Datasets** oder **Beispiele** aus, um die Daten zu suchen, die Sie exportieren möchten.
+
+    ![Herunterladen der Daten](media/how-to-export-delete-data.md/download-data.png)
+
+1. Wählen Sie in der Liste die zu exportierenden Datasets einzeln aus.
+
+1. Wählen Sie unten die Option **Herunterladen** aus.

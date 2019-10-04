@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: c80a9ac30e79607d2a255debf73f6542df7c6498
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: bed3402de83984cae9134fe44058980ec18861b3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666576"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65413938"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Bedarfsgesteuerte Sicherung in Azure Service Fabric
 
@@ -28,6 +28,22 @@ Sie können die Daten zuverlässiger zustandsbehafteter Dienste sowie von Reliab
 Azure Service Fabric verfügt über Features zur [regelmäßigen Sicherung von Daten](service-fabric-backuprestoreservice-quickstart-azurecluster.md) und zur Sicherung von Daten auf Bedarfsbasis. Die bedarfsgesteuerte Sicherung ist nützlich, da sie vor _Datenverlust_/_Datenbeschädigung_ aufgrund geplanter Änderungen im zugrunde liegenden Dienst oder dessen Umgebung schützt.
 
 Die Features zur bedarfsgesteuerten Sicherung sind für die Erfassung von Dienstzuständen hilfreich, noch bevor Sie einen Vorgang im Zusammenhang mit dem Dienst oder der Dienstumgebung manuell auslösen. Sie nehmen z.B. beim Upgrade oder Downgrade des Diensts eine Änderung in Dienstbinärdateien vor. In diesem Fall kann eine bedarfsgesteuerte Sicherung die Daten vor Beschädigung durch Fehler im Anwendungscode schützen.
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Installieren Sie das Microsoft.ServiceFabric.Powershell.Http-Modul [Vorschau], um Konfigurationsaufrufe vorzunehmen.
+
+```powershell
+    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+```
+
+- Stellen Sie mit dem Befehl `Connect-SFCluster` sicher, dass der Cluster verbunden ist, bevor Sie Konfigurationsanforderungen mit dem Microsoft.ServiceFabric.Powershell.Http-Modul vornehmen.
+
+```powershell
+
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+
+```
+
 
 ## <a name="triggering-on-demand-backup"></a>Auslösen der bedarfsgesteuerten Sicherung
 
@@ -38,6 +54,16 @@ Bedarfsgesteuerte Sicherung erfordert Speicherdetails zum Hochladen von Sicherun
 Sie können die Richtlinie für die regelmäßige Sicherung zur Verwendung einer Partition eines zuverlässigen zustandsbehafteten Diensts oder Reliable Actors für zusätzliche bedarfsgesteuerte Sicherung im Speicher konfigurieren.
 
 Das folgende Beispiel ist die Fortsetzung des Szenarios in [Aktivieren der regelmäßigen Sicherung für den zuverlässigen zustandsbehafteten Dienst und Reliable Actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). In diesem Fall aktivieren Sie eine Sicherungsrichtlinie für die Verwendung einer Partition, und eine Sicherung wird mit einer bestimmten Häufigkeit in Azure Storage durchgeführt.
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell mit dem Microsoft.ServiceFabric.Powershell.Http-Modul
+
+```powershell
+
+Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' 
+
+```
+
+#### <a name="rest-call-using-powershell"></a>REST-Aufruf mithilfe von Powershell
 
 Richten Sie mit der [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition)-API die Auslösung für die bedarfsgesteuerte Sicherung für Partitions-ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` ein.
 
@@ -52,6 +78,17 @@ Aktivieren Sie mit der [GetBackupProgress](https://docs.microsoft.com/rest/api/s
 ### <a name="on-demand-backup-to-specified-storage"></a>Bedarfsgesteuerte Sicherung auf dem angegebenen Speicher
 
 Sie können die bedarfsgesteuerte Sicherung für eine Partition eines zuverlässigen zustandsbehafteten Diensts oder Reliable Actor anfordern. Stellen Sie die Speicherinformationen als Teil der Anforderung der bedarfsgesteuerten Sicherung bereit.
+
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell mit dem Microsoft.ServiceFabric.Powershell.Http-Modul
+
+```powershell
+
+Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -AzureBlobStore -ConnectionString  'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>REST-Aufruf mithilfe von Powershell
 
 Richten Sie mit der [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition)-API die Auslösung für die bedarfsgesteuerte Sicherung für Partitions-ID `974bd92a-b395-4631-8a7f-53bd4ae9cf22` ein. Beziehen Sie die folgenden Azure Storage-Informationen ein:
 
@@ -79,6 +116,16 @@ Sie können mit der [GetBackupProgress](https://docs.microsoft.com/rest/api/serv
 Eine Partition eines zuverlässigen zustandsbehafteten Diensts oder Reliable Actor-Diensts akzeptiert nur eine Anforderung für die bedarfsgesteuerte Sicherung auf einmal. Eine andere Anforderung kann nur akzeptiert werden, wenn die aktuelle Anforderung der bedarfsgesteuerten Sicherung abgeschlossen ist.
 
 Unterschiedliche Partitionen können gleichzeitig Anforderungen der bedarfsgesteuerten Sicherung auslösen.
+
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell mit dem Microsoft.ServiceFabric.Powershell.Http-Modul
+
+```powershell
+
+Get-SFPartitionBackupProgress -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
+
+```
+#### <a name="rest-call-using-powershell"></a>REST-Aufruf mithilfe von Powershell
 
 ```powershell
 $url = "https://mysfcluster-backup.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/GetBackupProgress?api-version=6.4"

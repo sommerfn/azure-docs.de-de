@@ -4,15 +4,15 @@ description: In diesem Artikel werden Konzepte wie gespeicherte Prozeduren, Trig
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: d1960fbc9fc9e8c1d672b66d3cf1f41399842059
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 700cd6c0c75b25d56e812a394d6bdd193e4fb57c
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58083197"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614055"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
 
@@ -37,7 +37,7 @@ Das Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Fun
 * **Kapselung:** Mithilfe gespeicherter Prozeduren kann die Logik an einem Ort zusammengefasst werden. Durch die Kapselung wird eine Abstraktionsebene über den Daten hinzugefügt, die es Ihnen erlaubt, Ihre Anwendungen unabhängig von den Daten zu entwickeln. Diese Abstraktionsebene ist hilfreich, wenn die Daten kein Schema aufweisen und Sie keine zusätzliche Logik direkt in der Anwendung hinzufügen müssen. Durch diese Abstraktion können Sie den Zugriff über die Scripts optimieren und dadurch Ihre Daten schützen.
 
 > [!TIP]
-> Gespeicherte Prozeduren eignen sich am besten für schreibintensive Vorgänge. Bei der Entscheidung, wo Sie gespeicherte Prozeduren verwenden, sollten Sie die Kapselung der maximal möglichen Anzahl von Schreibvorgängen optimieren. Gespeicherte Prozeduren sind im Allgemeinen nicht die effizienteste Methode zur Ausführung zahlreicher Lesevorgänge. Eine große Anzahl an den Client zurückzugebender Lesevorgänge mithilfe von gespeicherten Prozeduren in einem Batch zusammenzufassen, bietet daher nicht den gewünschten Nutzen.
+> Gespeicherte Prozeduren eignen sich am besten für Vorgänge mit vielen Schreibvorgängen und erfordern eine Transaktion über einen Partitionsschlüsselwert. Bei der Überlegung, ob Sie gespeicherte Prozeduren verwenden, sollten Sie die Kapselung der maximal möglichen Anzahl von Schreibvorgängen optimieren. Gespeicherte Prozeduren sind im Allgemeinen nicht die effizienteste Methode für die Ausführung zahlreicher Lese- oder Abfragevorgänge. Eine große Anzahl von an den Client zurückzugebenden Lesevorgängen mithilfe von gespeicherten Prozeduren in einem Batch zusammenzufassen, bietet daher nicht den gewünschten Nutzen. Um eine optimale Leistung zu erzielen, sollten Vorgänge mit zahlreichen Lesevorgängen auf der Clientseite unter Verwendung des Cosmos SDK ausgeführt werden. 
 
 ## <a name="transactions"></a>Transaktionen
 
@@ -75,15 +75,18 @@ Für JavaScript-Funktionen gilt auch die [bereitgestellte Durchsatzkapazität](r
 
 ## <a name="triggers"></a>Trigger
 
-In diesem Abschnitt werden die zwei Triggertypen beschrieben:
+Azure Cosmos DB unterstützt zwei Arten von Triggern:
 
 ### <a name="pre-triggers"></a>Vorangestellte Trigger
 
-Azure Cosmos DB stellt Trigger bereit, die durch Ausführen eines Vorgangs für ein Azure Cosmos DB-Element aufgerufen werden können. Sie können beispielsweise beim Erstellen eines Elements einen vorangestellter Trigger angeben. In diesem Fall wird der vorangestellte Trigger ausgeführt, bevor das Element erstellt wird. Vorangestellte Trigger können keine Eingabeparameter übernehmen. Bei Bedarf kann das Anforderungsobjekt verwendet werden, um den Dokumenttext der ursprünglichen Anforderung zu aktualisieren. Wenn Trigger registriert werden, können die Benutzer die Vorgänge angeben, mit denen sie ausgeführt werden können. Wenn ein Trigger mit `TriggerOperation.Create` erstellt wurde, bedeutet dies, dass die Verwendung des Triggers in einem Ersetzungsvorgang nicht zulässig ist. Beispiele finden Sie unter [Schreiben von Triggern](how-to-write-stored-procedures-triggers-udfs.md#triggers).
+Azure Cosmos DB stellt Trigger bereit, die durch Ausführen eines Vorgangs für ein Azure Cosmos-Element aufgerufen werden können. Sie können beispielsweise beim Erstellen eines Elements einen vorangestellter Trigger angeben. In diesem Fall wird der vorangestellte Trigger ausgeführt, bevor das Element erstellt wird. Vorangestellte Trigger können keine Eingabeparameter übernehmen. Bei Bedarf kann das Anforderungsobjekt verwendet werden, um den Dokumenttext der ursprünglichen Anforderung zu aktualisieren. Wenn Trigger registriert werden, können die Benutzer die Vorgänge angeben, mit denen sie ausgeführt werden können. Wenn ein Trigger mit `TriggerOperation.Create` erstellt wurde, bedeutet dies, dass die Verwendung des Triggers in einem Ersetzungsvorgang nicht zulässig ist. Beispiele finden Sie unter [Schreiben von Triggern](how-to-write-stored-procedures-triggers-udfs.md#triggers).
 
 ### <a name="post-triggers"></a>Nachgestellte Trigger
 
-Ähnlich wie vorangestellte Trigger sind nachgestellte Trigger ebenfalls einem Vorgang für ein Azure Cosmos DB-Element zugeordnet, und sie erfordern keine Eingabeparameter. Sie werden ausgeführt, *nachdem* der Vorgang abgeschlossen wurde, und haben Zugriff auf die Antwortnachricht, die an den Client gesendet wird. Beispiele finden Sie unter [Schreiben von Triggern](how-to-write-stored-procedures-triggers-udfs.md#triggers).
+Ähnlich wie vorangestellte Trigger sind nachgestellte Trigger ebenfalls einem Vorgang für ein Azure Cosmos-Element zugeordnet, und sie erfordern keine Eingabeparameter. Sie werden ausgeführt, *nachdem* der Vorgang abgeschlossen wurde, und haben Zugriff auf die Antwortnachricht, die an den Client gesendet wird. Beispiele finden Sie unter [Schreiben von Triggern](how-to-write-stored-procedures-triggers-udfs.md#triggers).
+
+> [!NOTE]
+> Registrierte Trigger werden bei Auftreten der entsprechenden Vorgänge (Erstellen/Löschen/Ersetzen/Aktualisieren) nicht automatisch ausgeführt. Sie müssen beim Ausführen dieser Vorgänge explizit aufgerufen werden. Weitere Informationen finden Sie im Artikel [Ausführen von Triggern](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers).
 
 ## <a id="udfs"></a>Benutzerdefinierte Funktionen
 

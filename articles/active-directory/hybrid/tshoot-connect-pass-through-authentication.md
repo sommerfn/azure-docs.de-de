@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f927d1deb3da6269159e1f3f24a17c4675dc7568
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184889"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60456122"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -71,6 +71,9 @@ Navigieren Sie im [Azure Active Directory Admin Center](https://aad.portal.azure
 | 80007 | Der Authentifizierungs-Agent kann keine Verbindung mit Active Directory herstellen. | Überprüfen Sie, ob Ihr Active Directory über den Authentifizierungs-Agent erreichbar ist.
 | 80010 | Der Authentifizierungs-Agent kann das Kennwort nicht entschlüsseln. | If the problem is consistently reproducible, install and register a new Authentication Agent. (Wenn das Problem konsistent reproduziert werden kann, installieren und registrieren Sie einen neuen Authentifizierungs-Agent.) And uninstall the current one. (Deinstallieren der Sie außerdem den aktuellen.) 
 | 80011 | Der Authentifizierungs-Agent kann den Entschlüsselungsschlüssel nicht abrufen. | If the problem is consistently reproducible, install and register a new Authentication Agent. (Wenn das Problem konsistent reproduziert werden kann, installieren und registrieren Sie einen neuen Authentifizierungs-Agent.) And uninstall the current one. (Deinstallieren der Sie außerdem den aktuellen.)
+
+>[!IMPORTANT]
+>Passthrough-Authentifizierungs-Agents authentifizieren Azure AD-Benutzer, indem sie deren Benutzernamen und Kennwörter für Active Directory durch Aufrufen der [Win32 LogonUser-API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) überprüfen. Wenn Sie in Active Directory die Einstellung „Anmeldung bei“ zum Einschränken des Anmeldezugriffs für Arbeitsstationen festgelegt haben, müssen Sie daher auch der Serverliste „Anmeldung bei“ Server hinzufügen, auf denen Passthrough-Authentifizierungs-Agents gehostet werden. Wenn Sie dies nicht tun, können sich Ihre Benutzer nicht bei Azure AD anmelden.
 
 ## <a name="authentication-agent-installation-issues"></a>Probleme bei der Installation des Authentifizierungs-Agents
 
@@ -158,7 +161,7 @@ Weitere Informationen finden Sie auch in den Sicherheitsprotokollen Ihrer Domän
 
 ## <a name="performance-monitor-counters"></a>Leistungsüberwachungsindikatoren
 
-Eine weitere Möglichkeit zum Überwachen des Authentifizierung-Agents ist das Nachverfolgen bestimmter Leistungsüberwachungsindikatoren auf jedem Server, auf dem der Authentifizierung-Agent installiert ist. Verwenden Sie die folgenden globalen Indikatoren **# PTA authentications**, **#PTA failed authentications** und **#PTA successful authentications**) und Fehlerzähler (**# PTA authentication errors**):
+Eine weitere Möglichkeit zum Überwachen des Authentifizierung-Agents ist das Nachverfolgen bestimmter Leistungsüberwachungsindikatoren auf jedem Server, auf dem der Authentifizierung-Agent installiert ist. Verwenden Sie die folgenden globalen Indikatoren **# PTA authentications**, **#PTA failed authentications** und **#PTA successful authentications**) und Fehlerzähler ( **# PTA authentication errors**):
 
 ![Passthrough-Authentifizierungs-Leistungsüberwachungsindikatoren](./media/tshoot-connect-pass-through-authentication/pta12.png)
 

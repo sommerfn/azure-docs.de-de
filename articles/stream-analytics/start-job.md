@@ -1,6 +1,6 @@
 ---
 title: Starten eines Azure Stream Analytics-Auftrags
-description: Dieser Artikel beschreibt das Starten eines Stream Analytics-Auftrags.
+description: In diesem Artikel wird beschrieben, wie Sie einen Stream Analytics-Auftrag über das Azure-Portal, PowerShell und Visual Studio starten.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 9bc3e4132919e5fc5baadc78841e66efd3c34bcd
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 1e4cb63accf7e89ac02451e9c25b9902a8a10812
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005948"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173269"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Starten eines Azure Stream Analytics-Auftrags
 

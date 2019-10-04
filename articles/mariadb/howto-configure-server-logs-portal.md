@@ -5,17 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4ff2fbd5976a8e203bbc43a87b31ddb1bed63402
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 06/11/2019
+ms.openlocfilehash: 3dbf7064e409230916668e62ef861c0ce149fdbb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548815"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67065635"
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurieren der und Zugreifen auf die Serverprotokolle im Azure-Portal
 
-Sie können die [Azure Database for MariaDB-Serverprotokolle](concepts-server-logs.md) im Azure-Portal konfigurieren und auflisten sowie aus dem Portal herunterladen.
+Sie können die [Protokolle für langsame Abfragen für Azure Database for MariaDB](concepts-server-logs.md) im Azure-Portal konfigurieren und auflisten sowie aus dem Portal herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
@@ -42,7 +42,7 @@ Konfigurieren Sie den Zugriff auf das Protokoll für langsame Abfragen.
 6. Kehren Sie zur Liste der Protokolle zurück, indem Sie auf der Seite **Serverparameter** auf die **Schaltfläche „Schließen“** (X-Symbol) klicken.
 
 ## <a name="view-list-and-download-logs"></a>Anzeigen der Liste und Herunterladen von Protokollen
-Sobald die Protokollierung beginnt, können Sie eine Liste der verfügbaren Protokolle anzeigen und einzelne Protokolldateien im Bereich „Serverprotokolle“ herunterladen. 
+Sobald die Protokollierung beginnt, können Sie eine Liste der verfügbaren Protokolle für langsame Abfragen anzeigen und einzelne Protokolldateien im Bereich „Serverprotokolle“ herunterladen. 
 
 1. Öffnen Sie das Azure-Portal.
 
@@ -62,7 +62,7 @@ Sobald die Protokollierung beginnt, können Sie eine Liste der verfügbaren Prot
    ![Klicken Sie auf das Symbol „Download“.](./media/howto-configure-server-logs-portal/5-download.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erhalten Sie weitere Informationen zu [Serverprotokollen](concepts-server-logs.md) in Azure Database for MariaDB.
+- Erfahren Sie mehr über [Protokolle für langsame Abfragen](concepts-server-logs.md) in Azure Database for MariaDB.
 - Weitere Informationen zu den Parameterdefinitionen und der Protokollierung finden Sie in der MariaDB-Dokumentation unter [Protokolle](https://mariadb.com/kb/en/library/slow-query-log-overview/).
 
-<!-- - See [Access Server Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download logs programmatically. -->
+<!--- See [Access Server Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download logs programmatically. -->

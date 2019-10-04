@@ -2,16 +2,17 @@
 title: 'Business Continuity & Disaster Recovery (BCDR): Azure-Regionspaare | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Azure-Regionspaare sicherstellen, dass Anwendungen auch bei Rechenzentrumsausfällen stabil ausgeführt werden.
 author: rayne-wiselman
+manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 12/23/2018
+ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: d27db03977b84002b59d58327af7d14fbdc713c2
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 81ba993e6cbe55b45d34325545754bec561ce479
+ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792318"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67514463"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business Continuity & Disaster Recovery (BCDR): Azure-Regionspaare
 
@@ -34,18 +35,20 @@ Abbildung 1: Azure-Regionspaare
 | Kanada |Kanada, Mitte |Kanada, Osten |
 | China |China, Norden |China, Osten|
 | China |China, Norden 2 |China, Osten 2|
-| Europa |Nordeuropa |Europa, Westen |
+| Europa |Europa, Norden (Irland) |Europa, Westen (Niederlande) |
 | Frankreich |Frankreich, Mitte|Frankreich, Süden|
 | Deutschland |Deutschland, Mitte |Deutschland, Nordosten |
 | Indien |Indien, Mitte |Indien (Süden) |
 | Indien |Indien, Westen |Indien (Süden) |
 | Japan |Japan, Osten |Japan, Westen |
 | Korea |Korea, Mitte |Korea, Süden |
-| Nordamerika |USA (Ost) |USA (Westen) |
+| Nordamerika |East US |USA (Westen) |
 | Nordamerika |USA (Ost) 2 |USA (Mitte) |
 | Nordamerika |USA Nord Mitte |USA Süd Mitte |
 | Nordamerika |USA, Westen 2 |USA, Westen-Mitte 
+| Südafrika | Südafrika, Norden | Südafrika, Westen
 | UK |UK, Westen |UK, Süden |
+| Vereinigte Arabische Emirate | Vereinigte Arabische Emirate, Norden | VAE, Mitte
 | US-Verteidigungsministerium |US DoD, Osten |US DoD, Mitte |
 | US Government |US Gov Arizona |US Gov Texas |
 | US Government |US Gov Iowa |US Government, Virginia |
@@ -53,10 +56,11 @@ Abbildung 1: Azure-Regionspaare
 
 Tabelle 1: Übersicht über Azure-Regionspaare
 
-- „Indien (Westen)“ ist anders, weil es mit einer anderen Region nur in eine Richtung ein Paar bildet. Die sekundäre Region von Indien (Westen) ist Indien (Süden), aber die sekundäre Region für Indien (Süden) ist Indien (Mitte).
-- „Brasilien (Süden)“ ist einzigartig, da diese Region ein Paar mit einer Region außerhalb der eigenen Geografie bildet. „USA, Süden-Mitte“ fungiert als sekundäre Region von „Brasilien, Süden“, „Brasilien, Süden“ aber nicht als sekundäre Region von „USA, Süden-Mitte“.
-- Die sekundäre Region von „US Gov Iowa“ ist „US Gov Virginia“, die sekundäre Region von „US Gov Virginia“ ist jedoch nicht „US Gov Iowa“.
-- Die sekundäre Region von „US Gov Virginia“ ist „US Gov Texas“, die sekundäre Region von „US Gov Texas“ ist jedoch nicht „US Gov Virginia“.
+- „Indien, Westen“ wird nur in einer Richtung zugeordnet. Die sekundäre Region von Indien (Westen) ist Indien (Süden), aber die sekundäre Region für Indien (Süden) ist Indien (Mitte).
+- „Brasilien (Süden)“ ist einzigartig, da diese Region ein Paar mit einer Region außerhalb der eigenen Geografie bildet. Die sekundäre Region von „Brasilien, Süden“ ist „USA, Süden-Mitte“. Die sekundäre Region von „USA, Süden-Mitte“ ist nicht „Brasilien, Süden“.
+- Die sekundäre Region von „USA Gov Iowa“ ist „USA Gov Virginia“.
+- Die sekundäre Region von „USA Gov Virginia“ ist „USA Gov Texas“.
+- Die sekundäre Region von „USA Gov Texas“ ist „USA Gov Arizona“.
 
 
 Wir empfehlen das Konfigurieren von Business Continuity Disaster Recovery (BCDR) zwischen Regionalpaaren, um von Richtlinien für Isolierung und Verfügbarkeit von Azure zu profitieren. Bei Anwendungen, die mehrere aktive Regionen unterstützen, empfehlen wir nach Möglichkeit die Verwendung beider Regionen in einem Regionspaar. Dadurch wird eine optimale Verfügbarkeit für Anwendungen und eine minimierte Wiederherstellungszeit in einem Notfall sichergestellt. 
@@ -73,11 +77,11 @@ Wie in Abbildung 2 dargestellt.
 
 ![IaaS](./media/best-practices-availability-paired-regions/1Green.png)**Azure Compute (IaaS)** – Sie müssen zusätzliche Computeressourcen im Voraus bereitstellen, um sicherzustellen, dass Ressourcen während eines Notfalls in einer anderen Region zur Verfügung stehen. Weitere Informationen finden Sie unter [Technischer Leitfaden zur Resilienz in Azure](resiliency/resiliency-technical-guidance.md).
 
-![Storage](./media/best-practices-availability-paired-regions/2Green.png)**Azure Storage** – georedundanter Speicher (GRS) wird beim Erstellen eines Azure Storage-Kontos standardmäßig konfiguriert. Mithilfe von GRS werden Ihre Daten dreimal in der primären Region und dreimal im Regionspaar automatisch repliziert. Weitere Informationen finden Sie unter [Redundanzoptionen für Azure Storage](storage/common/storage-redundancy.md).
+![Storage](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage**: Wenn Sie verwaltete Datenträger verwenden, machen Sie sich mit [regionsübergreifenden Sicherungen](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) mit Azure Backup und der [Replikation von VMs](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) aus einer Region in eine andere mit Azure Site Recovery vertraut. Wenn Sie Speicherkonten verwenden, wird georedundanter Speicher (GRS) beim Erstellen eines Azure Storage-Kontos standardmäßig konfiguriert. Mithilfe von GRS werden Ihre Daten dreimal in der primären Region und dreimal im Regionspaar automatisch repliziert. Weitere Informationen finden Sie unter [Redundanzoptionen für Azure Storage](storage/common/storage-redundancy.md).
 
 ![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Datenbank** – Mit der Georeplikation von Azure SQL-Datenbank können Sie die asynchrone Replikation von Transaktionen in jede Region der Welt konfigurieren. Es wird jedoch empfohlen, diese Ressourcen für die meisten Notfallwiederherstellungsszenarien in einem Regionspaar bereitzustellen. Weitere Informationen finden Sie unter [Georeplikation in Azure SQL-Datenbank](sql-database/sql-database-geo-replication-overview.md).
 
-![Resource Manager](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manager (ARM)**: ARM bietet grundsätzlich eine regionsübergreifende logische Isolierung von Dienstverwaltungskomponenten. Dies bedeutet, dass sich logische Fehler in einer Region weniger wahrscheinlich auf eine andere auswirken.
+![Resource Manager](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manager (ARM)** : ARM bietet grundsätzlich eine regionsübergreifende logische Isolierung von Dienstverwaltungskomponenten. Dies bedeutet, dass sich logische Fehler in einer Region weniger wahrscheinlich auf eine andere auswirken.
 
 ## <a name="benefits-of-paired-regions"></a>Vorteile eines Regionspaars
 Wie in Abbildung 2 dargestellt.  

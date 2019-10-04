@@ -3,17 +3,16 @@ title: Grundlagen von Ressourcensperren
 description: Es wird beschrieben, wie Sie die Optionen für das Sperren verwenden, um beim Zuweisen einer Blaupause die Ressourcen zu schützen.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/28/2019
+ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 232d823f364f9f98d1da1bade50ba369b898a57d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8d3cee73d8614c4aea2d2883cdcf2f049b1b8f67
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788618"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232933"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Grundlegendes zur Ressourcensperre in Azure Blueprint
 
@@ -26,10 +25,10 @@ Außerhalb von Blaupausen können Sperrmodi jedoch nicht geändert werden.
 
 Für Ressourcen, die von Artefakten in einer Blaupausenzuweisung erstellt wurden, gibt es vier Zustände: **Nicht gesperrt**, **Schreibgeschützt**, **Bearbeiten/Löschen nicht möglich** oder **Löschen nicht möglich**. Jeder Artefakttyp kann sich im Zustand **Nicht gesperrt** befinden. Mithilfe der folgende Tabelle kann der Zustand einer Ressource bestimmt werden:
 
-|Mode|Artefaktressourcentyp|Zustand|BESCHREIBUNG|
+|Mode|Artefaktressourcentyp|State|BESCHREIBUNG|
 |-|-|-|-|
 |Nicht sperren|*|Nicht gesperrt|Ressourcen werden nicht durch Blaupausen geschützt. Dieser Zustand wird auch für Ressourcen verwendet, die einem Ressourcengruppenartefakt mit dem Zustand **Schreibgeschützt** oder **Nicht löschen** außerhalb einer Blaupausenzuweisung hinzugefügt wurden.|
-|Nur Leseberechtigung|Ressourcengruppe|Bearbeiten/Löschen nicht möglich|Die Ressourcengruppe ist schreibgeschützt, und Tags der Ressourcengruppe können nicht geändert werden. Ressourcen mit dem Zustand **Nicht gesperrt** können dieser Ressourcengruppe hinzugefügt bzw. darin verschoben, geändert oder gelöscht werden.|
+|Nur Leseberechtigung|Resource group|Bearbeiten/Löschen nicht möglich|Die Ressourcengruppe ist schreibgeschützt, und Tags der Ressourcengruppe können nicht geändert werden. Ressourcen mit dem Zustand **Nicht gesperrt** können dieser Ressourcengruppe hinzugefügt bzw. darin verschoben, geändert oder gelöscht werden.|
 |Nur Leseberechtigung|Keine Ressourcengruppe|Nur Leseberechtigung|Die Ressource kann in keiner Weise geändert oder gelöscht werden.|
 |Nicht löschen|*|Löschen nicht möglich|Die Ressourcen können geändert, aber nicht gelöscht werden. Ressourcen mit dem Zustand **Nicht gesperrt** können dieser Ressourcengruppe hinzugefügt bzw. darin verschoben, geändert oder gelöscht werden.|
 
@@ -53,6 +52,13 @@ Wenn die Zuweisung entfernt wird, werden auch die von Blueprint erstellten Sperr
 Eine Ablehnungsaktion im Rahmen von RBAC-[Ablehnungszuweisungen](../../../role-based-access-control/deny-assignments.md) wird während der Zuweisung einer Blaupause auf Artefaktressourcen angewendet, wenn für die Zuweisung die Option **Schreibgeschützt** oder **Nicht löschen** ausgewählt wurde. Die Ablehnungsaktion wird von der verwalteten Identität der Blaupausenzuweisung hinzugefügt und kann nur von derselben verwalteten Identität aus den Artefaktressourcen entfernt werden. Diese Sicherheitsmaßnahme erzwingt den Sperrmechanismus und verhindert die Aufhebung der Blaupausensperre außerhalb von Blueprints.
 
 ![Blaupausen-Ablehnungszuweisung für Ressourcengruppe](../media/resource-locking/blueprint-deny-assignment.png)
+
+Die [Eigenschaften von Ablehnungszuweisungen](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) der einzelnen Modi lauten wie folgt:
+
+|Mode |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
+|-|-|-|-|-|-|
+|Nur Leseberechtigung |**\*** |**\*/read** |SystemDefined (Alle) |Blaupausenzuweisung und benutzerdefiniert in **excludedPrincipals** |Ressourcengruppe – _true_; Ressource – _false_ |
+|Nicht löschen |**\*/delete** | |SystemDefined (Alle) |Blaupausenzuweisung und benutzerdefiniert in **excludedPrincipals** |Ressourcengruppe – _true_; Ressource – _false_ |
 
 > [!IMPORTANT]
 > Azure Resource Manager speichert Details zu Rollenzuweisungen bis zu 30 Minuten lang zwischen. Daher sind Ablehnungsaktionen von Ablehnungszuweisungen für Blaupausenressourcen möglicherweise nicht sofort in vollem Umfang wirksam. Während dieser Zeit ist es ggf. möglich, eine Ressource zu löschen, die eigentlich durch Blaupausensperren geschützt werden sollte.

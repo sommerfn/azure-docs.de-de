@@ -1,29 +1,32 @@
 ---
 title: Einheitliche Benachrichtigung und Überwachung in Azure Monitor tritt an die Stelle von klassischer Benachrichtigung und Überwachung
 description: Übersicht zur Einstellung der klassischen Überwachungsdienste und -funktionen, die bisher im Azure-Portal unter Benachrichtigungen (klassisch) angezeigt wurden. Die klassische Benachrichtigung und Überwachung beinhaltet klassische Metrikwarnungen für Azure-Ressourcen, klassische Metrikwarnungen für Application Insights, klassische Web-Testwarnungen für Application Insights, klassische benutzerdefinierte metrikbasierte Warnungen für Application Insights und klassische Warnungen für Application Insights SmartDetection v1
-author: msvijayn
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/7/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 7cca9d9c91f35c30bbd71ae82b9f02447051078d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: ea50a4f10aa1d794f875cb1eb9601774bec146cd
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983167"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676893"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Einheitliche Benachrichtigung und Überwachung in Azure Monitor tritt an die Stelle von klassischer Benachrichtigung und Überwachung
 
 Azure Monitor hat sich zu einem vereinheitlichen, voll ausgestatteten Überwachungsdienst entwickelt, der nun ressourcenübergreifend einzelne Metriken und Benachrichtigungen unterstützt. Weitere Informationen finden Sie in unserem [Blogbeitrag zu Azure Monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Die neuen Überwachungs- und Benachrichtigungsplattformen von Azure sind schneller, intelligenter und erweiterbar. Dabei halten sie mit der zunehmenden Verbreitung von Cloud Computing Schritt und folgen der Philosophie der Microsoft Intelligent Cloud. 
 
-Da die neue Azure-Plattform zur Überwachung und Benachrichtigung nun verfügbar ist, stellen wir die „klassische“ Überwachungs- und Benachrichtigungsplattform – die im Abschnitt *Klassische Warnungen anzeigen* der Azure-Benachrichtigungen gehostet wird – **zum Juni 2019 in öffentlichen Azure-Clouds ein**. Die [Azure Government-Cloud](../../azure-government/documentation-government-welcome.md) ist davon nicht betroffen.
+Da die neue Azure-Plattform zur Überwachung und Benachrichtigung nun verfügbar ist, stellen wir die „klassische“ Überwachungs- und Benachrichtigungsplattform – die im Abschnitt *Klassische Warnungen anzeigen* der Azure-Benachrichtigungen gehostet wird – **zum August 2019 in öffentlichen Azure-Clouds ein**. Die [Azure Government-Cloud](../../azure-government/documentation-government-welcome.md) und [Azure China 21Vianet](https://docs.azure.cn/) sind davon nicht betroffen.
+
+> [!NOTE]
+> Aufgrund einer Verzögerung beim Rollout des Migrationstools wurde der Deaktivierungstermin vom ursprünglich angekündigten Datum, dem 30. Juni 2019, auf den [31. August 2019 verschoben](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/).
 
  ![Klassische Warnung im Azure-Portal](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 
-Wir empfehlen Ihnen, sich mit der neuen Plattform vertraut zu machen und damit zu beginnen, Warnungen auf dieser neu zu erstellen. Für Kunden mit einer großen Anzahl Warnungen arbeiten wir an einem Verfahren zur automatisierten Umstellung vorhandener klassischer Warnungen auf das neue Warnungssystem, das Unterbrechungen und Zusatzkosten vermeidet.
+Wir empfehlen Ihnen, sich mit der neuen Plattform vertraut zu machen und damit zu beginnen, Warnungen auf dieser neu zu erstellen. Für Kunden mit einer großen Anzahl Warnungen [bringen wir phasenweise](alerts-understand-migration.md#rollout-phases) ein [Tool zum freiwilligen Migrieren](alerts-using-migration-tool.md) heraus, um die bestehenden klassischen Warnungen ohne Unterbrechungen oder Zusatzkosten auf das neue Warnungssystem umzustellen.
 
 > [!IMPORTANT]
 > Im Aktivitätsprotokoll erstellte klassische Warnungsregeln werden nicht als veraltet eingestuft und nicht migriert. Alle im Aktivitätsprotokoll erstellten klassischen Warnungsregeln können nun über „Azure Monitor – Warnungen“ unverändert aufgerufen und verwendet werden. Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md). Warnungen zur Dienstintegrität können im neuen Abschnitt „Dienstintegrität“ unverändert aufgerufen und verwendet werden. Weitere Informationen finden Sie unter [Warnungen zu Dienstintegritätsbenachrichtigungen](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
@@ -37,7 +40,7 @@ Die neue einheitliche Überwachung und Benachrichtigung für Application Insight
 - **Application Insights-Plattformmetriken**: Beliebte vorkonfigurierte Metriken aus dem Application Insights-Produkt. Weitere Informationen finden Sie in diesem Artikel zur Verwendung von [Plattformmetriken für Application Insights im neuen Azure Monitor](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics).
 - **Application Insights-Verfügbarkeits- und Web-Test**: Bietet die Möglichkeit, die Reaktionsfähigkeit und Verfügbarkeit Ihrer Web-App oder Ihres Servers zu beurteilen. Weitere Informationen finden Sie in diesem Artikel zum Verwenden von [Availability Tests and Alerts for Application Insights on new Azure Monitor](../../azure-monitor/app/monitor-web-app-availability.md) (Verfügbarkeitstests und Benachrichtigungen für Application Insights im neuen Azure Monitor).
 - **Application Insights benutzerdefinierte Metriken**: Sie können eigene Metriken für Überwachung und Benachrichtigung definieren und ausgeben. Weitere Informationen finden Sie in diesem Artikel über [Custom Metric for Application Insights on new Azure Monitor](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) (Benutzerdefinierte Metriken für Application Insights im neuen Azure Monitor).
-- **Application Insights Fehleranomalien (Teil der intelligenten Erkennung)**: Benachrichtigt Sie automatisch und nahezu in Echtzeit, wenn es bei Ihrer Web-App zu einer ungewöhnlichen Zunahme von Fehlern bei HTTP-Anforderungen oder Abhängigkeitsaufrufen kommt. Application Insights Fehleranomalien (Teil der intelligenten Erkennung) wird als Bestandteil des neuen Azure Monitors in Kürze verfügbar sein, und wir aktualisieren dieses Dokument mit Links zum nächsten Entwicklungsschritt, sobald er in den kommenden Monaten vertrieben wird.
+- **Application Insights Fehleranomalien (Teil der intelligenten Erkennung)** : Benachrichtigt Sie automatisch und nahezu in Echtzeit, wenn es bei Ihrer Web-App zu einer ungewöhnlichen Zunahme von Fehlern bei HTTP-Anforderungen oder Abhängigkeitsaufrufen kommt. Weitere Informationen finden Sie in diesem Artikel zur Verwendung von [Intelligente Erkennung – Fehlerabweichungen](https://docs.microsoft.com/azure/azure-monitor/app/proactive-failure-diagnostics).
 
 ## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>Einheitliche Metriken und Benachrichtigungen für andere Azure-Ressourcen
 
@@ -50,38 +53,41 @@ Die neueren Metriken für Azure-Ressourcen sind in diesen Formen verfügbar:
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>Einstellung der klassischen Überwachungs- und Benachrichtigungsplattform
 
 Wie bereits zuvor erwähnt, wird die klassische Überwachungs- und Benachrichtigungsplattform, die aktuell im Bereich [Warnungen (klassisch)](../../azure-monitor/platform/alerts-classic.overview.md) des Azure-Portals zur Verfügung steht, in den kommenden Monaten eingestellt und durch das neuere System ersetzt.
-Die ältere klassische Überwachung und Benachrichtigung wird am 30. Juni 2019 eingestellt. Dies gilt auch für die zugehörigen APIs, die Schnittstelle zum Azure-Portal und die enthaltenen Dienste. Insbesondere werden diese Funktionen als veraltet markiert:
+Die ältere klassische Überwachung und Benachrichtigung wird am 31. August 2019 eingestellt. Dies gilt auch für die zugehörigen APIs, die Schnittstelle zum Azure-Portal und die enthaltenen Dienste. Insbesondere werden diese Funktionen als veraltet markiert:
 
 - Alte (klassische) Metriken und Warnungen für Azure-Ressourcen, die aktuell im Abschnitt [Warnungen (klassisch)](../../azure-monitor/platform/alerts-classic.overview.md) im Azure-Portal zur Verfügung stehen, auf die als Ressource unter [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) zugegriffen wird
 - Ältere (klassische) Plattform- und benutzerdefinierte Metriken für Application Insights sowie Benachrichtigungen für sie, die aktuell im Bereich [Warnungen (klassisch)](../../azure-monitor/platform/alerts-classic.overview.md) im Azure-Portal verfügbar sind, auf die als Ressource unter [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) zugegriffen wird
 - Ältere (klassische) Fehleranomaliebenachrichtigungen, die im Azure-Portal als [Intelligente Erkennung in Application Insights](../../azure-monitor/app/proactive-diagnostics.md) verfügbar sind; die dafür konfigurierten Warnungen werden im Bereich [Warnungen (klassisch)](../../azure-monitor/platform/alerts-classic.overview.md) im Azure-Portal angezeigt
 
-Alle klassischen Überwachungs- und Warnungssysteme, einschließlich der entsprechenden [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md), [CLI](../../azure-monitor/platform/alerts-classic-portal.md), [Azure-Portalseite](../../azure-monitor/platform/alerts-classic-portal.md) und der [Ressourcenvorlage](../../azure-monitor/platform/alerts-enable-template.md), können bis Ende Juni 2019 weiterhin verwendet werden. 
+Alle klassischen Überwachungs- und Warnungssysteme, einschließlich der entsprechenden [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md), [CLI](../../azure-monitor/platform/alerts-classic-portal.md), [Azure-Portalseite](../../azure-monitor/platform/alerts-classic-portal.md) und der [Ressourcenvorlage](../../azure-monitor/platform/alerts-enable-template.md), können bis Ende August 2019 weiterhin verwendet werden. 
 
-Ab Ende Juni 2019 gilt Folgendes für Azure Monitor:
+Ab Ende August 2019 gilt Folgendes für Azure Monitor:
 
 - Klassische Überwachungs- und Warnungsdienste werden außer Betrieb genommen und sind für die Erstellung neuer Warnungsregeln nicht mehr verfügbar.
-- Alle Warnungsregeln, die in „Warnungen (klassisch)“ nach Juni 2019 noch vorhanden sind, werden auch weiterhin Benachrichtigungen ausführen und auslösen. Sie können jedoch nicht geändert werden.
-- Ab Juli 2019 werden alle Warnungsregeln des klassischen Überwachungs- und Warnungsdiensts von Microsoft automatisch auf ihr Äquivalent in der neuen Azure-Überwachungsplattform migriert. Dabei handelt es sich um einen nahtlosen Prozess ohne Ausfallzeiten, bei dem für Kunden keine Überwachungslücken auftreten.
+- Alle Warnungsregeln, die in „Warnungen (klassisch)“ nach August 2019 noch vorhanden sind, werden auch weiterhin Benachrichtigungen ausführen und auslösen, können jedoch nicht geändert werden.
+- Ab September 2019 werden Warnungsregeln der klassischen Überwachung und Warnung, die migriert werden können, von Microsoft automatisch in den äquivalenten Dienst auf der neuen Azure-Überwachungsplattform verschoben. Dies erfolgt in Phasen, die sich über mehrere Wochen erstrecken können. Dabei handelt es sich um einen nahtlosen Prozess ohne Ausfallzeiten, bei dem für Kunden keine Überwachungslücken auftreten.
 - Warnungsregeln, die auf die neue Warnungsplattform migriert werden, bieten die Überwachungsabdeckung wie bisher, lösen aber die Benachrichtigung mit neuen Nutzlasten aus. Alle E-Mail-Adressen, Webhookendpunkte oder Logik-App-Links, die mit einer klassischen Warnungsregel verbunden sind, werden bei der Migration übernommen, verhalten sich aber möglicherweise nicht richtig, da die Warnungsnutzlast auf der neuen Plattform eine andere ist.
+- Einige [klassische Warnungsregeln, die nicht automatisch migriert werden können](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated) und manuelle Aktionen von Benutzern erfordern, werden weiterhin bis Juni 2020 ausgeführt.
 
 > [!IMPORTANT]
-> Microsoft Azure Monitor wird Kunden in Kürze ein Tool zur Verfügung stellen, mit dem sie ihre klassischen Warnungsregeln automatisch zur neuen Plattform migrieren können. Und ab Juli 2019 wird die Ausführung des Tools für alle noch vorhandenen klassischen Warnungsregeln erzwungen. Kunden müssen sicherstellen, dass die Automatisierung der Nutzung der Nutzlast klassischer Warnungsregeln für die Verarbeitung der neuen Nutzlast aus [Einheitlichen Metriken und Warnungen in Application Insights](#unified-metrics-and-alerts-in-application-insights) oder [Einheitlichen Metriken und Warnungen für andere Azure-Ressourcen](#unified-metrics-and-alerts-for-other-azure-resources) nach der Migration der klassischen Warnungsregeln angepasst wird. 
+> Microsoft Azure Monitor hat in Phasen ein [Tool zum freiwilligen Migrieren](alerts-using-migration-tool.md) herausgebracht, mit dem Kunden ihre klassischen Warnungsregeln bald zur neuen Plattform migrieren können. Ab September 2019 wird die Ausführung des Tools für alle noch vorhandenen klassischen Warnungsregeln erzwungen, die migriert werden können. Kunden müssen sicherstellen, dass die Automatisierung der Nutzung der Nutzlast klassischer Warnungsregeln für die Verarbeitung der neuen Nutzlast aus [Einheitlichen Metriken und Warnungen in Application Insights](#unified-metrics-and-alerts-in-application-insights) oder [Einheitlichen Metriken und Warnungen für andere Azure-Ressourcen](#unified-metrics-and-alerts-for-other-azure-resources) nach der Migration der klassischen Warnungsregeln angepasst wird. Weitere Informationen finden Sie unter [Vorbereiten Ihrer Logik-Apps und Runbooks für die Migration klassischer Warnungsregeln](alerts-prepare-migration.md).
 
-Wir stellen in Kürze Tools zur Verfügung, die Ihnen die freiwillige Migration Ihrer Benachrichtigungen aus dem Bereich [Warnungen (klassisch)](../../azure-monitor/platform/alerts-classic.overview.md) des Azure-Portals zu den neuen Azure-Benachrichtigungen erlauben. Alle Regeln, die in Warnungen (klassisch) konfiguriert sind und zum neuen Azure Monitor migriert werden, bleiben kostenlos und ohne Berechnung. Ebenso fallen für migrierte klassische Warnungsregeln keine Kosten für das Pushen von Benachrichtigungen per E-Mail, Webhook oder Logik-App an. Die Verwendung der neueren Benachrichtigungs- oder Aktionstypen (wie etwa SMS, Sprachanruf, ITSM-Integration usw.) wird jedoch in Rechnung gestellt, unabhängig davon, ob sie zu migrierten oder zu neuen Benachrichtigungen hinzugefügt werden. Weitere Informationen finden Sie unter [Azure Monitor-Preise](https://azure.microsoft.com/pricing/details/monitor/).
+Dieser Artikel wird fortlaufend mit Links und Details zur neuen Überwachungs- und Benachrichtigungsfunktionalität von Azure sowie zur Verfügbarkeit von Tools aktualisiert, die Benutzer bei der Umstellung auf die neue Azure Monitor-Plattform unterstützen.
 
-Darüber hinaus werden die Folgenden im Geltungsbereich der [Azure Monitor-Preise](https://azure.microsoft.com/pricing/details/monitor/) kostenpflichtig:
+## <a name="pricing-for-migrated-alert-rules"></a>Preise für migrierte Warnungsregeln
+
+Wir führen ein Migrationstool ein, das Sie beim Migrieren der [klassischen Warnungen](../../azure-monitor/platform/alerts-classic.overview.md) von Azure Monitor zur neuen Benutzeroberfläche für Warnungen unterstützt. Die migrierten Warnungsregeln und die zugehörigen migrierten Aktionsgruppen (E-Mail, Webhook oder LogicApp) bleiben gebührenfrei. Die Funktionen, die Sie bei klassischen Warnungen nutzen konnten – Bearbeiten von Schwellenwerten, Aggregationstyp und Detailgenauigkeit einer Aggregation – bleiben auch bei der migrierten Warnungsregel weiterhin kostenlos verfügbar. Wenn Sie jedoch eine migrierte Warnungsregel bearbeiten, sodass diese ein Feature der neuen Warnungsplattform, eine Benachrichtigung oder einen Aktionstyp verwendet, wird die entsprechende Gebühr berechnet. Weitere Informationen zu den Preisen für Warnungsregeln und Benachrichtigungen finden Sie unter [Preise für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
+
+Im Folgenden finden Sie einige Beispiele für Fälle, in denen für Ihre Warnungsregel eine Gebühr berechnet wird:
 
 - Alle neuen (nicht migrierten) Warnungsregeln, die über die kostenlosen Einheiten auf der neuen Azure Monitor-Plattform erstellt werden
 - Alle über die in Azure Monitor inbegriffenen kostenlosen Einheiten hinaus erfassten und aufbewahrten Daten
 - Alle mehrfachen Web-Tests, die von Application Insights ausgeführt werden
 - Alle benutzerdefinierten Metriken, die über die inbegriffenen kostenlosen Einheiten hinaus in Azure Monitor gespeichert werden
-
-Dieser Artikel wird fortlaufend mit Links und Details zur neuen Überwachungs- und Benachrichtigungsfunktionalität von Azure sowie zur Verfügbarkeit von Tools aktualisiert, die Benutzer bei der Umstellung auf die neue Azure Monitor-Plattform unterstützen.
-
+- Alle migrierten Warnungsregeln, die bearbeitet wurden und neuere Metrikwarnungsfeatures nutzen – z. B. Häufigkeit, mehrere Ressourcen/Dimensionen, [dynamischer Schwellwert](alerts-dynamic-thresholds.md), Ändern von Ressourcen/Signalen usw.
+- Alle migrierten Aktionsgruppen, die bearbeitet wurden und neuere Benachrichtigungen oder Aktionstypen wie SMS, Sprachanruf und/oder ITSM-Integration verwenden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zum [neuen einheitlichen Azure Monitor](../../azure-monitor/overview.md).
 * Weitere Informationen über die neuen [Azure-Warnungen](../../azure-monitor/platform/alerts-overview.md).
-

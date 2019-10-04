@@ -1,22 +1,15 @@
-items:
 - name: Integration von Entwicklertools
   href: index.yml
   items:
-  - name: IntelliJ
-    href: /java/azure/intellij/azure-toolkit-for-intellij
-  - name: Maven
-    href: /java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin
-  - name: Eclipse
-    href: /java/azure/eclipse/azure-toolkit-for-eclipse
-  - name: Ansible
-    href: /azure/ansible/
-  - name: Jenkins
-    href: /azure/jenkins/
-  - name: Terraform
-    href: /azure/terraform/
-ms.openlocfilehash: 08e2751a5be087eb1fba73c662b6d411e0093d63
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206035"
+    - name: IntelliJ
+      href: /java/azure/intellij/azure-toolkit-for-intellij
+    - name: Maven
+      href: /java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin
+    - name: Eclipse
+      href: /java/azure/eclipse/azure-toolkit-for-eclipse
+    - name: Ansible
+      href: /azure/ansible/
+    - name: Jenkins
+      href: /azure/jenkins/
+    - name: Terraform
+      href: /azure/terraform/

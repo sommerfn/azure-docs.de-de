@@ -3,8 +3,8 @@ title: Sichern von Single-Page-Webanwendungen mit dem impliziten Datenfluss der 
 description: Erstellen von Webanwendungen mit der Microsoft Identity Platform-Implementierung des impliziten Datenflusses für Single-Page-Apps.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 3605931f-dc24-4910-bb50-5375defec6a8
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 453a3316288cbc0b07d82e2fad9ecc7c3d353e9b
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: ab5ba4fde7469854954ed19d2e643f2b8a23f34f
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501313"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193256"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform und der implizit gewährte Datenfluss
 
@@ -48,11 +48,11 @@ Wenn Sie jedoch in Ihrer Single-Page-App keine Bibliothek verwenden und Protokol
 
 Das folgende Diagramm zeigt, wie der gesamte implizite Anmeldevorgang aussieht, und in den folgenden Abschnitten wird jeder Schritt im Detail beschrieben.
 
-![OpenID Connect-Verantwortlichkeitsbereiche](./media/v2-oauth2-implicit-grant-flow/convergence-scenarios-implicit.svg)
+![Diagramm: Impliziter Anmeldevorgang](./media/v2-oauth2-implicit-grant-flow/convergence-scenarios-implicit.svg)
 
 ## <a name="send-the-sign-in-request"></a>Senden der Anmeldeanforderung
 
-Zur anfänglichen Anmeldung des Benutzers bei Ihrer App können Sie eine [OpenID Connect](v2-protocols-oidc.md)-Autorisierungsanforderung senden und ein `id_token` vom Microsoft Identity Platform-Endpunkt abrufen.
+Zur anfänglichen Anmeldung des Benutzers bei Ihrer App können Sie eine [OpenID Connect](v2-protocols-oidc.md)-Authentifizierungsanforderung senden und ein `id_token` vom Microsoft Identity Platform-Endpunkt abrufen.
 
 > [!IMPORTANT]
 > Um ein ID-Token erfolgreich anfordern zu können, muss für die App-Registrierung im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) der Flow zur impliziten Genehmigung aktiviert sein. Zu diesem Zweck wählen Sie **Zugriffstoken** und **ID-Token** unter dem Abschnitt **Implizite Genehmigung** aus. Wenn sie nicht aktiviert ist, wird ein Fehler des Typs `unsupported_response` zurückgegeben: **The provided value for the input parameter ‚response_type‘ is not allowed for this client. Expected value is ‚code‘.** (Der angegebene Wert für den Eingabeparameter ‚response_type‘ ist für diesen Client nicht zulässig. Erwarteter Wert: ‚code‘.)
@@ -84,7 +84,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `response_mode` | optional |Gibt die Methode an, die zum Senden des resultierenden Tokens zurück an Ihre App verwendet werden soll. Der Standardwert für ein Zugriffstoken ist „Abfrage“, aber „Fragment“, wenn die Anforderung ein „id_token“ enthält. |
 | `state` | empfohlen |Ein in der Anforderung enthaltener Wert, der auch in der Antwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](https://tools.ietf.org/html/rfc6749#section-10.12). Der Status wird auch verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z. B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 | `nonce` | required |Ein Wert in der Anforderung, der von der App erzeugt wird und im resultierenden ID-Token als Anspruch enthalten sein wird. Die App kann diesen Wert dann überprüfen, um die Gefahr von Tokenwiedergabeangriffen zu vermindern. Der Wert ist in der Regel eine zufällige, eindeutige Zeichenfolge, die verwendet werden kann, um den Ursprung der Anforderung zu identifizieren. Nur erforderlich, wenn ein „id_token“ angefordert wird. |
-| `prompt` | optional |Gibt den Typ der erforderlichen Benutzerinteraktion an. Zu diesem Zeitpunkt sind die einzigen gültigen Werte „login“, „none“, „select_account“ und „consent“. `prompt=login` zwingt den Benutzer, die Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden ist dadurch nicht möglich. `prompt=none` ist genau das Gegenteil: Dieser Wert stellt sicher, dass dem Benutzer keine interaktive Eingabeaufforderung angezeigt wird. Wenn die Anforderung nicht über einmaliges Anmelden im Hintergrund abgeschlossen werden kann, gibt der Microsoft Identity Platform-Endpunkt einen Fehler zurück. `prompt=select_account` sendet den Benutzer an eine Kontoauswahl, in der alle in der Sitzung gespeicherten Konten angezeigt werden. `prompt=consent` löst nach der Anmeldung des Benutzers das OAuth-Zustimmungsdialogfeld aus, in dem der Benutzer aufgefordert wird, der App Berechtigungen zu erteilen. |
+| `prompt` | optional |Gibt den Typ der erforderlichen Benutzerinteraktion an. Zu diesem Zeitpunkt sind die einzigen gültigen Werte „login“, „none“, „select_account“ und „consent“. `prompt=login` zwingt den Benutzer, die Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden ist dadurch nicht möglich. `prompt=none` ist genau das Gegenteil: Dieser Wert stellt sicher, dass dem Benutzer keine interaktive Eingabeaufforderung angezeigt wird. Wenn die Anforderung nicht über einmaliges Anmelden im Hintergrund abgeschlossen werden kann, gibt der Microsoft Identity Platform-Endpunkt einen Fehler zurück. `prompt=select_account` sendet den Benutzer an eine Kontoauswahl, in der alle in der Sitzung gespeicherten Konten angezeigt werden. `prompt=consent` löst nach der Anmeldung des Benutzers das OAuth-Zustimmungsdialogfeld aus, in dem der Benutzer aufgefordert wird, der App Berechtigungen zu gewähren. |
 | `login_hint`  |optional |Dieser Wert kann verwendet werden, um das Feld für den Benutzernamen oder die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist. Apps verwenden diesen Parameter häufig für die wiederholte Authentifizierung, nachdem sie den Benutzernamen aus einer vorherigen Anmeldung mithilfe des Anspruchs `preferred_username` extrahiert haben.|
 | `domain_hint` | optional |Kann `consumers` oder `organizations` sein. Wenn dieser Parameter vorhanden ist, wird der E-Mail-basierte Ermittlungsvorgang übersprungen, den der Benutzer auf der Anmeldeseite durchläuft, und so die Benutzerfreundlichkeit verbessert. Apps verwenden diesen Parameter häufig für die wiederholte Authentifizierung, indem sie den Anspruch `tid` aus dem ID-Token extrahieren. Verwenden Sie `domain_hint=consumers`, wenn für den Anspruch `tid` der Wert `9188040d-6c67-4c5b-b112-36a304b66dad` festgelegt ist (der Endkundenmandant des Microsoft-Kontos). Andernfalls können Sie `domain_hint=organizations` während der erneuten Authentifizierung verwenden. |
 
@@ -130,7 +130,7 @@ error=access_denied
 | `error` |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | `error_description` |Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
 
-## <a name="validate-the-idtoken"></a>Überprüfen des ID-Tokens
+## <a name="validate-the-id_token"></a>Überprüfen des ID-Tokens
 
 Das Empfangen eines ID-Tokens allein reicht nicht aus, um den Benutzer zu authentifizieren. Sie müssen auch die Signatur des ID-Tokens (id_token) validieren und die Ansprüche im Token auf Grundlage der Anforderungen Ihrer App überprüfen. Der Microsoft Identity Platform-Endpunkt verwendet [JSON-Webtoken (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) und die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen.
 
@@ -214,16 +214,6 @@ error=user_authentication_required
 
 Wenn Sie diesen Fehler in der IFrame-Anforderung erhalten, muss sich der Benutzer erneut anmelden, um ein neues Token abzurufen. Diesen Fall können Sie so behandeln, wie es für Ihre Anwendung am sinnvollsten ist.
 
-## <a name="validating-access-tokens"></a>Überprüfen von Zugriffstoken
-
-Überprüfen Sie nach Erhalt eines Zugriffstokens die Signatur des Tokens sowie die folgenden Ansprüche. Sie können je nach Szenario auch zusätzliche Ansprüche überprüfen.
-
-* Anspruch **Zielgruppe**: Zum Sicherstellen, dass das Token an Ihre App übergeben werden sollte
-* Anspruch **issuer** (Aussteller): zum Überprüfen, ob das Token tatsächlich vom Microsoft Identity Platform-Endpunkt für Ihre App ausgestellt wurde
-* Ansprüche **Nicht vor** und **Ablaufzeit**: Zum Sicherstellen, dass das Token nicht abgelaufen ist
-
-Weitere Informationen zu den Ansprüchen im Zugriffstoken finden Sie in der [Zugriffstokenreferenz](access-tokens.md).
-
 ## <a name="refreshing-tokens"></a>Aktualisieren von Token
 
 Die implizite Gewährung stellt keine Aktualisierungstoken bereit. `id_token`s und `access_token`s laufen nach kurzer Zeit ab. Ihre App muss daher diese Token in regelmäßigen Abständen aktualisieren. Zum Aktualisieren beider Tokentypen können Sie die oben erwähnte verborgene IFrame-Anforderung unter Verwendung des Parameters `prompt=none` ausführen, um das Verhalten der Microsoft Identity Platform zu steuern. Wenn Sie ein neues `id_token` erhalten möchten, verwenden Sie unbedingt `response_type=id_token` und `scope=openid`, sowie den Parameter `nonce`.
@@ -243,4 +233,4 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Wechseln Sie zu den [MSAL JS-Beispielen](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Samples), um in die Programmierung einzusteigen.
+* Wechseln Sie zu den [MSAL JS-Beispielen](sample-v2-code.md), um in die Programmierung einzusteigen.

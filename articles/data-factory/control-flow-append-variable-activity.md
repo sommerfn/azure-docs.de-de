@@ -5,18 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.date: 10/09/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: a5efe946000eb00e65d314ae53d7136761e2109d
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 24808c9ed4bda5e8d3b0ce23ab93bc59eb260374
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575153"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141727"
 ---
 # <a name="append-variable-activity-in-azure-data-factory"></a>Aktivität „Variable anfügen“ in Azure Data Factory
 
@@ -27,7 +27,7 @@ Verwenden Sie die Aktivität „Variable anfügen“ zum Hinzufügen eines Werts
 Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
 name | Der Name der Aktivität in der Pipeline. | Ja
-Beschreibung | Text, der beschreibt, welche Aktion die Aktivität ausführt. | no
+description | Text, der beschreibt, welche Aktion die Aktivität ausführt. | no
 type | Der Aktivitätstyp ist AppendVariable. | Ja
 value | Ein Zeichenfolgenliteral- oder Ausdrucksobjektwert, der zum Anfügen an die angegebene Variable verwendet wird. | Ja
 variableName | Der Name der Variablen, die von der Aktivität geändert wird. Die Variable muss vom Typ „Array“ sein. | Ja

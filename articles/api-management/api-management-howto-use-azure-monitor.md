@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 6a4e9a0c33b227716227213e94948df430566065
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 598168285ee67921ab17ab8c2ce780753c562f81
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622194"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072338"
 ---
 # <a name="monitor-published-apis"></a>Überwachen von veröffentlichten APIs
 
@@ -62,10 +61,11 @@ So greifen Sie auf Metriken zu:
 
 1. Klicken Sie im Menü am unteren Seitenrand auf **Metriken**.
 
-    ![Metriken](./media/api-management-azure-monitor/api-management-metrics-blade.png)
+    ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. Wählen Sie im Dropdownmenü die gewünschten Metriken aus. Beispiel: **Successful Gateway Requests** (Erfolgreiche Gatewayanforderungen). Sie können auch weitere Metriken zum Diagramm hinzufügen.
-3. Im Diagramm ist die Gesamtanzahl erfolgreicher API-Aufrufe gezeigt.
+1. Wählen Sie im Dropdownmenü die gewünschten Metriken aus. Beispiel: **Anforderungen**. 
+1. Im Diagramm ist die Gesamtanzahl von API-Aufrufen gezeigt.
+1. Das Diagramm kann anhand der Dimensionen der Metrik **Anforderungen** gefiltert werden. Klicken Sie beispielsweise auf **Filter hinzufügen**, wählen Sie **Backend Response Code** (Antwortcode des Back-Ends) aus, und geben Sie als Wert 500 ein. Das Diagramm zeigt nun die Anzahl von Anforderungen an, für die im API-Back-End ein Fehler auftrat.   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>Einrichten einer Warnungsregel für nicht autorisierte Anforderungen
 
@@ -191,10 +191,10 @@ API Management bietet derzeit Diagnoseprotokolle (stündlich erfasst) zu einzeln
 | correlationId | Zeichenfolge | Von API Management zugewiesene eindeutige HTTP-Anforderungs-ID |
 | location | Zeichenfolge | Name der Azure-Region, in der sich das Gateway befindet, das die Anforderung verarbeitet hat |
 | httpStatusCodeCategory | Zeichenfolge | Kategorie des HTTP-Antwortstatuscodes: Erfolgreich (301 oder darunter, 304 oder 307), Nicht autorisiert (401, 403, 429), Erroneous (Fehler) (400, zwischen 500 und 600), Other (Sonstiges) |
-| Ressourcen-ID | Zeichenfolge | ID der API Management-Ressource: /SUBSCRIPTIONS/\<Abonnement>/RESOURCEGROUPS/\<Ressourcengruppe>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<Name> |
-| Eigenschaften | object | Eigenschaften der aktuellen Anforderung |
+| resourceId | Zeichenfolge | ID der API Management-Ressource: /SUBSCRIPTIONS/\<Abonnement>/RESOURCEGROUPS/\<Ressourcengruppe>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<Name> |
+| properties | object | Eigenschaften der aktuellen Anforderung |
 | method | Zeichenfolge | HTTP-Methode der eingehenden Anforderung |
-| URL | Zeichenfolge | URL der eingehenden Anforderung |
+| url | Zeichenfolge | URL der eingehenden Anforderung |
 | clientProtocol | Zeichenfolge | HTTP-Protokollversion der eingehenden Anforderung |
 | responseCode | integer | Statuscode der an einen Client gesendeten HTTP-Antwort |
 | backendMethod | Zeichenfolge | HTTP-Methode der an ein Back-End gesendeten Anforderung |
@@ -213,13 +213,13 @@ API Management bietet derzeit Diagnoseprotokolle (stündlich erfasst) zu einzeln
 | userId | Zeichenfolge | Benutzerentitätsbezeichner für die aktuelle Anforderung | 
 | apimSubscriptionId | Zeichenfolge | Abonnemententitätsbezeichner für die aktuelle Anforderung | 
 | backendId | Zeichenfolge | Back-End-Entitätsbezeichner für die aktuelle Anforderung | 
-| LastError | object | Letzter Anforderungsverarbeitungsfehler | 
+| lastError | object | Letzter Anforderungsverarbeitungsfehler | 
 | elapsed | integer | Anzahl der Millisekunden, die zwischen dem Eingehen der Anforderung beim Gateway und dem Auftreten des Fehlers vergangen sind | 
-| Quelle | Zeichenfolge | Der Fehler wurde durch den Namen der Richtlinie oder die Verarbeitung des internen Handlers verursacht. | 
+| source | Zeichenfolge | Der Fehler wurde durch den Namen der Richtlinie oder die Verarbeitung des internen Handlers verursacht. | 
 | scope | Zeichenfolge | Der Fehler wurde durch den Bereich des Richtliniendokuments verursacht, das die Richtlinie enthält. | 
 | section | Zeichenfolge | Der Fehler wurde durch den Abschnitt des Richtliniendokuments verursacht, der die Richtlinie enthält. | 
 | reason | Zeichenfolge | Fehlerursache | 
-| Message: | Zeichenfolge | Fehlermeldung | 
+| message | Zeichenfolge | Fehlermeldung | 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

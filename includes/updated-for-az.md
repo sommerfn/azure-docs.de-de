@@ -2,15 +2,16 @@
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 01/31/2019
+ms.date: 04/17/2019
 ms.topic: include
-ms.openlocfilehash: 2bfb53ffbeaf03c669cd27b87d906ffeea358936
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bba762fca7154067e528ebbbb0ea94c8ba7965f3
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57333945"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "67171094"
 ---
 > [!NOTE]
-> Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az) (Einführung in das neue Az-Modul von Azure PowerShell). Anweisungen zur Installation finden Sie unter [Install Azure PowerShell](/powershell/azure/install-az-ps) (Installieren von Azure PowerShell).
+> Dieser Artikel wurde aktualisiert und beinhaltet jetzt das neue Az-Modul von Azure PowerShell. Sie können das AzureRM-Modul weiterhin verwenden, das bis mindestens Dezember 2020 weiterhin Fehlerbehebungen erhält.
+> Weitere Informationen zum neuen Az-Modul und zur Kompatibilität mit AzureRM finden Sie unter [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az) (Einführung in das neue Az-Modul von Azure PowerShell). Anweisungen zur Installation des Az-Moduls finden Sie unter [Install Azure PowerShell](/powershell/azure/install-az-ps) (Installieren von Azure PowerShell).
 

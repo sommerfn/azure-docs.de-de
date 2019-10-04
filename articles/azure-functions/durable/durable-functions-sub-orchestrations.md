@@ -6,16 +6,15 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1ab9a5714a7ef24b51957bd48b1b67240cf13adb
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 7b5e811daecbb7687abe7a37b75e2730d7830c2c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607665"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983614"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Untergeordnete Orchestrierungen in Durable Functions (Azure Functions)
 
@@ -23,7 +22,10 @@ Orchestratorfunktionen können nicht nur Aktivitätsfunktionen aufrufen, sondern
 
 Eine Orchestratorfunktion kann eine andere Orchestratorfunktion in .NET über die [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_)- oder die [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_)-Methode oder in JavaScript über die `callSubOrchestrator`- oder `callSubOrchestratorWithRetry`-Methoden aufrufen. Der Artikel zur [Fehlerbehandlung und -kompensierung](durable-functions-error-handling.md#automatic-retry-on-failure) enthält weitere Informationen zur automatischen Wiederholung.
 
-Untergeordnete Orchestratorfunktionen verhalten sich aus Sicht des Aufrufers genauso wie Aktivitätsfunktionen. Sie können einen Wert zurückgeben und eine Ausnahme auslösen, und die übergeordnete Orchestratorfunktion kann sie erwarten.
+Untergeordnete Orchestratorfunktionen verhalten sich aus Sicht des Aufrufers genauso wie Aktivitätsfunktionen. Sie können einen Wert zurückgeben und eine Ausnahme auslösen, und die übergeordnete Orchestratorfunktion kann sie erwarten. 
+
+> [!NOTE]
+> Derzeit ist es erforderlich, einen `instanceId`-Argumentwert für die subOrchestration-API in JavaScript bereitzustellen.
 
 ## <a name="example"></a>Beispiel
 
@@ -108,9 +110,12 @@ module.exports = df.orchestrator(function*(context) {
 
     // Run multiple device provisioning flows in parallel
     const provisioningTasks = [];
+    var id = 0;
     for (const deviceId of deviceIds) {
-        const provisionTask = context.df.callSubOrchestrator("DeviceProvisioningOrchestration", deviceId);
+        const child_id = context.df.instanceId+`:${id}`;
+        const provisionTask = context.df.callSubOrchestrator("DeviceProvisioningOrchestration", deviceId, child_id);
         provisioningTasks.push(provisionTask);
+        id++;
     }
 
     yield context.df.Task.all(provisioningTasks);
@@ -119,7 +124,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+> [!NOTE]
+> Unterorchestrierungen müssen in derselben Funktions-App wie die übergeordnete Orchestrierung definiert werden. Wenn Sie Orchestrierungen in einer anderen Funktionsanwendung aufrufen und auf diese warten müssen, sollten Sie die integrierte Unterstützung für HTTP-APIs und das HTTP 202- Abfrageconsumermuster verwenden. Weitere Informationen finden Sie im Thema [HTTP-Funktionen](durable-functions-http-features.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Informationen zu Aufgabenhubs und ihrer Konfiguration](durable-functions-task-hubs.md)
+> [Erfahren Sie, wie ein benutzerdefiniertee Orchestrierungsstatus festgelegt wird](durable-functions-custom-orchestration-status.md)

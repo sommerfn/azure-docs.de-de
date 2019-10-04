@@ -1,29 +1,23 @@
 ---
 title: Einführung in ML Services in Azure HDInsight
 description: Erfahren Sie, wie Sie ML Services in HDInsight zum Erstellen von Anwendungen für Big Data-Analysen verwenden.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: a07f052cf89da039bb9fe091f1cd997c19d2fcc7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.topic: overview
+ms.date: 06/12/2019
+ms.openlocfilehash: 5108424c4e39c1c47710c0e25e4e22c4474e68ad
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584529"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68941697"
 ---
-# <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Einführung in ML Services und Open-Source-R-Funktionen in HDInsight
-
-> [!NOTE]  
-> Im September 2017 wurde Microsoft R Server unter dem neuen Namen **Microsoft Machine Learning Server** oder ML Server veröffentlicht. R Server-Cluster in HDInsight heißen daher jetzt **Machine Learning Services** oder **ML Services**-Cluster in HDInsight. Weitere Informationen zur Änderung des Namens von R Server finden Sie unter [Microsoft R Server is now Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server#get-support-for-r-server) (Microsoft R Server ist jetzt Microsoft Machine Learning Server).
+# <a name="what-is-ml-services-in-azure-hdinsight"></a>Worum handelt es sich bei ML Services in Azure HDInsight?
 
 Microsoft Machine Learning Server ist als Bereitstellungsoption bei der Erstellung von HDInsight-Clustern in Azure verfügbar. Der Clustertyp, der diese Option bietet, heißt **ML Services**. Diese Funktion ermöglicht Datenanalysten, Statistikern und R-Programmierern bei Bedarf den Zugriff auf skalierbare, verteilte Analysemethoden in HDInsight.
-
-[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 ML Services in HDInsight bietet die neuesten Funktionen für die R-basierte Analyse praktisch beliebig großer Datasets, die in Azure Blob Storage oder Data Lake Store geladen wurden. Da ML Services-Cluster auf Open-Source-R basieren, stehen Ihnen bei der Erstellung R-basierter Anwendungen alle über 8.000 Open-Source-R-Pakete zur Verfügung. Die Routinen in ScaleR, dem Big Data-Analysepaket von Microsoft, stehen ebenfalls zur Verfügung.
 
@@ -33,17 +27,17 @@ Die Modelle oder Vorhersagen, die sich aus der Analyse ergeben, können für die
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Erste Schritte mit ML Services in HDInsight
 
-Um in Azure HDInsight einen ML Services-Cluster zu erstellen, wählen Sie beim Erstellen eines HDInsight-Clusters im Azure-Portal den Clustertyp **ML Services** aus. Der Typ des ML Services-Clusters bezieht ML Server auf den Datenknoten des Clusters und auf einem Edgeknoten ein, der als Landezone für ML Services-basierte Analysen dient. Eine Anleitung zum Erstellen eines Clusters finden Sie unter [Erste Schritte mit ML Services in HDInsight](r-server-get-started.md).
+Um in Azure HDInsight einen ML Services-Cluster zu erstellen, wählen Sie beim Erstellen eines HDInsight-Clusters im Azure-Portal den Clustertyp **ML Services** aus. Der Typ des ML Services-Clusters bezieht ML Server auf den Datenknoten des Clusters und auf einem Edgeknoten ein, der als Landezone für ML Services-basierte Analysen dient. Unter [Erstellen von Apache Hadoop-Clustern im Azure-Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) finden Sie eine exemplarische Vorgehensweise zum Erstellen des Clusters.
 
 ## <a name="why-choose-ml-services-in-hdinsight"></a>Gründe für die Wahl von ML Services in HDInsight
 
 ML Services in HDInsight bietet folgende Vorteile:
 
-### <a name="ai-innovation-from-microsoft-and-open-source"></a>AI-Innovation von Microsoft und Open-Source
+### <a name="ai-innovation-from-microsoft-and-open-source"></a>KI-Innovation von Microsoft und Open-Source
 
   ML Services beinhaltet hochgradig skalierbare, verteilte Algorithmen, etwa [RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package) und [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package), die auf Datenvolumen oberhalb der Größe des Arbeitsspeichers angewandt werden können und sich in verteilter Form auf einer Vielzahl von Plattformen ausführen lassen. Erfahren Sie mehr über die Sammlung der angepassten [R-Pakete](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) und [Python-Pakete](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) von Microsoft, die im Lieferumfang des Produkts enthalten sind.
   
-  ML Services verbindet diese Microsoft-Innovationen mit Beiträgen aus der Open-Source-Community (R-, Python- und AI-Toolkits) auf einer einzelnen Plattform auf Unternehmensniveau. Jedes Open-Source-Paket für maschinelles Lernen in R oder Python funktioniert parallel mit jeder proprietären Innovation von Microsoft.
+  ML Services verbindet diese Microsoft-Innovationen mit Beiträgen aus der Open-Source-Community (R-, Python- und KI-Toolkits) auf einer einzelnen Plattform auf Unternehmensniveau. Jedes Open-Source-Paket für maschinelles Lernen in R oder Python funktioniert parallel mit jeder proprietären Innovation von Microsoft.
 
 ### <a name="simple-secure-and-high-scale-operationalization-and-administration"></a>Einfache, sichere und hochgradig skalierbare Operationalisierung und Verwaltung
 
@@ -74,13 +68,13 @@ Die folgenden Features sind in ML Services in HDInsight enthalten.
 
 Standardspeicher für das HDFS-Dateisystem von HDInsight-Clustern können entweder einem Azure Storage-Konto oder Azure Data Lake Storage zugeordnet werden. Durch diese Zuordnung wird sichergestellt, dass alle Daten, die während einer Analyse in den Clusterspeicher hochgeladen werden, persistent gemacht werden und selbst nach der Löschung des Clusters noch verfügbar sind. Es gibt verschiedene Tools für die Datenübertragung in die von Ihnen ausgewählte Speicheroption, einschließlich der portalbasierten Hochladefunktion für das Speicherkonto und des [AzCopy](../../storage/common/storage-use-azcopy.md)-Hilfsprogramms.
 
-Unabhängig von der verwendeten primären Speicheroption haben Sie die Möglichkeit, während des Clusterbereitstellungsvorgangs den Zugriff auf zusätzliche Blobspeicher und Data Lake-Speicher zu ermöglichen. Informationen zum Hinzufügen von Zugriff auf zusätzliche Konten finden Sie unter [Erste Schritte mit ML Services in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started). Weitere Informationen zur Verwendung von mehreren Speicherkonten finden Sie unter [Azure Storage-Optionen für ML Services in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage).
+Unabhängig von der verwendeten primären Speicheroption haben Sie die Möglichkeit, während des Clusterbereitstellungsvorgangs den Zugriff auf zusätzliche Blobspeicher und Data Lake-Speicher zu ermöglichen.  Weitere Informationen zur Verwendung von mehreren Speicherkonten finden Sie unter [Azure Storage-Optionen für ML Services in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage).
 
 Außerdem können Sie [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) als Speicheroption für den Edgeknoten wählen. Mit Azure Files können Sie eine Dateifreigabe, die in Azure Storage erstellt wurde, für das Linux-Dateisystem bereitstellen. Weitere Informationen zu diesen Datenspeicheroptionen für ML Services in HDInsight-Clustern finden Sie unter [Azure Storage-Lösungen für ML Services in HDInsight](r-server-storage.md).
 
 ## <a name="access-ml-services-edge-node"></a>Zugreigen auf ML Services-Edgeknoten
 
-Sie können über einen Browser eine Verbindung mit ML Server auf dem Edgeknoten herstellen. R Server wird standardmäßig bei der Clustererstellung installiert. Weitere Informationen finden Sie unter [Erste Schritte mit ML Services in HDInsight](r-server-get-started.md). Sie können auch über die Befehlszeile eine Verbindung mit Clusteredgeknoten herstellen, indem Sie mithilfe von SSH/PuTTY auf die R-Konsole zugreifen.
+Sie können über einen Browser eine Verbindung mit ML Server auf dem Edgeknoten herstellen. R Server wird standardmäßig bei der Clustererstellung installiert.  Sie können auch über die Befehlszeile eine Verbindung mit Clusteredgeknoten herstellen, indem Sie mithilfe von SSH/PuTTY auf die R-Konsole zugreifen.
 
 ## <a name="develop-and-run-r-scripts"></a>Entwickeln und Ausführen von R-Skripts
 
@@ -96,7 +90,7 @@ Schreiben Sie für die Bewertung in HDInsight eine R-Funktion, mit der Ihr Model
 
 ### <a name="score-in-azure-machine-learning-aml"></a>Bewertung in Azure Machine Learning (AML)
 
-Verwenden Sie für die Bewertung mit Azure Machine Learning das Open-Source-Azure Machine Learning-R-Paket namens [AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html), um Ihr Modell als Azure-Webdienst zu veröffentlichen. Der Einfachheit halber ist dieses Paket auf dem Edgeknoten vorinstalliert. Verwenden Sie als Nächstes die Funktionen in Azure Machine Learning zum Erstellen einer Benutzeroberfläche für den Webdienst, und rufen Sie den Webdienst dann nach Bedarf für die Bewertung auf.
+Verwenden Sie für die Bewertung mit Azure Machine Learning das Open-Source-Azure Machine Learning-R-Paket namens [AzureML](https://cran.r-project.org/src/contrib/Archive/AzureML/), um Ihr Modell als Azure-Webdienst zu veröffentlichen. Der Einfachheit halber ist dieses Paket auf dem Edgeknoten vorinstalliert. Verwenden Sie als Nächstes die Funktionen in Azure Machine Learning zum Erstellen einer Benutzeroberfläche für den Webdienst, und rufen Sie den Webdienst dann nach Bedarf für die Bewertung auf.
 
 Wenn Sie diese Option auswählen, müssen Sie zur Verwendung mit dem Webdienst alle ScaleR-Modellobjekte in entsprechende Open-Source-Modellobjekte umwandeln. Verwenden Sie für diese Umwandlung ScaleR-Koersionsfunktionen wie `as.randomForest()` für ensemblebasierte Modelle.
 
@@ -148,6 +142,6 @@ Die Preise für einen ML Services-HDInsight-Cluster sind ähnlich strukturiert w
 
 Weitere Informationen zur Verwendung von ML Services in HDInsight-Clustern finden Sie unter den folgenden Themen:
 
-* [Erste Schritte mit ML Services-Clustern in HDInsight](r-server-get-started.md)
+* [Ausführen eines R-Skripts in einem ML Services-Cluster in Azure HDInsight mithilfe von RStudio Server](machine-learning-services-quickstart-job-rstudio.md)
 * [Compute context options for ML Services on HDInsight](r-server-compute-contexts.md) (Computekontextoptionen für ML Services in HDInsight)
 * [Speicheroptionen für ML Services-Cluster in HDInsight](r-server-storage.md)

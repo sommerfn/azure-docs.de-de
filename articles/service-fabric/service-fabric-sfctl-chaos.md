@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: b584ec301f0f4841c8df8fbbafb410abf645c373
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 27178b2f26086bf693dc9cda342c66f7d47a34d7
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666748"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035105"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 Ermöglicht es, den Chaos-Testdienst zu starten und zu beenden sowie seine Berichte anzuzeigen.
@@ -34,7 +33,7 @@ Ermöglicht es, den Chaos-Testdienst zu starten und zu beenden sowie seine Beric
 | --- | --- |
 | events | Ruft das jeweils nächste Segment der Chaostestereignisse basierend auf dem Fortsetzungstoken oder Zeitbereich ab. |
 | get | Ruft den Status des Chaostests ab. |
-| Start | Startet Chaos im Cluster |
+| start | Startet Chaos im Cluster |
 | stop | Beendet den Chaostest, wenn er im Cluster ausgeführt wird, und versetzt den Zeitplan des Chaostests in den beendeten Zustand. |
 
 ## <a name="sfctl-chaos-events"></a>sfctl chaos events

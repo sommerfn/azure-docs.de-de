@@ -9,14 +9,14 @@ editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 04/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 52475a3976ef8897ffed07c499eb06e7476c0156
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 540435e3e018ae77477030ae8b9f727d71782121
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136292"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64704592"
 ---
 # <a name="use-firewall-rules"></a>Verwenden von Firewallregeln
 
@@ -110,8 +110,8 @@ Vorlagenparameter:
         "type": "Microsoft.ServiceBus/namespaces",
         "location": "[parameters('location')]",
         "sku": {
-          "name": "Standard",
-          "tier": "Standard"
+          "name": "Premium",
+          "tier": "Premium"
         },
         "properties": { }
       },
@@ -149,7 +149,7 @@ Gehen Sie zum Bereitstellen der Vorlage gemäß der Anleitung für [Azure Resour
 
 Informationen zum Einschränken des Service Bus-Zugriffs für virtuelle Azure-Netzwerke finden Sie unter dem folgenden Link:
 
-- [Use Virtual Network service endpoints with Azure Service Bus][lnk-vnet] (Verwenden von Dienstendpunkten im virtuellen Netzwerk für Service Bus)
+- [Use Virtual Network service endpoints with Azure Service Bus][lnk-vnet] (Verwenden von Virtual Network-Dienstendpunkten für Service Bus)
 
 <!-- Links -->
 

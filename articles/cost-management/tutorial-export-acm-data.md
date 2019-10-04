@@ -5,21 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/10/2019
+ms.date: 05/14/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: df893683c387f8d694500ae1ace93a5a146ea352
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 521a5f2543b9a4a84d50f8f0e53a6ae5108f760b
+ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496793"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "65792887"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
 Wenn Sie das Tutorial zur Kostenanalyse gelesen haben, dann sind Sie bereits mit dem manuellen Herunterladen Ihrer Daten zum Cost Management vertraut. Sie können jedoch eine wiederkehrende Aufgabe erstellen, die Ihre Cost Management-Daten täglich, wöchentlich oder monatlich automatisch in Azure Storage exportiert. Die Daten werden im CSV-Format exportiert und enthalten alle Informationen, die von Cost Management gesammelt wurden. Sie können dann die exportierten Daten in Azure Storage mit externen Systemen verwenden und mit Ihren eigenen benutzerdefinierten Daten kombinieren. Darüber hinaus können Sie Ihre exportierten Daten in einem externen System wie einem Dashboard oder einem anderen Finanzsystem verwenden.
+
+Sehen Sie sich das Video [How to schedule exports to storage with Azure Cost Management (Planen von Exporten in den Speicher mit Azure Cost Management)](https://www.youtube.com/watch?v=rWa_xI1aRzo) an. Darin wird gezeigt, wie ein geplanter Export Ihrer Azure-Kostendaten in Azure Storage erstellt wird.
 
 Die Beispiele in diesem Tutorial zeigen Ihnen, wie Sie Ihre Cost Management-Daten exportieren und dann überprüfen, ob die Daten erfolgreich exportiert wurden.
 
@@ -45,7 +47,13 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com/) beim
 
 ## <a name="create-a-daily-export"></a>Erstellen eines täglichen Exports
 
-Zum Erstellen oder Anzeigen eines Datenexports bzw. Planen eines Exports öffnen Sie den gewünschten Bereich im Azure-Portal, und wählen Sie **Kostenanalyse** im Menü aus. Navigieren Sie beispielsweise zu **Abonnements**, und wählen Sie dann ein Abonnement in der Liste und **Kostenanalyse** im Menü aus. Klicken Sie am oberen Rand der Seite „Kostenanalyse“ auf **Exportieren**, und wählen Sie dann eine Exportoption aus. Klicken Sie beispielsweise auf **Export planen**. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
+Zum Erstellen oder Anzeigen eines Datenexports bzw. Planen eines Exports öffnen Sie den gewünschten Bereich im Azure-Portal, und wählen Sie **Kostenanalyse** im Menü aus. Navigieren Sie beispielsweise zu **Abonnements**, und wählen Sie dann ein Abonnement in der Liste und **Kostenanalyse** im Menü aus. Klicken Sie am oberen Rand der Seite „Kostenanalyse“ auf **Exportieren**, und wählen Sie dann eine Exportoption aus. Klicken Sie beispielsweise auf **Export planen**.  
+
+> [!NOTE]
+> Neben Abonnements können Sie Exporte von Ressourcengruppen, Konten, Abteilungen und Registrierungen erstellen. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
+>
+>
+
 
 Klicken Sie auf **Hinzufügen**, geben Sie einen Namen für den Export ein, und wählen Sie die Option **Täglicher Export der Kosten für bisherigen Kalendermonat** aus. Klicken Sie auf **Weiter**.
 
@@ -63,7 +71,7 @@ Zunächst kann es ein bis zwei Stunden dauern, bis der Export ausgeführt wird. 
 
 ### <a name="export-schedule"></a>Exportzeitplan
 
-Uhrzeit und Wochentag der ersten Erstellung eines Exports wirken sich auf geplante Exporte aus. Wenn Sie einen geplanten Export erstellen, werden alle folgenden Exportvorgänge zur gleichen Tageszeit ausgeführt. Beispiel: Sie erstellen einen täglichen Export um 13:00 Uhr. Der nächste Export wird am folgenden Tag um 13:00 Uhr ausgeführt. Die aktuelle Uhrzeit wirkt sich nach dem gleichen Prinzip auf alle anderen Exporttypen aus: Sie werden immer zur gleichen Tageszeit ausgeführt, zu der Sie den Export anfangs erstellt haben. Ein weiteres Beispiel: Sie erstellen einen wöchentlichen Export am Montag um 16:00 Uhr. Der nächste Export wird am folgenden Montag um 16:00 Uhr ausgeführt. *Exportierte Daten sind innerhalb von vier Stunden ab dem Ausführungszeitpunkt verfügbar.*
+Uhrzeit und Wochentag der ersten Erstellung eines Exports wirken sich auf geplante Exporte aus. Wenn Sie einen geplanten Export erstellen, werden alle folgenden Exportvorgänge zur gleichen Tageszeit ausgeführt. Beispiel: Sie erstellen einen täglichen Export um 13:00 Uhr. Der nächste Export wird am folgenden Tag um 13:00 Uhr ausgeführt. Die aktuelle Uhrzeit wirkt sich nach dem gleichen Prinzip auf alle anderen Exporttypen aus: Sie werden immer zur gleichen Tageszeit ausgeführt, zu der Sie den Export anfangs erstellt haben. Ein weiteres Beispiel: Sie erstellen einen wöchentlichen Export am Montag um 16:00 Uhr. Der nächste Export wird am folgenden Montag um 16:00 Uhr ausgeführt. *Exportierte Daten sind innerhalb von vier Stunden ab der Laufzeit verfügbar.*
 
 Bei jedem Export wird eine neue Datei erstellt, sodass ältere Exporte nicht überschrieben werden.
 

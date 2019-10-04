@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: de1263d68e96a23bd6b5eca4297e74b56ba22e40
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 20dd86a46ac1b50f5ce20da6ecf9dff251a8c0b0
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021636"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839021"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Verschieben von Daten aus MySQL mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-onprem-mysql-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-mysql.md)
 
@@ -50,8 +50,8 @@ Damit das Datenverwaltungsgateway eine Verbindung mit der MySQL-Datenbank herste
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Teradata-Datenspeicher verschiebt. 
 
-- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
-- Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
+- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
+- Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
@@ -68,14 +68,14 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OnPremisesMySql**. |JA |
-| server |Name des MySQL-Servers. |JA |
-| database |Name der MySQL-Datenbank. |JA |
-| schema |Name des Schemas in der Datenbank. |Nein  |
-| authenticationType |Typ der Authentifizierung für die Verbindung mit der MySQL-Datenbank. Mögliche Werte: `Basic`. |JA |
-| username |Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit der MySQL-Datenbank an. |JA |
-| password |Geben Sie das Kennwort für das angegebene Benutzerkonto an. |JA |
-| gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen MySQL-Datenbank verwenden soll. |JA |
+| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OnPremisesMySql**. |Ja |
+| server |Name des MySQL-Servers. |Ja |
+| database |Name der MySQL-Datenbank. |Ja |
+| schema |Name des Schemas in der Datenbank. |Nein |
+| authenticationType |Typ der Authentifizierung für die Verbindung mit der MySQL-Datenbank. Mögliche Werte: `Basic`. |Ja |
+| userName |Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit der MySQL-Datenbank an. |Ja |
+| password |Geben Sie das Kennwort für das angegebene Benutzerkonto an. |Ja |
+| gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen MySQL-Datenbank verwenden soll. |Ja |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
@@ -99,7 +99,7 @@ Wenn die Quelle der Kopieraktivität den Typ **RelationalSource** hat (zu dem My
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus MySQL in ein Azure-Blob
-Dieses Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Es wird gezeigt, wie Sie Daten aus einer lokalen MySQL-Datenbank in eine Azure Blob Storage-Instanz kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
+Dieses Beispiel zeigt JSON-Beispieldefinitionen, die Sie zum Erstellen einer Pipeline mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Es wird gezeigt, wie Sie Daten aus einer lokalen MySQL-Datenbank in eine Azure Blob Storage-Instanz kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden.
 
 > [!IMPORTANT]
 > Dieses Beispiel enthält JSON-Codeausschnitte. Eine schrittweise Anleitung zum Erstellen der Data Factory ist nicht enthalten. Einen Artikel mit schrittweisen Anleitungen finden Sie unter [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md) .
@@ -301,45 +301,45 @@ Beim Verschieben von Daten in MySQL werden die folgenden Zuordnungen zwischen My
 
 | Typ "MySQL-Datenbank" | Typ ".NET Framework" |
 | --- | --- |
-| bigint (ohne Vorzeichen) |DECIMAL |
+| bigint (ohne Vorzeichen) |Decimal |
 | bigint |Int64 |
-| Bit |DECIMAL |
+| bit |Decimal |
 | Blob |Byte[] |
-| bool |Boolescher Wert |
-| char |Zeichenfolge |
+| bool |Boolean |
+| char |string |
 | date |DateTime |
-| Datetime |DateTime |
-| decimal |DECIMAL |
+| datetime |DateTime |
+| decimal |Decimal |
 | double precision |Double |
 | Double |Double |
-| enum |Zeichenfolge |
-| Gleitkommawert |Single |
+| enum |string |
+| float |Single |
 | int (ohne Vorzeichen) |Int64 |
 | int |Int32 |
 | integer (ohne Vorzeichen) |Int64 |
 | integer |Int32 |
 | long varbinary |Byte[] |
-| long varchar |Zeichenfolge |
+| long varchar |string |
 | longblob |Byte[] |
-| longtext |Zeichenfolge |
+| longtext |string |
 | mediumblob |Byte[] |
 | mediumint (ohne Vorzeichen) |Int64 |
 | mediumint |Int32 |
-| mediumtext |Zeichenfolge |
-| numeric |DECIMAL |
+| mediumtext |string |
+| numeric |Decimal |
 | real |Double |
-| set |Zeichenfolge |
+| set |string |
 | smallint (ohne Vorzeichen) |Int32 |
 | smallint |Int16 |
-| text |Zeichenfolge |
-| time |Zeitraum |
+| text |string |
+| time |TimeSpan |
 | timestamp |DateTime |
 | tinyblob |Byte[] |
 | tinyint (ohne Vorzeichen) |Int16 |
 | tinyint |Int16 |
-| tinytext |Zeichenfolge |
-| varchar |Zeichenfolge |
-| year |int |
+| tinytext |string |
+| varchar |string |
+| year |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).

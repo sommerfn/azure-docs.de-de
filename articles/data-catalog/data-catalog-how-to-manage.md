@@ -1,19 +1,17 @@
 ---
 title: Verwalten von Datenobjekten in Azure Data Catalog
 description: In diesem Artikel wird erläutert, wie Sie Sichtbarkeit und Besitz von Datenobjekten steuern, die in Azure Data Catalog registriert sind.
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 623f5ed4-8da7-48f5-943a-448d0b7cba69
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 0b155a5cdfa1c540e1cfb92147f6ebc7f88dd929
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: 9905ed72ec54304bbdb0f7ee607cbb013fc645bb
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000639"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736344"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Verwalten von Datenobjekten in Azure Data Catalog
 ## <a name="introduction"></a>Einführung

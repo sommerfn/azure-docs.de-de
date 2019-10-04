@@ -1,22 +1,21 @@
 ---
 title: Überwachen der Clusterleistung – Azure HDInsight
-description: Es wird beschrieben, wie Sie die Kapazität und Leistung eines HDInsight-Clusters überwachen.
-services: hdinsight
-author: maxluk
+description: Überwachen der Integrität und Leistung von Apache Hadoop Clustern in Azure HDInsight.
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: arindamc
-ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 05/29/2019
+ms.openlocfilehash: 7a7544ef9fe5724d1f6c11918411a76461d908e5
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742472"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104394"
 ---
-# <a name="monitor-cluster-performance"></a>Überwachen der Clusterleistung
+# <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Überwachen der Clusterleistung in Azure HDInsight
 
 Die Überwachung der Integrität und Leistung eines HDInsight-Clusters ist sehr wichtig, um eine optimale Leistung und Ressourcenverwendung zu gewährleisten. Darüber hinaus kann die Überwachung dazu beitragen, Clusterkonfigurationsfehler und Benutzercodeprobleme zu erkennen und zu behandeln.
 
@@ -31,17 +30,17 @@ Melden Sie sich bei der [Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-
 | Farbe | BESCHREIBUNG |
 | --- | --- |
 | Rot | Mindestens eine Master-Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
-| Orange | Mindestens eine untergeordnete Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
+| Orange | Mindestens eine sekundäre Komponente auf dem Host ist ausgefallen. Zeigen Sie mit der Maus darauf, um eine QuickInfo mit den betroffenen Komponenten anzuzeigen. |
 | Gelb | Ambari Server hat seit mehr als drei Minuten keinen Heartbeat vom Host empfangen. |
 | Grün | Normaler Ausführungszustand |
 
 Außerdem werden Spalten angezeigt, in denen die Anzahl von Kernen und die RAM-Menge für jeden Host sowie die Datenträgerauslastung und die durchschnittliche Auslastung angezeigt werden.
 
-![Registerkarte „Hosts“](./media/hdinsight-key-scenarios-to-monitor/hosts-tab.png)
+![Apache Ambari: Übersicht über die Hostregisterkarte](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
 
 Wählen Sie einen beliebigen Hostnamen aus, um eine ausführliche Übersicht über die Komponenten, die auf diesem Host ausgeführt werden, und die dazugehörigen Metriken zu erhalten. Die Metriken werden als auswählbare Zeitachse für CPU-Auslastung, Ladezustand, Datenträgerauslastung, Speicherauslastung, Netzwerkauslastung und Anzahl von Prozessen angezeigt.
 
-![Hostdetails](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
+![Apache Ambari: Übersicht über die Hostdetails](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
 
 Unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) finden Sie Details zum Festlegen von Warnungen und Anzeigen von Metriken.
 
@@ -57,19 +56,19 @@ Wenn mehrere Mandanten einen großen Cluster gemeinsam nutzen, wird auch ein Kon
 
 Mithilfe von YARN können diesen Warteschlangen Ressourcen zugeordnet werden, und es wird angezeigt, ob Ihre gesamten verfügbaren Ressourcen zugewiesen wurden. Melden Sie sich zum Anzeigen von Informationen zu Ihren Warteschlangen bei der Ambari-Webbenutzeroberfläche an, und wählen Sie im oberen Menü die Option **YARN Queue Manager** aus.
 
-![YARN Queue Manager](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
+![Apache Ambari: YARN Queue Manager](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
 
 Auf der Seite „YARN Queue Manager“ wird links eine Liste mit Ihren Warteschlangen und der jeweils zugewiesene Kapazitätsprozentsatz angezeigt.
 
 ![Seite mit Details zum YARN Queue Manager](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
 
-Einen ausführlicheren Überblick über Ihre Warteschlangen erhalten Sie, indem Sie im Ambari-Dashboard in der Liste auf der linken Seite den Dienst **YARN** auswählen. Wählen Sie anschließend im Dropdownmenü **Quick Links** (Quicklinks) unter Ihrem aktiven Knoten die Option **Resource Manager UI** (Resource Manager-Benutzeroberfläche) aus.
+Einen ausführlicheren Überblick über Ihre Warteschlangen erhalten Sie, indem Sie im Ambari-Dashboard in der Liste auf der linken Seite den Dienst **YARN** auswählen. Wählen Sie anschließend im Dropdownmenü **Quick Links** (Quicklinks) unter Ihrem aktiven Knoten die Option **Resource Manager UI** (Benutzeroberfläche des Ressourcen-Managers) aus.
 
-![Menülink für die Resource Manager-Benutzeroberfläche](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![Menülinks der Benutzeroberfläche des Ressourcen-Managers](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
 
-Wählen Sie auf der Resource Manager-Benutzeroberfläche im Menü auf der linken Seite die Option **Scheduler** aus. Unter *Application Queues* (Anwendungswarteschlangen) wird eine Liste mit Ihren Warteschlangen angezeigt. Hier sind die verwendete Kapazität für die einzelnen Warteschlangen, der Grad der Verteilung auf die Warteschlangen und etwaige Ressourceneinschränkungen für Aufträge angegeben.
+Wählen Sie auf der Benutzeroberfläche des Ressourcen-Managers im Menü auf der linken Seite die Option **Scheduler** aus. Unter *Application Queues* (Anwendungswarteschlangen) wird eine Liste mit Ihren Warteschlangen angezeigt. Hier sind die verwendete Kapazität für die einzelnen Warteschlangen, der Grad der Verteilung auf die Warteschlangen und etwaige Ressourceneinschränkungen für Aufträge angegeben.
 
-![Menülink für die Resource Manager-Benutzeroberfläche](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![Apache Hadoop: Menü der Benutzeroberfläche des Ressourcen-Managers](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
 ## <a name="storage-throttling"></a>Speicherdrosselung
 

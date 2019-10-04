@@ -1,19 +1,18 @@
 ---
-title: Supportmatrix für die Sicherung mit Azure Backup von Computern, auf denen der Microsoft Azure Recovery Services (MARS)-Agents ausgeführt wird
+title: Unterstützungsmatrix für den Microsoft Azure Recovery Services-Agent (MARS)
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
-services: backup
-author: rayne-wiselman
+author: dcurwin
 ms.service: backup
-ms.date: 02/17/2019
+ms.date: 08/30/2019
 ms.topic: conceptual
-ms.author: raynew
+ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 3e2c6a550a9358656fd0870c7e785d131c5b6380
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1559bb096baaa8f19718bf0c3bcd6b2dc767235b
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894392"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210127"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -24,14 +23,14 @@ Mit dem [Azure Backup-Dienst](backup-overview.md) können Sie lokale Computer un
 Der MARS-Agent wird von Azure Backup verwendet, um Daten von lokalen Computern und Azure-VMs in einem Backup Recovery Services-Tresor in Azure zu sichern. Mit dem MARS-Agent haben Sie folgende Möglichkeiten:
 - Sie können den Agent auf lokalen Windows-Computern ausführen, sodass diese direkt in einem Backup Recovery Services-Tresor in Azure gesichert werden können.
 - Sie können den Agent auf Windows-VMs ausführen, sodass diese direkt in einem Tresor gesichert werden können.
-- Sie können den Agent auf einem MABS-Server (Microsoft Azure Backup Server) oder System Center DPM-Server (Data Protection Manager) ausführen. In diesem Szenario werden Computer und Workloads auf einem MABS- oder DPM-Server gesichert. Anschließend wird dieser Server vom MARS-Agent in einem Tresor in Azure gesichert. 
+- Sie können den Agent auf einem MABS-Server (Microsoft Azure Backup Server) oder System Center DPM-Server (Data Protection Manager) ausführen. In diesem Szenario werden Computer und Workloads auf einem MABS- oder DPM-Server gesichert. Anschließend wird dieser Server vom MARS-Agent in einem Tresor in Azure gesichert.
 
 Welche Möglichkeiten zur Sicherung bestehen, hängt davon ab, welcher Agent installiert ist. Weitere Informationen finden Sie unter [Architektur: Direkte Sicherung von lokalen Windows Server-Computern oder Azure-VM-Dateien oder -Ordnern](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Informationen zur Architektur für die Sicherung mit MABS und DPM finden Sie unter [Architektur: Sicherung mit DPM/MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Weitere Informationen zur Sicherungsarchitektur finden Sie auch unter den [Anforderungen](backup-support-matrix-mabs-dpm.md).
 
 **Installation** | **Details**
 --- | ---
 Aktuellen MARS-Agent herunterladen | Sie können die neueste Version des Agenten aus dem Tresor herunterladen oder [direkt herunterladen](https://aka.ms/azurebackup_agent).
-Direkt auf dem Computer installieren | Sie können den MARS-Agent direkt auf einem lokalen Windows-Server oder einem virtuellen Windows-Computer installieren, auf dem eines der [unterstützten Betriebssysteme](https://docs.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems) ausgeführt wird.
+Direkt auf dem Computer installieren | Sie können den MARS-Agent direkt auf einem lokalen Windows-Server oder einem virtuellen Windows-Computer installieren, auf dem eines der [unterstützten Betriebssysteme](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems) ausgeführt wird.
 Auf einem Sicherungsserver installieren | Wenn Sie DPM oder MABS für die Sicherung auf Azure einrichten, laden Sie den MARS-Agent herunter und installieren ihn auf dem Server. Sie können den Agent gemäß den [unterstützten Betriebssystemen](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) in der Supportmatrix des Sicherungsservers installieren.
 
 > [!NOTE]
@@ -45,8 +44,8 @@ Wenn Sie Daten mit dem MARS-Agent sichern, wird eine Momentaufnahme der Daten er
 
 **Cache** | **Details**
 --- | ---
-Größe |  Der freie Speicherplatz im Cacheordner muss mindestens 5 bis 10 Prozent der Gesamtgröße Ihrer Sicherungsdaten betragen. 
-Standort | Der Cacheordner muss lokal auf dem Computer gespeichert werden, der gesichert wird, und er muss online sein. Der Cacheordner darf sich nicht in einer Netzwerkfreigabe, auf Wechselmedien oder in einem Offline-Volume befinden. 
+Size |  Der freie Speicherplatz im Cacheordner muss mindestens 5 bis 10 Prozent der Gesamtgröße Ihrer Sicherungsdaten betragen.
+Location | Der Cacheordner muss lokal auf dem Computer gespeichert werden, der gesichert wird, und er muss online sein. Der Cacheordner darf sich nicht in einer Netzwerkfreigabe, auf Wechselmedien oder in einem Offline-Volume befinden.
 Ordner | Der Cacheordner muss verschlüsselt sein und sich auf einem deduplizierten Volume oder in einem Ordner befinden, der komprimiert ist, eine geringe Dichte aufweist oder einen Analysepunkt hat.
 Andere Speicherorte | Sie können den Cachespeicherort ändern, indem Sie die Sicherungs-Engine beenden (`net stop bengine`) und den Cacheordner in ein neues Laufwerk kopieren. (Stellen Sie sicher, dass genügend Platz vorhanden ist.) Dann aktualisieren Sie zwei Registrierungseinträge unter **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**Config/ScratchLocation** und **Config/CloudBackupProvider/ScratchLocation**) auf den neuen Speicherort und starten die Engine neu.
 
@@ -66,27 +65,29 @@ Der MARS-Agent benötigt Zugriff auf diese URLs:
 
 **Feature** | **Details**
 --- | ---
-Bandbreitensteuerung |  Unterstützt. Verwenden Sie im MARS-Agent **Eigenschaften ändern**, um die Bandbreite anzupassen.
+Bandbreitensteuerung | Unterstützt. Verwenden Sie im MARS-Agent **Eigenschaften ändern**, um die Bandbreite anzupassen.
 Netzwerkdrosselung | Nicht verfügbar für gesicherte Computer, auf denen Windows Server 2008 R2, Windows Server 2008 SP2 oder Windows 7 ausgeführt wird.
 
 ## <a name="support-for-direct-backups"></a>Unterstützung für direkte Sicherungen
 
 Mit dem MARS-Agent können Sie unter einigen Betriebssystemen, die auf lokalen Computern und Azure-VMs ausgeführt werden, direkt in Azure sichern. Dabei muss es sich um 64-Bit-Betriebssysteme handeln, die mit den neuesten Service Packs und Updates ausgeführt werden müssen. Eine Übersicht über diese Betriebssysteme finden in der folgenden Tabelle:
 
-**Betriebssystem** | **Dateien/Ordner** | **Systemstatus**
---- | --- | ---
-Windows 10 (Enterprise, Pro, Home) | Ja | Nein 
-Windows 8.1 (Enterprise, Pro)| Ja |Nein 
-Windows 8 (Enterprise, Pro) | Ja | Nein 
-Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Ja | Nein 
-Windows Server 2016 (Standard, Datacenter, Essentials) | Ja | Ja
-Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ja | Ja
-Windows Server 2012 (Standard, Datacenter, Foundation) | Ja | Ja
-Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Ja | Ja
-Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Ja | Nein 
-Windows Storage Server 2016/2012 R2/2012 (Standard, Workgroup) | Ja | Nein 
+**Betriebssystem** | **Dateien/Ordner** | **Systemstatus** | **Software-/Modulanforderungen**
+--- | --- | --- | ---
+Windows 10 (Enterprise, Pro, Home) | Ja | Nein |  Überprüfen der entsprechenden Serverversion auf Software-/Modulanforderungen
+Windows 8.1 (Enterprise, Pro)| Ja |Nein | Überprüfen der entsprechenden Serverversion auf Software-/Modulanforderungen
+Windows 8 (Enterprise, Pro) | Ja | Nein | Überprüfen der entsprechenden Serverversion auf Software-/Modulanforderungen
+Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Ja | Nein | Überprüfen der entsprechenden Serverversion auf Software-/Modulanforderungen
+Windows Server 2016 (Standard, Datacenter, Essentials) | Ja | Ja | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
+Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ja | Ja | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
+Windows Server 2012 (Standard, Datacenter, Foundation) | Ja | Ja |– .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0 <br> – Abbildverwaltung für die Bereitstellung (Deployment Image Servicing and Management (DISM.exe))
+Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Ja | Ja | – .NET 3.5, .Net 4.5 <br> – Windows PowerShell <br> – Kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0 <br> – Abbildverwaltung für die Bereitstellung (Deployment Image Servicing and Management (DISM.exe))
+Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Ja | Nein | – .NET 3.5, .Net 4.5 <br> – Windows PowerShell <br> – Kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0 <br> – Abbildverwaltung für die Bereitstellung (Deployment Image Servicing and Management (DISM.exe)) <br> – Virtual Server 2005 Basis + KB KB948515
+Windows Storage Server 2016/2012 R2/2012 (Standard, Workgroup) | Ja | Nein | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
+Windows Server 2019 (Standard, Datacenter, Essentials) | Ja | Ja | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
 
 Weitere Informationen finden Sie unter [Unterstützte MABS- und DPM-Betriebssysteme](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
+
 
 ## <a name="backup-limits"></a>Backup-Grenzwerte
 
@@ -95,26 +96,26 @@ Bei Azure Backup ist die Größe einer Datei- oder Ordnerdatenquelle, die gesich
 **Betriebssystem** | **Größenlimit**
 --- | ---
 Windows Server 2012 oder höher |  54.400 GB
-Windows Server 2008 R2 SP1 |    1.700 GB
-Windows Server 2008 SP2 | 1.700 GB
+Windows Server 2008 R2 SP1 |    1\.700 GB
+Windows Server 2008 SP2 | 1\.700 GB
 Windows 8 oder höher  | 54.400 GB
-Windows 7   | 1.700 GB
+Windows 7   | 1\.700 GB
 
 
 ## <a name="supported-file-types-for-backup"></a>Unterstützte Dateitypen für die Sicherung
 
-**Typ** | **Unterstützung** 
---- | --- 
-Verschlüsselt   |  Unterstützt. 
-Komprimiert |  Unterstützt.
-Platzsparend |  Unterstützt.
-Komprimiert und geringe Dichte |  Unterstützt.
+**Typ** | **Unterstützung**
+--- | ---
+Verschlüsselt   | Unterstützt.
+Komprimiert | Unterstützt.
+Platzsparend | Unterstützt.
+Komprimiert und geringe Dichte | Unterstützt.
 Feste Links  | Nicht unterstützt. Übersprungen.
 Analysepunkt   | Nicht unterstützt. Übersprungen.
 Verschlüsselt und geringe Dichte |  Nicht unterstützt. Übersprungen.
 Komprimierter Stream   | Nicht unterstützt. Übersprungen.
 Platzsparender Stream   | Nicht unterstützt. Übersprungen.
-OneDrive (synchronisierte Dateien sind Streams mit geringer Dichte)  | Nicht unterstützt. 
+OneDrive (synchronisierte Dateien sind Streams mit geringer Dichte)  | Nicht unterstützt.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Unterstützte Laufwerke oder Volumes für die Sicherung
 

@@ -3,17 +3,17 @@ title: Lokales Bereitstellen der Remoteüberwachungslösung (über Visual Studio
 description: In dieser Schrittanleitung wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken mithilfe von Visual Studio auf Ihrem lokalen Computer bereitgestellt wird.
 author: avneet723
 manager: hegate
-ms.author: avneet723
+ms.author: avneets
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: fdb9b6c09e81ce29d2587fb0faca1aa80d28ea38
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 1adf59feca7db4c5903b04c59e1bd23290c1855e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309978"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65967512"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Visual Studio
 
@@ -60,9 +60,9 @@ Führen Sie den folgenden Befehl aus, um den Docker-Container für den Gerätesi
 
 ### <a name="deploy-all-other-microservices-on-local-machine"></a>Bereitstellen aller anderen Microservices auf dem lokalen Computer
 
-In den folgenden Schritten wird erläutert, wie Sie die Microservices für die Remoteüberwachung in Visual Studio 2017 ausführen:
+In den folgenden Schritten wird erläutert, wie Sie die Microservices für die Remoteüberwachung in Visual Studio ausführen:
 
-1. Starten Sie Visual Studio 2017.
+1. Starten Sie Visual Studio.
 1. Öffnen Sie die Projektmappe **remote-monitoring.sln** im Ordner **services** in der lokalen Kopie des Repositorys.
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **Eigenschaften**.
 1. Wählen Sie **Allgemeine Eigenschaften > Startprojekt** aus.
@@ -83,7 +83,7 @@ Für jeden Webdienst werden eine Eingabeaufforderung und ein Webbrowserfenster g
 Führen Sie folgende Schritte aus, um den Stream Analytics-Auftrag zu starten:
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-1. Navigieren Sie zu der für Ihre Projektmappe erstellten **Ressourcengruppe**. Der Name der Ressourcengruppe ist der Name der Projektmappe, den Sie beim Ausführen des Skripts **start.cmd** ausgewählt haben**.
+1. Navigieren Sie zu der für Ihre Projektmappe erstellten **Ressourcengruppe**. Der Name der Ressourcengruppe ist der Name der Projektmappe, den Sie beim Ausführen des Skripts **start.cmd** ausgewählt haben.
 1. Klicken Sie in der Liste der Ressourcen auf den **Stream Analytics-Auftrag**.
 1. Klicken Sie auf der Seite **Übersicht** des Stream Analytics-Auftrags auf die Schaltfläche **Starten**. Klicken Sie dann auf **Starten**, um den Auftrag direkt zu starten.
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 561d7f5b28775e5f431d35d956cff6f800cc11b2
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: e8606a0d4e203e1a910a5cd15ca83a622f5286bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294510"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65812536"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Beschreibt, wie Benutzer in Ihrer Organisation Gastbenutzer zu einer App einladen können.
 
@@ -35,7 +35,7 @@ Nachdem ein Gastbenutzer dem Verzeichnis in Azure AD hinzugefügt wurde, kann ei
 Nach dem Konfigurieren einer App für Self-Service können Anwendungsbesitzer ihren eigenen Zugriffsbereich verwenden, um einen Gastbenutzer zu der App einzuladen, die sie freigeben möchten. Der Gastbenutzer muss Azure AD nicht unbedingt im Vorfeld hinzugefügt werden. 
 
 1. Öffnen Sie Ihren Zugriffsbereich, indem Sie zu `https://myapps.microsoft.com` navigieren.
-2. Zeigen Sie auf die App, wählen Sie die Auslassungspunkte (**...**) aus, und wählen Sie dann **App verwalten** aus.
+2. Zeigen Sie auf die App, wählen Sie die Auslassungspunkte ( **...** ) aus, und wählen Sie dann **App verwalten** aus.
  
    ![Screenshot mit dem Untermenü „App verwalten“ für die Salesforce-App](media/add-users-iw/access-panel-manage-app.png)
  

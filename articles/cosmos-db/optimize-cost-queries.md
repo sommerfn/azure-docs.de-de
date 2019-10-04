@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie die berechneten Anforderungseinheiten (RUs) f
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/01/2019
 ms.author: rimman
-ms.openlocfilehash: 80c9cd91efd14e3d4b4214bde089f73692568f76
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bdf223e60015c4e5d96416f95c410854a057c02c
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840187"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717019"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optimieren der Abfragekosten in Azure Cosmos DB
 
@@ -89,7 +89,7 @@ Total Query Execution Time               :   �
 
 Berücksichtigen Sie bei der Kostenoptimierung von Abfragen die folgenden bewährten Methoden:
 
-* **Zusammenstellen von mehreren Entitätstypen** 
+* **Zusammenstellen von mehreren Entitätstypen**
 
    Versuchen Sie, mehrere Entitätstypen in einem oder einigen wenigen Containern zusammenzustellen. Diese Methode bietet nicht nur Vorteile aus preislicher Sicht, sondern wirkt sich auch positiv auf die Ausführung von Abfragen und Transaktionen aus. Abfragen werden auf einen einzelnen Container begrenzt, und atomische Transaktionen für mehrere Datensätze über gespeicherte Prozeduren/Trigger hinweg werden auf einen Partitionsschlüssel in einem einzelnen Container begrenzt. Durch das Zusammenstellen von Entitäten im selben Container können Sie die Anzahl der Netzwerk-Roundtrips zum Auflösen von Beziehungen zwischen den Datensätzen reduzieren. Dadurch erhöht sich die End-to-End-Leistung und ermöglicht atomische Transaktionen über mehrere Datensätze für ein größeres Dataset. In Folge sinken die Kosten. Wenn in Ihrem Szenario die Zusammenstellung mehrerer Entitätstypen in einem oder einigen wenigen Containern schwierig ist, liegt dies in der Regel daran, dass Sie eine vorhandene Anwendung migrieren und keine Codeänderungen vornehmen möchten. In diesem Fall sollten Sie die Bereitstellung des Durchsatzes auf Datenbankebene in Betracht ziehen.  
 

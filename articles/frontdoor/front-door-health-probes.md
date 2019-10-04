@@ -11,16 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 256d530590fadc9e2aeb1ea1efb7a52608014978
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 289b05a2c50a2b4af50eb2114515a49bb653cf1a
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988562"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742387"
 ---
 # <a name="health-probes"></a>Integritätstests
 
-Um die Integrität der einzelnen Back-Ends zu ermitteln, sendet jede Front Door-Umgebung in regelmäßigen Abständen eine synthetische HTTP-/HTTPS-Anforderung an jedes konfigurierte Back-End. Anschließend ermittelt Front Door anhand der Antworten aus diesen Tests die „besten“ Back-Ends für die Weiterleitung echter Clientanforderungen.
+Um die Integrität der einzelnen Back-Ends zu ermitteln, sendet jede Front Door-Umgebung in regelmäßigen Abständen eine synthetische HTTP-/HTTPS-Anforderung an jedes konfigurierte Back-End. Anschließend ermittelt Front Door anhand der Antworten aus diesen Tests die „besten“ Back-Ends für die Weiterleitung echter Clientanforderungen. Beachten Sie Folgendes: Weil Front Door global über viele Edge-Umgebungen verfügt, kann das Volumen von Integritätstestanforderungen an Ihre Back-Ends so hoch sein, da mehr als eine Anforderung pro Sekunde von der konfigurierten Häufigkeit der Integritätstests abhängt. 
+
 
 
 ## <a name="supported-protocols"></a>Unterstützte Protokolle
@@ -58,5 +59,5 @@ Sobald ein Back-End zu einem fehlerfreien Integritätsstatus zurückkehrt, wird 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
-- Informieren Sie sich über die [Funktionsweise von Front Door](front-door-routing-architecture.md).
+- Erfahren Sie mehr über das [Erstellen einer Azure Front Door Service-Konfiguration](quickstart-create-front-door.md).
+- Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).

@@ -2,21 +2,19 @@
 title: Verweise auf Eingaben und Ausgaben in Pipelines für die kognitive Suche – Azure Search
 description: Erläutert die Syntax der Anmerkung und, wie auf eine Anmerkung in den Eingaben und Ausgaben eines Skillsets in einer Pipeline der kognitiven Suche in Azure Search verwiesen wird.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: bfb8f5ca9b4d204b7a5efdc1b54a0fdd150e5ed6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 40559744f0650c64afb1dc63c38f56efaa0219d7
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749612"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265531"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Verweisen auf Anmerkungen in einem Skillset der kognitiven Suche
 
@@ -36,13 +34,13 @@ Gehen Sie vor dem Überprüfen der Syntax nun noch einmal einige wichtige Konzep
 <a name="example-1"></a>
 ## <a name="example-1-simple-annotation-reference"></a>Beispiel 1: Einfacher Anmerkungsverweis
 
-Angenommen, Sie haben eine Vielzahl von Dateien, die Verweise auf die Namen von Personen enthalten, die Sie mithilfe der Erkennung von benannten Entitäten extrahieren möchten. In der folgenden Skilldefinition ist `"/document/content"` die Textdarstellung des gesamten Dokuments, und „people“ ist eine Extrahierung von vollständigen Namen für als Personen identifizierte Entitäten.
+Angenommen, Sie haben in Azure Blob Storage eine Vielzahl von Dateien, die Verweise auf die Namen von Personen enthalten, die Sie mithilfe der Entitätserkennung extrahieren möchten. In der folgenden Skilldefinition ist `"/document/content"` die Textdarstellung des gesamten Dokuments, und „people“ ist eine Extrahierung von vollständigen Namen für als Personen identifizierte Entitäten.
 
 Da der Standardkontext `"/document"` ist, kann auf die Liste der Personen nun als `"/document/people"` verwiesen werden. In diesem speziellen Fall ist `"/document/people"` eine Anmerkung, die nun einem Feld in einem Index zugeordnet oder in einem anderen Skill im gleichen Skillset verwendet werden kann.
 
 ```json
   {
-    "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+    "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
     "categories": [ "Person"],
     "defaultLanguageCode": "en",
     "inputs": [

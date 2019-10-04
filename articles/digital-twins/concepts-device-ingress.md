@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 22ae7aeeff4542bee764e131f58eb115026a4fb3
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729522"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177104"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Gerätekonnektivität und eingehende Telemetriedaten
 
@@ -50,7 +50,7 @@ YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 | *YOUR_DEVICE_GUID* | Der Geräte-ID |
 
 ```plaintext
-YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
+YOUR_MANAGEMENT_API_URL/devices?HardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
 ```
 
 | Parameterwert | Ersetzen durch |
@@ -61,7 +61,7 @@ Kopieren Sie in der Antwortnutzlast die Eigenschaft **connectionString** des Ger
 
 ## <a name="device-to-cloud-message"></a>Gerät-zu-Cloud-Nachricht
 
-Sie können das Nachrichtenformat und die Nutzlast Ihres Geräts entsprechend den Anforderungen Ihrer Lösung anpassen. Verwenden Sie einen beliebigen Datenvertrag, der in ein Bytearray oder in einen Datenstrom serialisiert werden kann und von der [Klasse für Azure IoT-Geräteclientnachrichten (Message(byte[] byteArray))](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.-ctor?view=azure-dotnet#Microsoft_Azure_Devices_Client_Message__ctor_System_Byte___) unterstützt wird. Die Nachricht kann in einem beliebigen benutzerdefinierten Binärformat vorliegen, solange Sie den Datenvertrag in einer entsprechenden benutzerdefinierten Funktion decodieren. Für eine Gerät-zu-Cloud-Nachricht muss nur eine einzige Anforderung erfüllt werden: Sie müssen mithilfe eines Satzes von Eigenschaften sicherstellen, dass die Nachricht ordnungsgemäß an die Verarbeitungs-Engine weitergeleitet wird.
+Sie können das Nachrichtenformat und die Nutzlast Ihres Geräts entsprechend den Anforderungen Ihrer Lösung anpassen. Verwenden Sie einen beliebigen Datenvertrag, der in ein Bytearray oder in einen Datenstrom serialisiert werden kann und von der [Klasse für Azure IoT-Geräteclientnachrichten (Message(byte[] byteArray))](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.-ctor?view=azure-dotnet#Microsoft_Azure_Devices_Client_Message__ctor_System_Byte___) unterstützt wird. Die Nachricht kann in einem beliebigen benutzerdefinierten Binärformat vorliegen, solange Sie den Datenvertrag in einer entsprechenden benutzerdefinierten Funktion decodieren. Für eine Gerät-zu-Cloud-Nachricht muss nur eine einzige Anforderung erfüllt werden: Verwalten Sie einen Satz von Eigenschaften, um sicherzustellen, dass die Nachricht ordnungsgemäß an das Verarbeitungsmodul weitergeleitet wird.
 
 ### <a name="telemetry-properties"></a>Telemetrieeigenschaften
 
@@ -71,8 +71,8 @@ Sie können das Nachrichtenformat und die Nutzlast Ihres Geräts entsprechend de
 |---|---|---|---|
 | **DigitalTwins-Telemetry** | 1.0 | Ja | Ein konstanter Wert, der eine Nachricht an das System identifiziert. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Ja | Ein eindeutiger Bezeichner des Sensors, der die **Nachricht** sendet. Dieser Wert muss mit der **HardwareId**-Eigenschaft eines Objekts übereinstimmen, damit es vom System verarbeitet wird. Beispiel: `00FF0643BE88-CO2`. |
-| **CreationTimeUtc** | `string` | Nein  | Eine gemäß [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatierte Datumszeichenfolge, die den Zeitpunkt der Stichprobenentnahme für die Nutzlast angibt. Beispiel: `2018-09-20T07:35:00.8587882-07:00`. |
-| **CorrelationId** | `string` | Nein  | Eine UUID zur Nachverfolgung von Ereignissen im gesamten System. Beispiel: `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
+| **CreationTimeUtc** | `string` | Nein | Eine gemäß [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatierte Datumszeichenfolge, die den Zeitpunkt der Stichprobenentnahme für die Nutzlast angibt. Beispiel: `2018-09-20T07:35:00.8587882-07:00`. |
+| **CorrelationId** | `string` | Nein | Eine UUID zur Nachverfolgung von Ereignissen im gesamten System. Beispiel: `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>Senden einer Nachricht an Digital Twins
 

@@ -7,22 +7,37 @@
       href: overview.md
     - name: Beispielbenutzerszenarien
       href: text-analytics-user-scenarios.md
+    - name: Neuigkeiten
+      href: whats-new.md
 - name: Schnellstarts
+  expanded: true
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Go
-      href: quickstarts/go.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
+    - name: Clientbibliothek
+      items:
+        - name: 'C#'
+          href: quickstarts/csharp.md
+        - name: Python
+          href: quickstarts/python-sdk.md
+        - name: Go
+          href: quickstarts/go-sdk.md
+        - name: Ruby
+          href: quickstarts/ruby-sdk.md
+        - name: Node.js
+          href: quickstarts/nodejs-sdk.md
+    - name: REST-API
+      items:
+        - name: Go
+          href: quickstarts/go.md
+        - name: Java
+          href: quickstarts/java.md
+        - name: Node.js
+          href: quickstarts/nodejs.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: Ruby
+          href: quickstarts/ruby.md
 - name: Lernprogramme
   items:
     - name: Integrieren von Power BI zum Analysieren von Kundenfeedback
@@ -37,19 +52,15 @@
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
 - name: Anleitungen
   items:
-    - name: Registrieren
-      href: How-tos/text-analytics-how-to-signup.md
-    - name: Abrufen eines Zugriffsschlüssels
-      href: How-tos/text-analytics-how-to-access-key.md
     - name: Aufrufen der Textanalyse-API
       href: How-tos/text-analytics-how-to-call-api.md
-    - name: Sprache erkennen
+    - name: Spracherkennung
       href: How-tos/text-analytics-how-to-language-detection.md
-    - name: Analysieren von Stimmungen
+    - name: Stimmungsanalyse
       href: How-tos/text-analytics-how-to-sentiment-analysis.md
-    - name: Extrahieren von Schlüsselbegriffen
+    - name: Schlüsselwortextraktion
       href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: Aufrufen der Erkennung benannter Entitäten
+    - name: Erkennung benannter Entitäten
       href: How-tos/text-analytics-how-to-entity-linking.md
     - name: Verwenden von Containern
       items:
@@ -57,8 +68,10 @@
           href: how-tos/text-analytics-how-to-install-containers.md
         - name: Konfigurieren von Containern
           href: text-analytics-resource-container-config.md
-        - name: Informationen zur Ausführung in Azure Kubernetes Service
-          href: How-tos/text-analytics-how-to-use-container-instance.md
+        - name: Verwenden von Containerinstanzen
+          href: how-tos/text-analytics-how-to-use-container-instances.md
+        - name: Verwenden von Kubernetes Service (AKS)
+          href: how-tos/text-analytics-how-to-use-kubernetes-service.md
     - name: Verwenden des verbundenen Textanalysediensts
       href: vs-text-connected-service.md
 - name: Verweis
@@ -73,10 +86,10 @@
       items:
         - name: .NET
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet'
-        - name: Java
-          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable'
         - name: Python
           href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable'
         - name: Node.js
           href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/textanalytics?view=azure-node-latest'
         - name: Go
@@ -95,6 +108,8 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Compliance
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
     - name: Abonnementschlüssel

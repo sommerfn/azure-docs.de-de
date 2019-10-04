@@ -3,22 +3,24 @@ title: Konfigurieren von Regeln und Aktionen in Azure IoT Central | Microsoft-Do
 description: In diesem Tutorial wird gezeigt, wie Sie als Ersteller telemetriebasierte Regeln und Aktionen in Ihrer Azure IoT Central-Anwendung konfigurieren.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 01/28/2019
+ms.date: 06/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 2bd22dec13e2dba63c512276a0b36d4fc50e05f8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 30bfd3b119b3ae4badbda50747158e8b08a9dd08
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681558"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875526"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Tutorial: Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central
 
 *Dieser Artikel gilt für Betreiber, Ersteller und Administratoren.*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In diesem Tutorial erstellen Sie eine Regel, die eine E-Mail sendet, wenn die Temperatur in einer verbundenen Klimaanlage 90&deg; F überschreitet.
 
@@ -38,7 +40,7 @@ Absolvieren Sie zuerst das Tutorial [1: Definieren eines neuen Gerätetyps in Ih
 
     ![Seite „Gerätevorlagen“](media/tutorial-configure-rules/templatespage1.png)
 
-    Sie sehen die Gerätevorlage **Connected Air Conditioner (1.0.0)**, die Sie im vorherigen Tutorial erstellt haben.
+    Sie sehen die Gerätevorlage **Connected Air Conditioner (1.0.0)** , die Sie im vorherigen Tutorial erstellt haben.
 
 2. Wählen Sie zum Anpassen Ihrer Gerätevorlage die Vorlage **Connected Air Conditioner** aus, die Sie im vorherigen Tutorial erstellt haben.
 
@@ -63,7 +65,7 @@ Absolvieren Sie zuerst das Tutorial [1: Definieren eines neuen Gerätetyps in Ih
 
 Beim Festlegen einer Regel definieren Sie auch eine Aktion, die bei Erfüllung der Regelbedingungen ausgeführt werden soll. In diesem Tutorial erstellen Sie eine Regel mit einer Aktion, mit der eine E-Mail-Benachrichtigung gesendet wird.
 
-1. Zum Hinzufügen einer **Aktion** müssen Sie die Regel zunächst **speichern** und dann im Bereich **Configure Telemetry Rule** (Telemetrieregel konfigurieren) nach unten scrollen. Wählen Sie das Pluszeichen (**+**) neben **Aktionen** und anschließend die Option **E-Mail**:
+1. Zum Hinzufügen einer **Aktion** müssen Sie die Regel zunächst **speichern** und dann im Bereich **Configure Telemetry Rule** (Telemetrieregel konfigurieren) nach unten scrollen. Wählen Sie das Pluszeichen ( **+** ) neben **Aktionen** und anschließend die Option **E-Mail**:
 
     ![Temperaturregelaktion](media/tutorial-configure-rules/addaction.png)
 

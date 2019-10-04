@@ -1,26 +1,25 @@
 ---
 title: 'Azure Data Factory Mapping Data Flow: Exists-Transformation'
-description: 'Azure Data Factory Mapping Data Flow: Exists-Transformation'
+description: Prüfen, ob Zeilen vorhanden sind, mit Data Factory Mapping Data Flow-Instanzen mit Exists-Transformation
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 6ce27ba699ae766ed4d2428f67d91379464bb9f1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b98b7afb21f2f50d44ba93ed793b6efb20f75164
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783461"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65235958"
 ---
-# <a name="azure-data-factory-mapping-data-flow-exists-transformation"></a>Azure Data Factory Mapping Data Flow: Exists-Transformation
+# <a name="mapping-data-flow-exists-transformation"></a>Mapping Data Flow: Exists-Transformation
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Die Exists-Transformation ist eine Zeilenfilterungstransformation, die das Durchlaufen von Zeilen in Ihren Daten beendet oder zulässt. Die Exists-Transform ist mit ```SQL WHERE EXISTS``` und ```SQL WHERE NOT EXISTS``` vergleichbar. Nach einer Filtertransformation enthalten die resultierenden Zeilen aus Ihrem Datenstrom entweder alle Zeilen, in denen die Spaltenwerte aus Quelle 1 in Quelle 2 vorhanden oder in Quelle 2 nicht vorhanden sind.
+Die Exists-Transformation ist eine Zeilenfilterungstransformation, die das Durchlaufen von Zeilen in Ihren Daten beendet oder zulässt. Die Exists-Transform ist mit ```SQL WHERE EXISTS``` und ```SQL WHERE NOT EXISTS``` vergleichbar. Nach einer Exists-Transformation enthalten die resultierenden Zeilen aus Ihrem Datenstrom entweder alle Zeilen, in denen die Spaltenwerte aus Quelle 1 in Quelle 2 vorhanden oder in Quelle 2 nicht vorhanden sind.
 
-![Exists-Einstellungen](media/data-flow/exsits.png "ist vorhanden 1")
+![Exists-Einstellungen](media/data-flow/exists.png "ist vorhanden 1")
 
 Wählen Sie die zweite Quelle für Exists aus, damit Datenfluss die Werte aus Datenstrom 1 mit Datenstrom 2 vergleichen kann.
 
@@ -28,7 +27,14 @@ Wählen Sie die Spalte aus Quelle 1 und aus Quelle 2 aus, deren Werte Sie auf da
 
 ## <a name="multiple-exists-conditions"></a>Mehrere Exists-Bedingungen
 
-Neben jeder Zeile in Ihrer Spalte für Exists-Bedingungen wird ein Pluszeichen (+) angezeigt, wenn Sie auf die jeweilige Zeile zeigen. Dadurch können Sie mehrere Zeilen für Exists-Bedingungen hinzufügen.
+Neben jeder Zeile in Ihren Spaltenbedingungen für Exists wird ein Pluszeichen (+) angezeigt, wenn Sie auf die jeweilige Zeile zeigen. Dadurch können Sie mehrere Zeilen für Exists-Bedingungen hinzufügen. Jede weitere Bedingung ist ein „Und“.
+
+## <a name="custom-expression"></a>Benutzerdefinierter Ausdruck
+
+![Benutzerdefinierte Exists-Einstellungen](media/data-flow/exists1.png "„Exists“ benutzerdefiniert")
+
+Klicken Sie auf „Benutzerdefinierter Ausdruck“, um stattdessen einen Freiformausdruck als Ihre „Exists“- oder „Not-exists“-Bedingung zu erstellen. Wenn Sie dieses Kontrollkästchen aktivieren, können Sie einen eigenen Ausdruck als Bedingung eingeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Ähnliche Transformationen sind [Lookup](data-flow-lookup.md) und [Join](data-flow-join.md).

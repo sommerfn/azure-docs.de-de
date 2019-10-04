@@ -10,21 +10,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 05/24/2019
 ms.author: mbullwin
-ms.openlocfilehash: 0587782cbfa31f7b397b950a752040cc678cf7d7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085812"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67876425"
 ---
-# <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentieren von Web-Apps zur Laufzeit mit dem Application Insights-Statusmonitor
+# <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentieren von Web-Apps zur Laufzeit mit Anfügen ohne Code in Application Insights
 
 Sie können eine Live-Web-App mit Azure Application Insights instrumentieren, ohne dass Sie Ihren Code ändern oder erneut bereitstellen müssen. Sie benötigen ein [Microsoft Azure](https://azure.com) -Abonnement.
 
 Der Statusmonitor wird zum Instrumentieren einer in IIS lokal oder auf einem virtuellen Computer gehosteten .NET-Anwendung verwendet.
 
+- Wenn Ihre App in einer Azure-VM oder einer Azure-VM-Skalierungsgruppe bereitgestellt wird, befolgen Sie [diese Anweisungen](azure-vm-vmss-apps.md).
 - Wenn Ihre App in Azure App Services bereitgestellt wird, befolgen Sie [diese Anweisungen](azure-web-apps.md).
 - Wenn Ihre App auf einer Azure-VM bereitgestellt ist, können Sie die Application Insights-Überwachung über die Azure-Systemsteuerung aktivieren.
 - (Es gibt auch separate Artikel zum Instrumentieren von [Azure Cloud Services](../../azure-monitor/app/cloudservices.md).)
@@ -34,7 +35,7 @@ Der Statusmonitor wird zum Instrumentieren einer in IIS lokal oder auf einem vir
 
 Bei der Anwendung von Application Insights auf die .NET-Webanwendungen können Sie zwischen zwei Möglichkeiten wählen:
 
-* **Buildzeit:** [Fügen Sie Ihrem Web-App-Code das Application Insights-SDK hinzu][greenbrown].
+* **Buildzeit:** [Fügen][greenbrown] Sie Ihrem Web-App-Code das Application Insights-SDK hinzu.
 * **Laufzeit:** Instrumentieren Sie Ihre Web-App auf dem Server wie unten beschrieben, ohne den Code neu zu erstellen und bereitzustellen.
 
 > [!NOTE]
@@ -48,10 +49,10 @@ Hier ist zusammengefasst, was Sie jeweils erhalten:
 | [Weitere ausführliche Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md) | |Ja |
 | [Abhängigkeitsdiagnose](../../azure-monitor/app/asp-net-dependencies.md) |Bei .NET 4.6 und höheren Versionen, aber weniger Details |Ja, vollständige Details: Ergebniscodes, SQL-Befehlstext, HTTP-Verb|
 | [Systemleistungsindikatoren](../../azure-monitor/app/performance-counters.md) |Ja |Ja |
-| [API für benutzerdefinierte Telemetrie][api] |Ja |Nein  |
-| [Ablaufverfolgungsprotokoll-Integration](../../azure-monitor/app/asp-net-trace-logs.md) |Ja |Nein  |
-| [Seitenansicht und Benutzerdaten](../../azure-monitor/app/javascript.md) |Ja |Nein  |
-| Neuerstellung des Codes erforderlich |Ja | Nein  |
+| [API für benutzerdefinierte Telemetrie][api] |Ja |Nein |
+| [Ablaufverfolgungsprotokoll-Integration](../../azure-monitor/app/asp-net-trace-logs.md) |Ja |Nein |
+| [Seitenansicht und Benutzerdaten](../../azure-monitor/app/javascript.md) |Ja |Nein |
+| Neuerstellung des Codes erforderlich |Ja | Nein |
 
 
 
@@ -79,7 +80,7 @@ Wenn Sie Application Insights aktivieren, werden Ihrer Web-App DLLs und „Appli
 
 ## <a name="when-you-re-publish-your-app-re-enable-application-insights"></a>Erneutes Aktivieren von Application Insights bei erneuter Veröffentlichung der App
 
-Überlegen Sie sich vor dem erneuten Veröffentlichen Ihrer App, ob Sie [Application Insights dem Code in Visual Studio hinzufügen][greenbrown] möchten. Sie erhalten ausführlichere Telemetriedaten und können benutzerdefinierte Telemetrie schreiben.
+Überlegen Sie sich vor dem erneuten Veröffentlichen Ihrer App, ob Sie [Application Insights dem Code in Visual Studio hinzufügen möchten][greenbrown]. Sie erhalten ausführlichere Telemetriedaten und können benutzerdefinierte Telemetrie schreiben.
 
 Wenn Sie die App erneut veröffentlichen möchten, ohne Application Insights dem Code hinzuzufügen, beachten Sie, dass die DLLs und „ApplicationInsights.config“ im Rahmen des Bereitstellungsprozesses unter Umständen aus der veröffentlichten Website gelöscht werden. Deshalb gilt Folgendes:
 
@@ -149,6 +150,8 @@ Wir verfolgen dieses Problem [hier](https://github.com/Microsoft/ApplicationInsi
 * Um ausführliche Protokolle auszugeben, ändern Sie die Konfigurationsdatei `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config`, und fügen Sie in `appsettings` `<add key="TraceLevel" value="All" />` hinzu.
 Starten Sie dann den Statusmonitor neu.
 
+* Da es sich bei dem Statusmonitor um eine .NET-Anwendung handelt, können Sie auch die [.NET-Ablaufverfolgung durch Hinzufügen der entsprechenden Diagnose zur Konfigurationsdatei](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element) aktivieren. In einigen Szenarien kann es beispielsweise hilfreich sein, durch [Konfigurieren der Netzwerkablaufverfolgung](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing) zu erfahren, was auf Netzwerkebene geschieht.
+
 ### <a name="insufficient-permissions"></a>Unzureichende Berechtigungen
   
 * Wenn auf dem Server eine Meldung über "unzureichende Berechtigungen" angezeigt wird, versuchen Sie Folgendes:
@@ -173,7 +176,7 @@ Löschen Sie diese Dateien in Ihrem Anwendungsverzeichnis:
 
 ### <a name="additional-troubleshooting"></a>Weitere Informationen zur Problembehandlung
 
-* Siehe [Weitere Informationen zur Problembehandlung][qna].
+* Weitere Informationen zur [Problembehandlung][qna].
 
 ## <a name="system-requirements"></a>Systemanforderungen
 Betriebssystemunterstützung für den Application Insights-Statusmonitor auf dem Server:
@@ -184,7 +187,7 @@ Betriebssystemunterstützung für den Application Insights-Statusmonitor auf dem
 * Windows Server 2012 R2
 * Windows Server 2016
 
-mit den neuesten Service Packs und .NET Framework 4.5
+mit den neuesten Service Packs und .NET Framework 4.5 (der Statusmonitor basiert auf dieser Version des Frameworks)
 
 Auf der Clientseite: Windows 7, 8, 8.1 und 10, ebenfalls mit .NET Framework 4.5
 
@@ -276,7 +279,9 @@ Wenn Sie eine Web-App auswählen, die mit dem Statusmonitor instrumentiert werde
 
 ### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Welche Version des Application Insights SDK wird vom Statusmonitor installiert?
 
-Ab sofort können über den Statusmonitor nur noch die Application Insights SDK-Versionen 2.3 oder 2.4 installiert werden.
+Ab sofort können über den Statusmonitor nur noch die Application Insights SDK-Versionen 2.3 oder 2.4 installiert werden. 
+
+Die Application Insights SDK-Version 2.4 ist die [letzte Version, die .NET 4.0 unterstützt](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1). Dieses hatte [im Januar 2016 das Ende des Lebenszyklus](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/) erreicht. Daher kann der Statusmonitor ab sofort zum Instrumentieren einer .NET 4.0-Anwendung verwendet werden. 
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>Muss ich den Statusmonitor immer ausführen, wenn ich die App aktualisiere?
 
@@ -307,6 +312,7 @@ Für Anwendungen, die beim Kompilieren bereits instrumentiert sind:
 
 ## <a name="download"></a>Herunterladen des Statusmonitors
 
+- Verwenden des neuen [PowerShell-Moduls](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)
 - Laden Sie den [Statusmonitor-Installer](https://go.microsoft.com/fwlink/?LinkId=506648) herunter, und starten Sie ihn.
 - Oder führen Sie den [Webplattform-Installer](https://www.microsoft.com/web/downloads/platform.aspx) aus, und suchen Sie darin nach dem Application Insights-Statusmonitor.
 
@@ -317,12 +323,11 @@ Anzeigen der Telemetrie:
 * [Untersuchen Sie Metriken](../../azure-monitor/app/metrics-explorer.md) für die Überwachung von Leistung und Auslastung.
 * [Durchsuchen Sie Ereignisse und Protokolle][diagnostic], um Probleme zu diagnostizieren.
 * [Verwenden Sie Analytics](../../azure-monitor/app/analytics.md) für erweiterte Abfragen.
-* [Erstellen Sie Dashboards.](../../azure-monitor/app/app-insights-dashboards.md)
 
 Hinzufügen weiterer Telemetrieelemente:
 
 * [Erstellen Sie Webtests][availability], um sicherzustellen, dass Ihre Website live bleibt.
-* [Fügen Sie Webclienttelemetrie hinzu][usage], um Ausnahmen von Webseitencode anzuzeigen und Ablaufverfolgungsaufrufe einfügen zu können.
+* [Fügen Sie Webclient-Telemetriedaten hinzu][usage], um Ausnahmen von Webseitencode anzuzeigen und Ablaufverfolgungsaufrufe einfügen zu können.
 * [Fügen Sie Ihrem Code das Application Insights SDK hinzu][greenbrown], um Ablaufverfolgungs- und Protokollaufrufe einfügen zu können.
 
 <!--Link references-->

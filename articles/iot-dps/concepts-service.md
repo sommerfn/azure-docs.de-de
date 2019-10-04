@@ -3,17 +3,17 @@ title: Dienstkonzepte beim Azure IoT Hub Device Provisioning-Dienst | Microsoft-
 description: Beschreibt Konzepte der Dienstbereitstellung, die speziell für Geräte mit dem Device Provisioning Service und IoT Hub gelten
 author: nberdy
 ms.author: nberdy
-ms.date: 04/04/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 4a4f53f991355e634e8139f9e90bec6c508a527d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 51486da6b34c0ff1e9b6d05558c2132a416913e9
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792746"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104361"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Konzepte beim IoT Hub Device Provisioning-Dienst
 
@@ -57,7 +57,7 @@ Im Device Provisioning-Dienst werden zwei Registrierungsarten unterstützt:
 
 ### <a name="enrollment-group"></a>Registrierungsgruppe
 
-Eine Registrierungsgruppe stellt eine Gruppe von Geräten dar, die einen bestimmten Nachweismechanismus gemeinsam nutzen. Alle Geräte in der Registrierungsgruppe stellen X.509-Zertifikate bereit, die von der gleichen Stamm- oder Zwischenzertifizierungsstelle signiert wurden. Registrierungsgruppen können nur den X.509-Nachweismechanismus verwenden. Der Name und das Zertifikat der Registrierungsgruppe müssen alphanumerisch sein und dürfen nur Kleinbuchstaben enthalten. Bindestriche sind zulässig.
+Eine Registrierungsgruppe stellt eine Gruppe von Geräten dar, die einen bestimmten Nachweismechanismus gemeinsam nutzen. Registrierungsgruppen unterstützen sowohl X.509 als auch symmetrische Schlüssel. Alle Geräte in der X.509-Registrierungsgruppe stellen X.509-Zertifikate bereit, die von der gleichen Stamm- oder Zwischenzertifizierungsstelle signiert wurden. Jedes Gerät in der Registrierungsgruppe mit symmetrischem Schlüssel stellt SAS-Token bereit, die vom symmetrischen Schlüssel der Gruppe abgeleitet werden. Der Name und das Zertifikat der Registrierungsgruppe müssen alphanumerisch sein und dürfen nur Kleinbuchstaben enthalten. Bindestriche sind zulässig.
 
 > [!TIP]
 > Es empfiehlt sich, eine Registrierungsgruppe für eine große Anzahl von Geräten, die eine gewünschte Erstkonfiguration gemeinsam nutzen, oder für Geräte zu verwenden, die alle demselben Mandanten zugeordnet sind.

@@ -3,23 +3,23 @@ title: Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Direct
 description: Erfahren Sie, wie Ausdruckszuordnungen verwendet werden können, um Attributwerte während der automatisierten Bereitstellung von SaaS-App-Objekten in Azure Active Directory in ein akzeptables Format zu transformieren.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2019
-ms.author: chmutali
+ms.date: 07/31/2019
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed081b32fd8ac464f7ec66f97c6867708a6f8533
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: cd7abdeef7c13c272a0e4bbf2075c6eda8f73a07
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991479"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162393"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
@@ -27,9 +27,9 @@ Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer de
 ## <a name="syntax-overview"></a>Syntaxübersicht
 Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von Visual Basic for Applications (VBA) ähnlich.
 
-* Der gesamte Ausdruck muss mittels Funktionen definiert werden, die aus einem Namen mit darauffolgenden Argumenten in Klammern bestehen:  <br>
+* Der gesamte Ausdruck muss mittels Funktionen definiert werden, die aus einem Namen mit darauffolgenden Argumenten in Klammern bestehen: <br>
   *FunctionName(`<<argument 1>>`,`<<argument N>>`)*
-* Sie können Funktionen ineinander verschachteln. Beispiel:  <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* Sie können Funktionen ineinander verschachteln. Beispiel: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * Sie können drei verschiedene Argumententypen an die Funktionen übergeben:
   
   1. Attribute, die in eckige Klammern eingeschlossen werden müssen. Beispiel: [Attributname]
@@ -40,7 +40,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 ## <a name="list-of-functions"></a>Liste der Funktionen
 [Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)
 
-- - -
+---
 ### <a name="append"></a>Anfügen
 **Funktion:**<br> Append(Quelle, Suffix)
 
@@ -48,12 +48,12 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
 | **Suffix** |Erforderlich |Zeichenfolge |Die Zeichenfolge, die Sie am Ende des Quellwerts anfügen möchten |
 
-- - -
+---
 ### <a name="formatdatetime"></a>FormatDateTime
 **Funktion:**<br> FormatDateTime(Quelle, Eingabeformat, Ausgabeformat)
 
@@ -61,15 +61,15 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
 | **Eingabeformat** |Erforderlich |Zeichenfolge |Erwartetes Format des Quellwerts. Unterstützte Formate finden Sie unter [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
 | **Ausgabeformat** |Erforderlich |Zeichenfolge |Format des Ausgabedatums. |
 
-- - -
+---
 ### <a name="join"></a>Join
-**Funktion:**<br>  Join(Trennzeichen, Quelle1, Quelle2, …)
+**Funktion:**<br> Join(Trennzeichen, Quelle1, Quelle2, …)
 
 **Beschreibung:**<br> „Join()“ ist vergleichbar mit „Append()“, kann jedoch mehrere **Quellzeichenfolgenwerte** in einer einzelnen Zeichenfolge kombinieren, wobei die Werte jeweils durch eine **Trennzeichenfolge** getrennt werden.
 
@@ -77,26 +77,26 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Trennzeichen** |Erforderlich |Zeichenfolge |Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
 | **source1 … sourceN** |Erforderlich, unterschiedlich oft |Zeichenfolge |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
 
-- - -
+---
 ### <a name="mid"></a>Mid
-**Funktion:**<br>  Mid(Quelle, Start, Länge)
+**Funktion:**<br> Mid(Quelle, Start, Länge)
 
-**Beschreibung:**<br>  Gibt eine Teilzeichenfolge des Quellwerts zurück. Eine Teilzeichenfolge ist eine Zeichenfolge, die nur einige der Zeichen aus der Quellzeichenfolge enthält.
+**Beschreibung:**<br> Gibt eine Teilzeichenfolge des Quellwerts zurück. Eine Teilzeichenfolge ist eine Zeichenfolge, die nur einige der Zeichen aus der Quellzeichenfolge enthält.
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs. |
 | **start** |Erforderlich |integer |Index in der **Quellzeichenfolge** , an dem die Teilzeichenfolge beginnen soll. Das erstes Zeichen in der Zeichenfolge hat den Index 1, das zweite Zeichen hat den Index 2 usw. |
 | **Länge** |Erforderlich |Ganze Zahl |Die Länge der Teilzeichenfolge. Wenn die Länge außerhalb der **Quellzeichenfolge** endet, gibt die Funktion die Teilzeichenfolge zwischen **Startindex** und dem Ende der **Quellzeichenfolge** zurück. |
 
-- - -
+---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
 **Funktion:**<br> NormalizeDiacritics(Quelle)
 
@@ -104,23 +104,23 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge | In der Regel ein Attribut für einen Vor- oder Nachnamen. |
 
-- - -
+---
 ### <a name="not"></a>not
-**Funktion:**<br>  Not(Quelle)
+**Funktion:**<br> Not(Quelle)
 
 **Beschreibung:**<br> Kehrt den booleschen Wert der **Quelle** um. Lautet der **Quellwert** also *True*, gibt die Funktion *False* zurück. Andernfalls gibt sie "*True*" zurück.
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Boolesche Zeichenfolge |Die erwarteten **Quellwerte** sind TRUE oder FALSE. |
 
-- - -
+---
 ### <a name="replace"></a>Replace
 **Funktion:**<br> Replace(Quelle, AlterWert, RegexMuster, RegexGruppenname, Ersatzwert, Ersatzattributname, Vorlage)
 
@@ -129,49 +129,54 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 * Bei Angabe von **AlterWert** und **Ersatzwert**:
   
-  * Ersetzt alle Vorkommen von „AlterWert“ in der Quelle durch „Ersatzwert“.
+  * Ersetzt alle Vorkommen von **AlterWert** in der **Quelle** durch **Ersatzwert**.
 * Bei Angabe von **AlterWert** und **Vorlage**:
   
   * Ersetzt alle Vorkommen von **AlterWert** in **Vorlage** durch den **Quellwert**).
+* Bei Angabe von **RegexMuster** und **Ersatzwert**:
+
+  * Die Funktion wendet das **RegexMuster** auf die Zeichenfolge in **Quelle** an, und Sie können die RegexGruppennamen zum Erstellen der Zeichenfolgen für **Ersatzwert** verwenden.
 * Bei Angabe von **RegexMuster**, **RegexGruppenname** und **Ersatzwert**:
   
-  * Ersetzt alle Werte, die mit dem "AlterWertRegexMuster" in der Quellzeichenfolge übereinstimmen, durch den "Ersatzwert".
-* Bei Angabe von **RegexMuster**, **RegexGruppenname** und **Ersatzeigenschaftsname**:
+  * Die Funktion wendet das **RegexMuster** auf die **Quellzeichenfolge** an und ersetzt alle mit **RegexGruppenname** übereinstimmenden Werte durch **Ersatzwert**.
+* Bei Angabe von **RegexMuster**, **RegexGruppenname** und **Ersatzattributname**:
   
   * Falls kein Wert für **Quelle** vorhanden ist, wird **Quelle** zurückgegeben.
-  * Ist ein Wert für **Quelle** vorhanden, wird der Ersatzwert aus der Eigenschaft mit **Ersatzeigenschaftsname** unter Verwendung von **RegexMuster** und **RegexGruppenname** extrahiert. Der Ersatzwert wird als Ergebnis zurückgegeben.
+  * Wenn **Quelle** einen Wert umfasst, wendet die Funktion das **RegexMuster** auf die Zeichenfolge in **Quelle** an und ersetzt alle mit **RegexGruppenname** übereinstimmenden Werte durch den Wert, der **Ersatzattributname** zugeordnet ist.
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
+| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Objekt **Quelle**. |
 | **AlterWert** |Optional |Zeichenfolge |Wert, der in **Quelle** oder **Vorlage** ersetzt werden soll. |
-| **RegexMuster** |Optional |Zeichenfolge |Regex-Muster für den Wert, der in der **Quelle**ersetzt wird. Wenn "Ersatzeigenschaftsname" verwendet wird, das Muster, das zum Extrahieren des Werts aus der Ersatzeigenschaft verwendet wird. |
-| **RegexGruppenname** |Optional |Zeichenfolge |Name der Gruppe im **RegexMuster**. Nur bei Verwendung von „Ersatzeigenschaftsname“ wird der Wert dieser Gruppe als „Ersatzwert“ aus der Ersatzeigenschaft extrahiert. |
+| **RegexMuster** |Optional |Zeichenfolge |Regex-Muster für den Wert, der in der **Quelle**ersetzt wird. Oder, bei Verwendung von **Ersatzeigenschaftsname**, das Muster, das zum Extrahieren des Werts aus **Ersatzeigenschaftsname** verwendet wird. |
+| **RegexGruppenname** |Optional |Zeichenfolge |Name der Gruppe im **RegexMuster**. Nur bei Verwendung von **Ersatzeigenschaftsname** wird der Wert dieser Gruppe als **Ersatzwert** aus **Ersatzeigenschaftsname** extrahiert. |
 | **Ersatzwert** |Optional |Zeichenfolge |Neuer Wert, durch den der alte Wert ersetzt wird. |
-| **Ersatzattributname** |Optional |Zeichenfolge |Name des Attributs, das für den Ersatzwert verwendet werden soll, wenn die Quelle keinen Wert besitzt. |
-| **Vorlage** |Optional |Zeichenfolge |Bei Angabe des Werts **Vorlage** wird **AlterWert** in der Vorlage gesucht und durch den Quellwert ersetzt. |
+| **Ersatzattributname** |Optional |Zeichenfolge |Name des Attributs, das als Ersatzwert verwendet werden soll. |
+| **Vorlage** |Optional |Zeichenfolge |Bei Angabe des Werts **Vorlage** wird **AlterWert** in der Vorlage gesucht und durch den Wert von **Quelle** ersetzt. |
 
-- - -
+---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
 **Funktion:**<br> SelectUniqueValue(uniqueValueRule1, uniqueValueRule2, uniqueValueRule3, …)
 
 **Beschreibung:**<br> Es sind mindestens zwei Argumente erforderlich, bei denen es sich um eindeutige Regeln für die Generierung von Werten handelt, die mit Ausdrücken definiert werden. Mit der Funktion wird jede Regel ausgewertet. Anschließend wird der Wert überprüft, der generiert wurde, um die Eindeutigkeit in der Ziel-App bzw. im Zielverzeichnis sicherzustellen. Der erste eindeutige Wert, der gefunden wird, wird zurückgegeben. Wenn alle Werte am Ziel bereits vorhanden sind, wird der Eintrag hinterlegt, und die Ursache wird in den Überwachungsprotokollen protokolliert. Für die Anzahl von Argumenten, die bereitgestellt werden können, gilt keine Obergrenze.
 
 > [!NOTE]
->1. Dies ist eine Funktion der obersten Ebene, die nicht geschachtelt werden kann.
->2. Diese Funktion darf nur für die Erstellung von Einträgen verwendet werden. Legen Sie die Eigenschaft **Zuordnung anwenden** auf **Nur beim Erstellen von Objekten** fest.
+> - Dies ist eine Funktion der obersten Ebene, die nicht geschachtelt werden kann.
+> - Diese Funktion kann nicht auf Attribute angewandt werden, die über eine Rangfolge für den Abgleich verfügen.  
+> - Diese Funktion darf nur für die Erstellung von Einträgen verwendet werden. Legen Sie die Eigenschaft **Zuordnung anwenden** auf **Nur beim Erstellen von Objekten** fest.
+> - Diese Funktion wird derzeit nur für die „Benutzerbereitstellung von Workday in Active Directory“ unterstützt. Sie kann nicht für andere Bereitstellungsanwendungen verwendet werden. 
 
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |Mindestens zwei erforderlich, keine Obergrenze |Zeichenfolge | Liste mit auszuwertenden Regeln für die Generierung eindeutiger Werte |
 
 
-- - -
+---
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Funktion:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
@@ -179,11 +184,11 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |Erforderlich |Zeichenfolge |**[appRoleAssignments]**-Objekt |
+| **[appRoleAssignments]** |Erforderlich |Zeichenfolge |**[appRoleAssignments]** -Objekt |
 
-- - -
+---
 ### <a name="split"></a>Split
 **Funktion:**<br> Split(Quelle, Trennzeichen)
 
@@ -191,39 +196,39 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |**Quelle** , der aktualisiert werden soll. |
 | **Trennzeichen** |Erforderlich |Zeichenfolge |Gibt das Zeichen zum Aufteilen der Zeichenfolge an (Beispiel: „,“). |
 
-- - -
+---
 ### <a name="stripspaces"></a>StripSpaces
-**Funktion:**<br>  StripSpaces(Quelle)
+**Funktion:**<br> StripSpaces(Quelle)
 
-**Beschreibung:**<br>  Entfernt alle Leerzeichen (" ") aus der Quellzeichenfolge.
+**Beschreibung:**<br> Entfernt alle Leerzeichen (" ") aus der Quellzeichenfolge.
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |**Quelle** , der aktualisiert werden soll. |
 
-- - -
+---
 ### <a name="switch"></a>Switch
-**Funktion:**<br>  Switch(Quelle, Standardwert, Schlüssel1, Wert1, Schlüssel2, Wert2, …)
+**Funktion:**<br> Switch(Quelle, Standardwert, Schlüssel1, Wert1, Schlüssel2, Wert2, …)
 
 **Beschreibung:**<br> Wenn der **Quellwert** einem **Schlüssel** entspricht, wird der **Wert** für diesen **Schlüssel** zurückgegeben. Wenn der **Quellwert** keinem Schlüssel entspricht, wird der **Standardwert** zurückgegeben.  **Schlüssel-** und **Wertparameter** müssen immer paarweise angegeben werden. Die Funktion erwartet immer eine gerade Anzahl von Parametern.
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |**Source** , der aktualisiert werden soll. |
 | **defaultValue** |Optional |Zeichenfolge |Der Standardwert, der verwendet werden soll, wenn die Quelle mit keinem Schlüssel übereinstimmt. Kann eine leere Zeichenfolge ("") sein. |
 | **key** |Erforderlich |Zeichenfolge |**Schlüssel**, der mit dem **Quellwert** verglichen werden soll. |
 | **value** |Erforderlich |Zeichenfolge |Der Ersatzwert für die **Quelle** , die mit dem Schlüssel übereinstimmt. |
 
-- - -
+---
 ### <a name="tolower"></a>ToLower
 **Funktion:**<br> ToLower(source, culture)
 
@@ -231,12 +236,12 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
 | **culture** |Optional |Zeichenfolge |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
 
-- - -
+---
 ### <a name="toupper"></a>ToUpper
 **Funktion:**<br> ToUpper(source, culture)
 
@@ -244,7 +249,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| NAME | Erforderlich/wiederholt | Type | Notizen |
+| NAME | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
 | **culture** |Optional |Zeichenfolge |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
@@ -252,7 +257,7 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 ## <a name="examples"></a>Beispiele
 ### <a name="strip-known-domain-name"></a>Entfernen eines bekannten Domänennamens
 Sie müssen einen bekannten Domänennamen aus der E-Mail-Adresse eines Benutzers entfernen, um einen Benutzernamen zu erhalten. <br>
- Wenn die Domäne beispielsweise "contoso.com" lautet, können Sie den folgenden Ausdruck verwenden:
+Wenn die Domäne beispielsweise "contoso.com" lautet, können Sie den folgenden Ausdruck verwenden:
 
 **Ausdruck:** <br>
 `Replace([mail], "@contoso.com", , ,"", ,)`
@@ -323,7 +328,7 @@ Beispielsweise möchten Sie Datumsangaben für ServiceNow formatieren.
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Ersetzen eines Werts anhand eines vordefinierten Satzes von Optionen
 
 Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes festlegen, der in Azure AD gespeichert ist. <br>
- Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll der Standardwert "Australien/Sydney" verwendet werden.
+Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll der Standardwert "Australien/Sydney" verwendet werden.
 
 **Ausdruck:** <br>
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
@@ -363,7 +368,7 @@ Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie einen Wer
 
     SelectUniqueValue( 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
-        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com")
+        Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
     )
 

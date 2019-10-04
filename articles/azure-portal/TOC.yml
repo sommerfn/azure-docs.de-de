@@ -4,12 +4,12 @@
   items:
     - name: Informationen zum Azure-Portal
       href: azure-portal-overview.md
+    - name: Erste Schritte mit Azure Quickstart Center
+      href: azure-portal-quickstart-center.md
     - name: Unterstützte Browser und Geräte
       href: azure-portal-supported-browsers-devices.md
 - name: Konzepte
   items:
-    - name: Erstellen und Freigeben von Azure-Dashboards
-      href: azure-portal-dashboards.md
     - name: Freigeben von Dashboards per rollenbasierter Zugriffssteuerung
       href: azure-portal-dashboard-share-access.md
     - name: Programmgesteuertes Erstellen von Azure-Dashboards
@@ -20,16 +20,20 @@
       href: azure-portal-change-theme-high-contrast.md
     - name: 'Hinzufügen, Entfernen und Sortieren von Favoriten'
       href: azure-portal-add-remove-sort-favorites.md
+    - name: Erstellen und Freigeben von Azure-Dashboards
+      href: azure-portal-dashboards.md
     - name: Verwenden einer benutzerdefinierten Markdown-Kachel
       href: azure-portal-markdown-tile.md
     - name: Exportieren oder Löschen von Benutzereinstellungen
       href: azure-portal-export-delete-settings.md
     - name: Anleitungsvideos für das Azure-Portal
-      href: 'https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR'
+      href: azure-portal-video-series.md
 - name: Verweis
   items:
     - name: Tastenkombinationen
       href: azure-portal-keyboard-shortcuts.md
+    - name: Hinzufügen von Azure-Portal-URLs zu einer Liste sicherer IP-Adressen
+      href: azure-portal-safelist-urls.md
     - name: Struktur von Azure-Dashboards
       href: azure-portal-dashboards-structure.md
 - name: Ressourcen

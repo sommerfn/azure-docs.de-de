@@ -1,7 +1,6 @@
 ---
-title: Grundlegendes zum Rabatt für und zur Verwendung von SUSE-Reservierungspläne(n) | Microsoft-Dokumentation
-description: Erfahren Sie, wie Rabatte für SUSE-Pläne auf SUSE-Software auf virtuellen Computern angewendet werden.
-services: billing
+title: Rabatt für Softwarepläne – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Rabatte für Softwarepläne auf Software auf virtuellen Computern angewandt werden.
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -11,22 +10,46 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2018
+ms.date: 09/30/2019
 ms.author: banders
-ms.openlocfilehash: 4305db991a8129b0ae4205300051391df893c52c
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: e5cad667c2c97514a258578ab09f7c3628738635
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917786"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71701984"
 ---
-# <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Grundlegendes zur Anwendung des Rabatts für Reservierungspläne von SUSE Linux Enterprise-Software für Azure
+# <a name="azure-software-plan-discount"></a>Rabatt für Azure-Softwarepläne
 
-Nachdem Sie einen SUSE Linux-Plan erworben haben, wird der Rabatt automatisch auf die bereitgestellten virtuellen SUSE-Computer (Virtual Machines, VMs) angewendet, die der Reservierung entsprechen. Ein SUSE Linux-Plan deckt die Kosten für die Ausführung der SUSE-Software auf einem virtuellen Azure-Computer.
+Azure-Softwarepläne für SUSE und Red Hat sind Reservierungen, die für bereitgestellte virtuelle Computer gelten. Der Rabatt für Softwarepläne wird auf die Softwarenutzung von bereitgestellten virtuellen Computern angewandt, die der Reservierung entsprechen.
 
-Damit Sie den richtigen SUSE Linux-Plan erwerben, müssen Sie wissen, welche SUSE-VMs Sie ausführen und wie viele vCPUs auf diesen VMs vorhanden sind. Verwenden Sie die folgenden Abschnitte, um den zu erwerbenden Plan anhand Ihrer CSV-Datei mit den Nutzungsdaten zu identifizieren.
+Wenn Sie einen virtuellen Computer beenden, wird der Rabatt automatisch auf einen anderen entsprechenden virtuellen Computer (sofern verfügbar) angewandt. Ein Softwareplan deckt die Kosten für die Ausführung der Software auf einem virtuellen Computer. Andere Gebühren, z. B. Compute-, Speicher- und Netzwerkgebühren, werden separat abgerechnet.
 
-## <a name="discount-applies-to-different-vm-sizes"></a>Rabatt gilt für verschiedene VM-Größen
+Für den Kauf eines geeigneten Plans müssen Sie die Nutzung der virtuellen Computer und die Anzahl der vCPUs auf diesen virtuellen Computern berücksichtigen. Anhand der Informationen in den folgenden Abschnitten können Sie den zu erwerbenden Plan basierend auf Ihren Nutzungsdaten ermitteln.
+
+## <a name="how-reservation-discount-is-applied"></a>Wie der Reservierungsrabatt angewendet wird
+
+Reservierungsrabatte funktionieren nach dem Prinzip „*use-it-or-lose-it*“. Das heißt, wenn Sie für eine Stunde nicht über die entsprechenden Ressourcen verfügen, verlieren Sie eine Reservierungsmenge für diese Stunde. Sie können ungenutzte reservierte Stunden nicht übertragen.
+
+Wenn Sie eine Ressource beenden, wird der Reservierungsrabatt automatisch auf eine andere entsprechende Ressource im angegebenen Reservierungsumfang angewandt. Wenn keine übereinstimmenden Ressourcen im angegebenen Reservierungsumfang gefunden werden, *verfallen* die reservierten Stunden.
+
+## <a name="review-redhat-vm-usage-before-you-buy"></a>Überprüfen der Nutzung von virtuellen Red Hat-Computern vor dem Kauf
+
+Rufen Sie den Produktnamen Ihrer Nutzungsdaten ab, und kaufen Sie den Red Hat-Plan mit der gleichen Art und Größe.
+
+Wenn Ihre Nutzung z. B. das Produkt **Red Hat Enterprise Linux – 1 bis 4 vCPU-VM-Lizenz** betrifft, sollten Sie **Red Hat Enterprise Linux** für **VM mit 1–4 vCPUs** erwerben.
+
+<!--ADD RHEL SCREENSHOT -->
+
+## <a name="review-suse-vm-usage-before-you-buy"></a>Überprüfen der Nutzung von virtuellen SUSE-Computern vor dem Kauf
+
+Rufen Sie den Produktnamen Ihrer Nutzungsdaten ab, und kaufen Sie den SUSE-Plan mit der gleichen Art und Größe.
+
+Wenn Ihre Nutzung z. B. das Produkt **SUSE Linux Enterprise Server Priority – 2 bis 4 vCPU-VM-Unterstützung** betrifft, sollten Sie **SUSE Linux Enterprise Server Priority** für **VM mit 2–4 vCPUs** erwerben.
+
+![Beispiel für die Auswahl des zu erwerbenden Produkts](./media/billing-understand-suse-reservation-charges/select-suse-linux-enterprise-server-priority-2-4-vcpu.png)
+
+## <a name="discount-applies-to-different-vm-sizes-for-suse-plans"></a>Rabatte gelten für verschiedene VM-Größen für SUSE-Pläne
 
 Wie reservierte VM-Instanzen bieten SUSE-Pläne Flexibilität bei der Instanzgröße. Dies bedeutet, dass der Rabatt auch angewendet wird, wenn Sie einen virtuellen Computer mit einer anderen Anzahl von vCPUs bereitstellen. Der Rabatt gilt für verschiedene VM-Größen im Softwareplan.
 
@@ -39,8 +62,6 @@ Wenn Sie einen Plan für SUSE Linux Enterprise Server for HPC Priority für eine
 - oder 0,77 oder ca. 77 % eines virtuellen Computers mit mindestens 5 vCPUs.
 
 Der Verhältniswert für mindestens 5 vCPUs ist „2,6“. Eine Reservierung für SUSE mit einem VM mit mindestens 5 vCPUs deckt also nur einen Teil der Softwarekosten, nämlich ca. 77 %.
-
-## <a name="understand-suse-vm-usage-before-you-buy"></a>Grundlegendes zur Nutzung von SUSE-VMs vor dem Kauf
 
 Die folgenden Tabellen enthalten die Softwarepläne, für die Sie eine Reservierung erwerben können, deren zugeordnete Verbrauchseinheiten und das jeweilige Verhältnis.
 
@@ -122,6 +143,10 @@ Namen der Marketplace-Angebote im Azure-Portal:
 |SLES (vCPUs mit 3-4 Kernen) |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1,92308|D4s_v3|
 |SLES (mindestens 5 vCPUs) |7b349b65-d906-42e5-833f-b2af38513468|2,30769| D8s_v3|
 
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
+
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Reservierungen finden Sie in den folgenden Artikeln:
@@ -132,7 +157,3 @@ Weitere Informationen zu Reservierungen finden Sie in den folgenden Artikeln:
 - [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](billing-understand-reserved-instance-usage-ea.md)
-
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
-
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

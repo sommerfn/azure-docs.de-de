@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/15/2019
+ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: e3b0c0703cb46087db38121055117b50f97ad03f
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: d125328d903b419aa81c54ffecf1f549d4cb4fe2
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006575"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330783"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Schnellstart: Steuern eines mit einem IoT-Hub verbundenen Geräts (Android)
 
@@ -35,7 +35,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Android Studio (https://developer.android.com/studio/). Weitere Informationen zur Android Studio-Installation finden Sie unter [Install Android Studio](https://developer.android.com/studio/install) (Installieren von Android Studio).
+* Android Studio (https://developer.android.com/studio/ ). Weitere Informationen zur Android Studio-Installation finden Sie unter [Install Android Studio](https://developer.android.com/studio/install) (Installieren von Android Studio).
 
 * In dem Beispiel in diesem Artikel wird Android SDK 27 verwendet.
 
@@ -94,12 +94,12 @@ Darüber hinaus benötigen Sie eine _Dienstverbindungszeichenfolge_, damit die B
 **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
 ```azurecli-interactive
-az iot hub show-connection-string --name YourIoTHubName --output table
+az iot hub show-connection-string --name YourIoTHubName --policy-name service --output table
 ```
 
 Notieren Sie sich die Dienstverbindungszeichenfolge, die wie folgt aussieht:
 
-`HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}`
+`HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
 Dieser Wert wird später in der Schnellstartanleitung benötigt. Die Dienstverbindungszeichenfolge unterscheidet sich von der Geräteverbindungszeichenfolge.
 
@@ -125,15 +125,13 @@ Die Geräte-SDK-Beispielanwendung kann auf einem physischen Android-Gerät oder 
    > * Die Versionen von Android Gradle-Plug-In und Gradle, auf die im Projekt verwiesen wird, sind für Ihre Version von Android Studio veraltet. Gehen Sie wie [hier](https://developer.android.com/studio/releases/gradle-plugin) beschrieben vor, um die richtige Plug-In- und Gradle-Version für Ihre Installation zu installieren und auf sie zu verweisen.
    > * Der Lizenzvertrag für das Android SDK wurde nicht unterzeichnet. Befolgen Sie die Anweisungen in der Buildausgabe, um den Lizenzvertrag zu unterzeichnen, und laden Sie das SDK herunter.
 
-
 4. Klicken Sie anschließend auf **Run** > **Run 'app'** (Ausführen > App ausführen). Konfigurieren Sie die App für die Ausführung auf einem physischen Android-Gerät oder in einem Android-Emulator. Weitere Informationen zum Ausführen einer Android-App auf einem physischen Gerät oder in einem Emulator finden Sie unter [Run your app](https://developer.android.com/training/basics/firstapp/running-app) (Ausführen Ihrer App).
 
 5. Klicken Sie nach dem Laden der App auf die Schaltfläche **Start** (Starten), um mit dem Senden von Telemetriedaten an Ihre IoT Hub-Instanz zu beginnen:
 
-    ![Anwendung](media/quickstart-send-telemetry-android/sample-screenshot.png)
+    ![Beispielscreenshot der Android-App auf dem Clientgerät](media/quickstart-control-device-android/sample-screenshot.png)
 
 Diese App muss während der Ausführung des Dienst-SDK-Beispiels weiter auf einem physischen Gerät oder in einem Emulator ausgeführt werden, damit das Telemetrieintervall während der Ausführungszeit aktualisiert wird.
-
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Lesen der Telemetriedaten aus Ihrem Hub
 
@@ -146,12 +144,12 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell mit der [IoT-Erweiterung](ht
     ```azurecli-interactive
     az iot hub monitor-events --hub-name YourIoTHubName --output table
     ```
+
     Der folgende Screenshot zeigt die Ausgabe, während der IoT-Hub die vom Android-Gerät gesendeten Telemetriedaten empfängt:
 
-      ![Lesen der Gerätenachrichten mithilfe der Azure CLI](media/quickstart-send-telemetry-android/read-data.png)
+      ![Lesen der Gerätenachrichten mithilfe der Azure CLI](media/quickstart-control-device-android/read-data.png)
 
 Standardmäßig sendet die Telemetrie-App alle fünf Sekunden Telemetriedaten vom Android-Gerät. Im nächsten Abschnitt aktualisieren Sie mit dem Aufruf einer direkten Methode das Telemetrieintervall für das Android-IoT-Gerät.
-
 
 ## <a name="call-the-direct-method"></a>Aufrufen der direkten Methode
 
@@ -168,7 +166,7 @@ Eine IoT Hub-Back-End-Dienstanwendung wird in der Regel in der Cloud ausgeführt
 2. Öffnen Sie in Android Studio die Datei *gradle.properties* für das Beispielprojekt, und aktualisieren Sie den Wert der Eigenschaften **ConnectionString** und **DeviceId** mit der zuvor notierten Dienstverbindungszeichenfolge und der registrierten Android-Geräte-ID.
 
     ```
-    ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={YourSharedAccessKey}
+    ConnectionString=HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}
     DeviceId=MyAndroidDevice
     ```
 
@@ -179,7 +177,6 @@ Eine IoT Hub-Back-End-Dienstanwendung wird in der Regel in der Cloud ausgeführt
    >
    > * Die Versionen von Android Gradle-Plug-In und Gradle, auf die im Projekt verwiesen wird, sind für Ihre Version von Android Studio veraltet. Gehen Sie wie [hier](https://developer.android.com/studio/releases/gradle-plugin) beschrieben vor, um die richtige Plug-In- und Gradle-Version für Ihre Installation zu installieren und auf sie zu verweisen.
    > * Der Lizenzvertrag für das Android SDK wurde nicht unterzeichnet. Befolgen Sie die Anweisungen in der Buildausgabe, um den Lizenzvertrag zu unterzeichnen, und laden Sie das SDK herunter.
-
 
 4. Klicken Sie anschließend auf **Run** > **Run 'app'** (Ausführen > App ausführen). Konfigurieren Sie die App für die Ausführung auf einem separaten physischen Android-Gerät oder in einem Android-Emulator. Weitere Informationen zum Ausführen einer Android-App auf einem physischen Gerät oder in einem Emulator finden Sie unter [Run your app](https://developer.android.com/training/basics/firstapp/running-app) (Ausführen Ihrer App).
 
@@ -192,8 +189,6 @@ Eine IoT Hub-Back-End-Dienstanwendung wird in der Regel in der Cloud ausgeführt
 6. Die App erhält eine Bestätigung mit der Angabe, ob die Methode erfolgreich ausgeführt wurde.
 
     ![Bestätigung der direkten Methode](media/quickstart-control-device-android/direct-method-ack.png)
-
-
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

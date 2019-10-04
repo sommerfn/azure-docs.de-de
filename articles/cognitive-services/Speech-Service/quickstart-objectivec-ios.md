@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in Objective-C – Spracherkennungsdienste'
+title: 'Schnellstart: Erkennen von Sprache, Objective-C – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier finden Sie Informationen zum Erkennen von Sprache in Objective-C unter iOS mit dem Speech SDK.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: ee0be31b10c86651fa36577ad0dffccc3dc7bf59
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 01a2b9d5bad7d490f5ee9f6a21af5bc1308bdab1
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009270"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553650"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Objective-C unter iOS mit dem Speech SDK
 
@@ -35,7 +35,7 @@ Folgendes wird vorausgesetzt:
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Die aktuelle Version des Cognitive Services Speech SDK ist `1.4.0`.
+Die aktuelle Version des Cognitive Services Speech SDK ist `1.6.0`.
 
 Das Cognitive Services Speech SDK für iOS wird derzeit als Cocoa-Framework bereitgestellt.
 Es kann [hier](https://aka.ms/csspeech/iosbinary) heruntergeladen werden. Laden Sie die Datei in Ihr Basisverzeichnis herunter.
@@ -57,7 +57,7 @@ Treffen Sie in den nachfolgenden Dialogfeldern die folgende Auswahl:
     1. Wählen Sie das Basisverzeichnis aus, in dem das Projekt gespeichert werden soll. Dadurch wird das Verzeichnis `helloworld` in Ihrem Basisverzeichnis erstellt, das alle Dateien für das Xcode-Projekt enthält.
     1. Deaktivieren Sie die Erstellung eines Git-Repositorys für dieses Beispielprojekt.
     1. Passen Sie die Pfade zum SDK in den *Projekteinstellungen* an.
-        1. Fügen Sie auf der Registerkarte **Allgemein** unter der Überschrift **Eingebettete Binärdateien** die SDK-Bibliothek als Framework hinzu: **Eingebettete Binärdateien hinzufügen** > **Andere hinzufügen...**. Navigieren Sie dann zu Ihrem Basisverzeichnis, und wählen Sie die Datei `MicrosoftCognitiveServicesSpeech.framework` aus. Dadurch wird automatisch die SDK-Bibliothek dem Header **Verknüpftes Framework und Bibliotheken** hinzugefügt.
+        1. Fügen Sie auf der Registerkarte **Allgemein** unter der Überschrift **Eingebettete Binärdateien** die SDK-Bibliothek als Framework hinzu: **Eingebettete Binärdateien hinzufügen** > **Andere hinzufügen...** . Navigieren Sie dann zu Ihrem Basisverzeichnis, und wählen Sie die Datei `MicrosoftCognitiveServicesSpeech.framework` aus. Dadurch wird automatisch die SDK-Bibliothek dem Header **Verknüpftes Framework und Bibliotheken** hinzugefügt.
         ![Hinzugefügtes Framework](media/sdk/qs-objectivec-framework.png)
         1. Navigieren Sie zur Registerkarte **Buildeinstellungen**, und aktivieren Sie **Alle** Einstellungen.
         1. Fügen Sie das Verzeichnis `$(SRCROOT)/..` den *Frameworksuchpfaden* unter der Überschrift **Suchpfade** hinzu.
@@ -67,7 +67,7 @@ Treffen Sie in den nachfolgenden Dialogfeldern die folgende Auswahl:
 
 Die Benutzeroberfläche der Beispiel-App ist sehr einfach: Sie umfasst lediglich zwei Schaltflächen, um die Spracherkennung entweder mit einer Datei oder mit einer Mikrofoneingabe zu starten, sowie eine Beschriftung zum Anzeigen des Ergebnisses.
 Die Benutzeroberfläche wird im `Main.storyboard`-Teil des Projekts eingerichtet.
-Öffnen Sie die XML-Ansicht des Storyboards, indem Sie mit der rechten Maustaste auf den Eintrag `Main.storyboard` der Projektstruktur klicken und **Öffnen als...** > **Quellcode** auswählen.
+Öffnen Sie die XML-Ansicht des Storyboards, indem Sie mit der rechten Maustaste auf den Eintrag `Main.storyboard` der Projektstruktur klicken und **Öffnen als...**  > **Quellcode** auswählen.
 Ersetzen Sie den automatisch generierten XML-Code durch diesen Code:
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/Base.lproj/Main.storyboard)]
@@ -81,7 +81,7 @@ Ersetzen Sie den automatisch generierten XML-Code durch diesen Code:
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
 1. Ersetzen Sie die Zeichenfolge `YourSubscriptionKey` durch Ihren Abonnementschlüssel.
 1. Ersetzen Sie die Zeichenfolge `YourServiceRegion` durch die [Region](regions.md), die mit Ihrem Abonnement verknüpft ist (z. B. `westus` für das kostenlose Testabonnement).
-1. Fügen Sie die Anforderung für den Zugriff auf das Mikrofon hinzu. Klicken Sie mit der rechten Maustaste auf den Eintrag `Info.plist` der Projektstruktur, und wählen Sie anschließend **Öffnen als...** > **Quellcode**. Fügen Sie die folgenden Zeilen im Abschnitt `<dict>` hinzu, und speichern Sie die Datei dann.
+1. Fügen Sie die Anforderung für den Zugriff auf das Mikrofon hinzu. Klicken Sie mit der rechten Maustaste auf den Eintrag `Info.plist` der Projektstruktur, und wählen Sie anschließend **Öffnen als...**  > **Quellcode**. Fügen Sie die folgenden Zeilen im Abschnitt `<dict>` hinzu, und speichern Sie die Datei dann.
     ```xml
     <key>NSMicrophoneUsageDescription</key>
     <string>Need microphone access for speech recognition from microphone.</string>
@@ -90,9 +90,8 @@ Ersetzen Sie den automatisch generierten XML-Code durch diesen Code:
 ## <a name="building-and-running-the-sample"></a>Erstellen und Ausführen des Beispiels
 
 1. Zeigen Sie die Debugausgabe an (**Ansicht** > **Debugbereich** > **Konsole aktivieren**).
-1. Wählen Sie als Ziel für die App in der Liste des Menüs **Produkt** -> **Ziel** entweder den iOS-Simulator oder ein mit dem Entwicklungscomputer verbundenes iOS-Gerät aus.
-1. Erstellen Sie den Beispielcode im iOS-Simulator, und führen Sie ihn aus, indem Sie **Produkt** -> **Ausführen** aus dem Menü auswählen oder auf die Schaltfläche **Wiedergeben** klicken.
-   Das Speech SDK unterstützt zurzeit nur 64-Bit-iOS-Plattformen.
+1. Wählen Sie als Ziel für die App in der Liste des Menüs **Produkt** > **Ziel** entweder den iOS-Simulator oder ein mit dem Entwicklungscomputer verbundenes iOS-Gerät aus.
+1. Erstellen Sie den Beispielcode im iOS-Simulator, und führen Sie ihn aus, indem Sie **Produkt** > **Ausführen** aus dem Menü auswählen oder auf die Schaltfläche **Wiedergeben** klicken.
 1. Nachdem Sie in der App auf die Schaltfläche „Recognize (File)“ (Erkennen (Datei)) geklickt haben, sollte der Inhalt der Audiodatei „What's the weather like?“ (Wie ist das Wetter?) im unteren Teil des Bildschirms angezeigt werden.
 
    ![Simulierte iOS-App](media/sdk/qs-objectivec-simulated-app.png)
@@ -103,4 +102,3 @@ Ersetzen Sie den automatisch generierten XML-Code durch diesen Code:
 
 > [!div class="nextstepaction"]
 > [Objective-C-Beispiele auf GitHub](https://aka.ms/csspeech/samples)
-

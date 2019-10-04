@@ -1,0 +1,41 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Open Datasets (Vorschauversion)
+summary: Azure Open Datasets bietet kuratierte und bereinigte Daten, die mit minimaler Vorbereitung zur Anreicherung von ML-Modellen verwendet werden können. Hierzu zählen beispielsweise Wetterdaten, Volkszählungen oder Feiertage.
+metadata:
+  title: Dokumentation zu Open Datasets (Vorschauversion) – Azure
+  description: Azure Open Datasets bietet kuratierte und bereinigte Daten, die mit minimaler Vorbereitung zur Anreicherung von ML-Modellen verwendet werden können. Hierzu zählen beispielsweise Wetterdaten, Volkszählungen oder Feiertage.
+  services: machine-learning
+  ms.service: machine-learning
+  ms.subservice: data-science-vm
+  ms.topic: landing-page
+  ms.collection: collection
+  author: cjgronlund
+  ms.author: cgronlun
+  ms.date: 09/03/2019
+  ms.openlocfilehash: 44dea30e44e204664a5266a37c740b2eb23a49f7
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70309362"
+landingContent:
+- title: Informationen zu Azure Open Datasets
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Open Datasets?
+      url: overview-what-are-open-datasets.md
+    - text: Beispiele
+      url: samples.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Erstellen eines Regressionsmodells mit automatisiertem maschinellem Lernen
+      url: tutorial-opendatasets-automl.md
+- title: Erkunden des Referenzinhalts
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Python-API
+      url: https://docs.microsoft.com/python/api/azureml-opendatasets/?view=azure-ml-py

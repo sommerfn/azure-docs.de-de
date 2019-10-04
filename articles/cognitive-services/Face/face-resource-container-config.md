@@ -1,22 +1,22 @@
 ---
-title: Konfigurieren von Containern
-titlesuffix: Face - Azure Cognitive Services
+title: Konfigurieren von Containern – Gesichtserkennungs-API
+titleSuffix: Azure Cognitive Services
 description: Konfigurationseinstellungen für Container
 services: cognitive-services
-author: diberry
+author: IEvangelist
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.author: diberry
-ms.openlocfilehash: 73fc17ae5c65cd1a6ce47a18cbe17e6c338b7aaf
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 09/18/2019
+ms.author: dapine
+ms.openlocfilehash: a07f088f7f5699a2698c0ea8fb0e853b3d287572
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882122"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101953"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurieren von Docker-Containern für die Gesichtserkennung
 
@@ -31,11 +31,11 @@ Die Runtimeumgebung für Container für die **Gesichtserkennung** wird über die
 
 ## <a name="apikey-configuration-setting"></a>Konfigurationseinstellung „ApiKey“
 
-Die `ApiKey`-Einstellung gibt den Schlüssel der Azure-Ressourcen an, mit dem die Abrechnungsinformationen für den Container verfolgt werden. Sie müssen einen Wert für „ApiKey“ angeben. Bei diesem Wert muss es sich um einen gültigen Schlüssel für die Ressource vom Typ _Gesichtserkennung_ handeln, die für die Konfigurationseinstellung [`Billing`](#billing-configuration-setting) angegeben wurde.
+Die `ApiKey`-Einstellung gibt den Schlüssel der Azure-Ressourcen an, mit dem die Abrechnungsinformationen für den Container verfolgt werden. Sie müssen einen Wert für ApiKey angeben. Bei diesem Wert muss es sich um einen gültigen Schlüssel für die Ressource vom Typ _Cognitive Services_ handeln, die für die Konfigurationseinstellung [`Billing`](#billing-configuration-setting) angegeben wurde.
 
 Diese Einstellung finden Sie hier:
 
-* Azure-Portal: Ressourcenverwaltung der **Gesichtserkennung** (unter **Schlüssel**)
+* Azure-Portal: Ressourcenverwaltung von **Cognitive Services** (unter **Schlüssel**)
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights-Einstellung
 
@@ -43,11 +43,13 @@ Diese Einstellung finden Sie hier:
 
 ## <a name="billing-configuration-setting"></a>Konfigurationseinstellung „Billing“
 
-Die Einstellung `Billing` gibt den Endpunkt-URI der Ressource für die _Gesichtserkennung_ in Azure an, der zum Messen der Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen URI-Endpunkt für eine Ressource für die _Gesichtserkennung_ in Azure handeln. Der Container meldet die Nutzung etwa alle 10 bis 15 Minuten.
+Die `Billing`-Einstellung gibt den Endpunkt-URI der _Cognitive Services_-Ressource in Azure an, der zum Messen der Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen URI-Endpunkt für eine _Cognitive Services_-Ressource in Azure handeln. Der Container meldet die Nutzung etwa alle 10 bis 15 Minuten.
 
 Diese Einstellung finden Sie hier:
 
-* Azure-Portal: Übersicht über die **Gesichtserkennung** mit der Bezeichnung `Endpoint`
+* Azure-Portal: Übersicht über **Cognitive Services**, mit der Bezeichnung `Endpoint`
+
+Denken Sie daran, die _Gesichtserkennungs_-Weiterleitung dem Endpunkt-URI anzufügen, wie im folgenden Beispiel dargestellt. 
 
 |Erforderlich| NAME | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
@@ -61,7 +63,7 @@ Die Konfigurationseinstellungen im Abschnitt `CloudAI` umfassen containerspezifi
 
 | NAME | Datentyp | BESCHREIBUNG |
 |------|-----------|-------------|
-| `Storage` | Objekt | Das vom Container für die Gesichtserkennung verwendete Speicherszenario. Weitere Informationen zu Speicherszenarien und den zugehörigen Einstellungen für das `Storage`-Objekt finden Sie unter [Einstellungen für das Speicherszenario](#storage-scenario-settings). |
+| `Storage` | Object | Das vom Container für die Gesichtserkennung verwendete Speicherszenario. Weitere Informationen zu Speicherszenarien und den zugehörigen Einstellungen für das `Storage`-Objekt finden Sie unter [Einstellungen für das Speicherszenario](#storage-scenario-settings). |
 
 ### <a name="storage-scenario-settings"></a>Einstellungen für das Speicherszenario
 
@@ -80,7 +82,7 @@ Die Speicherszenarien und die zugehörigen Konfigurationseinstellungen werden vo
 
 | NAME | Datentyp | BESCHREIBUNG |
 |------|-----------|-------------|
-| `StorageScenario` | Zeichenfolge | Das vom Container unterstützte Speicherszenario. Folgende Werte sind verfügbar:<br/>`Memory` - Standardwert. Der Container verwendet nicht persistenten und nicht verteilten Speicher im Arbeitsspeicher für die temporäre Nutzung durch einen einzelnen Knoten. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container zerstört.<br/>`Azure` - Der Container verwendet Azure-Ressourcen für die Speicherung. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container beibehalten.|
+| `StorageScenario` | Zeichenfolge | Das vom Container unterstützte Speicherszenario. Folgende Werte sind verfügbar:<br/>`Memory`: Standardwert. Der Container verwendet nicht persistenten und nicht verteilten Speicher im Arbeitsspeicher für die temporäre Nutzung durch einen einzelnen Knoten. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container zerstört.<br/>`Azure`: Der Container verwendet Azure-Ressourcen für die Speicherung. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container beibehalten.|
 | `ConnectionStringOfAzureStorage` | Zeichenfolge | Die Verbindungszeichenfolge für die Azure Storage-Ressource, die vom Container verwendet wird.<br/>Diese Einstellung gilt nur, wenn `Azure` für die Konfigurationseinstellung `StorageScenario` angegeben wurde. |
 | `ConnectionStringOfCosmosMongo` | Zeichenfolge | Die MongoDB-Verbindungszeichenfolge für die Azure Cosmos DB-Ressource, die vom Container verwendet wird.<br/>Diese Einstellung gilt nur, wenn `Azure` für die Konfigurationseinstellung `StorageScenario` angegeben wurde. |
 
@@ -136,12 +138,14 @@ Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
 | Platzhalter | Wert | Format oder Beispiel |
 |-------------|-------|---|
-|{BILLING_KEY} | Der Endpunktschlüssel der Ressource für die Gesichtserkennung. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Der Wert für den Abrechnungsendpunkt, einschließlich Region.|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
+| **{API_KEY}** | Der Endpunktschlüssel der `Face`-Ressource auf der Azure `Face`-Schlüsselseite. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Den Wert des Abrechnungsendpunkts finden Sie auf der Übersichtsseite von Azure `Face`.| Ausführliche Beispiele finden Sie unter [Ermitteln erforderlicher Parameter](face-how-to-install-containers.md#gathering-required-parameters). |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](face-how-to-install-containers.md#billing).
-> Der ApiKey-Wert ist der **Schlüssel** von der Schlüsselseite der Azure-Ressource für die Gesichtserkennung. 
+> Der ApiKey-Wert ist der **Schlüssel** von der Schlüsselseite der Azure `Cognitive Services`-Ressource. 
 
 ## <a name="face-container-docker-examples"></a>Beispiele für Docker-Container zur Gesichtserkennung
 
@@ -153,8 +157,8 @@ Im Folgenden finden Sie Docker-Beispiele für den Container für die Gesichtserk
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY} 
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
   ```
 
 ### <a name="logging-example"></a>Beispiel für die Protokollierung 
@@ -162,7 +166,7 @@ Im Folgenden finden Sie Docker-Beispiele für den Container für die Gesichtserk
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} \
+  Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information
   ```
 

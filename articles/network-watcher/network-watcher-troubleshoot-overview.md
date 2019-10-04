@@ -3,8 +3,8 @@ title: Einführung in die Problembehandlung bei Ressourcen in Azure Network Watc
 description: Diese Seite enthält eine Übersicht über die Network Watcher-Funktionen zur Problembehandlung bei Ressourcen.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: jdial
-ms.openlocfilehash: aa7fce21228d4413dc4964d6e828bf60478aee27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: 65ce9e7d298131486ae4e5f3584c7975ca81e1ab
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901830"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64684247"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Einführung in die Problembehandlung bei Ressourcen in Azure Network Watcher
 
@@ -49,30 +49,30 @@ Die folgenden Tabellen enthalten die verschiedenen verfügbaren Fehlertypen (ID 
 
 ### <a name="gateway"></a>Gateway
 
-| Fehlertyp | Grund | Protokoll|
+| Fehlertyp | `Reason` | Protokoll|
 |---|---|---|
 | NoFault | Es wurde kein Fehler erkannt. |Ja|
-| GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein |
-| PlannedMaintenance |  Die Gatewayinstanz wird zurzeit gewartet.  |Nein |
-| UserDrivenUpdate | Dieser Fehler tritt auf, wenn ein Benutzerupdate des Geräts durchgeführt wird. Das Update könnte z.B. eine Größenänderung sein. | Nein  |
-| VipUnResponsive | Dieser Fehler tritt auf, wenn die primäre Instanz des Gateways aufgrund eines Integritätstestfehlers nicht erreicht werden kann. | Nein  |
-| PlatformInActive | Es ist ein Problem mit der Plattform aufgetreten. | Nein |
-| ServiceNotRunning | Der zugrunde liegende Dienst wird nicht ausgeführt. | Nein |
-| NoConnectionsFoundForGateway | Es gibt keine Verbindungen auf dem Gateway. Dieser Fehler ist nur eine Warnung.| Nein |
+| GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein|
+| PlannedMaintenance |  Die Gatewayinstanz wird zurzeit gewartet.  |Nein|
+| UserDrivenUpdate | Dieser Fehler tritt auf, wenn ein Benutzerupdate des Geräts durchgeführt wird. Das Update könnte z.B. eine Größenänderung sein. | Nein |
+| VipUnResponsive | Dieser Fehler tritt auf, wenn die primäre Instanz des Gateways aufgrund eines Integritätstestfehlers nicht erreicht werden kann. | Nein |
+| PlatformInActive | Es ist ein Problem mit der Plattform aufgetreten. | Nein|
+| ServiceNotRunning | Der zugrunde liegende Dienst wird nicht ausgeführt. | Nein|
+| NoConnectionsFoundForGateway | Es gibt keine Verbindungen auf dem Gateway. Dieser Fehler ist nur eine Warnung.| Nein|
 | ConnectionsNotConnected | Es sind keine Verbindungen vorhanden. Dieser Fehler ist nur eine Warnung.| Ja|
 | GatewayCPUUsageExceeded | Die aktuelle CPU-Auslastung auf dem Gateway liegt über 95 %. | Ja |
 
 ### <a name="connection"></a>Verbindung
 
-| Fehlertyp | Grund | Protokoll|
+| Fehlertyp | `Reason` | Protokoll|
 |---|---|---|
 | NoFault | Es wurde kein Fehler erkannt. |Ja|
-| GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein |
-| PlannedMaintenance | Die Gatewayinstanz wird zurzeit gewartet.  |Nein |
-| UserDrivenUpdate | Dieser Fehler tritt auf, wenn ein Benutzerupdate des Geräts durchgeführt wird. Das Update könnte z.B. eine Größenänderung sein.  | Nein  |
-| VipUnResponsive | Dieser Fehler tritt auf, wenn die primäre Instanz des Gateways aufgrund eines Integritätstestfehlers nicht erreicht werden kann. | Nein  |
-| ConnectionEntityNotFound | Die Verbindungskonfiguration fehlt. | Nein  |
-| ConnectionIsMarkedDisconnected | Die Verbindung ist als „getrennt“ gekennzeichnet. |Nein |
+| GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein|
+| PlannedMaintenance | Die Gatewayinstanz wird zurzeit gewartet.  |Nein|
+| UserDrivenUpdate | Dieser Fehler tritt auf, wenn ein Benutzerupdate des Geräts durchgeführt wird. Das Update könnte z.B. eine Größenänderung sein.  | Nein |
+| VipUnResponsive | Dieser Fehler tritt auf, wenn die primäre Instanz des Gateways aufgrund eines Integritätstestfehlers nicht erreicht werden kann. | Nein |
+| ConnectionEntityNotFound | Die Verbindungskonfiguration fehlt. | Nein |
+| ConnectionIsMarkedDisconnected | Die Verbindung ist als „getrennt“ gekennzeichnet. |Nein|
 | ConnectionNotConfiguredOnGateway | Für den zugrunde liegenden Dienst wurde die Verbindung nicht konfiguriert. | Ja |
 | ConnectionMarkedStandby | Der zugrunde liegende Dienst ist als im Ruhezustand gekennzeichnet.| Ja|
 | Authentication | Der vorinstallierte Schlüssel stimmt nicht überein. | Ja|

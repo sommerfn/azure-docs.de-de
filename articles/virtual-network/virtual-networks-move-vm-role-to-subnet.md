@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie virtuelle Computer (klassisch) und Cloud Serv
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: tysonn
 ms.assetid: de4135c7-dc5b-4ffa-84cc-1b8364b7b427
 ms.service: virtual-network
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb1576b7b842537dbdc49e6b9d402ef47ad9fae9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 275d59a7bddd8b2b609169218afcd15e9a0ce913
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792646"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058372"
 ---
 # <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>Verschieben eines virtuellen Computers (klassisch) oder einer Cloud Services-Rolleninstanz in ein anderes Subnetz mithilfe von PowerShell
 Sie können PowerShell verwenden, um Ihre virtuellen Computer (klassisch) zwischen Subnetzen im gleichen virtuellen Netzwerk (VNet) zu verschieben. Rolleninstanzen können anstatt mit PowerShell auch durch Bearbeiten der CSCFG-Datei verschoben werden.

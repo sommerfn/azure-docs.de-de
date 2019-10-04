@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 173963470a77932186b3c51f17ccb406b32a13f3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452223"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65464865"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Übersicht über den Solution Accelerator für die Gerätesimulation
 
@@ -38,7 +38,7 @@ Die Gerätesimulation ist kostenlos. Allerdings werden bei der Gerätesimulation
 
 Wenn Sie die Gerätesimulation bereitstellen, erhalten Sie einige Beispielsimulationen und Beispielgeräte. Sie können diese Beispiele verwenden, um die Nutzung der Gerätesimulation zu erlernen. Führen Sie als Einstieg eine [Beispielsimulation aus, bei der zehn LKW simuliert werden](quickstart-device-simulation-deploy.md). Sie können auch [Ihre eigene Simulation erstellen, indem Sie eines der vielen bereitgestellten Beispielgeräte verwenden](iot-accelerators-device-simulation-create-simulation.md).
 
-![Simulationskonfiguration](media/iot-accelerators-device-simulation-overview/SampleSimulation.png)
+![Simulationskonfiguration](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
 ## <a name="custom-simulated-devices"></a>Benutzerdefinierte simulierte Geräte
 

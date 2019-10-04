@@ -1,27 +1,22 @@
 ---
-title: Installieren und Verwenden von Giraph in HDInsight (Hadoop) – Azure
-description: Erfahren Sie, wie Sie Giraph auf Linux-basierten HDInsight-Clustern mit Skriptaktionen installieren. Mit Skriptaktionen können Sie den Cluster während der Erstellung anpassen, indem Sie die Clusterkonfiguration ändern oder Dienste und Hilfsprogramme installieren.
-services: hdinsight
+title: Installieren und Verwenden von Giraph in Azure HDInsight
+description: Erfahren Sie, wie Sie Giraph auf HDInsight-Clustern mit Skriptaktionen installieren. Sie können mit Giraph die Grafikverarbeitung in Apache Hadoop in der Azure-Cloud durchführen.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: hrasheed
-ms.openlocfilehash: a2f964915efda6ce83439c3c1970de58b0467456
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 04/22/2019
+ms.openlocfilehash: f1ca536ffa2166df4ef6cf51654b7b410e72ea66
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201720"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962064"
 ---
 # <a name="install-apache-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>Installieren von Apache Giraph in HDInsight Hadoop-Clustern und Verwenden von Giraph zur Verarbeitung großer Diagramme
 
 In diesem Artikel wird erläutert, wie Sie Apache Giraph in einem HDInsight-Cluster installieren. Das Skriptaktionenfeature von HDInsight ermöglicht Ihnen die Anpassung des Clusters durch Ausführen eines Bash-Skripts. Mithilfe von Skripts können Sie Cluster während und nach der Erstellung anpassen.
-
-> [!IMPORTANT]  
-> Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="whatis"></a>Was ist Giraph?
 
@@ -58,7 +53,7 @@ Dieser Abschnitt enthält Anweisungen zur Verwendung des Beispielskripts währen
 > [!NOTE]  
 > Eine Skriptaktion kann mit einer der folgenden Methoden angewendet werden:
 > * Azure PowerShell
-> * Klassische Azure-Befehlszeilenschnittstelle
+> * Die Azure-CLI
 > * Das HDInsight .NET SDK
 > * Azure-Ressourcen-Manager-Vorlagen
 > 
@@ -116,7 +111,7 @@ Nachdem Sie den Cluster erstellt haben, gehen Sie folgendermaßen vor, um das in
 
     Wenn die Daten auseinandergezogen und der Wert (die Gewichtung) als Abstand zwischen den Objekten verwendet werden, könnte es wie das folgende Diagramm aussehen:
 
-    ![tiny_graph.txt als Kreise dargestellt mit Linien unterschiedlicher Länge dazwischen](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph.png)
+    ![tiny_graph.txt als Kreise dargestellt mit Linien unterschiedlicher Länge dazwischen](./media/hdinsight-hadoop-giraph-install-linux/hdinsight-giraph-graph.png)
 
 3. Drücken Sie zum Speichern der Datei **STRG + X**, dann **Y**, und schließlich die **Eingabetaste**, um den Dateinamen zu akzeptieren.
 
@@ -166,7 +161,7 @@ Nachdem Sie den Cluster erstellt haben, gehen Sie folgendermaßen vor, um das in
 
     Wenn Sie diese Daten visualisieren, können Sie die Ergebnisse überprüfen, indem Sie den kürzesten Weg zwischen ID 1 und allen anderen Objekten zurücklegen. Der kürzeste Weg zwischen ID 1 und ID 4 ist 5. Dieser Wert ist die gesamte Entfernung zwischen <span style="color:orange">ID 1 und 3</span> und dann zwischen <span style="color:red">ID 3 und 4</span>.
 
-    ![Zeichnen von Objekten als Kreise mit dem kürzesten Pfad dazwischen](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph-out.png)
+    ![Zeichnen von Objekten als Kreise mit dem kürzesten Pfad dazwischen](./media/hdinsight-hadoop-giraph-install-linux/hdinsight-giraph-graph-out.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

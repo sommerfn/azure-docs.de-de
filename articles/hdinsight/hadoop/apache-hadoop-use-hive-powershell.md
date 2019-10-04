@@ -1,7 +1,6 @@
 ---
 title: Verwenden von Apache Hive mit PowerShell in HDInsight – Azure
-description: Ausführen von Hive-Abfragen mit Apache Hadoop in HDInsight mithilfe von PowerShell
-services: hdinsight
+description: Ausführen von Apache Hive-Abfragen mit Apache Hadoop in Azure HDInsight mithilfe von PowerShell
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 77d2d0b5b9f994668abdd02640a9c6d5f463e137
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 89fa7976b922ba0e40e97b72de5d4eb9a02f0dfd
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360757"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736068"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Ausführen von Apache Hive-Abfragen mit PowerShell
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -29,9 +28,6 @@ Dieses Dokument enthält ein Beispiel für die Verwendung von Azure PowerShell i
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * Ein Linux-basierter Apache Hadoop-Cluster in HDInsight, Version 3.4 oder höher.
-
-  > [!IMPORTANT]  
-  > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Ein Client mit Azure PowerShell.
 
@@ -61,7 +57,7 @@ Die folgenden Schritte veranschaulichen, wie diese Cmdlets zum Ausführen eines 
 
         .\hivejob.ps1
 
-    Beim Ausführen des Skripts werden Sie aufgefordert, den Clusternamen und die Anmeldeinformationen für das HTTPS-/Clusteradministratorkonto einzugeben. Sie werden außerdem möglicherweise dazu aufgefordert, sich bei Ihrem Azure-Abonnement anzumelden.
+    Beim Ausführen des Skripts werden Sie aufgefordert, den Clusternamen und die Anmeldeinformationen für das HTTPS-/Clusteradministratorkonto einzugeben. Sie können auch zur Anmeldung bei Ihrem Azure-Abonnement aufgefordert werden.
 
 3. Nachdem der Auftrag abgeschlossen ist, werden Informationen zurückgegeben, die folgendem Text ähneln:
 

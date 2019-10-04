@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: d7df4d2c7e824f143201e2c6af220730bcd38fb2
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d2d7508b4f0a2789a0eae5d6c6205475b5795e36
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755973"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097838"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Anw
 
 ## <a name="manually-scale-pods-or-nodes"></a>Manuelles Skalieren von Pods oder Knoten
 
-Sie können Replikate (Pods) und Knoten manuell skalieren, um zu testen, wie Ihre Anwendung auf eine Änderung in verfügbaren Ressourcen und Status reagiert. Durch manuelles Skalieren von Ressourcen können Sie auch eine festgelegte Anzahl zu verwendender Ressourcen definieren, wie z.B. die Anzahl der Knoten, um feste Kosten einzuhalten. Um manuell zu skalieren, definieren Sie die Replikate- oder Knotenanzahl sowie die Kubernetes-API-Pläne, die zusätzliche Pods erstellen oder Knoten entfernen.
+Sie können Replikate (Pods) und Knoten manuell skalieren, um zu testen, wie Ihre Anwendung auf eine Änderung in verfügbaren Ressourcen und Status reagiert. Durch manuelles Skalieren von Ressourcen können Sie auch eine festgelegte Anzahl zu verwendender Ressourcen definieren, wie z.B. die Anzahl der Knoten, um feste Kosten einzuhalten. Zum manuellen Skalieren definieren Sie die Replikat- oder Knotenanzahl. Die Kubernetes-API plant dann das Erstellen zusätzlicher Pods oder Entfernen von Knoten auf Basis dieser Replikat- oder Knotenanzahl.
 
 Informationen zu ersten Schritten mit der manuellen Skalierung von Pods und Knoten finden Sie unter [Skalieren von Anwendungen in AKS][aks-scale].
 
@@ -45,17 +45,19 @@ Informationen zu den ersten Schritten mit der horizontalen automatischen Podskal
 
 Da die horizontale automatische Podskalierung die Metriken-API alle 30 Sekunden überprüft, werden vorherige Skalierungsereignisse möglicherweise nicht erfolgreich abgeschlossen, bevor eine andere Überprüfung erfolgt. Dieses Verhalten kann dazu führen, dass die horizontale automatische Podskalierung die Anzahl der Replikate ändert, bevor das vorherige Skalierungsereignis die Anwendungsworkload empfangen und die Ressourcenanforderungen entsprechend anpassen konnte.
 
-Um diese Raceereignisse zu minimieren, können Abkühlungs- oder Verzögerungswerte eingestellt werden. Diese Werte definieren, wie lange die horizontale automatische Podskalierung nach einem Skalierungsereignis warten muss, bevor ein anderes Skalierungsereignis ausgelöst werden kann. Dieses Verhalten ermöglicht, dass die neue Replikatanzahl wirksam werden und die Metriken-API die verteilte Workload widerspiegeln kann. In der Standardeinstellung beträgt die Verzögerung für zentrales Hochskalieren 3 Minuten und für zentrales Herunterskalieren 5 Minuten.
+Zum Minimieren dieser Raceereignisse werden Abkühlungs- oder Verzögerungswerte festgelegt. Diese Werte definieren, wie lange die horizontale automatische Podskalierung nach einem Skalierungsereignis warten muss, bevor ein anderes Skalierungsereignis ausgelöst werden kann. Dieses Verhalten ermöglicht, dass die neue Replikatanzahl wirksam werden und die Metriken-API die verteilte Workload widerspiegeln kann. In der Standardeinstellung beträgt die Verzögerung für zentrales Hochskalieren 3 Minuten und für zentrales Herunterskalieren 5 Minuten.
 
-Vielleicht müssen Sie diese Abkühlungswerte optimieren. Die Standardabkühlungswerte vermitteln möglicherweise den Eindruck, dass die horizontale automatische Podskalierung die Replikatanzahl nicht schnell genug skaliert. Um z.B. die Anzahl der verwendeten Replikate schneller heraufzusetzen, verringern Sie `--horizontal-pod-autoscaler-upscale-delay` beim Erstellen Ihrer Definitionen der horizontalen automatischen Podskalierung mit `kubectl`.
+Derzeit können diese Abkühlungsstandardwerte nicht optimiert werden.
 
 ## <a name="cluster-autoscaler"></a>Automatische Clusterskalierung
 
-Um auf veränderte Pod-Anforderungen zu reagieren, enthält Kubernetes eine automatische Clusterskalierung (derzeit in AKS in der Vorschau), die die Anzahl von Knoten basierend auf den angeforderten Computeressourcen im Knotenpool anpasst. Standardmäßig überprüft die automatische Clusterskalierung den API-Server alle 10 Sekunden auf erforderliche Änderungen der Knotenanzahl. Wenn die automatische Clusterskalierung ermittelt, dass eine Änderung erforderlich ist, wird die Anzahl der Knoten im AKS-Cluster entsprechend herauf- oder herabgesetzt. Die automatische Clusterskalierung funktioniert mit RBAC-fähigen AKS-Clustern, die Kubernetes 1.10.x oder höher ausführen.
+Um auf veränderte Podanforderungen zu reagieren, enthält Kubernetes eine derzeit in AKS in der Vorschau befindliche automatische Clusterskalierung, die die Anzahl von Knoten basierend auf den angeforderten Computeressourcen im Knotenpool anpasst. Standardmäßig überprüft die automatische Clusterskalierung den Metrik-API-Server alle 10 Sekunden auf erforderliche Änderungen der Knotenanzahl. Wenn die automatische Clusterskalierung ermittelt, dass eine Änderung erforderlich ist, wird die Anzahl der Knoten im AKS-Cluster entsprechend herauf- oder herabgesetzt. Die automatische Clusterskalierung funktioniert mit RBAC-fähigen AKS-Clustern, die Kubernetes 1.10.x oder höher ausführen.
 
 ![Automatische Kubernetes-Clusterskalierung](media/concepts-scale/cluster-autoscaler.png)
 
 Die automatische Clusterskalierung wird normalerweise zusammen mit der horizontalen automatischen Podskalierung verwendet. In der Kombination setzt die horizontale automatische Podskalierung die Anzahl von Pods nach Bedarf der Anwendung herauf oder herab, und die automatische Clusterskalierung passt die Anzahl von Knoten nach Bedarf zur entsprechenden Ausführung dieser zusätzlichen Pods an.
+
+Die automatische Clusterskalierung sollte nur in der Vorschauversion auf AKS-Clustern getestet werden.
 
 Informationen zu den ersten Schritten mit der automatischen Clusterskalierung in AKS finden Sie unter [Automatische Clusterskalierung in AKS][aks-cluster-autoscaler].
 
@@ -93,7 +95,7 @@ Informationen zum Einstieg in das Skalieren von Anwendungen finden Sie in dem [S
 
 - Manuelles Skalieren von [Pods][aks-manually-scale-pods] oder [Knoten][aks-manually-scale-nodes]
 - Verwenden der [horizontalen automatischen Podskalierung][aks-hpa]
-- Verwenden der automatischen [Clusterskalierung][aks-cluster-autoscaler]
+- Verwenden der [automatischen Clusterskalierung][aks-cluster-autoscaler]
 
 Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finden Sie in den folgenden Artikeln:
 

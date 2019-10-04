@@ -3,7 +3,7 @@ title: Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal | 
 description: Enthält eine Einführung in die Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: markvi
+ms.date: 07/17/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da96c09026baff3965e0a90d1f461fd948a3a50
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: b2b30b6463ed3d58ec1565f3c49f98388ad09ed4
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438394"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186290"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal 
 
-Mit Azure AD-Berichten (Azure Active Directory) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
+Mit Azure AD-Berichten (Azure Active Directory) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
 
 Diese Architektur für die Berichterstellung umfasst die folgenden Komponenten:
 
@@ -48,7 +48,7 @@ Dieser Artikel enthält eine Übersicht über den Überwachungsbericht.
 
 Die Azure AD-Überwachungsprotokolle stellen Datensätze mit Systemaktivitäten für Compliancezwecke bereit. Wählen Sie zum Auswählen des Überwachungsberichts in **Azure Active Directory** im Abschnitt **Aktivität** die Option **Überwachungsprotokolle**. Beachten Sie, dass Überwachungsprotokolle eine Latenz von bis zu einer Stunde haben können, es kann also so lange dauern, bis die Daten der Überwachungsaktivität im Portal angezeigt werden, nachdem Sie die Aufgabe abgeschlossen haben.
 
-![Überwachungsprotokolle](./media/concept-audit-logs/61.png "Überwachungsprotokolle")
+
 
 Ein Überwachungsprotokoll enthält eine Standardlistenansicht mit folgenden Informationen:
 
@@ -112,7 +112,7 @@ Bei Verwendung des Filters **Kategorie** können Sie eine der folgenden Filterop
 - AdministrativeUnit
 - ApplicationManagement
 - Authentication
-- Autorisierung
+- Authorization
 - Kontakt
 - Gerät
 - DeviceConfiguration
@@ -127,7 +127,7 @@ Bei Verwendung des Filters **Kategorie** können Sie eine der folgenden Filterop
 
 Der Filter **Aktivität** basiert auf der getroffenen Auswahl für die Kategorie und den und Aktivitätsressourcentyp. Sie können entweder eine bestimmte Aktivität verwenden oder alle auswählen. 
 
-Sie können die Liste aller Überwachungsaktivitäten mit der Graph-API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta abrufen. Dabei ist „$tenantdomain“ Ihr Domänenname. Alternativ können Sie die Informationen im Artikel [Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal](reference-audit-activities.md) lesen.
+Sie können die Liste aller Überwachungsaktivitäten mithilfe der Graph-API abrufen: `https://graph.windows.net/<tenantdomain>/activities/auditActivityTypesV2?api-version=beta`
 
 Mit dem Filter **Status** können Sie eine Filterung basierend auf dem Status eines Überprüfungsvorgangs durchführen. Folgende Statuswerte sind möglich:
 
@@ -149,7 +149,7 @@ Mögliche Werte:
 
 Beim Auswählen eines benutzerdefinierten Zeitraums können Sie eine Startzeit und eine Endzeit konfigurieren.
 
-Sie können die gefilterten Daten (bis zu 250.000 Datensätze) zudem herunterladen. Wählen Sie dazu die Schaltfläche **Herunterladen** aus. Sie können die Protokolle im CSV- oder im JSON-Format herunterladen. Die Anzahl von Datensätzen, die Sie herunterladen können, ist durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md) eingeschränkt.
+Sie können die gefilterten Daten (bis zu 250.000 Datensätze) auch herunterladen, indem Sie die Schaltfläche **Herunterladen** auswählen. Sie können die Protokolle im CSV- oder JSON-Format herunterladen. Die Anzahl von Datensätzen, die Sie herunterladen können, ist durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md) eingeschränkt.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/download.png "Überwachungsprotokolle")
 
@@ -180,11 +180,11 @@ Mit Überwachungsberichten, die auf Benutzern und Gruppen basieren, können Sie 
 
 - Welche Lizenzen wurden einer Gruppe oder einem Benutzer zugewiesen?
 
-Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Benutzer beziehen, können Sie die gefilterte Ansicht unter **Überwachungsprotokolle** im Abschnitt **Aktivität** der Registerkarte **Benutzer** verwenden. Bei diesem Einstiegspunkt ist die Kategorie **UserManagement** vorab ausgewählt.
+Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Benutzer beziehen, können Sie eine gefilterte Ansicht unter **Überwachungsprotokolle** verwenden. Diese finden Sie auf der Registerkarte **Benutzer** im Abschnitt **Aktivität**. Bei diesem Einstiegspunkt ist die Kategorie **UserManagement** vorab ausgewählt.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/users.png "Überwachungsprotokolle")
 
-Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Gruppen beziehen, können Sie die gefilterte Ansicht unter **Überwachungsprotokolle** im Abschnitt **Aktivität** der Registerkarte **Gruppen** verwenden. Bei diesem Einstiegspunkt ist die Kategorie **GroupManagement** vorab ausgewählt.
+Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Gruppen beziehen, können Sie eine gefilterte Ansicht unter **Überwachungsprotokolle** verwenden. Diese finden Sie auf der Registerkarte **Gruppen** im Abschnitt **Aktivität**. Bei diesem Einstiegspunkt ist die Kategorie **GroupManagement** vorab ausgewählt.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/groups.png "Überwachungsprotokolle")
 
@@ -204,7 +204,7 @@ Wenn Sie nur Überwachungsdaten überprüfen möchten, die sich auf Ihre Anwendu
 
 ## <a name="office-365-activity-logs"></a>Office 365-Aktivitätsprotokolle
 
-Sie können Office 365-Aktivitätsprotokolle im [Microsoft 365 Admin Center](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center) anzeigen. Obwohl Office 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, bietet nur das Microsoft 365 Admin Center eine vollständige Ansicht der Office 365-Aktivitätsprotokolle. 
+Sie können Office 365-Aktivitätsprotokolle im [Microsoft 365 Admin Center](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center) anzeigen. Obwohl Office 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, bietet nur das Microsoft 365 Admin Center eine vollständige Ansicht der Office 365-Aktivitätsprotokolle. 
 
 Mithilfe der [Office 365-Verwaltungs-APIs](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) können Sie auch programmgesteuert auf die Office 365-Aktivitätsprotokolle zugreifen.
 

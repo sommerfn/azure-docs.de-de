@@ -6,12 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: b18c9666e58925746a3b61740db6fb5118c2010b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.topic: conceptual
+ms.openlocfilehash: f4af52907ab2e950636dea0874b49500f3a6b587
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733715"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67613443"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Anpassen von Web Application Firewall-Regeln mit dem Azure-Portal
 
@@ -33,11 +34,14 @@ Die Web Application Firewall (WAF) von Azure Application Gateway bietet Schutz f
 
 ## <a name="search-for-rules-to-disable"></a>Suchen nach zu deaktivierenden Regeln
 
-Das Blatt **Web Applicaton Firewall-Einstellungen** bietet die Möglichkeit, die Regeln durch eine Textsuche zu filtern. Das Ergebnis enthält nur die Regelgruppen und Regeln, die den gesuchten Text enthalten.
+Die Seite **Web Applicaton Firewall-Einstellungen** bietet die Möglichkeit, die Regeln durch eine Textsuche zu filtern. Das Ergebnis enthält nur die Regelgruppen und Regeln, die den gesuchten Text enthalten.
 
 ![Suchen nach Regeln][2]
 
 ## <a name="disable-rule-groups-and-rules"></a>Deaktivieren von Regelgruppen und Regeln
+
+> [!IMPORTANT]
+> Gehen Sie vorsichtig vor, wenn Sie Regelgruppen oder Regeln deaktivieren. Dies könnte Sie erhöhten Sicherheitsrisiken aussetzen.
 
 Wenn Sie Regeln deaktivieren, können Sie eine gesamte Regelgruppe oder bestimmte Regeln in einer oder mehreren Regelgruppen deaktivieren. 
 
@@ -51,7 +55,9 @@ Wenn Sie Regeln deaktivieren, können Sie eine gesamte Regelgruppe oder bestimmt
 
 ## <a name="mandatory-rules"></a>Obligatorische Regeln
 
-Die folgende Liste enthält die Bedingungen, die dazu führen, dass WAF die Anforderung im Präventionsmodus blockiert (im Erkennungsmodus werden sie als Ausnahmen protokolliert). Diese können nicht konfiguriert oder deaktiviert werden:
+Die folgende Liste enthält die Bedingungen, die dazu führen, dass WAF die Anforderung im Präventionsmodus blockiert. Im Erkennungsmodus werden sie als Ausnahmen protokolliert.
+
+Diese können nicht konfiguriert oder deaktiviert werden:
 
 * Fehler beim Analysieren des Anforderungstexts führen dazu, dass die Anforderung blockiert wird, sofern die Textüberprüfung nicht deaktiviert ist (XML, JSON, Formulardaten).
 * Die Datenlänge des Anforderungstexts (ohne Dateien) überschreitet das konfigurierte Limit.

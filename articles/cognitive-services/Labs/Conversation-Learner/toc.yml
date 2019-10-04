@@ -1,77 +1,72 @@
-items:
 - name: Unterhaltungslernmodul – Dokumentation
 - name: Übersicht
-  items:
-  - name: Was ist das Unterhaltungslernmodul?
-    href: overview.md
-  - name: Unterstützte Sprachen
-    href: languages-supported.md
   expanded: true
+  items:
+    - name: Was ist das Unterhaltungslernmodul?
+      href: overview.md
+    - name: Unterstützte Sprachen
+      href: languages-supported.md
 - name: Konzepte
   items:
-  - name: Ablaufsteuerung
-    href: control-flow.md
-  - name: Standardwerte und Grenzen
-    href: cl-values-and-boundaries.md
+    - name: Ablaufsteuerung
+      href: control-flow.md
+    - name: Standardwerte und Grenzen
+      href: cl-values-and-boundaries.md
 - name: Anleitungen
   items:
-  - name: Erste Schritte mit dem Unterhaltungslernmodul
-    href: quickstart.md
-  - name: Hello world
-    href: tutorials/01-hello-world.md
-  - name: Einführung in das Training
-    href: tutorials/02-intro-to-training.md
-  - name: Vergleich von Aktionen mit und ohne Wartezeit
-    href: tutorials/03-wait-vs-nonwait-actions.md
-  - name: Einführung in Entitäten
-    href: tutorials/04-introduction-to-entities.md
-  - name: Erwartete Entität
-    href: tutorials/05-expected-entity.md
-  - name: Verneinbare Entitäten
-    href: tutorials/06-negatable-entities.md
-  - name: Entitäten mit mehreren Werten
-    href: tutorials/07-multi-value-entities.md
-  - name: Vortrainierte Entitäten
-    href: tutorials/08-pre-trained-entities.md
-  - name: Entitäts-Resolver
-    href: tutorials/09-entity-resolvers.md
-  - name: Alternative Eingaben
-    href: tutorials/10-alternative-inputs.md
-  - name: Protokolldialogfelder
-    href: tutorials/11-log-dialogs.md
-  - name: Rückruf zur Entitätserkennung
-    href: tutorials/12-entity-detection-callback.md
-  - name: Sitzungsrückrufe
-    href: tutorials/13-session-callbacks.md
-  - name: API-Aufrufe
-    href: tutorials/14-api-calls.md
-  - name: Cards
-    href: tutorials/15-cards.md
-  - name: Hybrid-Bots
-    href: tutorials/16-hybrid-bots.md
-  - name: Branchen und Rückgängigmachen
-    href: tutorials/17-branch-undo.md
-  - name: Versionsverwaltung und Tagging
-    href: tutorials/18-version-tag.md
-  - name: Demo – Kennwortzurücksetzung
-    href: tutorials/demo-password-reset.md
-  - name: Demo – Pizzabestellung
-    href: tutorials/demo-pizza-order.md
-  - name: Bereitstellen eines Unterhaltungslernmodul-Bots
-    href: deploy-to-bf.md
-  - name: Einsetzen des Unterhaltungslernmoduls
-    href: how-to-teach-cl.md
-  - name: Verwalten von Benutzerdaten
-    href: managing-data.md
+    - name: Erste Schritte mit dem Unterhaltungslernmodul
+      href: quickstart.md
+    - name: Hello world
+      href: tutorials/01-hello-world.md
+    - name: Einführung in das Training
+      href: tutorials/02-intro-to-training.md
+    - name: Vergleich von Aktionen mit und ohne Wartezeit
+      href: tutorials/03-wait-vs-nonwait-actions.md
+    - name: Einführung in Entitäten
+      href: tutorials/04-introduction-to-entities.md
+    - name: Erwartete Entität
+      href: tutorials/05-expected-entity.md
+    - name: Verneinbare Entitäten
+      href: tutorials/06-negatable-entities.md
+    - name: Entitäten mit mehreren Werten
+      href: tutorials/07-multi-value-entities.md
+    - name: Vortrainierte Entitäten
+      href: tutorials/08-pre-trained-entities.md
+    - name: Entitäts-Resolver
+      href: tutorials/09-entity-resolvers.md
+    - name: Enum-Entitäten
+      href: tutorials/tutorial-enum-set-entity.md
+    - name: Alternative Eingaben
+      href: tutorials/10-alternative-inputs.md
+    - name: Protokolldialogfelder
+      href: tutorials/11-log-dialogs.md
+    - name: Rückruf zur Entitätserkennung
+      href: tutorials/12-entity-detection-callback.md
+    - name: Sitzungsrückrufe
+      href: tutorials/13-session-callbacks.md
+    - name: API-Aufrufe
+      href: tutorials/14-api-calls.md
+    - name: Cards
+      href: tutorials/15-cards.md
+    - name: Hybrid-Bots
+      href: tutorials/16-hybrid-bots.md
+    - name: Branchen und Rückgängigmachen
+      href: tutorials/17-branch-undo.md
+    - name: Versionsverwaltung und Tagging
+      href: tutorials/18-version-tag.md
+    - name: Demo – Kennwortzurücksetzung
+      href: tutorials/demo-password-reset.md
+    - name: Demo – Pizzabestellung
+      href: tutorials/demo-pizza-order.md
+    - name: Bereitstellen eines Unterhaltungslernmodul-Bots
+      href: deploy-to-bf.md
+    - name: Einsetzen des Unterhaltungslernmoduls
+      href: how-to-teach-cl.md
+    - name: Verwalten von Benutzerdaten
+      href: managing-data.md
 - name: Ressourcen
   items:
-  - name: Unterhaltungslernmodul – Beispiel für Bot
-    href: https://github.com/Microsoft/ConversationLearner-Samples
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: ac1c54259fd7660bc0ebf51fc44936577f5dab61
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792084"
+    - name: Unterhaltungslernmodul – Beispiel für Bot
+      href: 'https://github.com/Microsoft/ConversationLearner-Samples'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'

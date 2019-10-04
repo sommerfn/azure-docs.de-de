@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 05/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59c06ae83327683942885190e4b401617dc020f9
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 3799496d13259c943847625a2cf6a39a8edb1d35
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361369"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207247"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -56,6 +56,9 @@ Erstellen, Lesen, Aktualisieren und Löschen von Benutzerattributen | Globaler A
 Erstellen, Lesen, Aktualisieren und Löschen von Benutzern | Globaler Administrator (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
 Lesen aller Konfigurationen | Globaler Administrator | 
 Lesen von B2C-Überwachungsprotokollen | Globaler Administrator (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
+
+> [!NOTE]
+> Globale Azure AD B2C-Administratoren haben nicht die gleichen Berechtigungen wie globale Azure AD-Administratoren. Wenn Sie über globale Azure AD B2C-Administratorrechte verfügen, stellen Sie sicher, dass Sie sich in einem Azure AD B2C-Verzeichnis und nicht in einem Azure AD-Verzeichnis befinden.
 
 ## <a name="company-branding"></a>Unternehmensbranding
 
@@ -108,7 +111,7 @@ Lesen aller Konfigurationen | Rolle „Verzeichnis lesen“ | Standardbenutzerro
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
 Erstellen einer Azure AD Domain Services-Instanz | Globaler Administrator | 
-Ausführen aller Azure AD Domain Services-Aufgaben | Administratorengruppe für Azure AD-Domänencontroller (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
+Ausführen aller Azure AD Domain Services-Aufgaben | Administratorengruppe für Azure AD-Domänencontroller (siehe [Dokumentation](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-an-azure-ad-ds-managed-domain)) | 
 Lesen aller Konfigurationen | Leser für Azure-Abonnements, die den AD DS-Dienst umfassen | 
 
 ## <a name="devices"></a>Geräte
@@ -140,6 +143,13 @@ Aktualisieren der Enterprise-Anwendungsbereitstellung | Besitzer einer Enterpris
 Aktualisieren des Self-Service-Zugriffs auf Enterprise-Anwendungen | Besitzer einer Enterprise-Anwendung (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Cloudanwendungs-, Anwendungsadministrator
 Aktualisieren von Eigenschaften für das einmalige Anmelden | Besitzer einer Enterprise-Anwendung (siehe [Dokumentation](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Cloudanwendungs-, Anwendungsadministrator
 
+## <a name="entitlement-management"></a>Berechtigungsverwaltung
+Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
+---- | --------------------- | ----------------
+Hinzufügen von Ressourcen zu einem Katalog | Benutzeradministrator | Mit der Berechtigungsverwaltung können Sie diese Aufgabe an den Katalogbesitzer delegieren ([siehe Dokumentation](../governance/entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)).
+Hinzufügen von SharePoint Online-Websites zum Katalog | Globaler Administrator
+
+
 ## <a name="groups"></a>Gruppen
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
@@ -166,10 +176,10 @@ Konfigurieren und Aktivieren oder Deaktivieren einer MFA-Richtlinie| Sicherheits
 Konfigurieren und Aktivieren oder Deaktivieren einer Richtlinie zum Anmelderisiko| Sicherheitsadministrator | 
 Konfigurieren und Aktivieren oder Deaktivieren einer Richtlinie zum Benutzerrisiko | Sicherheitsadministrator | 
 Konfigurieren von wöchentlichen Digests | Sicherheitsadministrator| 
-Alle Risikoereignisse schließen | Sicherheitsadministrator | 
+Schließen aller Risikoerkennungen | Sicherheitsadministrator | 
 Beheben oder Ausschließen von Sicherheitsrisiken | Sicherheitsadministrator | 
 Lesen aller Konfigurationen | Sicherheitsleseberechtigter | 
-Lesen aller Risikoereignisse | Sicherheitsleseberechtigter | 
+Lesen aller Risikoerkennungen | Sicherheitsleseberechtigter | 
 Lesen von Sicherheitsrisiken | Sicherheitsleseberechtigter | 
 
 ## <a name="licenses"></a>Lizenzen
@@ -267,23 +277,23 @@ Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 Konfigurieren von Authentifizierungsmethoden | Globaler Administrator | 
 Lesen aller Konfigurationen | Globaler Administrator | 
 
-## <a name="security---conditional-access"></a>Sicherheit – Bedingter Zugriff
+## <a name="security---conditional-access"></a>Sicherheit: bedingter Zugriff
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
-Konfigurieren von durch MFA bestätigten IP-Adressen | Administrator für bedingten Zugriff | 
-Erstellen von benutzerdefinierten Steuerelementen | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Erstellen von benannten Standorten | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Erstellen von Richtlinien | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Erstellen von Nutzungsbedingungen | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Erstellen von VPN-Konnektivitätszertifikaten | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Löschen einer klassischen Richtlinie | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Löschen von Nutzungsbedingungen | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Löschen eines VPN-Konnektivitätszertifikats | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Deaktivieren einer klassischen Richtlinie | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Verwalten von benutzerdefinierten Steuerelementen | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Verwalten von benannten Standorten | Administrator für bedingten Zugriff | Sicherheitsadministrator
-Verwalten von Nutzungsbedingungen | Administrator für bedingten Zugriff | Sicherheitsadministrator
+Konfigurieren von durch MFA bestätigten IP-Adressen | Administrator für den bedingten Zugriff | 
+Erstellen von benutzerdefinierten Steuerelementen | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Erstellen von benannten Standorten | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Erstellen von Richtlinien | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Erstellen von Nutzungsbedingungen | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Erstellen von VPN-Konnektivitätszertifikaten | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Löschen einer klassischen Richtlinie | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Löschen von Nutzungsbedingungen | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Löschen eines VPN-Konnektivitätszertifikats | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Deaktivieren einer klassischen Richtlinie | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Verwalten von benutzerdefinierten Steuerelementen | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Verwalten von benannten Standorten | Administrator für den bedingten Zugriff | Sicherheitsadministrator
+Verwalten von Nutzungsbedingungen | Administrator für den bedingten Zugriff | Sicherheitsadministrator
 Lesen aller Konfigurationen | Sicherheitsleseberechtigter | Sicherheitsadministrator
 Lesen von benannten Standorten | Sicherheitsleseberechtigter | Administrator für bedingten Zugriff, Sicherheitsadministrator
 
@@ -338,7 +348,7 @@ Aktualisieren von Benutzereinstellungen | Globaler Administrator |
 
 Aufgabe | Am wenigsten privilegierte Rolle | Zusätzliche Rollen
 ---- | --------------------- | ----------------
-Einreichen eines Supporttickets | Dienstadministrator | Anwendungsadministrator, Rechnungsadministrator, Cloudanwendungsadministrator, Complianceadministrator, Dynamics 365-Administrator, Desktop Analytics-Administrator, Exchange-Administrator, Kennwortadministrator, Information Protection-Administrator, Intune-Administrator, Skype for Business-Administrator, Power BI-Administrator, Administrator für die privilegierte Authentifizierung, SharePoint-Administrator, Teams Communications-Administrator, Teams-Administrator, Benutzeradministrator, Workplace Analytics-Administrator
+Einreichen eines Supporttickets | Dienstadministrator | Anwendungsadministrator, Azure Information Protection-Administrator, Rechnungsadministrator, Cloudanwendungsadministrator, Complianceadministrator, Dynamics 365-Administrator, Desktop Analytics-Administrator, Exchange-Administrator, Kennwortadministrator, Intune-Administrator, Skype for Business-Administrator, Power BI-Administrator, Administrator für die privilegierte Authentifizierung, SharePoint-Administrator, Teams Communications-Administrator, Teams-Administrator, Benutzeradministrator, Workplace Analytics-Administrator
 
 ## <a name="next-steps"></a>Nächste Schritte
 

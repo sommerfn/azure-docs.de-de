@@ -3,23 +3,22 @@ title: Bereitstellen von Sicherheitskontaktinformationen in Azure Security Cente
 description: In diesem Dokument wird erläutert, wie Sie Sicherheitskontaktinformationen in Azure Security Center bereitstellen.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 26b5dcb4-ce3f-4f22-8d56-d2bf743cfc90
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/9/2018
-ms.author: rkarlin
-ms.openlocfilehash: b6babf7d5d5a0f5796efa9418044366c6a135ed9
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 08/09/2019
+ms.author: memildin
+ms.openlocfilehash: fabccb7a3f49442a009fd69ee6d3b831760751d2
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107934"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201022"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center
 In Azure Security Center wird die Bereitstellung von Sicherheitskontaktinformationen für Ihr Azure-Abonnement empfohlen (sofern noch nicht geschehen). Microsoft kontaktiert Sie anhand dieser Informationen, wenn Microsoft Security Response Center (MSRC) feststellt, dass Personen unrechtmäßig oder unbefugt auf Ihre Kundendaten zugegriffen haben. MSRC führt eine selektive Sicherheitsüberwachung im Azure-Netzwerk und in der Infrastruktur durch und empfängt Threat Intelligence-Daten und Missbrauchsmeldungen von Drittanbietern.
@@ -33,18 +32,18 @@ Warnungsbenachrichtigungen per E-Mail werden gesendet:
 - Jede E-Mail-Nachricht enthält eine einzelne Warnung, nicht eine Sammlung von Warnungen
  
 Wenn z.B. bereits eine E-Mail-Nachricht gesendet wurde, um Sie vor einem RDP-Angriff zu warnen, erhalten Sie nicht am selben Tag eine andere E-Mail-Nachricht über einen RDP-Angriff, auch dann nicht, wenn eine andere Warnung ausgelöst wird. 
- 
 
 > [!NOTE]
 > Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Es ist keine schrittweise Anleitung.
->
->
 
-## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
-1. Wählen Sie unter **Empfehlungen** die Option **Details für Sicherheitskontakt angeben**.
-   ![Sicherheitskontakt bereitstellen][1]
-2. Wählen Sie das Azure-Abonnement aus, für das Sie Kontaktinformationen angeben möchten.
-3. Dadurch wird **E-Mail-Benachrichtigungen** geöffnet.
+## Einrichten von E-Mail-Benachrichtigungen für Warnungen <a name="email"></a>
+
+1. Wählen Sie im Portal **Preise und Einstellungen** aus.
+1. Klicken Sie auf das Abonnement.
+1. Klicken Sie auf **E-Mail-Benachrichtigungen**.
+
+> [!NOTE]
+> Wenn Sie eine Empfehlung umsetzen, wählen Sie unter **Empfehlungen** die Option **Sicherheitskontaktinformationen bereitstellen** und dann das Azure-Abonnement aus,für das Sie Kontaktinformationen angeben möchten. Dadurch wird **E-Mail-Benachrichtigungen** geöffnet.
 
    ![Sicherheitskontaktinformationen bereitstellen][2]
 

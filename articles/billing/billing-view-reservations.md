@@ -1,7 +1,6 @@
 ---
 title: Anzeigen von Reservierungen für Azure-Ressourcen | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure-Reservierungen im Azure-Portal anzeigen.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashar
@@ -11,31 +10,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2018
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: bf18d845b7128c8d6f740555f1a0f791767240ae
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 3e379581440019a794388d3e01c4f230c9617a58
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650222"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718580"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Anzeigen von Azure-Reservierungen im Azure-Portal
 
 Je nach Abonnementtyp und Berechtigungen gibt es mehrere Möglichkeiten, um Reservierungen für Azure anzuzeigen.
 
-## <a name="view-reservations-as-owner-or-reader"></a>Anzeigen von Reservierungen als Besitzer oder Leser
+## <a name="view-purchased-reservations"></a>Anzeigen von erworbenen Reservierungen
 
-Standardmäßig können Sie und der Kontoadministrator die Reservierung anzeigen, wenn Sie eine Reservierung kaufen. Ihnen und dem Kontoadministrator wird automatisch die Rolle „Besitzer“ für die Reservierung zugewiesen. Damit andere Personen die Reservierung anzeigen können, müssen Sie sie als **Besitzer** oder **Leser** für die Reservierung hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
- 
+Standardmäßig können Sie und der Kontoadministrator die Reservierung anzeigen, wenn Sie eine Reservierung kaufen. Ihnen und dem Kontoadministrator wird automatisch die Rolle „Besitzer“ für den Reservierungsauftrag und die Reservierung zugewiesen. Damit andere Personen die Reservierung anzeigen können, müssen Sie sie als **Besitzer** oder **Leser** für den Reservierungsauftrag und die Reservierung hinzufügen.
+
+Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+
 Gehen Sie folgendermaßen vor, um eine Reservierung als Besitzer oder Leser anzuzeigen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Suchen Sie nach **Reservierungen**.
-
-    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-view-reservation/portal-reservation-search.png)
-
-1. Es wird eine Liste der Reservierungen angezeigt, für die Sie die Rolle „Besitzer“ oder „Leser“ ausüben.
+2. Suchen Sie nach **Reservierungen**.
+    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-view-reservation/portal-reservation-search.png)  
+3. Diese Liste zeigt alle Reservierungen, für die Sie die Rolle „Besitzer“ oder „Leser“ ausüben. Jede Reservierung zeigt den letzten bekannten Nutzungsprozentsatz.  
+    ![Beispiel für eine Liste von Reservierungen](./media/billing-view-reservation/view-reservations.png)
+4. Wählen Sie eine Reservierung aus, und zeigen Sie den Nutzungstrend für die letzten fünf Tage an.  
+    ![Beispiel mit Nutzungstrend für die Reservierung](./media/billing-view-reservation/reservation-utilization.png)
+5. Sie können die [Reservierungsnutzung](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) auch über die API für die Nutzung der reservierten Instanz und mit dem [Microsoft Azure Consumption Insights Power BI-Inhaltspaket](/power-bi/service-connect-to-azure-consumption-insights) abrufen.
 
 Wenn Sie den Bereich einer Reservierung ändern, eine Reservierung aufteilen oder ändern möchten, wer eine Reservierung verwalten kann, lesen Sie [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md).
 
@@ -84,4 +87,4 @@ Grundlegendes zur Nutzung:
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

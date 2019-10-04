@@ -1,29 +1,22 @@
 ---
-title: Azure DNS – Handbuch zur Problembehandlung | Microsoft-Dokumentation
+title: Azure DNS – Handbuch zur Problembehandlung
 description: So beheben Sie gängige Probleme mit Azure-DNS
 services: dns
-documentationcenter: na
-author: genlin
-manager: cshepard
-editor: ''
-ms.assetid: 95b01dc3-ee69-4575-a259-4227131e4f9c
+author: vhorne
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/20/2017
+ms.date: 09/20/2019
 ms.author: genli
-ms.openlocfilehash: 535e7604915555f32a7636b739c49f72cb0220c8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 885d41c9cea11805b08b19ec9c3cc4e533813673
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541569"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162060"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS – Handbuch zur Problembehandlung
 
-Diese Seite enthält Informationen zur Problembehandlung für häufige Fragen zu Azure DNS.
+Dieser Artikel enthält Informationen zur Problembehandlung für häufige Fragen zu Azure DNS.
 
 Wenn das Problem durch diese Schritte nicht behoben wird, können Sie auch in unserem [Community-Supportforum auf MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork) nach dem Problem suchen oder einen Beitrag dazu veröffentlichen. Sie haben auch die Möglichkeit, eine Azure-Supportanfrage zu erstellen.
 
@@ -38,11 +31,10 @@ Probieren Sie zum Beheben allgemeiner Probleme die folgenden Schritte aus:
 4.  Möglicherweise wird der Fehler „Die Zone ‚{Zonenname}‘ ist nicht verfügbar.“ angezeigt. Dieser Fehler weist darauf hin, dass Azure-DNS keine Namenserver für diese DNS-Zone zuordnen konnte. Versuchen Sie, einen anderen Zonennamen zu verwenden. Wenn Sie der Besitzer des Domänennamens sind, können Sie sich auch an den Azure-Support wenden, der die Namenserver für Sie zuordnen kann.
 
 
-### <a name="recommended-documents"></a>**Empfohlene Dokumente**
+### <a name="recommended-articles"></a>Empfohlene Artikel
 
-[DNS-Zonen und -Einträge](dns-zones-records.md)
-<br>
-[Erstellen einer DNS-Zone](dns-getstarted-create-dnszone-portal.md)
+* [DNS-Zonen und -Einträge](dns-zones-records.md)
+* [Erstellen einer DNS-Zone](dns-getstarted-create-dnszone-portal.md)
 
 ## <a name="i-cant-create-a-dns-record"></a>Ich kann keinen DNS-Eintrag erstellen.
 
@@ -55,11 +47,10 @@ Probieren Sie zum Beheben allgemeiner Probleme die folgenden Schritte aus:
 5.  Haben Sie die Beschränkung für die zulässige Anzahl von Eintragssätzen in einer DNS-Zone erreicht? Die aktuelle sowie die maximale Anzahl von Eintragssätzen werden im Azure-Portal unter den Eigenschaften für die jeweilige Zone angezeigt. Wenn Sie diese Beschränkung erreicht haben, löschen Sie entweder einige Eintragssätze, oder wenden Sie sich an den Azure-Support, um die Eintragssatzbeschränkung für diese Zone zu erhöhen; versuchen Sie es anschließend erneut. 
 
 
-### <a name="recommended-documents"></a>**Empfohlene Dokumente**
+### <a name="recommended-articles"></a>Empfohlene Artikel
 
-[DNS-Zonen und -Einträge](dns-zones-records.md)
-<br>
-[Erstellen einer DNS-Zone](dns-getstarted-create-dnszone-portal.md)
+* [DNS-Zonen und -Einträge](dns-zones-records.md)
+* [Erstellen einer DNS-Zone](dns-getstarted-create-dnszone-portal.md)
 
 
 
@@ -76,9 +67,9 @@ Die DNS-Namensauflösung ist ein mehrstufiger Prozess, der aufgrund einer Vielza
 4.  Nach Abschluss der obigen Schritte sollte Ihr DNS-Eintrag jetzt ordnungsgemäß aufgelöst werden. Um dies zu überprüfen, können Sie [digwebinterface](https://digwebinterface.com) erneut und dieses Mal mit den standardmäßigen Namenservereinstellungen verwenden.
 
 
-### <a name="recommended-documents"></a>**Empfohlene Dokumente**
+### <a name="recommended-articles"></a>Empfohlene Artikel
 
-[Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md)
+* [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md)
 
 
 
@@ -91,13 +82,11 @@ Beispiele für SRV-Eintragsnamen (Dienstname „sip“, Protokoll „tcp“):
 - \_sip.\_tcp (erstellt einen Eintragssatz an der Zonenspitze)
 - \_sip.\_tcp.sipservice (erstellt einen Eintragssatz mit dem Namen „sipservice“)
 
-### <a name="recommended-documents"></a>**Empfohlene Dokumente**
+### <a name="recommended-articles"></a>Empfohlene Artikel
 
-[DNS-Zonen und -Einträge](dns-zones-records.md)
-<br>
-[Erstellen von DNS-Ressourceneintragssätzen und -Einträgen mit dem Azure-Portal](dns-getstarted-create-recordset-portal.md)
-<br>
-[SRV-Eintragstyp (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
+* [DNS-Zonen und -Einträge](dns-zones-records.md)
+* [Erstellen von DNS-Ressourceneintragssätzen und -Einträgen mit dem Azure-Portal](dns-getstarted-create-recordset-portal.md)
+* [SRV-Eintragstyp (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

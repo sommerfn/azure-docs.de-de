@@ -1,40 +1,33 @@
-items:
 - name: Docker-Dokumentation
   href: index.md
 - name: Schnellstart
-  items:
-  - name: Docker-Marketplace-Vorlage
-    href: https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS
   expanded: true
+  items:
+    - name: Docker-Marketplace-Vorlage
+      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS'
 - name: Lernprogramme
   items:
-  - name: Python-Web-App mit Docker und PostgreSQL
-    href: ../app-service/containers/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
-  - name: CI/CD mit Docker Swarm und Azure DevOps
-    href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
-  - name: CI/CD mit Docker, Jenkins und Linux
-    href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+    - name: Python-Web-App mit Docker und PostgreSQL
+      href: ../app-service/containers/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+    - name: CI/CD mit Docker Swarm und Azure DevOps
+      href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
+    - name: 'CI/CD mit Docker, Jenkins und Linux'
+      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
 - name: Anleitungen
   items:
-  - name: Docker-VM-Erweiterung
-    href: /azure/virtual-machines/linux/dockerextension
-  - name: Docker-Computer
-    href: /azure/virtual-machines/linux/docker-machine
-  - name: Docker-Containerregistrierung
-    href: /azure/container-registry/container-registry-get-started-portal
+    - name: Docker-VM-Erweiterung
+      href: /azure/virtual-machines/linux/dockerextension
+    - name: Docker-Computer
+      href: /azure/virtual-machines/linux/docker-machine
+    - name: Docker-Containerregistrierung
+      href: /azure/container-registry/container-registry-get-started-portal
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-  - name: Docker-Azure-Treiber
-    href: https://docs.docker.com/machine/drivers/azure/
-  - name: Docker-Azure-Website
-    href: https://www.docker.com/docker-azure
-  - name: Docker-Website
-    href: https://docker.com
-ms.openlocfilehash: 79a7bf072be65038000cbcbc17983b4d3b80684f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433768"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Docker-Azure-Treiber
+      href: 'https://docs.docker.com/machine/drivers/azure/'
+    - name: Docker-Azure-Website
+      href: 'https://www.docker.com/docker-azure'
+    - name: Docker-Website
+      href: 'https://docker.com'

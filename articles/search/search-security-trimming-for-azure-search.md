@@ -4,17 +4,17 @@ description: Zugriffssteuerung für Azure Search-Inhalte mithilfe von Sicherheit
 ms.service: search
 ms.topic: conceptual
 services: search
-ms.date: 08/07/2017
+ms.date: 05/02/2019
 author: brjohnstmsft
 ms.author: brjohnst
-manager: jlembicz
+manager: nitinme
 ms.custom: seodec2018
-ms.openlocfilehash: 326a449d3992d22a4be2d365061c99ef8b13aef9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d1ffa5b29a56d32a4f6a8ccf40f5bafd27795e6
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453489"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186491"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>Sicherheitsfilter zum Einschränken von Ergebnissen in Azure Search
 
@@ -61,7 +61,7 @@ Angenommen, es gibt einen Index von gesicherten Dateien, und auf jede Datei kann
 Geben Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Indexes aus. Der Hauptteil der HTTP-Anforderung ist ein JSON-Objekt, das die Dokumente enthält, die hinzugefügt werden sollen:
 
 ```
-POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=[api-version]  
+POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2019-05-06  
 Content-Type: application/json
 api-key: [admin key]
 ```
@@ -119,7 +119,7 @@ Beachten Sie, dass dieses Beispiel veranschaulicht, wie Sie Dokumente mithilfe e
 Geben Sie die HTTP POST-Anforderung aus:
 
 ```
-POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=[api-version]  
+POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2019-05-06
 Content-Type: application/json  
 api-key: [admin or query key]
 ```

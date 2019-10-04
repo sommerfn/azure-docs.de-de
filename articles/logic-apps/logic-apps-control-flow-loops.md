@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 3faa3b0a5cd919752f8b7e4969e3affd668c8077
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360764"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60683960"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Erstellen von Schleifen in Azure Logic Apps, die Workflowaktionen wiederholen oder Arrays verarbeiten
 
@@ -54,7 +54,7 @@ Diese Beispiel-Logik-App sendet eine tägliche Zusammenfassung für einen RSS-Fe
 2. Fügen Sie zwischen dem RSS-Trigger und der E-Mail-Sendeaktion eine „ForEach“-Schleife hinzu. 
 
    1. Wenn Sie zwischen Schritten eine Schleife einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. 
-   Wählen Sie das daraufhin angezeigte **Pluszeichen** (**+**) und dann **Aktion hinzufügen** aus.
+   Wählen Sie das daraufhin angezeigte **Pluszeichen** ( **+** ) und dann **Aktion hinzufügen** aus.
 
       ![Auswählen von „Aktion hinzufügen“](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
@@ -126,7 +126,7 @@ Wenn Sie in der Codeansicht für Ihre Logik-App arbeiten, können Sie die `Forea
 
 Standardmäßig werden Zyklen in einer „ForEach“-Schleife parallel ausgeführt. Um jeden Zyklus sequenziell auszuführen, legen Sie die Option **Sequenziell** in Ihrer Schleife fest. „ForEach“-Schleifen müssen sequentiell ausgeführt werden, wenn Sie verschachtelte Schleifen oder Variablen innerhalb von Schleifen haben, in denen Sie vorhersehbare Ergebnisse erwarten. 
 
-1. Wählen Sie in der oberen rechten Ecke der Schleife **Auslassungspunkte** (**...** ) > **Einstellungen**.
+1. Wählen Sie in der oberen rechten Ecke der Schleife **Auslassungspunkte** ( **...** ) > **Einstellungen**.
 
    ![In „ForEach“-Schleife „...“ > „Einstellungen“ auswählen](media/logic-apps-control-flow-loops/for-each-loop-settings.png)
 
@@ -195,8 +195,8 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 
    | Eigenschaft | Wert | BESCHREIBUNG |
    | -------- | ----- | ----------- |
-   | **NAME** | Begrenzung | Name Ihrer Variablen | 
-   | **Type** | Ganze Zahl  | Datentyp Ihrer Variablen | 
+   | **Name** | Begrenzung | Name Ihrer Variablen | 
+   | **Typ** | Integer | Datentyp Ihrer Variablen | 
    | **Wert** | 0 | Startwert Ihrer Variablen | 
    |||| 
 
@@ -236,9 +236,9 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 
       | Eigenschaft | Wert | BESCHREIBUNG |
       | -------- | ----- | ----------- | 
-      | **To** | *<E-Mail-Adresse\@Domäne>* | Die E-Mail-Adresse des Empfängers. Geben Sie zum Testen Ihre eigene E-Mail-Adresse an. | 
-      | **Antragsteller** | Aktueller Wert für „Limit“ ist **Limit** | Legen Sie den E-Mail-Betreff fest. Stellen Sie in diesem Beispiel sicher, dass Sie die **Limit**-Variable einbeziehen. | 
-      | **Body** | <*E-Mail-Inhalt*> | Geben Sie den Inhalt der E-Mail-Nachricht an, die Sie senden möchten. In diesem Beispiel können Sie beliebigen Text eingeben. | 
+      | **An** | *\<email-address\@domain>* | Die E-Mail-Adresse des Empfängers. Geben Sie zum Testen Ihre eigene E-Mail-Adresse an. | 
+      | **Betreff** | Aktueller Wert für „Limit“ ist **Limit** | Legen Sie den E-Mail-Betreff fest. Stellen Sie in diesem Beispiel sicher, dass Sie die **Limit**-Variable einbeziehen. | 
+      | **Text** | <*E-Mail-Inhalt*> | Geben Sie den Inhalt der E-Mail-Nachricht an, die Sie senden möchten. In diesem Beispiel können Sie beliebigen Text eingeben. | 
       |||| 
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie in der Symbolleiste des Designers die Option **Ausführen**, um Ihre Logik-App manuell zu testen.

@@ -10,17 +10,16 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5702362add6a50f2f4525afbd3649f083f34b6fc
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: c4e97a96687e5fa1d934ab8c0317b52cb753f72c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671963"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088176"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurieren der gegenseitigen TLS-Authentifizierung für Azure App Service
 
@@ -40,7 +39,7 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 ## <a name="access-client-certificate"></a>Zugreifen auf das Clientzertifikat
 
-In App Service erfolgt die SSL-Beendigung der Anforderung auf dem Front-End-Load Balancer. Bei der Weiterleitung der Anforderung an Ihren App-Code mit [aktivierten Clientzertifikaten](#enable-client-certificates) fügt App Service einen `X-ARR-ClientCert`-Anforderungsheader mit dem Clientzertifikat ein. App Service verwendet dieses Clientzertifikat nur für dessen Weiterleitung an Ihre App. Ihr App-Code ist für die Überprüfung des Clientzertifikats zuständig.
+In App Service erfolgt die SSL-Terminierung der Anforderung auf dem Front-End-Load Balancer. Bei der Weiterleitung der Anforderung an Ihren App-Code mit [aktivierten Clientzertifikaten](#enable-client-certificates) fügt App Service einen `X-ARR-ClientCert`-Anforderungsheader mit dem Clientzertifikat ein. App Service verwendet dieses Clientzertifikat nur für dessen Weiterleitung an Ihre App. Ihr App-Code ist für die Überprüfung des Clientzertifikats zuständig.
 
 Für ASP.NET steht das Clientzertifikat über die Eigenschaft **HttpRequest.ClientCertificate** zur Verfügung.
 
@@ -190,7 +189,7 @@ export class AuthorizationHandler {
             const incomingCert: pki.Certificate = pki.certificateFromPem(pem);
 
             // Validate certificate thumbprint
-            const fingerPrint = md.sha1.create().update(asn1.toDer((pki as any).certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
+            const fingerPrint = md.sha1.create().update(asn1.toDer(pki.certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
             if (fingerPrint.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
 
             // Validate time validity

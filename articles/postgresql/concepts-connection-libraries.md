@@ -1,19 +1,19 @@
 ---
-title: Datenverbindungsbibliotheken für Azure-Datenbank für PostgreSQL
-description: In diesem Artikel werden verschiedene Bibliotheken und Treiber beschrieben, die Entwickler beim Schreiben von Anwendungen zum Erstellen von Verbindungen mit und zum Abfragen von Azure-Datenbank für PostgreSQL verwenden können.
+title: Datenverbindungsbibliotheken für Azure Database for PostgreSQL – Einzelserver
+description: In diesem Artikel werden verschiedene Bibliotheken und Treiber beschrieben, die Entwickler beim Schreiben von Anwendungen zum Erstellen von Verbindungen mit und Abfragen von „Azure Database for PostgreSQL – Einzelserver“ verwenden können.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 0e762a2d7cf82e2957fb276fcea0a20553f719e3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 5/6/2019
+ms.openlocfilehash: 85110126f9bdec225b1644860814cd89832132a1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536014"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65073591"
 ---
-# <a name="connection-libraries-for-azure-database-for-postgresql"></a>Datenverbindungsbibliotheken für Azure-Datenbank für PostgreSQL
+# <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Datenverbindungsbibliotheken für Azure Database for PostgreSQL – Einzelserver
 In diesem Artikel werden Bibliotheken und Treiber aufgeführt, die Entwickler beim Entwickeln von Anwendungen zum Herstellen von Verbindungen mit und zum Abfragen von Azure Database for PostgreSQL verwenden können.
 
 ## <a name="client-interfaces"></a>Clientschnittstellen

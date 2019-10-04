@@ -1,19 +1,18 @@
 ---
-title: Azure Backup – Häufig gestellte Fragen
+title: Antworten auf häufig gestellte Fragen zu Azure Backup-Features
 description: 'Antworten auf häufig gestellte Fragen zu: Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.author: raynew
-ms.openlocfilehash: 0981f4d5d9d5fcb243fc7ead6f4b529c096935d0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 07/07/2019
+ms.author: dacurwin
+ms.openlocfilehash: 415a25dbe63b8942509827cd8434cc0f50fde87a
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885875"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954812"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 In diesem Artikel werden allgemeine Fragen um Azure Backup-Dienst beantwortet.
@@ -25,6 +24,13 @@ Ja. Pro Abonnement können für jede unterstützte Region von Azure Backup bis z
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Gibt es Beschränkungen im Hinblick auf die Anzahl von Servern/Computern, die pro Tresor registriert werden können?
 Sie können bis zu 1.000 virtuelle Azure-Computer pro Tresor registrieren. Bei Verwendung des Microsoft Azure Backup-Agents können Sie pro Tresor bis zu 50 MAB-Agents registrieren. Sie können 50 MAB-Server/DPM-Server bei einem Tresor registrieren.
+
+### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Wie viele Datenquellen/Elemente können in einem Tresor geschützt werden? 
+Sie können bis zu 2.000 Datenquellen/Elemente für alle Workloads (IaaS-VM, SQL, AFS usw.) in einem Tresor schützen.<br>  
+Wenn Sie beispielsweise bereits 500 virtuelle Computer und 400 Azure Files-Freigaben im Tresor geschützt haben, können Sie nur maximal 1100 SQL-Datenbanken darin schützen. 
+
+### <a name="how-many-policies-can-i-create-per-vault"></a>Wie viele Richtlinien kann ich pro Tresor erstellen? 
+Sie können nur maximal 200 Richtlinien pro Tresor erstellen.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>Wie kann ich Daten von unterschiedlichen Servern im Tresor isolieren, wenn meine Organisation über nur einen Tresor verfügt?
 Serverdaten, die Sie zusammen wiederherstellen möchten, sollten beim Einrichten der Sicherung die gleiche Passphrase verwenden. Wenn Sie die Wiederherstellung auf bestimmten Servern isolieren möchten, verwenden Sie eine Passphrase nur für diese Server. So können Sie beispielsweise für die Server der Personalabteilung, für die Server der Buchhaltung und für die Speicherserver jeweils eine eigene Verschlüsselungspassphrase verwenden.
@@ -50,37 +56,6 @@ Nein. Die Speicheroptionen eines Recovery Services-Tresors können nur geändert
 - Informationen zu den auf virtuellen Azure-Computern ausgeführten Agents finden Sie in diesen [häufig gestellten Fragen](backup-azure-vm-backup-faq.md).
 - Informationen zu den Agents für das Sichern von Azure-Dateiordnern finden Sie in diesen [häufig gestellten Fragen](backup-azure-file-folder-backup-faq.md).
 
-
-## <a name="vmware-and-hyper-v-backup"></a>VMware- und Hyper-V-Sicherung
-
-### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>Kann ich VMware vCenter-Server in Azure sichern?
-Ja. Mit Azure Backup Server können Sie VMware vCenter-Server und ESXi-Hosts in Azure sichern.
-
-- [Erfahren Sie mehr](backup-mabs-protection-matrix.md) über unterstützte Versionen.
-- [Gehen Sie folgendermaßen vor](backup-azure-backup-server-vmware.md), um einen VMware-Server zu sichern.
-
-### <a name="do-i-need-a-separate-license-to-recover-an-full-on-premises-vmwarehyper-v-cluster"></a>Benötige ich eine separate Lizenz, um einen vollständigen lokalen VMware-/Hyper-V-Cluster wiederherzustellen?
-Sie benötigen für den VMware-/Hyper-V-Schutz keine separate Lizenzierung.
-
-- Wenn Sie ein System Center-Kunde sind, verwenden Sie System Center Data Protection Manager (DPM) zum Schützen von VMware-VMs.
-- Falls Sie kein System Center-Kunde sind, können Sie Azure Backup Server (nutzungsbasierte Bezahlung) verwenden, um VMware-VMs zu schützen.
-
-## <a name="dpm-and-azure-backup-server-backup"></a>DPM und Azure Backup Server-Sicherungen
-
-### <a name="which-dpm-versions-are-supported"></a>Welche DPM-Versionen werden unterstützt?
-Die unterstützten DPM-Versionen sind in der [Unterstützungsmatrix](backup-azure-dpm-introduction.md#prerequisites-and-limitations) zusammengefasst. Es wird empfohlen, die neuesten DPM-Updates zu installieren und die [neueste Version](https://aka.ms/azurebackup_agent) des Azure Backup-Agents auf dem DPM-Server auszuführen.
-
-### <a name="can-i-register-the-server-to-multiple-vaults"></a>Kann ich den Server für mehrere Tresore registrieren?
-Nein. Ein DPM- oder Azure Backup-Server kann nur für einen Tresor registriert werden.
-
-### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Kann ich Azure Backup Server verwenden, um eine Bare Metal Recovery-Sicherung (BMR) für einen physischen Server zu erstellen? <br/>
-Ja.
-
-### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Kann ich mit DPM Apps in Azure Stack sichern?
-Nein. Sie können Azure Stack mit Azure Backup schützen, das Sichern von Apps in Azure Stack mit DPM wird von Azure Backup jedoch nicht unterstützt.
-
-### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Kann ich System Center DPM zum Sichern von lokalen Workloads in Azure installieren, wenn ich den Azure Backup-Agent zum Schutz meiner Dateien und Ordner installiert habe?
-Ja. Sie sollten jedoch zuerst DPM einrichten und dann den Azure Backup-Agent installieren.  Das Installieren der Komponenten in dieser Reihenfolge stellt sicher, dass der Azure Backup-Agent mit DPM verwendet werden kann. Das Installieren des Agents vor DPM wird nicht empfohlen oder unterstützt.
 
 ## <a name="general-backup"></a>Allgemeine Sicherung
 
@@ -118,12 +93,12 @@ Für Sicherungen von virtuellen Azure-Computern mit Linux unterstützt Azure Bac
 Die folgenden Größengrenzwerte gelten:
 
 Betriebssystem/Computer | Größengrenzwert der Datenquelle
---- | --- 
+--- | ---
 Windows 8 oder höher | 54.400 GB
-Windows 7 |1.700 GB
+Windows 7 |1\.700 GB
 Windows Server 2012 oder höher | 54.400 GB
-Windows Server 2008, Windows Server 2008 R2 | 1.700 GB
-Azure-VM | 16 Datenträger<br/><br/> Datenträger bis 4.095 GB
+Windows Server 2008, Windows Server 2008 R2 | 1\.700 GB
+Azure VM | 16 Datenträger<br/><br/> Datenträger bis 4.095 GB
 
 ### <a name="how-is-the-data-source-size-determined"></a>Wie wird die Größe der Datenquelle bestimmt?
 In der folgenden Tabelle wird beschrieben, wie die einzelnen Datenquellengrößen bestimmt werden.
@@ -169,23 +144,23 @@ Nein. Aufbewahrungsrichtlinien können nur bei den Sicherungspunkten angewendet 
 
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point-br"></a>Dauert die Wiederherstellung eines älteren Datenpunkts länger, wenn eine Sicherung lange Zeit aufbewahrt wird? <br/>
- Nein. Die Dauer zum Wiederherstellen des ältesten oder neuesten Punkts ist gleich. Jeder Wiederherstellungspunkt verhält sich wie ein vollständiger Punkt.
+Nein. Die Dauer zum Wiederherstellen des ältesten oder neuesten Punkts ist gleich. Jeder Wiederherstellungspunkt verhält sich wie ein vollständiger Punkt.
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>Wenn jeder Wiederherstellungspunkt sich wie ein vollständiger Punkt verhält, wie wirkt sich dies auf den gesamten abrechenbaren Sicherungsspeicher aus?
 Bei typischen Produkten für die langfristige Aufbewahrung werden Sicherungsdaten als vollständige Punkte gespeichert.
 
-    - Die vollständigen Punkte sind im Hinblick auf den Speicher *ineffizient*, aber einfacher und schneller wiederherzustellen.
-    - Inkrementelle Kopien sind *speichereffizient*, jedoch muss eine Datenkette wiederhergestellt werden. Dies hat Auswirkungen auf die Wiederherstellungszeit.
+- Die vollständigen Punkte sind im Hinblick auf den Speicher *ineffizient*, aber einfacher und schneller wiederherzustellen.
+- Inkrementelle Kopien sind *speichereffizient*, jedoch muss eine Datenkette wiederhergestellt werden. Dies hat Auswirkungen auf die Wiederherstellungszeit.
 
 Die Speicherarchitektur von Azure Backup bietet Ihnen die Vorteile beider Ansätze, indem die Daten optimal zur schnellen Wiederherstellung und zu geringen Speicherkosten gespeichert werden. Hierdurch wird sichergestellt, dass die Eingangs- und Ausgangsbandbreite effizient genutzt wird. So werden der Umfang der Datenspeicherung und die benötigte Zeit für die Wiederherstellung der Daten möglichst gering gehalten. Erfahren Sie mehr über [inkrementelle Sicherungen](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/).
 
 ### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-created"></a>Gibt es eine Beschränkung für die Anzahl von Wiederherstellungspunkten, die erstellt werden können?
 Pro geschützter Instanz können bis zu 9.999 Wiederherstellungspunkte erstellt werden. Geschützte Instanzen sind Computer, Server (physisch oder virtuell) oder Workloads, die in Azure gesichert werden.
 
-- Erfahren Sie mehr über [Sicherung und Wiederherstellung](./backup-introduction-to-azure-backup.md#backup-and-retention).
-- Erfahren Sie etwas über [geschützte Instanzen](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance).
+- Erfahren Sie mehr über [Sicherung und Wiederherstellung](./backup-overview.md#backup-and-retention).
 
-### <a name="how-many-times-can-i-recovery-data-thats-backed-up-to-azure"></a>Wie oft kann ich in Azure gesicherte Daten wiederherstellen?
+
+### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Wie oft kann ich in Azure gesicherte Daten wiederherstellen?
 Es gibt keine Beschränkung für die Anzahl der Wiederherstellungen aus Azure Backup.
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>Fallen für mich beim Wiederherstellen von Daten für den ausgehenden Datenverkehr von Azure Kosten an?

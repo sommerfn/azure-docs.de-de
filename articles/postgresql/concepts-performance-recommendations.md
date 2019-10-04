@@ -1,21 +1,21 @@
 ---
-title: Leistungsempfehlungen in Azure Database for PostgreSQL
-description: In diesem Artikel wird das Feature Leistungsempfehlung in Azure Database for PostgreSQL beschrieben.
+title: Leistungsempfehlungen in Azure Database for PostgreSQL – Einzelserver
+description: In diesem Artikel wird das Feature für Leistungsempfehlungen in Azure Database for PostgreSQL (Einzelserver) beschrieben.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/28/2018
-ms.openlocfilehash: c5324618eeda90b4ef1a512385fb2f14bf391215
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.date: 08/21/2019
+ms.openlocfilehash: 5f1b64753d19158b17d4de1b3fbbe50d30ea0254
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620171"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764664"
 ---
-# <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Leistungsempfehlungen in Azure Database for PostgreSQL
+# <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Leistungsempfehlungen in Azure Database for PostgreSQL – Einzelserver
 
-**Anwendungsbereich:** Azure Database for PostgreSQL 9.6 und 10
+**Anwendungsbereich:** Azure Database for PostgreSQL – Einzelserverversionen 9.6, 10, 11
 
 Das Feature „Leistungsempfehlungen“ analysiert Ihre Datenbanken, um angepasste Vorschläge für eine verbesserte Leistung zu erstellen. Um die Empfehlungen zu generieren, untersucht die Analyse verschiedene Datenbankmerkmale einschließlich des Schemas. Aktivieren Sie den [Abfragespeicher](concepts-query-store.md) auf Ihren Server, um das Feature „Leistungsempfehlungen“ vollständig nutzen zu können. Nach der Implementierung von Leistungsempfehlungen sollten Sie die Leistung testen, um die Auswirkungen dieser Änderungen auszuwerten. 
 
@@ -47,7 +47,8 @@ Empfehlungen des Typs *Index erstellen* schlagen neue Indizes vor, um die am hä
 ### <a name="drop-index-recommendations"></a>Empfehlungen zum Löschen eines Index
 Zusätzlich zum Erkennen fehlender Indizes analysiert Azure Database for PostgreSQL kontinuierlich die Leistung der vorhandenen Indizes. Wenn ein Index nur selten verwendet wird oder redundant ist, empfiehlt das Analysetool, ihn zu löschen.
 
-
+## <a name="considerations"></a>Überlegungen
+* Für [Lesereplikate](concepts-read-replicas.md) sind keine Leistungsempfehlungen verfügbar.
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [Überwachung und Optimierung](concepts-monitoring.md) in Azure Database for PostgreSQL.
 

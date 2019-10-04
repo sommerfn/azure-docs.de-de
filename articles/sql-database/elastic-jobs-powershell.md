@@ -10,18 +10,17 @@ ms.topic: tutorial
 author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
-manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: eb5066185f9301450a68276dd4b2ce2123231b34
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 0d64bd150a43666679253f8244d80411e25dfdcd
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666785"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935054"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Erstellen eines Agents für elastische Aufträge mithilfe von PowerShell
 
-Mit [elastischen Aufträgen](sql-database-job-automation-overview.md#elastic-database-jobs) können einzelne oder mehrere T-SQL-Skripts (Transact-SQL) für mehrere Datenbanken gleichzeitig ausgeführt werden.
+Mit [elastischen Aufträgen](sql-database-job-automation-overview.md#elastic-database-jobs-preview) können einzelne oder mehrere T-SQL-Skripts (Transact-SQL) für mehrere Datenbanken gleichzeitig ausgeführt werden.
 
 In diesem Tutorial erfahren Sie, wie Sie eine datenbankübergreifende Abfrage ausführen:
 
@@ -285,6 +284,23 @@ $JobExecution | Get-AzSqlElasticJobStepExecution
 # Get the job target execution details
 $JobExecution | Get-AzSqlElasticJobTargetExecution -Count 2
 ```
+
+### <a name="job-execution-states"></a>Auftragsausführungsstatus
+
+In der folgenden Tabelle werden die möglichen Auftragsausführungsstatus aufgeführt:
+
+|Zustand|BESCHREIBUNG|
+|:---|:---|
+|**Erstellt** | Die Ausführung des Auftrags wurde gerade erstellt und wird noch nicht durchgeführt.|
+|**InProgress** | Der Auftrag wird zurzeit ausgeführt.|
+|**WaitingForRetry** | Die Aktion der Auftragsausführung konnte nicht abgeschlossen werden, und es wird auf einen erneuten Versuch gewartet.|
+|**Erfolgreich** | Der Auftrag wurde erfolgreich ausgeführt.|
+|**SucceededWithSkipped** | Der Auftrag wurde erfolgreich ausgeführt, aber einige seiner untergeordneten Schritte wurden übersprungen.|
+|**Fehler** | Bei der Ausführung des Auftrags sind Fehler aufgetreten und die Anzahl der möglichen Wiederholungsversuche ist ausgeschöpft.|
+|**TimedOut** | Für die Ausführung des Auftrags ist ein Timeout in Kraft getreten.|
+|**Canceled** | Die Ausführung des Auftrags wurde abgebrochen.|
+|**Übersprungen** | Die Auftragsausführung wurde übersprungen, weil eine andere Ausführung des gleichen Auftragsschritts bereits auf dem gleichen Ziel durchgeführt wurde.|
+|**WaitingForChildJobExecutions** | Die Ausführung des Auftrags wartet auf den Abschluss untergeordneter Schritte.|
 
 ## <a name="schedule-the-job-to-run-later"></a>Planen einer späteren Auftragsausführung
 

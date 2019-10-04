@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 353616141e37e8024695fad81a16c9c2f3b82625
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107343"
 documentType: LandingData
 title: Dokumentation zu verwalteten Azure-Anwendungen
 metadata:
-  title: Dokumentation zu verwalteten Azure-Anwendungen – Tutorials, API-Referenz
-  description: Verwenden Sie verwaltete Azure-Anwendungen, um Cloudlösungen zu veröffentlichen, die für Consumer leichter zu warten sind.
+  title: 'Dokumentation zu verwalteten Azure-Anwendungen – Tutorials, API-Referenz'
+  description: 'Verwenden Sie verwaltete Azure-Anwendungen, um Cloudlösungen zu veröffentlichen, die für Consumer leichter zu warten sind.'
   services: managed-applications
   author: tfitzmac
   manager: timlt
@@ -22,35 +16,35 @@ metadata:
 abstract:
   description: Mit verwalteten Azure-Anwendungen können Sie internen und externen Kunden Ihre Cloudlösungen anbieten. Sie definieren die Infrastruktur für die Lösung und die Bedingungen für die laufende Verwaltung der Lösung. Die Abrechnung für Ihre Lösung erfolgt durch die Azure-Abrechnung.
 sections:
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: Erfahren Sie, wie eine verwaltete Anwendung veröffentlicht und bereitgestellt wird.
-  - type: list
-    style: icon48
+  - title: Fünfminütige Schnellstarts
     items:
-    - image:
-        src: /azure/managed-applications/media/index/cli.svg
-      text: Azure-Befehlszeilenschnittstelle
-      href: /azure/managed-applications/managed-apps-quickstart-cli
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: Erfahren Sie, wie verwaltete Anwendungen entwickelt und über den Azure Marketplace angeboten werden.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Erfahren Sie, wie eine verwaltete Anwendung veröffentlicht und bereitgestellt wird.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/managed-applications/media/index/cli.svg
+            text: Azure-Befehlszeilenschnittstelle
+            href: /azure/managed-applications/managed-apps-quickstart-cli
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - html: <a href="/azure/managed-applications/publish-service-catalog-app">Veröffentlichen einer verwalteten Anwendung für interne Benutzer</a>
-    - html: <a href="/azure/managed-applications/publish-marketplace-app">Veröffentlichen einer verwalteten Anwendung für externe Benutzer</a>
-- title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Erfahren Sie, wie verwaltete Anwendungen entwickelt und über den Azure Marketplace angeboten werden.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/managed-applications/publish-service-catalog-app">Veröffentlichen einer verwalteten Anwendung für interne Benutzer</a>
+          - html: <a href="/azure/managed-applications/publish-marketplace-app">Veröffentlichen einer verwalteten Anwendung für externe Benutzer</a>
+  - title: Verweis
     items:
-    - title: Befehlszeile
-      html: <p><a href="/cli/azure/managedapp">Azure-Befehlszeilenschnittstelle</a></p><p><a href="/powershell/module/az.resources">PowerShell</a></p>
-    - title: REST-APIs
-      html: <p><a href="/rest/api/resources/">REST</a></p>
-    - title: Benutzeroberfläche
-      html: <p><a href="/azure/managed-applications/create-uidefinition-elements">Benutzeroberflächenelemente</a></p><p><a href="/azure/managed-applications/create-uidefinition-functions">Benutzeroberflächenfunktionen</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Befehlszeile
+            html: <p><a href="/cli/azure/managedapp">Azure-Befehlszeilenschnittstelle</a></p><p><a href="/powershell/module/az.resources">PowerShell</a></p>
+          - title: REST-APIs
+            html: <p><a href="/rest/api/resources/">REST</a></p>
+          - title: Benutzeroberfläche
+            html: <p><a href="/azure/managed-applications/create-uidefinition-elements">Benutzeroberflächenelemente</a></p><p><a href="/azure/managed-applications/create-uidefinition-functions">Benutzeroberflächenfunktionen</a></p>

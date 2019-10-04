@@ -1,5 +1,5 @@
 ---
-title: Ändern des Signaturhashalgorithmus für die Vertrauensstellung der vertrauenden Seite für Office 365 | Microsoft Docs
+title: Ändern des Signaturhashalgorithmus für die Vertrauensstellung der vertrauenden Seite für Office 365 – Azure
 description: Diese Seite enthält eine Anleitung zum Ändern des SHA-Algorithmus für die Verbundvertrauensstellung mit Office 365.
 keywords: SHA1,SHA256,O365,federation,aadconnect,adfs,ad fs,change sha,federation trust,relying party trust
 services: active-directory
@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aa597c8b458305946aa298631726df3da317534
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1b6c81343d52f016dc779f9e08176a0d909684c0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181370"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65138623"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Ändern des Signaturhashalgorithmus für die Vertrauensstellung der vertrauenden Seite für Office 365
 ## <a name="overview"></a>Übersicht

@@ -2,19 +2,19 @@
 title: Anzeigen der Modelldetails – Custom Translator
 titleSuffix: Azure Cognitive Services
 description: Die Registerkarte „Modelle“ zeigt unter jedem Projekt Details zu jedem Modell an, z.B. Modellname, Modellstatus, BLEU-Score, Training, Optimierung, Anzahl von Testsets.
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 13f3d88ad69d2acc64b9a6469415eceaf22fa491
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 64f446c3b331c1aa6ddaae9081b7f61943f74ab2
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764387"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595565"
 ---
 # <a name="view-model-details"></a>Anzeigen der Modelldetails
 

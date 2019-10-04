@@ -1,7 +1,7 @@
 ---
 title: Verwalten von Rollen in einem Azure Machine Learning-Arbeitsbereich
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung auf einen Azure Machine Learning Service-Arbeitsbereich zugreifen können.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung auf einen Azure Machine Learning-Arbeitsbereich zugreifen können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
-ms.date: 2/20/2019
+ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 56813d9a075e1c327fb5612c50ea72f067ec505d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 22ce9ea44dde6da4d1194463fe266ed00c5a3f96
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805600"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067707"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
 
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie den Zugriff auf einen Azure Machine Lear
 
 Ein Azure Machine Learning-Arbeitsbereich ist eine Azure-Ressource. Wie jede andere Azure-Ressource verfügt ein neu erstellter Azure Machine Learning-Arbeitsbereich über drei Standardrollen. Sie können dem Arbeitsbereich Benutzer hinzufügen und diesen eine dieser integrierten Rollen zuweisen.
 
-| Rolle | Zugriffsebene |
+| Role | Zugriffsebene |
 | --- | --- |
 | **Leser** | Schreibgeschützte Aktionen im Arbeitsbereich. Leser können Objekte in einem Arbeitsbereich auflisten und anzeigen, können aber keine neuen erstellen und die vorhandenen nicht anpassen. |
 | **Mitwirkender** | Anzeigen, Erstellen, Bearbeiten und Löschen (wo zutreffend) von Objekten in einem Arbeitsbereich. Mitwirkende können z.B. ein Experiment erstellen, einen Computecluster erstellen oder anfügen, eine Ausführung durchführen oder einen Webdienst bereitstellen. |
@@ -49,13 +49,13 @@ Wenn Sie Besitzer eines Arbeitsbereichs sind, können Sie für den Arbeitsbereic
 Wenn Sie die [Azure Machine Learning-CLI](reference-azure-machine-learning-cli.md) installiert haben, können Sie Benutzern Rollen auch über einen CLI-Befehl zuweisen.
 
 ```azurecli-interactive 
-az ml workspace share -n <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
+az ml workspace share -w <workspace_name> -g <resource_group_name> --role <role_name> --user <user_corp_email_address>
 ```
 
 Das Feld `user` ist die E-Mail-Adresse eines vorhandenen Benutzers in der Azure Active Directory-Instanz, in der sich das übergeordnete Abonnement des Arbeitsbereichs befindet. Im folgenden Ausschnitt wird die Verwendung des Befehls veranschaulicht:
 
 ```azurecli-interactive 
-az ml workspace share -n my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role Contributor --user jdoe@contoson.com
 ```
 
 ## <a name="create-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
@@ -104,14 +104,16 @@ az role definition create --role-definition data_scientist_role.json
 Nach der Bereitstellung ist die Rolle im angegebenen Arbeitsbereich verfügbar. Jetzt können Sie diese Rolle über das Azure-Portal hinzufügen und zuweisen. Alternativ können Sie diese Rolle einem Benutzer mit dem CLI-Befehl `az ml workspace share` zuweisen:
 
 ```azurecli-interactive
-az ml workspace share -n my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
+az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
+Weitere Informationen zu benutzerdefinierten Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](/azure/role-based-access-control/custom-roles).
 
-Weitere Informationen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](/azure/role-based-access-control/custom-roles).
+Weitere Informationen zu den Vorgängen (Aktionen), die mit benutzerdefinierten Rollen durchgeführt werden können, finden Sie unter [Vorgänge für Ressourcenanbieter](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Übersicht über Unternehmenssicherheit](concept-enterprise-security.md)
-- [Sicheres Ausführen von Experimenten und Ziehen von Rückschlüssen innerhalb eines virtuellen Azure-Netzwerks](how-to-enable-virtual-network.md)
+- [Sicheres Ausführen von Experimenten und Ziehen von Rückschlüssen oder Bewerten innerhalb eines virtuellen Azure-Netzwerks](how-to-enable-virtual-network.md)
 - [Tutorial: Trainieren von Modellen](tutorial-train-models-with-aml.md)
+- [Vorgänge für Ressourcenanbieter](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

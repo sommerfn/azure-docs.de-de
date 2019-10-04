@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie die erforderlichen Anforderungseinheiten
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: 72ec8332a3363d5336fb84b3390d5e44ced0b2e5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a1143f912d894c1219de05b03a2338dc4e5bdc5f
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798962"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467652"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 
@@ -46,7 +46,7 @@ Während Sie die Anzahl der RUs pro Sekunde für die Bereitstellung schätzen, b
 
 * **Anzahl der Elementeigenschaften**: Bei Verwendung der standardmäßigen Indizierung für alle Eigenschaften erhöht sich die Anzahl von RUs, die beim Schreiben eines Elements genutzt werden, wenn sich die Anzahl von Elementeigenschaften erhöht.
 
-* **Indizierte Eigenschaften**: Eine Indexrichtlinie für jeden Container gibt an, welche Eigenschaften standardmäßig indiziert werden. Zum Verringern der für Schreibvorgänge genutzten RUs begrenze Sie die Anzahl indizierter Eigenschaften.
+* **Indizierte Eigenschaften**: Eine Indexrichtlinie für jeden Container gibt an, welche Eigenschaften standardmäßig indiziert werden. Zum Verringern der für Schreibvorgänge genutzten RUs begrenzen Sie die Anzahl indizierter Eigenschaften.
 
 * **Datenkonsistenz**: Im Vergleich zu anderen, weniger strengen Konsistenzebenen nutzen die Konsistenzebenen „Stark“ und „Begrenzte Veraltung“ bei Lesevorgängen ungefähr zweimal mehr RUs.
 
@@ -62,7 +62,7 @@ Während Sie die Anzahl der RUs pro Sekunde für die Bereitstellung schätzen, b
 
   Azure Cosmos DB garantiert, dass die gleiche Abfrage mit den gleichen Daten bei wiederholter Ausführung immer die gleiche Anzahl von RUs beansprucht.
 
-* **Skriptnutzung**: Bei gespeicherten Prozeduren und Triggern hängt die Nutzung von RUs genau wie bei Abfragen von der Komplexität der ausgeführten Vorgänge ab. Sehen Sie sich beim Entwickeln Ihrer Anwendung den [request-charge-Header](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) an, um zu ermitteln, wie viele RUs der jeweilige Vorgang erfordert.
+* **Skriptnutzung**: Bei gespeicherten Prozeduren und Triggern hängt die Nutzung von RUs genau wie bei Abfragen von der Komplexität der ausgeführten Vorgänge ab. Sehen Sie sich beim Entwickeln Ihrer Anwendung den [Request-Charge-Header](optimize-cost-queries.md#evaluate-request-unit-charge-for-a-query) an, um zu ermitteln, wie viele RUs der jeweilige Vorgang erfordert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -75,3 +75,4 @@ Während Sie die Anzahl der RUs pro Sekunde für die Bereitstellung schätzen, b
 * Erfahren Sie mehr über das [Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB](optimize-cost-throughput.md).
 * Erfahren Sie mehr über das [Optimieren der Lese- und Schreibkosten in Azure Cosmos DB](optimize-cost-reads-writes.md).
 * Erfahren Sie mehr über das [Optimieren der Abfragekosten in Azure Cosmos DB](optimize-cost-queries.md).
+* Erfahren Sie mehr über das [Verwenden von Metriken zum Überwachen des Durchsatzes](use-metrics.md).

@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 7fd4fd65b48c199527d9172b7cea89010c962f5b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: be59f5fd34c52397b54146a8aeaf51f4d594452f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261036"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383350"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 Bei der Integration Runtime (IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integration Runtime finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
@@ -40,11 +40,11 @@ In diesem Dokument wird beschrieben, wie Sie die selbstgehostete IR erstellen un
 
     ```powershell
 
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName  
 
     ```
 
-## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Einrichten der selbstgehosteten Integration Runtime auf dem virtuellen Azure-Computer mithilfe einer Azure Resource Manager-Vorlage (Automatisierung)
+## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template"></a>Einrichten einer selbstgehosteten Integration Runtime auf einem virtuellen Azure-Computer mithilfe einer Azure Resource Manager-Vorlage 
 Sie können das Setup der selbstgehosteten IR auf einem virtuellen Azure-Computer mit [dieser Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime) automatisieren. Diese Vorlage bietet eine einfache Möglichkeit, eine voll funktionsfähige, selbstgehostete IR im virtuellen Azure-Netzwerk mit Features für hohe Verfügbarkeit und Skalierbarkeit zu nutzen (solange Sie die Knotenanzahl auf 2 oder höher festlegen).
 
 ## <a name="command-flow-and-data-flow"></a>Befehls- und Datenfluss
@@ -57,13 +57,13 @@ Hier ist ein allgemeiner Datenfluss als Zusammenfassung der Schritte zum Kopiere
 1. Der Datenentwickler erstellt eine selbstgehostete Integration Runtime in einer Azure Data Factory per PowerShell-Cmdlet. Derzeit wird dieses Feature vom Azure-Portal nicht unterstützt.
 2. Der Datenentwickler erstellt einen verknüpften Dienst für einen lokalen Datenspeicher, indem er die Instanz der selbstgehosteten Integration Runtime angibt, die zum Verbinden der Datenspeicher verwendet werden soll.
 3. Über den Knoten der selbstgehosteten Integration Runtime werden die Anmeldeinformationen per DPAPI (Windows Data Protection Application Programming Interface) verschlüsselt und lokal gespeichert. Falls mehrere Knoten festgelegt sind, um Hochverfügbarkeit zu erzielen, werden die Anmeldeinformationen für andere Knoten weiter synchronisiert. Jeder Knoten verschlüsselt die Anmeldeinformationen mithilfe von DPAPI und speichert sie lokal. Die Synchronisierung der Anmeldeinformationen ist für den Datenentwickler transparent und wird von der selbstgehosteten IR verarbeitet.    
-4. Der Data Factory-Dienst kommuniziert für die Planung und Verwaltung von Aufträgen mit der selbstgehosteten Integration Runtime. Hierfür wird ein *Steuerungskanal* genutzt, der eine freigegebene Azure Service Bus-Warteschlange verwendet. Wenn ein Aktivitätsauftrag ausgeführt werden muss, reiht Data Factory die Anforderung zusammen mit den Anmeldeinformationen in die Warteschlange ein (falls Anmeldeinformationen nicht bereits unter der selbstgehosteten Integrationslaufzeit gespeichert sind). Die selbstgehostete Integration Runtime startet den Auftrag, nachdem die Warteschlange abgefragt wurde.
+4. Der Data Factory-Dienst kommuniziert für die Planung und Verwaltung von Aufträgen mit der selbstgehosteten Integration Runtime. Hierfür wird ein *Steuerungskanal* genutzt, der ein freigegebenes [Azure Service Bus Relay](https://docs.microsoft.com/azure/service-bus-relay/relay-what-is-it#wcf-relay) verwendet. Wenn ein Aktivitätsauftrag ausgeführt werden muss, reiht Data Factory die Anforderung zusammen mit den Anmeldeinformationen in die Warteschlange ein (falls Anmeldeinformationen nicht bereits unter der selbstgehosteten Integrationslaufzeit gespeichert sind). Die selbstgehostete Integration Runtime startet den Auftrag, nachdem die Warteschlange abgefragt wurde.
 5. Die selbstgehostete Integration Runtime kopiert Daten aus einem lokalen Speicher in einen Cloudspeicher oder in umgekehrter Richtung. Dies hängt davon ab, wie die Kopieraktivität in der Datenpipeline konfiguriert ist. Für diesen Schritt kommuniziert die selbstgehostete Integration Runtime über einen sicheren Kanal (HTTPS) direkt mit einem cloudbasierten Speicherdienst, z.B. Azure Blob Storage.
 
 ## <a name="considerations-for-using-a-self-hosted-ir"></a>Aspekte der Nutzung einer selbstgehosteten IR
 
 - Eine einzelne selbstgehostete Integrationslaufzeit kann für mehrere lokale Datenquellen verwendet werden. Eine einzelne selbstgehostete Integration Runtime kann gemeinsam mit einer anderen Data Factory innerhalb des gleichen Azure Active Directory-Mandanten genutzt werden. Weitere Informationen finden Sie unter [Freigeben der selbstgehosteten Integration Runtime (IR) für mehrere Data Factorys](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories).
-- Sie können auf einem Computer nur eine Instanz der selbstgehosteten Integration Runtime installieren. Wenn Sie über zwei Data Factorys verfügen, die auf lokale Datenquellen zugreifen müssen, ist es erforderlich, dass Sie auf zwei lokalen Computern jeweils eine selbstgehostete Integration Runtime installieren, jede aus beiden Data Factorys, oder dass Sie die [Funktion für selbstgehostete IR-Freigabe](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories) verwenden, um eine selbstgehostete Integration Runtime mit einer anderen Data Factory zu teilen.  
+- Sie können auf einem Computer nur eine Instanz der selbstgehosteten Integration Runtime installieren. Wenn Sie über zwei Data Factorys verfügen, die auf lokale Datenquellen zugreifen müssen, verwenden Sie entweder die [Funktion für selbstgehostete IR-Freigabe](#sharing-the-self-hosted-integration-runtime-with-multiple-data-factories), um die selbstgehostete Integration Runtime freizugeben, oder installieren Sie die selbstgehostete Integration Runtime auf zwei lokalen Computern, eine für jede Data Factory.  
 - Die selbstgehostete Integration Runtime muss sich nicht auf demselben Computer wie die Datenquelle befinden. Wenn sich die selbstgehostete Integration Runtime näher an der Datenquelle befindet, dauert es weniger lange, bis die selbstgehostete Integration Runtime eine Verbindung mit der Datenquelle hergestellt hat. Es wird empfohlen, die selbstgehostete Integrationslaufzeit auf einem anderen Computer als dem Computer zu installieren, auf dem die lokale Datenquelle gehostet wird. Wenn sich die selbstgehostete Integration Runtime und die Datenquelle auf unterschiedlichen Computern befinden, steht die selbstgehostete Integration Runtime mit der Datenquelle nicht im Wettbewerb um Ressourcen.
 - Sie können über mehrere selbstgehostete Integration Runtimes auf verschiedenen Computern verfügen, die eine Verbindung mit der gleichen lokalen Datenquelle herstellen. Beispielsweise können Sie über zwei selbstgehostete Integration Runtimes verfügen, die zwei Data Factorys mit Daten versorgen, wobei aber dieselbe lokale Datenquelle für beide Data Factorys registriert ist.
 - Falls Sie auf Ihrem Computer bereits ein Gateway installiert haben, das für ein Power BI-Szenario verwendet wird, installieren Sie auf einem anderen Computer eine separate selbstgehostete Integration Runtime für die Azure Data Factory.
@@ -74,18 +74,22 @@ Hier ist ein allgemeiner Datenfluss als Zusammenfassung der Schritte zum Kopiere
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Die unterstützten Betriebssystemversionen sind Windows 7 Service Pack 1, Windows 8.1, Windows 10, Windows Server 2008 R2 SP1, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016. Die Installation der selbstgehosteten Integration Runtime auf einem Domänencontroller wird nicht unterstützt.
+- Die unterstützten Betriebssystemversionen sind Windows 7 Service Pack 1, Windows 8.1, Windows 10, Windows Server 2008 R2 SP1, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016 und Windows Server 2019. Die Installation der selbstgehosteten Integration Runtime auf einem Domänencontroller wird nicht unterstützt.
 - .NET Framework 4.6.1 oder höher ist erforderlich. Wenn Sie die selbstgehostete Integration Runtime auf einem Windows 7-Computer installieren, sollten Sie .NET Framework 4.6.1 oder höher installieren. Ausführlichere Informationen finden Sie unter [Systemanforderungen für .NET Framework](/dotnet/framework/get-started/system-requirements) .
 - Die empfohlene Konfiguration für den Computer mit der selbstgehosteten Integration Runtime lautet wie folgt: mindestens 2GHz, vier Kerne, 8GB RAM und ein Datenträger mit 80GB.
 - Wenn sich der Hostcomputer im Ruhezustand befindet, reagiert die selbstgehostete Integrationslaufzeit nicht auf Datenanforderungen. Konfigurieren Sie vor der Installation der selbstgehosteten Integration Runtime einen entsprechenden Energiesparplan auf dem Computer. Wenn für den Computer der Ruhezustand konfiguriert ist, wird bei der Installation der selbstgehosteten Integrationslaufzeit eine Meldung angezeigt.
 - Sie müssen der Administrator des Computers sein, um die selbstgehostete Integrationslaufzeit erfolgreich installieren und konfigurieren zu können.
 - Ausführungen der Kopieraktivität geschehen in einer bestimmten Häufigkeit. Die Ressourcenverwendung (CPU, Arbeitsspeicher) auf dem Computer folgt dem gleichen Muster mit Spitzen- und Leerlaufzeiten. Die Ressourcenverwendung hängt auch stark von der Datenmenge ab, die verschoben wird. Wenn mehrere Kopieraufträge in Bearbeitung sind, steigt die Ressourcenverwendung zu Spitzenzeiten an.
+- Aufgaben können fehlschlagen, wenn Daten in Parquet-, ORC- oder Avro-Formaten extrahiert werden. Die Dateierstellung wird auf dem selbstgehosteten Integrationscomputer ausgeführt und setzt voraus, dass die folgenden erforderlichen Komponenten wie erwartet funktionieren (siehe [Parquet-Format in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)).
+    - [Visual C++ 2010 Redistributable](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe)-Paket (x64)
+    - Java Runtime (JRE) Version 8 von einem JRE-Anbieter, wie z.B. [Adopt OpenJDK](https://adoptopenjdk.net/), stellt sicher, dass die Umgebungsvariable `JAVA_HOME` festgelegt ist.
 
 ## <a name="installation-best-practices"></a>Bewährte Methoden für die Installation
 Sie können die selbstgehostete Integration Runtime installieren, indem Sie aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) ein MSI-Setuppaket herunterladen. Im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](tutorial-hybrid-copy-powershell.md) finden Sie eine Schritt-für-Schritt-Anleitung.
 
 - Konfigurieren Sie den Energiesparplan auf dem Hostcomputer für die selbstgehostete Integration Runtime, damit der Computer nicht in den Ruhezustand versetzt wird. Wenn der Hostcomputer in den Ruhezustand versetzt wird, wechselt die selbstgehostete Integration Runtime in den Offlinemodus.
 - Sichern Sie regelmäßig die Anmeldeinformationen, die der selbstgehosteten Integrationslaufzeit zugeordnet sind.
+- Informationen zum Automatisieren der Vorgänge zum Einrichten der selbstgehosteten IR finden Sie im Abschnitt [Automatisierungsunterstützung für die Funktion der selbstgehosteten Integration Runtime](#automation-support-for-self-hosted-ir-function).  
 
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>Installieren und Registrieren der selbstgehosteten IR über das Download Center
 
@@ -109,6 +113,45 @@ Sie können die selbstgehostete Integration Runtime installieren, indem Sie aus 
     b. Optional: Wählen Sie **Authentifizierungsschlüssel anzeigen**, um den Schlüsseltext anzuzeigen.
 
     c. Wählen Sie **Registrieren**.
+
+## <a name="automation-support-for-self-hosted-ir-function"></a>Automatisierungsunterstützung für die Funktion der selbstgehosteten Integration Runtime
+
+
+> [!NOTE]
+> Wenn Sie beabsichtigen, die selbstgehostete Integration Runtime auf einem virtuellen Azure-Computer einzurichten, und die Einrichtung mithilfe von Azure Resource Manager-Vorlagen automatisieren möchten, lesen Sie [diesen Abschnitt](#setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template).
+
+Eine vorhandene selbstgehostete IR können Sie über die Befehlszeile einrichten oder verwalten. Dies gilt speziell für das Automatisieren der Installation und Registrierung von selbstgehosteten IR-Knoten. 
+
+**Dmgcmd.exe** ist in der selbstgehosteten Installation enthalten, die sich normalerweise im Ordner „C:\Programme\Microsoft Integration Runtime\3.0\Shared\“ befindet. Sie unterstützt verschiedene Parameter und kann über die Eingabeaufforderung mithilfe von Batchskripts für die Automatisierung aufgerufen werden. 
+
+*Verwendung:* 
+
+```powershell
+dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["password"] -Loglevel <logLevel> ] 
+```
+
+ *Details (Parameter/Eigenschaft):* 
+
+| Eigenschaft                                                    | BESCHREIBUNG                                                  | Erforderlich |
+| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
+| RegisterNewNode „`<AuthenticationKey>`“                     | Knoten von Integration Runtime (selbstgehostet) mit dem angegebenen Authentifizierungsschlüssel registrieren | Nein       |
+| EnableRemoteAccess „`<port>`“ [„`<thumbprint>`“]            | Aktivieren Sie den Remotezugriff auf den aktuellen Knoten zum Einrichten eines Hochverfügbarkeitsclusters und/oder zum Aktivieren der Einstellung von Anmeldeinformationen direkt für die selbstgehostete IR (ohne Verwendung des ADF-Diensts) mit dem Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** über einen Remotecomputer in demselben Netzwerk. | Nein       |
+| EnableRemoteAccessInContainer „`<port>`“ [„`<thumbprint>`“] | Remotezugriff auf aktuellen Knoten aktivieren, wenn der Knoten im Container ausgeführt wird | Nein       |
+| DisableRemoteAccess                                         | Remotezugriff auf den aktuellen Knoten deaktivieren. Der Remotezugriff ist zum Einrichten von mehreren Knoten erforderlich. Das PowerShell-Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** funktioniert auch bei deaktiviertem Remotezugriff, sofern es auf demselben Computer wie der Knoten der selbstgehosteten IR ausgeführt wird. | Nein       |
+| Schlüssel „`<AuthenticationKey>`“                                 | Vorherigen Authentifizierungsschlüssel überschreiben/aktualisieren. Achtung: Dies kann dazu führen, dass der vorherige Knoten der selbstgehosteten IR offline geschaltet wird, wenn es sich um den Schlüssel einer neuen Integration Runtime handelt. | Nein       |
+| GenerateBackupFile „`<filePath>`“ „`<password>`“            | Sicherungsdatei für aktuellen Knoten generieren. Die Sicherungsdatei enthält den Knotenschlüssel und Datenspeicher-Anmeldeinformationen. | Nein       |
+| ImportBackupFile „`<filePath>`“ „`<password>`“              | Den Knoten aus einer Sicherungsdatei wiederherstellen                          | Nein       |
+| Neu starten                                                     | Hostdienst von Integration Runtime (selbstgehostet) neu starten   | Nein       |
+| Start                                                       | Hostdienst von Integration Runtime (selbstgehostet) starten     | Nein       |
+| Beenden                                                        | Aktualisierungsdienst von Integration Runtime (selbstgehostet) beenden        | Nein       |
+| StartUpgradeService                                         | Aktualisierungsdienst von Integration Runtime (selbstgehostet) starten       | Nein       |
+| StopUpgradeService                                          | Aktualisierungsdienst von Integration Runtime (selbstgehostet) beenden        | Nein       |
+| TurnOnAutoUpdate                                            | Automatische Aktualisierung von Integration Runtime (selbstgehostet) aktivieren        | Nein       |
+| TurnOffAutoUpdate                                           | Automatische Aktualisierung von Integration Runtime (selbstgehostet) deaktivieren       | Nein       |
+| SwitchServiceAccount „<Domäne\Benutzer>“ [„Kennwort“]           | Legen Sie fest, dass DIAHostService als neues Konto ausgeführt wird. Verwenden Sie für ein Systemkonto oder virtuelles Konto ein leeres Kennwort („“). | Nein       |
+| Loglevel `<logLevel>`                                       | ETW-Protokollebene festlegen (Aus, Fehler, Ausführlich oder Alle). Wird im Allgemeinen vom Microsoft-Support beim Debuggen verwendet. | Nein       |
+
+   
 
 
 ## <a name="high-availability-and-scalability"></a>Hochverfügbarkeit und Skalierbarkeit
@@ -244,10 +287,10 @@ Stellen Sie sicher, dass die Firewallregeln für die Unternehmensfirewall, die W
 Führen Sie beispielsweise die folgenden Schritte aus, um Daten aus einem lokalen Datenspeicher in eine Azure SQL-Datenbank-Senke oder eine Azure SQL Data Warehouse-Senke zu kopieren:
 
 1. Lassen Sie ausgehende TCP-Kommunikation an Port 1433 sowohl für die Windows-Firewall als auch die Unternehmensfirewall zu.
-2. Konfigurieren Sie die Firewalleinstellungen der Azure SQL Datenbank-Instanz, um die IP-Adresse des Computers mit der selbstgehosteten Integration Runtime der Liste mit den zulässigen IP-Adressen hinzuzufügen.
+2. Konfigurieren Sie die Firewalleinstellungen der Azure SQL Datenbank, um die IP-Adresse des Computers mit der selbstgehosteten Integration Runtime der Liste mit den zulässigen IP-Adressen hinzuzufügen.
 
 > [!NOTE]
-> Falls Ihre Firewall den ausgehenden Port 1433 nicht zulässt, kann die selbstgehostete Integration Runtime nicht direkt auf die Azure SQL Datenbank-Instanz zugreifen. In diesem Fall können Sie ein [gestaffeltes Kopieren](copy-activity-performance.md) zu Azure SQL-Datenbank und Azure SQL Data Warehouse anwenden. Sie benötigen in einem solchen Szenario nur HTTPS (Port 443) für die Datenverschiebung.
+> Falls Ihre Firewall den ausgehenden Port 1433 nicht zulässt, kann die selbstgehostete Integration Runtime nicht direkt auf die Azure SQL Datenbank zugreifen. In diesem Fall können Sie ein [gestaffeltes Kopieren](copy-activity-performance.md) zu Azure SQL-Datenbank und Azure SQL Data Warehouse anwenden. Sie benötigen in einem solchen Szenario nur HTTPS (Port 443) für die Datenverschiebung.
 
 
 ## <a name="proxy-server-considerations"></a>Proxyserver-Aspekte
@@ -255,7 +298,7 @@ Konfigurieren Sie die selbstgehostete Integration Runtime mit den geeigneten Pro
 
 ![Angeben des Proxys](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
-Die selbstgehostete Integration Runtime verwendet den Proxyserver zum Herstellen der Verbindung mit dem Clouddienst. Wählen Sie während des Anfangssetups **Verknüpfung ändern** aus. Daraufhin wird das Dialogfeld für Proxyeinstellungen angezeigt.
+Wenn die selbstgehostete Integration Runtime konfiguriert ist, verwendet sie den Proxyserver zum Herstellen der Verbindung mit dem Clouddienst, Quelle/Ziel (die das HTTP/HTTPS-Protokoll verwenden). Das heißt: Wählen Sie während des Anfangssetups **Verknüpfung ändern** aus. Daraufhin wird das Dialogfeld für Proxyeinstellungen angezeigt.
 
 ![Festlegen des Proxys](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 
@@ -341,7 +384,7 @@ Bei Verwendung einer Drittanbieterfirewall können Sie den Port 8060 (oder den v
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
-``` 
+```
 
 Falls Sie den Port 8060 auf dem Computer für die selbstgehostete Integration Runtime nicht öffnen, sollten Sie andere Verfahren als die Anwendung „Anmeldeinformationen festlegen“ nutzen, um Anmeldeinformationen für den Datenspeicher zu konfigurieren. Beispielsweise können Sie das **New-AzDataFactoryV2LinkedServiceEncryptCredential**-PowerShell-Cmdlet verwenden.
 

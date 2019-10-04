@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/19/2018
+ms.date: 05/01/2019
 ms.author: bwren
-ms.openlocfilehash: 53e24a6874a1e43b0de07893a6ace3a44b81d373
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0b1627306f1a8e9d9285c72118bfebdcb53d369b
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110170"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626120"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importieren von Azure Monitor-Protokolldaten in Power BI
 
@@ -28,12 +28,12 @@ ms.locfileid: "58110170"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview"></a>Übersicht
-Zum Importieren von Daten aus einem [Log Analytics-Arbeitsbereich](manage-access.md) in Azure Monitor in Power BI erstellen Sie in Power BI basierend auf einer [Protokollabfrage](../log-query/log-query-overview.md) in Azure Monitor ein Dataset.  Die Abfrage wird bei jeder Aktualisierung des Datasets ausgeführt.  Sie können dann Power BI-Berichte erstellen, die Daten aus dem Dataset verwenden.  Zum Erstellen des Datasets in Power BI exportieren Sie Ihre Abfrage aus Log Analytics in die [Power Query-Sprache (M) ](https://msdn.microsoft.com/library/mt807488.aspx).  Diese verwenden Sie dann zum Erstellen einer Abfrage in Power BI Desktop, die Sie anschließend als Dataset in Power BI veröffentlichen.  Die Details für diesen Prozess werden nachfolgend beschrieben.
+Zum Importieren von Daten aus einem [Log Analytics-Arbeitsbereich](manage-access.md) in Azure Monitor in Power BI erstellen Sie in Power BI basierend auf einer [Protokollabfrage](../log-query/log-query-overview.md) in Azure Monitor ein Dataset.  Die Abfrage wird bei jeder Aktualisierung des Datasets ausgeführt.  Sie können dann Power BI-Berichte erstellen, die Daten aus dem Dataset verwenden.  Zum Erstellen des Datasets in Power BI exportieren Sie Ihre Abfrage aus Log Analytics in die [Power Query-Sprache (M) ](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification).  Diese verwenden Sie dann zum Erstellen einer Abfrage in Power BI Desktop, die Sie anschließend als Dataset in Power BI veröffentlichen.  Die Details für diesen Prozess werden nachfolgend beschrieben.
 
 ![Von Log Analytics nach Power BI](media/powerbi/overview.png)
 
 ## <a name="export-query"></a>Exportieren einer Abfrage
-Erstellen Sie zunächst eine [Protokollabfrage](../log-query/log-query-overview.md), die die Daten zurückgibt, mit denen das Power BI-Dataset aufgefüllt werden soll.  Anschließend exportieren Sie die Abfrage in der [Power Query-Sprache (M)](https://msdn.microsoft.com/library/mt807488.aspx), die von Power BI Desktop verwendet werden kann.
+Erstellen Sie zunächst eine [Protokollabfrage](../log-query/log-query-overview.md), die die Daten zurückgibt, mit denen das Power BI-Dataset aufgefüllt werden soll.  Anschließend exportieren Sie die Abfrage in der [Power Query-Sprache (M)](https://docs.microsoft.com/powerquery-m/power-query-m-language-specification), die von Power BI Desktop verwendet werden kann.
 
 1. [Erstellen Sie die Protokollabfrage in Log Analytics](../log-query/get-started-portal.md) zum Extrahieren der Daten für das Dataset.
 2. Wählen Sie **Exportieren** > **Power BI Query (M)** (Power BI-Abfrage (M)) aus.  Damit wird die Abfrage in eine Textdatei mit dem Namen **PowerBIQuery.txt** exportiert. 
@@ -60,7 +60,9 @@ Power BI Desktop ist eine Desktopanwendung, die Ihnen das Erstellen von Datasets
 ## <a name="publish-to-power-bi"></a>Veröffentlichen in Power BI
 Wenn Sie in Power BI veröffentlichen, werden ein Dataset und ein Bericht erstellt.  Wenn Sie einen Bericht in Power BI Desktop erstellen, wird dieser mit Ihren Daten veröffentlicht.  Wenn nicht, wird ein leerer Bericht erstellt.  Sie können den Bericht in Power BI ändern oder einen neuen auf Basis des Datasets erstellen.
 
-1. Erstellen Sie einen Bericht auf Basis Ihrer Daten.  Wenn Sie mit Power BI Desktop nicht vertraut sind, lesen Sie in der [Dokumentation](https://docs.microsoft.com/power-bi/desktop-report-view) dazu nach.  Wenn bereit sind, ihn an Power BI zu senden, klicken Sie auf **Veröffentlichen**.  Wählen Sie ein Ziel in Ihrem Power BI-Konto aus, wenn Sie dazu aufgefordert werden.  Sofern Sie kein bestimmtes Ziel verwenden möchten, verwenden Sie **Mein Arbeitsbereich**.
+1. Erstellen Sie einen Bericht auf Basis Ihrer Daten.  Wenn Sie mit Power BI Desktop nicht vertraut sind, lesen Sie in der [Dokumentation](https://docs.microsoft.com/power-bi/desktop-report-view) dazu nach.  
+1. Wenn bereit sind, ihn an Power BI zu senden, klicken Sie auf **Veröffentlichen**.  
+1. Wählen Sie ein Ziel in Ihrem Power BI-Konto aus, wenn Sie dazu aufgefordert werden.  Sofern Sie kein bestimmtes Ziel verwenden möchten, verwenden Sie **Mein Arbeitsbereich**.
 
     ![Veröffentlichen in Power BI Desktop](media/powerbi/desktop-publish.png)
 
@@ -70,7 +72,10 @@ Wenn Sie in Power BI veröffentlichen, werden ein Dataset und ein Bericht erstel
 ### <a name="configure-scheduled-refresh"></a>Konfigurieren von geplanten Aktualisierungen
 Das in Power BI erstellte Dataset enthält dieselben Daten, die zuvor in Power BI Desktop angezeigt wurden.  Sie müssen das Dataset in regelmäßigen Abständen aktualisieren, um die Abfrage erneut auszuführen und es mit den aktuellen Daten aus Azure Monitor zu füllen.  
 
-1. Klicken Sie auf den Arbeitsbereich, in dem Sie Ihren Bericht hochgeladen haben, und wählen Sie dann das Menü **Datasets**. Wählen Sie das Kontextmenü neben dem neuen Dataset und dann **Einstellungen** aus. Unter **Anmeldeinformationen für die Datenquelle** sollte eine Meldung angezeigt werden, dass die Anmeldeinformationen ungültig sind.  Dies liegt daran, dass Sie noch keine Anmeldeinformationen für das Dataset zum Aktualisieren seiner Daten bereitgestellt haben.  Klicken Sie auf **Anmeldeinformationen bearbeiten**, und geben Sie Anmeldeinformationen mit Zugriff auf den Log Analytics-Arbeitsbereich in Azure Monitor an.
+1. Klicken Sie auf den Arbeitsbereich, in dem Sie Ihren Bericht hochgeladen haben, und wählen Sie dann das Menü **Datasets**. 
+1. Wählen Sie das Kontextmenü neben dem neuen Dataset und dann **Einstellungen** aus. 
+1. Unter **Anmeldeinformationen für die Datenquelle** sollte eine Meldung angezeigt werden, dass die Anmeldeinformationen ungültig sind.  Dies liegt daran, dass Sie noch keine Anmeldeinformationen für das Dataset zum Aktualisieren seiner Daten bereitgestellt haben.  
+1. Klicken Sie auf **Anmeldeinformationen bearbeiten**, und geben Sie Anmeldeinformationen mit Zugriff auf den Log Analytics-Arbeitsbereich in Azure Monitor an. Wenn Sie die zweistufige Authentifizierung benötigen, wählen Sie **OAuth2** für die **Authentifizierungsmethode** aus, damit Sie zur Anmeldung mit Ihren Anmeldeinformationen aufgefordert werden.
 
     ![Power BI-Zeitplan](media/powerbi/powerbi-schedule.png)
 

@@ -1,23 +1,23 @@
 ---
 layout: LandingPage
-title: Azure Deutschland-Dokumentation – Tutorials und API-Referenz | Microsoft-Dokumentation
+title: 'Azure Deutschland-Dokumentation: Tutorials und API-Referenz | Microsoft-Dokumentation'
 description: Erfahren Sie mehr über die Funktionen, die Designmerkmale und Sicherheitsmaßnahmen von Azure Deutschland, die die wichtigsten deutschen und internationalen Compliancestandards unterstützen.
 services: germany
-author: czeumault
-manager: carolz
+author: juliako
+manager: femila
 ms.assetid: ''
 ms.service: germany
 ms.devlang: na
 ms.topic: landing-page
 ms.tgt_pltfrm: na
-ms.date: 04/12/2017
-ms.author: carolz
-ms.openlocfilehash: 6c84b3718f53d704d443491d526a228ed3c02829
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/11/2019
+ms.author: juliako
+ms.openlocfilehash: 81247ed1ba08dd85674ad8237d369272e58a13e0
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22647070"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522975"
 ---
 # <a name="azure-germany-documentation"></a>Azure Deutschland-Dokumentation
 
@@ -69,33 +69,33 @@ ms.locfileid: "22647070"
 <h2>Referenzen</h2>
 <ul class="panelContent cardsW">
     <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
                         <h3>Ressourcen</h3>
-                        <p><a href="/azure/germany/germany-image-gallery">Images</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        <p><a href="/azure/germany/germany-image-gallery">Images</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </li>
     <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Dienste</h3>
-                        <p><a href="/azure/germany/germany-services-compute">Compute</a></p>
-                        <p><a href="/azure/germany/germany-services-storage">Speicher</a></p>
-                        <p><a href="/azure/germany/germany-services-database">Datenbank</a></p>
-                        <p><a href="/azure/germany/germany-services-networking">Netzwerk</a></p>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Dienste</h3>
+                        <p><a href="/azure/germany/germany-services-compute">Compute</a></p>
+                        <p><a href="/azure/germany/germany-services-storage">Speicher</a></p>
+                        <p><a href="/azure/germany/germany-services-database">Datenbank</a></p>
+                        <p><a href="/azure/germany/germany-services-networking">Netzwerk</a></p>
                         <p><a href="/azure/germany/germany-services-securityandidentity">Sicherheit und Identität</a></p>
                         <p><a href="/azure/germany/germany-services-webandmobile">Web und Mobil</a></p>
                         <p><a href="/azure/germany/germany-services-iot">Internet der Dinge (IoT)</a></p>
-                     </div>
-                </div>
-            </div>
-        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
     </li>
 </ul>

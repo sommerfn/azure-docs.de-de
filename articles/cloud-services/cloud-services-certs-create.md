@@ -3,23 +3,17 @@ title: Clouddienste und Verwaltungszertifikate | Microsoft-Dokumentation
 description: Informationen zum Erstellen und Verwenden von Zertifikaten mit Microsoft Azure
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: fc70d00d-899b-4771-855f-44574dc4bfc6
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 4ca26c7b8fbfebbce8cfcb9915a7db12e5ad2352
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: gwallace
+ms.openlocfilehash: 3c84c6832856986a45be7d275fb94a6c5fc066f0
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793847"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359194"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Übersicht über Zertifikate für Azure Cloud Services
 Zertifikate werden in Azure für Clouddienste verwendet ([Dienstzertifikate](#what-are-service-certificates)) und für die Authentifizierung mit der Verwaltungs-API genutzt ([Verwaltungszertifikate](#what-are-management-certificates)). Dieses Thema bietet eine allgemeine Übersicht über beide Zertifikattypen sowie über deren [Erstellung](#create) und Bereitstellung in Azure.
@@ -39,7 +33,7 @@ Sie können Dienstzertifikate entweder über das Azure-Portal oder mithilfe des 
 Dienstzertifikate können gesondert von Ihren Diensten sowie von verschiedenen Personen verwaltet werden. Beispielsweise kann ein Entwickler ein Dienstpaket hochladen, das auf ein Zertifikat verweist, das ein IT-Manager zuvor in Azure hochgeladen hat. Ein IT-Manager kann dieses Zertifikat verwalten und erneuern (die Konfiguration des Diensts ändern), ohne ein neues Dienstpaket hochladen zu müssen. Das Aktualisieren ohne ein neues Dienstpaket ist möglich, da der logische Name, der Speichername und der Speicherort des Zertifikats in der Dienstdefinitionsdatei angegeben sind, während der Zertifikatfingerabdruck in der Dienstkonfigurationsdatei angegeben ist. Um das Zertifikat zu aktualisieren, muss lediglich ein neues Zertifikat hochgeladen und der Fingerabdruckwert in der Dienstkonfigurationsdatei geändert werden.
 
 >[!Note]
->Der Artikel [Häufig gestellte Fragen zu Cloud Services](cloud-services-faq.md) enthält einige nützliche Informationen zu Zertifikaten.
+>Der Artikel [Häufig gestellte Fragen zu Cloud Services: Konfiguration und Verwaltung](cloud-services-configuration-and-management-faq.md) enthält einige nützliche Informationen zu Zertifikaten.
 
 ## <a name="what-are-management-certificates"></a>Was sind Verwaltungszertifikate?
 Verwaltungszertifikate ermöglichen Ihnen die Authentifizierung mit dem klassischen Bereitstellungsmodell. Diese Zertifikate werden in vielen Programmen und Tools (z.B. Visual Studio oder Azure SDK) zum Automatisieren der Konfiguration und Bereitstellung verschiedener Azure-Dienste verwendet. Diese stehen eigentlich nicht in Zusammenhang mit Clouddiensten. 

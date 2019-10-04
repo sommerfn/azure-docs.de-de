@@ -1,19 +1,18 @@
 ---
 title: Planen einer Azure-Dateisynchronisierungsbereitstellung | Microsoft-Dokumentation
 description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung berücksichtigen müssen.
-services: storage
-author: wmgries
+author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 2/7/2019
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e5078176b14835938c190daa031c12055ba9ffc3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 9c46181d5ab449d28c2e2e93cc583a3551f114bc
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996355"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061743"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -69,23 +68,10 @@ Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, bei dem
 ## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Systemanforderungen und Interoperabilität der Azure-Dateisynchronisierung 
 Dieser Abschnitt behandelt die Systemanforderungen für den Azure-Dateisynchronisierungs-Agent und die Interoperabilität mit Windows Server-Features und -Rollen sowie Lösungen von Drittanbietern.
 
-### <a name="evaluation-tool"></a>Auswertungstool
-Vor der Bereitstellung der Azure-Dateisynchronisierung müssen Sie mit dem Auswertungstool für die Azure-Dateisynchronisierung auswerten, ob Kompatibilität mit Ihrem System gegeben ist. Dieses Tool ist ein Azure PowerShell-Cmdlet, das auf potenzielle Probleme mit Ihrem Dateisystem und Dataset prüft, z.B. nicht unterstützte Zeichen oder eine nicht unterstützte Betriebssystemversion. Beachten Sie, dass mit diesem Tool die meisten – aber nicht alle – der unten genannten Features überprüft werden. Es wird empfohlen, dass Sie den verbleibenden Teil dieses Abschnitts sorgfältig durchgehen, um sicherzustellen, dass Ihre Bereitstellung reibungslos verläuft. 
+### <a name="evaluation-cmdlet"></a>Auswertungs-Cmdlet
+Vor der Bereitstellung der Azure-Dateisynchronisierung müssen Sie mit dem Auswertungs-Cmdlet für die Azure-Dateisynchronisierung auswerten, ob Kompatibilität mit Ihrem System gegeben ist. Dieses Cmdlet prüft auf potenzielle Probleme mit Ihrem Dateisystem und Dataset, z.B. nicht unterstützte Zeichen oder eine nicht unterstützte Betriebssystemversion. Beachten Sie, dass mit diesem Tool die meisten – aber nicht alle – der unten genannten Features überprüft werden. Es wird empfohlen, dass Sie den verbleibenden Teil dieses Abschnitts sorgfältig durchgehen, um sicherzustellen, dass Ihre Bereitstellung reibungslos verläuft. 
 
-#### <a name="download-instructions"></a>Downloadanweisungen
-1. Stellen Sie sicher, dass Sie die aktuelle Version von „PackageManagement“ und „PowerShellGet“ installiert haben (dies ermöglicht Ihnen die Installation der Vorschaumodule).
-    
-    ```powershell
-        Install-Module -Name PackageManagement -Repository PSGallery -Force
-        Install-Module -Name PowerShellGet -Repository PSGallery -Force
-    ```
- 
-2. Starten Sie PowerShell neu.
-3. Installieren der Module
-    
-    ```powershell
-        Install-Module -Name Az.StorageSync -AllowPrerelease -AllowClobber -Force
-    ```
+Sie können das Auswertungs-Cmdlet installieren, indem Sie das PowerShell-Modul „Az“ anhand der folgenden Anweisungen installieren: [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
 #### <a name="usage"></a>Verwendung  
 Sie können das Auswertungstool in unterschiedlicher Weise aufrufen: Sie können die Systemprüfungen, die Datasetprüfungen oder beide Prüfungen durchführen. So führen Sie sowohl die System- als auch die Datasetprüfungen durch: 
@@ -115,11 +101,11 @@ So zeigen Sie die Ergebnisse in einer CSV-Datei an:
 
     | Version | Unterstützte SKUs | Unterstützte Bereitstellungsoptionen |
     |---------|----------------|------------------------------|
-    | Windows Server 2019 | Datacenter und Standard | Vollständig (Server mit einer Benutzeroberfläche) |
-    | Windows Server 2016 | Datacenter und Standard | Vollständig (Server mit einer Benutzeroberfläche) |
-    | Windows Server 2012 R2 | Datacenter und Standard | Vollständig (Server mit einer Benutzeroberfläche) |
+    | Windows Server 2019 | Datacenter und Standard | Vollständig und Core |
+    | Windows Server 2016 | Datacenter und Standard | Vollständig und Core |
+    | Windows Server 2012 R2 | Datacenter und Standard | Vollständig und Core |
 
-    Zukünftige Versionen von Windows Server werden hinzugefügt, sobald sie veröffentlicht werden. Frühere Windows-Versionen werden möglicherweise je nach Benutzerfeedback hinzugefügt.
+    Zukünftige Versionen von Windows Server werden hinzugefügt, sobald sie veröffentlicht werden.
 
     > [!Important]  
     > Es wird empfohlen, alle Servercomputer, die für die Azure-Dateisynchronisierung verwendet werden, mit den neuesten Updates von Windows Update auf dem neuesten Stand zu halten. 
@@ -169,18 +155,37 @@ Windows Server-Failoverclustering wird von der Azure-Dateisynchronisierung für 
 > Der Azure-Dateisynchronisierungs-Agent muss auf jedem Knoten in einem Failovercluster installiert sein, damit die Synchronisierung ordnungsgemäß funktioniert.
 
 ### <a name="data-deduplication"></a>Datendeduplizierung
-**Agent-Version 5.0.2.0**   
-Die Datendeduplizierung wird auf Volumes mit aktiviertem Cloudtiering unter Windows Server 2016 und Windows Server 2019 unterstützt. Durch das Aktivieren der Deduplizierung auf einem Volume mit aktiviertem Cloudtiering können Sie weitere Dateien lokal zwischenspeichern, ohne mehr Speicher bereitstellen zu müssen.
+**Agent-Version 5.0.2.0 oder höher**   
+Die Datendeduplizierung wird auf Volumes mit aktiviertem Cloudtiering unter Windows Server 2016 und Windows Server 2019 unterstützt. Durch das Aktivieren der Datendeduplizierung auf einem Volume mit aktiviertem Cloudtiering können Sie weitere Dateien lokal zwischenspeichern, ohne mehr Speicher bereitstellen zu müssen. 
+
+Wenn die Datendeduplizierung für ein Volume mit aktiviertem Cloudtiering aktiviert ist, wird das Tiering von für die Deduplizierung optimierten Dateien innerhalb des Serverendpunkt-Speicherorts ähnlich wie bei einer normalen Datei basierend auf den Richtlinieneinstellungen für Cloudtiering ausgeführt. Nachdem das Tiering der für die Deduplizierung optimierten Dateien ausgeführt wurde, wird der Garbage Collection-Auftrag „Datendeduplizierung“ automatisch ausgeführt, um Speicherplatz freizugeben, indem unnötige Blöcke entfernt werden, die nicht mehr von anderen Dateien auf dem Volume referenziert werden.
+
+Beachten Sie, dass die Volumeeinsparungen nur für den Server gelten. Ihre Daten in der Azure-Dateifreigabe werden nicht dedupliziert.
 
 **Windows Server 2012 R2 oder ältere Agent-Versionen**  
 Für Volumes, bei denen Cloudtiering nicht aktiviert ist, unterstützt die Azure-Dateisynchronisierung die Aktivierung der Windows Server-Datendeduplizierung auf dem Volume.
 
+**Hinweise**
+- Wenn die Datendeduplizierung vor dem Azure-Dateisynchronisierungs-Agent installiert wird, ist ein Neustart erforderlich, damit die Datendeduplizierung und das Cloudtiering auf demselben Volume unterstützt werden.
+- Wenn die Datendeduplizierung nach dem Cloudtiering auf einem Volume aktiviert wird, werden durch den ersten Auftrag zur Optimierung der Deduplizierung Dateien auf dem Volume optimiert, für die noch kein Tiering erfolgt ist. Dies hat folgende Auswirkungen auf das Cloudtiering:
+    - Die Richtlinie für die Freigabe von Speicherplatz bewirkt, dass Dateien entsprechend dem freien Speicherplatz auf dem Volume, der anhand des Wärmebilds ermittelt wird, weiterhin umgelagert werden.
+    - Die Datumsrichtlinie bewirkt, dass das Tiering für Dateien übersprungen wird, die eigentlich infrage gekommen wären. Dies liegt daran, dass durch den Auftrag zur Optimierung der Deduplizierung auf die Dateien zugegriffen wird.
+- Wenn die Datei nicht bereits umgelagert wurde, wird das Cloudtiering mit Datumsrichtlinie bei laufenden Aufträgen zur Optimierung der Deduplizierung verzögert. Dies liegt an der [MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps)-Einstellung der Datendeduplizierung. 
+    - Beispiel: Wenn die MinimumFileAgeDays-Einstellung 7 Tage beträgt und die Datumsrichtlinie für das Cloudtiering 30 Tage vorsieht, werden Dateien gemäß der Datumsrichtlinie nach 37 Tagen umgelagert.
+    - Hinweis: Sobald eine Datei von der Azure-Dateisynchronisierung umgelagert wurde, wird sie vom Auftrag zur Optimierung der Deduplizierung übersprungen.
+- Wenn ein Server unter Windows Server 2012 R2 mit installiertem Azure-Dateisynchronisierungs-Agent auf Windows Server 2016 oder Windows Server 2019 aktualisiert wird, sind die folgenden Schritte erforderlich, damit die Datendeduplizierung und das Cloudtiering auf demselben Volume unterstützt werden:  
+    - Deinstallieren Sie den Azure-Dateisynchronisierungs-Agent für Windows Server 2012 R2, und starten Sie den Server neu.
+    - Laden Sie den Azure-Dateisynchronisierungs-Agent für die neue Server-Betriebssystemversion (Windows Server 2016 oder Windows Server 2019) herunter.
+    - Installieren Sie den Azure-Dateisynchronisierungs-Agent, und starten Sie den Server neu.  
+    
+    Hinweis: Bei der Deinstallation und Neuinstallation des Agents werden die Konfigurationseinstellungen der Azure-Dateisynchronisierung auf dem Server beibehalten.
+
 ### <a name="distributed-file-system-dfs"></a>Verteiltes Dateisystem (Distributed File System, DFS)
 Die Azure-Dateisynchronisierung unterstützt die Interoperabilität mit DFS-Namespaces (DFS-N) und DFS-Replikation (DFS-R).
 
-**DFS-Namespaces (DFS-N)**: Die Azure-Dateisynchronisierung wird auf DFS-N-Servern vollständig unterstützt. Sie können den Azure-Dateisynchronisierungs-Agent auf einem oder mehreren DFS-N-Membern installieren, um Daten zwischen den Serverendpunkten und dem Cloudendpunkt zu synchronisieren. Weitere Informationen finden Sie unter [Übersicht über DFS-Namespaces](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
+**DFS-Namespaces (DFS-N)** : Die Azure-Dateisynchronisierung wird auf DFS-N-Servern vollständig unterstützt. Sie können den Azure-Dateisynchronisierungs-Agent auf einem oder mehreren DFS-N-Membern installieren, um Daten zwischen den Serverendpunkten und dem Cloudendpunkt zu synchronisieren. Weitere Informationen finden Sie unter [Übersicht über DFS-Namespaces](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
  
-**DFS-Replikation (DFS-R)**: Da DFS-R und die Azure-Dateisynchronisierung beides Replikationslösungen sind, empfehlen wir in den meisten Fällen das Ersetzen von DFS-R durch die Azure-Dateisynchronisierung. Es gibt aber mehrere Szenarien, in denen die parallele Nutzung von DFS-R und Azure-Dateisynchronisierung sinnvoll sein kann:
+**DFS-Replikation (DFS-R)** : Da DFS-R und die Azure-Dateisynchronisierung beides Replikationslösungen sind, empfehlen wir in den meisten Fällen das Ersetzen von DFS-R durch die Azure-Dateisynchronisierung. Es gibt aber mehrere Szenarien, in denen die parallele Nutzung von DFS-R und Azure-Dateisynchronisierung sinnvoll sein kann:
 
 - Sie migrieren von einer DFS-R-Bereitstellung zu einer Azure-Dateisynchronisierungsbereitstellung. Weitere Informationen finden Sie unter [Migrieren einer DFS-R-Bereitstellung (DFS-Replikation) zur Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md#migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync).
 - Nicht jeder lokale Server, für den eine Kopie Ihrer Dateidaten erforderlich ist, kann direkt mit dem Internet verbunden werden.
@@ -200,9 +205,12 @@ Die Verwendung von Sysprep auf einem Server, für den der Azure-Dateisynchronisi
 Wenn auf einem Serverendpunkt Cloudtiering aktiviert ist, werden Tieringdateien in der Windows-Suche übersprungen und nicht indiziert. Dateien ohne Tiering werden ordnungsgemäß indiziert.
 
 ### <a name="antivirus-solutions"></a>Virenschutzlösungen
-Da für den Virenschutz Dateien auf bekannte Schadsoftware überprüft werden müssen, kann ein Virenschutzprodukt den Rückruf von Tieringdateien verursachen. Ab Version 4.0 des Azure File Sync-Agents ist für mehrstufige Dateien das sichere Windows-Attribut „FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS“ festgelegt. Es empfiehlt es sich, bei Ihrem Softwareanbieter nachzufragen, wie die Lösung so konfiguriert werden kann, dass das Lesen von Dateien mit diesem festgelegten Attribut übersprungen wird (bei vielen ist dies automatisch der Fall).
+Da für den Virenschutz Dateien auf bekannte Schadsoftware überprüft werden müssen, kann ein Virenschutzprodukt den Rückruf von Tieringdateien verursachen. Ab Version 4.0 der Azure-Dateisynchronisierung-Agents ist für mehrstufige Dateien das sichere Windows-Attribut „FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS“ festgelegt. Es empfiehlt es sich, bei Ihrem Softwareanbieter nachzufragen, wie die Lösung so konfiguriert werden kann, dass das Lesen von Dateien mit diesem festgelegten Attribut übersprungen wird (bei vielen ist dies automatisch der Fall). 
 
 Die internen Virenschutzlösungen von Microsoft – Windows Defender und System Center Endpoint Protection (SCEP) – überspringen beide automatisch das Lesen von Dateien, für die dieses Attribut festgelegt ist. Wir haben sie getestet und ein kleineres Problem identifiziert: Wenn Sie einer bestehenden Synchronisierungsgruppe einen Server hinzufügen, werden Dateien, die kleiner als 800 Byte sind, auf dem neuen Server zurückgerufen (heruntergeladen). Diese Dateien verbleiben auf dem neuen Server und werden nicht in Speicherebenen aufgeteilt, da sie nicht die Größenanforderungen für das Tiering (> 64 KB) erfüllen.
+
+> [!Note]  
+> Anbieter von Antivirensoftware können die Kompatibilität zwischen ihrem Produkt und der Azure-Dateisynchronisierung mithilfe der [Azure File Sync Antivirus Compatibility Test Suite](https://www.microsoft.com/download/details.aspx?id=58322) überprüfen, die aus dem Microsoft Download Center heruntergeladen werden kann.
 
 ### <a name="backup-solutions"></a>Sicherungslösungen
 Wie Virenschutzlösungen können auch Sicherungslösungen den Rückruf von Tieringdateien verursachen. Es wird empfohlen, die Azure-Dateifreigabe mithilfe einer Cloudsicherungslösung anstelle eines lokalen Sicherungsprodukts zu sichern.
@@ -237,27 +245,40 @@ Die Azure-Dateisynchronisierung ist nur in den folgenden Regionen verfügbar:
 |--------|---------------------|
 | Australien (Osten) | Neusüdwales |
 | Australien, Südosten | Victoria |
-| Brasilien Süd | Sao Paolo, Bundesstaat |
+| Brasilien Süd | Sao Paulo, Bundesland |
 | Kanada, Mitte | Toronto |
 | Kanada, Osten | Quebec City |
 | Indien, Mitte | Pune |
 | USA (Mitte) | Iowa |
 | Asien, Osten | Hongkong (SAR) |
-| USA (Ost) | Virginia |
+| East US | Virginia |
 | USA (Ost 2) | Virginia |
+| Frankreich, Mitte | Paris |
+| Frankreich, Süden* | Marseille |
+| Korea, Mitte | Seoul |
+| Korea, Süden | Busan |
 | Japan, Osten | Tokio, Saitama |
 | Japan, Westen | Osaka |
 | USA Nord Mitte | Illinois |
 | Nordeuropa | Irland |
+| Südafrika, Norden | Johannesburg |
+| Südafrika, Westen* | Kapstadt |
 | USA Süd Mitte | Texas |
 | Indien (Süden) | Chennai |
 | Asien, Südosten | Singapur |
 | UK, Süden | London |
 | UK, Westen | Cardiff |
+| US Gov Arizona | Arizona |
+| US Gov Texas | Texas |
+| US Government, Virginia | Virginia |
 | Europa, Westen | Niederlande |
+| USA, Westen-Mitte | Wyoming |
 | USA (Westen) | Kalifornien |
+| USA, Westen 2 | Washington |
 
 Die Azure-Dateisynchronisierung unterstützt nur die Synchronisierung mit einer Azure-Dateifreigabe in der gleichen Region wie der Speichersynchronisierungsdienst.
+
+Für die mit Sternchen gekennzeichneten Regionen müssen Sie sich an den Azure-Support wenden, um Zugriff auf Azure Storage in diesen Regionen anzufordern. Der Prozess ist in [diesem Dokument](https://azure.microsoft.com/global-infrastructure/geographies/) beschrieben.
 
 ### <a name="azure-disaster-recovery"></a>Azure-Notfallwiederherstellung
 Um vor dem Verlust einer Azure-Region zu schützen, integriert die Azure-Dateisynchronisierung die Option für [Redundanz durch georedundante Speicher](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). Der GRS funktioniert durch die Verwendung von asynchroner Blockreplikation zwischen Speichern in der primären Region, mit der Sie normalerweise interagieren, und Speichern in der gekoppelten sekundären Region. Bei einem Notfall, infolgedessen eine Azure-Region vorübergehend oder dauerhaft offline geschaltet wird, führt Microsoft für den Speicher ein Failover auf die gekoppelte Region durch. 
@@ -269,25 +290,38 @@ Um die Failoverintegration zwischen georedundantem Speicher und der Azure-Dateis
 
 | Primäre Region      | Regionspaar      |
 |---------------------|--------------------|
-| Australien (Osten)      | Australien, Südosten |
+| Australien (Osten)      | Australien, Südosten|
 | Australien, Südosten | Australien (Osten)     |
+| Brasilien Süd        | USA Süd Mitte   |
 | Kanada, Mitte      | Kanada, Osten        |
 | Kanada, Osten         | Kanada, Mitte     |
 | Indien, Mitte       | Indien (Süden)        |
 | USA (Mitte)          | USA (Ost) 2          |
 | Asien, Osten           | Asien, Südosten     |
-| USA (Ost)             | USA (Westen)            |
+| East US             | USA (Westen)            |
 | USA (Ost) 2           | USA (Mitte)         |
+| Frankreich, Mitte      | Frankreich, Süden       |
+| Frankreich, Süden        | Frankreich, Mitte     |
+| Japan, Osten          | Japan, Westen         |
+| Japan, Westen          | Japan, Osten         |
 | Korea, Mitte       | Korea, Süden        |
 | Korea, Süden         | Korea, Mitte      |
 | Nordeuropa        | Europa, Westen        |
 | USA Nord Mitte    | USA Süd Mitte   |
+| Südafrika, Norden  | Südafrika, Westen  |
+| Südafrika, Westen   | Südafrika, Norden |
+| USA Süd Mitte    | USA Nord Mitte   |
 | Indien (Süden)         | Indien, Mitte      |
 | Asien, Südosten      | Asien, Osten          |
 | UK, Süden            | UK, Westen            |
 | UK, Westen             | UK, Süden           |
+| US Gov Arizona      | US Gov Texas       |
+| US Gov Iowa         | US Government, Virginia    |
+| US Government, Virginia      | US Gov Texas       |
 | Europa, Westen         | Nordeuropa       |
-| USA (Westen)             | USA (Ost)            |
+| USA, Westen-Mitte     | USA, Westen 2          |
+| USA (Westen)             | East US            |
+| USA, Westen 2           | USA, Westen-Mitte    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

@@ -10,23 +10,25 @@ ms.assetid: dac28ccf-2550-45a5-89cf-192d87369bc3
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: da27c772a0650a923068b3c519ef39494573f96a
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 29c86363842299870179b35a0466d2e44d2e56e0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793117"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072198"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Verwenden von Azure API Management mit einem internen virtuellen Netzwerk
 Mit virtuellen Azure-Netzwerken kann API Management APIs verwalten, auf die nicht über das Internet zugegriffen werden kann. Für die Verbindungsherstellung stehen verschiedene VPN-Technologien zur Verfügung. API Management kann in einem virtuellen Netzwerk in zwei Hauptmodi bereitgestellt werden:
 * Extern
 * Intern
 
-Wenn API Management im Modus für ein internes virtuelles Netzwerk bereitgestellt wird, sind alle Dienstendpunkte (Gateway, Entwicklerportal, Azure-Portal, direkte Verwaltung und Git) nur in einem virtuellen Netzwerk sichtbar, für das Sie den Zugriff steuern. Keiner der Dienstendpunkte ist auf dem öffentlichen DNS-Server registriert.
+Wenn API Management im Modus für ein internes virtuelles Netzwerk bereitgestellt wird, sind alle Dienstendpunkte (Proxygateway, Entwicklerportal, direkte Verwaltung und Git) nur in einem virtuellen Netzwerk sichtbar, für das Sie den Zugriff steuern. Keiner der Dienstendpunkte ist auf dem öffentlichen DNS-Server registriert.
+
+> [!NOTE]
+> Da es keine DNS-Einträge für die Dienstendpunkte gibt, kann auf diese Endpunkte erst zugegriffen werden, wenn für das virtuelle Netzwerk [DNS konfiguriert](#apim-dns-configuration) wurde.
 
 Mit API Management im internen Modus sind folgende Szenarien möglich:
 
@@ -45,9 +47,10 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 + **Eine API Management-Instanz.** Weitere Informationen finden Sie unter [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
++ Wenn ein API Management-Dienst in einem virtuellen Netzwerk bereitgestellt ist, wird eine [Liste von Ports](./api-management-using-with-vnet.md#required-ports) verwendet, die geöffnet werden müssen. 
 
 ## <a name="enable-vpn"> </a>Einrichten von API Management in einem internen virtuellen Netzwerk
-Der API Management-Dienst in einem internen virtuellen Netzwerk wird hinter einem [internen Lastenausgleich (klassisch)](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud) gehostet. Dies ist die einzige verfügbare Option und kann nicht geändert werden.
+Der API Management-Dienst in einem internen virtuellen Netzwerk wird hinter einem [internen Lastenausgleich (klassisch)](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud) gehostet. Dies ist die einzige verfügbare Option und kann nicht geändert werden.
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Aktivieren einer Verbindung mit einem virtuellen Netzwerk über das Azure-Portal
 
@@ -87,7 +90,9 @@ Wenn Sie beispielsweise einen API Management-Dienst namens „contosointernalvne
 
    * Gateway oder Proxy: contosointernalvnet.azure-api.net
 
-   * Azure-Portal und Entwicklerportal: contosointernalvnet.portal.azure-api.net
+   * Entwicklerportal: contosointernalvnet.portal.azure-api.net
+
+   * Neues Entwicklerportal: contosointernalvnet.developer.azure-api.net
 
    * Endpunkt für die direkte Verwaltung: contosointernalvnet.management.azure-api.net
 
@@ -98,6 +103,8 @@ Für den Zugriff auf diese API Management-Dienstendpunkte können Sie einen virt
    * 10.1.0.5     contosointernalvnet.azure-api.net
 
    * 10.1.0.5     contosointernalvnet.portal.azure-api.net
+
+   * 10.1.0.5     contosointernalvnet.developer.azure-api.net
 
    * 10.1.0.5     contosointernalvnet.management.azure-api.net
 
@@ -115,14 +122,16 @@ Wenn Sie einen benutzerdefinierten DNS-Server in einem virtuellen Netzwerk verwe
 2. Anschließend können Sie A-Einträge auf Ihrem DNS-Server erstellen, um auf die Endpunkte zuzugreifen, auf die nur über das virtuelle Netzwerk zugegriffen werden kann.
 
 ## <a name="routing"> </a> Routing
-+ Eine private virtuelle IP-Adresse mit Lastenausgleich aus dem Subnetzbereich wird reserviert und für den Zugriff auf die API Management-Dienstendpunkte aus dem VNet verwendet.
-+ Eine öffentliche IP-Adresse (VIP) mit Lastenausgleich wird auch reserviert, um den Zugriff auf den Verwaltungsdienst-Endpunkt nur über Port 3443 zu ermöglichen.
-+ Eine IP-Adresse aus einem Subnetz-IP-Bereich (DIP) wird für den Zugriff auf Ressourcen innerhalb des VNet und eine öffentliche IP-Adresse (VIP) für den Zugriff auf Ressourcen außerhalb des VNet verwendet.
-+ Öffentliche und private IP-Adressen mit Lastenausgleich finden Sie auf dem Blatt „Übersicht/Essentials“ im Azure-Portal.
+
+* Eine private *virtuelle* IP-Adresse mit Lastenausgleich aus dem Subnetzbereich wird reserviert und für den Zugriff auf die API Management-Dienstendpunkte aus dem virtuellen Netzwerk verwendet. Diese *private* IP-Adresse finden Sie auf dem Blatt „Übersicht“ für den Dienst im Azure-Portal. Diese Adresse muss bei den DNS-Servern für das virtuelle Netzwerk registriert sein.
+* Eine *öffentliche* IP-Adresse (VIP) mit Lastenausgleich wird auch reserviert, um den Zugriff auf den Verwaltungs-Dienstendpunkt über Port 3443 zu ermöglichen. Diese *öffentliche* IP-Adresse finden Sie auf dem Blatt „Übersicht“ für den Dienst im Azure-Portal. Die *öffentliche* IP-Adresse wird nur für den Datenverkehr auf Steuerungsebene an den Endpunkt `management` über Port 3443 verwendet. Sie kann über das [ApiManagement][ServiceTags]-Diensttag gesperrt werden.
+* IP-Adressen aus dem IP-Adressbereich des Subnetzes (DIP) können jedem virtuellen Computer im Dienst zugewiesen werden. Sie werden für den Zugriff auf Ressourcen innerhalb des virtuellen Netzwerks verwendet. Eine öffentliche IP-Adresse (VIP) wird für den Zugriff auf Ressourcen außerhalb des virtuellen Netzwerks verwendet. Falls Einschränkungslisten mit IP-Adressen verwendet werden, um Ressourcen im virtuellen Netzwerk zu schützen, muss für den gesamten Bereich des Subnetzes, in dem der API Management-Dienst bereitgestellt wird, der Zugriff gewährt oder verweigert werden.
+* Die öffentlichen und privaten IP-Adressen mit Lastenausgleich finden Sie auf dem Blatt „Übersicht“ im Azure-Portal.
+* Die IP-Adressen für den öffentlichen und privaten Zugriff können sich ändern, wenn der Dienst aus dem virtuellen Netzwerk entfernt und dann wieder hinzugefügt wird. In diesem Fall müssen Sie möglicherweise die DNS-Registrierungen, Routingregeln und IP-Einschränkungslisten innerhalb des virtuellen Netzwerks aktualisieren.
 
 ## <a name="related-content"></a>Verwandte Inhalte
 Weitere Informationen finden Sie in den folgenden Artikeln:
-* [Gängige Probleme mit der Netzwerkkonfiguration][Common network configuration problems]
+* [Verwenden von Azure API Management mit virtuellen Netzwerken][Common network configuration problems]
 * [Azure Virtual Network – häufig gestellte Fragen](../virtual-network/virtual-networks-faq.md)
 * [Managing DNS Records](/previous-versions/windows/it-pro/windows-2000-server/bb727018(v=technet.10)) (Verwalten von DNS-Einträgen)
 

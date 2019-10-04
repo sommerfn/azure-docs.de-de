@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zur elastischen Skalierung von Azure SQL | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zur elastischen Skalierung von Azure SQL | Microsoft Docs
 description: Häufig gestellte Fragen zur Elastic Scale-Funktion der Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b5ba5fadd229fa7119f9af791f7eaedbc984c92a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2b101aebd048b94ac95e1dba0f6504446d6d6803
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457189"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568440"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Tools für elastische Datenbanken
 
@@ -55,6 +54,6 @@ Ja, das ist möglich. Ein Shard ist eine einzelne Datenbank, daher kann ein Shar
 
 ## <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>Stellt das Split-Merge-Tool eine Datenbank während eines Aufteilungs- oder Zusammenführungsvorgangs bereit bzw. löscht sie?
 
- Nein. Bei **split** -Vorgängen muss die Zieldatenbank mit dem entsprechenden Schema vorhanden und beim Shard-Zuordnungs-Manager registriert sein.  Für **merge** -Vorgänge müssen Sie den Shard aus dem Shard-Zuordnungs-Manager löschen und dann die Datenbank löschen.
+Nein. Bei **split** -Vorgängen muss die Zieldatenbank mit dem entsprechenden Schema vorhanden und beim Shard-Zuordnungs-Manager registriert sein.  Für **merge** -Vorgänge müssen Sie den Shard aus dem Shard-Zuordnungs-Manager löschen und dann die Datenbank löschen.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

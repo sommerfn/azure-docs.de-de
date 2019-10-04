@@ -1,19 +1,19 @@
 ---
-title: Optimieren von Masseneinfügungen auf einem Azure Database for PostgreSQL-Server
-description: In diesem Artikel wird beschrieben, wie Sie Vorgänge für Masseneinfügungen auf einem Azure Database for PostgreSQL-Server optimieren können.
+title: Optimieren von Masseneinfügungen auf einem Azure Database for PostgreSQL-Einzelserver
+description: In diesem Artikel wird beschrieben, wie Sie Vorgänge für Masseneinfügungen auf einem Azure Database for PostgreSQL-Einzelserver optimieren können.
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.openlocfilehash: a82984ce4c2a2e44306abaa63265e0c25cc6ace4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.date: 5/6/2019
+ms.openlocfilehash: c1ae29f7c498a79af09aaaf6d7aeae29561aa500
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310290"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65067044"
 ---
-# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql-server"></a>Optimieren von Masseneinfügungen und der Verwendung von kurzlebigen Daten auf einem Azure Database for PostgreSQL-Server 
+# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Optimieren von Masseneinfügungen und Verwendung kurzlebiger Daten auf einem Azure Database for PostgreSQL-Einzelserver 
 In diesem Artikel wird beschrieben, wie Sie Vorgänge für Masseneinfügungen optimieren und kurzlebige Daten auf einem Azure Database for PostgreSQL-Server verwenden können.
 
 ## <a name="use-unlogged-tables"></a>Verwenden von nicht protokollierten Tabellen

@@ -4,17 +4,17 @@ description: Lernen Sie den kompletten Lebenszyklus Ihrer Azure IoT Edge-Lösung
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/28/2018
+ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: c64db6b35aa2f1daa4484f137c8505b1415c5a0b
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 29a771b93e1d686f7972e7dc4d9e78e5858644d6
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521753"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899402"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -52,15 +52,15 @@ Bevor Sie ein Gerät für die Produktion verwenden, sollten Sie wissen, wie Sie 
 * IoT Edge-Daemon
 * ZS-Zertifikate
 
-Die Schritte zum Aktualisieren des IoT Edge-Daemons finden Sie unter [Aktualisieren der IoT Edge-Runtime](how-to-update-iot-edge.md). Die aktuellen Methoden zum Aktualisieren des IoT Edge-Daemons erfordern physischen oder SSH-Zugriff auf das IoT Edge-Gerät. Zum Aktualisieren vieler Geräte wird empfohlen, die Aktualisierungsschritte einem Skript hinzuzufügen oder ein Automatisierungstool wie Ansible zu verwenden.
+Weitere Informationen finden Sie unter [Aktualisieren der IoT Edge-Runtime](how-to-update-iot-edge.md). Die aktuellen Methoden zum Aktualisieren des IoT Edge-Daemons erfordern physischen oder SSH-Zugriff auf das IoT Edge-Gerät. Zum Aktualisieren vieler Geräte wird empfohlen, die Aktualisierungsschritte einem Skript hinzuzufügen oder ein Automatisierungstool wie Ansible zu verwenden.
 
 ### <a name="use-moby-as-the-container-engine"></a>Verwenden von Moby als Container-Engine
 
-Auf jedem IoT Edge-Gerät muss eine Container-Engine vorhanden sein. In der Produktion wird nur die Moby-Engine unterstützt. Andere Container-Engines, z.B. Docker, sind mit IoT Edge kompatibel und können für die Entwicklung verwenden werden. Wenn Sie die Moby-Engine mit Azure IoT Edge nutzen, kann diese neu verteilt werden. Microsoft übernimmt die Wartung. Das Verwenden andere Container-Engines auf IoT Edge-Geräten wird nicht unterstützt.
+Für jedes IoT Edge-Gerät muss eine Container-Engine vorhanden sein. In der Produktion wird nur die Moby-Engine unterstützt. Andere Container-Engines, z.B. Docker, sind mit IoT Edge kompatibel und können für die Entwicklung verwenden werden. Wenn Sie die Moby-Engine mit Azure IoT Edge nutzen, kann diese neu verteilt werden. Microsoft übernimmt die Wartung.
 
 ### <a name="choose-upstream-protocol"></a>Auswählen des Upstreamprotokolls
 
-Das Protokoll (und der verwendete Port) für die Upstreamkommunikation mit IoT Hub kann sowohl für den Edge-Agent als auch für den Edge-Hub konfiguriert werden. Das Standardprotokoll ist AMQP, aber Sie können es je nach Netzwerkeinrichtung ändern. 
+Das Protokoll (und der verwendete Port) für die Upstreamkommunikation mit IoT Hub kann sowohl für den IoT Edge-Agent als auch für den IoT Edge-Hub konfiguriert werden. Das Standardprotokoll ist AMQP, aber Sie können es je nach Netzwerkeinrichtung ändern. 
 
 Die beiden Runtimemodule verfügen über eine Umgebungsvariable **UpstreamProtocol**. Die gültigen Werte für die Variable lauten: 
 
@@ -69,7 +69,7 @@ Die beiden Runtimemodule verfügen über eine Umgebungsvariable **UpstreamProtoc
 * MQTTWS
 * AMQPWS
 
-Konfigurieren Sie die Variable „UpstreamProtocol“ für den Edge-Agent in der „config.yaml“-Datei auf dem Gerät selbst. Wenn sich Ihr IoT Edge-Gerät beispielsweise hinter einem Proxyserver befindet, der AMQP-Ports blockiert, müssen Sie möglicherweise den Edge-Agent so konfigurieren, dass er AMQP über WebSocket (AMQPWS) verwendet, um die erste Verbindung zu IoT Hub herzustellen. 
+Konfigurieren Sie die Variable „UpstreamProtocol“ für den IoT Edge-Agent in der „config.yaml“-Datei auf dem Gerät selbst. Wenn sich Ihr IoT Edge-Gerät beispielsweise hinter einem Proxyserver befindet, der AMQP-Ports blockiert, müssen Sie möglicherweise den IoT Edge-Agent so konfigurieren, dass er AMQP über WebSocket (AMQPWS) verwendet, um die erste Verbindung zu IoT Hub herzustellen. 
 
 Wenn Ihr IoT Edge-Gerät verbunden ist, muss die Variable „UpstreamProtocol“ für beide Runtimemodule in künftigen Bereitstellungen weiter konfiguriert werden. Ein Beispiel für diesen Prozess finden Sie unter [Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver](how-to-configure-proxy-support.md).
 
@@ -77,32 +77,39 @@ Wenn Ihr IoT Edge-Gerät verbunden ist, muss die Variable „UpstreamProtocol“
 
 * **Hilfreich**
     * Verwenden konsistenter Upstreamprotokolle
-    * Reduzieren der Speicherplatzbelegung von Edge-Hub
+    * Einrichten von Hostspeicher für Systemmodule
+    * Reduzieren der Speicherplatzbelegung durch den IoT Edge-Hub
     * Vermeiden von Debugversionen von Modulimages
 
 ### <a name="be-consistent-with-upstream-protocol"></a>Verwenden konsistenter Upstreamprotokolle
 
-Wenn Sie den Edge-Agent auf Ihrem IoT Edge-Gerät so konfiguriert haben, dass er ein anderes Protokoll als das Standard-AMQP verwendet, deklarieren Sie in allen nachfolgenden Bereitstellungen das gleiche Protokoll. Wenn sich Ihr IoT Edge-Gerät beispielsweise hinter einem Proxyserver befindet, der AMQP-Ports blockiert, wurde das Gerät wahrscheinlich so konfiguriert, dass es sich über AMQP über WebSocket (AMQPWS) verbindet. Wenn Sie beim Bereitstellen von Modulen auf dem Gerät nicht das gleiche APQPWS-Protokoll für den Edge-Agent und -Hub konfigurieren, überschreibt das Standard-AMQP die Einstellungen und verhindert eine erneute Verbindung. 
+Wenn Sie den IoT Edge-Agent auf Ihrem IoT Edge-Gerät so konfiguriert haben, dass er ein anderes Protokoll als das Standard-AMQP verwendet, deklarieren Sie in allen zukünftigen Bereitstellungen das gleiche Protokoll. Wenn sich Ihr IoT Edge-Gerät beispielsweise hinter einem Proxyserver befindet, der AMQP-Ports blockiert, wurde das Gerät wahrscheinlich so konfiguriert, dass es sich über AMQP über WebSocket (AMQPWS) verbindet. Konfigurieren Sie beim Bereitstellen von Modulen auf dem Gerät das gleiche APQPWS-Protokoll für den IoT Edge-Agent und -Hub. Andernfalls überschreibt das Standard-AMQP die Einstellungen und verhindert eine erneute Verbindung. 
 
-Sie müssen nur die Umgebungsvariable „UpstreamProtocol“ für die Module „Edge-Agent“ und „Edge-Hub“ konfigurieren. Alle zusätzlichen Module übernehmen das Protokoll, das in den Runtimemodulen festgelegt ist. 
+Sie müssen nur die Umgebungsvariable „UpstreamProtocol“ für die Module „IoT Edge-Agent“ und „IoT Edge-Hub“ konfigurieren. Alle zusätzlichen Module übernehmen das Protokoll, das in den Runtimemodulen festgelegt ist. 
 
 Ein Beispiel für diesen Prozess finden Sie unter [Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver](how-to-configure-proxy-support.md).
 
-### <a name="reduce-memory-space-used-by-edge-hub"></a>Reduzieren der Speicherplatzbelegung von Edge-Hub
+### <a name="set-up-host-storage-for-system-modules"></a>Einrichten von Hostspeicher für Systemmodule
 
-Wenn Sie eingeschränkte Geräte mit begrenzt verfügbarem Arbeitsspeicher bereitstellen, können Sie den Edge-Hub so konfigurieren, dass er in einer optimierten Kapazität ausgeführt wird und weniger Speicherplatz benötigt. Diese Konfigurationen begrenzen jedoch die Leistung des Edge-Hubs. Sie müssen die richtige Balance für Ihre Lösung finden. 
+Die Module von IoT Edge-Hub und -Agent verwenden lokalen Speicher, um den Status beizubehalten und den Nachrichtenaustausch zwischen Modulen, Geräten und der Cloud zu ermöglichen. Für eine höhere Zuverlässigkeit und Leistung konfigurieren Sie die Systemmodule so, dass sie Speicherplatz auf dem Hostdateisystem verwenden.
+
+Weitere Informationen finden Sie unter [Hostspeicher für Systemmodule](offline-capabilities.md#host-storage-for-system-modules).
+
+### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>Reduzieren der Speicherplatzbelegung durch den IoT Edge-Hub
+
+Wenn Sie eingeschränkte Geräte mit begrenzt verfügbarem Arbeitsspeicher bereitstellen, können Sie den IoT Edge-Hub so konfigurieren, dass er in einer optimierten Kapazität ausgeführt wird und weniger Speicherplatz benötigt. Diese Konfigurationen begrenzen jedoch die Leistung des IoT Edge-Hubs. Sie müssen die richtige Balance für Ihre Lösung finden. 
 
 #### <a name="dont-optimize-for-performance-on-constrained-devices"></a>Vermeiden von Leistungsoptimierung auf eingeschränkten Geräten
 
-Der Edge-Hub ist standardmäßig für Leistung optimiert, sodass er versucht, große Speicherblöcke zuzuordnen. Diese Konfiguration kann bei kleineren Geräten wie Raspberry Pi Stabilitätsprobleme verursachen. Wenn Sie Geräte mit eingeschränkten Ressourcen bereitstellen, legen Sie auf dem Edge-Hub die Umgebungsvariable **OptimizeForPerformance** auf **FALSE** fest. 
+Der IoT Edge-Hub ist standardmäßig für Leistung optimiert, sodass er versucht, große Speicherblöcke zuzuordnen. Diese Konfiguration kann bei kleineren Geräten wie Raspberry Pi Stabilitätsprobleme verursachen. Wenn Sie Geräte mit eingeschränkten Ressourcen bereitstellen, legen Sie auf dem IoT Edge-Hub die Umgebungsvariable **OptimizeForPerformance** auf **FALSE** fest. 
 
 Weitere Informationen finden Sie unter [Stabilitätsprobleme auf Geräten mit Ressourceneinschränkungen](troubleshoot.md#stability-issues-on-resource-constrained-devices).
 
 #### <a name="disable-unused-protocols"></a>Deaktivieren nicht verwendeter Protokolle
 
-Eine weitere Möglichkeit, die Leistung des Edge-Hubs zu optimieren und seine Speicherauslastung zu reduzieren, besteht darin, die Kopfteile aller Protokolle zu deaktivieren, die nicht in Ihrer Lösung verwendet werden. 
+Eine weitere Möglichkeit, die Leistung des IoT Edge-Hubs zu optimieren und seine Speicherauslastung zu reduzieren, besteht darin, die Kopfteile aller Protokolle zu deaktivieren, die nicht in Ihrer Lösung verwendet werden. 
 
-Protokollkopfteile werden konfiguriert, indem boolesche Umgebungsvariablen für das Edge-Hubmodul in Ihren Bereitstellungsmanifesten festgelegt werden. Die drei Variablen lauten:
+Protokollkopfteile werden konfiguriert, indem boolesche Umgebungsvariablen für das IoT Edge-Hubmodul in Ihren Bereitstellungsmanifesten festgelegt werden. Die drei Variablen lauten:
 
 * **amqpSettings__enabled**
 * **mqttSettings__enabled**
@@ -112,7 +119,7 @@ Alle drei Variablen haben *zwei Unterstriche* und können entweder auf TRUE oder
 
 #### <a name="reduce-storage-time-for-messages"></a>Reduzieren der Speicherzeit für Nachrichten
 
-Das Edge-Hubmodul speichert Nachrichten vorübergehend, wenn sie nicht an IoT Hub übermittelt werden können. Sie können konfigurieren, wie lange der Edge-Hub nicht zugestellte Nachrichten aufbewahrt, bevor sie ablaufen. Wenn Sie Speicherprobleme auf Ihrem Gerät haben, können Sie den Wert **timeToLiveSecs** im Edge-Hubmodulzwilling verringern. 
+Das IoT Edge-Hubmodul speichert Nachrichten vorübergehend, wenn sie nicht an IoT Hub übermittelt werden können. Sie können konfigurieren, wie lange der IoT Edge-Hub nicht zugestellte Nachrichten aufbewahrt, bevor sie ablaufen. Wenn Sie Speicherprobleme auf Ihrem Gerät haben, können Sie den Wert **timeToLiveSecs** im IoT Edge-Hubmodulzwilling verringern. 
 
 Der Standardwert des Parameters „timeToLiveSecs“ beträgt 7.200 Sekunden, das sind zwei Stunden. 
 
@@ -144,16 +151,16 @@ Unter [Aktualisieren der IoT Edge-Runtime](how-to-update-iot-edge.md#understand-
 
 * **Hilfreich**
     * Überprüfen ausgehender/eingehender Konfigurationen
-    * Whitelistverbindungen
+    * Zulassen von Verbindungen von IoT Edge-Geräten
     * Konfigurieren der Kommunikation über Proxy
 
 ### <a name="review-outboundinbound-configuration"></a>Überprüfen ausgehender/eingehender Konfigurationen
 
 Kommunikationskanäle zwischen IoT Edge und Azure IoT Hub sind immer als „Ausgehend“ konfiguriert. Die meisten IoT Edge-Szenarien erfordern nur drei Verbindungen. Die Container-Engine muss sich mit der Containerregistrierung (bzw. den Registrierungen) verbinden, die die Modulimages enthält. Die IoT Edge-Runtime muss sich mit IoT Hub verbinden, um Gerätekonfigurationsinformationen abzurufen sowie Nachrichten und Telemetrie zu senden. Und falls Sie eine automatische Bereitstellung verwenden, muss sich der IoT Edge-Daemon mit dem Gerätebereitstellungsdienst verbinden. Weitere Informationen finden Sie unter [Firewall- und Portkonfigurationsregeln](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
 
-### <a name="whitelist-connections"></a>Whitelistverbindungen
+### <a name="allow-connections-from-iot-edge-devices"></a>Zulassen von Verbindungen von IoT Edge-Geräten
 
-Wenn Ihr Netzwerksetup erfordert, dass Sie Verbindungen von IoT Edge-Geräten explizit der Whitelist hinzufügen, prüfen Sie die folgende Liste der IoT Edge-Komponenten:
+Wenn Ihr Netzwerksetup erfordert, dass Sie Verbindungen von IoT Edge-Geräten explizit zulassen, prüfen Sie die folgende Liste der IoT Edge-Komponenten:
 
 * Der **IoT Edge-Agent** öffnet eine persistente AMQP/MQTT-Verbindung zu IoT Hub, ggf. über WebSockets. 
 * Der **IoT Edge-Hub** öffnet eine einzelne persistente AMQP-Verbindung oder mehrere MQTT-Verbindungen zu IoT Hub, ggf. über WebSockets. 
@@ -186,7 +193,11 @@ Wenn Ihre Geräte in einem Netzwerk bereitgestellt werden, das einen Proxyserver
 
 ### <a name="set-up-logs-and-diagnostics"></a>Einrichten von Protokollen und Diagnosen
 
-Unter Linux verwendet der IoT Edge-Daemon Journale als Standardprotokolltreiber. Sie können das Befehlszeilentool `journalctl` verwenden, um die Daemonprotokolle abzufragen. Unter Windows verwendet der IoT Edge-Daemon die PowerShell-Diagnose. Verwenden Sie `Get-WinEvent`, um Protokolle vom Daemon abzufragen. IoT Edge-Module verwenden zum Protokollieren den JSON-Treiber, der die Standardoption darstellt.  
+Unter Linux verwendet der IoT Edge-Daemon Journale als Standardprotokolltreiber. Sie können das Befehlszeilentool `journalctl` verwenden, um die Daemonprotokolle abzufragen. Unter Windows verwendet der IoT Edge-Daemon die PowerShell-Diagnose. Verwenden Sie `Get-IoTEdgeLog`, um Protokolle vom Daemon abzufragen. IoT Edge-Module verwenden zum Protokollieren den JSON-Treiber, der die Standardoption darstellt.  
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+```
 
 Wenn Sie eine IoT Edge-Bereitstellung testen, können Sie in der Regel auf Ihre Geräte zugreifen, um Protokolle abzurufen und Fehler zu beheben. In einem Bereitstellungsszenario haben Sie diese Option möglicherweise nicht. Überlegen Sie, wie Sie Informationen über Ihre Geräte in der Produktion sammeln können. Eine Möglichkeit besteht darin, ein Protokollierungsmodul zu verwenden, das Informationen von anderen Modulen erfasst und in die Cloud sendet. Ein Beispiel für ein Protokollierungsmodul ist [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics). Sie haben auch die Möglichkeit, Ihr eigenes Modul zu erstellen. 
 
@@ -198,39 +209,42 @@ Standardmäßig legt die Moby-Containerengine keine Grenzwerte für die Größe 
 
 Sie können die Größe aller Containerprotokolldateien in den Protokolloptionen der Containerengine begrenzen. Das folgende Beispiel legt den Protokolltreiber auf `json-file` (empfohlen) mit Grenzwerten für Größe und Anzahl der Dateien fest:
 
-    {
-        "log-driver": "json-file",
-        "log-opts": {
-            "max-size": "10m",
-            "max-file": "3"
-        }
+```JSON
+{
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "10m",
+        "max-file": "3"
     }
+}
+```
 
 Fügen Sie diese Informationen zu einer Datei namens `daemon.json` hinzu (oder fügen Sie sie an), und platzieren Sie die Datei am richtigen Speicherort für Ihre Geräteplattform.
 
-| Plattform | Standort |
+| Plattform | Location |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
-| Windows | `C:\ProgramData\iotedge-moby-data\config\` |
+| Windows | `C:\ProgramData\iotedge-moby\config\` |
 
 Die Containerengine muss neu gestartet werden, damit die Änderungen wirksam werden.
 
 **Option: Anpassen der Protokolleinstellungen für die einzelnen Containermodule**
 
-Sie können dies in den **createOptions** der einzelnen Module vornehmen. Beispiel: 
+Sie können dies in den **createOptions** der einzelnen Module vornehmen. Beispiel:
 
-    "createOptions": {
-        "HostConfig": {
-            "LogConfig": {
-                "Type": "json-file",
-                "Config": {
-                    "max-size": "10m",
-                    "max-file": "3"
-                }
+```yml
+"createOptions": {
+    "HostConfig": {
+        "LogConfig": {
+            "Type": "json-file",
+            "Config": {
+                "max-size": "10m",
+                "max-file": "3"
             }
         }
     }
-
+}
+```
 
 **Zusätzliche Optionen unter Linux-Systemen**
 

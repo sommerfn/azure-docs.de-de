@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fdf88ed6cedaa38676a56536ff1eda7ee6bca66
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a229eef3d49964e71becf066d67f60b18da6fc18
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204796"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67113241"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Tutorial: Durchführen eines Rollouts für ein Azure Multi-Factor Authentication-Pilotprojekt
 
-In diesem Tutorial wird Schritt für Schritt das Konfigurieren einer Richtlinie für bedingten Zugriff beschrieben, um Azure Multi-Factor Authentication (Azure MFA) für die Anmeldung am Azure-Portal zu aktivieren. Die Richtlinie wird für eine bestimmte Gruppe mit Pilotbenutzern bereitgestellt und getestet. Die Bereitstellung von Azure MFA per bedingtem Zugriff bietet Organisationen und Administratoren im Vergleich zur herkömmlichen erzwungenen Methode deutlich mehr Flexibilität.
+In diesem Tutorial wird das Konfigurieren einer Richtlinie für bedingten Zugriff Schritt für Schritt beschrieben, um Azure Multi-Factor Authentication (Azure MFA) für die Anmeldung beim Azure-Portal zu aktivieren. Die Richtlinie wird für eine bestimmte Gruppe mit Pilotbenutzern bereitgestellt und getestet. Die Bereitstellung von Azure MFA per bedingtem Zugriff bietet Organisationen und Administratoren im Vergleich zur herkömmlichen erzwungenen Methode deutlich mehr Flexibilität.
 
 > [!div class="checklist"]
 > * Aktivieren von Azure Multi-Factor Authentication

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 888f4dedf2fda0f54297d42a5f813abf73ded748
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 026900e3dcbf7c20750bb8e17e44ba64897c9a30
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121518"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123440"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Überprüfen der ExpressRoute-Konnektivität
 Dieser Artikel hilft Ihnen beim Sicherstellen der ExpressRoute-Konnektivität und beim Beheben von Problemen. Mit ExpressRoute wird ein lokales Netzwerk über eine private Verbindung, die über einen Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitert. ExpressRoute umfasst die drei folgenden separaten Netzwerkzonen:
@@ -22,10 +22,10 @@ Dieser Artikel hilft Ihnen beim Sicherstellen der ExpressRoute-Konnektivität un
 -   Anbieternetzwerk
 -   Microsoft-Datencenter
 
-Der Zweck dieses Dokuments besteht darin, Benutzer bei der Ermittlung, wo (bzw. ob) und in welcher Zone ein Konnektivitätsproblem besteht, zu unterstützen. Die Benutzer können dann Hilfe vom zuständigen Team anfordern, um das Problem zu lösen. Wenn Sie zum Lösen eines Problems Unterstützung von Microsoft benötigt wird, können Sie ein Supportticket beim [Microsoft Support][Support] erstellen.
+Der Zweck dieses Dokuments besteht darin, Benutzer bei der Ermittlung, wo (bzw. ob) und in welcher Zone ein Konnektivitätsproblem besteht, zu unterstützen. Die Benutzer können dann Hilfe vom zuständigen Team anfordern, um das Problem zu lösen. Wenn Sie zum Lösen eines Problems Unterstützung von Microsoft benötigt wird, können Sie ein Supportticket beim [Microsoft-Support][Support] erstellen.
 
 > [!IMPORTANT]
-> Dieses Dokument soll Ihnen als Hilfe beim Diagnostizieren und Beheben einfacher Probleme dienen. Es dient nicht als Ersatz für Microsoft Support. Erstellen Sie ein Supportticket beim [Microsoft Support][Support], wenn Sie Ihr Problem nicht anhand der angegebenen Anleitung beheben können.
+> Dieses Dokument soll Ihnen als Hilfe beim Diagnostizieren und Beheben einfacher Probleme dienen. Es dient nicht als Ersatz für Microsoft Support. Erstellen Sie ein Supportticket beim [Microsoft-Support][Support], wenn Sie Ihr Problem nicht anhand der angegebenen Anleitung beheben können.
 >
 >
 
@@ -83,7 +83,7 @@ Auf dem ExpressRoute-Blatt „Zusammenfassung“ ist unter *Schaltkreisstatus* d
 Damit eine ExpressRoute-Verbindung betriebsbereit ist, muss *Schaltkreisstatus* auf *Aktiviert* und *Anbieterstatus* auf *Bereitgestellt* festgelegt sein.
 
 > [!NOTE]
-> Wenden Sie sich an den [Microsoft Support][Support], wenn die Option *Schaltkreisstatus* nicht auf „Aktiviert“ festgelegt ist. Wenden Sie sich an Ihren Service Provider, wenn *Anbieterstatus* nicht „Bereitgestellt“ lautet.
+> Wenden Sie sich an den [Microsoft-Support][Support], wenn die Option *Schaltkreisstatus* nicht auf „Aktiviert“ festgelegt ist. Wenden Sie sich an Ihren Service Provider, wenn *Anbieterstatus* nicht „Bereitgestellt“ lautet.
 >
 >
 
@@ -132,7 +132,7 @@ Achten Sie besonders auf die folgenden Felder, um zu überprüfen, ob eine Expre
     ServiceProviderProvisioningState : Provisioned
 
 > [!NOTE]
-> Wenden Sie sich an den [Microsoft Support][Support], wenn *CircuitProvisioningState* nicht auf „Enabled“ festgelegt ist. Wenden Sie sich an Ihren Service Provider, wenn *ServiceProviderProvisioningState* nicht auf „Provisioned“ festgelegt ist.
+> Wenden Sie sich an den [Microsoft-Support][Support], wenn *CircuitProvisioningState* nicht auf „Enabled“ festgelegt ist. Wenden Sie sich an Ihren Service Provider, wenn *ServiceProviderProvisioningState* nicht auf „Provisioned“ festgelegt ist.
 >
 >
 
@@ -157,15 +157,15 @@ Eine Beispielantwort lautet:
     Sku                              : Standard
     Status                           : Enabled
 
-Achten Sie besonders auf die folgenden Felder, um zu überprüfen, ob eine ExpressRoute-Verbindung betriebsbereit ist: ServiceProviderProvisioningState: Status der Bereitstellung                           : Aktiviert
+Achten Sie besonders auf die folgenden Felder, um zu überprüfen, ob eine ExpressRoute-Verbindung betriebsbereit ist: ServiceProviderProvisioningState: Status der Bereitstellung                           : Enabled
 
 > [!NOTE]
-> Wenden Sie sich an den [Microsoft Support][Support], wenn die Option *Status* nicht auf „Enabled“ festgelegt ist. Wenden Sie sich an Ihren Service Provider, wenn *ServiceProviderProvisioningState* nicht auf „Provisioned“ festgelegt ist.
+> Wenden Sie sich an den [Microsoft-Support][Support], wenn die Option *Status* nicht auf „Enabled“ festgelegt ist. Wenden Sie sich an Ihren Service Provider, wenn *ServiceProviderProvisioningState* nicht auf „Provisioned“ festgelegt ist.
 >
 >
 
 ## <a name="validate-peering-configuration"></a>Überprüfen der Peeringkonfiguration
-Nachdem der Service Provider die Bereitstellung der ExpressRoute-Verbindung abgeschlossen hat, kann über die ExpressRoute-Verbindung zwischen MSEE-PRs (4) und MSEEs (5) eine Routingkonfiguration erstellt werden. Für jede ExpressRoute-Verbindung können ein, zwei oder drei Routingkontexte aktiviert werden: privates Azure-Peering (Datenverkehr zu privaten virtuellen Netzwerken in Azure), öffentliches Azure-Peering (Datenverkehr zu öffentlichen IP-Adressen in Azure) und Microsoft-Peering (Datenverkehr zu Office 365 und Dynamics 365). Weitere Informationen dazu, wie Sie die Routingkonfiguration erstellen und ändern, finden Sie im Artikel [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung][CreatePeering].
+Nachdem der Service Provider die Bereitstellung der ExpressRoute-Verbindung abgeschlossen hat, kann über die ExpressRoute-Verbindung zwischen MSEE-PRs (4) und MSEEs (5) eine Routingkonfiguration erstellt werden. Für jede ExpressRoute-Verbindung können ein, zwei oder drei Routingkontexte aktiviert werden: privates Azure-Peering (Datenverkehr zu privaten virtuellen Netzwerken in Azure), öffentliches Azure-Peering (Datenverkehr zu öffentlichen IP-Adressen in Azure) und Microsoft-Peering (Datenverkehr zu Office 365). Weitere Informationen dazu, wie Sie die Routingkonfiguration erstellen und ändern, finden Sie im Artikel [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung][CreatePeering].
 
 ### <a name="verification-via-the-azure-portal"></a>Überprüfung über das Azure-Portal
 
@@ -381,7 +381,7 @@ Eine Beispielausgabe des Befehls für ein nicht vorhandenes Peering lautet:
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen oder Hilfe finden Sie unter den folgenden Links:
 
-- [Microsoft Support][Support]
+- [Microsoft-Support][Support]
 - [Erstellen und Ändern einer ExpressRoute-Verbindung][CreateCircuit]
 - [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung][CreatePeering]
 

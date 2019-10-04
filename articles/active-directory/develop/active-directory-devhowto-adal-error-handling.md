@@ -1,26 +1,26 @@
 ---
-title: Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Azure Active Directory Authentication Library)
+title: Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Active Directory-Authentifizierungsbibliothek)
 description: Stellt Anleitungen für die Fehlerbehandlung und bewährten Methoden für ADAL-Clientanwendungen bereit.
 services: active-directory
 documentationcenter: ''
-author: danieldobalian
-manager: mtillman
-ms.author: celested
+author: rwike77
+manager: CelesteDG
+ms.author: ryanwi
 ms.service: active-directory
 ms.subservice: develop
+ms.custom: aaddev
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
-ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e92c3b302ab18aaaf20d187d61a488603ce81a7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c0c1bbbdf9b42dfe2b507f533ad1806e06991f33
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178021"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835419"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Azure Active Directory Authentication Library)
 
@@ -586,7 +586,7 @@ window.Logging = {
 
 Nutzen Sie den folgenden Kommentarabschnitt, um uns Feedback zu geben und uns dabei zu helfen, unsere Inhalte zu optimieren und zu gestalten.
 
-[![Anmeldungsschaltfläche][AAD-Sign-In]][AAD-Sign-In]
+[![Zeigt die „Mit Microsoft anmelden“-Schaltfläche][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md

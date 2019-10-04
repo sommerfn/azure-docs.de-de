@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: b66d9cf15aaeaca975b60f24601b8ad7f555f458
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 6932f9f302bf1816842d78a662f01ebaafed8686
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887555"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989204"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
 Überwachungslösungen nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Dieser Artikel enthält eine kurze Übersicht über Überwachungslösungen in Azure sowie Details zu deren Verwendung und Installation.
@@ -65,11 +65,11 @@ Klicken Sie auf den Namen einer Lösung, um die dazugehörige Zusammenfassungsse
 ## <a name="install-a-monitoring-solution"></a>Installieren einer Überwachungslösung
 Überwachungslösungen von Microsoft und Partnern sind im [Azure Marketplace](https://azuremarketplace.microsoft.com) verfügbar. Sie können nach verfügbaren Lösungen suchen und sie mit folgendem Verfahren installieren. Wenn Sie eine Lösung installieren, müssen Sie einen [Log Analytics-Arbeitsbereich](../platform/manage-access.md) auswählen, in dem die Lösung installiert wird und in dem ihre Daten gesammelt werden.
 
-1. Klicken Sie in der [Liste mit Lösungen für Ihr Abonnement](#list-installed-monitoring-solutions) auf **Hinzufügen**. 
-1. Klicken Sie rechts neben **Verwaltungslösungen** auf **More** (Mehr). 
+1. Klicken Sie in der [Liste mit Lösungen für Ihr Abonnement](#list-installed-monitoring-solutions) auf **Hinzufügen**.
+1. Durchsuchen Sie eine Projektmappe oder suchen Sie sie. Sie können auch Projektmappen über [diesen Suchlink](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/management-tools?page=1&subcategories=management-solutions) durchsuchen.
 1. Suchen Sie die gewünschte Überwachungslösung, und lesen Sie ihre Beschreibung.
 1. Klicken Sie auf **Erstellen**, um den Installationsprozess zu starten.
-1. Zu Beginn des Installationsvorgangs werden Sie zur Angabe der erforderlichen Konfiguration aufgefordert. Diese unterscheidet sich von Lösung zu Lösung.
+1. Wenn der Installationsvorgang gestartet wird, werden Sie aufgefordert, den Log Analytics-Arbeitsbereich anzugeben und die erforderliche Konfiguration für die Projektmappe bereitzustellen.
 
 ![Installieren einer Lösung](media/solutions/install-solution.png)
 

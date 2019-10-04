@@ -3,7 +3,7 @@ title: Einrichten einer Windows-Entwicklungsumgebung für Azure-Microservices | 
 description: Installieren Sie Laufzeit, SDK und Tools, und erstellen Sie einen lokalen Entwicklungscluster. Nach Abschluss des Setups können Sie mit der Erstellung von Anwendungen unter Windows beginnen.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: peterpogorski
 manager: chackdan
 editor: ''
 ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/02/2019
-ms.author: aljo
-ms.openlocfilehash: 45d5d1b4e050d01b003b6321e1af44c0da762e19
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.date: 08/22/2019
+ms.author: atsenthi
+ms.openlocfilehash: 0bc8a5bbecc4e7d58265e9c10c2c8a3351fcc312
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275489"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036008"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Windows
 > [!div class="op_single_selector"]
@@ -53,11 +53,11 @@ Für die Installation des SDK und der Tools wird der Webplattform-Installer (Web
 > [!NOTE]
 > Upgrades eines lokalen Service Fabric-Entwicklungsclusters werden nicht unterstützt.
 
-### <a name="to-use-visual-studio-2017"></a>So verwenden Sie Visual Studio 2017
-Die Service Fabric-Tools sind Bestandteil der Workload für die Azure-Entwicklung in Visual Studio 2017. Aktivieren Sie diese Workload im Rahmen der Visual Studio-Installation.
+### <a name="to-use-visual-studio-2017-or-2019"></a>So verwenden Sie Visual Studio 2017 oder 2019
+Die Service Fabric-Tools sind Bestandteil der Workload für die Azure-Entwicklung in Visual Studio 2017 und 2019. Aktivieren Sie diese Workload im Rahmen der Visual Studio-Installation.
 Zudem müssen Sie das Microsoft Azure Service Fabric SDK und die Laufzeit mithilfe des Webplattform-Installers installieren.
 
-* [Installieren des Microsoft Azure Service Fabric-SDKs][core-sdk]
+* [Installieren Sie das Microsoft Azure Service Fabric-SDK][core-sdk].
 
 ### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>So verwenden Sie Visual Studio 2015 (erfordert mindestens Visual Studio 2015 Update 2)
 Für Visual Studio 2015 werden die Service Fabric-Tools zusammen mit dem SDK und der Laufzeit mithilfe des Webplattform-Installers installiert:
@@ -66,13 +66,14 @@ Für Visual Studio 2015 werden die Service Fabric-Tools zusammen mit dem SDK und
 
 ### <a name="sdk-installation-only"></a>Nur SDK-Installation
 Wenn Sie nur das SDK benötigen, können Sie dieses Paket installieren:
-* [Installieren des Microsoft Azure Service Fabric-SDKs][core-sdk]
+* [Installieren Sie das Microsoft Azure Service Fabric-SDK][core-sdk].
 
 Aktuelle Versionen:
-* Service Fabric SDK und -Tools 3.3.654
-* Service Fabric-Runtime 6.4.654
-* Service Fabric-Tools für Visual Studio 2015 2.4.11116.1
+* Service Fabric SDK und -Tools 3.4.664
+* Service Fabric-Runtime 6.5.664
+* Service Fabric-Tools für Visual Studio 2015 2.5.20615.1
 * Visual Studio 2017 15.9 enthält Service Fabric-Tools für Visual Studio 2.4.11024.1 
+* Visual Studio 2019 16.1 enthält Service Fabric-Tools für Visual Studio 2.5.20423.3
 
 Eine Liste mit unterstützten Versionen finden Sie unter [Unterstützte Service Fabric-Versionen](service-fabric-versions.md).
 
@@ -91,15 +92,15 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie die Entwicklungsumgebung eingerichtet haben, können Sie nun mit dem Erstellen und Ausführen von Apps beginnen.
 
-* [Tutorial: Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst](service-fabric-tutorial-create-dotnet-app.md)
-* [Übersicht über die Programmiermodelle: Reliable Services und Reliable Actors](service-fabric-choose-framework.md)
+* [Informationen zum Erstellen, Bereitstellen und Verwalten von Anwendungen](service-fabric-tutorial-create-dotnet-app.md)
+* [Weitere Informationen zu den Programmiermodellen: Reliable Services und Reliable Actors](service-fabric-choose-framework.md)
 * [Service Fabric-Codebeispiele auf GitHub](https://aka.ms/servicefabricsamples)
-* [Visualisieren Ihres Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
+* [Visualisieren des Clusters mit Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 * Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric-Kampagnenseite"
 [2]: https://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "WebPI-Link für VS 2015"
-[full-bundle-dev15]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "WebPI-Link für Dev15"
-[core-sdk]:https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "WebPI-Link für Core SDK"
+[full-bundle-vs2015]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "WebPI-Link für VS 2015"
+[full-bundle-dev15]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "WebPI-Link für Dev15"
+[core-sdk]: https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK "WebPI-Link für Core SDK"
 [powershell5-download]:https://www.microsoft.com/en-us/download/details.aspx?id=50395

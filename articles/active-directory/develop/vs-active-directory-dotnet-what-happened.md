@@ -1,11 +1,10 @@
 ---
 title: Änderungen an einem MVC-Projekt, die vorgenommen werden, wenn Sie eine Verbindung mit Azure AD herstellen
-description: 'Beschreibt, was mit dem MVC-Projekt geschieht, wenn Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit Azure AD herstellen '
-services: active-directory
+description: Beschreibt, was mit dem MVC-Projekt geschieht, wenn Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit Azure AD herstellen
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
-ms.prod: visual-studio-dev15
+ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd57eadc2c42c17343eee6d813072866e8ea09e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4c4328ea6145d32616f1784d94976dab29216fbc
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196211"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852002"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>Was ist mit dem MVC-Projekt passiert (verbundene Visual Studio-Dienste für Azure Active Directory)?
 
@@ -34,7 +33,7 @@ Informationen zur Verwendung des verbundenen Diensts finden Sie unter [Erste Sch
 
 Betrifft die Projektdatei (\*.NET-Verweise) und `packages.config` (NuGet-Verweise).
 
-| Type | Verweis |
+| type | Verweis |
 | --- | --- |
 | .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
 | .NET; NuGet | Microsoft.Owin |
@@ -49,7 +48,7 @@ Betrifft die Projektdatei (\*.NET-Verweise) und `packages.config` (NuGet-Verweis
 
 Zusätzliche Verweise bei Auswahl der Option **Verzeichnisdaten lesen**:
 
-| Type | Verweis |
+| type | Verweis |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (nur Visual Studio 2015) |
@@ -63,7 +62,7 @@ Zusätzliche Verweise bei Auswahl der Option **Verzeichnisdaten lesen**:
 
 Die folgenden Verweise werden entfernt (nur ASP.NET 4-Projekte, wie in Visual Studio 2015):
 
-| Type | Verweis |
+| type | Verweis |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -145,7 +144,7 @@ Zusätzliche Änderungen bei Auswahl der Option **Verzeichnisdaten lesen**:
 
 ### <a name="file-backup-visual-studio-2015"></a>Dateisicherung (Visual Studio 2015)
 
-Wenn Sie den verbundenen Dienst hinzufügen, sichert Visual Studio 2015 geänderte und entfernte Dateien. Alle betroffenen Dateien werden im Ordner `Backup/AzureAD` gespeichert. Visual Studio 2017 erstellt keine Sicherungen.
+Wenn Sie den verbundenen Dienst hinzufügen, sichert Visual Studio 2015 geänderte und entfernte Dateien. Alle betroffenen Dateien werden im Ordner `Backup/AzureAD` gespeichert. Visual Studio 2017 und höher erstellt keine Sicherungen.
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`

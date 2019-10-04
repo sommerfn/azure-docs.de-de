@@ -7,14 +7,14 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/27/2017
-ms.author: diegomrtnzg
+ms.author: dimart
 ms.custom: mvc
-ms.openlocfilehash: 8aa62e4ed65f8223071786ac165f8343cb6901d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fe24ab21a9a7d227d58e50c58f9aff2bd91e767f
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079093"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598559"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(VERALTET) Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit ACS-Engine und Docker Swarm-Modus mithilfe von Azure DevOps
 
@@ -197,7 +197,7 @@ Mit Azure DevOps können Sie [Releases umgebungsübergreifend verwalten](https:/
 
 ### <a name="initial-release-setup"></a>Einrichtung des ersten Release
 
-1. Um eine Releasepipeline zu erstellen, klicken Sie auf **Releases** > **+ Freigeben**.
+1. Um eine Releasepipeline zu erstellen, klicken Sie auf **Releases** >  **+ Freigeben**.
 
 2. Um die Quelle des Artefakts zu konfigurieren, klicken Sie auf **Artefakte** > **Artefaktquelle verknüpfen**. Verknüpfen Sie diese neue Releasepipeline mit dem Build, den Sie im vorherigen Schritt definiert haben. Anschließend steht die Datei „docker-compose.yml“ im Releaseprozess zur Verfügung.
 
@@ -251,6 +251,6 @@ Nachdem Sie die Konfiguration abgeschlossen haben, ist es Zeit, diese neue CI/CD
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu CI/CD mit Azure DevOps finden Sie in der [Übersicht über den Azure DevOps-Build](https://www.visualstudio.com/docs/build/overview).
+* Weitere Informationen zu CI/CD mit Azure DevOps finden Sie in der [Dokumentation zu Azure Pipelines](/azure/devops/pipelines/?view=azure-devops).
 * Weitere Informationen zur ACS-Engine finden Sie im [GitHub-Repository zum ACS-Engine](https://github.com/Azure/acs-engine).
 * Weitere Informationen zum Docker Swarm-Modus finden Sie unter [Docker Swarm mode overview](https://docs.docker.com/engine/swarm/) (Übersicht über Docker Swarm-Modus).

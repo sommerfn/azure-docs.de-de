@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f7f235ce709fd81c4bb4c367774b4a96cd920e13
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf004f07558ae1f252a6bd26b4fd59ea9e4eea6e
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120345"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069271"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Tutorial: Schützen von Artefakten in Bereitstellungen per Azure Resource Manager-Vorlage
 
@@ -75,9 +75,9 @@ Laden Sie die [BACPAC-Datei](https://armtutorials.blob.core.windows.net/sqlexten
 
     * **Abonnement**: Wählen Sie Ihr Azure-Abonnement.
     * **Ressourcengruppe**: Wählen Sie **Neu erstellen**, und vergeben Sie einen Namen. Eine Ressourcengruppe ist ein Container für Azure-Ressourcen, der für Verwaltungszwecke bestimmt ist. In diesem Tutorial können Sie für das Speicherkonto und die Azure SQL-Datenbank dieselbe Ressourcengruppe verwenden. Notieren Sie den Namen dieser Ressourcengruppe. Sie benötigen ihn später beim Erstellen der Azure SQL-Datenbank in den Tutorials.
-    * **Standort**: Wählen Sie eine Region aus. Beispiel: **USA, Mitte**. 
+    * **Standort**: Wählen Sie eine Region aus. Beispiel: **USA, Mitte**.
     * **Speicherkontotyp**: Verwenden Sie den Standardwert **Standard_LRS**.
-    * **Standort**: Verwenden Sie den Standardwert **[resourceGroup().location]**. Dies bedeutet, dass Sie den Standort der Ressourcengruppe für das Speicherkonto verwenden.
+    * **Standort**: Verwenden Sie den Standardwert **[resourceGroup().location]** . Dies bedeutet, dass Sie den Standort der Ressourcengruppe für das Speicherkonto verwenden.
     * **Ich stimme den oben genannten Geschäftsbedingungen zu**: (aktiviert)
 3. Wählen Sie die Option **Kaufen**.
 4. Wählen Sie oben rechts im Portal das Benachrichtigungssymbol (Glockensymbol), um den Bereitstellungsstatus anzuzeigen.
@@ -87,7 +87,7 @@ Laden Sie die [BACPAC-Datei](https://armtutorials.blob.core.windows.net/sqlexten
 
 ### <a name="create-a-blob-container"></a>Erstellen eines Blobcontainers
 
-Sie benötigen einen Blobcontainer, bevor Sie Dateien hochladen können. 
+Sie benötigen einen Blobcontainer, bevor Sie Dateien hochladen können.
 
 1. Wählen Sie das Speicherkonto aus, um es zu öffnen. In der Ressourcengruppe ist nur ein Speicherkonto aufgeführt. Der Name Ihres Speicherkontos unterscheidet sich vom Namen im folgenden Screenshot.
 
@@ -99,8 +99,8 @@ Sie benötigen einen Blobcontainer, bevor Sie Dateien hochladen können.
 3. Wählen Sie oben die Option **+ Container**, um einen neuen Container zu erstellen.
 4. Geben Sie die folgenden Werte ein:
 
-    * **Name**: Geben Sie **sqlbacpac** ein. 
-    * **Öffentliche Zugriffsebene**: Verwenden Sie den Standardwert **Privat (kein anonymer Zugriff)**.
+    * **Name**: Geben Sie **sqlbacpac** ein.
+    * **Öffentliche Zugriffsebene**: Verwenden Sie den Standardwert **Privat (kein anonymer Zugriff)** .
 5. Klicken Sie auf **OK**.
 6. Wählen Sie **sqlbacpac**, um den neu erstellten Container zu öffnen.
 
@@ -237,7 +237,7 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine SQL Server-Instanz und eine SQL-Datenbank bereitgestellt und eine BACPAC-Datei mit einem SAS-Token importiert. Im folgenden Tutorial erfahren Sie, wie Sie Azure-Ressourcen in mehreren Regionen bereitstellen und sichere Bereitstellungsverfahren verwenden:
+In diesem Tutorial haben Sie eine SQL Server-Instanz und eine SQL-Datenbank bereitgestellt und eine BACPAC-Datei mit einem SAS-Token importiert. Weitere Informationen zum Erstellen einer Azure Pipeline-Instanz zur kontinuierlichen Entwicklung und Bereitstellung von Resource Manager-Vorlagen finden Sie unter
 
 > [!div class="nextstepaction"]
-> [Tutorial: Verwenden des Azure-Bereitstellungs-Manager mit Resource Manager-Vorlagen (Public Preview)](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [Continuous Integration mit Azure Pipelines](./resource-manager-tutorial-use-azure-pipelines.md)

@@ -1,30 +1,30 @@
 ---
-title: 'Schnellstart: Visualisieren von Daten über Azure Data Explorer mit einer importierten Abfrage in Power BI '
-description: 'In diesem Schnellstart erfahren Sie, wie Sie eine der drei Optionen zum Visualisieren von Daten in Power BI verwenden: das Importieren einer Abfrage aus Azure Data Explorer.'
+title: 'Visualisieren von Daten über Azure Data Explorer mit einer importierten Abfrage in Power BI '
+description: 'In diesem Artikel erfahren Sie, wie Sie eine der drei Optionen zum Visualisieren von Daten in Power BI verwenden: das Importieren einer Abfrage aus Azure Data Explorer.'
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-ms.topic: quickstart
-ms.date: 11/14/2018
-ms.openlocfilehash: d14de1f25cc432cb2a9fed2149bd0870aa3ce16a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.topic: conceptual
+ms.date: 07/10/2019
+ms.openlocfilehash: 6c2c8457cee004bf1288656ec9746b703d41aee1
+ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050583"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67806401"
 ---
-# <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>Schnellstart: Visualisieren von Daten mithilfe einer in Power BI importierten Abfrage
+# <a name="visualize-data-using-a-query-imported-into-power-bi"></a>Visualisieren von Daten mithilfe einer in Power BI importierten Abfrage
 
 Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Power BI ist eine Business Analytics-Lösung, mit der Sie Ihre Daten visualisieren und die Ergebnisse in Ihrer Organisation teilen können.
 
-Azure Data Explorer bietet drei Optionen für die Verbindungsherstellung mit Daten in Power BI: Verwenden des integrierten Connectors, Importieren einer Abfrage aus Azure Data Explorer oder Verwenden einer SQL-Abfrage. In diesem Schnellstart wird erläutert, wie Sie eine Abfrage importieren, um Daten abzurufen und in einem Power BI-Bericht zu visualisieren.
+Azure Data Explorer bietet drei Optionen für die Verbindungsherstellung mit Daten in Power BI: Verwenden des integrierten Connectors, Importieren einer Abfrage aus Azure Data Explorer oder Verwenden einer SQL-Abfrage. In diesem Artikel wird erläutert, wie Sie eine Abfrage importieren, um Daten abzurufen und in einem Power BI-Bericht zu visualisieren.
 
 Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diesen Schnellstart benötigen Sie Folgendes:
+Sie benötigen Folgendes, um diesen Artikel durchzuarbeiten:
 
 * Ein Organisations-E-Mail-Konto, das Azure Active Directory angehört, um eine Verbindung mit dem [Azure Data Explorer-Hilfecluster](https://dataexplorer.azure.com/clusters/help/databases/samples) herstellen zu können.
 
@@ -78,9 +78,8 @@ Sie erstellen zunächst in der Azure Data Explorer-Desktop-App eine Abfrage, die
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie den Bericht, den Sie für diesen Schnellstart erstellt haben, nicht mehr benötigen, löschen Sie die Power BI Desktop-Datei (PBIX-Datei).
+Wenn Sie den Bericht, den Sie für diesen Artikel erstellt haben, nicht mehr benötigen, löschen Sie die Power BI Desktop-Datei (PBIX-Datei).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Schnellstart: Visualisieren von Daten mithilfe einer importierten Abfrage in Power BI](power-bi-sql-query.md)
+[Visualisieren von Daten mithilfe des Azure Data Explorer-Connectors für Power BI](power-bi-connector.md)

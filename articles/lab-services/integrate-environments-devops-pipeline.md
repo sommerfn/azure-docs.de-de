@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
 ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357395"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61318385"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integrieren von Umgebungen in Ihre Azure DevOps-CI/CD-Pipelines
 Mithilfe der in Azure DevOps Services (ehemals Visual Studio Team Services) installierten Erweiterung „Azure DevTest Labs Tasks“ können Sie Ihre Build- und Releasepipeline mit Continuous Integration (CI)/Continuous Delivery (CD) problemlos in Azure DevTest Labs integrieren. Diese Erweiterungen vereinfachen beispielsweise die schnelle Bereitstellung einer [Umgebung](devtest-lab-test-env.md) für eine bestimmte Testaufgabe und die anschließende Löschung der Umgebung nach Abschluss des Tests. 
@@ -44,7 +44,7 @@ So erstellen Sie die Releasedefinition
 1.  Wählen Sie im Hub **Build und Release** auf der Registerkarte **Releases** die Schaltfläche **mit dem Pluszeichen (+)** aus.
 2.  Wählen Sie im Fenster **Releasedefinition erstellen** die Vorlage **Leer** aus, und klicken Sie dann auf **Weiter**.
 3.  Klicken Sie auf **Später auswählen** und dann auf **Erstellen**, um eine neue Releasedefinition mit einer Standardumgebung ohne verknüpfte Artefakte zu erstellen.
-4.  Klicken Sie zum Öffnen des Kontextmenüs in der neuen Releasedefinition auf die Auslassungspunkte (**...**) neben dem Umgebungsnamen, und wählen Sie dann **Variablen konfigurieren** aus.
+4.  Klicken Sie zum Öffnen des Kontextmenüs in der neuen Releasedefinition auf die Auslassungspunkte ( **...** ) neben dem Umgebungsnamen, und wählen Sie dann **Variablen konfigurieren** aus.
 5.  Geben Sie im Fenster **Konfigurieren – Umgebung** die folgenden Werte für die Variablen ein, die Sie in den Releasedefinitionsaufgaben verwenden:
 1.  Geben Sie für **administratorLogin** den Anmeldenamen des SQL-Administrators ein.
 2.  Geben Sie für **administratorLoginPassword** das gewünschte Kennwort für die SQL-Administratoranmeldung ein. Verwenden Sie das Schlosssymbol, um das Kennwort auszublenden und zu schützen.
@@ -62,7 +62,7 @@ In der nächsten Bereitstellungsphase wird die Umgebung erstellt, die zu Entwick
 4. Wählen Sie unter **Vorlagenname** den Namen der Umgebung aus, den Sie in Ihrem Quellcoderepository gespeichert haben.* 
 5. **Labname**, **Repositoryname** und **Vorlagenname** sind benutzerfreundliche Darstellungen der Azure-Ressourcen-IDs. Wählen Sie diese Angaben mithilfe der Dropdownlisten aus. Bei manueller Eingabe des Anzeigenamens tritt ein Fehler auf.
 6. Geben Sie unter **Umgebungsname** einen Namen ein, der die Umgebungsinstanz innerhalb des Labs eindeutig identifiziert.  Dieser Wert muss innerhalb des Labs eindeutig sein.
-7. Mithilfe der **Parameterdatei** und der **Parameter** können benutzerdefinierte Parameter an die Umgebung übergeben werden. Die Parameterwerte können mithilfe einer der beiden Optionen oder mithilfe beider Optionen festgelegt werden. In diesem Beispiel wird der Parameterabschnitt verwendet. Verwenden Sie die Namen der Variablen, die Sie in der Umgebung definiert haben, beispielsweise: `-administratorLogin “$(administratorLogin)” -administratorLoginPassword “$(administratorLoginPassword)” -databaseName “$(databaseName)” -cacheSKUCapacity 1`
+7. Mithilfe der **Parameterdatei** und der **Parameter** können benutzerdefinierte Parameter an die Umgebung übergeben werden. Die Parameterwerte können mithilfe einer der beiden Optionen oder mithilfe beider Optionen festgelegt werden. In diesem Beispiel wird der Parameterabschnitt verwendet. Verwenden Sie die Namen der Variablen, die Sie in der Umgebung definiert haben, z. B.: `-administratorLogin “$(administratorLogin)” -administratorLoginPassword “$(administratorLoginPassword)” -databaseName “$(databaseName)” -cacheSKUCapacity 1`
 8. Informationen in der Umgebungsvorlage können im Ausgabeabschnitt der Vorlage übergeben werden. Aktivieren Sie das Kontrollkästchen **Create output variables based on the environment template output** (Ausgabevariablen auf der Grundlage der Ausgabe der Umgebungsvorlage erstellen), damit die Daten von anderen Aufgaben genutzt werden können. `$(Reference name.Output Name)` ist das zu verwendende Muster. Wenn der Verweisname also beispielsweise „DTL“ und der Ausgabename in der Vorlage „location“ lautet, ergibt sich folgende Variable: `$(DTL.location)`.
 
 ## <a name="delete-the-environment"></a>Löschen der Umgebung
@@ -80,5 +80,5 @@ Wählen Sie in der Releasedefinition **Aufgaben hinzufügen** aus, und fügen Si
 Entsprechende Informationen finden Sie in den folgenden Artikeln: 
 - [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md)
 - Resource Manager-Schnellstartvorlagen für die DevTest Labs-Automatisierung aus dem [GitHub-Repository für DevTest Labs](https://github.com/Azure/azure-quickstart-templates)
-- [Problembehandlungsseite für VSTS](/azure/devops/pipelines/troubleshooting)
+- [VSTS Troubleshooting page (Seite zur Problembehandlung bei VSTS)](/azure/devops/pipelines/troubleshooting)
 

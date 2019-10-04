@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics auf IoT Edge
 description: Erstellen von Edge-Aufträgen in Azure Stream Analytics und Bereitstellung dieser Aufträge auf Geräten, auf denen Azure IoT Edge ausgeführt wird.
-services: stream-analytics
+ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 4/2/2019
+ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8e3b6d0fbefb8e3d3437fd5e24f929e453c573df
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892227"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621009"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics auf IoT Edge
  
@@ -82,7 +81,7 @@ Ein Speichercontainer ist erforderlich, um die kompilierte ASA-Abfrage und die A
 4. Legen Sie im Menü **IoT Edge-Einstellungen** die Informationen zum Speichercontainer fest.
 
 5. Festlegen optionaler Einstellungen
-    1. **Ereignisreihenfolge**. Sie können im Portal eine Richtlinie für die falsche Reihenfolge konfigurieren. Die zugehörige Dokumentation finden Sie [hier](https://msdn.microsoft.com/library/azure/mt674682.aspx?f=255&MSPPError=-2147217396).
+    1. **Ereignisreihenfolge**. Sie können im Portal eine Richtlinie für die falsche Reihenfolge konfigurieren. Die zugehörige Dokumentation finden Sie [hier](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
     2. **Gebietsschema**. Hiermit legen Sie das Internationalisierungsformat fest.
 
 
@@ -111,7 +110,7 @@ Diese Schritte sind in der IoT Edge-Dokumentation für [Windows](https://docs.mi
 
 > [!Note]
 > Während dieses Schritts erstellt ASA im Speichercontainer einen Ordner namens „EdgeJobs“, sofern dieser noch nicht vorhanden ist. Für jede Bereitstellung wird ein neuer Unterordner im Ordner „EdgeJobs“ erstellt.
-> Um Ihren Auftrag auf Edge-Geräten bereitzustellen, erstellt ASA eine Shared Access Signature (SAS) für die Auftragsdefinitionsdatei. Der SAS-Schlüssel wird mithilfe des Gerätezwillings sicher an die IoT Edge-Geräte übertragen. Das Ablaufdatum dieses Schlüssels liegt drei Jahre nach dem Datum seiner Erstellung.
+> Wenn Sie Ihren Auftrag auf IoT Edge-Geräten bereitstellen, erstellt ASA eine Shared Access Signature (SAS) für die Auftragsdefinitionsdatei. Der SAS-Schlüssel wird mithilfe des Gerätezwillings sicher an die IoT Edge-Geräte übertragen. Das Ablaufdatum dieses Schlüssels liegt drei Jahre nach dem Datum seiner Erstellung. Wenn Sie einen IoT Edge-Auftrag aktualisieren, ändert sich die SAS, aber nicht die Imageversion. Halten Sie sich nach dem **Aktualisieren** an den Bereitstellungsworkflow. Auf dem Gerät wird eine Aktualisierungsbenachrichtigung protokolliert.
 
 
 Weitere Informationen zu IoT Edge-Bereitstellungen finden Sie [auf dieser Seite](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
@@ -203,9 +202,31 @@ Es gibt zwei Möglichkeiten, die Verweisdaten zu aktualisieren:
 * [Azure Stream Analytics auf IoT Edge-Lizenz](https://go.microsoft.com/fwlink/?linkid=862827). 
 * [Drittanbieterhinweis zu Azure Stream Analytics auf IoT Edge](https://go.microsoft.com/fwlink/?linkid=862828).
 
+## <a name="azure-stream-analytics-module-image-information"></a>Informationen zum Azure Stream Analytics-Modulimage 
+
+Diese Versionsinformationen wurden zuletzt am 27.06.2019 aktualisiert:
+
+- Image: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
+   - Basisimage: microsoft/dotnet:2.1.6-runtime-alpine3.7
+   - Plattform:
+      - Architektur: amd64
+      - Betriebssystem: Linux
+  
+- Image: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
+   - Basisimage: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
+   - Plattform:
+      - Architektur: ARM
+      - Betriebssystem: Linux
+  
+- Image: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
+   - Basisimage: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
+   - Plattform:
+      - Architektur: amd64
+      - Betriebssystem: Windows
+      
+      
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 Um Hilfe zu erhalten, nutzen Sie das [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a029135da79d1a0b24b2941873a0fe3187ac9f7c
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a763f15b57bf7f23eeb52c81dd48de7f02adc5e4
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479723"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68853561"
 ---
 # <a name="azure-ad-password-protection-monitoring-and-logging"></a>Überwachung und Protokollierung beim Azure AD-Kennwortschutz
 
@@ -96,7 +96,7 @@ PasswordSetErrors               : 1
 
 Der Umfang der Berichterstellung des Cmdlets kann mit einem der -Forest, -Domain- oder -DomainController-Parameter beeinflusst werden. Keine Angabe eines Parameters bedeutet –Forest.
 
-Die Cmdlet `Get-AzureADPasswordProtectionSummaryReport` funktioniert durch Abfragen des DC-Agent-Administratorereignisprotokolls und anschließendes Zählen der Gesamtanzahl von Ereignissen, die den einzelnen angezeigten Ergebniskategorien entsprechen. Die folgende Tabelle enthält die Zuordnungen zwischen jedem Ergebnis und der zugehörigen Ereignis-ID:
+Die Cmdlet `Get-AzureADPasswordProtectionSummaryReport` funktioniert durch Abfragen des DC-Agent-Administratorereignisprotokolls und anschließendes Zählen der Gesamtanzahl von Ereignissen, die den einzelnen angezeigten Ergebniskategorien entsprechen. Die folgende Tabelle enthält die Zuordnungen zwischen den einzelnen Ergebnissen und der zugehörigen Ereignis-ID:
 
 |Get-AzureADPasswordProtectionSummaryReport-Eigenschaft |Zugehörige Ereignis-ID|
 | :---: | :---: |
@@ -271,6 +271,27 @@ Wenn der HeartbeatUTC-Wert veraltet, kann dies darauf hinweisen, dass der DC-Age
 
 Wenn der PasswordPolicyDateUTC-Wert veraltet, kann dies darauf hinweisen, dass der DC-Agent des Azure AD-Kennwortschutzes auf diesem Computer nicht ordnungsgemäß funktioniert.
 
+## <a name="dc-agent-newer-version-available"></a>Neuere DC-Agent-Version verfügbar
+
+Der DC-Agent-Dienst protokolliert im Betriebsprotokoll ein Warnungsereignis vom Typ 30034, wenn eine neuere Version der DC-Agent-Software verfügbar ist. Beispiel:
+
+```text
+An update for Azure AD Password Protection DC Agent is available.
+
+If autoupgrade is enabled, this message may be ignored.
+
+If autoupgrade is disabled, refer to the following link for the latest version available:
+
+https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
+
+Current version: 1.2.116.0
+```
+
+Die Version der neueren Software ist im obigen Ereignis nicht angegeben. Zu dieser Information gelangen Sie über den Link in der Ereignismeldung.
+
+> [!NOTE]
+> In der obigen Ereignismeldung ist zwar von „autoupgrade“ (automatisches Upgrade) die Rede, dieses Feature wird jedoch aktuell von der DC-Agent-Software nicht unterstützt.
+
 ## <a name="proxy-service-event-logging"></a>Proxydienst-Ereignisprotokollierung
 
 Der Proxydienst sendet einen Mindestsatz von Ereignissen an die folgenden Ereignisprotokolle:
@@ -339,6 +360,27 @@ Die verschiedenen Eigenschaften werden von den einzelnen Proxydiensten ungefähr
 Der Bereich der Cmdlet-Abfrage wird möglicherweise durch die Verwendung entweder des Parameters „–Forest“ oder „–Domain“ beeinflusst.
 
 Wenn der HeartbeatUTC-Wert veraltet, kann dies darauf hinweisen, dass der Proxy des Azure AD-Kennwortschutzes auf diesem Computer nicht ausgeführt wird oder deinstalliert wurde.
+
+## <a name="proxy-agent-newer-version-available"></a>Neuere Proxy-Agent-Version verfügbar
+
+Der Proxydienst protokolliert im Betriebsprotokoll ein Warnungsereignis vom Typ 20002, wenn eine neuere Version der Proxysoftware verfügbar ist. Beispiel:
+
+```text
+An update for Azure AD Password Protection Proxy is available.
+
+If autoupgrade is enabled, this message may be ignored.
+
+If autoupgrade is disabled, refer to the following link for the latest version available:
+
+https://aka.ms/AzureADPasswordProtectionAgentSoftwareVersions
+
+Current version: 1.2.116.0
+.
+```
+
+Die Version der neueren Software ist im obigen Ereignis nicht angegeben. Zu dieser Information gelangen Sie über den Link in der Ereignismeldung.
+
+Dieses Ereignis wird auch dann ausgegeben, wenn der Proxy-Agent mit aktiviertem automatischem Upgrade konfiguriert ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 0f63ed7d00f1ae3e30cdac76606559a4e9f49f04
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 507af54b8b4c2e7c67538a1a25a040c7ee5fdfd5
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59287507"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976314"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Web SDK)
 
@@ -43,6 +43,7 @@ Das Azure Maps Web SDK unterstützt viele Arten von Ausdrücken, die allein oder
 
 | Art der Ausdrücke | BESCHREIBUNG |
 |---------------------|-------------|
+| [Aggregatausdruck](#aggregate-expression) | Ein Ausdruck zum Definieren einer Berechnung, die über ein Dataset verarbeitet wird und mit der Option `clusterProperties` von `DataSource` verwendet werden kann. |
 | [Boolesche Ausdrücke](#boolean-expressions) | Bei booleschen Ausdrücken werden Ausdrücke mit booleschen Operatoren bereitgestellt, um boolesche Vergleiche auszuwerten. |
 | [Farbausdrücke](#color-expressions) | Farbausdrücke erleichtern Ihnen das Erstellen und Bearbeiten von Farbwerten. |
 | [Bedingte Ausdrücke](#conditional-expressions) | Bei bedingten Ausdrücken werden logische Vorgänge bereitgestellt, die sich wie if-Anweisungen verhalten. |
@@ -64,7 +65,8 @@ In allen Beispielen dieses Dokuments werden die folgenden Features verwendet, um
         "type": "Point",
         "coordinates": [-122.13284, 47.63699]
     },
-    "properties": {     
+    "properties": { 
+        "id": 123,
         "entityType": "restaurant",
         "revenue": 12345,
         "subTitle": "Building 40", 
@@ -165,6 +167,27 @@ Bei mathematischen Ausdrücken werden mathematische Operatoren bereitgestellt, u
 | `['sin', number]` | number | Berechnet den Sinus der angegebenen Zahl. |
 | `['sqrt', number]` | number | Berechnet die Quadratwurzel der angegebenen Zahl. |
 | `['tan', number]` | number | Berechnet den Tangens der angegebenen Zahl. |
+
+## <a name="aggregate-expression"></a>Aggregatausdruck
+
+Ein Aggregatausdruck definiert eine Berechnung, die über ein Dataset verarbeitet wird und mit der Option `clusterProperties` von `DataSource` verwendet werden kann. Die Ausgabe dieser Ausdrücke muss eine Zahl oder ein boolescher Wert sein. 
+
+Ein Aggregatausdruck verwendet drei Werte: einen Operatorwert, einen Anfangswert und einen Ausdruck zum Abrufen einer Eigenschaft aus jedem Feature in dem Dataset, auf das der Aggregatvorgang angewendet werden soll. Dieser Ausdruck hat folgendes Format:
+
+```javascript
+[operator: string, initialValue: boolean | number, mapExpression: Expression]
+```
+
+- Operator: Eine Ausdrucksfunktion, die dann auf alle Werte angewendet wird, die von `mapExpression` für jeden Punkt im Cluster berechnet werden. Unterstützte Operatoren: 
+    - Bei Zahlen: `+`, `*`, `max`, `min`
+    - Bei booleschen Werten: `all`, `any`
+- initialValue: Ein Anfangswert, mit dem der erste berechnete Wert aggregiert wird.
+- mapExpression: Ein Ausdruck, der auf jeden Punkt im Dataset angewendet wird.
+
+**Beispiele**
+
+Wenn alle Funktionen in einem Dataset eine `revenue`-Eigenschaft haben, die eine Zahl ist. Der Gesamtumsatz aller Punkte in einem Cluster, der aus dem Dataset erstellt wurde, kann mithilfe des folgenden Aggregatausdrucks berechnet werden: `['+', 0, ['get', 'revenue']]`
+
 ## <a name="boolean-expressions"></a>Boolesche Ausdrücke
 
 Bei booleschen Ausdrücken werden Ausdrücke mit booleschen Operatoren bereitgestellt, um boolesche Vergleiche auszuwerten.
@@ -292,11 +315,33 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
+Im folgenden Beispiel wird ein match-Ausdruck verwendet, um einen Filter vom Typ „in array“ (im Array) oder „array contains“ (Array enthält) anzuwenden – in diesem Fall, um Daten mit einem ID-Wert zu filtern, der in einer Liste zulässiger IDs enthalten ist. Wenn Sie Ausdrücke mit Filtern verwenden, muss das Ergebnis ein boolescher Wert sein.
+
+```javascript
+var layer = new atlas.layer.BubbleLayer(datasource, null, {
+    filter: [
+        'match',  
+
+        //Get the property to match.
+        ['get', 'id'],  
+
+         //List of values to match.
+        [24, 53, 98], 
+
+        //If there is a match, return true.
+        true,
+    
+        //Otherwise return false.
+        false
+    ]
+});
+```
+
 ### <a name="coalesce-expression"></a>COALESCE-Ausdruck
 
 Bei einem `coalesce`-Ausdruck wird eine Reihe von Ausdrücken durchlaufen, bis der erste Wert erkannt wird, der nicht null ist. Dieser Wert wird dann zurückgegeben. 
 
-Mit dem folgenden Pseudocode wird die Struktur des ` coalesce`-Ausdrucks definiert. 
+Mit dem folgenden Pseudocode wird die Struktur des `coalesce`-Ausdrucks definiert. 
 
 ```javascript
 [
@@ -436,9 +481,9 @@ Ein `interpolate`-Ausdruck kann verwendet werden, um eine fortlaufende, nahtlose
 
 Es gibt drei Typen von Interpolationsmethoden, die in einem `interpolate`-Ausdruck verwendet werden können:
  
-* `['linear']` - Lineare Interpolation zwischen dem Stopp-Paar.
-* `['exponential', base]` - Exponentielle Interpolation zwischen den Stopps. Mit dem Wert `base` wird die Rate gesteuert, mit der die Ausgabe zunimmt. Bei höheren Werten nimmt die Ausgabe zum oberen Bereich hin stärker zu. Ein `base`-Wert nahe 1 führt zu einer Ausgabe, die eher linear zunimmt.
-* `['cubic-bezier', x1, y1, x2, y2]` - Interpolation per [kubischer Bézierkurve](https://developer.mozilla.org/docs/Web/CSS/timing-function), die über die vorhandenen Steuerungspunkte definiert wird.
+* `['linear']` – Lineare Interpolation zwischen dem Stopp-Paar.
+* `['exponential', base]` – Exponentielle Interpolation zwischen den Stopps. Mit dem Wert `base` wird die Rate gesteuert, mit der die Ausgabe zunimmt. Bei höheren Werten nimmt die Ausgabe zum oberen Bereich hin stärker zu. Ein `base`-Wert nahe 1 führt zu einer Ausgabe, die eher linear zunimmt.
+* `['cubic-bezier', x1, y1, x2, y2]` – Interpolation per [kubischer Bézierkurve](https://developer.mozilla.org/docs/Web/CSS/timing-function), die über die vorhandenen Steuerungspunkte definiert wird.
 
 Hier ist ein Beispiel zu den unterschiedlichen Arten von Interpolationen angegeben. 
 
@@ -612,14 +657,14 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 });
 ```
 
-[Livebeispiel](map-add-shape.md#line-stroke-gradient)
+[Livebeispiel](map-add-line-layer.md#line-stroke-gradient)
 
 ### <a name="text-field-format-expression"></a>Text Field Format-Ausdruck
 
 Der Text Field Format-Ausdruck kann mit der `textField`-Option der `textOptions`-Eigenschaft auf Symbolebene verwendet werden, um eine gemischte Textformatierung zu erzielen. Mit diesem Ausdruck kann ein Satz mit Eingabezeichenfolgen und Formatierungsoptionen angegeben werden. Die folgenden Optionen können für jede Eingabezeichenfolge dieses Ausdrucks angegeben werden.
 
- * `'font-scale'` - Gibt den Skalierungsfaktor für den Schriftgrad an. Wenn er angegeben ist, wird mit diesem Wert die `size`-Eigenschaft von `textOptions` für die individuelle Zeichenfolge außer Kraft gesetzt.
- * `'text-font'` - Gibt mindestens eine Schriftfamilie an, die für diese Zeichenfolge verwendet werden sollte. Wenn er angegeben ist, wird mit diesem Wert die `font`-Eigenschaft von `textOptions` für die individuelle Zeichenfolge außer Kraft gesetzt.
+ * `'font-scale'` – Gibt den Skalierungsfaktor für den Schriftgrad an. Wenn er angegeben ist, wird mit diesem Wert die `size`-Eigenschaft von `textOptions` für die individuelle Zeichenfolge außer Kraft gesetzt.
+ * `'text-font'` – Gibt mindestens eine Schriftfamilie an, die für diese Zeichenfolge verwendet werden sollte. Wenn er angegeben ist, wird mit diesem Wert die `font`-Eigenschaft von `textOptions` für die individuelle Zeichenfolge außer Kraft gesetzt.
 
 Mit dem folgenden Pseudocode wird die Struktur des Text Field Format-Ausdrucks definiert. 
 
@@ -677,10 +722,10 @@ Auf dieser Ebene wird das Punktfeature wie in der folgenden Abbildung gerendert:
 
 Der `number-format`-Ausdruck kann nur mit der `textField`-Option einer Symbolebene verwendet werden. Mit diesem Ausdruck wird die angegebene Zahl in eine formatierte Zeichenfolge konvertiert. Mit diesem Ausdruck wird die JavaScript-Funktion [Number.toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) umschlossen, und sie unterstützt die folgenden Optionen.
 
- * `locale` - Geben Sie diese Option an, um Zahlen so in Zeichenfolgen zu konvertieren, dass sie für die angegebene Sprache geeignet sind. Übergeben Sie für diese Option ein [BCP 47-Sprachtag](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation).
- * `currency` - Dient zum Konvertieren der Zahl in eine Zeichenfolge, die für eine Währung steht. Mögliche Werte sind die [ISO 4217-Währungscodes](https://en.wikipedia.org/wiki/ISO_4217), z. B. „USD“ für US-Dollar, „EUR“ für Euro oder „CNY“ für chinesische Renminbi.
- * `'min-fraction-digits'` - Gibt die Mindestanzahl von Dezimalstellen an, die in der Zeichenfolgenversion der Zahl enthalten sein dürfen.
- * `'max-fraction-digits'` - Gibt die Höchstzahl von Dezimalstellen an, die in der Zeichenfolgenversion der Zahl enthalten sein dürfen.
+ * `locale` – Geben Sie diese Option an, um Zahlen so in Zeichenfolgen zu konvertieren, dass sie für die angegebene Sprache geeignet sind. Übergeben Sie für diese Option ein [BCP 47-Sprachtag](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation).
+ * `currency` – Dient zum Konvertieren der Zahl in eine Zeichenfolge, die für eine Währung steht. Mögliche Werte sind die [ISO 4217-Währungscodes](https://en.wikipedia.org/wiki/ISO_4217), z. B. „USD“ für US-Dollar, „EUR“ für Euro oder „CNY“ für chinesische Renminbi.
+ * `'min-fraction-digits'` – Gibt die Mindestanzahl von Dezimalstellen an, die in der Zeichenfolgenversion der Zahl enthalten sein dürfen.
+ * `'max-fraction-digits'` – Gibt die Höchstzahl von Dezimalstellen an, die in der Zeichenfolgenversion der Zahl enthalten sein dürfen.
 
 Mit dem folgenden Pseudocode wird die Struktur des Text Field Format-Ausdrucks definiert. 
 
@@ -727,7 +772,7 @@ Ein `zoom`-Ausdruck wird verwendet, um zur Renderzeit den aktuellen Zoomfaktor d
 
 **Beispiel**
 
-Standardmäßig ist für die in der Wärmebildebene gerenderten Daten ein fester Pixelradius für alle Zoomfaktoren definiert. Wenn die Karte gezoomt wird, werden die Daten aggregiert, und die Wärmebildebene verändert sich. Zum Skalieren des Radius für jeden Zoomfaktor kann ein `zoom`-Ausdruck verwendet werden, sodass jeder Datenpunkt den gleichen physischen Bereich der Karte abdeckt. Hierdurch sieht die Wärmebildebene statischer und konsistenter aus. Jeder Zoomfaktor der Karte hat vertikal und horizontal doppelt so viele Pixel wie der vorherige Zoomfaktor. Wenn der Radius so skaliert wird, dass er sich mit jedem Zoomfaktor verdoppelt, wird ein Wärmebild erstellt, das für alle Zoomfaktoren einheitlich aussieht. Dies kann erreicht werden, indem der `zoom`-Ausdruck wie unten gezeigt mit einem `base 2 exponential interpolation`-Ausdruck verwendet wird. 
+Standardmäßig ist für die in der Wärmebildebene gerenderten Daten ein fester Pixelradius für alle Zoomfaktoren definiert. Wenn die Karte gezoomt wird, werden die Daten aggregiert, und die Wärmebildebene verändert sich. Zum Skalieren des Radius für jede Zoomebene kann ein `zoom`-Ausdruck verwendet werden, sodass jeder Datenpunkt den gleichen physischen Bereich der Karte abdeckt. Hierdurch sieht die Wärmebildebene statischer und konsistenter aus. Jede Zoomebene der Karte hat vertikal und horizontal doppelt so viele Pixel wie die vorherige Zoomebene. Wenn der Radius so skaliert wird, dass er sich mit jedem Zoomfaktor verdoppelt, wird ein Wärmebild erstellt, das für alle Zoomfaktoren einheitlich aussieht. Dies kann erreicht werden, indem der `zoom`-Ausdruck wie unten gezeigt mit einem `base 2 exponential interpolation`-Ausdruck verwendet wird. 
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -794,8 +839,11 @@ In den folgenden Artikeln finden Sie weitere Codebeispiele, in denen Ausdrücke 
 > [!div class="nextstepaction"] 
 > [Hinzufügen einer Blasenebene](map-add-bubble-layer.md)
 
-> [!div class="nextstepaction"] 
-> [Hinzufügen von Formen](map-add-shape.md)
+> [!div class="nextstepaction"]
+> [Add a line layer to the map](map-add-line-layer.md) (Hinzufügen einer Linienebene zur Karte)
+
+> [!div class="nextstepaction"]
+> [Hinzufügen einer Form zu einer Karte](map-add-shape.md)
 
 > [!div class="nextstepaction"] 
 > [Hinzufügen einer Wärmebildebene](map-add-heat-map-layer.md)
@@ -806,7 +854,7 @@ Weitere Informationen zu den Ebenenoptionen, die Ausdrücke unterstützen:
 > [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
-> [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
+> [HeatMapLayerOptions-Schnittstelle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
 > [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5b44bfd94dffa14fcd501f5e0ddea11309adabf6
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050976"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907844"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Front Door-Domäne
 
@@ -77,17 +77,21 @@ Sie können das HTTPS-Feature mit Ihrem eigenen Zertifikat aktivieren. Dabei erf
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Vorbereiten Ihres Azure Key Vault-Kontos und Ihres Zertifikats
  
 1. Azure Key Vault: Sie benötigen ein aktives Azure Key Vault-Konto. Dieses muss zum gleichen Abonnement gehören wie die Front Door-Instanz, für die Sie benutzerdefiniertes HTTPS aktivieren möchten. Erstellen Sie bei Bedarf ein Azure Key Vault-Konto.
- 
-2. Azure Key Vault-Zertifikate: Wenn Sie bereits über ein Zertifikat verfügen, können Sie es direkt in Ihr Azure Key Vault-Konto hochladen. Alternativ können Sie direkt in Azure Key Vault ein neues Zertifikat über eine der Partnerzertifizierungsstellen mit Azure Key Vault-Integration erstellen.
 
 > [!WARNING]
-> </br> – Azure Front Door Service unterstützt derzeit nur Key Vault-Konten im selben Abonnement wie die Front Door-Konfiguration. Das Auswählen eines Schlüsseltresors in einem anderen Abonnement als Ihre Front Door-Konfiguration führt zu einem Fehler.
-> </br> – Azure Front Door Service unterstützt derzeit nur die Key Vault-Zertifikate, die im Abschnitt „Geheimnisse“ gespeichert sind. Ihr Zertifikatimport schlägt fehl, wenn Sie es im Abschnitt „Zertifikate“ und nicht im Abschnitt „Geheimnisse“ speichern.
-> </br> – Azure Front Door Service unterstützt derzeit nur Zertifikate, die mit einer PFX-Datei **ohne** Kennwort hochgeladen wurden.
+> Azure Front Door Service unterstützt derzeit nur Key Vault-Konten im selben Abonnement wie die Front Door-Konfiguration. Das Auswählen eines Schlüsseltresors in einem anderen Abonnement als Ihre Front Door-Konfiguration führt zu einem Fehler.
+
+2. Azure Key Vault-Zertifikate: Wenn Sie bereits über ein Zertifikat verfügen, können Sie es direkt in Ihr Azure Key Vault-Konto hochladen. Alternativ können Sie direkt in Azure Key Vault ein neues Zertifikat über eine der Partnerzertifizierungsstellen mit Azure Key Vault-Integration erstellen. Laden Sie Ihr Zertifikat nicht als **Geheimnis**, sondern als Objekt vom Typ **Zertifikat** hoch.
+
+> [!IMPORTANT]
+> Sie müssen das Zertifikat im PFX-Format **ohne** Kennwortschutz hochladen.
 
 #### <a name="register-azure-front-door-service"></a>Registrieren von Azure Front Door Service
 
 Registrieren Sie den Dienstprinzipal für Azure Front Door Service als App in Azure Active Directory mithilfe von PowerShell.
+
+> [!NOTE]
+> Diese Aktion muss nur **einmal** pro Mandant ausgeführt werden.
 
 1. Installieren Sie bei Bedarf auf dem lokalen Computer [Azure PowerShell](/powershell/azure/install-az-ps) in PowerShell.
 
@@ -97,18 +101,19 @@ Registrieren Sie den Dienstprinzipal für Azure Front Door Service als App in Az
 
 #### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>Gewähren von Zugriff auf Ihren Schlüsseltresor für Azure Front Door Service
  
-Gewähren Sie Azure Front Door Service Berechtigungen für den Zugriff auf die Zertifikate unter „Geheimnisse“ in Ihrem Azure Key Vault-Konto.
+Gewähren Sie Azure Front Door Service Berechtigungen für den Zugriff auf die Zertifikate in Ihrem Azure Key Vault-Konto.
 
 1. Klicken Sie in Ihrem Key Vault-Konto unter „EINSTELLUNGEN“ auf **Zugriffsrichtlinien** und anschließend auf **Neu hinzufügen**, um eine neue Richtlinie zu erstellen.
 
 2. Suchen Sie in **Prinzipal auswählen** nach **ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037**, und wählen Sie **Microsoft.Azure.Frontdoor** aus. Klicken Sie auf **Auswählen**.
 
+3. Wählen Sie unter **Berechtigungen für Geheimnis** die Option **Abrufen** aus, um Front Door das Abrufen des Zertifikats zu ermöglichen.
 
-3. Wählen Sie unter **Berechtigungen für Geheimnis** die Option **Abrufen** aus, um Front Door das Abrufen und Auflisten der Zertifikate zu ermöglichen. 
+4. Wählen Sie unter **Zertifikatberechtigungen** die Option **Abrufen** aus, um Front Door das Abrufen des Zertifikats zu ermöglichen.
 
-4. Klicken Sie auf **OK**. 
+5. Klicken Sie auf **OK**. 
 
-    Azure Front Door Service kann nun auf diesen Schlüsseltresor und auf die darin gespeicherten Zertifikate (Geheimnisse) zugreifen.
+    Azure Front Door Service kann nun auf diese Key Vault-Instanz und auf die darin gespeicherten Zertifikate zugreifen.
  
 #### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>Auswählen des bereitzustellenden Zertifikats für Azure Front Door Service
  
@@ -142,13 +147,13 @@ Wenn Sie Ihr eigenes Zertifikat verwenden, ist keine Domänenüberprüfung erfor
 
 Ihr CNAME-Eintrag sollte im folgenden Format vorliegen, wobei *Name* Ihr benutzerdefinierter Domänenname und *Wert* der Standardhostname „.azurefd.net“ von Front Door ist:
 
-| NAME            | Type  | Wert                 |
+| NAME            | type  | Wert                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
 Weitere Informationen über CNAME-Einträge finden Sie unter [Erstellen Sie die CNAME-DNS-Einträge](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
 
-Wenn Ihr CNAME-Eintrag im richtigen Format vorliegt, überprüft DigiCert automatisch Ihren benutzerdefinierten Domänennamen und erstellt ein dediziertes Zertifikat für Ihren Domänennamen. DigiCert sendet Ihnen keine Bestätigungs-E-Mail, und Sie müssen Ihre Anforderung nicht genehmigen. Das Zertifikat ist ein Jahr lang gültig und wird automatisch verlängert, bevor es abläuft. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort. 
+Wenn Ihr CNAME-Eintrag im richtigen Format vorliegt, überprüft DigiCert automatisch Ihren benutzerdefinierten Domänennamen und erstellt ein dediziertes Zertifikat für Ihren Domänennamen. DigiCert sendet Ihnen keine Bestätigungs-E-Mail, und Sie müssen Ihre Anforderung nicht genehmigen. Das Zertifikat ist ein Jahr gültig und wird automatisch verlängert, bevor es abläuft. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort. 
 
 Die automatische Überprüfung dauert normalerweise einige Minuten. Öffnen Sie ein Supportticket, falls Ihre Domäne nicht innerhalb einer Stunde validiert wurde.
 
@@ -171,7 +176,7 @@ webmaster@&lt;Ihr-Domänenname.com&gt;
 hostmaster@&lt;Ihr-Domänenname.com&gt;  
 postmaster@&lt;Ihr-Domänenname.com&gt;  
 
-Sie sollten ähnlich wie im folgenden Beispiel nach wenigen Minuten eine E-Mail-Nachricht erhalten, in der Sie aufgefordert werden, die Anforderung zu genehmigen. Wenn Sie einen Spamfilter verwenden, fügen Sie admin@digicert.com der Positivliste hinzu. Sollten Sie nach 24 Stunden noch keine E-Mail erhalten haben, setzen Sie sich mit dem Microsoft-Support in Verbindung.
+Sie sollten ähnlich wie im folgenden Beispiel nach wenigen Minuten eine E-Mail-Nachricht erhalten, in der Sie aufgefordert werden, die Anforderung zu genehmigen. Wenn Sie einen Spamfilter verwenden, fügen Sie admin@digicert.com der Zulassungsliste hinzu. Sollten Sie nach 24 Stunden noch keine E-Mail erhalten haben, setzen Sie sich mit dem Microsoft-Support in Verbindung.
 
 Wenn Sie auf den Genehmigungslink klicken, werden Sie an ein Onlineformular für die Genehmigung weitergeleitet. Befolgen Sie die Anweisungen im Formular. Sie haben zwei Möglichkeiten zur Genehmigung:
 
@@ -179,7 +184,7 @@ Wenn Sie auf den Genehmigungslink klicken, werden Sie an ein Onlineformular für
 
 - Sie können lediglich den spezifischen Hostnamen aus dieser Anforderung genehmigen. Für nachfolgende Anforderungen ist eine zusätzliche Genehmigung erforderlich.
 
-Nach der Genehmigung führt DigiCert die Erstellung des Zertifikats für Ihren benutzerdefinierten Domänennamen durch. Das Zertifikat ist ein Jahr lang gültig und wird automatisch verlängert, bevor es abläuft.
+Nach der Genehmigung führt DigiCert die Erstellung des Zertifikats für Ihren benutzerdefinierten Domänennamen durch. Das Zertifikat ist ein Jahr gültig und wird automatisch verlängert, bevor es abläuft.
 
 ## <a name="wait-for-propagation"></a>Warten auf die Weitergabe
 

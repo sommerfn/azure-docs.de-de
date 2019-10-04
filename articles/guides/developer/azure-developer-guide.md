@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: caddb542e806457e085db096813e504ddc278ac0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 367027a48dd51dd88de63cb163e05e0e8503755d
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108323"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308583"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -158,7 +158,7 @@ Azure bietet mehrere Methoden zum Verwenden von Containern in Ihren Anwendungen.
 
 Es ist wichtig, nicht nur zu wissen, wer Ihre Anwendungen verwendet, sondern auch den unberechtigten Zugriff auf Ihre Ressourcen zu verhindern. Azure bietet mehrere Möglichkeiten zum Authentifizieren Ihrer App-Clients.
 
-- **Azure Active Directory (Azure AD)**: Der mehrinstanzenfähige, cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Sie können das einmalige Anmelden (SSO) zu Ihren Anwendungen hinzufügen, indem Sie in Azure AD integrieren. Sie können auf Verzeichniseigenschaften zugreifen, indem Sie direkt die Azure AD Graph-API oder die Microsoft Graph-API verwenden. Sie können mit Azure AD-Unterstützung für das OAuth2.0-Autorisierungsframework und Open ID Connect integrieren, indem Sie native HTTP/REST-Endpunkte und die Azure AD-Authentifizierungsbibliotheken für mehrere Plattformen verwenden.
+- **Azure Active Directory (Azure AD)** : Der mehrinstanzenfähige, cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Sie können das einmalige Anmelden (SSO) zu Ihren Anwendungen hinzufügen, indem Sie in Azure AD integrieren. Sie können auf Verzeichniseigenschaften zugreifen, indem Sie direkt die Azure AD Graph-API oder die Microsoft Graph-API verwenden. Sie können mit Azure AD-Unterstützung für das OAuth2.0-Autorisierungsframework und Open ID Connect integrieren, indem Sie native HTTP/REST-Endpunkte und die Azure AD-Authentifizierungsbibliotheken für mehrere Plattformen verwenden.
 
   > **Einsatzgebiete**: Wenn Sie SSO bereitstellen, mit graphbasierten Daten arbeiten oder domänenbasierte Benutzer authentifizieren möchten.
   > 
@@ -170,7 +170,7 @@ Es ist wichtig, nicht nur zu wissen, wer Ihre Anwendungen verwendet, sondern auc
   > 
   > **Erste Schritte**: Weitere Informationen zur Authentifizierung in App Service finden Sie unter [Authentifizierung und Autorisierung in Azure App Service](../../app-service/overview-authentication-authorization.md).
 
-Weitere Informationen zu bewährten Sicherheitsmethoden in Azure finden Sie unter [Sicherheit in Azure – bewährte Methoden und Muster](../../security/security-best-practices-and-patterns.md).
+Weitere Informationen zu bewährten Sicherheitsmethoden in Azure finden Sie unter [Sicherheit in Azure – bewährte Methoden und Muster](../../security/fundamentals/best-practices-and-patterns.md).
 
 ### <a name="monitoring"></a>Überwachung
 
@@ -199,7 +199,7 @@ Azure ist eine globale Cloudplattform, die in vielen Regionen auf der ganzen Wel
 
 ### <a name="choose-the-best-region-for-your-application-and-data"></a>Auswählen der besten Region für Ihre Anwendung und Daten
 
-Einer der Vorteile der Verwendung von Azure ist, dass Sie Ihre Anwendungen in verschiedenen Rechenzentren auf der ganzen Welt bereitstellen können. Die Region, die Sie auswählen, kann sich auf die Leistung Ihrer Anwendung auswirken. Beispielsweise ist es besser, eine Region auszuwählen, die näher an den meisten Ihrer Kunden liegt, um die Wartezeit bei Netzwerkanforderungen zu reduzieren. Möglicherweise möchten Sie Ihre Region auch so auswählen, dass sie die rechtlichen Anforderungen für den Vertrieb Ihrer App in bestimmten Ländern erfüllen. Es wird immer empfohlen, Anwendungsdaten im gleichen Rechenzentrum oder in einem Rechenzentrum zu speichern, das so nah wie möglich an dem Rechenzentrum liegt, das Ihre Anwendung hostet.
+Einer der Vorteile der Verwendung von Azure ist, dass Sie Ihre Anwendungen in verschiedenen Rechenzentren auf der ganzen Welt bereitstellen können. Die Region, die Sie auswählen, kann sich auf die Leistung Ihrer Anwendung auswirken. Beispielsweise ist es besser, eine Region auszuwählen, die näher an den meisten Ihrer Kunden liegt, um die Wartezeit bei Netzwerkanforderungen zu reduzieren. Möglicherweise möchten Sie Ihre Region auch so auswählen, dass sie die rechtlichen Anforderungen für den Vertrieb Ihrer App in bestimmten Ländern/Regionen erfüllen. Es wird immer empfohlen, Anwendungsdaten im gleichen Rechenzentrum oder in einem Rechenzentrum zu speichern, das so nah wie möglich an dem Rechenzentrum liegt, das Ihre Anwendung hostet.
 
 ### <a name="multi-region-apps"></a>Apps in mehreren Regionen
 
@@ -234,12 +234,12 @@ Azure basiert auf einem Satz von REST-APIs, die die Benutzeroberfläche des Azur
 Zusätzlich zu REST-APIs können Sie mithilfe von vielen Azure-Diensten auch programmgesteuert Ressourcen von Ihren Anwendungen verwalten, indem Sie plattformspezifische Azure SDKs verwenden, einschließlich SDKs für die folgenden Entwicklungsplattformen:
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/javascript/azure)
+-   [Node.js](https://docs.microsoft.com/azure/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
--   [Python](https://docs.microsoft.com/python/azure)
+-   [Python](/azure/python/)
 -   [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md)
--   [Go](https://docs.microsoft.com/go/azure)
+-   [Go](https://docs.microsoft.com/azure/go)
 
 Dienste wie [Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md) und [Azure Media Services](../../media-services/previous/media-services-dotnet-how-to-use.md) stellen clientseitige SDKs bereit, um Ihnen den Zugriff auf Dienste von Web- und Mobile Client-Apps aus zu ermöglichen.
 
@@ -281,7 +281,7 @@ Der Azure-Ressourcen-Explorer eignet sich hervorragend zum Visualisieren der Res
 
 Wenn Sie den Zugriff auf Azure-Ressourcen gewähren, ist es empfehlenswert, Benutzern so wenig Berechtigungen wie möglich zum Ausführen einer bestimmten Aufgabe bereitzustellen.
 
-- **Rollenbasierte Zugriffssteuerung (RBAC)**: In Azure können Sie Benutzerkonten (Prinzipalen) in einem angegebenen Bereich Zugriff gewähren: Abonnement, Ressourcengruppe oder einzelne Ressourcen. Mit RBAC können Sie eine Reihe von Ressourcen in einer Ressourcengruppe bereitstellen und einem bestimmten Benutzer oder einer bestimmten Gruppe Berechtigungen erteilen. Sie können auch den Zugriff auf nur die Ressourcen beschränken, die zur Zielressourcengruppe gehören. Sie können auch den Zugriff auf eine einzelne Ressource, z.B. einen virtuellen Computer oder ein virtuelles Netzwerk, gewähren. Um Zugriff zu gewähren, weisen Sie dem Benutzer, der Gruppe oder dem Dienstprinzipal eine Rolle zu. Es existieren viele vordefinierte Rollen, und Sie können auch Ihre eigenen benutzerdefinierten Rollen definieren. Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)?](../../role-based-access-control/overview.md)
+- **Rollenbasierte Zugriffssteuerung (RBAC)** : In Azure können Sie Benutzerkonten (Prinzipalen) in einem angegebenen Bereich Zugriff gewähren: Abonnement, Ressourcengruppe oder einzelne Ressourcen. Mit RBAC können Sie eine Reihe von Ressourcen in einer Ressourcengruppe bereitstellen und einem bestimmten Benutzer oder einer bestimmten Gruppe Berechtigungen erteilen. Sie können auch den Zugriff auf nur die Ressourcen beschränken, die zur Zielressourcengruppe gehören. Sie können auch den Zugriff auf eine einzelne Ressource, z.B. einen virtuellen Computer oder ein virtuelles Netzwerk, gewähren. Um Zugriff zu gewähren, weisen Sie dem Benutzer, der Gruppe oder dem Dienstprinzipal eine Rolle zu. Es existieren viele vordefinierte Rollen, und Sie können auch Ihre eigenen benutzerdefinierten Rollen definieren. Weitere Informationen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)?](../../role-based-access-control/overview.md)
 
   > **Einsatzgebiete**: Wenn Sie eine differenzierte Zugriffsverwaltung für Benutzer und Gruppen benötigen, oder wenn Sie einen Benutzer zum Besitzer eines Abonnements machen müssen.
   > 
@@ -291,7 +291,7 @@ Wenn Sie den Zugriff auf Azure-Ressourcen gewähren, ist es empfehlenswert, Benu
 
   > **Einsatzgebiete**: Wenn Sie programmgesteuert Azure-Ressourcen verwalten oder den Zugriff für Anwendungen gewähren. Weitere Informationen finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-#### <a name="tags"></a>Tags
+#### <a name="tags"></a>`Tags`
 
 Mit Azure Resource Manager können Sie einzelnen Ressourcen benutzerdefinierte Tags zuweisen. Tags, die Schlüssel-Wert-Paare sind, können hilfreich sein, wenn Sie Ressourcen für die Abrechnung oder die Überwachung organisieren müssen. Tags bieten Ihnen eine Möglichkeit, Ressourcen über mehrere Ressourcengruppen hinweg nachzuverfolgen. Sie können Tags im Portal, in der Azure Resource Manager-Vorlage oder programmgesteuert zuweisen, indem Sie die REST-API, die Azure-Befehlszeilenschnittstelle oder PowerShell verwenden. Sie können jeder Ressource mehrere Tags zuweisen. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](../../resource-group-using-tags.md).
 

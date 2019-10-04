@@ -10,21 +10,21 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 07/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: 71e70962a8c55d397b6261571cfef4a126d3e8b4
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3238abcbcbc4d776e3736b13d5b32149c642649c
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307818"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516949"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportieren von Telemetriedaten aus Application Insights
 Möchten Sie Ihre Telemetriedaten länger aufbewahren als von der standardmäßigen Beibehaltungsdauer vorgesehen? Oder möchten Sie sie in einer speziellen Art und Weise verarbeiten? Der fortlaufende Export eignet sich hierfür ideal. Die Ereignisse, die Sie im Application Insights-Portal sehen, können im JSON-Format in Microsoft Azure-Speicher exportiert werden. Sie können Ihre Daten anschließend herunterladen und den Code schreiben, den Sie zu ihrer Verarbeitung benötigen.  
 
 Bevor Sie den fortlaufenden Export einrichten, sollten Sie folgende Alternativen zu dieser Vorgehensweise prüfen:
 
-* Über die Schaltfläche „Exportieren“ ganz oben auf dem Blatt „Metriken“ oder „Suche“ können Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen.
+* Mithilfe der Schaltfläche „Exportieren“ oben auf den Registerkarten „Metriken“ oder „Suche“ können Sie Tabellen und Diagramme in ein Excel-Arbeitsblatt übertragen.
 
 * [Analytics](../../azure-monitor/app/analytics.md) bietet eine leistungsstarke Abfragesprache für Telemetriedaten. Das Exportieren von Ergebnissen ist auch möglich.
 * Wenn Sie [Ihre Daten in Power BI untersuchen](../../azure-monitor/app/export-power-bi.md )möchten, benötigen Sie dazu keinen fortlaufenden Export.
@@ -44,20 +44,19 @@ Der fortlaufende Export **unterstützt nicht** die folgenden Azure-Speicherfeatu
 * [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
 
 ## <a name="setup"></a> Erstellen eines fortlaufenden Exports
-1. Öffnen Sie in der Application Insights-Ressource für Ihre App die Option „Fortlaufender Export“, und klicken Sie auf **Hinzufügen**:
+
+1. Öffnen Sie in der Application Insights-Ressource für Ihre App im Konfigurationsbereich rechts die Option „Fortlaufender Export“, und wählen Sie **Hinzufügen** aus:
 
 2. Wählen Sie die Telemetriedatentypen aus, die Sie exportieren möchten.
 
-3. Erstellen oder wählen Sie ein [Azure-Speicherkonto](../../storage/common/storage-introduction.md), in dem Sie die Daten speichern möchten. Weitere Informationen zu Preisoptionen für Speicher finden Sie auf der [Seite mit offiziellen Preisen](https://azure.microsoft.com/pricing/details/storage/).
+3. Erstellen oder wählen Sie ein [Azure-Speicherkonto](../../storage/common/storage-introduction.md), in dem Sie die Daten speichern möchten. Weitere Informationen zu Preisoptionen für Speicher finden Sie auf der [Seite mit den offiziellen Preisen](https://azure.microsoft.com/pricing/details/storage/).
+
+     Klicken Sie auf „Hinzufügen“, „Exportziel“, „Speicherkonto“, und erstellen Sie dann einen neuen Speicher, oder wählen Sie einen vorhandenen Speicher aus.
 
     > [!Warning]
     > Der Speicherort wird standardmäßig auf die gleiche geografische Region festgelegt, in der sich auch Ihre Application Insights-Ressource befindet. Wenn Sie die Daten in einer anderen Region speichern, fallen möglicherweise Übertragungsgebühren an.
 
-    ![Klicken Sie auf "Hinzufügen", "Exportziel", "Speicherkonto", und erstellen Sie dann einen neuen Speicher, oder wählen Sie einen vorhandenen Speicher aus.](./media/export-telemetry/02-add.png)
-
-4. Erstellen oder wählen Sie einen Container im Speicher:
-
-    ![Klicken Sie auf "Ereignistypen auswählen".](./media/export-telemetry/create-container.png)
+4. Erstellen Sie einen Container im Speicher, oder wählen Sie einen aus.
 
 Nachdem Sie Ihren Exportvorgang erstellt haben, geht es gleich los. Sie erhalten nur Daten, die nach dem Erstellen des Exportvorgangs eingehen.
 
@@ -65,9 +64,7 @@ Es kann etwa eine Stunde dauern, bis Daten im Speicher angezeigt werden.
 
 ### <a name="to-edit-continuous-export"></a>Bearbeiten des fortlaufenden Exports
 
-Wenn Sie die Ereignistypen später ändern möchten, bearbeiten Sie einfach den Export:
-
-![Klicken Sie auf "Ereignistypen auswählen".](./media/export-telemetry/05-edit.png)
+Klicken Sie auf „Fortlaufender Export“, und wählen Sie das zu bearbeitende Speicherkonto aus.
 
 ### <a name="to-stop-continuous-export"></a>Beenden des fortlaufenden Exports
 
@@ -76,10 +73,10 @@ Um den Export zu beenden, klicken Sie auf „Deaktivieren“. Wenn Sie erneut au
 Um den Export dauerhaft zu beenden, löschen Sie ihn. Dabei werden Ihre Daten nicht aus dem Speicher gelöscht.
 
 ### <a name="cant-add-or-change-an-export"></a>Wer darf einen Export ergänzen oder ändern?
-* Zum Ergänzen oder Ändern von Exporten benötigen Sie das Zugriffsrecht "Besitzer", "Mitwirkender" oder "Application Insights-Mitwirkender". [Weitere Informationen zu Rollen][roles].
+* Zum Ergänzen oder Ändern von Exporten benötigen Sie das Zugriffsrecht „Besitzer“, „Mitwirkender“ oder „Application Insights-Mitwirkender“. [Weitere Informationen zu Rollen][roles].
 
 ## <a name="analyze"></a> Welche Ereignisse werden abgerufen?
-Bei den exportierten Daten handelt es sich um die Telemetrierohdaten, die wir von Ihrer Anwendung empfangen. Wir fügen allerdings Standortdaten hinzu, die wir anhand der Client-IP-Adresse berechnen.
+Bei den exportierten Daten handelt es sich um die Telemetrierohdaten, die Sie von Ihrer Anwendung empfangen. Wir fügen allerdings Standortdaten hinzu, die wir anhand der Client-IP-Adresse berechnen.
 
 Daten, die während der [Stichprobenerstellung](../../azure-monitor/app/sampling.md) verworfen wurden, werden nicht in die exportierten Daten aufgenommen.
 
@@ -93,7 +90,7 @@ Die Daten umfassen außerdem die Ergebnisse von [Verfügbarkeitswebtests](../../
 >
 
 ## <a name="get"></a> Untersuchen der Daten
-Sie können den Speicher direkt im Portal überprüfen. Klicken Sie auf **Durchsuchen**, wählen Sie das Speicherkonto aus, und öffnen Sie dann **Container**.
+Sie können den Speicher direkt im Portal überprüfen. Klicken Sie im Menü links oben auf „Startseite“, und wählen Sie im oberen Bereich unter „Azure-Dienste“ **Speicherkonten** aus. Wählen Sie den Namen des Speicherkontos, anschließend auf der Übersichtsseite unter den Diensten **Blobs** und schließlich den Containernamen aus.
 
 Um Azure Storage in Visual Studio zu überprüfen, öffnen Sie **Anzeigen** und dann **Cloud-Explorer**. (Wenn dieser Menübefehl nicht verfügbar ist, müssen Sie das Azure SDK installieren: Öffnen Sie das Dialogfeld **Neues Projekt**, erweitern Sie „Visual C#/Cloud“, und wählen Sie dann **Microsoft Azure SDK für .NET abrufen** aus.)
 
@@ -128,7 +125,7 @@ Zeiten werden mithilfe von Teilstrichen dargestellt: 10.000 Teilstriche = 1 ms. 
 [Detaillierte Datenmodellreferenz für die Eigenschaftstypen und -werte.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Verarbeiten der Daten
-Im kleinen Rahmen können Sie Code zum Aufteilen Ihrer Daten schreiben, sie in eine Kalkulationstabelle einlesen usw. Beispiel: 
+Im kleinen Rahmen können Sie Code zum Aufteilen Ihrer Daten schreiben, sie in eine Kalkulationstabelle einlesen usw. Beispiel:
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -155,9 +152,7 @@ Sie sind für die Verwaltung Ihrer Speicherkapazität und das Löschen der alten
 ## <a name="if-you-regenerate-your-storage-key"></a>Wenn Sie Ihren Speicherschlüssel erneut generieren...
 Wenn Sie den Schlüssel zu Ihrem Speicher ändern, funktioniert der fortlaufende Export nicht mehr. In Ihrem Azure-Konto wird eine Benachrichtigung angezeigt.
 
-Öffnen Sie das Blatt "Fortlaufender Export", und bearbeiten Sie den Export. Bearbeiten Sie das Exportziel, aber lassen Sie den gleichen Speicher ausgewählt. Klicken Sie auf "OK", um zu bestätigen.
-
-![Bearbeiten Sie den fortlaufenden Exports, und öffnen und schließen Sie das Exportziel.](./media/export-telemetry/07-resetstore.png)
+Öffnen Sie die Registerkarte „Fortlaufender Export“, und bearbeiten Sie den Export. Bearbeiten Sie das Exportziel, aber lassen Sie den gleichen Speicher ausgewählt. Klicken Sie auf "OK", um zu bestätigen.
 
 Der fortlaufende Export wird neu gestartet.
 
@@ -171,7 +166,7 @@ Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/s
 ## <a name="q--a"></a>Fragen und Antworten
 * *Ich möchte aber nur ein Diagramm einmalig herunterladen.*  
 
-    Das ist kein Problem. Klicken Sie oben im Blatt auf **Daten exportieren**.
+    Das ist kein Problem. Klicken Sie oben auf der Registerkarte auf **Daten exportieren**.
 * *Ich habe einen Export eingerichtet, aber es sind keine Daten im meinem Speicher.*
 
     Hat Application Insights Telemetriedaten aus Ihrer App empfangen, seit Sie den Export eingerichtet haben? Sie erhalten nur neue Daten.
@@ -190,7 +185,7 @@ Bei größeren Dimensionen sollten Sie [HDInsight](https://azure.microsoft.com/s
   * Darüber hinaus werden weitere Partitionseinheiten für Anwendungen mit hohem Datenverkehr zugeordnet. In diesem Fall erstellt jede Einheit jede Minute ein Blob.
 * *Ich habe den Schlüssel zu meinem Speicher neu generiert oder den Namen des Containers geändert, und jetzt funktioniert der Export nicht mehr.*
 
-    Bearbeiten Sie den Export, und öffnen Sie das Blatt "Exportziel". Lassen Sie denselben Speicher wie zuvor ausgewählt, und klicken Sie auf "OK", um zu bestätigen. Der Export wird neu gestartet. Wenn die Änderung in den vergangenen Tagen erfolgt ist, gehen keine Daten verloren.
+    Bearbeiten Sie den Export, und öffnen Sie die Registerkarte „Exportziel“. Lassen Sie denselben Speicher wie zuvor ausgewählt, und klicken Sie auf "OK", um zu bestätigen. Der Export wird neu gestartet. Wenn die Änderung in den vergangenen Tagen erfolgt ist, gehen keine Daten verloren.
 * *Kann ich den Export anhalten?*
 
     Ja. Klicken Sie auf „Deaktivieren“.

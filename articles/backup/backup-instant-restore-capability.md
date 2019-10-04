@@ -1,19 +1,19 @@
 ---
 title: Azure-Funktion zur sofortigen Wiederherstellung
 description: Azure-Funktion zur sofortigen Wiederherstellung und häufig gestellte Fragen für VM-Sicherungsstapel, Resource Manager-Bereitstellungsmodell
-services: backup
-author: sogup
-manager: vijayts
+ms.reviewer: sogup
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.author: sogup
-ms.openlocfilehash: 3aceffa719ef8938aa049f126231f8628822566b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/23/2019
+ms.author: dacurwin
+ms.openlocfilehash: aad3ca34ab9db5ec910e70e70ba5a31afa94e417
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794776"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611984"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
@@ -24,9 +24,10 @@ Das neue Modell für die sofortige Wiederherstellung bietet die folgenden Featur
 
 * Die als Teil eines Sicherungsauftrags erstellte Momentaufnahme kann genutzt werden, um für die Wiederherstellung verfügbar zu sein, ohne das Ende der Datenübertragung an den Tresor abzuwarten. Die Wartezeit, bis Momentaufnahmen vor dem Auslösen einer Wiederherstellung in den Tresor kopiert werden, wird reduziert.
 * Die Sicherungs- und Wiederherstellungszeiten werden reduziert, indem Momentaufnahmen standardmäßig zwei Tage lang lokal gespeichert werden. Dieser Standardwert für die Aufbewahrung von Momentaufnahmen kann auf einen beliebigen Wert zwischen 1 und 5 Tagen konfiguriert werden.
-* Unterstützt Datenträgergrößen bis zu 4 TB. Azure Backup unterstützt keine Stripesetdatenträger. Ein Ändern der Datenträgergröße wird von Azure Backup nicht empfohlen.
+* Unterstützt Datenträgergrößen bis zu 4 TB. Ein Ändern der Datenträgergröße wird von Azure Backup nicht empfohlen. Wenn Sie sich für eine eingeschränkte Public Preview der Azure Backup-Unterstützung für große Datenträger mit einer Größe von mehr als 4 TB und bis zu 30 TB registrieren möchten, finden Sie weitere Informationen unter [Sicherung des virtuellen Computers mit Datenträgergrößen von bis zu 30 TB](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
 * Unterstützt SSD Standard-Datenträger sowie HDD Standard-Datenträger und SSD Premium-Datenträger.
-*   Die Möglichkeit zur Verwendung der ursprünglichen Speicherkonten (pro Datenträger) eines nicht verwalteten virtuellen Computers bei der Wiederherstellung. Diese Funktion ist auch dann vorhanden, wenn die VM Datenträger enthält, die an mehrere Speicherkonten verteilt werden. Sie beschleunigt Wiederherstellungsvorgänge für verschiedene VM-Konfigurationen.
+* Die Möglichkeit zur Verwendung der ursprünglichen Speicherkonten (pro Datenträger) eines nicht verwalteten virtuellen Computers bei der Wiederherstellung. Diese Funktion ist auch dann vorhanden, wenn die VM Datenträger enthält, die an mehrere Speicherkonten verteilt werden. Sie beschleunigt Wiederherstellungsvorgänge für verschiedene VM-Konfigurationen.
+* Wenn Sie virtuelle Computer, die Storage Premium verwenden, mit der sofortigen Wiederherstellung sichern, empfiehlt es sich, *50 %* freien Speicherplatz des gesamten zugeordneten Speicherplatzes zuzuweisen, der **nur** für die erste Sicherung erforderlich ist. Der freie Speicherplatz von 50 % ist keine Voraussetzung für Sicherungen, die nach Abschluss der ersten Sicherung ausgeführt werden.
 
 
 ## <a name="whats-new-in-this-feature"></a>Was ist neu in diesem Feature?
@@ -48,7 +49,7 @@ Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt. Mit diesem Fea
 * Inkrementelle Momentaufnahmen werden als Seitenblobs gespeichert. Für alle Benutzer, die nicht verwaltete Datenträger verwenden, werden die Momentaufnahmen berechnet, die in ihrem lokalen Speicherkonto gespeichert sind. Da die Wiederherstellungspunktsammlungen für Sicherungen von verwalteten virtuellen Computern Blobmomentaufnahmen auf der zugrunde liegenden Speicherebene verwenden, werden für verwaltete Datenträger Kosten angezeigt, die Preisen für Blobmomentaufnahmen entsprechen, und inkrementell sind.
 * Bei Premium-Speicherkonten werden die Momentaufnahmen, die für die Punkte zur sofortigen Wiederherstellung erstellt werden, zu den 10 TB des zugeordneten Speicherplatzes gezählt.
 * Sie haben die Möglichkeit, die Aufbewahrung von Momentaufnahmen entsprechend den Wiederherstellungsanforderungen zu konfigurieren. Je nach Anforderungen können Sie die Aufbewahrung von Momentaufnahmen auf dem Blatt „Sicherungsrichtlinie“ auf ein Minimum von einem Tag festlegen, wie es weiter unten beschrieben ist. Dadurch können Sie Kosten für die Aufbewahrung von Momentaufnahmen sparen, wenn Wiederherstellungen nicht häufig ausgeführt werden.
-* Dies ist ein unidirektionales Upgrade: Das Upgrade für sofortige Wiederherstellung kann nicht rückgängig gemacht werden.
+* Es handelt sich dabei um ein unidirektionales Upgrade: Das Upgrade für sofortige Wiederherstellung kann nicht rückgängig gemacht werden.
 
 >[!NOTE]
 >Mit diesem Upgrade für die sofortige Wiederherstellung wird die Aufbewahrungsdauer für Momentaufnahmen für alle Kunden (**sowohl neue als auch bestehende**) auf einen Standardwert von zwei Tagen festgelegt. Sie können die Dauer aber auch nach Bedarf auf einen beliebigen Wert zwischen ein und fünf Tagen festlegen.
@@ -95,7 +96,7 @@ Jeden Tag wird eine neue Momentaufnahme erstellt, sodass dann fünf einzelne Mom
 Momentaufnahmen, die im Rahmen der Funktion für die sofortige Wiederherstellung erstellt werden, sind inkrementelle Momentaufnahmen.
 
 ### <a name="how-can-i-calculate-the-approximate-cost-increase-due-to-instant-restore-feature"></a>Wie kann ich den ungefähren Kostenanstieg durch die Funktion zur sofortigen Wiederherstellung berechnen?
-Dies hängt von der Datenänderungsrate des virtuellen Computers ab. Bei einem stabilen Zustand können Sie von folgender Rechnung ausgehen: Kostenanstieg = Aufbewahrungszeitraum der Momentaufnahme * tägliche Änderungsrate pro virtuellem Computer * Speicherkosten pro GB.
+Dies hängt von der Datenänderungsrate des virtuellen Computers ab. Bei einem stabilen Zustand können Sie von folgender Rechnung ausgehen: Kostenanstieg = Aufbewahrungszeitraum der Momentaufnahme tägliche Änderungsrate pro virtuellem Computer Speicherkosten pro GB.
 
 ### <a name="if-the-recovery-type-for-a-restore-point-is-snapshot-and-vault-and-i-perform-a-restore-operation-which-recovery-type-will-be-used"></a>Wenn der Wiederherstellungstyp für einen Wiederherstellungspunkt „Momentaufnahme und Tresor“ ist, und ich einen Wiederherstellungsvorgang durchführe, welcher Wiederherstellungstyp wird dann verwendet?
 Wenn der Wiederherstellungstyp „Momentaufnahme und Tresor“ ist, erfolgt die Wiederherstellung automatisch aus der lokalen Momentaufnahme. Dieser Vorgang ist verglichen mit einer Wiederherstellung aus dem Tresor viel schneller.
@@ -104,4 +105,4 @@ Wenn der Wiederherstellungstyp „Momentaufnahme und Tresor“ ist, erfolgt die 
 Das neue Modell lässt das Löschen des Wiederherstellungspunkts (Tarif2) nur zu, wenn die Momentaufnahme (Tarif1) gelöscht wird. Es empfiehlt sich, den Aufbewahrungszeitraum für den Wiederherstellungspunkt (Tarif2) auf einen höheren Wert als den Aufbewahrungszeitraum der Momentaufnahme festzulegen.
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Warum ist meine Momentaufnahme auch nach Ablauf des in der Sicherungsrichtlinie festgelegten Aufbewahrungszeitraum noch vorhanden?
-Wenn der Wiederherstellungspunkt eine Momentaufnahme aufweist und diese der letzte verfügbare Wiederherstellungspunkt ist, wird sie bis zur nächsten erfolgreichen Sicherung aufbewahrt. Dies entspricht der aktuellen konzipierten GC-Richtlinie. Diese gibt vor, dass immer mindestens ein aktueller Wiederherstellungspunkt vorhanden ist, für den Fall, dass alle weiteren Sicherungen aufgrund eines Problems auf dem virtuellen Computer fehlschlagen. In normalen Szenarien werden Wiederherstellungspunkte innerhalb von 24 Stunden nach ihrem Ablauf bereinigt.
+Wenn der Wiederherstellungspunkt eine Momentaufnahme aufweist und diese der letzte verfügbare Wiederherstellungspunkt ist, wird sie bis zur nächsten erfolgreichen Sicherung aufbewahrt. Dies entspricht der aktuellen entworfenen Richtlinie für die automatische Speicherbereinigung (Garbage Collection, GC). Diese gibt vor, dass immer mindestens ein aktueller Wiederherstellungspunkt vorhanden ist, für den Fall, dass alle weiteren Sicherungen aufgrund eines Problems auf dem virtuellen Computer fehlschlagen. In normalen Szenarien werden Wiederherstellungspunkte innerhalb von 24 Stunden nach ihrem Ablauf bereinigt.

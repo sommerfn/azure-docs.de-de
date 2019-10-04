@@ -3,31 +3,31 @@ title: Sprachunterstützung – API für die benutzerdefinierte Bing-Suche
 titleSuffix: Azure Cognitive Services
 description: Eine Liste der unterstützten Sprachen und Regionen für die API für die benutzerdefinierte Bing-Suche.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: v-gedod
-ms.openlocfilehash: 942e61b0ee69402d516982c66a852d5e26304809
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.author: aahi
+ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859436"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66388562"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Sprach- und Regionsunterstützung für die API für die benutzerdefinierte Bing-Suche
 
 Die API für die benutzerdefinierte Bing-Suche unterstützt mehr als drei Dutzend Länder/Regionen, viele davon mit mehreren Sprachen.
 
-Obwohl es optional ist, sollte die Anforderung den Abfrageparameter [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#mkt) angeben, wodurch der Markt identifiziert wird, von dem die Ergebnisse stammen sollen. Unter [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters) finden Sie eine Liste optionaler Abfrageparameter.
+Obwohl es optional ist, sollte die Anforderung den Abfrageparameter [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) angeben, wodurch der Markt identifiziert wird, von dem die Ergebnisse stammen sollen. Unter [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) finden Sie eine Liste optionaler Abfrageparameter.
 
 Sie können mit dem `cc`-Abfrageparameter ein Land/eine Region angeben. Wenn Sie ein Land/eine Region angeben, müssen Sie mithilfe des Headers `Accept-Language` auch mindestens einen Sprachcode angeben. Die unterstützten Sprachen sind je nach Land/Region unterschiedlich. Sie werden für jedes Land/jede Region in der Tabelle **Märkte** angegeben.
 
-Der `Accept-Language`-Header und der `setLang`-Abfrageparameter schließen sich gegenseitig aus. Geben Sie daher nicht beide an. Weitere Informationen finden Sie unter [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#acceptlanguage).
+Der `Accept-Language`-Header und der `setLang`-Abfrageparameter schließen sich gegenseitig aus. Geben Sie daher nicht beide an. Weitere Informationen finden Sie unter [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
 
-## <a name="countries"></a>Länder
+## <a name="countriesregions"></a>Länder/Regionen
 
 |Land/Region|Code|
 |-------|----|
@@ -42,7 +42,7 @@ Der `Accept-Language`-Header und der `setLang`-Abfrageparameter schließen sich 
 |Finnland|FI|
 |Frankreich|BV|
 |Deutschland|DE|
-|Hongkong|HK|
+|Hongkong (SAR)|HK|
 |Indien|IN|
 |Indonesien|ID|
 |Italien|IT|
@@ -86,7 +86,7 @@ Der `Accept-Language`-Header und der `setLang`-Abfrageparameter schließen sich 
 |Finnland|Finnisch|fi-FI|
 |Frankreich|Französisch|fr-FR|
 |Deutschland|Deutsch|de-DE|
-|Hongkong|Chinesisch (traditionell)|zh-HK|
+|Hongkong (SAR)|Chinesisch (traditionell)|zh-HK|
 |Indien|Englisch|en-IN|
 |Indonesien|Englisch|en-ID|
 |Italien|Italienisch|it-IT|

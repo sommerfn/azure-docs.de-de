@@ -4,23 +4,22 @@ description: Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azur
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: mssedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 62356ee35631373b5a5d38ed356bbb2fb489807b
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: c49200dba33d4a3b9ad1f582841adb04c2dd1c41
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59577794"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099564"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -28,21 +27,21 @@ ms.locfileid: "59577794"
 [deployment-guide]:deployment-guide.md
 [dbms-guide]:dbms-guide.md
 [sap-hana-ha]:sap-hana-high-availability.md
-[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-not-requiring-a-reboot
-[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#maintenance-not-requiring-a-reboot
+[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
+[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot
 [sles-nfs-guide]:high-availability-guide-suse-nfs.md
 [sles-guide]:high-availability-guide-suse.md
 
 Es gibt zwei Möglichkeiten zum Einrichten eines Pacemaker-Clusters in Azure. Sie können entweder einen Umgrenzungs-Agent verwenden, über den der Neustart eines fehlerhaften Knotens über die Azure-APIs erfolgt, oder Sie können ein SBD-Gerät verwenden.
 
-Für das SBD-Gerät ist mindestens ein zusätzlicher virtueller Computer erforderlich, der als iSCSI-Zielserver dient und ein SBD-Gerät bereitstellt. Diese iSCSI-Zielserver können jedoch für andere Pacemaker-Cluster freigegeben werden. Die Verwendung eines SBD-Geräts bietet den Vorteil einer kürzeren Failoverzeit. Bei lokaler Verwendung von SBD-Geräten sind zudem keine Änderungen am Betrieb des Pacemaker-Clusters erforderlich. Sie können für einen Pacemaker-Cluster bis zu drei SBD-Geräte verwenden, um ein SBD-Gerät verfügbar zu machen (z.B. während des Betriebssystempatchings des iSCSI-Zielservers). Wenn Sie pro Pacemaker mehrere SBD-Geräte verwenden möchten, müssen Sie sicherstellen, dass mehrere iSCSI-Zielserver bereitgestellt werden und ein SBD über die einzelnen iSCSI-Zielserver verbunden wird. Es wird empfohlen, entweder ein SBD-Gerät oder drei SBD-Geräte zu verwenden. Wenn Sie nur zwei SBD-Geräte konfigurieren und eines davon nicht verfügbar ist, kann Pacemaker einen Clusterknoten nicht automatisch umgrenzen. Wenn Sie in der Lage sein möchten, einen Clusterknoten bei einem inaktiven iSCSI-Zielserver zu umgrenzen, müssen Sie drei SBD-Geräte und folglich drei iSCSI-Zielserver verwenden.
+Für das SBD-Gerät ist mindestens ein zusätzlicher virtueller Computer erforderlich, der als iSCSI-Zielserver dient und ein SBD-Gerät bereitstellt. Diese iSCSI-Zielserver können jedoch für andere Pacemaker-Cluster freigegeben werden. Die Verwendung eines SBD-Geräts hat den Vorteil einer kürzeren Failoverzeit. Bei lokaler Verwendung von SBD-Geräten sind zudem keine Änderungen am Betrieb des Pacemaker-Clusters erforderlich. Sie können für einen Pacemaker-Cluster bis zu drei SBD-Geräte verwenden, um ein SBD-Gerät verfügbar zu machen (z.B. während des Betriebssystempatchings des iSCSI-Zielservers). Wenn Sie pro Pacemaker mehrere SBD-Geräte verwenden möchten, müssen Sie sicherstellen, dass mehrere iSCSI-Zielserver bereitgestellt werden und ein SBD über die einzelnen iSCSI-Zielserver verbunden wird. Es wird empfohlen, entweder ein SBD-Gerät oder drei SBD-Geräte zu verwenden. Wenn Sie nur zwei SBD-Geräte konfigurieren und eines davon nicht verfügbar ist, kann Pacemaker einen Clusterknoten nicht automatisch umgrenzen. Wenn Sie in der Lage sein möchten, einen Clusterknoten bei einem inaktiven iSCSI-Zielserver zu umgrenzen, müssen Sie drei SBD-Geräte und folglich drei iSCSI-Zielserver verwenden.
 
-Wenn Sie in keinen zusätzlichen virtuellen Computer investieren möchten, können Sie auch den Azure Fence Agent verwenden. Der Nachteil dabei ist, dass ein Failover zwischen 10 und 15 Minuten dauern kann, wenn beim Beenden einer Ressource Fehler auftreten oder keine Kommunikation mehr zwischen den Clusterknoten möglich ist.
+Wenn Sie in keinen zusätzlichen virtuellen Computer investieren möchten, können Sie auch den Azure Fence-Agent verwenden. Der Nachteil dabei ist, dass ein Failover zwischen 10 und 15 Minuten dauern kann, wenn beim Beenden einer Ressource Fehler auftreten oder keine Kommunikation mehr zwischen den Clusterknoten möglich ist.
 
 ![Übersicht über Pacemaker unter SLES](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> Bei der Planung und Implementierung von Linux Pacemaker-Clusterknoten und SBD-Geräten ist es für die Gesamtzuverlässigkeit der gesamten Clusterkonfiguration entscheidend, dass das Routing zwischen den beteiligten VMs und den VMs, die die SBD-Geräte hosten, nicht durch andere Geräte wie [NVAs](https://azure.microsoft.com/solutions/network-appliances/) verläuft. Andernfalls können Probleme und Wartungsereignisse mit der NVA negative Auswirkungen auf die Stabilität und Zuverlässigkeit der gesamten Clusterkonfiguration haben. Um derartige Probleme zu vermeiden, definieren Sie keine Routingregeln von NVAs oder [benutzerdefinierte Routingregeln](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview), die den Datenverkehr zwischen Clusterknoten und SBD-Geräten durch NVAs und ähnliche Geräte leiten, wenn Sie Linux Pacemaker-Clusterknoten und SBD-Geräte planen und einsetzen. 
+> Bei der Planung und Implementierung von Linux Pacemaker-Clusterknoten und SBD-Geräten ist es für die Gesamtzuverlässigkeit der gesamten Clusterkonfiguration entscheidend, dass das Routing zwischen den beteiligten VMs und den VMs, die die SBD-Geräte hosten, nicht durch andere Geräte wie [NVAs](https://azure.microsoft.com/solutions/network-appliances/) verläuft. Andernfalls können Probleme und Wartungsereignisse mit der NVA negative Auswirkungen auf die Stabilität und Zuverlässigkeit der gesamten Clusterkonfiguration haben. Um derartige Probleme zu vermeiden, definieren Sie keine Routingregeln von NVAs und keine [benutzerdefinierten Routingregeln](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview), die den Datenverkehr zwischen Clusterknoten und SBD-Geräten durch NVAs und ähnliche Geräte leiten, wenn Sie Linux Pacemaker-Clusterknoten und SBD-Geräte planen und bereitstellen. 
 >
 
 ## <a name="sbd-fencing"></a>SBD-Umgrenzung
@@ -398,6 +397,28 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    <pre><code>sudo zypper install fence-agents
    </code></pre>
 
+   >[!IMPORTANT]
+   > Bei Verwendung von SuSE Linux Enterprise Server für SAP 15 müssen Sie ein zusätzliches Module aktivieren und eine zusätzliche Komponente installieren, um den Azure Fence-Agent verwenden zu können. Weitere Informationen zu SUSE-Modulen und -Erweiterungen finden Sie unter [Modules and Extensions Quick Start](https://www.suse.com/documentation/sles-15/singlehtml/art_modules/art_modules.html) (Schnellstartanleitung zu Modulen und Erweiterungen). Gehen Sie wie im Anschluss beschrieben vor, um das Azure Python SDK zu installieren. 
+
+   Die folgende Installationsanleitung für das Azure Python SDK gilt nur für SuSE Enterprise Server für SAP **15**.  
+
+    - Vorgehensweise bei Verwendung eines eigenen Abonnements:  
+
+    <pre><code>
+    #Activate module PackageHub/15/x86_64
+    sudo SUSEConnect -p PackageHub/15/x86_64
+    #Install Azure Python SDK
+    sudo zypper in python3-azure-sdk
+    </code></pre>
+
+     - Vorgehensweise bei nutzungsbasierter Zahlung:  
+
+    <pre><code>#Activate module PackageHub/15/x86_64
+    zypper ar https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15/standard/ SLE15-PackageHub
+    #Install Azure Python SDK
+    sudo zypper in python3-azure-sdk
+    </code></pre>
+
 1. **[A]** Richten Sie die Hostnamensauflösung ein.
 
    Sie können entweder einen DNS-Server verwenden oder „/etc/hosts“ auf allen Knoten ändern. In diesem Beispiel wird die Verwendung der /etc/hosts-Datei veranschaulicht.
@@ -448,7 +469,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Fügen Sie den folgenden fett formatierten Inhalt in die Datei ein, falls die Werte dort nicht vorhanden sind oder sich von den angegebenen Werten unterscheiden. Stellen Sie sicher, dass Sie das Token in 30000 ändern, um die Wartung mit Speicherbeibehaltung zu ermöglichen. Weitere Informationen finden Sie in [diesem Artikel für Linux][virtual-machines-linux-maintenance] bzw. [diesem Artikel für Windows][virtual-machines-windows-maintenance]. Entfernen Sie außerdem unbedingt den Parameter „mcastaddr“.
+   Fügen Sie den folgenden fett formatierten Inhalt in die Datei ein, falls die Werte dort nicht vorhanden sind oder sich von den angegebenen Werten unterscheiden. Stellen Sie sicher, dass Sie das Token in 30000 ändern, um die Wartung mit Speicherbeibehaltung zu ermöglichen. Weitere Informationen finden Sie in [diesem Artikel für Linux][virtual-machines-linux-maintenance] bzw. in [diesem Artikel für Windows][virtual-machines-windows-maintenance]. Entfernen Sie außerdem unbedingt den Parameter „mcastaddr“.
 
    <pre><code>[...]
      <b>token:          30000
@@ -495,21 +516,22 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 Das STONITH-Gerät verwendet einen Dienstprinzipal zur Autorisierung bei Microsoft Azure. Führen Sie die folgenden Schritte aus, um einen Dienstprinzipal zu erstellen.
 
-1. Gehe zu[https://portal.azure.com](https://portal.azure.com)
+1. Besuchen Sie <https://portal.azure.com>.
 1. Öffnen Sie das Blatt „Azure Active Directory“.  
    Wechseln Sie zu „Eigenschaften“, und notieren Sie sich die Verzeichnis-ID. Dies ist die **Mandanten-ID**.
 1. Klicken Sie auf „App-Registrierungen“.
-1. Klicken Sie auf "Hinzufügen".
-1. Geben Sie einen Namen ein, wählen Sie den Anwendungstyp „Web-App/API“, geben Sie eine Anmelde-URL ein (z.B. „http\://localhost“), und klicken Sie auf „Erstellen“.
-1. Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein.
-1. Wählen Sie die neue App aus, und klicken Sie auf der Registerkarte „Einstellungen“ auf „Schlüssel“.
-1. Geben Sie eine Beschreibung für einen neuen Schlüssel ein, wählen Sie „Läuft nie ab“, und klicken Sie auf „Speichern“.
+1. Klicken Sie auf „Neue Registrierung“.
+1. Geben Sie einen Namen ein, und wählen Sie „Nur Konten in diesem Organisationsverzeichnis“ aus. 
+2. Wählen Sie den Anwendungstyp „Web-App“ aus, geben Sie eine Anmelde-URL ein (z.B. „http:\//localhost“), und klicken Sie auf „Hinzufügen“.  
+   Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein.
+1. Wählen Sie „Zertifikate und Geheimnisse“ aus, und klicken Sie auf „Neuer geheimer Clientschlüssel“.
+1. Geben Sie eine Beschreibung für einen neuen Schlüssel ein, wählen Sie „Läuft nie ab“ aus, und klicken Sie auf „Hinzufügen“.
 1. Notieren Sie sich den Wert. Er dient als **Kennwort** für den Dienstprinzipal.
-1. Notieren Sie sich die Anwendungs-ID. Sie wird als Benutzername (**Anmelde-ID** in den folgenden Schritten) des Dienstprinzipals verwendet.
+1. Wählen Sie „Übersicht“ aus. Notieren Sie sich die Anwendungs-ID. Sie wird als Benutzername (**Anmelde-ID** in den folgenden Schritten) des Dienstprinzipals verwendet.
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** Erstellen einer benutzerdefinierten Rolle für den Fence Agent.
 
-Der Dienstprinzipal hat standardmäßig keine Zugriffsberechtigungen für Ihre Azure-Ressourcen. Sie müssen dem Dienstprinzipal Berechtigungen zum Starten und Beenden (Freigeben) aller virtuellen Computer des Clusters gewähren. Wenn Sie noch keine benutzerdefinierte Rolle erstellt haben, können Sie sie mit [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) oder der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) erstellen.
+Der Dienstprinzipal hat standardmäßig keine Zugriffsberechtigungen für Ihre Azure-Ressourcen. Sie müssen dem Dienstprinzipal Berechtigungen zum Starten und Beenden (Freigeben) aller virtuellen Computer des Clusters gewähren. Wenn Sie noch keine benutzerdefinierte Rolle erstellt haben, können Sie sie mit [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) oder der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) erstellen.
 
 Verwenden Sie folgenden Inhalt für die Eingabedatei. Sie müssen den Inhalt an Ihre Abonnements anpassen, d.h., Sie müssen „c276fc76-9cd4-44c9-99a7-4fd71546436e“ und „e91d47c4-76f3-4271-a796-21b4ecfe3624“ durch die IDs Ihres Abonnements ersetzen. Wenn Sie nur über ein Abonnement verfügen, entfernen Sie den zweiten Eintrag in AssignableScopes.
 
@@ -535,7 +557,7 @@ Verwenden Sie folgenden Inhalt für die Eingabedatei. Sie müssen den Inhalt an 
 
 ### <a name="a-assign-the-custom-role-to-the-service-principal"></a>**[A]** Weisen Sie dem Dienstprinzipal die benutzerdefinierte Rolle zu.
 
-Weisen Sie dem Dienstprinzipal die benutzerdefinierte Rolle „Linux Fence Agent Role“ zu, die im letzten Abschnitt erstellt wurde. Verwenden Sie die Rolle „Owner“ nicht mehr.
+Weisen Sie dem Dienstprinzipal die benutzerdefinierte Rolle „Linux Fence Agent Role“ zu, die im letzten Abschnitt erstellt wurde. Verwenden Sie nicht mehr die Besitzerrolle.
 
 1. Gehe zu[https://portal.azure.com](https://portal.azure.com)
 1. Öffnen Sie das Blatt „Alle Ressourcen“.
@@ -578,7 +600,7 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker-Konfiguration für geplante Azure-Ereignisse
 
-Azure verfügt über [geplante Ereignisse](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/scheduled-events). Geplante Ereignisse werden per Metadatendienst bereitgestellt und sorgen dafür, dass für die Anwendung ausreichend Zeit für die Vorbereitung auf Ereignisse wie das Herunterfahren von VMs, das erneute Bereitstellen von VMs usw. vorhanden ist. Mit dem Ressourcen-Agent **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** wird eine Überwachung auf geplante Azure-Ereignisse durchgeführt. Wenn Ereignisse erkannt werden, versucht der Agent, alle Ressourcen auf der betroffenen VM zu beenden und auf einen anderen Knoten im Cluster zu verschieben. Hierfür müssen zusätzliche Pacemaker-Ressourcen konfiguriert werden. 
+Azure verfügt über [geplante Ereignisse](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events). Geplante Ereignisse werden per Metadatendienst bereitgestellt und sorgen dafür, dass für die Anwendung ausreichend Zeit für die Vorbereitung auf Ereignisse wie das Herunterfahren von VMs, das erneute Bereitstellen von VMs usw. vorhanden ist. Mit dem Ressourcen-Agent **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** wird eine Überwachung auf geplante Azure-Ereignisse durchgeführt. Wenn Ereignisse erkannt werden, versucht der Agent, alle Ressourcen auf der betroffenen VM zu beenden und auf einen anderen Knoten im Cluster zu verschieben. Hierfür müssen zusätzliche Pacemaker-Ressourcen konfiguriert werden. 
 
 1. **[A]** Installieren Sie den **azure-events**-Agent. 
 
@@ -608,9 +630,9 @@ sudo crm configure property maintenance-mode=false
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP][deployment-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
+* [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]
 * [Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server][sles-nfs-guide]
 * [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server für SAP-Anwendungen][sles-guide]
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA auf Azure-VMs finden Sie unter [Hochverfügbarkeit für SAP HANA auf Azure Virtual Machines (VMs)][sap-hana-ha].

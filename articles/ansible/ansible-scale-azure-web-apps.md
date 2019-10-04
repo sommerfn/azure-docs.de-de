@@ -1,34 +1,52 @@
 ---
-title: Skalieren von Azure App Service-Web-Apps mit Ansible
-description: Hier erfahren Sie, wie Sie Ansible verwenden, um eine Web-App mit Java 8 und der Tomcat-Containerruntime in App Service unter Linux zu erstellen.
-ms.service: azure
+title: 'Tutorial: Skalieren von Apps in Azure App Service mit Ansible | Microsoft-Dokumentation'
+description: Es wird beschrieben, wie Sie eine App in Azure App Service zentral hochskalieren.
 keywords: Ansible, Azure, DevOps, Bash, Playbook, Azure App Service, Web-App, skalieren, Java
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 12/08/2018
-ms.openlocfilehash: 2bafb73afa35c7670ac45f7027545277c70075ef
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 04/30/2019
+ms.openlocfilehash: d63708cd87afa426f2712da6d0fcb11c84590798
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792275"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230944"
 ---
-# <a name="scale-azure-app-service-web-apps-by-using-ansible"></a>Skalieren von Azure App Service-Web-Apps mit Ansible
-[Azure App Service-Web-Apps](https://docs.microsoft.com/azure/app-service/overview) (oder einfach Web-Apps) dient zum Hosten von Webanwendungen, REST-APIs und mobilen Back-Ends. Sie können in Ihrer bevorzugten Sprache entwickeln: .NET, .NET Core, Java, Ruby, Node.js, PHP oder Python.
+# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Tutorial: Skalieren von Apps in Azure App Service mit Ansible
 
-Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. In diesem Artikel erfahren Sie, wie Sie Ihre App mithilfe von Ansible in Azure App Service skalieren.
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
+
+[!INCLUDE [open-source-devops-intro-app-service.md](../../includes/open-source-devops-intro-app-service.md)]
+
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
+
+> [!div class="checklist"]
+>
+> * Abrufen der Angaben eines vorhandenen App Service-Plans
+> * Zentrales Hochskalieren des App Service-Plans auf S2 mit drei Workern
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- **Azure-Abonnement:** Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)][!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
-- **Azure App Service-Web-Apps:** Falls Sie noch nicht über eine Azure App Service-Web-App verfügen, können Sie [Azure-Web-Apps mithilfe von Ansible erstellen](ansible-create-configure-azure-web-apps.md).
 
-## <a name="scale-up-an-app-in-app-service"></a>Zentrales Hochskalieren einer App in App Service
-Zum zentralen Hochskalieren können Sie den Tarif des App Service-Plans ändern, zu dem die App gehört. In diesem Abschnitt finden Sie ein Ansible-Beispielplaybook, das den folgenden Vorgang definiert:
-- Abrufen der Angaben eines vorhandenen App Service-Plans
-- Aktualisieren des App Service-Plans auf S2 mit drei Workern
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
+- **Azure App Service-App**: [Konfigurieren Sie eine App in Azure App Service mit Ansible](ansible-create-configure-azure-web-apps.md), falls Sie nicht über eine Azure App Service-App verfügen.
+
+## <a name="scale-up-an-app"></a>Zentrales Hochskalieren einer App
+
+Es gibt zwei Workflows für die Skalierung: *zentrales Hochskalieren* und *horizontales Hochskalieren*.
+
+**Zentrales Hochskalieren**: Beim zentralen Hochskalieren werden zusätzliche Ressourcen beschafft. Beispiele für diese Ressourcen sind CPU, Arbeitsspeicher, Speicherplatz auf dem Datenträger, virtuelle Computer usw. Sie führen für eine App das zentrale Hochskalieren durch, indem Sie den Tarif des App Service-Plans ändern, zu dem die App gehört. 
+**Horizontales Hochskalieren:** Beim horizontalen Hochskalieren wird die Anzahl von VM-Instanzen erhöht, über die Ihre App ausgeführt wird. Je nach Tarif Ihres App Service-Plans können Sie auf bis zu 20 Instanzen horizontal hochskalieren. Die [automatische Skalierung](/azure/azure-monitor/platform/autoscale-get-started) ermöglicht Ihnen das automatische Skalieren der Instanzanzahl basierend auf vordefinierten Regeln und Zeitplänen.
+
+Mit dem Playbookcode in diesem Abschnitt wird der folgende Vorgang definiert:
+
+* Abrufen der Angaben eines vorhandenen App Service-Plans
+* Aktualisieren des App Service-Plans auf S2 mit drei Workern
+
+Speichern Sie das folgende Playbook als `webapp_scaleup.yml`:
 
 ```yml
 - hosts: localhost
@@ -66,26 +84,26 @@ Zum zentralen Hochskalieren können Sie den Tarif des App Service-Plans ändern,
       var: facts.appserviceplans[0].sku
 ```
 
-Speichern Sie dieses Playbook unter dem Namen *webapp_scaleup.yml*.
+Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
 
-Verwenden Sie den Befehl **ansible-playbook** wie folgt, um das Playbook auszuführen:
 ```bash
 ansible-playbook webapp_scaleup.yml
 ```
 
-Nach Ausführung des Playbooks werden Sie darüber informiert, dass der App Service-Plan erfolgreich auf S2 mit drei Workern aktualisiert wurde. Die Ausgabe sieht in etwa wie folgt aus:
-```Output
-PLAY [localhost] **************************************************************
+Nach dem Ausführen des Playbooks wird in etwa die folgende Ausgabe angezeigt:
 
-TASK [Gathering Facts] ********************************************************
+```Output
+PLAY [localhost] 
+
+TASK [Gathering Facts] 
 ok: [localhost]
 
-TASK [Get facts of existing App service plan] **********************************************************
+TASK [Get facts of existing App service plan] 
  [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
 
 ok: [localhost]
 
-TASK [debug] ******************************************************************
+TASK [debug] 
 ok: [localhost] => {
     "facts.appserviceplans[0].sku": {
         "capacity": 1,
@@ -96,13 +114,13 @@ ok: [localhost] => {
     }
 }
 
-TASK [Scale up the App service plan] *******************************************
+TASK [Scale up the App service plan] 
 changed: [localhost]
 
-TASK [Get facts] ***************************************************************
+TASK [Get facts] 
 ok: [localhost]
 
-TASK [debug] *******************************************************************
+TASK [debug] 
 ok: [localhost] => {
     "facts.appserviceplans[0].sku": {
         "capacity": 3,
@@ -113,10 +131,11 @@ ok: [localhost] => {
     }
 }
 
-PLAY RECAP **********************************************************************
+PLAY RECAP 
 localhost                  : ok=6    changed=1    unreachable=0    failed=0 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 > [!div class="nextstepaction"] 
-> [Ansible unter Azure](https://docs.microsoft.com/azure/ansible/)
+> [Ansible unter Azure](/azure/ansible/)

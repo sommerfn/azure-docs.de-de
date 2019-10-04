@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/02/2017
+ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: c7b62f66830e17fd8f6607e0a629307a9ab6fc78
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983590"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614826"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
 
@@ -44,7 +44,7 @@ Die SDKs stellen verschiedene Optionen für die Abfrageausführung bereit. In .N
 | `EnableScanInQuery` | Muss auf „true“ festgelegt werden, wenn Sie die Indizierung deaktiviert haben, die Abfrage jedoch trotzdem mittels einer Überprüfung ausführen möchten. Diese Option ist nur anwendbar, wenn die Indizierung für den angeforderten Filterpfad deaktiviert ist. | 
 | `MaxItemCount` | Die maximale Anzahl von Elementen, die pro Roundtrip an den Server zurückgegeben werden soll. Mit einem Wert von „-1“ können Sie festlegen, dass die Anzahl der Elemente vom Server verwaltet wird. Alternativ können Sie diesen Wert senken, um nur eine geringe Anzahl von Elementen pro Roundtrip abzurufen. 
 | `MaxBufferedItemCount` | Dies ist eine clientseitige Option, mit der die Speicherbelegung bei der Durchführung der partitionsübergreifenden ORDER BY-Klausel beschränkt wird. Durch einen höheren Wert kann die Latenz der partitionsübergreifenden Sortierung verringert werden. |
-| `MaxDegreeOfParallelism` | Ruft die Anzahl der gleichzeitigen Vorgänge ab, die auf Clientseite während der parallelen Abfrageausführung im Azure Cosmos DB-Datenbankdienst ausgeführt werden, bzw. legt diese fest. Ein positiver Eigenschaftswert beschränkt die Anzahl der gleichzeitigen Vorgänge auf den festgelegten Wert. Wenn ein kleinerer Wert als 0 festgelegt wird, wird die Anzahl der gleichzeitig auszuführenden Vorgänge automatisch vom System festgelegt. |
+| `MaxDegreeOfParallelism` | Ruft die Anzahl der gleichzeitigen Vorgänge ab, die auf Clientseite während der parallelen Abfrageausführung im Azure Cosmos-Datenbankdienst ausgeführt werden, bzw. legt diese fest. Ein positiver Eigenschaftswert beschränkt die Anzahl der gleichzeitigen Vorgänge auf den festgelegten Wert. Wenn ein kleinerer Wert als 0 festgelegt wird, wird die Anzahl der gleichzeitig auszuführenden Vorgänge automatisch vom System festgelegt. |
 | `PopulateQueryMetrics` | Aktiviert die ausführliche Protokollierung von Statistiken zu den verschiedenen Zeitabschnitten bei der Abfrageausführung (Kompilierzeit, Indexschleifenzeit und Dokumentladezeit). Sie können die Ausgabe der Abfragestatistik an den Azure-Support weitergeben, um Probleme zur Abfrageleistung zu diagnostizieren. |
 | `RequestContinuation` | Sie können die Abfrageausführung fortsetzen, indem Sie das von jeder Abfrage zurückgegebene opake Fortsetzungstoken übergeben. Das Fortsetzungstoken kapselt alle Zustände, die für die Abfrageausführung erforderlich sind. |
 | `ResponseContinuationTokenLimitInKb` | Sie können die maximale Größe des vom Server zurückgegebenen Fortsetzungstokens beschränken. Möglicherweise müssen Sie dies festlegen, wenn Ihr Anwendungshost Grenzwerte für die Größe des Antwortheaders vorsieht. Durch Festlegen dieses Werts kann sich die Gesamtdauer und die Anzahl der für die Abfrage verwendeten RUs erhöhen.  |
@@ -272,7 +272,7 @@ Im Folgenden werden einige Beispielabfragen vorgestellt und erläutert, wie eini
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zu den unterstützten SQL-Abfrageoperatoren und Schlüsselwörtern finden Sie unter [SQL-Abfrage](how-to-sql-query.md). 
+* Weitere Informationen zu den unterstützten SQL-Abfrageoperatoren und Schlüsselwörtern finden Sie unter [SQL-Abfrage](sql-query-getting-started.md). 
 * Weitere Informationen zu Anforderungseinheiten finden Sie unter [Anforderungseinheiten](request-units.md).
 * Weitere Informationen zur Indizierungsrichtlinie finden Sie unter [Indizierungsrichtlinie](index-policy.md). 
 

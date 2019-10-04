@@ -1,6 +1,6 @@
 ---
 title: 'Konfigurieren der Facebook-Authentifizierung: Azure App Service'
-description: Erfahren Sie, wie Sie die Facebook-Authentifizierung für Ihre App Services-Anwendung konfigurieren.
+description: Erfahren Sie, wie Sie die Facebook-Authentifizierung für Ihre App Service-App konfigurieren.
 services: app-service
 documentationcenter: ''
 author: mattchenderson
@@ -10,17 +10,16 @@ ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 06/06/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: cc10c9be5bab3b84c8773d8a930473267db353ab
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 410d769d0d9abe3a0a0f9c45e3cf67bb94ec9f4d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411309"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232075"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -30,34 +29,33 @@ In diesem Thema erfahren Sie, wie Sie Azure App Services für die Verwendung von
 Sie benötigen ein Facebook-Konto mit verifizierter E-Mail-Adresse und einer Mobiltelefonnummer, um den in diesem Thema beschriebenen Vorgang abzuschließen. Rufen Sie die Seite [facebook.com]auf, um ein neues Facebook-Konto zu erstellen.
 
 ## <a name="register"></a>Registrieren Ihrer Anwendung für Facebook
-1. Melden Sie sich beim [Azure-Portal]an, und navigieren Sie zu Ihrer Anwendung. Kopieren Sie die **URL**. Diese verwenden Sie zur Konfiguration der Facebook-App.
-2. Navigieren Sie in einem anderen Browserfenster zur Website für [Facebook-Entwickler] , und melden Sie sich mit den Anmeldeinformationen für Ihr Facebook-Konto an.
-3. (Optional) Falls Sie sich noch nicht registriert haben, klicken Sie auf **Apps** > **Register as a Developer** (Als Entwickler registrieren). Akzeptieren Sie dann die Richtlinie, und führen Sie die Registrierungsschritte durch.
-4. Klicken Sie auf **My Apps**(Meine Apps) > **Add a New App** (Neue App hinzufügen).
-5. Geben Sie unter **Display Name** (Anzeigenamen) einen eindeutigen Namen für Ihre App ein. Geben Sie auch Ihre **Contact Email** an, klicken Sie dann auf **Create App ID** (App-ID erstellen), und schließen Sie die Sicherheitsüberprüfung ab. Dadurch gelangen Sie zum Entwickler-Dashboard für Ihre neue Facebook-App.
-6. Klicken Sie unter **Facebook Login** (Facebook-Anmeldung) auf **Set up** (Einrichten), und wählen Sie dann unter **Facebook Login** im linken Navigationsbereich **Settings** (Einstellungen) aus.
-7. Fügen Sie den **Umleitungs-URI** Ihrer Anwendung zu **Valid OAuth redirect URIs** (Gültige OAuth-Umleitungs-URIs) hinzu, und klicken Sie dann auf **Save Changes** (Änderungen speichern).
-   
-   > [!NOTE]
-   > Der Umleitungs-URI ist die URL Ihrer Anwendung, an die der Pfad */.auth/login/facebook/callback* angefügt wurde. Beispiel: `https://contoso.azurewebsites.net/.auth/login/facebook/callback`. Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden.
-   > 
-   > 
-8. Klicken Sie im linken Navigationsbereich auf **Settings** > **Basic**. Klicken Sie im Feld **App-Geheimnis** auf **Anzeigen**, geben Sie bei entsprechender Aufforderung Ihr Kennwort ein, und notieren Sie die Werte für **App-ID** und **App-Geheimnis**. Ihre Anwendung wird später in Azure mit diesen Angaben konfiguriert.
+1. Navigieren Sie zur Website für [Facebook-Entwickler] , und melden Sie sich mit den Anmeldeinformationen für Ihr Facebook-Konto an.
+3. (Optional) Wenn Sie kein Facebook für Entwickler-Konto besitzen, klicken Sie auf **Get Started** (Erste Schritte), und befolgen Sie die Registrierungsschritte.
+4. Klicken Sie auf **My Apps** (Meine Apps) > **Add New App** (Neue App hinzufügen).
+5. Geben Sie unter **Display Name** (Anzeigenamen) einen eindeutigen Namen für Ihre App ein. Geben Sie auch Ihre **Contact Email** an, klicken Sie dann auf **Create App ID** (App-ID erstellen), und schließen Sie die Sicherheitsüberprüfung ab. Das Entwickler-Dashboard für Ihre neue Facebook-App wird geöffnet.
+6. Klicken Sie auf **Dashboard** > **Facebook Login** (Facebook-Anmeldung) > **Setup** (Einrichten) > **Web**.
+1. Klicken Sie im linken Navigationsbereich auf **Facebook Login** (Facebook-Anmeldung) und dann auf **Settings** (Einstellungen).
+1. Geben Sie in **Valid OAuth redirect URIs** (Gültige OAuth-Umleitungs-URIs) `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback` ein, und ersetzen Sie *\<app-name >* durch den Namen Ihrer Azure App Service-App. Klicken Sie auf **Änderungen speichern**.
+8. Klicken Sie im linken Navigationsbereich auf **Settings** > **Basic**. Klicken Sie im Feld **App Secret** (App-Geheimnis) auf **Show** (Anzeigen). Kopieren Sie die Werte von **App ID** und **App Secret** (App-Geheimnis). Diese verwenden Sie später zum Konfigurieren Ihrer App Service-App in Azure.
    
    > [!IMPORTANT]
    > Der App-Schlüssel ist eine wichtige Anmeldeinformation. Teilen Sie diesen Schlüssel mit niemandem, und geben Sie ihn nicht über Ihre Anwendung weiter.
    > 
    > 
-9. Das zum Registrieren der Anwendung verwendete Facebook-Konto fungiert als Administrator der App. Zu diesem Zeitpunkt können sich nur Administratoren bei der Anwendung anmelden. Um andere Facebook-Konten zu authentifizieren, klicken Sie auf **App Review** (App-Überprüfung), und aktivieren Sie **Make <your-app-name> public** (<Name Ihrer App> öffentlich machen), um den allgemeinen öffentlichen Zugriff mithilfe der Facebook-Authentifizierung zu aktivieren.
+9. Das zum Registrieren der Anwendung verwendete Facebook-Konto fungiert als Administrator der App. Zu diesem Zeitpunkt können sich nur Administratoren bei der Anwendung anmelden. Um andere Facebook-Konten zu authentifizieren, klicken Sie auf **App Review** (App-Überprüfung), und aktivieren Sie **Make \<your-app-name> public** (<Name Ihrer App> öffentlich machen), um den allgemeinen öffentlichen Zugriff mithilfe der Facebook-Authentifizierung zu aktivieren.
 
 ## <a name="secrets"></a>Hinzufügen von Facebook-Informationen zu Ihrer Anwendung
-1. Navigieren Sie im [Azure-Portal]wieder zu Ihrer Anwendung. Klicken Sie auf **Einstellungen** > **Authentifizierung/Autorisierung,** und stellen Sie sicher, dass für die **App Service-Authentifizierung** die Option **Ein** festgelegt ist.
+1. Melden Sie sich beim [Azure-Portal] an, und navigieren Sie zu Ihrer App Service-App. Klicken Sie auf **Einstellungen** > **Authentifizierung/Autorisierung,** und stellen Sie sicher, dass für die **App Service-Authentifizierung** die Option **Ein** festgelegt ist.
 2. Klicken Sie auf **Facebook**, fügen Sie die App-ID und das App-Geheimnis ein, die Sie zuvor erhalten haben, und aktivieren Sie optional alle Bereiche, die Ihre Anwendung benötigt. Klicken Sie anschließend auf **OK**.
    
     ![][0]
    
     Standardmäßig erfolgt die Authentifizierung über App Service, wobei jedoch der Zugriff auf die Inhalte Ihrer Website und APIs nicht autorisiert wird. Sie müssen die Benutzer in Ihrem App-Code autorisieren.
 3. (Optional) Um den Zugriff auf Ihre Website ausschließlich auf Benutzer zu beschränken, die von Facebook authentifiziert werden, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** auf **Facebook** fest. Dies erfordert, dass alle Anforderungen authentifiziert werden müssen. Alle nicht authentifizierten Anforderungen werden zur Authentifizierung an Facebook umgeleitet.
+ 
+> [!CAUTION]
+> Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite wünschen, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen. Bei solchen Anwendungen ist möglicherweise die Einstellung **Anonyme Anforderungen zulassen (keine Aktion)** vorzuziehen, wobei die App selbst die Anmeldung manuell startet, wie [hier](overview-authentication-authorization.md#authentication-flow) beschrieben.
+
 4. Klicken Sie nach dem Konfigurieren der Authentifizierung auf **Speichern**.
 
 Sie können nun Facebook für die Authentifizierung in Ihrer App verwenden.

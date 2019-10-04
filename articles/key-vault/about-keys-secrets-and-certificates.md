@@ -2,23 +2,19 @@
 title: Informationen zu Schlüsseln, Geheimnissen und Zertifikaten im Azure Key Vault
 description: Hier finden Sie eine Übersicht über die Azure Key Vault-REST-Schnittstelle sowie Informationen für Entwickler zu Schlüsseln, Geheimnissen und Zertifikaten.
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
-ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 01d9f763983da2415aba0f9bae81414017bc2f02
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cca4f794fd3f84b991c7882307f74bcfadf6835b
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842565"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241051"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 
@@ -29,7 +25,7 @@ Microsoft Azure-Anwendungen und -Benutzer können verschiedene Arten von Geheimn
 - Zertifikate: Unterstützen Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen, und fügt ein Feature für die automatisierte Verlängerung hinzu.
 - Azure Storage: Kann die Schlüssel eines Azure Storage-Kontos für Sie verwalten. Intern kann Key Vault Schlüssel für ein Azure Storage-Konto auflisten (synchronisieren) und die Schlüssel in regelmäßigen Abständen erneut generieren (rotieren). 
 
-Weitere allgemeine Informationen zu Key Vault finden Sie unter [Was ist Azure Key Vault?](/azure/key-vault/key-vault-whatis)
+Weitere allgemeine Informationen zu Key Vault finden Sie unter [Was ist Azure Key Vault?](/azure/key-vault/key-vault-overview)
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 
@@ -73,7 +69,7 @@ Ein Objektbezeichner hat das folgende allgemeine Format:
 
 `https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-Hinweis:  
+Hierbei gilt:  
 
 |||  
 |-|-|  
@@ -89,7 +85,7 @@ Hinweis:
 Kryptografische Schlüssel in Key Vault werden als JSON Web Key-Objekte (JWK) dargestellt. Die grundlegenden JWK/JWA-Spezifikationen wurden erweitert, um Schlüsseltypen zu ermöglichen, die für die Key Vault-Implementierung eindeutig sind. Das Importieren von Schlüsseln mit anbieterspezifischer HSM-Paketerstellung ermöglicht einen sicheren Transport von Schlüsseln, die nur in Key Vault-HSMs verwendet werden dürfen.  
 
 - **„Soft“-Schlüssel**: Schlüssel, die in der Software von Key Vault verarbeitet, aber im Ruhezustand unter Verwendung eines Systemschlüssels, der sich in einem HSM befindet, verschlüsselt werden. Clients können einen vorhandenen RSA- oder EC-Schlüssel (Elliptic Curve, elliptische Kurve) importieren oder anfordern, dass Key Vault einen solchen Schlüssel generiert.
-- **„Hard“-Schlüssel**: Schlüssel, die in einem HSM (Hardwaresicherheitsmodul) verarbeitet werden. Diese Schlüssel werden in einer der HSM Security Worlds von Key Vault geschützt (es gibt in jeder geografischen Region eine Security World, um die Isolation aufrechtzuerhalten). Clients können einen RSA- oder EC-Schlüssel importieren, entweder in „Soft“-Form oder durch Exportieren von einem kompatiblen HSM-Gerät. Clients können auch anfordern, dass Key Vault einen Schlüssel generiert. Dieser Schlüsseltyp fügt dem JWK das T-Attribut hinzu, um das HSM-Schlüsselmaterial zu tragen.
+- **„Hard“-Schlüssel**: Schlüssel, die in einem HSM (Hardwaresicherheitsmodul) verarbeitet werden. Diese Schlüssel werden in einer der HSM Security Worlds von Key Vault geschützt (es gibt in jeder geografischen Region eine Security World, um die Isolation aufrechtzuerhalten). Clients können einen RSA- oder EC-Schlüssel importieren, entweder in „Soft“-Form oder durch Exportieren von einem kompatiblen HSM-Gerät. Clients können auch anfordern, dass Key Vault einen Schlüssel generiert. Dieser Schlüsseltyp fügt dem JWK das key_hsm-Attribut hinzu, um das HSM-Schlüsselmaterial zu tragen.
 
      Weitere Informationen zu geografischen Grenzen finden Sie unter [Datenschutz](https://azure.microsoft.com/support/trust-center/privacy/).  
 
@@ -202,7 +198,7 @@ Sie können zusätzliche anwendungsspezifische Metadaten in Form von Tags angebe
 
 Die Zugriffssteuerung für Schlüssel, die von Key Vault verwaltet werden, ist auf der Ebene eines Schlüsseltresors möglich, der als Schlüsselcontainer fungiert. Die Zugriffssteuerungsrichtlinie für Schlüssel unterscheidet sich von der Zugriffssteuerungsrichtlinie für Geheimnisse im selben Key Vault. Benutzer können einen oder mehrere Tresore zum Speichern von Schlüsseln erstellen und müssen für eine dem Szenario entsprechende Segmentierung und Verwaltung von Schlüsseln sorgen. Die Zugriffssteuerung für Schlüssel ist unabhängig von der Zugriffssteuerung für Geheimnisse.  
 
-Die folgenden Berechtigungen können auf Benutzer-/Dienstprinzipalbasis im Schlüsselzugriffssteuerungs-Eintrag für einen Tresor erteilt werden. Diese Berechtigungen spiegeln präzise die für ein Schlüsselobjekt zulässigen Vorgänge wider:  
+Die folgenden Berechtigungen können auf Benutzer-/Dienstprinzipalbasis im Schlüsselzugriffssteuerungs-Eintrag für einen Tresor erteilt werden. Diese Berechtigungen spiegeln die für ein Schlüsselobjekt zulässigen Vorgänge wider.  Das Gewähren des Zugriffs auf einen Dienstprinzipal im Schlüsseltresor ist ein einmaliger Vorgang und bleibt für alle Azure-Abonnements gleich. Sie können damit beliebig viele Zertifikate bereitstellen. 
 
 - Berechtigungen für Schlüsselverwaltungsvorgänge
   - *get*: Lesen des öffentlichen Teils eines Schlüssels sowie seiner Attribute
@@ -334,7 +330,7 @@ Es gibt zusätzliche schreibgeschützte Attribute, die in die Antwort einbezogen
 > [!Note] 
 > Wenn ein Key Vault-Zertifikat abläuft, sind sein adressierbarer Schlüssel und sein Geheimnis nicht mehr funktionsfähig.  
 
-#### <a name="tags"></a>Tags
+#### <a name="tags"></a>`Tags`
 
  Vom Client angegebenes Wörterbuch von Schlüssel-Wert-Paaren, die Tags in Schlüsseln und Geheimnissen ähneln.  
 
@@ -480,5 +476,4 @@ Weitere Informationen finden Sie in der [REST-API-Referenz für Key Vault](/rest
 ## <a name="see-also"></a>Siehe auch
 
 - [Authentifizierung, Anforderungen und Antworten](authentication-requests-and-responses.md)
-- [Key Vault-Versionen](key-vault-versions.md)
 - [Entwicklerhandbuch für Key Vault](/azure/key-vault/key-vault-developers-guide)

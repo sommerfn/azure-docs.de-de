@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 6939553206fe223d8166368d2963f03b32d2629e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888707"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178145"
 ---
 #### <a name="to-create-a-new-service"></a>So erstellen Sie einen neuen Dienst
 1. Melden Sie sich mithilfe Ihrer Microsoft-Kontoanmeldeinformationen beim [Microsoft Azure Government-Portal](https://portal.azure.us/) an.

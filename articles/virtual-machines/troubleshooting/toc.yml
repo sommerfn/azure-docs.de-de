@@ -1,110 +1,123 @@
-items:
 - name: Problembehandlung für virtuelle Azure-Computer
   href: index.md
 - name: Fehler bei der Zuordnung
   items:
-  - name: Fehler bei der Zuordnung
-    href: allocation-failure.md
-  - name: Zuordnungsfehler bei klassischen Bereitstellungen
-    href: allocation-failure-classic.md
+    - name: Fehler bei der Zuordnung
+      href: allocation-failure.md
+    - name: Zuordnungsfehler bei klassischen Bereitstellungen
+      href: allocation-failure-classic.md
 - name: RDP
   href: rdp.md
   items:
-  - name: Zurücksetzen des RDP
-    href: reset-rdp.md
-  - name: Problembehandlung für RDP
-    href: troubleshoot-rdp-connection.md
-  - name: Detaillierte Problembehandlung für RDP
-    href: detailed-troubleshoot-rdp.md
-  - name: Behandeln eines RDP-Fehlers auf einem virtuellen Computer, der auf das deaktivierte DHCP zurückzuführen ist
-    href: troubleshoot-rdp-dhcp-disabled.md
-  - name: Behandeln eines RDP-Fehlers, der auf eine NSG-Einstellung zurückzuführen ist
-    href: troubleshoot-rdp-nsg-problem.md
-  - name: Behandeln spezifischer Fehler
-    href: troubleshoot-specific-rdp-errors.md
-  - name: Beheben von Fehlern, wenn kein Lizenzserver vorhanden ist
-    href: troubleshoot-rdp-no-license-server.md
-  - name: Behandeln von Problemen mit Remotedesktopdiensten
-    href: troubleshoot-remote-desktop-services-issues.md
-  - name: Beheben eines internen Fehlers
-    href: Troubleshoot-rdp-internal-error.md
-  - name: Problembehandlung für häufiges Trennen der Verbindung
-    href: troubleshoot-rdp-intermittent-connectivity.md
-  - name: Beheben eines allgemeinen Fehlers
-    href: troubleshoot-rdp-general-error.md
-  - name: Behandeln von Authentifizierungsfehlern
-    href: troubleshoot-authentication-error-rdp-vm.md
-  - name: Behandeln von RDP-Verbindungsfehlern bei virtuellen Azure-Computern anhand der Ereignis-ID
-    href: event-id-troubleshoot-vm-rdp-connecton.md
-  - name: Behandeln eines RDP-Fehlers auf einem virtuellen Computer, der auf eine statische IP-Adresse zurückzuführen ist
-    href: troubleshoot-rdp-static-ip.md
-  - name: Behandeln eines RDP-Fehlers auf einem virtuellen Computer, der auf den deaktivierten Netzwerkadapter zurückzuführen ist
-    href: troubleshoot-rdp-nic-disabled.md
-  - name: Behandeln eines RDP-Fehlers, der auf den abgesicherten Modus zurückzuführen ist
-    href: troubleshoot-rdp-safe-mode.md
-  - name: Deaktivieren der Firewall des Gastbetriebssystems eines virtuellen Azure-Computers
-    href: disable-guest-os-firewall-windows.md
-  - name: Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem
-    href: enable-disable-firewall-rule-guest-os.md
-  - name: Blockierung von eingehendem Datenverkehr durch die Firewall des Gastbetriebssystems
-    href: guest-os-firewall-blocking-inbound-traffic.md
-  - name: Falsch konfigurierte Firewall des Gastbetriebssystems
-    href: guest-os-firewall-misconfigured.md
-  - name: Behandeln eines RDP-Fehlers, der auf „netvsc.sys“ zurückzuführen ist
-    href: troubleshoot-rdp-driver-netvsc.md
+    - name: Zurücksetzen des RDP
+      href: reset-rdp.md
+    - name: Problembehandlung für RDP
+      href: troubleshoot-rdp-connection.md
+    - name: Detaillierte Problembehandlung für RDP
+      href: detailed-troubleshoot-rdp.md
+    - name: 'Behandeln eines RDP-Fehlers auf einem virtuellen Computer, der auf das deaktivierte DHCP zurückzuführen ist'
+      href: troubleshoot-rdp-dhcp-disabled.md
+    - name: 'Behandeln eines RDP-Fehlers, der auf eine NSG-Einstellung zurückzuführen ist'
+      href: troubleshoot-rdp-nsg-problem.md
+    - name: Behandeln spezifischer Fehler
+      href: troubleshoot-specific-rdp-errors.md
+    - name: 'Beheben von Fehlern, wenn kein Lizenzserver vorhanden ist'
+      href: troubleshoot-rdp-no-license-server.md
+    - name: Behandeln von Problemen mit Remotedesktopdiensten
+      href: troubleshoot-remote-desktop-services-issues.md
+    - name: Beheben eines internen Fehlers
+      href: Troubleshoot-rdp-internal-error.md
+    - name: Problembehandlung für häufiges Trennen der Verbindung
+      href: troubleshoot-rdp-intermittent-connectivity.md
+    - name: Beheben eines allgemeinen Fehlers
+      href: troubleshoot-rdp-general-error.md
+    - name: Behandeln von Authentifizierungsfehlern
+      href: troubleshoot-authentication-error-rdp-vm.md
+    - name: Behandeln von RDP-Verbindungsfehlern bei virtuellen Azure-Computern anhand der Ereignis-ID
+      href: event-id-troubleshoot-vm-rdp-connecton.md
+    - name: 'Behandeln eines RDP-Fehlers auf einem virtuellen Computer, der auf eine statische IP-Adresse zurückzuführen ist'
+      href: troubleshoot-rdp-static-ip.md
+    - name: 'Behandeln eines RDP-Fehlers auf einem virtuellen Computer, der auf den deaktivierten Netzwerkadapter zurückzuführen ist'
+      href: troubleshoot-rdp-nic-disabled.md
+    - name: 'Behandeln eines RDP-Fehlers, der auf den abgesicherten Modus zurückzuführen ist'
+      href: troubleshoot-rdp-safe-mode.md
+    - name: Deaktivieren der Firewall des Gastbetriebssystems eines virtuellen Azure-Computers
+      href: disable-guest-os-firewall-windows.md
+    - name: Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem
+      href: enable-disable-firewall-rule-guest-os.md
+    - name: Blockierung von eingehendem Datenverkehr durch die Firewall des Gastbetriebssystems
+      href: guest-os-firewall-blocking-inbound-traffic.md
+    - name: Falsch konfigurierte Firewall des Gastbetriebssystems
+      href: guest-os-firewall-misconfigured.md
+    - name: 'Behandeln eines RDP-Fehlers, der auf „netvsc.sys“ zurückzuführen ist'
+      href: troubleshoot-rdp-driver-netvsc.md
 - name: SSH
   items:
-  - name: Problembehandlung für SSH
-    href: troubleshoot-ssh-connection.md
-  - name: Behandeln von Dateisystemfehlern
-    href: https://support.microsoft.com/help/3213321
-  - name: Behandeln von Kernel-bezogenen Startproblemen
-    href: https://support.microsoft.com/help/4091524
-  - name: Behandeln von fstab-Fehlern
-    href: https://support.microsoft.com/help/3206699
-  - name: Detaillierte Problembehandlung für SSH
-    href: detailed-troubleshoot-ssh-connection.md
+    - name: Problembehandlung für SSH
+      href: troubleshoot-ssh-connection.md
+    - name: Behandeln von Dateisystemfehlern
+      href: 'https://support.microsoft.com/help/3213321'
+    - name: Behandeln von Kernel-bezogenen Startproblemen
+      href: 'https://support.microsoft.com/help/4091524'
+    - name: Behandeln von fstab-Fehlern
+      href: 'https://support.microsoft.com/help/3206699'
+    - name: Detaillierte Problembehandlung für SSH
+      href: detailed-troubleshoot-ssh-connection.md
 - name: Häufige Fehlermeldungen
   href: error-messages.md
-- name: Leistungsprobleme im Zusammenhang mit virtuellen Windows-Computern
+- name: Leistungsprobleme im Zusammenhang mit virtuellen Computern
   href: performance-diagnostics.md
   items:
-  - name: Verwenden von PerfInsights
-    href: how-to-use-perfInsights.md
-  - name: Erweiterung für die Leistungsdiagnose
-    href: performance-diagnostics-vm-extension.md
+    - name: Windows
+      items:
+        - name: Verwenden von PerfInsights
+          href: how-to-use-perfinsights.md
+        - name: Erweiterung für die Leistungsdiagnose
+          href: performance-diagnostics-vm-extension.md
+    - name: Linux
+      items:
+        - name: Verwenden von PerfInsights
+          href: how-to-use-perfinsights-linux.md
 - name: Offlineinstallation des Windows-VM-Agents
   href: install-vm-agent-offline.md
 - name: Erneutes Bereitstellen eines virtuellen Computers
   items:
-  - name: Linux
-    href: redeploy-to-new-node-linux.md
-  - name: Windows
-    href: redeploy-to-new-node-windows.md
+    - name: Linux
+      href: redeploy-to-new-node-linux.md
+    - name: Windows
+      href: redeploy-to-new-node-windows.md
 - name: Zurücksetzen des Kennworts des virtuellen Computers
   items:
-  - name: Windows
-    href: reset-local-password-without-agent.md
-  - name: Linux
-    href: reset-password.md
+    - name: Windows
+      href: reset-local-password-without-agent.md
+    - name: Linux
+      href: reset-password.md
 - name: Zurücksetzen der NIC
   href: reset-network-interface.md
 - name: Neustart oder Größenänderung eines virtuellen Computers
   href: restart-resize-error-troubleshooting.md
-- name: Verwenden der seriellen Konsole
+- name: Serielle Konsole
   items:
-  - name: Linux-VM
-    href: serial-console-linux.md
-    items:
-    - name: Serielle Konsole – GRUB-/Einzelbenutzermodus
-      href: serial-console-grub-single-user-mode.md
-    - name: Serielle Konsole – NMI/SysRq
-      href: serial-console-nmi-sysrq.md
-  - name: Windows-VM
-    href: serial-console-windows.md
-    items:
-    - name: CMD und PowerShell-Befehle
-      href: serial-console-cmd-ps-commands.md
+    - name: Übersicht über die serielle Konsole
+      href: serial-console-overview.md
+    - name: Serielle Konsole für Linux
+      href: serial-console-linux.md
+      items:
+        - name: Serielle Konsole – GRUB-/Einzelbenutzermodus
+          href: serial-console-grub-single-user-mode.md
+        - name: Serielle Konsole – NMI/SysRq
+          href: serial-console-nmi-sysrq.md
+    - name: Serielle Konsole für Windows
+      href: serial-console-windows.md
+      items:
+        - name: CMD und PowerShell-Befehle
+          href: serial-console-cmd-ps-commands.md
+    - name: Aktivieren und Deaktivieren der seriellen Konsole
+      href: serial-console-enable-disable.md
+    - name: Energieoptionen in der seriellen Konsole
+      href: serial-console-power-options.md
+    - name: Allgemeine Fehler für die serielle Konsole
+      href: serial-console-errors.md
 - name: Fehler beim Löschen von Speicherressourcen
   href: storage-resource-deletion-errors.md
 - name: Fehler beim Löschen von klassischen Speicherressourcen
@@ -119,51 +132,53 @@ items:
   href: troubleshoot-app-connection.md
 - name: Neue VM-Bereitstellungen
   items:
-  - name: Linux
-    href: troubleshoot-deployment-new-vm-linux.md
-  - name: Windows
-    href: troubleshoot-deployment-new-vm-windows.md
+    - name: Linux
+      href: troubleshoot-deployment-new-vm-linux.md
+    - name: Windows
+      href: troubleshoot-deployment-new-vm-windows.md
 - name: Behandeln von Bereitstellungsproblemen
   items:
-  - name: Linux
-    href: troubleshoot-deploy-vm-linux.md
-  - name: Windows
-    href: troubleshoot-deploy-vm-windows.md
+    - name: Linux
+      href: troubleshoot-deploy-vm-linux.md
+    - name: Windows
+      href: troubleshoot-deploy-vm-windows.md
 - name: Änderung von Gerätenamen
   href: troubleshoot-device-names-problems.md
 - name: Zugriff auf die VM-Wiederherstellung
   items:
-  - name: Windows
-    items:
-    - name: PowerShell
-      href: troubleshoot-recovery-disks-windows.md
-    - name: Azure-Portal
-      href: troubleshoot-recovery-disks-portal-windows.md
-  - name: Linux
-    items:
-    - name: Befehlszeilenschnittstelle (CLI)
-      href: troubleshoot-recovery-disks-linux.md
-    - name: Azure-Portal
-      href: troubleshoot-recovery-disks-portal-linux.md
+    - name: Windows
+      items:
+        - name: PowerShell
+          href: troubleshoot-recovery-disks-windows.md
+        - name: Azure-Portal
+          href: troubleshoot-recovery-disks-portal-windows.md
+    - name: Linux
+      items:
+        - name: Befehlszeilenschnittstelle (CLI)
+          href: troubleshoot-recovery-disks-linux.md
+        - name: Azure-Portal
+          href: troubleshoot-recovery-disks-portal-linux.md
 - name: Startfehler
   href: boot-error-troubleshoot.md
   items:
-  - name: Startdiagnose
-    href: boot-diagnostics.md
-  - name: BitLocker-Fehler
-    href: troubleshoot-bitlocker-boot-error.md
-  - name: Überprüfen von Dateisystemfehlern
-    href: troubleshoot-check-disk-boot-error.md
-  - name: Bluescreen-Fehler
-    href: troubleshoot-common-blue-screen-error.md
-  - name: Der virtuelle Computer bleibt beim Starten hängen.
-    href: troubleshoot-vm-boot-configure-update.md
-  - name: Fehler beim kritischen Dienst
-    href: troubleshoot-critical-service-failed-boot-error.md
-  - name: Neustartschleife
-    href: troubleshoot-reboot-loop.md
-  - name: Bleibt bei Windows-Update hängen
-    href: troubleshoot-stuck-updating-boot-error.md
+    - name: Fehler beim Starten eines virtuellen Azure-Computers
+      href: troubleshoot-vm-boot-error.md
+    - name: Startdiagnose
+      href: boot-diagnostics.md
+    - name: BitLocker-Fehler
+      href: troubleshoot-bitlocker-boot-error.md
+    - name: Überprüfen von Dateisystemfehlern
+      href: troubleshoot-check-disk-boot-error.md
+    - name: Bluescreen-Fehler
+      href: troubleshoot-common-blue-screen-error.md
+    - name: Der virtuelle Computer bleibt beim Starten hängen.
+      href: troubleshoot-vm-boot-configure-update.md
+    - name: Fehler beim kritischen Dienst
+      href: troubleshoot-critical-service-failed-boot-error.md
+    - name: Neustartschleife
+      href: troubleshoot-reboot-loop.md
+    - name: Bleibt bei Windows-Update hängen
+      href: troubleshoot-stuck-updating-boot-error.md
 - name: Drosselungsfehler
   href: troubleshooting-throttling-errors.md
 - name: Verwenden der geschachtelten Virtualisierung
@@ -172,9 +187,9 @@ items:
   href: understand-vm-reboot.md
 - name: Tools für die Remoteproblembehandlung
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: 7ba013c372eefcbf83bb141ba44fcea9b68064de
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382964"
+- name: Reparatur virtueller Computer
+  items:
+    - name: Reparieren eines virtuellen Windows-Computers mit dem Reparaturbefehlen virtueller Azure-Computer
+      href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
+    - name: Reparieren eines virtuellen Linux-Computers mit dem Reparaturbefehlen virtueller Azure-Computer
+      href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md

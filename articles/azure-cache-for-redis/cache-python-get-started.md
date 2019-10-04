@@ -15,27 +15,21 @@ ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8682a335372a1516be49b35400a2605f08d6b45e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fcb5d74305375c9883f2d601a2ab7d2d9a50b9cb
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779443"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743931"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Python
 
-
-## <a name="introduction"></a>Einführung
-
-In dieser Schnellstartanleitung wird gezeigt, wie Sie eine Azure Cache for Redis-Instanz mit Python verbinden, um Lese- und Schreibvorgänge in einem Cache zu ermöglichen. 
-
-![Python-Test abgeschlossen](./media/cache-python-get-started/cache-python-completed.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+In dieser Schnellstartanleitung integrieren Sie Azure Cache für Redis in eine Python-App, um Zugriff auf einen sicheren, dedizierten Cache zu erhalten, der von jeder Anwendung in Azure aus zugänglich ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Installation einer [Python 2- oder Python 3-Umgebung](https://www.python.org/downloads/) mit [pip](https://pypi.org/project/pip/) 
+- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+- [Python 2 oder 3](https://www.python.org/downloads/)
 
 ## <a name="create-an-azure-cache-for-redis-on-azure"></a>Erstellen einer Azure Cache for Redis-Instanz in Azure
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -46,9 +40,11 @@ In dieser Schnellstartanleitung wird gezeigt, wie Sie eine Azure Cache for Redis
 
 [Redis-py](https://github.com/andymccurdy/redis-py) ist eine Python-Schnittstelle für Azure Cache for Redis. Verwenden Sie das Python-Pakettool *pip*, um das redis-py-Paket zu installieren. 
 
-Im folgenden Beispiel wird *pip3* für Python3 verwendet, um das redis-py-Paket unter Windows 10 zu installieren, indem eine Visual Studio 2017 Developer-Eingabeaufforderung mit erhöhten Administratorrechten verwendet wird.
+Im folgenden Beispiel wird *pip3* für Python3 verwendet, um das redis-py-Paket unter Windows 10 zu installieren, indem eine Visual Studio 2019 Developer-Eingabeaufforderung mit erhöhten Administratorrechten verwendet wird.
 
+```python
     pip3 install redis
+```
 
 ![Installieren von redis-py](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
@@ -67,6 +63,9 @@ True
 b'bar'
 ```
 
+> [!IMPORTANT]
+> Für Redis Version 3.0 oder höher wird die SSL-Zertifikatüberprüfung erzwungen. Beim Herstellen der Verbindung mit Redis muss „ssl_ca_certs“ explizit festgelegt werden. Im Falle von RH Linux befindet sich „ssl_ca_certs“ im Zertifikatsmodul „/etc/pki/tls/certs/ca-bundle.crt“.
+
 ## <a name="create-a-python-script"></a>Erstellen eines Python-Skripts
 
 Erstellen Sie eine neue Skripttextdatei mit dem Namen *PythonApplication1.py*.
@@ -79,7 +78,8 @@ import redis
 myHostname = "<Your Host Name>.redis.cache.windows.net"
 myPassword = "<Your Access Key>"
 
-r = redis.StrictRedis(host=myHostname, port=6380,password=myPassword,ssl=True)
+r = redis.StrictRedis(host=myHostname, port=6380,
+                      password=myPassword, ssl=True)
 
 result = r.ping()
 print("Ping returned : " + str(result))
@@ -91,7 +91,7 @@ result = r.get("Message")
 print("GET Message returned : " + result.decode("utf-8"))
 
 result = r.client_list()
-print("CLIENT LIST returned : ") 
+print("CLIENT LIST returned : ")
 for c in result:
     print("id : " + c['id'] + ", addr : " + c['addr'])
 ```
@@ -113,21 +113,18 @@ Wenn Sie die Schnellstart-Beispielanwendung nicht mehr benötigen, können Sie d
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 
-Geben Sie im Textfeld **Nach Name filtern...** den Namen Ihrer Ressourcengruppe ein. In diesem Artikel wurde eine Ressourcengruppe mit dem Namen *TestResources* verwendet. Klicken Sie in Ihrer Ressourcengruppe in der Ergebnisliste auf **...** und dann auf **Ressourcengruppe löschen**.
+Geben Sie im Textfeld **Nach Name filtern...** den Namen Ihrer Ressourcengruppe ein. In diesem Artikel wurde eine Ressourcengruppe mit dem Namen *TestResources* verwendet. Klicken Sie in der Ergebnisliste in Ihrer Ressourcengruppe auf **...** und dann auf **Ressourcengruppe löschen**.
 
 ![Löschen](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
-Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie den Namen der entsprechenden Ressourcengruppe ein, und klicken Sie auf **Löschen**.
+Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie zur Bestätigung den Namen Ihrer Ressourcengruppe ein, und klicken Sie auf **Löschen**.
 
 Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Erstellen einer einfachen ASP.NET-Web-App, die eine Azure Cache for Redis-Instanz verwendet](./cache-web-app-howto.md)
-
-
 
 <!--Image references-->
 [1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png

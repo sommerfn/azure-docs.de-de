@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 718eefc95384dde050a4a25e6850fe6db574d294
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 0991a0df8d34ddbcebf3d4097c0219b47793120b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59258928"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65779943"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps-Streckenabdeckung
 
@@ -27,9 +27,9 @@ Verschaffen Sie sich einen Überblick über die Abdeckung des [**Renderings**](r
 
 | Symbol             | Bedeutung                                |
 |--------------------|----------------------------------------|
-| ✓                  | Es wurden ausführliche Daten vom jeweiligen Land bereitgestellt.   |
-| Ø                  | Es wurden vereinfachte Daten vom jeweiligen Land bereitgestellt. |
-| Land nicht angegeben | Es liegen keine Daten vom jeweiligen Land vor.          |
+| ✓                  | Es wurden ausführliche Daten für das/die jeweilige Land/Region bereitgestellt.   |
+| Ø                  | Es wurden vereinfachte Daten für das/die jeweilige Land/Region bereitgestellt. |
+| Land nicht angegeben | Es liegen keine Daten für das/die jeweilige Land/Region vor.          |
 
 <br>  
 
@@ -76,7 +76,6 @@ In der folgenden Tabelle finden Sie Informationen zur Abdeckung für Azure Maps-
 | Togo                           |        ✓       |                       |             |
 | Tunesien                        |        ✓       |                       |             |
 | Uganda                         |        ✓       |                       |             |
-| Westsahara                 |        ✓       |                       |             |
 | Sambia                         |        ✓       |                       |             |
 | Simbabwe                       |        ✓       |                       |             |
 
@@ -136,12 +135,12 @@ In der folgenden Tabelle finden Sie Informationen zur Abdeckung für Azure Maps-
 | Kambodscha                       |        ✓       |                      |             |
 | Fidschi                           |        ✓       |                      |             |
 | Guam                           |        ✓       |                      |             |
-| Hongkong                      |        ✓       |         ✓            |             |
+| Hongkong (SAR)                  |        ✓       |         ✓            |             |
 | Indien                          |        ✓       |         ✓            |             |
 | Indonesien                      |        ✓       |         ✓            |             |
 | Korea                          |        Ø       |                      |             |
 | Laos                           |        ✓       |                      |             |
-| Macau (SAR)                          |        ✓       |         ✓            |             |
+| Macau (SAR)                      |        ✓       |         ✓            |             |
 | Malaysia                       |        ✓       |         ✓            |             |
 | Myanmar                        |        ✓       |                      |             |
 | Neuseeland                    |        ✓       |         ✓            |     ✓       | 
@@ -190,7 +189,7 @@ In der folgenden Tabelle finden Sie Informationen zur Abdeckung für Azure Maps-
 | Liechtenstein                  |        ✓       |         ✓            |             |
 | Litauen                      |        ✓       |         ✓            |     ✓      | 
 | Luxemburg                     |        ✓       |         ✓            |     ✓      | 
-| Nordmazedonien                      |        ✓       |                      |             |
+| Nordmazedonien                |        ✓       |                      |             |
 | Malta                          |        ✓       |         ✓            |             |
 | Moldau                        |        ✓       |                      |             |
 | Monaco                         |        ✓       |         ✓            |             |
@@ -220,9 +219,9 @@ In der folgenden Tabelle finden Sie Informationen zur Abdeckung für Azure Maps-
 | +Bermuda                       |        ✓       |                      |             |
 | +Britische Jungferninseln        |        ✓       |                      |             |
 | +Kaimaninseln                |        ✓       |                      |             |
-| +Gibraltar                      |        ✓       |         ✓            |             | 
+| +Gibraltar                     |        ✓       |         ✓            |             | 
 | +Montserrat                    |        ✓       |                      |             |
-| +Turks- und Caicosinseln        |        ✓       |                      |             |
+| +Turks- und Caicosinseln      |        ✓       |                      |             |
 | Vatikanstadt                   |        ✓       |         ✓            |             |
 | Insel Man                    |        ✓       |                      |             |
 

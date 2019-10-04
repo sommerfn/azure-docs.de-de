@@ -1,91 +1,150 @@
 ---
-title: Beispiele und Definitionen für Überwachungsprotokolle in Azure Active Directory B2C | Microsoft-Dokumentation
+title: Beispiele und Definitionen für Überwachungsprotokolle in Azure Active Directory B2C
 description: Leitfaden und Beispiele für den Zugriff auf die Azure AD B2C-Überwachungsprotokolle
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/04/2017
-ms.author: davidmu
+ms.date: 09/14/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 117d58f6f56fe1b24539c7bfe950f1a23d6de51a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: fasttrack-edit
+ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003598"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033832"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
-Azure Active Directory B2C (Azure AD B2C) gibt Überwachungsprotokolle aus, die Aktivitätsinformationen über B2C-Ressourcen, ausgestellte Token und Administratorzugriff enthalten. Dieser Artikel bietet eine kurze Übersicht über die Informationen, die durch Überwachungsprotokolle verfügbar sind, sowie Anweisungen für den Zugriff auf diese Daten für Ihren Active Directory B2C-Mandanten.
+Azure Active Directory B2C (Azure AD B2C) gibt Überwachungsprotokolle aus, die Aktivitätsinformationen über B2C-Ressourcen, ausgestellte Token und Administratorzugriff enthalten. Dieser Artikel bietet eine kurze Übersicht über die in Überwachungsprotokollen verfügbaren Informationen sowie Anweisungen zum Zugreifen auf diese Daten für Ihren Azure AD B2C-Mandanten.
 
-> [!IMPORTANT]
-> Überwachungsprotokolle werden nur sieben Tage lang aufbewahrt. Planen Sie den Download und die Speicherung Ihrer Protokolle mit einer der unten aufgeführten Methoden, wenn eine längere Aufbewahrungsdauer erforderlich ist.
+Überwachungsprotokollereignisse werden nur **sieben Tage** lang aufbewahrt. Planen Sie den Download und die Speicherung Ihrer Protokolle mit einer der unten aufgeführten Methoden, wenn eine längere Aufbewahrungsdauer erforderlich ist.
+
+> [!NOTE]
+> Im Azure-Portal werden auf der Seite **Azure Active Directory** oder **Azure AD B2C** im Abschnitt **Benutzer** keine Benutzeranmeldungen für einzelne Azure AD B2C-Anwendungen angezeigt. Für die dort aufgeführten Anmeldeereignisse werden zwar Benutzeraktivitäten angezeigt, aber auf die jeweilige B2C-Anwendung, bei der sich der Benutzer angemeldet hat, sind keine Rückschlüsse möglich. Hierfür müssen Sie die Überwachungsprotokolle verwenden. Wie Sie dabei vorgehen, wird in diesem Artikel beschrieben.
 
 ## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Übersicht der verfügbaren Aktivitäten in der B2C-Kategorie von Überwachungsprotokollen
+
 Die **B2C**-Kategorie in Überwachungsprotokollen umfasst die folgenden Aktivitätstypen:
 
 |Aktivitätstyp |BESCHREIBUNG  |
 |---------|---------|
-|Autorisierung |Aktivitäten, die die Autorisierung eines Benutzers für den Zugriff auf B2C-Ressourcen betreffen (z.B. ein Administrator, der auf eine Liste von B2C-Richtlinien zugreift).         |
+|Authorization |Aktivitäten, die sich auf die Autorisierung eines Benutzers für den Zugriff auf B2C-Ressourcen beziehen (z. B. ein Administrator, der auf eine Liste von B2C-Richtlinien zugreift).         |
 |Verzeichnis |Aktivitäten im Zusammenhang mit Verzeichnisattributen, die abgerufen werden, wenn sich ein Administrator über das Azure-Portal anmeldet. |
-|Anwendung | CRUD-Vorgänge für B2C-Anwendungen |
-|Schlüssel |CRUD-Vorgänge für im B2C-Schlüsselcontainer gespeicherte Schlüssel |
-|Ressource |CRUD-Vorgänge für B2C-Ressourcen (z.B. Richtlinien und Identitätsanbieter)
-|Authentication |Überprüfung der Anmeldeinformationen des Benutzers und Tokenausstellung|
+|Anwendung | Erstellungs-, Lese-, Aktualisierungs- und Löschvorgänge (Create, Read, Update, Delete, CRUD) für B2C-Anwendungen. |
+|Schlüssel |CRUD-Vorgänge für in einem B2C-Schlüsselcontainer gespeicherte Schlüssel. |
+|Resource |CRUD-Vorgänge für B2C-Ressourcen, z. B. Richtlinien und Identitätsanbieter.
+|Authentication |Überprüfung von Benutzeranmeldeinformationen und Tokenausstellung.|
 
-> [!NOTE]
-> Informationen zu den CRUD-Aktivitäten des Benutzerobjekts finden Sie in der Kategorie **Hauptverzeichnis**.
+Informationen zu den CRUD-Aktivitäten des Benutzerobjekts finden Sie in der Kategorie **Hauptverzeichnis**.
 
 ## <a name="example-activity"></a>Beispielaktivität
-Das folgende Beispiel zeigt die erfassten Daten, wenn sich ein Benutzer bei einem externen Identitätsanbieter anmeldet: ![Überwachungsprotokolle – Beispiel](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
-## <a name="accessing-audit-logs-through-the-azure-portal"></a>Zugriff auf Überwachungsprotokolle über das Azure-Portal
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Stellen Sie sicher, dass Sie sich in Ihrem B2C-Verzeichnis befinden.
-2. Klicken Sie links in der Favoritenleiste auf **Azure Active Directory**.
-    
-    ![Überwachungsprotokolle – AAD-Schaltfläche](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
+Im folgenden Beispiel aus dem Azure-Portal sehen Sie die Daten, die erfasst werden, wenn sich ein Benutzer bei einem externen Identitätsanbieter (in diesem Fall Facebook) anmeldet:
 
-1. Klicken Sie unter **Aktivität** auf **Überwachungsprotokolle**.
+![Beispiel für die Seite der Aktivitätsdetails des Überwachungsprotokolls im Azure-Portal](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
-    ![Überwachungsprotokolle – Abschnitt „Protokolle“](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
+Das Panel „Aktivitätsbereich“ enthält die folgenden wichtigen Informationen:
 
-2. Wählen Sie im Dropdownfeld **Kategorie** die Option **B2C**.
-3. Klicken Sie auf **Anwenden**.
+|`Section`|Feld|BESCHREIBUNG|
+|-------|-----|-----------|
+| Aktivität | NAME | Die ausgeführte Aktivität. Dies kann beispielsweise *Issue an id_token to the application* (ID-Token für die Anwendung ausstellen) sein, wodurch die Benutzeranmeldung abgeschlossen wird. |
+| Initiiert von (Akteur) | ObjectId | Die **Objekt-ID** der B2C-Anwendung, bei der sich der Benutzer anmeldet. Dieser Bezeichner ist im Azure-Portal nicht sichtbar, kann aber über die Microsoft Graph-API aufgerufen werden. |
+| Initiiert von (Akteur) | Spn | Die **Anwendungs-ID** der B2C-Anwendung, bei der sich der Benutzer anmeldet. |
+| Ziel(e) | ObjectId | Die **Objekt-ID** des Benutzers, der sich anmeldet. |
+| Weitere Details | TenantId | Die **Mandanten-ID** des Azure AD B2C-Mandanten. |
+| Weitere Details | `PolicyId` | Die **Richtlinien-ID** für den Benutzerfluss (Richtlinie), der zur Anmeldung des Benutzers verwendet wird. |
+| Weitere Details | ApplicationId | Die **Anwendungs-ID** der B2C-Anwendung, bei der sich der Benutzer anmeldet. |
 
-    ![Überwachungsprotokolle – Kategorie](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
+## <a name="view-audit-logs-in-the-azure-portal"></a>Anzeigen von Überwachungsprotokollen im Azure-Portal
 
-Sie sehen eine Liste der Aktivitäten, die in den letzten sieben Tagen protokolliert wurden.
-- Verwenden der Dropdownliste **Aktivitätsressourcentyp** zum Filtern nach den oben beschriebenen Aktivitätstypen.
-- Verwenden Sie die Dropdownliste **Datumsbereich**, um den Datumsbereich der angezeigten Aktivitäten zu filtern.
-- Wenn Sie auf eine bestimmte Zeile in der Liste klicken, zeigt Ihnen ein Kontextfeld auf der rechten Seite zusätzliche Attribute, die mit der Aktivität verbunden sind.
-- Klicken Sie auf **Herunterladen**, um die Aktivitäten als CSV-Datei herunterzuladen.
+Das Azure-Portal bietet Zugriff auf die Überwachungsprotokollereignisse in Ihrem Azure AD B2C-Mandanten.
 
-## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Zugriff auf Überwachungsprotokolle über die Azure AD-Berichterstellungs-API
-Überwachungsprotokolle werden in der gleichen Pipeline wie andere Aktivitäten für Azure Active Directory veröffentlicht, sodass auf sie über die [Azure Active Directory-Berichterstellungs-API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference) zugegriffen werden kann.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
+1. Wechseln Sie zu dem Verzeichnis, das Ihren Azure AD B2C-Mandanten enthält, und navigieren Sie dann zu **Azure AD B2C**.
+1. Wählen Sie im linken Menü unter **Aktivitäten** die Option **Überwachungsprotokolle** aus.
 
-### <a name="prerequisites"></a>Voraussetzungen
-Um den Azure AD-Berichterstellungs-API zu authentifizieren, müssen Sie zunächst eine Anwendung registrieren. Führen Sie in jedem Fall die Schritte unter [Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/) aus.
+Es wird eine Liste der Aktivitätsereignisse angezeigt, die in den letzten sieben Tagen protokolliert wurden.
 
-### <a name="accessing-the-api"></a>Zugriff auf die API
-Um die Active Directory B2C-Überwachungsprotokolle über die API herunterzuladen, müssen Sie die Protokolle nach der Kategorie **B2C** filtern. Verwenden Sie zum Filtern nach Kategorie den Abfragezeichenfolgen-Parameter, wenn Sie den Azure AD-Berichterstellungs-API-Endpunkt aufrufen, wie unten gezeigt:
+![Beispiel für einen Filter mit zwei Aktivitätsereignissen im Azure-Portal](media/active-directory-b2c-reference-audit-logs/audit-logs-example-filter.png)
 
-`https://graph.windows.net/your-b2c-tentant.onmicrosoft.com/activities/audit?api-version=beta&$filter=category eq 'B2C'`
+Es sind mehrere Filteroptionen verfügbar, einschließlich:
+
+* **Aktivitätsressourcentyp**: Filtern Sie nach den Aktivitätstypen, die in der Tabelle im Abschnitt [Übersicht der verfügbaren Aktivitäten in der B2C-Kategorie von Überwachungsprotokollen](#overview-of-activities-available-in-the-b2c-category-of-audit-logs) aufgeführt sind.
+* **Datum**: Filtern Sie den Datumsbereich der angezeigten Aktivitäten.
+
+Wenn Sie eine Zeile in der Liste auswählen, werden die Aktivitätsdetails für das Ereignis angezeigt.
+
+Zum Herunterladen der Liste der Aktivitätsereignisse in einer CSV-Datei wählen Sie **Herunterladen** aus.
+
+## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>Abrufen von Überwachungsprotokollen mit der Azure AD-Berichterstellungs-API
+
+Überwachungsprotokolle werden in der gleichen Pipeline wie andere Aktivitäten für Azure Active Directory veröffentlicht, sodass auf sie über die [Azure Active Directory-Berichterstellungs-API](https://docs.microsoft.com/graph/api/directoryaudit-list) zugegriffen werden kann. Weitere Informationen finden Sie unter [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](../active-directory/reports-monitoring/concept-reporting-api.md).
+
+### <a name="enable-reporting-api-access"></a>Aktivieren des Zugriffs auf die Berichterstellungs-API
+
+Um den skript- oder anwendungsbasierten Zugriff auf die Azure AD-Berichterstellungs-API zu ermöglichen, benötigen Sie eine Azure Active Directory-Anwendung, die in Ihrem Azure AD B2C-Mandanten mit den folgenden API-Berechtigungen registriert ist:
+
+* Microsoft Graph
+  * Anwendung: Alle Überwachungsprotokolldaten lesen
+
+Sie können diese Berechtigungen für eine vorhandene Azure Active Directory-Anwendungsregistrierung in Ihrem B2C-Mandanten aktivieren oder eine neue Anwendung erstellen, die speziell für die Verwendung mit der Überwachungsprotokollautomatisierung verwendet wird.
+
+Um eine neue Anwendung zu erstellen, weisen Sie die erforderlichen API-Berechtigungen zu, und erstellen Sie einen geheimen Clientschlüssel. Führen Sie dazu die folgenden Schritte aus:
+
+1. Registrieren einer Anwendung in Azure Active Directory
+    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wechseln Sie zu dem Verzeichnis, das Ihren Azure AD B2C-Mandanten enthält.
+    1. Wählen Sie im linken Menü die Option **Azure Active Directory** (*nicht* „Azure AD B2C“) aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach **Azure Active Directory**, und wählen Sie dann diese Option aus.
+    1. Wählen Sie im linken Menü unter **Verwalten** die Option **App-Registrierungen (Legacy)** aus.
+    1. Wählen Sie **Registrierung einer neuen Anwendung** aus.
+    1. Geben Sie einen Namen für die Anwendung ein. Beispiel: *Überwachungsprotokoll-App*.
+    1. Geben Sie im Feld **Anmelde-URL** eine gültige URL ein. Beispiel: *https://localhost* Dieser Endpunkt muss nicht erreichbar sein, aber es muss sich dabei um eine gültige URL handeln.
+    1. Klicken Sie auf **Erstellen**.
+    1. Notieren Sie sich die **Anwendungs-ID**, die auf der Seite **Registrierte App** angezeigt wird. Sie benötigen diesen Wert für die Authentifizierung in Automatisierungsskripts wie dem PowerShell-Beispielskript, das in einem späteren Abschnitt gezeigt wird.
+1. Zuweisen von API-Zugriffsberechtigungen
+    1. Wählen Sie auf der Übersichtsseite **Registrierte App** die Option **Einstellungen** aus.
+    1. Wählen Sie unter **API-ZUGRIFF** die Option **Erforderliche Berechtigungen** aus.
+    1. Wählen Sie **Hinzufügen** aus, und wählen Sie dann **Hiermit wählen Sie eine API aus** aus.
+    1. Wählen Sie **Microsoft Graph** aus, und wählen Sie dann **Auswählen** aus.
+    1. Wählen Sie unter **ANWENDUNGSBERECHTIGUNGEN** die Option **Alle Überwachungsprotokolldaten lesen** aus.
+    1. Wählen Sie die Schaltfläche **Auswählen** aus, und wählen Sie dann **Fertig** aus.
+    1. Wählen Sie **Berechtigungen erteilen** und dann **Ja** aus.
+1. Erstellen eines geheimen Clientschlüssels
+    1. Wählen Sie unter **API-ZUGRIFF** die Option **Schlüssel** aus.
+    1. Geben Sie im Feld **Schlüsselbeschreibung** eine Beschreibung für den Schlüssel (z. B. *Überwachungsprotokollschlüssel*) ein.
+    1. Wählen Sie eine **Gültigkeitsdauer** aus, und wählen Sie dann **Speichern** aus.
+    1. Notieren Sie sich den **WERT** des Schlüssels. Sie benötigen diesen Wert für die Authentifizierung in Automatisierungsskripts wie dem PowerShell-Beispielskript, das in einem späteren Abschnitt gezeigt wird.
+
+Sie verfügen jetzt über eine Anwendung mit dem erforderlichen API-Zugriff, eine Anwendungs-ID und einen Schlüssel, die/den Sie in Ihren Automatisierungsskripts verwenden können. Ein Beispiel dafür, wie Sie Aktivitätsereignisse mit einem Skript abrufen, finden Sie im Abschnitt „PowerShell-Skript“ weiter unten in diesem Artikel.
+
+### <a name="access-the-api"></a>Zugreifen auf die API
+
+Wenn Sie Azure AD B2C-Überwachungsprotokollereignisse über die API herunterladen möchten, filtern Sie die Protokolle nach der Kategorie `B2C`. Verwenden Sie zum Filtern nach Kategorie den Abfragezeichenfolgenparameter `filter`, wenn Sie den Endpunkt der Azure AD-Berichterstellungs-API aufrufen.
+
+```HTTP
+https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
+```
 
 ### <a name="powershell-script"></a>PowerShell-Skript
-Das folgende Skript bietet ein Beispiel für die Verwendung von PowerShell zur Abfrage der Azure AD-Berichterstellungs-API und zum Speichern der Ergebnisse als JSON-Datei:
+
+Im folgenden PowerShell-Skript sehen Sie ein Beispiel für das Abfragen der Azure AD-Berichterstellungs-API. Nach dem Abfragen der API werden die protokollierten Ereignisse an die Standardausgabe ausgegeben, und dann wird die JSON-Ausgabe in eine Datei geschrieben.
+
+Sie können dieses Skript in der [Azure Cloud Shell](../cloud-shell/overview.md) ausprobieren. Sie müssen es dann mit Ihrer Anwendungs-ID, dem Schlüssel und dem Namen Ihres Azure AD B2C-Mandanten aktualisieren.
 
 ```powershell
-# This script will require registration of a Web Application in Azure Active Directory (see https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)
+# This script requires the registration of a Web Application in Azure Active Directory:
+# https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a Globally Unique ID (registered by Global Admin)
-$ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client Key/Secret string
+$ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a GUID (registered by Global Admin)
+$ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client secret/key
+$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
 $loginURL       = "https://login.microsoftonline.com"
-$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # AAD B2C Tenant; for example, contoso.onmicrosoft.com
-$resource       = "https://graph.windows.net"             # Azure AD Graph API resource URI
+$resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
 Write-Output "Searching for events starting $7daysago"
 
@@ -97,7 +156,7 @@ $oauth      = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2
 if ($oauth.access_token -ne $null) {
     $i=0
     $headerParams = @{'Authorization'="$($oauth.token_type) $($oauth.access_token)"}
-    $url = 'https://graph.windows.net/' + $tenantdomain + '/activities/audit?api-version=beta&$filter=category eq ''B2C''and activityDate gt ' + $7daysago
+    $url = "https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?`$filter=loggedByService eq 'B2C' and activityDateTime gt  " + $7daysago
 
     # loop through each query page (1 through n)
     Do {
@@ -118,3 +177,72 @@ if ($oauth.access_token -ne $null) {
     Write-Host "ERROR: No Access Token"
 }
 ```
+
+Nachfolgend sehen Sie die JSON-Darstellung des Beispielsaktivitätsereignisses, das weiter oben in diesem Artikel erörtert wurde:
+
+```JSON
+{
+    "id": "B2C_DQO3J_4984536",
+    "category": "Authentication",
+    "correlationId": "00000000-0000-0000-0000-000000000000",
+    "result": "success",
+    "resultReason": "N/A",
+    "activityDisplayName": "Issue an id_token to the application",
+    "activityDateTime": "2019-09-14T18:13:17.0618117Z",
+    "loggedByService": "B2C",
+    "operationType": "",
+    "initiatedBy": {
+        "user": null,
+        "app": {
+            "appId": "00000000-0000-0000-0000-000000000000",
+            "displayName": null,
+            "servicePrincipalId": null,
+            "servicePrincipalName": "00000000-0000-0000-0000-000000000000"
+        }
+    },
+    "targetResources": [
+        {
+            "id": "00000000-0000-0000-0000-000000000000",
+            "displayName": null,
+            "type": "User",
+            "userPrincipalName": null,
+            "groupType": null,
+            "modifiedProperties": []
+        }
+    ],
+    "additionalDetails": [
+        {
+            "key": "TenantId",
+            "value": "test.onmicrosoft.com"
+        },
+        {
+            "key": "PolicyId",
+            "value": "B2C_1A_signup_signin"
+        },
+        {
+            "key": "ApplicationId",
+            "value": "00000000-0000-0000-0000-000000000000"
+        },
+        {
+            "key": "Client",
+            "value": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
+        },
+        {
+            "key": "IdentityProviderName",
+            "value": "facebook"
+        },
+        {
+            "key": "IdentityProviderApplicationId",
+            "value": "0000000000000000"
+        },
+        {
+            "key": "ClientIpAddress",
+            "value": "127.0.0.1"
+        }
+    ]
+}
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Sie können weitere Verwaltungsaufgaben automatisieren, z. B. das [Verwalten von Benutzern mit .NET](active-directory-b2c-devquickstarts-graph-dotnet.md).

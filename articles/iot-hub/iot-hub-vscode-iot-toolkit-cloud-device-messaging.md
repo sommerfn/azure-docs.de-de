@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 5b74524a05317cf22160561a4a001e88f9215953
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.openlocfilehash: 1289e9c8f8cfc9360c9b2325507b43bab3a69028
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571095"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67838511"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub mithilfe der Azure IoT-Tools für Visual Studio Code.
 
@@ -56,17 +56,17 @@ Sie erfahren, wie Sie mit den Azure IoT-Tools für Visual Studio Code Gerät-zu-
 5. In der Geräteliste wird nach wenigen Sekunden die Registerkarte **Azure IoT Hub-Geräte** angezeigt.
 
    > [!Note]
-   > Sie können die Einrichtung auch abschließen, indem Sie auf **Set IoT Hub Connection String** (IoT Hub-Verbindungszeichenfolge festlegen) klicken. Geben Sie in das Popupfenster die Verbindungszeichenfolge für den IoT Hub ein, mit dem Ihr IoT-Gerät eine Verbindung herstellt.
+   > Sie können die Einrichtung auch abschließen, indem Sie auf **Set IoT Hub Connection String** (IoT Hub-Verbindungszeichenfolge festlegen) klicken. Geben Sie in das Popupfenster die **iothubowner**-Verbindungszeichenfolge der Richtlinie für den IoT-Hub ein, mit dem Ihr IoT-Gerät eine Verbindung herstellt.
 
 ## <a name="monitor-device-to-cloud-messages"></a>Überwachen von Gerät-zu-Cloud-Nachrichten
 
 Um Nachrichten zu überwachen, die von Ihrem Gerät an Ihren IoT Hub gesendet werden, gehen Sie folgendermaßen vor:
 
-1. Klicken Sie mit der rechten Maustaste auf Ihr Gerät, und klicken Sie auf **Überwachung von D2C-Nachrichten starten**.
+1. Klicken Sie mit der rechten Maustaste auf Ihr Gerät, und klicken Sie auf **Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts starten).
 
 2. Die überwachten Nachrichten werden in der Ansicht **AUSGABE** > **Azure IoT Hub Toolkit** angezeigt.
 
-3. Um die Überwachung anzuhalten, klicken Sie mit der rechten Maustaste auf die Ansicht **AUSGABE**, und klicken Sie auf **Überwachung von D2C-Nachrichten beenden**.
+3. Um die Überwachung anzuhalten, klicken Sie mit der rechten Maustaste auf die Ansicht **AUSGABE**, und klicken Sie auf **Stop Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts beenden).
 
 ## <a name="send-cloud-to-device-messages"></a>Senden von C2D-Nachrichten.
 

@@ -4,18 +4,17 @@ description: Erfahren Sie, wie Sie auf der Grundlage häufiger Muster verschiede
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 0c1dbbae5e4be965f195b5ea4fc88b1bc5fb4f87
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: db6f4f938b1555091dc51e310d4d31f96f93200c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887181"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097354"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions-Muster für Bindungsausdrücke
 
@@ -147,7 +146,7 @@ Beispielsweise unterstützt ein Azure Queue Storage-Trigger die folgenden Eigens
 * QueueTrigger – Auslösen von Nachrichteninhalt, wenn gültige Zeichenfolge
 * DequeueCount
 * ExpirationTime
-* id
+* Id
 * InsertionTime
 * NextVisibleTime
 * PopReceipt

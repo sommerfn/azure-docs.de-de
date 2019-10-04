@@ -1,19 +1,18 @@
 ---
 title: Verwenden einer Azure-Dateifreigabe mit Windows | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Azure-Dateifreigabe mit Windows und Windows Server verwenden.
-services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/07/2018
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 315bad5c4ffc3d5e8909c86cb8de703e9cb941b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 831c771da385ef6faeba194878ca53ede34ccc0a
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048842"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68816635"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
@@ -31,11 +30,11 @@ Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die en
 | Windows 8.1            | SMB 3.0     | Ja                   | Ja                  |
 | Windows Server 2012 R2 | SMB 3.0     | Ja                   | Ja                  |
 | Windows Server 2012    | SMB 3.0     | Ja                   | Ja                  |
-| Windows 7              | SMB 2.1     | Ja                   | Nein                    |
-| Windows Server 2008 R2 | SMB 2.1     | Ja                   | Nein                    |
+| Windows 7              | SMB 2.1     | Ja                   | Nein                   |
+| Windows Server 2008 R2 | SMB 2.1     | Ja                   | Nein                   |
 
-<sup>1</sup>Windows 10, Versionen 1507, 1607, 1703, 1709, 1803 und 1809  
-<sup>2</sup>Windows Server, Versionen 1709 und 1803
+<sup>1</sup>Windows 10, Versionen 1507, 1607, 1703, 1709, 1803, 1809 und 1903.  
+<sup>2</sup>Windows Server, Versionen 1803, 1809 und 1903.
 
 > [!Note]  
 > Es empfiehlt sich, immer die neueste KB für Ihre Windows-Version zu verwenden.
@@ -48,7 +47,7 @@ Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die en
 
 * **Speicherkontoschlüssel**: Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den primären (oder sekundären) Speicherschlüssel. SAS-Schlüssel können derzeit nicht zum Einbinden verwendet werden.
 
-* **Stellen Sie sicher, Port 445 geöffnet ist**: Das SMB-Protokoll erfordert dass TCP-Port 445 geöffnet ist. Wenn Port 445 gesperrt ist, sind keine Verbindungen möglich. Mithilfe des Cmdlets `Test-NetConnection` können Sie überprüfen, ob Ihre Firewall Port 445 blockiert. Informationen zu verschiedenen Möglichkeiten, den blockierten Port 445 zu umgehen, finden Sie [hier](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
+* **Stellen Sie sicher, Port 445 geöffnet ist**: Das SMB-Protokoll erfordert dass TCP-Port 445 geöffnet ist. Wenn Port 445 gesperrt ist, sind keine Verbindungen möglich. Mithilfe des Cmdlets `Test-NetConnection` können Sie überprüfen, ob Ihre Firewall Port 445 blockiert. Informationen zu verschiedenen Möglichkeiten, den blockierten Port 445 zu umgehen, finden Sie [hier](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
 
     Für den folgenden PowerShell-Code wird vorausgesetzt, dass Sie das Azure PowerShell-Modul installiert haben. Weitere Informationen finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps). Denken Sie daran, `<your-storage-account-name>` und `<your-resource-group-name>` durch die entsprechenden Namen für Ihr Speicherkonto zu ersetzen.
 
@@ -234,7 +233,7 @@ Die folgende Tabelle enthält ausführliche Informationen zum Status von SMB 1 f
 
 | Windows-Version                           | SMB 1-Standardstatus | Deaktivierungs-/Entfernungsmethode       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server 2019 (Vorschauversion)             | Deaktiviert             | Entfernen mit Windows-Funktion |
+| Windows Server 2019                       | Deaktiviert             | Entfernen mit Windows-Funktion |
 | Windows Server, Versionen ab 1709            | Deaktiviert             | Entfernen mit Windows-Funktion |
 | Windows 10, Versionen ab 1709                | Deaktiviert             | Entfernen mit Windows-Funktion |
 | Windows Server 2016                       | Enabled              | Entfernen mit Windows-Funktion |
@@ -246,7 +245,7 @@ Die folgende Tabelle enthält ausführliche Informationen zum Status von SMB 1 f
 | Windows 7                                 | Enabled              | Deaktivieren mit Registrierung       | 
 
 ### <a name="auditing-smb-1-usage"></a>Überwachung der Verwendung von SMB 1
-> Gilt für Windows Server 2019 (Vorschauversion), den halbjährlichen Windows Server-Kanal (Versionen 1709 und 1803), Windows Server 2016, Windows 10 (Versionen 1507, 1607, 1703, 1709 und 1803), Windows Server 2012 R2 und Windows 8.1
+> Gilt für Windows Server 2019, den halbjährlichen Windows Server-Kanal (Versionen 1709 und 1803), Windows Server 2016, Windows 10 (Versionen 1507, 1607, 1703, 1709 und 1803), Windows Server 2012 R2 und Windows 8.1
 
 Vor dem Entfernen von SMB 1 in Ihrer Umgebung kann es von Vorteil sein, die Verwendung von SMB 1 zu überwachen, um festzustellen, ob Clients durch die Änderung beschädigt werden. Wenn Anforderungen für SMB-Dateifreigaben mit SMB 1 erfolgen, wird im Ereignisprotokoll unter `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit` ein Überwachungsereignis aufgezeichnet. 
 
@@ -260,7 +259,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>Entfernen von SMB 1 von Windows Server
-> Gilt für Windows Server 2019 (Vorschauversion), den halbjährlichen Windows Server-Kanal (Versionen 1709 und 1803), Windows Server 2016, Windows Server 2012 R2
+> Gilt für Windows Server 2019, den halbjährlichen Windows Server-Kanal (Versionen 1709 und 1803), Windows Server 2016, Windows Server 2012 R2
 
 Zum Entfernen von SMB 1 von einer Windows Server-Instanz führen Sie das folgende Cmdlet in einer PowerShell-Sitzung mit erhöhten Rechten aus:
 

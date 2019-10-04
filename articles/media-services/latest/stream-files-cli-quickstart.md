@@ -1,6 +1,6 @@
 ---
 title: Streamen von Videodateien mit Azure Media Services und der Azure CLI | Microsoft-Dokumentation
-description: Führen Sie die in diesem Schnellstart beschriebenen Schritte aus, um ein neues Azure Media Services-Konto zu erstellen, eine Datei zu codieren und in Azure Media Player zu streamen.
+description: Führen Sie die in diesem Tutorial beschriebenen Schritte aus, um ein neues Azure Media Services-Konto zu erstellen, eine Datei zu codieren und in Azure Media Player zu streamen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,24 +9,24 @@ editor: ''
 keywords: azure media services, streamen
 ms.service: media-services
 ms.workload: media
-ms.topic: quickstart
+ms.topic: tutorial
 ms.custom: ''
-ms.date: 02/19/2019
+ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: a323cbe4188207fa77525648297b366c9c57121b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 58193a94d09dee5df611acf5d98c8661dd18abbb
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244722"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639969"
 ---
-# <a name="quickstart-stream-video-files---cli"></a>Schnellstart: Streamen von Videodateien: CLI
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---cli"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos – CLI
 
-In dieser Schnellstartanleitung wird veranschaulicht, wie Sie Videos auf einfache Weise mit vielen Browsern und Geräten codieren und streamen können, indem Sie Azure Media Services und die Azure CLI verwenden. Sie können eingegebenen Inhalt angeben, indem Sie HTTPS- oder SAS-URLs oder Pfade zu Dateien in Azure-Blobspeicher verwenden.
+In diesem Tutorial wird veranschaulicht, wie Sie Videos auf einfache Weise mit vielen Browsern und Geräten codieren und streamen können, indem Sie Azure Media Services und die Azure CLI verwenden. Sie können eingegebenen Inhalt angeben, indem Sie HTTPS- oder SAS-URLs oder Pfade zu Dateien in Azure-Blobspeicher verwenden.
 
 Im Beispiel in diesem Artikel werden Inhalte codiert, die Sie über eine HTTPS-URL zugänglich machen. Media Services v3 unterstützt derzeit keine segmentierte Transfercodierung über HTTPS-URLs.
 
-Nachdem Sie diese Schnellstartanleitung durchgearbeitet haben, sind Sie in der Lage, ein Video zu streamen.  
+Am Ende dieses Tutorials sind Sie in der Lage, ein Video zu streamen.  
 
 ![Video abspielen](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -83,7 +83,7 @@ Sie erhalten in etwa folgende Antwort:
 
 ## <a name="start-the-streaming-endpoint"></a>Starten des Streamingendpunkts
 
-Mit dem folgenden Azure CLI-Befehl wird der Standard-**Streamingendpunkt** gestartet.
+Mit dem folgenden Azure CLI-Befehl wird der standardmäßige **Streamingendpunkt** gestartet.
 
 ```azurecli
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
@@ -342,7 +342,7 @@ Hier sehen Sie ein Beispiel:
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Ressourcen in der Ressourcengruppe einschließlich der in dieser Schnellstartanleitung erstellten Media Services- und Speicherkonten nicht mehr benötigen, sollten Sie die Ressourcengruppe löschen.
+Wenn Sie die Ressourcen in der Ressourcengruppe einschließlich der in diesem Tutorial erstellten Media Services- und Speicherkonten nicht mehr benötigen, löschen Sie die Ressourcengruppe.
 
 Führen Sie diesen CLI-Befehl aus:
 
@@ -350,10 +350,7 @@ Führen Sie diesen CLI-Befehl aus:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="see-also"></a>Weitere Informationen
-
-Siehe [Job error codes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode) (Auftragsfehlercodes).
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [CLI-Beispiele](cli-samples.md)
+[Media Services: Übersicht](media-services-overview.md)
+

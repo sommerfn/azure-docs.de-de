@@ -5,13 +5,13 @@ author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 649a842c8c8890713bda938c8e11740c5c8be7aa
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: 1065abecb1f0ef57eb13b1ec3f194f07ae01eaee
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009707"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976792"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>Einrichten des Unternehmensglossars für gesteuertes Markieren
 
@@ -36,11 +36,11 @@ Das Unternehmensglossar ist nur in der Standard Edition von Azure Data Catalog v
 
 Sie können auf das Unternehmensglossar über die Option **Glossar** im Navigationsmenü des Data Catalog-Portals zugreifen.  
 
-![Zugriff auf das Unternehmensglossar](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
+![Data Catalog: Zugriff auf das Unternehmensglossar](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
 Data Catalog-Administratoren und Mitglieder der Rolle „Glossaradministratoren“ können Glossarbegriffe im Unternehmensglossar erstellen, bearbeiten und löschen. Alle Data Catalog-Benutzer können die Begriffsdefinitionen anzeigen und Datenobjekte mit Glossarbegriffen markieren.
 
-![Hinzufügen eines neuen Glossarbegriffs](./media/data-catalog-how-to-business-glossary/02-new-term.png)
+![Data Catalog: Hinzufügen eines neuen Glossarbegriffs](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>Erstellen von Glossarbegriffen
 

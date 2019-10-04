@@ -1,29 +1,25 @@
 ---
-title: Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten – Azure Logic Apps | Microsoft-Dokumentation
+title: Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten – Azure Logic Apps
 description: Einrichten von HTTP-Endpunkten zum Aufrufen, Auslösen oder Schachteln von Workflows für Azure Logic Apps
 services: logic-apps
-keywords: Workflows, HTTP-Endpunkte
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
 ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: integration
+author: ecfan
+ms.author: klam
+ms.reviewer: jehollan, klam, LADocs
+manager: carmonm
+ms.assetid: 73ba2a70-03e9-4982-bfc8-ebfaad798bc2
+ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.author: klam; LADocs
-ms.openlocfilehash: c58b39f8e2d49eeb3e64c7ffce1d34d7a7b7b780
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f93e90ef442740e4fb17f166023fbe3d5f0bae66
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904370"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875949"
 ---
-# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps
+# <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-azure-logic-apps"></a>Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Azure Logic Apps
 
 Sie können synchrone HTTP-Endpunkte nativ als Trigger in Logik-Apps verfügbar machen, sodass Sie Ihre Logik-Apps über eine URL auslösen oder aufrufen können. Sie können Workflows auch durch die Verwendung eines Musters aufrufbarer Endpunkte in Ihren Logik-Apps schachteln.
 
@@ -298,7 +294,7 @@ A: Ja, HTTP-Endpunkte unterstützen die erweiterte Konfiguration über [**API Ma
 
 A: Hier ist eine Zusammenfassung dieser Änderungen:
 
-| Vorschau vom 1. Dezember 2014 | 1. Juni 2016 |
+| Vorschau vom 1. Dezember 2014 | 1\. Juni 2016 |
 | --- | --- |
 | Klicken auf die API-App **HTTP-Listener** |Klicken auf **Manueller Trigger** (keine API-App erforderlich) |
 | HTTP-Listener-Einstellung*Sendet Antwort automatisch* |Hinzufügen oder Nichthinzufügen einer **Response**-Aktion zur Workflowdefinition |

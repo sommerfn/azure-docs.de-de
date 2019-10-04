@@ -1,7 +1,6 @@
 ---
 title: Verwenden von MapReduce und Curl mit Hadoop in HDInsight – Azure
 description: Erfahren Sie, wie Sie MapReduce-Aufträge mit Apache Hadoop in HDInsight mithilfe von Curl remote ausführen.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: b422074c33f52a6819d2a05144a85768a2e484a0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e4968310459097fc6a00f7c453846fe61726c3d5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011913"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64716116"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Ausführen von MapReduce-Aufträgen mit Apache Hadoop in HDInsight mithilfe von REST
 
@@ -78,7 +77,7 @@ Erfahren Sie, wie mithilfe der Apache Hive WebHCat-REST-API MapReduce-Aufträge 
    * **-u**: Gibt den Benutzernamen und das Kennwort für die Authentifizierung der Anforderung an
    * **-G**: Gibt an, dass dieser Vorgang eine GET-Anforderung ist
 
-   Der Anfang des URI (**https://CLUSTERNAME.azurehdinsight.net/templeton/v1**) ist für alle Anforderungen gleich.
+   Der Anfang des URI ( **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** ) ist für alle Anforderungen gleich.
 
 4. Verwenden Sie den folgenden Befehl, um einen MapReduce-Auftrag zu übermitteln.
 

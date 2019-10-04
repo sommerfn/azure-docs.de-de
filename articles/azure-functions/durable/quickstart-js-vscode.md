@@ -7,16 +7,16 @@ author: ColbyTresness
 manager: jeconnoc
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, Compute, serverlose Architektur
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
-ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: eade9f4e2a956a6542b69e93b0102169ddd32ccf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: glenga
+ms.reviewer: azfuncdf, cotresne
+ms.openlocfilehash: b47e828f3b8d760594cb04ba40ceaa7248050c52
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281232"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933471"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Erstellen Ihrer ersten dauerhaften Funktion in JavaScript
 
@@ -32,7 +32,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Installieren Sie [Visual Studio Code](https://code.visualstudio.com/download).
 
-* Stellen Sie sicher, dass Sie über die [neuesten Azure Functions-Tools](../functions-develop-vs.md#check-your-tools-version) verfügen.
+* Stellen Sie sicher, dass Sie über die neueste Version der [Azure Functions Core Tools](../functions-run-local.md) verfügen.
 
 * Vergewissern Sie sich bei Verwendung eines Windows-Computers, dass der [Azure-Speicheremulator](../../storage/common/storage-use-emulator.md) installiert ist und ausgeführt wird. Auf einem Mac- oder Linux-Computer muss ein echtes Azure-Speicherkonto verwendet werden.
 
@@ -48,82 +48,74 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 1. Installieren Sie das `durable-functions` npm-Paket, indem Sie `npm install durable-functions` im Stammverzeichnis der Funktions-App ausführen.
 
-## <a name="create-a-starter-function"></a>Erstellen einer Startfunktion
+## <a name="creating-your-functions"></a>Erstellen Ihrer Funktionen
+
+Wir werden nun die drei Funktionen erstellen, die Sie für den Einstieg in Durable Functions benötigen: einen HTTP-Starter, einen Orchestrator und eine Aktivitätsfunktion. Der HTTP-Starter initiiert die gesamte Lösung, und der Orchestrator wird Arbeit an verschiedene Aktivitätsfunktionen verteilen.
+
+### <a name="http-starter"></a>HTTP-Starter
 
 Erstellen Sie zunächst eine per HTTP ausgelöste Funktion, die eine Orchestrierung für die dauerhafte Funktion startet.
 
-1. Wählen Sie in **Azure Functions** das Symbol zum Erstellen einer Funktion aus.
+1. Wählen Sie in *Azure Functions* das Symbol zum **Erstellen einer Funktion** aus.
 
     ![Erstellen einer Funktion](./media/quickstart-js-vscode/create-function.png)
 
-2. Wählen Sie den Ordner mit dem Funktions-App-Projekt und dann die Funktionsvorlage **HTTP-Trigger** aus.
+2. Wählen Sie den Ordner mit dem Funktions-App-Projekt und dann die Funktionsvorlage **HTTP-Starter für dauerhafte Funktionen** aus.
 
-    ![Auswählen der Vorlage für den HTTP-Trigger](./media/quickstart-js-vscode/create-function-choose-template.png)
+    ![Auswählen der Vorlage für den HTTP-Starter](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. Geben Sie als Funktionsname `HttpStart` ein, und drücken Sie die EINGABETASTE. Wählen Sie anschließend die Authentifizierung **Anonym** aus.
+3. Behalten Sie den Standardnamen `DurableFunctionsHttpStart` bei, und drücken Sie die ** **EINGABETASTE**. Wählen Sie anschließend die Authentifizierung **Anonym** aus.
 
     ![Auswählen der anonymen Authentifizierung](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 
-    Eine Funktion wird in Ihrer gewählten Sprache anhand der Vorlage für eine über HTTP ausgelöste Funktion erstellt.
-
-4. Ersetzen Sie „index.js“ durch folgenden JavaScript-Code:
-
-    [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
-
-5. Ersetzen Sie „function.json“ durch folgenden JSON-Code:
-
-    [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
-
 Sie verfügen nun über einen Einstiegspunkt für Ihre dauerhafte Funktion. Fügen Sie als Nächstes einen Orchestrator hinzu.
 
-## <a name="create-an-orchestrator-function"></a>Erstellen einer Orchestratorfunktion
+### <a name="orchestrator"></a>Orchestrator
 
-Als Nächstes erstellen Sie eine weitere Funktion, die als Orchestrator fungiert. Der Einfachheit halber verwenden wir die HTTP-Triggerfunktionsvorlage. Der eigentliche Funktionscode wird durch den Orchestratorcode ersetzt.
+Nun erstellen wir einen Orchestrator für die Koordinierung von Aktivitätsfunktionen.
 
-1. Erstellen Sie mithilfe der Schritte aus dem vorherigen Abschnitt eine zweite Funktion unter Verwendung der HTTP-Triggervorlage. Nennen Sie diese Funktion `OrchestratorFunction`.
+1. Wählen Sie in *Azure Functions* das Symbol zum **Erstellen einer Funktion** aus.
 
-2. Öffnen Sie die Datei „index.js“ für die neue Funktion, und ersetzen Sie den Inhalt durch folgenden Code:
+    ![Erstellen einer Funktion](./media/quickstart-js-vscode/create-function.png)
 
-    [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
+2. Wählen Sie den Ordner mit dem Funktions-App-Projekt und dann die Funktionsvorlage **Orchestrator für dauerhafte Funktionen** aus. Behalten Sie den Standardnamen „DurableFunctionsOrchestrator“ bei.
 
-3. Öffnen Sie die Datei „function.json“, und ersetzen Sie sie durch folgenden JSON-Code:
-
-    [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/function.json)]
+    ![Auswählen der Orchestratorvorlage](./media/quickstart-js-vscode/create-function-choose-template.png)
 
 Damit haben Sie einen Orchestrator für die Koordinierung von Aktivitätsfunktionen hinzugefügt. Fügen Sie als Nächstes die referenzierte Aktivitätsfunktion hinzu.
 
-## <a name="create-an-activity-function"></a>Erstellen einer Aktivitätsfunktion
+### <a name="activity"></a>Aktivität
 
-1. Erstellen Sie mithilfe der Schritte aus den vorherigen Abschnitten eine dritte Funktion unter Verwendung der HTTP-Triggervorlage. Nennen Sie diese Funktion `E1_SayHello`.
+Nun erstellen wir eine Aktivitätsfunktion, um die Arbeit der Lösung tatsächlich auszuführen.
 
-2. Öffnen Sie die Datei „index.js“ für die neue Funktion, und ersetzen Sie den Inhalt durch folgenden Code:
+1. Wählen Sie in *Azure Functions* das Symbol zum **Erstellen einer Funktion** aus.
 
-    [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
+    ![Erstellen einer Funktion](./media/quickstart-js-vscode/create-function.png)
 
-3. Ersetzen Sie „function.json“ durch folgenden JSON-Code:
+2. Wählen Sie den Ordner mit dem Funktions-App-Projekt und dann die Funktionsvorlage **Aktivität für dauerhafte Funktionen** aus. Behalten Sie den Standardnamen „Hello“ bei.
 
-    [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
+    ![Auswählen der Aktivitätsvorlage](./media/quickstart-js-vscode/create-function-choose-template.png)
 
 Sie haben nun alle Komponenten hinzugefügt, die erforderlich sind, um eine Orchestrierung zu starten und Aktivitätsfunktionen zu verketten.
 
 ## <a name="test-the-function-locally"></a>Lokales Testen der Funktion
 
-Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem lokalen Entwicklungscomputer ausführen. Sie werden beim ersten Starten einer Funktion in Visual Studio Code zum Installieren dieser Tools aufgefordert.  
+Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem lokalen Entwicklungscomputer ausführen. Sie werden beim ersten Starten einer Funktion in Visual Studio Code zum Installieren dieser Tools aufgefordert.
 
-1. Starten Sie bei Verwendung eines Windows-Computers den Azure-Speicheremulator, und vergewissern Sie sich, dass die Eigenschaft **AzureWebJobsStorage** von „local.settings.json“ auf `UseDevelopmentStorage=true` festgelegt ist. 
+1. Starten Sie bei Verwendung eines Windows-Computers den Azure-Speicheremulator, und vergewissern Sie sich, dass die Eigenschaft **AzureWebJobsStorage** von *local.settings.json* auf `UseDevelopmentStorage=true` festgelegt ist.
 
     Für Storage Emulator 5.8 muss die Eigenschaft **AzureWebJobsSecretStorageType** von „local.settings.json“ auf `files` festgelegt sein. Bei Verwendung eines Mac- oder Linux-Computers muss die Eigenschaft **AzureWebJobsStorage** auf die Verbindungszeichenfolge eines vorhandenen Azure-Speicherkontos festgelegt werden. Ein Speicherkonto wird weiter unten in diesem Artikel erstellt.
 
 2. Legen Sie zum Testen der Funktion einen Breakpoint im Funktionscode fest, und drücken Sie F5, um das Funktions-App-Projekt zu starten. Die Ausgabe der Core Tools wird im Bereich **Terminal** angezeigt. Falls Sie Durable Functions zuvor noch nicht verwendet haben, wird die Durable Functions-Erweiterung installiert, und der Buildvorgang dauert ggf. einige Sekunden.
 
     > [!NOTE]
-    > Für JavaScript Durable Functions ist die Version **1.7.0** oder höher der Erweiterung **Microsoft.Azure.WebJobs.Extensions.DurableTask** erforderlich. Überprüfen Sie, ob die Version der Durable Functions-Erweiterung in Ihrer `extensions.csproj`-Datei diese Anforderung erfüllt. Wenn dies nicht der Fall ist, stoppen Sie Ihre Funktions-App, ändern Sie die Version und drücken Sie F5, um Ihre Funktions-App neu zu starten.
+    > Für JavaScript Durable Functions ist die Version **1.7.0** oder höher der Erweiterung **Microsoft.Azure.WebJobs.Extensions.DurableTask** erforderlich. Führen Sie den folgenden Befehl aus dem Stammordner Ihrer Azure Functions-App aus, um die Durable Functions-Erweiterung `func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.7.0` zu installieren.
 
 3. Kopieren Sie im Bereich **Terminal** den URL-Endpunkt Ihrer über HTTP ausgelösten Funktion.
 
     ![Lokale Azure-Ausgabe](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
 
-4. Ersetzen Sie `{functionName}` durch `OrchestratorFunction`.
+4. Ersetzen Sie `{functionName}` durch `DurableFunctionsOrchestrator`.
 
 5. Senden Sie mit einem Tool wie [Postman](https://www.getpostman.com/) oder [cURL](https://curl.haxx.se/) eine HTTP-POST-Anforderung an den URL-Endpunkt.
 
@@ -170,4 +162,4 @@ Nachdem Sie sichergestellt haben, dass die Funktion auf Ihrem lokalen Computer r
 Sie haben mit Visual Studio Code eine dauerhafte JavaScript-basierte Funktions-App erstellt und veröffentlicht.
 
 > [!div class="nextstepaction"]
-> [Informationen zu gängigen Mustern für dauerhafte Funktionen](durable-functions-concepts.md)
+> [Informationen zu gängigen Mustern für dauerhafte Funktionen](durable-functions-overview.md#application-patterns)

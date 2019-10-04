@@ -5,18 +5,18 @@ author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 03/18/2019
+ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: b432d8557c4244d58c23e7b068874dd747f6249f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: eda5a2a6d2dae58f8da72deccbb89a34c7f21dae
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256463"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204014"
 ---
-# <a name="sample---audit-if-specified-applications-are-not-installed-inside-linux-vms"></a>Beispiel: Überwachung, wenn die angegebenen Anwendungen nicht auf virtuellen Linux-Computern installiert sind
+# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Beispiel: Überwachung, wenn die angegebenen Anwendungen nicht auf virtuellen Linux-Computern installiert sind
 
-Die Policy-Initiative dieser Gastkonfiguration überwacht, ob die angegebene Anwendung auf virtuellen Linux-Computern installiert ist. Die ID der dieser integrierten Initiative ist `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
+Diese Initiative der Policy-Gastkonfiguration erstellt ein Überwachungsereignis, wenn die angegebenen Anwendungen nicht auf virtuellen Linux-Computern installiert sind. Die ID der dieser integrierten Initiative ist `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
 
 > [!IMPORTANT]
 > Alle Initiativen für Gastkonfigurationen bestehen aus den Richtliniendefinitionen **audit** und **deployIfNotExists**. Wenn nur eine der Richtliniendefinitionen zugewiesen wird, funktionieren Gastkonfigurationen nicht ordnungsgemäß.
@@ -32,9 +32,9 @@ Sie können dieses Beispiel wie folgt zuweisen:
 
 Diese [Gastkonfigurationsinitiative](../concepts/guest-configuration.md) umfasst die folgenden Richtlinien:
 
-- [audit:](#audit-definition) überwacht, ob eine Anwendung auf Linux-VMs installiert ist
+- [Überwachung](#audit-definition): Überwachung, wenn Anwendungen nicht auf virtuellen Linux-Computern installiert sind
   - ID: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
-- [deployIfNotExists:](#deployIfNotExists-definition) stellt eine VM-Erweiterung bereit, um die Installation einer Anwendung auf Linux-VMs zu überwachen
+- [deployIfNotExists](#deployIfNotExists-definition): Bereitstellen einer VM-Erweiterung zur Überwachung auf nicht in Linux-VMs installierte Anwendungen
   - ID: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
 
 ### <a name="initiative-definition"></a>Initiativdefinition
@@ -45,7 +45,9 @@ Die Initiative wird erstellt, indem Sie die Definitionen **audit** und **deployI
 
 ### <a name="initiative-parameters"></a>Initiativparameter
 
-|Name |Typ ||Beschreibung | |---|---||---| |applicationName |Zeichenfolge |Anwendungsnamen. Beispiel: „python“, „powershell“ oder eine durch Trennzeichen getrennte Liste, z. B. „python,powershell“. Verwenden Sie \* als Platzhalterzeichen, z. B. „power\*“.|
+|NAME |Type |BESCHREIBUNG |
+|---|---|---|
+|applicationName |Zeichenfolge |Anwendungsnamen. Beispiel: „python“, „powershell“ oder eine durch Trennzeichen getrennte Liste, z. B. „python,powershell“. Verwenden Sie \* als Platzhalterzeichen, z.B. „power\*“. |
 
 Beim Erstellen einer Zuweisung über PowerShell oder die Azure CLI können die Parameterwerte mithilfe von `-PolicyParameter` (PowerShell) bzw. `--params` (Azure CLI) als JSON-Code in einer Zeichenfolge oder über eine Datei übergeben werden.
 PowerShell unterstützt darüber hinaus das `-PolicyParameterObject`-Element. Dafür muss an das Cmdlet eine Name-Wert-Hashtabelle übergeben werden. Dabei steht **Name** für den Parameternamen und **Wert** für den einzelnen Wert bzw. das Array von Werten, der bzw. das während der Zuweisung übergeben wird.
@@ -106,7 +108,7 @@ Nachdem die Definitionen **audit** und **deployIfNotExists** im Portal erstellt 
 
 ### <a name="create-copy-of-audit-definition"></a>Erstellen einer Kopie der Definition von „audit“
 
-[![Bereitstellen des Policy-Beispiels in Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[![Bereitstellen des Policy-Beispiels in Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
 [![Bereitstellen des Policy-Beispiels in Azure Gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
 
 Bei der Verwendung dieser Schaltflächen für die Bereitstellung über das Portal wird eine Kopie der Richtliniendefinition **audit** erstellt.
@@ -114,7 +116,7 @@ Ohne die gekoppelte Richtliniendefinition **deployIfNotExists** würde die Gastk
 
 ### <a name="create-copy-of-deployifnotexists-definition"></a>Erstellen einer Kopie der Definition von „deployIfNotExists“
 
-[![Bereitstellen des Policy-Beispiels in Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[![Bereitstellen des Policy-Beispiels in Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
 [![Bereitstellen des Policy-Beispiels in Azure Gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
 
 Bei der Verwendung dieser Schaltflächen für die Bereitstellung über das Portal wird eine Kopie der Richtliniendefinition **deployIfNotExists** erstellt. Ohne die gekoppelte Richtliniendefinition **audit** würde die Gastkonfiguration nicht ordnungsgemäß funktionieren.

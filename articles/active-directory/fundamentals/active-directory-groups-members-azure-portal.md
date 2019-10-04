@@ -2,23 +2,23 @@
 title: Hinzufügen oder Entfernen von Gruppenmitgliedern – Azure Active Directory | Microsoft-Dokumentation
 description: Hier finden Sie Anleitungen zum Hinzufügen oder Entfernen von Mitgliedern zu bzw. aus einer Gruppe in Azure Active Directory.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/23/2018
-ms.author: lizross
+ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dafdf4c67e8d3d74109b3879fb0deacd79b1774
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f1c83c57be63ae9e2a4d4113accaefe8a2c2b525
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182237"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561966"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Hinzufügen oder Entfernen von Gruppenmitgliedern mithilfe von Azure Active Directory
 Mit Azure Active Directory können weiterhin Gruppenmitglieder hinzugefügt und entfernt werden.

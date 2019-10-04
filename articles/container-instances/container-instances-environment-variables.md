@@ -3,22 +3,25 @@ title: Festlegen von Umgebungsvariablen in Azure Container Instances
 description: Es wird beschrieben, wie Sie Umgebungsvariablen in den Containern festgelegen, die Sie in Azure Container Instances ausführen.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: 2ea85b2b04600708381423e16408ba34b1e27566
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 9cd62c378270da31079a38f89b040985105a4218
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904898"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68326036"
 ---
-# <a name="set-environment-variables"></a>Festlegen von Umgebungsvariablen
+# <a name="set-environment-variables-in-container-instances"></a>Festlegen von Umgebungsvariablen in Container Instances
 
-Das Festlegen von Umgebungsvariablen in Ihren Containerinstanzen ermöglicht es Ihnen, eine dynamische Konfiguration der Anwendung oder des Skripts bereitzustellen, die bzw. das vom Container ausgeführt wird. Um Umgebungsvariablen in einem Container festzulegen, geben Sie diese bei der Erstellung einer Containerinstanz an. Sie können Umgebungsvariablen beim Starten eines Containers über die [Azure CLI](#azure-cli-example), mit [Azure PowerShell](#azure-powershell-example) und im [Azure-Portal](#azure-portal-example) festlegen.
+Das Festlegen von Umgebungsvariablen in Ihren Containerinstanzen ermöglicht es Ihnen, eine dynamische Konfiguration der Anwendung oder des Skripts bereitzustellen, die bzw. das vom Container ausgeführt wird. Dies ist vergleichbar mit dem Befehlszeilenargument `--env` für `docker run`. 
 
-Wenn Sie z. B. das Microsoft-Containerimage [aci-wordcount][aci-wordcount] ausführen, können Sie dessen Verhalten ändern, indem Sie die folgenden Umgebungsvariablen angeben:
+Um Umgebungsvariablen in einem Container festzulegen, geben Sie diese bei der Erstellung einer Containerinstanz an. Dieser Artikel enthält Beispiele zum Festlegen von Umgebungsvariablen beim Starten eines Containers über die [Azure CLI](#azure-cli-example), mit [Azure PowerShell](#azure-powershell-example) und im [Azure-Portal](#azure-portal-example). 
+
+Wenn Sie z.B. das Microsoft-Containerimage [aci-wordcount][aci-wordcount] ausführen, können Sie dessen Verhalten ändern, indem Sie die folgenden Umgebungsvariablen angeben:
 
 *NumWords*: Die Anzahl der Wörter, die an STDOUT gesendet wird.
 
@@ -30,7 +33,7 @@ Wenn Sie Geheimnisse als Umgebungsvariablen weitergeben müssen, unterstützt Az
 
 ## <a name="azure-cli-example"></a>Azure CLI-Beispiel
 
-Um die Standardausgabe des [aci-wordcount][aci-wordcount]-Containers anzuzeigen, führen Sie ihn zunächst mit diesem [az container create][az-container-create]-Befehl aus (ohne Umgebungsvariablen):
+Um die Standardausgabe des Containers [aci-wordcount][aci-wordcount] anzuzeigen, führen Sie ihn zunächst mit diesem [az container create][az-container-create]-Befehl aus (ohne Umgebungsvariablen):
 
 ```azurecli-interactive
 az container create \
@@ -141,18 +144,15 @@ Azure:\
 
 ## <a name="azure-portal-example"></a>Azure-Portal-Beispiel
 
-Um Umgebungsvariablen beim Starten eines Containers im Azure-Portal festzulegen, geben Sie diese auf der Seite **Konfiguration** an, wenn Sie den Container erstellen.
+Um Umgebungsvariablen beim Starten eines Containers im Azure-Portal festzulegen, geben Sie diese auf der Seite **Erweitert** an, wenn Sie den Container erstellen.
 
-Wenn Sie die Bereitstellung mit dem Portal vornehmen, sind Sie derzeit auf drei Variablen beschränkt und müssen diese im folgenden Format eingeben: `"variableName":"value"`
-
-Um ein Beispiel anzuzeigen, starten Sie den Container [aci-wordcount][aci-wordcount] mit den Variablen *NumWords* und *MinLength*.
-
-1. Legen Sie unter **Konfiguration** die **Neustartrichtlinie** auf *Bei einem Fehler* fest.
-2. Geben Sie für die erste Variable `"NumWords":"5"` ein, wählen Sie unter **Weitere Umgebungsvariablen hinzufügen** die Option **Ja** aus, und geben Sie für die zweite Variable `"MinLength":"8"` ein. Wählen Sie **OK** aus, um den Container zu überprüfen, und stellen Sie ihn dann bereit.
+1. Legen Sie auf der Seite **Erweitert** die **Neustartrichtlinie** auf *Bei einem Fehler* fest.
+2. Geben Sie unter **Umgebungsvariablen** die Variable `NumWords` mit dem Wert `5` als erste Variable und `MinLength` mit dem Wert `8` als zweite Variable ein. 
+1. Wählen Sie **Überprüfen + erstellen** aus, um den Container zu überprüfen, und stellen Sie ihn dann bereit.
 
 ![Portalseite mit Umgebungsvariable, Aktivieren-Schaltfläche und Textfeldern][portal-env-vars-01]
 
-Klicken Sie zum Anzeigen der Protokolle des Containers unter **EINSTELLUNGEN** auf **Container** > **Protokolle**. Ähnlich wie in der in den vorherigen Abschnitten zur Befehlszeilenschnittstelle und zu PowerShell angezeigten Ausgabe sehen Sie, wie das Skriptverhalten durch die Umgebungsvariablen geändert wurde. Nur fünf Wörter werden angezeigt, jeweils mit einer minimalen Länge von acht Zeichen.
+Wählen Sie zum Anzeigen der Protokolle des Containers unter **Einstellungen** die Option **Container** und dann **Protokolle** aus. Ähnlich wie in der in den vorherigen Abschnitten zur Befehlszeilenschnittstelle und zu PowerShell angezeigten Ausgabe sehen Sie, wie das Skriptverhalten durch die Umgebungsvariablen geändert wurde. Nur fünf Wörter werden angezeigt, jeweils mit einer minimalen Länge von acht Zeichen.
 
 ![Portal mit der Containerprotokollausgabe][portal-env-vars-02]
 
@@ -241,7 +241,7 @@ my-secret-value
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Aufgabenbasierte Szenarien, z. B. Stapelverarbeitung eines großen Datasets mit mehreren Containern, können von benutzerdefinierten Umgebungsvariablen zur Laufzeit profitieren. Weitere Informationen zum Ausführen aufgabenbasierter Containern finden Sie unter [Ausführen von Aufgaben in Containern in Azure Container Instances](container-instances-restart-policy.md).
+Aufgabenbasierte Szenarien, z. B. Stapelverarbeitung eines großen Datasets mit mehreren Containern, können von benutzerdefinierten Umgebungsvariablen zur Laufzeit profitieren. Weitere Informationen zum Ausführen aufgabenbasierter Container finden Sie unter [Ausführen von Aufgaben in Containern mit Neustartrichtlinien](container-instances-restart-policy.md).
 
 <!-- IMAGES -->
 [portal-env-vars-01]: ./media/container-instances-environment-variables/portal-env-vars-01.png

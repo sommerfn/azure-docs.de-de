@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 14732b02e56d56baa032b8a3728ca892f4ad7d2f
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: c78fa8ec470f04bcd88ab403249f77a65120c707
+ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563583"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67550406"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Tutorial: Azure Active Directory-Integration in ForeSee CX Suite
 
@@ -78,12 +78,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit ForeSee CX Suite zu konfigurieren und zu testen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für ForeSee CX Suite](#configure-foresee-cx-suite-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines ForeSee CX Suite-Testbenutzers](#create-foresee-cx-suite-test-user)**, um eine Entsprechung für Britta Simon in ForeSee CX Suite zu haben, die mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für ForeSee CX Suite](#configure-foresee-cx-suite-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines ForeSee CX Suite-Testbenutzers](#create-foresee-cx-suite-test-user)** , um eine Entsprechung für Britta Simon in ForeSee CX Suite zu haben, die mit ihrer Darstellung in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -119,7 +119,7 @@ So konfigurieren Sie das einmalige Anmelden von Azure AD mit ForeSee CX Suite
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://cxsuite.foresee.com/`.
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: https://www.okta.com/saml2/service-provider/<UniqueID>
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: https:\//www.okta.com/saml2/service-provider/\<EindeutigeID>
 
     > [!Note]
     > Falls der Wert **Bezeichner** nicht automatisch aufgefüllt wird, geben Sie den Wert gemäß dem obigen Muster manuell ein. Der ID-Wert ist nicht der tatsächliche Wert. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von ForeSee CX Suite](mailto:support@foresee.com), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -194,7 +194,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf ForeSee CX Suite, dam
 
 ### <a name="create-foresee-cx-suite-test-user"></a>Erstellen eines ForeSee CX Suite-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in ForeSee CX Suite eine Benutzerin namens Britta Simon. Das [ForeSee CX Suite-Supportteam](mailto:support@foresee.com) kann Sie beim Hinzufügen von Benutzern oder Domänen unterstützen, die auf der ForeSee CX Suite-Plattform auf die Whitelist gesetzt werden sollen. Wird die Domäne vom Team hinzugefügt, werden Benutzer automatisch auf der ForeSee CX Suite-Plattform bereitgestellt. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in ForeSee CX Suite eine Benutzerin namens Britta Simon. Wenden Sie sich an das [Supportteam für ForeSee CX Suite](mailto:support@foresee.com), um die Benutzer oder die Domänen hinzuzufügen, die zur Zulassungsliste für die ForeSee CX Suite-Plattform hinzugefügt werden sollen. Wird die Domäne vom Team hinzugefügt, werden Benutzer automatisch auf der ForeSee CX Suite-Plattform bereitgestellt. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

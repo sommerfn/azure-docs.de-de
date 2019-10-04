@@ -1,21 +1,19 @@
 ---
 title: Wiederherstellen von Dateien aus Azure auf einer Windows Server-Instanz
 description: Dieses Tutorial enthält Informationen zum Wiederherstellen von Elementen aus Azure auf einer Windows-Server-Instanz.
-services: backup
-author: saurabhsensharma
-manager: shivamg
-keywords: Windows Server sichern; Wiederherstellen von Dateien unter Windows Server; Sicherung und Notfallwiederherstellung
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: tutorial
-ms.date: 2/14/2018
-ms.author: saurse
+ms.date: 02/14/2018
+ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: e05c80e52605e051bdd6815608ca8c12e1393727
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e03c085a9671ba84d3af63da658f749f09ebcdef
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607020"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210074"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Wiederherstellen von Dateien aus Azure auf einer Windows Server-Instanz
 

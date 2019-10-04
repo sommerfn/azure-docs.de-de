@@ -3,19 +3,20 @@ title: Häufig gestellte Fragen zu Projekt Akustik
 titlesuffix: Azure Cognitive Services
 description: Diese Seite enthält Antworten auf häufig gestellte Fragen zu Project Acoustics, darunter auch Fragen zu Downloadanweisungen sowie zum Bake-Vorgang.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: resources
+ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
-ms.openlocfilehash: 3426681aad19bbe01c0f7e88ca16e79c0b490c36
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.author: noelc
+ROBOTS: NOINDEX
+ms.openlocfilehash: f0484fc9fc2af5514ba0f5b61277146a51757057
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317305"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855025"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Projekt Akustik
 
@@ -27,9 +28,9 @@ Bei den Plug-Ins der Projekt Akustik-Suite handelt es sich um ein Akustiksystem,
 
 Sie können das Plug-In [Projekt Akustik mit Unity](https://www.microsoft.com/download/details.aspx?id=57346) oder das Plug-In [Projekt Akustik mit Unreal](https://www.microsoft.com/download/details.aspx?id=58090) herunterladen.
 
-## <a name="does-project-acoustics-support-x-platform"></a>Unterstützt Projekt Akustik die <x>-Plattform?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Unterstützt Projekt Akustik die &lt;x&gt;-Plattform?
 
-Die Unterstützung der Projekt Akustik-Plattform wird basierend auf den Kundenbedürfnissen entwickelt. Kontaktieren Sie uns in den [Projekt Akustik-Foren](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics), um nach Unterstützung für zusätzliche Plattformen zu fragen.
+Die Unterstützung der Projekt Akustik-Plattform wird basierend auf den Kundenbedürfnissen entwickelt. Kontaktieren Sie uns in den [Projekt Akustik-Foren zu Problemen](https://github.com/microsoft/ProjectAcoustics/issues), um nach Unterstützung für zusätzliche Plattformen zu fragen.
 
 ## <a name="is-azure-used-at-runtime"></a>Wird Azure zur Laufzeit verwendet?
 
@@ -45,7 +46,7 @@ Acoustics belegt etwa 0,01 % der CPU pro Quelle pro Frame. Die Speicherauslastun
  
 ## <a name="do-i-need-to-simplify-the-level-geometry-control-triangle-count-make-meshes-watertight"></a>Muss ich die Pegelgeometrie vereinfachen? Muss ich die Anzahl der Dreiecke steuern? Muss ich Gittermodelle wasserdicht machen?
 
- Nein. Das System erfasst die detaillierte Pegelgeometrie direkt. Sie wird zur internen Verarbeitung in Voxels konvertiert.
+Nein. Das System erfasst die detaillierte Pegelgeometrie direkt. Sie wird zur internen Verarbeitung in Voxels konvertiert.
  
 ## <a name="whats-in-the-runtime-lookup-table"></a>Was befindet sich in der Nachschlagetabelle für die Runtime?
 
@@ -57,7 +58,7 @@ Ja, Projekt Akustik konsultiert die Nachschlagetabelle und aktualisiert den Audi
  
 ## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Kann Projekt Akustik mit dynamischer Geometrie umgehen? Oder schließende Türen? Oder Wände, die entfernt werden?
 
- Nein. Die akustischen Parameter werden basierend auf dem statischen Zustand einer Spielstufe vorausberechnet. Wir empfehlen, die Türgeometrie aus der Akustik auszuklammern und anschließend basierend auf dem Zustand von zerstörbaren und beweglichen Spielobjekten mithilfe bewährter Verfahren zusätzliche Okklusion anzuwenden.
+Nein. Die akustischen Parameter werden basierend auf dem statischen Zustand einer Spielstufe vorausberechnet. Wir empfehlen, die Türgeometrie aus der Akustik auszuklammern und anschließend basierend auf dem Zustand von zerstörbaren und beweglichen Spielobjekten mithilfe bewährter Verfahren zusätzliche Okklusion anzuwenden.
  
 ## <a name="does-project-acoustics-use-acoustic-materials"></a>Verwendet Projekt Akustik akustische Materialien?
 

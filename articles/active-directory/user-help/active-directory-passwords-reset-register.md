@@ -14,11 +14,11 @@ ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f113c42ff45811f31eb77a92873fb187dd51ea6b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184311"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60530895"
 ---
 # <a name="register-for-self-service-password-reset"></a>Registrieren für die Self-Service-Kennwortzurücksetzung
 
@@ -46,7 +46,7 @@ Für **Authentifizierungstelefon** oder **E-Mail für Authentifizierung** eingeg
 
 Unter Umständen werden Sie von den Administratoren nach einer Weile zur Bestätigung Ihrer Authentifizierungsmethoden aufgefordert, um sicherzustellen, dass die registrierten Methoden immer noch angemessen sind.
 
-## <a name="common-problems-and-their-solutions"></a>häufige Probleme und Lösungen
+## <a name="common-problems-and-their-solutions"></a>Häufige Probleme und Lösungen
 
  Hier finden Sie einige häufige Fehler und die passenden Lösungen:
 

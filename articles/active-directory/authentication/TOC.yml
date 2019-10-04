@@ -16,8 +16,6 @@
       href: tutorial-sspr-pilot.md
     - name: Aktivieren der lokalen SSPR-Integration
       href: tutorial-enable-writeback.md
-    - name: Aktivieren der Windows 10-Kennwortzurücksetzung
-      href: tutorial-sspr-windows.md
     - name: Integrieren von Azure Identity Protection
       href: tutorial-risk-based-sspr-mfa.md
 - name: Konzepte
@@ -25,7 +23,9 @@
   items:
     - name: Authentifizierungsmethoden
       href: concept-authentication-methods.md
-    - name: Kombinierte Registrierung
+    - name: Kennwortlose Authentifizierung
+      href: concept-authentication-passwordless.md
+    - name: Registrierung von Sicherheitsinformationen
       href: concept-registration-mfa-sspr-combined.md
     - name: Zurücksetzen des Kennworts
       items:
@@ -43,8 +43,6 @@
       items:
         - name: Funktionsweise von MFA
           href: concept-mfa-howitworks.md
-        - name: Welche Version ist die richtige?
-          href: concept-mfa-whichversion.md
         - name: Lizenzieren Ihrer Benutzer
           href: concept-mfa-licensing.md
         - name: Verwalten eines Authentifizierungsanbieters
@@ -73,8 +71,8 @@
           href: howto-sspr-authenticationdata.md
         - name: Aktivieren des Kennwortrückschreibens
           href: howto-sspr-writeback.md
-        - name: 'SSPR für Windows 7, 8 und 8.1'
-          href: howto-sspr-windows-7-8.md
+        - name: SSPR für Windows-Clients
+          href: howto-sspr-windows.md
     - name: Cloudbasierte MFA
       items:
         - name: Bereitstellen von cloudbasierter MFA
@@ -105,7 +103,7 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: Kombinierte Registrierung
+    - name: Registrierung von Sicherheitsinformationen
       items:
         - name: Aktivieren der kombinierten Registrierung
           href: howto-registration-mfa-sspr-combined.md
@@ -131,10 +129,14 @@
               href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Smart Lockout für Azure AD
       href: howto-password-smart-lockout.md
-    - name: Windows Hello for Business
-      href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
-    - name: Kennwortlose Anmeldung per Telefon
-      href: howto-authentication-phone-sign-in.md
+    - name: Kennwortlos
+      items:
+        - name: Kennwortlose Sicherheitsschlüssel
+          href: howto-authentication-passwordless-security-key.md
+        - name: Kennwortlose Anmeldung per Telefon
+          href: howto-authentication-passwordless-phone.md
+        - name: Windows Hello for Business
+          href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
     - name: Zertifikatbasierte Authentifizierung
       items:
         - name: Erste Schritte mit Zertifikatauthentifizierung
@@ -144,12 +146,10 @@
               href: active-directory-certificate-based-authentication-android.md
             - name: CBA auf iOS-Geräten
               href: active-directory-certificate-based-authentication-ios.md
-    - name: Entwickeln
-      items:
-        - name: Integrieren von MFA in benutzerdefinierte Apps
-          href: howto-mfa-sdk.md
     - name: Berichterstellung
       items:
+        - name: Nutzung und Erkenntnisse
+          href: howto-authentication-methods-usage-insights.md
         - name: SSPR-Berichte
           href: howto-sspr-reporting.md
         - name: MFA-Berichte

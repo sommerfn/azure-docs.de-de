@@ -7,12 +7,12 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 03/19/2019
 ms.author: dacoulte
-ms.openlocfilehash: 5a39614d544157695b8b2f02ab5f1fe4427d5ca5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 140429cef7f63219a0d5cf82c6ebfb3731b0072b
+ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796900"
+ms.lasthandoff: 05/21/2019
+ms.locfileid: "65979643"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-Beispiele
 
@@ -38,5 +38,5 @@ In der folgenden Tabelle sind Links zu Beispielen für Azure Policy enthalten. D
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Befassen Sie sich mit der [Struktur von Azure Policy-Definitionen](../concepts/definition-structure.md).
-- Lesen Sie die Informationen unter [Grundlegendes zu Richtlinienauswirkungen](../concepts/effects.md).
+- Lesen Sie die Informationen unter [Struktur von Azure Policy-Definitionen](../concepts/definition-structure.md).
+- Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](../concepts/effects.md).

@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
@@ -9,11 +9,11 @@ ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 069baf627c0230b6a4727c375494352ab3e6a803
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500677"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178025"
 ---
 Verwenden Sie zum Hinzufügen von zwei Tags zu einer Ressourcengruppe den Befehl [Set-AzResourceGroup](/powershell/module/az.resources/set-azresourcegroup):
 

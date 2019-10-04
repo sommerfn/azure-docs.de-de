@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 0fcd688c9e5164522a482a4375c524a97a48d400
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 68e0c3c89698bafbab65ca786231e0364900213a
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175623"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467886"
 ---
 # <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Schnellstart: Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure
 
@@ -36,7 +36,7 @@ Klicken Sie auf die Kachel **Gerätesimulation**:
 
 Klicken Sie auf der Seite mit der Beschreibung der Gerätesimulation auf **Jetzt ausprobieren**:
 
-![Klicken auf „Jetzt ausprobieren“](./media/quickstart-device-simulation-deploy/devicesimulationPDP.png)
+![Klicken auf „Jetzt ausprobieren“](./media/quickstart-device-simulation-deploy/devicesimulationpdp1.png)
 
 Geben Sie auf der Seite **Create Device Simulation solution** (Gerätesimulationslösung erstellen) einen eindeutigen **Lösungsnamen** ein.
 
@@ -58,7 +58,7 @@ Klicken Sie auf **Akzeptieren**, um die Zustimmungsanforderung zu akzeptieren, d
 
 Wenn Sie das Dashboard für die Gerätesimulation zum ersten Mal öffnen, wird eine**Anleitung** für die ersten Schritte angezeigt. Klicken Sie auf die erste Kachel, um eine Beispielsimulation zu öffnen. Wenn Sie die Anleitung für die ersten **Schritte**schließen, können Sie die einfache **Beispielsimulation**über das Dashboard öffnen, indem Sie auf die entsprechende Kachel klicken:
 
-![Lösungsdashboard](./media/quickstart-device-simulation-deploy/GettingStarted.png)
+![Lösungsdashboard](./media/quickstart-device-simulation-deploy/gettingstarted1.png)
 
 ## <a name="sample-simulation"></a>Beispielsimulation
 
@@ -72,7 +72,7 @@ Die Beispielsimulation kann nicht bearbeitet werden. Sie ist mit folgenden Einst
 | Telemetriefrequenz | 10 Sekunden                  |
 | Simulationsdauer | Run indefinitely (Unbegrenzt)            |
 
-![Simulationskonfiguration](./media/quickstart-device-simulation-deploy/SampleSimulation.png)
+![Simulationskonfiguration](./media/quickstart-device-simulation-deploy/samplesimulation1.png)
 
 ## <a name="run-the-simulation"></a>Ausführen der Simulation
 

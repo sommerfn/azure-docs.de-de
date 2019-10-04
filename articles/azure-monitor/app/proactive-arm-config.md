@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 06/26/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: e7a54c2e207a27f3519375df09d0c930a92d52d6
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962229"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193723"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Verwalten von intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen
 
@@ -29,12 +29,14 @@ Diese Methode kann bei der Bereitstellung neuer Application Insights-Ressourcen 
 
 Sie können die folgenden Einstellungen für intelligente Erkennungsregel konfigurieren:
 - Wenn die Regel aktiviert ist (der Standardwert ist **true**.)
-- Wenn E-Mails an den Abonnementbesitzer, die Mitwirkenden und Leser gesendet werden sollen, wenn eine Erkennung gefunden wird (der Standardwert ist **true**.)
+- Ob bei einer Erkennung E-Mails an Benutzer gesendet werden sollen, denen die Rollen [Überwachungsleser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) und [Überwachungsmitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) zugewiesen sind (Standardwert ist **true**).
 - Alle weiteren E-Mail-Empfänger, die eine Benachrichtigung erhalten sollen, wenn eine Erkennung gefunden wird.
-- * Die E-Mail-Konfiguration ist für Regeln für die intelligente Erkennung, die als _Vorschau_ markiert sind, nicht verfügbar.
+    -  Die E-Mail-Konfiguration ist für Regeln für die intelligente Erkennung, die als _Vorschauversion_ markiert sind, nicht verfügbar.
 
 Um die Konfiguration der Regeleinstellungen über den Azure Resource Manager zu ermöglichen, ist die Konfiguration der intelligenten Erkennungsregeln nun als interne Ressource innerhalb der Application Insights-Ressource mit dem Namen **ProactiveDetectionConfigs** verfügbar.
 Für maximale Flexibilität kann jede intelligente Erkennungsregel mit individuellen Benachrichtigungseinstellungen konfiguriert werden.
+
+## 
 
 ## <a name="examples"></a>Beispiele
 
@@ -136,12 +138,47 @@ Stellen Sie sicher, dass Sie den Application Insights-Ressourcennamen ersetzen u
 
 ```
 
+### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Warnungsregel für Fehleranomalien v2 (nicht klassisch)
+
+Mit dieser Azure Resource Manager-Vorlage wird gezeigt, wie eine Warnungsregel für Fehleranomalien v2 mit einem Schweregrad von 2 konfiguriert wird. Diese neue Version der Warnungsregel für Fehleranomalien ist Teil der neuen Azure-Warnungsplattform und ersetzt die klassische Version, die im Rahmen der [Einstellung klassischer Warnungen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/) eingestellt wird.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "microsoft.alertsmanagement/smartdetectoralertrules",
+            "apiVersion": "2019-03-01",
+            "name": "Failure Anomalies - my-app",
+            "location": "global", 
+            "properties": {
+                  "description": "Detects a spike in the failure rate of requests or dependencies",
+                  "state": "Enabled",
+                  "severity": "2",
+                  "frequency": "PT1M",
+                  "detector": {
+                  "id": "FailureAnomaliesDetector"
+                  },
+                  "scope": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/MyResourceGroup/providers/microsoft.insights/components/my-app"],
+                  "actionGroups": {
+                        "groupIds": ["/subscriptions/00000000-1111-2222-3333-444444444444/resourcegroups/MyResourceGroup/providers/microsoft.insights/actiongroups/MyActionGroup"]
+                  }
+            }
+        }
+    ]
+}
+```
+
+> [!NOTE]
+> Diese Azure Resource Manager-Vorlage gilt nur für die Warnungsregel für Fehleranomalien v2 und unterscheidet sich von den anderen klassischen Regeln für die intelligente Erkennung in diesem Artikel.   
+
 ## <a name="smart-detection-rule-names"></a>Name der intelligente Erkennungsregel
 
 Im Folgenden finden Sie eine Tabelle mit den Namen der intelligenten Erkennungsregeln, wie sie im Portal angezeigt werden, zusammen mit ihren internen Namen, die in der Azure Resource Manager-Vorlage verwendet werden sollten.
 
 > [!NOTE]
-> Intelligente Erkennungsregeln, die als Vorschau markiert sind, unterstützen keine E-Mail-Benachrichtigungen. Aus diesem Grund können Sie nur die enabled-Eigenschaft für diese Regeln festlegen. 
+> Intelligente Erkennungsregeln, die als _Vorschauversion_ markiert sind, unterstützen keine E-Mail-Benachrichtigungen. Aus diesem Grund können Sie nur die _enabled_-Eigenschaft für diese Regeln festlegen. 
 
 | Name der Regel im Azure-Portal | Interner Name
 |:---|:---|
@@ -154,18 +191,7 @@ Im Folgenden finden Sie eine Tabelle mit den Namen der intelligenten Erkennungsr
 | Anormaler Anstieg in Ausnahmevolume (Vorschau) | extension_exceptionchangeextension |
 | Möglicher Speicherverluste erkannt (Vorschau) | extension_memoryleakextension |
 | Mögliches Sicherheitsproblem erkannt (Vorschau) | extension_securityextensionspackage |
-| Ressourcenverwendungsproblem erkannt (Vorschau) | extension_resourceutilizationextensionspackage |
-
-## <a name="who-receives-the-classic-alert-notifications"></a>Wer erhält die (klassischen) Warnungsbenachrichtigungen?
-
-Dieser Abschnitt gilt nur für klassische Warnungen der intelligenten Erkennung und unterstützt Sie dabei, Ihre Warnungsbenachrichtigungen zu optimieren, damit nur die gewünschten Empfänger Benachrichtigungen erhalten. Um mehr über den Unterschied zwischen [klassischen Benachrichtigungen](../platform/alerts-classic.overview.md) und den neuen Benachrichtigungen zu erfahren, lesen Sie bitte den Übersichtsartikel [Benachrichtigungen](../platform/alerts-overview.md). Aktuell unterstützen Warnungen der intelligenten Erkennung nur die klassische Warnungsbenutzeroberfläche. Die einzige Ausnahme hierbei bilden [Warnungen der intelligenten Erkennung zu Azure Cloud Services](./proactive-cloud-services.md). Um die Warnungsbenachrichtigung für Warnungen der intelligenten Erkennung zu Azure Cloud Services zu steuern, verwenden Sie [Aktionsgruppen](../platform/action-groups.md).
-
-* Wir empfehlen die Verwendung bestimmter Empfänger für intelligente Erkennung/klassische Warnungsbenachrichtigungen.
-
-* Für Warnungen der intelligenten Erkennung werden bei aktivierter Option **Massenversand/Gruppe** Benachrichtigungen an Benutzer mit der Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ im Abonnement gesendet. Tatsächlich sind _alle_ Benutzer mit Zugriff auf das Abonnement der Application Insights-Ressource im Umfang enthalten und erhalten Benachrichtigungen. 
-
-> [!NOTE]
-> Wenn Sie aktuell die Option **Massenversand/Gruppe** verwenden und diese deaktivieren, können Sie die Änderung nicht rückgängig machen.
+| Anormaler Anstieg des täglichen Datenvolumens (Vorschauversion) | extension_billingdatavolumedailyspikeextension |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

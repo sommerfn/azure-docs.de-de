@@ -3,16 +3,17 @@ title: Referenz zu Azure Container Registry-Webhookschemas
 description: Referenz zur JSON-Nutzlast von Webhookanforderungen für Azure Container Registry.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: danlep
-ms.openlocfilehash: 4c0845b9cf5194ecbd0ab813997e17e070840f44
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fcdee2be92f2a3052e2ebbfaab3a2f9cb96e0125
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099898"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68311600"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Referenz zu Azure Container Registry-Webhooks
 
@@ -40,7 +41,7 @@ Auslösung per Webhook, wenn ein Containerimage per Pushvorgang in ein Repositor
 
 ### <a name="push-event-payload"></a>Nutzlast des Push-Ereignisses
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |-------------|----------|-----------|
 |`id`|Zeichenfolge|Die ID des Webhookereignisses.|
 |`timestamp`|DateTime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
@@ -50,7 +51,7 @@ Auslösung per Webhook, wenn ein Containerimage per Pushvorgang in ein Repositor
 
 ### <a name="target"></a>Ziel
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |------------------|----------|-----------|
 |`mediaType`|Zeichenfolge|Der MIME-Typ des Objekts, auf das verwiesen wird.|
 |`size`|Int32|Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Length“ (Länge).|
@@ -61,7 +62,7 @@ Auslösung per Webhook, wenn ein Containerimage per Pushvorgang in ein Repositor
 
 ### <a name="request"></a>Anforderung
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |------------------|----------|-----------|
 |`id`|Zeichenfolge|Die ID der Anforderung, die das Ereignis initiiert hat.|
 |`host`|Zeichenfolge|Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist.|
@@ -104,7 +105,7 @@ Auslösung per Webhook, wenn ein Helm-Diagramm per Pushvorgang in ein Repository
 
 ### <a name="chart-push-event-payload"></a>Nutzlast: Diagramm-Push-Ereignis
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |-------------|----------|-----------|
 |`id`|Zeichenfolge|Die ID des Webhookereignisses.|
 |`timestamp`|DateTime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
@@ -113,7 +114,7 @@ Auslösung per Webhook, wenn ein Helm-Diagramm per Pushvorgang in ein Repository
 
 ### <a name="helm_target"></a>Ziel
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |------------------|----------|-----------|
 |`mediaType`|Zeichenfolge|Der MIME-Typ des Objekts, auf das verwiesen wird.|
 |`size`|Int32|Die Byte-Anzahl des Inhalts.|
@@ -154,7 +155,7 @@ Wird per Webhook ausgelöst, wenn ein Image-Repository oder Manifest gelöscht w
 
 ### <a name="delete-event-payload"></a>Ereignisnutzlast löschen
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |-------------|----------|-----------|
 |`id`|Zeichenfolge|Die ID des Webhookereignisses.|
 |`timestamp`|DateTime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
@@ -164,7 +165,7 @@ Wird per Webhook ausgelöst, wenn ein Image-Repository oder Manifest gelöscht w
 
 ### <a name="delete_target"></a> Ziel
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |------------------|----------|-----------|
 |`mediaType`|Zeichenfolge|Der MIME-Typ des Objekts, auf das verwiesen wird.|
 |`digest`|Zeichenfolge|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
@@ -172,7 +173,7 @@ Wird per Webhook ausgelöst, wenn ein Image-Repository oder Manifest gelöscht w
 
 ### <a name="delete_request"></a> Anforderung
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |------------------|----------|-----------|
 |`id`|Zeichenfolge|Die ID der Anforderung, die das Ereignis initiiert hat.|
 |`host`|Zeichenfolge|Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist.|
@@ -216,7 +217,7 @@ Auslösung per Webhook, wenn ein Helm-Diagramm oder ein Repository gelöscht wir
 
 ### <a name="chart-delete-event-payload"></a>Nutzlast: Diagramm-Löschereignis
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |-------------|----------|-----------|
 |`id`|Zeichenfolge|Die ID des Webhookereignisses.|
 |`timestamp`|DateTime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
@@ -225,7 +226,7 @@ Auslösung per Webhook, wenn ein Helm-Diagramm oder ein Repository gelöscht wir
 
 ### <a name="chart_delete_target"></a> Ziel
 
-|Element|Type|BESCHREIBUNG|
+|Element|type|BESCHREIBUNG|
 |------------------|----------|-----------|
 |`mediaType`|Zeichenfolge|Der MIME-Typ des Objekts, auf das verwiesen wird.|
 |`size`|Int32|Die Byte-Anzahl des Inhalts.|

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: ff8e61c53774429087ffe1a9137d40b155eb3f68
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: c7414ee159303465d6698ce9c47d04ba37c0c46e
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192274"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67329377"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Tutorial: Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen
  
@@ -102,8 +102,8 @@ Stream Analytics | JavaScript
 bigint | Number (in JavaScript können nur ganze Zahlen bis genau 2^53 dargestellt werden)
 DateTime | Date (JavaScript unterstützt nur Millisekunden)
 double | Number
-nvarchar(MAX) | Zeichenfolge
-Datensatz | Objekt
+nvarchar(MAX) | string
+Datensatz | Object
 Array | Array
 NULL | Null
 
@@ -114,12 +114,14 @@ Konvertierungen von JavaScript zu Stream Analytics:
 JavaScript | Stream Analytics
 --- | ---
 Number | bigint (wenn die Zahl gerundet ist und zwischen long.MinValue und long.MaxValue liegt, andernfalls double)
-Datum | DateTime
-Zeichenfolge | nvarchar(MAX)
-Objekt | Datensatz
+Date | DateTime
+string | nvarchar(MAX)
+Object | Datensatz
 Array | Array
 Null, Undefined | NULL
 Beliebiger anderer Typ (z.B. eine Funktion oder ein Fehler) | Nicht unterstützt (führt zu einem Laufzeitfehler)
+
+Die JavaScript-Sprache unterscheidet Groß-/Kleinschreibung, weshalb die Groß-/Kleinschreibung in den Objektfeldern im JavaScript-Code mit der Groß-/Kleinschreibung in den Feldern in den eingehenden Daten übereinstimmen muss. Beachten Sie, dass Aufträge mit dem Kompatibilitätsgrad 1.0 Felder aus der SQL SELECT-Anweisung in Kleinbuchstaben konvertieren. Ab Kompatibilitätsgrad 1.1 haben Felder aus der SELECT-Anweisung die gleiche Schreibung wie in der SQL-Abfrage angegeben.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 JavaScript-Laufzeitfehler werden als schwerwiegend angesehen und im Aktivitätsprotokoll aufgezeichnet. Navigieren Sie im Azure-Portal zu Ihrem Auftrag, und wählen Sie **Aktivitätsprotokoll** aus, um das Protokoll abzurufen.

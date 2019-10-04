@@ -3,18 +3,18 @@ title: Verwalten von Azure Service Fabric Mesh-Anwendungsgeheimnissen | Microsof
 description: Verwalten Sie Anwendungsgeheimnisse, damit Sie auf sichere Weise eine Service Fabric Mesh-Anwendung erstellen und bereitstellen können.
 services: service-fabric-mesh
 keywords: secrets
-author: aljo-microsoft
-ms.author: aljo
-ms.date: 11/28/2018
+author: athinanthny
+ms.author: atsenthi
+ms.date: 4/2/2019
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: 36d0b49f1b9fb1ca5d13283146d134137a5cb028
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ef3f04437aca7b6ad9aab8806d54e65d00159d87
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900640"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69036166"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Verwalten von Service Fabric Mesh-Anwendungsgeheimnissen
 Service Fabric Mesh unterstützt Geheimnisse als Azure-Ressourcen. Bei einem Service Fabric Mesh-Geheimnis kann es sich um beliebige sensible Informationen in Textform handeln, z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die sicher gespeichert und übertragen werden sollten. In diesem Artikel wird beschrieben, wie Sie den Secure Store Service von Service Fabric verwenden, um Geheimnisse bereitzustellen und zu verwalten.
@@ -31,37 +31,42 @@ Die Verwaltung von Geheimnissen umfasst die folgenden Schritte:
 5. Verwenden Sie die „az“-Befehle der Azure CLI für die Secure Store Service-Lebenszyklusverwaltung.
 
 ## <a name="declare-a-mesh-secrets-resource"></a>Deklarieren einer Mesh-Geheimnisressource
-Eine Ressource vom Typ „Mesh-Geheimnis“ wird in einer JSON- oder YAML-Datei des Azure-Ressourcenmodells deklariert, indem Sie den Typ „inlinedValue“ und SecretsStoreRef-contentType-Definitionen verwenden. Die Ressource vom Typ „Mesh-Geheimnis“ unterstützt per Secure Store Service erstellte Geheimnisse. 
+Eine Ressource vom Typ „Mesh-Geheimnis“ wird in einer JSON- oder YAML-Datei des Azure-Ressourcenmodells mit einer Definition der Art „inlinedValue“ deklariert. Die Ressource vom Typ „Mesh-Geheimnis“ unterstützt per Secure Store Service erstellte Geheimnisse. 
 >
 Hier ist ein Beispiel dafür angegeben, wie Sie Ressourcen vom Typ „Mesh-Geheimnis“ in einer JSON-Datei deklarieren:
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
       "type": "string",
-      "defaultValue": "eastus",
+      "defaultValue": "WestUS",
       "metadata": {
-        "description": "Location of the resources."
+        "description": "Location of the resources (e.g. westus, eastus, westeurope)."
       }
-    },
+    }
+  },
+  "sfbpHttpsCertificate": {
+      "type": "string",
+      "metadata": {
+        "description": "Plain Text Secret Value that your container ingest"
+      }
   },
   "resources": [
     {
       "apiVersion": "2018-07-01-preview",
-      "name": "MySecret.txt",
+      "name": "sfbpHttpsCertificate.pfx",
       "type": "Microsoft.ServiceFabricMesh/secrets",
-      "location": "[parameters('location')]",
+      "location": "[parameters('location')]", 
       "dependsOn": [],
       "properties": {
         "kind": "inlinedValue",
-        "description": "My Mesh Application Secret",
-        "contentType": "SecretsStoreRef",
-        "value": "mysecret",
+        "description": "SFBP Application Secret",
+        "contentType": "text/plain",
       }
-    },
+    }
   ]
 }
 ```
@@ -103,49 +108,49 @@ Hier ist ein Beispiel dafür angegeben, wie Sie Ressourcen vom Typ „Mesh-Gehei
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
       "type": "string",
-      "defaultValue": "eastus",
+      "defaultValue": "WestUS",
       "metadata": {
-        "description": "Location of the resources."
-      }
-    },
-    "my-secret-value-v1": {
-      "type": "string",
-      "metadata": {
-        "description": "My Mesh Application Secret Value."
+        "description": "Location of the resources (e.g. westus, eastus, westeurope)."
       }
     }
+  },
+  "sfbpHttpsCertificate": {
+      "type": "string",
+      "metadata": {
+        "description": "Plain Text Secret Value that your container ingest"
+      }
   },
   "resources": [
     {
       "apiVersion": "2018-07-01-preview",
-      "name": "MySecret.txt",
+      "name": "sfbpHttpsCertificate.pfx",
       "type": "Microsoft.ServiceFabricMesh/secrets",
-      "location": "[parameters('location')]",
+      "location": "[parameters('location')]", 
+      "dependsOn": [],
       "properties": {
         "kind": "inlinedValue",
-        "description": "My Mesh Application Secret",
-        "contentType": "SecretsStoreRef",
-        "value": "mysecret",
+        "description": "SFBP Application Secret",
+        "contentType": "text/plain",
       }
     },
     {
       "apiVersion": "2018-07-01-preview",
-      "name": "mysecret:1.0",
+      "name": "sfbpHttpsCertificate.pfx/2019.02.28",
       "type": "Microsoft.ServiceFabricMesh/secrets/values",
       "location": "[parameters('location')]",
       "dependsOn": [
-        'Microsoft.ServiceFabricMesh/secrets/MySecret.txt'
+        "Microsoft.ServiceFabricMesh/secrets/sfbpHttpsCertificate.pfx"
       ],
       "properties": {
-        "value": "[parameters('my-secret-value-v1)]"
+        "value": "[parameters('sfbpHttpsCertificate')]"
       }
     }
-  ]
+  ],
 }
 ```
 Hier ist ein Beispiel dafür angegeben, wie Sie Ressourcen vom Typ „Mesh-Geheimnisse/-Werte“ in einer YAML-Datei deklarieren:
@@ -201,9 +206,9 @@ az mesh deployment create –-<template-file> or --<template-uri>
 ```
 Übergeben Sie entweder **template-file** oder **template-uri** (aber nicht beides).
 
-Beispiel: 
+Beispiel:
 - az mesh deployment create --c:\MyMeshTemplates\SecretTemplate1.txt
-- az mesh deployment create -- https://www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
+- az mesh deployment create --https:\//www.fabrikam.com/MyMeshTemplates/SecretTemplate1.txt
 
 ### <a name="show-a-secret"></a>Anzeigen eines Geheimnisses
 Gibt die Beschreibung des Geheimnisses zurück (aber nicht den Wert).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012221"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741461"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Arbeiten mit Zeichenfolgen in Azure Monitor-Protokollabfragen
 
@@ -30,14 +30,18 @@ ms.locfileid: "58012221"
 
 In diesem Artikel wird beschrieben, wie Sie Zeichenfolgen bearbeiten, vergleichen, darin suchen und für diese viele weitere Vorgänge ausführen.
 
-Jedem Zeichen in einer Zeichenfolge ist ein Index zugeordnet, der die Position des Zeichens festlegt. Für das erste Zeichen wird der Index 0 verwendet, für das nächste Zeichen 1 usw. Der Index wird von unterschiedlichen Zeichenfolgenfunktion verwendet. Dies wird in den folgenden Abschnitten deutlich werden. In vielen der folgenden Beispiele wird der Befehl **print** verwendet, um zu zeigen, wie sich Zeichenfolgen ohne eine bestimmte Datenquelle bearbeiten lassen.
+Jedem Zeichen in einer Zeichenfolge ist ein Index zugeordnet, der die Position des Zeichens festlegt. Das erste Zeichen befindet sich bei Index 0, das nächste bei 1 usw. Der Index wird von unterschiedlichen Zeichenfolgenfunktion verwendet. Dies wird in den folgenden Abschnitten deutlich werden. In vielen der folgenden Beispiele wird der Befehl **print** verwendet, um zu zeigen, wie sich Zeichenfolgen ohne eine bestimmte Datenquelle bearbeiten lassen.
 
 
 ## <a name="strings-and-escaping-them"></a>Zeichenfolgen und Escapezeichen
-Zeichenfolgenwerte werden entweder in einfache oder doppelte Anführungszeichen eingeschlossen. Der umgekehrte Schrägstrich (\) wird verwendet, um darauffolgende Zeichen mit einem Escapezeichen zu versehen. „\t“ wird beispielsweise für einen Tabstopp, „\n“ für einen Zeilenvorschub und \" für das Anführungszeichen selbst verwendet.
+Zeichenfolgenwerte werden entweder in einfache oder doppelte Anführungszeichen eingeschlossen. Der umgekehrte Schrägstrich (\\) wird verwendet, um darauffolgende Zeichen mit einem Escapezeichen zu versehen. „\t“ wird beispielsweise für einen Tabstopp, „\n“ für einen Zeilenvorschub und \" für das Anführungszeichen selbst verwendet.
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
+```
+
+```Kusto
+print 'this is a "string" literal in single \' quotes'
 ```
 
 Wenn „\\“ nicht als Escapezeichen verwendet werden soll, müssen Sie der Zeichenfolge „\@“ voranstellen.
@@ -49,34 +53,34 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Zeichenfolgenvergleiche
 
-Operators       |BESCHREIBUNG                         |Groß-/Kleinschreibung|Beispiel (ergibt `true`)
+Operators       |Beschreibung                         |Groß-/Kleinschreibung|Beispiel (ergibt `true`)
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Equals                              |Ja           |`"aBc" == "aBc"`
 `!=`           |Not Equals                          |Ja           |`"abc" != "ABC"`
-`=~`           |Equals                              |Nein             |`"abc" =~ "ABC"`
-`!~`           |Not Equals                          |Nein             |`"aBc" !~ "xyz"`
-`has`          |Rechter Ausdruck ist vollständig in linkem Ausdruck enthalten |Nein |`"North America" has "america"`
-`!has`         |Rechter Ausdruck ist nicht vollständig in linkem Ausdruck enthalten       |Nein             |`"North America" !has "amer"` 
+`=~`           |Equals                              |Nein            |`"abc" =~ "ABC"`
+`!~`           |Not Equals                          |Nein            |`"aBc" !~ "xyz"`
+`has`          |Rechter Ausdruck ist vollständig in linkem Ausdruck enthalten |Nein|`"North America" has "america"`
+`!has`         |Rechter Ausdruck ist nicht vollständig in linkem Ausdruck enthalten       |Nein            |`"North America" !has "amer"` 
 `has_cs`       |Rechter Ausdruck ist vollständig in linkem Ausdruck enthalten |Ja|`"North America" has_cs "America"`
 `!has_cs`      |Rechter Ausdruck ist nicht vollständig in linkem Ausdruck enthalten       |Ja            |`"North America" !has_cs "amer"` 
-`hasprefix`    |Rechter Ausdruck ist Präfix in linkem Ausdruck         |Nein             |`"North America" hasprefix "ame"`
-`!hasprefix`   |Rechter Ausdruck ist kein Präfix in linkem Ausdruck     |Nein             |`"North America" !hasprefix "mer"` 
+`hasprefix`    |Rechter Ausdruck ist Präfix in linkem Ausdruck         |Nein            |`"North America" hasprefix "ame"`
+`!hasprefix`   |Rechter Ausdruck ist kein Präfix in linkem Ausdruck     |Nein            |`"North America" !hasprefix "mer"` 
 `hasprefix_cs`    |Rechter Ausdruck ist Präfix in linkem Ausdruck         |Ja            |`"North America" hasprefix_cs "Ame"`
 `!hasprefix_cs`   |Rechter Ausdruck ist kein Präfix in linkem Ausdruck     |Ja            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |Rechter Ausdruck ist Suffix in linkem Ausdruck         |Nein             |`"North America" hassuffix "ica"`
-`!hassuffix`   |Rechter Ausdruck ist kein Suffix in linkem Ausdruck     |Nein             |`"North America" !hassuffix "americ"`
+`hassuffix`    |Rechter Ausdruck ist Suffix in linkem Ausdruck         |Nein            |`"North America" hassuffix "ica"`
+`!hassuffix`   |Rechter Ausdruck ist kein Suffix in linkem Ausdruck     |Nein            |`"North America" !hassuffix "americ"`
 `hassuffix_cs`    |Rechter Ausdruck ist Suffix in linkem Ausdruck         |Ja            |`"North America" hassuffix_cs "ica"`
 `!hassuffix_cs`   |Rechter Ausdruck ist kein Suffix in linkem Ausdruck     |Ja            |`"North America" !hassuffix_cs "icA"`
-`contains`     |Rechter Ausdruck tritt als Teilzeichenfolge in linkem Ausdruck auf  |Nein             |`"FabriKam" contains "BRik"`
-`!contains`    |Rechter Ausdruck tritt nicht in linkem Ausdruck auf           |Nein             |`"Fabrikam" !contains "xyz"`
+`contains`     |Rechter Ausdruck tritt als Teilzeichenfolge in linkem Ausdruck auf  |Nein            |`"FabriKam" contains "BRik"`
+`!contains`    |Rechter Ausdruck tritt nicht in linkem Ausdruck auf           |Nein            |`"Fabrikam" !contains "xyz"`
 `contains_cs`   |Rechter Ausdruck tritt als Teilzeichenfolge in linkem Ausdruck auf  |Ja           |`"FabriKam" contains_cs "Kam"`
 `!contains_cs`  |Rechter Ausdruck tritt nicht in linkem Ausdruck auf           |Ja           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |Rechter Ausdruck ist eine Teilzeichenfolge, die am Anfang des linken Ausdrucks steht|Nein             |`"Fabrikam" startswith "fab"`
-`!startswith`  |Rechter Ausdruck ist keine Teilzeichenfolge, die am Anfang des linken Ausdrucks steht|Nein         |`"Fabrikam" !startswith "kam"`
+`startswith`   |Rechter Ausdruck ist eine Teilzeichenfolge, die am Anfang des linken Ausdrucks steht|Nein            |`"Fabrikam" startswith "fab"`
+`!startswith`  |Rechter Ausdruck ist keine Teilzeichenfolge, die am Anfang des linken Ausdrucks steht|Nein        |`"Fabrikam" !startswith "kam"`
 `startswith_cs`   |Rechter Ausdruck ist eine Teilzeichenfolge, die am Anfang des linken Ausdrucks steht|Ja            |`"Fabrikam" startswith_cs "Fab"`
 `!startswith_cs`  |Rechter Ausdruck ist keine Teilzeichenfolge, die am Anfang des linken Ausdrucks steht|Ja        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |Rechter Ausdruck ist eine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Nein              |`"Fabrikam" endswith "Kam"`
-`!endswith`    |Rechter Ausdruck ist keine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Nein          |`"Fabrikam" !endswith "brik"`
+`endswith`     |Rechter Ausdruck ist eine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Nein             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |Rechter Ausdruck ist keine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Nein         |`"Fabrikam" !endswith "brik"`
 `endswith_cs`     |Rechter Ausdruck ist eine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Ja             |`"Fabrikam" endswith "Kam"`
 `!endswith_cs`    |Rechter Ausdruck ist keine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Ja         |`"Fabrikam" !endswith "brik"`
 `matches regex`|Linker Ausdruck enthält eine Übereinstimmung mit rechtem Ausdruck        |Ja           |`"Fabrikam" matches regex "b.*k"`

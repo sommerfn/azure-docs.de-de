@@ -1,36 +1,36 @@
 ---
-title: Verwenden der BulkExecutor-.NET-Graphbibliothek zum Ausführen von Massenvorgängen in der Gremlin-API von Azure Cosmos DB
-description: Erfahren Sie, wie die BulkExecutor-Bibliothek verwendet wird, um Massenimporte von Graphdaten in einen Gremlin-API-Container von Azure Cosmos DB durchzuführen.
+title: Verwenden der Bulk Executor-.NET-Graphbibliothek zum Ausführen von Massenvorgängen in der Gremlin-API von Azure Cosmos DB
+description: Hier erfahren Sie, wie die Bulk Executor-Bibliothek verwendet wird, um Massenimporte von Graphdaten in einen Gremlin-API-Container von Azure Cosmos DB durchzuführen.
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 5e88602aa3b983e1533248253d53967f39e6b5eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 51bd14c536e46291c8720e6c22e2e03a30243ddf
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837523"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827267"
 ---
-# <a name="using-the-graph-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Verwenden der BulkExecutor-.NET-Graphbibliothek zum Ausführen von Massenvorgängen in der Gremlin-API von Azure Cosmos DB
+# <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Verwenden der Bulk Executor-.NET-Graphbibliothek zum Ausführen von Massenvorgängen in der Gremlin-API von Azure Cosmos DB
 
-Dieses Tutorial bietet Anleitungen zum Verwenden der BulkExecutor-.NET-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Graphobjekten in einen Gremlin-API-Container von Azure Cosmos DB. Bei diesem Prozess wird die Graphklasse in der [BulkExecutor-Bibliothek](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) verwendet, um Scheitelpunkt- und Kantenobjekte programmgesteuert zu erstellen und anschließend mehrere davon pro Netzwerkanforderung einzufügen. Dieses Verhalten ist über die BulkExecutor-Bibliothek konfigurierbar, um sowohl Datenbankressourcen als auch lokale Speicherressourcen optimal zu nutzen.
+Dieses Tutorial bietet Anleitungen zum Verwenden der Bulk Executor-.NET-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Graphobjekten in einen Gremlin-API-Container von Azure Cosmos DB. Bei diesem Prozess wird die Graphklasse in der [Bulk Executor-Bibliothek](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) verwendet, um Scheitelpunkt- und Kantenobjekte programmgesteuert zu erstellen und anschließend mehrere davon pro Netzwerkanforderung einzufügen. Dieses Verhalten ist über die Bulk Executor-Bibliothek konfigurierbar, um sowohl Datenbankressourcen als auch lokale Speicherressourcen optimal zu nutzen.
 
-Anders als beim Senden von Gremlin-Abfragen an eine Datenbank, wobei der Befehl nacheinander ausgewertet und dann ausgeführt wird, ist bei Verwendung der BulkExecutor-Bibliothek stattdessen das lokale Erstellen und Überprüfen der Objekte erforderlich. Nach dem Erstellen der Objekte ermöglicht Ihnen die Bibliothek, Graphobjekte nacheinander an den Datenbankdienst zu senden. Mit dieser Methode kann die Geschwindigkeit der Datenerfassung bis zu 100-fach erhöht werden. Dadurch ist sie eine ideale Methode für erste Datenmigrationen oder regelmäßige Datenverschiebungsvorgänge. Weitere Informationen finden Sie auf der GitHub-Seite zur [BulkExecutor-Beispielanwendung für Graphobjekte von Azure Cosmos DB](https://aka.ms/graph-bulkexecutor-sample).
+Anders als beim Senden von Gremlin-Abfragen an eine Datenbank, wobei der Befehl nacheinander ausgewertet und dann ausgeführt wird, ist bei Verwendung der Bulk Executor-Bibliothek stattdessen das lokale Erstellen und Überprüfen der Objekte erforderlich. Nach dem Erstellen der Objekte ermöglicht Ihnen die Bibliothek, Graphobjekte nacheinander an den Datenbankdienst zu senden. Mit dieser Methode kann die Geschwindigkeit der Datenerfassung bis zu 100-fach erhöht werden. Dadurch ist sie eine ideale Methode für erste Datenmigrationen oder regelmäßige Datenverschiebungsvorgänge. Weitere Informationen finden Sie auf der GitHub-Seite zur [Bulk Executor-Beispielanwendung für Graphobjekte von Azure Cosmos DB](https://aka.ms/graph-bulkexecutor-sample).
 
 ## <a name="bulk-operations-with-graph-data"></a>Massenvorgänge mit Graphdaten
 
-Die [BulkExecutor-Bibliothek](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) enthält einen `Microsoft.Azure.CosmosDB.BulkExecutor.Graph`-Namespace, um Funktionalität für das Erstellen und Importieren von Graphobjekten bereitzustellen. 
+Die [Bulk Executor-Bibliothek](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) enthält einen `Microsoft.Azure.CosmosDB.BulkExecutor.Graph`-Namespace, um Funktionalität für das Erstellen und Importieren von Graphobjekten bereitzustellen. 
 
 Der folgende Prozess beschreibt, wie Datenmigration für einen Gremlin-API-Container verwendet werden kann:
 1. Rufen Sie Datensätze aus der Datenquelle ab.
 2. Erstellen Sie `GremlinVertex`- und `GremlinEdge`-Objekte aus den abgerufenen Datensätzen, und fügen Sie sie einer `IEnumerable`-Datenstruktur hinzu. In diesem Teil der Anwendung muss die Logik zum Erkennen und Hinzufügen von Beziehungen implementiert werden, falls die Datenquelle keine Graphdatenbank ist.
 3. Verwenden Sie die [Graphmethode BulkImportAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph.graphbulkexecutor.bulkimportasync?view=azure-dotnet) zum Einfügen der Graphobjekte in die Sammlung.
 
-Dieser Mechanismus steigert die Effizienz der Datenmigration im Vergleich zur Verwendung eines Gremlin-Clients. Der Grund für diese Verbesserung ist, dass das Einfügen von Daten mit Gremlin erfordert, dass die Anwendung einzelne Abfragen sendet, die überprüft, ausgewertet und dann ausgeführt werden müssen, um die Daten zu erstellen. Die BulkExecutor-Bibliothek führt die Überprüfung in der Anwendung durch und sendet jeweils mehrere Graphobjekte für eine Netzwerkanforderung.
+Dieser Mechanismus steigert die Effizienz der Datenmigration im Vergleich zur Verwendung eines Gremlin-Clients. Der Grund für diese Verbesserung ist, dass das Einfügen von Daten mit Gremlin erfordert, dass die Anwendung einzelne Abfragen sendet, die überprüft, ausgewertet und dann ausgeführt werden müssen, um die Daten zu erstellen. Die Bulk Executor-Bibliothek führt die Überprüfung in der Anwendung durch und sendet jeweils mehrere Graphobjekte für eine Netzwerkanforderung.
 
 ### <a name="creating-vertices-and-edges"></a>Erstellen von Scheitelpunkten und Kanten
 
@@ -73,7 +73,7 @@ catch (Exception e)
 }
 ```
 
-Weitere Informationen zu den Parametern der BulkExecutor-Bibliothek finden Sie im Thema [Massenimport von Daten in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#bulk-import-data-to-azure-cosmos-db).
+Weitere Informationen zu den Parametern der Bulk Executor-Bibliothek finden Sie im Thema [Massenimport von Daten in Azure Cosmos DB](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account).
 
 Die Nutzlast muss in `GremlinVertex`- und `GremlinEdge`-Objekten instanziiert werden. So können diese Objekte erstellt werden:
 
@@ -109,18 +109,18 @@ e.AddProperty("customProperty", "value");
 ```
 
 > [!NOTE]
-> Das BulkExecutor-Dienstprogramm überprüft vor dem Hinzufügen von Kanten nicht automatisch, ob Scheitelpunkte vorhanden sind. Dies muss vor der Ausführung der BulkImport-Aufgaben in der Anwendung überprüft werden.
+> Das Bulk Executor-Dienstprogramm überprüft vor dem Hinzufügen von Kanten nicht automatisch, ob Scheitelpunkte vorhanden sind. Dies muss vor der Ausführung der BulkImport-Aufgaben in der Anwendung überprüft werden.
 
 ## <a name="sample-application"></a>Beispielanwendung
 
 ### <a name="prerequisites"></a>Voraussetzungen
-* Visual Studio 2017 mit der Workload „Azure-Entwicklung“. Mit der [Visual Studio 2017 Community Edition](https://visualstudio.microsoft.com/downloads/) können Sie kostenlos beginnen.
-* Ein Azure-Abonnement. Sie können [hier ein kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Alternativ können Sie mit [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/) ein Cosmos DB-Datenbankkonto ohne Azure-Abonnement erstellen.
+* Visual Studio 2019 mit der Workload „Azure-Entwicklung“. Mit der [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) können Sie kostenlos beginnen.
+* Ein Azure-Abonnement. Sie können [hier ein kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). Alternativ können Sie mit [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/) ein Cosmos-Datenbankkonto ohne Azure-Abonnement erstellen.
 * Eine Gremlin-API-Datenbank von Azure Cosmos DB mit einer **unbegrenzten Sammlung**. Diese Anleitung zeigt die ersten Schritte mit [der Gremlin-API von Azure Cosmos DB in .NET](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet).
 * Git. Weitere Informationen finden Sie auf der [Git-Downloadseite](https://git-scm.com/downloads).
 
 ### <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
-In diesem Tutorial begleiten wir Sie durch die ersten Schritte und verwenden dazu das auf GitHub gehostete [BulkExecutor-Beispiel für Graphobjekte von Azure Cosmos DB](https://aka.ms/graph-bulkexecutor-sample). Diese Anwendung besteht aus einer .NET-Lösung, die nach dem Zufallsprinzip Scheitelpunkt- und Kantenobjekte generiert und dann Masseneinfügungen in das angegebene Graphdatenbankkonto durchführt. Führen Sie den folgenden `git clone`-Befehl aus, um die Anwendung abzurufen:
+In diesem Tutorial begleiten wir Sie durch die ersten Schritte und verwenden dazu das auf GitHub gehostete [Bulk Executor-Beispiel für Graphobjekte von Azure Cosmos DB](https://aka.ms/graph-bulkexecutor-sample). Diese Anwendung besteht aus einer .NET-Lösung, die nach dem Zufallsprinzip Scheitelpunkt- und Kantenobjekte generiert und dann Masseneinfügungen in das angegebene Graphdatenbankkonto durchführt. Führen Sie den folgenden `git clone`-Befehl aus, um die Anwendung abzurufen:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started.git
@@ -131,7 +131,7 @@ Dieses Repository enthält das GraphBulkExecutor-Beispiel mit den folgenden Date
 Datei|BESCHREIBUNG
 ---|---
 `App.config`|Hier werden die anwendungs- und datenbankspezifischen Parameter angegeben. Diese Datei muss zuerst geändert werden, um eine Verbindung mit der Zieldatenbank und Sammlungen herzustellen.
-`Program.cs`| Diese Datei enthält die Logik hinter der Erstellung der `DocumentClient`-Sammlung. Sie führt die Bereinigungen durch und sendet die BulkExecutor-Anforderungen.
+`Program.cs`| Diese Datei enthält die Logik hinter der Erstellung der `DocumentClient`-Sammlung. Sie führt die Bereinigungen durch und sendet die Bulk Executor-Anforderungen.
 `Util.cs`| Diese Datei enthält eine Hilfsklasse mit der Logik hinter dem Generieren von Testdaten und dem Überprüfen, ob die Datenbank und Sammlungen vorhanden sind.
 
 In der `App.config`-Datei können folgende Konfigurationswerte angegeben werden:
@@ -156,5 +156,5 @@ Einstellung|BESCHREIBUNG
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zu NuGet-Paketen und Versionshinweise zur BulkExecutor-.NET-Bibliothek finden Sie unter [.NET-BulkExecutor-Bibliothek: Informationen zum Download](sql-api-sdk-bulk-executor-dot-net.md). 
-* Sehen Sie sich die [Leistungstipps](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips) an, um die Verwendung von BulkExecutor weiter zu optimieren.
+* Sehen Sie sich die [Leistungstipps](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips) an, um die Verwendung von Bulk Executor weiter zu optimieren.
 * Lesen Sie den [Referenzartikel zu BulkExecutor.Graph](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet), um mehr über die in diesem Namespace definierten Klassen und Methoden zu erfahren.

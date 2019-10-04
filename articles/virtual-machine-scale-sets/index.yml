@@ -1,64 +1,56 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: abf4aa9210b0d497b1f93361e05e2188d1ef3f6a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976613"
 documentType: LandingData
 title: Dokumentation zu VM-Skalierungsgruppen
 metadata:
-  title: Mit Azure-VM-Skalierungsgruppen können Sie einer Gruppe von identischen virtuellen Computern mit Lastenausgleich und automatischer Skalierung erstellen und verwalten. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie VM-Skalierungsgruppen erstellen, konfigurieren, verwalten und automatisch skalieren.
+  title: 'Mit Azure-VM-Skalierungsgruppen können Sie einer Gruppe von identischen virtuellen Computern mit Lastenausgleich und automatischer Skalierung erstellen und verwalten. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie VM-Skalierungsgruppen erstellen, konfigurieren, verwalten und automatisch skalieren.'
   services: virtual-machine-scale-sets
-  author: carolz
-  manager: czeumault
+  author: georgewallace
+  manager: gwallace
   ms.service: virtual-machine-scale-sets
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 03/14/2018
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
-  description: Mit Azure-VM-Skalierungsgruppen können Sie einer Gruppe von identischen virtuellen Computern mit Lastenausgleich und automatischer Skalierung erstellen und verwalten. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie VM-Skalierungsgruppen erstellen, konfigurieren, verwalten und automatisch skalieren.
+  description: 'Mit Azure-VM-Skalierungsgruppen können Sie einer Gruppe von identischen virtuellen Computern mit Lastenausgleich und automatischer Skalierung erstellen und verwalten. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie VM-Skalierungsgruppen erstellen, konfigurieren, verwalten und automatisch skalieren.'
 sections:
-- title: Schnellstarts
-  items:
-  - type: paragraph
-    text: Erfahren Sie, wie ein Webserver in einer VM-Skalierungsgruppe bereitgestellt wird.
-  - type: list
-    style: icon48
+  - title: Schnellstarts
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg
-      text: Azure-Portal
-      href: /azure/virtual-machine-scale-sets/quick-create-portal
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
-      text: Azure-Befehlszeilenschnittstelle
-      href: /azure/virtual-machine-scale-sets/quick-create-cli
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: /azure/virtual-machine-scale-sets/quick-create-powershell
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: Erfahren Sie, wie VM-Skalierungsgruppen in Azure bereitgestellt, verwaltet und automatisch skaliert werden.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Erfahren Sie, wie ein Webserver in einer VM-Skalierungsgruppe bereitgestellt wird.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
+            text: Azure-Portal
+            href: /azure/virtual-machine-scale-sets/quick-create-portal
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg'
+            text: Azure-Befehlszeilenschnittstelle
+            href: /azure/virtual-machine-scale-sets/quick-create-cli
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: /azure/virtual-machine-scale-sets/quick-create-powershell
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - html: Erstellen und Verwalten einer Skalierungsgruppe mit <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-cli">Azure CLI</a> oder <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-powershell">Azure PowerShell</a>
-    - html: Verwenden von Datenträgern mit <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-cli">Azure CLI</a> oder <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-powershell">Azure PowerShell</a>
-    - html: Verwenden eines benutzerdefinierten VM-Images mit <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">Azure CLI</a> oder <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">Azure PowerShell</a>
-    - html: Bereitstellen von Apps in einer Skalierungsgruppe mit <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">Azure CLI</a> oder <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">Azure PowerShell</a>
-    - html: Automatisches Skalieren einer Skalierungsgruppe mit <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">Azure CLI</a> oder <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">Azure PowerShell</a>
-- title: Beispiele
-  items:
-  - type: paragraph
-    text: Beispielbereitstellungen für VM-Skalierungsgruppen
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 'Erfahren Sie, wie VM-Skalierungsgruppen in Azure bereitgestellt, verwaltet und automatisch skaliert werden.'
+      - type: list
+        style: ordered
+        items:
+          - html: Erstellen und Verwalten einer Skalierungsgruppe mit <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-cli">Azure CLI</a> oder <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-powershell">Azure PowerShell</a>
+          - html: Verwenden von Datenträgern mit <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-cli">Azure CLI</a> oder <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-powershell">Azure PowerShell</a>
+          - html: Verwenden eines benutzerdefinierten VM-Images mit <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">Azure CLI</a> oder <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">Azure PowerShell</a>
+          - html: Bereitstellen von Apps in einer Skalierungsgruppe mit <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">Azure CLI</a> oder <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">Azure PowerShell</a>
+          - html: Automatisches Skalieren einer Skalierungsgruppe mit <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">Azure CLI</a> oder <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">Azure PowerShell</a>
+  - title: Beispiele
     items:
-    - html: <a href="/azure/virtual-machine-scale-sets/cli-samples">Azure-CLI</a>
-    - html: <a href="/azure/virtual-machine-scale-sets/powershell-samples">Azure PowerShell</a>
+      - type: paragraph
+        text: Beispielbereitstellungen für VM-Skalierungsgruppen
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/virtual-machine-scale-sets/cli-samples">Azure-Befehlszeilenschnittstelle</a>
+          - html: <a href="/azure/virtual-machine-scale-sets/powershell-samples">Azure PowerShell</a>

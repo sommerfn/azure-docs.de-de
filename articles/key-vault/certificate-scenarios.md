@@ -2,23 +2,19 @@
 title: Erste Schritte mit Key Vault-Zertifikaten
 description: Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
-ms.assetid: a788b958-3acb-4bb6-9c94-4776852aeea1
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 20c05bddddce4c7748e29551fe78d3e5609b2fa5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 338619a13ec3f5fcd0d4fd62cf387f955c556a7c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275894"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879308"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Erste Schritte mit Key Vault-Zertifikaten
 Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
@@ -44,7 +40,6 @@ Zertifikate bestehen aus drei zusammenhängenden Ressourcen, die als Key Vault-Z
     Die folgenden Zertifizierungsstellen sind aktuell Key Vault-Partneranbieter:  
     -   DigiCert: Key Vault bietet OV-SSL-Zertifikate mit DigiCert.  
     -   GlobalSign: Key Vault bietet OV-SSL-Zertifikate mit GlobalSign.  
-    -   WoSign: Key Vault bietet OV-SSL- oder EV-SSL-Zertifikate mit WoSign. Dies basiert auf der Einstellung, die von Kunden in ihrem WoSign-Konto im WoSign-Portal konfiguriert wurde.  
 
 **Schritt 2**: Ein Kontoadministrator für den Anbieter einer Zertifizierungsstelle erstellt Anmeldeinformationen, die von Key Vault verwendet werden, um SSL-Zertifikate über Key Vault zu registrieren, zu erneuern und zu verwenden.
 
@@ -82,7 +77,7 @@ Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.
       -   Erneuerungsinformationen - > Beispiel: 90 Tage vor Ablauf  
 
   - Ein Zertifikaterstellungsprozess ist normalerweise ein asynchroner Prozess und umfasst das Abrufen des Status der Zertifikaterstellung von Ihrem Schlüsseltresor.  
-[Get certificate operation (Abrufen des Zertifikatvorgangs)](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
+[Zertifikatabrufvorgang](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
       -   Status: abgeschlossen, Fehler mit Fehlerinformationen oder abgebrochen  
       -   Aufgrund einer Verzögerung bei der Erstellung kann ein Abbruchvorgang initiiert werden. Der Abbruchvorgang ist aber möglicherweise nicht wirksam.  
 

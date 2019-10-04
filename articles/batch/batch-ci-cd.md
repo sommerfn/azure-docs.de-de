@@ -7,12 +7,13 @@ ms.date: 03/28/2019
 ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
-ms.openlocfilehash: 5b7c44d3ea3394ff728adfb9d9fd72293138fb2e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.service: batch
+ms.openlocfilehash: 47665171ee5ae137e0503b3e5fa1d369aeabb356
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59494643"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840059"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen
 
@@ -363,7 +364,7 @@ In diesem Beispiel konzentrieren wir uns auf den **hpc-application**-Ordner. Der
 
 ## <a name="continuous-deployment"></a>Kontinuierliche Bereitstellung
 
-Azure Pipelines hat auch stets Ihre Anwendung und die zugrunde liegende Infrastruktur bereitgestellt. Die Komponente [Releasepipelines](https://docs.microsoft.com/azure/devops/pipelines/release/what-is-release-management?view=azure-devops) ermöglicht die kontinuierliche Bereitstellung und automatisiert Ihren Releaseprozess.
+Azure Pipelines hat auch stets Ihre Anwendung und die zugrunde liegende Infrastruktur bereitgestellt. Die Komponente [Releasepipelines](https://docs.microsoft.com/azure/devops/pipelines/release) ermöglicht die kontinuierliche Bereitstellung und automatisiert Ihren Releaseprozess.
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Bereitstellen der Anwendung und der zugrunde liegenden Infrastruktur
 
@@ -418,13 +419,13 @@ Das Bereitstellen der Infrastruktur ist mit einer Reihe von Schritten verbunden.
     * **Aktion:** Erstellen oder aktualisieren Sie eine Ressourcengruppe.
     * **Ressourcengruppe**: $(resourceGroupName)
     * **Speicherort**: $(location)
-    * **Vorlage**: $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/storageAccount.json
+    * **Vorlage**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
     * **Vorlagenparameter überschreiben**: -accountName $(storageAccountName)
 
 1. Laden Sie die Artefakte aus der Quellcodeverwaltung in das Speicherkonto hoch. Dies kann durch eine Azure Pipelines-Aufgabe durchgeführt werden. Im Rahmen dieser Aufgabe können die URL des Speicherkontocontainers und das SAS-Token in eine Variable in Azure Pipelines ausgegeben werden. Dies bedeutet, dass sie während dieser gesamten Agent-Phase wiederverwendet werden können.
 
     Fügen Sie die **Azure-Dateikopiervorgang**-Aufgabe hinzu, und legen Sie die folgenden Eigenschaften fest:
-    * **Quelle:** $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/
+    * **Quelle:** $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/
     * **Azure-Verbindungstyp**: Azure Resource Manager
     * **Azure-Abonnement:** Auswählen des entsprechenden Azure-Abonnements
     * **Zieltyp**: Azure Blob
@@ -441,7 +442,7 @@ Das Bereitstellen der Infrastruktur ist mit einer Reihe von Schritten verbunden.
     * **Aktion:** Erstellen oder aktualisieren Sie eine Ressourcengruppe.
     * **Ressourcengruppe**: $(resourceGroupName)
     * **Speicherort**: $(location)
-    * **Vorlage**: $(System.ArtifactsDirectory)/**{YourAzureRepoArtifactSourceAlias}**/arm-templates/deployment.json
+    * **Vorlage**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
     * **Vorlagenparameter überschreiben**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 Eine gängige Praxis ist die Verwendung von Azure Key Vault-Aufgaben. Wenn für den Dienstprinzipal (Verbindung mit Ihrem Azure-Abonnement) entsprechende Zugriffsrichtlinien festgelegt sind, kann er Geheimnisse aus einer Azure Key Vault-Instanz herunterladen und als Variablen in Ihrer Pipeline verwendet werden. Der Name des Geheimnisses wird mit den zugeordneten Wert festgelegt. Beispielsweise könnte auf ein Geheimnis sshPassword in der Releasedefinition mit „$(sshPassword)“ verwiesen werden.

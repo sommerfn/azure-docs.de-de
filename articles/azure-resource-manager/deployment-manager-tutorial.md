@@ -4,28 +4,28 @@ description: Verwenden Sie Resource Manager-Vorlagen mit dem Azure-Bereitstellun
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.date: 04/02/2019
+ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a0730073a8d17e063ee3f1364d5914200259c10f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a42ccb1c0e60f5bf1568ccea13392186577f2875
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880048"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67205723"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (private Vorschau)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (Public Preview)
 
-Hier erfahren Sie, wie Sie Ihre Anwendungen mit dem [Azure-Bereitstellungs-Manager](./deployment-manager-overview.md) über mehrere Regionen hinweg bereitstellen. Um den Bereitstellungs-Manager verwenden zu können, müssen zwei Vorlagen erstellt werden:
+Hier erfahren Sie, wie Sie Ihre Anwendungen mit dem [Azure-Bereitstellungs-Manager](./deployment-manager-overview.md) über mehrere Regionen hinweg bereitstellen. Wenn Sie einen schnelleren Ansatz bevorzugen, erstellen Sie mit dem [Schnellstart für den Azure-Bereitstellungs-Manager](https://github.com/Azure-Samples/adm-quickstart) die erforderlichen Konfigurationen in Ihrem Abonnement und passt die Artefakte an, um eine Anwendung über mehrere Regionen hinweg bereitzustellen. Im Schnellstart werden dieselben Aufgaben wie in diesem Tutorial ausgeführt.
+
+Um den Bereitstellungs-Manager verwenden zu können, müssen zwei Vorlagen erstellt werden:
 
 * **Eine Topologievorlage:** Beschreibt, welche Azure-Ressourcen Ihre Anwendungen umfassen und wo sie bereitgestellt werden sollen.
 * **Eine Rolloutvorlage:** Beschreibt die Schritte, die beim Bereitstellen Ihrer Anwendungen ausgeführt werden müssen.
+
+> [!IMPORTANT]
+> Falls Ihr Abonnement als Canary-Abonnement zum Testen neuer Azure-Features markiert ist, kann der Azure-Bereitstellungs-Manager nur zur Bereitstellung in den Canary-Regionen verwendet werden. 
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -41,7 +41,10 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Bereitstellen der neueren Version
 > * Bereinigen von Ressourcen
 
-Die REST-API-Referenz für den Azure-Bereitstellungs-Manager finden Sie [hier](https://docs.microsoft.com/rest/api/deploymentmanager/).
+Zusätzliche Ressourcen:
+
+* Die [REST-API-Referenz für den Azure-Bereitstellungs-Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Tutorial: Verwenden der Integritätsprüfung im Azure-Bereitstellungs-Manager (Public Preview)](./deployment-manager-tutorial-health-check.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -52,7 +55,6 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
 * Etwas Erfahrung mit der Entwicklung von [Azure Resource Manager-Vorlagen](./resource-group-overview.md).
-* Der Azure-Bereitstellungs-Manager befindet sich in der privaten Vorschau. Füllen Sie das [Registrierungsblatt](https://aka.ms/admsignup) aus, um sich für die Verwendung des Azure-Bereitstellungs-Managers zu registrieren. 
 * Azure PowerShell. Weitere Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Bereitstellungs-Manager-Cmdlets. Um diese vorab veröffentlichten Cmdlets installieren zu können, benötigen Sie die neueste Version von PowerShellGet. Informationen zum Beziehen der neuesten Version finden Sie unter [Installieren von PowerShellGet](/powershell/gallery/installing-psget). Schließen Sie nach dem Installieren von PowerShellGet das PowerShell-Fenster. Öffnen Sie ein neues PowerShell-Fenster mit erhöhten Rechten, und führen Sie den folgenden Befehl aus:
 
@@ -103,18 +105,18 @@ Der Ordner „ArtifactStore“ aus dem Download enthält zwei Ordner:
 
 Die beiden Versionen (1.0.0.0 und 1.0.0.1) dienen zur [Revisionsbereitstellung](#deploy-the-revision). Zwar verfügen sowohl die Vorlagenartefakte als auch die binären Artefakte über zwei Versionen, aber nur die binären Artefakte unterscheiden sich zwischen den beiden Versionen. In der Praxis werden binäre Artefakte häufiger aktualisiert als Vorlagenartefakte.
 
-1. Öffnen Sie **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateStorageAccount.json** in einem Text-Editor. Es handelt sich dabei um eine einfache Vorlage zum Erstellen eines Speicherkontos.  
-2. Öffnen Sie **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplication.json**. 
+1. Öffnen Sie **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateStorageAccount.json** in einem Text-Editor. Es handelt sich dabei um eine einfache Vorlage zum Erstellen eines Speicherkontos.
+2. Öffnen Sie **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplication.json**.
 
     ![Tutorial für den Azure-Bereitstellungs-Manager: Erstellen einer Webanwendungsvorlage](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-packageuri.png)
 
     Die Vorlage ruft ein Bereitstellungspaket ab, das die Dateien der Webanwendung enthält. In diesem Tutorial enthält das komprimierte Paket nur die Datei „index.html“.
-3. Öffnen Sie **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**. 
+3. Öffnen Sie **\ArtifactStore\templates\1.0.0.0\ServiceWUS\CreateWebApplicationParameters.json**.
 
     ![Tutorial für den Azure-Bereitstellungs-Manager: Erstellen von Webanwendungsvorlagenparametern – containerRoot](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-create-web-application-parameters-deploypackageuri.png)
 
     Der Wert von „deployPackageUri“ ist der Pfad des Bereitstellungspakets. Der Parameter enthält eine Variable vom Typ **$containerRoot**. Der Wert von „$containerRoot“ wird in der [Rolloutvorlage](#create-the-rollout-template) angegeben, indem der SAS-Speicherort der Artefaktquelle mit dem Artefaktstamm und dem Wert von „deployPackageUri“ verkettet wird.
-4. Öffnen Sie **\ArtifactStore\binaries\1.0.0.0\helloWorldWebAppWUS.zip\index.html**.  
+4. Öffnen Sie **\ArtifactStore\binaries\1.0.0.0\helloWorldWebAppWUS.zip\index.html**.
 
     ```html
     <html>
@@ -254,7 +256,7 @@ Der folgende Screenshot zeigt die Definition des Warteschritts:
 
 ![Tutorial für den Azure-Bereitstellungs-Manager: Ressourcen der Rolloutvorlage – Warteschritt](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-resources-wait-step.png)
 
-Für die Dauer wird der [ISO 8601-Standard](https://en.wikipedia.org/wiki/ISO_8601#Durations) verwendet. **PT1M** (muss in Großbuchstaben angegeben werden) ist ein Beispiel für eine Wartezeit von einer Minute. 
+Für die Dauer wird der [ISO 8601-Standard](https://en.wikipedia.org/wiki/ISO_8601#Durations) verwendet. **PT1M** (muss in Großbuchstaben angegeben werden) ist ein Beispiel für eine Wartezeit von einer Minute.
 
 Der folgende Screenshot zeigt Teile der Rolloutdefinition:
 
@@ -289,13 +291,13 @@ Sie erstellen eine Parameterdatei, die mit der Rolloutvorlage verwendet wird.
 
 ## <a name="deploy-the-templates"></a>Bereitstellen der Vorlagen
 
-Die Vorlagen können mithilfe von Azure PowerShell bereitgestellt werden. 
+Die Vorlagen können mithilfe von Azure PowerShell bereitgestellt werden.
 
 1. Führen Sie das Skript aus, um die Diensttopologie bereitzustellen.
 
     ```azurepowershell
     $resourceGroupName = "<Enter a Resource Group Name>"
-    $location = "Central US"  
+    $location = "Central US"
     $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
 
     # Create a resource group
@@ -426,10 +428,10 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
     * **&lt;Namenspräfix>ServiceWUSrg**: Enthält die durch „ServiceWUS“ definierten Ressourcen.
     * **&lt;Namenspräfix>ServiceEUSrg**: Enthält die durch „ServiceEUS“ definierten Ressourcen.
     * Die Ressourcengruppe für die benutzerdefinierte verwaltete Identität.
-3. Klicken Sie auf den Namen der Ressourcengruppe.  
+3. Klicken Sie auf den Namen der Ressourcengruppe.
 4. Wählen Sie **Ressourcengruppe löschen** aus dem Menü ganz oben aus.
 5. Wiederholen Sie die letzten beiden Schritte, um die anderen Ressourcengruppen zu löschen, die in diesem Tutorial erstellt wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie sich mit der Verwendung des Azure-Bereitstellungs-Managers vertraut gemacht. Weitere Informationen finden Sie in der [Azure Resource Manager-Dokumentation](/azure/azure-resource-manager/).
+In diesem Tutorial haben Sie sich mit der Verwendung des Azure-Bereitstellungs-Managers vertraut gemacht. Informationen zum Integrieren der Integritätsüberwachung in den Azure-Bereitstellungs-Manager finden Sie unter [Tutorial: Verwenden der Integritätsprüfung im Azure-Bereitstellungs-Manager (Public Preview)](./deployment-manager-tutorial-health-check.md).

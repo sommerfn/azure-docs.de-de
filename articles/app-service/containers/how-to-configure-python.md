@@ -10,17 +10,17 @@ ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/28/2019
-ms.author: astay;cephalin;kraigb
+ms.author: cephalin
+ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: f8894132dae179be2d5d9d9b6887851be78d7746
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 8563e0ac060e5cce6853472dfb1c51c6c2c36a4d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548143"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071089"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurieren einer Linux-Python-App für Azure App Service
 
@@ -144,7 +144,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>Zugreifen auf Umgebungsvariablen
 
-In App Service können Sie [App-Einstellungen außerhalb Ihres App-Codes festlegen](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings). Anschließend können Sie darauf unter Verwendung des Standardmusters [os.environ](https://docs.python.org/3/library/os.html#os.environ) zugreifen. Verwenden Sie beispielsweise den folgenden Code, um auf eine App-Einstellung namens `WEBSITE_SITE_NAME` zuzugreifen:
+In App Service können Sie [App-Einstellungen außerhalb Ihres App-Codes festlegen](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings). Anschließend können Sie darauf unter Verwendung des Standardmusters [os.environ](https://docs.python.org/3/library/os.html#os.environ) zugreifen. Verwenden Sie beispielsweise den folgenden Code, um auf eine App-Einstellung namens `WEBSITE_SITE_NAME` zuzugreifen:
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -152,7 +152,7 @@ os.environ['WEBSITE_SITE_NAME']
 
 ## <a name="detect-https-session"></a>Erkennen einer HTTPS-Sitzung
 
-In App Service erfolgt die [SSL-Beendigung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
+In App Service erfolgt die [SSL-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
 
 ```python
 if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto'] == 'https':
@@ -182,8 +182,6 @@ Gängige Webframeworks ermöglichen den Zugriff auf die Information `X-Forwarded
 - [Greifen Sie auf den Protokolldatenstrom zu](#access-diagnostic-logs).
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Das integrierte Python-Image in App Service unter Linux ist zurzeit als Vorschauversion verfügbar, und Sie können den zum Starten Ihrer App verwendeten Befehl anpassen. Sie können Python-Apps für die Produktionsumgebung stattdessen auch mit einem benutzerdefinierten Container erstellen.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Python-App mit PostgreSQL](tutorial-python-postgresql-app.md)

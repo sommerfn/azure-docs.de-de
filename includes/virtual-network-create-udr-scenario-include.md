@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-network
 author: genlin
 ms.service: virtual-network
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: b91ae155761f6357e286f4742d57b97cf96d909a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 40b81904daabfdad7e45571d8ab86cf32cac8964
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31805151"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178020"
 ---
 ## <a name="scenario"></a>Szenario
 Um zu veranschaulichen, wie Sie UDRs erstellen, wird in diesem Dokument das folgende Szenario verwendet:

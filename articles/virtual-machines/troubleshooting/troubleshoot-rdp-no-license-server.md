@@ -4,21 +4,20 @@ description: Informationen zum Behandeln von RDP-Problemen aufgrund eines fehlen
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 550b971602d1736e0ba3981a5b7ca546862ea034
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 154160f9a3fbd485ee6383bf3d5ff1c291520a75
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913852"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088518"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Remotedesktop-Lizenzserver beim Herstellen einer Verbindung mit einer Azure-VM nicht verfügbar
 
@@ -123,7 +122,7 @@ Um dieses Problem zu lösen [erstellen Sie eine Sicherung des Betriebssystemdate
        telnet <FQDN / IP License Server> 135
        ```
 
-3. Wenn kein Remotedesktop-Lizenzserver in der Umgebung vorhanden ist und Sie einen solchen Lizenzserver verwenden möchten, können Sie einen [Remotedesktop-Lizenzierungsrollendienst installieren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11)). [Konfigurieren Sie die RDS-Lizenzierung](https://blogs.technet.microsoft.com/askperf/2013/09/20/rd-licensing-configuration-on-windows-server-2012/) im Anschluss.
+3. Wenn kein Remotedesktop-Lizenzserver in der Umgebung vorhanden ist und Sie einen solchen Lizenzserver verwenden möchten, können Sie einen [Remotedesktop-Lizenzierungsrollendienst installieren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11)). [Konfigurieren Sie die RDS-Lizenzierung](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383) im Anschluss.
 
 4. Wenn ein Remotedesktop-Lizenzserver konfiguriert ist und fehlerfrei arbeitet, stellen Sie sicher, dass der Remotedesktop-Lizenzserver mit Clientzugriffslizenzen (CALs) aktiviert ist.
 

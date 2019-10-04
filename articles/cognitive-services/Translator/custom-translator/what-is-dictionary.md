@@ -2,19 +2,19 @@
 title: 'Definition: Wörterbuch – Custom Translator'
 titleSuffix: Azure Cognitive Services
 description: Ein Wörterbuch ist ein Dokument mit Zuordnungen, das Ausdrücke oder Sätze – samt Übersetzung – enthält, die Microsoft Translator immer identisch übersetzen soll. Wörterbücher werden auch als Glossare oder Terminologiedatenbanken bezeichnet.
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: bfefb1fe44959bc7e5186a0f14813f41256cf2d5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5103526956b5041771a1d8e4abb5e8800b971059
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775440"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595375"
 ---
 # <a name="what-is-a-dictionary"></a>Definition: Wörterbuch
 

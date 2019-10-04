@@ -1,19 +1,19 @@
 ---
-title: Bereitstellen von Cloudabhängigkeiten der Azure IoT OPC UA-Geräteverwaltung | Microsoft-Dokumentation
+title: Bereitstellen der OPC Twin-Cloudabhängigkeiten in Azure | Microsoft-Dokumentation
 description: Informationen zum Bereitstellen von Azure OPC Twin-Abhängigkeiten.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: cdd89293328da47c8e338bb6fca8c7b93dd84f97
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: cb07899b51280cff8613d637640c0da23debbc8e
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759219"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016514"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Bereitstellen von Abhängigkeiten für die lokale Entwicklung
 
@@ -21,7 +21,7 @@ In diesem Artikel wird erläutert, wie Sie ausschließlich die für die lokale E
 
 ## <a name="deploy-azure-platform-services"></a>Bereitstellen von Azure-Plattformdiensten
 
-1. Stellen Sie sicher, dass die PowerShell- und [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-1.1.0)-Erweiterungen installiert sind.  Öffnen Sie eine Eingabeaufforderung oder ein Terminal, und führen Sie Folgendes aus:
+1. Stellen Sie sicher, dass die PowerShell- und [AzureRM PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)-Erweiterungen installiert sind.  Öffnen Sie eine Eingabeaufforderung oder ein Terminal, und führen Sie Folgendes aus:
 
    ```bash
    git clone https://github.com/Azure/azure-iiot-components
@@ -44,7 +44,7 @@ Verwenden Sie einen kurzen und einfachen Namen für die Ressourcengruppe.  Der N
 
 ### <a name="azure-active-directory-aad-registration"></a>Azure Active Directory-Registrierung (AAD)
 
-Über das Bereitstellungsskript wird versucht, die AAD-Anwendungen in Azure Active Directory zu registrieren.  Je nach Ihren Rechten für den ausgewählten AAD-Mandanten können dabei Fehler auftreten.   Es gibt 3 Möglichkeiten:
+Über das Bereitstellungsskript wird versucht, die AAD-Anwendungen in Azure Active Directory zu registrieren.  Je nach Ihren Rechten für den ausgewählten AAD-Mandanten können dabei Fehler auftreten.   Drei Optionen stehen zur Verfügung:
 
 1. Wenn Sie in einer Liste mit AAD-Mandanten einen Mandanten ausgewählt haben, starten Sie das Skript neu, und wählen Sie einen anderen Mandanten aus.
 2. Alternativ können Sie einen privaten AAD-Mandanten bereitstellen, das Skript neu starten und diesen Mandanten verwenden.
@@ -52,7 +52,7 @@ Verwenden Sie einen kurzen und einfachen Namen für die Ressourcengruppe.  Der N
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Dienste zur OPC-Geräteverwaltung erfolgreich in einem vorhandenen Projekt bereitgestellt haben, empfiehlt sich nun folgender nächster Schritt:
+Nachdem Sie OPC Twin-Dienste erfolgreich in einem vorhandenen Projekt bereitgestellt haben, empfiehlt sich nun folgender Schritt:
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zum Bereitstellen von Modulen zur OPC-Geräteverwaltung](howto-opc-twin-deploy-modules.md)
+> [Bereitstellen von OPC Twin-Modulen](howto-opc-twin-deploy-modules.md)

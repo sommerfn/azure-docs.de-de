@@ -14,11 +14,11 @@ ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
 ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798979"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60612540"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integration eines virtuellen Netzwerks für Azure Data Lake Storage Gen1
 
@@ -26,7 +26,7 @@ Dieser Artikel enthält eine Einführung in die Integration virtueller Netzwerke
 
 Mit diesem Feature können Sie Ihr Data Lake Storage-Konto vor externen Bedrohungen schützen.
 
-Die Integration virtueller Netzwerke für Data Lake Storage Gen1 nutzt die Dienstendpunktsicherheit für virtuelle Netzwerke zwischen Ihrem virtuellen Netzwerk und Azure Active Directory (Azure AD), um zusätzliche Sicherheitsansprüche im Zugriffstoken zu generieren. Diese Ansprüche werden dann genutzt, um Ihr virtuelles Netzwerk mit Ihrem Data Lake Storage Gen1-Konto zu authentifizieren und den Zugriff zu ermöglichen.
+Die Integration virtueller Netzwerke für Data Lake Storage Gen1 nutzt die Sicherheit von VNET-Dienstendpunkten zwischen Ihrem virtuellen Netzwerk und Azure Active Directory (Azure AD), um zusätzliche Sicherheitsansprüche im Zugriffstoken zu generieren. Diese Ansprüche werden dann genutzt, um Ihr virtuelles Netzwerk mit Ihrem Data Lake Storage Gen1-Konto zu authentifizieren und den Zugriff zu ermöglichen.
 
 > [!NOTE]
 > Für die Verwendung dieser Funktionen fallen keine zusätzlichen Gebühren an. Ihrem Konto wird der Standardsatz für Data Lake Storage Gen1 berechnet. Weitere Informationen finden Sie unter [Azure Data Lake Storage – Preise](https://azure.microsoft.com/pricing/details/data-lake-store/?cdn=disable). Preisinformationen zu allen anderen Azure-Diensten, die Sie nutzen, finden Sie unter [Azure-Preise](https://azure.microsoft.com/pricing/#product-picker).
@@ -38,11 +38,11 @@ Mit der Integration virtueller Netzwerke per Data Lake Storage Gen1 können Sie 
 ![Szenariodiagramm für die Integration virtueller Netzwerke per Data Lake Storage Gen1](media/data-lake-store-network-security/scenario-diagram.png)
 
 > [!NOTE]
-> Die vorhandenen IP-Firewallregeln können zusätzlich zu Regeln für virtuelle Netzwerke verwendet werden, um auch Zugriff aus lokalen Netzwerken zuzulassen. 
+> Die vorhandenen IP-Firewallregeln können zusätzlich zu VNET-Regeln verwendet werden, um auch Zugriff aus lokalen Netzwerken zuzulassen. 
 
 ## <a name="optimal-routing-with-data-lake-storage-gen1-virtual-network-integration"></a>Optimales Routing mit Integration virtueller Netzwerke per Data Lake Storage Gen1
 
-Ein Hauptvorteil von Dienstendpunkten virtueller Netzwerke ist das [optimale Routing](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview#key-benefits) aus Ihrem virtuellen Netzwerk. Sie können die gleiche Routenoptimierung für Data Lake Storage Gen1-Konten durchführen. Verwenden Sie die folgenden [benutzerdefinierten Routen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) aus Ihrem virtuellen Netzwerk zu Ihrem Data Lake Storage Gen1-Konto.
+Ein Hauptvorteil von VNET-Dienstendpunkten ist das [optimale Routing](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview#key-benefits) aus Ihrem virtuellen Netzwerk. Sie können die gleiche Routenoptimierung für Data Lake Storage Gen1-Konten durchführen. Verwenden Sie die folgenden [benutzerdefinierten Routen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) aus Ihrem virtuellen Netzwerk zu Ihrem Data Lake Storage Gen1-Konto.
 
 **Öffentliche IP-Adresse für Data Lake Storage**: Verwenden Sie die öffentliche IP-Adresse für Ihre Data Lake Storage Gen1-Zielkonten. [Lösen Sie die DNS-Namen Ihrer Konten auf](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-connectivity-from-vnets#enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity), um die IP-Adressen für Ihr Data Lake Storage Gen1-Konto zu identifizieren. Erstellen Sie für jede Adresse einen separaten Eintrag.
 
@@ -75,7 +75,7 @@ Einige der verfügbaren Optionen sind:
 
 - HDInsight-Cluster, die erstellt wurden, bevor die Unterstützung für die Integration von virtuellen Netzwerken per Data Lake Storage Gen1 verfügbar war, müssen für dieses neue Feature neu erstellt werden.
  
-- Wenn Sie einen neuen HDInsight-Cluster erstellen und ein Data Lake Storage Gen1-Konto mit aktivierter Integration virtueller Netzwerke auswählen, tritt für den Prozess ein Fehler auf. Deaktivieren Sie zuerst die Regel für das virtuelle Netzwerk. Sie können auch auf dem Blatt **Firewall und virtuelle Netzwerke** des Data Lake Storage-Kontos die Option **Zugriff erlauben von: Alle Netzwerke und Dienste** wählen. Erstellen Sie dann den HDInsight-Cluster, bevor Sie abschließend die Regel für virtuelle Netzwerke erneut aktivieren oder die Option **Zugriff erlauben von: Alle Netzwerke und Dienste** deaktivieren. Weitere Informationen finden Sie im Abschnitt [Ausnahmen](#exceptions).
+- Wenn Sie einen neuen HDInsight-Cluster erstellen und ein Data Lake Storage Gen1-Konto mit aktivierter Integration virtueller Netzwerke auswählen, tritt für den Prozess ein Fehler auf. Deaktivieren Sie zuerst die VNET-Regel. Sie können auch auf dem Blatt **Firewall und virtuelle Netzwerke** des Data Lake Storage-Kontos die Option **Zugriff erlauben von: Alle Netzwerke und Dienste** wählen. Erstellen Sie dann den HDInsight-Cluster, bevor Sie abschließend die VNET-Regel erneut aktivieren oder die Option **Zugriff erlauben von: Alle Netzwerke und Dienste** deaktivieren. Weitere Informationen finden Sie im Abschnitt [Ausnahmen](#exceptions).
 
 - Die Integration virtueller Netzwerke per Data Lake Storage Gen1 funktioniert nicht mit [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
   
@@ -93,7 +93,7 @@ Einige der verfügbaren Optionen sind:
  
 4.  Wählen Sie **Hinzufügen**, um einen neuen Dienstendpunkt hinzuzufügen.
 
-    ![Hinzufügen eines Dienstendpunkts im virtuellen Netzwerk](media/data-lake-store-network-security/config-vnet-1.png)
+    ![Hinzufügen eines VNET-Dienstendpunkts](media/data-lake-store-network-security/config-vnet-1.png)
 
 5.  Wählen Sie **Microsoft.AzureActiveDirectory** als Dienst für den Endpunkt aus.
 
@@ -116,7 +116,7 @@ Einige der verfügbaren Optionen sind:
     > [!NOTE]
     > Melden Sie sich vom Portal ab, falls die Option **Firewall und virtuelle Netzwerke** in den Einstellungen nicht angezeigt wird. Schließen Sie den Browser, und löschen Sie den Browsercache. Starten Sie den Computer neu, und versuchen Sie es erneut.
 
-       ![Hinzufügen einer Regel für virtuelle Netzwerke zu Ihrem Data Lake Storage-Konto](media/data-lake-store-network-security/config-adls-1.png)
+       ![Hinzufügen einer VNET-Regel zu Ihrem Data Lake Storage-Konto](media/data-lake-store-network-security/config-adls-1.png)
 
 3.  Klicken Sie auf **Ausgewählte Netzwerke**.
  

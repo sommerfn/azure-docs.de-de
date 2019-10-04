@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 5f75f656312c11a4668ca9ef9fe7b2a61a7d13e8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301138"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60797900"
 ---
 # <a name="consumption-model"></a>Nutzungsmodell
 
 Die Onlinestreckenplanung bietet eine Reihe von Parametern für eine ausführliche Beschreibung eines fahrzeugspezifischen Verbrauchsmodells.
-Abhängig vom Wert für **vehicleEngineType** werden zwei grundlegende Verbrauchsmodelle unterstützt:  _Combustion_ und _Electric_. Sie können in einer Anforderung keine Parameter angeben, die zu unterschiedlichen Modellen gehören.
+Abhängig vom Wert für **vehicleEngineType** werden zwei grundlegende Verbrauchsmodelle unterstützt: _Combustion_ und _Electric_. Sie können in einer Anforderung keine Parameter angeben, die zu unterschiedlichen Modellen gehören.
 Das Verbrauchsmodell kann nicht mit den **travelMode**-Werten _bicycle_ und _pedestrian_ verwendet werden.
 
 ## <a name="parameter-constraints-for-consumption-model"></a>Parametereinschränkungen für das Verbrauchsmodell

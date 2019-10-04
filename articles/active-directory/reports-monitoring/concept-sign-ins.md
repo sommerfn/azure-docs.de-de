@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac65a9ac81bca942f9fcbe802fdbf8a0aa3f8248
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 6121ca6c1636c8839110712310a1b94fe7fada49
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997664"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619257"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -66,7 +66,7 @@ Ein Anmeldungsprotokoll enthält eine Standardlistenansicht mit folgenden Inform
 
 - Anmeldedatum
 - Zugehöriger Benutzer
-- Anwendung, bei der sich der Benutzer angemeldet hat
+- Die Anwendung, bei der sich der Benutzer angemeldet hat
 - Anmeldestatus
 - Status der Risikoerkennung
 - Status der MFA-Anforderung (Multi-Factor Authentication)
@@ -89,18 +89,11 @@ Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Information
 > Benutzer können nun in allen Anmeldeberichten Probleme mit Richtlinien für bedingten Zugriff beheben. Durch Klicken auf die Registerkarte **Bedingter Zugriff** eines Anmeldedatensatzes können Benutzer den Status des bedingten Zugriffs überprüfen und die Richtliniendetails für die Anmeldung sowie die jeweiligen Richtlinienergebnisse ansehen.
 > Weitere Informationen finden Sie in den [häufig gestellten Fragen zum bedingten Zugriff in allen Anmeldungen](reports-faq.md#conditional-access).
 
-![Anmeldeaktivität](./media/concept-sign-ins/ConditionalAccess.png "Anmeldeaktivität")
 
 
 ## <a name="filter-sign-in-activities"></a>Filtern von Anmeldeaktivitäten
 
-Sie können die Anmeldungsdaten mit den folgenden Standardfeldern filtern, um die gemeldeten Daten einzugrenzen:
-
-- Benutzer
-- Anwendung
-- Anmeldestatus
-- Bedingter Zugriff
-- Datum
+Um die gemeldeten Daten gemäß Ihren Anforderungen einzugrenzen, können Sie die Anmeldedaten mit dem Datumsfeld als Standardfilter filtern. Außerdem bietet Azure AD eine breite Palette an zusätzlichen Filtern, die Sie festlegen können.
 
 ![Anmeldeaktivität](./media/concept-sign-ins/04.png "Anmeldeaktivität")
 
@@ -131,21 +124,28 @@ Mögliche Werte:
 
 Beim Auswählen eines benutzerdefinierten Zeitraums können Sie eine Startzeit und eine Endzeit konfigurieren.
 
-Wenn Sie der Anmeldungsansicht zusätzliche Felder hinzufügen, werden diese automatisch in die Filterliste aufgenommen. Wenn Sie Ihrer Liste also beispielsweise das Feld **Client-App** hinzufügen, erhalten Sie auch eine weitere Filteroption, mit der Sie folgende Filter festlegen können:
-
-- "Browser"      
-- Exchange ActiveSync (unterstützt)               
-- Exchange ActiveSync (nicht unterstützt)
-- Andere Clients               
-    - IMAP
-    - MAPI
-    - Ältere Office-Clients
-    - POP
-    - SMTP
-
-
+Wenn Sie der Anmeldungsansicht zusätzliche Felder hinzufügen, werden diese automatisch in die Filterliste aufgenommen. Wenn Sie Ihrer Liste also beispielsweise das Feld **Client-App** hinzufügen, erhalten Sie auch eine weitere Filteroption, mit der Sie folgende Filter festlegen können:  
 ![Anmeldeaktivität](./media/concept-sign-ins/12.png "Anmeldeaktivität")
 
+- **Browser**  
+    Dieser Filter zeigt alle Ereignisse, bei denen Anmeldeversuche mithilfe von Browserflows ausgeführt wurden.
+- **Exchange ActiveSync (unterstützt)**  
+    Dieser Filter zeigt alle Anmeldeversuche mit dem Exchange ActiveSync (EAS)-Protokoll von unterstützten Plattformen wie iOS, Android und Windows Phone.
+- **Exchange ActiveSync (nicht unterstützt)**  
+    Dieser Filter zeigt alle Anmeldeversuche mit dem EAS-Protokoll von nicht unterstützten Plattformen wie Linux-Distributionen.
+- **Mobile Apps und Desktopclients** Dieser Filter zeigt alle Anmeldeversuche, die keine Browserflows verwendet haben. Dabei kann es sich um mobile Apps von einer beliebigen Plattform (mithilfe eines beliebigen Protokolls) oder um Apps auf Desktopclients wie Office unter Windows oder MacOS handeln.
+  
+- **Andere Clients**
+    - **IMAP**  
+        Älterer E-Mail-Client, der IMAP zum Abrufen von E-Mails verwendet.
+    - **MAPI**  
+        Office 2013 mit aktivierter ADAL und Verwendung von MAPI.
+    - **Ältere Office-Clients**  
+        Office 2013 in der Standardkonfiguration, bei der MAPI verwendet wird und ADAL nicht aktiviert ist, oder Office 2016 mit deaktivierter ADAL.
+    - **POP**  
+        Älterer E-Mail-Client, der POP3 zum Abrufen von E-Mails verwendet.
+    - **SMTP**  
+        Älterer E-Mail-Client, der SMTP zum Senden von E-Mails verwendet.
 
 ## <a name="download-sign-in-activities"></a>Herunterladen von Anmeldeaktivitäten
 
@@ -189,9 +189,9 @@ Durch Klicken auf ein Element können Sie ausführlichere Informationen zum ents
 - Anwendungs-ID
 - Anwendung
 - Client
-- Standort
+- Location
 - IP-Adresse
-- Datum
+- Date
 - MFA erforderlich
 - Anmeldestatus
 

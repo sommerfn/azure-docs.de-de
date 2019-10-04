@@ -1,20 +1,20 @@
 ---
 title: Synonyme – C#-Beispiel – Azure Search
 description: In diesem C#-Beispiel erfahren Sie, wie Sie einem Index in Azure Search das Feature „Synonyme“ hinzufügen. Eine Synonymzuordnung ist eine Liste der entsprechenden Begriffe. Felder mit Synonymunterstützung erweitern Abfragen, sodass sie den vom Benutzer bereitgestellten Begriff und alle zugehörigen Synonyme enthalten.
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f9cadfcf0c027f4aec4f9d4928872709ee7d3e99
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: ad71a6ab5090e601ef075617edf08c421abebdb0
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59008971"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647752"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>Beispiel: Hinzufügen von Synonymen für Azure Search in C#
 
@@ -23,13 +23,15 @@ Anhand von Synonymen wird eine Abfrage erweitert, indem Begriffe, die als semant
 In Azure Search werden Synonyme in einer *Synonymzuordnung* anhand von *Zuordnungsregeln* für gleichwertige Begriffe definiert. Dieses Beispiel behandelt die wesentlichen Schritte zum Hinzufügen und Verwenden von Synonymen bei einem vorhandenen Index. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Aktivieren von Synonymen durch Erstellen und Veröffentlichen von Zuordnungsregeln 
-> * Verweisen auf eine Synonymzuordnung in einer Abfragezeichenfolge
+> * Erstellen einer Synonymzuordnung mithilfe der Klasse [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) 
+> * Festlegen der Eigenschaft [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) in Feldern, die die Abfrageerweiterung über Synonyme unterstützen sollen
+
+Sie können ein für Synonyme aktiviertes Feld auf die übliche Weise abfragen. Für den Zugriff auf Synonyme ist keine zusätzliche Abfragesyntax erforderlich.
 
 Sie können mehrere Synonymzuordnungen erstellen, diese für den gesamten Dienst als Ressource bereitstellen, die für alle Indizes verfügbar ist, und dann auf Feldebene angeben, was jeweils verwendet werden soll. Beim Abfragen führt Azure Search zusätzlich zum Durchsuchen eines Index dann eine Suche in einer Synonymzuordnung durch, falls diese für die Felder einer Abfrage angegeben ist.
 
 > [!NOTE]
-> Synonyme werden in den aktuellen API- und SDK-Versionen (API-Version 2017-11-11, SDK-Version 5.0.0) unterstützt. Für das Azure-Portal ist derzeit noch keine Unterstützung vorhanden. Falls Unterstützung für Synonyme auch für das Azure-Portal nützlich wäre, lassen Sie uns Feedback über [UserVoice](https://feedback.azure.com/forums/263029-azure-search) zukommen.
+> Synonyme können programmgesteuert, jedoch nicht im Portal erstellt werden. Falls Unterstützung für Synonyme auch für das Azure-Portal nützlich wäre, lassen Sie uns Feedback über [UserVoice](https://feedback.azure.com/forums/263029-azure-search) zukommen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -172,7 +174,7 @@ Die schnellste Möglichkeit zum Bereinigen des Systems nach einem Beispiel beste
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Beispiel wurde die [REST-API für Synonyme](https://aka.ms/rgm6rq) in C#-Code veranschaulicht, um Zuordnungsregeln zu erstellen und zu veröffentlichen sowie anschließend die Synonymzuordnung für eine Abfrage aufzurufen. Weitere Informationen finden Sie in der Referenzdokumentation für [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) und [REST-API](https://docs.microsoft.com/rest/api/searchservice/).
+In diesem Beispiel wurde die Funktion für Synonyme in C#-Code veranschaulicht, um Zuordnungsregeln zu erstellen und zu veröffentlichen sowie anschließend die Synonymzuordnung für eine Abfrage aufzurufen. Weitere Informationen finden Sie in der Referenzdokumentation für [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) und [REST-API](https://docs.microsoft.com/rest/api/searchservice/).
 
 > [!div class="nextstepaction"]
 > [Verwenden von Synonymen in Azure Search](search-synonyms.md)

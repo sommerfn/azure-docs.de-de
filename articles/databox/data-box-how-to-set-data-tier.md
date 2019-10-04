@@ -1,26 +1,25 @@
 ---
-title: Senden von Daten an eine Blockblob-Ebene (heiß, kalt oder Archiv) mit Azure Data Box | Microsoft-Dokumentation in Daten
-description: Hier wird beschrieben, wie Daten mit Azure Data Box an eine geeignete Blockblob-Speicherebene wie die heiße oder kalte Ebene bzw. die Archivebene gesendet werden.
+title: Senden von Daten an eine Blobebene (heiß, kalt oder Archiv) mit Azure Data Box oder Azure Data Box Heavy | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Daten mit Azure Data Box oder Azure Data Box Heavy an eine geeignete Blockblob-Speicherebene, z. B. die heiße oder kalte Ebene bzw. die Archivebene, gesendet werden.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 44fa81ddf6b0892c6d900fd065589b3d6ac5a0bd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ea208c395e2ef69ce8f28052351643e963cceb05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789124"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66427878"
 ---
-# <a name="use-azure-data-box-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Senden von Daten an eine geeignete Azure Storage-Blobebene mit Azure Data Box
+# <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Senden von Daten an eine geeignete Azure Storage-Blobebene mit Azure Data Box oder Azure Data Box Heavy
 
 Azure Data Box verschiebt große Datenmengen in Azure, indem Ihnen ein proprietäres Speichergerät zugeschickt wird. Sie füllen das Gerät mit Daten und senden es zurück. Die Daten aus Data Box werden in eine Standardebene hochgeladen, die dem Speicherkonto zugeordnet ist. Sie können die Daten dann in eine andere Speicherebene verschieben.
 
-In diesem Artikel wird beschrieben, wie die von Data Box hochgeladenen Daten in eine heiße, eine kalte oder eine Archivblobebene verschoben werden können.  
-
+In diesem Artikel wird beschrieben, wie die von Data Box hochgeladenen Daten in eine heiße, eine kalte oder eine Archivblobebene verschoben werden können. Dieser Artikel gilt sowohl für Azure Data Box als auch für Azure Data Box Heavy.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,7 +31,7 @@ Die kalte Speicherebene ist für selten verwendete Daten vorgesehen, die mindest
 
 Die Azure-Archivebene ist offline und ermöglicht die niedrigsten Speicherkosten, ist gleichzeitig aber mit den höchsten Zugriffskosten verbunden. Diese Ebene ist für Daten vorgesehen, die mindestens 180 Tage im Archivspeicher bleiben. Details zu den einzelnen Ebenen und zum Preismodell finden Sie unter [Vergleich der Speicherebenen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
 
-Die Daten aus Data Box werden in eine Speicherebene hochgeladen, die dem Speicherkonto zugeordnet ist. Beim Erstellen eines Speicherkontos können Sie die heiße oder die kalte Zugriffsebene festlegen. Je nach dem Zugriffsmuster Ihrer Workload und den Kosten können Sie diese Daten aus der Standardebene in eine andere Speicherebene verschieben.
+Die Daten aus Data Box oder Data Box Heavy werden in eine Speicherebene hochgeladen, die dem Speicherkonto zugeordnet ist. Beim Erstellen eines Speicherkontos können Sie die heiße oder die kalte Zugriffsebene festlegen. Je nach dem Zugriffsmuster Ihrer Workload und den Kosten können Sie diese Daten aus der Standardebene in eine andere Speicherebene verschieben.
 
 Sie können das Tiering für Ihre Objektspeicherdaten nur in Blob Storage-Konten oder GPv2-Konten (universelle Konten der Version 2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Zur Auswahl der richtigen Speicherebene für Ihre Daten überprüfen Sie die ausführlichen Überlegungen in [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
 
@@ -40,13 +39,13 @@ Sie können das Tiering für Ihre Objektspeicherdaten nur in Blob Storage-Konten
 
 Die Standardblobebene wird angegeben, wenn das Speicherkonto im Azure-Portal erstellt wird. Sobald „GPv2“ oder „Blobspeicher“ als Speichertyp ausgewählt wurde, kann das Zugriffsebenenattribut festgelegt werden. Die heiße Ebene ist standardmäßig ausgewählt.
 
-Die Ebenen können nicht festgelegt werden, wenn Sie beim Bestellen einer Data Box versuchen, ein neues Konto zu erstellen. Nachdem das Konto erstellt wurde, können Sie das Konto im Portal ändern, um die standardmäßige Zugriffsebene festzulegen.
+Die Ebenen können nicht festgelegt werden, wenn Sie beim Bestellen eines Data Box- oder Data Box Heavy-Geräts versuchen, ein neues Konto zu erstellen. Nachdem das Konto erstellt wurde, können Sie das Konto im Portal ändern, um die standardmäßige Zugriffsebene festzulegen.
 
-Alternativ erstellen Sie zuerst ein Speicherkonto mit dem festgelegten Zugriffsebenenattribut. Wählen Sie beim Erstellen der Data Box-Bestellung das vorhandene Speicherkonto aus. Weitere Informationen zum Festlegen der Standardblobebene während der Erstellung des Speicherkontos finden Sie unter [Erstellen eines Speicherkontos: Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal).
+Alternativ erstellen Sie zuerst ein Speicherkonto mit dem festgelegten Zugriffsebenenattribut. Wählen Sie beim Aufgeben der Data Box- bzw. Data Box Heavy-Bestellung das vorhandene Speicherkonto aus. Weitere Informationen zum Festlegen der Standardblobebene während der Erstellung des Speicherkontos finden Sie unter [Erstellen eines Speicherkontos: Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal).
 
 ## <a name="move-data-to-a-non-default-tier"></a>Verschieben von Daten in eine Nicht-Standardebene
 
-Sobald die Daten aus Data Box in die Standardebene hochgeladen sind, können Sie sie in eine Nicht-Standardebene verschieben. Zum Verschieben dieser Daten in eine Nicht-Standardebene gibt es zwei Möglichkeiten.
+Sobald die Daten vom Data Box-Gerät in die Standardebene hochgeladen wurden, können Sie sie in eine Nicht-Standardebene verschieben. Zum Verschieben dieser Daten in eine Nicht-Standardebene gibt es zwei Möglichkeiten.
 
 - **Azure Blob Storage-Lebenszyklusverwaltung**: Sie können einen richtlinienbasierten Ansatz verwenden, um Daten automatisch in die entsprechenden Zugriffsebenen zu übertragen oder am Ende ihres Lebenszyklus ablaufen zu lassen. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts).
 - **Skripterstellung**: Sie können einen skriptbasierten Ansatz über Azure PowerShell verwenden, um Blobebenentiering zu aktivieren. Dazu rufen Sie den `SetBlobTier`-Vorgang auf, um die Ebene für das Blob festzulegen.
@@ -55,7 +54,7 @@ Sobald die Daten aus Data Box in die Standardebene hochgeladen sind, können Sie
 
 Nachfolgend wird beschrieben, wie Sie die Blobebene mithilfe eines Azure PowerShell-Skripts auf „Archiv“ festlegen können.
 
-1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten. Stellen Sie sicher, dass Sie PowerShell 5.0 oder höher ausführen. Geben Sie Folgendes ein: 
+1. Öffnen Sie eine Windows PowerShell-Sitzung mit erhöhten Rechten. Stellen Sie sicher, dass Sie PowerShell 5.0 oder höher ausführen. Geben Sie Folgendes ein:
 
    `$PSVersionTable.PSVersion`     
 

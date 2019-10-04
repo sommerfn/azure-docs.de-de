@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: f5e780dcab20befe19ca34020908eee93c290516
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 17e55dbe84cda87ee902c94e0024c9a3aad8b31b
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197436"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698335"
 ---
 # <a name="cluster-tuning"></a>Clusteroptimierung
 
@@ -46,8 +46,6 @@ Diese Änderungen können aufgrund von Datasetqualitäten oder auf Basis des Wor
 Um die Vorteile höherer Datengeschwindigkeiten zwischen vFXT-Cluster und Cloudspeicher in einem Cloud-NAS- oder Cloudgateway-Szenario zu nutzen (wobei der vFXT-Cluster einen NAS-artigen Zugriff auf einen Cloudcontainer ermöglicht), empfiehlt Ihr Berater möglicherweise, Einstellungen wie diese zu ändern, um Daten aggressiver aus dem Cache per Push auf das Speichervolumen zu übertragen:
 
 * Erhöhen Sie die Anzahl der TCP-Verbindungen zwischen dem Cluster und dem Speichercontainer.
-* Verringern Sie den REST-Timeoutwert für die Kommunikation zwischen Cluster und Speicher, um Schreibvorgänge früher zu wiederholen, wenn sie nicht sofort erfolgreich sind.  
-* Vergrößern Sie die Segmentgröße, sodass jedes Back-End-Schreibsegment anstelle von 1 MB einen 8 MB großen Datenblock überträgt.
 
 ## <a name="cloud-bursting-or-hybrid-wan-optimizations"></a>Cloudbursting oder Hybrid-WAN-Optimierungen
 

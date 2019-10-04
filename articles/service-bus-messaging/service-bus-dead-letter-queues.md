@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 05/21/2019
 ms.author: aschhab
-ms.openlocfilehash: 0364304a203e03faf69868174a45cb41850ce112
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: afa2e6e46579d9ce2906e2686cf40adf4b65ab2b
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733313"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516592"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Übersicht über Service Bus-Warteschlangen für unzustellbare Nachrichten
 
@@ -49,7 +49,7 @@ Anwendungen können ihre eigenen Codes für die `DeadLetterReason`-Eigenschaft d
 | !TopicDescription.<br />EnableFilteringMessagesBeforePublishing und SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
 | EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Die Nachricht ist abgelaufen und wurde in die Warteschlange für unzustellbare Nachrichten verschoben. |
 | SubscriptionDescription.RequiresSession |Sitzungs-ID ist NULL. |Die für die Sitzung aktivierte Entität erlaubt keine Nachricht, deren Sitzungsbezeichner null ist. |
-| !dead letter queue |MaxTransferHopCountExceeded |Null |
+| !dead letter queue | MaxTransferHopCountExceeded | Die maximale Anzahl zulässiger Hops beim Weiterleiten zwischen Warteschlangen. Der Wert ist auf 4 festgelegt. |
 | Explizites Markieren von Nachrichten als unzustellbar durch Anwendung |Gemäß Anwendung |Gemäß Anwendung |
 
 ## <a name="exceeding-maxdeliverycount"></a>Überschreiten von MaxDeliveryCount
@@ -102,6 +102,17 @@ while(true)
     }
 }
 ```
+
+## <a name="path-to-the-dead-letter-queue"></a>Pfad zur Warteschlange für unzustellbare Nachrichten
+Sie können auf die Warteschlange für unzustellbare Nachrichten zugreifen, indem Sie die folgende Syntax verwenden:
+
+```
+<queue path>/$deadletterqueue
+<topic path>/Subscriptions/<subscription path>/$deadletterqueue
+```
+
+Wenn Sie das .NET SDK verwenden, erhalten Sie den Pfad zur Warteschlange für unzustellbare Nachrichten, indem Sie die SubscriptionClient.FormatDeadLetterPath()-Methode verwenden. Diese Methode akzeptiert den Namen des Themas/Abonnements und fügt diesem das Suffix **/$DeadLetterQueue** an.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

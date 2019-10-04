@@ -3,26 +3,26 @@ title: Einrichten von Überwachungswarnungen für Azure Stream Analytics-Aufträ
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung und Warnungen für Azure Stream Analytics-Aufträge mithilfe des Azure-Portals einrichten.
 services: stream-analytics
 author: jseb225
-ms.author: jeanb
+ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/05/2019
-ms.custom: seodec18
-ms.openlocfilehash: 52db8217cc1e1f84d25ab896be9b42db3bf6bd81
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.date: 06/21/2019
+ms.openlocfilehash: 0fd489d856a16953a5a450a347c9737fe440ad28
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769487"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67621762"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Einrichten von Warnungen für Azure Stream Analytics-Aufträge
 
 Es ist wichtig, einen Azure Stream Analytics-Auftrag zu überwachen, um sicherzustellen, dass der Auftrag fortlaufend und problemlos ausgeführt wird. In diesem Artikel wird beschrieben, wie Sie Warnungen für gängige Szenarien einrichten, die überwacht werden sollen. 
 
-Regeln können für Metriken über das Portal eingerichtet und [programmgesteuert](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) über Vorgangsprotokolldaten konfiguriert werden.
+Sie können Regeln für Metriken zu Vorgangsprotokolldaten entweder über das Portal oder [programmgesteuert](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) definieren.
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a>Einrichten von Warnungen im Azure-Portal
+### <a name="get-alerted-when-a-job-stops-unexpectedly"></a>Empfangen von Warnungen beim unerwartetem Beenden eines Auftrags
 
 Im folgenden Beispiel wird veranschaulicht, wie Warnungen für den Fall eingerichtet werden, dass ein Auftrag in den fehlerhaften Zustand übergeht. Die Einrichtung dieser Warnung wird für alle Aufträge empfohlen.
 
@@ -30,7 +30,7 @@ Im folgenden Beispiel wird veranschaulicht, wie Warnungen für den Fall eingeric
 
 2. Navigieren Sie auf der Seite **Auftrag** zum Abschnitt **Überwachung**.  
 
-3. Wählen Sie **Metriken** aus, und klicken Sie dann auf **Neue Warnungsregel**.
+3. Klicken Sie erst auf **Metriken** und dann auf **Neue Warnungsregel**.
 
    ![Konfigurieren von Stream Analytics-Warnungen im Azure-Portal](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
@@ -38,7 +38,7 @@ Im folgenden Beispiel wird veranschaulicht, wie Warnungen für den Fall eingeric
 
    ![Auswählen eines Signalnamens für die Stream Analytics-Warnung](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. Ändern Sie unter **Signallogik konfigurieren** den Wert für **Ereignisstufe** in **Alle** und den Wert für **Status** in **Fehler**. Lassen Sie **Ereignis initiiert von** leer, und klicken Sie auf **Fertig**.
+5. Ändern Sie unter **Signallogik konfigurieren** den Wert für **Ereignisstufe** in **Alle** und den Wert für **Status** in **Fehler**. Lassen Sie das Feld **Ereignis initiiert von** leer, und klicken Sie auf **Fertig**.
 
    ![Konfigurieren der Signallogik für die Stream Analytics-Warnung](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 
@@ -75,6 +75,6 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-get-started.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

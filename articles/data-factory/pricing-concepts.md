@@ -2,24 +2,27 @@
 title: Grundlegendes zu Azure Data Factory-Preisen anhand von Beispielen | Microsoft-Dokumentation
 description: In diesem Artikel wird das Preismodell für Azure Data Factory mit ausführlichen Beispielen veranschaulicht.
 documentationcenter: ''
-author: shlo
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: shlo
-ms.openlocfilehash: 80b1f90ee0d9f5003c39eb6a853a07d2d64ca482
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f08dea90e7700082b6eeb708b576451060f81255
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085336"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140940"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Grundlegendes zu Azure Data Factory-Preisen anhand von Beispielen
 
 In diesem Artikel wird das Preismodell für Azure Data Factory mit ausführlichen Beispielen veranschaulicht.
+
+> [!NOTE]
+> Die in diesen Beispielen verwendeten Preise sind hypothetisch und stellen keine tatsächliche Preisgestaltung dar.
 
 ## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>Stündliches Kopieren von Daten aus AWS S3 in Azure Blob Storage
 
@@ -122,6 +125,45 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
   - Datenverschiebungsaktivitäten = 0,166 US-$ (anteilig für die Ausführungszeit von 10 Minuten. 0,25 US-$/Stunde auf Azure Integration Runtime)
   - Pipelineaktivität = 0,00003 US-$ (anteilig für die Ausführungszeit von 1 Minute. 0,002 US-$/Stunde auf Azure Integration Runtime)
   - Externe Pipelineaktivität = 0,000041 US-$ (anteilig für die Ausführungszeit von 10 Minuten. 0,00025 US-$/Stunde auf Azure Integration Runtime)
+
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>Verwenden des Debuggens für Mapping Data Flow für einen normalen Arbeitstag (Vorschaupreise)
+
+Als Dateningenieur sind Sie täglich für das Entwerfen, Erstellen und Testen von Mapping Data Flows verantwortlich. Sie melden sich morgens in der ADF-Oberfläche an und aktivieren den Debugmodus für Datenflüsse. Die Standardgültigkeitsdauer (TTL) für Debugsitzungen ist 60 Minuten. Sie arbeiten den ganzen Tag 10 Stunden lang, sodass Ihre Debugsitzung nie abläuft. Daher fallen für diesen Tag folgende Gebühren an:
+
+**10 (Stunden) X 8 (Kerne) x 0,112 US-$ = 8,96 US-$**
+
+## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>Transformieren von Daten im Blob-Speicher Mapping Data Flows (Vorschaupreise)
+
+In diesem Szenario möchten Sie Daten in einem Blob-Speicher visuell in ADF Mapping Data Flows einem stundenweise ausgeführten Zeitplan transformieren.
+
+Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Elementen erstellen:
+
+1. Eine Data Flow-Aktivität mit der Transformationslogik.
+
+2. Ein Eingabedataset für die Daten in Azure Storage.
+
+3. Ein Ausgabedataset für die Daten in Azure Storage.
+
+4. Einen Zeitplantrigger, der die Pipeline einmal pro Stunde ausführt.
+
+| **Vorgänge** | **Typen und Einheiten** |
+| --- | --- |
+| Erstellen eines verknüpften Diensts | 2 Lese-/Schreibzugriffentitäten  |
+| Erstellen von Datasets | 4 Lese-/Schreibzugriffentitäten (2 für Dataseterstellung, 2 für Verweise auf verknüpfte Dienste) |
+| Erstellen der Pipeline | 3 Lese-/Schreibzugriffentitäten (1 für Pipelineerstellung, 2 für Datasetverweise) |
+| Abrufen der Pipeline | 1 Lese-/Schreibzugriffentität |
+| Ausführen der Pipeline | 2 Aktivitätsausführungen (1 für den Trigger, 1 für die Aktivität) |
+| Data Flow-Annahmen: Ausführungszeit = 10 Minuten + 10 Minuten TTL | 10 \* 8 allgemeine Computekerne mit einem TTL-Wert von 10 |
+| Annahme für Überwachung der Pipeline: Nur 1 Ausführung ist aufgetreten | 2 wiederholte Überwachungsausführungsaufzeichnungen (1 für die Pipelineausführung, 1 für die Aktivitätsausführung) |
+
+**Preis für gesamtes Szenario: 0,3011 US-$**
+
+- Data Factory-Vorgänge = **0,0001 US-$**
+  - Lesen/Schreiben = 10\*00001 = 0,0001 US-$ [1 R/W = 0,50 US-$/50.000 = 0,00001]
+  - Überwachung = 2\*000005 = 0,00001 US-$ [1 Überwachung = 0,25 US-$/50.000 = 0,000005]
+- Pipelineorchestrierung &amp; -ausführung = **0,301 US-$**
+  - Aktivitätsausführungen = 001\*2 = 0,002 [1 Ausführung = 1 US-$/1.000 = 0,001]
+  - Data Flow-Aktivitäten = 0,299 US-$ anteilig für 20 Minuten (10 Minuten Ausführungszeit + 10 Minuten TTL). 0,112 US-$ pro Stunde für die Azure Integration Runtime mit 8 allgemeinen Computekernen
 
 ## <a name="next-steps"></a>Nächste Schritte
 

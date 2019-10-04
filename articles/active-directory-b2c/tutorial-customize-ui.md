@@ -2,24 +2,24 @@
 title: 'Tutorial: Anpassen der Benutzeroberfläche – Azure Active Directory B2C | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie die Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C mithilfe des Azure-Portals anpassen.
 services: B2C
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f3bc1789d0b521b0d91ca42ebe472fed0225d87b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752380"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291108"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Tutorial: Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
-Für weitere gängige Benutzerfunktionen wie etwa Registrierung, Anmeldung und Profilbearbeitung können Sie [Benutzerflows](active-directory-b2c-reference-policies.md) in Azure Active Directory (Azure AD) B2C verwenden. Die Informationen in diesem Tutorial helfen Ihnen beim [Anpassen der Benutzeroberfläche (UI)](customize-ui-overview.md) dieser Erfahrungen unter Verwendung Ihrer eigenen HTML- und CSS-Dateien.
+Für weitere gängige Benutzerfunktionen wie etwa Registrierung, Anmeldung und Profilbearbeitung können Sie [Benutzerflows](active-directory-b2c-reference-policies.md) in Azure Active Directory B2C (Azure AD B2C) verwenden. Die Informationen in diesem Tutorial helfen Ihnen beim [Anpassen der Benutzeroberfläche (UI)](customize-ui-overview.md) dieser Erfahrungen unter Verwendung Ihrer eigenen HTML- und CSS-Dateien.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -43,12 +43,12 @@ Sie erstellen ein Azure-Speicherkonto mit Container und legen dann einfache HTML
 Zwar können Sie Ihre Dateien auf viele Arten speichern, doch für dieses Tutorial speichern Sie sie in [Azure-Blob-Speicher](../storage/blobs/storage-blobs-introduction.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihr Azure-Abonnement enthält. Wählen Sie im Hauptmenü den **Verzeichnis- und Abonnementfilter** aus, und wählen Sie das Verzeichnis aus, das Ihr Abonnement enthält. Dabei handelt es sich um ein anderes Verzeichnis als das, in dem Ihr Azure B2C-Mandant enthalten ist.
-3. Wählen Sie links oben im Azure-Portal „Alle Dienste“ aus, und suchen Sie dann nach **Speicherkonten**, und wählen Sie dies aus. 
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihr Azure-Abonnement enthält. Wählen Sie im Hauptmenü den Filter **Verzeichnis + Abonnement** aus, und wählen Sie das Verzeichnis aus, das Ihr Abonnement enthält. Dabei handelt es sich um ein anderes Verzeichnis als das, in dem Ihr Azure B2C-Mandant enthalten ist.
+3. Wählen Sie links oben im Azure-Portal „Alle Dienste“ aus, und suchen Sie dann nach **Speicherkonten**, und wählen Sie dies aus.
 4. Wählen Sie **Hinzufügen**.
 5. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, geben Sie einen Namen für die neue Ressourcengruppe ein, und klicken Sie dann auf **OK**.
 6. Geben Sie einen Namen für das Speicherkonto ein. Der ausgewählte Name muss in Azure eindeutig sein und zwischen 3 und 24 Zeichen aufweisen, und er darf nur Zahlen und Kleinbuchstaben enthalten.
-7. Wählen Sie den Standort Ihres Speicherkontos aus, oder akzeptieren Sie den Standardstandort. 
+7. Wählen Sie den Standort Ihres Speicherkontos aus, oder akzeptieren Sie den Standardstandort.
 8. Akzeptieren Sie alle anderen Standardwerte, wählen Sie **Überprüfen + erstellen** aus, und klicken Sie dann auf **Weiter**.
 9. Wählen Sie nach dem Erstellen des neuen Speicherkontos **Zu Ressource wechseln** aus.
 
@@ -63,12 +63,12 @@ Zwar können Sie Ihre Dateien auf viele Arten speichern, doch für dieses Tutori
 
 1. Wählen Sie im Menü **CORS** aus.
 2. Geben Sie für **Zulässige Ursprünge** den Wert `https://your-tenant-name.b2clogin.com` ein. Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten. Beispiel: `https://fabrikam.b2clogin.com`. Sie dürfen bei der Eingabe Ihres Mandantennamens ausschließlich Kleinbuchstaben verwenden.
-3. Wählen Sie für **Zulässige Methoden** sowohl `GET` als auch `OPTIONS` aus.
+3. Wählen Sie für **Zulässige Methoden** sowohl `GET` und `PUT` als auch `OPTIONS` aus.
 4. Geben Sie für **Zulässige Header** ein Sternchen (*) ein.
 5. Geben Sie für **Verfügbar gemachte Header** ein Sternchen (*) ein.
 6. Für **Max. Alter** geben Sie 200 ein.
 
-    ![Aktivieren von CORS](./media/tutorial-customize-ui/enable-cors.png)
+    ![CORS-Konfigurationsseite in Azure Blob Storage im Azure-Portal](./media/tutorial-customize-ui/enable-cors.png)
 
 5. Klicken Sie auf **Speichern**.
 
@@ -85,14 +85,14 @@ Um die Benutzeroberfläche der Registrierungserfahrung anzupassen, beginnen Sie 
         <title>My B2C Application</title>
         <link rel="stylesheet" href="https://your-storage-account.blob.core.windows.net/your-container/style.css">
       </head>
-      <body>  
+      <body>
         <h1>My B2C Application</h1>
         <div id="api"></div>
       </body>
     </html>
     ```
 
-    Die Seite kann entworfen werden, wie Sie möchten, aber das **api** div-Element ist für jede HTML-Anpassungsdatei, die Sie erstellen, erforderlich. 
+    Die Seite kann entworfen werden, wie Sie möchten, aber das **api** div-Element ist für jede HTML-Anpassungsdatei, die Sie erstellen, erforderlich.
 
 3. Speichern Sie die Datei als *custom-ui.html*.
 4. Erstellen Sie den folgenden einfachen CSS-Code, der alle Elemente auf der Registrierungs- oder Anmeldeseite, einschließlich der Elemente, die Azure AD B2C einfügt, zentriert.
@@ -103,7 +103,7 @@ Um die Benutzeroberfläche der Registrierungserfahrung anzupassen, beginnen Sie 
       text-align: center;
     }
     .intro h2 {
-      text-align: center; 
+      text-align: center;
     }
     .entry {
       width: 300px ;
@@ -111,7 +111,7 @@ Um die Benutzeroberfläche der Registrierungserfahrung anzupassen, beginnen Sie 
       margin-right: auto ;
     }
     .divider h2 {
-      text-align: center; 
+      text-align: center;
     }
     .create {
       width: 300px ;
@@ -130,7 +130,7 @@ In diesem Tutorial speichern Sie die Dateien, die Sie im Speicherkonto erstellt 
 2. Wählen Sie das von Ihnen erstellte Speicherkonto aus, wählen Sie **Blobs** aus, und wählen Sie dann den Container aus, den Sie erstellt haben.
 3. Wählen Sie **Hochladen** aus, navigieren Sie zur Datei *custom-ui.html*, wählen Sie sie aus, und klicken Sie dann auf **Hochladen**.
 
-    ![Hochladen von Anpassungsdateien](./media/tutorial-customize-ui/upload-blob.png)
+    ![Seite „BLOB hochladen“ im Portal mit hervorgehobener Schaltfläche „Hochladen“ und Dateien](./media/tutorial-customize-ui/upload-blob.png)
 
 4. Kopieren Sie die URL für die Datei, die Sie hochgeladen haben, um sie später in diesem Tutorial zu verwenden.
 5. Wiederholen Sie Schritt 3 und 4 für die Datei *style.css*.
@@ -149,11 +149,11 @@ In diesem Tutorial speichern Sie die Dateien, die Sie im Speicherkonto erstellt 
 2. Klicken Sie im oberen Bereich der Seite auf **Benutzerflow ausführen**.
 3. Klicken Sie auf die Schaltfläche **Benutzerflow ausführen**.
 
-    ![Ausführen des Benutzerflows für Registrierung oder Anmeldung](./media/tutorial-customize-ui/run-user-flow.png)
+    ![Seite „Benutzerflow ausführen“ des Benutzerflows für die Registrierung oder Anmeldung](./media/tutorial-customize-ui/run-user-flow.png)
 
     Es sollte eine Seite ähnlich dem folgenden Beispiel mit den zentrierten Elementen angezeigt werden, basierend auf der CSS-Datei, die Sie erstellt haben:
 
-    ![Ergebnisse des Benutzerflows](./media/tutorial-customize-ui/run-now.png) 
+    ![Webbrowser mit Seite für die Registrierung/Anmeldung mit benutzerdefinierten Benutzeroberflächenelementen](./media/tutorial-customize-ui/run-now.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

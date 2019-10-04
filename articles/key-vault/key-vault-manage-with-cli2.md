@@ -2,23 +2,18 @@
 title: Verwalten von Azure Key Vault mit der CLI – Azure Key Vault | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zum Automatisieren von häufigen Aufgaben in Key Vault mithilfe der Azure CLI
 services: key-vault
-documentationcenter: ''
-author: barclayn
-manager: barbkess
-tags: azure-resource-manager
-ms.assetid: ''
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 01/10/2019
-ms.author: barclayn
-ms.openlocfilehash: 1679fbe0dedc88ca3e8293512f9a79bb7da69790
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.topic: tutorial
+ms.date: 08/12/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 51e5c654da95732409c3bbb7acae088d8935a59d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115622"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000626"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Verwalten von Key Vault mit der Azure CLI 
 
@@ -40,7 +35,7 @@ Azure-Tresorschlüssel ist in den meisten Regionen verfügbar. Weitere Informati
 > Diese Artikel enthält keine Anweisungen zum Schreiben der Azure-Anwendung, die einen der Schritte enthält, der zeigt, wie Sie eine Anwendung zum Verwenden eines Schlüssels oder Geheimnisses im Schlüsseltresor autorisieren.
 >
 
-Eine Übersicht über Azure Key Vault finden Sie unter [Was ist der Azure-Schlüsseltresor?](key-vault-whatis.md).
+Eine Übersicht über Azure Key Vault finden Sie unter [Was ist der Azure-Schlüsseltresor?](key-vault-overview.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -196,7 +191,7 @@ Anwendungen, die einen Schlüsseltresor verwenden, müssen sich mithilfe eines A
 - Eine **Anwendungs-ID** (auch als „AAD-Client-ID“ oder „appID“ bezeichnet)
 - Einen **Authentifizierungsschlüssel** (auch bezeichnet als gemeinsames Geheimnis) 
 
-Die Anwendung muss beide dieser Werte in Azure Active Directory vorlegen, um ein Token zu erhalten.  Die Konfiguration des Tokenabrufs hängt von der Anwendung ab. Bei der [Key Vault-Beispielanwendung](https://www.microsoft.com/download/details.aspx?id=45343) legt der Anwendungsbesitzer diese Werte in der Datei „app.config“ fest.
+Die Anwendung muss beide dieser Werte in Azure Active Directory vorlegen, um ein Token zu erhalten. Die Konfiguration des Tokenabrufs hängt von der Anwendung ab. Bei der [Key Vault-Beispielanwendung](https://www.microsoft.com/download/details.aspx?id=45343) legt der Anwendungsbesitzer diese Werte in der Datei „app.config“ fest.
 
 Ausführliche Anweisungen zum Registrieren einer Anwendung in Azure Active Directory finden Sie in den Artikeln [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md), [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../active-directory/develop/howto-create-service-principal-portal.md) und [Erstellen eines Azure-Dienstprinzipals mit der Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli).
 

@@ -7,17 +7,16 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/19/2019
-ms.openlocfilehash: d2c852b48c219283bba2304a993dd26e802b3252
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 325dda3695e796bc0814954d3bd69b9b340133b8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226979"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567968"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimieren der Leistung mithilfe von In-Memory-Technologien in SQL-Datenbank
 
@@ -130,7 +129,7 @@ Bei Pools für elastische Datenbanken wird der In-Memory-OLTP-Speicher von allen
 - Konfigurieren Sie eine `Max-eDTU` oder `MaxvCore` für Datenbanken, die niedriger als die eDTU- oder V-Kern-Anzahl für den ganzen Pool ist. Dieser Maximalwert begrenzt die In-Memory-OLTP-Speichernutzung in jeder Datenbank im Pool auf die Größe, die der eDTU-Anzahl entspricht.
 - Konfigurieren Sie eine `Min-eDTU` oder `MinvCore`, die größer als 0 ist. Mit diesem Minimalwert wird sichergestellt, dass jede Datenbank im Pool die Menge des In-Memory-OLTP-Speichers zur Verfügung hat, die der konfigurierten `Min-eDTU` oder `vCore` entspricht.
 
-### <a name="changing-service-tiers-of-databases-that-use-in-memory-oltp-technologies"></a>Ändern des Diensttarifs für Datenbanken, die In-Memory-OLTP-Technologien verwenden
+### <a name="changing-service-tiers-of-databases-that-use-in-memory-oltp-technologies"></a>Ändern der Dienstebenen für Datenbanken, die In-Memory-OLTP-Technologien verwenden
 
 Sie können jederzeit ein Upgrade Ihrer Datenbank oder Instanz auf einen höheren Tarif ausführen, z.B. von „Universell“ zu „Unternehmenskritisch“ (oder von „Standard“ zu „Premium“). Es steigen nur die verfügbaren Funktionen und Ressourcen.
 
@@ -141,7 +140,7 @@ Ein Downgrade des Tarifs kann sich jedoch nachteilig auf Ihre Datenbank auswirke
 
 Entfernen Sie alle speicheroptimierten Tabellen und Tabellentypen sowie alle nativ kompilierten T-SQL Module, bevor Sie die Datenbank auf den Standard- oder Basic-Tarif herabstufen. 
 
-*Herunterskalieren von Ressourcen im Tarif „Unternehmenskritisch“*: Daten in speicheroptimierten Tabellen müssen in den In-Memory-OLTP-Speicher passen, der dem Tarif der Datenbank oder der verwalteten Instanz zugeordnet oder im Pool für elastische Datenbanken verfügbar ist. Wenn Sie versuchen, in einen niedrigeren Tarif zu wechseln oder die Datenbank in einen Pool zu verschieben, dem nicht genügend In-Memory-OLTP-Speicher zur Verfügung steht, misslingt der Vorgang.
+*Herunterskalieren von Ressourcen im Tarif „Unternehmenskritisch“* : Daten in speicheroptimierten Tabellen müssen in den In-Memory-OLTP-Speicher passen, der dem Tarif der Datenbank oder der verwalteten Instanz zugeordnet oder im Pool für elastische Datenbanken verfügbar ist. Wenn Sie versuchen, in einen niedrigeren Tarif zu wechseln oder die Datenbank in einen Pool zu verschieben, dem nicht genügend In-Memory-OLTP-Speicher zur Verfügung steht, misslingt der Vorgang.
 
 ## <a name="in-memory-columnstore"></a>In-Memory-Columnstore
 
@@ -160,7 +159,7 @@ Ausführliche Videos zur Technologie:
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Datengröße und Speicher für Columnstore-Indizes
 
-Columnstore-Indizes brauchen nicht in den Arbeitsspeicher zu passen. Deshalb ist die einzige Begrenzung der Indexgröße die maximale Gesamtgröße der Datenbank, was in den Artikeln [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md) dokumentiert ist.
+Columnstore-Indizes brauchen nicht in den Arbeitsspeicher zu passen. Deshalb ist die einzige Begrenzung der Indexgröße die maximale Gesamtgröße der Datenbank, was in den Artikeln [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [vCore-basiertes Kaufmodell](sql-database-service-tiers-vcore.md) dokumentiert ist.
 
 Wenn Sie gruppierte Columnstore-Indizes verwenden, wird eine Spaltenkomprimierung für den Basistabellenspeicher verwendet. Durch diese Komprimierung kann der Speicherbedarf Ihrer Benutzerdaten erheblich reduziert werden, d.h., Sie können mehr Daten in der Datenbank speichern. Die Komprimierung kann außerdem mit [spaltenorientierter Archivierungskomprimierung](https://msdn.microsoft.com/library/cc280449.aspx#using-columnstore-and-columnstore-archive-compression) noch weiter erhöht werden. Der Grad der Komprimierung, die Sie erreichen können, hängt von der Art der Daten ab, jedoch ist eine zehnfache Komprimierung nicht ungewöhnlich.
 
@@ -168,7 +167,7 @@ Wenn Sie z.B. eine Datenbank mit einer maximalen Größe von 1 Terabyte (TB) hab
 
 Bei Verwendung von nicht gruppierten Columnstore-Indizes wird die Basistabelle weiterhin im herkömmlichen Rowstore-Format gespeichert. Aus diesem Grund sind die Speichereinsparungen nicht so groß wie bei gruppierten Columnstore-Indizes. Wenn Sie jedoch mehrere herkömmliche nicht gruppierte Indizes durch einen einzelnen Columnstore-Index ersetzen, können Sie dennoch allgemeine Einsparungen beim Speicherbedarf für die Tabelle erzielen.
 
-### <a name="changing-service-tiers-of-databases-containing-columnstore-indexes"></a>Ändern der Diensttarife für Datenbanken mit Columnstore-Indizes
+### <a name="changing-service-tiers-of-databases-containing-columnstore-indexes"></a>Ändern der Dienstebenen für Datenbanken mit Columnstore-Indizes
 
 Das *Herabstufen einer Einzeldatenbank auf die Tarife „Basic“ oder „Standard“* ist eventuell nicht möglich, wenn der angestrebte Tarif unter S3 liegt. Columnstore-Indizes werden nur in den Tarifen „Unternehmenskritisch“ und „Premium“ sowie in den Standard-Tarifen S3 und höher unterstützt, nicht jedoch im Basic-Tarif. Nach dem Herabstufen Ihrer Datenbank auf einen nicht unterstützten Tarif bzw. auf eine nicht unterstützte Ebene ist der Columnstore-Index nicht mehr verfügbar. Das System verwaltet den Columnstore-Index, nutzt den Index jedoch nie. Wenn Sie später wieder auf einen unterstützten Tarif bzw. auf eine unterstützte Ebene heraufstufen, kann der Columnstore-Index sofort wieder genutzt werden.
 

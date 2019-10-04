@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 09/10/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a78df5169741371c122971afa47cb53ecc5a64
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450667"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673421"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -27,24 +27,32 @@ In Azure Active Directory (Azure AD) können Sie komplexe, attributbasierte Rege
 
 Wenn sich Attribute eines Benutzers oder Geräts ändern, bewertet das System alle dynamischen Gruppenregel in einem Verzeichnis, um zu ermitteln, ob die Änderung irgendwelche Vorgänge zum Hinzufügen oder Löschen von Gruppen auslöst. Falls ein Benutzer oder Gerät wird als Mitglied zu einer Gruppe hinzugefügt, wenn eine Regel dieser Gruppe erfüllt wird. Wenn sie diese Regel nicht mehr erfüllen, werden sie entfernt. Sie können ein Mitglied einer dynamischen Gruppe nicht manuell hinzufügen oder entfernen.
 
-* Sie können zwar eine dynamische Gruppe für Geräte oder Benutzer erstellen, jedoch keine Regel festlegen, die sowohl Benutzer als auch Geräte enthält.
-* Sie können keine Gerätegruppe basierend auf den Attributen der Gerätebesitzer erstellen. Regeln für die Gerätemitgliedschaft können nur Geräteattribute referenzieren.
+- Sie können zwar eine dynamische Gruppe für Geräte oder Benutzer erstellen, jedoch keine Regel festlegen, die sowohl Benutzer als auch Geräte enthält.
+- Sie können keine Gerätegruppe basierend auf den Attributen der Gerätebesitzer erstellen. Regeln für die Gerätemitgliedschaft können nur Geräteattribute referenzieren.
 
 > [!NOTE]
 > Dieses Feature erfordert für jeden eindeutigen Benutzer, der Mitglied mindestens einer dynamischen Gruppe ist, eine Azure AD Premium P1-Lizenz. Sie müssen den Benutzern keine Lizenzen zuweisen, damit sie Mitglieder dynamischer Gruppen werden können, aber Sie müssen die Mindestanzahl von Lizenzen im Mandanten haben, um alle diese Benutzer abzudecken. Beispiel: Wenn Sie über insgesamt 1.000 eindeutige Benutzer in allen dynamischen Gruppen Ihres Mandanten verfügen, benötigen Sie mindestens 1.000 Lizenzen für Azure AD Premium P1 oder höher, um die Lizenzanforderung zu erfüllen.
 >
 
-## <a name="constructing-the-body-of-a-membership-rule"></a>Erstellen des Texts einer Mitgliedschaftsregel
+## <a name="rule-builder-in-the-azure-portal"></a>Regel-Generator im Azure-Portal
 
-Eine Mitgliedschaftsregel, die eine Gruppe automatisch mit Benutzern oder Geräten auffüllt, ist ein binärer Ausdruck, der als Ergebnis „true“ oder „false“ ergibt. Die drei Teile einer einfachen Regel sind:
+Azure AD stellt einen Regel-Generator bereit, mit dem Sie wichtige Regeln schneller erstellen und aktualisieren können. Der Regel-Generator unterstützt die Erstellung von bis zu fünf Ausdrücken. Die Erstellung einer Regel mit einigen einfachen Ausdrücken wird durch den Regel-Generator vereinfacht, aber er kann nicht verwendet werden, um jede Regel zu reproduzieren. Falls der Regel-Generator die zu erstellende Regel nicht unterstützt, können Sie das Textfeld verwenden.
 
-* Eigenschaft
-* Operator
-* Wert
+Im Anschluss folgen einige Beispiele für erweiterte Regeln oder für Syntax, für die die Erstellung über das Textfeld empfohlen wird:
 
-Die Reihenfolge der Teile in einem Ausdruck ist wichtig, um Syntaxfehler zu vermeiden.
+- Regel mit mehr als fünf Ausdrücken
+- Mitarbeiterregel
+- Festlegen der [Rangfolge der Operatoren](groups-dynamic-membership.md#operator-precedence)
+- [Regeln mit komplexen Ausdrücken](groups-dynamic-membership.md#rules-with-complex-expressions), z. B. `(user.proxyAddresses -any (_ -contains "contoso"))`
 
-### <a name="rules-with-a-single-expression"></a>Regeln mit einem einzelnen Ausdruck
+> [!NOTE]
+> Der Regel-Generator kann ggf. einige Regeln, die über das Textfeld erstellt wurden, nicht anzeigen. Unter Umständen wird eine Meldung angezeigt, falls die Regel vom Regel-Generator nicht angezeigt werden kann. Der Regel-Generator nimmt keinerlei Änderungen an der unterstützten Syntax, Überprüfung oder Verarbeitung von Regeln für dynamische Gruppen vor.
+
+Detaillierte Anweisungen dazu finden Sie unter [Aktualisieren einer dynamischen Gruppe](groups-update-rule.md).
+
+![Hinzufügen einer Mitgliedschaftsregel für eine dynamische Gruppe](./media/groups-update-rule/update-dynamic-group-rule.png)
+
+### <a name="rule-syntax-for-a-single-expression"></a>Regelsyntax für einen einzelnen Ausdruck
 
 Ein einzelner Ausdruck ist die einfachste Form einer Mitgliedschaftsregel, und sie besteht nur aus den drei oben genannten Teilen. Eine Regel mit einem einzelnen Ausdruck sieht wie folgt aus: `Property Operator Value`, wobei die Syntax für die Eigenschaft der Name von „object.property“ ist.
 
@@ -56,26 +64,36 @@ user.department -eq "Sales"
 
 Bei einem einzelnen Ausdruck sind Klammern optional. Die Gesamtlänge des Texts der Mitgliedschaftsregel darf 2048 Zeichen nicht überschreiten.
 
+## <a name="constructing-the-body-of-a-membership-rule"></a>Erstellen des Texts einer Mitgliedschaftsregel
+
+Eine Mitgliedschaftsregel, die eine Gruppe automatisch mit Benutzern oder Geräten auffüllt, ist ein binärer Ausdruck, der als Ergebnis „true“ oder „false“ ergibt. Die drei Teile einer einfachen Regel sind:
+
+- Eigenschaft
+- Operator
+- Wert
+
+Die Reihenfolge der Teile in einem Ausdruck ist wichtig, um Syntaxfehler zu vermeiden.
+
 ## <a name="supported-properties"></a>Unterstützte Eigenschaften
 
 Es gibt drei Arten von Eigenschaften, die verwendet werden können, um eine Mitgliedschaftsregel zu erstellen.
 
-* Boolescher Wert
-* Zeichenfolge
-* Zeichenfolgensammlung
+- Boolean
+- Zeichenfolge
+- Zeichenfolgensammlung
 
 Im Folgenden sind die Benutzereigenschaften aufgelistet, die Sie verwenden können, um einen einzelnen Ausdruck zu erstellen.
 
 ### <a name="properties-of-type-boolean"></a>Eigenschaften vom Typ "boolesch"
 
-| Eigenschaften | Zulässige Werte | Verwendung |
+| Properties | Zulässige Werte | Verwendung |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>Eigenschaften vom Typ "string"
 
-| Eigenschaften | Zulässige Werte | Verwendung |
+| Properties | Zulässige Werte | Verwendung |
 | --- | --- | --- |
 | city |Jeder string-Wert oder *null* |(user.city -eq "value") |
 | country |Jeder string-Wert oder *null* |(user.country -eq "value") |
@@ -106,14 +124,14 @@ Im Folgenden sind die Benutzereigenschaften aufgelistet, die Sie verwenden könn
 
 ### <a name="properties-of-type-string-collection"></a>Eigenschaften vom Typ "string collection"
 
-| Eigenschaften | Zulässige Werte | Verwendung |
+| Properties | Zulässige Werte | Verwendung |
 | --- | --- | --- |
 | otherMails |Jeder string-Wert. |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
 
 Die für Geräteregeln verwendeten Eigenschaften finden Sie unter [Regeln für Geräte](#rules-for-devices).
 
-## <a name="supported-operators"></a>Unterstützte Operatoren
+## <a name="supported-expression-operators"></a>Unterstützte Ausdrucksoperatoren
 
 Die folgende Tabelle enthält alle unterstützten Operatoren und deren Syntax für einen einzelnen Ausdruck. Alle Operatoren können mit oder ohne vorangestellten Bindestrich (-) verwendet werden.
 
@@ -231,7 +249,7 @@ Eine Mitgliedschaftsregel kann aus komplexen Ausdrücken bestehen, in denen die 
 
 Mehrwertige Eigenschaften sind Sammlungen von Objekten desselben Typs. Sie können verwendet werden, um mithilfe der logischen Operatoren „-any“ und „-all“ Mitgliedschaftsregel zu erstellen.
 
-| Eigenschaften | Werte | Verwendung |
+| Properties | Werte | Verwendung |
 | --- | --- | --- |
 | assignedPlans | Jedes Objekt in der Sammlung macht folgende Zeichenfolgeneigenschaften verfügbar: capabilityStatus, service, servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 | proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains „contoso“)) |
@@ -261,7 +279,7 @@ Der folgende Ausdruck wählt alle Benutzer aus, die über einen Serviceplan verf
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore--syntax"></a>Verwenden den Syntax „Unterstrich“ (\_)
+### <a name="using-the-underscore-_-syntax"></a>Verwenden den Syntax „Unterstrich“ (\_)
 
 Die Syntax „Unterstrich“ (\_) entspricht dem Vorkommen eines bestimmten Werts in einer mehrwertigen Eigenschaft der Zeichenfolgensammlung, um Benutzer oder Geräte einer dynamischen Gruppe hinzuzufügen. Die Syntax wird mit den Operatoren „-any“ oder „-all“ verwendet.
 
@@ -291,10 +309,10 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 Die folgenden Tipps können helfen, die Regel ordnungsgemäß zu verwenden.
 
-* Die **Manager-ID** ist die Objekt-ID des Managers. Sie finden sie im **Profil** des Managers.
-* Damit diese Regel funktioniert, stellen Sie sicher, dass die Eigenschaft **Manager** für die Benutzer in Ihrem Mandanten korrekt festgelegt ist. Sie können den aktuellen Wert im **Profil** des Benutzers überprüfen.
-* Diese Regel unterstützt nur die dem Manager direkt unterstellten Mitarbeiter. Sie können also keine Gruppe mit dem Manager direkt unterstellten Mitarbeitern *und* den ihnen unterstellten Mitarbeitern erstellen.
-* Diese Regel kann nicht mit anderen Mitgliedschaftsregeln kombiniert werden.
+- Die **Manager-ID** ist die Objekt-ID des Managers. Sie finden sie im **Profil** des Managers.
+- Damit diese Regel funktioniert, stellen Sie sicher, dass die Eigenschaft **Manager** für die Benutzer in Ihrem Mandanten korrekt festgelegt ist. Sie können den aktuellen Wert im **Profil** des Benutzers überprüfen.
+- Diese Regel unterstützt nur die dem Manager direkt unterstellten Mitarbeiter. Sie können also keine Gruppe mit dem Manager direkt unterstellten Mitarbeitern *und* den ihnen unterstellten Mitarbeitern erstellen.
+- Diese Regel kann nicht mit anderen Mitgliedschaftsregeln kombiniert werden.
 
 ### <a name="create-an-all-users-rule"></a>Erstellen einer Regel für alle Benutzer
 
@@ -341,20 +359,24 @@ Den Namen der benutzerdefinierten Eigenschaft finden Sie im Verzeichnis. Fragen 
 
 Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaft in einer Gruppe auswählt. Benutzer und Geräte können nicht gleichzeitig Gruppenmitglieder sein. Das Attribut **organizationalUnit** wird nicht mehr aufgelistet und sollte nicht verwendet werden. Diese Zeichenfolge wird von Intune in bestimmten Fällen festgelegt, aber nicht durch Azure AD erkannt, sodass Gruppen keine Geräte basierend auf diesem Attribut hinzugefügt werden.
 
+> [!NOTE]
+> „systemlabels“ ist ein schreibgeschütztes Attribut, das mit Intune nicht festgelegt werden kann.
+>
+> Bei Windows 10 lautet das richtige Format des Attributs „deviceOSVersion“ wie folgt: (device.deviceOSVersion -eq "10.0 (17763)"). Die Formatierung kann mit dem PowerShell-Cmdlet „Get-MsolDevice“ überprüft werden.
+
 Die folgenden Geräteattribute können verwendet werden.
 
  Geräteattribut  | Werte | Beispiel
  ----- | ----- | ----------------
  accountEnabled | true false | (device.accountEnabled -eq true)
- displayName | Jeder string-Wert. |(device.displayName -eq "Rob Iphone”)
- deviceOSType | Jeder string-Wert. | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")
+ displayName | Jeder string-Wert. |(device.displayName -eq "Rob iPhone")
+ deviceOSType | Jeder string-Wert. | (device.deviceOSType -eq "iPad") -or (device.deviceOSType -eq "iPhone")<br>(device.deviceOSType -contains "AndroidEnterprise")<br>(device.deviceOSType -eq "AndroidForWork")
  deviceOSVersion | Jeder string-Wert. | (device.deviceOSVersion -eq "9.1")
  deviceCategory | ein gültiger Gerätekategoriename | (device.deviceCategory -eq "BYOD")
  deviceManufacturer | Jeder string-Wert. | (device.deviceManufacturer -eq "Samsung")
  deviceModel | Jeder string-Wert. | (device.deviceModel -eq "iPad Air")
  deviceOwnership | Personal, Unternehmen, Unbekannt | (device.deviceOwnership -eq "Company")
- domainName | Jeder string-Wert. | (device.domainName -eq "contoso.com")
- enrollmentProfileName | Profilname für Apple-Geräteregistrierung oder für Windows AutoPilot | (device.enrollmentProfileName -eq "DEP iPhones")
+ enrollmentProfileName | Profil für Apple-Geräteregistrierung, Geräteregistrierung – Unternehmensgeräte-IDs (Android – Kiosk) oder Name des Windows Autopilot-Profils | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM (bei mobilen Geräten)<br>PC (bei Computern, die vom Intune-PC-Agent verwaltet werden) | (device.managementType -eq "MDM")
  deviceId | eine gültige Azure AD-Geräte-ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
@@ -368,8 +390,8 @@ Die folgenden Geräteattribute können verwendet werden.
 
 Diese Artikel enthalten zusätzliche Informationen zu Gruppen in Azure Active Directory.
 
-* [Anzeigen vorhandener Gruppen](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Erstellen einer neuen Gruppe und Hinzufügen von Mitgliedern](../fundamentals/active-directory-groups-create-azure-portal.md)
-* [Verwalten der Einstellungen einer Gruppe](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Verwalten der Mitgliedschaften einer Gruppe](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](groups-dynamic-membership.md)
+- [Anzeigen vorhandener Gruppen](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Erstellen einer neuen Gruppe und Hinzufügen von Mitgliedern](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [Verwalten der Einstellungen einer Gruppe](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [Verwalten der Mitgliedschaften einer Gruppe](../fundamentals/active-directory-groups-membership-azure-portal.md)
+- [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](groups-create-rule.md)

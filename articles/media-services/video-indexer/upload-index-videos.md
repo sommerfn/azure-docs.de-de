@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 7233bea4a030b814a5332284a80f07a71f288dba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893451"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128201"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -29,15 +30,15 @@ In diesem Artikel wird veranschaulicht, wie Sie die API zum [Hochladen eines Vid
 Nachdem Ihr Video hochgeladen wurde, kann das Video von Video Indexer optional codiert werden (wie im Artikel beschrieben). Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden](connect-to-azure.md) ist. Sie bezahlen für die Minuten der Indizierungszeit und die Gebühren für das Media Services-Konto. 
 
 ## <a name="uploading-considerations"></a>Überlegungen zum Hochladen
-
-- Wenn Sie das Video über eine URL hochladen (bevorzugt), muss der Endpunkt mit TLS 1.2 (oder höher) gesichert werden.
-- Die Uploadgröße mit der URL-Option ist auf 30 GB begrenzt.
-- In den meisten Browsern ist die URL-Länge auf 2.000 Zeichen begrenzt.
-- Die Uploadgröße mit der Bytearray-Option ist auf 2 GB begrenzt.
-- Die Bytearray-Option umfasst ein Timeout nach 30 Minuten.
+ 
+- Wenn Sie das Video über eine URL hochladen (bevorzugt), muss der Endpunkt mit TLS 1.2 (oder höher) gesichert werden.
+- Die Uploadgröße ist mit der URL-Option auf 30 GB begrenzt.
+- Die Länge der Anforderungs-URL ist auf 6.144 Zeichen beschränkt, wobei die Länge der Abfragezeichenfolge-URL auf 4.096 Zeichen beschränkt ist.
+- Die Uploadgröße mit der Bytearray-Option ist auf 2 GB begrenzt.
+- Bei der Bytearray-Option tritt ein Timeout nach 30 Minuten auf.
 - Die im Parameter `videoURL` angegebene URL muss codiert sein.
-- Bei der Indizierung von Media Services-Medienobjekten gibt es die gleiche Begrenzung wie bei der Indizierung aus einer URL.
-- Video Indexer weist eine maximale Dauer von 4 Stunden für eine einzelne Datei auf
+- Bei der Indizierung von Media Services-Medienobjekten gilt die gleiche Begrenzung wie bei der Indizierung aus einer URL.
+- Video Indexer weist eine maximale Dauer von 4 Stunden für eine einzelne Datei auf.
 
 > [!Tip]
 > Es wird empfohlen, .NET Framework-Version 4.6.2 oder höher zu verwenden, da für frühere .NET Frameworks nicht standardmäßig TLS 1.2 genutzt wird.
@@ -63,9 +64,9 @@ Eine URL, die zum Benachrichtigen des Kunden über die folgenden Ereignisse (mit
         |---|---|
         |id|Video-ID|
         |state|Videozustand|  
-    - Beispiel: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+    - Beispiel: https:\//test.com/notifyme?projectName=MeinProjekt&id=1234abcd&state=Processed
 - Im Video identifizierte Person:
-  - Eigenschaften
+  - Properties
     
       |NAME|BESCHREIBUNG|
       |---|---|
@@ -74,7 +75,7 @@ Eine URL, die zum Benachrichtigen des Kunden über die folgenden Ereignisse (mit
       |knownPersonId|Die Personen-ID, die innerhalb eines Gesichtsmodells eindeutig ist|
       |personName|Der Name der Person|
         
-    - Beispiel: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - Beispiel: https:\//test.com/notifyme?projectName=MeinProjekt&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Notizen
 
@@ -85,9 +86,9 @@ Eine URL, die zum Benachrichtigen des Kunden über die folgenden Ereignisse (mit
 
 Verwenden Sie diesen Parameter, wenn unformatierte oder externe Aufzeichnungen Hintergrundgeräusche enthalten. Dieser Parameter wird verwendet, um den Indizierungsprozess zu konfigurieren. Sie können die folgenden Werte angeben:
 
-- `Default` – Indizieren und Extrahieren von Erkenntnissen für Audio- und Videodaten
-- `AudioOnly` – Indizieren und Extrahieren von Erkenntnissen ausschließlich für Audiodaten (Videodaten werden ignoriert)
-- `DefaultWithNoiseReduction` – Indizieren und Extrahieren von Erkenntnissen aus Audio- und Videodaten mit Anwendung von Algorithmen für die Rauschunterdrückung auf den Audiodatenstrom
+- `Default`: Indizieren und Extrahieren von Erkenntnissen für Audio- und Videodaten
+- `AudioOnly`: Indizieren und Extrahieren von Erkenntnissen ausschließlich für Audiodaten (Videodaten werden ignoriert)
+- `DefaultWithNoiseReduction`: Indizieren und Extrahieren von Erkenntnissen aus Audio- und Videodaten mit Anwendung von Algorithmen für die Rauschunterdrückung auf den Audiodatenstrom
 
 Der Preis richtet sich nach der gewählten Indizierungsoption.  
 
@@ -158,9 +159,9 @@ public async Task Sample()
     // as an alternative to specifying video URL, you can upload a file.
     // remove the videoUrl parameter from the query params below and add the following lines:
     //FileStream video =File.OpenRead(Globals.VIDEOFILE_PATH);
-    //byte[] buffer =newbyte[video.Length];
+    //byte[] buffer =new byte[video.Length];
     //video.Read(buffer, 0, buffer.Length);
-    //content.Add(newByteArrayContent(buffer));
+    //content.Add(new ByteArrayContent(buffer));
 
     queryParams = CreateQueryString(
         new Dictionary<string, string>()

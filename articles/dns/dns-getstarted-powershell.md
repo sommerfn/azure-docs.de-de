@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 75ac8a45eb49ac5c4ec3b39667542f4f454a9954
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ccf60a333dcc83e27702d572f922ef6aec741c14
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110323"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66730312"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines entsprechenden Eintrags mithilfe von Azure PowerShell
 
@@ -24,7 +24,7 @@ Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verw
 
 Azure DNS unterstützt auch das Erstellen privater Domänen. Schritt-für-Schritt-Anweisungen zum Erstellen Ihrer ersten privaten DNS-Zone und des ersten Datensatzes finden Sie unter [Erste Schritte mit privaten Azure DNS-Zonen mithilfe von PowerShell](private-dns-getstarted-powershell.md).
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -66,7 +66,7 @@ Sie besitzen nun eine DNS-Testzone mit einem A-Testeintrag und können die Namen
 
 **Testen Sie die DNS-Namensauflösung wie folgt:**
 
-1. Führen Sie das folgende Cmdlet aus, um die Liste der Namenserver für Ihre Zone abzurufen:
+1. Führen Sie das folgende Cmdlet aus, um die Liste mit den Namenservern für Ihre Zone abzurufen:
 
    ```azurepowershell
    Get-AzDnsRecordSet -ZoneName contoso.xyz -ResourceGroupName MyResourceGroup -RecordType ns
@@ -80,7 +80,7 @@ Sie besitzen nun eine DNS-Testzone mit einem A-Testeintrag und können die Namen
    nslookup www.contoso.xyz <name server name>
    ```
 
-   Beispiel: 
+   Beispiel:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
@@ -90,7 +90,7 @@ Sie besitzen nun eine DNS-Testzone mit einem A-Testeintrag und können die Namen
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-Der Hostname **www\.contoso.xyz** wird gemäß Ihrer Konfiguration in **10.10.10.10** aufgelöst. Mit diesem Ergebnis wird bestätigt, dass die Namensauflösung richtig funktioniert.
+Der Hostname **www\.contoso.xyz** wird gemäß Ihrer Konfiguration zu **10.10.10.10** aufgelöst. Mit diesem Ergebnis wird bestätigt, dass die Namensauflösung richtig funktioniert.
 
 ## <a name="delete-all-resources"></a>Löschen aller Ressourcen
 

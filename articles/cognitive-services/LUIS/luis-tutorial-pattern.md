@@ -1,5 +1,5 @@
 ---
-title: Muster
+title: 'Tutorial: Muster: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie Muster, um die Vorhersage von Absichten und Entitäten zu verbessern und zugleich weniger Beispieläußerungen anzugeben. Das Muster wird als Beispiel für eine Vorlagenäußerung bereitgestellt, die die Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält.
 services: cognitive-services
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/22/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 33541d2a61c52476f6e314f6981a623390de8fa9
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 69f853b77e3fbab149dbf163ed5cccb08578aa4e
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193737"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390339"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Tutorial: Hinzufügen von Formaten für allgemeine Mustervorlagen
 
@@ -197,7 +197,7 @@ Verwenden Sie Muster, um die Bewertung der richtigen Absicht deutlich zu erhöhe
 Lassen Sie das zweite Browserfenster geöffnet. Sie verwenden es später im Tutorial. 
 
 ## <a name="template-utterances"></a>Vorlagenäußerungen
-Im Themenbereich Personalwesen gibt es einige häufig verwendete Methoden, um Mitarbeiterbeziehungen in Organisationen zu erfragen. Beispiel: 
+Im Themenbereich Personalwesen gibt es einige häufig verwendete Methoden, um Mitarbeiterbeziehungen in Organisationen zu erfragen. Beispiel:
 
 |Äußerungen|
 |--|

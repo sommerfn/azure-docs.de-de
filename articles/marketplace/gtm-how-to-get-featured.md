@@ -2,30 +2,23 @@
 title: Markteinführungsdienste – Wie Sie sich im Marketplace präsentieren können | Azure
 description: Markteinführungsdienste – In diesem Abschnitt wird beschrieben, wie Sie eine Listung im Azure Marketplace erhalten.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: bda94e648891ad5c4de810195e874a5774d6b498
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a99237ec52d302dbb7fc3914c6abfff5fecf4523
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355160"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962755"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>So präsentieren Sie sich in AppSource und im Marketplace
 
 Azure Marketplace und AppSource verfügen über Abschnitte für **ausgewählte Apps**, in denen Ihre App präsentiert werden kann:
 
-* Erstens: Wenn Sie über ein TEST- oder TRANSAKTIONSANGEBOT verfügen, können Sie Ihren Vorteil der „Kategoriehöherstufung“ durch Vorteile bei der Markteinführung nutzen.
+* Erstens: Wenn Sie über ein TEST- oder TRANSAKTIONSANGEBOT verfügen, können Sie Ihren Vorteil der „Kategoriehöherstufung“ durch [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits) nutzen.
 * Zweitens: Schauen Sie sich unten die Liste der bewährten Methoden und Kriterien an, um einen Platz zu erhalten.
 
 Der „Ausgewählte Apps“-Auswahlalgorithmus erzeugt eine Punktzahl von Microsoft für eine App, ganz ähnlich der Kreditwürdigkeit einer Person in den USA.  Die wöchentliche Auswahl der ausgewählten Apps basiert auf der Berechnung der Leistung von App und Dienst.
@@ -51,7 +44,7 @@ Die Unterstützung bei der Markteinführung umfasst auch eine vollständige Bibl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Besuchen Sie [Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm), um weitere Informationen zu Marketplace-Diensten zu erhalten.
+Erfahren Sie mehr über Ihre [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits).
 
 Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com) an, um Ihr Angebot zu erstellen und zu konfigurieren.
 

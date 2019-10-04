@@ -1,5 +1,5 @@
 ---
-title: Erkennen domänenspezifischer Inhalte – maschinelles Sehen
+title: Domänenspezifische Inhalte – maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie eine Bildkategorisierungsdomäne angeben, um ausführlichere Informationen zu einem Bild zurückzugeben.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 92859667e1dc53b9c6ca9e46a2db1c6dc335ae37
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339010"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946340"
 ---
 # <a name="detect-domain-specific-content"></a>Erkennen domänenspezifischer Inhalte
 
@@ -30,7 +30,7 @@ Sie können ein Bild analysieren, indem Sie nur das domänenspezifische Modell n
 
 Hier ist eine JSON-Beispielantwort angegeben, die von der API **models/celebrities/analyze** für das jeweilige Bild zurückgegeben wird:
 
-![Satya Nadella (stehend)](./images/satya.jpeg)
+![Satya Nadella (stehend, lächelnd)](./images/satya.jpeg)
 
 ```json
 {

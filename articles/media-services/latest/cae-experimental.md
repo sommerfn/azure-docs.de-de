@@ -3,25 +3,25 @@ title: Eine experimentelle Voreinstellung für die inhaltsbezogene Codierung –
 description: In diesem Artikel wird die inhaltsbezogene Codierung in Azure Media Services erläutert.
 services: media-services
 documentationcenter: ''
-author: sethmanheim
+author: Juliako
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 04/05/2019
-ms.author: sethm
+ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 3c50502a8b873503ee937914fac5f2d92cb23a2b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ddb7bfd2437af806c8db75068c50545e69867ea0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59287545"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65151020"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>Experimentelle Voreinstellung für die inhaltsbezogene Codierung
 
-Um Inhalte für die Übermittlung durch [Adaptive Bitrate Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) vorzubereiten, muss Video mit mehreren Bitraten (hoch bis niedrig) codiert werden. Um eine gleichmäßige Qualitätsminderung zu gewährleisten, wird mit abnehmender Bitrate auch die Auflösung des Videos verringert. Daraus ergibt sich eine so genannte „Codierungsleiter“, eine Tabelle mit Auflösungen und Bitraten, wie Sie in einigen unserer festen Codierungsvoreinstellungen sehen können, beispielsweise [H264MultipleBitrate1080p](../previous/media-services-mes-preset-h264-multiple-bitrate-1080p.md).
+Um Inhalte für die Übermittlung durch [Adaptive Bitrate Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) vorzubereiten, muss Video mit mehreren Bitraten (hoch bis niedrig) codiert werden. Um eine gleichmäßige Qualitätsminderung zu gewährleisten, wird mit abnehmender Bitrate auch die Auflösung des Videos verringert. Dies führt zu einer sogenannten Codierungsleiter, also einer Tabelle mit Auflösungen und Bitraten. Informationen hierzu finden Sie in den [integrierten Codierungsvoreinstellung](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) von Media Services.
 
 ## <a name="overview"></a>Übersicht
 

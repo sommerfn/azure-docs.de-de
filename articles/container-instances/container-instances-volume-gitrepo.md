@@ -3,23 +3,24 @@ title: Einbinden eines gitRepo-Volumes in Azure Container Instances
 description: Hier erfahren Sie, wie Sie ein gitRepo-Volume einbinden, um ein Git-Repository in Ihren Containerinstanzen zu klonen.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: danlep
-ms.openlocfilehash: 70593bffbf30b3a0c0978e56c2af1a856a22f2ec
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: e8afa9e14941920cdcfb984e6660bdc666240716
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369661"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325439"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Einbinden eines gitRepo-Volumes in Azure Container Instances
 
 Hier erfahren Sie, wie Sie ein *gitRepo*-Volume einbinden, um ein Git-Repository in Ihren Containerinstanzen zu klonen.
 
 > [!NOTE]
-> Zurzeit ist das Einbinden eines *gitRepo*-Volumes auf Linux-Container beschränkt. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
+> Zurzeit ist das Einbinden eines *gitRepo*-Volumes auf Linux-Container beschränkt. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede in der [Übersicht](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="gitrepo-volume"></a>GitRepo-Volume
 
@@ -30,12 +31,12 @@ Wenn Sie ein *gitRepo*-Volume einbinden, können Sie zum Konfigurieren des Volum
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 | -------- | -------- | ----------- |
 | `repository` | Ja | Die vollständige URL (einschließlich `http://` bzw. `https://`) des zu klonenden Git-Repositorys|
-| `directory` | Nein  | Das Verzeichnis, in dem das Repository geklont werden soll. Der Pfad darf `..` weder enthalten noch darf er damit beginnen.  Bei Angabe von `.` wird das Repository im Verzeichnis des Volumes geklont. Andernfalls wird das Git-Repository in einem Unterverzeichnis mit dem angegebenen Namen im Volumeverzeichnis geklont. |
-| `revision` | Nein  | Der Commithash der zu klonenden Version. Wird er nicht angegeben, wird die `HEAD`-Revision geklont. |
+| `directory` | Nein | Das Verzeichnis, in dem das Repository geklont werden soll. Der Pfad darf `..` weder enthalten noch darf er damit beginnen.  Bei Angabe von `.` wird das Repository im Verzeichnis des Volumes geklont. Andernfalls wird das Git-Repository in einem Unterverzeichnis mit dem angegebenen Namen im Volumeverzeichnis geklont. |
+| `revision` | Nein | Der Commithash der zu klonenden Version. Wird er nicht angegeben, wird die `HEAD`-Revision geklont. |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>Einbinden eines gitRepo-Volumes: Azure-Befehlszeilenschnittstelle
 
-Um ein gitRepo-Volume einzubinden, wenn Sie Containerinstanzen mit der [Azure CLI](/cli/azure) bereitstellen, geben Sie für den Befehl [az container create][az-container-create] die Parameter `--gitrepo-url` und `--gitrepo-mount-path` an. Sie können optional das Verzeichnis innerhalb des zu klonenden Volumes (`--gitrepo-dir`) und den Commithash der zu klonenden Revision (`--gitrepo-revision`) angeben.
+Um ein gitRepo-Volume einzubinden, wenn Sie Containerinstanzen mit der [Azure-Befehlszeilenschnittstelle](/cli/azure) bereitstellen, geben Sie für den Befehl [az container create][az-container-create] die Parameter `--gitrepo-url` und `--gitrepo-mount-path` an. Sie können optional das Verzeichnis innerhalb des zu klonenden Volumes (`--gitrepo-dir`) und den Commithash der zu klonenden Revision (`--gitrepo-revision`) angeben.
 
 Dieser Beispielbefehl klont die Microsoft-Beispielanwendung [aci-helloworld][aci-helloworld] in `/mnt/aci-helloworld` in der Containerinstanz:
 

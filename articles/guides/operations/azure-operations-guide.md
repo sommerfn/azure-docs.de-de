@@ -1,26 +1,19 @@
 ---
 title: Leitfaden zu den ersten Schritten für Azure-IT-Operatoren | Microsoft Docs
 description: Leitfaden zu den ersten Schritten für Azure-IT-Operatoren
-services: ''
-documentationcenter: ''
-author: themichaelbender-ms
-manager: timlt
-editor: tysonn
+author: RicksterCDN
+ms.author: rclaus
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: azure
-ms.devlang: ''
 ms.topic: overview
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.author: mibender
-ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b225052daa61932f3b8b868789cfb3c204eca88f
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051169"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543431"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Erste Schritte für Azure-IT-Operatoren
 
@@ -73,7 +66,7 @@ Azure umfasst mehrere PaaS-Computeangebote, z.B. das Web-Apps-Feature von Azure 
 
 #### <a name="saas-software-as-a-service"></a>SaaS: Software-as-a-Service
 
-Bei SaaS handelt es sich um Software, die zentral gehostet und verwaltet wird. Normalerweise basiert sie auf einer mehrinstanzenfähigen Architektur, bei der nur eine Version der Anwendung für alle Kunden verwendet wird. Die Software kann horizontal auf mehrere Instanzen hochskaliert werden, um für alle Standorte die beste Leistung zu erzielen. Software vom Typ „SaaS“ wird normalerweise per Monats- oder Jahresabonnement lizenziert. Software vom Typ „SaaS“ wird normalerweise per Monats- oder Jahresabonnement lizenziert. SaaS-Softwareanbieter sind für alle Komponenten des Softwarestapels verantwortlich. Sie verwalten also ausschließlich die bereitgestellten Dienste.
+Bei SaaS handelt es sich um Software, die zentral gehostet und verwaltet wird. Normalerweise basiert sie auf einer mehrinstanzenfähigen Architektur, bei der nur eine Version der Anwendung für alle Kunden verwendet wird. Die Software kann horizontal auf mehrere Instanzen hochskaliert werden, um für alle Standorte die beste Leistung zu erzielen. Software vom Typ „SaaS“ wird normalerweise per Monats- oder Jahresabonnement lizenziert. SaaS-Softwareanbieter sind für alle Komponenten des Softwarestapels verantwortlich. Sie verwalten also ausschließlich die bereitgestellten Dienste.
 
 Microsoft Office 365 ist ein gutes Beispiel für ein SaaS-Angebot. Abonnenten zahlen eine monatliche oder jährliche Abonnementgebühr und können Microsoft Exchange, Microsoft OneDrive und die restlichen Anwendungen der Microsoft Office Suite als Dienst nutzen. Die Abonnenten erhalten immer die aktuelle Version, und die Verwaltung des Exchange-Servers ist inbegriffen. Verglichen mit der jährlichen Office-Installation und -Aktualisierung ist dies kostengünstiger und weniger aufwändig.
 
@@ -145,7 +138,7 @@ Eine ausführliche Dokumentation zu Azure-Diensten finden Sie in der [Dokumentat
 
 Azure ist eine globale Cloudplattform, die in vielen Regionen auf der ganzen Welt allgemein verfügbar ist. Beim Bereitstellen eines Diensts, einer Anwendung oder einer VM in Azure werden Sie aufgefordert, eine Region auszuwählen. Die ausgewählte Region steht für ein bestimmtes Datencenter, in dem Ihre Anwendung ausgeführt wird. Weitere Informationen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
 
-Einer der Vorteile der Verwendung von Azure ist, dass Sie Ihre Anwendungen in verschiedenen Datencentern auf der ganzen Welt bereitstellen können. Die Region, die Sie auswählen, kann sich auf die Leistung Ihrer Anwendung auswirken. Es ist optimal, eine Region auszuwählen, die für den Großteil Ihrer Kunden in der Nähe liegt, um die Wartezeit bei Netzwerkanforderungen zu reduzieren. Es kann auch ratsam sein, die Region so auszuwählen, dass sie die rechtlichen Anforderungen für den Vertrieb Ihrer App in bestimmten Ländern erfüllt.
+Einer der Vorteile der Verwendung von Azure ist, dass Sie Ihre Anwendungen in verschiedenen Datencentern auf der ganzen Welt bereitstellen können. Die Region, die Sie auswählen, kann sich auf die Leistung Ihrer Anwendung auswirken. Es ist optimal, eine Region auszuwählen, die für den Großteil Ihrer Kunden in der Nähe liegt, um die Wartezeit bei Netzwerkanforderungen zu reduzieren. Es kann auch ratsam sein, die Region so auszuwählen, dass sie die rechtlichen Anforderungen für den Vertrieb Ihrer App in bestimmten Ländern/Regionen erfüllt.
 
 ### <a name="azure-portal"></a>Azure-Portal
 

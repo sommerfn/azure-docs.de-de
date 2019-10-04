@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b2cfe8014e6ffbd7a6d5449192acde9780a2d303
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361244"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122885"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Verbinden mit der Media Services v3-API – .NET
 
@@ -27,7 +27,10 @@ Dieser Artikel zeigt Ihnen, wie Sie mit der Methode der Dienstprinzipalanmeldung
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md) Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos.
-- Installieren Sie ein Tool, das Sie für die .NET-Entwicklung verwenden möchten. Die Schritte in diesem Artikel zeigen, wie Sie die [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) verwenden. Informationen zu Visual Studio Code finden Sie unter [Arbeiten mit C# ](https://code.visualstudio.com/docs/languages/csharp). Sie können auch einen anderen Code-Editor verwenden.
+- Installieren Sie ein Tool, das Sie für die .NET-Entwicklung verwenden möchten. Die Schritte in diesem Artikel zeigen, wie Sie die [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) verwenden. Informationen zu Visual Studio Code finden Sie unter [Arbeiten mit C# ](https://code.visualstudio.com/docs/languages/csharp). Sie können auch einen anderen Code-Editor verwenden.
+
+> [!IMPORTANT]
+> Informieren Sie sich über die [Namenskonventionen](media-services-apis-overview.md#naming-conventions).
 
 ## <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
@@ -204,7 +207,7 @@ namespace ConsoleApp1
             //// ClientAssertionCertificate
             //// ApplicationTokenProvider.LoginSilentWithCertificateAsync
 
-            // Use ApplicationTokenProvider.LoginSilentAsync to get a token using a service principal with symetric key
+            // Use ApplicationTokenProvider.LoginSilentAsync to get a token using a service principal with symmetric key
             ClientCredential clientCredential = new ClientCredential(config.AadClientId, config.AadSecret);
             return await ApplicationTokenProvider.LoginSilentAsync(config.AadTenantId, clientCredential, ActiveDirectoryServiceSettings.Azure);
         }
@@ -239,4 +242,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[.NET-Referenz](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [.NET-Referenz](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* Weitere Codebeispiele finden Sie im Repository für [.NET SDK-Beispiele](https://github.com/Azure-Samples/media-services-v3-dotnet).

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f3b49efa5e28eab2168c9a85d17e39ca7f0fce4a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6035a6ddd690db456edfa5777ca2d41e4be8b919
+ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984782"
+ms.lasthandoff: 06/06/2019
+ms.locfileid: "66728582"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten von Datenträgern mit VM-Skalierungsgruppe mit Azure PowerShell
 
@@ -36,9 +36,9 @@ Für VM-Skalierungsgruppen werden Datenträger zum Speichern des Betriebssystems
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 
 ## <a name="default-azure-disks"></a>Azure-Standarddatenträger
@@ -53,9 +53,9 @@ Wenn eine Skalierungsgruppe erstellt oder skaliert wird, werden automatisch zwei
 |----|----|----|
 | [Allgemeiner Zweck](../virtual-machines/windows/sizes-general.md) | A-, B- und D-Serie | 1600 |
 | [Computeoptimiert](../virtual-machines/windows/sizes-compute.md) | F-Serie | 576 |
-| [Arbeitsspeicheroptimiert](../virtual-machines/windows/sizes-memory.md) | D-, E-, G- und M-Serie | 6.144 |
-| [Speicheroptimiert](../virtual-machines/windows/sizes-storage.md) | L-Serie | 5.630 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N-Serie | 1.440 |
+| [Arbeitsspeicheroptimiert](../virtual-machines/windows/sizes-memory.md) | D-, E-, G- und M-Serie | 6\.144 |
+| [Speicheroptimiert](../virtual-machines/windows/sizes-storage.md) | L-Serie | 5\.630 |
+| [GPU](../virtual-machines/windows/sizes-gpu.md) | N-Serie | 1\.440 |
 | [Hohe Leistung](../virtual-machines/windows/sizes-hpc.md) | A- und H-Serie | 2000 |
 
 
@@ -85,8 +85,8 @@ Premium-Datenträger basieren auf SSD-basierten Datenträgern mit hoher Leistung
 ### <a name="premium-disk-performance"></a>Leistung von Premium-Datenträgern
 |Storage Premium-Datenträgertyp | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Datenträgergröße (aufgerundet) | 32 GB | 64 GB | 128 GB | 512 GB | 1.024GB (1TB) | 2.048 GB (2 TB) | 4.095 GB (4 TB) |
-| Max. IOPS pro Datenträger | 120 | 240 | 500 | 2.300 | 5.000 | 7.500 | 7.500 |
+| Datenträgergröße (aufgerundet) | 32 GB | 64 GB | 128 GB | 512 GB | 1\.024GB (1TB) | 2\.048 GB (2 TB) | 4\.095 GB (4 TB) |
+| Max. IOPS pro Datenträger | 120 | 240 | 500 | 2\.300 | 5\.000 | 7\.500 | 7\.500 |
 Durchsatz pro Datenträger | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
 In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. Eine Standard_GS5-VM kann z.B. ein Maximum von 80.000 IOPS erreichen. Ausführliche Informationen zur maximalen IOPS-Anzahl pro virtuellem Computer finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md).

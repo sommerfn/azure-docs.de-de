@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 465352af52cbc84773e52782233065b3000921e7
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: c9b305beae1b385d4714e3a80e6843c7e76a4f60
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652847"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65410997"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Verbinden des Netzwerks Ihres Labs mit einem virtuellen Peernetzwerk in Azure Lab Services 
 Dieser Artikel bietet Informationen dazu, wie Sie eine Peerverbindung zwischen dem Netzwerk Ihres Labs und einem anderen Netzwerk herstellen. 
@@ -33,7 +33,6 @@ In einigen Szenarien, wie beispielsweise den folgenden, müssen Sie das Netzwerk
 
 Einige lokale Netzwerke sind über [ExpressRoute](../../expressroute/expressroute-introduction.md) oder ein [Gateway für virtuelle Netzwerke](../../vpn-gateway/vpn-gateway-about-vpngateways.md) mit Azure Virtual Network verbunden. Diese Dienste müssen außerhalb von Azure Lab Services eingerichtet werden. Weitere Informationen über das Herstellen einer Verbindung zwischen einem lokalen Netzwerk und Azure über ExpressRoute finden Sie unter [Übersicht über ExpressRoute])(../expressroute/expressroute-introduction.md). Für die lokale Verbindung über ein Gateway für virtuelle Netzwerke müssen sich das Gateway, das angegebene virtuelle Netzwerk und das Labkonto in der gleichen Region befinden.
 
-
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurieren zum Zeitpunkt der Labkontoerstellung
 Während Sie ein neues Labkonto erstellen, können Sie ein vorhandenes virtuelles Netzwerk auswählen, das in der Dropdownliste **Virtuelles Peernetzwerk** angezeigt wird. Das ausgewählte virtuelle Netzwerk ist (mittels Peering) mit Labs verbunden, die im Labkonto erstellt wurden. Alle virtuellen Computer in Labs, die nach Durchführen dieser Änderung erstellt werden, haben Zugriff auf die Ressourcen im virtuellen Peernetzwerk. 
 
@@ -44,15 +43,14 @@ Während Sie ein neues Labkonto erstellen, können Sie ein vorhandenes virtuelle
 
 
 ## <a name="configure-after-the-lab-is-created"></a>Konfigurieren nach Erstellen des Labs
-Die gleiche Eigenschaft kann über die Registerkarte **Labkonfiguration** der Seite **Labkonto** aktiviert werden, wenn Sie zum Zeitpunkt der Erstellung des Labkontos kein Peernetzwerk eingerichtet haben. Änderungen an dieser Einstellung gelten nur für die Labs, die nach der Änderung erstellt werden.
+Die gleiche Eigenschaft kann über die Registerkarte **Labkonfiguration** der Seite **Labkonto** aktiviert werden, wenn Sie zum Zeitpunkt der Erstellung des Labkontos kein Peernetzwerk eingerichtet haben. Änderungen an dieser Einstellung gelten nur für die Labs, die nach der Änderung erstellt werden. Wie Sie in der Abbildung sehen, können Sie die Option **Virtuelles Peernetzwerk** für Labs im Labkonto aktivieren oder deaktivieren. 
 
 ![Aktivieren oder Deaktivieren des VNET-Peerings nach dem Erstellen des Labs](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer-existing-lab.png) 
 
-Wie Sie in der Abbildung sehen, können Sie die Option **Virtuelles Peernetzwerk** für Labs im Labkonto aktivieren oder deaktivieren. 
+Wenn Sie ein virtuelles Netzwerk für das Feld **Virtuelles Peernetzwerk** auswählen, ist die Option **Auswahl des Labspeicherorts durch Labersteller zulassen** deaktiviert. Der Grund dafür ist, dass sich die Labs im Labkonto in der gleichen Region befinden müssen, wie das Labkonto, damit sie sich mit Ressourcen im virtuellen Peernetzwerk verbinden können. 
 
 > [!IMPORTANT]
 > Diese Einstellungsänderung gilt nur für Labs, die nach dem Durchführen der Änderung erstellt werden, nicht für vorhandene Labs. 
-
 
 
 ## <a name="next-steps"></a>Nächste Schritte

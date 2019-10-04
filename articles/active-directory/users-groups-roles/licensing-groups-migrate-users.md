@@ -1,5 +1,5 @@
 ---
-title: Migrieren einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung in Azure Active Directory | Microsoft-Dokumentation
+title: Hinzufügen einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung in Azure Active Directory | Microsoft-Dokumentation
 description: Informationen zum Migrieren einzelner Benutzerlizenzen zur gruppenbasierten Lizenzierung mithilfe von Azure Active Directory
 services: active-directory
 keywords: Azure AD-Lizenzierung
@@ -16,14 +16,14 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6fd2eb51c7178421b0656e3b1d0e0ea36176c16
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 333f0ae0153073b57740446ecf47e36a1f9ce590
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199971"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65192451"
 ---
-# <a name="how-to-add-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Gewusst wie: Migrieren von Benutzern mit einzelnen Lizenzen zu Gruppen für die Lizenzierung
+# <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Gewusst wie: Migrieren von Benutzern mit einzelnen Lizenzen zur gruppenbasierten Lizenzierung
 
 Sie haben möglicherweise einzelnen Benutzern in den Abteilungen bereits mit „direkte Zuweisung“ Lizenzen zugewiesen, z.B. mithilfe von PowerShell-Skripts oder anderen Tools. Bevor Sie mit der gruppenbasierten Lizenzierung zur Verwaltung von Lizenzen in Ihrer Organisation beginnen, können Sie mit diesem Migrationsplan bestehende Lösungen nahtlos durch gruppenbasierte Lizenzen ersetzen.
 

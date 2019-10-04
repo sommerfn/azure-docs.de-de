@@ -1,0 +1,63 @@
+- name: Azure Data Share (Vorschauversion) – Dokumentation
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Was ist Azure Data Share (Vorschauversion)?
+      href: overview.md
+- name: Lernprogramme
+  expanded: true
+  items:
+    - name: Freigeben von Daten
+      href: share-your-data.md
+    - name: Akzeptieren und Empfangen von Daten
+      href: subscribe-to-data-share.md
+- name: Konzepte
+  items:
+    - name: Azure Data Share-Terminologie
+      href: terminology.md
+    - name: Rollen und Anforderungen
+      href: concepts-roles-permissions.md
+- name: Beispiele
+  items:
+    - name: Azure Powershell
+      href: samples-powershell.md
+- name: Anleitungen
+  items:
+    - name: Überwachen
+      href: how-to-monitor.md
+    - name: Konfigurieren von Dataset-Mappings
+      href: how-to-configure-mapping.md
+    - name: Problembehandlung
+      href: data-share-troubleshoot.md
+    - name: Hinzufügen von Datasets
+      href: how-to-add-datasets.md
+    - name: Hinzufügen von Empfängern
+      href: how-to-add-recipients.md
+    - name: Löschen einer Einladung
+      href: how-to-delete-invitation.md
+    - name: Aufheben einer Abonnementfreigabe
+      href: how-to-revoke-share-subscription.md
+- name: Verweis
+  items:
+    - name: .NET
+      href: /dotnet/api/overview/azure/datashare
+    - name: Azure Powershell
+      href: 'https://docs.microsoft.com/powershell/module/az.datashare/?view=azps-2.6.0'
+    - name: REST-API
+      href: /rest/api/datashare
+- name: Ressourcen
+  items:
+    - name: MSDN-Forum
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataShare'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-data-share'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/announcing-preview-of-azure-data-share/'
+    - name: Technische Microsoft-Community
+      href: 'https://techcommunity.microsoft.com/'
+    - name: Produktfeedback
+      href: 'https://feedback.azure.com/forums/922759-azure-data-share-public-preview'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/data-share/'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=data-share'

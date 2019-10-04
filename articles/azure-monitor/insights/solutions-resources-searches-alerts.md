@@ -1,29 +1,29 @@
 ---
-title: Gespeicherte Suchen und Warnungen in Verwaltungslösungen | Microsoft-Dokumentation
-description: Verwaltungslösungen enthalten in der Regel gespeicherte Suchen in Log Analytics zum Analysieren der von der Lösung erfassten Daten. Sie können auch Warnungen zur Benachrichtigung des Benutzers definieren oder als Reaktion auf ein schwerwiegendes Problem automatisch Maßnahmen ergreifen. Dieser Artikel beschreibt das Definieren von in Log Analytics gespeicherten Suchen und Warnungen in einer Resource Manager-Vorlage, damit sie in Verwaltungslösungen aufgenommen werden können.
+title: Gespeicherte Suchen in Verwaltungslösungen | Microsoft-Dokumentation
+description: Verwaltungslösungen enthalten in der Regel gespeicherte Suchen in Log Analytics zum Analysieren der von der Lösung erfassten Daten. Sie können auch Warnungen zur Benachrichtigung des Benutzers definieren oder als Reaktion auf ein schwerwiegendes Problem automatisch Maßnahmen ergreifen. Dieser Artikel beschreibt das Definieren von in Log Analytics gespeicherten Suchen in einer Resource Manager-Vorlage, damit sie in Verwaltungslösungen aufgenommen werden können.
 services: monitoring
 documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/18/2018
+ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97e6029ff85ce7ee8572fd76d04a5d72b27b2950
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d5372ac8b31db91aaac018b203ee8868fa313fd8
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980107"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772987"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Hinzufügen von gespeicherten Log Analytics-Suchen und -Warnungen in der Verwaltungslösung (Vorschau)
 
 > [!IMPORTANT]
-> Die hier enthaltenen Informationen zur Erstellung einer Warnung mithilfe einer Resource Manager-Vorlage sind veraltet, da [Log Analytics-Warnungen auf Azure Monitor erweitert wurden](../platform/alerts-extend.md). Informationen zum Erstellen einer Protokollwarnung mithilfe einer Resource Manager-Vorlage finden Sie unter [Verwalten von Protokollwarnungen mithilfe von Azure-Ressourcenvorlagen](../platform/alerts-log.md#managing-log-alerts-using-azure-resource-template).
+> Wie [bereits angekündigt](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), können bei Log Analytics-Arbeitsbereichen, die nach dem *1. Juni 2019* erstellt wurden, Warnungsregeln **nur** mit der [REST-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) „scheduledQueryRules“ von Azure, per [Azure Resource Manager-Vorlage](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) und per [PowerShell-Cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell) verwaltet werden. Kunden können für ältere Arbeitsbereiche problemlos [ihre bevorzugte Methode zur Verwaltung von Warnungsregeln umstellen](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api), um „scheduledQueryRules“ in Azure Monitor als Standard zu verwenden und viele [neue Vorteile](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) zu nutzen. Hierzu zählen beispielsweise die Möglichkeit zur Verwendung nativer PowerShell-Cmdlets, ein längerer Rückschauzeitraum in Regeln sowie die Erstellung von Regeln in einer separaten Ressourcengruppe oder in einem separaten Abonnement.
 
 > [!NOTE]
 > Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.
@@ -76,29 +76,24 @@ Ressourcen für [Gespeicherte Suchen in Log Analytics](../../azure-monitor/log-q
 
 Die Eigenschaften einer gespeicherten Suche sind in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | description |
 |:--- |:--- |
 | category | Die Kategorie für die gespeicherte Suche.  Alle gespeicherten Suchen in derselben Lösung verwenden häufig gemeinsam eine einzige Kategorie, sodass sie gemeinsam in der Konsole gruppiert werden. |
 | displayname | Name, der für die gespeicherte Suche im Portal angezeigt wird |
 | query | Die auszuführende Abfrage. |
 
 > [!NOTE]
-> Sie müssen möglicherweise Escape-Zeichen in der Abfrage verwenden, wenn diese Zeichen enthält, die als JSON interpretiert werden könnten. Falls Ihre Abfrage **AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"** lautete, sollte in der Lösungsdatei Folgendes stehen: **AzureActivity | OperationName:\"Microsoft.Compute/virtualMachines/write\"**.
+> Sie müssen möglicherweise Escape-Zeichen in der Abfrage verwenden, wenn diese Zeichen enthält, die als JSON interpretiert werden könnten. Falls Ihre Abfrage **AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"** lautete, sollte in der Lösungsdatei Folgendes stehen: **AzureActivity | OperationName:\"Microsoft.Compute/virtualMachines/write\"** .
 
 ## <a name="alerts"></a>Alerts
 [Azure-Protokollwarnungen](../../azure-monitor/platform/alerts-unified-log.md) werden von Azure-Warnungregeln erstellt, die in regelmäßigen Abständen automatisch angegebene Protokollabfragen auszuführen. Wenn die Ergebnisse der Abfrage mit den angegebenen Kriterien übereinstimmen, wird eine Warnung erstellt und mindestens eine Aktion mithilfe von [Aktionsgruppen](../../azure-monitor/platform/action-groups.md) ausgeführt.
 
-> [!NOTE]
-> Seit dem 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud auf Azure ausgedehnt. Weitere Informationen finden Sie unter [Erweitern von Warnungen nach Azure](../../azure-monitor/platform/alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../../azure-monitor/platform/action-groups-create-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
-
-Warnungsregeln in einer Verwaltungslösung bestehen aus den folgenden drei verschiedenen Ressourcen:
+Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../../azure-monitor/platform/action-groups-create-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
+Warnungsregeln in einer Legacy-Verwaltungslösung bestehen aus drei verschiedenen Ressourcen:
 
 - **Gespeicherte Suche.** Definiert die Protokollsuche, die ausgeführt wird Mehrere Warnungsregeln können gemeinsam eine einzelne gespeicherte Suche verwenden.
 - **Zeitplan.** Definiert, wie oft die Protokollsuche ausgeführt wird Jede Warnungsregel weist nur einen einzigen Zeitplan auf.
 - **Warnungsaktion.** Jede Warnregel weist eine Aktionsgruppenressource oder Aktionsressource (veraltet) mit dem Typ **Warnung** auf, die die Details der Warnung, etwa die Kriterien dafür, wann ein Warnungsdatensatz erstellt wird, und den Schweregrad der Warnung definiert. Die Ressource für eine [Aktionsgruppe](../../azure-monitor/platform/action-groups.md) kann eine Liste der konfigurierten Aktionen aufweisen, die durchzuführen sind, wenn die Warnung ausgelöst wird – z.B. Anruf, SMS, E-Mail, Webhook, ITSM-Tool, Automation-Runbook, Logik-App usw.
-
-Die Aktionsressource (veraltet) definiert optional eine Antwort per E-Mail und Runbook.
-- **Webhookaktion (veraltet)** Wenn die Warnungsregel einen Webhook aufruft, ist eine zusätzliche Aktionsressource vom Typ **Webhook** erforderlich.
 
 Gespeicherte Suchressourcen sind oben beschrieben. Die anderen Ressourcen sind nachfolgend beschrieben.
 
@@ -120,28 +115,21 @@ Eine gespeicherte Suche kann einen oder mehrere Zeitpläne aufweisen, wobei jede
             "enabled": "[variables('Schedule').Enabled]"
         }
     }
-
 Die Eigenschaften für Zeitplanressourcen werden in der folgenden Tabelle beschrieben.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | description |
 |:--|:--|:--|
-| Aktiviert       | Ja | Gibt an, ob die Warnung beim Erstellen aktiviert wird. |
+| enabled       | Ja | Gibt an, ob die Warnung beim Erstellen aktiviert wird. |
 | interval      | Ja | Abfrageintervall in Minuten |
 | queryTimeSpan | Ja | Länge in Minuten für die Auswertung der Ergebnisse |
 
 Die Zeitplanressource muss von der gespeicherten Suche abhängig sein, damit sie vor dem Zeitplan erstellt wird.
-
 > [!NOTE]
 > Der Name des Zeitplans muss in einem bestimmten Arbeitsbereich eindeutig sein; zwei Zeitpläne können nicht dieselbe ID haben, auch wenn sie unterschiedlichen gespeicherten Suchvorgängen zugeordnet sind. Auch die Namen aller gespeicherten Suchvorgänge, Zeitpläne und Aktionen, die mit der Log Analytics-API erstellt werden, müssen in Kleinbuchstaben geschrieben werden.
 
 ### <a name="actions"></a>Aktionen
 Ein Zeitplan kann mehrere Aktionen umfassen. Mit einer Aktion können ein oder mehrere durchzuführende Prozesse definiert werden, z.B. das Senden einer E-Mail oder das Starten eines Runbooks. Es kann auch ein Schwellenwert definiert werden, der bestimmt, wann die Ergebnisse einer Suche eine Übereinstimmung mit Kriterien ergeben. Mit einigen Aktionen wird beides definiert, sodass die Prozesse durchgeführt werden, wenn der Schwellenwert erreicht ist.
-
 Aktionen können mithilfe der [Aktionsgruppenressource] oder Aktionsressource definiert werden.
-
-> [!NOTE]
-> Seit dem 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Weitere Informationen finden Sie unter [Erweitern von Warnungen nach Azure](../../azure-monitor/platform/alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../../azure-monitor/platform/action-groups-create-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
-
 
 Es gibt zwei Arten von Aktionsressourcen, die von der **Typ**-Eigenschaft festgelegt werden. Für einen Zeitplan ist eine Aktion vom Typ **Warnung** erforderlich, die die Details der Warnungsregel und die Aktionen definiert, die beim Erstellen einer Warnung ausgeführt werden. Aktionsressourcen weisen den Typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions` auf.
 
@@ -183,37 +171,33 @@ Die Eigenschaften für Warnungsaktionsressourcen werden in den folgenden Tabelle
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| Type | Ja | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
-| NAME | Ja | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
-| BESCHREIBUNG | Nein  | Eine optionale Beschreibung der Warnung |
-| Schweregrad | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Kritisch**<br>**Warnung**<br>**Information**
-
+| `type` | Ja | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
+| `name` | Ja | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
+| `description` | Nein | Eine optionale Beschreibung der Warnung |
+| `severity` | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Kritisch**<br>**Warnung**<br>**Information**
 
 #### <a name="threshold"></a>Schwellenwert
 Dieser Abschnitt ist ein Pflichtabschnitt. Er definiert die Eigenschaften für den Warnungsschwellenwert.
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
-| Wert | Ja | Der Wert zum Vergleich der Ergebnisse |
+| `Operator` | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
+| `Value` | Ja | Der Wert zum Vergleich der Ergebnisse |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Dieser Abschnitt ist optional. Fügen Sie ihn für eine Warnung aufgrund metrischer Messungen ein.
 
-> [!NOTE]
-> Warnungen aufgrund metrischer Messungen befinden sich derzeit in der öffentlichen Vorschau.
-
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| TriggerCondition | Ja | Gibt an, ob der Schwellenwert für die Gesamtanzahl der Verstöße oder für aufeinander folgende Verstöße gegen folgende Werte steht:<br><br>**Insgesamt<br>Aufeinander folgende** |
-| Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
-| Wert | Ja | Häufigkeit, mit der die Kriterien erfüllt werden müssen, um die Warnung auszulösen. |
+| `TriggerCondition` | Ja | Gibt an, ob der Schwellenwert für die Gesamtanzahl der Verstöße oder für aufeinander folgende Verstöße gegen folgende Werte steht:<br><br>**Insgesamt<br>Aufeinander folgende** |
+| `Operator` | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
+| `Value` | Ja | Häufigkeit, mit der die Kriterien erfüllt werden müssen, um die Warnung auszulösen. |
 
 
 #### <a name="throttling"></a>Drosselung
 Dieser Abschnitt ist optional. Beziehen Sie diesen Abschnitt mit ein, wenn nach dem Erstellen einer Warnung Warnungen von derselben Regel eine bestimmte Zeit lang unterdrückt werden sollen.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | description |
 |:--|:--|:--|
 | DurationInMinutes | Ja, wenn das Drosselungselement enthalten ist | Dauer der Unterdrückung von Warnungen in Minuten, wenn eine Warnung aufgrund derselben Regel erstellt wird. |
 
@@ -222,67 +206,11 @@ Alle Warnungen in Azure verwenden Aktionsgruppen als Standardmechanismus für di
 
 Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitplänen jetzt zusammen mit dem Schwellenwert auch Aktionsgruppendetails übergeben werden, um eine Warnung erstellen zu können. E-Mail-Details, Webhook-URLs, Details zur Runbookautomatisierung und weitere Aktionen müssen vor dem Erstellen einer Warnung in einer Aktionsgruppe definiert werden; es ist möglich, eine [Aktionsgruppe von Azure Monitor aus](../../azure-monitor/platform/action-groups.md) im Portal zu erstellen, oder die [Aktionsgruppen-Ressourcenvorlage](../../azure-monitor/platform/action-groups-create-resource-manager-template.md) zu verwenden.
 
-| Elementname | Erforderlich | BESCHREIBUNG |
+| Elementname | Erforderlich | description |
 |:--|:--|:--|
 | AzNsNotification | Ja | Die Ressourcen-ID der Azure-Aktionsgruppe, die der Warnung zugeordnet werden soll, um erforderliche Aktionen auszuführen, wenn Warnungskriterien zutreffen. |
-| CustomEmailSubject | Nein  | Benutzerdefinierte Betreffzeile der E-Mail, die an alle Adressen gesendet wird, die in der zugeordneten Aktionsgruppe angegeben sind. |
-| CustomWebhookPayload | Nein  | Benutzerdefinierte Nutzlast, die an alle Webhookendpunkte gesendet wird, die in der zugeordneten Aktionsgruppe definiert sind. Das Format hängt davon ab, was der Webhook erwartet, und muss ein gültiges serialisiertes JSON-Format sein. |
-
-#### <a name="actions-for-oms-legacy"></a>Aktionen für OMS (veraltet)
-
-Jeder Zeitplan weist eine Aktion vom Typ **Warnung** auf. Dadurch werden die Details der Warnung und optional die Aktionen zur Benachrichtigung und Wartung definiert. Eine Benachrichtigung sendet eine E-Mail an mindestens eine Adresse. Eine Wartung startet ein Runbook in Azure Automation und versucht, das erkannte Problem zu beheben.
-
-> [!NOTE]
-> Seit dem 14. Mai 2018 werden alle Warnungen in einem Log Analytics-Arbeitsbereich in einer öffentlichen Instanz der Azure Cloud automatisch auf Azure ausgedehnt. Weitere Informationen finden Sie unter [Erweitern von Warnungen nach Azure](../../azure-monitor/platform/alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../../azure-monitor/platform/action-groups-create-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
-
-##### <a name="emailnotification"></a>EmailNotification
- Dieser Abschnitt ist optional. Schließen Sie ihn ein, wenn bei der Warnung eine E-Mail an mindestens einen Empfänger gesendet werden soll.
-
-| Elementname | Erforderlich | BESCHREIBUNG |
-|:--|:--|:--|
-| Empfänger | Ja | Durch Kommas getrennte Liste der E-Mail-Adressen, an die eine Benachrichtigung gesendet wird, wenn eine Warnung wie im folgenden Beispiel erstellt wird.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Antragsteller | Ja | Die Betreffzeile der E-Mail |
-| Anhang | Nein  | Anlagen werden derzeit nicht unterstützt. Wenn dieses Element enthalten ist, muss es **Keine** lauten. |
-
-##### <a name="remediation"></a>Wiederherstellung
-Dieser Abschnitt ist optional. Schließen Sie ihn ein, wenn als Reaktion auf die Warnung ein Runbook gestartet werden soll. |
-
-| Elementname | Erforderlich | BESCHREIBUNG |
-|:--|:--|:--|
-| RunbookName | Ja | Der Name des Runbooks, das gestartet werden soll |
-| WebhookUri | Ja | Der URI des Webhooks für das Runbook |
-| Expiry | Nein  | Datum und Uhrzeit des Ablaufs der Wiederherstellung |
-
-##### <a name="webhook-actions"></a>Webhookaktionen
-
-Bei Webhookaktionen wird ein Prozess gestartet, indem eine URL aufgerufen und optional eine zu sendende Nutzlast bereitgestellt wird. Diese Aktionen sind mit Aktionen zur Problembehebung vergleichbar. Sie sind aber für Webhooks bestimmt, mit denen andere Prozesse als Azure Automation-Runbooks aufgerufen werden können. Außerdem verfügen sie über die zusätzliche Option zum Angeben einer Nutzlast, die für den Remoteprozess bereitgestellt wird.
-
-Wenn die Warnung einen Webhook aufruft, benötigt sie eine Aktionsressource mit einem **Webhook**-Typ zusätzlich zur Aktionsressource vom Typ **Warnung**.
-
-    {
-      "name": "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Webhook').Name)]",
-      "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions/",
-      "apiVersion": "[variables('LogAnalyticsApiVersion')]",
-      "dependsOn": [
-        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('SavedSearch').Name, '/schedules/', variables('Schedule').Name)]"
-      ],
-      "properties": {
-        "etag": "*",
-        "type": "[variables('Alert').Webhook.Type]",
-        "name": "[variables('Alert').Webhook.Name]",
-        "webhookUri": "[variables('Alert').Webhook.webhookUri]",
-        "customPayload": "[variables('Alert').Webhook.CustomPayLoad]"
-      }
-    }
-
-Die Eigenschaften für Webhook-Aktionsressourcen werden in den folgenden Tabellen beschrieben:
-
-| Elementname | Erforderlich | BESCHREIBUNG |
-|:--|:--|:--|
-| type | Ja | Der Typ der Aktion. Dieser lautet für Webhookaktionen **Webhook**. |
-| name | Ja | Der Anzeigename für die Aktion. Dieser wird nicht in der Konsole angezeigt. |
-| webhookUri | Ja | URI für den Webhook |
-| customPayload | Nein  | Benutzerdefinierte Nutzlast, die an den Webhook gesendet wird. Das Format hängt davon ab, was vom Webhook erwartet wird. |
+| CustomEmailSubject | Nein | Benutzerdefinierte Betreffzeile der E-Mail, die an alle Adressen gesendet wird, die in der zugeordneten Aktionsgruppe angegeben sind. |
+| CustomWebhookPayload | Nein | Benutzerdefinierte Nutzlast, die an alle Webhookendpunkte gesendet wird, die in der zugeordneten Aktionsgruppe definiert sind. Das Format hängt davon ab, was der Webhook erwartet, und muss ein gültiges serialisiertes JSON-Format sein. |
 
 ## <a name="sample"></a>Beispiel
 

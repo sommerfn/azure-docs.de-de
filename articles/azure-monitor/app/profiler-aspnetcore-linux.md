@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: cweining
-ms.openlocfilehash: 5787db7e2b726a10891fcabb0b215399d0d4e0ae
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884306"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60306483"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profilerstellung für ASP.NET Core-Azure Linux-Web-Apps mit Application Insights Profiler
 
@@ -39,21 +39,40 @@ Die folgenden Anweisungen werden auf alle Windows-, Linux- und Mac-Entwicklungsu
 
 1. Öffnen Sie ein Eingabeaufforderungsfenster auf dem Computer. Die folgenden Anweisungen werden auf alle Windows-, Linux- und Mac-Entwicklungsumgebungen angewendet.
 
-2. Erstellen Sie eine ASP.NET Core-MVC-Webanwendung:
+1. Erstellen Sie eine ASP.NET Core-MVC-Webanwendung:
 
     ```
     dotnet new mvc -n LinuxProfilerTest
     ```
 
-3. Ändern Sie das Arbeitsverzeichnis in den Stammordner des Projekts.
+1. Ändern Sie das Arbeitsverzeichnis in den Stammordner des Projekts.
 
-4. Fügen Sie das NuGet-Paket hinzu, um die Profiler-Ablaufverfolgungen zu erfassen:
+1. Fügen Sie das NuGet-Paket hinzu, um die Profiler-Ablaufverfolgungen zu erfassen:
 
-    ```
+    ```shell
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
 
-5. Fügen Sie im Abschnitt **HomeController.cs** eine Codezeile zur Verzögerung um ein paar Sekunden nach dem Zufallsprinzip hinzu:
+1. Aktivieren Sie Application Insights in der Datei „Program.cs“:
+
+    ```csharp
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .UseApplicationInsights() // Add this line of code to Enable Application Insights
+            .UseStartup<Startup>();
+    ```
+    
+1. Aktivieren Sie den Profiler in der Datei „Program.cs“:
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddServiceProfiler(); // Add this line of code to Enable Profiler
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+    }
+    ```
+
+1. Fügen Sie im Abschnitt **HomeController.cs** eine Codezeile zur Verzögerung um ein paar Sekunden nach dem Zufallsprinzip hinzu:
 
     ```csharp
         using System.Threading;
@@ -68,7 +87,7 @@ Die folgenden Anweisungen werden auf alle Windows-, Linux- und Mac-Entwicklungsu
             }
     ```
 
-6. Speichern Sie die Änderungen, und committen Sie sie an das lokale Repository:
+1. Speichern Sie die Änderungen, und committen Sie sie an das lokale Repository:
 
     ```
         git init
@@ -103,8 +122,8 @@ Weitere Bereitstellungsoptionen finden Sie in [diesem Artikel](https://docs.micr
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
-    * Verwenden Sie den **username (Benutzernamen)**, den Sie verwendet haben, um die Anmeldeinformationen für die Bereitstellung zu erstellen.
-    * Verwenden Sie den **app-name (App-Namen)**, den Sie verwendet haben, um die Web-App mithilfe von App Service unter Linux zu erstellen.
+    * Verwenden Sie den **username (Benutzernamen)** , den Sie verwendet haben, um die Anmeldeinformationen für die Bereitstellung zu erstellen.
+    * Verwenden Sie den **app-name (App-Namen)** , den Sie verwendet haben, um die Web-App mithilfe von App Service unter Linux zu erstellen.
 
 2. Stellen Sie das Projekt durch Pushen der Änderungen in Azure bereit:
 
@@ -143,10 +162,7 @@ Eine Ausgabe ähnlich des folgenden Beispiels sollte angezeigt werden:
 
     ```
     APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
-
-    ![Konfigurieren der App-Einstellungen](./media/profiler-aspnetcore-linux/set-appsettings.png)
 
     Wenn die App-Einstellungen geändert werden, wird die Website automatisch neu gestartet. Sobald die neuen Einstellungen angewendet werden, wird der Profiler sofort für zwei Minuten ausgeführt. Anschließend wird der Profiler einmal pro Stunde für zwei Minuten ausgeführt.
 
@@ -160,16 +176,8 @@ Eine Ausgabe ähnlich des folgenden Beispiels sollte angezeigt werden:
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-### <a name="the-enable-action-in-the-profiler-configuration-pane-doesnt-work"></a>Die Aktion „Aktivieren“ im Bereich „Profilerkonfiguration“ funktioniert nicht
-
-> [!NOTE]
-> Wenn Sie Ihre App mithilfe von App Service unter Linux hosten, müssen Sie den Profiler nicht im Application Insights-Portal im Bereich **Leistung** reaktivieren. Sie können das NuGet-Paket in Ihr Projekt einschließen und den **iKey**-Wert von Application Insights in Ihren Web-App-Einstellungen festlegen, um den Profiler zu aktivieren.
-
-Wenn Sie den Aktivierungsworkflow für [Application Insights Profiler für Windows](./profiler.md) befolgen und **Aktivieren** im Bereich **Profiler konfigurieren** auswählen, erhalten Sie eine Fehlermeldung. Die Aktivierung versucht, die Windows-Version des Profiler-Agents für die Linux-Umgebung zu installieren.
-
-Wir arbeiten an einer Lösung dieses Problems.
-
-![Versuchen Sie nicht, den Profiler im Bereich „Leistung“ zu reaktivieren](./media/profiler-aspnetcore-linux/issue-enable-profiler.png)
+### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>Die Schaltfläche „Jetzt Profil erstellen“ funktioniert nicht für den Linux-Profiler
+Die Linux-Version des App Insights-Profilers unterstützt die bedarfsgesteuerte Profilerstellung mithilfe der Schaltfläche „Jetzt Profil erstellen“ noch nicht.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

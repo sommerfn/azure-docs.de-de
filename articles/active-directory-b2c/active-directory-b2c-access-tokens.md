@@ -1,137 +1,140 @@
 ---
-title: Anfordern von Zugriffstoken in Azure Active Directory B2C | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, wie eine Clientanwendung eingerichtet und ein Zugriffstoken abgerufen wird.
+title: Anfordern eines Zugriffstokens – Azure Active Directory B2C | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie ein Zugriffstoken von Azure Active Directory B2C anfordern.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/09/2017
-ms.author: davidmu
+ms.date: 04/16/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0ea781188e40d6389da8188379d792c922d3bdca
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 042c4fa18ce583f714bbe71f522b1f8f1af3dfdb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768341"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066121"
 ---
-# <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Anfordern von Zugriffstoken
+# <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Anfordern eines Zugriffstokens in Azure Active Directory B2C
 
-Ein Zugriffstoken (in den Antworten von Azure AD B2C als **access\_token** bezeichnet) ist eine Form von Sicherheitstoken, mit dem ein Client auf Ressourcen zugreifen kann, die mit einem  [Autorisierungsserver](active-directory-b2c-reference-protocols.md) wie etwa einer Web-API geschützt sind. Zugriffstokens werden als [JWTs](active-directory-b2c-reference-tokens.md) dargestellt und enthalten Informationen zu dem gewünschten Ressourcenserver und den für den Server erteilten Berechtigungen. Beim Aufrufen des Ressourcenservers muss das Zugriffstoken in der HTTP-Anforderung vorhanden sein.
+Ein *Zugriffstoken* enthält Ansprüche, mit denen Sie in Azure Active Directory B2C (Azure AD B2C) die gewährten Berechtigungen für Ihre APIs identifizieren können. Beim Aufrufen eines Ressourcenservers muss ein Zugriffstoken in der HTTP-Anforderung vorhanden sein. Zugriffstoken werden in den Antworten von Azure AD B2C als **access_token** angegeben.
 
-In diesem Artikel wird das Konfigurieren einer Clientanwendung und Web-API zum Abrufen eines **access\_token** erläutert.
-
-> [!NOTE]
-> **Web-API-Ketten (im Auftrag von) werden von Azure AD B2C nicht unterstützt.**
->
-> Viele Architekturen umfassen eine Web-API, die eine andere Downstream-Web-API aufrufen muss, wobei beide durch Azure AD B2C gesichert sind. Dieses Szenario kommt häufig bei nativen Clients mit Web-API-Back-End vor, das wiederum einen Microsoft Online-Dienst aufruft, z.B. die Azure AD Graph-API.
->
-> Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anmeldeinformationen über den OAuth 2.0-JWT-Bearer unterstützt werden, auch bekannt als „Im Auftrag von“-Ablauf. Der „Im Auftrag von“-Ablauf ist in Azure AD B2C derzeit noch nicht implementiert.
-
-## <a name="register-a-web-api-and-publish-permissions"></a>Registrieren einer Web-API und Veröffentlichen von Berechtigungen
-
-Vor der Anforderung eines Zugriffstokens müssen Sie zuerst eine Web-API registrieren und Berechtigungen veröffentlichen (Bereiche), die für die Clientanwendung erteilt werden können.
-
-### <a name="register-a-web-api"></a>Registrieren einer Web-API
-
-1. Klicken Sie im Menü „Azure AD B2C-Funktionen“ im Azure-Portal auf **Anwendungen**.
-2. Klicken Sie oben im Menü auf **+Hinzufügen**.
-3. Geben Sie einen **Namen** für die Anwendung ein, der die Funktion der Anwendung für Kunden beschreibt. Sie könnten z.B. „Contoso API“ eingeben.
-4. Stellen Sie den Schalter **Web-App/Web-API einschließen** auf **Ja**.
-5. Geben Sie einen beliebigen Wert für die **Antwort-URLs** ein. Geben Sie z. B. Folgendes ein: `https://localhost:44316/`. Der Wert spielt keine Rolle, da eine API das Token nicht direkt von Azure AD B2C empfangen sollte.
-6. Geben Sie einen **App-ID-URI** ein. Dies ist der Bezeichner, der für Ihre Web-API verwendet wird. Geben Sie z.B. „notes“ in das Feld ein. Der **App-ID-URI** wäre dann `https://{tenantName}.onmicrosoft.com/notes`.
-7. Klicken Sie auf **Erstellen** , um Ihre Anwendung zu registrieren.
-8. Klicken Sie auf die soeben erstellte Anwendung, und notieren Sie sich die global eindeutige **Anwendungsclient-ID** zur späteren Verwendung in Ihrem Code.
-
-### <a name="publishing-permissions"></a>Veröffentlichungsberechtigungen
-
-Zu Berechtigungen analoge Bereiche sind erforderlich, wenn Ihre App eine API aufruft. Einige Beispiele für Bereiche sind „read“ oder „write“. Angenommen, Sie möchten, dass Ihre Web oder native App aus einer API „liest“. Ihre App würde Azure AD B2C aufrufen und ein Zugriffstoken anfordern, das Zugriff auf den Bereich „read“ gewährt. Damit Azure AD B2C ein solches Zugriffstoken ausgeben kann, muss der App die Berechtigung „read“ aus der bestimmten API gewährt werden. Zu diesem Zweck muss Ihre API zuerst den Bereich „read“ veröffentlichen.
-
-1. Öffnen Sie im Menü **Anwendungen** von Azure AD B2C die Web-API-Anwendung („Contoso-API“).
-2. Klicken Sie auf **Published scopes** (Veröffentlichte Bereiche). Hier definieren Sie die Berechtigungen (Bereiche), die anderen Anwendungen gewährt werden können.
-3. Fügen Sie **Bereichswerte** (z.B. „read“) nach Bedarf hinzu. Standardmäßig wird der Bereich „user_impersonation“ definiert. Wenn Sie möchten, können Sie dies ignorieren. Geben Sie eine Beschreibung des Bereichs in die Spalte **Bereichsname** ein.
-4. Klicken Sie auf **Speichern**.
-
-> [!IMPORTANT]
-> Der **Bereichsname** ist die Beschreibung für den **Bereichswert**. Wenn Sie den Bereich verwenden, achten Sie darauf, den **Bereichswert** zu verwenden.
-
-## <a name="grant-a-native-or-web-app-permissions-to-a-web-api"></a>Erteilen von nativen oder Web-App-Berechtigungen für eine Web-API
-
-Sobald eine API konfiguriert ist, um Bereiche zu veröffentlichen, müssen der Clientanwendung Berechtigungen für diese Bereiche über das Azure Portal erteilt werden.
-
-1. Navigieren Sie zum Menü **Anwendungen** im Menü „Azure AD B2C-Funktionen“.
-2. Sofern nicht bereits geschehen, registrieren Sie eine Clientanwendung ([Web-App](active-directory-b2c-app-registration.md) oder [Nativer Client](active-directory-b2c-app-registration.md)). Wenn Sie dieses Handbuch als Ausgangspunkt nutzen, müssen Sie eine Clientanwendung registrieren.
-3. Klicken Sie auf **API-Zugriff**.
-4. Klicken Sie auf **Hinzufügen**.
-5. Wählen Sie Ihre Web-API und die Bereiche (Berechtigungen), die Sie erteilen möchten.
-6. Klicken Sie auf **OK**.
+In diesem Artikel wird erläutert, wie Sie ein Zugriffstoken für eine Webanwendung und eine Web-API anfordern. Weitere Informationen zu Token in Azure AD B2C finden Sie in der [Übersicht über Token in Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
 
 > [!NOTE]
-> Azure AD B2C bittet die Benutzer Ihrer Clientanwendung nicht um deren Zustimmung. Stattdessen erfolgt die Zustimmung abhängig von den Berechtigungen, die zwischen den oben beschriebenen Anwendungen konfiguriert sind, ausschließlich über den Administrator. Wenn eine Berechtigung für eine Anwendung widerrufen wurde, wird diese Berechtigung allen Benutzern, die zuvor diese Berechtigung beziehen konnten, verwehrt.
+> **Web-API-Ketten (im Auftrag von) werden von Azure AD B2C nicht unterstützt.** Viele Architekturen umfassen eine Web-API, mit der eine andere Downstream-Web-API aufgerufen werden muss, wobei beide durch Azure AD B2C gesichert sind. Dieses Szenario kommt häufig bei Clients mit einem Web-API-Back-End vor, über das wiederum ein anderer Dienst aufgerufen wird. Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anmeldeinformationen über den OAuth 2.0-JWT-Bearer unterstützt werden, auch bekannt als „Im Auftrag von“-Ablauf. Der „Im Auftrag von“-Ablauf ist in Azure AD B2C derzeit noch nicht implementiert.
 
-## <a name="requesting-a-token"></a>Anfordern eines Tokens
+## <a name="prerequisites"></a>Voraussetzungen
 
-Bei der Anforderung eines Zugriffstokens muss die Clientanwendung die im **scope**-Parameter der Anforderung gewünschten Berechtigungen angeben. Um z.B. den **Bereichswert** „read“ für die API anzugeben, die den **App-ID-URI** von `https://contoso.onmicrosoft.com/notes` hat, wäre der Bereich `https://contoso.onmicrosoft.com/notes/read`. Nachfolgend wird ein Beispiel für eine Autorisierungscodeanforderung an den Endpunkt `/authorize` vorgestellt.
+- [Erstellen Sie einen Benutzerflow](tutorial-create-user-flows.md), damit sich Benutzer bei Ihrer Anwendung registrieren und anmelden können.
+- Wenn dies noch nicht erfolgt ist, [fügen Sie Ihrem Azure Active Directory B2C-Mandanten eine Web-API-Anwendung hinzu](add-web-application.md).
 
-> [!NOTE]
-> Derzeit werden benutzerdefinierte Domänen und Zugriffstoken nicht unterstützt. Sie müssen Ihre Domäne tenantName.onmicrosoft.com in der Anforderungs-URL verwenden.
+## <a name="scopes"></a>Bereiche
+
+Bereiche ermöglichen die Verwaltung von Berechtigungen für geschützte Ressourcen. Bei der Anforderung eines Zugriffstokens müssen in der Clientanwendung im **scope**-Parameter der Anforderung die gewünschten Berechtigungen angegeben werden. Um z. B. den **Bereichswert** `read` für die API mit dem **App-ID-URI** `https://contoso.onmicrosoft.com/api` anzugeben, lautet der Bereich `https://contoso.onmicrosoft.com/api/read`.
+
+Bereiche werden von der Web-API verwendet, um eine bereichsbasierte Zugriffssteuerung zu implementieren. Benutzer der Web-API können beispielsweise über Lese- und Schreibzugriff oder nur über Lesezugriff verfügen. Um mehrere Berechtigungen in derselben Anforderung zu beziehen, können Sie mehrere durch Leerzeichen getrennte Einträge in einem einzelnen **scope**-Parameter der Anforderung hinzufügen.
+
+Im folgenden Beispiel sind decodierte Bereiche in einer URL dargestellt:
+
+```
+scope=https://contoso.onmicrosoft.com/api/read openid offline_access
+```
+
+Im folgenden Beispiel sind codierte Bereiche in einer URL dargestellt:
+
+```
+scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fapi%2Fread%20openid%20offline_access
+```
+
+Wenn Sie mehr Bereiche als die für die Clientanwendung erteilten Berechtigungen anfordern, wird der Aufruf erfolgreich ausgeführt, wenn mindestens eine Berechtigung erteilt wird. Der **scp**-Anspruch im resultierenden Zugriffstoken wird nur mit den Berechtigungen gefüllt, die erfolgreich erteilt wurden. Mit dem OpenID Connect-Standard werden mehrere spezielle Bereichswerte angegeben. Die folgenden Bereiche stellen die Berechtigung für den Zugriff auf das Profil des Benutzers dar:
+
+- **openid:** Hierdurch wird ein ID-Token angefordert.
+- **offline_access:** Hierdurch wird ein Aktualisierungstoken (mithilfe von [Autorisierungscodeabläufen](active-directory-b2c-reference-oauth-code.md)) angefordert.
+
+Wenn der Parameter **response_type** in einer `/authorize`-Anforderung `token` enthält, muss der Parameter **scope** mindestens einen Ressourcenbereich (außer `openid` und `offline_access`) enthalten, für den Berechtigungen erteilt werden. Andernfalls wird die `/authorize`-Anforderung abgelehnt.
+
+## <a name="request-a-token"></a>Anfordern eines Tokens
+
+Zur Anforderung eines Zugriffstokens benötigen Sie einen Autorisierungscode. Nachfolgend ist ein Beispiel für eine Anforderung an den Endpunkt `/authorize` für einen Autorisierungscode aufgeführt. Benutzerdefinierte Domänen werden zur Verwendung mit Zugriffstoken nicht unterstützt. Verwenden Sie die Domäne „Mandantenname.onmicrosoft.com“ in der Anforderungs-URL.
 
 Ersetzen Sie im folgenden Beispiel diese Werte:
 
 - `<tenant-name>`: Name des Azure AD B2C-Mandanten.
 - `<policy-name>`: Name der benutzerdefinierten Richtlinie oder des Benutzerflows.
-- `<application-ID>`: Anwendungs-ID der Clientanwendung, die Sie registriert haben.
+- `<application-ID>`: Anwendungs-ID der Webanwendung, die Sie zur Unterstützung des Benutzerflows registriert haben.
 - `<redirect-uri>`: Der **Umleitungs-URI**, den Sie bei der Registrierung der Clientanwendung eingegeben haben.
 
-```
-https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?client_id=<application-ID>&nonce=anyRandomValue&redirect_uri=<redirect_uri>&scope=https%3A%2F%2F<tenant-name>.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
-```
-
-Um mehrere Berechtigungen in derselben Anforderung zu beziehen, können Sie mehrere durch Leerzeichen getrennte Einträge in einem einzelnen **scope**-Parameter hinzufügen. Beispiel: 
-
-URL dekodiert:
-
-```
-scope=https://contoso.onmicrosoft.com/notes/read openid offline_access
+```HTTP
+GET https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?
+client_id=<application-ID>
+&nonce=anyRandomValue
+&redirect_uri=https://jwt.ms
+&scope=https://tenant-name>.onmicrosoft.com/api/read
+&response_type=code
 ```
 
-URL codiert:
+Die Antwort mit dem Autorisierungscode sollte dem folgenden Beispiel ähneln:
 
 ```
-scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread%20openid%20offline_access
+https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 ```
 
-Möglicherweise müssen Sie mehr Bereiche (Berechtigungen) für eine Ressource anfordern, als für Ihre Clientanwendung erteilt wurden. In diesem Fall wird der Aufruf erfolgreich ausgeführt, wenn mindestens eine Berechtigung erteilt wird. Der „scp“-Anspruch des resultierenden **access\_token** wird nur bei den Berechtigungen aufgefüllt, die erfolgreich erteilt wurden.
+Nach dem Empfang des Autorisierungscodes können Sie über diesen Code ein Zugriffstoken anfordern:
 
-> [!NOTE] 
-> Die Anforderung von Berechtigungen für zwei verschiedene Webressourcen in derselben Anforderung wird nicht unterstützt. Derartige Anforderungen schlagen fehl.
+```HTTP
+POST <tenant-name>.onmicrosoft.com/oauth2/v2.0/token?p=<policy-name> HTTP/1.1
+Host: <tenant-name>.b2clogin.com
+Content-Type: application/x-www-form-urlencoded
 
-### <a name="special-cases"></a>Spezialfälle
+grant_type=authorization_code
+&client_id=<application-ID>
+&scope=https://<tenant-name>.onmicrosoft.com/api/read
+&code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
+&redirect_uri=https://jwt.ms
+&client_secret=2hMG2-_:y12n10vwH...
+```
 
-Der OpenID Connect-Standard gibt mehrere spezielle „scope“-Werte an. Die folgenden speziellen Bereiche stellen die Berechtigung für den Zugriff auf das Profil des Benutzers dar:
+Die Antwort sollte der folgenden ähneln:
 
-* **openid**: Hierdurch wird ein ID-Token angefordert.
-* **offline\_access**: Hierdurch wird ein Aktualisierungstoken (mithilfe von [Autorisierungscodeabläufen](active-directory-b2c-reference-oauth-code.md)) angefordert.
+```JSON
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrN...",
+    "token_type": "Bearer",
+    "not_before": 1549647431,
+    "expires_in": 3600,
+    "expires_on": 1549651031,
+    "resource": "f2a76e08-93f2-4350-833c-965c02483b11",
+    "profile_info": "eyJ2ZXIiOiIxLjAiLCJ0aWQiOiJjNjRhNGY3ZC0zMDkxLTRjNzMtYTcyMi1hM2YwNjk0Z..."
+}
+```
 
-Wenn der `response_type`-Parameter in einer `/authorize`-Anforderung `token` enthält, muss der `scope` -Parameter mindestens einen Ressourcenbereich (außer `openid` und `offline_access`) enthalten, für den Berechtigungen gewährt werden. Andernfalls wird die `/authorize` Anforderung mit einem Fehler beendet.
+Bei Verwendung von https://jwt.ms zum Überprüfen des zurückgegebenen Zugriffstokens sollte etwa die folgende Ausgabe angezeigt werden:
 
-## <a name="the-returned-token"></a>Das zurückgegebene Token
-
-In einem erfolgreich angewendeten **access\_token** (entweder vom Endpunkt `/authorize` oder `/token`) sind folgende Ansprüche vorhanden:
-
-| NAME | Anspruch | BESCHREIBUNG |
-| --- | --- | --- |
-|Zielgruppe |`aud` |Die **Anwendungs-ID** der jeweiligen Ressource, auf die das Token Zugriff gewährt. |
-|Bereich |`scp` |Die Berechtigungen, die der Ressource erteilt werden. Mehrere erteilte Berechtigungen werden durch ein Leerzeichen voneinander getrennt. |
-|Autorisierte Partei |`azp` |Die **Anwendungs-ID** der Clientanwendung, die die Anforderung initiiert hat. |
-
-Wenn Ihre API das **access\_token** erhält, muss diese das [Token überprüfen](active-directory-b2c-reference-tokens.md), um die Authentizität des Tokens und die Richtigkeit der Ansprüche nachzuweisen.
-
-Wir sind stets offen für Feedback und Vorschläge. Wenn Sie Probleme mit diesem Thema haben, posten Sie mit demTag [„azure-ad-b2c“](https://stackoverflow.com/questions/tagged/azure-ad-b2c) einen Beitrag auf Stack Overflow. Anforderungen neuer Features geben Sie bitte unter [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) ein.
+```JSON
+{
+  "typ": "JWT",
+  "alg": "RS256",
+  "kid": "X5eXk4xyojNFum1kl2Ytv8dl..."
+}.{
+  "iss": "https://contoso0926tenant.b2clogin.com/c64a4f7d-3091-4c73-a7.../v2.0/",
+  "exp": 1549651031,
+  "nbf": 1549647431,
+  "aud": "f2a76e08-93f2-4350-833c-965...",
+  "oid": "1558f87f-452b-4757-bcd1-883...",
+  "sub": "1558f87f-452b-4757-bcd1-883...",
+  "name": "David",
+  "tfp": "B2C_1_signupsignin1",
+  "nonce": "anyRandomValue",
+  "scp": "read",
+  "azp": "38307aee-303c-4fff-8087-d8d2...",
+  "ver": "1.0",
+  "iat": 1549647431
+}.[Signature]
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erstellen einer Web-API mit [.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)
-* Erstellen einer Web-API mit [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
+- Erfahren Sie mehr zum [Konfigurieren von Token in Azure AD B2C](configure-tokens.md).

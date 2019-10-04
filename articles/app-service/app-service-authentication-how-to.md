@@ -4,22 +4,21 @@ description: Veranschaulicht die Anpassung der Authentifizierung und Autorisieru
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 97764db40807214e756f119ca95fd640164f0cf2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 105728bdab9c70bb807f38e4a09d5be863694c16
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877302"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231976"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service
 
@@ -43,7 +42,7 @@ Zunächst konfigurieren Sie im Azure-Portal auf der Seite **Authentifizierung/Au
 
 Wählen Sie für **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** die Option **Anonyme Anforderungen zulassen (keine Aktion)** aus.
 
-Fügen Sie auf der Anmeldeseite, der Navigationsleiste oder an einer anderen Stelle in Ihrer App einen Anmeldelink für alle Anbieter hinzu, die Sie aktiviert haben (`/.auth/login/<provider>`). Beispiel: 
+Fügen Sie auf der Anmeldeseite, der Navigationsleiste oder an einer anderen Stelle in Ihrer App einen Anmeldelink für alle Anbieter hinzu, die Sie aktiviert haben (`/.auth/login/<provider>`). Beispiel:
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -65,7 +64,7 @@ Um den Benutzer nach der Anmeldung auf eine benutzerdefinierte URL umzuleiten, v
 
 In einer clientgeführten Anmeldung meldet die Anwendung den Benutzer manuell beim Anbieter an und sendet dann das Authentifizierungstoken zur Überprüfung an App Service. (Informationen hierzu finden Sie unter [Authentifizierungsflow](overview-authentication-authorization.md#authentication-flow).) Diese Überprüfung allein gewährt Ihnen noch keinen Zugriff auf die gewünschten App-Ressourcen. Bei erfolgreicher Überprüfung erhalten Sie jedoch ein Sitzungstoken, das Sie für den Zugriff auf App-Ressourcen verwenden können. 
 
-Um das Anbietertoken zu überprüfen, muss die App Service-App zunächst mit dem gewünschten Anbieter konfiguriert werden. Zur Laufzeit, nachdem Sie das Authentifizierungstoken von Ihrem Anbieter abgerufen haben, posten Sie das Token zur Überprüfung unter `/.auth/login/<provider>`. Beispiel:  
+Um das Anbietertoken zu überprüfen, muss die App Service-App zunächst mit dem gewünschten Anbieter konfiguriert werden. Zur Laufzeit, nachdem Sie das Authentifizierungstoken von Ihrem Anbieter abgerufen haben, posten Sie das Token zur Überprüfung unter `/.auth/login/<provider>`. Beispiel: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -96,7 +95,7 @@ Wenn das Anbietertoken erfolgreich überprüft wird, gibt die API im Antworttext
 }
 ```
 
-Sobald Sie dieses Sitzungstoken erhalten haben, können Sie auf geschützte App-Ressourcen zugreifen, indem Sie Ihren HTTP-Anforderungen den Header `X-ZUMO-AUTH` hinzufügen. Beispiel:  
+Sobald Sie dieses Sitzungstoken erhalten haben, können Sie auf geschützte App-Ressourcen zugreifen, indem Sie Ihren HTTP-Anforderungen den Header `X-ZUMO-AUTH` hinzufügen. Beispiel: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -117,7 +116,7 @@ Hier ist ein einfacher Abmeldungslink auf einer Webseite:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Standardmäßig wird bei einer erfolgreichen Abmeldung der Client an die URL `/.auth/logout/done` weitergeleitet. Sie können die Weiterleitungsseite nach der Abmeldung ändern, indem Sie den Abfrageparameter `post_logout_redirect_uri` hinzufügen. Beispiel: 
+Standardmäßig wird bei einer erfolgreichen Abmeldung der Client an die URL `/.auth/logout/done` weitergeleitet. Sie können die Weiterleitungsseite nach der Abmeldung ändern, indem Sie den Abfrageparameter `post_logout_redirect_uri` hinzufügen. Beispiel:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -131,7 +130,7 @@ Wenn Sie vollqualifizierte URLs verwenden, muss die URL in derselben Domäne geh
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-Sie müssen den nachstehenden Befehl in der [Azure Cloud Shell](../cloud-shell/quickstart.md) ausführen:
+Führen Sie den nachstehenden Befehl in der [Azure Cloud Shell](../cloud-shell/quickstart.md) aus:
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -186,7 +185,7 @@ Wenn das Zugriffstoken Ihres Anbieters (nicht das [Sitzungstoken](#extend-sessio
 - **Microsoft-Konto**: Wählen Sie beim [Konfigurieren der Authentifizierungseinstellungen für das Microsoft-Konto](configure-authentication-provider-microsoft.md) den Bereich `wl.offline_access` aus.
 - **Azure Active Directory:** Führen Sie in [https://resources.azure.com](https://resources.azure.com) folgende Schritte aus:
     1. Wählen Sie am oberen Seitenrand die Option **Lesen/Schreiben** aus.
-    2. Navigieren Sie im linken Browser zu **subscriptions** > **_\<Name des\_Abonnements_** > **resourceGroups** > _**\<Name\_der\_Ressourcengruppe>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<App\_Name>**_ > **config** > **authsettings**. 
+    2. Navigieren Sie im linken Browser zu **subscriptions** >  **_\<Name des\_Abonnements_**  > **resourceGroups** >  **_\<Name\_der\_Ressourcengruppe>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\<App\_Name>_**  > **config** > **authsettings**. 
     3. Klicken Sie auf **Edit**.
     4. Ändern Sie die folgende Eigenschaft. Ersetzen Sie _\<app\_id>_ mit der ID der Azure Active Directory-Anwendung des Diensts, auf den Sie zugreifen möchten.
 
@@ -231,15 +230,63 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Beschränken der Domäne von Anmeldekonten
 
-Die Anmeldung über mehrere Domänen ist sowohl bei Microsoft-Konten als auch bei Azure Active Directory möglich. Microsoft-Konten lassen beispielsweise _outlook.com_-, _live.com_- und _hotmail.com_-Konten zu. Azure Active Directory lässt eine beliebige Anzahl von benutzerdefinierten Domänen für die Anmeldekonten zu. Dieses Verhalten ist für eine interne App möglicherweise nicht wünschenswert, wenn nicht jeder Benutzer mit einem _outlook.com_-Konto über Zugriff verfügen soll. Gehen Sie folgendermaßen vor, um den Domänennamen der Anmeldekonten zu beschränken.
+Die Anmeldung über mehrere Domänen ist sowohl bei Microsoft-Konten als auch bei Azure Active Directory möglich. Microsoft-Konten lassen beispielsweise _outlook.com_-, _live.com_- und _hotmail.com_-Konten zu. Azure AD lässt eine beliebige Anzahl von benutzerdefinierten Domänen für die Anmeldekonten zu. Möglicherweise möchten Sie aber, dass Ihre Benutzer möglichst schnell direkt zu Ihrer eigenen Azure AD-Anmeldeseite (etwa `contoso.com`) gelangen. Gehen Sie folgendermaßen vor, um den Domänennamen der Anmeldekonten vorzuschlagen.
 
-Navigieren Sie in [https://resources.azure.com](https://resources.azure.com) zu **subscriptions** > **_\<Name des\_Abonnements_** > **resourceGroups** > _**\<Name\_der\_Ressourcengruppe>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<App\_Name>**_ > **config** > **authsettings**. 
+Navigieren Sie in [https://resources.azure.com](https://resources.azure.com) zu **subscriptions** >  **_\< Name des\_ Abonnements_**  > **resourceGroups** >  **_\< Name\_ der\_ Ressourcengruppe>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\< App\_ Name>_**  > **config** > **authsettings**. 
 
 Klicken Sie auf **Bearbeiten**, ändern Sie die folgende Eigenschaft, und klicken Sie dann auf **Put**. Achten Sie darauf, _\<Domänen\_Name>_ durch die gewünschte Domäne zu ersetzen.
 
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
+
+Diese Einstellung fügt den `domain_hint`-Abfragezeichenfolgen-Parameter an die Umleitungs-URL der Anmeldung an. 
+
+> [!IMPORTANT]
+> Der Client kann den `domain_hint`-Parameter nach dem Empfang der Umleitungs-URL entfernen und sich dann mit einer anderen Domäne anmelden. Diese Funktion ist zwar komfortabel, unter Sicherheitsaspekten aber bedenklich.
+>
+
+## <a name="authorize-or-deny-users"></a>Autorisieren oder Ablehnen von Benutzern
+
+Während App Service den einfachsten Autorisierungsfall erledigt (also nicht authentifizierte Anforderungen ablehnt), erfordert Ihre App möglicherweise ein differenzierteres Autorisierungsverhalten, beispielsweise Einschränken des Zugriffs, sodass nur eine bestimmte Benutzergruppe Zugriff hat. Für bestimmte Fälle müssen Sie benutzerdefinierten Anwendungscode schreiben, um den Zugriff für einen angemeldeten Benutzer zuzulassen oder abzulehnen. In anderen Fällen kann App Service oder Ihr Identitätsanbieter möglicherweise unterstützen, ohne dass Codeänderungen erforderlich sind.
+
+- [Serverebene](#server-level-windows-apps-only)
+- [Identitätsanbieterebene](#identity-provider-level)
+- [Anwendungsebene](#application-level)
+
+### <a name="server-level-windows-apps-only"></a>Serverebene (nur Windows-Apps)
+
+Für jede Windows-App können Sie das Autorisierungsverhalten des IIS-Webservers definieren, indem Sie die Datei *Web.config* bearbeiten. Linux-Apps verwenden IIS nicht und können nicht über *Web.config* konfiguriert werden.
+
+1. Navigieren Sie zu `https://<app-name>.scm.azurewebsites.net/DebugConsole`.
+
+1. Navigieren Sie im Browser-Explorer Ihrer App Service-Dateien zu *site/wwwroot*. Wenn keine *Web.config*-Datei vorhanden ist, erstellen Sie diese, indem Sie **+**  > **Neue Datei** auswählen. 
+
+1. Wählen Sie das Freihandwerkzeug für *Web.config.* aus, um die Datei zu bearbeiten. Fügen Sie den folgenden Konfigurationscode hinzu, und klicken Sie auf **Speichern**. Wenn *Web.config* bereits vorhanden ist, fügen Sie einfach das `<authorization>`-Element mit allen zugehörigen Werten hinzu. Fügen Sie die Konten, die Sie zulassen möchten, im `<allow>`-Element hinzu.
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <configuration>
+       <system.web>
+          <authorization>
+            <allow users="user1@contoso.com,user2@contoso.com"/>
+            <deny users="*"/>
+          </authorization>
+       </system.web>
+    </configuration>
+    ```
+
+### <a name="identity-provider-level"></a>Identitätsanbieterebene
+
+Der Identitätsanbieter kann eine bestimmte fertige Autorisierung bereitstellen. Beispiel:
+
+- Für [Azure App Service](configure-authentication-provider-aad.md) können Sie das [Verwalten von Zugriff auf Unternehmensebene](../active-directory/manage-apps/what-is-access-management.md) direkt in Azure AD vornehmen. Anweisungen hierzu finden Sie unter [Aufheben des Zugriffs eines Benutzers auf eine Anwendung](../active-directory/manage-apps/methods-for-removing-user-access.md).
+- Für [Google](configure-authentication-provider-google.md) können Google-API-Projekte, die zu einer [Organisation](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) gehören, so konfiguriert werden, dass sie Zugriff nur für Benutzer aus Ihrer Organisation zulassen (weitere Informationen finden Sie auf der [Unterstützungsseite **Setting up OAuth 2.0** von Google](https://support.google.com/cloud/answer/6158849?hl=en)).
+
+### <a name="application-level"></a>Anwendungsschicht
+
+Wenn keine der anderen Ebenen die erforderliche Autorisierung bereitstellt, oder wenn Ihre Plattform oder Ihr Identitätsanbieter nicht unterstützt wird, müssen Sie benutzerdefinierten Code schreiben, um Benutzer anhand der [Benutzeransprüche](#access-user-claims) zu autorisieren.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]

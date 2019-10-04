@@ -3,19 +3,20 @@ title: Entwurfstutorial für Projekt Akustik in Unreal
 titlesuffix: Azure Cognitive Services
 description: Dieses Tutorial beschreibt den Entwurfsworkflow für Projekt Akustik in Unreal und Wwise.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
-ms.author: kegodin
-ms.openlocfilehash: 38276757d0472582c3cf5035e1f52d34158a7e38
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: noelc
+ROBOTS: NOINDEX
+ms.openlocfilehash: 817a11171c5b4b4ef205e5fbb04f9b6d6d85b248
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784675"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854248"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Entwurfstutorial für Projekt Akustik in Unreal/Wwise
 Dieses Tutorial beschreibt die Entwurfseinrichtung und den -workflow für Projekt Akustik in Unreal und Wwise.
@@ -122,6 +123,11 @@ Wenn Sie das Streamen akustischer Daten selbst verwalten möchten, anstatt autom
 Die Kachelgröße muss bereits vor dem Aufrufen von „Force Load Tile“ (Laden der Kachel erzwingen) festgelegt werden. Beispielsweise können Sie auf diese Weise eine ACE-Datei laden, die Kachelgröße festlegen und den Stream in einer Region beginnen:
 
 ![Screenshot der Optionen für Streamingeinrichtung in Unreal](media/streaming-setup.png)
+
+Die in diesem Beispiel verwendete Azure Blueprint-Funktion „Load Acoustics Data“ hat die folgenden Parameter:
+
+* **Target** (Ziel): Den Akteur AcousticsSpace.
+* **Neues Baking:** Das zu ladende Objekt mit den Akustikdaten. Wenn Sie dieses Feld leer lassen bzw. auf NULL festlegen, wird der aktuelle Bakingvorgang entladen, ohne einen neuen zu laden.
 
 ### <a name="optionally-query-for-surface-proximity"></a>Optionales Abfragen der Nähe zu einer Fläche
 Wenn Sie sehen möchten, wie nah sich Flächen in einer bestimmten Richtung um den Zuhörer befinden, können Sie die Funktion „Query Distance“ (Entfernung abfragen) verwenden. Diese Funktion kann zum Steuern direktional verzögerter Reflexionen oder für andere Spiellogik, die von der Nähe zu Flächen abhängt, nützlich sein. Die Abfrage ist weniger aufwendig als das Aussenden von Strahlen, da die Ergebnisse aus der Akustiksuchtabelle abgerufen werden.

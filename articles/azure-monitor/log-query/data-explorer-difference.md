@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: 1185f3f96fd39f168d138d7dbf66e7780884b1fa
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 9892b8884d901033a80fae4168f25da97edb5a68
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266729"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990185"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor – Unterschiede in der Protokollabfragesprache
 
@@ -52,6 +52,7 @@ In den folgenden Abschnitten werden Elemente der Abfragesprache Kusto beschriebe
 
 ### <a name="plugins-not-supported-in-azure-monitor"></a>In Azure Monitor nicht unterstützte Plug-Ins
 
+* [Python-Plug-In](/azure/kusto/query/pythonplugin)
 * [Plug-In „sql_request“](/azure/kusto/query/sqlrequestplugin)
 
 

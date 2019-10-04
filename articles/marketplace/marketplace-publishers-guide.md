@@ -1,25 +1,18 @@
 ---
-title: Veröffentlichungsleitfaden für Azure Marketplace und AppSource | Azure
+title: Veröffentlichungsleitfaden für Azure Marketplace und AppSource
 description: Übersicht über die Funktion von Azure Marketplace und Microsoft AppSource für App- und den Dienstherausgeber
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
-manager: nunoc
-editor: ''
-ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5c53545a6a5421bd20622fd132bb5c0b2c0940d9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731139"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962620"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Veröffentlichungsleitfaden für Azure Marketplace und AppSource
 
@@ -59,7 +52,7 @@ Nutzen Sie Upselling und Cross-Selling für Ihre Lösungen, indem Sie auf Kunden
 
 Erhalten Sie Einblicke in die Performance Ihrer Auflistungen durch Ihnen über den Marketplace zur Verfügung gestellte Einblicke und Analysen. Erhalten Sie weitere Informationen zu Kampagnenleistung, Bestellungen und Auszahlungen und darüber, wie Sie das Beste aus Ihren Kampagnenaktivitäten für Ihre Lösung herausholen.
 
-### <a name="marketplace-go-to-market-benefits"></a>Vorteile bei der Markteinführung im Marketplace 
+### <a name="commercial-marketplace-benefits"></a>Vorteile des kommerziellen Marketplace 
 
 Neue Auflistungen im Marketplace haben Anspruch auf ein breit gefächertes Angebot an kostenlosen Vorteilen, um Partner dabei zu unterstützen, ihr Geschäft im Marketplace auszubauen. Diese Vorteile lassen sich in folgende Kategorien einteilen: 
 
@@ -69,9 +62,9 @@ Neue Auflistungen im Marketplace haben Anspruch auf ein breit gefächertes Angeb
 
 *   Co-Selling: Beginnen oder beschleunigen Sie Ihren Vertriebsprozess mit Microsoft über den Marketplace. Zugriff auf Programme und Support zur Förderung des gemeinsamen Vertriebs mit Microsoft-Teams.
 
-Nachdem Sie Ihre Lösung an den Marketplace [übermittelt](https://azuremarketplace.microsoft.com/sell/signup) haben, kontaktiert Sie unser Onboardingteam, um Sie bei der Veröffentlichung zu unterstützen.
+Nachdem Sie Ihre Lösung an den Marketplace [übermittelt](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) haben, kontaktiert Sie unser Onboardingteam, um Sie bei der Veröffentlichung zu unterstützen.  Weitere Informationen finden Sie unter [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
 
-Weitere Informationen zu den Microsoft-Markteinführungsvorteilen und zu Möglichkeiten, das Wachstum Ihres Geschäfts im Marketplace zu steigern, finden Sie auf unter [Microsoft Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
+Erfahren Sie mehr über Ihre [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

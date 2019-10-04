@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 78f608aedd53aa1071eaf88864f5a63f8f9e6072
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fb68b2f78e48dabf5b1377b7c811840a85604f53
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791010"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802429"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Bereitstellung des Blaupausenbeispiels „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
 
@@ -37,7 +37,7 @@ Damit dieses Blaupausenbeispiel bereitgestellt werden kann, muss zunächst das B
 
 Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispiels eine neue Blaupause in Ihrer Umgebung erstellen.
 
-1. Wählen Sie **Alle Dienste** aus, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Wählen Sie auf der Seite **Richtlinie** die Option **Blaupausen** aus.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
 1. Klicken Sie links auf der Seite **Erste Schritte** unter _Blaupause erstellen_ auf die Schaltfläche **Erstellen**.
 
@@ -56,7 +56,7 @@ Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispie
 
 Ihre Kopie des Blaupausenbeispiels wurde jetzt in Ihrer Umgebung erstellt. Sie wird im Modus **Entwurf** erstellt und muss **veröffentlicht** werden, bevor sie zugewiesen und bereitgestellt werden kann. Die Kopie des Blaupausenbeispiels kann an die Umgebung und an Ihre Anforderungen angepasst werden. Durch diese Änderungen ist sie aber möglicherweise nicht mehr mit der Norm ISO 27001 konform.
 
-1. Wählen Sie **Alle Dienste** aus, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Wählen Sie auf der Seite **Richtlinie** die Option **Blaupausen** aus.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
 1. Wählen Sie links die Seite **Blaupausendefinitionen** aus. Verwenden Sie die Filter, um Ihre Kopie des Blaupausenbeispiels zu suchen, und wählen Sie es aus.
 
@@ -66,7 +66,7 @@ Ihre Kopie des Blaupausenbeispiels wurde jetzt in Ihrer Umgebung erstellt. Sie w
 
 Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde, kann sie einem Abonnement innerhalb der Verwaltungsgruppe, in der sie gespeichert wurde, zugewiesen werden. In diesem Schritt werden Parameter angegeben, damit jede Bereitstellung der Kopie des Blaupausenbeispiels eindeutig ist.
 
-1. Wählen Sie **Alle Dienste** aus, suchen Sie im linken Bereich nach der Option **Richtlinie**, und wählen Sie sie aus. Wählen Sie auf der Seite **Richtlinie** die Option **Blaupausen** aus.
+1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie nach **Blaupausen**, und wählen Sie die Option aus.
 
 1. Wählen Sie links die Seite **Blaupausendefinitionen** aus. Verwenden Sie die Filter, um Ihre Kopie des Blaupausenbeispiels zu suchen, und wählen Sie es aus.
 
@@ -115,35 +115,35 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 
 |Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
-|Log Analytics-Ressourcengruppe|Ressourcengruppe|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-log-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Log Analytics-Ressourcengruppe|Ressourcengruppe|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Log Analytics-Ressourcengruppe|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-log-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Log Analytics-Ressourcengruppe|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Log Analytics-Vorlage|Resource Manager-Vorlage|Dienstebene|Legt den Tarif des Log Analytics-Arbeitsbereichs fest. Der Standardwert ist _PerNode_.|
 |Log Analytics-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
-|Log Analytics-Vorlage|Resource Manager-Vorlage|Standort|Die bei der Erstellung des Log Analytics-Arbeitsbereichs verwendete Region. Der Standardwert ist _USA, Westen 2_.|
-|Netzwerkressourcengruppe|Ressourcengruppe|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-net-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Netzwerkressourcengruppe|Ressourcengruppe|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Log Analytics-Vorlage|Resource Manager-Vorlage|Location|Die bei der Erstellung des Log Analytics-Arbeitsbereichs verwendete Region. Der Standardwert ist _USA, Westen 2_.|
+|Netzwerkressourcengruppe|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-net-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Netzwerkressourcengruppe|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Netzwerksicherheitsgruppen-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Private IP-Adresse von Azure Firewall|Konfiguriert die private IP-Adresse von [Azure Firewall](../../../../firewall/overview.md). Sollte Teil der CIDR-Notation sein, die in _ISO 27001: Gemeinsame Dienste_ im Artefaktparameter **Adresspräfix für Azure Firewall-Subnetz** definiert ist. Der Standardwert ist _10.0.4.4_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Abonnement-ID für gemeinsame Dienste|Wert, der zum Aktivieren des VNET-Peerings zwischen einer Workload und gemeinsamen Diensten verwendet wird.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Adresspräfix für Virtual Network|Die CIDR-Notation für das virtuelle Netzwerk. Der Standardwert ist _10.1.0.0/16_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|Adresspräfix für Standardsubnetz|Die CIDR-Notation für das Standardsubnetz des virtuellen Netzwerks. Der Standardwert ist _10.1.0.0/16_.|
 |Virtual Network- und Routingtabellenvorlage|Resource Manager-Vorlage|ADDS-IP-Adresse|IP-Adresse der ersten ADDS-VM. Dieser Wert wird als benutzerdefinierter VNET-DNS verwendet.|
-|Schlüsseltresor-Ressourcengruppe|Ressourcengruppe|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-kv-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Schlüsseltresor-Ressourcengruppe|Ressourcengruppe|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Schlüsseltresor-Ressourcengruppe|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-kv-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Schlüsseltresor-Ressourcengruppe|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|AAD-Objekt-ID|Der AAD-Objektbezeichner des Kontos, das Zugriff auf die Key Vault-Instanz benötigt. Hat keinen Standardwert und darf nicht leer sein. Diesen Wert finden Sie im Azure-Portal, indem Sie unter _Dienste_ die Option „Benutzer“ suchen und auswählen. Verwenden Sie das Feld _Name_, um den Kontonamen zu filtern und das entsprechende Konto auszuwählen. Wählen Sie auf der Seite _Benutzerprofil_ das Symbol „Klicken Sie zum Kopieren“ neben der _Objekt-ID_ aus.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Key Vault-SKU|Gibt die SKU der erstellten Key Vault-Instanz an. Der Standardwert ist _Premium_.|
 |Key Vault-Vorlage|Resource Manager-Vorlage|Azure SQL Server-Administratorbenutzername|Der Benutzername für den Zugriff auf Azure SQL Server. Muss mit dem Eigenschaftswert in **Vorlage für Azure SQL-Datenbank** übereinstimmen. Der Standardwert ist _sql-admin-user_.|
-|Azure SQL-Datenbank-Ressourcengruppe|Ressourcengruppe|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-azsql-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Azure SQL-Datenbank-Ressourcengruppe|Ressourcengruppe|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Azure SQL-Datenbank-Ressourcengruppe|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-azsql-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Azure SQL-Datenbank-Ressourcengruppe|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorbenutzername|Benutzername für Azure SQL Server. Muss mit dem Eigenschaftswert in **Key Vault-Vorlage** übereinstimmen. Der Standardwert ist _sql-admin-user_.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorkennwort (Key Vault-Ressourcen-ID)|Die Ressourcen-ID der Key Vault-Instanz. Verwenden Sie „/ subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv“, und ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID und `{orgName}` durch den Blaupausenparameter **Name der Organisation**.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Azure SQL Server-Administratorkennwort (Key Vault-Geheimnisname)|Benutzername des SQL Server-Administrators. Muss mit dem Wert in der Eigenschaft **Azure SQL Server-Administratorbenutzername** von **Key Vault-Vorlage** übereinstimmen.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|AAD-Administratorobjekt-ID|AAD-Objekt-ID des Benutzers, der als Active Directory-Administrator zugewiesen wird. Hat keinen Standardwert und darf nicht leer sein. Diesen Wert finden Sie im Azure-Portal, indem Sie unter _Dienste_ die Option „Benutzer“ suchen und auswählen. Verwenden Sie das Feld _Name_, um den Kontonamen zu filtern und das entsprechende Konto auszuwählen. Wählen Sie auf der Seite _Benutzerprofil_ das Symbol „Klicken Sie zum Kopieren“ neben der _Objekt-ID_ aus.|
 |Vorlage für Azure SQL-Datenbank|Resource Manager-Vorlage|AAD-Administratoranmeldung|Derzeit können Microsoft-Konten (z. B. live.com oder outlook.com) nicht als Administrator festgelegt werden. Nur Benutzer und Sicherheitsgruppen in Ihrer Organisation können als Administrator festgelegt werden. Hat keinen Standardwert und darf nicht leer sein. Diesen Wert finden Sie im Azure-Portal, indem Sie unter _Dienste_ die Option „Benutzer“ suchen und auswählen. Verwenden Sie das Feld _Name_, um den Kontonamen zu filtern und das entsprechende Konto auszuwählen. Kopieren Sie den _Benutzernamen_ auf der Seite _Benutzerprofil_.|
-|Ressourcengruppe für App Service-Umgebung|Ressourcengruppe|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-ase-rg`, sodass die Ressourcengruppe eindeutig ist.|
-|Ressourcengruppe für App Service-Umgebung|Ressourcengruppe|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
+|Ressourcengruppe für App Service-Umgebung|Resource group|NAME|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-workload-ase-rg`, sodass die Ressourcengruppe eindeutig ist.|
+|Ressourcengruppe für App Service-Umgebung|Resource group|Location|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Vorlage für App Service-Umgebung|Resource Manager-Vorlage|Domänenname|Der Name der mit dem Beispiel erstellten Active Directory-Instanz. Der Standardwert ist _contoso.com_.|
 |Vorlage für App Service-Umgebung|Resource Manager-Vorlage|ASE-Standort|Standort der App Service-Umgebung. Der Standardwert ist _USA, Westen 2_.|
 |Vorlage für App Service-Umgebung|Resource Manager-Vorlage|Application Gateway-Protokollaufbewahrung in Tagen|Datenaufbewahrung in Tagen. Der Standardwert ist _365_.|

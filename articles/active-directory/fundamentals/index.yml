@@ -1,47 +1,67 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentation mit grundlegenden Informationen zu Azure Active Directory
+summary: Hier werden die grundlegenden Konzepte und Prozesse von Azure Active Directory (Azure AD) erläutert. Dabei erfahren Sie unter anderem, wie Sie eine einfache Umgebung sowie einfache Benutzer und Gruppen erstellen.
 metadata:
-  document_id: null
   title: Dokumentation mit grundlegenden Informationen zu Azure Active Directory
-  description: 'Hier erhalten Sie Informationen zu den grundlegenden Konzepten und Prozessen, die bei der Verwendung von Azure Active Directory verfügbar sind.'
-  services: active-directory
-  ms.subservice: fundamentals
-  author: eross-msft
+  description: Hier werden die grundlegenden Konzepte und Prozesse von Azure Active Directory (Azure AD) erläutert. Dabei erfahren Sie unter anderem, wie Sie eine einfache Umgebung sowie einfache Benutzer und Gruppen erstellen.
   manager: daveba
+  ms.author: ajburnle
+  ms.collection: na
+  ms.date: 08/27/2019
   ms.service: active-directory
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 09/07/2018
-  ms.author: lizross
-abstract:
-  description: 'In dieser Dokumentation erfahren Sie mehr über die grundlegenden Konzepte und Prozesse von Azure Active Directory (Azure AD). Beispielsweise wird erläutert, wie Sie allgemeine Benutzer und Gruppen sowie eine einfache Umgebung für die ersten Schritte erstellen.'
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: Hier erhalten Sie Informationen zu den ersten Schritten mit dem Azure Active Directory-Portal.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_portal.png
-            text: Zugreifen auf Azure AD zum Erstellen eines Mandanten
-            href: active-directory-access-create-new-tenant.md
-          - image:
-              src: ./media/index/i_tasks.png
-            text: Anzeigen von Gruppen und Mitgliedern
-            href: active-directory-groups-view-azure-portal.md
-  - title: Ausführliche Leitfäden
-    items:
-      - type: paragraph
-        text: 'Hier erfahren Sie, wie Sie allgemeine Einrichtungsaufgaben in der Azure Active Directory-Umgebung ausführen.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Registrieren für Azure AD Premium</a>
-          - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">Hinzufügen eines benutzerdefinierten Domänennamens</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">Erstellen einer einfachen Gruppe und Hinzufügen von Mitgliedern</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">Hinzufügen von Gruppenbesitzern</a>
-          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Hinzufügen eines neuen Benutzers</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">Zuweisen von Rollen zu Benutzern</a>
-          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Zuweisen von Lizenzen zu Benutzern</a>
+  services: active-directory
+  ms.openlocfilehash: c0f85c065a4334f41c7f52a05e2b885f97dde25f
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70124898"
+landingContent:
+- title: Informationen zu Azure AD
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Active Directory?
+      url: active-directory-whatis.md
+    - text: Neuerungen in Azure Active Directory
+      url: whats-new.md
+  - linkListType: concept
+    links:
+    - text: Azure AD-Architektur
+      url: active-directory-architecture.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Zugreifen auf das Portal und Erstellen eines Mandanten
+      url: active-directory-access-create-new-tenant.md
+    - text: Anzeigen Ihrer Gruppen mit zugewiesenen Mitgliedern
+      url: active-directory-groups-view-azure-portal.md
+- title: Erstellen eines Azure AD-Kontos
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Registrieren für Azure Active Directory Premium-Editionen
+      url: active-directory-get-started-premium.md
+    - text: Registrieren für Azure AD als Organisation
+      url: sign-up-organization.md
+    - text: Hinzufügen Ihrer benutzerdefinierten Domänennamens
+      url: add-custom-domain.md
+- title: Erstellen einer Gruppe in Azure AD
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern
+      url: active-directory-groups-create-azure-portal.md
+    - text: Hinzufügen oder Entfernen von Gruppenbesitzern
+      url: active-directory-accessmanagement-managing-group-owners.md
+- title: Hinzufügen von Benutzern und Zuweisen ihrer Rollen und Lizenzen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Hinzufügen oder Löschen von Benutzern
+      url: add-users-azure-active-directory.md
+    - text: Zuweisen von Lizenzen zu Benutzern
+      url: license-users-groups.md

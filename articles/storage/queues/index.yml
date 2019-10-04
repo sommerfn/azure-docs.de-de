@@ -1,0 +1,61 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Queue Storage
+summary: Azure Queue Storage ist ein Dienst für die Speicherung einer großen Anzahl von Nachrichten. Greifen Sie über HTTP oder HTTPS von überall auf der Welt auf Nachrichten zu.
+metadata:
+  title: Dokumentation zu Azure Queue Storage
+  description: Azure Queue Storage ist ein Dienst für die Speicherung einer großen Anzahl von Nachrichten. Greifen Sie über HTTP oder HTTPS von überall auf der Welt auf Nachrichten zu.
+  services: storage
+  ms.service: storage
+  ms.subservice: queues
+  ms.topic: landing-page
+  ms.collection: collection
+  author: mhopkins-msft
+  ms.author: mhopkins
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 4dcf6ae4e9a5a65e060b647f02761b2c46238d13
+  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70277917"
+landingContent:
+- title: Informationen zu Azure-Warteschlangen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was sind Azure-Warteschlangen?
+      url: storage-queues-introduction.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen einer Warteschlange und Hinzufügen einer Nachricht mit dem Azure-Portal
+      url: storage-quickstart-queues-portal.md
+    - text: Erstellen einer Warteschlange in Azure Storage mithilfe von .NET
+      url: storage-quickstart-queues-dotnet.md
+- title: Entwickeln mit Warteschlangen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erste Schritte mit Azure Queue Storage mit .NET
+      url: storage-dotnet-how-to-use-queues.md
+    - text: Verwenden des Warteschlangenspeichers mit Java
+      url: storage-java-how-to-use-queue-storage.md
+    - text: Verwenden des Warteschlangenspeichers mit Node.js
+      url: storage-nodejs-how-to-use-queues.md
+    - text: Verwenden des Warteschlangenspeichers mit C++
+      url: storage-c-plus-plus-how-to-use-queues.md
+    - text: Verwenden des Warteschlangenspeichers mit Python
+      url: storage-python-how-to-use-queue-storage.md
+- title: Warteschlangen verwalten
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Ausführen von Vorgängen für Azure Queue Storage mit Azure PowerShell
+      url: storage-powershell-how-to-use-queues.md
+- title: Tutorial
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Verwenden von Azure Storage-Warteschlangen (.NET)
+      url: storage-tutorial-queues.md

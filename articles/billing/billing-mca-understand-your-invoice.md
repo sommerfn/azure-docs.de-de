@@ -1,35 +1,32 @@
 ---
-title: Grundlegendes zur Rechnung für eine Microsoft-Kundenvereinbarung | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ihre Rechnung für die Microsoft-Kundenvereinbarung lesen und verstehen können.
-services: ''
-documentationcenter: ''
-author: jureid
+title: Grundlegendes zur Rechnung für eine Microsoft-Kundenvereinbarung in Azure
+description: Erfahren Sie, wie Sie die Rechnung für Ihre Microsoft-Kundenvereinbarung erfassen und verstehen.
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ee6317f61f95b19effd64308b88f53c027582b63
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d514afdc4d9b571346768d283320f9e605e57f57
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883008"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719730"
 ---
-# <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>Grundlegendes zu den Begriffen auf der Rechnung für eine Microsoft-Kundenvereinbarung
+# <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Bestimmungen auf der Rechnung Ihrer Microsoft-Kundenvereinbarung
 
-Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben](#check-access-to-a-microsoft-customer-agreement).
+Dieser Artikel bezieht sich auf ein Azure-Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
 
 Die Rechnung enthält eine Zusammenfassung der Gebühren sowie Zahlungsanweisungen. Die Rechnung steht im [Azure-Portal](https://portal.azure.com/) im PDF-Format (Portable Document Format) zum Download bereit oder kann per E-Mail gesendet werden. Weitere Informationen finden Sie unter [Anzeigen und Herunterladen der Microsoft Azure-Rechnung](billing-download-azure-invoice.md).
 
-<!-- ## When am I billed?
+## <a name="billing-period"></a>Abrechnungszeitraum
 
-You are invoiced on a monthly basis. You can find out which day of the month you receive invoices by checking *invoice date* under billing profile properties in the [Azure portal](https://portal.azure.com/). Charges that occur between the end of the billing period and the invoice date are included in the next month's invoice, since they are in the next billing period. The billing period start and end dates for each invoice are listed in the invoice PDF above **Billing Summary**. -->
+Ihnen wird monatlich eine Rechnung gestellt. Sie können herausfinden, an welchem Tag des Monats Sie Rechnungen erhalten, indem Sie im [Azure-Portal](https://portal.azure.com/) in den Eigenschaften des Abrechnungsprofils das *Rechnungsdatum* überprüfen. Gebühren, die zwischen dem Ende des Abrechnungszeitraums und dem Rechnungsdatum anfallen, werden in der Rechnung des nächsten Monats berücksichtigt, da sie sich im nächsten Abrechnungszeitraum befinden. Das Start- und Enddatum des Abrechnungszeitraums für jede Rechnung ist in der PDF-Datei mit der Rechnung über **Rechnungszusammenfassung** aufgeführt.
 
 ## <a name="invoice-terms-and-descriptions"></a>Begriffe auf der Rechnung und entsprechende Beschreibungen
 
@@ -37,7 +34,7 @@ In den folgenden Abschnitten werden die wichtigsten Begriffe auf der Rechnung au
 
 ### <a name="invoice-summary"></a>Invoice summary (Rechnungsübersicht)
 
-Den Abschnitt **Invoice summary** (Rechnungsübersicht) finden Sie oben auf der ersten Seite. Dort werden Informationen zu Ihrem Abrechnungsprofil und Ihren Zahlungsbedingungen aufgeführt.
+Den Abschnitt **Rechnungszusammenfassung** finden Sie oben auf der ersten Seite. Dort sind Informationen zu Ihrem Abrechnungsprofil und Ihren Zahlungsbedingungen aufgeführt.
 
 ![Abschnitt „Rechnungszusammenfassung“](./media/billing-understand-your-invoice-mca/invoicesummary.png)
 
@@ -63,7 +60,7 @@ Im Abschnitt **Billing summary** (Abrechnungsübersicht) werden alle in Rechnung
 | Guthaben |Gutschriften durch Rückgaben |
 | Azure credits applied (Angewendete Azure-Gutschriften) | Azure-Gutschriften, die in jedem Abrechnungszeitraum automatisch mit den Azure-Gebühren verrechnet werden |
 | Subtotal (Zwischensumme) |Der fällige Betrag ohne Steuern |
-| Tax (Steuern) |Art und Menge der berechneten Steuer, abhängig vom Land des Abrechnungsprofils. Wenn Sie keine Steuern zahlen müssen, werden auf Ihrer Rechnung keine Steuern aufgeführt. |
+| Tax (Steuern) |Art und Menge der berechneten Steuer, abhängig vom Land bzw. der Region des Abrechnungsprofils. Wenn Sie keine Steuern zahlen müssen, werden auf Ihrer Rechnung keine Steuern aufgeführt. |
 | Estimated total savings (Geschätzte Gesamteinsparungen) |Der geschätzte Gesamtbetrag an Einsparungen durch geltende Rabatte. Wenn vorhanden, werden geltende Rabatte unter der jeweiligen Kaufposition in den Details nach Rechnungsabschnitt aufgeführt. |
 
 ### <a name="invoice-sections"></a>Rechnungsabschnitte
@@ -78,7 +75,6 @@ In den Details werden die Kosten für jeden Rechnungsabschnitt pro Produkt angez
 
 Der fällige Gesamtbetrag für jede Dienstfamilie errechnet sich aus den *Guthaben/Gebühren* minus *Azure-Gutschriften* plus *Steuern*:
 
-<!-- `Total = Charges/Credits - Azure Credit + Tax` -->
 
 ![Details nach Rechnungsabschnitt](./media/billing-understand-your-invoice-mca/invoicesectiondetails.png)
 
@@ -88,13 +84,13 @@ Der fällige Gesamtbetrag für jede Dienstfamilie errechnet sich aus den *Guthab
 | Qty (Menge) | Während des Abrechnungszeitraums gekaufte oder genutzt Menge |
 | Charges/Credits (Gebühren/Guthaben) | Gebühren nach Abzug von Gutschriften/Erstattungen |
 | Azure Credit (Azure-Gutschrift) | Die Azure-Gutschriften, die mit den Gebühren/Guthaben verrechnet werden|
-| Tax rate (Steuersatz) | Steuersätze nach Land |
+| Tax rate (Steuersatz) | Steuersätze nach Land/Region |
 | Tax amount (Steuerbetrag) | Steuerbetrag, der auf Grundlage des Steuersatz auf einen Kauf angewendet wird |
 | Gesamt | Der insgesamt fällige Betrag für einen Kauf |
 
 ### <a name="how-to-pay"></a>Zahlung
 
-Anweisungen zur Bezahlung Ihrer Rechnung finden Sie unten auf der Rechnung. Sie können per Scheck, Überweisung oder online bezahlen. Wenn Sie online bezahlen, können Sie dazu eine Kredit-/EC-Karte oder Azure-Gutschriften verwenden (falls vorhanden).
+Anweisungen zur Bezahlung Ihrer Rechnung finden Sie unten auf der Rechnung. Sie können per Scheck, Überweisung oder online bezahlen. Wenn Sie online bezahlen, können Sie dazu eine Kreditkarte oder Azure-Gutschriften verwenden (falls vorhanden).
 
 ### <a name="publisher-information"></a>Informationen zum Herausgeber
 
@@ -103,7 +99,7 @@ Wenn in Ihrer Rechnung Dienste von Drittanbietern aufgeführt werden, werden am 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 

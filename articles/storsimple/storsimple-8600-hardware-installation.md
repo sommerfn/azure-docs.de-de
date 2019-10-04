@@ -14,14 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5a8b460441323cb668a3d9939cce434636afc44d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 571c8b729408d7b9e805b875baccfd9ac8d6b9be
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719004"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965263"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Auspacken, Einbauen und Verkabeln des StorSimple 8600-Geräts
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>Übersicht
 Das Microsoft Azure StorSimple 8600-Gerät umfasst zwei Gehäuse: ein primäres Gehäuse und ein EBOD-Gehäuse. In diesem Lernprogramm wird erläutert, wie die StorSimple 8600-Gerätehardware vor dem Konfigurieren der StorSimple-Software ausgepackt, in ein Rack eingebaut und verkabelt wird.
 

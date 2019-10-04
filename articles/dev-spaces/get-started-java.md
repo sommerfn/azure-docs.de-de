@@ -9,13 +9,13 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-manager: mmontwil
-ms.openlocfilehash: b69a793d1d860bf2f2a4d52a92d4bea5cf903c0c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+manager: gwallace
+ms.openlocfilehash: ec1c2b385797b1219814e584a9db7da82d111e2d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426306"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67704088"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Erste Schritte in Azure Dev Spaces mit Java
 
@@ -56,7 +56,7 @@ az account set --subscription <subscription ID>
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Erstellen eines Kubernetes-Clusters mit Aktivierung für Azure Dev Spaces
 
-Erstellen Sie an der Eingabeaufforderung die Ressourcengruppe in einer [Region, die Azure Dev Spaces unterstützt](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams).
+Erstellen Sie an der Eingabeaufforderung die Ressourcengruppe in einer [Region, die Azure Dev Spaces unterstützt][supported-regions].
 
 ```cmd
 az group create --name MyResourceGroup --location <region>
@@ -65,7 +65,7 @@ az group create --name MyResourceGroup --location <region>
 Erstellen Sie mit dem folgenden Befehl einen Kubernetes-Cluster:
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
 ```
 
 Die Erstellung des Clusters dauert einige Minuten.
@@ -137,18 +137,27 @@ Suchen Sie in der Konsolenausgabe nach Informationen zur öffentlichen URL, die 
 
 ```
 (pending registration) Service 'webfrontend' port 'http' will be available at <url>
+Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Öffnen Sie diese URL in einem Browserfenster. Dort sollten Sie sehen, dass die Web-App geladen wird. Wenn der Container ausgeführt wird, wird die Ausgabe von `stdout` und `stderr` an das Terminalfenster gestreamt.
+Identifizieren Sie die öffentliche URL für den Dienst in der Ausgabe des Befehls `up`. Sie endet mit `.azds.io`. Im obigen Beispiel lautet die öffentliche URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+
+Um Ihre Web-App anzuzeigen, öffnen Sie die öffentliche URL in einem Browser. Beachten Sie auch, dass die Ausgabe von `stdout` und `stderr` an das Terminalfenster *azds trace* gestreamt wird, während Sie mit Ihrer Web-App interagieren. Sie sehen auch Nachverfolgungsinformationen für HTTP-Anforderungen, während sie das System durchlaufen. Dies erleichtert Ihnen während der Entwicklung die Nachverfolgung komplexer sich auf mehrere Dienste beziehender Aufrufe. Die von Azure Dev Spaces hinzugefügte Instrumentierung stellt diese Anforderungsverfolgung zur Verfügung.
 
 > [!Note]
-> Beim ersten Ausführen kann es mehrere Minuten dauern, bis das öffentliche DNS bereit ist. Wenn die öffentliche URL nicht aufgelöst wird, können Sie die alternative URL `http://localhost:<portnumber>` verwenden, die in der Konsolenausgabe angezeigt wird. Bei Verwendung der localhost-URL kann es so aussehen, als ob der Container lokal ausgeführt wird, während er stattdessen unter AKS ausgeführt wird. Um die Interaktion mit dem Dienst auf Ihrem lokalen Computer zu erleichtern, erstellt Azure Dev Spaces einen temporären SSH-Tunnel zu dem in Azure ausgeführten Container. Sie können später zurückkehren und versuchen, die öffentliche URL zu verwenden, wenn der DNS-Eintrag bereit ist.
-> ### <a name="update-a-content-file"></a>Aktualisieren einer Inhaltsdatei
-> Bei Azure Dev Spaces geht es nicht nur um die Ausführung von Code in Kubernetes: Mit diesem Dienst sollen Codeänderungen in einer Kubernetes-Umgebung in der Cloud schnell und iterativ sichtbar gemacht werden.
+> Zusätzlich zur öffentlichen URL können Sie die alternative URL `http://localhost:<portnumber>` verwenden, die in der Konsolenausgabe angezeigt wird. Bei Verwendung der localhost-URL kann es so aussehen, als ob der Container lokal ausgeführt wird, während er stattdessen unter AKS ausgeführt wird. Azure Dev Spaces nutzt die Kubernetes-Funktionalität *Portweiterleitung*, um den Port von „localhost“ dem Container zuzuordnen, der in AKS ausgeführt wird. Dies erleichtert die Interaktion mit dem Dienst auf dem lokalen Computer.
+
+### <a name="update-a-content-file"></a>Aktualisieren einer Inhaltsdatei
+Bei Azure Dev Spaces geht es nicht nur um die Ausführung von Code in Kubernetes: Mit diesem Dienst sollen Codeänderungen in einer Kubernetes-Umgebung in der Cloud schnell und iterativ sichtbar gemacht werden.
 
 1. Drücken Sie im Terminalfenster `Ctrl+C` (zum Beenden von `azds up`).
-1. Öffnen Sie die Codedatei mit dem Namen `src/main/java/com/ms/sample/webfrontend/Application.java`, und bearbeiten Sie die folgende Begrüßung: `return "Hello from webfrontend in Azure!";`
+1. Öffnen Sie `src/main/java/com/ms/sample/webfrontend/Application.java`, und bearbeiten Sie die Begrüßungsmeldung in [Zeile 19](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19):
+
+    ```java
+    return "Hello from webfrontend in Azure!";
+    ```
+
 1. Speichern Sie die Datei .
 1. Führen Sie `azds up` im Terminalfenster aus.
 
@@ -181,7 +190,7 @@ Dadurch wird die Debugkonfiguration für Azure Dev Spaces unter dem `.vscode`-Or
 ![](media/get-started-java/debug-configuration.png)
 
 > [!Note]
-> Falls in der Befehlspalette keine Azure Dev Spaces-Befehle angezeigt werden, überprüfen Sie, ob die VS Code-Erweiterung für Azure Dev Spaces installiert wurde. Achten Sie darauf, dass es sich bei dem in VS Code geöffneten Arbeitsbereich um den Ordner handelt, der „azds.yaml“ enthält.
+> Falls in der Befehlspalette keine Azure Dev Spaces-Befehle angezeigt werden, überprüfen Sie, ob die VS Code-Erweiterung für Azure Dev Spaces installiert wurde. Achten Sie darauf, dass es sich bei dem in Visual Studio Code geöffneten Arbeitsbereich um den Ordner handelt, der `azds.yaml` enthält.
 
 ### <a name="debug-the-container-in-kubernetes"></a>Debuggen des Containers in Kubernetes
 Drücken Sie **F5**, um Ihren Code in Kubernetes zu debuggen.
@@ -189,7 +198,7 @@ Drücken Sie **F5**, um Ihren Code in Kubernetes zu debuggen.
 Wie beim Befehl `up` wird der Code mit dem Entwicklungsbereich synchronisiert, und ein Container wird erstellt und in Kubernetes bereitgestellt. Dieses Mal ist der Debugger natürlich an den Remotecontainer angefügt.
 
 > [!Tip]
-> Auf der Statusleiste von VS Code wird eine klickbare URL angezeigt.
+> Die Visual Studio Code-Statusleiste ändert sich in orange, was bedeutet, dass der Debugger angefügt ist. Sie zeigt auch eine klickbare URL an, die Sie verwenden können, um Ihre Anwendung zu öffnen.
 
 ![](media/common/vscode-status-bar-url.png)
 
@@ -207,9 +216,9 @@ public String greeting()
 }
 ```
 
-Speichern Sie die Datei, und klicken Sie im Bereich für **Debugaktionen** auf die Schaltfläche **Aktualisieren**.
+Speichern Sie die Datei, und klicken Sie im Bereich **Debugaktionen** auf die Schaltfläche **Neu starten**.
 
-![](media/get-started-java/debug-action-refresh.png)
+![](media/common/debug-action-refresh.png)
 
 Das Neuerstellen und erneute Bereitstellen eines neuen Containerimages bei jeder vorgenommenen Codeänderung kann geraume Zeit in Anspruch nehmen. Daher kompiliert Azure Dev Spaces Code im vorhandenen Container inkrementell, um den Bearbeitungs-/Debugging-Kreislauf zu beschleunigen.
 
@@ -221,3 +230,6 @@ Aktualisieren Sie die Web-App im Browser. Daraufhin sollte Ihre benutzerdefinier
 
 > [!div class="nextstepaction"]
 > [Informationen zur Entwicklung mit mehreren Diensten](multi-service-java.md)
+
+
+[supported-regions]: about.md#supported-regions-and-configurations

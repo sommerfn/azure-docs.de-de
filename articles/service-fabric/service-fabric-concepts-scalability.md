@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/18/2017
+ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 14a7389fe562b5f3206b81411d2224257051c636
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f44a44c0923374b2f6024903213305f1defb3b94
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666646"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035921"
 ---
 # <a name="scaling-in-service-fabric"></a>Skalierung in Service Fabric
 Azure Service Fabric erleichtert das Erstellen skalierbarer Anwendungen durch Verwalten der Dienste, Partitionen und Replikate auf den Knoten eines Clusters. Das Ausführen vieler Workloads auf derselben Hardware ermöglicht eine maximale Ressourcennutzung, bietet jedoch auch Flexibilität bei der Auswahl der Skalierung für die Workloads. Dieses Channel 9-Video erklärt, wie Sie skalierbare Microserviceanwendungen erstellen können:
@@ -121,6 +121,10 @@ Service Fabric erhält durch [Metriken](service-fabric-cluster-resource-manager-
 Eine weitere Möglichkeit der Skalierung mit Service Fabric ist das Ändern der Clustergröße. Zum Ändern der Clustergröße müssen Knoten eines oder mehrere Knotentypen im Cluster hinzugefügt oder entfernt werden. Betrachten Sie beispielsweise den Fall, in dem alle Knoten im Cluster aktiv sind. Dies bedeutet, dass fast alle Ressourcen des Clusters genutzt werden. In diesem Fall ist das Hinzufügen weiterer Knoten zum Cluster die beste Skalierungsmethode. Sobald dem Cluster neue Knoten hinzugefügt wurden, verschiebt der Clusterressourcen-Manager von Service Fabric Dienste auf diese Knoten, sodass die Gesamtauslastung der vorhandenen Knoten verringert wird. Für zustandslose Dienste mit der Instanzenanzahl -1 werden automatisch weitere Dienstinstanzen erstellt. Dies ermöglicht das Verschieben einiger Aufrufe von den vorhandenen Knoten zu den neuen Knoten. 
 
 Weitere Informationen finden Sie unter [Scaling Service Fabric clusters](service-fabric-cluster-scaling.md) (Skalieren von Service Fabric-Clustern).
+
+## <a name="choosing-a-platform"></a>Auswählen einer Plattform
+
+Aufgrund von Implementierungsunterschieden zwischen Betriebssystemen kann die Entscheidung, Service Fabric mit Windows oder Linux zu verwenden, ein wichtiger Punkt für die Skalierung Ihrer Anwendung sein. Ein mögliches Hindernis stellt die Art der Stagingprotokollierung dar. Service Fabric unter Windows verwendet einen Kerneltreiber für ein computerspezifisches Protokoll, das von zustandsbehafteten Dienstreplikaten gemeinsam genutzt wird. Dieses Protokoll hat eine Größe von etwa 8 GB. Linux verwendet dagegen für jedes Replikat ein Stagingprotokoll mit einer Größe von 256 MB und eignet sich somit weniger für Anwendungen, bei denen auf einem Knoten möglichst viele einfache Dienstreplikate ausgeführt werden sollen. Diese Unterschiede bei den temporären Speicheranforderungen können bei der Wahl der Plattform für die Service Fabric-Clusterbereitstellung entscheidend sein.
 
 ## <a name="putting-it-all-together"></a>Zusammenfügen des Gesamtbilds
 Sehen wir uns alle Ideen, die wir hier besprochen haben, in einem Beispiel an. Betrachten Sie den folgenden Dienst: Sie möchten einen Dienst erstellen, der als Adressbuch fungiert und Namen und Kontaktinformationen speichert. 

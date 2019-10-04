@@ -3,27 +3,26 @@ title: Support- und Hilfeoptionen für Entwickler von Azure AD-Apps| Microsoft-D
 description: Hier erfahren Sie, wie Sie beim Erstellen einer Anwendung, die mit Microsoft-Identitäten (Azure Active Directory und Microsoft-Konto) integriert wird, Hilfe und Support zu entwicklungsbezogenen Problemen und Fragen erhalten.
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
-editor: ''
+author: rwike77
+manager: CelesteDG
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/14/2019
-ms.author: celested
-ms.reviewer: jmprieur, dadobali
+ms.date: 05/23/2019
+ms.author: ryanwi
+ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0de9b3e3535253724d068f806b219736f6889477
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501588"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66235334"
 ---
 # <a name="support-and-help-options-for-developers"></a>Support- und Hilfeoptionen für Entwickler
 
@@ -63,7 +62,7 @@ Stack Overflow ist der bevorzugte Kanal für entwicklungsbezogene Fragen. Hier s
 
 Wenn Sie über die Suche keine Antwort auf Ihre Frage finden können, übermitteln Sie eine neue Frage auf Stack Overflow. Verwenden Sie bei der Fragestellung eines der folgenden Tags, damit die Community Ihre Frage schneller identifizieren und beantworten kann:
 
-|Komponente/Bereich  | Tags |
+|Komponente/Bereich  | `Tags` |
 |---------|---------|
 | ADAL-Bibliothek | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL-Bibliothek     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
@@ -82,10 +81,10 @@ Die folgenden Beiträge aus Stack Overflow enthalten Tipps zum Formulieren von F
 
 Wenn Sie einen Fehler oder ein Problem im Zusammenhang mit unseren Bibliotheken gefunden haben, erstellen Sie in unseren GitHub-Repositorys ein Problem. Da unsere Bibliotheken Open Source sind, können Sie auch einen Pull Request übermitteln.
 
-Die folgenden Artikel enthalten eine Liste der Bibliotheken und ihrer GitHub-Repositorys:
+Die folgenden Ressourcen enthalten eine Liste der Bibliotheken und ihrer GitHub-Repositorys:
 
 * [ADAL](active-directory-authentication-libraries.md)-Bibliotheken und GitHub-Repositorys
-* [MSAL](reference-v2-libraries.md)-Bibliotheken und GitHub-Repositorys
+* Bibliotheken [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md), [MSAL.Android](https://github.com/AzureAD/microsoft-authentication-library-for-android) und [MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) und GitHub-Repositorys
 
 ## <a name="open-a-support-request"></a>Stellen einer Supportanfrage
 

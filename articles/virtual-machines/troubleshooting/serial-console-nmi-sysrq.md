@@ -4,27 +4,26 @@ description: Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe auf vir
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 3a9d3364f9e55611c94797b71b058128ce7c6696
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: d5c647bac2bc6abc85a74531e052f0f3a54b2047
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697926"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090087"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe
 
 ## <a name="system-request-sysrq"></a>SysRq (System Request, Systemabfrage)
-Eine SysRq ist eine Sequenz von Schlüsseln, die vom Linux-Betriebssystemkernel verstanden wird und eine Reihe von vordefinierten Aktionen auslösen kann. Diese Befehle werden häufig verwendet, wenn die Problembehandlung am virtuellen Computer oder dessen Wiederherstellung nicht über die herkömmliche Verwaltung ausgeführt werden kann (z. B., wenn der virtuelle Computer nicht reagiert). Mithilfe des SysRq-Features der seriellen Azure-Konsole wird das Drücken der SysRq-Taste (je nach Tastatur auch S-Abf-Taste genannt) imitiert, und auf einer physischen Tastatur werden Zeichen eingegeben.
+Eine SysRq ist eine Sequenz von Schlüsseln, die vom Linux-Betriebssystemkernel verstanden wird und eine Reihe von vordefinierten Aktionen auslösen kann. Diese Befehle werden häufig verwendet, wenn die Problembehandlung des virtuellen Computers oder dessen Wiederherstellung nicht über die herkömmliche Verwaltung ausgeführt werden kann (etwa, wenn der virtuelle Computer nicht reagiert). Mithilfe des SysRq-Features der seriellen Azure-Konsole wird das Drücken der SysRq-Taste (je nach Tastatur auch S-Abf-Taste genannt) imitiert, und auf einer physischen Tastatur werden Zeichen eingegeben.
 
 Sobald die SysRq-Sequenz übermittelt wurde, bestimmt die Kernelkonfiguration die Antwort des Systems. Informationen zum Aktivieren und Deaktivieren von SysRq finden Sie im *SysRq-Administratorhandbuch* ([Text](https://aka.ms/kernelorgsysreqdoc) | [Markdown](https://aka.ms/linuxsysrq)).  
 
@@ -112,7 +111,7 @@ Bei Linux-Systemen, die sysctl zum Konfigurieren von Kernelparametern unterstüt
 1. Neustarten oder Aktualisieren von sysctl durch Ausführen von <br>
     `sysctl -p`
 
-Weitere Informationen zu Linux-Kernelkonfigurationen, einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi`, finden Sie unter  [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
+Weitere Informationen zu Linux-Kernelkonfigurationen (einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi`) finden Sie hier: [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt) (Dokumentation zu /proc/sys/kernel/*). Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
  
 ### <a name="ubuntu"></a>Ubuntu 
  - [Kernel-Absturzabbild](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

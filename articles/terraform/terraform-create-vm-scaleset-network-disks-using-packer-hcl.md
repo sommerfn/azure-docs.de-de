@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/29/2017
-ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001995"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173484"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Verwenden von Terraform zum Erstellen einer Azure-VM-Skalierungsgruppe aus einem benutzerdefinierten Packer-Image
 
@@ -42,9 +42,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Erstellen Sie in einem leeren Verzeichnis drei neue Dateien mit folgenden Namen:
 
-- ```variables.tf```: Diese Datei enthält die Werte der in der Vorlage verwendeten Variablen.
-- ```output.tf```: Diese Datei beschreibt die Einstellungen, die nach der Bereitstellung angezeigt werden.
-- ```vmss.tf```: Diese Datei enthält den Code der Infrastruktur, die Sie bereitstellen.
+- `variables.tf` : Diese Datei enthält die Werte der in der Vorlage verwendeten Variablen.
+- `output.tf` : Diese Datei beschreibt die Einstellungen, die nach der Bereitstellung angezeigt werden.
+- `vmss.tf` : Diese Datei enthält den Code der Infrastruktur, die Sie bereitstellen.
 
 ##  <a name="create-the-variables"></a>Erstellen der Variablen 
 
@@ -52,7 +52,7 @@ In diesem Schritt definieren Sie Variablen zur Anpassung der durch Terraform ers
 
 Bearbeiten Sie die Datei `variables.tf`, kopieren Sie den folgenden Code, und speichern Sie die Änderungen.
 
-```tf 
+```hcl
 variable "location" {
   description = "The location where resources are created"
   default     = "East US"
@@ -70,7 +70,7 @@ variable "resource_group_name" {
 
 Speichern Sie die Datei .
 
-Wenn Sie Ihre Terraform-Vorlage bereitstellen, benötigen Sie den vollqualifizierten Domänennamen, der zum Zugreifen auf die Anwendung verwendet wird. Verwenden Sie den Ressourcentyp ```output``` von Terraform, und rufen Sie die ```fqdn```-Eigenschaft der Ressource ab. 
+Wenn Sie Ihre Terraform-Vorlage bereitstellen, benötigen Sie den vollqualifizierten Domänennamen, der zum Zugreifen auf die Anwendung verwendet wird. Verwenden Sie den Ressourcentyp `output` von Terraform, und rufen Sie die `fqdn`-Eigenschaft der Ressource ab. 
 
 Bearbeiten Sie die Datei `output.tf`, und kopieren Sie den folgenden Code, um den vollqualifizierten Domänennamen für die virtuellen Computer verfügbar zu machen. 
 
@@ -89,9 +89,9 @@ In diesem Schritt erstellen Sie in einer neuen Azure-Ressourcengruppe die folgen
 
 Darüber hinaus benötigen Sie eine Ressourcengruppe, in der alle Ressourcen erstellt werden. 
 
-Bearbeiten und kopieren Sie den folgenden Code in der Datei ```vmss.tf```: 
+Bearbeiten und kopieren Sie den folgenden Code in der Datei `vmss.tf`: 
 
-```tf 
+```hcl
 
 resource "azurerm_resource_group" "vmss" {
   name     = "${var.resource_group_name}"
@@ -124,7 +124,7 @@ resource "azurerm_public_ip" "vmss" {
   name                         = "vmss-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}"
 
   tags {
@@ -145,7 +145,7 @@ Initialisieren Sie die Terraform-Umgebung, indem Sie in dem Verzeichnis, in dem 
 terraform init 
 ```
  
-Die Anbieter-Plug-Ins werden von der Terraform-Registrierung in den Ordner ```.terraform``` in dem Verzeichnis, in dem Sie den Befehl ausgeführt haben, heruntergeladen.
+Die Anbieter-Plug-Ins werden von der Terraform-Registrierung in den Ordner `.terraform` in dem Verzeichnis, in dem Sie den Befehl ausgeführt haben, heruntergeladen.
 
 Führen Sie den folgenden Befehl aus, um die Infrastruktur in Azure bereitzustellen.
 
@@ -175,18 +175,17 @@ Führen Sie das Tutorial zum Erstellen eines Ubuntu-Images mit installiertem ngi
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>Bearbeiten Sie die Infrastruktur, um die VM-Skalierungsgruppe hinzuzufügen.
 
 In diesem Schritt erstellen Sie die folgenden Ressourcen im Netzwerk, das zuvor bereitgestellt wurde:
-- Einen Azure-Lastenausgleich, um die Anwendung zu versorgen und an die in Schritt 4 bereitgestellte öffentliche IP-Adresse anzufügen
+- Einen Azure-Lastenausgleich, um die Anwendung zu versorgen und an die zuvor bereitgestellte öffentliche IP-Adresse anzufügen
 - Einen Azure-Lastenausgleich und Regeln, um die Anwendung zu versorgen und an die zuvor konfigurierte öffentliche IP-Adresse anzufügen.
-- Einen Azure-Back-End-Adresspool, der dem Lastenausgleich zugewiesen werden muss 
-- Einen Integritätstestport, der von der Anwendung verwendet und für den Lastenausgleich konfiguriert wird 
-- Eine VM-Skalierungsgruppe, die sich hinter dem Lastenausgleich befindet und in dem zuvor bereitgestellten VNet ausgeführt wird
+- Einen Azure-Back-End-Adresspool, der dem Lastenausgleich zugewiesen werden muss
+- Einen Integritätstestport, der von der Anwendung verwendet und für den Lastenausgleich konfiguriert wird
+- Eine VM-Skalierungsgruppe, die sich hinter dem Lastenausgleich befindet und in dem zuvor bereitgestellten VNET ausgeführt wird
 - Über das benutzerdefinierte Image installiertes [nginx](https://nginx.org/) auf den Knoten der VM-Skalierungsgruppe
 
 
 Fügen Sie am Ende der Datei `vmss.tf` den folgenden Code hinzu:
 
-```tf
-
+```hcl
 
 resource "azurerm_lb" "vmss" {
   name                = "vmss-lb"
@@ -290,6 +289,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
       name                                   = "IPConfiguration"
       subnet_id                              = "${azurerm_subnet.vmss.id}"
       load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+      primary = true
     }
   }
   
@@ -302,7 +302,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
 Passen Sie die Bereitstellung an, indem Sie `variables.tf` den folgenden Code hinzufügen:
 
-```tf 
+```hcl
 variable "application_port" {
     description = "The port that you want to expose to the external load balancer"
     default     = 80
@@ -355,7 +355,7 @@ resource "azurerm_public_ip" "jumpbox" {
   name                         = "jumpbox-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}-ssh"
 
   tags {

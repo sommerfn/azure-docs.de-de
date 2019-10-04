@@ -3,20 +3,20 @@ title: 'Migrieren von Wissensdatenbanken: QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Die Migration einer Wissensdatenbank erfordert den Export aus einer Wissensdatenbank und den Import in eine andere.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: tulasim
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 04ee592122d7c76396f091f8d249518976682004
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264317"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446591"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrieren einer Knowledge Base durch Exportieren und Importieren
 
@@ -56,7 +56,7 @@ Die Migration einer Wissensdatenbank erfordert den Export aus einer Wissensdaten
     Nun wird der gesamte Inhalt der Knowledge Base – Fragen, Antworten und Metadaten sowie die Namen der Quelldateien und der URLs – in die neue Knowledge Base importiert. 
 
 ## <a name="chat-logs-and-alterations"></a>Chatprotokolle und Varianten
-Varianten (Synonyme) ohne Berücksichtigung von Groß-/Kleinbuchstaben werden nicht automatisch importiert. Verwenden Sie die [V2-APIs](https://aka.ms/qnamaker-v2-apis), um die Varianten aus der alten Wissensdatenbank zu exportieren, und die [V4-APIs](https://aka.ms/qnamaker-v4-apis), um die Varianten in die neue Wissensdatenbank zu verschieben.
+Varianten (Synonyme) ohne Berücksichtigung von Groß-/Kleinbuchstaben werden nicht automatisch importiert. Verwenden Sie die [V4-APIs](https://go.microsoft.com/fwlink/?linkid=2092179), um die Änderungen in die neue Wissensdatenbank zu verschieben.
 
 Die Migration von Chatprotokollen ist nicht möglich, da die neue Wissensdatenbank Application Insights zum Speichern von Chatprotokollen verwendet. 
 

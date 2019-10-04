@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: In diesem Artikel wird erläutert, wie Azure Clouddiensten die Kommunikation mit öffentlichen Internetdiensten ermöglicht.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
-ms.author: kumud
-ms.openlocfilehash: 3267d79387586f5ca8475d7ac0ed0f86d3f64f0d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.author: allensu
+ms.openlocfilehash: 10af3b4838aae1565bac1d996997c117a74cedbc
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876941"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274663"
 ---
 # <a name="outbound-connections-classic"></a>Ausgehende Verbindungen (klassisch)
 
@@ -39,7 +39,7 @@ Azure bietet drei verschiedene Methoden, um ausgehende Konnektivität für klass
 
 | Szenario | Methode | IP-Protokolle | BESCHREIBUNG | Webworkerrolle | IaaS | 
 | --- | --- | --- | --- | --- | --- |
-| [1. VM mit einer öffentlichen IP-Adresse auf Instanzebene](#ilpip) | SNAT, keine Portmaskierung | TCP, UDP, ICMP, ESP | Azure verwendet die öffentliche IP-Adresse, die dem virtuellen Computer zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. | Nein  | Ja |
+| [1. VM mit einer öffentlichen IP-Adresse auf Instanzebene](#ilpip) | SNAT, keine Portmaskierung | TCP, UDP, ICMP, ESP | Azure verwendet die öffentliche IP-Adresse, die dem virtuellen Computer zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. | Nein | Ja |
 | [2. Öffentlicher Endpunkt mit Lastenausgleich](#publiclbendpoint) | SNAT mit Portmaskierung (PAT) für den öffentlichen Endpunkt | TCP, UDP | Azure gibt die öffentliche IP-Adresse eines öffentlichen Endpunkts für mehrere private Endpunkte frei. Azure verwendet die kurzlebigen Ports des öffentlichen Endpunkts für die PAT. | Ja | Ja |
 | [3. Eigenständige VM](#defaultsnat) | SNAT mit Portmaskierung (PAT) | TCP, UDP | Azure weist für die SNAT automatisch eine öffentliche IP-Adresse zu, gibt diese öffentliche IP-Adresse für die gesamte Bereitstellung frei und verwendet die kurzlebigen Ports dieser öffentlichen Endpunkt-IP-Adresse für die PAT. Dieses Szenario ist ein Fallbackszenario für die vorherigen Szenarien. Es ist nicht zu empfehlen, wenn Sie Sichtbarkeit und Kontrolle benötigen. | Ja | Ja |
 

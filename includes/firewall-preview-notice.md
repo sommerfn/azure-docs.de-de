@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -9,11 +9,11 @@ ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: include file
 ms.openlocfilehash: ea1d331eefe07980547ffae18fbbca920475ec06
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500847"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178623"
 ---
 > [!IMPORTANT]
 > Azure Firewall ist zurzeit als verwaltete öffentliche Vorschauversion verfügbar. Sie aktivieren sie explizit mit dem PowerShell-Befehl `Register-AzProviderFeature`.

@@ -1,87 +1,93 @@
-items:
 - name: Azure für Container
   href: index.yml
   items:
-  - name: Kubernetes Service (AKS)
-    href: https://docs.microsoft.com/azure/aks/
-    items:
-    - name: Einführung in AKS
-      href: ../aks/intro-kubernetes.md
-    - name: 'Schnellstart: Bereitstellen eines AKS-Clusters'
-      href: ../aks/kubernetes-walkthrough.md
-    expanded: true
-  - name: Container Instances (ACI)
-    href: https://docs.microsoft.com/azure/container-instances/
-    items:
-    - name: Schnellstart – Erstellen einer Containerinstanz
-      href: https://docs.microsoft.com/azure/container-instances/container-instances-quickstart
-    - name: Tutorial – Erstellen und Bereitstellen eines Containers
+    - name: Kubernetes Service (AKS)
+      href: 'https://docs.microsoft.com/azure/aks/'
+      expanded: true
       items:
-      - name: 1. Erstellen des Containerimages
-        href: https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app
-      - name: 2. Erstellen der Containerregistrierung
-        href: https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr
-      - name: 3. Bereitstellen der App
-        href: https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-deploy-app
-  - name: Containerregistrierung (ACR)
-    href: https://docs.microsoft.com/azure/container-registry/
-    items:
-    - name: 'Schnellstart: Erstellen einer Registrierung'
-      href: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
-    - name: 'Tutorial: Erstellen von Containerimages'
+        - name: Einführung in AKS
+          href: ../aks/intro-kubernetes.md
+        - name: 'Schnellstart: Bereitstellen eines AKS-Clusters'
+          href: ../aks/kubernetes-walkthrough.md
+    - name: Container Instances (ACI)
+      href: 'https://docs.microsoft.com/azure/container-instances/'
       items:
-      - name: '1: Erstellen von Images in Azure'
-        href: ../container-registry/container-registry-tutorial-quick-task.md
-      - name: '2: Automatisieren der Imageerstellung'
-        href: ../container-registry/container-registry-tutorial-build-task.md
-      - name: '3: Basisimage zum Aktualisieren von Builds'
-        href: ../container-registry/container-registry-tutorial-base-image-update.md
-  - name: Web-App für Container
-    href: https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro
-    items:
-    - name: Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps für Container
-      href: https://docs.microsoft.com/azure/app-service/containers/tutorial-custom-docker-image
-    - name: 'Tutorial: App mit mehreren Containern'
-      href: https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app
-  - name: Service Fabric
-    href: https://docs.microsoft.com/azure/service-fabric/
-    items:
-    - name: Übersicht – Service Fabric und Container
-      href: https://docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview
-    - name: Anleitung
+        - name: Schnellstart – Erstellen einer Containerinstanz
+          href: 'https://docs.microsoft.com/azure/container-instances/container-instances-quickstart'
+        - name: Tutorial – Erstellen und Bereitstellen eines Containers
+          items:
+            - name: 1. Erstellen des Containerimages
+              href: 'https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app'
+            - name: 2. Erstellen der Containerregistrierung
+              href: 'https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr'
+            - name: 3. Bereitstellen der App
+              href: 'https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-deploy-app'
+    - name: Containerregistrierung (ACR)
+      href: 'https://docs.microsoft.com/azure/container-registry/'
       items:
-      - name: Erstellen einer Containeranwendung unter Windows
-        href: https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers
-      - name: Erstellen einer Containeranwendung unter Linux
-        href: https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers-linux
-      - name: Packen einer vorhandenen .NET-Anwendung in Container
-        href: https://docs.microsoft.com/azure/service-fabric/service-fabric-host-app-in-a-container
-  - name: Windows-Container
-    href: https://docs.microsoft.com/azure/virtual-machines/windows/overview
-    items:
-    - name: Schnellstart – Windows-Container unter Windows Server
-      href: https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server
-    - name: Informationen zu Windows-Containern
-      href: https://docs.microsoft.com/virtualization/windowscontainers/about/index
-  - name: Verweis
-    items:
-    - name: Azure Container Instances (az container)
-      href: https://docs.microsoft.com/cli/azure/container
-    - name: Azure Container Service (az acs)
-      href: https://docs.microsoft.com/cli/azure/acs
-    - name: Azure Container Registry (az acr)
-      href: https://docs.microsoft.com/cli/azure/acr
-    - name: Web-App für Container (az appservice)
-      href: https://docs.microsoft.com/cli/azure/appservice
-    - name: Azure App Service-Web-Apps (az webapp)
-      href: https://docs.microsoft.com/cli/azure/webapp
-    - name: Azure Service Fabric (az sf)
-      href: https://docs.microsoft.com/cli/azure/sf
-    - name: Azure Virtual Machines (az vm)
-      href: https://docs.microsoft.com/cli/azure/vm
-ms.openlocfilehash: 9ee48a00784c0ca9fa00507e2956e34e7e6792d5
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486230"
+        - name: 'Schnellstart: Erstellen einer Registrierung'
+          href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli'
+        - name: 'Tutorial: Erstellen von Containerimages'
+          items:
+            - name: '1: Erstellen von Images in Azure'
+              href: ../container-registry/container-registry-tutorial-quick-task.md
+            - name: '2: Automatisieren der Imageerstellung'
+              href: ../container-registry/container-registry-tutorial-build-task.md
+            - name: '3: Basisimage zum Aktualisieren von Builds'
+              href: ../container-registry/container-registry-tutorial-base-image-update.md
+    - name: Web-App für Container
+      href: 'https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro'
+      items:
+        - name: Verwenden eines benutzerdefinierten Docker-Images für Azure-Web-Apps für Container
+          href: 'https://docs.microsoft.com/azure/app-service/containers/tutorial-custom-docker-image'
+        - name: 'Tutorial: App mit mehreren Containern'
+          href: 'https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app'
+    - name: Service Fabric
+      href: 'https://docs.microsoft.com/azure/service-fabric/'
+      items:
+        - name: Übersicht – Service Fabric und Container
+          href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview'
+        - name: Anleitung
+          items:
+            - name: Erstellen einer Containeranwendung unter Windows
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers'
+            - name: Erstellen einer Containeranwendung unter Linux
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers-linux'
+            - name: Packen einer vorhandenen .NET-Anwendung in Container
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-host-app-in-a-container'
+    - name: Windows-Container
+      href: 'https://docs.microsoft.com/azure/virtual-machines/windows/overview'
+      items:
+        - name: Schnellstart – Windows-Container unter Windows Server
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server'
+        - name: Informationen zu Windows-Containern
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/about/index'
+    - name: Azure Red Hat OpenShift
+      href: 'https://docs.microsoft.com/azure/openshift/'
+      items:
+        - name: Was ist Azure Red Hat Openshift?
+          href: ../openshift/intro-openshift.md
+        - name: 'Tutorial: Erstellen und Verwalten eines Azure Red Hat OpenShift-Clusters'
+          items:
+            - name: 1. Erstellen eines Azure Red Hat OpenShift-Clusters
+              href: ../openshift/tutorial-create-cluster.md
+            - name: 2. Skalieren eines Azure Red Hat OpenShift-Clusters
+              href: ../openshift/tutorial-scale-cluster.md
+            - name: 3. Löschen eines Azure Red Hat OpenShift-Clusters
+              href: ../openshift/tutorial-delete-cluster.md
+    - name: Verweis
+      items:
+        - name: Azure Container Instances (az container)
+          href: 'https://docs.microsoft.com/cli/azure/container'
+        - name: Azure Container Service (az acs)
+          href: 'https://docs.microsoft.com/cli/azure/acs'
+        - name: Azure Container Registry (az acr)
+          href: 'https://docs.microsoft.com/cli/azure/acr'
+        - name: Web-App für Container (az appservice)
+          href: 'https://docs.microsoft.com/cli/azure/appservice'
+        - name: Azure App Service-Web-Apps (az webapp)
+          href: 'https://docs.microsoft.com/cli/azure/webapp'
+        - name: Azure Service Fabric (az sf)
+          href: 'https://docs.microsoft.com/cli/azure/sf'
+        - name: Azure Virtual Machines (az vm)
+          href: 'https://docs.microsoft.com/cli/azure/vm'

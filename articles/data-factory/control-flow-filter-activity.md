@@ -3,21 +3,20 @@ title: Aktivität „Filter“ in Azure Data Factory | Microsoft-Dokumentation
 description: Die Aktivität „Filter“ filtert die Eingaben.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.author: shlo
-ms.openlocfilehash: 787c9393e2700bd7ed349b501e70abc4a0687b9c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c0f5d3264d953498af61c6e8d36dadee7dd61931
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021831"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915511"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Aktivität „Filter“ in Azure Data Factory
 Sie können eine Filter-Aktivität in einer Pipeline verwenden, um einen Filterausdruck auf ein Eingabearray anzuwenden. 
@@ -39,14 +38,14 @@ Sie können eine Filter-Aktivität in einer Pipeline verwenden, um einen Filtera
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Der Name der `Filter`-Aktivität. | Zeichenfolge | JA
-type | Muss auf **filter** festgelegt sein. | Zeichenfolge | JA
-condition | Die Bedingung zum Filtern der Eingaben. | Ausdruck | JA
-items | Das Eingabearray, auf das der Filter angewendet werden soll. | Ausdruck | JA
+name | Der Name der `Filter`-Aktivität. | Zeichenfolge | Ja
+type | Muss auf **filter** festgelegt sein. | Zeichenfolge | Ja
+condition | Die Bedingung zum Filtern der Eingaben. | Ausdruck | Ja
+items | Das Eingabearray, auf das der Filter angewendet werden soll. | Ausdruck | Ja
 
 ## <a name="example"></a>Beispiel
 
-In diesem Beispiel enthält die Pipeline zwei Aktivitäten: **Filter** und **ForEach**. Die Aktivität „Filter“ wird so konfiguriert, dass das Eingabearray für Elemente mit einem Wert größer als 3 gefiltert wird. Die Aktivität „ForEach“ durchläuft anschließend die gefilterten Werte und wartet die vom aktuellen Wert angegebene Dauer in Sekunden.
+In diesem Beispiel enthält die Pipeline zwei Aktivitäten: **Filter** und **ForEach**. Die Aktivität „Filter“ wird so konfiguriert, dass das Eingabearray für Elemente mit einem Wert größer als 3 gefiltert wird. Die Aktivität ForEach durchläuft anschließend die gefilterten Werte und legt für die Variable **test** den aktuellen Wert fest.
 
 ```json
 {
@@ -61,32 +60,53 @@ In diesem Beispiel enthält die Pipeline zwei Aktivitäten: **Filter** und **For
                 }
             },
             {
-                "name": "MyForEach",
-                "type": "ForEach",
-                "typeProperties": {
-                    "isSequential": "false",
-                    "batchCount": 1,
-                    "items": "@activity('MyFilterActivity').output.value",
-                    "activities": [{
-                        "type": "Wait",
-                        "typeProperties": {
-                            "waitTimeInSeconds": "@item()"
-                        },
-                        "name": "MyWaitActivity"
-                    }]
-                },
-                "dependsOn": [{
+            "name": "MyForEach",
+            "type": "ForEach",
+            "dependsOn": [
+                {
                     "activity": "MyFilterActivity",
-                    "dependencyConditions": ["Succeeded"]
-                }]
+                    "dependencyConditions": [
+                        "Succeeded"
+                    ]
+                }
+            ],
+            "userProperties": [],
+            "typeProperties": {
+                "items": {
+                    "value": "@activity('MyFilterActivity').output.value",
+                    "type": "Expression"
+                },
+                "isSequential": "false",
+                "batchCount": 1,
+                "activities": [
+                    {
+                        "name": "Set Variable1",
+                        "type": "SetVariable",
+                        "dependsOn": [],
+                        "userProperties": [],
+                        "typeProperties": {
+                            "variableName": "test",
+                            "value": {
+                                "value": "@string(item())",
+                                "type": "Expression"
+                            }
+                        }
+                    }
+                ]
             }
-        ],
+        }],
         "parameters": {
             "inputs": {
                 "type": "Array",
                 "defaultValue": [1, 2, 3, 4, 5, 6]
             }
-        }
+        },
+        "variables": {
+            "test": {
+                "type": "String"
+            }
+        },
+        "annotations": []
     }
 }
 ```

@@ -4,20 +4,20 @@ description: Erfahren Sie mehr über die Optionen zum Erstellen und Verwenden ei
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 03/06/2019
+ms.topic: conceptual
+ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 52226d07595120395909dd5f47d5d896f5cdaa75
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 67022c6bd9e237ce24d8e63285f7ebabadca87c6
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798792"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671309"
 ---
 # <a name="azure-storage-account-overview"></a>Übersicht über Azure Storage-Konten
 
-Ein Azure Storage-Konto enthält all Ihre Azure Storage-Datenobjekte: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. Die Daten in Ihrem Azure Storage-Konto sind stabil, hoch verfügbar, sicher, massiv skalierbar und über HTTP oder HTTPS von jedem Ort der Welt zugänglich.
+Ein Azure Storage-Konto enthält all Ihre Azure Storage-Datenobjekte: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. Das Speicherkonto stellt einen eindeutigen Namespace für Ihre Azure Storage-Daten bereit, auf den von jedem Ort der Welt aus über HTTP oder HTTPS zugegriffen werden kann. Daten in Ihrem Azure Storage-Konto sind dauerhaft und hochverfügbar, sicher und extrem skalierbar.
 
 Um zu erfahren, wie Sie ein Azure Storage-Konto erstellen, lesen Sie den Artikel [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
 
@@ -62,9 +62,13 @@ Während Allgemein v2-Konten für die meisten Fälle empfohlen werden, eignen si
 
 ### <a name="block-blob-storage-accounts"></a>Blockblob-Speicherkonten
 
-Ein Blockblob-Speicherkonto ist ein spezielles Speicherkonto, das dazu dient, unstrukturierte Objektdaten als Blockblobs oder Anfügeblobs zu speichern. Blockblob-Speicherkonten bieten mehrere Zugriffsebenen, um Daten auf Ihren Nutzungsmustern basierend zu speichern. Weitere Informationen finden Sie unter [Zugriffsebenen für Blockblobdaten](#access-tiers-for-block-blob-data).
+Blockblob-Speicherkonten sind spezielle Speicherkonten und dienen dazu, unstrukturierte Objektdaten als Blockblobs zu speichern. Dieser Speicherkontotyp unterstützt Block- und Anfügeblobs, nicht jedoch Seitenblobs, Tabellen oder Warteschlangen.
 
-### <a name="filestorage-preview-storage-accounts"></a>FileStorage-Speicherkonten (Vorschau)
+Gegenüber universellen V2- und Blobspeicherkonten bieten Blockblob-Speicherkonten niedrige und einheitliche Latenzzeiten und höhere Transaktionsraten.
+
+Blockblob-Speicherkonten unterstützen derzeit kein Tiering zu den Zugriffsebenen „Heiß“, „Kalt“ oder „Archiv“.
+
+### <a name="filestorage-storage-accounts"></a>FileStorage-Speicherkonten
 
 Ein FileStorage-Speicherkonto ist ein spezielles Speicherkonto, das zum Speichern und Erstellen von Premium-Dateifreigaben verwendet wird. FileStorage-Speicherkonten bieten einzigartige leistungsorientierte Merkmale wie IOPS-Bursting. Weitere Informationen zu diesen Merkmalen finden Sie im Abschnitt [Leistungsstufen für Dateifreigaben](../files/storage-files-planning.md#file-share-performance-tiers) des Planungshandbuchs für Azure Files.
 
@@ -75,12 +79,16 @@ Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 - Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
 - Der Name Ihres Speicherkontos muss innerhalb von Azure eindeutig sein. Zwei Speicherkonten können nicht denselben Namen haben.
 
-## <a name="general-purpose-performance-tiers"></a>Allgemeine Leistungsstufen
+## <a name="performance-tiers"></a>Leistungsstufen
 
 Allgemeine Speicherkonten können für jede der folgenden Leistungsstufen konfiguriert werden:
 
 * Eine Standard-Leistungsstufe zum Speichern von Blobs, Dateien, Tabellen, Warteschlangen und Azure-VM-Datenträgern.
 * Eine Premium-Leistungsstufe zum ausschließlichen Speichern von nicht verwalteten VM-Datenträgern.
+
+Blockblob-Speicherkonten bieten die Leistungsebene „Premium“ für das Speichern von Block- und Anfügeblobs.
+
+FileStorage-Speicherkonten bieten die Leistungsebene „Premium“ für Azure-Dateifreigaben.
 
 ## <a name="access-tiers-for-block-blob-data"></a>Zugriffsebenen für Blockblobdaten
 
@@ -88,9 +96,9 @@ Azure Storage bietet verschiedene Optionen für den Zugriff auf Blockblobdaten b
 
 Folgende Zugriffsebenen sind verfügbar:
 
-* Die Zugriffsebene **Heiß**, die für häufigen Zugriff auf Objekte im Speicherkonto optimiert ist. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist sehr kosteneffektiv, aber die Speicherkosten liegen etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
-* Die Zugriffsebene **Kalt**, die für die Speicherung von großen Datenmengen optimiert ist, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist kostengünstiger, aber der Zugriff auf die Daten ist unter Umständen etwas kostenintensiver als der Zugriff auf Daten auf der Ebene „Heiß“.
-* Die Ebene **Archiv**, die nur für einzelne Blockblobs verfügbar ist. Diese Ebene ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Ebene „Archiv“ ist die kosteneffektivste Option für das Speichern von Daten, aber der Zugriff auf die Daten ist kostenintensiver als der Zugriff auf Daten auf der Ebene „Heiß“ oder „Kalt“.
+* Die Zugriffsebene **Heiß**, die für häufigen Zugriff auf Objekte im Speicherkonto optimiert ist. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist besonders kostengünstig, dafür liegen aber die Speicherkosten etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
+* Die Zugriffsebene **Kalt**, die für die Speicherung von großen Datenmengen optimiert ist, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist kostengünstiger, doch kann der Zugriff auf die Daten teurer sein als der Zugriff auf der Ebene „Heiß“.
+* Die Ebene **Archiv**, die nur für einzelne Blockblobs verfügbar ist. Diese Ebene ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Archivebene ist die kosteneffektivste Option für das Speichern von Daten, der Zugriff auf die Daten ist jedoch kostenintensiver als der Zugriff auf Daten auf der heißen oder kalten Ebene.
 
 Wenn sich das Nutzungsmusters Ihrer Daten ändern, können Sie jederzeit zwischen den Zugriffsebenen wechseln. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
@@ -119,7 +127,7 @@ Wenn Ihr allgemeines Speicherkonto beispielsweise *meinspeicherkonto*heißt, lau
 * Azure Files: http://*meinspeicherkonto*.file.core.windows.net
 
 > [!NOTE]
-> Ein Blobspeicherkonto macht nur den Endpunkt des Blobdiensts verfügbar.
+> Blockblob- und Blockspeicherkonten machen nur den Endpunkt des Blobdiensts verfügbar.
 
 Die URL für den Zugriff auf ein Objekt in einem Speicherkonto wird durch Anhängen des Objektstandorts im Speicherkonto an den Endpunkt generiert. Eine Blob-Adresse kann beispielsweise das folgende Format haben: http://*meinspeicherkonto*.blob.core.windows.net/*meincontainer*/*meinblob*.
 
@@ -135,12 +143,12 @@ Sie können eine der folgenden Methoden verwenden, um Zugriff auf die Daten in I
 
 - **Azure Active Directory:** Verwenden Sie Anmeldeinformationen von Azure Active Directory (Azure AD), um einen Benutzer, eine Gruppe oder eine andere Identität für den Zugriff auf Blob- und Warteschlangendaten zu authentifizieren. Wenn die Authentifizierung einer Identität erfolgreich war, gibt Azure AD ein Token zurück, das zum Autorisieren der Anforderung bei Azure Blob Storage oder Azure Queue Storage verwendet wird. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md).
 - **Autorisierung mit gemeinsam verwendetem Schlüssel:** Verwenden Sie den Zugriffsschlüssel für Ihr Speicherkonto, um eine Verbindungszeichenfolge zu erstellen, die Ihre Anwendung zur Laufzeit für den Zugriff auf Azure Storage verwendet. Die Werte in der Verbindungszeichenfolge werden verwendet, um den *Autorisierungsheader* zu generieren, der an Azure Storage übergeben wird. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
-- **Shared Access Signature (SAS):** Verwenden Sie eine Shared Access Signature, um den Zugriff auf Ressourcen in Ihrem Speicherkonto zu delegieren, wenn Sie nicht die Azure AD-Authentifizierung nutzen. Eine Shared Access Signature ist ein Token, das alle Informationen kapselt, die zum Autorisieren einer Zugriffsanforderung für Azure Storage in der URL erforderlich sind. In der Shared Access Signature können Sie die Speicherressource, die gewährten Berechtigungen und das Intervall angeben, in dem die Berechtigungen gültig sind. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+- **Shared Access Signature (SAS):** Verwenden Sie eine Shared Access Signature, um den Zugriff auf Ressourcen in Ihrem Speicherkonto zu delegieren, wenn Sie nicht die Azure AD-Autorisierung nutzen. Eine Shared Access Signature ist ein Token, das alle Informationen kapselt, die zum Autorisieren einer Zugriffsanforderung für Azure Storage in der URL erforderlich sind. In der Shared Access Signature können Sie die Speicherressource, die gewährten Berechtigungen und das Intervall angeben, in dem die Berechtigungen gültig sind. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md).
 
 > [!NOTE]
 > Die Authentifizierung von Benutzern oder Anwendungen mithilfe von Azure AD-Anmeldeinformationen bietet mehr Sicherheit und Benutzerfreundlichkeit als andere Autorisierungsmethoden. Während Sie weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel mit Ihren Anwendungen verwenden können, macht Azure AD das Speichern Ihrer Kontozugriffsschlüssel mit Ihrem Code überflüssig. Sie können auch weiterhin Shared Access Signatures für zum Gewähren eines differenzierten Zugriffs auf Ressourcen in Ihrem Speicherkonto verwenden. Azure AD bietet jedoch ähnliche Funktionen, bei denen Sie weder SAS-Token verwalten noch sich um das Widerrufen einer gefährdeten SAS kümmern müssen. 
 >
-> Microsoft empfiehlt, nach Möglichkeit die Azure AD-Authentifizierung für Ihre Blob- und Warteschlangenanwendungen in Azure Storage zu verwenden.
+> Microsoft empfiehlt, nach Möglichkeit die Azure AD-Autorisierung für Ihre Blob- und Warteschlangenanwendungen in Azure Storage zu verwenden.
 
 ## <a name="copying-data-into-a-storage-account"></a>Kopieren von Daten in ein Speicherkonto
 
@@ -177,5 +185,6 @@ Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Um zu erfahren, wie Sie ein Azure Storage-Konto erstellen, lesen Sie den Artikel [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
+* Informationen zum Erstellen eines universellen Azure-Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
+* Informationen zum Erstellen eines Blockblob-Speicherkontos finden Sie unter [Erstellen eines Blockblob-Speicherkontos](../blobs/storage-blob-create-account-block-blob.md).
 * Informationen zum Verwalten oder Löschen eines vorhandenen Speicherkontos finden Sie unter [Verwalten von Azure Storage-Konten](storage-account-manage.md).

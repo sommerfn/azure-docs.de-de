@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: edbd7000001ae6927078e2f1bb9e348cc78f9efa
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 8ee2dea364253d871d5624242d15d8a81ab6f08f
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962110"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465897"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligente Erkennung in Application Insights
- Die intelligente Erkennung warnt Sie automatisch vor potenziellen Leistungsproblemen in Ihrer Webanwendung. Sie führt eine proaktive Analyse der Telemetriedaten durch, die Ihre App an [Application Insights](../../azure-monitor/app/app-insights-overview.md) sendet. Bei einem plötzlichen Anstieg der Fehlerraten oder bei ungewöhnlichen Mustern in der Client- oder Serverleistung erhalten Sie eine Warnung. Diese Funktion muss nicht konfiguriert werden. Sie wird ausgeführt, wenn Ihre Anwendung genügend Telemetriedaten sendet.
+ Die intelligente Erkennung warnt Sie automatisch vor potenziellen Leistungsproblemen und Fehleranomalien in Ihrer Webanwendung. Sie führt eine proaktive Analyse der Telemetriedaten durch, die Ihre App an [Application Insights](../../azure-monitor/app/app-insights-overview.md) sendet. Bei einem plötzlichen Anstieg der Fehlerraten oder bei ungewöhnlichen Mustern in der Client- oder Serverleistung erhalten Sie eine Warnung. Diese Funktion muss nicht konfiguriert werden. Sie wird ausgeführt, wenn Ihre Anwendung genügend Telemetriedaten sendet.
 
-Sie können auf Warnungen der intelligenten Erkennung über die erhaltenen E-Mails oder das Blatt für die intelligenten Erkennung zugreifen.
+Sie können über die erhaltenen E-Mails und das Blatt für die intelligenten Erkennung auf Ergebnisse der intelligenten Erkennung zugreifen.
 
 ## <a name="review-your-smart-detections"></a>Überprüfen der Ergebnisse der intelligenten Erkennung
 Sie haben zwei Möglichkeiten, Erkennungen anzuzeigen:
@@ -32,24 +32,24 @@ Sie haben zwei Möglichkeiten, Erkennungen anzuzeigen:
     ![E-Mail-Warnung](./media/proactive-diagnostics/03.png)
   
     Klicken Sie auf die große Schaltfläche, um ausführlichere Informationen im Portal zu öffnen.
-* Die Kachel für die **intelligente Erkennung** auf dem Blatt „Übersicht“ Ihrer App zeigt die Anzahl aktueller Warnungen an. Klicken Sie auf die Kachel, um eine Liste der aktuellen Warnungen anzuzeigen.
+* **Das Blatt „Intelligente Erkennung“** in Application Insights. Wählen Sie **Intelligente Erkennung** im Menü **Untersuchen** aus, um eine Liste der aktuellen Erkennungen anzuzeigen.
 
 ![Aktuelle Erkennungen anzeigen](./media/proactive-diagnostics/04.png)
 
-Wählen Sie eine Warnung aus, um Details anzuzeigen.
+Wählen Sie eine Erkennung aus, um ihre Details anzuzeigen.
 
 ## <a name="what-problems-are-detected"></a>Welche Probleme werden erkannt?
-Es gibt drei Arten der Erkennung:
+Die intelligente Erkennung entdeckt eine Reihe von Problemen und gibt Benachrichtigungen dazu aus, z.B.:
 
 * [Intelligente Erkennung – Fehlerabweichungen](../../azure-monitor/app/proactive-failure-diagnostics.md). Wir nutzen Machine Learning, um die voraussichtliche Rate fehlerhafter Anforderungen für Ihre App (korreliert mit Lastangaben und anderen Faktoren) festzulegen. Falls die Fehlerrate den erwarteten Rahmen überschreitet, wird eine Warnung gesendet.
 * [Intelligente Erkennung – Leistungsabweichungen](../../azure-monitor/app/proactive-performance-diagnostics.md). Sie erhalten Benachrichtigungen, wenn sich die Reaktionszeit eines Vorgangs oder die Abhängigkeitsdauer im Vergleich zu den typischen Verlaufsdaten verschlechtert oder wenn für die Reaktionszeit oder die Seitenladezeit ein anomales Muster erkannt wird.   
-* [Intelligente Erkennung – Azure-Clouddienstprobleme](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/). Sie erhalten Warnungen, wenn Ihre App in Azure Cloud Services gehostet wird und bei einer Rolleninstanz Startfehler, häufige Wiederverwendungen oder Abstürze zur Laufzeit auftreten.
+* Allgemeine Beeinträchtigungen und Probleme wie [Verschlechterung des Schweregrads der Ablaufverfolgung](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), [Speicherverlust](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), [anormaler Anstieg im Ausnahmevolume](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) und [Verdachtsmomente für ein Sicherheitsproblem](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack).
 
 (Über die Hilfelinks in den jeweiligen Benachrichtigungen gelangen Sie zu den relevanten Artikeln.)
 
 ## <a name="smart-detection-email-notifications"></a>E-Mail-Benachrichtigungen bei intelligenter Erkennung
 
-Alle Regeln für die intelligente Erkennung, mit Ausnahme der als Vorschauversion gekennzeichneten Regeln, sind standardmäßig so konfiguriert, dass bei Erkennungen E-Mail-Benachrichtigungen gesendet werden.
+Alle Regeln für die intelligente Erkennung, mit Ausnahme der als _Vorschauversion_ gekennzeichneten Regeln, sind standardmäßig so konfiguriert, dass bei Erkennungen E-Mail-Benachrichtigungen gesendet werden.
 
 Zum Konfigurieren von E-Mail-Benachrichtigungen für eine bestimmte Regel für die intelligente Erkennung können Sie das Blatt **Einstellungen** für die intelligente Erkennung öffnen, und die entsprechende Regel auswählen. Dadurch wird das Blatt **Regel bearbeiten** geöffnet.
 

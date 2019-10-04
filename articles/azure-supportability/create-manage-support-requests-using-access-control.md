@@ -7,12 +7,12 @@ ms.date: 1/31/2017
 ms.topic: article
 ms.service: azure
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: d98d0637c6d520193b11f4267c59016772ef063a
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 3cf17f6e391608af9d17591a81c579a1db779a6a
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792479"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967808"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure zum Steuern von Zugriffsrechten für die Erstellung und Verwaltung von Supportanfragen
 
@@ -65,7 +65,7 @@ Angenommen, Sie sind der Besitzer des Abonnements „Visual Studio MSDN Subscrip
 Ihr Kollege Joe ist Ressourcenbesitzer für einige der Ressourcengruppen in diesem Abonnement und verfügt über Leseberechtigungen für das Abonnement.
 Sie möchten Ihrem Kollegen Joe Zugriff gewähren, damit er Supporttickets für die Ressourcen unter diesem Abonnement erstellen und verwalten kann.
 
-1. Hierzu müssen Sie zunächst zu dem Abonnement navigieren. Unter „Einstellungen“ wird eine Liste mit Benutzern angezeigt. Klicken Sie auf den Benutzer „Joe“, der über Lesezugriff für das Abonnement verfügt, und weisen Sie ihm eine neue benutzerdefinierte Rolle zu.
+1. Im ersten Schritt navigieren Sie zum Abonnement. Unter **Einstellungen** wird eine Liste von Benutzern angezeigt. Wählen Sie den Benutzer „Joe“ aus, der über Lesezugriff für das Abonnement verfügt. Wir weisen Joe eine neue benutzerdefinierte Rolle zu.
 
     ![Hinzufügen einer Rolle](./media/create-manage-support-requests-using-access-control/add-role.png)
 
@@ -96,8 +96,8 @@ Sie möchten Ihrem Kollegen Joe Zugriff gewähren, damit er Supporttickets für 
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>Entziehen des Zugriffs auf Supportanfragen im Azure-Portal
 
 Einem Benutzer kann nicht nur Zugriff zum Erstellen und Verwalten von Supportanfragen gewährt werden, der Zugriff kann dem Benutzer auch wieder entzogen werden.
-Wenn Sie einem Benutzer die Fähigkeit zum Erstellen und Verwalten von Supportanfragen entziehen möchten, navigieren Sie zum Abonnement, klicken Sie auf „Einstellungen“, und klicken Sie anschließend auf den Benutzer (in diesem Fall: Joe).
-Klicken Sie mit der rechten Maustaste auf den Rollennamen „Support Request Contributor“, und klicken Sie anschließend auf „Entfernen“.
+
+Wenn Sie einem Benutzer die Fähigkeit zum Erstellen und Verwalten von Supportanfragen entziehen möchten, navigieren Sie zum Abonnement, klicken Sie auf „Einstellungen“, und klicken Sie anschließend auf den Benutzer (in diesem Fall: Joe). Klicken Sie mit der rechten Maustaste auf den Rollennamen „Support Request Contributor“, und klicken Sie anschließend auf „Entfernen“.
 
 ![Entziehen des Supportanfragenzugriffs](./media/create-manage-support-requests-using-access-control/remove-support-request-access.png)
 
@@ -105,6 +105,6 @@ Wenn sich Joe nun beim Portal anmeldet und versucht, eine Supportanfrage zu erst
 
 ![Abonnementfehler 2](./media/create-manage-support-requests-using-access-control/subscription-error-2.png)
 
-Wenn Joe auf „Alle Supportanfragen“ klickt, werden ihm keine Supportanfragen angezeigt.
+Wenn Joe „Alle Supportanfragen“ auswählt, werden ihm keine Supportanfragen angezeigt.
 
 ![Ansicht mit Falldetails 2](./media/create-manage-support-requests-using-access-control/case-details-view-2.png)

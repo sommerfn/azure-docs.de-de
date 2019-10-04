@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 1109e44ed9c6aa8a0f7305b8a50410316711589c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108508"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65204248"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurieren des Webproxys für Ihr StorSimple-Gerät
 
@@ -68,7 +68,7 @@ Der Setup-Assistent führt Sie durch die einzelnen Schritte für die Webproxykon
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
     Standardmäßig wird die TCP-Portnummer 8080 angegeben.
-4. Legen Sie den Authentifizierungstyp auf **NTLM**, **Standard** oder **Keine** fest. „Standard“ bietet bei der Authentifizierung für die Proxyserverkonfiguration die geringste Sicherheit. „NTLM“ (NT-LAN-Manager) ist ein äußerst sicheres und komplexes Authentifizierungsprotokoll mit einem Drei-Wege-Messaging-System für die Benutzerauthentifizierung (ggf. auch ein Vier-Wege-System, wenn zusätzliche Integrität erforderlich ist). Standardmäßig wird die NTLM-Authentifizierung verwendet. Weitere Informationen finden Sie unter [Standard](http://hc.apache.org/httpclient-3.x/authentication.html) und [NTLM-Authentifizierung](http://hc.apache.org/httpclient-3.x/authentication.html). 
+4. Legen Sie den Authentifizierungstyp auf **NTLM**, **Standard** oder **Keine** fest. „Standard“ bietet bei der Authentifizierung für die Proxyserverkonfiguration die geringste Sicherheit. „NTLM“ (NT-LAN-Manager) ist ein äußerst sicheres und komplexes Authentifizierungsprotokoll mit einem Drei-Wege-Messaging-System für die Benutzerauthentifizierung (ggf. auch ein Vier-Wege-System, wenn zusätzliche Integrität erforderlich ist). Standardmäßig wird die NTLM-Authentifizierung verwendet. Weitere Informationen finden Sie unter [Standard](https://hc.apache.org/httpclient-3.x/authentication.html) und [NTLM-Authentifizierung](https://hc.apache.org/httpclient-3.x/authentication.html). 
    
    > [!IMPORTANT]
    > **Im StorSimple-Geräte-Manager-Dienst funktionieren die Geräteüberwachungsdiagramme nicht, wenn in der Proxyserverkonfiguration für das Gerät die Standard- oder NTLM-Authentifizierung aktiviert ist. Zur Verwendung der Überwachungsdiagramme muss Authentifizierung auf „Keine“ festgelegt sein.**

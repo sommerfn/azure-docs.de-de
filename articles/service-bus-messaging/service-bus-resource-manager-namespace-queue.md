@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 2952c446e2d66505ebaec42eb82e37be02035483
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 6d7e4253d37d5b50fc8c3de1c8c31636e59b2b9c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047788"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444784"
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Erstellen eines Service Bus-Namespace und einer Warteschlange mithilfe einer Azure Resource Manager-Vorlage
 
@@ -27,15 +27,15 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage 
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][Authoring Azure Resource Manager templates].
 
-Die vollständige Vorlage finden Sie unter [Service Bus namespace and queue template][Service Bus namespace and queue template] (Vorlage für Service Bus-Namespace und -Warteschlange) auf GitHub.
+Die vollständige Vorlage finden Sie unter [Service Bus namespace and queue template][Service Bus namespace and queue template] (Service Bus-Namespace- und Warteschlangenvorlage) auf GitHub.
 
 > [!NOTE]
 > Die folgenden Azure Resource Manager-Vorlagen sind zum Download und zur Bereitstellung verfügbar.
 > 
-> * [Erstellen eines Service Bus-Namespace mit einer Warteschlange und einer Autorisierungsregel](service-bus-resource-manager-namespace-auth-rule.md)
-> * [Erstellen eines Service Bus-Namespace mit einem Thema und einem Abonnement](service-bus-resource-manager-namespace-topic.md)
-> * [Erstellen eines Service Bus-Namespace](service-bus-resource-manager-namespace.md)
-> * [Erstellen eines Service Bus-Namespace mit einem Thema, einem Abonnement und einer Regel](service-bus-resource-manager-namespace-topic-with-rule.md)
+> * [Create a Service Bus authorization rule for namespace and queue using an Azure Resource Manager template](service-bus-resource-manager-namespace-auth-rule.md)
+> * [Create a Service Bus namespace with topic and subscription using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-topic.md)
+> * [Erstellen eines Service Bus-Namespaces](service-bus-resource-manager-namespace.md)
+> * [Create a Service Bus namespace with topic, subscription, and rule (Erstellen eines Service Bus-Namespace mit Thema, Abonnement und Regel)](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
 > Die neuesten Vorlagen finden Sie, indem Sie im Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] nach **Service Bus** suchen.
 
@@ -49,7 +49,7 @@ Mit dieser Vorlage stellen Sie einen Service Bus-Namespace mit einer Warteschlan
 
 Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
 
-[![DIn Azure bereitstellen(./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
+[![In Azure bereitstellen](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parameter
 
@@ -137,10 +137,12 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt haben, lesen Sie die folgenden Artikel, und erfahren Sie, wie Sie diese Ressourcen verwalten können:
+Lesen Sie das folgende Thema zum Erstellen einer Autorisierungsregel für den Namespace bzw. die Warteschlange: [Erstellen einer Service Bus-Autorisierungsregel für Namespaces und Warteschlangen mithilfe einer Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-auth-rule.md)
+
+In den folgenden Artikeln erfahren Sie, wie Sie diese Ressourcen verwalten:
 
 * [Verwalten von Service Bus mit PowerShell](service-bus-manage-with-ps.md)
-* [Manage Service Bus resources with the Service Bus Explorer (Verwalten von Service Bus-Ressourcen mit dem Service Bus-Explorer)](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Service Bus namespace and queue template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/

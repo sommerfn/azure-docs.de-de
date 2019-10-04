@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Dokumentation zu Private Link
+summary: Mit Azure Private Link können Sie über einen privaten Endpunkt in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage und SQL Database) sowie auf in Azure gehostete kundeneigene Dienste/Partnerdienste zugreifen.  Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können auch Ihren eigenen Private Link-Dienst in Ihrem virtuellen Netzwerk erstellen und Ihren Kunden privat zur Verfügung stellen.
+metadata:
+  title: 'Dokumentation zu Private Link: Schnellstarts, Schrittanleitungen und API-Referenzen'
+  description: Hier erfahren Sie, wie Sie den Azure Private Link-Dienst verwenden. In den Schnellstartanleitungen und Tutorials wird gezeigt, wie Sie einen Private Link-Dienst bereitstellen.
+  ms.service: private-link
+  ms.topic: landing-page
+  ms.collection: collection
+  author: KumudD
+  ms.author: kumud
+  ms.date: 09/16/2019
+  ms.openlocfilehash: 24b6d3ce2514ef25a015182e4a4fcd641ac76d50
+  ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71104601"
+landingContent:
+- title: Informationen zu Azure Private Link
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Private Link?
+      url: private-link-overview.md
+- title: Herstellen einer Verbindung mit einem Azure-Dienst
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Was ist ein privater Endpunkt?
+      url: private-endpoint-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Erstellen eines privaten Endpunkts
+      url: create-private-endpoint-portal.md
+- title: Erstellen eines eigenen Private Link-Diensts
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Was ist der Private Link-Dienst?
+      url: private-link-service-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen eines Private Link-Diensts
+      url: create-private-link-service-powershell.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure-Befehlszeilenschnittstelle
+      url: /cli/azure/network
+    - text: Azure PowerShell
+      url: /powershell/module/az.network
+    - text: REST
+      url: /rest/api/virtualnetwork/privatelinkservices

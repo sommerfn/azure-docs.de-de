@@ -3,31 +3,29 @@ title: Azure Data Factory – Fallstudien | Microsoft-Dokumentation
 description: Erfahren Sie, wie einige unserer Kunden Azure Data Factory verwendet haben.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 5474d9a1-e278-429f-bc31-db34551d3881
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 952a8aa2dbfdabfb7f0df198a7453b847c33f7e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4944a870d27fd9ca0b64234b303906739bdc0d04
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019078"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139961"
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory – Fallstudien
 Data Factory ist ein cloudbasierter Dienst zur Verwaltung von Informationen, der das Verschieben und Transformieren von Daten automatisiert. Kunden in vielen Branchen verwenden Data Factory und andere Azure-Dienste, um  ihre Analysen-Pipelines zu erstellen und ihre Geschäftsprobleme zu lösen.  Lernen Sie direkt von unseren Kunden wie und warum sie Data Factory verwenden.
 
 ## <a name="milliman"></a>Milliman
-[Top-Unternehmensberatung formt Versicherungsbranche um](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20096)
+[Top-Unternehmensberatung formt Versicherungsbranche um](https://customers.microsoft.com/en-us/story/732463-top-actuarial-firm-transforms-the-insurance-industry-w)
 
 ## <a name="rockwell-automation"></a>Rockwell Automation
-[Automatisierungsunternehmen im Bereich Industrie senkt Kosten mit Big Data-Lösungen um bis zu 90 Prozent](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18356)
+[Automatisierungsunternehmen im Bereich Industrie senkt Kosten mit Big Data-Lösungen um bis zu 90 Prozent](https://customers.microsoft.com/en-us/story/726192-industrial-automation-firm-cuts-costs-up-to-90-percent)
 
 ## <a name="ziosk"></a>Ziosk
 [Welches Fleisch möchten Sie mit diesem Burger kombinieren? Vielleicht hat Ziosk schon die Antwort für Sie.](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)

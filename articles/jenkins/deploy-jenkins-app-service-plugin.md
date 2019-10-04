@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 58835b66824d55b64b77e34df64d34c8da1c269a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f7e0e23a04c6b141c6e0c5ff88b3d5ff2d76e1d
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864812"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840434"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Bereitstellen in Azure App Service mit dem Jenkins-Plug-In 
 
@@ -35,7 +35,7 @@ Wenn Sie noch nicht über einen Jenkins-Master verfügen, sollten Sie mit der [P
 * [Azure-Anmeldeinformationen](https://plugins.jenkins.io/azure-credentials) Version 1.2
 * [Azure App Service](https://plugins.jenkins.io/azure-app-service) Version 0.1
 
-Mithilfe des Jenkins-Plug-Ins können Sie eine Web-App in einer beliebigen Sprache bereitstellen, die von Web-Apps unterstützt wird, wie beispielsweise C#, PHP, Java und Node.js. In diesem Tutorial wird eine [einfache Java-Web-App für Azure](https://github.com/azure-devops/javawebappsample) verwendet. Wählen Sie die Schaltfläche **Fork** (Verzweigen) in der rechten oberen Ecke der GitHub-Benutzeroberfläche aus, um das Repository in Ihr GitHub-Konto zu verzweigen.  
+Mithilfe des Jenkins-Plug-Ins können Sie eine Web-App in einer beliebigen Sprache bereitstellen, die von Web-Apps unterstützt wird, wie beispielsweise C#, PHP, Python, Java und Node.js. In diesem Tutorial wird eine [einfache Java-Web-App für Azure](https://github.com/azure-devops/javawebappsample) verwendet. Wählen Sie die Schaltfläche **Fork** (Verzweigen) in der rechten oberen Ecke der GitHub-Benutzeroberfläche aus, um das Repository in Ihr GitHub-Konto zu verzweigen.  
 
 > [!NOTE]
 > Das Java JDK und Maven sind zum Erstellen des Java-Projekts erforderlich. Installieren Sie diese Komponenten auf dem Jenkins-Master oder dem VM-Agent, wenn Sie diesen für Continuous Integration nutzen. Wenn Sie eine Java SE-Anwendung bereitstellen, wird ZIP auch auf dem Buildserver benötigt.
@@ -72,7 +72,7 @@ Vor dem Einrichten des Auftrags in Jenkins benötigen Sie einen Azure App Servic
 
 
 1. Erstellen Sie mit dem [Azure CLI-Befehl](/cli/azure/appservice/plan#az-appservice-plan-create) `az appservice plan create` einen Azure App Service-Plan mit dem Tarif **FREE**. Der App Service-Plan definiert die physischen Ressourcen, die zum Hosten Ihrer Apps verwendet werden. Alle einem App Service-Plan zugewiesenen Anwendungen teilen sich diese Ressourcen. Mit gemeinsamen Ressourcen können Sie beim Hosten mehrerer Apps Kosten sparen.
-2. Erstellen Sie eine Web-App. Sie können dafür entweder das [Azure-Portal](/azure/app-service-web/web-sites-configure) oder den folgenden Azure CLI-Befehl `az` verwenden:
+2. Erstellen Sie eine Web-App. Sie können dafür entweder das [Azure-Portal](/azure/app-service/configure-common) oder den folgenden Azure CLI-Befehl `az` verwenden:
     ```azurecli-interactive 
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
     ```

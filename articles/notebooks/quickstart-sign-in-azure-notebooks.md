@@ -10,15 +10,15 @@ ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/25/2019
+ms.topic: quickstart
+ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: f3effc900b79ddb7beac6a3aaf2eee0a264f7b4d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: a9ba6fcc0c8b74664f5c4b32e54530fb4aaa2881
+ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59280858"
+ms.lasthandoff: 06/07/2019
+ms.locfileid: "66751721"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>Schnellstart: Anmelden und Festlegen einer Benutzer-ID
 
@@ -33,6 +33,9 @@ Zwar können Sie Azure-Notebooks jederzeit anzeigen, ohne sich anzumelden, um No
 1. Wenn Sie dazu aufgefordert werden, geben Sie die E-Mail-Adresse eines Microsoft-Kontos oder eines Geschäfts-, Schul- oder Unikontos ein, und wählen Sie **Next** (Weiter) aus. Die Kontotypen sind in [Ihr Benutzerkonto für Azure Notebooks](azure-notebooks-user-account.md) beschrieben. Wenn Sie nicht über ein Microsoft-Konto verfügen oder eins speziell für Azure Notebooks einrichten möchten, wählen Sie **Create one** (Konto erstellen) aus:
 
     ![Anmeldeaufforderung für den Befehl „Create new Microsoft account“ (Neues Microsoft-Konto erstellen)](media/accounts/create-new-microsoft-account.png)
+
+    > [!Tip]
+    > Wenn Sie versuchen, ein neues Konto mit einer E-Mail-Adresse zu erstellen, der bereits ein Konto zugeordnet ist, wird möglicherweise die Meldung „Sie können sich hier nicht mit einer Geschäfts-, Schul- oder Uni-E-Mail-Adresse anmelden. Verwenden Sie eine persönliche E-Mail-Adresse wie Gmail oder Yahoo!, oder besorgen Sie sich eine neue Outlook-E-Mail.“ angezeigt. Versuchen Sie in diesem Fall, sich mit der Geschäfts-E-Mail-Adresse anzumelden, ohne ein neues Konto zu erstellen.
 
 1. Geben Sie Ihr Kennwort ein, wenn Sie dazu aufgefordert werden.
 

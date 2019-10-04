@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 29ec50a1d2e0aebb1aeb73b38c662f4a18624754
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a437927f6ad43f4c3a90433faa5b9fa6f964aa5c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431987"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839228"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -69,7 +69,7 @@ Wenn Sie ein Modell mit Baseline v1.0 angepasst und bereitgestellt haben, bleibt
 
 **A:** Sie können Ihr Modell in Schritten von 20 gleichzeitigen Anforderungen zentral hochskalieren.
 
-Kontaktieren Sie uns, wenn Sie eine höhere Skalierung benötigen.
+Kontaktieren Sie den [Support für die Sprachunterstützung](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text), wenn Sie eine höhere Skalierung benötigen.
 
 **F: Kann ich mein Modell herunterladen und lokal ausführen?**
 
@@ -83,7 +83,12 @@ Kontaktieren Sie uns, wenn Sie eine höhere Skalierung benötigen.
 
 **A:** Die REST-API beschränkt Anforderungen auf 25 pro 5 Sekunden. Informationen finden Sie auf unseren Seiten für [Spracherkennung](speech-to-text.md).
 
-Wenn Sie weitere Datenschutzbedenken im Hinblick auf die Nutzung von Custom Speech Service haben, wenden Sie sich an einen der Supportkanäle.
+**F: Wie werden Zweikanalaudiodaten in Rechnung gestellt?**
+
+**A:** Wenn Sie jeden Kanal separat übermitteln (jeden Kanal in seiner eigenen Datei), wird Ihnen die Abrechnung gemäß der Dauer der einzelnen Dateien in Rechnung gestellt. Wenn Sie in jedem Kanal eine einzelne Datei übermitteln, wird Ihnen die Dauer der einzelnen Datei in Rechnung gestellt.
+
+> [!IMPORTANT]
+> Wenn Sie weitere Datenschutzbedenken im Hinblick auf die Nutzung von Custom Speech Service haben, wenden Sie sich an einen der Supportkanäle.
 
 ## <a name="importing-data"></a>Importieren von Daten
 

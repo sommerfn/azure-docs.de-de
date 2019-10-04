@@ -1,0 +1,176 @@
+- name: VMware-Lösung von CloudSimple
+  href: /azure/vmware-cloudsimple
+  items:
+    - name: Übersicht
+      items:
+        - name: Was ist die VMware-Lösung von CloudSimple?
+          href: cloudsimple-vmware-solutions-overview.md
+        - name: Schlüsselkonzepte für die Verwaltung
+          href: key-concepts.md
+    - name: Schnellstart
+      expanded: true
+      items:
+        - name: Netzwerkplanung
+          href: cloudsimple-network-checklist.md
+        - name: Initialisieren und Bereitstellen von Kapazität
+          href: quickstart-create-cloudsimple-service.md
+        - name: "Konfigurieren einer Private\_Cloud-Umgebung"
+          href: quickstart-create-private-cloud.md
+        - name: Erstellen eines virtuellen VMware-Computers in einer Private Cloud
+          href: quickstart-create-private-cloud-vmware-virtual-machine.md
+        - name: Nutzen von virtuellen VMware-Computern in Azure
+          href: quickstart-create-vmware-virtual-machine.md
+    - name: Konzepte
+      items:
+        - name: Dienst
+          href: cloudsimple-service.md
+        - name: Nodes
+          href: cloudsimple-node.md
+        - name: Private Cloud
+          href: cloudsimple-private-cloud.md
+        - name: Virtuelle Computer
+          href: cloudsimple-virtual-machines.md
+        - name: VLANs und Subnetze
+          href: cloudsimple-vlans-subnets.md
+        - name: Firewalltabellen
+          href: cloudsimple-firewall-tables.md
+        - name: VPN-Gateways
+          href: cloudsimple-vpn-gateways.md
+        - name: Öffentliche IP-Adresse
+          href: cloudsimple-public-ip-address.md
+        - name: Azure-Netzwerkverbindung
+          href: cloudsimple-azure-network-connection.md
+        - name: Kontenverwaltung
+          href: cloudsimple-account.md
+        - name: Aktivitätenverwaltung
+          href: cloudsimple-activity.md
+        - name: VMware in einer privaten Cloud
+          href: vmware-components.md
+        - name: Sicherheitsübersicht
+          href: cloudsimple-security.md
+        - name: Knotenkontingent
+          href: node-quota.md
+        - name: Wartung und Updates
+          href: cloudsimple-maintenance-updates.md
+        - name: Häufig gestellte Fragen
+          href: cloudsimple-faq.md
+    - name: Lernprogramme
+      items:
+        - name: Erstellen des CloudSimple-Diensts
+          href: create-cloudsimple-service.md
+        - name: Zugriff auf das CloudSimple-Portal
+          href: access-cloudsimple-portal.md
+        - name: Konfiguration der lokalen Firewall
+          href: on-premises-firewall-configuration.md
+        - name: Zugreifen auf den vSphere-Client
+          href: vcenter-access.md
+        - name: Verwalten von Knoten
+          items:
+            - name: Bereitstellen von Knoten
+              href: create-nodes.md
+            - name: Löschen von Knoten
+              href: delete-nodes.md
+        - name: Verwalten privater Cloudressourcen
+          items:
+            - name: Erstellen einer privaten Cloud
+              href: create-private-cloud.md
+            - name: Verwalten Ihrer privaten Clouds
+              href: manage-private-cloud.md
+            - name: Erweitern einer privaten Cloud
+              href: expand-private-cloud.md
+            - name: Verkleinern einer privaten Cloud
+              href: shrink-private-cloud.md
+            - name: Zuordnen Ihres Azure-Abonnements
+              href: azure-subscription-mapping.md
+            - name: Eskalieren von Berechtigungen
+              href: escalate-private-cloud-privileges.md
+            - name: Löschen einer privaten Cloud
+              href: delete-private-cloud.md
+        - name: Überwachen der CloudSimple-Aktivität
+          href: monitor-activity.md
+        - name: Einrichten privater Cloudnetzwerke
+          items:
+            - name: Erstellen und Verwalten von VLANs und Subnetzen
+              href: create-vlan-subnet.md
+            - name: Einrichten von Firewalltabellen und -regeln
+              href: firewall.md
+            - name: Zuordnen öffentlicher IP-Adressen
+              href: public-ips.md
+            - name: Einrichten von VPN-Verbindungen
+              href: vpn-gateway.md
+            - name: CloudSimple-VNET-Verbindung
+              href: virtual-network-connection.md
+        - name: Verwalten von CloudSimple-Portalkonten
+          items:
+            - name: Anzeigen der Kontozusammenfassung
+              href: account.md
+            - name: Anzeigen der Benutzerliste
+              href: users.md
+        - name: Einrichten virtueller CloudSimple-Computer
+          items:
+            - name: Erstellen eines virtuellen CloudSimple-Computers in Azure
+              href: azure-create-vm.md
+            - name: Verwalten virtueller CloudSimple-Computer in Azure
+              href: azure-manage-vm.md
+    - name: Anleitungen
+      items:
+        - name: Sichern der Umgebung
+          href: private-cloud-secure.md
+        - name: Verwaltung von privaten Clouds
+          items:
+            - name: Ausweiten von Berechtigungen für die private Cloud
+              href: escalate-privileges.md
+            - name: Workload-DNS und DHCP-Einrichtung
+              href: dns-dhcp-setup.md
+            - name: Migrieren von Workloads unter Verwendung von Layer-2-Stretchingnetzwerken
+              href: migration-layer-2-vpn.md
+        - name: Private Cloudnetzwerke
+          items:
+            - name: VPN-Verbindung mit privater Cloud
+              href: set-up-vpn.md
+            - name: Lokale Netzwerkverbindung mit ExpressRoute
+              href: on-premises-connection.md
+            - name: Virtuelle Azure-Netzwerkverbindung mit ExpressRoute
+              href: azure-expressroute-connection.md
+            - name: Konfigurieren der DNS-Namensauflösung
+              href: on-premises-dns-setup.md
+        - name: VMware-Plattform
+          items:
+            - name: Kennenlernen des Berechtigungsmodells für private Clouds
+              href: learn-private-cloud-permissions.md
+            - name: vCenter-Identitätsquellen
+              href: set-vcenter-identity.md
+            - name: Azure Application Gateway mit virtuellen VMware-Computern
+              href: azure-application-gateway.md
+            - name: Konfigurieren eines vCenter-Servers in einer privaten Cloud als vRealize-Automatisierungsendpunkt
+              href: configure-server-vrealize-automation-endpoint.md
+            - name: Migrieren virtueller Workload-Computer zu einer privaten Cloud
+              href: migrate-workloads.md
+            - name: Migration mit Azure Data Box
+              href: migration-using-azure-data-box.md
+            - name: Sicherstellen der Hochverfügbarkeit von Anwendung in VMware in Azure
+              href: ensuring-high-availability.md
+            - name: Auswählen einer Lastenausgleichslösung
+              href: load-balancers.md
+        - name: VMware-Ökosystem
+          items:
+            - name: Sichern von virtuellen Workload-Computern
+              href: backup-workloads-veeam.md
+            - name: Konfigurieren einer privaten Cloud als Standort für die Notfallwiederherstellung mithilfe von Zerto
+              href: disaster-recovery-zerto.md
+            - name: Konfigurieren einer privaten Cloud als Standort für die Notfallwiederherstellung mithilfe von VMware SRM
+              href: disaster-recovery-site-recovery-manager.md
+            - name: Lösungsanleitung für VMware Horizon
+              href: horizon-guide.md
+            - name: Konfigurieren der vSAN-Verschlüsselung für Ihre private Cloud
+              href: vsan-encryption.md
+            - name: "Optimieren Ihrer privaten Cloud für Oracle\_RAC"
+              href: oracle-real-application-clusters.md
+        - name: Azure Core-Integration
+          items:
+            - name: Azure AD-Identitätsquelle in Private Cloud vCenter
+              href: azure-ad.md
+            - name: Lokale Netzwerkverbindung mit ExpressRoute
+              href: on-premises-connection.md
+            - name: Azure Virtual Network-Verbindung mit ExpressRoute
+              href: azure-expressroute-connection.md

@@ -2,18 +2,22 @@
 title: Installieren der IBM ZD&T-Entwicklungs-/Testumgebung in Azure | Microsoft-Dokumentation
 description: Bereitstellen von IBM Z Development and Test Environment (ZD&T) auf Azure-IaaS-VMs.
 services: virtual-machines-linux
+ms.service: virtual-machines-linux
 documentationcenter: ''
 author: njray
+ms.author: edprice
 manager: edprice
 editor: edprice
+ms.topic: conceptual
+ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 2f5520213e7d8792c89f5445d470987323173dc3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7ba3323f0811f3f9b76d73796264bf17712a1179
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894524"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68841343"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Installieren der IBM ZD&T-Entwicklungs-/Testumgebung in Azure
 
@@ -58,7 +62,7 @@ In diesem Artikel wird beschrieben, wie Sie die ZD&T Enterprise Edition in Azure
 
 3. Rufen Sie auf dem Blatt **Übersicht** der VM über die Schaltfläche **Verbinden** die SSH-Anmeldeinformationen ab. Klicken Sie auf die Registerkarte **SSH**, und kopieren Sie den SSH-Anmeldebefehl in die Zwischenablage.
 
-4. Melden Sie sich auf Ihrem lokalen PC bei einer [Bash-Shell](/azure/cloud-shell/quickstart) an, und fügen Sie den Befehl ein. Dieser ist wie folgt strukturiert: **ssh\<Benutzer-ID\>\@\<IP-Adresse\>**. Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden, um eine Verbindung mit dem Basisverzeichnis herzustellen.
+4. Melden Sie sich auf Ihrem lokalen PC bei einer [Bash-Shell](/azure/cloud-shell/quickstart) an, und fügen Sie den Befehl ein. Dieser ist wie folgt strukturiert: **ssh\<Benutzer-ID\>\@\<IP-Adresse\>** . Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden, um eine Verbindung mit dem Basisverzeichnis herzustellen.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Kopieren der Installationsdatei auf den Server
 

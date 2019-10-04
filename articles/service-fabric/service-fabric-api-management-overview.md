@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 0dac2730bcc13b979de6a8faaaa53c0aaf15e902
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 52f9584a2f793ff513100afcb7b7bd6acd2a4742
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669349"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900497"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric mit Azure API Management-Übersicht
 
@@ -54,7 +54,7 @@ Azure API Management kann mit einer beliebigen Kombination aus zustandslosen Die
 
 ## <a name="send-traffic-to-a-stateless-service"></a>Senden von Datenverkehr an einen zustandslosen Dienst
 
-Im einfachsten Fall wird Datenverkehr an die Instanz eines zustandslosen Diensts weitergeleitet. Zu diesem Zweck enthält ein API Management-Vorgang eine Richtlinie für die Verarbeitung von eingehendem Datenverkehr mit einem Service Fabric-Back-End, das einer bestimmten Instanz eines zustandslosen Diensts auf dem Service Fabric-Back-End zugeordnet ist. Anforderungen, die an diesen Dienst gesendet werden, werden an ein zufälliges Replikat der Instanz eines zustandslosen Diensts geleitet.
+Im einfachsten Fall wird Datenverkehr an die Instanz eines zustandslosen Diensts weitergeleitet. Zu diesem Zweck enthält ein API Management-Vorgang eine Richtlinie für die Verarbeitung von eingehendem Datenverkehr mit einem Service Fabric-Back-End, das einer bestimmten Instanz eines zustandslosen Diensts auf dem Service Fabric-Back-End zugeordnet ist. An diesen Dienst gesendete Anforderungen werden an eine zufällige Instanz des Diensts geleitet.
 
 #### <a name="example"></a>Beispiel
 Im folgenden Szenario enthält eine Service Fabric-Anwendung einen zustandslosen Dienst mit dem Namen `fabric:/app/fooservice`, der eine interne HTTP-API verfügbar macht. Der Dienstinstanzname ist bekannt und kann direkt in der API Management-Richtlinie für die Verarbeitung von eingehendem Datenverkehr hartcodiert werden. 
@@ -77,7 +77,7 @@ Der Dienst wird mit dem Int64-Partitionsschema partitioniert, das über zwei Par
 
 Bei erweiterten Szenarien können Sie einen API Management-Vorgang definieren, bei dem Anforderungen mehr als einer Dienstinstanz zugeordnet werden. In diesem Fall enthält jeder Vorgang eine Richtlinie, bei der Anforderungen einer bestimmten Dienstinstanz zugeordnet werden. Dies erfolgt basierend auf Werten aus der eingehenden HTTP-Anforderung, z.B. dem URL-Pfad oder der Abfragezeichenfolge, und bei zustandsbehafteten Diensten aus der Partition in der Dienstinstanz. 
 
-Zu diesem Zweck enthält ein API Management-Vorgang eine Richtlinie für die Verarbeitung von eingehendem Datenverkehr mit einem Service Fabric-Back-End, das einer Instanz eines zustandslosen Diensts auf dem Service Fabric-Back-End zugeordnet ist – basierend auf Werten, die aus der eingehenden HTTP-Anforderung abgerufen werden. Anforderungen an eine Dienstinstanz werden an ein zufälliges Replikat der Dienstinstanz gesendet.
+Zu diesem Zweck enthält ein API Management-Vorgang eine Richtlinie für die Verarbeitung von eingehendem Datenverkehr mit einem Service Fabric-Back-End, das einer Instanz eines zustandslosen Diensts auf dem Service Fabric-Back-End zugeordnet ist – basierend auf Werten, die aus der eingehenden HTTP-Anforderung abgerufen werden. An Dienste gesendete Anforderungen werden an eine zufällige Instanz des Diensts geleitet.
 
 #### <a name="example"></a>Beispiel
 
@@ -85,7 +85,7 @@ In diesem Beispiel wird für jeden Benutzer einer Anwendung eine neue Instanz ei
  
 - `fabric:/app/users/<username>`
 
-  Jeder Dienst hat einen eindeutigen Namen, aber die Namen sind vorher nicht bekannt, da die Dienste als Antwort auf eine Benutzer- oder Administratoreingabe erstellt werden und daher nicht in APIM-Richtlinien oder Routingregeln hartcodiert werden können. Stattdessen wird der Name des Diensts, an den eine Anforderung gesendet werden soll, in der Definition der Back-End-Richtlinie über den Wert `name` generiert, der im URL-Anforderungspfad angegeben ist. Beispiel: 
+  Jeder Dienst hat einen eindeutigen Namen, aber die Namen sind vorher nicht bekannt, da die Dienste als Antwort auf eine Benutzer- oder Administratoreingabe erstellt werden und daher nicht in APIM-Richtlinien oder Routingregeln hartcodiert werden können. Stattdessen wird der Name des Diensts, an den eine Anforderung gesendet werden soll, in der Definition der Back-End-Richtlinie über den Wert `name` generiert, der im URL-Anforderungspfad angegeben ist. Beispiel:
 
   - Eine Anforderung an `/api/users/foo` wird an die Dienstinstanz `fabric:/app/users/foo` weitergeleitet.
   - Eine Anforderung an `/api/users/bar` wird an die Dienstinstanz `fabric:/app/users/bar` weitergeleitet.
@@ -104,7 +104,7 @@ In diesem Beispiel wird für jeden Benutzer der Anwendung eine neue Instanz eine
  
 - `fabric:/app/users/<username>`
 
-  Jeder Dienst hat einen eindeutigen Namen, aber die Namen sind vorher nicht bekannt, da die Dienste als Antwort auf eine Benutzer- oder Administratoreingabe erstellt werden und daher nicht in APIM-Richtlinien oder Routingregeln hartcodiert werden können. Stattdessen wird der Name des Diensts, an den eine Anforderung gesendet werden soll, in der Definition der Back-End-Richtlinie über den Wert `name` generiert, der im URL-Anforderungspfad angegeben ist. Beispiel: 
+  Jeder Dienst hat einen eindeutigen Namen, aber die Namen sind vorher nicht bekannt, da die Dienste als Antwort auf eine Benutzer- oder Administratoreingabe erstellt werden und daher nicht in APIM-Richtlinien oder Routingregeln hartcodiert werden können. Stattdessen wird der Name des Diensts, an den eine Anforderung gesendet werden soll, in der Definition der Back-End-Richtlinie über den Wert `name` generiert, der im URL-Anforderungspfad angegeben ist. Beispiel:
 
   - Eine Anforderung an `/api/users/foo` wird an die Dienstinstanz `fabric:/app/users/foo` weitergeleitet.
   - Eine Anforderung an `/api/users/bar` wird an die Dienstinstanz `fabric:/app/users/bar` weitergeleitet.

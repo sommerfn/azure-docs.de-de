@@ -1,19 +1,19 @@
 ---
 title: Streamen von Azure-Überwachungsdaten an Event Hubs
 description: Erfahren Sie, wie Sie Ihre Azure-Überwachungsdaten an einen Event Hub streamen, um die Daten in einem SIEM- oder Analysetool von Partnern abzurufen.
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: johnkem
+ms.author: nikiest
 ms.subservice: ''
-ms.openlocfilehash: ab439eb77113c53ab046256dd8d448a18b63f887
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8a4de244d0fa07bfc162625f577015317fca7e6a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850074"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069331"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool
 
@@ -43,8 +43,8 @@ Bevor Sie beginnen, müssen Sie [einen Event Hubs-Namespace und einen Event Hub 
 * Über die Anzahl der Durchsatzeinheiten können Sie den Durchsatz für Ihre Event Hubs erhöhen. Über die Anzahl von Partitionen können Sie den Verbrauch vieler Consumer parallelisieren. Eine einzelne Partition kann bis zu 20 MBit/s oder ungefähr 20.000 Nachrichten pro Sekunde verarbeiten. Je nach Tool, das die Daten nutzt, ist es auch möglich, Daten von mehreren Partitionen zu verarbeiten. Wenn Sie nicht sicher sind, welche Anzahl von Partitionen Sie festlegen sollten, werden zu Beginn vier Partitionen empfohlen.
 * Es wird empfohlen, dass Sie die Nachrichtenvermerkdauer für Ihren Event Hub auf 7 Tage festlegen. Wenn Ihr Tool mehr als einen Tag ausfällt, wird dadurch sichergestellt, dass das Tool dort fortfahren kann, wo es aufgehört hatte (für bis zu 7 Tage alte Ereignisse).
 * Es wird empfohlen, die Standardconsumergruppe für Ihren Event Hub zu verwenden. Es ist nur dann erforderlich, andere Consumergruppen zu erstellen oder eine separate Consumergruppe zu verwenden, wenn Sie zwei verschiedenen Tools verwenden möchten, um dieselben Daten vom selben Event Hub zu verarbeiten.
-* Für das Azure-Aktivitätsprotokoll wählen Sie einen Event Hubs-Namespace aus. Azure Monitor erstellt dann in diesem Namespace den Event Hub „insights-logs-operationallogs“. Für andere Protokolltypen können Sie entweder einen vorhandenen Event Hub verwenden (sodass Sie den gleichen Event Hub „insights-logs-operationallogs“ wiederverwenden können) oder Azure Monitor für jede Protokollkategorie einen Event Hub erstellen lassen.
-* In der Regel müssen die Ports 5671 und 5672 auf dem Computer offen sein, der die Daten vom Event Hub verarbeitet.
+* Für das Azure-Aktivitätsprotokoll wählen Sie einen Event Hubs-Namespace aus. Azure Monitor erstellt dann in diesem Namespace den Event Hub „insights-logs-operational-logs“. Für andere Protokolltypen können Sie entweder einen vorhandenen Event Hub verwenden (sodass Sie den gleichen Event Hub „insights-logs-operational-logs“ wiederverwenden können) oder Azure Monitor für jede Protokollkategorie einen Event Hub erstellen lassen.
+* In der Regel müssen die ausgehenden Ports 5671 und 5672 auf dem Computer oder in dem VNET offen sein, der bzw. das die Daten vom Event Hub verarbeitet.
 
 Lesen Sie auch die Informationen unter [Azure Event Hubs – häufig gestellte Fragen](../../event-hubs/event-hubs-faq.md).
 
@@ -117,7 +117,7 @@ Die Weiterleitung Ihrer Überwachungsdaten an einen Event Hub mit Azure Monitor 
 * **Syslog-Server:** Wenn Sie Azure Monitor-Daten direkt an einen Syslog-Server streamen möchten, können Sie sich [dieses GitHub-Repository](https://github.com/miguelangelopereira/azuremonitor2syslog/) ansehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Archivieren Sie das Aktivitätsprotokoll mithilfe eines Speicherkontos.](../../azure-monitor/platform/archive-activity-log.md)
+* [Archivieren Sie das Aktivitätsprotokoll in einem Speicherkonto.](../../azure-monitor/platform/archive-activity-log.md)
 * [Lesen Sie die Übersicht über das Azure-Aktivitätsprotokoll.](../../azure-monitor/platform/activity-logs-overview.md)
 * [Richten Sie eine Warnung ein, die auf einem Aktivitätsprotokollereignis basiert.](../../azure-monitor/platform/alerts-log-webhook.md)
 

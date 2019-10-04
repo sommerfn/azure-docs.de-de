@@ -6,15 +6,15 @@ author: seguler
 ms.service: storage
 ms.devlang: Java
 ms.topic: article
-ms.date: 02/28/2017
-ms.author: seguler
+ms.date: 08/13/2019
+ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: d00bf87a80e13808c42a5839ad0f4508ad7214b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 10bfc3ce4666ee1653110099a3c8d22a58d80f35
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011103"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985300"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Verwenden von Azure-Speicher mit einer Hudson-Lösung für die fortlaufende Integration
 ## <a name="overview"></a>Übersicht
@@ -75,9 +75,9 @@ Um den Blob-Dienst mit Hudson verwenden zu können, müssen Sie das Azure-Speich
    
     a. Geben Sie Ihren Speicherkontonamen ein, den Sie aus dem [Azure-Portal](https://portal.azure.com)abrufen können.
    
-    b. Geben Sie Ihren Speicherkontoschlüssel ein, der ebenfalls über das [Azure-Portal](https://portal.azure.com)abrufbar ist.
+    b. Geben Sie Ihren Speicherkontoschlüssel ein, der ebenfalls über das [Azure-Portal](https://portal.azure.com) abrufbar ist.
    
-    c. Verwenden Sie den Standardwert für **Blob Service Endpoint URL** , wenn Sie die öffentliche Azure-Cloud verwenden. Wenn Sie mit einer anderen Azure-Cloud arbeiten, verwenden Sie den Endpunkt, der im [Azure-Portal](https://portal.azure.com) für Ihr Speicherkonto angegeben ist.
+    c. Verwenden Sie den Standardwert für **Blob Service Endpoint URL**, wenn Sie die globale Azure-Cloud verwenden. Wenn Sie mit einer anderen Azure-Cloud arbeiten, verwenden Sie den Endpunkt, der im [Azure-Portal](https://portal.azure.com) für Ihr Speicherkonto angegeben ist.
    
     d. Klicken Sie auf **Validate storage credentials** , um Ihr Speicherkonto zu validieren.
    
@@ -107,8 +107,8 @@ Für das Lernprogramm müssen wir zunächst einen Auftrag erstellen, der mehrere
    
     **Tipp**
    
-    Unterhalb des Bereichs **Command** (Befehl), in dem Sie ein Skript für **Execute Windows batch command** (Windows-Batchbefehl ausführen) eingegeben haben, befindet sich ein Link zu den von Hudson erkannten Umgebungsvariablen. Klicken Sie auf diesen Link, um die Namen und Beschreibungen der Umgebungsvariablen anzuzeigen. Beachten Sie, dass Umgebungsvariablen, die Sonderzeichen enthalten, z.B. die Umgebungsvariable **BUILD_URL**, nicht als Containername oder gemeinsamer virtueller Pfad zulässig sind.
-8. Klicken Sie für dieses Beispiel auf **Make new container public by default** . (Wenn Sie einen privaten Container verwenden möchten, müssen Sie eine Shared Access Signature erstellen, um den Zugriff zu ermöglichen. Dies geht jedoch über den Rahmen dieses Artikels hinaus. Sie finden weitere Informationen zu Shared Access Signatures unter [Verwenden von Shared Access Signatures (SAS)](../storage-dotnet-shared-access-signature-part-1.md).
+    Unterhalb des Bereichs **Command** (Befehl), in dem Sie ein Skript für **Execute Windows batch command** (Windows-Batchbefehl ausführen) eingegeben haben, befindet sich ein Link zu den von Hudson erkannten Umgebungsvariablen. Klicken Sie auf diesen Link, um die Namen und Beschreibungen der Umgebungsvariablen anzuzeigen. Umgebungsvariablen, die Sonderzeichen enthalten, z.B. die Umgebungsvariable **BUILD_URL**, sind nicht als Containername oder gemeinsamer virtueller Pfad zulässig sind.
+8. Klicken Sie für dieses Beispiel auf **Make new container public by default** . (Wenn Sie einen privaten Container verwenden möchten, müssen Sie eine Shared Access Signature erstellen, um den Zugriff zu ermöglichen. Dies geht jedoch über den Rahmen dieses Artikels hinaus. Sie finden weitere Informationen zu Shared Access Signatures unter [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md).
 9. [Optional] Klicken Sie auf **Clean container before uploading** , wenn die Inhalte aus dem Container gelöscht werden sollen, bevor die Buildartefakte hochgeladen (lassen Sie die Option deaktiviert, wenn die Inhalte nicht aus dem Container gelöscht werden sollen) werden.
 10. Geben Sie unter **List of Artifacts to upload** (Liste der hochzuladenden Artefakte) die Zeichenfolge **text/*.txt** ein.
 11. Geben Sie unter **Common virtual path for uploaded artifacts** (Gemeinsamer virtueller Pfad für hochgeladene Artefakte) die Zeichenfolge **${BUILD\_ID}/${BUILD\_NUMBER}** ein.
@@ -116,7 +116,7 @@ Für das Lernprogramm müssen wir zunächst einen Auftrag erstellen, der mehrere
 13. Klicken Sie im Hudson-Dashboard auf **Build Now** (Jetzt erstellen), um **MyJob** auszuführen. Prüfen Sie den Status in der Ausgabe der Konsole. Statusmeldungen für Azure Storage werden in die Ausgabe der Konsole aufgenommen, wenn die Postbuildaktion mit dem Hochladen von Buildartefakten beginnt.
 14. Nach erfolgreichem Abschluss des Auftrags können Sie die Buildartefakte überprüfen, indem Sie den öffentlichen Blob öffnen.
     
-    a. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+    a. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     
     b. Klicken Sie auf **Storage**.
     
@@ -126,7 +126,7 @@ Für das Lernprogramm müssen wir zunächst einen Auftrag erstellen, der mehrere
     
     e. Klicken Sie auf den Container **myjob**. Dies ist die Version des Auftragsnamens, den Sie beim Erstellen des Hudson-Auftrags zugewiesen haben, in Kleinbuchstaben. Containernamen und Blobnamen bestehen in Azure Storage aus Kleinbuchstaben (es wird zwischen Groß- und Kleinschreibung unterschieden). In der Liste der Blobs für den Container **myjob** sollte **hello.txt** und **date.txt** angezeigt werden. Kopieren Sie die URL für beide Elemente, und öffnen Sie sie in Ihrem Browser. Sie sehen die Textdatei, die als Buildartefakt hochgeladen wurde.
 
-Es kann nur eine Postbuildaktion pro Auftrag erstellt werden, die Artefakte in Azure Blob Storage hochlädt. Beachten Sie, dass die einzelne Postbuild-Aktion zum Hochladen von Artefakten in Azure Blob Storage mithilfe eines Semikolons als Trennzeichen verschiedene Dateien (einschließlich Platzhalter) und Pfade zu Dateien in **Liste der hochzuladenden Artefakte** angeben kann. Wenn Ihr Hudson-Build beispielsweise JAR- und TXT-Dateien im Ordner **build** Ihres Arbeitsbereichs erstellt und Sie beide in Azure Blob Storage hochladen möchten, verwenden Sie Folgendes für den Wert **List of Artifacts to upload** (Liste der hochzuladenden Artefakte): **build/\*.jar;build/\*.txt**. Sie können auch eine Doppel-Doppelpunktsyntax verwenden, um einen im Blobnamen zu verwendenden Pfad anzugeben. Wenn beispielsweise die JAR-Dateien mithilfe von **binaries** im Blobpfad und die TXT-Dateien mithilfe von **notices** im Blobpfad hochgeladen werden sollen, verwenden Sie Folgendes für den Wert **List of Artifacts to upload** (Liste der hochzuladenden Artefakte): **build/\*.jar::binaries;build/\*.txt::notices**.
+Es kann nur eine Postbuildaktion pro Auftrag erstellt werden, die Artefakte in Azure Blob Storage hochlädt. Die einzelne „post-build“-Aktion zum Hochladen von Artefakten in Azure Blob Storage kann mithilfe eines Semikolons als Trennzeichen verschiedene Dateien (einschließlich Platzhalter) und Pfade zu Dateien in **List of Artifacts to upload** angeben. Wenn Ihr Hudson-Build beispielsweise JAR- und TXT-Dateien im Ordner **build** Ihres Arbeitsbereichs erstellt und Sie beide in Azure Blob Storage hochladen möchten, verwenden Sie Folgendes für den Wert **List of Artifacts to upload** (Liste der hochzuladenden Artefakte): **build/\*.jar;build/\*.txt**. Sie können auch eine Doppel-Doppelpunktsyntax verwenden, um einen im Blobnamen zu verwendenden Pfad anzugeben. Wenn beispielsweise die JAR-Dateien mithilfe von **binaries** im Blobpfad und die TXT-Dateien mithilfe von **notices** im Blobpfad hochgeladen werden sollen, verwenden Sie Folgendes für den Wert **List of Artifacts to upload** (Liste der hochzuladenden Artefakte): **build/\*.jar::binaries;build/\*.txt::notices**.
 
 ## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Erstellen eines Buildschritts für das Herunterladen aus Azure Blob Storage
 Die folgenden Schritte zeigen, wie Sie einen Buildschritt konfigurieren, damit Elemente aus Azure Blob Storage heruntergeladen werden. Dies ist hilfreich, wenn Sie Elemente in Ihren Build einbeziehen möchten, beispielsweise JAR-Dateien, die in Azure Blob Storage gespeichert sind.
@@ -134,7 +134,7 @@ Die folgenden Schritte zeigen, wie Sie einen Buildschritt konfigurieren, damit E
 1. Klicken Sie in der Auftragskonfiguration im Abschnitt **Build** auf **Add build step** (Buildschritt hinzufügen), und wählen Sie dann **Download from Azure Blob storage** (Aus Azure Blob Storage herunterladen) aus.
 2. Wählen Sie unter **Storage account name**das zu verwendende Speicherkonto aus.
 3. Geben Sie für **Container name**den Namen des Containers an, der die herunterzuladenden Blobs enthält. Sie können Umgebungsvariablen verwenden.
-4. Geben Sie unter **Blob name** (Blobname) den Blobnamen ein. Sie können Umgebungsvariablen verwenden. Sie können auch ein Sternchen als einen Platzhalter verwenden, nachdem Sie den bzw. die Anfangsbuchstaben des Blobnamens angeben. Beispielsweise würde **project\\*** alle Blobs angeben, deren Name mit **project** beginnt.
+4. Geben Sie unter **Blob name** (Blobname) den Blobnamen ein. Sie können Umgebungsvariablen verwenden. Sie können auch ein Sternchen als einen Platzhalter verwenden, nachdem Sie den bzw. die Anfangsbuchstaben des Blobnamens angeben. Beispielsweise würde **project\\** * alle Blobs angeben, deren Name mit **project** beginnt.
 5. [Optional] Geben Sie für **Downloadpfad** den Pfad auf dem Hudson-Computer an, in den die Dateien aus Azure Blob Storage heruntergeladen werden sollen. Es können auch Umgebungsvariablen verwendet werden. (Wenn Sie keinen Wert für **Downloadpfad** angeben, werden die Dateien aus Azure Blob Storage in den Arbeitsbereich des Auftrags heruntergeladen.)
 
 Wenn Sie zusätzliche Elemente aus Azure Blob Storage herunterladen möchten, können Sie zusätzliche Buildschritte erstellen.
@@ -151,9 +151,9 @@ Im Folgenden erhalten Sie einen Überblick über die Komponenten des Blob-Dienst
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
-    (Das Format oben gilt für die öffentliche Azure-Cloud. Wenn Sie mit einer anderen Azure-Cloud arbeiten, verwenden Sie den Endpunkt im [Azure-Portal](https://portal.azure.com) , um Ihren URL-Endpunkt zu bestimmen.)
+    (Das Format oben gilt für die globale Azure-Cloud. Wenn Sie mit einer anderen Azure-Cloud arbeiten, verwenden Sie den Endpunkt im [Azure-Portal](https://portal.azure.com), um Ihren URL-Endpunkt zu bestimmen.)
   
-    Bei obigem Format steht `storageaccount` für den Namen Ihres Speicherkontos, `container_name` für den Namen des Containers und `blob_name` für den Namen des Blobs. Der Containername kann mehrere Pfade umfassen, die durch einen Schrägstrich (**/**) getrennt sind. Der Beispielcontainername in diesem Lernprogramm war **MyJob**, und **${BUILD\_ID}/${BUILD\_NUMBER}** wurde für den gemeinsamen virtuellen Pfad verwendet. Der Blob hat also eine URL in folgendem Format:
+    Bei obigem Format steht `storageaccount` für den Namen Ihres Speicherkontos, `container_name` für den Namen des Containers und `blob_name` für den Namen des Blobs. Der Containername kann mehrere Pfade umfassen, die durch einen Schrägstrich ( **/** ) getrennt sind. Der Beispielcontainername in diesem Lernprogramm war **MyJob**, und **${BUILD\_ID}/${BUILD\_NUMBER}** wurde für den gemeinsamen virtuellen Pfad verwendet. Der Blob hat also eine URL in folgendem Format:
   
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 

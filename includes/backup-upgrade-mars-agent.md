@@ -4,20 +4,20 @@ description: In diesem Artikel wird erläutert, warum Sie ein Upgrade für den A
 services: backup
 cloud: ''
 suite: ''
-author: markgalioto
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.tgt_pltfrm: <optional>
 ms.devlang: <optional>
 ms.topic: article
 ms.date: 8/29/2018
-ms.author: markgal
-ms.openlocfilehash: 2a969240da6e16f5a5ba76605a6efa2a96f9e4dd
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.author: dacurwin
+ms.openlocfilehash: ea1295b08aa77a3e1a03d944ddbcbf37b6d17702
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43283058"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71251537"
 ---
 ## <a name="upgrade-the-mars-agent"></a>Durchführen eines Upgrades für den MARS-Agent
 

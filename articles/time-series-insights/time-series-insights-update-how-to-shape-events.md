@@ -2,20 +2,20 @@
 title: Strukturieren von Ereignissen in Azure Time Series Insights (Vorschauversion) | Microsoft-Dokumentation
 description: Grundlagen zum Strukturieren von Ereignissen mit Azure Time Series Insights Preview.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: eb398ad621167ad9f9b245fb8aa98c6942b87668
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: e1eb0d7450e1a7f263f29b8d4657547dd85d4276
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557426"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883297"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Strukturieren von Ereignissen in Azure Time Series Insights Preview
 
@@ -23,7 +23,7 @@ Dieser Artikel bietet Hilfestellung beim Strukturieren Ihrer JSON-Datei, um die 
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-Es ist wichtig, beim Senden von Ereignissen an Time Series Insights Preview verschiedene Aspekte zu berücksichtigen. Insbesondere sollte Folgendes sichergestellt werden:
+Sie berücksichtigen beim Senden von Ereignissen an Time Series Insights Preview verschiedene Aspekte. Insbesondere sollte Folgendes sichergestellt werden:
 
 * Senden Sie Daten so effizient wie möglich über das Netzwerk.
 * Speichern Sie Ihre Daten in einer Weise, die Ihnen dabei hilft, sie für Ihr Szenario besser geeignet zu aggregieren.
@@ -34,13 +34,13 @@ Gehen Sie wie folgt vor, um die bestmögliche Abfrageleistung zu erzielen:
 * Verwenden Sie Instanzenfelder für statische Daten. Diese Vorgehensweise hilft Ihnen dabei, das Senden von statischen Daten über das Netzwerk zu vermeiden. Instanzenfelder, eine Komponente das Zeitreihenmodells, funktionieren wie Verweisdaten im allgemein verfügbaren Time Series Insights-Dienst. Weitere Informationen zu Instanzenfeldern finden Sie unter [Zeitreihenmodelle](./time-series-insights-update-tsm.md).
 * Teilen Sie Dimensionseigenschaften zwischen zwei oder mehr Ereignissen. Diese Vorgehensweise hilft Ihnen dabei, Daten effizienter über das Netzwerk zu senden.
 * Verwenden Sie keine tiefe Arrayschachtelung. Time Series Insights Preview unterstützt bis zu zwei Ebenen für geschachtelte Arrays, die Objekte enthalten. Time Series Insights Preview sorgt für flache Arrays in Nachrichten, indem eine Aufteilung in mehrere Ereignisse mit Eigenschaft-Wert-Paaren durchgeführt wird.
-* Wenn nur wenige Messwerte für viele oder alle Ereignisse vorhanden sind, ist es besser, diese Messwerte als separate Eigenschaften innerhalb desselben Objekts zu senden. Durch das separate Senden wird die Anzahl von Ereignissen verringert, weil weniger Ereignisse verarbeitet werden müssen, und diese Vorgehensweise steigert möglicherweise die Abfrageleistung.
+* Wenn nur wenige Messwerte für viele oder alle Ereignisse vorhanden sind, ist es besser, diese Messwerte als separate Eigenschaften innerhalb desselben Objekts zu senden. Durch das separate Senden wird die Anzahl von Ereignissen verringert und die Abfrageleistung möglicherweise gesteigert, weil weniger Ereignisse verarbeitet werden müssen.
 
 ## <a name="example"></a>Beispiel
 
-Das folgende Beispiel basiert auf einem Szenario, in dem zwei oder mehr Geräte Messungen oder Signale senden. Bei diesen Messungen oder Signalen kann es sich um Werte wie *Flussrate*, *Motoröldruck*, *Temperatur* und *Luftfeuchtigkeit* handeln.
+Das folgende Beispiel basiert auf einem Szenario, in dem zwei oder mehr Geräte Messungen oder Signale senden. Bei diesen Messungen oder Signalen kann es sich um Werte wie *Flussrate*, *Öldruck*, *Temperatur*und *Feuchtigkeit* handeln.
 
-Im folgenden Beispiel wird eine einzelne IoT Hub-Nachricht verwendet, bei der das äußere Array einen gemeinsam verwendeten Abschnitt für allgemeine Dimensionswerte enthält. Das äußere Array verwendet Zeitreiheninstanzdaten, um die Effizienz der Nachricht zu erhöhen. Eine Zeitreiheninstanz enthält Gerätemetadaten, die sich nicht bei jedem Ereignis ändern, stellt aber nützliche Eigenschaften für die Datenanalyse bereit. Um beim Senden über das Netzwerk Bytes einzusparen und somit die Effizienz der Nachricht zu steigern, erwägen Sie die Batchverarbeitung allgemeiner Dimensionswerte und die Verwendung von Zeitreiheninstanz-Metadaten.
+Im folgenden Beispiel wird eine einzelne Azure IoT Hub-Nachricht verwendet, bei der das äußere Array einen gemeinsam verwendeten Abschnitt für allgemeine Dimensionswerte enthält. Das äußere Array verwendet Zeitreiheninstanzdaten, um die Effizienz der Nachricht zu erhöhen. Eine Zeitreiheninstanz enthält Gerätemetadaten, die sich nicht bei jedem Ereignis ändern, stellt aber nützliche Eigenschaften für die Datenanalyse bereit. Um beim Senden über das Netzwerk Bytes einzusparen und somit die Effizienz der Nachricht zu steigern, erwägen Sie die Batchverarbeitung allgemeiner Dimensionswerte und die Verwendung von Zeitreiheninstanz-Metadaten.
 
 ### <a name="example-json-payload"></a>Beispiel-JSON-Nutzlast
 
@@ -65,7 +65,7 @@ Im folgenden Beispiel wird eine einzelne IoT Hub-Nachricht verwendet, bei der da
         "timestamp": "2018-01-17T01:18:00Z",
         "series": [
             {
-                "Flow Rate psi": 0.58015072345733643,
+                "Flow Rate ft3/s": 0.58015072345733643,
                 "Engine Oil Pressure psi ": 22.2
             }
         ]
@@ -108,18 +108,18 @@ Im folgenden Beispiel wird eine einzelne IoT Hub-Nachricht verwendet, bei der da
   },
 ```
 
-Time Series Insights Preview verknüpft eine Tabelle (nach deren Vereinfachung) während der Abfragezeit. Die Tabelle enthält zusätzliche Spalten, z. B. **Typ**. Im folgenden Beispiel wird veranschaulicht, wie Sie Ihre Telemetriedaten [strukturieren](./time-series-insights-send-events.md#json) können:
+Time Series Insights Preview verknüpft eine Tabelle (nach deren Vereinfachung) während der Abfragezeit. Die Tabelle enthält zusätzliche Spalten, z. B. **Typ**. Im folgenden Beispiel wird veranschaulicht, wie Sie Ihre Telemetriedaten [strukturieren](./time-series-insights-send-events.md#json) können.
 
-| deviceId  | Typ | L1 | L2 | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
+| deviceId  | type | L1 | L2 | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| `FXXX` | Default_Type | REVOLT SIMULATOR | Battery System | 2018-01-17T01:17:00Z |    1.0172575712203979 |    34.7 |
-| `FXXX` | LINE_DATA    REVOLT | SIMULATOR |    Battery System |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |
+| `FXXX` | Default_Type | SIMULATOR | Battery System | 2018-01-17T01:17:00Z |   1.0172575712203979 |    34.7 |
+| `FXXX` | Default_Type | SIMULATOR |   Battery System |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |
 | `FYYY` | LINE_DATA    COMMON | SIMULATOR |    Battery System |    2018-01-17T01:18:00Z | 0.58015072345733643 |    22.2 |
 
 Beachten Sie im vorangehenden Beispiel die folgenden Punkte:
 
 * Statische Eigenschaften werden in Time Series Insights Preview gespeichert, um über das Netzwerk gesendete Daten zu optimieren.
-* Time Series Insights Preview-Daten werden zur Abfragezeit verknüpft, indem die in der Instanz definierte *timeSeriesId* verwendet wird.
+* Time Series Insights Preview-Daten werden zur Abfragezeit verknüpft, indem die in der Instanz definierte Time Series-ID verwendet wird.
 * Es werden zwei Schachtelungsebenen verwendet, wobei es sich um die maximal von Time Series Insights Preview unterstützte Anzahl handelt. Tief verschachtelte Arrays müssen vermieden werden.
 * Da nur wenige Messwerte vorliegen, werden sie als separate Eigenschaften innerhalb desselben Objekts gesendet. In dem Beispiel sind **series.Flow Rate psi**, **series.Engine Oil Pressure psi** und **series.Flow Rate ft3/s** eindeutige Spalten.
 
@@ -129,6 +129,5 @@ Beachten Sie im vorangehenden Beispiel die folgenden Punkte:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Umsetzen dieser Richtlinien finden Sie unter [Azure Time Series Insights Preview-Abfragesyntax](./time-series-insights-query-data-csharp.md). Dort erfahren Sie mehr über die Abfragesyntax der REST-API für den Datenzugriff in Time Series Insights Preview.
-
-Informationen zu unterstützten JSON-Formen finden Sie unter [Unterstützte JSON-Formen](./time-series-insights-send-events.md#json).
+- Informationen zum Umsetzen dieser Richtlinien finden Sie unter [Azure Time Series Insights Preview-Abfragesyntax](./time-series-insights-query-data-csharp.md). Dort erfahren Sie mehr über die Abfragesyntax der REST-API für den Datenzugriff in Time Series Insights Preview.
+- Informationen zu unterstützten JSON-Formen finden Sie unter [Unterstützte JSON-Formen](./time-series-insights-send-events.md#json).

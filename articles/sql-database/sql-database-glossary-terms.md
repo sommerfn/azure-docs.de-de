@@ -7,23 +7,24 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: a067d83c32f11e0bf091b0efc5528995ab6a021a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 04/26/2019
+ms.openlocfilehash: 5fccf1ffc76c824c81f8b8b826f90bf8314ff1e3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990069"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883346"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Glossar mit Begriffen aus Azure SQL-Datenbank
 
 |Kontext|Begriff|Weitere Informationen|
 |:---|:---|:---|
 |Azure-Dienstname|Azure SQL-Datenbank oder SQL-Datenbank|[Der Azure SQL-Datenbank-Dienst](sql-database-technical-overview.md)|
+|Computeebene|Serverlos (Vorschau)|[Serverlose Computeebene](sql-database-serverless.md)
+||Bereitgestellt|[Serverlose Computeebene](sql-database-serverless.md)
 |Bereitstellungsoptionen |Einzeldatenbank|[Einzeldatenbanken](sql-database-single-database.md)|
 ||Pool für elastische Datenbanken|[Pool für elastische Datenbanken](sql-database-elastic-pool.md)|
 ||Verwaltete Instanz|[Verwaltete Instanz](sql-database-managed-instance.md)|
@@ -31,22 +32,23 @@ ms.locfileid: "55990069"
 ||Server einer verwalteten SQL-Datenbank-Instanz, Server für verwaltete Instanz oder Instanzserver|[Verwaltete Instanz](sql-database-managed-instance.md)|
 Datenbankobjekte|Azure SQL-Datenbank|Beliebige Datenbank in Azure SQL-Datenbank|
 ||Einzeldatenbank|Eine mit der Bereitstellungsoption für Singletons erstellte Datenbank|
-||In einem Pool zusammengefasste Datenbank|Eine in einem Pool für elastische Datenbanken erstellte oder dorthin verschobene Datenbank|
+||Pooldatenbank|Eine in einem Pool für elastische Datenbanken erstellte oder dorthin verschobene Datenbank|
 ||Instanzdatenbank|Eine in einer verwalteten Instanz erstellte Datenbank|
-||Basic-Datenbank|Eine im Diensttarif „Basic“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Standard-Datenbank|Eine im Diensttarif „Standard“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Premium-Datenbank|Eine im Diensttarif „Premium“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Universelle Datenbank|Eine im Diensttarif „Universell“ des V-Kern-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Hyperscaledatenbank|Eine im Diensttarif „Hyperscale“ des V-Kern-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Unternehmenskritische Datenbank|Eine im Diensttarif „Unternehmenskritisch“ des V-Kern-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Basic-Datenbank|Eine in der Dienstebene „Basic“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Standard-Datenbank|Eine in der Dienstebene „Standard“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Premium-Datenbank|Eine in der Dienstebene „Premium“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Universelle Datenbank|Eine in der Dienstebene „Universell“ des vCore-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Hyperscaledatenbank|Eine in der Dienstebene „Hyperscale“ des vCore-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Unternehmenskritische Datenbank|Eine in der Dienstebene „Unternehmenskritisch“ des vCore-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Bereitgestellte Datenbank|Eine auf der bereitgestellten Computeebene konfigurierte Datenbank|
 |[Kaufmodelle und -ressourcen](sql-database-purchase-models.md)|DTU-basiertes Kaufmodell|[DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md)|
-||Auf virtuellen Kernen basierendes Erwerbsmodell|[Auf virtuellen Kernen basierendes Kaufmodell](sql-database-service-tiers-vcore.md)|
+||vCore-basiertes Kaufmodell|[vCore-basiertes Kaufmodell](sql-database-service-tiers-vcore.md)|
 ||Virtueller Kern|Ein Kern, der vom Hypervisor für das Gastbetriebssystem bereitgestellt wird.|
 ||Dienstebene|Eine Dienstebene in einem Kaufmodell|
-||Computegröße|Die Anzahl der Computeressourcen für eine Einzeldatenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz innerhalb eines Diensttarifs|
+||Computegröße|Die Anzahl der Computeressourcen für eine Einzeldatenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz innerhalb einer Dienstebene|
 ||Speichermenge|Die verfügbare Speichermenge für eine Einzeldatenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz|
-||Computegeneration|Die Generation des Prozessors innerhalb eines Diensttarifs|
-|Firewallregeln für Datenbankserver-IPs|IP-Firewallregeln|[IP-Firewallregeln](sql-database-firewall-configure.md)|
-||IP-Firewallregeln auf Serverebene|[IP-Firewallregeln auf Serverebene](sql-database-firewall-configure.md#overview)|
-|| Firewallregeln auf Datenbankebene|[Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md#overview)|
+||Computegeneration|Die Generation des Prozessors innerhalb einer Dienstebene|
+|IP-Firewallregeln für Datenbankserver|IP-Firewallregeln|[IP-Firewallregeln](sql-database-firewall-configure.md)|
+||IP-Firewallregeln auf Serverebene|[IP-Firewallregeln auf Serverebene](sql-database-firewall-configure.md)|
+|| Firewallregeln auf Datenbankebene|[Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md)|
 ||Endpunkte und Regeln virtueller Netzwerke|[Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank und SQL Data Warehouse](sql-database-vnet-service-endpoint-rule-overview.md)|

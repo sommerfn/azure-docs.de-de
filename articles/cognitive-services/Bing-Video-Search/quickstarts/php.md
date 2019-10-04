@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Suchen nach Videos mithilfe der Bing-Videosuche-REST-API und PHP'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung zum Senden von Videosuchanforderungen an die Bing-Videosuche-REST-API mit PHP.
 services: cognitive-services
 author: aahill
@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 50c39594aeb014860d25b2f2cc791ebfec14b572
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8ecbba5ef046a284e9b4134f8703580021adb9d8
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535194"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500100"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Schnellstart: Suchen nach Videos mithilfe der Bing-Videosuche-REST-API und PHP
 
 Mit diesem Schnellstart können Sie die Bing-Videosuche-API zum ersten Mal aufrufen und ein Suchergebnis in der JSON-Antwort anzeigen. Diese einfache JavaScript-Anwendung sendet eine HTTP-Videosuchabfrage an die API und zeigt die Antwort an. Diese Anwendung ist zwar in JavaScript geschrieben und verwendet Node.js, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
 Der Beispielcode wurde für PHP 5.6 geschrieben.
 
-Die [API-Referenz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) enthält technische Informationen zu den APIs.
+Die [API-Referenz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) enthält technische Informationen zu den APIs.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,7 +32,7 @@ Die [API-Referenz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-vi
 
 ## <a name="running-the-application"></a>Ausführen der Anwendung
 
-Die [Bing-Videosuche-API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) gibt Videoergebnisse der Bing-Suchmaschine zurück.
+Die [Bing-Videosuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) gibt Videoergebnisse der Bing-Suchmaschine zurück.
 
 1. Achten Sie darauf, dass die Unterstützung des sicheren Hypertext Transfer-Protokolls (HTTP) in Ihrer `php.ini`-Datei aktiviert ist, wie im Codekommentar beschrieben.
 2. Erstellen Sie in Ihrer bevorzugten IDE ein neues PHP-Projekt.

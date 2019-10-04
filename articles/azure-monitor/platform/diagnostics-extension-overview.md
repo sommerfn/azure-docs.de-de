@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 8a287f118c126967d2cf8cad77a434cfecc098eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e0325a3bda912c95d8d27646bc1e80fff5ce10a8
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078538"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639423"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Was ist die Azure-Diagnoseerweiterung?
 Die Azure-Diagnoseerweiterung ist ein Agent innerhalb von Azure, mit dem Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Skalierungsgruppen von Virtual Machines und Service Fabric unterstützt. Andere Azure-Dienste haben unterschiedliche Diagnosemethoden. Siehe [Übersicht über die Überwachung in Microsoft Azure](../../azure-monitor/overview.md).
@@ -74,7 +74,7 @@ Fortgeschrittenere Themen finden Sie in folgenden Artikeln:
 
 ## <a name="virtual-machines"></a>Virtual Machines
 * Wenn Sie Visual Studio verwenden, finden Sie unter [Verfolgen von Azure Virtual Machines mit Visual Studio](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) Informationen für den Einstieg. Andernfalls finden Sie weitere Informationen in folgenden Artikeln:
-* [Einrichten der Azure-Diagnose auf einem virtuellen Azure-Computer](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
+* [Einrichten der Azure-Diagnose auf einem virtuellen Azure-Computer](/azure/virtual-machines/extensions/diagnostics-windows)
 
 Fortgeschrittenere Themen finden Sie in folgenden Artikeln:
 

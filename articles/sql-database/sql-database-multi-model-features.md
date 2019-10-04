@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 4351017cc1848e29cca038f82fd96548ae3492e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e319daf322d688828c7d05d78dacd2359273223f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892465"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567125"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Funktionen für mehrere Modelle in Azure SQL-Datenbank
 
@@ -90,13 +89,13 @@ In bestimmten Szenarien können Dokumentmodelle statt relationaler Modelle verwe
 
 ## <a name="spatial-features"></a>Räumliche Funktionen
 
-Räumliche Daten repräsentieren Daten zur physischen Position und Form geometrischer Objekte. Diese Objekte können Punktpositionen oder komplexere Objekte wie Länder, Straßen oder Seen sein.
+Räumliche Daten repräsentieren Daten zur physischen Position und Form geometrischer Objekte. Diese Objekte können Punktpositionen oder komplexere Objekte wie Länder/Regionen, Straßen oder Seen sein.
 
 Azure SQL-Datenbank unterstützt zwei Arten von räumlichen Daten: geometrische und geografische.
 - Der geometrische Datentyp stellt Daten in einem euklidischen (flachen) Koordinatensystem dar.
 - Der geografische Datentyp stellt Daten in einem Erdkugel-Koordinatensystem dar.
 
-Es gibt eine Reihe von räumlichen Objekten, die in Azure SQL-Datenbanken verwendet werden können, z.B. [Point](https://docs.microsoft.com/sql/relational-databases/spatial/point), [LineString](https://docs.microsoft.com/sql/relational-databases/spatial/linestring), [Polygon](https://docs.microsoft.com/sql/relational-databases/spatial/polygon) usw.
+Es gibt eine Reihe von räumlichen Objekten, die in Azure SQL-Datenbanken verwendet werden können, z. B. [Point](https://docs.microsoft.com/sql/relational-databases/spatial/point), [LineString](https://docs.microsoft.com/sql/relational-databases/spatial/linestring), [Polygon](https://docs.microsoft.com/sql/relational-databases/spatial/polygon) usw.
 
 Azure SQL-Datenbank stellt auch spezielle [räumliche Indizes](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-indexes-overview) bereit, mit denen Sie die Leistung Ihrer räumlichen Abfragen verbessern können.
 

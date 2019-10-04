@@ -3,17 +3,16 @@ title: Grundlegendes zum Lebenszyklus einer Blaupause
 description: Erfahren Sie mehr über den Lebenszyklus einer Blaupause und Details zu jeder einzelnen Phase.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 07/30/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: a57085fa37efd56a46b740d8cbc4278dc53cf39f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6112f6f2834f02cec970af886360844c5314150d
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795422"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678988"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Grundlegendes zum Lebenszyklus von Azure Blueprints
 
@@ -99,6 +98,17 @@ Wenn eine Blaupause zugewiesen ist, kann die Zuweisung aktualisiert werden. Es g
 - Durchführen eines Upgrades auf eine neuere Blaupausenversion mit dem Status **Veröffentlicht**
 
 Erfahren Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
+
+### <a name="unassigning-assignments"></a>Aufheben von Zuweisungen
+
+Wenn die Blaupause nicht mehr benötigt wird, kann ihre Zuweisung in der Verwaltungsgruppe oder dem Abonnement aufgehoben werden. Bei der Aufhebung der Blaupausenzuweisung wird Folgendes durchgeführt:
+
+- Entfernen der [Ressourcensperre der Blaupause](resource-locking.md)
+- Löschen des Blaupausenzuweisungsobjekts
+- (Bedingt:) Wenn eine **vom System zugewiesene verwaltete Identität** verwendet wurde, wird sie ebenfalls gelöscht.
+
+> [!NOTE]
+> Alle mit der Blaupausenzuweisung bereitgestellten Ressourcen werden beibehalten, jedoch nicht mehr durch Azure Blueprints geschützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

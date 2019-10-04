@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 211cb32298b17bb9e4023bf8bc74233c3916f58d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877668"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68226093"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Zugriffssteuerung in Azure Data Lake Storage Gen1
 
@@ -53,7 +53,7 @@ Die Berechtigungen für ein Dateisystemobjekt sind **Lesen**, **Schreiben** und 
 
 ### <a name="short-forms-for-permissions"></a>Kurzformen für Berechtigungen
 
-**RWX** steht für **Lesen (Read), Schreiben (Write) und Ausführen (Execute)**. Es gibt auch ein noch kürzeres numerisches Format. Hierbei steht **4 für Lesen**, **2 für Schreiben** und **1 für Ausführen**, und Berechtigungen werden als Summe dieser Werte angegeben. Hier einige Beispiele.
+**RWX** steht für **Lesen (Read), Schreiben (Write) und Ausführen (Execute)** . Es gibt auch ein noch kürzeres numerisches Format. Hierbei steht **4 für Lesen**, **2 für Schreiben** und **1 für Ausführen**, und Berechtigungen werden als Summe dieser Werte angegeben. Hier einige Beispiele.
 
 | Numerische Form | Kurzform |      Bedeutung     |
 |--------------|------------|------------------------|
@@ -77,9 +77,9 @@ Im Folgenden sind einige allgemeine Szenarien aufgeführt, die veranschaulichen,
 | Anfügen an | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
 | Löschen    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Erstellen    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Auflisten      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
-| Auflisten      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| Auflisten      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| List      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| List      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| List      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -166,7 +166,7 @@ def access_check( user, desired_perms, path ) :
   # Handle the owning user. Note that mask IS NOT used.
   entry = get_acl_entry( path, OWNER )
   if (user == entry.identity)
-      return ( (desired_perms & e.permissions) == desired_perms )
+      return ( (desired_perms & entry.permissions) == desired_perms )
 
   # Handle the named users. Note that mask IS used.
   entries = get_acl_entries( path, NAMED_USER )
@@ -216,7 +216,7 @@ Wenn unter einem bereits vorhandenen Ordner eine neue Datei oder ein erstellt wi
 
 ### <a name="umask"></a>umask
 
-Beim Erstellen einer Datei oder eines Ordners wird „umask“ verwenden, um zu ändern, wie Standard-ACLs für das untergeordnete Element festgelegt werden. „umask“ ist ein 9-Bit-Wert für übergeordnete Ordner, der einen RWX-Wert für **zuständige Benutzer**, **zuständige Gruppen** und **Andere** enthält.
+Beim Erstellen einer Datei oder eines Ordners wird „umask“ verwenden, um zu ändern, wie Standard-ACLs für das untergeordnete Element festgelegt werden. „umask“ ist ein 9-Bit-Wert für übergeordnete Ordner, der einen RWX-Wert für **Besitzer**, **Gruppe des Besitzers** und **Andere** enthält.
 
 Für Azure Data Lake Storage Gen1 ist „umask“ ein konstanter Wert, der auf „007“ festgelegt ist. Dieser Wert wird wie folgt übersetzt
 

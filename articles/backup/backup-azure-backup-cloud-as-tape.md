@@ -1,20 +1,18 @@
 ---
 title: Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur
-description: Hier erfahren Sie, wie Azure Backup eine Semantik ähnlich wie bei Bändern bereitstellt, damit Sie Ihre Daten in Azure sichern und wiederherstellen können.
-services: backup
-author: trinadhk
-manager: vijayts
+description: Hier erfahren Sie, wie Azure Backup eine Semantik bereitstellt, die derjenigen von Bandsicherungen ähnelt, damit Sie Ihre Daten in Azure sichern und wiederherstellen können.
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/10/2017
-ms.author: saurse
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59236774f98af927082c78f4b75a1f5880a7cac4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 04/30/2017
+ms.author: dacurwin
+ms.openlocfilehash: 3be3a2e3355793a8d0b4fcaf0e7f62668f78f0c8
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259603"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954876"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Verschieben langfristiger Speicher von Bändern in die Azure-Cloud
 Kunden von Azure Backup und System Center Data Protection Manager haben folgende Möglichkeiten:
@@ -45,8 +43,8 @@ Die Gesamtanzahl der in dieser Richtlinie angegebenen "Aufbewahrungspunkte" ist 
 ![Beispielbildschirm](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
 1. **Tägliche Aufbewahrungsrichtlinie**: Täglich erstellte Sicherungen werden sieben Tage lang gespeichert.
-2. **Wöchentliche Aufbewahrungsrichtlinie**: Sicherungen, die jeden Tag um Mitternacht und jeden Samstag um 18 Uhr erstellt werden, werden vier Wochen lang aufbewahrt.
-3. **Monatliche Aufbewahrungsrichtlinie**: Sicherungen, die am letzten Samstag im Monat um Mitternacht und um 18:00 Uhr erstellt werden, werden zwölf Monate lang aufbewahrt.
+2. **Wöchentliche Aufbewahrungsrichtlinie**: Sicherungen, die jeden Tag um Mitternacht und jeden Samstag um 18 Uhr erstellt werden, werden vier Wochen lang aufbewahrt.
+3. **Monatliche Aufbewahrungsrichtlinie**: Sicherungen, die um Mitternacht und am letzten Samstag im Monat um 18:00 Uhr erstellt werden, werden zwölf Monate lang aufbewahrt.
 4. **Jährliche Aufbewahrungsrichtlinie**: Sicherungen, die jedes Jahr am letzten Samstag im März um Mitternacht erstellt werden, werden zehn Jahre lang aufbewahrt.
 
 Die Gesamtanzahl der „Aufbewahrungspunkte“ (Punkte, von denen ein Kunde Daten wiederherstellen kann) in der obigen Abbildung wird wie folgt berechnet:
@@ -59,8 +57,7 @@ Die Gesamtanzahl der „Aufbewahrungspunkte“ (Punkte, von denen ein Kunde Date
 Die Gesamtzahl der Wiederherstellungspunkte beträgt 56.
 
 > [!NOTE]
-> In Azure Backup gibt es keine Beschränkung der Anzahl der Wiederherstellungspunkte.
->
+> Pro geschützter Instanz können mit Azure Backup bis zu 9.999 Wiederherstellungspunkte erstellt werden. Geschützte Instanzen sind Computer, Server (physisch oder virtuell) oder Workloads, die in Azure gesichert werden.
 >
 
 ## <a name="advanced-configuration"></a>Erweiterte Konfiguration

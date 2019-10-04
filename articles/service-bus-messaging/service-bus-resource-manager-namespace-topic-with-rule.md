@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: 5c6ad222110081cd8f8838208da407e0e1d50f75
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8be34a85cb1a1863ee8a78c7b97af66627612fea
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851265"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67444746"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Erstellen eines Service Bus-Namespace mit einem Thema, einem Abonnement und einer Regel anhand einer Azure Resource Manager-Vorlage
 
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Azure Resource Manager-Vorlage 
 
 Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][Authoring Azure Resource Manager templates].
 
-Weitere Informationen zur Vorgehensweise und Muster zu Benennungskonventionen für Azure-Ressourcen finden Sie unter [Recommended naming conventions for Azure resources][Recommended naming conventions for Azure resources] (Empfohlene Benennungskonventionen für Azure-Ressourcen).
+Weitere Informationen zur Vorgehensweise und Muster zu Namenskonventionen für Azure-Ressourcen finden Sie unter [Recommended naming conventions for Azure resources][Recommended naming conventions for Azure resources] (Empfohlene Namenskonventionen für Azure-Ressourcen).
 
 Die vollständige Vorlage finden Sie unter [Service Bus-Namespace mit Thema, Abonnement und Regel][Service Bus namespace with topic, subscription, and rule].
 
@@ -39,7 +39,7 @@ Die vollständige Vorlage finden Sie unter [Service Bus-Namespace mit Thema, Abo
 > * [Erstellen eines Service Bus-Namespaces](service-bus-resource-manager-namespace.md)
 > * [Create a Service Bus namespace with topic and subscription using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-topic.md)
 > 
-> Die neuesten Vorlagen finden Sie, indem Sie im Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] nach „Service Bus“ suchen.
+> Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] auf, und suchen Sie nach „Service Bus“.
 > 
 > 
 
@@ -179,7 +179,9 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt haben, lesen Sie die folgenden Artikel, und erfahren Sie, wie Sie diese Ressourcen verwalten können:
+Im folgenden Thema wird erläutert, wie Sie einen Abonnementfilter erstellen: [Erstellen eines Service Bus-Namespace mit einem Thema, einem Abonnement und einer Regel anhand einer Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-topic-with-rule.md)
+
+In den folgenden Artikeln erfahren Sie, wie Sie diese Ressourcen verwalten:
 
 * [Verwalten von Azure Service Bus](service-bus-management-libraries.md)
 * [Verwalten von Service Bus mit PowerShell](service-bus-manage-with-ps.md)

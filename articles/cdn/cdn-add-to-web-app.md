@@ -7,7 +7,7 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 33b47d33262a4968a0eafb9ec70ef73e50975735
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602816"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594226"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Tutorial: Hinzufügen von Azure CDN zu einer Azure App Service-Web-App
 
@@ -76,7 +76,7 @@ Geben Sie auf der Seite **Azure Content Delivery Network** die Einstellungen fü
 | ------- | --------------- | ----------- |
 | **CDN-Profil** | myCDNProfile | Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten mit demselben Tarif. |
 | **Preisstufe** | Standard Akamai | Über den [Tarif](cdn-features.md) werden der Anbieter und die verfügbaren Features angegeben. In diesem Tutorial wird *Standard Akamai* verwendet. |
-| **CDN-Endpunktname** | Beliebiger Name, der in der Domäne „azureedge.net“ eindeutig ist | Sie greifen auf Ihre zwischengespeicherten Ressourcen in der Domäne *&lt;Endpunktname&gt;*.azureedge.net zu.
+| **CDN-Endpunktname** | Beliebiger Name, der in der Domäne „azureedge.net“ eindeutig ist | Sie greifen auf Ihre zwischengespeicherten Ressourcen in der Domäne *&lt;Endpunktname&gt;* .azureedge.net zu.
 
 Wählen Sie **Erstellen** aus, um ein CDN-Profil zu erstellen.
 

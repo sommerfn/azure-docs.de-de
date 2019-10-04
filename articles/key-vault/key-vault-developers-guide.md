@@ -3,18 +3,17 @@ title: Entwicklerhandbuch zu Azure-Schlüsseltresor
 description: Mit Azure-Schlüsseltresor können Entwickler kryptografische Schlüssel in der Microsoft Azure-Umgebung verwalten.
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
 ms.topic: conceptual
-ms.workload: identity
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 06fd66c3fb9e90e0198d40253f3c554fe8596c3d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543363"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268848"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -25,31 +24,11 @@ Mithilfe des Schlüsseltresors können Sie in Ihren Anwendungen sicher auf vertr
 - Ihre Anwendung kann Signatur- und Verschlüsselungsschlüssel verwenden, wobei die Schlüssel außerhalb der Anwendung verwaltet werden, damit die Lösung auch für eine geografisch verteilte App geeignet ist.
 - Mit der Key Vault-Version vom September 2016 können Ihre Anwendungen nun auch Key Vault-Zertifikate verwalten. Weitere Informationen finden Sie im Artikel [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](/rest/api/keyvault/about-keys--secrets-and-certificates).
 
-Allgemeine Informationen zu Azure Key Vault finden Sie unter [Was ist der Schlüsseltresor?](key-vault-whatis.md).
+Allgemeine Informationen zu Azure Key Vault finden Sie unter [Was ist der Schlüsseltresor?](key-vault-overview.md).
 
 ## <a name="public-previews"></a>Öffentliche Vorschauversionen
 
 Wir veröffentlichen in regelmäßigen Abständen eine öffentliche Vorschau des neuen Key Vault-Features. Testen Sie diese, und teilen Sie uns Ihre Meinung über die folgende E-Mail-Adresse für Feedback mit: azurekeyvault@microsoft.com.
-
-### <a name="storage-account-keys---july-10-2017"></a>Speicherkontoschlüssel – 10. Juli 2017
-
->[!NOTE]
->Für dieses Update von Azure Key Vault ist nur das Feature **Speicherkontoschlüssel** in der Vorschau enthalten.
-
-Diese Vorschau enthält unser neues Speicherkontoschlüssel-Feature, das über diese Schnittstellen verfügbar ist: [.NET/C#](/dotnet/api/microsoft.azure.keyvault/), [REST](/rest/api/keyvault/) und [PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault). 
-
-Weitere Informationen zum neuen Speicherkontoschlüssel-Feature finden Sie unter [Azure Key Vault storage account keys overview](key-vault-ovw-storage-keys.md) (Übersicht zu Azure Key Vault-Speicherkontoschlüsseln).
-
-## <a name="videos"></a>Videos
-
-Dieses Video zeigt Ihnen, wie Sie selbst einen Schlüsseltresor erstellen und diesen in der Beispielanwendung „Hello Key Vault“ verwenden.
-
-- [Key Vault-Entwickler: Schnellstarthandbuch](https://channel9.msdn.com/Blogs/Azure/Azure-Key-Vault-Developer-Quick-Start/player)
-
-Im Video erwähnte Ressourcen:
-
-- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Azure Key Vault-Beispielcode](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>Erstellen und Verwalten von Schlüsseltresoren
 

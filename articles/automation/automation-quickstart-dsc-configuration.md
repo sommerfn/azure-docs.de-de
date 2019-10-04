@@ -11,14 +11,14 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: a30f9c1a61044c0911a5afc27ad95fc758b4c83e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 2c01172bf22fb286f790543b02a4c1e482b05fe7
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449096"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850566"
 ---
-# <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurieren eines virtuellen Linux-Computers per Desired State Configuration
+# <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Konfigurieren eines virtuellen Computers mit Desired State Configuration
 
 Indem Sie die Desired State Configuration (DSC) aktivieren, können Sie die Konfigurationen Ihrer Windows- und Linux-Server verwalten und überwachen. Konfigurationen, die von der gewünschten Konfiguration abweichen, können identifiziert oder automatisch korrigiert werden. In dieser Schnellstartanleitung werden das Integrieren einer Linux-VM und das Bereitstellen eines LAMP-Stapels per DSC Schritt für Schritt beschrieben.
 

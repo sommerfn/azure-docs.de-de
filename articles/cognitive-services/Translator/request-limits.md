@@ -3,43 +3,58 @@ title: Anforderungslimits – Textübersetzungs-API
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel werden die Anforderungslimits für die Textübersetzungs-API aufgeführt. Die Gebühren werden basierend auf der Anzahl der Zeichen berechnet, nicht nach der Anforderungshäufigkeit, mit einem Grenzwert von 5.000 Zeichen pro Anforderung. Die Zeichengrenzwerte sind abonnementbasiert, wobei F0 auf 2 Millionen Zeichen pro Stunde beschränkt ist.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: erhopf
-ms.openlocfilehash: 97b0b6256b7aaf7b42565fe9453fb87a0c414569
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: 79cf87cef4e58cf4e5a2039f30289d55038c8b92
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861569"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671966"
 ---
 # <a name="request-limits-for-translator-text"></a>Anforderungslimits für die Textübersetzungs-API
 
 In diesem Artikel werden die Drosselungslimits für die Textübersetzungs-API aufgeführt. Zu den Diensten gehören Übersetzung, Transliteration, Satzlängenerkennung, Spracherkennung und alternative Übersetzungen.
 
-## <a name="character-limits-per-request"></a>Zeichengrenzwerte pro Anforderung
+## <a name="character-and-array-limits-per-request"></a>Zeichen- und Arraygrenzwerte pro Anforderung
 
-Jede Anforderung kann maximal 5.000 Zeichen lang sein. Die Abrechnung erfolgt nach der Anzahl der Zeichen, nicht nach der Anzahl der Anforderungen. Es wird empfohlen, kürzere Anforderungen zu senden und zu jedem Zeitpunkt einige ausstehende Anforderungen zu haben.
+Jede Übersetzungsanforderung (Translate) kann maximal 5.000 Zeichen lang sein. Die Abrechnung erfolgt nach der Anzahl der Zeichen, nicht nach der Anzahl der Anforderungen. Es wird empfohlen, kürzere Anforderungen zu senden.
 
-Es gibt keine Beschränkung für die Anzahl der ausstehenden Anforderungen für die Textübersetzungs-API.
+In der folgenden Tabelle sind Arrayelement- und Zeichengrenzwerte für jeden Vorgang der Textübersetzungs-API aufgeführt.
+
+| Vorgang | Maximale Größe des Arrayelements |   Maximale Anzahl von Arrayelementen |  Maximale Anforderungsgröße (Zeichen) |
+|:----|:----|:----|:----|
+| Translate | 5\.000 | 100   | 5\.000 |
+| Transliterate | 5\.000 | 10    | 5\.000 |
+| Detect | 10.000 | 100 |   50.000 |
+| BreakSentence | 10.000    | 100 | 50.000 |
+| Wörterbuchsuche| 100 |  10  | 1\.000 |
+| Wörterbuchbeispiele | 100 für Text und 100 für Übersetzung (200 insgesamt)| 10|   2\.000 |
 
 ## <a name="character-limits-per-hour"></a>Zeichengrenzwerte pro Stunde
 
-Ihre Zeichengrenzwerte pro Stunde basieren auf der Abonnementebene der Textübersetzungs-API. Wenn Sie diese Grenzwerte erreichen oder überschreiten, erhalten Sie wahrscheinlich eine Antwort zur Kontingentüberschreitung:
+Ihre Zeichengrenzwerte pro Stunde basieren auf der Abonnementebene der Textübersetzungs-API. 
+
+Das Stundenkontingent sollte gleichmäßig über die gesamte Stunde verbraucht werden. Beispielsweise sollten Zeichen beim Grenzwert für den F0-Tarif von 2 Millionen Zeichen pro Stunde nicht schneller als mit ungefähr 33.300 Zeichen pro Minute gleitendes Fenster (2 Millionen, dividiert durch 60 Minuten) verbraucht werden.
+
+Wenn Sie diese Grenzwerte erreichen oder überschreiten oder einen zu großen Teil des Kontingents in kurzer Zeit senden, werden Sie wahrscheinlich eine Antwort zur Kontingentüberschreitung erhalten. Es gibt keine Beschränkungen für gleichzeitige Anforderungen.
 
 | Tarif | Zeichengrenzwert |
 |------|-----------------|
 | F0 | 2 Millionen Zeichen pro Stunde |
 | S1 | 40 Millionen Zeichen pro Stunde |
-| S2 | 40 Millionen Zeichen pro Stunde |
-| S3 | 120 Millionen Zeichen pro Stunde |
-| S4 | 200 Millionen Zeichen pro Stunde |
+| S2/C2 | 40 Millionen Zeichen pro Stunde |
+| S3/C3 | 120 Millionen Zeichen pro Stunde |
+| S4/C4 | 200 Millionen Zeichen pro Stunde |
 
-Diese Grenzwerte gelten nur für die generischen Microsoft-Systeme. Für benutzerdefinierte Übersetzungssysteme, die den Translator-Hub von Microsoft verwenden, gilt ein Grenzwert von 1.800 Zeichen pro Sekunde.
+Die Grenzwerte für [Abonnements mit mehreren Diensten](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) sind dieselben wie für den S1-Tarif.
+
+Diese Grenzwerte sind auf die Standardübersetzungsmodelle von Microsoft beschränkt. Für benutzerdefinierte Übersetzungsmodelle, die den benutzerdefinierten Translator verwenden, gilt ein Grenzwert von 1.800 Zeichen pro Sekunde.
 
 ## <a name="latency"></a>Latency
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: ceed6a8bb74206b7c6689ce542482148800e4ba9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 6aa6c7326759e480235df5fe9d4b0878cd11024d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403509"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65142380"
 ---
 # <a name="windows-virtual-desktop-preview-environment"></a>Windows Virtual Desktop-Umgebung (Vorschauversion)
 
@@ -63,5 +63,5 @@ Informationen zur Einrichtung Ihres Windows Virtual Desktop-Mandanten finden Sie
 
 Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop finden Sie in einem der folgenden Artikel:
 
-- [Connect to the Remote Desktop client on Windows 7 and Windows 10](connect-windows-7-and-10.md) (Herstellen einer Verbindung mit dem Remotedesktopclient unter Windows 7 und Windows 10)
-- [Connect to the Windows Virtual Desktop Preview web client](connect-web.md) (Herstellen einer Verbindung mit dem Webclient von Windows Virtual Desktop (Vorschauversion))
+- [Herstellen einer Verbindung über Windows 10 oder Windows 7](connect-windows-7-and-10.md)
+- [Herstellen einer Verbindung über einen Webbrowser](connect-web.md)

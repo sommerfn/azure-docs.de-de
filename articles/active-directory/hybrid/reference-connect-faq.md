@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 11/02/2018
+ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a392fd03016f83f86364d8f92e8bb4da0aa3364a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 70f0badc170c65b11bc244b5ed4ec2f9a205c72d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840901"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084878"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -62,7 +62,7 @@ Ja, dieses Szenario wird unterstützt. Weitere Informationen finden Sie unter [M
 **F: Können mehrere Connectors für dieselbe Active Directory-Domäne in Azure AD Connect verwendet werden?**  
 Nein, mehrere Connectors für die gleichen AD-Domäne werden nicht unterstützt. 
 
-**F: Kann ich die Azure AD Connect-Datenbank von der lokalen Datenbank in eine SQL Server-Remoteinstanz verschieben?**   
+**F: Kann ich die Azure AD Connect-Datenbank von der lokalen Datenbank in eine SQL Server-Remoteinstanz verschieben?**    
 Ja, in den folgenden Schritten finden Sie einen allgemeinen Leitfaden dazu. Wir arbeiten derzeit an einem ausführlicheren Dokument.
 1. Sichern Sie die LocalDB-Datenbank ADSync.
 Die einfachste Möglichkeit hierzu ist die Verwendung von SQL Server Management Studio, das auf demselben Computer wie Azure AD Connect installiert ist. Stellen Sie eine Verbindung mit *(LocalDb).\ADSync* her, und sichern Sie dann die Datenbank ADSync.
@@ -77,6 +77,47 @@ Die einfachste Möglichkeit hierzu ist die Verwendung von SQL Server Management 
       Mit dem neuesten Build kann der SQL-Administrator nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann. Weitere Informationen finden Sie unter [Installieren von Azure AD Connect mit Berechtigungen eines delegierten SQL-Administrators](how-to-connect-install-sql-delegation.md).
 
 Aus Gründen der Einfachheit wird empfohlen, dass Benutzer, die Azure AD Connect installieren, Systemadministratoren in SQL sind. Mit aktuellen Builds können Sie jetzt jedoch delegierte SQL-Administratoren verwenden, wie unter [Installieren von Azure AD Connect mit delegierten SQL-Administratorberechtigungen](how-to-connect-install-sql-delegation.md) beschrieben.
+
+**F: Was sind die Best Practices aus dem Feld?**  
+
+Im Folgenden finden Sie ein Informationsdokument, das einige der Best Practices darstellt, die das Engineering, der Support und unsere Berater im Laufe der Jahre entwickelt haben.  Dies wird in einer Aufzählungsliste dargestellt, die schnell referenziert werden kann.  Obwohl die vorliegende Liste so umfassend wie möglich ist, kann es zusätzliche Best Practices geben, die möglicherweise noch nicht auf der Liste stehen.
+
+- Wenn Sie Full SQL verwenden, sollte es lokal oder remote bleiben.
+    - Weniger Hops
+    - Einfachere Problembehandlung
+    - Geringere Komplexität
+    - Sie müssen Ressourcen für SQL bereitstellen und den Mehraufwand für Azure AD Connect und das Betriebssystem berücksichtigen.
+- Umgehen Sie den Proxy, wenn möglich. Wenn dies nicht möglich ist, dann müssen Sie sicherstellen, dass der Wert der Zeitüberschreitung größer als 5 Minuten ist.
+- Wenn ein Proxy erforderlich ist, müssen Sie den Proxy zur Datei „machine.config“ hinzufügen.
+- Beachten Sie die lokalen SQL-Aufträge und die Wartung und wie sie sich auf Azure AD Connect auswirken – insbesondere die Neuindizierung.
+- Stellen Sie sicher, dass  DNS extern aufgelöst werden kann.
+- Stellen Sie sicher, dass die [Serverspezifikationen](how-to-connect-install-prerequisites.md#hardware-requirements-for-azure-ad-connect) pro Empfehlung angegeben sind, unabhängig davon, ob Sie physische oder virtuelle Server verwenden.
+- Wenn Sie einen virtuellen Server verwenden, stellen Sie sicher, dass die erforderlichen Ressourcen zugeordnet sind.
+- Stellen Sie sicher, dass die Datenträger und die Datenträgerkonfiguration den Best Practices für SQL Server entsprechen.
+- Installieren und Konfigurieren Sie Azure AD Connect Health für die Überwachung.
+- Verwenden Sie den Schwellenwert zum Löschen, der in Azure AD Connect integriert ist.
+- Überprüfen Sie sorgfältig die Release-Updates, um auf alle Änderungen und neuen Attribute vorbereitet zu sein, die hinzugefügt werden können.
+- Sichern Sie alles.
+    - Sichern Sie Schlüssel.
+    - Sichern Sie die Synchronisierungsregeln.
+    - Sichern Sie die Serverkonfiguration.
+    - Sichern Sie die SQL-Datenbank.
+- Stellen Sie sicher, dass es keine Sicherungs-Agents von Drittanbietern gibt, die SQL ohne den SQL VSS Writer sichern (häufig bei virtuellen Servern mit Momentaufnahmen von Drittanbietern).
+- Begrenzen Sie die Anzahl der benutzerdefinierten Synchronisationsregeln, die verwendet werden, wenn sie die Komplexität erhöhen.
+- Behandeln Sie Azure AD Connect-Servern als Server der Dienstebene 0.
+- Seien Sie vorsichtig bei der Änderung von Cloudsynchronisierungsregeln, wenn Sie nicht wissen, welche Auswirkungen dies hat und welche Geschäftsfaktoren wichtig sind.
+- Stellen Sie sicher, dass die richtigen URLs und Firewallports für die Unterstützung von Azure AD Connect und Azure AD Connect Health offen sind.
+- Nutzen Sie das von der Cloud gefilterte Attribut, um Fehler zu beheben und Phantomobjekte zu verhindern.
+- Stellen Sie mit dem Staging-Server sicher, dass Sie den Azure AD Connect Configuration Documenter für die Konsistenz zwischen den Servern verwenden.
+- Staging-Server sollte sich in separaten Rechenzentren (physische Standorte) befinden.
+- Staging-Server sind nicht als Hochverfügbarkeitslösung gedacht, aber Sie können mehrere Staging-Server haben.
+- Die Einführung eines „Verzögerungs“-Staging-Servers könnte bei einem Fehler mögliche Ausfallzeiten minimieren.
+- Testen und validieren Sie zuerst alle Upgrades auf dem Staging-Server.
+- Validieren Sie Exporte immer vor dem Wechsel auf den Staging-Server. Nutzen Sie den Staging-Server für Vollimporte und Vollsynchronisierungen, um die Auswirkungen auf den Geschäftsbetrieb zu reduzieren.
+- Die Version zwischen den Azure AD Connect-Servern muss so weit wie möglich konsistent bleiben. 
+
+**F: Kann ich zulassen, dass Azure AD Connect das Azure AD Connector-Konto auf dem Arbeitsgruppencomputer erstellt?**
+Nein.  Damit Azure AD Connect das Azure AD Connector-Konto automatisch erstellen kann, muss der Computer mit der Domäne verbunden sein.  
 
 ## <a name="network"></a>Netzwerk
 **F: Die Zeit für offene Verbindungen in meinem Netzwerk wird durch eine Firewall, ein Netzwerkgerät o.ä. eingeschränkt. Was sollte der clientseitige Schwellenwert für die Zeitüberschreitung bei Verwendung von Azure AD Connect sein?**  
@@ -95,7 +136,7 @@ Nein. Azure AD Connect unterstützt keine lokalen Gesamtstrukturen oder Domänen
 Nein, Azure AD Connect unterstützt keine reine IPv6-Umgebung.
 
 **F: Ich habe eine Umgebung mit mehreren Gesamtstrukturen und das Netzwerk zwischen den beiden Gesamtstrukturen verwendet NAT (Network Address Translation). Wird die Verwendung von Azure AD Connect zwischen diesen beiden Gesamtstrukturen unterstützt?**</br>
- Nein, die Verwendung von Azure AD Connect für NAT wird nicht unterstützt. 
+Nein, die Verwendung von Azure AD Connect für NAT wird nicht unterstützt. 
 
 ## <a name="federation"></a>Verbund
 **F: Was muss ich tun, wenn ich eine E-Mail erhalte, in der ich zur Erneuerung meines Office 365-Zertifikats aufgefordert werde?**  
@@ -106,7 +147,16 @@ Befolgen Sie die Anweisungen im Artikel [Erneuern von Zertifikaten](how-to-conne
 
 ## <a name="environment"></a>Environment
 **F: Kann der Server nach der Installation von Azure AD Connect umbenannt werden?**  
- Nein. Nach dem Ändern des Servernamens kann das Synchronisierungsmodul keine Verbindung mit der SQL-Datenbank-Instanz mehr herstellen, und der Dienst kann nicht gestartet werden.
+Nein. Nach dem Ändern des Servernamens kann das Synchronisierungsmodul keine Verbindung mit der SQL-Datenbank-Instanz mehr herstellen, und der Dienst kann nicht gestartet werden.
+
+**F: Werden kryptographische Synchronisationsregeln der nächsten Generation (NGC) auf einem FIPS-fähigen Computer unterstützt?**  
+Nein.  Sie werden nicht unterstützt.
+
+**F: Wenn ich im Azure-Portal ein synchronisiertes Gerät deaktiviert habe (z. B.: HAADJ), warum wird es dann erneut aktiviert?**<br>
+Synchronisierte Geräte können lokal erstellt oder gemastert werden. Wenn ein synchronisiertes Gerät lokal aktiviert ist, wird es möglicherweise im Azure-Portal erneut aktiviert, auch wenn es zuvor von einem Administrator deaktiviert wurde. Verwenden Sie zum Deaktivieren eines synchronisierten Geräts das lokale Active Directory, um das Computerkonto zu deaktivieren.
+
+**F: Warum wird eine Blockierung der Benutzeranmeldung im Office 365- oder Azure AD-Portal für synchronisierte Benutzer bei einer erneuten Anmeldung aufgehoben?**<br>
+Synchronisierte Benutzer können lokal erstellt oder gemastert werden. Wenn das Konto lokal aktiviert ist, kann dadurch die Blockierung der Anmeldung durch den Administrator aufgehoben werden.
 
 ## <a name="identity-data"></a>Identitätsdaten
 **F: Warum entspricht das userPrincipalName-Attribut (UPN) in Azure AD nicht dem lokalen UPN?**  
@@ -128,7 +178,7 @@ Nein, die manuelle Festlegung des ImmutableId-Attributs für vorhandene Azure AD
 Mit Ausnahme der auf dieser Website dokumentierten Cmdlets werden keine PowerShell-Cmdlets in Azure AD Connect zur Verwendung für Kunden unterstützt.
 
 **F: Kann ich mithilfe der Option „Serverexport/Serverimport“ in Synchronization Service Manager die Konfiguration zwischen Servern verschieben?**  
- Nein. Da bei dieser Option nicht alle Einstellungen abgerufen werden, sollte sie nicht verwendet werden. Verwenden Sie stattdessen den Assistenten zum Erstellen der Basiskonfiguration auf dem zweiten Server, und verwenden Sie den Synchronisierungsregel-Editor, um PowerShell-Skripts zum Verschieben benutzerdefinierter Regeln zwischen Servern zu erstellen. Weitere Informationen finden Sie unter [Swing-Migration](how-to-upgrade-previous-version.md#swing-migration).
+Nein. Da bei dieser Option nicht alle Einstellungen abgerufen werden, sollte sie nicht verwendet werden. Verwenden Sie stattdessen den Assistenten zum Erstellen der Basiskonfiguration auf dem zweiten Server, und verwenden Sie den Synchronisierungsregel-Editor, um PowerShell-Skripts zum Verschieben benutzerdefinierter Regeln zwischen Servern zu erstellen. Weitere Informationen finden Sie unter [Swing-Migration](how-to-upgrade-previous-version.md#swing-migration).
 
 **F: Können Kennwörter für die Azure-Anmeldeseite zwischengespeichert werden, und kann diese Zwischenspeicherung verhindert werden, da sie ein Kennworteingabeelement mit dem Attribut *autocomplete = "false"* enthält?**  
 Derzeit wird keine Änderung der HTML-Attribute des Felds **Kennwort**, einschließlich des AutoVervollständigen-Tags, unterstützt. Wir arbeiten derzeit an einem Feature, das benutzerdefiniertes JavaScript zulässt, sodass Sie dem Feld **Kennwort** beliebige Attribute hinzufügen können.
@@ -137,7 +187,7 @@ Derzeit wird keine Änderung der HTML-Attribute des Felds **Kennwort**, einschli
 Derzeit wird keine Änderung der HTML-Attribute des Eingabefelds **Kennwort**, einschließlich des AutoVervollständigen-Tags, unterstützt. Wir arbeiten derzeit an einem Feature, das benutzerdefiniertes JavaScript zulässt, sodass Sie dem Feld **Kennwort** beliebige Attribute hinzufügen können.
 
 **F: Gibt es eine Möglichkeit, gleichzeitige Sitzungen zu verhindern?**  
- Nein.
+Nein.
 
 ## <a name="auto-upgrade"></a>Automatisches Upgrade
 
@@ -220,3 +270,7 @@ Wenn Sie Hilfe bei der Durchführung eines Upgrades auf eine neuere Version von 
 * Suchen Sie nach technischen Fragen und Antworten, oder stellen Sie selbst Fragen, indem Sie die [Azure AD-Community](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required) besuchen.
 
 [Erhalten von Support für Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+
+**F: Warum werden die Ereignisse 6311 und 6401 nach Synchronisierungsschrittfehlern angezeigt?**
+
+Die Ereignisse 6311 (**Unerwarteter Serverfehler beim Ausführen eines Rückrufvorgangs**) und 6401 (**Unerwarteter Fehler beim Verwaltungs-Agent-Controller**) werden immer nach einem Synchronisierungsschrittfehler protokolliert. Zum Beheben dieser Fehler müssen Sie die Synchronisierungsschrittfehler bereinigen.  Weitere Informationen finden Sie unter [Beheben von Fehlern während der Synchronisierung](tshoot-connect-sync-errors.md) und [Beheben von Problemen bei der Objektsynchronisierung mit der Azure AD Connect-Synchronisierung](tshoot-connect-objectsync.md).

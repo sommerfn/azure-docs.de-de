@@ -1,13 +1,13 @@
 ---
 title: Hinzufügen von Eingabevorschlägen für Abfragen zu einem Index – Azure Search
 description: Aktivieren Sie Eingabevorschläge für Abfrageaktionen in Azure Search, indem Sie Vorschlagsfunktionen erstellen und Anforderungen formulieren, die automatisch Vervollständigungen oder Vorschläge für Abfrageausdrücke abrufen.
-ms.date: 03/22/2019
+ms.date: 05/02/2019
 services: search
 ms.service: search
 ms.topic: conceptual
 author: Brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a8bc86c2d3511fa04e595b8b2988d9a98bf084b2
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 73cfdb6a4185689a6485f55a4f6bdd1e7e3b14be
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650460"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648841"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Hinzufügen von Vorschlagsfunktionen zu einem Index für Eingabevorschläge in Azure Search
 
@@ -39,9 +39,6 @@ Um dieses Verhalten in Azure Search zu implementieren, gibt es eine Index- und e
 + Bei der Indexkomponente handelt es sich um eine Vorschlagsfunktion. Sie können das Portal, eine REST-API oder das .NET SDK verwenden, um eine Vorschlagsfunktion zu erstellen. 
 
 + Die Abfragekomponente ist eine in der Abfrageanforderung angegebene Aktion (entweder ein Vorschlag oder eine AutoVervollständigen-Aktion). 
-
-> [!Important]
-> AutoVervollständigen befindet sich derzeit in der Vorschau und ist in REST-APIs und im .NET SDK verfügbar. Sie ist nicht für Produktionsanwendungen vorgesehen. 
 
 Die „Search-as-you-Type“-Unterstützung (Vorschläge bei der Eingabe) wird auf Feldebene aktiviert. Sie können beide Verhaltensweisen für Eingabevorschläge in derselben Suchlösung implementieren, wenn Sie ein ähnliches Erlebnis wie im Screenshot wünschen. Beide Anforderungen zielen auf die *Dokumentensammlung* eines bestimmten Index ab, und die Antworten werden zurückgegeben, nachdem ein Benutzer eine Zeichenfolge aus mindestens 3 Zeichen eingegeben hat.
 
@@ -106,9 +103,16 @@ Zu den Eigenschaften, mit denen ein Vorschlag definiert wird, zählen unter ande
 
 |Eigenschaft      |BESCHREIBUNG      |
 |--------------|-----------------|
-|`name`        |Der Name der Vorschlagsfunktion. Verwenden Sie den Namen der Vorschlagsfunktion beim Aufrufen der [Vorschläge-REST-API](https://docs.microsoft.com/rest/api/searchservice/suggestions) oder [AutoVervollständigen-REST-API (Vorschau)](https://docs.microsoft.com/rest/api/searchservice/autocomplete).|
+|`name`        |Der Name der Vorschlagsfunktion. Sie verwenden den Namen der Vorschlagsfunktion beim Aufrufen der [Vorschläge-REST-API](https://docs.microsoft.com/rest/api/searchservice/suggestions) oder [AutoVervollständigen-REST-API](https://docs.microsoft.com/rest/api/searchservice/autocomplete).|
 |`searchMode`  |Die Strategie, mit der nach möglichen Ausdrücken gesucht wird. Derzeit wird nur der Modus `analyzingInfixMatching` unterstützt. Darin werden Ausdrücke am Anfang oder in der Mitte von Sätzen flexibel verglichen.|
 |`sourceFields`|Eine Liste mit einem oder mehreren Feldern, die als Quelle für den Inhalt von Vorschlägen dienen. Als Vorschlagsquellen sind nur Felder vom Typ `Edm.String` und `Collection(Edm.String)` zulässig. Es können nur Felder ohne benutzerdefinierte Sprachanalyse verwendet werden.<p/>Geben Sie nur die Felder an, die sich für eine erwartete und angemessene Antwort eignen, sei es eine vollständige Zeichenfolge in einer Suchleiste oder eine Dropdownliste.<p/>Ein Hotelname ist ein guter Kandidat, weil er präzise ist. Ausführliche Felder wie Beschreibungen und Kommentare sind zu informationsreich. Sich wiederholende Felder wie Kategorien und Tags sind ebenso weniger effektiv. In den Beispielen schließen wir ohnehin „category“ ein, um zu zeigen, dass Sie mehrere Felder einbeziehen können. |
+
+#### <a name="analysis-of-sourcefields-in-a-suggester"></a>Analyse von SourceFields in einer Vorschlagsfunktion
+
+Azure Search analysiert den Feldinhalt, um das Abfragen einzelner Begriffe zu ermöglichen. Für Vorschlagsfunktionen müssen Präfixe zusätzlich zu vollständigen Begriffen indiziert werden. Hierfür ist eine zusätzliche Analyse der Quellfelder erforderlich. In benutzerdefinierten Analysetoolkonfigurationen können die verschiedenen Tokenizer und Filter kombiniert werden. Häufig kommt es hierbei zu Kombinationen, die das Erstellen der für die Vorschläge benötigten Präfixe unmöglich machen. Aus diesem Grund **verhindert Azure Search, dass Felder mit benutzerdefinierten Analysetools in eine Vorschlagsfunktion eingebunden werden**.
+
+> [!NOTE] 
+>  Die empfohlene Vorgehensweise zur Umgehung der obigen Einschränkung ist die Verwendung von zwei separaten Feldern für denselben Inhalt. Eines der Felder kann so über Vorschlagsfunktionen verfügen, und das andere kann mit einer benutzerdefinierten Analysetoolkonfiguration eingerichtet werden.
 
 ## <a name="when-to-create-a-suggester"></a>Wann wird eine Vorschlagsfunktion erstellt?
 
@@ -120,9 +124,9 @@ Wenn Sie eine Vorschlagsfunktion zu einem bestehenden Index hinzufügen, in dem 
 
 Wie zuvor erwähnt, können Sie eine Vorschlagsfunktion für Vorschläge, AutoVervollständigen oder beides verwenden. 
 
-Eine Vorschlagsfunktion wird in einer Anforderung zusammen mit dem Vorgang referenziert. Geben Sie beispielsweise in einem GET-REST-Aufruf entweder `suggest` oder `autocomplete` für die Dokumentensammlung an. Für REST: Nachdem eine Vorschlagsfunktion erstellt wurde, verwenden Sie die [Vorschlags-API](https://docs.microsoft.com/rest/api/searchservice/suggestions) oder die [AutoVervollständigen-API (Vorschau)](https://docs.microsoft.com/rest/api/searchservice/autocomplete) in Ihrer Abfragelogik.
+Eine Vorschlagsfunktion wird in einer Anforderung zusammen mit dem Vorgang referenziert. Geben Sie beispielsweise in einem GET-REST-Aufruf entweder `suggest` oder `autocomplete` für die Dokumentensammlung an. Für REST: Nachdem eine Vorschlagsfunktion erstellt wurde, verwenden Sie die [Vorschlags-API](https://docs.microsoft.com/rest/api/searchservice/suggestions) oder die [AutoVervollständigen-API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) in Ihrer Abfragelogik.
 
-Für .NET verwenden Sie [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet-preview) oder [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet).
+Für .NET verwenden Sie [SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet) oder [AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet).
 
 Ein Beispiel, das beide Anforderungen veranschaulicht, finden Sie unter [Beispiel für das Hinzufügen von AutoVervollständigen und Vorschlägen in Azure Search](search-autocomplete-tutorial.md).
 

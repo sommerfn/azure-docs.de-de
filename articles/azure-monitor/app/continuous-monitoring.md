@@ -1,93 +1,108 @@
 ---
-title: Kontinuierliches Überwachen der DevOps-Releasepipeline mit Azure DevOps und Azure Application Insights | Microsoft-Dokumentation
+title: Kontinuierliches Überwachen der DevOps-Releasepipeline mit Azure Pipelines und Azure Application Insights | Microsoft-Dokumentation
 description: Dieser Artikel enthält Anweisungen zum schnellen Einrichten der kontinuierlichen Überwachung mit Application Insights.
 services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 11/13/2017
+ms.date: 07/16/2019
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 41999defb01e024773b6364f169a1ce3b1377237
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c39a2f75fe74b61463af464078b4446bba07dec0
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54056510"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277730"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Hinzufügen der kontinuierlichen Überwachung zur Releasepipeline
 
-Azure DevOps Services kann in Azure Application Insights integriert werden, um die kontinuierliche Überwachung Ihrer DevOps-Releasepipeline während des gesamten Lebenszyklus der Softwareentwicklung zu ermöglichen. 
+Azure Pipelines kann in Azure Application Insights integriert werden, um die kontinuierliche Überwachung Ihrer DevOps-Releasepipeline während des gesamten Lebenszyklus der Softwareentwicklung zu ermöglichen. 
 
-Azure DevOps Services unterstützt jetzt kontinuierliche Überwachung, sodass Releasepipelines Überwachungsdaten von Application Insights und anderen Azure-Ressourcen integrieren können. Wenn eine Application Insights-Warnung erkannt wird, kann die Bereitstellung abgegrenzt bleiben oder zurückgesetzt werden, bis die Warnung aufgelöst wurde. Wenn alle Überprüfungen erfolgreich durchgeführt wurden, können Bereitstellungen vom Testen bis hin zur Produktion ohne manuellen Eingriff automatisch fortgesetzt werden. 
+Bei der kontinuierlichen Überwachung können Releasepipelines Überwachungsdaten von Application Insights und anderen Azure-Ressourcen integrieren. Wenn die Releasepipeline eine Application Insights-Warnung erkennt, kann sie die Bereitstellung steuern oder einen Rollback dafür ausführen, bis die Warnung gelöst wurde. Wenn alle Überprüfungen erfolgreich durchgeführt wurden, können Bereitstellungen vom Testen bis hin zur Produktion ohne manuellen Eingriff automatisch fortgesetzt werden. 
 
 ## <a name="configure-continuous-monitoring"></a>Konfigurieren der kontinuierlichen Überwachung
 
-1. Wählen Sie ein vorhandenes Azure DevOps Services-Projekt aus.
+1. Wählen Sie in [Azure DevOps](https://dev.azure.com) eine Organisation und ein Projekt aus.
+   
+1. Wählen Sie auf der Projektseite im Menü auf der linken Seite die Option **Pipelines** > **Releases**. 
+   
+1. Klicken Sie auf den Pfeil neben **Neu**, und wählen Sie **Neue Releasepipeline**. Falls Sie noch nicht über eine Pipeline verfügen, wählen Sie auf der angezeigten Seite die Option **Neue Pipeline**.
+   
+1. Suchen Sie im Bereich **Wählen Sie eine Vorlage aus** nach **Azure App Service-Bereitstellung mit fortlaufender Überwachung**. Wählen Sie diese Option und anschließend **Übernehmen**. 
 
-2. Zeigen Sie auf **Build und Release**. > Wählen Sie **Releases** aus. > Klicken Sie auf das **Pluszeichen** > **Releasedefinition erstellen**. > Suchen Sie nach **Überwachung** > **Azure App Service Deployment with Continuous Monitoring** (Azure App Service-Bereitstellung mit kontinuierlicher Überwachung).
+   ![Neue Azure Pipelines-Releasepipeline](media/continuous-monitoring/001.png)
 
-   ![Neue Azure DevOps Services-Releasepipeline](media/continuous-monitoring/001.png)
+1. Wählen Sie im Feld **Stufe 1** den Hyperlink für die Option **Stufenaufgaben anzeigen**.
 
-3. Klicken Sie auf **Übernehmen**.
+   ![Stufenaufgaben anzeigen](media/continuous-monitoring/002.png)
 
-4. Wählen Sie neben dem roten Ausrufezeichen den blauen Text aus, um die Option **Umgebungsaufgaben anzeigen** anzuzeigen.
-
-   ![Umgebungsaufgaben anzeigen](media/continuous-monitoring/002.png)
-
-   Es wird ein Dialogfeld für die Konfiguration geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus.
+1. Füllen Sie im Konfigurationsbereich **Stufe 1** die folgenden Felder aus: 
 
     | Parameter        | Wert |
    | ------------- |:-----|
-   | **Umgebungsname**      | Name, der die Umgebung der Releasepipeline beschreibt |
-   | **Azure-Abonnement** | In dieser Dropdownliste werden alle mit der Azure DevOps Services-Organisation verknüpften Azure-Abonnements eingetragen.|
-   | **App Service-Name** | Abhängig von der sonstigen Auswahl muss möglicherweise für dieses Feld manuell ein neuer Wert eingetragen werden. |
-   | **Ressourcengruppe**    | In diese Dropdownliste werden die verfügbaren Ressourcengruppen eingetragen. |
-   | **Application Insights-Ressourcenname** | In diese Dropdownliste werden alle Application Insights-Ressourcen eingetragen, die der zuvor ausgewählten Ressourcengruppe entsprechen.
+   | **Name der Stufe**      | Geben Sie einen Stufennamen an, oder übernehmen Sie **Stufe 1**. |
+   | **Azure-Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie den Link zum gewünschten Azure-Abonnement aus.|
+   | **App-Typ** | Öffnen Sie die Dropdownliste, und wählen Sie Ihren App-Typ aus. |
+   | **App Service-Name** | Geben Sie den Namen Ihrer Azure App Service-Instanz ein. |
+   | **Name der Ressourcengruppe für Application Insights**    | Öffnen Sie die Dropdownliste, und wählen Sie die gewünschte Ressourcengruppe aus. |
+   | **Application Insights-Ressourcenname** | Öffnen Sie die Dropdownliste, und wählen Sie die Application Insights-Ressource für die zuvor gewählte Ressourcengruppe aus.
 
-5. Wählen Sie **Configure Application Insights alerts** (Application Insights-Warnungen konfigurieren) aus.
-
-6. Wählen Sie für die Standardwarnungsregeln **Speichern** aus. > Geben Sie einen beschreibenden Kommentar ein. > Klicken Sie auf **OK**.
+1. Wählen Sie zum Speichern der Pipeline mit den Standardeinstellungen für Warnungsregeln oben rechts im Azure DevOps-Fenster die Option **Speichern**. Geben Sie einen beschreibenden Kommentar ein, und wählen Sie anschließend **OK**.
 
 ## <a name="modify-alert-rules"></a>Ändern von Warnungsregeln
 
-1. Um die vordefinierten Warnungseinstellungen zu ändern, klicken Sie auf das Feld mit den Auslassungszeichen **...** rechts neben **Warnungsregeln**.
+Die Vorlage **Azure App Service-Bereitstellung mit kontinuierlicher Überwachung** verfügt standardmäßig über vier Warnungsregeln: **Verfügbarkeit**, **Anforderungsfehler**, **Serverantwortzeit** und **Serverausnahmen**. Sie können weitere Regeln hinzufügen oder die Regeleinstellungen ändern, um Ihre Servicelevelanforderungen zu erfüllen. 
 
-   (Standardmäßig sind vier Warnungsregeln vorhanden: Verfügbarkeit, Anforderungsfehler, Serverantwortzeit, Serverausnahmen.)
+Ändern Sie die Einstellungen für Warnungsregeln wie folgt:
 
-2. Klicken Sie auf das Dropdownsymbol neben **Verfügbarkeit**.
+1. Wählen Sie auf der Seite der Releasepipeline im linken Bereich die Option **Configure Application Insights Alerts** (Application Insights-Warnungen konfigurieren).
 
-3. Ändern Sie den **Schwellenwert** für die Verfügbarkeit entsprechend Ihren Servicelevelanforderungen.
-
+1. Wählen Sie im Bereich **Azure Monitor-Warnungen** neben **Warnungsregeln** die Auslassungszeichen ( **...** ).
+   
+1. Wählen Sie im Dialogfeld **Warnungsregeln** das Dropdownsymbol neben einer Warnungsregel, z. B. **Verfügbarkeit**. 
+   
+1. Ändern Sie den **Schwellenwert** und andere Einstellungen, um Ihre Anforderungen zu erfüllen.
+   
    ![Ändern der Warnung](media/continuous-monitoring/003.png)
-
-4. Wählen Sie **OK** > **Speichern** aus. > Geben Sie einen beschreibenden Kommentar ein. > Klicken Sie auf **OK**.
+   
+1. Wählen Sie **OK** und dann oben rechts im Azure DevOps-Fenster die Option **Speichern**. Geben Sie einen beschreibenden Kommentar ein, und wählen Sie anschließend **OK**.
 
 ## <a name="add-deployment-conditions"></a>Hinzufügen von Bereitstellungsbedingungen
 
-1. Klicken Sie auf **Pipeline**. > Wählen Sie abhängig von der Phase, für die ein Gate zur kontinuierlichen Überwachung erforderlich ist, das Symbol für die **Bedingungen vor der Bereitstellung** oder die **Bedingungen nach der Bereitstellung** aus.
+Beim Hinzufügen von Bereitstellungsgates zu Ihrer Releasepipeline verhindert eine Warnung, die die von Ihnen festgelegten Schwellenwerte überschreitet, die unerwünschte Releasehöherstufung. Nach Auflösung der Warnung kann die Bereitstellung automatisch fortgesetzt werden.
 
+Fügen Sie Bereitstellungsgates wie folgt hinzu:
+
+1. Wählen Sie auf der Hauptseite der Pipeline unter **Stufen** das Symbol **Bedingungen vor der Bereitstellung** oder **Bedingungen nach der Bereitstellung**. Dies hängt davon ab, welche Stufe ein Gate mit kontinuierlicher Überwachung benötigt.
+   
    ![Bedingungen vor der Bereitstellung](media/continuous-monitoring/004.png)
+   
+1. Legen Sie im Konfigurationsbereich **Bedingungen vor der Bereitstellung** die Option **Gates** auf **Aktiviert** fest.
+   
+1. Wählen Sie neben **Bereitstellungsgates** die Option **Hinzufügen**.
+   
+1. Wählen Sie im Dropdownmenü die Option **Azure Monitor-Warnungen abfragen**. Mit dieser Option können Sie sowohl auf Azure Monitor- als auch auf Application Insights-Warnungen zugreifen.
+   
+   ![Abfragen von Azure Monitor-Warnungen](media/continuous-monitoring/005.png)
+   
+1. Geben Sie unter **Auswertungsoptionen** die gewünschten Werte für Einstellungen wie **Der Zeitraum bis zur erneuten Auswertung von Gates** und **Das Zeitlimit, nach dem Gates als fehlerhaft gelten** ein. 
 
-2. Legen Sie **Gates** auf **Aktiviert** > **Approval gates** (Genehmigungsgates) fest. > Klicken Sie auf **Hinzufügen**.
+## <a name="view-release-logs"></a>Anzeigen von Releaseprotokollen
 
-3. Wählen Sie **Azure Monitor** aus. (Über diese Option können Sie auf Warnungen von Azure Monitor sowie von Application Insights zugreifen.)
+Sie können das Verhalten von Bereitstellungsgates und andere Releaseschritte den Releaseprotokollen entnehmen. Öffnen Sie die Protokolle wie folgt:
 
-    ![Azure Monitor](media/continuous-monitoring/005.png)
-
-4. Geben Sie einen Wert für **Gates Timeout** (Gatetimeout) ein.
-
-5. Geben Sie ein **Samplingintervall** ein.
-
-## <a name="deployment-gate-status-logs"></a>Statusprotokolle für Bereitstellungsgates
-
-Nachdem Sie Bereitstellungsgates hinzugefügt haben, schützt eine Warnung in Application Insights, die den zuvor definierten Schwellenwert überschreitet, die Bereitstellung vor unerwünschter Releasehöherstufung. Nach Auflösung der Warnung kann die Bereitstellung automatisch fortgesetzt werden.
-
-Wählen Sie zur Überwachung dieses Verhaltens die Option **Releases** aus. > Klicken Sie mit der rechten Maustaste auf den Releasenamen, und wählen Sie **Öffnen** > **Protokolle** aus.
-
-![Protokolle](media/continuous-monitoring/006.png)
+1. Wählen Sie auf der Pipelineseite im Menü links die Option **Releases**. 
+   
+1. Wählen Sie ein beliebiges Release aus. 
+   
+1. Wählen Sie unter **Stufen** eine beliebige Stufe aus, um eine Zusammenfassung zum Release anzuzeigen. 
+   
+1. Wählen Sie in der Releasezusammenfassung zum Anzeigen von Protokollen die Option **Protokolle anzeigen**, wählen Sie für eine beliebige Stufe den Hyperlink **Erfolgreich** oder **Fehler**, oder zeigen Sie auf eine Stufe, und wählen Sie **Protokolle**. 
+   
+   ![Anzeigen von Releaseprotokollen](media/continuous-monitoring/006.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Pipelines finden Sie in [diesen Schnellstarts](https://docs.microsoft.com/azure/devops/pipelines).
+Weitere Informationen zu Azure Pipelines finden Sie in der [Azure Pipelines-Dokumentation](https://docs.microsoft.com/azure/devops/pipelines).

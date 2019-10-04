@@ -2,20 +2,20 @@
 title: Lokalisierungszeichenfolgen-IDs – Azure Active Directory B2C | Microsoft-Dokumentation
 description: Geben Sie die IDs für eine Inhaltsdefinition mit der ID „api.signuporsignin“ in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C an.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5f937a86e4e063ad1e8346dc629a917ae7ce8b65
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da1390de4e2eb0624032dc490416e7b6e5d61baa
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077206"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67846851"
 ---
 # <a name="localization-string-ids"></a>Lokalisierungszeichenfolgen-IDs
 
@@ -27,13 +27,13 @@ Mithilfe des **Localization**-Elements können Sie mehrere Gebietsschemas oder S
 
 Die folgenden IDs werden für eine Inhaltsdefinition mit der ID `api.signuporsignin` verwendet.
 
-| ID | Standardwert |
+| id | Standardwert |
 | -- | ------------- |
 | **local_intro_email** | Melden Sie sich mit Ihrem vorhandenen Konto an. |
 | **logonIdentifier_email** | E-Mail-Adresse |
 | **requiredField_email** | Geben Sie Ihre E-Mail-Adresse ein. |
 | **invalid_email** | Geben Sie eine gültige E-Mail-Adresse ein. |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&’'*+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&’' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
 | **local_intro_username** | Melden Sie sich mit Ihrem Benutzernamen an. |
 | **logonIdentifier_username** | Username |
 | **requiredField_username** | Geben Sie Ihren Benutzernamen ein. |
@@ -81,21 +81,21 @@ Im folgenden Beispiel wird der Facebook-Identitätsanbieter in Arabisch lokalisi
 
 ## <a name="sign-up-or-sign-in-error-messages"></a>Fehlermeldungen beim Registrieren oder Anmelden
 
-| ID | Standardwert |
+| id | Standardwert |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | Ihr Kennwort ist falsch. |
 | **UserMessageIfClaimsPrincipalDoesNotExist** | Wir können Ihr Konto nicht finden. |
-| **UserMessageIfOldPasswordUsed** | Sie verwenden offenbar ein altes Kennwort. |  
-| **DefaultMessage** | Ungültiger Benutzername oder ungültiges Kennwort. |  
-| **UserMessageIfUserAccountDisabled** | Ihr Konto wurde gesperrt. Wenden Sie sich an einen Supportmitarbeiter, um die Sperre aufheben zu lassen, und wiederholen Sie den Vorgang. |  
-| **UserMessageIfUserAccountLocked** | Ihr Konto wurde vorübergehend gesperrt, um eine unbefugte Nutzung zu verhindern. Versuchen Sie es später erneut. |  
-| **AADRequestsThrottled** | Derzeit sind zu viele Anforderungen vorhanden. Warten Sie einige Zeit, und versuchen Sie es erneut. |  
+| **UserMessageIfOldPasswordUsed** | Sie verwenden offenbar ein altes Kennwort. |
+| **DefaultMessage** | Ungültiger Benutzername oder ungültiges Kennwort. |
+| **UserMessageIfUserAccountDisabled** | Ihr Konto wurde gesperrt. Wenden Sie sich an einen Supportmitarbeiter, um die Sperre aufheben zu lassen, und wiederholen Sie den Vorgang. |
+| **UserMessageIfUserAccountLocked** | Ihr Konto wurde vorübergehend gesperrt, um eine unbefugte Nutzung zu verhindern. Versuchen Sie es später erneut. |
+| **AADRequestsThrottled** | Derzeit sind zu viele Anforderungen vorhanden. Warten Sie einige Zeit, und versuchen Sie es erneut. |
 
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>Benutzeroberflächenelemente für Anmeldeseiten und Seiten zur Identitätsüberprüfung
 
 Folgende IDs dienen der Inhaltsdefinition mit der ID `api.localaccountsignup` oder einer Inhaltsdefinition, die mit `api.selfasserted` beginnt, wie etwa `api.selfasserted.profileupdate` und `api.localaccountpasswordreset`.
 
-| ID | Standardwert |
+| id | Standardwert |
 | -- | ------------- |
 | **ver_sent** | Prüfcode wurde gesendet an: |
 | **ver_but_default** | Standard |
@@ -120,7 +120,7 @@ Folgende IDs dienen der Inhaltsdefinition mit der ID `api.localaccountsignup` od
 | **ver_incorrect_format** | Falsches Format. |
 | **ver_but_edit** | E-Mail-Adresse ändern |
 | **ver_but_verify** | Code überprüfen |
-| **alert_no** | Nein  |
+| **alert_no** | Nein |
 | **ver_info_msg** | Der Prüfcode wurde an Ihr Postfach gesendet. Kopieren Sie den Code in das nachstehende Eingabefeld. |
 | **day** | Day (Tag) |
 | **ver_fail_throttled** | Es wurden zu viele Anforderungen zur Überprüfung dieser E-Mail-Adresse gesendet. Warten Sie einige Minuten, und versuchen Sie es erneut. |
@@ -134,7 +134,7 @@ Folgende IDs dienen der Inhaltsdefinition mit der ID `api.localaccountsignup` od
 
 ## <a name="sign-up-and-self-asserted-pages-error-messages"></a>Fehlermeldungen für Anmeldeseiten und Seiten zur Identitätsüberprüfung
 
-| ID | Standardwert |
+| id | Standardwert |
 | -- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | Es ist bereits ein Benutzer mit der angegebenen ID vorhanden. Wählen Sie eine andere ID. |
 | **UserMessageIfClaimNotVerified** | Anspruch nicht überprüft: {0} |
@@ -146,7 +146,7 @@ Folgende IDs dienen der Inhaltsdefinition mit der ID `api.localaccountsignup` od
 
 Die folgenden Beispiele zeigen die Verwendung einiger Benutzeroberflächenelemente auf der Registrierungsseite:
 
-![UX-Elemente auf der Registrierungsseite](./media/localization-string-ids/localization-sign-up.png)
+![Registrierungsseite mit bezeichneten Namen der Benutzeroberflächenelemente](./media/localization-string-ids/localization-sign-up.png)
 
 Die folgenden Beispiele zeigen die Verwendung einiger Benutzeroberflächenelemente auf der Registrierungsseite, nachdem der Benutzer auf die Schaltfläche „Überprüfungscode senden“ geklickt hat:
 
@@ -155,9 +155,9 @@ Die folgenden Beispiele zeigen die Verwendung einiger Benutzeroberflächenelemen
 
 ## <a name="phone-factor-authentication-page-user-interface-elements"></a>Benutzeroberflächenelemente auf der Seite für die Phone Factor Authentication
 
-Die folgenden IDs werden für eine Inhaltsdefinition mit der ID `api.phonefactor` verwendet. 
+Die folgenden IDs werden für eine Inhaltsdefinition mit der ID `api.phonefactor` verwendet.
 
-| ID | Standardwert |
+| id | Standardwert |
 | -- | ------------- |
 | **button_verify** | Rückruf |
 | **country_code_label** | Landesvorwahl |

@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Ausführen eines TensorFlow-Modells in Python – Custom Vision Service'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Ausführen eines TensorFlow-Modells in Python
 services: cognitive-services
 author: areddish
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: areddish
-ms.openlocfilehash: 1e4c08c1e1f9c32c7c397cf187ad2ef91a25c59d
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: c6e7cf770e5f1639e676d232564809121a8c4e4b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350452"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561102"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Tutorial: Ausführen des TensorFlow-Modells in Python
 
@@ -88,7 +88,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="deal-with-images-with-a-dimension-1600"></a>Verarbeiten von Bildern mit einer Dimension >1600
+### <a name="handle-images-with-a-dimension-1600"></a>Verarbeiten von Bildern mit einer Dimension > 1600
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -130,6 +130,7 @@ In den obenstehenden Schritten werden die folgenden Hilfsfunktionen verwendet:
 ```Python
 def convert_to_opencv(image):
     # RGB -> BGR conversion is performed as well.
+    image = image.convert('RGB')
     r,g,b = np.array(image).T
     opencv_image = np.array([b,g,r]).transpose()
     return opencv_image

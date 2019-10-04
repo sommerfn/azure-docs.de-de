@@ -3,7 +3,7 @@ title: 'CLI-Beispiel: Lastenausgleich für virtuelle Computer innerhalb einer Zo
 description: Dieses Azure CLI-Skriptbeispiel veranschaulicht, wie Sie einen Lastausgleich für den Datenverkehr für virtuelle Computer in einer bestimmten Verfügbarkeitszone vornehmen.
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
+author: asudbring
 manager: jeconnoc
 editor: tysonn
 tags: ''
@@ -15,15 +15,15 @@ ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
-ms.author: kumud
-ms.openlocfilehash: 888808c94115e2ea136e90eb635faf28e7d92fd2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: allensu
+ms.openlocfilehash: 29671283a1ef2906e03685a59d62ccc13c1307fe
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431017"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68273734"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI-Skriptbeispiel: Lastenausgleich für den Datenverkehr zu virtuellen Computern für Hochverfügbarkeit
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI-Skriptbeispiele: Lastenausgleich für den Datenverkehr zu virtuellen Computern für Hochverfügbarkeit
 
 Dieses Azure CLI-Beispielskript erstellt alle Komponenten, die zum Ausführen mehrerer virtueller Ubuntu-Computer in einer Konfiguration mit Hochverfügbarkeit und Lastenausgleich in einer bestimmten Verfügbarkeitszone benötigt werden. Nach dem Ausführen dieses Skripts verfügen Sie über drei virtuelle Computer in einer einzelnen Verfügbarkeitszone, die über eine Azure Load Balancer Standard-Instanz zugänglich sind. 
 

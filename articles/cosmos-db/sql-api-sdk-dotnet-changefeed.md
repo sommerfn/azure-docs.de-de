@@ -8,15 +8,17 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: a878ab1937b06f06a27b18f793fc1bfa190969ed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ea6de5f42910457efa5ca6c458d7af63faa38e18
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090337"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68637752"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zum Release
+
 > [!div class="op_single_selector"]
+>
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET-Änderungsfeed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
@@ -27,8 +29,8 @@ ms.locfileid: "58090337"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [BulkExecutor: .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor: Java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulk Executor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
 |---|---|
@@ -40,6 +42,11 @@ ms.locfileid: "58090337"
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="v2-builds"></a>V2-Builds
+
+### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
+* Verbesserte Lastenausgleichsstrategie für ein Szenario, bei dem das Abrufen aller Leases länger dauert als das Leaseablaufintervall, z.B. aufgrund von Netzwerkproblemen:
+  * In diesem Szenario wird ein Lastenausgleichsalgorithmus verwendet, um Leases fälschlicherweise als abgelaufen zu betrachten, was dazu führt, dass aktiven Besitzern Leases gestohlen werden. Dies könnte einen unnötigen erneuten Ausgleich vieler Leases auslösen.
+  * Dieses Problem wurde in der vorliegenden Version folgendermaßen behoben: Bei einem Konflikt wird eine Wiederholung vermieden, wobei die abgelaufene Lease, die der Besitzer nicht geändert hat, abgerufen und dieser Abruf auf die nächste Iteration des Lastenausgleichs verschoben wird.
 
 ### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
 * Verbesserte Behandlung von Beobachterausnahmen.
@@ -151,8 +158,8 @@ ms.locfileid: "58090337"
 * Allgemeine Verfügbarkeit (GA) des SDK
 * Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.14.1 und niedriger.
 
-
 ## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
+
 Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
 
 Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren. 
@@ -163,24 +170,25 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.2.7](#2.2.7) |14. Mai 2019 |--- |
 | [2.2.6](#2.2.6) |29. Januar 2019 |--- |
 | [2.2.5](#2.2.5) |13. Dezember 2018 |--- |
 | [2.2.4](#2.2.4) |29. November 2018 |--- |
 | [2.2.3](#2.2.3) |19. November 2018 |--- |
 | [2.2.2](#2.2.2) |31. Oktober 2018 |--- |
 | [2.2.1](#2.2.1) |24. Oktober 2018 |--- |
-| [1.3.3](#1.3.3) |8. Mai 2018 |--- |
+| [1.3.3](#1.3.3) |8\. Mai 2018 |--- |
 | [1.3.2](#1.3.2) |18. April 2018 |--- |
 | [1.3.1](#1.3.1) |13. März 2018 |--- |
 | [1.2.0](#1.2.0) |31. Oktober 2017 |--- |
 | [1.1.1](#1.1.1) |29. August 2017 |--- |
 | [1.1.0](#1.1.0) |13. August 2017 |--- |
-| [1.0.0](#1.0.0) |7. Juli 2017 |--- |
-
+| [1.0.0](#1.0.0) |7\. Juli 2017 |--- |
 
 ## <a name="faq"></a>Häufig gestellte Fragen
+
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Weitere Informationen
-Weitere Informationen zu Cosmos DB finden Sie auf der Seite zum Dienst [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). 
 
+Weitere Informationen zu Cosmos DB finden Sie auf der Seite zum Dienst [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).

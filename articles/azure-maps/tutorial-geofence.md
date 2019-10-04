@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 112d0bd4b6802179692d0d177775027e552d1170
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085319"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694923"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Einrichten eines Geofence mit Azure Maps
 
@@ -36,7 +36,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ### <a name="create-an-azure-maps-account"></a>Erstellen eines Azure Maps-Kontos 
 
-Um die Schritte in diesem Tutorial ausführen zu können, müssen Sie zunächst [Verwalten von Konten und Schlüsseln](how-to-manage-account-keys.md) lesen, um Ihr Kontoabonnement mit S1-Tarif zu erstellen und zu verwalten.
+Befolgen Sie für die Schritte in diesem Tutorial die Anleitung unter [Verwalten Ihres Azure Maps-Kontos](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account), um ein Azure Maps-Kontoabonnement mit S1-Tarif zu erstellen. Führen Sie außerdem die Schritte unter [Suchen nach Points of Interest in der Nähe mit Azure Maps](./tutorial-search-location.md#getkey) aus, um den primären Abonnementschlüssel für Ihr Konto abzurufen.
 
 ## <a name="upload-geofences"></a>Hochladen von Geofences
 
@@ -56,7 +56,7 @@ Wir nutzen die Anwendung Postman, um den Geofence für die Baustelle mit der Dat
     
     Der Parameter GEOJSON im URL-Pfad steht für das Format der Daten, die hochgeladen werden.
 
-3. Klicken Sie auf **Params**, und geben Sie die folgenden Schlüssel-Wert-Paare ein, die für die POST-Anforderungs-URL verwendet werden sollen. Ersetzen Sie den Abonnementschlüsselwert durch Ihren Azure Maps-Abonnementschlüssel.
+3. Klicken Sie auf **Params**, und geben Sie die folgenden Schlüssel-Wert-Paare ein, die für die POST-Anforderungs-URL verwendet werden sollen. Ersetzen Sie den Abonnementschlüsselwert durch Ihren primären Azure Maps-Abonnementschlüssel.
    
     ![Schlüssel-Wert-Parameter: Postman](./media/tutorial-geofence/postman-key-vals.png)
 
@@ -148,10 +148,24 @@ Wir nutzen die Anwendung Postman, um den Geofence für die Baustelle mit der Dat
    }
    ```
 
-5. Klicken Sie auf „Senden“, und sehen Sie sich den Antwortheader an. Der Adressheader enthält den URI, mit dem auf die Daten zur zukünftigen Verwendung zugegriffen wird bzw. über den diese Daten heruntergeladen werden. Darüber hinaus enthält er eine eindeutige ID (`udId`) für die hochgeladenen Daten.
+5. Klicken Sie auf „Senden“, und sehen Sie sich den Antwortheader an. Bei einer erfolgreichen Anforderung enthält der Adressheader (**Location**) den Status-URI, um den aktuellen Status der Uploadanforderung zu überprüfen. Der Status-URI hat das folgende Format. 
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
+   ```
+
+6. Kopieren Sie Ihren Status-URI, und fügen Sie den Parameter `subscription-key` an, der als Wert den Abonnementschlüssel Ihres Azure Maps-Kontos enthält. Das Format des Status-URI sollte wie folgt aussehen:
+
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
+
+7. Um den Wert von `udId` abzurufen, öffnen Sie in der Postman-App eine neue Registerkarte, wählen auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus und führen eine GET-Anforderung für den Status-URI aus. Wenn der Datenupload erfolgreich ausgeführt wurde, wird im Antworttext ein Wert für „udId“ ausgegeben. Kopieren Sie die udId zur späteren Verwendung.
+
+   ```JSON
+   {
+    "udid" : "{udId}"
+   }
    ```
 
 ## <a name="set-up-an-event-handler"></a>Einrichten eines Ereignishandlers

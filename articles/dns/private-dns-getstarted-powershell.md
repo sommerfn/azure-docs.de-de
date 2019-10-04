@@ -1,30 +1,30 @@
 ---
-title: 'Tutorial: Erstellen einer privaten Azure DNS-Zone mithilfe von Azure PowerShell'
-description: In diesem Tutorial erstellen und testen Sie eine private DNS-Zone und einen Eintrag in Azure DNS. Dies ist eine Schritt-für-Schritt-Anleitung zum Erstellen und Verwalten Ihrer ersten privaten DNS-Zone und Ihres ersten DNS-Eintrags mithilfe von Azure PowerShell.
+title: 'Schnellstart: Erstellen einer privaten Azure DNS-Zone mithilfe von Azure PowerShell'
+description: In diesem Artikel erstellen und testen Sie eine private DNS-Zone und einen Eintrag in Azure DNS. Dies ist eine Schritt-für-Schritt-Anleitung zum Erstellen und Verwalten Ihrer ersten privaten DNS-Zone und Ihres ersten DNS-Eintrags mithilfe von Azure PowerShell.
 services: dns
 author: vhorne
 ms.service: dns
-ms.topic: tutorial
-ms.date: 3/11/2019
+ms.topic: quickstart
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: b4d75c7a6db89b19d88cddcc564fd4e6a9ad0f49
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: cf9ca1070461effc69d67614a11b1abd05363310
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770458"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162124"
 ---
-# <a name="tutorial-create-an-azure-dns-private-zone-using-azure-powershell"></a>Tutorial: Erstellen einer privaten Azure DNS-Zone mithilfe von Azure PowerShell
-
-In diesem Tutorial wird Schritt für Schritt beschrieben, wie Sie Ihre erste private DNS-Zone und Ihren ersten DNS-Eintrag mithilfe von Azure PowerShell erstellen.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+# <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>Schnellstart: Erstellen einer privaten Azure DNS-Zone mithilfe von Azure PowerShell
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
-Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Um eine private DNS-Zone in Ihrem virtuellen Netzwerk zu veröffentlichen, geben Sie die Liste mit den virtuellen Netzwerken an, für die das Auflösen von Einträgen in der Zone zulässig ist.  Diese werden als *virtuelle Auflösungsnetzwerke* bezeichnet. Sie können auch ein virtuelles Netzwerk angeben, für das Azure DNS Hostnameneinträge verwaltet, wenn ein virtueller Computer erstellt wird, sich seine IP-Adresse ändert oder der virtuelle Computer gelöscht wird.  Dies wird als *virtuelles Registrierungsnetzwerk* bezeichnet.
+In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie Ihre erste private DNS-Zone und Ihren ersten DNS-Eintrag mithilfe von Azure PowerShell erstellen.
 
-In diesem Tutorial lernen Sie Folgendes:
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Um eine private DNS-Zone in Ihrem virtuellen Netzwerk zu veröffentlichen, geben Sie die Liste mit den virtuellen Netzwerken an, für die das Auflösen von Einträgen in der Zone zulässig ist.  Diese werden als *verknüpfte* virtuelle Netzwerke bezeichnet. Wenn die automatische Registrierung aktiviert ist, aktualisiert Azure DNS auch die Zoneneinträge, sobald ein virtueller Computer erstellt, seine IP-Adresse geändert oder ein virtueller Computer gelöscht wird.
+
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Erstellen einer privaten DNS-Zone
@@ -32,16 +32,11 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen eines zusätzlichen DNS-Eintrags
 > * Testen der privaten Zone
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Sie können für dieses Tutorial auch die [Azure-Befehlszeilenschnittstelle](private-dns-getstarted-cli.md) verwenden.
-
-<!--- ## Get the Preview PowerShell modules
-These instructions assume you have already installed and signed in to Azure PowerShell, including ensuring you have the required modules for the Private Zone feature. -->
-
-<!---[!INCLUDE [dns-powershell-setup](../../includes/dns-powershell-setup-include.md)] -->
-
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+Sie können für diese Schnellstartanleitung auch die [Azure-Befehlszeilenschnittstelle](private-dns-getstarted-cli.md) verwenden.
 
 ## <a name="create-the-resource-group"></a>Ressourcengruppe erstellen
 
@@ -51,13 +46,15 @@ Erstellen Sie zunächst eine Ressourcengruppe für die DNS-Zone:
 New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 ```
 
-## <a name="create-a-dns-private-zone"></a>Erstellen einer privaten DNS-Zone
+## <a name="create-a-private-dns-zone"></a>Erstellen einer privaten DNS-Zone
 
-Eine DNS-Zone wird erstellt, indem das `New-AzDnsZone`-Cmdlet mit dem Wert *Private* für den Parameter **ZoneType** verwendet wird. Im folgenden Beispiel wird eine DNS-Zone mit dem Namen **private.contoso.com** in der Ressourcengruppe **MyAzureResourceGroup** erstellt, und die DNS-Zone wird für das virtuelle Netzwerk **MyAzureVnet** verfügbar gemacht.
+Eine DNS-Zone wird mit dem `New-AzPrivateDnsZone` -Cmdlet erstellt.
 
-Die Zone wird bei Auslassung des Parameters **ZoneType** als öffentliche Zone erstellt. Er ist also erforderlich, wenn Sie eine private Zone erstellen möchten. 
+Im folgenden Beispiel wird ein virtuelles Netzwerk namens **myAzureVNet** erstellt. Anschließend wird eine DNS-Zone mit dem Namen **private.contoso.com** in der Ressourcengruppe **MyAzureResourceGroup** erstellt, die DNS-Zone mit dem virtuellen Netzwerk **MyAzureVnet** verknüpft und die automatische Registrierung aktiviert.
 
 ```azurepowershell
+Install-Module -Name Az.PrivateDns -force
+
 $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name backendSubnet -AddressPrefix "10.2.0.0/24"
 $vnet = New-AzVirtualNetwork `
   -ResourceGroupName MyAzureResourceGroup `
@@ -66,28 +63,29 @@ $vnet = New-AzVirtualNetwork `
   -AddressPrefix 10.2.0.0/16 `
   -Subnet $backendSubnet
 
-New-AzDnsZone -Name private.contoso.com -ResourceGroupName MyAzureResourceGroup `
-   -ZoneType Private `
-   -RegistrationVirtualNetworkId @($vnet.Id)
+$zone = New-AzPrivateDnsZone -Name private.contoso.com -ResourceGroupName MyAzureResourceGroup
+
+$link = New-AzPrivateDnsVirtualNetworkLink -ZoneName private.contoso.com `
+  -ResourceGroupName MyAzureResourceGroup -Name "mylink" `
+  -VirtualNetworkId $vnet.id -EnableRegistration
 ```
 
-Wenn Sie eine Zone nur für die Namensauflösung (keine automatische Hostnamenerstellung) erstellen möchten, können Sie anstelle des Parameters *RegistrationVirtualNetworkId* den Parameter *ResolutionVirtualNetworkId* verwenden.
-
-> [!NOTE]
-> Sie können die automatisch erstellten Einträge für die Hostnamen nicht anzeigen. Später werden Sie jedoch Tests ausführen, um sicherzustellen, dass sie vorhanden sind.
+Wenn Sie eine Zone nur für die Namensauflösung erstellen möchten (keine automatische Hostnamenregistrierung), können Sie den Parameter `-EnableRegistration` auslassen.
 
 ### <a name="list-dns-private-zones"></a>Auflisten von privaten DNS-Zonen
 
-Durch Auslassen des Zonennamens in `Get-AzDnsZone` können Sie alle Zonen in einer Ressourcengruppe auflisten: Dieser Vorgang gibt ein Array von Zonenobjekten zurück.
+Durch Auslassen des Zonennamens in `Get-AzPrivateDnsZone` können Sie alle Zonen in einer Ressourcengruppe auflisten: Dieser Vorgang gibt ein Array von Zonenobjekten zurück.
 
 ```azurepowershell
-Get-AzDnsZone -ResourceGroupName MyAzureResourceGroup
+$zones = Get-AzPrivateDnsZone -ResourceGroupName MyAzureResourceGroup
+$zones
 ```
 
-Durch das Weglassen des Zonennamens und des Ressourcengruppennamens aus `Get-AzDnsZone` können Sie alle Zonen im Azure-Abonnement auflisten.
+Durch das Weglassen des Zonennamens und des Ressourcengruppennamens aus `Get-AzPrivateDnsZone` können Sie alle Zonen im Azure-Abonnement auflisten.
 
 ```azurepowershell
-Get-AzDnsZone
+$zones = Get-AzPrivateDnsZone
+$zones
 ```
 
 ## <a name="create-the-test-virtual-machines"></a>Erstellen der virtuellen Testcomputer
@@ -118,12 +116,12 @@ Dies nimmt einige Minuten in Anspruch.
 
 ## <a name="create-an-additional-dns-record"></a>Erstellen eines zusätzlichen DNS-Eintrags
 
-Sie erstellen Ressourceneintragssätze mit dem Cmdlet `New-AzDnsRecordSet`. Im folgenden Beispiel wird ein Eintrag mit dem relativen Namen **db** in der DNS-Zone **private.contoso.com** in der Ressourcengruppe **MyAzureResourceGroup** erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes lautet **db.private.contoso.com**. Der Eintragstyp ist „A“, die IP-Adresse lautet 10.2.0.4, und die Gültigkeitsdauer beträgt 3.600 Sekunden.
+Sie erstellen Ressourceneintragssätze mit dem Cmdlet `New-AzPrivateDnsRecordSet`. Im folgenden Beispiel wird ein Eintrag mit dem relativen Namen **db** in der DNS-Zone **private.contoso.com** in der Ressourcengruppe **MyAzureResourceGroup** erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes lautet **db.private.contoso.com**. Der Eintragstyp ist „A“, die IP-Adresse lautet 10.2.0.4, und die Gültigkeitsdauer beträgt 3.600 Sekunden.
 
 ```azurepowershell
-New-AzDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
+New-AzPrivateDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
    -ResourceGroupName MyAzureResourceGroup -Ttl 3600 `
-   -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.2.0.4")
+   -PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address "10.2.0.4")
 ```
 
 ### <a name="view-dns-records"></a>Anzeigen von DNS-Einträgen
@@ -131,9 +129,8 @@ New-AzDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
 Listen Sie die DNS-Einträge in Ihrer Zone mit diesem Befehl auf:
 
 ```azurepowershell
-Get-AzDnsRecordSet -ZoneName private.contoso.com -ResourceGroupName MyAzureResourceGroup
+Get-AzPrivateDnsRecordSet -ZoneName private.contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
-Beachten Sie, dass die automatisch erstellten A-Einträge für Ihre beiden virtuellen Testcomputer nicht angezeigt werden.
 
 ## <a name="test-the-private-zone"></a>Testen der privaten Zone
 
@@ -155,10 +152,13 @@ Wiederholen Sie den Schritt für „myVM02“.
 ### <a name="ping-the-vms-by-name"></a>Pingen der virtuellen Computer anhand des Namens
 
 1. Führen Sie an der Windows PowerShell-Eingabeaufforderung von „myVM02“ einen Ping-Befehl für „myVM01“ aus. Verwenden Sie dazu den automatisch registrierten Hostnamen:
+
    ```
    ping myVM01.private.contoso.com
    ```
+
    Eine ähnliche Ausgabe wie die folgende sollte angezeigt werden:
+
    ```
    PS C:\> ping myvm01.private.contoso.com
 
@@ -174,11 +174,15 @@ Wiederholen Sie den Schritt für „myVM02“.
        Minimum = 0ms, Maximum = 1ms, Average = 0ms
    PS C:\>
    ```
+
 2. Pingen Sie jetzt den Namen **db**, den Sie zuvor erstellt haben:
+
    ```
    ping db.private.contoso.com
    ```
+
    Eine ähnliche Ausgabe wie die folgende sollte angezeigt werden:
+
    ```
    PS C:\> ping db.private.contoso.com
 
@@ -190,14 +194,14 @@ Wiederholen Sie den Schritt für „myVM02“.
 
    Ping statistics for 10.2.0.4:
        Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
-   Approximate round trip times in milli-seconds:
+   Approximate round trip times in milliseconds:
        Minimum = 0ms, Maximum = 0ms, Average = 0ms
    PS C:\>
    ```
 
 ## <a name="delete-all-resources"></a>Löschen aller Ressourcen
 
-Löschen Sie die Ressourcengruppe **MyAzureResourceGroup**, wenn Sie sie nicht mehr benötigen, um die in diesem Tutorial erstellten Ressourcen zu löschen.
+Löschen Sie die Ressourcengruppe **MyAzureResourceGroup**, um die in diesem Artikel erstellten Ressourcen zu löschen, falls sie nicht mehr benötigt werden.
 
 ```azurepowershell
 Remove-AzResourceGroup -Name MyAzureResourceGroup
@@ -205,12 +209,5 @@ Remove-AzResourceGroup -Name MyAzureResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine private DNS-Zone bereitgestellt, einen DNS-Eintrag erstellt und die Zone getestet.
-Im folgenden Tutorial finden Sie weitere Informationen zu privaten DNS-Zonen:
-
 > [!div class="nextstepaction"]
-> [Verwenden von Azure DNS für private Domänen](private-dns-overview.md)
-
-
-
-
+> [Azure DNS Private Zones-Szenarien](private-dns-scenarios.md)

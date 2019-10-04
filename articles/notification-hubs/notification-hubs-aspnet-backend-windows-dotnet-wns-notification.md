@@ -2,9 +2,9 @@
 title: Senden von Benachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe UWP-Anwendungen (Universelle Windows-Plattform) Benachrichtigungen an bestimmte Benutzer senden.
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: 012529f2-fdbc-43c4-8634-2698164b5880
 ms.service: notification-hubs
@@ -14,13 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: 32714b3e5a5ed859716faef2ca660f8b2c90b089
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402507"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212059"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Tutorial: Senden von Benachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs
 
@@ -31,7 +33,7 @@ ms.locfileid: "58402507"
 Ein ASP.NET WebAPI-Back-End wird verwendet, um Clients zu authentifizieren. Mit dem authentifizierten Clientbenutzer wird automatisch ein Tag vom Back-End zur Benachrichtigungsregistrierung hinzugefügt. Wenn das Back-End einen Benutzer einer Clientanwendung authentifiziert, fügt es der Benachrichtigungsregistrierung automatisch ein Tag hinzu. Das Back-End nutzt dieses Tag, um Benachrichtigungen an den jeweiligen Benutzer zu senden.
 
 > [!NOTE]
-> Den vollständigen Code für dieses Tutorial finden Sie [auf GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers).
+> Den vollständigen Code für dieses Tutorial finden Sie [auf GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
@@ -116,7 +118,7 @@ In diesem Abschnitt aktualisieren Sie den Code des Projekts, das Sie unter [Tuto
         </StackPanel>
     </Grid>
     ```
-9. Öffnen Sie im Projektmappen-Explorer die Datei `MainPage.xaml.cs` für die Projekte **(Windows 8.1)** und **(Windows Phone 8.1)**. Fügen Sie am Anfang der beiden Dateien die folgenden `using` -Anweisungen ein:
+9. Öffnen Sie im Projektmappen-Explorer die Datei `MainPage.xaml.cs` für die Projekte **(Windows 8.1)** und **(Windows Phone 8.1)** . Fügen Sie am Anfang der beiden Dateien die folgenden `using` -Anweisungen ein:
 
     ```csharp
     using System.Net.Http;

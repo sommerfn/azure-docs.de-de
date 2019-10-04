@@ -4,17 +4,17 @@ description: Beschreibt ausführlich, wie ein Runbook in Azure Automation verarb
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0445643d3aae0e4e072e7fa8e3a73dc8973e84a5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 01a321503a2c55bfc28720675932e6813cdab320
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268499"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850589"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
@@ -46,7 +46,7 @@ Runbooks in Azure Automation können entweder in einer Sandbox in Azure oder auf
 |Modul installieren, das Installationsprogramm erfordert|Hybrid Runbook Worker|Module für Sandbox müssen kopiert werden können|
 |Verwenden von Runbooks oder Modulen, die eine andere .NET Framework-Version als 4.7.2 erfordern|Hybrid Runbook Worker|Automation-Sandboxes haben .NET Framework 4.7.2, und es gibt keine Möglichkeit zum Upgraden|
 |Skripts, für die eine Rechteerweiterung erforderlich ist|Hybrid Runbook Worker|Sandboxes lassen keine Rechteerweiterung zu. Verwenden Sie in einem solchen Fall einen Hybrid Runbook Worker. Dann können Sie die Benutzerkontensteuerung deaktivieren und `Invoke-Command` verwenden, wenn Sie den Befehl ausführen, für den eine Rechteerweiterung erforderlich ist.|
-|Skripts, für die Zugriff auf WMI erforderlich ist|Hybrid Runbook Worker|Aufträge, die in Sandboxes in der Cloud ausgeführt werden, [haben keinen Zugriff auf WMI](#device-and-application-characteristics)|
+|Skripts, für die Zugriff auf WMI erforderlich ist|Hybrid Runbook Worker|Aufträge, die in Sandboxes in der Cloud ausgeführt werden, [haben keinen Zugriff auf WMI](#device-and-application-characteristics).|
 
 ## <a name="runbook-behavior"></a>Runbook-Verhalten
 
@@ -78,6 +78,9 @@ else
 ### <a name="time-dependant-scripts"></a>Zeitabhängige Skripte
 
 Dem Erstellen von Runbooks sollten sorgfältige Überlegungen vorausgehen. Wie bereits erwähnt, müssen Runbooks so erstellt werden, dass sie stabil sind und vorübergehenden Fehlern standhalten können, die möglicherweise dazu führen, dass ein Runbook neu startet oder bei ihm ein Fehler auftritt. Wenn bei einem Runbook ein Fehler auftritt, wird es neu gestartet. Wenn ein Runbook innerhalb einer Zeiteinschränkung normal ausgeführt wird, sollte Logik zum Überprüfen der Ausführungszeit im Runbook implementiert werden, um sicherzustellen, dass Vorgänge wie Start, Herunterfahren oder horizontales Hochskalieren nur zu bestimmten Zeiten ausgeführt werden.
+
+> [!NOTE]
+> Die lokale Zeit des Azure-Sandbox-Prozesses ist auf UTC-Zeit festgelegt. Berechnungen für Datum und Uhrzeit in Ihren Runbooks müssen dies berücksichtigen.
 
 ### <a name="tracking-progress"></a>Nachverfolgung des Verlaufs
 
@@ -301,7 +304,7 @@ foreach ($log in $JobActivityLogs)
     $JobResource = Get-AzureRmResource -ResourceId $log.ResourceId
 
     if ($JobInfo[$log.SubmissionTimestamp] -eq $null -and $JobResource.Properties.runbook.name -eq $RunbookName)
-    { 
+    {
         # Get runbook
         $Runbook = Get-AzureRmAutomationJob -ResourceGroupName $AutomationResourceGroupName -AutomationAccountName $AutomationAccountName `
                                             -Id $JobResource.Properties.jobId | ? {$_.RunbookName -eq $RunbookName}
@@ -324,4 +327,4 @@ Eine weitere Möglichkeit ist das Optimieren des Runbooks durch die Verwendung v
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu den verschiedenen Methoden, die zum Starten eines Runbooks in Azure Automation verwendet werden können, finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
-
+* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodule, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/en-us/powershell/scripting/overview).

@@ -15,7 +15,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: null
   ms.topic: overview
-  ms.date: 01/03/2019
+  ms.date: 04/09/2019
   ms.author: jovanpop
 abstract:
   description: 'Die verwaltete Instanz in Azure SQL-Datenbank ist eine vollständig verwaltete Instanz der SQL Server-Datenbank-Engine, die in der Azure-Cloud gehostet wird. Dies ist die beste PaaS-Option zum Migrieren Ihrer SQL Server-Datenbank zur Cloud. Erfahren Sie anhand unserer Schnellstartanleitungen, Tutorials und Beispiele, wie Sie eine verwaltete Instanz erstellen und verwenden.'
@@ -44,6 +44,9 @@ sections:
           - title: VNET-Integration
             href: /azure/sql-database/sql-database-managed-instance-connectivity-architecture
             html: '<p>Sicherer Dienst, der in Ihrem privaten Azure VNET mit privaten IP-Adressen angeordnet ist.</p>'
+          - href: /azure/sql-database/sql-database-instance-pools
+            html: '<p>Kostengünstige Lösung für die Bereitstellung mehrerer verwalteter Instanzen, die die Ressourcen gemeinsam nutzen.</p>'
+            title: Instanzpools
           - title: Einfache Migration
             href: /azure/sql-database/sql-database-managed-instance-get-started-restore
             html: '<p>Sie können Ihre lokalen Datenbanken leicht zu Azure migrieren, indem Sie die native Wiederherstellung nutzen.</p>'
@@ -58,26 +61,7 @@ sections:
             html: '<p>Bei Azure PaaS können Sie eine Instanz mit einer Verfügbarkeit von 99,99% mit minimalem Verwaltungsaufwand nutzen.</p>'
           - title: Dienstebenen
             href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
-            html: <p>Wählen Sie je nach Ihren Geschäftsanforderungen zwischen den Diensttarifen „Universell“ und „Unternehmenskritisch“.</p>
-          - title: Erweiterte Sicherheit
-            href: /azure/sql-database/sql-database-security-index
-            html: <p>Schützen Sie Ihre Instanz und Datenbanken mit integrierten Azure SQL-Datenbank-Sicherheitsfeatures.<p>
-  - title: Neue Features und Previewfunktionen
-    items:
-      - type: paragraph
-        text: 'Wir verbessern die verwaltete Instanz ständig mit neuen Features:'
-      - type: list
-        style: unordered
-        items:
-          - html: 'Der <a href="sql-database-managed-instance#business-critical-service-tier">Diensttarif „Unternehmenskritisch“</a> befindet sich jetzt in der Phase der <a href="https://azure.microsoft.com/blog/migrate-mission-critical-sql-workloads-to-the-most-economical-cloud-destination/">allgemeinen Verfügbarkeit (General Availability, GA)</a>.'
-          - html: '(Vorschauversion) Erstellen Sie <a href="https://aka.ms/managed-instance-aadlogins">Azure AD-Dienstprinzipale auf Instanzebene (Anmeldungen)</a>, indem Sie <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> verwenden.'
-          - html: '(Vorschauversion) Erstellen Sie Instanzen mit einer <a href="https://aka.ms/managed-instance-collation">Sortierung auf Serverebene Ihrer Wahl</a>.'
-          - html: '<a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurieren der Sicherungsaufbewahrung für einen Zeitraum von bis zu 35 Tagen</a> für die Point-in-Time-Wiederherstellung. Beachten Sie, dass die langfristige Sicherungsaufbewahrung (bis zu zehn Jahre) noch nicht aktiviert ist, sodass Sie als Alternative <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">ausschließlich kopierbare Sicherungen</a> nutzen können.'
-          - html: '(Vorschauversion) Verwenden Sie <a href="https://aka.ms/managed-instance-failover-groups">geografisch verteilte Failovergruppen</a>, um eine Kopie der Instanz in einer anderen Region vorzuhalten und sicherzustellen, dass Ihre Daten auch bei einer regionalen Katastrophe verfügbar sind.'
-          - html: '(Vorschauversion) <a href="https://aka.ms/managed-instance-tde-byok">Stellen Sie Ihre eigenen Verschlüsselungsschlüssel bereit</a>, während Sie lokale Datenbanken migrieren, für die Transparent Data Encryption (TDE) bereits aktiviert ist.'
-          - html: Verwaltete Instanzen sind durch eine <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">integrierte Firewall</a> geschützt.
-          - html: '(Vorschauversion) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Erneutes Erstellen gelöschter Datenbanken mit PowerShell</a>'
-          - html: 'Mit der Funktion „Geowiederherstellung“ können Sie <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">Ihre Datenbank mit PowerShell in einem anderen Rechenzentrum wiederherstellen</a>.'
+            html: <p>Wählen Sie je nach Ihren Geschäftsanforderungen zwischen den Dienstebenen „Universell“ und „Unternehmenskritisch“.</p>
   - title: Fünfminütige Schnellstarts
     items:
       - type: paragraph
@@ -102,7 +86,7 @@ sections:
             values:
               - href: /azure/sql-database/sql-database-managed-instance-get-started
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
-              - href: sql-database-managed-instance-get-started
+              - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
           - title: Ändern der Instanz
             values:
@@ -110,11 +94,17 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/set-azsqlinstance#examples'
               - href: null
+          - title: Erstellen eines neuen Instanzpools
+            values:
+              - href: null
+              - href: null
+              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
+              - href: null
           - title: Konfigurieren der Azure-Netzwerkumgebung
             values:
               - href: /azure/sql-database/sql-database-managed-instance-get-started
               - href: null
-              - href: 'https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/'
+              - href: null
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment'
           - title: Point-in-Time-Wiederherstellung
             values:
@@ -122,11 +112,29 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/restore-azsqlinstancedatabase#examples'
               - href: null
+          - title: Wiederherstellen der Datenbank in einer anderen Instanz
+            values:
+              - href: null
+              - href: 'https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/'
+              - href: 'https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?view=azps-2.0.0#examples'
+              - href: null
           - title: Wiederherstellen einer gelöschten Datenbank
             values:
               - href: null
               - href: null
-              - href: 'https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance/'
+              - href: 'https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Recreate-dropped-database-on-Azure-SQL-Managed-Instance/ba-p/386285'
+              - href: null
+          - title: Geowiederherstellung der Datenbank
+            values:
+              - href: null
+              - href: null
+              - href: /azure/sql-database/scripts/sql-managed-instance-restore-geo-backup
+              - href: null
+          - title: Festlegen des öffentlichen IP-Endpunkts
+            values:
+              - href: 'sql-database-managed-instance-public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal'
+              - href: null
+              - href: 'sql-database-managed-instance-public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell'
               - href: null
   - title: Schritt-für-Schritt-Tutorials und Lernmaterial
     items:
@@ -139,11 +147,11 @@ sections:
           - html: 'Erfahren Sie mehr über <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">Hardwareeigenschaften und -einschränkungen</a>, <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Unterschiede bei der Transact-SQL-Sprache</a> und <a href="/azure/sql-database/sql-database-managed-instance-create-manage">Transact-SQL, PowerShell und die Azure CLI-API zum Konfigurieren einer verwalteten Instanz<a/>.'
           - html: '<a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurieren</a> Sie das Azure VNET für die Bereitstellung der verwalteten Instanz.'
           - html: '<a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Überprüfen</a> Sie, ob Ihr vorhandenes Azure VNET zum Bereitstellen von verwalteten Instanzen verwendet werden kann.'
-          - html: 'Stellen Sie eine Verbindung mit Ihrer Instanz her, indem Sie einen <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">virtuellen Azure-Computer</a>, eine <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">Point-to-Site-Verbindung</a> oder <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">Anwendungen</a> verwenden.'
+          - html: 'Stellen Sie eine Verbindung mit Ihrer Instanz mit einem <a href="sql-database-managed-instance-public-endpoint-securely">öffentlichen IP-Endpunkt</a>, <a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-easiest-way-to-create-Azure-VM-that-can-access-your-Azure/ba-p/386247">virtuellen Azure-Computer</a>, einer <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">Point-to-Site-Verbindung</a> oder <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">Anwendungen</a> her.'
           - html: 'Überprüfen Sie, ob Ihre Datenbank mit dem <a href="https://www.microsoft.com/download/details.aspx?id=53595">Datenmigrations-Assistenten</a> oder dem <a href="https://blogs.msdn.microsoft.com/datamigration/20../../release-database-experimentation-assistant-dea-v2-6/">Assistenten für Datenbankexperimente</a> migriert werden kann.'
           - html: 'Verlagern Sie Ihre Datenbanken in die verwaltete Instanz, indem Sie die <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">native Wiederherstellung</a> oder den <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Datenmigrationsdienst</a> verwenden.'
           - html: 'Verschieben Sie Ihre SSIS-Pakete in <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a>, tabellarische SSAS-Modelle in <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a> und SSRS-Berichte in <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">PowerBI Premium</a>.'
-          - html: 'Weitere Informationen zur Speicherebene im <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">Tarif „Universell“</a> und zu <a href="https://blogs.msdn.microsoft.com/sqlcat/20../../storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">bewährten Methoden zur Speicherleistung und Überlegungen zum Diensttarif „Universell“</a>.'
+          - html: 'Weitere Informationen zur Speicherebene in der <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">Ebene „Universell“</a> und zu <a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">bewährten Methoden zur Speicherleistung und Überlegungen zur Dienstebene „Universell“</a>.'
           - html: 'Ermitteln Sie die bewährten Methoden und Empfehlungen zum <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">Schützen Ihrer Instanz</a>.'
           - html: 'Greifen Sie auf weitere <a href="sql-database-howto-managed-instance.md">Anleitungen</a> zu, die beim Konfigurieren Ihrer verwalteten Instanz hilfreich sein können.'
   - title: Verweis
@@ -153,8 +161,10 @@ sections:
         className: cardsD
         items:
           - title: Blogs
-            html: '<p><a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/tag/managed-instance/">MSDN</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">Mittel</a></p>'
+            html: '<p><a href="https://techcommunity.microsoft.com/t5/Azure-SQL-Database/bg-p/Azure-SQL-Database/label-name/SQLServerStorageEngine">Tech Community</a></p><p><a href="https://medium.com/azure-sqldb-managed-instance">Mittel</a></p>'
           - title: Häufig gestellte Fragen
             html: '<p><a href="https://stackoverflow.com/questions/tagged/azure-sql-managed-instance">Stack Overflow</a></p>'
+          - title: Communitykanal
+            html: '<p><a href="https://sqlcommunity.slack.com/messages/CH854GD7D/">SQL-Community (verwaltete Instanz)</a></p>'
           - title: Schulungsmaterialien
             html: '<p><a href="https://www.microsoft.com/handsonlabs/selfpacedlabs">Praktische Übungen</a></p><p><a href="https://www.microsoft.com/handsonlabs/instructorledlabs">Übungen mit Anleitung</a></p>'

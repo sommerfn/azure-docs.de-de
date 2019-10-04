@@ -1,21 +1,19 @@
 ---
 title: Architektur der Engine für die Volltextsuche (Lucene) – Azure Search
 description: Enthält eine Beschreibung der Konzepte für die Lucene-Abfrageverarbeitung und den Dokumentabruf für die Volltextsuche von Azure Search.
-manager: jlembicz
+manager: nitinme
 author: yahnoosh
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 08/08/2019
 ms.author: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: d504635121c5153367cd0b89ce593b093bb3cd39
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d377d6180f3d2d64f183ed574add3e7307e34fc3
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537228"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186541"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Funktionsweise der Volltextsuche in Azure Search
 
@@ -54,7 +52,7 @@ Eine Suchanfrage ist eine vollständige Spezifikation dessen, was in einem Resul
 Das folgende Beispiel ist eine Suchanfrage, die Sie per [REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) an Azure Search senden können.  
 
 ~~~~
-POST /indexes/hotels/docs/search?api-version=2017-11-11 
+POST /indexes/hotels/docs/search?api-version=2019-05-06
 {
     "search": "Spacious, air-condition* +\"Ocean view\"",
     "searchFields": "description, title",
@@ -351,7 +349,7 @@ search=Spacious, air-condition* +"Ocean view"
 }
 ~~~~
 
-Für Dokument 1 hat die Abfrage die beste Übereinstimmung ergeben, da sowohl der Begriff *spacious* als auch der erforderliche Ausdruck *ocean view* im Feld „description“ vorkommt. Für die nächsten beiden Dokumente ergibt sich nur eine Übereinstimmung mit dem Ausdruck *ocean view*. Es ist vielleicht überraschend, dass die Relevanzbewertung für Dokument 2 und 3 unterschiedlich ist, obwohl beide zu einer Übereinstimmung für die Abfrage geführt haben. Dies liegt daran, dass die Bewertungsformel über mehr Komponenten als nur TF/IDF verfügt. In diesem Fall wurde Dokument 3 eine etwas höhere Bewertung zugewiesen, da dessen Beschreibung kürzer ist. Informieren Sie sich über [Lucene's Practical Scoring Formula](https://lucene.apache.org/core/4_0_0/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) (Bewertungsformel von Lucene), damit Sie verstehen, wie sich die Feldlänge und andere Faktoren auf die Relevanzbewertung auswirken können.
+Für Dokument 1 hat die Abfrage die beste Übereinstimmung ergeben, da sowohl der Begriff *spacious* als auch der erforderliche Ausdruck *ocean view* im Feld „description“ vorkommt. Für die nächsten beiden Dokumente ergibt sich nur eine Übereinstimmung mit dem Ausdruck *ocean view*. Es ist vielleicht überraschend, dass die Relevanzbewertung für Dokument 2 und 3 unterschiedlich ist, obwohl beide zu einer Übereinstimmung für die Abfrage geführt haben. Dies liegt daran, dass die Bewertungsformel über mehr Komponenten als nur TF/IDF verfügt. In diesem Fall wurde Dokument 3 eine etwas höhere Bewertung zugewiesen, da dessen Beschreibung kürzer ist. Informieren Sie sich über [Lucene's Practical Scoring Formula](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) (Bewertungsformel von Lucene), damit Sie verstehen, wie sich die Feldlänge und andere Faktoren auf die Relevanzbewertung auswirken können.
 
 Einige Abfragetypen (Platzhalter, Präfix, regulärer Ausdruck) tragen immer eine konstante Bewertungspunktzahl zur Gesamtbewertung des Dokuments bei. So können Übereinstimmungen, die über die Abfrageerweiterung ermittelt werden, in die Ergebnisse einbezogen werden, ohne dabei die Rangfolge zu beeinträchtigen. 
 
@@ -392,8 +390,6 @@ In diesem Artikel wurde die Volltextsuche im Rahmen von Azure Search beschrieben
 + Informieren Sie sich darüber, wie Sie [sprachspezifische lexikalische Analysen](https://docs.microsoft.com/rest/api/searchservice/language-support) anwenden.
 
 + [Konfigurieren Sie benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) für die minimale oder spezielle Verarbeitung anhand von bestimmten Feldern.
-
-+ [Vergleichen Sie die Standard- und Englischanalysen](https://alice.unearth.ai/) nebeneinander auf dieser Demo-Website. 
 
 ## <a name="see-also"></a>Weitere Informationen
 

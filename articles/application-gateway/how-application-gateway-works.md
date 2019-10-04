@@ -1,50 +1,71 @@
 ---
-title: Funktionsweise von Azure Application Gateway
-description: Dieser Artikel enthält Informationen zur Funktionsweise des Application Gateways
+title: Funktionsweise von Anwendungsgateways
+description: Dieser Artikel enthält Informationen zur Funktionsweise von Anwendungsgateways.
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: bbaf651233d4cebad3f45e5cf3823bcaf6ce38b6
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: a16421182f533f5aa2ad4bcc2e58e910cc7e8ca6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905782"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64702414"
 ---
-# <a name="how-application-gateway-works"></a>Funktionsweise von Application Gateway
+# <a name="how-an-application-gateway-works"></a>Funktionsweise von Anwendungsgateways
 
-In diesem Artikel wird erläutert, wie das Application Gateway die eingehenden Anforderungen akzeptiert und sie an das Back-End routet.
+In diesem Artikel wird erläutert, wie Anwendungsgateways die eingehenden Anforderungen akzeptieren und sie an das Back-End routen.
 
-![how-application-gateway-works](./media/how-application-gateway-works/how-application-gateway-works.png)
+![Akzeptieren einer Anforderung durch ein Anwendungsgateway](./media/how-application-gateway-works/how-application-gateway-works.png)
 
-## <a name="how-a-request-is-accepted"></a>Wie eine Anforderung akzeptiert wird
+## <a name="how-an-application-gateway-accepts-a-request"></a>Akzeptieren einer Anforderung durch ein Anwendungsgateway
 
-Bevor ein Client eine Anforderung an ihr Application Gateway sendet, löst er den Domänennamen des Application Gateways mithilfe eines DNS-Servers (Domain Name System) auf. Der DNS-Eintrag wird von Azure gesteuert, da sich Ihre Application Gateways in der azure.com-Domäne befinden. Azure DNS gibt die IP-Adresse an den Client zurück, dabei handelt es sich um die *Front-End-IP-Adresse* des Application Gateways. Das Application Gateway akzeptiert eingehenden Datenverkehr an einem oder mehreren *Listenern*. Ein Listener ist eine logische Entität, die auf eingehende Verbindungsanforderungen prüft. Sie wird mit einer Front-End-IP-Adresse, einem Protokoll und einer Portnummer für Verbindungen vom Client mit dem Application Gateway konfiguriert. Falls die Web Application Firewall (WAF) aktiviert ist, prüft Application Gateway die Anforderungsheader und den Textkörper (falls vorhanden) anhand der *WAF-Regeln*, um zu bestimmen, ob die Anforderung eine gültige Anforderung ist – in diesem Fall wird sie an das Back-End geroutet – oder ein Sicherheitsrisiko, in welchem Fall sie gesperrt wird.  
+1. Bevor ein Client eine Anforderung an ein Anwendungsgateway sendet, löst er den Domänennamen des Anwendungsgateways mithilfe eines DNS-Servers (Domain Name System) auf. Der DNS-Eintrag wird von Azure gesteuert, da sich alle Anwendungsgateways in der Domäne azure.com befinden.
 
-Application Gateway kann als ein interner Load Balancer für Anwendungen oder als ein vom Internet zugänglicher Load Balancer für Anwendungen verwendet werden. Ein Application Gateway mit Internetzugriff hat eine öffentliche IP-Adresse. Der DNS-Name eines Application Gateways mit Internetzugriff lässt sich öffentlich in seine öffentliche IP-Adresse auflösen. Daher können Application Gateways mit Internetzugriff Anforderungen von Clients über das Internet routen. Interne Application Gateway verfügen nur über private IP-Adressen. Der DNS-Name eines internen Application Gateways lässt sich öffentlich zu seiner privaten IP-Adresse auflösen. Daher können interne Load Balancer nur Anforderungen von Clients mit Zugriff auf das VNET für das Application Gateway routen. Sowohl Application Gateways mit Internetzugriff als auch interne Application Gateways routen Anforderungen mithilfe von privaten IP-Adressen an Ihre Back-End-Server weiter. Daher benötigen Ihre Back-End-Server keine öffentlichen IP-Adressen, um Anforderungen von einem internen Application Gateway oder einem Application Gateway mit Internetzugriff zu empfangen.
+2. Der Azure-DNS gibt die IP-Adresse an den Client zurück. Dabei handelt es sich um die Front-End-IP-Adresse des Anwendungsgateways.
 
-## <a name="how-a-request-is-routed"></a>Wie eine Anforderung geroutet wird
+3. Das Anwendungsgateway akzeptiert eingehenden Datenverkehr an einem oder mehreren Listenern. Ein Listener ist eine logische Entität, die auf eingehende Verbindungsanforderungen prüft. Er wird mit einer Front-End-IP-Adresse, einem Protokoll und einer Portnummer für Verbindungen vom Client mit dem Anwendungsgateway konfiguriert.
 
-Wenn die Anforderung als gültig erkannt wird (oder keine WAF aktiviert ist), wird die *Routingregel für Anforderungen*, die dem *Listener* zugeordnet ist, ausgewertet, um den *Back-End-Pool* zu ermitteln, an den die Anforderung geroutet werden soll. Regeln werden in der Reihenfolge verarbeitet, in der sie im Portal aufgeführt sind. Auf der Grundlage der Konfiguration der *Routingregel für Anforderungen* entscheidet das Application Gateway, ob alle Anforderungen an den Listener an einen bestimmten Back-End-Pool, je nach dem URL-Pfad an verschiedene Back-End-Pools oder an *Umleitungsanforderungen* zu einem anderen Port oder einer externen Website geroutet werden sollen
+4. Wenn eine Web Application Firewall (WAF) verwendet wird, überprüft das Anwendungsgateway die Anforderungsheader und ggf. den -text anhand von WAF-Regeln. Durch diese Aktion wird ermittelt, ob es sich bei der Anforderung um eine gültige Anforderung oder ein Sicherheitsrisiko handelt. Ist es eine gültige Anforderung, wird sie an das Back-End weitergeleitet. Ist es keine gültige Anforderung, wird sie als Sicherheitsrisiko blockiert.
 
-Nachdem ein *Back-End*-*Pool* gewählt wurde, sendet das Application Gateway die Anforderung an einen der fehlerfreien Back-End-Server, die in dem Pool konfiguriert sind (y.y.y.y). Die Integrität des Servers wird mithilfe eines *Integritätstests* überprüft. Wenn der Back-End-Pool mehrere Server enthält, verwendet das Application Gateway den Roundrobin-Algorithmus, um die Anforderungen zwischen den fehlerfreien Servern zu routen, wodurch ein Lastenausgleich für die Anforderungen auf den Servern erfolgt.
+Azure Application Gateway kann als interner Lastenausgleich für Anwendungen oder als ein vom Internet zugänglicher Lastenausgleich für Anwendungen verwendet werden. Ein internetseitiges Anwendungsgateway nutzt eine öffentliche IP-Adresse. Der DNS-Name eines internetseitigen Anwendungsgateways kann öffentlich in seine öffentliche IP-Adresse aufgelöst werden. Daher können internetseitige Anwendungsgateways Clientanforderungen über das Internet routen.
 
-Nachdem ein Back-End-Server bestimmt worden ist, öffnet das Application Gateway eine neue TCP-Sitzung mit dem Back-End-Server und verwendet dazu die Konfiguration in den *HTTP-Einstellungen*. Die *HTTP-Einstellungen* sind eine Komponente, die das Protokoll, den Port und andere routingbezogene Einstellungen angibt, die zum Herstellen einer neuen Sitzung mit dem Back-End-Server erforderlich sind. Die Angaben für Port und Protokoll in den HTTP-Einstellungen bestimmen, ob der Datenverkehr zwischen dem Application Gateway und den Back-End-Servern verschlüsselt wird, wodurch End-to-End-SSL erreicht werden kann, oder unverschlüsselt bleibt. Beim Senden der ursprünglichen Anforderung an den Back-End-Server berücksichtigt das Application Gateway alle benutzerdefinierten Konfigurationen in den HTTP-Einstellungen, die sich auf das Überschreiben von Hostnamen, Pfad oder Protokoll, auf die Aufrechterhaltung von cookiebasierter Sitzungsaffinität, Verbindungsausgleich, die Übernahme des Hostnamens vom Back-End usw. beziehen.
+Interne Anwendungsgateways nutzen nur private IP-Adressen. Der DNS-Name eines internen Application Gateways lässt sich öffentlich zu seiner privaten IP-Adresse auflösen. Daher können interne Lastenausgleichsmodule nur Anforderungen von Clients mit Zugriff auf ein virtuelles Netzwerk für das Anwendungsgateway routen.
 
-Ein internes Application Gateway verfügt nur über private IP-Adressen. Der DNS-Name eines internen Application Gateways lässt sich intern zu seiner privaten IP-Adresse auflösen. Daher können interne Load Balancer nur Anforderungen von Clients mit Zugriff auf das VNET für das Application Gateway routen.
+Sowohl internetseitige Anwendungsgateways als auch interne Anwendungsgateways routen Anforderungen mithilfe von privaten IP-Adressen an Back-End-Server. Back-End-Server benötigen keine öffentlichen IP-Adressen, um Anforderungen von einem internen Anwendungsgateway oder einem internetseitigen Anwendungsgateway zu empfangen.
 
-Wenn Ihr Back-End-Pool einen intern auflösbaren FQDN oder eine private IP-Adresse enthält, verwendet Application Gateway die privaten Instanz-IP-Adressen des Back-End-Servers, um die Anforderung an diesen weiterzuleiten. Wenn Ihr Back-End-Pool einen externen Endpunkt oder einen extern auflösbaren FQDN enthält, verwendet Application Gateway die öffentliche Front-End-IP-Adresse des Back-End-Servers, um die Anforderung an diesen weiterzuleiten. Die DNS-Auflösung basiert auf einer privaten DNS-Zone oder einem benutzerdefinierten DNS-Server, sofern konfiguriert, oder für sie wird das von Azure bereitgestellte Standard-DNS verwendet. Wenn Sie keine öffentliche Front-End-IP-Adresse bereitgestellt haben, wird eine für die ausgehende externe Konnektivität zugewiesen.
+## <a name="how-an-application-gateway-routes-a-request"></a>Routen einer Anforderung durch ein Anwendungsgateway
+
+Wenn eine Anforderung gültig ist oder WAF nicht verwendet wird, wertet das Anwendungsgateway die Anforderungsroutingregel aus, die mit dem Listener verknüpft ist. Durch diese Aktion wird ermittelt, an welchen Back-End-Pool die Anforderung weitergeleitet werden soll.
+
+Regeln werden in der Reihenfolge verarbeitet, in der sie im Portal aufgeführt sind. Auf der Grundlage der Routingregel für Anforderungen entscheidet das Anwendungsgateway, ob alle Anforderungen am Listener an einen bestimmten Back-End-Pool, basierend auf dem URL-Pfad an verschiedene Back-End-Pools oder an Umleitungsanforderungen zu einem anderen Port oder einer externen Website weitergeleitet werden sollen.
+
+Nachdem das Anwendungsgateway einen Back-End-Pool ausgewählt hat, sendet es die Anforderung an einen der fehlerfreien Back-End-Server im Pool (y.y.y.y). Die Integrität des Servers wird mithilfe eines Integritätstests überprüft. Wenn der Back-End-Pool mehrere Server enthält, verwendet das Anwendungsgateway einen Roundrobinalgorithmus zum Routen der Anforderungen an die einzelnen fehlerfreien Server. Dadurch wird ein Lastenausgleich für die Anforderungen auf den Servern gebildet.
+
+Nachdem das Anwendungsgateway einen Back-End-Server festgelegt hat, öffnet es eine neue TCP-Sitzung mit dem Back-End-Server anhand der HTTP-Einstellungen. Die HTTP-Einstellungen geben das Protokoll, den Port und andere routingbezogene Einstellungen an, die zum Herstellen einer neuen Sitzung mit dem Back-End-Server erforderlich sind.
+
+Die Angaben für Port und Protokoll in den HTTP-Einstellungen legen fest, ob der Datenverkehr zwischen dem Anwendungsgateway und den Back-End-Servern verschlüsselt wird (sodass End-to-End-SSL erzielt wird) oder unverschlüsselt bleibt.
+
+Wenn ein Anwendungsgateway die ursprüngliche Anforderung an den Back-End-Server sendet, berücksichtigt es etwaige benutzerdefinierte Konfigurationen in den HTTP-Einstellungen, durch die Hostname, Pfad oder Protokoll überschrieben werden. Durch diese Aktion werden die cookiebasierte Sitzungsaffinität, der Verbindungsausgleich, die Auswahl des Hostnamens über das Back-End usw. beibehalten.
+
+Ein internes Anwendungsgateway nutzt nur private IP-Adressen. Der DNS-Name eines internen Anwendungsgateways kann in seine private IP-Adresse aufgelöst werden. Daher können interne Lastenausgleichsmodule nur Anforderungen von Clients mit Zugriff auf das virtuelle Netzwerk für das Anwendungsgateway routen.
+
+ >[!NOTE]
+ >Sowohl internetseitige Anwendungsgateways als auch interne Anwendungsgateways routen Anforderungen mithilfe von privaten IP-Adressen an Back-End-Server. Diese Aktion erfolgt, wenn Ihre Back-End-Pool-Ressource eine private IP-Adresse, eine VM-NIC-Konfiguration oder eine intern auflösbare Adresse enthält. Für den Back-End-Pool gilt Folgendes:
+> - Wenn er **ein öffentlicher Endpunkt ist**, verwendet das Anwendungsgateway die öffentliche Front-End-IP-Adresse, um den Server zu erreichen. Wenn keine öffentliche Front-End-IP-Adresse vorliegt, wird für die ausgehende externe Konnektivität eine zugewiesen.
+> - Wenn er **einen intern auflösbaren FQDN oder eine private IP-Adresse enthält**, routet das Anwendungsgateway die Anforderung über die privaten Instanz-IP-Adressen des Back-End-Servers an diesen.
+> - Wenn er **einen externen Endpunkt oder einen extern auflösbaren FQDN enthält**, routet das Anwendungsgateway die Anforderung über die öffentliche Front-End-IP-Adresse des Back-End-Servers an diesen. Die DNS-Auflösung basiert auf einer privaten DNS-Zone oder einem benutzerdefinierten DNS-Server (sofern konfiguriert), oder es wird das von Azure bereitgestellte Standard-DNS verwendet. Wenn keine öffentliche Front-End-IP-Adresse vorliegt, wird für die ausgehende externe Konnektivität eine zugewiesen.
 
 ### <a name="modifications-to-the-request"></a>Änderungen an der Anforderung
 
-Application Gateway fügt 4 zusätzliche Header in alle Anforderungen ein, bevor es die Anforderungen an das Back-End weiterleitet. Diese Header sind X-forwarded-for, X-forwarded-proto, X-forwarded-port und X-original-host. Das Format für den x-forwarded-for-Header ist eine durch Trennzeichen getrennte Liste von IP:Port. Die gültigen Werte für x-forwarded-proto sind HTTP und HTTPS. X-Forwarded-Port gibt den Port an, an dem die Anforderung das Application Gateway erreicht hat. Der X-original-host-Header enthält den ursprünglichen Hostheader, mit dem die Anforderung eingetroffen ist. Dieser Header ist nützlich in Szenarien wie der Azure-Websiteintegration. Dabei wird der eingehende Hostheader modifiziert, bevor der Datenverkehr zum Back-End weitergeleitet wird. Bei optional aktivierter Sitzungsaffinität wird ein vom Gateway verwaltetes Affinitätscookie eingefügt. 
+Anwendungsgateways fügen vier zusätzliche Header in alle Anforderungen ein, bevor sie die Anforderungen an das Back-End weiterleiten. Diese Header sind „x-forwarded-for“, „x-forwarded-proto“, „x-forwarded-port“ und „x-original-host“. Das Format für den x-forwarded-for-Header ist eine durch Trennzeichen getrennte Liste von IP:Port.
 
-Zusätzlich können Sie das Application Gateway für das Ändern von Headern mithilfe von [Rewrite HTTP headers](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) (Erneutes Generieren von HTTP-Headern) oder das Ändern des URI-Pfads mithilfe der Einstellung für die Pfadüberschreibung konfigurieren. Sofern dies nicht konfiguriert ist, werden jedoch alle eingehenden Anforderungen unverändert an das Back-End weitergeleitet.
+Die gültigen Werte für x-forwarded-proto sind HTTP und HTTPS. „x-forwarded-port“ gibt den Port an, an dem die Anforderung das Anwendungsgateway erreicht hat. Der X-original-host-Header enthält den ursprünglichen Hostheader, mit dem die Anforderung eingetroffen ist. Dieser Header ist nützlich bei der Azure-Websiteintegration, bei der der eingehende Hostheader vor dem Routen des Datenverkehrs zum Back-End geändert wird. Wenn Sitzungsaffinität als Option aktiviert ist, wird ein vom Gateway verwaltetes Affinitätscookie eingefügt.
 
+Sie können das Anwendungsgateway so konfigurieren, dass Header durch das [erneute Generieren von HTTP-Headern](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) oder der URI-Pfad mithilfe der Einstellung für die Pfadüberschreibung geändert werden. Sofern dies nicht konfiguriert ist, werden jedoch alle eingehenden Anforderungen per Proxy an das Back-End weitergeleitet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie erfahren haben, wie Application Gateway funktioniert, lesen Sie [Application Gateway-Komponenten](application-gateway-components.md), um ein detaillierteres Verständnis seiner Komponenten zu erwerben.
+[Informationen zu den Komponenten von Anwendungsgateways](application-gateway-components.md)

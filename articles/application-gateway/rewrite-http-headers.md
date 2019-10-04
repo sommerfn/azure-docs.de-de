@@ -1,136 +1,169 @@
 ---
-title: Erneutes Generieren von HTTP-Headern in Azure Application Gateway | Microsoft-Dokumentation
-description: In diesem Artikel erhalten Sie eine Übersicht über die Möglichkeit, HTTP-Header in Azure Application Gateway erneut zu generieren.
+title: Erneutes Generieren von HTTP-Headern mit Azure Application Gateway | Microsoft-Dokumentation
+description: In diesem Artikel erhalten Sie eine Übersicht über das erneute Generieren von HTTP-Headern in Azure Application Gateway.
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 08/08/2019
 ms.author: absha
-ms.openlocfilehash: e89fe10768331f5b4099ce9a9e2204dd72aa0bff
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: b6f26eca0592017306eaefd3f5fecb544dc6fb36
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793463"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932196"
 ---
-# <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)
+# <a name="rewrite-http-headers-with-application-gateway"></a>Erneutes Generieren von HTTP-Headern mit Application Gateway
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-HTTP-Header ermöglichen dem Client und dem Server das Übergeben von zusätzlichen Informationen mit der Anforderung oder der Antwort. Durch das erneute Generieren dieser HTTP-Header können Sie verschiedene wichtige Szenarios erzielen, z. B. das Hinzufügen von sicherheitsbezogenen Headerfeldern wie HSTS/X-XSS-Protection oder das Entfernen von Antwortheaderfeldern, über die sensible Informationen wie der Back-End-Servername offengelegt werden.
+HTTP-Header ermöglichen einem Client und Server das Übergeben von zusätzlichen Informationen mit einer Anforderung oder Antwort. Durch das erneute Generieren dieser HTTP-Header können Sie verschiedene wichtige Aufgaben umsetzen, z.B. das Hinzufügen von sicherheitsbezogenen Headerfeldern wie HSTS/X-XSS-Protection, das Entfernen von Antwortheaderfeldern, über die sensible Informationen offengelegt werden können, und das Entfernen von Portinformationen aus X-Forwarded-For-Headern.
 
-Application Gateway unterstützt jetzt die Möglichkeit, die Header der eingehenden HTTP-Anforderungen sowie der ausgehenden HTTP-Antworten erneut zu generieren. Sie können HTTP-Anforderungs- und -Antwortheader hinzufügen, entfernen oder aktualisieren, während die Anforderung/Antwort-Pakete zwischen dem Client und den Back-End-Pools verschoben werden. Sie können sowohl Standardheaderfelder als auch andere Headerfelder erneut generieren.
+Application Gateway ermöglicht Ihnen das Hinzufügen, Entfernen oder Aktualisieren von HTTP-Anforderungs- und -Antwortheadern, während die Anforderung/Antwort-Pakete zwischen dem Client und den Back-End-Pools verschoben werden. Außerdem können Sie Bedingungen hinzufügen, um sicherzustellen, dass die angegebenen Header nur dann neu generiert werden, wenn bestimmte Bedingungen erfüllt sind.
+
+Application Gateway unterstützt auch mehrere [Servervariablen](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables), mit denen Sie weitere Informationen zu Anforderungen und Antworten speichern können. Dies erleichtert Ihnen das Erstellen leistungsstarker Neuschreibungsregeln.
 
 > [!NOTE]
-> 
-> Die Unterstützung für das erneute Generieren von HTTP-Headern ist nur für die [neue SKU [Standard_V2\]](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) verfügbar.
+>
+> Die Unterstützung für das erneute Generieren von HTTP-Headern ist nur für [Standard_V2 und WAF_v2 SKU](application-gateway-autoscaling-zone-redundant.md) verfügbar.
 
-Die Unterstützung für das erneute Generieren von Headern in Application Gateway bietet Folgendes:
+![Erneutes Generieren von Headern](media/rewrite-http-headers/rewrite-headers.png)
 
-- **Erneutes Generieren von globalen Headern:** Sie können bestimmte Header für alle Anforderungen und Antworten, die für eine Website gelten, neu generieren.
-- **Erneutes Generieren von pfadbasierten Headern:** Diese Art des erneuten Generierens ermöglicht es, Header nur für die Anforderungen und Antworten neu zu generieren, die nur zu einem bestimmten Websitebereich gehören, z. B. der Bereich „Warenkorb“ mit der Bezeichnung /cart/\* (Warenkorb).
+## <a name="supported-headers"></a>Unterstützte Header
 
-Diese Änderungen bedeuten für Sie:
+Sie können alle Header in Anforderungen und Antworten neu generieren, Host-, Verbindungs- und Upgradeheader ausgenommen. Sie können auch über das Anwendungsgateway benutzerdefinierte Header erstellen und den Anforderungen und Antworten hinzufügen, die über das Gateway weitergeleitet werden.
 
-1. Erstellen Sie die neuen Objekte, die benötigt werden, um die HTTP-Header neu zu generieren: 
-   - **RequestHeaderConfiguration:** Dieses Objekt wird dazu verwendet, die Anforderungsheaderfelder zu bestimmen, die Sie neu generieren möchten, sowie den neuen Wert, den die ursprünglichen Header benötigen, um neu generiert werden zu können.
-   - **ResponseHeaderConfiguration:** Dieses Objekt wird dazu verwendet, die Antwortheaderfelder, die Sie neu generieren möchten, und den neuen Wert zu bestimmen, den die ursprünglichen Header benötigen, um neu generiert werden zu können.
-   - **ActionSet:** Dieses Objekt beinhaltet die Konfigurationen der Anforderungs- und Antwortheader, die oben bestimmt wurden. 
-   - **RewriteRule:** Dieses Objekt beinhaltet alle *actionSets*, die oben bestimmt wurden. 
-   - **RewriteRuleSet:** Dieses Objekt beinhaltet alle *rewriteRules* und muss an die Anforderungsroutingregel angefügt werden (Standard oder pfadbasiert).
-2. Der Regelsatz für das erneute Generieren („RewriteRuleSet“) muss dann an eine Routingregel angefügt werden. Die erstellte Konfiguration der erneuten Generierung wird anhand der Routingregel an den Quelllistener angefügt. Bei Verwendung einer einfachen Routingregel wird die Konfiguration der erneuten Generierung eines Headers einem Quelllistener zugeordnet und fungiert als erneute Generierung eines globalen Headers. Wenn eine pfadbasierte Routingregel verwendet wird, wird die Konfiguration der erneuten Generierung eines Headers in der URL-Pfadzuordnung definiert. Daher gilt sie nur für den bestimmten Pfadbereich einer Site.
+## <a name="rewrite-conditions"></a>Bedingungen für das erneute Generieren
 
-Sie können mehrere solche Regelsätze für das erneute Generieren eines HTTP-Headers erstellen, und jeder dieser Regelsätze kann auf mehrere Listener angewendet werden. Allerdings können Sie auf einen bestimmten Listener nur einen Regelsatz für das erneute Generieren eines HTTP-Headers anwenden.
+Sie können mit Bedingungen für das erneute Generieren den Inhalt der HTTP(S)-Anforderungen und -Antworten auswerten, um nur dann eine Neugenerierung auszuführen, wenn eine oder mehrere Bedingungen erfüllt sind. Das Anwendungsgateway wertet mit diesen Typen von Variablen den Inhalt von HTTP(S)-Anforderungen und -Antworten aus:
 
-Den Wert eines Headers können Sie neu generieren als:
+- HTTP-Header in der Anforderung.
+- HTTP-Header in der Antwort.
+- Application Gateway-Servervariablen.
 
-- Textwert. 
+Mit einer Bedingung können Sie ermitteln, ob eine angegebene Variable vorhanden ist, ob eine angegebene Variable mit einem bestimmten Wert übereinstimmt oder ob eine angegebene Variable einem bestimmten Muster entspricht. Mit der [PCRE-Bibliothek (Perl Compatible Regular Expressions)](https://www.pcre.org/) richten Sie Muster für reguläre Ausdrücke ein, mit denen die Bedingungen übereinstimmen sollen. Weitere Informationen zur Syntax von regulären Ausdrücken finden Sie auf der [Perl-Mainpage für reguläre Ausdrücke](https://perldoc.perl.org/perlre.html).
 
-  *Beispiel:* 
+## <a name="rewrite-actions"></a>Aktionen für das erneute Generieren
 
-  ```azurepowershell-interactive
-  $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
-  ```
+Mit Aktionen für das erneute Generieren geben Sie die Anforderungs- und Antwortheader an, die Sie erneut generieren möchten, sowie den neuen Wert für die Header. Sie können entweder einen neuen Header erstellen, den Wert eines vorhandenen Headers ändern oder einen vorhandenen Header löschen. Der Wert eines neuen Headers oder eines vorhandenen Headers kann auf die folgenden Typen von Werten festgelegt werden:
 
-- Wert eines anderen Headers. 
-
-  *Beispiel 1:* 
-
-  ```azurepowershell-interactive
-  $requestHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
-  ```
-
-  > [!Note] 
-  > Wenn Sie einen Anforderungsheader bestimmen möchten, müssen Sie folgende Syntax verwenden: {http_req_headerName}.
-
-  *Beispiel 2:*
-
-  ```azurepowershell-interactive
-  $responseHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
-  ```
-
-  > [!Note] 
-  > Wenn Sie einen Antwortheader bestimmen möchten, müssen Sie folgende Syntax verwenden: {http_resp_headerName}.
-
-- Wert aus unterstützten Servervariablen.
-
-  *Beispiel:* 
-
-  ```azurepowershell-interactive
-  $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
-  ```
-
-  > [!Note] 
-  > Wenn Sie eine Servervariable bestimmen möchten, müssen Sie folgende Syntax verwenden: {var_serverVariable}.
-
-- Eine Kombination aus den obenstehenden Möglichkeiten.
+- Text.
+- Anforderungsheader. Um einen Anforderungsheader festzulegen, müssen Sie die Syntax {http_req_*headerName*} verwenden.
+- Antwortheader. Um einen Antwortheader festzulegen, müssen Sie die Syntax {http_resp_*headerName*} verwenden.
+- Servervariable. Um eine Servervariable festzulegen, müssen Sie die Syntax {var_*serverVariable*} verwenden.
+- Eine Kombination aus Text, Anforderungsheader, Antwortheader und Servervariable.
 
 ## <a name="server-variables"></a>Servervariablen
 
-Mit Servervariablen werden nützliche Informationen auf einem Webserver gespeichert. Diese Variablen liefern Informationen zum Server, zur Verbindung mit dem Client und zur momentanen Anforderung an die Verbindung, wie die IP-Adresse des Clients oder den Webbrowsertyp. Sie ändern sich dynamisch, z.B. wenn eine neue Seite geladen oder ein Formular gesendet wird.  Mithilfe dieser Variablen können Benutzer Anforderungsheader sowie Antwortheader festlegen. 
+Application Gateway speichert mit Servervariablen nützliche Informationen zum Server, zur Verbindung mit dem Client und zur momentanen Anforderung an die Verbindung. Beispiele für Informationen, die gespeichert werden, sind die IP-Adresse des Clients und der Webbrowsertyp. Servervariablen ändern sich dynamisch, wenn z.B. eine neue Seite geladen oder ein Formular gesendet wird. Anhand dieser Variablen können Sie Bedingungen für das erneute Generieren und Header für das erneute Generieren auswerten.
 
-Diese Möglichkeit unterstützt die erneute Generierung von Headern in Form der folgenden Servervariablen:
+Application Gateway unterstützt diese Servervariablen:
 
-| Unterstützte Servervariablen | BESCHREIBUNG                                                  |
+| Variablenname | BESCHREIBUNG                                                  |
 | -------------------------- | :----------------------------------------------------------- |
-| ciphers_supported          | Gibt die Liste mit den Verschlüsselungen zurück, die vom Client unterstützt werden.          |
-| ciphers_used               | Gibt die Verschlüsselungszeichenfolge zurück, die für eine eingerichtete SLL-Verbindung verwendet wird. |
-| client_ip                  | IP-Adresse des Clients, von dem das Anwendungsgateway die Anforderung empfangen hat. Befindet sich ein Reverseproxy vor dem Anwendungsgateway und dem ursprünglichen Client, gibt *client_ip* die IP-Adresse des Reverseproxys zurück. Diese Variable ist besonders in Szenarios hilfreich, in denen Kunden den X-Forwarded-For-Header, der von Application Gateway festgelegt wurde, neu generieren möchten, sodass der Header nur die IP-Adresse und keine Portinformationen enthält. |
-| client_port                | Port des Clients                                                  |
-| client_tcp_rtt             | Informationen über die TCP-Verbindung des Clients. Verfügbar auf Systemen, die die Socketoption „TCP_INFO“ unterstützen. |
-| client_user                | Wenn HTTP-Authentifizierung verwendet wird: der Benutzername, der bei der Authentifizierung angegeben wurde. |
-| host                       | In dieser Reihenfolge: Hostname aus der Anforderungszeile oder Hostname aus dem Anforderungsheaderfeld „Host“ oder der Servername, der mit einer Anforderung übereinstimmt. |
-| cookie_*Name*              | Das *Name*-Cookie |
-| http_method                | Die Methode, die für die URL-Anforderung verwendet wird, z. B. GET, POST etc. |
-| http_status                | Sitzungsstatus, z. B. 200, 400, 403 etc.                       |
-| http_version               | Anforderungsprotokoll, normalerweise „HTTP/1.0“, „HTTP/1.1“ oder „HTTP/2.0“. |
-| query_string               | Die Liste der Variablenwertpaare nach dem „?“ in der angeforderten URL. |
-| received_bytes             | Angeforderte Länge (einschließlich Anforderungszeile, Header und Anforderungstext) |
-| request_query              | Argumente in der Anforderungszeile                                |
-| request_scheme             | Anforderungsschema: „http“ oder „https“                            |
-| request_uri                | Die vollständige ursprüngliche Anforderungs-URI (mit Argumenten)                   |
-| sent_bytes                 | Anzahl der an einen Client gesendeten Bytes                             |
-| server_port                | Port des Servers, der die Anforderung akzeptiert hat.                 |
-| ssl_connection_protocol    | Gibt ein Protokoll einer hergestellten SLL-Verbindung zurück.        |
-| ssl_enabled                | „On“, wenn die Verbindung im SSL-Modus arbeitet, andernfalls eine leere Zeichenfolge |
+| add_x_forwarded_for_proxy  | Das Clientanforderung-Headerfeld „X-Forwarded-For“ mit der Variablen `client_ip` (in dieser Tabelle unten erläutert), die im Format IP1, IP2, IP3 usw. angefügt ist. Ist das Feld „X-Forwarded-For“ im Header der Clientanforderung nicht vorhanden, ist die Variable `add_x_forwarded_for_proxy` gleich der Variablen `$client_ip`. Diese Variable ist besonders hilfreich, wenn Sie den X-Forwarded-For-Header, der von Application Gateway festgelegt wurde, neu generieren möchten, sodass der Header nur die IP-Adresse und keine Portinformationen enthält. |
+| ciphers_supported          | Eine Liste der Verschlüsselungen, die vom Client unterstützt werden.          |
+| ciphers_used               | Die Verschlüsselungszeichenfolge, die für eine eingerichtete SSL-Verbindung verwendet wird. |
+| client_ip                  | Die IP-Adresse des Clients, von dem das Anwendungsgateway die Anforderung empfangen hat. Befindet sich ein Reverseproxy vor dem Anwendungsgateway und dem ursprünglichen Client, gibt *client_ip* die IP-Adresse des Reverseproxys zurück. |
+| client_port                | Der Port des Clients.                                                  |
+| client_tcp_rtt             | Informationen zur TCP-Verbindung des Clients. Verfügbar auf Systemen, die die TCP_INFO-Socketoption unterstützen. |
+| client_user                | Wenn HTTP-Authentifizierung verwendet wird, der Benutzername, der bei der Authentifizierung angegeben wird. |
+| host                       | In dieser Reihenfolge: Hostname aus der Anforderungszeile, Hostname aus dem Anforderungsheaderfeld „Host“ oder der Servername, der mit einer Anforderung übereinstimmt. |
+| cookie_*Name*              | Das *name*-Cookie.                                            |
+| http_method                | Die Methode, die für die URL-Anforderung verwendet wird. Beispielsweise GET oder POST. |
+| http_status                | Der Sitzungsstatus. Beispielsweise 200, 400 oder 403.                       |
+| http_version               | Das Anforderungsprotokoll. In der Regel HTTP/1.0, HTTP/1.1 oder HTTP/2.0. |
+| query_string               | Die Liste der Variablen/Wert-Paare nach dem „?“ in der angeforderten URL. |
+| received_bytes             | Die Länge der Anforderung (einschließlich Anforderungszeile, Header und Anforderungstext). |
+| request_query              | Die Argumente in der Anforderungszeile.                                |
+| request_scheme             | Das Anforderungsschema: „http“ oder „https“.                            |
+| request_uri                | Der vollständige ursprüngliche Anforderungs-URI (mit Argumenten).                   |
+| sent_bytes                 | Die Anzahl der an einen Client gesendeten Bytes.                             |
+| server_port                | Der Port des Servers, der eine Anforderung akzeptiert hat.                 |
+| ssl_connection_protocol    | Das Protokoll einer hergestellten SSL-Verbindung.        |
+| ssl_enabled                | „On“, wenn die Verbindung im SSL-Modus ausgeführt wird. Andernfalls eine leere Zeichenfolge. |
+
+## <a name="rewrite-configuration"></a>Konfiguration für das erneute Generieren
+
+Um das erneute Generieren von HTTP-Headern zu konfigurieren, müssen Sie diese Schritte durchführen.
+
+1. Erstellen Sie die Objekte, die zum erneuten Generieren von HTTP-Headern erforderlich sind:
+
+   - **Aktion für das erneute Generieren**: Dient dazu, die Felder für Anforderung und Anforderungsheader, die Sie erneut generieren möchten, und den neuen Wert für die Header anzugeben. Sie können eine oder mehrere Bedingungen für das erneute Generieren mit einer Aktion für das erneute Generieren verknüpfen.
+
+   - **Bedingung für das erneute Generieren**: Eine optionale Konfiguration. Bedingungen für das erneute Generieren werten den Inhalt von HTTP(S)-Anforderungen und -Antworten aus. Die Aktion für das erneute Generieren wird ausgeführt, wenn die HTTP(S)-Anforderung oder -Antwort die Bedingung für das erneute Generieren erfüllt.
+
+     Wenn Sie der Aktion mehr als eine Bedingung zuordnen, erfolgt die Aktion nur, wenn alle Bedingungen erfüllt sind. Das heißt also, dass der Vorgang ein logischer UND-Vorgang ist.
+
+   - **Regel zum erneuten Generieren**: Enthält mehrere Kombinationen aus Aktion und Bedingung für das erneute Generieren.
+
+   - **Regelsequenz**: Hilft, die Reihenfolge zu bestimmen, in der die Regeln zum erneuten Generieren ausgeführt werden. Diese Konfiguration ist hilfreich, wenn Sie mehrere Regeln zum erneuten Generieren in einem Satz zum erneuten Generieren haben. Eine Regel zum erneuten Generieren, die eine niedrigere Regelsequenz besitzt, wird zuerst ausgeführt. Wenn Sie dieselbe Regelsequenz zwei Regeln zum erneuten Generieren zuweisen, ist die Reihenfolge der Ausführung unbestimmt.
+
+   - **Satz zum erneuten Generieren**: Enthält mehrere Regeln zum erneuten Generieren, die einer Anforderungsroutingregel zugeordnet werden.
+
+2. Fügen Sie den Satz zum erneuten Generieren (*rewriteRuleSet*) einer Routingregel an. Die Konfiguration für das erneute Generieren wird dem Quelllistener über die Routingregel angefügt. Bei Verwendung einer einfachen Routingregel wird die Konfiguration der erneuten Generierung eines Headers einem Quelllistener zugeordnet und fungiert als erneute Generierung eines globalen Headers. Wenn eine pfadbasierte Routingregel verwendet wird, wird die Konfiguration der erneuten Generierung eines Headers in der URL-Pfadzuordnung definiert. In diesem Fall gilt sie nur für den bestimmten Pfadbereich einer Site.
+   > [!NOTE]
+   > Beim erneuten Generieren der URL werden die Header geändert, die URL für den Pfad wird jedoch nicht geändert.
+
+Sie können mehrere solche Sätze für das erneute Generieren eines HTTP-Headers erstellen, und jeder dieser Sätze kann auf mehrere Listener angewendet werden. Allerdings können Sie auf einen bestimmten Listener nur einen Satz für das erneute Generieren anwenden.
+
+## <a name="common-scenarios"></a>Häufige Szenarios
+
+Hier sind einige allgemeine Szenarien für das erneute Generieren von Headern.
+
+### <a name="remove-port-information-from-the-x-forwarded-for-header"></a>Entfernen von Portinformationen aus dem X-Forwarded-For-Header
+
+Application Gateway fügt in alle Anforderungen einen X-Forwarded-For-Header ein, bevor es die Anforderungen an das Back-End weiterleitet. Dieser Header ist eine durch Trennzeichen getrennte Liste von IP-Ports. Es gibt möglicherweise Szenarien, in denen Back-End-Server nur die Header benötigen, um IP-Adressen zu enthalten. Sie können mit dem erneuten Generieren von Headern die Portinformationen aus dem X-Forwarded-For-Header entfernen. Dies kann beispielsweise erreicht werden, indem der Header auf die Servervariable „add_x_forwarded_for_proxy“ festgelegt wird:
+
+![Entfernen des Ports](media/rewrite-http-headers/remove-port.png)
+
+### <a name="modify-a-redirection-url"></a>Ändern einer Umleitungs-URL
+
+Wenn eine Back-End-Anwendung eine Umleitungsantwort sendet, empfiehlt es sich u.U., den Client an eine andere als die von der Back-End-Anwendung angegebene URL umzuleiten. Beispielsweise sollten Sie dies tun, wenn ein App-Dienst hinter einem Anwendungsgateway gehostet wird und erfordert, dass der Client eine Umleitung zu seinem relativen Pfad durchführt. (Beispielsweise eine Umleitung von „contoso.azurewebsites.net/path1“ zu „contoso.azurewebsites.net/path2“.)
+
+Da App Service ein mehrinstanzenfähiger Dienst ist, nutzt er den Hostheader in der Anforderung zur Weiterleitung der Anforderung an den richtigen Endpunkt. App-Dienste weisen den Standarddomänennamen „*.azurewebsites.net“ auf (z. B. „contoso.azurewebsites.net“), der sich vom Domänennamen des Anwendungsgateways (z.B. „contoso.com“) unterscheidet. Da die ursprüngliche Anforderung vom Client den Domänennamen des Anwendungsgateways „contoso.com“ als Hostnamen aufweist, ändert das Anwendungsgateway nun den Hostnamen in „contoso.azurewebsites.net“. Diese Änderung wird vorgenommen, damit der App-Dienst die Anforderung an den richtigen Endpunkt weiterleiten kann.
+
+Wenn der App Service eine Umleitungsantwort sendet, verwendet er den gleichen Hostnamen im Adressheader seiner Antwort wie in der Anforderung, die er vom Anwendungsgateway empfängt. So sendet der Client die Anforderung direkt an „contoso.azurewebsites.net/path2“ und durchläuft nicht das Anwendungsgateway („contoso.com/path2“). Das Umgehen des Anwendungsgateways ist nicht wünschenswert.
+
+Sie können dieses Problem durch Festlegen des Hostnamens im Adressheader des Anwendungsgateway-Domänennamens lösen.
+
+Hier sind die Schritte zum Ersetzen des Hostnamens:
+
+1. Erstellen Sie eine Regel zum erneuten Generieren mit einer Bedingung, die prüft, ob der Adressheader in der Antwort „azurewebsites.net“ enthält. Geben Sie das Muster `(https?):\/\/.*azurewebsites\.net(.*)$` ein.
+1. Führen Sie eine Aktion zum erneuten Generieren des Adressheaders durch, damit sie den Hostnamen des Anwendungsgateways hat. Geben Sie hierzu `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` als Headerwert ein.
+
+![Ändern des Adressheaders](media/rewrite-http-headers/app-service-redirection.png)
+
+### <a name="implement-security-http-headers-to-prevent-vulnerabilities"></a>Implementieren von HTTP-Sicherheitsheadern, um Sicherheitsrisiken zu verhindern
+
+Sie können verschiedene Sicherheitsrisiken beheben, indem Sie die erforderlichen Header in die Anwendungsantwort implementieren. Zu diesen Sicherheitsheadern zählen X-XSS-Protection, Strict-Transport-Security und Content-Security-Policy. Über Application Gateway können Sie diese Header für alle Antworten festlegen.
+
+![Sicherheitsheader](media/rewrite-http-headers/security-header.png)
+
+### <a name="delete-unwanted-headers"></a>Löschen von unerwünschten Headern
+
+Möglicherweise möchten Sie Header entfernen, die vertrauliche Informationen aus einer HTTP-Antwort anzeigen. Beispielsweise möchten Sie möglicherweise Informationen wie den Namen des Back-End-Servers, Betriebssystem oder Bibliothek entfernen. Sie können diese Header mit dem Anwendungsgateway entfernen:
+
+![Löschen des Headers](media/rewrite-http-headers/remove-headers.png)
+
+### <a name="check-for-the-presence-of-a-header"></a>Überprüfen des Vorhandenseins eines Headers
+
+Sie können einen HTTP-Anforderungs- oder -Antwortheader auf das Vorhandensein einer Header- oder Servervariablen untersuchen. Diese Untersuchung ist hilfreich, wenn Sie nur dann erneut Header generieren möchten, wenn der betreffende Header auch vorhanden ist.
+
+![Überprüfen des Vorhandenseins eines Headers](media/rewrite-http-headers/check-presence.png)
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Die Möglichkeit, HTTP-Header erneut zu generieren, ist momentan nur über Azure PowerShell, die Azure-API und Azure SDK verfügbar. Die Unterstützung über das Portal und die Azure-Befehlszeilenschnittstelle folgt in Kürze.
+- Wenn eine Antwort über mehrere Header gleichen Namens verfügt, führt das erneute Generieren des Werts eines dieser Header zum Löschen der anderen Header in der Antwort. Dies kann in der Regel bei Set-Cookie-Headern auftreten, da eine Antwort mehrere Set-Cookie-Header enthalten kann. Ein solches Szenario liegt vor, wenn Sie einen App-Dienst mit einem Anwendungsgateway verwenden und cookiebasierte Sitzungsaffinität auf dem Anwendungsgateway konfiguriert haben. In diesem Fall enthält die Antwort zwei Set-Cookie-Header: einen vom App-Dienst verwendeten (z. B. `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net`) und einen anderen für die Anwendungsgatewayaffinität (z. B. `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`). Das Umschreiben einer der Set-Cookie-Header in diesem Szenario kann dazu führen, dass der andere Set-Cookie-Header aus der Antwort entfernt wird.
 
-- Die Unterstützung für das erneute Generieren von HTTP-Headern ist nur für die neue SKU [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) verfügbar. Auf der alten SKU wird diese Möglichkeit nicht unterstützt.
+- Das erneute Generieren von Verbindungs-, Upgrade- und Hostheadern wird derzeit nicht unterstützt.
 
-- Das erneute Generieren von Verbindungs-, Upgrade- und Hostheadern wird noch nicht unterstützt.
-
-- Die Möglichkeit, HTTP-Header bedingt erneut zu generieren, ist bald verfügbar.
-
-- Wie in [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27) festgelegt, können Headernamen sämtliche alphanumerische Zeichen und Sonderzeichen beinhalten. Derzeit wird allerdings das Sonderzeichen „Unterstrich“ (\_) in Headernamen nicht unterstützt. 
-
-## <a name="need-help"></a>Sie brauchen Hilfe?
-
-Kontaktieren Sie uns unter [AGHeaderRewriteHelp@microsoft.com](mailto:AGHeaderRewriteHelp@microsoft.com), falls Sie Hilfe benötigen.
+- Wie in [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27) festgelegt, können Headernamen sämtliche alphanumerischen Zeichen und Sonderzeichen beinhalten. Derzeit wird das Sonderzeichen „Unterstrich“ (\_) in Headernamen nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun mehr zur Möglichkeit erfahren haben, HTTP-Header neu zu generieren, finden Sie unter [Create an autoscaling and zone-redundant application gateway that rewrites HTTP headers (Erstellen eines automatisch skalierenden und zonenredundanten Application Gateway-Diensts, der HTTP-Header erneut generiert)](tutorial-http-header-rewrite-powershell.md) oder [Rewrite HTTP headers in existing autoscaling and zone-redundant application gateway (Erneutes Generieren von HTTP-Headern in einem vorhandenen automatisch skalierenden und zonenredundanten Application Gateway-Diensts)](add-http-header-rewrite-rule-powershell.md) weitere Informationen.
+Eine Anleitung zum erneuten Generieren von HTTP-Header finden Sie in folgenden Artikeln:
+
+- [Erneutes Generieren von HTTP-Headern über das Azure-Portal](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+- [Erneutes Generieren von HTTP-Headern über Azure PowerShell](add-http-header-rewrite-rule-powershell.md)

@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: a9c857ab9e9a3cfc0d1314600b612c4e6293173d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 3e7e2294938179da83fb5ad03db177c1142ad096
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476790"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568336"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontales Skalieren von Datenbanken mit dem Shardzuordnungs-Manager
 
@@ -58,7 +57,7 @@ Die elastische Skalierung unterstützt die folgenden Typen als Shardingschlüsse
 | lang |lang |
 | GUID |uuid |
 | Byte[]  |Byte[] |
-| Datetime | timestamp |
+| datetime | timestamp |
 | Zeitraum | duration|
 | datetimeoffset |offsetdatetime |
 

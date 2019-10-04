@@ -1,23 +1,25 @@
 ---
-title: Installieren eines lokalen Datengateways | Microsoft-Dokumentation
+title: Installieren eines lokalen Datengateways für Azure Analysis Services | Microsoft-Dokumentation
 description: Informationen zum Installieren und Konfigurieren eines lokalen Datengateways.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 07/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 629a97048ceba4ac02e3aa1dd59310980e5a0c95
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e87a8221a4db4dfab132a91a31a9ba5b5602a3db
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894165"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678434"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installieren und Konfigurieren eines lokalen Datengateways
 
-Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analysis Services-Server in der gleichen Region mit lokalen Datenquellen verbindet. Weitere Informationen zum Gateway finden Sie unter [Lokales Datengateway](analysis-services-gateway.md).
+Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analysis Services-Server in der gleichen Region mit lokalen Datenquellen verbindet.  Auch wenn das installierte Gateway für alle weiteren Dienste – z.B. Power BI, Power Apps und Logic Apps – identisch ist, sind für Azure Analysis Services und Logic Apps einige zusätzliche Schritte erforderlich. Die Informationen in diesem Artikel gelten speziell für **Azure Analysis Services**.
+
+Weitere Informationen zum Gateway und dessen Verwendung durch Azure Analysis Services finden Sie unter [Herstellen einer Verbindung mit lokalen Datenquellen über ein lokales Datengateway](analysis-services-gateway.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,18 +42,22 @@ Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analys
 * Installieren Sie das Gateway auf einem Computer, der eingeschaltet bleibt und nicht in den Ruhezustand versetzt wird.
 * Installieren Sie das Gateway nicht auf einem Computer, der über eine Drahtlosverbindung mit dem Netzwerk verfügt. Die Leistung kann beeinträchtigt werden.
 * Wenn Sie das Gateway installieren, muss das Benutzerkonto, unter dem Sie auf Ihrem Computer angemeldet sind, über die Berechtigungen „Anmelden als Dienst“ verfügen. Wenn die Installation abgeschlossen ist, verwendet der lokale Datengatewaydienst das Konto „NT SERVICE\PBIEgwService“, um sich als Dienst anzumelden. Ein anderes Konto kann während des Setups oder nach dem Setup in „Dienste“ angegeben werden. Stellen Sie sicher, dass die Gruppenrichtlinieneinstellungen sowohl das Konto, mit dem Sie sich beim Installieren angemeldet haben, als auch das Dienstkonto, das Sie für die Berechtigungen „Anmelden als Dienst“ ausgewählt haben, zulassen.
-* Melden Sie sich bei Azure an. Verwenden Sie dazu ein Konto in Azure AD mit dem gleichen [Mandanten](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant), der auch für das Abonnement verwendet wird, unter dem Sie das Gateway registrieren. Für das Installieren und Registrieren eines Gateways werden keine Azure B2B (Gast)-Konten unterstützt.
+* Melden Sie sich bei Azure an. Verwenden Sie dazu ein Konto in Azure AD mit dem gleichen [Mandanten](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant), der auch für das Abonnement verwendet wird, unter dem Sie das Gateway registrieren. Für das Installieren und Registrieren eines Gateways werden keine Azure B2B (Gast)-Konten unterstützt.
 * Wenn sich die Datenquellen in einem Azure Virtual Network (VNET) befinden, müssen Sie die [AlwaysUseGateway](analysis-services-vnet-gateway.md)-Servereigenschaft konfigurieren.
 * Das hier beschriebene (einheitliche) Gateway wird für Azure Deutschland-Regionen nicht unterstützt. Verwenden Sie das **dedizierte lokale Gateway für Azure Analysis Services**, das vom **Schnellstart** Ihres Servers installiert wurde, im Portal. 
 
 
 ## <a name="download"></a>Herunterladen
 
- [Gateway herunterladen](https://aka.ms/azureasgateway)
+ [Gateway herunterladen](https://go.microsoft.com/fwlink/?LinkId=820925&clcid=0x409)
 
 ## <a name="install"></a>Installieren
 
 1. Führen Sie das Setup aus.
+
+2. Wählen Sie **Lokales Datengateway** aus.
+
+   ![Select](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. Wählen Sie einen Speicherort, akzeptieren Sie die Lizenzbedingungen, und klicken Sie dann auf **Installieren**.
 
@@ -70,21 +76,21 @@ Um eine Gatewayressource in Azure zu erstellen, müssen Sie die lokale Instanz r
 
 1.  Wählen Sie **Ein neues Gateway auf diesem Computer registrieren** aus.
 
-    ![Register ](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![Register](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. Geben Sie einen Namen und Wiederherstellungsschlüssel für Ihr Gateway ein. Standardmäßig verwendet das Gateway die Standardregion Ihres Abonnements. Wenn Sie eine andere Region auswählen müssen, wählen Sie **Region ändern** aus.
 
     > [!IMPORTANT]
     > Bewahren Sie Ihren Wiederherstellungsschlüssel an einem sicheren Ort auf. Der Wiederherstellungsschlüssel ist erforderlich, um ein Gateway zu übernehmen, zu migrieren oder wiederherzustellen. 
 
-   ![Register ](media/analysis-services-gateway-install/aas-gateway-register-name.png)
+   ![Register](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-resource"></a>Erstellen einer Azure-Gatewayressource
 
 Nachdem Sie Ihr Gateway registriert und installiert haben, müssen Sie in Ihrem Azure-Abonnement eine Gatewayressource erstellen. Melden Sie sich bei Azure mit dem Konto an, das Sie beim Registrieren des Gateways verwendet haben.
 
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Integration** > **Lokales Datengateway**.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**, suchen Sie nach **Lokales Datengateway**, und klicken Sie dann auf **Erstellen**.
 
    ![Erstellen einer Gatewayressource](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 
@@ -100,7 +106,7 @@ Nachdem Sie Ihr Gateway registriert und installiert haben, müssen Sie in Ihrem 
 
    * **Standort**: Wählen Sie die Region aus, in der Sie Ihr Gateway registriert haben.
 
-   * **Installationsname:** Wenn Ihre Gatewayinstallation nicht bereits ausgewählt ist, wählen Sie das registrierte Gateway aus. 
+   * **Installationsname:** Wenn Ihre Gatewayinstallation nicht bereits ausgewählt ist, wählen Sie das Gateway aus, das Sie auf Ihrem Computer installiert und registriert haben. 
 
      Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
 
@@ -115,7 +121,12 @@ Nachdem Sie Ihr Gateway registriert und installiert haben, müssen Sie in Ihrem 
    ![Verbinden des Servers mit der Gatewayressource](media/analysis-services-gateway-install/aas-gateway-connect-resource.png)
 
     > [!NOTE]
-    > Wenn Ihr Gateway nicht in der Liste nicht angezeigt wird, befindet sich Ihr Server wahrscheinlich nicht in der Region, die Sie beim Registrieren des Gateways angegeben haben. 
+    > Wenn Ihr Gateway nicht in der Liste nicht angezeigt wird, befindet sich Ihr Server wahrscheinlich nicht in der Region, die Sie beim Registrieren des Gateways angegeben haben.
+
+    Wenn die Verbindung zwischen Ihrem Server und der Gatewayressource erfolgreich ist, wird der Status als **Verbunden** angezeigt.
+
+
+    ![Erfolgreiche Verbindung des Servers mit der Gatewayressource](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
 Das ist alles. Wenn Sie Ports öffnen oder eine Problembehandlung durchführen müssen, lesen Sie den Artikel zum [lokalen Datengateway](analysis-services-gateway.md).
 

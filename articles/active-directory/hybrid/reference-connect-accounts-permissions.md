@@ -13,22 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d145407331ed652f21510483b51a4617bf28e2fa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 6760677a94855c259501103a54a96d687c87910b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879117"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290965"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Für Azure AD Connect verwendete Konten
 
-![](media/reference-connect-accounts-permissions/account5.png)
+![Kontenübersicht](media/reference-connect-accounts-permissions/account5.png)
 
 Azure AD Connect nutzt 3 Konten, um Informationen aus lokalen Verzeichnissen oder Windows Server Active Directory mit Azure Active Directory zu synchronisieren.  Diese Konten sind:
 
@@ -46,7 +46,17 @@ Zusätzlich zu diesen drei Konten, die zum Ausführen von Azure AD Connect ausge
 
 - **Azure AD Global Administrator-Konto**: Wird zum Erstellen des Azure AD-Connector-Kontos und zum Konfigurieren von Azure AD verwendet.
 
-- **SQL SA-Konto (optional)**: Wird zum Erstellen der ADSync-Datenbank verwendet, wenn die Vollversion von SQL Server installiert ist.  Dieser SQL Server kann lokal oder remote zur Azure AD Connect-Installation vorliegen.  Dabei kann es sich um das gleiche Konto handeln wie bei Enterprise Administrator.  Der SQL-Administrator kann nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann.  Weitere Informationen finden Sie unter [Installieren von Azure AD Connect mit Berechtigungen eines delegierten SQL-Administrators](how-to-connect-install-sql-delegation.md).
+- **SQL SA-Konto (optional)** : Wird zum Erstellen der ADSync-Datenbank verwendet, wenn die Vollversion von SQL Server installiert ist.  Dieser SQL Server kann lokal oder remote zur Azure AD Connect-Installation vorliegen.  Dabei kann es sich um das gleiche Konto handeln wie bei Enterprise Administrator.  Der SQL-Administrator kann nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann.  Weitere Informationen finden Sie unter [Installieren von Azure AD Connect mit Berechtigungen eines delegierten SQL-Administrators](how-to-connect-install-sql-delegation.md).
+
+<<<<<<< HEAD
+>[!IMPORTANT]
+> Ab Build 1.4. ###.# wird es nicht mehr unterstützt, wenn Sie ein Unternehmens- oder ein Domänenadministratorkonto als AD DS-Connectorkonto verwenden.  Wenn Sie versuchen, ein Unternehmens- oder Domänenadministratorkonto einzugeben, und dabei **vorhandenes Konto verwenden** nutzen, wird Ihnen eine Fehlermeldung angezeigt.
+=======
+> [!NOTE]
+> Es wird unterstützt, um die in Azure AD Connect verwendeten Administratorkonten über eine administrative ESAE-Gesamtstruktur (auch „Red Forest“ genannt) verwalten zu können.
+> Mithilfe dedizierter administrativer Gesamtstrukturen können Organisationen Administratorkonten, Arbeitsstationen und Gruppen in einer Umgebung hosten, die über bessere Sicherheitskontrollen verfügt als die Produktionsumgebung.
+> Weitere Informationen zu dedizierten administrativen Gesamtstrukturen finden Sie unter [ESAE Administrative Forest Design Approach](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach) (ESAE-Ansatz für administrative Gesamtstrukturen).
+>>>>>>> e683a61b0ed62ae739941410f658a127534e2481
 
 ## <a name="installing-azure-ad-connect"></a>Installieren von Azure AD Connect
 Der Azure AD Connect-Installations-Assistent bietet zwei verschiedene Methoden:
@@ -114,7 +124,7 @@ Nachfolgend finden Sie eine Übersicht über die Seiten des Assistenten für die
 | AD FS-Server |Für jeden Server in der Liste sammelt der Assistent Anmeldeinformationen, wenn die Anmeldeinformationen des Benutzers, der den Assistenten ausführt, nicht für die Verbindung ausreichen. |Domänenadministrator |Installieren und Konfigurieren der AD FS-Server-Rolle. |
 | Webanwendungsproxy-Server |Für jeden Server in der Liste sammelt der Assistent Anmeldeinformationen, wenn die Anmeldeinformationen des Benutzers, der den Assistenten ausführt, nicht für die Verbindung ausreichen. |Lokaler Administrator auf dem Zielcomputer |Installieren und Konfigurieren der WAP-Server-Rolle. |
 | Anmeldeinformationen der Proxyvertrauensstellung |Anmeldeinformationen der Verbunddienstvertrauensstellung (die Anmeldeinformationen, die der Proxy zur Registrierung für ein Zertifikat für die Vertrauensstellung vom FS verwendet) |Domänenkonto, dessen Benutzer ein lokaler Administrator des AD FS-Servers ist |Erste Registrierung des vertrauenswürdigen FS-WAP-Zertifikats. |
-| Seite „AD FS-Dienstkonto“, Option „Domänenbenutzerkonto verwenden“ |Anmeldeinformationen für das Active Directory-Benutzerkonto |Domänenbenutzer |Das AD-Benutzerkonto, dessen Anmeldeinformationen bereitgestellt wurden, wird als das Anmeldekonto des AD FS-Diensts verwendet. |
+| Seite „AD FS-Dienstkonto“, Option „Domänenbenutzerkonto verwenden“ |Anmeldeinformationen für das Active Directory-Benutzerkonto |Domänenbenutzer |Das Azure AD-Benutzerkonto, dessen Anmeldeinformationen bereitgestellt werden, wird als Anmeldekonto des AD FS-Diensts verwendet. |
 
 ### <a name="create-the-ad-ds-connector-account"></a>Erstellen des AD DS-Connector-Kontos
 
@@ -239,6 +249,11 @@ Das Konto wird mit einem langen, komplexen Kennwort erstellt, das nicht abläuft
 Es besteht eine Beschränkung auf 20 Synchronisierungsdienstkonten in Azure AD. Um die Liste der vorhandenen Azure AD-Dienstkonten in Azure AD abzurufen, führen Sie das folgende Azure AD PowerShell-Cmdlet aus: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
 Um nicht verwendete Azure AD-Dienstkonten zu entfernen, führen Sie das folgende Azure AD PowerShell-Cmdlet aus: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+
+>[!NOTE]
+>Bevor Sie die oben aufgeführten PowerShell-Befehle verwenden können, müssen Sie [Azure Active Directory-PowerShell für das Graph-Modul](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) installieren und mit [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0) eine Verbindung zu Ihrer Azure AD-Instanz herstellen.
+
+Weitere Informationen zum Verwalten oder Zurücksetzen des Kennworts für das Azure AD Connector-Konto finden Sie unter [Verwalten der Azure AD Connect-Konten](how-to-connect-azureadaccount.md).
 
 ## <a name="related-documentation"></a>verwandten Dokumentation
 Wenn Sie die Dokumentation zum [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](whatis-hybrid-identity.md) nicht gelesen haben, finden Sie in der folgenden Tabelle Links zu verwandten Themen:

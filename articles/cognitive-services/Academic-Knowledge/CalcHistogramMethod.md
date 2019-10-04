@@ -10,12 +10,13 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a228c5b90e47c9c24c5da70484a1a28f9a3054b1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9e84b1ad37b3224ec5553d0a66ba0fc84bc88f55
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100478"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705084"
 ---
 # <a name="calchistogram-method"></a>calchistogram-Methode
 
@@ -33,11 +34,11 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 NAME  |Wert | Erforderlich?  |BESCHREIBUNG
 -----------|----------|--------|----------
 **expr**    |Textzeichenfolge | Ja  |Ein Abfrageausdruck, der die Entitäten angibt, über die Histogramme berechnet werden sollen.
-**model** |Textzeichenfolge | Nein  |Wählen Sie den Namen des Modells aus, das Sie abfragen möchten.  Derzeit wird als Standardwert *latest* verwendet.
-**attributes** | Textzeichenfolge | Nein <br>Standard: | Eine durch Kommas getrennte Liste, die die Attributwerte in einer Antwort angibt. Bei den Attributnamen wird zwischen Groß- und Kleinschreibung unterschieden.
-**count** |Number | Nein <br>Standardwert: 10 |Anzahl der zurückzugebenden Ergebnisse.
-**offset**  |Number | Nein <br>Standardwert: 0 |Index des ersten zurückzugebenden Ergebnisses.
-**timeout**  |Number | Nein <br>Standardwert: 1000 |Timeout in Millisekunden. Nur die vor Ablauf des Timeouts gefundenen Interpretationen werden zurückgegeben.
+**model** |Textzeichenfolge | Nein |Wählen Sie den Namen des Modells aus, das Sie abfragen möchten.  Derzeit wird als Standardwert *latest* verwendet.
+**attributes** | Textzeichenfolge | Nein<br>Standard: | Eine durch Kommas getrennte Liste, die die Attributwerte in einer Antwort angibt. Bei den Attributnamen wird zwischen Groß- und Kleinschreibung unterschieden.
+**count** |Number | Nein<br>Standardwert: 10 |Anzahl der zurückzugebenden Ergebnisse.
+**offset**  |Number | Nein<br>Standardwert: 0 |Index des ersten zurückzugebenden Ergebnisses.
+**timeout**  |Number | Nein<br>Standardwert: 1000 |Timeout in Millisekunden. Nur die vor Ablauf des Timeouts gefundenen Interpretationen werden zurückgegeben.
 
 ## <a name="response-json"></a>Antwort (JSON)
 
@@ -65,7 +66,7 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime teevan after 2012
 ```
-<br>Der Ausdruck in der ersten Interpretation, die von der interpret-API zurückgegeben wird, lautet *And(Composite(AA.AuN=='jaime teevan'),Y>2012)*.
+<br>Der Ausdruck in der ersten Interpretation, die von der interpret-API zurückgegeben wird, lautet *And(Composite(AA.AuN=='jaime teevan'),Y>2012)* .
 <br>Dieser Ausdruckswert wird dann an die **calchistogram**-API weitergegeben. Der *attributes=Y,F.FN*-Parameter gibt an, dass die Verteilungen der Dokumentanzahl z.B. nach „Year“ und „Field of Study“ geordnet sein sollen:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4

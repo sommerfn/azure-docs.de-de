@@ -1,9 +1,9 @@
 ---
-title: Interpretieren des Azure Active Directory-Überwachungsprotokollschemas in Azure Monitor (Vorschauversion) | Microsoft-Dokumentation
-description: Weitere Informationen zum Azure AD-Überwachungsprotokollschema für die Verwendung in Azure Monitor (Vorschauversion)
+title: Interpretieren des Azure Active Directory-Überwachungsprotokollschemas in Azure Monitor | Microsoft-Dokumentation
+description: Informationen zum Azure AD-Überwachungsprotokollschema für die Verwendung in Azure Monitor
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/14/2018
-ms.author: markvi
+ms.date: 04/18/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4832776dee7c478996bcfc2a903a6d8e2a3c4426
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 7f75af14e388626a9ebbb54d43079f30dcfdd98a
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436964"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987955"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Interpretieren des Azure AD-Überwachungsprotokollschemas in Azure Monitor (Vorschauversion)
 
@@ -163,7 +163,7 @@ Dieser Artikel beschreibt das Azure Active Directory-Überwachungsprotokollschem
 | identity | Die Identität des Tokens, das beim Erstellen der Anforderung angegeben wurde. Die Identität kann ein Benutzerkonto, ein Systemkonto oder ein Dienstprinzipal sein. |
 | level | Der Nachrichtentyp. Bei Überwachungsprotokollen ist die Ebene immer *Information*. |
 | location | Der Standort des Rechenzentrums. |
-| Eigenschaften | Listet die unterstützten Eigenschaften auf, die mit einem Überwachungsprotokoll verknüpft sind. Weitere Informationen finden Sie in der nächsten Tabelle. | 
+| properties | Listet die unterstützten Eigenschaften auf, die mit einem Überwachungsprotokoll verknüpft sind. Weitere Informationen finden Sie in der nächsten Tabelle. | 
 
 <br>
 

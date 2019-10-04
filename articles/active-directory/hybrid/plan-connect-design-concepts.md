@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 311ba489073805fdb034b435ab9e5e1ddc2c4e3c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535041"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135738"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Entwurfskonzepte
 Hier erfahren Sie, welche Aspekte bei der Planung der Implementierung von Azure AD Connect berücksichtigt werden müssen. Dieses Dokument enthält ausführliche Informationen zu bestimmten Aspekten, und diese Konzepte werden auch in anderen Dokumenten kurz beschrieben.
@@ -95,7 +95,6 @@ Sie können die Verwendung von „ConsistencyGuid“ als „sourceAnchor“ bei 
   > Nur neuere Versionen von Azure AD Connect (1.1.524.0 und höher) unterstützen die Verwendung von „ConsistencyGuid“ als „sourceAnchor“ bei der Neuinstallation.
 
 ### <a name="how-to-enable-the-consistencyguid-feature"></a>Gewusst wie: Aktivieren der Funktion „ConsistencyGuid“
-Die Funktion kann derzeit nur bei der Neuinstallation von Azure AD Connect aktiviert werden.
 
 #### <a name="express-installation"></a>Express-Installation
 Bei der Installation von Azure AD Connect mit dem Express-Modus legt der Azure AD Connect-Assistent automatisch das am besten geeignete AD-Attribut fest, das mit folgender Logik als „sourceAnchor“-Attribut verwendet werden soll:
@@ -145,7 +144,7 @@ Von „objectGUID“ zu „ConsistencyGuid“ als „SourceAnchor“-Attribut we
 
    ![Aktivieren Sie „ConsistencyGuid“ für die vorhandene Bereitstellung – Schritt 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
-5. Klicken Sie auf dem **Ready to Configure (Bereit für die Konfiguration)**-Bildschirm auf **Konfigurieren**, um die Konfigurationsänderung vorzunehmen.
+5. Klicken Sie auf dem **Ready to Configure (Bereit für die Konfiguration)** -Bildschirm auf **Konfigurieren**, um die Konfigurationsänderung vorzunehmen.
 
    ![Aktivieren Sie „ConsistencyGuid“ für die vorhandene Bereitstellung – Schritt 5](./media/plan-connect-design-concepts/consistencyguidexistingdeployment03.png)
 

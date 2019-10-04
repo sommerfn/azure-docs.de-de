@@ -2,22 +2,24 @@
 title: Massenexportieren und -importieren von Azure Notification Hubs-Registrierungen | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie die Notification Hubs-Unterstützung für Massenvorgänge zum Durchführen einer großen Anzahl von Vorgängen für einen Notification Hub oder zum Exportieren aller Registrierungen verwenden.
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: jowargo
-ms.openlocfilehash: c24fcd5f007b641bb594bb07348491f70c03ea41
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 8eb03a42f38c0cc7fe82eda6a81d1c8c1213ec74
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490842"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212402"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Massenexportieren und -importieren von Azure Notification Hubs-Registrierungen
 In einigen Szenarios ist das Erstellen oder Anpassen großer Mengen von Registrierungen in einem Notification Hub erforderlich. Bei einigen dieser Szenarios handelt es sich um Tagaktualisierungen, die auf Batchberechnungen folgen, oder Migrationen vorhandener Pushimplementierungen zur Verwendung von Notification Hubs.
@@ -34,7 +36,7 @@ In diesem Abschnitt wird vorausgesetzt, dass Sie über folgende Entitäten verf�
 
 - Ein bereitgestellter Notification Hub
 - Ein Azure Storage-Blobcontainer
-- Verweise auf das [Azure Storage NuGet-Paket](https://www.nuget.org/packages/windowsazure.storage/) und [Notification Hubs NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.9).
+- Verweise auf das [Azure Storage NuGet-Paket](https://www.nuget.org/packages/windowsazure.storage/) und [Notification Hubs NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>Erstellen einer Eingabedatei und Speichern in einem Blob
 Eine Eingabedatei enthält eine Liste von Registrierungen, die pro Zeile in XML serialisiert sind. Im folgenden Beispiel wird mithilfe des Azure SDK veranschaulicht, wie die Registrierungen serialisiert und in den Blobcontainer hochgeladen werden.

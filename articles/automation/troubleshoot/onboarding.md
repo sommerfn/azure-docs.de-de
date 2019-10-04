@@ -2,22 +2,53 @@
 title: Beheben von Fehlern beim Integrieren von Lösungen für Updateverwaltung, Änderungsnachverfolgung und Bestand
 description: Erfahren Sie, wie Sie Fehler beim Integrieren von Lösungen für Updateverwaltung, Änderungsnachverfolgung und Bestand beheben.
 services: automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 03/20/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: eaafee304f606ae4d511a6cea1824c26db838635
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8b4ee999bb23abdcea3411720bde244b2da4e89f
+ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793145"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68516395"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Beheben von Fehlern beim Integrieren von Lösungen
 
 Beim Integrieren von Lösungen wie Updateverwaltung oder Änderungsnachverfolgung können Fehler auftreten. In diesem Artikel wird beschrieben, welche Fehler auftreten und wie diese behoben werden können.
+
+## <a name="known-issues"></a>Bekannte Probleme
+
+### <a name="node-rename"></a>Szenario: Das Umbenennen eines registrierten Knotens erfordert das Aufheben der Registrierung und das erneute Registrieren.
+
+#### <a name="issue"></a>Problem
+
+Ein Knoten ist für Azure Automation registriert, und dann wird der Computername des im Betriebssystem geändert.  Berichte von diesem Knoten werden weiterhin mit dem ursprünglichen Namen angezeigt.
+
+#### <a name="cause"></a>Ursache
+
+Beim Umbenennen registrierter Knoten wird der Knotenname in Azure Automation nicht aktualisiert.
+
+#### <a name="resolution"></a>Lösung
+
+Heben Sie die Registrierung des Knotens in Azure Automation State Configuration auf, und registrieren Sie ihn erneut.  Berichte, die vor diesem Zeitpunkt im Dienst veröffentlicht wurden, sind anschließend nicht mehr verfügbar.
+
+
+### <a name="resigning-cert"></a>Szenario: Das erneute Signieren von Zertifikaten über den HTTPS-Proxy wird nicht unterstützt.
+
+#### <a name="issue"></a>Problem
+
+Kunden haben gemeldet, dass beim Herstellen einer Verbindung über eine Proxylösung, die den HTTPS-Datenverkehr beendet und dann den Datenverkehr mit einem neuen Zertifikat erneut verschlüsselt, der Dienst die Verbindung nicht zulässt.
+
+#### <a name="cause"></a>Ursache
+
+Azure Automation unterstützt keine Neusignierung von Zertifikaten, die zum Verschlüsseln des Datenverkehrs verwendet werden.
+
+#### <a name="resolution"></a>Lösung
+
+Für dieses Szenario gibt es keine Problemumgehung.
 
 ## <a name="general-errors"></a>Allgemeine Fehler
 
@@ -42,6 +73,24 @@ Dieser Fehler wird durch falsche oder fehlende Berechtigungen auf dem virtuellen
 #### <a name="resolution"></a>Lösung
 
 Stellen Sie sicher, dass Sie die erforderlichen Berechtigungen zum Integrieren des virtuellen Computers haben. Überprüfen Sie noch einmal [die Berechtigungen, die für das Onboarding von Computern erforderlich sind](../automation-role-based-access-control.md#onboarding), und wiederholen Sie das Onboarding für die Lösung. Wenn Sie den Fehler `The solution cannot be enabled on this VM because the permission to read the workspace is missing` erhalten, stellen Sie sicher, dass Sie über die Berechtigung `Microsoft.OperationalInsights/workspaces/read` verfügen, um herausfinden zu können, ob die VM in einen Arbeitsbereich integriert ist.
+
+### <a name="diagnostic-logging"></a>Szenario: Onboarding-Fehler mit der Meldung „Fehler beim Konfigurieren eines Automation-Kontos für die Diagnoseprotokollierung“
+
+#### <a name="issue"></a>Problem
+
+Die folgende Meldung wird angezeigt, wenn Sie versuchen, einen virtuellen Computer in eine Lösung zu integrieren (Onboarding):
+
+```error
+Failed to configure automation account for diagnostic logging
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler kann auftreten, wenn der Tarif nicht mit dem Abrechnungsmodell des Abonnements übereinstimmt. Weitere Informationen finden Sie unter [Überwachen der Nutzung und geschätzten Kosten in Azure Monitor](https://aka.ms/PricingTierWarning).
+
+#### <a name="resolution"></a>Lösung
+
+Erstellen Sie Ihren Log Analytics-Arbeitsbereich manuell, und wiederholen Sie den Onboardingprozess, um den erstellten Arbeitsbereich auszuwählen.
 
 ### <a name="computer-group-query-format-error"></a>Szenario: ComputerGroupQueryFormatError
 
@@ -78,6 +127,36 @@ Für eine erfolgreiche Bereitstellung der Lösung müssen Sie eine Änderung der
   * Überarbeiten Sie die Gruppe der Ressourcen, zu deren Ablehnung diese Richtlinie konfiguriert wurde.
 
 Lesen Sie die Benachrichtigungen in der oberen rechten Ecke des Azure-Portals, oder navigieren Sie zum Anzeigen der fehlerhaften Bereitstellung zu der Ressourcengruppe, die Ihr Automation-Konto enthält, und wählen Sie unter **Einstellungen** die Option **Bereitstellungen** aus. Weitere Informationen zu Azure Policy finden Sie hier: [Übersicht zu Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
+
+### <a name="unlink"></a>Szenario: Fehler beim Versuch, die Verknüpfung eines Arbeitsbereichs aufzuheben
+
+#### <a name="issue"></a>Problem
+
+Beim Versuch, die Verknüpfung eines Arbeitsbereichs aufzuheben, erhalten Sie die folgende Fehlermeldung:
+
+```error
+The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler tritt auf, wenn Sie noch über aktive Lösungen in Ihrem Log Analytics-Arbeitsbereich verfügen, die davon abhängig sind, dass Ihr Automation-Konto und Ihr Log Analytics-Arbeitsbereich verknüpft sind.
+
+### <a name="resolution"></a>Lösung
+
+Zum Beheben dieses Problems müssen Sie die folgenden Lösungen aus Ihrem Arbeitsbereich entfernen, sofern Sie sie verwenden:
+
+* Updateverwaltung
+* Change Tracking
+* Starten/Beenden von VMs außerhalb der Kernzeit
+
+Nachdem Sie die Lösungen entfernt haben, können Sie die Verknüpfung zu Ihrem Arbeitsbereich aufheben. Es ist wichtig, alle vorhandenen Artefakte dieser Lösungen auch aus Ihrem Arbeitsbereich und Ihrem Automation-Konto zu entfernen.  
+
+* Updateverwaltung
+  * Entfernen von Updatebereitstellungen (Zeitplänen) aus Ihrem Automation-Konto
+* Starten/Beenden von VMs außerhalb der Kernzeit
+  * Entfernen Sie alle Sperren für die Komponenten der Lösung in Ihrem Automation-Konto unter **Einstellungen** > **Sperren**.
+  * Zusätzliche Schritte zum Entfernen der Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten finden Sie im Artikel [Starten/Beenden von VMs außerhalb der Geschäftszeiten – Entfernen der Lösung](../automation-solution-vm-management.md##remove-the-solution).
 
 ## <a name="mma-extension-failures"></a>MMA-Erweiterungsfehler
 

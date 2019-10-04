@@ -1,19 +1,17 @@
 ---
 title: Häufige Szenarien mit Azure Data Catalog
 description: Eine Übersicht über allgemeine Szenarien für Azure Data Catalog, einschließlich der Registrierung und Ermittlung von Datenquellen mit hoher Bedeutung, der Aktivierung von Self-Service-Business Intelligence und der Erfassung vorhandenen Wissens über Datenquellen und Prozesse.
-services: data-catalog
-author: markingmyname
-ms.author: maghan
-ms.assetid: 60930d78-d2d4-4d5d-9651-bdda50b0da0e
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 531c5890cb2164b51d7b383d0b1fdd1b92d9e8eb
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 08/01/2019
+ms.openlocfilehash: aeae505b510f563a6640726c384ea358983eb24f
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405028"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736456"
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Häufige Szenarien mit Azure Data Catalog
 In diesem Artikel werden übliche Szenarien vorgestellt, bei denen Azure Data Catalog Organisationen unterstützt, mehr Nutzen aus ihren vorhandenen Datenquellen zu ziehen.

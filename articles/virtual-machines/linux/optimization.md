@@ -5,24 +5,23 @@ keywords: virtuelle Linux-Maschine, virtuelle Maschine Linux, virtuelle Ubuntu-M
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 8baa30c8-d40e-41ac-93d0-74e96fe18d4c
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 30d153863a20dcdddc702ee5a37c34a2938d7446
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: eb5ef067d4c9be4debd1bdc98ac4eb57a89d1100
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327367"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091682"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimieren virtueller Linux-Computer in Azure
 Virtuelle Linux-Maschinen (VM) lassen sich einfach über die Befehlszeile oder über das Portal erstellen. In diesem Tutorial erfahren Sie, wie Sie mit virtuellen Computern im Rahmen der Microsoft Azure Platform optimale Ergebnisse erzielen. In diesem Thema wird eine Ubuntu Server-VM verwendet, aber Sie können virtuelle Linux-Computer auch mithilfe [Ihrer eigenen Images als Vorlagen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)erstellen.  
@@ -31,7 +30,7 @@ Virtuelle Linux-Maschinen (VM) lassen sich einfach über die Befehlszeile oder �
 Dieses Thema setzt voraus, dass Sie bereits über ein funktionierendes Azure-Abonnement verfügen ([Anmeldung für eine kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)) und einen virtuellen Computer in Ihrem Azure-Abonnement bereitgestellt haben. Stellen Sie sicher, dass die neueste [Azure CLI](/cli/azure/install-az-cli2) installiert ist und dass Sie mit [az login](/cli/azure/reference-index) bei Ihrem Azure-Abonnement angemeldet sind, bevor Sie [einen virtuellen Computer erstellen](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Betriebssystem-Datenträger von Azure
-Nach dem Erstellen eines virtuellen Linux-Computers in Azure sind diesem zwei Datenträger zugeordnet. **/dev/sda** ist der Betriebssystem-Datenträger, **/dev/sdb** ist der temporäre Datenträger.  Verwenden Sie den Betriebssystem-Hauptdatenträger (**/dev/sda**) ausschließlich für das Betriebssystem. Er ist für den schnellen Start des virtuellen Computers optimiert und bietet keine gute Leistung für Ihre Workloads. Es empfiehlt sich, dem virtuellen Computer mindestens einen Datenträger anzufügen, um eine beständige und optimierte Datenspeicherung zu erhalten. 
+Nach dem Erstellen eines virtuellen Linux-Computers in Azure sind diesem zwei Datenträger zugeordnet. **/dev/sda** ist der Betriebssystem-Datenträger, **/dev/sdb** ist der temporäre Datenträger.  Verwenden Sie den Betriebssystem-Hauptdatenträger ( **/dev/sda**) ausschließlich für das Betriebssystem. Er ist für den schnellen Start des virtuellen Computers optimiert und bietet keine gute Leistung für Ihre Workloads. Es empfiehlt sich, dem virtuellen Computer mindestens einen Datenträger anzufügen, um eine beständige und optimierte Datenspeicherung zu erhalten. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Hinzufügen von Datenträgern für Größe und Leistung
 Abhängig von der VM-Größe können Sie bis zu 16 zusätzliche Datenträger (A-Serie), 32 Datenträger (D-Serie) bzw. 64 Datenträger (G-Serie) anfügen, die jeweils eine Größe von bis zu 1 TB haben können. Orientieren Sie sich beim Hinzufügen zusätzlicher Datenträger an Ihren Platz- und IOPS-Anforderungen. Jeder Datenträger hat ein Leistungsziel von 500 IOPS (Storage Standard) bzw. von bis zu 5000 IOPS (Storage Premium).
@@ -51,18 +50,18 @@ Wenn Sie sehr IOPS-intensive Workloads verarbeiten müssen und sich für Datentr
  
 
 ## <a name="your-vm-temporary-drive"></a>Temporäres Laufwerk des virtuellen Computers
-Beim Erstellen eines virtuellen Computers stellt Azure standardmäßig einen Betriebssystem-Datenträger (**/dev/sda**) und einen temporären Datenträger (**/dev/sdb**) bereit.  Alle weiteren Datenträger, die Sie hinzufügen, werden als **/dev/sdc**, **/dev/sdd**, **/dev/sde** usw. angezeigt. Die Daten auf dem temporären Datenträger (**/dev/sdb**) sind nicht beständig und können in bestimmten Fällen verloren gehen – etwa, wenn Größenänderungen, erneute Bereitstellungen oder Wartungsarbeiten einen Neustart des virtuellen Computers erzwingen.  Größe und Typ des temporären Datenträgers hängen mit der Größe des virtuellen Computers zusammen, die Sie zum Zeitpunkt der Bereitstellung ausgewählt haben. Bei allen virtuellen Computern in Premium-Tarifen (Serien DS, G und DS_V2) wird das temporäre Laufwerk durch eine lokale SSD unterstützt, um eine höhere Leistung von bis zu 48.000 IOPS zu erzielen. 
+Beim Erstellen eines virtuellen Computers stellt Azure standardmäßig einen Betriebssystem-Datenträger ( **/dev/sda**) und einen temporären Datenträger ( **/dev/sdb**) bereit.  Alle weiteren Datenträger, die Sie hinzufügen, werden als **/dev/sdc**, **/dev/sdd**, **/dev/sde** usw. angezeigt. Die Daten auf dem temporären Datenträger ( **/dev/sdb**) sind nicht beständig und können in bestimmten Fällen verloren gehen – etwa, wenn Größenänderungen, erneute Bereitstellungen oder Wartungsarbeiten einen Neustart des virtuellen Computers erzwingen.  Größe und Typ des temporären Datenträgers hängen mit der Größe des virtuellen Computers zusammen, die Sie zum Zeitpunkt der Bereitstellung ausgewählt haben. Bei allen virtuellen Computern in Premium-Tarifen (Serien DS, G und DS_V2) wird das temporäre Laufwerk durch eine lokale SSD unterstützt, um eine höhere Leistung von bis zu 48.000 IOPS zu erzielen. 
 
-## <a name="linux-swap-file"></a>Linux-Auslagerungsdatei
+## <a name="linux-swap-partition"></a>Linux-Swap-Partition
 Wenn Ihre Azure-VM von einem Ubuntu- oder CoreOS-Image erstellt wurde, können Sie mit CustomData eine Cloud-Config-Datei an Cloud-Init senden. Wenn Sie [ein benutzerdefiniertes Linux-Image hochgeladen haben](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), das cloud-init verwendet, können Sie auch Swap-Partitionen konfigurieren, die cloud-init verwenden.
 
 Für Ubuntu-Cloud-Images müssen Sie cloud-init verwenden, um die Swap-Partition zu konfigurieren. Weitere Informationen finden Sie unter [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
 
 Über den Azure Marketplace bereitgestellte VM-Images verfügen für Images ohne cloud-init-Unterstützung über einen in das Betriebssystem integrierten VM-Linux-Agent. Dieser Agent ermöglicht dem virtuellen Computer die Interaktion mit verschiedenen Azure-Diensten. Falls Sie ein Standardimage aus dem Azure Marketplace bereitgestellt haben, gehen Sie wie folgt vor, um die Einstellungen für die Linux-Auslagerungsdatei korrekt zu konfigurieren:
 
-Ändern Sie in der Datei **/etc/waagent.conf** zwei Einträge. Diese steuern, ob eine dedizierte Auslagerungsdatei vorhanden ist und welche Größe sie besitzt. `ResourceDisk.EnableSwap=N` und `ResourceDisk.SwapSizeMB=0` sind die Parameter, die Sie ändern möchten. 
+Ändern Sie in der Datei **/etc/waagent.conf** zwei Einträge. Diese steuern, ob eine dedizierte Auslagerungsdatei vorhanden ist und welche Größe sie besitzt. Sie müssen die Parameter `ResourceDisk.EnableSwap` und `ResourceDisk.SwapSizeMB` überprüfen. 
 
-Ändern Sie die Parameter in folgende Einstellungen:
+Stellen Sie für einen ordnungsgemäß aktivierten Datenträger und eine eingebundene Auslagerungsdatei sicher, dass für die Parameter die folgenden Einstellungen festgelegt sind:
 
 * ResourceDisk.EnableSwap=Y
 * ResourceDisk.SwapSizeMB={Größe in MB entsprechend Ihren Anforderungen} 
@@ -126,7 +125,9 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ```
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>Erzielen höherer IOPS-Werte mithilfe von Software-RAID
-Wenn Ihre Workloads mehr IOPS erfordern als ein einzelner Datenträger bereitstellen kann, müssen Sie eine Software-RAID-Konfiguration mit mehreren Datenträgern verwenden. Da Azure bereits Datenträgerresilienz auf der lokalen Fabric-Ebene bietet, erreichen Sie die höchste Leistung mit einer RAID-0-Konfiguration.  Erstellen Sie Datenträger, stellen Sie diese in der Azure-Umgebung bereit, und fügen Sie sie an den virtuellen Linux-Computer an, bevor Sie die Laufwerke partitionieren, formatieren und bereitstellen.  Ausführlichere Informationen zum Konfigurieren einer Software-RAID-Einrichtung für den virtuellen Linux-Computer in Azure finden Sie unter **[Konfigurieren von Software-RAID unter Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**.
+Wenn Ihre Workloads mehr IOPS erfordern als ein einzelner Datenträger bereitstellen kann, müssen Sie eine Software-RAID-Konfiguration mit mehreren Datenträgern verwenden. Da Azure bereits Datenträgerresilienz auf der lokalen Fabric-Ebene bietet, erreichen Sie die höchste Leistung mit einer RAID-0-Konfiguration.  Erstellen Sie Datenträger, stellen Sie diese in der Azure-Umgebung bereit, und fügen Sie sie an den virtuellen Linux-Computer an, bevor Sie die Laufwerke partitionieren, formatieren und bereitstellen.  Ausführlichere Informationen zum Konfigurieren einer Software-RAID-Einrichtung für den virtuellen Linux-Computer in Azure finden Sie unter **[Konfigurieren von Software-RAID unter Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** .
+
+Als Alternative zu einer herkömmlichen RAID-Konfiguration können Sie auch Logical Volume Manager (LVM) installieren, um mehrere physische Datenträger in einem einzelnen logischen Stripesetvolume zu konfigurieren. In dieser Konfiguration werden Lese- und Schreibvorgänge auf mehrere Datenträger in der Volumegruppe verteilt (ähnlich wie bei RAID 0). Aus Leistungsgründen ist die Wahrscheinlichkeit hoch, dass die logischen Volumes als Stripesetvolumes eingerichtet werden sollen, damit für Lese- und Schreibvorgänge alle angeschlossenen Datenträger genutzt werden.  Weitere Informationen zum Konfigurieren eines logischen Stripesetvolumes für den virtuellen Linux-Computer in Azure finden Sie im Dokument **[Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 Denken Sie daran: Wie bei allen Optimierungen müssen auch hier vor und nach jeder Änderung Tests ausgeführt werden, um die Auswirkungen der jeweiligen Änderung zu ermitteln.  Die Optimierung ist ein schrittweise ausgeführter Prozess, der auf unterschiedlichen Computern in Ihrer Umgebung unterschiedliche Ergebnisse liefert.  Was bei einer Konfiguration funktioniert, ist für andere möglicherweise ungeeignet.

@@ -1,17 +1,17 @@
 ---
 title: Azure Data Catalog-Terminologie
 description: Dieser Artikel bietet eine Einführung in die Konzepte und Begriffe, die in der Azure Data Catalog-Dokumentation verwendet werden.
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.openlocfilehash: 9b945057ed0c94fbab7a9114ad1198a0f157fa4d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.date: 08/01/2019
+ms.openlocfilehash: d6c813dec3922334f7462b1226ea22371fd5f43b
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270964"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736293"
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog-Terminologie
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 350aef037f019733e02331623758c14a3c64ab50
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 19ccd44888d64967baf82568c1cbb2540f3b3f68
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804991"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68780341"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric-Sicherheit 
 
-Weitere Informationen zu den [bewährten Methoden in Bezug auf die Azure-Sicherheit](https://docs.microsoft.com/azure/security/) finden Sie unter [Bewährte Methoden für die Azure Service Fabric-Sicherheit](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices).
+Weitere Informationen zu den [bewährten Methoden in Bezug auf die Azure-Sicherheit](https://docs.microsoft.com/azure/security/) finden Sie unter [Bewährte Methoden für die Azure Service Fabric-Sicherheit](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices).
 
 ## <a name="key-vault"></a>Key Vault
 
@@ -188,7 +188,7 @@ principalid=$(az resource show --id /subscriptions/<YOUR SUBSCRIPTON>/resourceGr
 az role assignment create --assignee $principalid --role 'Contributor' --scope "/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/<PROVIDER NAME>/<RESOURCE TYPE>/<RESOURCE NAME>"
 ```
 
-Rufen Sie in Ihrem Service Fabric-Anwendungscode ein Zugriffstoken für Azure Resource Manager ab, indem Sie beispielsweise den folgenden REST-Aufruf durchführen:
+Rufen Sie in Ihrem Service Fabric-Anwendungscode [ein Zugriffstoken](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token#get-a-token-using-http) für Azure Resource Manager ab, indem Sie beispielsweise einen REST-Aufruf wie den folgenden durchführen:
 
 ```bash
 access_token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true | python -c "import sys, json; print json.load(sys.stdin)['access_token']")
@@ -201,6 +201,20 @@ Im folgenden Beispiel ist dargestellt, wie Sie dies für die Cosmos DB-Ressource
 ```bash
 cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBSCRIPTION>/resourceGroups/<YOUR RG>/providers/Microsoft.DocumentDB/databaseAccounts/<YOUR ACCOUNT>/listKeys?api-version=2016-03-31' -X POST -d "" -H "Authorization: Bearer $access_token" | python -c "import sys, json; print(json.load(sys.stdin)['primaryMasterKey'])")
 ```
+## <a name="windows-security-baselines"></a>Windows-Sicherheitsbaselines
+[Es empfiehlt sich, eine branchenübliche Konfiguration zu implementieren, die allgemein bekannt ist und ausführlich getestet wurde (beispielsweise Microsoft-Sicherheitsbaselines), anstatt eine eigene Baseline zu erstellen.](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines) Zur Bereitstellung für Ihre VM-Skalierungsgruppen können Sie beispielsweise den Azure-DSC-Erweiterungshandler (Desired State Configuration) verwenden, um die virtuellen Computer zu konfigurieren, sobald sie online geschaltet werden, damit auf ihnen die Produktionssoftware ausgeführt wird.
+
+## <a name="azure-firewall"></a>Azure Firewall
+[Azure Firewall ist ein verwalteter, cloudbasierter Netzwerksicherheitsdienst zum Schutz Ihrer Azure Virtual Network-Ressourcen. Hierbei handelt es sich um eine vollständig zustandsbehaftete Firewall-as-a-Service mit integrierter Hochverfügbarkeit und uneingeschränkter Cloudskalierbarkeit.](https://docs.microsoft.com/azure/firewall/overview) Dadurch lässt sich ausgehender HTTP/S-Datenverkehr auf eine Liste vollständig qualifizierter Domänennamen (Fully Qualified Domain Names, FQDNs) einschließlich Platzhaltern beschränken. Diese Funktion erfordert keine SSL-Terminierung. Es wird empfohlen, [FQDN-Tags von Azure Firewall](https://docs.microsoft.com/azure/firewall/fqdn-tags) für Windows-Updates zu nutzen und Netzwerkdatenverkehr für Microsoft Windows Update-Endpunkte zu aktivieren, damit dieser Ihre Firewall passieren kann. Der Artikel [Bereitstellen von Azure Firewall mit einer Vorlage](https://docs.microsoft.com/azure/firewall/deploy-template) enthält ein Beispiel für die Definition einer Microsoft.Network/azureFirewalls-Ressourcenvorlage. Firewallregeln für Service Fabric-Anwendungen erlauben häufig Folgendes für das virtuelle Netzwerk Ihrer Cluster:
+
+- *download.microsoft.com
+- *servicefabric.azure.com
+- *.core.windows.net
+
+Diese Firewallregeln ergänzen Ihre zulässigen ausgehenden Netzwerksicherheitsgruppen, die Service Fabric und Storage als zulässige Ziele aus Ihrem virtuellen Netzwerk enthalten.
+
+## <a name="tls-12"></a>TLS 1.2
+[TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 
 
@@ -235,6 +249,18 @@ Standardmäßig ist Windows Defender Antivirus unter Windows Server 2016 install
 
 > [!NOTE]
 > Sehen Sie sich in der Dokumentation zu Ihrer Antischadsoftware-Anwendung die Konfigurationsregeln an, falls Sie Windows Defender nicht nutzen. Windows Defender wird unter Linux nicht unterstützt.
+
+## <a name="platform-isolation"></a>Plattformisolation
+Standardmäßig wird Service Fabric-Anwendungen Zugriff auf die Service Fabric-Runtime selbst gewährt, was sich auf unterschiedliche Arten zeigt: [Umgebungsvariablen](service-fabric-environment-variables-reference.md), die auf Dateipfade der Anwendungs- und Fabric-Dateien auf dem Host verweisen, ein Endpunkt für die Kommunikation zwischen Prozessen, der anwendungsspezifische Anforderungen akzeptiert, und das Clientzertifikat, das Fabric erwartet, wenn sich die Anwendung selbst authentifiziert. Falls der Dienst selbst nicht vertrauenswürdigen Code hostet, ist es ratsam, diesen Zugriff auf die Service Fabric-Runtime zu deaktivieren – sofern er nicht ausdrücklich erforderlich ist. Der Zugriff auf die Runtime wird durch die folgende Deklaration im Abschnitt „Policies“ des Anwendungsmanifests aufgehoben: 
+
+```xml
+<ServiceManifestImport>
+    <Policies>
+        <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+    </Policies>
+</ServiceManifestImport>
+
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

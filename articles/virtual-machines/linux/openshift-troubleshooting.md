@@ -4,23 +4,22 @@ description: Behandeln von Problemen beim Bereitstellen von OpenShift in Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: c65e76fb9453e93e856c76f397d187f9ee740fbd
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 31512bb264b5e998e5b6adc76d37c82c174933be
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540345"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091702"
 ---
 # <a name="troubleshoot-openshift-deployment-in-azure"></a>Behandeln von Problemen beim Bereitstellen von OpenShift in Azure
 
@@ -42,9 +41,9 @@ Stellen Sie eine SSH-Verbindung mit dem Ansible-Playbook-Host her. Verwenden Sie
 
 ## <a name="log-files"></a>Protokolldateien
 
-Die Protokolldateien („stderr“ und „stdout“) für die Hostvorbereitungsskripts befinden sich auf allen Hosts unter „/var/lib/waagent/custom-script/download/0“. Sollte bei der Vorbereitung des Hosts ein Fehler aufgetreten sein, sehen Sie sich diese Protokolldateien an, um den Fehler zu identifizieren.
+Die Protokolldateien („stderr“ und „stdout“) für die Hostvorbereitungsskripts befinden sich auf allen Hosts unter `/var/lib/waagent/custom-script/download/0`. Sollte bei der Vorbereitung des Hosts ein Fehler aufgetreten sein, sehen Sie sich diese Protokolldateien an, um den Fehler zu identifizieren.
 
-Wenn die Vorbereitungsskripts erfolgreich ausgeführt wurden, müssen die Protokolldateien im Verzeichnis „/var/lib/waagent/custom-script/download/1“ des Ansible-Playbook-Hosts untersucht werden. Ist der Fehler während der eigentlichen Installation von OpenShift aufgetreten, ist der Fehler in der Datei „stdout“ enthalten. Wenden Sie sich mit diesen Informationen an den Support, um weitere Unterstützung zu erhalten.
+Wenn die Vorbereitungsskripts erfolgreich ausgeführt wurden, müssen die Protokolldateien im Verzeichnis `/var/lib/waagent/custom-script/download/1` des Ansible-Playbook-Hosts untersucht werden. Ist der Fehler während der eigentlichen Installation von OpenShift aufgetreten, ist der Fehler in der Datei „stdout“ enthalten. Wenden Sie sich mit diesen Informationen an den Support, um weitere Unterstützung zu erhalten.
 
 Beispielausgabe
 
@@ -97,7 +96,7 @@ Es wird ein Fehler mit dem Hinweis angezeigt, dass die Berechtigung für SSH ver
 
 ### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>Das Schlüsseltresorgeheimnis mit privatem Schlüssel wurde nicht ordnungsgemäß erstellt.
 
-Der private Schlüssel wird in den Ansible-Playbook-Host (~/.ssh/Id_rsa) eingefügt. Vergewissern Sie sich, dass diese Datei korrekt ist. Erstellen Sie zum Testen über den Ansible-Playbook-Host eine SSH-Sitzung mit einem der Clusterknoten.
+Der private Schlüssel wird in den Ansible-Playbook-Host (~/.ssh/Id_rsa) kopiert. Vergewissern Sie sich, dass diese Datei korrekt ist. Erstellen Sie zum Testen über den Ansible-Playbook-Host eine SSH-Sitzung mit einem der Clusterknoten.
 
 ### <a name="service-principal-credentials-were-entered-incorrectly"></a>Die Dienstprinzipal-Anmeldeinformationen wurden nicht ordnungsgemäß eingegeben.
 

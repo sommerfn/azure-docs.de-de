@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: iot-accelerators
 author: dominicbetts
 ms.service: iot-accelerators
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: db1af4f046bd8849fddee299e949d6edbdaae86a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: a58e408feadd10e6dbc9d6878b82a4d045918ea6
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53609088"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68781454"
 ---
 ## <a name="access-the-virtual-machine"></a>Zugriff auf den virtuellen Computer
 
-Bei den nachstehenden Schritten wird der Befehl `az` in der Azure Cloud Shell verwendet. Wenn es Ihnen lieber ist, können Sie auf Ihrem Entwicklungscomputer [Azure CLI 2.0 installieren](https://docs.microsoft.com/cli/azure/install-azure-cli) und die Befehle lokal ausführen.
+Bei den nachstehenden Schritten wird die Azure-Befehlszeilenschnittstelle in der Azure Cloud Shell verwendet. Wenn es Ihnen lieber ist, können Sie auf Ihrem Entwicklungscomputer die [Azure-Befehlszeilenschnittstelle installieren](/cli/azure/install-azure-cli) und die Befehle lokal ausführen.
 
 Die nachstehenden Schritte zeigen, wie Sie den virtuellen Azure-Computer so konfigurieren, das **SSH**-Zugriff zulässig ist. Bei den gezeigten Schritten wird angenommen, dass der für den Solution Accelerator gewählte Name **Contoso-Simulation** lautet. Ersetzen Sie diesen Wert durch den Namen Ihrer Bereitstellung:
 
@@ -35,7 +35,7 @@ Die nachstehenden Schritte zeigen, wie Sie den virtuellen Azure-Computer so konf
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
-    Aktivieren Sie SSH-Zugriff nur während der Test- und Entwicklungsphase. Wenn Sie SSH aktivieren, [sollten Sie es so bald wie möglich wieder deaktivieren](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices#disable-rdpssh-access-to-virtual-machines).
+    Aktivieren Sie SSH-Zugriff nur während der Test- und Entwicklungsphase. Wenn Sie SSH aktivieren, [sollten Sie es so bald wie möglich wieder deaktivieren](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#disable-rdpssh-access-to-virtual-machines).
 
 1. Aktualisieren Sie das Kennwort für das **Azureuser**-Konto auf dem virtuellen Computer in ein Ihnen bekanntes Kennwort. Wählen Sie Ihr eigenes Kennwort aus, wenn Sie den folgenden Befehl ausführen:
 

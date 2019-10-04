@@ -1,27 +1,27 @@
 ---
-title: Tutorial – Weiterleiten von Webdatenverkehr basierend auf der URL – Azure-CLI
-description: In diesem Tutorial erfahren Sie, wie Sie Webdatenverkehr basierend auf der URL mithilfe der Azure-Befehlszeilenschnittstelle an spezifische skalierbare Serverpools weiterleiten.
+title: Weiterleiten von Webdatenverkehr basierend auf der URL – Azure CLI
+description: In diesem Artikel erfahren Sie, wie Sie Webdatenverkehr basierend auf der URL mithilfe der Azure-Befehlszeilenschnittstelle an spezifische skalierbare Serverpools weiterleiten.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: tutorial
-ms.date: 10/25/2018
+ms.topic: article
+ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4f0c93c41a468b62baf1ec50d030f235d36a8dd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006480"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688180"
 ---
-# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Tutorial: Weiterleiten von Webdatenverkehr basierend auf der URL mit der Azure-Befehlszeilenschnittstelle
+# <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Weiterleiten von Webdatenverkehr basierend auf der URL mit der Azure-Befehlszeilenschnittstelle
 
-Als IT-Administrator, der Webdatenverkehr verwaltet, möchten Sie Ihren Kunden oder Benutzern dabei helfen, schnellstmöglich die Informationen zu erhalten, die sie benötigen. Zur Verbesserung der Benutzerfreundlichkeit können Sie unter anderem verschiedene Arten von Webdatenverkehr an verschiedene Serverressourcen weiterleiten. In diesem Tutorial erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle verwenden, um Application Gateway-Routing für verschiedene Arten von Datenverkehr aus Ihrer Anwendung einzurichten und zu konfigurieren. Der Datenverkehr wird dann auf der Grundlage der URL an verschiedene Serverpools weitergeleitet.
+Als IT-Administrator, der Webdatenverkehr verwaltet, möchten Sie Ihren Kunden oder Benutzern dabei helfen, schnellstmöglich die Informationen zu erhalten, die sie benötigen. Zur Verbesserung der Benutzerfreundlichkeit können Sie unter anderem verschiedene Arten von Webdatenverkehr an verschiedene Serverressourcen weiterleiten. In diesem Artikel erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle verwenden, um Application Gateway-Routing für verschiedene Arten von Datenverkehr aus Ihrer Anwendung einzurichten und zu konfigurieren. Der Datenverkehr wird dann auf der Grundlage der URL an verschiedene Serverpools weitergeleitet.
 
 ![URL-Routingbeispiel](./media/tutorial-url-route-cli/scenario.png)
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Erstellen einer Ressourcengruppe für die benötigten Netzwerkressourcen
@@ -31,13 +31,13 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen einer Skalierungsgruppe für jeden Pool, damit der Pool automatisch skaliert werden kann
 > * Testen, ob die verschiedenen Arten von Datenverkehr an den richtigen Pool weitergeleitet werden
 
-Dieses Tutorial kann auch mit [Azure PowerShell](tutorial-url-route-powershell.md) oder mit dem [Azure-Portal](create-url-route-portal.md) durchgearbeitet werden.
+Dieses Verfahren kann auch mit [Azure PowerShell](tutorial-url-route-powershell.md) oder mit dem [Azure-Portal](create-url-route-portal.md) durchgearbeitet werden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -70,12 +70,14 @@ az network vnet subnet create \
 
 az network public-ip create \
   --resource-group myResourceGroupAG \
-  --name myAGPublicIPAddress
+  --name myAGPublicIPAddress \
+  --allocation-method Static \
+  --sku Standard
 ```
 
 ## <a name="create-the-app-gateway-with-a-url-map"></a>Erstellen des App-Gateways mit einer URL-Zuordnung
 
-Verwenden Sie `az network application-gateway create`, um ein Anwendungsgateway namens *myAppGateway* zu erstellen. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Das Anwendungsgateway wird dem Subnetz *myAGSubnet* und der IP-Adresse *myAGPublicIPAddress* zugewiesen, das bzw. die Sie zuvor erstellt haben.
+Verwenden Sie `az network application-gateway create`, um ein Anwendungsgateway namens *myAppGateway* zu erstellen. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Das Anwendungsgateway wird *myAGSubnet* und *myAGPublicIPAddress* zugewiesen.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -85,7 +87,7 @@ az network application-gateway create \
   --vnet-name myVNet \
   --subnet myAGsubnet \
   --capacity 2 \
-  --sku Standard_Medium \
+  --sku Standard_v2 \
   --http-settings-cookie-based-affinity Disabled \
   --frontend-port 80 \
   --http-settings-port 80 \
@@ -180,9 +182,9 @@ az network application-gateway rule create \
   --address-pool appGatewayBackendPool
 ```
 
-## <a name="create-vm-scale-sets"></a>Erstellen von VM-Skalierungsgruppen
+## <a name="create-virtual-machine-scale-sets"></a>Erstellen von VM-Skalierungsgruppen
 
-In diesem Tutorial erstellen Sie drei VM-Skalierungsgruppen, die die drei von Ihnen erstellten Back-End-Pools unterstützen. Sie erstellen Skalierungsgruppen namens *myvmss1*, *myvmss2* und *myvmss3*. Jede Skalierungsgruppe enthält zwei VM-Instanzen, auf denen Sie NGINX installieren.
+In diesem Artikel erstellen Sie drei VM-Skalierungsgruppen, die die drei von Ihnen erstellten Back-End-Pools unterstützen. Sie erstellen Skalierungsgruppen namens *myvmss1*, *myvmss2* und *myvmss3*. Jede Skalierungsgruppe enthält zwei VM-Instanzen, auf denen Sie NGINX installieren.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -246,11 +248,11 @@ az network public-ip show \
 
 ![Testen der Basis-URL im Anwendungsgateway](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-Ändern Sie die URL zu http://&lt;IP-Adresse&gt;:8080/images/test.html, und ersetzen Sie dabei &lt;IP-Adresse&gt; durch Ihre IP-Adresse. Die anschließende Anzeige sollte in etwa wie im folgenden Beispiel aussehen:
+Ändern Sie die URL in http://&lt;IP-Adresse&gt;:8080/images/test.html, und ersetzen Sie dabei &lt;IP-Adresse&gt; durch Ihre IP-Adresse. Die anschließende Anzeige sollte in etwa wie im folgenden Beispiel aussehen:
 
 ![Testen der Images-URL im Anwendungsgateway](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-Ändern Sie die URL zu http://&lt;IP-Adresse&gt;:8080/video/test.html, und ersetzen Sie dabei &lt;IP-Adresse&gt; durch Ihre IP-Adresse. Die anschließende Anzeige sollte in etwa wie im folgenden Beispiel aussehen:
+Ändern Sie die URL in http://&lt;ip-address&gt;:8080/video/test.html, und ersetzen Sie dabei &lt;IP-Adresse&gt; durch Ihre IP-Adresse. Die anschließende Anzeige sollte in etwa wie im folgenden Beispiel aussehen.
 
 ![Testen der Video-URL im Anwendungsgateway](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 
@@ -259,10 +261,9 @@ az network public-ip show \
 Entfernen Sie die Ressourcengruppe, das Anwendungsgateway und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen.
 
 ```azurecli-interactive
-az group delete --name myResourceGroupAG --location eastus
+az group delete --name myResourceGroupAG
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis](./tutorial-url-redirect-cli.md)
+[Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis](./tutorial-url-redirect-cli.md)

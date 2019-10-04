@@ -2,21 +2,19 @@
 title: Überwachen der Ressourcennutzung und Abfragemetriken für einen Suchdienst – Azure Search
 description: Aktivieren der Protokollierung, Abrufen von Abfrageaktivitätsmetriken, der Ressourcennutzung und anderer Daten von einem Azure Search-Dienst.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 tags: azure-portal
 services: search
 ms.service: search
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 05/16/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: f4a0cba18f27c9cabfc03d1934469e6899c5cd18
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: e83e84cc8627be468ce0074b35549d5ea7def4f5
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010412"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640531"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Überwachen des Ressourcenverbrauchs und der Abfrageaktivität in Azure Search
 
@@ -58,7 +56,7 @@ In Azure Search werden neben den verwalteten Objekten keine weiteren Daten gespe
 
 In der folgenden Tabelle werden die Optionen zum Speichern von Protokollen und Hinzufügen einer umfassenden Überwachung von Dienstvorgängen und Abfrageworkloads über Application Insights verglichen.
 
-| Ressource | Verwendung |
+| Resource | Verwendung |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den weiter unten beschriebenen Schemas und korreliert mit Benutzerereignissen in Ihrer App. Dies ist die einzige Lösung, bei der Benutzeraktionen oder Signale berücksichtigt werden, d.h., Ereignisse aus einer vom Benutzer initiierten Suche werden zugeordnet, anstatt dass die durch Anwendungscode übermittelten Anforderungen gefiltert werden. Um diese Lösung zu verwenden, kopieren Sie Instrumentationscode, und fügen Sie ihn in Ihren Quelldateien ein, um Anforderungsinformationen an Application Insights weiterzuleiten. Weitere Informationen finden Sie unter [Datenverkehrsanalyse durchsuchen](search-traffic-analytics.md). |
 | [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den weiter unten beschriebenen Schemas. Ereignisse werden in einem Log Analytics-Arbeitsbereich protokolliert. Sie können Abfragen für einen Arbeitsbereich ausführen, um detaillierte Informationen aus dem Protokoll zurückzugeben. Weitere Informationen finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata). |
@@ -77,13 +75,15 @@ In diesem Abschnitt erfahren Sie, wie Sie protokollierte Ereignisse und Metrikda
 
 1. [Erstellen Sie ein Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account), wenn Sie noch keines besitzen. Sie können es in der gleichen Ressourcengruppe wie Azure Search ablegen, um später die Bereinigung zu vereinfachen, wenn Sie alle in dieser Übung verwendeten Ressourcen löschen.
 
+   Ihr Speicherkonto muss sich in der gleichen Region wie Azure Search befinden.
+
 2. Öffnen Sie die Seite „Übersicht“ für Ihren Suchdienst. Scrollen Sie im linken Navigationsbereich nach unten zu **Überwachung**, und klicken Sie auf **Überwachung aktivieren**.
 
    ![Überwachung aktivieren](./media/search-monitor-usage/enable-monitoring.png "Überwachung aktivieren")
 
 3. Wählen Sie die Daten aus, die Sie exportieren möchten: Protokolle, Metriken oder beides. Sie können sie in ein Speicherkonto kopieren, an einen Event Hub senden oder nach Azure Monitor-Protokollen exportieren.
 
-   Für die Archivierung in Blob Storage muss nur das Speicherkonto vorhanden sein. Container und Blobs werden beim Exportieren von Protokolldaten erstellt.
+   Für die Archivierung in Blob Storage muss nur das Speicherkonto vorhanden sein. Container und Blobs werden beim Exportieren von Protokolldaten nach Bedarf erstellt.
 
    ![Konfigurieren des Blob Storage-Archivs](./media/search-monitor-usage/configure-blob-storage-archive.png "Konfigurieren des Blob Storage-Archivs")
 
@@ -96,7 +96,7 @@ Die Protokollierung ist aktiviert, nachdem Sie das Profil gespeichert haben. Con
 * „insights-logs-operationlogs“: für Suchdatenverkehrsprotokolle
 * „insights-metrics-pt1m“: für Metriken
 
-**Die Container werden nach einer Stunde in Blob Storage angezeigt. Es gibt einen Blob pro Stunde pro Container.**
+**Die Container werden nach einer Stunde in Blob Storage angezeigt. Es gibt ein Blob pro Stunde pro Container.**
 
 Die Container können Sie mithilfe von [Visual Studio Code](#download-and-open-in-visual-studio-code) oder eines anderen JSON-Editors anzeigen. 
 
@@ -109,24 +109,24 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>Protokollschema
 Blobs, die die Datenverkehrsprotokolle des Suchdiensts enthalten, sind entsprechend der Beschreibung in diesem Abschnitt strukturiert. Jedes Blob hat ein Stammobjekt mit dem Namen **records**, das ein Array von Protokollobjekten enthält. Jedes Blob enthält Einträge zu allen Vorgängen, die während einer bestimmten Stunde erfolgt sind.
 
-| NAME | Type | Beispiel | Notizen |
+| NAME | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| time |Datetime |"2018-12-07T00:00:43.6872559Z" |Zeitstempel des Vorgangs |
-| Ressourcen-ID |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| time |datetime |"2018-12-07T00:00:43.6872559Z" |Zeitstempel des Vorgangs |
+| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
 | operationName |Zeichenfolge |„Query.Search“ |Der Name des Vorgangs |
-| operationVersion |Zeichenfolge |"2017-11-11" |Die verwendete API-Version |
+| operationVersion |Zeichenfolge |"2019-05-06" |Die verwendete API-Version |
 | category |Zeichenfolge |„OperationLogs“ |Konstante |
 | resultType |Zeichenfolge |„Success“ |Mögliche Werte: Erfolgreich oder Fehler |
 | resultSignature |int |200 |HTTP-Ergebniscode |
 | durationMS |int |50 |Dauer des Vorgangs in Millisekunden |
-| Eigenschaften |object |Siehe hierzu die folgende Tabelle. |Objekt, das vorgangsspezifische Daten enthält |
+| properties |object |Siehe hierzu die folgende Tabelle. |Objekt, das vorgangsspezifische Daten enthält |
 
 **Eigenschaftsschema**
 
-| NAME | Type | Beispiel | Notizen |
+| NAME | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
 | BESCHREIBUNG |Zeichenfolge |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
-| Abfrage |Zeichenfolge |"?search=AzureSearch&$count=true&api-version=2017-11-11" |Die Abfrageparameter |
+| Abfrage |Zeichenfolge |"?search=AzureSearch&$count=true&api-version=2019-05-06" |Die Abfrageparameter |
 | Dokumente |int |42 |Anzahl von verarbeiteten Dokumenten |
 | IndexName |Zeichenfolge |„testindex“ |Name des Indexes, der dem Vorgang zugeordnet ist |
 
@@ -134,11 +134,11 @@ Blobs, die die Datenverkehrsprotokolle des Suchdiensts enthalten, sind entsprech
 
 Metriken werden für Abfrageanforderungen erfasst.
 
-| NAME | Type | Beispiel | Notizen |
+| NAME | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| Ressourcen-ID |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
 | metricName |Zeichenfolge |„Latency“ |Der Name der Metrik |
-| in |Datetime |"2018-12-07T00:00:43.6872559Z" |Der Zeitstempel des Vorgangs |
+| in |datetime |"2018-12-07T00:00:43.6872559Z" |Der Zeitstempel des Vorgangs |
 | average |int |64 |Der Durchschnittswert der unformatierten Beispiele im Metrikzeitintervall |
 | minimum |int |37 |Der Mindestwert der unformatierten Beispiele im Metrikzeitintervall |
 | maximum |int |78 |Der Höchstwert der unformatierten Beispiele im Metrikzeitintervall |
@@ -171,9 +171,9 @@ Sowohl die REST-API von Azure Search als auch das .NET SDK bieten programmgesteu
 * [Dienststatistiken abrufen](/rest/api/searchservice/get-service-statistics)
 * [Indexstatistiken abrufen](/rest/api/searchservice/get-index-statistics)
 * [Dokumentenanzahl](/rest/api/searchservice/count-documents)
-* [Indexer-Status abrufen](/rest/api/searchservice/get-indexer-status)
+* [Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status)
 
-Informationen zur Aktivierung mit PowerShell oder Azure CLI finden Sie in [dieser](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs) Dokumentation.
+Informationen zur Aktivierung mit PowerShell oder Azure CLI finden Sie in [dieser](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) Dokumentation.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

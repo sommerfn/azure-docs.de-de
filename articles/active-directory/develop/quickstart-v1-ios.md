@@ -1,10 +1,10 @@
 ---
-title: Erstellen einer iOS-App, die sich in Azure AD für die Anmeldung integriert und geschützte APIs mit OAuth 2.0 aufruft | Microsoft Docs
+title: Erstellen einer iOS-App, die sich in Azure AD für die Anmeldung mit OAuth 2.0 integriert | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Benutzer anmelden und die Microsoft Graph-API aus einer iOS-App aufrufen können.
 services: active-directory
 documentationcenter: ios
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 42303177-9566-48ed-8abb-279fcf1e6ddb
 ms.service: active-directory
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.author: celested
+ms.date: 05/21/2019
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: brandwe
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d986ccbf92192c1fb7375e9db1fb398ed86a829
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8a82a7cad9b9176589824b6febb5cfdde89fce8a
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879963"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380877"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer iOS-App
 
@@ -76,12 +76,13 @@ Damit Ihre Anwendung Token abrufen kann, müssen Sie sie zunächst in Ihrem Azur
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie in der oberen Leiste Ihr Konto aus. Wählen Sie in der **Verzeichnisliste** den Active Directory-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
 3. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, und wählen Sie dann **Azure Active Directory** aus.
-4. Wählen Sie **App-Registrierungen** und dann **Hinzufügen** aus.
-5. Folgen Sie den Eingabeaufforderungen, und erstellen Sie eine neue **native Clientanwendung**.
+4. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
+5. Folgen Sie den Eingabeaufforderungen zum Erstellen einer neuen Clientanwendung.
     * **Name** ist der Anwendungsname und beschreibt Ihre Anwendung für Endbenutzer.
-    * **Umleitungs-URI** ist eine Kombination aus einem Schema und einer Zeichenfolge, die Azure AD für die Rückgabe der Tokenantworten verwendet. Geben Sie einen Wert ein, der spezifisch für Ihre Anwendung ist und auf den vorherigen Umleitungs-URI-Informationen basiert.
+    * **Umleitungs-URI** ist eine Kombination aus einem Schema und einer Zeichenfolge, die Azure AD für die Rückgabe der Tokenantworten verwendet. Geben Sie einen Wert ein, der spezifisch für Ihre Anwendung ist und auf den vorherigen Umleitungs-URI-Informationen basiert. Wählen Sie außerdem in der Dropdownliste den Eintrag **Öffentlicher Client (Mobilgerät und Desktop)** aus.
 6. Nach Abschluss der Registrierung weist Azure AD Ihrer App eine eindeutige Anwendungs-ID zu. Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Registerkarte „Anwendung“ kopieren.
-7. Wählen Sie auf der Seite **Einstellungen** **Benötigte Berechtigungen > Hinzufügen > Microsoft Graph** aus, und fügen Sie dann unter **Delegierte Berechtigungen** die Berechtigung **Verzeichnisdaten lesen** hinzu. Mit dieser Berechtigung kann die Anwendung die Azure AD Graph-API nach Benutzern abfragen.
+7. Wählen Sie auf der Seite **API-Berechtigungen** die Option **Berechtigung hinzufügen** aus. Wählen Sie in **Hiermit wählen Sie eine API aus** die Option ***Microsoft Graph*** aus.
+8. Wählen Sie unter **Delegierte Berechtigungen** die Berechtigung **User.Read** aus, und klicken Sie dann auf **Hinzufügen**, um den Vorgang zu speichern. Mit dieser Berechtigung kann die Anwendung die Azure AD Graph-API nach Benutzern abfragen.
 
 ## <a name="step-3-install-and-configure-adal"></a>Schritt 3: Installieren und Konfigurieren der ADAL
 
@@ -99,7 +100,7 @@ Nachdem Sie nun eine Anwendung in Azure AD erstellt haben, können Sie ADAL inst
     link_with ['QuickStart']
     xcodeproj 'QuickStart'
 
-    pod 'ADALiOS'
+    pod 'ADAL'
     ```
 
 1. Laden Sie die Podfile-Datei mithilfe von CocoaPods. Dieser Schritt erstellt einen neuen XCode-Arbeitsbereich, den Sie laden.

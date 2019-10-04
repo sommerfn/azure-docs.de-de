@@ -7,19 +7,19 @@ author: zhangmanling
 manager: zhangmanling
 editor: ''
 ms.assetid: bf23bd89-35b2-4aca-ac7f-68ee02953f31
-ms.service: cdn
+ms.service: azure-cdn
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 37fe208f5087f318e665e76825127854b4a11c98
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6710f5e5b873f751ad21068acdc15d38574f8378
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22997925"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593435"
 ---
 # <a name="monitor-the-health-of-azure-cdn-resources"></a>Überwachen der Integrität von Azure CDN-Ressourcen
   
@@ -51,7 +51,7 @@ Die Integrität von Azure CDN-Ressourcen ist Teil von [Azure Resource Health](..
 
 Die Status für die Azure CDN-Ressourcenintegrität werden unten aufgeführt.
 
-|Nachricht | Empfohlene Maßnahme |
+|`Message` | Empfohlene Maßnahme |
 |---|---|
 |Einer Ihrer CDN-Endpunkte wurde möglicherweise beendet, entfernt oder falsch konfiguriert | Einer Ihrer CDN-Endpunkte wurde möglicherweise beendet, entfernt oder falsch konfiguriert.|
 |Leider ist der CDN-Verwaltungsdienst momentan nicht verfügbar. | Überprüfen Sie diese Seite auf Statusaktualisierungen. Wenn das Problem nach der erwarteten Behebungsdauer weiterhin auftritt, wenden Sie sich an den Support.|

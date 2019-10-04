@@ -1,5 +1,5 @@
 ---
-title: Spracherkennungs-API-Referenz (REST) – Sprachdienste
+title: 'Spracherkennungs-API-Referenz (REST): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Spracherkennungs-REST-API verwenden. In diesem Artikel erfahren Sie mehr über Autorisierungs- und Abfrageoptionen sowie darüber, wie Sie eine Anforderung strukturieren und eine Antwort erhalten.
 services: cognitive-services
@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: baaa7b1068e13863293e0968cb0bf1ffb198882b
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 6324c00d9b85a13ef6e69185e3b380b20f761f3b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57894937"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552967"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
@@ -164,7 +163,7 @@ Das `RecognitionStatus`-Feld kann diese Werte enthalten:
 > [!NOTE]
 > Wenn die Audiodaten nur aus Obszönitäten bestehen und der `profanity`-Abfrageparameter auf `remove` festgelegt ist, gibt der Dienst kein Sprachergebnis zurück.
 
-Das Format `detailed` enthält die gleichen Daten wie das Format `simple` sowie `NBest`, eine Liste alternativer Interpretationen desselben Erkennungsergebnisses. Diese Ergebnisse werden von sehr wahrscheinlich bis am wenigsten wahrscheinlich eingestuft. Der erste Eintrag entspricht dem Haupterkennungsergebnis.  Bei Verwendung des Formats `detailed` wird `DisplayText` als `Display` für jedes Ergebnis in der `NBest`-Liste angegeben.
+Das Format `detailed` enthält die gleichen Daten wie das Format `simple` sowie `NBest`, eine Liste alternativer Interpretationen desselben Erkennungsergebnisses. Diese Ergebnisse werden abnehmend nach Wahrscheinlichkeit geordnet. Der erste Eintrag ist identisch mit den Haupterkennungsergebnis.  Bei Verwendung des Formats `detailed` wird `DisplayText` als `Display` für jedes Ergebnis in der `NBest`-Liste angegeben.
 
 Jedes Objekt in der `NBest`-Liste enthält:
 

@@ -1,6 +1,6 @@
 ---
-title: Absichten
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 'Absichten: LUIS'
+titleSuffix: Azure Cognitive Services
 description: Eine einzelne Absicht stellt eine Aufgabe oder Aktion dar, die der Benutzer ausführen möchte. Sie ist ein Zweck oder Ziel, das in einer Äußerung des Benutzers ausgedrückt wurde. Definieren Sie einen Satz von Absichten, die Aktionen entsprechen, die Benutzer in Ihrer Anwendung ausführen möchten.
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: e635a11cb99d11befc40703d9f5d2abec8559632
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: bb7fa9d930f4c1ab3c241048804060e17fe5a8e4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371110"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619923"
 ---
 # <a name="concepts-about-intents-in-your-luis-app"></a>Konzepte zu Absichten in Ihrer LUIS-App
 
@@ -42,12 +42,15 @@ Sie weisen eine Äußerung einer einzigen Absicht zu. Wenn LUIS eine Äußerung 
 ## <a name="intent-compared-to-entity"></a>Absichten im Vergleich zu Entitäten
 Die Absicht stellt die Aktion dar, die der Chatbot für den Benutzer ausführen soll. Sie basiert auf der gesamten Äußerung. Die Entität stellt Wörter oder Ausdrücke dar, die in der Äußerung enthalten sind. Ein Äußerung kann nur eine Absicht mit der höchsten Bewertung, aber viele Entitäten enthalten. 
 
-<a name="how-do-intents-relate-to-entities"></a> Sie erstellen eine Absicht, wenn die _Benutzerabsicht_ eine Aktion in der Clientanwendung auslösen würde. Dies kann z.B. ein Aufruf der checkweather()-Funktion sein. Erstellen Sie dann eine Entität zur Darstellung der Parameter, die zum Ausführen der Aktion erforderlich sind. 
+<a name="how-do-intents-relate-to-entities"></a>
+
+Erstellen Sie eine Absicht, wenn die _Benutzerabsicht_ eine Aktion in der Clientanwendung auslösen würde. Dies kann z. B. ein Aufruf der checkweather()-Funktion sein. Erstellen Sie dann eine Entität zur Darstellung der Parameter, die zum Ausführen der Aktion erforderlich sind. 
 
 |Beispielabsicht   | Entität | Entität in Beispieläußerungen   | 
 |------------------|------------------------------|------------------------------|
 | CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | What's the weather like in `Seattle` `tomorrow`? |
 | CheckWeather | { "type": "date_range", "entity": "this weekend" } | Show me the forecast for `this weekend` | 
+||||
 
 ## <a name="custom-intents"></a>Benutzerdefinierte Absichten
 

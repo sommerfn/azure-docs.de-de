@@ -5,26 +5,26 @@ services: cdn
 documentationcenter: ''
 author: mdgattuso
 manager: danielgi
-editor: ''
+editor: mdgattuso
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/25/2019
+ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: d78b10edd005a593b4ebe4f34ca2280ccdfdaa04
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6826c1340de16891933b290eb29bd4fb8d120974
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918908"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127920"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Vergleichen von Azure CDN-Produktfeatures
 
-Azure Content Delivery Network (CDN) beinhaltet vier Produkte: **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Akamai**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon**. Informationen zur Migration eines Profils vom Typ **Azure CDN Standard von Verizon** zu **Azure CDN Premium von Verizon** finden Sie unter [Migrieren eines Azure CDN-Profils von Verizon Standard zu Verizon Premium](cdn-migrate.md).
+Azure Content Delivery Network (CDN) beinhaltet vier Produkte: **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Akamai**, **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon**. Informationen zur Migration eines Profils vom Typ **Azure CDN Standard von Verizon** zu **Azure CDN Premium von Verizon** finden Sie unter [Migrieren eines Azure CDN-Profils von Verizon Standard zu Verizon Premium](cdn-migrate.md). Es gibt zwar eine Upgrademöglichkeit von Verizon Standard auf Verizon Premium, zwischen anderen Produkten ist jedoch derzeit keine Konvertierung möglich.
 
 In der folgenden Tabelle werden die Features der einzelnen Produkte gegenübergestellt.
 
@@ -33,13 +33,13 @@ In der folgenden Tabelle werden die Features der einzelnen Produkte gegenüberge
 | [Beschleunigung dynamischer Websites](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration)  | Angeboten über [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Beschleunigung dynamischer Websites – Adaptive Bildkomprimierung](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Beschleunigung dynamischer Websites – Objektvorabruf](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#object-prefetch-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
-| [Optimierung der allgemeinen Webbereitstellung](https://docs.microsoft.com/azure/cdn/cdn-optimization-overview#general-web-delivery)  | **&#x2713;** | **&#x2713;**. Wählen Sie diesen Optimierungstyp aus, wenn ihre Dateien im Schnitt kleiner als 10 MB sind.  | **&#x2713;** |  **&#x2713;** |
+| [Optimierung der allgemeinen Webbereitstellung](https://docs.microsoft.com/azure/cdn/cdn-optimization-overview#general-web-delivery)  | **&#x2713;** | **&#x2713;** . Wählen Sie diesen Optimierungstyp aus, wenn ihre Dateien im Schnitt kleiner als 10 MB sind.  | **&#x2713;** |  **&#x2713;** |
 | [Videostreamingoptimierung](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization)  | über allgemeine Webbereitstellung | **&#x2713;**  | über allgemeine Webbereitstellung |  über allgemeine Webbereitstellung |
-| [Optimierung großer Dateien](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization)  | über allgemeine Webbereitstellung | **&#x2713;**. Wählen Sie diesen Optimierungstyp aus, wenn ihre Dateien im Schnitt größer als 10 MB sind.   | über allgemeine Webbereitstellung |  über allgemeine Webbereitstellung |
+| [Optimierung großer Dateien](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization)  | über allgemeine Webbereitstellung | **&#x2713;** . Wählen Sie diesen Optimierungstyp aus, wenn ihre Dateien im Schnitt größer als 10 MB sind.   | über allgemeine Webbereitstellung |  über allgemeine Webbereitstellung |
 | Ändern des Optimierungstyps | |**&#x2713;** | | |
 | Ursprungsport |Alle TCP-Ports |[Zulässige Ursprungsports](https://docs.microsoft.com/previous-versions/azure/mt757337(v%3Dazure.100)#allowed-origin-ports) |Alle TCP-Ports |Alle TCP-Ports |
 | [Globaler Serverlastenausgleich (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Schnelles Löschen](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;**. „Alles löschen“ und das Löschen mit Platzhalter werden derzeit vom Azure-CDN von Akamai nicht unterstützt. |**&#x2713;** |**&#x2713;** |
+| [Schnelles Löschen](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** . „Alles löschen“ und das Löschen mit Platzhalter werden derzeit vom Azure-CDN von Akamai nicht unterstützt. |**&#x2713;** |**&#x2713;** |
 | [Vorabladen von Assets](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
 | Cache-/Headereinstellungen (mit [Zwischenspeicherungsregeln](cdn-caching-rules.md))  |  |**&#x2713;** |**&#x2713;** | |
 | Anpassbare, regelbasierte Engine zur Inhaltsübermittlung (mit [Regel-Engine](cdn-rules-engine.md))  |  | | |**&#x2713;** |
@@ -52,12 +52,12 @@ In der folgenden Tabelle werden die Features der einzelnen Produkte gegenüberge
 ||||
  **Sicherheit** | **Microsoft Standard** | **Akamai Standard** | **Verizon Standard** | **Verizon Premium** | 
 | Unterstützung von HTTPS mit CDN-Endpunkt | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [HTTPS für benutzerdefinierte Domänen](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [HTTPS für benutzerdefinierte Domänen](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;** , erfordert die Aktivierung der direkten CNAME-Zuordnung |**&#x2713;** |**&#x2713;** |
 | [Unterstützung benutzerdefinierter Domänennamen](cdn-map-content-to-custom-domain.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Geofilterung](cdn-restrict-access-by-country.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Tokenauthentifizierung](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
 | [DDOS-Schutz](https://www.us-cert.gov/ncas/tips/ST04-015)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Bereitstellen eines eigenen Zertifikats](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates) |**&#x2713;** |  |  |  |
+| [Bereitstellen eines eigenen Zertifikats](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
 ||||
 | **Analysen und Berichte** | **Microsoft Standard** | **Akamai Standard** | **Verizon Standard** | **Verizon Premium** | 
 | [Azure-Diagnoseprotokolle](cdn-azure-diagnostic-logs.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |

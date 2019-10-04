@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 02/11/2019
 ms.author: kromerm
-ms.openlocfilehash: ac07373bcdf4bbf0f7bfc5b131ffe4eb26bc3ac4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: aaa8908f5b05ae4c4523760c3c12a077ac1a09d5
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804109"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "67509850"
 ---
 > [!NOTE] 
-> Der Datenzuordnungsflow ist ein neues Feature von Azure Data Factory. Es ist derzeit als eingeschränkte öffentliche Vorschauversion verfügbar und nicht in den SLA-Bestimmungen für Azure-Kunden enthalten. [Wenn Sie sich für die Vorschau registrieren möchten, fordern Sie bitte hier Zugriff an](https://aka.ms/dataflowpreview).
+> Der Mappingdatenfluss für Azure Data Factory ist derzeit eine öffentliche Previewfunktion und unterliegt nicht den SLA-Bestimmungen für Azure-Kunden. Derzeit sind Mappingdatenflüsse in den folgenden Azure-Regionen nicht verfügbar: „USA, Westen-Mitte“, „Brasilien, Süden“, „Frankreich, Mitte“, „Korea, Mitte“.

@@ -1,22 +1,21 @@
 ---
 title: Apache Phoenix in HDInsight – Azure HDInsight
-description: ''
-services: hdinsight
+description: Übersicht über Apache Phoenix
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.author: ashishth
-ms.openlocfilehash: 833f240572b10e9d07da0ded27f5848822a70f46
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 09/05/2019
+ms.openlocfilehash: becb4e4787c21e18455144108274f585ba25cb72
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744334"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105387"
 ---
-# <a name="apache-phoenix-in-hdinsight"></a>Apache Phoenix in HDInsight
+# <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix in Azure HDInsight
 
 [Apache Phoenix](https://phoenix.apache.org/) ist eine relationale Open-Source-Datenbankschicht mit hochgradig parallelisierter Verarbeitung, die auf [Apache HBase](hbase/apache-hbase-overview.md) basiert. Mit Phoenix können Sie SQL-ähnliche Abfragen per HBase verwenden. Phoenix nutzt im Hintergrund JDBC-Treiber, um Benutzern das Erstellen, Löschen und Ändern von SQL-Tabellen, -Indizes, -Sichten und -Sequenzen sowie das Durchführen des Upsert-Vorgangs für Zeilen einzeln oder als Massenvorgang zu ermöglichen. Für Phoenix wird anstelle von MapReduce die native NoSQL-Kompilierung verwendet, um Abfragen zu kompilieren und so basierend auf HBase die Erstellung von Anwendungen mit geringer Wartezeit zu ermöglichen. Phoenix fügt Coprozessoren hinzu, um das Ausführen von per Client bereitgestelltem Code im Adressraum des Servers zu unterstützen und den Code auszuführen, der den Daten beigefügt ist. Mit diesem Ansatz kann der Aufwand für die Datenübertragung zwischen Client und Server reduziert werden.
 
@@ -130,11 +129,11 @@ Ein HDInsight HBase-Cluster enthält die [Ambari-Benutzeroberfläche](hdinsight-
 
 2. Wählen Sie im Menü auf der linken Seite in der Liste mit den Diensten den Eintrag **HBase** und dann die Registerkarte **Configs** (Konfigurationen).
 
-    ![Ambari HBase-Konfiguration](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
+    ![Apache Ambari – HBase-Konfigurationen](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
 
 3. Suchen Sie nach dem Abschnitt für die Konfiguration von **Phoenix SQL**, um Phoenix zu aktivieren bzw. zu deaktivieren und das Abfragetimeout festzulegen.
 
-    ![Ambari-Konfigurationsabschnitt „Phoenix SQL“](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
+    ![Ambari-Konfigurationsabschnitt „Phoenix SQL“](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
 ## <a name="see-also"></a>Weitere Informationen
 

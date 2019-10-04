@@ -1,21 +1,21 @@
 ---
-title: Bewährte Methoden für den Abfragespeicher in Azure Database for PostgreSQL
-description: Dieser Artikel beschreibt bewährte Methoden für den Abfragespeicher in Azure Database for PostgreSQL.
+title: Bewährte Methoden für den Abfragespeicher in Azure Database for PostgreSQL – Einzelserver
+description: Dieser Artikel beschreibt bewährte Methoden für den Abfragespeicher in Azure Database for PostgreSQL – Einzelserver.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.openlocfilehash: af68d5cdc891a8c924ca493d8e798edaa4670ab5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 5/6/2019
+ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483994"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764233"
 ---
 # <a name="best-practices-for-query-store"></a>Bewährte Methoden für den Abfragespeicher
 
-**Anwendungsbereich:** Azure Database for PostgreSQL 9.6 und 10
+**Anwendungsbereich:** Azure Database for PostgreSQL – Einzelserverversionen 9.6, 10, 11
 
 Dieser Artikel beschreibt bewährte Methoden für die Verwendung des Abfragespeichers in Azure Database for PostgreSQL.
 

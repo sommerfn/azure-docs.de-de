@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 04/10/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a62c4d56fbfca34ff6291863149b078f7ddc6680
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2d26ff0f9259e3531259673f94fe477444cc786b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59287573"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60468204"
 ---
 # <a name="sign-in-options-for-microsoft-accounts-in-azure-active-directory"></a>Anmeldeoptionen für Microsoft-Konten in Azure Active Directory
 
-Die Anmeldeseite von Microsoft 365 für Azure Active Directory (Azure AD) unterstützt je nach Fall Geschäfts-, Schul- oder Unikonten und/oder Microsoft-Konten für Folgendes:
+Die Anmeldeseite von Microsoft 365 für Azure Active Directory (Azure AD) unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten. Je nach Situation des Benutzers werden allerdings möglicherweise nur eine oder auch beide Kontoarten unterstützt. Die Azure AD-Anmeldeseite unterstützt beispielsweise folgende Kontoarten:
 
 * Apps, bei denen die Anmeldung über beide Kontotypen möglich ist
 * Organisationen, die Gäste akzeptieren
@@ -32,7 +32,7 @@ Sie können feststellen, ob die Anmeldeseite Ihrer Organisation Microsoft-Konten
 
 ![Unterschied zwischen Konten für Anmeldeseiten](./media/signin-account-support/ui-prompt.png)
 
-[Zusätzliche Anmeldeoptionen können nur für persönliche Microsoft-Konten](index.yml), jedoch nicht für die Anmeldung bei Geschäfts-, Schul- oder Unikonten verwendet werden.
+[Zusätzliche Anmeldeoptionen können nur für persönliche Microsoft-Konten](https://azure.microsoft.com/updates/microsoft-account-signin-options/ ), jedoch nicht für die Anmeldung bei Geschäfts-, Schul- oder Unikonten verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

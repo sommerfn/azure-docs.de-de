@@ -1,7 +1,6 @@
 ---
 title: Verarbeiten von Ereignissen aus Event Hubs mit Storm – Azure HDInsight
 description: Erfahren Sie, wie Sie Azure Event Hubs-Daten mit einer in Visual Studio erstellten C#-Storm-Topologie mithilfe der HDInsight-Tools für Visual Studio verarbeiten.
-services: hdinsight,notification hubs
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 85d95354d24a3f107fc518b367ab1187da43269d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 53399fbdeba44b184ef4e76c89affefd29dbc413
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633775"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915327"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Verarbeiten von Ereignissen aus Azure Event Hubs mit Apache Storm in HDInsight (C#)
 
@@ -39,7 +38,7 @@ Das Microsoft.SCP.Net.SDK-NuGet-Paket, das Sie für Ihr Projekt verwenden, muss 
 > [!IMPORTANT]  
 > Im Beispiel in diesem Dokument wird ein HDInsight 3.5- oder 3.6-Cluster erwartet.
 >
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. 
 
 C#-Topologien müssen auch auf .NET 4.5 ausgerichtet sein.
 
@@ -104,11 +103,11 @@ topologyBuilder.SetJavaBolt(
 
 ## <a name="download-the-completed-project"></a>Herunterladen des abgeschlossenen Projekts
 
-Sie können eine vollständige Version des in diesem Tutorial erstellten Projekts von [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) herunterladen. Sie müssen jedoch weiterhin Konfigurationseinstellungen bereitstellen, indem Sie die Schritte in diesem Lernprogramm befolgen:
+Sie können eine vollständige Version des in diesem Artikel erstellten Projekts von [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) herunterladen. Sie müssen jedoch weiterhin Konfigurationseinstellungen bereitstellen, indem Sie die Schritte in diesem Artikel befolgen.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-* [Apache Storm auf HDInsight-Cluster Version 3.5 oder 3.6](apache-storm-tutorial-get-started-linux.md).
+* Ein Apache Storm-Cluster in HDInsight. Siehe [Erstellen von Apache Hadoop-Clustern im Azure-Portal](../hdinsight-hadoop-create-linux-clusters-portal.md), und wählen Sie **Storm** für **Clustertyp** aus.
 
     > [!WARNING]  
     > Das in diesem Dokument verwendete Beispiel erfordert Storm auf HDInsight Version 3.5 oder 3.6. Diese Methode kann aufgrund von wichtigen Namensänderungen für die Klasse nicht mit älteren Versionen von HDInsight verwendet werden. Eine Version dieses Beispiels, die mit älteren Cluster funktioniert, finden Sie bei [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases).
@@ -141,7 +140,7 @@ Event Hubs ist die Datenquelle für dieses Beispiel. Verwenden Sie die Informati
    | writer |Send |
    | reader |Lauschen |
 
-    ![Screenshot des Fensters „Freigegebene Zugriffsrichtlinien“](./media/apache-storm-develop-csharp-event-hub-topology/sas.png)
+    ![Screenshot des Fensters „Freigegebene Zugriffsrichtlinien“](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
 
 2. Wählen Sie die Richtlinien **reader** und **writer** aus. Kopieren und speichern Sie den Primärschlüsselwert für beide Richtlinien, da diese Werte später verwendet werden.
 
@@ -183,15 +182,15 @@ Event Hubs ist die Datenquelle für dieses Beispiel. Verwenden Sie die Informati
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **EventHubReader**, und wählen Sie **An Storm in HDInsight übermitteln** aus.
 
-    ![Screenshot des Projektmappen-Explorers, wobei „An Storm in HDInsight übermitteln“ hervorgehoben ist](./media/apache-storm-develop-csharp-event-hub-topology/submittostorm.png)
+    ![Screenshot des Projektmappen-Explorers, wobei „An Storm in HDInsight übermitteln“ hervorgehoben ist](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
 
 2. Wählen Sie im Dialogfeld **Topologie übermitteln** Ihren **Storm-Cluster** aus. Erweitern Sie **Zusätzliche Konfigurationen**, wählen Sie **Java File Paths** und dann **...** aus, und wählen Sie das Verzeichnis aus, das die zuvor heruntergeladene JAR-Datei enthält. Klicken Sie abschließend auf **Senden**.
 
-    ![Screenshot des Dialogfelds „Topologie übermitteln“](./media/apache-storm-develop-csharp-event-hub-topology/submit.png)
+    ![Screenshot des Dialogfelds „Topologie übermitteln“](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
 
 3. Sobald die Topologie übermittelt wurde, wird der **Storm Topologies Viewer** angezeigt. Wählen Sie im linken Bereich die Topologie **EventHubReader** aus, um Informationen über diese Topologie anzuzeigen.
 
-    ![Screenshot des Storm Topologies Viewers](./media/apache-storm-develop-csharp-event-hub-topology/topologyviewer.png)
+    ![Screenshot des Storm Topologies Viewers](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
 
 4. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **EventHubWriter**, und wählen Sie **An Storm in HDInsight übermitteln** aus.
 
@@ -213,7 +212,7 @@ Event Hubs ist die Datenquelle für dieses Beispiel. Verwenden Sie die Informati
 
 Um die Topologien zu beenden, wählen Sie jede Topologie im **Storm Topologies Viewer** aus, und klicken Sie dann auf **Beenden**.
 
-![Screenshot des Storm Topologies Viewers mit hervorgehobener Schaltfläche „Kill“](./media/apache-storm-develop-csharp-event-hub-topology/killtopology.png)
+![Screenshot des Storm Topologies Viewers mit hervorgehobener Schaltfläche „Kill“](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
 
 ## <a name="delete-your-cluster"></a>Löschen des Clusters
 

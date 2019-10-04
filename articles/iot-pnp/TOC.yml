@@ -1,0 +1,85 @@
+- name: "Dokumentation zu IoT\_Plug\_&\_Play"
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: "Was ist IoT\_Plug\_&\_Play?"
+      href: overview-iot-plug-and-play.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Verwenden eines Gerätefunktionsmodells zum Erstellen eines Geräts
+      href: quickstart-create-pnp-device.md
+    - name: "Verbinden eines Geräts mit IoT\_Hub"
+      href: quickstart-connect-pnp-device.md
+    - name: "Verbinden eines Geräts mit IoT\_Central"
+      href: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - name: Herstellen einer Verbindung mit einem Gerät in Ihrer Lösung
+      href: quickstart-connect-pnp-device-solution.md
+- name: Lernprogramme
+  items:
+    - name: "Erstellen eines Geräts mithilfe von VS\_Code"
+      href: tutorial-pnp-visual-studio-code.md
+    - name: Erstellen eines zertifizierungsbereiten Geräts
+      href: tutorial-build-device-certification.md
+    - name: Zertifizieren Ihres Geräts
+      href: tutorial-certification-test.md
+- name: Konzepte
+  items:
+    - name: Glossar
+      href: iot-plug-and-play-glossary.md
+    - name: Entwicklerhandbuch
+      href: concepts-developer-guide.md
+    - name: Gängige Schnittstellen
+      href: concepts-common-interfaces.md
+    - name: Modellermittlung
+      href: concepts-model-discovery.md
+    - name: Grenzen und Kontingente
+      href: concepts-limits-quotas.md
+- name: Anleitungen
+  items:
+    - name: Entwickeln mit Visual Studio und Visual Studio Code
+      href: howto-develop-with-vs-vscode.md
+    - name: Installieren des IoT-Explorers
+      href: howto-install-iot-explorer.md
+    - name: "Installieren der Azure\_CLI-Erweiterung"
+      href: howto-install-pnp-cli.md
+    - name: Durchführen des Onboardings für das IoT-Portal
+      href: howto-onboard-portal.md
+    - name: Verwalten von Modellen
+      href: howto-manage-models.md
+    - name: Herstellen einer Verbindung und Interagieren mit einem Gerät
+      href: howto-develop-solution.md
+- name: Verweis
+  items:
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
+    - name: Generieren eines REST-Sicherheitstokens
+      href: howto-generate-sas-token.md
+- name: Verwandte Themen
+  items:
+    - name: Lösungen
+      items:
+        - name: IoT Central
+          href: /azure/iot-central
+        - name: IoT Solution Accelerators
+          href: /azure/iot-accelerators
+    - name: Plattformdienste
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: "IoT\_Plug\_&\_Play"
+          href: /azure/iot-pnp
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT-Dienst-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Karten
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: IoT Edge
+      items:
+        - name: Azure IoT Edge
+          href: /azure/iot-edge
+        - name: IoT-Geräte-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

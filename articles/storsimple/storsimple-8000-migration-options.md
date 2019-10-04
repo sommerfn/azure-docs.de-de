@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/31/2019
+ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: ea8a6d604187a25e5186d7200feba6aaab1f676a
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 1e637f58b392b2de67a5ead9d57a6a87ab705b93
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339452"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60631608"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Optionen zum Migrieren von Daten aus StorSimple Serie 5000/7000 
 
 > [!IMPORTANT]
-> Ab dem 31. Juli 2019 wird die StorSimple-Serie 5000/7000 nicht mehr unterstützt. Es wird empfohlen, dass Kunden der StorSimple-Serie 5000/7000 zu einer der in diesem Dokument beschriebenen Alternativen migrieren.
+> Ab dem 9. Juli 2019 wird die StorSimple-Serie 5000/7000 nicht mehr unterstützt. Es wird empfohlen, dass Kunden der StorSimple-Serie 5000/7000 zu einer der in diesem Dokument beschriebenen Alternativen migrieren.
 
 Im Juli 2019 ist für StorSimple Serie 5000/7000 das [Ende des Supports](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) erreicht. Kunden, die StorSimple Serie 5000/7000 ausführen, können auf andere Erstanbieter-Hybriddienste von Azure aktualisieren. In diesem Artikel werden die verfügbaren Azure-Hybridoptionen zum Migrieren von Daten beschrieben. 
 
@@ -43,21 +43,34 @@ Weitere Informationen zum Migrieren von Daten mithilfe von StorSimple Serie 8000
 
 Diese völlig neue Migrationsoption ermöglicht es Kunden, die Dateifreigaben ihrer Organisation in Azure Files zu speichern. Diese Dateifreigaben werden dann mithilfe der Azure-Dateisynchronisierung (Azure File Sync, AFS) für den lokalen Zugriff zentralisiert. AFS kann auf einem Windows Server-Host bereitgestellt werden. Die tatsächliche Datenmigration wird dann als Hostkopie oder mit dem Migrationstool ausgeführt.
 
-Weitere Informationen zum Migrieren von Daten mithilfe der Azure-Dateisynchronisierung finden Sie unter [Migrieren von Daten aus StorSimple Serie 5000/7000 zur Azure-Dateisynchronisierung](https://aka.ms/StorSimpleMigrationAFS).
+Weitere Informationen zum Migrieren von Daten mithilfe der Azure-Dateisynchronisierung finden Sie unter [Migrieren von Daten aus StorSimple Serie 5000/7000 zur Azure-Dateisynchronisierung](storsimple-5000-7000-afs-migration.md).
 
 ### <a name="third-party-options"></a>Drittanbieteroptionen
 
 #### <a name="migrate-to-panzura-freedom-nas"></a>Migration zu Panzura Freedom NAS
 
-Kunden von StorSimple 5000–7000 können zu Panzura Freedom NAS migrieren, um ihre Daten in Azure zu speichern. Die Panzura Freedom-Lösung stellt eine NAS-Lösung bereit, die Datencenter, Unternehmen sowie öffentliche und private Clouds umfasst. Die Lösung ermöglicht lokale, Hybrid- und In-Cloud-Datenworkflows für NFS, SMB und mobile Clients. Diese Migration wird von Panzura unterstützt, und können Kunden als ersten Schritt Migrationsunterstützung auf der [Panzura-Website](https://panzura.com/storsimple-migration/) anfordern.
+Kunden von StorSimple 5000–7000 können zu Panzura Freedom NAS migrieren, um ihre Daten in Azure zu speichern. Die Panzura Freedom-Lösung stellt eine NAS-Lösung bereit, die Datencenter, Unternehmen sowie öffentliche und private Clouds umfasst. Die Lösung ermöglicht lokale, Hybrid- und In-Cloud-Datenworkflows für NFS, SMB und mobile Clients. 
+
+Diese Migration wird von Panzura unterstützt, und können Kunden als ersten Schritt Migrationsunterstützung auf der [Panzura-Website](https://panzura.com/storsimple-migration/) anfordern.
 
 #### <a name="migrate-to-cohesity"></a>Migrieren zu Cohesity
 
-Cohesity ermöglicht es Ihnen, Daten von Ihrer aktuellen StorSimple 5000–7000-Plattform zu Cohesity DataPlatform in Azure zu migrieren. Cohesity DataPlatform ist eine softwaredefinierte, für das Web skalierte Lösung, die Dateien, Sicherungen, Objekte und VMs in einer einzigen nativen Cloudlösung konsolidiert. Nach der Migration zu DataPlatform können Sie Daten und Apps von der Cloud bis zum Kern mithilfe eines einzelnen Transparenzbereichs verwalten, schützen und bereitstellen. Beginnen Sie mit Cohesity mit höchstens drei Knoten. Erfahren Sie mehr zur [Migration zu Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
+Cohesity ermöglicht es Ihnen, Daten von Ihrer aktuellen StorSimple 5000–7000-Plattform zu Cohesity DataPlatform in Azure zu migrieren. Cohesity DataPlatform ist eine softwaredefinierte, für das Web skalierte Lösung, die Dateien, Sicherungen, Objekte und VMs in einer einzigen nativen Cloudlösung konsolidiert. Nach der Migration zu DataPlatform können Sie Daten und Apps von der Cloud bis zum Kern mithilfe eines einzelnen Transparenzbereichs verwalten, schützen und bereitstellen. Beginnen Sie mit Cohesity mit höchstens drei Knoten. 
+
+Erfahren Sie mehr zur [Migration zu Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
 
 #### <a name="migrate-to-nasuni"></a>Migrieren zu Nasuni
 
-Nasuni erleichtert es für Kunden von StorSimple 5000-7000, zu migrieren und ihre Daten in Azure zu speichern.  Nasuni ist eine führende Lösung für Azure-basierte NAS-Speicher, die Kunden die Leistung und Sicherheit bietet, die sie bei lokalen Lösungen erwarten – mit Wirtschaftlichkeit und Skalierung der Cloud.  Zusätzlich zum Hochleistungsdatenspeicher erledigen Nasuni und Azure Sicherung und Datenwiederherstellung, während Sie Ihre Daten auf der ganzen Welt mit zentralisierter Dateispeicherverwaltung freigeben und daran zusammenarbeiten können. Nasuni verfügt über die Erfahrung, damit Ihre Migration möglichst einfach wird – beginnen Sie noch heute: https://info.nasuni.com/nasuni-storsimple-migration
+Nasuni erleichtert es für Kunden von StorSimple 5000-7000, zu migrieren und ihre Daten in Azure zu speichern.  Nasuni ist eine führende Lösung für Azure-basierte NAS-Speicher, die Kunden die Leistung und Sicherheit bietet, die sie bei lokalen Lösungen erwarten – mit Wirtschaftlichkeit und Skalierung der Cloud.  Zusätzlich zum Hochleistungsdatenspeicher erledigen Nasuni und Azure Sicherung und Datenwiederherstellung, während Sie Ihre Daten auf der ganzen Welt mit zentralisierter Dateispeicherverwaltung freigeben und daran zusammenarbeiten können. 
+
+Nasuni verfügt über die Erfahrung, damit Ihre Migration möglichst einfach wird – beginnen Sie noch heute: https://info.nasuni.com/nasuni-storsimple-migration
+
+#### <a name="migrate-to-talon-fast"></a>Migrieren zu Talon FAST
+
+Dank Talon können Kunden mit StorSimple 5000-7000 weiterhin die geschätzten Vorteile der StorSimple-Plattform (platzsparend durch unbegrenzte Cloudressourcen) nutzen und von einem noch größeren Funktionsumfang profitieren.  Mit der Talon FAST-Lösung können Kunden Ihre Daten zu Azure migrieren und dort speichern. Diese reine Softwarelösung ist somit noch platzsparender und bietet zusätzliche Vorteile wie globale Dateisperre, globale Namespaces und Funktionen für die Kollaboration an mehreren Standorten.  Talon ist eine führende Lösung im Azure-Ökosystem und wird weltweit von Kunden dazu genutzt, ihre lokalen Dateiserverworkloads ohne Beeinträchtigung der Benutzerworkflows oder -erfahrungen zu einem konsolidierten, Azure-basierten Speicher zu migrieren.  
+
+Weitere Informationen zur Entwicklung eines cloudkonsolidierten Unternehmens finden Sie unter https://www.talonstorage.com/alliances/microsoft-storsimple.
+
 
 ## <a name="migration---frequently-asked-questions"></a>Häufig gestellte Fragen zur Migration
 

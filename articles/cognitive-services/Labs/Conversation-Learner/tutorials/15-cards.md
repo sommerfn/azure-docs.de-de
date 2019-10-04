@@ -3,19 +3,20 @@ title: Karten in einem Unterhaltungslernanwendungsmodell, Teil 1 – Microsoft C
 titleSuffix: Azure
 description: Verwenden von Karten in einem Unterhaltungslernmodell
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: a2db74e4c5688c0a2a3975ff828caf20c3cf7904
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 426d7c8de29abeb88833e94962a7291a641702ac
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222575"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68703749"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>Verwenden von Karten (Teil 1 von 2)
 

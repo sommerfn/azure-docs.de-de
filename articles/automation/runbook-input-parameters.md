@@ -4,17 +4,17 @@ description: Runbookeingabeparameter erhöhen die Flexibilität von Runbooks, we
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f190d60a059108b9763f35e2ee8cf99ae77b694
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 3fb89af0363ddc25f2bccfa1169834aa856e514a
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578151"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478232"
 ---
 # <a name="runbook-input-parameters"></a>Runbookeingabeparameter
 
@@ -79,7 +79,7 @@ Dann können Sie den folgenden Wert an den Parameter übergeben:
 
 Zum Konfigurieren eines [grafischen Runbooks](automation-first-runbook-graphical.md) mit Eingabeparametern erstellen wir ein grafisches Runbook, das Details zu virtuellen Computern – entweder eines einzelnen oder aller virtuellen Computer innerhalb einer Ressourcengruppe – ausgibt. Das Konfigurieren eines Runbooks erfodert, wie unten beschrieben, zwei Hauptaktivitäten.
 
-[**Authentifizieren Sie Runbooks mit der Azure-Option „Ausführendes Konto“**](automation-sec-configure-azure-runas-account.md) für die Authentifizierung bei Azure.
+[**Authentifizieren Sie Runbooks mit der Azure-Option „Ausführendes Konto“** ](automation-sec-configure-azure-runas-account.md) für die Authentifizierung bei Azure.
 
 Rufen Sie mit [**Get-AzureRmVm**](/powershell/module/azurerm.compute/get-azurermvm) die Eigenschaften eines virtuellen Computers ab.
 

@@ -7,15 +7,14 @@ ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 28fef394ee400949f9911983bdbca41d6bfcb458
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 225f5cfe36daaafb7f6ab5d64e77c626e52edaac
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790119"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338196"
 ---
-# <a name="define-and-assign-a-blueprint-in-the-portal"></a>Definieren und Zuweisen einer Blaupause im Portal
+# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Schnellstart: Definieren und Zuweisen einer Blaupause im Portal
 
 Wenn Sie sich mit der Erstellung und Zuweisung von Blaupausen vertraut machen, können Sie allgemeine Muster definieren, um wiederverwendbare und schnell bereitstellbare Konfigurationen zu entwickeln, die auf Azure Resource Manager-Vorlagen, Richtlinien, Sicherheit usw. basieren. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Blueprints einige allgemeine Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Veröffentlichung und Zuweisung einer Blaupause durchführen. Zu diesen Aufgaben zählen:
 
@@ -70,11 +69,11 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
    1. Ändern Sie **Typ** in **Integriert**. Geben Sie unter **Suche** den Suchbegriff **tag** ein.
 
-   1. Klicken Sie von **Suche** aus, damit die Filterung ausgeführt wird. Wählen Sie **Tag und dessen Standardwert auf Ressourcengruppen anwenden**.
+   1. Klicken Sie von **Suche** aus, damit die Filterung ausgeführt wird. Wählen Sie **Tag und dessen Standardwert an Ressourcengruppen anfügen** aus.
 
    1. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
-1. Wählen Sie die Zeile der Richtlinienzuweisung **Tag und dessen Standardwert auf Ressourcengruppen anwenden** aus.
+1. Wählen Sie die Zeile der Richtlinienzuweisung **Tag und dessen Standardwert an Ressourcengruppen anfügen** aus.
 
 1. Das Fenster zum Bereitstellen von Parametern für das Artefakt als Teil der Blaupausendefinition wird geöffnet und ermöglicht das Festlegen der Parameter für alle Zuweisungen (statische Parameter) basierend auf dieser Blaupause (anstatt während der Zuweisung (dynamische Parameter)). In diesem Beispiel werden bei der Blaupausenzuweisung dynamische Parameter verwendet. Behalten Sie daher die Standardwerte bei, und wählen Sie **Abbrechen**.
 
@@ -224,7 +223,7 @@ Nach dem Veröffentlichen einer Blaupause kann sie einem Abonnement zugewiesen w
 
    1. Wählen Sie in der Dropdownliste das verfügbare **Angebot** aus.
 
-   1. Verwenden Sie die Auslassungspunkte zum Auswählen der [Verwaltungsgruppe](../management-groups/index.md), der das Abonnement untergeordnet werden soll.
+   1. Verwenden Sie die Auslassungspunkte zum Auswählen der [Verwaltungsgruppe](../management-groups/overview.md), der das Abonnement untergeordnet werden soll.
 
    1. Wählen Sie am unteren Rand der Seite die Option **Erstellen**.
 

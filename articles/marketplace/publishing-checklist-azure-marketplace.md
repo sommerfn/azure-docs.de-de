@@ -2,24 +2,18 @@
 title: Veröffentlichungsprüfliste für Azure Marketplace | Azure
 description: Vorveröffentlichungs-Prüfliste für Azure Marketplace im Cloud-Partnerportal
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 26041bbf392f9b2afaaf5af38f758deb7708b651
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: b1bf77b7c04374ee81b730600658462a6283dedf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728045"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64937680"
 ---
 # <a name="publishing-checklist-for-azure-marketplace"></a>Veröffentlichungsprüfliste für Azure Marketplace    
 Überprüfen Sie die erforderlichen Komponenten vor dem Start des Veröffentlichungsprozesses.  

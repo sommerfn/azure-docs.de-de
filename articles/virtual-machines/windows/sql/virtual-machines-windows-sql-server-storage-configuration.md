@@ -3,23 +3,22 @@ title: Speicherkonfiguration für SQL Server-VMs | Microsoft Docs
 description: In diesem Thema wird beschrieben, wie Azure den Speicher für SQL Server-VMs während der Bereitstellung konfiguriert (Resource Manager-Bereitstellungsmodell). Außerdem wird erläutert, wie Sie den Speicher für Ihre vorhandenen SQL Server-VMs konfigurieren können.
 services: virtual-machines-windows
 documentationcenter: na
-author: ninarn
-manager: craigg
+author: MashaMSFT
+manager: jroth
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
-ms.author: ninarn
-ms.openlocfilehash: da850b8ff9174fa310c5247cd7e99af69db28a8b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.author: mathoma
+ms.openlocfilehash: 2705b42849922ce7e3650162b8f1ff78723685c2
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328434"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309240"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Speicherkonfiguration für SQL Server-VMs
 
@@ -67,24 +66,24 @@ Wenn Sie die folgenden Resource Manager-Vorlagen verwenden, werden standardmäß
 
 ## <a name="existing-vms"></a>Vorhandene virtuelle Computer
 
-Für vorhandene SQL Server-VMs können Sie im Azure-Portal einige Speichereinstellungen ändern. Wählen Sie Ihre VM aus, greifen Sie auf den Bereich „Einstellungen“ zu, und wählen Sie dann „SQL Server-Konfiguration“. Auf dem Blatt „SQL Server-Konfiguration“ wird die aktuelle Speichernutzung Ihrer VM angezeigt. Alle Laufwerke, die auf Ihrer VM vorhanden sind, werden in diesem Diagramm angezeigt. Für jedes Laufwerk wird der Speicherplatz in vier Abschnitten angezeigt:
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
+Für vorhandene SQL Server-VMs können Sie im Azure-Portal einige Speichereinstellungen ändern. Öffnen Sie Ihre [SQL-VM-Ressource](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource), und wählen Sie **Übersicht** aus. Auf der Seite „SQL Server-Übersicht“ wird die aktuelle Speichernutzung Ihrer VM angezeigt. Alle Laufwerke, die auf Ihrer VM vorhanden sind, werden in diesem Diagramm angezeigt. Für jedes Laufwerk wird der Speicherplatz in vier Abschnitten angezeigt:
 
 * SQL-Daten
 * SQL-Protokoll
 * Andere (anderer Speicher als SQL-Speicher)
 * Verfügbar
 
-![Konfigurieren von Speicher für vorhandene SQL Server-VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
+Wählen Sie zum Ändern der Speichereinstellungen **Konfigurieren** unter **Einstellungen** aus. 
 
-Klicken Sie oberhalb des Diagramms auf den Link „Bearbeiten“, um den Speicher für das Hinzufügen eines neuen Laufwerks oder Erweitern eines vorhandenen Laufwerks zu konfigurieren.
+![Konfigurieren von Speicher für vorhandene SQL Server-VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
 Die angezeigten Konfigurationsoptionen variieren in Abhängigkeit davon, ob Sie dieses Feature schon einmal verwendet haben. Wenn Sie es zum ersten Mal verwenden, können Sie die Speicheranforderungen für ein neues Laufwerk angeben. Falls Sie dieses Feature schon einmal zum Erstellen eines Laufwerks genutzt haben, können Sie den Speicher des Laufwerks bei Bedarf erweitern.
 
 ### <a name="use-for-the-first-time"></a>Erstmalige Verwendung
 
 Wenn Sie dieses Feature zum ersten Mal verwenden, können Sie die Speichergröße und die Leistungsgrenzwerte für ein neues Laufwerk angeben. Diese Oberfläche ist mit der Anzeige zur Bereitstellungszeit vergleichbar. Der Hauptunterschied besteht darin, dass Sie nicht berechtigt sind, den Workloadtyp anzugeben. Mit dieser Einschränkung wird verhindert, dass SQL Server-Konfigurationen, die auf dem virtuellen Computer vorhanden sind, beschädigt werden.
-
-![Konfigurieren von SQL Server-Speicherschiebereglern](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-usage-sliders.png)
 
 In Azure wird ein neues Laufwerk basierend auf Ihren Spezifikationen erstellt. In diesem Szenario werden in Azure die folgenden Aufgaben der Speicherkonfiguration durchgeführt:
 
@@ -99,8 +98,6 @@ Weitere Details dazu, wie unter Azure Speichereinstellungen konfiguriert werden,
 
 Wenn Sie auf Ihrer SQL Server-VM bereits Speicher konfiguriert haben, ergeben sich beim Erweitern des Speichers bis zu zwei neue Optionen. Die erste Option ist das Hinzufügen eines neuen Laufwerks, womit die Leistungsebene Ihrer VM gesteigert werden kann.
 
-![Hinzufügen eines neuen Laufwerks zu einer SQL-VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-add-new-drive.png)
-
 Nach dem Hinzufügen des Laufwerks müssen Sie aber eine zusätzliche manuelle Konfiguration durchführen, um die Leistungssteigerung zu erzielen.
 
 ### <a name="extend-the-drive"></a>Erweitern des Laufwerks
@@ -113,8 +110,7 @@ Die andere Option für die Erweiterung des Speichers besteht darin, das vorhande
 
 Dieser Abschnitt dient als Referenz für die Änderungen der Speicherkonfiguration, die von Azure automatisch vorgenommen werden, während die SQL-VM-Bereitstellung oder -konfiguration im Azure-Portal durchgeführt wird.
 
-* Falls Sie weniger als zwei TB Speicher für Ihre VM ausgewählt haben, erstellt Azure keinen Speicherpool.
-* Falls Sie mindestens zwei TB Speicher für Ihre VM ausgewählt haben, konfiguriert Azure einen Speicherpool. Im nächsten Abschnitt dieses Themas sind die Details der Speicherpoolkonfiguration angegeben.
+* Azure konfiguriert einen Speicherpool aus dem ausgewählten Speicher Ihrer VM. Im nächsten Abschnitt dieses Themas sind Details zur Speicherpoolkonfiguration angegeben.
 * Bei der automatischen Speicherkonfiguration werden immer P30-Datenträger vom Typ [SSD Premium](../disks-types.md) verwendet. Daher besteht eine 1:1-Zuordnung zwischen der ausgewählten TB-Menge und der Anzahl von Datenträgern, die an die VM angefügt sind.
 
 Preisinformationen finden Sie auf der Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage) auf der Registerkarte **Disk Storage** .
@@ -129,8 +125,8 @@ In Azure werden die folgenden Einstellungen verwendet, um den Speicherpool auf S
 | Datenträgergrößen |1 TB jeder |
 | Cache |Lesen |
 | Zuordnungsgröße |Größe der NTFS-Zuordnungseinheit: 64 KB |
-| Sofortige Dateiinitialisierung |Aktiviert |
-| Sperren von Seiten im Speicher |Aktiviert |
+| Sofortige Dateiinitialisierung |Enabled |
+| Sperren von Seiten im Speicher |Enabled |
 | Wiederherstellen |Einfache Wiederherstellung (keine Resilienz) |
 | Anzahl von Spalten |Anzahl von Datenträgern<sup>1</sup> |
 | Speicherort von TempDB |Auf Datenträgern gespeichert<sup>2</sup> |

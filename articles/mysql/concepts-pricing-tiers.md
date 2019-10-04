@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 21ddeb9cb0621f0f11ca23a7b12a82df0b7aa8ca
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 07/31/2019
+ms.openlocfilehash: 83581b22389efe5c9c19689e3116b39ea049ccdc
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546671"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68694201"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL – Tarife
 
@@ -38,54 +38,7 @@ Nach der Servererstellung können Sie die Anzahl von virtuellen Kernen, die Hard
 
 ## <a name="compute-generations-and-vcores"></a>Computegenerationen und V-Kerne
 
-Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und repräsentieren die logische CPU der zugrunde liegenden Hardware. Derzeit können Sie aus zwei Computegenerationen wählen – Gen 4 und Gen 5. Logische CPUs der Generation 4 basieren auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) 2,4 GHz. Logische CPUs der Generation 5 basieren auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz. Gen 4 und 5 Gen stehen in den folgenden Regionen zur Verfügung („X“ steht für verfügbar).
-
-> [!IMPORTANT]
-> Ab dem 12. Dezember 2018 können Neukunden keine Computeserver der vierten Generation mehr in den Regionen Brasilien (Süden), Kanada (Mitte), Kanada (Osten), Asien (Osten), USA (Osten 2), Indien (Mitte), Indien (Westen), Japan (Westen), USA (Norden-Mitte) und USA (Westen) bereitstellen. Zuvor erstellte Computeserver der vierten Generation werden ab dem 1. Februar 2019 in diesen Regionen zu Servern der fünften Generation migriert.
->
-> [!IMPORTANT]
-> Ab dem 15. Februar 2019 können neue Kunden nicht mehr Computeserver der vierten Generation in „USA (Mitte)“, „USA, Osten“, „Japan, Osten“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“ und „Europa, Westen“ bereitstellen. Zuvor erstellte Computeserver der vierten Generation werden ab dem 1. April 2019 in dieser Region zu Servern der fünften Generation migriert.
-
-| **Azure-Region** | **Gen 4** | **Gen 5** |
-|:---|:----------:|:--------------------:|
-| USA (Mitte) |  | X |
-| USA (Ost) |  | X |
-| USA (Ost) 2 |  | X |
-| USA Nord Mitte |  | X |
-| USA Süd Mitte | X | X |
-| USA (Westen) |  | X |
-| USA, Westen 2 |  | X |
-| Brasilien Süd |  | X |
-| Kanada, Mitte |  | X |
-| Kanada, Osten |  | X |
-| Nordeuropa | X | X |
-| Europa, Westen |  | X |
-| Frankreich, Mitte |  | X |
-| UK, Süden |  | X |
-| UK, Westen |  | X |
-| Asien, Osten |  | X |
-| Asien, Südosten | X | X |
-| Australien (Osten) |  | X |
-| Australien, Mitte |  | X |
-| Australien, Mitte 2 |  | X |
-| Australien, Südosten |  | X |
-| Indien, Mitte |  | X |
-| Indien (Süden) |  | X |
-| Indien, Westen |  | X |
-| Japan, Osten | X | X |
-| Japan, Westen |  | X |
-| Korea, Mitte |  | X |
-| Korea, Süden |  | X |
-| China, Osten 1 | X |  |
-| China, Osten 2 |  | X |
-| China, Norden 1 | X |  |
-| China, Norden 2 |  | X |
-| Deutschland, Mitte |  | X |
-| US DoD, Mitte  | X |  |
-| US DoD, Osten  | X |  |
-| US Gov Arizona |  | X |
-| US Gov Texas |  | X |
-| US Government, Virginia |  | X |
+Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und repräsentieren die logische CPU der zugrunde liegenden Hardware. China, Osten 1, China, Norden 1, US DoD, Mitte und US DoD, Osten nutzen logische CPUs der 4. Generation, die auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz basieren. Alle anderen Regionen nutzen logische CPUs der 5. Generation, die auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) mit 2,3 GHz basieren.
 
 ## <a name="storage"></a>Storage
 
@@ -98,17 +51,51 @@ Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die fü
 | Speicherinkrementgröße | 1 GB | 1 GB | 1 GB |
 | IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 6.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 6.000 IOPS |
 
-Sie können während und nach der Erstellung des Servers zusätzliche Speicherkapazität hinzufügen. Der Tarif „Basic“ umfasst keine IOPS-Garantie. Für die Tarife „Allgemein“ und „Arbeitsspeicheroptimiert“ wird der IOPS-Wert gegenüber der bereitgestellten Speichergröße in einem Verhältnis von 3:1 skaliert.
+Während und nach der Erstellung des Servers können Sie zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher auf der Grundlage des Speicherbedarfs Ihrer Workload automatisch zu vergrößern. 
+
+>[!NOTE]
+> Speicher kann nur zentral hochskaliert, aber nicht herunterskaliert werden.
+
+Der Tarif „Basic“ umfasst keine IOPS-Garantie. Für die Tarife „Allgemein“ und „Arbeitsspeicheroptimiert“ wird der IOPS-Wert gegenüber der bereitgestellten Speichergröße in einem Verhältnis von 3:1 skaliert.
 
 Sie können Ihren E/A-Verbrauch im Azure-Portal oder mit Azure CLI-Befehlen überwachen. Die wichtigen zu überwachenden Metriken sind das [Speicherlimit, der Speicherprozentsatz, der genutzte Speicher und der E/A-Prozentsatz](concepts-monitoring.md).
 
+### <a name="large-storage-preview"></a>Großspeicher (Vorschauversion)
+
+Wir erhöhen die Speicherlimits für die Tarife „Universell“ und „Arbeitsspeicheroptimiert“. Neu erstellte Server, für die die Vorschauversion verwendet wird, können bis zu 16 TB an Speicher bereitstellen. Der IOPS-Wert kann im Verhältnis 3:1 auf bis zu 20.000 IOPS skaliert werden. Wie beim derzeit allgemein verfügbaren Speicher auch, können Sie nach der Erstellung des Servers zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher auf Grundlage des Speicherbedarfs Ihrer Workload automatisch zu vergrößern.
+
+|              | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+|:-------------|:--------------------|:---------------------|
+| Speichertyp | Azure Storage Premium | Azure Storage Premium |
+| Speichergröße | 32 GB bis 16 TB| 32 GB bis 16 TB |
+| Speicherinkrementgröße | 1 GB | 1 GB |
+| IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS| 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS |
+
+> [!IMPORTANT]
+> Großspeicher befindet sich in den folgenden Regionen derzeit in der öffentlichen Vorschauphase: „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Westen“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Australien, Osten“, „Australien, Südosten“.
+>
+> Für großen Speicher (Vorschauversion) wird Folgendes derzeit nicht unterstützt:
+>
+> * Geografisch redundante Sicherungen
+> * Regionsübergreifende Replikation
+
 ### <a name="reaching-the-storage-limit"></a>Erreichen der Speicherbegrenzung
 
-Der Server ist als schreibgeschützt gekennzeichnet, wenn die Menge des freien Speichers kleiner als 5 GB oder 5 % des bereitgestellten Speicher ist, je nachdem, welcher Wert kleiner ist. Wenn Sie beispielsweise 100 GB des Speichers bereitgestellt haben und die tatsächliche Auslastung über 95 GB hinausgeht, wird der Server als schreibgeschützt gekennzeichnet. Wenn Sie 5 GB des Speichers bereitgestellt haben, wird der Server ebenfalls als schreibgeschützt markiert, sofern sich der freie Speicher auf weniger als 250 MB beläuft.  
+Server mit weniger als 100 GB bereitgestelltem Speicher werden als schreibgeschützt gekennzeichnet, wenn der freie Speicher weniger als 512 MB oder fünf Prozent der bereitgestellten Speichergröße beträgt. Server mit mehr als 100 GB bereitgestelltem Speicher werden als schreibgeschützt gekennzeichnet, wenn der freie Speicher weniger als 5 GB beträgt.
+
+Wenn Sie also beispielsweise 110 GB Speicher bereitgestellt haben und die tatsächliche Auslastung 105 GB überschreitet, wird der Server als schreibgeschützt gekennzeichnet. Wenn Sie andererseits 5 GB Speicher bereitgestellt haben, wird der Server als schreibgeschützt gekennzeichnet, wenn der freie Speicher unter 512 MB sinkt.
 
 Während der Dienst versucht, den Server als schreibgeschützt zu kennzeichnen, werden alle neuen Schreibtransaktionsanforderungen blockiert, und bestehende aktive Transaktionen werden weiterhin ausgeführt. Wenn der Server als schreibgeschützt festgelegt ist, führen alle nachfolgenden Schreibvorgänge und die Transaktionscommits zu einem Fehler. Leseabfragen werden weiterhin ununterbrochen fortgesetzt. Nachdem Sie den bereitgestellten Speicher erhöht haben, ist der Server für die erneute Annahme von Schreibtransaktionen bereit.
 
-Sie sollten eine Benachrichtigung einrichten, damit Sie informiert werden, wenn sich der Serverspeicher dem Schwellenwert nähert. So können Sie vermeiden, in den schreibgeschützten Zustand zu geraten. Weitere Informationen finden Sie in der Dokumentation zum [Einrichten einer Benachrichtigung](howto-alert-on-metric.md).
+Sie sollten die automatische Speichervergrößerung aktivieren oder eine Benachrichtigung einrichten, damit Sie informiert werden, wenn sich der Serverspeicher dem Grenzwert nähert. So können Sie den schreibgeschützten Zustand vermeiden. Weitere Informationen finden Sie in der Dokumentation zum [Einrichten einer Benachrichtigung](howto-alert-on-metric.md).
+
+### <a name="storage-auto-grow"></a>Automatische Speichervergrößerung
+
+Die automatische Speichervergrößerung verhindert, dass der Server nicht mehr über genügend Speicherplatz verfügt und schreibgeschützt wird. Wenn die automatische Speichervergrößerung aktiviert ist, wird der Speicher automatisch ohne Beeinträchtigung der Workload vergrößert. Bei Servern mit weniger als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um 5 GB erhöht, sobald der freie Speicher unter 1 GB oder zehn Prozent des bereitgestellten Speichers sinkt. Bei Servern mit mehr als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um fünf Prozent erhöht, sobald der freie Speicherplatz unter fünf Prozent der bereitgestellten Speichergröße sinkt. Dabei gelten die maximalen, oben beschriebenen Speichergrenzwerte.
+
+Wenn Sie also beispielsweise 1.000 GB Speicher bereitgestellt haben und die tatsächliche Auslastung 950 GB überschreitet, wird die Speichergröße des Servers auf 1.050 GB erhöht. Bei 10 GB bereitgestelltem Speicher wird die Speichergröße alternativ auf 15 GB erhöht, wenn weniger als 1 GB Speicher frei ist.
+
+Beachten Sie, dass der Speicher nur zentral hochskaliert, aber nicht herunterskaliert werden kann.
 
 ## <a name="backup"></a>Backup
 

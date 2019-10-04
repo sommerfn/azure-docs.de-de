@@ -3,21 +3,20 @@ title: End-to-End-Ausführung von Aufträgen mithilfe von Vorlagen – Azure Bat
 description: Erstellen Sie Batch-Pools, -Aufträge und -Aufgaben mit Vorlagendateien und der Azure CLI.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 5e592845f96cb0734daf3c9e07d60005de260386
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 4733cf1a83bec472baae42f2ac29636bff5fc324
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547676"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095313"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung
 
@@ -144,7 +143,7 @@ Wenn die Vorlagendatei unter dem Namen _pool-ffmpeg.json_ gespeichert wurde, ruf
 az batch pool create --template pool-ffmpeg.json
 ```
 
-Sie werden von der CLI aufgefordert, Werte für die Parameter `poolId` und `nodeCount` anzugeben. Sie können die Parameter auch in einer JSON-Datei angeben. Beispiel: 
+Sie werden von der CLI aufgefordert, Werte für die Parameter `poolId` und `nodeCount` anzugeben. Sie können die Parameter auch in einer JSON-Datei angeben. Beispiel:
 
 ```json
 {

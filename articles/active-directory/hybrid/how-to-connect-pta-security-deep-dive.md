@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b8db3bb2e7a21011508f30492bf99c7ecca583
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096859"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60348064"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -136,7 +136,7 @@ Bei der Passthrough-Authentifizierung wird eine Anforderung zur Benutzeranmeldun
 4. Der Benutzer gibt auf der **Benutzeranmeldeseite** seinen Benutzernamen ein und wählt anschließend die Schaltfläche **Weiter** aus.
 5. Der Benutzer gibt auf der **Benutzeranmeldeseite** sein Kennwort ein und wählt anschließend die Schaltfläche **Anmelden** aus.
 6. Der Benutzername und das Kennwort werden in einer HTTPS POST-Anforderung an den Azure AD STS gesendet.
-7. Der Azure AD STS ruft öffentliche Schlüssel für alle Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind, aus der Azure SQL-Datenbank ab und verwendet diese zum Verschlüsseln des Kennworts. 
+7. Der Azure AD STS ruft öffentliche Schlüssel für alle Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind, aus der Azure SQL-Datenbank ab und verwendet diese zum Verschlüsseln des Kennworts.
     - Der Dienst erstellt „N“ verschlüsselte Kennwortwerte für „N“ Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind.
 8. Der Azure AD STS reiht die Anforderung zur Kennwortvalidierung, die aus den Benutzername- und den verschlüsselten Kennwortwerten besteht, in die Service Bus-Warteschlange ein, die zu Ihrem Mandanten gehört.
 9. Da die initialisierten Authentifizierungs-Agents eine dauerhafte Verbindung mit der Service Bus-Warteschlange haben, ruft einer der verfügbaren Authentifizierungs-Agents die Anforderung zur Kennwortvalidierung ab.
@@ -145,6 +145,9 @@ Bei der Passthrough-Authentifizierung wird eine Anforderung zur Benutzeranmeldun
     - Diese API ist dieselbe API, die von Active Directory-Verbunddienste (AD FS) verwendet wird, um Benutzer in einem Szenario mit Verbundanmeldung anzumelden.
     - Diese API setzt auf den Standardauflösungsvorgang in Windows Server auf, um den Domänencontroller zu suchen.
 12. Der Authentifizierungs-Agent empfängt das Ergebnis von Active Directory, also z.B. Erfolg, Benutzername oder Kennwort fehlerhaft oder Kennwort abgelaufen.
+
+   > [!NOTE]
+   > Wenn beim Authentifizierungs-Agent während der Anmeldung ein Fehler auftritt, wird die gesamte Anforderung gelöscht. Es erfolgt keine Weitergabe der Anmeldeanforderungen von einem Authentifizierungs-Agent an einen anderen Authentifizierungs-Agent auf lokaler Ebene. Diese Agents kommunizieren nur mit der Cloud und nicht miteinander.
 13. Der Authentifizierungs-Agent leitet das Ergebnis über einen ausgehenden gegenseitig authentifizierten HTTPS-Kanal (Port 443) zurück an den Azure AD STS. Bei der gegenseitigen Authentifizierung wird das Zertifikat verwendet, das zuvor während der Registrierung für den Authentifizierungs-Agent ausgestellt wurde.
 14. Der Azure AD STS überprüft, ob das Ergebnis mit der jeweiligen Anmeldeanforderung auf Ihrem Mandanten korreliert.
 15. Der Azure AD STS fährt gemäß Konfiguration mit dem Anmeldeverfahren fort. Wenn die Kennwortvalidierung erfolgreich war, kann der Benutzer beispielsweise zum Einrichten von Multi-Factor Authentication aufgefordert oder zurück an die Anwendung geleitet werden.
@@ -181,9 +184,9 @@ So erneuern Sie die Vertrauensstellung eines Authentifizierungs-Agents mit Azure
 
 ## <a name="auto-update-of-the-authentication-agents"></a>Automatische Aktualisierung der Authentifizierungs-Agents
 
-Mit der Updater-Anwendung wird der Authentifizierungs-Agent automatisch aktualisiert, wenn eine neue Version veröffentlicht wird. Die Anwendung verarbeitet keine Anforderungen zur Kennwortvalidierung für Ihren Mandanten. 
+Mit der Updater-Anwendung wird der Authentifizierungs-Agent automatisch aktualisiert, wenn eine neue Version (mit Fehlerbehebungen oder Leistungsverbesserungen) veröffentlicht wird. Die Updater-Anwendung verarbeitet aber keine Anforderungen zur Kennwortvalidierung für Ihren Mandanten.
 
-Azure AD hostet die neue Version der Software als signiertes **Windows Installer-Paket (MSI)**. Das MSI-Paket wird signiert, indem [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) mit SHA256 als Digestalgorithmus verwendet wird. 
+Azure AD hostet die neue Version der Software als signiertes **Windows Installer-Paket (MSI)** . Das MSI-Paket wird signiert, indem [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) mit SHA256 als Digestalgorithmus verwendet wird. 
 
 ![Automatische Aktualisierung](./media/how-to-connect-pta-security-deep-dive/pta5.png)
 
@@ -203,7 +206,7 @@ So wird ein Authentifizierungs-Agent automatisch aktualisiert:
     - Der Authentifizierungs-Agent-Dienst wird neu gestartet.
 
 >[!NOTE]
->Wenn Sie unter Ihrem Mandanten mehrere Authentifizierungs-Agents registriert haben, erneuert Azure AD die dazugehörigen Zertifikate nicht gleichzeitig und führt auch keine Aktualisierung dafür durch. Stattdessen wird dies von Azure AD nach und nach durchgeführt, um die Hochverfügbarkeit von Anmeldeanforderungen sicherzustellen.
+>Wenn Sie unter Ihrem Mandanten mehrere Authentifizierungs-Agents registriert haben, erneuert Azure AD die dazugehörigen Zertifikate nicht gleichzeitig und führt auch keine Aktualisierung dafür durch. Stattdessen führt Azure AD jeweils einzelne Vorgänge aus, um die Hochverfügbarkeit von Anmeldeanforderungen sicherzustellen.
 >
 
 

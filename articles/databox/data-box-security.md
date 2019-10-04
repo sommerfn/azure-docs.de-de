@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 90004c27463a61de1b36eaea6754215f911f7483
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 678bef1b18d60679be6c296a1fd7beef42f721b7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095856"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203829"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box – Sicherheit und Schutz von Daten
 
@@ -34,6 +34,8 @@ Im folgenden Diagramm ist der Datenfluss durch die Azure Data Box-Lösung vom lo
 
 ![Data Box-Sicherheit](media/data-box-security/data-box-security-2.png)
 
+Während die Daten diese Lösung durchlaufen, werden Ereignisse protokolliert und Protokolle erstellt. Weitere Informationen finden Sie unter [Tracking and event logging for your Azure Data Box](data-box-logs.md) (Nachverfolgung und Ereignisprotokollierung für Azure Data Box).
+
 ## <a name="security-features"></a>Sicherheitsfeatures
 
 Data Box ist eine sichere Lösung für den Schutz der Daten, indem dafür gesorgt wird, dass nur autorisierte Entitäten Ihre Daten anzeigen, ändern oder löschen können. Die Sicherheitsfunktionen für diese Lösung gelten für den Datenträger und den zugeordneten Dienst, um sicherzustellen, dass die darauf gespeicherten Daten geschützt sind. 
@@ -48,24 +50,25 @@ Das Data Box-Gerät wird mithilfe der folgenden Merkmale geschützt:
 - Wird nur auf Data Box-spezifischer Software ausgeführt.
 - Startet im gesperrten Zustand.
 - Steuert den Gerätezugriff per Kennwort zum Entsperren des Geräts.
-- Anmeldeinformationen für den Zugriff zum Kopieren von Daten auf das und vom Gerät.
+- Anmeldeinformationen für den Zugriff zum Kopieren von Daten auf das und vom Gerät. Alle Zugriffe auf die Seite **Geräteanmeldeinformationen** im Azure-Portal werden in den [Aktivitätsprotokollen](data-box-logs.md#query-activity-logs-during-setup) protokolliert.
 
 ### <a name="data-box-data-protection"></a>Schutz von Data Box-Daten
 
 Die Daten, die in und aus Data Box übertragen werden, werden mithilfe der folgenden Merkmale geschützt:
 
-- AES-256-Bit-Verschlüsselung für ruhende Daten. 
+- AES-256-Bit-Verschlüsselung für ruhende Daten.
 - Während ihrer Übertragung können für Daten verschlüsselte Protokolle verwendet werden.
-- Sicheres Löschen von Daten vom Gerät nach dem Upload in Azure. Das Löschen der Daten wird gemäß NIST-Standards (800-88r1) durchgeführt.
+- Sicheres Löschen von Daten vom Gerät nach dem Upload in Azure. Das Löschen der Daten wird gemäß den Richtlinien in [Anhang A für ATA-Festplatten der NIST-Standards (800-88r1)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) durchgeführt. Das Datenlöschereignis wird im [Auftragsverlauf](data-box-logs.md#download-order-history) aufgezeichnet.
 
 ### <a name="data-box-service-protection"></a>Schutz des Data Box-Diensts
 
 Der Data Box-Dienst wird mithilfe der folgenden Features geschützt.
 
 - Für den Zugriff auf den Data Box-Dienst muss Ihre Organisation über ein Azure-Abonnement verfügen, das Data Box umfasst. Ihr Abonnement bestimmt die Features, auf die Sie im Azure-Portal zugreifen können.
-- Da der Data Box-Dienst in Azure gehostet wird, ist er durch die Azure-Sicherheitsfeatures geschützt. Weitere Informationen zu den Sicherheitsfeatures von Microsoft Azure finden Sie im [Microsoft Azure Trust Center](https://www.microsoft.com/TrustCenter/Security/default.aspx). 
-- Der Data Box-Dienst speichert das Entsperrkennwort, mit dem das Gerät im Dienst entsperrt wird. 
-- Beim Data Box-Dienst werden Auftragsdetails und Status im Dienst gespeichert. Diese Informationen werden später dann zusammen mit dem Auftrag gelöscht. 
+- Da der Data Box-Dienst in Azure gehostet wird, ist er durch die Azure-Sicherheitsfeatures geschützt. Weitere Informationen zu den Sicherheitsfeatures von Microsoft Azure finden Sie im [Microsoft Azure Trust Center](https://www.microsoft.com/TrustCenter/Security/default.aspx).
+- Der Zugriff auf die Data Box-Bestellung kann mithilfe von RBAC-Rollen (Rollenbasierte Zugriffssteuerung) gesteuert werden. Weitere Informationen finden Sie unter [Einrichten der Zugriffssteuerung für Data Box-Bestellungen](data-box-logs.md#set-up-access-control-on-the-order)
+- Der Data Box-Dienst speichert das Entsperrkennwort, mit dem das Gerät im Dienst entsperrt wird.
+- Beim Data Box-Dienst werden Auftragsdetails und Status im Dienst gespeichert. Diese Informationen werden später dann zusammen mit dem Auftrag gelöscht.
 
 ## <a name="managing-personal-data"></a>Verwalten von personenbezogenen Daten
 
@@ -77,11 +80,11 @@ Azure Data Box sammelt und zeigt personenbezogene Daten an den folgenden wichtig
 
   - Kontaktname
   - Telefonnummer
-  - E-Mail
+  - Email
   - Anschrift
   - City
   - Postleitzahl
-  - Zustand
+  - State
   - Land/Provinz/Region
   - Kontonummer des Versanddienstleisters
   - Nachverfolgungsnummer für den Versand
@@ -103,7 +106,7 @@ Die folgenden Sicherheitsrichtlinien sind in Data Box implementiert:
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Für Dauerhaftigkeit bei widrigen Transportbedingungen          |
 |[NIST SP 800-147](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | Für sichere Firmwareupdates         |
 |[FIPS 140-2 Level 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | Für Datenschutz         |
-|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Für Datenbereinigung         |
+|Anhang A für ATA-Festplatten in [NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | Für Datenbereinigung         |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

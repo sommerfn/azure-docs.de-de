@@ -3,9 +3,8 @@ title: Sicherheitsplaybook in Azure Security Center | Microsoft-Dokumentation
 description: Dieses Dokument enthält hilfreiche Informationen zur Automatisierung von Reaktionen auf Sicherheitsvorfälle mithilfe von Sicherheitsplaybooks in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: a8c45ddf-5c4c-4393-b6e9-46ed1f91bf5f
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: ec16e6daec099adbede625c5ec6fe6909059143b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: memildin
+ms.openlocfilehash: faf297ef4b07b76f98bb7773c636cd8f6228bbc0
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116744"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201730"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Sicherheitsplaybook in Azure Security Center (Vorschauversion)
 In diesem Dokument erfahren Sie, wie Sie mithilfe von Sicherheitsplaybooks in Azure Security Center auf sicherheitsbezogene Probleme reagieren können.

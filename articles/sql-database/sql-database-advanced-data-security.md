@@ -7,16 +7,15 @@ ms.subservice: security
 ms.devlang: ''
 ms.topic: conceptual
 author: monhaber
-ms.author: monhaber
+ms.author: v-mohabe
 ms.reviewer: vanto
-manager: craigg
 ms.date: 03/31/2019
-ms.openlocfilehash: a078ac38cef5b395a19481188c474c7f908160d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b8fc82ca8f4b42adf595680541042ef38efe1470
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784482"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569547"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Advanced Data Security für Azure SQL-Datenbank
 
@@ -48,7 +47,7 @@ Aktivieren Sie ADS, indem Sie unterhalb der Überschrift **Sicherheit** für Ihr
 ![Aktivieren von ADS](./media/sql-advanced-protection/enable_ads.png) 
 
 > [!NOTE]
-> Die Kosten von ADS orientieren sich am Azure Security Center-Standardtarif pro Knoten, wobei ein Knoten dem gesamten logischen SQL-Server oder der verwalteten Instanz entspricht. Sie bezahlen daher nur einmal, um alle Datenbanken auf dem Server oder der verwalteten Instanz mit ADS zu schützen. Sie können ADS anfänglich mit einer kostenlosen Testversion testen.
+> Die Kosten von ADS orientieren sich am Azure Security Center-Standardtarif pro Knoten, wobei ein Knoten dem gesamten logischen SQL-Datenbank-Server oder der verwalteten Instanz entspricht. Sie bezahlen daher nur einmal, um alle Datenbanken auf dem Server oder der verwalteten Instanz mit ADS zu schützen. Sie können ADS anfänglich mit einer kostenlosen Testversion testen.
 
 ## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2. Beginnen mit dem Klassifizieren von Daten, Nachverfolgen von Sicherheitsrisiken und Untersuchen von Bedrohungswarnungen
 

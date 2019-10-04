@@ -10,7 +10,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/10/2019
 abstract:
-  description: "Erfahren Sie, wie Sie mithilfe von Azure NetApp Files NetApp-Konten, Kapazitätspools und Volumes erstellen und verwalten, die Exportrichtlinie konfigurieren, ein Volume für einen virtuellen Computer bereitstellen und Momentaufnahmen verwalten. <p>Für die Verwendung von Azure NetApp Files ist die Teilnahme am Public\_Preview-Programm erforderlich. Darüber hinaus müssen Sie für den Zugriff auf den Azure-Ressourcenanbieter Microsoft.NetApp auf die Whitelist gesetzt werden. Unter <a href=\"azure-netapp-files-register\">Registrieren für Azure NetApp Files</a> finden Sie Informationen zur Teilnahme am Public Preview-Programm.</p>"
+  description: 'Erfahren Sie, wie Sie mithilfe von Azure NetApp Files NetApp-Konten, Kapazitätspools und Volumes erstellen und verwalten, die Exportrichtlinie konfigurieren, ein Volume für einen virtuellen Computer bereitstellen und Momentaufnahmen verwalten. <p>Sie benötigen Zugriff auf den Azure NetApp Files-Dienst, um Azure NetApp Files verwenden zu können. Informationen zum Anfordern des Zugriffs finden Sie unter <a href="azure-netapp-files-register#waitlist">Registrieren für Azure NetApp Files</a>.</p>'
 sections:
   - title: Fünfminütige Schnellstarts
     items:

@@ -1,7 +1,6 @@
 ---
-title: Anmerkungen zu dieser Version von Azure HDInsight
+title: Archivierte Versionshinweise für Azure HDInsight
 description: Die neuesten Versionshinweise für Azure HDInsight. Rufen Sie Tipps zur Entwicklung und Details für Hadoop, Spark, R Server, Hive und mehr ab.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,14 +8,14 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 9ca3635e93c8d66d23c74c3774ccee2c563d85b4
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: cf985f08f13198a9041b1d50f2c6c7f0fec70911
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618225"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945036"
 ---
-# <a name="release-notes-for-azure-hdinsight"></a>Anmerkungen zu dieser Version von Azure HDInsight
+# <a name="archived-release-notes"></a>Archivierte Versionshinweise
 
 > [!IMPORTANT]  
 > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie im Artikel zur [HDInsight-Versionsverwaltung](hdinsight-component-versioning.md).
@@ -29,7 +28,7 @@ Azure HDInsight ist einer der beliebtesten Dienste unter Enterprise-Kunden für 
 
 Die neuen Updates und Funktionen fallen in die folgenden Kategorien:
 
-*  ***Update von Hadoop und anderen Open-Source-Projekten:*** Zusätzlich zu über 1000 Fehlerkorrekturen in mehr als 20 Open-Source-Projekten enthält dieses Update eine neue Version von **Spark (2.3)** und **Kafka (1.0)**.
+*  ***Update von Hadoop und anderen Open-Source-Projekten:*** Zusätzlich zu über 1000 Fehlerkorrekturen in mehr als 20 Open-Source-Projekten enthält dieses Update eine neue Version von **Spark (2.3)** und **Kafka (1.0)** .
 
     a.  [**Neue Features in Apache Spark 2.3**](https://spark.apache.org/releases/spark-release-2-3-0.html)
 
@@ -39,7 +38,7 @@ Die neuen Updates und Funktionen fallen in die folgenden Kategorien:
 
 *  ***Unterstützung für Azure Data Lake Storage Gen2***: HDInsight unterstützt die Preview-Version von Azure Data Lake Storage Gen2. In den verfügbaren Regionen können Kunden ein ADLS Gen2-Konto als primären oder sekundären Speicher für ihre HDInsight-Cluster auswählen.
 
-*  ***Updates für HDInsight-Enterprise-Sicherheitspaket (Vorschauversion):*** (Vorschauversion) [Dienstendpunkte virtueller Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) unterstützen Azure Blob Storage, ADLS Gen1, Cosmos DB und Azure DB.
+*  ***Updates für HDInsight-Enterprise-Sicherheitspaket (Vorschauversion):*** (Vorschauversion) [VNET-Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) unterstützen Azure Blob Storage, ADLS Gen1, Cosmos DB und Azure DB.
 
 ## <a name="component-versions"></a>Komponentenversionen
 
@@ -823,73 +822,73 @@ Dieser Abschnitt umfasst alle Common Vulnerabilities and Exposures (Allgemeine S
 
 ### <a name="cve-2017-7676"></a>**CVE-2017-7676**
 
-| **Zusammenfassung:** Apache Ranger-Richtlinienauswertung ignoriert Zeichen nach dem Platzhalterzeichen „\*“. |
+| **Zusammenfassung:**  Apache Ranger-Richtlinienauswertung ignoriert Zeichen nach dem Platzhalterzeichen „\*“. |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Schweregrad:** Kritisch                                                                           |
-| **Anbieter:** Hortonworks                                                                          |
-| **Betroffene Versionen:** HDInsight 3.6-Versionen, einschließlich der Apache Ranger-Versionen 0.5.x/0.6.x/0.7.0     |
-| **Betroffene Benutzer:** Umgebungen, die Ranger-Richtlinien mit Zeichen nach dem Platzhalterzeichen „\*“ verwenden, etwa „my\*test“, „test\*.txt“. |
-| **Auswirkung:** Der Matcher für Richtlinienressourcen ignoriert Zeichen nach dem Platzhalterzeichen „\*“, was zu unerwartetem Verhalten führen kann.      |
-| **Details zur Fehlerbehebung:** Der Richtlinienressourcen-Matcher von Ranger wurde aktualisiert, um Platzhalterübereinstimmungen ordnungsgemäß zu verarbeiten.           |
-| **Empfohlene Aktion:** Upgrade auf HDI 3.6 (mit Apache Ranger 0.7.1 oder höher).                                |
+| **Schweregrad:**  Kritisch                                                                           |
+| **Anbieter:**  Hortonworks                                                                          |
+| **Betroffene Versionen:**  HDInsight 3.6-Versionen, einschließlich der Apache Ranger-Versionen 0.5.x/0.6.x/0.7.0     |
+| **Betroffene Benutzer:**  Umgebungen, die Ranger-Richtlinien mit Zeichen nach dem Platzhalterzeichen „\*“ verwenden, etwa „my\*test“, „test\*.txt“. |
+| **Auswirkung:**  Der Matcher für Richtlinienressourcen ignoriert Zeichen nach dem Platzhalterzeichen „\*“, was zu unerwartetem Verhalten führen kann.      |
+| **Details zur Fehlerbehebung:**  Der Richtlinienressourcen-Matcher von Ranger wurde aktualisiert, um Platzhalterübereinstimmungen ordnungsgemäß zu verarbeiten.           |
+| **Empfohlene Aktion:**  Upgrade auf HDI 3.6 (mit Apache Ranger 0.7.1 oder höher).                                |
 
 ### <a name="cve-2017-7677"></a>**CVE-2017-7677**
 
-| **Zusammenfassung:** Apache Ranger Hive-Autorisierer sollte auf RWX-Berechtigung prüfen, wenn ein externer Speicherort angegeben ist. |
+| **Zusammenfassung:**  Apache Ranger Hive-Autorisierer sollte auf RWX-Berechtigung prüfen, wenn ein externer Speicherort angegeben ist. |
 |--------------------------------------------------------------------------------------------------|
-| **Schweregrad:** Kritisch                                                                           |
-| **Anbieter:** Hortonworks                                                                          |
-| **Betroffene Versionen:** HDInsight 3.6-Versionen, einschließlich der Apache Ranger-Versionen 0.5.x/0.6.x/0.7.0 |
-| **Betroffene Benutzer:** Umgebungen, die einen externen Speicherort für Hive-Tabellen verwenden |
-| **Auswirkung:** In Umgebungen, die einen externen Speicherort für Hive-Tabellen verwenden, sollte der Apache Ranger Hive-Autorisierer auf RWX-Berechtigungen für den externen Speicherort prüfen, der zum Erstellen der Tabelle angegeben wurde. |
-| **Details zur Fehlerbehebung:** Ranger Hive-Autorisierer wurde aktualisiert, um die Überprüfung von Berechtigungen für den externen Speicherort ordnungsgemäß zu verarbeiten. |
-| **Empfohlene Aktion:** Upgrade auf HDI 3.6 (mit Apache Ranger 0.7.1 oder höher). |
+| **Schweregrad:**  Kritisch                                                                           |
+| **Anbieter:**  Hortonworks                                                                          |
+| **Betroffene Versionen:**  HDInsight 3.6-Versionen, einschließlich der Apache Ranger-Versionen 0.5.x/0.6.x/0.7.0 |
+| **Betroffene Benutzer:**  Umgebungen, die einen externen Speicherort für Hive-Tabellen verwenden |
+| **Auswirkung:**  In Umgebungen, die einen externen Speicherort für Hive-Tabellen verwenden, sollte der Apache Ranger Hive-Autorisierer auf RWX-Berechtigungen für den externen Speicherort prüfen, der zum Erstellen der Tabelle angegeben wurde. |
+| **Details zur Fehlerbehebung:**  Ranger Hive-Autorisierer wurde aktualisiert, um die Überprüfung von Berechtigungen für den externen Speicherort ordnungsgemäß zu verarbeiten. |
+| **Empfohlene Aktion:**  Upgrade auf HDI 3.6 (mit Apache Ranger 0.7.1 oder höher). |
 
 ### <a name="cve-2017-9799"></a>**CVE-2017-9799**
 
-| **Zusammenfassung:** Mögliche Ausführung von Code als falscher Benutzer in Apache Storm |
+| **Zusammenfassung:**  Mögliche Ausführung von Code als falscher Benutzer in Apache Storm |
 |--------------------------------------------------------------------------------------------------|
-|**Schweregrad:** Wichtig |
-| **Anbieter:** Hortonworks |
-| **Betroffene Versionen:** HDP 2.4.0, HDP 2.5.0., HDP 2.6.0 |
-| **Betroffene Benutzer:** Benutzer, die Storm im sicheren Modus und Blobspeicher zum Verteilen von topologiebasierten Artefakten oder zum Verteilen von Topologieressourcen verwenden |
-| **Auswirkung:** In einigen Situationen und Konfigurationen von Storm ist es für den Besitzer einer Topologie theoretisch möglich, den Supervisor dazu zu bringen, einen Worker als einen anderen Benutzer zu starten, der nicht zum Stamm gehört. Im schlimmsten Fall führt dies zur Gefährdung der Anmeldeinformationen des anderen Benutzers. Dieses Sicherheitsrisiko gilt nur für Apache Storm-Installationen mit aktivierter Sicherheit. |
-| **Risikominderung:** Upgrade auf HDP 2.6.2.1, da derzeit keine Problemumgehungen vorhanden sind  |
+|**Schweregrad:**  Wichtig |
+| **Anbieter:**  Hortonworks |
+| **Betroffene Versionen:**  HDP 2.4.0, HDP 2.5.0., HDP 2.6.0 |
+| **Betroffene Benutzer:**  Benutzer, die Storm im sicheren Modus und Blobspeicher zum Verteilen von topologiebasierten Artefakten oder zum Verteilen von Topologieressourcen verwenden |
+| **Auswirkung:**  In einigen Situationen und Konfigurationen von Storm ist es für den Besitzer einer Topologie theoretisch möglich, den Supervisor dazu zu bringen, einen Worker als einen anderen Benutzer zu starten, der nicht zum Stamm gehört. Im schlimmsten Fall führt dies zur Gefährdung der Anmeldeinformationen des anderen Benutzers. Dieses Sicherheitsrisiko gilt nur für Apache Storm-Installationen mit aktivierter Sicherheit. |
+| **Risikominderung:**  Upgrade auf HDP 2.6.2.1, da derzeit keine Problemumgehungen vorhanden sind  |
 
 ### <a name="cve-2016-4970"></a>**CVE-2016-4970**
 
-| **Zusammenfassung:** „handler/ssl/OpenSslEngine.java“ in Netty 4.0.x vor 4.0.37.Final und 4.1.x vor 4.1.1.Final lässt zu, dass Remoteangreifer einen Denial-of-Service verursachen (Endlosschleife). |
+| **Zusammenfassung:**  „handler/ssl/OpenSslEngine.java“ in Netty 4.0.x vor 4.0.37.Final und 4.1.x vor 4.1.1.Final lässt zu, dass Remoteangreifer einen Denial-of-Service verursachen (Endlosschleife). |
 |--------------------------------------------------------------------------------------------------|
 | **Schweregrad:** Moderat  |
-| **Anbieter:** Hortonworks  |
-| **Betroffene Versionen:** HDP 2.x.x ab 2.3.x  |
-| **Betroffene Benutzer:** Alle Benutzer, die HDFS verwenden |
-| **Auswirkung:** Die Auswirkungen sind gering, da Hortonworks OpenSslEngine.java nicht direkt in der Hadoop-Codebasis verwendet.     |
-| **Empfohlene Aktion:** Upgrade auf HDP 2.6.3   |
+| **Anbieter:**  Hortonworks  |
+| **Betroffene Versionen:**  HDP 2.x.x ab 2.3.x  |
+| **Betroffene Benutzer:**  Alle Benutzer, die HDFS verwenden |
+| **Auswirkung:**  Die Auswirkungen sind gering, da Hortonworks OpenSslEngine.java nicht direkt in der Hadoop-Codebasis verwendet.     |
+| **Empfohlene Aktion:**  Upgrade auf HDP 2.6.3   |
 
 ### <a name="cve-2016-8746"></a>**CVE-2016-8746**
 
-| **Zusammenfassung:** Fehler beim Pfadabgleich von Apache Ranger in der Richtlinienauswertung                                                                    |
+| **Zusammenfassung:**  Fehler beim Pfadabgleich von Apache Ranger in der Richtlinienauswertung                                                                    |
 |----------------------------------------------------------------------------------------------------------------------------------------|
-| **Schweregrad:** Normal                                                                                                                   |
+| **Schweregrad:**  Normal                                                                                                                   |
 | **Anbieter:** Hortonworks                                                                                                                |
-| **Betroffene Versionen:** Alle Versionen von HDP 2.5, einschließlich der Apache Ranger-Versionen 0.6.0/0.6.1/0.6.2                                         |
-| **Betroffene Benutzer:** Alle Benutzer des Administratortools für Ranger-Richtlinien                                                                         |
-| **Auswirkung:** Ranger-Richtlinien-Engine führt fehlerhaften Abgleich von Pfaden mit bestimmten Bedingungen durch, wenn eine Richtlinie Platzhalter und rekursive Flags enthält. |
+| **Betroffene Versionen:**  Alle Versionen von HDP 2.5, einschließlich der Apache Ranger-Versionen 0.6.0/0.6.1/0.6.2                                         |
+| **Betroffene Benutzer:**  Alle Benutzer des Administratortools für Ranger-Richtlinien                                                                         |
+| **Auswirkung:**  Ranger-Richtlinien-Engine führt fehlerhaften Abgleich von Pfaden mit bestimmten Bedingungen durch, wenn eine Richtlinie Platzhalter und rekursive Flags enthält. |
 | **Details zur Fehlerbehebung:** Richtlinienauswertungslogik wurde behoben                                                                                          |
-| **Empfohlene Aktion:** Upgrade auf HDP 2.5.4 oder höher (mit Apache Ranger 0.6.3 oder höher) oder HDP 2.6 oder höher (mit Apache Ranger 0.7.0 oder höher)         |
+| **Empfohlene Aktion:**  Upgrade auf HDP 2.5.4 oder höher (mit Apache Ranger 0.6.3 oder höher) oder HDP 2.6 oder höher (mit Apache Ranger 0.7.0 oder höher)         |
 
 ### <a name="cve-2016-8751"></a>**CVE-2016-8751**
 
-| **Zusammenfassung:** Apache Ranger hat ein Problem in Bezug auf webseitenübergreifendes Skripting gespeichert.  |
+| **Zusammenfassung:**  Apache Ranger hat ein Problem in Bezug auf webseitenübergreifendes Skripting gespeichert.  |
 |--------------------------------------------------------------------------------------------------|
-| **Schweregrad:** Normal |
-| **Anbieter:** Hortonworks |
-| **Betroffene Versionen:** Alle Versionen von HDP 2.3/2.4/2.5, einschließlich der Apache Ranger-Versionen 0.5.x/0.6.0/0.6.1/0.6.2  |
-| **Betroffene Benutzer:** Alle Benutzer des Administratortools für Ranger-Richtlinien |
-| **Auswirkung:** Apache Ranger ist anfällig für webseitenübergreifendes Skripting, wenn benutzerdefinierte Richtlinienbedingungen eingegeben werden. Administratorbenutzer können beliebigen JavaScript-Code speichern, der ausgeführt wird, wenn Benutzer sich anmelden und auf Richtlinien zugreifen. |
-| **Details zur Fehlerbehebung:** Logik zum Säubern der Benutzereingabe wurde hinzugefügt.  |
-| **Empfohlene Aktion:** Upgrade auf HDP 2.5.4 oder höher (mit Apache Ranger 0.6.3 oder höher) oder HDP 2.6 oder höher (mit Apache Ranger 0.7.0 oder höher)  |
+| **Schweregrad:**  Normal |
+| **Anbieter:**  Hortonworks |
+| **Betroffene Versionen:**  Alle Versionen von HDP 2.3/2.4/2.5, einschließlich der Apache Ranger-Versionen 0.5.x/0.6.0/0.6.1/0.6.2  |
+| **Betroffene Benutzer:**  Alle Benutzer des Administratortools für Ranger-Richtlinien |
+| **Auswirkung:**  Apache Ranger ist anfällig für webseitenübergreifendes Skripting, wenn benutzerdefinierte Richtlinienbedingungen eingegeben werden. Administratorbenutzer können beliebigen JavaScript-Code speichern, der ausgeführt wird, wenn Benutzer sich anmelden und auf Richtlinien zugreifen. |
+| **Details zur Fehlerbehebung:**  Logik zum Säubern der Benutzereingabe wurde hinzugefügt.  |
+| **Empfohlene Aktion:**  Upgrade auf HDP 2.5.4 oder höher (mit Apache Ranger 0.6.3 oder höher) oder HDP 2.6 oder höher (mit Apache Ranger 0.7.0 oder höher)  |
 
 ## <a name="fixed-issues-for-support"></a>Für den Support behobene Probleme
 
@@ -1372,7 +1371,7 @@ Behobene Probleme stellen ausgewählte Probleme dar, die zuvor über den Support
     
   Wenn ein Benutzer eine Richtlinie mit benutzerdefinierten Richtlinienbedingungen erstellen möchte, und der Ausdruck oder Text enthält Sonderzeichen, dann funktioniert die Richtlinienerzwingung nicht. Sonderzeichen werden in ASCII konvertiert, bevor die Richtlinie in der Datenbank gespeichert wird.
     
-  **Sonderzeichen:** & &lt; &gt; " \` '
+  **Sonderzeichen:**  & &lt; &gt; " \` '
     
   Beispielsweise würde die Bedingung tags.attributes\['type'\]='abc' in Folgendes konvertiert werden, wenn die Richtlinie gespeichert wird.
     

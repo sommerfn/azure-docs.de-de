@@ -8,31 +8,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 4e1c03085d6b1d0099ac66dd3d1dadd981a561aa
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ff4c703070d6a7ebd545de3043e5f59b764fe4c9
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004243"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68478473"
 ---
 # <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Tutorial: Herstellen einer Verbindung mit dem Textanalysedienst mithilfe von „Verbundene Dienste“ in Visual Studio
 
 Mit dem Textanalysedienst können Sie umfassende Informationen extrahieren, um visuelle Daten zu kategorisieren und zu verarbeiten. Zudem können Sie die computergestützte Moderation von Bildern verwenden, um Ihre Dienste zu kuratieren.
 
-Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Features „Verbundener Visual Studio-Dienst“ für den Textanalysedienst. Die Funktion ist in Visual Studio 2017 15.7 oder höher verfügbar, wenn die Cognitive Services-Erweiterung installiert ist.
+Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Features „Verbundener Visual Studio-Dienst“ für den Textanalysedienst. Die Funktion ist in Visual Studio 2019 oder höher verfügbar, wenn die Cognitive Services-Erweiterung installiert ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/)registrieren.
-- Visual Studio 2017, Version 15.7, mit installierter Workload „Webentwicklung“. [Jetzt herunterladen](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Visual Studio 2019 mit installierter Workload für Webentwicklung. [Jetzt herunterladen](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
 ## <a name="add-support-to-your-project-for-the-text-analytics-service"></a>Hinzufügen von Unterstützung für den Textanalysedienst zu Ihrem Projekt
 
-1. Erstellen Sie ein neues ASP.NET Core-Webprojekt mit dem Namen „TextAnalyticsDemo“. Verwenden Sie die Projektvorlage „Webanwendung (Model-View-Controller)“ mit allen Standardeinstellungen. Sie müssen das Projekt „MyWebApplication“ nennen, damit der Namespace beim Kopieren von Code in das Projekt übereinstimmt.  Für das Beispiel in diesem Artikel wird MVC verwendet, Sie können den verbundenen Textanalysedienst jedoch mit jedem ASP.NET-Projekttyp nutzen.
+1. Erstellen Sie ein neues ASP.NET Core-Webprojekt mit dem Namen „TextAnalyticsDemo“. Verwenden Sie die Projektvorlage „Webanwendung (Model-View-Controller)“ mit allen Standardeinstellungen. Sie müssen das Projekt „MyWebApplication“ nennen, damit der Namespace übereinstimmt, wenn Sie Code in das Projekt kopieren.  Für das Beispiel in diesem Artikel wird MVC verwendet, Sie können den verbundenen Textanalysedienst jedoch mit jedem ASP.NET-Projekttyp nutzen.
 
 1. Doppelklicken Sie im **Projektmappen-Explorer** auf das Element **Verbundener Dienst**.
    Die Seite „Verbundener Dienst“ wird mit den Diensten angezeigt, die Sie dem Projekt hinzufügen können.
@@ -54,7 +54,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
    Folgen Sie dem Link zu den Details für Tarife.
 
 1. Wählen Sie **Hinzufügen** aus, um Unterstützung für den verbundenen Dienst hinzufügen.
-   Visual Studio ändert das Projekt, um die NuGet-Pakete, Konfigurationsdateieinträge und sonstigen Änderungen zur Unterstützung einer Verbindung mit dem Textanalysedienst hinzuzufügen. Im **Ausgabefenster** wird das Protokoll der ausgeführten Aktionen für Ihr Projekt angezeigt. Folgendes sollte angezeigt werden:
+   Visual Studio ändert das Projekt, um die NuGet-Pakete, Konfigurationsdateieinträge und sonstigen Änderungen zur Unterstützung einer Verbindung mit dem Textanalysedienst hinzuzufügen. Im **Ausgabefenster** wird das Protokoll der ausgeführten Aktionen für Ihr Projekt angezeigt. Ihre Ausgabe sollte wie folgt aussehen:
 
    ```output
     [6/1/2018 3:04:02.347 PM] Adding Text Analytics to the project.
@@ -90,7 +90,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
       }
    ```
 
-1. Fügen Sie im Ordner „Controller“ eine Klassendatei namens „DemoTextAnalyzeController“ hinzu, und ersetzen Sie deren Inhalt durch den folgenden Code:
+1. Fügen Sie im Ordner *Controller* eine Klassendatei namens `DemoTextAnalyzeController` hinzu, und ersetzen Sie deren Inhalt durch den folgenden Code:
 
     ```csharp
     using System;
@@ -153,7 +153,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
     }
     ```
     
-    Der Code enthält „GetTextAnalyzeClient“ zum Abrufen des Clientobjekts, mit dem Sie die Textanalyse-API aufrufen können. Zudem enthält er einen Anforderungshandler, der „DetectLanguage“ für einen angegebenen Text aufruft.
+    Der Code enthält `GetTextAnalyzeClient` zum Abrufen des Clientobjekts für Aufrufe der Textanalyse-API. Zudem enthält er einen Anforderungshandler, der „DetectLanguage“ für einen angegebenen Text aufruft.
 
 1. Fügen Sie die Hilfsklasse „MyHandler“ hinzu, die vom obigen Code verwendet wird.
 
@@ -171,7 +171,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
         }
     ```
 
-1. Fügen Sie im Ordner „Modelle“ eine Klasse für das Modell hinzu.
+1. Fügen Sie im Ordner *Modelle* eine Klasse für das Modell hinzu.
 
     ```csharp
     using System;

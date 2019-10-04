@@ -1,20 +1,20 @@
 ---
 title: Authentication
-titleSuffix: Cognitive Services - Azure
+titleSuffix: Azure Cognitive Services
 description: 'Es gibt drei Möglichkeiten zum Authentifizieren einer Anforderung an eine Azure Cognitive Services-Ressource: einen Abonnementschlüssel, ein Bearertoken und ein Abonnement für mehrere Dienste. In diesem Artikel erfahren Sie mehr über die einzelnen Methoden und das Ausführen einer Anforderung.'
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240761"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276778"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Authentifizieren von Anforderungen an Azure Cognitive Services
 
@@ -23,13 +23,14 @@ Jede Anforderung an Azure Cognitive Service muss einen Authentifizierungsheader 
 * [Authentifizieren mit einem Schlüssel für ein Abonnement für einen einzelnen Dienst](#authenticate-with-a-single-service-subscription-key)
 * [Authentifizieren mit einem Schlüssel für ein Abonnement für mehrere Dienste](#authenticate-with-a-multi-service-subscription-key)
 * [Authentifizieren mit einem Token](#authenticate-with-an-authentication-token)
+* [Authentifizieren mit Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Damit Sie eine Anforderung übermitteln können, benötigen Sie ein Azure-Konto und ein Azure Cognitive Services-Abonnement. Wenn Sie bereits über ein Konto verfügen, können Sie mit dem nächsten Abschnitt fortfahren. Wenn Sie noch kein Konto haben, sind Sie mit der folgenden Anleitung in wenigen Minuten startbereit: [Erstellen eines Cognitive Services-Kontos für Azure](cognitive-services-apis-create-account.md).
 
-Sie können Ihren Abonnementschlüssel über das [Azure-Portal](cognitive-services-apis-create-account.md#access-your-resource) abrufen, nachdem Sie Ihr Konto erstellt oder eine [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/my-apis) aktiviert haben.
- 
+Sie können Ihren Abonnementschlüssel über das [Azure-Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) abrufen, nachdem Sie Ihr Konto erstellt oder eine [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/my-apis) aktiviert haben.
+
 ## <a name="authentication-headers"></a>Authentifizierungsheader
 
 Betrachten wir zunächst kurz die verfügbaren Authentifizierungsheader für die Verwendung mit Azure Cognitive Services.
@@ -38,7 +39,7 @@ Betrachten wir zunächst kurz die verfügbaren Authentifizierungsheader für die
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | Verwenden Sie diesen Header für die Authentifizierung mit einem Abonnementschlüssel für einen bestimmten Dienst oder für mehrere Dienste. |
 | Ocp-Apim-Subscription-Region | Dieser Header ist nur bei Verwendung eines Schlüssels zu einem Abonnement für mehrere Dienste mit der [Textübersetzungs-API](./Translator/reference/v3-0-reference.md) erforderlich. Verwenden Sie diesen Header, um die Abonnementregion anzugeben. |
-| Autorisierung | Verwenden Sie diesen Header, wenn Sie ein Authentifizierungstoken verwenden. Die Schritte zum Ausführen eines Tokenaustauschs werden in den folgenden Abschnitten beschrieben. Der angegebene Wert weist folgendes Format auf: `Bearer <TOKEN>`. |
+| Authorization | Verwenden Sie diesen Header, wenn Sie ein Authentifizierungstoken verwenden. Die Schritte zum Ausführen eines Tokenaustauschs werden in den folgenden Abschnitten beschrieben. Der angegebene Wert weist folgendes Format auf: `Bearer <TOKEN>`. |
 
 ## <a name="authenticate-with-a-single-service-subscription-key"></a>Authentifizieren mit einem Schlüssel für ein Abonnement für einen einzelnen Dienst
 
@@ -65,7 +66,7 @@ Das folgende Video veranschaulicht die Verwendung eines Cognitive Services-Schl�
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>Authentifizieren mit einem Schlüssel für ein Abonnement für mehrere Dienste
 
 >[!WARNING]
-> Zum derzeitigen Zeitpunkt unterstützen diese Dienste Schlüssel für mehrere Dienste **nicht**: QnA Maker, Speech Services und Custom Vision.
+> Zum derzeitigen Zeitpunkt unterstützen diese Dienste Schlüssel für mehrere Dienste **nicht**: QnA Maker, Speech-Dienste, Custom Vision und Anomalieerkennung.
 
 Bei dieser Option wird ebenfalls ein Abonnementschlüssel zum Authentifizieren von Anforderungen verwendet. Der Hauptunterschied besteht darin, dass der Abonnementschlüssel nicht an einen bestimmten Dienst gebunden ist, sondern dass ein einzelner Schlüssel zum Authentifizieren von Anforderungen für mehrere Cognitive Services-Dienste verwendet werden kann. Weitere Informationen zur regionalen Verfügbarkeit, den unterstützten Funktionen und den Preisen finden Sie unter [Cognitive Services – Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
 
@@ -158,8 +159,10 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
+[!INCLUDE [](../../includes/cognitive-services-azure-active-directory-authentication.md)]
+
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Was ist Cognitive Services?](welcome.md)
 * [Cognitive Services – Preise](https://azure.microsoft.com/pricing/details/cognitive-services/)
-* [Erstellen eines Kontos](cognitive-services-apis-create-account.md)
+* [Benutzerdefinierte Unterdomänen](cognitive-services-custom-subdomains.md)

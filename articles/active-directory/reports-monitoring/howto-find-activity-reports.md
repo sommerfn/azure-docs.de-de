@@ -3,7 +3,7 @@ title: Suchen von Benutzeraktivitätsberichten von Azure Active Directory im Azu
 description: Erfahren Sie, wo sich die Azure Active Directory-Benutzeraktivitätsberichte im Azure-Portal befinden.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d47072713c57576abe780134792c3a5cbc27127c
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439038"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127391"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Speicherorte von Aktivitätsberichten im Azure-Portal
 
@@ -56,7 +56,7 @@ Zu den Kategorien zählen:
 - AdministrativeUnit
 - ApplicationManagement
 - Authentication
-- Autorisierung
+- Authorization
 - Kontakt
 - Gerät
 - DeviceConfiguration
@@ -112,12 +112,12 @@ Sie können den Bericht „Anmeldungen“ verwenden, um Details zur Anwendungsnu
 
 ### <a name="anomalous-activity-reports"></a>Berichte zu anomalen Aktivitäten
 
-Mit Berichten zu anomalen Aktivitäten werden Informationen zu sicherheitsbezogenen Risikoereignissen bereitgestellt, die von Azure AD erkannt und für die Berichte erstellt werden können.
+Berichte zu anomalen Aktivitäten enthalten Informationen zu sicherheitsbezogenen Risikoerkennungen, die in Azure AD erkannt und für die Berichte erstellt werden können.
 
-Die folgende Tabelle listet die Sicherheitsberichte zur anormalen Aktivität von Azure AD und die entsprechenden Risikoereignistypen im Azure-Portal auf. Weitere Informationen finden Sie unter [Azure Active Directory-Risikoereignisse](concept-risk-events.md).  
+In der folgenden Tabelle sind die Azure AD-Sicherheitsberichte zu anomalen Aktivitäten und die entsprechenden Risikoerkennungstypen im Azure-Portal aufgeführt. Weitere Informationen finden Sie unter [Azure Active Directory-Risikoerkennungen](concept-risk-events.md).  
 
 
-| Bericht zur anormalen Aktivität von Azure AD |  Typ des Identity Protection-Risikoereignisses|
+| Bericht zur anormalen Aktivität von Azure AD |  Identity Protection-Risikoerkennungstyp|
 | :--- | :--- |
 | Benutzer mit kompromittierten Anmeldeinformationen | Kompromittierte Anmeldeinformationen |
 | Irreguläre Anmeldeaktivitäten | Unmöglicher Ortswechsel zu atypischen Orten |
@@ -126,15 +126,15 @@ Die folgende Tabelle listet die Sicherheitsberichte zur anormalen Aktivität von
 | Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten | Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten |
 | - | Anmeldungen von unbekannten Standorten |
 
-Folgende Sicherheitsberichte zur anormalen Aktivität von Azure AD gehören nicht zu Risikoereignissen im Azure-Portal:
+Folgende Azure AD-Sicherheitsberichte zu anomalen Aktivitäten sind nicht als Risikoerkennungen im Azure-Portal enthalten:
 
 * Anmeldungen nach mehreren Fehlern
 * Anmeldungen aus mehreren geografischen Regionen
 
 
-### <a name="detected-risk-events"></a>Erkannte Risikoereignisse
+### <a name="detected-risk-detections"></a>Erkannte Risikoerkennungen
 
-Sie können im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit** auf die Berichte zu erkannten Risikoereignissen zugreifen. Die erkannten Risikoereignisse werden in den folgenden Berichten nachverfolgt:   
+Sie können im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit** auf die Berichte zu erkannten Risikoerkennungen zugreifen. Die erkannten Risikoerkennungen werden in den folgenden Berichten nachverfolgt:   
 
 - [Gefährdete Benutzer](concept-user-at-risk.md)
 - [Riskante Anmeldungen](concept-risky-sign-ins.md)

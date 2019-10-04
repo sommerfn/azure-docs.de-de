@@ -1,21 +1,21 @@
 ---
 title: Konfigurieren der Einstellungen des Prüfungstools – Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Sie können Ihr Team, Ihre Tags, Konnektoren, Workflows und Anmeldeinformationen mit dem Prüfungstool für Content Moderator konfigurieren oder abrufen.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: f88ccbabc925b651abbc06f571a9d4220ed8aeb2
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 5e12806aca7c53c254cc43c8ff5bb8d314f9993e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756520"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882740"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurieren des Prüfungstools
 
@@ -64,7 +64,7 @@ Wenn Sie Mitglied mehrerer untergeordneter Teams sind, können Sie zwischen dies
 
 ![Zwischen untergeordneten Teams wechseln](images/3-review-image-subteam-2.png)
 
-## <a name="tags"></a>Tags
+## <a name="tags"></a>`Tags`
 
 Auf der Registerkarte **Tags** können Sie zusätzlich zu den beiden Standardmoderationstags – &mdash;**isadult** (**a**) and **isracy** (**r**) – benutzerdefinierte Moderationstags definieren. Wenn Sie ein benutzerdefiniertes Tag erstellen, wird es in Überprüfungen neben den Standardtags verfügbar. Sie können ändern, welche Tags in Überprüfungen angezeigt werden, indem Sie deren Sichtbarkeitseinstellungen ändern.
 

@@ -5,26 +5,21 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/14/2019
+ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 8a36a80903a47bb4163666baf86ed8dac13a00de
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f825b67baf36c9a1a9187d555522f5a5955d1c7
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093836"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620075"
 ---
 # <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Überprüfen des Kostenvorkalkulationsberichts im Azure Site Recovery-Bereitstellungsplaner für die VMware-Notfallwiederherstellung in Azure
 
 Der Bereitstellungsplaner-Bericht enthält eine Zusammenfassung der Kostenvorkalkulation auf Arbeitsblättern mit [Recommendations](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) (Empfehlungen) sowie eine ausführliche Kostenanalyse auf dem Arbeitsblatt „Cost Estimation“ (Kostenvorkalkulation). Er enthält eine ausführliche Kostenanalyse pro VM. 
 
 >[!Note]
->Die aktuelle Version des Bereitstellungsplanertools bietet keine Kostenschätzung für VMs, die eine Replikation auf verwaltete Datenträger durchführen.
->* DR-Drill-Kostenschätzungen sind für Speicherkonten und verwaltete Datenträger gleich, wenn der Parameter „Verwaltete Datenträger verwenden“ auf dem Blatt „Compute und Netzwerk“ auf „Ja“ festgelegt ist.
->* Um eine ungefähre jährliche Kostenschätzung für die Replikation zu erhalten, nehmen Sie die folgenden temporären Einstellungen auf dem Blatt **Cost Estimation** (Kostenvorkalkulation) vor:
->    * Legen Sie den Parameter „Cost duration“ (Kostendauer) in der Tabelle **Einstellungen** auf „Year“ (Jahr) fest.
->    * Legen Sie die Spalte „Number of DR drills in a year“ (Anzahl von DR-Drills in einem Jahr) in der Tabelle **Ausführliche Kostenanalyse**, auf „12“ und die Spalte „Each DR-Drill duration (Days)“ (Dauer einzelner DR-Drills [Tage]) auf „30“ fest. 
->    * Die Replikationskosten gleichen den in der Spalte „R“ aufgeführten Kosten, d.h. „DR-Drill storage cost per year“ (DR-Drill-Speicherkosten pro Jahr) in Unterabschnitt **DR-Drill cost per year** (Kosten für DR-Drills pro Jahr).
+>Die aktuelle Version des Bereitstellungsplaners (V2.5) bietet eine Kostenschätzung für VMs, die eine Replikation auf verwaltete Datenträger durchführen.
 
 ### <a name="cost-estimation-summary"></a>Zusammenfassung „Cost Estimation“ (Kostenvorkalkulation) 
 Im Graphen ist die Übersicht über die geschätzten Gesamtkosten der Notfallwiederherstellung (Disaster Recovery, DR) in Azure für Ihre gewählte Zielregion und Währung dargestellt, die Sie für die Berichterstellung angegeben haben.
@@ -94,7 +89,6 @@ Wenn Sie ein Azure-Partner oder Kunde sind und Ihnen ein allgemeiner Rabatt auf 
 In dieser Tabelle werden die Anzahl von Windows-VMs und anderen VMs sowie die dazugehörigen Computekosten für DR-Drills angezeigt.
 
 ### <a name="settings"></a>Einstellungen 
-**Using managed disk** (Verwalteten Datenträger verwenden): Gibt an, ob bei DR-Drills ein verwalteter Datenträger verwendet wird. Die Standardeinstellung ist „Yes“ (Ja). Wenn Sie „-UseManagedDisks“ auf „No“ (Nein) festgelegt haben, wird der Preis für den nicht verwalteten Datenträger für die Kostenkalkulation verwendet.
 
 **Currency**: Die Währung, in der der Bericht erstellt wird. „Cost duration“ (Kostendauer):  Sie können alle Kosten für den Monat oder für das ganze Jahr anzeigen. 
 
@@ -107,7 +101,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 * Number of VMs, IaaS size (Your selection) (Anzahl von VMs, IaaS-Größe (Ihre Auswahl))
 * Storage Type (Standard/Premium) (Speichertyp (Standard/Premium))
-* VM total storage size (GB) (VM-Gesamtspeichergröße (GB))
+* VM total storage size (GB) of the source machine (VM-Gesamtspeichergröße des Quellcomputers in GB)
 * Number of DR drills in a year (Anzahl von DR-Drills in einem Jahr) 
 * Each DR drill duration (Days) (Dauer einzelner DR-Drills (Tage)) 
 * OS Type (Betriebssystemtyp)
@@ -128,7 +122,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 **Storage type** (Speichertyp): Der Typ des Speichers, der von der VM verwendet wird. Es kann entweder Standardspeicher oder Storage Premium ausgewählt werden.
 
-**VM total storage size (GB)** (VM-Gesamtspeichergröße [GB]): Der Gesamtspeicher der VM.
+**VM total storage size (GB)** (VM-Gesamtspeichergröße [GB]): Der Gesamtspeicher der Quell-VM.
 
 **Number of DR drills in a year** (Anzahl von DR-Drills in einem Jahr): Gibt an, wie oft Sie in einem Jahr DR-Drills durchführen. Die Standardeinstellung ist viermal pro Jahr. Sie können den Zeitraum für bestimmte VMs ändern oder den neuen Wert auf alle VMs anwenden, indem Sie den neuen Wert in der obersten Zeile eingeben und auf die Schaltfläche „Apply to all“ (Auf alle anwenden) klicken. Die Gesamtkosten für DR-Drills werden basierend auf der Anzahl von DR-Drills in einem Jahr und den einzelnen Dauern der DR-Drills berechnet.  
 

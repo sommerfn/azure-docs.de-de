@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: kasparks
 ms.openlocfilehash: 9f599a63fd5f52420f1b79e769d4f7bca9683b32
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59053287"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60467847"
 ---
 # <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>Anzeigen relevanter Azure Advisor-Empfehlungen
 

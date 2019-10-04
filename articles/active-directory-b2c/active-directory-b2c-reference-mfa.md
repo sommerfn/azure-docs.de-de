@@ -2,24 +2,24 @@
 title: Multi-Factor Authentication in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Aktivieren der Multi-Factor Authentication in kundenorientierten Anwendungen, die mit Azure Active Directory B2C geschützt werden
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 931fd0714977fb4c5f79aa32691881f9794a44cd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0b872fcfbc2ead2cebdd32ff718b582c13af314e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198315"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065582"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Aktivieren der Multi-Factor Authentication in Azure Active Directory B2C
 
-Azure Active Directory (Azure AD) B2C bietet eine direkte Integration in die [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md), damit Sie eine zweite Sicherheitsebene zu Registrierungs- und Anmeldeoberflächen in Anwendungen hinzufügen können. Sie können die Multi-Factor Authentication aktivieren, ohne eine einzige Codezeile schreiben zu müssen. Wenn Sie bereits Benutzerflows für Registrierung und Anmeldung erstellt haben, können Sie dennoch die mehrstufige Authentifizierung aktivieren.
+Azure Active Directory B2C (Azure AD B2C) bietet eine direkte Integration von [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md), damit Sie eine zweite Sicherheitsebene zu Registrierungs- und Anmeldeoberflächen in Anwendungen hinzufügen können. Sie können die Multi-Factor Authentication aktivieren, ohne eine einzige Codezeile schreiben zu müssen. Wenn Sie bereits Benutzerflows für Registrierung und Anmeldung erstellt haben, können Sie dennoch die mehrstufige Authentifizierung aktivieren.
 
 Mithilfe dieses Features können Anwendungen z. B. folgende Szenarios bewältigen:
 
@@ -40,11 +40,11 @@ In Ihrem Mandanten wird ein Kundenkonto erstellt, bevor der Schritt für die Mul
 
 ## <a name="add-multi-factor-authentication"></a>Hinzufügen der Multi-Factor Authentication
 
-Es ist möglich, die mehrstufige Authentifizierung für einen Benutzerflow zu aktivieren, den Sie zuvor erstellt haben. 
+Es ist möglich, die mehrstufige Authentifizierung für einen Benutzerflow zu aktivieren, den Sie zuvor erstellt haben.
 
 So aktivieren Sie die Multi-Factor Authentication:
 
-1. Öffnen Sie den Benutzerflow, und wählen Sie **Eigenschaften** aus. 
+1. Öffnen Sie den Benutzerflow, und wählen Sie **Eigenschaften** aus.
 2. Klicken Sie neben **Mehrstufige Authentifizierung** auf **Aktiviert**.
 3. Klicken Sie oben auf der Seite auf **Speichern**.
 

@@ -1,24 +1,23 @@
 ---
 title: Verwenden von Apache Spark zum Lesen und Schreiben von Daten in Azure SQL-Datenbank
 description: Informationen zum Einrichten einer Verbindung zwischen einem HDInsight Spark-Cluster und einer Azure SQL-Datenbank zum Lesen, Schreiben und Streamen von Daten in einer SQL-Datenbank
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/15/2018
-ms.openlocfilehash: 2b818350c19d1d9ff34bcdac0e438def0f859e40
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 05/21/2019
+ms.openlocfilehash: c262d3841acd3497667c00a9deee04b304ddae76
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381901"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984811"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Verwenden eines HDInsight Spark-Clusters zum Lesen und Schreiben von Daten in einer Azure SQL-Datenbank
 
-In diesem Artikel wird erläutert, wie Sie eine Verbindung zwischen einem Apache Spark-Cluster in Azure HDInsight und einer Azure SQL-Datenbank herstellen und dann Daten in der SQL-Datenbank lesen, schreiben und streamen. In diesem Artikel wird ein [Jupyter Notebook](https://jupyter.org/) zum Ausführen der Scala-Codeausschnitte verwendet. Sie können jedoch auch eine eigenständige Anwendung in Scala oder Python erstellen und die gleichen Aufgaben ausführen. 
+In diesem Artikel wird erläutert, wie Sie eine Verbindung zwischen einem Apache Spark-Cluster in Azure HDInsight und einer Azure SQL-Datenbank herstellen und dann Daten in der SQL-Datenbank lesen, schreiben und streamen. In diesem Artikel wird ein [Jupyter Notebook](https://jupyter.org/) zum Ausführen der Scala-Codeausschnitte verwendet. Sie können jedoch auch eine eigenständige Anwendung in Scala oder Python erstellen und die gleichen Aufgaben ausführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,7 +36,7 @@ In diesem Artikel wird erläutert, wie Sie eine Verbindung zwischen einem Apache
 Erstellen Sie zunächst ein dem Spark-Cluster zugeordnetes [Jupyter Notebook](https://jupyter.org/). Sie verwenden dieses Notebook, um die in diesem Artikel verwendeten Codeausschnitte auszuführen. 
 
 1. Öffnen Sie Ihren Cluster im [Azure-Portal](https://portal.azure.com/).
-1. Wählen Sie auf der rechten Seite unterhalb von **Clusterdashboards** die Option **Jupyter Notebook** aus.  Sollte **Clusterdashboards** nicht angezeigt werden, klicken Sie im linken Menü des Blatts auf **Übersicht**. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
+1. Wählen Sie auf der rechten Seite unterhalb von **Clusterdashboards** die Option **Jupyter Notebook** aus.  Sollte **Clusterdashboards** nicht angezeigt werden, wählen Sie im linken Menü die Option **Übersicht** aus. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
 
     ![Jupyter-Notebook unter Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter-Notebook unter Spark")
    
@@ -96,7 +95,7 @@ In diesem Abschnitt lesen Sie Daten aus einer Tabelle (z.B. **SalesLT.Address**)
    
     Eine Ausgabe ähnlich der folgenden wird angezeigt:
 
-    ![Angeben eines neuen Namens für das Notebook](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "Angeben eines neuen Namens für das Notebook")
+    ![Ausgabe des Schemas](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "Ausgabe des Schemas")
 
 1. Sie können beispielsweise auch die ersten 10 Zeilen abrufen.
 
@@ -149,11 +148,11 @@ In diesem Abschnitt wird über eine im Cluster verfügbare CSV-Datei eine Tabell
 
     a. Starten Sie SSMS, und stellen Sie unter Angabe der entsprechenden Verbindungsdetails (siehe dazu Screenshot unten) eine Verbindung mit der Azure SQL-Datenbank her.
 
-    ![Herstellen einer Verbindung mit der SQL-Datenbank über SSMS](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Herstellen einer Verbindung mit der SQL-Datenbank über SSMS")
+    ![Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung von SSMS1](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung von SSMS1")
 
     b. Erweitern Sie im Objekt-Explorer die Azure SQL-Datenbank und den Knoten „Tables“, um die erstellte Tabelle **dbo.hvactable** anzuzeigen.
 
-    ![Herstellen einer Verbindung mit der SQL-Datenbank über SSMS](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Herstellen einer Verbindung mit der SQL-Datenbank über SSMS")
+    ![Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung von SSMS2](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung von SSMS2")
 
 1. Führen Sie eine Abfrage in SSMS aus, um die Spalten in der Tabelle zu sehen.
 
@@ -165,7 +164,7 @@ In diesem Abschnitt werden Daten in die Tabelle **hvactable** gestreamt, die Sie
 
 1. Stellen Sie in einem ersten Schritt sicher, dass in **hvactable** keine Datensätze vorhanden sind. Führen Sie unter Verwendung von SSMS die folgende Abfrage für die Tabelle aus.
 
-       DELETE FROM [dbo].[hvactable]
+       TRUNCATE TABLE [dbo].[hvactable]
 
 1. Erstellen Sie ein neues Jupyter Notebook im HDInsight Spark-Cluster. Fügen Sie den folgenden Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**:
 
@@ -175,7 +174,7 @@ In diesem Abschnitt werden Daten in die Tabelle **hvactable** gestreamt, die Sie
        import org.apache.spark.sql.streaming._
        import java.sql.{Connection,DriverManager,ResultSet}
 
-1. Die Daten aus der Datei **HVAC.csv** werden in die Tabelle „hvactable“ gestreamt. Die Datei „HVAC.csv“ ist im Cluster unter */HdiSamples/HdiSamples/SensorSampleData/HVAC/* verfügbar. Mit dem folgenden Codeausschnitt wird zunächst das Schema der zu streamenden Daten abgerufen. Anschließend wird unter Verwendung dieses Schemas ein Streaming-Dataframe erstellt. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
+1. Die Daten aus der Datei **HVAC.csv** werden in die Tabelle „hvactable“ gestreamt. Die Datei „HVAC.csv“ ist auf dem Cluster unter `/HdiSamples/HdiSamples/SensorSampleData/HVAC/` verfügbar. Mit dem folgenden Codeausschnitt wird zunächst das Schema der zu streamenden Daten abgerufen. Anschließend wird unter Verwendung dieses Schemas ein Streaming-Dataframe erstellt. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
@@ -183,7 +182,7 @@ In diesem Abschnitt werden Daten in die Tabelle **hvactable** gestreamt, die Sie
 
 1. In der Ausgabe wird das Schema von **HVAC.csv** angezeigt. Die Tabelle **hvactable** weist dasselbe Schema auf. In der Ausgabe werden die Spalten in der Tabelle angezeigt.
 
-    ![Schema der Tabelle](./media/apache-spark-connect-to-sql-database/schema-of-table.png "Schema der Tabelle")
+    ![Schema der Tabelle](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Schema der Tabelle")
 
 1. Verwenden Sie schließlich den folgenden Codeausschnitt, um Daten aus der Datei „HVAC.csv“ zu lesen und in die Tabelle **hvactable** in Azure SQL-Datenbank zu streamen. Fügen Sie den Codeausschnitt in eine Codezelle ein, ersetzen Sie die Platzhalterwerte durch die Werte für Ihre Azure SQL-Datenbank, und drücken Sie dann **UMSCHALT+EINGABE**, um die Codezelle auszuführen.
 

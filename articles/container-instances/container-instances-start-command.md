@@ -3,16 +3,17 @@ title: Verwenden einer Startbefehlszeile in Azure Container Instances
 description: Setzen Sie den in einem Containerimage konfigurierten Einstiegspunkt außer Kraft, wenn Sie eine Azure-Containerinstanz bereitstellen.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 78136a081e52ef3f12d672d01449ce616534462e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 40d946db48a65452d2da529098c07d0d0c60d472
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011009"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619661"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Legen Sie die Befehlszeile in einer Containerinstanz so fest, dass sie die standardmäßige Befehlszeilenoperation außer Kraft setzt.
 
@@ -22,9 +23,17 @@ Wie das Festlegen von [Umgebungsvariablen](container-instances-environment-varia
 
 ## <a name="command-line-guidelines"></a>Befehlszeilenrichtlinien
 
-* Standardmäßig gibt die Befehlszeile einen *einzelnen Prozess an, der ohne Shell* im Container startet. Über die Befehlszeile kann z. B. ein Python-Skript oder eine ausführbare Datei ausgeführt werden. 
+* Standardmäßig gibt die Befehlszeile einen *einzelnen Prozess an, der ohne Shell* im Container startet. Über die Befehlszeile kann z. B. ein Python-Skript oder eine ausführbare Datei ausgeführt werden. Der Prozess kann zusätzliche Parameter oder Argumente angeben.
 
-* Um mehrere Befehle auszuführen, beginnen Sie Ihre Befehlszeile mit dem Einrichten einer Shellumgebung im Containerbetriebssystem (Beispiele: `bin/sh`, `/bin/bash`, `cmd`). Folgen Sie den Konventionen der Shell, um mehrere Befehle zu kombinieren und in Folge auszuführen.
+* Um mehrere Befehle auszuführen, beginnen Sie Ihre Befehlszeile mit dem Einrichten einer Shellumgebung, die im Containerbetriebssystem unterstützt wird. Beispiele:
+
+  |Betriebssystem  |Standardshell  |
+  |---------|---------|
+  |Ubuntu     |   `/bin/bash`      |
+  |Alpine     |   `/bin/sh`      |
+  |Windows     |    `cmd`     |
+
+  Folgen Sie den Konventionen der Shell, um mehrere Befehle zu kombinieren und in Folge auszuführen.
 
 * Abhängig von der Containerkonfiguration müssen Sie möglicherweise einen vollständigen Pfad zur ausführbaren Befehlszeilendatei oder zu Argumenten festlegen.
 
@@ -55,7 +64,7 @@ Die Befehlszeilensyntax variiert je nach Azure-API oder dem Tool, die bzw. das z
 
 ## <a name="azure-cli-example"></a>Azure CLI-Beispiel
 
-Ändern Sie z. B. das Verhalten des Containerimages [microsoft/aci-wordcount][aci-wordcount], das Text in Shakespeares *Hamlet* analysiert, um die am häufigsten vorkommenden Wörter zu finden. Anstatt *Hamlet* zu analysieren, können Sie eine Befehlszeile festlegen, die auf eine andere Textquelle verweist.
+Ändern Sie z.B. das Verhalten des Containerimages [microsoft/aci-wordcount][aci-wordcount], das Text in Shakespeares *Hamlet* analysiert, um die am häufigsten vorkommenden Wörter zu finden. Anstatt *Hamlet* zu analysieren, können Sie eine Befehlszeile festlegen, die auf eine andere Textquelle verweist.
 
 Um die Ausgabe des Containers [microsoft/aci-wordcount][aci-wordcount] anzuzeigen, wenn er den Standardtext analysiert, führen Sie ihn mit dem folgenden Befehl [az container create][az-container-create] aus. Es wird keine Startbefehlszeile angegeben, sodass der Standardcontainerbefehl ausgeführt wird. Zur Veranschaulichung legt dieses Beispiel [Umgebungsvariablen](container-instances-environment-variables.md) fest, um die drei wichtigsten Wörter zu finden, die mindestens fünf Buchstaben lang sind:
 
@@ -68,7 +77,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Sobald für den Container der Status *Beendet* angezeigt wird, (verwenden Sie [az container show][az-container-show] zum Überprüfen des Status), zeigen Sie deren Protokolle mit [az container logs][az-container-logs] an, um die Ausgabe anzuzeigen.
+Sobald für den Container der Status *Beendet* angezeigt wird, (verwenden Sie [az container show][az-container-show] zum Überprüfen des Status), zeigen Sie dessen Protokolle mit [az container logs][az-container-logs] an, um die Ausgabe zu sehen.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer1

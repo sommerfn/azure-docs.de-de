@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: ea5a6a70372571daf82e7639fc31c125d69fa44f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 6fea7b7d3d3ef3b1a46aeeff0bab8fef2a9bf3ad
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621429"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860358"
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 
@@ -29,21 +29,34 @@ Diese Versionsanmerkungen zu Azure Media Services bieten eine Übersicht über �
 
 Wir wünschen uns Feedback von unseren Kunden, damit wir Probleme beheben können, die negative Auswirkungen auf Ihre Arbeit haben. Wenn Sie ein Problem melden oder Fragen stellen möchten, verfassen Sie einen Beitrag im [MSDN-Forum für Azure Media Services]. 
 
-## <a name="a-idissuescurrently-known-issues"></a><a id="issues"/>Aktuell bekannte Probleme
-### <a name="a-idgeneralissuesmedia-services-general-issues"></a><a id="general_issues"/>Allgemeine Probleme von Media Services
+## <a name="a-idissuesknown-issues"></a><a id="issues"/>Bekannte Probleme
+### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Allgemeine Probleme von Media Services
 
 | Problem | BESCHREIBUNG |
 | --- | --- |
 | Mehrere gängige HTTP-Header werden in der REST-API nicht bereitgestellt. |Wenn Sie Media Services-Anwendungen mithilfe der REST-API entwickeln, werden Sie bemerken, dass einige gängige HTTP-Headerfelder (einschließlich CLIENT-REQUEST-ID, REQUEST-ID und RETURN-CLIENT-REQUEST-ID) nicht unterstützt werden. Diese Header werden in einem späteren Update hinzugefügt. |
 | Prozentcodierung ist nicht zulässig. |Media Services verwendet den Wert der IAssetFile.Name-Eigenschaft beim Erstellen von URLs für den Streaminginhalt (z.B. `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters`). Aus diesem Grund ist die Prozentcodierung nicht zulässig. Der Wert der Eigenschaft „Name“ darf keines der folgenden [für die Prozentcodierung reservierten Zeichen](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: !*'();:@&=+$,/?%#[]". Darüber hinaus wird für die Dateinamenerweiterung nur ein Punkt (.) unterstützt. |
-| Die ListBlobs-Methode, die Teil des Azure Storage-SDK Version 3.x ist, schlägt fehl. |Media Services generiert SAS-URLs auf Grundlage der Version [12.02.2012](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) . Falls Sie das Storage SDK zur Auflistung von Blobs in einem Blobcontainer nutzen möchten, verwenden Sie die [CloudBlobContainer.ListBlobs](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx)-Methode, die Teil des Storage SDK Version 2.x ist. |
+| Die ListBlobs-Methode, die Teil des Azure Storage-SDK Version 3.x ist, schlägt fehl. |Media Services generiert SAS-URLs auf Grundlage der Version [12.02.2012](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) . Falls Sie das Storage SDK zur Auflistung von Blobs in einem Blobcontainer nutzen möchten, verwenden Sie die [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs)-Methode, die Teil des Storage SDK Version 2.x ist. |
 | Der Drosselungsmechanismus von Media Services schränkt die Ressourcenverwendung für Anwendungen ein, die übermäßig viele Anforderungen an den Dienst senden. Der Dienst kann den HTTP-Statuscode 503, „Dienst nicht verfügbar“, zurückgeben. |Weitere Informationen finden Sie in der Beschreibung des HTTP-Statuscodes 503 unter [Media Services-Fehlercodes](media-services-encoding-error-codes.md). |
 | Beim Abfragen von Entitäten werden maximal 1.000 Entitäten gleichzeitig zurückgegeben, weil die öffentliche REST-Version 2 Abfrageergebnisse auf 1.000 Ergebnisse begrenzt. |Verwenden Sie „Skip“ und „Take“ (.NET) bzw. „top“ (REST), wie in [diesem .NET-Beispiel](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) und [diesem REST-API-Beispiel](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities) beschrieben. |
 | Bei einigen Clients kann im Smooth Streaming-Manifest ein Problem mit einem Wiederholungstag auftreten. |Weitere Informationen finden Sie in [diesem Abschnitt](media-services-deliver-content-overview.md#known-issues). |
 | Media Services .NET SDK-Objekte können nicht serialisiert werden und funktionieren daher nicht mit Azure Cache for Redis. |Wenn Sie versuchen, das SDK-Objekt „AssetCollection“ zu serialisieren, um es Azure Cache for Redis hinzuzufügen, wird eine Ausnahme ausgelöst. |
+|Die REST-API antwortet bei dem Versuch, einen Filter auf Medienobjekt- oder Kontoebene abzurufen, mit einer Fehlermeldung, die besagt „Auf den Filter kann mit dieser Version der REST-API nicht zugegriffen werden“.|Der Filter wurde mit einer neueren als der für den Abrufversuch verwendeten API-Version erstellt oder geändert. Dies kann vorkommen, wenn zwei API-Versionen von Code oder Tools verwendet werden, die vom Kunden genutzt werden.  Die beste Lösung besteht in diesem Fall darin, den Code oder die Tools für die Verwendung der neueren der beiden API-Versionen zu aktualisieren.|
 
-## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST-API-Versionsverlauf
+## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST-API-Versionsverlauf
 Informationen zum Versionsverlauf der Media Services-REST-API finden Sie unter [Azure Media Services – REST-API-Referenz].
+
+## <a name="august-2019"></a>August 2019
+
+### <a name="deprecation-of-media-processors"></a>Einstellung von Medienprozessoren
+
+Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) an, die am 30. November 2019 eingestellt werden.
+
+Weitere Informationen finden Sie unter [Migrieren von WAME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) und [Migrieren von AME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
+
+## <a name="march-2019"></a>März 2019
+
+Das Azure Media Services-Feature „Media Hyperlapse-Vorschau“ wurde eingestellt.
 
 ## <a name="december-2018"></a>Dezember 2018
 
@@ -132,7 +145,7 @@ Weitere Informationen zu diesen Eigenschaften finden Sie unter [StreamingEndpoin
 
  Sie können Media Services jetzt verwenden, um auf Telemetrie- und Metrikdaten für die zugehörigen Dienste zuzugreifen. Mit der aktuellen Version von Media Services können Sie Telemetriedaten für Liveentitäten für Kanäle, Streamingendpunkte und Archive sammeln. Weitere Informationen finden Sie unter [Media Services-Telemetrie](media-services-telemetry-overview.md).
 
-## <a name="a-idjulychanges16july-2016-release"></a><a id="july_changes16"/>Release von Juli 2016
+## <a name="a-idjuly_changes16july-2016-release"></a><a id="july_changes16"/>Release von Juli 2016
 ### <a name="updates-to-the-manifest-file-ism-generated-by-encoding-tasks"></a>Updates der durch Codierungsaufgaben generierten Manifestdatei (*.ism)
 Wenn eine Codierungsaufgabe an Media Encoder Standard oder Media Encoder Premium gesendet wird, erstellt die Aufgabe eine [Streamingmanifestdatei](media-services-deliver-content-overview.md) (*.ism) im Ausgabemedienobjekt. Im letzten Dienstrelease wurde die Syntax dieser Streamingmanifestdatei aktualisiert.
 
@@ -321,10 +334,6 @@ Das [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.medias
 * Sie können RTMP-Livestreams derzeit nicht über eine SSL-Verbindung erfassen.
 * Sie können nur dann über SSL streamen, wenn der Streamingendpunkt, von dem aus Sie Ihre Inhalte übermitteln, nach dem 10. September 2014 erstellt wurde. Wenn die Streaming-URLs auf Streamingendpunkten basieren, die nach dem 10. September 2014 erstellt wurden, enthält die URL „streaming.mediaservices.windows.net“ (das neue Format). Streaming-URLs, die „origin.mediaservices.windows.net“ (das alte Format) enthalten, unterstützen kein SSL. Wenn die URL im alten Format vorliegt und Sie über SSL streamen möchten, [erstellen Sie einen neuen Streamingendpunkt](media-services-portal-manage-streaming-endpoints.md). Verwenden Sie auf dem neuen Streamingendpunkt basierende URLs, um Ihre Inhalte über SSL zu streamen.
 
-## <a id="october_changes_14"></a>Release von Oktober 2014
-### <a id="new_encoder_release"></a>Media Services-Encoder-Release
- Das neue Release von Azure Media Encoder von Media Services wurde angekündigt. Mit dem neuesten Media Encoder werden Ihnen nur Ausgabedaten (GB) in Rechnung gestellt. Abgesehen davon ist das neue Encoderfeature mit dem vorherigen Encoder kompatibel. Weitere Informationen finden Sie unter [Media Services – Preise].
-
 ### <a id="oct_sdk"></a>Media Services .NET SDK
 Das Media Services SDK für .NET-Erweiterungen liegt jetzt in der Version 2.0.0.3 vor.
 
@@ -397,14 +406,6 @@ Das Media Services .NET SDK liegt jetzt in der Version 3.0.0.5 vor. Die folgende
 
 Weitere Informationen finden Sie unter [Wiederholungslogik im Media Services SDK für .NET].
 
-## <a id="april_changes_14"></a>Encoder-Release von April 2014
-### <a name="april_14_enocer_changes"></a>Media Services Encoder-Updates
-* Es wurde Unterstützung für die Erfassung von AVI-Dateien hinzugefügt, die mit dem nichtlinearen Grass Valley EDIUS-Editor erstellt wurden. In diesem Prozess wird das Video mit dem Grass Valley HQ/HQX-Codec geringfügig komprimiert. Weitere Informationen finden Sie unter [Grass Valley Announces EDIUS 7 Streaming Through the Cloud] (Grass Valley kündigt EDIUS 7-Streaming über die Cloud an).
-*  Die Unterstützung für die Festlegung der Namenskonvention für die vom Media Services Encoder erstellten Dateien wurde hinzugefügt. Weitere Informationen finden Sie unter [Steuern von Media Services Encoder-Ausgabedateinamen](https://msdn.microsoft.com/library/azure/dn303341.aspx).
-*  Die Unterstützung für Video- und/oder Audioüberlagerungen wurde hinzugefügt. Weitere Informationen finden Sie unter [Erstellen einer Überlagerung](https://msdn.microsoft.com/library/azure/dn640496.aspx).
-*  Die Unterstützung für das Zusammenfügen mehrerer Videosegmente wurde hinzugefügt. Weitere Informationen finden Sie unter [Zusammenfügen von Videosegmenten](https://msdn.microsoft.com/library/azure/dn640504.aspx).
-* Ein Fehler im Zusammenhang mit der Transcodierung von MP4-Dateien wurde behoben, bei dem die Audiospur mit MPEG-1 Audio Layer 3 (auch bekannt als MP3) codiert wurde.
-
 ## <a id="jan_feb_changes_14"></a>Releases von Januar/Februar 2014
 ### <a name="jan_fab_14_donnet_changes"></a>Media Services .NET SDK 3.0.0.1, 3.0.0.2 und 3.0.0.3
 Folgende Änderungen wurden in 3.0.0.1 und 3.0.0.2 vorgenommen:
@@ -417,7 +418,7 @@ Weitere Informationen zu den Änderungen finden Sie unter: [Media Services .NET 
 Die folgenden Änderungen wurden in Version 3.0.0.3 vorgenommen:
 
 * Die Azure-Speicherabhängigkeiten wurden für die Verwendung von Version 3.0.3.0 aktualisiert.
-* Behoben wurde auch ein Problem mit der Abwärtskompatibilität für Versionen 3.0.*.* .
+* Behoben wurde auch ein Problem mit der Abwärtskompatibilität für Versionen 3.0. *.* .
 
 ## <a id="december_changes_13"></a>Release von Dezember 2013
 ### <a name="dec_13_donnet_changes"></a>Media Services .NET SDK 3.0.0.0
@@ -556,7 +557,7 @@ Die folgende Funktion war im November-Release des SDK neu:
 <!--- URLs. --->
 [MSDN-Forum für Azure Media Services]: https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Azure Media Services – REST-API-Referenz]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
-[Media Services – Preise]: https://azure.microsoft.com/pricing/details/media-services/
+[Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
 [Eingeben von Metadaten]: https://msdn.microsoft.com/library/azure/dn783120.aspx
 [Ausgeben von Metadaten]: https://msdn.microsoft.com/library/azure/dn783217.aspx
 [Deliver content]: https://msdn.microsoft.com/library/azure/hh973618.aspx
@@ -573,7 +574,7 @@ Die folgende Funktion war im November-Release des SDK neu:
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: https://msdn.microsoft.com/library/azure/dn189154.aspx
 [Wiederholungslogik im Media Services SDK für .NET]: https://msdn.microsoft.com/library/azure/dn745650.aspx
-[Grass Valley Announces EDIUS 7 Streaming Through the Cloud]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter (Grass Valley kündigt EDIUS 7-Streaming über die Cloud an)
+[Grass Valley announces EDIUS 7 streaming through the cloud]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: https://msdn.microsoft.com/library/azure/dn303341.aspx
 [Create overlays]: https://msdn.microsoft.com/library/azure/dn640496.aspx
 [Stitch video segments]: https://msdn.microsoft.com/library/azure/dn640504.aspx

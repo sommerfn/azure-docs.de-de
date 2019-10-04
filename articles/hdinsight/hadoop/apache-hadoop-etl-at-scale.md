@@ -1,28 +1,27 @@
 ---
 title: Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL) – Azure HDInsight
-description: Erfahren Sie, wie ETL in HDInsight mit Apache Hadoop verwendet wird.
-services: hdinsight
+description: Erfahren Sie, wie ETL (Extrahieren, Transformieren und Laden) in HDInsight mit Apache Hadoop verwendet wird.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2017
+ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: c200ca98f2a5ea32886ec12d3e732af6598254f7
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337611"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066940"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)
 
-Extrahieren, Transformieren und Laden (ETL) ist der Prozess, mit dem Daten aus verschiedenen Quellen abgerufen, an einem Standardspeicherort gesammelt, bereinigt und verarbeitet, und letztlich in einen Datenspeicher geladen werden, aus dem sie abgefragt werden können. Legacy-ETL-Prozesse importieren Daten, bereinigen Sie am Ursprungsort und speichern sie dann in einer relationalen Daten-Engine. Bei HDInsight unterstützt eine große Vielzahl von Apache Hadoop-Ökosystemkomponenten die Durchführung des bedarfsorientierten ETL. 
+Extrahieren, Transformieren und Laden (ETL) ist der Prozess, mit dem Daten aus verschiedenen Quellen abgerufen, an einem Standardspeicherort gesammelt, bereinigt und verarbeitet, und letztlich in einen Datenspeicher geladen werden, aus dem sie abgefragt werden können. Legacy-ETL-Prozesse importieren Daten, bereinigen Sie am Ursprungsort und speichern sie dann in einer relationalen Daten-Engine. Bei HDInsight unterstützt eine große Vielzahl von Apache Hadoop-Ökosystemkomponenten die Durchführung des bedarfsorientierten ETL.
 
 Die Verwendung von HDInsight im ETL-Prozess lässt sich in dieser folgenden Pipeline zusammenfassen:
 
-![HDInsight-ETL-Übersicht](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+![HDInsight – Bedarfsorientiertes ETL – Übersicht](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
 
 In den folgenden Abschnitten wird jede der ETL-Phasen mit den jeweils zugehörigen Komponenten eingehender untersucht.
 
@@ -36,11 +35,11 @@ Orchestrierung ist erforderlich, um den geeigneten Auftrag zum richtigen Zeitpun
 
 Apache Oozie ist ein Koordinationssystem für Workflows zur Verwaltung von Hadoop-Aufträgen. Oozie wird innerhalb eines HDInsight-Clusters ausgeführt und ist in den Hadoop-Stapel integriert. Oozie unterstützt Hadoop-Aufträge für Apache Hadoop MapReduce, Apache Pig, Apache Hive und Apache Sqoop. Oozie kann auch dazu verwendet werden, systemspezifische Aufträge zu planen, beispielsweise Java-Programme oder Shellskripts.
 
-Weitere Informationen finden Sie unter [Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in HDInsight](../hdinsight-use-oozie-linux-mac.md). Ausführliche Einblicke in die Verwendung von Oozie zum Nutzen einer End-to-End-Pipeline finden Sie unter [Operationalisieren einer Datenanalysepipeline](../hdinsight-operationalize-data-pipeline.md). 
+Weitere Informationen finden Sie unter [Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in HDInsight](../hdinsight-use-oozie-linux-mac.md). Ausführliche Einblicke in die Verwendung von Oozie zum Nutzen einer End-to-End-Pipeline finden Sie unter [Operationalisieren einer Datenanalysepipeline](../hdinsight-operationalize-data-pipeline.md).
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory bietet Orchestrierungsfunktionen als Platform-as-a-Service. Sie ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und -transformationen zu orchestrieren und zu automatisieren. 
+Azure Data Factory bietet Orchestrierungsfunktionen als Platform-as-a-Service. Sie ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und -transformationen zu orchestrieren und zu automatisieren.
 
 Mithilfe von Azure Data Factory können Sie:
 
@@ -128,7 +127,7 @@ Sqoop verwendet MapReduce zum Importieren und Exportieren der Daten, um Parallel
 
 Apache Flume ist ein verteilter, zuverlässiger und verfügbarer Dienst für das effiziente Sammeln, Aggregieren und Verschieben großer Mengen von Protokolldaten. Flume hat eine einfache und flexible Architektur, die auf Streamingdatenflüssen basiert. Flume ist robust und fehlertolerant und besitzt einstellbare Zuverlässigkeitsmechanismen sowie zahlreiche Failover- und Wiederherstellungsmechanismen. Flume verwendet ein einfaches, erweiterbares Datenmodell, das analytische Onlineanwendungen zulässt.
 
-Apache Flume kann nicht mit Azure HDInsight verwendet werden.  Eine lokale Hadoop-Installation kann Flume verwenden, um Daten an Azure Storage Blobs oder an Azure Data Lake Storage zu senden.  Weitere Informationen finden Sie unter [Verwenden von Apache Flume mit HDInsight](https://web.archive.org/web/20190217104751/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
+Apache Flume kann nicht mit Azure HDInsight verwendet werden.  Eine lokale Hadoop-Installation kann Flume verwenden, um Daten an Azure Storage Blobs oder an Azure Data Lake Storage zu senden.  Weitere Informationen finden Sie unter [Verwenden von Apache Flume mit HDInsight](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
 ## <a name="transform"></a>Transformieren
 

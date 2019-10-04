@@ -1,21 +1,21 @@
 ---
 title: Erstellen von Überprüfungen mit .NET – Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: In diesem Artikel wird beschrieben, wie Sie Überprüfungen mit dem Azure Content Moderator SDK für .NET erstellen.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 153d42bf4ce4322536d6837be3058d1f9bfb49a2
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 8c9f8b3733a4b2491c4199f041ba6b24efbb0224
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758647"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881898"
 ---
 # <a name="create-human-reviews-net"></a>Erstellen von Überprüfungen durch Personen (.NET)
 

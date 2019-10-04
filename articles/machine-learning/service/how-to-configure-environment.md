@@ -1,7 +1,7 @@
 ---
 title: Einrichten einer Python-Entwicklungsumgebung
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie eine Entwicklungsumgebung für die Arbeit mit dem Azure Machine Learning Service konfigurieren. In diesem Artikel erfahren Sie, wie Sie Conda-Umgebungen verwenden, Konfigurationsdateien erstellen und Jupyter Notebooks, Azure Notebooks, Azure Databricks, IDEs, Code-Editoren und die Data Science Virtual Machine konfigurieren.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie eine Entwicklungsumgebung für die Arbeit mit Azure Machine Learning konfigurieren. In diesem Artikel erfahren Sie, wie Sie Conda-Umgebungen verwenden, Konfigurationsdateien erstellen und Ihren eigenen cloudbasierten Notebook-Server, Jupyter Notebooks, Azure Databricks, IDEs, Code-Editoren und die Data Science Virtual Machine konfigurieren.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -9,43 +9,42 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 02/24/2019
+ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: c4bdeb4e00a59d6ba2b415801c0689d77ed9a825
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: b4d7a21e8d9b660463f508513c158032be81a35c
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577559"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686969"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 
-In diesem Artikel erfahren Sie, wie Sie eine Entwicklungsumgebung für die Arbeit mit dem Azure Machine Learning Service konfigurieren. Der Machine Learning Service ist plattformunabhängig.
+In diesem Artikel erfahren Sie, wie Sie eine Entwicklungsumgebung für die Arbeit mit Azure Machine Learning konfigurieren. Azure Machine Learning ist plattformunabhängig. Die einzige zwingende Anforderung an die Entwicklungsumgebung ist Python 3. Außerdem wird eine isolierte Umgebung wie Anaconda oder Virtualenv empfohlen.
 
-Die einzigen Voraussetzungen für die Entwicklungsumgebung sind Python 3, Anaconda (für isolierte Umgebungen) und eine Konfigurationsdatei, die Informationen zu Ihrem Azure Machine Learning-Arbeitsbereich enthält.
+In der folgenden Tabelle sind die einzelnen in diesem Artikel behandelten Entwicklungsumgebungen zusammen mit den jeweiligen Vor- und Nachteilen aufgeführt.
 
-In diesem Artikel werden in erster Linie die folgenden Umgebungen und Tools behandelt:
+| Environment | Vorteile | Nachteile |
+| --- | --- | --- |
+| [Cloudbasierte Notebook-VM](#notebookvm) | Einfachste Methode für den Einstieg. Das gesamte SDK ist bereits auf der Arbeitsbereichs-VM installiert. Die Notebooktutorials sind vorab geklont und bereit zur Ausführung. | Keine Kontrolle über Ihre Entwicklungsumgebung und die Abhängigkeiten. Zusätzliche Kosten für den virtuellen Linux-Computer (virtueller Computer kann bei Nichtverwendung beendet werden, um Gebühren zu vermeiden). Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
+| [Lokale Umgebung](#local) | Vollständige Kontrolle über Ihre Entwicklungsumgebung und die Abhängigkeiten. Ausführung mit einem Buildtool, einer Umgebung oder einer IDE Ihrer Wahl. | Der Einstieg dauert länger. Die erforderlichen SDK-Pakete müssen installiert werden. Außerdem muss eine Umgebung installiert werden, wenn noch keine vorhanden ist. |
+| [Azure Databricks](#aml-databricks) | Ideal für die Ausführung umfangreicher Workflows mit maschinellem Lernen auf der skalierbaren Apache Spark-Plattform. | Übermaß für experimentelles maschinelles Lernen oder kleinere Experimente und Workflows. Zusätzliche Kosten für Azure Databricks. Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/databricks/). |
+| [Data Science Virtual Machine (DSVM)](#dsvm) | Vergleichbar mit der cloudbasierten Notebook-VM (Python und das SDK sind vorinstalliert), aber mit zusätzlichen gängigen vorinstallierten Data Science- und Machine Learning-Tools. Einfache Skalierung und Kombination mit anderen benutzerdefinierten Tools und Workflows. | Langsamerer Einstieg im Vergleich zur cloudbasierten Notebook-VM. |
 
-* Azure Notebooks: Ein in der Azure-Cloud gehosteter Jupyter Notebooks-Dienst. Dies ist die einfachste Methode für den Einstieg, da das Azure Machine Learning SDK bereits installiert ist.
 
-* [Data Science Virtual Machine (DSVM)](#dsvm): Eine vorkonfigurierte Entwicklungs- bzw. Experimentierumgebung in der Azure-Cloud, die für Data Science-Zwecke konzipiert ist und entweder auf ausschließlich CPU-basierten VM-Instanzen oder GPU-basierten Instanzen bereitgestellt werden kann. Python 3, Conda, Jupyter Notebooks und das Azure Machine Learning-SDK sind bereits installiert. Der virtuelle Computer ist mit gängigen Machine Learning- bzw. Deep Learning-Frameworks, -Tools und -Editoren zum Entwickeln von Lösungen für maschinelles Lernen ausgestattet. Dies ist wahrscheinlich die umfassendste Entwicklungsumgebung für maschinelles Lernen auf der Azure-Plattform.
+Dieser Artikel enthält außerdem zusätzliche Anwendungstipps für die folgenden Tools:
 
-* [Jupyter Notebook](#jupyter): Wenn Sie bereits ein Jupyter Notebook verwenden, enthält das SDK einige zusätzliche Elemente, die Sie installieren sollten.
+* [Jupyter Notebooks](#jupyter): Wenn Sie bereits ein Jupyter Notebook verwenden, enthält das SDK einige zusätzliche Elemente, die Sie installieren sollten.
 
-* [Visual Studio Code](#vscode): Wenn Sie Visual Studio Code verwenden, bietet es einige nützliche Erweiterungen, die Sie installieren können.
-
-* [Azure Databricks](#aml-databricks): Eine beliebte Datenanalyseplattform, die auf Apache Spark basiert. Erfahren Sie, wie Sie das Azure Machine Learning SDK in Ihren Cluster einbinden, um Modelle bereitzustellen.
-
-Wenn Sie bereits über eine Python 3-Umgebung verfügen oder nur die grundlegenden Schritte zum Installieren des SDK erhalten möchten, finden Sie weitere Informationen im Abschnitt [Lokaler Computer](#local).
+* [Visual Studio Code](#vscode): Wenn Sie Visual Studio Code verwenden, enthält die [Azure Machine Learning-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) eine umfassende Sprachunterstützung für Python sowie Features, mit denen die Arbeit mit Azure Machine Learning Service wesentlich bequemer und produktiver wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure Machine Learning-Dienstbereich. Informationen zum Erstellen des Arbeitsbereichs finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md).
+Ein Azure Machine Learning-Arbeitsbereich. Informationen zum Erstellen des Arbeitsbereichs finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md). Ein Arbeitsbereich ist alles, was Sie zum Einstieg in Ihren eigenen [cloudbasierten Notebook-Server](#notebookvm), eine [DSVM](#dsvm) oder [Azure Databricks](#aml-databricks) benötigen.
+
+Um die SDK-Umgebung für Ihren [lokalen Computer](#local), Ihren [Jupyter Notebook-Server](#jupyter) oder Ihr [Visual Studio Code](#vscode) zu installieren, benötigen Sie außerdem:
 
 - Den Paket-Manger [Anaconda](https://www.anaconda.com/download/) oder [Miniconda](https://conda.io/miniconda.html).
-
-    > [!IMPORTANT]
-    > Anaconda und Miniconda sind bei Verwendung von Azure Notebooks nicht erforderlich.
 
 - Unter Linux oder macOS benötigen Sie die Bash-Shell.
 
@@ -54,16 +53,30 @@ Wenn Sie bereits über eine Python 3-Umgebung verfügen oder nur die grundlegend
 
 - Unter Windows benötigen Sie die Eingabeaufforderung oder die Anaconda-Eingabeaufforderung (installiert mit Anaconda und Miniconda).
 
-## <a id="aznotebooks"></a>Azure Notebooks
+## <a id="notebookvm"></a>Ihre eigene cloudbasierte Notebook-VM
 
-[Azure Notebooks](https://notebooks.azure.com) (Vorschauversion) ist eine interaktive Umgebung in der Azure-Cloud. Dies ist die einfachste Methode für den Einstieg in die Azure Machine Learning-Entwicklung.
+Die Notebook-VM (Vorschauversion) ist eine sichere, cloudbasierte Azure-Arbeitsstation, die Data Scientists einen Jupyter Notebook-Server, JupyterLab und eine vollständig vorbereitete Machine Learning-Umgebung bereitstellt.
 
-* Das Azure Machine Learning SDK ist bereits installiert.
-* Nachdem Sie im Azure-Portal einen Arbeitsbereich für den Azure Machine Learning Service erstellt haben, können Sie über eine Schaltfläche Ihre Azure Notebook-Umgebung automatisch für die Arbeit mit dem Arbeitsbereich konfigurieren.
+Die Notebook-VM ist:
 
-Informationen zum Einstieg in die Entwicklung mit Azure Notebooks finden Sie unter [Erste Schritte mit Azure Machine Learning](quickstart-run-cloud-notebook.md).
++ **Sicher.** Da der Zugriff auf VMs und Notebooks standardmäßig mit HTTPS und Azure Active Directory gesichert wird, können IT-Experten das einmalige Anmelden und andere Sicherheitsfunktionen wie die mehrstufige Authentifizierung einfach erzwingen.
 
-Standardmäßig verwendet Azure Notebooks einen kostenlosen Diensttarif, der auf 4GB Arbeitsspeicher und 1GB Daten beschränkt ist. Sie können diese Grenzwerte allerdings entfernen, indem Sie dem Azure Notebooks-Projekt eine Data Science Virtual Machine-Instanz anfügen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Compute-Tarif](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
++ **Vorkonfiguriert:** Diese vollständig einsatzbereite Machine Learning-Umgebung für Python zeichnet sich durch die beliebte IaaS-Umgebung Data Science VM aus und enthält Folgendes:
+  + das aktuellste Azure Machine Learning-Python-SDK
+  + eine automatische Konfiguration für Ihren Arbeitsbereich
+  + einen Jupyter Notebook-Server
+  + die JupyterLab-Notebook-IDE
+  + vorkonfigurierte GPU-Treiber
+  + einige Deep Learning-Frameworks
+
+
+  Wenn Sie das Programmieren bevorzugen, können Sie die Tutorials und Beispiele der VM nutzen, um sich in die Verwendung von Machine Learning einzuarbeiten. Die Beispielnotebooks sind im Azure Blob Storage-Konto Ihres Arbeitsbereichs gespeichert und können für VMs freigegeben werden. Bei der Ausführung können sie auf die Datenspeicher und die Computeressourcen Ihres Arbeitsbereichs zugreifen.
+
++ **Schnell eingerichtet:** In Ihrem Azure Machine Learning-Arbeitsbereich können Sie jederzeit eine Notebook-VM erstellen. Geben Sie einfach einen Namen und einen Azure-VM-Typ an. Sie die Einrichtung unter [Tutorial: Einrichten der Umgebung und des Arbeitsbereichs](tutorial-1st-experiment-sdk-setup.md).
+
++ **Anpassbar:** Das VM-Angebot ist schnell und sicher, bietet jedoch gleichzeitig einen uneingeschränkten Zugriff auf die Hardwarefunktionen, die Sie nach Bedarf konfigurieren können. Sie können beispielsweise in kurzer Zeit die neueste NVidia V100-VM erstellen, um neue neuronale Netzarchitekturen Schritt für Schritt zu debuggen.
+
+Wenn Sie vermeiden möchten, dass Gebühren für die Notebook-VM anfallen, müssen Sie diese [beenden](tutorial-1st-experiment-sdk-train.md#clean-up-resources).
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
@@ -77,7 +90,7 @@ Die DSVM ist ein benutzerdefiniertes VM-Image. Sie ist für Data Science-Aufgabe
 
 Das Azure Machine Learning SDK funktioniert mit der Ubuntu- und der Windows-Version der DSVM. Wenn Sie die DSVM jedoch als Computeziel verwenden möchten, wird nur Ubuntu unterstützt.
 
-Um die DSVM als Entwicklungsumgebung zu verwenden, gehen Sie folgendermaßen vor:
+So verwenden Sie die DSVM als Entwicklungsumgebung
 
 1. Erstellen Sie in einer der folgenden Umgebungen eine DSVM:
 
@@ -132,15 +145,15 @@ Um die DSVM als Entwicklungsumgebung zu verwenden, gehen Sie folgendermaßen vor
     print(azureml.core.VERSION)
     ```
 
-1. Informationen zum Konfigurieren der DSVM für Ihren Azure Machine Learning Service-Arbeitsbereich finden Sie im Abschnitt [Erstellen einer Konfigurationsdatei für den Arbeitsbereich](#workspace).
+1. Informationen zum Konfigurieren der DSVM für Ihren Azure Machine Learning-Arbeitsbereich finden Sie im Abschnitt [Erstellen einer Konfigurationsdatei für den Arbeitsbereich](#workspace).
 
 Weitere Informationen finden Sie unter [Data Science Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
 ## <a id="local"></a>Lokaler Computer
 
-Wenn Sie einen lokalen Computer verwenden (dabei kann es sich auch um einen virtuellen Remotecomputer handeln), gehen Sie folgendermaßen vor, um eine Anaconda-Umgebung zu erstellen und das SDK zu installieren:
+Wenn Sie einen lokalen Computer verwenden (dabei kann es sich auch um einen virtuellen Remotecomputer handeln), erstellen Sie eine Anaconda-Umgebung, und installieren Sie das SDK. Hier sehen Sie ein Beispiel:
 
-1. Laden Sie [Anaconda](https://www.anaconda.com/distribution/#download-section) (Python-Version 3.7) herunter, und installieren Sie die Distribution, falls Sie diese noch nicht besitzen.
+1. Laden Sie [Anaconda](https://www.anaconda.com/distribution/#download-section) (Python Version 3.7) herunter, und installieren Sie es, falls dies noch nicht geschehen ist.
 
 1. Öffnen Sie eine Anaconda-Eingabeaufforderung, und erstellen Sie mit den folgenden Befehlen eine Umgebung:
 
@@ -172,22 +185,21 @@ Wenn Sie einen lokalen Computer verwenden (dabei kann es sich auch um einen virt
 
 1. Verwenden Sie die folgenden Befehle, um die Pakete zu installieren:
 
-    Durch diesen Befehl wird das grundlegende Azure Machine Learning SDK mit Notebooktools und zusätzlichen automl-Komponenten installiert. Da das `automl`-Zusatzpaket sehr umfangreich ist, müssen Sie dieses nicht innerhalb der Klammern angeben und installieren, wenn Sie keine automatisierten Machine Learning-Experimente durchführen möchten. Das `automl`-Zusatzpaket enthält standardmäßig auch das Azure Machine Learning Data Prep SDK als Abhängigkeit.
+    Durch diesen Befehl wird das grundlegende Azure Machine Learning SDK mit Notebooks und zusätzlichen `automl`-Komponenten installiert. Da das `automl`-Zusatzpaket sehr umfangreich ist, müssen Sie dieses nicht innerhalb der Klammern angeben und installieren, wenn Sie keine automatisierten Machine Learning-Experimente durchführen möchten. Das `automl`-Zusatzpaket enthält standardmäßig auch das Azure Machine Learning Data Prep SDK als Abhängigkeit.
 
-     ```shell
+    ```shell
     pip install azureml-sdk[notebooks,automl]
     ```
 
-    Verwenden Sie den folgenden Befehl, um nur das Azure Machine Learning Data Prep SDK zu installieren:
-
-    ```shell
-    pip install azureml-dataprep
-    ```
-
    > [!NOTE]
-   > Wenn Sie eine Meldung mit dem Hinweis erhalten, dass PyYAML nicht deinstalliert werden kann, verwenden Sie stattdessen den folgenden Befehl:
+   > * Wenn Sie eine Meldung mit dem Hinweis erhalten, dass PyYAML nicht deinstalliert werden kann, verwenden Sie stattdessen den folgenden Befehl:
    >
-   > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
+   >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >
+   > * Ab macOS Catalina ist zsh (Z-Shell) der Standard für die Anmeldungsshell und die interaktive Shell. Verwenden Sie in zsh den folgenden Befehl, wobei eckige Klammern mit dem Escapezeichen „\\“ (umgekehrter Schrägstrich) versehen werden:
+   >
+   >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
+
 
    Die Installation des SDK nimmt mehrere Minuten in Anspruch. Weitere Informationen zu den Installationsoptionen finden Sie in der [Installationsanleitung](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
@@ -209,12 +221,20 @@ Wenn Sie einen lokalen Computer verwenden (dabei kann es sich auch um einen virt
 
 Jupyter Notebooks sind Teil des [Jupyter-Projekts](https://jupyter.org/). Sie stellen eine interaktive Programmierumgebung bereit, mit der Sie Dokumente erstellen können, in denen Livecode mit beschreibendem Text und Grafiken gemischt ist. Jupyter Notebooks sind auch eine hervorragende Möglichkeit, Ihre Ergebnisse mit anderen Personen zu teilen, da Sie die Ausgabe Ihrer Codeabschnitte im Dokument speichern können. Sie können Jupyter Notebooks auf vielen unterschiedlichen Plattformen installieren.
 
-Durch die Vorgehensweise im Abschnitt [Lokaler Computer](#local) werden die erforderlichen Komponenten zum Ausführen von Jupyter-Notebooks in einer Anaconda-Umgebung installiert. Um diese Komponenten in Ihrer Jupyter Notebook-Umgebung zu aktivieren, gehen Sie folgendermaßen vor:
+Durch die Vorgehensweise im Abschnitt [Lokaler Computer](#local) werden die erforderlichen Komponenten zum Ausführen von Jupyter-Notebooks in einer Anaconda-Umgebung installiert.
+
+So aktivieren Sie diese Komponenten in Ihrer Jupyter Notebook-Umgebung
 
 1. Öffnen Sie eine Anaconda-Eingabeaufforderung, und aktivieren Sie Ihre Umgebung.
 
     ```shell
     conda activate myenv
+    ```
+
+1. Klonen Sie [das GitHub-Repository](https://aka.ms/aml-notebooks) für eine Reihe von Beispielnotebooks.
+
+    ```CLI
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
 1. Starten Sie den Jupyter Notebook-Server mit dem folgenden Befehl:
@@ -237,41 +257,43 @@ Durch die Vorgehensweise im Abschnitt [Lokaler Computer](#local) werden die erfo
     sys.path
     ```
 
-1. Informationen zum Konfigurieren des Jupyter Notebooks für Ihren Azure Machine Learning Service-Arbeitsbereich finden Sie im Abschnitt [Erstellen einer Konfigurationsdatei für den Arbeitsbereich](#workspace).
+1. Informationen zum Konfigurieren des Jupyter Notebooks für Ihren Azure Machine Learning-Arbeitsbereich finden Sie im Abschnitt [Erstellen einer Konfigurationsdatei für den Arbeitsbereich](#workspace).
+
 
 ### <a id="vscode"></a>Visual Studio Code
 
-Visual Studio Code ist ein Code-Editor für alle Plattformen. Für Python-Unterstützung benötigt er eine lokale Python 3- und Conda-Installation, aber er bietet zusätzliche Tools für die Arbeit mit künstlicher Intelligenz. Darüber hinaus bietet er Unterstützung für die Auswahl der Conda-Umgebung aus dem Code-Editor heraus.
+Visual Studio Code ist ein sehr beliebter plattformübergreifender Code-Editor, der einen umfangreichen Satz von Programmiersprachen und Tools über Erweiterungen unterstützt, die im [Visual Studio Marketplace](https://marketplace.visualstudio.com/vscode) verfügbar sind. Mit der [Azure Machine Learning-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) wird die [Python-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-python.python) für das Programmieren in allen Arten von Python-Umgebungen (virtuell, Anaconda usw.) installiert. Sie bietet außerdem praktische Features für die Arbeit mit Azure Machine Learning-Ressourcen und das Ausführen von Azure Machine Learning-Experimenten, ohne Visual Studio Code verlassen zu müssen.
 
-Um Visual Studio Code für die Entwicklung zu verwenden, gehen Sie folgendermaßen vor:
+So verwenden Visual Studio Code für die Entwicklung
 
-1. Informationen zur Verwendung von Visual Studio Code für die Python-Entwicklung finden Sie unter [Erste Schritte mit Python in VS Code](https://code.visualstudio.com/docs/python/python-tutorial).
-
-1. Um die Conda-Umgebung auszuwählen, öffnen Sie VS Code, und drücken Sie die Tastenkombination STRG+UMSCHALT+P (Linux und Windows) bzw. BEFEHL+UMSCHALT+P (Mac).
-    Die __Befehlspalette__ wird geöffnet.
-
-1. Geben Sie __Python: Select Interpreter__ ein, und wählen Sie dann die Conda-Umgebung aus.
-
-1. Um sicherzustellen, dass Sie das SDK verwenden können, erstellen Sie eine neue Python-Datei (.py), die folgenden Code enthält, und führen Sie sie aus:
-
-    ```python
-    import azureml.core
-    azureml.core.VERSION
-    ```
-
-1. Installationsanweisungen für die Azure Machine Learning-Erweiterung für Visual Studio Code finden Sie unter [Tools for AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
+1. Installieren Sie die Azure Machine Learning-Erweiterung für Visual Studio Code wie unter [Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) beschrieben.
 
     Weitere Informationen finden Sie unter [Verwenden von Azure Machine Learning für Visual Studio Code](how-to-vscode-tools.md).
 
+1. Unter [Erste Schritte mit Python in VS Code](https://code.visualstudio.com/docs/python/python-tutorial) erfahren Sie, wie Sie Visual Studio Code für die Python-Entwicklung verwenden.
+
+    - Um die Python-Umgebung mit dem SDK auszuwählen, öffnen Sie VS Code, und drücken Sie STRG+UMSCHALT+P (Linux und Windows) bzw. BEFEHL+UMSCHALT+P (Mac).
+        - Die __Befehlspalette__ wird geöffnet.
+
+    - Geben Sie __Python: Select Interpreter__ ein, und wählen Sie dann die gewünschte Umgebung aus.
+
+1. Um sicherzustellen dass Sie das SDK verwenden können, erstellen Sie eine neue Python-Datei (.py) mit dem folgenden Code:
+
+    ```python
+    #%%
+    import azureml.core
+    azureml.core.VERSION
+    ```
+    Führen Sie diesen Code aus, indem Sie auf die CodeLens „Run cell“ (Zelle ausführen) klicken oder einfach UMSCHALT+EINGABETASTE drücken.
 <a name="aml-databricks"></a>
 
 ## <a name="azure-databricks"></a>Azure Databricks
-Azure Databricks ist eine Apache Spark-basierte Umgebung in der Azure-Cloud. Die Plattform stellt für die Zusammenarbeit eine Notebook-basierte Umgebung mit CPU- oder GPU-basierten Computeclustern bereit.
+Azure Databricks ist eine Apache Spark-basierte Umgebung in der Azure-Cloud. Sie stellt eine Notebook-basierte Umgebung mit CPU- oder GPU-basierten Computeclustern für die Zusammenarbeit bereit.
 
-Azure Databricks kann auf folgende Weisen mit Azure Machine Learning Service verwendet werden:
-+ Sie können mit Spark MLlib ein Modell trainieren und es über Azure Databricks in ACI/AKS bereitstellen. 
+Azure Databricks kann auf folgende Weisen mit Azure Machine Learning verwendet werden:
++ Sie können mit Spark MLlib ein Modell trainieren und es über Azure Databricks in ACI/AKS bereitstellen.
 + Sie können mithilfe eines speziellen Azure ML SDK außerdem Features für [automatisiertes Machine Learning](concept-automated-ml.md) mit Azure Databricks verwenden.
-+ Sie können Azure Databricks über eine [Azure Machine Learning-Pipeline](concept-ml-pipelines.md) als Computeziel verwenden. 
++ Sie können Azure Databricks über eine [Azure Machine Learning-Pipeline](concept-ml-pipelines.md) als Computeziel verwenden.
 
 ### <a name="set-up-your-databricks-cluster"></a>Einrichten des Databricks-Clusters
 
@@ -283,7 +305,7 @@ Verwenden Sie die folgenden Einstellungen:
 | Einstellung |Anwendungsbereich| Wert |
 |----|---|---|
 | Clustername |immer| IhrClustername |
-| Databricks-Laufzeit |immer| Beliebige Nicht-ML-Runtime (nicht ML 4.x, 5.x) |
+| Databricks-Laufzeit |immer| Beliebige Nicht-ML-Runtime (nicht ML 4.x, 5.x) |
 | Python-Version |immer| 3 |
 | Worker |immer| 2 oder mehr |
 | VM-Typen des Workerknotens <br>(bestimmt die maximale Anzahl gleichzeitiger Iterationen) |Automatisiertes maschinelles Lernen<br>Machine Learning| Arbeitsspeicheroptimierte VM bevorzugt |
@@ -292,11 +314,11 @@ Verwenden Sie die folgenden Einstellungen:
 Warten Sie, bis der Cluster ausgeführt wird, bevor Sie fortfahren.
 
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>Installieren des richtigen SDK in einer Databricks-Bibliothek
-Erstellen Sie nach der Ausführung des Clusters [eine Bibliothek](https://docs.databricks.com/user-guide/libraries.html#create-a-library), um das entsprechende Azure Machine Learning SDK-Paket Ihrem Cluster anzufügen. 
+Erstellen Sie nach der Ausführung des Clusters [eine Bibliothek](https://docs.databricks.com/user-guide/libraries.html#create-a-library), um das entsprechende Azure Machine Learning SDK-Paket Ihrem Cluster anzufügen.
 
 1. Wählen Sie **nur eine** Option aus (weitere SDK-Installationen werden nicht unterstützt).
 
-   |Zusatzkomponenten für &nbsp;SDK-Paket&nbsp;|Quelle|&nbsp;PyPi-Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+   |Zusatzkomponenten für &nbsp;SDK-Paket&nbsp;|`Source`|&nbsp;PyPi-Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Für Databricks| Python Egg oder PyPI hochladen | azureml-sdk[databricks]|
    |Für Databricks mit<br> Features für automatisiertes Machine Learning| Python Egg oder PyPI hochladen | azureml-sdk[automl_databricks]|
@@ -307,21 +329,21 @@ Erstellen Sie nach der Ausführung des Clusters [eine Bibliothek](https://docs.d
    * Wählen Sie nicht **Attach automatically to all clusters** (Automatisch an alle Cluster anfügen) aus.
    * Wählen Sie **Anfügen** neben dem Namen Ihres Clusters aus.
 
-1. Der Status wird in **Angefügt** geändert. Dieser Vorgang kann einige Minuten in Anspruch nehmen. Überprüfen Sie währenddessen, ob Fehler auftreten.  Führen Sie folgende Aktionen aus, wenn dieser Schritt fehlschlägt: 
+1. Der Status wird in **Angefügt** geändert. Dieser Vorgang kann einige Minuten in Anspruch nehmen. Überprüfen Sie währenddessen, ob Fehler auftreten.  Wenn bei diesem Schritt ein Fehler auftritt:
 
    Versuchen Sie, Ihren Cluster wie folgt neu zu starten:
    1. Wählen Sie im linken Bereich die Option **Cluster** aus.
    1. Wählen Sie in der Tabelle den Namen Ihres Clusters aus.
    1. Klicken Sie auf der Registerkarte **Bibliotheken** auf **Neu starten**.
-      
+
    Berücksichtigen Sie außerdem Folgendes:
-   + In der Automl-Konfiguration fügen Sie bei der Verwendung von Azure Databricks die folgenden Parameter hinzu:
-    1. ```max_concurrent_iterations``` basierend auf der Anzahl der Workerknoten in Ihrem Cluster. 
-    2. ```spark_context=sc``` #databricks/spark – Spark-Standardkontext. 
-   + Wenn Sie alternativ dazu eine alte SDK-Version nutzen, deaktivieren Sie diese in den installierten Bibliotheken des Clusters, und verschieben Sie sie in den Papierkorb. Installieren Sie die neue SDK-Version, und starten Sie den Cluster neu. Wenn danach ein Problem vorliegt, trennen Sie Ihren Cluster, und fügen Sie ihn wieder an.
+   + Fügen Sie in der AutoML-Konfiguration bei Verwendung von Azure Databricks die folgenden Parameter hinzu:
+       1. ```max_concurrent_iterations``` basiert auf der Anzahl der Workerknoten in Ihrem Cluster.
+        2. ```spark_context=sc``` basiert auf dem standardmäßigen Spark-Kontext.
+   + Wenn Sie alternativ dazu eine alte SDK-Version nutzen, deaktivieren Sie diese in den installierten Bibliotheken des Clusters, und verschieben Sie sie in den Papierkorb. Installieren Sie die neue SDK-Version, und starten Sie den Cluster neu. Wenn nach dem Neustart ein Problem vorliegt, trennen Sie Ihren Cluster, und fügen Sie ihn wieder an.
 
 Wenn die Installation erfolgreich war, sollte die importierte Bibliothek wie auf einem der folgenden Screenshots gezeigt aussehen:
-   
+
 SDK für Databricks **_ohne_** ![Azure Machine Learning SDK für Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg) und automatisiertes Machine Learning
 
 SDK für Databricks **mit** ![installiertem SDK für automatisiertes Machine Learning in Databricks](./media/how-to-configure-environment/automlonadb.jpg)
@@ -329,14 +351,14 @@ SDK für Databricks **mit** ![installiertem SDK für automatisiertes Machine Lea
 ### <a name="start-exploring"></a>Ausprobieren
 
 So können Sie Azure Databricks testen:
-+ Laden Sie die [Notebookarchivdatei](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc) für das Azure Databricks/Azure Machine Learning SDK herunter, und [importieren Sie diese](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) in Ihren Databricks-Cluster.  
++ Laden Sie die [Notebookarchivdatei](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc) für das Azure Databricks/Azure Machine Learning SDK herunter, und [importieren Sie diese](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive) in Ihren Databricks-Cluster.
   Von den vielen verfügbaren Beispielnotebooks können **nur [ganz bestimmte](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) mit Azure Databricks verwendet werden.**
-  
+
 + Erfahren Sie, wie Sie [mit Databricks als Computeziel für das Trainieren von Modellen eine Pipeline erstellen](how-to-create-your-first-pipeline.md).
 
 ## <a id="workspace"></a>Erstellen einer Konfigurationsdatei für den Arbeitsbereich
 
-Die Arbeitsbereichs-Konfigurationsdatei ist eine JSON-Datei, die das SDK zur Kommunikation mit Ihrem Azure Machine Learning-Dienstarbeitsbereich instruiert. Die Datei weist den Namen *config.json* und das folgende Format auf:
+Die Arbeitsbereichs-Konfigurationsdatei ist eine JSON-Datei, die das SDK zur Kommunikation mit Ihrem Azure Machine Learning-Arbeitsbereich instruiert. Die Datei weist den Namen *config.json* und das folgende Format auf:
 
 ```json
 {
@@ -346,15 +368,15 @@ Die Arbeitsbereichs-Konfigurationsdatei ist eine JSON-Datei, die das SDK zur Kom
 }
 ```
 
-Diese JSON-Datei muss sich in der Verzeichnisstruktur befinden, die Ihre Python-Skripts oder Jupyter Notebooks enthält. Sie kann sich im selben Verzeichnis, in einem Unterverzeichnis mit dem Namen *aml_config* oder in einem übergeordneten Verzeichnis befinden.
+Diese JSON-Datei muss sich in der Verzeichnisstruktur befinden, die Ihre Python-Skripts oder Jupyter Notebooks enthält. Sie kann sich im selben Verzeichnis, in einem Unterverzeichnis namens *.azureml* oder in einem übergeordneten Verzeichnis befinden.
 
 Um in Ihrem Code auf diese Datei zuzugreifen, verwenden Sie `ws=Workspace.from_config()`. Dieser Code lädt die Informationen aus der Datei und stellt eine Verbindung mit Ihrem Arbeitsbereich her.
 
 Sie können die Konfigurationsdatei auf drei Arten erstellen:
 
-* **Befolgen Sie die Schritte unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md#sdk)**: In Ihrer Azure Notebooks-Bibliothek wird eine *config.json*-Datei erstellt. Diese Datei enthält die Konfigurationsinformationen für Ihren Arbeitsbereich. Sie können die Datei *config.json* in andere Entwicklungsumgebungen herunterladen oder kopieren.
+* **Verwenden Sie [ws.write_config](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)** zum Schreiben einer Datei vom Typ *config.json*. Diese Datei enthält die Konfigurationsinformationen für Ihren Arbeitsbereich. Sie können die Datei *config.json* in andere Entwicklungsumgebungen herunterladen oder kopieren.
 
-* **Erstellen Sie die Datei manuell**: Bei dieser Methode verwenden Sie einen Text-Editor. Die Werte für die Konfigurationsdatei finden Sie in Ihrem Arbeitsbereich im [Azure-Portal](https://portal.azure.com). Kopieren Sie die Werte für den Arbeitsbereichsnamen, die Ressourcengruppe und die Abonnement-ID, und verwenden Sie sie in der Konfigurationsdatei.
+* **Datei herunterladen**: Wählen Sie im [Azure-Portal](https://ms.portal.azure.com) im Abschnitt **Übersicht** Ihres Arbeitsbereichs **config.json herunterladen** aus.
 
      ![Azure-Portal](./media/how-to-configure-environment/configure.png)
 
@@ -375,10 +397,10 @@ Sie können die Konfigurationsdatei auf drei Arten erstellen:
         print('Workspace not found')
     ```
 
-    Dieser Code schreibt die Konfigurationsdatei in die Datei *aml_config/config.json*.
+    Dieser Code schreibt die Konfigurationsdatei in die Datei *.azureml/config.json*.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Trainieren eines Modells](tutorial-train-models-with-aml.md) in Azure Machine Learning mit der MNIST-Datenbank
-- Anzeigen der Referenz [Azure Machine Learning SDK für Python](https://aka.ms/aml-sdk)
-- Informationen zum [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk)
+- Anzeigen der Referenz [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

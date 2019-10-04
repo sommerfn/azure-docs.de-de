@@ -1,48 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation zu Azure AD Identity Governance
+### YamlMime:Landing
+title: Dokumentation zu Azure Active Directory Identity Governance
+summary: Mit Azure Active Directory (Azure AD) Identity Governance können Sie den Zugriff auf kritische Assets schützen und überwachen und gleichzeitig die Produktivität Ihrer Mitarbeiter sicherstellen.
 metadata:
-  document_id: null
-  title: Dokumentation zu Azure Active Directory Identity Governance | Microsoft-Dokumentation
-  description: Hier erfahren Sie mehr über Governance für den Identitäts- und Zugriffslebenszyklus sowie die sichere Verwaltung aller Mitarbeiter und Partner.
-  services: active-directory
-  author: rolyon
-  manager: mtillman
+  author: msaburnley
+  description: Hier erfahren Sie, wie Sie den Zugriff auf kritische Assets schützen und überwachen und gleichzeitig die Produktivität Ihrer Mitarbeiter sicherstellen.
+  manager: daveba
+  ms.author: ajburnle
+  ms.collection: na
+  ms.date: 08/15/2019
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 08/16/2018
-  ms.author: rolyon
-abstract:
-  description: Mit Azure Active Directory (Azure AD) Identity Governance können Organisationen den Identitäts- und Zugriffslebenszyklus steuern und die Verwaltung aller Mitarbeiter und Partner sicher gestalten.
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-identity-governance.png
-      width: 200
-    title: 'Steuern des Zugriffs auf Ihre Ressourcen (1: 17:24)'
-    href: 'https://www.youtube.com/embed/aY7A0Br8u5M'
-    width: 200
-sections:
-  - title: Identitätsgovernance
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/identity-governance-overview">Worum handelt es sich bei Identitätsgovernance?</a>
-  - title: Zugriffsüberprüfungen
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/governance/access-reviews-overview">Was ist eine Zugriffsüberprüfung?</a>
-          - html: <a href="/azure/active-directory/governance/manage-user-access-with-access-reviews">Verwalten des Benutzerzugriffs mit Zugriffsüberprüfungen</a>
-          - html: <a href="/azure/active-directory/governance/manage-guest-access-with-access-reviews">Verwalten des Gastzugriffs mit Zugriffsüberprüfungen</a>
-  - title: Nutzungsbedingungen
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/conditional-access/terms-of-use">Welche Möglichkeiten bieten die Nutzungsbedingungen?</a>
+  services: active-directory
+  ms.openlocfilehash: cb3a19a372e81f7efe816d9f08831045b5f3332b
+  ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/16/2019
+  ms.locfileid: "69542426"
+landingContent:
+- title: Informationen zu Identity Governance
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure AD Identity Governance?
+      url: identity-governance-overview.md
+  - linkListType: learn
+    links:
+    - text: Steuern des Zugriffs auf Ihre Ressourcen
+      url: https://www.youtube.com/watch?v=bFfowdpApu4&list=PLQXpv_NQsPIBg3op2xONM9KgwlayFDue6
+- title: Steuern des Lebenszyklus für den Zugriff auf Gruppen, Apps und Sites
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die Azure AD-Berechtigungsverwaltung? (Vorschau)
+      url: entitlement-management-overview.md
+  - linkListType: tutorial
+    links:
+    - text: Erstellen Ihres ersten Zugriffspakets, mit dem Benutzer den erforderlichen Zugriff anfordern können
+      url: entitlement-management-access-package-first.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bearbeiten und Verwalten eines vorhandenen Zugriffspakets
+      url: entitlement-management-access-package-edit.md
+- title: Neuzertifizierung des Zugriffs auf Gruppen, Apps und privilegierte Rollen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was sind Azure AD-Zugriffsüberprüfungen?
+      url: access-reviews-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer Zugriffsüberprüfung, um sicherzustellen, dass Benutzer keine hohen Zugriffsberechtigungen behalten
+      url: create-access-review.md
+    - text: Überprüfen des Zugriffs auf Gruppen oder Apps
+      url: perform-access-review.md
+- title: Erteilen der Berechtigung zur Nutzung privilegierter Rollen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure AD Privileged Identity Management?
+      url: ../privileged-identity-management/pim-configure.md
+- title: Sicherstellen, dass Benutzern Haftungsausschlüsse angezeigt werden
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verlangen, dass Benutzer bei Verwendung einer App den Nutzungsbedingungen zustimmen müssen
+      url: ../conditional-access/terms-of-use.md

@@ -5,15 +5,15 @@ ms.service: iot-central
 services: iot-central
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 03/18/2019
+ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: ec7033719316bb186408ea78f6dabac43c383491
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 6c18a244ceae2ccd9a536abeb6bc2d85760bb0a6
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199850"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69875906"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Erstellen und Ausführen von Aufträgen in Ihrer Azure IoT Central-Anwendung
 
@@ -33,7 +33,7 @@ In diesem Abschnitt erfahren Sie, wie Sie einen Auftrag erstellen und ausführen
 
 1. Wählen Sie die Gerätegruppe aus, auf die Ihr Auftrag angewendet werden soll. Nachdem Sie die Gerätegruppe ausgewählt haben, werden auf der rechten Seite die in der Gerätegruppe enthaltenen Geräte aufgeführt. Wenn Sie eine fehlerhafte Gerätegruppe auswählen, werden keine Geräte, stattdessen jedoch eine Meldung angezeigt, dass Ihre Gerätegruppe fehlerhaft ist.
 
-1. Wählen Sie anschließend den zu definierenden Auftragstyp (Einstellung, Eigenschaft oder Befehl) aus. Klicken Sie neben dem ausgewählten Auftragstyp auf **+**, und fügen Sie die Vorgänge hinzu.
+1. Wählen Sie anschließend den zu definierenden Auftragstyp (Einstellung, Eigenschaft oder Befehl) aus. Klicken Sie neben dem ausgewählten Auftragstyp auf **+** , und fügen Sie die Vorgänge hinzu.
 
     ![Auftrag konfigurieren](./media/howto-run-a-job/configurejob.png)
 
@@ -106,4 +106,4 @@ Nachdem Sie nun erfahren haben, wie Aufträge in Ihrer Azure IoT Central-Anwendu
 
 - [Verwenden von Gerätegruppen](howto-use-device-sets.md)
 - [Verwalten von Geräten](howto-manage-devices.md)
-- [Verwalten der Versionen Ihrer Gerätevorlage](howto-version-devicetemplate.md)
+- [Verwalten der Versionen Ihrer Gerätevorlage](howto-version-device-template.md)

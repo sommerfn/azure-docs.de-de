@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2ba6b2d33c3fb5d9fda6821718ac61513a958b7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 62faa47c116cceb941f575a9f76052e8bc57f036
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369138"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66243268"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation
 Binden Sie Ihr unternehmenseigenes Windows 10-Gerät in das Netzwerk Ihrer Organisation ein, sodass Sie auf möglicherweise eingeschränkte Ressourcen zugreifen können.
@@ -62,7 +62,7 @@ Um sicherzustellen, dass Sie eingebunden wurden, können Sie Ihre Einstellungen 
 
     ![Konten auf dem Bildschirm „Einstellungen“](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *<Ihre_Organisation>* Azure AD**.
+2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *\<Ihre_Organisation>* Azure AD**.
 
     ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit verbundenem Contoso-Konto](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -107,7 +107,7 @@ Um sicherzustellen, dass Sie eingebunden wurden, können Sie Ihre Einstellungen 
 
     ![Konten auf dem Bildschirm „Einstellungen“](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *<Ihre_Organisation>* Azure AD**.
+2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *\<Ihre_Organisation>* Azure AD**.
 
     ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit verbundenem Contoso-Konto](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
@@ -116,3 +116,4 @@ Nachdem Sie Ihr Gerät in das Netzwerk der Organisation eingebunden haben, sollt
 
 - Wenn in Ihrer Organisation gewünscht wird, dass Sie sich mit Ihrem persönlichen Gerät, also etwa mit Ihrem Telefon, registrieren, finden Sie die entsprechenden Informationen unter [Register your personal device on your organization's network (Registrieren des persönlichen Geräts im Netzwerk der eigenen Organisation)](user-help-register-device-on-network.md).
 
+- Wenn Ihre Organisation mithilfe von Microsoft Intune verwaltet wird und Sie Fragen zur Registrierung, Anmeldung und zu einem anderen Problem im Zusammenhang mit Intune haben, finden Sie die Antworten im [Inhalt der Intune-Benutzerhilfe](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).

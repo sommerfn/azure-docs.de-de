@@ -1,20 +1,20 @@
 ---
 title: Hinzufügen einer Blasenebene zu Azure Maps | Microsoft-Dokumentation
-description: Hinzufügen einer Blasenebene zur JavaScript-Karte
+description: Hinzufügen einer Blasenebene zum Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 10/30/2018
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f2c4c6b8655d5efb993a2dedf536000ac94328c2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 5cc5dbdc89f629c09d47ef683b7ff7fff61d2f49
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59281487"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976574"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Hinzufügen einer Blasenebene zu einer Karte
 
@@ -25,31 +25,49 @@ In diesem Artikel erfahren Sie, wie Sie Punktdaten aus einer Datenquelle als Bla
 
 ## <a name="add-a-bubble-layer"></a>Hinzufügen einer Blasenebene
 
+Mit dem folgenden Code wird ein Array von Punkten in eine Datenquelle geladen und mit einer [Blasenebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)verbunden. Der Blasenebene werden Optionen zugewiesen, um den Radius jeder Blase bei fünf Pixeln, eine Füllfarbe von Weiß, eine Strichfarbe von Blau und eine Strichbreite von sechs Pixeln darzustellen. 
+
+```javascript
+//Add point locations.
+var points = [
+    new atlas.data.Point([-73.985708, 40.75773]),
+    new atlas.data.Point([-73.985600, 40.76542]),
+    new atlas.data.Point([-73.985550, 40.77900]),
+    new atlas.data.Point([-73.975550, 40.74859]),
+    new atlas.data.Point([-73.968900, 40.78859])
+];
+
+//Create a data source and add it to the map.
+var dataSource = new atlas.source.DataSource();
+map.sources.add(dataSource);
+
+//Add multiple points to the data source.
+dataSource.add(points);
+
+//Create a bubble layer to render the filled in area of the circle, and add it to the map.
+map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
+    radius: 5,
+    strokeColor: "#4288f7",
+    strokeWidth: 6, 
+    color: "white" 
+}));
+```
+
+Nachfolgend finden Sie das vollständige Beispiel für ausführbaren Code der obigen Funktionalität.
+
+<br/>
+
 <iframe height='500' scrolling='no' title='DataSource „BubbleLayer“' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>DataSource „BubbleLayer“</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Mit dem ersten Block des oben gezeigten Codes wird ein Kartenobjekt erstellt. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
-
-Im zweiten Codeblock wird ein Array von [Punkt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)-Objekten definiert und zum [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)-Objekt hinzugefügt.
-
-Eine [Blasenebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) rendert punktbasierte Daten, die von der [Datenquelle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) umschlossen sind, als Kreise auf der Karte. Der letzte Codeblock erstellt eine Blasenebene und fügt sie der Karte hinzu. Die Eigenschaften einer Blasenebene finden Sie unter [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
-
-Das Array von Punktobjekten, die Datenquelle und die Blasenebene werden erstellt und in der Funktion [Ereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) zur Karte hinzugefügt, um sicherzustellen, dass nach dem vollständigen Laden der Karte der Kreis angezeigt wird.
-
 ## <a name="show-labels-with-a-bubble-layer"></a>Anzeigen von Bezeichnungen bei einer Blasenebene
+
+Der folgende Code veranschaulicht, wie Sie eine Blasenebene verwenden, um einen Punkt auf der Karte zu rendern, und eine Symbolebene, um eine Bezeichnung zu rendern. Um das Symbol der Symbolebene auszublenden, legen Sie die `image`-Eigenschaft der Symboloptionen auf `'none'` fest.
+
+<br/>
 
 <iframe height='500' scrolling='no' title='DataSource „MultiLayer“' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>DataSource „MultiLayer“</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-Der obige Code zeigt, wie Sie Daten auf der Karte visualisieren und beschriften können. Der erste Block des obigen Codes erstellt ein Kartenobjekt. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
-
-Der zweite Codeblock erstellt ein [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)-Objekt. Dann erstellt er ein Datenquellenobjekt mithilfe der [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)-Klasse und fügt den Punkt der Datenquelle hinzu.
-
-Eine [Blasenebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) rendert punktbasierte Daten, die von der [Datenquelle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) umschlossen sind, als Kreise auf der Karte. Der dritte Codeblock erstellt eine Blasenebene und fügt sie der Karte hinzu. Die Eigenschaften einer Blasenebene finden Sie unter [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
-
-Eine [Symbolebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) verwendet Text oder Symbole zum Rendern punktbasierter Daten, die in [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) als Symbole auf der Karte umschlossen sind. Der letzte Codeblock erstellt eine Symbolebene und fügt sie der Karte hinzu, die die Beschriftung für die Blase rendert. Die Eigenschaften einer Symbolebene finden Sie unter [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions).
-
-Die Datenquelle und die Ebenen werden erstellt und in der Funktion [Ereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) zur Karte hinzugefügt, um sicherzustellen, dass die Daten nach dem vollständigen Laden der Karte angezeigt werden.
 
 ## <a name="customize-a-bubble-layer"></a>Anpassen einer Blasenebene
 
@@ -73,7 +91,13 @@ Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 In den folgenden Artikeln finden Sie weitere Codebeispiele, die Sie Ihren Karten hinzufügen können:
 
 > [!div class="nextstepaction"]
+> [Erstellen einer Datenquelle](create-data-source-web-sdk.md)
+
+> [!div class="nextstepaction"]
 > [Hinzufügen einer Symbolebene](map-add-pin.md)
 
 > [!div class="nextstepaction"]
 > [Verwenden von datengesteuerten Formatvorlagenausdrücken](data-driven-style-expressions-web-sdk.md)
+
+> [!div class="nextstepaction"]
+> [Codebeispiele](https://docs.microsoft.com/samples/browse/?products=azure-maps)

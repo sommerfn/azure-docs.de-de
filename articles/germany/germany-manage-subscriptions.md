@@ -14,32 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 034a5d6ebf144b60a64dc1a105b91092ea404008
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f8b469b249ff1d0815ec2ba1eebfafa6246f24f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22647074"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212728"
 ---
 # <a name="manage-and-connect-to-your-subscription-in-azure-germany"></a>Verwalten Ihres Abonnements und Herstellen einer Verbindung mit Ihrem Abonnement in Azure Deutschland
 Azure Deutschland verfügt über eindeutige URLs und Endpunkte für die Verwaltung Ihrer Umgebung. Es ist wichtig, dass die richtigen Verbindungen zum Verwalten der Umgebung über das Azure-Portal oder PowerShell verwendet werden. Nach dem Herstellen der Verbindung mit der Azure Deutschland-Umgebung können die normalen Vorgänge zum Verwalten der Dienste durchgeführt werden, sofern die Komponente bereitgestellt wurde.
 
-## <a name="connect-by-using-the-portal"></a>Herstellen einer Verbindung mithilfe des Portals
-Das [Portal](https://portal.microsoftazure.de) ist für die meisten Benutzer der einfachste Weg zum Herstellen einer Verbindung mit Azure Deutschland. 
-
-> [!NOTE]
-> Nur das neue Portal (in dem das Azure Resource Manager-Bereitstellungsmodell verwendet wird) ist für Azure Deutschland verfügbar.
+> [!IMPORTANT]
+>
+>Dies gilt für Azure-Kunden von Microsoft Cloud Deutschland, die Azure-Dienste mit nutzungsbasierter Bezahlung direkt von Microsoft erwerben. 
+>
+>Ab dem 14. September 2019 ist ein neues Mandat der Europäischen Union in Kraft getreten, das erfordert, dass Kreditkartenzahlungen von Kunden eine strenge Kundenauthentifizierungsaufforderung (Strong Customer Authentication, SCA) durchlaufen. Folglich können Kunden mit nutzungsbasierter Bezahlung erst nach der [Migration zu einer neuen Azure-Region](./germany-migration-main.md) ein neues Abonnement erstellen oder Zahlungsinformationen hinzufügen oder aktualisieren. 
+>
 >
 
-## <a name="create-subscriptions"></a>Erstellen von Abonnements
-Um Abonnements für Ihr Konto zu erstellen, rufen Sie die Seite [Willkommen bei Microsoft Azure!](https://account.windowsazure.de) auf.
+## <a name="manage-subscription"></a>Abonnement verwalten
+Sie können Ihre Azure-Ressourcen verwalten und Abonnementabrechnungsinformationen im [Azure-Portal](https://portal.microsoftazure.de) anzeigen. 
 
-## <a name="create-a-free-account"></a>Erstellen eines kostenlosen Kontos
-Für Azure Deutschland sind auch [kostenlose Testkonten](https://azure.microsoft.com/free/germany/) verfügbar.
-
+## <a name="manage-account"></a>Verwalten eines Kontos
+Wenn Sie Ihre Kontoinformationen (z.B. Ihre Kontaktinformationen) verwalten möchten, besuchen Sie das [Kontocenter](https://account.windowsazure.de).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
+Erfahren Sie, wie Sie [zu einer neuen Azure-Region migrieren](./germany-migration-main.md).
 
 
 

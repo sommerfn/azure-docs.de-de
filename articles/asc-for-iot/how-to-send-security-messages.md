@@ -1,46 +1,43 @@
 ---
-title: Senden Ihrer Sicherheitsmeldungen an Azure Security Center für IoT (Vorschauversion) | Microsoft-Dokumentation
+title: Senden Ihrer Sicherheitsmeldungen an Azure Security Center für IoT | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Ihre Sicherheitsmeldungen unter Verwendung von Azure Security Center für IoT senden.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: c611bb5c-b503-487f-bef4-25d8a243803d
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/26/2019
+ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: a9974fd15ae9c8c420992c3ae1084feebae0f57d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c780eea15b9f064d3279c75ac2f967e8b6099ecb
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797345"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596209"
 ---
 # <a name="send-security-messages-sdk"></a>Senden von Sicherheitsmeldungen (SDK)
 
-> [!IMPORTANT]
-> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-In dieser Schrittanleitung werden die Funktionen von Azure Security Center (ASC) für IoT erläutert, die zur Verfügung stehen, wenn Sie die Sicherheitsmeldungen Ihres Geräts ohne Verwendung eines ASC für IoT-Agents erfassen und senden möchten. Außerdem erfahren Sie, wie Sie dazu vorgehen müssen.  
+In dieser Schrittanleitung werden die Funktionen von Azure Security Center für IoT erläutert, die zur Verfügung stehen, wenn Sie die Sicherheitsmeldungen Ihres Geräts ohne Verwendung eines Azure Security Center für IoT-Agents erfassen und senden möchten. Außerdem erfahren Sie, wie Sie dazu vorgehen müssen.  
 
 In diesem Artikel lernen Sie Folgendes: 
 > [!div class="checklist"]
 > * Verwenden der API zum Senden von Sicherheitsmeldungen für C#
 > * Verwenden der API zum Senden von Sicherheitsmeldungen für C
 
-## <a name="asc-for-iot-capabilities"></a>Funktionen von ASC für IoT
+## <a name="azure-security-center-for-iot-capabilities"></a>Funktionen von Azure Security Center für IoT
 
-ASC für IoT kann beliebige Sicherheitsmeldungsdaten verarbeiten und analysieren, solange die gesendeten Daten dem [ASC für IoT-Schema](https://aka.ms/iot-security-schemas) entsprechen und die Meldung als Sicherheitsmeldung festgelegt ist.
+Azure Security Center für IoT kann beliebige Sicherheitsmeldungsdaten verarbeiten und analysieren, solange die gesendeten Daten dem [Azure Security Center für IoT-Schema](https://aka.ms/iot-security-schemas) entsprechen und die Meldung als Sicherheitsmeldung festgelegt ist.
 
 ## <a name="security-message"></a>Sicherheitsmeldung
 
-ASC für IoT definiert eine Sicherheitsmeldung anhand folgender Kriterien:
+Azure Security Center für IoT definiert eine Sicherheitsmeldung anhand folgender Kriterien:
 - Ob die Meldung mit dem Azure IoT C/C# SDK gesendet wurde
 - Ob die Meldung dem [Sicherheitsmeldungsschema](https://aka.ms/iot-security-schemas) entspricht
 - Ob die Meldung vor dem Senden als Sicherheitsmeldung festgelegt wurde
@@ -48,15 +45,17 @@ ASC für IoT definiert eine Sicherheitsmeldung anhand folgender Kriterien:
 Jede Sicherheitsmeldung enthält die Metadaten des Senders, z. B. `AgentId`, `AgentVersion` oder `MessageSchemaVersion`, und eine Liste der Sicherheitsereignisse.
 Das Schema definiert die gültigen und erforderlichen Eigenschaften der Sicherheitsmeldung, einschließlich der Ereignistypen.
 
-[!NOTE]
+>[!Note]
 > Meldungen, die dem Schema nicht entsprechen, werden ignoriert. Überprüfen Sie das Schema, bevor Sie das Senden von Daten initiieren, da ignorierte Meldungen derzeit nicht gespeichert werden. 
-> Gesendete Meldungen, die nicht unter Verwendung des Azure IoT C/C# SDK als Sicherheitsmeldung festgelegt wurden, werden nicht an die ASC für IoT-Pipeline weitergeleitet.
+
+>[!Note]
+> Gesendete Meldungen, die nicht unter Verwendung des Azure IoT C/C# SDK als Sicherheitsmeldung festgelegt wurden, werden nicht an die Azure Security Center für IoT-Pipeline weitergeleitet.
 
 ## <a name="valid-message-example"></a>Beispiel für eine gültige Meldung
 
 Das folgende Beispiel zeigt ein gültiges Sicherheitsmeldungsobjekt. Das Beispiel enthält die Metadaten der Meldung und ein `ProcessCreate`-Sicherheitsereignis.
 
-Nachdem sie als Sicherheitsmeldung festgelegt und gesendet wurde, wird diese Meldung in ASC für IoT verarbeitet.
+Nachdem sie als Sicherheitsmeldung festgelegt und gesendet wurde, wird diese Meldung in Azure Security Center für IoT verarbeitet.
 
 ```json
 "AgentVersion": "0.0.1",
@@ -75,11 +74,11 @@ Nachdem sie als Sicherheitsmeldung festgelegt und gesendet wurde, wird diese Mel
         "Payload":
             [
                 {
-                    "Executable": "/usr/bin/echo",
+                    "Executable": "/usr/bin/myApp",
                     "ProcessId": 11750,
                     "ParentProcessId": 1593,
-                    "UserName": "nginx",
-                    "CommandLine": "./backup .htaccess"
+                    "UserName": "aUser",
+                    "CommandLine": "myApp -a -b"
                 }
             ]
     }
@@ -88,11 +87,11 @@ Nachdem sie als Sicherheitsmeldung festgelegt und gesendet wurde, wird diese Mel
 
 ## <a name="send-security-messages"></a>Senden von Sicherheitsmeldungen 
 
-Sie können Sicherheitsmeldungen ohne Verwendung des ASC für IoT-Agents mithilfe des [Azure IoT C#-Geräte-SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) oder des [Azure IoT C-Geräte-SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) senden.
+Sie können Sicherheitsmeldungen ohne Verwendung des Azure Security Center für IoT-Agents mithilfe des [Azure IoT C#-Geräte-SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) oder des [Azure IoT C-Geräte-SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) senden.
 
-Wenn Sie Daten Ihrer Geräte zur Verarbeitung an ASC für IoT senden möchten, verwenden Sie eine der folgenden APIs, um Meldungen für die korrekte Weiterleitung an die Verarbeitungspipeline von ASC für IoT-Verarbeitungspipeline zu markieren. Auf diese Weise gesendete Meldungen werden verarbeitet und als Sicherheitserkenntnisse innerhalb von ASC für IoT angezeigt (sowohl in IoT Hub als auch in Azure Security Center). 
+Wenn Sie Daten Ihrer Geräte zur Verarbeitung an Azure Security Center für IoT senden möchten, verwenden Sie eine der folgenden APIs, um Meldungen für die korrekte Weiterleitung an die Verarbeitungspipeline von Azure Security Center für IoT zu markieren. 
 
-Alle gesendeten Daten müssen dem [Meldungsschema von ASC für IoT](https://aka.ms/iot-security-schemas) entsprechen. Das gilt auch für Daten, die mit dem korrekten Header markiert wurden. 
+Alle gesendeten Daten müssen dem [Meldungsschema von Azure Security Center für IoT](https://aka.ms/iot-security-schemas) entsprechen. Das gilt auch für Daten, die mit dem korrekten Header markiert wurden. 
 
 ### <a name="send-security-message-api"></a>API zum Senden von Sicherheitsmeldungen
 
@@ -157,8 +156,8 @@ static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Lesen Sie die [Übersicht](overview.md) über ASC für IoT.
-- Informieren Sie sich ausführlicher über die [Architektur](architecture.md) von ASC für IoT.
+- Lesen Sie die [Übersicht](overview.md) über Azure Security Center für IoT.
+- Machen Sie sich mit der [Architektur](architecture.md) von Azure Security Center für IoT vertraut.
 - Aktivieren Sie den [Dienst](quickstart-onboard-iot-hub.md).
 - Lesen Sie die [häufig gestellten Fragen](resources-frequently-asked-questions.md).
 - Informieren Sie sich, wie Sie auf [Sicherheitsrohdaten](how-to-security-data-access.md) zugreifen.

@@ -4,7 +4,7 @@ description: In diesem Artikel erfahren Sie, wie Probleme mit virtuellen Netzwer
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-network
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 40e034a563074e10a2dfbee36b6792a095022057
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649628"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056832"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Probleme mit virtuellen Netzwerkappliances in Azure
 
@@ -67,14 +67,23 @@ Verwenden von PowerShell
 1. Öffnen Sie PowerShell, und melden Sie sich dann bei Ihrem Azure-Konto an.
 2. Führen Sie den folgenden Befehl aus (ersetzen Sie die in Klammern stehenden Werte durch Ihre Informationen):
 
-   Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>  
+   ```powershell
+   Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
+   ```
 
 3. Überprüfen Sie die Eigenschaft **EnableIPForwarding**.
 4. Wenn die IP-Weiterleitung nicht aktiviert ist, führen Sie die folgenden Befehle aus, um diese zu aktivieren:
 
-   $nic2 = Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName> $nic2.EnableIPForwarding = 1 Set-AzNetworkInterface -NetworkInterface $nic2 Execute: $nic2 #und überprüfen Sie auf Vorhandensein einer erwarteten Ausgabe: EnableIPForwarding   : True NetworkSecurityGroup : null
+   ```powershell
+   $nic2 = Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
+   $nic2.EnableIPForwarding = 1
+   Set-AzNetworkInterface -NetworkInterface $nic2
+   Execute: $nic2 #and check for an expected output:
+   EnableIPForwarding   : True
+   NetworkSecurityGroup : null
+   ```
 
-**Bei Verwendung einer Standard-SKU und öffentlicher IP-Adressen muss eine NSG vorhanden sein** Bei Verwendung einer Standard-SKU und öffentlicher IP-Adressen müssen eine NSG und eine explizite Regel erstellt werden, damit der Datenverkehr an die NVA weitergeleitet werden darf.
+**Bei Verwendung einer Standard-SKU und öffentlichen IP-Adresse muss eine NSG vorhanden sein** Bei Verwendung einer Standard-SKU und öffentlicher IP-Adressen müssen eine NSG und eine explizite Regel erstellt werden, damit der Datenverkehr an die NVA weitergeleitet werden darf.
 
 **Überprüfen, ob der Datenverkehr an die NVA weitergeleitet werden kann**
 

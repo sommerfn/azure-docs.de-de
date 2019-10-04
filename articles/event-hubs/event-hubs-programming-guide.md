@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 29814cb8aef09a8ead30d6daa615554dd55135dd
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 28b5c2db0f347b27beb31d427c7f189d74903dff
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678580"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70913976"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Programmierhandbuch für Azure Event Hubs
 Dieser Artikel erörtert einige gängige Szenarien zum Schreiben von Code mit Azure Event Hubs. Hierbei wird ein grundlegendes Verständnis von Event Hubs vorausgesetzt. Eine konzeptuelle Übersicht über Event Hubs finden Sie unter [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -23,7 +23,7 @@ Dieser Artikel erörtert einige gängige Szenarien zum Schreiben von Code mit Az
 
 Sie senden Ereignisse entweder mit HTTP POST oder über eine AMQP 1.0-Verbindung an einen Event Hub. Welches Verfahren gewählt wird, hängt vom jeweils vorliegenden Szenario ab. AMQP 1.0-Verbindungen werden als vermittelte Verbindungen in Service Bus gemessen und sind besser für Fälle mit häufigeren höheren Nachrichtenvolumen und geringeren Latenzanforderungen geeignet, da sie über einen dauerhaften Messagingkanal verfügen.
 
-Beim Verwenden der per .NET verwalteten APIs sind die Hauptkonstrukte für die Veröffentlichung von Daten auf Event Hubs die Klassen [EventHubClient][] und [EventData][]. [EventHubClient][] stellt den AMQP-Kommunikationskanal bereit, über den Ereignisse an Event Hub gesendet werden. Die [EventData][]-Klasse stellt ein Ereignis dar und wird verwendet, um Nachrichten auf einem Event Hub zu veröffentlichen. Diese Klasse enthält den Text, einige Metadaten sowie Headerinformationen zum Ereignis. Dem [EventData][]-Objekt werden weitere Eigenschaften hinzugefügt, wenn es einen Event Hub durchläuft.
+Beim Verwenden der per .NET verwalteten APIs sind die Hauptkonstrukte für die Veröffentlichung von Daten auf Event Hubs die Klassen [EventHubClient][] und [EventData][]. [EventHubClient][] stellt den AMQP-Kommunikationskanal bereit, über den Ereignisse an Event Hub gesendet werden. Die [EventData][]-Klasse stellt ein Ereignis dar und wird verwendet, um Nachrichten auf einem Event Hub zu veröffentlichen. Diese Klasse enthält den Text, einige Metadaten (Properties) und Headerinformationen (SystemProperties) zum Ereignis. Dem [EventData][]-Objekt werden weitere Eigenschaften hinzugefügt, wenn es einen Event Hub durchläuft.
 
 ## <a name="get-started"></a>Erste Schritte
 Die .NET-Klassen, die Event Hubs unterstützen, werden im NuGet-Paket [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) bereitgestellt. Die Installation kann mithilfe des Projektmappen-Explorers von Visual Studio oder über die [Paket-Manager-Konsole](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) in Visual Studio erfolgen. Geben Sie hierzu im Fenster der [Paket-Manager-Konsole](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein:
@@ -58,7 +58,7 @@ Sie senden Ereignisse an einen Event Hub, indem Sie eine [EventHubClient][]-Inst
 
 ## <a name="event-serialization"></a>Ereignisserialisierung
 
-Die [EventData][]-Klasse verfügt über [zwei überladene Konstruktoren](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor), die verschiedene Parameter, Bytes oder ein Bytearray zur Darstellung der Ereignisdatennutzlast akzeptieren. Wenn Sie JSON mit [EventData][] verwenden, können Sie mit **Encoding.UTF8.GetBytes()** das Bytearray für eine JSON-codierte Zeichenfolge abrufen. Beispiel: 
+Die [EventData][]-Klasse verfügt über [zwei überladene Konstruktoren](/dotnet/api/microsoft.azure.eventhubs.eventdata.-ctor), die verschiedene Parameter, Bytes oder ein Bytearray zur Darstellung der Ereignisdatennutzlast akzeptieren. Wenn Sie JSON mit [EventData][] verwenden, können Sie mit **Encoding.UTF8.GetBytes()** das Bytearray für eine JSON-codierte Zeichenfolge abrufen. Beispiel:
 
 ```csharp
 for (var i = 0; i < numMessagesToSend; i++)
@@ -70,6 +70,9 @@ for (var i = 0; i < numMessagesToSend; i++)
 ```
 
 ## <a name="partition-key"></a>Partitionsschlüssel
+
+> [!NOTE]
+> Informationen zu Partitionen finden Sie in [diesem Artikel](event-hubs-features.md#partitions), wenn Sie mit diesen nicht vertraut sind. 
 
 Beim Senden von Daten können Sie einen gehashten Wert angeben, um eine Partitionszuweisung zu generieren. Sie geben die Partition mithilfe der Eigenschaft [PartitionSender.PartitionID](/dotnet/api/microsoft.azure.eventhubs.partitionsender.partitionid) an. Wenn Sie sich für Partitionen entscheiden, müssen Sie jedoch zwischen Verfügbarkeit und Konsistenz wählen. 
 
@@ -107,7 +110,7 @@ Sie können [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ie
 * [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
-Instanziieren Sie zum Starten der Ereignisverarbeitung die [EventProcessorHost][]-Klasse, und geben Sie die entsprechenden Parameter für Ihren Event Hub an. Beispiel: 
+Instanziieren Sie zum Starten der Ereignisverarbeitung die [EventProcessorHost][]-Klasse, und geben Sie die entsprechenden Parameter für Ihren Event Hub an. Beispiel:
 
 > [!NOTE]
 > EventProcessorHost und seine verwandten Klassen werden im **Microsoft.Azure.EventHubs.Processor**-Paket bereitgestellt. Fügen Sie das Paket anhand der Anweisungen in [diesem Artikel](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package) oder durch Eingabe des folgenden Befehls im Fenster der [Paket-Manager-Konsole](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) Ihrem Visual Studio-Projekt hinzu: `Install-Package Microsoft.Azure.EventHubs.Processor`.
@@ -137,7 +140,10 @@ Außerdem implementiert die [EventProcessorHost][] -Klasse ein auf Azure Storage
 
 ## <a name="publisher-revocation"></a>Herausgebersperrung
 
-Zusätzlich zu den erweiterten Laufzeitfunktionen von [EventProcessorHost][] ermöglichen Event Hubs die Herausgebersperrung, damit bestimmte Herausgeber blockiert werden und keine Ereignisse an einen Event Hub senden können. Diese Funktionen sind nützlich, wenn das Token eines Herausgebers gefährdet ist oder ein Softwareupdate ein unangemessenes Verhalten bewirkt. In diesen Fällen kann die Identität des Herausgebers, die Teil des SAS-Tokens ist, blockiert werden, um das Veröffentlichen von Ereignissen zu verhindern.
+Zusätzlich zu den erweiterten Laufzeitfunktionen des Ereignisprozessorhosts ermöglicht der Event Hubs-Dienst die [Herausgebersperrung](/rest/api/eventhub/revoke-publisher), damit bestimmte Herausgeber blockiert werden und keine Ereignisse an einen Event Hub senden können. Diese Funktionen sind nützlich, wenn das Token eines Herausgebers gefährdet ist oder ein Softwareupdate ein unangemessenes Verhalten bewirkt. In diesen Fällen kann die Identität des Herausgebers, die Teil des SAS-Tokens ist, blockiert werden, um das Veröffentlichen von Ereignissen zu verhindern.
+
+> [!NOTE]
+> Derzeit wird diese Funktion nur von der REST-API unterstützt ([Herausgebersperrung](/rest/api/eventhub/revoke-publisher)).
 
 Weitere Informationen zum Sperren von Herausgebern und zum Senden an Event Hubs als Herausgeber finden Sie im Beispiel [Service Bus Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) (Service Bus Event Hubs – Sicheres Veröffentlichen in größerem Umfang).
 

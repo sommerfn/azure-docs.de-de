@@ -12,14 +12,15 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 696b6b14b2a369e8b80ac615fc77fa7f48f51c57
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 00f8a0e8d655f9412eceb7b0901ced829e490f78
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959934"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616093"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Manuelles Hinzufügen eines Kontos zur App
+
 Wenn die Kamera den QR-Code nicht erfassen kann, können Sie Ihre Kontoinformationen manuell der Microsoft Authenticator-App für die zweistufige Überprüfung hinzufügen. Dies gilt für Geschäfts-, Schul- oder Unikonten sowie für nicht von Microsoft bereitgestellte Konten.
 
 Bei den für Ihre Konten bereitgestellten Codes wird die Groß-/Kleinschreibung nicht berücksichtigt, und beim Hinzufügen in der Microsoft Authenticator-App müssen keine Leerzeichen eingegeben werden.
@@ -30,7 +31,7 @@ Bei den für Ihre Konten bereitgestellten Codes wird die Groß-/Kleinschreibung 
 ## <a name="add-your-work-or-school-account"></a>Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos
 
 1. Beachten Sie auf Ihrem Computer auf der Seite **Mobile App konfigurieren** den angegebenen **Code** und die **URL**. Lassen Sie diese Seite geöffnet, damit Sie den Code und die URL sehen können.
-    
+
     ![Bildschirm, der den QR-Code enthält](./media/user-help-auth-app-add-account-manual/auth-app-barcode.png)
 
 2. Öffnen Sie die Microsoft Authenticator-App, wählen Sie oben rechts das Symbol zum **Anpassen und Steuern** aus, und wählen Sie dann nacheinander **Konto hinzufügen** und **Geschäfts-, Schul- oder Unikonto** aus.
@@ -38,7 +39,7 @@ Bei den für Ihre Konten bereitgestellten Codes wird die Groß-/Kleinschreibung 
 3. Wählen Sie **ODER CODE MANUELL EINGEBEN** aus.
 
     ![Bildschirm zum Scannen eines QR-Codes](./media/user-help-auth-app-add-account-manual/auth-app-manual-code.png)
-   
+
 4. Geben Sie den **Code** und die **URL** aus Schritt 1 ein, und wählen Sie dann **Fertig stellen** aus.
 
     ![Bildschirm für die Eingabe von Code und URL](./media/user-help-auth-app-add-account-manual/auth-app-code-url.png)
@@ -78,6 +79,7 @@ Bei den für Ihre Konten bereitgestellten Codes wird die Groß-/Kleinschreibung 
     >Unter [Was ist die zweistufige Authentifizierung und wie funktioniert sie?](https://www.facebook.com/help/148233965247823) finden Sie weitere Informationen zur zweistufigen Überprüfung und zu Ihrem Facebook-Konto.
 
 ## <a name="add-your-amazon-account"></a>Hinzufügen Ihres Amazon-Kontos
+
 Sie können Ihr Amazon-Konto hinzufügen, indem Sie die zweistufige Überprüfung aktivieren und dann das Konto zur App hinzufügen.
 
 1. Wählen Sie auf Ihrem Computer auf der Seite **Wählen Sie, wie Sie Codes erhalten möchten**, die den QR-Code enthält, die Option **Der Barcode kann nicht gescannt werden** aus.
@@ -103,6 +105,6 @@ Sie können Ihr Amazon-Konto hinzufügen, indem Sie die zweistufige Überprüfun
 
 - Nachdem Sie der App Ihre Konten hinzugefügt haben, können Sie sich mit der Microsoft Authenticator-App auf Ihrem Gerät anmelden. Weitere Informationen finden Sie unter [Anmelden mithilfe der App](user-help-auth-app-sign-in.md).
 
-- Wenn Sie Probleme beim Abrufen des Prüfcodes für Ihr persönliches Microsoft-Konto haben, lesen Sie im Artikel **Sicherheitsinformation und Prüfcodes zum Microsoft-Konto** den Abschnitt [Problembehandlung beim Prüfcode](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes).
+- Wenn Sie Probleme beim Abrufen des Prüfcodes für Ihr persönliches Microsoft-Konto haben, lesen Sie im Artikel **Sicherheitsinformation und Prüfcodes zum Microsoft-Konto** den Abschnitt [Problembehandlung beim Prüfcode](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes).
 
 - Für iOS-Geräte können Sie Ihre Kontoanmeldeinformationen und zugehörige App-Einstellungen, etwa die Reihenfolge Ihrer Konten, in der Cloud sichern. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen von Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App](user-help-auth-app-backup-recovery.md).

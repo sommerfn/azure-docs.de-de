@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
-manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: efb6d932e616ada6b8dfff637af469c16fc2f293
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 42fc73b5557fba91cc132a0abe8561f0a72bbb64
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761820"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568863"
 ---
 # <a name="sql-database-application-development-overview"></a>Übersicht zur SQL-Datenbankanwendungsentwicklung
 
-In diesem Artikel werden die grundlegenden Aspekte beschrieben, die ein Entwickler beim Schreiben von Code zum Herstellen einer Verbindung mit Azure SQL-Datenbanken berücksichtigen sollte. Dieser Artikel gilt für alle Bereitstellungsmodelle von Azure SQL-Datenbank (Einzeldatenbank, Pools für elastische Datenbanken, verwaltete Instanz).
+In diesem Artikel werden die grundlegenden Aspekte beschrieben, die ein Entwickler beim Schreiben von Code zum Herstellen einer Verbindung mit Azure SQL-Datenbank berücksichtigen sollte. Dieser Artikel gilt für alle Bereitstellungsmodelle von Azure SQL-Datenbank (Einzeldatenbank, Pools für elastische Datenbanken, verwaltete Instanz).
 
 > [!TIP]
 > Wenn Sie Ihre Azure SQL-Datenbank-Instanz einrichten müssen, lesen Sie die ersten Schritte zu [Singletons](sql-database-single-database-quickstart-guide.md) und [verwalteten Instanzen](sql-database-managed-instance-quickstart-guide.md).
@@ -57,7 +56,7 @@ Weitere Informationen zur Vorbereitung auf geplante Wartungsereignisse in Azure 
 
 - Vergewissern Sie sich, dass auf dem Computer, der das Clientprogramm hostet, die Firewall ausgehende TCP-Kommunikation über Port 1433 zulässt.  Weitere Informationen: [Konfigurieren einer Firewall für Azure SQL-Datenbank](sql-database-configure-firewall-settings.md).
 - Wenn Ihr Clientprogramm eine Verbindung mit SQL-Datenbank herstellt, wobei der Client auf einem virtuellen Azure-Computer ausgeführt wird, müssen Sie bestimmte Portbereiche auf dem virtuellen Computer öffnen. Weitere Informationen: [Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank](sql-database-develop-direct-route-ports-adonet-v12.md).
-- Bei Clientverbindungen mit Azure SQL-Datenbankwird der Proxy manchmal umgangen und direkt mit der Datenbank interagiert. Andere Ports als 1433 werden wichtig. Weitere Informationen finden Sie unter [Verbindungsarchitektur der Azure SQL-Datenbank](sql-database-connectivity-architecture.md) und [Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank](sql-database-develop-direct-route-ports-adonet-v12.md).
+- Bei Clientverbindungen mit Azure SQL-Datenbank wird der Proxy manchmal umgangen und direkt mit der Datenbank interagiert. Andere Ports als 1433 werden wichtig. Weitere Informationen finden Sie unter [Verbindungsarchitektur der Azure SQL-Datenbank](sql-database-connectivity-architecture.md) und [Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Informationen zur Netzwerkkonfiguration für eine verwaltete Instanz finden Sie unter [Netzwerkkonfiguration für verwaltete Instanzen](sql-database-howto-managed-instance.md#network-configuration).
 
 ## <a name="next-steps"></a>Nächste Schritte

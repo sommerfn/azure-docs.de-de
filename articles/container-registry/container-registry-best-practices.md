@@ -3,16 +3,17 @@ title: Bewährte Methoden in Azure Container Registry
 description: Erfahren Sie, wie Sie Azure Container Registry anhand dieser bewährten Methoden effektiv verwenden.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: danlep
-ms.openlocfilehash: 2cf64c7c4f99a57c4a4a6cf03e68e8af803ceca9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a1ab010300d3f7bec3aeb5969a9a09fa9ee9a6a5
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810761"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68309769"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Bewährte Methoden für Azure Container Registry
 
@@ -54,7 +55,7 @@ Auch wenn Sie mit einem bestimmten Hosttyp (z.B. Azure Container Instances) expe
 
 Bei der Authentifizierung bei einer Azure-Containerregistrierung gibt es im Wesentlichen zwei Szenarien: die individuelle Authentifizierung und die Dienstauthentifizierung (oder „monitorlose Authentifizierung“). Die folgende Tabelle enthält eine kurze Übersicht über diese Szenarien sowie die jeweils empfohlene Authentifizierungsmethode.
 
-| Type | Beispielszenario | Empfohlene Methode |
+| type | Beispielszenario | Empfohlene Methode |
 |---|---|---|
 | Einzelne Identität | Ein Entwickler, der Images mittels Pull auf seinen bzw. mittels Push von seinem Entwicklungscomputer überträgt. | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | Monitorlose/Dienstidentität | Build- und Bereitstellungspipelines, an denen der Benutzer nicht direkt beteiligt ist. | [Dienstprinzipal](container-registry-authentication.md#service-principal) |
@@ -63,9 +64,9 @@ Ausführliche Informationen zur Azure Container Registry-Authentifizierung finde
 
 ## <a name="manage-registry-size"></a>Verwalten von Registrierungsgrößen
 
-Die Speichereinschränkungen jeder [SKU der Containerregistrierung][container-registry-skus] sollten auf ein typisches Szenario ausgerichtet werden: **Basic** für die ersten Schritte, **Standard** für die Mehrzahl der Produktionsanwendungen und **Premium** für Leistung mit Hyperskalierung und [Georeplikation][container-registry-geo-replication]. Während der gesamten Dauer Ihrer Registrierung sollten Sie die Größe durch regelmäßiges Löschen von ungenutztem Inhalt verwalten.
+Die Speichereinschränkungen jeder [SKU der Containerregistrierung][container-registry-skus] sind jeweils für ein typisches Szenario konzipiert: **Basic** für die ersten Schritte, **Standard** für die meisten Produktionsanwendungen und **Premium** für Leistung mit Hyperskalierung und [Georeplikation][container-registry-geo-replication]. Während der gesamten Dauer Ihrer Registrierung sollten Sie die Größe durch regelmäßiges Löschen von ungenutztem Inhalt verwalten.
 
-Verwenden Sie den Azure CLI-Befehl [az acr show-usage][az-acr-show-usage], um die aktuelle Größe Ihrer Registrierung anzuzeigen:
+Verwenden Sie den Azure CLI-Befehl [az acr show-usage][az-acr-show-usage], um die aktuelle Größe Ihrer Registrierung anzuzeigen:
 
 ```console
 $ az acr show-usage --resource-group myResourceGroup --name myregistry --output table

@@ -4,23 +4,22 @@ description: Aktivieren Sie das automatische Skalieren in einem Cloudpool, um di
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2014b00a82a6d56bf58b471336c6d809721abea9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869091"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095430"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -40,7 +39,7 @@ In diesem Artikel werden die verschiedenen Entitäten erläutert, aus denen sich
 >
 
 ## <a name="automatic-scaling-formulas"></a>Formeln für die automatische Skalierung
-Eine Formel für die automatische Skalierung ist ein von Ihnen definierter Zeichenfolgenwert, der mindestens eine Anweisung enthält. Die Formel für die automatische Skalierung wird dem Element [autoScaleFormula][rest_autoscaleformula] (Batch REST) oder der Eigenschaft [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] (Batch .NET) eines Pools zugewiesen. Der Batch-Dienst verwendet Ihre Formel, um für das nächste Verarbeitungsintervall die Zielanzahl der Computeknoten im Pool zu ermitteln. Die Formelzeichenfolge darf 8 KB nicht überschreiten und kann bis zu 100 durch Semikolons getrennte Anweisungen sowie Zeilenumbrüche und Kommentare enthalten.
+Eine Formel für die automatische Skalierung ist ein von Ihnen definierter Zeichenfolgenwert, der mindestens eine Anweisung enthält. Die Formel für die Autoskalierung wird dem Element [autoScaleFormula][rest_autoscaleformula] (Batch REST) oder der Eigenschaft [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] (Batch .NET) eines Pools zugewiesen. Der Batch-Dienst verwendet Ihre Formel, um für das nächste Verarbeitungsintervall die Zielanzahl der Computeknoten im Pool zu ermitteln. Die Formelzeichenfolge darf 8 KB nicht überschreiten und kann bis zu 100 durch Semikolons getrennte Anweisungen sowie Zeilenumbrüche und Kommentare enthalten.
 
 Sie können sich Formeln für die automatische Skalierung als eine „Batch-Sprache“ für die automatische Skalierung vorstellen. Formelanweisungen sind frei definierte Ausdrücke, die sowohl dienstdefinierte Variablen (vom Batch-Dienst definiert) als auch benutzerdefinierte Variablen (von Ihnen selbst definiert) enthalten können. Mithilfe von mitgelieferten Typen, Operatoren und Funktionen können sie für diese Werte eine Vielzahl von Operationen ausführen. Eine Anweisung kann beispielsweise wie folgt aussehen:
 
@@ -59,10 +58,11 @@ Fügen Sie diese Anweisungen zu Ihrer Formel für die automatische Skalierung hi
 
 Die Zielanzahl der Knoten ist möglicherweise höher oder niedriger als die aktuelle Anzahl der Knoten dieses Typs im Pool, oder sie ist mit der Anzahl identisch. Batch wertet die Formel für die automatische Skalierung des Pools in einem bestimmten Intervall aus (siehe [Intervalle für die automatische Skalierung](#automatic-scaling-interval)). Batch passt die Zielanzahl von den einzelnen Knotentypen im Pool an die Anzahl an, die durch die Formel für die automatische Skalierung zum Zeitpunkt der Auswertung angegeben wird.
 
-### <a name="sample-autoscale-formula"></a>Beispielformel für die automatische Skalierung
+### <a name="sample-autoscale-formulas"></a>Beispielformeln für die automatische Skalierung
 
-Hier sehen Sie ein Beispiel für eine Formel für die automatische Skalierung, die für die meisten Szenarien angepasst werden kann. Die Variablen `startingNumberOfVMs` und `maxNumberofVMs` in der Beispielformel können an Ihre Anforderungen angepasst werden. Diese Formel skaliert dedizierte Knoten. Sie kann jedoch so geändert werden, dass sie auch Knoten mit niedriger Priorität skaliert. 
+Im Folgenden sehen Sie Beispiele für zwei Formeln für die automatische Skalierung, die für die meisten Szenarien angepasst werden können. Die Variablen `startingNumberOfVMs` und `maxNumberofVMs` in den Beispielformeln können Ihren Anforderungen angepasst werden.
 
+#### <a name="pending-tasks"></a>Ausstehende Aufgaben
 ```
 startingNumberOfVMs = 1;
 maxNumberofVMs = 25;
@@ -72,6 +72,17 @@ $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
 ```
 
 Mit dieser Formel für die automatische Skalierung wird der Pool zunächst mit einem einzigen virtuellen Computer erstellt. Die Metrik `$PendingTasks` definiert die Anzahl der Aufgaben, die ausgeführt werden oder sich in einer Warteschlange befinden. Die Formel sucht nach der durchschnittlichen Anzahl ausstehender Aufgaben in den letzten 180 Sekunden und legt die Variable `$TargetDedicatedNodes` entsprechend fest. Die Formel stellt sicher, dass die Zielanzahl der dedizierten Knoten niemals 25 virtuelle Computer überschreitet. Wenn neue Aufgaben gesendet werden, wächst der Pool automatisch an. Werden Aufgaben abgeschlossen, werden VMs nacheinander frei, und der Pool wird durch die Formel für die automatische Skalierung verkleinert.
+
+Diese Formel skaliert dedizierte Knoten. Sie kann jedoch so geändert werden, dass sie auch Knoten mit niedriger Priorität skaliert.
+
+#### <a name="preempted-nodes"></a>Vorzeitig entfernte Knoten 
+```
+maxNumberofVMs = 25;
+$TargetDedicatedNodes = min(maxNumberofVMs, $PreemptedNodeCount.GetSample(180 * TimeInterval_Second));
+$TargetLowPriorityNodes = min(maxNumberofVMs , maxNumberofVMs - $TargetDedicatedNodes);
+```
+
+In diesem Beispiel wird ein Pool erstellt, der mit 25 Knoten mit niedriger Priorität beginnt. Jedes Mal, wenn ein Knoten mit niedriger Priorität vorzeitig entfernt wird, wird er durch einen dedizierten Knoten ersetzt. Wie im ersten Beispiel verhindert die `maxNumberofVMs`-Variable, dass der Pool 25 VMs überschreitet. Dieses Beispiel eignet sich für die Nutzung von VMs mit niedriger Priorität, während gleichzeitig sichergestellt wird, dass für die Lebensdauer des Pools nur eine festgelegte Anzahl vorzeitiger Entfernungen auftritt.
 
 ## <a name="variables"></a>Variables
 Sie können in Ihrer Formel für die automatische Skalierung sowohl **dienstdefinierte** als auch **benutzerdefinierte** Variablen verwenden. Vom Dienst definierte Variablen sind in den Batch-Dienst integriert. Einige der vom Dienst definierten Variablen verfügen über Lese-/Schreibzugriff, und einige sind schreibgeschützt. Benutzerdefinierte Variablen sind Variablen, die Sie definieren. In der im vorherigen Abschnitt gezeigten Beispielformel sind `$TargetDedicatedNodes` und `$PendingTasks` vom Dienst definierte Variablen. Die Variablen `startingNumberOfVMs` und `maxNumberofVMs` sind benutzerdefinierte Variablen.
@@ -195,10 +206,10 @@ Zum Definieren einer Formel für die automatische Skalierung stehen folgende vor
 | std(doubleVecList) |double |Die Stichproben-Standardabweichung der Werte in der doubleVecList wird zurückgegeben. |
 | stop() | |Beendet die Auswertung des Ausdrucks für die automatische Skalierung. |
 | sum(doubleVecList) |double |Die Summe aller Komponenten von doubleVecList wird zurückgegeben. |
-| time(string dateTime="") | timestamp |Es werden entweder der Zeitstempel der aktuellen Zeit zurückgegeben, wenn keine Parameter übergeben werden, oder andernfalls der Zeitstempel der DateTime-Zeichenfolge, wenn diese übergeben wird. Unterstützte DateTime-Formate sind W3C-DTF und RFC 1123. |
+| time(string dateTime="") |timestamp |Es werden entweder der Zeitstempel der aktuellen Zeit zurückgegeben, wenn keine Parameter übergeben werden, oder andernfalls der Zeitstempel der DateTime-Zeichenfolge, wenn diese übergeben wird. Unterstützte DateTime-Formate sind W3C-DTF und RFC 1123. |
 | val(doubleVec v, double i) |double |Der Wert des Elements an Position i im Vektor v mit einem Anfangsindex von 0 wird zurückgegeben. |
 
-Einige der in der vorherigen Tabelle beschriebenen Funktionen akzeptieren eine Liste als Argument. Bei der durch Trennzeichen getrennten Liste handelt es sich um eine beliebige Kombination aus *double* und *doubleVec*. Beispiel: 
+Einige der in der vorherigen Tabelle beschriebenen Funktionen akzeptieren eine Liste als Argument. Bei der durch Trennzeichen getrennten Liste handelt es sich um eine beliebige Kombination aus *double* und *doubleVec*. Beispiel:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -217,7 +228,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 | GetSamplePeriod() |Gibt den Zeitraum zurück, in dem die Stichproben aus einem alten Stichproben-Dataset gesammelt wurden. |
 | Count() |Liefert die Gesamtzahl der Stichprobenwerte im Metrikverlauf zurück. |
 | HistoryBeginTime() |Gibt den Zeitstempel des ältesten verfügbaren Stichprobenwerts für die Metrik zurück. |
-| GetSamplePercent() |Gibt den Prozentsatz an Stichprobenwerten zurück, die für ein bestimmtes Intervall verfügbar sind. Beispiel: <br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Da die `GetSample`-Methode einen Fehler erzeugt, wenn der Prozentsatz der zurückgegebenen Stichproben kleiner als der angegebene `samplePercent`-Wert ist, können Sie vorab mithilfe der `GetSamplePercent`-Methode eine Prüfung vornehmen. Wenn nicht genügend Beispiele vorhanden sind, können Sie anschließend eine andere Aktion ausführen, , ohne die Auswertung der automatischen Skalierung zu unterbrechen. |
+| GetSamplePercent() |Gibt den Prozentsatz an Stichprobenwerten zurück, die für ein bestimmtes Intervall verfügbar sind. Beispiel:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Da die `GetSample`-Methode einen Fehler erzeugt, wenn der Prozentsatz der zurückgegebenen Stichproben kleiner als der angegebene `samplePercent`-Wert ist, können Sie vorab mithilfe der `GetSamplePercent`-Methode eine Prüfung vornehmen. Wenn nicht genügend Beispiele vorhanden sind, können Sie anschließend eine andere Aktion ausführen, , ohne die Auswertung der automatischen Skalierung zu unterbrechen. |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Stichproben, Prozentsatz für die Stichprobe und die *GetSample()* -Methode
 Das Abrufen von Metrikdaten zu Aufgaben und Ressourcen sowie das anschließende Anpassen der Poolgröße basierend auf diesen Daten ist die Kernfunktion einer Formel für die automatische Skalierung. Daher ist es wichtig, sich damit vertraut zu machen, wie Formeln für die automatische Skalierung mit Metrikdaten (Stichproben) interagieren.
@@ -242,7 +253,7 @@ Verwenden Sie hierzu `GetSample(interval look-back start, interval look-back end
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Wenn die obige Zeile von Batch ausgewertet wird, gibt sie einen Bereich von Stichproben als Vektor von Werten zurück. Beispiel: 
+Wenn die obige Zeile von Batch ausgewertet wird, gibt sie einen Bereich von Stichproben als Vektor von Werten zurück. Beispiel:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -263,7 +274,7 @@ Weil bei der Verfügbarkeit von Stichproben eine Verzögerung auftreten kann, m�
 >
 >
 
-## <a name="metrics"></a>Metriken
+## <a name="metrics"></a>metrics
 Für das Definieren einer Formel können Sie sowohl Ressourcenmetriken als auch Aufgabenmetriken verwenden. Sie passen die vorgegebene Anzahl dedizierter Knoten im Pool basierend auf den Metrikdaten an, die Sie abrufen und auswerten. Im Abschnitt [Variablen](#variables) finden Sie weitere Informationen zu den einzelnen Metriken.
 
 <table>
@@ -352,15 +363,19 @@ $totalDedicatedNodes =
 $TargetDedicatedNodes = min(400, $totalDedicatedNodes)
 ```
 
-## <a name="create-an-autoscale-enabled-pool-with-net"></a>Erstellen eines Pools mit aktivierter automatischer Skalierung in .NET
+## <a name="create-an-autoscale-enabled-pool-with-batch-sdks"></a>Erstellen eines Pools mit aktivierter Autoskalierung mit Batch SDKs
+
+Die automatische Skalierung für Pools kann mit einem der [Batch SDKs](batch-apis-tools.md#azure-accounts-for-batch-development), den [Batch-PowerShell-Cmdlets](batch-powershell-cmdlets-get-started.md) der [Batch REST-API](https://docs.microsoft.com/rest/api/batchservice/) und der [Batch-CLI](batch-cli-get-started.md) konfiguriert werden. In diesem Abschnitt sehen Sie Beispiele sowohl für .NET als auch für Python.
+
+### <a name="net"></a>.NET
 
 Gehen Sie wie folgt vor, um einen Pool mit automatischer Skalierung in .NET zu erstellen:
 
 1. Erstellen Sie den Pool mit [BatchClient.PoolOperations.CreatePool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool).
-2. Legen Sie die [CloudPool.AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled)-Eigenschaft auf `true` fest.
-3. Legen Sie die [CloudPool.AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula)-Eigenschaft mit Ihrer Formel für die automatische Skalierung fest.
-4. (Optional) Legen Sie die [CloudPool.AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval)-Eigenschaft fest (Standardeinstellung ist 15 Minuten).
-5. Führen Sie für den Pool mit [CloudPool.Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) oder [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) einen Commit durch.
+1. Legen Sie die [CloudPool.AutoScaleEnabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled)-Eigenschaft auf `true` fest.
+1. Legen Sie die [CloudPool.AutoScaleFormula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula)-Eigenschaft mit Ihrer Formel für die automatische Skalierung fest.
+1. (Optional) Legen Sie die [CloudPool.AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval)-Eigenschaft fest (Standardeinstellung ist 15 Minuten).
+1. Führen Sie für den Pool mit [CloudPool.Commit](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) oder [CommitAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) einen Commit durch.
 
 Mit dem folgenden Codeausschnitt wird ein Pool mit aktivierter automatischer Skalierung in .NET erstellt. Die Formel für die automatische Skalierung des Pools legt die vorgegebene Anzahl dedizierter Knoten auf 5 am Montag und auf 1 an allen anderen Wochentagen fest. Das [Intervall für die automatische Skalierung](#automatic-scaling-interval) wird auf 30 Minuten festgelegt. In diesem und anderen C#-Codeausschnitten in diesem Artikel ist `myBatchClient` eine ordnungsgemäß initialisierte Instanz der Klasse [BatchClient][net_batchclient].
 
@@ -380,10 +395,8 @@ await pool.CommitAsync();
 >
 >
 
-Neben Batch .NET können Sie auch die anderen [Batch-SDKs](batch-apis-tools.md#azure-accounts-for-batch-development), [Batch-REST](https://docs.microsoft.com/rest/api/batchservice/), [Batch PowerShell-Cmdlets](batch-powershell-cmdlets-get-started.md) und die [Batch-CLI](batch-cli-get-started.md) für die Konfiguration der automatischen Skalierung verwenden.
+#### <a name="automatic-scaling-interval"></a>Intervall für die automatische Skalierung
 
-
-### <a name="automatic-scaling-interval"></a>Intervall für die automatische Skalierung
 Standardmäßig passt der Batch-Dienst alle 15 Minuten die Poolgröße gemäß seiner Formel für die automatische Skalierung an. Dieses Intervall kann mithilfe der folgenden Pooleigenschaften konfiguriert werden:
 
 * [CloudPool.AutoScaleEvaluationInterval][net_cloudpool_autoscaleevalinterval] (Batch .NET)
@@ -396,12 +409,56 @@ Das kürzeste Intervall ist fünf Minuten, das längste 168 Stunden. Wenn ein In
 >
 >
 
+### <a name="python"></a>Python
+
+Auf ähnliche Weise können Sie einen Pool mit aktivierter Autoskalierung mit dem Python SDK erstellen:
+
+1. Erstellen Sie einen Pool, und geben Sie die Konfiguration an.
+1. Fügen Sie den Pool dem Dienstclient hinzu.
+1. Aktivieren Sie die Autoskalierung im Pool mit einer von Ihnen erstellten Formel.
+
+```python
+# Create a pool; specify configuration
+new_pool = batch.models.PoolAddParameter(
+    id="autoscale-enabled-pool",
+    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+        image_reference=batchmodels.ImageReference(
+          publisher="Canonical",
+          offer="UbuntuServer",
+          sku="18.04-LTS",
+          version="latest"
+            ),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
+    vm_size="STANDARD_D1_v2",
+    target_dedicated_nodes=0,
+    target_low_priority_nodes=0
+)
+batch_service_client.pool.add(new_pool) # Add the pool to the service client
+
+formula = """$curTime = time();
+             $workHours = $curTime.hour >= 8 && $curTime.hour < 18; 
+             $isWeekday = $curTime.weekday >= 1 && $curTime.weekday <= 5; 
+             $isWorkingWeekdayHour = $workHours && $isWeekday; 
+             $TargetDedicated = $isWorkingWeekdayHour ? 20:10;""";
+
+# Enable autoscale; specify the formula
+response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formula=formula,
+                                            auto_scale_evaluation_interval=datetime.timedelta(minutes=10), 
+                                            pool_enable_auto_scale_options=None, 
+                                            custom_headers=None, raw=False)
+```
+
+> [!TIP]
+> Weitere Beispiele für die Verwendung des Python SDK finden Sie auf GitHub im [Batch Python-Schnellstartrepository](https://github.com/Azure-Samples/batch-python-quickstart).
+>
+>
+
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Aktivieren der automatischen Skalierung für einen vorhandenen Pool
 
-Jedes Batch SDK bietet eine Möglichkeit für die Aktivierung der automatischen Skalierung. Beispiel: 
+Jedes Batch SDK bietet eine Möglichkeit für die Aktivierung der automatischen Skalierung. Beispiel:
 
 * [BatchClient.PoolOperations.EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
-* [Enable automatic scaling on a pool][rest_enableautoscale] (Aktivieren des automatischen Skalierens für einen Pool) (REST-API)
+* [Aktivieren des automatischen Skalierens für einen Pool][rest_enableautoscale] (REST-API)
 
 Beachten Sie folgende Punkte, wenn Sie die automatische Skalierung für einen vorhandenen Pool aktivieren:
 

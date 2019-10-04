@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Erstellen einer Warteschlange in Azure Storage mithilfe von .NET'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure Storage-Clientbibliothek für .NET eine Warteschlange erstellen und ihr Nachrichten hinzufügen. Im Anschluss erfahren Sie dann, wie Sie Nachrichten aus der Warteschlange lesen und verarbeiten.
-services: storage
-author: tamram
-ms.custom: mvc
-ms.service: storage
-ms.topic: quickstart
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 02/06/2018
-ms.author: tamram
-ms.openlocfilehash: f16c4438dfb2feb70dece0b95f8afc701c5a3d66
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.service: storage
+ms.subservice: queues
+ms.topic: quickstart
+ms.reviewer: cbrooks
+ms.openlocfilehash: d3706f8585c2644a31bf1f418f5425e0fa58d2a0
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009307"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721258"
 ---
 # <a name="quickstart-use-net-to-create-a-queue-in-azure-storage"></a>Schnellstart: Erstellen einer Warteschlange in Azure Storage mithilfe von .NET
 
@@ -144,7 +144,7 @@ Erkunden Sie als Nächstes den Beispielcode, um sich mit der Funktionsweise vert
 
 ### <a name="try-parsing-the-connection-string"></a>Versuchtes Analysieren der Verbindungszeichenfolge
 
-In dem Beispiel wird als Erstes überprüft, ob die Umgebungsvariable eine Verbindungszeichenfolge enthält, die analysiert werden kann, um ein Objekt vom Typ [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) zu erstellen, das auf das Speicherkonto verweist. Um zu überprüfen, ob die Verbindungszeichenfolge gültig ist, wird in dem Beispiel die Methode [TryParse](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.tryparse) verwendet. Wenn **TryParse** erfolgreich ist, wird die Variable *storageAccount* initialisiert, und **true** wird zurückgegeben.
+In dem Beispiel wird als Erstes überprüft, ob die Umgebungsvariable eine Verbindungszeichenfolge enthält, die analysiert werden kann, um ein Objekt vom Typ [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) zu erstellen, das auf das Speicherkonto verweist. Um zu überprüfen, ob die Verbindungszeichenfolge gültig ist, wird in dem Beispiel die Methode [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) verwendet. Wenn **TryParse** erfolgreich ist, wird die Variable *storageAccount* initialisiert, und **true** wird zurückgegeben.
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -186,9 +186,9 @@ Console.WriteLine();
 
 Als Nächstes wird am Ende der Warteschlange eine Nachricht hinzugefügt. 
 
-Die Nachricht muss in einem Format vorliegen, das in eine XML-Anforderung mit UTF-8-Codierung eingeschlossen werden kann, und kann bis zu 64 KB groß sein. Für Nachrichten mit Binärdaten empfiehlt Microsoft die Verwendung der Base64-Codierung.
+Die Nachricht muss in einem Format vorliegen, das in eine XML-Anforderung mit UTF-8-Codierung eingeschlossen werden kann, und kann bis zu 64 KB groß sein. Für Nachrichten mit Binärdaten empfiehlt Microsoft die Base64-Codierung der Nachricht.
 
-Die maximale Gültigkeitsdauer für eine Nachricht beträgt standardmäßig sieben Tage. Für die Gültigkeitsdauer der Nachricht kann eine beliebige positive Zahl angegeben werden. Soll die Gültigkeit der Nachricht nicht ablaufen, geben Sie „-1“ an.
+Die maximale Gültigkeitsdauer für eine Nachricht beträgt standardmäßig sieben Tage. Sie können für die Gültigkeitsdauer der Nachricht eine beliebige positive Zahl angeben.
 
 ```csharp
 // Create a message and add it to the queue. Set expiration time to 14 days.
@@ -198,6 +198,12 @@ Console.WriteLine("Added message '{0}' to queue '{1}'", message.Id, queue.Name);
 Console.WriteLine("Message insertion time: {0}", message.InsertionTime.ToString());
 Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToString());
 Console.WriteLine();
+```
+
+Um eine Nachricht hinzuzufügen, die nicht abläuft, verwenden Sie `Timespan.FromSeconds(-1)` in Ihrem Aufruf von [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync).
+
+```csharp
+await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
 ```
 
 ### <a name="peek-a-message-from-the-queue"></a>Einsehen einer Nachricht aus der Warteschlange
@@ -256,7 +262,9 @@ Für die .NET-Entwicklung mit Azure-Warteschlangen stehen folgende zusätzliche 
 
 ### <a name="binaries-and-source-code"></a>Binärdateien und Quellcode
 
-- Laden Sie das NuGet-Paket für die aktuelle Version der [.NET-Clientbibliothek](https://www.nuget.org/packages/WindowsAzure.Storage/) für Azure Storage herunter. 
+- Laden Sie die NuGet-Pakete für die aktuelle Version der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage/client) herunter.
+    - [Common](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+    - [Warteschlangen](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - Zeigen Sie den [Quellcode der .NET-Clientbibliothek](https://github.com/Azure/azure-storage-net) auf GitHub an.
 
 ### <a name="client-library-reference-and-samples"></a>Clientbibliothek – Referenz und Beispiele

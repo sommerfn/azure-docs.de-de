@@ -4,23 +4,22 @@ description: Stellen Sie OpenShift Container Platform in Azure bereit.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/04/2018
+ms.date: 04/18/2019
 ms.author: haroldw
-ms.openlocfilehash: 1d869d822cdeb0051836a5fc5f01eb69c523f9e3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 48c462edf6c7b17c3a538b6ce0cb28609628d75f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995548"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091777"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Bereitstellen von OpenShift Container Platform in Azure
 
@@ -33,7 +32,20 @@ Zum Bereitstellen von Container Platform in Azure können Sie zahlreiche Methode
 Für alle Optionen ist ein Red Hat-Abonnement erforderlich. Während der Bereitstellung wird die Red Hat Enterprise Linux-Instanz beim Red Hat-Abonnement registriert und an die Pool-ID, die die Berechtigungen für OpenShift Container Platform enthält, angefügt.
 Stellen Sie sicher, dass Sie über einen gültigen Benutzernamen, ein gültiges Kennwort und eine gültige Pool-ID für Red Hat Subscription Manager (RHSM) verfügen. Sie können einen Aktivierungsschlüssel, eine Organisations-ID und eine Pool-ID verwenden. Sie können diese Informationen überprüfen, indem Sie sich hier anmelden: https://access.redhat.com.
 
+
 ## <a name="deploy-using-the-openshift-container-platform-resource-manager-template"></a>Bereitstellen mithilfe der Resource Manager-Vorlage für OpenShift Container Platform
+
+### <a name="private-clusters"></a>Private Cluster
+
+Das Bereitstellen privater OpenShift-Cluster setzt mehr voraus, als das Nichtvorhandensein einer öffentlichen IP-Adresse, die dem Master-Lastenausgleich (Webkonsole) oder dem Infra-Lastenausgleich (Router) zugeordnet ist.  Ein privater Cluster verwendet im Allgemeinen einen benutzerdefinierten DNS-Server (nicht das standardmäßige Azure DNS), einen benutzerdefinierten Domänennamen (wie „contoso.com“) und ein oder mehrere vordefinierte virtuelle Netzwerke.  Für private Cluster müssen Sie Ihr virtuelles Netzwerk vorab mit allen entsprechenden Subnetzen und DNS-Servereinstellungen konfigurieren.  Geben Sie anschließend mit **existingMasterSubnetReference**, **existingInfraSubnetReference**, **existingCnsSubnetReference** und **existingNodeSubnetReference** das vorhandene Subnetz an, das vom Cluster verwendet werden soll.
+
+Ist „private master“ (**masterClusterType**=private) ausgewählt, muss eine statische private IP-Adresse für **masterPrivateClusterIp** angegeben werden.  Diese IP-Adresse wird dem Front-End des Master-Lastenausgleichs zugewiesen.  Die IP-Adresse muss innerhalb des CIDR für das Master-Subnetz liegen und darf nicht in Verwendung sein.  **masterClusterDnsType** muss auf „custom“ festgelegt werden, und der Master-DNS-Name muss für **masterClusterDns** angegeben werden.  Der DNS-Name muss der statischen privaten IP-Adresse zugeordnet sein; damit wird auf die Konsole auf den Master-Knoten zugegriffen.
+
+Ist „private router“ (**routerClusterType**=private) ausgewählt, muss eine statische private IP-Adresse für **routerPrivateClusterIp** angegeben werden.  Diese IP-Adresse wird dem Front-End des Infra-Lastenausgleichs zugewiesen.  Die IP-Adresse muss innerhalb des CIDR für das Infra-Subnetz liegen und darf nicht in Verwendung sein.  **routingSubDomainType** muss auf „custom“ festgelegt sein, und der Platzhalter-DNS-Name für das Routing muss für **routingSubDomain** angegeben werden.  
+
+Wenn „private master“ und „private router“ ausgewählt sind, muss auch der benutzerdefinierte Domänenname für **domainName** angegeben werden.
+
+Nach erfolgreicher Bereitstellung ist der Bastion-Knoten der einzige Knoten mit einer öffentlichen IP-Adresse, mit der eine SSH-Verbindung hergestellt werden kann.  Selbst wenn die Master-Knoten für den öffentlichen Zugriff konfiguriert sind, sind sie nicht verfügbar für den Zugriff über eine SSH-Verbindung.
 
 Bei der Bereitstellung mithilfe der Resource Manager-Vorlage werden die Eingabeparameter über eine Parameterdatei angegeben. Forken Sie zur weiteren Anpassung der Bereitstellung das GitHub-Repository, und ändern Sie die entsprechenden Elemente.
 
@@ -56,6 +68,12 @@ Das folgende Beispiel zeigt die Parameterdatei „azuredeploy.parameters.json“
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "_artifactsLocation": {
+            "value": "https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master"
+        },
+        "location": {
+            "value": "eastus"
+        },
         "masterVmSize": {
             "value": "Standard_E2s_v3"
         },
@@ -80,31 +98,40 @@ Das folgende Beispiel zeigt die Parameterdatei „azuredeploy.parameters.json“
             }
         },
         "storageKind": {
-            "value": "managed"
+            "value": "changeme"
         },
         "openshiftClusterPrefix": {
-            "value": "mycluster"
+            "value": "changeme"
+        },
+        "minorVersion": {
+            "value": "69"
         },
         "masterInstanceCount": {
             "value": 3
         },
         "infraInstanceCount": {
-            "value": 2
+            "value": 3
         },
         "nodeInstanceCount": {
-            "value": 2
+            "value": 3
+        },
+        "cnsInstanceCount": {
+            "value": 3
+        },
+        "osDiskSize": {
+            "value": 64
         },
         "dataDiskSize": {
+            "value": 64
+        },
+        "cnsGlusterDiskSize": {
             "value": 128
         },
         "adminUsername": {
-            "value": "clusteradmin"
-        },
-        "openshiftPassword": {
-            "value": "{Strong Password}"
+            "value": "changeme"
         },
         "enableMetrics": {
-            "value": "true"
+            "value": "false"
         },
         "enableLogging": {
             "value": "false"
@@ -113,37 +140,34 @@ Das folgende Beispiel zeigt die Parameterdatei „azuredeploy.parameters.json“
             "value": "false"
         },
         "rhsmUsernameOrOrgId": {
-            "value": "{RHSM Username}"
-        },
-        "rhsmPasswordOrActivationKey": {
-            "value": "{RHSM Password}"
+            "value": "changeme"
         },
         "rhsmPoolId": {
-            "value": "{Pool ID}"
+            "value": "changeme"
         },
         "rhsmBrokerPoolId": {
-            "value": "{Pool ID}"
+            "value": "changeme"
         },
         "sshPublicKey": {
-            "value": "{SSH Public Key}"
+            "value": "GEN-SSH-PUB-KEY"
+        },
+        "keyVaultSubscriptionId": {
+            "value": "255a325e-8276-4ada-af8f-33af5658eb34"
         },
         "keyVaultResourceGroup": {
-            "value": "keyvaultrg"
+            "value": "changeme"
         },
         "keyVaultName": {
-            "value": "keyvault"
-        },
-        "keyVaultSecret": {
-            "value": "keysecret"
+            "value": "changeme"
         },
         "enableAzure": {
             "value": "true"
         },
         "aadClientId": {
-            "value": "11111111-abcd-1234-efgh-111111111111"
+            "value": "changeme"
         },
-        "aadClientSecret": {
-            "value": "{Strong Password}"
+        "domainName": {
+            "value": "contoso.com"
         },
         "masterClusterDnsType": {
             "value": "default"
@@ -155,31 +179,31 @@ Das folgende Beispiel zeigt die Parameterdatei „azuredeploy.parameters.json“
             "value": "nipio"
         },
         "routingSubDomain": {
-            "value": "routing.contoso.com"
+            "value": "apps.contoso.com"
         },
         "virtualNetworkNewOrExisting": {
             "value": "new"
         },
         "virtualNetworkName": {
-            "value": "openshiftvnet"
+            "value": "changeme"
         },
         "addressPrefixes": {
             "value": "10.0.0.0/14"
         },
         "masterSubnetName": {
-            "value": "mastersubnet"
+            "value": "changeme"
         },
         "masterSubnetPrefix": {
             "value": "10.1.0.0/16"
         },
         "infraSubnetName": {
-            "value": "infrasubnet"
+            "value": "changeme"
         },
         "infraSubnetPrefix": {
             "value": "10.2.0.0/16"
         },
         "nodeSubnetName": {
-            "value": "nodesubnet"
+            "value": "changeme"
         },
         "nodeSubnetPrefix": {
             "value": "10.3.0.0/16"
@@ -188,7 +212,7 @@ Das folgende Beispiel zeigt die Parameterdatei „azuredeploy.parameters.json“
             "value": "/subscriptions/abc686f6-963b-4e64-bff4-99dc369ab1cd/resourceGroups/vnetresourcegroup/providers/Microsoft.Network/virtualNetworks/openshiftvnet/subnets/mastersubnet"
         },
         "existingInfraSubnetReference": {
-            "value": "/subscriptions/abc686f6-963b-4e64-bff4-99dc369ab1cd/resourceGroups/vnetresourcegroup/providers/Microsoft.Network/virtualNetworks/openshiftvnet/subnets/masterinfrasubnet"
+            "value": "/subscriptions/abc686f6-963b-4e64-bff4-99dc369ab1cd/resourceGroups/vnetresourcegroup/providers/Microsoft.Network/virtualNetworks/openshiftvnet/subnets/infrasubnet"
         },
         "existingCnsSubnetReference": {
             "value": "/subscriptions/abc686f6-963b-4e64-bff4-99dc369ab1cd/resourceGroups/vnetresourcegroup/providers/Microsoft.Network/virtualNetworks/openshiftvnet/subnets/cnssubnet"
@@ -206,25 +230,13 @@ Das folgende Beispiel zeigt die Parameterdatei „azuredeploy.parameters.json“
             "value": "public"
         },
         "routerPrivateClusterIp": {
-            "value": "10.2.0.201"
+            "value": "10.2.0.200"
         },
         "routingCertType": {
             "value": "selfsigned"
         },
         "masterCertType": {
             "value": "selfsigned"
-        },
-        "proxySettings": {
-            "value": "none"
-        },
-        "httpProxyEntry": {
-            "value": "none"
-        },
-        "httpsProxyEntry": {
-            "value": "none"
-        },
-        "noProxyEntry": {
-            "value": "none"
         }
     }
 }
@@ -233,6 +245,69 @@ Das folgende Beispiel zeigt die Parameterdatei „azuredeploy.parameters.json“
 Ersetzen Sie die Parameter durch Ihre eigenen Informationen.
 
 Die Parameter können sich je nach Release unterschieden. Überprüfen Sie daher die erforderlichen Parameter für den verwendeten Branch.
+
+### <a name="azuredeployparametersjson-file-explained"></a>Erläuterung zur Datei „azuredeploy.Parameters.json“
+
+| Eigenschaft | BESCHREIBUNG | Gültige Optionen | Standardwert |
+|----------|-------------|---------------|---------------|
+| `_artifactsLocation`  | URL für Artefakte (JSON, Skripts usw.) |  |  https:\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
+| `location` | Azure-Region, in der Ressourcen bereitgestellt werden |  |  |
+| `masterVmSize` | Größe der Master-VM. Wählen Sie eine der in der Datei „azuredeploy.json“ aufgelisteten VM-Größen aus. |  | Standard_E2s_v3 |
+| `infraVmSize` | Größe der Infra-VM. Wählen Sie eine der in der Datei „azuredeploy.json“ aufgelisteten VM-Größen aus. |  | Standard_D4s_v3 |
+| `nodeVmSize` | Größe der App-Knoten-VM. Wählen Sie eine der in der Datei „azuredeploy.json“ aufgelisteten VM-Größen aus. |  | Standard_D4s_v3 |
+| `cnsVmSize` | Größe der CNS (Container Native Storage)-Knoten-VM. Wählen Sie eine der in der Datei „azuredeploy.json“ aufgelisteten VM-Größen aus. |  | Standard_E4s_v3 |
+| `osImageType` | Das zu verwendende RHEL-Image. defaultgallery: Bei Bedarf; Marketplace: Drittanbieter-Image | defaultgallery <br> Marketplace | defaultgallery |
+| `marketplaceOsImage` | Wenn `osImageType` gleich „marketplace“ ist, geben Sie die entsprechenden Werte für „Herausgeber“, „Angebot“, „SKU“ und „Version“ des Marketplace-Angebots ein. Dieser Parameter ist ein Objekttyp. |  |  |
+| `storageKind` | Der Typ des zu verwendenden Speichers  | verwaltet<br> nicht verwaltet | verwaltet |
+| `openshiftClusterPrefix` | Cluster-Präfix, mit dem Hostnamen für alle Knoten konfiguriert werden.  Zwischen 1 und 20 Zeichen |  | mycluster |
+| `minoVersion` | Die Nebenversion von OpenShift Container Platform 3.11, die bereitgestellt werden soll |  | 69 |
+| `masterInstanceCount` | Anzahl der bereitzustellenden Master-Knoten | 1, 3, 5 | 3 |
+| `infraInstanceCount` | Anzahl der bereitzustellenden Infra-Knoten | 1, 2, 3 | 3 |
+| `nodeInstanceCount` | Anzahl der bereitzustellenden Knoten | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 | 2 |
+| `cnsInstanceCount` | Anzahl der bereitzustellenden CNS-Knoten | 3, 4 | 3 |
+| `osDiskSize` | Größe des Betriebssystemdatenträgers für die VM (in GB) | 64, 128, 256, 512, 1024, 2048 | 64 |
+| `dataDiskSize` | Größe des Datenträgers, der an Knoten für Docker-Volume angefügt werden soll (in GB) | 32, 64, 128, 256, 512, 1024, 2048 | 64 |
+| `cnsGlusterDiskSize` | Größe des Datenträgers, der an CNS-Knoten für glusterfs angefügt werden soll (in GB) | 32, 64, 128, 256, 512, 1024, 2048 | 128 |
+| `adminUsername` | Administratorbenutzername für Anmeldung beim Betriebssystem (VM) und anfänglichen OpenShift-Benutzer |  | ocpadmin |
+| `enableMetrics` | Aktivieren von Metriken. Metriken erfordern, dass mehr Ressourcen benötigt werden, daher ist die richtige Größe für die Infra-VM auszuwählen | true <br> false | false |
+| `enableLogging` | Aktivieren der Protokollierung. „elasticsearch pod“ benötigt 8 GB RAM, daher ist die richtige Größe für die Infra-VM auszuwählen | true <br> false | false |
+| `enableCNS` | Aktivieren des nativen Container-Speichers | true <br> false | false |
+| `rhsmUsernameOrOrgId` | Benutzername oder Organisations-ID des Red Hat-Abonnement-Managers |  |  |
+| `rhsmPoolId` | Die Red Hat-Abonnement-Manager-Pool-ID, die Ihre OpenShift-Berechtigungen für Computeknoten enthält |  |  |
+| `rhsmBrokerPoolId` | Die Red Hat-Abonnement-Manager-Pool-ID, die Ihre OpenShift-Berechtigungen für Master- und Infra-Knoten enthält. Wenn Sie keine unterschiedlichen Pool-IDs haben, geben Sie dieselbe Pool-ID als „rhsmPoolId“ ein. |  |
+| `sshPublicKey` | Kopieren Sie Ihren öffentlichen SSH-Schlüssel hierher. |  |  |
+| `keyVaultSubscriptionId` | Die Abonnement-ID des Abonnements, das den Schlüsseltresor enthält |  |  |
+| `keyVaultResourceGroup` | Der Name der Ressourcengruppe, die den Schlüsseltresor enthält |  |  |
+| `keyVaultName` | Der Name des Schlüsseltresors, den Sie erstellt haben |  |  |
+| `enableAzure` | Azure Cloudanbieter aktivieren | true <br> false | true |
+| `aadClientId` | Azure Active Directory-Client-ID (auch als Anwendungs-ID für den Dienstprinzipal bezeichnet) |  |  |
+| `domainName` | Name des zu verwendenden benutzerdefinierten Domänennamens (falls zutreffend). Auf „none“ festlegen, wenn kein vollständig privater Cluster bereitgestellt wird |  | none |
+| `masterClusterDnsType` | Domänentyp für die OpenShift-Webkonsole. Bei „default“ wird die DNS-Bezeichnung der öffentlichen Master/Infra-IP-Adresse verwendet. Bei „custom“ können Sie einen eigenen Namen definieren | default <br> custom | default |
+| `masterClusterDns` | Der benutzerdefinierte DNS-Name für den Zugriff auf die OpenShift-Webkonsole, wenn für `masterClusterDnsType` „custom“ ausgewählt wurde |  | console.contoso.com |
+| `routingSubDomainType` | Ist der Wert auf „nipio“ festgelegt, verwendet `routingSubDomain` „nip.io“.  Geben Sie „custom“ an, wenn Sie über eine eigene Domäne für das Routing verfügen | nipio <br> custom | nipio |
+| `routingSubDomain` | Der für das Routing zu verwendende Platzhalter-DNS-Name, wenn Sie für `routingSubDomainType` „custom“ ausgewählt haben |  | apps.contoso.com |
+| `virtualNetworkNewOrExisting` | Wählen Sie aus, ob ein vorhandenes virtuelles Netzwerk verwendet oder ein neues virtuelles Netzwerk erstellt werden soll | existing <br> Neu | Neu |
+| `virtualNetworkResourceGroupName` | Name der Ressourcengruppe für das neue virtuelle Netzwerk, wenn Sie für `virtualNetworkNewOrExisting` „new“ ausgewählt haben |  | resourceGroup().name |
+| `virtualNetworkName` | Name des neuen virtuellen Netzwerks, wenn Sie für `virtualNetworkNewOrExisting` „new“ ausgewählt haben |  | openshiftvnet |
+| `addressPrefixes` | Adresspräfix des neuen virtuellen Netzwerks |  | 10.0.0.0/14 |
+| `masterSubnetName` | Name des Master-Subnetzes |  | mastersubnet |
+| `masterSubnetPrefix` | Für das Master-Subnetz verwendeter CIDR – muss eine Teilmenge des Adresspräfixes sein |  | 10.1.0.0/16 |
+| `infraSubnetName` | Name des Infra-Subnetzes |  | infrasubnet |
+| `infraSubnetPrefix` | Für das Infra-Subnetz verwendeter CIDR – muss eine Teilmenge des Adresspräfixes sein |  | 10.2.0.0/16 |
+| `nodeSubnetName` | Name des Knoten-Subnetzes |  | nodesubnet |
+| `nodeSubnetPrefix` | Für das Knoten-Subnetz verwendeter CIDR – muss eine Teilmenge des Adresspräfixes sein |  | 10.3.0.0/16 |
+| `existingMasterSubnetReference` | Vollständige Referenz zum vorhandenen Subnetz für Master-Knoten. Nicht erforderlich, wenn ein neues VNET/Subnetz erstellt wird |  |  |
+| `existingInfraSubnetReference` | Vollständige Referenz zum vorhandenen Subnetz für Infra-Knoten. Nicht erforderlich, wenn ein neues VNET/Subnetz erstellt wird |  |  |
+| `existingCnsSubnetReference` | Vollständige Referenz zum vorhandenen Subnetz für CNS-Knoten. Nicht erforderlich, wenn ein neues VNET/Subnetz erstellt wird |  |  |
+| `existingNodeSubnetReference` | Vollständige Referenz zum vorhandenen Subnetz für Computeknoten. Nicht erforderlich, wenn ein neues VNET/Subnetz erstellt wird |  |  |
+| `masterClusterType` | Geben Sie an, ob der Cluster private oder öffentliche Master-Knoten verwendet. Bei Auswahl von „private“ werden die Master-Knoten nicht über eine öffentliche IP-Adresse im Internet offengelegt. Stattdessen wird die in `masterPrivateClusterIp` angegebene private IP-Adresse verwendet | öffentlich <br> Privat | öffentlich |
+| `masterPrivateClusterIp` | Wenn private Master-Knoten ausgewählt sind, muss eine private IP-Adresse für die Verwendung durch den internen Lastenausgleich für Master-Knoten angegeben werden. Diese statische IP-Adresse muss innerhalb des CIDR-Blocks für das Master-Subnetz liegen und darf nicht bereits verwendet werden. Wenn öffentliche Master-Knoten ausgewählt sind, wird dieser Wert nicht verwendet, er muss jedoch angegeben sein |  | 10.1.0.200 |
+| `routerClusterType` | Geben Sie an, ob der Cluster private oder öffentliche Infra-Knoten verwendet. Bei Auswahl von „private“ werden die Infra-Knoten nicht über eine öffentliche IP-Adresse im Internet offengelegt. Stattdessen wird die in `routerPrivateClusterIp` angegebene private IP-Adresse verwendet | öffentlich <br> Privat | öffentlich |
+| `routerPrivateClusterIp` | Wenn private Infra-Knoten ausgewählt sind, muss eine private IP-Adresse für die Verwendung durch den internen Lastenausgleich für Infra-Knoten angegeben werden. Diese statische IP-Adresse muss innerhalb des CIDR-Blocks für das Master-Subnetz liegen und darf nicht bereits verwendet werden. Wenn öffentliche Infra-Knoten ausgewählt sind, wird dieser Wert nicht verwendet, er muss jedoch angegeben sein |  | 10.2.0.200 |
+| `routingCertType` | Verwenden Sie ein benutzerdefiniertes Zertifikat für die Routingdomäne oder das standardmäßige selbstsignierte Zertifikat – befolgen Sie die Anweisungen im Abschnitt **Benutzerdefinierte Zertifikate** | selfsigned <br> custom | selfsigned |
+| `masterCertType` | Verwenden Sie ein benutzerdefiniertes Zertifikat für die Masterdomäne oder das standardmäßige selbstsignierte Zertifikat – befolgen Sie die Anweisungen im Abschnitt **Benutzerdefinierte Zertifikate** | selfsigned <br> custom | selfsigned |
+
+<br>
 
 ### <a name="deploy-using-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
 
@@ -247,7 +322,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-Der Bereitstellungsvorgang dauert mindestens 30 Minuten. Die Dauer hängt von der Gesamtzahl der bereitgestellten Knoten sowie von den konfigurierten Optionen ab. Nach Abschluss der Bereitstellung werden der Bastion-DNS-FQDN und die URL der OpenShift-Konsole im Terminal ausgegeben.
+Der Bereitstellungsvorgang dauert mindestens 60 Minuten. Die Dauer hängt von der Gesamtzahl der bereitgestellten Knoten sowie von den konfigurierten Optionen ab. Nach Abschluss der Bereitstellung werden der Bastion-DNS-FQDN und die URL der OpenShift-Konsole im Terminal ausgegeben.
 
 ```json
 {
@@ -257,26 +332,10 @@ Der Bereitstellungsvorgang dauert mindestens 30 Minuten. Die Dauer hängt von de
 ```
 
 Wenn Sie die Befehlszeile nicht blockieren möchten, bis die Bereitstellung abgeschlossen ist, fügen Sie `--no-wait` als eine der Optionen für die Gruppenbereitstellung hinzu. Die Ausgabe der Bereitstellung kann über das Azure-Portal im Bereitstellungsabschnitt für die Ressourcengruppe abgerufen werden.
- 
-## <a name="deploy-using-the-openshift-container-platform-azure-marketplace-offer"></a>Bereitstellen über das Azure Marketplace-Angebot für OpenShift Container Platform
-
-Die einfachste Möglichkeit, OpenShift Container Platform in Azure bereitzustellen, stellt das [Azure Marketplace-Angebot](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview) dar.
-
-Auch wenn dies die einfachste Option ist, bietet sie begrenzte Anpassungsmöglichkeiten. Das Marketplace-Angebot umfasst folgende Konfigurationsoptionen:
-
-- **Masterknoten**: Drei Masterknoten mit konfigurierbarem Instanztyp.
-- **Infrastrukturknoten:** Drei Infrastrukturknoten mit konfigurierbarem Instanztyp.
-- **Knoten**: Knotenanzahl (zwischen zwei und neun) und Instanztyp sind konfigurierbar.
-- **Datenträgertyp**: Managed Disks wird verwendet.
-- **Netzwerk**: Unterstützung eines neuen oder bereits vorhandenen Netzwerks sowie eines benutzerdefinierten CIDR-Bereichs.
-- **CNS:** CNS kann aktiviert werden.
-- **Metriken**: Metriken können aktiviert werden.
-- **Protokollierung:** Protokollierung kann aktiviert werden.
-- **Azure-Cloudanbieter**: Kann aktiviert werden.
 
 ## <a name="connect-to-the-openshift-cluster"></a>Herstellen einer Verbindung mit dem OpenShift-Cluster
 
-Rufen Sie nach Abschluss der Bereitstellung die Verbindung aus dem Ausgabeabschnitt der Bereitstellung ab. Stellen Sie über Ihren Browser mithilfe der URL für die OpenShift-Konsole (`OpenShift Console URL`) eine Verbindung mit der OpenShift-Konsole her. Alternativ können Sie auch eine SSH-Verbindung mit dem Bastionhost herstellen. Im folgenden Beispiel lautet der Administratorbenutzername „clusteradmin“, und der DNS-FQDN der öffentlichen Bastion-IP-Adresse lautet „bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com“:
+Rufen Sie nach Abschluss der Bereitstellung die Verbindung aus dem Ausgabeabschnitt der Bereitstellung ab. Stellen Sie über Ihren Browser mithilfe der **URL für die OpenShift-Konsole** eine Verbindung mit der OpenShift-Konsole her. Sie können auch eine SSH-Verbindung mit dem Bastion-Host herstellen. Im folgenden Beispiel lautet der Administratorbenutzername „clusteradmin“, und der DNS-FQDN der öffentlichen Bastion-IP-Adresse lautet „bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com“:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
@@ -295,7 +354,3 @@ az group delete --name openshiftrg
 - [Aufgaben nach der Bereitstellung](./openshift-post-deployment.md)
 - [Behandeln von Problemen beim Bereitstellen von OpenShift in Azure](./openshift-troubleshooting.md)
 - [Getting Started with OpenShift Container Platform](https://docs.openshift.com/container-platform) (Erste Schritte mit OpenShift Container Platform)
-
-### <a name="documentation-contributors"></a>Mitwirkende an der Dokumentation
-
-Danke an Vincent Power (vincepower) und Alfred Sin (asinn826), die dazu beitragen, diese Dokumentation auf dem neuesten Stand zu halten.

@@ -12,12 +12,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: c8cab3c723b7e507b0f3b05b933cca9e2c24fb39
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 626015e2aac5eb09dfd271a139dbc5eb49a088fc
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075474"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616420"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Verwenden von Mongoose zum Herstellen einer Verbindung mit Cosmos DB
 
@@ -234,11 +234,11 @@ Führen Sie die App nun mit den folgenden Schritten aus:
 
 1. Speichern Sie in Visual Studio Code alle Änderungen. Wähle Sie im linken Bereich die Schaltfläche **Debuggen** ![Debugsymbol in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) aus, und wählen Sie dann die Schaltfläche **Debuggen starten** ![Debugsymbol in Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png) aus.
 
-1. Wechseln Sie nun in den Browser. Öffnen Sie die **Entwicklertools** und die **Registerkarte „Netzwerk“**. Navigieren Sie zu `http://localhost:3000`. Dort wird Ihre Anwendung angezeigt.
+1. Wechseln Sie nun in den Browser. Öffnen Sie die **Entwicklertools** und die **Registerkarte „Netzwerk“** . Navigieren Sie zu `http://localhost:3000`. Dort wird Ihre Anwendung angezeigt.
 
     ![Neues Azure Cosmos DB-Konto im Azure-Portal](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 
-Noch sind keine hero-Elemente in der App gespeichert. Im nächsten Teil dieses Tutorials fügen wir Put-, Push- und Delete-Funktionen hinzu. Dann können wir hero-Elemente über die Benutzeroberfläche hinzufügen, aktualisieren und löschen, indem wir Mongoose-Verbindungen mit unserer Azure Cosmos DB-Datenbank verwenden. 
+Noch sind keine hero-Elemente in der App gespeichert. Im nächsten Teil dieses Tutorials fügen wir Put-, Push- und Delete-Funktionen hinzu. Dann können wir hero-Elemente über die Benutzeroberfläche hinzufügen, aktualisieren und löschen, indem wir Mongoose-Verbindungen mit unserer Azure Cosmos-Datenbank verwenden. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

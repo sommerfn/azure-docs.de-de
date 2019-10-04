@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/15/2019
-ms.author: adgera
-ms.openlocfilehash: 16bb148a0b3a424c9ba3aaae422f423ebd40793b
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.date: 08/19/2019
+ms.author: v-adgera
+ms.openlocfilehash: f211206bc2408fe55f6742622b5b0e56d1ab4d90
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358812"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656524"
 ---
 # <a name="security-best-practices"></a>Bewährte Methoden für die Sicherheit
 
@@ -26,6 +26,9 @@ In diesem Artikel sind die wichtigsten bewährten Methoden zusammengefasst, die 
 > [!IMPORTANT]
 > Überprüfen Sie zusätzliche Sicherheitsressourcen, um die maximale Sicherheit für Ihren IoT-Raum zu gewährleisten. Achten Sie darauf, Ihre Gerätehersteller zu berücksichtigen.
 
+> [!TIP]
+> Verwenden Sie [Azure Security Center für IoT](https://docs.microsoft.com/azure/asc-for-iot/), um IoT-Sicherheitsbedrohungen und -Sicherheitslücken zu erkennen.
+
 ## <a name="iot-security-best-practices"></a>Bewährte Methoden für die IoT-Sicherheit
 
 Einige der wichtigsten Methoden zum sicheren Schutz Ihrer IoT-Geräte sind:
@@ -36,6 +39,7 @@ Einige der wichtigsten Methoden zum sicheren Schutz Ihrer IoT-Geräte sind:
 > * Verwenden Sie ggf. Filterung der Geräte-IP-Adressen und Einschränkungen der Ports.
 > * Begrenzen Sie E/A- und Gerätebandbreite, um die Leistung zu verbessern. Begrenzung der Übertragungsrate kann die Sicherheit verbessern, indem Denial-of-Service-Angriffe verhindert werden.
 > * Halten Sie die Gerätefirmware auf dem neuesten Stand.
+> * Überprüfen Sie Ihre Best Practices für die Geräte-, Netzwerk- und Gatewaysicherheit in regelmäßigen Abständen, da diese sich im Lauf der Zeit weiterentwickeln und verbessern.
 
 Einige der wichtigsten Methoden zum sicheren Schutz eines IoT-Raums sind:
 
@@ -43,6 +47,7 @@ Einige der wichtigsten Methoden zum sicheren Schutz eines IoT-Raums sind:
 > * Verschlüsseln Sie gespeicherte oder persistente Daten.
 > * Erfordern Sie, dass Kennwörter oder Schlüssel in regelmäßigen Abständen geändert oder aktualisiert werden.
 > * Schränken Sie den Zugriff und die Berechtigungen sorgfältig nach Rollen ein. Weitere Informationen finden Sie im Abschnitt [Rollenbasierte Zugriffssteuerung – bewährte Methoden](#rbac) weiter unten.
+> * Erwägen Sie die Einrichtung einer geteilten Netzwerktopologie, sodass die Geräte in den einzelnen Netzwerken von den anderen Netzwerken isoliert sind.
 > * Verwenden Sie leistungsstarke Verschlüsselung. Verlangen Sie lange Kennwörter, und verwenden Sie sichere Protokolle sowie die zweistufige Authentifizierung.
 
 [Überwachen](./how-to-configure-monitoring.md) Sie IoT-Ressourcen, und achten Sie auf Ausreißer, Bedrohungen und Ressourcenparameter, die außerhalb des üblichen Betriebsbereichs liegen. Verwenden Sie Azure Analytics zur Überwachung der Verwaltung.

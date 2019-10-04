@@ -10,17 +10,16 @@ ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3e7db670a125f3c5f308107aabfbbab9301b7561
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: cc40c2296e583ab93a7c34d709cfbf1334ae3926
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718094"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069849"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Erstellen einer Web-App in einer App Service-Umgebung v1
 
@@ -86,7 +85,7 @@ Die folgenden Schritte zeigen, wie Sie einen App Service-Plan während der Erste
 ### <a name="selecting-a-worker-pool"></a>Auswählen eines Workerpools
 In Azure App Service und außerhalb einer App Service-Umgebung sind bei der Auswahl eines dedizierten Tarifplans üblicherweise drei Computegrößen verfügbar.  Auf ähnliche Weise können Sie für eine ASE bis zu drei Workerpools und die Computegröße angeben, die für den jeweiligen Workerpool verwendet wird.  Für Mandanten der ASE bedeutet dies, dass anstelle der Auswahl eines Tarifplans mit Computegröße für Ihren App Service-Plan ein sogenannter *Workerpool*ausgewählt wird.  
 
-Auf der Benutzeroberfläche zur Auswahl des Workerpools wird unterhalb des Namens die Servergröße angezeigt, die für diesen Workerpool verwendet wird.  Die verfügbare Größe entspricht der Anzahl von Serverinstanzen, die zur Verwendung in diesem Pools verfügbar sind.  Möglicherweise verfügt der Pool insgesamt über mehr Instanzen als diese Anzahl, der hier angezeigte Wert bezieht sich jedoch lediglich auf die Anzahl von Instanzen, die gegenwärtig nicht verwendet werden.  Informationen zum Hinzufügen von Computeressourcen zu Ihrer App Service-Umgebung finden Sie unter [Konfigurieren der App Service-Umgebung](app-service-web-configure-an-app-service-environment.md).
+Auf der Benutzeroberfläche zur Auswahl des Workerpools wird unterhalb des Namens die Computegröße angezeigt, die für diesen Workerpool verwendet wird.  Die verfügbare Größe entspricht der Anzahl von Serverinstanzen, die zur Verwendung in diesem Pools verfügbar sind.  Möglicherweise verfügt der Pool insgesamt über mehr Instanzen als diese Anzahl, der hier angezeigte Wert bezieht sich jedoch lediglich auf die Anzahl von Instanzen, die gegenwärtig nicht verwendet werden.  Informationen zum Hinzufügen von Computeressourcen zu Ihrer App Service-Umgebung finden Sie unter [Konfigurieren der App Service-Umgebung](app-service-web-configure-an-app-service-environment.md).
 
 ![][4]
 

@@ -4,14 +4,14 @@ description: Verwenden Sie dieses Power BI-Tutorial, um JSON zu importieren, au
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/03/2018
+ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 2c58b982e596c95aa47442c1897410fe9ab6b99a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1dbdd428a54ebf38c7b880bb9530935c0f748226
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58137673"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616806"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Visualisieren von Azure Cosmos DB-Daten mit dem Power BI-Connector
 
@@ -32,7 +32,7 @@ Vergewissern Sie sich vor dem Ausführen der Anweisungen dieses Power BI-Tutoria
 
 * Laden Sie die [Beispieldaten zu Vulkanen](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json) von GitHub herunter.
 
-* [Erstellen Sie ein Azure Cosmos DB-Datenbankkonto](https://azure.microsoft.com/documentation/articles/create-account/), und importieren Sie die Vulkandaten mithilfe des [Azure Cosmos DB-Datenmigrationstools](import-data.md). Berücksichtigen Sie beim Importieren von Daten die folgenden Einstellungen für die Quelle und die Ziele im Datenmigrationstool:
+* [Erstellen Sie ein Azure Cosmos-Datenbankkonto](https://azure.microsoft.com/documentation/articles/create-account/), und importieren Sie die Vulkandaten mithilfe des [Azure Cosmos DB-Datenmigrationstools](import-data.md). Berücksichtigen Sie beim Importieren von Daten die folgenden Einstellungen für die Quelle und die Ziele im Datenmigrationstool:
 
    * **Quellparameter** 
 

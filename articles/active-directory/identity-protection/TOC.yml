@@ -17,6 +17,8 @@
       href: notifications.md
     - name: Welche Anmeldeverfahren stehen zur Verfügung?
       href: flows.md
+    - name: Identity Protection und B2B-Benutzer
+      href: concept-identity-protection-b2b.md
 - name: Anleitungen
   expanded: true
   items:
@@ -30,11 +32,11 @@
           href: howto-sign-in-risk-policy.md
         - name: Konfigurieren der Richtlinie zum Benutzerrisiko
           href: howto-user-risk-policy.md
-        - name: Schließen von aktiven Risikoereignissen
+        - name: Schließen aktiver Risikoerkennungen
           href: howto-close-active-risk-events.md
         - name: Entsperren von Benutzern
           href: howto-unblock-user.md
-        - name: Simulieren von Risikoereignissen
+        - name: Simulieren von Risikoerkennungen
           href: playbook.md
         - name: Häufig gestellte Fragen
           href: faqs.md
@@ -44,19 +46,19 @@
           href: overview-v2.md
         - name: Sicherheitsübersicht
           href: security-overview.md
-        - name: Überprüfen riskanter Benutzer und Anmeldungen
-          href: howto-investigate-risky-users-signins.md
+        - name: Untersuchen eines Risikos
+          href: howto-investigate-risk.md
+        - name: Bereitstellen von Feedback zu Risikoerkennungen
+          href: howto-provide-risk-event-feedback.md
         - name: Konfigurieren von Richtlinien zu Risiken
           href: howto-configure-risk-policies.md
-        - name: Verbessern der Erkennungsgenauigkeit
-          href: howto-improve-detection-accuracy.md
         - name: Häufig gestellte Fragen und bekannte Probleme
           href: known-issues.md
 - name: Verweis
   items:
     - name: Verwenden der Microsoft Graph-API
       href: graph-get-started.md
-    - name: Risikoereignisse
+    - name: Risikoerkennungen
       href: risk-events-reference.md
     - name: Glossar
       href: glossary.md

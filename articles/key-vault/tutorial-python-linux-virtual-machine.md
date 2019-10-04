@@ -2,22 +2,19 @@
 title: 'Tutorial: Verwenden eines virtuellen Linux-Computers und einer Python-Anwendung zum Speichern von Geheimnissen in Azure Key Vault | Microsoft-Dokumentation'
 description: In diesem Tutorial wird beschrieben, wie Sie eine Python-Anwendung zum Lesen eines Geheimnisses aus Azure Key Vault konfigurieren.
 services: key-vault
-documentationcenter: ''
-author: prashanthyv
+author: msmbaldwin
 manager: rajvijan
-ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
-ms.workload: key-vault
 ms.topic: tutorial
 ms.date: 09/05/2018
-ms.author: pryerram
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: b7077653ec959f99491cecd71573c091772448f4
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 48095a2d446c8f85bab9d9268e924e29fe9a9f21
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749629"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003891"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Tutorial: Verwenden eines virtuellen Linux-Computers und einer Python-App zum Speichern von Geheimnissen in Azure Key Vault
 
@@ -33,7 +30,7 @@ In diesem Tutorial richten Sie eine Azure-Webanwendung ein, die unter Verwendung
 > * Erteilen der erforderlichen Berechtigungen zum Lesen von Daten aus dem Schlüsseltresor für die Konsolenanwendung
 > * Abrufen eines Geheimnisses aus Ihrem Schlüsseltresor
 
-Stellen Sie vor dem Fortfahren sicher, dass Sie mit den [Grundlagen von Key Vault](key-vault-whatis.md#basic-concepts) vertraut sind.
+Stellen Sie vor dem Fortfahren sicher, dass Sie mit den [Grundlagen von Key Vault](basic-concepts.md) vertraut sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -102,7 +99,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 Erstellen Sie mit dem Befehl `az vm create` einen virtuellen Computer.
 
-Im folgenden Beispiel wird eine VM mit dem Namen **myVM** erstellt und ein Benutzerkonto mit dem Namen **azureuser** hinzugefügt. Der Parameter `--generate-ssh-keys` generiert automatisch einen SSH-Schlüssel und legt ihn am Speicherort für den Standardschlüssel ab (**~/.ssh**). Um stattdessen einen bestimmten Satz mit Schlüsseln zu erstellen, können Sie die Option `--ssh-key-value` nutzen.
+Im folgenden Beispiel wird eine VM mit dem Namen **myVM** erstellt und ein Benutzerkonto mit dem Namen **azureuser** hinzugefügt. Der Parameter `--generate-ssh-keys` generiert automatisch einen SSH-Schlüssel und legt ihn am Speicherort für den Standardschlüssel ab ( **~/.ssh**). Um stattdessen einen bestimmten Satz mit Schlüsseln zu erstellen, können Sie die Option `--ssh-key-value` nutzen.
 
 ```azurecli-interactive
 az vm create \

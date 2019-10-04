@@ -1,7 +1,6 @@
 ---
 title: Spark-Streaming in Azure HDInsight
-description: Verwendung von Spark-Streaminganwendungen auf HDInsight-Spark-Clustern.
-services: hdinsight
+description: Verwendung von Apache Spark-Streaminganwendungen auf HDInsight-Spark-Clustern.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 3ecabd683ed4303a7ff54780299ed0e83aa14c26
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f990e5eb2761f1743c2731f499ecc341990edf53
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57892078"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813994"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Übersicht über Apache Spark-Streaming
 

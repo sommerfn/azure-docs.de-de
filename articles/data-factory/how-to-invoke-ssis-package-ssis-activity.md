@@ -8,26 +8,26 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 09/13/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 7287dc2fccf461cf23c45202336e3d92bc5a40aa
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 9057cefa5108924c57dbc85bbb895b31e804a51c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259702"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000640"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in Azure Data Factory
-In diesem Artikel wird das Ausführen eines SSIS-Pakets in einer Azure Data Factory (ADF)-Pipeline mithilfe der Aktivität „SSIS-Paket ausführen“ beschrieben. 
+In diesem Artikel wird das Ausführen eines SSIS-Pakets (SQL Server Integration Services) in einer ADF-Pipeline (Azure Data Factory) mithilfe der Aktivität „SSIS-Paket ausführen“ beschrieben. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Erstellen Sie eine Azure-SSIS Integration Runtime (IR), falls Sie noch keine besitzen. Befolgen Sie dazu die ausführliche Anleitung unter [Tutorial: Bereitstellen von SSIS-Paketen in Azure](tutorial-create-azure-ssis-runtime-portal.md).
+Erstellen Sie eine Azure-SSIS Integration Runtime (IR), falls Sie noch keine besitzen. Befolgen Sie dazu die ausführliche Anleitung unter [Tutorial: Bereitstellen der Azure-SSIS Integration Runtime in Azure Data Factory](tutorial-create-azure-ssis-runtime-portal.md).
 
 ## <a name="run-a-package-in-the-azure-portal"></a>Ausführen eines Pakets im Azure-Portal
 In diesem Abschnitt erstellen Sie mithilfe der ADF-Benutzeroberfläche (UI)/-App eine ADF-Pipeline mit einer Aktivität „SSIS-Paket ausführen“, die ein SSIS-Paket ausführt.
@@ -51,27 +51,65 @@ In diesem Schritt erstellen Sie über die ADF-Benutzeroberfläche/-App eine Pipe
 
    ![Festlegen von Eigenschaften auf der Registerkarte „Allgemein“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-4. Wählen Sie auf der Registerkarte **Einstellungen** für die Aktivität „SSIS-Paket ausführen“ die Azure-SSIS IR aus, die der SSISDB-Datenbank, in der das Paket bereitgestellt wird, zugeordnet ist. Wenn für Ihr Paket die Windows-Authentifizierung verwendet wird, um auf Datenspeicher zuzugreifen, z. B. lokale SQL Server-Computer/Dateifreigaben, Azure Files usw., sollten Sie das Kontrollkästchen **Windows-Authentifizierung** aktivieren und Domäne, Benutzername und Kennwort für Ihre Paketausführung eingeben. Wenn Ihr Paket die 32-Bit-Runtime zum Ausführen benötigt, aktivieren Sie das Kontrollkästchen **32-Bit-Runtime**. Wählen Sie für **Protokolliergrad** einen vordefinierten Bereich für die Protokollierung Ihrer Paketausführung. Aktivieren Sie das Kontrollkästchen **Angepasst**, wenn Sie stattdessen einen angepassten Namen für die Protokollierung eingeben möchten. Wenn Ihre Azure-SSIS IR ausgeführt wird und das Kontrollkästchen **Manuelle Einträge** nicht aktiviert ist, können Sie Ihre vorhandenen Ordner/Projekte/Pakete/Umgebungen aus SSISDB durchsuchen und auswählen. Klicken Sie auf die Schaltfläche **Aktualisieren**, um Ihre neu hinzugefügten Ordner/Projekte/Pakete/Umgebungen aus SSISDB abzurufen, sodass sie zum Durchsuchen und Auswählen verfügbar sind. 
+4. Wählen Sie auf der Registerkarte **Einstellungen** für die Aktivität „SSIS-Paket ausführen“ eine Azure-SSIS Integration Runtime-Instanz aus, in der Sie Ihr Paket ausführen möchten. Wenn Ihr Paket die Windows-Authentifizierung verwendet, um auf Datenspeicher (z. B. lokale SQL Server-Computer/Dateifreigaben, Azure Files oder Ähnliches) zuzugreifen, aktivieren Sie das Kontrollkästchen **Windows-Authentifizierung**, und geben Sie die Anmeldeinformationen für die Paketausführung ein (**Domäne**/**Benutzername**/**Kennwort**). Alternativ hierzu können Sie in Ihrer Azure Key Vault-Instanz (AKV) gespeicherte Geheimnisse als Werte verwenden. Klicken Sie hierzu neben der entsprechenden Anmeldeinformation auf das Kontrollkästchen **AZURE KEY VAULT**, wählen/bearbeiten Sie Ihren vorhandenen verknüpften AKV-Dienst (oder erstellen Sie einen neuen), und wählen Sie dann den Namen bzw. die Version des Geheimnisses für Ihren Anmeldeinformationswert aus.  Wenn Sie Ihren verknüpften AKV-Dienst erstellen/bearbeiten, können Sie Ihren vorhandenen AKV auswählen/bearbeiten (oder einen neuen erstellen). Es ist aber zu empfehlen, für AKV den Zugriff auf die per ADF verwaltete Identität zu gewähren, falls Sie dies nicht bereits getan haben. Sie können Ihre Geheimnisse auch direkt im folgenden Format eingeben: `<AKV linked service name>/<secret name>/<secret version>`. Wenn Ihr Paket die 32-Bit-Runtime zum Ausführen benötigt, aktivieren Sie das Kontrollkästchen **32-Bit-Runtime**. 
+
+   Wählen Sie unter **Paketspeicherort** entweder **SSISDB**, **Dateisystem (Paket)** oder **Dateisystem (Projekt)** aus. Wenn Sie **SSISDB** als Paketspeicherort auswählen, müssen Sie das auszuführende Paket angeben, das in SSISDB bereitgestellt wurde. Die Option „SSISDB“ wird automatisch ausgewählt, wenn Azure-SSIS Integration Runtime mit SSIS-Katalog (SSISDB) bereitgestellt wurde und dieser vom Azure SQL-Datenbank-Server bzw. von der verwalteten Instanz gehostet wird. Wenn Ihre Azure-SSIS Integration Runtime-Instanz ausgeführt wird und das Kontrollkästchen **Manuelle Einträge** nicht aktiviert ist, können Sie Ihre vorhandenen Ordner/Projekte/Pakete/Umgebungen aus SSISDB durchsuchen und auswählen. Klicken Sie auf die Schaltfläche **Aktualisieren**, um Ihre neu hinzugefügten Ordner/Projekte/Pakete/Umgebungen aus SSISDB abzurufen, sodass sie zum Durchsuchen und Auswählen verfügbar sind. Um die Umgebungen für Ihre Paketausführungen zu durchsuchen/auszuwählen, müssen Sie Ihre Projekte zuvor so konfigurieren, dass sie diese Umgebungen als Referenzen aus denselben Ordnern unter SSISDB hinzufügen. Weitere Informationen finden Sie unter [Erstellen/Zuordnen von SSIS-Umgebungen](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014).
+
+   Wählen Sie für **Protokolliergrad** einen vordefinierten Bereich für die Protokollierung Ihrer Paketausführung. Aktivieren Sie das Kontrollkästchen **Angepasst**, wenn Sie stattdessen einen angepassten Namen für die Protokollierung eingeben möchten. 
 
    ![Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Automatisch](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
-   Wenn Ihre Azure-SSIS IR nicht ausgeführt wird oder das Kontrollkästchen **Manuelle Einträge** aktiviert ist, können Sie Ihre Paket- und Umgebungspfade aus SSISDB direkt in den folgenden Formaten eingeben: `<folder name>/<project name>/<package name>.dtsx` und `<folder name>/<environment name>`.
+   Wenn Ihre Azure-SSIS Integration Runtime-Instanz nicht ausgeführt wird oder das Kontrollkästchen **Manuelle Einträge** aktiviert ist, können Sie Ihre Paket- und Umgebungspfade aus SSISDB direkt in den folgenden Formaten eingeben: `<folder name>/<project name>/<package name>.dtsx` und `<folder name>/<environment name>`.
 
    ![Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Manuell](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-5. Wenn Ihre Azure-SSIS IR auf der Registerkarte **SSIS-Parameter** der Aktivität „SSIS-Paket ausführen“ ausgeführt wird und das Kontrollkästchen **Manuelle Einträge** auf der Registerkarte **Einstellung** nicht aktiviert ist, werden die vorhandenen SSIS-Parameter in dem von Ihnen ausgewählten Projekt/Paket aus SSISDB angezeigt, damit Sie ihnen Werte zuweisen können. Andernfalls können Sie sie einzeln eingeben, um ihnen manuell Werte zuzuweisen. Bitte stellen Sie sicher, dass sie vorhanden und korrekt eingegeben sind, damit Ihre Paketausführung erfolgreich ist. Sie können ihren Werten dynamische Inhalte hinzufügen, indem Sie Ausdrücke, Funktionen, ADF-Systemvariablen und ADF-Pipeline-Parameter/-Variablen verwenden. Alternativ hierzu können Sie in Ihrer Azure Key Vault-Instanz (AKV) gespeicherte Geheimnisse als Werte verwenden. Klicken Sie hierzu auf das Kontrollkästchen **AZURE KEY VAULT** neben dem relevanten Parameter, wählen/bearbeiten Sie Ihren vorhandenen verknüpften AKV-Dienst (bzw. erstellen Sie einen neuen), und wählen Sie dann den Namen bzw. die Version des Geheimnisses für Ihren Parameterwert aus.  Wenn Sie Ihren verknüpften AKV-Dienst erstellen/bearbeiten, können Sie Ihren vorhandenen AKV auswählen/bearbeiten (oder einen neuen erstellen). Es ist aber zu empfehlen, für AKV den Zugriff auf die per ADF verwaltete Identität zu gewähren, falls Sie dies nicht bereits getan haben. Sie können Ihre Geheimnisse auch direkt im folgenden Format eingeben: `<AKV linked service name>/<secret name>/<secret version>`.
+   Wenn Sie **Dateisystem (Paket)** als Paketspeicherort auswählen, müssen Sie zur Angabe des auszuführenden Pakets unter **Paketpfad** einen UNC-Pfad (Universal Naming Convention) zu Ihrer Paketdatei (`.dtsx`) angeben. Die Option „Dateisystem (Paket)“ wird automatisch ausgewählt, wenn Azure-SSIS Integration Runtime ohne SSISDB bereitgestellt wurde. Wenn Sie Ihr Paket also beispielsweise in Azure Files speichern, lautet der Paketpfad `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`. 
+   
+   Wenn Sie Ihr Paket in einer separaten Datei konfigurieren, müssen Sie außerdem unter **Konfigurationspfad** einen UNC-Pfad zu Ihrer Konfigurationsdatei (`.dtsConfig`) angeben. Wenn Sie Ihre Konfiguration also beispielsweise in Azure Files speichern, lautet der Konfigurationspfad `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`.
+
+   ![Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Manuell](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
+
+   Wenn Sie **Dateisystem (Projekt)** als Paketspeicherort auswählen, müssen Sie zur Angabe des auszuführenden Pakets unter **Projektpfad** einen UNC-Pfad (Universal Naming Convention) zu Ihrer Projektdatei (`.ispac`) und unter **Paketname** eine Paketdatei (`.dtsx`) aus Ihrem Projekt angeben. Wenn Sie Ihr Projekt also beispielsweise in Azure Files speichern, lautet der Projektpfad `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac`.
+
+   ![Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Manuell](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
+
+   Als Nächstes müssen Sie die Anmeldeinformationen für den Zugriff auf Ihre Projekt-/Paket-/Konfigurationsdateien angeben. Wenn Sie wie weiter oben beschrieben die Werte der Anmeldeinformationen für die Paketausführung eingegeben haben, können Sie diese Werte wiederverwenden, indem Sie das Kontrollkästchen **Same as package execution credentials** (Identisch mit den Anmeldeinformationen für die Paketausführung) aktivieren. Andernfalls müssen Sie Ihre Anmeldeinformationen für den Paketzugriff eingeben (**Domäne**/**Benutzername**/**Kennwort**). Wenn Sie Ihr Projekt/Ihr Paket/Ihre Konfiguration also beispielsweise in Azure Files speichern, lauten die Werte wie folgt: **Domäne:** `Azure`; **Benutzername:** `<storage account name>`; **Kennwort:** `<storage account key>`. Alternativ können Sie in Ihrer AKV-Instanz gespeicherte Geheimnisse als Werte verwenden (wie weiter oben beschrieben). Diese Anmeldeinformationen werden sowohl für den Zugriff auf Ihr Paket und Ihre Unterpakete in der Paketausführungsaufgabe (jeweils unter ihrem eigenen Pfad/dem gleichen Projekt) als auch für den Zugriff auf Konfigurationen verwendet (einschließlich der Konfigurationen, die in Ihren Paketen angegeben sind). 
+   
+   Wenn Sie bei der Paketerstellung über SQL Server Data Tools (SSDT) die Schutzebene **EncryptAllWithPassword**/**EncryptSensitiveWithPassword** verwendet haben, müssen Sie unter **Verschlüsselungskennwort** den Wert für Ihr Kennwort eingeben. Alternativ können Sie ein in Ihrer AKV-Instanz gespeichertes Geheimnis als Wert verwenden (wie weiter oben beschrieben). Wenn Sie die Schutzebene **EncryptSensitiveWithUserKey** verwendet haben, müssen Sie Ihre vertraulichen Werte in Konfigurationsdateien oder auf den Registerkarten **SSIS-Parameter**/**Verbindungs-Manager**/**Eigenschaftenüberschreibungen** erneut eingeben (wie weiter unten beschrieben). Die Schutzebene **EncryptAllWithUserKey** wird nicht unterstützt. Sollten Sie diese Schutzebene verwendet haben, müssen Sie Ihr Paket über SSDT oder mithilfe des Befehlszeilentools `dtutil` mit einer anderen Schutzebene konfigurieren. 
+   
+   Wählen Sie für **Protokolliergrad** einen vordefinierten Bereich für die Protokollierung Ihrer Paketausführung. Aktivieren Sie das Kontrollkästchen **Angepasst**, wenn Sie stattdessen einen angepassten Namen für die Protokollierung eingeben möchten. Wenn Sie für Ihre Paketausführungen eine Protokollierung verwenden möchten, die über die Standardprotokollanbieter hinausgeht, die in Ihrem Paket angegeben werden können, müssen Sie unter **Protokollierungspfad** den UNC-Pfad Ihres Protokollordners angeben. Wenn Sie Ihre Protokolle also beispielsweise in Azure Files speichern, lautet Ihr Protokollierungspfad `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`. An diesem Pfad wird für jedes ausgeführte Einzelpaket ein Unterordner erstellt und mit der Aktivitätsausführungs-ID von „SSIS-Paket ausführen“ benannt. In diesem Unterordner werden alle fünf Minuten Protokolldateien generiert. 
+   
+   Abschließend müssen Sie auch die Anmeldeinformationen für den Zugriff auf Ihren Protokollordner angeben. Wenn Sie wie weiter oben beschrieben die Werte der Anmeldeinformationen für den Paketzugriff eingegeben haben, können Sie diese Werte wiederverwenden, indem Sie das Kontrollkästchen **Same as package access credentials** (Identisch mit den Anmeldeinformationen für den Paketzugriff) aktivieren. Andernfalls müssen Sie Ihre Anmeldeinformationen für den Protokollierungszugriff eingeben (**Domäne**/**Benutzername**/**Kennwort**). Wenn Sie Ihre Protokolle also beispielsweise in Azure Files speichern, lauten die Werte wie folgt: **Domäne:** `Azure`; **Benutzername:** `<storage account name>`; **Kennwort:** `<storage account key>`. Alternativ können Sie in Ihrer AKV-Instanz gespeicherte Geheimnisse als Werte verwenden (wie weiter oben beschrieben). Diese Anmeldeinformationen werden verwendet, um Ihre Protokolle zu speichern. 
+   
+   Bei allen oben angegebenen UNC-Pfaden muss der vollqualifizierte Dateiname kürzer als 260 Zeichen und der Verzeichnisname kürzer als 248 Zeichen sein.
+
+5. Wenn Ihre Azure-SSIS Integration Runtime-Instanz ausgeführt wird, die Option **SSISDB** als Paketspeicherort ausgewählt ist und das Kontrollkästchen **Manuelle Einträge** auf der Registerkarte **Einstellungen** deaktiviert ist, werden auf der Registerkarte **SSIS-Parameter** der Aktivität „SSIS-Paket ausführen“ die vorhandenen SSIS-Parameter im ausgewählten Projekt/Paket aus SSISDB angezeigt, damit Sie ihnen Werte zuweisen können. Andernfalls können Sie sie einzeln eingeben, um ihnen manuell Werte zuzuweisen. Bitte stellen Sie sicher, dass sie vorhanden und korrekt eingegeben sind, damit Ihre Paketausführung erfolgreich ist. 
+   
+   Wenn Sie bei der Paketerstellung über SSDT die Schutzebene **EncryptSensitiveWithUserKey** verwendet haben und **Dateisystem (Paket)** /**Dateisystem (Projekt)** als Paketspeicherort ausgewählt ist, müssen Sie Ihre vertraulichen Parameter erneut eingeben, um ihnen in Konfigurationsdateien oder auf dieser Registerkarte Werte zuzuweisen. 
+   
+   Beim Zuweisen von Werten für Ihre Parameter können Sie Ausdrücke, Funktionen, ADF-Systemvariablen und ADF-Pipelineparameter/-Variablen verwenden, um dynamische Inhalte hinzuzufügen. Alternativ können Sie in Ihrer AKV-Instanz gespeicherte Geheimnisse als Werte verwenden (wie weiter oben beschrieben).
 
    ![Festlegen von Eigenschaften auf der Registerkarte „SSIS-Parameter“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-6. Wenn Ihre Azure-SSIS IR auf der Registerkarte **Verbindungs-Manager** der Aktivität „SSIS-Paket ausführen“ ausgeführt wird und das Kontrollkästchen **Manuelle Einträge** auf der Registerkarte **Einstellung** nicht aktiviert ist, werden die vorhandenen Verbindungs-Manager in dem von Ihnen ausgewählten Projekt/Paket aus SSISDB angezeigt, damit Sie Werte für die Eigenschaften zuweisen können. Andernfalls können Sie sie einzeln eingeben, um den Eigenschaften manuell Werte zuzuweisen. Stellen Sie sicher, dass sie vorhanden und korrekt eingegeben sind, damit Ihre Paketausführung erfolgreich ist. Sie können den Eigenschaftswerten auch dynamische Inhalte hinzufügen, indem Sie Ausdrücke, Funktionen, ADF-Systemvariablen und ADF-Pipeline-Parameter/-Variablen verwenden. Alternativ hierzu können Sie in Ihrer Azure Key Vault-Instanz (AKV) gespeicherte Geheimnisse als Eigenschaftswerte verwenden. Klicken Sie hierzu auf das Kontrollkästchen **AZURE KEY VAULT** neben der relevanten Eigenschaft, wählen/bearbeiten Sie Ihren vorhandenen verknüpften AKV-Dienst (bzw. erstellen Sie einen neuen), und wählen Sie dann den Namen bzw. die Version des Geheimnisses für Ihren Eigenschaftswert aus.  Wenn Sie Ihren verknüpften AKV-Dienst erstellen/bearbeiten, können Sie Ihren vorhandenen AKV auswählen/bearbeiten (oder einen neuen erstellen). Es ist aber zu empfehlen, für AKV den Zugriff auf die per ADF verwaltete Identität zu gewähren, falls Sie dies nicht bereits getan haben. Sie können Ihre Geheimnisse auch direkt im folgenden Format eingeben: `<AKV linked service name>/<secret name>/<secret version>`.
+6. Wenn Ihre Azure-SSIS Integration Runtime-Instanz ausgeführt wird, die Option **SSISDB** als Paketspeicherort ausgewählt ist und das Kontrollkästchen **Manuelle Einträge** auf der Registerkarte **Einstellungen** deaktiviert ist, werden auf der Registerkarte **Verbindungs-Manager** der Aktivität „SSIS-Paket ausführen“ die vorhandenen Verbindungs-Manager im ausgewählten Projekt/Paket aus SSISDB angezeigt, damit Sie ihren Eigenschaften Werte zuweisen können. Andernfalls können Sie sie einzeln eingeben, um den Eigenschaften manuell Werte zuzuweisen. Stellen Sie sicher, dass sie vorhanden und korrekt eingegeben sind, damit Ihre Paketausführung erfolgreich ist. 
+   
+   Wenn Sie bei der Paketerstellung über SSDT die Schutzebene **EncryptSensitiveWithUserKey** verwendet haben und **Dateisystem (Paket)** /**Dateisystem (Projekt)** als Paketspeicherort ausgewählt ist, müssen Sie Ihre vertraulichen Verbindungs-Manager-Eigenschaften erneut eingeben, um ihnen in Konfigurationsdateien oder auf dieser Registerkarte Werte zuzuweisen. 
+   
+   Beim Zuweisen von Werten für Ihre Verbindungs-Manager-Eigenschaften können Sie Ausdrücke, Funktionen, ADF-Systemvariablen und ADF-Pipelineparameter/-Variablen verwenden, um dynamische Inhalte hinzuzufügen. Alternativ können Sie in Ihrer AKV-Instanz gespeicherte Geheimnisse als Werte verwenden (wie weiter oben beschrieben).
 
    ![Festlegen von Eigenschaften auf der Registerkarte „Verbindungs-Manager“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
-7. Auf der Registerkarte **Eigenschaftsüberschreibungen** für die Aktivität „SSIS-Paket ausführen“ können Sie die Pfade der vorhandenen Eigenschaften in dem von Ihnen ausgewählten Paket aus SSISDB einzeln eingeben, um ihnen manuell Werte zuzuweisen. Bitte stellen Sie sicher, dass sie vorhanden sind und korrekt eingegeben sind, damit Ihre Paketausführung erfolgreich ist, z.B. um den Wert Ihrer Benutzervariablen zu überschreiben, geben Sie ihren Pfad im folgenden Format ein: `\Package.Variables[User::YourVariableName].Value`. Sie können auch dynamische Inhalte zu ihren Werten hinzufügen, indem Sie Ausdrücke, Funktionen, ADF-Systemvariablen und ADF-Pipeline-Parameter/-Variablen verwenden.
+7. Auf der Registerkarte **Eigenschaftsüberschreibungen** der Aktivität „SSIS-Paket ausführen“ können Sie die Pfade der vorhandenen Eigenschaften in dem von Ihnen ausgewählten Paket einzeln eingeben, um ihnen manuell Werte zuzuweisen. Vergewissern Sie sich, dass sie vorhanden sind und korrekt eingegeben wurden, damit Ihre Paketausführung erfolgreich ist. Geben Sie also beispielsweise zum Überschreiben des Werts Ihrer Benutzervariablen den zugehörigen Pfad im folgenden Format ein: `\Package.Variables[User::<variable name>].Value`. 
+   
+   Wenn Sie bei der Paketerstellung über SSDT die Schutzebene **EncryptSensitiveWithUserKey** verwendet haben und **Dateisystem (Paket)** /**Dateisystem (Projekt)** als Paketspeicherort ausgewählt ist, müssen Sie Ihre vertraulichen Eigenschaften erneut eingeben, um ihnen in Konfigurationsdateien oder auf dieser Registerkarte Werte zuzuweisen. 
+   
+   Beim Zuweisen von Werten für Ihre Eigenschaften können Sie Ausdrücke, Funktionen, ADF-Systemvariablen und ADF-Pipelineparameter/-Variablen verwenden, um dynamische Inhalte hinzuzufügen.
 
    ![Festlegen von Eigenschaften auf der Registerkarte „Eigenschaftenüberschreibungen“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
 
-8. Klicken Sie zum Überprüfen der Pipelinekonfiguration in der Symbolleiste auf **Überprüfen**. Klicken Sie zum Schließen des **Pipeline Validation Report** (Pipelineüberprüfungsbericht) auf **>>**.
+   Die in Konfigurationsdateien und auf der Registerkarte *SSIS-Parameter* zugewiesenen Werte können auf der Registerkarte **Verbindungs-Manager**/**Eigenschaftenüberschreibungen** überschrieben werden. Auf der Registerkarte **Verbindungs-Manager** zugewiesene Werte können außerdem auf der Registerkarte **Eigenschaftenüberschreibungen** überschrieben werden.
+
+8. Klicken Sie zum Überprüfen der Pipelinekonfiguration in der Symbolleiste auf **Überprüfen**. Klicken Sie zum Schließen des **Pipeline Validation Report** (Pipelineüberprüfungsbericht) auf **>>** .
 
 9. Veröffentlichen Sie die Pipeline in der ADF, indem Sie auf die Schaltfläche **Alle veröffentlichen** klicken. 
 
@@ -102,7 +140,7 @@ In diesem Schritt lösen Sie eine Pipelineausführung aus.
 
    ![Überprüfen von Paketausführungen](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
-4. Sie können auch die SSISDB-Ausführungs-ID aus der Ausgabe der Pipeline-Aktivitätsausführung abrufen und anhand der ID umfangreichere Ausführungsprotokolle und Fehlermeldungen in SSMS überprüfen.
+4. Sie können auch die SSISDB-Ausführungs-ID aus der Ausgabe der Pipeline-Aktivitätsausführung abrufen und anhand der ID umfangreichere Ausführungsprotokolle und Fehlermeldungen in SQL Server Management Studio (SSMS) überprüfen.
 
    ![Abrufen der Ausführungs-ID](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
 
@@ -131,35 +169,36 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Aktivität „SSIS-Paket
        "name": "RunSSISPackagePipeline",
        "properties": {
            "activities": [{
-               "name": "mySSISActivity",
+               "name": "MySSISActivity",
                "description": "My SSIS package/activity description",
                "type": "ExecuteSSISPackage",
                "typeProperties": {
                    "connectVia": {
-                       "referenceName": "myAzureSSISIR",
+                       "referenceName": "MyAzureSSISIR",
                        "type": "IntegrationRuntimeReference"
                    },
                    "executionCredential": {
-                       "domain": "MyDomain",
-                       "userName": "MyUsername",
+                       "domain": "MyExecutionDomain",
+                       "username": "MyExecutionUsername",
                        "password": {
                            "type": "SecureString",
-                           "value": "**********"
+                           "value": "MyExecutionPassword"
                        }
                    },
                    "runtime": "x64",
                    "loggingLevel": "Basic",
                    "packageLocation": {
-                       "packagePath": "FolderName/ProjectName/PackageName.dtsx"
+                       "packagePath": "MyFolder/MyProject/MyPackage.dtsx",
+                       "type": "SSISDB"
                    },
-                   "environmentPath": "FolderName/EnvironmentName",
+                   "environmentPath": "MyFolder/MyEnvironment",
                    "projectParameters": {
                        "project_param_1": {
                            "value": "123"
                        },
                        "project_param_2": {
                            "value": {
-                               "value": "@pipeline().parameters.MyPipelineParameter",
+                               "value": "@pipeline().parameters.MyProjectParameter",
                                "type": "Expression"
                            }
                        }
@@ -175,40 +214,40 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Aktivität „SSIS-Paket
                                    "referenceName": "myAKV",
                                    "type": "LinkedServiceReference"
                                },
-                               "secretName": "MySecret"
+                               "secretName": "MyPackageParameter"
                            }
                        }
                    },
                    "projectConnectionManagers": {
                        "MyAdonetCM": {
-                           "userName": {
-                               "value": "sa"
+                           "username": {
+                               "value": "MyConnectionUsername"
                            },
-                           "passWord": {
+                           "password": {
                                "value": {
                                    "type": "SecureString",
-                                   "value": "abc"
+                                   "value": "MyConnectionPassword"
                                }
                            }
                        }
                    },
                    "packageConnectionManagers": {
                        "MyOledbCM": {
-                           "userName": {
+                           "username": {
                                "value": {
-                                   "value": "@pipeline().parameters.MyUsername",
+                                   "value": "@pipeline().parameters.MyConnectionUsername",
                                    "type": "Expression"
                                }
                            },
-                           "passWord": {
+                           "password": {
                                "value": {
                                    "type": "AzureKeyVaultSecret",
                                    "store": {
                                        "referenceName": "myAKV",
                                        "type": "LinkedServiceReference"
                                    },
-                                   "secretName": "MyPassword",
-                                   "secretVersion": "3a1b74e361bf4ef4a00e47053b872149"
+                                   "secretName": "MyConnectionPassword",
+                                   "secretVersion": "MyConnectionPasswordVersion"
                                }
                            }
                        }
@@ -226,6 +265,86 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Aktivität „SSIS-Paket
                    "retryIntervalInSeconds": 30
                }
            }]
+       }
+   }
+   ```
+
+   Zum Ausführen von Paketen, die in Dateisystemen/Dateifreigaben/Azure Files gespeichert sind, können Sie die Werte für Ihre Paket-/Protokollspeicherort-Eigenschaften wie folgt eingeben.
+
+   ```json
+   {
+       {
+           {
+               {
+                   "packageLocation": {
+                       "packagePath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyPackage.dtsx",
+                       "type": "File",
+                       "typeProperties": {
+                           "packagePassword": {
+                               "type": "SecureString",
+                               "value": "MyEncryptionPassword"
+                           },
+                           "accessCredential": {
+                               "domain": "Azure",
+                               "username": "MyStorageAccount",
+                               "password": {
+                                   "type": "SecureString",
+                                   "value": "MyAccountKey"
+                               }
+                           }
+                       }
+                   },
+                   "logLocation": {
+                       "logPath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyLogFolder",
+                       "type": "File",
+                       "typeProperties": {
+                           "accessCredential": {
+                               "domain": "Azure",
+                               "username": "MyStorageAccount",
+                               "password": {
+                                   "type": "AzureKeyVaultSecret",
+                                   "store": {
+                                       "referenceName": "myAKV",
+                                       "type": "LinkedServiceReference"
+                                   },
+                                   "secretName": "MyAccountKey"
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   Zum Ausführen von Paketen in Projekten, die in Dateisystemen/Dateifreigaben/Azure Files gespeichert sind, können Sie die Werte für Ihre Paketspeicherort-Eigenschaft wie folgt eingeben.
+
+   ```json
+   {
+       {
+           {
+               {
+                   "packageLocation": {
+                       "packagePath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyProject.ispac:MyPackage.dtsx",
+                       "type": "File",
+                       "typeProperties": {
+                           "packagePassword": {
+                               "type": "SecureString",
+                               "value": "MyEncryptionPassword"
+                           },
+                           "accessCredential": {
+                               "domain": "Azure",
+                               "userName": "MyStorageAccount",
+                               "password": {
+                                   "type": "SecureString",
+                                   "value": "MyAccountKey"
+                               }
+                           }
+                       }
+                   }
+               }
+           }
        }
    }
    ```
@@ -353,4 +472,4 @@ Im vorherigen Schritt wurde die Pipeline auf Anforderung ausgeführt. Alternativ
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen finden Sie im folgenden Blogbeitrag:
--   [Modernisieren und Erweitern von ETL/ELT-Workflows mit SSIS-Aktivitäten in ADF-Pipelines](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)
+-   [Modernisieren und Erweitern von ETL/ELT-Workflows mit SSIS-Aktivitäten in ADF-Pipelines](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)

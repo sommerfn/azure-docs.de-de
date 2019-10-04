@@ -6,14 +6,14 @@ services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/15/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: e0bef0fc4f4b61add24c243af0dac64933ad5bab
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 08657163eb170b8d3185ce15bd724f1f55bbe2bd
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466909"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702869"
 ---
 # <a name="smart-groups"></a>Intelligente Gruppen
 Eine häufige Herausforderung beim Umgang mit Warnungen ist das Durchsuchen der nicht relevanten Informationen, um die relevanten Warnungen zu ermitteln – intelligente Gruppen sind als Lösung für dieses Problem vorgesehen.  
@@ -29,7 +29,7 @@ Der Zustand der intelligenten Gruppe ist ein ähnliches Konzept wie der Warnungs
 
 Die folgenden Zustände werden für intelligente Gruppen unterstützt.
 
-| Zustand | BESCHREIBUNG |
+| State | BESCHREIBUNG |
 |:---|:---|
 | Neu | Das Problem wurde gerade erkannt und noch nicht überprüft. |
 | Bestätigt | Ein Administrator hat die intelligente Gruppe überprüft und mit deren Bearbeitung begonnen. |
@@ -49,7 +49,7 @@ Die Detailseite für die intelligente Gruppe wird angezeigt, wenn Sie auf eine i
 
 Die Detailseite für die intelligente Gruppe enthält die folgenden Abschnitte.
 
-| Abschnitt | BESCHREIBUNG |
+| `Section` | BESCHREIBUNG |
 |:---|:---|
 | Alerts | Listet die einzelnen Warnungen auf, die in der intelligenten Gruppe enthalten sind. Klicken Sie auf eine Warnung, um deren Detailseite zu öffnen. |
 | Verlauf | Listet die einzelnen Aktionen, die von der intelligenten Gruppe ausgeführt wurden, und alle daran vorgenommenen Änderungen auf. Dies ist derzeit auf Statusänderungen und Änderungen der Warnungsmitgliedschaft beschränkt. |

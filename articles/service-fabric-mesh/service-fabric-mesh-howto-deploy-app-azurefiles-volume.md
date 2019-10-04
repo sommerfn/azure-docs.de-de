@@ -8,19 +8,18 @@ manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fa078f17768d4885403f2f3e3d6b91251f0aaced
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: e02afde27335e9a512d1e297880993b19fa4304e
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335962"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034728"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Einbinden eines auf Azure Files basierenden Volumes in einer Service Fabric Mesh-Anwendung 
 
@@ -29,6 +28,17 @@ In diesem Artikel wird das Einbinden eines auf Azure Files basierenden Volumes i
 Erstellen Sie eine Volumeressource in Ihrer Service Fabric Mesh-Anwendung, und verweisen Sie in Ihrem Dienst auf dieses Volume, um ein Volume in einen Dienst einzubinden.  Das Deklarieren der Volumeressource und das Verweisen auf dieselbe in der Dienstressource kann über [YAML-basierte Ressourcendateien](#declare-a-volume-resource-and-update-the-service-resource-yaml) oder über die [JSON-basierte Bereitstellungsvorlage](#declare-a-volume-resource-and-update-the-service-resource-json) erfolgen. Bevor Sie das Volume einbinden, müssen Sie zunächst ein Azure-Speicherkonto und eine [Dateifreigabe in Azure Files](/azure/storage/files/storage-how-to-create-file-share) erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+> [!NOTE]
+> **Bekanntes Problem bei der Bereitstellung auf dem Windows RS5-Entwicklungscomputer:** Ein offener Bug von PowerShell-Cmdlet New-SmbGlobalMapping auf Windows RS5-Computern verhindert die Einbindung von Azure Files-Volumes. Der folgende Beispielfehler tritt auf, wenn ein Azure Files-basiertes Volume auf einem lokalen Entwicklungscomputer eingebunden wird.
+```
+Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterService:EntryPoint:131884291000691067'.
+There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)
+Failed to start Container. ContainerName=sf-2-63fc668f-362d-4220-873d-85abaaacc83e_6d6879cf-dd43-4092-887d-17d23ed9cc78, ApplicationId=SingleInstance_0_App2, ApplicationName=fabric:/counterApp. DockerRequest returned StatusCode=InternalServerError with ResponseBody={"message":"error while mounting volume '': mount failed"}
+```
+Zur Problemumgehung muss zuerst der folgende Befehl mit PowerShell-Administratorrechten ausgeführt und dann der Computer neu gestartet werden.
+```powershell
+PS C:\WINDOWS\system32> Mofcomp c:\windows\system32\wbem\smbwmiv2.mof
+```
 
 Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für diesen Artikel verwenden. 
 

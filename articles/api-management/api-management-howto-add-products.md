@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 0f2b45685d2976c567c16666e2ca89d334914b63
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 134483764ffcb012ece0769a514683fc9487887f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417292"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073627"
 ---
 # <a name="create-and-publish-a-product"></a>Erstellen und Veröffentlichen eines Produkts  
 
@@ -36,8 +35,8 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 + Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
-+ Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
-+ Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
++ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
++ Absolvieren Sie außerdem das folgende Tutorial: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 ## <a name="create-and-publish-a-product"></a>Erstellen und Veröffentlichen eines Produkts
 
@@ -50,10 +49,10 @@ In diesem Tutorial lernen Sie Folgendes:
 
     | NAME                     | BESCHREIBUNG                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Anzeigename             | Der Name, wie er im **Entwicklerportal** angezeigt werden soll                                                                                                                                                                                                                                                        |
+    | `Display name`             | Der Name, wie er im **Entwicklerportal** angezeigt werden soll                                                                                                                                                                                                                                                        |
     | NAME                     | Ein beschreibender Name des Produkts                                                                                                                                                                                                                                                                                      |
     | BESCHREIBUNG              | Das Feld **Beschreibung** enthält detaillierte Daten zum Produkt wie etwa dessen Zweck, die bereitgestellten APIs und sonstige nützliche Informationen.                                                                                                                                               |
-    | Zustand                    | Klicken Sie auf **Veröffentlicht**, wenn Sie das Produkt veröffentlichen möchten. Bevor die APIs eines Produkts aufgerufen werden können, müssen Sie das Produkt veröffentlichen. Standardmäßig sind neue Produkte nicht veröffentlicht und nur für die Gruppe **Administratoren** sichtbar.                                                                                      |
+    | State                    | Klicken Sie auf **Veröffentlicht**, wenn Sie das Produkt veröffentlichen möchten. Bevor die APIs eines Produkts aufgerufen werden können, müssen Sie das Produkt veröffentlichen. Standardmäßig sind neue Produkte nicht veröffentlicht und nur für die Gruppe **Administratoren** sichtbar.                                                                                      |
     | Abonnement erforderlich    | Aktivieren Sie **Abonnement erforderlich**, wenn ein Benutzer zur Verwendung des Produkts ein Abonnement benötigt.                                                                                                                                                                                                                                   |
     | Genehmigung erforderlich        | Aktivieren Sie die Option **Genehmigung anfordern**, wenn Sie möchten, dass ein Administrator Abonnements für dieses Produkt prüfen und ablehnen oder akzeptieren muss. Wenn das Kontrollkästchen nicht markiert ist, werden Abonnements automatisch genehmigt.                                                                                                                         |
     | Grenzwert für Abonnementanzahl | Geben Sie einen Grenzwert für Abonnements ein, um die Anzahl mehrerer gleichzeitiger Abonnements zu beschränken.                                                                                                                                                                                                                                |
@@ -86,7 +85,7 @@ Entwickler müssen zuerst ein Produkt abonnieren, um Zugriff auf die API zu erha
 4. Wählen Sie eine API aus, und klicken Sie auf **Auswählen**.
 
 > [!TIP]
-> Sie können ein Benutzerabonnement für ein *Produkt* unter Verwendung benutzerdefinierter Abonnementschlüssel über die [REST-API](https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate) oder einen PowerShell-Befehl erstellen oder aktualisieren.
+> Sie können ein Benutzerabonnement für ein *Produkt* unter Verwendung benutzerdefinierter Abonnementschlüssel über die [REST-API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate) oder einen PowerShell-Befehl erstellen oder aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

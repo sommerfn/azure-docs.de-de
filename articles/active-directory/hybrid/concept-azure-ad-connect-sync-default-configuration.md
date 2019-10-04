@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b42a6b667a8708aeb2edeb0c80a5ab747b6c60a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bfaf3cc9b113ff10766f7a17bd7bf09ffa619a8e
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891136"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227414"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfiguration
 In diesem Artikel werden die standardmäßigen Konfigurationsregeln erläutert. Er dokumentiert die Regeln und deren Auswirkungen auf die Konfiguration. Außerdem wird die Standardkonfiguration der Azure AD Connect-Synchronisierung beschrieben. Der Leser soll verstehen, wie das als deklarative Bereitstellung bezeichnete Konfigurationsmodell in einem realistischen Beispiel funktioniert. Dieser Artikel setzt voraus, dass die Azure AD Connect-Synchronisierung bereits mit dem Installations-Assistenten installiert und konfiguriert wurde.
@@ -52,7 +52,7 @@ Die folgenden Benutzerobjekte werden **nicht** mit Azure AD synchronisiert:
   * `(Left([sAMAccountName], 4) = "CAS_" && (InStr([sAMAccountName], "}")> 0))`
 * Verhindert die Synchronisierung von Objekten, die nicht für Exchange Online geeignet sind.
   `CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))`  
-   Diese Bitmaske (&H21C07000) filtert folgende Objekte heraus:
+  Diese Bitmaske (&H21C07000) filtert folgende Objekte heraus:
   * E-Mail-aktivierter öffentlicher Ordner (ab Version 1.1.524.0 als Vorschauversion)
   * Postfach der Systemaufsicht
   * Postfachdatenbankpostfach (Systempostfach)
@@ -71,7 +71,7 @@ Geltende Attributregeln:
   2. Attribute aus einer Exchange-GAL (Global Address List, globale Adressliste) werden aus der Gesamtstruktur mit einem Exchange-Postfach bereitgestellt.
   3. Wird kein Postfach gefunden, können diese Attribute aus einer beliebigen Gesamtstruktur stammen.
   4. Exchange-bezogene Attribute (in der GAL nicht sichtbare technische Attribute) werden aus der Gesamtstruktur bereitgestellt, für die Folgendes gilt: `mailNickname ISNOTNULL`.
-  5. Sollte eine dieser Regeln von mehreren Gesamtstrukturen erfüllt werden, ist die Erstellungsreihenfolge (Datum/Uhrzeit) der Connectors (Gesamtstrukturen) ausschlaggebend.
+  5. Sollte eine dieser Regeln von mehreren Gesamtstrukturen erfüllt werden, ist die Erstellungsreihenfolge (Datum/Uhrzeit) der Connectors (Gesamtstrukturen) ausschlaggebend. Die erste verbundene Gesamtstruktur wird auch als erste synchronisiert. 
 
 ### <a name="contact-out-of-box-rules"></a>Standardregeln für Kontakte
 Ein Kontaktobjekt muss Folgendes erfüllen, um synchronisiert zu werden:

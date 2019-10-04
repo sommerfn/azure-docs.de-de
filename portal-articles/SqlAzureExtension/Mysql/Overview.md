@@ -8,12 +8,12 @@ ms.service: mysql
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
-ms.openlocfilehash: a1d5458a2b815591fc7126d429bd16a718910b30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ff389f52da0db4e394e8f6a6c37955a5f0c3861
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23073893"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "64691372"
 ---
 # <a name="azure-database-for-mysql-documentation"></a>Dokumentation zur Azure-Datenbank für MySQL
 
@@ -21,7 +21,7 @@ Die Azure-Datenbank für MySQL ist ein relationaler Datenbankdienst, der auf der
 
 ## <a name="5-minute-quickstarts"></a>Fünfminütige Schnellstarts
 
-Informationen zum Erstellen einer MySQL-Datenbank in Azure mithilfe folgender Ressourcen:
+Informationen zum Erstellen einer Instanz von MySQL Database on Azure mithilfe folgender Ressourcen:
 
 - [Azure-Portal](/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)
 - [Azure-Befehlszeilenschnittstelle](/azure/mysql/quickstart-create-mysql-server-database-using-azure-cli)
@@ -30,8 +30,8 @@ Informationen zum Erstellen einer MySQL-Datenbank in Azure mithilfe folgender Re
 
 Erfahren Sie, wie Sie Ihre Datenbank entwerfen und Apps entwickeln:
 
-- Erstellen einer Datenbank: [Azure-Portal](/azure/mysql/tutorial-design-database-using-portal) |  [Azure CLI](/azure/mysql/tutorial-design-database-using-cli)
-- Erstellen einer Web-App: [WordPress – Portal](https://portal.azure.com/#create/WordPress.WordPress) |  [PHP – Azure CLI](/azure/app-service/app-service-web-tutorial-php-mysql?toc=%2fazure%2fmysql%2ftoc.json)
+- Entwerfen einer Datenbank: [Azure-Portal](/azure/mysql/tutorial-design-database-using-portal) |  [Azure CLI](/azure/mysql/tutorial-design-database-using-cli)
+- Erstellen einer Web-App: [Wordpress – Portal](https://portal.azure.com/#create/WordPress.WordPress) |  [PHP – Azure CLI](/azure/app-service/app-service-web-tutorial-php-mysql?toc=%2fazure%2fmysql%2ftoc.json)
 
 ## <a name="samples"></a>Beispiele 
 

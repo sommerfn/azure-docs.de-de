@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache, C++ (macOS): Speech-Dienste'
+title: 'Schnellstart: Erkennen von Sprache, C++ (macOS) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mit dem Speech SDK Sprache in C++ unter macOS erkennen.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 04/03/2019
+ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: be4c5d6187e6367ba04ce7debcc0701937e87ae9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 12abb7fb6d5e93e226ae539f8161566e3c30bd65
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59012348"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803328"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C++ unter macOS mit dem Speech SDK
 
@@ -30,8 +30,6 @@ Für diese Schnellstartanleitung benötigen Sie einen Abonnementschlüssel für 
 ## <a name="install-speech-sdk"></a>Installieren des Speech SDK
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
-
-Die aktuelle Version des Cognitive Services Speech SDK ist `1.4.0`.
 
 Das Speech SDK für macOS kann als gezipptes Frameworkpaket unter https://aka.ms/csspeech/macosbinary heruntergeladen werden.
 
@@ -82,7 +80,7 @@ Laden Sie das SDK wie folgt herunter, und installieren Sie es:
 * Führen Sie den folgenden Befehl aus, um die Anwendung zu erstellen:
 
   ```sh
-  g++ helloworld.cpp -o helloworld --std=c++11 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech
+  g++ helloworld.cpp -o helloworld --std=c++14 -F${SPEECHSDK_ROOT} -framework MicrosoftCognitiveServicesSpeech
   ```
 
 ## <a name="run-the-app"></a>Ausführen der App
@@ -115,4 +113,3 @@ Laden Sie das SDK wie folgt herunter, und installieren Sie es:
 
 - [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
 - [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)
-

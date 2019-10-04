@@ -2,26 +2,26 @@
 title: Konfigurieren der Kennwortkomplexität mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Erfahren Sie, wie Komplexitätsanforderungen für Kennwörter mit einer benutzerdefinierten Richtlinie in Azure Active Directory B2C konfiguriert werden.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e8e3157bc9dfc97d364effee2ea90cfad85d18ff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6454d380b0f34e940951e3de44d1dee0ff6b597f
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167825"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065524"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurieren der Kennwortkomplexität mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In Azure Active Directory (Azure AD) B2C können Sie die Komplexitätsanforderungen für Kennwörter konfigurieren, die von einem Benutzer beim Erstellen eines Kontos angegeben werden. Standardmäßig verwendet Azure AD B2C **starke** Kennwörter. In diesem Artikel erfahren Sie, wie Sie Kennwortkomplexität in [benutzerdefinierten Richtlinien](active-directory-b2c-overview-custom.md) konfigurieren. Es ist auch möglich, die Kennwortkomplexität in [Benutzerflows](active-directory-b2c-reference-password-complexity.md) zu konfigurieren.
+In Azure Active Directory B2C (Azure AD B2C) können Sie die Komplexitätsanforderungen für Kennwörter konfigurieren, die von einem Benutzer beim Erstellen eines Kontos angegeben werden. Standardmäßig verwendet Azure AD B2C **starke** Kennwörter. In diesem Artikel erfahren Sie, wie Sie Kennwortkomplexität in [benutzerdefinierten Richtlinien](active-directory-b2c-overview-custom.md) konfigurieren. Es ist auch möglich, die Kennwortkomplexität in [Benutzerflows](active-directory-b2c-reference-password-complexity.md) zu konfigurieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

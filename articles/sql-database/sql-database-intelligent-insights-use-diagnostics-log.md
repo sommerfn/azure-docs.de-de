@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 264d4cfc6b09813f34501a0e51d3100f4d2bce78
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: c25d37a4d1695ab94cc0667a13e36e4da640e12a
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217035"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262148"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Verwenden des Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank
 
-Auf dieser Seite finden Sie Informationen zur Verwendung des von [Intelligent Insights](sql-database-intelligent-insights.md) erstellten Diagnoseprotokolls zur Leistung von Azure SQL-Datenbank, zu dessen Format und den Daten, die es für benutzerdefinierte Entwicklungsanforderungen enthält. Sie können dieses Diagnoseprotokoll an [Azure Monitor-Protokolle](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen senden.
+Auf dieser Seite finden Sie Informationen zur Verwendung des von [Intelligent Insights](sql-database-intelligent-insights.md) erstellten Diagnoseprotokolls zur Leistung von Azure SQL-Datenbank, zu dessen Format und den Daten, die es für benutzerdefinierte Entwicklungsanforderungen enthält. Sie können dieses Diagnoseprotokoll an [Azure Monitor-Protokolle](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen senden.
 
 ## <a name="log-header"></a>Protokollheader
 
@@ -114,7 +113,7 @@ Im folgenden Protokollbeispiel wurde erkannt, dass sich die Ausführungsdauer de
 }]
 ```
 
-### <a name="metrics"></a>Metriken
+### <a name="metrics"></a>metrics
 
 Die Maßeinheit für jede gemeldete Metrik wird unter der Eigenschaft „Metric“ (Metrik) mit den möglichen Werten (Sekunden, Zahl und Prozent) angegeben. Der Wert einer gemessenen Metrik wird von der Eigenschaft „Value“ (Wert) gemeldet.
 

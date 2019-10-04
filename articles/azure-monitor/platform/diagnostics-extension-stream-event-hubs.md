@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: c2d577bd4c89046136a3465ff554e9662dd0ce19
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478126"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "64922839"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamen von Azure-Diagnosedaten im heißen Pfad mithilfe von Event Hubs
 Die Azure-Diagnose bietet flexible Methoden zum Erfassen von Metriken und Protokollen virtueller Computer in Clouddiensten sowie zur Übertragung der Ergebnisse an Azure Storage. Seit März 2016 (SDK 2.9) haben Sie die Möglichkeit, benutzerdefinierte Datenquellen als Sendeziel für Diagnose zu verwenden und heiße Daten mithilfe von [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) innerhalb von Sekunden zu übertragen.
@@ -45,7 +45,7 @@ Die Verwendung von Event Hubs für den Empfang von Daten von Azure-Diagnose wird
 * Es muss ein Event Hubs-Namespace bereitgestellt werden, wie im Artikel [Erste Schritte mit Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Herstellen einer Verbindung zwischen der Azure-Diagnose und der Event Hubs-Senke
-Azure-Diagnose sendet Protokolle und Metriken standardmäßig stets an ein Azure Storage-Konto. Eine Anwendung kann auch Daten an Event Hubs senden, indem der *WADCFGX*-Datei im **PublicConfig** / **WadCfg**-Element ein neuer **Sinks**-Abschnitt hinzugefügt wird. In Visual Studio wird die *WADCFGX*-Datei im folgenden Pfad gespeichert: **Cloud Service-Projekt** > **Rollen** > **(RoleName)** > **diagnostics.wadcfgx**.
+Azure-Diagnose sendet Protokolle und Metriken standardmäßig stets an ein Azure Storage-Konto. Eine Anwendung kann auch Daten an Event Hubs senden, indem der *WADCFGX*-Datei im **PublicConfig** / **WadCfg**-Element ein neuer **Sinks**-Abschnitt hinzugefügt wird. In Visual Studio wird die *WADCFGX*-Datei im folgenden Pfad gespeichert: **Cloud Service-Projekt** > **Rollen** >  **(RoleName)**  > **diagnostics.wadcfgx**.
 
 ```xml
 <SinksConfig>
@@ -184,7 +184,7 @@ Im vorangehenden Beispiel wird die Senke auf den übergeordneten **PerformanceCo
 }
 ```
 
-Im vorherigen Beispiel wird die Senke nur auf drei Indikatoren angewendet: **Anforderungen in Warteschlange**, **Zurückgewiesene Anforderungen** und **Prozessorzeit (%)**.  
+Im vorherigen Beispiel wird die Senke nur auf drei Indikatoren angewendet: **Anforderungen in Warteschlange**, **Zurückgewiesene Anforderungen** und **Prozessorzeit (%)** .  
 
 Das folgende Beispiel zeigt, wie ein Entwickler die Menge der gesendeten Daten auf die kritischen Metriken für die Dienstintegrität einschränken kann.  
 
@@ -202,7 +202,7 @@ Das folgende Beispiel zeigt, wie ein Entwickler die Menge der gesendeten Daten a
 In diesem Beispiel wird die Senke auf Protokolle angewendet und auf die Ablaufverfolgung auf Fehlerebene gefiltert.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Bereitstellen und Aktualisieren einer Cloud Services-Anwendung und der Diagnosekonfiguration
-Visual Studio bietet die einfachste Methode, um die Anwendung und die Event Hubs-Senkenkonfiguration bereitzustellen. Öffnen Sie zum Anzeigen und Bearbeiten der Datei die *.wadcfgx* -Datei in Visual Studio, und bearbeiten und speichern Sie sie. Der Pfad lautet **Cloud Services-Projekt** > **Rollen** > **(RoleName)** > **diagnostics.wadcfgx**.  
+Visual Studio bietet die einfachste Methode, um die Anwendung und die Event Hubs-Senkenkonfiguration bereitzustellen. Öffnen Sie zum Anzeigen und Bearbeiten der Datei die *.wadcfgx* -Datei in Visual Studio, und bearbeiten und speichern Sie sie. Der Pfad lautet **Cloud Services-Projekt** > **Rollen** >  **(RoleName)**  > **diagnostics.wadcfgx**.  
 
 Zu diesem Zeitpunkt ist **.wadcfgx** im Verpackungsprozess aller Aktionen für die Bereitstellung und Bereitstellungsaktualisierung in Visual Studio, Visual Studio Team System sowie in allen Befehlen oder Skripts enthalten, die auf MSBuild basieren und das Ziel */t:publish* verwenden. Darüber hinaus wird die Datei bei allen Bereitstellungen und Aktualisierungen mit der entsprechenden Agent-Erweiterung der Azure-Diagnose auf Ihren virtuellen Computern in Azure bereitgestellt.
 
@@ -286,10 +286,10 @@ namespace EventHubListener
     {
         static void Main(string[] args)
         {
-            string eventHubConnectionString = "Endpoint= <your connection string>”;
+            string eventHubConnectionString = "Endpoint= <your connection string>";
             string eventHubName = "<Event hub name>";
             string storageAccountName = "<Storage account name>";
-            string storageAccountKey = "<Storage account key>”;
+            string storageAccountKey = "<Storage account key>";
             string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", storageAccountName, storageAccountKey);
 
             string eventProcessorHostName = Guid.NewGuid().ToString();

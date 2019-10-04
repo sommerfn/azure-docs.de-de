@@ -3,19 +3,19 @@ title: 'Tutorial: Erstellen einer Flask-App zum Übersetzen, Synthetisieren und 
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie eine Flask-basierte Web-App, für die Azure Cognitive Services genutzt wird, um Text zu übersetzen, Stimmungen zu analysieren und die Synthese von übersetztem Text in Sprache durchzuführen. Der Schwerpunkt liegt hierbei auf dem Python-Code und den Flask-Routen als Grundlage unserer Anwendung. Wir wenden nicht viel Zeit für den JavaScript-Code auf, mit dem die App gesteuert wird. Es werden aber alle Dateien angegeben, damit Sie sie untersuchen können.
 services: cognitive-services
-author: erhopf
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.author: erhopf
-ms.openlocfilehash: 69e6797e91fc645e3bd3e3b300cea6852a662214
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: 8d85db0e9aa9da48713ca0c119a12160cc99dbff
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59007404"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671839"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Tutorial: Erstellen einer Flask-App mit Azure Cognitive Services
 
@@ -42,7 +42,7 @@ Flask ist ein Microframework zum Erstellen von Webanwendungen. Dies bedeutet, da
 Hier sind einige hilfreiche Links angegeben, falls Sie sich nach Abschluss dieses Tutorials eingehender informieren möchten:
 
 * [Flask-Dokumentation](http://flask.pocoo.org/)
-* [Flask for Dummies – A Beginner's Guide to Flask (Flask-Leitfaden für Einsteiger)](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
+* [Flask for Dummies – A Beginner's Guide to Flask](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1) (Flask-Leitfaden für Einsteiger)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -262,7 +262,8 @@ Zunächst müssen Sie eine Funktion zum Aufrufen der Textübersetzungs-API schre
    # Don't forget to replace with your Cog Services subscription key!
    # If you prefer to use environment variables, see Extra Credit for more info.
    subscription_key = 'YOUR_TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
-
+   
+   # Don't forget to replace with your Cog Services location!
    # Our Flask route will supply two arguments: text_input and language_output.
    # When the translate text button is pressed in our Flask app, the Ajax request
    # will grab these values from our web app, and use them in the request.
@@ -275,6 +276,7 @@ Zunächst müssen Sie eine Funktion zum Aufrufen der Textübersetzungs-API schre
 
        headers = {
            'Ocp-Apim-Subscription-Key': subscription_key,
+           'Ocp-Apim-Subscription-Region': 'location',
            'Content-type': 'application/json',
            'X-ClientTraceId': str(uuid.uuid4())
        }
@@ -667,7 +669,7 @@ In diesem Abschnitt führen Sie einige Schritte aus:
 
 ### <a name="call-the-text-to-speech-api"></a>Aufrufen der Text-to-Speech-API
 
-Wir schreiben nun eine Funktion zum Konvertieren von Text in Sprache. Für diese Funktion werden zwei Argumente verwendet: `input_text` und `voice_font`. Diese Funktion wird jeweils aufgerufen, wenn ein Benutzer in Ihrer App die Schaltfläche zum Konvertieren von Text in Sprache betätigt. `input_text` ist die Übersetzungsausgabe, die vom Aufruf der Textübersetzung zurückgegeben wird, und `voice_font` ist der Wert aus der Voicefont-Auswahl im HTML-Code.
+Wir schreiben nun eine Funktion zum Konvertieren von Text in Sprache. Für diese Funktion werden zwei Argumente verwendet: `input_text` und `voice_font`. Diese Funktion wird jeweils aufgerufen, wenn ein Benutzer in Ihrer App die Schaltfläche zum Konvertieren von Text in Sprache betätigt. `voice_font` ist die Übersetzungsausgabe, die vom Aufruf der Textübersetzung zurückgegeben wird, und `input_text` ist der Wert aus der Voicefont-Auswahl im HTML-Code.
 
 1. Wir erstellen im Stammverzeichnis Ihres Arbeitsverzeichnisses eine Datei mit dem Namen `synthesize.py`.
 
@@ -959,6 +961,6 @@ Der Quellcode für dieses Projekt ist auf [GitHub](https://github.com/MicrosoftT
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Referenz zur Textübersetzungs-API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [Referenz für die Textübersetzungs-API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
 * [Referenz zur Textanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 * [Referenz zur Text-to-Speech-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)

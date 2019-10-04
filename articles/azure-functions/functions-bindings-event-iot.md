@@ -4,19 +4,18 @@ description: Erfahren Sie, wie IoT Hub-Bindungen in Azure Functions verwendet we
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 87a99651d17e9867130024a5f721c5488cd42a8c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d8b749a294da379e99e61072ff7a3415c508d2ac
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426102"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097646"
 ---
 # <a name="azure-iot-hub-bindings-for-azure-functions"></a>Azure IoT Hub-Bindungen für Azure Functions
 

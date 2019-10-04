@@ -1,6 +1,6 @@
 ---
-title: Ändern, Trainieren der App, C#
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 'Schnellstart: Ändern, Trainieren der App, C#: LUIS'
+titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung für C# fügen Sie einer Home Automation-App Beispieläußerungen hinzu, und Sie trainieren die App.
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 04/08/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: e9f8d274d81cdefbf9dfb41708cd537b2d60471a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 43bbcbcad8b4c03829ba702cecfff1e64b8e27b4
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273463"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375562"
 ---
 # <a name="quickstart-change-model-using-c"></a>Schnellstart: Ändern des Modells mit C#
 
@@ -57,7 +57,7 @@ Für das Visual Studio-Projekt sind **JsonFormatterPlus** und **CommandLineParse
 ### <a name="write-the-c-code"></a>Schreiben des C#-Codes
 Die Datei **Program.cs** sollte wie folgt aussehen:
 
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;

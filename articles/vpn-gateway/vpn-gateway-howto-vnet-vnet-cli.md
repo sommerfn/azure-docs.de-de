@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 24e12184070909943c5660d94d8e19ce9df1de30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e18f37b31b7f0a49717e174d8a20d56388ad4808
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111122"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60411830"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung mithilfe der Azure CLI
 
@@ -299,7 +299,7 @@ Beim Erstellten zusätzlicher Verbindungen ist es wichtig sicherzustellen, dass 
 
 ### <a name="TestVNet5"></a>Schritt 7: Erstellen und Konfigurieren von „TestVNet5“
 
-Dieser Schritt muss im Kontext des neuen Abonnements, Abonnement 5, ausgeführt werden. Dieser Teil kann vom Administrator in einer anderen Organisation ausgeführt werden, in deren Besitz sich das Abonnement befindet. Zum Wechseln zwischen Abonnements führen Sie „az account list --all“ aus, um alle für Ihr Konto verfügbaren Abonnements aufzulisten, und führen dann „az account set --subscription <subscriptionID>“ aus, um zum Abonnement zu wechseln, das Sie verwenden möchten.
+Dieser Schritt muss im Kontext des neuen Abonnements, Abonnement 5, ausgeführt werden. Dieser Teil kann vom Administrator in einer anderen Organisation ausgeführt werden, in deren Besitz sich das Abonnement befindet. Zum Wechseln zwischen Abonnements verwenden Sie `az account list --all`, um alle für Ihr Konto verfügbaren Abonnements aufzulisten, und verwenden Sie dann `az account set --subscription <subscriptionID>`, um zu dem Abonnement zu wechseln, das Sie verwenden möchten.
 
 1. Stellen Sie sicher, dass Sie mit Abonnement 5 verbunden sind, und erstellen Sie dann eine Ressourcengruppe.
 
@@ -338,7 +338,7 @@ Dieser Schritt muss im Kontext des neuen Abonnements, Abonnement 5, ausgeführt 
 
 ### <a name="connections5"></a>Schritt 8: Erstellen der Verbindungen
 
-Dieser Schritt ist in zwei CLI-Sitzungen mit den Bezeichnungen **[Abonnement 1]** und **[Abonnement 5]** aufgeteilt, da sich die Gateways in unterschiedlichen Abonnements befinden. Zum Wechseln zwischen Abonnements führen Sie „az account list --all“ aus, um alle für Ihr Konto verfügbaren Abonnements aufzulisten, und führen dann „az account set --subscription <subscriptionID>“ aus, um zum Abonnement zu wechseln, das Sie verwenden möchten.
+Dieser Schritt ist in zwei CLI-Sitzungen mit den Bezeichnungen **[Abonnement 1]** und **[Abonnement 5]** aufgeteilt, da sich die Gateways in unterschiedlichen Abonnements befinden. Zum Wechseln zwischen Abonnements verwenden Sie `az account list --all`, um alle für Ihr Konto verfügbaren Abonnements aufzulisten, und verwenden Sie dann `az account set --subscription <subscriptionID>`, um zu dem Abonnement zu wechseln, das Sie verwenden möchten.
 
 1. **[Abonnement 1]** Melden Sie sich an, und stellen Sie eine Verbindung mit Abonnement 1 her. Führen Sie den folgenden Befehl aus, um den Namen und die ID des Gateways aus der Ausgabe abzurufen:
 

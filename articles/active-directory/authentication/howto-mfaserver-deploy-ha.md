@@ -11,16 +11,19 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b7784d054f279dfccdb3a2424fd427789ca658
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 43154e428c3208f5d990688554407777d09f2f1b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370073"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67056031"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurieren von Azure Multi-Factor Authentication-Server für Hochverfügbarkeit
 
 Um hohe Verfügbarkeit bei Ihrer für Azure MFA Server-Bereitstellung zu erreichen, müssen Sie mehrere MFA-Server bereitstellen. Dieser Abschnitt enthält Informationen zu einem Entwurf mit Lastenausgleich, mit dem Sie Ihre Hochverfügbarkeitsziele für die Azure MFS Server-Bereitstellung erreichen können.
+
+> [!IMPORTANT]
+> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
 
 ## <a name="mfa-server-overview"></a>Übersicht über MFA Server
 
@@ -36,7 +39,7 @@ Sowohl der MFA-Master als auch untergeordnete MFA-Server kommunizieren mit dem M
 
 Nach der erfolgreichen Authentifizierung in AD kommuniziert der MFA-Server mit dem MFA-Dienst. Der MFA-Server wartet auf eine Benachrichtigung vom MFA-Dienst, um den Benutzerzugriff auf die Anwendung zuzulassen oder zu verweigern.
 
-Wenn der MFA-Masterserver offline geschaltet wird, kann die Authentifizierungen weiterhin verarbeitet werden, aber Vorgänge, die Änderungen an der MFA-Datenbank erfordern, können nicht verarbeitet werden. (Beispiele: Hinzufügen von Benutzern, selbstständige PIN-Änderungen und Änderungen von Benutzerinformationen)
+Wenn der MFA-Masterserver offline geschaltet wird, kann die Authentifizierungen weiterhin verarbeitet werden, aber Vorgänge, die Änderungen an der MFA-Datenbank erfordern, können nicht verarbeitet werden. (Beispiele: Hinzufügen von Benutzern, Self-Service-PIN-Änderungen, Ändern von Benutzerinformationen oder Zugreifen auf das Benutzerportal)
 
 ## <a name="deployment"></a>Bereitstellung
 

@@ -1,7 +1,6 @@
 ---
 title: Massenladen in Apache Phoenix mit psql – Azure HDInsight
-description: Es wird beschrieben, wie Sie das Tool psql verwenden, um das Massenladen von Daten in Phoenix-Tabellen durchzuführen.
-services: hdinsight
+description: Verwenden des psql-Tools, um das Massenladen von Daten in Apache Phoenix-Tabellen in Azure HDInsight durchzuführen
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 5faea45a55d69cece56137d70862d80dfe335971
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 43465a1c31b953620c45dfe759de7b6e1b4dc3c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342455"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917274"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Massenladen von Daten in Apache Phoenix mithilfe von psql
 
@@ -30,7 +29,7 @@ Das Massenladen mit MapReduce wird für deutlich größere Datenvolumen verwende
 
 Stellen Sie vor Beginn des Datenladevorgangs sicher, dass Phoenix aktiviert ist und die Einstellungen für den Abfragetimeout wie erwartet festgelegt wurden.  Greifen Sie auf das [Apache Ambari](https://ambari.apache.org/)-Dashboard Ihres HDInsight-Clusters zu, und wählen Sie „HBase“ und dann die Konfigurationsregisterkarte aus.  Scrollen Sie nach unten, um zu überprüfen, ob Apache Phoenix wie hier dargestellt auf `enabled` festgelegt ist:
 
-![Apache Phoenix – Einstellungen für HDInsight-Cluster](./media/apache-hbase-phoenix-psql/ambari-phoenix.png)
+![Apache Phoenix – Einstellungen für HDInsight-Cluster](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
 ### <a name="use-psql-to-bulk-load-tables"></a>Verwenden von `psql` für das Massenladen von Tabellen
 

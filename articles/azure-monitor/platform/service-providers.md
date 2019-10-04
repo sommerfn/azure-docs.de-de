@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/06/2019
 ms.author: meirm
-ms.openlocfilehash: 97d8d6fac93ebabac8fb319ce2f1ab8719f5f86b
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 971757a4778dd50be486bead0c50fd6b3a25002e
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756565"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839280"
 ---
 # <a name="azure-monitor-for-service-providers"></a>Azure Monitor für Dienstanbieter
 Log Analytics-Arbeitsbereiche in Azure Monitor unterstützen Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hostingdienstanbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden. 
@@ -29,7 +29,7 @@ Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud 
 
 ## <a name="architectures-for-service-providers"></a>Architekturen für Dienstanbieter
 
-Log Analytics-Arbeitsbereiche stellen für Administratoren ein Verfahren zum Steuern von Protokollfluss und -isolierung und zum Erstellen einer Protokollarchitektur bereit, die den spezifischen Geschäftsanforderungen Rechnung trägt. [In diesem Artikel](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) werden die allgemeinen Überlegungen zur Verwaltung von Arbeitsbereichen erläutert. Dienstanbieter müssen sich mit zusätzlichen Überlegungen befassen.
+Log Analytics-Arbeitsbereiche ermöglichen Administratoren die Steuerung des Flusses und der Isolierung von [Protokolldaten](data-platform-logs.md) sowie die Erstellung einer Architektur, die den spezifischen Geschäftsanforderungen Rechnung trägt. In [diesem Artikel](design-logs-deployment.md) werden die Entwurfs-, Bereitstellungs- und Migrationsaspekte für einen Arbeitsbereich behandelt. Im Artikel [Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor](manage-access.md) erfahren Sie, wie Sie Berechtigungen auf Protokolldaten anwenden und diese Berechtigungen verwalten. Dienstanbieter müssen sich mit zusätzlichen Überlegungen befassen.
 
 Für Dienstanbieter gibt es im Hinblick auf Log Analytics-Arbeitsbereiche drei mögliche Architekturen:
 
@@ -55,16 +55,21 @@ Bei dieser Architektur werden die Protokolle nicht in den Mandanten des Kunden g
 
 Diese Architektur bietet diese Vorzüge:
 * Es ist einfach, eine große Anzahl Kunden zu verwalten und sie in verschiedene Back-End-Systeme zu integrieren.
+
 * Der Dienstanbieter ist im vollständigen Besitz der Protokolle und der verschiedenen Artefakte, wie etwa Funktionen und gespeicherte Abfragen.
+
 * Der Dienstanbieter kann Analysen übergreifend über alle Kunden ausführen.
 
 Die Nachteile dieser Architektur sind:
 * Diese Architektur eignet sich nur für Agent-basierte VM-Daten, sie deckt PaaS-, SaaS- und Azure-Fabric-Datenquellen nicht ab.
-* Es kann schwierig sein, die Daten der Kunden zu trennen, wenn sie in einem einzelnen Arbeitsbereich zusammengeführt werden. Das einzig gute Verfahren dazu ist die Verwendung des FQDNs (vollqualifizierten Domänennamens) des Computers oder der Azure-Abonnement-ID. 
-* Alle Daten aller Kunden werden im gleichen Bereich mit einer einzelnen Rechnung und mit gleicher Vermerkdauer und gleichen Konfigurationseinstellungen gespeichert.
-* Azure-Fabric- und PaaS-Dienste, wie Azure-Diagnose und Azure-Überwachungsprotokolle, erfordern einen Arbeitsbereich im gleichen Mandanten wie die Ressource, sie können also keine Protokolle an den zentralen Arbeitsbereich senden.
-* Alle VM-Agents von allen Kunden werden beim zentralen Arbeitsbereich mit der gleichen Arbeitsbereichs-ID und dem gleichen Schlüssel authentifiziert. Es gibt kein Verfahren, Protokolle eines bestimmten Kunden zu blockieren, ohne andere Kunden zu unterbrechen.
 
+* Es kann schwierig sein, die Daten der Kunden zu trennen, wenn sie in einem einzelnen Arbeitsbereich zusammengeführt werden. Das einzig gute Verfahren dazu ist die Verwendung des FQDNs (vollqualifizierten Domänennamens) des Computers oder der Azure-Abonnement-ID. 
+
+* Alle Daten aller Kunden werden im gleichen Bereich mit einer einzelnen Rechnung und mit gleicher Vermerkdauer und gleichen Konfigurationseinstellungen gespeichert.
+
+* Azure-Fabric- und PaaS-Dienste, wie Azure-Diagnose und Azure-Überwachungsprotokolle, erfordern einen Arbeitsbereich im gleichen Mandanten wie die Ressource, sie können also keine Protokolle an den zentralen Arbeitsbereich senden.
+
+* Alle VM-Agents von allen Kunden werden beim zentralen Arbeitsbereich mit der gleichen Arbeitsbereichs-ID und dem gleichen Schlüssel authentifiziert. Es gibt kein Verfahren, Protokolle eines bestimmten Kunden zu blockieren, ohne andere Kunden zu unterbrechen.
 
 ### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3. Hybrid: Protokolle werden in einem Arbeitsbereich gespeichert, der sich im Mandanten des Kunden befindet, und einige von ihnen werden per Pull an einen zentralen Speicherort übertragen.
 
@@ -76,10 +81,14 @@ Es bestehen zwei Optionen zum Implementieren von Protokollen an einem zentralen 
 
 2. Power BI als zentraler Speicherort: Power BI kann als zentraler Speicherort dienen, wenn die verschiedenen Arbeitsbereiche mithilfe der Integration zwischen dem Log Analytics-Arbeitsbereich und [Power BI](../../azure-monitor/platform/powerbi.md) Daten nach Power BI exportieren. 
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Automatisieren Sie mithilfe von [Resource Manager-Vorlagen](template-workspace-configuration.md) die Erstellung und Konfiguration von Arbeitsbereichen.
+
 * Automatisieren Sie mit [PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md) die Erstellung von Arbeitsbereichen. 
+
 * Verwenden Sie [Warnungen](../../azure-monitor/platform/alerts-overview.md) für die Integration in vorhandene Systeme.
+
 * Generieren Sie Zusammenfassungsberichte mit [Power BI](../../azure-monitor/platform/powerbi.md).
+
 * Überprüfen Sie den Prozess des [Konfigurierens von Log Analytics und Power BI zum Überwachen mehrerer CSP-Kunden](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)

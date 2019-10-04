@@ -1,10 +1,10 @@
 ---
-title: Fehler auf der Seite einer Anwendung nach dem Anmelden | Microsoft-Dokumentation
-description: Beheben von Problemen mit der Azure AD-Anmeldung, wenn die Anwendung selbst einen Fehler ausgibt
+title: Anzeige einer Fehlermeldung auf der App-Seite nach der Anmeldung | Microsoft-Dokumentation
+description: Beheben von Problemen mit der Azure AD-Anmeldung, wenn die App eine Fehlermeldung zurückgibt
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,151 +13,155 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 438f4f60c80cb798c3c40f57e22c9194a9fd5f86
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 23e6a3d0b533dccc3c3111382b014907d5c026ab
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110850"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67612661"
 ---
-# <a name="error-on-an-applications-page-after-signing-in"></a>Fehler auf der Seite einer Anwendung nach dem Anmelden
+# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>App-Seite, auf der eine Fehlermeldung angezeigt wird, nachdem sich ein Benutzer angemeldet hat
 
-In diesem Szenario hat Azure AD den Benutzer angemeldet, die Anwendung zeigt jedoch einen Fehler an, durch den der Benutzer den Anmeldevorgang nicht ordnungsgemäß abschließen kann. Bei diesem Szenario liegt das Problem darin, dass die Anwendung die Antwort von Azure AD nicht annimmt.
+Im folgenden Szenario wird ein Benutzer durch Azure Active Directory (Azure AD) angemeldet. Die Anwendung zeigt allerdings eine Fehlermeldung an, und der Benutzer kann den Anmeldevorgang nicht abschließen. Das Problem besteht darin, dass die App die von Azure AD zurückgegebene Antwort nicht akzeptiert.
 
-Es gibt mehrere mögliche Gründe, warum die Anwendung die Antwort von Azure AD nicht akzeptiert hat. Wenn der Fehler in der Anwendung nicht deutlich genug ist, um zu erkennen, was in der Antwort fehlt, gilt Folgendes:
+Für diese Situation gibt es mehrere mögliche Gründe. Wenn aus der Fehlermeldung nicht deutlich hervorgeht, welche Antwortinformationen fehlen, können Sie Folgendes versuchen:
 
--   Wenn sich die Anwendung im Azure AD-Katalog befindet, vergewissern Sie sich, dass Sie alle im Artikel [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging) beschriebenen Schritte ausgeführt haben.
+-   Wenn es sich bei der App um den Azure AD-Katalog handelt, müssen Sie alle Schritte im Artikel [How to debug SAML-based single sign-on to applications in Azure AD (Debuggen des SAML-basierten einmaligen Anmeldens in Azure AD)](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging) ausführen.
 
 -   Verwenden Sie ein Tool wie [Fiddler](https://www.telerik.com/fiddler), um die SAML-Anforderung, die SAML-Antwort und das SAML-Token zu erfassen.
 
--   Teilen Sie die SAML-Antwort dem Hersteller der Anwendung mit, um zu erfahren, welche Elemente fehlen.
+-   Senden Sie die SAML-Antwort dem App-Verkäufer, und erkundigen Sie sich bei ihm, welche Informationen fehlen.
 
-## <a name="missing-attributes-in-the-saml-response"></a>Fehlende Attribute in der SAML-Antwort
+## <a name="attributes-are-missing-from-the-saml-response"></a>In der SAML-Antwort fehlen Attribute
 
-Führen Sie die folgenden Schritte aus, um in der Azure AD-Konfiguration ein Attribut hinzuzufügen, das in der Azure AD-Antwort gesendet werden soll:
+Führen Sie die folgenden Schritte aus, um der Azure AD-Konfiguration ein Attribut hinzuzufügen, das zusammen mit der Azure AD-Antwort gesendet wird:
 
-1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als Globaler Administrator oder Co-Administrator an.
 
-2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Klicken Sie oben im Navigationsbereich auf der linken Seite auf **Alle Dienste**, um die Azure AD-Erweiterung zu öffnen.
 
-3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und klicken Sie auf **Azure Active Directory**.
 
-4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+4. Klicken Sie im Azure AD-Navigationsbereich auf **Unternehmensanwendungen**.
 
-5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste mit Ihren Apps anzuzeigen.
 
-   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+   > [!NOTE]
+   > Wenn eine App nicht wie erwartet angezeigt wird, verwenden Sie das **Filter**-Steuerelement über der Liste **Alle Anwendungen**. Legen Sie für die Option **Anzeigen** „Alle Anwendungen“ fest.
 
-6. Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
+6. Wählen Sie die Anwendung aus, die Sie für das einmalige Anmelden konfigurieren möchten.
 
-7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
+7. Warten Sie, bis die App geladen ist, und klicken Sie anschließend im Navigationsbereich auf **Einmaliges Anmelden**.
 
-8. Klicken Sie im Bereich **Benutzerattribute** auf **Alle weiteren Benutzerattribute anzeigen und bearbeiten**, um die Attribute zu bearbeiten, die bei der Anmeldung durch die Benutzer im SAML-Token an die Anwendung gesendet werden sollen.
+8. Aktivieren Sie im Abschnitt **Benutzerattribute** das Kontrollkästchen **Alle weiteren Benutzerattribute anzeigen und bearbeiten**. Nun können Sie einstellen, welche Attribute im SAML-Token an die App gesendet werden sollen, wenn sich Benutzer anmelden.
 
    So fügen Sie ein Attribut hinzu
 
-   * Klicken Sie auf **Attribut hinzufügen**. Geben Sie einen **Namen** ein, und wählen Sie in der Dropdownliste einen **Wert** aus.
+   1. Klicken Sie auf **Attribut hinzufügen**. Geben Sie unter **Name** einen Namen ein, und wählen Sie aus der Dropdownliste den **Wert** aus.
 
-   * Klicken Sie auf **Speichern**. Das neue Attribut wird in der Tabelle angezeigt.
+   1.  Wählen Sie **Speichern** aus. Das neue Attribut wird in der Tabelle angezeigt.
 
 9. Speichern Sie die Konfiguration.
 
-Bei der nächsten Anmeldung des Benutzers bei der Anwendung sendet Azure AD das neue Attribut in der SAML-Antwort.
+   Wenn sich der Benutzer das nächste Mal bei der App anmeldet, sendet Azure AD das neue Attribut zusammen mit der SAML-Antwort.
 
-## <a name="the-application-expects-a-different-user-identifier-value-or-format"></a>Anderer Wert oder anderes Format für die Benutzer-ID von der Anwendung erwartet
+## <a name="the-app-doesnt-identify-the-user"></a>Die App identifiziert den Benutzer nicht
 
-Beim Anmelden bei der Anwendung tritt ein Fehler auf, da in der SAML-Antwort Attribute wie z.B. Rollen fehlen oder die Anwendung ein anderes Format für das EntityID-Attribut erwartet.
+Die Anmeldung bei der App schlägt möglicherweise fehl, weil in der SAML-Antwort ein Attribut (beispielsweise eine Rolle) fehlt. Sie kann auch fehlschlagen, wenn die App ein anderes Format oder einen anderen Wert für das **NameID**-Attribut (Benutzer-ID) erwartet.
 
-## <a name="add-an-attribute-in-the-azure-ad-application-configuration"></a>Fügen Sie in der Konfiguration der Azure AD-Anwendung ein Attribut hinzu:
+Wenn Sie die [automatische Benutzerbereitstellung von Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) verwenden, um Benutzer in der App zu erstellen, zu verwalten und aus dieser zu löschen, müssen Sie darauf achten, dass der Benutzer in der SaaS-App bereitgestellt wurde. Weitere Informationen finden Sie unter [Es werden keine Benutzer für eine Azure AD-Kataloganwendung bereitgestellt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned).
+
+## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>Hinzufügen eines Attributs zur Azure AD-App-Konfiguration
 
 Um den Benutzer-ID-Wert zu ändern, führen Sie die folgenden Schritte aus:
 
-1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als Globaler Administrator oder Co-Administrator an.
 
-2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Klicken Sie oben im Navigationsbereich auf der linken Seite auf **Alle Dienste** um die Azure AD-Erweiterung zu öffnen.
 
-3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und klicken Sie auf **Azure Active Directory**.
 
-4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+4. Klicken Sie im Azure AD-Navigationsbereich auf **Unternehmensanwendungen**.
 
-5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste mit Ihren Apps anzuzeigen.
 
-   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+   > [!NOTE]
+   > Wenn eine App nicht wie erwartet angezeigt wird, verwenden Sie das **Filter**-Steuerelement über der Liste **Alle Anwendungen**. Legen Sie für die Option **Anzeigen** „Alle Anwendungen“ fest.
 
-6. Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
+6. Wählen Sie die App aus, die Sie für das einmalige Anmelden konfigurieren möchten.
 
-7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
+7. Warten Sie, bis die App geladen ist, und klicken Sie anschließend im Navigationsbereich auf **Einmaliges Anmelden**.
 
-8. Wählen Sie unter **Benutzerattribute** in der Dropdownliste **Benutzer-ID** den eindeutigen Bezeichner für die Benutzer aus.
+8. Wählen Sie unter **Benutzerattribute** in der Dropdownliste **Benutzer-ID** den eindeutigen Bezeichner für den Benutzer aus.
 
-## <a name="change-entityid-user-identifier-format"></a>Ändern des Formats für EntityID (Benutzer-ID)
+## <a name="change-the-nameid-format"></a>Ändern des NameID-Formats
 
-Wenn die Anwendung ein anderes Format für das EntityID-Attribut erwartet, können Sie das Format für EntityID (Benutzer-ID), das von Azure AD nach der Benutzerauthentifizierung in der Antwort an die Anwendung gesendet wird, nicht auswählen.
+Wenn die Anwendung ein anderes Format für das **NameID**-Attribut (Benutzer-ID) erwartet, finden Sie unter [Bearbeiten der NameID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) weitere Informationen dazu, wie Sie das NameID-Format anpassen.
 
-In Azure AD wird das Format für das NameID-Attribut (Benutzer-ID) auf Grundlage des ausgewählten Werts oder des Formats festgelegt, das von der Anwendung in der SAML-Authentifizierungsanforderung angefordert wird. Weitere Informationen finden Sie im Artikel [SAML-Protokoll für einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) im Abschnitt zu NameIDPolicy.
+Azure AD wählt das Format für das **NameID**-Attribut (Benutzer-ID) auf Grundlage des ausgewählten Werts oder des Formats aus, das in der SAML-Authentifizierungsanforderung von der App angefordert wird. Weitere Informationen finden Sie im Abschnitt „NameIDPolicy“ des Artikels [Single sign-on SAML protocol (SAML-Protokoll für einmaliges Anmelden)](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy).
 
-## <a name="the-application-expects-a-different-signature-method-for-the-saml-response"></a>Andere Signaturmethode für die SAML-Antwort von der Anwendung erwartet
+## <a name="the-app-expects-a-different-signature-method-for-the-saml-response"></a>Die App erwartet eine andere Signaturmethode für die SAML-Antwort
 
-Eventuell müssen Sie ändern, welche Teile des SAML-Tokens von Azure Active Directory digital signiert werden. Folgen Sie diesen Schritten:
+Führen Sie folgende Schritte durch, um einzustellen, welche Teile des SAML-Tokens von Azure AD digital signiert werden:
 
-1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und melden Sie sich als Globaler Administrator oder Co-Administrator an.
 
-2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Klicken Sie oben im Navigationsbereich auf der linken Seite auf **Alle Dienste** um die Azure AD-Erweiterung zu öffnen.
 
-3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und klicken Sie auf **Azure Active Directory**.
 
-4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+4. Klicken Sie im Azure AD-Navigationsbereich auf **Unternehmensanwendungen**.
 
-5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste mit Ihren Apps anzuzeigen.
 
-   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+   > [!NOTE]
+   > Wenn Ihre Anwendung nicht angezeigt wird, verwenden Sie das **Filter**-Steuerelement über der Liste **Alle Anwendungen**. Legen Sie für die Option **Anzeigen** „Alle Anwendungen“ fest.
 
-6. Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
+6. Wählen Sie die Anwendung aus, die Sie für das einmalige Anmelden konfigurieren möchten.
 
-7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
+7. Warten Sie, bis die App geladen ist, und klicken Sie anschließend im Navigationsbereich auf **Einmaliges Anmelden**.
 
-8. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Erweiterte Einstellungen für die Zertifikatsignatur**.
+8. Klicken Sie unter **SAML-Signaturzertifikat** auf **Erweiterte Einstellungen für die Zertifikatsignatur**.
 
-9. Wählen Sie die entsprechende **Signaturoption** aus, die von der Anwendung erwartet wird:
+9. Wählen Sie aus den folgenden Optionen die **Signaturoption** aus, die von der App erwartet wird:
 
-   * SAML-Antwort signieren
+   * **SAML-Antwort signieren**
+   * **SAML-Antwort und -Assertion signieren**
+   * **SAML-Assertion signieren**
 
-   * SAML-Antwort und -Assertion signieren
+   Wenn sich der Benutzer das nächste Mal bei der App anmeldet, signiert Azure AD den ausgewählten Teil der SAML-Antwort.
 
-   * SAML-Assertion signieren
+## <a name="the-app-expects-the-sha-1-signing-algorithm"></a>Die App erwartet den Signaturalgorithmus SHA-1
 
-Bei der nächsten Anmeldung des Benutzers bei der Anwendung signiert Azure AD den ausgewählten Teil der SAML-Antwort.
-
-## <a name="the-application-expects-the-signing-algorithm-to-be-sha-1"></a>Signaturalgorithmus SHA-1 von der Anwendung erwartet
-
-Standardmäßig signiert Azure AD das SAML-Token mit dem sichersten Algorithmus. Das Ändern des Signaturalgorithmus in SHA-1 wird nicht empfohlen, sofern dies nicht von der Anwendung erfordert wird.
+Standardmäßig signiert Azure AD das SAML-Token mit dem sichersten Algorithmus. Sie sollten eine Umstellung auf den Signaturalgorithmus *SHA-1* vermeiden, wenn dieser nicht für die App erforderlich ist.
 
 Um den Signaturalgorithmus zu ändern, führen Sie die folgenden Schritte aus:
 
-1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und melden Sie sich als Globaler Administrator oder Co-Administrator an.
 
-2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Klicken Sie oben im Navigationsbereich auf der linken Seite auf **Alle Dienste** um die Azure AD-Erweiterung zu öffnen.
 
-3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und klicken Sie auf **Azure Active Directory**.
 
-4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+4. Klicken Sie im Azure AD-Navigationsbereich auf **Unternehmensanwendungen**.
 
-5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+5. Klicken Sie auf **Alle Anwendungen**, um eine Liste mit Ihren Anwendungen anzuzeigen.
 
-   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
+   > [!NOTE]
+   > Wenn Ihre Anwendung nicht angezeigt wird, verwenden Sie das **Filter**-Steuerelement über der Liste **Alle Anwendungen**. Legen Sie für die Option **Anzeigen** „Alle Anwendungen“ fest.
 
-6. Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
+6. Wählen Sie die App aus, die Sie für das einmalige Anmelden konfigurieren möchten.
 
-7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
+7. Warten Sie, bis die App geladen ist, und klicken Sie anschließend im Navigationsbereich auf der linken Seite auf **Einmaliges Anmelden**.
 
-8. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Erweiterte Einstellungen für die Zertifikatsignatur**.
+8. Klicken Sie unter **SAML-Signaturzertifikat** auf **Erweiterte Einstellungen für die Zertifikatsignatur**.
 
-9. Wählen Sie unter **Signaturalgorithmus** SHA-1 aus.
+9. Wählen Sie **SHA-1** als **Signaturalgorithmus** aus.
 
-Bei der nächsten Anmeldung des Benutzers bei der Anwendung signiert Azure AD das SAML-Token mit dem Algorithmus SHA-1.
+   Wenn sich der Benutzer das nächste Mal bei der App anmeldet, signiert Azure AD das SAML-Token mithilfe des SHA-1-Algorithmus.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)
+[How to debug SAML-based single sign-on to applications in Azure AD (Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure AD)](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)

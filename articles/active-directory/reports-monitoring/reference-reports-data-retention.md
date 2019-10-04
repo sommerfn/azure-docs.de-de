@@ -1,9 +1,9 @@
 ---
-title: Aufbewahrungsrichtlinien für Azure Active Directory-Berichte | Microsoft Docs
-description: Aufbewahrungsrichtlinien für Berichtdaten in Azure Active Directory
+title: Wie lange speichert Azure AD die Berichtsdaten? | Microsoft-Dokumentation
+description: Erfahren Sie, wie lange Azure die verschiedenen Arten von Berichtsdaten speichert.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 126eee1664d810850f63e702abe78b241649d665
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: c52f8873527d92e621ef032f5bc3e82d3364a691
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438817"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989577"
 ---
-# <a name="azure-active-directory-report-retention-policies"></a>Aufbewahrungsrichtlinien für Azure Active Directory-Berichte
+# <a name="how-long-does-azure-ad-store-reporting-data"></a>Wie lange speichert Azure AD die Berichtsdaten?
 
 Dieser Artikel enthält Informationen zu den Datenaufbewahrungsrichtlinien für die unterschiedlichen Aktivitätsberichte in Azure Active Directory. 
 
@@ -68,8 +68,8 @@ Die Erfassung von Sicherheitssignalen beginnt, wenn Sie sich für die Verwendung
 
 | Bericht                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--            | :--                 | :--                 |
-| Verzeichnisprüfbericht        | 7 Tage        |  7 Tage        | 30 Tage             | 30 Tage             |
-| Benutzeranmeldeaktivität       | –           |  –           | 30 Tage             | 30 Tage             |
+| Überwachungsprotokolle             | 7 Tage        |  7 Tage        | 30 Tage             | 30 Tage             |
+| Anmeldungen               | –           |  –           | 30 Tage             | 30 Tage             |
 | Azure MFA-Nutzung        | 30 Tage       |  30 Tage       | 30 Tage             | 30 Tage             |
 
 Sie können die Aktivitätsdaten zu Überwachung und Anmeldung länger als den oben beschriebenen Standardaufbewahrungszeitraum speichern, indem Sie sie mit Azure Monitor an ein Azure Storage-Konto weiterleiten. Weitere Informationen finden Sie unter [Archivieren von Azure AD-Protokollen in einem Azure Storage-Konto](quickstart-azure-monitor-route-logs-to-storage-account.md).

@@ -1,20 +1,18 @@
 ---
 title: Verwenden von Hadoop Oozie-Workflows in Linux-basiertem Azure HDInsight
 description: Verwenden von Hadoop Oozie in Linux-basiertem HDInsight Erfahren Sie, wie Sie einen Oozie-Workflow definieren und einen Oozie-Auftrag übermitteln können.
-services: hdinsight
 ms.service: hdinsight
-ms.custom: hdinsightactive
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.openlocfilehash: daee7ddd0a09d43132bbcf0f4553601846d31433
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.date: 05/06/2019
+ms.openlocfilehash: d601dc1efe8dc3f6f2678f5d4df03f172146cd07
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448236"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900649"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight
 
@@ -39,13 +37,8 @@ Sie können Oozie auch dazu verwenden, bestimmte Aufträge für ein System zu pl
 
 * **Eine Azure SQL-Datenbank**.  Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal](../sql-database/sql-database-get-started.md).  Der Artikel verwendet eine Datenbank namens `oozietest`.
 
-* **Mögliche Änderungen an der Speicherkonfiguration**.  Wenn Sie eine Speicherkonto des Typs `BlobStorage` verwenden, finden Sie unter [Speicherkonfiguration](#storage-configuration) weitere Informationen.
+* Das [URI-Schema](./hdinsight-hadoop-linux-information.md#URI-and-scheme) für Ihren primären Clusterspeicher. Dies ist `wasb://` für Azure Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Azure Storage oder Data Lake Storage Gen2 aktiviert ist, lautet der URI `wasbs://` bzw. `abfss://`. Siehe auch die Informationen zur [sicheren Übertragung](../storage/common/storage-require-secure-transfer.md).
 
-## <a name="storage-configuration"></a>Speicherkonfiguration
-Es ist keine Aktion erforderlich, wenn das verwendete Speicherkonto einen der Typen `Storage (general purpose v1)` oder `StorageV2 (general purpose v2)` hat.  Der Prozess in diesem Artikel wird mindestens zu einer Ausgabe in `/mapreducestaging` führen.  In einer Hadoop-Standardkonfiguration ist `/mapreducestaging` in der Konfigurationsvariable `fs.azure.page.blob.dir` in der `core-site.xml`-Datei des `HDFS`-Diensts enthalten.  Diese Konfiguration bewirkt, dass es sich bei der Ausgabe im Verzeichnis um Seitenblobs handelt. Dies wird für Speicherkonten des Typs `BlobStorage` jedoch nicht unterstützt.  Damit Sie `BlobStorage` im Rahmen dieses Artikels verwenden können, entfernen Sie `/mapreducestaging` aus der Konfigurationsvariable `fs.azure.page.blob.dir`.  Zugriff auf die Konfiguration besteht über die [Ambari-Benutzeroberfläche](hdinsight-hadoop-manage-ambari.md).  Andernfalls erhalten Sie diese Fehlermeldung: `Page blob is not supported for this account type.`.
-
-> [!NOTE]  
-> Für das in diesem Artikel verwendete Speicherkonto wurde die [sichere Übertragung](../storage/common/storage-require-secure-transfer.md) aktiviert. Deshalb wird während des gesamten Artikels `wasbs` anstelle von `wasb` verwendet.
 
 ## <a name="example-workflow"></a>Beispielworkflow
 
@@ -63,7 +56,7 @@ Der in diesem Dokument verwendeten Workflows weist zwei Aktionen auf. Aktionen s
 
     Weitere Informationen zu Hive finden Sie unter [Verwenden von Apache Hive mit HDInsight][hdinsight-use-hive].
 
-2. Die Sqoop-Aktion exportiert den Inhalt der neuen Hive-Tabelle in eine Tabelle, die in Azure SQL-Datenbank erstellt wurde. Weitere Informationen zu Sqoop finden Sie unter [Verwenden von Apache Sqoop mit HDInsight][hdinsight-use-sqoop].
+2. Die Sqoop-Aktion exportiert den Inhalt der neuen Hive-Tabelle in eine Tabelle, die in Azure SQL-Datenbank erstellt wurde. Weitere Informationen zu Sqoop finden Sie unter [Verwenden von Sqoop mit Hadoop in HDInsight][hdinsight-use-sqoop].
 
 > [!NOTE]  
 > Informationen zu den unterstützten Oozie-Versionen in HDInsight-Clustern finden Sie unter [Neuheiten in den von HDInsight bereitgestellten Hadoop-Clusterversionen][hdinsight-versions].
@@ -134,7 +127,7 @@ Verwenden Sie die folgenden Schritte, um ein Skript der Hive-Abfragesprache (Hiv
 
    * `${hiveDataFolder}`: Enthält den Speicherort der Datendateien für die Tabelle.
 
-     Die Workflowdefinitionsdatei („workflow.xml“ in diesem Tutorial) übergibt diese Werte zur Laufzeit an das HiveQL-Skript.
+     Die Workflowdefinitionsdatei („workflow.xml“ in diesem Artikel) übergibt diese Werte zur Laufzeit an das HiveQL-Skript.
 
 4. Um die Datei zu speichern, drücken Sie STRG + X, geben Sie `Y` ein, und drücken Sie auf die **EINGABETASTE**.  
 
@@ -232,7 +225,7 @@ Oozie-Workflowdefinitionen sind in der Sprache der Hadoop-Prozessdefinition (hPD
 ## <a name="create-a-table"></a>Erstellen einer Tabelle
 
 > [!NOTE]  
-> Es gibt viele Möglichkeiten, zum Erstellen einer Tabelle eine Verbindung mit SQL Database herzustellen. Die folgenden Schritte verwenden [FreeTDS](http://www.freetds.org/) aus dem HDInsight-Cluster.
+> Es gibt viele Möglichkeiten, zum Erstellen einer Tabelle eine Verbindung mit SQL Database herzustellen. Die folgenden Schritte verwenden [FreeTDS](https://www.freetds.org/) aus dem HDInsight-Cluster.
 
 1. Verwenden Sie den folgenden Befehl, um FreeTDS im HDInsight-Cluster zu installieren:
 
@@ -309,9 +302,9 @@ Die Auftragsdefinition beschreibt, wo sich die workflow.xml-Datei befindet. Sie 
     |---|---|
     |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| Wert aus Schritt 1|
     |admin| Ihr Anmeldename für den HDInsight-Cluster, falls Sie kein Administrator sind.|
-    |serverName| Servername der Azure SQL-Datenbank|
-    |sqlLogin| Anmeldung des Azure SQL-Datenbankservers|
-    |sqlPassword| Anmeldekennwort des Azure SQL-Datenbankservers|
+    |serverName| Name des Azure SQL-Datenbank-Servers|
+    |sqlLogin| Anmeldung des Azure SQL-Datenbank-Servers|
+    |sqlPassword| Anmeldekennwort des Azure SQL-Datenbank-Servers|
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -452,7 +445,7 @@ Die folgenden Schritte verwenden den Oozie-Befehl zum Übermitteln und Verwalten
 5. Bearbeiten Sie den Code unten so, dass `<JOBID>` durch die ID ersetzt wird, die zuvor zurückgegeben wurde.  Verwenden Sie den folgenden Befehl zum Starten des Auftrags:
 
     ```bash
-    oozie job -start JOBID
+    oozie job -start <JOBID>
     ```
 
     Wenn Sie nach diesem Befehl den Status überprüfen, lautet dieser „Wird ausgeführt“, und Informationen für die Aktionen innerhalb des Auftrags werden zurückgegeben.  Die Ausführung des Auftrags nimmt einige Minuten in Anspruch.
@@ -489,7 +482,7 @@ Mit der Oozie-REST-API können Sie eigene Tools erstellen, die mit Oozie arbeite
 
 * **URI:** Unter `https://CLUSTERNAME.azurehdinsight.net/oozie` können Sie von außerhalb des Clusters auf die REST-API zugreifen.
 
-* **Authentifizierung:** Verwenden Sie die API mit dem HTTP-Clusteradministratorkonto und -kennwort, um sich zu authentifizieren. Beispiel: 
+* **Authentifizierung:** Verwenden Sie die API mit dem HTTP-Clusteradministratorkonto und -kennwort, um sich zu authentifizieren. Beispiel:
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
@@ -517,29 +510,29 @@ Um auf die Oozie-Webbenutzeroberfläche zuzugreifen, gehen Sie folgendermaßen v
 
 3. Klicken Sie auf der linken Seite der Seite auf **Oozie** > **QuickLinks** > **Oozie Web UI**.
 
-    ![Abbildung der Menüs](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
+    ![Abbildung der Menüs](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
 
 4. Die Oozie-Webbenutzeroberfläche zeigt standardmäßig aktive Workflowaufträge an. Klicken Sie zum Anzeigen aller Workflowaufträge auf **Alle Aufträge**.
 
-    ![Alle angezeigten Aufträge](./media/hdinsight-use-oozie-linux-mac/ooziejobs.png)
+    ![Alle angezeigten Aufträge](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
 
 5. Um weitere Informationen über einen Auftrag anzuzeigen, klicken Sie auf den Auftrag.
 
-    ![Auftragsinformationen](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
+    ![Auftragsinformationen](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
 
 6. Auf der Registerkarte **Auftragsinformationen** können Sie die grundlegenden Auftragsinformationen und die einzelnen Aktionen innerhalb des Auftrags anzeigen. Auf den Registerkarten am oberen Rand können Sie die **Auftragsdefinition** und **Auftragskonfiguration** anzeigen, auf das **Auftragsprotokoll** zugreifen oder einen gerichteten azyklischen Graph (Directed Acyclic Graph, DAG) unter **DAG des Auftrags** anzeigen.
 
    * **Auftragsprotokoll:** Wählen Sie die Schaltfläche **Get Logs** (Protokolle abrufen) aus, um alle Protokolle für den Auftrag abzurufen, oder filtern Sie die Protokolle mithilfe des Felds **Suchfilter eingeben**.
 
-       ![Auftragsprotokoll](./media/hdinsight-use-oozie-linux-mac/joblog.png)
+       ![Auftragsprotokoll](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
 
    * **Auftrags-DAG:** Der DAG ist eine grafische Übersicht über die Datenpfade, die im Workflow gewählt wurden.
 
-       ![DAG des Auftrags](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
+       ![DAG des Auftrags](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
 7. Wenn Sie eine der Aktionen auf der Registerkarte **Auftragsinformationen** auswählen, werden Informationen zur Aktion eingeblendet. Wählen Sie z.B. die Aktion **RunSqoopExport** aus.
 
-    ![Aktionsinformationen](./media/hdinsight-use-oozie-linux-mac/action.png)
+    ![Aktionsinformationen](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
 
 8. Sie können Details für die Aktion anzeigen, z. B. einen Link zur **Konsolen-URL**. Verwenden Sie diesen Link zum Anzeigen von JobTracker-Informationen für den Auftrag.
 
@@ -639,18 +632,18 @@ Sie können den Koordinator verwenden, um den Start, das Ende und die Häufigkei
 
 7. Wenn Sie zur Oozie-Webbenutzeroberfläche wechseln und die Registerkarte **Koordinatoraufträge** auswählen, werden Informationen ähnlich wie in der folgenden Abbildung angezeigt:
 
-    ![Registerkarte „Koordinatoraufträge“](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
+    ![Registerkarte „Koordinatoraufträge“](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
 
     Der Eintrag **Next Materialization** (Nächste Materialisierung) enthält die nächste Ausführungszeit des Auftrags.
 
 8. Wie beim vorherigen Workflowauftrag werden beim Auswählen des Auftragseintrags auf der Webbenutzeroberfläche Informationen zum Auftrag angezeigt:
 
-    ![Informationen zu Koordinatoraufträgen](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
+    ![Informationen zu Koordinatoraufträgen](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
 
     > [!NOTE]  
     > In dieser Abbildung werden nur erfolgreiche Ausführungen des Auftrags und nicht einzelne Aktionen innerhalb des geplanten Workflows angezeigt. Um die einzelnen Aktionen anzuzeigen, wählen Sie eine der **Aktionseinträge** aus.
 
-    ![Aktionsinformationen](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
+    ![Informationen zur Koordinatoraktion](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -715,11 +708,11 @@ Für den Auftrag in diesem Dokument würden Sie z. B. folgendermaßen die folgen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Lernprogramm haben Sie gelernt, wie ein Oozie-Workflow definiert und ein Oozie-Auftrag ausgeführt wird. Weitere Informationen zum Arbeiten mit HDInsight finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie gelernt, wie ein Oozie-Workflow definiert und Oozie-Auftrag ausgeführt wird. Weitere Informationen zum Arbeiten mit HDInsight finden Sie in den folgenden Artikeln:
 
 * [Hochladen von Daten für Hadoop-Aufträge in HDInsight][hdinsight-upload-data]
-* [Verwenden von Sqoop mit Hadoop in HDInsight][hdinsight-use-sqoop]
-* [Was sind Apache Hive und HiveQL in Azure HDInsight?][hdinsight-use-hive]
+* [Verwenden von Apache Sqoop mit Apache Hadoop in HDInsight][hdinsight-use-sqoop]
+* [Verwenden von Apache Hive mit Apache Hadoop in HDInsight][hdinsight-use-hive]
 * [Verwenden von Apache Pig mit Apache Hadoop in HDInsight][hdinsight-use-pig]
 * [Entwickeln von Java MapReduce-Programmen für HDInsight][hdinsight-develop-mapreduce]
 
@@ -754,7 +747,7 @@ In diesem Lernprogramm haben Sie gelernt, wie ein Oozie-Workflow definiert und e
 
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Workflow.Diagram.png
+[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png
 [img-preparation-output]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 

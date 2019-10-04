@@ -29,7 +29,7 @@ Nutzen Sie die umfassenden Azure-Netzwerkfunktionen in Containern, indem Sie den
 
 - Jedem Pod wird eine IP-Adresse des virtuellen Netzwerks zugewiesen, auch wenn dieser einen oder mehrere Container umfassen kann.
 - Pods lassen sich mit mittels Peering verknüpften virtuellen Netzwerken und lokal über ExpressRoute oder ein Site-to-Site-VPN verbinden. Pods sind zudem über mittels Peering verknüpfte und lokale Netzwerke erreichbar.
-- Pods können auf Dienste wie Azure Storage und Azure SQL-Datenbank zugreifen, die durch Dienstendpunkte im virtuellen Netzwerk geschützt sind.
+- Pods können auf Dienste wie Azure Storage und Azure SQL-Datenbank zugreifen, die durch VNET-Dienstendpunkte geschützt sind.
 - Netzwerksicherheitsgruppen und Routen können direkt auf Pods angewandt werden.
 - Pods können wie virtuelle Computer direkt hinter einer internen oder externen Azure Load Balancer-Instanz platziert werden.
 - Pods kann eine öffentliche IP-Adresse zugewiesen werden, sodass über das Internet direkt auf sie zugegriffen werden kann. Pods können zudem auf das Internet zugreifen.

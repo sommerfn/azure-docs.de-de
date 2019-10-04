@@ -1,325 +1,379 @@
-items:
 - name: Dokumentation zu SQL Data Warehouse
   href: index.md
 - name: Übersicht
   items:
-  - name: Was ist SQL Data Warehouse?
-    href: sql-data-warehouse-overview-what-is.md
-  - name: SQL Data Warehouse-Architektur
-    href: massively-parallel-processing-mpp-architecture.md
-  - name: Data Warehouse-Einheiten
-    href: what-is-a-data-warehouse-unit-dwu-cdwu.md
-  - name: Cheat Sheet
-    href: cheat-sheet.md
-  - name: Bewährte Methoden
-    href: sql-data-warehouse-best-practices.md
-  - name: Kapazitätsgrenzen
-    href: sql-data-warehouse-service-capacity-limits.md
-  - name: Häufig gestellte Fragen
-    href: sql-data-warehouse-overview-faq.md
+    - name: Was ist SQL Data Warehouse?
+      href: sql-data-warehouse-overview-what-is.md
+    - name: SQL Data Warehouse-Architektur
+      href: massively-parallel-processing-mpp-architecture.md
+    - name: Data Warehouse-Einheiten
+      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
+    - name: Cheat Sheet
+      href: cheat-sheet.md
+    - name: Bewährte Methoden
+      href: sql-data-warehouse-best-practices.md
+    - name: Kapazitätsgrenzen
+      href: sql-data-warehouse-service-capacity-limits.md
+    - name: Häufig gestellte Fragen
+      href: sql-data-warehouse-overview-faq.md
 - name: Versionsinformationen
-  href: release-notes.md
   items:
-  - name: Aktuelles Release
-    href: release-notes-10-0-10106-0.md
-  - name: Upgradezeitplan für Gen2-Region
-    href: gen2-migration-schedule.md
-  - name: Archivierte Versionshinweise
-    items:
-    - name: September 2018
-      href: release-notes-september-2018.md
-    - name: August 2018
-      href: release-notes-august-2018.md
-    - name: Juli 2018
-      href: release-notes-july-2018.md
-    - name: Juni 2018
-      href: release-notes-june-2018.md
-    - name: Mai 2018
-      href: release-notes-may-2018.md
-    - name: April 2018
-      href: release-notes-april-2018.md
+    - name: Aktuelles Release
+      href: release-notes-10-0-10106-0.md
+    - name: Upgradezeitplan für Gen2-Region
+      href: gen2-migration-schedule.md
 - name: Schnellstarts
-  items:
-  - name: Erstellen und Verbinden
-    items:
-    - name: Portal
-      href: create-data-warehouse-portal.md
-    - name: PowerShell
-      href: create-data-warehouse-powershell.md
-  - name: Anhalten und Fortsetzen von Ressourcen
-    items:
-    - name: Portal
-      href: pause-and-resume-compute-portal.md
-    - name: PowerShell
-      href: pause-and-resume-compute-powershell.md
-  - name: Skalieren
-    items:
-    - name: Portal
-      href: quickstart-scale-compute-portal.md
-    - name: PowerShell
-      href: quickstart-scale-compute-powershell.md
-    - name: T-SQL
-      href: quickstart-scale-compute-tsql.md
-  - name: Workloadverwaltung
-    items:
-    - name: Erstellen eines Workloadklassifizierers (Vorschauversion)
-      items:
-      - name: T-SQL
-        href: quickstart-create-a-workload-classifier-tsql.md
   expanded: true
+  items:
+    - name: Erstellen und Verbinden
+      items:
+        - name: Portal
+          href: create-data-warehouse-portal.md
+        - name: PowerShell
+          href: create-data-warehouse-powershell.md
+    - name: Anhalten und Fortsetzen von Ressourcen
+      items:
+        - name: Portal
+          href: pause-and-resume-compute-portal.md
+        - name: PowerShell
+          href: pause-and-resume-compute-powershell.md
+    - name: Skalieren
+      items:
+        - name: Portal
+          href: quickstart-scale-compute-portal.md
+        - name: PowerShell
+          href: quickstart-scale-compute-powershell.md
+        - name: T-SQL
+          href: quickstart-scale-compute-tsql.md
+    - name: Workloadverwaltung
+      items:
+        - name: Erstellen eines Workloadklassifizierers
+          items:
+            - name: T-SQL
+              href: quickstart-create-a-workload-classifier-tsql.md
 - name: Konzepte
   items:
-  - name: Sicherheit
-    items:
-    - name: Übersicht
-      href: sql-data-warehouse-overview-manage-security.md
-    - name: Zugriffssteuerung
-      href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Firewallregeln
-      href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Dienstendpunkte im virtuellen Netzwerk
-      href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Authentication
-      href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Azure AD
-      href: ../sql-database/sql-database-aad-authentication.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Anmeldungen und Benutzer
-      href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Mehrstufige Authentifizierung
-      href: ../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Überwachung
-      href: ../sql-database/sql-database-auditing.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Datenermittlung und -klassifizierung
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json
-    - name: Sicherheit auf Spaltenebene
-      href: column-level-security.md
-    - name: Sicherheit auf Zeilenebene
-      href: https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=/azure/sql-data-warehouse/toc.json
-  - name: Laden von Daten
-    items:
-    - name: Übersicht
-      href: design-elt-data-loading.md
-    - name: Bewährte Methoden
-      href: guidance-for-loading-data.md
-    - name: Columnstore-Komprimierung
-      href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
-  - name: Entwicklung
-    items:
-    - name: Übersicht
-      href: sql-data-warehouse-overview-develop.md
-    - name: Bewährte Methoden
-      href: sql-data-warehouse-best-practices-development.md
-    - name: Tabellen
+    - name: Sicherheit
       items:
-      - name: Übersicht
-        href: sql-data-warehouse-tables-overview.md
-      - name: CTAS
-        href: sql-data-warehouse-develop-ctas.md
-      - name: Datentypen
-        href: sql-data-warehouse-tables-data-types.md
-      - name: Verteilte Tabellen
-        href: sql-data-warehouse-tables-distribute.md
-      - name: Indexe
-        href: sql-data-warehouse-tables-index.md
-      - name: Identity
-        href: sql-data-warehouse-tables-identity.md
-      - name: Partitionen
-        href: sql-data-warehouse-tables-partition.md
-      - name: Replizierte Tabellen
-        href: design-guidance-for-replicated-tables.md
-      - name: Statistiken
-        href: sql-data-warehouse-tables-statistics.md
-      - name: Temporär
-        href: sql-data-warehouse-tables-temporary.md
-    - name: T-SQL-Sprachelemente
+        - name: Übersicht
+          href: sql-data-warehouse-overview-manage-security.md
+        - name: Advanced Data Security
+          items:
+            - name: Übersicht
+              href: ../sql-database/sql-database-advanced-data-security.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+            - name: Datenermittlung und -klassifizierung
+              href: ../sql-database/sql-database-data-discovery-and-classification.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+            - name: Sicherheitsrisikobewertung
+              href: ../sql-database/sql-vulnerability-assessment.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+            - name: Erweiterter Schutz vor Bedrohungen
+              href: ../sql-database/sql-database-threat-detection-overview.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+        - name: Überwachung
+          href: ../sql-database/sql-database-auditing.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+        - name: Netzwerksicherheit
+          items:
+            - name: Firewallregeln
+              href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+            - name: VNET-Dienstendpunkte
+              href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+        - name: Authentication
+          items:
+            - name: Übersicht
+              href: sql-data-warehouse-authentication.md
+            - name: Azure Active Directory
+              href: ../sql-database/sql-database-aad-authentication.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+            - name: Anmeldungen und Benutzer
+              href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+            - name: Mehrstufige Authentifizierung
+              href: ../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+        - name: Zugriffssteuerung
+          items:
+            - name: Übersicht
+              href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+            - name: Sicherheit auf Spaltenebene
+              href: column-level-security.md
+            - name: Sicherheit auf Zeilenebene
+              href: /sql/relational-databases/security/row-level-security?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+        - name: Datenschutz
+          items:
+            - name: Übersicht über Transparent Data Encryption (TDE)
+              href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+            - name: TDE mit Bring Your Own Key
+              href: ../sql-database/transparent-data-encryption-byok-azure-sql.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+    - name: Laden von Daten
       items:
-      - name: Schleifen
-        href: sql-data-warehouse-develop-loops.md
-      - name: Gespeicherte Prozeduren
-        href: sql-data-warehouse-develop-stored-procedures.md
-      - name: Transaktionen
-        href: sql-data-warehouse-develop-transactions.md
-      - name: Bewährte Methoden für Transaktionen
-        href: sql-data-warehouse-develop-best-practices-transactions.md
-      - name: Benutzerdefinierte Schemas
-        href: sql-data-warehouse-develop-user-defined-schemas.md
-      - name: Variablenzuweisung
-        href: sql-data-warehouse-develop-variable-assignment.md
-      - name: Ansichten
-        href: sql-data-warehouse-develop-views.md
-  - name: Abfragen
-    items:
-    - name: Dynamisches SQL
-      href: sql-data-warehouse-develop-dynamic-sql.md
-    - name: Gruppierungsoptionen
-      href: sql-data-warehouse-develop-group-by-options.md
-    - name: Bezeichnungen
-      href: sql-data-warehouse-develop-label.md
-  - name: Workloadverwaltung
-    items:
-    - name: Ressourcenklassen und Workloadverwaltung
-      href: resource-classes-for-workload-management.md
-    - name: Workloadklassifizierung (Vorschauversion)
-      href: sql-data-warehouse-workload-classification.md
-    - name: Workloadpriorität (Vorschauversion)
-      href: sql-data-warehouse-workload-importance.md
-    - name: Speicher- und Parallelitätslimits
-      href: memory-and-concurrency-limits.md
-  - name: Verwaltbarkeit und Überwachung
-    items:
-    - name: Übersicht
-      href: sql-data-warehouse-overview-manageability-monitoring.md
-    - name: Skalieren, Anhalten, Fortsetzen
-      href: sql-data-warehouse-manage-compute-overview.md
-    - name: Ressourcennutzung und Abfrageaktivität
-      href: sql-data-warehouse-concept-resource-utilization-query-activity.md
-    - name: Datenschutz
-      href: backup-and-restore.md
-    - name: Empfehlungen
-      href: sql-data-warehouse-concept-recommendations.md
-    - name: Problembehandlung
-      href: sql-data-warehouse-troubleshoot.md
-  - name: Wartungszeitpläne
-    items:
-    - name: Übersicht
-      href: maintenance-scheduling.md
-    - name: Anzeigen des Wartungszeitplans
-      href: viewing-maintenance-schedule.md
-    - name: Ändern des Wartungszeitplans
-      href: changing-maintenance-schedule.md
-  - name: Integration
-    items:
-    - name: Übersicht
-      href: sql-data-warehouse-overview-integrate.md
+        - name: Übersicht
+          href: design-elt-data-loading.md
+        - name: Bewährte Methoden
+          href: guidance-for-loading-data.md
+        - name: Columnstore-Komprimierung
+          href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
+    - name: Entwicklung
+      items:
+        - name: Übersicht
+          href: sql-data-warehouse-overview-develop.md
+        - name: Bewährte Methoden
+          href: sql-data-warehouse-best-practices-development.md
+        - name: JSON
+          items:
+            - name: JSON
+              href: /sql/t-sql/functions/json-functions-transact-sql?view=azure-sqldw-latest
+            - name: ISJSON
+              href: /sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest
+            - name: JSON_VALUE
+              href: /sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest
+            - name: JSON_QUERY
+              href: /sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest
+            - name: JSON_MODIFY
+              href: /sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest
+            - name: OPENJSON
+              href: /sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest
+        - name: Materialisierte Sicht
+          items:
+            - name: Schritte zur Optimierung der Leistung
+              href: performance-tuning-materialized-views.md
+            - name: Erstellen
+              href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
+            - name: Ändern
+              href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+        - name: Sortierter gruppierter Columnstore-Index
+          items:
+            - name: Schritte zur Optimierung der Leistung
+              href: performance-tuning-ordered-CCI.md
+        - name: Zwischenspeichern von Resultsets
+          items:
+            - name: Für eine Datenbank festlegen
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest'
+            - name: Für eine Sitzung festlegen
+              href: /sql/t-sql/statements/set-result-set-caching-transact-sql
+        - name: Tabellen
+          items:
+            - name: Übersicht
+              href: sql-data-warehouse-tables-overview.md
+            - name: CTAS
+              href: sql-data-warehouse-develop-ctas.md
+            - name: Datentypen
+              href: sql-data-warehouse-tables-data-types.md
+            - name: Verteilte Tabellen
+              href: sql-data-warehouse-tables-distribute.md
+            - name: Tabellenconstraints
+              href: sql-data-warehouse-table-constraints.md
+            - name: Indexe
+              href: sql-data-warehouse-tables-index.md
+            - name: Identity
+              href: sql-data-warehouse-tables-identity.md
+            - name: Partitionen
+              href: sql-data-warehouse-tables-partition.md
+            - name: Replizierte Tabellen
+              href: design-guidance-for-replicated-tables.md
+            - name: Statistiken
+              href: sql-data-warehouse-tables-statistics.md
+            - name: Temporär
+              href: sql-data-warehouse-tables-temporary.md
+        - name: T-SQL-Sprachelemente
+          items:
+            - name: Schleifen
+              href: sql-data-warehouse-develop-loops.md
+            - name: Gespeicherte Prozeduren
+              href: sql-data-warehouse-develop-stored-procedures.md
+            - name: Transaktionen
+              href: sql-data-warehouse-develop-transactions.md
+            - name: Bewährte Methoden für Transaktionen
+              href: sql-data-warehouse-develop-best-practices-transactions.md
+            - name: Benutzerdefinierte Schemas
+              href: sql-data-warehouse-develop-user-defined-schemas.md
+            - name: Variablenzuweisung
+              href: sql-data-warehouse-develop-variable-assignment.md
+            - name: Ansichten
+              href: sql-data-warehouse-develop-views.md
+    - name: Abfragen
+      items:
+        - name: Dynamisches SQL
+          href: sql-data-warehouse-develop-dynamic-sql.md
+        - name: Gruppierungsoptionen
+          href: sql-data-warehouse-develop-group-by-options.md
+        - name: Bezeichnungen
+          href: sql-data-warehouse-develop-label.md
+    - name: Workloadverwaltung
+      items:
+        - name: Ressourcenklassen und Workloadverwaltung
+          href: resource-classes-for-workload-management.md
+        - name: Workloadklassifizierung
+          href: sql-data-warehouse-workload-classification.md
+        - name: Workloadpriorität
+          href: sql-data-warehouse-workload-importance.md
+        - name: Speicher- und Parallelitätslimits
+          href: memory-and-concurrency-limits.md
+    - name: Verwaltbarkeit und Überwachung
+      items:
+        - name: Übersicht
+          href: sql-data-warehouse-overview-manageability-monitoring.md
+        - name: 'Skalieren, Anhalten, Fortsetzen'
+          href: sql-data-warehouse-manage-compute-overview.md
+        - name: Ressourcennutzung und Abfrageaktivität
+          href: sql-data-warehouse-concept-resource-utilization-query-activity.md
+        - name: Datenschutz
+          href: backup-and-restore.md
+        - name: Empfehlungen
+          href: sql-data-warehouse-concept-recommendations.md
+        - name: Problembehandlung
+          href: sql-data-warehouse-troubleshoot.md
+    - name: Wartungszeitpläne
+      items:
+        - name: Übersicht
+          href: maintenance-scheduling.md
+        - name: Anzeigen des Wartungszeitplans
+          href: viewing-maintenance-schedule.md
+        - name: Ändern des Wartungszeitplans
+          href: changing-maintenance-schedule.md
+    - name: Integration
+      items:
+        - name: Übersicht
+          href: sql-data-warehouse-overview-integrate.md
 - name: Anleitungen
   items:
-  - name: Schützen
-    items:
-    - name: Konfigurieren der Azure AD-Authentifizierung
-      href: ../sql-database/sql-database-aad-authentication-configure.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Bedingter Zugriff
-      href: ../sql-database/sql-database-conditional-access.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Regeln für virtuelle Netzwerke von PowerShell
-      href: ../sql-database/sql-database-vnet-service-endpoint-rule-powershell.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Aktivieren der Verschlüsselung – Portal
-      href: sql-data-warehouse-encryption-tde.md
-    - name: Aktivieren der Verschlüsselung – T-SQL
-      href: sql-data-warehouse-encryption-tde-tsql.md
-    - name: Bedrohungserkennung
-      href: sql-data-warehouse-security-threat-detection.md
-  - name: Laden von Daten
-    items:
-    - name: Taxidaten für New York
-      href: load-data-from-azure-blob-storage-using-polybase.md
-    - name: Öffentliche Contoso-Daten
-      href: sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-    - name: Azure Data Lake Storage Gen1
-      href: sql-data-warehouse-load-from-azure-data-lake-store.md
-    - name: Azure Databricks
-      href: /azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json
-    - name: Data Factory
-      href: /azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json
-    - name: SSIS
-      href: /sql/integration-services/load-data-to-sql-data-warehouse
-    - name: Laden von „WideWorldImporters“
-      href: load-data-wideworldimportersdw.md
-  - name: Entwickeln
-    items:
-    - name: Übersicht
-      href: sql-data-warehouse-connect-overview.md
-    - name: Verbindungszeichenfolgen
-      href: sql-data-warehouse-connection-strings.md
-    - name: sqlcmd
-      href: sql-data-warehouse-get-started-connect-sqlcmd.md
-    - name: Abfragen mit SSMS
-      href: sql-data-warehouse-query-ssms.md
-    - name: Abfragen mit Visual Studio
-      href: sql-data-warehouse-query-visual-studio.md
-    - name: Installieren von Visual Studio
-      href: sql-data-warehouse-install-visual-studio.md
-  - name: Verwalten der Workload
-    items:
-    - name: Analysieren Ihrer Workload
-      href: analyze-your-workload.md
-  - name: Verwalten und Überwachen
-    items:
-    - name: Upgrade auf Gen2
-      href: upgrade-to-latest-generation.md
-    - name: Wiederherstellen Ihres Data Warehouse
-      href: sql-data-warehouse-restore.md
-    - name: 'Überwachen Ihrer Workload: Portal'
-      href: sql-data-warehouse-monitor-workload-portal.md
-    - name: 'Überwachen Ihrer Workload: DMVs'
-      href: sql-data-warehouse-manage-monitor.md
-    - name: Überwachen des Gen2-Cache
-      href: sql-data-warehouse-how-to-monitor-cache.md
-  - name: Integrieren
-    items:
-    - name: Verwenden von maschinellem Lernen
-      href: sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md
-    - name: Erstellen von Datenpipelines
+    - name: Schützen
       items:
-      - name: Verbinden mit Fivetran
-        href: fivetran-quickstart.md
-      - name: Erste Schritte mit Striim
-        href: striim-quickstart.md
-      - name: Hinzufügen eines Azure Stream Analytics-Auftrags
-        href: sql-data-warehouse-integrate-azure-stream-analytics.md
-    - name: Erstellen von Dashboards und Berichten
+        - name: Konfigurieren der Azure AD-Authentifizierung
+          href: ../sql-database/sql-database-aad-authentication-configure.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+        - name: Bedingter Zugriff
+          href: ../sql-database/sql-database-conditional-access.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+        - name: VNET-Regeln von PowerShell
+          href: ../sql-database/sql-database-vnet-service-endpoint-rule-powershell.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+        - name: Aktivieren der Verschlüsselung – Portal
+          href: sql-data-warehouse-encryption-tde.md
+        - name: Aktivieren der Verschlüsselung – T-SQL
+          href: sql-data-warehouse-encryption-tde-tsql.md
+    - name: Laden von Daten
       items:
-      - name: Visualisieren mit Power BI
-        href: sql-data-warehouse-get-started-visualize-with-power-bi.md
-  - name: Problembehandlung
-    items:
-    - name: Konnektivität
-      href: sql-data-warehouse-troubleshoot-connectivity.md
+        - name: Taxidaten für New York
+          href: load-data-from-azure-blob-storage-using-polybase.md
+        - name: Öffentliche Contoso-Daten
+          href: sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+        - name: Azure Data Lake Store
+          href: sql-data-warehouse-load-from-azure-data-lake-store.md
+        - name: Azure Databricks
+          href: /azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+        - name: Data Factory
+          href: /azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+        - name: SSIS
+          href: /sql/integration-services/load-data-to-sql-data-warehouse
+        - name: Laden von „WideWorldImporters“
+          href: load-data-wideworldimportersdw.md
+    - name: Entwickeln
+      items:
+        - name: Übersicht
+          href: sql-data-warehouse-connect-overview.md
+        - name: Verbindungszeichenfolgen
+          href: sql-data-warehouse-connection-strings.md
+        - name: Change Management und Bereitstellung
+          items:
+            - name: Installieren von SSDT für Visual Studio
+              href: sql-data-warehouse-install-visual-studio.md
+            - name: Integration der Quellcodeverwaltung
+              href: sql-data-warehouse-source-control-integration.md
+            - name: Continuous Integration und Continuous Deployment
+              href: sql-data-warehouse-continuous-integration-and-deployment.md
+        - name: Herstellen der Verbindung und Abfragen
+          items:
+            - name: Visual Studio SSDT
+              href: sql-data-warehouse-query-visual-studio.md
+            - name: SSMS
+              href: sql-data-warehouse-query-ssms.md
+            - name: sqlcmd
+              href: sql-data-warehouse-get-started-connect-sqlcmd.md
+    - name: Workloadverwaltung
+      items:
+        - name: Analysieren Ihrer Workload
+          href: analyze-your-workload.md
+        - name: Verwalten und Überwachen der Workloadpriorität
+          href: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+        - name: Konfigurieren der Workloadpriorität
+          href: sql-data-warehouse-how-to-configure-workload-importance.md
+    - name: Verwalten und Überwachen
+      items:
+        - name: Upgrade auf Gen2
+          href: upgrade-to-latest-generation.md
+        - name: Verwalten von Computeressourcen
+          href: manage-compute-with-azure-functions.md
+        - name: 'Überwachen Ihrer Workload: Portal'
+          href: sql-data-warehouse-monitor-workload-portal.md
+        - name: 'Überwachen Ihrer Workload: DMVs'
+          href: sql-data-warehouse-manage-monitor.md
+        - name: Überwachen des Gen2-Cache
+          href: sql-data-warehouse-how-to-monitor-cache.md
+    - name: Sichern und Wiederherstellen
+      items:
+        - name: Erstellen von Wiederherstellungspunkten
+          href: sql-data-warehouse-restore-points.md
+        - name: Wiederherstellen einer vorhandenen Data Warehouse-Instanz
+          href: sql-data-warehouse-restore-active-paused-dw.md
+        - name: Wiederherstellen einer gelöschten Data Warehouse-Instanz
+          href: sql-data-warehouse-restore-deleted-dw.md
+        - name: Wiederherstellung anhand einer Geosicherung
+          href: sql-data-warehouse-restore-from-geo-backup.md
+    - name: Integrieren
+      items:
+        - name: Verwenden von maschinellem Lernen
+          href: sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md
+        - name: Erstellen von Datenpipelines
+          items:
+            - name: Verbinden mit Fivetran
+              href: fivetran-quickstart.md
+            - name: Erste Schritte mit Striim
+              href: striim-quickstart.md
+            - name: Hinzufügen eines Azure Stream Analytics-Auftrags
+              href: sql-data-warehouse-integrate-azure-stream-analytics.md
+        - name: Erstellen von Dashboards und Berichten
+          items:
+            - name: Visualisieren mit Power BI
+              href: sql-data-warehouse-get-started-visualize-with-power-bi.md
+    - name: Problembehandlung
+      items:
+        - name: Konnektivität
+          href: sql-data-warehouse-troubleshoot-connectivity.md
 - name: Verweis
   items:
-  - name: T-SQL
-    items:
-    - name: Vollständige Referenz
-      href: https://docs.microsoft.com/sql/t-sql/language-reference/
-    - name: SQL DW-Sprachelemente
-      href: sql-data-warehouse-reference-tsql-language-elements.md
-    - name: SQL DW-Anweisungen
-      href: sql-data-warehouse-reference-tsql-statements.md
-  - name: Systemsichten
-    href: sql-data-warehouse-reference-tsql-system-views.md
-  - name: PowerShell-Cmdlets
-    href: sql-data-warehouse-reference-powershell-cmdlets.md
-  - name: REST-APIs
-    href: sql-data-warehouse-manage-compute-rest-api.md
+    - name: Datenbanksortierungstypen
+      href: sql-data-warehouse-reference-collation-types.md
+    - name: T-SQL
+      items:
+        - name: Vollständige Referenz
+          href: /sql/t-sql/language-reference?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+        - name: SQL DW-Sprachelemente
+          href: sql-data-warehouse-reference-tsql-language-elements.md
+        - name: SQL DW-Anweisungen
+          href: sql-data-warehouse-reference-tsql-statements.md
+    - name: Systemsichten
+      href: sql-data-warehouse-reference-tsql-system-views.md
+    - name: PowerShell-Cmdlets
+      href: sql-data-warehouse-reference-powershell-cmdlets.md
+    - name: REST-APIs
+      href: sql-data-warehouse-manage-compute-rest-api.md
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=databases
-  - name: Forum
-    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
-  - name: Preisrechner
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Funktionsanfragen
-    href: https://feedback.azure.com/forums/307516-sql-data-warehouse/
-  - name: Dienstupdates
-    href: https://azure.microsoft.com/updates/?product=sql-data-warehouse
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-sqldw/
-  - name: Support
-    href: sql-data-warehouse-get-started-create-support-ticket.md
-  - name: Videos
-    href: sql-data-warehouse-videos.md
-  - name: Partner
-    items:
-    - name: Business Intelligence
-      href: sql-data-warehouse-partner-business-intelligence.md
-    - name: Datenintegration
-      href: sql-data-warehouse-partner-data-integration.md
-    - name: Datenverwaltung
-      href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 52d14867099b85b2d03cc3c536026032fc56263f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620496"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: Forum
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/sql-data-warehouse/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Funktionsanfragen
+      href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-sqldw/'
+    - name: Support
+      href: sql-data-warehouse-get-started-create-support-ticket.md
+    - name: Videos
+      href: sql-data-warehouse-videos.md
+    - name: Partner
+      items:
+        - name: Business Intelligence
+          href: sql-data-warehouse-partner-business-intelligence.md
+        - name: Datenintegration
+          href: sql-data-warehouse-partner-data-integration.md
+        - name: Datenverwaltung
+          href: sql-data-warehouse-partner-data-management.md

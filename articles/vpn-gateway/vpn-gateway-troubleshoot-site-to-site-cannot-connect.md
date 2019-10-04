@@ -4,7 +4,7 @@ description: In diesem Artikel erfahren Sie, was Sie tun können, wenn die Site-
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: vpn-gateway
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2018
+ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 01729971169011002fa4231f043f82f105f81cdc
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: e196c4b512de3fac97347e4c252b697ed6818227
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414425"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058873"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Problembehandlung: Azure-Site-to-Site-VPN-Verbindung kann nicht hergestellt werden und reagiert nicht mehr
 
@@ -102,7 +102,10 @@ Suchen und Entfernen Sie benutzerdefiniertes routing (UDR) oder Netzwerksicherhe
 2. Klicken Sie sich durch die Zertifikatswarnung.
 3. Wenn Sie eine Antwort erhalten, wird das VPN-Gateway als integer betrachtet. Wenn Sie keine Antwort erhalten, ist das Gateway möglicherweise nicht fehlerfrei, oder auf dem Gatewaysubnetz ist eine NSG vorhanden, die das Problem verursacht. Der folgende Text ist eine Beispielantwort:
 
-    &lt;?xml version="1.0"?>  <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primäre Instanz: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6</string&gt;
+    ```xml
+    <?xml version="1.0"?>
+    <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">Primary Instance: GatewayTenantWorker_IN_1 GatewayTenantVersion: 14.7.24.6</string>
+    ```
 
 ### <a name="step-8-check-whether-the-on-premises-vpn-device-has-the-perfect-forward-secrecy-feature-enabled"></a>Schritt 8: Überprüfen, ob beim lokalen VPN-Gerät die Funktion Perfect Forward Secrecy aktiviert ist
 

@@ -4,15 +4,15 @@ description: Es wird beschrieben, wie Sie in Windows Virtual Desktop (Vorschauve
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
-ms.date: 04/05/2019
+ms.topic: conceptual
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 2af9df4771d58f2288820dad8ef8d7ac84deb8ae
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1fb377d482277a4776214d08b879d99f4234ca40
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59258469"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163676"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Erstellen eines Hostpools mit PowerShell
 
@@ -25,13 +25,7 @@ Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul herunterlade
 Führen Sie das folgende Cmdlet aus, um sich an der Windows Virtual Desktop-Umgebung anzumelden:
 
 ```powershell
-Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com
-```
-
-Führen Sie anschließend das folgende Cmdlet aus, um den Kontext für Ihre Mandantengruppe festzulegen. Falls Sie den Namen der Mandantengruppe nicht kennen, befindet sich Ihr Mandant wahrscheinlich in der „Standardmandantengruppe“, und Sie können dieses Cmdlet überspringen.
-
-```powershell
-Set-RdsContext -TenantGroupName <tenantgroupname>
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
 Führen Sie als Nächstes dieses Cmdlet aus, um für Ihren Windows Virtual Desktop-Mandanten einen neuen Hostpool zu erstellen:
@@ -70,6 +64,8 @@ Sie können einen virtuellen Computer auf unterschiedliche Arten erstellen:
 - [Erstellen eines virtuellen Computers aus einem verwalteten Image](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
 - [Erstellen eines virtuellen Computers aus einem nicht verwalteten Image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
+Nachdem Sie Ihre virtuellen Sitzungshostcomputer erstellt haben, [wenden Sie eine Windows-Lizenz auf einen virtuellen Sitzungshostcomputer an](./apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm), um Ihre virtuellen Windows- oder Windows Server-Computer auszuführen, ohne für eine weitere Lizenz zu bezahlen. 
+
 ## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-preview-agent-installations"></a>Vorbereiten der virtuellen Computer für Installationen von Windows Virtual Desktop-Agents (Vorschauversion)
 
 Sie müssen die folgenden Schritte zum Vorbereiten Ihrer virtuellen Computer ausführen, bevor Sie die Windows Virtual Desktop-Agents installieren und die virtuellen Computer für Ihren Windows Virtual Desktop-Hostpool registrieren können:
@@ -81,9 +77,12 @@ Führen Sie auf jedem virtuellen Computer die folgenden Schritte aus, damit der 
 
 1. [Stellen Sie eine Verbindung mit dem virtuellen Computer her](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine), indem Sie die Anmeldeinformationen verwenden, die Sie beim Erstellen des virtuellen Computers angegeben haben.
 2. Starten Sie auf dem virtuellen Computer die **Systemsteuerung**, und wählen Sie **System**.
-3. Wählen Sie **Computername**, **Einstellungen ändern** und dann **Ändern...**.
+3. Wählen Sie **Computername**, **Einstellungen ändern** und dann **Ändern...** .
 4. Wählen Sie **Domäne**, und geben Sie dann die Active Directory-Domäne im virtuellen Netzwerk ein.
 5. Authentifizieren Sie sich mit einem Domänenkonto, das über Berechtigungen für in die Domäne eingebundene Computer verfügt.
+
+    >[!NOTE]
+    > Wenn Sie Ihre VMs mit einer Azure Active Directory Domain Services (Azure AD DS)-Umgebung verknüpfen, stellen Sie sicher, dass Ihre Domänenbeitrittsbenutzer ebenfalls Mitglied der [Gruppe „AAD DC-Administratoren“](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group) ist.
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>Registrieren der virtuellen Computer für den Windows Virtual Desktop-Hostpool (Vorschauversion)
 
@@ -100,24 +99,13 @@ Führen Sie auf jedem virtuellen Computer die folgenden Schritte aus, um die Win
    - Führen Sie den Download des [Bootloaders für Windows Virtual Desktop-Agents](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH) durch.
    - Klicken Sie mit der rechten Maustaste auf das heruntergeladene Installationsprogramm, und wählen Sie **Eigenschaften**, **Blockierung aufheben** und dann **OK**. So wird festgelegt, dass Ihr System dem Installationsprogramm vertraut.
    - Führen Sie das Installationsprogramm aus.
-4. Installieren bzw. aktivieren Sie den parallelen Stapel für Windows Virtual Desktop. Die Schritte unterscheiden sich je nach der Betriebssystemversion, die auf dem virtuellen Computer verwendet wird.
-   - Bei Verwendung des Betriebssystems Windows Server 2016 auf dem virtuellen Computer:
-     - Laden Sie den [parallelen Stapel für Windows Virtual Desktop](https://go.microsoft.com/fwlink/?linkid=2084270) herunter.
-     - Klicken Sie mit der rechten Maustaste auf das heruntergeladene Installationsprogramm, und wählen Sie **Eigenschaften**, **Blockierung aufheben** und dann **OK**. So wird festgelegt, dass Ihr System dem Installationsprogramm vertraut.
-     - Führen Sie das Installationsprogramm aus.
-   - Bei Verwendung von Windows 10 1809 oder höher bzw. Windows Server 2019 oder höher als Betriebssystem des virtuellen Computers:
-     - Laden Sie das [Skript](https://go.microsoft.com/fwlink/?linkid=2084268) herunter, um den parallelen Stapel zu aktivieren.
-     - Klicken Sie mit der rechten Maustaste auf das heruntergeladene Skript, und wählen Sie **Eigenschaften**, **Blockierung aufheben** und dann **OK**. So wird festgelegt, dass Ihr System dem Skript vertraut.
-     - Suchen Sie im Menü **Start** nach „Windows PowerShell ISE“, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Als Administrator ausführen**.
-     - Wählen Sie **Datei** und dann **Öffnen…**. Suchen Sie in den heruntergeladenen Dateien nach dem PowerShell-Skript, und öffnen Sie es.
-     - Wählen Sie die grüne Wiedergabeschaltfläche aus, um das Skript auszuführen.
 
 >[!IMPORTANT]
->Sie sollten den eingehenden Port 3389 auf Ihren virtuellen Computern nicht öffnen, um Ihre Windows Virtual Desktop-Umgebung in Azure zu schützen. Für Windows Virtual Desktop ist es nicht erforderlich, dass der eingehende Port 3389 offen ist, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie Port 3389 zur Problembehandlung öffnen müssen, sollten Sie [Just-In-Time-Zugriff auf virtuelle Computer](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time) verwenden.
+>Zum Schutz Ihrer Windows Virtual Desktop-Umgebung in Azure empfiehlt es sich, den eingehenden Port 3389 auf Ihren virtuellen Computern nicht zu öffnen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den [Just-In-Time-Zugriff auf virtuelle Computer](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie nun einen Hostpool erstellt haben, können Sie ihn mit RemoteApps füllen. Weitere Informationen zum Verwalten von Apps in Windows Virtual Desktop finden Sie im folgenden Tutorial:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Verwalten von App-Gruppen](./manage-app-groups.md)
+> [Manage app groups for Windows Virtual Desktop Preview](./manage-app-groups.md) (Verwalten von App-Gruppen für Windows Virtual Desktop (Vorschauversion))

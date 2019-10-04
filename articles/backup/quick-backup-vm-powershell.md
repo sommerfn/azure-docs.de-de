@@ -1,21 +1,20 @@
 ---
 title: 'Azure-Schnellstart: Sichern eines virtuellen Computers mit PowerShell'
 description: Es wird beschrieben, wie Sie Ihre virtuellen Computer mit Azure PowerShell sichern.
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
-ms.author: raynew
+ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 5aab5fea5a80eb3ab1b37e08a5e22ca296cb633e
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: ea4f982409f339487cd570230ebbb75682f409ec
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680297"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874599"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Sichern eines virtuellen Computers in Azure mit PowerShell
 
@@ -72,11 +71,11 @@ Erstellen Sie jetzt einen Tresor:
         -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesVaultContext
     ```
 
-3. Ändern Sie die Speicherredundanzkonfiguration (LRS/GRS) des Tresors wie folgt mit [Set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperties?view=azps-1.6.0):
+3. Ändern Sie die Speicherredundanzkonfiguration (LRS/GRS) des Tresors wie folgt mit [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty):
     
     ```powershell
     Get-AzRecoveryServicesVault `
-        -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedundant/GeoRedundant
+        -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesBackupProperty -BackupStorageRedundancy LocallyRedundant/GeoRedundant
     ```
     > [!NOTE]
     > Die Speicherredundanz kann nur geändert werden, wenn im Tresor keine Sicherungselemente vorhanden sind.
@@ -104,7 +103,6 @@ Aktivieren Sie die Sicherung wie folgt:
         -Name "myVM" `
         -Policy $policy
     ```
-
 
 ## <a name="start-a-backup-job"></a>Starten eines Sicherungsauftrags
 
@@ -146,7 +144,7 @@ Führen Sie einen Ad-hoc-Sicherungsauftrag wie folgt aus:
     ```
     Die Ausgabe ähnelt dem folgenden Beispiel, in dem für den Auftrag der Status **InProgress** angezeigt wird:
 
-    ```
+    ```output
     WorkloadName   Operation         Status       StartTime              EndTime                JobID
     ------------   ---------         ------       ---------              -------                -----
     myvm           Backup            InProgress   9/18/2017 9:38:02 PM                          9f9e8f14
@@ -159,7 +157,7 @@ Führen Sie einen Ad-hoc-Sicherungsauftrag wie folgt aus:
 ## <a name="clean-up-the-deployment"></a>Bereinigen der Bereitstellung
 
 Wenn der virtuelle Computer nicht mehr gesichert werden muss, können Sie ihn bereinigen.
-- Wenn Sie den virtuellen Computer wiederherstellen möchten, überspringen Sie die Bereinigung.
+- Wenn Sie das Wiederherstellen des virtuellen Computers ausprobieren möchten, überspringen Sie die Bereinigung.
 - Wenn Sie einen vorhandenen virtuellen Computer verwendet haben, können Sie das letzte Cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) überspringen, um die Ressourcengruppe und den VM beizubehalten.
 
 Deaktivieren Sie den Schutz, und entfernen Sie die Wiederherstellungspunkte und den Tresor. Löschen Sie anschließend die Ressourcengruppe und die zugehörigen VM-Ressourcen wie folgt:

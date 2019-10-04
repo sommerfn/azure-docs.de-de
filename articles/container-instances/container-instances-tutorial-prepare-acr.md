@@ -3,17 +3,18 @@ title: Tutorial – Vorbereiten einer Containerregistrierung für Azure Containe
 description: Tutorial für Azure Container Instances (Teil 2 von 3) – Vorbereiten einer Azure-Containerregistrierung und Übertragen eines Images per Pushvorgang
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c1a4313f9a8174b9ea6e6cff694b9a0a9cf395d1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b3c907eacb14ed65410a60fcf22ebe99fd8cc3bb
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538152"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325603"
 ---
 # <a name="tutorial-deploy-an-azure-container-registry-and-push-a-container-image"></a>Tutorial: Bereitstellen einer Azure-Containerregistrierung und Übertragen eines Containerimages per Pushvorgang
 
@@ -168,7 +169,7 @@ Um sicherzustellen, dass sich das gerade übertragene Image wirklich in Ihrer Az
 az acr repository list --name <acrName> --output table
 ```
 
-Beispiel: 
+Beispiel:
 
 ```console
 $ az acr repository list --name mycontainerregistry082 --output table

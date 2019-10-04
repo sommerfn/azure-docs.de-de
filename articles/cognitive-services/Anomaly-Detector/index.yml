@@ -1,65 +1,113 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: 7b7305a84ac8600629ce27551c0243c427082e5e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473371"
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentation zur Anomalieerkennungs-API
+summary: Mithilfe der API für die Anomalieerkennung können Sie Daten im Zeitverlauf überwachen und Anomalien mithilfe des Machine Learning-Diensts ermitteln. Sie erhalten unabhängig von Umfang, Branche oder Szenario Einblicke in Ihre Daten.
 metadata:
-  title: 'Dokumentation zur Anomalieerkennungs-API: Tutorials, Schnellstarts, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
+  title: 'Anomalieerkennungs-API: Tutorials, Schnellstarts, API-Referenz'
+  titleSuffix: Azure Cognitive Services
   description: Mithilfe der API für die Anomalieerkennung können Sie Daten im Zeitverlauf überwachen und Anomalien mithilfe des Machine Learning-Diensts ermitteln. Sie erhalten unabhängig von Umfang, Branche oder Szenario Einblicke in Ihre Daten.
   services: cognitive-services
   author: aahill
-  manager: cgronlun
+  manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: anomaly-detector
   ms.topic: landing-page
-  ms.date: 03/26/2019
+  ms.date: 09/10/2019
   ms.author: aahi
-abstract:
-  description: Mit der Anomalieerkennungs-API können Sie Funktionen zur Anomalieerkennung einfach in Ihre Apps einbetten, sodass Benutzer schnell Probleme ermitteln und damit Verluste und Auswirkungen für Kunden minimieren können. Es sind keine Machine Learning-Vorkenntnisse erforderlich. Sie können dieses vorab trainierte KI-Modell durch einen einzigen API-Aufruf aktivieren. Das Modell erfasst Zeitreihendaten aller Typen und mit beliebigem Umfang, wählt das für Ihre Daten am besten geeignete Anomalieerkennungsmodell aus, um eine hohe Genauigkeit zu gewährleisten, und ermittelt automatisch Vorfälle, sobald diese auftreten. Der Dienst kann zur Erkennung von Anomalien aller Größen angepasst werden.  Verwenden Sie die Anomalieerkennung, um Geschäftsvorfälle zu ermitteln, IoT-Gerätedatenverkehr zu überwachen, Betrugswarnungen zu verwalten, auf sich ändernde Märkte zu reagieren und vieles mehr.
-sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
-    items:
-    - href: /azure/cognitive-services/anomaly-detector/overview
-      html: <p>Informationen zur Anomalieerkennungs-API</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Worum handelt es sich bei der Anomalieerkennungs-API?
-    - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
-      html: <p>Optimieren der Ergebnisse der Anomalieerkennung unter Verwendung von Best Practices für die API</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Best Practices bei der Verwendung der Anomalieerkennungs-API
-    - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
-      html: <p>Sie können die Empfindlichkeit für die Anomalieerkennung anpassen, verschiedene Erkennungsmodi verwenden und vieles mehr.</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Verwenden der Anomalieerkennungs-API
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: 'Erkennen von Anomalien in Zeitreihendaten mithilfe von:'
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/logo_Csharp.svg
-      href: quickstarts/detect-data-anomalies-csharp
-      text: C#
-    - image:
-        src: media/logo_Java.svg
-      href: quickstarts/detect-data-anomalies-java
-      text: Java
-    - image:
-        src: media/logo_python.svg
-      href: quickstarts/detect-data-anomalies-python
-      text: Python
+  ms.openlocfilehash: d073adfbc1b05bbd4d92f5cfb500184653444f4b
+  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71086785"
+landingContent:
+- title: Informationen zur Anomalieerkennungs-API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Worum handelt es sich bei der Anomalieerkennungs-API?
+      url: overview.md
+  - linkListType: get-started
+    links:
+    - text: Demo zur Anomalieerkennung
+      url: https://aka.ms/adDemo
+  - linkListType: video
+    links:
+    - text: Einführung der Anomalieerkennungs-API
+      url: https://channel9.msdn.com/Shows/AI-Show/Introducing-Azure-Anomaly-Detector?WT.mc_id=ai-c9-niner
+    - text: Von der Anomalieerkennungs-API verwendete Algorithmen
+      url: https://www.youtube.com/embed/ERTaAnwCarM
+  - linkListType: reference
+    links:
+    - text: In der Anomalieerkennung verwendete Algorithmen (Whitepaper)
+      url: https://arxiv.org/abs/1906.03821
+- title: Erkennen von Anomalien in Ihren Daten
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Verwenden von C#
+      url: quickstarts/detect-data-anomalies-csharp-sdk.md
+    - text: Verwenden von Python
+      url: quickstarts/detect-data-anomalies-python-sdk.md
+  - linkListType: tutorial
+    links:
+    - text: Visualisieren von Anomalien mithilfe von Batcherkennung und Power BI
+      url: tutorials/batch-anomaly-detection-powerbi.md
+    - text: Erkennen von Anomalien in Streamingdaten mit Azure Databricks
+      url: tutorials/batch-anomaly-detection-powerbi.md
+  - linkListType: video
+    links:
+    - text: Anomalieerkennung für Streamingdaten mit Azure Databricks
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-detection-on-streaming-data-using-Azure-Databricks
+- title: Optimieren der Erkennungsergebnisse
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Anpassen der Anomalieerkennungsmodi und -parameter für Ihre Daten
+      url: how-to/identify-anomalies.md
+    - text: Optimieren der Anomalieerkennungsergebnisse unter Verwendung von Best Practices
+      url: concepts/anomaly-detection-best-practices.md
+  - linkListType: video
+    links:
+    - text: Best Practices für die Anomalieerkennung
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-Detector-v10-Best-Practices
+- title: Verwenden von Docker-Containern
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Installieren und Ausführen von Containern für die Anomalieerkennung
+      url: anomaly-detector-container-howto.md
+    - text: Konfigurieren von Containern für die Anomalieerkennung
+      url: anomaly-detector-container-configuration.md
+    - text: Bereitstellen einer Containerinstanz in Azure
+      url: how-to/deploy-anomaly-detection-on-container-instances.md
+  - linkListType: video
+    links:
+    - text: Implementieren der Anomalieerkennung in der lokalen Umgebung mit Containerunterstützung
+      url: https://channel9.msdn.com/Shows/AI-Show/Bring-Anomaly-Detector-on-premise-with-containers-support
+- title: Beitreten zur Anomalieerkennungs-Community
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Beitreten zur Ratgebergruppe für die Anomalieerkennung auf Microsoft Teams
+      url: https://aka.ms/adadvisorsjoin
+    - text: Ausgewählter benutzergenerierter Inhalt
+      url: user-generated-content.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST-API
+      url: https://aka.ms/anomaly-detector-rest-api-ref
+    - text: .NET SDK
+      url: https://aka.ms/anomaly-detector-dotnet-ref
+    - text: .Python SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090370
+    - text: Go SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2089915
+    - text: Node.js SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090788
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure-Befehlszeilenschnittstelle
+      url: /cli/azure/cognitiveservices#az-cognitiveservices-list

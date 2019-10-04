@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 46eea21e1eafce1696ed1cf77a1f334798f0bc17
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a6fc9f1a5c32fc9ffa1e1e6ebe525b72030fe803
+ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848402"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67155663"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden 
 
@@ -49,7 +49,7 @@ Die Cassandra-API für Azure Cosmos DB unterstützt die folgenden CQL-Datentypen
 * date  
 * decimal  
 * double  
-* Gleitkommawert  
+* float  
 * frozen  
 * inet  
 * int  
@@ -74,6 +74,8 @@ Die Cassandra-API für Azure Cosmos DB unterstützt die folgenden CQL-Datentypen
 Die Cassandra-API für Azure Cosmos DB unterstützt die folgenden CQL-Funktionen:
 
 * Tokenverschlüsselung  
+* Aggregatfunktionen
+  * min, max, avg, count
 * Blob-Konvertierungsfunktionen 
   * typeAsBlob(value)  
   * blobAsType(value)
@@ -88,7 +90,8 @@ Die Cassandra-API für Azure Cosmos DB unterstützt die folgenden CQL-Funktionen
   * toDate(timestamp)  
   * toUnixTimestamp(timestamp)  
   * toTimestamp(date)  
-  * toUnixTimestamp(date)  
+  * toUnixTimestamp(date) 
+  
 
 
 ## <a name="cassandra-query-language-limits"></a>Grenzwerte der Cassandra-Abfragesprache
@@ -154,11 +157,11 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Konsistenzzuordnung 
 
-Die Cassandra-API für Azure Cosmos DB ermöglicht die Wahl der Konsistenz bei Lesevorgängen. Alle Schreibvorgänge erfolgen unabhängig von der Kontokonsistenz immer mit Schreibleistungs-SLAs.
+Die Cassandra-API für Azure Cosmos DB ermöglicht die Wahl der Konsistenz bei Lesevorgängen.  Die Konsistenzzuordnung finden Sie [hier[(https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping).
 
 ## <a name="permission-and-role-management"></a>Berechtigungs- und Rollenverwaltung
 
-Azure Cosmos DB unterstützt die rollenbasierte Zugriffssteuerung (RBAC) sowie Lese-/Schreibkennwörter bzw. Lese-/Schreibschlüssel und Schreibschutzkennwörter/-schlüssel, die über das [Azure-Portal](https://portal.azure.com) abgerufen werden können. Azure Cosmos DB unterstützt noch keine Benutzer und Rollen für Aktivitäten auf Datenebene. 
+Azure Cosmos DB unterstützt die rollenbasierte Zugriffssteuerung (RBAC) für die Bereitstellung, Rotation von Schlüsseln, Anzeige von Metriken sowie Lese-/Schreibkennwörter bzw. Lese-/Schreibschlüssel und Schreibschutzkennwörter/-schlüssel, die über das [Azure-Portal](https://portal.azure.com) abgerufen werden können. Azure Cosmos DB unterstützt noch keine Benutzer und Rollen für CRUD-Aktivitäten (Create, Read, Update, Delete; Erstellen, Lesen, Aktualisieren, Löschen). 
 
 ## <a name="planned-support"></a>Geplante Unterstützung 
 * Der Regionsname wird derzeit im Befehl „create keyspace“ ignoriert. Die Verteilung von Daten wird über die zugrunde liegende Cosmos DB-Plattform implementiert und über das Portal oder über PowerShell für das Konto verfügbar gemacht. 

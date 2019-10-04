@@ -1,28 +1,28 @@
 ---
-title: 'Tutorial: Laden aus Azure Data Lake Storage Gen1 in Azure SQL Data Warehouse | Microsoft-Dokumentation'
-description: Laden Sie mit externen PolyBase-Tabellen Daten aus Azure Data Lake Storage Gen1 in Azure SQL Data Warehouse.
+title: 'Tutorial: Laden aus Azure Data Lake Storage in Azure SQL Data Warehouse | Microsoft-Dokumentation'
+description: Laden Sie mit externen PolyBase-Tabellen Daten aus Azure Data Lake Storage in Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.subservice: load-data
+ms.date: 08/08/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 32ac5b0841365acfc0a52e343eafc4f3760dffaa
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 3db355cf5782620bda3a9e04afbee073c8929856
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472225"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68935117"
 ---
-# <a name="load-data-from-azure-data-lake-storage-gen1-to-sql-data-warehouse"></a>Laden von Daten aus Azure Data Lake Storage Gen1 in SQL Data Warehouse
-Laden Sie mit externen PolyBase-Tabellen Daten aus Azure Data Lake Storage Gen1 in Azure SQL Data Warehouse. Obwohl Sie Ad-hoc-Abfragen für Daten ausführen können, die in Data Lake Storage Gen1 gespeichert sind, sollten Sie die Daten zur Leistungsoptimierung in SQL Data Warehouse importieren.
+# <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Laden von Daten aus Azure Data Lake Storage in SQL Data Warehouse
+Laden Sie mit externen PolyBase-Tabellen Daten aus Azure Data Lake Storage in Azure SQL Data Warehouse. Obwohl Sie Ad-hoc-Abfragen für Daten ausführen können, die in Data Lake Storage gespeichert sind, sollten Sie die Daten zur Leistungsoptimierung in SQL Data Warehouse importieren.
 
 > [!div class="checklist"]
-> * Erstellen Sie die erforderlichen Datenbankobjekte zum Laden von Daten aus Data Lake Storage Gen1.
-> * Stellen Sie eine Verbindung mit einem Data Lake Storage Gen1-Verzeichnis her.
+> * Erstellen Sie die erforderlichen Datenbankobjekte zum Laden von Daten aus Data Lake Storage.
+> * Stellen Sie eine Verbindung mit einem Data Lake Storage-Verzeichnis her.
 > * Laden von Daten in Azure SQL Data Warehouse
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -34,18 +34,14 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Azure Active Directory-Anwendung für die Dienst-zu-Dienst-Authentifizierung. Eine Erstellungsanleitung finden Sie unter [Authentifizieren bei Data Lake Store mithilfe von Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
->[!NOTE] 
-> Sie benötigen die Client-ID, den Schlüssel und den OAuth2.0-Token-Endpunktwert Ihrer Active Directory-Anwendung, um über SQL Data Warehouse eine Verbindung mit Ihrem Data Lake Storage Gen1-Konto herstellen zu können. Ausführliche Informationen zum Ermitteln dieser Werte finden Sie unter dem oben angegebenen Link. Verwenden Sie für die Registrierung von Azure Active Directory-Apps die Anwendungs-ID als Client-ID.
-> 
-
 * Eine Instanz von Azure SQL Data Warehouse. Siehe [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md).
 
-* Ein Data Lake Storage Gen1-Konto. Siehe [Erste Schritte mit Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-get-started-portal.md). 
+* Ein Data Lake Storage-Konto. Siehe [Erste Schritte mit Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). 
 
 ##  <a name="create-a-credential"></a>Erstellen einer Anmeldeinformation
-Für den Zugriff auf Ihr Data Lake Storage Gen1-Konto müssen Sie einen Datenbankhauptschlüssel erstellen, um die geheimen Anmeldeinformationen zu verschlüsseln, die Sie im nächsten Schritt verwenden. Anschließend erstellen Sie datenbankbezogene Anmeldeinformationen, in denen die in AAD eingerichteten Dienstprinzipal-Anmeldeinformationen gespeichert werden. Bei Benutzern, die die Verbindung mit Azure Storage Blob-Instanzen über PolyBase herstellen, unterscheidet sich die Syntax für die Anmeldeinformationen.
+Für den Zugriff auf Ihr Data Lake Storage-Konto müssen Sie einen Datenbankhauptschlüssel erstellen, um die geheimen Anmeldeinformationen zu verschlüsseln, die Sie im nächsten Schritt verwenden. Anschließend erstellen Sie datenbankbezogene Anmeldeinformationen. Bei der Authentifizierung mittels Dienstprinzipalen werden die in AAD eingerichteten Dienstprinzipal-Anmeldeinformationen in den datenbankweit gültigen Anmeldeinformationen gespeichert. Sie können auch den Speicherkontoschlüssel in den datenbankweit gültigen Anmeldeinformationen für Gen2 verwenden. 
 
-Um eine Verbindung mit Data Lake Storage Gen1 herzustellen, müssen Sie **zuerst** eine Azure Active Directory-Anwendung sowie einen Zugriffsschlüssel erstellen und der Anwendung Zugriff auf die Data Lake Storage Gen1-Ressource gewähren. Anweisungen hierzu finden Sie unter [Dienst-zu-Dienst-Authentifizierung mit Azure Data Lake Storage Gen1 mithilfe von Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+Um mithilfe von Dienstprinzipalen eine Verbindung mit Data Lake Storage herzustellen, müssen Sie **zuerst** eine Azure Active Directory-Anwendung sowie einen Zugriffsschlüssel erstellen und der Anwendung Zugriff auf das Data Lake Storage-Konto gewähren. Anweisungen hierzu finden Sie unter [Dienst-zu-Dienst-Authentifizierung mit Azure Data Lake Storage Gen1 unter Verwendung von Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
 ```sql
 -- A: Create a Database Master Key.
@@ -56,19 +52,30 @@ Um eine Verbindung mit Data Lake Storage Gen1 herzustellen, müssen Sie **zuerst
 CREATE MASTER KEY;
 
 
--- B: Create a database scoped credential
+-- B (for service principal authentication): Create a database scoped credential
 -- IDENTITY: Pass the client id and OAuth 2.0 Token Endpoint taken from your Azure Active Directory Application
 -- SECRET: Provide your AAD Application Service Principal key.
 -- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/library/mt270260.aspx
 
-CREATE DATABASE SCOPED CREDENTIAL ADLSG1Credential
+CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
+    -- Always use the OAuth 2.0 authorization endpoint (v1)
     IDENTITY = '<client_id>@<OAuth_2.0_Token_EndPoint>',
     SECRET = '<key>'
 ;
 
--- It should look something like this:
-CREATE DATABASE SCOPED CREDENTIAL ADLSG1Credential
+-- B (for Gen2 storage key authentication): Create a database scoped credential
+-- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
+-- SECRET: Provide your Azure storage account key.
+
+CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
+WITH
+    IDENTITY = 'user',
+    SECRET = '<azure_storage_account_key>'
+;
+
+-- It should look something like this when authenticating using service principals:
+CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
     SECRET = 'BjdIlmtKp4Fpyh9hIvr8HJlUida/seM5kQ3EpLAmeDI='
@@ -79,21 +86,33 @@ WITH
 Verwenden Sie den Befehl [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql), um den Speicherort der Daten zu speichern. 
 
 ```sql
--- C: Create an external data source
--- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure Data Lake Storage Gen1.
+-- C (for Gen1): Create an external data source
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure Data Lake Storage.
 -- LOCATION: Provide Data Lake Storage Gen1 account name and URI
 -- CREDENTIAL: Provide the credential created in the previous step.
 
-CREATE EXTERNAL DATA SOURCE AzureDataLakeStorageGen1
+CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
 WITH (
     TYPE = HADOOP,
     LOCATION = 'adl://<datalakestoregen1accountname>.azuredatalakestore.net',
-    CREDENTIAL = ADLSG1Credential
+    CREDENTIAL = ADLSCredential
+);
+
+-- C (for Gen2): Create an external data source
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure Data Lake Storage.
+-- LOCATION: Provide Data Lake Storage Gen2 account name and URI
+-- CREDENTIAL: Provide the credential created in the previous step.
+
+CREATE EXTERNAL DATA SOURCE AzureDataLakeStorage
+WITH (
+    TYPE = HADOOP,
+    LOCATION='abfs[s]://<container>@<AzureDataLake account_name>.dfs.core.windows.net', -- Please note the abfss endpoint for when your account has secure transfer enabled
+    CREDENTIAL = ADLSCredential
 );
 ```
 
 ## <a name="configure-data-format"></a>Konfigurieren des Datenformats
-Zum Importieren der Daten aus Data Lake Storage Gen1 müssen Sie das externe Dateiformat angeben. Dieses Objekt definiert, wie die Dateien in Data Lake Storage Gen1 geschrieben werden.
+Zum Importieren der Daten aus Data Lake Storage müssen Sie das externe Dateiformat angeben. Dieses Objekt definiert, wie die Dateien in Data Lake Storage geschrieben werden.
 Eine vollständige Liste finden Sie in unserer T-SQL-Dokumentation [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql).
 
 ```sql
@@ -119,7 +138,7 @@ Nun, da Sie die Datenquelle und das Dateiformat festgelegt haben, können Sie di
 
 ```sql
 -- D: Create an External Table
--- LOCATION: Folder under the Data Lake Storage Gen1 root folder.
+-- LOCATION: Folder under the Data Lake Storage root folder.
 -- DATA_SOURCE: Specifies which Data Source Object to use.
 -- FILE_FORMAT: Specifies which File Format Object to use
 -- REJECT_TYPE: Specifies how you want to deal with rejected rows. Either Value or percentage of the total
@@ -134,7 +153,7 @@ CREATE EXTERNAL TABLE [dbo].[DimProduct_external] (
 WITH
 (
     LOCATION='/DimProduct/'
-,   DATA_SOURCE = AzureDataLakeStorageGen1
+,   DATA_SOURCE = AzureDataLakeStorage
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE
 ,   REJECT_VALUE = 0
@@ -154,7 +173,7 @@ Mithilfe des Optionen „REJECT_TYPE“ und „REJECT_VALUE“ können Sie defin
 Data Lake Storage Gen1 steuert den Zugriff auf die Daten durch die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC). Dies bedeutet, dass der Dienstprinzipal mit Leseberechtigungen für die im Speicherortparameter definierten Verzeichnisse sowie die untergeordneten Ordner der endgültigen Verzeichnisse und Dateien ausgestattet sein muss. Dadurch kann PolyBase diese Daten authentifizieren und laden. 
 
 ## <a name="load-the-data"></a>Laden der Daten
-Verwenden Sie die Anweisung [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse), um Daten aus Data Lake Storage Gen1 zu laden. 
+Verwenden Sie die Anweisung [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse), um Daten aus Data Lake Storage zu laden. 
 
 CTAS erstellt eine neue Tabelle und füllt sie mit den Ergebnissen einer SELECT-Anweisung. CTAS definiert die neue Tabelle, sodass sie die gleichen Spalten und Datentypen wie die Ergebnisse der SELECT-Anweisung aufweist. Wenn Sie alle Spalten einer externen Tabelle auswählen, ist die neue Tabelle ein Replikat der Spalten und Datentypen aus der externen Tabelle.
 
@@ -199,13 +218,9 @@ Sie haben folgende Schritte ausgeführt:
 > * Erstellen der erforderlichen Datenbankobjekte zum Laden von Daten aus Data Lake Storage Gen1.
 > * Herstellen einer Verbindung mit einem Data Lake Storage Gen1-Verzeichnis.
 > * Laden von Daten in Azure SQL Data Warehouse.
-> 
+>
 
 Das Laden von Daten ist der erste Schritt auf dem Weg zu einer Data Warehouse-Lösung mit SQL Data Warehouse. Sehen Sie sich unsere Entwicklungsressourcen an.
 
 > [!div class="nextstepaction"]
->[Lernen Sie, Tabellen in SQL Data Warehouse zu entwickeln](sql-data-warehouse-tables-overview.md).
-
-
-
-
+> [Lernen Sie, Tabellen in SQL Data Warehouse zu entwickeln](sql-data-warehouse-tables-overview.md).

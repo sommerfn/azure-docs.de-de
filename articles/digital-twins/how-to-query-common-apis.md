@@ -1,19 +1,19 @@
 ---
 title: Azure Digital Twins – gängige Abfragemuster | Microsoft-Dokumentation
 description: Lernen Sie gängige Abfragemuster der Azure Digital Twins-Verwaltungs-APIs kennen.
-author: dsk-2015
+author: kingdomofends
 manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 1/7/2019
-ms.author: dkshir
-ms.openlocfilehash: ff8638042fa10c939ff9c5fa7af99a660fcdc753
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 08/29/2019
+ms.author: v-adgera
+ms.openlocfilehash: 55b0676ce0a0dc6d4347ddcadf43b7b650f0f9a1
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198642"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172806"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Gewusst wie: Abfragen von Azure Digital Twins-APIs für allgemeine Aufgaben
 
@@ -238,4 +238,4 @@ Dieser Abschnitt zeigt einige API-Beispielabfragen für die Verwaltung von Benut
 
 Informationen dazu, wie ein Authentifizieren über Ihre Verwaltungs-API erfolgt, finden Sie unter [Verbinden mit und Authentifizieren über APIs](./security-authenticating-apis.md).
 
-Wie Sie alle API-Endpunkte anzeigen, erfahren Sie in der [Referenzdokumentation: Azure Digital Twins-Swagger](./how-to-use-swagger.md).
+Weitere Informationen zu API-Endpunkten finden Sie unter [Verwenden von Digital Twins Swagger](./how-to-use-swagger.md).

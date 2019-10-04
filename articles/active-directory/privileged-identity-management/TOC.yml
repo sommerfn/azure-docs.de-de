@@ -27,12 +27,6 @@
       href: pim-deployment-plan.md
     - name: Einstieg in die Verwendung von PIM
       href: pim-getting-started.md
-    - name: Aktivieren meiner Rollen
-      items:
-        - name: Aktivieren meiner Azure AD-Rollen
-          href: pim-how-to-activate-role.md
-        - name: Aktivieren meiner Azure-Ressourcenrollen
-          href: pim-resource-roles-activate-your-roles.md
     - name: Konfigurieren von PIM
       items:
         - name: Sicherheits-Assistent
@@ -43,6 +37,12 @@
           href: pim-how-to-give-access-to-pim.md
         - name: Erhöhen der Zugriffsrechte zum Verwalten aller Abonnements
           href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+    - name: Aktivieren meiner Rollen
+      items:
+        - name: Aktivieren meiner Azure AD-Rollen
+          href: pim-how-to-activate-role.md
+        - name: Aktivieren meiner Azure-Ressourcenrollen
+          href: pim-resource-roles-activate-your-roles.md
     - name: Verwalten von Azure AD-Rollen
       items:
         - name: Zuweisen von Rollen
@@ -53,6 +53,16 @@
           href: pim-how-to-change-default-settings.md
         - name: Konfigurieren von Warnungen
           href: pim-how-to-configure-security-alerts.md
+        - name: 'Benutzerdefinierte Rollen: Vorschau'
+          items:
+            - name: Aktivieren einer benutzerdefinierten Rolle
+              href: azure-ad-custom-roles-activate.md
+            - name: Zuweisen einer benutzerdefinierten Rolle
+              href: azure-ad-custom-roles-assign.md
+            - name: Entfernen einer Rollenzuweisung
+              href: azure-ad-custom-roles-update-remove.md
+            - name: Konfigurieren von benutzerdefinierten Rollen
+              href: azure-ad-custom-roles-configure.md
         - name: Anzeigen des Überwachungsverlaufs
           href: pim-how-to-use-audit-log.md
     - name: Verwalten von Azure-Ressourcenrollen
@@ -73,21 +83,21 @@
           href: azure-pim-resource-rbac.md
         - name: Verwenden von benutzerdefinierten Rollen
           href: pim-resource-roles-custom-role-policy.md
-    - name: Überprüfen des Zugriffs
+    - name: Zugriffsüberprüfungen
       items:
         - name: Azure AD-Rollen
           items:
-            - name: Überprüfen meiner Azure AD-Rollen
-              href: pim-how-to-perform-security-review.md
-            - name: Starten einer Zugriffsüberprüfung
+            - name: Erstellen einer Zugriffsüberprüfung
               href: pim-how-to-start-security-review.md
+            - name: Überprüfen des Zugriffs
+              href: pim-how-to-perform-security-review.md
             - name: Abschließen einer Zugriffsüberprüfung
               href: pim-how-to-complete-review.md
         - name: Azure-Ressourcenrollen
           items:
-            - name: Überprüfen meiner Azure-Ressourcenrollen
-              href: pim-resource-roles-perform-access-review.md
-            - name: Starten einer Zugriffsüberprüfung
+            - name: Erstellen einer Zugriffsüberprüfung
               href: pim-resource-roles-start-access-review.md
+            - name: Überprüfen des Zugriffs
+              href: pim-resource-roles-perform-access-review.md
             - name: Abschließen einer Zugriffsüberprüfung
               href: pim-resource-roles-complete-access-review.md

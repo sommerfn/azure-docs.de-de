@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: d1750f89b2cf2be071f3474a27297759084cf86e
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 5a6912f2df3f82596dc8ba6ecdd413f4cdc136d1
+ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59011253"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67465581"
 ---
 > [!div class="op_single_selector"]
 > - [C#: .NET unter Windows](~/articles/cognitive-services/speech-service/quickstart-csharp-dotnet-windows.md)
@@ -21,8 +21,9 @@ ms.locfileid: "59011253"
 > - [C++: macOS](~/articles/cognitive-services/speech-service/quickstart-cpp-macos.md)
 > - [Java: Android](~/articles/cognitive-services/speech-service/quickstart-java-android.md)
 > - [Java: JRE](~/articles/cognitive-services/speech-service/quickstart-java-jre.md)
-> - [JavaScript: "Browser"](~/articles/cognitive-services/speech-service/quickstart-js-browser.md)
+> - [JavaScript: Browser](~/articles/cognitive-services/speech-service/quickstart-js-browser.md)
 > - [JavaScript: Node.js](~/articles/cognitive-services/speech-service/quickstart-js-node.md)
 > - [Objective-C: iOS](~/articles/cognitive-services/speech-service/quickstart-objectivec-ios.md)
 > - [Objective-C: macOS](~/articles/cognitive-services/speech-service/quickstart-objective-c-macos.md)
+> - [Swift: iOS](~/articles/cognitive-services/speech-service/quickstart-swift-ios.md)
 > - [Python](~/articles/cognitive-services/speech-service/quickstart-python.md)

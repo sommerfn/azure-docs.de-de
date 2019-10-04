@@ -2,8 +2,8 @@
 title: Hochverfügbarkeit – Azure-Dienst für dedizierte HSMs | Microsoft-Dokumentation
 description: Hochverfügbarkeitsbeispiel für Azure-Dienst für dedizierte HSMs und grundlegende Überlegungen
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: 8a3698232c90d0705cb97677781ad512fffab803
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.author: mbaldwin
+ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539240"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882252"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure-Dienst für dedizierte HSMs – Hochverfügbarkeit
 
@@ -25,7 +25,7 @@ Der Azure-Dienst für dedizierte HSMs wird durch die hoch verfügbaren Rechenzen
 
 ## <a name="high-availability-example"></a>Beispiel für Hochverfügbarkeit
 
-Informationen zum Konfigurieren von HSM-Geräten für hohe Verfügbarkeit auf Softwareebene finden Sie im „Gemalto Luna Network HSM Administration Guide“ (Gemalto Luna-Netzwerk-HSM-Administratorhandbuch). Dieses Dokument ist über das [Gemalto-Kundensupportportal](https://supportportal.gemalto.com/csm/) verfügbar.
+Informationen zum Konfigurieren von HSM-Geräten für hohe Verfügbarkeit auf Softwareebene finden Sie im „Gemalto Luna Network HSM Administration Guide“ (Gemalto Luna-Netzwerk-HSM-Administratorhandbuch). Dieses Dokument ist auf der [Gemalto-HSM-Seite](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) verfügbar.
 
 Im folgenden Diagramm ist eine hoch verfügbare Architektur dargestellt. Sie verwendet mehrere Geräte in der Region und mehrere verbundene Geräte in einer separaten Region. Diese Architektur verwendet mindestens vier HSM-Geräte und virtuelle Netzwerkkomponenten.
 

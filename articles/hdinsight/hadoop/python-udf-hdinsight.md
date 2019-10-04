@@ -1,7 +1,6 @@
 ---
 title: Python-UDF mit Apache Hive und Apache Pig – Azure HDInsight
 description: Erfahren Sie, wie Sie benutzerdefinierte Python-Funktionen mit Apache Hive und Apache Pig in HDInsight, dem Apache Hadoop-Technologiestapel in Azure, verwenden können.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: adcfb308bbbc8e3de456c4e7a71c543f988db02a
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 49fd69c124ff9053f3934aefd349e039b437df0d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497991"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68354959"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Verwenden benutzerdefinierter Python-Funktionen mit Apache Hive und Apache Pig in HDInsight
 
@@ -162,9 +161,6 @@ Ersetzen Sie `sshuser` in den folgenden Befehlen durch den tatsächlichen Benutz
     ```
 
 ### <a name="upload-file-powershell"></a>Hochladen einer Datei (PowerShell)
-
-> [!IMPORTANT]  
-> Diese PowerShell-Skripts funktionieren nicht, wenn die [sichere Übertragung](../../storage/common/storage-require-secure-transfer.md) aktiviert ist.  Verwenden Sie entweder Shellbefehle, oder deaktivieren Sie die sichere Übertragung.
 
 PowerShell kann auch zur Remoteausführung von Hive-Abfragen verwendet werden. Stellen Sie sicher, dass das Arbeitsverzeichnis das Verzeichnis ist, in dem sich die Datei `hiveudf.py` befindet.  Verwenden Sie das folgende PowerShell-Skript zum Ausführen einer Hive-Abfrage, für die das `hiveudf.py`-Skript verwendet wird:
 
@@ -327,6 +323,7 @@ Erstellen Sie in Ihrer Entwicklungsumgebung eine Textdatei namens `pigudf.py`. F
 # Uncomment the following if using C Python
 #from pig_util import outputSchema
 
+
 @outputSchema("log: {(date:chararray, time:chararray, classname:chararray, level:chararray, detail:chararray)}")
 def create_structure(input):
     if (input.startswith('java.lang.Exception')):
@@ -434,9 +431,6 @@ Ersetzen Sie `sshuser` in den folgenden Befehlen durch den tatsächlichen Benutz
 
 
 ### <a name="upload-file-powershell"></a>Hochladen einer Datei (PowerShell)
-
-> [!IMPORTANT]  
-> Diese PowerShell-Skripts funktionieren nicht, wenn die [sichere Übertragung](../../storage/common/storage-require-secure-transfer.md) aktiviert ist.  Verwenden Sie entweder Shellbefehle, oder deaktivieren Sie die sichere Übertragung.
 
 PowerShell kann auch zur Remoteausführung von Hive-Abfragen verwendet werden. Stellen Sie sicher, dass das Arbeitsverzeichnis das Verzeichnis ist, in dem sich die Datei `pigudf.py` befindet.  Verwenden Sie das folgende PowerShell-Skript zum Ausführen einer Hive-Abfrage, für die das `pigudf.py`-Skript verwendet wird:
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: cosmosdb-table
-ms.openlocfilehash: 840c2793928816c6346e2039a38678585f8e0bc7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b1cae7dc553ce324349e66f1bcb8a281d7c7c7e0
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273123"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62101291"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Ausführen von Azure Table Storage-Vorgängen mit Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -101,7 +101,7 @@ New-AzStorageTable –Name $tableName –Context $ctx
 
 ## <a name="retrieve-a-list-of-tables-in-the-storage-account"></a>Abrufen einer Liste mit Tabellen im Speicherkonto
 
-Rufen Sie mithilfe von [Get-AzStorageTable](/powershell/module/az.storage/Get-AzureStorageTable) eine Liste mit Tabellen im Speicherkonto ab.
+Rufen Sie mithilfe von [Get-AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable) eine Liste mit Tabellen im Speicherkonto ab.
 
 ```powershell
 Get-AzStorageTable –Context $ctx | select Name
@@ -109,7 +109,7 @@ Get-AzStorageTable –Context $ctx | select Name
 
 ## <a name="retrieve-a-reference-to-a-specific-table"></a>Abrufen eines Verweises auf eine bestimmte Tabelle
 
-Zum Ausführen von Vorgängen für eine Tabelle wird ein Verweis auf die gewünschte Tabelle benötigt. Verwenden Sie [Get-AzStorageTable](/powershell/module/az.storage/Get-AzureStorageTable), um einen Verweis abzurufen.
+Zum Ausführen von Vorgängen für eine Tabelle wird ein Verweis auf die gewünschte Tabelle benötigt. Verwenden Sie [Get-AzStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable), um einen Verweis abzurufen.
 
 ```powershell
 $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
@@ -163,6 +163,6 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Storage PowerShell-Cmdlets](/powershell/module/az.storage#storage)
 
-* [Arbeiten mit Azure-Tabellen über PowerShell – AzureRmStorageTable/AzTable PS Module v2.0](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
+* [Working with Azure Tables from PowerShell – AzureRmStorageTable/AzTable PS Module v2.0 (Arbeiten mit Azure-Tabellen über PowerShell – AzureRmStorageTable/AzTable PS Module v2.0)](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
 
 * Beim [Microsoft Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.

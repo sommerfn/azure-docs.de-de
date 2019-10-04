@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/19/2019
+ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73e5b081e85726a1fc78d92996846faa18ce616a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c357cba8ce2fbe2ad902d5c215f8adbfc99a9f0a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897621"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813027"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
-In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Importieren von Workerprofilen aus Workday in sowohl Active Directory als auch Azure Active Directory ausführen müssen, wobei einige E-Mail-Adressen optional in Workday zurückgeschrieben werden.
+In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Importieren von Workerprofilen aus Workday in Active Directory und Azure Active Directory ausführen müssen, wobei einige E-Mail-Adressen und Benutzernamen optional in Workday zurückgeschrieben werden.
 
 ## <a name="overview"></a>Übersicht
 
@@ -34,7 +34,7 @@ Der [Azure Active Directory-Benutzerbereitstellungsdienst](../manage-apps/user-p
 
 * **Bereitstellung reiner Cloudbenutzer in Azure Active Directory**: In Szenarien, in denen kein lokales Active Directory verwendet wird, können Benutzer mithilfe des Azure AD-Benutzerbereitstellungsdiensts direkt aus Workday in Azure Active Directory bereitgestellt werden.
 
-* **Zurückschreiben von E-Mail-Adressen in Workday**: Der Azure AD-Benutzerbereitstellungsdienst kann die E-Mail-Adressen von Azure AD-Benutzern in Workday zurückschreiben.
+* **Zurückschreiben von E-Mail-Adressen und Benutzernamen in Workday:** Der Azure AD-Benutzerbereitstellungsdienst kann die E-Mail-Adressen und den Benutzernamen von Azure AD in Workday zurückschreiben.
 
 ### <a name="what-human-resources-scenarios-does-it-cover"></a>Welche Szenarien im Personalwesen werden unterstützt?
 
@@ -50,7 +50,7 @@ Die vom Azure AD-Benutzerbereitstellungsdienst unterstützten Workday-Workflows 
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Für wen ist diese Benutzerbereitstellungslösung am besten geeignet?
 
-Diese Workday-Benutzerbereitstellungslösung ist derzeit als öffentliche Vorschauversion verfügbar und eignet sich ideal für:
+Diese Workday-Benutzerbereitstellungslösung eignet sich ideal für:
 
 * Organisationen, die eine vorgefertigte, cloudbasierte Lösung für die Workday-Benutzerbereitstellung verwenden möchten
 
@@ -67,7 +67,7 @@ Diese Workday-Benutzerbereitstellungslösung ist derzeit als öffentliche Vorsch
 In diesem Abschnitt wird die Lösungsarchitektur der End-to-End-Benutzerbereitstellung für häufige Hybridumgebungen beschrieben. Es gibt zwei zugehörige Flows:
 
 * **Autoritativer Personaldatenfluss – von Workday in ein lokales Active Directory-Verzeichnis**: In diesem Flow treten mitarbeiterbezogene Ereignisse (z.B. Neueinstellungen, Wechsel, Kündigungen) zuerst im Cloud-HR-Mandanten von Workday auf und werden dann über Azure AD und den Bereitstellungs-Agent in ein lokales Active Directory-Verzeichnis übertragen. Abhängig vom Ereignis kann dies dann in Active Directory zu Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgängen führen.
-* **E-Mail-Rückschreibedatenfluss – vom lokalen Active Directory-Verzeichnis zu Workday**: Nach Abschluss der Kontoerstellung in Active Directory wird dieses über Azure AD Connect mit Azure AD synchronisiert. Anschließend kann das E-Mail-Attribut aus Active Directory zurück in Workday geschrieben werden.
+* **Zurückschreibeflow für E-Mail-Adressen und Benutzernamen– von lokalen Active Directory-Instanzen zu Workday:** Nach Abschluss der Kontoerstellung in Active Directory wird das Konto über Azure AD Connect mit Azure AD synchronisiert. Anschließend können die Attribute für die E-Mail-Adresse und den Benutzernamen aus Active Directory in Workday zurückgeschrieben werden.
 
 ![Übersicht](./media/workday-inbound-tutorial/wd_overview.png)
 
@@ -79,7 +79,7 @@ In diesem Abschnitt wird die Lösungsarchitektur der End-to-End-Benutzerbereitst
 4. Der Azure AD Connect-Bereitstellungs-Agent verwendet ein Dienstkonto zum Hinzufügen/Aktualisieren von AD-Kontodaten.
 5. Die Azure AD Connect-/AAD Sync-Engine führt eine Deltasynchronisierung aus, um Updates in Active Directory zu pullen.
 6. Die Active Directory-Updates werden mit Azure Active Directory synchronisiert.
-7. Wenn der Workday Writeback-Connector konfiguriert ist, schreibt er das E-Mail-Attribut zurück in Workday, wenn das verwendete Attribut übereinstimmt.
+7. Wenn der Workday Writeback-Connector konfiguriert ist, schreibt er das E-Mail-Attribut und den Benutzernamen zurück in Workday, wenn das verwendete Attribut übereinstimmt.
 
 ## <a name="planning-your-deployment"></a>Planen der Bereitstellung
 
@@ -152,8 +152,8 @@ In diesem Szenario haben Sie einen Workday-Mandanten und möchten die Benutzer f
 
 |   |   |
 | - | - |
-|  Nein. der lokal bereitzustellenden Bereitstellungs-Agents | 3 (für Hochverfügbarkeit und Failover) |
-|  Nein. der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | 1 |
+| Nein. der lokal bereitzustellenden Bereitstellungs-Agents | 3 (für Hochverfügbarkeit und Failover) |
+| Nein. der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | 1 |
 
   ![Szenario 1](./media/workday-inbound-tutorial/dep_scenario1.png)
 
@@ -163,8 +163,8 @@ Dieses Szenario beinhaltet die Bereitstellung von Benutzern aus Workday für meh
 
 |   |   |
 | - | - |
-|  Nein. der lokal bereitzustellenden Bereitstellungs-Agents | 3 (für Hochverfügbarkeit und Failover) |
-|  Nein. der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | Eine App pro untergeordneter Domäne |
+| Nein. der lokal bereitzustellenden Bereitstellungs-Agents | 3 (für Hochverfügbarkeit und Failover) |
+| Nein. der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | Eine App pro untergeordneter Domäne |
 
   ![Szenario 2:](./media/workday-inbound-tutorial/dep_scenario2.png)
 
@@ -174,8 +174,8 @@ Dieses Szenario beinhaltet die Bereitstellung von Benutzern aus Workday für Dom
 
 |   |   |
 | - | - |
-|  Nein. der lokal bereitzustellenden Bereitstellungs-Agents | 3 pro nicht zusammenhängender AD-Gesamtstruktur |
-|  Nein. der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | Eine App pro untergeordneter Domäne |
+| Nein. der lokal bereitzustellenden Bereitstellungs-Agents | 3 pro nicht zusammenhängender AD-Gesamtstruktur |
+| Nein. der im Azure-Portal zu konfigurierenden „Workday to AD“-Benutzerbereitstellungs-Apps | Eine App pro untergeordneter Domäne |
 
   ![Szenario 3](./media/workday-inbound-tutorial/dep_scenario3.png)
 
@@ -285,7 +285,8 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe die Berechtigungen der Dom
    * *Worker Data: All Positions* (Mitarbeiterdaten: alle Positionen)
    * *Worker Data: Current Staffing Information* (Mitarbeiterdaten: aktuelle Personalinformationen)
    * *Worker Data: Business Title on Worker Profile* (Mitarbeiterdaten: Berufsbezeichnung in Mitarbeiterprofil)
-
+   * *Workday-Konten*
+   
      ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_07.png "Domänensicherheitsrichtlinien")  
 
      ![Domänensicherheitsrichtlinien](./media/workday-inbound-tutorial/wd_isu_08.png "Domänensicherheitsrichtlinien") 
@@ -313,6 +314,7 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe die Berechtigungen der Dom
    | Get | Mitarbeiterdaten: alle Positionen |
    | Get | Mitarbeiterdaten: aktuelle Personalinformationen |
    | Get | Mitarbeiterdaten: Berufsbezeichnung in Mitarbeiterprofil |
+   | Get und Put | Workday-Konten |
 
 ### <a name="configuring-business-process-security-policy-permissions"></a>Konfigurieren von Sicherheitsrichtlinienberechtigungen für Geschäftsprozesse
 
@@ -368,19 +370,22 @@ Um Active Directory lokal bereitzustellen, muss ein Agent auf einem Server insta
 
 Nachdem Sie .NET 4.7.1 oder höher bereitgestellt haben, können Sie den **[lokalen Bereitstellungs-Agent hier](https://go.microsoft.com/fwlink/?linkid=847801)** herunterladen. Führen Sie die folgenden Schritte aus, um die Agent-Konfiguration abzuschließen.
 
-1. Melden Sie sich auf dem Windows Server an, auf dem Sie den neuen Agent installieren möchten.
-2. Starten Sie den Installer für den Bereitstellungs-Agent, akzeptieren Sie die Bedingungen, und klicken Sie auf die Schaltfläche **Installieren**.
+1. Melden Sie sich bei dem Windows Server an, auf dem Sie den neuen Agent installieren möchten.
+
+1. Starten Sie den Installer für den Bereitstellungs-Agent, akzeptieren Sie die Bedingungen, und klicken Sie auf die Schaltfläche **Installieren**.
 
    ![Installationsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_1.png "Installationsbildschirm")
-3. Nachdem die Installation abgeschlossen ist, wird der Assistent gestartet, und der Bildschirm **Azure AD verbinden** wird angezeigt. Klicken Sie auf die Schaltfläche **Authentifizieren**, um eine Verbindung mit Ihrer Azure AD-Instanz herzustellen.
+   
+1. Nachdem die Installation abgeschlossen ist, wird der Assistent gestartet, und der Bildschirm **Azure AD verbinden** wird angezeigt. Klicken Sie auf die Schaltfläche **Authentifizieren**, um eine Verbindung mit Ihrer Azure AD-Instanz herzustellen.
 
    ![Azure AD verbinden](./media/workday-inbound-tutorial/pa_install_screen_2.png "Azure AD verbinden")
+   
 1. Authentifizieren Sie Ihre Azure AD-Instanz mit den Anmeldeinformationen eines globalen Administrators.
 
    ![Administratorauthentifizierung](./media/workday-inbound-tutorial/pa_install_screen_3.png "Administratorauthentifizierung")
 
-> [!NOTE]
-> Die Azure AD-Administratoranmeldeinformationen dienen nur zur Herstellung einer Verbindung mit Ihrem Azure AD-Mandanten. Der Agent speichert die Anmeldeinformationen nicht lokal auf dem Server.
+   > [!NOTE]
+   > Die Azure AD-Administratoranmeldeinformationen dienen nur zur Herstellung einer Verbindung mit Ihrem Azure AD-Mandanten. Der Agent speichert die Anmeldeinformationen nicht lokal auf dem Server.
 
 1. Nach der erfolgreichen Authentifizierung mit Azure AD wird der Bildschirm **Active Directory verbinden** angezeigt. In diesem Schritt geben Sie Ihren AD-Domänennamen an und klicken auf die Schaltfläche **Verzeichnis hinzufügen**.
 
@@ -389,21 +394,27 @@ Nachdem Sie .NET 4.7.1 oder höher bereitgestellt haben, können Sie den **[loka
 1. Sie werden daraufhin aufgefordert, die Anmeldeinformationen für die Verbindung mit der AD-Domäne einzugeben. Auf dem gleichen Bildschirm können Sie die **Domänencontrollerpriorität auswählen**, um Domänencontroller anzugeben, die der Agent zum Senden von Bereitstellungsanforderungen verwenden soll.
 
    ![Anmeldeinformationen für die Domäne](./media/workday-inbound-tutorial/pa_install_screen_5.png)
+   
 1. Nach dem Konfigurieren der Domäne zeigt der Installer eine Liste der konfigurierten Domänen an. Auf diesem Bildschirm können Sie Schritt 5 und 6 wiederholen, um weitere Domänen hinzuzufügen, oder auf **Weiter** klicken, um mit der Registrierung des Agents fortzufahren.
 
    ![Konfigurierte Domänen](./media/workday-inbound-tutorial/pa_install_screen_6.png "Konfigurierte Domänen")
 
    > [!NOTE]
-   > Wenn Sie über mehrere AD-Domänen verfügen (z.B. na.contoso.com, emea.contoso.com), fügen Sie jede Domäne einzeln der Liste hinzu. Es reicht nicht aus, nur die übergeordnete Domäne (z.B. „contoso.com“) hinzufügen. Sie müssen jede untergeordnete Domäne mit dem Agent registrieren.
+   > Wenn Sie über mehrere AD-Domänen verfügen (z.B. na.contoso.com, emea.contoso.com), fügen Sie jede Domäne einzeln der Liste hinzu.
+   > Es reicht nicht aus, nur die übergeordnete Domäne (z.B. „contoso.com“) hinzufügen. Sie müssen jede untergeordnete Domäne mit dem Agent registrieren.
+   
 1. Überprüfen Sie die Konfigurationsdetails, und klicken Sie auf **Bestätigen**, um den Agent zu registrieren.
   
    ![Bestätigungsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_7.png "Bestätigungsbildschirm")
+   
 1. Der Konfigurations-Assistent zeigt den Fortschritt der Agent-Registrierung an.
   
    ![Agent-Registrierung](./media/workday-inbound-tutorial/pa_install_screen_8.png "Agent-Registrierung")
+   
 1. Nach der erfolgreichen Agent-Registrierung können Sie auf **Beenden** klicken, um den Assistenten zu beenden.
   
    ![Abschlussbildschirm](./media/workday-inbound-tutorial/pa_install_screen_9.png "Abschlussbildschirm")
+   
 1. Überprüfen Sie die Installation des Agents, und stellen Sie sicher, dass er ausgeführt wird, indem Sie das Snap-In „Dienste“ öffnen und nach dem Dienst mit der Bezeichnung „Microsoft Azure AD Connect Provisioning Agent“ suchen.
   
    ![Dienste](./media/workday-inbound-tutorial/services.png)
@@ -438,13 +449,14 @@ Nachdem Sie .NET 4.7.1 oder höher bereitgestellt haben, können Sie den **[loka
 
    * **Active Directory-Container:** Geben Sie den DN des Containers an, in dem der Agent Benutzerkonten standardmäßig erstellen soll.
         Beispiel: *OU=Standard Users,OU=Users,DC=contoso,DC=test*
+        
      > [!NOTE]
      > Diese Einstellung wird nur für die Benutzerkontoerstellung verwendet, wenn das Attribut *parentDistinguishedName* nicht in den Attributzuordnungen konfiguriert ist. Diese Einstellung wird nicht zum Suchen von Benutzern oder für Updatevorgänge verwendet. Der Suchvorgang schließt die gesamte Domänenteilstruktur ein.
 
    * **Benachrichtigungs-E-Mail**: Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
 
-> [!NOTE]
-> Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) wechselt.
+     > [!NOTE]
+     > Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine) wechselt.
 
    * Klicken Sie auf die Schaltfläche **Verbindung testen**. Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern**. Überprüfen Sie bei einem Fehler, ob die Workday-Anmeldeinformationen und die AD-Anmeldeinformationen, die beim Einrichten des Agents angegeben wurden, gültig sind.
 
@@ -458,9 +470,9 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
 1. Klicken Sie auf der Registerkarte „Bereitstellung“ unter **Zuordnungen** auf **Workday-Worker in lokalem Active Directory synchronisieren**.
 
-2. Im Feld **Quellobjektbereich** können Sie die Benutzergruppen in Workday für die Bereitstellung in Active Directory auswählen, indem Sie verschiedene attributbasierte Filter definieren. Die Standardoption ist „Alle Benutzer in Workday“. Beispielfilter:
+1. Im Feld **Quellobjektbereich** können Sie die Benutzergruppen in Workday für die Bereitstellung in Active Directory auswählen, indem Sie verschiedene attributbasierte Filter definieren. Die Standardoption ist „Alle Benutzer in Workday“. Beispielfilter:
 
-   * Beispiel: Auswählen der Benutzer mit Mitarbeiter-IDs von 1000000 bis 2000000
+   * Beispiel: Auswählen der Benutzer mit Worker-IDs von 1000000 bis 2000000 (außer 2000000)
 
       * Attribut: WorkerID
 
@@ -474,9 +486,12 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
       * Operator: IS NOT NULL
 
-> [!TIP]
-> Wenn Sie die Bereitstellungs-App zum ersten Mal konfigurieren, müssen Sie Ihre Attributzuordnungen und Ausdrücke testen und überprüfen, um sicherzustellen, dass sie damit das gewünschte Ergebnis erzielen. Microsoft empfiehlt, die Bereichsfilter unter **Quellobjektbereich** zu verwenden, um Ihre Zuordnungen mit einigen Testbenutzern von Workday zu testen. Sobald Sie sich vergewissert haben, dass die Zuordnungen funktionieren, können Sie den Filter entweder entfernen oder schrittweise erweitern, um mehr Benutzer einzubinden.
+   > [!TIP]
+   > Wenn Sie die Bereitstellungs-App zum ersten Mal konfigurieren, müssen Sie Ihre Attributzuordnungen und Ausdrücke testen und überprüfen, um sicherzustellen, dass sie damit das gewünschte Ergebnis erzielen. Microsoft empfiehlt, die Bereichsfilter unter **Quellobjektbereich** zu verwenden, um Ihre Zuordnungen mit einigen Testbenutzern von Workday zu testen. Sobald Sie sich vergewissert haben, dass die Zuordnungen funktionieren, können Sie den Filter entweder entfernen oder schrittweise erweitern, um mehr Benutzer einzubinden.
 
+   > [!CAUTION] 
+   > Beim Standardverhalten des Bereitstellungsmoduls werden Benutzer deaktiviert/gelöscht, die sich außerhalb des gültigen Bereichs befinden. Dies ist bei Ihrer Integration von Workday in AD möglicherweise nicht wünschenswert. Informationen zum Außerkraftsetzen dieses Standardverhaltens finden Sie im Artikel [Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](../manage-apps/skip-out-of-scope-deletions.md).
+  
 1. Im Feld **Zielobjektaktionen** können Sie global filtern, welche Aktionen auf Active Directory angewendet werden. **Erstellen** und **Aktualisieren** erfolgen am häufigsten.
 
 1. Im Abschnitt **Attributzuordnungen** können Sie definieren, wie einzelne Workday-Attribute Active Directory-Attributen zugeordnet werden.
@@ -649,9 +664,9 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
 Sobald Ihre Attributzuordnungskonfiguration abgeschlossen ist, können Sie jetzt [den Benutzerbereitstellungsdienst aktivieren und starten](#enable-and-launch-user-provisioning).
 
-## <a name="configuring-writeback-of-email-addresses-to-workday"></a>Konfigurieren des Zurückschreibens von E-Mail-Adressen in Workday
+## <a name="configuring-azure-ad-attribute-writeback-to-workday"></a>Konfigurieren der Azure AD-Attributzurückschreibung in Workday
 
-Befolgen Sie diese Anweisungen zum Konfigurieren des Zurückschreibens von E-Mail-Adressen der Benutzer aus Azure Active Directory in Workday.
+Befolgen Sie diese Anweisungen, um die Zurückschreibung der E-Mail-Adressen und Benutzernamen der Benutzer aus Azure Active Directory in Workday zu konfigurieren.
 
 * [Hinzufügen der Writeback-Connector-App und Herstellen der Verbindung mit Workday](#part-1-adding-the-writeback-connector-app-and-creating-the-connection-to-workday)
 * [Konfigurieren von Writeback-Attributzuordnungen](#part-2-configure-writeback-attribute-mappings)
@@ -689,7 +704,7 @@ Befolgen Sie diese Anweisungen zum Konfigurieren des Zurückschreibens von E-Mai
 
 ### <a name="part-2-configure-writeback-attribute-mappings"></a>Teil 2: Konfigurieren von Writeback-Attributzuordnungen
 
-In diesem Abschnitt werden Sie konfigurieren, wie die Writebackattribute von Azure AD zu Workday übertragen werden.
+In diesem Abschnitt werden Sie konfigurieren, wie die Writebackattribute von Azure AD zu Workday übertragen werden. Derzeit unterstützt der Connector nur die Zurückschreibung von E-Mail-Adressen und Benutzernamen in Workday.
 
 1. Klicken Sie auf der Registerkarte „Bereitstellung“ unter **Zuordnungen** auf **Azure Active Directory-Benutzer in Workday synchronisieren**.
 
@@ -697,9 +712,9 @@ In diesem Abschnitt werden Sie konfigurieren, wie die Writebackattribute von Azu
 
 3. Aktualisieren Sie im Abschnitt **Attributzuordnungen** die entsprechende ID, um das Attribut in Azure Active Directory anzugeben, in dem die Mitarbeiter-ID von Workday gespeichert ist. Eine gängige Methode für den Abgleich ist das Synchronisieren der Mitarbeiter-ID von Workday mit „extensionAttribute“ 1-15 in Azure AD und das anschließende Verwenden dieses Attributs in Azure AD, um die Benutzer wieder mit Workday abzugleichen.
 
-4. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern**, um Ihre Zuordnungen zu speichern.
+4. In der Regel ordnen Sie das Azure AD-Attribut *userPrincipalName* dem Workday-Attribut *UserID* und das Azure AD-Attribut *mail* dem Workday-Attribut *EmailAddress* zu. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern**, um Ihre Zuordnungen zu speichern.
 
-Sobald Ihre Attributzuordnungskonfiguration abgeschlossen ist, können Sie jetzt [den Benutzerbereitstellungsdienst aktivieren und starten](#enable-and-launch-user-provisioning). 
+Sobald Ihre Attributzuordnungskonfiguration abgeschlossen ist, können Sie jetzt [den Benutzerbereitstellungsdienst aktivieren und starten](#enable-and-launch-user-provisioning).
 
 ## <a name="enable-and-launch-user-provisioning"></a>Aktivieren und Starten der Benutzerbereitstellung
 
@@ -782,6 +797,7 @@ Die Lösung verwendet derzeit die folgenden Workday-APIs:
 
 * Get_Workers (v21.1) zum Abrufen von Workerinformationen
 * Maintain_Contact_Information (v26.1) für die Writeback-Funktion für geschäftliche E-Mails
+* Update_Workday_Account (v31.2) für das Feature zum Zurückschreiben von Benutzernamen
 
 #### <a name="can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants"></a>Kann ich meinen Workday-HCM-Mandanten mit zwei Azure AD-Mandanten konfigurieren?
 
@@ -816,7 +832,7 @@ Wenn Sie eine neue Idee vorschlagen, überprüfen Sie bitte, ob eine ähnliche F
 
 #### <a name="how-do-i-know-the-version-of-my-provisioning-agent"></a>Wie kann ich die Version meines Bereitstellungs-Agents ermitteln?
 
-* Melden Sie sich beim Windows Server an, auf dem der Bereitstellungs-Agent installiert ist.
+* Melden Sie sich bei dem Windows Server an, auf dem der Bereitstellungs-Agent installiert ist.
 * Wechseln Sie zu **Systemsteuerung** -> **Deinstallieren oder Ändern eines Programms**.
 * Suchen Sie nach der Version für den Eintrag **Microsoft Azure AD Connect-Bereitstellungs-Agent**.
 
@@ -867,7 +883,7 @@ Ja, ein Bereitstellungs-Agent kann konfiguriert werden, um mehrere AD-Domänen z
 #### <a name="how-do-i-de-register-the-domain-associated-with-my-provisioning-agent"></a>Wie hebe ich die Registrierung der meinem Bereitstellungs-Agent zugeordneten Domäne wieder auf?
 
 * Rufen Sie über das Azure-Portal die *Mandanten-ID* Ihres Azure AD-Mandanten ab.
-* Melden Sie sich beim Windows Server an, auf dem der Bereitstellungs-Agent ausgeführt wird.
+* Melden Sie sich bei dem Windows Server an, auf dem der Bereitstellungs-Agent ausgeführt wird.
 * Öffnen Sie PowerShell als Windows-Administrator.
 * Wechseln Sie in das Verzeichnis mit den Registrierungsskripten und führen Sie die folgenden Befehle aus, um den Parameter \[tenant ID\] durch den Wert Ihrer Mandanten-ID zu ersetzen.
 
@@ -878,7 +894,7 @@ Ja, ein Bereitstellungs-Agent kann konfiguriert werden, um mehrere AD-Domänen z
   ```
 
 * Kopieren Sie den Wert des Feldes „id“ aus der Liste der angezeigten Agents aus der Ressource, deren *resourceName* Ihrem AD-Domänennamen entspricht.
-* Fügen Sie die ID in folgenden Befehl ein, und führen sie in Powershell aus.
+* Fügen Sie den ID-Wert in den folgenden Befehl ein, und führen sie ihn in PowerShell aus.
 
   ```powershell
   Remove-PublishedResource -ResourceId "[resource ID]" -TenantId "[tenant ID]"
@@ -889,7 +905,7 @@ Ja, ein Bereitstellungs-Agent kann konfiguriert werden, um mehrere AD-Domänen z
 
 #### <a name="how-do-i-uninstall-the-provisioning-agent"></a>Wie deinstalliere ich den Bereitstellungs-Agent?
 
-* Melden Sie sich beim Windows Server an, auf dem der Bereitstellungs-Agent installiert ist.
+* Melden Sie sich bei dem Windows Server an, auf dem der Bereitstellungs-Agent installiert ist.
 * Wechseln Sie zu **Systemsteuerung** -> **Deinstallieren oder Ändern eines Programms**.
 * Deinstallieren Sie die folgenden Programme:
   * Microsoft Azure AD Connect-Bereitstellungs-Agent
@@ -946,13 +962,12 @@ Die Lösung unterstützt derzeit keine Einstellung von binären Attributen wie *
 
 #### <a name="how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances"></a>Wie formatiere ich Anzeigenamen in AD basierend auf den Attributen für Abteilung/Land/Stadt des Benutzers und wie gehe mit regionalen Abweichungen um?
 
-Es ist eine häufige Anforderung, das Attribut *displayName* in AD so zu konfigurieren, dass es auch Informationen über die Abteilung und das Land des Benutzers liefert. Wenn John Smith z.B. in der Marketingabteilung in den USA arbeitet, kann sein *displayName* als *Smith, John (Marketing-US)* angezeigt werden.
+Es ist eine häufige Anforderung, das Attribut *displayName* in AD so zu konfigurieren, dass es auch Informationen über die Abteilung und das Land / die Region des Benutzers liefert. Wenn John Smith z.B. in der Marketingabteilung in den USA arbeitet, kann sein *displayName* als *Smith, John (Marketing-US)* angezeigt werden.
 
-So können Sie Sie solche Anforderungen für die Konstruktion von *CN* oder *displayName* verarbeiten, um Attribute wie Unternehmen, Geschäftseinheit, Stadt oder Land aufzunehmen.
+So können Sie solche Anforderungen für die Konstruktion von *CN* oder *displayName* verarbeiten, um Attribute wie Unternehmen, Geschäftseinheit, Stadt oder Land/Region aufzunehmen.
 
 * Jedes Workday-Attribut wird über einen zugrundeliegenden XPATH-API-Ausdruck abgerufen, der in **Attributzuordnung -> Abschnitt „Erweitert“ -> Attributliste für Workday bearbeiten** konfigurierbar ist. Hier ist der XPATH-API-Standardausdruck für die Workday-Attribute *PreferredFirstName*, *PreferredLastName*, *Company* und *SupervisoryOrganization*.
 
-     [!div class="mx-tdCol2BreakAll"]
      | Workday-Attribut | API-XPATH-Ausdruck |
      | ----------------- | -------------------- |
      | PreferredFirstName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:First_Name/text() |
@@ -976,7 +991,7 @@ So können Sie Sie solche Anforderungen für die Konstruktion von *CN* oder *dis
 
   Vergewissern Sie sich bei Ihrem Workday-Team, dass die obigen API-Ausdrücke für Ihre Workday-Mandantenkonfiguration gültig ist. Bei Bedarf können Sie sie gemäß den Schritten in [Anpassen der Liste der Workday-Benutzerattribute](#customizing-the-list-of-workday-user-attributes) bearbeiten.
 
-* Um den richtigen Attributzuordnungsausdruck zu erstellen, identifizieren Sie, welches Workday-Attribut „autoritativ“ den Vornamen, Nachnamen, das Land und die Abteilung des Benutzers darstellt. Nehmen wir an, die Attribute sind *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* und *SupervisoryOrganization*. Sie können dies verwenden, um einen Ausdruck für das AD-Attribut *displayName* wie folgt aufzubauen, um einen Anzeigenamen wie *Smith, John (Marketing-US)* zu erhalten.
+* Um den richtigen Attributzuordnungsausdruck zu erstellen, identifizieren Sie, welches Workday-Attribut „autoritativ“ den Vornamen, Nachnamen, das Land / die Region und die Abteilung des Benutzers darstellt. Nehmen wir an, die Attribute sind *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* und *SupervisoryOrganization*. Sie können dies verwenden, um einen Ausdruck für das AD-Attribut *displayName* wie folgt aufzubauen, um einen Anzeigenamen wie *Smith, John (Marketing-US)* zu erhalten.
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
@@ -1008,7 +1023,7 @@ Nehmen wir an, Sie möchten eindeutige Werte für das Attribut *samAccountName* 
 SelectUniqueValue(
     Replace(Mid(Replace(NormalizeDiacritics(StripSpaces(Join("",  Mid([FirstName],1,1), [LastName]))), , "([\\/\\\\\\[\\]\\:\\;\\|\\=\\,\\+\\*\\?\\<\\>])", , "", , ), 1, 20), , "(\\.)*$", , "", , ),
     Replace(Mid(Replace(NormalizeDiacritics(StripSpaces(Join("",  Mid([FirstName],1,2), [LastName]))), , "([\\/\\\\\\[\\]\\:\\;\\|\\=\\,\\+\\*\\?\\<\\>])", , "", , ), 1, 20), , "(\\.)*$", , "", , ),
-    Replace(Mid(Replace(NormalizeDiacritics(StripSpaces(Join("",  Mid([FirstName],1,3), [LastName]))), , "([\\/\\\\\\[\\]\\:\\;\\|\\=\\,\\+\\*\\?\\<\\>])", , "", , ), 1, 20), , "(\\.)*$", , "", , ),
+    Replace(Mid(Replace(NormalizeDiacritics(StripSpaces(Join("",  Mid([FirstName],1,3), [LastName]))), , "([\\/\\\\\\[\\]\\:\\;\\|\\=\\,\\+\\*\\?\\<\\>])", , "", , ), 1, 20), , "(\\.)*$", , "", , )
 )
 ```
 
@@ -1041,7 +1056,7 @@ Dieser Abschnitt enthält die folgenden Aspekte bezüglich der Problembehandlung
 * Melden Sie sich beim Windows Server-Computer an, auf dem der Bereitstellungs-Agent bereitgestellt ist.
 * Öffnen Sie die Desktop-App **Windows Server-Ereignisanzeige**.
 * Klicken Sie auf **Windows-Protokolle > Anwendung**.
-* Verwenden Sie die Option **Aktuelles Protokoll filtern...**, um alle Ereignisse anzuzeigen, die unter der Quelle **AAD.Connect.ProvisioningAgent** protokolliert sind, anzuzeigen, und schließen Sie Ereignisse mit der Ereignis-ID „5“ aus, indem Sie den Filter „5“ angeben, wie unten dargestellt.
+* Verwenden Sie die Option **Aktuelles Protokoll filtern...** , um alle Ereignisse anzuzeigen, die unter der Quelle **AAD.Connect.ProvisioningAgent** protokolliert sind, anzuzeigen, und schließen Sie Ereignisse mit der Ereignis-ID „5“ aus, indem Sie den Filter „5“ angeben, wie unten dargestellt.
 
   ![Windows-Ereignisanzeige](media/workday-inbound-tutorial/wd_event_viewer_01.png))
 
@@ -1085,7 +1100,7 @@ Wenn Sie auf einen Datensatz im Überwachungsprotokoll klicken, wird die Seite *
   JoiningProperty : 21023 // Value of the Workday attribute that serves as the Matching ID
   ```
 
-  Um die Protokolldatensätze des Bereitstellungs-Agent zu finden, die diesem AD-Importvorgang entsprechen, öffnen Sie die Protokolle der Windows-Ereignisanzeige, und verwenden Sie die Option **Suche....**, um Protokolleinträge mit dem Attributwert für die übereinstimmende ID/Verknüpfungseigenschaft zu suchen (in diesem Fall *21023*).
+  Um die Protokolldatensätze des Bereitstellungs-Agent zu finden, die diesem AD-Importvorgang entsprechen, öffnen Sie die Protokolle der Windows-Ereignisanzeige, und verwenden Sie die Option **Suche....** , um Protokolleinträge mit dem Attributwert für die übereinstimmende ID/Verknüpfungseigenschaft zu suchen (in diesem Fall *21023*).
 
   ![Suchen](media/workday-inbound-tutorial/wd_event_viewer_02.png)
 
@@ -1118,7 +1133,7 @@ Wenn Sie auf einen Datensatz im Überwachungsprotokoll klicken, wird die Seite *
   TargetAnchor : 83f0156c-3222-407e-939c-56677831d525 // set to the value of the AD "objectGuid" attribute of the new user
   ```
 
-  Um die Protokolldatensätze des Bereitstellungs-Agent zu finden, die diesem AD-Exportvorgang entsprechen, öffnen Sie die Protokolle der Windows-Ereignisanzeige, und verwenden Sie die Option **Suche....**, um Protokolleinträge mit dem Attributwert für die übereinstimmende ID/Verknüpfungseigenschaft zu suchen (in diesem Fall *21023*).  
+  Um die Protokolldatensätze des Bereitstellungs-Agent zu finden, die diesem AD-Exportvorgang entsprechen, öffnen Sie die Protokolle der Windows-Ereignisanzeige, und verwenden Sie die Option **Suche....** , um Protokolleinträge mit dem Attributwert für die übereinstimmende ID/Verknüpfungseigenschaft zu suchen (in diesem Fall *21023*).  
 
   Suchen Sie nach einem HTTP POST-Datensatz, der dem Zeitstempel des Exportvorgangs mit *Event ID = 2* entspricht. Dieser Datensatz enthält die Attributwerte, die der Bereitstellungsdienst an den Bereitstellungs-Agent gesendet hat.
 
@@ -1321,66 +1336,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 ### <a name="exporting-and-importing-your-configuration"></a>Exportieren und Importieren Ihrer Konfiguration
 
-In diesem Abschnitt wird beschrieben, wie Sie mit der Microsoft Graph-API und dem Graph-Tester Ihre Zuordnungen und Schemata Ihres Workday-Bereitstellungsattributs in eine JSON-Datei exportieren und wieder in Azure AD importieren können.
-
-#### <a name="step-1-retrieve-your-workday-provisioning-app-service-principal-id-object-id"></a>Schritt 1: Abrufen Ihrer Dienstprinzipal-ID für die Workday-Bereitstellungs-App (Objekt-ID)
-
-1. Starten Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zum Abschnitt „Eigenschaften“ Ihrer Workday-Bereitstellungs-App.
-1. Kopieren Sie im Abschnitt „Eigenschaften“ Ihrer Bereitstellungs-App den GUID-Wert, der dem Feld *Objekt-ID* zugeordnet ist. Dieser Wert wird auch als die **ServicePrincipalId** Ihrer App bezeichnet, und wird in Graph-Tester-Vorgängen verwendet.
-
-   ![Dienstprinzipal-ID der Workday-App](./media/workday-inbound-tutorial/wd_export_01.png)
-
-#### <a name="step-2-sign-into-microsoft-graph-explorer"></a>Schritt 2: Anmelden bei Microsoft Graph-Tester
-
-1. Starten Sie den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer).
-1. Klicken Sie auf die Schaltfläche „Mit Microsoft anmelden“, und melden Sie sich mit den globalen Azure AD-Anmeldeinformationen oder mit den Anmeldeinformationen für den App-Administrator an.
-
-    ![Graph-Anmeldung](./media/workday-inbound-tutorial/wd_export_02.png)
-
-1. Nach der erfolgreichen Anmeldung sehen Sie die Details des Benutzerkontos im linken Bereich.
-
-#### <a name="step-3-retrieve-the-provisioning-job-id-of-the-workday-provisioning-app"></a>Schritt 3: Abrufen der Auftrags-ID für die Bereitstellung für die Workday-Bereitstellungs-App
-
-Führen Sie im Microsoft Graph-Tester die folgende GET-Abfrage durch und ersetzen Sie [servicePrincipalId] durch die in [Schritt 1](#step-1-retrieve-your-workday-provisioning-app-service-principal-id-object-id) extrahierte **ServicePrincipalId**.
-
-```http
-   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs
-```
-
-Sie erhalten eine Antwort, wie unten dargestellt. Kopieren Sie das „id attribut“ aus der Antwort. Dieser Wert ist die **ProvisioningJobId** und wird zum Abrufen der zugrundeliegenden Schemametadaten verwendet.
-
-   [![ID des Bereitstellungsauftrags](./media/workday-inbound-tutorial/wd_export_03.png)](./media/workday-inbound-tutorial/wd_export_03.png#lightbox)
-
-#### <a name="step-4-download-the-provisioning-schema"></a>Schritt 4: Herunterladen des Bereitstellungsschemas
-
-Führen Sie im Microsoft Graph-Tester die folgende GET-Abfrage durch und ersetzen Sie [servicePrincipalId] und [ProvisioningJobId] durch die in den vorherigen Schritten abgerufen Werten für „ServicePrincipalId“ und „ProvisioningJobId“.
-
-```http
-   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs/[ProvisioningJobId]/schema
-```
-
-Kopieren Sie das JSON-Objekt aus der Antwort, und speichern Sie sie in einer Datei, um eine Sicherung des Schemas zu erstellen.
-
-#### <a name="step-5-import-the-provisioning-schema"></a>Schritt 5: Importieren des Bereitstellungsschemas
-
-> [!CAUTION]
-> Führen Sie diesen Schritt nur aus, wenn Sie das Schema für eine Konfiguration ändern müssen, die nicht über das Azure-Portal geändert werden kann, oder wenn Sie die Konfiguration aus einer zuvor gesicherten Datei mit einem gültigen und funktionierenden Schema wiederherstellen müssen.
-
-Konfigurieren Sie im Microsoft Graph-Tester die folgende PUT-Abfrage durch und ersetzen Sie [servicePrincipalId] und [ProvisioningJobId] durch die in den vorherigen Schritten abgerufen Werten für „ServicePrincipalId“ und „ProvisioningJobId“.
-
-```http
-    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs/[ProvisioningJobId]/schema
-```
-
-Kopieren Sie auf der Registerkarte „Anforderungstext“ den Inhalt der JSON-Schemadatei.
-
-   [![Anforderungstext](./media/workday-inbound-tutorial/wd_export_04.png)](./media/workday-inbound-tutorial/wd_export_04.png#lightbox)
-
-Fügen Sie auf der Registerkarte „Anforderungsheader“ das Content-Type-Header-Attribut mit dem Wert „application/json“ ein.
-
-   [![Anforderungsheader](./media/workday-inbound-tutorial/wd_export_05.png)](./media/workday-inbound-tutorial/wd_export_05.png#lightbox)
-
-Klicken Sie auf die Schaltfläche „Abfrage ausführen“, um das neue Schema zu importieren.
+Entsprechende Informationen finden Sie im Artikel [Exportieren und Importieren der Bereitstellungskonfiguration](../manage-apps/export-import-provisioning-configuration.md).
 
 ## <a name="managing-personal-data"></a>Verwalten von personenbezogenen Daten
 

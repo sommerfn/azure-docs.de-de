@@ -3,19 +3,20 @@ title: Einrichten eines Azure Batch-Kontos für das Projekt Akustik
 titlesuffix: Azure Cognitive Services
 description: In dieser Vorgehensweise wird beschrieben, wie ein Azure Batch-Konto für die Verwendung mit Projekt Akustik Unity- und Unreal-Engineintegrationen eingerichtet wird.
 services: cognitive-services
-author: ashtat
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
-ms.openlocfilehash: 7a7f5f6738b4bc96b6248deb062c7b3f63048148
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.author: noelc
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8f0f726d9d23f20698d3510ad674331ad74fb703
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309672"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855082"
 ---
 # <a name="project-acoustics-azure-batch-account-setup"></a>Einrichten eines Azure Batch-Kontos für das Projekt Akustik
 In dieser Vorgehensweise wird beschrieben, wie ein Azure Batch-Konto für die Verwendung mit Projekt Akustik Unity- und Unreal-Engineintegrationen eingerichtet wird.

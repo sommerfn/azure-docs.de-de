@@ -1,5 +1,5 @@
 ---
-title: Hosten der RESTful-API mit CORS – Azure App Service | Microsoft-Dokumentation
+title: 'Tutorial: Hosten der RESTful-API mit CORS – Azure App Service'
 description: Hier erfahren Sie, wie Azure App Service Ihnen beim Hosten Ihrer RESTful-APIs mit CORS-Unterstützung hilft.
 services: app-service\api
 documentationcenter: dotnet
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b8c1130a45f60b9caaacd365cd1c256f50ed7675
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 137b569820ea7394b6a3beb24129c905a2efd123
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629565"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743873"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Tutorial: Hosten einer RESTful-API mit CORS in Azure App Service
 
@@ -168,7 +168,7 @@ In der Produktionsumgebung verfügt Ihre Browser-App anstelle der localhost-URL 
 
 ### <a name="enable-cors"></a>Aktivieren von CORS 
 
-Aktivieren Sie CORS in Cloud Shell mithilfe des Befehls [`az resource update`](/cli/azure/resource#az-resource-update) für die URL Ihres Clients. Ersetzen Sie den Platzhalter _&lt;appname>_.
+Aktivieren Sie CORS in Cloud Shell mithilfe des Befehls [`az resource update`](/cli/azure/resource#az-resource-update) für die URL Ihres Clients. Ersetzen Sie den Platzhalter _&lt;appname>_ .
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.cors.allowedOrigins="['http://localhost:5000']" --api-version 2015-06-01

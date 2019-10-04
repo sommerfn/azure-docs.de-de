@@ -4,14 +4,14 @@ description: Dieser Artikel beschreibt die verschiedenen Optionen, die für das 
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: 459ed4b6f16d3cfe5bb792be7f063a1253a3006e
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 3d52ba1abc22aae6121ea6a36f943851dfcca7a0
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242038"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467666"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Lesen des Azure Cosmos DB-Änderungsfeeds
 
@@ -23,7 +23,7 @@ Für die Arbeit mit dem Azure Cosmos DB-Änderungsfeed sind folgende Optionen ve
 
 ## <a name="using-azure-functions"></a>Verwenden von Azure Functions
 
-Azure Functions ist die einfachste und empfohlene Option. Wenn Sie einen Azure Cosmos DB-Trigger in einer Azure Functions-Anwendung erstellen, können Sie den Container auswählen, mit dem eine Verbindung hergestellt werden soll. Die Azure-Funktion wird immer dann ausgelöst, wenn eine Änderung am Container erfolgt. Trigger können im Azure Functions-Portal, im Azure Cosmos DB-Portal oder programmgesteuert über SDKs erstellt werden. Visual Studio und VS Code bieten Unterstützung für das Schreiben von Azure-Funktionen, und Sie können sogar die Azure Functions-CLI zur plattformübergreifenden Entwicklung verwenden. Sie können den Code auf Ihrem Desktop schreiben und debuggen und dann die Funktion mit einem Klick bereitstellen. Weitere Informationen finden Sie in den Artikeln [Serverloses Datenbankcomputing mithilfe von Azure Functions](serverless-computing-database.md) und [Verwenden von Änderungsfeeds mit Azure Functions](change-feed-functions.md).
+Azure Functions ist die einfachste und empfohlene Option. Wenn Sie einen Azure Functions-Trigger für Cosmos DB erstellen, können Sie den Container auswählen, mit dem eine Verbindung hergestellt werden soll. Die Azure-Funktion wird immer dann ausgelöst, wenn eine Änderung am Container erfolgt. Trigger können im Azure Functions-Portal, im Azure Cosmos DB-Portal oder programmgesteuert über SDKs erstellt werden. Visual Studio und VS Code bieten Unterstützung für das Schreiben von Azure-Funktionen, und Sie können sogar die Azure Functions-CLI zur plattformübergreifenden Entwicklung verwenden. Sie können den Code auf Ihrem Desktop schreiben und debuggen und dann die Funktion mit einem Klick bereitstellen. Weitere Informationen finden Sie in den Artikeln [Serverloses Datenbankcomputing mithilfe von Azure Functions](serverless-computing-database.md) und [Verwenden von Änderungsfeeds mit Azure Functions](change-feed-functions.md).
 
 ## <a name="using-the-change-feed-processor-library"></a>Verwenden der Change Feed Processor-Bibliothek
 

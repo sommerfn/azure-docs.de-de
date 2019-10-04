@@ -1,19 +1,19 @@
 ---
-title: 'Tutorial: Kopieren von Daten auf Ihr Microsoft Azure Data Box-Gerät mithilfe des Datenkopierdienst | Microsoft-Dokumentation'
+title: Tutorial zum Kopieren von Daten auf Ihr Azure Data Box-Gerät mithilfe des Datenkopierdiensts | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie mit dem Datenkopierdienst Daten auf Ihr Azure Data Box-Gerät kopieren.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 3f76721129906b57a05e597aade9f2febb609968
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: a8a8b9d872860425be721515a7087085acf12065
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343526"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67206059"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Tutorial: Kopieren von Daten in Azure Data Box (Vorschauversion) mithilfe des Datenkopierdiensts
 
@@ -59,7 +59,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
     |-------------------------------|---------|
     |**Auftragsname**                       |Eindeutiger Name für den Auftrag (weniger als 230 Zeichen). Auftragsnamen dürfen keines der folgenden Zeichen enthalten: \<, \>, \|, \?, \*, \\, \:, \/ und \\\.         |
     |**Quellpfad**                |Geben Sie den SMB-Pfad der Datenquelle im Format `\\<ServerIPAddress>\<ShareName>` oder `\\<ServerName>\<ShareName>` an.        |
-    |**Benutzername**                       |Benutzername im Format `\\<DomainName><UserName>` für den Zugriff auf die Datenquelle.        |
+    |**Benutzername**                       |Benutzername im Format `\\<DomainName><UserName>` für den Zugriff auf die Datenquelle. Wenn ein lokaler Administrator eine Verbindung herstellt, benötigt er explizite Sicherheitsberechtigungen. Klicken Sie mit der rechten Maustaste auf den Ordner, wählen Sie **Eigenschaften** aus und dann **Sicherheit**. Damit wird der lokale Administrator auf der Registerkarte **Sicherheit** hinzugefügt.       |
     |**Kennwort**                       |Kennwort für den Zugriff auf die Datenquelle.           |
     |**Zielspeicherkonto**    |Wählen Sie in der Liste das Zielspeicherkonto aus, in das die Daten hochgeladen werden sollen.         |
     |**Zieltyp**       |Wählen Sie den Zielspeichertyp in der Liste aus: **Blockblob**, **Seitenblob** oder **Azure Files**.        |

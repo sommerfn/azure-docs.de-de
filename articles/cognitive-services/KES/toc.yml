@@ -1,42 +1,35 @@
-items:
 - name: Dokumentation zu Knowledge Exploration Service (KES)
 - name: Übersicht
-  items:
-  - name: Informationen zu Knowledge Exploration Service
-    href: Overview.md
   expanded: true
+  items:
+    - name: Informationen zu Knowledge Exploration Service
+      href: Overview.md
 - name: Erste Schritte
   items:
-  - name: Erstellen eines Back-End-Moduls
-    href: GettingStarted.md
-  - name: Befehlszeile
-    href: CommandLine.md
-  - name: Schemaformat
-    href: SchemaFormat.md
-  - name: Datenformat
-    href: DataFormat.md
-  - name: Grammatikformat
-    href: GrammarFormat.md
-  - name: Semantikinterpretation
-    href: SemanticInterpretation.md
-  - name: Web-API-Schnittstelle
-    href: WebAPI.md
-    items:
-    - name: calchistogram
-      href: calchistogramMethod.md
-    - name: Evaluieren
-      href: evaluateMethod.md
-    - name: Interpretieren
-      href: interpretMethod.md
-  - name: Strukturierte Abfrageausdrücke
-    href: Expressions.md
+    - name: Erstellen eines Back-End-Moduls
+      href: GettingStarted.md
+    - name: Befehlszeile
+      href: CommandLine.md
+    - name: Schemaformat
+      href: SchemaFormat.md
+    - name: Datenformat
+      href: DataFormat.md
+    - name: Grammatikformat
+      href: GrammarFormat.md
+    - name: Semantikinterpretation
+      href: SemanticInterpretation.md
+    - name: Web-API-Schnittstelle
+      href: WebAPI.md
+      items:
+        - name: calchistogram
+          href: calchistogramMethod.md
+        - name: Evaluieren
+          href: evaluateMethod.md
+        - name: Interpretieren
+          href: interpretMethod.md
+    - name: Strukturierte Abfrageausdrücke
+      href: Expressions.md
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 7c291c57044379419f292bd4e437f129d3a49f2b
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35416182"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'

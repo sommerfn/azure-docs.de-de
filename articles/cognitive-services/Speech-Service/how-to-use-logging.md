@@ -1,5 +1,5 @@
 ---
-title: Speech SDK-Protokollierung – Speech Services
+title: Speech SDK-Protokollierung – Speech Service
 titleSuffix: Azure Cognitive Services
 description: Aktivieren Sie die Protokollierung im Speech SDK.
 services: cognitive-services
@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 75eaea22c4809eda78e54514961d13113b4a5f3a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 31ff21e33860f75d91d01e80e3ee77bd7192f780
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59011591"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559474"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Aktivieren der Protokollierung im Speech SDK
 
 Die Protokollierung in eine Datei ist ein optionales Feature für das Speech SDK. Während der Entwicklung bietet die Protokollierung zusätzliche Informationen und Diagnosen aus den Hauptkomponenten des Speech SDK. Dies kann aktiviert werden, indem die Eigenschaft `Speech_LogFilename` für ein Sprachkonfigurationsobjekt auf den Speicherort und den Namen der Protokolldatei festgelegt wird. Die Protokollierung wird global aktiviert, sobald eine Erkennung aus dieser Konfiguration erstellt wird, und sie kann danach nicht mehr deaktiviert werden. Sie können den Namen einer Protokolldatei während einer aktiven Protokollierungssitzung nicht ändern.
 
 > [!NOTE]
-> Die Protokollierung ist in allen unterstützten Speech SDK-Programmiersprachen verfügbar, mit Ausnahme von JavaScript.
+> Die Protokollierung ist seit Version 1.4.0 des Speech SDK in allen unterstützten Programmiersprachen verfügbar, mit Ausnahme von JavaScript.
 
 ## <a name="sample"></a>Beispiel
 
@@ -119,4 +119,3 @@ Weitere Informationen zum iOS-Dateisystem finden Sie [hier](https://developer.ap
 
 > [!div class="nextstepaction"]
 > [Erkunden unserer Beispiele auf GitHub](https://aka.ms/csspeech/samples)
-

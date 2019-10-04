@@ -8,15 +8,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/04/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb7a7eb8e1bdacae4b74e3a0019a376c440fe4d5
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003553"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091978"
 ---
 # <a name="templates"></a>Vorlagen
 
@@ -30,7 +30,7 @@ Sie können mit dem Erstellen einer Data Factory-Pipeline aus einer Vorlage begi
 
     ![Vorlagenkatalog über die Seite „Übersicht“ öffnen](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  Wählen Sie im Ressourcen-Explorer auf der Registerkarte „Autor“ das Pluszeichen (**+**) aus, und wählen Sie dann **Pipeline aus Vorlage** aus, um den Vorlagenkatalog zu öffnen.
+1.  Wählen Sie im Ressourcen-Explorer auf der Registerkarte „Autor“ das Pluszeichen ( **+** ) aus, und wählen Sie dann **Pipeline aus Vorlage** aus, um den Vorlagenkatalog zu öffnen.
 
     ![Vorlagenkatalog über die Registerkarte „Autor“ öffnen](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -50,11 +50,13 @@ Data Factory verwendet Azure Resource Manager-Vorlagen für das Speichern von Da
 
     -   [Kopieren von Dateien aus mehreren Containern zwischen dateibasierten Speichern](solution-template-copy-files-multiple-containers.md)
 
+    -   [Verschieben von Dateien](solution-template-move-files.md)
+
     -   [Deltakopie aus Datenbank](solution-template-delta-copy-with-control-table.md)
 
     -   Kopieren aus \<Quelle\> in \<Ziel\>
 
-        -   Aus Amazon S3 in Azure Data Lake Store Gen 2
+        -   [Aus Amazon S3 in Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 
         -   Aus Google Big Query in Azure Data Lake Store Gen 2
 

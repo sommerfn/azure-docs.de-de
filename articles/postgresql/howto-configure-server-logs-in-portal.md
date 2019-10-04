@@ -1,21 +1,21 @@
 ---
-title: Konfigurieren der Serverprotokolle für PostgreSQL und Zugreifen auf diese im Azure-Portal
-description: In diesem Artikel wird beschrieben, wie Sie aus dem Azure-Portal die Serverprotokolle in Azure Database for PostgreSQL konfigurieren und auf diese zugreifen.
+title: Konfigurieren von Serverprotokollen für Azure Database for PostgreSQL (Einzelserver) und Zugreifen auf diese im Azure-Portal
+description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal die Serverprotokolle in Azure Database for PostgreSQL (Einzelserver) konfigurieren und auf diese zugreifen.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 509c3af66e8228f142126dae6938ad74daf1d7ad
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 5/6/2019
+ms.openlocfilehash: 13a8c1ee4b7ca114211f93245d74866e5aa5d52c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544887"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65067446"
 ---
-# <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurieren der und Zugreifen auf die Serverprotokolle im Azure-Portal
+# <a name="configure-and-access-azure-database-for-postgresql---single-server-logs-in-the-azure-portal"></a>Konfigurieren von Protokollen für Azure Database for PostgreSQL (Einzelserver) und Zugreifen auf diese im Azure-Portal
 
-Sie können die [Azure Database for PostgreSQL-Serverprotokolle](concepts-server-logs.md) im Azure-Portal konfigurieren und auflisten sowie aus dem Portal herunterladen.
+Sie können die [Azure Database for PostgreSQL-Protokolle](concepts-server-logs.md) im Azure-Portal konfigurieren und auflisten sowie über dieses herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:

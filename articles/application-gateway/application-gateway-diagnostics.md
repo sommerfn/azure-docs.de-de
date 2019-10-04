@@ -6,15 +6,15 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
-ms.author: amitsriva
-ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.author: victorh
+ms.openlocfilehash: 896e1fb3e93fc0a542f0dca75cc1d87b3a2c237c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620875"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057897"
 ---
-# <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway
+# <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-End-Integrität und Diagnoseprotokolle für Application Gateway
 
 Mit Azure Application Gateway können Sie Ressourcen auf die folgenden Arten überwachen:
 
@@ -22,7 +22,7 @@ Mit Azure Application Gateway können Sie Ressourcen auf die folgenden Arten üb
 
 * [Protokolle:](#diagnostic-logging) Protokolle ermöglichen das Speichern und Nutzen von Leistungs-, Zugriffs- und anderen Daten einer Ressource zu Überwachungszwecken.
 
-* [Metriken:](#metrics) Application Gateway verfügt derzeit über sieben Metriken, um Leistungsindikatoren anzuzeigen.
+* [Metriken](application-gateway-metrics.md): Application Gateway verfügt über mehrere Metriken, mit denen Sie sicherstellen können, dass das System die erwartete Leistung aufweist.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -105,7 +105,7 @@ Sie können in Azure verschiedene Protokolltypen verwenden, um Anwendungsgateway
 Sie haben drei Möglichkeiten, um Ihre Protokolle zu speichern:
 
 * **Speicherkonto:** Speicherkonten eignen sich am besten für Protokolle, die eine längere Zeit gespeichert und bei Bedarf überprüft werden.
-* **Event Hubs:** Event Hubs sind eine hervorragende Möglichkeit für die Integration in andere SIEM-Tools (Security Information and Event Management), um Warnungen für Ihre Ressourcen zu erhalten.
+* **Event Hubs:** Event Hubs-Instanzen sind eine hervorragende Möglichkeit für die Integration in andere SIEM-Tools (Security Information and Event Management), um Warnungen für Ihre Ressourcen zu erhalten.
 * **Azure Monitor-Protokolle:** Azure Monitor-Protokolle eignen sich am besten für eine allgemeine Echtzeitüberwachung Ihrer Anwendung oder zum Beobachten von Trends.
 
 ### <a name="enable-logging-through-powershell"></a>Ermöglichen der Protokollierung mit PowerShell
@@ -155,8 +155,7 @@ Das Aktivitätsprotokoll wird von Azure standardmäßig generiert. Die Protokoll
 
 ### <a name="access-log"></a>Zugriffsprotokoll
 
-Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Jeder Application Gateway-Zugriff wird wie im folgenden Beispiel im JSON-Format protokolliert:
-
+Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Jeder Application Gateway-Zugriff wird wie im folgenden Beispiel für v1 im JSON-Format protokolliert:
 
 |Wert  |BESCHREIBUNG  |
 |---------|---------|
@@ -173,6 +172,8 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
 |sentBytes| Größe des gesendeten Pakets in Byte|
 |timeTaken| Dauer (in Millisekunden), bis eine Anforderung verarbeitet und die dazugehörige Antwort gesendet wurde. Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Hierbei ist der Hinweis wichtig, dass das Feld „Time-Taken“ normalerweise die Zeitdauer enthält, die von den Anforderungs- und Antwortpaketen für die Übermittlung über das Netzwerk benötigt wird. |
 |sslEnabled| Gibt an, ob für die Kommunikation an die Back-End-Pools SSL verwendet wurde. Gültige Werte sind „on“ und „off“.|
+|host| Der Hostname, mit dem die Anforderung an den Back-End-Server gesendet wurde. Wenn der Back-End-Hostname überschrieben wird, zeigt sich dies in diesem Namen.|
+|originalHost| Der Hostname, mit dem die Anforderung vom Client von der Application Gateway-Instanz empfangen wurde.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -192,7 +193,59 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
         "receivedBytes": 65,
         "sentBytes": 553,
         "timeTaken": 205,
-        "sslEnabled": "off"
+        "sslEnabled": "off",
+        "host": "www.contoso.com",
+        "originalHost": "www.contoso.com"
+    }
+}
+```
+Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzliche Informationen an:
+
+|Wert  |BESCHREIBUNG  |
+|---------|---------|
+|instanceId     | Application Gateway-Instanz, von der die Anforderung bereitgestellt wurde        |
+|clientIP     | Ursprungs-IP für die Anforderung        |
+|clientPort     | Ursprungsport für die Anforderung       |
+|httpMethod     | Von der Anforderung verwendete HTTP-Methode       |
+|requestUri     | URI der empfangenen Anforderung        |
+|UserAgent     | Benutzer-Agent aus dem HTTP-Anforderungsheader        |
+|httpStatus     | HTTP-Statuscode, der vom Application Gateway an den Client zurückgegeben wurde       |
+|httpVersion     | HTTP-Version der Anforderung        |
+|receivedBytes     | Größe des empfangenen Pakets in Byte        |
+|sentBytes| Größe des gesendeten Pakets in Byte|
+|timeTaken| Dauer (in Millisekunden), bis eine Anforderung verarbeitet und die dazugehörige Antwort gesendet wurde. Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Hierbei ist der Hinweis wichtig, dass das Feld „Time-Taken“ normalerweise die Zeitdauer enthält, die von den Anforderungs- und Antwortpaketen für die Übermittlung über das Netzwerk benötigt wird. |
+|sslEnabled| Gibt an, ob für die Kommunikation an die Back-End-Pools SSL verwendet wurde. Gültige Werte sind „on“ und „off“.|
+|sslCipher| Verschlüsselungssammlung, die für die SSL-Kommunikation verwendet wird (sofern SSL aktiviert ist)|
+|sslProtocol| Das verwendete SSL-Protokoll (sofern SSL aktiviert ist)|
+|serverRouted| Back-End-Server, an den das Anwendungsgateway die Anforderung weiterleitet|
+|serverStatus| HTTP-Statuscode des Back-End-Servers|
+|serverResponseLatency| Wartezeit für die Antwort vom Back-End-Server|
+|host| Adresse im host-Header der Anforderung|
+```json
+{
+    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
+    "operationName": "ApplicationGatewayAccess",
+    "time": "2017-04-26T19:27:38Z",
+    "category": "ApplicationGatewayAccessLog",
+    "properties": {
+        "instanceId": "appgw_1",
+        "clientIP": "191.96.249.97",
+        "clientPort": 46886,
+        "httpMethod": "GET",
+        "requestUri": "/phpmyadmin/scripts/setup.php",
+        "userAgent": "-",
+        "httpStatus": 404,
+        "httpVersion": "HTTP/1.0",
+        "receivedBytes": 65,
+        "sentBytes": 553,
+        "timeTaken": 205,
+        "sslEnabled": "off",
+        "sslCipher": "",
+        "sslProtocol": "",
+        "serverRouted": "104.41.114.59:80",
+        "serverStatus": "200",
+        "serverResponseLatency": "0.023",
+        "host": "www.contoso.com",
     }
 }
 ```
@@ -248,7 +301,7 @@ Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgatew
 |ruleSetType     | Regelsatztyp: Der verfügbare Wert ist OWASP.        |
 |ruleSetVersion     | Verwendete Regelsatzversion. Verfügbare Werte sind 2.2.9 und 3.0.     |
 |ruleId     | Regel-ID des auslösenden Ereignisses        |
-|Message:     | Benutzerfreundliche Meldung für das auslösende Ereignis. Weitere Details im Abschnitt „Details“.        |
+|message     | Benutzerfreundliche Meldung für das auslösende Ereignis. Weitere Details im Abschnitt „Details“.        |
 |action     |  Aktion, die für die Anforderung durchgeführt wird. Verfügbare Werte sind „Blocked“ und „Allowed“.      |
 |site     | Standort, für den das Protokoll generiert wurde. Derzeit ist nur „Global“ aufgeführt, da Regeln global sind.|
 |details     | Details zum auslösenden Ereignis        |
@@ -256,6 +309,8 @@ Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgatew
 |details.data     | Spezifische Daten in der Anforderung, die eine Übereinstimmung mit der Regel ergeben         |
 |details.file     | Konfigurationsdatei, die die Regel enthalten hat        |
 |details.line     | Nummer der Zeile in der Konfigurationsdatei, die das Ereignis ausgelöst hat       |
+|hostname   | Hostname oder IP-Adresse für Application Gateway.    |
+|transactionId  | Eindeutige ID für eine bestimmte Transaktion, die Sie beim Gruppieren mehrerer Regelverstöße innerhalb derselben Anforderung unterstützt.   |
 
 ```json
 {
@@ -280,6 +335,8 @@ Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgatew
       "file": "rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf",
       "line": "865"
     }
+    "hostname": "40.90.218.100", 
+    "transactionId": "AYAcUqAcAcAcAcAcASAcAcAc"
   }
 } 
 
@@ -306,67 +363,6 @@ Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON
 #### <a name="analyzing-access-logs-through-goaccess"></a>Analysieren der Zugriffsprotokolle mit GoAccess
 
 Wir haben eine Resource Manager-Vorlage veröffentlicht, die die beliebte [GoAccess](https://goaccess.io/)-Protokollanalyse für Application Gateway-Zugriffsprotokolle installiert und ausführt. GoAccess stellt wertvolle HTTP-Datenverkehrsstatistiken bereit, z.B. eindeutige Besucher, angeforderte Dateien, Hosts, Betriebssysteme, Browser, HTTP-Statuscodes und vieles mehr. Weitere Informationen finden Sie in der [Infodatei im Resource Manager-Vorlagenordner auf GitHub](https://aka.ms/appgwgoaccessreadme).
-
-## <a name="metrics"></a>Metriken
-
-Metriken sind ein Feature für bestimmte Azure-Ressourcen, damit Sie die Leistungsindikatoren im Portal anzeigen können. Für Application Gateway werden folgende Metriken unterstützt:
-
-- **Aktuelle Verbindungen**
-- **Anforderungsfehler**
-- **Anzahl von fehlerfreien Hosts**
-
-   Sie können auf Back-End-Pool-Basis filtern, um fehlerfreie/fehlerhafte Hosts in einem bestimmten Back-End-Pool anzuzeigen.
-
-
-- **Antwortstatus**
-
-   Die Antwortstatuscode-Verteilung kann weiter kategorisiert werden, um Antworten in 2xx-, 3xx-, 4xx- und 5xx-Kategorien anzuzeigen.
-
-- **Durchsatz**
-- **Anforderungen insgesamt**
-- **Anzahl von fehlerhaften Hosts**
-
-   Sie können auf Back-End-Pool-Basis filtern, um fehlerfreie/fehlerhafte Hosts in einem bestimmten Back-End-Pool anzuzeigen.
-
-Navigieren Sie zu einem Anwendungsgateway, und wählen Sie unter **Überwachung** die Option **Metriken** aus. Um die verfügbaren Werte anzuzeigen, wählen Sie die Dropdownliste **METRIK** aus.
-
-In der folgenden Abbildung sehen Sie ein Beispiel mit drei Metriken für die letzten 30 Minuten:
-
-[![](media/application-gateway-diagnostics/figure5.png "Metrikanzeige")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
-
-Eine aktuelle Liste mit Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../azure-monitor/platform/metrics-supported.md).
-
-### <a name="alert-rules"></a>Warnregeln
-
-Sie können Warnungsregeln basierend auf Metriken für eine Ressource starten. Eine Warnung kann beispielsweise einen Webhook aufrufen oder eine E-Mail an einen Administrator senden, wenn der Durchsatz des Anwendungsgateways für einen angegebenen Zeitraum oberhalb oder unterhalb eines Schwellenwerts bzw. genau auf einem Schwellenwert liegt.
-
-Im folgenden Beispiel wird schrittweise die Erstellung einer Warnungsregel beschrieben, die eine E-Mail an einen Administrator sendet, nachdem ein Durchsatzschwellenwert verletzt wurde:
-
-1. Wählen Sie **Metrikwarnung hinzufügen** aus, um die Seite **Regel hinzufügen** zu öffnen. Sie können diese Seite auch über die Seite mit den Metriken erreichen.
-
-   ![Schaltfläche „Metrikwarnung hinzufügen“][6]
-
-2. Füllen Sie auf der Seite **Regel hinzufügen** die Abschnitte für den Namen, die Bedingung und die Benachrichtigung aus, und wählen Sie **OK** aus.
-
-   * Wählen Sie unter **Bedingung** einen der vier Werte aus: **Größer als**, **Größer oder gleich**, **Kleiner als** oder **Kleiner oder gleich**.
-
-   * Wählen Sie unter **Zeitraum** einen Zeitraum zwischen fünf Minuten und sechs Stunden aus.
-
-   * Wenn Sie **E-Mail-Besitzer, Mitwirkende und Leser** wählen, kann die E-Mail-Adresse dynamisch basierend auf den Benutzern festgelegt werden, die auf diese Ressource zugreifen können. Andernfalls können Sie im Feld **Weitere Administrator-E-Mail(s)** eine durch Kommas getrennte Liste mit Benutzern angeben.
-
-   ![Seite „Regel hinzufügen“][7]
-
-Wenn der Schwellenwert überschritten wird, trifft eine E-Mail ein, die in etwa wie in der folgenden Abbildung aussieht:
-
-![E-Mail zu überschrittenem Schwellenwert][8]
-
-Nach dem Erstellen einer Metrikwarnung wird eine Liste mit Warnungen angezeigt. Dies ist eine Übersicht über alle Warnungsregeln.
-
-![Liste mit Warnungen und Regeln][9]
-
-Weitere Informationen zu Warnungsbenachrichtigungen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
-
-Weitere Informationen zu Webhooks und deren Verwendung mit Warnungen finden Sie unter [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](../azure-monitor/platform/alerts-webhooks.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

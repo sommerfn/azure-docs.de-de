@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f14bcd11a5769e5057fadca198ac57110edf8ef5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099272"
 documentType: LandingData
 title: Azure-Kostenverwaltung – Dokumentation
 metadata:
-  title: Dokumentation für Kostenverwaltung – Tutorials, API-Referenz | Microsoft-Dokumentation
-  description: Azure Cost Management ist eine Lösung für die Kostenverwaltung, mit der Sie die Azure-Ausgaben überwachen und steuern und die Ressourcennutzung optimieren können. In unseren Schnellstarts und Tutorials wird beschrieben, wie Sie Kosten analysieren, Budgets erstellen und verwalten, Daten exportieren und Empfehlungen prüfen und darauf reagieren.
+  title: 'Dokumentation für Kostenverwaltung – Tutorials, API-Referenz | Microsoft-Dokumentation'
+  description: 'Azure Cost Management ist eine Lösung für die Kostenverwaltung, mit der Sie die Azure-Ausgaben überwachen und steuern und die Ressourcennutzung optimieren können. In unseren Schnellstarts und Tutorials wird beschrieben, wie Sie Kosten analysieren, Budgets erstellen und verwalten, Daten exportieren und Empfehlungen prüfen und darauf reagieren.'
   services: cost-management
   author: bandersmsft
   manager: dougeby
@@ -20,38 +14,38 @@ metadata:
   ms.date: 12/05/2018
   ms.author: banders
 abstract:
-  description: Azure Cost Management ist eine Lösung für die Kostenverwaltung, mit der Sie die Azure-Ausgaben überwachen und steuern und die Ressourcennutzung optimieren können. In unseren Schnellstarts und Tutorials wird beschrieben, wie Sie Kosten analysieren, Budgets erstellen und verwalten, Daten exportieren und Empfehlungen prüfen und darauf reagieren.
+  description: 'Azure Cost Management ist eine Lösung für die Kostenverwaltung, mit der Sie die Azure-Ausgaben überwachen und steuern und die Ressourcennutzung optimieren können. In unseren Schnellstarts und Tutorials wird beschrieben, wie Sie Kosten analysieren, Budgets erstellen und verwalten, Daten exportieren und Empfehlungen prüfen und darauf reagieren.'
 sections:
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: Es wird beschrieben, wie Sie die ersten Schritte für Azure Cost Management ausführen, um die Kosten in Ihrer Organisation zu analysieren.
-  - type: list
-    style: icon48
+  - title: Fünfminütige Schnellstarts
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Analysieren der Kosten in Cost Management
-      href: quick-acm-cost-analysis
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: Es wird beschrieben, wie Sie mit Cost Management Budgets erstellen, Daten exportieren und Empfehlungen prüfen und darauf reagieren.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Es wird beschrieben, wie Sie die ersten Schritte für Azure Cost Management ausführen, um die Kosten in Ihrer Organisation zu analysieren.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Analysieren der Kosten in Cost Management
+            href: quick-acm-cost-analysis
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - html: <a href="tutorial-acm-create-budgets">Erstellen und Verwalten von Budgets</a>
-    - html: <a href="tutorial-export-acm-data">Daten exportieren</a>
-    - html: <a href="tutorial-acm-opt-recommendations">Prüfen und Reagieren auf Empfehlungen zur Optimierung</a>
-- title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Es wird beschrieben, wie Sie mit Cost Management Budgets erstellen, Daten exportieren und Empfehlungen prüfen und darauf reagieren.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-acm-create-budgets">Erstellen und Verwalten von Budgets</a>
+          - html: <a href="tutorial-export-acm-data">Daten exportieren</a>
+          - html: <a href="tutorial-acm-opt-recommendations">Prüfen und Reagieren auf Empfehlungen zur Optimierung</a>
+  - title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
     items:
-    - title: Vorhersagen von Kosten und Optimieren von Ausgaben für Azure
-      href: /learn/modules/predict-costs-and-optimize-spending/
-      image:
-        src: /learn/achievements/predict-costs-and-optimize-spending.svg
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-cost-management">Mehr interaktives Lernen...</a>
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Vorhersagen von Kosten und Optimieren von Ausgaben für Azure
+            href: /learn/modules/predict-costs-and-optimize-spending/
+            image:
+              src: /learn/achievements/predict-costs-and-optimize-spending.svg
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-cost-management">Mehr interaktives Lernen...</a>

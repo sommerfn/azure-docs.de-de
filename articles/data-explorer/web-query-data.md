@@ -1,20 +1,20 @@
 ---
-title: 'Schnellstart: Abfragen von Daten im Azure Data Explorer'
-description: In diesem Schnellstart erfahren Sie, wie Sie Daten im Azure-Daten-Explorer abfragen und freigeben.
+title: 'Schnellstart: Abfragen von Daten auf der Azure Data Explorer-Webbenutzeroberfläche'
+description: In diesem Schnellstart erfahren Sie, wie Sie Daten auf der Azure Data Explorer-Webbenutzeroberfläche abfragen und freigeben.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 6b371cf9aeb55a92fc72357ad7dc6b2cbddcc058
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 07/04/2019
+ms.openlocfilehash: 145e452a3a914e1026d6da11f2ce38e85fa724f0
+ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050559"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67797191"
 ---
-# <a name="quickstart-query-data-in-azure-data-explorer"></a>Schnellstart: Abfragen von Daten im Azure Data Explorer
+# <a name="quickstart-query-data-in-azure-data-explorer-web-ui"></a>Schnellstart: Abfragen von Daten auf der Azure Data Explorer-Webbenutzeroberfläche
 
 Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Der Azure-Daten-Explorer bietet eine Webanwendung, mit der Sie Abfragen ausführen und freigeben können. Die Anwendung steht im Azure-Portal sowie als eigenständige Webanwendung zur Verfügung. In diesem Artikel arbeiten Sie in der eigenständigen Version, mit der Sie Verbindungen mit mehreren Clustern herstellen und Deep-Links zu Ihren Abfragen freigeben können.
 
@@ -191,5 +191,4 @@ In diesem Schnellstart haben Sie keine Ressourcen erstellt, aber wenn Sie einen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Schreiben von Abfragen für den Azure-Daten-Explorer](write-queries.md)
+[Schreiben von Abfragen für den Azure-Daten-Explorer](write-queries.md)

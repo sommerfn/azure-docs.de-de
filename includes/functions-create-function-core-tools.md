@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -9,18 +9,18 @@ ms.topic: include
 ms.date: 10/20/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 26789a12053fa6275b09836e706c391e181c8efd
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 83f3def8f4972f35df25dc98f4b818e703801d2e
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429963"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68949994"
 ---
 ## <a name="create-a-function"></a>Erstellen einer Funktion
 
 Der folgende Befehl erstellt eine per HTTP ausgelöste Funktion namens `MyHttpTrigger`.
 
-```bash
+```command
 func new --name MyHttpTrigger --template "HttpTrigger"
 ```
 

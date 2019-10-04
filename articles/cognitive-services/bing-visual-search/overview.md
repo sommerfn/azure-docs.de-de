@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 03/27/2019
+ms.date: 08/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: 8bcb0372ebb60ac3a46cf06bf85322b288e153ba
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630203"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195220"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Was ist die API für die visuelle Bing-Suche?
 
-Die API für die visuelle Bing-Suche gibt Erkenntnisse für ein Bild zurück. Sie können entweder ein Bild hochladen oder eine URL für ein Bild eingeben. Erkenntnisse sind visuell ähnliche Bilder, Einkaufsquellen, Webseiten, auf denen das Bild vorkommt, und Ähnliches. Die von der API für die visuelle Bing-Suche zurückgegebenen Erkenntnisse ähneln den Ergebnissen auf „Bing.com/images“.
+Die API für die visuelle Bing-Suche gibt Erkenntnisse für ein Bild zurück. Sie können entweder ein Bild hochladen oder eine URL für ein Bild eingeben. Erkenntnisse sind visuell ähnliche Bilder, Einkaufsquellen, Webseiten, auf denen das Bild vorkommt, und Ähnliches. Die von der API für die visuelle Bing-Suche zurückgegebenen Erkenntnisse ähneln den Ergebnissen auf „Bing.com/images“. 
 
 Bei Verwendung der [Bing-Bildersuche-API](../bing-image-search/overview.md) können Sie für Ihre visuelle Bing-Suche Erkenntnistoken aus den Suchergebnissen dieser API verwenden, anstatt ein Bild hochzuladen.
 
@@ -38,6 +38,7 @@ Mit der visuellen Bing-Suche können folgende Erkenntnisse ermittelt werden:
 | Verwandte Suchvorgänge                     | Verwandte Suchvorgängen, die von anderen durchgeführt wurden oder die auf dem Bildinhalt basieren.            |
 | Webseiten, auf denen das Bild vorkommt     | Webseiten, die das Eingabebild enthalten.            |
 | Rezepte                              | Webseiten, die Rezepte für das Gericht auf dem Eingabebild enthalten.            |
+| Entitäten                             | Bekannte Personen, Orte und Objekte |
 
 Neben Erkenntnissen gibt die visuelle Bing-Suche auch verschiedene, aus dem Eingabebild abgeleitete Begriffe (Tags) zurück. Anhand dieser Tags können Benutzer Konzepte erkunden, die in dem Bild gefunden wurden. Zeigt das Eingabebild beispielsweise einen bekannten Sportler, kann etwa eines der Tags den Namen des Sportlers und ein anderes den Begriff „Sport“ enthalten. Beim Bild eines Apfelkuchens können die Tags beispielsweise „Apfelkuchen“, „Kuchen“ und „Nachtisch“ lauten.
 
@@ -47,7 +48,7 @@ Die Ergebnisse der visuellen Bing-Suche beinhalten auch Begrenzungsrahmen für r
 
 Die API für die visuelle Bing-Suche ist ein RESTful-Webdienst und kann somit problemlos in jeder Programmiersprache aufgerufen werden, die HTTP-Anforderungen beherrscht und JSON analysieren kann. Für den Dienst kann entweder die REST-API oder das SDK verwendet werden.
 
-1. Erstellen Sie ein [Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Bing-Suche-APIs. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/). Sie können Ihren Abonnementschlüssel über das [Azure-Portal](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account#access-your-resource) abrufen, nachdem Sie Ihr Konto erstellt haben, oder über die [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis), nachdem Sie eine kostenlose Testversion aktiviert haben.
+1. Erstellen Sie ein [Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Bing-Suche-APIs. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/). Sie können Ihren Abonnementschlüssel über das [Azure-Portal](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) abrufen, nachdem Sie Ihr Konto erstellt haben, oder über die [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis), nachdem Sie eine kostenlose Testversion aktiviert haben.
 2. Senden Sie eine Anforderung mit einer gültigen Suchabfrage an die API.
 3. Analysieren Sie die zurückgegebene JSON-Nachricht, um die API-Antwort zu verarbeiten.
 

@@ -2,21 +2,19 @@
 title: Die Qualifikation „Text teilen“ der kognitiven Suche – Azure Search
 description: Teilen Sie Text in mehrere Blöcke oder Seiten anhand der Länge in einer Azure Search-Anreicherungspipeline auf.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: c860066608f1b78d9a4c45b03fb3948b3c888e25
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6e46970b6c0fc91c464207049d2dedaaee1afdd
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894205"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265680"
 ---
 #   <a name="text-split-cognitive-skill"></a>Der Skill „Text teilen“
 
@@ -88,7 +86,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
         {
             "recordId": "1",
             "data": {
-                "text": "This is a the loan application for Joe Romero, he is a Microsoft employee who was born in Chile and then moved to Australia…",
+                "text": "This is a the loan application for Joe Romero, a Microsoft employee who was born in Chile and who then moved to Australia…",
                 "languageCode": "en"
             }
         },

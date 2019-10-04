@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
-manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 93be58ac231ff2b88c6618c549c9d1975977b91f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.date: 04/16/2019
+ms.openlocfilehash: b8c05ab05630e92e64a4885d5e6cdc6f5471dff2
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360096"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568060"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Verwenden einer verwalteten Instanz in Azure SQL-Datenbank
 
@@ -36,7 +35,7 @@ In diesem Artikel finden Sie verschiedene Anleitungen, Skripts und Erläuterunge
 - [Konfigurieren eines vorhandenen VNET und Subnetzes für die verwaltete Instanz](sql-database-managed-instance-configure-vnet-subnet.md): Wenn Sie das vorhandene VNET und Subnetz so konfigurieren möchten, dass darin verwaltete Instanzen bereitgestellt werden, finden Sie hier ein Skript, mit dem die [Netzwerkanforderungen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) überprüft werden und das Subnetz entsprechend den Anforderungen konfiguriert wird.
 - [Konfigurieren von benutzerdefiniertem DNS](sql-database-managed-instance-custom-dns.md): Sie müssen benutzerdefiniertes DNS konfigurieren, wenn Sie von der verwalteten Instanz über einen Verbindungsserver mit Datenbank-E-Mail-Profilen auf externe Ressourcen in den benutzerdefinierten Domänen zugreifen möchten.
 - [Synchronisieren der Netzwerkkonfiguration](sql-database-managed-instance-sync-network-configuration.md): Möglicherweise können Sie auch nach dem [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md) keine Verbindung mit der verwalteten Instanz herstellen. Sie können dann versuchen, die Netzwerkkonfiguration für Ihren Dienstplan zu aktualisieren.
-- [Ermitteln der IP-Adresse des Verwaltungsendpunkts](sql-database-managed-instance-find-management-endpoint-ip-address.md): Die verwaltete Instanz verwendet den öffentlichen Endpunkt nur zu Verwaltungszwecken. Mit dem hier beschriebenen Skript können Sie die IP-Adresse des Verwaltungsendpunkts ermitteln.
+- [Ermitteln der IP-Adresse des Verwaltungsendpunkts:](sql-database-managed-instance-find-management-endpoint-ip-address.md) Die verwaltete Instanz verwendet den öffentlichen Endpunkt zu Verwaltungszwecken. Mit dem hier beschriebenen Skript können Sie die IP-Adresse des Verwaltungsendpunkts ermitteln.
 - [Überprüfen des integrierten Firewallschutzes](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md): Die verwaltete Instanz ist durch eine integrierte Firewall geschützt, die den Datenverkehr nur an erforderlichen Ports zulässt. Mit dem in dieser Anleitung beschriebenen Skript können Sie die Regeln für die integrierte Firewall überprüfen.
 - [Herstellen einer Verbindung mit Anwendungen](sql-database-managed-instance-connect-app.md): Die verwaltete Instanz wird in Ihrem eigenen privaten Azure-VNET mit privater IP-Adresse platziert. Lernen Sie verschiedene Möglichkeiten zum Verbinden von Anwendungen mit Ihrer verwalteten Instanz kennen.
 

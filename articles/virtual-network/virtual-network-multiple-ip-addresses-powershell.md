@@ -3,7 +3,7 @@ title: 'Mehrere IP-Adressen für virtuelle Azure-Computer: PowerShell | Microsof
 description: Informationen zum Zuweisen mehrerer IP-Adressen zu einem virtuellen Computer mit PowerShell. | Resource Manager
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
 manager: twooley
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
-ms.author: jdial;annahar
-ms.openlocfilehash: bded6c76aa209a718929c891bd2443f8517ec44a
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.author: kumud
+ms.reviewer: annahar
+ms.openlocfilehash: e9bad6ad614855c543ee6d75d4e6f4dc8e2255aa
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649634"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876223"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe von PowerShell
 
@@ -96,7 +97,7 @@ In den folgenden Schritten wird beschrieben, wie gemäß dem Szenario beispielha
 
 6. Definieren Sie die primäre IP-Konfiguration für die Netzwerkkarte. Ändern Sie in dem von Ihnen erstellten Subnetz die Adresse 10.0.0.4 in eine gültige Adresse, wenn Sie nicht den zuvor definierten Wert verwendet haben. Bevor Sie eine statische IP-Adresse zuweisen, sollten Sie überprüfen, ob diese nicht bereits verwendet wird. Geben Sie den Befehl `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.4 -VirtualNetwork $VNet` ein. Wenn die Adresse verfügbar ist, gibt die Ausgabe *TRUE* zurück. Wenn sie nicht verfügbar ist, gibt die Ausgabe *FALSE* und eine Liste der verfügbaren Adressen zurück. 
 
-    In den folgenden Befehlen müssen Sie die Werte durch **den zu verwendenden eindeutigen DNS-Namen ersetzen<replace-with-your-unique-name>.** Der Name muss über alle öffentlichen IP-Adressen innerhalb einer Azure-Region eindeutig sein. Dieser Parameter ist optional. Er kann entfernt werden, wenn Sie Verbindungen zum virtuellen Computer nur über die öffentliche IP-Adresse herstellen möchten.
+    Ersetzen Sie in den folgenden Befehlen **\<replace-with-your-unique-name>** durch den zu verwendenden eindeutigen DNS-Namen. Der Name muss über alle öffentlichen IP-Adressen innerhalb einer Azure-Region eindeutig sein. Dieser Parameter ist optional. Er kann entfernt werden, wenn Sie Verbindungen zum virtuellen Computer nur über die öffentliche IP-Adresse herstellen möchten.
 
     ```powershell
     

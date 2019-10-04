@@ -2,17 +2,17 @@
 title: Azure Application Gateway – Konfigurationsübersicht
 description: In diesem Artikel wird das Konfigurieren der Komponenten von Azure Application Gateway beschrieben.
 services: application-gateway
-author: abshamsft
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 40c5444a54f4e483a9dcacb958c18f66da45019a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 65cf71140d1706b8607e721ac323b1a97ae272fa
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58906122"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898448"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -57,12 +57,12 @@ Netzwerksicherheitsgruppen (NSG) werden im Application Gateway-Subnetz unterstü
 
 - Datenverkehr vom **AzureLoadBalancer**-Tag muss zulässig sein.
 
-##### <a name="whitelist-application-gateway-access-to-a-few-source-ips"></a>Aufnehmen des Application Gateway-Zugriffs auf einige wenige Quell-IPs in eine Positivliste
+##### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Zulassen des Application Gateway-Zugriffs auf einige wenige Quell-IPs
 
 Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gateway-Subnetz. Legen Sie die folgenden Einschränkungen für das Subnetz in dieser Priorität fest:
 
 1. Lassen Sie eingehenden Datenverkehr von einem Quell-IP-/IP-Adressbereich zu.
-2. Lassen Sie eingehende Anforderungen aus allen Quellen an den Ports 65503-65534 für die [Back-End-Integrität-Kommunikation](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics) zu. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten keine Änderungen an diesen Endpunkten vornehmen.
+2. Lassen Sie eingehende Anforderungen aus allen Quellen an den Ports 65503–65534 für die Application Gateway v1-SKU und an den Ports 65200–65535 für die v2-SKU für die [Back-End-Integrität-Kommunikation](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics) zu. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten keine Änderungen an diesen Endpunkten vornehmen.
 3. Lassen Sie eingehende Azure Load Balancer-Tests (*AzureLoadBalancer-Tag*) und eingehenden virtuellen Netzwerkdatenverkehr (*VirtualNetwork*-Tag) für die [Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/security-overview) zu.
 4. Blockieren Sie den gesamten übrigen eingehenden Datenverkehr mit einer Alle-verweigern-Regel.
 5. Zulassen von ausgehendem Datenverkehr an das Internet für alle Ziele.
@@ -71,7 +71,10 @@ Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gat
 
 Für die v1 SKU werden benutzerdefinierte Routen (User-Defined Routes, UDRs) im Application Gateway-Subnetz unterstützt, solange sie die End-to-End-Anforderung/Antwort-Kommunikation nicht ändern. Beispielsweise können Sie eine benutzerdefinierte Route im Application Gateway-Subnetz einrichten, um auf eine Firewallappliance für die Paketüberprüfung zu verweisen. Sie müssen jedoch sicherstellen, dass das Paket nach der Überprüfung das vorgesehene Ziel erreichen kann. Ein Unterlassen kann zu einem falschen Integritätstest oder Datenverkehrsrouting-Verhalten führen. Dies schließt gelernte Routen oder standardmäßige 0.0.0.0/0-Routen ein, die durch Azure ExpressRoute oder VPN-Gateways im virtuellen Netzwerk verteilt werden.
 
-UDRs im Application Gateway-Subnetz werden vom v2 SKU nicht unterstützt. Weitere Informationen finden Sie unter [Bekannte Probleme und Einschränkungen](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#known-issues-and-limitations).
+UDRs im Application Gateway-Subnetz werden mit der v2-SKU nicht unterstützt. Weitere Informationen finden Sie unter [Azure Application Gateway v2-SKU](application-gateway-autoscaling-zone-redundant.md#differences-with-v1-sku).
+
+> [!NOTE]
+> UDRs werden mit der v2-SKU nicht unterstützt.  Wenn Sie benutzerdefinierte Routen (UDRs) benötigen, sollten Sie weiterhin die v1-SKU bereitstellen.
 
 > [!NOTE]
 > Das Verwenden benutzerdefinierter Routen im Application Gateway-Subnetz führt dazu, dass der Integritätsstatus in der [Ansicht der Back-End-Integrität](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) als „Unbekannt“ angezeigt wird. Außerdem treten dabei bei der Generierung von Application Gateway-Protokollen und Metriken Fehler auf. Sie sollten keine benutzerdefinierten Routen im Application Gateway-Subnetz verwenden, damit Sie die Back-End-Integrität, Protokolle und Metriken anzeigen können.
@@ -80,11 +83,11 @@ UDRs im Application Gateway-Subnetz werden vom v2 SKU nicht unterstützt. Weiter
 
 Sie können das Application Gateway mit einer öffentlichen IP-Adresse, mit einer privaten IP-Adresse oder mit beidem konfigurieren. Eine öffentliche IP-Adresse ist erforderlich, wenn Sie ein Back-End hosten, auf das Clients über eine für den Internetzugriff verfügbare virtuelle IP (VIP) über das Internet zugreifen müssen. 
 
-Eine öffentliche IP-Adresse ist nicht für einen internen Endpunkt erforderlich, der nicht für den Internetzugriff verfügbar ist. Dieser wird als *Interner Lastenausgleich*-Endpunkt (Internal Load-Balancer, ILB) bezeichnet. Ein ILB-Application Gateway ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für Dienste und Ebenen in einer Anwendung mit mehreren Ebenen innerhalb einer Sicherheitsgrenze, die nicht für das Internet verfügbar gemacht werden, aber eine Roundrobin-Lastverteilung, Sitzungs-Stickiness oder SSL-Beendigung erfordern.
+Eine öffentliche IP-Adresse ist nicht für einen internen Endpunkt erforderlich, der nicht für den Internetzugriff verfügbar ist. Dieser wird als *Interner Lastenausgleich*-Endpunkt (Internal Load-Balancer, ILB) bezeichnet. Ein ILB-Application Gateway ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für Dienste und Ebenen in einer Anwendung mit mehreren Ebenen innerhalb einer Sicherheitsgrenze, die nicht für das Internet verfügbar gemacht werden, aber eine Roundrobin-Lastverteilung, Sitzungs-Stickiness oder SSL-Terminierung erfordern.
 
 Es wird nur 1 öffentliche oder 1 private IP-Adresse unterstützt. Sie wählen die Front-End-IP beim Erstellen des Application Gateways aus.
 
-- Für eine öffentliche IP-Adresse können Sie eine neue öffentliche IP-Adresse erstellen oder eine vorhandene öffentliche IP-Adresse am gleichen Speicherort wie das Application Gateway verwenden. Wenn Sie eine neue öffentliche IP-Adresse erstellen, kann der von Ihnen gewählte Typ der IP-Adresse (statisch oder dynamisch) später nicht mehr geändert werden. Weitere Informationen finden Sie unter [Statische und dynamische öffentliche IP-Adresse im Vergleich](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-components#static-vs-dynamic-public-ip-address).
+- Für eine öffentliche IP-Adresse können Sie eine neue öffentliche IP-Adresse erstellen oder eine vorhandene öffentliche IP-Adresse am gleichen Speicherort wie das Application Gateway verwenden. Wenn Sie eine neue öffentliche IP-Adresse erstellen, kann der von Ihnen gewählte Typ der IP-Adresse (statisch oder dynamisch) später nicht mehr geändert werden. Weitere Informationen finden Sie unter [Statische und dynamische öffentliche IP-Adresse im Vergleich](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
 
 - Für eine private IP-Adresse können Sie eine private IP-Adresse aus dem Subnetz angeben, in dem das Application Gateway erstellt wird. Wenn Sie keine angeben, wird automatisch eine beliebige IP-Adresse aus dem Subnetz ausgewählt. Weitere Informationen finden Sie unter [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
 
@@ -118,15 +121,15 @@ Wählen Sie die Front-End-IP-Adresse aus, die Sie diesem Listener zuordnen möch
 
 Wählen Sie den Front-End-Port aus. Wählen Sie einen vorhandenen Port aus, oder erstellen Sie einen neuen. Wählen Sie einen beliebigen Wert aus dem [zulässigen Portbereich](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports) aus. Sie können nicht nur die bekannten Ports wie 80 und 443 verwenden, sondern jeden geeigneten zulässigen benutzerdefinierten Port. Ein Port kann für öffentlich zugängliche Listener oder für nur privat zugängliche Listener verwendet werden.
 
-### <a name="protocol"></a>Protokoll
+### <a name="protocol"></a>Protocol
 
 Wählen Sie HTTP oder HTTPS aus:
 
 - Wenn Sie sich für HTTP entscheiden, ist der Datenverkehr zwischen dem Client und dem Application Gateway unverschlüsselt.
 
-- Wählen Sie HTTPS aus, wenn Sie [SSL-Beendigung](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssl-terminationl) oder [End-to-End-SSL-Verschlüsselung](https://docs.microsoft.com/azure/application-gateway/ssl-overview) wünschen. Der Datenverkehr zwischen dem Client und dem Application Gateway ist verschlüsselt. Außerdem wird die SSL-Verbindung am Application Gateway getrennt. Wenn Sie die End-to-End-SSL-Verschlüsselung wünschen, müssen Sie HTTPS auswählen und die Einstellung des **Back-End-HTTP** konfigurieren. Dadurch wird sichergestellt, dass der Datenverkehr auf dem Weg vom Application Gateway zum Back-End erneut verschlüsselt wird.
+- Wählen Sie HTTPS aus, wenn Sie [SSL-Terminierung](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) oder [End-to-End-SSL-Verschlüsselung](https://docs.microsoft.com/azure/application-gateway/ssl-overview) wünschen. Der Datenverkehr zwischen dem Client und dem Application Gateway ist verschlüsselt. Außerdem wird die SSL-Verbindung am Application Gateway getrennt. Wenn Sie die End-to-End-SSL-Verschlüsselung wünschen, müssen Sie HTTPS auswählen und die Einstellung des **Back-End-HTTP** konfigurieren. Dadurch wird sichergestellt, dass der Datenverkehr auf dem Weg vom Application Gateway zum Back-End erneut verschlüsselt wird.
 
-Zum Konfigurieren von SSL-Beendigung und End-to-End-SSL-Verschlüsselung müssen Sie dem Listener ein Zertifikat hinzufügen, damit das Application Gateway einen symmetrischen Schlüssel ableiten kann. Dies wird durch die SSL-Protokollspezifikation vorgegeben. Der symmetrische Schlüssel wird zum Verschlüsseln und Entschlüsseln des an das Gateway gesendeten Datenverkehrs verwendet. Das Gatewayzertifikat muss im PFX-Format (Personal Information Exchange, privater Informationsaustausch) vorliegen. Mit diesem Format können Sie den privaten Schlüssel exportieren, den das Gateway zum Verschlüsseln und Entschlüsseln von Datenverkehr verwendet.
+Zum Konfigurieren von SSL-Terminierung und End-to-End-SSL-Verschlüsselung müssen Sie dem Listener ein Zertifikat hinzufügen, damit das Application Gateway einen symmetrischen Schlüssel ableiten kann. Dies wird durch die SSL-Protokollspezifikation vorgegeben. Der symmetrische Schlüssel wird zum Verschlüsseln und Entschlüsseln des an das Gateway gesendeten Datenverkehrs verwendet. Das Gatewayzertifikat muss im PFX-Format (Personal Information Exchange, privater Informationsaustausch) vorliegen. Mit diesem Format können Sie den privaten Schlüssel exportieren, den das Gateway zum Verschlüsseln und Entschlüsseln von Datenverkehr verwendet.
 
 #### <a name="supported-certificates"></a>Unterstützte Zertifikate
 
@@ -148,7 +151,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 #### <a name="websocket-support"></a>WebSocket-Unterstützung
 
-Die WebSocket-Unterstützung ist standardmäßig aktiviert. Sie kann von Benutzern nicht aktiviert oder deaktiviert werden. Sie können WebSockets sowohl mit HTTP- als auch mit HTTPS-Listenern verwenden.
+Die WebSocket-Unterstützung ist standardmäßig aktiviert. Sie kann von Benutzern nicht aktiviert oder deaktiviert werden. Sie können das WebSocket-Protokoll sowohl mit HTTP- als auch mit HTTPS-Listenern verwenden.
 
 ### <a name="custom-error-pages"></a>Benutzerdefinierte Fehlerseiten
 
@@ -172,7 +175,7 @@ Wenn Sie ein Application Gateway mithilfe des Azure-Portals erstellen, erstellen
 
 ### <a name="rule-type"></a>Regeltyp
 
-Wenn Sie eine Regel erstellen, wählen Sie zwischen [*grundlegend* und *pfadbasiert*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rule) aus.
+Wenn Sie eine Regel erstellen, wählen Sie zwischen [*grundlegend* und *pfadbasiert*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules) aus.
 
 - Wählen Sie „grundlegend“ aus, wenn Sie alle an den zugeordneten Listener gerichteten Anforderungen (z.B. *blog<i></i>.contoso.com/\*)* an einen einzelnen Back-End-Pool weiterleiten möchten.
 - Wählen Sie „pfadbasiert“ aus, wenn Sie Anforderungen von bestimmten URL-Pfaden an bestimmte Back-End-Pools weiterleiten möchten. Das Pfadmuster wird nur auf den Pfad der URL angewendet, nicht auf ihre Abfrageparameter.
@@ -215,7 +218,7 @@ Weitere Informationen zu Umleitungen finden Sie unter [Übersicht über die Umle
 
 #### <a name="redirection-type"></a>Umleitungstyp
 
-Wählen Sie den erforderlichen Umleitungstyp aus: *Dauerhaft(301)*, *Temporär(307)*, *Gefunden(302)* oder *Verweis(303)*.
+Wählen Sie den erforderlichen Umleitungstyp aus: *Dauerhaft(301)* , *Temporär(307)* , *Gefunden(302)* oder *Verweis(303)* .
 
 #### <a name="redirection-target"></a>Umleitungsziel
 
@@ -245,7 +248,7 @@ Weitere Informationen zur Umleitung finden Sie unter:
 Diese Einstellung fügt HTTP-Anforderungs- und -Antwortheader hinzu, entfernt oder aktualisiert sie, während die Anforderungs-/Antwortpakete zwischen dem Client und den Back-End-Pools verschoben werden. Sie können diese Funktion nur mithilfe von PowerShell konfigurieren. Unterstützung durch Azure-Portal und CLI sind noch nicht verfügbar. Weitere Informationen finden Sie unter
 
  - [Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [Angeben Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-your-http-header-rewrite-rule-configuration)
+ - [Angeben Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-the-http-header-rewrite-rule-configuration)
 
 ## <a name="http-settings"></a>HTTP-Einstellungen
 
@@ -259,7 +262,7 @@ Dieses Feature ist nützlich, wenn eine Benutzersitzung auf dem gleichen Server 
 
 Mit dem Verbindungsausgleich können Sie Elemente des Back-End-Pools bei geplanten Dienstupdates korrekt entfernen. Sie können diese Einstellung bei der Erstellung einer Regel auf alle Elemente eines Back-End-Pools anwenden. Dadurch wird sichergestellt, dass alle Instanzen eines Back-End-Pools, deren Registrierung aufgehoben wird, keine neuen Anforderungen erhalten. Vorhandene Anforderungen können in der Zwischenzeit innerhalb eines konfigurierten Zeitlimits abgeschlossen werden. Verbindungsausgleich gilt für Back-End-Instanzen, die explizit durch einen API-Aufruf aus dem Back-End-Pool entfernt werden. Dies gilt auch für Back-End-Instanzen, die von den Integritätstests als *fehlerhaft* gemeldet werden.
 
-### <a name="protocol"></a>Protokoll
+### <a name="protocol"></a>Protocol
 
 Application Gateway unterstützt sowohl HTTP als auch HTTPS für das Routing von Anforderungen an die Back-End-Server. Bei Auswahl von HTTP ist Datenverkehr an die Back-End-Server unverschlüsselt. Wenn unverschlüsselte Kommunikation nicht akzeptabel ist, wählen Sie HTTPS.
 
@@ -294,6 +297,7 @@ Mit dieser Einstellung können Sie einen optionalen benutzerdefinierten Weiterle
   | /home/secondhome/          | /pathrule*      | /override/            | /override/home/secondhome/   |
   | /pathrule/home/            | /pathrule/home* | /override/            | /override/                   |
   | /pathrule/home/secondhome/ | /pathrule/home* | /override/            | /override/secondhome/        |
+  | /pathrule/                 | /pathrule/      | /override/            | /override/                   |
 
 ### <a name="use-for-app-service"></a>Für App Service verwenden
 
@@ -306,7 +310,7 @@ Diese Einstellung ordnet einen [benutzerdefinierten Test](https://docs.microsoft
 > [!NOTE]
 > Der benutzerdefinierte Test überwacht die Integrität des Back-End-Pools nicht, sofern die entsprechende HTTP-Einstellung nicht explizit einem Listener zugeordnet ist.
 
-### <a id="pick"/></a>Hostnamen aus Back-End-Adresse auswählen
+### <a id="pick"/></a>Auswählen eines Hostnamens aus der Back-End-Adresse
 
 Diese Funktion legt den *Host*-Header in der Anforderung dynamisch auf den Hostnamen des Back-End-Pools fest. Sie verwendet dazu eine IP-Adresse oder einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN ).
 
@@ -344,6 +348,6 @@ Ein Application Gateway überwacht standardmäßig die Integrität aller Ressour
 
 Nachdem Sie sich nun über Application Gateway-Komponenten informiert haben, können Sie folgende Aktionen ausführen:
 
-- [Erstellen eines Anwendungsgateways im Azure-Portal](quick-create-portal.md)
-- [Erstellen eines Anwendungsgateways mit PowerShell](quick-create-powershell.md)
-- [Erstellen eines Anwendungsgateways mithilfe der Azure-CLI](quick-create-cli.md)
+- [Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal](quick-create-portal.md)
+- [Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure PowerShell](quick-create-powershell.md)
+- [Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway: Azure CLI](quick-create-cli.md)

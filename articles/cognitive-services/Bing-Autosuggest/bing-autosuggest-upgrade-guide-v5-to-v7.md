@@ -1,6 +1,6 @@
 ---
 title: Upgrade der Bing-Vorschlagssuche-API von v5 auf v7
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: In diesem Artikel werden die Teile Ihrer Anwendung angegeben, die Sie zur Verwendung von Version 7 aktualisieren müssen.
 services: cognitive-services
 author: swhite-msft
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 51f057a1dd0da866a50a0219574c70c3c805882e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5249a3a1f51eea2ecd0999d71c6b08fdacf37a34
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000010"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405420"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Upgradeleitfaden für die Vorschlagssuche-API
 

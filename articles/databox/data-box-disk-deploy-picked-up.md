@@ -1,35 +1,48 @@
 ---
-title: Zurücksenden des Microsoft Azure Data Box-Datenträgers | Microsoft-Dokumentation
+title: Tutorial zur Rücksendung der Microsoft Azure Data Box Disk | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie Ihren Azure Data Box-Datenträger an Microsoft zurücksenden.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 09/19/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7c62ec722e5bb909c13b21a7b98d86dd72d9e665
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59425949"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128688"
 ---
-# <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Tutorial: Zurücksenden von Azure Data Box Disk und Überprüfen des Datenuploads in Azure
+::: zone target="chromeless"
 
-Dies ist das letzte Tutorial der Reihe „Bereitstellen von Azure Data Box Disk“. In diesem Lernprogramm lernen Sie Folgendes:
+## <a name="return-azure-data-box-disk"></a>Zurücksenden von Azure Data Box Disk 
+
+::: zone-end
+
+::: zone target="docs"
+
+# <a name="tutorial-return-azure-data-box-disk"></a>Tutorial: Zurücksenden von Azure Data Box Disk 
+
+In diesem Tutorial erfahren Sie, wie Sie Azure Data Box Disk zurücksenden. Die Anweisungen für die Abholung hängen davon ab, wo Sie das Gerät zurückgeben. 
+
+In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Senden des Data Box-Datenträgers an Microsoft
-> * Überprüfen des Datenuploads in Azure
-> * Löschen von Daten vom Data Box-Datenträger
+> * Abholen von Data Box Disk in verschiedenen Regionen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie zunächst sicher, dass Sie die Schritte unter [Tutorial: Kopieren von Daten auf die Azure Data Box Disk und Durchführen der Überprüfung](data-box-disk-deploy-copy-data.md).
 
+
 ## <a name="ship-data-box-disk-back"></a>Zurücksenden des Data Box-Datenträgers
+
+::: zone-end
 
 1. Trennen Sie die Datenträger vom Computer, nachdem die Überprüfung der Daten abgeschlossen ist. Entfernen Sie die Verbindungskabel.
 2. Verpacken Sie die Datenträger und die Verbindungskabel in Luftpolsterfolie, und legen Sie sie in das Versandpaket. Fehlendes Zubehör wird ggf. in Rechnung gestellt.
@@ -37,155 +50,102 @@ Stellen Sie zunächst sicher, dass Sie die Schritte unter [Tutorial: Kopieren vo
     - Es empfiehlt sich, die Datenträger sorgfältig in Luftpolsterfolie zu verpacken.
     - Achten Sie auf einen festen Sitz der Teile im Karton, um ein Verrutschen innerhalb der Verpackung zu vermeiden.
 
-Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben.
+Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben. Für USA/Kanada, Australien, die Europäische Union (EU) und asiatische Länder gelten jeweils andere Anweisungen.
 
-### <a name="pick-up-in-us-canada"></a>Abholung in den USA/in Kanada
+### <a name="in-us-or-canadatabin-us-or-canada"></a>[In den USA oder in Kanada](#tab/in-us-or-canada)
 
 Wenn Sie das Gerät in den USA oder in Kanada zurückgeben möchten, gehen Sie wie folgt vor:
 
 1. Verwenden Sie das Etikett für den Rückversand in der durchsichtigen Kunststoffhülle, die am Paket angebracht ist. Sollte das Etikett beschädigt oder verloren gegangen sein:
-    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**.
-
-        ![Versandetikett herunterladen](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
-        Mit dieser Aktion können Sie wie unten gezeigt ein Etikett für den Rückversand herunterladen.
-
-        ![Beispiel für Versandetikett](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**, und laden Sie ein Etikett für den Rückversand herunter.
     - Bringen Sie das Etikett am Gerät an.
 
 2. Verschließen Sie das Versandpaket, und stellen Sie sicher, dass das Etikett für den Rückversand sichtbar ist.
-3. Planen Sie eine Abholung durch UPS.
+3. Planen Sie eine Abholung durch UPS. So planen Sie die Abholung:
 
+    - Rufen Sie Ihre lokale UPS-Versandstelle an (landes-/regionsspezifische gebührenfreie Telefonnummer).
+    - Geben Sie bei dem Telefonat die Nachverfolgungsnummer für die Rücksendung an, die Sie auf dem gedruckten Etikett finden.
+    - Wenn Sie keine Nachverfolgungsnummer angeben, fordert UPS eine Zusatzgebühr, die Sie bei der Abholung entrichten müssen.
+    - Wenn Sie keine Abholung planen können oder möchten, können Sie den Data Box-Datenträger auch an der nächstgelegenen Versandstelle abgeben.
 
-### <a name="pick-up-in-europe"></a>Abholung in Europa
+### <a name="in-europetabin-europe"></a>[In Europa](#tab/in-europe)
 
 Wenn Sie das Gerät in Europa zurückgeben möchten, gehen Sie wie folgt vor:
 
 1. Verwenden Sie das Etikett für den Rückversand in der durchsichtigen Kunststoffhülle, die am Paket angebracht ist. Sollte das Etikett beschädigt oder verloren gegangen sein:
-    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**.
-
-        ![Versandetikett herunterladen](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
-        Mit dieser Aktion können Sie wie unten gezeigt ein Etikett für den Rückversand herunterladen.
-
-        ![Beispiel für Versandetikett](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**, und laden Sie ein Etikett für den Rückversand herunter.
     - Bringen Sie das Etikett am Gerät an.
 
 2. Verschließen Sie das Versandpaket, und stellen Sie sicher, dass das Etikett für den Rückversand sichtbar ist.
 3. Wenn Sie das Gerät in Europa per DHL zurücksenden, können Sie die Abholung durch DHL anfordern, indem Sie auf der DHL-Website die Luftfrachtbrief-Nummer angeben.
-4. Greifen Sie auf die DHL Express-Website für Ihr Land zu, und wählen Sie **Abholung buchen > eReturn-Abholung buchen**.
-
-    ![Rücklieferung mit DHL](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
-    
+4. Navigieren Sie zur DHL Express-Website für Ihr Land/Ihre Region, und wählen Sie **Abholung buchen > eReturn-Abholung buchen**.    
 3. Geben Sie die Luftfrachtbrief-Nummer an, und klicken Sie auf **Abholung beauftragen**, um die Abholung anzufordern.
 
-      ![Abholung beauftragen](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
-
-### <a name="pick-up-in-asia-pacific-region"></a>Abholung in der Asien-Pazifik-Region
-
-Dieser Abschnitt enthält Anweisungen für die Abholung in Japan, Korea und Australien.
-
-#### <a name="pick-up-in-australia"></a>Abholung in Australien
+### <a name="in-australiatabin-australia"></a>[In Australien](#tab/in-australia)
 
 Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzliche Benachrichtigung erforderlich. Alle eingehenden Lieferungen müssen vorab angekündigt werden. Gehen Sie für eine Abholung in Australien wie folgt vor:
 
-1. Senden Sie eine E-Mail an `adbops@microsoft.com`, um ein Versandetikett mit eindeutiger Eingangs-ID oder TAU-Code anzufordern. Die Anforderung muss mindestens drei Tage vor dem geplanten Lieferdatum gesendet werden, um das Etikett rechtzeitig zu erhalten.
-2. Der Betreff der E-Mail muss wie folgt lauten: *Request for reverse shipping label with TAU code*. Geben Sie in der E-Mail folgende Informationen an: 
+1. Verwenden Sie das bereitgestellte Etikett für den Rückversand, und vergewissern Sie sich, dass darauf der TAU-Code (Referenznummer) vermerkt ist. Sollte das bereitgestellte Adressetikett fehlen oder ein anderes Problem auftreten, senden Sie eine E-Mail an [Data Box Asia Operations](mailto:adbo@microsoft.com). Geben Sie in der Betreffzeile den Auftragsnamen sowie Einzelheiten zum aufgetretenen Problem an.
+3. Bringen Sie das Etikett am Box-Gerät an. 
+4. Reservieren Sie online unter https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference einen Abholtermin. 
 
-    - Auftragsname
-    - Adresse
-    - Kontaktname
+### <a name="in-japantabin-japan"></a>[In Japan](#tab/in-japan)
 
-#### <a name="pick-up-in-japan"></a>Abholung in Japan
+1. Tragen Sie den Namen Ihres Unternehmens und Ihre Adressdaten als Absenderinformationen in den Rücksendeschein ein.
+2. Senden Sie Quantium Solutions über die folgende E-Mail-Vorlage eine E-Mail.
 
-1. Legen Sie den Rücksendeschein der japanischen Post für eine Nachnahmesendung („Chakubarai“) bei.
-2. Geben Sie auf dem Rücksendeschein den Namen und die Adresse Ihres Unternehmens als Absender an.
-3. Fordern Sie unter der gebührenfreien Nummer 0800-0800-111 eine Abholung durch die japanische Post an. Geben Sie die siebenstellige Postleitzahl für die Abholadresse ein, um an die nächstgelegene Poststelle weitergeleitet zu werden.
-    - Die verfügbaren Abholzeiten hängen von der jeweiligen Poststelle ab.
-    - Geben Sie an, dass es sich um eine Sendung vom Typ "Japan Post Chakubarai Yu-Pack" handelt.
-    - Verwenden Sie den Nachnahme-Rücksendeschein („Chakubarai“), der in der Lieferung enthalten war.
-4. Sollte in der Lieferung kein solcher Rücksendeschein enthalten gewesen sein, senden Sie eine E-Mail an unseren Partner *Quantium Solutions*: `Customerservice.JP@quantiumsolutions.com`. *Quantium Solutions* fordert eine Abholung bei der japanischen Post an und sorgt dafür, dass Sie den Rücksendeschein bei der Abholung erhalten.
-    - Geben Sie die Referenznummer in der Spalte für Bemerkungen auf dem Nachnahme-Rücksendeschein („Chakubarai“) an, den Sie von der japanischen Post erhalten.
-    - Geben Sie die Lieferanschrift wie unten gezeigt an:   
-        ```
-        3F N7 Prologis Park Tokyo Ohta, 1-3-6 Tokai Ohta-ku, Tokyo 143-0001
-        Microsoft Service Center c/o Quantium Solutions Japan
-        TEL: 03-5755-0150
-        ```
+    ```
+    To: Customerservice.JP@quantiumsolutions.com
+    Subject: Pickup request for Microsoft Azure Data Box Disk｜Job Name： 
+    Body: 
+    - Japan Post Yu-Pack tracking number (reference number)：
+    - Requested pickup date：mmdd (Select a requested time slot from below).
+        a. 08：00-13：00 
+        b. 13：00-15：00 
+        c. 15：00-17：00 
+        d. 17：00-19：00 
+    ```
+    - Ändern Sie bei **Abholung in Osaka** den Betreff der E-Mail-Vorlage in `Pickup request for Microsoft Azure OSA`.
+    - Falls der Rücksendeschein der japanischen Post für eine Nachnahmesendung („Chakubarai“) nicht enthalten war oder fehlt, weisen Sie in dieser E-Mail darauf hin. Quantium Solutions Japan fordert die japanische Post dann auf, den Rücksendeschein bei der Abholung mitzubringen.
+    - Senden Sie bei mehreren Bestellungen eine E-Mail, um sicherzustellen, dass die einzelnen Bestellungen abgeholt werden.
 
-Sollte der Nachnahme-Rücksendeschein („Chakubarai“) nicht vorhanden sein, können Sie die Abholung per E-Mail veranlassen. Verwenden Sie dazu die folgende E-Mail-Vorlage:
+3. Nachdem die Abholung gebucht wurde, erhalten Sie eine E-Mail-Bestätigung von Quantium Solutions. Die E-Mail-Bestätigung enthält auch Informationen zum Nachnahme-Rücksendeschein („Chakubarai“).
 
-```
-To: Customerservice.JP@quantiumsolutions.com
-Subject: Pickup request for Azure Data Box Disk｜Job Name： 
-Body: 
-- Azure Data Box Disk job name：
-- Reference number:  
-- Requested pickup date：mmdd (Select a requested time slot from below).
-    a. 08：00-13：00 
-    b. 13：00-15：00 
-    c. 15：00-17：00 
-    d. 17：00-19：00 
-```
+Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanische Sprache): 
 
-#### <a name="pick-up-in-korea"></a>Abholung in Korea
+- E-Mail-Adresse: Customerservice.JP@quantiumsolutions.com 
+- Telefonnummer: 03-5755-0150 
+
+### <a name="in-koreatabin-korea"></a>[In Korea](#tab/in-korea)
 
 1. Legen Sie den Rücksendeschein bei.
-2. Gehen Sie zum Anfordern der Abholung wie folgt vor:
-    1. Rufen Sie unter 070-8231-1418 die Hotline von *Quantium Solutions International* an (Geschäftszeiten: Montag bis Freitag, 10 bis 17 Uhr). Geben Sie *Microsoft pickup* (Microsoft-Abholung) und die Nummer des Rücksendescheins an, um eine Abholung zu veranlassen.  
-    2. Ist die Hotline überlastet, senden Sie eine E-Mail mit dem Betreff *Microsoft Pickup* und der Nummer des Rücksendescheins an `microsoft@rocketparcel.com`.
+2. Gehen Sie zum Anfordern der Abholung wie folgt vor, wenn der Rücksendeschein vorliegt:
+    1. Rufen Sie unter 070-8231-1418 die Hotline von *Quantium Solutions International* an (Geschäftszeiten: Montag bis Freitag, 10 bis 17 Uhr). Geben Sie *Microsoft Azure Pickup* (Microsoft Azure-Abholung) und die Service Request-Nummer an, um eine Abholung zu veranlassen.  
+    2. Ist die Hotline überlastet, senden Sie eine E-Mail`microsoft@rocketparcel.com` mit dem Betreff *Microsoft Azure Pickup* und der Service Request-Nummer an.
     3. Sollte der Kurier den Abholtermin nicht einhalten, rufen Sie die Hotline von *Quantium Solutions International* an, um eine alternative Lösung zu finden. 
+    4. Sie erhalten eine E-Mail-Bestätigung des Abholplans.
+3. Dieser Schritt ist nur erforderlich, wenn der Nachnahme-Rücksendeschein nicht vorliegt. Gehen Sie zum Anfordern der Abholung wie folgt vor:
+    1. Rufen Sie unter 070-8231-1418 die Hotline von *Quantium Solutions International* an (Geschäftszeiten: Montag bis Freitag, 10 bis 17 Uhr). Geben Sie *Microsoft Azure Pickup* (Microsoft Azure-Abholung) und die Service Request-Nummer an, um eine Abholung zu veranlassen. Geben Sie an, dass Sie einen Rückschein benötigen, um die Abholung zu veranlassen. Geben Sie Absender (Kunde), Empfänger-Informationen (Azure-Rechenzentrum) und die Referenznummer (Service Request-Nummer) an. 
+    2. Ist die Hotline überlastet, senden Sie eine E-Mail`microsoft@rocketparcel.com` mit dem Betreff *Microsoft Azure Pickup* und der Service Request-Nummer an.
+    3. Sollte der Kurier den Abholtermin nicht einhalten, rufen Sie die Hotline von *Quantium Solutions International* an, um eine alternative Lösung zu finden. 
+    4. Bei einer Anforderung per Telefon erhalten Sie eine mündliche Bestätigung.
 
-## <a name="verify-data-upload-to-azure"></a>Überprüfen des Datenuploads in Azure
 
-Nachdem die Datenträger vom Kurierdienst abgeholt wurden, wird der Auftragsstatus im Portal in **Picked up** (Abgeholt) geändert. Außerdem wird eine Nachverfolgungs-ID angezeigt.
+### <a name="in-singaporetabin-singapore"></a>[In Singapur](#tab/in-singapore)
 
-![Datenträger abgeholt](media/data-box-disk-deploy-picked-up/data-box-portal-pickedup.png)
+1. Drucken Sie das Adressetikett aus, und bringen Sie es auf der Box an. Sollte das Etikett beschädigt oder verloren gegangen sein:
+    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**, und laden Sie ein Etikett für den Rückversand herunter.
+    - Bringen Sie das Etikett am Gerät an. Vergewissern Sie sich, dass das Etikett gut sichtbar ist.
 
-Nachdem der Datenträger bei Microsoft eingegangen ist und gescannt wurde, wird der Auftragsstatus in **Received** (Empfangen) geändert. 
+2. Gehen Sie zum Anfordern der Abholung wie folgt vor:
+    - Rufen Sie die **SingPost**-Hotline unter **6845 6485** während der Geschäftszeiten an (Montag bis Freitag, 9 bis 17 Uhr).  
+    - Geben Sie *Microsoft Azure Pickup* (Microsoft Azure-Abholung) und die Service Request-Nummer (Nachverfolgungsnummer auf dem Rücksendeetikett) an, um eine Abholung zu veranlassen. 
+    - Sie erhalten eine mündliche Bestätigung des Abholplans. 
+    - Sollte der Kurier den Abholtermin nicht einhalten, rufen Sie **SingPost** unter **6845 6485** an, um eine alternative Lösung zu finden. 
+3. Übergeben Sie die Box an den Kurier. 
 
-![Datenträger empfangen](media/data-box-disk-deploy-picked-up/data-box-portal-received.png)
 
-Die Daten werden automatisch kopiert, nachdem die Datenträger im Azure-Rechenzentrum mit einem Server verbunden wurden. Je nach Datengröße kann der Kopiervorgang einige Stunden oder auch einige Tage dauern. Sie können den Status des Kopiervorgangs im Portal verfolgen.
-
-Nachdem der Kopiervorgang abgeschlossen ist, wird der Auftragsstatus in **Completed** (Abgeschlossen) geändert.
-
-![Kopieren der Daten abgeschlossen](media/data-box-disk-deploy-picked-up/data-box-portal-completed.png)
-
-Stellen Sie sicher, dass sich Ihre Daten in den Speicherkonten befinden, bevor Sie sie aus der Quelle löschen. Ihre Daten können sich an folgenden Orten befinden:
-
-- In Ihren Azure Storage-Konten. Wenn Sie die Daten in Data Box kopieren, werden die Daten abhängig vom Typ in einen der folgenden Pfade in Ihrem Azure Storage-Konto hochgeladen:
-
-  - Blockblobs und Seitenblobs: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
-  - Azure Files: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
-
-    Alternativ hierzu können Sie auch im Azure-Portal auf Ihr Azure-Speicherkonto zugreifen und von dort aus entsprechend navigieren.
-
-- In Ihren Ressourcengruppen für verwaltete Datenträger. Beim Erstellen von verwalteten Datenträgern werden die VHDs als Seitenblobs hochgeladen und dann in verwaltete Datenträger konvertiert. Die verwalteten Datenträger werden an die Ressourcengruppen angefügt, die zum Zeitpunkt der Auftragserstellung angegeben waren.
-
-  - Wenn der Kopiervorgang auf verwaltete Datenträger in Azure erfolgreich war, können Sie im Azure-Portal zu **Auftragsdetails** navigieren und sich die Ressourcengruppen notieren, die für verwaltete Datenträger angegeben sind.
-
-      ![Anzeigen der Auftragsdetails](media/data-box-disk-deploy-picked-up/order-details-resource-group.png)
-
-    Wechseln Sie zu der Ressourcengruppe, die Sie notiert haben, und suchen Sie Ihre verwalteten Datenträger.
-
-      ![Ressourcengruppe für verwaltete Datenträger](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
-
-  - Wenn Sie eine VHDX oder eine dynamische oder differenzierende VHD kopiert haben, wird die VHDX bzw. VHD als Blockblob in das Stagingspeicherkonto hochgeladen. Wechseln Sie zu Ihrem **Stagingspeicherkonto > Blobs**, und wählen Sie den geeigneten Container aus: StandardSSD, StandardHDD oder PremiumSSD. Die VHDX/VHDs sollten als Blockblobs in Ihrem Stagingspeicherkonto angezeigt werden.
-
-Führen Sie die folgenden Schritte aus, um sich zu vergewissern, dass die Daten in Azure hochgeladen wurden:
-
-1. Navigieren Sie zu dem Speicherkonto, das Ihrem Datenträgerauftrag zugeordnet ist.
-2. Navigieren Sie zu **Blob-Dienst > Blobs durchsuchen**. Die Liste mit den Containern wird angezeigt. Gemäß dem Unterordner, den Sie unter den Ordnern *BlockBlob* und *PageBlob* erstellt haben, werden unter Ihrem Speicherkonto Container mit demselben Namen erstellt.
-    Falls die Ordnernamen nicht den Azure-Namenskonventionen entsprechen, tritt beim Hochladen der Daten nach Azure ein Fehler auf.
-
-4. Verwenden Sie Microsoft Azure Storage-Explorer, um zu überprüfen, ob das gesamte Dataset geladen wurde. Fügen Sie das Speicherkonto an, das dem Mietauftrag für den Datenträger entspricht, und sehen Sie sich die Liste mit den Blobcontainern an. Wählen Sie einen Container aus, und klicken Sie auf **…Mehr** und dann auf **Folder statistics** (Ordnerstatistik). Im Bereich **Aktivitäten** wird die Statistik für diesen Ordner angezeigt, z.B. die Anzahl von Blobs und die Gesamtgröße der Blobs. Die Gesamtgröße der Blobs in Byte sollte mit der Größe des Datasets übereinstimmen.
-
-    ![Ordnerstatistik in Storage-Explorer](media/data-box-disk-deploy-picked-up/folder-statistics-storage-explorer.png)
-
-## <a name="erasure-of-data-from-data-box-disk"></a>Löschen von Daten vom Data Box-Datenträger
-
-Nachdem der Kopiervorgang abgeschlossen ist und Sie überprüft haben, dass sich die Daten unter dem Azure-Speicherkonto befinden, werden die Datenträger gemäß dem NIST-Standard auf sichere Weise gelöscht.
+::: zone target="docs"
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -193,13 +153,15 @@ In diesem Tutorial haben Sie Informationen zu Azure Data Box-Datenträgern erhal
 
 > [!div class="checklist"]
 > * Senden des Data Box-Datenträgers an Microsoft
-> * Überprüfen des Datenuploads in Azure
-> * Löschen von Daten vom Data Box-Datenträger
+> * Abholen von Data Box Disk in verschiedenen Regionen
 
-
-Fahren Sie mit dem nächsten Artikel zur Vorgehensweise fort, um zu erfahren, wie Sie den Data Box-Datenträger über das Azure-Portal verwalten.
+In der nächsten Anleitung erfahren Sie, wie Sie den Datenupload von Data Box Disk in das Azure Storage-Konto überprüfen.
 
 > [!div class="nextstepaction"]
-> [Use Azure portal to administer Azure Data Box Disk](./data-box-portal-ui-admin.md) (Verwenden des Azure-Portals zum Verwalten des Azure Data Box-Datenträgers)
+> [Tutorial: Zurücksenden von Azure Data Box Disk und Überprüfen des Datenuploads in Azure](./data-box-disk-deploy-picked-up.md)
+
+::: zone-end
+
+
 
 

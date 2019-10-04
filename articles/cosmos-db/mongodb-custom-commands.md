@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: aef77f121f20d867c8ec5e764d8c9639c961713d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 94b1048befc8716caf5f7f51adb1f95d047d4077
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58876887"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64925655"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwenden von MongoDB-Erweiterungsbefehlen zum Verwalten von Daten in der API für MongoDB von Azure Cosmos DB 
 
@@ -23,7 +23,7 @@ Mit der API für MongoDB von Azure Cosmos DB kommen Sie in den Genuss der Vortei
 
 Standardmäßig ist die API für MongoDB von Azure Cosmos DB mit der MongoDB-Serverversion 3.2 kompatibel. Ausführlichere Informationen finden Sie im Artikel zu den [unterstützten Features und zur Syntax](mongodb-feature-support.md). Die in MongoDB Version 3.4 hinzugefügten Features und Abfrageoperatoren sind derzeit als Vorschauversion in der API für MongoDB von Azure Cosmos DB verfügbar. Die folgenden Erweiterungsbefehle unterstützen spezifische Funktionen von Azure Cosmos DB, wenn für die Daten, die unter der API für MongoDB von Azure Cosmos DB gespeichert sind, CRUD-Vorgänge durchgeführt werden:
 
-* [Erstellen einer Datenbank](#create-database)
+* [Erstellen der Datenbank](#create-database)
 * [Aktualisieren der Datenbank](#update-database)
 * [Abrufen der Datenbank](#get-database)
 * [Erstellen der Sammlung](#create-collection)
@@ -43,14 +43,14 @@ Mit dem Erweiterungsbefehl „CreateDatabase“ wird eine neue MongoDB-Datenbank
 
 In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
-|**Feld**|**Type** |**BESCHREIBUNG** |
+|**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
 | customAction   |  Zeichenfolge  |   Name des benutzerdefinierten Befehls. Er muss „CreateDatabase“ lauten.      |
 | offerThroughput | int  | Bereitgestellter Durchsatz, den Sie für die Datenbank festgelegt haben. Dieser Parameter ist optional. |
 
 ### <a name="output"></a>Output
 
-Gibt eine benutzerdefinierte Standardantwort für den Befehl zurück. Informationen hierzu finden Sie in der [Standardausgabe](#default-output) des benutzerdefinierten Befehls für die Parameter in der Ausgabe.
+Gibt eine Standardantwort für den benutzerdefinierten Befehl zurück. Informationen hierzu finden Sie in der [Standardausgabe](#default-output) des benutzerdefinierten Befehls für die Parameter in der Ausgabe.
 
 ### <a name="examples"></a>Beispiele
 
@@ -63,7 +63,7 @@ use test
 db.runCommand({customAction: "CreateDatabase"});
 ```
 
-**Erstellen einer Datenbank mit Durchsatz**
+**Erstellen einer Datenbank und Bereitstellen eines Durchsatzes**
 
 Verwenden Sie den folgenden Befehl, um eine Datenbank mit dem Namen „test“ und einem bereitgestellten Durchsatz von 1.000 RUs zu erstellen:
 
@@ -85,7 +85,7 @@ Mit dem Erweiterungsbefehl „UpdateDatabase“ werden die Eigenschaften aktuali
 
 In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
-|**Feld**|**Type** |**BESCHREIBUNG** |
+|**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
 | customAction    |    Zeichenfolge     |   Der Name des benutzerdefinierten Befehls. Er muss „UpdateDatabase“ lauten.      |
 |  offerThroughput   |  int       |     Neuer bereitgestellter Durchsatz, den Sie für die Datenbank festlegen möchten.    |
@@ -96,7 +96,7 @@ Gibt eine Standardantwort für den benutzerdefinierten Befehl zurück. Informati
 
 ### <a name="examples"></a>Beispiele
 
-**Aktualisieren des bereitgestellten Durchsatzes einer Datenbank**
+**Aktualisieren des bereitgestellten Durchsatzes für eine Datenbank**
 
 Verwenden Sie den folgenden Befehl, um den bereitgestellten Durchsatz einer Datenbank mit dem Namen „test“ auf 1.200 RUs zu aktualisieren:
 
@@ -118,7 +118,7 @@ Mit dem Erweiterungsbefehl „GetDatabase“ wird das Datenbankobjekt zurückgeg
 In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 
-|**Feld**|**Type** |**BESCHREIBUNG** |
+|**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
 |  customAction   |   Zeichenfolge      |   Der Name des benutzerdefinierten Befehls. Er muss „GetDatabase“ lauten.|
         
@@ -126,7 +126,7 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 Wenn der Befehl erfolgreich ist, enthält die Antwort ein Dokument mit den folgenden Feldern:
 
-|**Feld**|**Type** |**BESCHREIBUNG** |
+|**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
 |  `ok`   |   `int`     |   Status der Antwort. 1 == Erfolgreich. 0 == Fehler.      |
 | `database`    |    `string`        |   Der Name der Datenbank.      |
@@ -160,7 +160,7 @@ Mit dem Erweiterungsbefehl „CreateCollection“ wird eine neue MongoDB-Sammlun
 
 In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
-|**Feld**|**Type** |**BESCHREIBUNG** |
+|**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
 | customAction    | Zeichenfolge | Der Name des benutzerdefinierten Befehls. Er muss „CreateCollection“ lauten.     |
 | collection      | Zeichenfolge | Name der Sammlung                                   |
@@ -205,7 +205,7 @@ Mit dem Erweiterungsbefehl „UpdateCollection“ werden die Eigenschaften aktua
 
 In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
-|**Feld**|**Type** |**BESCHREIBUNG** |
+|**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
 |  customAction   |   Zeichenfolge      |   Der Name des benutzerdefinierten Befehls. Er muss „UpdateCollection“ lauten.      |
 |  collection   |   Zeichenfolge      |   Name der Sammlung       |
@@ -217,7 +217,7 @@ Gibt eine Standardantwort für den benutzerdefinierten Befehl zurück. Informati
 
 ### <a name="examples"></a>Beispiele
 
-**Aktualisieren des bereitgestellten Durchsatzes einer Sammlung**
+**Aktualisieren des bereitgestellten Durchsatzes für eine Sammlung**
 
 Verwenden Sie den folgenden Befehl, um den bereitgestellten Durchsatz einer Sammlung mit dem Namen „testCollection“ auf 1.200 RUs zu aktualisieren:
 
@@ -240,7 +240,7 @@ Mit dem benutzerdefinierten Befehl „GetCollection“ wird das Sammlungsobjekt 
 In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 
-|**Feld**|**Type** |**BESCHREIBUNG** |
+|**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
 | customAction    |   Zeichenfolge      |   Der Name des benutzerdefinierten Befehls. Er muss „GetCollection“ lauten.      |
 | collection    |    Zeichenfolge     |    Name der Sammlung     |
@@ -250,7 +250,7 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 Wenn der Befehl erfolgreich ist, enthält die Antwort ein Dokument mit den folgenden Feldern:
 
 
-|**Feld**|**Type** |**BESCHREIBUNG** |
+|**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   Status der Antwort. 1 == Erfolgreich. 0 == Fehler.      |
 | `database`    |    `string`     |   Der Name der Datenbank.      |
@@ -275,7 +275,7 @@ db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 
 Wenn nichts anderes angegeben ist, enthält eine benutzerdefinierte Antwort ein Dokument mit den folgenden Feldern:
 
-|**Feld**|**Type** |**BESCHREIBUNG** |
+|**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
 |  `ok`   |    `int`     |   Status der Antwort. 1 == Erfolgreich. 0 == Fehler.      |
 | `code`    |   `int`      |   Wird nur zurückgegeben, wenn der Befehl nicht erfolgreich ist (ok == 0). Enthält den MongoDB-Fehlercode. Dies ist ein optionaler Antwortparameter.      |

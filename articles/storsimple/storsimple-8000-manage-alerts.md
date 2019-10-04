@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 38d403be1dc35b8ab4cd1b15fa259b5e6917197c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c3be0cdf2ef33c26dfa9d177e9b34f808b1b862a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314449"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60320387"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Anzeigen und Verwalten von StorSimple-Warnungen mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -159,8 +159,8 @@ Wenn die Cloudverbindung für das StorSimple-Gerät in der Produktion ausfällt,
 | Geräte-Failover zu <*Gerätename*>. |Nicht geplantes Failover |StorSimple führt bei ungeplanten Failovers automatisch Wiederherstellungen aus. Falls eine große Anzahl dieser Warnungen angezeigt wird, wenden Sie sich an den Microsoft Support. |
 | Geräte-Failover zu <*Gerätename*>. |Andere/Unbekannte Ursache |Falls eine große Anzahl dieser Warnungen angezeigt wird, wenden Sie sich an den Microsoft Support. Nachdem das Problem behoben wurde, löschen Sie diese Warnung von der Warnungsseite. |
 | Ein Dienst für kritische Geräte meldet einen Fehlerstatus. |Fehler bei einem Datenpfaddienst. |Wenden Sie sich an den Microsoft Support. |
-| Die virtuelle IP-Adresse für die Netzwerkschnittstelle <*DATA #*> meldet einen Fehlerstatus. |Andere/Unbekannte Ursache |Manchmal werden diese Warnungen durch vorübergehende Bedingungen verursacht. In diesem Fall wird die Warnung nach einiger Zeit automatisch gelöscht. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
-| Die virtuelle IP-Adresse für die Netzwerkschnittstelle <*DATA #*> meldet einen Fehlerstatus. |Schnittstellenname: <*DATA #*> IP-Adresse <IP address> kann nicht online geschaltet werden, da eine doppelte IP-Adresse im Netzwerk erkannt wurde. |Stellen Sie sicher, dass die doppelte IP-Adresse aus dem Netzwerk entfernt wird, oder konfigurieren Sie die Schnittstelle mit einer anderen IP-Adresse neu. |
+| Die virtuelle IP-Adresse für die Netzwerkschnittstelle <*DATA #* > meldet einen Fehlerstatus. |Andere/Unbekannte Ursache |Manchmal werden diese Warnungen durch vorübergehende Bedingungen verursacht. In diesem Fall wird die Warnung nach einiger Zeit automatisch gelöscht. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
+| Die virtuelle IP-Adresse für die Netzwerkschnittstelle <*DATA #* > meldet einen Fehlerstatus. |Schnittstellenname: <*DATA #* > IP-Adresse `<IP address>` kann nicht online geschaltet werden, da eine doppelte IP-Adresse im Netzwerk erkannt wurde. |Stellen Sie sicher, dass die doppelte IP-Adresse aus dem Netzwerk entfernt wird, oder konfigurieren Sie die Schnittstelle mit einer anderen IP-Adresse neu. |
 
 ### <a name="disaster-recovery-alerts"></a>Warnungen zur Notfallwiederherstellung
 
@@ -200,8 +200,8 @@ Wenn die Cloudverbindung für das StorSimple-Gerät in der Produktion ausfällt,
 | Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
 |:--- |:--- |:--- |
 | StorSimple-Dienst konnte nicht gestartet werden. |Datenpfadfehler |Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
-| Doppelte IP-Adresse für „Data0“ erkannt. | |Das System hat einen Konflikt für die IP-Adresse „10.0.0.1“ erkannt. Die Netzwerkressource „Data0“ auf dem Gerät *<device1>* ist offline. Stellen Sie sicher, dass diese IP-Adresse nicht von einer anderen Entität in diesem Netzwerk verwendet wird. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Hilfe bei der Lösung dieses Problems erhalten Sie von Ihrem Netzwerkadministrator. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
-| IPv4- (oder IPv6-) Adresse für „Data0“ ist offline. | |Die Netzwerkressource „Data0“ mit der IP-Adresse „10.0.0.1.“ und der Präfixlänge „22“ auf dem Gerät *<device1>* ist offline. Stellen Sie sicher, dass die Switchports, mit denen diese Schnittstelle verbunden ist, betriebsbereit sind. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
+| Doppelte IP-Adresse für „Data0“ erkannt. | |Das System hat einen Konflikt für die IP-Adresse „10.0.0.1“ erkannt. Die Netzwerkressource „Data0“ auf dem Gerät *\<Gerät1>* ist offline. Stellen Sie sicher, dass diese IP-Adresse nicht von einer anderen Entität in diesem Netzwerk verwendet wird. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Hilfe bei der Lösung dieses Problems erhalten Sie von Ihrem Netzwerkadministrator. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |
+| IPv4- (oder IPv6-) Adresse für „Data0“ ist offline. | |Die Netzwerkressource „Data0“ mit der IP-Adresse „10.0.0.1.“ und der Präfixlänge „22“ auf dem Gerät *\<Gerät1>* ist offline. Stellen Sie sicher, dass die Switchports, mit denen diese Schnittstelle verbunden ist, betriebsbereit sind. Zum Beheben von Netzwerkproblemen finden Sie weitere Informationen unter [Problembehandlung mit dem Cmdlet „Get-NetAdapter“](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
 | Es konnte keine Verbindung mit dem Authentifizierungsdienst hergestellt werden. |Datenpfadfehler |Die URL für die Authentifizierung ist nicht erreichbar. Stellen Sie sicher, dass Ihre Firewall das für das StorSimple-Gerät angegebene URL-Muster umfasst. Weitere Informationen zu URL-Mustern im Azure-Portal finden Sie unter „https:\//aka.ms/ss-8000-network-reqs“. Wenn Sie Azure Government Cloud verwenden, finden Sie hier Informationen zu URL-Mustern: „https:\//aka.ms/ss8000-gov-network-reqs“.|
 
 ### <a name="performance-alerts"></a>Leistungswarnungen

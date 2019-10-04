@@ -2,21 +2,19 @@
 title: Verarbeiten und Extrahieren von Text aus Bildern in der kognitiven Suche – Azure Search
 description: Verarbeiten und extrahieren Sie Text und andere Informationen aus Bildern in kognitiven Suchpipelines in Azure Search.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: f1491d6b87816dfc70e94e01653567bda101d045
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c1fd5c4e5a3ac054a85bdcc11d95bc3c338ee3c2
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916970"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265870"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Verarbeiten und Extrahieren von Text aus Bildern in kognitiven Suchszenarien
 
@@ -30,21 +28,20 @@ Dieser Artikel geht etwas ausführlicher auf die Bildverarbeitung ein und bietet
 
 Im Rahmen der Dokumentaufschlüsselung steht ein neuer Satz von Indexerkonfigurationsparametern für die Behandlung von Bilddateien oder von Bildern zur Verfügung, die in Dateien eingebettet sind. Diese Parameter dienen zur Normalisierung von Bildern für die Weiterverarbeitung. Die Normalisierung dient zur Generierung einheitlicherer Bilder. Große Bilder werden auf eine maximale Höhe und Breite festgelegt, um sie nutzbar zu machen. Bei Bildern mit Metadaten zur Ausrichtung wird die Drehung angepasst, um vertikales Laden zu ermöglichen. Metadatenanpassungen werden in einem komplexen Typ erfasst, der für jedes Bild erstellt wird. 
 
-Die Bildnormalisierung kann nicht deaktiviert werden. Qualifikationen, die Bilder durchlaufen, erwarten normalisierte Bilder.
+Die Bildnormalisierung kann nicht deaktiviert werden. Qualifikationen, die Bilder durchlaufen, erwarten normalisierte Bilder. Das Aktivieren der Imagenormalisierung für einen Indexer erfordert, dass diesem Indexer ein Skillset angefügt wird.
 
 | Konfigurationsparameter | BESCHREIBUNG |
 |--------------------|-------------|
 | imageAction   | Legen Sie diese Eigenschaft auf „none“ fest, falls bei der Erkennung von eingebetteten Bildern oder Bilddateien keine Aktion erfolgen soll. <br/>Wenn Sie die Eigenschaft auf „generateNormalizedImages“ festlegen, wird im Rahmen der Dokumentaufschlüsselung ein Array mit normalisierten Bildern generiert.<br/>Legen Sie diese Option auf „generateNormalizedImagePerPage“ fest, um ein Array von normalisierten Bildern zu erzeugen, bei dem für PDFs in Ihrer Datenquelle jede Seite in ein Ausgabebild gerendert wird.  Die Funktionalität ist die gleiche wie bei „generateNormalizedImages“ für Nicht-PDF-Dateitypen.<br/>Für alle anderen Optionen als „none“ werden diese Bilder im Feld *normalized_images* verfügbar gemacht. <br/>Der Standardwert ist „none“. Diese Konfiguration ist nur für Blobdatenquellen relevant, wenn „dataToExtract" auf „contentAndMetadata“ festgelegt ist. <br/>Maximal 1000 Bilder werden aus einem angegebenen Dokument extrahiert. Wenn in einem Dokument mehr als 1000 Bilder vorhanden sind, werden die ersten 1000 extrahiert, und eine Warnung wird generiert. |
-|  normalizedImageMaxWidth | Die maximale Breite (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“.|
-|  normalizedImageMaxHeight | Die maximale Höhe (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“.|
+|  normalizedImageMaxWidth | Die maximale Breite (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“. Der zulässige Höchstwert ist 10.000. | 
+|  normalizedImageMaxHeight | Die maximale Höhe (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“. Der zulässige Höchstwert ist 10.000.|
 
 > [!NOTE]
 > Wenn Sie die Eigenschaft *imageAction* auf einen anderen Wert als „none“ festlegen, kann die Eigenschaft *parsingMode* nur auf „default“ festgelegt werden.  In der Indexerkonfiguration kann immer nur eine dieser beiden Eigenschaften auf einen standardfremden Wert festgelegt werden.
 
 Legen Sie den Parameter **parsingMode** auf `json` (zum Indizieren jedes Blob als einzelnes Dokument) oder `jsonArray` (wenn die Blobs JSON-Arrays enthalten und jedes Element eines Arrays als separates Dokument behandelt werden soll) fest.
 
-Der Standardwert von 2.000 Pixeln für die maximale Breite und Höhe der normalisierten Bilder basiert auf der maximal unterstützten Größe der [OCR-Qualifikation](cognitive-search-skill-ocr.md) und der [Bildanalysequalifikation](cognitive-search-skill-image-analysis.md). Wenn Sie die maximalen Grenzwerte erhöhen, können größere Bilder möglicherweise nicht erfolgreich verarbeitet werden.
-
+Der Standardwert von 2.000 Pixeln für die maximale Breite und Höhe der normalisierten Bilder basiert auf der maximal unterstützten Größe der [OCR-Qualifikation](cognitive-search-skill-ocr.md) und der [Bildanalysequalifikation](cognitive-search-skill-image-analysis.md). Die [OCR-Qualifikation](cognitive-search-skill-ocr.md) unterstützt eine maximale Breite und Höhe von 4.200 für nicht englische Sprachen und 10.000 für Englisch.  Wenn Sie die maximalen Grenzwerte erhöhen, können bei größeren Images je nach Skillsetdefinition und Sprache der Dokumente Fehler bei der Verarbeitung auftreten. 
 
 Die imageAction-Eigenschaft wird in der [Indexerdefinition](https://docs.microsoft.com/rest/api/searchservice/create-indexer) wie folgt angegeben:
 
@@ -72,7 +69,8 @@ Wenn *imageAction* auf einen anderen Wert als „none“ festgelegt wird, enthä
 | originalWidth      | Ursprüngliche Breite des Bilds vor der Normalisierung. |
 | originalHeight      | Ursprüngliche Höhe des Bilds vor der Normalisierung. |
 | rotationFromOriginal |  Drehung gegen den Uhrzeigersinn zur Erstellung des normalisierten Bilds (in Grad). Der Wert muss zwischen 0 und 360 Grad liegen. In diesem Schritt werden die durch eine Kamera oder einen Scanner generierten Metadaten aus dem Bild gelesen. Der Wert ist in der Regel ein Vielfaches von 90 Grad. |
-| contentOffset |Das Zeichenoffset in dem Inhaltsfeld, aus dem das Bild extrahiert wurde. Dieses Feld ist nur für Dateien mit eingebetteten Bildern relevant. |
+| contentOffset | Das Zeichenoffset in dem Inhaltsfeld, aus dem das Bild extrahiert wurde. Dieses Feld ist nur für Dateien mit eingebetteten Bildern relevant. |
+| pageNumber | Wenn das Bild aus einer PDF-Datei extrahiert oder gerendert wurde, enthält dieses Feld die Seitenzahl in der PDF-Datei, aus der es extrahiert oder gerendert wurde, beginnend bei 1.  Wenn das Bild nicht aus einer PDF-Datei stammt, ist dieses Feld 0.  |
 
  Beispielwert von *normalized_images*:
 ```json
@@ -84,7 +82,8 @@ Wenn *imageAction* auf einen anderen Wert als „none“ festgelegt wird, enthä
     "originalWidth": 5000,  
     "originalHeight": 3000,
     "rotationFromOriginal": 90,
-    "contentOffset": 500  
+    "contentOffset": 500,
+    "pageNumber": 2
   }
 ]
 ```
@@ -102,8 +101,6 @@ Die [Bildanalysequalifikation](cognitive-search-skill-image-analysis.md) extrahi
 ### <a name="ocr-skill"></a>OCR-Qualifikation
 
 Die [OCR-Qualifikation](cognitive-search-skill-ocr.md) extrahiert Text aus Bilddateien – etwa aus JPG-, PNG- und Bitmap-Dateien. Sie kann sowohl Text als auch Layoutinformationen extrahieren. Die Layoutinformationen bieten umgebende Rechtecke für die jeweils erkannten Zeichenfolgen.
-
-Mit der OCR-Qualifikation können Sie den Algorithmus für die Texterkennung in Ihren Bildern auswählen. Aktuell werden zwei Algorithmen unterstützt: einer für gedruckten Text und einer für handschriftlichen Text.
 
 ## <a name="embedded-image-scenario"></a>Szenario mit eingebettetem Bild
 

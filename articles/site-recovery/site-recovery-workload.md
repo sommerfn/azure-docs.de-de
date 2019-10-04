@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 09/03/2019
 ms.author: raynew
-ms.openlocfilehash: 3ad3438f02ead9063a683a39d4ac5823274d55f7
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155167"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232192"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Welche Workloads können mit Azure Site Recovery geschützt werden?
 
@@ -35,13 +35,13 @@ Site Recovery trägt wie folgt zum Schutz und zur Wiederherstellung auf Anwendun
 * App-unabhängige Bereitstellung von Replikation für alle Workloads, die auf einem unterstützten Computer ausgeführt werden
 * Nahezu synchrone Replikation mit geringen RPOs von bis zu 30 Sekunden, um die Anforderungen der meisten kritischen Apps von Unternehmen zu erfüllen
 * Anwendungskonsistente Momentaufnahmen für Anwendungen mit einer oder mehreren Ebenen
-* Integration mit SQL Server AlwaysOn und Partnerschaft mit anderen Replikationstechnologien auf Anwendungsebene, einschließlich Active Directory-Replikation, SQL AlwaysOn, Exchange-Datenbankverfügbarkeitsgruppen und Oracle Data Guard.
+* Integration mit SQL Server AlwaysOn und Partnerschaft mit anderen Replikationstechnologien auf Anwendungsebene, einschließlich Active Directory-Replikation, SQL AlwaysOn, Exchange-Datenbankverfügbarkeitsgruppen.
 * Flexible Wiederherstellungspläne, die die Wiederherstellung des gesamten Anwendungsstapels mit einem einzigen Mausklick und das Einfügen von externen Skripts und manuellen Aktionen in den Plan ermöglichen
 * Erweiterte Netzwerkverwaltung in Site Recovery und Azure, um die App-Netzwerkanforderungen zu vereinfachen, z. B. das Reservieren von IP-Adressen, Konfigurieren des Lastenausgleichs und Integrieren in Azure Traffic Manager, um Netzwerk-Switchovers mit niedrigem RTO zu erzielen.
 * Eine umfassende Automatisierungsbibliothek bietet produktionsbereite, anwendungsspezifische Skripts, die heruntergeladen und in Wiederherstellungspläne integriert werden können.
 
 ## <a name="workload-summary"></a>Übersicht über Workloads
-Mit Site Recovery können alle Apps repliziert werden, die auf einem unterstützten Computer ausgeführt werden. Außerdem haben wir mit Produktteams zusammengearbeitet, um zusätzliche App-spezifische Tests durchzuführen.
+Mit Site Recovery können alle Apps repliziert werden, die auf einem unterstützten Computer ausgeführt werden. Außerdem haben wir mit Produktteams zusammengearbeitet, um zusätzliche Tests für die in der Tabelle enthaltenen Apps durchzuführen.
 
 | **Workload** |**Replizieren von Azure-VMs in Azure** |**Replizieren von Hyper-V-VMs an einem sekundären Standort** | **Replizieren von Hyper-V-VMs in Azure** | **Replizieren von VMware-VMs an einem sekundären Standort** | **Replizieren von VMware-VMs in Azure** |
 | --- | --- | --- | --- | --- |---|
@@ -55,7 +55,7 @@ Mit Site Recovery können alle Apps repliziert werden, die auf einem unterstütz
 | Linux (Betriebssystem und Apps) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft)|
 | Dynamics AX |J |J |J |J |J|
 | Windows-Dateiserver |J |J |J |J |J|
-| Citrix XenApp und XenDesktop |J|N/V |J |N/V |J |
+| Citrix XenApp und XenDesktop |J|– |J |– |J |
 
 ## <a name="replicate-active-directory-and-dns"></a>Replizieren von Active Directory und DNS
 Eine Infrastruktur mit Active Directory und DNS ist für die meisten Unternehmens-Apps wichtig. Während der Notfallwiederherstellung müssen Sie diese Infrastrukturkomponenten schützen und wiederherstellen, bevor Sie Ihre Workloads und Apps wiederherstellen.
@@ -103,9 +103,9 @@ Mit Remotedesktopdiensten (RDS) werden eine Virtual Desktop Infrastructure (VDI)
 
 | **RDS** |**Replizieren von Azure-VMs in Azure** | **Replizieren von Hyper-V-VMs an einem sekundären Standort** | **Replizieren von Hyper-V-VMs in Azure** | **Replizieren von VMware-VMs an einem sekundären Standort** | **Replizieren von VMware-VMs in Azure** | **Replizieren von physischen Servern an einem sekundären Standort** | **Replizieren physischer Server in Azure** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **Virtuelle Desktops eines Pools (nicht verwaltet)** |Nein |Ja |Nein |Ja |Nein |Ja |Nein  |
-| **Virtuelle Desktops eines Pools (verwaltet und ohne UPD)** |Nein |Ja |Nein |Ja |Nein |Ja |Nein  |
-| **Remoteanwendungen und Remotedesktopsitzungen (ohne UPD)** |JA|Ja |Ja |Ja |Ja |Ja |JA |
+| **Virtuelle Desktops eines Pools (nicht verwaltet)** |Nein|Ja |Nein |Ja |Nein |Ja |Nein |
+| **Virtuelle Desktops eines Pools (verwaltet und ohne UPD)** |Nein|Ja |Nein |Ja |Nein |Ja |Nein |
+| **Remoteanwendungen und Remotedesktopsitzungen (ohne UPD)** |Ja|Ja |Ja |Ja |Ja |Ja |Ja |
 
 [Set up disaster recovery for RDS using Azure Site Recovery](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure) (Einrichten der Notfallwiederherstellung für RDS mit Azure Site Recovery)
 
@@ -146,7 +146,7 @@ Azure Site Recovery stellt die Notfallwiederherstellung bereit, indem die kritis
 ## <a name="protect-citrix-xenapp-and-xendesktop"></a>Schützen von Citrix XenApp und XenDesktop
 Gehen Sie wie folgt vor, um Ihre Bereitstellungen von Citrix XenApp und XenDesktop mithilfe von Site Recovery zu schützen:
 
-* Aktivieren Sie den Schutz der Citrix XenApp- und XenDesktop-Bereitstellung, indem Sie verschiedene Bereitstellungsebenen in Azure replizieren. Zu diesen zählen unter anderem AD-DNS-Server, SQL-Datenbankserver, Citrix Delivery Controller, StoreFront-Server, XenApp Master (VDA) und Citrix XenApp-Lizenzserver.
+* Aktivieren Sie den Schutz der Citrix XenApp- und XenDesktop-Bereitstellung, indem Sie verschiedene Bereitstellungsebenen in Azure replizieren. Zu diesen zählen unter anderem AD-DNS-Server, SQL-Datenbank-Server, Citrix Delivery Controller, StoreFront-Server, XenApp Master (VDA) und Citrix XenApp-Lizenzserver.
 * Vereinfachen Sie die Cloudmigration, indem Sie Ihre Citrix XenApp- und XenDesktop-Bereitstellung mithilfe von Site Recovery zu Azure migrieren.
 * Vereinfachen Sie das Testen von Citrix XenApp/XenDesktop, indem Sie bei Bedarf eine der Produktionsversion ähnliche Kopie zu Test- und Debugzwecken erstellen.
 * Diese Lösung ist nur für virtuelle Desktopcomputer unter dem Windows Server-Betriebssystem relevant und nicht für virtuelle Clientdesktopcomputer, da diese noch nicht für die Lizenzierung in Azure unterstützt werden.

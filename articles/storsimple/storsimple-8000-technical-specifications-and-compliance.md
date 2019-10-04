@@ -14,16 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 855ea6c34082b859bb5b5b6e69b3e3f2fa54eb4a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056462"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965289"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technische Spezifikationen und Kompatibilität des StorSimple-Geräts
 
 ## <a name="overview"></a>Übersicht
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 Die Hardwarekomponenten des Microsoft Azure StorSimple-Geräts verfügen über die in diesem Artikel beschriebenen technischen Spezifikationen und entsprechen den aufgeführten gesetzlichen Richtlinien. In den technischen Spezifikationen werden die Stromversorgungs- und Kühleinheiten (PCMs), Laufwerke, Speicherkapazität und Gehäuse beschrieben. Die Richtlinieninformationen umfassen z. B. internationale Standards sowie Sicherheits-, Emissions- sowie Verkabelungsbestimmungen.
 
@@ -37,14 +39,14 @@ Das EBOD-Gehäuse enthält ein PCM mit 580 W, und das primäre Gehäuse wird mi
 | --- | --- | --- |
 | Maximale Ausgangsleistung |580 W |764 |
 | Frequency |50/60 Hz |50/60 Hz |
-| Spannungsbereichsauswahl |Automatischer Spannungsbereich: 90–264 V AC, 47/63 Hz |Automatischer Spannungsbereich: 90–264 V AC, 47/63 Hz |
+| Spannungsbereichsauswahl |Automatischer Spannungsbereich: 90–264 V Wechselstrom, 47/63 Hz |Automatischer Spannungsbereich: 90–264 V Wechselstrom, 47/63 Hz |
 | Maximaler Eingangsstrom |20 A |20 A |
 | Leistungsfaktorkorrektur |> 95 % Nenneingangsspannung |> 95 % Nenneingangsspannung |
 | Oberschwingungen |Erfüllt EN61000-3-2 |Erfüllt EN61000-3-2 |
 | Output |5 V Standbyspannung \@ 2,0 A |5 V Standbyspannung \@ 2,7 A |
 | +5 V \@ 42 A |+5 V \@ 40 A | |
 | +12 V \@ 38 A |+12 V \@ 38 A | |
-| Hot-Plug-fähig |JA |JA |
+| Hot-Plug-fähig |Ja |Ja |
 | Switches und LEDs |Netzteil-Ein-/Aus-Schalter und vier Status-LEDs |Netzteil-Ein-/Aus-Schalter und sechs Status-LEDs |
 | Gehäusekühlung |Axialer Lüfter mit variabler Lüftungssteuerung |Axialer Lüfter mit variabler Lüftungssteuerung |
 
@@ -160,8 +162,8 @@ Ihr Microsoft Azure StorSimple-Gerät erfüllt die folgenden EMC-Standards:
 
 Das Gerät ist EMC-konform für Leitungs- und Strahlungsemissionswerte.
 
-* Leitungsemissions-Grenzwerte: CFR 47 Part 15B Klasse A EN55022 Klasse A CISPR Klasse A
-* Strahlungsemissions-Grenzwerte: CFR 47 Part 15B Klasse A EN55022 Klasse A CISPR Klasse A
+* Leitungsemissions-Grenzwerte: CFR 47 Teil 15B Klasse A EN55022 Klasse A CISPR Klasse A
+* Strahlungsemissions-Grenzwerte: CFR 47 Teil 15B Klasse A EN55022 Klasse A CISPR Klasse A
 
 ### <a name="harmonics-and-flicker"></a>Oberschwingungen und Flicker
 
@@ -173,7 +175,7 @@ Das Gerät entspricht EN55024.
 
 ## <a name="ac-power-cord-compliance"></a>Netzkabelkompatibilität
 
-Der Stecker und das gesamte Netzkabelmodul müssen den Richtlinien des jeweiligen Landes entsprechen, in dem das Gerät verwendet wird, und sie müssen über die erforderlichen Sicherheitsgenehmigungen für das Land verfügen. In den folgenden Tabellen sind die Standards für USA und Europa aufgeführt.
+Der Stecker und das gesamte Netzkabelmodul müssen den Richtlinien des jeweiligen Landes/der jeweiligen Region entsprechen, in dem/der das Gerät verwendet wird, und sie müssen über die erforderlichen Sicherheitsgenehmigungen für das Land/die Region verfügen. In den folgenden Tabellen sind die Standards für USA und Europa aufgeführt.
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>Netzkabel – USA (muss NRTL-registriert sein)
 

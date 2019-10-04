@@ -4,17 +4,17 @@ description: In diesem Artikel wird beschrieben, wie Sie mit PowerShell oder üb
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
-ms.date: 03/26/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: af67109fb7f55f365cd71714a3eefab2336b636a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 318a9c2df7902ae89a731ca45b24b8bb6241faa1
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578610"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68498393"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Verwalten von ausführenden Azure Automation-Konten
 
@@ -24,36 +24,39 @@ Beim Erstellen eines ausführenden Kontos wird ein neuer Dienstprinzipalbenutzer
 
 Es gibt zwei Typen von ausführenden Konten:
 
-* **Ausführendes Azure-Konto**: Dieses Konto wird zum Verwalten von Resource Manager-Bereitstellungsmodellressourcen verwendet.
+* **Ausführendes Azure-Konto**: Dieses Konto wird zum Verwalten von [Resource Manager-Bereitstellungsmodellressourcen](../azure-resource-manager/resource-manager-deployment-model.md) verwendet.
   * Erstellt eine Azure AD-Anwendung mit einem selbstsignierten Zertifikat, erstellt ein Dienstprinzipalkonto für die Anwendung in Azure AD und weist die Rolle „Mitwirkender“ für das Konto in Ihrem aktuellen Abonnement zu. Sie können diese Einstellung auch in „Besitzer“ oder eine beliebige andere Rolle ändern. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md).
   * Erstellt ein Automation-Zertifikatasset mit dem Namen *AzureRunAsCertificate* im angegebenen Automation-Konto. Das Zertifikatasset enthält den privaten Schlüssel des Zertifikats, der von der Azure AD-Anwendung verwendet wird.
   * Erstellt ein Automation-Verbindungsasset mit dem Namen *AzureRunAsConnection* im angegebenen Automation-Konto. Das Verbindungsasset enthält die applicationId, tenantId, subscriptionId und den Zertifikatfingerabdruck.
 
-* **Klassisches ausführendes Azure-Konto**: Dieses Konto wird zum Verwalten von klassischen Bereitstellungsmodellressourcen verwendet.
+* **Klassisches ausführendes Azure-Konto**: Dieses Konto wird zum Verwalten von [klassischen Bereitstellungsmodellressourcen](../azure-resource-manager/resource-manager-deployment-model.md) verwendet.
   * Erstellen eines Verwaltungszertifikats im Abonnement
   * Erstellt ein Automation-Zertifikatasset mit dem Namen *AzureClassicRunAsCertificate* im angegebenen Automation-Konto. Das Zertifikatasset enthält den privaten Zertifikatschlüssel, der vom Verwaltungszertifikat verwendet wird.
   * Erstellt ein Automation-Verbindungsasset mit dem Namen *AzureClassicRunAsConnection* im angegebenen Automation-Konto. Das Verbindungsasset enthält den Abonnementnamen, die subscriptionId und den Namen des Zertifikatassets.
   * Muss zum Erstellen oder Erneuern Co-Administrator für das Abonnement sein
-  
+
   > [!NOTE]
   > Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Bei Verwendung eines CSP-Abonnements wird kein klassisches ausführendes Azure-Konto erstellt. Das ausführende Azure-Konto wird weiterhin erstellt. Weitere Informationen zu CSP-Abonnements finden Sie unter [Verfügbare Dienste in CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
 
+  > [!NOTE]
+  > Der Dienstprinzipal für ein ausführendes Konto hat standardmäßig keine Leseberechtigungen für Azure Active Directory. Wenn Sie Berechtigungen zum Lesen oder Verwalten von Azure Active Directory hinzufügen möchten, müssen Sie dem Dienstprinzipal diese Berechtigung unter **API-Berechtigungen** erteilen. Weitere Informationen finden Sie unter [Hinzufügen von Zugriffsberechtigungen für Web-APIs](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+
 ## <a name="permissions"></a>Berechtigungen zum Konfigurieren von ausführenden Konten
 
-Um ein ausführendes Konto erstellen oder aktualisieren zu können, müssen Sie über bestimmte Rechte und Berechtigungen verfügen. Ein globaler Administrator/Co-Administrator kann alle Aufgaben ausführen. In der folgenden Tabelle werden die Aufgaben, das entsprechende Cmdlet und die erforderlichen Berechtigungen für Situationen mit Aufgabentrennung aufgeführt:
+Um ein ausführendes Konto erstellen oder aktualisieren zu können, müssen Sie über bestimmte Rechte und Berechtigungen verfügen. Die Rollen „Globaler Administrator“ in Azure Active Directory und „Besitzer“ in einem Abonnement können alle Aufgaben erledigen. In der folgenden Tabelle werden die Aufgaben, das entsprechende Cmdlet und die erforderlichen Berechtigungen für Situationen mit Aufgabentrennung aufgeführt:
 
 |Aufgabe|Cmdlet  |Mindestberechtigungen  |Hier legen Sie die Berechtigungen fest|
 |---|---------|---------|---|
 |Erstellen einer Azure AD-Anwendung|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Rolle „Anwendungsentwickler“<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Home > Azure Active Directory > App-Registrierungen |
 |Hinzufügen von Anmeldeinformationen zur Anwendung|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Anwendungsadministrator oder GLOBALER ADMINISTRATOR<sup>1</sup>         |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Home > Azure Active Directory > App-Registrierungen|
-|Erstellen und Abrufen eines Azure AD-Dienstprinzipals|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Anwendungsadministrator oder GLOBALER ADMINISTRATOR        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Home > Azure Active Directory > App-Registrierungen|
-|Zuweisen oder Erhalten der RBAC-Rolle für den angegebenen Prinzipal|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Benutzerzugriffsadministrator oder Besitzer        | [Abonnement](../role-based-access-control/role-assignments-portal.md)</br>Home > Abonnements > \<Abonnementname\> – Zugriffssteuerung (IAM)|
+|Erstellen und Abrufen eines Azure AD-Dienstprinzipals|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Anwendungsadministrator oder GLOBALER ADMINISTRATOR<sup>1</sup>        |[Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Home > Azure Active Directory > App-Registrierungen|
+|Zuweisen oder Erhalten der RBAC-Rolle für den angegebenen Prinzipal|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Sie benötigen die folgenden Berechtigungen:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br>Oder müssen Folgendes sein:</br></br>Benutzerzugriffsadministrator oder Besitzer        | [Abonnement](../role-based-access-control/role-assignments-portal.md)</br>Home > Abonnements > \<Abonnementname\> – Zugriffssteuerung (IAM)|
 |Erstellen oder Entfernen eines Automation-Zertifikats|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Mitwirkender der Ressourcengruppe         |Ressourcengruppe des Automation-Kontos|
 |Erstellen oder Entfernen einer Automation-Verbindung|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Mitwirkender der Ressourcengruppe |Ressourcengruppe des Automation-Kontos|
 
-<sup>1</sup> Benutzer Ihres Azure AD-Mandanten, die keine Administratoren sind, können [AD-Anwendungen registrieren](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions), wenn die Option **Benutzer können Anwendungen registrieren** des Azure AD-Mandanten auf der Seite **Benutzereinstellungen** auf **Ja** festgelegt ist. Wenn für die App-Registrierungen **Nein** festgelegt ist, muss der Benutzer, der diese Aktion ausführt, ein globaler Administrator in Azure AD sein.
+<sup>1</sup> Benutzer Ihres Azure AD-Mandanten, die keine Administratoren sind, können [AD-Anwendungen registrieren](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions), wenn die Option **Benutzer können Anwendungen registrieren** des Azure AD-Mandanten auf der Seite **Benutzereinstellungen** auf **Ja** festgelegt ist. Wenn für die App-Registrierungen **Nein** festgelegt ist, muss der Benutzer, der diese Aktion ausführt, eine der in der oben stehenden Tabelle definierten Berechtigungen besitzen.
 
-Wenn Sie kein Mitglied der Active Directory-Instanz des Abonnements sind, bevor Sie der Rolle „Globaler Administrator/Co-Administrator“ des Abonnements hinzugefügt werden, werden Sie als Gast hinzugefügt. In diesem Fall wird auf der Seite **Automation-Konto hinzufügen** eine Warnung vom Typ `You do not have permissions to create…` angezeigt. Benutzer, die zuerst der Rolle des globalen Administrators/Co-Administrators hinzugefügt wurden, können aus der Active Directory-Instanz des Abonnements entfernt und erneut hinzugefügt werden, um sie als Vollbenutzer in Active Directory einzurichten. Sie können dies im Azure-Portal im Bereich **Azure Active Directory** überprüfen. Wählen Sie hierzu **Benutzer und Gruppen**, **Alle Benutzer** und nach Auswahl des jeweiligen Benutzers die Option **Profil**. Als Wert des Attributs **Benutzertyp** im Benutzerprofil darf nicht **Gast** angegeben sein.
+Wenn Sie kein Mitglied der Active Directory-Instanz des Abonnements sind, bevor Sie der Rolle **Globaler Administrator** des Abonnements hinzugefügt werden, werden Sie als Gast hinzugefügt. In diesem Fall wird auf der Seite **Automation-Konto hinzufügen** eine Warnung vom Typ `You do not have permissions to create…` angezeigt. Benutzer, die zuerst der Rolle **Globaler Administrator** hinzugefügt wurden, können aus der Active Directory-Instanz des Abonnements entfernt und erneut hinzugefügt werden, um sie als Vollbenutzer in Active Directory einzurichten. Sie können dies im Azure-Portal im Bereich **Azure Active Directory** überprüfen. Wählen Sie hierzu **Benutzer und Gruppen**, **Alle Benutzer** und nach Auswahl des jeweiligen Benutzers die Option **Profil**. Als Wert des Attributs **Benutzertyp** im Benutzerprofil darf nicht **Gast** angegeben sein.
 
 ## <a name="permissions-classic"></a>Berechtigungen zum Konfigurieren von klassischen ausführenden Konten
 
@@ -61,14 +64,14 @@ Zum Konfigurieren oder Erneuern klassischer ausführender Konten benötigen Sie 
 
 ## <a name="create-a-run-as-account-in-the-portal"></a>Erstellen eines ausführenden Kontos im Portal
 
-Führen Sie in diesem Abschnitt die folgenden Schritte aus, um im Azure-Portal Ihr Azure Automation-Konto zu aktualisieren. Sie erstellen das ausführende Konto und das klassische ausführende Konto separat. Wenn Sie keine klassischen Ressourcen verwalten müssen, ist es nur erforderlich, das ausführende Azure-Konto zu erstellen.  
+Führen Sie in diesem Abschnitt die folgenden Schritte aus, um im Azure-Portal Ihr Azure Automation-Konto zu aktualisieren. Sie erstellen das ausführende Konto und das klassische ausführende Konto separat. Wenn Sie keine klassischen Ressourcen verwalten müssen, ist es nur erforderlich, das ausführende Azure-Konto zu erstellen.
 
 1. Melden Sie sich mit einem Konto, das Mitglied der Rolle „Abonnement-Administratoren“ und Co-Administrator des Abonnements ist, beim Azure-Portal an.
 2. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Automation** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie die Option **Automation-Konten**.
 3. Wählen Sie auf der Seite **Automation-Konten** in der entsprechenden Liste Ihr Automation-Konto aus.
-4. Wählen Sie im linken Bereich im Abschnitt **Kontoeinstellungen** die Option **Ausführende Konten**.  
-5. Abhängig vom benötigten Konto wählen Sie **Ausführendes Azure-Konto** oder **Klassisches ausführendes Azure-Konto** aus. Nach der Auswahl wird das Blatt **Ausführendes Azure-Konto hinzufügen** oder **Klassisches ausführendes Azure-Konto hinzufügen** angezeigt. Überprüfen Sie die Übersichtsinformationen, und klicken Sie auf **Erstellen**, um mit dem Erstellen des ausführenden Kontos fortzufahren.  
-6. Während das ausführende Konto in Azure erstellt wird, können Sie den Status unter **Benachrichtigungen** im Menü nachverfolgen. Es wird auch ein Banner mit dem Hinweis angezeigt, dass das Konto erstellt wird. Dieser Vorgang kann einige Minuten dauern.  
+4. Wählen Sie im linken Bereich im Abschnitt **Kontoeinstellungen** die Option **Ausführende Konten**.
+5. Abhängig vom benötigten Konto wählen Sie **Ausführendes Azure-Konto** oder **Klassisches ausführendes Azure-Konto** aus. Nach der Auswahl wird das Blatt **Ausführendes Azure-Konto hinzufügen** oder **Klassisches ausführendes Azure-Konto hinzufügen** angezeigt. Überprüfen Sie die Übersichtsinformationen, und klicken Sie auf **Erstellen**, um mit dem Erstellen des ausführenden Kontos fortzufahren.
+6. Während das ausführende Konto in Azure erstellt wird, können Sie den Status unter **Benachrichtigungen** im Menü nachverfolgen. Es wird auch ein Banner mit dem Hinweis angezeigt, dass das Konto erstellt wird. Dieser Vorgang kann einige Minuten dauern.
 
 ## <a name="create-run-as-account-using-powershell"></a>Erstellen eines ausführenden Kontos mit PowerShell
 
@@ -84,7 +87,7 @@ In der folgenden Liste sind die Anforderungen zum Erstellen eines ausführenden 
 Gehen Sie wie folgt vor, um die Werte für *SubscriptionID*, *ResourceGroup* und *AutomationAccountName* (erforderliche Parameter für das Skript) abzurufen:
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Automation** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie die Option **Automation-Konten**.
-1. Wählen Sie auf der Seite „Automation-Konto“ Ihr Automation-Konto und dann unter **Kontoeinstellungen** die Option **Eigenschaften**.  
+1. Wählen Sie auf der Seite „Automation-Konto“ Ihr Automation-Konto und dann unter **Kontoeinstellungen** die Option **Eigenschaften**.
 1. Beachten Sie auf der Seite **Eigenschaften** die Werte **Abonnement-ID**, **Name** und **Ressourcengruppe**.
 
    ![Seite „Eigenschaften“ des Automation-Kontos](media/manage-runas-account/automation-account-properties.png)
@@ -101,7 +104,7 @@ Dieses PowerShell-Skript unterstützt folgende Konfigurationen:
 
 1. Speichern Sie das folgende Skript auf dem Computer. In diesem Beispiel speichern Sie es mit dem Dateinamen *New-RunAsAccount.ps1*.
 
-   Das Skript verwendet mehrere Azure Resource Manager-Cmdlets zum Erstellen von Ressourcen. In der folgenden Tabelle sind die Cmdlets und die erforderlichen Berechtigungen aufgeführt.
+   Das Skript verwendet mehrere Azure Resource Manager-Cmdlets zum Erstellen von Ressourcen. In der obigen Tabelle der [Berechtigungen](#permissions) sind die Cmdlets und die erforderlichen Berechtigungen aufgeführt.
 
     ```powershell
     #Requires -RunAsAdministrator
@@ -155,18 +158,18 @@ Dieses PowerShell-Skript unterstützt folgende Konfigurationen:
         Export-Certificate -Cert ("Cert:\localmachine\my\" + $Cert.Thumbprint) -FilePath $certPathCer -Type CERT | Write-Verbose
     }
 
-    function CreateServicePrincipal([System.Security.Cryptography.X509Certificates.X509Certificate2] $PfxCert, [string] $applicationDisplayName) {  
+    function CreateServicePrincipal([System.Security.Cryptography.X509Certificates.X509Certificate2] $PfxCert, [string] $applicationDisplayName) {
         $keyValue = [System.Convert]::ToBase64String($PfxCert.GetRawCertData())
         $keyId = (New-Guid).Guid
 
         # Create an Azure AD application, AD App Credential, AD ServicePrincipal
 
         # Requires Application Developer Role, but works with Application administrator or GLOBAL ADMIN
-        $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $applicationDisplayName) -IdentifierUris ("http://" + $keyId) 
+        $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $applicationDisplayName) -IdentifierUris ("http://" + $keyId)
         # Requires Application administrator or GLOBAL ADMIN
         $ApplicationCredential = New-AzureRmADAppCredential -ApplicationId $Application.ApplicationId -CertValue $keyValue -StartDate $PfxCert.NotBefore -EndDate $PfxCert.NotAfter
         # Requires Application administrator or GLOBAL ADMIN
-        $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId 
+        $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId
         $GetServicePrincipal = Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id
 
         # Sleep here for a few seconds to allow the service principal application to become active (ordinarily takes a few seconds)
@@ -184,7 +187,7 @@ Dieses PowerShell-Skript unterstützt folgende Konfigurationen:
     }
 
     function CreateAutomationCertificateAsset ([string] $resourceGroup, [string] $automationAccountName, [string] $certifcateAssetName, [string] $certPath, [string] $certPlainPassword, [Boolean] $Exportable) {
-        $CertPassword = ConvertTo-SecureString $certPlainPassword -AsPlainText -Force   
+        $CertPassword = ConvertTo-SecureString $certPlainPassword -AsPlainText -Force
         Remove-AzureRmAutomationCertificate -ResourceGroupName $resourceGroup -AutomationAccountName $automationAccountName -Name $certifcateAssetName -ErrorAction SilentlyContinue
         New-AzureRmAutomationCertificate -ResourceGroupName $resourceGroup -AutomationAccountName $automationAccountName -Path $certPath -Name $certifcateAssetName -Password $CertPassword -Exportable:$Exportable  | write-verbose
     }
@@ -209,7 +212,7 @@ Dieses PowerShell-Skript unterstützt folgende Konfigurationen:
     # Enable-AzureRmAlias
 
 
-    Connect-AzureRmAccount -Environment $EnvironmentName 
+    Connect-AzureRmAccount -Environment $EnvironmentName
     $Subscription = Select-AzureRmSubscription -SubscriptionId $SubscriptionId
 
     # Create a Run As account by using a service principal
@@ -286,29 +289,29 @@ Dieses PowerShell-Skript unterstützt folgende Konfigurationen:
     > **Add-AzureRmAccount** ist jetzt ein Alias für **Connect-AzureRMAccount**. Wenn **Connect-AzureRMAccount** beim Durchsuchen der Bibliothekselemente nicht angezeigt wird, können Sie **Add-AzureRmAccount** verwenden oder [Ihre Module in Ihrem Automation-Konto aktualisieren](automation-update-azure-modules.md).
 
 1. Starten Sie auf Ihrem Computer **Windows PowerShell** über den **Startbildschirm** mit erhöhten Benutzerrechten.
-1. Wechseln Sie von der Befehlszeilenshell mit erhöhten Rechten zu dem Ordner, der das in Schritt 1 erstellte Skript enthält.  
+1. Wechseln Sie von der Befehlszeilenshell mit erhöhten Rechten zu dem Ordner, der das in Schritt 1 erstellte Skript enthält.
 1. Führen Sie das Skript aus, indem Sie die Parameterwerte für die benötigte Konfiguration verwenden.
 
-    **Erstellen eines ausführenden Kontos mit einem selbstsignierten Zertifikat**  
+    **Erstellen eines ausführenden Kontos mit einem selbstsignierten Zertifikat**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false
     ```
 
-    **Erstellen eines ausführenden Kontos und eines klassischen ausführenden Kontos mit einem selbstsignierten Zertifikat**  
+    **Erstellen eines ausführenden Kontos und eines klassischen ausführenden Kontos mit einem selbstsignierten Zertifikat**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true
     ```
 
-    **Erstellen eines ausführenden Kontos und eines klassischen ausführenden Kontos mit einem Unternehmenszertifikat**  
+    **Erstellen eines ausführenden Kontos und eines klassischen ausführenden Kontos mit einem Unternehmenszertifikat**
 
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication>  -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnterpriseCertPathForRunAsAccount <EnterpriseCertPfxPathForRunAsAccount> -EnterpriseCertPlainPasswordForRunAsAccount <StrongPassword> -EnterpriseCertPathForClassicRunAsAccount <EnterpriseCertPfxPathForClassicRunAsAccount> -EnterpriseCertPlainPasswordForClassicRunAsAccount <StrongPassword>
     ```
 
     **Erstellen eines ausführenden Kontos und eines klassischen ausführenden Kontos mit einem selbstsignierten Zertifikat in der Azure Government-Cloud**
-  
+
     ```powershell
     .\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment
     ```
@@ -365,15 +368,74 @@ Führen Sie folgende Schritte aus, um das Zertifikat zu erneuern:
 
 1. Während das Zertifikat erneuert wird, können Sie den Status im Menü unter **Benachrichtigungen** verfolgen.
 
+## <a name="auto-cert-renewal"></a>Einrichten der automatischen Zertifikaterneuerung mit einem Automation-Runbook
+
+Zum automatischen Erneuern von Zertifikaten können Sie ein Automation-Runbook verwenden. Mit dem folgenden Skript [auf GitHub](https://github.com/ikanni/PowerShellScripts/blob/master/AzureAutomation/RunAsAccount/GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1) wird diese Funktion in Ihrem Automation-Konto aktiviert.
+
+- Das `GrantPermissionToRunAsAccountAADApplication-ToRenewCertificateItself-CreateSchedule.ps1`-Skript erstellt einen wöchentlichen Zeitplan zum Erneuern von Zertifikaten für ausführende Konten.
+- Das Skript fügt Ihrem Automation-Konto ein **Update-AutomationRunAsCredential**-Runbook hinzu.
+  - Sie können den Runbookcode auch auf GitHub im Skript [Update-AutomationRunAsCredential.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AutomationRunAsCredential.ps1) anzeigen.
+  - Sie können auch den PowerShell-Code in der Datei verwenden, um ggf. Zertifikate manuell zu erneuern.
+
+Führen Sie die folgenden Schritte aus, um den Erneuerungsprozess sofort zu testen:
+
+1. Bearbeiten Sie das Runbook **Update-AutomationRunAsCredential**, und platzieren Sie wie unten gezeigt vor dem Befehl `Exit(1)` ein Kommentarzeichen (`#`) in Zeile 122.
+
+   ```powershell
+   #Exit(1)
+   ```
+
+2. Veröffentlichen Sie das Runbook.
+3. Starten Sie das Runbook.
+4. Überprüfen Sie die erfolgreiche Erneuerung mit dem folgenden Code:
+
+   ```powershell
+   (Get-AzAutomationCertificate -AutomationAccountName TestAA
+                                -Name AzureRunAsCertificate
+                                -ResourceGroupName TestAutomation).ExpiryTime.DateTime
+   ```
+
+   ```Output
+   Thursday, November 7, 2019 7:00:00 PM
+   ```
+
+5. Bearbeiten Sie nach dem Test das Runbook, und entfernen Sie das Kommentarzeichen, das Sie in **Schritt 1** hinzugefügt haben.
+6. **Veröffentlichen** Sie das Runbook.
+
+> [!NOTE]
+> Sie müssen ein **globaler Administrator** oder **Unternehmensadministrator** in Azure Active Directory sein, um das Skript auszuführen.
+
 ## <a name="limiting-run-as-account-permissions"></a>Einschränken der Berechtigungen für ausführendes Konto
 
-Um die Ausrichtung der Automatisierung für Ressourcen in Azure Automation zu steuern, werden dem ausführenden Konto standardmäßig Berechtigungen als Mitwirkender im Abonnement gewährt. Wenn Sie die Möglichkeiten des ausführenden Dienstprinzipals einschränken müssen, können Sie das Konto aus der Rolle „Mitwirkender“ des Abonnements entfernen und es als „Mitwirkender“ zu den Ressourcengruppen hinzufügen, die Sie angeben möchten.
+Zum Steuern der Automatisierungsziele für Ressourcen in Azure können Sie das Skript [Update-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug8) im PowerShell-Katalog ausführen, um Ihren vorhandenen Dienstprinzipal des ausführenden Kontos so zu ändern, dass eine benutzerdefinierte Rollendefinition erstellt und verwendet wird. Diese Rolle verfügt über Berechtigungen für alle Ressourcen außer [Key Vault](https://docs.microsoft.com/azure/key-vault/).
 
-Wählen Sie im Azure-Portal **Abonnements**, und wählen Sie das Abonnement Ihres Automation-Kontos. Wählen Sie **Zugriffssteuerung (IAM)** und anschließend die Registerkarte **Rollenzuweisungen** aus. Suchen Sie nach dem Dienstprinzipal für Ihr Automation-Konto (der etwa wie folgt aussieht: \<AutomationKontoname_eindeutiger Bezeichner\>). Wählen Sie das Konto aus, und klicken Sie auf **Entfernen**, um es aus dem Abonnement zu entfernen.
+> [!IMPORTANT]
+> Nach dem Ausführen des Skripts `Update-AutomationRunAsAccountRoleAssignments.ps1` funktionieren Runbooks, die über ausführende Konten auf KeyVault zugreifen, nicht mehr. Überprüfen Sie Runbooks in Ihrem Konto auf Aufrufe von Azure KeyVault.
+>
+> Um den Zugriff auf KeyVault aus Azure Automation-Runbooks zu aktivieren, müssen Sie [das ausführende Konto den Berechtigungen für den KeyVault hinzufügen](#add-permissions-to-key-vault).
 
-![Abonnementmitwirkende](media/manage-runas-account/automation-account-remove-subscription.png)
+Wenn Sie einschränken müssen, welche weiteren Vorgänge der ausführende Dienstprinzipal ausführen kann, können Sie dem `NotActions` der benutzerdefinierten Rollendefinition weitere Ressourcentypen hinzufügen. Im folgenden Beispiel wird der Zugriff auf `Microsoft.Compute` eingeschränkt. Wenn Sie dies den **NotActions** der Rollendefinition hinzufügen, kann diese Rolle auf keine Compute-Ressource zugreifen. Weitere Informationen zu Rollendefinitionen finden Sie unter [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](../role-based-access-control/role-definitions.md).
 
-Um den Dienstprinzipal zu einer Ressourcengruppe hinzuzufügen, wählen Sie die Ressourcengruppe im Azure-Portal und wählen dann **Zugriffssteuerung (IAM)**. Wählen Sie **Rollenzuweisung hinzufügen** aus, um die Seite **Rollenzuweisung hinzufügen** zu öffnen. Wählen Sie als **Rolle** die Option **Mitwirkender**. Geben Sie in das Textfeld **Auswählen** den Namen des Dienstprinzipals für Ihr ausführendes Konto ein, und wählen Sie es aus der Liste aus. Klicken Sie zum Speichern der Änderungen auf **Speichern**. Wiederholen Sie diese Schritte für die Ressourcengruppen, auf die der ausführende Azure Automation-Dienstprinzipal Zugriff haben soll.
+```powershell
+$roleDefinition = Get-AzureRmRoleDefinition -Name 'Automation RunAs Contributor'
+$roleDefinition.NotActions.Add("Microsoft.Compute/*")
+$roleDefinition | Set-AzureRMRoleDefinition
+```
+
+Um zu bestimmen, ob der als ausführendes Konto verwendete Dienstprinzipal sich in der Definition **Mitwirkender** oder einer benutzerdefinierten Rollendefinition befindet, wechseln Sie zu Ihrem Automation-Konto, und wählen Sie unter **Kontoeinstellungen** die Option **Ausführende Konten** > **Ausführendes Azure-Konto** aus. Unter **Rolle** ist die verwendete Rollendefinition aufgeführt.
+
+[![](media/manage-runas-account/verify-role.png "Überprüfen der Rolle „Ausführendes Konto“")](media/manage-runas-account/verify-role-expanded.png#lightbox)
+
+Um die Rollendefinition zu bestimmen, die von den ausführenden Automation-Konten für mehrere Abonnements oder Automation-Konten verwendet werden, können Sie das Skript [Check-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) im PowerShell-Katalog verwenden.
+
+### <a name="add-permissions-to-key-vault"></a>Hinzufügen von Berechtigungen zu Key Vault
+
+Wenn Sie Azure Automation das Verwalten von Key Vault ermöglichen möchten und Ihr Dienstprinzipal für das ausführende Konto eine benutzerdefinierte Rollendefinition verwendet, müssen Sie weitere Schritte ausführen, um dieses Verhalten zuzulassen:
+
+* Gewähren von Berechtigungen für Key Vault
+* Festlegen der Zugriffsrichtlinie
+
+Sie können das Skript [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) im PowerShell-Katalog verwenden, um die Berechtigungen des ausführenden Kontos KeyVault zuzuweisen; weitere Einzelheiten zum Festlegen von Berechtigungen für Key Vault finden Sie unter [Gewähren des Zugriffs auf einen Schlüsseltresor für mehrere Anwendungen](../key-vault/key-vault-group-permissions-for-apps.md).
 
 ## <a name="misconfiguration"></a>Fehlkonfiguration
 

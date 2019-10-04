@@ -6,16 +6,15 @@ author: alexkarcher-msft
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 2fbf29385b9a14cf5d4a9df621f0767a32079587
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 72e359cf5cfef2072d3511990297f67fc4df92bb
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094574"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773057"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Verwenden von Azure-Funktionsproxys
 
@@ -66,7 +65,7 @@ Verwenden Sie `localhost`, um direkt auf eine Funktion innerhalb der gleichen Fu
 
  
 >[!Note]  
->Wenn Ihre Funktion die Autorisierungsstufe *function, admin oder sys* verwendet, müssen Sie den Code und die Client-ID gemäß der ursprünglichen Funktions-URL angeben. In diesem Fall sieht der Verweis wie folgt aus: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`
+>Wenn Ihre Funktion die Autorisierungsstufe *function, admin oder sys* verwendet, müssen Sie den Code und die Client-ID gemäß der ursprünglichen Funktions-URL angeben. In diesem Fall sieht der Verweis wie folgt aus: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` Sie sollten diese Schlüssel in den [Anwendungseinstellungen] speichern und in Ihren Proxys auf diese verweisen. Dadurch wird das Speichern von Geheimnissen im Quellcode vermieden. 
 
 ### <a name="request-parameters"></a>Verweisen auf Anforderungsparameter
 
@@ -80,17 +79,17 @@ Wenn ein Proxy etwa eine Routenvorlage wie `/pets/{petId}` hat, kann die Back-En
 #### <a name="additional-request-parameters"></a>Zusätzliche Anforderungsparameter
 Zusätzlich zu den Routenvorlagenparametern können die folgenden Werte in Konfigurationswerten verwendet werden:
 
-* **{request.method}**: Die HTTP-Methode, die in der ursprünglichen Anforderung verwendet wird.
-* **{request.headers.\<Headername\>}**: Ein Header, der aus der ursprünglichen Anforderung gelesen werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie lesen möchten. Wenn der Header nicht in der Anforderung enthalten ist, wird der Wert eine leere Zeichenfolge sein.
-* **{request.querystring.\<Parametername\>}**: Ein Abfragezeichenfolgen-Parameter, der aus der ursprünglichen Anforderung gelesen werden kann. Ersetzen Sie *\<ParameterName\>* durch den Namen des Parameters, den Sie lesen möchten. Wenn der Parameter nicht in der Anforderung enthalten ist, wird der Wert eine leere Zeichenfolge sein.
+* **{request.method}** : Die HTTP-Methode, die in der ursprünglichen Anforderung verwendet wird.
+* **{request.headers.\<Headername\>}** : Ein Header, der aus der ursprünglichen Anforderung gelesen werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie lesen möchten. Wenn der Header nicht in der Anforderung enthalten ist, wird der Wert eine leere Zeichenfolge sein.
+* **{request.querystring.\<Parametername\>}** : Ein Abfragezeichenfolgen-Parameter, der aus der ursprünglichen Anforderung gelesen werden kann. Ersetzen Sie *\<ParameterName\>* durch den Namen des Parameters, den Sie lesen möchten. Wenn der Parameter nicht in der Anforderung enthalten ist, wird der Wert eine leere Zeichenfolge sein.
 
 ### <a name="response-parameters"></a>Verweisen auf Back-End-Antwortparameter
 
 Antwortparameter können als Teil der Änderung der Antwort an den Client verwendet werden. Die folgenden Werte können in Konfigurationswerten verwendet werden:
 
-* **{backend.response.statusCode}**: Der HTTP-Statuscode, der in der Back-End-Antwort zurückgegeben wird.
-* **{backend.response.statusReason}**: Der HTTP-Ursachentext, der in der Back-End-Antwort zurückgegeben wird.
-* **{backend.response.headers.\<Headername\>}**: Ein Header, der aus der Back-End-Antwort gelesen werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie lesen möchten. Wenn der Header nicht in der Antwort enthalten ist, wird der Wert eine leere Zeichenfolge sein.
+* **{backend.response.statusCode}** : Der HTTP-Statuscode, der in der Back-End-Antwort zurückgegeben wird.
+* **{backend.response.statusReason}** : Der HTTP-Ursachentext, der in der Back-End-Antwort zurückgegeben wird.
+* **{backend.response.headers.\<Headername\>}** : Ein Header, der aus der Back-End-Antwort gelesen werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie lesen möchten. Wenn der Header nicht in der Antwort enthalten ist, wird der Wert eine leere Zeichenfolge sein.
 
 ### <a name="use-appsettings"></a>Verweisen auf Anwendungseinstellungen
 
@@ -189,8 +188,8 @@ Proxys lesen alle Zeichenfolgen aus einer JSON-Datei und verwenden \ als Escapes
 Das requestOverrides-Objekt definiert Änderungen an der Anforderung, wenn die Back-End-Ressource aufgerufen wird. Das Objekt wird durch folgende Eigenschaften definiert:
 
 * **backend.request.method**: Die HTTP-Methode, mit der das Back-End aufgerufen wird.
-* **backend.request.querystring.\<Parametername\>**: Ein Abfragezeichenfolgen-Parameter, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<ParameterName\>* durch den Namen des Parameters, den Sie festlegen möchten. Wenn die leere Zeichenfolge angegeben wird, wird der Parameter nicht in die Back-End-Anforderung einbezogen.
-* **backend.request.headers.\<Headername\>**: Ein Header, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie festlegen möchten. Wenn Sie die leere Zeichenfolge angeben, wird der Header nicht in die Back-End-Anforderung einbezogen.
+* **backend.request.querystring.\<Parametername\>** : Ein Abfragezeichenfolgen-Parameter, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<ParameterName\>* durch den Namen des Parameters, den Sie festlegen möchten. Wenn die leere Zeichenfolge angegeben wird, wird der Parameter nicht in die Back-End-Anforderung einbezogen.
+* **backend.request.headers.\<Headername\>** : Ein Header, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie festlegen möchten. Wenn Sie die leere Zeichenfolge angeben, wird der Header nicht in die Back-End-Anforderung einbezogen.
 
 Die Werte können auf Anwendungseinstellungen und Parameter aus der ursprünglichen Clientanforderung verweisen.
 
@@ -222,7 +221,7 @@ Das responseOverrides-Objekt definiert Änderungen an der Antwort, die an den Cl
 * **response.statusCode**: Der HTTP-Statuscode, der an den Client zurückgegeben werden soll.
 * **response.statusReason**: Der HTTP-Ursachentext, der an den Client zurückgegeben werden soll.
 * **response.body**: Die Zeichenfolgendarstellung des Texts, der an den Client zurückgegeben werden soll.
-* **response.headers.\<Headername\>**: Ein Header, der für die Antwort an den Client festgelegt werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie festlegen möchten. Wenn Sie die leere Zeichenfolge angeben, wird der Header nicht in die Antwort einbezogen.
+* **response.headers.\<Headername\>** : Ein Header, der für die Antwort an den Client festgelegt werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie festlegen möchten. Wenn Sie die leere Zeichenfolge angeben, wird der Header nicht in die Antwort einbezogen.
 
 Die Werte können auf Anwendungseinstellungen, Parameter aus der ursprünglichen Clientanforderung und Parameter aus der Back-End-Antwort verweisen.
 

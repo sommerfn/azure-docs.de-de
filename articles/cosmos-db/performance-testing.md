@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Skalierungs- und Leistungstests mit Azure Cos
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2017
+ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 6d2863e39b5f28c56e2b9045513aa83326d8b8c7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 0ac257d4eb9fb9e26739f1a63049751f9298efb5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043191"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616779"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Leistungs- und Skalierungstests mit Azure Cosmos DB
 
@@ -42,7 +42,7 @@ Den schnellsten Einstieg ermöglicht das Kompilieren und Ausführen des .NET-Bei
 **Schritt 2:** Ändern Sie in der Datei „App.config“ die Einstellungen für „EndpointUrl“, „AuthorizationKey“, „CollectionThroughput“ und „DocumentTemplate“ (optional).
 
 > [!NOTE]
-> Besuchen Sie vor dem Bereitstellen von Sammlungen mit hohem Durchsatz die [Seite mit den Preisinformationen](https://azure.microsoft.com/pricing/details/cosmos-db/), um die Kosten pro Sammlung abschätzen zu können. Bei Azure Cosmos DB werden Speicher und Durchsatz unabhängig voneinander auf Stundenbasis abgerechnet. Sie können Kosten sparen, indem Sie den Durchsatz Ihrer Azure Cosmos DB-Sammlungen nach dem Testen abbrechen oder verringern.
+> Besuchen Sie vor dem Bereitstellen von Sammlungen mit hohem Durchsatz die [Seite mit den Preisinformationen](https://azure.microsoft.com/pricing/details/cosmos-db/), um die Kosten pro Sammlung abschätzen zu können. Bei Azure Cosmos DB werden Speicher und Durchsatz unabhängig voneinander auf Stundenbasis abgerechnet. Sie können Kosten sparen, indem Sie den Durchsatz Ihrer Azure Cosmos-Container nach dem Testen abbrechen oder verringern.
 > 
 > 
 

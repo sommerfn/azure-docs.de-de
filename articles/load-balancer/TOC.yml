@@ -1,200 +1,214 @@
-items:
 - name: Dokumentation zu Load Balancer
   href: index.yml
 - name: Übersicht
   items:
-  - name: Was ist der Lastenausgleich?
-    href: load-balancer-overview.md
+    - name: Was ist der Lastenausgleich?
+      href: load-balancer-overview.md
 - name: Schnellstart
   items:
-  - name: Erstellen eines Lastenausgleichs im Basic-Tarif – Portal
-    href: quickstart-create-basic-load-balancer-portal.md
-  - name: Erstellen eines Lastenausgleichs im Basic-Tarif – Azure CLI
-    href: quickstart-create-basic-load-balancer-cli.md
-  - name: Erstellen eines Lastenausgleichs im Basic-Tarif – Azure PowerShell
-    href: quickstart-create-basic-load-balancer-powershell.md
-  - name: Erstellen eines Lastenausgleichs im Standard-Tarif – Portal
-    href: quickstart-load-balancer-standard-public-portal.md
-  - name: Erstellen eines Lastenausgleichs im Standard-Tarif – Azure CLI
-    href: quickstart-load-balancer-standard-public-cli.md
-  - name: Erstellen eines Lastenausgleichs im Standard-Tarif – Azure PowerShell
-    href: quickstart-create-standard-load-balancer-powershell.md
+    - name: Erstellen eines Lastenausgleichs im Basic-Tarif – Portal
+      href: quickstart-create-basic-load-balancer-portal.md
+    - name: Erstellen eines Lastenausgleichs im Basic-Tarif – Azure CLI
+      href: quickstart-create-basic-load-balancer-cli.md
+    - name: Erstellen eines Lastenausgleichs im Basic-Tarif – Azure PowerShell
+      href: quickstart-create-basic-load-balancer-powershell.md
+    - name: Erstellen eines Lastenausgleichs im Standard-Tarif – Portal
+      href: quickstart-load-balancer-standard-public-portal.md
+    - name: Erstellen eines Lastenausgleichs im Standard-Tarif – Azure CLI
+      href: quickstart-load-balancer-standard-public-cli.md
+    - name: Erstellen eines Lastenausgleichs im Standard-Tarif – Azure PowerShell
+      href: quickstart-create-standard-load-balancer-powershell.md
+    - name: Erstellen eines Lastenausgleichs im Standard-Tarif – Vorlage
+      displayName: ARM
+      href: quickstart-load-balancer-standard-public-template.md
 - name: Lernprogramme
   items:
-  - name: Vornehmen eines Lastausgleichs für Internetdatenverkehr virtueller Computer
-    href: tutorial-load-balancer-standard-manage-portal.md
-  - name: Vornehmen eines Lastausgleichs für den internen eingehenden Datenverkehr virtueller Computer
-    href: tutorial-load-balancer-basic-internal-portal.md
-  - name: Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer
-    href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
-  - name: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer bestimmten Verfügbarkeitszone
-    href: tutorial-load-balancer-standard-public-zonal-portal.md
-  - name: Konfigurieren der Portweiterleitung in Load Balancer
-    href: tutorial-load-balancer-port-forwarding-portal.md
+    - name: Vornehmen eines Lastausgleichs für Internetdatenverkehr virtueller Computer
+      href: tutorial-load-balancer-standard-manage-portal.md
+    - name: Vornehmen eines Lastausgleichs für den internen eingehenden Datenverkehr virtueller Computer
+      href: tutorial-load-balancer-basic-internal-portal.md
+    - name: Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer
+      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
+    - name: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer bestimmten Verfügbarkeitszone
+      href: tutorial-load-balancer-standard-public-zonal-portal.md
+    - name: Konfigurieren der Portweiterleitung in Load Balancer
+      href: tutorial-load-balancer-port-forwarding-portal.md
 - name: Beispiele
   items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: cli-samples.md
-  - name: Azure PowerShell
-    href: powershell-samples.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Konzepte
   items:
-  - name: Was ist Standard Load Balancer?
-    href: load-balancer-standard-overview.md
-  - name: Integritätstests
-    href: load-balancer-custom-probe-overview.md
-  - name: Hochverfügbarkeitsports
-    href: load-balancer-ha-ports-overview.md
-  - name: IPv6-Unterstützung
-    href: load-balancer-ipv6-overview.md
-  - name: Mehrere Front-Ends
-    href: load-balancer-multivip-overview.md
-  - name: Ausgehende Verbindungen
-    href: load-balancer-outbound-connections.md
-  - name: Regeln für ausgehenden Datenverkehr
-    href: load-balancer-outbound-rules-overview.md
-  - name: TCP-Zurücksetzung bei Leerlauftimeout
-    href: load-balancer-tcp-reset.md
-  - name: Load Balancer Standard und Verfügbarkeitszonen
-    href: load-balancer-standard-availability-zones.md
-  - name: Metriken und Diagnosen für den Lastenausgleich im Standard-Tarif
-    href: load-balancer-standard-diagnostics.md
+    - name: Was ist Standard Load Balancer?
+      href: load-balancer-standard-overview.md
+    - name: Integritätstests
+      href: load-balancer-custom-probe-overview.md
+    - name: Hochverfügbarkeitsports
+      href: load-balancer-ha-ports-overview.md
+    - name: IPv6-Unterstützung
+      href: load-balancer-ipv6-overview.md
+    - name: Mehrere Front-Ends
+      href: load-balancer-multivip-overview.md
+    - name: Ausgehende Verbindungen
+      href: load-balancer-outbound-connections.md
+    - name: Regeln für ausgehenden Datenverkehr
+      href: load-balancer-outbound-rules-overview.md
+    - name: TCP-Zurücksetzung bei Leerlauftimeout
+      href: load-balancer-tcp-reset.md
+    - name: Load Balancer Standard und Verfügbarkeitszonen
+      href: load-balancer-standard-availability-zones.md
+    - name: Metriken und Diagnosen für den Lastenausgleich im Standard-Tarif
+      href: load-balancer-standard-diagnostics.md
+    - name: Integrierte Sicherheitskontrollen
+      href: load-balancer-security-controls.md
 - name: Anleitung
   items:
-  - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif
-    href: load-balancer-get-started-internet-az-portal.md
-    items:
-    - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif (PowerShell)
-      href: load-balancer-get-started-internet-az-powershell.md
-    - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif (CLI)
-      href: load-balancer-get-started-internet-az-cli.md
-  - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif
-    href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
-    items:
-    - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif (PowerShell)
-      href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
-    - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif (CLI)
-      href: load-balancer-get-started-internet-availability-zones-zonal-cli.md
-  - name: Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer (CLI)
-    href: load-balancer-standard-public-zone-redundant-cli.md
-  - name: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Zone (CLI)
-    href: load-balancer-standard-public-zonal-cli.md
-  - name: Konfigurieren von Regeln für ausgehenden Datenverkehr
-    href: configure-load-balancer-outbound-cli.md
-  - name: Erstellen einer Azure Load Balancer-Instanz mit der REST-API
-    href: create-load-balancer-rest-api.md
-  - name: Einrichten eines Lastenausgleichs im Basic-Tarif (Vorlage)
-    href: load-balancer-get-started-internet-arm-template.md
-  - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6
-    href: load-balancer-ipv6-internet-ps.md
-    items:
-    - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6 (CLI)
-      href: load-balancer-ipv6-internet-cli.md
-    - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6 (Vorlage)
-      href: load-balancer-ipv6-internet-template.md
-  - name: Konfigurieren des internen Lastenausgleichs
-    items:
-    - name: Konfigurieren des internen Lastenausgleichs (PowerShell)
-      href: load-balancer-get-started-ilb-arm-ps.md
-    - name: Konfigurieren des internen Lastenausgleichs (CLI)
-      href: load-balancer-get-started-ilb-arm-cli.md
-    - name: Konfigurieren des internen Lastenausgleichs (Vorlage)
-      href: load-balancer-get-started-ilb-arm-template.md
-  - name: Konfigurieren des TCP-Leerlauftimeouts für den Lastenausgleich
-    href: load-balancer-tcp-idle-timeout.md
-  - name: Konfigurieren des Verteilungsmodus für den Lastenausgleich
-    href: load-balancer-distribution-mode.md
-  - name: Kombinieren von Lastenausgleichsdiensten
-    href: ../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json
-  - name: Verwenden mehrerer IP-Konfigurationen
-    href: load-balancer-multiple-ip.md
-    items:
-    - name: Verwenden mehrerer IP-Konfigurationen (CLI)
-      href: load-balancer-multiple-ip-cli.md
-    - name: Verwenden mehrerer IP-Konfigurationen (PowerShell)
-      href: load-balancer-multiple-ip-powershell.md
-  - name: Azure Monitor-Protokolle für Azure Load Balancer
-    href: load-balancer-monitor-log.md
-  - name: Abrufen von Load Balancer-Metriken mit REST
-    href: load-balancer-query-metrics-rest-api.md
-  - name: Konfigurieren von Hochverfügbarkeitsports für den internen Lastenausgleich
-    href: load-balancer-configure-ha-ports.md
-  - name: Problembehandlung
-    items:
-    - name: Beheben von Problemen mit Azure Load Balancer
-      href: load-balancer-troubleshoot.md
-  - name: Artikel zum klassischen Bereitstellungsmodell
-    items:
-    - name: Ausgehende Verbindungen (klassisch)
-      href: load-balancer-outbound-connections-classic.md
-  - name: Konfigurieren mehrerer VIPs für Clouddienst
-    href: load-balancer-multivip.md
-    items:
-    - name: Konfigurieren des internen Lastenausgleichs für Cloud Services
-      href: load-balancer-get-started-ilb-classic-cloud.md
+    - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif
+      href: load-balancer-get-started-internet-az-portal.md
       items:
-      - name: Konfigurieren des internen Lastenausgleichs für Cloud Services (PowerShell)
-        href: load-balancer-get-started-ilb-classic-ps.md
-      - name: Konfigurieren des internen Lastenausgleichs für Cloud Services (CLI)
-        href: load-balancer-get-started-ilb-classic-cli.md
-    - name: Konfigurieren des öffentlichen Lastenausgleichs (PowerShell, klassisch)
-      href: load-balancer-get-started-internet-classic-ps.md
+        - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif (PowerShell)
+          href: load-balancer-get-started-internet-az-powershell.md
+        - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif (CLI)
+          href: load-balancer-get-started-internet-az-cli.md
+    - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif
+      href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
       items:
-      - name: Konfigurieren des öffentlichen Lastenausgleichs (Cloud, klassisch)
-        href: load-balancer-get-started-internet-classic-cloud.md
-      - name: Konfigurieren des öffentlichen Lastenausgleichs (CLI, klassisch)
-        href: load-balancer-get-started-internet-classic-cli.md
+        - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif (PowerShell)
+          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+        - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif (CLI)
+          href: load-balancer-get-started-internet-availability-zones-zonal-cli.md
+    - name: Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer (CLI)
+      href: load-balancer-standard-public-zone-redundant-cli.md
+    - name: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Zone (CLI)
+      href: load-balancer-standard-public-zonal-cli.md
+    - name: Konfigurieren von Regeln für ausgehenden Datenverkehr
+      items:
+        - name: 'Konfigurieren von Ausgangsregeln: CLI'
+          href: configure-load-balancer-outbound-cli.md
+        - name: 'Konfigurieren von Ausgangsregeln: PowerShell'
+          href: configure-load-balancer-outbound-powershell.md
+    - name: Erstellen einer Azure Load Balancer-Instanz mit der REST-API
+      href: create-load-balancer-rest-api.md
+    - name: Einrichten eines Lastenausgleichs im Basic-Tarif (Vorlage)
+      href: load-balancer-get-started-internet-arm-template.md
+    - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6
+      href: load-balancer-ipv6-internet-ps.md
+      items:
+        - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6 (CLI)
+          href: load-balancer-ipv6-internet-cli.md
+        - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6 (Vorlage)
+          href: load-balancer-ipv6-internet-template.md
+    - name: Konfigurieren des internen Lastenausgleichs
+      items:
+        - name: Konfigurieren des internen Lastenausgleichs (PowerShell)
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: Konfigurieren des internen Lastenausgleichs (CLI)
+          href: load-balancer-get-started-ilb-arm-cli.md
+        - name: Konfigurieren des internen Lastenausgleichs (Vorlage)
+          href: load-balancer-get-started-ilb-arm-template.md
+    - name: Konfigurieren des TCP-Leerlauftimeouts für den Lastenausgleich
+      href: load-balancer-tcp-idle-timeout.md
+    - name: Konfigurieren des Verteilungsmodus für den Lastenausgleich
+      href: load-balancer-distribution-mode.md
+    - name: Kombinieren von Lastenausgleichsdiensten
+      href: ../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json
+    - name: Verwenden mehrerer IP-Konfigurationen
+      href: load-balancer-multiple-ip.md
+      items:
+        - name: Verwenden mehrerer IP-Konfigurationen (CLI)
+          href: load-balancer-multiple-ip-cli.md
+        - name: Verwenden mehrerer IP-Konfigurationen (PowerShell)
+          href: load-balancer-multiple-ip-powershell.md
+    - name: Azure Monitor-Protokolle für Azure Load Balancer
+      href: load-balancer-monitor-log.md
+    - name: Abrufen von Load Balancer-Metriken mit REST
+      href: load-balancer-query-metrics-rest-api.md
+    - name: Konfigurieren von Hochverfügbarkeitsports für den internen Lastenausgleich
+      href: load-balancer-configure-ha-ports.md
+    - name: Regionsübergreifendes Verschieben
+      items:
+        - name: 'Externer Lastenausgleich: Portal'
+          href: move-across-regions-external-load-balancer-portal.md
+        - name: 'Externer Lastenausgleich: PowerShell'
+          href: move-across-regions-external-load-balancer-powershell.md
+        - name: 'Interner Lastenausgleich: Portal'
+          href: move-across-regions-internal-load-balancer-portal.md
+        - name: 'Interner Lastenausgleich: PowerShell'
+          href: move-across-regions-internal-load-balancer-powershell.md
+    - name: Problembehandlung
+      items:
+        - name: Beheben von Problemen mit Azure Load Balancer
+          href: load-balancer-troubleshoot.md
+    - name: Artikel zum klassischen Bereitstellungsmodell
+      items:
+        - name: Ausgehende Verbindungen (klassisch)
+          href: load-balancer-outbound-connections-classic.md
+        - name: Konfigurieren mehrerer VIPs für Clouddienst
+          href: load-balancer-multivip.md
+          items:
+            - name: Konfigurieren des internen Lastenausgleichs für Cloud Services
+              href: load-balancer-get-started-ilb-classic-cloud.md
+              items:
+                - name: Konfigurieren des internen Lastenausgleichs für Cloud Services (PowerShell)
+                  href: load-balancer-get-started-ilb-classic-ps.md
+                - name: Konfigurieren des internen Lastenausgleichs für Cloud Services (CLI)
+                  href: load-balancer-get-started-ilb-classic-cli.md
+            - name: 'Konfigurieren des öffentlichen Lastenausgleichs (PowerShell, klassisch)'
+              href: load-balancer-get-started-internet-classic-ps.md
+              items:
+                - name: 'Konfigurieren des öffentlichen Lastenausgleichs (Cloud, klassisch)'
+                  href: load-balancer-get-started-internet-classic-cloud.md
+                - name: 'Konfigurieren des öffentlichen Lastenausgleichs (CLI, klassisch)'
+                  href: load-balancer-get-started-internet-classic-cli.md
 - name: Verweis
   items:
-  - name: Codebeispiele
-    href: https://azure.microsoft.com/resources/samples/?service=load-balancer
-  - name: Azure PowerShell
-    href: /powershell/module/az.network
-  - name: Azure-Befehlszeilenschnittstelle
-    href: /cli/azure/network/lb
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.network.models
-  - name: Java
-    href: /java/api/com.microsoft.azure.management.network
-  - name: Node.js
-    href: http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html
-  - name: Ruby
-    href: http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers
-  - name: Python
-    href: http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations
-  - name: REST
-    href: https://msdn.microsoft.com/library/azure/mt163651.aspx
+    - name: Codebeispiele
+      href: 'https://azure.microsoft.com/resources/samples/?service=load-balancer'
+    - name: Azure PowerShell
+      href: /powershell/module/az.network
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/network/lb
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.network.models
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.network
+    - name: Node.js
+      href: 'http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html'
+    - name: Ruby
+      href: 'http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers'
+    - name: Python
+      href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
+    - name: REST
+      href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
 - name: Verwandte Themen
   items:
-  - name: Application Gateway
-    href: /azure/application-gateway/
-  - name: ExpressRoute
-    href: /azure/expressroute/
-  - name: Virtual Network
-    href: /azure/virtual-network/
-  - name: VPN Gateway
-    href: /azure/vpn-gateway/
-  - name: Virtual Machine
-    href: /azure/virtual-machines/
-  - name: Traffic Manager
-    href: /azure/traffic-manager/
-  - name: DNS
-    href: /azure/dns/
+    - name: Application Gateway
+      href: /azure/application-gateway/
+    - name: ExpressRoute
+      href: /azure/expressroute/
+    - name: Virtual Network
+      href: /azure/virtual-network/
+    - name: VPN Gateway
+      href: /azure/vpn-gateway/
+    - name: Virtual Machine
+      href: /azure/virtual-machines/
+    - name: Traffic Manager
+      href: /azure/traffic-manager/
+    - name: DNS
+      href: /azure/dns/
 - name: Ressourcen
   items:
-  - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-    href: /learn/browse/?products=azure-virtual-machines
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=networking
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/load-balancer/
-  - name: Preisrechner
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Dienstupdates
-    href: https://azure.microsoft.com/updates/?product=load-balancer
-ms.openlocfilehash: be96720e5dd488c9a5baf722a26901b9620f861d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790694"
+    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+      href: /learn/browse/?products=azure-virtual-machines
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Feedback zu Azure Load Balancer
+      href: 'https://feedback.azure.com/forums/217313-networking/category/77467-load-balancing'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=load-balancer'

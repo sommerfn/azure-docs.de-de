@@ -1,30 +1,30 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/18/2018
+ms.date: 06/05/2019
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 57cec39bde460c6079091490acf541761c61e003
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ea87e51e66985f860cd6d10595a32facde1dc639
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553632"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67133275"
 ---
 Für jeden Objekttyp für Azure Policy gilt eine maximale Anzahl. Ein _Scope_-Eintrag (Bereich) gilt entweder für das Abonnement oder die [Verwaltungsgruppe](../articles/governance/management-groups/overview.md).
 
 | Hierbei gilt: | Was | Maximale Anzahl |
 |---|---|---|
-| Bereich | Richtliniendefinitionen | 250 |
-| Bereich | Initiativdefinitionen | 100 |
-| Tenant | Initiativdefinitionen | 1.000 |
-| Bereich | Richtlinien- oder Initiativenzuweisungen | 100 |
+| `Scope` | Richtliniendefinitionen | 500 |
+| `Scope` | Initiativdefinitionen | 100 |
+| Tenant | Initiativdefinitionen | 1\.000 |
+| `Scope` | Richtlinien- oder Initiativenzuweisungen | 100 |
 | Richtliniendefinition | Parameter | 20 |
 | Initiativdefinition | Richtlinien | 100 |
 | Initiativdefinition | Parameter | 100 |
-| Richtlinien- oder Initiativenzuweisungen | Ausschlüsse (notScopes) | 250 |
+| Richtlinien- oder Initiativenzuweisungen | Ausschlüsse (notScopes) | 400 |
 | Richtlinienregel | Geschachtelte konditionelle Abschnitte | 512 |

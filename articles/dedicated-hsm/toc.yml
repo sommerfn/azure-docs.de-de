@@ -1,39 +1,32 @@
-items:
 - name: Dokumentation für dediziertes HSM
   href: index.yml
 - name: Übersicht
   items:
-  - name: Übersicht über dediziertes HSM
-    href: overview.md
+    - name: Übersicht über dediziertes HSM
+      href: overview.md
 - name: Lernprogramme
   items:
-  - name: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe der Befehlszeilenschnittstelle
-    href: tutorial-deploy-hsm-cli.md
-  - name: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell
-    href: tutorial-deploy-hsm-powershell.md
+    - name: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe der Befehlszeilenschnittstelle
+      href: tutorial-deploy-hsm-cli.md
+    - name: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell
+      href: tutorial-deploy-hsm-powershell.md
 - name: Konzepte
   items:
-  - name: Hochverfügbarkeit
-    href: high-availability.md
-  - name: Überwachung
-    href: monitoring.md
-  - name: Netzwerk
-    href: Networking.md
-  - name: Physische Sicherheit
-    href: physical-security.md
-  - name: Unterstützungsmöglichkeiten
-    href: supportability.md
+    - name: Hochverfügbarkeit
+      href: high-availability.md
+    - name: Überwachung
+      href: monitoring.md
+    - name: Netzwerk
+      href: Networking.md
+    - name: Physische Sicherheit
+      href: physical-security.md
+    - name: Unterstützungsmöglichkeiten
+      href: supportability.md
 - name: Anleitungen
   items:
-  - name: Wählen der Bereitstellungsarchitektur
-    href: deployment-architecture.md
+    - name: Wählen der Bereitstellungsarchitektur
+      href: deployment-architecture.md
 - name: Ressourcen
   items:
-  - name: Häufig gestellte Fragen
-    href: faq.md
-ms.openlocfilehash: f0efd79e23aef90f54a38602694a8636e0789804
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317975"
+    - name: Häufig gestellte Fragen
+      href: faq.md

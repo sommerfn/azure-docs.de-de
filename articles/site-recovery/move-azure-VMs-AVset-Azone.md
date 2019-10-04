@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: b6107211f49978bbacd1a827a9adc37ccef60a5b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a9e8ddcca727c4c457e4d92a880fb0cafe5ca6f8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855409"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375739"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Verschieben virtueller Azure-Computer in Verfügbarkeitszonen
-Verfügbarkeitszonen in Azure tragen dazu bei, Ihre Anwendungen und Daten vor Datencenterausfällen zu schützen. Jede Verfügbarkeitszone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region trägt dazu bei, Anwendungen und Daten vor Datencenterausfällen zu schützen. Mit Verfügbarkeitszonen bietet Azure eine Vereinbarung zum Servicelevel (Service Level Agreement, SLA) von 99,99 Prozent für die Betriebszeit virtueller Computer (Virtual Machines, VMs). Verfügbarkeitszonen werden in ausgewählten Regionen unterstützt (siehe [Was sind Verfügbarkeitszonen in Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones)).
+Verfügbarkeitszonen in Azure tragen dazu bei, Ihre Anwendungen und Daten vor Datencenterausfällen zu schützen. Jede Verfügbarkeitszone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region trägt dazu bei, Anwendungen und Daten vor Datencenterausfällen zu schützen. Mit Verfügbarkeitszonen bietet Azure eine Vereinbarung zum Servicelevel (Service Level Agreement, SLA) von 99,99 Prozent für die Betriebszeit virtueller Computer (Virtual Machines, VMs). Verfügbarkeitszonen werden in ausgewählten Regionen unterstützt (siehe [Was sind Verfügbarkeitszonen in Azure?](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)).
 
 Wenn Sie Ihre virtuellen Computer als *Einzelinstanz* in einer bestimmten Region bereitgestellt haben, können Sie die Verfügbarkeit verbessern, indem Sie die virtuellen Computer mithilfe von Azure Site Recovery in eine Verfügbarkeitszone verschieben. Diese Aktion kann weiter kategorisiert werden:
 
@@ -28,7 +28,7 @@ Wenn Sie Ihre virtuellen Computer als *Einzelinstanz* in einer bestimmten Region
 
 ## <a name="check-prerequisites"></a>Überprüfen der Voraussetzungen
 
-- Überprüfen Sie, ob die Zielregion [Verfügbarkeitszonen unterstützt](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones). Vergewissern Sie sich, dass Ihre gewählte [Kombination aus Quell- und Zielregion unterstützt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support) wird. Treffen Sie eine fundierte Entscheidung hinsichtlich der Zielregion.
+- Überprüfen Sie, ob die Zielregion [Verfügbarkeitszonen unterstützt](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region). Vergewissern Sie sich, dass Ihre gewählte [Kombination aus Quell- und Zielregion unterstützt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support) wird. Treffen Sie eine fundierte Entscheidung hinsichtlich der Zielregion.
 - Stellen Sie sicher, dass Sie die [Architektur und die Komponenten des Szenarios](azure-to-azure-architecture.md) verstehen.
 - Lesen Sie die [Einschränkungen und Anforderungen der Unterstützung](azure-to-azure-support-matrix.md).
 - Überprüfen Sie die Kontoberechtigungen. Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Administrator Ihres Abonnements. Sollten Sie nicht der Abonnementadministrator sein, wenden Sie sich an den Administrator, damit dieser Ihnen die erforderlichen Berechtigungen zuweist. Um die Replikation für einen virtuellen Computer zu aktivieren und schließlich Daten mithilfe von Azure Site Recovery in die Zielregion zu kopieren, benötigen Sie Folgendes:
@@ -50,7 +50,7 @@ Wenn Sie Ihre virtuellen Computer als *Einzelinstanz* in einer bestimmten Region
 4. Halten Sie sich bei virtuellen Linux-Computern an die Anleitung des Linux-Distributors, um die aktuellen vertrauenswürdigen Stammzertifikate und die Zertifikatsperrliste für den virtuellen Computer abzurufen.
 5. Vergewissern Sie sich, dass Sie keinen Authentifizierungsproxy verwenden, um die Netzwerkkonnektivität für virtuelle Computer zu steuern, die Sie migrieren möchten.
 
-6. Wenn der virtuelle Computer, den Sie verschieben möchten, keinen Zugriff auf das Internet hat und einen Firewallproxy zum Steuern des ausgehenden Zugriffs verwendet, überprüfen Sie die Anforderungen unter [Konfigurieren der ausgehenden Netzwerkkonnektivität](azure-to-azure-tutorial-enable-replication.md#configure-outbound-network-connectivity).
+6. Wenn der virtuelle Computer, den Sie verschieben möchten, keinen Zugriff auf das Internet hat und einen Firewallproxy zum Steuern des ausgehenden Zugriffs verwendet, überprüfen Sie die Anforderungen unter [Konfigurieren der ausgehenden Netzwerkkonnektivität](azure-to-azure-tutorial-enable-replication.md#set-up-outbound-network-connectivity-for-vms).
 
 7. Ermitteln Sie das Quellnetzwerklayout und die Ressourcen, die Sie derzeit für die Überprüfung verwenden (einschließlich Lastenausgleichsmodule, Netzwerksicherheitsgruppen und öffentliche IP-Adresse).
 
@@ -68,8 +68,8 @@ Wenn Sie Ihre virtuellen Computer als *Einzelinstanz* in einer bestimmten Region
      In den folgenden Dokumenten erfahren Sie, wie Sie die gängigsten, für Sie relevanten Netzwerkressourcen auf der Grundlage der Konfiguration des virtuellen Quellcomputers erstellen:
 
     - [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Load Balancer](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [Öffentliche IP-Adresse](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [Load Balancer](https://docs.microsoft.com/azure/load-balancer)
+    - [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
     
    Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/#pivot=products&panel=network) zum Netzwerk.
 
@@ -86,7 +86,7 @@ In diesem Abschnitt erfahren Sie, wie Sie unter Verwendung von Azure Site Recove
 
 1. Wählen Sie im Azure-Portal die Option **Virtuelle Computer** und anschließend den virtuellen Computer aus, den Sie in Verfügbarkeitszonen verschieben möchten.
 2. Wählen Sie unter **Vorgänge** die Option **Notfallwiederherstellung** aus.
-3. Wählen Sie unter **Notfallwiederherstellung konfigurieren** > **Zielregion** die Zielregion für die Replikation aus. Vergewissern Sie sich, dass diese Region Verfügbarkeitszonen [unterstützt](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones).
+3. Wählen Sie unter **Notfallwiederherstellung konfigurieren** > **Zielregion** die Zielregion für die Replikation aus. Vergewissern Sie sich, dass diese Region Verfügbarkeitszonen [unterstützt](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region).
 
     ![Auswählen der Zielregion](media/azure-vms-to-zones/enable-rep-1.PNG)
 

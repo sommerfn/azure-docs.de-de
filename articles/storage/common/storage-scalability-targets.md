@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/23/2019
+ms.date: 07/18/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 96322c730300e360ed03f4b623db2a7f18825f55
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 046c2308d5cef2df7e12b6185fc24b8df4f821dc
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267700"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326972"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Skalierbarkeits- und Leistungsziele für Speicherkonten in Azure Storage
 
@@ -43,41 +43,27 @@ Wenn Ihre Anwendung die Grenze dessen erreicht, was eine Partition an Workload b
 
 Weitere Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Files und die Azure-Dateisynchronisierung finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](../files/storage-files-scale-targets.md).
 
+> [!IMPORTANT]
+> Die Einschränkungen für Speicherkonten gelten für alle Freigaben. Zentrales Hochskalieren bis zum Maximalwert für Speicherkonten ist nur möglich, wenn es nur eine Freigabe pro Speicherkonto gibt.
+>
+> Standarddateifreigaben über 5 TiB sind als Vorschauversion verfügbar und weisen bestimmte Einschränkungen auf.
+> Eine Liste der Einschränkungen sowie Informationen zum Onboarding für die Vorschauversion dieser größeren Dateifreigaben finden Sie im Abschnitt [Standarddateifreigaben](../files/storage-files-planning.md#standard-file-shares) des Planungshandbuchs für Azure Files.
+
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
-### <a name="premium-files-scale-targets"></a>Skalierbarkeitsziele für Premiumdateien
+### <a name="premium-files-scale-targets"></a>Skalierbarkeitsziele für Premium-Dateien
 
-Es gibt drei Kategorien von Einschränkungen, die für Premiumdateien zu berücksichtigen sind: Speicherkonten, Datenfreigaben und Dateien.
+Es gibt drei Kategorien von Einschränkungen, die für Premium-Dateien zu berücksichtigen sind: Speicherkonten, Freigaben und Dateien.
 
 Beispiel:  Eine einzelne Freigabe kann einen IOPS von 100.000 erreichen, und eine einzelne Datei kann bis zu einem IOPS von 5.000 zentral hochskalieren. Wenn Sie beispielsweise drei Dateien in einer Freigabe haben, entspricht der maximale IOPS aus dieser Freigabe 15.000.
 
 #### <a name="premium-file-share-limits"></a>Freigabelimits für Premiumdateien
 
-> [!IMPORTANT]
-> Die Einschränkungen für Speicherkonten gelten für alle Freigaben. Zentrales Hochskalieren bis zum Maximalwert für Speicherkonten ist nur möglich, wenn es nur eine Freigabe pro Speicherkonto gibt.
-
-|Bereich  |Ziel  |
-|---------|---------|
-|Mindestgröße                        |100 GB      |
-|Max. Größe                        |ca. 100 TiB      |
-|Mindestgröße vergrößern/verkleinern    |1 GiB      |
-|IOPS-Grundwert    |1 IOPS pro GiB bis zu 100.000|
-|IOPS-Bursting    |3 x IOPS pro GiB bis zu 100.000|
-|Mindestbandbreite                     |100        |
-|Bandbreite |0,1 MB/s pro GiB bis zu 5 GiB/s     |
-|Maximale Anzahl von Momentaufnahmen        |200       |
-
-#### <a name="premium-file-limits"></a>Grenzwerte für Premiumdateien
-
-|Bereich  |Ziel  |
-|---------|---------|
-|Größe                  |1 TiB         |
-|Max. IOPS pro Datei     |5.000         |
-|Gleichzeitige Handles    |2.000         |
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Skalierbarkeitsziele für die Azure-Dateisynchronisierung
 
-Azure File Sync wurde mit dem Ziel der unbegrenzten Nutzung entwickelt, aber unbegrenzte Nutzung ist nicht immer möglich. Die folgende Tabelle gibt an, welche Grenzen für Tests von Microsoft gelten und welche Ziele feste Grenzwerte sind:
+Azure-Dateisynchronisierung wurde mit dem Ziel der unbegrenzten Nutzung entwickelt, aber unbegrenzte Nutzung ist nicht immer möglich. Die folgende Tabelle gibt an, welche Grenzen für Tests von Microsoft gelten und welche Ziele feste Grenzwerte sind:
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
@@ -89,9 +75,9 @@ Azure File Sync wurde mit dem Ziel der unbegrenzten Nutzung entwickelt, aber unb
 
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 - [Speicher – Preisdetails](https://azure.microsoft.com/pricing/details/storage/)
-- [Grenzwerte für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-subscription-service-limits.md)
+- [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-subscription-service-limits.md)
 - [Azure Storage-Replikation](../storage-redundancy.md)
 - [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage-performance-checklist.md)

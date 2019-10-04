@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 936c516385c88191428a46d22c14b3991885340b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e2166354fb45d24e117156e917f4da726ee8406f
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878159"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114343"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Beispiel: Analysieren von Videos in Echtzeit
 
@@ -36,7 +36,7 @@ Es gibt mehrere Möglichkeiten, das Problem zur Durchführung der Analyse von Vi
 
 Der einfachste Entwurf für ein System, mit dem Analysen nahezu in Echtzeit durchgeführt werden können, ist eine unendliche Schleife, bei der in jeder Iteration ein Frame herausgegriffen und analysiert und anschließend das Ergebnis genutzt wird:
 
-```CSharp
+```csharp
 while (true)
 {
     Frame f = GrabFrame();
@@ -54,7 +54,7 @@ Wenn unsere Analyse aus einem einfachen clientseitigen Algorithmus besteht, ist 
 
 Eine einfache Single-Thread-Schleife ist für einen simplen clientseitigen Algorithmus sinnvoll, aber dieser Ansatz passt nicht gut zur Latenz von API-Aufrufen in der Cloud. Die Lösung dieses Problems besteht darin zuzulassen, dass API-Aufrufe mit langer Ausführungsdauer parallel zum „Frame Grabbing“ durchgeführt werden können. In C# erreichen wir dies beispielsweise mithilfe der aufgabenbasierten Parallelität:
 
-```CSharp
+```csharp
 while (true)
 {
     Frame f = GrabFrame();
@@ -75,7 +75,7 @@ Mit diesem Code wird jede Analyse in einer separaten Aufgabe gestartet, die im H
 
 Beim letzten System, dem Producer-Consumer-System, verwenden wir einen Producer-Thread, der dem vorherigen Ansatz mit der unendlichen Schleife ähnelt. Aber anstatt Analyseergebnisse unmittelbar nach ihrer Verfügbarkeit zu nutzen, fügt der Producer die Aufgaben einfach in eine Warteschlange ein, um sie nachverfolgen zu können.
 
-```CSharp
+```csharp
 // Queue that will contain the API call tasks. 
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
      
@@ -112,7 +112,7 @@ while (true)
 
 Außerdem verfügen wir über einen Consumer-Thread, mit dem Aufgaben aus der Warteschlange entfernt werden, auf den Abschluss der Verarbeitung gewartet wird, und entweder das Ergebnis angezeigt oder die jeweilige Ausnahme ausgelöst wird. Durch die Verwendung der Warteschlange können wir sicherstellen, dass Ergebnisse einzeln nacheinander in der richtigen Reihenfolge genutzt werden, ohne dass die maximale Bildfrequenz des Systems eingeschränkt wird.
 
-```CSharp
+```csharp
 // Consumer thread. 
 while (true)
 {
@@ -144,7 +144,7 @@ Die Bibliothek enthält die FrameGrabber-Klasse, mit der das oben beschriebene P
 
 Zur Veranschaulichung einiger Möglichkeiten sind zwei Beispiel-Apps vorhanden, die die Bibliothek nutzen. Die erste App ist eine einfache Konsolen-App. Eine vereinfachte Version dieser App ist unten dargestellt. Hiermit werden Frames von der Standard-Webcam erfasst und zur Gesichtserkennung an die Gesichtserkennungs-API übermittelt.
 
-```CSharp
+```csharp
 using System;
 using VideoFrameAnalyzer;
 using Microsoft.ProjectOxford.Face;
@@ -160,7 +160,9 @@ namespace VideoFrameConsoleApplication
             FrameGrabber<Face[]> grabber = new FrameGrabber<Face[]>();
             
             // Create Face API Client. Insert your Face API key here.
-            FaceServiceClient faceClient = new FaceServiceClient("<Subscription Key>");
+            private readonly IFaceClient faceClient = new FaceClient(
+            new ApiKeyServiceClientCredentials("<subscription key>"),
+            new System.Net.Http.DelegatingHandler[] { });
 
             // Set up our Face API call.
             grabber.AnalysisFunction = async frame => return await faceClient.DetectAsync(frame.Image.ToMemoryStream(".jpg"));

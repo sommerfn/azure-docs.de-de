@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 5aff7e93dcfaa5320be0d6f7d427abcdc88c69e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a8c50f492c28bf1e009d15d6332e939959190a49
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995826"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568511"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Bereitstellen eines Split-Merge-Diensts, um Daten zwischen Sharddatenbanken zu verschieben
 
@@ -147,7 +146,7 @@ Wenn die Workerrolle nicht online geschaltet wird, während der Vorgang bei der 
 
 ## <a name="test-the-service-deployment"></a>Testen der Dienstbereitstellung
 ### <a name="connect-with-a-web-browser"></a>Herstellen einer Verbindung mit einem Webbrowser
-Ermitteln Sie den Webendpunkt Ihres Split-Merge-Diensts. Sie finden diesen im Portal, indem Sie zu **Übersicht** für Ihren Clouddienst wechseln und auf der rechten Seite unter **Website-URL** nachschauen. Ersetzen Sie **http://** durch **https://**, da die Standardsicherheitseinstellungen den HTTP-Endpunkt deaktivieren. Laden Sie die Seite für diese URL in Ihrem Browser.
+Ermitteln Sie den Webendpunkt Ihres Split-Merge-Diensts. Sie finden diesen im Portal, indem Sie zu **Übersicht** für Ihren Clouddienst wechseln und auf der rechten Seite unter **Website-URL** nachschauen. Ersetzen Sie **http://** durch **https://** , da die Standardsicherheitseinstellungen den HTTP-Endpunkt deaktivieren. Laden Sie die Seite für diese URL in Ihrem Browser.
 
 ### <a name="test-with-powershell-scripts"></a>Testen mit PowerShell-Skripts
 Die Bereitstellung und Ihre Umgebung können getestet werden, indem Sie die im Paket enthaltenen PowerShell-Beispielskripts ausführen.

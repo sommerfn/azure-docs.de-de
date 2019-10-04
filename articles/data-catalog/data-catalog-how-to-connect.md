@@ -1,19 +1,17 @@
 ---
 title: Herstellen einer Verbindung mit Datenquellen in Azure Data Catalog
 description: Anleitungsartikel zum Herstellen einer Verbindung mit Datenquellen, die mit Azure Data Catalog gefunden wurden.
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: c64340491dba11870364610a6c2ff62e25c1328a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000571"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976784"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Herstellen einer Verbindung mit Datenquellen
 ## <a name="introduction"></a>Einführung
@@ -30,7 +28,7 @@ In der standardmäßigen Kachelansicht ist dieses Menü auf jeder Kachel verfüg
 
 Bei Verwendung der Listenansicht ist das Menü in der Suchleiste am oberen Rand des Portalfensters verfügbar.
 
- ![Öffnen eines SQL Server Reporting Services-Berichts im Berichts-Manager über die Suchleiste](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+ ![Öffnen eines SQL Server Reporting Services-Berichts im Berichts-Manager](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
 ## <a name="supported-client-applications"></a>Unterstützte Clientanwendungen
 Bei Verwendung des Menüs „Öffnen in…“ für Datenquellen im Azure Data Catalog-Portal muss die richtige Clientanwendung auf dem Clientcomputer installiert sein.

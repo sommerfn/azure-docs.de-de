@@ -2,18 +2,18 @@
 title: Vorläufiges Löschen für Azure Storage-Blobs | Microsoft-Dokumentation
 description: Azure Storage ermöglicht jetzt das vorläufige Löschen für Blobobjekte, sodass Sie Ihre Daten leichter wiederherstellen können, wenn sie irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos geändert oder gelöscht wurden.
 services: storage
-author: MichaelHauss
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/15/2018
-ms.author: mihauss
+ms.date: 04/23/2019
+ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 08d51b1b6a09bb4df3986bd8c4c44d3834882def
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b0a03eee06ba114ab929c8c584f382861a006bbc
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506124"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68360760"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Vorläufiges Löschen für Azure Storage-Blobs
 Azure Storage ermöglicht jetzt das vorläufige Löschen für Blobobjekte, sodass Sie Ihre Daten leichter wiederherstellen können, wenn sie irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos geändert oder gelöscht wurden.
@@ -227,10 +227,12 @@ from azure.storage.blob import BlockBlobService
 from azure.storage.common.models import DeleteRetentionPolicy
 
 # Initialize a block blob service
-block_blob_service = BlockBlobService(account_name='<enter your storage account name>', account_key='<enter your storage account key>')
+block_blob_service = BlockBlobService(
+    account_name='<enter your storage account name>', account_key='<enter your storage account key>')
 
 # Set the blob client's service property settings to enable soft delete
-block_blob_service.set_blob_service_properties(delete_retention_policy = DeleteRetentionPolicy(enabled = True, days = 7))
+block_blob_service.set_blob_service_properties(
+    delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
 ### <a name="net-client-library"></a>.NET-Clientbibliothek
@@ -274,8 +276,8 @@ CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)ve
 blockBlob.StartCopy(copySource);
 ```
 
-## <a name="should-i-use-soft-delete"></a>Sollte ich vorläufiges Löschen verwenden?
-Wenn die Möglichkeit besteht, dass Ihre Daten versehentlich geändert oder von einer Anwendung oder einem anderen Benutzer des Speicherkontos gelöscht werden, wird empfohlen, vorläufiges Löschen zu aktivieren. Vorläufiges Löschen ist ein Teil einer Strategie für den Datenschutz und kann verhindern, dass es zu unbeabsichtigten Datenverlusten kommt.
+## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>Sind bei der Verwendung des vorläufigen Löschens besondere Überlegungen zu beachten?
+Wenn die Möglichkeit besteht, dass Ihre Daten versehentlich geändert oder von einer Anwendung oder einem anderen Benutzer des Speicherkontos gelöscht werden, wird empfohlen, vorläufiges Löschen zu aktivieren. Das Aktivieren des vorläufigen Löschens für häufig überschriebene Daten kann zu höheren Gebühren für die Speicherkapazität und einer höheren Latenz beim Auflisten der Blobs führen. Sie können dies umgehen, indem Sie häufig überschriebene Daten in einem separaten Speicherkonto speichern, in dem das vorläufige Löschen deaktiviert ist. 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 **Für welche Speichertypen kann ich vorläufiges Löschen verwenden?**  

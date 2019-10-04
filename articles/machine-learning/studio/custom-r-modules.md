@@ -1,7 +1,7 @@
 ---
 title: Definieren benutzerdefinierter R-Module
 titleSuffix: Azure Machine Learning Studio
-description: In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Modul erstellt und in Azure Machine Learning Studio bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren.
+description: In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Studio erstellt und bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,23 +10,23 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0dec86eff9b9df70514be6f32f3aad60bfb311ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6d330340ff09ddb6c2bec04259f964f2298dbffc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120379"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65025064"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Definieren von benutzerdefinierten R-Modulen für Azure Machine Learning Studio
 
-In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Modul erstellt und in Azure Machine Learning Studio bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren. Es veranschaulicht, wie die Dateien erstellt werden, die ein Modul definieren, und wie dieses Modul zur Bereitstellung in einem Machine Learning-Arbeitsbereich registriert wird. Die in der Definition des benutzerdefinierten Moduls verwendeten Elemente und Attribute werden dann ausführlicher beschrieben. Ebenfalls wird erläutert, wie zusätzliche Funktionen und Dateien sowie mehrere Ausgaben zu verwenden sind. 
+In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Studio erstellt und bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren. Es veranschaulicht, wie die Dateien erstellt werden, die ein Modul definieren, und wie dieses Modul zur Bereitstellung in einem Machine Learning-Arbeitsbereich registriert wird. Die in der Definition des benutzerdefinierten Moduls verwendeten Elemente und Attribute werden dann ausführlicher beschrieben. Ebenfalls wird erläutert, wie zusätzliche Funktionen und Dateien sowie mehrere Ausgaben zu verwenden sind. 
 
 
 
 ## <a name="what-is-a-custom-r-module"></a>Was ist ein benutzerdefiniertes R-Modul?
 Ein **benutzerdefiniertes Modul** ist ein vom Benutzer bestimmtes Modul, dass in Ihrem Arbeitsbereich hochgeladen und als Teil eines Azure Machine Learning Studio-Experiments ausgeführt werden kann. Ein **benutzerdefiniertes R-Modul** ist ein benutzerdefiniertes Modul, das eine vom Benutzer erstellte R-Funktion ausführt. **R** ist eine Programmiersprache für statistische Berechnungen und Grafiken, die häufig von Statistikern und Datenanalysten für die Implementierung von Algorithmen verwendet wird. Derzeit wird in benutzerdefinierten Modulen ausschließlich R unterstützt, für zukünftige Versionen sind jedoch bereits weitere Sprachen geplant.
 
-Benutzerdefinierte Module haben in Azure Machine Learning Studio einen **erstrangigen Status** und können somit genau wie andere Module verwendet werden. Sie können mit anderen Modulen ausgeführt sowie in veröffentlichte Experimente oder in Visualisierungen eingeschlossen werden. Sie haben die Kontrolle über den vom Modul implementierten Algorithmus, die verwendeten Eingangs- und Ausgangsports, die Parameter für die Modellierung und andere Laufzeitmerkmale. Ein Experiment, das benutzerdefinierte Module enthält, kann auch im Azure AI-Katalog veröffentlicht werden, sodass es einfach freigegeben werden kan.
+Benutzerdefinierte Module haben in Azure Machine Learning Studio einen **erstrangigen Status** und können somit genau wie andere Module verwendet werden. Sie können mit anderen Modulen ausgeführt sowie in veröffentlichte Experimente oder in Visualisierungen eingeschlossen werden. Sie haben die Kontrolle über den vom Modul implementierten Algorithmus, die verwendeten Eingangs- und Ausgangsports, die Parameter für die Modellierung und andere Laufzeitmerkmale. Ein Experiment, das benutzerdefinierte Module enthält, kann auch im Azure KI-Katalog veröffentlicht werden, sodass es einfach freigegeben werden kann.
 
 ## <a name="files-in-a-custom-r-module"></a>Dateien in einem benutzerdefinierten R-Modul
 Ein benutzerdefiniertes R-Modul wird durch eine ZIP-Datei definiert, die mindestens zwei Dateien enthält:
@@ -159,7 +159,7 @@ Für optionale **DataTable**-Ports, die nicht als Eingabe in einem Experiment ü
             <Description>Zip files to be extracted to the R working directory.</Description>
            </Input>
 
-Bei benutzerdefinierten R-Modulen muss die ID für einen ZIP-Port keinem Parameter der R-Funktion entsprechen. Der Grund: Die ZIP-Datei wird automatisch in das R-Arbeitsverzeichnis extrahiert.
+Bei benutzerdefinierten R-Modulen muss die ID eines ZIP-Ports keinen Parametern der R-Funktion entsprechen. Der Grund: Die ZIP-Datei wird automatisch in das R-Arbeitsverzeichnis extrahiert.
 
 **Eingabe-Regeln:**
 
@@ -225,7 +225,7 @@ Geben Sie dann die Liste der Objekte in einer Liste in der richtigen Reihenfolge
 ### <a name="arguments"></a>Argumente
 Zusätzliche Daten können an die R-Funktion über die Modulparameter übergeben werden, die im **Argumente** -Element definiert sind. Diese Parameter werden im äußerst rechten Eigenschaftenbereich der Machine Learning-Benutzeroberfläche angezeigt, wenn das Modul ausgewählt ist. Argumente können jeder der unterstützten Typen sein oder Sie können bei Bedarf eine benutzerdefinierte Enumeration erstellen. Ähnlich wie die **Ports**-Elemente können **Argumente**-Elemente ein optionales **Beschreibung**-Element besitzen, das den Text angibt, der angezeigt wird, wenn Sie mit der Maus auf den Namen des Parameters zeigen.
 Optionale Eigenschaften für ein Modul (beispielsweise „defaultValue“, „minValue“ und „maxValue“) können jedem Argument als Attribute eines **Properties** -Elements hinzugefügt werden. Welche Eigenschaften für die **Properties** -Elemente gültig sind, hängt vom jeweiligen Argumenttyp ab und wird mit den unterstützten Argumenttypen im nächsten Abschnitt beschrieben. Für Argumente, deren **isOptional**-Eigenschaft auf **„true“** festgelegt ist, muss der Benutzer keinen Wert eingeben. Wenn für das Argument kein Wert angegeben ist, wird das Argument nicht an die Einstiegspunktfunktion übergeben. Optionale Argumente der Einstiegspunktfunktion müssen explizit von der Funktion behandelt werden. Beispielsweise muss einem optionalen Argument in der Definition der Einstiegspunktfunktion der Standardwert NULL zugewiesen werden. Ein optionales Argument erzwingt nur dann die anderen Argumenteinschränkungen, d. h. Minimal- oder Maximalwerte, wenn ein Wert vom Benutzer bereitgestellt wird.
-Wie bei Eingaben und Ausgaben ist es wichtig, dass jedem Parameter eindeutige ID-Werte zugeordnet sind. In unserem Schnellstart-Beispiel war der zugeordnete ID-Parameter *swap*.
+Wie bei Eingaben und Ausgaben ist es wichtig, dass jedem Parameter eindeutige ID-Werte zugeordnet sind. In unserem Schnellstartbeispiel war der zugeordnete ID-Parameter *swap*.
 
 ### <a name="arg-element"></a>Arg-Element
 Ein Modul-Parameter wird mithilfe des untergeordneten**Arg**-Elements des Abschnitts **Argumente** der XML-Definitionsdatei definiert. Wie bei den untergeordneten Elementen im Abschnitt **Ports** definiert die Reihenfolge der Parameter im Abschnitt **Argumente** das Layout in der UX. Die Parameter werden von oben nach unten in der Benutzeroberfläche in der gleichen Reihenfolge, in der sie in der XML-Datei definiert sind, angezeigt. Im Anschluss werden die Typen aufgeführt, die von Machine Learning für Parameter unterstützt werden. 
@@ -270,7 +270,7 @@ Ein Modul-Parameter wird mithilfe des untergeordneten**Arg**-Elements des Abschn
 
 * *Optionale Eigenschaften*: **Standard** und **isOptional**
 
-**ColumnPicker**: ein Spaltenauswahl-Parameter. Dieser Typ wird in der UX als Spaltenauswahl gerendert. Mit dem **Property** -Element wird hier die ID des Ports angegeben, von dem aus Spalten ausgewählt werden, wobei der Zielporttyp *DataTable*lauten muss. Das Ergebnis der Spaltenauswahl wird als Zeichenfolgenliste mit den Namen der ausgewählten Spalten an die R-Funktion übergeben. 
+**ColumnPicker**: ein Spaltenauswahl-Parameter. Dieser Typ wird in der UX als Spaltenauswahl gerendert. Mit dem Element **Property** wird hier die ID des Ports angegeben, bei dem Spalten ausgewählt werden, wobei der Zielporttyp *DataTable* lauten muss. Das Ergebnis der Spaltenauswahl wird als Zeichenfolgenliste mit den Namen der ausgewählten Spalten an die R-Funktion übergeben. 
 
         <Arg id="colset" name="Column set" type="ColumnPicker">      
           <Properties portId="datasetIn1" allowedTypes="Numeric" default="NumericAll"/>
@@ -278,15 +278,15 @@ Ein Modul-Parameter wird mithilfe des untergeordneten**Arg**-Elements des Abschn
         </Arg>
 
 
-* *Erforderliche Eigenschaften*: **portId** – entspricht der ID eines Eingabe-Elements vom Typ *DataTable*.
+* *Erforderliche Eigenschaften*: **portId**: entspricht der ID eines Eingabeelements des Typs *DataTable*.
 * *Optionale Eigenschaften*:
   
   * **allowedTypes** : Dient zum Filtern der zur Auswahl stehenden Spaltentypen. Folgende Werte sind gültig: 
     
     * Numeric
-    * Boolescher Wert
+    * Boolean
     * Kategorisch
-    * Zeichenfolge
+    * string
     * Bezeichnung
     * Feature
     * Punkte
@@ -327,7 +327,7 @@ Ein Modul-Parameter wird mithilfe des untergeordneten**Arg**-Elements des Abschn
     </Arg>    
 
 * *Optionale Eigenschaften*:
-  * **Standard** – der Wert für die Standardeigenschaft muss mit dem ID-Wert eines der **Item**-Elemente übereinstimmen.
+  * **Standard**: Der Wert für die Standardeigenschaft muss mit dem ID-Wert eines der **Item**-Elemente übereinstimmen.
 
 ### <a name="auxiliary-files"></a>Zusätzliche Dateien
 Jede Datei in der ZIP-Datei des benutzerdefinierten Moduls ist während der Ausführungszeit verfügbar. Gegebenenfalls vorhandene Verzeichnisstrukturen bleiben erhalten. Das bedeutet, dass die lokale Dateierfassung auf die gleiche Weise funktioniert wie bei der Ausführung von Azure Machine Learning Studio. 

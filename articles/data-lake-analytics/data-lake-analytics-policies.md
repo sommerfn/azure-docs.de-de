@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: f84cb59e7d4fd7d8301d22348ca066a7f9d9e94e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 64095f6706bb978cd33b8fe7833fe4e65fc3b0f8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048817"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60813429"
 ---
 # <a name="manage-azure-data-lake-analytics-using-policies"></a>Verwalten von Azure Data Lake Analytics-Richtlinien
 
@@ -68,8 +68,8 @@ Mit Richtlinien auf Auftragsebene können Sie die maximale Anzahl von AUs und di
 
 Data Lake Analytics verfügt über zwei Richtlinien, die Sie auf Auftragsebene festlegen können:
 
-* **AU-Grenzwert pro Auftrag**: Benutzer können nur Aufträge übermitteln, die über bis zu dieser Anzahl von AUs verfügen. Standardmäßig stimmt dieser Grenzwert mit dem Höchstwert für AUs für das Konto überein.
-* **Priorität**: Benutzer können nur Aufträge übermitteln, deren Priorität niedriger als oder gleich wie dieser Wert ist. Eine höhere Anzahl bedeutet eine niedrigere Priorität. Standardmäßig ist dieser Höchstwert auf 1 festgelegt, die höchstmögliche Priorität.
+* **AU-Grenzwert pro Auftrag:** Benutzer können nur Aufträge übermitteln, die maximal über diese Anzahl von AUs verfügen. Standardmäßig stimmt dieser Grenzwert mit dem Höchstwert für AUs für das Konto überein.
+* **Priorität:** Benutzer können nur Aufträge übermitteln, deren Priorität maximal diesem Wert entspricht. Eine höhere Anzahl bedeutet eine niedrigere Priorität. Standardmäßig ist dieser Höchstwert auf 1 festgelegt, die höchstmögliche Priorität.
 
 Für jedes Konto ist eine Standardrichtlinie festgelegt. Die Standardrichtlinie gilt für alle Benutzer des Kontos. Sie können zusätzliche Richtlinien für bestimmte Benutzer und Gruppen festlegen. 
 
@@ -82,10 +82,10 @@ Für jedes Konto ist eine Standardrichtlinie festgelegt. Die Standardrichtlinie 
 1. Gehen Sie im Azure-Portal zu Ihrem Data Lake Analytics-Konto.
 2. Klicken Sie auf **Eigenschaften**.
 3. Klicken Sie unter **Grenzwerte bei der Auftragsübermittlung** auf die Schaltfläche **Richtlinie hinzufügen**. Wählen Sie dann die folgenden Einstellungen aus, oder geben Sie sie ein:
-    1. **Richtlinienname berechnen**: Geben Sie einen Richtliniennamen ein, der den Zweck der Richtlinie benennt.
-    2. **Benutzer oder Gruppe auswählen**: Wählen Sie den Benutzer oder die Gruppe aus, für den oder die diese Richtlinie gilt.
-    3. **Den AU-Grenzwert für den Auftrag festlegen**: Legen Sie den AU-Grenzwert fest, der für den ausgewählten Benutzer oder die ausgewählte Gruppe gilt.
-    4. **Maximale Priorität festlegen**: Legen Sie die maximale Priorität fest, die für den ausgewählten Benutzer oder die ausgewählte Gruppe gilt.
+    1. **Name der Computerichtlinie:** Geben Sie einen Richtliniennamen ein, der den Zweck der Richtlinie benennt.
+    2. **Benutzer oder Gruppe auswählen:** Wählen Sie den Benutzer oder die Gruppe aus, für den oder die diese Richtlinie gilt.
+    3. **Den AU-Grenzwert für den Auftrag festlegen:** Legen Sie den AU-Grenzwert fest, der für den ausgewählten Benutzer oder die ausgewählte Gruppe gilt.
+    4. **Maximale Priorität festlegen:** Legen Sie die maximale Priorität fest, die für den ausgewählten Benutzer oder die ausgewählte Gruppe gilt.
 
 4. Klicken Sie auf **OK**.
 

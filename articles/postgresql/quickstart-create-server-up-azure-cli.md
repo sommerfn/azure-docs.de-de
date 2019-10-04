@@ -1,25 +1,25 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure Database for PostgreSQL-Instanz mithilfe eines einfachen Azure CLI-Befehls – az postgres up (Vorschau)'
-description: Schnellstart zum Erstellen von Azure Database for PostgreSQL-Servern mithilfe des Befehls „up“ der Azure-Befehlszeilenschnittstelle.
+title: 'Schnellstart: Erstellen eines Azure Database for PostgreSQL-Einzelservers mit dem CLI-Befehl „az postgres up“'
+description: Schnellstartanleitung zum Erstellen eines Azure Database for PostgreSQL-Einzelservers mit dem „up“-Befehl der Azure CLI (Befehlszeilenschnittstelle).
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 3/18/2019
-ms.openlocfilehash: 0db49e2c370aee37cca4181cecbe4cf0b5585c51
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.date: 05/06/2019
+ms.openlocfilehash: 49f71c199a2832d763bb3c19d878fade47dfb8e4
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136443"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65069077"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql-using-a-simple-azure-cli-command---az-postgres-up-preview"></a>Schnellstart: Erstellen einer Azure Database for PostgreSQL-Instanz mithilfe eines einfachen Azure CLI-Befehls – az postgres up (Vorschau)
+# <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden des Azure CLI-Befehls „az postgres up“ (Vorschau) zum Erstellen eines Azure Database for PostgreSQL-Einzelservers
 
 > [!IMPORTANT]
 > Der Befehl [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) der Azure-Befehlszeilenschnittstelle befindet sich in der Vorschauphase.
 
-Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare PostgreSQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Schnellstart wird veranschaulicht, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle und des Befehls [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) einen Azure Database for PostgreSQL-Server erstellen. Zusätzlich zum Server erstellt der Befehl `az postgres up` auch eine Beispieldatenbank und einen Root-Benutzer in der Datenbank, er öffnet die Firewall für Azure-Dienste und erstellt Firewallregeln für den Clientcomputer. Dies trägt zur Beschleunigung des Entwicklungsprozesses bei.
+Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare PostgreSQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Schnellstart wird veranschaulicht, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle und des Befehls [az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) einen Azure Database for PostgreSQL-Server erstellen. Zusätzlich zum Server erstellt der Befehl `az postgres up` auch eine Beispieldatenbank und einen Root-Benutzer in der Datenbank, er öffnet die Firewall für Azure-Dienste und erstellt Firewallregeln für den Clientcomputer. Diese Standardeinstellungen tragen zur Beschleunigung des Entwicklungsprozesses bei.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,13 +27,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für den Artikel müssen Sie mindestens Version 2.0 der Azure-Befehlszeilenschnittstelle lokal ausführen. Führen Sie den Befehl `az --version` aus, um die installierte Version anzuzeigen. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-Sie müssen sich mithilfe des Befehls [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id** aus der Befehlsausgabe für den entsprechenden Abonnementnamen.
+Sie müssen sich mit dem Befehl [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **ID** aus der Befehlsausgabe für den entsprechenden Abonnementnamen.
 
 ```azurecli
 az login
 ```
 
-Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) die Abonnement-ID unter Ihrem Konto aus. Ersetzen Sie den Platzhalter für die Abonnement-ID durch die **subscription id**-Eigenschaft der Ausgabe von **az login** für Ihr Abonnement.
+Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) die Abonnement-ID unter Ihrem Konto aus. Ersetzen Sie den Platzhalter für die Abonnement-ID durch die **subscription ID**-Eigenschaft der Ausgabe von **az login** für Ihr Abonnement.
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -60,13 +60,13 @@ Der Server wird mit den folgenden Standardwerten erstellt (sofern Sie diese nich
 Servername | Systemgeneriert | Ein eindeutiger Name, der Ihren Azure-Datenbank für PostgreSQL-Server identifiziert.
 resource-group | Systemgeneriert | Eine neue Azure-Ressourcengruppe
 sku-name | GP_Gen5_2 | Der Name der SKU. Folgt der Konvention „{Tarif}\_{Computegeneration}\_{virtuelle Kerne}“ in Kurzform. Der Standardwert ist ein Gen5-Server vom Typ „Universell“ mit zwei virtuellen Kernen. Informationen zu den Tarifen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/postgresql/).
-backup-retention | 7 | Gibt die Aufbewahrungsdauer für eine Sicherung an. Die Einheit ist Tage.
+backup-retention | 7 | Gibt an, wie lange eine Sicherung aufbewahrt wird. Die Einheit ist Tage.
 geo-redundant-backup | Deaktiviert | Gibt an, ob georedundante Sicherungen für diesen Server aktiviert werden sollen.
 location | westus2 | Der Azure-Standort für den Server.
 ssl-enforcement | Deaktiviert | Gibt an, ob SSL für diesen Server aktiviert werden soll.
 storage-size | 5120 | Die Speicherkapazität des Servers (Einheit: MB).
 Version | 10 | Die PostgreSQL-Hauptversion.
-admin-user | Systemgeneriert | Der Benutzername für die Administratoranmeldung.
+admin-user | Systemgeneriert | Der Benutzername für den Administrator.
 admin-password | Systemgeneriert | Das Kennwort des Administratorbenutzers.
 
 > [!NOTE]

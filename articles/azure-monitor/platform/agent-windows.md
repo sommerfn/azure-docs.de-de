@@ -1,6 +1,6 @@
 ---
-title: Verbinden von Windows-Computern mit Azure Log Analytics | Microsoft Docs
-description: In diesem Artikel wird beschrieben, wie Windows-Computer, die in anderen Clouds oder lokal gehostet werden, über den Microsoft Monitoring Agent (MMA) mit Log Analytics verbunden werden können.
+title: Verbinden von Windows-Computern mit Azure Monitor | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Windows-Computer, die in anderen Clouds oder lokal gehostet werden, über den Log Analytics-Agent für Windows mit Azure Monitor verbunden werden können.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 06/14/2019
 ms.author: magoedte
-ms.openlocfilehash: c7031e54c354392379fee83dbf2a777ba726c5e7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 5e1fe6252f396a4585b5d7d7190728b79229d5c7
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480052"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073978"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Verbinden von Windows-Computern mit Azure Monitor
 
@@ -31,16 +31,18 @@ Der Agent kann mit einer der folgenden Methoden installiert werden. Bei den meis
 * Manuelle Installation: Das Setup wird mithilfe des Setup-Assistenten über die Befehlszeile auf dem Computer installiert oder mithilfe eines vorhandenen Tools zur Softwareverteilung bereitgestellt.
 * Azure Automation Desired State Configuration (DSC): Dabei wird DSC in Azure Automation mit einem Skript für Windows-Computer verwendet, die bereits in Ihrer Umgebung bereitgestellt sind.  
 * PowerShell-Skript:
-* Resource Manager-Vorlage für virtuelle Computer, auf denen Windows lokal in Azure Stack ausgeführt wird.  
+* Resource Manager-Vorlage für virtuelle Computer, auf denen Windows lokal in Azure Stack ausgeführt wird. 
 
 >[!NOTE]
->Azure Security Center (ASC) hängt von Microsoft Monitoring Agent (auch als Log Analytics Windows-Agent bezeichnet) ab und installiert und konfiguriert das Tool, um im Rahmen der Bereitstellung mit einem Log Analytics-Arbeitsbereich zu kommunizieren. ASC enthält eine automatische Bereitstellungsoption, die eine automatische Installation des Log Analytics Windows-Agents auf allen VMs in Ihrem Abonnement ermöglicht und ihn so konfiguriert, dass er an einen bestimmten Arbeitsbereich berichtet. Weitere Informationen zu dieser Option finden Sie unter [Aktivieren der automatischen Bereitstellung des Log Analytics-Agents](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-microsoft-monitoring-agent-).
+>Azure Security Center (ASC) hängt von Microsoft Monitoring Agent (auch als Log Analytics Windows-Agent bezeichnet) ab und installiert und konfiguriert das Tool, um im Rahmen der Bereitstellung mit einem Log Analytics-Arbeitsbereich zu kommunizieren. ASC enthält eine automatische Bereitstellungsoption, die eine automatische Installation des Log Analytics Windows-Agents auf allen VMs in Ihrem Abonnement ermöglicht und ihn so konfiguriert, dass er an einen bestimmten Arbeitsbereich berichtet. Weitere Informationen zu dieser Option finden Sie unter [Aktivieren der automatischen Bereitstellung des Log Analytics-Agents](../../security-center/security-center-enable-data-collection.md#enable-automatic-provisioning-of-the-log-analytics-agent-).
 >
+
+Wenn Sie den Agenten so konfigurieren müssen, dass er an mehrere Arbeitsbereiche berichtet, ist dies bei der ersten Einrichtung nicht möglich. Sie können dies nur später tun, indem Sie die Einstellungen aus der Systemsteuerung oder aus PowerShell aktualisieren, wie dies unter [Hinzufügen oder Entfernen von Arbeitsbereichen](agent-manage.md#adding-or-removing-a-workspace) beschrieben ist.  
 
 Informationen zur unterstützten Konfiguration finden Sie in den Abschnitten zu [unterstützten Windows-Betriebssystemen](log-analytics-agent.md#supported-windows-operating-systems) und zur [Netzwerkfirewallkonfiguration](log-analytics-agent.md#network-firewall-requirements).
 
 ## <a name="obtain-workspace-id-and-key"></a>Abrufen von Arbeitsbereichs-ID und -Schlüssel
-Vor der Installation des Log Analytics-Agents für Windows benötigen Sie die Arbeitsbereich-ID und den Schlüssel für Ihren Log Analytics-Arbeitsbereich.  Diese Informationen sind mit jeder Installationsmethode beim Setup erforderlich, um den Agent ordnungsgemäß zu konfigurieren und sicherzustellen, dass er erfolgreich mit Azure Monitor in der kommerziellen Azure-Cloud und der US Government-Cloud kommunizieren kann.  
+Vor der Installation des Log Analytics-Agents für Windows benötigen Sie die Arbeitsbereich-ID und den Schlüssel für Ihren Log Analytics-Arbeitsbereich.  Diese Informationen sind mit jeder Installationsmethode beim Setup erforderlich, um den Agent ordnungsgemäß zu konfigurieren und sicherzustellen, dass er erfolgreich mit Azure Monitor in der kommerziellen Azure-Cloud und der US Government-Cloud kommunizieren kann. 
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 2. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche den Arbeitsbereich aus, für den der Agent für die Übermittlung von Berichten konfiguriert werden soll.
@@ -52,9 +54,9 @@ Vor der Installation des Log Analytics-Agents für Windows benötigen Sie die Ar
 Um die Verwendung des Protokolls [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) für die Kommunikation zwischen dem Windows-Agent und dem Log Analytics-Dienst zu konfigurieren, können Sie die folgenden Schritte ausführen, um die Aktivierung vor der Installation des Agents auf dem virtuellen Computer oder danach durchzuführen.   
 
 1. Suchen Sie nach dem folgenden Registrierungsschlüssel: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
-2. Erstellen Sie einen Unterschlüssel unter **Protokolle** für TLS 1.2 **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**
-3. Erstellen Sie einen Unterschlüssel **Client** unter dem Versionsunterschlüssel des TLS 1.2-Protokolls, den Sie zuvor erstellt haben. Beispiel: **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**.
-4. Erstellen Sie die folgenden DWORD-Werte unter **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1. 2\Client**:
+2. Erstellen Sie einen Unterschlüssel unter **Protokolle** für TLS 1.2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**
+3. Erstellen Sie einen Unterschlüssel **Client** unter dem Versionsunterschlüssel des TLS 1.2-Protokolls, den Sie zuvor erstellt haben. Beispiel: **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**.
+4. Erstellen Sie die folgenden DWORD-Werte unter **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**:
 
     * **Enabled** [Wert = 1]
     * **DisabledByDefault** [Wert = 0]  
@@ -108,14 +110,16 @@ In der folgenden Tabelle sind die spezifischen Parameter aufgeführt, die im Set
 2. Für die Installation des Agents im Hintergrund und seine Konfiguration zum Übermitteln von Berichten an einen Arbeitsbereich in der Azure Commercial-Cloud extrahieren Sie die Setupdateien aus dem Ordner und geben Folgendes ein: 
    
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
 
    Zum Konfigurieren des Agents zum Übermitteln von Berichten an die Azure US Government-Cloud geben Sie Folgendes ein: 
 
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
+    >[!NOTE]
+    >Die Zeichenfolgenwerte für die Parameter *OPINSIGHTS_WORKSPACE_ID* und *OPINSIGHTS_WORKSPACE_KEY* müssen in doppelte Anführungszeichen gesetzt werden, damit Windows Installer angewiesen wird, diese als gültige Optionen für das Paket zu interpretieren. 
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Installieren des Agents mithilfe von DSC in Azure Automation
 
@@ -200,4 +204,6 @@ In den zurückgegebenen Suchergebnissen sollten Heartbeat-Datensätze für den C
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Verwaltung des Agents während seines Bereitstellungslebenszyklus auf Ihren Computern finden Sie unter [Verwalten und Warten des Log Analytics-Agents für Windows und Linux](agent-manage.md).  
+- Informationen zu Neukonfiguration, Upgrade oder Entfernen des Agents auf dem virtuellen Computer finden Sie unter [Verwalten und Warten des Log Analytics-Agents für Windows und Linux](agent-manage.md).
+
+- Lesen Sie [Problembehandlung für den Windows-Agent](agent-windows-troubleshoot.md), wenn bei der Installation oder Verwaltung des Agent Probleme auftreten.

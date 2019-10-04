@@ -4,23 +4,22 @@ description: Es wird beschrieben, wie Visual Studio-Projektvorlagen Sie beim Imp
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 60662e723a55c969fdd4b70e732303c90bbf9e8b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538122"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094338"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Verwenden von Visual Studio-Vorlagen für den schnellen Einstieg in Batch-Lösungen
 
@@ -56,9 +55,9 @@ Wie im Diagramm unten zu sehen, durchläuft ein Computeauftrag, für den diese V
 Für die Verwendung der Batch-Vorlagen benötigen Sie Folgendes:
 
 * Ein Computer mit installiertem Visual Studio 2015. Batchvorlagen werden derzeit nur für Visual Studio 2015 unterstützt.
-* Die Batch-Vorlagen, die in der [Visual Studio Gallery][vs_gallery] als Visual Studio-Erweiterungen verfügbar sind. Es gibt zwei Möglichkeiten zum Abrufen der Vorlagen:
+* Die Batch-Vorlagen, die in der [Visual Studio Gallery][vs_gallery] als Visual Studio-Erweiterungen verfügbar sind. Es gibt zwei Möglichkeiten zum Abrufen der Vorlagen:
   
-  * Installieren Sie die Vorlagen über das Dialogfeld **Erweiterungen und Updates** in Visual Studio (weitere Informationen finden Sie unter [Suchen und Verwenden von Visual Studio-Erweiterungen][vs_find_use_ext]). Suchen Sie im Dialogfeld **Erweiterungen und Updates** nach den folgenden beiden Erweiterungen, und laden Sie sie herunter:
+  * Installieren Sie die Vorlagen über das Dialogfeld **Erweiterungen und Updates** in Visual Studio. (Weitere Informationen finden Sie unter [Suchen und Verwenden von Visual Studio-Erweiterungen][vs_find_use_ext].) Suchen Sie im Dialogfeld **Erweiterungen und Updates** nach den folgenden beiden Erweiterungen, und laden Sie sie herunter:
     
     * Azure Batch-Auftrags-Manager mit Auftragsteilung
     * Azure Batch-Aufgabenprozessor
@@ -157,7 +156,7 @@ public IEnumerable<CloudTask> Split()
 ```
 
 > [!NOTE]
-> Der mit Anmerkungen versehene Abschnitt in der `Split()`-Methode ist der einzige Abschnitt des Auftrags-Manager-Vorlagencodes, der für Änderungen durch Sie vorgesehen ist, indem Sie die Logik zum Aufteilen der Aufträge auf unterschiedliche Aufgaben hinzufügen. Wenn Sie einen anderen Abschnitt der Vorlage ändern möchten, sollten Sie sich bereits mit der Funktionsweise von Batch vertraut gemacht haben und einige [Batch-Codebeispiele][github_samples] ausprobiert haben.
+> Der mit Anmerkungen versehene Abschnitt in der `Split()`-Methode ist der einzige Abschnitt des Auftrags-Manager-Vorlagencodes, der für Änderungen durch Sie vorgesehen ist, indem Sie die Logik zum Aufteilen der Aufträge auf unterschiedliche Aufgaben hinzufügen. Wenn Sie einen anderen Abschnitt der Vorlage ändern möchten, sollten Sie bereits mit der Funktionsweise von Batch vertraut sein und einige [Batch-Codebeispiele][github_samples] ausprobiert haben.
 > 
 > 
 
@@ -410,7 +409,7 @@ Ein Client kann Informationen in Form von Umgebungseinstellungen an die Auftrags
 * Batch-Konto-URL
 * Batch-Konto-Schlüssel
 
-Der Batch-Dienst verfügt über einen einfachen Mechanismus zum Übergeben von Umgebungseinstellungen an eine Auftrags-Manager-Aufgabe, indem die `EnvironmentSettings`-Eigenschaft in [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask] verwendet wird.
+Der Batch-Dienst verfügt über einen einfachen Mechanismus zum Übergeben von Umgebungseinstellungen an eine Auftrags-Manager-Aufgabe, indem die Eigenschaft `EnvironmentSettings` in [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask] verwendet wird.
 
 Um beispielsweise die `BatchClient` -Instanz für ein Batch-Konto abzurufen, können Sie die URL und die Anmeldeinformationen eines gemeinsam verwendeten Schlüssels für das Batch-Konto als Umgebungsvariablen übergeben. Außerdem können Sie den Speicherkontonamen und den Speicherkontoschlüssel als Umgebungsvariablen übergeben, um auf das Speicherkonto zuzugreifen, das mit dem Batch-Konto verknüpft ist.
 
@@ -437,7 +436,7 @@ Sie können Parameter auch an einzelne Aufgaben übergeben, die mit der Aufgaben
 
 ## <a name="next-steps"></a>Nächste Schritte
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>Persistente Aufträge und Aufgabenausgabe in Azure Storage
-Ein weiteres nützliches Tool bei der Entwicklung von Batch-Lösungen sind [Azure Batch-Dateikonventionen][nuget_package]. Verwenden Sie diese .NET-Klassenbibliothek (derzeit in der Vorschauphase) in Ihren Batch .NET-Anwendungen, um Aufgabenausgaben leicht speichern und für Azure Storage übermitteln zu können. [Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks](batch-task-output.md) enthält eine umfassende Beschreibung der Bibliothek und ihrer Verwendung.
+Ein weiteres nützliches Tool bei der Entwicklung von Batch-Lösungen sind [Azure Batch-Dateikonventionen][nuget_package]. Verwenden Sie diese .NET-Klassenbibliothek (derzeit in der Vorschauphase) in Ihren Batch .NET-Anwendungen, um Aufgabenausgaben leicht speichern und für Azure Storage übermitteln zu können. [Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks](batch-task-output.md) enthält eine umfassende Beschreibung der Bibliothek und ihrer Verwendung.
 
 
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx

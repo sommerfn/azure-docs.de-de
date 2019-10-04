@@ -4,18 +4,20 @@ description: In diesem Artikel erfahren Sie, wie Daten aus Ihrer Azure IoT Centr
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 12/07/2018
+ms.date: 07/08/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: f6e44b21a2a2e174ffa49073fdeb8cc96910a69e
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 7366072dbf6b000981899a56ca1c8cfe6af6f04a
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295078"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876047"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Exportieren von Daten in Azure Blob Storage
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 *Dieses Thema gilt für Administratoren.*
 
@@ -57,14 +59,14 @@ Nachdem Sie nun einen Speicher als Exportziel für Daten haben, gehen Sie folgen
     > [!Note]
     > Wenn im linken Menü „Kontinuierlicher Datenexport“ nicht angezeigt wird, sind Sie kein Administrator in Ihrer App. Wenden Sie sich an Ihren Administrator, damit dieser den Datenexport einrichtet.
 
-    ![Erstellen eines neun Event Hubs für kontinuierlichen Datenexport](media/howto-export-data/export_menu.PNG)
+    ![Erstellen eines neun Event Hubs für kontinuierlichen Datenexport](media/howto-export-data/export_menu1.png)
 
 3. Wählen Sie oben rechts die Schaltfläche **+ Neu** aus. Wählen Sie **Azure Blob Storage** als Ziel für den Export aus. 
 
     > [!NOTE] 
     > Die maximale Anzahl von Exporten pro App beträgt 5. 
 
-    ![Erstellen eine neuen kontinuierlichen Datenexports](media/howto-export-data/export_new.PNG)
+    ![Erstellen eine neuen kontinuierlichen Datenexports](media/howto-export-data/export_new1.png)
 
 4. Wählen Sie im Dropdown-Listenfeld Ihren **Speicherkonto-Namespace** aus. Sie können auch die letzte Option in der Liste auswählen, bei der es sich um **Verbindungszeichenfolge eingeben** handelt. 
 
@@ -76,7 +78,7 @@ Nachdem Sie nun einen Speicher als Exportziel für Daten haben, gehen Sie folgen
 
     ![Erstellen eines neun Event Hubs für kontinuierlichen Datenexport](media/howto-export-data/export-create-blob.png)
 
-5. (Optional) Wenn Sie **Verbindungszeichenfolge eingeben** ausgewählt haben, wird ein neues Feld angezeigt, in das Sie Ihre Verbindungszeichenfolge einfügen können. Um die Verbindungszeichenfolge für 
+5. (Optional) Wenn Sie **Verbindungszeichenfolge eingeben** ausgewählt haben, wird ein neues Feld angezeigt, in das Sie Ihre Verbindungszeichenfolge einfügen können. Um die Verbindungszeichenfolge für
     - Ihr Speicherkonto abzurufen,wechseln Sie im Azure-Portal zu dem Speicherkonto.
         - Wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus.
         - Kopieren Sie entweder die Verbindungszeichenfolge „key1“ oder die Verbindungszeichenfolge „key2“.
@@ -87,7 +89,7 @@ Nachdem Sie nun einen Speicher als Exportziel für Daten haben, gehen Sie folgen
 
 6. Um den kontinuierlichen Datenexport zu aktivieren, stellen Sie sicher, dass **Datenexport** auf **Ein** festgelegt ist. Wählen Sie **Speichern** aus.
 
-  ![Konfigurieren des fortlaufenden Datenexports](media/howto-export-data/export-list-blob.png)
+   ![Konfigurieren des fortlaufenden Datenexports](media/howto-export-data/export-list-blob.png)
 
 7. Nach einigen Minuten werden Ihre Daten an Ihrem ausgewählten Ziel angezeigt.
 
@@ -286,6 +288,7 @@ import json
 import pandavro as pdx
 import pandas as pd
 
+
 def parse(filePath):
     # Pandavro loads the Avro file into a pandas DataFrame
     # where each record is a single row.
@@ -297,16 +300,17 @@ def parse(filePath):
 
     # The SystemProperties column contains a dictionary
     # with the device ID located under the connectionDeviceId key.
-    transformed["device_id"] = measurements["SystemProperties"].apply(lambda x: x["connectionDeviceId"])
+    transformed["device_id"] = measurements["SystemProperties"].apply(
+        lambda x: x["connectionDeviceId"])
 
     # The Body column is a series of UTF-8 bytes that is stringified
     # and parsed as JSON. This example pulls the humidity property
     # from each column to get the humidity field.
-    transformed["humidity"] = measurements["Body"].apply(lambda x: json.loads(bytes(x).decode('utf-8'))["humidity"])
+    transformed["humidity"] = measurements["Body"].apply(
+        lambda x: json.loads(bytes(x).decode('utf-8'))["humidity"])
 
     # Finally, print the new DataFrame with our device IDs and humidities.
     print(transformed)
-
 ```
 
 #### <a name="parse-a-devices-avro-file"></a>Analysieren einer AVRO-Datei für Geräte
@@ -315,6 +319,7 @@ def parse(filePath):
 import json
 import pandavro as pdx
 import pandas as pd
+
 
 def parse(filePath):
     # Pandavro loads the Avro file into a pandas DataFrame
@@ -330,17 +335,19 @@ def parse(filePath):
 
     # The template ID and version are present in a dictionary under
     # the deviceTemplate column.
-    transformed["template_id"] = devices["deviceTemplate"].apply(lambda x: x["id"])
-    transformed["template_version"] = devices["deviceTemplate"].apply(lambda x: x["version"])
+    transformed["template_id"] = devices["deviceTemplate"].apply(
+        lambda x: x["id"])
+    transformed["template_version"] = devices["deviceTemplate"].apply(
+        lambda x: x["version"])
 
     # The fanSpeed setting value is located in a nested dictionary
     # under the settings column.
-    transformed["fan_speed"] = devices["settings"].apply(lambda x: x["device"]["fanSpeed"])
+    transformed["fan_speed"] = devices["settings"].apply(
+        lambda x: x["device"]["fanSpeed"])
 
     # Finally, print the new DataFrame with our device and template
     # information, along with the value of the fan speed.
     print(transformed)
-
 ```
 
 #### <a name="parse-a-device-templates-avro-file"></a>Analysieren einer AVRO-Datei für Gerätevorlagen
@@ -349,6 +356,7 @@ def parse(filePath):
 import json
 import pandavro as pdx
 import pandas as pd
+
 
 def parse(filePath):
     # Pandavro loads the Avro file into a pandas DataFrame
@@ -365,7 +373,8 @@ def parse(filePath):
 
     # The fanSpeed setting value is located in a nested dictionary
     # under the settings column.
-    transformed["fan_speed"] = templates["settings"].apply(lambda x: x["device"]["fanSpeed"])
+    transformed["fan_speed"] = templates["settings"].apply(
+        lambda x: x["device"]["fanSpeed"])
 
     # Finally, print the new DataFrame with our device and template
     # information, along with the value of the fan speed.

@@ -7,17 +7,16 @@ manager: jeconnoc
 editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 662260c3cf37f8f8a675c522f3d3dea41153e485
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 9c7f920c6b66995d53ef742a9faf574286a51d69
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663562"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390446"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Verwenden von Key Vault-Verweisen in App Service und Azure Functions (Vorschauversion)
 
@@ -37,7 +36,10 @@ Um Geheimnisse aus Key Vault auslesen zu können, müssen Sie einen Tresor erste
    > [!NOTE] 
    > Key Vault-Verweise unterstützen derzeit nur systemseitig zugewiesene verwaltete Identitäten. Vom Benutzer zugewiesene Identitäten können nicht verwendet werden.
 
-1. Erstellen Sie eine [Zugriffsrichtlinie im Schlüsseltresor](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) für die zuvor von Ihnen erstellte Anwendungsidentität. Aktivieren Sie die „Get“-Geheimnisberechtigung für diese Richtlinie. Konfigurieren Sie nicht die Einstellungen „Autorisierte Anwendung“ oder `appliationId`, da dies mit einer verwalteten Identität nicht kompatibel ist.
+1. Erstellen Sie eine [Zugriffsrichtlinie im Schlüsseltresor](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) für die zuvor von Ihnen erstellte Anwendungsidentität. Aktivieren Sie die „Get“-Geheimnisberechtigung für diese Richtlinie. Konfigurieren Sie nicht die Einstellungen „Autorisierte Anwendung“ oder `applicationId`, da dies mit einer verwalteten Identität nicht kompatibel ist.
+
+    > [!NOTE]
+    > Key Vault-Verweise können derzeit keine Geheimnisse in einem Schlüsseltresor mit [Netzwerkeinschränkungen](../key-vault/key-vault-overview-vnet-service-endpoints.md) auflösen.
 
 ## <a name="reference-syntax"></a>Verweissyntax
 
@@ -67,7 +69,7 @@ Alternativ:
 
 ## <a name="source-application-settings-from-key-vault"></a>Einbinden von Anwendungseinstellungen aus Key Vault
 
-Key Vault-Verweise können als Werte für [Anwendungseinstellungen](web-sites-configure.md#app-settings) verwendet werden, sodass Sie Geheimnisse in Key Vault anstelle der Websitekonfiguration behalten können. Die Anwendungseinstellungen sind im Ruhezustand sicher verschlüsselt, aber wenn Sie die Funktion zum Verwalten von Geheimnissen benötigen, sollten sie in Key Vault aufgenommen werden.
+Key Vault-Verweise können als Werte für [Anwendungseinstellungen](configure-common.md#configure-app-settings) verwendet werden, sodass Sie Geheimnisse in Key Vault anstelle der Websitekonfiguration behalten können. Die Anwendungseinstellungen sind im Ruhezustand sicher verschlüsselt, aber wenn Sie die Funktion zum Verwalten von Geheimnissen benötigen, sollten sie in Key Vault aufgenommen werden.
 
 Um einen Key Vault-Verweis für eine Anwendungseinstellung zu verwenden, legen Sie den Verweis als Wert für die Einstellung fest. Ihre App kann wie gewohnt durch seinen Schlüssel auf das Geheimnis verweisen. Es sind keine Codeänderungen erforderlich.
 
@@ -183,3 +185,27 @@ Ein Beispiel für eine Pseudovorlage für eine Funktions-App könnte wie folgt a
 
 > [!NOTE] 
 > In diesem Beispiel hängt die Bereitstellung der Quellcodeverwaltung von den Anwendungseinstellungen ab. Dies ist normalerweise ein unsicheres Verhalten, da sich das App-Einstellungsupdate asynchron verhält. Da wir aber die Anwendungseinstellung `WEBSITE_ENABLE_SYNC_UPDATE_SITE` integriert haben, verläuft das Update synchron. Dies bedeutet, dass die Bereitstellung der Quellcodeverwaltung erst dann beginnt, wenn die Anwendungseinstellungen vollständig aktualisiert wurden.
+
+## <a name="troubleshooting-key-vault-references"></a>Problembehandlung von Key Vault-Verweisen
+
+Wird ein Verweis nicht ordnungsgemäß aufgelöst, wird stattdessen der Verweiswert verwendet. Dies bedeutet, dass für Anwendungseinstellungen eine Umgebungsvariable erstellt wird, deren Wert die `@Microsoft.KeyVault(...)`-Syntax hat. Dies kann dazu führen, dass die Anwendung Fehler auslöst, da sie ein Geheimnis einer bestimmten Struktur erwartet hat.
+
+Meist ist die Ursache hierfür eine fehlerhafte Konfiguration der [Key Vault-Zugriffsrichtlinie](#granting-your-app-access-to-key-vault). Ursache kann jedoch auch sein, dass ein Geheimnis nicht mehr vorhanden ist, oder dass ein Syntaxfehler im Verweis vorliegt.
+
+Ist die Syntax richtig, können Sie weitere Fehlerursachen anzeigen, indem Sie den aktuellen Auflösungsstatus mit einer integrierten Erkennung überprüfen.
+
+### <a name="using-the-detector-for-app-service"></a>Verwenden der Erkennung für App Service
+
+1. Navigieren Sie im Portal zu Ihrer App.
+2. Wählen Sie **Probleme diagnostizieren und beheben** aus.
+3. Wählen Sie **Leistung und Verfügbarkeit** aus, und wählen Sie **Web app down** aus.
+4. Suchen Sie nach **Key Vault Application Settings Diagnostics**, und klicken Sie auf **Details**.
+
+
+### <a name="using-the-detector-for-azure-functions"></a>Verwenden der Erkennung für Azure Functions
+
+1. Navigieren Sie im Portal zu Ihrer App.
+2. Navigieren Sie zu **Plattformfeatures**.
+3. Wählen Sie **Probleme diagnostizieren und beheben** aus.
+4. Wählen Sie **Leistung und Verfügbarkeit** aus, und wählen Sie **Function app down or reporting errors** aus.
+5. Klicken Sie auf **Key Vault Application Settings Diagnostics**.

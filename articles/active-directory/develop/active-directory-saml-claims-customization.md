@@ -1,10 +1,10 @@
 ---
-title: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen in Azure AD | Microsoft-Dokumentation
+title: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie die Ansprüche im SAML-Token für Unternehmensanwendungen in Azure AD anpassen.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: f1daad62-ac8a-44cd-ac76-e97455e47803
 ms.service: active-directory
@@ -12,18 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6fe74852824c10d24729f785e5e33a17b793161
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 0c0625a233b3b4a949feff2e289361a26fc8dc5a
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878569"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835345"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Gewusst wie: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -35,7 +35,7 @@ Standardmäßig stellt Azure AD der Anwendung ein SAML-Token aus, das einen `Nam
 
 Um die im SAML-Token für die Anwendung ausgestellten Ansprüche anzuzeigen oder zu bearbeiten, öffnen Sie die Anwendung im Azure-Portal. Öffnen Sie dann den Abschnitt **Benutzerattribute und Ansprüche**.
 
-![Abschnitt „Benutzerattribute und Ansprüche“](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
+![Öffnen des Abschnitts „Benutzerattribute und Ansprüche“ im Azure-Portal](./media/active-directory-saml-claims-customization/sso-saml-user-attributes-claims.png)
 
 Es gibt zwei Gründe dafür, dass Sie die im SAML-Token ausgegebenen Ansprüche möglicherweise bearbeiten müssen:
 
@@ -47,7 +47,7 @@ Es gibt zwei Gründe dafür, dass Sie die im SAML-Token ausgegebenen Ansprüche 
 Gehen Sie wie folgt vor, um die NameID (den Wert für den Namensbezeichner) zu bearbeiten:
 
 1. Öffnen Sie die Seite **Wert für Namensbezeichner**.
-1. Wählen Sie das gewünschte Attribut oder die auf das Attribut anzuwendende Transformation aus. Optional können Sie auch ein Format für den NameID-Anspruch angeben.
+1. Wählen Sie das gewünschte Attribut oder die auf das Attribut anzuwendende Transformation aus. Optional können Sie auch das Format für den NameID-Anspruch angeben.
 
    ![NameID-Wert (Wert für Namensbezeichner) bearbeiten](./media/active-directory-saml-claims-customization/saml-sso-manage-user-claims.png)
 
@@ -62,10 +62,10 @@ Im Dropdownmenü **Namensbezeichnerformat auswählen** können Sie eine der folg
 | NameID-Format | BESCHREIBUNG |
 |---------------|-------------|
 | **Standard** | Azure AD verwendet das Standardquellformat. |
-| **Beständig** | Azure AD verwendet das NameID-Format „Persistent“. |
+| **Persistent** | Azure AD verwendet das NameID-Format „Persistent“. |
 | **EmailAddress** | Azure AD verwendet das NameID-Format „EmailAddress“. |
-| **Unspecified** | Azure AD verwendet das NameID-Format „Unspecified“. |
-| **Kurzlebig** | Azure AD verwendet das NameID-Format „Transient“. |
+| **Nicht angegeben** | Azure AD verwendet das NameID-Format „Unspecified“. |
+| **Transient** (Vorübergehend) | Azure AD verwendet das NameID-Format „Transient“. |
 
 Weitere Informationen zum NameIDPolicy-Attribut finden Sie unter [SAML-Protokoll für einmaliges Anmelden](single-sign-on-saml-protocol.md).
 
@@ -83,7 +83,7 @@ Wählen Sie die gewünschte Quelle für den Anspruch `NameIdentifier` (oder Name
 | Verzeichniserweiterungen | Verzeichniserweiterungen, die [über die Azure AD Connect-Synchronisierung aus dem lokalen Active Directory synchronisiert wurden](../hybrid/how-to-connect-sync-feature-directory-extensions.md). |
 | Erweiterungsattribute 1–15 | Die lokalen Erweiterungsattribute, die zur Erweiterung des Azure AD-Schemas verwendet werden. |
 
-Weitere Informationen finden Sie unter [Tabelle 3: Gültige ID-Werte pro Quelle](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
+Weitere Informationen finden Sie in [Table 3: Valid ID values per source (Tabelle 3: Gültige ID-Werte pro Quelle)](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
 
 ### <a name="special-claims---transformations"></a>Besondere Ansprüche – Transformationen
 
@@ -114,14 +114,14 @@ Sie können auch die Funktionen für Anspruchstransformationen verwenden.
 | **Join()** | Erstellt einen neuen Wert durch Verknüpfen von zwei Attributen. Optional können Sie ein Trennzeichen zwischen den beiden Attributen verwenden. |
 | **ToLower()** | Konvertiert die Zeichen des ausgewählten Attributs in Kleinbuchstaben. |
 | **ToUpper()** | Konvertiert die Zeichen des ausgewählten Attributs in Großbuchstaben. |
-| **Contains()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe dem angegebenen Wert entspricht. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert die E-Mail-Adresse des Benutzers ist, wenn er die Domäne „@contoso.com“ enthält, andernfalls soll der Benutzerprinzipalname ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)*: user.email<br/>*Wert*: „@contoso.com“<br/>Parameter 2 (Ausgabe): user.email<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.userprincipalname |
-| **EndWith()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe mit dem angegebenen Wert endet. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert die Mitarbeiter-ID des Benutzers ist, wenn „employeeid“ mit „000“ endet, andernfalls soll ein Erweiterungsattribut ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)*: user.employeeid<br/>*Value*: „000“<br/>Parameter 2 (Ausgabe): user.employeeid<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.extensionattribute1 |
-| **StartWith()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe mit dem angegebenen Wert beginnt. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert die Mitarbeiter-ID (employeeid) des Benutzers ist, wenn das Land (country) mit „US“ beginnt, andernfalls soll ein Erweiterungsattribut ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)*: user.country<br/>*Value*: „US“<br/>Parameter 2 (Ausgabe): user.employeeid<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.extensionattribute1 |
-| **Extract() – Nach dem Abgleich** | Gibt die Teilzeichenfolge bei Übereinstimmung mit dem angegebenen Wert zurück.<br/>Beispiel: Wenn der Eingabewert „Finance_BSimon“ und der übereinstimmende Wert „Finance_“ ist, dann lautet die Ausgabe des Anspruchs „BSimon“. |
-| **Extract() – Vor dem Abgleich** | Gibt die Teilzeichenfolge zurück, bis sie mit dem angegebenen Wert übereinstimmt.<br/>Beispiel: Wenn der Eingabewert „BSimon_US“ und der übereinstimmende Wert „_US“ ist, dann lautet die Ausgabe des Anspruchs „BSimon“. |
-| **Extract() – Zwischen Abgleichen** | Gibt die Teilzeichenfolge zurück, bis sie mit dem angegebenen Wert übereinstimmt.<br/>Beispiel: Wenn der Eingabewert „Finance_BSimon_US“ ist, der erste übereinstimmende Wert „Finance_“ und der zweite übereinstimmende Wert „_US“ lautet, dann ist die Ausgabe des Anspruchs „BSimon“. |
+| **Contains()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe dem angegebenen Wert entspricht. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert die E-Mail-Adresse des Benutzers ist, wenn er die Domäne „@contoso.com“ enthält, andernfalls soll der Benutzerprinzipalname ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)* : user.email<br/>*Wert*: „@contoso.com“<br/>Parameter 2 (Ausgabe): user.email<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.userprincipalname |
+| **EndWith()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe mit dem angegebenen Wert endet. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Beispiel: Sie möchten einen Anspruch ausgeben, dessen Wert die Mitarbeiter-ID des Benutzers ist, wenn „employeeid“ mit „000“ endet, andernfalls soll ein Erweiterungsattribut ausgegeben werden. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)* : user.employeeid<br/>*Value*: „000“<br/>Parameter 2 (Ausgabe): user.employeeid<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.extensionattribute1 |
+| **StartWith()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe mit dem angegebenen Wert beginnt. Andernfalls können Sie eine andere Ausgabe angeben, wenn keine Übereinstimmung vorhanden ist.<br/>Wenn Sie beispielsweise einen Anspruch ausgeben möchten, bei dem der Wert die „employeeid“ des Benutzer ist, wenn das Land bzw. die Region mit „US“ beginnt, und Sie andernfalls ein Erweiterungsattribut ausgeben möchten. Hierzu konfigurieren Sie die folgenden Werte:<br/>*Parameter 1 (Eingabe)* : user.country<br/>*Value*: „US“<br/>Parameter 2 (Ausgabe): user.employeeid<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.extensionattribute1 |
+| **Extract() – nach dem Abgleich** | Gibt die Teilzeichenfolge bei Übereinstimmung mit dem angegebenen Wert zurück.<br/>Beispiel: Wenn der Eingabewert „Finance_BSimon“ und der übereinstimmende Wert „Finance_“ ist, dann lautet die Ausgabe des Anspruchs „BSimon“. |
+| **Extract() – vor dem Abgleich** | Gibt die Teilzeichenfolge zurück, bis sie mit dem angegebenen Wert übereinstimmt.<br/>Beispiel: Wenn der Eingabewert „BSimon_US“ und der übereinstimmende Wert „_US“ ist, dann lautet die Ausgabe des Anspruchs „BSimon“. |
+| **Extract() – zwischen Abgleichen** | Gibt die Teilzeichenfolge zurück, bis sie mit dem angegebenen Wert übereinstimmt.<br/>Beispiel: Wenn der Eingabewert „Finance_BSimon_US“ ist, der erste übereinstimmende Wert „Finance_“ und der zweite übereinstimmende Wert „_US“ lautet, dann ist die Ausgabe des Anspruchs „BSimon“. |
 | **ExtractAlpha() – Präfix** | Gibt den alphabetischen Teil des Präfixes der Zeichenfolge zurück.<br/>Beispiel: Wenn der Eingabewert „BSimon_123“ lautet, wird „BSimon“ zurückgegeben. |
-| **ExtractAlpha() – Suffix** | Gibt den alphabetischen Teil des Suffixes der Zeichenfolge zurück.<br/>Beispiel: Wenn der Eingabewert „123_BSimon“ lautet, wird „BSimon“ zurückgegeben. |
+| **ExtractAlpha() – Suffix** | Gibt den alphabetischen Teil des Suffixes der Zeichenfolge zurück.<br/>Beispiel: Wenn der Eingabewert „123_Simon“ lautet, wird „Simon“ zurückgegeben. |
 | **ExtractNumeric() – Präfix** | Gibt den numerischen Teil des Präfixes der Zeichenfolge zurück.<br/>Beispiel: Wenn der Eingabewert „123_BSimon“ lautet, wird „123“ zurückgegeben. |
 | **ExtractNumeric() – Suffix** | Gibt den numerischen Teil des Suffixes der Zeichenfolge zurück.<br/>Beispiel: Wenn der Eingabewert „BSimon_123“ lautet, wird „123“ zurückgegeben. |
 | **IfEmpty()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe null oder leer ist.<br/>Beispiel: Sie möchten ein in einem Erweiterungsattribut (extensionattribute) gespeichertes Attribut ausgeben, wenn die Mitarbeiter-ID (employeeid) für einen bestimmten Benutzer leer ist. Hierzu konfigurieren Sie die folgenden Werte:<br/>Parameter 1 (Eingabe): user.employeeid<br/>Parameter 2 (Ausgabe): user.extensionattribute1<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.employeeid |
@@ -132,5 +132,5 @@ Wenn Sie zusätzliche Transformationen benötigen, senden Sie Ihre Vorschläge a
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Anwendungsverwaltung in Azure AD](../manage-apps/what-is-application-management.md)
-* [Konfigurieren des einmaligen Anmeldens für nicht im Azure AD-Anwendungskatalog enthaltene Anwendungen](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
+* [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure AD-Anwendungskatalog enthalten sind](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Problembehandlung bei SAML-basiertem einmaligem Anmelden](howto-v1-debug-saml-sso-issues.md)

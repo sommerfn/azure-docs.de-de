@@ -3,8 +3,8 @@ title: Benutzerdefinierte Domänen im Azure AD-Anwendungsproxy | Microsoft-Dokum
 description: Verwalten Sie benutzerdefinierte Domänen im Azure AD-Anwendungsproxy, sodass die URL für die App immer die gleiche ist – unabhängig davon, wo Ihre Benutzer darauf zugreifen.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/31/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59663346fce415d73609f09345048ff321f1a234
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 8a1914b7cf79287831e0e94c19c50107c2ac216d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359826"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390790"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy
 
@@ -40,7 +40,7 @@ Wir empfehlen Ihnen, nach Möglichkeit immer benutzerdefinierte Domänen für Ih
 
 Stellen Sie vor dem Konfigurieren einer benutzerdefinierten Domäne sicher, dass Sie die folgenden Anforderungen erfüllt haben: 
 - Sie haben [Azure Active Directory eine überprüfte Domäne hinzugefügt](../fundamentals/add-custom-domain.md).
-- Es ist ein benutzerdefiniertes Zertifikat für die Domäne in Form einer PFX-Datei vorhanden. 
+- Es ist ein benutzerdefiniertes Zertifikat für die Domäne in Form einer PFX-Datei vorhanden.
 - Es ist eine lokale App vorhanden, [die über den Anwendungsproxy veröffentlicht wurde](application-proxy-add-on-premises-application.md).
 
 ### <a name="configure-your-custom-domain"></a>Konfigurieren Ihrer benutzerdefinierten Domäne
@@ -71,7 +71,11 @@ Wenn diese drei Anforderungen erfüllt sind, können Sie die folgenden Schritte 
 ### <a name="certificate-format"></a>Zertifikatformat
 Es gibt keine Einschränkung für die Zertifikatsignaturmethoden. Elliptic Curve Cryptography (ECC), Subject Alternative Name (SAN) und andere gängige Zertifikattypen werden unterstützt. 
 
-Sie können ein Platzhalterzertifikats verwenden, solange der Platzhalter mit der gewünschten externen URL übereinstimmt. 
+Sie können ein Platzhalterzertifikats verwenden, solange der Platzhalter mit der gewünschten externen URL übereinstimmt.
+
+Das Zertifikat muss den privaten Schlüssel enthalten.
+
+Von ihrer eigenen Public Key-Infrastruktur (PKI) ausgestellte Zertifikate können verwendet werden, wenn die Zertifikatkette auf Ihren Clientgeräten installiert ist. Intune kann verwendet werden, um diese Zertifikate auf verwalteten Geräten bereitzustellen. Bei nicht verwalteten Geräten müssen diese Zertifikate manuell installiert werden.
 
 ### <a name="changing-the-domain"></a>Ändern der Domäne
 Alle überprüften Domänen werden in der Dropdownliste „Externe URL“ Ihrer Anwendung angezeigt. Sie können einfach dieses Feld für die Anwendung aktualisieren, um die Domäne zu ändern. [Fügen Sie die gewünschte Domäne als überprüfte Domäne hinzu](../fundamentals/add-custom-domain.md), falls sie nicht in der Liste enthalten ist. Wenn Sie eine Domäne auswählen, der noch kein Zertifikat zugeordnet ist, können Sie die Schritte 5 bis 7 ausführen, um das Zertifikat hinzuzufügen. Stellen Sie anschließend sicher, dass Sie den DNS-Eintrag aktualisieren, damit die Umleitung von der neuen externen URL durchgeführt wird. 
@@ -85,7 +89,7 @@ Derzeit wird die gesamte Zertifikatverwaltung über einzelne Anwendungsseiten du
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Aktivieren des einmaligen Anmeldens](application-proxy-configure-single-sign-on-with-kcd.md) bei Ihren veröffentlichten Apps mithilfe der Azure AD-Authentifizierung.
-* [Aktivieren des bedingten Zugriffs](application-proxy-integrate-with-sharepoint-server.md) auf Ihre veröffentlichten Apps.
+* [Aktivieren des bedingten Zugriffs](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/technical-reference#cloud-apps-assignments) auf Ihre veröffentlichten Apps
 * [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../fundamentals/add-custom-domain.md)
 
 

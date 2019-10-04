@@ -1,19 +1,18 @@
 ---
 title: Skalierbarkeits- und Leistungsziele für Azure Files | Microsoft-Dokumentation
 description: Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Files, einschließlich Kapazität, Anforderungsrate sowie Grenzwerte für ein- und ausgehende Bandbreite.
-services: storage
-author: wmgries
+author: roygara
 ms.service: storage
-ms.topic: article
-ms.date: 7/19/2018
-ms.author: wgries
+ms.topic: conceptual
+ms.date: 5/5/2019
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9cbb44fed8a9cc9e30e70e58f33fb943ee43b412
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ed4aa832c4ec7ccda760d535aa920be8d5c4e2e3
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269162"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699621"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 
@@ -34,24 +33,34 @@ Die übergeordnete Ressource einer Azure-Dateifreigabe ist ein Azure-Speicherkon
 
 ## <a name="azure-files-scale-targets"></a>Skalierbarkeitsziele für Azure Files
 
-### <a name="premium-files-scale-targets"></a>Skalierbarkeitsziele für Premium-Dateien
+Es gibt drei Kategorien von Einschränkungen, die für Azure Files zu berücksichtigen sind: Speicherkonten, Freigaben und Dateien.
 
-Es gibt drei Kategorien von Einschränkungen, die für Premium-Dateien zu berücksichtigen sind: Speicherkonten, Freigaben und Dateien.
+Beispiel:  Bei Premium-Dateifreigaben kann eine einzige Freigabe einen IOPS-Wert von 100.000 erreichen, und eine einzelne Datei kann bis zu 5.000 IOPS zentral hochskaliert werden. Wenn Sie drei Dateien in einer Freigabe haben, entspricht der maximale IOPS-Wert aus dieser Freigabe 15.000.
 
-Beispiel:  Eine einzelne Freigabe kann einen IOPS-Wert von 100.000 erreichen, und eine einzelne Datei kann bis zu 5.000 IOPS zentral hochskaliert werden. Wenn Sie beispielsweise drei Dateien in einer Freigabe haben, entspricht der maximale IOPS-Wert aus dieser Freigabe 15.000.
+### <a name="standard-storage-account-limits"></a>Begrenzungen beim Standard-Speicherkonto
+
+Diese Grenzwerte finden Sie im Abschnitt [Skalierbarkeitsziele für das Azure-Speicherkonto](#azure-storage-account-scale-targets).
 
 ### <a name="premium-filestorage-account-limits"></a>Grenzwerte für FileStorage Premium-Konten
 
-Für Premium-Dateien wird ein besonderes Speicherkonto mit dem Namen **FileStorage (Vorschauversion)** verwendet. Dieses Konto hat etwas andere Skalierbarkeitsziele als das für Standarddateien verwendete Speicherkonto. Die Skalierbarkeitsziele für das Speicherkonto finden Sie in der Tabelle im Abschnitt [Skalierbarkeitsziele für Azure Storage-Konten](#azure-storage-account-scale-targets).
+[!INCLUDE [azure-storage-limits-filestorage](../../../includes/azure-storage-limits-filestorage.md)]
 
 > [!IMPORTANT]
-> Die Einschränkungen für Speicherkonten gelten für alle Freigaben. Zentrales Hochskalieren bis zum Maximalwert für Speicherkonten ist nur möglich, wenn es nur eine Freigabe pro Speicherkonto gibt.
+> Die Einschränkungen für Speicherkonten gelten für alle Freigaben. Zentrales Hochskalieren bis zum Maximalwert für FileStorage-Konten ist nur möglich, wenn es nur eine Freigabe pro FileStorage-Konto gibt.
+
+### <a name="file-share-and-file-scale-targets"></a>Skalierungsziele für Dateifreigaben und Dateien
+
+> [!NOTE]
+> Standard-Dateifreigaben über 5TiB sind als Vorschau verfügbar und weisen bestimmte Einschränkungen auf.
+> Eine Liste der Einschränkungen und Informationen zum Onboarding zur Vorschau dieser größeren Dateifreigaben finden Sie im Abschnitt [Standarddateifreigaben](storage-files-planning.md#standard-file-shares) des Planungshandbuchs.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
+[!INCLUDE [storage-files-premium-scale-targets](../../../includes/storage-files-premium-scale-targets.md)]
+
 ## <a name="azure-file-sync-scale-targets"></a>Skalierbarkeitsziele für die Azure-Dateisynchronisierung
 
-Bei der Azure-Dateisynchronisierung haben wir als Entwicklungsziel eine unbegrenzte Nutzung vorgesehen, was jedoch nicht immer möglich ist. Die folgende Tabelle zeigt die bei unseren Tests ermittelten Grenzwerte und für welche Ziele tatsächlich feste Grenzen gelten:
+Azure-Dateisynchronisierung wurde mit dem Ziel der unbegrenzten Nutzung entwickelt, aber unbegrenzte Nutzung ist nicht immer möglich. Die folgende Tabelle gibt an, welche Grenzen für Tests von Microsoft gelten und welche Ziele feste Grenzwerte sind:
 
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
@@ -76,9 +85,9 @@ Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folge
 
 | Erste einmalige Bereitstellung  |  |
 |-|-|
-| Anzahl der Objekte | 10 Millionen Objekte |
-| Datasetgröße| Ca. 4 TiB |
-| Durchschnittliche Dateigröße | Ca. 500 KiB (größte Datei: 100 GiB) |
+| Anzahl der Objekte | 25 Millionen Objekte |
+| Datasetgröße| ca. 4,7 TiB |
+| Durchschnittliche Dateigröße | ca. 200 KiB (größte Datei: 100 GiB) |
 | Uploaddurchsatz | 20 Objekte pro Sekunde |
 | Durchsatz beim Download von Namespaces* | 400 Objekte pro Sekunde |
 

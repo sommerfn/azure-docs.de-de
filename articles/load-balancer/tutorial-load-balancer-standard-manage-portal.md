@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: In diesem Tutorial wird gezeigt, wie Sie über das Azure-Portal eine Load Balancer Standard-Instanz erstellen und verwalten.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 Customer intent: I want to create and Standard Load Balancer so that I can load balance internet traffic to VMs and add and remove VMs from the load-balanced set.
 ms.service: load-balancer
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/11/2019
-ms.author: kumud
+ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 78266e447d1ddf6daf5a9b0ad9172ab6470bf0c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a0887a66b6cb886419f86d93973b991151141e0a
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845204"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327204"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Tutorial: Vornehmen eines Lastausgleichs für den Internetdatenverkehr virtueller Computer mit dem Azure-Portal
 
@@ -49,11 +49,11 @@ In diesem Abschnitt erstellen Sie eine Load Balancer Standard-Instanz für den L
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
-    | Ressourcengruppe         | Wählen Sie **Neu erstellen** aus, und geben Sie *myResourceGroupSLB* in das Textfeld ein.|
+    | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
+    | Resource group         | Wählen Sie **Neu erstellen** aus, und geben Sie *myResourceGroupSLB* in das Textfeld ein.|
     | NAME                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
-    | Type          | Wählen Sie **Öffentlich** aus.                                        |
+    | type          | Wählen Sie **Öffentlich** aus.                                        |
     | SKU           | Wählen Sie **Standard** aus.                          |
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
     | Name der öffentlichen IP-Adresse              | Geben Sie *myPublicIP* in das Textfeld ein.   |
@@ -86,11 +86,10 @@ Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie ein
     | Einstellung | Wert |
     | ------- | ----- |
     | NAME | Geben Sie *myHealthProbe* ein. |
-    | Protokoll | Wählen Sie **HTTP** aus. |
+    | Protocol | Wählen Sie **HTTP** aus. |
     | Port | Geben Sie *80* ein.|
     | Intervall | Geben Sie für das **Intervall** den Wert *15* (Sekunden zwischen Testversuchen) ein. |
     | Fehlerhafter Schwellenwert | Wählen Sie *2* als Wert für den **Fehlerschwellenwert** bzw. als Anzahl aufeinander folgender Testfehler aus, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird.|
-    | Integritätstest | Wählen Sie *myHealthProbe* aus. |
     
 4. Klicken Sie auf **OK**.
 
@@ -105,7 +104,7 @@ Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virt
     | Einstellung | Wert |
     | ------- | ----- |
     | NAME | Geben Sie *myHTTPRule* ein. |
-    | Protokoll | Wählen Sie **TCP** aus. |
+    | Protocol | Wählen Sie **TCP** aus. |
     | Port | Geben Sie *80* ein.|
     | Back-End-Port | Geben Sie *80* ein. |
     | Back-End-Pool | Wählen Sie *myBackendPool* aus.|
@@ -126,9 +125,9 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk sowie drei virtuelle C
     | ------- | ----- |
     | NAME | Geben Sie *myVNet* ein. |
     | Adressraum | Geben Sie *10.1.0.0/16* ein. |
-    | Abonnement | Wählen Sie Ihr Abonnement aus.|
-    | Ressourcengruppe | Wählen Sie die vorhandene Ressource *myResourceGroupSLB* aus. |
-    | Standort | Wählen Sie **Europa, Westen** aus.|
+    | Subscription | Wählen Sie Ihr Abonnement aus.|
+    | Resource group | Wählen Sie die vorhandene Ressource *myResourceGroupSLB* aus. |
+    | Location | Wählen Sie **Europa, Westen** aus.|
     | Subnetzname | Geben Sie *myBackendSubnet* ein. |
     | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |
     
@@ -150,7 +149,7 @@ Load Balancer Standard unterstützt nur virtuelle Computer mit Standard-IP-Adres
 1. Wählen Sie die Registerkarte **Netzwerk** aus, oder wählen Sie **Weiter: Datenträger** und anschließend **Weiter: Netzwerk** aus. 
    
    - Stellen Sie sicher, dass Folgendes ausgewählt ist:
-       - **Virtuelles Netzwerk**: **myVnet**
+       - **Virtuelles Netzwerk:** **myVnet**
        - **Subnetz**: **myBackendSubnet**
        - **Öffentliche IP-Adresse**: Wählen Sie **Neu erstellen** und anschließend im Fenster **Öffentliche IP-Adresse erstellen** unter **SKU** die Option **Standard** und unter **Verfügbarkeitszone** die Option **Zonenredundant** aus.
       

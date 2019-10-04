@@ -1,22 +1,21 @@
 ---
 title: 'Skriptaktion: Installieren von Python-Paketen mit Jupyter in Azure HDInsight'
 description: Eine Schritt-für-Schritt-Anleitung zum Verwenden einer Skriptaktion für die Konfiguration von Jupyter Notebooks die mit Spark-Clustern in HDInsight verfügbar sind, sodass sie externe Python-Pakete verwenden.
-services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: hrasheed
-ms.openlocfilehash: 8bc44949d804349de37796a2695edbdc64693edf
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.date: 04/22/2019
+ms.openlocfilehash: ce5dc7e17020e1e4564ebe1f531645f7329718dc
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518676"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900685"
 ---
-# <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Installieren externer Python-Pakete für Jupyter Notebooks in Apache Spark-Clustern unter HDInsight mithilfe von Skriptaktionen
+# <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>Skriptaktion zum Installieren externer Python-Pakete für Jupyter Notebooks in Apache Spark unter HDInsight
+
 > [!div class="op_single_selector"]
 > * [Verwenden von Cell Magic](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Verwenden von Skriptaktionen](apache-spark-python-package-installation.md)
@@ -76,10 +75,10 @@ Es gibt zwei Arten von Open-Source-Komponenten, die im HDInsight-Dienst verfügb
 
     ```bash
     #!/usr/bin/env bash
-    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
+    /usr/bin/anaconda/bin/conda install --yes tensorflow
     ```
 
-5. Klicken Sie auf **Erstellen**.  Informationen zum Verwenden benutzerdefinierter Skriptaktionen finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+5. Klicken Sie auf **Erstellen**.  Informationen zum Verwenden benutzerdefinierter Skriptaktionen finden Sie in der [Dokumentation](../hdinsight-hadoop-customize-cluster-linux.md).
 
 6. Warten Sie, bis das Skript abgeschlossen ist.  Im Bereich **Skriptaktionen** wird **Neue Skriptaktionen können übermittelt werden, nachdem der aktuelle Clustervorgang abgeschlossen wurde** angezeigt, während das Skript ausgeführt wird.  Eine Statusanzeige wird im Ambari UI-Fenster **Hintergrundvorgänge** angezeigt.
 
@@ -98,7 +97,7 @@ Es gibt zwei Arten von Open-Source-Komponenten, die im HDInsight-Dienst verfügb
 
     Das Ergebnis sieht wie folgt aus:
     
-    ![Ausführung des TensorFlow-Codes](./media/apache-spark-python-package-installation/execution.png "Ausführung des TensorFlow-Codes")
+    ![Ausführung des TensorFlow-Codes](./media/apache-spark-python-package-installation/tensorflow-execution.png "Ausführung des TensorFlow-Codes")
 
 > [!NOTE]  
 > Im Cluster gibt es zwei Python-Installationen. Spark verwendet die Anaconda-Python-Installation, die sich bei `/usr/bin/anaconda/bin` befindet, und verwendet standardmäßig die Python 2.7-Umgebung. Um Python 3.x zu verwenden und Pakete im PySpark3-Kernel zu installieren, verwenden Sie den Pfad zur ausführbaren Datei `conda` für diese Umgebung, und verwenden Sie den Parameter `-n` zur Angabe der Umgebung. Der Befehl `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35` installiert z. B. das Paket `ggplot` in der Python 3.5-Umgebung über den Kanal `conda-forge`.

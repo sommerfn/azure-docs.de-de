@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie App-Rollen in einer bei Azure Active Dir
 services: active-directory
 documentationcenter: ''
 author: kkrishna
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -17,12 +17,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427e293c28f634df9f66a7210d79e0df0d4d063c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 24e933399454942f4ee50440cffd791599679074
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164038"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66299146"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Gewusst wie: Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -51,7 +51,9 @@ Diese Anwendungsrollen werden im [Azure-Portal](https://portal.azure.com) im Reg
 1. Bearbeiten Sie das Manifest, indem Sie die `appRoles`-Einstellung suchen und alle Anwendungsrollen hinzufügen.
 
      > [!NOTE]
-     > Für jede Rollendefinition in diesem Manifest muss eine andere gültige **GUID** für die Eigenschaft „Id“ angegeben sein. Die `"value"`-Eigenschaft der einzelnen Rollen muss exakt mit den Zeichenfolgen übereinstimmen, die im Code in der Anwendung verwendet werden.
+     > Für jede Anwendungsrollendefinition in diesem Manifest muss eine andere gültige GUID für die `id`-Eigenschaft angegeben sein. 
+     > 
+     > Die `value`-Eigenschaft der einzelnen Anwendungsrollendefinition muss exakt mit den Zeichenfolgen übereinstimmen, die im Code in der Anwendung verwendet werden. Die `value`-Eigenschaft darf keine Leerzeichen enthalten. Ist dies der Fall, erhalten Sie einen Fehler, wenn Sie das Manifest speichern.
      
 1. Speichern Sie das Manifest.
 
@@ -60,7 +62,7 @@ Diese Anwendungsrollen werden im [Azure-Portal](https://portal.azure.com) im Reg
 Das folgende Beispiel zeigt den `appRoles`-Wert, den Sie `users` zuweisen können.
 
 > [!NOTE]
->  `id` muss eine eindeutige GUID sein.
+>`id` muss eine eindeutige GUID sein.
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -79,6 +81,9 @@ Das folgende Beispiel zeigt den `appRoles`-Wert, den Sie `users` zuweisen könne
 "availableToOtherTenants": false,
 ```
 
+> [!NOTE]
+>`displayName` darf keine Leerzeichen enthalten.
+
 Sie können App-Rollen mit Ausrichtung auf `users`, `applications` oder auf beides festlegen. Wenn App-Rollen für `applications` verfügbar sind, werden sie auf dem Blatt **Erforderliche Berechtigungen** als Anwendungsberechtigungen angezeigt. Das folgende Beispiel zeigt eine App-Rolle für `Application`.
 
 ```Json
@@ -88,7 +93,7 @@ Sie können App-Rollen mit Ausrichtung auf `users`, `applications` oder auf beid
       "allowedMemberTypes": [
         "Application"
       ],
-      "displayName": "Consumer Apps",
+      "displayName": "ConsumerApps",
       "id": "47fbb575-859a-4941-89c9-0f7a6c30beac",
       "isEnabled": true,
       "description": "Consumer apps have access to the consumer data.",
@@ -97,6 +102,8 @@ Sie können App-Rollen mit Ausrichtung auf `users`, `applications` oder auf beid
   ],
 "availableToOtherTenants": false,
 ```
+
+Die Anzahl der definierten Rollen wirkt sich auf die Grenzwerte des Anwendungsmanifests aus. Diese wurden ausführlich auf der Seite [Grenzwerte für das Manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) erläutert.
 
 ### <a name="assign-users-and-groups-to-roles"></a>Zuweisen von Benutzern und Gruppen zu Rollen
 

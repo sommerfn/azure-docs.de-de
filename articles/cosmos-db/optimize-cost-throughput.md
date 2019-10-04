@@ -4,14 +4,14 @@ description: In diesem Artikel wird erläutert, wie Sie für die in Azure Cosmos
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 08/26/2019
 ms.author: rimman
-ms.openlocfilehash: 280d389875d5ac951e0a846f3331ea727176b5e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d874f1ba8823ceddbef378decde127cef4ff8885
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009766"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020110"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Sie können Durchsatz für Datenbanken oder Container bereitstellen, und jede St
 
 Die folgenden Richtlinien können bei der Entscheidung für eine Durchsatzbereitstellungsstrategie hilfreich sein:
 
-**Die Bereitstellung von Durchsatz für eine Azure Cosmos DB-Datenbank (mit einer Gruppe von Containern) empfiehlt sich unter folgenden Voraussetzungen**:
+**Die Bereitstellung von Durchsatz für eine Azure Cosmos-Datenbank (mit einer Gruppe von Containern) empfiehlt sich unter folgenden Voraussetzungen**:
 
 1. Sie haben ein paar Dutzend Azure Cosmos-Container und möchten den Durchsatz für alle oder einige freigeben. 
 
@@ -56,7 +56,7 @@ Wie aus der folgenden Tabelle hervorgeht, können Sie je nach API-Auswahl Durchs
 |API|Konfigurieren Sie für **gemeinsam genutzten**  Durchsatz |Konfigurieren Sie für **dedizierten** Durchsatz |
 |----|----|----|
 |SQL-API|Datenbank|Container|
-|Azure Cosmos DB-API für MongoDB|Datenbank|Sammlung|
+|Azure Cosmos DB-API für MongoDB|Datenbank|Collection|
 |Cassandra-API|Keyspace|Table|
 |Gremlin-API|Datenbankkonto|Graph|
 |Tabelle-API|Datenbankkonto|Table|
@@ -65,7 +65,7 @@ Durch Bereitstellen des Durchsatzes auf verschiedenen Ebenen können Sie Ihre Ko
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>Optimieren durch Ratenbegrenzung für Ihre Anforderungen
 
-Bei latenzunempfindlichen Workloads können Sie weniger Durchsatz bereitstellen und die Ratenbegrenzung der Anwendung überlassen, wenn der tatsächliche Durchsatz den bereitgestellten Durchsatz übersteigt. Der Server beendet die Anforderung präemptiv mit „RequestRateTooLarge“ (HTTP-Statuscode 429) und gibt den Header `x-ms-retry-after-ms` zurück. Darin ist die Zeitspanne (in Millisekunden) angegeben, die der Benutzer warten muss, bis die Anforderung wiederholt werden kann. 
+Bei latenzunempfindlichen Workloads können Sie weniger Durchsatz bereitstellen und die Ratenbegrenzung der Anwendung überlassen, wenn der tatsächliche Durchsatz den bereitgestellten Durchsatz übersteigt. Der Server beendet die Anforderung präemptiv mit `RequestRateTooLarge` (HTTP-Statuscode 429) und gibt den Header `x-ms-retry-after-ms` zurück. Darin ist die Zeitspanne (in Millisekunden) angegeben, die der Benutzer warten muss, bis die Anforderung wiederholt werden kann. 
 
 ```html
 HTTP Status 429, 
@@ -77,15 +77,13 @@ HTTP Status 429,
 
 Die nativen SDKs (.NET/.NET Core, Java, Node.js und Python) fangen diese Antwort implizit ab, berücksichtigen den vom Server angegebenen Header vom Typ „retry-after“ und wiederholen die Anforderung. Sofern nicht mehrere Clients gleichzeitig auf Ihr Konto zugreifen, wird die nächste Wiederholung erfolgreich ausgeführt.
 
-Wenn Sie insgesamt mehr als einen Client haben, der beständig die Anforderungsrate überschreitet, reicht die standardmäßige Wiederholungsanzahl (derzeit auf 9 festgelegt) möglicherweise nicht aus. In diesem Fall löst der Client die Ausnahme `DocumentClientException` mit dem Statuscode 429 für die Anwendung aus. Die standardmäßige Wiederholungsanzahl kann durch Festlegen der Wiederholungsoptionen (`RetryOptions`) für die ConnectionPolicy-Instanz geändert werden. Die DocumentClientException mit dem Statuscode 429 wird standardmäßig nach einer kumulierten Wartezeit von 30 Sekunden zurückgegeben, wenn die Anforderung weiterhin die Anforderungsrate übersteigt. Dies gilt auch, wenn die aktuelle Wiederholungsanzahl unter der maximalen Wiederholungsanzahl liegt – ganz gleich, ob es sich dabei um den Standardwert (9) oder um einen benutzerdefinierten Wert handelt. 
+Wenn Sie insgesamt mehr als einen Client haben, der beständig die Anforderungsrate überschreitet, reicht die standardmäßige Wiederholungsanzahl (derzeit auf 9 festgelegt) möglicherweise nicht aus. In diesem Fall löst der Client die Ausnahme `DocumentClientException` mit dem Statuscode 429 für die Anwendung aus. Die standardmäßige Wiederholungsanzahl kann durch Festlegen der Wiederholungsoptionen (`RetryOptions`) für die ConnectionPolicy-Instanz geändert werden. `DocumentClientException` mit dem Statuscode 429 wird standardmäßig nach einer kumulierten Wartezeit von 30 Sekunden zurückgegeben, wenn die Anforderung weiterhin die Anforderungsrate übersteigt. Dies gilt auch, wenn die aktuelle Wiederholungsanzahl unter der maximalen Wiederholungsanzahl liegt – ganz gleich, ob es sich dabei um den Standardwert (9) oder um einen benutzerdefinierten Wert handelt. 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet)  ist auf 3 festgelegt. Daher wird hier, wenn ein Anforderungsvorgang durch Überschreiten des reservierten Durchsatzes für die Sammlung ratenbegrenzt wird, der Anforderungsversuch dreimal wiederholt, bevor die Ausnahme für die Anwendung ausgelöst wird.  [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds)  ist auf 60 festgelegt ist. Daher wird hier die Ausnahme ausgelöst, wenn die kumulative Wiederholungswartezeit (in Sekunden) seit der ersten Anforderung 60 Sekunden übersteigt.
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) ist auf 3 festgelegt. Daher wird hier, wenn für einen Anforderungsvorgang aufgrund der Überschreitung des reservierten Durchsatzes für den Container ein Ratenlimit gilt, der Anforderungsvorgang dreimal wiederholt, bevor die Ausnahme für die Anwendung ausgelöst wird. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) ist auf 60 festgelegt. In diesem Fall wird die Ausnahme ausgelöst, wenn die kumulative Wiederholungswartezeit (in Sekunden) seit der ersten Anforderung 60 Sekunden übersteigt.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
-
 connectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 3; 
-
 connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 ```
 

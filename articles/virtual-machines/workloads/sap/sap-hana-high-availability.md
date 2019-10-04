@@ -4,21 +4,20 @@ description: Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Ente
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 2121cd661f5f1c2c14dc32eb2a4cbf717c966c67
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 7b9d3791d44e9541df7fc95c34b5e8c83a4295b3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668956"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078387"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -26,17 +25,17 @@ ms.locfileid: "58668956"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2205917]:https://launchpad.support.sap.com/#/notes/2205917
-[1944799]:https://launchpad.support.sap.com/#/notes/1944799
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
-[1984787]:https://launchpad.support.sap.com/#/notes/1984787
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2205917]: https://launchpad.support.sap.com/#/notes/2205917
+[1944799]: https://launchpad.support.sap.com/#/notes/1944799
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1984787]: https://launchpad.support.sap.com/#/notes/1984787
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [2388694]:https://launchpad.support.sap.com/#/notes/2388694
-[401162]:https://launchpad.support.sap.com/#/notes/401162
+[401162]: https://launchpad.support.sap.com/#/notes/401162
 
 [hana-ha-guide-replication]:sap-hana-high-availability.md#14c19f65-b5aa-4856-9594-b81c7e4df73d
 [hana-ha-guide-shared-storage]:sap-hana-high-availability.md#498de331-fa04-490b-997c-b078de457c9d
@@ -71,10 +70,10 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 * SAP-Hinweis [401162] enthält Informationen zum Vermeiden der Meldung „Adresse bereits verwendet“ beim Einrichten der HANA-Systemreplikation.
 * Das [WIKI der SAP-Community](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) enthält alle erforderlichen SAP-Hinweise für Linux.
 * [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
-* [SAP NetWeaver auf virtuellen Azure-Computern unter Linux – Planungs- und Implementierungshandbuch][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP unter Linux][deployment-guide] (dieser Artikel)
-* [SAP NetWeaver auf virtuellen Azure-Computern unter Linux – DBMS-Bereitstellungshandbuch][dbms-guide]
-* [SUSE Linux Enterprise Server für SAP-Anwendungen 12 SP3 – Best Practices][sles-for-sap-bp]
+* Leitfaden [Azure Virtual Machines – Planung und Implementierung für SAP unter Linux][planning-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP unter Linux][deployment-guide] (dieser Artikel)
+* Leitfaden [Azure Virtual Machines – DBMS-Bereitstellung für SAP unter Linux][dbms-guide]
+* [Leitfäden für bewährte Methoden zu SUSE Linux Enterprise Server für SAP-Anwendungen 12 SP3][sles-for-sap-bp]
   * Einrichten einer leistungsoptimierten Infrastruktur für die SAP HANA-Systemreplikation (SLES for SAP Applications 12 SP1). Das Handbuch enthält alle erforderlichen Informationen zum Einrichten der SAP HANA-Systemreplikation für die lokale Entwicklung. Verwenden Sie dieses Handbuch als Grundlage.
   * Einrichten einer kostenoptimierten Infrastruktur für die SAP HANA-Systemreplikation (SLES for SAP Applications 12 SP1)
 
@@ -102,7 +101,7 @@ Sie können eine der Schnellstartvorlagen auf GitHub verwenden, um alle erforder
 Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 
 1. Öffnen Sie die [Datenbankvorlage][template-multisid-db] oder die [konvergierte Vorlage][template-converged] im Azure-Portal. 
-    Die Datenbankvorlage erstellt nur die Lastenausgleichsregeln für eine Datenbank. Die konvergierte Vorlage erstellt auch die Lastenausgleichsregeln für eine ASCS/SCS- und ERS-Instanz (nur Linux). Wenn Sie ein SAP NetWeaver-basiertes System installieren und die ASCS/SCS-Instanz auf dem gleichen Computer installieren möchten, verwenden Sie die [konvergierte Vorlage][template-converged].
+    Die Datenbankvorlage erstellt nur die Lastenausgleichsregeln für eine Datenbank. Die konvergierte Vorlage erstellt auch die Lastenausgleichsregeln für eine ASCS/SCS- und ERS-Instanz (nur Linux). Wenn Sie ein SAP NetWeaver-basiertes System installieren und die ASCS/SCS-Instanz auf denselben Computern installieren möchten, verwenden Sie die [konvergierte Vorlage][template-converged].
 
 1. Legen Sie die folgenden Parameter fest:
     - **SAP-System-ID**: Geben Sie die SAP-System-ID des SAP-Systems ein, das Sie installieren möchten. Die ID wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
@@ -113,7 +112,7 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
     - **Systemverfügbarkeit**: Wählen Sie **HA** (Hohe Verfügbarkeit).
     - **Administratorbenutzername und Administratorkennwort:** Ein neuer Benutzer wird erstellt, der für die Anmeldung beim Computer verwendet werden kann.
     - **Neues oder vorhandenes Subnetz:** Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt oder ein bestehendes Subnetz verwendet werden soll. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
-    - **Subnetz-ID**: Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: **/subscriptions/\<Abonnement-ID>/resourceGroups/\<Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/\<Name des virtuellen Netzwerks>/subnets/\<Name des Subnetzes>**.
+    - **Subnetz-ID**: Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: **/subscriptions/\<Abonnement-ID>/resourceGroups/\<Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/\<Name des virtuellen Netzwerks>/subnets/\<Name des Subnetzes>** .
 
 ### <a name="manual-deployment"></a>Manuelle Bereitstellung
 
@@ -194,7 +193,7 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 Weitere Informationen zu den erforderlichen Ports für SAP HANA finden Sie im Kapitel zu [Verbindungen mit Mandantendatenbanken](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) im Handbuch zu [SAP HANA-Mandantendatenbanken](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) oder im [SAP-Hinweis 2388694][2388694].
 
 > [!IMPORTANT]
-> Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
+> Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 > Siehe auch SAP-Hinweis [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="create-a-pacemaker-cluster"></a>Erstellen eines Pacemaker-Clusters
@@ -204,9 +203,9 @@ Führen Sie die Schritte in [Einrichten von Pacemaker auf SUSE Linux Enterprise 
 ## <a name="install-sap-hana"></a>Installieren von SAP HANA
 
 Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
-- **[A]**: Der Schritt gilt für alle Knoten.
-- **[1]**: Der Schritt gilt nur für den Knoten 1.
-- **[2]**: Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
+- **[A]** : Der Schritt gilt für alle Knoten.
+- **[1]** : Der Schritt gilt nur für den Knoten 1.
+- **[2]** : Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
 
 1. **[A]** Richten Sie das Datenträgerlayout **Logical Volume Management (LVM)** (Logische Volumeverwaltung) ein.
 
@@ -347,7 +346,7 @@ Installieren Sie die SAP HANA-Systemreplikation gemäß Kapitel 4 des [SAP HANA 
 
 1. **[A]** Führen Sie ein Upgrade für den SAP-Host-Agent durch.
 
-   Laden Sie das aktuelle SAP-Host-Agent-Archiv vom [SAP Software Center][sap-swcenter] herunter, und führen Sie den folgenden Befehl zum Aktualisieren des Agent aus. Ersetzen Sie den Pfad zum Archiv, um auf die Datei zu verweisen, die Sie heruntergeladen haben:
+   Laden Sie das aktuelle SAP-Host-Agent-Archiv vom [SAP Software Center][sap-swcenter] herunter, und führen Sie den folgenden Befehl zum Aktualisieren des Agents aus. Ersetzen Sie den Pfad zum Archiv, um auf die Datei zu verweisen, die Sie heruntergeladen haben:
 
    <pre><code>sudo /usr/sap/hostctrl/exe/saphostexec -upgrade -archive &lt;path to SAP Host Agent SAR&gt;
    </code></pre>
@@ -356,9 +355,9 @@ Installieren Sie die SAP HANA-Systemreplikation gemäß Kapitel 4 des [SAP HANA 
 
 Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
-* **[A]**: Der Schritt gilt für alle Knoten.
-* **[1]**: Der Schritt gilt nur für den Knoten 1.
-* **[2]**: Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
+* **[A]** : Der Schritt gilt für alle Knoten.
+* **[1]** : Der Schritt gilt nur für den Knoten 1.
+* **[2]** : Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
 
 1. **[1]** Erstellen Sie die Mandantendatenbank.
 
@@ -401,9 +400,9 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
 Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
-* **[A]**: Der Schritt gilt für alle Knoten.
-* **[1]**: Der Schritt gilt nur für den Knoten 1.
-* **[2]**: Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
+* **[A]** : Der Schritt gilt für alle Knoten.
+* **[1]** : Der Schritt gilt nur für den Knoten 1.
+* **[2]** : Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
 
 1. **[1]** Erstellen Sie die erforderlichen Benutzer.
 
@@ -1084,7 +1083,7 @@ HINWEIS:  Die folgenden Tests sind darauf ausgelegt, nacheinander ausgeführt zu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
-* [Bereitstellung von Azure Virtual Machines für SAP][deployment-guide]
-* [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
+* [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
+* [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
+* [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).

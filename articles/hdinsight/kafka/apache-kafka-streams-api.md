@@ -1,31 +1,29 @@
 ---
 title: 'Tutorial: Verwenden der Apache Kafka Streams-API – Azure HDInsight '
-description: Erfahren Sie, wie Sie die Apache Kafka Streams-API mit Kafka in HDInsight verwenden. Mit dieser API können Sie eine Streamverarbeitung zwischen Themen in Kafka ausführen.
-services: hdinsight
+description: 'Tutorial: Erfahren Sie, wie Sie die Apache Kafka Streams-API mit Kafka in HDInsight verwenden. Mit dieser API können Sie eine Streamverarbeitung zwischen Themen in Kafka ausführen.'
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 04/02/2019
-ms.openlocfilehash: 1e02eaeae4757a9a41ec59be81c3d9510d035232
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/25/2019
+ms.openlocfilehash: 0639ecaa0e4ae0581a6c88e1ea9a47de870a8355
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273820"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446391"
 ---
-# <a name="tutorial-apache-kafka-streams-api"></a>Tutorial: Apache Kafka Streams-API
+# <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Tutorial: Verwenden der Apache Kafka Streams-API in Azure HDInsight
 
-Hier erfahren Sie, wie Sie eine Anwendung erstellen, die die Apache Kafka Streams-API verwendet, und diese mit Kafka in HDInsight ausführen. 
+Hier erfahren Sie, wie Sie eine Anwendung erstellen, die die Apache Kafka Streams-API verwendet, und diese mit Kafka in HDInsight ausführen.
 
 Die in diesem Tutorial verwendete Anwendung ist eine Streamingwörterzählung. Sie liest Textdaten aus einem Kafka-Thema, extrahiert einzelne Wörter, und speichert dann Word und Anzahl in einem anderen Kafka-Thema.
 
-> [!NOTE]  
-> Die Kafka-Streamverarbeitung erfolgt häufig über Apache Spark oder Apache Storm. In der Kafka-Version 1.1.0 (HDInsight 3.5 und 3.6) wurde die Kafka Streams-API eingeführt. Mit dieser API können Sie Datenstreams zwischen Eingabe- und Ausgabethemen transformieren. In einigen Fällen kann dies eine Alternative zum Erstellen einer Spark- oder Storm-Streaminglösung sein. 
->
-> Weitere Informationen zu Kafka Streams finden Sie in der Dokumentation [Intro to Streams](https://kafka.apache.org/10/documentation/streams/) (Einführung in Streams) auf Apache.org.
+Die Kafka-Streamverarbeitung erfolgt häufig über Apache Spark oder Apache Storm. In der Kafka-Version 1.1.0 (HDInsight 3.5 und 3.6) wurde die Kafka Streams-API eingeführt. Mit dieser API können Sie Datenstreams zwischen Eingabe- und Ausgabethemen transformieren. In einigen Fällen kann dies eine Alternative zum Erstellen einer Spark- oder Storm-Streaminglösung sein.
+
+Weitere Informationen zu Kafka Streams finden Sie in der Dokumentation [Intro to Streams](https://kafka.apache.org/10/documentation/streams/) (Einführung in Streams) auf Apache.org.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -49,7 +47,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="understand-the-code"></a>Grundlegendes zum Code
 
-Die exemplarische Anwendung befindet sich unter [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) im `Streaming`-Unterverzeichnis. Die Anwendung besteht aus zwei Dateien:
+Die exemplarische Anwendung befindet sich unter [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) im `Streaming` -Unterverzeichnis. Die Anwendung besteht aus zwei Dateien:
 
 * `pom.xml`: Diese Datei definiert die Projektabhängigkeiten, Java-Version und Verpackungsmethoden.
 * `Stream.java`: Diese Datei implementiert die Streaminglogik.
@@ -69,8 +67,7 @@ Wichtige Informationen zur `pom.xml`-Datei:
     </dependency>
     ```
 
-    > [!NOTE]  
-    > Der `${kafka.version}`-Eintrag wird im `<properties>..</properties>`-Abschnitt von `pom.xml` deklariert und ist für die Kafka-Version des HDInsight-Clusters konfiguriert.
+    Der `${kafka.version}`-Eintrag wird im `<properties>..</properties>`-Abschnitt von `pom.xml` deklariert und ist für die Kafka-Version des HDInsight-Clusters konfiguriert.
 
 * Plug-Ins: Maven-Plug-Ins bieten verschiedene Funktionen. In diesem Projekt werden die folgenden Plug-Ins verwendet:
 
@@ -207,8 +204,7 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
    * `RekeyedIntermediateTopic`: Mit diesem Thema werden Daten neu partitioniert, wenn die Anzahl vom `countByKey`-Operator aktualisiert wird.
    * `wordcount-example-Counts-changelog`: Dieses Thema ist ein Zustandsspeicher, den der `countByKey`-Vorgang verwendet.
 
-     > [!IMPORTANT]  
-     > Kafka in HDInsight kann auch für das automatische Erstellen von Themen konfiguriert werden. Weitere Informationen finden Sie im Dokument [Konfigurieren von Apache Kafka in HDInsight zum automatischen Erstellen von Themen](apache-kafka-auto-create-topics.md).
+    Kafka in HDInsight kann auch für das automatische Erstellen von Themen konfiguriert werden. Weitere Informationen finden Sie im Dokument [Konfigurieren von Apache Kafka in HDInsight zum automatischen Erstellen von Themen](apache-kafka-auto-create-topics.md).
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
@@ -218,8 +214,7 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
     java -jar kafka-streaming.jar $KAFKABROKERS $KAFKAZKHOSTS &
     ```
 
-    > [!NOTE]  
-    > Möglicherweise erhalten Sie eine Warnung über Apache log4j. Sie können dies ignorieren.
+    Möglicherweise erhalten Sie eine Warnung über Apache log4j. Sie können dies ignorieren.
 
 2. Um Datensätze an das `test`-Thema zu senden, starten Sie die Producer-Anwendung mit folgendem Befehl:
 
@@ -233,8 +228,7 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic wordcounts --formatter kafka.tools.DefaultMessageFormatter --property print.key=true --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer --from-beginning
     ```
 
-    > [!NOTE]  
-    > Die `--property`-Parameter teilen dem Konsolenconsumer mit, dass der Schlüssel (Wort) zusammen mit der Anzahl (Wert) ausgegeben werden soll. Diese Parameter konfigurieren auch das Deserialisierungsprogramm, das beim Lesen dieser Werte aus Kafka verwendet werden soll.
+    Die `--property`-Parameter teilen dem Konsolenconsumer mit, dass der Schlüssel (Wort) zusammen mit der Anzahl (Wert) ausgegeben werden soll. Diese Parameter konfigurieren auch das Deserialisierungsprogramm, das beim Lesen dieser Werte aus Kafka verwendet werden soll.
 
     Die Ausgabe sieht in etwa wie folgender Text aus:
    
@@ -251,8 +245,7 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
         jumped  13640
         jumped  13641
    
-    > [!NOTE]  
-    > Der Parameter `--from-beginning` konfiguriert den Consumer so, dass er am Anfang der im Thema gespeicherten Datensätze beginnt. Die Anzahl erhöht sich jedes Mal, wenn ein Wort angetroffen wird, sodass das Thema mehrere Einträge für jedes Wort enthält – mit zunehmender Anzahl.
+    Der Parameter `--from-beginning` konfiguriert den Consumer so, dass er am Anfang der im Thema gespeicherten Datensätze beginnt. Die Anzahl erhöht sich jedes Mal, wenn ein Wort angetroffen wird, sodass das Thema mehrere Einträge für jedes Wort enthält – mit zunehmender Anzahl.
 
 4. Drücken Sie __STRG+C__, um den Producer zu beenden. Drücken Sie __STRG+C__ erneut, um die Anwendung und den Consumer zu beenden.
 
@@ -265,9 +258,19 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic wordcount-example-Counts-changelog --zookeeper $KAFKAZKHOSTS
     ```
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Zum Bereinigen der im Rahmen dieses Tutorials erstellten Ressourcen können Sie die Ressourcengruppe löschen. Dadurch werden auch der zugeordnete HDInsight-Cluster sowie alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
+
+So entfernen Sie die Ressourcengruppe über das Azure-Portal:
+
+1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf __Ressourcengruppen__, um die Liste mit Ihren Ressourcengruppen anzuzeigen.
+2. Suchen Sie die zu löschende Ressourcengruppe, und klicken Sie mit der rechten Maustaste rechts neben dem Eintrag auf die Schaltfläche __Mehr__ (...).
+3. Klicken Sie auf __Ressourcengruppe löschen__, und bestätigen Sie den Vorgang.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Dokument haben Sie erfahren, wie Sie die Apache Kafka Streams-API mit Kafka in HDInsight verwenden. Verwenden Sie Folgendes, um weitere Informationen zur Verwendung von Kafka zu erhalten:
+In diesem Dokument haben Sie erfahren, wie Sie die Apache Kafka Streams-API mit Kafka in HDInsight verwenden. Verwenden Sie Folgendes, um weitere Informationen zur Verwendung von Kafka zu erhalten.
 
-* [Analysieren von Apache Kafka-Protokollen](apache-kafka-log-analytics-operations-management.md)
-* [Replizieren von Daten zwischen Apache Kafka-Clustern](apache-kafka-mirroring.md)
+> [!div class="nextstepaction"]
+> [Analysieren von Apache Kafka-Protokollen](apache-kafka-log-analytics-operations-management.md)

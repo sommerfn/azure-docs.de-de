@@ -3,16 +3,17 @@ title: Azure Container Registry-Authentifizierung mit einer verwalteten Identit�
 description: Ermöglichen Sie Zugriff auf Images in Ihrer privaten Containerregistrierung, indem Sie eine benutzerseitig oder systemseitig zugewiesene verwaltete Azure-Identität verwenden.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: danlep
-ms.openlocfilehash: 728a2f8cf61bbe0691350b9de45a5fab6b90cadb
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 0672fb71ba4f56d0faf332df029100cb48741c8b
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526621"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68309886"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Verwenden einer verwalteten Azure-Identität für die Azure Container Registry-Authentifizierung 
 
@@ -25,9 +26,9 @@ In diesem Artikel erfahren Sie mehr über verwaltete Identitäten und lernen Fol
 > * Gewähren des Zugriffs auf eine Azure Container Registry-Instanz für die Identität
 > * Verwenden der verwalteten Identität, um auf die Registrierung zuzugreifen und ein Containerimage abzurufen 
 
-Um die in diesem Artikel verwendeten Azure-Ressourcen zu erstellen, müssen Sie mindestens Version 2.0.55 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli] Informationen dazu.
+Um die in diesem Artikel verwendeten Azure-Ressourcen zu erstellen, müssen Sie mindestens Version 2.0.55 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
-Um eine Containerregistrierung einzurichten und per Push ein Containerimage zu übertragen, muss außerdem Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [macOS-][docker-mac], [Windows-][docker-windows] oder [Linux-][docker-linux]System konfiguriert werden kann.
+Um eine Containerregistrierung einzurichten und per Push ein Containerimage zu übertragen, muss außerdem Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker auf einem [macOS][docker-mac]-, [Windows][docker-windows]- oder [Linux][docker-linux]-System problemlos konfiguriert werden kann.
 
 ## <a name="why-use-a-managed-identity"></a>Gründe für die Verwendung einer verwalteten Identität
 
@@ -148,13 +149,13 @@ az vm identity assign --resource-group myResourceGroup --name myDockerVM --ident
 
 ### <a name="grant-identity-access-to-the-container-registry"></a>Gewähren des Zugriffs auf die Containerregistrierung für die Identität
 
-Jetzt konfigurieren Sie die Identität für den Zugriff auf Ihre Containerregistrierung. Zunächst verwenden Sie den Befehl [az acr show][az-acr-show], um die Ressourcen-ID der Registrierung abzurufen:
+Jetzt konfigurieren Sie die Identität für den Zugriff auf Ihre Containerregistrierung. Verwenden Sie zunächst den Befehl [az acr show][az-acr-show], um die Ressourcen-ID der Registrierung abzurufen:
 
 ```azurecli
 resourceID=$(az acr show --resource-group myResourceGroup --name myContainerRegistry --query id --output tsv)
 ```
 
-Verwenden Sie den Befehl [az role assignment create][az-role-assignment-create], um der Registrierung die AcrPull-Rolle zuzuweisen. Diese Rolle gewährt der Registrierung [Pullberechtigungen](container-registry-roles.md). Um sowohl Pull- als auch Pushberechtigungen zu gewähren, weisen Sie die Rolle „ACRPush“ zu.
+Verwenden Sie den Befehl [az role assignment create][az-role-assignment-create], um der Registrierung die Rolle „AcrPull“ zuzuweisen. Diese Rolle gewährt der Registrierung [Pullberechtigungen](container-registry-roles.md). Um sowohl Pull- als auch Pushberechtigungen zu gewähren, weisen Sie die Rolle „ACRPush“ zu.
 
 ```azurecli
 az role assignment create --assignee $spID --scope $resourceID --role acrpull
@@ -164,7 +165,7 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 Stellen Sie eine SSH-Verbindung mit der Docker-VM her, die mit der Identität konfiguriert ist. Führen Sie über die Azure CLI-Installation auf der VM die folgenden Azure CLI-Befehle aus.
 
-Authentifizieren Sie sich zuerst über [az login][az-login] bei der Azure CLI, und verwenden Sie hierbei die Identität, die Sie für die VM konfiguriert haben. Ersetzen Sie `<userID>` durch die ID der Identität, die Sie in einem der vorherigen Schritte abgerufen haben. 
+Authentifizieren Sie sich zunächst mithilfe von [az login][az-login] bei der Azure-Befehlszeilenschnittstelle, und verwenden Sie hierbei die Identität, die Sie für die VM konfiguriert haben. Ersetzen Sie `<userID>` durch die ID der Identität, die Sie in einem der vorherigen Schritte abgerufen haben. 
 
 ```azurecli
 az login --identity --username <userID>
@@ -176,7 +177,7 @@ Authentifizieren Sie sich anschließend mit dem Befehl [az acr login][az-acr-log
 az acr login --name myContainerRegistry
 ```
 
-Es sollte die Meldung `Login succeeded` angezeigt werden. Anschließend können Sie `docker`-Befehle ohne Angabe von Anmeldeinformationen ausführen. Führen Sie beispielsweise [docker pull][docker-pull] aus, um das `aci-helloworld:v1`-Image mithilfe von Pull zu übertragen, indem Sie den Namen des Anmeldeservers für Ihre Registrierung angeben. Der Name des Anmeldeservers setzt sich aus dem Namen Ihrer Containerregistrierung (nur Kleinbuchstaben) gefolgt von `.azurecr.io` zusammen. Beispiel: `mycontainerregistry.azurecr.io`.
+Es sollte die Meldung `Login succeeded` angezeigt werden. Anschließend können Sie `docker`-Befehle ohne Angabe von Anmeldeinformationen ausführen. Führen Sie beispielsweise [docker pull][docker-pull] aus, um das Image `aci-helloworld:v1` zu pullen, und geben Sie dabei den Namen des Anmeldeservers für Ihre Registrierung an. Der Name des Anmeldeservers setzt sich aus dem Namen Ihrer Containerregistrierung (nur Kleinbuchstaben) gefolgt von `.azurecr.io` zusammen. Beispiel: `mycontainerregistry.azurecr.io`.
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
@@ -186,13 +187,13 @@ docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 
 ### <a name="configure-the-vm-with-a-system-managed-identity"></a>Konfigurieren der VM mit einer systemseitig verwalteten Identität
 
-Über den folgenden Befehl [az vm identity assign][az-vm-identity-assign] wird Ihre Docker-VM mit einer systemseitig zugewiesenen Identität konfiguriert:
+Über den folgenden Befehl vom Typ [az vm identity assign][az-vm-identity-assign] wird Ihre Docker-VM mit einer systemseitig zugewiesenen Identität konfiguriert:
 
 ```azurecli
 az vm identity assign --resource-group myResourceGroup --name myDockerVM 
 ```
 
-Legen Sie über den Befehl [az vm show][az-vm-show] eine Variable auf den Wert `principalId` (die Dienstprinzipal-ID) der VM-Identität fest, um sie diese in späteren Schritten zu verwenden.
+Legen Sie mithilfe des Befehls [az vm show][az-vm-show] eine Variable auf den Wert von `principalId` (die Dienstprinzipal-ID) der VM-Identität fest, um sie in späteren Schritten zu verwenden.
 
 ```azurecli-interactive
 spID=$(az vm show --resource-group myResourceGroup --name myDockerVM --query identity.principalId --out tsv)
@@ -200,13 +201,13 @@ spID=$(az vm show --resource-group myResourceGroup --name myDockerVM --query ide
 
 ### <a name="grant-identity-access-to-the-container-registry"></a>Gewähren des Zugriffs auf die Containerregistrierung für die Identität
 
-Jetzt konfigurieren Sie die Identität für den Zugriff auf Ihre Containerregistrierung. Zunächst verwenden Sie den Befehl [az acr show][az-acr-show], um die Ressourcen-ID der Registrierung abzurufen:
+Jetzt konfigurieren Sie die Identität für den Zugriff auf Ihre Containerregistrierung. Verwenden Sie zunächst den Befehl [az acr show][az-acr-show], um die Ressourcen-ID der Registrierung abzurufen:
 
 ```azurecli
 resourceID=$(az acr show --resource-group myResourceGroup --name myContainerRegistry --query id --output tsv)
 ```
 
-Verwenden Sie den Befehl [az role assignment create][az-role-assignment-create], um der Identität die AcrPull-Rolle zuzuweisen. Diese Rolle gewährt der Registrierung [Pullberechtigungen](container-registry-roles.md). Um sowohl Pull- als auch Pushberechtigungen zu gewähren, weisen Sie die Rolle „ACRPush“ zu.
+Verwenden Sie den Befehl [az role assignment create][az-role-assignment-create], um der Identität die Rolle „AcrPull“ zuzuweisen. Diese Rolle gewährt der Registrierung [Pullberechtigungen](container-registry-roles.md). Um sowohl Pull- als auch Pushberechtigungen zu gewähren, weisen Sie die Rolle „ACRPush“ zu.
 
 ```azurecli
 az role assignment create --assignee $spID --scope $resourceID --role acrpull
@@ -216,7 +217,7 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 Stellen Sie eine SSH-Verbindung mit der Docker-VM her, die mit der Identität konfiguriert ist. Führen Sie über die Azure CLI-Installation auf der VM die folgenden Azure CLI-Befehle aus.
 
-Authentifizieren Sie sich zuerst über [az login][az-login] bei der Azure CLI, und verwenden Sie hierbei die systemseitig zugewiesene Identität für die VM.
+Authentifizieren Sie sich zunächst mithilfe von [az login][az-login] bei der Azure-Befehlszeilenschnittstelle, und verwenden Sie dabei die systemseitig zugewiesene Identität für die VM.
 
 ```azurecli
 az login --identity
@@ -228,7 +229,7 @@ Authentifizieren Sie sich anschließend mit dem Befehl [az acr login][az-acr-log
 az acr login --name myContainerRegistry
 ```
 
-Es sollte die Meldung `Login succeeded` angezeigt werden. Anschließend können Sie `docker`-Befehle ohne Angabe von Anmeldeinformationen ausführen. Führen Sie beispielsweise [docker pull][docker-pull] aus, um das `aci-helloworld:v1`-Image mithilfe von Pull zu übertragen, indem Sie den Namen des Anmeldeservers für Ihre Registrierung angeben. Der Name des Anmeldeservers setzt sich aus dem Namen Ihrer Containerregistrierung (nur Kleinbuchstaben) gefolgt von `.azurecr.io` zusammen. Beispiel: `mycontainerregistry.azurecr.io`.
+Es sollte die Meldung `Login succeeded` angezeigt werden. Anschließend können Sie `docker`-Befehle ohne Angabe von Anmeldeinformationen ausführen. Führen Sie beispielsweise [docker pull][docker-pull] aus, um das Image `aci-helloworld:v1` zu pullen, und geben Sie dabei den Namen des Anmeldeservers für Ihre Registrierung an. Der Name des Anmeldeservers setzt sich aus dem Namen Ihrer Containerregistrierung (nur Kleinbuchstaben) gefolgt von `.azurecr.io` zusammen. Beispiel: `mycontainerregistry.azurecr.io`.
 
 ```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1

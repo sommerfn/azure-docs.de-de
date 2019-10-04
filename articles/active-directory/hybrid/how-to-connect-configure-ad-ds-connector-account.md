@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6510105af8c019b1aca5333f516a10667edaadb5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ff151ff8e14b5cf9602d4e7e2e9c6cb2118a8a65
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000867"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64918492"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren der Azure AD-Connector-Kontoberechtigungen 
 
@@ -25,7 +25,7 @@ Mit Build 1.1.880.0 (veröffentlicht im August 2018) wurde das PowerShell-Modul 
 ## <a name="overview"></a>Übersicht 
 Die folgenden PowerShell-Cmdlets können verwendet werden, um Active Directory-Berechtigungen des AD DS-Connector-Kontos für jede Funktion einzurichten, die Sie in Azure AD Connect zum Aktivieren auswählen. Um Probleme zu vermeiden, sollten Sie immer dann Active Directory-Berechtigungen im Voraus vorbereiten, wenn Sie Azure AD Connect so installieren möchten, dass es mithilfe eines benutzerdefinierten Domänenkontos eine Verbindung mit Ihrer Gesamtstruktur herstellt. Dieses ADSyncConfig-Modul kann auch verwendet werden, um Berechtigungen zu konfigurieren, nachdem Azure AD Connect bereitgestellt wurde.
 
-![](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
+![Übersicht über AD DS-Konten](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 
 Für eine Azure AD Connect-Expressinstallation wird ein automatisch generiertes Konto (MSOL_nnnnnnnnnn) in Active Directory mit allen notwendigen Berechtigungen erstellt, weshalb Sie dieses ADSyncConfig-Modul nur verwenden müssen, wenn Sie die Vererbung von Berechtigungen für Organisationseinheiten oder für bestimmte Active Directory-Objekte gesperrt haben, die Sie mit Azure AD synchronisieren möchten. 
  
@@ -69,13 +69,19 @@ Get-Command -Module AdSyncConfig
 
 Jedes Cmdlet hat dieselben Eingabeparameter, das AD DS-Connector-Konto und einen AdminSDHolder-Parameter. Um Ihre AD DS-Connector-Konto anzugeben, können Sie den Kontonamen und die Domäne angeben oder nur den DN des Kontos (Distinguished Name),
 
-z. B.: 
+z. B.:
 
-`Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName ADaccount -ADConnectorAccountDomain Contoso`
+```powershell
+Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <ADAccountName> -ADConnectorAccountDomain <ADDomainName>
+```
 
-Oder 
+Oder
 
-`Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADaccount,OU=AADconnect,DC=Contoso,DC=com'`
+```powershell
+Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
+```
+
+Stellen Sie sicher, dass Sie `<ADAccountName>`, `<ADDomainName>` und `<ADAccountDN>` durch die entsprechenden Werte für Ihre Umgebung ersetzen.
 
 Für den Fall, dass Sie keine Berechtigungen des AdminSDHolder-Containers ändern möchten, verwenden Sie den Parameter `-SkipAdminSdHolders`. 
 

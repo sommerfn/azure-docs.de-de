@@ -3,7 +3,7 @@ title: Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Dire
 description: Enthält eine Referenz zu den Fehlercodes des Berichts mit den Anmeldeaktivitäten.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: markvi
+ms.date: 08/08/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bf777917bc2e09f08cbfaac6334bf9bda198f01
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439385"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383172"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten 
 
@@ -30,7 +30,7 @@ Mit den Informationen, die vom [Bericht zu Benutzeranmeldungen](concept-sign-ins
 
 - Wer hat sich bei meiner Anwendung angemeldet?
 - Bei welchen Anwendungen haben sich Benutzer angemeldet?
-- Welche Anmeldeversuche sind warum fehlgeschlagen?
+- Welche Anmeldeversuche waren nicht erfolgreich, und warum?
 
 Wenn eine Anmeldung fehlschlägt, sehen Sie einen Fehlercode, der dem Fehler entspricht. In diesem Artikel werden die Fehlercodes und deren Beschreibungen ggf. zusammen mit einer empfohlenen Vorgehensweise aufgeführt. 
 
@@ -127,6 +127,7 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |50177|Die externe Überprüfung wird für Passthroughbenutzer nicht unterstützt.|
 |50178|Die Sitzungssteuerung wird für Passthroughbenutzer nicht unterstützt.|
 |50180|Integrierte Windows-Authentifizierung ist erforderlich. Aktivieren Sie den Mandanten für das nahtlose einmalige Anmelden.|
+|50201|Diese Meldung wird dem Benutzer während der Anmeldung angezeigt, wenn dem Benutzer zusätzliche Informationen bereitgestellt werden müssen.|
 |51001|Domänenhinweis ist für lokale Sicherheits-ID nicht vorhanden – Lokaler UPN.|
 |51004|Benutzerkonto ist nicht im Verzeichnis vorhanden.|
 |51006|Integrierte Windows-Authentifizierung ist erforderlich. Angemeldeter Benutzer nutzt ein Sitzungstoken, dem der Anspruch der integrierten Windows-Authentifizierung fehlt. Bitten Sie den Benutzer, die Anmeldung erneut durchzuführen.|
@@ -152,6 +153,8 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |70018|Ungültiger Überprüfungscode, weil der Benutzer den falschen Benutzercode für den Gerätecode-Datenfluss eingegeben hat. Die Autorisierung wird nicht genehmigt.|
 |70019|Der Überprüfungscode ist abgelaufen. Bitten Sie den Benutzer, die Anmeldung erneut durchzuführen.|
 |70037|Falsche Überprüfungsantwort angegeben. Die Remote-Authentifizierungssitzung wurde verweigert.|
+|70043|Die Sitzungsverwaltung für bedingten Zugriff in Azure erzwingt das Ablaufen der Sitzung.|
+|70044|Die Sitzungsverwaltung für bedingten Zugriff in Azure erzwingt das Ablaufen der Sitzung.|
 |75001|Während der SAML-Nachrichtenbindung ist ein Fehler aufgetreten.|
 |75003|Die Anwendung hat einen Fehler zu einer nicht unterstützten Bindung zurückgegeben (SAML-Protokollantwort kann nicht über andere Bindungen als HTTP POST gesendet werden). Wenden Sie sich an den Besitzer der Anwendung.|
 |75005|Azure AD unterstützt die von der Anwendung für einmaliges Anmelden gesendete SAML-Anforderung nicht. Wenden Sie sich an den Besitzer der Anwendung.|
@@ -174,9 +177,18 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |81012|Dies ist keine Fehlerbedingung. Es wird darauf hingewiesen, dass der Benutzer, der versucht, sich an Azure AD anzumelden, sich von dem Benutzer, der am Gerät angemeldet ist, unterscheidet. Sie können diesen Code in den Protokollen ignorieren.|
 |90010|Die Anforderung wird aus verschiedenen Gründen nicht unterstützt. Die Anforderung wird z.B. mit einer nicht unterstützten Anforderungsmethode ausgeführt (nur die POST-Methode wird unterstützt), oder der Tokensignaturalgorithmus, der angefordert wurde, wird nicht unterstützt. Wenden Sie sich an den Anwendungsentwickler.|
 |90014| Ein Pflichtfeld für eine Protokollmeldung fehlt. Wenden Sie sich an den Besitzer der Anwendung. Wenn Sie der Besitzer der Anwendung sind, stellen Sie sicher, dass Sie über alle erforderlichen Parameter für die Anmeldeanforderung verfügen. |
+|90051| Invalid Delegation Token. Invalid national Cloud ID ({cloudId}) is specified. (Das Delegierungstoken ist ungültig. Eine ungültige nationale Cloud-ID ({cloudId}) wurde angegeben.)|
 |90072| Das Konto muss zunächst als externer Benutzer im Mandanten hinzugefügt werden. Melden Sie sich ab, und melden Sie sich mit einem anderen Azure AD-Konto erneut an.|
 |90094| Für die Gewährung sind Administratorberechtigungen erforderlich. Bitten Sie den Mandantenadministrator, Zustimmung für diese Anwendung bereitzustellen.|
+|500021|Mandant wird durch den Unternehmensproxy eingeschränkt. Ressourcenzugriff wird verweigert.|
+|500121| Fehler bei der Authentifizierung während starker Authentifizierungsanforderung.|
 |500133| Die Assertion befindet sich nicht im gültigen Zeitbereich. Überprüfen Sie, ob das Zugriffstoken abgelaufen ist, bevor Sie es für die Benutzerassertion verwenden oder ein neues Token anfordern.|
+|530021|Die Anwendung erfüllt nicht die Anforderungen für den bedingten Zugriff.|
+|530032|Blockiert durch eine Sicherheitsrichtlinie.| 
+|700016|Die Anwendung mit dem Bezeichner „{appIdentifier}“ wurde im Verzeichnis „{tenantName}“ nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie Ihre Authentifizierungsanforderung an den falschen Mandanten gesendet.|
+|900432|Vertrauliche Clients werden in einer cloudübergreifenden Anforderung nicht unterstützt.|
+|7000218|The request body must contain the following parameter: 'client_assertion' or 'client_secret'. (Der Anforderungstext muss den folgenden Parameter enthalten: 'client_assertion' oder 'client_secret'.)|
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

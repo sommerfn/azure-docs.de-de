@@ -3,17 +3,18 @@ title: 'Tutorial: Automatisieren von Buildvorgängen für Containerimages nach d
 description: In diesem Tutorial erfahren Sie, wie Sie eine Azure Container Registry-Aufgabe so konfigurieren, dass automatisch Buildvorgänge für Containerimages in der Cloud ausgelöst werden, wenn ein Basisimage aktualisiert wird.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 08/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a5d89051ef479cf9d87ca8f921e05c6d0be12b8c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6b9a74ee6530d8fc195490b0f1414e6348e855f6
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892176"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743601"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages nach der Aktualisierung eines Basisimages in einer Azure-Containerregistrierung 
 
@@ -30,7 +31,7 @@ Dieser letzte Teil der Tutorialreihe umfasst Folgendes:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Azure CLI lokal verwenden möchten, muss bei Ihnen mindestens die Azure CLI-Version **2.0.46** installiert sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und dem Upgrade der CLI finden Sie bei Bedarf unter [Installieren von Azure CLI][azure-cli].
+Wenn Sie die Azure CLI lokal verwenden möchten, muss bei Ihnen mindestens die Azure CLI-Version **2.0.46** installiert sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Installieren und Aktualisieren der Befehlszeilenschnittstelle finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -69,9 +70,32 @@ Ein Basisimage wird häufig von der für das Image zuständigen Person aktualisi
 
 Wenn ein Basisimage aktualisiert wird, müssen sämtliche darauf basierende Containerimages in Ihrer Registrierung neu erstellt werden, um die neuen Features und Korrekturen zu integrieren. ACR Tasks ermöglicht die automatische Erstellung von Images nach der Aktualisierung eines Containerbasisimages.
 
+### <a name="tasks-triggered-by-a-base-image-update"></a>Aufgaben, die durch eine Aktualisierung des Basisimages ausgelöst werden
+
+* Bei Imagebuilds aus einem Dockerfile erkennt ein ACR-Task Abhängigkeiten von Basisimages an den folgenden Speicherorten:
+
+  * Dieselbe Azure-Containerregistrierung, in der der Task ausgeführt wird
+  * Eine andere Azure-Containerregistrierung in derselben Region 
+  * Ein öffentliches Repository in Docker Hub 
+  * Ein öffentliches Repository in Microsoft Container Registry
+
+   Wenn sich das in der Anweisung `FROM` angegebene Basisimage in einem dieser Speicherorte befindet, fügt die ACR-Aufgabe einen Hook hinzu, um sicherzustellen, dass das Image nach jeder Aktualisierung seiner Basis neu erstellt wird.
+
+* Derzeit verfolgt ein ACR-Task nur Basisimageaktualisierungen für Anwendungsimages (*Runtime*) nach. Basisimageaktualisierungen für Zwischenimages (*Buildzeit*), die in mehrstufigen Dockerfiles verwendet werden, werden nicht nachverfolgt.  
+
+* Wenn Sie eine ACR-Aufgabe mit dem Befehl [az acr task create][az-acr-task-create] erstellen, wird sie standardmäßig für die Auslösung bei einer Aktualisierung des Basisimages *aktiviert*. Das heißt, die `base-image-trigger-enabled`-Eigenschaft wird auf TRUE festgelegt. Wenn Sie dieses Verhalten in einer Aufgabe deaktivieren möchten, ändern Sie den Wert der Eigenschaft in FALSE. Führen Sie beispielsweise den folgenden Befehl [az acr task update][az-acr-task-update] aus:
+
+  ```azurecli
+  az acr task update --myregistry --name mytask --base-image-trigger-enabled False
+  ```
+
+* Damit eine ACR-Aufgabe die Abhängigkeiten eines Containerimages (einschließlich des Basisimages) bestimmen und nachverfolgen kann, müssen Sie zunächst die Aufgabe **mindestens einmal** auslösen. Lösen Sie z. B. die Aufgabe mit dem Befehl [az acr task run][az-acr-task-run] manuell aus.
+
+* Damit eine Aufgabe bei der Aktualisierung des Basisimages ausgelöst wird, muss das Basisimage ein *stabiles* Tag enthalten, z. B. `node:9-alpine`. Dieses Tagging ist typisch für ein Basisimage, das mit Betriebssystem- und Frameworkpatches auf eine aktuelle stabile Version aktualisiert wird. Wenn das Basisimage mit einem neuen Versionstag aktualisiert wird, wird keine Aufgabe ausgelöst. Weitere Informationen zur Imagemarkierung finden Sie in der [Anleitung zu bewährten Methoden](container-registry-image-tag-version.md). 
+
 ### <a name="base-image-update-scenario"></a>Aktualisierungsszenario für das Basisimage
 
-In diesem Tutorial durchlaufen Sie ein Aktualisierungsszenario für ein Basisimage. Das [Codebeispiel][code-sample] enthält zwei Dockerfiles: ein Anwendungsimage und ein als Basis angegebenes Image. In den folgenden Abschnitten erstellen Sie eine ACR-Aufgabe, die automatisch einen Buildvorgang für das Anwendungsimage auslöst, wenn eine neue Version des Basisimages an Ihre Containerregistrierung gepusht wird.
+In diesem Tutorial durchlaufen Sie ein Aktualisierungsszenario für ein Basisimage. Das [Codebeispiel][code-sample] enthält zwei Dockerfiles: ein Anwendungsimage und ein als Basis angegebenes Image. In den folgenden Abschnitten erstellen Sie eine ACR-Aufgabe, die automatisch einen Buildvorgang für das Anwendungsimage auslöst, wenn eine neue Version des Basisimages an die gleiche Containerregistrierung gepusht wird.
 
 [Dockerfile-app:][dockerfile-app] Eine kleine Node.js-Webanwendung, die eine statische Webseite rendert, auf der die zugrunde liegende Node.js-Version angezeigt wird. Die Versionszeichenfolge wird simuliert: Sie zeigt den Inhalt der im Basisimage definierten Umgebungsvariablen `NODE_VERSION` an.
 
@@ -79,7 +103,7 @@ In diesem Tutorial durchlaufen Sie ein Aktualisierungsszenario für ein Basisima
 
 In den folgenden Abschnitten erstellen Sie eine Aufgabe, aktualisieren den Wert `NODE_VERSION` in der Dockerfile des Basisimages und erstellen anschließend das Basisimage mithilfe von ACR Tasks. Wenn die ACR-Aufgabe das neue Basisimage an Ihre Registrierung pusht, wird automatisch ein Buildvorgang für das Anwendungsimage ausgelöst. Außerdem können Sie das Containerimage optional lokal ausführen, um sich die verschiedenen Versionszeichenfolgen in den erstellten Images anzusehen.
 
-In diesem Tutorial erstellt und pusht Ihre ACR-Aufgabe ein einzelnes Containerimage, das in einer Dockerfile-Datei angegeben ist. ACR Tasks kann mithilfe einer YAML-Datei, in der Schritte zum Erstellen, Pushen und optional zum Testen mehrerer Container definiert werden, auch [Aufgaben mit mehreren Schritten](container-registry-tasks-multi-step.md) ausführen.
+In diesem Tutorial erstellt und pusht die ACR-Aufgabe ein Anwendungscontainerimage, das in einem Dockerfile angegeben ist. ACR Tasks kann mithilfe einer YAML-Datei, in der Schritte zum Erstellen, Pushen und optional zum Testen mehrerer Container definiert werden, auch [Aufgaben mit mehreren Schritten](container-registry-tasks-multi-step.md) ausführen.
 
 ## <a name="build-the-base-image"></a>Erstellen des Basisimages
 
@@ -101,28 +125,23 @@ az acr task create \
     --arg REGISTRY_NAME=$ACR_NAME.azurecr.io \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
     --file Dockerfile-app \
-    --branch master \
     --git-access-token $GIT_PAT
 ```
 
 > [!IMPORTANT]
-> Wenn Sie in der Vorschauversion bereits Aufgaben mit dem `az acr build-task`-Befehl erstellt haben, müssen diese Aufgaben mit dem Befehl [az acr task][az-acr-task] neu erstellt werden.
+> Wenn Sie in der Vorschauversion bereits Aufgaben mit dem Befehl `az acr build-task` erstellt haben, müssen diese Aufgaben mit dem Befehl [az acr task][az-acr-task] neu erstellt werden.
 
-Diese Aufgabe ähnelt der Schnellaufgabe, die Sie im [vorherigen Tutorial](container-registry-tutorial-build-task.md) erstellt haben. Sie weist ACR Tasks an, einen Buildvorgang für ein Image auszulösen, wenn Commits an das durch `--context` angegebene Repository gepusht werden.
-
-Im Gegensatz zur anderen Aufgabe löst diese Buildaufgabe allerdings auch einen Buildvorgang für das Image aus, wenn dessen *Basisimage* aktualisiert wird. Die durch das Argument `--file` angegebene Dockerfile ([Dockerfile-app][dockerfile-app]) unterstützt die Angabe eines Images aus der gleichen Registrierung als Basis:
+Diese Aufgabe ähnelt der Schnellaufgabe, die Sie im [vorherigen Tutorial](container-registry-tutorial-build-task.md) erstellt haben. Sie weist ACR Tasks an, einen Buildvorgang für ein Image auszulösen, wenn Commits an das durch `--context` angegebene Repository gepusht werden. Während das im vorherigen Tutorial zum Erstellen des Images verwendete Dockerfile ein öffentliches Basisimage angibt (`FROM node:9-alpine`), gibt das Dockerfile [Dockerfile-app][dockerfile-app] in dieser Aufgabe ein Basisimage in der gleichen Registrierung an:
 
 ```Dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
 ```
 
-Wenn Sie eine Aufgabe ausführen, erkennt ACR Tasks die Abhängigkeiten eines Images. Falls sich das in der Anweisung `FROM` angegebene Basisimage in der gleichen Registrierung oder einem öffentlichen Docker Hub-Repository befindet, wird ein Hook hinzugefügt, um sicherzustellen, dass dieses Image nach jeder Aktualisierung seiner Basis neu erstellt wird.
+Mit dieser Konfiguration ist es einfach, weiter unten in diesem Tutorial einen Frameworkpatch im Basisimage zu simulieren.
 
 ## <a name="build-the-application-container"></a>Erstellen des Anwendungscontainers
 
-Damit ACR Tasks die Abhängigkeiten eines Containerimages (einschließlich des Basisimages) bestimmen und nachverfolgen kann, **müssen** Sie zunächst die dazugehörige Aufgabe **mindestens einmal** auslösen.
-
-Verwenden Sie [az acr task run][az-acr-task-run], um die Aufgabe manuell auszulösen und das Anwendungsimage zu erstellen:
+Verwenden Sie [az acr task run][az-acr-task-run], um die Aufgabe manuell auszulösen und das Anwendungsimage zu erstellen. Mit diesem Schritt wird sichergestellt, dass die Aufgabe die Abhängigkeit des Anwendungsimages vom Basisimage nachverfolgt.
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name taskhelloworld
@@ -134,25 +153,31 @@ Notieren Sie sich nach Abschluss der Aufgabe die **Ausführungs-ID** (beispielsw
 
 Wenn Sie lokal (also nicht in Cloud Shell) arbeiten und Docker installiert ist, können Sie vor der Neuerstellung des Basisimages den Container ausführen, um die Anwendung in einem Webbrowser anzuzeigen. Bei Verwendung von Cloud Shell können Sie diesen Abschnitt überspringen. (Cloud-Shell unterstützt weder `az acr login` noch `docker run`.)
 
-Melden Sie sich zunächst mit [az acr login][az-acr-login] bei Ihrer Containerregistrierung an:
+Authentifizieren Sie sich zunächst mit [az acr login][az-acr-login] bei der Containerregistrierung:
 
 ```azurecli
 az acr login --name $ACR_NAME
 ```
 
-Verwenden Sie nun `docker run`, um den Container lokal auszuführen. Ersetzen Sie **\<run-id\>** durch die Ausführungs-ID aus der Ausgabe des vorherigen Schritts (beispielsweise „da6“).
+Verwenden Sie nun `docker run`, um den Container lokal auszuführen. Ersetzen Sie **\<run-id\>** durch die Ausführungs-ID aus der Ausgabe des vorherigen Schritts (beispielsweise „da6“). Dieses Beispiel legt `myapp` als Namen für den Container fest und fügt den Parameter `--rm` ein, damit der Container entfernt wird, wenn Sie ihn beenden.
 
-```azurecli
-docker run -d -p 8080:80 $ACR_NAME.azurecr.io/helloworld:<run-id>
+```bash
+docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-id>
 ```
 
 Navigieren Sie in Ihrem Browser zu `http://localhost:8080`. Daraufhin sollte eine Webseite mit der Node.js-Versionsnummer angezeigt werden, wie im folgenden Beispiel zu sehen. In einem späteren Schritt passen Sie die Version an, indem Sie der Versionszeichenfolge ein „a“ hinzufügen.
 
 ![Screenshot der im Browser gerenderten Beispielanwendung][base-update-01]
 
+Führen Sie den folgenden Befehl aus, um den Container zu beenden und zu entfernen:
+
+```bash
+docker stop myapp
+```
+
 ## <a name="list-the-builds"></a>Auflisten der Builds
 
-Führen Sie als nächstes den Befehl [az acr task list-runs][az-acr-task-list-runs] aus, um eine Liste der Aufgabenausführungen anzuzeigen, die ACR Tasks für Ihre Registrierung abgeschlossen hat:
+Führen Sie als Nächstes den Befehl [az acr task list-runs][az-acr-task-list-runs] aus, um eine Liste der Aufgabenausführungen anzuzeigen, die ACR Tasks für Ihre Registrierung abgeschlossen hat:
 
 ```azurecli-interactive
 az acr task list-runs --registry $ACR_NAME --output table
@@ -200,7 +225,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 Die Ausgabe sieht in etwa wie folgt aus. Als „TRIGGER“ (Auslöser) für den zuletzt ausgeführten Build sollte „Image Update“ (Imageaktualisierung) angegeben sein, was bedeutet, dass die Aufgabe durch die Schnellaufgabe des Basisimages ausgelöst wurde.
 
 ```console
-$ az acr task list-builds --registry $ACR_NAME --output table
+$ az acr task list-runs --registry $ACR_NAME --output table
 
 Run ID    TASK            PLATFORM    STATUS     TRIGGER       STARTED               DURATION
 --------  --------------  ----------  ---------  ------------  --------------------  ----------
@@ -221,7 +246,7 @@ Wenn Sie im folgenden optionalen Schritt den neu erstellten Container ausführen
 Wenn Sie lokal (also nicht in Cloud Shell) arbeiten und Docker installiert ist, können Sie nach Abschluss des Buildvorgangs das neue Anwendungsimage ausführen. Ersetzen Sie `<run-id>` durch die Ausführungs-ID aus dem vorherigen Schritt. Bei Verwendung von Cloud Shell können Sie diesen Abschnitt überspringen. (Cloud-Shell unterstützt `docker run` nicht.)
 
 ```bash
-docker run -d -p 8081:80 $ACR_NAME.azurecr.io/helloworld:<run-id>
+docker run -d -p 8081:80 --name updatedapp --rm $ACR_NAME.azurecr.io/helloworld:<run-id>
 ```
 
 Navigieren Sie in Ihrem Browser zu http://localhost:8081. Daraufhin sollte die Webseite mit der aktualisierten Node.js-Versionsnummer (mit hinzugefügtem „a“) angezeigt werden:
@@ -229,6 +254,12 @@ Navigieren Sie in Ihrem Browser zu http://localhost:8081. Daraufhin sollte die W
 ![Screenshot der im Browser gerenderten Beispielanwendung][base-update-02]
 
 Beachten Sie, dass Sie Ihr **Basisimage** mit einer neuen Versionsnummer aktualisiert haben und das zuletzt erstellte **Anwendungsimage** die neue Version anzeigt. ACR Tasks hat die Änderung aus dem Basisimage übernommen und Ihr Anwendungsimage automatisch neu erstellt.
+
+Führen Sie den folgenden Befehl aus, um den Container zu beenden und zu entfernen:
+
+```bash
+docker stop updatedapp
+```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -258,8 +289,9 @@ In diesem Tutorial haben Sie erfahren, wie Sie mithilfe einer Aufgabe automatisc
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
 [az-acr-build]: /cli/azure/acr#az-acr-build-run
-[az-acr-task-create]: /cli/azure/acr
-[az-acr-task-run]: /cli/azure/acr#az-acr-run
+[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
+[az-acr-task-update]: /cli/azure/acr/task#az-acr-task-update
+[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
 [az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-task-list-runs]: /cli/azure/acr
 [az-acr-task]: /cli/azure/acr

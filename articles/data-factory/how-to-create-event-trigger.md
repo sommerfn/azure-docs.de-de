@@ -5,24 +5,24 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: 94c9c3f997143d72262c1ba3d8dbfea90d6f920c
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: a2c046d4375b891d17d545edd804d0fa1da6ee75
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576615"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142354"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Erstellen eines Triggers, der eine Pipeline als Reaktion auf ein Ereignis ausführt
 
 Dieser Artikel beschreibt die ereignisbasierten Trigger, die Sie in Ihren Data Factory-Pipelines erstellen können.
 
-Die ereignisgesteuerte Architektur (EDA) ist ein allgemeines Datenintegrationsmuster, das die Produktion, Erkennung, Verbrauch und Reaktion auf Ereignisse beinhaltet. In Datenintegrationsszenarien müssen Data Factory-Kunden häufig Pipelines basierend auf Ereignissen auslösen. Data Factory und [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) sind jetzt integriert, sodass Sie bei einem Ereignis Pipelines auslösen können.
+Die ereignisgesteuerte Architektur (EDA) ist ein allgemeines Datenintegrationsmuster, das die Produktion, Erkennung, Verbrauch und Reaktion auf Ereignisse beinhaltet. In Datenintegrationsszenarios ist es häufig notwendig, dass Data Factory-Kunden Pipelines auf der Grundlage von Ereignissen auslösen, z. B. wenn Dateien zu einem Azure Storage-Konto hinzugefügt oder aus diesem gelöscht werden. Data Factory und [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) sind jetzt integriert, sodass Sie bei einem Ereignis Pipelines auslösen können.
 
 Das folgende Video enthält eine zehnminütige Einführung und Demonstration dieses Features:
 
@@ -34,34 +34,43 @@ Das folgende Video enthält eine zehnminütige Einführung und Demonstration die
 
 ## <a name="data-factory-ui"></a>Data Factory-Benutzeroberfläche
 
-### <a name="create-a-new-event-trigger"></a>Erstellen eines neuen Triggers
+In diesem Abschnitt wird gezeigt, wie Sie über die Benutzeroberfläche von Azure Data Factory einen Trigger erstellen können.
 
-Ein typisches Ereignis ist der Eingang einer Datei oder das Löschen einer Datei in Ihrem Azure-Speicherkonto. Sie können einen Trigger erstellen, der auf dieses Ereignis in Ihrer Data Factory-Pipeline reagiert.
+1. Navigieren Sie zum **Bereich für die Erstellung**.
 
-> [!NOTE]
-> Diese Integration unterstützt nur Storage-Konten der Version 2 (Universell).
+2. Klicken Sie in der linken unteren Ecke auf **Trigger**.
+
+3. Klicken Sie auf **+ Neu**. Dann wird die Seitennavigationsleiste für die Triggererstellung geöffnet.
+
+4. Wählen Sie als Triggertyp die Option **Ereignis** aus.
 
 ![Erstellen eines neuen Triggers](media/how-to-create-event-trigger/event-based-trigger-image1.png)
 
-### <a name="configure-the-event-trigger"></a>Konfigurieren des Ereignistriggers
+5. Wählen Sie aus der Dropdownliste für die Azure-Abonnements Ihr Storage-Konto aus, oder geben Sie die Ressourcen-ID des Storage-Kontos ein. Wählen Sie den Container aus, in dem die Ereignisse auftreten sollen. Die Containerauswahl ist optional, aber beachten Sie, dass die Auswahl aller Container zu einer hohen Anzahl von Ereignissen führen kann.
 
-Mit den Eigenschaften **Blob-Pfad beginnt mit** und **Blob-Pfad endet mit** können Sie die Container, Ordner und Blob-Namen angeben, für die Ereignisse empfangen werden sollen. Für die Eigenschaften **Blob-Pfad beginnt mit** und **Blob-Pfad endet mit** können Sie eine Vielzahl von Mustern verwenden, wie in den Beispielen im weiteren Verlauf dieses Artikels dargestellt. Sie müssen mindestens eine dieser Eigenschaften angeben.
+   > [!NOTE]
+   > Der Trigger (Ereignisauslöser) unterstützt derzeit nur Azure Data Lake Storage Gen2-Speicherkonten und universelle Speicherkonten der Version 2. Aufgrund einer Einschränkung von Azure Event Grid unterstützt Azure Data Factory nur maximal 500 Trigger pro Storage-Konto.
 
-![Konfigurieren des Ereignistriggers](media/how-to-create-event-trigger/event-based-trigger-image2.png)
+6. Sie können die Eigenschaften **Blob path begins with** (Blobpfad beginnt mit) und **Blob path ends with** (Blobpfad endet mit) verwenden, um die Container, Ordner und Blobnamen anzugeben, für die Ereignisse empfangen werden sollen. Es muss mindestens eine dieser Eigenschaften für den Trigger definiert werden. Für die Eigenschaften **Blob-Pfad beginnt mit** und **Blob-Pfad endet mit** können Sie eine Vielzahl von Mustern verwenden, wie in den Beispielen im weiteren Verlauf dieses Artikels dargestellt.
 
-### <a name="select-the-event-trigger-type"></a>Auswählen des Ereignistriggertyps
+    * **Blob path begins with** (Blobpfad beginnt mit): Der Blobpfad muss mit einem Ordnerpfad beginnen. Beispielsweise können die folgenden Werte verwendet werden: `2018/` und `2018/april/shoes.csv`. Dieses Feld kann nicht ausgewählt werden, wenn kein Container ausgewählt ist.
+    * **Blob path ends with** (Blobpfad endet mit): Der Blobpfad muss auf einem Dateinamen oder einer Erweiterung enden. Beispielsweise können die folgenden Werte verwendet werden: `shoes.csv` und `.csv`. Die Angabe von Container- und Ordnernamen ist optional. Wenn Sie sich für die Angabe entscheiden, müssen die Namen aber durch ein `/blobs/`-Segment voneinander getrennt werden. Beispielsweise kann ein Container mit dem Namen „Bestellungen“ den Wert `/orders/blobs/2018/april/shoes.csv` haben. Wenn Sie einen Ordner in einem beliebigen Container angeben möchten, lassen Sie das vorangestellte Zeichen „/“ aus. Beispielsweise löst `april/shoes.csv` ein Ereignis für jede Datei mit dem Namen `shoes.csv` aus, die sich in einem beliebigen Container in einem Ordner mit dem Namen „April“ befindet. 
 
-Sobald die Datei in Ihrem Speicherort eingeht und das entsprechende Blob-Element erstellt wird, löst dieses Ereignis Ihre Data Factory-Pipeline aus und führt sie aus. Sie können einen Trigger erstellen, der auf ein Blob-Erstellungsereignis, ein Blob-Löschereignis oder auf beide Ereignisse in den Data Factory-Pipelines reagiert.
+7. Wählen Sie aus, ob der Trigger auf ein **Blob created**-Ereignis (Blob erstellt), auf ein **Blob deleted**-Ereignis (Blob gelöscht) oder auf beides reagieren soll. Jedes Ereignis löst die Data Factory-Pipelines am angegebenen Speicherort aus, die dem Trigger zugeordnet sind.
 
-![Auswählen des Triggertyps als Ereignis](media/how-to-create-event-trigger/event-based-trigger-image3.png)
+    ![Konfigurieren des Ereignistriggers](media/how-to-create-event-trigger/event-based-trigger-image2.png)
 
-### <a name="map-trigger-properties-to-pipeline-parameters"></a>Zuordnen von Triggereigenschaften zu Pipelineparametern
+8. Wenn Sie Ihren Trigger konfiguriert haben, klicken Sie auf **Weiter > Datenvorschau**. Dieser Anzeige können Sie die vorhandenen Blobs entnehmen, die ihrer Triggerkonfiguration entsprechen. Vergewissern Sie sich, dass Sie genaue Filter ausgewählt haben. Wenn Sie Filter auswählen, die zu weit gefasst sind, können diese auf eine große Anzahl an erstellten bzw. gelöschten Dateien zutreffen. Dafür können höhere Kosten anfallen. Sobald Sie Ihre Filterbedingungen überprüft haben, klicken Sie auf **Fertig stellen**.
 
-Wenn ein Ereignistrigger für einen bestimmten Blob ausgelöst wird, erfasst das Ereignis den Ordnerpfad und den Dateinamen des Blobs in den Eigenschaften `@triggerBody().folderPath` und `@triggerBody().fileName`. Um die Werte dieser Eigenschaften in einer Pipeline zu verwenden, müssen Sie die Eigenschaften Pipelineparametern zuordnen. Nach der Zuordnung der Eigenschaften zu Parametern können Sie über den Ausdruck `@pipeline().parameters.parameterName` auf die vom Trigger erfassten Werte in der gesamten Pipeline zugreifen.
+    ![Datenvorschau für den Trigger](media/how-to-create-event-trigger/event-based-trigger-image3.png)
 
-![Zuordnung von Eigenschaften zu Pipelineparametern](media/how-to-create-event-trigger/event-based-trigger-image4.png)
+9. Sie können eine Pipeline an diesen Trigger anfügen, indem Sie zum Bereich „Pipeline“ navigieren und erst auf **Trigger hinzufügen** und dann auf **New/Edit** (Neu/Bearbeiten) klicken. Wenn die Seitennavigationsleiste angezeigt wird, klicken Sie auf die Dropdownliste **Choose trigger...** (Trigger auswählen...), und wählen Sie den von Ihnen erstellten Trigger aus. Klicken Sie auf **Weiter: Datenvorschau**, um zu überprüfen, ob die Konfiguration stimmt, und klicken Sie anschließend auf **Weiter**, um die Datenvorschau zu überprüfen.
 
-Ein Beispiel sehen Sie im obigen Screenshot. Der Trigger ist so konfiguriert, dass er ausgelöst wird, sobald ein Blobpfad mit der Endung `.csv` im Speicherkonto erstellt wird. Wenn ein Blob mit der Erweiterung `.csv` im Speicherkonto erstellt wird, erfassen die Eigenschaften `folderPath` und `fileName` den Speicherort des neuen Blobs. Zum Beispiel weist `@triggerBody().folderPath` einen Wert wie `/containername/foldername/nestedfoldername` und `@triggerBody().fileName` einen Wert wie `filename.csv` auf. Diese Werte werden im Beispiel den Pipelineparametern `sourceFolder` und `sourceFile` zugeordnet. Sie können sie in der gesamten Pipeline als `@pipeline().parameters.sourceFolder` bzw. `@pipeline().parameters.sourceFile` verwenden.
+10. Wenn Ihre Pipeline über Parameter verfügt, können Sie diese auf der Seitennavigationsleiste „Trigger run parameter“ (Parameter für die Triggerausführung) angeben. Der Trigger erfasst den Ordnerpfad und den Dateinamen des Blobs in den Eigenschaften `@triggerBody().folderPath` und `@triggerBody().fileName`. Um die Werte dieser Eigenschaften in einer Pipeline zu verwenden, müssen Sie die Eigenschaften Pipelineparametern zuordnen. Nach der Zuordnung der Eigenschaften zu Parametern können Sie über den Ausdruck `@pipeline().parameters.parameterName` auf die vom Trigger erfassten Werte in der gesamten Pipeline zugreifen. Wenn Sie fertig sind, klicken Sie auf **Fertig stellen**.
+
+    ![Zuordnung von Eigenschaften zu Pipelineparametern](media/how-to-create-event-trigger/event-based-trigger-image4.png)
+
+Im vorherigen Beispiel wurde der Trigger so konfiguriert, dass er ausgelöst wird, wenn im Container „sample-data“ (Beispieldaten) ein Blobpfad mit der Erweiterung „.csv“ im Ordner „event-testing“ (Ereignistest) erstellt wird. Die Eigenschaften **folderPath** and **fileName** erfassen den Speicherort des neuen Blobs. Wenn z. B. „MoviesDB.csv“ zum Pad „sample-data/event-testing“ (Beispieldaten/Ereignistest) hinzugefügt wird, hat `@triggerBody().folderPath` den Wert `sample-data/event-testing` und `@triggerBody().fileName` den Wert `moviesDB.csv`. Diese Werte werden im Beispiel den Pipelineparametern `sourceFolder` und `sourceFile` zugeordnet, die in der gesamten Pipeline jeweils als `@pipeline().parameters.sourceFolder` bzw. `@pipeline().parameters.sourceFile` verwendet werden können.
 
 ## <a name="json-schema"></a>JSON-Schema
 
@@ -79,7 +88,7 @@ Die folgende Tabelle enthält eine Übersicht über die Schemaelemente, die mit 
 Dieser Abschnitt enthält Beispiele für die Einstellungen für ereignisbasierte Trigger.
 
 > [!IMPORTANT]
-> Sie müssen das Segment `/blobs/` des Pfads wie in den folgenden Beispielen gezeigt immer dann einbeziehen, wenn Sie Container und Ordner, Container und Datei oder Container, Ordner und Datei angeben.
+> Sie müssen das Segment `/blobs/` des Pfads wie in den folgenden Beispielen gezeigt immer dann einbeziehen, wenn Sie Container und Ordner, Container und Datei oder Container, Ordner und Datei angeben. Für **blobPathBeginsWith** fügt die Benutzeroberfläche für Data Factory automatisch das Segment `/blobs/` zwischen dem Ordner und dem Containernamen zum JSON-Code des Auslösers ein.
 
 | Eigenschaft | Beispiel | BESCHREIBUNG |
 |---|---|---|

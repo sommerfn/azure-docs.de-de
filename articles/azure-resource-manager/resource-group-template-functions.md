@@ -1,46 +1,40 @@
 ---
 title: Vorlagenfunktionen im Resource Manager | Microsoft Docs
 description: Es werden die Funktionen beschrieben, die in einer Azure-Ressourcen-Manager-Vorlage zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-ms.assetid: 0644abe1-abaa-443d-820d-1966d7d26bfd
 ms.service: azure-resource-manager
-ms.devlang: na
-ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: b5a1f12a877008a3ce2ff7bd9635b9ed47b379f7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 968e55cc07d10a0d4b54d4a7e866417d18e98bb5
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280314"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258884"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Vorlagenfunktionen im Azure-Ressourcen-Manager
-In diesem Artikel werden alle Funktionen beschrieben, die Sie in einer Azure Resource Manager-Vorlage verwenden können. Informationen zur Verwendung von Funktionen in Ihrer Vorlage finden Sie unter [Vorlagensyntax](resource-group-authoring-templates.md#syntax).
+In diesem Artikel werden alle Funktionen beschrieben, die Sie in einer Azure Resource Manager-Vorlage verwenden können. Informationen zur Verwendung von Funktionen in Ihrer Vorlage finden Sie unter [Vorlagensyntax](template-expressions.md).
 
 Informationen zum Erstellen Ihrer eigenen Funktionen finden Sie unter [Benutzerdefinierte Funktionen](resource-group-authoring-templates.md#functions).
 
-<a id="array" />
-<a id="coalesce" />
-<a id="concatarray" />
-<a id="contains" />
-<a id="createarray" />
-<a id="empty" />
-<a id="first" />
-<a id="intersection" />
-<a id="json" />
-<a id="last" />
-<a id="length" />
-<a id="min" />
-<a id="max" />
-<a id="range" />
-<a id="skip" />
-<a id="take" />
-<a id="union" />
+<a id="array" aria-hidden="true" />
+<a id="coalesce" aria-hidden="true" />
+<a id="concatarray" aria-hidden="true" />
+<a id="contains" aria-hidden="true" />
+<a id="createarray" aria-hidden="true" />
+<a id="empty" aria-hidden="true" />
+<a id="first" aria-hidden="true" />
+<a id="intersection" aria-hidden="true" />
+<a id="json" aria-hidden="true" />
+<a id="last" aria-hidden="true" />
+<a id="length" aria-hidden="true" />
+<a id="min" aria-hidden="true" />
+<a id="max" aria-hidden="true" />
+<a id="range" aria-hidden="true" />
+<a id="skip" aria-hidden="true" />
+<a id="take" aria-hidden="true" />
+<a id="union" aria-hidden="true" />
 
 ## <a name="array-and-object-functions"></a>Array- und Objektfunktionen
 Resource Manager stellt mehrere Funktionen zum Arbeiten mit Arrays und Objekten bereit.
@@ -55,7 +49,7 @@ Resource Manager stellt mehrere Funktionen zum Arbeiten mit Arrays und Objekten 
 * [intersection](resource-group-template-functions-array.md#intersection)
 * [json](resource-group-template-functions-array.md#json)
 * [last](resource-group-template-functions-array.md#last)
-* [Länge](resource-group-template-functions-array.md#length)
+* [length](resource-group-template-functions-array.md#length)
 * [min](resource-group-template-functions-array.md#min)
 * [max](resource-group-template-functions-array.md#max)
 * [range](resource-group-template-functions-array.md#range)
@@ -63,11 +57,11 @@ Resource Manager stellt mehrere Funktionen zum Arbeiten mit Arrays und Objekten 
 * [take](resource-group-template-functions-array.md#take)
 * [union](resource-group-template-functions-array.md#union)
 
-<a id="equals" />
-<a id="less" />
-<a id="lessorequals" />
-<a id="greater" />
-<a id="greaterorequals" />
+<a id="equals" aria-hidden="true" />
+<a id="less" aria-hidden="true" />
+<a id="lessorequals" aria-hidden="true" />
+<a id="greater" aria-hidden="true" />
+<a id="greaterorequals" aria-hidden="true" />
 
 ## <a name="comparison-functions"></a>Vergleichsfunktionen
 Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in Vorlagen bereit.
@@ -78,22 +72,22 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in V
 * [greater](resource-group-template-functions-comparison.md#greater)
 * [greaterOrEquals](resource-group-template-functions-comparison.md#greaterorequals)
 
-<a id="deployment" />
-<a id="parameters" />
-<a id="variables" />
+<a id="deployment" aria-hidden="true" />
+<a id="parameters" aria-hidden="true" />
+<a id="variables" aria-hidden="true" />
 
 ## <a name="deployment-value-functions"></a>Funktionen für Bereitstellungswerte
 Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Werten aus Vorlagenabschnitten sowie von bereitstellungsbezogenen Werten bereit:
 
 * [deployment](resource-group-template-functions-deployment.md#deployment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
-* [Variablen](resource-group-template-functions-deployment.md#variables)
+* [variables](resource-group-template-functions-deployment.md#variables)
 
-<a id="and" />
-<a id="bool" />
-<a id="if" />
-<a id="not" />
-<a id="or" />
+<a id="and" aria-hidden="true" />
+<a id="bool" aria-hidden="true" />
+<a id="if" aria-hidden="true" />
+<a id="not" aria-hidden="true" />
+<a id="or" aria-hidden="true" />
 
 ## <a name="logical-functions"></a>Logische Funktionen
 Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit logischen Bedingungen bereit:
@@ -104,16 +98,16 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit log
 * [not](resource-group-template-functions-logical.md#not)
 * [or](resource-group-template-functions-logical.md#or)
 
-<a id="add" />
-<a id="copyindex" />
-<a id="div" />
-<a id="float" />
-<a id="int" />
-<a id="minint" />
-<a id="maxint" />
-<a id="mod" />
-<a id="mul" />
-<a id="sub" />
+<a id="add" aria-hidden="true" />
+<a id="copyindex" aria-hidden="true" />
+<a id="div" aria-hidden="true" />
+<a id="float" aria-hidden="true" />
+<a id="int" aria-hidden="true" />
+<a id="minint" aria-hidden="true" />
+<a id="maxint" aria-hidden="true" />
+<a id="mod" aria-hidden="true" />
+<a id="mul" aria-hidden="true" />
+<a id="sub" aria-hidden="true" />
 
 ## <a name="numeric-functions"></a>Numerische Funktionen
 Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit ganzen Zahlen bereit:
@@ -129,13 +123,13 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit gan
 * [mul](resource-group-template-functions-numeric.md#mul)
 * [sub](resource-group-template-functions-numeric.md#sub)
 
-<a id="listkeys" />
-<a id="list" />
-<a id="providers" />
-<a id="reference" />
-<a id="resourcegroup" />
-<a id="resourceid" />
-<a id="subscription" />
+<a id="listkeys" aria-hidden="true" />
+<a id="list" aria-hidden="true" />
+<a id="providers" aria-hidden="true" />
+<a id="reference" aria-hidden="true" />
+<a id="resourcegroup" aria-hidden="true" />
+<a id="resourceid" aria-hidden="true" />
+<a id="subscription" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Ressourcenfunktionen
 Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressourcenwerten bereit:
@@ -150,36 +144,36 @@ Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressource
 * [Ressourcen-ID](resource-group-template-functions-resource.md#resourceid)
 * [Abonnement](resource-group-template-functions-resource.md#subscription)
 
-<a id="base64" />
-<a id="base64tojson" />
-<a id="base64tostring" />
-<a id="concat" />
-<a id="containsstring" />
-<a id="datauri" />
-<a id="datauritostring" />
-<a id="emptystring" />
-<a id="endswith" />
-<a id="firststring" />
-<a id="guid" />
-<a id="indexof" />
-<a id="laststring" />
-<a id="lastindexof" />
-<a id="lengthstring" />
-<a id="padleft" />
-<a id="replace" />
-<a id="skipstring" />
-<a id="split" />
-<a id="startswith" />
-<a id="string" />
-<a id="substring" />
-<a id="takestring" />
-<a id="tolower" />
-<a id="toupper" />
-<a id="trim" />
-<a id="uniquestring" />
-<a id="uri" />
-<a id="uricomponent" />
-<a id="uricomponenttostring" />
+<a id="base64" aria-hidden="true" />
+<a id="base64tojson" aria-hidden="true" />
+<a id="base64tostring" aria-hidden="true" />
+<a id="concat" aria-hidden="true" />
+<a id="containsstring" aria-hidden="true" />
+<a id="datauri" aria-hidden="true" />
+<a id="datauritostring" aria-hidden="true" />
+<a id="emptystring" aria-hidden="true" />
+<a id="endswith" aria-hidden="true" />
+<a id="firststring" aria-hidden="true" />
+<a id="guid" aria-hidden="true" />
+<a id="indexof" aria-hidden="true" />
+<a id="laststring" aria-hidden="true" />
+<a id="lastindexof" aria-hidden="true" />
+<a id="lengthstring" aria-hidden="true" />
+<a id="padleft" aria-hidden="true" />
+<a id="replace" aria-hidden="true" />
+<a id="skipstring" aria-hidden="true" />
+<a id="split" aria-hidden="true" />
+<a id="startswith" aria-hidden="true" />
+<a id="string" aria-hidden="true" />
+<a id="substring" aria-hidden="true" />
+<a id="takestring" aria-hidden="true" />
+<a id="tolower" aria-hidden="true" />
+<a id="toupper" aria-hidden="true" />
+<a id="trim" aria-hidden="true" />
+<a id="uniquestring" aria-hidden="true" />
+<a id="uri" aria-hidden="true" />
+<a id="uricomponent" aria-hidden="true" />
+<a id="uricomponenttostring" aria-hidden="true" />
 
 ## <a name="string-functions"></a>Zeichenfolgenfunktionen
 Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zeichenfolgen bereit:
@@ -199,7 +193,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zei
 * [indexOf](resource-group-template-functions-string.md#indexof)
 * [last](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
-* [Länge](resource-group-template-functions-string.md#length)
+* [length](resource-group-template-functions-string.md#length)
 * [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
 * [replace](resource-group-template-functions-string.md#replace)

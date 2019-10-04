@@ -2,18 +2,19 @@
 title: Vorschreiben einer sicheren Übertragung in Azure Storage | Microsoft-Dokumentation
 description: Hier erhalten Sie Informationen zum Feature „Sichere Übertragung erforderlich“ für Azure Storage. Zudem wird beschrieben, wie das Feature aktiviert wird.
 services: storage
-author: fhryo-msft
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 06/20/2017
-ms.author: fryu
+ms.author: tamram
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e75cd873b780f514b24ee254dd491b6aa779c420
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7239e7fbe1221acc3c302260045d6fc510db2cbe
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101923"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65148572"
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Vorschreiben einer sicheren Übertragung in Azure Storage
 

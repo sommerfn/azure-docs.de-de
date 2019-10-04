@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 04/04/2019
+ms.date: 05/25/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 8ceb3d2d97c63bd19333336314beb6c7444288e9
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: b262a06bc3d80bd1f8105c6629bbc07e6ccd34eb
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578406"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077153"
 ---
 # <a name="what-is-azure-event-grid"></a>Was ist Azure Event Grid?
 
@@ -22,7 +22,7 @@ Mit Azure Event Grid können Sie mühelos Anwendungen mit ereignisbasierten Arch
 
 Sie können Filter zum Weiterleiten bestimmter Ereignisse an verschiedene Endpunkte verwenden, Multicasts zu mehreren Endpunkten ausführen und sicherstellen, dass Ihre Ereignisse zuverlässig übermittelt werden.
 
-Azure Event Grid ist derzeit in allen öffentlichen Regionen verfügbar. In den Clouds „Azure Deutschland“, „Azure China 21Vianet“ und „Azure Government“ ist es noch nicht verfügbar.
+Azure Event Grid wird zum Maximieren der Verfügbarkeit durch eine native Verteilung auf mehrere Fehlerdomänen in jeder Region sowie auf Verfügbarkeitszonen (in Regionen, in denen diese unterstützt werden) bereitgestellt. Azure Event Grid ist derzeit in allen öffentlichen Regionen verfügbar. In den Clouds „Azure Deutschland“, „Azure China 21Vianet“ und „Azure Government“ ist es noch nicht verfügbar.
 
 Dieser Artikel enthält eine Übersicht zu Azure Event Grid. Wenn Sie in die Verwendung von Event Grid einsteigen möchten, lesen Sie [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure Event Grid](custom-event-quickstart.md). 
 
@@ -56,6 +56,7 @@ Ausführliche Informationen zu den Funktionen der einzelnen Handler sowie entspr
 * [Logik-Apps](event-handlers.md#logic-apps)
 * [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Queue Storage](event-handlers.md#queue-storage)
+* [Service Bus](event-handlers.md#service-bus-queue-preview) (Vorschauversion)
 * [Webhooks](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Konzepte

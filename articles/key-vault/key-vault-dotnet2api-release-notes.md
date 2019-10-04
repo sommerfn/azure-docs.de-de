@@ -3,22 +3,18 @@ title: Key Vault .NET 2.x-API – Versionshinweise | Microsoft-Dokumentation
 description: .NET-Entwickler verwenden diese API für die Programmierung für Azure Key Vault
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 editor: bryanla
-ms.assetid: 1cccf21b-5be9-4a49-8145-483b695124ba
 ms.service: key-vault
-ms.devlang: CSharp
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 3d2543ea2b2ee6261b04396f92d5f3583a89ffb0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 07502b4c4487a7517e2fe73b62eae0a237a6f22b
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406904"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883269"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 – Versionshinweise und Migrationshandbuch
 Die folgenden Informationen unterstützen Sie beim Migrieren zur Version 2.0 der Azure Key Vault-Bibliothek für C# und .NET.  Für ältere Versionen geschriebene Apps müssen aktualisiert werden, um die neueste Version zu unterstützen.  Diese Änderungen sind zur uneingeschränkten Unterstützung neuer und verbesserter Features (beispielsweise **Key Vault-Zertifikate**) erforderlich.
@@ -52,12 +48,12 @@ Key Vault-Zertifikate verwalten X.509-Zertifikate und unterstützen folgendes Ve
 
 * *Secret* wurde in *SecretBundle* geändert.
 * *Dictionary* wurde in *IDictionary* geändert.
-* *List<T>, string []* wurde in *IList<T>* geändert.
+* *List\<T>, string []* wurde in *IList\<T>* geändert.
 * *NextList* wurde in *NextPageLink* geändert.
 
 ## <a name="return-types"></a>Rückgabetypen
 
-* **KeyList** und **SecretList** geben jetzt *IPage<T>* anstelle von *ListKeysResponseMessage* zurück.
+* **KeyList** und **SecretList** geben jetzt *IPage\<T>* anstelle von *ListKeysResponseMessage* zurück.
 * Das generierte **BackupKeyAsync**-Element gibt jetzt *BackupKeyResult* mit *Value* (Backupblob) zurück. Zuvor war die Methode umschlossen und hat nur den Wert zurückgegeben.
 
 ## <a name="exceptions"></a>Ausnahmen
@@ -68,7 +64,7 @@ Key Vault-Zertifikate verwalten X.509-Zertifikate und unterstützen folgendes Ve
 
 ## <a name="constructors"></a>Konstruktoren
 
-* Der Konstruktor akzeptiert statt eines *HttpClient*-Elements als Konstruktorargument nur *HttpClientHandler* oder *DelegatingHandler[]*.
+* Der Konstruktor akzeptiert statt eines *HttpClient*-Elements als Konstruktorargument nur *HttpClientHandler* oder *DelegatingHandler[]* .
 
 ## <a name="downloaded-packages"></a>Heruntergeladene Pakete
 

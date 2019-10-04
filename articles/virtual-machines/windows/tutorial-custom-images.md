@@ -4,24 +4,23 @@ description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Erste
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 74087a6d1ce00293c968837e72c636847081e39e
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 24a382680860890e57c8d5a380b8a1bb097baaa1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285978"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101683"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit Azure PowerShell
 
@@ -33,6 +32,8 @@ Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch 
 > * Erstellen eines virtuellen Computers aus einem benutzerdefinierten Image
 > * Liste aller Images in Ihrem Abonnement
 > * Löschen eines Images
+
+In der öffentlichen Vorschauversion ist der Dienst [Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) verfügbar. Beschreiben Sie einfach Ihre Anpassungen in einer Vorlage, und diese übernimmt die Schritte zur Imageerstellung in diesem Artikel. Probieren Sie [Azure Image Builder (Vorschau)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder) aus.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

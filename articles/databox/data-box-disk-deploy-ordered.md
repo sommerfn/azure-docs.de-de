@@ -1,20 +1,20 @@
 ---
-title: Tutorial zum Bestellen des Microsoft Azure Data Box-Datenträgers | Microsoft Docs
+title: Tutorial zum Bestellen von Azure Data Box Disk | Microsoft-Dokumentation
 description: Verwenden Sie dieses Tutorial, um zu erfahren, wie Sie sich für einen Azure Data Box-Datenträger registrieren und diesen bestellen können, um Daten in Azure zu importieren.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 02/27/2019
+ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 67f4eb5383452a81ba288f5fe611242259217951
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c1626542aba71f971ad96fe9f187ce9f1c1a99f3
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404891"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012940"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Tutorial: Bestellen von Azure Data Box Disk
 
@@ -49,7 +49,12 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 ## <a name="order-data-box-disk"></a>Bestellen des Data Box-Datenträgers
 
-Führen Sie die folgenden Schritte im [Azure-Portal](https://aka.ms/azuredataboxfromdiskdocs) aus, um den Data Box-Datenträger zu bestellen.
+Melden Sie sich beim
+
+- Azure-Portal unter dieser URL an, (https://portal.azure.com ), um die Azure Data Box Disk zu bestellen.
+- Oder beim Azure Government-Portal unter dieser URL: https://portal.azure.us. Ausführlichere Informationen finden Sie unter [Quickstart: Connect to Azure Government using portal](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal) (Schnellstart: Herstellen einer Verbindung mit Azure Government über das Portal).
+
+Bestellen Sie die Data Box Disk anhand der folgenden Schritte.
 
 1. Klicken Sie in der oberen linken Ecke des Portals auf **Ressource erstellen**, und suchen Sie dann nach *Azure Data Box*. Klicken Sie auf **Azure Data Box**.
     
@@ -63,9 +68,9 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://aka.ms/azuredatabox
 
     |Einstellung|Wert|
     |---|---|
-    |Abonnement|Wählen Sie ein Abonnement aus, für das der Data Box-Dienst aktiviert ist.<br> Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. |
+    |Subscription|Wählen Sie ein Abonnement aus, für das der Data Box-Dienst aktiviert ist.<br> Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. |
     |Übertragungstyp| In Azure importieren|
-    |Quellland/-region | Wählen Sie das Land aus, in dem sich Ihre Daten aktuell befinden.|
+    |Quellland/-region | Wählen Sie das Land/die Region aus, in dem/der sich Ihre Daten zurzeit befinden.|
     |Azure-Zielregion|Wählen Sie die Azure-Region aus, in die Daten übertragen werden sollen.|
 
   
@@ -78,11 +83,11 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://aka.ms/azuredatabox
     |Einstellung|Wert|
     |---|---|
     |NAME|Geben Sie einen Anzeigenamen an, um die Bestellung nachzuverfolgen.<br> Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. <br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden. |
-    |Ressourcengruppe| Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. <br> Eine Ressourcengruppe ist ein logischer Container für die Ressourcen, die zusammen verwaltet oder bereitgestellt werden können. |
+    |Resource group| Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. <br> Eine Ressourcengruppe ist ein logischer Container für die Ressourcen, die zusammen verwaltet oder bereitgestellt werden können. |
     |Azure-Zielregion| Wählen Sie eine Region für Ihr Speicherkonto aus.<br> Zurzeit werden Speicherkonten in allen Regionen in den USA sowie in West- und Nordeuropa, Kanada und Australien unterstützt. |
     |Geschätzte Datengröße in TB| Geben Sie einen geschätzten Wert in TB ein. <br>Basierend auf der Größe der Daten sendet Microsoft Ihnen eine geeignete Anzahl von SSDs mit jeweils 8 TB (7 TB nutzbare Kapazität) zu. <br>Die maximal nutzbare Kapazität von 5 Datenträgern beträgt bis zu 35 TB. |
     |Hauptschlüssel für Datenträger| Geben Sie den Hauptschlüssel für Datenträger an, wenn Sie **Benutzerdefinierten Schlüssel anstelle eines von Azure generierten Hauptschlüssels verwenden** aktivieren. <br> Geben Sie einen alphanumerischen Schlüssel mit 12 bis 32 Zeichen ein, der mindestens ein numerisches Zeichen und ein Sonderzeichen enthält. Zulässige Sonderzeichen: `@?_+`. <br> Sie können diese Option überspringen und den von Azure generierten Hauptschlüssel verwenden, um Ihre Datenträger zu entsperren.|
-    |Speicherziel     | Wählen Sie Speicherkonten, verwaltete Datenträger oder beides aus. <br> Wählen Sie basierend auf der angegebenen Azure-Region ein Speicherkonto aus der gefilterten Liste aus. Data Box kann mit bis zu zehn Speicherkonten verknüpft werden. <br> Sie können auch ein neues Speicherkonto vom Typ **Universell V1** oder **Universell V2** oder ein **Blob Storage-Konto** erstellen. <br>Sie können keine Speicherkonten verwenden, für die Regeln konfiguriert sind. Die Speicherkonten müssen den **Zugriff von allen Netzwerken** im Abschnitt mit Firewalls und virtuellen Netzwerken zulassen.|
+    |Speicherziel     | Wählen Sie Speicherkonten, verwaltete Datenträger oder beides aus. <br> Wählen Sie basierend auf der angegebenen Azure-Region ein Speicherkonto aus der gefilterten Liste aus. Data Box Disk kann mit nur einem Speicherkonten verknüpft werden. <br> Sie können auch ein neues Speicherkonto vom Typ **Universell V1** oder **Universell V2** oder ein **Blob Storage-Konto** erstellen. <br>Speicherkonten mit virtuellen Netzwerken werden unterstützt. Aktivieren Sie in den Netzwerkfirewalleinstellungen des Speicherkontos die vertrauenswürdigen Dienste, um dem Data Box-Dienst die Verwendung geschützter Speicherkonten zu ermöglichen. Weitere Informationen zum Hinzufügen von Azure Data Box als vertrauenswürdiger Dienst finden Sie [hier](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).|
 
     Wenn Sie als Speicherziel ein Speicherkonto verwenden, wird Folgendes angezeigt:
 
@@ -92,11 +97,11 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://aka.ms/azuredatabox
 
     |Einstellung  |Wert  |
     |---------|---------|
-    |Ressourcengruppe     | Erstellen Sie eine neue Ressourcengruppe, wenn Sie verwaltete Datenträger auf der Grundlage lokaler VHDs erstellen möchten. Verwenden Sie nur dann eine bereits vorhandene Ressourcengruppe, wenn diese vom Data Box-Dienst für den Data Box Disk-Auftrag für einen verwalteten Datenträger erstellt wurde. <br> Es wird nur eine einzelne Ressourcengruppe unterstützt.|
+    |Resource group     | Erstellen Sie eine neue Ressourcengruppe, wenn Sie verwaltete Datenträger auf der Grundlage lokaler VHDs erstellen möchten. Verwenden Sie nur dann eine bereits vorhandene Ressourcengruppe, wenn diese vom Data Box-Dienst für den Data Box Disk-Auftrag für einen verwalteten Datenträger erstellt wurde. <br> Es wird nur eine einzelne Ressourcengruppe unterstützt.|
 
     ![Data Box Disk-Auftrag für verwalteten Datenträger](media/data-box-disk-deploy-ordered/order-managed-disks.png)
 
-    Das für verwaltete Datenträger angegebene Speicherkonto wird als Stagingspeicherkonto verwendet. Der Data Box-Dienst lädt die VHDs in das Stagingspeicherkonto hoch, konvertiert sie in verwaltete Datenträger und verschiebt sie in die Ressourcengruppen. Weitere Informationen finden Sie unter [Überprüfen des Datenuploads in Azure](data-box-disk-deploy-picked-up.md#verify-data-upload-to-azure).
+    Das für verwaltete Datenträger angegebene Speicherkonto wird als Stagingspeicherkonto verwendet. Der Data Box-Dienst lädt die VHDs in das Stagingspeicherkonto hoch, konvertiert sie in verwaltete Datenträger und verschiebt sie in die Ressourcengruppen. Weitere Informationen finden Sie unter [Überprüfen des Datenuploads in Azure](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure).
 
 13. Klicken Sie auf **Weiter**.
 

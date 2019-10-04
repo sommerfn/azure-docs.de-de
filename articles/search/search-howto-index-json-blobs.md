@@ -1,21 +1,21 @@
 ---
 title: Indizieren von JSON-Blobs aus Azure Blob-Indexer für die Volltextsuche – Azure Search
 description: Durchforsten Sie Azure JSON-Blobs mithilfe des Azure Search-Blobindexers nach Textinhalten. Indexer automatisieren die Datenerfassung für ausgewählte Datenquellen wie Azure Blob Storage.
-ms.date: 02/28/2019
+ms.date: 05/02/2019
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f44161586f9f4e121001b9f5e285b0e1e1dcd9d1
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: d266f5edb85dd732cc39cfe98a64bee8019cdbd1
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518744"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656673"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Indizieren von JSON-Blobs mit dem Azure Search-Blobindexer
 In diesem Artikel wird beschrieben, wie Sie einen Azure Search-[Blobindexer](search-indexer-overview.md) konfigurieren, um strukturierten Inhalt aus JSON-Dokumenten in Azure Blob Storage zu extrahieren und so vorzubereiten, dass er ihn Azure Search durchsucht werden kann. Dieser Workflow erstellt einen Azure Search-Index und lädt ihn mit vorhandenem, aus JSON-Blobs extrahiertem Text. 
@@ -24,8 +24,7 @@ Sie können das [Portal](#json-indexer-portal), [REST-APIs](#json-indexer-rest) 
 
 JSON-Blobs in Azure Blob Storage bestehen normalerweise entweder aus einem einzelnen JSON-Dokument oder einer Sammlung von JSON-Entitäten. Für JSON-Sammlungen könnte das Blob möglicherweise ein **Array** wohlgeformter JSON-Elemente enthalten. Blobs könnten auch aus mehreren einzelnen JSON-Entitäten zusammengesetzt sein, die durch einen Zeilenvorschub getrennt werden. Mit dem Blobindexer in Azure Search können beide Fälle analysiert werden. Dies richtet sich danach, wie Sie den Parameter **parsingMode** in der Anforderung festlegen.
 
-> [!IMPORTANT]
-> Die Analysemodi `json` und `jsonArray` sind allgemein verfügbar, aber der `jsonLines`-Analysemodus befindet sich noch in der Public Preview-Phase und darf nicht in Produktionsumgebungen verwendet werden. Weitere Informationen finden Sie unter [REST api-version=2017-11-11-Preview](search-api-2017-11-11-preview.md). 
+Alle JSON-Analysemodi (`json`, `jsonArray`, `jsonLines`) sind jetzt allgemein verfügbar. 
 
 > [!NOTE]
 > Befolgen Sie die Empfehlungen zur Indexerkonfiguration in [1:n-Indizierung](search-howto-index-one-to-many-blobs.md), um mehrere Suchdokumente aus einem Azure-Blob auszugegeben.
@@ -38,20 +37,21 @@ Die einfachste Methode zum Indizieren von JSON-Dokumenten ist die Verwendung ein
 
 Sie sollten für Azure Search und Azure Storage dasselbe Azure-Abonnement verwenden, vorzugsweise in derselben Region.
 
-### <a name="1---prepare-source-data"></a>1. Vorbereiten von Quelldaten
+### <a name="1---prepare-source-data"></a>1\. Vorbereiten von Quelldaten
 
-Sie müssen über ein Azure-Speicherkonto mit einem Blobspeicher und über einen Container mit JSON-Elementen verfügen. Wenn Sie nicht mit diesen Anforderungen vertraut sind, lesen Sie unbedingt den Abschnitt „Einrichten des Azure Blob-Diensts und Laden von Beispieldaten“ unter [Schnellstart: Erstellen einer Pipeline für die kognitive Suche mithilfe von Qualifikationen und Beispieldaten](cognitive-search-quickstart-blob.md#set-up-azure-blob-service-and-load-sample-data).
+1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/).
 
-> [!Important]
-> Stellen Sie im Container sicher, dass die **Öffentliche Zugriffsebene** auf „Container (Anonymer Lesezugriff für Container und Blobs)“ festgelegt ist. Azure Storage und Azure Search sollten sich unter demselben Abonnement und möglichst in derselben Region befinden. 
+1. [Erstellen Sie einen Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) für Ihre Daten. Die öffentliche Zugriffsebene kann auf jeden der gültigen Werte festgelegt werden.
 
-### <a name="2---start-import-data-wizard"></a>2. Starten des Datenimport-Assistenten
+Sie benötigen den Namen des Speicherkontos, den Containernamen und einen Zugriffsschlüssel zum Abrufen Ihrer Daten im **Datenimport**-Assistenten.
 
-Sie können den Assistenten auf der Seite des Azure Search-Diensts [über die Befehlsleiste](search-import-data-portal.md) starten. Alternativ können Sie im Abschnitt **Blob-Dienst**, der sich im linken Navigationsbereich Ihres Speicherkontos befindet, auf **Azure Search hinzufügen** klicken.
+### <a name="2---start-import-data-wizard"></a>2\. Starten des Datenimport-Assistenten
+
+Auf der Seite „Übersicht“ Ihres Azure Search-Diensts können Sie [den Assistenten über die Befehlsleiste starten](search-import-data-portal.md). Alternativ können Sie im Abschnitt **Blob-Dienst**, der sich im linken Navigationsbereich Ihres Speicherkontos befindet, auf **Azure Search hinzufügen** klicken.
 
    ![Befehl „Daten importieren“ im Portal](./media/search-import-data-portal/import-data-cmd2.png "Starten des Datenimport-Assistenten")
 
-### <a name="3---set-the-data-source"></a>3. Einrichten der Datenquelle
+### <a name="3---set-the-data-source"></a>3\. Einrichten der Datenquelle
 
 Auf der Seite **Datenquelle** muss die Quelle **Azure Blob Storage** lauten und folgende Spezifikationen aufweisen:
 
@@ -69,7 +69,7 @@ Auf der Seite **Datenquelle** muss die Quelle **Azure Blob Storage** lauten und 
 
    ![Definition der Blobdatenquelle](media/search-howto-index-json/import-wizard-json-data-source.png)
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4. Überspringen der Seite „Kognitive Suche hinzufügen“ im Assistenten
+### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4\. Überspringen der Seite „Kognitive Suche hinzufügen“ im Assistenten
 
 Das Hinzufügen kognitiver Qualifikationen ist für den Import eines JSON-Dokuments nicht erforderlich. Wenn Sie nicht unbedingt [Cognitive Services-APIs und Transformationen](cognitive-search-concept-intro.md) zu Ihrer Indizierungspipeline hinzufügen müssen, können Sie diesen Schritt überspringen.
 
@@ -81,7 +81,7 @@ Von dieser Seite aus können Sie zur Indexanpassung springen.
 
    ![Überspringen des Schritts zu kognitiven Qualifikationen](media/search-get-started-portal/skip-cog-skill-step.png)
 
-### <a name="5---set-index-attributes"></a>5. Festlegen von Indexattributen
+### <a name="5---set-index-attributes"></a>5\. Festlegen von Indexattributen
 
 Auf der **Indexseite** sollte eine Liste von Feldern mit einem Datentyp sowie mehrere Kontrollkästchen zum Festlegen von Indexattributen aufgeführt sein. Der Assistent kann basierend auf Metadaten und durch Sampling der Quelldaten eine Felderliste erstellen. 
 
@@ -118,7 +118,7 @@ Sie können die REST-API für die Indizierung von JSON-Blobs in einem dreiteilig
 
 Sie können den [REST-Beispielcode](#rest-example) am Ende dieses Abschnitts überprüfen, der zeigt, wie alle drei Objekte erstellt werden. Dieser Abschnitt enthält auch Informationen über [JSON-Analysemodi](#parsing-modes), [einzelne Blobs](#parsing-single-blobs), [JSON-Arrays](#parsing-arrays) und [geschachtelte Arrays](#nested-json-arrays).
 
-Verwenden Sie für die Indizierung von JSON-Code auch [Postman](search-fiddler.md) und die REST-API, um diese Objekte zu erstellen:
+Verwenden Sie für die Indizierung von JSON-Code auch [Postman](search-get-started-postman.md) und die REST-API, um diese Objekte zu erstellen:
 
 + [Index](https://docs.microsoft.com/rest/api/searchservice/create-index)
 + [Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
@@ -131,12 +131,12 @@ JSON-Blobs in Azure Blob Storage bestehen normalerweise entweder aus einem einze
 | JSON-Dokument | parsingMode | BESCHREIBUNG | Verfügbarkeit |
 |--------------|-------------|--------------|--------------|
 | Ein Dokument pro Blob | `json` | JSON-Blobs werden als einzelne Textblöcke analysiert. Jedes JSON-Blob wird zu einem einzelnen Azure Search-Dokument. | Allgemein sowohl in [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)-API als auch [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK verfügbar. |
-| Mehrere Dokumente pro Blob | `jsonArray` | Analysiert ein JSON-Array im Blob, und jedes Element des Arrays wird zu einem separaten Azure Search-Dokument.  | Sowohl in [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)-API als auch [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK in der Vorschau verfügbar. |
-| Mehrere Dokumente pro Blob | `jsonLines` | Analysiert ein Blob, das mehrere durch einen Zeilenvorschub getrennte JSON-Entitäten (ein „Array“) enthält, wobei jede Entität ein separates Azure Search-Dokument wird. | Sowohl in [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)-API als auch [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK in der Vorschau verfügbar. |
+| Mehrere Dokumente pro Blob | `jsonArray` | Analysiert ein JSON-Array im Blob, und jedes Element des Arrays wird zu einem separaten Azure Search-Dokument.  | Allgemein sowohl in [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)-API als auch [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK verfügbar. |
+| Mehrere Dokumente pro Blob | `jsonLines` | Analysiert ein Blob, das mehrere durch einen Zeilenvorschub getrennte JSON-Entitäten (ein „Array“) enthält, wobei jede Entität ein separates Azure Search-Dokument wird. | Allgemein sowohl in [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)-API als auch [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK verfügbar. |
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – Zusammenstellen der Eingaben für die Anforderung
 
-Für jede Anforderung müssen Sie den Dienstnamen und den Administratorschlüssel für Azure Search (im POST-Header) und den Namen des Speicherkontos sowie den Schlüssel für den Blobspeicher bereitstellen. Sie können [Postman](search-fiddler.md) zum Senden von HTTP-Anforderungen an Azure Search verwenden.
+Für jede Anforderung müssen Sie den Dienstnamen und den Administratorschlüssel für Azure Search (im POST-Header) und den Namen des Speicherkontos sowie den Schlüssel für den Blobspeicher bereitstellen. Sie können [Postman](search-get-started-postman.md) zum Senden von HTTP-Anforderungen an Azure Search verwenden.
 
 Kopieren Sie die folgenden vier Werten in den Editor, sodass Sie sie in eine Anforderung einfügen können:
 
@@ -159,7 +159,7 @@ Dieser Schritt umfasst die Bereitstellung der Datenquellen-Verbindungsinformatio
 
 Geben Sie gültige Werte für die Platzhalter von Dienstnamen, Administratorschlüssel, Speicherkonto und Kontoschlüssel an.
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -178,7 +178,7 @@ Der Index speichert durchsuchbaren Inhalt in Azure Search. Stellen Sie ein Schem
 
 Im Anschluss sehen Sie ein Beispiel für die Anforderung [Index erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index). Der Index verfügt über ein durchsuchbares `content`-Feld, in dem der aus den Blobs extrahierten Text gespeichert wird:   
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -195,7 +195,7 @@ Im Anschluss sehen Sie ein Beispiel für die Anforderung [Index erstellen](https
 
 Wie bei einem Index und einer Datenquelle handelt es sich auch beim Indexer um ein benanntes Objekt, das Sie erstellen und in einem Azure Search-Dienst wiederverwenden. Eine vollständige Anforderung zum Erstellen eines Indexers kann beispielsweise wie folgt aussehen:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -222,7 +222,7 @@ Dieser Abschnitt enthält eine Zusammenfassung aller Anforderungen, die zum Erst
 
 Alle Indexer erfordern ein Datenquellenobjekt, das Informationen zur Verbindung mit vorhandenen Daten bereitstellt. 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    POST https://[service name].search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -238,7 +238,7 @@ Alle Indexer erfordern ein Datenquellenobjekt, das Informationen zur Verbindung 
 
 Alle Indexer erfordern einen Zielindex, der die Daten empfängt. Der Text der Anforderung definiert das aus Feldern bestehende Indexschema, das das gewünschte Verhalten in einem durchsuchbaren Index unterstützen soll. Dieser Index sollte leer sein, wenn Sie den Indexer ausführen. 
 
-    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexes?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -257,7 +257,7 @@ Diese Anforderung zeigt einen vollständig angegebenen Indexer. Er enthält Feld
 
 Das Erstellen des Indexers in Azure Search löst einen Datenimport aus. Er wird sofort ausgeführt, und anschließend nach einem Zeitplan, wenn Sie einen angegeben haben.
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key for Azure Search]
 
@@ -338,7 +338,7 @@ Alternativ können Sie auch die JSON-Arrayoption verwenden. Diese Option ist nü
 
 Für ein JSON-Array sollte die Indexerdefinition dem folgenden Beispiel ähneln. Beachten Sie, dass der parsingMode-Parameter den `jsonArray`-Parser angibt. Die einzigen beiden arrayspezifischen Anforderungen zum Indizieren von JSON-Blobs sind die Angabe des richtigen Parsers und die Eingabe der richtigen Daten.
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 
@@ -385,7 +385,7 @@ Wenn das Blob mehrere JSON-Entitäten enthält, die durch einen Zeilenvorschub g
 
 Für JSON-Zeilen sollte die Indexerdefinition dem folgenden Beispiel ähneln. Beachten Sie, dass der parsingMode-Parameter den `jsonLines`-Parser angibt. 
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: [admin key]
 

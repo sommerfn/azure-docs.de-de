@@ -2,19 +2,19 @@
 title: 'Definition: Training und Modelle – Custom Translator'
 titleSuffix: Azure Cognitive Services
 description: 'Ein Modell ist das System, das die Übersetzung für ein bestimmtes Sprachenpaar bereitstellt. Das Ergebnis eines erfolgreichen Trainings ist ein Modell. Zum Trainieren eines Modells werden drei sich gegenseitig ausschließende Datasets benötigt: Trainingsdataset, Optimierungsdataset und Testdataset.'
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.author: v-rada
-ms.openlocfilehash: adc78b176afb0a43a7e1e3a7bb882282a914761d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: swmachan
+ms.openlocfilehash: af3f795dc5036b23b82562e7af4582bd90b44f47
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57783073"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595437"
 ---
 # <a name="what-are-trainings-and-models"></a>Definition: Training und Modelle
 

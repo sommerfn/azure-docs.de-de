@@ -5,15 +5,15 @@ description: Lernen Sie die Datenmodellierung in NoSQL-Datenbanken sowie die Unt
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.custom: rimman
-ms.openlocfilehash: e8581cb130c8b2d7ac044838f0ae922b9b5e86cd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: da119b2858c6b6c7bbc99b40d340f79964e0fae3
+ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792114"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68467896"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Datenmodellierung in Azure Cosmos DB
 
@@ -43,7 +43,7 @@ Die beim Normalisieren von Daten geltende Prämisse besteht darin, dass das **Sp
     SELECT p.FirstName, p.LastName, a.City, cd.Detail
     FROM Person p
     JOIN ContactDetail cd ON cd.PersonId = p.Id
-    JOIN ContactDetailType on cdt ON cdt.Id = cd.TypeId
+    JOIN ContactDetailType cdt ON cdt.Id = cd.TypeId
     JOIN Address a ON a.PersonId = p.Id
 
 Für das Aktualisieren einer einzelnen Person mit allen ihren Kontaktdaten und Adressen sind Schreibvorgänge über viele einzelne Tabellen hinweg erforderlich.
@@ -176,9 +176,9 @@ Die Aktie *zaza* kann jeden Tag mehrere Hundert Mal gehandelt werden, und Tausen
 
 ## <a name="referencing-data"></a>Verweisen auf Daten
 
-Das Einbetten von Daten funktioniert somit in vielen Fällen gut, aber es ist klar, dass es Szenarien gibt, bei denen das Denormalisieren von Daten mehr Probleme verursacht als es wert ist. Was also können wir jetzt tun?
+Das Einbetten von Daten funktioniert in vielen Fällen gut, aber es gibt Szenarien, bei denen das Denormalisieren von Daten mehr Probleme verursacht als es wert ist. Was also können wir jetzt tun?
 
-Relationale Datenbanken sind nicht der einzige Ort, an dem Sie Beziehungen zwischen Entitäten herstellen können. In einer Dokumentdatenbank können sich Informationen in einem Dokument befinden, die sich eigentlich auf Daten in anderen Dokumenten beziehen. Ich plädiere jetzt nicht eine Sekunde für das Erstellen von Systemen, die besser für eine relationale Datenbank in Azure Cosmos DB oder eine andere Dokumentdatenbank geeignet wären, aber einfache Beziehungen sind in Ordnung und können sehr nützlich sein.
+Relationale Datenbanken sind nicht der einzige Ort, an dem Sie Beziehungen zwischen Entitäten herstellen können. In einer Dokumentdatenbank können sich Informationen in einem Dokument befinden, die sich auf Daten in anderen Dokumenten beziehen. Es wird nicht empfohlen, Systeme zu erstellen, die besser für eine relationale Datenbank in Azure Cosmos DB oder eine andere Dokumentdatenbank geeignet wären, aber einfache Beziehungen sind in Ordnung und können sinnvoll sein.
 
 Im JSON-Abschnitt unten verwenden wir das vorherige Beispiel eines Aktienportfolios, aber dieses Mal verweisen wir auf den Aktieneintrag im Portfolio, anstatt ihn einzubetten. Auf diese Weise müssen wir nur dieses eine Aktiendokument aktualisieren, wenn sich der Aktieneintrag mehrmals am Tag ändert.
 
@@ -417,3 +417,5 @@ Es gibt genauso wenig einen einzigen Weg, um Daten auf einem Bildschirm darzuste
 Weitere Informationen zu Azure Cosmos DB finden Sie auf der [Dokumentationsseite](https://azure.microsoft.com/documentation/services/cosmos-db/) des Diensts.
 
 Informationen zur horizontalen Partitionierung („Sharding“) Ihrer Daten auf mehreren Partitionen finden Sie unter [Partitionieren von Daten in Azure Cosmos DB](sql-api-partition-data.md).
+
+Erfahren Sie mehr über das [Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels](how-to-model-partition-example.md).

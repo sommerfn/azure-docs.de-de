@@ -3,17 +3,17 @@ title: Azure Container Registry-Repositorys im Azure-Portal | Microsoft-Dokument
 description: Erfahren Sie, wie Sie Azure Container Registry-Repositorys im Azure-Portal anzeigen.
 services: container-registry
 author: cristy
-manager: jeconnoc
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 01/05/2018
-ms.author: cristyg
-ms.openlocfilehash: 171593483fc94c1c67013ab520b0085ca98f3a82
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: jeconnoc
+ms.openlocfilehash: 22f84efee2b3996734e8e38c73d30ba891b745d9
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768327"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310582"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Anzeigen von Azure Container Registry-Repositorys im Azure-Portal
 
@@ -22,8 +22,8 @@ Mit Azure Container Registry können Sie Docker-Containerimages in Repositorys s
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Containerregistrierung**: Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder die [Azure CLI](container-registry-get-started-azure-cli.md).
-* **Docker CLI**: Installieren Sie [Docker][docker-install] auf dem lokalen Computer. Anschließend steht Ihnen die Docker-Befehlszeilenschnittstelle zur Verfügung.
-* **Containerimage**: Übertragen Sie ein Image per Push an Ihre Containerregistrierung. Anleitungen für Push- und Pull-Vorgänge für Images finden Sie unter [Push- und Pull-Vorgänge für Images](container-registry-get-started-docker-cli.md).
+* **Docker CLI**: Installieren Sie [Docker][docker-install] auf Ihrem lokalen Computer. Danach steht Ihnen die Docker-Befehlszeilenschnittstelle zur Verfügung.
+* **Containerimage**: Übertragen Sie ein Image über Pushübertragung in Ihre Containerregistrierung. Anleitungen für Push- und Pull-Vorgänge für Images finden Sie unter [Push- und Pull-Vorgänge für Images](container-registry-get-started-docker-cli.md).
 
 ## <a name="view-repositories-in-azure-portal"></a>Anzeigen von Repositorys im Azure-Portal
 
@@ -39,7 +39,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 So zeigen Sie ein Repository an
 
-1. Melden Sie sich beim [Azure-Portal][portal] an.
+1. Melden Sie sich beim [Azure-Portal][portal]
 1. Wählen Sie die **Azure Container Registry** aus, an die Sie das Nginx-Image per Push übertragen haben.
 1. Wählen Sie **Repositorys** aus, um eine Liste der Repositorys anzuzeigen, die die Images in der Registrierung enthalten.
 1. Wählen Sie ein Repository aus, um die Imagetags in diesem Repository anzuzeigen.

@@ -1,33 +1,26 @@
 ---
-title: PowerShell-Beispiele für Azure Application Gateway | Microsoft-Dokumentation
-description: PowerShell-Beispiele für Azure Application Gateway
+title: Azure PowerShell-Beispiele für Azure Application Gateway
+description: Azure PowerShell-Beispiele für Azure Application Gateway
 services: application-gateway
-documentationcenter: networking
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
-ms.date: 01/29/2018
+ms.topic: sample
+ms.date: 08/07/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: 54505f108757fc67b07e44ef3b603bc353b9aec5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 2fb809026e8b604ddf25a8160774972eae99411a
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33200653"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68824349"
 ---
-# <a name="azure-application-gateway-powershell-samples"></a>PowerShell-Beispiele für Azure Application Gateway
+# <a name="azure-powershell-examples-for-azure-application-gateway"></a>Azure PowerShell-Beispiele für Azure Application Gateway
 
-Die folgende Tabelle enthält Links zu Azure PowerShell-Skriptbeispielen zur Erstellung von Anwendungsgateways.
+Die folgende Tabelle enthält Links zu Azure PowerShell-Skriptbeispielen für Azure Application Gateway.
 
 | | |
 |---|---|
-| [Verwalten von Webdatenverkehr](./scripts/create-vmss-powershell.md) | Erstellt ein Anwendungsgateway und alle dazugehörigen Ressourcen.|
-| [Einschränken von Webdatenverkehr](./scripts/create-vmss-waf-powershell.md) | Erstellt ein Anwendungsgateway, das Datenverkehr mithilfe von OWASP-Regeln einschränkt.|
+| [Verwalten von Webdatenverkehr](./scripts/create-vmss-powershell.md) | Erstellt ein Application Gateway und alle dazugehörigen Ressourcen.|
+| [Einschränken von Webdatenverkehr](./scripts/create-vmss-waf-powershell.md) | Erstellt ein Application Gateway, das Datenverkehr mithilfe von OWASP-Regeln einschränkt.|
+|[Benutzerdefinierte WAF v2-Regeln](scripts/waf-custom-rules-powershell.md)|Erstellt eine Web Application Firewall-Instanz v2 für Application Gateway mit benutzerdefinierten Regeln.
 | | |
-

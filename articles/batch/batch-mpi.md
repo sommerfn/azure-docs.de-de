@@ -4,26 +4,25 @@ description: Erfahren Sie, wie MPI-Anwendungen (Message Passing Interface) mithi
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.date: 03/13/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7fe75dabe098cf98f0c3c04d592a32d6a44cebf8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f54f5d5265508bb3716ff4ffd4d1d741d3bfa2e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905017"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094968"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Verwenden von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Batch
 
-Tasks mit mehreren Instanzen ermöglichen die Ausführung eines Azure Batch-Tasks auf mehreren Computeknoten gleichzeitig. Diese Tasks machen High Performance Computing-Szenarien wie Message Passing Interface-Anwendungen (MPI) in Batch möglich. In diesem Artikel erfahren Sie, wie mithilfe der [Batch .NET][api_net]-Bibliothek Tasks mit mehreren Instanzen ausgeführt werden.
+Tasks mit mehreren Instanzen ermöglichen die Ausführung eines Azure Batch-Tasks auf mehreren Computeknoten gleichzeitig. Diese Tasks machen High Performance Computing-Szenarien wie Message Passing Interface-Anwendungen (MPI) in Batch möglich. In diesem Artikel erfahren Sie, wie Tasks mit mehreren Instanzen mithilfe der [Batch-Bibliothek für .NET][api_net] ausgeführt werden.
 
 > [!NOTE]
 > Die Beispiele in diesem Artikel konzentrieren sich auf Batch .NET, MS-MPI und Windows-Computeknoten, doch die vorgestellten Konzepte für mehrere Instanzen sind jedoch auch auf andere Plattformen und Technologien (z. B. Python und Intel MPI auf Linux-Knoten) anwendbar.
@@ -40,7 +39,7 @@ Wenn Sie einen Task mit Einstellungen für mehrere Instanzen an einen Auftrag ü
 1. Der Batch-Dienst erstellt basierend auf den Einstellungen für mehrere Instanzen einen **primären** Task und mehrere **Subtasks**. Die Gesamtzahl der Tasks (primärer Task und alle Subtasks) entspricht der Anzahl der **Instanzen** (Computeknoten), die Sie in den Einstellungen für mehrere Instanzen festlegen.
 2. Batch legt einen Computeknoten als **Master** fest und plant die Ausführung der primären Task auf dem Master. Es plant die Ausführung der Subtasks auf den restlichen Computeknoten, die dem Task mit mehreren Instanzen zugeordnet sind (eine Unteraufgabe pro Knoten).
 3. Der Primärtask und alle Subtasks laden alle **gemeinsamen Ressourcendateien** herunter, die Sie in den Einstellungen für mehreren Instanzen angeben.
-4. Nachdem die gemeinsamen Ressourcendateien heruntergeladen wurden, wird der in den Einstellungen für mehrere Instanzen angegebene **Koordinationsbefehl** vom Primärtask und von den Subtasks ausgeführt. Der Koordinationsbefehl wird in der Regel für die Vorbereitung von Knoten zum Ausführen des Tasks verwendet. Dazu zählen das Starten von Diensten im Hintergrund (z.B. `smpd.exe` von [Microsoft MPI][msmpi_msdn]) und das Sicherstellen, dass die Knoten zum Verarbeiten von Nachrichten zwischen den Knoten bereit sind.
+4. Nachdem die gemeinsamen Ressourcendateien heruntergeladen wurden, wird der in den Einstellungen für mehrere Instanzen angegebene **Koordinationsbefehl** vom Primärtask und von den Subtasks ausgeführt. Der Koordinationsbefehl wird in der Regel für die Vorbereitung von Knoten zum Ausführen des Tasks verwendet. Dies kann das Starten von Diensten im Hintergrund (z.B. von [Microsoft MPI][msmpi_msdn] `smpd.exe`) und das Sicherstellen umfassen, dass die Knoten zum Verarbeiten von Nachrichten zwischen den Knoten bereit sind.
 5. Der Primärtask führt den **Anwendungsbefehl** auf dem Masterknoten aus, *nachdem* der Koordinationsbefehl vom Primärtask und von allen Subtasks erfolgreich abgeschlossen wurde. Der Anwendungsbefehl ist die Befehlszeile des Tasks mit mehreren Instanzen und wird nur vom Primärtask ausgeführt. In einer [MS-MPI][msmpi_msdn]-basierten Lösung führen Sie hier Ihre MPI-fähige Anwendung mit `mpiexec.exe` aus.
 
 > [!NOTE]
@@ -160,7 +159,7 @@ Der Aufruf des Koordinationsbefehls führt zu einer Blockierung – Batch führt
 cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 ```
 
-Beachten Sie die Verwendung von `start` in diesem Koordinationsbefehl. Dies ist erforderlich, da die `smpd.exe` -Anwendung nicht sofort nach der Ausführung zurückgegeben wird. Ohne die Verwendung des [Start][cmd_start]-Befehls würde dieser Koordinationsbefehl nicht zurückgegeben und würde daher die Ausführung des Anwendungsbefehls blockieren.
+Beachten Sie die Verwendung von `start` in diesem Koordinationsbefehl. Dies ist erforderlich, da die `smpd.exe` -Anwendung nicht sofort nach der Ausführung zurückgegeben wird. Ohne die Verwendung des [start][cmd_start]-Befehls würde dieser Koordinationsbefehl nicht zurückgegeben und daher die Ausführung des Anwendungsbefehls blockieren.
 
 ## <a name="application-command"></a>Anwendungsbefehl
 Nachdem der Primärtask und die Subtasks die Ausführung des Koordinationsbefehls abgeschlossen haben, wird die Befehlszeile des Tasks mit mehreren Instanzen *nur*vom Primärtask ausgeführt. Wir bezeichnen dies zur Unterscheidung vom Koordinationsbefehl als **Anwendungsbefehl** .
@@ -177,7 +176,7 @@ cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIAp
 >
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
-Batch erstellt mehrere [Umgebungsvariablen][msdn_env_var] für Tasks mit mehreren Instanzen auf den einem Task mit mehreren Instanzen zugeordneten Computeknoten. Ihre Anwendungs- und Koordinationsbefehlszeilen sowie die Skripts und Programme, die sie ausführen, können auf diese Umgebungsvariablen verweisen.
+Batch erstellt mehrere [Umgebungsvariablen][msdn_env_var] für Tasks mit mehreren Instanzen auf den Computeknoten, die einem Task mit mehreren Instanzen zugeordnet sind. Ihre Anwendungs- und Koordinationsbefehlszeilen sowie die Skripts und Programme, die sie ausführen, können auf diese Umgebungsvariablen verweisen.
 
 Die folgenden Umgebungsvariablen werden vom Batch-Dienst für die Verwendung von Tasks mit mehreren Instanzen erstellt:
 
@@ -191,7 +190,7 @@ Die folgenden Umgebungsvariablen werden vom Batch-Dienst für die Verwendung von
 Weitere Informationen zu diesen und anderen Umgebungsvariablen der Batch-Computeknoten, ihren Inhalten und ihrer Sichtbarkeit finden Sie unter [Compute node environment variables][msdn_env_var] (Computeknoten-Umgebungsvariablen).
 
 > [!TIP]
-> Das Batch-Linux-MPI-Codebeispiel enthält ein Beispiel, wie einige dieser Umgebungsvariablen verwendet werden können. Das Bash-Script [coordination-cmd][coord_cmd_example] lädt gemeinsame Anwendungs- und Eingabedateien aus Azure Storage herunter, aktiviert eine Network File System (NFS)-Freigabe auf dem Masterknoten und konfiguriert die anderen Knoten, die dem Task mit mehreren Aufgaben als NFS-Clients zugewiesen sind.
+> Das Batch-Linux-MPI-Codebeispiel enthält ein Beispiel, wie einige dieser Umgebungsvariablen verwendet werden können. Das Bash-Script [coordination-cmd][coord_cmd_example] lädt gemeinsame Anwendungs- und Eingabedateien aus Azure Storage herunter, aktiviert eine NFS-Freigabe (Network File System) auf dem Masterknoten und konfiguriert die anderen Knoten, die dem Task mit mehreren Instanzen als NFS-Clients zugeordnet sind.
 >
 >
 
@@ -214,7 +213,7 @@ Wenn beispielsweise einer der Subtasks fehlschlägt und mit einem Rückgabecode 
 
 Wenn Sie einen Task mit mehreren Instanzen löschen, werden der Primärtask und alle Subtasks ebenfalls vom Batch-Dienst gelöscht. Alle Subtaskverzeichnisse und die Dateien darin werden genau wie bei einem Standardtask von den Computeknoten gelöscht.
 
-[TaskConstraints][net_taskconstraints] für einen Task mit mehreren Instanzen, z. B. die [MaxTaskRetryCount][net_taskconstraint_maxretry]-, [MaxWallClockTime][net_taskconstraint_maxwallclock]- und [RetentionTime][net_taskconstraint_retention]-Eigenschaften werden berücksichtigt, da sie für einen Standardtask angegeben sind und für den Primärtask sowie alle Subtasks gelten. Wenn Sie die [RetentionTime][net_taskconstraint_retention]-Eigenschaft jedoch nach dem Hinzufügen des Tasks mit mehreren Instanzen zum Auftrag ändern, wird diese Änderung nur für den Primärtask übernommen. Alle Subtasks verwenden weiterhin die ursprüngliche [RetentionTime][net_taskconstraint_retention]-Eigenschaft.
+[TaskConstraints][net_taskconstraints] für einen Task mit mehreren Instanzen, z.B. die [MaxTaskRetryCount][net_taskconstraint_maxretry]-, [MaxWallClockTime][net_taskconstraint_maxwallclock]- und [RetentionTime][net_taskconstraint_retention]-Eigenschaften werden berücksichtigt, da sie für einen Standardtask angegeben sind und für den Primärtask sowie alle Subtasks gelten. Wenn Sie die [RetentionTime][net_taskconstraint_retention]-Eigenschaft jedoch nach dem Hinzufügen des Tasks mit mehreren Instanzen zum Auftrag ändern, wird diese Änderung nur für den Primärtask übernommen. Alle Subtasks verwenden weiterhin die ursprüngliche [RetentionTime][net_taskconstraint_retention]-Eigenschaft.
 
 In der Liste der aktuellen Tasks eines Computeknotens wird die ID eines Subtasks angezeigt, wenn der aktuelle Task Teil eines Tasks mit mehreren Instanzen war.
 
@@ -222,7 +221,7 @@ In der Liste der aktuellen Tasks eines Computeknotens wird die ID eines Subtasks
 Zum Abrufen von Informationen zu Subtasks mithilfe der Batch-Bibliothek für .NET rufen Sie die [CloudTask.ListSubtasks][net_task_listsubtasks]-Methode auf. Diese Methode gibt Informationen zu allen Subtasks sowie zum Computeknoten zurück, auf dem die Tasks ausgeführt wurden. Anhand dieser Informationen können Sie u. a. das Stammverzeichnis, die Pool-ID, den aktuellen Zustand und den Exitcode der einzelnen Subtasks bestimmen. Diese Informationen können Sie in Kombination mit der [PoolOperations.GetNodeFile][poolops_getnodefile]-Methode zum Abrufen der Dateien des Subtasks verwenden. Beachten Sie, dass diese Methode keine Informationen für den Primärtask (ID 0) zurückgibt.
 
 > [!NOTE]
-> Sofern nicht anders angegeben, gelten Batch .NET-Methoden, die für den [CloudTask][net_task] mit mehreren Instanzen selbst angewendet werden, *nur* für den Primärtask. Wenn Sie beispielsweise die [CloudTask.ListNodeFiles][net_task_listnodefiles]-Methode für einen Task mit mehreren Instanzen aufrufen, werden nur die Dateien des Primärtasks zurückgegeben.
+> Sofern nicht anders angegeben, gelten Batch .NET-Methoden, die auf den [CloudTask][net_task] mit mehreren Instanzen selbst angewendet werden, *nur* für den Primärtask. Wenn Sie beispielsweise die [CloudTask.ListNodeFiles][net_task_listnodefiles]-Methode für einen Task mit mehreren Instanzen aufrufen, werden nur die Dateien des Primärtasks zurückgegeben.
 >
 >
 
@@ -269,8 +268,8 @@ await subtasks.ForEachAsync(async (subtask) =>
 Im Codebeispiel [MultiInstanceTasks][github_mpi] auf GitHub wird veranschaulicht, wie Sie einen Task mit mehreren Instanzen zum Ausführen einer [MS-MPI][msmpi_msdn]-Anwendung auf Batch-Computeknoten verwenden. Führen Sie die Schritte unter [Vorbereitung](#preparation) und [Ausführung](#execution) aus, um das Beispiel auszuführen.
 
 ### <a name="preparation"></a>Vorbereitung
-1. Führen Sie die ersten beiden Schritte unter [How to compile and run a simple MS-MPI program][msmpi_howto] (Kompilieren und Ausführen eines einfachen MS-MPI-Programms) aus. Hiermit sind die Voraussetzungen für den folgenden Schritt erfüllt.
-2. Erstellen Sie eine *Vorabversion* des MPI-Beispielprogramms [MPIHelloWorld][helloworld_proj]. Dies ist das Programm, das vom Task mit mehreren Instanzen auf Computeknoten ausgeführt wird.
+1. Führen Sie die ersten beiden Schritte in [How to compile and run a simple MS-MPI program][msmpi_howto] (Kompilieren und Ausführen eines einfachen MS-MPI-Programms) aus. Hiermit sind die Voraussetzungen für den folgenden Schritt erfüllt.
+2. Erstellen Sie eine *Freigabe*version des MPI-Beispielprogramms [MPIHelloWorld][helloworld_proj]. Dies ist das Programm, das vom Task mit mehreren Instanzen auf Computeknoten ausgeführt wird.
 3. Erstellen Sie eine ZIP-Datei, die `MPIHelloWorld.exe` (in Schritt 2 erstellt) und `MSMpiSetup.exe` (in Schritt 1 heruntergeladen) enthält. Im nächsten Schritt laden Sie diese ZIP-Datei als Anwendungspaket hoch.
 4. Verwenden Sie das [Azure-Portal][portal] zum Erstellen einer Batch-[Anwendung](batch-application-packages.md) mit dem Namen „MPIHelloWorld“, und geben Sie die im vorherigen Schritt als Version „1.0“ des Anwendungspakets erstellte ZIP-Datei an. Weitere Informationen finden Sie unter [Hochladen und Verwalten von Anwendungen](batch-application-packages.md#upload-and-manage-applications).
 
@@ -280,8 +279,8 @@ Im Codebeispiel [MultiInstanceTasks][github_mpi] auf GitHub wird veranschaulicht
 >
 
 ### <a name="execution"></a>Ausführung
-1. Laden Sie [azure-batch-samples][github_samples_zip] von GitHub herunter.
-2. Öffnen Sie die **Lösung** „MultiInstanceTasks“ in Visual Studio 2017. Die Lösungsdatei `MultiInstanceTasks.sln` befindet sich hier:
+1. Laden Sie die [azure-batch-samples][github_samples_zip] von GitHub herunter.
+2. Öffnen Sie die **Projektmappe** „MultiInstanceTasks“ in Visual Studio 2019. Die Lösungsdatei `MultiInstanceTasks.sln` befindet sich hier:
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. Geben Sie die Anmeldeinformationen für Ihr Batch- und Storage-Konto in `AccountSettings.settings` im Projekt **Microsoft.Azure.Batch.Samples.Common** ein.

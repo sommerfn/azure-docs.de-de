@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 05/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116825"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66399201"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Erstellen benutzerdefinierter Artefakte für Ihren virtuellen DevTest Labs-Computer
 
@@ -30,7 +30,7 @@ Das folgende Video enthält einen Überblick über die in diesem Artikel beschri
 >
 
 ## <a name="overview"></a>Übersicht
-Sie können nach der Bereitstellung einer VM *Artefakte* bereitstellen und Ihre Anwendung einrichten. Ein Artefakt umfasst eine Artefaktdefinitionsdatei und andere Skriptdateien, die in einem Ordner in einem Git-Repository gespeichert sind. Artefaktdefinitionsdateien bestehen aus JSON und Ausdrücken, mit denen Sie angeben können, was Sie auf einem virtuellen Computer installieren möchten. Sie können beispielsweise den Namen eines Artefakts, einen auszuführenden Befehl sowie Parameter, die beim Ausführen des Befehls verfügbar sind, definieren. Sie können auf andere Skriptdateien innerhalb der Artefaktdefinitionsdatei anhand ihres Namens verweisen.
+Sie können nach der Bereitstellung einer VM *artifacts* bereitstellen und Ihre Anwendung einrichten. Ein Artefakt umfasst eine Artefaktdefinitionsdatei und andere Skriptdateien, die in einem Ordner in einem Git-Repository gespeichert sind. Artefaktdefinitionsdateien bestehen aus JSON und Ausdrücken, mit denen Sie angeben können, was Sie auf einem virtuellen Computer installieren möchten. Sie können beispielsweise den Namen eines Artefakts, einen auszuführenden Befehl sowie Parameter, die beim Ausführen des Befehls verfügbar sind, definieren. Sie können auf andere Skriptdateien innerhalb der Artefaktdefinitionsdatei anhand ihres Namens verweisen.
 
 ## <a name="artifact-definition-file-format"></a>Format von Artefaktdefinitionsdateien
 Das folgende Beispiel zeigt die Abschnitte, die die grundlegende Struktur einer Definitionsdatei bilden:
@@ -53,14 +53,14 @@ Das folgende Beispiel zeigt die Abschnitte, die die grundlegende Struktur einer 
       }
     }
 
-| Elementname | Erforderlich? | BESCHREIBUNG |
+| Elementname | Erforderlich? | Description |
 | --- | --- | --- |
-| $schema |Nein  |Speicherort der JSON-Schemadatei Mithilfe der JSON-Schemadatei können Sie die Gültigkeit der Definitionsdatei testen. |
+| $schema |Nein |Speicherort der JSON-Schemadatei Mithilfe der JSON-Schemadatei können Sie die Gültigkeit der Definitionsdatei testen. |
 | title |Ja |Der Name des im Lab angezeigten Artefakts. |
-| Beschreibung |Ja |Die Beschreibung des im Lab angezeigten Artefakts. |
-| iconUri |Nein  |Der URI des im Lab angezeigten Symbols |
+| description |Ja |Die Beschreibung des im Lab angezeigten Artefakts. |
+| iconUri |Nein |Der URI des im Lab angezeigten Symbols |
 | targetOsType |Ja |Das Betriebssystem der VM, auf der das Artefakt installiert ist. Unterstützte Optionen sind „Windows“ und „Linux“. |
-| Parameter |Nein  |Werte, die bereitgestellt werden, wenn der Artefaktinstallationsbefehl auf einem Computer ausgeführt wird. Dieser ermöglicht die Anpassung Ihres Artefakts. |
+| parameters |Nein |Werte, die bereitgestellt werden, wenn der Artefaktinstallationsbefehl auf einem Computer ausgeführt wird. Dieser ermöglicht die Anpassung Ihres Artefakts. |
 | runCommand |Ja |Artefaktinstallationsbefehl, der auf einem virtuellen Computer ausgeführt wird. |
 
 ### <a name="artifact-parameters"></a>Artefaktparameter
@@ -76,11 +76,11 @@ Sie definieren Parameter mit der folgenden Struktur:
       }
     }
 
-| Elementname | Erforderlich? | BESCHREIBUNG |
+| Elementname | Erforderlich? | Description |
 | --- | --- | --- |
 | type |Ja |Der Typ des Parameterwerts. In der folgenden Liste finden Sie die zulässigen Typen. |
 | displayName |Ja |Der Name des Parameters, der einem Benutzer im Labor angezeigt wird. |
-| Beschreibung |Ja |Die Beschreibung des Parameters, der im Labor angezeigt wird. |
+| description |Ja |Die Beschreibung des Parameters, der im Labor angezeigt wird. |
 
 Folgende Typen sind zulässig:
 
@@ -89,15 +89,40 @@ Folgende Typen sind zulässig:
 * „bool“ (ein gültiger boolescher JSON-Wert)
 * „array“ (ein gültiges JSON-Array)
 
+## <a name="secrets-as-secure-strings"></a>Geheimnisse als sichere Zeichenfolgen
+Deklarieren Sie Geheimnisse als sichere Zeichenfolgen. Hier ist die Syntax zum Deklarieren eines Parameters für eine sichere Zeichenfolge im Abschnitt `parameters` der Datei **artifactfile.json** angegeben:
+
+```json
+
+    "securestringParam": {
+      "type": "securestring",
+      "displayName": "Secure String Parameter",
+      "description": "Any text string is allowed, including spaces, and will be presented in UI as masked characters.",
+      "allowEmpty": false
+    },
+```
+
+Führen Sie für den Befehl zum Installieren des Artefakts das PowerShell-Skript aus, für das die sichere Zeichenfolge verwendet wird, die mit dem Befehl „ConvertTo-SecureString“ erstellt wurde. 
+
+```json
+  "runCommand": {
+    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./artifact.ps1 -StringParam ''', parameters('stringParam'), ''' -SecureStringParam (ConvertTo-SecureString ''', parameters('securestringParam'), ''' -AsPlainText -Force) -IntParam ', parameters('intParam'), ' -BoolParam:$', parameters('boolParam'), ' -FileContentsParam ''', parameters('fileContentsParam'), ''' -ExtraLogLines ', parameters('extraLogLines'), ' -ForceFail:$', parameters('forceFail'), '\"')]"
+  }
+```
+
+Alle Informationen zum „artifactfile.json“-Beispiel und zu „artifact.ps1“ (PowerShell-Skript) finden Sie unter [diesem Beispiel auf GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes).
+
+Ein weiterer wichtiger Punkt, der beachtet werden sollte, ist das Verzichten auf die Protokollierung von Geheimnissen in der Konsole, da die Ausgabe für das Debuggen von Benutzern erfasst wird. 
+
 ## <a name="artifact-expressions-and-functions"></a>Ausdrücke und Funktionen für Artefakte
 Sie können zum Erstellen des Artefaktinstallationsbefehls Ausdrücke und Funktionen verwenden.
 Ausdrücke werden in Klammern eingeschlossen ([ und ]) und beim Installieren des Artefakts ausgewertet. Ausdrücke können an einer beliebigen Stelle in einem JSON-Zeichenfolgenwert angezeigt werden. Ausdrücke geben stets einen anderen JSON-Wert zurück. Wenn Sie ein Zeichenfolgenliteral verwenden müssen, das mit einer eckigen Klammer ([) beginnt, müssen Sie zwei eckige Klammern verwenden ([[).
-In der Regel verwenden Sie Ausdrücke mit Funktionen, um einen Wert zu erstellen. Genau wie in JavaScript haben Funktionsaufrufe das Format **functionName(arg1, arg2, arg3)**.
+In der Regel verwenden Sie Ausdrücke mit Funktionen, um einen Wert zu erstellen. Genau wie in JavaScript haben Funktionsaufrufe das Format **functionName(arg1, arg2, arg3)** .
 
 Die folgende Liste zeigt häufig verwendete Funktionen:
 
-* **parameters(parameterName)**: Gibt einen Parameterwert zurück, der beim Ausführen des Artefaktbefehls bereitgestellt wird.
-* **concat(arg1, arg2, arg3,….. )**: Kombiniert mehrere Zeichenfolgenwerte. Diese Funktion kann eine Vielzahl an Argumenten entgegennehmen.
+* **parameters(parameterName)** : Gibt einen Parameterwert zurück, der beim Ausführen des Artefaktbefehls bereitgestellt wird.
+* **concat(arg1, arg2, arg3,….. )** : Kombiniert mehrere Zeichenfolgenwerte. Diese Funktion kann eine Vielzahl an Argumenten entgegennehmen.
 
 Das folgende Beispiel zeigt, wie Sie mit Ausdrücken und Funktionen einen Wert erstellen:
 

@@ -22,6 +22,8 @@
       href: view-recommendations.md
     - name: Berechtigungen und blockierte Aktionen
       href: permissions.md
+    - name: Konfigurieren von Warnungen für Empfehlungen
+      href: advisor-alerts.md
 - name: Verweis
   items:
     - name: Security Center

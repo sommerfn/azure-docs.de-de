@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: f3c6e39203fb0d864ecf952e0468959d66931e1f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c8647e316cc77e7e1eed5108fafccd6d70d181cf
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491578"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898201"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -73,7 +73,42 @@ Advisor identifiziert die Tabellen, die keine replizierten Tabellen sind, würde
 Migrieren Sie Ihr Speicherkonto-Bereitstellungsmodell zu Azure Resource Manager (Resource Manager), um von Vorlagenbereitstellungen, zusätzlichen Sicherheitsoptionen und der Möglichkeit zum Upgrade auf ein Konto vom Typ „Allgemein v2“ zur Nutzung der neuesten Features von Azure Storage zu profitieren. Advisor identifiziert eigenständige Speicherkonten, die das klassische Bereitstellungsmodell verwenden, und empfiehlt eine Migration zum Resource Manager-Bereitstellungsmodell.
 
 > [!NOTE]
-> Es ist geplant, klassische Warnungen in Azure Monitor im Juni 2019 einzustellen. Es wird empfohlen, ein Upgrade Ihres klassischen Speicherkontos durchzuführen, damit Resource Manager verwendet werden kann, um die Warnungsfunktion auf der neuen Plattform beizubehalten. Weitere Informationen finden Sie unter [Einstellung klassischer Warnungen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+> Klassische Warnungen in Azure Monitor wurden im August 2019 eingestellt. Es wird empfohlen, ein Upgrade Ihres klassischen Speicherkontos durchzuführen, damit Resource Manager verwendet werden kann, um die Warnungsfunktion auf der neuen Plattform beizubehalten. Weitere Informationen finden Sie unter [Einstellung klassischer Warnungen](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/monitoring-classic-retirement#retirement-of-classic-monitoring-and-alerting-platform).
+
+## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Entwerfen Ihrer Speicherkonten, damit die maximale Abonnementgrenze nicht erreicht wird
+
+In einer Azure-Region können maximal 250 Speicherkonten pro Abonnement unterstützt werden. Wenn das Limit erreicht ist, können Sie keine weiteren Speicherkonten in dieser Region-Abonnement-Kombination mehr erstellen. Advisor überprüft Ihre Abonnements und zeigt Empfehlungen an, damit Sie weniger Speicherkonten für Abonnements entwerfen, bei denen das maximale Limit bald erreicht ist.
+
+## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Optimieren der Leistung der Azure MySQL-, Azure PostgreSQL- und Azure MariaDB-Server 
+
+### <a name="fix-the-cpu-pressure-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-with-cpu-bottlenecks"></a>Korrigieren der CPU-Auslastung der Azure MySQL-, Azure PostgreSQL- und Azure MariaDB-Server mit CPU-Engpässen
+Eine sehr hohe CPU-Auslastung über einen längeren Zeitraum kann die Abfrageleistung für Ihre Workload beeinträchtigen. Durch Erhöhen der CPU-Größe können die Runtime der Datenbankabfragen optimiert und die Gesamtleistung verbessert werden. Azure Advisor identifiziert Server mit einer hohen CPU-Auslastung, auf denen wahrscheinlich Workloads mit eingeschränkter CPU-Leistung ausgeführt werden, und empfiehlt die Skalierung der Computegröße.
+
+### <a name="reduce-memory-constraints-on-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers-or-move-to-a-memory-optimized-sku"></a>Reduzieren der Speicherbeschränkungen auf den Azure MySQL-, Azure PostgreSQL- und Azure MariaDB-Servern oder Verschieben in arbeitsspeicheroptimierte SKU
+Eine niedrige Cachetrefferquote kann die Abfrageleistung beeinträchtigen und zu erhöhtem IOPS führen. Dies kann auf einen ungültigen Abfrageplan oder die Ausführung einer speicherintensiven Workload zurückzuführen sein. Durch Korrigieren des Abfrageplans oder  [Vergrößern des Speichers](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) des Azure Database for PostgreSQL-Datenbankservers, Azure MySQL-Datenbankservers oder Azure MariaDB-Servers kann die Ausführung der Datenbankworkload optimiert werden. Azure Advisor identifiziert Server, die durch diese hohe Änderungsrate des Pufferpools betroffen sind, und empfiehlt entweder die Korrektur des Abfrageplans, den Wechsel zu einer höheren SKU mit mehr Speicher oder die Vergrößerung des Speichers, um mehr IOPS zu erhalten.
+
+### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Verwenden eines MySQL- oder Azure PostgreSQL-Lesereplikats zum horizontalen Skalieren von Lesevorgängen für leseintensive Workloads
+Azure Advisor nutzt workloadbasierte Heuristik, z. B. das Verhältnis von Lese-zu Schreibvorgängen auf dem Server in den letzten sieben Tagen, um leseintensive Workloads zu identifizieren. Eine Azure Database for PostgreSQL-Ressource oder Azure Database for MySQL-Ressource mit einem sehr hohen Verhältnis von Lese- zu Schreibvorgängen kann zu CPU- und/oder Speicherkonflikten führen, durch die die Abfrageleistung beeinträchtigt wird. Durch Hinzufügen eines  [Replikats](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) können Schreibvorgänge horizontal auf den Replikatserver skaliert werden, sodass CPU- und oder Speicherkonflikte auf dem primären Server verhindert werden. Advisor identifiziert Server mit diesen leseintensiven Workloads und empfiehlt, dass ein [Lesereplikat](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) hinzugefügt wird, um einige der Leseworkloads auszulagern.
+
+
+### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Skalieren des Azure MySQL-, Azure PostgreSQL- oder Azure MariaDB-Servers auf eine höhere SKU zur Verhinderung von Verbindungseinschränkungen
+Jede neue Verbindung mit dem Datenbankserver belegt Speicher. Die Leistung des Datenbankservers verschlechtert sich, wenn aufgrund einer [Obergrenze](https://docs.microsoft.com/azure/postgresql/concepts-limits) des Speichers Fehler bei Verbindungen mit dem Server auftreten. Azure Advisor identifiziert Server, bei denen viele Verbindungsfehler auftreten, und empfiehlt die Aktualisierung der Verbindungslimits des Servers durch zentrales Hochskalieren der Computegröße oder Verwendung von arbeitsspeicheroptimierten SKUs, die über eine höhere Computegröße pro Kern verfügen, um auf dem Server mehr Speicher bereitzustellen.
+
+## <a name="scale-your-cache-to-a-different-size-or-sku-to-improve-cache-and-application-performance"></a>Skalieren Ihres Caches auf eine andere Größe oder SKU, um die Cache- und Anwendungsleistung zu verbessern
+
+Cache-Instanzen funktionieren am besten, wenn sie nicht unter hoher Arbeitsspeicherauslastung, hoher Serverlast oder hoher Netzwerkbandbreite ausgeführt werden, da diese Faktoren dazu führen können, dass die Instanzen nicht mehr reagieren oder nicht mehr verfügbar sind. Auch Datenverluste sind möglich. Advisor erkennt entsprechende Cache-Instanzen und empfiehlt entweder die Anwendung bewährter Methoden, um die Arbeitsspeicherauslastung, Serverlast oder Netzwerkbandbreite zu verringern, oder die Skalierung auf eine andere Größe oder SKU mit mehr Kapazität.
+
+## <a name="add-regions-with-traffic-to-your-azure-cosmos-db-account"></a>Hinzufügen von Regionen mit Datenverkehr zu Ihrem Azure Cosmos DB-Konto
+
+Advisor erkennt Azure Cosmos DB-Konten mit Datenverkehr aus einer derzeit nicht konfigurierten Region und empfiehlt, diese Region hinzuzufügen. Dies dient zur Verbesserung der Wartezeit für Anforderungen aus der betreffenden Region und gewährleistet die Verfügbarkeit im Falle von Regionsausfällen. Weitere Informationen zur globalen Datenverteilung mit Azure Cosmos DB finden Sie [hier](https://aka.ms/cosmos/globaldistribution).
+
+## <a name="configure-your-azure-cosmos-db-indexing-policy-with-customer-included-or-excluded-paths"></a>Konfigurieren Ihrer Azure Cosmos DB-Indizierungsrichtlinie mit benutzerdefinierten eingeschlossenen oder ausgeschlossenen Pfaden
+
+Azure Advisor erkennt Cosmos DB-Container, die die standardmäßige Indizierungsrichtlinie verwenden, aber von einer benutzerdefinierten Indizierungsrichtlinie profitieren könnten (basierend auf dem Workloadmuster). Die standardmäßige Indizierungsrichtlinie indiziert sämtliche Eigenschaften. Durch die Verwendung einer benutzerdefinierten Indizierungsrichtlinie mit expliziten ein- bzw. ausgeschlossenen Pfaden für Abfragefilter lassen sich die Anforderungseinheiten und der Speicherbedarf für die Indizierung verringern. Weitere Informationen zum Ändern von Indizierungsrichtlinien finden Sie [hier](https://aka.ms/cosmosdb/modify-index-policy).
+
+## <a name="configure-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Festlegen der Azure Cosmos DB-Abfrageseitengröße (MaxItemCount) auf „-1“ 
+
+Azure Advisor erkennt Azure Cosmos DB-Container, die die Abfrageseitengröße „100“ verwenden, und empfiehlt die Verwendung der Seitengröße „-1“, um Scanvorgänge zu beschleunigen. Weitere Informationen zur maximalen Elementanzahl finden Sie [hier](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zur Leistung
 

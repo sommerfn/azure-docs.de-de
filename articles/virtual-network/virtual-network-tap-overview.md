@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/18/2019
+ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 45224b1b0ec4a4b3c93393c178f1f03baa58e10b
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: ff5c8c4d3f6a0c87afae67404a5a39d4fe3757d9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189137"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60593181"
 ---
 # <a name="virtual-network-tap"></a>TAP eines virtuellen Netzwerks
 
@@ -36,17 +36,18 @@ Mit dem TAP (Terminal Access Point) für virtuelle Azure-Netzwerke können Sie I
 - [Big Switch Big Monitoring Fabric](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
 - [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
+- [Nubeva Prisms](https://www.nubeva.com/azurevtap)
 
 ### <a name="security-analytics-networkapplication-performance-management"></a>Sicherheitsanalyse und Verwalten der Netzwerk-/Anwendungsleistung
 
 - [Awake Security](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [Cisco Stealthwatch Cloud](https://blogs.cisco.com/security/cisco-stealthwatch-cloud-and-microsoft-azure-reliable-cloud-infrastructure-meets-comprehensive-cloud-security)
+- [Darktrace](https://www.darktrace.com/en/azure/)
 - [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
 - [Fidelis Cybersecurity](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
-- [Nubeva Prisms](https://www.nubeva.com/azurevtap)
 - [RSA NetWitness® Platform](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
@@ -56,7 +57,7 @@ In der folgenden Abbildung wird gezeigt, wie der TAP des virtuellen Netzwerks fu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie einen TAP für ein virtuelles Netzwerk erstellen können, müssen Sie eine E-Mail erhalten haben, die bestätigt, dass Sie für die Vorschauversion registriert sind, und mindestens einen virtuellen Computer mit dem [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Bereitstellungsmodell und einer Partnerlösung zum Aggregieren des TAP-Datenverkehrs in der Region „USA, Westen-Mitte“ erstellt haben. Wenn keine Partnerlösung in Ihrem virtuellen Netzwerk vorhanden ist, lesen Sie [Partnerlösungen für TAPs von virtuellen Netzwerken](#virtual-network-tap-partner-solutions), um eine solche Lösung bereitzustellen. Mit derselben TAP-Ressource für virtuelle Netzwerke können Sie Datenverkehr von mehreren Netzwerkschnittstellen in der gleichen oder in unterschiedlichen Abonnements aggregieren. Wenn sich die überwachten Netzwerkschnittstellen in verschiedenen Abonnements befinden, müssen die Abonnements demselben Azure Active Directory-Mandanten zugeordnet sein. Darüber hinaus können sich die überwachten Netzwerkschnittstellen und der Endpunkt des Ziels zum Aggregieren des TAP-Datenverkehrs in der gleichen Region befinden, in der die mittels Peering verknüpften virtuellen Netzwerken vorhanden sind. Stellen Sie bei diesem Bereitstellungsmodell sicher, dass das [Peering virtueller Netzwerke](virtual-network-peering-overview.md) aktiviert ist, bevor Sie einen TAP für virtuelle Netzwerke konfigurieren.
+Bevor Sie einen TAP für ein virtuelles Netzwerk erstellen können, müssen Sie eine E-Mail erhalten haben, die bestätigt, dass Sie für die Vorschauversion registriert sind, und mindestens einen virtuellen Computer mit dem [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Bereitstellungsmodell und einer Partnerlösung zum Aggregieren des TAP-Datenverkehrs in derselben Azure-Region erstellt haben. Wenn keine Partnerlösung in Ihrem virtuellen Netzwerk vorhanden ist, lesen Sie [Partnerlösungen für TAPs von virtuellen Netzwerken](#virtual-network-tap-partner-solutions), um eine solche Lösung bereitzustellen. Mit derselben TAP-Ressource für virtuelle Netzwerke können Sie Datenverkehr von mehreren Netzwerkschnittstellen in der gleichen oder in unterschiedlichen Abonnements aggregieren. Wenn sich die überwachten Netzwerkschnittstellen in verschiedenen Abonnements befinden, müssen die Abonnements demselben Azure Active Directory-Mandanten zugeordnet sein. Darüber hinaus können sich die überwachten Netzwerkschnittstellen und der Endpunkt des Ziels zum Aggregieren des TAP-Datenverkehrs in der gleichen Region befinden, in der die mittels Peering verknüpften virtuellen Netzwerken vorhanden sind. Stellen Sie bei diesem Bereitstellungsmodell sicher, dass das [Peering virtueller Netzwerke](virtual-network-peering-overview.md) aktiviert ist, bevor Sie einen TAP für virtuelle Netzwerke konfigurieren.
 
 ## <a name="permissions"></a>Berechtigungen
 

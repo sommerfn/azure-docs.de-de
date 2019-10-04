@@ -6,15 +6,15 @@ manager: philmea
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 06/28/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 1c9855f982b888e8e1d68bfe5233983db8c826ad
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 325b69eb7b9b069db0ba49b4578541ee801c3444
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873762"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476175"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Verbinden von ModBus-TCP-Geräten über ein IoT Edge-Gerätegateway
 
@@ -35,7 +35,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie das ModBus-TCP-Protokoll verw
 
 Wenn Sie die Funktionalität des ModBus-Gateways testen möchten, können Sie ein von Microsoft bereitgestelltes Beispielmodul verwenden. Sie können auf das Modul über Azure Marketplace [Modbus](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot.edge-modbus?tab=Overview) oder über den Image-URI **mcr.microsoft.com/azureiotedge/modbus:1.0** zugreifen.
 
-Falls Sie Ihr eigenes Modul erstellen und für Ihre Umgebung anpassen möchten, können Sie das Open-Source-Projekt [Azure IoT Edge Modbus module](https://github.com/Azure/iot-edge-modbus) (ModBus-Modul für Azure IoT Edge) auf GitHub nutzen. Befolgen Sie die Anweisungen in diesem Projekt, um Ihr eigenes Containerimage zu erstellen. Wenn Sie ein eigenes Containerimage erstellen, lesen Sie [Entwickeln von C#-Modulen in Visual Studio](how-to-visual-studio-develop-csharp-module.md) oder [Entwickeln von Modulen in Visual Studio Code](how-to-vs-code-develop-module.md). Diese Artikel bieten Anweisungen zum Erstellen neuer Module und zum Veröffentlichen von Containerimages in einer Registrierung.
+Falls Sie Ihr eigenes Modul erstellen und für Ihre Umgebung anpassen möchten, können Sie das Open-Source-Projekt [Azure IoT Edge Modbus module](https://github.com/Azure/iot-edge-modbus) (ModBus-Modul für Azure IoT Edge) auf GitHub nutzen. Befolgen Sie die Anweisungen in diesem Projekt, um Ihr eigenes Containerimage zu erstellen. Lesen Sie [Entwickeln von C#-Modulen in Visual Studio](how-to-visual-studio-develop-csharp-module.md) oder [Entwickeln von Modulen in Visual Studio Code](how-to-vs-code-develop-module.md), um ein eigenes Containerimage zu erstellen. Diese Artikel bieten Anweisungen zum Erstellen neuer Module und zum Veröffentlichen von Containerimages in einer Registrierung.
 
 ## <a name="try-the-solution"></a>Testen der Lösung
 
@@ -70,7 +70,7 @@ Dieser Abschnitt führt Sie durch die Bereitstellung des Modbus-Beispielmoduls v
                 "Op01":{
                   "PollingInterval": "1000",
                   "UnitId":"1",
-                  "StartAddress":"400001",
+                  "StartAddress":"40001",
                   "Count":"2",
                   "DisplayName":"Voltage"
                 }
@@ -85,12 +85,13 @@ Dieser Abschnitt führt Sie durch die Bereitstellung des Modbus-Beispielmoduls v
 
 5. Wenn Sie zum Schritt **Module hinzufügen** zurückgekehrt sind, wählen Sie **Weiter** aus.
 
-7. Kopieren Sie im Schritt **Routen angeben** den unten angegebenen JSON-Code in das Textfeld. Für diese Route werden alle Nachrichten, die vom ModBus-Modul gesammelt wurden, an den IoT Hub gesendet. Bei dieser Route ist „modbusOutput“ der Endpunkt, der vom ModBus-Modul zum Ausgeben von Daten verwendet wird, und „upstream“ ist ein spezielles Ziel, das den IoT Edge-Hub zum Senden von Nachrichten an den IoT Hub anweist.
+7. Kopieren Sie im Schritt **Routen angeben** den unten angegebenen JSON-Code in das Textfeld. Für diese Route werden alle Nachrichten, die vom ModBus-Modul gesammelt wurden, an den IoT Hub gesendet. Bei dieser Route ist **modbusOutput** der Endpunkt, der vom ModBus-Modul zum Ausgeben von Daten verwendet wird, und **$upstream** ist ein spezielles Ziel, das den IoT Edge-Hub zum Senden von Nachrichten an den IoT Hub anweist.
+
    ```JSON
    {
-    "routes": {
-      "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
-    }
+     "routes": {
+       "modbusToIoTHub":"FROM /messages/modules/modbus/outputs/modbusOutput INTO $upstream"
+     }
    }
    ```
 

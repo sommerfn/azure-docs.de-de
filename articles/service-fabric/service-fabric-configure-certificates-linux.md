@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/26/2018
-ms.author: v-jamebr
-ms.openlocfilehash: c0580b75544a9613bc8caf2faaac11ba1ba6708e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 09/06/2019
+ms.author: chackdan
+ms.openlocfilehash: 9599d59f7f23de4e54ce323aa4a2ad837d8ed074
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667139"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773251"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Zertifikate und Sicherheit in Linux-Clustern
 
@@ -31,7 +30,7 @@ Service Fabric erwartet normalerweise, dass X.509-Zertifikate im Verzeichnis */v
 
 Für Linux-Cluster erwartet Service Fabric, dass Zertifikate entweder als PEM-Datei (die sowohl das Zertifikat als auch den privaten Schlüssel enthält) oder als CRT-Datei (die das Zertifikat und eine KEY-Datei mit dem privaten Schlüssel enthält) vorliegen. Alle Dateien sollten im PEM-Format vorhanden sein. 
 
-Wenn Sie Ihr Zertifikat über Azure Key Vault installieren, indem Sie entweder eine [Resource Manager-Vorlage](./service-fabric-cluster-creation-create-template.md) oder [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/?view=latest#service_fabric)-Befehle verwenden, wird das Zertifikat auf jedem Knoten im richtigen Format im Verzeichnis */var/lib/sfcerts* installiert. Wenn Sie ein Zertifikat mit einer anderen Methode installieren, müssen Sie sicherstellen, dass das Zertifikat richtig auf den Clusterknoten installiert ist.
+Wenn Sie Ihr Zertifikat über Azure Key Vault installieren, indem Sie entweder eine [Resource Manager-Vorlage](./service-fabric-cluster-creation-create-template.md) oder [PowerShell](https://docs.microsoft.com/powershell/module/az.servicefabric/?view=azps-2.6.0)-Befehle verwenden, wird das Zertifikat auf jedem Knoten im richtigen Format im Verzeichnis */var/lib/sfcerts* installiert. Wenn Sie ein Zertifikat mit einer anderen Methode installieren, müssen Sie sicherstellen, dass das Zertifikat richtig auf den Clusterknoten installiert ist.
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Im Anwendungsmanifest angegebene Zertifikate
 
@@ -72,7 +71,7 @@ Der folgende XML-Code enthält den Abschnitt **TransportSettings**, der auf dies
 </Section>
 ```
 
-### <a name="using-x5092-securitycredentialstype"></a>Verwenden von X509_2 als SecurityCredentialsType
+### <a name="using-x509_2-securitycredentialstype"></a>Verwenden von X509_2 als SecurityCredentialsType
 
 Mit dem Java-SDK können Sie für **SecurityCredentialsType** den Wert **X509_2** angeben. Dies entspricht dem Typ `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) von `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
 

@@ -3,16 +3,17 @@ title: 'Tutorial: Bereitstellen einer Gruppe mit mehreren Containern in Azure Co
 description: In diesem Tutorial erfahren Sie, wie Sie eine Containergruppe mit mehreren Containern über die Azure-Befehlszeilenschnittstelle mit einer YAML-Datei in Azure Container Instances bereitstellen.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: a0a91ece4f219cf822673cd457c064c326b89478
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: a38b0cfe7072975e4bcaf61b65ab7733694f714c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006189"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178568"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Tutorial: Bereitstellen einer Gruppe mit mehreren Containern mithilfe einer YAML-Datei
 
@@ -23,7 +24,7 @@ ms.locfileid: "59006189"
 
 Azure Container Instances unterstützt die Bereitstellung von mehreren Containern auf einem einzelnen Host mit einer [Containergruppe](container-instances-container-groups.md). Containergruppen sind nützlich, wenn eine Sidecaranwendung für die Protokollierung, die Überwachung oder eine andere Konfiguration, bei der ein Dienst einen zweiten angefügten Prozess benötigt, erstellt wird.
 
-In diesem Tutorial befolgen Sie Schritte zum Ausführen einer einfachen Sidecarkonfiguration mit zwei Containern durch Bereitstellung einer YAML-Datei mithilfe der Azure-Befehlszeilenschnittstelle. Eine YAML-Datei bietet ein übersichtliches Format zur Angabe der Instanzeinstellungen. Folgendes wird vermittelt:
+In diesem Tutorial befolgen Sie Schritte zum Ausführen einer einfachen Sidecarkonfiguration mit zwei Containern durch Bereitstellung einer [YAML-Datei](container-instances-reference-yaml.md) mithilfe der Azure-Befehlszeilenschnittstelle. Eine YAML-Datei bietet ein übersichtliches Format zur Angabe der Instanzeinstellungen. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Konfigurieren einer YAML-Datei
@@ -101,7 +102,7 @@ Erstellen Sie mit dem Befehl [az group create][az-group-create] eine Ressourceng
 az group create --name myResourceGroup --location eastus
 ```
 
-Stellen Sie die Containergruppe mit dem Befehl [az container create] [ az-container-create] bereit, und geben Sie die YAML-Datei als Argument weiter:
+Stellen Sie die Containergruppe mit dem Befehl [az container create][az-container-create] bereit, und übergeben Sie dabei die YAML-Datei als Argument:
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --file deploy-aci.yaml
@@ -125,9 +126,9 @@ Name              ResourceGroup    Status    Image                              
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
-## <a name="view-container-logs"></a>Anzeigen von Containerprotokollen
+## <a name="view-container-logs"></a>Containerprotokolle anzeigen
 
-Zeigen Sie die Protokollausgabe eines Containers mit dem Befehl [az container logs][az-container-logs] an. Das `--container-name`-Argument gibt den Container an, aus dem Protokolle erhalten werden können. In diesem Beispiel wird der Container `aci-tutorial-app` angegeben.
+Zeigen Sie die Protokollausgabe eines Containers mithilfe des Befehls [az container logs][az-container-logs] an. Das `--container-name`-Argument gibt den Container an, aus dem Protokolle erhalten werden können. In diesem Beispiel wird der Container `aci-tutorial-app` angegeben.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app

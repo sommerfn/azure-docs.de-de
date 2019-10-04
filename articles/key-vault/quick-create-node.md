@@ -2,21 +2,19 @@
 title: 'Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung legen Sie mithilfe einer Node-Web-App ein Geheimnis in Azure Key Vault fest und rufen es ab.
 services: key-vault
-documentationcenter: ''
-author: prashanthyv
-manager: sumedhb
+author: msmbaldwin
+manager: rkarlin
 ms.service: key-vault
-ms.workload: identity
 ms.topic: quickstart
-ms.date: 09/05/2018
-ms.author: barclayn
+ms.date: 09/03/2010
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 9aa7c4a5464230abe9ac7e75854a7422534f40f6
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 02b9c439a932a4b35700871e68bdad7f03451110
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522303"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003501"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Schnellstart: Festlegen und Abrufen eines Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App 
 
@@ -26,10 +24,10 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Geheimnis in Azure Key
 * Speichern eines Geheimnisses im Schlüsseltresor
 * Abrufen eines Geheimnisses aus dem Schlüsseltresor
 * Erstellen einer Azure-Webanwendung
-* Aktivieren einer [verwalteten Identität](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) für die Web-App
+* Aktivieren einer [verwalteten Identität](../active-directory/managed-service-identity/overview.md) für die Web-App
 * Erteilen der erforderlichen Berechtigungen zum Lesen von Daten aus dem Schlüsseltresor für die Webanwendung
 
-Stellen Sie vor dem Fortfahren sicher, dass Sie mit den [grundlegenden Konzepten von Key Vault](key-vault-whatis.md#basic-concepts) vertraut sind.
+Stellen Sie vor dem Fortfahren sicher, dass Sie mit den [grundlegenden Konzepten von Key Vault](basic-concepts.md) vertraut sind.
 
 > [!NOTE]
 > Key Vault ist ein zentrales Repository zum programmgesteuerten Speichern von Geheimnissen. Dafür müssen sich Anwendungen und Benutzer jedoch zuerst bei Key Vault authentifizieren, d.h. sie müssen ein Geheimnis angeben. Aus Sicherheitsgründen muss das erste Geheimnis regelmäßig rotiert werden. 
@@ -198,5 +196,9 @@ Wenn Sie anschließend zu `https://<app_name>.azurewebsites.net` navigieren, kö
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Azure SDK für Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und ein Geheimnis darin gespeichert. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
+
+- [Was ist der Azure-Schlüsseltresor?](key-vault-overview.md)
+- [Entwicklerhandbuch zu Azure-Schlüsseltresor](key-vault-developers-guide.md)
+- [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md)
+- [Bewährte Methoden zum Verwenden von Key Vault](key-vault-best-practices.md)

@@ -10,14 +10,13 @@ ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 02/03/2019
-ms.openlocfilehash: 7a1132b5857cf6c54d0566ca29bb76ce1ef88513
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5366fb1d32020bfbcfaba36c60c0eb5441e92070
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359431"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71055224"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Azure CLI-Beispiele für Azure SQL-Datenbank
 
@@ -29,7 +28,7 @@ Azure SQL-Datenbank kann mithilfe der <a href="/cli/azure">Azure CLI</a> konfigu
 
 Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI in Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="single-database--elastic-pools"></a>Einzeldatenbank und Pools für elastische Datenbanken
+## <a name="single-database--elastic-poolstabsingle-database"></a>[Einzeldatenbank und Pools für elastische Datenbanken](#tab/single-database)
 
 Die folgende Tabelle enthält Links zu Azure CLI-Skriptbeispielen für Azure SQL-Datenbank.
 
@@ -37,15 +36,17 @@ Die folgende Tabelle enthält Links zu Azure CLI-Skriptbeispielen für Azure SQL
 |---|---|
 |**Erstellen einer einzelnen Datenbank und eines Pools für elastische Datenbanken**||
 | [Create a single SQL database and configure a firewall rule using PowerShell](scripts/sql-database-create-and-configure-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) (Erstellen einer einzelnen SQL-Datenbank und Konfigurieren einer Firewallregel mit PowerShell) | In diesem CLI-Skriptbeispiel wird eine einzelne Azure SQL-Datenbank erstellt und eine Firewallregel auf Serverebene konfiguriert. |
-| [Create elastic pools and move databases between pools and out of a pool using PowerShell](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) (Erstellen von Pools für elastische Datenbanken und Verschieben von Datenbanken zwischen Pools und aus einem Pool mit PowerShell) | In diesem CLI-Skriptbeispiel werden Pools für elastische SQL-Datenbanken erstellt, in einem Pool zusammengefasste Azure SQL-Datenbanken verschoben und Computegrößen geändert.|
+| [Create elastic pools and move databases between pools and out of a pool using PowerShell](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) (Erstellen von Pools für elastische Datenbanken und Verschieben von Datenbanken zwischen Pools und aus einem Pool mit PowerShell) | In diesem CLI-Skriptbeispiel werden Pools für elastische SQL-Datenbanken erstellt, Azure SQL-Pooldatenbanken verschoben und Computegrößen geändert.|
 |**Skalieren einer einzelnen Datenbank und eines Pools für elastische Datenbanken**||
 | [Monitor and scale a single SQL database using the Azure CLI](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) (Überwachen und Skalieren einer einzelnen SQL-Datenbank mit Azure CLI) | In diesem CLI-Skriptbeispiel wird eine einzelne Azure SQL-Datenbank nach Abfrage der Größeninformationen für die Datenbank auf eine andere Computegröße skaliert. |
 | [Scale an elastic pool in Azure SQL Database using the Azure CLI](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) (Skalieren eines Pools für elastische Datenbanken in Azure SQL-Datenbank mit Azure CLI) | In diesem CLI-Skriptbeispiel wird ein Pool für elastische SQL-Datenbanken auf eine andere Computegröße skaliert.  |
+|**Failovergruppen**||
+| [Hinzufügen einzelner Datenbanken zur Failovergruppe](scripts/sql-database-add-single-db-to-failover-group-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Dieses CLI-Skript erstellt eine Datenbank und eine Failovergruppe, fügt die Datenbank zur Failovergruppe hinzu und testet das Failover auf dem sekundären Server.|
 |||
 
 Erfahren Sie mehr über die [Azure CLI-API für Einzeldatenbanken](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases).
 
-## <a name="managed-instance"></a>Verwaltete Instanz
+## <a name="managed-instancetabmanaged-instance"></a>[Verwaltete Instanz](#tab/managed-instance)
 
 Die folgende Tabelle enthält Links zu Azure CLI-Skriptbeispielen für verwaltete Azure SQL-Datenbank-Instanzen.
 
@@ -57,3 +58,5 @@ Die folgende Tabelle enthält Links zu Azure CLI-Skriptbeispielen für verwaltet
 |||
 
 Erfahren Sie mehr über die [Azure CLI-API für verwaltete Instanzen](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances), und finden Sie [hier weitere Beispiele](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
+
+---

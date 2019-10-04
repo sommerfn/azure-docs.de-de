@@ -1,36 +1,47 @@
 ---
-title: Erstellen von Azure-Web-Apps mit Ansible
-description: Hier erfahren Sie, wie Sie Ansible verwenden, um eine Web-App mit Java 8 und der Tomcat-Containerruntime in App Service unter Linux zu erstellen.
-ms.service: azure
+title: 'Tutorial: Konfigurieren von Apps in Azure App Service mit Ansible | Microsoft-Dokumentation'
+description: Es wird beschrieben, wie Sie eine App in Azure App Service mit Java 8 und der Tomcat-Containerruntime erstellen.
 keywords: Ansible, Azure, DevOps, Bash, Playbook, Azure App Service, Web-App, Java
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 12/08/2018
-ms.openlocfilehash: 5f67a9f7d629eec9ab1462a25940355869c1cd28
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 04/30/2019
+ms.openlocfilehash: aed09baf410ce25f2e5383aa746344a440e2a052
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791221"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231241"
 ---
-# <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Erstellen von Azure App Service-Web-Apps mit Ansible
-[Azure App Service-Web-Apps](https://docs.microsoft.com/azure/app-service/overview) (oder einfach Web-Apps) dient zum Hosten von Webanwendungen, REST-APIs und mobilen Back-Ends. Sie können in Ihrer bevorzugten Sprache entwickeln: .NET, .NET Core, Java, Ruby, Node.js, PHP oder Python.
+# <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Tutorial: Konfigurieren von Apps in Azure App Service mit Ansible
 
-Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. In diesem Artikel wird veranschaulicht, wie Sie Ansible verwenden, um eine Web-App mit der Java-Runtime zu erstellen. 
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
+
+[!INCLUDE [open-source-devops-intro-app-service.md](../../includes/open-source-devops-intro-app-service.md)]
+
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
+
+> [!div class="checklist"]
+>
+> * Erstellen einer App in Azure App Service mit Java 8 und der Tomcat-Containerruntime
+> * Erstellen eines Azure Traffic Manager-Profils
+> * Definieren eines Traffic Manager-Endpunkts mit der erstellten App
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- **Azure-Abonnement:** Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)][!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
-> [!Note]
-> Für die Ausführung der folgenden Beispielplaybooks in diesem Tutorial ist Ansible 2.7 erforderlich.
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-simple-app-service"></a>Erstellen eines einfachen App-Diensts
-In diesem Abschnitt finden Sie ein Beispielplaybook für Ansible, das die folgenden Ressourcen definiert:
-- Ressourcengruppe, in der Ihr App Service-Plan und die Web-App bereitgestellt werden
-- Web-App mit Java 8 und der Tomcat-Containerruntime in App Service unter Linux
+## <a name="create-a-basic-app-service"></a>Erstellen eines einfachen App-Diensts
+
+Mit dem Playbookcode in diesem Abschnitt werden die folgenden Ressourcen definiert:
+
+* Azure-Ressourcengruppe, in der der App Service-Plan und die App bereitgestellt werden
+* App Service unter Linux mit Java 8 und der Tomcat-Containerruntime
+
+Speichern Sie das folgende Playbook als `firstwebapp.yml`:
 
 ```yml
 - hosts: localhost
@@ -63,46 +74,49 @@ In diesem Abschnitt finden Sie ein Beispielplaybook für Ansible, das die folgen
               java_container: tomcat
               java_container_version: 8.5
 ```
-Speichern Sie das vorherige Playbook unter **firstwebapp.yml**.
 
-Verwenden Sie den Befehl **ansible-playbook** wie folgt, um das Playbook auszuführen:
+Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+
 ```bash
 ansible-playbook firstwebapp.yml
 ```
 
-In der Ausgabe nach Ausführung des Ansible-Playbooks ist zu sehen, dass die Erstellung der Web-App erfolgreich war:
+Nach dem Ausführen des Playbooks wird in etwa die folgende Ausgabe angezeigt:
 
 ```Output
-PLAY [localhost] *************************************************
+PLAY [localhost] 
 
-TASK [Gathering Facts] *************************************************
+TASK [Gathering Facts] 
 ok: [localhost]
 
-TASK [Create a resource group] *************************************************
+TASK [Create a resource group] 
 changed: [localhost]
 
-TASK [Create App Service on Linux with Java Runtime] *************************************************
+TASK [Create App Service on Linux with Java Runtime] 
  [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
 
 changed: [localhost]
 
-PLAY RECAP *************************************************
+PLAY RECAP 
 localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ```
 
-## <a name="create-an-app-service-by-using-traffic-manager"></a>Erstellen einer App Service-Instanz mithilfe von Traffic Manager
-Mit [Azure Traffic Manager](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager) können Sie steuern, wie Anforderungen von Webclients auf Apps in Azure App Service verteilt werden. Wenn einem Azure Traffic Manager-Profil App Service-Endpunkte hinzugefügt werden, überwacht Traffic Manager den Status Ihrer App Service-Apps. Mögliche Statuswerte sind „Ausgeführt“, „Beendet“ und „Gelöscht“. So kann Traffic Manager entscheiden, welcher der Endpunkte Datenverkehr empfangen soll.
+## <a name="create-an-app-and-use-azure-traffic-manager"></a>Erstellen einer App und Verwenden von Azure Traffic Manager
 
-In App Service wird eine App in einem [App Service-Plan](https://docs.microsoft.com/azure/app-service/overview-hosting-plans
-) ausgeführt. Mit einem App Service-Plan wird ein Satz mit Computeressourcen für eine auszuführende Web-App definiert. Sie können Ihren App Service-Plan und die Web-App in unterschiedlichen Gruppen verwalten.
+Mit [Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager) können Sie steuern, wie Anforderungen von Webclients auf Apps in Azure App Service verteilt werden. Wenn einem Azure Traffic Manager-Profil App Service-Endpunkte hinzugefügt werden, überwacht Traffic Manager den Status Ihrer App Service-Apps. Mögliche Statuswerte sind „Ausgeführt“, „Beendet“ und „Gelöscht“. Traffic Manager wird verwendet, um zu entscheiden, welche Endpunkte den Datenverkehr empfangen sollen.
 
-In diesem Abschnitt finden Sie ein Beispielplaybook für Ansible, das die folgenden Ressourcen definiert:
-- Ressourcengruppe, in der Ihr App Service-Plan bereitgestellt wird
-- App Service-Plan
-- Sekundäre Ressourcengruppe, in der Ihre Web-App bereitgestellt wird
-- Web-App mit Java 8 und der Tomcat-Containerruntime in App Service unter Linux
-- Traffic Manager-Profil
-- Traffic Manager-Endpunkt, der die erstellte Website verwendet
+In App Service wird eine App in einem [App Service-Plan](/azure/app-service/overview-hosting-plans) ausgeführt. Mit einem App Service-Plan wird ein Satz mit Computeressourcen für eine auszuführende App definiert. Sie können Ihren App Service-Plan und die Web-App in unterschiedlichen Gruppen verwalten.
+
+Mit dem Playbookcode in diesem Abschnitt werden die folgenden Ressourcen definiert:
+
+* Azure-Ressourcengruppe, in der der App Service-Plan bereitgestellt wird
+* App Service-Plan
+* Azure-Ressourcengruppe, in der die App bereitgestellt wird
+* App Service unter Linux mit Java 8 und der Tomcat-Containerruntime
+* Traffic Manager-Profil
+* Traffic Manager-Endpunkt, für den die erstellte App verwendet wird
+
+Speichern Sie das folgende Playbook als `webapp.yml`:
 
 ```yml
 - hosts: localhost
@@ -184,52 +198,54 @@ In diesem Abschnitt finden Sie ein Beispielplaybook für Ansible, das die folgen
       location: "{{ location }}"
       target_resource_id: "{{ webapp.webapps[0].id }}"
 ```
-Speichern Sie das obige Playbook als **webapp.yml**, oder [laden Sie das Playbook herunter](https://github.com/Azure-Samples/ansible-playbooks/blob/master/webapp.yml).
 
-Verwenden Sie den Befehl **ansible-playbook** wie folgt, um das Playbook auszuführen:
+Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+
 ```bash
 ansible-playbook webapp.yml
 ```
 
-In der Ausgabe nach Ausführung des Ansible-Playbooks ist zu sehen, dass die Erstellung des App Service-Plans, der Web-App, des Traffic Manager-Profils und des Endpunkts erfolgreich war:
-```Output
-PLAY [localhost] *************************************************
+Nach dem Ausführen des Playbooks wird in etwa die folgende Ausgabe angezeigt:
 
-TASK [Gathering Facts] *************************************************
+```Output
+PLAY [localhost] 
+
+TASK [Gathering Facts] 
 ok: [localhost]
 
-TASK [Create resource group] ****************************************************************************
+TASK [Create resource group] 
 changed: [localhost]
 
-TASK [Create resource group for app service plan] ****************************************************************************
+TASK [Create resource group for app service plan] 
 changed: [localhost]
 
-TASK [Create App Service Plan] ****************************************************************************
+TASK [Create App Service Plan] 
  [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
 
 changed: [localhost]
 
-TASK [Create App Service on Linux with Java Runtime] ****************************************************************************
+TASK [Create App Service on Linux with Java Runtime] 
 changed: [localhost]
 
-TASK [Get web app facts] *****************************************************************************
+TASK [Get web app facts] 
 ok: [localhost]
 
-TASK [Create Traffic Manager Profile] *****************************************************************************
+TASK [Create Traffic Manager Profile] 
  [WARNING]: Azure API profile latest does not define an entry for TrafficManagerManagementClient
 
 changed: [localhost]
 
-TASK [Add endpoint to traffic manager profile, using the web site created above] *****************************************************************************
+TASK [Add endpoint to traffic manager profile, using the web site created above] 
 changed: [localhost]
 
-TASK [Get Traffic Manager Profile facts] ******************************************************************************
+TASK [Get Traffic Manager Profile facts] 
 ok: [localhost]
 
-PLAY RECAP ******************************************************************************
+PLAY RECAP 
 localhost                  : ok=9    changed=6    unreachable=0    failed=0
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 > [!div class="nextstepaction"] 
-> [Skalieren von Azure App Service-Web-Apps mit Ansible](https://docs.microsoft.com/azure/ansible/ansible-scale-azure-web-apps)
+> [Tutorial: Skalieren von Apps in Azure App Service mit Ansible](/azure/ansible/ansible-scale-azure-web-apps)

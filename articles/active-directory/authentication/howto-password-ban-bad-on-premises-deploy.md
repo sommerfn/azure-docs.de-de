@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1c24ec49652cfe9105aa66fd1d5e26c81afcd14
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5ad8f24c9d23e9412a4f6e4e5f97692bba2c0c39
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904626"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268666"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -32,28 +32,48 @@ Während der Überwachungsphase erlangen viele Organisationen die folgenden Erke
 * Benutzer verwenden häufig unsichere Kennwörter.
 * Sie müssen Benutzer über bevorstehende Änderungen der Sicherheitsmaßnahmen und deren mögliche Auswirkungen auf sie informieren und aufklären, wie sicherere Kennwörter ausgewählt werden können.
 
+Es ist auch möglich, dass eine stärkere Kennwortüberprüfung die vorhandene Active Directory-Domänencontroller-Bereitstellungsautomatisierung beeinträchtigt. Es wird empfohlen, während der Auswertung des Überwachungszeitraums mindestens eine DC-Heraufstufung und eine DC-Herabstufung durchzuführen, um solche Probleme im Voraus erkennen zu können.  Weitere Informationen finden Sie unter
+
+* [„Ntdsutil.exe“ kann kein unsicheres DSRM-Kennwort festlegen](howto-password-ban-bad-on-premises-troubleshoot.md##ntdsutilexe-fails-to-set-a-weak-dsrm-password)
+* [Fehler beim Höherstufen des Domänencontrollerreplikats aufgrund eines unsicheren DSRM-Kennworts](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
+* [Fehler beim Herabstufen des Domänencontrollers aufgrund eines unsicheren lokalen Administratorkennworts](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
+
 Nachdem das Feature für einen angemessenen Zeitraum im Überwachungsmodus ausgeführt wurde, können Sie die Konfiguration von *Überwachen* auf *Erzwingen* umstellen, um sicherere Kennwörter zu verlangen. Eine gezielte Überwachung während dieser Zeit wird empfohlen.
 
 ## <a name="deployment-requirements"></a>Bereitstellungsanforderungen
 
-* Alle Domänencontroller, auf denen der DC-Agent-Dienst für Azure AD-Kennwortschutz installiert wird, müssen Windows Server 2012 oder höher ausführen. Diese Anforderung bedeutet nicht, dass sich die Active Directory-Domäne oder die Gesamtstruktur ebenfalls in einer Windows Server 2012-Domäne oder auf einer Funktionsebene der Gesamtstruktur befinden muss. Wie unter [Entwurfsprinzipien](concept-password-ban-bad-on-premises.md#design-principles) ausgeführt, gibt es für das Ausführen des DC-Agents oder der Proxy-Software keine Mindestanforderungen an die Domänenfunktionsebene (DFL) oder die Funktionsebene der Gesamtstruktur (FFL).
+* Lizenzanforderungen für den Azure AD-Kennwortschutz finden Sie im Artikel [Beseitigen falscher Kennwörter in Ihrer Organisation](concept-password-ban-bad.md#license-requirements).
+* Alle Computer, auf denen die DC Agent-Software für Azure AD-Kennwortschutz installiert werden soll, müssen Windows Server 2012 oder höher ausführen. Diese Anforderung bedeutet nicht, dass sich die Active Directory-Domäne oder die Gesamtstruktur ebenfalls in einer Windows Server 2012-Domäne oder auf einer Funktionsebene der Gesamtstruktur befinden muss. Wie unter [Entwurfsprinzipien](concept-password-ban-bad-on-premises.md#design-principles) ausgeführt, gibt es für das Ausführen des DC-Agents oder der Proxy-Software keine Mindestanforderungen an die Domänenfunktionsebene (DFL) oder die Funktionsebene der Gesamtstruktur (FFL).
 * Auf allen Computern, auf denen der DC-Agent-Dienst installiert werden soll, muss .NET 4.5 installiert sein.
-* Alle Computer, auf denen der Proxydienst für Azure AD-Kennwortschutz installiert wird, müssen Windows Server 2012 R2 oder höher ausführen.
+* Alle Computer, auf denen der Azure AD-Kennwortschutz-Proxydienst installiert werden soll, müssen Windows Server 2012 R2 oder höher ausführen.
+   > [!NOTE]
+   > Die Bereitstellung von Proxydiensten ist eine obligatorische Voraussetzung für das Bereitstellen des Kennwortschutzes von Azure AD, auch wenn der Domänencontroller möglicherweise über eine direkte ausgehende Internetverbindung verfügt. 
+   >
 * Auf allen Computern, auf denen der Azure AD-Kennwortschutz-Proxydienst installiert werden soll, muss .NET 4.7 installiert sein.
-  .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Wenn dies nicht der Fall ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
+  .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Wenn dies nicht der Fall ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
 * Alle Computer (auch Domänencontroller), auf denen Azure AD-Kennwortschutzkomponenten installiert sind, müssen über eine Installation der Universal C-Runtime verfügen. Sie können die Runtime abrufen, indem Sie sicherstellen, dass Sie über alle Updates von Windows Update verfügen. Sie können sie auch in einem betriebssystemspezifischen Updatepaket abrufen. Weitere Informationen finden Sie unter [Update für die Universal C-Runtime in Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * Netzwerkkonnektivität muss zwischen mindestens einem Domänencontroller in jeder Domäne und mindestens einem Server bestehen, der den Proxydienst für Kennwortschutz hostet. Diese Konnektivität muss es dem Domänencontroller gestatten, auf den RPC-Endpunktzuordnungsport 135 und den RPC-Serverport für den Proxydienst zuzugreifen. Der RPC-Serverport ist standardmäßig ein dynamischer RPC-Port. Er kann jedoch so konfiguriert werden, dass er einen [statischen Port verwendet](#static).
-* Alle Computer, die den Proxydienst hosten, müssen auf die folgenden Endpunkte zugreifen können:
+* Alle Computer, auf denen der Proxydienst für den AD-Kennwortschutz installiert werden soll, müssen Netzwerkzugriff auf die folgenden Endpunkte besitzen:
 
     |**Endpunkt**|**Zweck**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Authentifizierungsanforderungen|
     |`https://enterpriseregistration.windows.net`|Funktion für Azure AD-Kennwortschutz|
 
+  Außerdem müssen Sie Netzwerkzugriff für die Ports und URLs aktivieren, die in den [Setupprozeduren für die Anwendungsproxyumgebung](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) angegeben werden. Diese Konfigurationsschritte sind erforderlich, damit der Microsoft Azure AD Connect-Agent-Updaterdienst funktionieren kann (dieser Dienst wird parallel zum Proxydienst installiert). Es wird nicht empfohlen, den Azure AD-Kennwortschutzproxy und den Anwendungsproxy parallel auf demselben Computer zu installieren, da die Versionen der Microsoft Azure AD Connect-Agent-Updatersoftware inkompatibel sind.
+* Alle Computer, auf denen der Proxydienst für den Kennwortschutz gehostet wird, müssen so konfiguriert werden, dass Domänencontrollern die Anmeldung beim Proxydienst ermöglicht wird. Dies wird über die Zuweisung der Berechtigung „Auf diesen Computer vom Netzwerk aus zugreifen“ gesteuert.
 * Alle Computer, die den Proxydienst für Kennwortschutz hosten, müssen so konfiguriert sein, dass sie ausgehenden HTTP-Datenverkehr mit TLS 1.2 zulassen.
 * Ein globales Administratorkonto zum Registrieren des Proxydiensts für Kennwortschutz und der Gesamtstruktur bei Azure AD.
 * Ein Konto mit Active Directory-Domänenadministratorrechten in der Stammdomäne der Gesamtstruktur, um die Windows Server Active Directory-Gesamtstruktur bei Azure AD zu registrieren.
 * Alle Active Directory-Domänen, die die DC-Agent-Dienstsoftware ausführen, müssen DFSR (Distributed File System Replication) für die SYSVOL-Replikation verwenden.
+
+  Sollte DFSR von Ihrer Domäne noch nicht verwendet werden, muss die Domäne vor der Installation des Azure AD-Kennwortschutzes für die Verwendung von DFSR migriert werden. Weitere Informationen finden Sie unter dem folgenden Link:
+
+  [Migrationshandbuch für die SYSVOL-Replikation: Replikation von FRS zu DFS](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+  > [!WARNING]
+  > Die DC-Agent-Software für den Azure AD-Kennwortschutz wird derzeit auf Domänencontrollern in Domänen installiert, von denen noch FRS (die Vorgängertechnologie zu DFSR) für die SYSVOL-Replikation verwendet wird. Die Software funktioniert in dieser Umgebung allerdings NICHT ordnungsgemäß. Dies macht sich unter anderem durch nicht erfolgreich replizierte Einzeldateien sowie durch scheinbar erfolgreiche SYSVOL-Wiederherstellungsprozeduren bemerkbar, bei denen jedoch nicht alle Dateien repliziert werden. Es empfiehlt sich, die Domäne baldmöglichst für die Verwendung von DFSR zu migrieren, um von den DFSR-Vorteilen zu profitieren und die Blockierung der Bereitstellung des Azure AD-Kennwortschutzes aufzuheben. Zukünftige Versionen der Software werden automatisch deaktiviert, wenn sie in einer Domäne ausgeführt werden, die noch FRS verwendet.
+
 * Den Schlüsselverteilungsdienst muss auf allen Domänencontrollern in der Domäne aktiviert sein, auf denen Windows Server 2012 ausgeführt wird. Standardmäßig wird dieser Dienst über das Starten eines manuellen Triggers aktiviert.
 
 ## <a name="single-forest-deployment"></a>Bereitstellung in einer einzelnen Gesamtstruktur
@@ -131,7 +151,11 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
         ```
 
         > [!NOTE]
-        > Dieser Modus schlägt fehl, wenn Azure Multi-Factor Authentication erforderlich ist. In diesem Fall verwenden Sie einen der beiden anderen Authentifizierungsmodi.
+        > Diese Modus ist nicht erfolgreich, wenn Azure Multi-Factor Authentication für Ihr Konto erforderlich ist. Verwenden Sie in diesem Fall einen der beiden vorherigen Authentifizierungsmodi oder ein anderes Konto, für das keine mehrstufige Authentifizierung erforderlich ist.
+        >
+        > Eine mehrstufige Authentifizierung kann auch erforderlich sein, wenn der (im Hintergrund durch den Azure AD-Kennwortschutz verwendete) Azure-Geräteregistrierungsdienst so konfiguriert wurde, dass global eine mehrstufige Authentifizierung erzwungen wird. Zur Umgehung dieses Problems können Sie ein anderes Konto verwenden, das die mehrstufige Authentifizierung mit einem der beiden vorherigen Authentifizierungsmodi unterstützt, oder die MFA-Anforderung des Azure-Geräteregistrierungsdients vorübergehend lockern. Navigieren Sie hierzu im Azure-Verwaltungsportal zu „Azure Active Directory“ > „Geräte“ > „Geräteeinstellungen“, und legen Sie die Einstellung „Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich“ auf „Nein“ fest. Denken Sie daran, diese Einstellung nach Abschluss der Registrierung wieder auf „Ja“ zurücksetzen.
+        >
+        > MFA-Anforderungen sollten ausschließlich zu Testzwecken umgangen werden.
 
        Sie müssen zurzeit den Parameter *-ForestCredential* nicht angeben, der für zukünftige Funktionalität reserviert ist.
 
@@ -141,7 +165,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
    > Es kann zu einer spürbaren Verzögerung bis zum Abschluss kommen, wenn dieses Cmdlet zum ersten Mal für einen bestimmten Azure-Mandanten ausgeführt wird. Wenn kein Fehler gemeldet wird, müssen Sie sich keine Gedanken über diese Verzögerung machen.
 
 1. Registrieren Sie die Gesamtstruktur.
-   * Sie müssen die lokale Active Directory-Gesamtstruktur mit den erforderlichen Anmeldeinformationen für die Kommunikation mit Azure unter Verwendung des PowerShell-Cmdlets `Register-AzureADPasswordProtectionForest` initialisieren. Das Cmdlet erfordert die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten. Es benötigt außerdem ein Konto mit lokalen Active Directory-Domänenadministratorberechtigungen in der Stammdomäne der Gesamtstruktur. Dieser Schritt wird pro Gesamtstruktur einmal ausgeführt.
+   * Sie müssen die lokale Active Directory-Gesamtstruktur mit den erforderlichen Anmeldeinformationen für die Kommunikation mit Azure unter Verwendung des PowerShell-Cmdlets `Register-AzureADPasswordProtectionForest` initialisieren. Das Cmdlet erfordert die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten. Es benötigt außerdem lokale Active Directory-Unternehmensadministratorrechte. Dieser Schritt wird pro Gesamtstruktur einmal ausgeführt.
 
       Das Cmdlet `Register-AzureADPasswordProtectionForest` unterstützt die folgenden drei Authentifizierungsmodi.
 
@@ -152,7 +176,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
         ```
 
         > [!NOTE]
-        > Dieser Modus funktioniert nicht auf Server Core-Betriebssystemen. Verwenden Sie stattdessen einen der folgenden zwei Authentifizierungsmechanismen. Dieser Modus kann fehlschlagen, wenn verstärkte Sicherheitskonfiguration für Internet Explorer aktiviert ist. Die Problemumgehung besteht darin, diese Konfiguration zu deaktivieren, den Proxy zu registrieren und die Konfiguration dann erneut zu aktivieren.  
+        > Dieser Modus funktioniert nicht auf Server Core-Betriebssystemen. Verwenden Sie stattdessen einen der folgenden zwei Authentifizierungsmechanismen. Dieser Modus kann fehlschlagen, wenn verstärkte Sicherheitskonfiguration für Internet Explorer aktiviert ist. Die Problemumgehung besteht darin, diese Konfiguration zu deaktivieren, die Gesamtstruktur zu registrieren und die Konfiguration dann wieder zu aktivieren.  
 
      * Wählen Sie den Gerätecode-Authentifizierungsmodus aus:
 
@@ -171,7 +195,11 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
         ```
 
         > [!NOTE]
-        > Dieser Modus schlägt fehl, wenn Azure Multi-Factor Authentication erforderlich ist. In diesem Fall verwenden Sie einen der beiden anderen Authentifizierungsmodi.
+        > Diese Modus ist nicht erfolgreich, wenn Azure Multi-Factor Authentication für Ihr Konto erforderlich ist. Verwenden Sie in diesem Fall einen der beiden vorherigen Authentifizierungsmodi oder ein anderes Konto, für das keine mehrstufige Authentifizierung erforderlich ist.
+        >
+        > Eine mehrstufige Authentifizierung kann auch erforderlich sein, wenn der (im Hintergrund durch den Azure AD-Kennwortschutz verwendete) Azure-Geräteregistrierungsdienst so konfiguriert wurde, dass global eine mehrstufige Authentifizierung erzwungen wird. Zur Umgehung dieses Problems können Sie ein anderes Konto verwenden, das die mehrstufige Authentifizierung mit einem der beiden vorherigen Authentifizierungsmodi unterstützt, oder die MFA-Anforderung des Azure-Geräteregistrierungsdients vorübergehend lockern. Navigieren Sie hierzu im Azure-Verwaltungsportal zu „Azure Active Directory“ > „Geräte“ > „Geräteeinstellungen“, und legen Sie die Einstellung „Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich“ auf „Nein“ fest. Denken Sie daran, diese Einstellung nach Abschluss der Registrierung wieder auf „Ja“ zurücksetzen.
+        >
+        > MFA-Anforderungen sollten ausschließlich zu Testzwecken umgangen werden.
 
        Diese Beispiele funktionieren nur, wenn der aktuell angemeldete Benutzer auch ein Active Directory-Domänenadministrator für die Stammdomäne ist. Wenn dies nicht der Fall ist, können die alternativen Anmeldeinformationen für die Domäne auch über den Parameter *-ForestCredential* angegeben werden.
 
@@ -262,14 +290,35 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
 
    Sie können den DC-Agent-Dienst auf einem Computer installieren, der noch kein Domänencontroller ist. In diesem Fall wird der Dienst gestartet und ausgeführt, bleibt aber inaktiv, bis der Computer zum Domänencontroller höher gestuft wird.
 
-   Die Softwareinstallation kann mit MSI-Standardprozeduren automatisiert werden. Beispiel: 
+   Die Softwareinstallation kann mit MSI-Standardprozeduren automatisiert werden. Beispiel:
 
-   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn`
+   `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`
 
-   > [!WARNING]
-   > Der hier verwendete Beispielbefehl „msiexec“ bewirkt einen sofortigen Neustart. Um dies zu vermeiden, verwenden Sie das `/norestart`-Flag.
+   Sie können das `/norestart`-Flag auslassen, wenn Sie es vorziehen, dass der Computer vom Installationsprogramm automatisch neu gestartet wird.
 
 Die Installation ist abgeschlossen, nachdem die DC-Agent-Software auf einem Domänencontroller installiert und dieser Computer neu gestartet wurde. Eine andere Konfiguration ist weder erforderlich noch möglich.
+
+## <a name="upgrading-the-proxy-agent"></a>Upgrade des Proxy-Agents
+
+Wenn eine neuere Version der Azure AD-Kennwortschutz-Proxysoftware verfügbar ist, wird das Upgrade durch Ausführen der neuesten Version des Softwareinstallationsprogramms `AzureADPasswordProtectionProxySetup.exe` durchgeführt. Die aktuelle Version der Software ist im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071) verfügbar.
+
+Es ist nicht erforderlich, die aktuelle Version der Proxysoftware zu deinstallieren. Das Installationsprogramm führt ein direktes Upgrade durch. Beim Upgrade der Proxysoftware sollte kein Neustart erforderlich sein. Das Softwareupgrade kann mit MSI-Standardprozeduren automatisiert werden, z.B. `AzureADPasswordProtectionProxySetup.exe /quiet`.
+
+Der Proxy-Agent unterstützt das automatische Upgrade. Für das automatische Upgrade wird der Microsoft Azure AD Connect Agent Updater-Dienst verwendet, der zusammen mit dem Proxydienst installiert wird. Das automatische Upgrade ist standardmäßig aktiviert und kann mit dem Cmdlet `Set-AzureADPasswordProtectionProxyConfiguration` aktiviert oder deaktiviert werden. Die aktuelle Einstellung kann mit dem Cmdlet `Get-AzureADPasswordProtectionProxyConfiguration` abgefragt werden. Microsoft empfiehlt, das automatische Upgrade aktiviert zu lassen.
+
+Mit dem Cmdlet `Get-AzureADPasswordProtectionProxy` kann die Softwareversion aller aktuell installierten Proxy-Agents in einer Gesamtstruktur abgefragt werden.
+
+## <a name="upgrading-the-dc-agent"></a>Upgrade des DC-Agents
+
+Wenn eine neuere Version der DC-Agent-Software für den Azure AD-Kennwortschutz verfügbar ist, wird das Upgrade durch Ausführen der neuesten Version des Softwarepakets `AzureADPasswordProtectionDCAgentSetup.msi` durchgeführt. Die aktuelle Version der Software ist im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071) verfügbar.
+
+Es ist nicht erforderlich, die aktuelle Version der DC-Agent-Software zu deinstallieren. Das Installationsprogramm führt ein direktes Upgrade durch. Beim Upgrade der DC-Agent-Software ist immer ein Neustart erforderlich. Dies wird durch das Kernverhalten von Windows verursacht. 
+
+Das Softwareupgrade kann mit MSI-Standardprozeduren automatisiert werden, z.B. `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`.
+
+Sie können das `/norestart`-Flag auslassen, wenn Sie es vorziehen, dass der Computer vom Installationsprogramm automatisch neu gestartet wird.
+
+Mit dem Cmdlet `Get-AzureADPasswordProtectionDCAgent` kann die Softwareversion aller aktuell installierten DC-Agents in einer Gesamtstruktur abgefragt werden.
 
 ## <a name="multiple-forest-deployments"></a>Bereitstellungen in mehreren Gesamtstrukturen
 
@@ -283,7 +332,7 @@ Für die Bereitstellung des Azure AD-Kennwortschutzes in mehreren Gesamtstruktur
 
 Bei der Hochverfügbarkeit des Kennwortschutzes geht es hauptsächlich darum, die Verfügbarkeit der Proxyserver zu gewährleisten, wenn Domänencontroller in einer Gesamtstruktur versuchen, neue Richtlinien oder andere Daten aus Azure herunterzuladen. Jeder DC-Agent verwendet bei der Entscheidung, welcher Proxyserver aufgerufen werden soll, einen einfachen Roundrobin-Algorithmus. Der Agent überspringt Proxyserver, die nicht antworten. Für die meisten vollständig verbundenen Active Directory-Bereitstellungen, die eine integre Replikation des Verzeichnisses und SYSVOL-Ordnerstatus aufweisen, reichen zwei Proxyserver aus, um die Verfügbarkeit sicherzustellen. Dies führt zum rechtzeitigen Download neuer Richtlinien und anderer Daten. Aber Sie können zusätzliche Proxyserver bereitstellen.
 
-Die üblichen Probleme, die mit Hochverfügbarkeit einhergehen, werden durch den Entwurf der DC-Agent-Software verringert. Der DC-Agent verwaltet einen lokalen Cache, in dem sich die zuletzt heruntergeladene Kennwortrichtlinie befindet. Selbst wenn alle registrierten Proxyserver nicht mehr verfügbar sind, setzen die DC-Agents ihre zwischengespeicherten Kennwortrichtlinien durch. Eine angemessene Aktualisierungshäufigkeit für Kennwortrichtlinien in einer umfangreichen Bereitstellung liegt für gewöhnlich in der Größenordnung von *Tagen*, nicht Stunden oder weniger. Kurze Ausfälle der Proxyserver haben daher keinen wesentlichen Einfluss auf den Azure AD-Kennwortschutz.
+Die üblichen Probleme, die mit Hochverfügbarkeit einhergehen, werden durch den Entwurf der DC-Agent-Software verringert. Der DC-Agent verwaltet einen lokalen Cache, in dem sich die zuletzt heruntergeladene Kennwortrichtlinie befindet. Selbst wenn alle registrierten Proxyserver nicht mehr verfügbar sind, setzen die DC-Agents ihre zwischengespeicherten Kennwortrichtlinien durch. Eine angemessene Aktualisierungshäufigkeit für Kennwortrichtlinien in einer umfangreichen Bereitstellung liegt für gewöhnlich in der Größenordnung von Tagen, nicht Stunden oder weniger. Kurze Ausfälle der Proxyserver haben daher keinen wesentlichen Einfluss auf den Azure AD-Kennwortschutz.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

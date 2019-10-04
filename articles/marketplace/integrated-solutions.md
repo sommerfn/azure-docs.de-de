@@ -2,19 +2,17 @@
 title: Integrierte Lösungen | Azure
 description: Integrierte Lösungen im Azure Marketplace und in AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
-ms.openlocfilehash: f0bda0e0d70d325afd84dc64ddacfa4c0f18a4df
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: b6015ce2d52c140a966636b887d021e76e92990d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220908"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993628"
 ---
 # <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Integrierte Lösungen im Azure Marketplace und in AppSource
 
@@ -32,6 +30,17 @@ Ein integrierter Ansatz bietet folgende Vorteile:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Besuchen Sie den Abschnitt „Beratungsdienste“ im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services), um integrierte Lösungen zu entdecken und Kontakt mit den geschätzten Partnern aufzunehmen.
+Wenn Sie integrierte Lösungen entdecken und Kontakt mit den geschätzten Partnern aufnehmen möchten, sehen Sie sich hier deren Auflistungen an:
+
+* [Customer 360 Powered by Zero2Hero](https://azuremarketplace.microsoft.com/marketplace/consulting-services/bardess.customer-360-powered-by-zero2hero)
+* [Rapid Commerce](https://azuremarketplace.microsoft.com/marketplace/consulting-services/publicis-sapient.rapid_commerce)
+* [Credit Analytics](https://azuremarketplace.microsoft.com/marketplace/consulting-services/rcg-us.rcg-enable-credit-analytics)
+* [Healthcare Cloud Security Stack](https://azuremarketplace.microsoft.com/marketplace/consulting-services/xentit.azure-xentit-trendmicro-qualys-hcss-12months)
+* [DevOps Acceleration Engine](https://azuremarketplace.microsoft.com/marketplace/consulting-services/sirrus7.sirrus7-devops-acceleration-engine?search=devops%20acceleration%20engine&page=1)
+* [Windows Server End-of-Support](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
+
+und besuchen Sie auch den Abschnitt „Beratungsdienste“ im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services).
+
+Weitere Informationen finden Sie unter [Veröffentlichen integrierter Sicherheitslösungen](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers).
 
 ---

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
-ms.author: martincoetzer
+ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 675e970bbdaeb035273eb87394dda610e070aa39
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58886079"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125111"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 
@@ -117,12 +117,12 @@ Eine Notfallplanrichtlinie für den bedingten Zugriff ist eine **deaktivierte Ri
 * Konfigurieren Sie einen Satz von Fallbackrichtlinien für den Fall, dass eine Unterbrechung in einem Anmeldeinformationentyp auftritt oder ein Zugriffssteuerungsmechanismus den Zugriff auf Ihre Apps beeinträchtigt. Konfigurieren Sie eine Richtlinie im deaktivierten Zustand, die den Domänenbeitritt als Steuerung erfordert, als Sicherung für eine aktive Richtlinie, die einen MFA-Drittanbieter erfordert.
 * Reduzieren Sie das Risiko, dass Hacker Kennwörter erraten, wenn MFA nicht erforderlich ist, anhand der im Whitepaper [Password Guidance (Kennwortleitfaden)](https://aka.ms/passwordguidance) beschriebenen Methoden.
 * Stellen Sie [Azure AD-Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) und [Azure AD-Kennwortschutz](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) bereit, um sicherzustellen, dass Benutzer keine gängigen Kennwörter und Begriffe verwenden, die Sie sperren möchten.
-* Verwenden Sie Richtlinien, die den Zugriff innerhalb der Apps beschränken, wenn eine bestimmte Authentifizierungsebene nicht erreicht wird, statt eines einfachen Zurücksetzens auf Vollzugriff. Beispiel: 
+* Verwenden Sie Richtlinien, die den Zugriff innerhalb der Apps beschränken, wenn eine bestimmte Authentifizierungsebene nicht erreicht wird, statt eines einfachen Zurücksetzens auf Vollzugriff. Beispiel:
   * Konfigurieren Sie eine Sicherungsrichtlinie, die den eingeschränkten Sitzungsanspruch auf Exchange und SharePoint sendet.
   * Wenn Ihre Organisation Microsoft Cloud App Security verwendet, ziehen Sie ein Fallback auf eine Richtlinie in Betracht, die MCAS aktiviert, und dann erlaubt MCAS schreibgeschützten Zugriff, jedoch kein Hochladen.
 * Benennen Sie Ihre Richtlinien so, dass Sie sie bei einer Unterbrechung problemlos wiederfinden. Der Richtlinienname muss die folgenden Elemente enthalten:
   * Eine *Bezeichnungsnummer* für die Richtlinie.
-  * Anzuzeigender Text, diese Richtlinie dient nur für Notfälle. Beispiel:  **IM NOTFALL AKTIVIEREN** 
+  * Anzuzeigender Text, diese Richtlinie dient nur für Notfälle. Beispiel:  **IM NOTFALL AKTIVIEREN**
   * Die *Unterbrechung*, für die sie gilt. Beispiel:  **Bei MFA-Unterbrechung**
   * Eine *Sequenznummer*, die angibt, in welcher Reihenfolge die Richtlinien aktiviert werden müssen.
   * Die *Apps*, für die sie gilt.
@@ -143,7 +143,7 @@ Das folgende Beispiel: **Beispiel A: Notfallplan-CA-Richtlinie, um den Zugriff a
   * Name: EM001 – IM NOTFALL AKTIVIEREN: MFA-Unterbrechung[1/4] – Exchange SharePoint – Azure AD Hybrid Join erforderlich
   * Benutzer und Gruppen: ContingencyAccess einbeziehen. CoreAdmins und EmergencyAccess ausschließen.
   * Cloud-Apps: Exchange Online und SharePoint Online
-  * Bedingungen: Beliebig
+  * Bedingungen: Any
   * Steuerelement zur Rechteerteilung: Einbindung in Domäne voraussetzen.
   * Status: Deaktiviert
 * Richtlinie 2: Andere Plattformen als Windows blockieren.
@@ -210,7 +210,7 @@ Eine Benutzersperre kann auch auftreten, wenn die folgenden Bedingungen erfüllt
 - Ihre Organisation verwendet eine Hybrididentitätslösung mit Pass-Through-Authentifizierung oder Verbund.
 - Ihre lokalen Identitätsysteme (z.B. Active Directory, AD FS oder eine abhängige Komponente) sind nicht verfügbar. 
  
-Für höhere Stabilität sollte Ihre Organisation [Kennworthash-Synchronisierung aktivieren](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), da Sie zur [Verwendung der Kennworthash-Synchronisierung wechseln](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) können, wenn Ihre lokalen Identitätssysteme nicht verfügbar sind.
+Für höhere Stabilität sollte Ihre Organisation [Kennworthash-Synchronisierung aktivieren](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn), da Sie zur [Verwendung der Kennworthash-Synchronisierung wechseln](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-user-signin) können, wenn Ihre lokalen Identitätssysteme nicht verfügbar sind.
 
 #### <a name="microsoft-recommendations"></a>Empfehlungen von Microsoft
  Aktivieren Sie die Kennworthash-Synchronisierung mit dem Azure AD Connect-Assistenten unabhängig davon, ob Ihre Organisation Verbund oder Pass-Through-Authentifizierung verwendet.
@@ -232,7 +232,7 @@ Je nachdem, welche Entschärfungen oder Notfallpläne bei einer Unterbrechung ve
 1. Als Teil Ihrer Strategie zum Ändern der Steuerung dokumentieren Sie alle Änderungen und den vorherigen Status, damit Sie Notfallpläne, die Sie implementiert haben, zurücksetzen können, sobald die Zugriffssteuerungen wieder voll funktionstüchtig sind.
 2. Gehen Sie davon aus, dass böswillige Akteure versuchen werden, Kennwörter über Kennwort-Spray- oder Phishing-Angriffe zu sammeln, während Sie MFA deaktiviert haben. Böswillige Akteure könnten möglicherweise auch bereits über Kennwörter verfügen, die zuvor keinen Zugriff auf Ressourcen zuließen, aber in diesem Zeitfenster ausprobiert werden könnten. Sie können dieses Risiko für kritische Benutzer wie Führungskräfte teilweise verringern, indem Sie deren Kennwörter zurücksetzen, bevor Sie MFA für Sie deaktivieren.
 3. Archivieren Sie alle Anmeldeaktivitäten, um feststellen zu können, wer während des Zeitraums, in dem MFA deaktiviert war, auf was zugegriffen hat.
-4. [Selektieren Sie alle gemeldeten Risikoereignisse](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins), die während dieses Zeitfensters aufgetreten sind.
+4. [Selektieren Sie alle gemeldeten Risikoerkennungen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) in diesem Zeitfenster erfolgt sind.
 
 ## <a name="after-a-disruption"></a>Nach einer Unterbrechung
 
@@ -242,7 +242,7 @@ Machen Sie die Änderungen, die Sie als Teil des aktivierten Notfallplans vorgen
 2. Deaktivieren Sie die Notfallplanrichtlinien. 
 3. Setzen Sie alle anderen Änderungen zurück, die Sie während der Unterbrechung vorgenommen und dokumentiert haben.
 4. Wenn Sie ein Konto für den Notfallzugriff verwendet haben, müssen Sie die Anmeldeinformationen neu generieren und die Details der neuen Anmeldeinformationen physisch als Teil Ihrer Notfallzugriffskonto-Verfahren sichern.
-5. Setzen Sie nach der Unterbrechung die [Selektierung aller gemeldeten Risikoereignisse](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) nach verdächtigen Aktivitäten fort.
+5. Setzen Sie nach der Unterbrechung die [Selektierung aller gemeldeten Risikoerkennungen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) nach verdächtigen Aktivitäten fort.
 6. Widerrufen Sie alle Aktualisierungstoken, die [mithilfe von PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) für eine Gruppe von Benutzern ausgegeben wurden. Das Widerrufen aller Aktualisierungstoken ist wichtig für privilegierte Konten, die während der Unterbrechung verwendet wurden, und so wird erzwungen, dass sie sich erneut authentifizieren und die Steuerungsanforderungen der wiederhergestellten Richtlinien erfüllen.
 
 ## <a name="emergency-options"></a>Notfalloptionen
@@ -254,7 +254,7 @@ Wenn Ihre Organisation ältere, pro Benutzer geltende MFA-Richtlinien verwendet,
    1. Wenn Sie nicht über ausgehende IP-Adressen verfügen oder Sie das Aktivieren des Zugriffs innerhalb und außerhalb des Unternehmensnetzwerks benötigten, können Sie den gesamten IPv4-Adressraum als vertrauenswürdige IP-Adressen hinzufügen, indem Sie 0.0.0.0/1 und 128.0.0.0/1 angeben.
 
 >[!IMPORTANT]
- > Wenn Sie die vertrauenswürdigen IP-Adressen verwenden, um die Blockierung des Zugriffs aufzuheben, werden keine Risikoereignisse im Zusammenhang mit IP-Adressen (z.B. unmöglicher Ortswechsel oder unbekannte Orte) generiert.
+ > Wenn Sie die vertrauenswürdigen IP-Adressen erweitern, um die Blockierung des Zugriffs aufzuheben, werden keine Risikoerkennungen im Zusammenhang mit IP-Adressen (z. B. unmöglicher Ortswechsel oder unbekannte Orte) generiert.
 
 >[!NOTE]
  > Konfigurieren von [vertrauenswürdigen IP-Adressen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) für Azure MFA ist nur mit [Azure AD Premium-Lizenzen](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing) verfügbar.

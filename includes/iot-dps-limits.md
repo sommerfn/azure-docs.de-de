@@ -4,22 +4,25 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 65c89730e7d3d492b91daa8aba50e5606ca700a1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e427a7b80b28f1cc70a02890152f9f2247a8bcd2
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59804116"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "68360285"
 ---
 Die folgende Tabelle enthält die Grenzwerte, die für Ressourcen des Azure IoT Hub Device Provisioning-Diensts gelten.
 
-| Ressource | Begrenzung |
+| Resource | Begrenzung |
 | --- | --- |
 | Maximale Anzahl von Gerätebereitstellungsdiensten pro Azure-Abonnement | 10 |
-| Maximale Anzahl von Registrierungen (Enrollments) | 1.000.000 |
-| Maximale Anzahl von Registrierungen (Registrations) | 1.000.000 |
+| Maximale Anzahl von Registrierungen (Enrollments) | 1\.000.000 |
+| Maximale Anzahl von Registrierungen (Registrations) | 1\.000.000 |
 | Maximale Anzahl von Registrierungsgruppen | 100 |
 | Maximale Anzahl von Zertifizierungsstellen | 25 |
+| Maximale Anzahl der verknüpften IoT-Hubs | 10 |
+| Maximale Nachrichtengröße | 96 KB|
+
 
 > [!NOTE]
 > Sie können sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/) wenden, um die Anzahl von Instanzen in Ihrem Abonnement erhöhen zu lassen.

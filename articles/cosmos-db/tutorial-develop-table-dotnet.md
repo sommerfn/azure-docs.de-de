@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
-ms.date: 03/11/2019
-ms.openlocfilehash: 0f324d39db38b17d436583277d60d87b2878d131
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/20/2019
+ms.openlocfilehash: 677ea48244f8417670a2645ab67fa08c1f869f1a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880788"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142585"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Erste Schritte mit der Azure Cosmos DB-Tabellen-API und Azure Table Storage mit .NET SDK
 
@@ -41,15 +41,15 @@ Für dieses Beispiel benötigen Sie Folgendes:
 
 ## <a name="create-a-net-console-project"></a>Erstellen eines .NET-Konsolenprojekts
 
-Erstellen Sie in Visual Studio eine neue .NET-Konsolenanwendung. In den folgenden Schritten wird veranschaulicht, wie Sie eine Konsolenanwendung in Visual Studio 2017 erstellen. Die Schritte sind in anderen Versionen von Visual Studio ähnlich. Sie können die Azure Cosmos DB-Tabellenbibliothek in jeder Art von .NET-Anwendung nutzen, z.B. einem Azure-Clouddienst, einer Azure-Web-App, einer Desktopanwendung oder einer mobilen Anwendung. In diesem Leitfaden verwenden wir der Einfachheit halber eine Konsolenanwendung.
+Erstellen Sie in Visual Studio eine neue .NET-Konsolenanwendung. In den folgenden Schritten wird veranschaulicht, wie Sie eine Konsolenanwendung in Visual Studio 2019 erstellen. Sie können die Azure Cosmos DB-Tabellenbibliothek in jeder Art von .NET-Anwendung nutzen, z.B. einem Azure-Clouddienst, einer Azure-Web-App, einer Desktopanwendung oder einer mobilen Anwendung. In diesem Leitfaden verwenden wir der Einfachheit halber eine Konsolenanwendung.
 
 1. Wählen Sie **Datei** > **Neu** > **Projekt**.
 
-1. Wählen Sie **Installiert** > **Visual C#** > **Konsolen-App (.NET Core)** aus.
+1. Wählen Sie **Konsolen-App (.NET Core)** und dann **Weiter** aus.
 
-1. Geben Sie im Feld **Name** einen Namen für Ihre Anwendung ein, z.B. **CosmosTableSamples** (Sie können bei Bedarf einen anderen Namen vergeben).
+1. Geben Sie im Feld **Projektname** einen Namen für Ihre Anwendung ein, z. B. **CosmosTableSamples**. (Sie können bei Bedarf einen anderen Namen angeben.)
 
-1. Klicken Sie auf **OK**.
+1. Klicken Sie auf **Erstellen**.
 
 Alle Codebeispiele in diesem Beispiel können in der Datei **Program.cs** Ihrer Konsolenanwendung der „Main()“-Methode hinzugefügt werden.
 
@@ -63,7 +63,9 @@ Führen Sie diese Schritte aus, um die NuGet-Pakete abzurufen:
 
 ## <a name="configure-your-storage-connection-string"></a>Konfigurieren der Speicherverbindungszeichenfolge
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Verbindungszeichenfolge**. Kopieren Sie mithilfe der Kopierschaltfläche im rechten Fensterbereich die **PRIMÄRE VERBINDUNGSZEICHENFOLGE**.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Azure Cosmos-Konto oder Ihrem Table Storage-Konto. 
+
+1. Öffnen Sie einen der Bereiche **Verbindungszeichenfolge** oder **Zugriffsschlüssel**. Kopieren Sie mithilfe der Kopierschaltfläche im rechten Fensterbereich die **PRIMÄRE VERBINDUNGSZEICHENFOLGE**.
 
    ![Anzeigen und Kopieren der primären Verbindungszeichenfolge im Bereich „Verbindungszeichenfolge“](./media/create-table-dotnet/connection-string.png)
    
@@ -108,9 +110,19 @@ Führen Sie diese Schritte aus, um die NuGet-Pakete abzurufen:
 
 1. Definieren Sie eine Methode `CreateStorageAccountFromConnectionString`, wie unten dargestellt. Diese Methode analysiert die Details der Verbindungszeichenfolge und überprüft, ob der Kontoname und die Schlüsseldaten des Kontos, die in der Datei „Settings.json“ angegeben sind, gültig sind. 
 
-   ```csharp
-   public static CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
+ ```csharp
+using System;
+
+namespace CosmosTableSamples
+{
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.Azure.Documents;
+
+    public class Common
     {
+        public static CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
+        {
             CloudStorageAccount storageAccount;
             try
             {
@@ -130,12 +142,14 @@ Führen Sie diese Schritte aus, um die NuGet-Pakete abzurufen:
 
             return storageAccount;
         }
+    }
+}
    ```
 
 
 ## <a name="create-a-table"></a>Erstellen einer Tabelle 
 
-Mit der [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtableclient?redirectedfrom=MSDN&view=azure-dotnet) -Klasse können Sie im Tabellenspeicher gespeicherte Tabellen und Entitäten abrufen. Da wir keine Tabellen im Konto der Cosmos DB-Tabellen-API haben, fügen wir die Methode `CreateTableAsync` zur Klasse **Common.cs** hinzu, um eine Tabelle zu erstellen:
+Mit der [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtableclient) -Klasse können Sie im Tabellenspeicher gespeicherte Tabellen und Entitäten abrufen. Da wir keine Tabellen im Konto der Cosmos DB-Tabellen-API haben, fügen wir die Methode `CreateTableAsync` zur Klasse **Common.cs** hinzu, um eine Tabelle zu erstellen:
 
 ```csharp
 public static async Task<CloudTable> CreateTableAsync(string tableName)
@@ -168,9 +182,9 @@ public static async Task<CloudTable> CreateTableAsync(string tableName)
 
 ## <a name="define-the-entity"></a>Definieren der Entität 
 
-Entitäten werden C#-Objekten zugeordnet, indem eine benutzerdefinierte Klasse verwendet wird, die aus [TableEntity](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableentity.aspx)abgeleitet wurde. Erstellen Sie eine Klasse, mit der die Eigenschaften der Entität definiert werden, um eine Entität zu einer Tabelle hinzuzufügen.
+Entitäten werden C#-Objekten zugeordnet, indem eine benutzerdefinierte Klasse verwendet wird, die aus [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity)abgeleitet wurde. Erstellen Sie eine Klasse, mit der die Eigenschaften der Entität definiert werden, um eine Entität zu einer Tabelle hinzuzufügen.
 
-Klicken Sie mit der rechten Maustaste auf Ihr Projekt **CosmosTableSamples**. Wählen Sie **Hinzufügen**, **Neuer Ordner**,und nennen Sie ihn **Modell**. Fügen Sie im Ordner „Modell“ eine Klasse namens **CustimerEntity.cs** hinzu, und fügen Sie den folgenden Code hinzu.
+Klicken Sie mit der rechten Maustaste auf Ihr Projekt **CosmosTableSamples**. Wählen Sie **Hinzufügen**, **Neuer Ordner**,und nennen Sie ihn **Modell**. Fügen Sie im Ordner „Modell“ eine Klasse namens **CustomerEntity.cs** hinzu, und fügen Sie den folgenden Code hinzu.
 
 ```csharp
 namespace CosmosTableSamples.Model
@@ -194,50 +208,50 @@ namespace CosmosTableSamples.Model
 }
 ```
 
-Mit dem Code wird eine Entitätsklasse definiert, die den Vornamen des Kunden als Zeilenschlüssel und den Nachnamen als Partitionsschlüssel verwendet. Eine Entität in der Tabelle wird durch die Kombination aus Partitions- und Zeilenschlüssel eindeutig identifiziert. Entitäten mit dem gleichen Partitionsschlüssel können schneller abgerufen werden als Entitäten mit unterschiedlichen Partitionsschlüsseln, die Verwendung verschiedener Partitionsschlüssel ermöglicht jedoch eine größere Skalierbarkeit paralleler Vorgänge. Bei Entitäten, die in Tabellen gespeichert werden sollen, muss es sich um einen unterstützten Typ handeln (beispielsweise abgeleitet von der [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableentity?redirectedfrom=MSDN&view=azure-dotnet)-Klasse). Bei Entitätseigenschaften, die Sie in einer Tabelle speichern möchten, muss es sich um öffentliche Eigenschaften des Typs handeln, und sie müssen sowohl das Abrufen als auch das Festlegen von Werten unterstützen. Darüber hinaus muss der Entitätstyp einen parameterlosen Konstruktor verfügbar machen.
+Mit dem Code wird eine Entitätsklasse definiert, die den Vornamen des Kunden als Zeilenschlüssel und den Nachnamen als Partitionsschlüssel verwendet. Eine Entität in der Tabelle wird durch die Kombination aus Partitions- und Zeilenschlüssel eindeutig identifiziert. Entitäten mit dem gleichen Partitionsschlüssel können schneller abgerufen werden als Entitäten mit unterschiedlichen Partitionsschlüsseln, die Verwendung verschiedener Partitionsschlüssel ermöglicht jedoch eine größere Skalierbarkeit paralleler Vorgänge. Bei Entitäten, die in Tabellen gespeichert werden sollen, muss es sich um einen unterstützten Typ handeln (beispielsweise abgeleitet von der [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableentity)-Klasse). Bei Entitätseigenschaften, die Sie in einer Tabelle speichern möchten, muss es sich um öffentliche Eigenschaften des Typs handeln, und sie müssen sowohl das Abrufen als auch das Festlegen von Werten unterstützen. Darüber hinaus muss der Entitätstyp einen parameterlosen Konstruktor verfügbar machen.
 
 ## <a name="insert-or-merge-an-entity"></a>Einfügen oder Zusammenführen einer Entität
 
-Das folgende Codebeispiel erstellt ein Entitätsobjekt und fügt es der Tabelle hinzu. Die Methode „InsertOrMerge“ innerhalb der Klasse [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) wird verwendet, um eine Entität einzufügen oder zusammenzuführen. Danach wird die Methode [CloudTable.ExecuteAsyn](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtable.executeasync?view=azure-dotnet) aufgerufen, um den Vorgang auszuführen. 
+Das folgende Codebeispiel erstellt ein Entitätsobjekt und fügt es der Tabelle hinzu. Die Methode „InsertOrMerge“ innerhalb der Klasse [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) wird verwendet, um eine Entität einzufügen oder zusammenzuführen. Danach wird die Methode [CloudTable.ExecuteAsyn](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet) aufgerufen, um den Vorgang auszuführen. 
 
 Klicken Sie mit der rechten Maustaste auf Ihr Projekt **CosmosTableSamples**. Wählen Sie **Hinzufügen**, **Neues Element**, und fügen Sie eine Klasse mit dem Namen **SamplesUtils.cs** hinzu. Diese Klasse speichert den gesamten Code, der für die Durchführung von CRUD-Operationen an den Entitäten erforderlich ist. 
 
 ```csharp
-public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
-    {
-      if (entity == null)
-    {
-       throw new ArgumentNullException("entity");
-    }
-    try
-    {
-       // Create the InsertOrReplace table operation
-       TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
+ public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
+ {
+     if (entity == null)
+     {
+         throw new ArgumentNullException("entity");
+     }
+     try
+     {
+         // Create the InsertOrReplace table operation
+         TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
 
-       // Execute the operation.
-       TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
-       CustomerEntity insertedCustomer = result.Result as CustomerEntity;
-        
-        // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
-        if (result.RequestCharge.HasValue)
-          {
-            Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
-          }
+         // Execute the operation.
+         TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
+         CustomerEntity insertedCustomer = result.Result as CustomerEntity;
 
-        return insertedCustomer;
-        }
-        catch (StorageException e)
-        {
-          Console.WriteLine(e.Message);
-          Console.ReadLine();
-          throw;
-        }
-    }
+         // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure Cosmos DB
+         if (result.RequestCharge.HasValue)
+         {
+             Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
+         }
+
+         return insertedCustomer;
+     }
+     catch (StorageException e)
+     {
+         Console.WriteLine(e.Message);
+         Console.ReadLine();
+         throw;
+     }
+ }
 ```
 
 ### <a name="get-an-entity-from-a-partition"></a>Abrufen einer Entität aus einer Partition
 
-Sie können Entität von einer Partition abrufen, indem Sie die Retrieve-Methode unter der Klasse [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) verwenden. Das folgende Codebeispiel ruft den Zeilenschlüssel des Partitionsschlüssels, die E-Mail-Adresse und die Telefonnummer einer Kundenentität ab. Dieses Beispiel druckt auch die Anforderungseinheiten aus, die für die Abfrage nach der Entität benötigt werden. Um eine Entität abzufragen, fügen Sie den folgenden Code an die Datei **SamplesUtils.cs** an: 
+Sie können Entität von einer Partition abrufen, indem Sie die Retrieve-Methode unter der Klasse [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) verwenden. Das folgende Codebeispiel ruft den Zeilenschlüssel des Partitionsschlüssels, die E-Mail-Adresse und die Telefonnummer einer Kundenentität ab. Dieses Beispiel druckt auch die Anforderungseinheiten aus, die für die Abfrage nach der Entität benötigt werden. Um eine Entität abzufragen, fügen Sie den folgenden Code an die Datei **SamplesUtils.cs** an: 
 
 ```csharp
 public static async Task<CustomerEntity> RetrieveEntityUsingPointQueryAsync(CloudTable table, string partitionKey, string rowKey)
@@ -376,6 +390,29 @@ Der vorherige Code erstellt eine Tabelle, die mit „demo“ beginnt und die gen
 In diesem Tutorial haben Sie Code erstellt, um grundlegende CRUD-Vorgänge an den im Tabellen-API-Konto gespeicherten Daten durchzuführen. Sie können auch erweiterte Operationen durchführen, wie z.B. – Batch-Einfügen von Daten, Abfragen aller Daten innerhalb einer Partition, Abfragen einer Reihe von Daten innerhalb einer Partition, Listen von Tabellen in dem Konto, deren Namen mit dem angegebenen Präfix beginnen. Sie können das komplette Beispiel aus dem [azure-cosmos-table-dotnet-core-getting-started](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)-GitHub-Repositoy herunterladen. Die [AdvancedSamples.cs](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started/blob/master/CosmosTableSamples/AdvancedSamples.cs) -Klasse verfügt über mehr Vorgänge, die Sie für die Daten ausführen können.  
 
 ## <a name="run-the-project"></a>Ausführen des Projekts
+
+Aus Ihrem Projekt **CosmosTableSamples**. Öffnen Sie die Klasse **Program.cs**, und fügen Sie den folgenden Code hinzu, um „BasicSamples“ beim Ausführen des Projekts aufzurufen.
+
+```csharp
+using System;
+
+namespace CosmosTableSamples
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Azure Cosmos Table Samples");
+            BasicSamples basicSamples = new BasicSamples();
+            basicSamples.RunSamples().Wait();
+           
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit");
+            Console.Read();
+        }
+    }
+}
+```
 
 Nun erstellen Sie die Projektmappe, und drücken F5, um das Projekt auszuführen. Wenn das Projekt ausgeführt wird, sehen Sie die folgende Ausgabe in der Eingabeaufforderung:
 

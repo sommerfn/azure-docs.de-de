@@ -3,23 +3,18 @@ title: Node.js-Anwendung mit Socket.io – Azure
 description: Erfahren Sie, wie Sie socket.io in einer node.js-Anwendung verwenden können, die in Azure gehostet wird.
 services: cloud-services
 documentationcenter: nodejs
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 7f9435e0-7732-4aa1-a4df-ea0e894b847f
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: jeconnoc
-ms.openlocfilehash: cd0bceae770182e778410d8065d34dfeed055acc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: gwallace
+ms.openlocfilehash: bbeaacd4c7028905e279dd5dc421414f4eafae54
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993252"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306757"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Erstellen einer Node.js-Chatanwendung mit Socket.IO in einem Azure Cloud-Dienst
 
@@ -74,7 +69,7 @@ Für dieses Projekt verwenden wir das Chat-Beispiel aus dem [Socket.IO GitHub-Re
 Bevor die Anwendung im Azure-Emulator gestestet wird, müssen einige kleinere Änderungen vorgenommen werden. Führen Sie an der Datei server.js die folgenden Schritte aus:
 
 1. Öffnen Sie die Datei **server.js** in Visual Studio oder einem beliebigen Text-Editor.
-2. Suchen Sie den Abschnitt **Module dependencies** am Anfang der Datei „server.js“, und ändern Sie die Zeile **sio = require('..//..//lib//socket.io')** in **sio = require('socket.io')**, wie unten dargestellt:
+2. Suchen Sie den Abschnitt **Module dependencies** am Anfang der Datei „server.js“, und ändern Sie die Zeile **sio = require('..//..//lib//socket.io')** in **sio = require('socket.io')** , wie unten dargestellt:
    
        var express = require('express')
          , stylus = require('stylus')
@@ -113,7 +108,7 @@ Nachdem Sie die Änderungen in **server.js** gespeichert haben, gehen Sie folgen
    > 
    > Installieren Sie AzureAuthoringTools 2.7.1 und AzureComputeEmulator 2.7 neu. Stellen Sie sicher, dass die Versionen übereinstimmen.
 
-2. Öffnen Sie einen Browser, und navigieren Sie zu **http://127.0.0.1**.
+2. Öffnen Sie einen Browser, und navigieren Sie zu **http://127.0.0.1** .
 3. Wenn das Browserfenster geöffnet wird, geben Sie einen Spitznamen ein, und drücken Sie die Eingabetaste.
    So können Sie Nachrichten unter einem bestimmten Spitznamen posten. Um die Mehrbenutzerfunktion zu testen, öffnen Sie weitere Browserfenster mit derselben URL, und geben Sie andere Spitznamen ein.
    
@@ -121,7 +116,7 @@ Nachdem Sie die Änderungen in **server.js** gespeichert haben, gehen Sie folgen
 4. Stoppen Sie den Emulator nach dem Testen der Anwendung mit dem folgenden Befehl:
    
        PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
-5. Verwenden Sie für die Bereitstellung der Anwendung in Azure das Cmdlet **Publish-AzureServiceProject** . Beispiel: 
+5. Verwenden Sie für die Bereitstellung der Anwendung in Azure das Cmdlet **Publish-AzureServiceProject** . Beispiel:
    
        PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch
    
@@ -147,9 +142,9 @@ Ihre Anwendung wird jetzt in Azure ausgeführt und kann Chat-Nachrichten zwische
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Lernprogramm haben Sie erfahren, wie eine grundlegende Chat-Anwendung erstellt wird, die in einem Azure-Cloud-Dienst gehostet wird. Informationen zum Hosten dieser Anwendung in einer Azure-Website finden Sie unter [Erstellen einer Node.js-Chat-Anwendung mit Socket.IO in einer Azure-Website][chatwebsite].
+In diesem Lernprogramm haben Sie erfahren, wie eine grundlegende Chat-Anwendung erstellt wird, die in einem Azure-Cloud-Dienst gehostet wird. Informationen zum Hosten dieser Anwendung auf einer Azure-Website finden Sie unter [Erstellen einer Node.js-Chat-Anwendung mit Socket.IO in einer Azure-Website][chatwebsite].
 
-Weitere Informationen finden Sie außerdem im [Node.js Developer Center](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest).
+Weitere Informationen finden Sie außerdem im [Node.js Developer Center](https://docs.microsoft.com/azure/javascript/).
 
 [chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 

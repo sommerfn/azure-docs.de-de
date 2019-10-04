@@ -1,20 +1,19 @@
 ---
 title: Senden von Azure Blob Storage-Ereignissen an einen Webendpunkt – PowerShell | Microsoft-Dokumentation
 description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid.
-services: storage,event-grid
-author: david-stanford
-ms.author: dastanfo
+author: normesta
+ms.author: normesta
+ms.reviewer: dastanfo
 ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.custom: seodec18
-ms.openlocfilehash: 3e1a482cc59d951fbe6b25fcf0bfc4a967222839
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246414"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68847156"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per PowerShell
 

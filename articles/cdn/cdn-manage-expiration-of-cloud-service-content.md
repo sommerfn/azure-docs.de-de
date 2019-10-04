@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: 6e17b110cbfc293e19714399d5b2cdb753aa1ac4
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: a701c332659181081184906a73826b7137d8c49c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917956"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593716"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Verwalten des Ablaufs von Webinhalten in Azure CDN
 > [!div class="op_single_selector"]
@@ -106,7 +106,7 @@ Das folgende Beispiel einer XML-Konfigurationsdatei veranschaulicht, wie Sie das
 </configuration>
 ```
 
-Um das **cacheControlMaxAge**-Attribut zu verwenden, müssen Sie den Wert für das **cacheControlMode**-Attribut auf `UseMaxAge` festlegen. Diese Einstellung führt dazu, dass der HTTP-Header und die HTTP-Anweisung `Cache-Control: max-age=<nnn>` zur Antwort hinzugefügt werden. Das Format des timespan-Werts für das **cacheControlMaxAge**-Attribut ist `<days>.<hours>:<min>:<sec>`. Der Wert wird in Sekunden konvertiert und als Wert der `Cache-Control` `max-age`-Anweisung verwendet. Weitere Informationen zum `<clientCache>`-Element finden Sie unter [Clientcache<clientCache>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
+Um das **cacheControlMaxAge**-Attribut zu verwenden, müssen Sie den Wert für das **cacheControlMode**-Attribut auf `UseMaxAge` festlegen. Diese Einstellung führt dazu, dass der HTTP-Header und die HTTP-Anweisung `Cache-Control: max-age=<nnn>` zur Antwort hinzugefügt werden. Das Format des timespan-Werts für das **cacheControlMaxAge**-Attribut ist `<days>.<hours>:<min>:<sec>`. Der Wert wird in Sekunden konvertiert und als Wert der `Cache-Control` `max-age`-Anweisung verwendet. Weitere Informationen zum `<clientCache>`-Element finden Sie unter [Clientcache\<clientCache>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>Programmgesteuertes Festlegen von Cache-Control-Headern
 Bei ASP.NET-Anwendungen steuern Sie das Verhalten von CDN beim Zwischenspeichern mithilfe der **HttpResponse.Cache**-Eigenschaft der .NET-API programmgesteuert. Informationen zur **HttpResponse.Cache**-Eigenschaft finden Sie unter [HttpResponse.Cache-Eigenschaft](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) und [HttpCachePolicy-Klasse](/dotnet/api/system.web.httpcachepolicy).  
@@ -132,6 +132,6 @@ Sie können die Einstellungen für die Gültigkeitsdauer Ihres Webinhalts ganz e
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Lesen Sie ausführliche Informationen zum **clientCache**-Element.](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
-* [Lesen Sie die Dokumentation zur **HttpResponse.Cache**-Eigenschaft.](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
-* [Lesen Sie die Dokumentation zur **HttpCachePolicy-Klasse**.](/dotnet/api/system.web.httpcachepolicy)  
+* [Lesen Sie die Dokumentation für die **HttpResponse.Cache**-Eigenschaft.](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
+* [Lesen Sie die Dokumentation für die **HttpCachePolicy-Klasse**](/dotnet/api/system.web.httpcachepolicy).  
 * [Informationen zu Cachekonzepten](cdn-how-caching-works.md)

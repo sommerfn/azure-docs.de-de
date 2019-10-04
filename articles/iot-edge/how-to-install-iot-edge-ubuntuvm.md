@@ -1,20 +1,20 @@
 ---
 title: Ausführen von virtuellen Computern vom Typ „Azure IoT Edge unter Ubuntu“ | Microsoft-Dokumentation
 description: Anweisungen zur Einrichtung von Azure IoT Edge auf Azure Marketplace-VMs unter Ubuntu 16.04
-author: gregman
+author: gregman-msft
 manager: arjmands
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: 5cb15f45508b60a1b7f8c9049b8779c1b7d31150
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f4bab6ab837b746c6a569cc6de95a95023bf83f4
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757930"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68987006"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ausführen von virtuellen Computern vom Typ „Azure IoT Edge unter Ubuntu“
 
@@ -45,11 +45,7 @@ Beim ersten Start wird vom virtuellen Computer vom Typ „Azure IoT Edge unter U
 Suchen Sie im Azure-Portal nach „Azure IoT Edge“, und wählen Sie **Ubuntu Server 16.04 LTS + Azure IoT Edge-Runtime** aus, um den VM-Erstellungsworkflow zu starten. Führen Sie dann die Schritte 3 und 4 aus den Anweisungen unter „Bereitstellen über den Azure Marketplace“ aus.
 
 ## <a name="deploy-from-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
-1. Wenn Sie zum ersten Mal einen virtuellen Computer über die Befehlszeilenschnittstelle bereitstellen, müssen Sie die programmgesteuerte Bereitstellung für Ihr Azure-Abonnement aktivieren:
-   1. Öffnen Sie das Marketplace-Angebot [Azure IoT Edge unter Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm).
-   1. Wählen Sie **JETZT ANFORDERN** und im nachfolgenden Dialogfeld **Weiter** aus.
-   1. Wählen Sie im Portal am unteren Rand die Option **Möchten Sie die programmgesteuerte Bereitstellung konfigurieren? Erste Schritte** aus.
-   1. Klicken Sie auf der Seite **Programmgesteuerte Bereitstellung konfigurieren** auf die Schaltfläche **Aktivieren** und anschließend auf **Speichern**.
+
 1. Wenn Sie die Azure-Befehlszeilenschnittstelle auf Ihrem Desktop verwenden, melden Sie sich zuerst an:
 
    ```azurecli-interactive
@@ -64,7 +60,8 @@ Suchen Sie im Azure-Portal nach „Azure IoT Edge“, und wählen Sie **Ubuntu S
       ```
     
    1. Kopieren Sie das SubscriptionID-Feld für das zu verwendende Abonnement.
-   1. Führen Sie den folgenden Befehl mit der soeben kopierten ID aus:
+
+   1. Legen Sie Ihr Arbeitsabonnement mit der soeben kopierten ID fest:
     
       ```azurecli-interactive 
       az account set -s {SubscriptionId}
@@ -75,11 +72,17 @@ Suchen Sie im Azure-Portal nach „Azure IoT Edge“, und wählen Sie **Ubuntu S
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
    ```
-    
+
+1. Akzeptieren Sie die Nutzungsbedingungen für den virtuellen Computer. Wenn Sie die Bedingungen zunächst durchlesen möchten, führen Sie die in [Bereitstellen über den Azure Marketplace](#deploy-from-the-azure-marketplace) beschriebenen Schritte aus.
+
+   ```azurecli-interactive
+   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
+   ```
+
 1. Erstellen Sie einen neuen virtuellen Computer:
 
    ```azurecli-interactive
-   az vm create --resource-group IoTEdgeResources --name EdgeVM –-image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
    ```
 
 1. Legen Sie die Verbindungszeichenfolge fest. (Befolgen Sie die Schrittanleitung unter [Registrieren eines neuen Azure IoT Edge-Geräts mithilfe der Azure-Befehlszeilenschnittstelle](how-to-register-device-cli.md), wenn Sie mit diesem Prozess nicht vertraut sind.)
@@ -95,6 +98,8 @@ Wenn Sie nach der Einrichtung eine SSH-Verbindung mit diesem virtuellen Computer
 
 Nachdem Sie nun ein IoT Edge-Gerät für die installierte Runtime bereitgestellt haben, können Sie [IoT Edge-Module bereitstellen](how-to-deploy-modules-portal.md).
 
-Wenn Sie Probleme mit der ordnungsgemäßen Installation der Edge-Runtime haben, lesen Sie die Informationen auf der Seite [Problembehandlung](troubleshoot.md).
+Wenn Sie Probleme mit der ordnungsgemäßen Installation der IoT Edge-Runtime haben, lesen Sie die Informationen auf der Seite [Problembehandlung](troubleshoot.md).
 
 Weitere Informationen zum Aktualisieren einer vorhandenen Installation auf die aktuelle Version von IoT Edge finden Sie unter [Aktualisieren des IoT Edge-Sicherheitsdaemons und der Runtime](how-to-update-iot-edge.md).
+
+Wenn Sie Ports für den Zugriff auf die VM über SSH oder andere eingehende Verbindungen öffnen möchten, lesen Sie die Dokumentation der virtuellen Azure-Computer über [das Öffnen von Ports und Endpunkten für eine Linux-VM](../virtual-machines/linux/nsg-quickstart.md).

@@ -2,24 +2,18 @@
 title: Aktivieren eines Microsoft AppSource- und Azure Marketplace-Eintrags mithilfe von Azure Active Directory | Azure
 description: Aktivieren des Listingtyps mithilfe von Azure Active Directory im Azure Marketplace und in AppSource für Herausgeber von Apps und Diensten.
 services: Azure, AppSource, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: qianw211
-ms.openlocfilehash: 247a45a38d732ace0455c6ca2ebbd5c44c384004
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.author: pabutler
+ms.openlocfilehash: 0b68687a2bbaa817f2776757ccab9571638c0fd5
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732327"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875997"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Aktivieren eines AppSource- und Marketplace-Eintrags mithilfe von Azure Active Directory
 
@@ -41,12 +35,12 @@ Die verschiedenen [Listenoptionen und Angebotsarten](https://docs.microsoft.com/
 | **Angebotstyp**    | **Azure AD-SSO erforderlich?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 |  | Kontaktformular | Testversion | Testversion | Transaktion |
-| Virtual Machine | – | Nein  | Nein  | Nein  |
+| Virtual Machine | – | Nein | Nein | Nein |
 | Azure-Apps (Lösungsvorlage)  | – | – | – | – |
-| Verwaltete Apps  | – | – | – | Nein  |
-| SaaS  | Nein  | Ja | Ja | Ja |
-| Container  | – | – | – | Nein  |
-| Beratungsdienste  | Nein  | – | – | – |
+| Verwaltete Apps  | – | – | – | Nein |
+| SaaS  | Nein | Ja | Ja | Ja |
+| Container  | – | – | – | Nein |
+| Beratungsdienste  | Nein | – | – | – |
 
 Weitere Informationen zu den technischen Anforderungen für SaaS finden Sie unter [SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
@@ -95,4 +89,4 @@ Mit Azure AD können Sie eine der folgenden Aktionen unterstützen:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Stellen Sie sicher, dass Sie für den [Azure Marketplace registriert](https://azuremarketplace.microsoft.com/sell) sind.
-- Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com/) an, um Ihr Angebot zu erstellen oder zu vervollständigen.
+- Weitere Informationen zum Erstellen oder Vervollständigen Ihres Angebots finden Sie unter [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).

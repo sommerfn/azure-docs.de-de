@@ -3,9 +3,8 @@ title: Roadmap für Azure Security Center-Bereitschaft | Microsoft-Dokumentation
 description: Dieses Dokument enthält eine Roadmap für die Bereitschaft zur Nutzung von Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: ndicola
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: fece670cc-df70-445d-9773-b32cbaba8d4a
 ms.service: security-center
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 7de085766ae700b5c76d9eca49c1127aabdddb9b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: a5d11be7d4fbe7f23b5584775c5d9a57c2214155
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244641"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200985"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Roadmap für Azure Security Center-Bereitschaft
 Dieses Dokument enthält eine Roadmap für die Bereitschaft, die Ihnen als Hilfe bei den ersten Schritten mit Azure Security Center dient.
@@ -67,9 +66,8 @@ Verwenden Sie die folgenden Ressourcen als Hilfe beim Verwalten von Sicherheitsw
 
 Artikel    
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [Schützen Ihrer virtuellen Computer in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-virtual-machine-recommendations)
+* [Schützen von Computern und Anwendungen im Azure Security Center](security-center-virtual-machine-protection.md)
 * [Schützen Ihres Netzwerks in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-* [Schützen Ihrer Anwendungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-application-recommendations)
 * [Schützen des Azure SQL-Diensts und Ihrer Daten in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 
@@ -114,8 +112,8 @@ Artikel
 * [Seite mit der Dokumentation zur Security Center-REST-API](https://msdn.microsoft.com/library/mt704034.aspx)
 * [Azure Security Center – Häufig gestellte Fragen](https://docs.microsoft.com/azure/security-center/security-center-faq)
 * [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/)
-* [Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices)
-* [Bewährte Methoden für die Netzwerksicherheit](https://docs.microsoft.com/azure/security/azure-security-network-security-best-practices)
+* [Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices)
+* [Bewährte Methoden für die Netzwerksicherheit](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices)
 * [PaaS-Empfehlungen](https://docs.microsoft.com/azure/security/security-paas-deployments)
 * [Compliance](https://www.microsoft.com/en-us/trustcenter/compliance/due-diligence-checklist)
 * [Log Analytics-Kunden können jetzt ihre Hybrid Cloud-Workloads mit Azure Security Center schützen](https://blogs.technet.microsoft.com/msoms/2017/09/25/oms-customers-can-now-use-azure-security-center-to-protect-their-hybrid-cloud-workloads/)

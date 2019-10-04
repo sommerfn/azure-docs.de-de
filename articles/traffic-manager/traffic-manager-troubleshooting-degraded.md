@@ -3,24 +3,25 @@ title: Problembehandlung beim Status "Heruntergestuft" in Azure Traffic Manager
 description: Problembehandlung bei Traffic Manager-Profilen, bei denen der Status "Heruntergestuft" angezeigt wird.
 services: traffic-manager
 documentationcenter: ''
-author: chadmath
+author: rohinkoul
+manager: dcscontentpm
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: genli
-ms.openlocfilehash: f01dfe78d5d5e322258b0ee98cec314f9afe33c0
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.author: rohink
+ms.openlocfilehash: 8f043b11c9319d61c4413d01b008b324103ca6c3
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59050644"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155215"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Problembehandlung beim Status "Heruntergestuft" in Traffic Manager
 
-In diesem Artikel wird beschrieben, wie Probleme bei einem Azure Traffic Manager-Profil mit dem Status „Heruntergestuft“ behoben werden können. Für dieses Szenario nehmen wir an, Sie haben ein Traffic Manager-Profil konfiguriert, das auf einige Ihrer in cloudapp.net gehosteten Dienste verweist. Wenn die Integrität von Traffic Manager den Status **Heruntergestuft** anzeigt, könnte der Status einer oder mehrerer Endpunkte **Heruntergestuft** sein:
+In diesem Artikel wird beschrieben, wie Probleme bei einem Azure Traffic Manager-Profil mit dem Status „Heruntergestuft“ behoben werden können. Der erste Schritt bei der Problembehandlung eines beeinträchtigten Status von Azure Traffic Manager besteht darin, die Diagnoseprotokollierung zu aktivieren.  Weitere Informationen erhalten Sie unter [Aktivieren von Diagnoseprotokollen](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs). Für dieses Szenario nehmen wir an, Sie haben ein Traffic Manager-Profil konfiguriert, das auf einige Ihrer in cloudapp.net gehosteten Dienste verweist. Wenn die Integrität von Traffic Manager den Status **Heruntergestuft** anzeigt, könnte der Status einer oder mehrerer Endpunkte **Heruntergestuft** sein:
 
 ![Heruntergestufter Endpunktstatus](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
@@ -30,8 +31,8 @@ Wenn die Integrität von Traffic Manager den Status **Inaktiv** anzeigt, sind m�
 
 ## <a name="understanding-traffic-manager-probes"></a>Hinweise zu Traffic Manager-Tests
 
-* In Traffic Manager wird ein Endpunkt nur als ONLINE eingestuft, wenn beim Test eine Antwort „200“ vom Testpfad zurückgegeben wird. Jede andere von „200“ abweichende Antwort ist ein Fehler.
-* Eine 30x-Umleitung schlägt fehl, auch wenn die umgeleitete URL eine Antwort „200“ zurückgibt.
+* In Traffic Manager wird ein Endpunkt nur als ONLINE eingestuft, wenn beim Test eine Antwort „200“ vom Testpfad zurückgegeben wird. Wenn Ihre Anwendung einen anderen HTTP-Antwortcode zurückgibt, sollten Sie diesen Antwortcode zu den [erwarteten Statuscodebereichen](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) Ihres Traffic Manager-Profils hinzufügen.
+* Eine 30x-Umleitungsantwort wird als Fehler behandelt, es sei denn, Sie haben sie in den [erwarteten Statuscodebereichen](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) Ihres Traffic Manager-Profils als gültigen Antwortcode angegeben. Traffic Manager testet das Umleitungsziel nicht.
 * Bei HTTPs-Tests werden Zertifikatfehler ignoriert.
 * Der eigentliche Inhalt des Testpfads ist unerheblich, solange eine Antwort „200“ zurückgegeben wird. Der Test einer URL mit statischem Inhalt wie „/favicon.ico“ ist eine gängige Methode. Dynamische Inhalte wie die ASP-Seiten geben möglicherweise nicht immer „200“ zurück, auch wenn die Anwendung fehlerfrei ist.
 * Es wird empfohlen, den Testpfad mit ausreichender Logik festzulegen, sodass ermittelt werden kann, ob die Website aktiv oder inaktiv ist. Durch Festlegen des Pfads im Beispiel oben auf „/favicon.ico“ wird lediglich getestet, ob „w3wp.exe“ antwortet. Mit diesem Test wird jedoch nicht getestet, ob die Webanwendung fehlerfrei ist. Besser wäre es, den Pfad beispielsweise auf „/Probe.aspx“ mit der entsprechenden Logik festzulegen, sodass ermittelt wird, ob die Website fehlerfrei ist. So könnten Sie beispielsweise Leistungsindikatoren für die CPU-Auslastung verwenden oder die Anzahl der fehlgeschlagenen Anforderungen messen. Oder Sie könnten versuchen, auf Datenbankressourcen oder Sitzungszustand zuzugreifen, um sicherzustellen, dass die Webanwendung funktioniert.
@@ -43,7 +44,7 @@ Zum Beheben eines Testfehlers wird ein Tool benötigt, mit dem der von der Test-
 
 * [Fiddler](https://www.telerik.com/fiddler)
 * [curl](https://curl.haxx.se/)
-* [Wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
+* [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
 Sie können aber auch die Registerkarte „Netzwerk“ der F12-Tools zum Debuggen in Internet Explorer verwenden, um die HTTP-Antworten anzuzeigen.
 
@@ -80,7 +81,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Traffic Manager-Routingmethoden](traffic-manager-routing-methods.md)
+[Informationen zu Traffic Manager-Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md)
 
 [Was ist Traffic Manager?](traffic-manager-overview.md)
 
@@ -88,7 +89,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/web/)
 
-[Operations on Traffic Manager (REST API Reference) (Vorgänge für Traffic Manager (REST-API-Referenz))](https://go.microsoft.com/fwlink/?LinkId=313584)
+[Vorgänge für Traffic Manager (REST-API-Referenz)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
 [Azure Traffic Manager-Cmdlets][1]
 

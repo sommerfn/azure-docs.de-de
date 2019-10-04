@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: storage
 author: twooley
 ms.service: storage
@@ -9,11 +9,11 @@ ms.date: 11/19/2018
 ms.author: twooley
 ms.custom: include file
 ms.openlocfilehash: cfc977134b103cc3b601ba674c596e232aa4f167
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "52156767"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178232"
 ---
 |Category (Kategorie) | Datenspeicher |  
 | :-------- | :----- |  

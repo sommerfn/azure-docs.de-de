@@ -1,18 +1,19 @@
 ---
 title: 'Azure Key Vault: Verwenden des vorläufigen Löschens mit der CLI'
 description: Beispiele für Anwendungsfälle für vorläufiges Löschen mit CLI-Codeausschnitten
+services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 02/01/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: aa9b89b9afec069e97236b7652e0f1d37644f5cf
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: aef4061a8349e6602ac4394cb31bbe76b6cb63c0
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336070"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976291"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Verwenden des vorläufigen Löschens in Key Vault mit der CLI
 
@@ -33,7 +34,7 @@ Key Vault-Vorgänge werden wie folgt separat über RBAC-Berechtigungen (Role-Bas
 
 | Vorgang | BESCHREIBUNG | Benutzerberechtigung |
 |:--|:--|:--|
-|Auflisten|Listet gelöschte Schlüsseltresore auf.|Microsoft.KeyVault/deletedVaults/read|
+|List|Listet gelöschte Schlüsseltresore auf.|Microsoft.KeyVault/deletedVaults/read|
 |Wiederherstellen|Stellt einen gelöschten Schlüsseltresor wieder her.|Microsoft.KeyVault/vaults/write|
 |Bereinigen|Entfernt einen gelöschten Schlüsseltresor und seine Inhalte endgültig.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 

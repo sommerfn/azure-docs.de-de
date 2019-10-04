@@ -6,17 +6,23 @@ ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.openlocfilehash: 188cb310cfc13fe2fc41ba3e01deb01068c0184d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 6/30/2019
+ms.openlocfilehash: 0f148a97b25afb9135223ff92afb898d4734c586
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048315"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537788"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Visualisieren von Daten über Azure Data Explorer in Grafana
 
 Grafana ist eine Analyseplattform, mit der Sie Daten abfragen und visualisieren sowie Dashboards auf Basis Ihrer Visualisierungen erstellen und freigeben können. Grafana stellt ein *Plug-In* für den Azure Data Explorer zur Verfügung, mit dem Sie Daten aus dem Azure Data Explorer verbinden und visualisieren können. In diesem Artikel erfahren Sie, wie Sie den Azure Data Explorer als Datenquelle für Grafana einrichten und dann Daten aus einem Beispielcluster visualisieren.
+
+Anhand des folgenden Videos lernen Sie, wie Sie das Azure Data Explorer-Plugin von Grafana verwenden, wie Sie Azure Data Explorer als Datenquelle für Grafana einrichten und wie Sie die Daten dann visualisieren. 
+
+> [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
+
+Alternativ können Sie die [Datenquelle auch konfigurieren](#configure-the-data-source) und die [Daten visualisieren,](#visualize-data) wie es im folgenden Artikel beschrieben ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -208,6 +214,6 @@ Nachdem Sie den Azure Data Explorer als Datenquelle für Grafana konfiguriert ha
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Schreiben von Abfragen für den Azure-Daten-Explorer](write-queries.md)
+* [Schreiben von Abfragen für den Azure-Daten-Explorer](write-queries.md)
 
-[Tutorial: Visualisieren von Daten über Azure Data Explorer in Power BI](visualize-power-bi.md)
+* [Tutorial: Visualisieren von Daten über Azure Data Explorer in Power BI](visualize-power-bi.md)

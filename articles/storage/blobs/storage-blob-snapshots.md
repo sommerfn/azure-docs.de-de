@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/06/2018
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: ac13b40ae58054b091963de198213c1a68fcdc05
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0da3373ba2c13bd6a00a92a6b38bead86fc9a5ea
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244843"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897011"
 ---
 # <a name="create-a-blob-snapshot"></a>Erstellen einer Momentaufnahme eines Blobs
 
@@ -34,7 +34,7 @@ Dem Basis-Blob zugeordnete Leases wirken sich nicht auf die Momentaufnahme aus. 
 Für das Speichern der aktuellen Informationen und des Status eines VM-Datenträgers wird eine VHD-Datei verwendet. Sie können einen Datenträger vom virtuellen Computer trennen oder die VM herunterfahren und dann eine Momentaufnahme der VHD-Datei erstellen. Sie können diese Momentaufnahmedatei später verwenden, um die VHD-Datei zu diesem Zeitpunkt abzurufen und den virtuellen Computer neu zu erstellen.
 
 ## <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme
-Im folgenden Codebeispiel wird veranschaulicht, wie Sie eine Momentaufnahme mithilfe der [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/) erstellen. In diesem Beispiel werden zusätzliche Metadaten für die Momentaufnahme angegeben, wenn sie erstellt wird.
+Im folgenden Codebeispiel wird veranschaulicht, wie Sie eine Momentaufnahme mithilfe der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage/client) erstellen. In diesem Beispiel werden zusätzliche Metadaten für die Momentaufnahme angegeben, wenn sie erstellt wird.
 
 ```csharp
 private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
@@ -78,12 +78,12 @@ Für Kopiervorgänge, die Blobs und Momentaufnahmen betreffen, gelten folgende R
 * Wenn Sie eine Momentaufnahme eines Block-Blobs erstellen, wird die Liste der Blöcke mit ausgeführtem Commit für das Blob ebenfalls in die Momentaufnahme kopiert. Blöcke ohne ausgeführten Commit werden nicht kopiert.
 
 ## <a name="specify-an-access-condition"></a>Angeben einer Zugriffsbedingung
-Beim Aufrufen von [CreateSnapshotAsync][dotnet_CreateSnapshotAsync] können Sie eine Zugriffsbedingung angeben, sodass die Momentaufnahme nur erstellt wird, wenn eine bestimmte Bedingung erfüllt ist. Zum Angeben einer Zugriffsbedingung verwenden Sie den [AccessCondition][dotnet_AccessCondition]-Parameter. Wenn die angegebene Bedingung nicht erfüllt ist, wird die Momentaufnahme nicht erstellt, und der Blob-Dienst gibt den Statuscode „[HTTPStatusCode][dotnet_HTTPStatusCode].PreconditionFailed“ zurück.
+Beim Aufrufen von [CreateSnapshotAsync][dotnet_CreateSnapshotAsync] können Sie eine Zugriffsbedingung angeben, sodass die Momentaufnahme nur erstellt wird, wenn eine bestimmte Bedingung erfüllt ist. Zum Angeben einer Zugriffsbedingung verwenden Sie den Parameter [AccessCondition][dotnet_AccessCondition]. Wenn die angegebene Bedingung nicht erfüllt ist, wird die Momentaufnahme nicht erstellt, und der Blob-Dienst gibt den Statuscode „[HTTPStatusCode][dotnet_HTTPStatusCode].PreconditionFailed“ zurück.
 
 ## <a name="delete-snapshots"></a>Löschen von Momentaufnahmen
 Das Löschen eines Blobs mit Momentaufnahmen ist nur möglich, wenn auch die Momentaufnahmen gelöscht werden. Sie können eine Momentaufnahme einzeln löschen oder angeben, dass alle Momentaufnahmen gelöscht werden sollen, wenn das Quellblob gelöscht wird. Wenn Sie versuchen, ein Blob zu löschen, für das noch Momentaufnahmen vorhanden sind, tritt ein Fehler auf.
 
-Im folgenden Codebeispiel wird veranschaulicht, wie Sie ein Blob und die dazugehörigen Momentaufnahmen in .NET löschen, wenn `blockBlob` ein Objekt vom Typ [CloudBlockBlob][dotnet_CloudBlockBlob] ist:
+Im folgenden Codebeispiel wird veranschaulicht, wie Sie ein Blob und die zugehörigen Momentaufnahmen in .NET löschen, wenn `blockBlob` ein Objekt vom Typ [CloudBlockBlob][dotnet_CloudBlockBlob] ist:
 
 ```csharp
 await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, null, null);
@@ -127,7 +127,7 @@ Die folgende Liste enthält wichtige Punkte, die beim Erstellen einer Momentaufn
 
 * Für Ihr Speicherkonto fallen Gebühren für eindeutige Blöcke oder Seiten an, die im Blob oder in der Momentaufnahme enthalten sind. Ihrem Konto werden erst dann zusätzliche Gebühren für Momentaufnahmen angerechnet, die einem BLOB zugeordnet sind, wenn Sie das BLOB aktualisieren, auf dem sie basieren. Sobald Sie das Basisblob aktualisieren, entstehen Abweichungen von den zugeordneten Momentaufnahmen. In diesem Fall werden für alle eindeutigen Blöcke oder Seiten in jedem Blob bzw. einer Momentaufnahme Gebühren berechnet.
 * Wenn Sie einen Block innerhalb eines Block-BLOBs ersetzen, wird dieser Block anschließend als eindeutiger Block berechnet. Dies gilt auch, wenn der Block dieselbe Block-ID und dieselben Daten enthält wie in der Momentaufnahme. Nachdem ein erneuter Commit für den Block ausgeführt wurde, weicht er von seinem Pendant in den Momentaufnahmen ab, und Ihnen werden die Daten des Blocks berechnet. Gleiches gilt für eine Seite in einem Seitenblob, die mit identischen Daten aktualisiert wird.
-* Wenn Sie ein Blockblob durch einen Aufruf der Methode [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream] oder [UploadFromByteArray][dotnet_UploadFromByteArray] ersetzen, werden alle Blöcke im Blob ersetzt. Wenn dem Blob eine Momentaufnahme zugeordnet ist, weisen anschließend alle Blöcke im Basisblob und in der Momentaufnahme Abweichungen auf, und Ihnen werden Gebühren für alle Blöcke in beiden Blobs berechnet. Dies gilt auch, wenn die Daten im Basis-BLOB und in der Momentaufnahme identisch sind.
+* Wenn Sie ein Blockblob durch einen Aufruf einer der Methoden [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream] oder [UploadFromByteArray][dotnet_UploadFromByteArray] ersetzen, werden alle Blöcke im Blob ersetzt. Wenn dem Blob eine Momentaufnahme zugeordnet ist, weisen anschließend alle Blöcke im Basisblob und in der Momentaufnahme Abweichungen auf, und Ihnen werden Gebühren für alle Blöcke in beiden Blobs berechnet. Dies gilt auch, wenn die Daten im Basis-BLOB und in der Momentaufnahme identisch sind.
 * Der Azure-Blob-Dienst kann nicht feststellen, ob zwei Blöcke identische Daten enthalten. Jeder hochgeladene Block, für den ein Commit ausgeführt wird, wird als eindeutig behandelt, selbst wenn die enthaltenen Daten und die Block-ID identisch sind. Da Gebühren jeweils für eindeutige Blöcke berechnet werden, ist zu berücksichtigen, dass beim Aktualisieren eines Blobs mit einer zugeordneten Momentaufnahme zusätzliche eindeutige Blöcke generiert werden, für die zusätzliche Gebühren entstehen.
 
 ### <a name="minimize-cost-with-snapshot-management"></a>Minimieren der Kosten durch Momentaufnahmenverwaltung
@@ -135,7 +135,7 @@ Die folgende Liste enthält wichtige Punkte, die beim Erstellen einer Momentaufn
 Es empfiehlt sich, Ihre Momentaufnahmen sorgfältig zu verwalten, um zusätzlich anfallende Gebühren zu vermeiden. Sie können die folgenden bewährten Methoden befolgen, um die beim Speichern von Momentaufnahmen anfallenden Kosten zu minimieren:
 
 * Löschen und erstellen Sie zugehörige Momentaufnahmen für ein BLOB neu, wenn Sie das BLOB aktualisieren, selbst wenn Sie mit identischen Daten aktualisieren, es sei denn, der Anwendungsentwurf erfordert, dass die Momentaufnahmen beibehalten werden. Durch Löschen und Neuerstellen der Momentaufnahmen für ein Blob können Sie sicherstellen, dass das Blob und die Momentaufnahmen nicht voneinander abweichen.
-* Wenn Sie Momentaufnahmen für ein Blob beibehalten, sollten Sie Aufrufe von [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream] und [UploadFromByteArray][dotnet_UploadFromByteArray] zum Aktualisieren des Blobs vermeiden. Bei diesen Methoden werden alle Blöcke im Blob ersetzt, sodass Ihr Basisblob und seine Momentaufnahmen erheblich voneinander abweichen. Aktualisieren Sie stattdessen so wenig Blöcke wie möglich, indem Sie die [PutBlock][dotnet_PutBlock]-Methode und die [PutBlockList][dotnet_PutBlockList]-Methode aufrufen.
+* Wenn Sie Momentaufnahmen für ein Blob beibehalten, sollten Sie Aufrufe von [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream] und [UploadFromByteArray][dotnet_UploadFromByteArray] zum Aktualisieren des Blobs vermeiden. Bei diesen Methoden werden alle Blöcke im Blob ersetzt, sodass Ihr Basisblob und seine Momentaufnahmen erheblich voneinander abweichen. Aktualisieren Sie stattdessen so wenig Blöcke wie möglich, indem Sie die [PutBlock][dotnet_PutBlock]-Methode oder die [PutBlockList][dotnet_PutBlockList]-Methode aufrufen.
 
 ### <a name="snapshot-billing-scenarios"></a>Abrechnungsszenarien für Momentaufnahmen
 Die folgenden Szenarien veranschaulichen, wie Gebühren für ein Block-BLOB und zugehörige Momentaufnahmen berechnet werden.
@@ -160,7 +160,7 @@ In Szenario 3 wurde das Basisblob aktualisiert, die Momentaufnahme jedoch nicht
 
 **Szenario 4**
 
-In Szenario 4 wurde das Basis-Blob vollständig aktualisiert und enthält keinen der ursprünglichen Blöcke. Daher wird das Konto für alle acht eindeutigen Blöcke belastet. Dieses Szenario kann auftreten, wenn Sie eine Updatemethode wie [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream] oder [UploadFromByteArray][dotnet_UploadFromByteArray] verwenden, da diese Methoden alle Inhalte eines Blobs ersetzen.
+In Szenario 4 wurde das Basis-Blob vollständig aktualisiert und enthält keinen der ursprünglichen Blöcke. Daher wird das Konto für alle acht eindeutigen Blöcke belastet. Dieses Szenario kann auftreten, wenn Sie eine Updatemethode wie [UploadFromFile][dotnet_UploadFromFile], [UploadText][dotnet_UploadText], [UploadFromStream][dotnet_UploadFromStream] oder [UploadFromByteArray][dotnet_UploadFromByteArray] verwenden, da diese Methoden sämtliche Inhalte eines Blobs ersetzen.
 
 ![Azure Storage-Ressourcen](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
@@ -170,13 +170,13 @@ In Szenario 4 wurde das Basis-Blob vollständig aktualisiert und enthält keine
 
 * Weitere Codebeispiele zur Verwendung von Blob Storage finden Sie unter [Azure-Codebeispiele](https://azure.microsoft.com/documentation/samples/?service=storage&term=blob). Sie können eine Beispielanwendung herunterladen und ausführen oder den Code auf GitHub durchsuchen.
 
-[dotnet_AccessCondition]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.accesscondition.aspx
-[dotnet_CloudBlockBlob]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.cloudblockblob.aspx
-[dotnet_CreateSnapshotAsync]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.cloudblockblob.createsnapshotasync.aspx
-[dotnet_HTTPStatusCode]: https://msdn.microsoft.com/library/system.net.httpstatuscode(v=vs.110).aspx
-[dotnet_PutBlockList]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.cloudblockblob.putblocklist.aspx
-[dotnet_PutBlock]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.cloudblockblob.putblock.aspx
-[dotnet_UploadFromByteArray]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfrombytearray.aspx
-[dotnet_UploadFromFile]: https://msdn.microsoft.com/library/azure/mt705654.aspx
-[dotnet_UploadFromStream]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstream.aspx
-[dotnet_UploadText]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.cloudblockblob.uploadtext.aspx
+[dotnet_AccessCondition]: https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.accesscondition
+[dotnet_CloudBlockBlob]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob
+[dotnet_CreateSnapshotAsync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.createsnapshotasync
+[dotnet_HTTPStatusCode]: https://docs.microsoft.com/java/api/com.microsoft.store.partnercenter.network.httpstatuscode
+[dotnet_PutBlockList]: /dotnet/api/microsoft.azure.storage.blob.cloudblockblob.putblocklist
+[dotnet_PutBlock]: /dotnet/api/microsoft.azure.storage.blob.cloudblockblob.putblock
+[dotnet_UploadFromByteArray]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob.uploadfrombytearray
+[dotnet_UploadFromFile]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob.uploadfromfile
+[dotnet_UploadFromStream]: /dotnet/api/microsoft.azure.storage.blob.cloudappendblob.uploadfromstream
+[dotnet_UploadText]: /dotnet/api/microsoft.azure.storage.blob.cloudappendblob.uploadtext

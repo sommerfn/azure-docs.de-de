@@ -1,9 +1,9 @@
 ---
-title: Streamen von Azure Active Directory-Protokollen in Azure Monitor-Protokolle (Vorschauversion) | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Azure Active Directory-Protokolle in Azure Monitor-Protokolle integrieren (Vorschauversion).
+title: Streamen von Azure Active Directory-Protokollen in Azure Monitor-Protokolle | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Azure Active Directory-Protokolle in Azure Monitor-Protokolle integrieren.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
@@ -13,18 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: markvi
+ms.date: 04/18/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 056a529101ffc39170ea057832bcd50b283505be
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: bffe16d604ac6b86b489092f50fbdc0b856867b3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436268"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68989770"
 ---
-# <a name="integrate-azure-ad-logs-with-azure-monitor-logs-preview"></a>Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle (Vorschauversion)
+# <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Mit Azure Monitor-Protokollen können Sie Daten abfragen, um bestimmte Ereignisse zu finden, Trends zu analysieren und datenquellenübergreifende Korrelationen vorzunehmen. Durch die Integration von Azure AD-Aktivitätsprotokollen in Azure Monitor-Protokolle können Sie nun unter anderem folgende Aufgaben ausführen:
 
@@ -37,8 +39,6 @@ Das folgende Video einer Ignite-Sitzung veranschaulicht die Vorteile der Verwend
 > [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
 
 In diesem Artikel erfahren Sie, wie Sie Azure Active Directory-Protokolle (Azure AD) in Azure Monitor integrieren.
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="supported-reports"></a>Unterstützte Berichte
 
@@ -60,7 +60,7 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 * Einen Benutzer, der als *globaler Administrator* oder *Sicherheitsadministrator* für den Azure AD-Mandanten fungiert.
 * Einen Log Analytics-Arbeitsbereich in Ihrem Azure-Abonnement. Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie [hier](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 
-## <a name="send-logs-to-azure-monitor-logs"></a>Senden von Protokollen an Azure Monitor-Protokolle
+## <a name="send-logs-to-azure-monitor"></a>Senden von Protokollen an Azure Monitor
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 

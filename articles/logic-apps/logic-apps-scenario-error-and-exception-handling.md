@@ -5,17 +5,17 @@ services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: hedidin
-ms.author: b-hoedid
-ms.reviewer: estfan, LADocs
+ms.author: estfan
+ms.reviewer: LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 58e59e4faa135e24124f494d90437b49caa30129
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ec01f738ee4943659de1b49ab8d52218e6a8fb79
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098662"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385461"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Szenario: Ausnahmebehandlung und Fehlerprotokollierung für Logik-Apps
 
@@ -485,4 +485,4 @@ Den Quellcode für die API-Anwendung zur Logik-App-Ausnahmeverwaltung finden Sie
 
 * [Anzeigen weiterer Logik-App-Beispiele und -Szenarien](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Informationen zur Überwachung von Logik-Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [Erstellen von automatisierten Bereitstellungsvorlagen für Logik-Apps](../logic-apps/logic-apps-create-deploy-template.md)
+* [Automatisieren der Logik-App-Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

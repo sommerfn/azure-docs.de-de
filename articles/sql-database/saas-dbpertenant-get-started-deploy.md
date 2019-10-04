@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 97570a16c7d87a3c8182909b61c04fde30b3fe9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d5326a3a154ed6f193b5527a0150ad84c843c273
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000207"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570436"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet
 
@@ -117,7 +116,7 @@ Auf einer zentralen **Event Hub**-Seite wird eine Liste mit Links zu den Mandant
 
 2. Wählen Sie im Events Hub die Option  **Fabrikam Jazz Club**  aus.
 
-    ![Ereignisse](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
+    ![Events](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
@@ -129,8 +128,8 @@ Die Wingtip-Anwendung verwendet  [*Azure Traffic Manager*](../traffic-manager/t
 
     | URL-Teil        | BESCHREIBUNG       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Die Veranstaltungs-Teile der Wingtip-App<br /><br /> Durch *-dpt* unterscheidet sich die Wingtip Tickets-Implementierung *mit einer Datenbank pro Mandant* von anderen Implementierungen, z.B. der Implementierung mit einer *einzelnen* App pro Mandant (*-sa*) oder der Implementierung mit einer *mehrinstanzenfähigen Datenbank* (*-mt*). |
-    | .*&lt;Benutzer&gt;* | Im Beispiel ist dies *af1*. |
+    | http://events.wingtip-dpt | Die Veranstaltungs-Teile der Wingtip-App<br /><br /> Durch *-dpt* unterscheidet sich die Wingtip Tickets-Implementierung *mit einer Datenbank pro Mandant* von anderen Implementierungen, z.B. der Implementierung mit einer *einzelnen* App pro Mandant ( *-sa*) oder der Implementierung mit einer *mehrinstanzenfähigen Datenbank* ( *-mt*). |
+    | . *&lt;Benutzer&gt;* | Im Beispiel ist dies *af1*. |
     | .trafficmanager.net/ | Traffic Manager, Basis-URL |
     | fabrikamjazzclub | Gibt den Mandanten mit dem Namen „Fabrikam Jazz Club“ an. |
     | &nbsp; | &nbsp; |
@@ -221,14 +220,14 @@ Aktualisieren Sie den Event Hub, damit der neue Mandant in der Liste angezeigt w
 
 Nachdem Sie für die Sammlung der Mandanten jetzt die Ausführung einer Last gestartet haben, sehen wir uns einige der bereitgestellten Ressourcen an.
 
-1. Navigieren Sie im  [Azure-Portal](https://portal.azure.com) zu Ihrer Liste von SQL-Servern. Öffnen Sie den Server  **catalog-dpt-&lt;BENUTZER&gt;** .
+1. Navigieren Sie im  [Azure-Portal](https://portal.azure.com) zu Ihrer Liste von SQL-Servern. Öffnen Sie den Server  **catalog-dpt-&lt;BENUTZER&gt;**  .
     - Der Katalogserver enthält die beiden Datenbanken **tenantcatalog** und **basetenantdb** (eine Vorlagendatenbank, die kopiert wird, um neue Mandanten zu erstellen).
 
    ![Datenbanken](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. Wechseln Sie zurück zur Liste der SQL-Server.
 
-3. Öffnen Sie den Server **tenants1-dpt-&lt;BENUTZER&gt;** , auf dem sich die Mandantendatenbanken befinden.
+3. Öffnen Sie den Server **tenants1-dpt-&lt;BENUTZER&gt;**  , auf dem sich die Mandantendatenbanken befinden.
 
 4. Beachten Sie folgende Elemente:
 
@@ -241,7 +240,7 @@ Nachdem Sie für die Sammlung der Mandanten jetzt die Ausführung einer Last ges
 
 Nachdem *LoadGenerator.ps1* mehrere Minuten ausgeführt wurde, sollten genügend Daten verfügbar sein, um einige Überwachungsfunktionen kennenzulernen. Diese Funktionen sind in Pools und Datenbanken integriert.
 
-Navigieren Sie zum Server **tenants1-dpt-&lt;Benutzer&gt;**, und wählen Sie  **Pool1**  aus, um die Ressourcenverwendung für den Pool anzuzeigen. In den folgenden Diagrammen wurde der Auslastungsgenerator eine Stunde lang ausgeführt.
+Navigieren Sie zum Server **tenants1-dpt-&lt;Benutzer&gt;** , und wählen Sie  **Pool1**  aus, um die Ressourcenverwendung für den Pool anzuzeigen. In den folgenden Diagrammen wurde der Auslastungsgenerator eine Stunde lang ausgeführt.
 
    ![Überwachen des Pools](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 
@@ -254,7 +253,7 @@ Die beiden Diagramme veranschaulichen, dass Pools für elastische Datenbanken un
 
 - Weitere Informationen finden Sie in den [weiteren Tutorials, die auf der SaaS-App Wingtip Tickets mit einer Datenbank pro Mandant aufbauen](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - Weitere Informationen zu Pools für elastische Datenbanken finden Sie unter  [Was ist ein Pool für elastische Azure SQL-Datenbanken?](sql-database-elastic-pool.md).
-- Weitere Informationen zu elastischen Aufträgen finden Sie unter  [Verwalten horizontal hochskalierter Clouddatenbanken](sql-database-elastic-jobs-overview.md).
+- Weitere Informationen zu elastischen Aufträgen finden Sie unter  [Verwalten horizontal hochskalierter Clouddatenbanken](elastic-jobs-overview.md).
 - Weitere Informationen zu mehrinstanzenfähigen SaaS-Anwendungen finden Sie unter  [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen](saas-tenancy-app-design-patterns.md).
 
 ## <a name="next-steps"></a>Nächste Schritte

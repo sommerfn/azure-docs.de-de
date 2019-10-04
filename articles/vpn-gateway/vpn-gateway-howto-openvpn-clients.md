@@ -5,22 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 1/15/2019
+ms.date: 06/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: d1e57e623e3e95f3d71e895c49c928f00aa0ad46
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b8f1626da730178d2cd9c2f31c4f9876102b3d46
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274671"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477842"
 ---
-# <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurieren von OpenVPN-Clients für Azure VPN Gateway (Vorschau)
+# <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Konfigurieren von OpenVPN-Clients für Azure VPN Gateway
 
 Dieser Artikel umfasst Informationen zum Konfigurieren von **OpenVPN ® Protocol**-Clients.
-
-> [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -30,7 +26,7 @@ Vergewissern Sie sich, dass Sie die Schritte zum Konfigurieren von OpenVPN für 
 
 ## <a name="windows"></a>Windows-Clients
 
-1. Laden Sie den OpenVPN-Client von der offiziellen [OpenVPN-Website](https://openvpn.net/index.php/open-source/downloads.html) herunter, und installieren Sie ihn.
+1. Laden Sie den OpenVPN-Client (Version 2.4 oder höher) von der offiziellen [OpenVPN-Website](https://openvpn.net/index.php/open-source/downloads.html) herunter, und installieren Sie ihn.
 2. Laden Sie das VPN-Profil für das Gateway herunter. Sie können es auf der Registerkarte „Point-to-Site-Konfiguration“ im Azure-Portal oder in PowerShell mit dem Cmdlet „New-AzVpnClientConfiguration“ herunterladen.
 3. Entzippen Sie das Profil. Öffnen Sie anschließend in Editor im Ordner „OpenVPN“ die Konfigurationsdatei *vpnconfig.ovpn*.
 4. [Exportieren](vpn-gateway-certificates-point-to-site.md#clientexport) Sie das P2S-Clientzertifikat, das Sie erstellt und in Ihre P2S-Konfiguration auf dem Gateway hochgeladen haben.
@@ -65,7 +61,7 @@ Vergewissern Sie sich, dass Sie die Schritte zum Konfigurieren von OpenVPN für 
 
 ## <a name="mac"></a>Mac-Clients
 
-1. Laden Sie einen OpenVPN-Client wie z.B. [Tunnelblick](https://tunnelblick.net/downloads.html) herunter, und installieren Sie ihn. 
+1. Laden Sie einen OpenVPN-Client wie z. B. [TunnelBlick](https://tunnelblick.net/downloads.html) herunter, und installieren Sie ihn. 
 2. Laden Sie das VPN-Profil für das Gateway herunter. Sie können es auf der Registerkarte „Point-to-Site-Konfiguration“ im Azure-Portal oder in PowerShell mit dem Cmdlet „New-AzVpnClientConfiguration“ herunterladen.
 3. Entzippen Sie das Profil. Öffnen Sie in Editor im Ordner „OpenVPN“ die Konfigurationsdatei „vpnconfig.ovpn“.
 4. Füllen Sie den Abschnitt „P2S client certificate“ mit dem öffentlichen Schlüssel für das P2S-Clientzertifikat in Base64 aus. In einem Zertifikat im PEM-Format können Sie einfach die CER-Datei öffnen und den base64-Schlüssel zwischen den Zertifikatskopfzeilen herauskopieren. Unter [Exportieren des öffentlichen Schlüssels](vpn-gateway-certificates-point-to-site.md#cer) finden Sie Informationen dazu, wie Sie ein Zertifikat exportieren können, um den codierten öffentlichen Schlüssel zu erhalten.
@@ -128,7 +124,7 @@ Vergewissern Sie sich, dass Sie die Schritte zum Konfigurieren von OpenVPN für 
     sudo openvpn –-config <name and path of your VPN profile file>
     ```
 12. Um über die grafische Benutzeroberfläche eine Verbindung herzustellen, wechseln Sie zu „Systemeinstellungen“.
-13. Klicken Sie auf **+**, um eine neue VPN-Verbindung hinzuzufügen.
+13. Klicken Sie auf **+** , um eine neue VPN-Verbindung hinzuzufügen.
 14. Wählen Sie unter **VPN hinzufügen**, den Befehl **Aus Datei importieren...** aus.
 15. Navigieren Sie zur Profildatei, und doppelklicken Sie darauf, oder wählen Sie **Öffnen** aus.
 16. Klicken Sie im Fenster **VPN hinzufügen** auf **Hinzufügen**.
@@ -138,6 +134,6 @@ Vergewissern Sie sich, dass Sie die Schritte zum Konfigurieren von OpenVPN für 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn die VPN-Clients Zugriff auf Ressourcen in einem anderen VNET (Produktion) haben sollen, führen Sie die Anweisungen im Artikel [Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) aus, um eine VNET-zu-VNET-Verbindung einzurichten. Stellen Sie sicher, dass BGP (Border Gateway Protocol) für die Gateways und die Verbindungen aktiviert ist, da andernfalls kein Datenverkehr fließt.
+Wenn die VPN-Clients Zugriff auf Ressourcen in einem anderen VNET haben sollen, führen Sie die Anweisungen im Artikel [Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) aus, um eine VNET-zu-VNET-Verbindung einzurichten. Stellen Sie sicher, dass BGP (Border Gateway Protocol) für die Gateways und die Verbindungen aktiviert ist, da andernfalls kein Datenverkehr fließt.
 
 **„OpenVPN“ ist eine Marke von OpenVPN Inc.**

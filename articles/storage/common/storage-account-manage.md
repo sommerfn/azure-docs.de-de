@@ -4,15 +4,15 @@ description: Sie erfahren, wie Sie Speicherkontoeinstellungen im Azure-Portal ve
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 03/05/2019
+ms.topic: conceptual
+ms.date: 06/20/2019
 ms.author: tamram
-ms.openlocfilehash: fa574558afeec5a7706482a142c0187e6a34bdb3
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 60104496006e790887dd9c4b3e4c3196e0ef6444
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370388"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671368"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Verwalten von Speicherkontoeinstellungen im Azure-Portal
 
@@ -20,16 +20,13 @@ Eine Reihe verschiedener Einstellungen für Ihr Speicherkonto ist im [Azure-Port
 
 ## <a name="access-control"></a>Zugriffssteuerung
 
-Azure Storage unterstützt Authentifizierung mit Azure Active Directory für Blob Storage und Queue Storage mittels rollenbasierter Zugriffssteuerung (RBAC). Weitere Informationen zur Authentifizierung mit Azure AD finden Sie unter [Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
+Azure Storage unterstützt die Autorisierung mit Azure Active Directory für Blob Storage und Queue Storage mittels der rollenbasierten Zugriffssteuerung (RBAC). Weitere Informationen zur Autorisierung mit Azure AD finden Sie unter [Authorize access to Azure blobs and queues using Azure Active Directory (Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory)](storage-auth-aad.md).
 
 Die Einstellungen für die **Zugriffssteuerung** im Azure-Portal bieten eine einfache Möglichkeit zum Zuweisen von RBAC-Rollen zu Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten. Weitere Informationen zum Zuweisen von RBAC-Rollen finden Sie unter [Verwalten der Zugriffsrechte für Blob- und Warteschlangendaten mit RBAC](storage-auth-aad-rbac.md).
 
-> [!NOTE]
-> Die Authentifizierung von Benutzern oder Anwendungen mithilfe von Azure AD-Anmeldeinformationen bietet mehr Sicherheit und Benutzerfreundlichkeit als andere Autorisierungsmethoden. Während Sie weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel mit Ihren Anwendungen verwenden können, macht Azure AD das Speichern Ihrer Kontozugriffsschlüssel mit Ihrem Code überflüssig. Sie können auch weiterhin Shared Access Signatures für zum Gewähren eines differenzierten Zugriffs auf Ressourcen in Ihrem Speicherkonto verwenden. Azure AD bietet jedoch ähnliche Funktionen, bei denen Sie weder SAS-Token verwalten noch sich um das Widerrufen einer gefährdeten SAS kümmern müssen. 
+## <a name="tags"></a>`Tags`
 
-## <a name="tags"></a>Tags
-
-Azure Storage unterstützt Azure Resource Manager-Tags zum Organisieren von Azure-Ressourcen mittels einer benutzerdefinierten Taxonomie. Sie können Tags auf Ihre Speicherkonten anwenden, sodass Sie sie in Ihrem Abonnement logisch gruppieren können. 
+Azure Storage unterstützt Azure Resource Manager-Tags zum Organisieren von Azure-Ressourcen mittels einer benutzerdefinierten Taxonomie. Sie können Tags auf Ihre Speicherkonten anwenden, sodass Sie sie in Ihrem Abonnement logisch gruppieren können.
 
 Bei Speicherkonten ist die Länge eines Tagnamens auf 128 Zeichen beschränkt, und ein Tagwert auf maximal 256 Zeichen.
 
@@ -41,24 +38,18 @@ Wenn Sie ein Speicherkonto erstellen, generiert Azure zwei 512-Bit-Speicherkonto
 
 [!INCLUDE [storage-account-key-note-include](../../../includes/storage-account-key-note-include.md)]
 
-### <a name="view-and-copy-access-keys"></a>Anzeigen und Kopieren von Zugriffsschlüsseln
+[!INCLUDE [storage-recommend-azure-ad-include](../../../includes/storage-recommend-azure-ad-include.md)]
 
-So zeigen Sie die Anmeldeinformationen für Ihr Speicherkonto an:
+### <a name="view-account-keys-and-connection-string"></a>Anzeigen von Kontoschlüsseln und Verbindungszeichenfolgen
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-2. Suchen Sie nach Ihrem Speicherkonto.
-3. Wählen Sie im Abschnitt **Einstellungen** der Speicherkontoübersicht die Option **Zugriffsschlüssel**. Daraufhin werden Ihre Zugriffsschlüssel zusammen mit der jeweiligen vollständigen Verbindungszeichenfolge angezeigt.
-4. Suchen Sie unter **key1** nach dem Wert für **Schlüssel**, und klicken Sie dann auf die Schaltfläche **Kopieren**, um den Kontoschlüssel zu kopieren.
-5. Alternativ können Sie die gesamte Verbindungszeichenfolge kopieren. Suchen Sie unter **key1** nach dem Wert für die **Verbindungszeichenfolge**, und klicken Sie dann auf die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zu kopieren.
-
-    ![Ein Screenshot, der zeigt, wie Sie Zugriffsschlüssel im Azure-Portal anzeigen](media/storage-manage-account/portal-connection-string.png)
+[!INCLUDE [storage-view-keys-include](../../../includes/storage-view-keys-include.md)]
 
 ### <a name="regenerate-access-keys"></a>Erneutes Generieren von Zugriffsschlüsseln
 
 Microsoft empfiehlt, dass Sie Ihre Zugriffsschlüssel regelmäßig neu generieren, um dafür zu sorgen, dass Ihr Speicherkonto sicher ist. Es werden zwei Zugriffsschlüssel zugewiesen, sodass Sie Ihre Schlüssel rotieren können. Wenn Sie Ihre Schlüssel rotieren, stellen Sie sicher, dass der Zugriff Ihrer Anwendung auf Azure Storage während des Prozesses erhalten bleibt. 
 
 > [!WARNING]
-> Das erneute Generieren Ihrer Zugriffsschlüssel kann sich auf Anwendungen oder Azure-Dienste auswirken, die von dem Speicherkontoschlüssel abhängig sind. Alle Clients, die den Kontoschlüssel verwenden, um auf das Speicherkonto zuzugreifen, müssen aktualisiert werden, damit der neue Schlüssel verwendet wird, einschließlich Media Services, Cloud-, Desktop- und mobiler Anwendungen sowie grafischer Benutzeroberflächenanwendungen für Azure Storage wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/). 
+> Das erneute Generieren Ihrer Zugriffsschlüssel kann sich auf Anwendungen oder Azure-Dienste auswirken, die von dem Speicherkontoschlüssel abhängig sind. Alle Clients, die den Kontoschlüssel verwenden, um auf das Speicherkonto zuzugreifen, müssen aktualisiert werden, damit der neue Schlüssel verwendet wird, einschließlich Media Services, Cloud-, Desktop- und mobiler Anwendungen sowie grafischer Benutzeroberflächenanwendungen für Azure Storage wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
 Befolgen Sie diesen Prozess, um Ihre Speicherkontoschlüssel zu rotieren:
 
@@ -74,6 +65,7 @@ Nachdem Sie ein Speicherkonto erstellt haben, können Sie dessen Konfiguration �
 Das Ändern der Speicherkontokonfiguration kann zusätzliche Kosten verursachen. Weitere Informationen finden Sie auf der Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="delete-a-storage-account"></a>Löschen von Speicherkonten
+
 Um ein Speicherkonto zu entfernen, das Sie nicht mehr verwenden, wechseln Sie im [Azure-Portal](https://portal.azure.com)zum entsprechenden Speicherkonto, und klicken Sie auf **Löschen**. Durch das Löschen eines Speicherkontos wird das gesamte Konto gelöscht, einschließlich aller Daten im Konto.
 
 > [!WARNING]

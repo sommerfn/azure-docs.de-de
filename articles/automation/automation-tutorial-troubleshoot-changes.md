@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 77dda5f113a10f0bfb59457b1059563c58db0dde
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 92f25d956bc8f1f930ae6ebbf7ee48c144bf8a30
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816936"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476854"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Problembehandlung für Änderungen in Ihrer Umgebung
 
@@ -101,7 +101,7 @@ Fügen Sie im Fenster **Arbeitsbereichskonfiguration** wie in den nächsten drei
 
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
-|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
+|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
 |Windows-Registrierungsschlüssel   | Der zu überprüfende Pfad für die Datei. Beispiel: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup      |
@@ -114,7 +114,7 @@ Fügen Sie im Fenster **Arbeitsbereichskonfiguration** wie in den nächsten drei
 
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
-|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
+|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
 |Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z.B. „c:\temp\\\*.txt“<br>Sie können auch Umgebungsvariablen verwenden, beispielsweise „%winDir%\System32\\\*.*“.         |
@@ -129,7 +129,7 @@ Fügen Sie im Fenster **Arbeitsbereichskonfiguration** wie in den nächsten drei
 
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
-|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
+|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
 |Enter Path     | Der zu überprüfende Pfad für die Datei, z.B. „/etc/*.conf“       |
@@ -197,7 +197,7 @@ Geben Sie unter **Warnungslogik** für **Schwellenwert** den Wert **0** ein. Kli
 
 Wählen Sie unter **Aktionsgruppen** die Option **Neu erstellen** aus. Eine Aktionsgruppe ist eine Gruppe mit Aktionen, die Sie übergreifend für mehrere Warnungen verwenden können. Dies können beispielsweise E-Mail-Benachrichtigungen, Runbooks, Webhooks und vieles mehr sein. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md).
 
-Geben Sie unter **Warnungsdetails definieren** einen Namen und eine Beschreibung für die Warnung ein. Legen Sie **Schweregrad** auf **Information (Schweregrad 2)**, **Warnung (Schweregrad 1)** oder **Kritisch (Schweregrad 0)** fest.
+Geben Sie unter **Warnungsdetails definieren** einen Namen und eine Beschreibung für die Warnung ein. Legen Sie **Schweregrad** auf **Information (Schweregrad 2)** , **Warnung (Schweregrad 1)** oder **Kritisch (Schweregrad 0)** fest.
 
 Geben Sie im Feld **Name der Aktionsgruppe** einen Namen für die Warnung und darunter einen Kurznamen ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
 
@@ -211,7 +211,7 @@ Wenn Sie den Betreff der Warnungs-E-Mail anpassen möchten, klicken Sie unter **
 
 Die folgende Abbildung zeigt eine Beispiel-E-Mail, die bei Beendigung des W3SVC-Diensts eingeht.
 
-![E-Mail](./media/automation-tutorial-troubleshoot-changes/email.png)
+![email](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

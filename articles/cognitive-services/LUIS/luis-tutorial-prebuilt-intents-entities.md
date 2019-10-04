@@ -1,5 +1,5 @@
 ---
-title: Vordefinierte Absichten und Entitäten
+title: 'Tutorial: Vordefinierte Absichten und Entitäten: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Fügen Sie in diesem Tutorial einer App vordefinierte Absichten und Entitäten hinzu, um schnell zu Absichtsvorhersage und Datenextraktion zu gelangen. Sie müssen Äußerungen nicht mit vordefinierten Entitäten bezeichnen. Die Entität wird automatisch erkannt.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 87e006cc5d56e0c7eb5455147c5ce9eb40afc162
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: aaeddac98e3f192d5e6a87ecfd48005526379ff2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086614"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390983"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Tutorial: Identifizieren häufiger Absichten und Entitäten
 
@@ -51,18 +51,7 @@ LUIS enthält mehrere vordefinierte Absichten für allgemeine Benutzerabsichten.
 
 1. Suchen Sie nach `Utilities`. 
 
-    [![Screenshot des Dialogfelds zum Hinzufügen vordefinierter Absichten mit eingegebenem Suchbegriff „Utilities“](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png)](./media/luis-tutorial-prebuilt-intents-and-entities/prebuilt-intent-utilities.png#lightbox)
-
-1. Wählen Sie die folgenden Absichten und dann **Fertig** aus: 
-
-   * Utilities.Cancel
-   * Utilities.Confirm
-   * Utilities.Help
-   * Utilities.StartOver
-   * Utilities.Stop
-
-     Diese Absichten sind nützlich, um zu bestimmen, wo sich der Benutzer in der Konversation befindet und was er tun möchte. 
-
+1. Wählen Sie alle Absichten und anschließend **Fertig** aus. Diese Absichten sind nützlich, um zu bestimmen, wo sich der Benutzer in der Konversation befindet und was er tun möchte. 
 
 ## <a name="add-prebuilt-entities-to-help-with-common-data-type-extraction"></a>Hinzufügen von vordefinierten Entitäten, um die Extraktion allgemeiner Datentypen zu unterstützen
 
@@ -101,35 +90,75 @@ LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner 
 
     ```json
     {
-      "query": "I want to cancel my trip to Seattle to see Bob Smith",
+      "query": "I want to cancel my trip to Seattle to see Bob Smith.",
       "topScoringIntent": {
-        "intent": "Utilities.Cancel",
-        "score": 0.807676256
+        "intent": "Utilities.ReadAloud",
+        "score": 0.100361854
       },
       "intents": [
         {
-          "intent": "Utilities.Cancel",
-          "score": 0.807676256
-        },
-        {
-          "intent": "Utilities.StartOver",
-          "score": 0.0487322025
-        },
-        {
-          "intent": "Utilities.Help",
-          "score": 0.0208660364
-        },
-        {
-          "intent": "None",
-          "score": 0.008789532
+          "intent": "Utilities.ReadAloud",
+          "score": 0.100361854
         },
         {
           "intent": "Utilities.Stop",
-          "score": 0.006929268
+          "score": 0.08102781
+        },
+        {
+          "intent": "Utilities.SelectNone",
+          "score": 0.0398852825
+        },
+        {
+          "intent": "Utilities.Cancel",
+          "score": 0.0277276486
+        },
+        {
+          "intent": "Utilities.SelectItem",
+          "score": 0.0220712926
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.0145813478
+        },
+        {
+          "intent": "None",
+          "score": 0.012434179
+        },
+        {
+          "intent": "Utilities.Escalate",
+          "score": 0.0122632384
+        },
+        {
+          "intent": "Utilities.ShowNext",
+          "score": 0.008534077
+        },
+        {
+          "intent": "Utilities.ShowPrevious",
+          "score": 0.00547111453
+        },
+        {
+          "intent": "Utilities.SelectAny",
+          "score": 0.00152912608
+        },
+        {
+          "intent": "Utilities.Repeat",
+          "score": 0.0005556819
+        },
+        {
+          "intent": "Utilities.FinishTask",
+          "score": 0.000169488427
         },
         {
           "intent": "Utilities.Confirm",
-          "score": 0.00136293867
+          "score": 0.000149565312
+        },
+        {
+          "intent": "Utilities.GoBack",
+          "score": 0.000141017343
+        },
+        {
+          "intent": "Utilities.Reject",
+          "score": 6.27324E-06
         }
       ],
       "entities": [

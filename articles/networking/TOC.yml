@@ -13,7 +13,7 @@
         - name: Hub-Spoke-Topologie
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke'
         - name: Bewährte Methoden für die Netzwerksicherheit
-          href: ../security/azure-security-network-security-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json
+          href: ../security/fundamentals/network-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Hochverfügbare virtuelle Netzwerkgeräte
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha'
         - name: Kombinieren von Lastenausgleichsmethoden
@@ -40,6 +40,8 @@
               href: connectivty-interoperability-data-plane.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: Konzepte
       items:
+        - name: Globales Microsoft-Netzwerk
+          href: microsoft-global-network.md
         - name: Virtuelle Netzwerke
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Netzwerklastenausgleich
@@ -54,7 +56,7 @@
           href: ../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Lokal verbinden – dediziert
           href: ../expressroute/expressroute-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json
-- name: Erste Schritte
+- name: Schnellstart
   items:
     - name: Erstellen Ihres ersten virtuellen Netzwerks
       href: ../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
@@ -88,6 +90,10 @@
           href: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Erstellen einer dedizierten privaten Verbindung (ExpressRoute)
           href: ../expressroute/expressroute-howto-circuit-portal-resource-manager.md?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: Konnektivität der öffentlichen Cloud
+      items:
+        - name: Verbinden von Azure mit öffentlichen Clouds
+          href: ../expressroute/expressroute-connect-azure-to-public-cloud.md?toc=%2fazure%2fnetworking%2ftoc.json
     - name: Verwaltung
       items:
         - name: Übersicht über die Netzwerküberwachung
@@ -124,6 +130,8 @@
   items:
     - name: Verfassen von Vorlagen
       href: /azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json
+    - name: Anbieter
+      href: networking-partners-msp.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Communityvorlagen

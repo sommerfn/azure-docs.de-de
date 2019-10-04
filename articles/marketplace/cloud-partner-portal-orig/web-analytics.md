@@ -1,25 +1,19 @@
 ---
-title: Web Analytics | Microsoft-Dokumentation
+title: Web Analytics
 description: .
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 89cc8c4bffe910de0861d7f44925a10df3811fdb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: a6b2a7981452b47a3992b6c0efee286878e143fb
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097473"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962884"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
@@ -60,7 +54,7 @@ Sie können z. B. Folgendes verwenden: <https://appsource.microsoft.com/product/
 
 Sie können eine Kombination aus mehreren dieser Kampagnen-IDs wählen, um mehrere Quellen weiter zu identifizieren, die den Datenverkehr für die Kampagne beeinflussen, z. B. woher der Kunde kommt (E-Mail, Blog, Social Media-Quelle, usw.).
 
-Beispiel: 
+Beispiel:
 
 1. Newsletter-Verweis: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
 2. LinkedIn-Verweis: <https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
@@ -69,7 +63,7 @@ Beispiel:
 
 Es kann ein Szenario vorkommen, in dem Ihre Kampagnen eine Zwischenseite aufweisen, auf der Sie den Datenverkehr zu dieser Seite lenken und dann die Kunden zum Marketplace senden. Es ist wichtig, dass Sie Ihre ersten Kampagnen-IDs an die endgültige URL weitergeben, die Sie an den Marketplace senden.
 
-Beispiel: 
+Beispiel:
 
 1. Marketingmitarbeiter kauft Anzeigen bei Google, um den Datenverkehr zur Angebotsseite <https://contoso.com> des Unternehmens zu steigern. Diese Angebotsseite verfügt über einen \"Produkt testen\"-Link, der zu <https://appsource.com> führt.
 2. Ein Benutzer klickt auf die Anzeige und landet auf der Angebotsseite seines Unternehmens\'.
@@ -77,7 +71,7 @@ Beispiel:
     2.  URL der Angebotsseite = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
 3. Der Benutzer klickt auf den Link \"Produkt testen\" und gelangt zur AppSource.
     1. Verweis-URL = <https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. URL der Angebotsseite (**Stellen Sie sicher, dass dieser URL utm\_campaign und utm\_source hinzugefügt wurde**) = [https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?**utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName**](https://appsource.microsoft.com/en-us/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    2. URL der Angebotsseite (**Stellen Sie sicher, dass dieser URL utm\_campaign und utm\_source hinzugefügt wurde**) = [https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_ campaign=MyCampaignAdName&utm\_ source=MySourceAdName**](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>Auswerten des Erfolgs einer Kampagne
 -----------------------------------------

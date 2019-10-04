@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen eines Flyouts zur Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+title: Hinzufügen eines Flyouts zur Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
 description: Dieser Artikel zeigt Ihnen, wie Sie ein neues Flyout auf einer Seite zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung hinzufügen können.
 author: dominicbetts
 manager: timlt
@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167425"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61447113"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen eines benutzerdefinierten Flyouts zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung
 
@@ -35,8 +35,8 @@ Um die Schritte in diesem Leitfaden abzuschließen, muss die folgende Software a
 
 Sie sollten die Schritte in den folgenden Artikeln ausführen, bevor Sie fortfahren:
 
-- [Hinzufügen einer benutzerdefinierten Seite zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-customize-page.md).
-- [Hinzufügen eines benutzerdefinierten Dienstes zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-customize-service.md).
+- [Hinzufügen einer benutzerdefinierten Seite zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-customize-page.md).
+- [Hinzufügen eines benutzerdefinierten Dienstes zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-customize-service.md).
 - [Hinzufügen eines benutzerdefinierten Rasters zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-customize-grid.md)
 
 ## <a name="add-a-flyout"></a>Hinzufügen eines Flyouts

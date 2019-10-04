@@ -3,19 +3,19 @@ title: Sprachunterstützung – Bing-News-Suche-API
 titleSuffix: Azure Cognitive Services
 description: Eine Liste der von der Bing-News-Suche-API unterstützten natürlichen Sprachen, Länder und Regionen.
 services: cognitive-services
-author: MikeDodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
-ms.author: v-gedod
-ms.openlocfilehash: f94ebb9b46ade0c03f65fdeb78bc7be96794a3d2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.author: aahi
+ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866746"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66384982"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Sprach- und Regionsunterstützung für die Bing-News-Suche-API
 
@@ -162,4 +162,4 @@ Die folgenden Länder-/Regionscodes können Sie im `cc`-Abfrageparameter angeben
 |USA|US|
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu den Endpunkten der Bing-News-Suche finden Sie unter [API v7-Referenz zur News-Suche](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference).
+Weitere Informationen zu den Endpunkten der Bing-News-Suche finden Sie unter [API v7-Referenz zur News-Suche](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

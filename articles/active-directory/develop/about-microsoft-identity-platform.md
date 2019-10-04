@@ -1,10 +1,10 @@
 ---
-title: Informationen zur Microsoft Identity Platform | Azure
-description: Erfahren Sie mehr über Microsoft Identity Platform, eine Weiterentwicklung des Azure Active Directory-Identitätsdiensts und der zugehörigen Entwicklerplattform.
+title: Entwicklung der Microsoft Identity Platform – Azure
+description: Erfahren Sie mehr über Microsoft Identity Platform, eine Weiterentwicklung des Azure Active Directory-Identitätsdiensts (Azure AD) und der zugehörigen Entwicklerplattform.
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,27 +12,35 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
-ms.author: celested
-ms.reviewer: saeeda
+ms.date: 06/03/2019
+ms.author: ryanwi
+ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7b3eee08c036862e6ce9f0c590a596f7b1d3fb0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0dc4c29d3a12902b3ce01f9505cba5ac02e921eb
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258690"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67625342"
 ---
-# <a name="about-microsoft-identity-platform"></a>Informationen zu Microsoft Identity Platform
+# <a name="evolution-of-microsoft-identity-platform"></a>Entwicklung der Microsoft Identity Platform
 
-Microsoft Identity Platform ist eine Weiterentwicklung des Azure AD-Identitätsdiensts (Azure Active Directory) und der zugehörigen Entwicklerplattform. Sie ermöglicht Entwicklern das Erstellen von Anwendungen, mit denen alle Microsoft-Identitäten angemeldet werden, und das Abrufen von Token zum Aufrufen von Microsoft Graph, anderen Microsoft-APIs oder von Entwicklern erstellten APIs. Es handelt sich um eine Plattform mit vollem Funktionsumfang, die einen Authentifizierungsdienst, Open-Source-Bibliotheken, Anwendungsregistrierung und -konfiguration (über ein Entwicklerportal und eine Anwendungs-API), eine vollständige Entwicklerdokumentation, Codebeispiele und andere Inhalte für Entwickler umfasst. Microsoft Identity Platform unterstützt die branchenüblichen Protokolle, z.B. OAuth 2.0 und OpenID Connect.
+Microsoft Identity Platform ist eine Weiterentwicklung der Azure AD-Entwicklerplattform (Azure Active Directory). Sie ermöglicht Entwicklern das Erstellen von Anwendungen, mit denen Benutzer angemeldet werden, sowie das Abrufen von Token zum Aufrufen von APIs, etwa Microsoft Graph oder von Entwicklern erstellten APIs. Die Plattform umfasst einen Authentifizierungsdienst, Open-Source-Bibliotheken, Anwendungsregistrierung und -konfiguration (über ein Entwicklerportal und eine Anwendungs-API), eine vollständige Entwicklerdokumentation, Schnellstartbeispiele, Codebeispiele, Tutorials, Schrittanleitungen und weitere Inhalte für Entwickler. Microsoft Identity Platform unterstützt die branchenüblichen Protokolle, z.B. OAuth 2.0 und OpenID Connect.
 
-Bisher haben die meisten Entwickler mit der Azure AD v1.0-Plattform gearbeitet, um Azure AD-Identitäten (Geschäfts-, Schul- und Unikonten) zu authentifizieren, indem sie Token vom Azure AD v1.0-Endpunkt angefordert, die Azure AD-Authentifizierungsbibliothek (ADAL), das Azure-Portal für die Registrierung und Konfiguration von Anwendungen und die Azure AD Graph-API für die Konfiguration von programmgesteuerten Anwendungen verwendet haben. Die Azure AD v1.0-Plattform ist ein ausgereiftes Plattformangebot, das weiterhin für Unternehmensanwendungen geeignet ist.
+Bisher haben die meisten Entwickler mit der Azure AD v1.0-Plattform gearbeitet, um (von Azure AD bereitgestellte) Geschäfts-, Schul- und Unikonten zu authentifizieren, indem sie Token vom Azure AD v1.0-Endpunkt angefordert, die Azure AD-Authentifizierungsbibliothek (ADAL), das Azure-Portal für die Anwendungsregistrierung und -konfiguration und die Azure AD Graph-API für die programmgesteuerte Anwendungskonfiguration verwendet haben.
 
-Um die Funktionen von Microsoft Identity Platform zu erweitern und weiterzuentwickeln, können Sie jetzt eine breitere Palette von Microsoft Identitäten (Azure AD-Identitäten, Microsoft-Konten (wie outlook.com und hotmail.com) sowie soziale und lokale Konten über Azure AD B2C) über den so genannten Azure AD v2.0-Endpunkt authentifizieren. Hier verwenden Sie die Microsoft Authentication Library (MSAL) oder eine beliebige Open-Source-OAuth2.0- oder -OpenID Connect-Bibliothek, das Azure-Portal zur Anwendungsregistrierung und -konfiguration und die Microsoft Graph-API zur programmgesteuerten Anwendungskonfiguration. Die aktualisierte Microsoft Identity Platform (insbesondere die MSAL-Bibliotheken und die neueste App-Registrierungsbenutzeroberfläche des Azure-Portals) hat sich im Laufe des letzten Jahres deutlich weiterentwickelt. Um dieses Release abzuschließen, empfehlen wir Entwicklern, ihre Anwendungen mit der neuesten Microsoft Identity Platform zu entwickeln und zu testen.
+Mit Microsoft Identity Platform (v2.0) dehnen Sie Ihre Reichweite auf folgende Benutzertypen aus:
 
-Für Anwendungen, die die neuesten ADAL- und MSAL-Versionen verwenden, wird SSO genutzt. Anwendungen, die von ADAL auf MSAL aktualisiert wurden, behalten den Status der Benutzeranmeldung bei. Entwickler können ihre Anwendungen nach eigenem Ermessen auf MSAL aktualisieren, da mit ADAL erstellte Anwendungen weiterhin funktionieren und unterstützt werden.
+- Geschäfts-, Schul- oder Unikonten (von Azure AD bereitgestellte Konten)
+- Persönliche Konten (z. B. Outlook.com oder Hotmail.com)
+- Kunden mit eigenen E-Mail-Adressen oder Social Media-Konten (z. B. LinkedIn, Facebook, Google) über das Azure AD B2C-Angebot
+
+Dank der einheitlichen Microsoft Identity Platform können Sie einmalig Code schreiben und beliebige Microsoft-Identitäten in Ihrer Anwendung authentifizieren. Die Microsoft-Authentifizierungsbibliothek (MSAL) ist eine vollständig unterstützte Open Source-Bibliothek und steht für verschiedene Plattformen zur Verfügung. MSAL ist einfach zu verwenden und bietet Benutzern hervorragende Funktionen für einmaliges Anmelden (SSO). Sie ist auf hohe Zuverlässigkeit und Leistung ausgelegt und wurde unter Verwendung von Microsoft Secure Development Lifecycle (SDL) entwickelt. Sie können Ihre Anwendung so konfigurieren, dass sie beim Aufrufen von APIs die inkrementelle Zustimmung nutzt. Dadurch wird eine Zustimmung für invasivere Geltungsbereiche erst angefordert, wenn dies durch die Anwendungsnutzung zur Laufzeit erforderlich wird.
+
+Sie können das Azure-Portal zum Registrieren und Konfigurieren Ihrer Anwendung und die Microsoft Graph-API für die programmgesteuerte Anwendungskonfiguration verwenden.
+
+Aktualisieren Sie Ihre Anwendung in Ihrem eigenen Tempo. Mit ADAL-Bibliotheken erstellte Anwendungen werden weiterhin unterstützt. Gemischte Portfolios aus Anwendungen, die mit ADAL- und mit MSAL-Bibliotheken erstellt wurden, werden ebenfalls unterstützt. So können Anwendungen, die die aktuelle ADAL- und die aktuelle MSAL-Bibliothek nutzen, eine portfolioübergreifende SSO-Funktionalität bieten. Gewährleistet wird dies durch den gemeinsamen Tokencache, den beide Bibliotheken nutzen. Anwendungen, die von ADAL auf MSAL aktualisiert werden, behalten den Benutzeranmeldestatus beim Upgrade bei.
 
 ## <a name="microsoft-identity-platform-experience"></a>Benutzeroberfläche von Microsoft Identity Platform
 
@@ -40,27 +48,29 @@ Die folgende Abbildung zeigt eine Übersicht der Microsoft-Identitätsbenutzerob
 
 ![Aktuelle Microsoft Identity Platform](./media/about-microsoft-identity-platform/about-microsoft-identity-platform.svg)
 
-Microsoft Identity Platform verfügt über zwei Endpunkte (v1.0 und v2.0) und zwei Gruppen von Clientbibliotheken für die Verarbeitung dieser Endpunkte. Berücksichtigen Sie bei der Entwicklung einer neuen Anwendung die Vorteile und den aktuellen Zustand der Endpunkte und der Authentifizierungsbibliotheken. Berücksichtigen Sie auch Folgendes:
+### <a name="app-registration-experience"></a>Umgebung für die App-Registrierung
 
-* Unterstützte Plattformen
+Die Seite **[App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908)** im Azure-Portal ist die zentrale Portaloberfläche für die Verwaltung aller in Microsoft Identity Platform integrierten Anwendungen. Wenn Sie bisher das App-Registrierungsportal verwendet haben, sollten Sie jetzt auf die App-Registrierungsoberfläche im Azure-Portal umsteigen.
 
-    * [ADAL](active-directory-authentication-libraries.md) unterstützt .NET, JavaScript, iOS, Android, Java und Python.
-    * [MSAL (Vorschau)](reference-v2-libraries.md) unterstützt .NET, JavaScript, iOS und Android.
-    * Beide Endpunkte unterstützen .NET- und Node.js-Servermiddleware zum Schützen von APIs und der Anmeldung. 
+Zur Integration von Azure AD B2C (für die Authentifizierung von Social Media- oder lokalen Identitäten) müssen Sie Ihre Anwendung bei einem B2C-Mandanten registrieren. Diese Funktion ist ebenfalls Bestandteil des Microsoft Azure-Portals.
 
-* Der Großteil der Innovationen, wie dynamische Zustimmung und inkrementelle Zustimmung, betrifft den v2.0-Endpunkt und MSAL, während wir weiterhin v1.0 und ADAL unterstützen.
+Die **Anwendungs-API in Microsoft Graph** ist derzeit als Vorschauversion verfügbar. Verwenden Sie diese API, um Ihre in Microsoft Identity Platform integrierten Anwendungen programmgesteuert für die Authentifizierung beliebiger Microsoft-Identitäten zu konfigurieren. Bis diese API jedoch allgemein verfügbar wird, sollten Sie die Azure AD Graph 1.6-API und das Anwendungsmanifest verwenden.
 
-    Im Azure-Portal mussten Sie bisher alle Bereiche, die Ihre App benötigt, statisch identifizieren. Mit dem v2.0-Endpunkt und den diesem Endpunkt zugeordneten Portalen können Sie die Bereiche wie bisher statisch definieren oder dynamisch anfordern, wenn Ihre App die Berechtigung benötigt. Der dynamische Vorgang bietet eine weitere optionale Möglichkeit: die inkrementelle Zustimmung. Mit der inkrementellen Zustimmung können Sie eine Teilmenge von Bereichen anfordern, die Sie benötigen, wenn sich ein Benutzer zum ersten Mal authentifiziert, und zusätzliche Bereiche anfordern, wenn diese benötigt werden. 
-    
-    Wenn Sie beispielsweise eine Kamera-App auf einem mobilen Gerät verwenden, wird der Benutzer aufgefordert, der App den Zugriff auf die Kamera zu erlauben, und erst nachdem der Benutzer zugestimmt hat, darf die App auf die Kamera zugreifen und ein Foto aufnehmen.  Wenn die App bereit ist, das neue Foto zu speichern, kann sie die Lese-/Schreibberechtigung für das Foto anfordern. 
+### <a name="msal-libraries"></a>MSAL-Bibliotheken
 
-* Mögliche neue Änderungen
+Sie können die MSAL-Bibliothek zum Erstellen von Anwendungen nutzen, die sämtliche Microsoft-Identitäten authentifizieren. Die MSAL-Bibliotheken in .NET und JavaScript sind allgemein verfügbar. MSAL-Bibliotheken für iOS und Android befinden sich in der Vorschauphase und sind für die Verwendung in einer Produktionsumgebung geeignet. Wir bieten für MSAL-Bibliotheken in der Vorschau denselben professionellen Produktionssupport wie wir für allgemein verfügbare MSAL- und ADAL-Versionen.
 
-    MSAL eignet sich für die Verwendung in einer Produktionsumgebung. Wir bieten die gleiche Art von Produktionsunterstützung für MSAL wie für unsere aktuellen Produktionsbibliotheken. In der Vorschauphase nehmen wir ggf. ohne vorherige Ankündigung Änderungen an der API, am internen Cacheformat und an anderen Mechanismen dieser Bibliothek vor, die neben Fehlerkorrekturen und Verbesserungen von Features erfolgen. Dies kann sich auf Ihre Anwendung auswirken. Eine Änderung am Cacheformat kann sich z.B. bei Ihren Benutzern dadurch bemerkbar machen, dass sie sich erneut anmelden müssen. Eine API-Änderung kann das Aktualisieren Ihres Codes erforderlich machen. Sobald wir das allgemein verfügbare Release veröffentlichen (GA-Release), müssen Sie binnen sechs Monaten ein Update auf das GA-Release ausführen, da Anwendungen, die mit einer Vorschauversion der Bibliothek geschrieben wurden, ggf. nicht mehr funktionieren.
+Sie können die MSAL-Bibliotheken auch verwenden, um Ihre Anwendung in Azure AD B2C zu integrieren.
+
+Serverseitige Bibliotheken zum Erstellen von Web-Apps und Web-APIs sind allgemein verfügbar: [ASP.NET](https://docs.microsoft.com/aspnet/overview) und [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
+
+### <a name="microsoft-identity-platform-endpoint"></a>Microsoft Identity Platform-Endpunkt
+
+Der Microsoft Identity Platform (v2.0)-Endpunkt ist ab sofort OIDC-zertifiziert. Er unterstützt Microsoft-Authentifizierungsbibliotheken (MSAL) und andere standardkonforme Bibliotheken. Er implementiert visuell lesbare Geltungsbereiche gemäß Branchenstandards.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu v1. 0 und v2. 0.
 
-* [Informationen zu v1.0](v1-overview.md)
-* [Informationen zu v2.0](v2-overview.md)
+* [Microsoft Identity Platform (v2.0) – Übersicht](v2-overview.md)
+* [Azure Active Directory für Entwickler (v1.0) – Übersicht](v1-overview.md)

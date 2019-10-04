@@ -8,41 +8,40 @@ manager: harijayms
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/28/2019
+ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: cc2a78dd547681a4b20fea14cd8cd7f4fd9c2df5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 658830e37a453075100cd3aaf132bb1d3aedfaea
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58847980"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240387"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
 Der Azure-Instanzmetadatendienst stellt Informationen zum Ausführen von Instanzen virtueller Computer bereit, die zum Verwalten und Konfigurieren Ihrer virtuellen Computer verwendet werden können.
-Hierzu gehören Informationen wie die SKU, die Netzwerkkonfiguration und bevorstehende Wartungsereignisse. Weitere Informationen zu der Art der verfügbaren Informationen finden Sie unter [Metadatenkategorien](#instance-metadata-data-categories).
+Hierzu gehören Informationen wie die SKU, die Netzwerkkonfiguration und bevorstehende Wartungsereignisse. Weitere Informationen zu der Art der verfügbaren Informationen finden Sie unter [Metadaten-APIs](#metadata-apis).
 
 Der Instanzmetadatendienst von Azure ist ein REST-Endpunkt, der für alle IaaS-VMs verfügbar ist, die mit dem neuen [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) erstellt wurden.
 Der Endpunkt steht unter einer bekannten, nicht routingfähigen IP-Adresse zur Verfügung (`169.254.169.254`), auf die nur innerhalb der VM zugegriffen werden kann.
 
 > [!IMPORTANT]
-> Dieser Dienst ist in allen Azure-Regionen **allgemein verfügbar**.  Er empfängt regelmäßig Updates, um neue Informationen zu Instanzen virtueller Computer verfügbar zu machen. Auf dieser Seite werden die neuesten [Datenkategorien](#instance-metadata-data-categories) angezeigt.
+> Dieser Dienst ist in allen Azure-Regionen **allgemein verfügbar**.  Er empfängt regelmäßig Updates, um neue Informationen zu Instanzen virtueller Computer verfügbar zu machen. Diese Seite behandelt die neuesten [Metadaten-APIs](#metadata-apis).
 
 ## <a name="service-availability"></a>Dienstverfügbarkeit
 
 Der Dienst ist in Azure-Regionen allgemein verfügbar. Unter Umständen sind nicht alle API-Versionen in allen Azure-Regionen verfügbar.
 
-Regionen                                        | Verfügbarkeit?                                 | Unterstützte Versionen
+Regions                                        | Verfügbarkeit?                                 | Unterstützte Versionen
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | Allgemein verfügbar   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
-[Azure China](https://www.azure.cn/)                                                           | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
-[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
+[Azure China](https://www.azure.cn/)                                                     | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
+[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
 
 Diese Tabelle wird aktualisiert, wenn Dienstupdates oder neue unterstützte Versionen verfügbar sind.
 
@@ -52,7 +51,9 @@ Um den Instanzmetadatendienst zu testen, erstellen Sie eine VM über den [Azure 
 
 ### <a name="versioning"></a>Versionsverwaltung
 
-Für den Instanzmetadatendienst wird die Versionsverwaltung genutzt. Versionen sind obligatorisch, und die aktuelle Version in globalen Azure-Regionen ist `2018-10-01`. Aktuelle unterstützte Versionen: 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01
+Der Instance Metadata Service verwendet Versionsangaben, und die Angabe der API-Version in der HTTP-Anforderung ist zwingend erforderlich.
+
+Sie finden die neuesten Versionen in dieser [Verfügbarkeitstabelle](#service-availability).
 
 Wenn neuere Versionen hinzugefügt werden, kann auf ältere Versionen aus Kompatibilitätsgründen weiterhin zugegriffen werden, falls Ihre Skripts von bestimmten Datenformaten abhängig sind.
 
@@ -106,7 +107,7 @@ API | Standarddatenformat | Andere Formate
 /scheduledevents | json | none
 /attested | json | none
 
-Um auf ein nicht standardmäßiges Antwortformat zuzugreifen, geben Sie das angeforderte Format als QueryString-Parameter in der Anforderung an. Beispiel: 
+Um auf ein nicht standardmäßiges Antwortformat zuzugreifen, geben Sie das angeforderte Format als QueryString-Parameter in der Anforderung an. Beispiel:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -190,7 +191,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 **Anforderung**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-03-11"
 ```
 
 **Antwort**
@@ -201,7 +202,8 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018
 ```json
 {
   "compute": {
-    "azEnvironment": "AZUREPUBLICCLOUD",
+    "azEnvironment": "AzurePublicCloud",
+    "customData": "",
     "location": "westus",
     "name": "jubilee",
     "offer": "Windows-10",
@@ -218,6 +220,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018
     "publicKeys": [],
     "publisher": "MicrosoftWindowsDesktop",
     "resourceGroupName": "myrg",
+    "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
     "sku": "rs4-pro",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
     "tags": "Department:IT;Environment:Prod;Role:WorkerRole",
@@ -260,15 +263,15 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018
 
 Die Instanzmetadaten können unter Windows über das `curl`-Programm abgerufen werden:
 
-```bash
-curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2018-10-01 | select -ExpandProperty Content
+```powershell
+curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-03-11 | select -ExpandProperty Content
 ```
 
 Oder über das folgende `Invoke-RestMethod`-PowerShell-Cmdlet:
 
 ```powershell
 
-Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2018-10-01 -Method get
+Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2019-03-11 -Method get
 ```
 
 **Antwort**
@@ -279,7 +282,8 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 ```json
 {
   "compute": {
-    "azEnvironment": "AZUREPUBLICCLOUD",
+    "azEnvironment": "AzurePublicCloud",
+    "customData": "",
     "location": "westus",
     "name": "SQLTest",
     "offer": "SQL2016SP1-WS2016",
@@ -296,6 +300,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
     "publicKeys": [],
     "publisher": "MicrosoftSQLServer",
     "resourceGroupName": "myrg",
+    "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
     "sku": "Enterprise",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
     "tags": "Department:IT;Environment:Test;Role:WebRole",
@@ -332,42 +337,63 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 }
 ```
 
-## <a name="instance-metadata-data-categories"></a>Datenkategorien von Instanzmetadaten
+## <a name="metadata-apis"></a>Metadaten-APIs
 
-Folgende Datenkategorien werden über den Instanzmetadatendienst zur Verfügung gestellt:
+#### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>Die folgenden APIs stehen über den Metadatenendpunkt zur Verfügung:
 
-Daten | BESCHREIBUNG | Eingeführt in Version
+Data | BESCHREIBUNG | Eingeführt in Version
+-----|-------------|-----------------------
+attested | Siehe [Bestätigte Daten](#attested-data) | 01.10.2018
+identity | Verwaltete Identitäten für Azure-Ressourcen. Siehe [Abrufen eines Zugriffstokens](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
+instance | Siehe [Instanz-API](#instance-api) | 2017-04-02
+scheduledevents | Siehe [Azure-Metadatendienst: Geplante Ereignisse (Vorschau) für Windows-VMs](scheduled-events.md) | 2017-08-01
+
+#### <a name="instance-api"></a>Instanz-API
+##### <a name="the-following-compute-categories-are-available-through-the-instance-api"></a>Die folgenden Computekategorien werden über die Instanz-API zur Verfügung gestellt:
+
+> [!NOTE]
+> Über den Metadatenendpunkt sind die folgenden Kategorien über „Instanz/Compute“ zugänglich.
+
+Data | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
 azEnvironment | Azure-Umgebung, in der die VM ausgeführt wird | 01.10.2018
+customData | Siehe [Benutzerdefinierte Daten](#custom-data) | 2019-02-01
 location | Azure-Region, in der die VM ausgeführt wird | 2017-04-02
 name | Name des virtuellen Computers | 2017-04-02
-offer | Stellen Sie Informationen für das VM-Image bereit. Dieser Wert ist nur für Images vorhanden, die mithilfe des Azure-Imagekatalogs bereitgestellt werden. | 2017-04-02
-Herausgeber | Herausgeber des VM-Images | 2017-04-02
-sku | Spezifische SKU für das VM-Image | 2017-04-02
-Version | Version des VM-Image | 2017-04-02
+offer | Angebotsinformationen für das VM-Image, diese sind nur für Images vorhanden, die über den Azure-Imagekatalog bereitgestellt werden | 2017-04-02
 osType | Linux oder Windows | 2017-04-02
+placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) der VM-Skalierungsgruppe | 2017-08-01
+Tarif | Der [Tarif](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) mit Name, Produkt und Herausgeber für einen virtuellen Computer, wenn es sich um ein Azure Marketplace-Image handelt | 2018-04-02
 platformUpdateDomain |  [Updatedomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
 platformFaultDomain | [Fehlerdomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
-vmId | [Eindeutiger Bezeichner](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) für die VM | 2017-04-02
-vmSize | [Größe des virtuellen Computers](sizes.md) | 2017-04-02
-subscriptionId | Azure-Abonnement für den virtuellen Computer | 2017-08-01
-tags | [Tags](../../azure-resource-manager/resource-group-using-tags.md) für den virtuellen Computer  | 2017-08-01
-resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) für den virtuellen Computer | 2017-08-01
-placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) der VM-Skalierungsgruppe | 2017-08-01
-Tarif | Der [Tarif](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) für einen virtuellen Computer im entsprechenden Azure Marketplace-Image, enthält Namen, Produkt und Herausgeber | 2018-04-02
 Anbieter | Anbieter des virtuellen Computers | 01.10.2018
 publicKeys | [Sammlung von öffentlichen Schlüsseln](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey), dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
+publisher | Herausgeber des VM-Images | 2017-04-02
+resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) für den virtuellen Computer | 2017-08-01
+resourceId | Die [vollqualifizierte](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID der Ressource | 11.03.2019
+sku | Spezifische SKU für das VM-Image | 2017-04-02
+subscriptionId | Azure-Abonnement für den virtuellen Computer | 2017-08-01
+tags | [Tags](../../azure-resource-manager/resource-group-using-tags.md) für den virtuellen Computer  | 2017-08-01
+tagsList | Tags, die zur einfacheren programmgesteuerten Analyse als JSON-Arrays formatiert sind  | 2019-06-04
+version | Version des VM-Image | 2017-04-02
+vmId | [Eindeutiger Bezeichner](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) für die VM | 2017-04-02
 vmScaleSetName | [Name Ihrer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
+vmSize | [Größe des virtuellen Computers](sizes.md) | 2017-04-02
 Zone | [Verfügbarkeitszone](../../availability-zones/az-overview.md) Ihres virtuellen Computers | 2017-12-01
+
+##### <a name="the-following-network-categories-are-available-through-the-instance-api"></a>Die folgenden Netzwerkkategorien werden über die Instanz-API zur Verfügung gestellt:
+
+> [!NOTE]
+> Über den Metadatenendpunkt sind die folgenden Kategorien über „Instanz/Netzwerk/Schnittstelle“ zugänglich.
+
+Data | BESCHREIBUNG | Eingeführt in Version
+-----|-------------|-----------------------
 ipv4/privateIpAddress | Lokale IPv4-Adresse der VM | 2017-04-02
 ipv4/publicIpAddress | Öffentliche IPv4-Adresse der VM | 2017-04-02
 subnet/address | Subnetzadresse der VM | 2017-04-02
 subnet/prefix | Subnetzpräfix, Beispiel 24 | 2017-04-02
 ipv6/ipAddress | Lokale IPv6-Adresse der VM | 2017-04-02
 macAddress | VM-Mac-Adresse | 2017-04-02
-scheduledevents | Siehe [Azure-Metadatendienst: Geplante Ereignisse (Vorschau) für Windows-VMs](scheduled-events.md) | 2017-08-01
-identity | Verwaltete Identitäten für Azure-Ressourcen. Siehe [Abrufen eines Zugriffstokens](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-attested | Siehe [Bestätigte Daten](#attested-data) | 01.10.2018
 
 ## <a name="attested-data"></a>Bestätigte Daten
 
@@ -375,7 +401,7 @@ Instance Metadata reagiert am HTTP-Endpunkt unter 169.254.169.254. Das von Insta
 
 ### <a name="example-attested-data"></a>Beispiel für bestätigte Daten
 
- > [!NOTE]
+> [!NOTE]
 > Alle API-Antworten stellen JSON-Zeichenfolgen dar. Die folgenden Beispielantworten werden zur besseren Lesbarkeit automatische strukturiert und eingerückt.
 
  **Anforderung**
@@ -385,7 +411,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-ver
 
 ```
 
-„api-version“ ist ein Pflichtfeld, und die für bestätigte Daten unterstützte Version ist 2018-10-01.
+Die API-Version ist ein obligatorisches Feld. Informationen zu unterstützten API-Versionen finden Sie im [Abschnitt zur Dienstverfügbarkeit](#service-availability).
 Die Nonce ist eine bereitgestellte optionale 10-stellige Zeichenfolge. Sie kann zum Nachverfolgen der Anforderung verwendet werden. Wird keine Nonce angegeben, wird in der codierten Antwortzeichenfolge der aktuelle UTC-Zeitstempel zurückgegeben.
 
  **Antwort**
@@ -399,7 +425,7 @@ Die Nonce ist eine bereitgestellte optionale 10-stellige Zeichenfolge. Sie kann 
 }
 ```
 
-> Das Signaturblob ist eine signierte [pkcs7](https://aka.ms/pkcs7)-Version des Dokuments. Es enthält das zum Signieren verwendete Zertifikat zusammen mit den VM-Details wie vmId, nonce, timeStamp für die Erstellung und den Ablauf des Dokuments sowie die Planinformationen zum Image. Die Planinformationen werden nur für Azure Marketplace-Images ausgefüllt. Das Zertifikat kann aus der Antwort extrahiert und verwendet werden, um sicherzustellen, dass die Antwort gültig ist und von Azure stammt.
+> Das Signaturblob ist eine signierte [pkcs7](https://aka.ms/pkcs7)-Version des Dokuments. Es enthält das zum Signieren verwendete Zertifikat zusammen mit den VM-Details wie „vmId“, „nonce“, „subscriptionId“, „timeStamp“ für die Erstellung und den Ablauf des Dokuments sowie die Planinformationen zum Image. Die Planinformationen werden nur für Azure Marketplace-Images ausgefüllt. Das Zertifikat kann aus der Antwort extrahiert und verwendet werden, um sicherzustellen, dass die Antwort gültig ist und von Azure stammt.
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Abrufen bestätigter Metadaten auf einem virtuellen Windows-Computer
 
@@ -417,7 +443,7 @@ curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?
 Invoke-RestMethod -Headers @{"Metadata"="true"} -URI "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" -Method get
 ```
 
-„api-version“ ist ein Pflichtfeld, und die für bestätigte Daten unterstützte Version ist 2018-10-01.
+Die API-Version ist ein obligatorisches Feld. Informationen zu unterstützten API-Versionen finden Sie im Abschnitt zur Dienstverfügbarkeit.
 Die Nonce ist eine bereitgestellte optionale 10-stellige Zeichenfolge. Sie kann zum Nachverfolgen der Anforderung verwendet werden. Wird keine Nonce angegeben, wird in der codierten Antwortzeichenfolge der aktuelle UTC-Zeitstempel zurückgegeben.
 
  **Antwort**
@@ -431,7 +457,8 @@ Die Nonce ist eine bereitgestellte optionale 10-stellige Zeichenfolge. Sie kann 
 }
 ```
 
-> Das Signaturblob ist eine signierte [pkcs7](https://aka.ms/pkcs7)-Version des Dokuments. Es enthält das zum Signieren verwendete Zertifikat zusammen mit den VM-Details wie vmId, nonce, timeStamp für die Erstellung und den Ablauf des Dokuments sowie die Planinformationen zum Image. Die Planinformationen werden nur für Azure Marketplace-Images ausgefüllt. Das Zertifikat kann aus der Antwort extrahiert und verwendet werden, um sicherzustellen, dass die Antwort gültig ist und von Azure stammt.
+> Das Signaturblob ist eine signierte [pkcs7](https://aka.ms/pkcs7)-Version des Dokuments. Es enthält das zum Signieren verwendete Zertifikat zusammen mit den VM-Details wie „vmId“, „nonce“, „subscriptionId“, „timeStamp“ für die Erstellung und den Ablauf des Dokuments sowie die Planinformationen zum Image. Die Planinformationen werden nur für Azure Marketplace-Images ausgefüllt. Das Zertifikat kann aus der Antwort extrahiert und verwendet werden, um sicherzustellen, dass die Antwort gültig ist und von Azure stammt.
+
 
 ## <a name="example-scenarios-for-usage"></a>Beispielszenarien für die Verwendung  
 
@@ -513,8 +540,17 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 
 **Antwort**
 ```bash
-AZUREPUBLICCLOUD
+AzurePublicCloud
 ```
+
+Die Regionen und die Werte der Azure-Umgebung sind unten aufgelistet.
+
+ Regions | Azure-Umgebung
+---------|-----------------
+[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | AzurePublicCloud
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
+[Azure China](https://azure.microsoft.com/global-infrastructure/china)                   | AzureChinaCloud
+[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ### <a name="getting-the-tags-for-the-vm"></a>Abrufen der Tags für die VM
 
@@ -532,16 +568,45 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api
 Department:IT;Environment:Test;Role:WebRole
 ```
 
+Das `tags` Feld ist eine Zeichenfolge, in der die Tags durch Semikolons getrennt sind. Dies kann ein Problem darstellen, wenn in den Tags Semikolons verwendet werden. Wurde ein Parser geschrieben, um die Tags programmgesteuert zu extrahieren, sollten Sie auf das `tagsList`-Feld zurückgreifen, das ein JSON-Array ohne Trennzeichen und folglich einfacher zu analysieren ist.
+
+**Anforderung**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=JSON"
+```
+
+**Antwort**
+
+```json
+[
+  {
+    "name": "Department",
+    "value": "IT"
+  },
+  {
+    "name": "Environment",
+    "value": "Test"
+  },
+  {
+    "name": "Role",
+    "value": "WebRole"
+  }
+]
+```
+
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>Überprüfen der Ausführung des virtuellen Computers in Azure
 
- Marketplace-Anbieter möchten sicherstellen, dass ihre Software nur für die Ausführung in Azure lizenziert ist. Wenn die virtuelle Festplatte in eine lokale Umgebung kopiert wird, müssen sie über die Möglichkeit verfügen, dies zu erkennen. Durch Aufrufen von Instance Metadata Service können Marketplace-Anbieter signierte Daten abrufen, die garantieren, dass Antworten ausschließlich von Azure kommen.
-**Anforderung**
+Marketplace-Anbieter möchten sicherstellen, dass ihre Software nur für die Ausführung in Azure lizenziert ist. Wenn die virtuelle Festplatte in eine lokale Umgebung kopiert wird, müssen sie über die Möglichkeit verfügen, dies zu erkennen. Durch Aufrufen von Instance Metadata Service können Marketplace-Anbieter signierte Daten abrufen, die garantieren, dass Antworten ausschließlich von Azure kommen.
+
 > [!NOTE]
 > Die Installation von jq ist erforderlich.
 
+**Anforderung**
+
  ```bash
   # Get the signature
-   curl  --silent -H Metadata:True http://169.254.169.254/metadata/attested/document?api-version=2018-10-01 | jq -r '.["signature"]' > signature
+   curl  --silent -H Metadata:True http://169.254.169.254/metadata/attested/document?api-version=2019-04-30 | jq -r '.["signature"]' > signature
   # Decode the signature
   base64 -d signature > decodedsignature
   #Get PKCS7 format
@@ -571,30 +636,32 @@ Verification successful
     "createdOn":"11/28/18 00:16:17 -0000",
     "expiresOn":"11/28/18 06:16:17 -0000"
   },
-"vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34"
+"vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34",
+"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
 }
 ```
 
-Daten | BESCHREIBUNG
+Data | BESCHREIBUNG
 -----|------------
 nonce | Vom Benutzer bereitgestellte optionale Zeichenfolge mit der Anforderung. Wenn in der Anforderung keine Nonce angegeben wurde, wird der aktuelle UTC-Zeitstempel zurückgegeben.
 Tarif | Der [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) für einen virtuellen Computer im entsprechenden Azure Marketplace-Image, enthält Name, Produkt und Herausgeber
 timestamp/createdOn | Der Zeitstempel, zu dem das erste signierte Dokument erstellt wurde
 timestamp/expiresOn | Der Zeitstempel, zu dem das signierte Dokument abläuft
 vmId |  [Eindeutiger Bezeichner](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) für die VM
+subscriptionId | Azure-Abonnement für den virtuellen Computer, eingeführt am `2019-04-30`
 
 #### <a name="verifying-the-signature"></a>Überprüfen der Signatur
 
-Sobald Sie über die oben beschriebene Signatur verfügen, können Sie verifizieren, dass die Signatur von Microsoft stammt. Außerdem können Sie das Zwischenzertifikat und die Zertifikatkette überprüfen.
+Sobald Sie über die oben beschriebene Signatur verfügen, können Sie verifizieren, dass die Signatur von Microsoft stammt. Außerdem können Sie das Zwischenzertifikat und die Zertifikatkette überprüfen. Schließlich können Sie überprüfen, ob die Abonnement-ID richtig ist.
 
 > [!NOTE]
 > Die Zertifikate für öffentliche Clouds und Sovereign Clouds unterscheiden sich voneinander.
 
- Regionen | Zertifikat
+ Cloud | Zertifikat
 ---------|-----------------
 [Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure China](https://www.azure.cn/)                                                           | metadata.azure.cn
+[Azure China](https://azure.microsoft.com/global-infrastructure/china/)                  | metadata.azure.cn
 [Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
 
 ```bash
@@ -611,6 +678,8 @@ openssl x509 -noout -issuer -in intermediate.pem
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
+Falls das Zwischenzertifikat bei der Überprüfung aufgrund von Netzwerkeinschränkungen nicht heruntergeladen werden kann, können Sie das Zwischenzertifikat anheften. Azure übergibt die Zertifikate jedoch beim Rollover gemäß der Standard-PKI-Methode. Die angehefteten Zertifikate müssen bei einem Rollover aktualisiert werden. Wenn eine Änderung geplant ist, bei der das Zwischenzertifikat aktualisiert werden muss, wird der Azure-Blog auf den neuesten Stand gebracht, und Azure-Kunden werden benachrichtigt. Die Zwischenzertifikate sind [hier](https://www.microsoft.com/pki/mscorp/cps/default.htm) zu finden. Die Zwischenzertifikate können sich für die einzelnen Regionen unterscheiden.
+
 ### <a name="failover-clustering-in-windows-server"></a>Failoverclustering in Windows Server
 
 Für bestimmte Szenarien ist es beim Abfragen von Instance Metadata Service mit Failoverclustering notwendig, der Routingtabelle eine Route hinzuzufügen.
@@ -623,7 +692,7 @@ Für bestimmte Szenarien ist es beim Abfragen von Instance Metadata Service mit 
 route print
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > Die folgende Beispielausgabe von einer Windows Server-VM mit aktiviertem Failovercluster enthält aus Gründen der Vereinfachung nur die IPv4-Routingtabelle.
 
 ```bat
@@ -654,6 +723,37 @@ Network Destination        Netmask          Gateway       Interface  Metric
 
 ```bat
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
+```
+
+### <a name="custom-data"></a>Benutzerdefinierte Daten
+Instance Metadata Service bietet für den virtuellen Computer die Möglichkeit, auf eigene benutzerdefinierte Daten zuzugreifen. Die binären Daten müssen weniger als 64 KB umfassen und werden dem virtuellen Computer in base64-codiertem Format bereitgestellt.
+
+Benutzerdefinierte Azure-Daten können über REST-APIs, PowerShell-Cmdlets, die Azure-Befehlszeilenschnittstelle oder eine ARM-Vorlage in die VM eingefügt werden.
+
+Ein Beispiel für die Azure-Befehlszeilenschnittstelle finden Sie unter [Benutzerdefinierte Daten und Cloudinitialisierung in Microsoft Azure](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/).
+
+Ein Beispiel für eine ARM-Vorlage finden Sie unter [Bereitstellen eines virtuellen Computers mit CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+
+Benutzerdefinierte Daten sind für alle auf dem virtuellen Computer ausgeführten Prozesse verfügbar. Es wird Kunden empfohlen, in benutzerdefinierte Daten keine geheimen Informationen einzuschließen.
+
+Zurzeit wird gewährleistet, dass benutzerdefinierte Daten während des Startvorgangs einer VM verfügbar sind. Wenn Aktualisierungen an der VM vorgenommen werden (z.B. das Hinzufügen von Datenträgern oder das Ändern der Größe der VM), stellt der Instance Metadata Service keine benutzerdefinierten Daten bereit. Die dauerhafte Bereitstellung benutzerdefinierter Daten über Instance Metadata Service ist derzeit in Vorbereitung.
+
+#### <a name="retrieving-custom-data-in-virtual-machine"></a>Abrufen von benutzerdefinierten Daten auf virtuellen Computern
+Instance Metadata Service stellt dem virtuellen Computer benutzerdefinierte Daten in base64-codiertem Format bereit. Im folgenden Beispiel wird die base64-codierte Zeichenfolge decodiert.
+
+> [!NOTE]
+> Die benutzerdefinierten Daten in diesem Beispiel werden als ASCII-Zeichenfolge interpretiert, die „My custom data.“ lautet.
+
+**Anforderung**
+
+```bash
+curl -H "Metadata:true" "http://169.254.169.254/metadata/instance/compute/customData?api-version=2019-02-01&&format=text" | base64 --decode
+```
+
+**Antwort**
+
+```text
+My custom data.
 ```
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Beispiele zum Aufrufen des Metadatendiensts über verschiedene Sprachen auf der VM 

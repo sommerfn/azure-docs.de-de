@@ -9,11 +9,11 @@ ms.date: 12/18/2017
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474828"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60787494"
 ---
 # <a name="understand-autoscale-settings"></a>Grundlegendes zu Einstellungen für die automatische Skalierung
 Mithilfe der Einstellungen für die automatische Skalierung können Sie sicherstellen, dass Sie über die richtige Anzahl von ausgeführten Ressourcen verfügen, um die wechselnde Auslastung Ihrer Anwendung zu bewältigen. Sie können konfigurieren, dass Einstellungen für die automatische Skalierung basierend auf Metriken ausgelöst werden, mit denen die Auslastung oder die Leistung angezeigt werden, oder die Auslösung kann zu einem geplanten Datum bzw. einer geplanten Uhrzeit erfolgen. In diesem Artikel wird die Anatomie einer Einstellung für die automatische Skalierung ausführlich beschrieben. Der Artikel beginnt mit Erläuterungen zu dem Schema und den Eigenschaften einer Einstellung und führt Sie dann durch die verschiedenen Profiltypen, die konfiguriert werden können. Abschließend erfahren Sie in diesem Artikel, wie das Feature für die automatische Skalierung in Azure auswertet, welches Profil zu einem bestimmten Zeitpunkt ausgeführt wird.
@@ -89,26 +89,26 @@ Zur Veranschaulichung des Schemas der Einstellung für die automatische Skalieru
 }
 ```
 
-| Abschnitt | Elementname | BESCHREIBUNG |
+| `Section` | Elementname | BESCHREIBUNG |
 | --- | --- | --- |
-| Einstellung | ID | Die Ressourcen-ID der Einstellung für die automatische Skalierung. Einstellungen für die automatische Skalierung sind eine Azure Resource Manager-Ressource. |
+| Einstellung | id | Die Ressourcen-ID der Einstellung für die automatische Skalierung. Einstellungen für die automatische Skalierung sind eine Azure Resource Manager-Ressource. |
 | Einstellung | name | Der Name der Einstellung für die automatische Skalierung. |
 | Einstellung | location | Der Speicherort der Einstellung für die automatische Skalierung. Dieser Speicherort kann sich vom Speicherort der zu skalierenden Ressource unterscheiden. |
-| Eigenschaften | targetResourceUri | Die Ressourcen-ID der zu skalierenden Ressource. Sie können pro Ressource nur eine Einstellung für die automatische Skalierung verwenden. |
-| Eigenschaften | Profile | Eine Einstellung für die automatische Skalierung besteht aus einem oder mehreren Profilen. Bei jeder Ausführung des Moduls für die automatische Skalierung wird ein Profil ausgeführt. |
-| Profil | name | Der Name des Profils. Sie können einen beliebigen Namen wählen, der Ihnen die Identifizierung des Profils erleichtert. |
-| Profil | Capacity.maximum | Die maximal zulässige Kapazität. Hiermit wird sichergestellt, dass bei der automatischen Skalierung während der Ausführung dieses Profils für Ihre Ressourcen keine Skalierung über diesen Wert hinaus durchgeführt wird. |
-| Profil | Capacity.minimum | Die zulässige Mindestkapazität. Hiermit wird sichergestellt, dass bei der automatischen Skalierung während der Ausführung dieses Profils für Ihre Ressourcen keine Skalierung durchgeführt wird, die zu einer niedrigeren Kapazität führt. |
-| Profil | Capacity.default | Falls ein Problem beim Lesen der Ressourcenmetriken vorliegt (hier die CPU von „vmss1“) und die aktuelle Kapazität unterhalb der Standardkapazität liegt, wird von der automatischen Skalierung das horizontale Hochskalieren auf den Standardwert durchgeführt. Dadurch wird die Verfügbarkeit der Ressource sichergestellt. Wenn die aktuelle Kapazität bereits über der Standardkapazität liegt, wird die automatische Skalierung nicht horizontal herunterskaliert. |
-| Profil | Regeln | Die automatische Skalierung skaliert automatisch zwischen der maximalen und minimalen Kapazität, indem die Regeln im Profil verwendet werden. Sie können in einem Profil mehrere Regeln nutzen. Normalerweise gibt es zwei Regeln: eine zum Ermitteln des Zeitpunkts für das horizontale Hochskalieren und die andere zum Ermitteln des Zeitpunkts für das horizontale Herunterskalieren. |
-| Regel | metricTrigger | Definiert die Metrikbedingung der Regel. |
+| properties | targetResourceUri | Die Ressourcen-ID der zu skalierenden Ressource. Sie können pro Ressource nur eine Einstellung für die automatische Skalierung verwenden. |
+| properties | profiles | Eine Einstellung für die automatische Skalierung besteht aus einem oder mehreren Profilen. Bei jeder Ausführung des Moduls für die automatische Skalierung wird ein Profil ausgeführt. |
+| profile | name | Der Name des Profils. Sie können einen beliebigen Namen wählen, der Ihnen die Identifizierung des Profils erleichtert. |
+| profile | Capacity.maximum | Die maximal zulässige Kapazität. Hiermit wird sichergestellt, dass bei der automatischen Skalierung während der Ausführung dieses Profils für Ihre Ressourcen keine Skalierung über diesen Wert hinaus durchgeführt wird. |
+| profile | Capacity.minimum | Die zulässige Mindestkapazität. Hiermit wird sichergestellt, dass bei der automatischen Skalierung während der Ausführung dieses Profils für Ihre Ressourcen keine Skalierung durchgeführt wird, die zu einer niedrigeren Kapazität führt. |
+| profile | Capacity.default | Falls ein Problem beim Lesen der Ressourcenmetriken vorliegt (hier die CPU von „vmss1“) und die aktuelle Kapazität unterhalb der Standardkapazität liegt, wird von der automatischen Skalierung das horizontale Hochskalieren auf den Standardwert durchgeführt. Dadurch wird die Verfügbarkeit der Ressource sichergestellt. Wenn die aktuelle Kapazität bereits über der Standardkapazität liegt, wird die automatische Skalierung nicht horizontal herunterskaliert. |
+| profile | rules | Die automatische Skalierung skaliert automatisch zwischen der maximalen und minimalen Kapazität, indem die Regeln im Profil verwendet werden. Sie können in einem Profil mehrere Regeln nutzen. Normalerweise gibt es zwei Regeln: eine zum Ermitteln des Zeitpunkts für das horizontale Hochskalieren und die andere zum Ermitteln des Zeitpunkts für das horizontale Herunterskalieren. |
+| rule | metricTrigger | Definiert die Metrikbedingung der Regel. |
 | metricTrigger | metricName | Der Name der Metrik. |
 | metricTrigger |  metricResourceUri | Die Ressourcen-ID der Ressource, von der die Metrik ausgegeben wird. Meistens ist dies auch die zu skalierende Ressource. In einigen Fällen kann es sich auch um eine andere Ressource handeln. Sie können beispielsweise eine VM-Skalierungsgruppe basierend auf der Anzahl von Nachrichten in einer Speicherwarteschlange skalieren. |
 | metricTrigger | timeGrain | Die Dauer der Stichprobenentnahme aus den Metriken. Beispiel: Bei **TimeGrain = „PT1M“** werden die Metriken jede Minute über die im Element „statistic“ angegebene Aggregationsmethode aggregiert. |
 | metricTrigger | statistic | Dies ist die Aggregationsmethode innerhalb des timeGrain-Zeitraums. Beispiel: **statistic = „Average“** und **timeGrain = „PT1M“** bedeutet, dass die Metriken jede Minute anhand des Durchschnitts aggregiert werden. Diese Eigenschaft gibt vor, wie die Stichprobennahme für die Metrik erfolgt. |
 | metricTrigger | timeWindow | Gibt an, wie weit auf Metriken zurückgegriffen werden soll. Beispiel: **timeWindow = „PT10M“** bedeutet, dass bei jeder Ausführung der automatischen Skalierung die Metriken der letzten zehn Minuten abgefragt werden. Dieses Zeitfenster ermöglicht, dass Ihre Metriken normalisiert werden, und eine Reaktion auf vorübergehende Spitzen wird vermieden. |
 | metricTrigger | timeAggregation | Die Aggregationsmethode, die zum Aggregieren der Stichprobenmetriken verwendet wird. Beispiel: Mit **TimeAggregation = „Average“** werden die Stichprobenmetriken aggregiert, indem der Durchschnittswert herangezogen wird. Im vorangegangenen Fall wird der Mittelwert für die zehn 1-Minuten-Stichproben ermittelt. |
-| Regel | scaleAction | Die Aktion, die nach dem Auslösen des metricTrigger-Elements der Regel durchgeführt wird. |
+| rule | scaleAction | Die Aktion, die nach dem Auslösen des metricTrigger-Elements der Regel durchgeführt wird. |
 | scaleAction | direction | „Increase“ (Erhöhen) für horizontales Hochskalieren oder „Decrease“ (Verringern) für horizontales Herunterskalieren.|
 | scaleAction | value | Der Wert für die Erhöhung bzw. Verringerung der Kapazität einer Ressource. |
 | scaleAction | cooldown | Gibt an, wie lange nach einem Skalierungsvorgang gewartet werden soll, bevor erneut skaliert wird. Beispiel: Bei **cooldown = „PT10M“** versucht die automatische Skalierung zehn Minuten lang nicht, einen neuen Vorgang zu starten. Der Zweck des cooldown-Vorgangs besteht darin, dass sich die Metriken nach dem Hinzufügen bzw. Entfernen von Instanzen stabilisieren können. |
@@ -290,13 +290,13 @@ Die automatische Skalierung verwendet die folgende Sequenz, um das Profil auszuw
 
 ### <a name="how-does-autoscale-evaluate-multiple-rules"></a>Wie werden von der automatischen Skalierung mehrere Regeln ausgewertet?
 
-Nachdem die automatische Skalierung ermittelt hat, welches Profil ausgeführt werden soll, werden zuerst alle Regeln für das horizontale Hochskalieren ausgewertet, die im Profil vorhanden sind (dies sind Regeln mit **direction = „Increase“**).
+Nachdem die automatische Skalierung ermittelt hat, welches Profil ausgeführt werden soll, werden zuerst alle Regeln für das horizontale Hochskalieren ausgewertet, die im Profil vorhanden sind (dies sind Regeln mit **direction = „Increase“** ).
 
 Wenn mindestens eine Regel für das horizontale Hochskalieren ausgelöst wird, berechnet die automatische Skalierung die neue Kapazität die in diesen Regeln jeweils per **scaleAction** bestimmt wird. Anschließend wird das horizontale Hochskalieren auf den Höchstwert dieser Kapazitäten durchgeführt, um die Dienstverfügbarkeit sicherzustellen.
 
 Angenommen, es ist eine VM-Skalierungsgruppe mit einer aktuellen Kapazität von „10“ vorhanden. Es gibt zwei Regeln für das horizontale Hochskalieren: eine, die die Kapazität um 10 Prozent erhöht, und eine, die die Kapazität um 3 Zähler erhöht. Die erste Regel ergibt eine neue Kapazität von 11, und die zweite Regel führt zu einem Kapazitätswert von 13. Damit die Dienstverfügbarkeit sichergestellt ist, wählt die automatische Skalierung die Aktion, die zur höchsten Kapazität führt. Also wird die zweite Regel gewählt.
 
-Falls keine Regeln für das horizontale Hochskalieren ausgelöst werden, wertet die automatische Skalierung alle Regeln für das horizontale Herunterskalieren aus (Regeln mit **direction = „Decrease“**). Bei der automatischen Skalierung wird nur eine Aktion für das horizontale Herunterskalieren verwendet, wenn alle Regeln für das horizontale Herunterskalieren ausgelöst werden.
+Falls keine Regeln für das horizontale Hochskalieren ausgelöst werden, wertet die automatische Skalierung alle Regeln für das horizontale Herunterskalieren aus (Regeln mit **direction = „Decrease“** ). Bei der automatischen Skalierung wird nur eine Aktion für das horizontale Herunterskalieren verwendet, wenn alle Regeln für das horizontale Herunterskalieren ausgelöst werden.
 
 Bei der automatischen Skalierung wird die neue Kapazität berechnet, die mit **scaleAction** für die einzelnen Regeln ermittelt wird. Anschließend wird die Skalierungsaktion gewählt, die zum maximalen Wert für diese Kapazitäten führt, um die Dienstverfügbarkeit sicherzustellen.
 

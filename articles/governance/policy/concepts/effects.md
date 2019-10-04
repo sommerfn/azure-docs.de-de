@@ -1,43 +1,46 @@
 ---
 title: Funktionsweise von Auswirkungen
-description: Die Azure Policy-Definition hat verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
+description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2019
+ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 67a195932ad1afc3c93a94dfcbda8ab8a47760b2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 06a5ffbef2b841acc7ea7ecc82d05dfccbc0cab1
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793943"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146998"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
 Jede Richtliniendefinition in Azure Policy hat eine einzelne Auswirkung. Diese Auswirkung bestimmt, was geschieht, wenn die Richtlinienregel auf eine Übereinstimmung ausgewertet wird. Die Auswirkungen für eine neue Ressource, eine aktualisierte Ressource oder eine vorhandene Ressource sind hierbei unterschiedlich.
 
-Aktuell werden in einer Richtliniendefinition sechs Auswirkungen unterstützt:
+Derzeit werden in einer Richtliniendefinition diese Auswirkungen unterstützt:
 
-- Anfügen
-- Audit
-- Auswirkung „AuditIfNotExists“
-- Verweigern
-- Auswirkung „DeployIfNotExists“
-- Deaktiviert
+- [Append](#append)
+- [Überwachung](#audit)
+- [AuditIfNotExists](#auditifnotexists)
+- [Deny](#deny)
+- [DeployIfNotExists](#deployifnotexists)
+- [Disabled](#disabled)
+- [EnforceRegoPolicy](#enforceregopolicy) (Vorschau)
+- [Modify](#modify)
 
 ## <a name="order-of-evaluation"></a>Reihenfolge der Auswertung
 
-Anforderungen zum Erstellen oder Aktualisieren einer Ressource über Azure Resource Manager werden von Policy zuerst ausgewertet. Policy erstellt eine Liste aller Zuweisungen, die auf die Ressource zutreffen, und wertet dann die Ressource anhand jeder Definition aus. Policy verarbeitet einige der Auswirkungen, bevor die Anforderung an den geeigneten Ressourcenanbieter übergeben wird. Auf diese Weise wird eine unnötige Verarbeitung durch einen Ressourcenanbieter verhindert, wenn eine Ressource nicht den konfigurierten Governancevorgaben von Azure Policy entspricht.
+Anforderungen zum Erstellen oder Aktualisieren einer Ressource über Azure Resource Manager werden von Azure Policy zuerst ausgewertet. Azure Policy erstellt eine Liste aller Zuweisungen, die auf die Ressource zutreffen, und wertet dann die Ressource anhand jeder Definition aus. Azure Policy verarbeitet einige der Auswirkungen, bevor die Anforderung an den geeigneten Ressourcenanbieter übergeben wird. Auf diese Weise wird eine unnötige Verarbeitung durch einen Ressourcenanbieter verhindert, wenn eine Ressource nicht den konfigurierten Governancevorgaben von Azure Policy entspricht.
 
 - Zuerst wird **Deaktiviert** überprüft, um zu ermitteln, ob die Richtlinienregel ausgewertet werden soll.
-- Anschließend wird **Anfügen** ausgewertet. Die Anforderung kann durch „append“ geändert werden, deshalb kann eine über „append“ durchgeführte Änderung die Auslösung der Auswirkungen „audit“ oder „deny“ verhindern.
+- **Append** und **Modify** werden dann ausgewertet. Die Anforderung kann durch beide geändert werden, deshalb kann eine durchgeführte Änderung die Auslösung der Auswirkungen „Audit“ oder „Deny“ verhindern.
 - Anschließend wird **deny** ausgewertet. Durch die Auswertung von „deny“ vor „audit“ wird eine zweimalige Protokollierung einer unerwünschten Ressource verhindert.
 - Anschließend wird **audit** ausgewertet, bevor die Anforderung an den Ressourcenanbieter weitergeleitet wird.
 
 Nachdem der Ressourcenanbieter einen Erfolgscode zurückgegeben hat, werden **AuditIfNotExists** und **DeployIfNotExists** ausgewertet, um zu bestimmen, ob eine zusätzliche Konformitätsprotokollierung oder -aktion erforderlich ist.
+
+Für die Auswirkung **EnforceRegoPolicy** gibt es derzeit keine Reihenfolge der Auswertung.
 
 ## <a name="disabled"></a>Deaktiviert
 
@@ -45,11 +48,14 @@ Diese Auswirkung ist in Testsituationen oder nach dem Parametrisieren der Auswir
 
 ## <a name="append"></a>Anfügen
 
-„append“ wird verwendet, um der angeforderten Ressource während der Erstellung oder Aktualisierung zusätzliche Felder hinzuzufügen. Ein gängiges Beispiel ist das Hinzufügen von Tags zu Ressourcen (z.B. „costCenter“) oder das Angeben zugelassener IP-Adressen für eine Speicherressource.
+„append“ wird verwendet, um der angeforderten Ressource während der Erstellung oder Aktualisierung zusätzliche Felder hinzuzufügen. Ein häufiges Beispiel ist die Angabe der zulässigen IP-Adressen für eine Speicherressource.
+
+> [!IMPORTANT]
+> „Append“ ist für die Verwendung mit Nicht-Tag-Eigenschaften vorgesehen. Während „Append“ während einer Erstellungs- oder Aktualisierungsanforderung Tags zu einer Ressource hinzufügen kann, wird empfohlen, stattdessen die Auswirkung [Modify](#modify) für Tags zu verwenden.
 
 ### <a name="append-evaluation"></a>Auswertung von „append“
 
-Die Auswertung von „append“ erfolgt vor der Anforderungsverarbeitung durch einen Ressourcenanbieter während der Erstellung oder Aktualisierung einer Ressource. Mit „append“ werden Felder zur Ressource hinzugefügt, wenn die **if**-Bedingung der Richtlinienregel erfüllt ist. Wenn die Auswirkung „append“ einen Wert in der ursprünglichen Anforderung mit einem anderen Wert überschreiben würde, fungiert sie als Auswirkung „deny“ und lehnt die Anforderung ab. Um einen neuen Wert an ein vorhandenes Array anzufügen, verwenden Sie die **[\*]**-Version des Alias.
+Die Auswertung von „append“ erfolgt vor der Anforderungsverarbeitung durch einen Ressourcenanbieter während der Erstellung oder Aktualisierung einer Ressource. Mit „append“ werden Felder zur Ressource hinzugefügt, wenn die **if**-Bedingung der Richtlinienregel erfüllt ist. Wenn die Auswirkung „append“ einen Wert in der ursprünglichen Anforderung mit einem anderen Wert überschreiben würde, fungiert sie als Auswirkung „deny“ und lehnt die Anforderung ab. Um einen neuen Wert an ein vorhandenes Array anzufügen, verwenden Sie die **[\*]** -Version des Alias.
 
 Wenn eine Richtliniendefinition mit Auswirkung „append“ im Rahmen eines Auswertungszyklus ausgeführt wird, werden keine Änderungen an bereits vorhandenen Ressourcen durchgeführt. Stattdessen werden alle Ressourcen mit Erfüllung der **if**-Bedingung als nicht konform markiert.
 
@@ -59,37 +65,7 @@ Die Auswirkung „append“ weist nur ein Array **details** auf, das erforderlic
 
 ### <a name="append-examples"></a>Beispiele für „append“
 
-Beispiel 1: Einzelnes **field/value**-Paar zum Anfügen eines Tags.
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-        "field": "tags.myTag",
-        "value": "myTagValue"
-    }]
-}
-```
-
-Beispiel 2: Zwei **field/value**-Paare zum Anfügen einer Gruppe von Tags.
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-            "field": "tags.myTag",
-            "value": "myTagValue"
-        },
-        {
-            "field": "tags.myOtherTag",
-            "value": "myOtherTagValue"
-        }
-    ]
-}
-```
-
-Beispiel 3: Einzelnes **field/value**-Paar, das einen Nicht-**[\*]**
-[-Alias](definition-structure.md#aliases) mit einem Array-**value** verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Wenn der Nicht-**[\*]**-Alias ein Array ist, wird der **value** durch den Effekt als gesamtes Array angefügt. Wenn das Array bereits vorhanden ist, wird durch den Konflikt ein deny-Ereignis ausgelöst.
+Beispiel 1: Einzelnes **field/value**-Paar, das einen Nicht- **[\*]** -[Alias](definition-structure.md#aliases) mit einem Arraywert (**value**) verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Wenn der Nicht- **[\*]** -Alias ein Array ist, wird der **value** durch den Effekt als gesamtes Array angefügt. Wenn das Array bereits vorhanden ist, wird durch den Konflikt ein deny-Ereignis ausgelöst.
 
 ```json
 "then": {
@@ -104,7 +80,7 @@ Beispiel 3: Einzelnes **field/value**-Paar, das einen Nicht-**[\*]**
 }
 ```
 
-Beispiel 4: Einzelnes **field/value**-Paar, das einen **[\*]** [-Alias](definition-structure.md#aliases) mit einem Array-**value** verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Durch die Verwendung des **[\*]**-Alias fügt der Effekt den **value** an ein Array an, das möglicherweise bereits vorhanden ist. Wenn das Array noch nicht vorhanden ist, wird es erstellt.
+Beispiel 2: Einzelnes **field/value**-Paar, das einen **[\*]** [-Alias](definition-structure.md#aliases) mit einem Array-**value** verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Durch die Verwendung des **[\*]** -Alias fügt der Effekt den **value** an ein Array an, das möglicherweise bereits vorhanden ist. Wenn das Array noch nicht vorhanden ist, wird es erstellt.
 
 ```json
 "then": {
@@ -116,6 +92,122 @@ Beispiel 4: Einzelnes **field/value**-Paar, das einen **[\*]** [-Alias](definiti
             "action": "Allow"
         }
     }]
+}
+```
+
+## <a name="modify"></a>Ändern
+
+„Modify“ wird verwendet, um Tags während der Erstellung oder Aktualisierung einer Ressource hinzuzufügen, zu aktualisieren oder zu entfernen. Ein häufiges Beispiel ist die Aktualisierung von Tags für Ressourcen wie „costCenter“. Für eine Modify-Richtlinie sollte `mode` immer auf _Indexed_ festgelegt sein. Bestehende, nicht konforme Ressourcen können mit einem [Wartungstask](../how-to/remediate-resources.md) bereinigt werden.
+Eine einzelne Modify-Regel kann eine beliebige Anzahl von Vorgängen aufweisen.
+
+> [!IMPORTANT]
+> Modify ist derzeit nur für die Verwendung mit Tags vorgesehen. Wenn Sie Tags verwalten, wird empfohlen, „Modify“ anstelle von „Append“ zu verwenden, da „Modify“ zusätzliche Vorgangstypen und die Möglichkeit bietet, vorhandene Ressourcen zu korrigieren. „Append“ wird jedoch empfohlen, wenn Sie keine verwaltete Identität erstellen können.
+
+### <a name="modify-evaluation"></a>Auswertung von „Modify“
+
+Die Auswertung von „Modify“ erfolgt vor der Anforderungsverarbeitung durch einen Ressourcenanbieter während der Erstellung oder Aktualisierung einer Ressource. Mit „Modify“ werden Tags einer Ressource hinzugefügt oder aktualisiert, wenn die **if**-Bedingung der Richtlinienregel erfüllt ist.
+
+Wenn eine Richtliniendefinition mit Auswirkung „Modify“ im Rahmen eines Auswertungszyklus ausgeführt wird, werden keine Änderungen an bereits vorhandenen Ressourcen durchgeführt. Stattdessen werden alle Ressourcen mit Erfüllung der **if**-Bedingung als nicht konform markiert.
+
+### <a name="modify-properties"></a>Eigenschaften von „Modify“
+
+Die **details**-Eigenschaft der Modify-Auswirkung enthält alle Untereigenschaften, die die für die Bereinigung erforderlichen Berechtigungen definieren, und die **Vorgänge**, mit denen Tagwerte hinzugefügt, aktualisiert oder entfernt werden.
+
+- **roleDefinitionIds** [erforderlich]
+  - Diese Eigenschaft muss ein Array von Zeichenfolgen enthalten, das mit der Rollen-ID der rollenbasierten Zugriffssteuerung übereinstimmt, auf die das Abonnement zugreifen kann. Weitere Informationen finden Sie unter [Korrigieren nicht konformer Ressourcen](../how-to/remediate-resources.md#configure-policy-definition).
+  - Die definierte Rolle muss alle Vorgänge einbeziehen, die der Rolle [Mitwirkender](../../../role-based-access-control/built-in-roles.md#contributor) erteilt wurden.
+- **operations** [erforderlich]
+  - Ein Array aller Tagvorgänge, die auf übereinstimmenden Ressourcen ausgeführt werden sollen.
+  - Eigenschaften:
+    - **operation** [erforderlich]
+      - Definiert, welche Maßnahme bei einer übereinstimmenden Ressource ergriffen werden sollen. Optionen sind: _addOrReplace_, _Add_, _Remove_. _Add_ verhält sich ähnlich wie die [Append](#append)-Auswirkung.
+    - **field** [erforderlich]
+      - Das Tag, das hinzugefügt, ersetzt oder entfernt werden soll. Tagnamen müssen derselben Namenskonvention für andere [Felder](./definition-structure.md#fields) entsprechen.
+    - **value** (optional)
+      - Der Wert, auf den das Tag festgelegt werden soll.
+      - Diese Eigenschaft ist erforderlich, wenn **operation** _addOrReplace_ oder _Add_ ist.
+
+### <a name="modify-operations"></a>Vorgänge für „Modify“
+
+Das **operations**-Eigenschaftenarray ermöglicht es, mehrere Tags auf unterschiedliche Weise aus einer einzelnen Richtliniendefinition zu ändern. Jeder Vorgang besteht aus den Eigenschaften **operation**, **field** und **value**. „Operation“ bestimmt, wie die Wartungsaufgabe mit den Tags verfährt, „field“ bestimmt, welches Tag geändert wird und „value“ definiert die neue Einstellung für dieses Tag. Das folgende Beispiel führt die folgenden Tagänderungen durch:
+
+- Legt das `environment`-Tag auf „Test“ fest, auch wenn es bereits mit einem anderen Wert vorhanden ist.
+- Entfernt das Tag `TempResource`.
+- Legt das `Dept`-Tag auf den Richtlinienparameter _DeptName_ fest, der bei der Richtlinienzuweisung konfiguriert wurde.
+
+```json
+"details": {
+    ...
+    "operations": [
+        {
+            "operation": "addOrReplace",
+            "field": "tags['environment']",
+            "value": "Test"
+        },
+        {
+            "operation": "Remove",
+            "field": "tags['TempResource']",
+        },
+        {
+            "operation": "addOrReplace",
+            "field": "tags['Dept']",
+            "field": "[parameters('DeptName')]"
+        }
+    ]
+}
+```
+
+Die **operation**-Eigenschaft hat die folgenden Optionen:
+
+|Vorgang |BESCHREIBUNG |
+|-|-|
+|addOrReplace |Fügt das definierte Tag und den Wert zur Ressource hinzu, auch wenn das Tag bereits mit einem anderen Wert vorhanden ist. |
+|Hinzufügen |Fügt der Ressource das definierte Tag und den definierten Wert hinzu. |
+|Remove (Entfernen) |Entfernt das definierte Tag aus der Ressource. |
+
+### <a name="modify-examples"></a>Beispiele für „Modify“
+
+Beispiel 1: Fügen Sie das `environment`-Tag hinzu, und ersetzen Sie vorhandene `environment`-Tags durch „Test“:
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "Test"
+            }
+        ]
+    }
+}
+```
+
+Beispiel 2: Entfernen Sie das `env`-Tag, und fügen Sie das `environment`-Tag hinzu oder ersetzen Sie vorhandene `environment`-Tags durch einen parametrisierten Wert:
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "Remove",
+                "field": "tags['env']"
+            },
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
 }
 ```
 
@@ -149,7 +241,7 @@ Die Auswirkung „audit“ wird verwendet, um ein Warnungsereignis im Aktivität
 
 ### <a name="audit-evaluation"></a>Auswertung von „audit“
 
-„audit“ ist die letzte Auswirkung, die von Policy während der Erstellung oder Aktualisierung einer Ressource überprüft wird. Policy sendet dann die Ressource an den Ressourcenanbieter. „audit“ funktioniert bei einer Ressourcenanforderung und einem Auswertungszyklus auf gleiche Weise. Policy fügt dem Aktivitätsprotokoll einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu und markiert die Ressource als nicht konform.
+„audit“ ist die letzte Auswirkung, die von Azure Policy während der Erstellung oder Aktualisierung einer Ressource überprüft wird. Azure Policy sendet dann die Ressource an den Ressourcenanbieter. „audit“ funktioniert bei einer Ressourcenanforderung und einem Auswertungszyklus auf gleiche Weise. Azure Policy fügt dem Aktivitätsprotokoll einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu und markiert die Ressource als nicht konform.
 
 ### <a name="audit-properties"></a>Eigenschaften von „audit“
 
@@ -171,7 +263,7 @@ Die Auswirkung „AuditIfNotExists“ ermöglicht das Überwachen von Ressourcen
 
 ### <a name="auditifnotexists-evaluation"></a>Auswertung von „AuditIfNotExists“
 
-„AuditIfNotExists“ wird ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Die Überprüfung findet statt, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden. Policy fügt dem Aktivitätsprotokoll auf gleiche Weise wie bei der Auswirkung „audit“ einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu. Bei Auslösung ist die Ressource, die die **if**-Bedingung erfüllt hat, die Ressource, die als nicht konform markiert wird.
+„AuditIfNotExists“ wird ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Die Überprüfung findet statt, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden. Azure Policy fügt dem Aktivitätsprotokoll auf gleiche Weise wie bei der Auswirkung „audit“ einen `Microsoft.Authorization/policies/audit/action`-Vorgang hinzu. Bei Auslösung ist die Ressource, die die **if**-Bedingung erfüllt hat, die Ressource, die als nicht konform markiert wird.
 
 ### <a name="auditifnotexists-properties"></a>Eigenschaften von „AuditIfNotExists“
 
@@ -233,7 +325,7 @@ Beispiel: Mithilfe einer Auswertung wird ermittelt, ob die Antischadsoftware-Erw
 
 ## <a name="deployifnotexists"></a>Auswirkung „DeployIfNotExists“
 
-Ähnlich wie „AuditIfNotExists“ führt „DeployIfNotExists“ eine Vorlagenbereitstellung durch, wenn die Bedingung erfüllt ist.
+Ähnlich wie „AuditIfNotExists“ führt eine „DeployIfNotExists“-Richtliniendefinition eine Vorlagenbereitstellung durch, wenn die Bedingung erfüllt ist.
 
 > [!NOTE]
 > [Geschachtelte Vorlagen](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template) werden mit **deployIfNotExists** unterstützt, [verknüpfte Vorlagen](../../../azure-resource-manager/resource-group-linked-templates.md) werden derzeit jedoch nicht unterstützt.
@@ -246,7 +338,7 @@ Während eines Auswertungszyklus führen Richtliniendefinitionen mit der Auswirk
 
 ### <a name="deployifnotexists-properties"></a>Eigenschaften von „DeployIfNotExists“
 
-Die **details**-Eigenschaft der Auswirkung „AuditIfNotExists“ umfasst die folgenden Untereigenschaften zur Definition der entsprechenden Ressourcen für den Abgleich.
+Die **details**-Eigenschaft der Auswirkung „DeployIfNotExists“ umfasst alle Untereigenschaften, die die entsprechenden Ressourcen für den Abgleich und die auszuführende Vorlagenbereitstellung definieren.
 
 - **Type** [erforderlich]
   - Gibt den Typ der entsprechenden abzugleichenden Ressource an.
@@ -300,7 +392,7 @@ Beispiel: Mithilfe einer Auswertung von SQL Server-Datenbanken wird bestimmt, ob
         "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
         "name": "current",
         "roleDefinitionIds": [
-            "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
+            "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
             "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
         ],
         "existenceCondition": {
@@ -338,9 +430,61 @@ Beispiel: Mithilfe einer Auswertung von SQL Server-Datenbanken wird bestimmt, ob
 }
 ```
 
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+Diese Auswirkung wird bei einer Richtliniendefinition mit dem *Modus* `Microsoft.ContainerService.Data` verwendet. Sie dient zum Übergeben von Zugangskontrollregeln, die mit [Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) definiert wurden, an den [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+
+> [!NOTE]
+> [Azure Policy für Kubernetes](rego-for-aks.md) ist in der Public Preview-Phase und unterstützt nur integrierte Richtliniendefinitionen.
+
+### <a name="enforceregopolicy-evaluation"></a>Auswertung von EnforceRegoPolicy
+
+Der Zugangscontroller des Open Policy Agent bewertet jede neue Anforderung an den Cluster in Echtzeit.
+Alle 5 Minuten erfolgt ein vollständiger Scan des Clusters, dessen Ergebnisse Azure Policy gemeldet werden.
+
+### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy-Eigenschaften
+
+Die Eigenschaft **details** der Auswirkung EnforceRegoPolicy hat die Untereigenschaften, die die Rego-Zugangskontrollregel beschreiben.
+
+- **policyId** [erforderlich]
+  - Ein eindeutiger Name, der als Parameter an die Rego-Zugangskontrollregel übergeben wird.
+- **policy** [erforderlich]
+  - Gibt den URI der Rego-Zugangskontrollregel an.
+- **policyParameters** [optional]
+  - Definiert Parameter und Werte, die an die Rego-Richtlinie übergeben werden.
+
+### <a name="enforceregopolicy-example"></a>Beispiel für EnforceRegoPolicy
+
+Beispiel: Rego-Zugangskontrollregel, um nur die angegebenen Containerimages in AKS zuzulassen.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "equals": "Microsoft.ContainerService/managedClusters"
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "EnforceRegoPolicy",
+    "details": {
+        "policyId": "ContainerAllowedImages",
+        "policy": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/KubernetesService/container-allowed-images/limited-preview/gatekeeperpolicy.rego",
+        "policyParameters": {
+            "allowedContainerImagesRegex": "[parameters('allowedContainerImagesRegex')]"
+        }
+    }
+}
+```
+
 ## <a name="layering-policies"></a>Mehrere Richtlinien
 
-Eine Ressource kann durch mehrere Zuweisungen beeinflusst werden. Diese Zuweisungen können für denselben Bereich oder verschiedene Bereiche gelten. Für jede dieser Zuweisungen ist wahrscheinlich auch eine andere Auswirkung definiert. Die Bedingung und die Auswirkung für jede Richtlinie werden unabhängig ausgewertet. Beispiel: 
+Eine Ressource kann durch mehrere Zuweisungen beeinflusst werden. Diese Zuweisungen können für denselben Bereich oder verschiedene Bereiche gelten. Für jede dieser Zuweisungen ist wahrscheinlich auch eine andere Auswirkung definiert. Die Bedingung und die Auswirkung für jede Richtlinie werden unabhängig ausgewertet. Beispiel:
 
 - Richtlinie 1
   - Schränkt den Ressourcenstandort auf „USA, Westen“ ein
@@ -369,8 +513,8 @@ Jede Zuweisung wird einzeln ausgewertet. Daher ist es nicht möglich, dass eine 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Unter [Azure Policy-Beispiele](../samples/index.md) finden Sie Beispiele
-- Befassen Sie sich mit der [Struktur von Azure Policy-Definitionen](definition-structure.md).
+- Sehen Sie sich die Beispiele unter [Azure Policy-Beispiele](../samples/index.md) an.
+- Lesen Sie die Informationen unter [Struktur von Azure Policy-Definitionen](definition-structure.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
 - Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
 - Erfahren Sie, wie Sie [nicht konforme Ressourcen korrigieren](../how-to/remediate-resources.md) können.

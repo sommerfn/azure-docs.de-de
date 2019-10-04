@@ -2,7 +2,7 @@
 title: Bereitstellungsstrategien und bewährte Methoden zur Optimierung der Leistung – Azure Search
 description: Lernen Sie Techniken und bewährte Methoden zum Optimieren der Leistung von Azure Search und zum Konfigurieren der optimalen Skalierung kennen.
 author: LiamCavanagh
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: rest-api
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 8a07657d04cee57cb69c9f5f7862fed3e7965716
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 97628535deb79733e9d286977534a6ea97ba60e6
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404466"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182287"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Bereitstellungsstrategien und bewährte Methoden zur Optimierung der Leistung in Azure Search
 
@@ -49,7 +49,7 @@ Wenn Sie zu viele gedrosselte Anforderungen empfangen oder die Ziellatenzraten a
 2. **Wechseln zu einem höheren Search-Tarif:**  Für Azure Search stehen [verschiedene Tarife](https://azure.microsoft.com/pricing/details/search/) zur Verfügung, von denen jeder eine andere Leistungsstufe bietet.  Zuweilen treten so viele Abfragen auf, dass Ihr aktueller Tarif keine ausreichend niedrigen Latenzraten mehr bieten kann, selbst wenn Sie bereits die maximale Anzahl von Replikaten zugewiesen haben. In diesem Fall sollten Sie in Erwägung ziehen, in einen höheren Tarif zu wechseln, wie z.B. zu Azure Search S3, der sich sehr gut für Szenarien mit einer großen Anzahl von Dokumenten und extrem hohen Abfrageworkloads eignet.
 
 ## <a name="scaling-for-slow-individual-queries"></a>Skalieren für langsame Einzelabfragen
-Ein weiterer Grund für hohe Latenzraten kann darin liegen, dass eine einzelne Abfrage zu lange dauert. In diesem Fall hilft es nicht, weitere Replikate hinzuzufügen. Die folgenden beiden Optionen können helfen:
+Ein weiterer Grund für hohe Latenzraten kann darin liegen, dass eine einzelne Abfrage zu lange dauert. In diesem Fall hilft es nicht, weitere Replikate hinzuzufügen. Im Anschluss finden Sie zwei Optionen, die hier ggf. hilfreich sind:
 
 1. **Erhöhen der Anzahl der Partitionen:** Eine Partition ist ein Mechanismus, mit dem Ihre Daten auf zusätzliche Ressourcen aufgeteilt werden. Das Hinzufügen einer zweiten Partition teilt die Daten auf zwei Gruppen auf, eine dritte Partition teilt sie auf drei auf und so weiter. Ein positiver Nebeneffekt ist, dass langsamere Abfragen aufgrund der parallelen Datenverarbeitung manchmal schneller erfolgen. Wir haben eine Parallelisierung bei Abfragen mit geringer Selektivität festgestellt, z.B. Abfragen, die vielen Dokumenten entsprechen, oder Facets, bei denen Zählungen über eine große Anzahl von Dokumenten erfolgen. Da für die Bewertung der Relevanz von Dokumenten oder die Ermittlung der Anzahl von Dokumenten eine umfassende Berechnung erforderlich ist, können durch das Hinzufügen weiterer Partitionen Abfragen schneller abgeschlossen werden.  
    
@@ -81,14 +81,14 @@ Es gibt zwei Optionen für die Synchronisierung Ihrer verteilten Suchdienste: de
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Verwenden von Indexern zur Aktualisierung von Inhalten für mehrere Dienste
 
-Wenn Sie bereits einen Indexer für einen Dienst verwenden, können Sie einen zweiten Indexer für einen zweiten Dienst so konfigurieren, dass er dasselbe Datenquellenobjekt verwendet und somit Daten vom selben Standort abruft. Jeder Dienst in jeder Region hat einen eigenen Indexer und einen Zielindex (der Suchkorpus wird nicht gemeinsam verwendet, was bedeutet, dass Daten dupliziert werden), aber jeder Indexer verweist auf die gleiche Datenquelle.
+Wenn Sie bereits einen Indexer für einen Dienst verwenden, können Sie einen zweiten Indexer für einen zweiten Dienst so konfigurieren, dass er dasselbe Datenquellenobjekt verwendet und somit Daten vom selben Standort abruft. Jeder Dienst in jeder Region hat einen eigenen Indexer und einen Zielindex (der Suchindex wird nicht gemeinsam verwendet, sodass Daten dupliziert werden), aber jeder Indexer verweist auf die gleiche Datenquelle.
 
 Diese Architektur würde ganz allgemein in etwa wie folgt aussehen.
 
    ![Einzelne Datenquelle mit verteilten Indexer- und Dienstkombinationen][2]
 
 ### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Verwenden von REST-APIs zur Übertragung von Inhaltsupdates für mehrere Dienste
-Wenn Sie die Azure Search-REST-API zum [Übertragen von Inhalten in Ihren Azure Search-Index](https://docs.microsoft.com/rest/api/searchservice/update-index) verwenden, können Sie die verschiedenen Suchdienste synchronisieren, indem Sie bei jedem Update per Push alle Änderungen an alle Suchdienste übertragen. Stellen Sie in Ihrem Code sicher, dass auch Fälle verarbeitet werden, in denen beim Update eines Suchdiensts ein Fehler auftritt, dies aber auch bei anderen Suchdiensten der Fall ist.
+Wenn Sie die Azure Search-REST-API zum [Übertragen von Inhalten in Ihren Azure Search-Index](https://docs.microsoft.com/rest/api/searchservice/update-index) verwenden, können Sie die verschiedenen Suchdienste synchronisieren, indem Sie bei jedem Update per Push alle Änderungen an alle Suchdienste übertragen. Stellen Sie sicher, dass Ihr Code auch mit Fällen zurecht kommt, in denen die Aktualisierung eines einzelnen Suchdiensts nicht erfolgreich ist, andere Suchdienste aber erfolgreich aktualisiert werden.
 
 ## <a name="leverage-azure-traffic-manager"></a>Nutzen von Azure Traffic Manager
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) können Sie Anfragen an mehrere Websites an verschiedenen geografischen Standorten weiterleiten, an denen dann mehrere Azure Search-Dienste zum Einsatz kommen. Traffic Manager kann testen, ob Azure Search verfügbar ist, und Benutzer während eines Ausfalls an alternative Suchdienste weiterleiten – dies ist ein großer Vorteil. Wenn Sie Suchanfragen über Azure-Websites weiterleiten, ermöglicht Azure Traffic Manager zudem den Lastenausgleich in Fällen, in denen die Website erreichbar ist, aber nicht Azure Search. Hier finden Sie ein Beispiel für eine Architektur mit Traffic Manager.

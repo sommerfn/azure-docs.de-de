@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f8483eb0ce8f5ea890e453828d36afda61ef86f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 29f94d6ff8045b7cae64957eeae00d2460ca3e37
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256888"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176821"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -93,7 +93,7 @@ Befolgen Sie diese Anweisungen, um zu überprüfen, ob die nahtlose SSO ordnungs
 ![Azure-Portal: Bereich „Azure AD Connect“](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Für das nahtlose einmalige Anmelden wird das Computerkonto `AZUREADSSOACC` in jeder AD-Gesamtstruktur in Ihrem lokalen Active Directory (AD) erstellt. Das Computerkonto `AZUREADSSOACC` muss aus Sicherheitsgründen stark geschützt werden. Nur Domänen-Admins sollten das Computerkonto verwalten können. Stellen Sie sicher, dass die Kerberos-Delegierung für das Computerkonto deaktiviert ist. Speichern Sie das Computerkonto in einer Organisationseinheit, in der es vor versehentlichem Löschen geschützt ist und auf die nur Domänenadministratoren zugreifen können.
+> Für das nahtlose einmalige Anmelden wird das Computerkonto `AZUREADSSOACC` in jeder AD-Gesamtstruktur in Ihrem lokalen Active Directory (AD) erstellt. Das Computerkonto `AZUREADSSOACC` muss aus Sicherheitsgründen stark geschützt werden. Nur Domänen-Admins sollten das Computerkonto verwalten können. Stellen Sie sicher, dass Kerberos-Delegierung für das Computerkonto deaktiviert ist und dass kein anderes Konto in Active Directory über Delegierungsberechtigungen für das `AZUREADSSOACC`-Computerkonto verfügt. Speichern Sie das Computerkonto in einer Organisationseinheit, in der es vor versehentlichem Löschen geschützt ist und auf die nur Domänenadministratoren zugreifen können.
 
 >[!NOTE]
 > Wenn Sie Pass-the-Hash- und Credential Theft Mitigation-Architekturen in Ihrer lokalen Umgebung verwenden, nehmen Sie entsprechende Änderungen vor, um sicherzustellen, dass das Computerkonto `AZUREADSSOACC` nicht im Quarantänecontainer landet. 
@@ -124,7 +124,7 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
 
 1. Öffnen Sie das Tool Gruppenrichtlinienverwaltungs-Editor.
 2. Bearbeiten Sie die Gruppenrichtlinie, die auf einige oder alle Benutzer angewendet wird. In diesem Beispiel wird **Standardrichtlinie der Domäne** verwendet.
-3. Navigieren Sie zu **Benutzerkonfiguration** > **Richtlinie** > **Verwaltungsvorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“**. Wählen Sie dann **Liste der Site zu Zonenzuweisungen**.
+3. Navigieren Sie zu **Benutzerkonfiguration** > **Richtlinie** > **Verwaltungsvorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“** . Wählen Sie dann **Liste der Site zu Zonenzuweisungen**.
     ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Aktivieren Sie die Richtlinie, und geben Sie die folgenden Werte in das Dialogfeld ein:
    - **Wertname:** Die Azure AD-URL, an die die Kerberos-Tickets weitergeleitet werden.
@@ -144,7 +144,7 @@ Es gibt zwei Möglichkeiten, die Einstellungen von Benutzern für Intranetzonen 
 
     ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Navigieren Sie zu **Benutzerkonfiguration** > **Verwaltungsvorlagen** **Richtlinie** > **> **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“** > **Intranetzone**. Wählen Sie dann **Aktualisierungen der Statusleiste per Skript zulassen**.
+6. Navigieren Sie zu **Benutzerkonfiguration** > **Richtlinie** > **Verwaltungsvorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“**  > **Intranetzone**. Wählen Sie dann **Aktualisierungen der Statusleiste per Skript zulassen**.
 
     ![Einmaliges Anmelden](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -221,7 +221,7 @@ In Schritt 2 erstellt Azure AD Connect Computerkonten (die Azure AD repräsentie
 >[!IMPORTANT]
 >Wenn der Kerberos-Entschlüsselungsschlüssel auf einem Computerkonto kompromittiert wird, kann er dazu verwendet werden, für jeden Benutzer in der AD-Gesamtstruktur Kerberos-Tickets zu generieren. Böswillige Täter können dann Azure AD-Anmeldungen für kompromittierte Benutzer imitieren. Sie sollten das Rollover dieser Kerberos-Entschlüsselungsschlüssel regelmäßig durchführen – mindestens alle 30 Tage.
 
-Anweisungen zum Durchführen des Rollovers für Schlüssel finden Sie unter [Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen (FAQs)](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account). Wir arbeiten an einer Funktion zur Einführung des automatischen Rollovers von Schlüsseln.
+Anweisungen zum Durchführen des Rollovers für Schlüssel finden Sie unter [Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen (FAQs)](how-to-connect-sso-faq.md). Wir arbeiten an einer Funktion zur Einführung des automatischen Rollovers von Schlüsseln.
 
 >[!IMPORTANT]
 >Sie müssen diesen Schritt nicht _sofort_ nach der Aktivierung des Features ausführen. Führen Sie für die Kerberos-Entschlüsselungsschlüssel mindestens alle 30 Tage ein Rollover durch.

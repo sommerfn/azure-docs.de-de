@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: 803d05e1aaf4d9c26a6132bde30f101ce3905924
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5a996fe6be5aa839b78b6693accac9b1000cef8
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096825"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570434"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Hier erfahren Sie, wie Sie neue Mandanten bereitstellen und sie im Katalog registrieren.
 
@@ -84,7 +83,7 @@ Um nachzuvollziehen, wie die Wingtip Tickets-Anwendung die Bereitstellung neuer 
    * **$VenueType** = einer der vordefinierten Veranstaltungsorttypen: _blues, classicalmusic, dance, jazz, judo, motor racing, multipurpose, opera, rockmusic, soccer_
    * **$DemoScenario** = **1**, *Bereitstellen eines einzelnen Mandanten*
 
-2. Zum Hinzufügen eines Haltepunkts bewegen Sie den Cursor an eine beliebige Stelle in der Zeile mit *New-Tenant `*. Drücken Sie dann F9.
+2. Zum Hinzufügen eines Haltepunkts bewegen Sie den Cursor an eine beliebige Stelle in der Zeile mit *New-Tenant `* . Drücken Sie dann F9.
 
    ![Haltepunkt](media/saas-dbpertenant-provision-and-catalog/breakpoint.png)
 

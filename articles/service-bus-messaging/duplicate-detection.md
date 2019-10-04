@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c419ee1eec9e451cad835d8b4a56818101dc853a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: bee8c1d2a1cd313c7fe59d8e53379dc57554e98c
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856212"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68618572"
 ---
 # <a name="duplicate-detection"></a>Duplikaterkennung
 
@@ -35,6 +35,9 @@ Die Anwendungssteuerung der ID ist wichtig, da nur diese es der Anwendung erlaub
 Für einen Geschäftsprozess, bei dem für die Behandlung von Anwendungskontext mehrere Nachrichten gesendet werden, setzt sich die *MessageId* möglicherweise aus dem Kontextbezeichner auf Anwendungsebene (z.B. einer Bestellnummer) und dem Betreff der Nachricht (z.B. **12345.2017/Bezahlung**) zusammen.
 
 Die *MessageId* kann immer auch eine GUID sein, aber das Verankern des Bezeichners in den Geschäftsprozess sorgt für eine vorhersagbare Wiederholbarkeit, die für die effektive Erkennung von Duplikaten gewünscht wird.
+
+> [!NOTE]
+> Wenn die Duplikaterkennung aktiviert ist und die Sitzungs-ID oder der Partitionsschlüssel nicht festgelegt ist, wird die Nachrichten-ID als Partitionsschlüssel verwendet. Wenn die Nachrichten-ID ebenfalls nicht festgelegt ist, generieren .NET- und AMQP-Bibliotheken automatisch eine Nachrichten-ID für die Nachricht. Weitere Informationen finden Sie unter [Verwenden von Partitionsschlüsseln](service-bus-partitioning.md#use-of-partition-keys).
 
 ## <a name="enable-duplicate-detection"></a>Aktivieren der Duplikaterkennung
 

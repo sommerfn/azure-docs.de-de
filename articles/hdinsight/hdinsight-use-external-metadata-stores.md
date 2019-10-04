@@ -1,20 +1,19 @@
 ---
 title: Verwenden von externen Metadatenspeichern – Azure HDInsight
-description: Verwenden von externen Metadatenspeichern für HDInsight-Cluster
-services: hdinsight
+description: Verwenden von externen Metadatenspeichern für Azure HDInsight-Cluster und bewährte Methoden.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 3daa71c91d1e49a497a979b9b5b89df1fcb9418c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 05/27/2019
+ms.openlocfilehash: 1e922dfd879c7323d467dca8c4017c5ede2c8659
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889680"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916545"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Verwenden von externen Metadatenspeichern in Azure HDInsight
 
@@ -51,7 +50,7 @@ HDInsight unterstützt auch benutzerdefinierte Metastores, der für Produktionsc
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Auswählen eines benutzerdefinierten Metastore während der Clustererstellung
 
-Sie können den Cluster während der Erstellung auf eine zuvor erstellte Azure SQL-Datenbank verweisen, oder Sie können die SQL-Datenbank nach der Erstellung des Clusters konfigurieren. Diese Option wird unter „Speicher“ > „Metastore-Einstellungen“ beim Erstellen eines neuen Hadoop-, Spark- oder Interactive Hive-Clusters über das Azure-Portal angegeben.
+Sie können den Cluster während der Erstellung auf eine zuvor erstellte Azure SQL-Datenbank verweisen, oder Sie können die SQL-Datenbank nach der Erstellung des Clusters konfigurieren. Diese Option wird unter **Speicher > Metastore-Einstellungen** beim Erstellen eines neuen Hadoop-, Spark- oder Interactive Hive-Clusters über das Azure-Portal angegeben.
 
 ![Azure-Portal für Hive-Metadatenspeicher in HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-azure-portal.png)
 
@@ -71,6 +70,7 @@ Es folgen einige allgemeine bewährte Methoden für den Hive-Metastore in HDInsi
 - Überwachen Sie den Metastore in Hinblick auf Leistung und Verfügbarkeit. Verwenden Sie dazu Überwachungstools für die Azure SQL-Datenbank, wie z. B. das Azure-Portal oder Azure Monitor-Protokolle.
 - Wenn eine neue, höhere Version von Azure HDInsight anhand einer vorhandenen benutzerdefinierten Metastoredatenbank erstellt wird, aktualisiert das System das Metastoreschema unwiderruflich, ohne die Datenbank aus der Sicherung wiederherzustellen.
 - Falls Sie einen Metastore für mehrere Cluster freigeben, achten Sie darauf, dass alle Cluster die gleiche HDInsight-Version haben. Verschiedene Hive-Versionen verwenden unterschiedliche Schemas der Metastoredatenbank. So können Sie beispielsweise einen Metastore nicht für Hive 1.2- und Hive 2.1-Cluster freigeben. 
+- In HDInsight 4.0 verwenden Spark und Hive unabhängige Kataloge für den Zugriff auf SparkSQL- oder Hive-Tabellen. Eine von Spark erstellte Tabelle befindet sich im Spark-Katalog. Eine von Hive erstellte Tabelle befindet sich im Hive-Katalog. Dies unterscheidet sich von HDInsight 3.6, wo in Hive und Spark der gleiche Katalog verwendet wurde. Die Integration von Hive und Spark in HDInsight 4.0 basiert auf Hive Warehouse Connector (HWC). HWC funktioniert als Brücke zwischen Spark und Hive. [Informationen zu Hive Warehouse Connector](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
 
 ##  <a name="apache-oozie-metastore"></a>Apache Oozie Metastore
 

@@ -4,21 +4,20 @@ description: 'Informationen zum Beheben des Fehlers „0x0000005A-CRITICAL SERVI
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: e828a8fc4211a0f0c4b53a9e18fa1c2fb6f6916b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f038e56fe4b1e6ad2737217674706eef77a39fd6
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010150"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058054"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Unter Windows wird beim Starten eines virtuellen Azure-Computers der Bluescreenfehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM KRITISCHEN DIENST) angezeigt.
 Dieser Artikel beschreibt den Fehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM KRITISCHEN DIENST), der unter Umständen beim Starten eines virtuellen Windows-Computers in Microsoft Azure angezeigt wird. Er enthält Schritte zum Beheben des Problems. 
@@ -30,7 +29,7 @@ Dieser Artikel beschreibt den Fehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM 
 
 Eine Windows-VM wird nicht gestartet. Beim Überprüfen der Startscreenshots unter [Startdiagnose](./boot-diagnostics.md) wird eine der folgenden Fehlermeldungen auf einem Bluescreen angezeigt:
 
-- „Your PC ran into a problem and needs to restart. You can restart. For more information about this issue and possible fixes, visit http://windows.com/stopcode. Wenn Sie sich an den Support wenden, stellen Sie die folgenden Informationen bereit: Stillstandcode: CRITICAL SERVICE FAILED (FEHLER BEIM KRITISCHEN DIENST) 
+- „Your PC ran into a problem and needs to restart. You can restart. For more information about this issue and possible fixes, visit https://windows.com/stopcode. If you call a support person, give them this info: Stop code: CRITICAL SERVICE FAILED (Auf dem PC ist ein Fehler aufgetreten. Sie können den PC neu starten. Informationen zu diesem Problem finden Sie unter „https://windows.com/stopcode“. Wenn Sie sich an den Support wenden, stellen Sie die folgenden Informationen bereit: „Abbruchcode: FEHLER BEIM KRITISCHEN DIENST“) 
 - „Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you. If you'd like to know more, you can search online later for this error: CRITICAL_SERVICE_FAILED“ (Auf dem PC ist ein Fehler aufgetreten. Er muss neu gestartet werden. Wir sammeln Fehlerinformationen und starten dann den PC für Sie neu. Wenn Sie weitere Informationen benötigen, können Sie später online nach dem folgenden Fehler suchen: CRITICAL_SERVICE_FAILED)
 
 ## <a name="cause"></a>Ursache

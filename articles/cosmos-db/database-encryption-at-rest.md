@@ -4,21 +4,21 @@ description: Erfahren Sie, wie Azure Cosmos DB eine Verschlüsselung ruhender Da
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 07d5aa752d6613f6733a44c9b34e48f537eb67ae
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: f406f008e2c377b39deb8d151855ce7315616701
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245234"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616869"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Datenverschlüsselung in Azure Cosmos DB 
 
 „Verschlüsselung ruhender Daten“ ist ein Ausdruck, der sich im Allgemeinen auf die Verschlüsselung von Daten auf permanenten Speichergeräten wie Solid State-Laufwerken (SSDs) und Festplattenlaufwerken (HDDs) bezieht. Cosmos DB speichert die primären Datenbanken auf SSDs. Die Medienanlagen und die Sicherungen werden in Azure Blob Storage gespeichert und in der Regel durch HDDs gesichert. Mit der Veröffentlichung der Verschlüsselung von ruhenden Daten für Cosmos DB werden Ihre gesamten Datenbanken, Medienanhänge und Sicherungen jetzt verschlüsselt. Damit werden Ihre Daten jetzt während der Übertragung (über das Netzwerk) und im Ruhezustand (permanenter Speicher) verschlüsselt, sodass Sie eine End-to-End-Verschlüsselung erhalten.
 
-Als PaaS-Dienst ist Cosmos DB sehr einfach zu verwenden. Da alle in Cosmos DB gespeicherten Benutzerdaten sowohl ruhend als auch während der Übertragung verschlüsselt werden, müssen Sie keine Maßnahmen ergreifen. Anders ausgedrückt: Die Verschlüsselung ruhender Daten ist standardmäßig „aktiviert“. Es gibt keine Möglichkeit, dies ein- oder auszuschalten. Wir stellen dieses Feature bereit, während wir weiterhin unsere [Verfügbarkeits- und Leistungs-SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db) erfüllen.
+Als PaaS-Dienst ist Cosmos DB sehr einfach zu verwenden. Da alle in Cosmos DB gespeicherten Benutzerdaten sowohl ruhend als auch während der Übertragung verschlüsselt werden, müssen Sie keine Maßnahmen ergreifen. Anders ausgedrückt: Die Verschlüsselung ruhender Daten ist standardmäßig „aktiviert“. Es gibt keine Möglichkeit, dies ein- oder auszuschalten. Azure Cosmos DB verwendet AES-256-Verschlüsselung in allen Regionen, in denen das Konto ausgeführt wird. Wir stellen dieses Feature bereit, während wir weiterhin unsere [Verfügbarkeits- und Leistungs-SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db) erfüllen.
 
 ## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Implementierung der Verschlüsselung von ruhenden Daten für Azure Cosmos DB
 
@@ -59,5 +59,5 @@ A: Der Emulator ist ein eigenständiges Entwicklungs-/Testtool und verwendet kei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Übersicht über die Cosmos DB-Sicherheit und die neuesten Verbesserungen finden Sie unter [Azure Cosmos DB-Datenbanksicherheit](database-security.md).
+Eine Übersicht über die Cosmos DB-Sicherheit und die neuesten Verbesserungen finden Sie unter [Sicherheit bei Azure Cosmos DB – Übersicht](database-security.md).
 Weitere Informationen zu Microsoft-Zertifizierungen finden Sie im [Azure Trust Center](https://azure.microsoft.com/support/trust-center/).

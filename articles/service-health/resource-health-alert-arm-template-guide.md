@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: afa89fc90552c7ccba1fcea0945ee223d0096be4
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 7ccd84042d11b586d524d4eb76eba03111e0b3c5
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047516"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71099009"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
 
@@ -43,7 +43,7 @@ Damit Sie die Anweisungen auf dieser Seite ausführen können, müssen Sie vorab
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Erstellen Sie eine Resource Manager-Vorlage für Resource Health-Warnungen, und speichern Sie sie unter `resourcehealthalert.json`. ([Details siehe unten](#resource-manager-template-for-resource-health-alerts))
+3. Erstellen Sie eine Resource Manager-Vorlage für Resource Health-Warnungen, und speichern Sie sie unter `resourcehealthalert.json`. ([Details siehe unten](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Erstellen Sie mit dieser Vorlage eine neue Azure Resource Manager-Bereitstellung.
 
@@ -76,7 +76,7 @@ Damit Sie die Anweisungen auf dieser Seite ausführen können, müssen Sie vorab
 
 Hinweis: Wenn Sie diesen Prozess vollständig automatisieren möchten, müssen Sie einfach die Resource Manager-Vorlage so bearbeiten, dass in Schritt 5 nicht zur Eingabe der Werte aufgefordert wird.
 
-## <a name="resource-manager-template-for-resource-health-alerts"></a>Resource Manager-Vorlage für Resource Health-Warnungen
+## <a name="resource-manager-template-options-for-resource-health-alerts"></a>Resource Manager-Vorlagenoptionen für Resource Health-Warnungen
 
 Sie können diese Basisvorlage als Ausgangspunkt zum Erstellen von Resource Health-Warnungen verwenden. Diese Vorlage funktioniert wie vorliegend, und Sie werden für den Empfang von Warnungen für alle neu aktivierten Ressourcenintegritätsereignisse in allen Ressourcen eines Abonnements registriert.
 
@@ -164,7 +164,7 @@ Für einen Bereich auf Ressourcenebene sieht der Abschnitt „scopes“ etwa wie
 ],
 ```
 
-Beispiel:  `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
+Beispiel: `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
 
 > Diese Zeichenfolge erhalten Sie, indem Sie Ihre Azure-Ressource im Azure-Portal anzeigen und sich die URL ansehen.
 
@@ -216,9 +216,13 @@ Sie möchten möglicherweise nur benachrichtigt werden, wenn eine Ressource fehl
                     "field": "status",
                     "equals": "InProgress"
                 },
-                        {
+                {
                     "field": "status",
                     "equals": "Resolved"
+                },
+                {
+                    "field": "status",
+                    "equals": "Updated"
                 }
             ]
         }
@@ -280,7 +284,9 @@ Wenn für eine Ressource jedoch „Unknown“ gemeldet wird, besteht die Wahrsch
 },
 ```
 
-In diesem Beispiel wird nur bei Ereignissen eine Benachrichtigung gesendet, deren aktueller und vorheriger Integritätsstatus nicht „Unknown“ lautet. Diese Änderung kann eine nützliche Ergänzung sein, wenn Ihre Warnungen direkt an Ihr Mobiltelefon oder Ihre mobile E-Mail gesendet wird.
+In diesem Beispiel wird nur bei Ereignissen eine Benachrichtigung gesendet, deren aktueller und vorheriger Integritätsstatus nicht „Unknown“ lautet. Diese Änderung kann eine nützliche Ergänzung sein, wenn Ihre Warnungen direkt an Ihr Mobiltelefon oder Ihre mobile E-Mail gesendet wird. 
+
+Hinweis: Die Eigenschaften „currentHealthStatus“ und „previousHealthStatus“ können bei bestimmten Ereignissen den Wert NULL haben. Wenn beispielsweise ein Ereignis mit dem Zustand „Updated“ auftritt, ist es sehr wahrscheinlich, dass sich der Integritätsstatus der Ressource seit dem letzten Bericht nicht geändert hat und nur zusätzliche Ereignisinformationen wie das Feld „cause“ verfügbar sind. Deshalb werden möglicherweise einige Warnungen nicht ausgelöst, wenn die obige Klausel verwendet wird. Dies liegt daran, dass die Werte der Eigenschaften „properties.currentHealthStatus“ und „properties.previousHealthStatus“ dann auf NULL festgelegt sind.
 
 ### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>Anpassen der Warnung, um vom Benutzer initiierte Ereignisse zu vermeiden
 
@@ -300,12 +306,12 @@ Die Warnung kann einfach so konfiguriert werden, dass sie nur nach diesen Ereign
     ]
 }
 ```
+Hinweis: Das Feld „cause“ darf bei einigen Ereignissen nicht den Wert NULL haben. Das bedeutet, dass sich der Integritätsstatus ändert (z. B. von „Verfügbar“ in „Nicht verfügbar“) und das Ereignis sofort protokolliert wird, um Verzögerungen von Benachrichtigungen zu vermeiden. Daher kann es sein, dass keine Warnung ausgelöst wird, wenn Sie die obige Klausel verwenden, weil der Eigenschaftswert „properties.clause“ auf NULL festgelegt ist.
 
-## <a name="recommended-resource-health-alert-template"></a>Empfohlene Resource Health-Warnungsvorlage
+## <a name="complete-resource-health-alert-template"></a>Abschließen einer Resource Health-Warnungsvorlage
 
-Mit den im vorherigen Abschnitt beschriebenen Anpassungen kann eine umfassende Warnungsvorlage erstellt werden, die zum Maximieren des Signal-Rausch-Verhältnisses konfiguriert ist.
+Nachfolgend finden Sie eine Beispielvorlage mit den im vorherigen Abschnitt beschriebenen Anpassungen, die für die Maximierung des Signal-Rausch-Verhältnisses konfiguriert ist. Denken Sie daran, dass die Eigenschaften „currentHealthStatus“ und „previousHealthStatus“ sowie die Eigenschaftswerte für „cause“ wie weiter oben beschrieben bei einigen Ereignissen den Wert NULL haben können.
 
-Die folgende Vorlage wird empfohlen:
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -405,6 +411,11 @@ Die folgende Vorlage wird empfohlen:
                                     "field": "status",
                                     "equals": "InProgress",
                                     "containsAny": null
+                                },
+                                {
+                                    "field": "status",
+                                    "equals": "Updated",
+                                    "containsAny": null
                                 }
                             ]
                         }
@@ -431,5 +442,7 @@ Erfahren Sie mehr über Resource Health:
 -  [Übersicht über Azure Resource Health](Resource-health-overview.md)
 -  [Über Azure Resource Health verfügbare Ressourcentypen und Integritätsüberprüfungen](resource-health-checks-resource-types.md)
 
+
 Erstellen von Service Health-Warnungen:
 -  [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Ereignisschema des Azure-Aktivitätsprotokolls](../azure-monitor/platform/activity-log-schema.md)

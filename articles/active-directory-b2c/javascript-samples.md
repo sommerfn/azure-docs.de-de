@@ -1,31 +1,34 @@
 ---
-title: JavaScript-Beispiele für die Verwendung in Azure Active Directory B2C | Microsoft-Dokumentation
+title: JavaScript-Beispiele – Azure Active Directory B2C | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zur Verwendung von JavaScript in Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/05/2018
-ms.author: davidmu
+ms.date: 04/25/2019
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3645945400bcc58cdf11721458bfab529d89f0b7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 92ac1e6a85023d49ceb8242b93651a60da3d2166
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009989"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064187"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-Beispiele für die Verwendung in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Sie können Ihren Azure Active Directory (Azure AD) B2C-Anwendungen Ihren eigenen clientseitigen JavaScript-Code hinzufügen. In diesem Artikel wird beschrieben, wie Sie Ihren [Benutzerflow](user-flow-javascript-overview.md) oder Ihre [benutzerdefinierte Richtlinie](active-directory-b2c-overview-custom.md) ändern können, um die Skriptausführung zu aktivieren.
+Sie können Ihren Azure Active Directory B2C-Anwendungen (Azure AD B2C) Ihren eigenen clientseitigen JavaScript-Code hinzufügen. Sie müssen ein Element zu Ihrer [benutzerdefinierten Richtlinie](active-directory-b2c-overview-custom.md) hinzufügen, ein [Seitenlayout](page-layout.md) auswählen und [b2clogin.com](b2clogin.md) in Ihren Anforderungen verwenden, um JavaScript für Ihre Anwendungen zu aktivieren. In diesem Artikel wird beschrieben, wie Sie Ihre benutzerdefinierte Richtlinie ändern können, um die Skriptausführung zu aktivieren.
+
+> [!NOTE]
+> Wenn Sie JavaScript für Benutzerflows aktivieren möchten, finden Sie Informationen unter [JavaScript und Seitenvertragsversionen in Azure Active Directory B2C](user-flow-javascript-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wählen Sie einen [Seitenvertrag](page-contract.md) für die Benutzeroberflächenelemente Ihrer Anwendung aus. Wenn Sie JavaScript verwenden möchten, müssen Sie eine Seitenvertragsversion für alle Ihre Inhaltsdefinitionen in Ihrem Benutzerflow oder Ihrer benutzerdefinierten Richtlinie definieren.
+Wählen Sie ein Seitenlayout für die Benutzeroberflächenelemente Ihrer Anwendung aus. Wenn Sie JavaScript verwenden möchten, müssen Sie eine Seitenlayoutversion für alle Ihre Inhaltsdefinitionen in Ihrer benutzerdefinierten Richtlinie definieren.
 
 ## <a name="add-the-scriptexecution-element"></a>Hinzufügen des ScriptExecution-Elements
 
@@ -140,7 +143,7 @@ function addTermsOfUseLink() {
 }
 ```
 
-Ersetzen Sie im Code den Platzhalter `termsOfUseUrl` durch den Link zu Ihren Nutzungsbedingungen. Erstellen Sie für Ihr Verzeichnis ein neues Benutzerattribut namens **termsOfUse**, und fügen Sie dann **termsOfUse** als Benutzerattribut für Ihren Benutzerflow ein.
+Ersetzen Sie im Code den Platzhalter `termsOfUseUrl` durch den Link zu Ihren Nutzungsbedingungen. Erstellen Sie für Ihr Verzeichnis ein neues Benutzerattribut namens **termsOfUse**, und fügen Sie dann **termsOfUse** als Benutzerattribut ein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

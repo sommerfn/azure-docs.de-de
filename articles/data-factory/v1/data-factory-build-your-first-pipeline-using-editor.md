@@ -3,28 +3,24 @@ title: Erstellen der ersten Data Factory (Azure-Portal) | Microsoft Docs
 description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Beispielpipeline mit dem Data Factory-Editor im Azure-Portal.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 11e92b4c6b8799cde489369a202f8f7c8c05ca6c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b60f6adf6c13bc86fb4c4604dda7d4b92963b7ca
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535993"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140572"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Tutorial: Erstellen der ersten Data Factory mit dem Azure-Portal
 > [!div class="op_single_selector"]
 > * [Übersicht und Voraussetzungen](data-factory-build-your-first-pipeline.md)
-> * [Azure-Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Azure Resource Manager-Vorlage](data-factory-build-your-first-pipeline-using-arm.md)
@@ -33,6 +29,9 @@ ms.locfileid: "57535993"
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar ist. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Schnellstart: Erstellen einer Data Factory mit Data Factory](../quickstart-create-data-factory-dot-net.md).
+
+> [!WARNING]
+> Der JSON-Editor im Azure-Portal zum Erstellen und Bereitstellen von Pipelines für ADF v1 wird am 31. Juli 2019 deaktiviert. Nach dem 31. Juli 2019 können Sie zum Erstellen und Bereitstellen von Pipelines für ADF v1 weiterhin [Powershell-Cmdlets für ADF v1](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2), das [ADF v1 .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet) und [REST-APIs für ADF v1](https://docs.microsoft.com/rest/api/datafactory/) verwenden.
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe des [Azure-Portals](https://portal.azure.com/) Ihre erste Data Factory erstellen. Falls Sie das Tutorial mit anderen Tools/SDKs absolvieren möchten, wählen Sie in der Dropdownliste eine andere Option aus. 
 
@@ -209,16 +208,16 @@ In diesem Schritt erstellen Sie Datasets, um die Eingabe- und Ausgabedaten für 
     ```
     Die folgende Tabelle enthält eine Beschreibung der JSON-Eigenschaften, die im Codeausschnitt verwendet werden:
 
-   | Eigenschaft | BESCHREIBUNG |
-   |:--- |:--- |
-   | type |Die Type-Eigenschaft wird auf **AzureBlob** festgelegt, da sich Daten im Blobspeicher befinden. |
-   | linkedServiceName |Diese Eigenschaft verweist auf den AzureStorageLinkedService-Dienst, den Sie zuvor erstellt haben. |
-   | folderPath | Diese Eigenschaft gibt den Blobcontainer und den Ordner an, der Eingabeblobs enthält. | 
-   | fileName |Diese Eigenschaft ist optional. Wenn Sie diese Eigenschaft nicht angeben, werden alle Dateien in „folderPath“ übernommen. In diesem Tutorial wird nur die Datei „input.log“ verarbeitet. |
-   | type |Da die Protokolldateien im Textformat vorliegen, verwenden Sie **TextFormat**. |
-   | columnDelimiter |Spalten werden in den Protokolldateien per Komma (`,`) voneinander getrennt. |
-   | frequency/interval |„frequency“ wird auf **Month** und „interval“ auf **1** festgelegt, was bedeutet, dass die Eingabeslices monatlich verfügbar sind. |
-   | external | Diese Eigenschaft wird auf **true** festgelegt, wenn die Daten nicht von dieser Pipeline generiert werden. In diesem Tutorial wird die Datei „input.log“ nicht von dieser Pipeline generiert. Daher wird die Eigenschaft auf **true** festgelegt. |
+   | Eigenschaft | Geschachtelt unter | BESCHREIBUNG |
+   |:--- |:--- |:--- |
+   | type | properties |Die Type-Eigenschaft wird auf **AzureBlob** festgelegt, da sich Daten im Blobspeicher befinden. |
+   | linkedServiceName | format |Diese Eigenschaft verweist auf den AzureStorageLinkedService-Dienst, den Sie zuvor erstellt haben. |
+   | folderPath | typeProperties | Diese Eigenschaft gibt den Blobcontainer und den Ordner an, der Eingabeblobs enthält. | 
+   | fileName | typeProperties |Diese Eigenschaft ist optional. Wenn Sie diese Eigenschaft nicht angeben, werden alle Dateien in „folderPath“ übernommen. In diesem Tutorial wird nur die Datei „input.log“ verarbeitet. |
+   | type | format |Da die Protokolldateien im Textformat vorliegen, verwenden Sie **TextFormat**. |
+   | columnDelimiter | format |Spalten werden in den Protokolldateien per Komma (`,`) voneinander getrennt. |
+   | frequency/interval | availability |„frequency“ wird auf **Month** und „interval“ auf **1** festgelegt, was bedeutet, dass die Eingabeslices monatlich verfügbar sind. |
+   | external | properties | Diese Eigenschaft wird auf **true** festgelegt, wenn die Daten nicht von dieser Pipeline generiert werden. In diesem Tutorial wird die Datei „input.log“ nicht von dieser Pipeline generiert. Daher wird die Eigenschaft auf **true** festgelegt. |
 
     Weitere Informationen zu diesen JSON-Eigenschaften finden Sie unter [Azure Blob-Connector](data-factory-azure-blob-connector.md#dataset-properties).
 

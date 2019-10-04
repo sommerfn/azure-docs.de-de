@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: fe63b76589c841706ae335c61e56a57c3c33fb3e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 64f79b3e72a8655f8d704ffd531d9e34485832b0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527182"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570608"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -88,15 +88,15 @@ Der DNS-Standardclient von Windows verfügt über einen integrierten DNS-Cache. 
 
 Es sind mehrere unterschiedliche DNS-Cachingpakete verfügbar (z.B. dnsmasq). So installieren Sie dnsmasq für die gängigsten Distributionen:
 
-* **Ubuntu (verwendet resolvconf)**:
+* **Ubuntu (verwendet resolvconf)** :
   * Installieren Sie das dnsmasq-Paket mit `sudo apt-get install dnsmasq`.
-* **SUSE (verwendet netconf)**:
+* **SUSE (verwendet netconf)** :
   * Installieren Sie das dnsmasq-Paket mit `sudo zypper install dnsmasq`.
   * Aktivieren Sie den dnsmasq-Dienst mit `systemctl enable dnsmasq.service`. 
   * Starten Sie den dnsmasq-Dienst mit `systemctl start dnsmasq.service`. 
   * Bearbeiten Sie **/etc/sysconfig/network/config**, und ändern Sie *NETCONFIG_DNS_FORWARDER=""* in *dnsmasq*.
   * Aktualisieren Sie „resolv.conf“ mit `netconfig update`, um den Cache als lokalen DNS-Resolver festzulegen.
-* **OpenLogic (verwendet NetworkManager)**:
+* **CentOS** (verwendet NetworkManager):
   * Installieren Sie das dnsmasq-Paket mit `sudo yum install dnsmasq`.
   * Aktivieren Sie den dnsmasq-Dienst mit `systemctl enable dnsmasq.service`.
   * Starten Sie den dnsmasq-Dienst mit `systemctl start dnsmasq.service`.
@@ -129,7 +129,7 @@ Die Datei „resolv.conf“ wird normalerweise automatisch generiert und sollte 
 * **SUSE** (verwendet netconf):
   1. Fügen Sie *timeout:1 attempts:5* dem Parameter **NETCONFIG_DNS_RESOLVER_OPTIONS=""** in **/etc/sysconfig/network/config** hinzu.
   2. Führen Sie `netconfig update` zum Aktualisieren aus.
-* **OpenLogic** (verwendet NetworkManager):
+* **CentOS** (verwendet NetworkManager):
   1. Fügen Sie *echo "options timeout:1 attempts:5"* zu **/etc/NetworkManager/dispatcher.d/11-dhclient** hinzu.
   2. Aktualisieren Sie mit `service network restart`.
 
@@ -154,7 +154,7 @@ Durch die DNS-Weiterleitung wird außerdem eine DNS-Auflösung zwischen virtuell
 
 ![Abbildung der DNS-Auflösung zwischen virtuellen Netzwerken](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
 
-Wenn Sie die von Azure bereitgestellte Namensauflösung verwenden, stellt Azure DHCP (Dynamic Host Configuration Protocol) ein internes DNS-Suffix (**.internal.cloudapp.net**) für jeden virtuellen Computer bereit. Dieses Suffix ermöglicht die Auflösung von Hostnamen, weil sich die Einträge für die Hostnamen in der Zone **internal.cloudapp.net** befinden. Wenn Sie eine eigene Lösung für die Namensauflösung verwenden, wird dieses Suffix nicht für die virtuellen Computer bereitgestellt, weil es Konflikte mit anderen DNS-Architekturen verursacht (z.B. in Szenarien mit Domäneneinbindung). Stattdessen stellt Azure einen nicht funktionsfähigen Platzhalter bereit (*reddog.microsoft.com*).
+Wenn Sie die von Azure bereitgestellte Namensauflösung verwenden, stellt Azure DHCP (Dynamic Host Configuration Protocol) ein internes DNS-Suffix ( **.internal.cloudapp.net**) für jeden virtuellen Computer bereit. Dieses Suffix ermöglicht die Auflösung von Hostnamen, weil sich die Einträge für die Hostnamen in der Zone **internal.cloudapp.net** befinden. Wenn Sie eine eigene Lösung für die Namensauflösung verwenden, wird dieses Suffix nicht für die virtuellen Computer bereitgestellt, weil es Konflikte mit anderen DNS-Architekturen verursacht (z.B. in Szenarien mit Domäneneinbindung). Stattdessen stellt Azure einen nicht funktionsfähigen Platzhalter bereit (*reddog.microsoft.com*).
 
 Bei Bedarf kann das interne DNS-Suffix mithilfe von PowerShell oder der API ermittelt werden:
 
@@ -169,7 +169,7 @@ Wenn eine Abfrageweiterleitung an Azure nicht Ihren Anforderungen entspricht, so
 * Schutz vor einem Zugriff aus dem Internet, um mögliche Bedrohungen durch externe Agents zu minimieren.
 
 > [!NOTE]
-> Wenn Sie virtuelle Azure-Computer als DNS-Server verwenden, sollte IPv6 für optimale Leistung deaktiviert sein. Eine [öffentliche IP-Adresse](virtual-network-public-ip-address.md) sollte jedem virtuellen DNS-Servercomputer zugewiesen werden. Zusätzliche Informationen zur Leistungsanalyse und zu Optimierungsmöglichkeiten bei Verwendung von Windows Server als DNS-Server finden Sie unter [Leistung der Namensauflösung bei einem rekursiven Windows DNS-Server 2012 R2](http://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
+> Wenn Sie virtuelle Azure-Computer als DNS-Server verwenden, sollte IPv6 für optimale Leistung deaktiviert sein. Eine [öffentliche IP-Adresse](virtual-network-public-ip-address.md) sollte jedem virtuellen DNS-Servercomputer zugewiesen werden. Zusätzliche Informationen zur Leistungsanalyse und zu Optimierungsmöglichkeiten bei Verwendung von Windows Server als DNS-Server finden Sie unter [Leistung der Namensauflösung bei einem rekursiven Windows DNS-Server 2012 R2](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
 > 
 > 
 
@@ -192,7 +192,7 @@ Wenn Sie eine Namensauflösung von Ihrer mit App Service erstellten und mit eine
 Wenn Sie eigene DNS-Server verwenden, bietet Azure die Möglichkeit, für jedes virtuelle Netzwerk mehrere DNS-Server anzugeben. Sie können auch mehrere DNS-Server pro Netzwerkschnittstelle (für Azure Resource Manager) oder pro Clouddienst (für das klassische Bereitstellungsmodell) angeben. Die für einen Clouddienst oder eine Netzwerkschnittstelle angegebenen DNS-Server besitzen Vorrang vor den für das virtuelle Netzwerk angegebenen DNS-Servern.
 
 > [!NOTE]
-> Netzwerkverbindungseigenschaften, z.B. die IP-Adressen von DNS-Servern, sollten nicht direkt in virtuellen Windows-Computern bearbeitet werden. Dies liegt daran, dass sie während der Dienstreparatur gelöscht werden können, wenn der virtuelle Netzwerkadapter ersetzt wird.
+> Netzwerkverbindungseigenschaften wie die IP-Adressen von DNS-Servern sollten nicht direkt auf VMs bearbeitet werden. Dies liegt daran, dass sie während der Dienstreparatur gelöscht werden können, wenn der virtuelle Netzwerkadapter ersetzt wird. Dies gilt für Windows- und Linux-VMs.
 >
 >
 

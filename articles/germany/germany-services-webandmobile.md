@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 065845ef5167592802ee09de58f016bb364bbdc9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46a1b3f2643cd88542222a679e1a1df4adf359b5
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22647076"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60685859"
 ---
 # <a name="azure-germany-web-and-mobile-services"></a>Webdienste und Mobile Services von Azure Deutschland
 ## <a name="app-service"></a>App Service

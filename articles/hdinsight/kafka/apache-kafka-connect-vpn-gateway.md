@@ -1,20 +1,19 @@
 ---
 title: Herstellen einer Verbindung mit Kafka mithilfe von virtuellen Netzwerken – Azure HDInsight
 description: Erfahren Sie, wie Sie eine direkte Verbindung mit Kafka in HDInsight über ein virtuelles Azure-Netzwerk herstellen. Erfahren Sie, wie Sie über Entwicklungsclients mit einem VPN-Gateway oder über Clients in Ihrem lokalen Netzwerk mithilfe eines VPN-Gateway-Geräts eine Verbindung mit Kafka herstellen.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 6807a14bb7b46389abbc4c5a44e7699c79e29dff
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.date: 05/28/2019
+ms.openlocfilehash: ab5f8c35334b6b6c56b0ebe8714d04ad5c7c8084
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361610"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960428"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Herstellen einer Verbindung mit Apache Kafka in HDInsight über ein virtuelles Azure-Netzwerk
 
@@ -57,7 +56,7 @@ HDInsight erlaubt keine direkten Verbindungen zu Kafka über das öffentliche In
      > * Jeder Client muss eine Verbindung mithilfe eines VPN-Software-Clients herstellen.
      > * Der VPN-Client übergibt die Anforderungen zur Namensauflösung nicht an das virtuelle Netzwerk. Sie müssen also IP-Adressen für die Kommunikation mit Kafka verwenden. Die IP-Kommunikation erfordert eine zusätzliche Konfiguration auf dem Kafka-Cluster.
 
-Weitere Informationen zur Verwendung von HDInsight in einem virtuellen Netzwerk finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md).
+Weitere Informationen zur Verwendung von HDInsight in einem virtuellen Netzwerk finden Sie im Dokument [Plan a virtual network for Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md) (Planen eines virtuellen Netzwerks für Azure HDInsight).
 
 ## <a id="on-premises"></a> Herstellen einer Verbindung mit Apache Kafka aus einem lokalen Netzwerk
 
@@ -198,8 +197,10 @@ Führen Sie die Schritte in diesem Abschnitt aus, um die folgende Konfiguration 
     New-AzStorageAccount `
         -ResourceGroupName $resourceGroupName `
         -Name $storageName `
-        -Type Standard_GRS `
-        -Location $location
+        -SkuName Standard_GRS `
+        -Location $location `
+        -Kind StorageV2 `
+        -EnableHttpsTrafficOnly 1
 
     # Get the storage account keys and create a context
     $defaultStorageKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName `
@@ -241,7 +242,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um die folgende Konfiguration 
 
 Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clients zurück. Diese Konfiguration funktioniert für den VPN-Client nicht, da er die Namensauflösung nicht für Entitäten im virtuellen Netzwerk verwenden kann. Verwenden Sie für diese Konfiguration die folgenden Schritte, um Kafka zum Ankündigen von IP-Adressen anstelle von Domänennamen zu konfigurieren:
 
-1. Wechseln Sie in Ihrem Webbrowsers zu https://CLUSTERNAME.azurehdinsight.net. Ersetzen Sie __CLUSTERNAME__ durch den Namen von Kafka im HDInsight-Cluster.
+1. Wechseln Sie in Ihrem Webbrowsers zu `https://CLUSTERNAME.azurehdinsight.net`. Ersetzen Sie `CLUSTERNAME` durch den Namen von Kafka im HDInsight-Cluster.
 
     Geben Sie bei entsprechender Aufforderung den HTTPS-Benutzernamen und das Kennwort für den Cluster ein. Die Ambari-Webbenutzeroberfläche für den Cluster wird angezeigt.
 
@@ -251,7 +252,7 @@ Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clie
 
 3. Wählen Sie zum Anzeigen der Kafka-Konfiguration oben in der Mitte __Konfigurationen__ aus.
 
-    ![Konfigurationslinks für Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-config.png)
+    ![Konfigurationslinks für Kafka](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
 4. Geben Sie zum Suchen der Konfiguration __kafka-env__ oben rechts in das Feld __Filter__ die Zeichenfolge `kafka-env` ein.
 
@@ -273,7 +274,7 @@ Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clie
 
 8. Klicken Sie auf die Schaltfläche __Speichern__, um die Konfigurationsänderungen zu speichern. Geben Sie eine Textnachricht ein, die die Änderungen beschreibt. Wählen Sie __OK__ aus, nachdem die Änderungen gespeichert wurden.
 
-    ![Schaltfläche zum Speichern der Konfiguration](./media/apache-kafka-connect-vpn-gateway/save-button.png)
+    ![Schaltfläche zum Speichern der Konfiguration](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
 9. Um Fehler beim Neustart von Kafka zu vermeiden, verwenden Sie die Schaltfläche __Dienstaktionen__, und wählen Sie __Wartungsmodus aktivieren__ aus. Wählen Sie „OK“ aus, um diesen Vorgang abzuschließen.
 
@@ -281,7 +282,7 @@ Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clie
 
 10. Verwenden Sie zum Neustarten von Kafka die Schaltfläche __Neu starten__, und wählen Sie __Alle betroffenen Instanzen neu starten__ aus. Bestätigen Sie den Neustart, und verwenden Sie dann die Schaltfläche __OK__, wenn der Vorgang abgeschlossen ist.
 
-    ![Schaltfläche „Neu starten“, Funktion zum Neustarten aller betroffenen Instanzen hervorgehoben](./media/apache-kafka-connect-vpn-gateway/restart-button.png)
+    ![Schaltfläche „Neu starten“, Funktion zum Neustarten aller betroffenen Instanzen hervorgehoben](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
 
 11. Um den Wartungsmodus zu deaktivieren, verwenden die Schaltfläche __Dienstaktionen__, und wählen Sie __Wartungsmodus deaktivieren__ aus. Wählen Sie **OK** aus, um diesen Vorgang abzuschließen.
 
@@ -321,7 +322,9 @@ Um die Konnektivität mit Kafka zu überprüfen, führen Sie die folgenden Schri
 
 2. Verwenden Sie Folgendes zum Installieren des [kafka-python](https://kafka-python.readthedocs.io/)-Clients:
 
-        pip install kafka-python
+    ```bash
+    pip install kafka-python
+    ```
 
 3. Verwenden Sie zum Senden von Daten an Kafka den folgenden Python-Code:
 
@@ -365,7 +368,7 @@ Um die Konnektivität mit Kafka zu überprüfen, führen Sie die folgenden Schri
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk finden Sie im Dokument [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md).
+Weitere Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk finden Sie im Dokument [Plan a virtual network for Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md) (Planen eines virtuellen Netzwerks für Azure HDInsight).
 
 Weitere Informationen zum Erstellen eines virtuellen Azure-Netzwerks mit Point-to-Site-VPN-Gateway finden Sie in den folgenden Dokumenten:
 

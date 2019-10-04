@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 06532369efb802606eb13a4b38a8579a3528f999
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: dacc4179483de5d5ef8a05fd836e4241c161deac
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382953"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68741278"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Warnungsverwaltungslösung in Azure Log Analytics
 
@@ -54,9 +54,9 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 | Verbundene Quelle | Support | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| [Windows-Agents](agent-windows.md) | Nein  |Direkte Windows-Agents generieren keine Warnungen.  Log Analytics-Warnungen können aus Ereignissen und Leistungsdaten erstellt werden, die von Windows-Agents gesammelt wurden. |
-| [Linux-Agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nein  |Direkte Linux-Agents generieren keine Warnungen.  Log Analytics-Warnungen können aus Ereignissen und Leistungsdaten erstellt werden, die von Linux-Agents gesammelt wurden.  Nagios- und Zabbix-Warnungen werden von Servern gesammelt, die den Linux-Agent erfordern. |
-| [System Center Operations Manager-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md) |JA |Warnungen, die auf Operations Manager-Agents generiert werden, werden an die Verwaltungsgruppe übermittelt und dann an Log Analytics weitergeleitet.<br><br>Es ist keine direkte Verbindung von Operations Manager-Agents mit Log Analytics erforderlich. Warnungsdaten werden von der Verwaltungsgruppe an das Log Analytics-Repository weitergeleitet. |
+| [Windows-Agents](agent-windows.md) | Nein |Direkte Windows-Agents generieren keine Warnungen.  Log Analytics-Warnungen können aus Ereignissen und Leistungsdaten erstellt werden, die von Windows-Agents gesammelt wurden. |
+| [Linux-Agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nein |Direkte Linux-Agents generieren keine Warnungen.  Log Analytics-Warnungen können aus Ereignissen und Leistungsdaten erstellt werden, die von Linux-Agents gesammelt wurden.  Nagios- und Zabbix-Warnungen werden von Servern gesammelt, die den Linux-Agent erfordern. |
+| [System Center Operations Manager-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md) |Ja |Warnungen, die auf Operations Manager-Agents generiert werden, werden an die Verwaltungsgruppe übermittelt und dann an Log Analytics weitergeleitet.<br><br>Es ist keine direkte Verbindung von Operations Manager-Agents mit Log Analytics erforderlich. Warnungsdaten werden von der Verwaltungsgruppe an das Log Analytics-Repository weitergeleitet. |
 
 
 ### <a name="collection-frequency"></a>Sammlungshäufigkeit
@@ -89,26 +89,26 @@ Die Lösung importiert Warnungen aus System Center Operations Manager, und es we
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Typ |*Warnung* |
-| SourceSystem |*OpsManager* |
-| AlertContext |Details des Datenelements, durch das die Warnung verursacht wurde, im XML-Format. |
-| AlertDescription |Detaillierte Beschreibung der Warnung. |
-| AlertId |GUID der Warnung. |
-| AlertName |Name der Warnung. |
-| AlertPriority |Prioritätsstufe der Warnung. |
-| AlertSeverity |Schweregrad der Warnung. |
-| AlertState |Letzter Lösungszustand der Warnung. |
-| LastModifiedBy |Name des Benutzers, der die Warnung zuletzt geändert hat. |
-| ManagementGroupName |Name der Verwaltungsgruppe, in der die Warnung generiert wurde. |
-| RepeatCount |Angabe, wie oft die gleiche Warnung für dasselbe überwachte Objekt seit der Lösung generiert wurde |
-| ResolvedBy |Name des Benutzers, der die Lösung für die Warnung durchgeführt hat. Ist leer, wenn die Warnung noch nicht gelöst wurde. |
-| SourceDisplayName |Anzeigename des Überwachungsobjekts, von dem die Warnung generiert wurde. |
-| SourceFullName |Vollständiger Name des Überwachungsobjekts, von dem die Warnung generiert wurde. |
-| TicketId |Ticket-ID für die Warnung, wenn die System Center Operations Manager-Umgebung in einen Prozess zum Zuweisen von Tickets für Warnungen integriert wurde.  Ist leer, wenn keine Ticket-ID zugewiesen wurde. |
-| TimeGenerated |Datum und Uhrzeit der Warnungserstellung. |
-| TimeLastModified |Datum und Uhrzeit der letzten Änderung der Warnung. |
-| TimeRaised |Datum und Uhrzeit der Warnungsgenerierung. |
-| TimeResolved |Datum und Uhrzeit der Warnungslösung. Ist leer, wenn die Warnung noch nicht gelöst wurde. |
+| `Type` |*Warnung* |
+| `SourceSystem` |*OpsManager* |
+| `AlertContext` |Details des Datenelements, durch das die Warnung verursacht wurde, im XML-Format. |
+| `AlertDescription` |Detaillierte Beschreibung der Warnung. |
+| `AlertId` |GUID der Warnung. |
+| `AlertName` |Name der Warnung. |
+| `AlertPriority` |Prioritätsstufe der Warnung. |
+| `AlertSeverity` |Schweregrad der Warnung. |
+| `AlertState` |Letzter Lösungszustand der Warnung. |
+| `LastModifiedBy` |Name des Benutzers, der die Warnung zuletzt geändert hat. |
+| `ManagementGroupName` |Name der Verwaltungsgruppe, in der die Warnung generiert wurde. |
+| `RepeatCount` |Angabe, wie oft die gleiche Warnung für dasselbe überwachte Objekt seit der Lösung generiert wurde |
+| `ResolvedBy` |Name des Benutzers, der die Lösung für die Warnung durchgeführt hat. Ist leer, wenn die Warnung noch nicht gelöst wurde. |
+| `SourceDisplayName` |Anzeigename des Überwachungsobjekts, von dem die Warnung generiert wurde. |
+| `SourceFullName` |Vollständiger Name des Überwachungsobjekts, von dem die Warnung generiert wurde. |
+| `TicketId` |Ticket-ID für die Warnung, wenn die System Center Operations Manager-Umgebung in einen Prozess zum Zuweisen von Tickets für Warnungen integriert wurde.  Ist leer, wenn keine Ticket-ID zugewiesen wurde. |
+| `TimeGenerated` |Datum und Uhrzeit der Warnungserstellung. |
+| `TimeLastModified` |Datum und Uhrzeit der letzten Änderung der Warnung. |
+| `TimeRaised` |Datum und Uhrzeit der Warnungsgenerierung. |
+| `TimeResolved` |Datum und Uhrzeit der Warnungslösung. Ist leer, wenn die Warnung noch nicht gelöst wurde. |
 
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Warnungsdatensätzen, die mit dieser Lösung erfasst wurden: 

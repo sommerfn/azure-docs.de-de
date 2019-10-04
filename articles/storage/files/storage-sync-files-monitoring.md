@@ -1,49 +1,83 @@
 ---
 title: Überwachen der Azure-Dateisynchronisierung | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Azure-Dateisynchronisierung überwachen.
-services: storage
-author: jeffpatt24
+author: roygara
 ms.service: storage
-ms.topic: article
-ms.date: 01/31/2019
-ms.author: jeffpatt
+ms.topic: conceptual
+ms.date: 06/28/2019
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4ae17249903f317e7a75a3e6bc7c03292021c96a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ac09f9b59bc6f47adc9311cc910352c1a0d73b5d
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534632"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699287"
 ---
 # <a name="monitor-azure-file-sync"></a>Überwachen der Azure-Dateisynchronisierung
 
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
 
-In diesem Artikel wird beschrieben, wie Sie Ihre Bereitstellung der Azure-Dateisynchronisierung mit dem Azure-Portal und Windows Server überwachen.
+In diesem Artikel wird beschrieben, wie Sie Ihre Bereitstellung der Azure-Dateisynchronisierung mit Azure Monitor, Speichersynchronisierungsdienst und Windows Server überwachen.
 
 Aktuell stehen die folgenden Überwachungsoptionen zur Verfügung.
 
-## <a name="azure-portal"></a>Azure-Portal
+## <a name="azure-monitor"></a>Azure Monitor
 
-Im Azure-Portal können Sie die Integrität registrierter Server und Serverendpunkte (Synchronisierungsintegrität) sowie Metriken anzeigen.
+Verwenden Sie [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview), um sich Metriken anzeigen zu lassen und Benachrichtigungen für das Synchronisieren, Cloudtiering und Serverkonnektivität zu konfigurieren.  
 
-### <a name="storage-sync-service"></a>Speichersynchronisierungsdienst
+### <a name="metrics"></a>metrics
+
+Metriken für die Azure-Dateisynchronisierung werden standardmäßig aktiviert und alle 15 Minuten an Azure Monitor gesendet.
+
+Wählen Sie den Ressourcentyp **Speichersynchronisierungsdienste** aus, um Metriken der Azure-Dateisynchronisierung in Azure Monitor anzuzeigen.
+
+In Azure Monitor sind die folgenden Metriken für die Azure-Dateisynchronisierung verfügbar:
+
+| Metrikname | BESCHREIBUNG |
+|-|-|
+| Bytes synchronisiert | Größe der übertragenen Daten (Upload und Download).<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
+| Cloudtieringrückruf | Größe der zurückgerufenen Daten.<br><br>**Hinweis**: Diese Metrik wird irgendwann gelöscht. Verwenden Sie die Metrik „Cloudtieringrückrufgröße“, um die Größe der zurückgerufen Daten zu überprüfen.<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimension: Servername |
+| Cloudtieringrückrufgröße | Größe der zurückgerufenen Daten.<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimension: Der Name des Servers und der Synchronisierungsgruppe |
+| Cloudtieringrückrufgröße nach Anwendung | Größe der von der Anwendung zurückgerufenen Daten.<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimension: Anwendungsname, Servername, Synchronisierungsgruppenname |
+| Cloudtieringrückrufdurchsatz | Größe der Daten des Rückrufdurchsatzes.<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimension: Der Name des Servers und der Synchronisierungsgruppe |
+| Dateien ohne Synchronisierung | Anzahl von Dateien, für die keine Synchronisierung möglich ist.<br><br>Einheit: Count<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
+| Dateien synchronisiert | Anzahl der übertragenen Dateien (Upload und Download)<br><br>Einheit: Count<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
+| Onlinestatus des Servers | Anzahl von Taktsignalen, die vom Server empfangen wurden.<br><br>Einheit: Count<br>Aggregationstyp: Maximum<br>Verfügbare Dimension: Servername |
+| Ergebnis der Synchronisierungssitzung | Ergebnis der Synchronisierungssitzung (1 = erfolgreiche Synchronisierungssitzung, 0 = fehlerhafte Synchronisierungssitzung)<br><br>Einheit: Count<br>Aggregationstypen: Maximum<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
+
+### <a name="alerts"></a>Alerts
+
+Wählen Sie den Speichersynchronisierungsdienst, um Benachrichtigungen in Azure Monitor zu konfigurieren und wählen Sie dann die [Azure-Dateisynchronisierungsmetrik](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) für die Benachrichtigung aus.  
+
+Die folgende Tabelle führt einige Beispielszenarien zur Überwachung auf sowie die richtige Metrik für die Benachrichtigung:
+
+| Szenario | Metrik für die Benachrichtigung |
+|-|-|
+| Integrität der Serverendpunkte im Portal = Fehler | Ergebnis der Synchronisierungssitzung |
+| Die Dateien werden nicht mit einem Server oder Cloudendpunkt synchronisiert | Dateien ohne Synchronisierung |
+| Der registrierte Server kommuniziert nicht mit dem Speichersynchronisierungsdienst | Onlinestatus des Servers |
+| Die Cloudtieringrückrufgröße überschreitet an einem Tag 500 GiB  | Cloudtieringrückrufgröße |
+
+Mehr über die Konfigurierung von Benachrichtigungen in Azure Monitor erfahren Sie unter [„Überblick über Warnungen in Microsoft Azure“]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+
+## <a name="storage-sync-service"></a>Speichersynchronisierungsdienst
 
 Wechseln Sie im Azure-Portal zum Speichersynchronisierungsdienst, um die Integrität registrierter Server, die Integrität der Serverendpunkte und Metriken anzuzeigen. Die Integrität registrierter Server können Sie auf dem Blatt **Registrierte Server** anzeigen, die Integrität der Serverendpunkte auf dem Blatt **Synchronisierungsgruppen**.
 
-Integrität registrierter Server:
+### <a name="registered-server-health"></a>Integrität registrierter Server
 
 - Wenn sich der **registrierte Server** im Zustand **Online** befindet, kommuniziert er erfolgreich mit dem Dienst.
 - Wenn sich der **registrierte Server** im Zustand **Als offline angezeigt** befindet, vergewissern Sie sich, dass der Überwachungsprozess für die Speichersynchronisierung (AzureStorageSyncMonitor.exe) auf dem Server ausgeführt wird. Wenn sich der Server hinter einer Firewall oder einem Proxy befindet, konfigurieren Sie die Firewall und den Proxy gemäß [diesem Artikel](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy).
 
-Integrität der Serverendpunkte:
+### <a name="server-endpoint-health"></a>Integrität der Serverendpunkte
 
 - Die Integrität der Serverendpunkte im Portal basiert auf den Synchronisierungsereignissen, die im Protokoll für Telemetrieereignisse auf dem Server protokolliert werden (ID 9102 und 9302). Wenn eine Synchronisierungssitzung aufgrund eines vorübergehenden Fehlers (z.B. Abbruchfehler) nicht erfolgreich ist, wird die Synchronisierung im Portal möglicherweise weiterhin als fehlerfrei angezeigt, solange ein Fortschritt bei der Synchronisierungssitzung verzeichnet wird. Anhand der Ereignis-ID 9302 wird bestimmt, ob Dateien angewendet werden. Weitere Informationen finden Sie unter [Wie überwache ich die Integrität der Synchronisierung?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) und [Wie überwache ich den Fortschritt einer aktuellen Synchronisierungssitzung?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 - Wenn das Portal einen Synchronisierungsfehler aufgrund eines fehlenden Fortschritts der Synchronisierung anzeigt, lesen Sie die [Dokumentation zur Problembehandlung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors).
 
-Metriken:
+### <a name="metric-charts"></a>Metrikdiagramme
 
-- Die folgenden Metriken können im Speichersynchronisierungsdienst-Portal angezeigt werden:
+- Die folgenden Metrikdiagramme können im Speichersynchronisierungsdienst-Portal angezeigt werden:
 
   | Metrikname | BESCHREIBUNG | Blattname |
   |-|-|-|
@@ -57,23 +91,6 @@ Metriken:
 
   > [!Note]  
   > Die Diagramme im Speichersynchronisierungsdienst-Portal haben einen Zeitbereich von 24 Stunden. Die verschiedenen Zeitbereiche oder -dimensionen können Sie mit Azure Monitor anzeigen.
-
-### <a name="azure-monitor"></a>Azure Monitor
-
-Verwenden Sie [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview), um Synchronisierung, Cloudtiering und Serverkonnektivität zu überwachen. Metriken für die Azure-Dateisynchronisierung werden standardmäßig aktiviert und alle 15 Minuten an Azure Monitor gesendet.
-
-Wählen Sie den Ressourcentyp **Speichersynchronisierungsdienste** aus, um Metriken der Azure-Dateisynchronisierung in Azure Monitor anzuzeigen.
-
-In Azure Monitor sind die folgenden Metriken für die Azure-Dateisynchronisierung verfügbar:
-
-| Metrikname | BESCHREIBUNG |
-|-|-|
-| Bytes synchronisiert | Größe der übertragenen Daten (Upload und Download).<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
-| Cloudtieringrückruf | Größe der zurückgerufenen Daten.<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimension: Servername |
-| Dateien ohne Synchronisierung | Anzahl von Dateien, für die keine Synchronisierung möglich ist.<br><br>Einheit: Count<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
-| Dateien synchronisiert | Anzahl der übertragenen Dateien (Upload und Download)<br><br>Einheit: Count<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
-| Onlinestatus des Servers | Anzahl von Taktsignalen, die vom Server empfangen wurden.<br><br>Einheit: Count<br>Aggregationstyp: Maximum<br>Verfügbare Dimension: Servername |
-| Ergebnis der Synchronisierungssitzung | Ergebnis der Synchronisierungssitzung (1 = erfolgreiche Synchronisierungssitzung, 0 = fehlerhafte Synchronisierungssitzung)<br><br>Einheit: Count<br>Aggregationstypen: Maximum<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
 
 ## <a name="windows-server"></a>Windows Server
 

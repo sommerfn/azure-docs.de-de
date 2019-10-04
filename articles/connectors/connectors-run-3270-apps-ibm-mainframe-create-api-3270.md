@@ -10,12 +10,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 7388dc0c61dad9c31da0c178febcee4c8481bc50
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 50b8fc6b6a350d0a5982cc84f94067979d018cce
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313191"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050676"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrieren von bildschirmgesteuerten 3270-Apps auf IBM Mainframes mit Azure mithilfe von Azure Logic Apps und IBM 3270-Connector
 
@@ -42,7 +42,7 @@ Nachdem Sie die Metadatendatei aus dem Designtool generiert haben, fügen Sie di
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -355,25 +355,25 @@ Wenn Sie alle diese Schritte abgeschlossen haben, können Sie die Aktion, die Si
    ![Auswählen einer 3270-Aktion](./media/connectors-create-api-3270/select-3270-action.png)
 
    Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. 
-   Wählen Sie das daraufhin angezeigte Pluszeichen (**+**) und dann **Aktion hinzufügen** aus.
+   Wählen Sie das daraufhin angezeigte Pluszeichen ( **+** ) und dann **Aktion hinzufügen** aus.
 
 1. Wenn noch keine Verbindung besteht, geben Sie die erforderlichen Informationen für Ihre Verbindung an, und wählen Sie **Erstellen** aus.
 
    | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
-   | **Verbindungsname** | Ja | <*verbindungsname*> | Name der Verbindung |
+   | **Verbindungsname** | Ja | <*connection-name*> | Name der Verbindung |
    | **ID des Integrationskontos** | Ja | <*integration-account-name*> | Name Ihres Integrationskontos |
    | **SAS-URL des Integrationskontos** | Ja | <*integration-account-SAS-URL*> | Die SAS-URL (Shared Access Signature) Ihres Integrationskontos, die Sie aus den Einstellungen Ihres Integrationskontos im Azure-Portal generieren können. <p>1. Wählen Sie in Ihrem Integrationskontomenü unter **Einstellungen** den Eintrag **Rückruf-URL** aus. <br>2. Kopieren Sie im rechten Bereich den Wert von **Generierte Rückruf-URL**. |
    | **Server** | Ja | <*TN3270-server-name*> | Der Servernamen für Ihren TN3270-Dienst |
-   | **Port** | Nein  | <*TN3270-server-port*> | Der von Ihrem TN3270-Server verwendete Port. Wird das Feld nicht ausgefüllt, verwendet der Connector `23` als Standardwert. |
-   | **Gerätetyp** | Nein  | <*IBM-terminal-model*> | Der Name oder die Nummer des Modells für das zu emulierende IBM-Terminal. Wird das Feld nicht ausgefüllt, verwendet der Connector Standardwerte. |
-   | **Codepage** | Nein  | <*code-page-number*> | Die Codepagenummer für den Host. Wird das Feld nicht ausgefüllt, verwendet der Connector `37` als Standardwert. |
-   | **Name der logischen Einheit** | Nein  | <*logical-unit-name*> | Der Name der spezifischen logischen Einheit, die vom Host angefordert werden soll. |
-   | **SSL aktivieren?** | Nein  | „Ein“ oder „Aus“ | Aktivieren oder Deaktivieren der SSL-Verschlüsselung |
-   | **SSL-Zertifikat des Hosts überprüfen?** | Nein  | „Ein“ oder „Aus“ | Aktivieren oder deaktivieren Sie die Überprüfung des Serverzertifikats. |
+   | **Port** | Nein | <*TN3270-server-port*> | Der von Ihrem TN3270-Server verwendete Port. Wird das Feld nicht ausgefüllt, verwendet der Connector `23` als Standardwert. |
+   | **Gerätetyp** | Nein | <*IBM-terminal-model*> | Der Name oder die Nummer des Modells für das zu emulierende IBM-Terminal. Wird das Feld nicht ausgefüllt, verwendet der Connector Standardwerte. |
+   | **Codepage** | Nein | <*code-page-number*> | Die Codepagenummer für den Host. Wird das Feld nicht ausgefüllt, verwendet der Connector `37` als Standardwert. |
+   | **Name der logischen Einheit** | Nein | <*logical-unit-name*> | Der Name der spezifischen logischen Einheit, die vom Host angefordert werden soll. |
+   | **SSL aktivieren?** | Nein | „Ein“ oder „Aus“ | Aktivieren oder Deaktivieren der SSL-Verschlüsselung |
+   | **SSL-Zertifikat des Hosts überprüfen?** | Nein | „Ein“ oder „Aus“ | Aktivieren oder deaktivieren Sie die Überprüfung des Serverzertifikats. |
    ||||
 
-   Beispiel: 
+   Beispiel:
 
    ![Verbindungseigenschaften](./media/connectors-create-api-3270/connection-properties.png)
 
@@ -385,7 +385,7 @@ Wenn Sie alle diese Schritte abgeschlossen haben, können Sie die Aktion, die Si
    | **Methodenname** | Ja | <*method-name*> | Wählen Sie die Methode in der HIDX-Datei aus, die Sie verwenden möchten. Nachdem Sie eine Methode ausgewählt haben, wird die Liste **Neuen Parameter hinzufügen** angezeigt, sodass Sie Parameter auswählen können, die mit dieser Methode verwendet werden sollen. |
    ||||
 
-   Beispiel: 
+   Beispiel:
 
    **HIDX-Datei auswählen**
 
@@ -411,12 +411,6 @@ Wenn Sie alle diese Schritte abgeschlossen haben, können Sie die Aktion, die Si
 ## <a name="connector-reference"></a>Connector-Referenz
 
 Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/si3270/).
-
-## <a name="get-support"></a>Support
-
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

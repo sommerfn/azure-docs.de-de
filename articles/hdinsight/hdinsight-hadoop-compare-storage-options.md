@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.openlocfilehash: ac1a0e4eadc0b84fdd2a170c2e0f6e0a2f2af3a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/17/2019
+ms.openlocfilehash: b73810b37020bf01c1088f194bd426e93fd95d2c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361783"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180769"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Vergleich der Speicheroptionen für die Verwendung mit Azure HDInsight-Clustern
 
@@ -31,8 +31,12 @@ Die folgende Tabelle enthält die Azure Storage-Dienste, die mit den unterschied
 |Azure Data Lake Storage Gen2| Allgemein v2 | Hierarchisch (Dateisystem) | Blob | Standard | Heiß, Kalt, Archiv | 3.6 und höher | Alle |
 |Azure Storage| Allgemein v2 | Object | Blob | Standard | Heiß, Kalt, Archiv | 3.6 und höher | Alle |
 |Azure Storage| Allgemein v1 | Object | Blob | Standard | – | Alle | Alle |
-|Azure Storage| Blob Storage | Object | Blob | Standard | Heiß, Kalt, Archiv | Alle | Alle |
+|Azure Storage| Blob Storage** | Object | Blockblob | Standard | Heiß, Kalt, Archiv | Alle | Alle |
 |Azure Data Lake Storage Gen1| – | Hierarchisch (Dateisystem) | – | – | – | Nur 3.6 | Alle mit Ausnahme von HBase |
+
+**Für HDInsight-Cluster können nur sekundäre Speicherkonten den Typ „BlobStorage“ aufweisen und der Seitenblob ist keine unterstützte Speicheroption.
+
+Weitere Informationen zu Azure Storage-Kontotypen finden Sie unter [Azure-Speicherkonten – Übersicht](../storage/common/storage-account-overview.md).
 
 Weitere Informationen zu Azure Storage-Zugriffsebenen finden Sie unter [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](../storage/blobs/storage-blob-storage-tiers.md).
 
@@ -40,18 +44,18 @@ Sie können einen Cluster mit anderen Kombinationen von Diensten für den primä
 
 | HDInsight-Version | Primärer Speicher | Sekundärer Speicher | Unterstützt |
 |---|---|---|---|
-| 3.6 und 4.0 | Blob Storage Standard | Blob Storage Standard | Ja |
-| 3.6 und 4.0 | Blob Storage Standard | Data Lake Storage Gen2 | Nein  |
-| 3.6 und 4.0 | Blob Storage Standard | Data Lake Storage Gen1 | Ja |
+| 3.6 und 4.0 | Universell V1, Universell V2 | Universell V1, Universell V2, BlobStorage (Blockblobs) | Ja |
+| 3.6 und 4.0 | Universell V1, Universell V2 | Data Lake Storage Gen2 | Nein |
+| 3.6 und 4.0 | Universell V1, Universell V2 | Data Lake Storage Gen1 | Ja |
 | 3.6 und 4.0 | Data Lake Storage Gen2* | Data Lake Storage Gen2 | Ja |
-| 3.6 und 4.0 | Data Lake Storage Gen2* | Blob Storage Standard | Ja |
-| 3.6 und 4.0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | Nein  |
+| 3.6 und 4.0 | Data Lake Storage Gen2* | Universell V1, Universell V2, BlobStorage (Blockblobs) | Ja |
+| 3.6 und 4.0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | Nein |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Ja |
-| 3.6 | Data Lake Storage Gen1 | Blob Storage Standard | Ja |
-| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Nein  |
-| 4,0 | Data Lake Storage Gen1 | Beliebig | Nein  |
+| 3.6 | Data Lake Storage Gen1 | Universell V1, Universell V2, BlobStorage (Blockblobs) | Ja |
+| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Nein |
+| 4,0 | Data Lake Storage Gen1 | Any | Nein |
 
-* Dies können etwa Data Lake Storage Gen2-Konten sein, sofern sie alle für die Verwendung derselben verwalteten Identität für den Clusterzugriff eingerichtet wurden.
+\* Dies können etwa Data Lake Storage Gen2-Konten sein, sofern sie alle für die Verwendung derselben verwalteten Identität für den Clusterzugriff eingerichtet wurden.
 
 ## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>Verwenden von Azure Data Lake Storage Gen2 mit Apache Hadoop in Azure HDInsight
 
@@ -91,9 +95,9 @@ Weitere Informationen finden Sie unter [Azure-Blobdateisystemtreiber (ABFS): Ein
 
 Azure Data Lake Storage Gen2 verwendet für den Zugriff auf Dateien in Azure Storage aus HDInsight ein neues URI-Schema:
 
-`abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
+`abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
 
-Das URI-Schema bietet SSL-verschlüsselten (Präfix `abfss://`) und unverschlüsselten Zugriff (Präfix `abfs://`). Verwenden Sie nach Möglichkeit `abfss`, auch für den Zugriff auf Daten, die sich in derselben Region in Azure befinden.
+Das URI-Schema bietet SSL-verschlüsselten Zugriff.
 
 `<FILE_SYSTEM_NAME>` gibt den Pfad des Dateisystems in Data Lake Storage Gen2 an.
 
@@ -104,8 +108,8 @@ Das URI-Schema bietet SSL-verschlüsselten (Präfix `abfss://`) und unverschlüs
 Wenn keine Werte für `<FILE_SYSTEM_NAME>` und `<ACCOUNT_NAME>` angegeben sind, wird das Standarddateisystem verwendet. Für die Dateien im Standarddateisystem können Sie relative oder absolute Pfade verwenden. Auf die Datei `hadoop-mapreduce-examples.jar`, die sich in HDInsight-Clustern befindet, kann z. B. mithilfe eines der folgenden Pfade verwiesen werden:
 
 ```
-abfss://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
-abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
+abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
+abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
 ```
 
 > [!Note]
@@ -125,7 +129,7 @@ Wenn Sie sich dazu entscheiden, Ihr Speicherkonto mit den **Firewalls und virtue
 
 Das folgende Diagramm bietet eine verallgemeinerte Übersicht über die HDInsight-Architektur von Azure Storage:
 
-![Diagramm der Verwendung der HDFS-API durch Hadoop-Cluster, um auf strukturierte und unstrukturierte Daten in Blob Storage zuzugreifen und diese zu speichern](./media/hdinsight-hadoop-compare-storage-options/HDI.WASB.Arch.png "HDInsight Storage-Architektur")
+![HDInsight Storage-Architektur](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "HDInsight Storage-Architektur")
 
 HDInsight bietet Zugang zum verteilten Dateisystem, das lokal an die Rechenknoten angefügt ist. Auf dieses Dateisystem kann über den vollständig qualifizierten URI zugegriffen werden. Zum Beispiel:
 
@@ -133,7 +137,7 @@ HDInsight bietet Zugang zum verteilten Dateisystem, das lokal an die Rechenknote
 
 Mit HDInsight können Sie auch auf Daten in Azure Storage zugreifen. Die Syntax lautet wie folgt:
 
-    wasb[s]://<containername>@<accountname>.blob.core.windows.net/<path>
+    wasb://<containername>@<accountname>.blob.core.windows.net/<path>
 
 Berücksichtigen Sie die folgenden Prinzipien, wenn Sie ein Azure Storage-Konto mit HDInsight-Clustern verwenden:
 

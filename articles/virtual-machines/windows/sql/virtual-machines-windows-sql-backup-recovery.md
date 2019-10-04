@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: ab239d0546508d74874c6b6be03f6afc06b08fa7
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: e4c126bbac73accb984f1040a7fea1740d919233
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286294"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100551"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern
 
@@ -35,7 +34,7 @@ Die folgende Tabelle enthält Informationen zu verschiedenen Sicherungs- und Wie
 | Strategie | SQL-Versionen | BESCHREIBUNG |
 |---|---|---|
 | [Automatisierte Sicherung](#automated) | 2014<br/> 2016<br/> 2017 | Bei der automatisierten Sicherung können Sie regelmäßige Sicherungen für alle Datenbanken auf einer SQL Server-VM planen. Die Sicherungen werden bis zu 30 Tage lang in Azure Storage gespeichert. Ab SQL Server 2016 bietet Version 2 der automatisierten Sicherung zusätzliche Optionen. Sie können z.B. manuelle Pläne sowie die Häufigkeit von vollständigen und Protokollsicherungen konfigurieren. |
-| [Azure Backup für SQL-VMs](#azbackup) | 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup bietet Sicherungsfunktionen auf Unternehmensniveau für SQL Server-Instanzen auf Azure-VMs. Mit diesem Dienst können Sie Sicherungen für mehrere Server und Tausende von Datenbanken zentral verwalten. Datenbanken können im Portal auf einen bestimmten Zeitpunkt wiederhergestellt werden. Der Dienst bietet eine anpassbare Aufbewahrungsrichtlinie, mit der sich Sicherungen auf Jahre hinaus speichern lassen. Dieses Feature ist zurzeit als öffentliche Preview verfügbar. |
+| [Azure Backup für SQL-VMs](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup bietet Sicherungsfunktionen auf Unternehmensniveau für SQL Server-Instanzen auf Azure-VMs. Mit diesem Dienst können Sie Sicherungen für mehrere Server und Tausende von Datenbanken zentral verwalten. Datenbanken können im Portal auf einen bestimmten Zeitpunkt wiederhergestellt werden. Der Dienst bietet eine anpassbare Aufbewahrungsrichtlinie, mit der sich Sicherungen auf Jahre hinaus speichern lassen. |
 | [Manuelle Sicherung](#manual) | Alle | Je nach SQL Server-Version gibt es verschiedene Methoden, um SQL Server-Instanzen, die auf einer Azure-VM ausgeführt werden, manuell zu sichern und wiederherzustellen. In diesem Szenario sind Sie dafür verantwortlich, auf welche Weise Ihre Datenbanken gesichert werden. Sie sind ebenfalls für den Speicherort und die Verwaltung dieser Sicherungen zuständig. |
 
 In den folgenden Abschnitten wird jede Option ausführlicher beschrieben. Der letzte Abschnitt dieses Artikels enthält eine Zusammenfassung in Form einer Funktionsmatrix.

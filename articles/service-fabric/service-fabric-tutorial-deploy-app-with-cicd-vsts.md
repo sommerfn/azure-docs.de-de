@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/02/2018
+ms.date: 07/22/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: c805d2bc03ad07635b01a5e978822ecab2425457
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 184c57c0d9160cedef4be417f16c52c8635a1eb4
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668839"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68385290"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Tutorial: Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster
 
@@ -47,7 +47,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Installieren Sie Visual Studio 2017](https://www.visualstudio.com/) und die Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
+* [Installieren Sie Visual Studio 2019](https://www.visualstudio.com/) und die Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
 * [Installieren Sie das Service Fabric SDK](service-fabric-get-started.md).
 * Erstellen Sie einen Windows Service Fabric-Cluster in Azure, z.B. durch das [Ausführen der Schritte in diesem Tutorial](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 * Erstellen Sie eine [Azure DevOps-Organisation](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Dadurch können Sie ein Projekt in Azure DevOps erstellen und Azure Pipelines verwenden.
@@ -134,7 +134,7 @@ Fügen Sie bei Verwendung von Azure Active Directory-Anmeldeinformationen den **
 
 Klicken Sie auf **Hinzufügen**, um die Clusterverbindung zu speichern.
 
-Fügen Sie als Nächstes der Pipeline ein Buildartefakt hinzu, damit die Releasepipeline die Ausgabe des Builds findet. Klicken Sie auf **Pipeline** und anschließend auf **Artefakte**->**+Hinzufügen**.  Wählen Sie unter **Quelle (Builddefinition)** die zuvor erstellte Buildpipeline aus.  Klicken Sie auf **Hinzufügen**, um das Buildartefakt zu speichern.
+Fügen Sie als Nächstes der Pipeline ein Buildartefakt hinzu, damit die Releasepipeline die Ausgabe des Builds findet. Klicken Sie auf **Pipeline** und anschließend auf **Artefakte**-> **+Hinzufügen**.  Wählen Sie unter **Quelle (Builddefinition)** die zuvor erstellte Buildpipeline aus.  Klicken Sie auf **Hinzufügen**, um das Buildartefakt zu speichern.
 
 ![Hinzufügen des Artefakts][add-artifact]
 
@@ -191,6 +191,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Automatisches Bereitstellen und Durchführen von Upgrades einer Anwendung
 
 Fahren Sie mit dem nächsten Tutorial fort:
+> [!div class="nextstepaction"]
 > [Einrichten der Überwachung und Diagnose für die Anwendung](service-fabric-tutorial-monitoring-aspnet.md)
 
 <!-- Image References -->

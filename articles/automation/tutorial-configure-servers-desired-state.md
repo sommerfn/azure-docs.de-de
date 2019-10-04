@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 582533d23757de748b9cc7d40e45acc00240d384
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 0d877dafc4ab4f8ec4edb0a94450fa9c5dfcd0bb
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570316"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850243"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurieren von Servern mit einem gewünschten Status und Verwalten der Abweichung mit Azure Automation
 
@@ -63,6 +63,9 @@ configuration TestConfig {
    }
 }
 ```
+
+> [!NOTE]
+> In komplexeren Szenarien, in denen mehrere Module importiert werden müssen, die DSC-Ressourcen bereitstellen, müssen Sie sicherstellen, dass jedes Modul über eine eindeutige Zeile vom Typ `Import-DscResource` in Ihrer Konfiguration verfügt.
 
 Rufen Sie das Cmdlet `Import-AzureRmAutomationDscConfiguration` auf, um die Konfiguration in Ihr Automation-Konto hochzuladen:
 
@@ -131,6 +134,17 @@ Damit wird dem registrierten DSC-Knoten `DscVm` die benannte Knotenkonfiguration
 Standardmäßig wird der DSC-Knoten alle 30 Minuten auf Konformität mit der Knotenkonfiguration geprüft.
 Informationen zum Ändern des Intervalls für die Konformitätsprüfung finden Sie unter [Konfigurieren des lokalen Konfigurations-Managers](/PowerShell/DSC/metaConfig).
 
+## <a name="working-with-partial-configurations"></a>Arbeiten mit Teilkonfigurationen
+
+Azure Automation DSC unterstützt die Verwendung von [Teilkonfigurationen](/powershell/dsc/pull-server/partialconfigs).
+In diesem Szenario ist DSC so konfiguriert, dass mehrere Konfigurationen unabhängig voneinander verwaltet werden können, wobei jede Konfiguration von Azure Automation abgerufen wird.
+Einem Knoten kann aber nur eine Konfiguration mittels Automation-Konto zugewiesen werden.
+Dies bedeutet, dass Sie bei Verwendung von zwei Konfigurationen für einen Knoten zwei Automation-Kontos benötigen.
+
+Ausführliche Informationen zum Registrieren einer Teilkonfiguration aus dem Pulldienst finden Sie in der Dokumentation zu [Teilkonfigurationen](https://docs.microsoft.com/powershell/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode).
+
+Weitere Informationen dazu, wie Teams zusammenarbeiten können, um Server gemeinsam mithilfe von Konfiguration als Code zu verwalten, finden Sie unter [Grundlegendes zu DSCs Rolle in einer CI/CD-Pipeline](/powershell/dsc/overview/authoringadvanced).
+
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>Überprüfen des Konformitätsstatus eines verwalteten Knotens
 
 Sie können Berichte zum Konformitätsstatus eines verwalteten Knotens abrufen, indem Sie das Cmdlet `Get-AzureRmAutomationDscNodeReport` aufrufen:
@@ -145,6 +159,27 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 # Display the most recent report
 $reports[0]
 ```
+
+## <a name="removing-nodes-from-service"></a>Entfernen von Knoten aus dem Dienst
+
+Wenn Sie Azure Automation State Configuration einen Knoten hinzufügen, werden die Einstellungen im lokalen Konfigurations-Manager so festgelegt, dass eine Registrierung beim Dienst erfolgt und Konfigurationen sowie erforderliche Module zum Konfigurieren des Computers abgerufen werden.
+Wenn Sie den Knoten aus dem Dienst entfernen möchten, können Sie dazu entweder das Azure-Portal oder die Az-Cmdlets verwenden.
+
+> [!NOTE]
+> Durch das Aufheben der Registrierung eines Knotens beim Dienst werden die Einstellungen des lokalen Konfigurations-Managers lediglich so festgelegt, dass der Knoten keine Verbindung mehr mit dem Dienst herstellt.
+> Dies hat keine Auswirkung auf die Konfiguration, die derzeit auf den Knoten angewendet wird.
+> Zum Entfernen der aktuellen Konfiguration verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1), oder löschen Sie die lokale Konfigurationsdatei (dies ist für Linux-Knoten die einzige Option).
+
+### <a name="azure-portal"></a>Azure-Portal
+
+Klicken Sie in Azure Automation im Inhaltsverzeichnis auf **Zustandskonfiguration (DSC)** .
+Klicken Sie dann auf **Knoten**, um die Liste der Knoten anzuzeigen, die beim Dienst registriert sind.
+Klicken Sie auf den Namen des Knotens, den Sie entfernen möchten.
+Klicken Sie in der daraufhin geöffneten Knotenansicht auf **Registrierung aufheben**.
+
+### <a name="powershell"></a>PowerShell
+
+Zum Aufheben der Registrierung eines Knotens beim Azure Automation State Configuration-Dienst mithilfe von PowerShell befolgen Sie die Anweisungen in der Dokumentation für das Cmdlet [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

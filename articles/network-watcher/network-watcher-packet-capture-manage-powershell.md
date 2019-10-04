@@ -3,8 +3,8 @@ title: Verwalten von Paketerfassungen mit Azure Network Watcher – PowerShell |
 description: Auf dieser Seite wird erläutert, wie das Network Watcher-Feature zur Paketerfassung mit PowerShell verwaltet wird.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 04d82085-c9ea-4ea1-b050-a3dd4960f3aa
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 267b2c375ef9672c8e5bd7cb8280b4dd40dbcd0d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.author: kumud
+ms.openlocfilehash: 4158c2c5ce69d1811b20c9937c1d064f4fe657ee
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045542"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163946"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe von PowerShell
 
@@ -99,7 +99,7 @@ Um sicherzustellen, dass der Agent installiert ist, führen Sie das Cmdlet `Get-
 Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-Das folgende Beispiel zeigt die Antwort nach der Ausführung von `Get-AzVMExtension`
+Das folgende Beispiel zeigt die Antwort nach der Ausführung von `Get-AzVMExtension`.
 
 ```
 ResourceGroupName       : testrg
@@ -130,8 +130,7 @@ Nachdem Sie die vorherigen Schritte abgeschlossen haben, wird der Paketerfassung
 Der nächste Schritt besteht im Abrufen der Network Watcher-Instanz. Diese Variable wird in Schritt 4 an das Cmdlet `New-AzNetworkWatcherPacketCapture` übergeben.
 
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName  
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
 ```
 
 ### <a name="step-2"></a>Schritt 2

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
 ms.openlocfilehash: f7f4f9ae6a80052e06b2cafa68cb5c11dfa1333a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233845"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "62097928"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Verwalten von Azure Cache for Redis mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -127,17 +127,17 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 
 | Parameter | BESCHREIBUNG | Standard |
 | --- | --- | --- |
-| NAME |Name des Caches | |
-| Standort |Ort des Caches | |
+| Name |Name des Caches | |
+| Location |Ort des Caches | |
 | ResourceGroupName |Name der Ressourcengruppe, in der der Cache erstellt werden soll | |
-| Größe |Die Größe des Caches. Gültige Werte sind: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
+| Size |Die Größe des Caches. Gültige Werte sind: P1, P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250 MB, 1 GB, 2,5 GB, 6 GB, 13 GB, 26 GB, 53 GB |1 GB |
 | ShardCount |Die Anzahl der zu erstellenden Shards beim Erstellen eines Premium-Caches mit Clusterunterstützung. Gültige Werte sind: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | |
 | SKU |Gibt die SKU des Caches an. Gültige Werte sind: Basic, Standard und Premium |Standard |
 | RedisConfiguration |Gibt die Konfigurationseinstellungen für Redis an. Details zu den einzelnen Einstellungen finden Sie in der Tabelle [RedisConfiguration-Eigenschaften](#redisconfiguration-properties) . | |
 | EnableNonSslPort |Gibt an, ob der Nicht-SSL-Port aktiviert ist. |False |
 | MaxMemoryPolicy |Dieser Parameter ist veraltet – verwenden Sie stattdessen RedisConfiguration. | |
 | StaticIP |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit eine eindeutige IP-Adresse im Subnetz für den Cache an. Wird keine IP-Adresse angegeben, wird eine für Sie aus dem Subnetz ausgewählt. | |
-| Subnetz |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. | |
+| Subnet |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit den Namen des Subnetzes an, in dem der Cache bereitgestellt wird. | |
 | VirtualNetwork |Wenn Sie den Cache in einem VNET hosten, geben Sie hiermit die Ressourcen-ID des VNET an, in dem der Cache bereitgestellt wird. | |
 | KeyType |Gibt an, welcher Zugriffsschlüssel beim Erneuern der Zugriffsschlüssel neu generiert werden muss. Gültige Werte sind: Primary, Secondary | |
 
@@ -155,7 +155,7 @@ Die folgende Tabelle enthält Eigenschaften und Beschreibungen für Parameter, d
 | set-max-intset-entries |Konfiguriert die [Speicheroptimierung](https://redis.io/topics/memory-optimization) für kleine Aggregatdatentypen |Standard und Premium |
 | zset-max-ziplist-entries |Konfiguriert die [Speicheroptimierung](https://redis.io/topics/memory-optimization) für kleine Aggregatdatentypen |Standard und Premium |
 | zset-max-ziplist-value |Konfiguriert die [Speicheroptimierung](https://redis.io/topics/memory-optimization) für kleine Aggregatdatentypen |Standard und Premium |
-| Datenbanken |Konfiguriert die Anzahl der Datenbanken. Diese Eigenschaft kann nur bei der Erstellung des Caches konfiguriert werden. |Standard und Premium |
+| databases |Konfiguriert die Anzahl der Datenbanken. Diese Eigenschaft kann nur bei der Erstellung des Caches konfiguriert werden. |Standard und Premium |
 
 ## <a name="to-create-an-azure-cache-for-redis"></a>So erstellen Sie einen Azure Cache for Redis
 Neue Azure Cache for Redis-Instanzen werden mit dem [New-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache)-Cmdlet erstellt.

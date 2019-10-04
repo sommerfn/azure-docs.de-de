@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 568b00007f2c95a5a63c236863f0c599c6b6f86f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 604b859bc144331550db9b71e6b216e35fd2d88a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992310"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140600"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage geladen werden. 
@@ -40,10 +39,10 @@ Allgemeines Lösungsdiagramm:
 
 Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt: 
 
-1. **Select the watermark column (Wählen Sie die Grenzwert-Spalte aus)**.
+1. **Select the watermark column (Wählen Sie die Grenzwert-Spalte aus)** .
     Wählen Sie eine Spalte im Quelldatenspeicher aus, die verwendet werden kann, um die neuen oder aktualisierten Datensätze für jede Ausführung in Segmente aufzuteilen. Normalerweise steigen die Daten in dieser ausgewählten Spalte (z.B. Last_modify_time oder ID), wenn Zeilen erstellt oder aktualisiert werden. Der maximale Wert in dieser Spalte wird als Grenzwert verwendet.
 
-2. **Prepare a data store to store the watermark value (Vorbereiten eines Datenspeichers zum Speichern des Grenzwerts)**.   
+2. **Prepare a data store to store the watermark value (Vorbereiten eines Datenspeichers zum Speichern des Grenzwerts)** .   
     In diesem Tutorial speichern Sie den Grenzwert in einer SQL-Datenbank.
     
 3. **Erstellen einer Pipeline mit dem folgenden Workflow:** 
@@ -369,7 +368,7 @@ In diesem Schritt erstellen Sie ein Dataset zum Speichern eines hohen Grenzwerts
         }
     }    
     ```
-2.  Führen Sie nun das **Set-AzDataFactoryV2Dataset**-Cmdlet zum Erstellen des Datasets „WatermarkDataset“ aus.
+2.  Führen Sie das Cmdlet **Set-AzDataFactoryV2Dataset** aus, um das Dataset „WatermarkDataset“ zu erstellen.
     
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
@@ -524,7 +523,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ``` 
-2. Überprüfen Sie den Status der Pipeline durch Ausführen des **Get-AzDataFactoryV2ActivityRun**-Cmdlets, bis Sie sehen, dass alle Aktivitäten erfolgreich ausgeführt wurden. Ersetzen Sie Platzhalter durch Ihre eigene geeignete Zeit für die Parameter *RunStartedAfter* und *RunStartedBefore*. In diesem Tutorial verwenden Sie Folgendes: *-RunStartedAfter "2017/09/14"* und *-RunStartedBefore "2017/09/15"*.
+2. Überprüfen Sie den Status der Pipeline durch Ausführen des **Get-AzDataFactoryV2ActivityRun**-Cmdlets, bis Sie sehen, dass alle Aktivitäten erfolgreich ausgeführt wurden. Ersetzen Sie Platzhalter durch Ihre eigene geeignete Zeit für die Parameter *RunStartedAfter* und *RunStartedBefore*. In diesem Tutorial verwenden Sie Folgendes: *-RunStartedAfter "2017/09/14"* und *-RunStartedBefore "2017/09/15"* .
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
@@ -644,7 +643,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-3. Überprüfen Sie den Status der Pipeline durch Ausführen des **Get-AzDataFactoryV2ActivityRun**-Cmdlets, bis Sie sehen, dass alle Aktivitäten erfolgreich ausgeführt wurden. Ersetzen Sie Platzhalter durch Ihre eigene geeignete Zeit für die Parameter *RunStartedAfter* und *RunStartedBefore*. In diesem Tutorial verwenden Sie Folgendes: *-RunStartedAfter "2017/09/14"* und *-RunStartedBefore "2017/09/15"*.
+3. Überprüfen Sie den Status der Pipeline durch Ausführen des **Get-AzDataFactoryV2ActivityRun**-Cmdlets, bis Sie sehen, dass alle Aktivitäten erfolgreich ausgeführt wurden. Ersetzen Sie Platzhalter durch Ihre eigene geeignete Zeit für die Parameter *RunStartedAfter* und *RunStartedBefore*. In diesem Tutorial verwenden Sie Folgendes: *-RunStartedAfter "2017/09/14"* und *-RunStartedBefore "2017/09/15"* .
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"

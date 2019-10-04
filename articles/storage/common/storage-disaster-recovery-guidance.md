@@ -4,16 +4,17 @@ description: Azure Storage unterstützt Kontofailover (Vorschau) für georedunda
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 87499c1b71e243fe976e436b525e0150689d3aa1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051188"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671078"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Notfallwiederherstellung und Speicherkontofailover (Vorschau) in Azure Storage
 
@@ -36,8 +37,11 @@ Alle Speicherkonten werden für die Redundanz repliziert. Welche Redundanzoption
 
 Weitere Redundanzoptionen von Azure Storage sind zonenredundanter Speicher (ZRS), der Ihre Daten über Verfügbarkeitszonen in einer einzigen Region repliziert, und lokal redundanter Speicher (LRS), der Ihre Daten in einem einzigen Rechenzentrum in einer einzigen Region repliziert. Wenn Ihr Speicherkonto für ZRS oder LRS konfiguriert ist, können Sie dieses Konto in GRS oder RA-GRS konvertieren. Für die Konfiguration Ihres Kontos für georedundanten Speicher fallen zusätzliche Kosten an. Weitere Informationen finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 
+> [!NOTE]
+> Geozonenredundanter Speicher (GZRS) und geozonenredundanter Speicher mit Lesezugriff (RA-GZRS) befinden sich derzeit in der Vorschau, sind aber noch nicht in den gleichen Regionen wie das vom Kunden verwaltete Kontofailover verfügbar. Aus diesem Grund können Kunden derzeit keine Kontofailoverereignisse mit den GZRS- und RA-GZRS-Konten verwalten. Während der Vorschauphase verwaltet Microsoft alle Failoverereignisse, die sich auf GZRS-/RA-GZRS-Konten auswirken.
+
 > [!WARNING]
-> Bei einem georedundanten Speicher besteht das Risiko eines Datenverlusts. Die Daten werden asynchron in den sekundären Bereich repliziert, d.h. es gibt eine Verzögerung zwischen dem Zeitpunkt, an dem die in den primären Bereich geschriebenen Daten in den sekundären Bereich geschrieben werden. Im Falle eines Ausfalls gehen Schreiboperationen auf den primären Endpunkt, die noch nicht auf den sekundären Endpunkt repliziert wurden, verloren. 
+> Bei einem georedundanten Speicher besteht das Risiko eines Datenverlusts. Die Daten werden asynchron in den sekundären Bereich repliziert, d.h. es gibt eine Verzögerung zwischen dem Zeitpunkt, an dem die in den primären Bereich geschriebenen Daten in den sekundären Bereich geschrieben werden. Im Falle eines Ausfalls gehen Schreiboperationen auf den primären Endpunkt, die noch nicht auf den sekundären Endpunkt repliziert wurden, verloren.
 
 ## <a name="design-for-high-availability"></a>Entwurf für Hochverfügbarkeit
 
@@ -164,7 +168,6 @@ Beachten Sie, dass alle auf einem temporären Datenträger gespeicherten Daten v
 Die folgenden Funktionen oder Dienste werden für das Kontofailover in der Vorschauversion nicht unterstützt:
 
 - Das Speicherkontofailover wird von der Azure-Dateisynchronisierung nicht unterstützt. Für Speicherkonten, die Azure-Dateifreigaben enthalten, die als Cloud-Endpunkte in der Azure-Dateisynchronisierung verwendet werden, sollte kein Failover durchgeführt werden. Dies würde das Funktionieren der Synchronisierung beenden und könnte außerdem bei neu einbezogenen Dateien zu unerwartetem Datenverlust führen.  
-- Für Speicherkonto mit einem hierarchischen Namespace Lake Storage Gen2 kann kein Failover durchgeführt werden.
 - Für ein Speicherkonto mit archivierten Blobs kann kein Failover durchgeführt werden. Bewahren Sie archivierte Blobs in einem separaten Speicherkonto auf, für das Sie kein Failover ausführen möchten.
 - Für ein Speicherkonto mit Premium-Blockblobs kann kein Failover durchgeführt werden. Speicherkonten, die Premium-Blockblobs unterstützen, unterstützen derzeit keine Georedundanz.
 - Nach dem Failover arbeiten die folgenden Funktionen nicht mehr, falls sie ursprünglich aktiviert waren: [Ereignisabonnements](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [Richtlinien für den Lebenszyklus](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Protokollierung durch die Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).

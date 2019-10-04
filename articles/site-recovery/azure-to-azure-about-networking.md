@@ -7,13 +7,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
-ms.author: sujayt
-ms.openlocfilehash: 42db22d39a7c87363cf97f874c85955a09cbe653
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.author: sutalasi
+ms.openlocfilehash: 9c65d6055807ee2735f1915e8ca289dc0754535b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651542"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736393"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Netzwerkkonzepte für die Replikation zwischen Azure-Standorten
 
@@ -48,7 +48,7 @@ Lassen Sie die folgenden Site Recovery-URLs zu, wenn Sie einen URL-basierten Fir
 
 **URL** | **Details**  
 --- | ---
-*.blob.core.windows.net | Erforderlich, damit Daten in das Cachespeicherkonto in der Quellregion über die VM geschrieben werden können. Wenn Sie alle Cachespeicherkonten für Ihre VMs kennen, können Sie die spezifischen Speicherkonten-URLs (z.B. cache1.blob.core.windows.net and cache2.blob.core.windows.net) anstelle von „*.blob.core.windows.net“ in die Whitelist aufnehmen.
+*.blob.core.windows.net | Erforderlich, damit Daten in das Cachespeicherkonto in der Quellregion über die VM geschrieben werden können. Wenn Sie alle Cachespeicherkonten für Ihre VMs kennen, können Sie die spezifischen Speicherkonten-URLs (z. B. cache1.blob.core.windows.net and cache2.blob.core.windows.net) anstelle von „*.blob.core.windows.net“ in die Whitelist aufnehmen.
 login.microsoftonline.com | Erforderlich für die Autorisierung und Authentifizierung bei den Site Recovery-Dienst-URLs.
 *.hypervrecoverymanager.windowsazure.com | Erforderlich, um die Kommunikation mit dem Site Recovery-Dienst über die VM zu ermöglichen. Sie können die entsprechende Site Recovery-IP verwenden, wenn Ihr Firewallproxy IPs unterstützt.
 *.servicebus.windows.net | Erforderlich, damit die Site Recovery-Überwachungs- und -Diagnosedaten über die VM geschrieben werden können. Sie können die entsprechende Site Recovery-Überwachungs-IP verwenden, wenn Ihr Firewallproxy IPs unterstützt.
@@ -77,7 +77,7 @@ Die Site Recovery-IP-Adressbereiche lauten wie folgt:
    USA Nord Mitte | 23.96.195.247 | 168.62.249.226
    Nordeuropa | 40.69.212.238 | 52.169.18.8
    Europa, Westen | 52.166.13.64 | 40.68.93.145
-   USA (Ost) | 13.82.88.226 | 104.45.147.24
+   East US | 13.82.88.226 | 104.45.147.24
    USA (Westen) | 40.83.179.48 | 104.40.26.199
    USA Süd Mitte | 13.84.148.14 | 104.210.146.250
    USA (Mitte) | 40.69.144.231 | 52.165.34.144
@@ -96,13 +96,28 @@ Die Site Recovery-IP-Adressbereiche lauten wie folgt:
    Vereinigtes Königreich, Süden 2 | 13.87.37.4| 13.87.34.139
    Vereinigtes Königreich, Norden | 51.142.209.167 | 13.87.102.68
    Korea, Mitte | 52.231.28.253 | 52.231.32.85
-   Korea, Süden | 52.231.298.185 | 52.231.200.144
+   Korea, Süden | 52.231.198.185 | 52.231.200.144
    Frankreich, Mitte | 52.143.138.106 | 52.143.136.55
    Frankreich, Süden | 52.136.139.227 |52.136.136.62
    Australien, Mitte| 20.36.34.70 | 20.36.46.142
    Australien, Mitte 2| 20.36.69.62 | 20.36.74.130
    Südafrika, Westen | 102.133.72.51 | 102.133.26.128
    Südafrika, Norden | 102.133.160.44 | 102.133.154.128
+   US Government, Virginia | 52.227.178.114 | 23.97.0.197
+   US Gov Iowa | 13.72.184.23 | 23.97.16.186
+   US Gov Arizona | 52.244.205.45 | 52.244.48.85
+   US Gov Texas | 52.238.119.218 | 52.238.116.60
+   US DoD, Osten | 52.181.164.103 | 52.181.162.129
+   US DoD, Mitte | 52.182.95.237 | 52.182.90.133
+   China, Norden | 40.125.202.254 | 42.159.4.151
+   China, Norden 2 | 40.73.35.193 | 40.73.33.230
+   China, Osten | 42.159.205.45 | 42.159.132.40
+   China, Osten 2 | 40.73.118.52| 40.73.100.125
+   Deutschland, Norden| 51.116.208.58| 51.116.58.128
+   Deutschland, Westen-Mitte | 51.116.156.176 | 51.116.154.192
+   Schweiz, Westen | 51.107.231.223| 51.107.154.128
+   Schweiz, Norden | 51.107.68.31| 51.107.58.128
+
 ## <a name="example-nsg-configuration"></a>Beispielkonfiguration für eine Netzwerksicherheitsgruppe
 
 Dieses Beispiel zeigt, wie NSG-Regeln für eine zu replizierende VM konfiguriert werden.
@@ -138,7 +153,7 @@ Diese Regeln sind erforderlich, damit nach dem Failover die Replikation von der 
 
    **Location** | **IP-Adressen für Site Recovery** |  **IP-Adressen zur Site Recovery-Überwachung**
     --- | --- | ---
-   USA (Mitte) | 13.82.88.226 | 104.45.147.24
+   East US | 13.82.88.226 | 104.45.147.24
 
 ## <a name="network-virtual-appliance-configuration"></a>Konfiguration der virtuellen Netzwerkappliance
 
@@ -159,7 +174,7 @@ Sie können einen Netzwerk-Dienstendpunkt in Ihrem virtuellen Netzwerk für „S
 
 ### <a name="forced-tunneling"></a>Tunnelerzwingung
 
-Sie können die Standardsystemroute von Azure für das Adresspräfix 0.0.0.0/0 mit einer [benutzerdefinierten Route](../virtual-network/virtual-networks-udr-overview.md#custom-routes) überschreiben und VM-Datenverkehr auf ein lokales virtuelles Netzwerkgerät umleiten, aber diese Konfiguration wird für die Site Recovery-Replikation nicht empfohlen. Wenn Sie benutzerdefinierte Routen verwenden, sollten Sie [einen virtuellen Netzwerk-Dienstendpunkt](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) in Ihrem virtuellen Netzwerk für „Storage“ erstellen, damit der Replikationsdatenverkehr innerhalb der Azure-Begrenzung bleibt.
+Sie können die Standardsystemroute von Azure für das Adresspräfix 0.0.0.0/0 mit einer [benutzerdefinierten Route](../virtual-network/virtual-networks-udr-overview.md#custom-routes) überschreiben und VM-Datenverkehr auf ein lokales virtuelles Netzwerkgerät umleiten, aber diese Konfiguration wird für die Site Recovery-Replikation nicht empfohlen. Wenn Sie benutzerdefinierte Routen verwenden, sollten Sie [einen VNET-Dienstendpunkt](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) in Ihrem virtuellen Netzwerk für „Storage“ erstellen, damit der Replikationsdatenverkehr innerhalb der Azure-Begrenzung bleibt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Schützen Sie Ihre Workloads durch die [Replikation virtueller Azure-Computer](site-recovery-azure-to-azure.md).

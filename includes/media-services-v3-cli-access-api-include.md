@@ -1,25 +1,25 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: media-services
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 11/11/2018
+ms.date: 05/01/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 4dde0a47f0452da2dd951df86ccb6e02a44521ed
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: b0f93f950b55052ea8d8b31538c47226413dc82a
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616638"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178182"
 ---
 ## <a name="access-the-media-services-api"></a>Zugreifen auf die Media Services-API
 
 Verwenden Sie die Authentifizierung per Azure AD-Dienstprinzipal, um eine Verbindung mit den Azure Media Services-APIs herzustellen. Der folgende Befehl erstellt eine Azure AD-Anwendung und fügt einen Dienstprinzipal an das Konto an. Konfigurieren Sie Ihre Anwendung mit den zurückgegebenen Werten.
 
-Vor der Ausführung des Skripts können Sie `amsaccount` und `amsResourceGroup` durch die Namen ersetzen, die Sie beim Erstellen dieser Ressourcen ausgewählt haben. `amsaccount` ist der Name des Azure Media Services-Kontos, an das der Dienstprinzipal angefügt wird.
+Ersetzen Sie vor der Ausführung des Skripts `amsaccount` und `amsResourceGroup` durch die Namen, die Sie beim Erstellen dieser Ressourcen ausgewählt haben. `amsaccount` ist der Name des Azure Media Services-Kontos, an das der Dienstprinzipal angefügt wird.
 
 Der folgende Befehl gibt eine `json`-Ausgabe zurück:
 

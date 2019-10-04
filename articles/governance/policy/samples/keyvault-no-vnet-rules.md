@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: Überwachen von Key Vault-Tresoren auf Instanzen ohne Endpunkte im virtuellen Netzwerk'
-description: Diese Beispielrichtliniendefinition überwacht Key Vault-Tresore, um Instanzen ohne Dienstendpunkte im virtuellen Netzwerk zu ermitteln.
+description: Diese Beispielrichtliniendefinition überwacht Key Vault-Tresore, um Instanzen VNET-Dienstendpunkte zu ermitteln.
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
@@ -16,7 +16,7 @@ ms.locfileid: "59276370"
 ---
 # <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Beispiel: Key Vault-Tresore mit Instanzen ohne Endpunkte im virtuellen Netzwerk
 
-Diese Richtlinie ermittelt Key Vault-Tresore, die keine Endpunkte im virtuellen Netzwerk aufweisen. Verwenden Sie die Richtlinie, um Ihre Sicherheitsanforderungen zu erzwingen. Weitere Informationen finden Sie unter [Dienstendpunkte virtueller Netzwerke für Azure Key Vault](../../../key-vault/key-vault-overview-vnet-service-endpoints.md).
+Diese Richtlinie ermittelt Key Vault-Tresore, die keine Endpunkte im virtuellen Netzwerk aufweisen. Verwenden Sie die Richtlinie, um Ihre Sicherheitsanforderungen zu erzwingen. Weitere Informationen finden Sie unter [VNET-Dienstendpunkte für Azure Key Vault](../../../key-vault/key-vault-overview-vnet-service-endpoints.md).
 
 Sie können für die Bereitstellung dieser Beispielrichtlinie Folgendes verwenden:
 

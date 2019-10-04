@@ -1,6 +1,6 @@
 ---
-title: Vordefinierte Number-Entität
-titleSuffix: Azure
+title: Vordefinierte Number-Entität – LUIS
+titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erhalten Sie Informationen zur vorgefertigten Nummernentität in Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: diberry
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 02/28/2019
+ms.topic: conceptual
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 83f7cc7c0da2682244fa9c4e0e2b153aff2e2380
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: f2868610bf9215b1414ea3ba342e3064b9c54f63
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339299"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933500"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>Vordefinierte Number-Entität für eine LUIS-App
 Es gibt verschiedene Möglichkeiten, numerische Werte zu verwenden, um Informationen zu quantifizieren, auszudrücken und zu beschreiben. In diesem Artikel werden nur einige Beispiele aufgeführt. LUIS interpretiert die Variationen verschiedener Benutzeräußerungen und gibt einheitliche numerische Werte zurück. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit Nummern hinzufügen. 
@@ -38,9 +38,13 @@ Die Entität „number“ wird über das GitHub-Repository [Recognizers-text](ht
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-LUIS fügt den anerkannten Wert einer **`builtin.number`**-Entität in das `resolution`-Feld der JSON-Antwort ein, die zurückgegeben wird.
+LUIS fügt den anerkannten Wert einer **`builtin.number`** -Entität in das `resolution`-Feld der JSON-Antwort ein, die zurückgegeben wird.
 
 ## <a name="resolution-for-prebuilt-number"></a>Auflösung der vorgefertigten Nummer
+
+
+### <a name="api-version-2x"></a>API-Version 2.x
+
 Im folgenden Beispiel wird eine JSON-Antwort von LUIS gezeigt, die die Auflösung des Werts „24“ für die Äußerung „two dozen“ enthält.
 
 ```json
@@ -76,6 +80,64 @@ Im folgenden Beispiel wird eine JSON-Antwort von LUIS gezeigt, die die Auflösun
       }
     }
   ]
+}
+```
+
+### <a name="preview-api-version-3x"></a>Vorschau-API-Version 3.x
+
+Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
+
+```json
+{
+    "query": "order two dozen eggs",
+    "prediction": {
+        "normalizedQuery": "order two dozen eggs",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.7124502
+            }
+        },
+        "entities": {
+            "number": [
+                24
+            ]
+        }
+    }
+}
+```
+
+Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
+
+```json
+{
+    "query": "order two dozen eggs",
+    "prediction": {
+        "normalizedQuery": "order two dozen eggs",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.7124502
+            }
+        },
+        "entities": {
+            "number": [
+                24
+            ],
+            "$instance": {
+                "number": [
+                    {
+                        "type": "builtin.number",
+                        "text": "two dozen",
+                        "startIndex": 6,
+                        "length": 9,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor"
+                    }
+                ]
+            }
+        }
+    }
 }
 ```
 

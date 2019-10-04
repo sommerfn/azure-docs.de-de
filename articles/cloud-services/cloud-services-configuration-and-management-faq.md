@@ -4,23 +4,22 @@ description: Dieser Artikel behandelt häufig gestellte Fragen zur Konfiguration
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259583"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154723"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -208,7 +207,7 @@ Diese Schritte könnten über einen Starttask automatisiert werden, sodass immer
 Sobald dies geschehen ist, können Sie mit einer der folgenden Methoden überprüfen, ob HTTP/2 aktiviert wurde:
 
 - Aktivieren Sie die Protokollversion in IIS-Protokollen, und schauen Sie in die IIS-Protokolle. HTTP/2 wird in den Protokollen angezeigt. 
-- Aktivieren Sie „F12 Developer Tool“ in Internet Explorer/Microsoft Edge, und wechseln Sie zur Registerkarte „Netzwerk“, um das Protokoll zu überprüfen. 
+- Aktivieren Sie „F12 Developer Tool“ in Internet Explorer oder Microsoft Edge, und wechseln Sie zur Registerkarte „Netzwerk“, um das Protokoll zu überprüfen. 
 
 Weitere Informationen finden Sie unter [HTTP/2 on IIS](https://blogs.iis.net/davidso/http2) (HTTP/2 auf IIS).
 
@@ -240,7 +239,7 @@ Für Ihr Azure-Abonnement gilt ein Limit hinsichtlich der Anzahl von Kernen, die
 
 Die automatische Skalierung auf Grundlage von Speichermetriken für Cloud Services wird derzeit nicht unterstützt. 
 
-Um dieses Problem zu umgehen, können Sie Application Insights verwenden. Die automatische Skalierung unterstützt Application Insights als Quelle für Metriken und kann die Anzahl der Rolleninstanzen anhand einer Gastmetrik wie „Speicher“ skalieren.  Sie müssen Application Insights in der Paketdatei Ihres Clouddienstprojekts (CSPKG) konfigurieren und die Azure-Diagnoseerweiterung für den Dienst aktivieren, um dieses Feature zu implementieren.
+Um dieses Problem zu umgehen, können Sie Application Insights verwenden. Die automatische Skalierung unterstützt Application Insights als Quelle für Metriken und kann die Anzahl der Rolleninstanzen anhand einer Gastmetrik wie „Speicher“ skalieren.  Sie müssen Application Insights in der Paketdatei Ihres Clouddienstprojekts (*.cspkg) konfigurieren und die Azure-Diagnoseerweiterung für den Dienst aktivieren, um dieses Feature zu implementieren.
 
 Weitere Informationen dazu, wie Sie über Application Insights eine benutzerdefinierte Metrik verwenden, um die automatische Skalierung für Cloud Services zu konfigurieren, finden Sie unter [Erste Schritte mit der automatischen Skalierung durch eine benutzerdefinierte Metrik in Azure](../azure-monitor/platform/autoscale-custom-metric.md).
 
@@ -282,7 +281,7 @@ Weitere Informationen finden Sie unter [Dienstspezifische Grenzwerte](../azure-s
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Warum wird auf dem Laufwerk meiner Clouddienst-VM nur sehr wenig freier Speicherplatz angezeigt?
 Hierbei handelt es sich um erwartetes Verhalten, das kein Problem bei Ihrer Anwendung verursachen sollte. Für das Laufwerk %approot% auf virtuellen Azure PaaS-Computern ist das Journaling aktiviert, was praktisch doppelt so viel Speicherplatz verbraucht, wie Dateien normalerweise belegen. Es gibt jedoch einige Punkte zu beachten, durch die dieses Verhalten nicht zu einem Problem wird.
 
-Die Größe des Laufwerks %aproot% beträgt 1,5 GB oder wird als <Größe von CSPKG + max. Journalgröße + Rand mit freiem Speicherplatz> berechnet, je nachdem welcher Wert größer ist. Die Größe Ihres virtuellen Computers hat keinen Einfluss auf diese Berechnung. (Die Größe des virtuellen Computers betrifft nur die Größe des temporären Laufwerks „C:“) 
+Die Größe des Laufwerks %aproot% beträgt 1,5 GB oder wird als \<Größe von CSPKG + max. Journalgröße + Rand mit freiem Speicherplatz> berechnet, je nachdem welcher Wert größer ist. Die Größe Ihres virtuellen Computers hat keinen Einfluss auf diese Berechnung. (Die Größe des virtuellen Computers betrifft nur die Größe des temporären Laufwerks „C:“) 
 
 Schreibvorgänge in das Laufwerk %aproot% werden nicht unterstützt. Wenn Sie einen Schreibvorgang in den virtuellen Azure-Computer vornehmen, müssen Sie diesen in einer temporären LocalStorage-Ressource (oder einer anderen Option, z.B. Blob-Speicher, Azure Storage usw.) ausführen. Der freie Speicherplatz im Ordner %approot% ist also nicht von Bedeutung. Wenn Sie sich unsicher sind, ob Ihre Anwendung in das Laufwerk %aproot% schreibt, können Sie Ihren Dienst immer ein paar Tage lang ausführen lassen und anschließend die „Vorher/Nachher“-Größe vergleichen. 
 
@@ -297,7 +296,7 @@ Sie können mithilfe des PowerShell-Skripts im Starttask die Antischadsoftware-E
 - [Erstellen eines PowerShell-Starttasks](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
 - [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
-Weitere Informationen zu den Antimalware-Bereitstellungsszenarien, und wie sie vom Portal aus aktiviert werden, finden Sie unter [Antimalware-Bereitstellungsszenarien](../security/azure-security-antimalware.md#antimalware-deployment-scenarios).
+Weitere Informationen zu den Antimalware-Bereitstellungsszenarien, und wie sie vom Portal aus aktiviert werden, finden Sie unter [Antimalware-Bereitstellungsszenarien](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios).
 
 ### <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>Wie wird die Servernamensanzeige (Server Name Indication, SNI) für Cloud Services aktiviert?
 

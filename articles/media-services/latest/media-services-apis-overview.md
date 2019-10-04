@@ -9,19 +9,65 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 18b72ceaee0ca0747a0bf2144d5f9ffddbee8b8c
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 5558eeb4012ac563388ad47df61114534e9859ed
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471788"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308341"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Entwickeln mit Media Services v3-APIs
 
+Als Entwickler können Sie die [REST-API](https://aka.ms/ams-v3-rest-ref) von Media Services oder Clientbibliotheken verwenden, die es Ihnen ermöglichen, mit der REST-API auf einfache Weise zu interagieren, um benutzerdefinierte Medienworkflows zu erstellen, zu verwalten und zu pflegen. Die [Media Services v3](https://aka.ms/ams-v3-rest-sdk)-API basiert auf der OpenAPI-Spezifikation (ehemals Swagger).
+
 In diesem Artikel werden Regeln erläutert, die für Entitäten und APIs gelten, wenn Sie mit Media Services v3 entwickeln.
+
+## <a name="accessing-the-azure-media-services-api"></a>Zugreifen auf die Azure Media Services-API
+
+Sie müssen zuerst authentifiziert werden, um berechtigt zu sein, auf Media Services-Ressourcen und die Media Services-API zuzugreifen. Für Media Services wird die [Azure Active Directory-basierte](../../active-directory/fundamentals/active-directory-whatis.md) Authentifizierung unterstützt. Zwei häufige Authentifizierungsoptionen sind:
+ 
+* **Dienstprinzipalauthentifizierung** – wird zur Authentifizierung eines Dienstes verwendet (z.B. Web-Apps, Funktions-Apps, Logik-Apps, API und Microservices). Bei Anwendungen, die diese Authentifizierungsmethode normalerweise nutzen, handelt es sich um Apps, mit denen Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge ausgeführt werden. Beispielsweise sollte es für Web-Apps immer einen Dienst der mittleren Ebene geben, der sich mit einem Dienstprinzipal mit Media Services verbindet.
+* **Benutzerauthentifizierung** – wird zur Authentifizierung einer Person verwendet, die die App zum Interagieren mit Media Services-Ressourcen verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird.
+
+Die Media Services-API erfordert, dass der Benutzer oder die Anwendung, die die REST-API-Anforderungen sendet, Zugriff auf die Media Services-Kontoressource hat und eine Rolle **Mitwirkender** oder **Besitzer** verwendet. Auf die API kann mit der Rolle **Leser** zugegriffen werden, es sind aber nur **Get**- oder **List** -Operationen verfügbar. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung für Media Services-Konten](rbac-overview.md).
+
+Anstatt ein Dienstprinzipal zu erstellen, sollten Sie die Verwendung verwalteter Identitäten für Azure-Ressourcen in Betracht ziehen, um über den Azure Resource Manager auf die Media Services-API zuzugreifen. Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../active-directory/managed-identities-azure-resources/overview.md).
+
+### <a name="azure-ad-service-principal"></a>Azure AD-Dienstprinzipal 
+
+Wenn Sie eine Azure AD-Anwendung und ein Dienstprinzipal erstellen, muss sich die Anwendung in ihrem eigenen Mandanten befinden. Nachdem Sie die Anwendung erstellt haben, können Sie für die App den Zugriff auf das Media Services-Konto über die Rolle **Mitwirkender** oder **Besitzer** gewähren. 
+
+Wenn Sie sich nicht sicher sind, ob Sie über Berechtigungen zum Erstellen einer Azure AD-Anwendung verfügen, lesen Sie bitte [Erforderliche Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+
+In der folgenden Abbildung stellen die Zahlen den Fluss der Anforderungen in chronologischer Reihenfolge dar:
+
+![Apps der mittleren Ebene](./media/use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
+
+1. Eine App der mittleren Ebene fordert ein Azure AD-Zugriffstoken an, das die folgenden Parameter enthält:  
+
+   * Azure AD-Mandantenendpunkt.
+   * Media Services-Ressourcen-URI.
+   * Ressourcen-URI für REST Media Services
+   * Werte der Azure AD-Anwendung: Client-ID und geheimer Clientschlüssel.
+   
+   Informationen zum Abrufen aller erforderlichen Werte finden Sie in [Zugriff auf Azure Media Services API mit Azure CLI](access-api-cli-how-to.md)
+
+2. Das Azure AD-Zugriffstoken wird an die mittlere Ebene gesendet.
+4. Die mittlere Ebene sendet eine Anforderung mit dem Azure AD-Token an die Azure Media-REST-API.
+5. Die mittlere Ebene erhält die Daten von den Media Services zurück.
+
+### <a name="samples"></a>Beispiele
+
+Sehen Sie sich die folgenden Beispiele an, die zeigen, wie Sie sich mit dem Azure AD-Dienstprinzipal verbinden können:
+
+* [Herstellen einer Verbindung mit REST](media-rest-apis-with-postman.md)  
+* [Herstellen einer Verbindung mit Java](configure-connect-java-howto.md)
+* [Herstellen einer Verbindung mit .NET](configure-connect-dotnet-howto.md)
+* [Herstellen einer Verbindung mit Node.js](configure-connect-nodejs-howto.md)
+* [Herstellen einer Verbindung mit Python](configure-connect-python-howto.md)
 
 ## <a name="naming-conventions"></a>Benennungskonventionen
 
@@ -31,16 +77,9 @@ Media Services-Ressourcennamen dürfen Folgendes nicht enthalten: „<“, „>�
 
 Weitere Informationen zur Benennung in Azure Resource Manager finden Sie unter: [Namensanforderungen](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) und [Namenskonvention](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
-## <a name="v3-api-design-principles-and-rbac"></a>Entwurfsprinzipien und rollenbasierte Zugriffssteuerung (RBAC) in der v3-API
+### <a name="names-of-filesblobs-within-an-asset"></a>Namen von Dateien/Blobs in einer Ressource
 
-Eines der wichtigsten Entwurfsprinzipien der v3-API ist es, die API sicherer zu machen. v3-APIs geben bei einem **Get**- oder **List**-Vorgang keine geheimen Schlüssel oder Anmeldeinformationen zurück. Die Schlüssel sind immer NULL, leer oder aus der Antwort bereinigt. Der Benutzer muss eine separate Aktionsmethode zum Abrufen von Geheimnissen oder Anmeldeinformationen aufrufen. Die **Leser**-Rolle kann keine Vorgänge aufrufen, also auch keine Vorgänge wie „Asset.ListContainerSas“, „StreamingLocator.ListContentKeys“ oder „ContentKeyPolicies.GetPolicyPropertiesWithSecrets“. Getrennte Aktionen ermöglichen es Ihnen, bei Bedarf noch genauer abgestimmte RBAC-Sicherheitsberechtigungen in einer benutzerdefinierten Rolle festzulegen.
-
-Weitere Informationen finden Sie unter
-
-- [Definitionen integrierter Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
-- [Verwenden der rollenbasierten Zugriffssteuerung (RBAC) zum Verwalten des Zugriffs](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [Rollenbasierte Zugriffssteuerung für Media Services-Konten](rbac-overview.md)
-- [Abrufen der Richtlinie für symmetrische Schlüssel – .NET](get-content-key-policy-dotnet-howto.md)
+Die Namen von Dateien/Blobs innerhalb einer Ressource müssen die [Anforderungen an Blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) und die [Anforderungen an NTFS-Namen](https://docs.microsoft.com/windows/win32/fileio/naming-a-file) erfüllen. Diese Anforderungen bestehen, da die Dateien zur Verarbeitung aus Blob Storage auf einen lokalen NTFS-Datenträger kopiert werden können.
 
 ## <a name="long-running-operations"></a>Zeitintensive Vorgänge
 
@@ -50,25 +89,67 @@ Weitere Informationen zum Verfolgen asynchroner Azure-Vorgänge finden Sie unter
 
 Media Services verfügt über die folgenden zeitintensiven Vorgänge:
 
-* Create LiveEvent
-* Update LiveEvent
-* Delete LiveEvent
-* Start LiveEvent
-* Stop LiveEvent
-* Reset LiveEvent
-* Create LiveOutput
-* Delete LiveOutput
-* Create StreamingEndpoint
-* Update StreamingEndpoint
-* Delete StreamingEndpoint
-* Start StreamingEndpoint
-* Stop StreamingEndpoint
-* Scale StreamingEndpoint
+* [Erstellen von Liveereignissen](https://docs.microsoft.com/rest/api/media/liveevents/create)
+* [Aktualisieren von Liveereignissen](https://docs.microsoft.com/rest/api/media/liveevents/update)
+* [Löschen von Liveereignissen](https://docs.microsoft.com/rest/api/media/liveevents/delete)
+* [Starten von Liveereignissen](https://docs.microsoft.com/rest/api/media/liveevents/start)
+* [Beenden von Liveereignissen](https://docs.microsoft.com/rest/api/media/liveevents/stop)
+
+  Verwenden Sie den Parameter `removeOutputsOnStop`, um beim Beenden des Ereignisses alle zugehörigen Liveausgaben zu löschen.  
+* [Zurücksetzen eines Liveereignisses](https://docs.microsoft.com/rest/api/media/liveevents/reset)
+* [Erstellen einer Liveausgabe](https://docs.microsoft.com/rest/api/media/liveevents/create)
+* [Löschen einer Liveausgabe](https://docs.microsoft.com/rest/api/media/liveevents/delete)
+* [Erstellen eines Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)
+* [Aktualisieren eines Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints/update)
+* [Löschen eines Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints/delete)
+* [Starten eines Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)
+* [Beenden eines Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
+* [Skalieren eines Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
+
+Nach erfolgreicher Übermittlung eines zeitintensiven Vorgangs erhalten Sie eine Bestätigung vom Typ „202 – Akzeptiert“ und müssen anhand der zurückgegebenen Vorgangs-ID abfragen, ob der Vorgang abgeschlossen ist.
+
+Für jedes Liveereignis bzw. für jede zugehörige Liveausgabe wird jeweils nur ein einzelner zeitintensiver Vorgang unterstützt. Wurde ein zeitintensiver Vorgang gestartet, muss er erst abgeschlossen werden, bevor der nächste zeitintensive Vorgang für das gleiche Liveereignis oder für eine der zugehörigen Liveausgaben gestartet wird. Bei Liveereignissen mit mehreren Liveausgaben müssen Sie warten, bis ein zeitintensiver Vorgang für eine Liveausgabe abgeschlossen wurde, bevor Sie einen zeitintensiven Vorgang für eine weitere Liveausgabe auslösen. 
+
+## <a name="sdks"></a>SDKs
+
+> [!NOTE]
+> Für die Azure Media Services v3 SDKs wird keine Threadsicherheit garantiert. Wenn Sie eine Multithreadanwendung entwickeln, sollten Sie zum Schutz des Clients Ihre eigene Threadsynchronisierungslogik hinzufügen oder für jeden Thread ein neues AzureMediaServicesClient-Objekt verwenden. Achten Sie außerdem auf Multithreadingprobleme, die durch optionale Objekte entstehen können, die von Ihrem Code für den Client bereitgestellt werden (beispielsweise eine HttpClient-Instanz in .NET).
+
+|SDK|Verweis|
+|---|---|
+|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-Referenz](https://aka.ms/ams-v3-dotnet-ref)|
+|[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-Referenz](https://aka.ms/ams-v3-java-ref)|
+|[Python SDK](https://aka.ms/ams-v3-python-sdk)|[Python-Referenz](https://aka.ms/ams-v3-python-ref)|
+|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js-Referenz](https://aka.ms/ams-v3-nodejs-ref)| 
+|[Go SDK](https://aka.ms/ams-v3-go-sdk) |[Go-Referenz](https://aka.ms/ams-v3-go-ref)|
+|[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
+
+### <a name="see-also"></a>Weitere Informationen
+
+- [EventGrid .NET SDK mit Media Services-Ereignissen](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
+- [Definitionen von Media Services-Ereignissen](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
+
+## <a name="azure-media-services-explorer"></a>Azure Media Services Explorer
+
+[Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) ist ein Tool für Windows-Kunden, die sich über Media Services informieren möchten. Bei AMSE handelt es sich um eine WinForms-/C#-Anwendung zum Hochladen, Herunterladen, Codieren und Streamen von VoD- und Liveinhalten mit Media Services. Das AMSE-Tool richtet sich an Kunden, die Media Services ohne Programmieraufwand testen möchten. Der AMSE-Code wird als Ressource für Kunden bereitgestellt, die mit Media Services entwickeln möchten.
+
+AMSE ist ein Open-Source-Projekt mit communitybasiertem Support. (Probleme können hier gemeldet werden: https://github.com/Azure/Azure-Media-Services-Explorer/issues) Für dieses Projekt wird der [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Verhaltenskodex für Microsoft Open Source) beachtet. Weitere Informationen finden Sie in den [häufig gestellten Fragen zum Verhaltenskodex](https://opensource.microsoft.com/codeofconduct/faq/). Sie können sich auch an opencode@microsoft.com wenden, wenn Sie weitere Fragen oder Anmerkungen haben.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filterung, Sortierung und Paginierung von Media Services-Entitäten
 
 Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Azure Media Services-Entitäten](entities-overview.md).
 
+## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
+
+Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
+
+## <a name="see-also"></a>Weitere Informationen
+
+[Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Einstieg in die Entwicklung mit der Media Services v3-API und mit SDKs/Tools](developers-guide.md)
+* [Herstellen einer Verbindung mit Media Services mit Java](configure-connect-java-howto.md)
+* [Herstellen einer Verbindung mit Media Services mit .NET](configure-connect-dotnet-howto.md)
+* [Herstellen einer Verbindung mit Media Services mit Node.js](configure-connect-nodejs-howto.md)
+* [Herstellen einer Verbindung mit Media Services mit Python](configure-connect-python-howto.md)

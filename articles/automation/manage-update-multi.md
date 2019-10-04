@@ -4,17 +4,17 @@ description: In diesem Artikel wird beschrieben, wie Sie Updates für virtuelle 
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 16fe2d23fdd07f8f150cc010b0a1d232c761c77f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0a4990673479c913777a5a7c410460d3d3b31264
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798671"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478317"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Verwalten von Updates für mehrere Computer
 
@@ -85,7 +85,7 @@ Für Computer, für die die Updateverwaltung erst vor Kurzem aktiviert wurde, is
 
 - **Nicht konform**: Computer, für die mindestens ein kritisches Update oder Sicherheitsupdate fehlt.
 
-- **Nicht bewertet**: Die Daten für die Updatebewertung wurden vom Computer nicht innerhalb des erwarteten Zeitrahmens empfangen. Bei Linux-Computer liegt der erwartete Zeitrahmen in den letzten 3 Stunden. Bei Windows-Computer liegt der erwartete Zeitrahmen in den letzten 12 Stunden.
+- **Nicht bewertet**: Die Daten für die Updatebewertung wurden vom Computer nicht innerhalb des erwarteten Zeitrahmens empfangen. Bei Linux-Computern liegt der erwartete Zeitrahmen in der letzten Stunde. Bei Windows-Computer liegt der erwartete Zeitrahmen in den letzten 12 Stunden.
 
 Klicken Sie zum Anzeigen des Agent-Status auf den Link in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS**. Bei Auswahl dieser Option wird der Bereich **Hybrid Worker** geöffnet und der Status des Hybrid Worker angezeigt. In der folgenden Abbildung wird ein Beispiel für einen Agent gezeigt, der über einen längeren Zeitraum nicht mit der Updateverwaltung verbunden war:
 
@@ -108,7 +108,7 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von diese
 | Windows-Agents |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates von Windows-Agents und initiiert dann die Installation von erforderlichen Updates. |
 | Linux-Agents |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates von Linux-Agents und initiiert dann die Installation von erforderlichen Updates für unterstützte Distributionen. |
 | Operations Manager-Verwaltungsgruppe |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates von Agents in einer verbundenen Verwaltungsgruppe. |
-| Azure-Speicherkonto |Nein  |Azure Storage enthält keine Informationen zu Systemupdates. |
+| Azure-Speicherkonto |Nein |Azure Storage enthält keine Informationen zu Systemupdates. |
 
 ### <a name="collection-frequency"></a>Sammlungshäufigkeit
 
@@ -116,7 +116,7 @@ Nachdem ein Computer einen Scanvorgang abgeschlossen hat, um die Konformität f�
 
 Darüber hinaus wird der Update-Konformitätsscan innerhalb von 15 Minuten nach dem MMA-Neustart sowie vor und nach der Updateinstallation initiiert.
 
-Für einen Linux-Computer wird der Konformitätsscan standardmäßig alle drei Stunden ausgeführt. Wenn der MMA-Agent neu gestartet wird, wird ein Konformitätsscan innerhalb von 15 Minuten eingeleitet.
+Für einen Linux-Computer wird der Konformitätsscan standardmäßig jede Stunde durchgeführt. Wenn der MMA-Agent neu gestartet wird, wird ein Konformitätsscan innerhalb von 15 Minuten eingeleitet.
 
 Es kann zwischen 30 Minuten und sechs Stunden dauern, bis im Dashboard aktualisierte Daten von verwalteten Computern angezeigt werden.
 
@@ -130,7 +130,7 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
 
 - **Name**: Geben Sie einen eindeutigen Namen zur Identifizierung der Updatebereitstellung ein.
 - **Betriebssystem**: Wählen Sie **Windows** oder **Linux** aus.
-- **Zu aktualisierende Gruppen (Vorschau)**: Definieren Sie eine Abfrage basierend auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe von Azure-VMs zu erstellen, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Dynamische Gruppen](automation-update-management.md#using-dynamic-groups).
+- **Zu aktualisierende Gruppen (Vorschau)** : Definieren Sie eine Abfrage basierend auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe von Azure-VMs zu erstellen, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Dynamische Gruppen](automation-update-management.md#using-dynamic-groups).
 - **Zu aktualisierende Computer**: Wählen Sie eine gespeicherte Suche, eine importierte Gruppe oder Computer aus, um die Computer auszuwählen, die Sie aktualisieren möchten. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Sie können den Integritätsstatus des Computers sehen, bevor Sie die Updatebereitstellung planen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../azure-monitor/platform/computer-groups.md).
 
   ![Bereich „Neue Updatebereitstellung“](./media/manage-update-multi/update-select-computers.png)
@@ -154,13 +154,13 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
    ![Dialogfeld „Zeitplaneinstellungen“](./media/manage-update-multi/update-set-schedule.png)
 
 - **Vor und nach dem Vorgang auszuführende Skripts**: Wählen Sie die Skripts aus, die vor und nach Ihrer Bereitstellung ausgeführt werden sollen. Weitere Informationen finden Sie unter [Verwalten von Pre- und Post-Skripts](pre-post-scripts.md).
-- **Wartungsfenster (Minuten)**: Geben Sie den Zeitraum an, in dem die Updatebereitstellung stattfinden soll. Mit dieser Einstellung können Sie sicherstellen, dass Änderungen in den von Ihnen festgelegten Wartungsfenstern ausgeführt werden.
+- **Wartungsfenster (Minuten)** : Geben Sie den Zeitraum an, in dem die Updatebereitstellung stattfinden soll. Mit dieser Einstellung können Sie sicherstellen, dass Änderungen in den von Ihnen festgelegten Wartungsfenstern ausgeführt werden.
 
 - **Neustartsteuerung**: Diese Einstellung bestimmt, wie Neustarts für die Updatebereitstellung behandelt werden.
 
    |Option|BESCHREIBUNG|
    |---|---|
-   |Neustart bei Bedarf| **(Standard)**: Bei Bedarf wird ein Neustart eingeleitet, wenn das Wartungsfenster dies zulässt.|
+   |Neustart bei Bedarf| **(Standard)** : Bei Bedarf wird ein Neustart eingeleitet, wenn das Wartungsfenster dies zulässt.|
    |Immer neu starten|Ein Neustart wird unabhängig davon eingeleitet, ob er erforderlich ist. |
    |Nie neu starten|Unabhängig davon, ob ein Neustart erforderlich ist, werden Neustarts unterdrückt.|
    |Nur neu starten – Updates werden nicht installiert|Diese Option ignoriert die Installation von Updates und leitet nur einen Neustart ein.|

@@ -3,15 +3,15 @@ title: Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines
 description: Erfahren Sie anhand eines praktischen Beispiels, wie Sie Daten mithilfe der Azure Cosmos DB-Kern-API modellieren und partitionieren.
 author: ThomasWeiss
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 3/27/2019
+ms.topic: conceptual
+ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: ac1b94de4b439aab202d53b23b0d0da616a9f851
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 55290b88fedabe59417ea49f1cd3c3bc9961678d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58919893"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093411"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels
 
@@ -42,16 +42,16 @@ Um die Verfolgung des Prozesses zu erleichtern, kategorisieren wir die verschied
 
 Hier sehen Sie die Liste der Anforderungen, die die Plattform verfügbar machen muss:
 
-- **[C1]**: Einen Benutzer erstellen/bearbeiten
-- **[Q1]**: Einen Benutzer abrufen
-- **[C2]**: Einen Beitrag erstellen/bearbeiten
-- **[Q2]**: Einen Beitrag abrufen
-- **[Q3]**: Beiträge eines Benutzers in Kurzform auflisten
-- **[C3]**: Einen Kommentar erstellen
-- **[Q4]**: Kommentare für einen Beitrag auflisten
-- **[C4]**: Einen Beitrag mit „Gefällt mir“ markieren
-- **[Q5]**: „Gefällt mir“-Markierungen eines Beitrags auflisten
-- **[Q6]**: Die *x* neuesten Beiträge in Kurzform auflisten (Feed)
+- **[C1]** : Einen Benutzer erstellen/bearbeiten
+- **[Q1]** : Einen Benutzer abrufen
+- **[C2]** : Einen Beitrag erstellen/bearbeiten
+- **[Q2]** : Einen Beitrag abrufen
+- **[Q3]** : Beiträge eines Benutzers in Kurzform auflisten
+- **[C3]** : Einen Kommentar erstellen
+- **[Q4]** : Kommentare für einen Beitrag auflisten
+- **[C4]** : Einen Beitrag mit „Gefällt mir“ markieren
+- **[Q5]** : „Gefällt mir“-Markierungen eines Beitrags auflisten
+- **[Q6]** : Die *x* neuesten Beiträge in Kurzform auflisten (Feed)
 
 Zu diesem Zeitpunkt haben wir uns noch keine Gedanken über die Details gemacht, die die einzelnen Entitäten (Benutzer, Beitrag usw.) enthalten. In der Regel ist dies einer der ersten Schritte beim Entwerfen eines relationalen Speichers, da wir ermitteln müssen, welchen Tabellen, Spalten, Fremdschlüsseln usw. diese Entitäten entsprechen. Bei einer Dokumentdatenbank, die bei Schreibvorgängen kein Schema erzwingt, ist dies weniger problematisch.
 
@@ -124,7 +124,7 @@ Diese Anforderung ist einfach zu implementieren, da lediglich ein Element im Con
 
 ![Schreiben eines einzelnen Elements in den Container „users“](./media/how-to-model-partition-example/V1-C1.png)
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 7 ms | 5,71 RUs | ✅ |
 
@@ -134,7 +134,7 @@ Zum Abrufen eines Benutzers wird das entsprechende Element aus dem Container `us
 
 ![Abrufen eines einzelnen Elements aus dem Container „users“](./media/how-to-model-partition-example/V1-Q1.png)
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 2 ms | 1 RU | ✅ |
 
@@ -144,7 +144,7 @@ Zum Abrufen eines Benutzers wird das entsprechende Element aus dem Container `us
 
 ![Schreiben eines einzelnen Elements in den Container „posts“](./media/how-to-model-partition-example/V1-C2.png)
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 9 ms | 8,76 RUs | ✅ |
 
@@ -156,7 +156,7 @@ Zunächst rufen wir das entsprechende Dokument aus dem Container `posts` ab. Da 
 
 Jede der zusätzlichen Abfragen filtert nach dem Partitionsschlüssel des jeweiligen Containers. Dies ist das erwünschte Verhalten, da dadurch die Leistung und Skalierbarkeit maximiert werden. Im Endeffekt müssen jedoch zum Zurückgeben eines einzelnen Beitrags vier Vorgänge ausgeführt werden. Dies werden wir in einer der nächsten Iterationen verbessern.
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 9 ms | 19,54 RUs | ⚠ |
 
@@ -171,7 +171,7 @@ Diese Implementierung hat viele Nachteile:
 - Die Abfragen zum Aggregieren der Anzahl von Kommentaren und „Gefällt mir“-Markierungen müssen für jeden von der ersten Abfrage zurückgegebenen Beitrag ausgeführt werden.
 - Die Hauptabfrage filtert nicht nach dem Partitionsschlüssel des Containers `posts`, was zu einer Auffächerung und einem Partitionsscan im Container führt.
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 130 ms | 619,41 RUs | ⚠ |
 
@@ -181,7 +181,7 @@ Ein Kommentar wird erstellt, indem das entsprechende Element in den Container `p
 
 ![Schreiben eines einzelnen Elements in den Container „posts“](./media/how-to-model-partition-example/V1-C2.png)
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 7 ms | 8,57 RUs | ✅ |
 
@@ -193,7 +193,7 @@ Wir beginnen mit einer Abfrage, die alle Kommentare für den jeweiligen Beitrag 
 
 Obwohl die Hauptabfrage nach dem Partitionsschlüssel des Containers filtert, beeinträchtig das separate Aggregieren der Benutzernamen die Gesamtleistung. Dies werden wir später verbessern.
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 23 ms | 27,72 RUs | ⚠ |
 
@@ -203,7 +203,7 @@ Wie bei **[C3]** erstellen wir das entsprechende Element im Container `posts`.
 
 ![Schreiben eines einzelnen Elements in den Container „posts“](./media/how-to-model-partition-example/V1-C2.png)
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 6 ms | 7,05 RUs | ✅ |
 
@@ -213,7 +213,7 @@ Wie bei **[Q4]** fragen wir die „Gefällt mir“-Markierungen für den Beitra
 
 ![Abrufen aller „Gefällt mir“-Markierungen für einen Beitrag und Aggregieren der zusätzlichen Daten](./media/how-to-model-partition-example/V1-Q5.png)
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 59 ms | 58,92 RUs | ⚠ |
 
@@ -225,9 +225,9 @@ Wir rufen die neuesten Beiträge ab, indem wir den Container `posts` absteigend 
 
 Auch hier filtert die ursprüngliche Abfrage nicht nach dem Partitionsschlüssel des Containers `posts`, was zu einer kostspieligen Auffächerung führt. In diesem Fall sind die Auswirkungen sogar noch gravierender, da das Resultset wesentlich größer ist und die Ergebnisse mit einer `ORDER BY`-Klausel sortiert werden, die die Kosten aufgrund der erforderlichen Anforderungseinheiten erhöht.
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
-| 306 ms | 2.063,54 RUs | ⚠ |
+| 306 ms | 2\.063,54 RUs | ⚠ |
 
 ## <a name="reflecting-on-the-performance-of-v1"></a>Überlegungen zur Leistung von Version 1
 
@@ -282,7 +282,7 @@ Außerdem ändern wir die Kommentar- und „Gefällt mir“-Markierungselemente
 
 Wir möchten erreichen, dass bei jeder Hinzufügung eines Kommentars oder einer „Gefällt mir“-Markierung die Anzahl `commentCount` oder `likeCount` im zugehörigen Beitrag erhöht wird. Da unser Container `posts` nach `postId` partitioniert ist, befinden sich das neue Element (Kommentar oder „Gefällt mir“-Markierung) und der dazugehörige Beitrag in der gleichen logischen Partition. Wir können daher eine [gespeicherte Prozedur](stored-procedures-triggers-udfs.md) zum Ausführen des Vorgangs verwenden.
 
-Anstatt lediglich ein neues Element im Container `posts` hinzuzufügen, rufen wir jetzt beim Erstellen eines Kommentars (**[C3]**) die folgende gespeicherte Prozedur für den Container auf:
+Anstatt lediglich ein neues Element im Container `posts` hinzuzufügen, rufen wir jetzt beim Erstellen eines Kommentars ( **[C3]** ) die folgende gespeicherte Prozedur für den Container auf:
 
 ```javascript
 function createComment(postId, comment) {
@@ -314,7 +314,7 @@ function createComment(postId, comment) {
 Diese gespeicherte Prozedur akzeptiert die ID des Beitrags und den Text des neuen Kommentars als Parameter und führt anschließend die folgenden Aktionen aus:
 
 - Abrufen des Beitrags
-- Erhöhen der Anzahl von Kommentaren `commentCount`
+- Erhöhen der Anzahl von `commentCount`
 - Ersetzen des Beitrags
 - Hinzufügen des neuen Kommentars
 
@@ -356,7 +356,7 @@ Diese gespeicherte Prozedur akzeptiert die ID des Benutzers und seinen neuen Ben
 
 - Abrufen aller Elemente, die mit der `userId` übereinstimmen (Beiträge, Kommentare oder „Gefällt mir“-Markierungen)
 - Folgende Vorgänge für jedes dieser Elemente:
-  - Ersetzen des Benutzernamens `userUsername`
+  - Ersetzen von `userUsername`
   - Ersetzen des Elements
 
 > [!IMPORTANT]
@@ -370,7 +370,7 @@ Da wir die Denormalisierung hinzugefügt haben, müssen wir zum Verarbeiten dies
 
 ![Abrufen eines einzelnen Elements aus dem Container „posts“](./media/how-to-model-partition-example/V2-Q2.png)
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 2 ms | 1 RU | ✅ |
 
@@ -380,7 +380,7 @@ Auch in diesem Fall können wir die zusätzlichen Anforderungen zum Abrufen der 
 
 ![Abrufen aller Kommentare für einen Beitrag](./media/how-to-model-partition-example/V2-Q4.png)
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 4 ms | 7,72 RUs | ✅ |
 
@@ -390,13 +390,13 @@ Beim Auflisten der „Gefällt mir“-Markierungen haben wir die gleiche Situat
 
 ![Abrufen aller „Gefällt mir“-Markierungen für einen Beitrag](./media/how-to-model-partition-example/V2-Q5.png)
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 4 ms | 8,92 RUs | ✅ |
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>Version 3: Sicherstellen der Skalierbarkeit aller Anforderungen
 
-Wenn wir uns die Verbesserungen der Gesamtleistung ansehen, fällt auf, dass wir zwei Anforderungen nicht vollständig optimiert haben: **[Q3]** und **[Q6]**. Dies sind die Anforderungen mit Abfragen, die nicht nach dem Partitionsschlüssel der jeweiligen Container filtern.
+Wenn wir uns die Verbesserungen der Gesamtleistung ansehen, fällt auf, dass wir zwei Anforderungen nicht vollständig optimiert haben: **[Q3]** und **[Q6]** . Dies sind die Anforderungen mit Abfragen, die nicht nach dem Partitionsschlüssel der jeweiligen Container filtern.
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>[Q3]: Beiträge eines Benutzers in Kurzform auflisten
 
@@ -409,8 +409,8 @@ Die verbleibende Abfrage filtert jedoch noch immer nicht nach dem Partitionsschl
 Die Lösung für dieses Problem ist im Grunde einfach:
 
 1. Die Anforderung *muss* nach der `userId` filtern, da wir alle Beiträge für einen bestimmten Benutzer abrufen wollen.
-1. Die Leistung dieser Anforderung ist nicht gut, da sie für den Container `posts` ausgeführt wird, der nicht nach der Benutzer-ID partitioniert ist. `userId`
-1. Wir könnten das Leistungsproblem natürlich beheben, indem wir die Anforderung für einen Container ausführen, der nach der Benutzer-ID partitioniert *ist*. `userId`
+1. Die Leistung dieser Anforderung ist nicht gut, da sie für den Container `posts` ausgeführt wird, der nicht nach `userId` partitioniert ist.
+1. Wir könnten das Leistungsproblem natürlich beheben, indem wir die Anforderung für einen Container ausführen, der nach `userId` partitioniert *ist*.
 1. Tatsächlich haben wir bereits einen solchen Container: den Container `users`.
 
 Wir fügen daher eine zweite Denormalisierungsebene hinzu, indem wir alle Posts im Container `users` duplizieren. Auf diese Weise erhalten wir eine Kopie unserer Beiträge, die lediglich nach anderen Dimensionen partitioniert ist. Die Beiträge können dadurch deutlich effizienter anhand der `userId` abgerufen werden.
@@ -450,7 +450,7 @@ Jetzt können wir unsere Abfrage an den Container `users` weiterleiten und dabei
 
 ![Abrufen aller Beiträge für einen Benutzer](./media/how-to-model-partition-example/V3-Q3.png)
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 4 ms | 6,46 RUs | ✅ |
 
@@ -479,7 +479,7 @@ Zum Optimieren dieser letzten Anforderung fügen wir unserem Entwurf daher einen
 
 Dieser Container ist nach `type` partitioniert, und der Typ ist bei unseren Elementen immer `post`. Dadurch wird sichergestellt, dass sich alle Elemente in diesem Container in derselben Partition befinden.
 
-Zum Erreichen der Denormalisierung müssen wir nur die Änderungsfeedpipeline verknüpfen, die wir zuvor hinzugefügt haben, um die Beiträge an den neuen Container zu verteilen. Wichtig ist hierbei, dass nur die 100 neuesten Beiträge gespeichert werden dürfen. Andernfalls kann der Inhalt des Containers die maximale Größe einer Partition überschreiten. Zu diesem Zweck wird jedes Mal, wenn ein Dokument im Container hinzugefügt wird, ein [nachgestellter Trigger](stored-procedures-triggers-udfs.md#triggers) aufgerufen:
+Zum Erreichen der Denormalisierung müssen wir nur die Änderungsfeedpipeline verknüpfen, die wir zuvor hinzugefügt haben, um die Beiträge an den neuen Container zu verteilen. Wichtig ist hierbei, dass nur die 100 neuesten Beiträge gespeichert werden dürfen. Andernfalls kann der Inhalt des Containers die maximale Größe einer Partition überschreiten. Zu diesem Zweck wird jedes Mal, wenn ein Dokument im Container hinzugefügt wird, ein [nachgestellter Trigger](stored-procedures-triggers-udfs.md#triggers) aufgerufen:
 
 ![Denormalisieren von Beiträgen im Container „feed“](./media/how-to-model-partition-example/denormalization-3.png)
 
@@ -534,7 +534,7 @@ Im letzten Schritt müssen Sie die Abfrage an den neuen Container `feed` umleite
 
 ![Abrufen der neuesten Beiträge](./media/how-to-model-partition-example/V3-Q6.png)
 
-| **Latency** | **Verbrauchte RUs** | **Leistung** |
+| **Latenz** | **Verbrauchte RUs** | **Leistung** |
 | --- | --- | --- |
 | 9 ms | 16,97 RUs | ✅ |
 
@@ -574,5 +574,5 @@ Im Änderungsfeed, den wir zum Verteilen der Aktualisierungen an andere Containe
 Nach dieser Einführung in die praktische Datenmodellierung und -partitionierung können Sie die hier vorgestellten Konzepte in den folgenden Artikeln nachlesen:
 
 - [Arbeiten mit Datenbanken, Containern und Elementen](databases-containers-items.md)
-- [Partitionierung in Azure Cosmos DB](partitioning-overview.md)
+- [Partitioning in Azure Cosmos DB](partitioning-overview.md) (Partitionierung in Azure Cosmos DB)
 - [Änderungsfeed in Azure Cosmos DB](change-feed.md)

@@ -1,5 +1,5 @@
 ---
-title: Exportieren und Löschen von Daten
+title: Exportieren und Löschen von Daten – LUIS
 titleSuffix: Azure Cognitive Services
 description: Löschen Sie Kundendaten, um Datenschutz und Compliance zu gewährleisten.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: eb125133138c6de173fdeb90024a9e5d961a929d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: e234f88d6e735f33be253cacb373baef63c605c0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895155"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559985"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportieren und Löschen Ihrer Kundendaten aus LUIS in Cognitive Services
 
@@ -37,7 +37,7 @@ Kundeninhalte werden verschlüsselt im regionalen Microsoft Azure-Speicher gespe
 ## <a name="deleting-customer-data"></a>Löschen von Kundendaten
 LUIS-Benutzer haben die vollständige Kontrolle und können sämtliche Benutzerinhalte entweder über das LUIS-Webportal oder die LUIS-Erstellungs-APIs (auch als programmgesteuerte LUIS-APIs bezeichnet) löschen. In der folgenden Tabelle werden Links zu Hilfen für beide Möglichkeiten angezeigt.
 
-| | **Benutzerkonto** | **Anwendung** | **Beispieläußerungen** | **Abfragen von Endbenutzern** |
+| | **Benutzerkonto** | **Anwendung** | **Beispieläußerung(en)** | **Abfragen von Endbenutzern** |
 | --- | --- | --- | --- | --- |
 | **Portal** | [Link](luis-concept-data-storage.md#delete-an-account) | [Link](luis-how-to-start-new-app.md#delete-app) | [Link](luis-concept-data-storage.md#utterances-in-an-intent) | [Äußerungen für das aktive Lernen](luis-how-to-review-endpoint-utterances.md#disable-active-learning)<br>[Protokollierte Äußerungen](luis-concept-data-storage.md#disable-logging-utterances) |
 | **APIs** | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c4c) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c39) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0b) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9) |
@@ -46,7 +46,7 @@ LUIS-Benutzer haben die vollständige Kontrolle und können sämtliche Benutzeri
 ## <a name="exporting-customer-data"></a>Exportieren von Kundendaten
 LUIS-Benutzer haben zwar die vollständige Kontrolle und können die Daten im Portal abrufen, sie müssen sie jedoch über die LUIS-Erstellungs-APIs (auch als programmgesteuerte LUIS-APIs bezeichnet) exportieren. In der folgenden Tabelle sind Links aufgeführt, über die Sie Unterstützung beim Exportieren von Daten über die LUIS-Erstellungs-APIs (auch als LUIS-Programmierungs-APIs bezeichnet) erhalten.
 
-| | **Benutzerkonto** | **Anwendung** | **Äußerungen** | **Abfragen von Endbenutzern** |
+| | **Benutzerkonto** | **Anwendung** | **Äußerung(en)** | **Abfragen von Endbenutzern** |
 | --- | --- | --- | --- | --- |
 | **APIs** | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c48) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0a) | [Link](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36) |
 
@@ -58,7 +58,7 @@ Zur Aktivierung des [aktiven Lernens](luis-how-to-review-endpoint-utterances.md#
 * [Australien](#australia)
 * [USA](#united-states)
 
-Mit Ausnahme der Daten für das aktive Lernen (siehe unten) werden für LUIS die [Methoden zur Datenspeicherung für regionale Dienste](http://azuredatacentermap.azurewebsites.net/) angewandt. 
+Mit Ausnahme der Daten für das aktive Lernen (siehe unten) werden für LUIS die [Methoden zur Datenspeicherung für regionale Dienste](https://azuredatacentermap.azurewebsites.net/) angewandt. 
 
 ### <a name="europe"></a>Europa
 
@@ -90,4 +90,4 @@ Bei der Bereitstellung in diesen Azure-Regionen werden die am Endpunkt von Endbe
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Referenz zu LUIS-Regionen](./luis-reference-regions.md)
+> [LUIS regions reference (Referenz zu LUIS-Regionen)](./luis-reference-regions.md)

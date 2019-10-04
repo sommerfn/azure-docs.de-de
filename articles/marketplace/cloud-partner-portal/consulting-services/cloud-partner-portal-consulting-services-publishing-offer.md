@@ -1,25 +1,18 @@
 ---
-title: Azure- und Dynamics 365-Beratungsdienstangebot | Microsoft-Dokumentation
+title: Azure- und Dynamics 365-Beratungsdienstangebot | Azure Marketplace
 description: Dies ist ein Leitfaden für die Definition und Veröffentlichung eines Azure- oder Dynamics 365-Beratungsdienstangebots im Cloud-Partnerportal.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: pbutlerm
-ms.openlocfilehash: e543c24a8e3549bc53d6074c7008f3d01fcc96c4
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.author: pabutler
+ms.openlocfilehash: 6c75664e558602429250420f1896b75a74546e67
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54228758"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145460"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure- und Dynamics 365-Beratungsdienstangebot
 
@@ -40,6 +33,7 @@ In diesem Abschnitt werden die Elemente für ein Veröffentlichen eines Beratung
 
 - [Voraussetzungen für Beratungsdienst](./cpp-consulting-service-prerequisites.md): Hier sind die Anforderungen aufgeführt, die zum Veröffentlichen eines Beratungsdienstangebots für die folgenden Anwendungen erfüllt sein müssen:
  
+    - Microsoft Azure
     - Dynamics 365 for Customer Engagement 
     - Dynamics 365 for Finance and Operations 
     - Dynamics 365 Business Central 

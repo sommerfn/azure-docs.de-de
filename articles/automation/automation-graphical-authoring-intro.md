@@ -4,17 +4,17 @@ description: Die grafische Erstellung ermöglicht Ihnen das Erstellen von Runboo
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6d7626706951cc522dce9c6d70251455e64300bc
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797106"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67476689"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafische Erstellung in Azure Automation
 
@@ -44,7 +44,7 @@ Die Canvas ist der Bereich, in dem Sie Ihr Runbook entwerfen. Sie fügen über d
 
 Über das Steuerelement "Bibliothek" wählen Sie die [Aktivitäten](#activities) aus, die Sie Ihrem Runbook hinzufügen möchten. Sie fügen diese zur Canvas hinzu, wenn Sie sie mit anderen Aktivitäten verbinden. Das Steuerelement enthält vier Abschnitte, die in der folgenden Tabelle beschrieben werden:
 
-| Abschnitt | BESCHREIBUNG |
+| `Section` | Description |
 |:--- |:--- |
 | Cmdlets |Enthält alle Cmdlets, die in Ihrem Runbook verwendet werden können. Die Cmdlets sind nach Modul angeordnet. Es sind alle Module verfügbar, die Sie in Ihrem Automation-Konto installiert haben. |
 | Runbooks |Umfasst die Runbooks in Ihrem Automation-Konto. Diese Runbooks können der Canvas hinzugefügt und als untergeordnete Runbooks verwendet werden. Es werden nur Runbooks angezeigt, die den gleichen Kerntyp besitzen wie das gerade bearbeitete Runbook: Für grafische Runbooks werden nur PowerShell-basierte Runbooks angezeigt, für grafische PowerShell-Workflow-Runbooks nur PowerShell-Workflow-basierte Runbooks. |
@@ -89,7 +89,7 @@ Wenn ein Runbook noch nicht veröffentlicht wurde, weist es den Status **Neu**au
 
 Sie haben außerdem die Möglichkeit, ein Runbook auf die veröffentlichte Version zurückzusetzen. Auf diese Weise werden alle Änderungen seit der letzten Veröffentlichung verworfen, und die Entwurfsversion des Runbooks wird durch die veröffentlichte Version ersetzt.
 
-## <a name="activities"></a>Aktivitäten
+## <a name="activities"></a>activities
 
 Aktivitäten sind die Bausteine eines Runbooks. Bei einer Aktivität kann es sich um ein PowerShell-Cmdlet, um ein untergeordnetes Runbook oder um eine Workflowaktivität handeln. Sie fügen dem Runbook eine Aktivität hinzu, indem Sie mit der rechten Maustaste im Steuerelement „Bibliothek“ auf das Runbook klicken und die Option **Zur Canvas hinzufügen**auswählen. Anschließend können Sie die Aktivität per Drag & Drop an einer beliebigen Stelle auf der Canvas platzieren. Die Position der Aktivität auf der Canvas hat keinerlei Einfluss auf den Vorgang im Runbook. Sie können das Layout Ihres Runbooks so gestalten, wie es Ihnen zur visuellen Darstellung der Vorgänge am geeignetsten erscheint.
 
@@ -109,7 +109,7 @@ Im folgenden Beispiel besitzt das Cmdlet „Get-AzureRmVM“ drei Parametersätz
 
 Wenn Sie einen Wert für einen Parameter angeben, wählen Sie eine Datenquelle aus, um festzulegen, wie der Wert angegeben wird. Die für einen bestimmten Parameter verfügbaren Datenquellen richten sich nach den gültigen Werten für diesen Parameter. Beispielsweise ist NULL keine verfügbare Option für einen Parameter, der keine NULL-Werte zulässt.
 
-| Data source | BESCHREIBUNG |
+| Data source | Description |
 |:--- |:--- |
 | Konstanter Wert |Geben Sie einen Wert für den Parameter ein. Dies ist nur für die folgenden Datentypen verfügbar: Int32, Int64, String, Boolean, DateTime, Switch. |
 | Aktivitätsausgabe |Ausgabe einer Aktivität, die der aktuellen Aktivität im Workflow vorausgeht. Alle gültigen Aktivitäten werden aufgelistet. Wählen Sie einfach die Aktivität, um ihre Ausgabe für den Parameterwert zu verwenden. Wenn es sich bei der Aktivitätsausgabe um ein Objekt mit mehreren Eigenschaften handelt, können Sie nach Auswahl der Aktivität den Namen der Eigenschaft eingeben. |
@@ -139,7 +139,7 @@ Die Wiederholungsbedingung ist ein PowerShell-Ausdruck, der nach jeder Ausführu
 
 Die Wiederholungsbedingung kann eine Variable namens „$RetryData“ enthalten, die Zugriff auf Informationen zu den Aktivitätswiederholungen bereitstellt. Diese Variable weist die in der folgenden Tabelle aufgeführten Eigenschaften auf:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 |:--- |:--- |
 | NumberOfAttempts |Häufigkeit, mit der die Aktivität ausgeführt wurde. |
 | Output |Die Ausgabe nach der letzten Ausführung der Aktivität. |
@@ -191,7 +191,7 @@ Sie erstellen eine Verknüpfung zwischen zwei Aktivitäten, indem Sie die Quella
 
 Wählen Sie die Verknüpfung aus, um ihre Eigenschaften im Blatt "Konfiguration" zu konfigurieren. Hierzu gehört beispielsweise der Verknüpfungstyp, der in der folgenden Tabelle beschrieben wird:
 
-| Verknüpfungstyp | BESCHREIBUNG |
+| Verknüpfungstyp | Description |
 |:--- |:--- |
 | Pipeline |Die Zielaktivität wird einmal für jede Objektausgabe der Quellaktivität ausgeführt. Die Zielaktivität wird nicht ausgeführt, wenn die Quellaktivität zu keiner Ausgabe führt. Die Ausgabe der Quellaktivität steht als Objekt zur Verfügung. |
 | Sequenz |Die Zielaktivität wird nur einmal ausgeführt. Sie empfängt ein Array aus Objekten von der Quellaktivität. Die Ausgabe der Quellaktivität steht als Array aus Objekten zur Verfügung. |
@@ -322,12 +322,12 @@ Daraufhin wird das Steuerelement **Eingabe und Ausgabe** geöffnet, in dem Sie e
 
 Jeder Eingabeparameter wird durch die Eigenschaften in der folgenden Tabelle definiert:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 |:--- |:--- |
-| NAME |Der eindeutige Name des Parameters. Dieser darf nur aus alphanumerischen Zeichen bestehen und darf keine Leerzeichen enthalten. |
-| BESCHREIBUNG |Eine optionale Beschreibung für den Eingabeparameter. |
-| Type |Der für den Parameterwert erwartete Datentyp. Das Azure-Portal bietet ein geeignetes Steuerelement zum Eingeben des jeweiligen Datentyps für jeden Parameter. |
-| Erforderlich |Gibt an, ob ein Wert für den Parameter bereitgestellt werden muss. Das Runbook kann nicht gestartet werden, wenn der Wert für einen erforderlichen Parameter fehlt, für den kein Standardwert definiert wurde. |
+| Name |Der eindeutige Name des Parameters. Dieser darf nur aus alphanumerischen Zeichen bestehen und darf keine Leerzeichen enthalten. |
+| Description |Eine optionale Beschreibung für den Eingabeparameter. |
+| type |Der für den Parameterwert erwartete Datentyp. Das Azure-Portal bietet ein geeignetes Steuerelement zum Eingeben des jeweiligen Datentyps für jeden Parameter. |
+| Mandatory |Gibt an, ob ein Wert für den Parameter bereitgestellt werden muss. Das Runbook kann nicht gestartet werden, wenn der Wert für einen erforderlichen Parameter fehlt, für den kein Standardwert definiert wurde. |
 | Standardwert |Gibt an, welcher Wert für den Parameter verwendet wird, wenn kein Wert bereitgestellt wird. Dieser Wert kann entweder "Null" lauten oder einen spezifischen Wert angeben. |
 
 ### <a name="runbook-output"></a>Runbookausgabe

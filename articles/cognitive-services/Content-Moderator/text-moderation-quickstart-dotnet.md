@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Analysieren von Textinhalten in C# – Content Moderator'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie Text unter Verwendung des Content Moderator SDK für .NET auf verschiedene anstößige Inhalte analysieren.
 services: cognitive-services
 author: sanjeev3
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 45ac641948531aa27334762704eba3333aebba4d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756534"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564322"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Schnellstart: Analysieren von Text auf anstößige Inhalte in C#
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
-1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**, und nennen Sie es **TextModeration**. 
+1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)** , und nennen Sie es **TextModeration**. 
 1. Sollte Ihre Projektmappe noch andere Projekte enthalten, wählen Sie dieses Projekt als das alleinige Startprojekt aus.
 1. Rufen Sie die erforderlichen NuGet-Pakete ab. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, wählen Sie **NuGet-Pakete verwalten** aus, suchen Sie nach den folgenden Paketen, und installieren Sie sie:
     - `Microsoft.Azure.CognitiveServices.ContentModerator`
@@ -57,11 +57,11 @@ Fügen Sie der Datei *Program.cs* den folgenden Code hinzu, um einen Content Mod
 
 ### <a name="set-up-input-and-output-targets"></a>Einrichten von Ein- und Ausgabezielen
 
-Fügen Sie der Klasse **Program** in _Program.cs_ die folgenden statischen Felder hinzu. Diese geben die Dateien für die Eingabe (Textinhalte) und die Ausgabe (JSON-Inhalte) an.
+Fügen Sie der Klasse **Program** in _Program.cs_ die folgenden statischen Felder hinzu. Diese Felder dienen zum Angeben der Dateien für die Eingabe (Textinhalte) und die Ausgabe (JSON-Inhalte).
 
 [!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/text-moderation-quickstart-dotnet.cs?range=15-19)]
 
-Sie müssen die Eingabedatei *TextFile.txt* erstellen und ihren Pfad entsprechend aktualisieren. (Relative Pfade sind relativ zum Ausführungsverzeichnis.) Öffnen Sie _TextFile.txt_, und fügen Sie den zu moderierenden Text hinzu. In dieser Schnellstartanleitung wird folgender Beispieltext verwendet:
+Sie müssen die Eingabedatei *TextFile.txt* erstellen und ihren Pfad aktualisieren. (Pfade sind relativ zum Ausführungsverzeichnis.) Öffnen Sie _TextFile.txt_, und fügen Sie den zu moderierenden Text hinzu. In dieser Schnellstartanleitung wird folgender Beispieltext verwendet:
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.

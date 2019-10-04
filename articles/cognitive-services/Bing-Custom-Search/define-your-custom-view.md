@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Bing-Suche | Microsoft-Dokumentation
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Enthält Informationen zum Erstellen einer Website und vertikaler Suchdienste
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: c4cb93e39a67e13646a339af6ac999a8fd96b383
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1827bfdbebaf1ffa17c7c631a94aa8fc6471d13b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234814"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854097"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Bing-Suche
 
@@ -27,7 +27,7 @@ Verwenden Sie beim Definieren Ihrer Websegmente Folgendes:
 
 | Segmentname | BESCHREIBUNG                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domäne     | Ein Domänensegment umfasst alle Inhalte, die innerhalb einer Internetdomäne gefunden werden. Beispiel: `www.microsoft.com`. Das Weglassen von `www.` bewirkt, dass Bing auch die Unterdomänen der Domäne durchsucht. Wenn Sie beispielsweise  `microsoft.com` angeben, gibt Bing auch Ergebnisse für  `support.microsoft.com` oder `technet.microsoft.com` zurück. |
+| Domäne     | Ein Domänensegment umfasst alle Inhalte, die innerhalb einer Internetdomäne gefunden werden. Beispiel: `www.microsoft.com`. Das Weglassen von `www.` bewirkt, dass Bing auch die Unterdomänen der Domäne durchsucht. Wenn Sie z.B. `microsoft.com` angeben, gibt Bing auch Ergebnisse von `support.microsoft.com` oder `technet.microsoft.com` zurück. |
 | Unterseite    | Ein Unterseitensegment umfasst sämtliche Inhalte, die auf der Unterseite und in den Pfaden darunter gefunden werden. Sie können maximal zwei Unterseiten im Pfad angeben. Zum Beispiel, `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | Webseite    | Ein Webseitensegment kann nur diese Webseite in eine benutzerdefinierten Suche einschließen. Sie können optional angeben, ob Unterseiten enthalten sein sollen.                                                                                                                                                                                  |
 
@@ -74,7 +74,7 @@ Nach dem Hinzufügen von Websegmenten zur Liste **Aktiv** werden im Portal für 
 
 ## <a name="search-for-images-and-videos"></a>Suchen nach Bildern und Videos
 
-Sie können nach Bildern und Videos auf ähnliche Weise wie nach Webinhalten suchen, indem Sie die [API für die benutzerdefinierte Bing-Bildersuche](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference) bzw. die [API für die benutzerdefinierte Bing-Videosuche](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference) verwenden. Sie können diese Ergebnisse mit der [gehosteten Benutzeroberfläche](hosted-ui.md) oder den APIs anzeigen. 
+Sie können nach Bildern und Videos auf ähnliche Weise wie nach Webinhalten suchen, indem Sie die [API für die benutzerdefinierte Bing-Bildersuche](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) bzw. die [API für die benutzerdefinierte Bing-Videosuche](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) verwenden. Sie können diese Ergebnisse mit der [gehosteten Benutzeroberfläche](hosted-ui.md) oder den APIs anzeigen. 
 
 Diese APIs ähneln den APIs für die nicht benutzerdefinierte [Bing-Bildersuche](../Bing-Image-Search/overview.md) und [Bing-Videosuche](../Bing-Video-Search/search-the-web.md). Es wird aber das gesamte Web durchsucht, und der Abfrageparameter `customConfig` ist nicht erforderlich. In diesen Dokumentationssätzen finden Sie auch weitere Informationen zur Arbeit mit Bildern und Videos. 
 
@@ -83,7 +83,7 @@ Diese APIs ähneln den APIs für die nicht benutzerdefinierte [Bing-Bildersuche]
 Sie können Ihre Suchinstanz im Vorschaubereich auf der rechten Seite testen, um Suchabfragen zu übermitteln und die Ergebnisse anzuzeigen. 
 
 1. Wählen Sie unterhalb des Suchfelds die Option **Meine Instanz**. Sie können die Ergebnisse Ihrer Suchbenutzeroberfläche mit Bing vergleichen, indem Sie die Option **Bing** wählen. 
-2. Wählen Sie einen sicheren Suchfilter und den zu durchsuchenden Markt aus (siehe [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters)).
+2. Wählen Sie einen sicheren Suchfilter und den zu durchsuchenden Markt aus (siehe [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
 3. Geben Sie eine Abfrage ein, und drücken Sie die EINGABETASTE, oder klicken Sie auf das Suchsymbol, um die Ergebnisse aus der aktuellen Konfiguration anzuzeigen. Sie können den Typ der von Ihnen durchgeführten Suche ändern, indem Sie auf **Web**, **Bild** oder **Video** klicken, um die entsprechenden Ergebnisse abzurufen. 
 
 <a name="adjustrank"></a>
@@ -118,9 +118,9 @@ Im Portal können Sie für bestimmte Suchbegriffe auch URLs oben in den Sucherge
 
 Sie haben zwei Möglichkeiten, um eine Webseite im oberen Bereich anzuheften:
 
-* Geben Sie auf der Registerkarte  **Angeheftet**  die URL der Webseite, die oben angeheftet werden soll, und die entsprechende Abfrage ein.
+* Geben Sie auf der **angehefteten** Registerkarte die URL der Webseite, die oben angeheftet werden soll, und die zugehörige Abfrage ein.
 
-* Geben Sie im Bereich **Vorschau** eine Suchabfrage ein, und klicken Sie auf „Suchen“. Suchen Sie nach der Webseite, die Sie für Ihre Abfrage anheften möchten, und klicken Sie auf  **Oben anheften**. Die Webseite und die Abfrage werden der Liste **Angeheftet** hinzugefügt.
+* Geben Sie im Bereich **Vorschau** eine Suchabfrage ein, und klicken Sie auf „Suchen“. Suchen Sie die Webseite, die Sie für die Abfrage anheften möchten, und klicken Sie auf **Oben anheften**. Die Webseite und die Abfrage werden der Liste **Angeheftet** hinzugefügt.
 
 ### <a name="specify-the-pins-match-condition"></a>Angeben der Übereinstimmungsbedingung für das Anheften
 
@@ -159,5 +159,5 @@ Wenn Sie die benutzerdefinierte Suche auf der entsprechenden Ebene abonniert hab
 
 - [Aufrufen der benutzerdefinierten Suche](./search-your-custom-view.md)
 - [Konfigurieren der gehosteten Benutzeroberfläche](./hosted-ui.md)
-- [Verwenden von Decorator-Markierungen zum Hervorheben von Text](./hit-highlighting.md)
+- [Verwenden von Decorator-Markierungen zum Hervorheben von Text](../bing-web-search/hit-highlighting.md)
 - [Einteilen von Webseiten](./page-webpages.md)

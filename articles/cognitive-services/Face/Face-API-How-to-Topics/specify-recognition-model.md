@@ -6,16 +6,16 @@ services: cognitive-services
 author: longl
 manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: 33348e637143b923719425b9674f99a475d848d9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 23c54a69f709ec97d895ed5965841e43ebdc560c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58806648"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306547"
 ---
 # <a name="specify-a-face-recognition-model"></a>Angeben eines Gesichtserkennungsmodells
 
@@ -45,15 +45,14 @@ Wenn Sie die API [Face – Detect] (Gesicht – Erkennen) verwenden, weisen Sie 
 
 Optional können Sie den Parameter _returnRecognitionModel_ (Standardwert **false**) angeben, um festzulegen, ob _recognitionModel_ als Antwort zurückgegeben werden soll. Eine Anforderungs-URL für die REST-API [Face – Detect] sieht also wie folgt aus:
 
-`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]
-&subscription-key=<Subscription key>`
+`https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel]&subscription-key=<Subscription key>`
 
 Wenn Sie die Clientbibliothek verwenden, können Sie den Wert für `recognitionModel` zuweisen, indem Sie eine Zeichenfolge übergeben, die die Version darstellt.
 Wenn Sie diesen Wert nicht zuweisen, wird die Standardmodellversion (_recognition_01_) verwendet. Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 
 ```csharp
-string imageUrl = "http://news.microsoft.com/ceo/assets/photos/06_web.jpg";
-var faces = await faceServiceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_02", returnRecognitionModel: true);
+string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
+var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recognitionModel: "recognition_02", returnRecognitionModel: true);
 ```
 
 ## <a name="identify-faces-with-specified-model"></a>Identifizieren von Gesichtern mit dem angegebenen Modell
@@ -67,7 +66,7 @@ Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 ```csharp
 // Create an empty PersonGroup with "recognition_02" model
 string personGroupId = "mypersongroupid";
-await faceServiceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
+await faceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group Name", recognitionModel: "recognition_02");
 ```
 
 In diesem Code wird ein **PersonGroup**-Objekt mit der ID `mypersongroupid` erstellt, das so eingerichtet ist, dass es das Modell _recognition_02_ zum Extrahieren von Gesichtsmerkmalen verwendet.
@@ -83,7 +82,7 @@ Sie können auch ein Erkennungsmodell für die Ähnlichkeitssuche angeben. Sie k
 Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 
 ```csharp
-await faceServiceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
+await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
 ```
 
 Dieser Code erstellt eine Gesichterliste namens `My face collection`, die das Modell _recognition_02_ zum Extrahieren der Merkmale verwendet. Wenn Sie diese Gesichterliste für ein neu erkanntes Gesicht nach ähnlichen Gesichtern durchsuchen, dann muss dieses Gesicht mit dem Modell _recognition_02_ erkannt worden sein ([Face – Detect]). Wie im vorherigen Abschnitt muss das Modell konsistent sein.
@@ -108,7 +107,8 @@ Wenn Sie normalerweise einen Übereinstimmungsschwellenwert angeben (ein Wert zw
 
 In diesem Artikel haben Sie gelernt, wie Sie das Erkennungsmodell für die Verwendung mit verschiedenen APIs für den Gesichtserkennungsdienst festlegen. Als nächstes befolgen Sie einen Schnellstart zu den ersten Schritten mit der Gesichtserkennung.
 
-* [Gesichtserkennung in einem Bild](../quickstarts/csharp-detect-sdk.md)
+* [.NET SDK zur Gesichtserkennung](../Quickstarts/csharp-sdk.md)
+* [Python SDK zur Gesichtserkennung](../Quickstarts/python-sdk.md)
 
 [Face – Detect]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face – Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

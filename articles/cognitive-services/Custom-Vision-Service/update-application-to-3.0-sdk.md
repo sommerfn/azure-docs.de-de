@@ -1,6 +1,6 @@
 ---
 title: Migrieren Ihres Projekts zur 3.0 API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Custom Vision-Projekte von der vorherigen Version der API zur 3.0 API migrieren können.
 services: cognitive-services
 author: areddish
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
-ms.openlocfilehash: 9dd473aadd7123cafc27209f5c34322fdbcffb71
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 353fc0a2d8396def17b8e23d9a1c685c755349c5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044005"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68560885"
 ---
 # <a name="migrate-to-the-30-api"></a>Migrieren zur 3.0 API
 
@@ -32,8 +32,8 @@ In diesem Leitfaden erfahren Sie, wie Sie Ihre Projekte aktualisieren können, u
 
 Die APIs der Version 2.x verwendeten denselben Vorhersageaufruf sowohl für Bildklassifizierer als auch für Objekterkennungsprojekte. Beide Projekttypen waren für die Aufrufe **PredictImage** und **PredictImageUrl** zulässig. Ab 3.0 wurde diese API aufgeteilt, sodass Sie den Projekttyp an den Aufruf anpassen müssen:
 
-* Verwenden Sie **[ClassifyImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)** und **[ClassifyImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c14)**, um Vorhersagen für Bildklassifizierungsprojekte zu erhalten.
-* Verwenden Sie **[DetectImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c19)** und **[DetectImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c18)**, um Vorhersagen für Objekterkennungsprojekte zu erhalten.
+* Verwenden Sie **[ClassifyImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)** und **[ClassifyImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c14)** , um Vorhersagen für Bildklassifizierungsprojekte zu erhalten.
+* Verwenden Sie **[DetectImage](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c19)** und **[DetectImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c18)** , um Vorhersagen für Objekterkennungsprojekte zu erhalten.
 
 ## <a name="use-the-new-iteration-publishing-workflow"></a>Verwenden des neuen Workflows zur Iterationsveröffentlichung
 
@@ -51,7 +51,7 @@ Sobald eine Iteration trainiert wurde, können Sie sie mit der Methode **[Publis
 > [!TIP]
 > Sie können diese Informationen auch über das [Azur-Portal](https://portal.azure.com) abrufen, indem Sie zur Custom Vision-Vorhersageressource wechseln und **Eigenschaften** auswählen.
 
-Nachdem Ihre Iteration veröffentlicht wurde, kann sie von Apps zur Vorhersage verwendet werden, indem sie den Namen in ihrem Aufruf der Vorhersage-API angeben. Verwenden Sie die API **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)**, um eine Iteration für Vorhersageaufrufe nicht verfügbar zu machen.
+Nachdem Ihre Iteration veröffentlicht wurde, kann sie von Apps zur Vorhersage verwendet werden, indem sie den Namen in ihrem Aufruf der Vorhersage-API angeben. Verwenden Sie die API **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)** , um eine Iteration für Vorhersageaufrufe nicht verfügbar zu machen.
 
 ## <a name="additional-export-options"></a>Zusätzliche Exportoptionen
 

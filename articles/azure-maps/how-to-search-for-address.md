@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8ab2c73030c0860fc709a774b9fd84d20a6d7c99
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a41a811e9313f79c9c3165e02cb5eaa4353b65ab
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785571"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914467"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Suchen nach einer Adresse mit dem Suchdienst von Azure Maps
 
@@ -28,7 +28,7 @@ In diesem Artikel wird Folgendes behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Maps-Konto mit zugehörigem Schlüssel. Informationen zum Erstellen eines Kontos und Abrufen eines Schlüssels finden Sie unter [Verwalten Ihres Azure Maps-Kontos und der dazugehörigen Schlüssel](how-to-manage-account-keys.md).
+Um die Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Maps-Konto mit zugehörigem Schlüssel. Informationen zum Erstellen eines Kontos finden Sie in den Anweisungen zum [Verwalten von Konten](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account), und führen Sie die Schritte unter [Abrufen des Primärschlüssels](./tutorial-search-location.md#getkey) aus, um einen primären Abonnementschlüssel für Ihr Konto abzurufen.
 
 In diesem Artikel wird die [Postman-App](https://www.getpostman.com/apps) zum Erstellen von REST-Aufrufen verwendet. Sie können jedoch auch Ihre bevorzugte API-Entwicklungsumgebung verwenden.
 
@@ -50,7 +50,7 @@ Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhn
     |---------------|------------------------------------------------|
     | HTTP-Methode | GET |
     | Anfrage-URL | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
-    | Autorisierung | No Auth |
+    | Authorization | No Auth |
 
     Das Attribut **json** im URL-Pfad legt das Antwortformat fest. In diesem Artikel wird zur einfachen Handhabung und besseren Lesbarkeit durchgängig JSON verwendet. Sie finden die verfügbaren Antwortformate in der Definition für **Get Search Fuzzy** der [Referenz zur funktionalen API von Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
 
@@ -93,7 +93,7 @@ Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhn
 
 Sie können eine vollständige oder unvollständige Adresse an die API für die Adresssuche übergeben. Sie erhalten dann eine Antwort, die detaillierte Adresseigenschaften, z.B. die Gemeinde oder Wohnsiedlung, sowie Positionswerte mit Breiten- und Längengraden umfasst.
 
-1. Klicken Sie in Postman auf **New Request (Neue Anforderung)** | **GET request (GET-Anforderung)**, und nennen Sie sie **Address Search** (Adresssuche).
+1. Klicken Sie in Postman auf **New Request (Neue Anforderung)**  | **GET request (GET-Anforderung)** , und nennen Sie sie **Address Search** (Adresssuche).
 2. Wählen Sie auf der Registerkarte „Builder“ die HTTP-Methode **GET** aus, geben Sie die Anforderungs-URL für Ihren API-Endpunkt ein, und wählen Sie ggf. ein Autorisierungsprotokoll aus.
 
     ![Adresssuche](./media/how-to-search-for-address/address_search_url.png)
@@ -102,7 +102,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
     |---------------|------------------------------------------------|
     | HTTP-Methode | GET |
     | Anfrage-URL | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
-    | Autorisierung | No Auth |
+    | Authorization | No Auth |
 
 3. Klicken Sie auf **Params** (Parameter), und geben Sie die folgenden Schlüssel-Wert-Paare zur Verwendung als Abfrage- oder Pfadparameter in der Anforderungs-URL ein:
   
@@ -133,7 +133,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>Suchen nach einer Adresse mithilfe der inversen Adresssuche
 
-1. Klicken Sie in Postman auf **New Request (Neue Anforderung)** | **GET request (GET-Anforderung)**, und nennen Sie sie **Reverse Address Search** (Inverse Adresssuche).
+1. Klicken Sie in Postman auf **New Request (Neue Anforderung)**  | **GET request (GET-Anforderung)** , und nennen Sie sie **Reverse Address Search** (Inverse Adresssuche).
 
 2. Wählen Sie auf der Registerkarte „Builder“ die HTTP-Methode **GET** aus, und geben Sie die Anforderungs-URL für Ihren API-Endpunkt ein.
   
@@ -143,7 +143,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
     |---------------|------------------------------------------------|
     | HTTP-Methode | GET |
     | Anfrage-URL | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
-    | Autorisierung | No Auth |
+    | Authorization | No Auth |
   
 3. Klicken Sie auf **Params** (Parameter), und geben Sie die folgenden Schlüssel-Wert-Paare zur Verwendung als Abfrage- oder Pfadparameter in der Anforderungs-URL ein:
   
@@ -193,7 +193,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
   
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>Suchen nach der Querstraße mithilfe der inversen Adresssuche für Querstraßen
 
-1. Klicken Sie in Postman auf **New Request (Neue Anforderung)** | **GET request (GET-Anforderung)**, und nennen Sie sie **Reverse Address Cross Street Search** (Inverse Adresssuche für Querstraßen).
+1. Klicken Sie in Postman auf **New Request (Neue Anforderung)**  | **GET request (GET-Anforderung)** , und nennen Sie sie **Reverse Address Cross Street Search** (Inverse Adresssuche für Querstraßen).
 
 2. Wählen Sie auf der Registerkarte „Builder“ die HTTP-Methode **GET** aus, und geben Sie die Anforderungs-URL für Ihren API-Endpunkt ein.
   
@@ -203,7 +203,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
     |---------------|------------------------------------------------|
     | HTTP-Methode | GET |
     | Anfrage-URL | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
-    | Autorisierung | No Auth |
+    | Authorization | No Auth |
   
 3. Klicken Sie auf **Params** (Parameter), und geben Sie die folgenden Schlüssel-Wert-Paare zur Verwendung als Abfrage- oder Pfadparameter in der Anforderungs-URL ein:
   

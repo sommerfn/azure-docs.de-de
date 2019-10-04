@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: 9ee484971e217b0ca4dd7ad855e9e6dc3313e5d4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230334"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60684757"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Erstellen bedingter Anweisungen zum Steuern von Workflowaktionen in Azure Logic Apps
 
@@ -39,7 +39,7 @@ Angenommen Sie verfügen über eine Logik-App, die zu viele E-Mails sendet, wenn
 
 1. Fügen Sie an der gewünschten Position eine Bedingung hinzu. 
 
-   Um eine Bedingung zwischen Schritten hinzuzufügen, bewegen Sie den Zeiger auf den Pfeil an der Position, an der Sie die Bedingung hinzufügen möchten. Wählen Sie das daraufhin angezeigte **Pluszeichen** (**+**) aus, und wählen Sie dann **Aktion hinzufügen** aus. Beispiel: 
+   Um eine Bedingung zwischen Schritten hinzuzufügen, bewegen Sie den Zeiger auf den Pfeil an der Position, an der Sie die Bedingung hinzufügen möchten. Wählen Sie das daraufhin angezeigte **Pluszeichen** ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus. Beispiel:
 
    ![Hinzufügen einer Aktion zwischen Schritten](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
@@ -62,7 +62,7 @@ Angenommen Sie verfügen über eine Logik-App, die zu viele E-Mails sendet, wenn
    Wählen Sie für dieses Beispiel die Option **enthält** aus. 
 
    1. Geben Sie im rechten Feld einen Wert oder ein Feld als Suchkriterium an. 
-   Geben Sie für dieses Beispiel die Zeichenfolge **Microsoft** an.
+   Geben Sie für dieses Beispiel diese Zeichenfolge an: **Microsoft**
 
    Hier ist die vollständige Bedingung:
 
@@ -72,7 +72,7 @@ Angenommen Sie verfügen über eine Logik-App, die zu viele E-Mails sendet, wenn
    Um eine Gruppe mit Unterbedingungen hinzuzufügen, wählen Sie **Hinzufügen** > **Gruppe hinzufügen** aus. 
    Um vorhandene Zeilen zu gruppieren, aktivieren Sie die Kontrollkästchen für die betreffenden Zeilen, wählen Sie für eine beliebige Zeile die Schaltfläche mit den Auslassungspunkten (...) aus, und wählen Sie dann **Gruppe erstellen** aus.
 
-1. Fügen Sie unter **Bei TRUE** und **Bei FALSE** die auszuführenden Schritte basierend darauf hinzu, ob die Bedingung erfüllt ist. Beispiel: 
+1. Fügen Sie unter **Bei TRUE** und **Bei FALSE** die auszuführenden Schritte basierend darauf hinzu, ob die Bedingung erfüllt ist. Beispiel:
 
    ![Bedingung mit „Bei TRUE“- und „Bei FALSE“-Pfaden](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 

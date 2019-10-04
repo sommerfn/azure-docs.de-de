@@ -3,17 +3,18 @@ title: 'Tutorial: Erstellen von Containerimages in der Cloud –Azure Container 
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Container Registry Tasks (ACR Tasks) ein Docker-Containerimage in Azure erstellen und anschließend in Azure Container Instances bereitstellen.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ed5df09d492bbf6123e76f73717a1738a23a066c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 091c1a4c9e6adae69ec1c8b3e507624b9f5e6a96
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893706"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057493"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks
 
@@ -34,7 +35,7 @@ In den weiteren Tutorials erfahren Sie, wie Sie mithilfe von Tasks Containerimag
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Azure CLI lokal verwenden möchten, muss bei Ihnen mindestens die Azure CLI-Version **2.0.46** installiert sein, und Sie müssen mit [az login][az-login] angemeldet sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und dem Upgrade der CLI finden Sie bei Bedarf unter [Installieren von Azure CLI][azure-cli].
+Wenn Sie die Azure CLI lokal verwenden möchten, muss bei Ihnen mindestens die Azure CLI-Version **2.0.46** installiert sein, und Sie müssen mit [az login][az-login] angemeldet sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Installieren und Aktualisieren der Befehlszeilenschnittstelle finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -74,7 +75,7 @@ Die Befehle in dieser Tutorialreihe sind für die Bash-Shell formatiert. Falls S
 
 Nachdem Sie den Quellcode auf Ihren Computer heruntergeladen haben, können Sie mit den folgenden Schritten eine Containerregistrierung und anschließend das Containerimage mit ACR Tasks erstellen.
 
-In den Tutorials dieser Reihe werden Shell-Umgebungsvariablen verwendet, um das Ausführen der Beispielbefehle zu vereinfachen. Führen Sie den folgenden Befehl aus, um die Variable `ACR_NAME` festzulegen. Ersetzen Sie **\<registry-name\>** durch einen eindeutigen Namen für Ihre neue Containerregistrierung. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Da die anderen Ressourcen, die Sie in diesem Tutorial erstellen, auf diesem Namen basieren, sollte die Änderung dieser ersten Variablen ausreichend sein.
+In den Tutorials dieser Reihe werden Shell-Umgebungsvariablen verwendet, um das Ausführen der Beispielbefehle zu vereinfachen. Führen Sie den folgenden Befehl aus, um die Variable `ACR_NAME` festzulegen. Ersetzen Sie **\<registry-name\>** durch einen eindeutigen Namen für Ihre neue Containerregistrierung. Der Registrierungsname muss innerhalb von Azure eindeutig sein, darf nur Kleinbuchstaben enthalten und muss aus zwischen 5 und 50 alphanumerischen Zeichen bestehen. Da die anderen Ressourcen, die Sie in diesem Tutorial erstellen, auf diesem Namen basieren, sollte die Änderung dieser ersten Variablen ausreichend sein.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>

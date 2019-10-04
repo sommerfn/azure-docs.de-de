@@ -6,20 +6,23 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: c06203cfd7537dd4c9bc35c75a3f21d12bf64d26
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6a71647d452597c84e0df1beb6e9c6c3932d171b
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57556322"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639929"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Erstellen von Echtzeit-Apps mit Azure Functions und Azure SignalR
 
 Da es sich beim Azure SignalR-Dienst und bei Azure Functions um vollständig verwaltete, hochskalierbare Dienste handelt, die es Ihnen ermöglichen, sich auf die Erstellung von Anwendungen zu konzentrieren, anstatt die Infrastruktur zu verwalten, ist es üblich, die beiden Dienste gemeinsam zu nutzen, um Echtzeitkommunikation in einer [serverlosen](https://azure.microsoft.com/solutions/serverless/) Umgebung bereitzustellen.
 
+> [!NOTE]
+> Im interaktiven Tutorial [Aktivieren automatischer Updates in einer Webanwendung mithilfe von Azure Functions und SignalR Service](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr) erfahren Sie, wie Sie SignalR und Azure Functions gemeinsam verwenden.
+
 ## <a name="integrate-real-time-communications-with-azure-services"></a>Integrieren von Echtzeitkommunikation in Azure-Dienste
 
-Azure Functions ermöglichen es Ihnen, Code in [mehreren Sprachen](../azure-functions/supported-languages.md) zu schreiben (einschließlich JavaScript, C# und Java), der bei jedem Ereignis in der Cloud ausgelöst wird. Beispiele für diese Ereignisse sind:
+Azure Functions ermöglichen es Ihnen, Code in [mehreren Sprachen](../azure-functions/supported-languages.md) zu schreiben (einschließlich JavaScript, Python, C# und Java), der bei jedem Ereignis in der Cloud ausgelöst wird. Beispiele für diese Ereignisse sind:
 
 * HTTP- und Webhookanforderungen
 * Periodische Timer
@@ -63,9 +66,10 @@ Der SignalR-Dienst ermöglicht das Senden von Nachrichten an alle Clients oder n
 
 In diesem Artikel haben Sie einen Überblick darüber erhalten, wie Sie Azure Functions mit dem SignalR-Dienst verwenden können, um eine breite Palette von serverlosen Messagingszenarien in Echtzeit zu ermöglichen.
 
-Vollständige Details zur kombinierten Verwendung von Azure Functions und SignalR SignalR Service finden Sie im folgenden Leitfaden.
+Vollständige Details zur kombinierten Verwendung von Azure Functions und SignalR Service finden Sie in den folgenden Ressourcen:
 
 * [Azure Functions-Entwicklung und -Konfiguration mit SignalR Service](signalr-concept-serverless-development-config.md)
+* [Aktivieren automatischer Updates in einer Webanwendung mithilfe von Azure Functions und SignalR Service](https://docs.microsoft.com/learn/modules/automatic-update-of-a-webapp-using-azure-functions-and-signalr)
 
 Führen Sie einen dieser Schnellstarts aus, um mehr zu erfahren.
 

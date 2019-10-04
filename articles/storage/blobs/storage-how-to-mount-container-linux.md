@@ -1,23 +1,23 @@
 ---
 title: Einbinden von Azure Blob Storage als Dateisystem unter Linux | Microsoft-Dokumentation
 description: Einbinden eines Azure Blob Storage-Containers mit FUSE unter Linux
-services: storage
-author: seguler
+author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 2/1/2019
-ms.author: seguler
-ms.openlocfilehash: 1e26eb213ad2613877c46758299c2e962894d358
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.author: normesta
+ms.reviewer: dineshm
+ms.openlocfilehash: 88002999baacf38b4afd40b574686457c48546e4
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698001"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845025"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Einbinden von Blob Storage als Dateisystem mit blobfuse
 
 ## <a name="overview"></a>Übersicht
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) ist ein virtueller Dateisystemtreiber für Azure Blob Storage. Sie können Blobfuse verwenden, um über das Linux-Dateisystem auf die vorhandenen Blockblobdaten in Ihrem Speicherkonto zuzugreifen. Azure Blob Storage ist ein Objektspeicherdienst und verfügt nicht über einen hierarchischen Namespace. Blobfuse stellt diesen Namespace mithilfe des Schemas für virtuelle Verzeichnisse bereit. Dabei wird als Trennzeichen ein Schrägstrich (/) verwendet.  
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) ist ein virtueller Dateisystemtreiber für Azure Blob Storage. Sie können Blobfuse verwenden, um über das Linux-Dateisystem auf die vorhandenen Blockblobdaten in Ihrem Speicherkonto zuzugreifen. Blobfuse verwendet das Schema für virtuelle Verzeichnisse mit einem Schrägstrich (/) als Trennzeichen.  
 
 In diesem Handbuch wird gezeigt, wie Sie blobfuse verwenden, einen Blobspeichercontainer unter Linux einbinden und auf Daten zugreifen. Weitere Informationen zu blobfuse finden Sie im [blobfuse-Repository](https://github.com/Azure/azure-storage-fuse).
 
@@ -29,7 +29,7 @@ In diesem Handbuch wird gezeigt, wie Sie blobfuse verwenden, einen Blobspeicherc
 ## <a name="install-blobfuse-on-linux"></a>Installieren von blobfuse unter Linux
 blobfuse-Binärdateien befinden sich für Ubuntu- und RHEL-Distributionen in den [Microsoft-Softwarerepositorys für Linux](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software). Um Blobfuse in diesen Distributionen zu installieren, konfigurieren Sie eines der Repositorys aus der Liste. Sie können die Binärdateien auch gemäß den [Azure Storage-Installationsschritten](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) aus dem Quellcode erstellen, wenn für Ihre Distribution keine Binärdateien verfügbar sind.
 
-Blobfuse unterstützt die Installation unter Ubuntu 14.04 und 16.04. Führen Sie diesen Befehl aus, um sicherzustellen, dass Sie eine dieser Versionen bereitgestellt haben:
+Blobfuse unterstützt die Installation unter Ubuntu 14.04, 16.04 und 18.04. Führen Sie diesen Befehl aus, um sicherzustellen, dass Sie eine dieser Versionen bereitgestellt haben:
 ```
 lsb_release -a
 ```
@@ -51,11 +51,11 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-Analog dazu ändern Sie die URL in `.../ubuntu/16.04/...` so, dass sie auf eine Ubuntu 16.04-Distribution verweist.
+Ändern Sie auf ähnliche Weise die URL in `.../ubuntu/16.04/...` oder `.../ubuntu/18.04/...`, um auf eine andere Ubuntu-Version zu verweisen.
 
 ### <a name="install-blobfuse"></a>Installieren von blobfuse
 
-In einer Ubuntu-/Debian-Distribution:
+In einer Ubuntu/Debian-Distribution:
 ```bash
 sudo apt-get install blobfuse
 ```
@@ -85,7 +85,7 @@ In Azure können Sie die auf Ihren virtuellen Computern verfügbaren kurzlebigen
 
 Stellen Sie sicher, dass Benutzer auf den temporären Pfad zugreifen können:
 ```bash
-sudo mkdir /mnt/resource/blobfusetmp
+sudo mkdir /mnt/resource/blobfusetmp -p
 sudo chown <youruser> /mnt/resource/blobfusetmp
 ```
 
@@ -97,8 +97,15 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
+`accountName` ist das Präfix für Ihr Speicherkonto – nicht die vollständige URL.
 
-Schränken Sie nach der Erstellung dieser Datei unbedingt den Zugriff ein, damit andere Benutzer sie nicht lesen können.
+Erstellen Sie diese Datei mit:
+
+```
+touch ~/fuse_connection.cfg
+```
+
+Nachdem Sie diese Datei erstellt und bearbeitet haben, schränken Sie unbedingt den Zugriff darauf ein, damit andere Benutzer sie nicht lesen können.
 ```bash
 chmod 600 fuse_connection.cfg
 ```

@@ -4,22 +4,21 @@ description: Herstellen von Hochverfügbarkeit für SAP HANA in Azure (große In
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66973ce78004d0f29d08264869f166202aaaf109
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011850"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212533"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Hochverfügbarkeitskonfiguration unter SUSE mit STONITH
 Dieses Dokument enthält detaillierte Schritt-für-Schritt-Anweisungen zur Konfiguration der Hochverfügbarkeit unter dem Betriebssystem SUSE mit dem STONITH-Gerät.
@@ -258,7 +257,7 @@ Führen Sie den Befehl *crm_mon* aus, um sicherzustellen, dass **beide** Knoten 
 ```
 crm_mon
 ```
-![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) Sie können sich auch bei hawk anmelden, um den Clusterstatus *https://<node IP>:7630* zu überprüfen. Der Standardbenutzer lautet „hacluster“ und das Kennwort „linux“. Bei Bedarf können Sie das Kennwort mit dem Befehl *passwd* ändern.
+![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) Sie können sich auch bei hawk anmelden, um den Clusterstatus *https://\<Knoten-IP>:7630* zu überprüfen. Der Standardbenutzer lautet „hacluster“ und das Kennwort „linux“. Bei Bedarf können Sie das Kennwort mit dem Befehl *passwd* ändern.
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. Konfigurieren von Clustereigenschaften und -ressourcen 
 In diesem Abschnitt werden die Schritte zum Konfigurieren von Clusterressourcen beschrieben.
@@ -323,7 +322,7 @@ crm configure load update crm-vip.txt
 Beim Ausführen des Befehls *crm_mon* werden die zwei Ressourcen dort angezeigt.
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-Darüber hinaus können Sie den Status unter *https://<node IP address>:7630/cib/live/state* sehen.
+Darüber hinaus können Sie den Status unter *https://\<IP-Adresse des Knotens:7630/cib/live/state* sehen.
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
@@ -334,11 +333,12 @@ Service pacemaker stop
 ```
 Beenden Sie nun den Pacemaker-Dienst auf **node2** und die Ressourcen, für die ein Failover auf **node1** ausgeführt wurde.
 
-**Vor dem Failover**
-![Before-failover.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)
-**Nach dem Failover**
-![after-failover.png](media/HowToHLI/HASetupWithStonith/after-failover.png)
-![crm-mon-after-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)
+**Vor dem Failover**  
+![Before-failover.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+
+**Nach dem Failover**  
+![after-failover.png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-mon-after-failover.png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
 ## <a name="9-troubleshooting"></a>9. Problembehandlung

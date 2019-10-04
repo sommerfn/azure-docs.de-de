@@ -1,36 +1,36 @@
 ---
 title: Verwalten des Benutzerzugriffs in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Minderjährige identifizieren, das Geburtsdatum und das Land erfassen und in Ihrer Anwendung per Azure AD B2C die Zustimmung zu den Nutzungsbedingungen einholen.
+description: Erfahren Sie, wie Sie mithilfe von Azure AD B2C in Ihrer Anwendung Minderjährige identifizieren, Geburtsdatum und Daten zu Land/Region erfassen und Akzeptanz von Nutzungsbedingungen abrufen.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2fb9de7781fae51792e2802002a3cf68974dec83
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 98d3fa50f405658b33f879ed8e7b95667cddcedf
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783734"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064129"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Verwalten des Benutzerzugriffs in Azure Active Directory B2C
 
-In diesem Artikel wird erläutert, wie Sie den Benutzerzugriff auf Ihre Anwendungen mithilfe von Azure Active Directory (Azure AD) B2C verwalten können. Die Zugriffsverwaltung in Ihrer Anwendung umfasst Folgendes:
+In diesem Artikel wird erläutert, wie Sie den Benutzerzugriff auf Ihre Anwendungen mithilfe von Azure Active Directory B2C (Azure AD B2C) verwalten können. Die Zugriffsverwaltung in Ihrer Anwendung umfasst Folgendes:
 
 - Identifizieren von Minderjährigen und Steuern des Benutzerzugriffs auf Ihre Anwendung
 - Anfordern der Zustimmung durch die Eltern, wenn Minderjährige Ihre Anwendungen nutzen möchten
-- Erfassen des Geburtsdatums und Lands von Benutzern
+- Erfassen des Geburtsdatums und von Daten zu Land/Region von Benutzern.
 - Einholen der Zustimmung zu den Nutzungsbedingungen und Durchführen der Alterskontrolle
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
 ## <a name="control-minor-access"></a>Steuern des Zugriffs durch Minderjährige
 
-Für Anwendungen und Organisationen kann die Entscheidung getroffen werden, für Minderjährige die Nutzung von Anwendungen und Diensten, die nicht für diese Zielgruppe bestimmt sind, zu sperren. Alternativ hierzu kann für Anwendungen und Organisationen auch entschieden werden, Minderjährige zuzulassen und dann die Erteilung der Zustimmung durch die Eltern zu verwalten und zulässige Benutzeroberflächen bereitzustellen, die gemäß den Geschäftsregeln und den Regulierungsbestimmungen zulässig sind. 
+Für Anwendungen und Organisationen kann die Entscheidung getroffen werden, für Minderjährige die Nutzung von Anwendungen und Diensten, die nicht für diese Zielgruppe bestimmt sind, zu sperren. Alternativ hierzu kann für Anwendungen und Organisationen auch entschieden werden, Minderjährige zuzulassen und dann die Erteilung der Zustimmung durch die Eltern zu verwalten und zulässige Benutzeroberflächen bereitzustellen, die gemäß den Geschäftsregeln und den Regulierungsbestimmungen zulässig sind.
 
 Wenn ein Benutzer als minderjährig identifiziert wird, können Sie für den Benutzerflow in Azure AD B2C eine von drei Optionen auswählen:
 
@@ -38,7 +38,7 @@ Wenn ein Benutzer als minderjährig identifiziert wird, können Sie für den Ben
 
 - **Nicht signiertes JSON-Token an die Anwendung senden**: Azure AD B2C benachrichtigt die Anwendung darüber, dass der Benutzer minderjährig ist, und stellt den Zustimmungsstatus der Eltern für den Benutzer bereit. Die Anwendung wird dann durch Anwenden von Geschäftsregeln fortgesetzt. Ein JSON-Token führt keine erfolgreiche Authentifizierung bei der Anwendung durch. Die Anwendung muss den nicht authentifizierten Benutzer gemäß den Ansprüchen verarbeiten, die im JSON-Token enthalten sind, z.B. **name**, **email**, **ageGroup** und **consentProvidedForMinor**.
 
-- **Benutzer blockieren**: Wenn ein Benutzer minderjährig ist und die Zustimmung der Eltern nicht erteilt wurde, kann Azure AD B2C den Benutzer benachrichtigen, dass der Zugriff blockiert ist. Es wird kein Token ausgestellt, der Zugriff wird blockiert, und das Benutzerkonto wird während des Registrierungsvorgangs nicht erstellt. Zur Implementierung dieser Benachrichtigung stellen Sie eine geeignete HTML/CSS-Inhaltsseite bereit, um den Benutzer zu informieren und die entsprechenden Optionen anzuzeigen. Für die Anwendung sind bei neuen Registrierungen keine weiteren Aktionen erforderlich.
+- **Benutzer blockieren**: Wenn ein Benutzer minderjährig ist und die Zustimmung der Eltern nicht erteilt wurde, kann Azure AD B2C den Benutzer benachrichtigen, dass er blockiert ist. Es wird kein Token ausgestellt, der Zugriff wird blockiert, und das Benutzerkonto wird während des Registrierungsvorgangs nicht erstellt. Zur Implementierung dieser Benachrichtigung stellen Sie eine geeignete HTML/CSS-Inhaltsseite bereit, um den Benutzer zu informieren und die entsprechenden Optionen anzuzeigen. Für die Anwendung sind bei neuen Registrierungen keine weiteren Aktionen erforderlich.
 
 ## <a name="get-parental-consent"></a>Einholen der Zustimmung der Eltern
 
@@ -48,9 +48,9 @@ Hier ist ein Beispiel für einen Benutzerflow zum Einholen der elterlichen Zusti
 
 1. Bei einem Vorgang der [Azure Active Directory-Graph-API](/previous-versions/azure/ad/graph/api/api-catalog) wird der Benutzer als minderjährig identifiziert, und die Benutzerdaten werden in Form eines nicht signierten JSON-Tokens an die Anwendung zurückgegeben.
 
-2. Die Anwendung verarbeitet das JSON-Token und zeigt einen Hinweis für die minderjährige Person an, dass die Zustimmung der Eltern erforderlich ist. Diese Zustimmung wird dann online angefordert. 
+2. Die Anwendung verarbeitet das JSON-Token und zeigt einen Hinweis für die minderjährige Person an, dass die Zustimmung der Eltern erforderlich ist. Die Zustimmung eines Elternteils wird dann online angefordert.
 
-3. In Azure AD B2C wird ein Anmeldeprozess angezeigt, über den sich der Benutzer auf normale Weise anmelden kann, und es wird ein Token für die Anwendung ausgegeben, das **legalAgeGroupClassification = "minorWithParentalConsent"** enthält. Die Anwendung erfasst die E-Mail-Adresse eines Elternteils und prüft, ob es sich bei dieser Person um einen Erwachsenen handelt. Zu diesem Zweck wird eine vertrauenswürdige Quelle genutzt, z.B. Einwohnermeldeamt-Daten, Lizenzverifizierung oder Kreditkartennachweis. Wenn die Überprüfung erfolgreich durchgeführt wurde, wird die minderjährige Person in der Anwendung aufgefordert, sich über den Azure AD B2C-Benutzerflow anzumelden. Falls die Zustimmung verweigert wird (z.B. **legalAgeGroupClassification = “minorWithoutParentalConsent”**), gibt Azure AD B2C ein JSON-Token (keine Anmeldedaten) an die Anwendung zurück, um den Zustimmungsprozess neu zu starten. Der Benutzerflow kann optional angepasst werden, damit eine minderjährige oder erwachsene Person Zugriff auf das Konto eines Minderjährigen erlangen kann. Hierzu wird ein Registrierungscode an die hinterlegte E-Mail-Adresse des Minderjährigen oder des Erwachsenen gesendet.
+3. In Azure AD B2C wird ein Anmeldeprozess angezeigt, über den sich der Benutzer auf normale Weise anmelden kann, und es wird ein Token für die Anwendung ausgegeben, das **legalAgeGroupClassification = "minorWithParentalConsent"** enthält. Die Anwendung erfasst die E-Mail-Adresse eines Elternteils und prüft, ob es sich bei dieser Person um einen Erwachsenen handelt. Zu diesem Zweck wird eine vertrauenswürdige Quelle genutzt, z.B. Einwohnermeldeamt-Daten, Lizenzverifizierung oder Kreditkartennachweis. Wenn die Überprüfung erfolgreich durchgeführt wurde, wird die minderjährige Person in der Anwendung aufgefordert, sich über den Azure AD B2C-Benutzerflow anzumelden. Falls die Zustimmung verweigert wird (z.B. **legalAgeGroupClassification = “minorWithoutParentalConsent”** ), gibt Azure AD B2C ein JSON-Token (keine Anmeldedaten) an die Anwendung zurück, um den Zustimmungsprozess neu zu starten. Der Benutzerflow kann optional angepasst werden, damit eine minderjährige oder erwachsene Person Zugriff auf das Konto eines Minderjährigen erlangen kann. Hierzu wird ein Registrierungscode an die hinterlegte E-Mail-Adresse des Minderjährigen oder des Erwachsenen gesendet.
 
 4. Die Anwendung zeigt für die minderjährige Person eine Option an, mit der die Zustimmung widerrufen werden kann.
 
@@ -58,11 +58,11 @@ Hier ist ein Beispiel für einen Benutzerflow zum Einholen der elterlichen Zusti
 
 Weitere Informationen zu **legalAgeGroupClassification**, **consentProvidedForMinor** und **ageGroup** finden Sie unter [User resource type](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user) (Benutzerressourcentyp). Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden](active-directory-b2c-reference-custom-attr.md). Bei der Adressierung von erweiterten Attributen per Azure AD-Graph-API müssen Sie die lange Version des Attributs verwenden, z.B.*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
-## <a name="gather-date-of-birth-and-country-data"></a>Erfassen des Geburtsdatums und des Lands
+## <a name="gather-date-of-birth-and-countryregion-data"></a>Erfassen des Geburtsdatums und von Daten zu Land/Region von Benutzern
 
-Anwendungen können Azure AD B2C nutzen, um während der Registrierung Daten zum Geburtsdatum und Land für alle Benutzer zu erfassen. Falls diese Informationen nicht bereits vorhanden sind, kann die Anwendung sie während des nächsten Authentifizierungsprozesses (Anmeldung) vom Benutzer anfordern. Benutzer können den Vorgang nicht fortsetzen, ohne das Geburtsdatum und das Land anzugeben. Azure AD B2C ermittelt anhand der Informationen, ob die Person gemäß den Bestimmungen des jeweiligen Lands als minderjährig gilt. 
+Anwendungen können sich beim Erfassen des Geburtsdatums und von Land/Region-Informationen von allen Benutzern während der Registrierung auf Azure AD B2C verlassen. Falls diese Informationen nicht bereits vorhanden sind, kann die Anwendung sie während des nächsten Authentifizierungsprozesses (Anmeldung) vom Benutzer anfordern. Benutzer können nicht fortfahren, ohne ihr Geburtsdatum und Land/Region-Informationen anzugeben. Azure AD B2C verwendet die Informationen, um festzustellen, ob die Person gemäß der gesetzlichen Vorschriften dieses Landes / dieser Region minderjährig ist.
 
-Mit einem angepassten Benutzerflow können das Geburtsdatum und das Land erfasst werden, und die Transformation von Azure AD B2C-Ansprüchen kann genutzt werden, um die Altersgruppe (**ageGroup**) zu ermitteln und das Ergebnis im Verzeichnis zu speichern (oder das Geburtsdatum und Land direkt zu speichern).
+Ein benutzerdefinierter Benutzerflow ermöglicht das Erfassen von Geburtsdatum und Land/Region-Informationen und kann mit der Azure AD B2C-Anforderungstransformation die **ageGroup** bestimmen und das Ergebnis im Verzeichnis speichern (oder Geburtsdatum und Land/Region-Informationen direkt speichern).
 
 In den folgenden Schritten wird die Logik veranschaulicht, mit der aus dem Geburtsdatum des Benutzers die Altersgruppe (**ageGroup**) berechnet wird:
 
@@ -74,11 +74,11 @@ In den folgenden Schritten wird die Logik veranschaulicht, mit der aus dem Gebur
 
     b. Das Mindestdatum für die Geburt wird mit dem tatsächlichen Geburtsdatum verglichen. Falls das Mindestdatum für die Geburt vor dem Geburtstag des Benutzers liegt, wird für die Berechnung der Altersgruppe das Ergebnis **Minor** zurückgegeben.
 
-3. Falls der Knoten **MinorNoConsentRequired** im Landeselement enthalten ist, können Sie die Schritte 2a und 2b wiederholen, indem Sie den Wert aus **MinorNoConsentRequired** verwenden. Die Ausgabe von 2b gibt **MinorNoConsentRequired** zurück, falls das Mindestdatum für die Geburt vor dem Geburtsdatum des Benutzers liegt. 
+3. Falls der Knoten **MinorNoConsentRequired** im Landeselement enthalten ist, können Sie die Schritte 2a und 2b wiederholen, indem Sie den Wert aus **MinorNoConsentRequired** verwenden. Die Ausgabe von 2b gibt **MinorNoConsentRequired** zurück, falls das Mindestdatum für die Geburt vor dem Geburtsdatum des Benutzers liegt.
 
 4. Wenn für keine Berechnung TRUE zurückgegeben wurde, wird für die Berechnung **Adult** zurückgegeben.
 
-Falls für eine Anwendung mit anderen Methoden auf zuverlässige Weise Daten zum Geburtsdatum oder Land erfasst wurden, kann die Anwendung die Graph-API nutzen, um den Benutzerdatensatz mit diesen Informationen zu aktualisieren. Beispiel: 
+Wenn eine Anwendung zuverlässig Geburtsdatum oder Land/Region-Informationen mittels anderer Methoden gesammelt hat, kann die Anwendung die Graph-API verwenden, um den Benutzerdatensatz mit diesen Informationen zu aktualisieren. Beispiel:
 
 - Wenn für einen Benutzer bekannt ist, dass es sich um eine erwachsene Person handelt, wird das Verzeichnisattribut **ageGroup** auf den Wert **Adult** aktualisiert.
 - Falls ein Benutzer sicher als minderjährig eingestuft wird, wird das Verzeichnisattribut **ageGroup** auf den Wert **Minor** aktualisiert und **consentProvidedForMinor** entsprechend festgelegt.
@@ -112,11 +112,11 @@ Sie können die Zustimmung zu den Nutzungsbedingungen in den folgenden Szenarien
 
 In der folgenden Abbildung ist der empfohlene Benutzerflow dargestellt:
 
-![Benutzerflow für Zustimmung](./media/manage-user-access/user-flow.png) 
+![Flussdiagramm des empfohlenen Benutzerflows für Zustimmungen](./media/manage-user-access/user-flow.png)
 
 Hier ist ein Beispiel für die Zustimmung zu DateTime-basierten Nutzungsbedingungen in einem Anspruch angegeben:
 
-```
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="GetNewUserAgreeToTermsOfUseConsentDateTime" TransformationMethod="GetCurrentDateTime">
     <OutputClaims>
@@ -139,7 +139,7 @@ Hier ist ein Beispiel für die Zustimmung zu DateTime-basierten Nutzungsbedingun
 
 Hier ist ein Beispiel für die Zustimmung zu versionsbasierten Nutzungsbedingungen in einem Anspruch angegeben:
 
-```
+```xml
 <ClaimsTransformations>
   <ClaimsTransformation Id="GetEmptyTermsOfUseConsentVersionForNewUser" TransformationMethod="CreateStringClaim">
     <InputParameters>
@@ -170,7 +170,7 @@ Hier ist ein Beispiel für die Zustimmung zu versionsbasierten Nutzungsbedingung
       <OutputClaim ClaimTypeReferenceId="termsOfUseConsentRequired" TransformationClaimType="outputClaim" />
     </OutputClaims>
   </ClaimsTransformation>
-</ClaimsTransformations> 
+</ClaimsTransformations>
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

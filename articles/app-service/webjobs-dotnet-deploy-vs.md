@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 02/18/2019
-ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ede7e2fe3a2ab4c0dfd4efaea5ec789924968194
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.author: glenga
+ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
+ms.openlocfilehash: 58d03d80c82fbf58803f7fefa8ef60c19f99bced
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750156"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876885"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service
 
@@ -27,7 +28,7 @@ In diesem Artikel wird erläutert, wie Sie Visual Studio zum Bereitstellen eines
 
 Sie können mehrere Webaufträge in einer Web-App veröffentlichen. Stellen Sie sicher, dass jeder Webauftrag in einer Web-App über einen eindeutigen Namen verfügt.
 
-Mit Version 3.x des [Azure WebJobs SDK](webjobs-sdk-how-to.md) können Sie Webaufträge entwickeln, die als .NET Core-Apps ausgeführt werden, während Version 2.x lediglich das .NET Framework unterstützt. Die Art und Weise, auf die Sie ein WebJobs-Projekt bereitstellen, unterscheidet sich bei .NET Core-Projekten von .NET Framework.
+Mit Version 3.x des [Azure WebJobs SDK](webjobs-sdk-how-to.md) können Sie Webaufträge entwickeln, die entweder als .NET Core- oder .NET Framework-Apps ausgeführt werden, während Version 2.x lediglich das .NET Framework unterstützt. Die Art und Weise, auf die Sie ein WebJobs-Projekt bereitstellen, ist bei .NET Core- und .NET Framework-Projekten unterschiedlich.
 
 ## <a name="webjobs-as-net-core-console-apps"></a>Webaufträge als .NET Core-Konsolenanwendung
 
@@ -70,10 +71,7 @@ Sie können Visual Studio verwenden, um Webaufträge so zu ändern, dass sie for
 
 ## <a name="webjobs-as-net-framework-console-apps"></a>Webaufträge als .NET Framework-Konsolenanwendungen  
 
-Wenn ein webauftragsfähiges .NET Framework-Konsolenanwendungsprojekt mithilfe von Visual Studio bereitgestellt wird, werden zwei Aufgaben ausgeführt:
-
-* Laufzeitdateien werden in den entsprechenden Ordner der Web-App (*App_Data/jobs/continuous* für fortlaufende Webaufträge und *App_Data/jobs/triggered* für geplante oder bedarfsgesteuerte Webaufträge) kopiert.
-* Es werden [Azure Scheduler-Aufträge](https://docs.microsoft.com/azure/scheduler/) für WebJobs eingerichtet, die für die Ausführung zu bestimmten Zeiten geplant sind. (Dies ist für fortlaufende Webaufträge nicht erforderlich.)
+Wenn ein WebJob-fähiges .NET Framework-Konsolenanwendungsprojekt mithilfe von Visual Studio bereitgestellt wird, werden Laufzeitdateien in den entsprechenden Ordner der Web-App (*App_Data/jobs/continuous* für fortlaufende Webaufträge und *App_Data/jobs/triggered* für geplante oder bedarfsgesteuerte Webaufträge) kopiert.
 
 Einem webauftragsfähigen Projekt werden die folgenden Elemente hinzugefügt:
 
@@ -92,7 +90,7 @@ Sie können ein Projekt als eigenständigen Webauftrag bereitstellen oder es mit
 
 Wenn Sie Visual Studio 2015 verwenden, installieren Sie das [Azure SDK für .NET (Visual Studio 2015)](https://azure.microsoft.com/downloads/).
 
-Wenn Sie Visual Studio 2017 verwenden, installieren Sie die [Workload „Azure-Entwicklung“](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---select-workloads).
+Wenn Sie Visual Studio 2017 verwenden, installieren Sie die [Workload „Azure-Entwicklung“](https://docs.microsoft.com/visualstudio/install/install-visual-studio#step-4---choose-workloads).
 
 ### <a id="convert"></a> Aktivieren der WebJobs- Bereitstellung für ein vorhandenes Konsolenanwendungsprojekt
 
@@ -119,7 +117,7 @@ Sie haben zwei Möglichkeiten:
 3. Vervollständigen Sie das Dialogfeld [Azure-Webauftrag hinzufügen](#configure) , und klicken Sie dann auf **OK**. 
 
 #### <a id="convertnolink"></a> Aktivieren der Bereitstellung von Webaufträgen ohne Webprojekt
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Konsolenanwendungsprojekt, und klicken Sie dann auf **Als Azure-WebJob veröffentlichen...**. 
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Konsolenanwendungsprojekt, und klicken Sie dann auf **Als Azure-WebJob veröffentlichen...** . 
    
     ![Als Azure-Webauftrag veröffentlichen](./media/webjobs-dotnet-deploy-vs/paw.png)
    
@@ -144,7 +142,7 @@ Zum Erstellen eines neuen webauftragsfähigen Projekts können Sie die Vorlage f
 > 
 
 #### <a id="createnolink"></a> Verwenden der Webauftragsvorlage "new-project" für einen unabhängigen Webauftrag
-1. Klicken Sie auf **Datei** > **Neues Projekt** und anschließend im Dialogfeld **Neues Projekt** auf **Cloud** > **Azure WebJob (.NET Framework)**.
+1. Klicken Sie auf **Datei** > **Neues Projekt** und anschließend im Dialogfeld **Neues Projekt** auf **Cloud** > **Azure WebJob (.NET Framework)** .
    
     ![Dialogfeld "Neues Projekt" mit Webauftragsvorlage](./media/webjobs-dotnet-deploy-vs/np.png)
 2. Befolgen Sie die zuvor gezeigten Anweisungen, um [das Konsolenanwendungsprojekt als unabhängiges Webauftragsprojekt zu erstellen](#convertnolink).
@@ -206,7 +204,7 @@ Sie können diese Datei direkt bearbeiten, und Visual Studio stellt IntelliSense
 ### <a id="deploy"></a>Bereitstellen eines Webauftragsprojekts
 Ein Webauftragsprojekt, das Sie mit einem Webprojekt verknüpft haben, wird automatisch mit dem Webprojekt bereitstellt. Informationen zur Bereitstellung von Webprojekten finden Sie unter **Anleitungen** > **App bereitstellen** im linken Navigationsbereich.
 
-Klicken Sie zum Bereitstellen eines WebJobs-Projekts im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt. Klicken Sie dann auf **Als Azure-WebJob veröffentlichen...**. 
+Klicken Sie zum Bereitstellen eines WebJobs-Projekts im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt. Klicken Sie dann auf **Als Azure-WebJob veröffentlichen...** . 
 
 ![Als Azure-Webauftrag veröffentlichen](./media/webjobs-dotnet-deploy-vs/paw.png)
 
@@ -230,7 +228,7 @@ Wenn Sie einen [Webauftrag über das Azure-Portal erstellen](webjobs-create.md),
 
 ### <a name="cron-expressions"></a>CRON-Ausdrücke
 
-Azure WebJobs verwendet die gleichen CRON-Ausdrücke für Zeitpläne wie der Zeitgebertrigger in Azure Functions. Weitere Informationen zur CRON-Unterstützung finden Sie im [Referenzartikel zum Zeitgebertrigger](../azure-functions/functions-bindings-timer.md#cron-expressions).
+Azure WebJobs verwendet die gleichen CRON-Ausdrücke für Zeitpläne wie der Zeitgebertrigger in Azure Functions. Weitere Informationen zur CRON-Unterstützung finden Sie im [Referenzartikel zum Zeitgebertrigger](../azure-functions/functions-bindings-timer.md#ncrontab-expressions).
 
 ### <a name="settingjob-reference"></a>Referenz zur Datei „setting.job“
 
@@ -240,7 +238,7 @@ Webaufträge unterstützen die folgenden Einstellungen:
 | ----------- | --------- | --------------- |
 | `is_in_place` | Alle | Ermöglicht die direkte Ausführung des Auftrags, ohne ihn zuerst in einen temporären Ordner zu kopieren. Weitere Informationen finden Sie unter [WebJobs working directory (Arbeitsverzeichnis für Webaufträge)](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Fortlaufend | Die Webaufträge werden nur in einer einzelnen Instanz ausgeführt, wenn horizontal hochskaliert wurde. Weitere Informationen finden Sie unter [Set a continuous job as singleton (Festlegen eines fortlaufenden Auftrags als Singleton)](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton). |
-| `schedule` | Ausgelöst | Der Webauftrag wird gemäß eines CRON-basierten Zeitplans ausgeführt. Weitere Informationen finden Sie im [Referenzartikel zum Zeitgebertrigger](../azure-functions/functions-bindings-timer.md#cron-expressions). |
+| `schedule` | Ausgelöst | Der Webauftrag wird gemäß eines CRON-basierten Zeitplans ausgeführt. Weitere Informationen finden Sie im [Referenzartikel zum Zeitgebertrigger](../azure-functions/functions-bindings-timer.md#ncrontab-expressions). |
 | `stopping_wait_time`| Alle | Ermöglicht das Steuern des Verhaltens des Herunterfahrens. Weitere Informationen finden Sie unter [Graceful shutdown (Ordnungsgemäßes Herunterfahren)](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ## <a name="next-steps"></a>Nächste Schritte

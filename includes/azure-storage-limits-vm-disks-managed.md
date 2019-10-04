@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,11 +9,11 @@ ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: dd5c0782e1132f8592d9c6381b541c6f1a7d84cd
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395610"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67178082"
 ---
 **Verwaltete HDD Standard-Datenträger**
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "58395610"
 
 **Verwaltete SSD Premium-Datenträger: Grenzwerte pro VM**
 
-| Ressource | Standardlimit |
+| Resource | Standardlimit |
 | --- | --- |
 | Maximale Anzahl IOPS pro VM |80.000 IOPS mit GS5-VM |
-| Maximaler Durchsatz pro VM |2.000 MB/s mit GS5-VM |
+| Maximaler Durchsatz pro VM |2\.000 MB/s mit GS5-VM |

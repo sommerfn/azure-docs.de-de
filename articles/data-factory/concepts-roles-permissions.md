@@ -8,15 +8,15 @@ services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 19666eb668dd120c1705c6a62a8ba1abd2321026
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 9df65322958bffd3182aaa8d734e8b29717d939d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575714"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142523"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen und Berechtigungen für Azure Data Factory
 
@@ -57,7 +57,7 @@ Berechtigungen für Azure Repos und GitHub sind unabhängig von Data Factory-Ber
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Benutzerdefinierte Szenarien und benutzerdefinierte Rollen
 
-Manchmal müssen Sie verschiedenen Data Factory-Benutzern den Zugriff auf verschiedenen Ebenen gewähren. Beispiel: 
+Manchmal müssen Sie verschiedenen Data Factory-Benutzern den Zugriff auf verschiedenen Ebenen gewähren. Beispiel:
 - Sie benötigen eine Gruppe, deren Mitglieder nur Berechtigungen für eine bestimmte Data Factory erhalten sollen.
 - Möglicherweise benötigen Sie auch eine Gruppe, deren Mitglieder eine Data Factory oder mehrere Factorys überwachen, aber nicht ändern dürfen.
 
@@ -78,7 +78,11 @@ Hier finden Sie einige Beispiele, die zeigen, was sich mit benutzerdefinierten R
   Dieses Szenario erfordert zwei Rollenzuweisungen.
 
   1. Weisen Sie die integrierte Rolle **Mitwirkender** auf Data Factory-Ebene zu.
-  2. Erstellen Sie eine benutzerdefinierte Rolle mit der Berechtigung **Microsoft.Resources/deployments/**. Sie können einem Benutzer diese benutzerdefinierte Rolle auf Ressourcengruppenebene zuweisen.
+  2. Erstellen Sie eine benutzerdefinierte Rolle mit der Berechtigung **Microsoft.Resources/deployments/** . Sie können einem Benutzer diese benutzerdefinierte Rolle auf Ressourcengruppenebene zuweisen.
+
+- Sie können es einem Benutzer ermöglichen, Verbindungen nur in einem verknüpften Dienst zu testen.
+
+    Erstellen Sie eine benutzerdefinierte Rolle mit Berechtigungen für die folgenden Aktionen: **Microsoft.DataFactory/factories/getFeatureValue/read** und **Microsoft.DataFactory/factories/getDataPlaneAccess/read**. Weisen Sie diese benutzerdefinierte Rolle der Data Factory-Ressource für den Benutzer zu.
 
 - Sie können es einem Benutzer ermöglichen, eine Data Factory über PowerShell oder das SDK zu aktualisieren, nicht aber über das Azure-Portal.
 

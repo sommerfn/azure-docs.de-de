@@ -4,22 +4,21 @@ description: Verwenden von CMD- und PowerShell-Befehlen in SAC in Azure-VMs unte
 services: virtual-machines-windows
 documentationcenter: ''
 author: alsin
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 55b7e45bb9e600267e1dad0e36e9a97eca9a7d40
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a106984bc60d0ccfe29a1956213aec6f87ad30dd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074997"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090167"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows-Befehle – CMD und PowerShell
 
@@ -241,7 +240,7 @@ Durch Hinzufügen von `/f` werden aktive Anwendungen ohne Vorwarnung geschlossen
 ### <a name="detect-safe-mode-boot"></a>Erkennen des Starts im abgesicherten Modus
 `bcdedit /enum | find /i "safeboot"` 
 
-# <a name="windows-commands---powershell"></a>Windows-Befehle – PowerShell
+## <a name="windows-commands---powershell"></a>Windows-Befehle – PowerShell
 
 Wenn Sie PowerShell in SAC ausführen möchten, geben Sie an einer CMD-Eingabeaufforderung Folgendes ein:
 

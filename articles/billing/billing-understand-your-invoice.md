@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897451"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "60369971"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Grundlegendes über Benennungen in Ihrer Microsoft Azure-Rechnung
 
@@ -100,8 +100,8 @@ In der folgenden Tabelle werden die Spaltenüberschriften des Abschnitts „Nutz
 | Begriff |BESCHREIBUNG |
 | --- | --- |
 | NAME |Gibt den Dienst der obersten Ebene für die Nutzung an |
-| Type |Definiert den Typ des Azure-Diensts und kann sich auf den Tarif auswirken |
-| Ressource |Gibt die Maßeinheit für die genutzte Verbrauchseinheit an |
+| type |Definiert den Typ des Azure-Diensts und kann sich auf den Tarif auswirken |
+| Resource |Gibt die Maßeinheit für die genutzte Verbrauchseinheit an |
 | Region |Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden |
 | Consumed |Die Menge der Verbrauchseinheit, die während des Abrechnungszeitraums genutzt wurde |
 | Enthalten |Die Menge der Verbrauchseinheit, die kostenlos in Ihrem Abrechnungszeitraum inbegriffen ist |

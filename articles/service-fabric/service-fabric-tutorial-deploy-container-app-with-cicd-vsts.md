@@ -3,7 +3,7 @@ title: Bereitstellen einer Containeranwendung mit CI/CD in einem Azure Service F
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Visual Studio und Azure DevOps Continuous Integration und Continuous Deployment für eine Azure Service Fabric-Containeranwendung einrichten.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/29/2018
-ms.author: aljo
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 37305f27203986ce2e3d06276b5169ffd9b41287
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b686ceace3679d1541e8f1a74bca7e99b81ba932
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668805"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68598897"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Tutorial: Bereitstellen einer Containeranwendung mit CI/CD in einem Service Fabric-Cluster
 
@@ -137,7 +137,7 @@ Klicken Sie auf **Docker-Einstellungen** und dann auf **Docker-Einstellungen kon
 
 ![Releasepipeline-Agent][release-pipeline-agent]
 
-Fügen Sie als Nächstes der Pipeline ein Buildartefakt hinzu, damit die Releasedefinition die Ausgabe des Builds findet. Klicken Sie auf **Pipeline** und anschließend auf **Artefakte**->**+Hinzufügen**.  Wählen Sie unter **Quelle (Builddefinition)** die zuvor erstellte Builddefinition aus.  Klicken Sie auf **Hinzufügen**, um das Buildartefakt zu speichern.
+Fügen Sie als Nächstes der Pipeline ein Buildartefakt hinzu, damit die Releasedefinition die Ausgabe des Builds findet. Klicken Sie auf **Pipeline** und anschließend auf **Artefakte**-> **+Hinzufügen**.  Wählen Sie unter **Quelle (Builddefinition)** die zuvor erstellte Builddefinition aus.  Klicken Sie auf **Hinzufügen**, um das Buildartefakt zu speichern.
 
 ![Hinzufügen des Artefakts][add-artifact]
 

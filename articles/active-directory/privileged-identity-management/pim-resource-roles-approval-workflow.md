@@ -3,7 +3,7 @@ title: Genehmigen oder Ablehnen von Anforderungen für Azure-Ressourcenrollen in
 description: Erfahren Sie, wie Sie Anforderungen für Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) genehmigen oder ablehnen.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f645b7077ef43dc7eb4d70261b6b601b5e4af1b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8b39434f8763e44a126f74ac9a19596e4413ae9c
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492157"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804271"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>Genehmigen oder Ablehnen von Anforderungen für Azure-Ressourcenrollen in PIM
 
@@ -38,15 +38,15 @@ Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, we
 
 1. Klicken Sie auf **Anforderungen genehmigen**.
 
-    ![Azure-Ressourcen – Anforderungen genehmigen](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![Anforderungen genehmigen: Seite „Azure-Ressourcen“ mit einer Überprüfungsanforderung](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
 
     Im Abschnitt **Anforderungen für Rollenaktivierungen** wird eine Liste der Anforderungen angezeigt, die Sie noch genehmigen müssen.
 
 ## <a name="approve-requests"></a>Genehmigen von Anforderungen
 
-1. Suchen Sie nach der Anforderung, die Sie genehmigen möchten, und klicken Sie darauf. Es wird ein Genehmigungsbereich angezeigt.
+1. Suchen Sie nach der Anforderung, die Sie genehmigen möchten, und klicken Sie darauf. Ein Bereich zum Genehmigen oder Ablehnen von Anforderungen wird angezeigt.
 
-    ![Bereich „Anforderungen genehmigen“](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![Anforderungen genehmigen: Bereich zum Genehmigen oder Ablehnen von Anforderungen mit Details und dem Feld „Begründung“](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. Geben Sie im Feld **Begründung** einen Grund ein.
 
@@ -54,13 +54,13 @@ Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, we
 
     Es wird eine Benachrichtigung mit Ihrer Genehmigung angezeigt.
 
-    ![Genehmigungsbenachrichtigung](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![Genehmigungsbenachrichtigung, dass die Anforderung genehmigt wurde](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
 
 ## <a name="deny-requests"></a>Ablehnen von Anforderungen
 
-1. Suchen Sie nach der Anforderung, die Sie ablehnen möchten, und klicken Sie darauf. Es wird ein Genehmigungsbereich angezeigt.
+1. Suchen Sie nach der Anforderung, die Sie ablehnen möchten, und klicken Sie darauf. Ein Bereich zum Genehmigen oder Ablehnen von Anforderungen wird angezeigt.
 
-    ![Bereich „Anforderungen genehmigen“](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+    ![Anforderungen genehmigen: Bereich zum Genehmigen oder Ablehnen von Anforderungen mit Details und dem Feld „Begründung“](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
 
 1. Geben Sie im Feld **Begründung** einen Grund ein.
 

@@ -4,7 +4,7 @@ description: Beheben von Zuordnungsfehlern beim Erstellen, Neustarten oder Ände
 services: azure-service-management
 documentationcenter: ''
 author: genlin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: bb939e23-77fc-4948-96f7-5037761c30e8
@@ -12,19 +12,19 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 7cd7897e3a0b940bbc636b2fbc3dbbc13b7cf540
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: d43176e04337c2faf7be0bea682428056bc4ab46
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748424"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059195"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Schritte zur Problembehandlung in Zuordnungsfehlerszenarien im klassischen Bereitstellungsmodell
 
 Im Folgenden werden häufig vorkommende Zuordnungsszenarien aufgeführt, die bewirken, dass eine Zuordnungsanforderung „verknüpft“ wird. Die einzelnen Szenarien werden weiter unten in diesem Artikel genauer erläutert.
 
 - Ändern der Größe eines virtuellen Computers oder Hinzufügen weiterer virtueller Computer oder Rolleninstanzen in einem vorhandenen Clouddienst
-- Neustart teilweise beendeter (zuordnungsaufgehobener) virtueller Computer 
+- Neustart teilweise beendeter (zuordnungsaufgehobener) virtueller Computer
 - Neustart vollständig beendeter (zuordnungsaufgehobener) virtueller Computer
 - Staging und Produktionsbereitstellungen (nur Platform as a Service)
 - Affinitätsgruppe (Nähe von VMs und Diensten)
@@ -54,7 +54,7 @@ Wenn der Fehler „Upgrade_VMSizeNotSupported*“ lautet, versuchen Sie es mit e
 
 Wenn der Fehler „GeneralError*“ lautet, wird der Typ der Ressource (z. B. eine bestimmte Größe des virtuellen Computers) vom Cluster wahrscheinlich unterstützt, allerdings verfügt der Cluster derzeit nicht über freie Ressourcen. Fügen Sie, ähnlich wie oben, die gewünschten Compute-Ressourcen hinzu, indem Sie einen neuen Clouddiensts erstellen (beachten Sie, dass der neue Clouddienst eine andere VIP verwenden muss) und verwenden Sie das regionale Virtual Network zum Verbinden Ihrer Clouddienste.
 
-## <a name="restart-partially-stopped-deallocated-vms"></a>Neustart teilweise beendeter (zuordnungsaufgehobener) virtueller Computer 
+## <a name="restart-partially-stopped-deallocated-vms"></a>Neustart teilweise beendeter (zuordnungsaufgehobener) virtueller Computer
 **Fehler**
 
 GeneralError*
@@ -116,7 +116,7 @@ New_General* oder New_VMSizeNotSupported\*
 
 **Ursache der Verknüpfung mit dem Cluster**
 
-Bevor regionale virtuelle Netzwerke eingeführt wurden, mussten Sie einem Virtual Network eine Affinitätsgruppe zuordnen. Daher gelten für Compute-Ressourcen, die in die Affinitätsgruppe eingefügt werden, die gleichen Einschränkungen wie oben im Abschnitt „Zuordnungsszenario: Affinitätsgruppe (Nähe von virtuellem Computer und Dienst)“ beschrieben. Die Compute-Ressourcen sind an ein Cluster gebunden.
+Bevor regionale virtuelle Netzwerke eingeführt wurden, mussten Sie einem Virtual Network eine Affinitätsgruppe zuordnen. Daher gelten für Compute-Ressourcen, die in eine Affinitätsgruppe eingefügt werden, die gleichen Einschränkungen wie oben im Abschnitt „Zuordnungsszenario: Affinitätsgruppe (Nähe von virtuellem Computer und Dienst)“ beschrieben. Die Compute-Ressourcen sind an ein Cluster gebunden.
 
 **Problemumgehung**
 

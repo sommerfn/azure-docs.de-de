@@ -2,24 +2,22 @@
 title: Dokumentationsressourcen zur kognitiven Suche – Azure Search
 description: Eine kommentierte Liste von Artikeln, Tutorials, Beispielen und Blogbeiträgen zu Workloads der kognitiven Suche in Azure Search.
 services: search
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/04/2018
+ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 609b5d990cffce10733f6fc82e6b1032ad0f06bb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 7267f40a981b984ab945d956ff3552157267cd43
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314600"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265465"
 ---
 # <a name="documentation-resources-for-cognitive-search-workloads"></a>Dokumentationsressourcen für Workloads der kognitiven Suche
 
-Die kognitive Suche – jetzt in der öffentlichen Vorschau verfügbar – ist eine neue Anreicherungsebene bei der Azure Search-Indizierung, die latente Informationen in Nicht-Textquellen und undifferenziertem Text findet und sie in durchsuchbare Volltextinhalte in Azure Search umwandelt.
+Die kognitive Suche – jetzt allgemein verfügbar – ist eine neue Anreicherungsebene bei der Azure Search-Indizierung, die latente Informationen in Nicht-Textquellen und undifferenziertem Text findet und sie in durchsuchbare Volltextinhalte in Azure Search umwandelt.
 
 Die folgenden Artikel sind die vollständige Dokumentation zur kognitiven Suche.
 
@@ -27,7 +25,7 @@ Die folgenden Artikel sind die vollständige Dokumentation zur kognitiven Suche.
 + [Was ist die kognitive Suche?](cognitive-search-concept-intro.md)
 + [Schnellstart: Testen der kognitiven Suche im Portal](cognitive-search-quickstart-blob.md)
 + [Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche](cognitive-search-tutorial-blob.md)
-+ [Beispiel: Erstellen eines benutzerdefinierten Skills](cognitive-search-create-custom-skill-example.md)
++ [Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>Leitfäden zur Vorgehensweise
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
@@ -41,19 +39,27 @@ Die folgenden Artikel sind die vollständige Dokumentation zur kognitiven Suche.
 ## <a name="reference"></a>Verweis
 
 + [Vordefinierte Skills](cognitive-search-predefined-skills.md)
-  + [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md)
+  + [Microsoft.Skills.Text.KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
   + [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
-  + [Microsoft.Skills.Text.NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md)
+  + [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)
   + [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md)
   + [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md)
   + [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)
+  + [Microsoft.Skills.Text.TranslationSkill](cognitive-search-skill-text-translation.md)
   + [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
   + [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md)
+  + [Microsoft.Skills.Util.ConditionalSkill](cognitive-search-skill-conditional.md)
   + [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md)
 
-+ [Vorschau-REST-API](search-api-2017-11-11-preview.md)
-  + [Erstellen eines Skillsets (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Erstellen eines Indexers (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ Benutzerdefinierte Qualifikationen
+  + [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md)
+
++ [Veraltete Skills](cognitive-search-skill-deprecated.md)
+  + [Microsoft.Skills.Text.NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md)
+
++ [REST-API](https://docs.microsoft.com/rest/api/searchservice/)
+  + [Erstellen einer Qualifikationsgruppe (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+  + [Erstellen eines Indexers (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 ## <a name="see-also"></a>Weitere Informationen
 

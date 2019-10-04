@@ -1,23 +1,37 @@
 ---
 title: Behandeln von Problemen mit Azure Backup Server
 description: Behandeln von Problemen bei der Installation, bei der Registrierung von Azure Backup Server und bei der Sicherung und Wiederherstellung von Anwendungsworkloads.
-services: backup
-author: kasinh
-manager: vvithal
+ms.reviewer: srinathv
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/18/2019
-ms.author: kasinh
-ms.openlocfilehash: 22507a1b89c6a7d6867e9b669e1a2e70106a4e41
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 07/05/2019
+ms.author: dacurwin
+ms.openlocfilehash: 0f9c2d1d2081ec22898ed3a4fbc73305ff0995e3
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880567"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954678"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
 
 Verwenden Sie die Informationen in der folgenden Tabelle für die Problembehandlung von Fehlern, die bei der Verwendung von Azure Backup Server auftreten.
+
+## <a name="basic-troubleshooting"></a>Grundlegendes zur Problembehandlung
+
+Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit der Problembehandlung von Microsoft Azure Backup Server (MABS) beginnen:
+
+- [Sicherstellen, dass der Microsoft Azure Recovery Services-Agent (MARS) auf dem neuesten Stand ist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
+- [Sicherstellen, dass zwischen dem MARS-Agent und Azure Netzwerkkonnektivität besteht](https://aka.ms/AB-A4dp50)
+- Vergewissern Sie sich, dass Microsoft Azure Recovery Services ausgeführt wird (auf der Dienstkonsole). Führen Sie bei Bedarf einen Neustart durch, und wiederholen Sie den Vorgang.
+- [Sicherstellen, dass am Speicherort des Ablageordners 5 - 10% freier Volumespeicherplatz vorhanden ist](https://aka.ms/AB-AA4dwtt)
+- Wenn bei der Registrierung ein Fehler auftritt, stellen Sie sicher, dass der Server, auf dem Sie Azure Backup Server installieren möchten, nicht bereits für einen anderen Tresor registriert wurde.
+- Wenn die Pushinstallation nicht erfolgreich ist, sollten Sie überprüfen, ob der DPM-Agent bereits vorhanden ist. Wenn ja, können Sie den Agent deinstallieren und dann versuchen, die Installation durchzuführen.
+- [Stellen Sie sicher, dass kein anderer Prozess oder Antivirensoftware in Azure Backup eingreift](https://aka.ms/AA4nyr4)<br>
+- Stellen Sie sicher, dass der SQL-Agent-Dienst ausgeführt und auf dem MAB-Server auf „Automatisch“ festgelegt ist.<br>
+
 
 ## <a name="invalid-vault-credentials-provided"></a>Es wurden ungültige Tresoranmeldeinformationen angegeben.
 
@@ -29,7 +43,7 @@ Verwenden Sie die Informationen in der folgenden Tabelle für die Problembehandl
 
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
-| Backup | Replikat inkonsistent | Stellen Sie sicher, dass die Option für die automatische Konsistenzprüfung im Schutzgruppen-Assistenten aktiviert ist. Weitere Informationen zu den Ursachen von Replikatinkonsistenz und entsprechende Vorschläge finden Sie im Microsoft TechNet-Artikel [Replikat ist inkonsistent](https://technet.microsoft.com/library/cc161593.aspx).<br> <ol><li> Stellen Sie bei einer Systemstatus- oder BMR-Sicherung sicher, dass die Windows Server-Sicherung auf dem geschützten Server installiert ist.</li><li> Überprüfen Sie den DPM-Speicherpool auf dem DPM-/Microsoft Azure Backup Server auf Speicherplatzprobleme, und weisen Sie ggf. Speicher zu.</li><li> Überprüfen Sie den Zustand des Volumeschattenkopie-Diensts auf dem geschützten Server. Wenn er deaktiviert ist, legen Sie ihn auf manuellen Start fest. Starten Sie den Dienst auf dem Server. Kehren Sie anschließend zur DPM-/Microsoft Azure Backup Server-Konsole zurück, und starten Sie die Synchronisierung mit dem Auftrag zur Konsistenzprüfung.</li></ol>|
+| Backup | Replikat inkonsistent | Stellen Sie sicher, dass die Option für die automatische Konsistenzprüfung im Schutzgruppen-Assistenten aktiviert ist. Weitere Informationen zu den Ursachen von Replikatinkonsistenz und entsprechende Vorschläge finden Sie im Artikel [Replikat ist inkonsistent](https://technet.microsoft.com/library/cc161593.aspx).<br> <ol><li> Stellen Sie bei einer Systemstatus- oder BMR-Sicherung sicher, dass die Windows Server-Sicherung auf dem geschützten Server installiert ist.</li><li> Überprüfen Sie den DPM-Speicherpool auf dem DPM-/Microsoft Azure Backup Server auf Speicherplatzprobleme, und weisen Sie ggf. Speicher zu.</li><li> Überprüfen Sie den Zustand des Volumeschattenkopie-Diensts auf dem geschützten Server. Wenn er deaktiviert ist, legen Sie ihn auf manuellen Start fest. Starten Sie den Dienst auf dem Server. Kehren Sie anschließend zur DPM-/Microsoft Azure Backup Server-Konsole zurück, und starten Sie die Synchronisierung mit dem Auftrag zur Konsistenzprüfung.</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>Fehler bei der Erstellung eines Onlinewiederherstellungspunkts.
 
@@ -68,7 +82,7 @@ Verwenden Sie die Informationen in der folgenden Tabelle für die Problembehandl
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
 | Übertragen von Agents auf geschützte Server mithilfe von Push | Die für den Server angegebenen Anmeldeinformationen sind ungültig. | **Sollte die im Produkt empfohlene Aktion nicht funktionieren, führen Sie die folgenden Schritte aus**: <br> Installieren Sie den Schutz-Agent manuell auf dem Produktionsserver, wie in [diesem Artikel](https://technet.microsoft.com/library/hh758186(v=sc.12).aspx#BKMK_Manual) beschrieben.|
-| Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen (ID 100050). | Der Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen. | **Sollte die im Produkt empfohlene Aktion nicht funktionieren, führen Sie die folgenden Schritte aus**: <br>1. Führen Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus: **psexec -i -s "C:\Programme\Internet Explorer\iexplore.exe**. Das Internet Explorer-Fenster wird geöffnet. <br/> 2. Navigieren Sie zu **Extras** > **Internetoptionen** > **Verbindungen** > **LAN-Einstellungen**. <br/> 3. Überprüfen Sie die Proxyeinstellungen für das Systemkonto. Legen Sie Proxy-IP und Port fest. <br/> 4. Schließen Sie Internet Explorer.|
+| Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen (ID 100050). | Der Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen. | **Sollte die im Produkt empfohlene Aktion nicht funktionieren, führen Sie die folgenden Schritte aus**: <br>1. Führen Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus: **psexec -i -s "C:\Programme\Internet Explorer\iexplore.exe**. Das Internet Explorer-Fenster wird geöffnet. <br/> 2. Navigieren Sie zu **Extras** > **Internetoptionen** > **Verbindungen** > **LAN-Einstellungen**. <br/> 3. Ändern Sie die Einstellungen dahingehend, dass ein Proxyserver verwendet wird. Geben Sie dann die Proxyserverdetails an.<br/> 4. Wenn Ihr Computer über einen eingeschränkten Internetzugang verfügt, stellen Sie sicher, dass die Firewalleinstellungen auf dem Computer oder Proxy diese [URLs](backup-configure-vault.md#verify-internet-access) und [IP-Adressen](backup-configure-vault.md#verify-internet-access) zulassen.|
 | Fehler bei der Installation des Azure Backup-Agents | Bei der Installation von Microsoft Azure Recovery Services ist ein Fehler aufgetreten. Für alle Änderungen, die von der Microsoft Azure Recovery Services-Installation am System vorgenommen wurden, wurde ein Rollback ausgeführt. (ID: 4024) | Installieren Sie den Azure-Agent manuell.
 
 
@@ -87,8 +101,8 @@ Verwenden Sie die Informationen in der folgenden Tabelle für die Problembehandl
 | --- | --- | --- |
 | Backup | Unerwarteter Fehler beim Ausführen des Auftrags. Das Gerät ist nicht bereit. | **Sollte die im Produkt empfohlene Aktion nicht funktionieren, führen Sie die folgenden Schritte aus:** <br> <ul><li>Legen Sie den Schattenkopie-Speicherbereich für die Elemente in der Schutzgruppe auf „Unbegrenzt“ fest, und führen Sie dann die Konsistenzprüfung aus.<br></li> (ODER) <li>Löschen Sie die vorhandene Schutzgruppe, und erstellen Sie mehrere neue Gruppen. Jede neue Schutzgruppe sollte ein einzelnes Element enthalten.</li></ul> |
 | Backup | Wenn nur der Systemstatus gesichert werden soll, überprüfen Sie, ob ausreichend freier Speicherplatz auf dem geschützten Computer vorhanden ist, um die Systemstatussicherung zu speichern. | <ol><li>Stellen Sie sicher, dass die Windows Server-Sicherung auf dem geschützten Computer installiert ist.</li><li>Stellen Sie sicher, dass genügend Speicherplatz auf dem geschützten Computer für den Systemstatus vorhanden ist. Der einfachste Weg, dies zu überprüfen, besteht darin, zum geschützten Computer zu navigieren, die Windows Server-Sicherung zu öffnen, die Auswahlmöglichkeiten zu durchlaufen und dann „BMR“ auszuwählen. Auf der Benutzeroberfläche wird dann der erforderliche Speicherplatz angezeigt. Öffnen Sie **WSB** > **Lokale Sicherung** > **Sicherungszeitplan** > **Sicherungskonfiguration auswählen** > **Vollständiger Server** (die Größe wird angezeigt). Verwenden Sie diese Größe zur Überprüfung.</li></ol>
-| Backup | Sicherungsfehler für BMR | Wenn die BMR sehr groß ist, verschieben Sie einige Anwendungsdateien auf das Betriebssystemlaufwerk, und versuchen Sie es erneut. |
-| Backup | Die Option zum erneuten Schützen eines virtuellen VMware-Computers auf einem neuen Microsoft Azure Backup Server wird nicht als zum Hinzufügen verfügbar angezeigt. | VMware-Eigenschaften verweisen auf eine alte, außer Betrieb genommene Instanz von Microsoft Azure Backup Server. So lösen Sie dieses Problem:<br><ol><li>Navigieren Sie in VCenter (entspricht SC-VMM) zur Registerkarte **Zusammenfassung**, und klicken Sie dann auf **Benutzerdefinierte Attribute**.</li>  <li>Löschen Sie den alten Microsoft Azure Backup Server-Namen aus dem Wert **DPMServer**.</li>  <li>Navigieren Sie zurück zum neuen Microsoft Azure Backup Server, und ändern Sie die PG.  Nachdem Sie die Schaltfläche **Aktualisieren** ausgewählt haben, wird der virtuelle Computer mit einem Kontrollkästchen zum Hinzufügen von Schutz angezeigt.</li></ol> |
+| Backup | Sicherungsfehler bei BMR | Wenn die BMR sehr groß ist, verschieben Sie einige Anwendungsdateien auf das Betriebssystemlaufwerk, und versuchen Sie es erneut. |
+| Backup | Die Option zum erneuten Schützen eines virtuellen VMware-Computers in einer neuen Microsoft Azure Backup Server-Instanz wird nicht als zum Hinzufügen verfügbar angezeigt. | VMware-Eigenschaften verweisen auf eine alte, außer Betrieb genommene Instanz von Microsoft Azure Backup Server. So lösen Sie dieses Problem:<br><ol><li>Navigieren Sie in VCenter (entspricht SC-VMM) zur Registerkarte **Zusammenfassung**, und klicken Sie dann auf **Benutzerdefinierte Attribute**.</li>  <li>Löschen Sie den alten Microsoft Azure Backup Server-Namen aus dem Wert **DPMServer**.</li>  <li>Navigieren Sie zurück zum neuen Microsoft Azure Backup Server, und ändern Sie die PG.  Nachdem Sie die Schaltfläche **Aktualisieren** ausgewählt haben, wird der virtuelle Computer mit einem Kontrollkästchen zum Hinzufügen von Schutz angezeigt.</li></ol> |
 | Backup | Fehler beim Zugreifen auf Dateien/freigegebene Ordner | Versuchen Sie, die Einstellungen der Antivirensoftware zu ändern (wie im TechNet-Artikel [Ausführen von Antivirensoftware auf dem DPM-Server](https://technet.microsoft.com/library/hh757911.aspx) beschrieben).|
 
 
@@ -105,3 +119,33 @@ Verwenden Sie die Informationen in der folgenden Tabelle für die Problembehandl
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
 | Einrichten von E-Mail-Benachrichtigungen mit einem Office 365-Konto |Fehler-ID: 2013| **Ursache:**<br> Versuchte Verwendung des Office 365-Kontos <br>**Empfohlene Maßnahme:**<ol><li> Stellen Sie zuerst sicher, dass für Ihren DPM-Server in Exchange „Zulassen von anonymem Relay für einen Empfangsconnector“ eingerichtet ist. Weitere Informationen dazu, wie Sie diese Option konfigurieren, finden Sie unter [Zulassen von anonymem Relay für einen Empfangsconnector](https://technet.microsoft.com/library/bb232021.aspx) auf TechNet.</li> <li> Falls Sie kein internes SMTP-Relay verwenden können und für die Einrichtung Ihren Office 365-Server verwenden müssen, können Sie IIS als Relay einrichten. Konfigurieren Sie den DPM-Server so, dass er [SMTP mithilfe von ISS an O365 weiterleitet](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx).<br><br> **WICHTIG:** Achten Sie darauf, das Format „benutzer\@domäne.com“ und *nicht* „domäne\benutzer“ zu verwenden.<br><br><li>Weisen Sie DPM an, den lokalen Servernamen als SMTP-Server zu verwenden (Port 587). Verweisen Sie DPM dann auf die Benutzer-E-Mail, von der die E-Mail-Nachrichten stammen sollen.<li> Der Benutzername und das Kennwort auf der DPM-SMTP-Setupseite sollten sich auf ein Domänenkonto in der Domäne beziehen, in der sich DPM befindet. </li><br> **HINWEIS**: Nehmen Sie beim Ändern der SMTP-Serveradresse Änderungen an den neuen Einstellungen vor, schließen Sie das Feld mit den Einstellungen, und öffnen Sie es dann erneut. So können Sie prüfen, ob der neue Wert vorhanden ist.  Wenn Sie die Werte nur ändern und testen, werden die neuen Einstellungen unter Umständen nicht immer wirksam. Diese Überprüfung ist daher die empfohlene bewährte Methode.<br><br>Sie können diese Einstellungen während des Prozesses jederzeit löschen, indem Sie die DPM-Konsole schließen und die folgenden Registrierungsschlüssel bearbeiten: **HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Delete SMTPPassword and SMTPUserName keys**. Sie können sie der Benutzeroberfläche wieder hinzufügen, wenn Sie sie neu starten.
+
+
+## <a name="common-issues"></a>Häufige Probleme
+
+In diesem Abschnitt werden häufige Fehler beschrieben, die bei der Verwendung von Azure Backup Server auftreten könnten.
+
+
+### <a name="cbpsourcesnapshotfailedreplicamissingorinvalid"></a>CBPSourceSnapshotFailedReplicaMissingOrInvalid
+
+Fehlermeldung | Empfohlene Maßnahme |
+-- | --
+Bei der Sicherung ist ein Fehler aufgetreten, weil das Replikat für die Datenträgersicherung entweder ungültig ist oder fehlt. | Führen Sie zum Beheben des Problems die folgenden Schritte aus, und wiederholen Sie den Vorgang: <br/> 1. Erstellen Sie einen Datenträger-Wiederherstellungpunkt.<br/> 2. Führen Sie eine Konsistenzprüfung der Datenquelle durch. <br/> 3. Beenden Sie den Schutz der Datenquelle, und konfigurieren Sie den Schutz für diese Datenquelle dann erneut.
+
+### <a name="cbpsourcesnapshotfailedreplicametadatainvalid"></a>CBPSourceSnapshotFailedReplicaMetadataInvalid
+
+Fehlermeldung | Empfohlene Maßnahme |
+-- | --
+Bei der Quellvolume-Momentaufnahme ist ein Fehler aufgetreten, weil die Metadaten auf dem Replikat ungültig sind. | Erstellen Sie einen Datenträger-Wiederherstellungspunkt dieser Datenquelle, und wiederholen Sie die Onlinesicherung.
+
+### <a name="cbpsourcesnapshotfailedreplicainconsistent"></a>CBPSourceSnapshotFailedReplicaInconsistent
+
+Fehlermeldung | Empfohlene Maßnahme |
+-- | --
+Bei der Quellvolume-Momentaufnahme ist aufgrund eines inkonsistenten Datenquellenreplikats ein Fehler aufgetreten. | Führen Sie eine Konsistenzprüfung der Datenquelle durch, und versuchen Sie es erneut.
+
+### <a name="cbpsourcesnapshotfailedreplicacloningissue"></a>CBPSourceSnapshotFailedReplicaCloningIssue
+
+Fehlermeldung | Empfohlene Maßnahme |
+-- | --
+Fehler bei der Sicherung, weil das Datenträgersicherungs-Replikat nicht geklont werden konnte.| Stellen Sie sicher, dass alle vorherigen Datenträgersicherungs-Replikatdateien (VHDX) nicht eingebunden sind und während Onlinesicherungen keine Datenträger-zu-Datenträger-Sicherung erfolgt.

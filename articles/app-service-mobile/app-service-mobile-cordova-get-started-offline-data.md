@@ -2,7 +2,7 @@
 title: Aktivieren der Offlinesynchronisierung für Azure Mobile App (Cordova) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Offlinedaten in Ihrer Cordova-Anwendung mithilfe einer mobilen App Service-App zwischenspeichern und synchronisieren.
 documentationcenter: cordova
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 services: app-service\mobile
@@ -12,18 +12,23 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-cordova-ios
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: 44c54b570a38eb1a3b9ca773893599d1d497dfa2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: 04c8e7b2b60a60f17c49862d5c17793c16456032
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972149"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443523"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Aktivieren der Offlinesynchronisierung für Ihre mobile Cordova-App
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
+> [!NOTE]
+> Im Rahmen von Visual Studio App Center wird in neue und integrierte Dienste investiert, die für die Entwicklung mobiler Anwendungen von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren. Besuchen Sie noch heute das [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-offline-data).
+>
+
+## <a name="overview"></a>Übersicht
 In diesem Tutorial wird das Offlinesynchronisierungsfeature von Azure Mobile Apps für Cordova vor vorgestellt. Die Offlinesynchronisierung ermöglicht Endbenutzern die Interaktion mit einer mobilen App (also das &mdash;Anzeigen, Hinzufügen oder Ändern von Daten&mdash;), auch wenn keine Netzwerkverbindung besteht. Änderungen werden in einer lokalen Datenbank gespeichert.  Sobald das Gerät wieder online ist, werden diese Änderungen mit dem Remotedienst synchronisiert.
 
 Dieses Tutorial basiert auf der Cordova-Schnellstart-Projektmappe für Mobile Apps, die Sie im Rahmen des Tutorials [Apache Cordova-Schnellstartprojekt]erstellen. In diesem Tutorial erweitern Sie die Schnellstart-Projektmappe mit Offlinefeatures von Azure Mobile Apps.  Außerdem gehen wir speziell auf den offlinespezifischen Code in der App ein.

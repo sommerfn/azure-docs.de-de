@@ -7,27 +7,27 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 92799019d13de71d911767d8e400598513587667
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258394"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883576"
 ---
-# <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Übersicht über SSL-Beendigung und End-to-End-SSL mit Application Gateway
+# <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Übersicht über SSL-Terminierung und End-to-End-SSL mit Application Gateway
 
-Secure Sockets Layer (SSL) ist die standardmäßige Sicherheitstechnologie, mit der eine verschlüsselte Verbindung zwischen einem Webserver und einem Browser hergestellt wird. Über diese Verbindung wird sichergestellt, dass alle Daten privat und verschlüsselt zwischen dem Webserver und dem Browser übertragen werden. Application Gateway unterstützt sowohl die SSL-Beendigung am Gateway als auch die End-to-End-SSL-Verschlüsselung.
+Secure Sockets Layer (SSL) ist die standardmäßige Sicherheitstechnologie, mit der eine verschlüsselte Verbindung zwischen einem Webserver und einem Browser hergestellt wird. Über diese Verbindung wird sichergestellt, dass alle Daten privat und verschlüsselt zwischen dem Webserver und dem Browser übertragen werden. Application Gateway unterstützt sowohl die SSL-Terminierung am Gateway als auch die End-to-End-SSL-Verschlüsselung.
 
-## <a name="ssl-termination"></a>SSL-Beendigung
+## <a name="ssl-termination"></a>SSL-Terminierung
 
-Application Gateway unterstützt die SSL-Beendigung am Gateway, wonach der Datenverkehr in der Regel unverschlüsselt zu den Back-End-Servern gelangt. Die SSL-Beendigung am Application Gateway bietet zahlreiche Vorteile:
+Application Gateway unterstützt die SSL-Terminierung am Gateway, wonach der Datenverkehr in der Regel unverschlüsselt zu den Back-End-Servern gelangt. Die SSL-Terminierung am Application Gateway bietet zahlreiche Vorteile:
 
 - **Verbesserte Leistung:** Der größte Leistungsabfall bei der SSL-Entschlüsselung entsteht beim anfänglichen Handshake. Der Entschlüsselungsserver verbessert die Leistung durch das Zwischenspeichern von SSL-Sitzungs-IDs und das Verwalten von TLS-Sitzungstickets. Wenn dieser Vorgang am Application Gateway erfolgt, können alle Anforderungen vom gleichen Client die zwischengespeicherten Werte verwenden. Wenn der Vorgang auf den Back-End-Servern erfolgt, muss der Client jedes Mal eine neue Authentifizierung vornehmen, wenn die Clientanforderungen an einen anderen Server gerichtet werden. Sie können dieses Problem durch die Verwendung von TLS-Tickets beheben, diese werden jedoch nicht von allen Clients unterstützt und können das Konfigurieren und Verwalten erschweren.
 - **Bessere Auslastung der Back-End-Server:** Die SSL/TLS-Verarbeitung bringt eine hohe CPU-Intensität mit sich, die sich mit steigenden Schlüsselgrößen weiter verstärkt. Wenn Sie die Back-End-Server von dieser Aufgabe befreien, können diese für ihren effizientesten Zweck eingesetzt werden: das Bereitstellen von Inhalten.
 - **Intelligentes Routing:** Durch die Entschlüsselung des Datenverkehrs erhält das Anwendungsgateway Zugriff auf Anforderungsinhalte wie Header, URI etc. und kann diese Daten dann zum Weiterleiten von Anforderungen verwenden.
 - **Zertifikatverwaltung:** Zertifikate müssen nicht für alle Back-End-Server, sondern nur für das Anwendungsgateway erworben und installiert werden. Das spart Zeit und Geld.
 
-Zum Konfigurieren der SSL-Beendigung muss dem Listener ein SSL-Zertifikat hinzugefügt werden, damit das Anwendungsgateway einen symmetrischen Schlüssel gemäß der Spezifikation des SSL-Protokolls ableiten kann. Der symmetrische Schlüssel wird dann zum Verschlüsseln und Entschlüsseln des Datenverkehrs mit dem Gateway verwendet. Das SSL-Zertifikat muss im PFX-Format (privater Informationsaustausch) vorliegen. In diesem Dateiformat können Sie den privaten Schlüssel exportieren. Das ist erforderlich, damit das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs durchführen kann.
+Zum Konfigurieren der SSL-Terminierung muss dem Listener ein SSL-Zertifikat hinzugefügt werden, damit das Anwendungsgateway einen symmetrischen Schlüssel gemäß der Spezifikation des SSL-Protokolls ableiten kann. Der symmetrische Schlüssel wird dann zum Verschlüsseln und Entschlüsseln des Datenverkehrs mit dem Gateway verwendet. Das SSL-Zertifikat muss im PFX-Format (privater Informationsaustausch) vorliegen. In diesem Dateiformat können Sie den privaten Schlüssel exportieren. Das ist erforderlich, damit das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs durchführen kann.
 
 > [!NOTE] 
 >
@@ -38,7 +38,7 @@ Zum Hersteller der SSL-Verbindung müssen Sie sicherstellen, dass das SSL-Zertif
 - Das aktuelle Datum und die aktuelle Uhrzeit entsprechen den Datumsbereichen „Gültig ab“ und „Gültig bis“ im Zertifikat.
 - Der allgemeine Name (Common Name, CN) des Zertifikats entspricht dem Hostheader in der Anforderung. Wenn der Client eine Anforderung beispielsweise an `https://www.contoso.com/` richtet, muss der CN `www.contoso.com` lauten.
 
-### <a name="certificates-supported-for-ssl-termination"></a>Unterstützte Zertifikate für die SSL-Beendigung
+### <a name="certificates-supported-for-ssl-termination"></a>Unterstützte Zertifikate für die SSL-Terminierung
 
 Das Anwendungsgateway unterstützt die folgenden Arten von Zertifikaten:
 
@@ -47,7 +47,10 @@ Das Anwendungsgateway unterstützt die folgenden Arten von Zertifikaten:
 - Platzhalterzertifikat: Dieses Zertifikat unterstützt eine beliebige Anzahl von untergeordneten Domänen basierend auf *.site.com. * wird durch Ihre untergeordnete Domäne ersetzt. Es unterstützt jedoch nicht site.com. Falls Ihre die auf Benutzer Ihre Website zugreifen, ohne die führende Zeichenfolge „www“ einzugeben, wird das Platzhalterzertifikat diese Eingabe nicht berücksichtigen.
 - Selbstsignierte Zertifikate: Clientbrowser vertrauen diesen Zertifikaten nicht und warnen den Benutzer, dass das virtuelle Zertifikat des Diensts keiner Vertrauenskette angehört. Selbstsignierte Zertifikate eignen sich gut für Tests oder Umgebungen, in denen Administratoren die Clients kontrollieren und Sicherheitswarnungen des Browsers sicher umgehen können. Produktionsworkloads sollten niemals selbstsignierte Zertifikate verwenden.
 
-Weitere Informationen finden Sie im Artikel zum [Konfigurieren der SSL-Beendigung mit Application Gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+Weitere Informationen finden Sie im Artikel zum [Konfigurieren der SSL-Terminierung mit Application Gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+
+### <a name="size-of-the-certificate"></a>Größe des Zertifikats
+Lesen Sie den Abschnitt [Application Gateway-Grenzwerte](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits) durch, um die maximal unterstützte Größe von SSL-Zertifikaten zu erfahren.
 
 ## <a name="end-to-end-ssl-encryption"></a>End-to-End-SSL-Verschlüsselung
 
@@ -69,7 +72,7 @@ Wenn die Zertifikate der Mitglieder im Back-End-Pool nicht von bekannten Zertifi
 
 > [!NOTE] 
 >
-> Das Zertifikat, das der **Back-End-HTTP-Einstellung** zum Authentifizieren der Back-End-Server hinzugefügt wurde, kann mit dem Zertifikat übereinstimmen, das dem **Listener** zur SSL-Beendigung am Anwendungsgateway oder an einer anderen Instanz hinzugefügt wurde, um die Sicherheit zu verbessern.
+> Das Zertifikat, das der **Back-End-HTTP-Einstellung** zum Authentifizieren der Back-End-Server hinzugefügt wurde, kann mit dem Zertifikat übereinstimmen, das dem **Listener** zur SSL-Terminierung am Anwendungsgateway oder an einer anderen Instanz hinzugefügt wurde, um die Sicherheit zu verbessern.
 
 ![End-to-End-SSL-Szenario][1]
 
@@ -89,7 +92,17 @@ Authentifizierungszertifikate wurden als veraltet markiert und durch Trusted Roo
 - Zertifikate, die von bekannten Zertifizierungsstellen, deren CN dem Hostnamen in den HTTP-Einstellungen des Back-Ends entspricht, zertifiziert wurden, erfordern keinen zusätzlichen Schritt, damit End-to-End-SSL funktioniert. 
 
    Wenn beispielsweise die Back-End-Zertifikate von einer bekannten Zertifizierungsstelle ausgestellt wurden, der CN „contoso.com“ lautet und in der HTTP-Einstellung des Back-Ends das Feld „Host“ ebenfalls auf „contoso.com“ festgelegt wurde, sind keine weiteren Schritte erforderlich. Sie können das Protokoll in der HTTP-Einstellung des Back-Ends auf HTTPS festlegen. In diesem Fall ist SSL sowohl für den Integritätstest als auch für den Datenpfad aktiviert. Wenn Sie Azure App Service oder andere Azure-Webdienste als Back-End verwenden, gelten diese ebenfalls als implizit vertrauenswürdig, und für End-to-End-SSL sind keine weiteren Schritte erforderlich.
+   
+> [!NOTE] 
+>
+> Damit ein SSL-Zertifikat als vertrauenswürdig eingestuft wird, muss das Zertifikat des Back-End-Servers von einer Zertifizierungsstelle ausgestellt worden sein, die im vertrauenswürdigen Speicher von Application Gateway enthalten ist. Wurde das Zertifikat nicht von einer vertrauenswürdigen Zertifizierungsstelle ausgestellt, überprüft Application Gateway, ob das Zertifikat der ausstellenden Zertifizierungsstelle von einer vertrauenswürdigen Zertifizierungsstelle stammt. Dieser Vorgang wird so lange fortgesetzt, bis entweder eine vertrauenswürdige Zertifizierungsstelle gefunden wurde (woraufhin eine vertrauenswürdige, sichere Verbindung hergestellt wird) oder keine vertrauenswürdige Zertifizierungsstelle gefunden werden kann (woraufhin das Back-End von Application Gateway als fehlerhaft markiert wird). Das Back-End-Serverzertifikat sollte daher sowohl die Stammzertifizierungsstelle als auch die Zwischenzertifizierungsstellen enthalten.
+
 - Wenn das Zertifikat selbstsigniert ist oder von einem unbekannten Vermittler signiert wurde, müssen Sie zum Aktivieren von End-to-End-SSL in der v2-SKU ein vertrauenswürdiges Stammzertifikat definieren. Application Gateway kommuniziert nur mit Back-Ends, bei denen das Stammzertifikat des Serverzertifikats mit einem der vertrauenswürdigen Stammzertifikate in der Liste der HTTP-Einstellung für das Back-End, das dem Pool zugeordnet ist, übereinstimmt.
+
+> [!NOTE] 
+>
+> Das selbst signierte Zertifikat muss Teil einer Vertrauenskette sein. Ein einzelnes selbst signiertes Zertifikat ohne Kette wird in der V2-SKU nicht unterstützt.
+
 - Zusätzlich zur Übereinstimmung des Stammzertifikats überprüft Application Gateway auch, ob die Einstellung „Host“ in der HTTP-Einstellung des Back-Ends mit dem allgemeinen Namen (Common Name, CN), der vom SSL-Zertifikat des Back-End-Servers angegeben wird, übereinstimmt. Beim Herstellen einer SSL-Verbindung mit dem Back-End legt Application Gateway die SNI-Erweiterung (Server Name Indication, Servernamensanzeige) auf den Host fest, der in der HTTP-Einstellung des Back-Ends angegeben wurde.
 - Wenn das **Auswählen des Hostnamen aus der Back-End-Adresse** anstelle des Felds „Host“ in der HTTP-Einstellung des Back-Ends ausgewählt wurde, wird der SNI-Header immer auf den FQDN des Back-End-Pools festgelegt, und der CN im SSL-Zertifikat des Back-End-Servers muss mit diesem FQDN übereinstimmen. Mitglieder des Back-End-Pools mit IP-Adressen werden in diesem Szenario nicht unterstützt.
 - Das Stammzertifikat ist ein Base64-codiertes Stammzertifikat aus den Zertifikaten des Back-End-Servers.

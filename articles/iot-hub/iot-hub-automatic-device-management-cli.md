@@ -6,14 +6,14 @@ manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/13/2018
+ms.date: 06/28/2019
 ms.author: chrisgre
-ms.openlocfilehash: 0302146634904ccf1d87220d3a24553149e10372
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d57dbbdd7614d09d52fef0f613c43d4ca1d08136
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59011557"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485865"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>Automatische bedarfsgerechte Geräteverwaltung über die Azure CLI
 
@@ -29,7 +29,9 @@ Bei der automatischen Geräteverwaltung wird ein Satz von Gerätezwillingen mit 
 
 * Der **Zielinhalt** definiert die gewünschten Eigenschaften, die in den Zielgerätezwillingen hinzugefügt oder aktualisiert werden sollen. Der Inhalt umfasst einen Pfad zu dem Abschnitt der gewünschten Eigenschaften, die geändert werden sollen.
 
-* Die **Metriken** definieren die zusammenfassenden Angaben zu verschiedenen Konfigurationszuständen wie z.B. **Erfolgreich**, **In Bearbeitung** und **Fehler**. Benutzerdefinierte Metriken werden als Abfragen für gemeldete Gerätezwillingseigenschaften angegeben.  Systemmetriken sind die Standardmetriken, die den Zwillingsaktualisierungsstatus messen, z.B. die Anzahl von Zielgerätezwillingen und die Anzahl von Zwillingen, die erfolgreich aktualisiert wurden. 
+* Die **Metriken** definieren die zusammenfassenden Angaben zu verschiedenen Konfigurationszuständen wie z.B. **Erfolgreich**, **In Bearbeitung** und **Fehler**. Benutzerdefinierte Metriken werden als Abfragen für gemeldete Gerätezwillingseigenschaften angegeben.  Systemmetriken sind die Standardmetriken, die den Zwillingsaktualisierungsstatus messen, z.B. die Anzahl von Zielgerätezwillingen und die Anzahl von Zwillingen, die erfolgreich aktualisiert wurden.
+
+Die automatischen Gerätekonfigurationen werden zum ersten Mal kurz nach Erstellung der Konfiguration ausgeführt, und danach in Intervallen von fünf Minuten. Metrikabfragen werden jedes Mal, wenn die automatische Gerätekonfiguration läuft, ausgeführt.
 
 ## <a name="cli-prerequisites"></a>Voraussetzungen für die Befehlszeilenschnittstelle
 
@@ -56,7 +58,7 @@ Bevor Sie eine Konfiguration erstellen, müssen Sie angeben, welche Geräte Sie 
 
 ## <a name="define-the-target-content-and-metrics"></a>Definieren der Zielinhalte und -metriken
 
-Die Abfragen von Zielinhalten und -metriken werden als JSON-Dokumente angegeben, in denen die gewünschten festzulegenden Eigenschaften des Gerätezwillings und die gemeldeten zu messenden Eigenschaften beschrieben werden.  Um eine automatische Gerätekonfiguration mithilfe der Azure CLI zu erstellen, speichern Sie die Zielinhalte und -metriken lokal als TXT-Dateien. Sie verwenden die Dateipfade in einem späteren Abschnitt, wenn Sie den Befehl zum Anwenden der Konfiguration auf Ihr Gerät ausführen. 
+Die Abfragen von Zielinhalten und -metriken werden als JSON-Dokumente angegeben, in denen die gewünschten festzulegenden Eigenschaften des Gerätezwillings und die gemeldeten zu messenden Eigenschaften beschrieben werden.  Um eine automatische Gerätekonfiguration mithilfe der Azure CLI zu erstellen, speichern Sie die Zielinhalte und -metriken lokal als TXT-Dateien. Sie verwenden die Dateipfade in einem späteren Abschnitt, wenn Sie den Befehl zum Anwenden der Konfiguration auf Ihr Gerät ausführen.
 
 Hier ist ein einfaches Beispiel für Zielinhalt:
 

@@ -16,12 +16,12 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e84324456aef12070cf9355fb17e132f9f99b80
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 814c81b6092c4af3778617e165a0bdbce09d71d7
+ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202790"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68779111"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -31,7 +31,7 @@ Mit der Azure AD-Passthrough-Authentifizierung (Azure Active Directory) können 
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-Diese Funktion ist eine Alternative zum [Kennworthashsynchronisierung von Azure AD](how-to-connect-password-hash-synchronization.md), die Organisationen auch eine Möglichkeit zur Cloudauthentifizierung bereitstellt. Allerdings können bestimmte Organisationen, die ihre lokale Active Directory-Sicherheits- und -Kennwortrichtlinien erzwingen möchten, stattdessen die Passthrough-Authentifizierung verwenden. Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und Informationen, wie Sie die richtige Anmeldemethode für Ihre Organisation wählen, finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
+Diese Funktion ist eine Alternative zum [Kennworthashsynchronisierung von Azure AD](how-to-connect-password-hash-synchronization.md), die Organisationen auch eine Möglichkeit zur Cloudauthentifizierung bereitstellt. Allerdings können bestimmte Organisationen, die ihre lokale Active Directory-Sicherheits- und -Kennwortrichtlinien erzwingen möchten, stattdessen die Passthrough-Authentifizierung verwenden. Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und Informationen, wie Sie die richtige Anmeldemethode für Ihre Organisation wählen, finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).
 
 ![Azure AD-Passthrough-Authentifizierung](./media/how-to-connect-pta/pta1.png)
 

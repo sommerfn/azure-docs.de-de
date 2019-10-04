@@ -11,18 +11,22 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.custom: fasttrack-edit
+ms.openlocfilehash: a585ab059319b15be1f2a86bf10b7dc58da72494
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454506"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299464"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Kapazität einer Azure API Management-Instanz
 
-**Kapazität** ist die einzige und wichtigste [Azure Monitor-Metrik](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) für das Treffen fundierter Entscheidungen im Hinblick auf die Skalierung einer API Management-Instanz zur Bewältigung höherer Lasten. Ihre Erstellung ist komplex und setzt ein bestimmtes Verhalten voraus.
+**Kapazität** ist die wichtigste [Azure Monitor-Metrik](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis) für das Treffen fundierter Entscheidungen im Hinblick auf die Skalierung einer API Management-Instanz zur Bewältigung höherer Lasten. Ihre Erstellung ist komplex und setzt ein bestimmtes Verhalten voraus.
 
 In diesem Artikel wird erläutert, was die **Kapazität** ist und wie sie sich verhält. Sie erfahren, wie Sie auf **Kapazitätsmetriken** im Azure-Portal zugreifen können, und wann Sie Ihre API Management-Instanz skalieren oder aktualisieren sollten.
+
+> [!IMPORTANT]
+> In diesem Artikel wird erläutert, wie Sie Ihre Azure API Management-Instanz basierend auf der Kapazitätsmetrik überwachen und skalieren können. Es ist jedoch ebenso wichtig zu verstehen, was passiert, wenn die Kapazität einer API Management-Instanz tatsächlich *erreicht* ist. In Azure API Management wird keine Drosselung auf Dienstebene angewandt, um eine physische Überladung der Instanzen zu verhindern. Wenn die physische Kapazität einer Instanz erreicht ist, gleicht das Verhalten dem eines überlasteten Webservers, auf dem eingehende Anforderungen nicht verarbeitet werden können: Die Latenz steigt an, Verbindungen werden unterbrochen, Timeoutfehler treten auf usw. Das bedeutet, dass API-Clients so vorbereitet werden sollten, dass in diesem Fall wie bei jedem anderen externen Dienst vorgegangen wird (z. B. durch Anwendung von Wiederholungsrichtlinien).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,12 +44,15 @@ Damit Sie den Schritten in diesem Artikel folgen können, benötigen Sie folgend
 
 ![Kapazitätsmetrik](./media/api-management-capacity/capacity-ingredients.png)
 
-**Kapazität** ist ein Indikator für die Auslastung einer APIM-Instanz. Sie spiegelt die Ressourcenverwendung (CPU, Speicher) und die Länge von Netzwerkwarteschlangen wider. Die CPU- und Speicherauslastung zeigt die Ressourcenverwendung von:
+Die **Kapazität** ist ein Indikator für die Auslastung einer API Management-Instanz. Sie spiegelt die Ressourcenverwendung (CPU, Speicher) und die Länge von Netzwerkwarteschlangen wider. Die CPU- und Speicherauslastung zeigt die Ressourcenverwendung von:
 
-+ APIM-Diensten, wie z.B. Verwaltungsaktionen oder Anfragenbearbeitung, die das Weiterleiten von Anforderungen oder das Ausführen einer Richtlinie einschließen können, und
-+ ausgewählten Betriebssystemprozessen, einschließlich Prozesse, die Kosten für SSL-Handshakes bei neuen Verbindungen verursachen.
++ API Management-Diensten auf Datenebene, wie z. B. die Anforderungsverarbeitung, die das Weiterleiten von Anforderungen oder das Ausführen einer Richtlinie umfassen kann
++ API Management-Diensten auf Verwaltungsebene, z. B. über das Azure-Portal oder ARM angewandte Verwaltungsaktionen oder vom [Entwicklerportal](api-management-howto-developer-portal.md) stammende Lasten
++ Ausgewählten Betriebssystemprozessen, einschließlich Prozessen, für die Kosten für SSL-Handshakes bei neuen Verbindungen anfallen
 
 Die **Gesamtkapazität** ist ein Durchschnitt der eigenen Werte aus jeder Einheit einer API Management-Instanz.
+
+Obwohl die **Kapazitätsmetrik** für die Ermittlung von Problemen mit Ihrer API Management-Instanz entworfen wurde, gibt es Fälle, bei denen Probleme nicht in den Änderungen der **Kapazitätsmetrik** berücksichtigt werden.
 
 ## <a name="capacity-metric-behavior"></a>Verhalten der Kapazitätsmetrik
 
@@ -63,13 +70,15 @@ Je komplexer die Vorgänge für die Anforderungen sind, desto höher ist der **K
 ![Metrik mit Kapazitätsspitzen](./media/api-management-capacity/capacity-spikes.png)
 
 Die **Kapazität** kann auch vorübergehend Spitzen aufweisen oder größer als 0 (null) sein, selbst wenn keine Anforderungen verarbeitet werden. Dies geschieht aufgrund von system- oder plattformspezifischen Aktionen und sollte bei der Entscheidung, ob eine Instanz skaliert werden soll, nicht berücksichtigt werden.
+
+Eine niedrige **Kapazitätsmetrik** bedeutet nicht zwingend, dass Ihre API Management-Instanz keine Probleme aufweist.
   
 ## <a name="use-the-azure-portal-to-examine-capacity"></a>Verwenden des Azure-Portals zum Untersuchen der Kapazität
   
 ![Kapazitätsmetrik](./media/api-management-capacity/capacity-metric.png)  
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer APIM-Instanz.
-2. Wählen Sie **Metriken (Vorschau)** aus.
+2. Klicken Sie auf **Metriken**.
 3. Wählen Sie im violetten Abschnitt die Metrik **Kapazität** aus den verfügbaren Metriken aus, und behalten Sie den Standardaggregationstyp **Mittelwert** bei.
 
     > [!TIP]

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 846472e00bc048de906ee8e14f6de38e366f3571
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 377c5088d39821e87412c517540b3190b0a14a00
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225228"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66393284"
 ---
 # <a name="import-or-export-configuration-data"></a>Importieren oder Exportieren von Konfigurationsdaten
 
@@ -29,7 +29,7 @@ Dieser Artikel enthält eine Anleitung zum Importieren und Exportieren von Daten
 
 Beim Import werden Konfigurationsdaten aus einer vorhandenen Quelle in einen App Configuration-Speicher eingefügt, anstatt sie manuell einzugeben. Verwenden Sie die Importfunktion zum Migrieren von Daten in einen App Configuration-Speicher oder zum Aggregieren von Daten aus mehreren Quellen. App Configuration unterstützt das Importieren aus JSON-, YAML- oder Eigenschaftendateien.
 
-Sie können Daten entweder mit dem [Azure-Portal](https://aka.ms/azconfig/portal) oder über die [Azure CLI](./scripts/cli-import.md) importieren. Führen Sie im Azure-Portal die folgenden Schritte aus:
+Sie können Daten entweder mit dem [Azure-Portal](https://portal.azure.com) oder über die [Azure CLI](./scripts/cli-import.md) importieren. Führen Sie im Azure-Portal die folgenden Schritte aus:
 
 1. Navigieren Sie zu Ihrem App Configuration-Speicher, und wählen Sie **Import/Export**.
 
@@ -53,7 +53,7 @@ Sie können Daten entweder mit dem [Azure-Portal](https://aka.ms/azconfig/portal
 
 Beim Export werden in App Configuration gespeicherte Daten an ein anderes Ziel geschrieben. Verwenden Sie die Exportfunktion beispielsweise zum Speichern von Daten eines App Configuration-Speichers in einer Datei, die während der Bereitstellung in Ihren Anwendungscode eingebettet wird.
 
-Sie können Daten entweder mit dem [Azure-Portal](https://aka.ms/azconfig/portal) oder über die [Azure CLI](./scripts/cli-export.md) exportieren. Führen Sie im Azure-Portal die folgenden Schritte aus:
+Sie können Daten entweder mit dem [Azure-Portal](https://portal.azure.com) oder über die [Azure CLI](./scripts/cli-export.md) exportieren. Führen Sie im Azure-Portal die folgenden Schritte aus:
 
 1. Navigieren Sie zu Ihrem App Configuration-Speicher, und wählen Sie **Import/Export**.
 
@@ -69,4 +69,5 @@ Sie können Daten entweder mit dem [Azure-Portal](https://aka.ms/azconfig/portal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Erstellen einer ASP.NET-Web-App](./quickstart-aspnet-core-app.md)  
+> [!div class="nextstepaction"]
+> [Erstellen einer ASP.NET Core-Web-App](./quickstart-aspnet-core-app.md)  

@@ -8,18 +8,19 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: 90f89f9ffb1d55e7621c87f168375251c78d9730
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: c4e4a984adc0ec6af99667ff36c009ca730acf48
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533492"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172798"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Tutorial: Bereitstellen über GitHub in Azure App Service mit Continuous Integration und Continuous Deployment von Jenkins
 
 In diesem Tutorial werden Continuous Integration (CI) und Continuous Deployment (CD) in Jenkins eingerichtet, um eine exemplarische Java-Web-App aus GitHub in [Azure App Service unter Linux](/azure/app-service/containers/app-service-linux-intro) bereitzustellen. Wenn Sie die App aktualisieren, indem Sie Commits an GitHub pushen, wird die App von Jenkins automatisch erstellt und erneut in Azure App Service veröffentlicht. Die Beispiel-App in diesem Tutorial wurde unter Verwendung des [Spring Boot](https://projects.spring.io/spring-boot/)-Frameworks entwickelt. 
 
-![Übersicht](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
+![Übersicht über die GitHub-Bereitstellung in Azure App Service](media/tutorial-jenkins-deploy-web-app-azure-app-service/azure-continuous-integration-deployment-overview.png)
 
 Dieses Tutorial umfasst folgende Aufgaben:
 
@@ -96,19 +97,19 @@ Aktivieren Sie [GitHub-Webhooks](https://developer.github.com/webhooks/) in Jenk
 
 1. Wählen Sie auf der Seite **Manage Jenkins** (Jenkins verwalten) die Option **Configure System** (System konfigurieren) aus. 
 
-   ![Konfigurieren des Systems](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
+   ![Konfigurieren des Systems in Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
 
 1. Geben Sie im Abschnitt **GitHub** Details für Ihren GitHub-Server an. Wählen Sie in der Liste **Add GitHub Server** (GitHub-Server hinzufügen) die Option **GitHub Server** (GitHub-Server) aus. 
 
-   ![Hinzufügen des GitHub-Servers](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
+   ![Hinzufügen des GitHub-Servers in Jenkins](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
 1. Sollte die Eigenschaft **Manage Hooks** (Hooks verwalten) nicht ausgewählt sein, wählen Sie diese Eigenschaft aus. Wählen Sie **Advanced** (Erweitert) aus, um weitere Einstellungen angeben zu können. 
 
-   ![Auswählen von „Advanced“ (Erweitert), um weitere Einstellungen anzuzeigen](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
+   ![Angeben erweiterter Jenkins-Einstellungen für GitHub-Server](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
 1. Wählen Sie in der Liste **Manage additional GitHub actions** (Zusätzliche GitHub-Aktionen verwalten) die Option **Convert login and password to token** (Anmeldename und Kennwort in Token konvertieren) aus.
 
-   ![Auswählen von „Manage additional GitHub actions“ (Zusätzliche GitHub-Aktionen verwalten)](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
+   ![Konvertieren von Anmeldename und Kennwort in ein Token für GitHub](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
 
 1. Wählen Sie **From login and password** (Auf der Grundlage von Anmeldename und Kennwort) aus, um Ihren Benutzernamen und Ihr Kennwort für GitHub eingeben zu können. Wählen Sie anschließend **Create token credentials** (Tokenanmeldeinformationen erstellen) aus, um ein [persönliches Zugriffstoken (Personal Access Token, PAT) für GitHub](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) zu erstellen.   
 
@@ -122,7 +123,7 @@ Erstellen Sie als Nächstes den Azure-Dienstprinzipal, den Jenkins für die Auth
 
 ## <a name="create-service-principal"></a>Erstellen eines Dienstprinzipals
 
-In einem späteren Abschnitt erstellen Sie einen Jenkins-Pipelineauftrag, der Ihre App auf der Grundlage von GitHub erstellt und in Azure App Service bereitstellt. Damit Jenkins auf Azure zugreifen kann, ohne Ihre Anmeldeinformationen eingeben zu müssen, erstellen Sie in Azure Active Directory einen [Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) für Jenkins. Ein Dienstprinzipal ist eine separate Identität, die Jenkins für die Authentifizierung des Zugriffs auf Azure-Ressourcen verwenden kann. Führen Sie zum Erstellen dieses Dienstprinzipals den Azure CLI-Befehl [**`az ad sp create-for-rbac`**](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) aus – entweder über Ihre lokale Befehlszeile oder über Azure Cloud Shell. Beispiel: 
+In einem späteren Abschnitt erstellen Sie einen Jenkins-Pipelineauftrag, der Ihre App auf der Grundlage von GitHub erstellt und in Azure App Service bereitstellt. Damit Jenkins auf Azure zugreifen kann, ohne Ihre Anmeldeinformationen eingeben zu müssen, erstellen Sie in Azure Active Directory einen [Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) für Jenkins. Ein Dienstprinzipal ist eine separate Identität, die Jenkins für die Authentifizierung des Zugriffs auf Azure-Ressourcen verwenden kann. Führen Sie zum Erstellen dieses Dienstprinzipals den Azure CLI-Befehl [ **`az ad sp create-for-rbac`** ](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) aus – entweder über Ihre lokale Befehlszeile oder über Azure Cloud Shell. Beispiel: 
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "yourAzureServicePrincipalName" --password yourSecurePassword
@@ -169,9 +170,8 @@ Der Befehl **`create-for-rbac`** generiert die folgende Ausgabe:
    | **Geheimer Clientschlüssel** | <*yourSecurePassword*> | Der `password`-Wert (Geheimnis), den Sie für Ihren Azure-Dienstprinzipal angegeben haben. | 
    | **Tenant ID** | <*yourAzureActiveDirectoryTenant-ID*> | Der `tenant`-GUID-Wert für Ihren Azure Active Directory-Mandanten. | 
    | **ID** | <*yourAzureServicePrincipalName*> | Der `displayName`-Wert für Ihren Azure-Dienstprinzipal. | 
-   |||| 
 
-1. Wählen Sie **Verify Service Principal** (Dienstprinzipal überprüfen) aus, um zu überprüfen, ob Ihr Dienstprinzipal funktioniert. Wählen Sie **OK** aus, wenn Sie fertig sind.
+1. Wählen Sie **Verify Service Principal** (Dienstprinzipal überprüfen) aus, um zu überprüfen, ob Ihr Dienstprinzipal funktioniert. Wenn Sie fertig sind, wählen Sie **OK**.
 
 Erstellen Sie als Nächstes die Jenkins-Pipeline, die Ihre App erstellt und bereitstellt.
 
@@ -181,11 +181,11 @@ Erstellen Sie in Jenkins den Pipelineauftrag für die Erstellung und Bereitstell
 
 1. Kehren Sie zur Startseite von Jenkins zurück, und wählen Sie **New Item** (Neues Element) aus. 
 
-   ![Auswählen von „Neues Element“](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
+   ![Erstellen einer Jenkins-Pipeline](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
-1. Geben Sie einen Namen für Ihren Pipelineauftrag an (beispielsweise „My-Java-Web-App“), und wählen Sie **Pipeline** aus. Wählen Sie am unteren Rand **OK** aus.  
+1. Geben Sie einen Namen für Ihren Pipelineauftrag an (beispielsweise „My-Java-Web-App“), und wählen Sie **Pipeline** aus. Wählen Sie unten **OK** aus.  
 
-   ![Auswählen von „Pipeline“](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
+   ![Benennen des Jenkins-Pipelineauftrags](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 
 1. Richten Sie Jenkins mit Ihrem Dienstprinzipal ein, damit Jenkins Bereitstellungsvorgänge für Azure ausführen kann, ohne Ihre eigenen Anmeldeinformationen zu verwenden.
 
@@ -199,9 +199,9 @@ Erstellen Sie in Jenkins den Pipelineauftrag für die Erstellung und Bereitstell
       WEB_APP=yourWebAppName
       ```
 
-      ![Auswählen von „Prepare an environment for the run“ (Umgebung für die Ausführung vorbereiten) und Festlegen von Umgebungsvariablen](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
+      ![Auswählen einer Umgebung für die Ausführung und Festlegen der Umgebungsvariablen](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-jenkins-run.png)
 
-1. Wenn Sie fertig sind, wählen Sie **Speichern** aus.
+1. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
 
 Erstellen Sie als Nächstes Build- und Bereitstellungsskripts für Jenkins.
 
@@ -254,7 +254,7 @@ Geben Sie nun das Build- und Bereitstellungsskript an, das von Jenkins verwendet
 
 1. Wählen Sie in Jenkins Ihren zuvor erstellten Pipelineauftrag aus. 
 
-   ![Auswählen des Pipelineauftrags für Ihre Web-App](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
+   ![Auswählen des Jenkins-Pipelineauftrags für Ihre Web-App](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
 
 1. Wählen Sie im linken Menü die Option **Configure** (Konfigurieren) aus.
 
@@ -272,9 +272,9 @@ Geben Sie nun das Build- und Bereitstellungsskript an, das von Jenkins verwendet
 
    Danach sollte Ihre Pipelinedefinition wie im folgenden Beispiel aussehen: 
 
-   ![Verweisen der Pipeline auf das Skript](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
+   ![Verweisen der Jenkins-Pipeline auf das Skript](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
-1. Wenn Sie fertig sind, wählen Sie **Speichern** aus.
+1. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
 
 Erstellen Sie als Nächstes Ihre App, und stellen Sie sie in Azure App Service bereit. 
 

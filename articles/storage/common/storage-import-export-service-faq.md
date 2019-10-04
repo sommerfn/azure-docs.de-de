@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 07/18/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 109f541157716ae4f9b195d0a3ed02a1d8c91960
+ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867574"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68314105"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export-Dienst: Häufig gestellte Fragen 
 Es folgen Fragen, die Sie möglicherweise stellen, wenn Sie Ihren Azure Import/Export-Dienst zum Übertragen von Daten in Azure Storage verwenden, und die zugehörigen Antworten. Die Fragen und Antworten sind in folgende Kategorien unterteilt:
@@ -44,18 +44,18 @@ Ja. Weitere Informationen finden Sie unter [Workflow zur Offlinesicherung in Azu
 
 ### <a name="can-i-purchase-drives-for-importexport-jobs-from-microsoft"></a>Kann ich bei Microsoft Laufwerke für Import-/Exportaufträge kaufen?
 
- Nein. Sie müssen sowohl für den Import als auch Export Ihre eigenen Laufwerke einsenden.
+Nein. Sie müssen sowohl für den Import als auch Export Ihre eigenen Laufwerke einsenden.
 
 
 ## <a name="preparing-disks-for-importexport"></a>Vorbereiten der Datenträger für den Import/Export
 
 ### <a name="can-i-skip-the-drive-preparation-step-for-an-import-job-can-i-prepare-a-drive-without-copying"></a>Kann ich für einen Importauftrag den Schritt der Laufwerkvorbereitung überspringen? Kann ich ein Laufwerk ohne Kopieren vorbereiten?
 
- Nein. Alle zum Importieren von Daten verwendeten Festplatten müssen mit dem Azure WAImportExport-Tool vorbereitet werden. Verwenden Sie das Tool auch, um Daten auf das Laufwerk zu kopieren.
+Nein. Alle zum Importieren von Daten verwendeten Festplatten müssen mit dem Azure WAImportExport-Tool vorbereitet werden. Verwenden Sie das Tool auch, um Daten auf das Laufwerk zu kopieren.
 
 ### <a name="do-i-need-to-perform-any-disk-preparation-when-creating-an-export-job"></a>Muss ich den Datenträger beim Erstellen eines Exportauftrags vorbereiten?
 
- Nein. Einige Vorabüberprüfungen sollten Sie durchführen. Überprüfen Sie die Anzahl der erforderlichen Datenträger mithilfe des PreviewExport-Befehls aus dem WAImportExport-Tool. Weitere Informationen finden Sie unter [Vorschau der Laufwerknutzung für einen Exportauftrag](https://msdn.microsoft.com/library/azure/dn722414.aspx). Sie können mit dem Befehl basierend auf der Größe der Laufwerke, die Sie verwenden möchten, eine Vorschau der Festplattenverwendung für ausgewählte Blobs anzeigen. Überprüfen Sie außerdem, ob Sie Lese-/Schreibzugriff auf die Festplatte haben, die für den Exportauftrag versendet werden soll.
+Nein. Einige Vorabüberprüfungen sollten Sie durchführen. Überprüfen Sie die Anzahl der erforderlichen Datenträger mithilfe des PreviewExport-Befehls aus dem WAImportExport-Tool. Weitere Informationen finden Sie unter [Vorschau der Laufwerknutzung für einen Exportauftrag](https://msdn.microsoft.com/library/azure/dn722414.aspx). Sie können mit dem Befehl basierend auf der Größe der Laufwerke, die Sie verwenden möchten, eine Vorschau der Festplattenverwendung für ausgewählte Blobs anzeigen. Überprüfen Sie außerdem, ob Sie Lese-/Schreibzugriff auf die Festplatte haben, die für den Exportauftrag versendet werden soll.
 
 ## <a name="importexport-jobs"></a>Import-/Exportaufträge
 
@@ -66,7 +66,7 @@ Ja. Sie können einen Auftrag stornieren, solange dieser den Status **Wird erste
 Den Status abgeschlossener Aufträge können Sie bis zu 90 Tage lang anzeigen. Abgeschlossene Aufträge werden nach 90 Tagen gelöscht.
 
 ### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>Was soll ich tun, wenn ich mehr als 10 Laufwerke importieren oder exportieren möchte?
-Jeder Import- oder Exportauftrag kann auf maximal 10 Laufwerke verweisen. Um mehr als zehn Laufwerke zu verschicken, sollten Sie mehrere Aufträge erstellen. Laufwerke, die demselben Auftrag zugeordnet sind, müssen zusammen in einem Paket verschickt werden. Weitere Informationen und Anleitungen für den Fall, dass die Datenkapazität mehrere Datenträgerimportaufträge umfasst, erhalten Sie von Microsoft unter bulkimport@microsoft.com. 
+Jeder Import- oder Exportauftrag kann auf maximal 10 Laufwerke verweisen. Um mehr als zehn Laufwerke zu verschicken, sollten Sie mehrere Aufträge erstellen. Laufwerke, die demselben Auftrag zugeordnet sind, müssen zusammen in einem Paket verschickt werden. Weitere Informationen und Anleitungen für den Fall, dass die Datenkapazität mehrere Datenträgerimportaufträge umfasst, erhalten Sie vom Microsoft-Support. 
 
 ### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>Für das hochgeladenen Blob wird der Status „Eine Lease ist abgelaufen“ angezeigt. Wie sollte ich vorgehen?
 Sie können das Feld „Eine Lease ist abgelaufen“ ignorieren. Der Import/Export beansprucht das Blob während des Uploads für sich, damit kein anderer Prozess das Blob parallel updaten kann. Der Status „Eine Lease ist abgelaufen“ bedeutet, dass der Import/Export-Prozess nun nichts mehr hochlädt und Ihnen das Blob zur Verfügung steht. 
@@ -97,7 +97,7 @@ Beachten Sie, dass die physischen Medien beim Versand unter Umständen Ländergr
 
 Die Anforderungen hängen von den jeweiligen für das Azure-Rechenzentrum geltenden Einschränkungen ab.
 - Es gibt einige wenige Standorte, bei denen aus Sicherheitsgründen eine Eingangs-ID-Nummer des Microsoft-Rechenzentrums auf dem Paket vermerkt sein muss. Bevor Sie Ihre Laufwerke oder Datenträger an das Rechenzentrum senden, wenden Sie sich an Azure DataBox Operations (adbops@microsoft.com), um diese Nummer zu erhalten. Ohne diese Nummer wird die Annahme des Pakets verweigert.
-- Die Rechenzentren in Indien benötigen die persönlichen Daten des Fahrers, wie z.B. den Personalausweis oder die ID-Nachweisnummer   (z.B. PAN, AADHAR, DL), den Namen, Kontakt und das Autokennzeichen, um einen Zutrittsausweis zu erhalten. Um Verzögerungen bei der Zustellung zu vermeiden, informieren Sie Ihren Spediteur über diese Anforderungen.
+- Die Rechenzentren in Indien benötigen die persönlichen Daten des Fahrers, wozu der Personalausweis oder die ID-Nachweisnummer (z. B. PAN, AADHAR, DL), der Name, der Kontakt und das Autokennzeichen gehören, um einen Zutrittsausweis zu erhalten. Um Verzögerungen bei der Zustellung zu vermeiden, informieren Sie Ihren Spediteur über diese Anforderungen.
 
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Beim Erstellen des Auftrags habe ich festgestellt, dass die Versandadresse ein Standort ist, der sich von meinem Speicherkontostandort unterscheidet. Wie sollte ich vorgehen?
@@ -117,7 +117,7 @@ Das Azure-Datacenter schickt das Laufwerk, das den unterstützten Anforderungen 
 
 ### <a name="does-the-service-format-the-drives-before-returning-them"></a>Werden die Festplatten vom Dienst formatiert, bevor sie zurückgeschickt werden?
 
- Nein. Alle Festplatten werden mit BitLocker verschlüsselt.
+Nein. Alle Festplatten werden mit BitLocker verschlüsselt.
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>Wie kann ich auf Daten zugreifen, die von diesem Dienst importiert werden?
 
@@ -132,7 +132,7 @@ Beim Vorbereiten einer Festplatte für einen Importauftrag wird das Ziel mit dem
 Das ist unterschiedlich. Beim Vorbereiten der Festplatte können Sie angeben, ob die Zieldateien überschrieben oder ignoriert werden sollen. Hierfür verwenden Sie das Feld „Disposition:<rename|no-overwrite|overwrite>“ (umbenennen, nicht überschreiben, überschreiben) in der Dataset-CSV-Datei. In der Standardeinstellung benennt der Dienst die neuen Dateien um, anstatt vorhandene Blobs oder Dateien zu überschreiben.
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Ist das WAImportExport-Tool mit dem 32-Bit-Windows-Betriebssystem kompatibel?
- Nein. Das WAImportExport-Tool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Eine vollständige Liste der unterstützten Betriebssysteme finden Sie unter [Unterstützte Betriebssysteme](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements). 
+Nein. Das WAImportExport-Tool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Eine vollständige Liste der unterstützten Betriebssysteme finden Sie unter [Unterstützte Betriebssysteme](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements). 
 
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Welche maximale Blockblob- und Seitenblobgröße wird von Azure Import/Export unterstützt?

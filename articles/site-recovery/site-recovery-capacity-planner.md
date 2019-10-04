@@ -6,19 +6,18 @@ manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: eeadfd6a57ff8a26f3f124e2a807fcd66e77b85f
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 7501982f90cd145e0fc918bf976a840323a31127
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976714"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972569"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Planen der Kapazität für die Notfallwiederherstellung von Hyper-V-VMs 
 
-Eine neue, erweiterte Version des [Azure Site Recovery-Bereitstellungsplaners für Hyper-V zu Azure](site-recovery-hyper-v-deployment-planner.md) ist jetzt verfügbar. Sie ersetzt das alte Tool. Verwenden Sie das neue Tool für Ihre Bereitstellungsplanung.
-Das Tool verfügt über Richtlinien für Folgendes:
+Der [Azure Site Recovery-Bereitstellungsplaner] (site-recovery-hyper-v-deployment-planner.md) für die Bereitstellung von Hyper-V in Azure bietet Folgendes:
 
 * Bewertung der Eignung von virtuellen Computern basierend auf Datenträgeranzahl, Datenträgergröße, IOPS, Änderungsrate und einigen VM-Merkmalen
 * Vergleich von erforderlicher Netzwerkbandbreite und RPO-Bewertung

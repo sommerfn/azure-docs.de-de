@@ -21,13 +21,12 @@
     - name: Verbindungen und Peering
       href: expressroute-circuit-peerings.md
     - name: Standorte und Partner
-      href: expressroute-locations.md
       items:
         - name: Anbieter nach Standort
           href: expressroute-locations-providers.md
         - name: Standorte nach Anbieter
           href: expressroute-locations.md
-    - name: Informationen zu Gateways für virtuelle Netzwerke
+    - name: Gateway für virtuelle Netzwerke und FastPath
       href: expressroute-about-virtual-network-gateways.md
     - name: Voraussetzungen
       href: expressroute-prerequisites.md
@@ -45,6 +44,8 @@
       href: expressroute-erdirect-about.md
     - name: Informationen zu ExpressRoute Global Reach
       href: expressroute-global-reach.md
+    - name: Verbinden von Azure mit der öffentlichen Cloud
+      href: expressroute-connect-azure-to-public-cloud.md
     - name: Interoperabilität der Back-End-Konnektivität
       items:
         - name: Einleitung und Testeinrichtung
@@ -57,6 +58,14 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Netzwerkübergreifende Verbindungen
       href: cross-network-connectivity.md
+    - name: Integrierte Sicherheitskontrollen
+      href: expressroute-security-controls.md
+    - name: Entwerfen für Hochverfügbarkeit
+      href: designing-for-high-availability-with-expressroute.md
+    - name: Entwerfen für die Notfallwiederherstellung
+      items:
+        - name: Privates Peering
+          href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
 - name: Anleitungen
   items:
     - name: Erstellen und Ändern einer Verbindung
@@ -67,6 +76,9 @@
           href: expressroute-howto-circuit-arm.md
         - name: Azure-Befehlszeilenschnittstelle
           href: howto-circuit-cli.md
+        - name: Azure Resource Manager-Vorlage
+          displayName: 'ARM,resource manager template'
+          href: expressroute-howto-circuit-resource-manager-template.md
     - name: Erstellen und Ändern einer Peeringkonfiguration
       items:
         - name: Azure-Portal
@@ -183,6 +195,9 @@
       href: 'https://msdn.microsoft.com/library/azure/mt586720'
     - name: REST (klassisch)
       href: 'https://msdn.microsoft.com/library/azure/dn606310'
+    - name: Resource Manager-Vorlage
+      displayName: 'ARM,resource manager template'
+      href: /azure/templates/microsoft.network/expressroutecircuits
 - name: Ressourcen
   items:
     - name: "ExpressRoute\_– FAQ"

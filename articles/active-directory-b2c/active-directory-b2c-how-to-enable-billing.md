@@ -2,25 +2,25 @@
 title: Verknüpfen eines Azure-Abonnements – Azure Active Directory B2C | Microsoft-Dokumentation
 description: Enthält eine Schritt-für-Schritt-Anleitung zur Vorgehensweise, mit der die Abrechnung für einen Azure AD B2C-Mandanten in einem Azure-Abonnement ermöglicht wird.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/24/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c914b3a3ab40971cf9318cafc787d358dab2faff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 892f47b6acf22c62ce2290e2ede9d0bcd21eefc8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196173"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065895"
 ---
 # <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Verknüpfen eines Azure-Abonnements mit einem Azure Active Directory B2C-Mandanten
 
 > [!IMPORTANT]
-> Die aktuellen Informationen zur Abrechnung von Nutzungsgebühren und zu den Preisen für Azure Active Directory (Azure AD) B2C finden Sie unter [Azure AD B2C Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+> Die aktuellen Informationen zur Abrechnung von Nutzungsgebühren und zu den Preisen für Azure Active Directory B2C (Azure AD B2C) finden Sie unter [Azure Active Directory B2C – Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 
 Nutzungsgebühren für Azure AD B2C werden über ein Azure-Abonnement abgerechnet. Beim Erstellen eines Azure AD B2C-Mandanten muss der Mandantenadministrator den Azure AD B2C-Mandanten explizit mit einem Azure-Abonnement verknüpfen. In diesem Artikel erfahren Sie, welche Schritte erforderlich sind.
 
@@ -45,9 +45,9 @@ Navigieren Sie zu dem Azure AD-Mandanten mit Ihrem Azure-Abonnement. Öffnen Sie
 
 ## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>Suchen von Azure AD B2C im Azure Marketplace
 
-Klicken Sie auf die Schaltfläche **Ressource erstellen**. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge `B2C` ein.
+Klicken Sie auf die Schaltfläche **Ressource erstellen**. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge `Active Directory B2C` ein.
 
-![Hervorgehobene Schaltfläche „Hinzufügen“ und Text „Azure AD B2C“ im Feld „Marketplace durchsuchen“](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
+![Screenshot des Portals mit ‚Active Directory B2C‘ in der Marketplace-Suche](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
 Klicken Sie in der Ergebnisliste auf **Azure Active Directory B2C**.
 
@@ -67,7 +67,7 @@ Wählen Sie als Abonnement ein aktives Azure-Abonnement aus, für das Sie als Ad
 
 Wählen Sie eine Ressourcengruppe und einen Ressourcengruppenstandort aus. Die hier getroffene Auswahl hat keine Auswirkung auf den Standort, die Leistung oder den Abrechnungsstatus Ihres Azure AD B2C-Mandanten.
 
-![Erstellen einer B2C-Ressource](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
+![Die Seite zum Erstellen der Azure AD-B2C-Ressource im Azure-Portal](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
 
 ## <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Verwalten Ihrer Azure AD B2C-Mandantenressourcen
 
@@ -80,7 +80,15 @@ Diese Ressource ermöglicht Folgendes:
 - Senden Sie eine Supportanfrage.
 - Verschieben Ihrer Azure AD B2C-Mandantenressource in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe
 
-![Einstellungen für die B2C-Ressource](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
+![Seite mit Einstellungen für die B2C-Ressource im Azure-Portal](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.PNG)
+
+## <a name="change-the-azure-ad-b2c-tenant-billing-subscription"></a>Ändern des Abonnements zur Abrechnung des Azure AD B2C-Mandanten
+
+Azure AD B2C-Mandanten können in ein anderes Abonnement verschoben werden, wenn Quell- und Zielabonnement innerhalb desselben Azure Active Directory-Mandanten liegen.
+
+Informationen zum Verschieben von Azure-Ressourcen wie Ihr Azure AD B2C-Mandant in ein anderes Abonnement finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
+
+Bevor Sie die Verschiebung einleiten, lesen Sie unbedingt den gesamten Artikel, um die Einschränkungen und Anforderungen für eine solche Verschiebung vollständig zu verstehen. Zusätzlich zu den Anweisungen zum Verschieben von Ressourcen enthält er wichtige Informationen wie eine vor der Verschiebung anzuwendende Checkliste und wie der Verschiebevorgang überprüft wird.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 

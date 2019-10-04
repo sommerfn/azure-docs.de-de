@@ -4,17 +4,17 @@ description: In diesem Artikel wird die Integration der Quellcodeverwaltung mit 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 03/21/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3b2df5b24a12f3d2ea5d8a03721c08f8d2a742ad
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 52fcd0d928ecbce5c617ff6a27175fccb8fd96f6
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539988"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68990244"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integration der Quellcodeverwaltung in Azure Automation
 
@@ -47,19 +47,21 @@ Geben Sie auf der Seite **Quellcodeverwaltung – Übersicht** die Informationen
 
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
-|Name der Quellcodeverwaltung     | Ein Anzeigename für die Quellcodeverwaltung        |
+|Name der Quellcodeverwaltung     | Ein Anzeigename für die Quellcodeverwaltung. *Dieser Name darf nur Buchstaben und Zahlen enthalten.*        |
 |Typ der Quellcodeverwaltung     | Der Typ der Quelle für die Quellcodeverwaltung. Die verfügbaren Optionen lauten wie folgt:</br> GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
 |Repository     | Der Name des Repositorys oder Projekts. Die ersten 200 Repositorys werden zurückgegeben. Geben Sie zum Suchen nach einem Repository den Namen in das Feld ein, und klicken Sie auf **Search on GitHub** (Auf GitHub suchen).|
 |Verzweigung     | Die Verzweigung, von der die Quelldateien abgerufen werden. Die Ausrichtung auf Verzweigungen ist für den TFVC-Quellcodeverwaltungstyp nicht verfügbar.          |
 |Ordnerpfad     | Der Ordner, der die Runbooks für die Synchronisierung enthält. Beispiel: /Runbooks </br>*Nur im Ordner angegebene Runbooks werden synchronisiert. Die Rekursion wird nicht unterstützt.*        |
-|Automatische Synchronisierung     | Aktiviert oder deaktiviert die automatische Synchronisierung, wenn im Repository für die Quellcodeverwaltung ein Commit durchgeführt wird.         |
+|Automatische Synchronisierung<sup>1</sup>     | Aktiviert oder deaktiviert die automatische Synchronisierung, wenn im Repository für die Quellcodeverwaltung ein Commit durchgeführt wird.         |
 |Runbook veröffentlichen     | Wenn diese Option auf **Ein** festgelegt ist, werden die Runbooks automatisch veröffentlicht, nachdem sie aus der Quellcodeverwaltung synchronisiert wurden.         |
 |BESCHREIBUNG     | Ein Textfeld, in dem weitere Details bereitgestellt werden können.        |
+
+<sup>1</sup> Um die automatische Synchronisierung beim Konfigurieren der Integration der Quellcodeverwaltung in Azure Repos zu aktivieren, müssen Sie Projektadministrator sein.
 
 ![Zusammenfassung der Quellcodeverwaltung](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Stellen Sie sicher, dass Sie mit dem richtigen Konto angemeldet sind, wenn Sie die Quellcodeverwaltung konfigurieren. Wenn Sie diesbezüglich unsicher sind, öffnen Sie in Ihrem Browser eine neue Registerkarte, und melden Sie sich von „visualstudio.com“ oder „github.com“ ab, und stellen Sie erneut eine Verbindung mit der Quellcodeverwaltung her.
+> Ihre Anmeldung für Ihr Quellcodeverwaltungs-Repository kann von Ihrer Anmeldung beim Azure-Portal abweichen. Stellen Sie sicher, dass Sie mit dem richtigen Konto für Ihr Quellcodeverwaltungs-Repository angemeldet sind, wenn Sie die Quellcodeverwaltung konfigurieren. Wenn Sie diesbezüglich unsicher sind, öffnen Sie in Ihrem Browser eine neue Registerkarte, und melden Sie sich von „visualstudio.com“ oder „github.com“ ab, und stellen Sie erneut eine Verbindung mit der Quellcodeverwaltung her.
 
 ## <a name="configure-source-control---powershell"></a>Konfigurieren der Quellcodeverwaltung – PowerShell
 
@@ -91,7 +93,7 @@ Die Quellcodeverwaltung erfordert einige Mindestberechtigungen für persönliche
 
 Weitere Informationen zur Erstellung eines persönlichen Zugriffstokens in GitHub finden Sie unter [Creating a personal access token for the command line](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) (Erstellen eines persönlichen Zugriffstokens für die Befehlszeile).
 
-|Bereich  |BESCHREIBUNG  |
+|`Scope`  |BESCHREIBUNG  |
 |---------|---------|
 |**Repository**     |         |
 |repo:status     | Zugriff auf den Commitstatus         |
@@ -105,7 +107,7 @@ Weitere Informationen zur Erstellung eines persönlichen Zugriffstokens in GitHu
 
 Weitere Informationen zur Erstellung eines persönlichen Zugriffstokens in Azure Repos finden Sie unter [Authenticate access with personal access tokens](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) (Authentifizieren des Zugriffs mit persönlichen Zugriffstoken).
 
-|Bereich  |
+|`Scope`  |
 |---------|
 |Code (Lesen)     |
 |Projekt und Team (Lesen)|
@@ -170,6 +172,13 @@ Wählen Sie die Quellcodeverwaltung aus, die Sie entfernen möchten. Klicken Sie
 ## <a name="encoding"></a>Codieren
 
 Wenn in Ihrem Repository der Quellcodeverwaltung mehrere Personen Runbooks mit unterschiedlichen Editoren bearbeiten, kann es sein, dass Codierungsprobleme auftreten. Dies kann zu falschen Zeichen in Ihrem Runbook führen. Weitere Informationen hierzu finden Sie unter [Häufige Gründe für Codierungsprobleme](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
+
+## <a name="updating-the-access-token"></a>Aktualisieren des Zugriffstokens
+
+Derzeit gibt es keine Möglichkeit, das Zugriffstoken in der Quellcodeverwaltung über das Portal zu aktualisieren. Nach Ablauf oder Widerruf Ihres persönlichen Zugriffstokens können Sie die Quellcodeverwaltung wie folgt mit einem neuen Zugriffstoken aktualisieren:
+
+* Über die [REST-API](https://docs.microsoft.com/en-us/rest/api/automation/sourcecontrol/update)
+* Mithilfe des Cmdlets [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

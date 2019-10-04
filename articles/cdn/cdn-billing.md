@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 09/13/2019
 ms.author: magattus
-ms.openlocfilehash: af8e57f39b5b83b1d1be09c29d8b6eb5d49c7b6c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8704d715a20b94dc170f232b07a0acd54bb1e6f1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56735799"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996806"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Grundlegendes zur Abrechnung für Azure CDN
 
@@ -57,9 +57,12 @@ Wenn Sie Azure-BLOB-Speicher als Ursprung für Ihre Inhalte verwenden, fallen au
 
 - Tatsächlich verwendete GB: die tatsächliche Speicherung Ihrer Quellobjekte.
 
+- Transaktionen: nach Bedarf, um den Cache zu füllen.
+
 - Übertragungen in GB: die Menge der übertragenen Daten zum Füllen des CDN-Caches.
 
-- Transaktionen: nach Bedarf, um den Cache zu füllen.
+> [!NOTE]
+> Wenn Sie Azure CDN von Microsoft verwenden, ist die Datenübertragung von Ursprüngen, die in Azure zu CDN-POPs gehostet werden, ab Oktober 2019 kostenlos. Azure CDN von Verizon und Azure CDN von Akamai unterliegen den unten beschriebenen Tarifen.
 
 Weitere Informationen zur Azure Storage-Abrechnung finden Sie unter [Understanding Azure Storage Billing – Bandwidth, Transactions, and Capacity](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/) (Grundlagen zur Azure Storage-Abrechnung – Bandbreite, Transaktionen und Kapazität).
 
@@ -83,6 +86,36 @@ Jedes Mal, wenn ein CDN POP seinen Cache füllen muss, führt er für das im Cac
 - Anzahl der Knoten, die das Objekt laden müssen: Jedes Mal, wenn ein Knoten ein Objekt aus dem Ursprung lädt, fällt eine abrechenbare Transaktion an. Daher führen mehr globale Inhalte (Zugriff über mehr Knoten) zu mehr abrechenbaren Transaktionen.
 
 - Einfluss der Gültigkeitsdauer (TTL): Eine längere Gültigkeitsdauer für ein Objekt bedeutet, dass es weniger häufig aus dem Ursprung abgerufen werden muss. Dies bedeutet auch, dass Clients (z. B. Browser) das Objekt länger zwischenspeichern können, wodurch sich die Anzahl der Transaktionen zum CDN reduzieren kann.
+
+## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Welche Ursprungsdienste sind für die kostenlose Datenübertragung mit Azure CDN von Microsoft qualifiziert? 
+Wenn Sie einen der folgenden Azure-Dienste als CDN-Ursprung verwenden, wird Ihnen die Datenübertragung vom Ursprung an die CDN-POPs nicht in Rechnung gestellt. 
+
+- Azure Storage
+- Azure Media Services
+- Azure Virtual Machines
+- Virtual Network
+- Load Balancer
+- Application Gateway
+- Azure DNS
+- ExpressRoute
+- VPN Gateway
+- Traffic Manager
+- Network Watcher
+- Azure Firewall
+- Azure Front Door Service
+- Azure Bastion
+- Azure App Service
+- Azure-Funktionen
+- Azure Data Factory
+- Azure API Management
+- Azure Batch 
+- Azure-Daten-Explorer
+- HDInsight
+- Azure Cosmos DB
+- Azure Data Lake Store
+- Azure Machine Learning-Dienst 
+- Azure SQL-Datenbank
+- Azure Cache for Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>Wie verwalte ich meine Kosten besonders effektiv?
 Legen Sie eine möglichst lange Gültigkeitsdauer für Ihre Inhalte fest. 

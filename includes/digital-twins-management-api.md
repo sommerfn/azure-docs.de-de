@@ -1,24 +1,24 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 12/28/2018
-ms.author: adgera
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 1bd878460f9910f2ed9c7af8e80f349815ab9ed4
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: f4e32599076b284eac15d394b08035c557a3489b
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54121786"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "69012137"
 ---
 In den folgenden Beispielen bezieht sich `YOUR_MANAGEMENT_API_URL` auf den URI der Digital Twins-APIs:
 
 ```plaintext
-https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/
+https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0
 ```
 
 | NAME | Ersetzen durch |

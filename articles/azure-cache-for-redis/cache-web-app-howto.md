@@ -15,28 +15,21 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 0c267b2fbe639d08396d8773e077483b41b9747e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 7cca9d020d5e999bda2c494853295957da5cca1a
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886368"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68326493"
 ---
-# <a name="quickstart-create-an-aspnet-web-app"></a>Schnellstart: Erstellen einer ASP.NET-Web-App 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Schnellstart: Verwenden von Azure Cache for Redis mit einer ASP.NET-Web-App 
 
-## <a name="introduction"></a>Einführung
-
-In dieser Schnellstartanleitung wird erörtert, wie Sie mit Visual Studio 2017 eine ASP.NET-Webanwendung erstellen und für Azure App Service bereitstellen. Die Beispielanwendung stellt eine Verbindung mit Azure Cache for Redis her, um Daten aus dem Cache abzurufen und zu speichern. Nach der Ausführung der in dieser Schnellstartanleitung beschriebenen Schritte verfügen Sie über eine funktionsfähige, in Azure gehostete Web-App, die Lese- und Schreibvorgänge in Azure Cache for Redis ausführt.
-
-![Einfacher abgeschlossener Azure-Test](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+In dieser Schnellstartanleitung erstellen Sie mit Visual Studio 2019 eine ASP.NET-Webanwendung, die sich mit Azure Cache for Redis verbindet, um Daten aus dem Cache zu speichern und abzurufen. Sie stellen die App dann für Azure App Service bereit.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Installieren Sie [Visual Studio 2017](https://www.visualstudio.com/downloads/) mit den folgenden Umgebungen, um diesen Schnellstart durchzuführen:
-* ASP.NET und Webentwicklung
-* Azure-Entwicklung
+- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den Workloads **ASP.NET und Webentwicklung** und **Azure-Entwicklung**.
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
@@ -46,7 +39,7 @@ Installieren Sie [Visual Studio 2017](https://www.visualstudio.com/downloads/) m
 
     ![Projekt erstellen](./media/cache-web-app-howto/cache-create-project.png)
 
-    a. Erweitern Sie in der Liste **Vorlagen** den Knoten **Visual C#**.
+    a. Erweitern Sie in der Liste **Vorlagen** den Knoten **Visual C#** .
 
     b. Wählen Sie **Cloud** aus.
 
@@ -116,7 +109,7 @@ Weil die Datei *CacheSecrets.config* nicht mit Ihrer Anwendung in Azure bereitge
 2. Suchen Sie in der Datei *web.config* nach dem Element `<appSetting>`. Fügen Sie anschließend das folgende `file`-Attribut hinzu. Falls Sie einen anderen Dateinamen oder -speicherort verwendet haben, müssen die Werte aus dem Beispiel durch diese Werte ersetzt werden.
 
 * Vorher: `<appSettings>`
-* Nachher:  `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
+* Nachher: `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
 Die ASP.NET-Laufzeit führt die Inhalte der externen Datei mit dem Markup im `<appSettings>`-Element zusammen. Falls die angegebene Datei nicht gefunden wird, wird das Dateiattribut ignoriert. Ihre vertraulichen Daten (die Verbindungszeichenfolge für Ihren Cache) sind nicht Bestandteil des Quellcodes für die Anwendung. Die Datei *CacheSecrets.config* wird bei der Bereitstellung der Web-App in Azure nicht bereitgestellt.
 

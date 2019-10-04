@@ -1,281 +1,234 @@
 ---
-title: 'Tutorial: Integration von Jamf Pro in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Jamf Pro | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Jamf Pro konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 35e86d08-c29e-49ca-8545-b0ff559c5faf
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18b575b74c80499f2ddd6648bf051b5245077d2f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bfe426a6b3d087683e615d3212e0693b185c40f0
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58906139"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212379"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Tutorial: Integration von Jamf Pro in Azure Active Directory
+# <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Tutorial: Azure Active Directory-SSO-Integration mit Jamf Pro
 
-In diesem Tutorial erfahren Sie, wie Sie Jamf Pro in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Jamf Pro in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Jamf Pro in Azure Active Directory (Azure AD) integrieren. Die Integration von Jamf Pro in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Jamf Pro hat.
-* Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Jamf Pro anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Sie können in Azure AD steuern, wer Zugriff auf Jamf Pro haben soll.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Jamf Pro anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Jamf Pro konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Jamf Pro-Abonnement, das für das einmalige Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein SSO-fähiges Jamf Pro-Abonnement
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. Jamf Pro unterstützt **SP**- und **IdP**-initiiertes einmaliges Anmelden.
 
-* Jamf Pro unterstützt **SP- und IDP**-initiiertes SSO.
-
-## <a name="adding-jamf-pro-from-the-gallery"></a>Hinzufügen von Jamf Pro aus dem Katalog
+## <a name="add-jamf-pro-from-the-gallery"></a>Hinzufügen von Jamf Pro aus dem Katalog
 
 Zum Konfigurieren der Integration von Jamf Pro in Azure AD müssen Sie Jamf Pro aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Um Jamf Pro aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit Ihrem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im linken Bereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff *Jamf Pro* in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Jamf Pro** aus, und fügen Sie die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+## <a name="configure-and-test-sso-in-azure-ad-for-jamf-pro"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD für Jamf Pro
 
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Jamf Pro mithilfe eines Testbenutzers namens B.Simon. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Jamf Pro eingerichtet werden.
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Jamf Pro.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+1. [Konfigurieren Sie das einmalige Anmelden in Azure AD](#configure-sso-in-azure-ad), damit Ihre Benutzer dieses Feature verwenden können.
+    1. [Erstellen Sie einen Azure AD-Testbenutzer](#create-an-azure-ad-test-user), um das einmalige Anmelden von Azure AD mit dem Konto „B.Simon“ zu testen.
+    1. [Weisen Sie den Azure AD-Testbenutzer zu](#assign-the-azure-ad-test-user), damit B.Simon das einmalige Anmelden in Azure AD verwenden kann.
+1. [Konfigurieren Sie das einmalige Anmelden in Jamf Pro](#configure-sso-in-jamf-pro), um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+    1. [Erstellen Sie einen Jamf Pro-Testbenutzer](#create-a-jamf-pro-test-user), um in Jamf Pro ein Pendant von B.Simon zu erhalten, das mit der Benutzerdarstellung in Azure AD verknüpft ist.
+1. [Testen Sie die SSO-Konfiguration](#test-the-sso-configuration), um sich zu vergewissern, dass sie funktioniert.
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+## <a name="configure-sso-in-azure-ad"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-4. Geben Sie im Suchfeld **Jamf Pro** ein, wählen Sie im Ergebnisbereich **Jamf Pro** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Jamf Pro** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten.
 
-     ![Jamf Pro in der Ergebnisliste](common/search-new-app.png)
+   ![Bearbeiten Sie die Seite mit der grundlegenden SAML-Konfiguration.](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein, wenn Sie die Anwendung im **IdP-initiierten** Modus konfigurieren möchten:
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Jamf Pro mithilfe einer Testbenutzerin namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Jamf Pro eingerichtet werden.
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<subdomain>.jamfcloud.com/saml/metadata`.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Jamf Pro müssen Sie die folgenden Bausteine ausführen:
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<subdomain>.jamfcloud.com/saml/SSO`.
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Jamf Pro](#configure-jamf-pro-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Jamf Pro-Testbenutzers](#create-jamf-pro-test-user)**, um ein Pendant von Britta Simon in Jamf Pro zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
-
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Jamf Pro die folgenden Schritte aus:
-
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Jamf Pro** die Option **Einmaliges Anmelden** aus.
-
-    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
-
-2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
-
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
-
-3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
-
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
-
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie im **IDP**-initiierten Modus konfigurieren möchten:
-
-    ![„Domäne und URLs für Jamf Pro“, Informationen zu einmaligem Anmelden](common/idp-intiated.png)
-
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<subdomain>.jamfcloud.com/saml/metadata`
-
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<subdomain>.jamfcloud.com/saml/SSO`
-
-5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
-
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.jamfcloud.com`
-
-    ![„Domäne und URLs für Jamf Pro“, Informationen zu einmaligem Anmelden](common/metadata-upload-additional-signon.png)
+1. Wählen Sie **Zusätzliche URLs festlegen** aus. Wenn Sie die Anwendung im **SP-initiierten** Modus konfigurieren möchten, geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.jamfcloud.com`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Sie erhalten den tatsächlichen Wert des Bezeichners im Abschnitt **Single Sign-On** (Einmaliges Anmelden) des Jamf Pro-Portals, der später in diesem Tutorial beschrieben wird. Sie können den tatsächlichen Wert **subdomain** aus dem Bezeichnerwert extrahieren und diese **subdomain**-Informationen in Anmelde-URL und Antwort-URL verwenden. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Den tatsächlichen Wert des Bezeichners finden Sie im Abschnitt **Single Sign-On** (Einmaliges Anmelden) des Jamf Pro-Portals. Dies wird später in diesem Tutorial beschrieben. Sie können den tatsächlichen Wert für die Unterdomäne aus dem Bezeichnerwert extrahieren und diese Information als Ihre Anmelde- und Antwort-URL verwenden. Sie können sich auch das Format im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die Schaltfläche **Kopieren** aus, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
+    ![Downloadlink für das SAML-Signaturzertifikat](common/copy-metadataurl.png)
 
-### <a name="configure-jamf-pro-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Jamf Pro
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-1. Wenn Sie die Konfiguration in Jamf Pro automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer namens B.Simon.
 
-    ![image](./media/jamfprosamlconnector-tutorial/install_extension.png)
-
-2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Jamf Pro einrichten**, um zur Anwendung Jamf Pro weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Jamf Pro anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 7.
-
-    ![image](./media/jamfprosamlconnector-tutorial/d1_saml.png)
-
-3. Wenn Sie Jamf Pro manuell einrichten möchten, öffnen Sie ein neues Webbrowserfenster, melden Sie sich bei der Jamf Pro-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
-
-4. Klicken Sie in der oberen rechten Ecke der Seite auf das **Einstellungssymbol**.
-
-    ![Jamf Pro-Konfiguration](./media/jamfprosamlconnector-tutorial/configure1.png)
-
-5. Klicken Sie auf **Single Sign On** (Einmaliges Anmelden).
-
-    ![Jamf Pro-Konfiguration](./media/jamfprosamlconnector-tutorial/configure2.png)
-
-6. Führen Sie auf der Seite **Single Sign-On** (Einmaliges Anmelden) die folgenden Schritte aus:
-
-    ![Jamf Pro – einmaliges Anmelden](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
-
-    a. Wählen Sie **Jamf Pro Server** aus, um den Zugriff per einmaligem Anmelden zu aktivieren.
-
-    b. Wenn Sie **Allow bypass for all users** (Umgehung für alle Benutzer zulassen) auswählen, werden Benutzer nicht zur Authentifizierung an die Anmeldeseite des Identitätsanbieters umgeleitet, sondern können sich stattdessen direkt bei Jamf Pro anmelden. Wenn ein Benutzer versucht, sich über den Identitätsanbieter auf Jamf Pro zuzugreifen, erfolgen eine IdP-initiierte SSO-Authentifizierung und -Autorisierung.
-
-    c. Wählen Sie die Option **NameID** für **USER MAPPING: SAML** (BENUTZERZUORDNUNG: SAML) aus. Diese Einstellung ist standardmäßig auf **NameID** festgelegt, Sie können jedoch auch ein benutzerdefiniertes Attribut definieren.
-
-    d. Wählen Sie **Email** für die Option **USER MAPPING: JAMF PRO** (BENUTZERZUORDNUNG: JAMF PRO) aus. Jamf Pro ordnet von der IdP gesendete SAML-Attribute anhand von Benutzern oder von Gruppen zu. Wenn ein Benutzer versucht, auf Jamf Pro zuzugreifen, ruft Jamf Pro standardmäßig Informationen zum Benutzer aus dem Identitätsanbieter ab und gleicht sie mit den Jamf Pro-Benutzerkonten ab. Wenn das Konto eines Benutzers in Jamf Pro nicht vorhanden ist, erfolgt ein Abgleich mit dem Gruppennamen.
-
-    e. Fügen Sie den Wert `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` in das Textfeld **GROUP ATTRIBUTE NAME** (ATTRIBUTNAME DER GRUPPE) ein.
-
-7. Scrollen Sie auf der gleichen Seite im Abschnitt **Single Sign-On** (Einmaliges Anmelden) zu **IDENTITY PROVIDER** (IDENTITÄTSANBIETER), und führen Sie die folgenden Schritte aus:
-
-    ![Jamf Pro-Konfiguration](./media/jamfprosamlconnector-tutorial/configure3.png)
-
-    a. Wählen Sie **Other** (Sonstige) im Dropdownmenü **IDENTITY PROVIDER** (IDENTITÄTSANBIETER) aus.
-
-    b. Geben Sie im Textfeld **OTHER PROVIDER** (Anderer Anbieter) **Azure AD** ein.
-
-    c. Wählen Sie **Metadata URL** (Metadaten-URL) als Option in der Dropdownliste **IDENTITY PROVIDER METADATA SOURCE** (IDENTITÄTSANBIETER-METADATENQUELLE) aus, und fügen Sie in das folgende Textfeld den Wert **Verbundmetadaten-URL der App** ein, den Sie im Azure-Portal kopiert haben.
-
-    d. Kopieren Sie den Wert der **Entity ID** (Entitäts-ID), und fügen Sie ihn im Azure-Portal im Abschnitt **Domäne und URLs für Jamf Pro** in das Textfeld **Bezeichner (Entitäts-ID)** ein.
-
-    > [!NOTE]
-    > Der hier unkenntlich gemachte Name ist die Unterdomäne. Schließen Sie mit diesem Wert die Anmelde-URL und Antwort-URL im Abschnitt **Domäne und URLs für Jamf Pro** im Azure-Portal ab.
-
-    e. Klicken Sie auf **Speichern**.
-
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
-
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
-
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
-
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
-
-2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
-
-    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
-
-3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
-
-    ![Dialogfeld „Benutzer“](common/user-properties.png)
-
-    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
-    Zum Beispiel, BrittaSimon@contoso.com
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
-
-    d. Klicken Sie auf **Create**.
+1. Wählen Sie im linken Bereich des Azure-Portals Folgendes aus: **Azure Active Directory** > **Benutzer** > **Alle Benutzer**.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** Folgendes ein: [Name]@[Unternehmensdomäne].[Erweiterung]. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Jamf Pro gewähren.
+In diesem Abschnitt gewähren Sie B.Simon Zugriff auf Jamf Pro.
 
-1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, wählen Sie **Alle Anwendungen** aus, und wählen Sie dann **Jamf Pro** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **Jamf Pro** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+   ![Benutzer und Gruppen auswählen](common/users-groups-blade.png)
 
-2. Wählen Sie in der Anwendungsliste **Jamf Pro** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Jamf Pro-Link in der Anwendungsliste](common/all-applications.png)
+    ![Auswählen der Schaltfläche „Benutzer hinzufügen“](common/add-assign-user.png)
 
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste die Option **B.Simon** und anschließend am unteren Bildschirmrand die Schaltfläche **Auswählen** aus.
+1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer aus. Wählen Sie anschließend im unteren Bildschirmbereich die Schaltfläche **Auswählen** aus.
+1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen**.
 
-    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+## <a name="configure-sso-in-jamf-pro"></a>Konfigurieren des einmaligen Anmeldens in Jamf Pro 
 
-4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wenn Sie die Konfiguration in Jamf Pro automatisieren möchten, installieren Sie die **Browsererweiterung zur sicheren Anmeldung bei „Meine Apps“** , indem Sie **Erweiterung installieren** auswählen.
 
-    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
+    ![Seite der Browsererweiterung zur sicheren Anmeldung bei „Meine Apps“](common/install-myappssecure-extension.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+2. Wählen Sie nach dem Hinzufügen der Browsererweiterung **Jamf Pro einrichten** aus. Melden Sie sich bei der Jamf Pro-Anwendung unter Verwendung der Administratoranmeldeinformationen an. Die Browsererweiterung konfiguriert die Anwendung automatisch und automatisiert die Schritte 3 bis 7.
 
-6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
+    ![Einrichtungskonfigurationsseite in Jamf Pro](common/setup-sso.png)
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+3. Falls Sie Jamf Pro manuell einrichten möchten, melden Sie sich in einem neuen Webbrowserfenster bei der Jamf Pro-Unternehmenswebsite als Administrator an. Führen Sie dann die folgenden Schritte aus:
 
-### <a name="create-jamf-pro-test-user"></a>Erstellen eines Jamf Pro-Testbenutzers
+4. Wählen Sie rechts oben auf der Seite das **Einstellungssymbol** aus.
 
-Damit sich Azure AD-Benutzer bei Jamf Pro anmelden können, müssen sie in Jamf Pro bereitgestellt werden. Im Fall von Jamf Pro ist die Bereitstellung eine manuelle Aufgabe.
+    ![Auswählen des Einstellungssymbols in Jamf Pro](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-**Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:**
+5. Wählen Sie **Single Sign-On** (Einmaliges Anmelden) aus.
 
-1. Melden Sie sich bei der Jamf Pro-Unternehmenswebsite als Administrator an.
+    ![Auswählen von „Single Sign-On“ (Einmaliges Anmelden) in Jamf Pro](./media/jamfprosamlconnector-tutorial/configure2.png)
 
-2. Klicken Sie in der oberen rechten Ecke der Seite auf das **Einstellungssymbol**.
+6. Gehen Sie auf der Seite **Single Sign-On** (Einmaliges Anmelden) wie folgt vor:
 
-    ![Mitarbeiter hinzufügen](./media/jamfprosamlconnector-tutorial/configure1.png)
+    ![Seite „Single Sign-On“ (Einmaliges Anmelden) in Jamf Pro](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-3. Klicken Sie auf **Jamf Pro User Accounts & Groups** (Jamf Pro-Benutzerkonten und Gruppen).
+    a. Aktivieren Sie das Kontrollkästchen **Enable Single Sign-On Authentication** (SSO-Authentifizierung aktivieren).
 
-    ![Mitarbeiter hinzufügen](./media/jamfprosamlconnector-tutorial/user1.png)
+    b. Wählen Sie im Dropdownmenü **IDENTITY PROVIDER** (IDENTITÄTSANBIETER) die Option **Other** (Sonstige) aus.
 
-4. Klicken Sie auf **New**.
+    c. Geben Sie im Feld **OTHER PROVIDER** (ANDERER ANBIETER) die Zeichenfolge **Azure AD** ein.
 
-    ![Mitarbeiter hinzufügen](./media/jamfprosamlconnector-tutorial/user2.png)
+    d. Kopieren Sie den Wert im Feld **ENTITY ID** (Entitäts-ID), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Feld **Bezeichner (Entitäts-ID)** ein.
+
+    > [!NOTE]
+    > Verwenden Sie den Wert im Feld `<SUBDOMAIN>`, um die Anmelde-URL und die Antwort-URL im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** zu vervollständigen.
+
+    e. Wählen Sie im Dropdownmenü **IDENTITY PROVIDER METADATA SOURCE** (IDENTITÄTSANBIETER-METADATENQUELLE) die Option **Metadata URL** (Metadaten-URL) aus. Fügen Sie im daraufhin angezeigten Feld den Wert der **App-Verbundmetadaten-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+7. Scrollen Sie auf der gleichen Seite nach unten zum Abschnitt **User Mapping** (Benutzerzuordnung). Führen Sie dann die folgenden Schritte aus:   
+
+    ![Abschnitt „User Mapping“ (Benutzerzuordnung) auf der Seite für einmaliges Anmelden in Jamf Pro](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
+
+    a. Wählen Sie unter **IDENTITY PROVIDER USER MAPPING** (BENUTZERZUORDNUNG DES IDENTITÄTSANBIETERS) die Option **NameID** aus. Diese Option ist standardmäßig auf **NameID** festgelegt. Sie können aber auch ein benutzerdefiniertes Attribut definieren.
+
+    b. Wählen Sie unter **USER MAPPING JAMF PRO** (BENUTZERZUORDNUNG: JAMF PRO) die Option **Email** (E-Mail) aus. Jamf Pro ordnet vom IdP gesendete SAML-Attribute zunächst nach Benutzern und dann nach Gruppen zu. Wenn ein Benutzer versucht, auf Jamf Pro zuzugreifen, ruft Jamf Pro vom Identitätsanbieter Informationen zu dem Benutzer ab und gleicht sie mit allen Jamf Pro-Benutzerkonten ab. Wird das eingehende Benutzerkonto nicht gefunden, versucht Jamf Pro einen Abgleich anhand des Gruppennamens.
+
+    c. Fügen Sie den Wert `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` in das Feld **IDENTITY PROVIDER GROUP ATTRIBUTE NAME** (ATTRIBUTNAME DER IDENTITÄTSANBIETERGRUPPE) ein.
+
+    d. Aktivieren Sie das Kontrollkästchen **Allow users to bypass the Single Sign-On authentication** (Umgehung der SSO-Authentifizierung für Benutzer zulassen). Dadurch werden Benutzer zur Authentifizierung nicht auf die Anmeldeseite des Identitätsanbieters umgeleitet, sondern können sich stattdessen direkt bei Jamf Pro anmelden. Wenn ein Benutzer versucht, sich über den Identitätsanbieter auf Jamf Pro zuzugreifen, erfolgen eine IdP-initiierte SSO-Authentifizierung und -Autorisierung.
+
+    e. Wählen Sie **Speichern** aus.
+
+### <a name="create-a-jamf-pro-test-user"></a>Erstellen eines Jamf Pro-Testbenutzers
+
+Damit sich Azure AD-Benutzer bei Jamf Pro anmelden können, müssen sie in Jamf Pro bereitgestellt werden. Die Bereitstellung in Jamf Pro ist eine manuelle Aufgabe.
+
+Gehen Sie zum Bereitstellen eines Benutzerkontos wie folgt vor:
+
+1. Melden Sie sich bei der Jamf Pro-Unternehmenswebsite als Administrator an.
+
+2. Wählen Sie oben rechts auf der Seite das Symbol für die **Einstellungen** aus.
+
+    ![Einstellungssymbol in Jamf Pro](./media/jamfprosamlconnector-tutorial/configure1.png)
+
+3. Wählen Sie **Jamf Pro User Accounts & Groups** (Jamf Pro-Benutzerkonten und Gruppen) aus.
+
+    ![Symbol für Jamf Pro-Benutzerkonten und Gruppen in den Einstellungen von Jamf Pro](./media/jamfprosamlconnector-tutorial/user1.png)
+
+4. Wählen Sie **Neu**aus.
+
+    ![Seite mit Systemeinstellungen für Jamf Pro-Benutzerkonten und Gruppen](./media/jamfprosamlconnector-tutorial/user2.png)
 
 5. Wählen Sie **Create Standard Account** (Standardkonto erstellen) aus.
 
-    ![Mitarbeiter hinzufügen](./media/jamfprosamlconnector-tutorial/user3.png)
+    ![Option „Create Standard Account“ (Standardkonto erstellen) auf der Seite für Jamf Pro-Benutzerkonten und Gruppen](./media/jamfprosamlconnector-tutorial/user3.png)
 
-6. Führen Sie im Dialogfeld **New Account** (Neues Konto) die folgenden Schritte aus:
+6. Gehen Sie im Dialogfeld **New Account** (Neues Konto) wie folgt vor:
 
-    ![Mitarbeiter hinzufügen](./media/jamfprosamlconnector-tutorial/user4.png)
+    ![Einrichtungsoptionen für ein neues Konto in den Systemeinstellungen von Jamf Pro](./media/jamfprosamlconnector-tutorial/user4.png)
 
-    a. Geben Sie im Textfeld **USERNAME** (BENUTZERNAME) den vollständigen Namen von Britta Simon ein.
+    a. Geben Sie im Feld **USERNAME** (BENUTZERNAME) den vollständigen Namen des Testbenutzers (`Britta Simon`) ein.
 
-    b. Wählen Sie die entsprechenden Optionen gemäß Ihrer Organisation für **ACCESS LEVEL** (ZUGRIFFSEBENE), **PRIVILEGE SET** (BERECHTIGUNGENGRUPPE) und **ACCESS STATUS** (ZUGRIFFSSTATUS) ein.
+    b. Wählen Sie geeignete Optionen für **ACCESS LEVEL** (ZUGRIFFSEBENE), **PRIVILEGE SET** (BERECHTIGUNGSGRUPPE) und **ACCESS STATUS** (ZUGRIFFSSTATUS) aus.
 
-    c. Geben Sie im Textfeld **FULL NAME** (VOLLSTÄNDIGER NAME) den vollständigen Namen von Britta Simon ein.
+    c. Geben Sie im Feld **FULL NAME** (VOLLSTÄNDIGER NAME) den Namen `Britta Simon` ein.
 
-    d. Geben Sie im Textfeld **EMAIL ADDRESS** (E-MAIL-ADRESSE) die E-Mail-Adresse des Kontos von Britta Simon ein.
+    d. Geben Sie im Feld **EMAIL ADDRESS** (E-MAIL-ADRESSE) die E-Mail-Adresse des Kontos von Britta Simon ein.
 
-    e. Geben Sie im Textfeld **PASSWORD** (KENNWORT) das Kennwort des Benutzers ein.
+    e. Geben Sie im Feld **PASSWORD** (KENNWORT) das Kennwort des Benutzers ein.
 
-    f. Geben Sie im Textfeld **VERIFY PASSWORD** (KENNWORT ÜBERPRÜFEN) das Kennwort des Benutzers ein.
+    f. Geben Sie im Feld **VERIFY PASSWORD** (KENNWORT ÜBERPRÜFEN) erneut das Kennwort des Benutzers ein.
 
-    g. Klicken Sie auf **Speichern**.
+    g. Wählen Sie **Speichern** aus.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
+## <a name="test-the-sso-configuration"></a>Testen der SSO-Konfiguration 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Jamf Pro“ klicken, sollten Sie automatisch bei Ihrer Jamf Pro-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich die Kachel „Jamf Pro“ auswählen, sollten Sie automatisch bei dem Jamf Pro-Konto angemeldet werden, für das Sie einmaliges Anmelden konfiguriert haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Jamf Pro mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+

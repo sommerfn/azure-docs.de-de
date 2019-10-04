@@ -3,35 +3,49 @@ title: Übersicht über Azure Resource Graph
 description: Hier wird erläutert, wie der Azure Resource Graph-Dienst das komplexe bedarfsabhängige Abfragen von Ressourcen ermöglicht.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2019
+ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 28efdabc024fd32c83ba966b15284ec6ff368d4d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6721769b0ab6df4165281d9b5b75c0e1332ed1dc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269287"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001650"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Übersicht über den Azure Resource Graph-Dienst
 
-Azure Resource Graph ist ein Dienst in Azure, der die Azure-Ressourcenverwaltung mithilfe effizienter und leistungsstarker Ressourcenuntersuchung befähigen soll, alle Abonnements und Verwaltungsgruppen übergreifend nach Bedarf Abfragen durchzuführen, sodass Sie Ihre Umgebung effektiv beherrschen können. Diese Abfragen verfügen über die folgenden Features:
+Azure Resource Graph ist ein Dienst in Azure, der die Azure-Ressourcenverwaltung mithilfe effizienter und leistungsstarker Ressourcenuntersuchung befähigen soll, übergreifend für eine bestimmte Menge von Abonnements nach Bedarf Abfragen durchzuführen, sodass Sie Ihre Umgebung effektiv beherrschen können. Diese Abfragen verfügen über die folgenden Features:
 
 - Die Fähigkeit zum Abfragen von Ressourcen mit komplexem Filtern, Gruppieren und Sortieren nach Eigenschaften der Ressource.
-- Möglichkeit zum iterativen Untersuchen von Ressourcen basierend auf den Governanceanforderungen und Konvertieren des resultierenden Ausdrucks in eine Richtliniendefinition.
+- Fähigkeit zum iterativen Untersuchen von Ressourcen, basierend auf Governanceanforderungen.
 - Möglichkeit zum Bewerten der Auswirkungen der Anwendung von Richtlinien in einer großen Cloudumgebung.
+- Möglichkeit zum [Beschreiben von Änderungen der Ressourceneigenschaften](./how-to/get-resource-changes.md) (Vorschau).
 
 In dieser Dokumentation wird jedes Feature ausführlich beschrieben.
 
 > [!NOTE]
-> Azure Resource Graph wird von der neuen Funktion zum „Alle Ressourcen“-Durchsuchen des Azure-Portals verwendet. Sie dient zur Unterstützung von Kunden, die umfangreiche Umgebungen verwalten müssen.
+> Azure Resource Graph hebt mit der neuen Oberfläche zum Durchsuchen aller Ressourcen und dem [Änderungsverlauf](../policy/how-to/determine-non-compliance.md#change-history-preview) mit 
+> _visuellem Diff_ von Azure Policy die Suchleiste des Azure-Portals auf eine neue Höhe. Sie dient zur Unterstützung von Kunden, die umfangreiche Umgebungen verwalten.
+
+[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Wie Resource Graph Azure Resource Manager ergänzt
 
-Azure Resource Manager sendet Daten derzeit an einen begrenzten Ressourcencache, der mehrere Ressourcenfelder verfügbar macht: Ressourcenname, ID, Typ, Ressourcengruppe, Abonnements und Speicherort. Bisher waren für die Verwendung von unterschiedlichen Ressourceneigenschaften Aufrufe für jeden einzelnen Ressourcenanbieter erforderlich, und für jede Ressource mussten Details zu den Anforderungseigenschaften vorhanden sein.
+Azure Resource Manager unterstützt aktuelle Abfragen von einfachen Ressourcenfeldern, insbesondere Ressourcenname, ID, Typ, Ressourcengruppe, Abonnement und Speicherort. Resource Manager bietet darüber hinaus Funktionen zum Aufrufen einzelner Ressourcenanbieter, um jeweils für eine Ressource auf die Detaileigenschaften zuzugreifen.
 
-Mit Azure Resource Graph können Sie auf diese Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen. Die unterstützten Ressourcentypen sind in der Tabelle unter [Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus](../../azure-resource-manager/complete-mode-deletion.md) mit **Ja** gekennzeichnet.
+Mit Azure Resource Graph können Sie auf diese Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen. Die unterstützten Ressourcentypen sind in der Tabelle unter [Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus](../../azure-resource-manager/complete-mode-deletion.md) mit **Ja** gekennzeichnet. Alternativ können Sie die unterstützten Ressourcentypen über den [Schemabrowser im Azure Resource Graph-Explorer](./first-query-portal.md#schema-browser) anzeigen.
+
+Mit Azure Resource Graph können Sie:
+
+- auf die Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen.
+- die letzten 14 Tage des Verlaufs der Änderungen der Ressource anzeigen, um festzustellen, welche Eigenschaften wann geändert wurden. (Vorschauversion)
+
+## <a name="how-resource-graph-is-kept-current"></a>Wie Resource Graph auf dem aktuellen Stand gehalten wird
+
+Beim Update einer Azure-Ressource wird Resource Graph durch Resource Manager über die Änderung informiert.
+Darauf hin aktualisiert Resource Graph seine Datenbank. Resource Graph führt außerdem regelmäßig eine _vollständige Überprüfung_ durch. Durch diese Überprüfung wird sichergestellt, dass Resource Graph-Daten auch im Fall einer verpassten Benachrichtigung oder beim Update einer Ressource außerhalb von Resource Manager aktuell sind.
 
 ## <a name="the-query-language"></a>Die Abfragesprache
 
@@ -39,7 +53,8 @@ Da Sie nun besser verstehen, was Azure Resource Graph ist, erfahren Sie nun, wie
 
 Es ist wichtig zu wissen, dass die Abfragesprache von Azure Resource Graph auf der von Azure Data Explorer verwendeten [Kusto-Abfragesprache](../../data-explorer/data-explorer-overview.md) basiert.
 
-Informationen zu Vorgängen und Funktionen, die mit Azure Resource Graph verwendet werden können, finden Sie unter [Grundlegendes zur Abfragesprache von Azure Resource Graph](./concepts/query-language.md). Wie Sie Ressourcen durchsuchen, erfahren Sie unter [Untersuchen Ihrer Azure-Ressourcen mit Resource Graph](./concepts/explore-resources.md).
+Informationen zu Vorgängen und Funktionen, die mit Azure Resource Graph verwendet werden können, finden Sie unter [Grundlegendes zur Abfragesprache von Azure Resource Graph](./concepts/query-language.md).
+Wie Sie Ressourcen durchsuchen, erfahren Sie unter [Untersuchen Ihrer Azure-Ressourcen mit Resource Graph](./concepts/explore-resources.md).
 
 ## <a name="permissions-in-azure-resource-graph"></a>Berechtigungen in Azure Resource Graph
 
@@ -48,13 +63,30 @@ Um Resource Graph verwenden zu können, müssen Sie über die richtigen Rechte f
 > [!NOTE]
 > Ressource Graph verwendet die Abonnements, die für einen Prinzipal während der Anmeldung verfügbar sind. Um Ressourcen eines neuen Abonnements anzuzeigen, die während einer aktiven Sitzung hinzugefügt wurden, muss der Prinzipal den Kontext aktualisieren. Diese Aktion erfolgt nach dem Abmelden und erneuten Anmelden automatisch.
 
+Die Azure-Befehlszeilenschnittstelle und Azure PowerShell nutzen Abonnements, auf die der Benutzer Zugriff hat. Bei der direkten Verwendung der REST-API wird die Abonnementliste vom Benutzer bereitgestellt. Hat der Benutzer Zugriff auf eins der Abonnements in der Liste, werden die Abfrageergebnisse für die Abonnements zurückgegeben, auf die der Benutzer Zugriff hat. Dies ist das gleiche Verhalten wie beim Aufrufen von [Resource Groups - List](/rest/api/resources/resourcegroups/list) (Ressourcengruppen – Liste): Sie erhalten Ressourcengruppen, auf die Sie Zugriff haben, ohne Hinweis darauf, dass es sich um ein Teilergebnis handeln könnte.
+Sind in der Abonnementliste keine Abonnements vorhanden, für die der Benutzer über die entsprechenden Berechtigungen verfügt, lautet die Antwort _403_ (Verboten).
+
 ## <a name="throttling"></a>Drosselung
 
-Abfragen an Ressource Graph werden gedrosselt, um für alle Kunden die beste Erfahrung und Antwortzeit bereitzustellen. Wenn Ihre Organisation die Resource Graph-API für umfangreiche und häufige Abfragen verwenden möchte, verwenden Sie das Feedback-Portal auf der Resource Graph-Seite. Geben Sie Ihr Geschäftsszenario an, und aktivieren Sie das Kontrollkästchen „Microsoft darf mich bezüglich meines Feedbacks per E-Mail kontaktieren“, damit das Team Sie kontaktiert.
+Abfragen an Ressource Graph werden bei der Ausführung als kostenloser Dienst gedrosselt, um für alle Kunden die beste Erfahrung und Antwortzeit bereitzustellen. Wenn Ihre Organisation die Resource Graph-API für umfangreiche und häufige Abfragen verwenden möchte, verwenden Sie das Feedback-Portal auf der [Portal-Seite zu Resource Graph](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph).
+Geben Sie Ihr Geschäftsszenario an, und aktivieren Sie das Kontrollkästchen „Microsoft darf mich bezüglich meines Feedbacks per E-Mail kontaktieren“, damit das Team Sie kontaktieren kann.
+
+Resource Graph drosselt Abfragen auf Benutzerebene. Die Dienstantwort enthält die folgenden HTTP-Header:
+
+- `x-ms-user-quota-remaining` (int): Das verbleibende Ressourcenkontingent für den Benutzer. Dieser Wert entspricht der Anzahl von Abfragen.
+- `x-ms-user-quota-resets-after` (hh:mm:ss): Der Zeitraum, bis das Kontingent eines Benutzers zurückgesetzt wird
+
+Weitere Informationen finden Sie in der [Anleitung für gedrosselte Anforderungen](./concepts/guidance-for-throttled-requests.md).
 
 ## <a name="running-your-first-query"></a>Ausführen Ihrer ersten Abfrage
 
-Resource Graph unterstützt die Azure-Befehlszeilenschnittstelle (CLI), Azure PowerShell und das Azure SDK für .NET. Die Abfrage ist für alle Sprachen gleich strukturiert. Informationen zum Aktivieren von Resource Graph in [Azure-Befehlszeilenschnittstelle](first-query-azurecli.md#add-the-resource-graph-extension) und [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module).
+Der Azure Resource Graph-Explorer im Azure-Portal ermöglicht die Ausführung von Resource Graph-Abfragen direkt im Azure-Portal. Heften Sie die Ergebnisse als dynamische Diagramme an, um dynamische Echtzeitinformationen für den Portalworkflow bereitzustellen. Weitere Informationen finden Sie unter [Quickstart: Run your first Resource Graph query using Azure Resource Graph Explorer](first-query-portal.md) (Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers).
+
+Resource Graph unterstützt die Azure-Befehlszeilenschnittstelle, Azure PowerShell, das Azure SDK für .NET und vieles mehr. Die Abfrage ist für alle Sprachen gleich strukturiert. Lesen Sie, wie Sie Resource Graph mit einer der folgenden Komponenten aktivieren:
+
+- [Azure-Portal und Resource Graph-Explorer](first-query-portal.md) 
+- [Azure-Befehlszeilenschnittstelle](first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

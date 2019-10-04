@@ -4,23 +4,22 @@ description: Laden Sie eine Windows-VHD mithilfe des Azure-Portals herunter.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 3d44a4a723c39bf9780475a2ac3088da94285f6e
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c1c09382102045dd248b6771d8d0ea1ef090b6eb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329369"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079618"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Herunterladen einer Windows-VHD von Azure
 
@@ -52,11 +51,11 @@ Um die VHD als Datenträger eine neue Instanz einer vorhandenen VM oder eines vo
 Um die VHD-Datei herunterzuladen, müssen Sie eine [SAS-URL (Shared Access Signature)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) generieren. Wenn die URL generiert wird, wird der URL eine Ablaufzeit zugewiesen.
 
 1.  Klicken Sie auf im Menü des Blatts für die VM auf **Datenträger**.
-2.  Wählen Sie den Betriebssystem-Datenträger für die VM aus, und klicken Sie dann auf **Exportieren**.
+2.  Wählen Sie den Betriebssystem-Datenträger für die VM aus, und klicken Sie dann auf **Datenträgerexport**.
 3.  Legen Sie die Ablaufzeit der URL auf *36000* fest.
 4.  Klicken Sie auf **URL generieren**.
 
-    ![Generieren der URL](./media/download-vhd/export-generate.png)
+    ![Generieren der URL](./media/download-vhd/export-generate-new.png)
 
 > [!NOTE]
 > Die Ablaufzeit wird von der Standardzeit erhöht, um genug Zeit für das Herunterladen der großen VHD-Datei für ein Windows Server-Betriebssystem bereitzustellen. Sie können davon ausgehen, dass das Herunterladen einer VHD-Datei mit dem Windows Server-Betriebssystem mehrere Stunden dauert, je nach Ihrer Verbindung. Wenn Sie eine VHD für einen Datenträger herunterladen, reicht die Standardzeit. 

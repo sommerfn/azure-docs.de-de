@@ -1,149 +1,130 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6dfa2cf9d5d7a4fb10c04207341915aebbf1808e
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235460"
 documentType: LandingData
 title: 'Azure SQL-Datenbank: Einzeldatenbank'
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: Dokumentation für Azure SQL-Datenbank – Tutorials, API-Referenz
+  title: 'Dokumentation für Azure SQL-Datenbank – Tutorials, API-Referenz'
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
-  author: jovanpop-msft
-  manager: craigg
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.subservice: single-database
-  ms.tgt_pltfrm: na
-  ms.devlang: 
   ms.topic: overview
-  ms.date: 01/25/2019
+  author: jovanpop-msft
   ms.author: jovanpop-msft
+  ms.reviewer: carlrab
+  manager: craigg
+  ms.date: 04/26/2019
 abstract:
-  description: Azure SQL-Datenbank ist eine relationale DBaaS-Lösung (Database-as-a-Service) und basiert auf der neuesten stabilen Version der Microsoft SQL Server-Datenbank-Engine. SQL-Datenbank ist eine benutzerfreundliche, zuverlässige und sichere Hochleistungsdatenbank, mit der Sie neue Anwendungen, Websites und Microservices in der Programmiersprache Ihrer Wahl erstellen können, ohne dass eine Infrastruktur verwaltet werden muss. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie SQL-Datenbank verwenden.
+  description: 'Azure SQL-Datenbank ist eine relationale DBaaS-Lösung (Database-as-a-Service) und basiert auf der neuesten stabilen Version der Microsoft SQL Server-Datenbank-Engine. SQL-Datenbank ist eine benutzerfreundliche, zuverlässige und sichere Hochleistungsdatenbank, mit der Sie neue Anwendungen, Websites und Microservices in der Programmiersprache Ihrer Wahl erstellen können, ohne dass eine Infrastruktur verwaltet werden muss. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie SQL-Datenbank verwenden.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png
+      src: 'https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png'
       width: 250
-    title: Erstellen einer einzelnen SQL-Datenbank in Azure (3:12)
-    href: https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/
+    title: 'Erstellen einer einzelnen SQL-Datenbank in Azure (3:12)'
+    href: 'https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: Pools für elastische Datenbanken
+            href: /azure/sql-database/sql-database-elastic-pool
+            html: '<p>Pools für elastische SQL-Datenbank-Instanzen sind eine einfache, kostengünstige Lösung zum Verwalten und Skalieren mehrerer Datenbanken mit variierenden und unvorhersehbaren Anforderungen.</p>'
+            image:
+              src: media/index/i_elasticpool.svg
+          - title: SQL-Datenbank-Server
+            href: /azure/sql-database/sql-database-servers
+            html: <p>Ein SQL-Datenbankserver ist ein zentraler Verwaltungspunkt zum Konfigurieren der Sicherheit und der Optimierung sowie dem Festlegen einer Sicherungsrichtlinie und anderer Konfigurationseigenschaften für eine Gruppe von Einzel- oder Pooldatenbanken auf dem Server.</p>
+            image:
+              src: media/index/i_mi.svg
+          - title: Preis- und Dienstebenen
+            href: /azure/sql-database/sql-database-service-tiers
+            html: '<p>Passen Sie das Preis-Leistungs-Verhältnis mit flexiblen Dienstebenen, die von kostengünstigen 5 USD pro Monat bis zu leistungsstarken 80-Kern-Datenbanken reichen, an Ihre Bedürfnisse an.</p>'
+            image:
+              src: media/index/i_perftier.svg
+          - title: Skalierbarkeit
+            href: /azure/sql-database/sql-database-scale-resources
+            html: '<p>Sie können die Datenbank problemlos zentral hochskalieren, um die Leistung Ihrer Anwendung zu verbessern.</p>'
+            image:
+              src: media/index/i_scale.svg
+          - title: Platform-as-a-Service
+            href: /azure/sql-database/sql-database-paas
+            html: '<p>Integrierte Hochverfügbarkeit, automatische Sicherungen und Georeplikation können verhindern, dass Wartungsvorgänge, Infrastruktur- oder Hardwarefehler Ihr Geschäft beeinträchtigen.</p>'
+            image:
+              src: media/index/gear.svg
+          - title: Erweiterte Sicherheit
+            href: /azure/sql-database/sql-database-security-index
+            html: '<p>Sichern Sie Ihre Datenbank mit Azure AD-Authentifizierung, virtuellen Netzwerken, Firewalls und Always Encrypted-Verbindungen. Identifizieren Sie Bedrohungen und Sicherheitsrisiken mit integrierter Sicherheit.</p>'
+            image:
+              src: media/index/i_security.svg
+  - title: Fünf-Minuten-Schnellstarts
     items:
-    - title: Pools für elastische Datenbanken
-      href: /azure/sql-database/sql-database-elastic-pool
-      html: <p>Pools für elastische SQL-Datenbank-Instanzen sind eine einfache, kostengünstige Lösung zum Verwalten und Skalieren mehrerer Datenbanken mit variierenden und unvorhersehbaren Anforderungen.</p>
-      image:
-        src: media/index/i_elasticpool.svg
-    - title: SQL-Datenbankserver
-      href: /azure/sql-database/sql-database-servers
-      html: <p>Ein SQL-Datenbankserver ist ein zentraler Verwaltungspunkt zum Konfigurieren der Sicherheit und der Optimierung sowie dem Festlegen einer Sicherungsrichtlinie und anderer Konfigurationseigenschaften für eine Gruppe von Einzeldatenbanken oder in einem Pool zusammengefassten Datenbanken auf dem Server.</p>
-      image:
-        src: media/index/i_mi.svg
-    - title: Preis- und Dienstebenen
-      href: /azure/sql-database/sql-database-service-tiers
-      html: <p>Passen Sie das Preis-Leistungs-Verhältnis mit flexiblen Diensttarifen, die von kostengünstigen 5 USD pro Monat bis zu leistungsstarken 80-Kern-Datenbanken reichen, an Ihre Bedürfnisse an.</p>
-      image:
-        src: media/index/i_perftier.svg
-    - title: Skalierbarkeit
-      href: /azure/sql-database/sql-database-scale-resources
-      html: <p>Sie können die Datenbank problemlos zentral hochskalieren, um die Leistung Ihrer Anwendung zu verbessern.</p>
-      image:
-        src: media/index/i_scale.svg
-    - title: Platform-as-a-Service
-      href: /azure/sql-database/sql-database-paas
-      html: <p>Integrierte Hochverfügbarkeit, automatische Sicherungen und Georeplikation können verhindern, dass Wartungsvorgänge, Infrastruktur- oder Hardwarefehler Ihr Geschäft beeinträchtigen.</p>
-      image:
-        src: media/index/gear.svg
-    - title: Erweiterte Sicherheit
-      href: /azure/sql-database/sql-database-security-index
-      html: <p>Sichern Sie Ihre Datenbank mit Azure AD-Authentifizierung, virtuellen Netzwerken, Firewalls und Always Encrypted-Verbindungen. Identifizieren Sie Bedrohungen und Sicherheitsrisiken mit integrierter Sicherheit.</p>
-      image:
-        src: media/index/i_security.svg
-- title: Neue Features und Previewfunktionen
-  items:
-  - type: paragraph
-    text: 'SQL-Datenbank wird fortlaufend mit neuen, verbesserten Features ausgestattet, und wir würden gerne Ihr Feedback zu den folgenden neuen Features erfahren:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Mit Azure SQL-Datenbank können Sie über das Azure-Portal, über die Azure CLI und über Azure PowerShell grundlegende Verwaltungsaufgaben ausführen. Informationen zum Ausführen grundlegender Verwaltungsaufgaben finden Sie in den folgenden Schnellstartbeispielen:'
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/portal.svg
+            title: Azure-Portal
+          - image:
+              src: media/index/cli.svg
+            title: Azure-Befehlszeilenschnittstelle
+          - image:
+              src: media/index/logo_powershell.svg
+            title: PowerShell
+          - image:
+              src: media/index/logo_arm.svg
+            title: Azure Resource Manager-Vorlage
+        rows:
+          - title: Erstellen einer Datenbank
+            values:
+              - href: /azure/sql-database/sql-database-single-database-get-started
+              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
+              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
+              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create'
+          - title: Erstellen eines Pools für elastische Datenbanken
+            values:
+              - href: /azure/sql-database/sql-database-elastic-pool-manage
+              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
+              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
+              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create'
+          - title: Skalieren einer Datenbank
+            values:
+              - href: null
+              - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
+              - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
+              - href: null
+          - title: Skalieren eines Pools für elastische Datenbanken
+            values:
+              - href: null
+              - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
+              - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - html: (Vorschau) <a href="sql-database-service-tier-hyperscale">Hyperscale</a>-Tarif, der Datenbanken mit bis zu 100 TB und mehrere lesbare Replikate unterstützt.
-    - html: (Vorschau) Neue Features für <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">intelligente Abfrageverarbeitung</a> in SQL Server 2019, z.B. <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">verzögerte Kompilierung von Tabellenvariablen</a>, <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">Batchmodus bei Rowstore-Tabellen</a> und <a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json"> Inlining benutzerdefinierter Skalarfunktionen</a>.
-    - html: (Vorschau) Neue Transact-SQL-Sprachfunktionen, z.B. <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">Aggregatfunktion APPROX_COUNT_DISTINCT</a> und <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">Massenimport aus Azure Blob Storage</a>.
-    - html: (Vorschau) Neue Vorgänge zum <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">Erstellen</a> und Neuerstellen des clustered columnstore-Index in SQL Server 2019 Online.
-    - html: (Vorschau) Neue <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">Machine Learning Services (mit R) in Azure SQL-Datenbank</a>
-- title: Fünf-Minuten-Schnellstarts
-  items:
-  - type: paragraph
-    text: 'Mit Azure SQL-Datenbank können Sie über das Azure-Portal, über die Azure CLI und über Azure PowerShell grundlegende Verwaltungsaufgaben ausführen. Informationen zum Ausführen grundlegender Verwaltungsaufgaben finden Sie in den folgenden Schnellstartbeispielen:'
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/portal.svg
-      title: Azure-Portal
-    - image:
-        src: media/index/cli.svg
-      title: Azure-Befehlszeilenschnittstelle
-    - image:
-        src: media/index/logo_powershell.svg
-      title: PowerShell
-    - image:
-        src: media/index/logo_arm.svg
-      title: Azure Resource Manager-Vorlage
-    rows:
-    - title: Erstellen einer Datenbank
-      values:
-      - href: /azure/sql-database/sql-database-single-database-get-started
-      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
-      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create
-    - title: Erstellen eines Pools für elastische Datenbanken
-      values:
-      - href: /azure/sql-database/sql-database-elastic-pool-manage
-      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
-      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
-    - title: Skalieren einer Datenbank
-      values:
-      - href: 
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
-      - href: 
-    - title: Skalieren eines Pools für elastische Datenbanken
-      values:
-      - href: 
-      - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: Enthält Informationen dazu, wie Sie mit Azure SQL-Datenbank Datenbanken erstellen, verwalten und migrieren.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Enthält Informationen dazu, wie Sie mit Azure SQL-Datenbank Datenbanken erstellen, verwalten und migrieren.'
+      - type: list
+        style: ordered
+        items:
+          - html: Erstellen und Entwerfen des Schemas für eine neue SQL-Datenbank per <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> oder <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
+          - html: Migrieren einer vorhandenen Datenbank zu Azure mit dem <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Datenbankmigrations-Assistenten</a> oder per <a href="/azure/sql-database/sql-database-import">BACPAC-Import</a>
+          - html: <a href="/azure/sql-database/sql-database-security-tutorial">Sichern Ihrer SQL-Datenbank</a>
+          - html: Globales Verteilen von Daten mithilfe einer <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geografisch verteilten Datenbank</a>
+          - html: 'Weitere <a href="sql-database-howto-single-database.md">Anleitungen</a>, die beim Konfigurieren Ihrer Datenbank hilfreich sein können'
+  - title: Beispiele
     items:
-    - html: Erstellen und Entwerfen des Schemas für eine neue SQL-Datenbank per <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> oder <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
-    - html: Migrieren einer vorhandenen Datenbank zu Azure mit dem <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Datenbankmigrations-Assistenten</a> oder per <a href="/azure/sql-database/sql-database-import">BACPAC-Import</a>
-    - html: <a href="/azure/sql-database/sql-database-security-tutorial">Sichern Ihrer SQL-Datenbank</a>
-    - html: Globales Verteilen von Daten mithilfe einer <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geografisch verteilten Datenbank</a>
-    - html: Weitere <a href="sql-database-howto-single-database.md">Anleitungen</a>, die beim Konfigurieren Ihrer Datenbank hilfreich sein können
-- title: Beispiele
-  items:
-  - type: paragraph
-    text: Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
-  - type: list
-    style: unordered
-    className: spaced noBullet
-    items:
-    - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
-    - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure-Befehlszeilenschnittstelle</a>
+      - type: paragraph
+        text: Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
+          - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure-Befehlszeilenschnittstelle</a>

@@ -3,25 +3,25 @@ title: Veröffentlichen von Remotedesktops mit dem Azure AD-App-Proxy | Microsof
 description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungsproxy-Connectors.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.author: celested
+ms.date: 05/23/2019
+ms.author: mimart
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 295422e0f456c4dfd4166911ef8150e8a896ba1a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111105"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67108460"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy
 
@@ -58,6 +58,8 @@ Bei einer RDS-Bereitstellung werden die Rollen „RD-Web“ und „RD-Gateway“
 
 - Aktivieren Sie im Internet Explorer das RDS-ActiveX-Add-On.
 
+- Für den Azure AD-Vorauthentifizierungsfluss können Benutzer nur Verbindungen mit Ressourcen herstellen, die im Bereich **RemoteApp und Desktops** für sie veröffentlicht wurden. Benutzer können nicht mit dem Bereich **Verbindung mit einem Remote-PC herstellen** eine Verbindung mit einem Desktop herstellen.
+
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>Bereitstellen des gemeinsamen RDS- und Anwendungsproxy-Szenarios
 
 Führen Sie nach der Einrichtung von RDS und des Azure AD-Anwendungsproxys für Ihre Umgebung die Schritte durch, um beide Lösungen zu kombinieren. Diese Schritte führen Sie durch die Veröffentlichung der zwei RDS-Endpunkte mit Webzugriff (RD-Web und RD-Gateway) als Anwendungen und anschließenden Weiterleitung des Datenverkehrs in RDS an das Anwendungsproxy.
@@ -68,11 +70,12 @@ Führen Sie nach der Einrichtung von RDS und des Azure AD-Anwendungsproxys für 
    - Interne URL: `https://\<rdhost\>.com/`, wobei `\<rdhost\>` das gemeinsame Stammverzeichnis ist, das von RD-Web und RD-Gateway gemeinsam genutzt wird.
    - Externe URL: Dieses Feld wird automatisch basierend auf dem Namen der Anwendung aufgefüllt. Sie können das Feld jedoch ändern. Ihre Benutzer werden beim Zugriff auf RDS an diese URL weitergeleitet.
    - Präauthentifizierungsmethode: Azure Active Directory
-   - URL-Header übersetzen: Nein 
+   - URL-Header übersetzen: Nein
 2. Weisen Sie Benutzern die veröffentlichte RD-Anwendung zu. Stellen Sie sicher, dass alle Benutzer auch Zugriff auf RDS haben.
 3. Legen Sie für die Methode zur einmaligen Anmeldung für die Anwendung **Azure AD-SSO deaktiviert** fest. Ihre Benutzer werden aufgefordert, sich einmal bei Azure AD und einmal bei RD-Web zu authentifizieren, verfügen jedoch über die Möglichkeit zur einmaligen Anmeldung beim RD-Gateway.
-4. Navigieren Sie zu **Azure Active Directory** > **App-Registrierungen** > *Ihre Anwendung* > **Einstellungen**.
-5. Wählen Sie **Eigenschaften**, und aktualisieren Sie das Feld **URL der Startseite**, sodass auf Ihren RD-Web-Endpunkt verwiesen wird (z.B. `https://\<rdhost\>.com/RDWeb`).
+4. Wählen Sie **Azure Active Directory** und dann **App-Registrierungen** aus. Wählen Sie Ihre App aus der Liste aus.
+5. Wählen Sie unter **Verwalten** die Option **Branding** aus.
+6. Aktualisieren Sie das Feld **URL der Startseite**, um auf Ihren RD-Web-Endpunkt zu verweisen (z.B. `https://\<rdhost\>.com/RDWeb`).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Weiterleiten des RDS-Datenverkehrs an den Anwendungsproxy
 

@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d146027ea3a21ab8df3750014c02893bc2f50dd6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4962070d69af98d0c7b10dc6f931612766529dce
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097728"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515706"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Anpassen des Setups für Azure-SSIS Integration Runtime
 
@@ -39,6 +39,8 @@ Sie können sowohl kostenlose bzw. unlizenzierte als auch kostenpflichtige oder 
 -   Wenn Azure-SSIS IR im Rahmen des benutzerdefinierten Setups einem virtuellen Netzwerk beitreten soll, wird nur das virtuelle Azure Resource Manager-Netzwerk unterstützt. Das klassische virtuelle Netzwerk wird nicht unterstützt.
 
 -   Administrative Freigabe wird für die Azure-SSIS-Integrationslaufzeit derzeit nicht unterstützt.
+
+-   Der ODBC-Treiber für Zugriff auf die den IBM iSeries wird in der Azure-SSIS Integration Runtime nicht unterstützt. Möglicherweise wird während des benutzerdefinierten Setups ein Installationsfehler angezeigt. Wenden Sie sich an den IBM-Kundendienst.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -82,7 +84,7 @@ Zum Anpassen von Azure-SSIS IR benötigen Sie Folgendes:
 
       ![Erstellen eines Blobcontainers](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
 
-   1. Wählen Sie den neuen Container aus, und laden Sie Ihr benutzerdefiniertes Setupskript und die zugehörigen Dateien hoch. Stellen Sie sicher, dass Sie `main.cmd` auf die oberste Ebene des Containers und nicht in einen Ordner hochladen. Vergewissern Sie sich außerdem, dass Ihr Container nur die erforderlichen Dateien für das benutzerdefinierte Setup enthält, damit das spätere Herunterladen in Ihre Azure-SSIS IR nicht so lange dauert.
+   1. Wählen Sie den neuen Container aus, und laden Sie Ihr benutzerdefiniertes Setupskript und die zugehörigen Dateien hoch. Stellen Sie sicher, dass Sie `main.cmd` auf die oberste Ebene des Containers und nicht in einen Ordner hochladen. Vergewissern Sie sich außerdem, dass Ihr Container nur die erforderlichen Dateien für das benutzerdefinierte Setup enthält, damit das spätere Herunterladen in Ihre Azure-SSIS IR nicht so lange dauert. Der maximale Zeitraum für das benutzerdefinierte Setup ist derzeit auf 45 Minuten festgelegt, bevor ein Timeout auftritt, und dies umfasst auch die Zeit zum Herunterladen aller Dateien aus Ihrem Container und deren Installation auf Azure-SSIS IR. Wenn eine längere Frist erforderlich ist, senden Sie ein Supportticket.
 
       ![Hochladen von Dateien in den Blobcontainer](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
 
@@ -105,7 +107,7 @@ Zum Anpassen von Azure-SSIS IR benötigen Sie Folgendes:
 
       ![Eingeben der Shared Access Signature](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
-      Wenn Sie Azure-SSIS IR mit PowerShell bereitstellen oder neu konfigurieren, führen Sie vor dem Start von Azure-SSIS IR das Cmdlet `Set-AzDataFactoryV2IntegrationRuntime` mit dem SAS-URI des Containers als Wert für den neuen Parameter `SetupScriptContainerSasUri` aus. Beispiel: 
+      Wenn Sie Azure-SSIS IR mit PowerShell bereitstellen oder neu konfigurieren, führen Sie vor dem Start von Azure-SSIS IR das Cmdlet `Set-AzDataFactoryV2IntegrationRuntime` mit dem SAS-URI des Containers als Wert für den neuen Parameter `SetupScriptContainerSasUri` aus. Beispiel:
 
       ```powershell
       Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `

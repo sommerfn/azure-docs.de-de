@@ -3,21 +3,23 @@ title: Auslösen von Azure Functions mithilfe von Webhooks in Azure IoT Central
 description: Erstellen Sie eine Funktions-App, die immer dann ausgeführt wird, wenn eine Regel in Azure IoT Central ausgelöst wird.
 author: viv-liu
 ms.author: viviali
-ms.date: 03/26/2019
+ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0d92e9bdf8ec207e5ef0e3f891c162182b5a4fff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e7c0f0abdf4a96f4af904f76549bdebd62b803cd
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264844"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877322"
 ---
 # <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Auslösen von Azure Functions mithilfe von Webhooks in Azure IoT Central
 
 *Dieses Thema gilt für Generatoren und Administratoren.*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Verwenden Sie Azure Functions, um serverlosen Code bei der Webhookausgabe aus IoT Central-Regeln auszuführen. Sie müssen keinen virtuellen Computer bereitstellen oder eine Web-App veröffentlichen, um Azure Functions verwenden zu können. Stattdessen können Sie diesen Code serverlos ausführen. Verwenden Sie Azure Functions, um die Webhook-Nutzlast zu transformieren, bevor Sie sie an ihr endgültiges Ziel senden, z. B. eine SQL-Datenbank oder ein Event Grid.
 

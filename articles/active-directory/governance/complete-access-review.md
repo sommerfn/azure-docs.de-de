@@ -3,8 +3,8 @@ title: Durchführen einer Zugriffsüberprüfung für Gruppen oder Anwendungen �
 description: Erfahren Sie, wie Sie eine Gruppenmitglieder oder den Anwendungszugriff betreffende Zugriffsüberprüfung in Azure Active Directory-Zugriffsüberprüfungen durchführen.
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -12,55 +12,83 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/02/2018
-ms.author: rolyon
+ms.date: 07/23/2019
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4265a7e08eab079e55ce91b27142ec3e55b3f3e9
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 97c405032368ffd06f5808bc4518302d2f6d66b9
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579596"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68489147"
 ---
 # <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Durchführen einer Gruppen oder Anwendungen betreffenden Zugriffsüberprüfung in Azure AD-Zugriffsüberprüfungen
 
-Mit Azure Active Directory (Azure AD) können Administratoren [eine Zugriffsüberprüfung erstellen](create-access-review.md). Diese kann für Mitglieder einer Gruppe oder Benutzer, die einer Anwendung zugewiesen sind, durchgeführt werden. Azure AD sendet Prüfern automatisch eine E-Mail, in der sie aufgefordert werden, den Zugriff zu überprüfen. Benutzern, die diese E-Mail nicht erhalten haben, können Sie die Anweisungen unter [Starten einer Zugriffsüberprüfung mit Azure AD-Zugriffsüberprüfungen](perform-access-review.md) senden. (Beachten Sie, dass Gäste, die als Prüfer zugewiesen wurden, die Einladung aber nicht angenommen haben, keine E-Mail zu Zugriffsüberprüfungen erhalten, da die Einladung zuerst akzeptiert werden muss, bevor Prüfer Überprüfungen vornehmen können.) Folgen Sie den Schritten in diesem Artikel, nachdem der Zeitraum der Zugriffsüberprüfung abgelaufen ist oder ein Administrator die Zugriffsüberprüfung beendet hat, um die Ergebnisse anzuzeigen und anzuwenden.
+Als Administrator [erstellen Sie eine Zugriffsüberprüfung für Gruppen oder Anwendungen](create-access-review.md), und Prüfer [führen dann die Zugriffsüberprüfung durch](perform-access-review.md). In diesem Artikel wird beschrieben, wie Sie die Ergebnisse der Zugriffsüberprüfung anzeigen und anwenden.
 
-## <a name="view-an-access-review-in-the-azure-portal"></a>Anzeigen einer Zugriffsüberprüfung im Azure-Portal
+[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-1. Navigieren Sie zur [Zugriffsüberprüfungsseite](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/), klicken Sie auf **Programme**, und wählen Sie das Programm aus, welches das Zugriffsüberprüfungssteuerelement enthält.
+## <a name="prerequisites"></a>Voraussetzungen
 
-2. Klicken Sie auf **Verwalten**, und wählen Sie das Zugriffsüberprüfungs-Steuerelement aus. Wenn das Programm viele Steuerelemente enthält, können Sie nach Steuerelementen eines bestimmten Typs filtern und diese nach ihrem Status sortieren. Darüber hinaus können Sie nach dem Namen des Zugriffsüberprüfung-Steuerelements oder dem Anzeigename des Besitzers, der das Steuerelement erstellt hat, suchen. 
+- Azure AD Premium P2
+- Globaler Administrator, Benutzeradministrator, Sicherheitsadministrator oder Sicherheitsleseberechtigter
 
-## <a name="stop-a-review-that-hasnt-finished"></a>Beenden einer nicht abgeschlossenen Überprüfung
+Weitere Informationen finden Sie unter [Welche Benutzer benötigen Lizenzen?](access-reviews-overview.md#which-users-must-have-licenses).
 
-Wenn die Überprüfung noch nicht am geplanten Enddatum angelangt ist, kann ein Administrator auf **Stop** (Beenden) klicken, um die Überprüfung frühzeitig zu beenden. Nachdem die Überprüfung beendet wurde, können Benutzer nicht weiter überprüft werden. Eine Überprüfung kann nicht neu gestartet werden, nachdem sie beendet wurde.
+## <a name="view-an-access-review"></a>Anzeigen einer Zugriffsüberprüfung
 
-## <a name="apply-the-changes"></a>Übernehmen von Änderungen 
+Sie können den Status nachverfolgen, während die Prüfer die Überprüfungen durchführen.
 
-Nachdem eine Zugriffsüberprüfung abgeschlossen wurde, weil sie entweder das Enddatum erreicht hat oder von einem Administrator manuell angehalten wurde, und wenn für die Überprüfung keine automatische Anwendung konfiguriert wurde, können Sie **Anwenden** auswählen, um die Änderungen manuell anzuwenden. Das Ergebnis der Überprüfung wird durch das Aktualisieren der Gruppe oder der Anwendung implementiert. Wenn der Zugriff eines Benutzers in der Überprüfung verweigert wurde, entfernt Azure AD deren Mitgliedschaft oder Anwendungszuweisung, wenn ein Administrator diese Option auswählt. 
+1. Melden Sie sich beim Azure-Portal an, und öffnen Sie die Seite [Identity Governance](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-Nachdem eine Zugriffsüberprüfung abgeschlossen wurde und wenn eine automatische Anwendung konfiguriert wurde, ändert sich der Status der Überprüfung von „Abgeschlossen“ zu verschiedenen Zwischenstadien und letztendlich in den Status „Angewendet“. Erwartungsgemäß werden abgelehnte Benutzer, sofern vorhanden, innerhalb weniger Minuten aus der Ressourcengruppen oder App-Zuweisung entfernt.
+1. Klicken Sie im linken Menü auf **Zugriffsüberprüfungen**.
+
+1. Klicken Sie in der Liste auf eine Zugriffsüberprüfung.
+
+    Navigieren Sie zu einer Zugriffsüberprüfung, um eine Reihe von geplanten Zugriffsüberprüfungen anzuzeigen. Die anstehenden Prüfungen werden unter „Geplante Überprüfung“ angezeigt.
+
+    Auf der Seite **Übersicht** können Sie den Status verfolgen. Zugriffsrechte werden im Verzeichnis erst geändert, wenn die Überprüfung abgeschlossen ist.
+
+    ![Fortschritt der Zugriffsüberprüfungen](./media/complete-access-review/overview-progress.png)
+
+1. Klicken Sie auf die Schaltfläche **Beenden**, wenn Sie eine Zugriffsüberprüfung beenden möchten, bevor dafür das geplante Enddatum erreicht wurde.
+
+    Nachdem eine Überprüfung beendet wurde, können Prüfer dafür keine Antworten mehr abgeben. Eine Überprüfung kann nicht neu gestartet werden, nachdem sie beendet wurde.
+
+1. Wenn Sie die Zugriffsüberprüfung nicht mehr benötigen, können Sie sie löschen, indem Sie auf die Schaltfläche **Löschen** klicken.
+
+## <a name="apply-the-changes"></a>Übernehmen von Änderungen
+
+Bei Aktivierung von **Ergebnisse automatisch auf Ressource anwenden** wird basierend auf Ihrer Auswahl unter **Einstellungen nach Abschluss** nach dem Enddatum der Überprüfung oder bei ihrer manuellen Beendigung die automatische Anwendung durchgeführt.
+
+Klicken Sie auf **Anwenden**, um die Änderungen manuell anzuwenden, wenn die Option **Ergebnisse automatisch auf Ressource anwenden** für die Überprüfung nicht aktiviert war. Wenn der Zugriff eines Benutzers in der Überprüfung verweigert wurde, entfernt Azure AD dessen Mitgliedschaft oder Anwendungszuweisung, nachdem Sie auf **Anwenden** geklickt haben.
+
+![Anwenden von Änderungen der Zugriffsüberprüfung](./media/complete-access-review/apply-changes.png)
+
+Der Status der Überprüfung ändert sich von **Abgeschlossen** über Zwischenzustände wie **Wird angewandt** schließlich in den Status **Ergebnis angewendet**. Erwartungsgemäß sollten abgelehnte Benutzer (sofern vorhanden) innerhalb weniger Minuten aus der Gruppenmitgliedschaft oder Anwendungszuweisung entfernt werden.
 
 Die konfigurierte automatische Anwendung einer Überprüfung oder die Auswahl von **Anwenden** haben keine Auswirkung auf eine Gruppe, die aus einem lokalen Verzeichnis stammt, oder auf eine dynamische Gruppe. Wenn Sie eine Gruppe ändern möchten, die aus einem lokalen Verzeichnis stammt, laden Sie die Ergebnisse herunter, und wenden Sie diese Änderungen auf die Darstellung der Gruppe im Verzeichnis an.
 
-## <a name="download-the-results-of-the-review"></a>Herunterladen der Ergebnisse der Überprüfung
+## <a name="retrieve-the-results"></a>Abrufen der Ergebnisse
 
-Klicken Sie auf **Approvals** (Genehmigungen), um die Ergebnisse der Überprüfung abzurufen, und klicken Sie anschließend auf **Herunterladen**. Die CSV-Datei mit den Ergebnissen kann in Excel oder in anderen Programmen angezeigt werden, die mit UTF-8 codierte CSV-Dateien öffnen können.
+Klicken Sie auf die Seite **Ergebnisse**, um die Ergebnisse für eine einmalige Zugriffsüberprüfung anzuzeigen. Geben Sie im Suchfeld den Anzeigenamen oder Benutzerprinzipalnamen eines Benutzers ein, dessen Zugriff überprüft wurde, um nur den Zugriff dieses Benutzers anzuzeigen.
 
-## <a name="optional-delete-a-review"></a>Optional: Rezension löschen
-Wenn Sie eine Überprüfung nicht mehr benötigen, können Sie diese löschen. Klicken Sie auf **Löschen**, um eine Überprüfung aus Azure AD zu entfernen.
+![Abrufen der Ergebnisse für eine Zugriffsüberprüfung](./media/complete-access-review/retrieve-results.png)
 
-> [!IMPORTANT]
-> Vor dem Löschen wird keine Warnung angezeigt. Vergewissern Sie sich daher, dass Sie die Überprüfung tatsächlich löschen möchten.
-> 
-> 
+Klicken Sie zum Anzeigen des Status einer aktiven Serienzugriffsüberprüfung auf die Seite **Ergebnisse**.
+
+Klicken Sie zum Anzeigen der Ergebnisse einer abgeschlossenen Instanz einer Serienzugriffsüberprüfung auf **Ausführungsverlauf**. Wählen Sie anschließend basierend auf dem Start- und Enddatum der Instanz die spezifische Instanz in der Liste mit den abgeschlossenen Zugriffsüberprüfungsinstanzen aus. Die Ergebnisse dieser Instanz können auf der Seite **Ergebnisse** abgerufen werden.
+
+Klicken Sie auf die Schaltfläche **Herunterladen**, wenn Sie alle Ergebnisse einer Zugriffsüberprüfung abrufen möchten. Die CSV-Datei mit den Ergebnissen kann in Excel oder in anderen Programmen angezeigt werden, die mit UTF-8 codierte CSV-Dateien öffnen können.
+
+## <a name="remove-users-from-an-access-review"></a>Entfernen von Benutzern aus einer Zugriffsüberprüfung
+
+ Ein gelöschter Benutzer bleibt in Azure AD standardmäßig 30 Tage lang gelöscht. In diesem Zeitraum kann er von einem Administrator wiederhergestellt werden, sofern erforderlich.  Nach 30 Tagen wird dieser Benutzer endgültig gelöscht.  Darüber hinaus kann ein globaler Administrator über das Azure Active Directory-Portal explizit [einen kürzlich gelöschten Benutzer endgültig löschen](../fundamentals/active-directory-users-restore.md), bevor dieser Zeitraum abgelaufen ist.  Wurde ein Benutzer endgültig gelöscht, werden nachfolgende Daten zu diesem Benutzer aus aktiven Zugriffsüberprüfungen entfernt.  Überwachungsinformationen zu gelöschten Benutzern verbleiben im Überwachungsprotokoll.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Manage user access with Azure AD access reviews (Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen)](manage-user-access-with-access-reviews.md)
 - [Manage guest access with Azure AD access reviews](manage-guest-access-with-access-reviews.md) (Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen)
-- [Manage programs and controls for Azure AD access reviews](manage-programs-controls.md) (Verwalten der Programme und Kontrollen für Azure AD-Zugriffsüberprüfungen)
 - [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md)
 - [Erstellen einer Zugriffsüberprüfung von Benutzern in der Azure AD-Administratorrolle](../privileged-identity-management/pim-how-to-start-security-review.md)

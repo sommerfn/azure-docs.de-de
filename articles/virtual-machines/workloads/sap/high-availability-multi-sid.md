@@ -4,25 +4,24 @@ description: Handbuch zum Thema „Hohe Verfügbarkeit“ für SAP NetWeaver-Mul
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 0b89b4f8-6d6c-45d7-8d20-fe93430217ca
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b27ea761d19eb494895daceff699b2b604eccea
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 12498be63a688a67b2e8d09151ffe0a78d166072
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797321"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101085"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Erstellen einer SAP NetWeaver Multi-SID-Konfiguration
 
@@ -445,9 +444,9 @@ ms.locfileid: "59797321"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-Im September 2016 veröffentlichte Microsoft ein Feature, mit dem Sie mithilfe eines [internen Azure-Lastenausgleichs][load-balancer-multivip-overview] mehrere virtuelle IP-Adressen verwalten können. Diese Funktionalität ist im externen Azure-Lastenausgleich bereits vorhanden.
+Im September 2016 veröffentlichte Microsoft ein Feature, mit dem Sie mithilfe eines [internen Azure-Lastenausgleichs][load-balancer-multivip-overview] mehrere virtuelle IP-Adressen verwalten können. Diese Funktionalität ist im externen Azure-Lastenausgleich bereits vorhanden.
 
-Falls Sie eine SAP-Bereitstellung haben, können Sie einen internen Lastenausgleich verwenden, um eine Windows-Clusterkonfiguration für die SAP-ASCS/SCS zu erstellen, wie im [Handbuch zum Thema „Hohe Verfügbarkeit“ von SAP NetWeaver auf virtuellen Windows-Computern][sap-ha-guide] dargelegt.
+Falls Sie eine SAP-Bereitstellung haben, können Sie einen internen Lastenausgleich verwenden, um eine Windows-Clusterkonfiguration für die SAP ASCS/SCS-Instanz zu erstellen, wie im [Handbuch zum Thema „Hochverfügbarkeit“ von SAP NetWeaver auf virtuellen Windows-Computern][sap-ha-guide] dargelegt.
 
 Dieser Artikel behandelt den Übergang von einer einzelnen ASCS/SCS-Installation zu einer SAP Multi-SID-Konfiguration durch Installation zusätzlicher SAP ASCS/SCS-Clusterinstanzen auf einem vorhandenen Windows Server Failover Clustering (WSFC). Wenn dieser Vorgang abgeschlossen ist, haben Sie einen SAP Multi-SID-Cluster konfiguriert.
 
@@ -457,7 +456,7 @@ Dieser Artikel behandelt den Übergang von einer einzelnen ASCS/SCS-Installation
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Sie haben bereits einen WSFC-Cluster konfiguriert, der für eine SAP ASCS/SCS-Instanz verwendet wird, wie im [Handbuch zum Thema „Hohe Verfügbarkeit“ von SAP NetWeaver auf virtuellen Windows-Computern][sap-ha-guide] beschrieben und in diesem Diagramm angezeigt.
+Sie haben bereits einen WSFC-Cluster konfiguriert, der für eine SAP ASCS/SCS-Instanz verwendet wird, wie im [Handbuch zum Thema „Hochverfügbarkeit“ von SAP NetWeaver auf virtuellen Windows-Computern][sap-ha-guide] beschrieben und in diesem Diagramm gezeigt.
 
 ![Hohe Verfügbarkeit für SAP ASCS/SCS-Instanzen][sap-ha-guide-figure-6001]
 
@@ -507,8 +506,8 @@ Sie können eine zusätzliche SAP ASCS/SCS-Instanz auf dem vorhandenen WSFC-Clus
 
 | Rolle für virtuellen Computer | Hostname für virtuellen Computer | Statische IP-Adresse |
 | --- | --- | --- |
-| 1. Clusterknoten für ASCS/SCS-Instanz |pr1-ascs-0 |10.0.0.10 |
-| 2. Clusterknoten für ASCS/SCS-Instanz |pr1-ascs-1 |10.0.0.9 |
+| 1\. Clusterknoten für ASCS/SCS-Instanz |pr1-ascs-0 |10.0.0.10 |
+| 2\. Clusterknoten für ASCS/SCS-Instanz |pr1-ascs-1 |10.0.0.9 |
 
 ### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance-on-the-dns-server"></a>Erstellen eines virtuellen Hostnamens für die SAP ASCS/SCS-Clusterinstanz auf dem DNS-Server
 
@@ -522,7 +521,7 @@ Neuer Hostname und neue IP-Adresse werden, wie im folgenden Screenshot ersichtli
 
 ![DNS-Manager-Liste, in der der definierte DNS-Eintrag des neuen virtuellen SAP ASCS/SCS-Clusternamens und der TCP/IP-Adresse hervorgehoben ist][sap-ha-guide-figure-6004]
 
-Das Verfahren zum Erstellen eines DNS-Eintrags ist ebenfalls ausführlich im [Haupthandbuch zum Thema „Hohe Verfügbarkeit“ von SAP NetWeaver auf virtuellen Windows-Computern][sap-ha-guide-9.1.1] beschrieben.
+Das Verfahren zum Erstellen eines DNS-Eintrags ist ebenfalls ausführlich im [Haupthandbuch zum Thema „Hochverfügbarkeit“ von SAP NetWeaver auf virtuellen Windows-Computern][sap-ha-guide-9.1.1] beschrieben.
 
 > [!NOTE]
 > Die neue IP-Adresse, die Sie dem virtuellen Hostnamen der zusätzlichen ASCS/SCS-Instanz zuweisen, muss mit der neuen IP-Adresse identisch sein, die Sie dem SAP-Azure-Lastenausgleichsmodul zugeordnet haben.
@@ -624,7 +623,7 @@ Gehen Sie wie folgt vor:
 1. Fügen Sie jedem der Clusterknoten einen weiteren Datenträger oder weitere Datenträger gleicher Größe (als Stripeset) hinzu, und formatieren Sie sie.
 2. Konfigurieren Sie Speicherreplikation mit SIOS DataKeeper.
 
-Dieses Verfahren setzt voraus, dass Sie auf den WSFC-Clustercomputern bereits SIOS DataKeeper installiert haben. Wenn Sie dies installiert haben, müssen Sie jetzt die Replikation zwischen den Computern konfigurieren. Das Verfahren ist ausführlich im [Haupthandbuch zum Thema „Hohe Verfügbarkeit“ von SAP NetWeaver auf virtuellen Windows-Computern][sap-ha-guide-8.12.3.3] beschrieben.  
+Dieses Verfahren setzt voraus, dass Sie auf den WSFC-Clustercomputern bereits SIOS DataKeeper installiert haben. Wenn Sie dies installiert haben, müssen Sie jetzt die Replikation zwischen den Computern konfigurieren. Das Verfahren ist ausführlich im [Haupthandbuch zum Thema „Hochverfügbarkeit“ von SAP NetWeaver auf virtuellen Windows-Computern][sap-ha-guide-8.12.3.3] beschrieben.  
 
 ![Die synchrone Spiegelung von DataKeeper für den neuen gemeinsamen SAP ASCS/SCS-Datenträger ist aktiv.][sap-ha-guide-figure-6006]
 
@@ -638,7 +637,7 @@ Um die Vorbereitung der Infrastruktur für das zweite SAP-System abzuschließen,
 
 ## <a name="install-the-second-sap-sid2-netweaver-system"></a>Installieren des zweiten SAP SID2-NetWeaver-Systems
 
-Der vollständige Vorgang der Installation eines zweiten SAP SID2-Systems wird im [Haupthandbuch zum Thema „Hohe Verfügbarkeit“ von SAP NetWeaver auf virtuellen Windows-Computern][sap-ha-guide-9] beschrieben.
+Der vollständige Vorgang der Installation eines zweiten SAP SID2-Systems wird im [Haupthandbuch zum Thema „Hochverfügbarkeit“ von SAP NetWeaver auf virtuellen Windows-Computern][sap-ha-guide-9] beschrieben.
 
 Das allgemeine Verfahren lautet wie folgt:
 
@@ -657,19 +656,19 @@ Das allgemeine Verfahren lautet wie folgt:
  In diesem Schritt installieren Sie SAP mit einer hoch verfügbaren ASCS/SCS-Instanz auf dem vorhandenen WSFC-Clusterknoten 2.
 
 6. Öffnen Sie Windows-Firewallports für die SAP ASCS/SCS-Instanz und den Testport.  
- Öffnen Sie auf beiden Clusterknoten, die für die SAP ASCS/SCS-Instanzen verwendet werden, alle Windows-Firewallports, die von SAP ASCS/SCS verwendet werden. Diese Ports sind im [Haupthandbuch zum Thema „Hohe Verfügbarkeit“ von SAP NetWeaver auf virtuellen Windows-Computern][sap-ha-guide-8.8] aufgelistet.  
+ Öffnen Sie auf beiden Clusterknoten, die für die SAP ASCS/SCS-Instanzen verwendet werden, alle Windows-Firewallports, die von SAP ASCS/SCS verwendet werden. Diese Ports sind im [Haupthandbuch zum Thema „Hochverfügbarkeit“ von SAP NetWeaver auf virtuellen Windows-Computern][sap-ha-guide-8.8] aufgelistet.  
  Öffnen Sie außerdem den Testport für das interne Azure-Lastenausgleichsmodul, in unserem Szenario 62350.
 
-7. [Ändern des Starttyps der Windows-Dienstinstanz für SAP ERS][sap-ha-guide-9.4]
+7. [Ändern des Starttyps der Windows-Dienstinstanz für SAP ERS][sap-ha-guide-9.4]
 
 8. [Installieren des primären SAP-Anwendungsservers][sap-ha-guide-9.5] auf dem neuen dedizierten virtuellen Computer
 
 9. [Installieren des zusätzlichen SAP-Anwendungsservers][sap-ha-guide-9.6] auf dem neuen dedizierten virtuellen Computer
 
-10. [Testen des Failovers der SAP ASCS/SCS-Instanz und der SIOS-Replikation][sap-ha-guide-10]
+10. [Testen des Failovers der SAP ASCS/SCS-Instanz und der SIOS-Replikation][sap-ha-guide-10]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Netzwerkgrenzwerte: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Mehrere VIPs für Azure Load Balancer][load-balancer-multivip-overview]
-- [SAP NetWeaver auf virtuellen Windows-Computern – Handbuch zum Thema „Hohe Verfügbarkeit“][sap-ha-guide]
+- [SAP NetWeaver auf virtuellen Windows-Computern – Handbuch zum Thema „Hochverfügbarkeit“][sap-ha-guide]

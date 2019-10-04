@@ -3,18 +3,18 @@ title: Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank
 description: Erfahren Sie mehr über die Ausgabe von Daten aus Azure Stream Analytics in SQL Azure, und erzielen Sie höhere Durchsatzraten für Schreibvorgänge.
 services: stream-analytics
 author: chetanmsft
-ms.author: chetanmsft
+ms.author: chetang
 manager: katiiceva
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 3/18/2019
-ms.openlocfilehash: 4be73554df0b6bddaafe3910c80c855e127d79f1
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.date: 03/18/2019
+ms.openlocfilehash: 7845833a0269514c8fdbd093e18d4516ff9567d9
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527998"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173001"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank
 
@@ -39,7 +39,7 @@ Hier sind einige Konfigurationen innerhalb der einzelnen Dienste aufgeführt, mi
 
 - **Partitionierte Tabelle und Indizes**: Konflikte zwischen Partitionen während Schreibvorgängen können über eine [partitionierte](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL-Tabelle und partitionierte Indizes in der Tabelle mit derselben Spalte wie der Partitionsschlüssel (z.B. "PartitionId") erheblich reduziert werden. Für eine partitionierte Tabelle müssen Sie in der PRIMARY-Dateigruppe eine [Partitionsfunktion](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) und ein [Partitionsschema](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) erstellen. Dadurch erhöht sich auch die Verfügbarkeit der vorhandenen Daten, während neue Daten geladen werden. Das Protokoll-E/A-Limit wird möglicherweise aufgrund der Anzahl von Partitionen erreicht. Es kann jedoch durch ein Upgrade der SKU erhöht werden.
 
-- **Verstöße gegen eindeutige Schlüssel vermeiden**: Wenn Sie im Azure Stream Analytics-Aktivitätsprotokoll [mehrere Warnmeldungen zu Schlüsselverstößen](stream-analytics-common-troubleshooting-issues.md#handle-duplicate-records-in-azure-sql-database-output) erhalten, stellen Sie sicher, dass Ihr Auftrag nicht durch Verstöße gegen die Unique-Einschränkung beeinträchtigt wird, die üblicherweise in Wiederherstellungsfällen auftreten. Dies lässt sich durch Festlegen der Option [IGNORE\_DUP\_KEY](stream-analytics-common-troubleshooting-issues.md#handle-duplicate-records-in-azure-sql-database-output) für Ihre Indizes vermeiden.
+- **Verstöße gegen eindeutige Schlüssel vermeiden**: Wenn Sie im Azure Stream Analytics-Aktivitätsprotokoll [mehrere Warnmeldungen zu Schlüsselverstößen](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) erhalten, stellen Sie sicher, dass Ihr Auftrag nicht durch Verstöße gegen die Unique-Einschränkung beeinträchtigt wird, die üblicherweise in Wiederherstellungsfällen auftreten. Dies lässt sich durch Festlegen der Option [IGNORE\_DUP\_KEY](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) für Ihre Indizes vermeiden.
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory und In-Memory-Tabellen
 

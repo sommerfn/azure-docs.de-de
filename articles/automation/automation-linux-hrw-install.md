@@ -4,17 +4,17 @@ description: Dieser Artikel enthält Informationen zum Installieren eines Azure 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc07aa9c1b2c540c33949a8c591bd98f91b04666
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 360fa750da054f9b126a8694f3dd2ce4b0b417b7
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225449"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240302"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Bereitstellen eines Linux-Hybrid Runbook Workers
 
@@ -51,7 +51,7 @@ Die Mindestanforderungen für einen Linux Hybrid Runbook Worker sind:
 |Glibc |GNU C-Bibliothek| 2.5-12 |
 |Openssl| OpenSSL-Bibliotheken | 1.0 (TLS 1.1 und TLS 1.2 werden unterstützt)|
 |Curl | cURL-Webclient | 7.15.5|
-|Python-ctypes | |
+|Python-ctypes | Python 2.x ist erforderlich. |
 |PAM | Module für austauschbare Authentifizierung|
 | **Optionale Pakete** | **Beschreibung** | **Mindestversion**|
 | PowerShell Core | Zum Ausführen von PowerShell-Runbooks muss PowerShell installiert werden. Unter [Installieren von PowerShell Core unter Linux](/powershell/scripting/setup/installing-powershell-core-on-linux) erfahren Sie, wie Sie PowerShell installieren.  | 6.0.0 |
@@ -71,7 +71,7 @@ Bevor Sie fortfahren, beachten Sie den Log Analytics-Arbeitsbereich, mit dem Ihr
 
 1. Installieren Sie den Log Analytics-Agent für Linux, indem Sie den folgenden Befehl ausführen. Ersetzen Sie \<WorkspaceID\> und \<WorkspaceKey\> mit den entsprechenden Werten aus dem Arbeitsbereich.
 
-   [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
+   [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
    ```bash
    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>

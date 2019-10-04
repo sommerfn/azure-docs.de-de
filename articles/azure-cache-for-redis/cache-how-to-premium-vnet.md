@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: d4b8fd6ccb3fc7cb2627d4bd3e103239181e4d9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4f97f6925c482cb282324dcc1c97bbfe2a701643
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994387"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67074206"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Cache for Redis vom Typ „Premium“
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Cache for Redis-Instanz mit einem VNET konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNET kann nur über virtuelle Computer und Anwendungen innerhalb des VNET zugegriffen werden. In diesem Artikel erfahren Sie, wie Sie die Unterstützung eines virtuellen Netzwerks für eine Azure Cache for Redis-Instanz vom Typ „Premium“ konfigurieren.
@@ -110,10 +110,10 @@ Es liegen Anforderungen für sieben ausgehende Ports vor.
 - Über drei dieser Ports wird Datenverkehr an Azure-Endpunkte für Azure Storage und Azure DNS weitergeleitet.
 - Die restlichen Ports sind Portbereiche und werden für die interne Kommunikation im Redis-Subnetz verwendet. Für die interne Kommunikation im Redis-Subnetz müssen keine NSG-Regeln für das Subnetz definiert werden.
 
-| Port(s) | Richtung | Transportprotokoll | Zweck | Lokale IP | Remote-IP |
+| Port(s) | Direction | Transportprotokoll | Zweck | Lokale IP | Remote-IP |
 | --- | --- | --- | --- | --- | --- |
 | 80, 443 |Ausgehend |TCP |Redis-Abhängigkeiten von Azure Storage/PKI (Internet) | (Redis-Subnetz) |* |
-| 53 |Ausgehend |TCP/UDP |Redis-Abhängigkeiten von DNS (Internet/VNet) | (Redis-Subnetz) |* |
+| 53 |Ausgehend |TCP/UDP |Redis-Abhängigkeiten von DNS (Internet/VNet) | (Redis-Subnetz) | 168.63.129.16 und 169.254.169.254 <sup>1</sup> und jeder benutzerdefinierte DNS-Server für das Subnetz <sup>3</sup> |
 | 8443 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) | (Redis-Subnetz) |
 | 10221-10231 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) | (Redis-Subnetz) |
 | 20226 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
@@ -121,14 +121,17 @@ Es liegen Anforderungen für sieben ausgehende Ports vor.
 | 15000-15999 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
 | 6379-6380 |Ausgehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
 
+<sup>1</sup> Diese IP-Adressen im Besitz von Microsoft werden für den Host-VM verwendet, der Azure DNS bereitstellt.
+
+<sup>3</sup> Nicht erforderlich für Subnetze ohne benutzerdefinierten DNS-Server oder neuere Redis Cache-Instanzen, die benutzerdefiniertes DNS ignorieren
 
 #### <a name="inbound-port-requirements"></a>Anforderungen für eingehende Ports
 
 Es liegen Anforderungen für acht eingehende Portbereiche vor. Eingehende Anforderungen in diesen Bereichen gehen entweder von anderen im gleichen VNET gehosteten Diensten ein oder erfolgen über die interne Kommunikation im Redis-Subnetz.
 
-| Port(s) | Richtung | Transportprotokoll | Zweck | Lokale IP | Remote-IP |
+| Port(s) | Direction | Transportprotokoll | Zweck | Lokale IP | Remote-IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Eingehend |TCP |Clientkommunikation mit Redis, Azure-Lastenausgleich | (Redis-Subnetz) | (Redis-Subnetz), Virtual Network, Azure Load Balancer |
+| 6379, 6380 |Eingehend |TCP |Clientkommunikation mit Redis, Azure-Lastenausgleich | (Redis-Subnetz) | (Redis-Subnetz), Virtual Network, Azure Load Balancer<sup>2</sup> |
 | 8443 |Eingehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
 | 8500 |Eingehend |TCP/UDP |Azure-Lastenausgleich | (Redis-Subnetz) |Azure Load Balancer |
 | 10221-10231 |Eingehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz), Azure Load Balancer |
@@ -136,6 +139,8 @@ Es liegen Anforderungen für acht eingehende Portbereiche vor. Eingehende Anford
 | 15000-15999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich | (Redis-Subnetz) |Virtuelles Netzwerk, Azure Load Balancer |
 | 16001 |Eingehend |TCP/UDP |Azure-Lastenausgleich | (Redis-Subnetz) |Azure Load Balancer |
 | 20226 |Eingehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
+
+<sup>2</sup> Sie können für die Erstellung der NSG-Regeln das Diensttag „AzureLoadBalancer“ (bei Resource Manager- oder „AZURE_LOADBALANCER“ bei klassischen Bereitstellungen) verwenden.
 
 #### <a name="additional-vnet-network-connectivity-requirements"></a>Zusätzliche VNET-Netzwerkverbindungsanforderungen
 
@@ -157,7 +162,7 @@ Nachdem die Portanforderungen wie im vorherigen Abschnitt beschrieben konfigurie
 
 - [Starten Sie alle Cacheknoten neu](cache-administration.md#reboot). Wenn keine der erforderlichen Cacheabhängigkeiten erreicht werden kann (wie unter [Anforderungen für eingehende Ports](cache-how-to-premium-vnet.md#inbound-port-requirements) und [Anforderungen für ausgehende Ports](cache-how-to-premium-vnet.md#outbound-port-requirements) dokumentiert), kann der Cache nicht neu gestartet werden.
 - Nachdem die Cacheknoten neu gestartet wurden (wie durch den Cachestatus im Azure-Portal gemeldet wird), können Sie folgende Tests durchführen:
-  - Pingen Sie mit [Tcping](https://www.elifulkerson.com/projects/tcping.php) den Cacheendpunkt (über Port 6380) von einem Computer, der sich im selben VNET wie der Cache befindet. Beispiel: 
+  - Pingen Sie mit [Tcping](https://www.elifulkerson.com/projects/tcping.php) den Cacheendpunkt (über Port 6380) von einem Computer, der sich im selben VNET wie der Cache befindet. Beispiel:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
@@ -180,7 +185,7 @@ Vermeiden Sie die Verwendung einer IP-Adresse, die der folgenden Verbindungszeic
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Wenn Sie den DNS-Namen nicht auflösen können, enthalten einige Clientbibliotheken Konfigurationsoptionen wie `sslHost`, die vom StackExchange.Redis-Client bereitgestellt werden. Dadurch können Sie den für die Zertifikatsvalidierung verwendeten Hostnamen überschreiben. Beispiel: 
+Wenn Sie den DNS-Namen nicht auflösen können, enthalten einige Clientbibliotheken Konfigurationsoptionen wie `sslHost`, die vom StackExchange.Redis-Client bereitgestellt werden. Dadurch können Sie den für die Zertifikatsvalidierung verwendeten Hostnamen überschreiben. Beispiel:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 

@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 6df29543df2b7b2609582f7e8dd9a0629182760c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0558c309cc22f39c2ed439b7930443ca0adb071e
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849777"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385381"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Schemaaktualisierungen für Azure Logic Apps – 1. Juni 2016
 
@@ -155,7 +155,7 @@ Die `foreach`- und `until`-Schleifen sind auf eine einzelne Aktion beschränkt.
 
 ### <a name="new-trackedproperties-for-actions"></a>Neue trackedProperties-Eigenschaft für Aktionen
 
-Aktionen können jetzt über eine zusätzliche Eigenschaft mit dem Namen `trackedProperties` verfügen. Sie ist den Eigenschaften `runAfter` und `type` gleichgeordnet. Mit diesem Objekt werden bestimmte Aktionseingaben oder -ausgaben angegeben, die Sie im Rahmen der Ausgabe eines Workflows in die Azure-Diagnosetelemetrie einbeziehen möchten. Beispiel: 
+Aktionen können jetzt über eine zusätzliche Eigenschaft mit dem Namen `trackedProperties` verfügen. Sie ist den Eigenschaften `runAfter` und `type` gleichgeordnet. Mit diesem Objekt werden bestimmte Aktionseingaben oder -ausgaben angegeben, die Sie im Rahmen der Ausgabe eines Workflows in die Azure-Diagnosetelemetrie einbeziehen möchten. Beispiel:
 
 ``` json
 {
@@ -175,8 +175,9 @@ Aktionen können jetzt über eine zusätzliche Eigenschaft mit dem Namen `tracke
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Erstellen von Logik-App-Definitionen](../logic-apps/logic-apps-author-definitions.md)
-* [Erstellen einer Bereitstellungsvorlage für Logik-Apps](../logic-apps/logic-apps-create-deploy-template.md)
+* [Automatisieren der Logik-App-Bereitstellung](logic-apps-azure-resource-manager-templates-overview.md)
 
 <!-- Image references -->
 [1]: ./media/logic-apps-schema-2016-04-01/upgradeButton.png

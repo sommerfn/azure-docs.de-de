@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c92969015910cc5bd72e2d9339d5c15c1f7af48b
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 2129405dfdc2585d29c35a0982c9823a4cd57f71
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201533"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359993"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -105,11 +105,17 @@ Bei Verwendung von Exchange Online sind unter Umständen einige Benutzer in Ihre
 > [!TIP]
 > Um zu ermitteln, ob eine doppelte Proxyadresse vorhanden ist, führen Sie das folgende PowerShell-Cmdlet für Exchange Online aus:
 > ```
-> Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+> Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> Weitere Informationen zu diesem Problem finden Sie unter ["Proxy address is already being used" error message in Exchange Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online) (Fehlermeldung „Proxyadresse wird bereits verwendet“ in Exchange Online). Der Artikel enthält auch Informationen zum [Herstellen einer Verbindung mit Exchange Online mithilfe einer PowerShell-Remotesitzung](https://technet.microsoft.com/library/jj984289.aspx). Weitere Informationen finden Sie im Artikel zum Thema [Auffüllen des proxyAddresses-Attributs in Azure AD](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
+> Weitere Informationen zu diesem Problem finden Sie unter ["Proxy address is already being used" error message in Exchange Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online) (Fehlermeldung „Proxyadresse wird bereits verwendet“ in Exchange Online). Der Artikel enthält auch Informationen zum [Herstellen einer Verbindung mit Exchange Online mithilfe einer PowerShell-Remotesitzung](https://technet.microsoft.com/library/jj984289.aspx).
 
 Nachdem Sie die Probleme mit den Proxyadressen für die betroffenen Benutzer behoben haben, erzwingen Sie die Lizenzverarbeitung für diese Gruppe, um sicherzustellen, dass die Lizenzen nun zugewiesen werden können.
+
+## <a name="azure-ad-mail-and-proxyaddresses-attribute-change"></a>Ändern von Azure AD Mail- und ProxyAddresses-Attribut
+
+**Problem:** Beim Aktualisieren der Lizenzzuweisung für einen Benutzer oder eine Gruppe wird möglicherweise angezeigt, dass Azure AD Mail- und ProxyAddresses-Attribut geändert werden.
+
+Beim Aktualisieren der Lizenzzuweisung für einen Benutzer wird die Berechnung der Proxyadresse ausgelöst, die Attribute der Benutzer ändern kann. Wie Sie die genaue Ursache der Änderung ermitteln und das Problem lösen, erfahren Sie in dem Artikel [Wie das Attribut ProxyAddresses in Azure AD aufgefüllt wird](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
 ## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>Was geschieht, wenn mehr als eine Produktlizenz für eine Gruppe vorhanden ist?
 

@@ -1,19 +1,19 @@
 ---
 title: Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
 description: Erfahren Sie, wie Sie Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern verwenden können.
-services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.author: hrasheed
-ms.openlocfilehash: 43f335bdd8b918fa717d9084d3c9c30d97920c10
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/27/2019
+ms.openlocfilehash: f6bee53268ea99e99d79e218eaf7a5ae9fcb1d05
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004957"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104463"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
 
@@ -23,38 +23,63 @@ Azure Data Lake Storage Gen2 ist ein Cloudspeicherdienst für Big Data-Analysen,
 
 Data Lake Storage Gen2 ist als Speicheroption für fast alle Typen von Azure HDInsight-Clustern sowohl als Standard- als auch zusätzliches Speicherkonto verfügbar. HBase kann jedoch nur ein Data Lake Storage Gen2-Konto verwenden.
 
-> [!Note] 
+Einen vollständigen Vergleich der Optionen für die Clustererstellung mit Azure Data Lake Storage Gen2 finden Sie unter [Vergleich der Speicheroptionen für die Verwendung mit Azure HDInsight-Clustern](hdinsight-hadoop-compare-storage-options.md).
+
+> [!Note]  
 > Nachdem Sie Data Lake Storage Gen2 als **primären Speichertyp** ausgewählt haben, können Sie kein Data Lake Storage Gen1-Konto als zusätzlichen Speicher auswählen.
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-portal"></a>Erstellen eines Clusters mit Data Lake Storage Gen2 über das Azure-Portal
 
 Konfigurieren Sie mithilfe der folgenden Schritte ein Data Lake Storage Gen2-Konto, um einen HDInsight-Cluster zu erstellen, der Data Lake Storage Gen2 als Speicher verwendet.
 
-### <a name="create-a-user-managed-identity"></a>Erstellen einer vom Benutzer verwalteten Identität
+### <a name="create-a-user-assigned-managed-identity"></a>Erstellen einer benutzerseitig zugewiesenen verwalteten Identität
 
-Erstellen Sie eine benutzerseitig zugewiesene verwaltete Identität, falls noch keine vorhanden ist. Informationen hierzu finden Sie unter [Erstellen, Auflisten, Löschen oder Zuweisen einer Rolle zu einer benutzerseitig zugewiesenen verwalteten Identität über das Azure-Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity). Weitere Informationen zur Funktionsweise verwalteter Identitäten in Azure HDInsight finden Sie unter [Managed identities in Azure HDInsight (Verwaltete Identitäten in Azure HDInsight)](hdinsight-managed-identities.md).
+Erstellen Sie eine benutzerseitig zugewiesene verwaltete Identität, falls noch keine vorhanden ist. 
 
-![Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](./media/hdinsight-hadoop-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie links oben **Ressource erstellen** aus.
+1. Geben Sie im Suchfeld den Suchbegriff **Vom Benutzer zugewiesen** ein, und klicken Sie auf **Benutzerseitig zugewiesene verwaltete Identität**.
+1. Klicken Sie auf **Create**.
+1. Geben Sie einen Namen für Ihre verwaltete Identität ein, und wählen Sie das richtige Abonnement, die Ressourcengruppe und den Speicherort aus.
+1. Klicken Sie auf **Create**.
+
+Weitere Informationen zur Funktionsweise verwalteter Identitäten in Azure HDInsight finden Sie unter [Verwaltete Identitäten in Azure HDInsight](hdinsight-managed-identities.md).
+
+![Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](./media/hdinsight-hadoop-use-data-lake-storage-gen2/create-user-assigned-managed-identity-portal.png)
 
 ### <a name="create-a-data-lake-storage-gen2-account"></a>Erstellen eines Data Lake Storage Gen2-Kontos
 
-Erstellen Sie ein Azure Data Lake Storage Gen2-Speicherkonto. Stellen Sie sicher, dass die Option **Hierarchischer Namespace** aktiviert ist. Weitere Informationen finden Sie unter [Quickstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+Erstellen Sie ein Azure Data Lake Storage Gen2-Speicherkonto. 
 
-![Screenshot zur Speicherkontoerstellung im Azure-Portal](./media/hdinsight-hadoop-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie links oben **Ressource erstellen** aus.
+1. Geben Sie im Suchfeld den Suchbegriff **Speicher** ein, und klicken Sie auf **Speicherkonto**.
+1. Klicken Sie auf **Create**.
+1. Auf dem Bildschirm **Speicherkonto erstellen**:
+    1. Wählen Sie das richtige Abonnement und die Ressourcengruppe aus.
+    1. Geben Sie einen Namen für Ihr Data Lake Storage Gen2-Konto ein. Weitere Informationen zu Namenskonventionen für Speicherkonten finden Sie unter [Namenskonventionen für Azure-Ressourcen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage).
+    1. Klicken Sie auf die Registerkarte **Erweitert**.
+    1. Klicken Sie auf **Aktiviert** neben **Hierarchischer Namespace** unter **Data Lake Storage Gen2**.
+    1. Klicken Sie auf **Überprüfen + erstellen**.
+    1. Klicken Sie auf **Erstellen**
 
-### <a name="setup-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>Festlegen von Berechtigungen für verwaltete Identitäten im Data Lake Storage Gen2-Konto
+Weitere Informationen zu anderen Optionen während der Erstellung des Speicherkontos finden Sie unter [Schnellstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
-Weisen Sie die verwaltete Identität der Rolle **Besitzer von Speicherblobdaten** im Speicherkonto zu. Weitere Informationen finden Sie unter [Verwalten von Zugriffsrechten für Blob- und Warteschlangendaten von Azure mit RBAC (Vorschau)](../storage/common/storage-auth-aad-rbac.md).
+![Screenshot zur Speicherkontoerstellung im Azure-Portal](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
+
+### <a name="set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>Festlegen von Berechtigungen für verwaltete Identitäten im Data Lake Storage Gen2-Konto
+
+Weisen Sie die verwaltete Identität der Rolle **Besitzer von Speicherblobdaten** im Speicherkonto zu.
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
 1. Wählen Sie Ihr Speicherkonto und dann **Zugriffssteuerung (IAM)** aus, um die Zugriffssteuerungseinstellungen für das Konto anzuzeigen. Wählen Sie die Registerkarte **Rollenzuweisungen** aus, um die Liste mit den Rollenzuweisungen anzuzeigen.
     
-    ![Screenshot mit Anzeige der Zugriffssteuerungseinstellungen für Speicher](./media/hdinsight-hadoop-data-lake-storage-gen2/portal-access-control.png)
+    ![Screenshot mit Anzeige der Zugriffssteuerungseinstellungen für Speicher](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
     
 1. Klicken Sie auf die Schaltfläche **+ Rollenzuweisung hinzufügen**, um eine neue Rolle hinzuzufügen.
 1. Wählen Sie im Fenster **Rollenzuweisung hinzufügen** die Rolle **Besitzer von Speicherblobdaten** aus. Wählen Sie dann das Abonnement aus, das über die verwaltete Identität und das Speicherkonto verfügt. Suchen Sie als Nächstes die vom Benutzer zugewiesene verwaltete Identität, die Sie zuvor erstellt haben. Wählen Sie abschließend die verwaltete Identität aus, sodass sie unter **Ausgewählte Mitglieder** aufgelistet wird.
     
-    ![Screenshot: Zuweisen einer RBAC-Rolle](./media/hdinsight-hadoop-data-lake-storage-gen2/add-rbac-role3.png)
+    ![Screenshot: Zuweisen einer RBAC-Rolle](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
     
 1. Wählen Sie **Speichern** aus. Die vom Benutzer zugewiesene Identität, die Sie ausgewählt haben, wird jetzt unter der ausgewählten Rolle aufgelistet.
 1. Nachdem das anfängliche Setup abgeschlossen ist, können Sie einen Cluster über das Portal erstellen. Der Cluster muss sich in der gleichen Azure-Region befinden wie das Speicherkonto. Wählen Sie im Abschnitt **Speicher** des Menüs zur Clustererstellung die folgenden Optionen aus:
@@ -62,42 +87,51 @@ Weisen Sie die verwaltete Identität der Rolle **Besitzer von Speicherblobdaten*
     * Wählen Sie für **Primärer Speichertyp** **Azure Data Lake Storage Gen2** aus.
     * Suchen Sie unter **Speicherkonto auswählen** das neu erstellte Data Lake Storage Gen2-Speicherkonto, und wählen Sie es aus.
         
-        ![Speichereinstellungen für das Verwenden von Data Lake Storage Gen2 mit Azure HDInsight](./media/hdinsight-hadoop-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
+        ![Speichereinstellungen für das Verwenden von Data Lake Storage Gen2 mit Azure HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
     
     * Wählen Sie unter **Identität** das richtige Abonnement und die neu erstellte vom Benutzer zugewiesene verwaltete Identität aus.
-        
-        ![Identitätsstellungen für das Verwenden von Data Lake Storage Gen2 mit Azure HDInsight](./media/hdinsight-hadoop-data-lake-storage-gen2/managed-identity-cluster-creation.png)
-        
+
+        ![Identitätseinstellungen für das Verwenden von Data Lake Storage Gen2 mit HDInsight](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
+
 > [!Note]
-> Sie können ein oder mehrere Data Lake Storage Gen2-Konten als Sekundärspeicher auf demselben Cluster hinzufügen. Wiederholen Sie lediglich die oben stehenden Schritte für jedes Data Lake Storage Gen2-Konto, das Sie mit derselben verwalteten Identität hinzufügen möchten.
+> Um ein sekundäres Data Lake Storage Gen2-Konto hinzuzufügen, weisen Sie einfach auf der Speicherkontoebene die zuvor erstellte verwaltete Identität dem neuen Data Lake Storage Gen2-Speicherkonto zu, das Sie hinzufügen möchten. Beachten Sie, dass das Hinzufügen eines sekundären Data Lake Storage Gen2-Kontos über die Registerkarte „Zusätzliche Speicherkonten“ auf HDInsight nicht unterstützt wird. 
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Erstellen eines Clusters mit Data Lake Storage Gen2 über die Azure CLI
 
-Sie können [hier eine Beispielvorlagendatei](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) und [hier eine Beispieldatei für Parameter](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json) herunterladen. Bevor Sie die Vorlage verwenden, ersetzen Sie die Zeichenfolge `<SUBSCRIPTION_ID>` durch die tatsächliche ID Ihres Azure-Abonnements. Ersetzen Sie außerdem die Zeichenfolge `<PASSWORD>` durch Ihr Kennwort, um das Kennwort, das Sie zur Anmeldung beim Cluster verwenden, und das SSH-Kennwort festzulegen.
+Sie können [hier eine Beispielvorlagendatei](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) und [hier eine Beispieldatei für Parameter](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json) herunterladen. Ersetzen Sie vor der Verwendung der Vorlage und des Azure CLI-Codeausschnitts unten die folgenden Platzhalter durch die korrekten Werte:
+
+| Platzhalter | BESCHREIBUNG |
+|---|---|
+| `<SUBSCRIPTION_ID>` | Die ID Ihres Azure-Abonnements |
+| `<RESOURCEGROUPNAME>` | Die Ressourcengruppe, in der der neue Cluster und das Speicherkonto erstellt werden sollen |
+| `<MANAGEDIDENTITYNAME>` | Der Name der verwalteten Identität, der die Berechtigungen für Ihr Azure Data Lake Storage Gen2-Konto gewährt werden |
+| `<STORAGEACCOUNTNAME>` | Das zu erstellende Azure Data Lake Storage Gen2-Konto |
+| `<CLUSTERNAME>` | Der Name des HDInsight-Clusters. |
+| `<PASSWORD>` | Das gewählte Kennwort für die Anmeldung im Cluster über SSH und das Ambari-Dashboard |
 
 Der Codeausschnitt führt die folgenden ersten Schritte durch:
 
 1. Anmeldung bei Ihrem Azure-Konto
 1. Festlegen des aktiven Abonnements, in dem die Erstellung durchgeführt wird
-1. Erstellen einer neuen Ressourcengruppe mit dem Namen `hdinsight-deployment-rg` für die neuen Bereitstellungsaktivitäten
-1. Erstellen einer benutzerseitig zugewiesenen verwalteten Identität mit dem Namen `test-hdinsight-msi`
+1. Erstellen einer neuen Ressourcengruppe für die neuen Bereitstellungsaktivitäten 
+1. Erstellen einer benutzerseitig zugewiesenen verwalteten Identität
 1. Hinzufügen einer Erweiterung zur Azure CLI, um Features für Data Lake Storage Gen2 zu nutzen
-1. Erstellen eines neuen Data Lake Storage Gen2-Kontos mit dem Namen `hdinsightadlsgen2` mithilfe des Flags `--hierarchical-namespace true`
+1. Erstellen Sie ein neues Data Lake Storage Gen2-Konto mit dem Flag `--hierarchical-namespace true`. 
 
 ```azurecli
 az login
-az account set --subscription <subscription_id>
+az account set --subscription <SUBSCRIPTION_ID>
 
 # Create resource group
-az group create --name hdinsight-deployment-rg --location eastus
+az group create --name <RESOURCEGROUPNAME> --location eastus
 
 # Create managed identity
-az identity create -g hdinsight-deployment-rg -n test-hdinsight-msi
+az identity create -g <RESOURCEGROUPNAME> -n <MANAGEDIDENTITYNAME>
 
 az extension add --name storage-preview
 
-az storage account create --name hdinsightadlsgen2 \
-    --resource-group hdinsight-deployment-rg \
+az storage account create --name <STORAGEACCOUNTNAME> \
+    --resource-group <RESOURCEGROUPNAME> \
     --location eastus --sku Standard_LRS \
     --kind StorageV2 --hierarchical-namespace true
 ```
@@ -108,7 +142,7 @@ Stellen Sie die Vorlage mit dem folgenden Codeausschnitt bereit, nachdem Sie die
 
 ```azurecli
 az group deployment create --name HDInsightADLSGen2Deployment \
-    --resource-group hdinsight-deployment-rg \
+    --resource-group <RESOURCEGROUPNAME> \
     --template-file hdinsight-adls-gen2-template.json \
     --parameters parameters.json
 ```

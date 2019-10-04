@@ -1,91 +1,82 @@
-items:
 - name: Data Catalog-Dokumentation
   href: index.yml
 - name: Übersicht
   items:
-  - name: Was ist Data Catalog?
-    href: overview.md
+    - name: Was ist Data Catalog?
+      href: overview.md
 - name: Schnellstart
   items:
-  - name: Erstellen einer Azure Data Catalog-Instanz
-    href: data-catalog-get-started.md
+    - name: Erstellen einer Azure Data Catalog-Instanz
+      href: data-catalog-get-started.md
 - name: Lernprogramme
   items:
-  - name: Registrieren von Datenassets
-    href: register-data-assets-tutorial.md
+    - name: Registrieren von Datenassets
+      href: register-data-assets-tutorial.md
 - name: Konzepte
   items:
-  - name: Häufige Szenarios
-    href: data-catalog-common-scenarios.md
-  - name: Unterstützte Datenquellen
-    href: data-catalog-dsr.md
-  - name: Azure Data Catalog-Einführung
-    href: data-catalog-adopting-data-catalog.md
-  - name: Voraussetzungen
-    href: data-catalog-prerequisites.md
-  - name: Häufig gestellte Fragen
-    href: data-catalog-frequently-asked-questions.md
+    - name: Häufige Szenarios
+      href: data-catalog-common-scenarios.md
+    - name: Unterstützte Datenquellen
+      href: data-catalog-dsr.md
+    - name: Azure Data Catalog-Einführung
+      href: data-catalog-adopting-data-catalog.md
+    - name: Voraussetzungen
+      href: data-catalog-prerequisites.md
+    - name: Häufig gestellte Fragen
+      href: data-catalog-frequently-asked-questions.md
 - name: Anleitung
   items:
-  - name: Registrieren von Datenquellen
-    href: data-catalog-how-to-register.md
-  - name: Ermitteln von Datenquellen
-    href: data-catalog-how-to-discover.md
-  - name: Hinzufügen von Anmerkungen zu Datenquellen
-    href: data-catalog-how-to-annotate.md
-  - name: Dokumentdatenquellen
-    href: data-catalog-how-to-documentation.md
-  - name: Verbindungen mit Datenquellen
-    href: data-catalog-how-to-connect.md
-  - name: Arbeiten mit großen Datenquellen
-    href: data-catalog-how-to-big-data.md
-  - name: Datenprofil-Datenquellen
-    href: data-catalog-how-to-data-profile.md
-  - name: Verwalten von Datenassets
-    href: data-catalog-how-to-manage.md
-  - name: Speichern von Suchen und Anheften von Datenassets
-    href: data-catalog-how-to-save-pin.md
-  - name: Einrichten des Unternehmensglossars
-    href: data-catalog-how-to-business-glossary.md
-  - name: Sicherer Zugriff auf den Datenkatalog
-    href: data-catalog-how-to-secure-catalog.md
-  - name: Anzeigen verknüpfter Datenobjekte
-    href: data-catalog-how-to-view-related-data-assets.md
-  - name: Problembehandlung
-    href: troubleshoot-policy-configuration.md
+    - name: Registrieren von Datenquellen
+      href: data-catalog-how-to-register.md
+    - name: Ermitteln von Datenquellen
+      href: data-catalog-how-to-discover.md
+    - name: Hinzufügen von Anmerkungen zu Datenquellen
+      href: data-catalog-how-to-annotate.md
+    - name: Dokumentdatenquellen
+      href: data-catalog-how-to-documentation.md
+    - name: Verbindungen mit Datenquellen
+      href: data-catalog-how-to-connect.md
+    - name: Arbeiten mit großen Datenquellen
+      href: data-catalog-how-to-big-data.md
+    - name: Datenprofil-Datenquellen
+      href: data-catalog-how-to-data-profile.md
+    - name: Verwalten von Datenassets
+      href: data-catalog-how-to-manage.md
+    - name: Speichern von Suchen und Anheften von Datenassets
+      href: data-catalog-how-to-save-pin.md
+    - name: Einrichten des Unternehmensglossars
+      href: data-catalog-how-to-business-glossary.md
+    - name: Sicherer Zugriff auf den Datenkatalog
+      href: data-catalog-how-to-secure-catalog.md
+    - name: Anzeigen verknüpfter Datenobjekte
+      href: data-catalog-how-to-view-related-data-assets.md
+    - name: Problembehandlung
+      href: troubleshoot-policy-configuration.md
 - name: Verweis
   items:
-  - name: Codebeispiele
-    href: https://azure.microsoft.com/resources/samples/?service=data-catalog
-  - name: REST
-    href: /rest/api/datacatalog/
-  - name: Resource Manager-Vorlage
-    href: /azure/templates/microsoft.datacatalog/catalogs
-  - name: Referenz zur Suchsyntax
-    href: /rest/api/datacatalog/data-catalog-search-syntax-reference
-  - name: Entwicklerkonzepte
-    href: data-catalog-developer-concepts.md
+    - name: Codebeispiele
+      href: data-catalog-samples.md
+    - name: REST
+      href: /rest/api/datacatalog/
+    - name: Referenz zur Suchsyntax
+      href: /rest/api/datacatalog/data-catalog-search-syntax-reference
+    - name: Entwicklerkonzepte
+      href: data-catalog-developer-concepts.md
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-  - name: Tastenkombinationen für Azure Data Catalog
-    href: data-catalog-keyboard-shortcuts.md
-  - name: MSDN-Forum
-    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/data-catalog/
-  - name: Preisrechner
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Dienstupdates
-    href: https://azure.microsoft.com/updates/?product=data-catalog
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-data-catalog
-  - name: Begriff
-    href: data-catalog-terminology.md
-ms.openlocfilehash: 0ef4cb62b8991db67df52fded512c1881050eac3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793926"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Tastenkombinationen für Azure Data Catalog
+      href: data-catalog-keyboard-shortcuts.md
+    - name: MSDN-Forum
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/data-catalog/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=data-catalog'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-data-catalog'
+    - name: Begriff
+      href: data-catalog-terminology.md

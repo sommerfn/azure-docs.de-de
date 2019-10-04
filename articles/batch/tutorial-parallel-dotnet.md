@@ -3,7 +3,7 @@ title: Ausführen einer parallelen Workload – Azure Batch .NET
 description: 'Tutorial: Paralleles Transcodieren von Mediendateien mit ffmpeg in Azure Batch per .NET-Clientbibliothek in Batch'
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a6fe5b0452771cd2e618d1a08cb2f4af52e3cc0d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 103d09da3fedf9c31d4e5255456e63cab34bc0ee
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538685"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258595"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Tutorial: Ausführen einer parallelen Workload mit Azure Batch über die .NET-API
 
@@ -37,7 +37,7 @@ In diesem Tutorial konvertieren Sie MP4-Mediendateien parallel in das MP3-Format
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Visual Studio 2017](https://www.visualstudio.com/vs) oder [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) für Linux, macOS oder Windows.
+* [Visual Studio 2017 oder höher](https://www.visualstudio.com/vs) bzw. [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) für Linux, macOS oder Windows.
 
 * Ein Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md).
 
@@ -71,7 +71,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial.git
 
 Navigieren Sie zu dem Verzeichnis, in dem die Visual Studio-Projektmappendatei `BatchDotNetFfmpegTutorial.sln` enthalten ist.
 
-Öffnen Sie die Projektmappendatei in Visual Studio, und aktualisieren Sie die Zeichenfolgen mit den Anmeldeinformationen in `Program.cs` mit den Werten für Ihre Konten. Beispiel: 
+Öffnen Sie die Projektmappendatei in Visual Studio, und aktualisieren Sie die Zeichenfolgen mit den Anmeldeinformationen in `Program.cs` mit den Werten für Ihre Konten. Beispiel:
 
 ```csharp
 // Batch account credentials
@@ -140,7 +140,7 @@ In den folgenden Abschnitten ist die Beispielanwendung in die Schritte unterteil
 
 ### <a name="authenticate-blob-and-batch-clients"></a>Authentifizieren des Blobs und der Batch-Clients
 
-Zum Interagieren mit dem verknüpften Speicherkonto verwendet die App die Azure Storage-Clientbibliothek für .NET. Sie erstellt mit [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) einen Verweis auf das Konto, und es wird die Authentifizierung mit gemeinsam verwendetem Schlüssel genutzt. Anschließend wird ein [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient)-Element erstellt.
+Zum Interagieren mit dem verknüpften Speicherkonto verwendet die App die Azure Storage-Clientbibliothek für .NET. Sie erstellt mit [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) einen Verweis auf das Konto, und es wird die Authentifizierung mit gemeinsam verwendetem Schlüssel genutzt. Anschließend wird ein [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)-Element erstellt.
 
 ```csharp
 // Construct the Storage account connection string
@@ -167,7 +167,7 @@ using (BatchClient batchClient = BatchClient.Open(sharedKeyCredentials))
 Die App übergibt das `blobClient`-Objekt an die `CreateContainerIfNotExistAsync`-Methode, um einen Speichercontainer für die Eingabedateien (MP4-Format) und einen Container für die Aufgabeausgabe zu erstellen.
 
 ```csharp
-CreateContainerIfNotExistAsync(blobClient, inputContainerName;
+CreateContainerIfNotExistAsync(blobClient, inputContainerName);
 CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 ```
 
@@ -175,7 +175,7 @@ Anschließend werden Dateien aus dem lokalen Ordner `InputFiles` in den Eingabec
 
 Am Upload der Dateien sind in `Program.cs` zwei Methoden beteiligt:
 
-* `UploadResourceFilesToContainerAsync`: Gibt eine Sammlung mit ResourceFile-Objekten zurück und ruft intern `UploadResourceFileToContainerAsync` auf, um die einzelnen Dateien hochzuladen, die im Parameter `inputFilePaths` übergeben werden.
+* `UploadFilesToContainerAsync`: Gibt eine Sammlung mit ResourceFile-Objekten zurück und ruft intern `UploadResourceFileToContainerAsync` auf, um die einzelnen Dateien hochzuladen, die im Parameter `inputFilePaths` übergeben werden.
 * `UploadResourceFileToContainerAsync`: Lädt jede Datei als Blob in den Eingabecontainer hoch. Nach dem Hochladen der Datei wird eine Shared Access Signature (SAS) für das Blob abgerufen, und es wird ein ResourceFile-Objekt zurückgegeben, um das Blob darzustellen.
 
 ```csharp
@@ -184,7 +184,7 @@ string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
 List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(inputPath, "*.mp4",
     SearchOption.TopDirectoryOnly));
 
-List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
+List<ResourceFile> inputFiles = await UploadFilesToContainerAsync(
   blobClient,
   inputContainerName,
   inputFilePaths);

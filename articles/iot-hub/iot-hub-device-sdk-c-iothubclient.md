@@ -1,19 +1,19 @@
 ---
 title: Azure IoT-Geräte-SDK für C – IoTHubClient | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die IoTHubClient-Bibliothek im Azure IoT-Geräte-SDK für C zum Erstellen von Geräte-Apps, die mit einer IoT Hub-Instanz kommunizieren, verwenden.
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/29/2017
-ms.author: yizhon
-ms.openlocfilehash: dd3b693271326c85688a275a65b67ad6257220e3
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.author: robinsh
+ms.openlocfilehash: fd3e02101f206ebdb183da87089eadcbc9619b33
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024761"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68883178"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Azure IoT-Geräte-SDK für C – weitere Informationen zu IoTHubClient
 
@@ -235,7 +235,7 @@ Bei den Argumenten von **IoTHubClient\_CreateFromConnectionString** handelt es s
 HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY
 ```
 
-Diese Zeichenfolge enthält vier Arten von Informationen: IoT Hub-Name, IoT Hub-Suffix, Geräte-ID und den gemeinsamen Zugriffsschlüssel. Beim Erstellen der IoT Hub-Instanz im Azure-Portal rufen Sie den vollqualifizierten Domänennamen (FQDN) eines IoT Hubs ab: Damit erhalten Sie zugleich den IoT Hub-Namen (der erste Teil des FQDNs) und das IoT Hub-Suffix (der Rest des FQDNs). Die Geräte-ID und den gemeinsamen Zugriffsschlüssel erhalten Sie, wenn Sie das Gerät bei IoT Hub registrieren (wie im [vorherigen Artikel](iot-hub-device-sdk-c-intro.md)beschrieben).
+Diese Zeichenfolge enthält vier Arten von Informationen: IoT Hub-Name, IoT Hub-Suffix, Geräte-ID und den gemeinsamen Zugriffsschlüssel. Beim Erstellen der IoT Hub-Instanz im Azure-Portal rufen Sie den vollqualifizierten Domänennamen (FQDN) eines IoT Hubs ab: Damit erhalten Sie zugleich den IoT Hub-Namen (der erste Teil des FQDNs) und das IoT Hub-Suffix (der Rest des FQDNs). Die Geräte-ID und den gemeinsamen Zugriffsschlüssel erhalten Sie, wenn Sie das Gerät bei IoT Hub registrieren (wie im [vorherigen Artikel](iot-hub-device-sdk-c-intro.md)beschrieben).
 
 **IoTHubClient\_CreateFromConnectionString** bietet eine Möglichkeit, die Bibliothek zu initialisieren. Sie können auch ein neues **IOTHUB\_CLIENT\_HANDLE** mithilfe der einzelnen Parameter anstelle der Verbindungszeichenfolge des Geräts erstellen. Verwenden Sie dafür den folgenden Code:
 
@@ -264,7 +264,7 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 Es gibt eine Reihe von Optionen, die häufig verwendet werden:
 
-* **SetBatching** (boolesch): Bei **true** werden an den IoT Hub gesendete Daten in Batches gesendet. Bei **false**werden Nachrichten einzeln gesendet. Die Standardeinstellung ist **false**. Beachten Sie, dass die Option **SetBatching** nur für das HTTPS-Protokoll und nicht für die Protokolle AMQP und MQTT gilt.
+* **SetBatching** (boolesch): Bei **true** werden an den IoT Hub gesendete Daten in Batches gesendet. Bei **false**werden Nachrichten einzeln gesendet. Die Standardeinstellung ist **false**. Die Batchverarbeitung über AMQP/AMQP-WS sowie das Hinzufügen von Systemeigenschaften in D2C-Meldungen werden unterstützt.
 
 * **Timeout** (ganze Zahl ohne Vorzeichen): Dieser Wert wird in Millisekunden dargestellt. Wenn das Senden einer HTTPS-Anforderung oder der Empfang einer Antwort länger dauert, kommt es zu einem Timeout der Verbindung.
 

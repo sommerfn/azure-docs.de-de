@@ -1,21 +1,19 @@
 ---
-title: Prozess für kognitive Suche, Datenextrahierung und KI-Verarbeitung natürlicher Sprache – Azure Search
+title: 'Einführung in kognitive Suche und KI-Anreicherung: Azure Search'
 description: Inhaltsextrahierung, Verarbeitung natürlicher Sprache (NLP, Natural Language Processing) und Bildverarbeitung zum Erstellen durchsuchbarer Inhalte in der Azure Search-Indizierung mithilfe von kognitiven Fähigkeiten und KI-Algorithmen.
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: overview
-ms.date: 04/05/2019
+ms.date: 08/15/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: c421d99f1071c7a38cfe315cc3054136f81598e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: aa8ab3a3bc2f243e8b0ee404228926ef46bc46db
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265967"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266391"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Was ist die „kognitive Suche“ in Azure Search?
 
@@ -25,22 +23,39 @@ Kognitive Suche ist eine KI-Funktion in Azure Search zum Extrahieren von Text au
 
 + Die **Bildverarbeitungsfähigkeiten** umfassen [Optical Character Recognition (OCR)](cognitive-search-skill-ocr.md) und die Identifizierung von [visuellen Features](cognitive-search-skill-image-analysis.md), z.B. Gesichtserkennung, Bildinterpretation, Bilderkennung (berühmte Personen und Wahrzeichen) oder Attribute wie Farben oder Bildausrichtung. Sie können Textdarstellungen von Bildinhalt erstellen, indem Sie alle Abfragefunktionen von Azure Search verwenden.
 
-![Diagramm der Cognitive Search-Pipeline](./media/cognitive-search-intro/cogsearch-architecture.png "Übersicht über die Cognitive Search-Pipeline")
+![Diagramm der Pipeline für Kognitive Suche](./media/cognitive-search-intro/cogsearch-architecture.png "Übersicht über die Pipeline für Kognitive Suche")
 
 Die kognitiven Fähigkeiten in Azure Search basieren auf Machine Learning-Modellen in Cognitive Services-APIs: [Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) und [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). 
 
 Die Verarbeitung von natürlicher Sprache und Bildern wird während der Phase der Datenerfassung angewendet, wobei die Ergebnisse zu einem Teil einer Dokumentkomposition in einem durchsuchbaren Index in Azure Search werden. Daten stammen aus einem Azure-Dataset und werden dann über eine Indizierungspipeline übertragen, indem jeweils die erforderlichen [integrierten Fähigkeiten](cognitive-search-predefined-skills.md) verwendet werden. Die Architektur ist erweiterbar. Falls die integrierten Fähigkeiten also nicht ausreichen, können Sie [benutzerdefinierte Fähigkeiten](cognitive-search-create-custom-skill-example.md) erstellen und anfügen, um die benutzerdefinierte Verarbeitung zu integrieren. Beispiele hierfür sind ein benutzerdefiniertes Entitätsmodul oder ein benutzerdefinierter Dokumentenklassifizierer, das bzw. der auf eine bestimmte Domäne ausgerichtet ist, z.B. Finanzen, wissenschaftliche Veröffentlichungen oder Medizin.
 
 > [!NOTE]
-> Seit dem 21. Dezember 2018 können Sie einer Azure Search-Qualifikationsgruppe eine [Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) anfügen. Dies ermöglicht es uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Ab diesem Datum haben wir außerdem damit begonnen, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
+> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung interner Qualifikationen ist eine Nutzung von Cognitive Services, die gemäß dem bestehenden [nutzungsbasierten Preis](https://azure.microsoft.com/pricing/details/cognitive-services/) in Rechnung gestellt wird. Die Preise für die Bildextraktion entsprechen einer Azure Search-Gebühr. Sie werden gemäß der Vorschaupreise wie auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben in Rechnung gestellt.
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
 
-## <a name="components-of-cognitive-search"></a>Komponenten von Cognitive Search
+## <a name="when-to-use-cognitive-search"></a>Einsatzgebiete der kognitiven Suche
 
-Die kognitive Suche ist eine Previewfunktion von [Azure Search](search-what-is-azure-search.md).
+Die kognitive Suche mit vorkonfigurierten Fähigkeiten eignet sich sehr gut für die folgenden Anwendungsszenarien:
 
-Die Cognitive Search-Pipeline basiert auf [Azure Search-*Indexern*](search-indexer-overview.md), die Datenquellen durchforsten und End-to-End-Indexverarbeitung bieten. Die Fähigkeitengruppen werden jetzt an Indexer angefügt. Dabei werden Dokumente gemäß der von Ihnen definierten Fähigkeiten abgefangen und angereichert. Nach der Indizierung können Sie über Suchanforderungen über sämtliche [von Azure Search unterstützte Abfragetypen](search-query-overview.md) auf Inhalte zugreifen.  Wenn Sie mit Indexern noch nicht vertraut sind, werden Ihnen in diesem Abschnitt die erforderlichen Schritte erläutert.
++ Gescannte Dokumente (JPEG), die für die Volltextsuche verfügbar gemacht werden sollen. Sie können eine Fähigkeit zur optischen Zeichenerkennung (Optical Character Recognition, OCR) anfügen, um Text aus JPEG-Dateien zu identifizieren, zu extrahieren und zu erfassen.
+
++ PDF-Dateien mit Kombinationen aus Bild und Text. Texte in PDF-Dateien können während der Azure Search-Indizierung extrahiert werden, ohne dass die kognitive Suche verwendet wird. Beim Hinzufügen von Bildverarbeitung und natürlicher Sprachverarbeitung erzielen Sie jedoch häufig ein besseres Ergebnis als bei einer Standardindizierung.
+
++ Mehrsprachiger Inhalt, für den Sie die Spracherkennung und möglicherweise die Textübersetzung anwenden möchten.
+
++ Unstrukturierte oder teilweise strukturierte Dokumente mit Inhalten, die eine inhärente Bedeutung oder einen Kontext haben, der im größeren Dokument ausgeblendet ist. 
+
+  Insbesondere Blobs enthalten häufig einen großen Textteil in einem einzelnen „Feld“. Durch das Anfügen von Fähigkeiten zur Bildverarbeitung und natürlicher Sprachverarbeitung an einen Indexer können Sie neue Informationen erstellen, die in den Rohdaten noch vorhanden sind, aber sonst nicht als unterschiedliche Felder aufgeführt werden. Einige einsatzbereite, integrierte kognitive Fähigkeiten, die hilfreich sein können: Schlüsselbegriffserkennung, Stimmungsanalyse und Entitätserkennung (Personen, Organisationen und Standorte).
+
+  Darüber hinaus können Sie mit integrierten Fähigkeiten Inhalte durch Textaufteilung, Textzusammenführung und Shape-Vorgänge neu strukturieren.
+
+Benutzerdefinierte Fähigkeiten können komplexere Szenarien unterstützen, z. B. das Erkennen von Formularen oder die benutzerdefinierte Entitätserkennung mithilfe eines Modells, das Sie bereitstellen und in der [benutzerdefinierten Skills-Webschnittstelle](cognitive-search-custom-skill-interface.md) umschließen. Beispiele für benutzerdefinierte Fähigkeiten sind die [Formularerkennung](/azure/cognitive-services/form-recognizer/overview), die Integration der [Bing-Entitätssuche-API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example) und [die Erkennung von benutzerdefinierten Entitäten](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
+
+
+## <a name="component-pipeline-of-cognitive-search"></a>Komponentenpipeline der kognitiven Suche
+
+Cognitive Search-Pipelines basieren auf [Azure Search-*Indexern*](search-indexer-overview.md), die Datenquellen durchforsten und End-to-End-Indexverarbeitung bieten. Die Fähigkeitengruppen werden jetzt an Indexer angefügt. Dabei werden Dokumente gemäß der von Ihnen definierten Fähigkeiten abgefangen und angereichert. Nach der Indizierung können Sie über Suchanforderungen über sämtliche [von Azure Search unterstützte Abfragetypen](search-query-overview.md) auf Inhalte zugreifen.  Wenn Sie mit Indexern noch nicht vertraut sind, werden Ihnen in diesem Abschnitt die erforderlichen Schritte erläutert.
 
 ### <a name="step-1-connection-and-document-cracking-phase"></a>Schritt 1: Phase der Entschlüsselung von Verbindung und Dokument
 
@@ -60,9 +75,15 @@ Eine Fähigkeitengruppe basiert auf [vordefinierten kognitiven Fähigkeiten](cog
 
 Die Pipeline generiert intern eine Sammlung angereicherter Dokumente. Sie können entscheiden, welche Teile der angereicherten Dokumente indizierbaren Feldern in Ihrem Suchindex zugeordnet werden sollen. Wenn Sie beispielsweise die Fähigkeiten der Schlüsselbegriffserkennung und der Entitätserkennung angewendet haben, werden diese neuen Felder Bestandteil des angereicherten Dokuments und können Feldern in Ihrem Index zugeordnet werden. Weitere Informationen zu Eingabe-/Ausgabeformationen finden Sie unter [Anmerkungen](cognitive-search-concept-annotations-syntax.md).
 
+#### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>Hinzufügen eines knowledgeStore-Elements zum Speichern von Anreicherungen
+
+Die [REST-API-Version 2019-05-06 des Search-Diensts](search-api-preview.md) erweitert Qualifikationsgruppen um eine knowledgeStore-Definition, die eine Azure Storage-Verbindung und Projektionen bereitstellt, die beschreiben, wie die Anreicherungen gespeichert werden. 
+
+Das Hinzufügen eines Wissensspeichers zu einer Qualifikationsgruppe bietet Ihnen die Möglichkeit, eine Darstellung Ihrer Anreicherungen für andere Szenarien als die Volltextsuche zu projizieren. Weitere Informationen finden Sie unter [Was sind Wissensspeicher?](knowledge-store-concept-intro.md).
+
 ### <a name="step-3-search-index-and-query-based-access"></a>Schritt 3: Suchindex und abfragebasierter Zugriff
 
-Nach Abschluss der Verarbeitung verfügen Sie über einen Suchkorpus mit angereicherten Dokumenten, die mit Azure Search im Volltext durchsucht werden können. Entwickler und Benutzer greifen über das [Abfragen des Indexes](search-query-overview.md) auf den von der Pipeline generierten angereicherten Inhalt zu. 
+Nach Abschluss der Verarbeitung verfügen Sie über einen Suchindex mit angereicherten Dokumenten, die mit Azure Search im Volltext durchsucht werden können. Entwickler und Benutzer greifen über das [Abfragen des Indexes](search-query-overview.md) auf den von der Pipeline generierten angereicherten Inhalt zu. 
 
 ![Index mit Suchsymbol](./media/cognitive-search-intro/search-phase-blowup.png "Index with search icon")
 
@@ -78,15 +99,15 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 |---------|------------|-------|
 | Fähigkeitengruppe | Eine benannte allgemeine Ressource mit einer Sammlung von Fähigkeiten. Eine Fähigkeitengruppe in der Anreicherungspipeline. Sie wird während der Indizierung durch einen Indexer aufgerufen. | [Definieren einer Fähigkeitengruppe](cognitive-search-defining-skillset.md) |
 | Kognitive Fähigkeit | Eine atomische Transformation in einer Anreicherungspipeline. Häufig handelt es sich dabei um eine Komponente, die sich mit der Extrahierung oder der Erschließung einer Struktur befasst und folglich Ihr Verständnis der Eingabedaten ergänzt. Die Ausgabe ist fast immer textbasiert. Bei der Verarbeitung wird auf die Verarbeitung natürlicher Sprache oder die Bildbearbeitung zurückgegriffen, bei der Text aus Bildeingaben extrahiert oder generiert wird. Die Ausgabe aus einer Fähigkeit kann einem Feld in einem Index zugeordnet werden oder als Eingabe für eine Downstream-Anreicherung verwendet werden. Eine Fähigkeit ist entweder vordefiniert und wird von Microsoft bereitgestellt, oder sie ist benutzerdefiniert und wird von Ihnen erstellt und bereitgestellt. | [Vordefinierte Skills](cognitive-search-predefined-skills.md) |
-| Extrahieren von Daten | Deckt ein breites Verarbeitungsspektrum ab, in Bezug auf Cognitive Search wird die Fähigkeit zur Erkennung benannter Entitäten jedoch zumeist zum Extrahieren von Daten (einer Entität) aus einer Quelle verwendet, die diese Informationen nicht nativ bereitstellt. | [Fähigkeit: Erkennung benannter Entitäten](cognitive-search-skill-named-entity-recognition.md)| 
+| Extrahieren von Daten | Deckt ein breites Verarbeitungsspektrum ab. In Bezug auf Cognitive Search wird die Fähigkeit zur Erkennung von Entitäten jedoch zumeist zum Extrahieren von Daten (einer Entität) aus einer Quelle verwendet, die diese Informationen nicht nativ bereitstellt. | [Die kognitive Qualifikation „Entitätserkennung“](cognitive-search-skill-entity-recognition.md)| 
 | Bildverarbeitung | Erschließt sich Text aus einem Bild, z.B. die Fähigkeit der Erkennung eines Wahrzeichens oder des Extrahierens von Text aus einem Bild. Typische Beispiele dafür sind OCR für das Löschen von Zeichen aus einer Datei mit einem gescannten Dokument (JPEG) oder das Erkennen eines Straßennamens auf einem Foto mit einem Straßenschild. | [Fähigkeit: Bildanalyse](cognitive-search-skill-image-analysis.md) oder [Fähigkeit: OCR](cognitive-search-skill-ocr.md)
 | Verarbeitung natürlicher Sprache | Textverarbeitung für Einblicke und Informationen zu Texteingaben. Sprachenerkennung, Standpunktanalyse und Schlüsselbegriffserkennung sind Fähigkeiten, die in den Bereich der Verarbeitung natürlicher Sprache fallen.  | [Fähigkeit: Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), [Fähigkeit: Sprachenerkennung](cognitive-search-skill-language-detection.md), [Fähigkeit: Standpunktanalyse](cognitive-search-skill-sentiment.md) |
 | Dokumententschlüsselung | Der Prozess des Extrahierens oder Erstellens von Textinhalt aus Nicht-Text-Quellen während der Indizierung. OCR (Optical Character Recognition) ist ein Beispiel hierfür. In der Regel bezieht sich dies jedoch auf die Kernfunktionalität des Indexers, da dieser Inhalte aus Anwendungsdateien extrahiert. Sowohl die Datenquelle, die den Speicherort der Quelldatei bereitstellt, als auch die Indexerdefinition, die Feldzuordnungen zur Verfügung stellt, stellen Schlüsselfaktoren bei der Dokumententschlüsselung dar. | Weitere Informationen finden Sie unter [Indexer](search-indexer-overview.md). |
 | Strukturierung | Textfragmente werden zu einer größeren Struktur konsolidiert, oder größere Textblöcke werden zur weiteren Downstream-Verarbeitung in eine überschaubare Größe aufgeteilt. | [Fähigkeit: Strukturierung](cognitive-search-skill-shaper.md), [Fähigkeit: Textzusammenführung](cognitive-search-skill-textmerger.md), [Fähigkeit: Textunterteilung](cognitive-search-skill-textsplit.md) |
-| Angereicherte Dokumente | Eine vorübergehende interne Struktur, auf die im Code nicht direkt zugegriffen werden kann. Angereicherte Dokumente werden während der Verarbeitung generiert. In einem Suchindex werden jedoch nur endgültige Ausgaben permanent gespeichert. Feldzuordnungen bestimmen, welche Datenelemente zum Index hinzugefügt werden. | Weitere Informationen finden Sie unter [Zugriff auf angereicherte Dokumente](cognitive-search-tutorial-blob.md#access-enriched-document). |
+| Angereicherte Dokumente | Eine vorübergehende interne Struktur, die bei der Verarbeitung generiert wird. Die endgültige Ausgabe spiegelt sich in einem Suchindex wider. Eine Skillset bestimmt, welche Anreicherungen vorgenommen werden. Feldzuordnungen bestimmen, welche Datenelemente zum Index hinzugefügt werden. Optional können Sie einen Wissensspeicher erstellen, um angereicherte Dokumente mit Tools wie dem Storage-Explorer, Power BI oder einem anderen Tool, das mit Azure Blob Storage verbunden ist, zu speichern und zu untersuchen. | Informationen finden Sie im Thema zum [Wissensspeicher (Vorschau)](knowledge-store-concept-intro.md). |
 | Indexer |  Ein Crawler, mit dem durchsuchbare Daten und Metadaten aus einer externen Datenquelle extrahiert werden und mit dem ein Index basierend auf Feld-zu-Feld-Zuordnungen zwischen dem Index und Ihrer Datenquelle zur Dokumententschlüsselung aufgefüllt wird. Bei Cognitive Search-Anreicherungen ruft der Indexer eine Fähigkeitengruppe auf und enthält die Feldzuordnungen, durch welche die Ausgabe der Anreicherung Zielfeldern im Index zugeordnet wird. Die Indexerdefinition enthält sämtliche Anweisungen und Verweise für Pipelinevorgänge. Die Pipeline wird bei Ausführung des Indexers aufgerufen. | [Indexer](search-indexer-overview.md) |
 | Data source  | Ein von einem Indexer verwendetes Objekt zum Verbinden mit einer externen Datenquelle von unterstützten Typen in Azure. | Weitere Informationen finden Sie unter [Indexer](search-indexer-overview.md). |
-| Index | Ein persistenter Suchkorpus in Azure Search, der aus einem Indexschema erstellt wurde, das die Feldstruktur und -verwendung definiert. | [Indizes in Azure Search](search-what-is-an-index.md) | 
+| Index | Ein persistenter Suchindex in Azure Search, der aus einem Indexschema erstellt wurde, das die Feldstruktur und -verwendung definiert. | [Indizes in Azure Search](search-what-is-an-index.md) | 
 
 <a name="where-do-i-start"></a>
 
@@ -98,20 +119,22 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 
 + [Schnellstart (Portal)](cognitive-search-quickstart-blob.md)
 + [Tutorial (HTTP-Anforderungen)](cognitive-search-tutorial-blob.md)
-+ [Beispiel für benutzerdefinierte Fähigkeiten (C#)](cognitive-search-create-custom-skill-example.md)
++ [Beispiel: Erstellen einer benutzerdefinierten Qualifikation für die kognitive Suche (C#)](cognitive-search-create-custom-skill-example.md)
 
-Es empfiehlt sich, zu Lernzwecken den kostenlosen Dienst zu verwenden. Beachten Sie jedoch, dass die Anzahl kostenloser Transaktionen auf 20 Dokumente pro Tag beschränkt ist. Wenn Sie sowohl die Schnellstartanleitung als auch das Tutorial am gleichen Tag ausführen möchten, verwenden Sie einen kleineren Dateisatz (zehn Dokumente).
+Wir empfehlen, den kostenlosen Dienst zu Lernzwecken zu verwenden. Jedoch ist die Anzahl kostenloser Transaktionen auf 20 Dokumente pro Tag beschränkt. Wenn Sie sowohl die Schnellstartanleitung als auch das Tutorial am gleichen Tag ausführen möchten, verwenden Sie einen kleineren Dateisatz (zehn Dokumente), oder löschen Sie den im Schnellstart oder Tutorial verwendeten Indexer.
 
-**Schritt 3: Überprüfen der API (nur REST)**
+**Schritt 3: Überprüfen der API**
 
-Derzeit werden nur REST-APIs bereitgestellt. Verwenden Sie `api-version=2017-11-11-Preview` für alle Anforderungen. Verwenden Sie die folgenden APIs zum Erstellen einer Cognitive Search-Lösung. Es werden nur zwei APIs für Cognitive Search hinzugefügt oder erweitert. Andere APIs haben die gleiche Syntax wie die allgemein verfügbaren Versionen.
+Sie können in REST `api-version=2019-05-06` in Anforderungen oder dem .NET SDK verwenden. 
+
+Bei diesem Schritt werden die REST-APIs zum Erstellen einer Cognitive Search-Lösung verwendet. Es werden nur zwei APIs für Cognitive Search hinzugefügt oder erweitert. Andere APIs haben die gleiche Syntax wie die allgemein verfügbaren Versionen.
 
 | REST-API | BESCHREIBUNG |
 |-----|-------------|
 | [Erstellen der Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Eine Ressource, die eine externe Datenquelle identifiziert, welche Quelldaten zum Erstellen angereicherter Dokumente bereitstellt.  |
-| [Erstellen einer Fähigkeitengruppe (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, welche die Verwendung von [vordefinierten Fähigkeiten](cognitive-search-predefined-skills.md) und [benutzerdefinierten kognitiven Fähigkeiten](cognitive-search-custom-skill-interface.md) in einer Anreicherungspipeline während der Indizierung koordiniert. |
+| [Erstellen einer Qualifikationsgruppe (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Diese API dient speziell für die kognitive Suche. Diese Ressource koordiniert die Verwendung von [vordefinierten Fähigkeiten](cognitive-search-predefined-skills.md) und [benutzerdefinierten kognitiven Fähigkeiten](cognitive-search-custom-skill-interface.md) in einer Anreicherungspipeline während der Indizierung. |
 | [Index erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Ein Schema zur Beschreibung eines Azure Search-Indexes. Felder im Index werden Feldern in den Quelldaten zugeordnet oder Feldern, die während der Anreicherungsphase erstellt wurden (z.B. ein von der Entitätserkennung erstelltes Feld für Organisationsnamen). |
-| [Erstellen eines Indexers (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, die während der Indizierung verwendete Komponenten definiert: Dazu zählen eine Datenquelle, eine Fähigkeitengruppe, Feldzuordnungen der Quelle, intermediäre Datenstrukturen für den Zielindex und der Index selbst. Die Ausführung des Indexers ist Auslöser für die Datenerfassung und -anreicherung. Die Ausgabe ist ein Suchkorpus basierend auf dem Indexschema und wird mit Quelldaten aufgefüllt, die durch Fähigkeitengruppen angereichert werden.  |
+| [Erstellen eines Indexers (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, die während der Indizierung verwendete Komponenten definiert: Dazu zählen eine Datenquelle, eine Fähigkeitengruppe, Feldzuordnungen der Quelle, intermediäre Datenstrukturen für den Zielindex und der Index selbst. Die Ausführung des Indexers ist Auslöser für die Datenerfassung und -anreicherung. Die Ausgabe ist ein Suchindex basierend auf dem Indexschema, der mit Quelldaten aufgefüllt wird, die durch Qualifikationsgruppen angereichert werden. Diese vorhandene API wird in kognitiven Suchszenarien mit Einbindung einer Skillset-Eigenschaft erweitert. |
 
 **Checkliste: Typischer Workflow**
 
@@ -140,3 +163,5 @@ Weitere Informationen zu bestimmten Fragen oder Problemen finden Sie unter [Prob
 + [Dokumentation zu Cognitive Search](cognitive-search-resources-documentation.md)
 + [Schnellstart: Testen der kognitiven Suche anhand einer exemplarischen Vorgehensweise zu Portalfunktionen](cognitive-search-quickstart-blob.md)
 + [Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche](cognitive-search-tutorial-blob.md)
++ [Übersicht über Wissensspeicher](knowledge-store-concept-intro.md)
++ [Wissensspeicher: exemplarische Vorgehensweise](knowledge-store-howto.md)

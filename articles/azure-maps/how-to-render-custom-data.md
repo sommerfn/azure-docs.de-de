@@ -3,18 +3,18 @@ title: Rendern benutzerdefinierter Daten auf einer Rasterkarte in Azure Maps | M
 description: Rendern von benutzerdefinierten Daten auf einer Rasterkarte in Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/12/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 46f08aaa33563f620e7a011620730249e903f7b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6619fd842f225a6d362a4b308dde6e35b43677c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086597"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915756"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Rendern von benutzerdefinierten Daten auf einer Rasterkarte
 
@@ -27,7 +27,8 @@ Sie können die Postman-Anwendung verwenden, um benutzerdefinierte Ortsmarken, B
 
 ### <a name="create-an-azure-maps-account"></a>Erstellen eines Azure Maps-Kontos
 
-Sie müssen zunächst [ein Azure Maps-Konto](how-to-manage-account-keys.md) im Tarif „S1“ erstellen, um die Vorgehensweisen dieses Artikels durchführen zu können.
+Um die in diesem Artikel beschriebenen Verfahren auszuführen, müssen Sie zunächst ein Azure Maps-Konto erstellen, indem Sie die Anweisungen zum [Verwalten von Konten](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) befolgen, und die Schritte unter [Abrufen des Primärschlüssels](./tutorial-search-location.md#getkey) ausführen, um einen primären Abonnementschlüssel für Ihr Konto abzurufen.
+
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Rendern von Ortsmarken mit Bezeichnungen und benutzerdefinierten Bildern
 
@@ -42,7 +43,7 @@ Führen Sie die folgenden Schritte aus, um Ortsmarken mit Bezeichnungen und eine
 
 2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen **Request name** (Anforderungsnamen) für die Ortsmarken ein, wählen Sie die im vorherigen Schritt erstellte Sammlung als Speicherort für die Anforderung aus, und klicken Sie dann auf **Save** (Speichern).
     
-    ![Erstellen einer Anforderung in Postman](./media/tutorial-geofence/postman-new.png)
+    ![Erstellen einer Anforderung in Postman](./media/how-to-render-custom-data/postman-new.png)
 
 3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus, und geben Sie die folgende URL ein, um eine GET-Anforderung zu erstellen.
 
@@ -133,19 +134,33 @@ Sie können den Pfad und die Standortinformationen einer Ortsmarke auch mithilfe
     }
     ```
 
-4. Klicken Sie auf **Send** (Senden), und überprüfen Sie den Antwortheader. Der Adressheader enthält den URI, mit dem auf die Daten zur zukünftigen Verwendung zugegriffen wird bzw. über den diese Daten heruntergeladen werden. Darüber hinaus enthält er eine eindeutige ID (`udId`) für die hochgeladenen Daten.  
+4. Klicken Sie auf **Send** (Senden), und überprüfen Sie den Antwortheader. Bei einer erfolgreichen Anforderung enthält der Adressheader den Status-URI, um den aktuellen Status der Uploadanforderung zu überprüfen. Der Status-URI hat folgendes Format.  
 
    ```HTTP
-   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-5. Verwenden Sie den von der Data Upload-API empfangenen Wert `udId`, um Merkmale auf der Karte zu rendern. Öffnen Sie hierzu eine neue Registerkarte in der Sammlung, die Sie im vorherigen Abschnitt erstellt haben. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus, und geben Sie die folgende URL ein, um eine GET-Anforderung zu senden:
+5. Kopieren Sie den Status-URI, und fügen Sie ihm den Parameter „subscription-key“ hinzu, wobei der zugehörige Wert der Abonnementschlüssel Ihres Azure Maps-Kontos ist, den Sie zum Hochladen der Daten verwendet haben. Das Format des Status-URI sollte wie folgt aussehen:
+
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
+
+6. Um den Wert von „udId“ abzurufen, öffnen Sie in der Postman-App eine neue Registerkarte, wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus, und führen Sie eine GET-Anforderung für den Status-URI aus. Wenn der Datenupload erfolgreich ausgeführt wurde, wird im Antworttext ein Wert für „udId“ ausgegeben. Kopieren Sie den Wert für „udId“.
+
+   ```JSON
+   {
+      "udid" : "{udId}"
+   }
+   ```
+
+7. Verwenden Sie den von der Data Upload-API empfangenen Wert `udId`, um Merkmale auf der Karte zu rendern. Öffnen Sie hierzu eine neue Registerkarte in der Sammlung, die Sie im vorherigen Abschnitt erstellt haben. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus, und geben Sie die folgende URL ein, um eine GET-Anforderung zu senden:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
     ```
 
-6. Das Ergebnis ist das folgende Bild:
+    Hier sehen Sie das Antwortbild:
 
     ![Abrufen von Daten aus dem Azure Maps-Datenspeicher](./media/how-to-render-custom-data/uploaded-path.png)
 
@@ -161,12 +176,12 @@ Sie können das Aussehen eines Polygons ändern, indem Sie Stilmodifikatoren mit
     
     ```HTTP
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&sku=S1&zoom=14&height=500&Width=500&center=-74.040701, 40.698666&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.50||-74.03995513916016 40.70090237454063|-74.04082417488098 40.70028420372218|-74.04113531112671 40.70049568385827|-74.04298067092896 40.69899904076542|-74.04271245002747 40.69879568992435|-74.04367804527283 40.6980961582905|-74.04364585876465 40.698055487620714|-74.04368877410889 40.698022951066996|-74.04168248176573 40.696444909137|-74.03901100158691 40.69837271818651|-74.03824925422668 40.69837271818651|-74.03809905052185 40.69903971085914|-74.03771281242369 40.699340668780984|-74.03940796852112 40.70058515602143|-74.03948307037354 40.70052821920425|-74.03995513916016 40.70090237454063
-    &subscription-key={subscription--key}
+    &subscription-key={subscription-key}
     ```
 
-Das Ergebnis ist das folgende Bild:
+    Hier sehen Sie das Antwortbild:
 
-![Rendern eines durchsichtigen Polygons](./media/how-to-render-custom-data/opaque-polygon.png)
+    ![Rendern eines durchsichtigen Polygons](./media/how-to-render-custom-data/opaque-polygon.png)
 
 
 ## <a name="render-a-circle-and-pushpins-with-custom-labels"></a>Rendern von Kreisen und Ortsmarken mit benutzerdefinierten Bezeichnungen
@@ -186,9 +201,9 @@ Führen Sie die folgenden Schritte aus, um einen Kreis und Ortsmarken mit benutz
     https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co002D62||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
     ```
 
-Das Ergebnis ist das folgende Bild:
+    Hier sehen Sie das Antwortbild:
 
-![Rendern eines Kreises mit benutzerdefinierten Ortsmarken](./media/how-to-render-custom-data/circle-custom-pins.png)
+    ![Rendern eines Kreises mit benutzerdefinierten Ortsmarken](./media/how-to-render-custom-data/circle-custom-pins.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

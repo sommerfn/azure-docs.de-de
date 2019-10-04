@@ -1,5 +1,5 @@
 ---
-title: Medienobjekte in Media Services – Azure| Microsoft-Dokumentation
+title: Medienobjekte in Azure Media Services | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, was Medienobjekte sind und wie sie von Azure Media Services verwendet werden.
 services: media-services
 documentationcenter: ''
@@ -9,30 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2ec2ddbac5d0368aaf1b46208c9ebb44bf12a622
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 3dc1866a3c0339bca0c27fb53894a14581e88490
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447309"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390493"
 ---
 # <a name="assets"></a>Objekte
 
-In Azure Media Services enthält ein [Medienobjekt](https://docs.microsoft.com/rest/api/media/assets) digitale Dateien (z.B. Video- und Audiodateien, Bilder, Sammlungen von Miniaturansichten, Textspuren und Untertiteldateien) sowie die Metadaten zu diesen Dateien. Nachdem die digitalen Dateien in ein Medienobjekt geladen wurden, können sie in den Media Services-Workflows zum Codieren, Streamen und Analysieren von Inhalten verwendet werden. Weitere Informationen finden Sie unten im Abschnitt [Hochladen von digitalen Dateien in Medienobjekte](#upload-digital-files-into-assets).
+In Azure Media Services enthält ein [Medienobjekt](https://docs.microsoft.com/rest/api/media/assets) Informationen zu digitalen in Azure Storage gespeicherten Dateien (z.B. Video- und Audiodateien, Bilder, Sammlungen von Miniaturansichten, Textspuren und Untertiteldateien). 
 
 Ein Medienobjekt ist einem Blobcontainer im [Azure Storage-Konto](storage-account-concept.md) zugeordnet, und die im Medienobjekt enthaltenen Dateien werden als Blockblobs in diesem Container gespeichert. Azure Media Services unterstützt Blobebenen, wenn das Konto einen Speicher vom Typ „Allgemein v2“ (GPv2) verwendet. In GPv2-Speichern können Sie Dateien auf die [kalte Speicherebene oder die Archivspeicherebene](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) verschieben. Der **Archivspeicher** eignet sich für die Archivierung von Quelldateien, wenn diese nicht mehr benötigt werden (z.B. nach der Codierung).
 
 Die **Archivspeicherebene** wird nur empfohlen, wenn Sie über sehr große Quelldateien verfügen, die bereits codiert wurden, und wenn der Codierungsauftrag in einem Ausgabeblobcontainer platziert wurde. Die Blobs in dem Ausgabecontainer, den Sie einem Medienobjekt zuordnen und zum Streamen oder Analysieren Ihrer Inhalte verwenden möchten, müssen auf den Speicherebenen **heiß** oder **kalt** vorhanden sein.
 
-> [!NOTE]
-> Eigenschaften von Medienobjekten im Datetime-Typ liegen immer im UTC-Format vor.
+### <a name="naming-blobs"></a>Benennen von Blobs
+
+Die Namen von Dateien/Blobs in einem Objekt müssen die [Anforderungen an Blobnamen](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) und die [Anforderungen an NTFS-Namen](https://docs.microsoft.com/windows/win32/fileio/naming-a-file) erfüllen. Diese Anforderungen bestehen, da die Dateien zur Verarbeitung aus Blobspeicher auf einen lokalen NTFS-Datenträger kopiert werden können.
 
 ## <a name="upload-digital-files-into-assets"></a>Hochladen von digitalen Dateien in Medienobjekte
 
-Einer der gängigsten Media Services-Workflows besteht aus dem Hochladen, Codieren und Streamen einer Datei. Dieser Abschnitt erläutert die allgemeinen Schritte.
+Nachdem die digitalen Dateien in den Speicher hochgeladen und einem Medienobjekt zugeordnet wurden, können sie in den Media Services-Workflows zum Codieren, Streamen und Analysieren von Inhalten verwendet werden. Einer der gängigsten Media Services-Workflows besteht aus dem Hochladen, Codieren und Streamen einer Datei. Dieser Abschnitt erläutert die allgemeinen Schritte.
+
+> [!TIP]
+> Bevor Sie mit der Entwicklung beginnen, lesen Sie [Entwickeln mit Media Services v3-APIs](media-services-apis-overview.md) (Informationen zum Zugreifen auf APIs, Namenskonventionen usw.).
 
 1. Verwenden Sie die Media Services v3-API, um ein neues Medienobjekt für die Eingabe zu erstellen. Dieser Vorgang erstellt einen Container in dem Speicherkonto, das Ihrem Media Services-Konto zugeordnet ist. Die API gibt den Containernamen zurück (z.B. `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
    
@@ -44,13 +48,16 @@ Einer der gängigsten Media Services-Workflows besteht aus dem Hochladen, Codier
     az storage blob upload -f /path/to/file -c MyContainer -n MyBlob
     ```
 2. Rufen Sie eine SAS-URL mit Lese-/Schreibberechtigungen ab, die verwendet wird, um digitale Dateien in den Medienobjektcontainer hochzuladen. Sie können die Media Services-API verwenden, um [die Medienobjektcontainer-URLs aufzulisten](https://docs.microsoft.com/rest/api/media/assets/listcontainersas).
-3. Verwenden Sie die Azure Storage-APIs oder SDKs (z.B. [Storage-REST-API](../../storage/common/storage-rest-api-auth.md), [Java SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) oder [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), um Dateien in den Medienobjektcontainer hochzuladen. 
+3. Verwenden Sie die Azure Storage-APIs oder SDKs (z.B. [Storage-REST-API](../../storage/common/storage-rest-api-auth.md) oder [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), um Dateien in den Medienobjektcontainer hochzuladen. 
 4. Verwenden Sie Media Services v3-APIs, um eine Transformation und einen Auftrag zur Verarbeitung Ihres Eingabemedienobjekts zu erstellen. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transform-concept.md).
 5. Streamen Sie die Inhalte des Ausgabemedienobjekts.
 
 Unter [Erstellen einer Auftragseingabe aus einer lokalen Datei](job-input-from-local-file-how-to.md) finden Sie ein vollständiges .NET-Beispiel für folgende Aufgaben: Erstellen des Medienobjekts, Abrufen einer beschreibbaren SAS-URL zum Container des Medienobjekts im Container und Hochladen der Datei in den Container im Speicher über die SAS-URL.
 
 ### <a name="create-a-new-asset"></a>Erstellen des neuen Medienobjekts
+
+> [!NOTE]
+> Eigenschaften von Medienobjekten im Datetime-Typ liegen immer im UTC-Format vor.
 
 #### <a name="rest"></a>REST
 
@@ -84,9 +91,22 @@ curl -X PUT \
 
 Ein vollständiges Beispiel finden Sie unter [Erstellen einer Auftragseingabe aus einer lokalen Datei](job-input-from-local-file-how-to.md). In Media Services v3 kann die Eingabe eines Auftrags auch über HTTPS-URLs erstellt werden (siehe [Erstellen einer Auftragseingabe aus einer HTTPS-URL](job-input-from-http-how-to.md)).
 
-## <a name="filtering-ordering-paging"></a>Filterung, Sortierung, Paging
+## <a name="map-v3-asset-properties-to-v2"></a>Zuordnung der Eigenschaften des Medienobjekts in v3 zu v2
 
-Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Services-Entitäten](entities-overview.md).
+Die folgende Tabelle zeigt, wie die Eigenschaften des [Medienobjekts](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset) in v3 den Eigenschaften in v2 zugeordnet werden.
+
+|v3-Eigenschaften|v2-Eigenschaften|
+|---|---|
+|id – (eindeutig) der vollständige Azure Resource Manager-Pfad, siehe Beispiele unter [Medienobjekt](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
+|name – (eindeutig) siehe [Benennungskonventionen](media-services-apis-overview.md#naming-conventions) ||
+|alternateId|AlternateId|
+|assetId|Id – (eindeutiger) Wert beginnt mit dem `nb:cid:UUID:`-Präfix.|
+|created|Erstellt|
+|description|NAME|
+|lastModified|LastModified|
+|storageAccountName|StorageAccountName|
+|storageEncryptionFormat| Optionen (Optionen für die Erstellung)|
+|type||
 
 ## <a name="storage-side-encryption"></a>Speicherseitige Verschlüsselung
 
@@ -101,6 +121,10 @@ Zum Schutz Ihrer im Ruhezustand befindlichen Ressourcen sollten die Ressourcen d
 <sup>1</sup> Media Services unterstützt zwar die Behandlung von Inhalten in Klartext/ohne jede Form der Verschlüsselung, doch wird davon abgeraten.
 
 <sup>2</sup> In Media Services v3 wird Speicherverschlüsselung (AES-256-Verschlüsselung) nur für die Abwärtskompatibilität unterstützt, wenn Ihre Ressourcen mit Media Services v2 erstellt wurden. Dies bedeutet, dass v3 mit vorhandenen speicherverschlüsselten Ressourcen funktioniert, jedoch nicht die Erstellung neuer zulässt.
+
+## <a name="filtering-ordering-paging"></a>Filterung, Sortierung, Paging
+
+Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Services-Entitäten](entities-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

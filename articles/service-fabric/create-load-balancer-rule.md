@@ -3,23 +3,22 @@ title: Erstellen einer Azure Load Balancer-Regel für einen Cluster
 description: Konfigurieren Sie eine Azure Load Balancer-Instanz zum Öffnen von Ports für Ihren Azure Service Fabric-Cluster.
 services: service-fabric
 documentationcenter: na
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
-ms.author: aljo
-ms.openlocfilehash: d95d2802398a61b948ff6c59fb3eab0e1ddddbc5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: atsenthi
+ms.openlocfilehash: 2e730ae8ecf6f1fab12aff23cab0ac3aa246233a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786132"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173361"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Öffnen von Port für einen Service Fabric-Cluster
 
@@ -111,4 +110,4 @@ Im `New-AzLoadBalancerRuleConfig`-Befehl gibt `-FrontendPort` den Port an, den d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu [Netzwerkmustern für Service Fabric](service-fabric-patterns-networking.md).rvice-fabric-patterns-networking.md).
+Erfahren Sie mehr über [Netzwerke in Service Fabric](service-fabric-patterns-networking.md).

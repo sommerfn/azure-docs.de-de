@@ -3,6 +3,7 @@ title: Wichtige Unterschiede bei den Machine Learning Services von Azure SQL-Dat
 description: Dieses Thema beschreibt die wichtigsten Unterschiede zwischen Machine Learning Services von Azure SQL-Datenbank (mit R) und SQL Server Machine Learning Services.
 services: sql-database
 ms.service: sql-database
+ms.subservice: machine-learning
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: 57ea52c179376e8378680f436d396ffaf9357f68
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ee92b598625b1346cf87c661d1867cc1cb012b60
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771849"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485995"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Wichtige Unterschiede zwischen Machine Learning Services von Azure SQL-Datenbank (Vorschauversion) und SQL Server
 
@@ -43,12 +44,15 @@ Die R-Paketverwaltung und -Installation funktionieren für SQL-Datenbank und SQL
 - Pakete können keine ausgehenden Netzwerkaufrufe ausführen. Diese Einschränkung ähnelt den [Standardfirewallregeln für Machine Learning Services](https://docs.microsoft.com//sql/advanced-analytics/security/firewall-configuration) in SQL Server, kann jedoch in SQL-Datenbank nicht geändert werden.
 - Es gibt keine Unterstützung für Pakete, die von externen Runtimes (z.B. Java) abhängig sind oder Zugriff auf Betriebssystem-APIs für die Installation oder Verwendung benötigen.
 
+## <a name="writing-to-a-temporary-table"></a>Schreiben in einer temporären Tabelle
+
+Wenn Sie RODBC in Azure SQL-Datenbank verwenden, dann könnten Sie nicht in eine temporäre Tabelle schreiben. Dies ist unabhängig davon, ob sie innerhalb oder außerhalb der `sp_execute_external_script`-Sitzung erstellt wurde. Sie lösen dieses Problem, indem Sie [RxOdbcData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxodbcdata) und [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) (mit overwrite=FALSE und append="rows") verwenden, um eine globale temporäre Tabelle zu schreiben, die vor der `sp_execute_external_script`-Abfrage erstellt wurde.
+
 ## <a name="resource-governance"></a>Ressourcenkontrolle
 
 Es ist nicht möglich, R-Ressourcen durch [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) und externe Ressourcenpools zu beschränken.
 
 In der öffentlichen Vorschauversion sind R-Ressourcen auf ein Maximum von 20 % der SQL-Datenbankressourcen festgelegt. Das richtet sich nach der ausgewählten Dienstebene. Weitere Informationen finden Sie unter [Kaufmodelle für Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
-
 ### <a name="insufficient-memory-error"></a>Fehler bei nicht ausreichendem Arbeitsspeicher
 
 Wenn für R nicht genügend Arbeitsspeicher verfügbar ist, erhalten Sie eine Fehlermeldung. Häufige Fehlermeldungen:
@@ -61,6 +65,6 @@ Die Arbeitsspeichernutzung hängt von der in R-Skripts verwendeten Anzahl und vo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Allgemeine Informationen finden Sie in der Dokumentation [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics).
-- Informationen zum Verwenden von Machine Learning Services (mit R) in Azure SQL-Datenbank finden Sie unter [Schnellstart](sql-database-connect-query-r.md).
-- Erfahren Sie mehr mit [Tutorials für die R-Sprache von SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sql-server-r-tutorials).
+- Lesen Sie die Übersicht, [Machine Learning Services (mit R) in Azure SQL-Datenbank (Vorschauversion)](sql-database-machine-learning-services-overview.md).
+- Wenn Sie erfahren möchten, wie Sie R zum Abfragen von Machine Learning Services in Azure SQL-Datenbank (Vorschauversion) verwenden, lesen Sie die [Schnellstartanleitung](sql-database-connect-query-r.md).
+- Für die ersten Schritte mit einfachen R-Skripts lesen Sie [Erstellen und Ausführen einfacher R-Skripts in Machine Learning Services von Azure SQL-Datenbank (Vorschauversion)](sql-database-quickstart-r-create-script.md).

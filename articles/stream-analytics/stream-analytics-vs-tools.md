@@ -1,6 +1,6 @@
 ---
 title: Anzeigen von Azure Stream Analytics-Aufträgen in Visual Studio
-description: In diesem Artikel wird beschrieben, wie Stream Analytics-Aufträge in Visual Studio analysiert werden.
+description: In diesem Artikel wird beschrieben, wie Azure Stream Analytics-Aufträge in Visual Studio angezeigt und verwaltet werden.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: f9bc9bf540f7f44e07bc4bb0ae8ef6910ae78476
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: ae532ed19c2273e43aa739e84d5a68cadb717b86
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222385"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173027"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Anzeigen von Azure Stream Analytics-Aufträgen mit Visual Studio
 

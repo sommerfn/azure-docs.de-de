@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d5f4dec48d81b032de293bb6c68ad62ac48d475
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 309adfbebd4f4b615ac1f4061823ca01f3d3ee15
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193057"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65139290"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect-Synchronisierung: Scheduler
-Dieses Thema beschreibt den integrierten Scheduler in Azure AD Connect Sync (auch bekannt als Synchronisierungsmodul).
+In diesem Thema wird der integrierte Scheduler in Azure AD Connect-Synchronisierung (Synchronisierungsmodul) beschrieben.
 
 Diese Funktion wurde mit Build 1.1.105.0 eingeführt (veröffentlicht im Februar 2016).
 
@@ -72,7 +72,7 @@ Die Konfiguration des Schedulers wird in Azure AD gespeichert. Wenn Sie über e
 
 ### <a name="customizedsynccycleinterval"></a>CustomizedSyncCycleInterval
 Syntax: `Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss`  
- T - Tage, HH - Stunden, mm - Minuten, ss - Sekunden
+T - Tage, HH - Stunden, mm - Minuten, ss - Sekunden
 
 Beispiel: `Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00`  
 Ändert den Scheduler so, dass er alle drei Stunden ausgeführt wird.
@@ -92,29 +92,62 @@ Wenn Sie die Änderungen vorgenommen haben, denken Sie daran, den Scheduler mit 
 ## <a name="start-the-scheduler"></a>Starten des Schedulers
 Der Scheduler wird standardmäßig alle 30 Minuten ausgeführt. In einigen Fällen möchten Sie vielleicht einen Synchronisierungszyklus zwischen den geplanten Zyklen ausführen, oder Sie müssen einen anderen Typ ausführen.
 
-**Deltasynchronisierungszyklus**  
+### <a name="delta-sync-cycle"></a>Deltasynchronisierungszyklus
 : Ein Deltasynchronisierungszyklus umfasst die folgenden Schritte:
 
-* Deltaimport auf allen Connectors
-* Deltasynchronisierung auf allen Connectors
-* Export auf allen Connectors
 
-Es kann vorkommen, dass eine dringende Änderung sofort synchronisiert werden muss. In diesem Fall müssen Sie einen Zyklus manuell ausführen. Wenn Sie einen Zyklus manuell ausführen müssen, führen Sie in PowerShell den Befehl `Start-ADSyncSyncCycle -PolicyType Delta` aus.
+- Deltaimport auf allen Connectors
+- Deltasynchronisierung auf allen Connectors
+- Export auf allen Connectors
 
-**Vollständiger Synchronisierungszyklus**  
-Wenn Sie eine der folgenden Konfigurationsänderungen vorgenommen haben, müssen Sie einen vollständigen Synchronisierungszyklus ausführen (auch als Erstsynchronisierung bezeichnet):
+### <a name="full-sync-cycle"></a>Vollständiger Synchronisierungszyklus
+Ein vollständiger Synchronisierungszyklus umfasst die folgenden Schritte:
 
-* Sie haben weitere Objekte oder Attribute hinzugefügt, die aus einem Quellverzeichnis importiert werden müssen.
-* Sie haben Änderungen an den Synchronisierungsregeln vorgenommen.
-* Sie haben die [Filterung](how-to-connect-sync-configure-filtering.md) geändert, sodass eine andere Anzahl von Objekten einbezogen werden soll.
+- Vollständiger Import auf allen Connectors
+- Vollständige Synchronisierung auf allen Connectors
+- Export auf allen Connectors
 
-Wenn Sie eine dieser Änderungen vorgenommen haben, müssen Sie einen vollständigen Synchronisierungszyklus ausführen, damit das Synchronisierungsmodul die Möglichkeit hat, die Connectorbereiche neu zu konsolidieren. Ein vollständiger Synchronisierungszyklus umfasst die folgenden Schritte:
+Es kann vorkommen, dass eine dringende Änderung sofort synchronisiert werden muss. In diesem Fall müssen Sie einen Zyklus manuell ausführen. 
 
-* Vollständiger Import auf allen Connectors
-* Vollständige Synchronisierung auf allen Connectors
-* Export auf allen Connectors
+Wenn Sie einen Synchronisierungszyklus manuell ausführen müssen, führen Sie in PowerShell den Befehl `Start-ADSyncSyncCycle -PolicyType Delta` aus.
 
-Um einen vollständigen Synchronisierungszyklus zu initiieren, führen Sie an einer PowerShell-Eingabeaufforderung den Befehl `Start-ADSyncSyncCycle -PolicyType Initial` aus. Mit diesem Befehl wird ein vollständiger Synchronisierungszyklus gestartet.
+Um einen vollständigen Synchronisierungszyklus zu initiieren, führen Sie an einer PowerShell-Eingabeaufforderung den Befehl `Start-ADSyncSyncCycle -PolicyType Initial` aus.   
+
+Das Ausführen eines vollständigen Synchronisierungszyklus kann sehr viel Zeit in Anspruch nehmen. Erfahren Sie im nächsten Abschnitt, wie Sie diesen Prozess optimieren können.
+
+### <a name="sync-steps-required-for-different-configuration-changes"></a>Für verschiedene Konfigurationsänderungen erforderliche Synchronisierungsschritte
+Unterschiedliche Konfigurationsänderungen erfordern unterschiedliche Synchronisierungsschritte, damit die Änderungen ordnungsgemäß auf alle Objekte angewendet werden.
+
+- Sie haben weitere Objekte oder Attribute hinzugefügt, die (durch Hinzufügen/Ändern der Synchronisierungsregeln) aus einem Quellverzeichnis importiert werden sollen.
+    - Für dieses Quellverzeichnis ist ein vollständiger Import auf den Connector erforderlich.
+- Sie haben Änderungen an den Synchronisierungsregeln vorgenommen.
+    - Für die geänderten Synchronisierungsregeln ist eine vollständige Synchronisierung auf dem Connector erforderlich.
+- Sie haben die [Filterung](how-to-connect-sync-configure-filtering.md) geändert, sodass eine andere Anzahl von Objekten einbezogen werden soll.
+    - Für jeden AD-Connector ist ein vollständiger Import auf den Connector erforderlich. AUSNAHME: Sie verwenden eine attributbasierte Filterung basierend auf Attributen, die bereits in das Synchronisierungsmodul importiert werden.
+
+### <a name="customizing-a-sync-cycle-run-the-right-mix-of-delta-and-full-sync-steps"></a>Anpassen des Synchronisierungszyklus für die richtige Mischung aus Delta- und vollständiger Synchronisierung
+Wenn Sie vermeiden möchten, dass ein vollständiger Synchronisierungszyklus ausgeführt wird, können Sie mit den folgenden Cmdlets bestimmte Connectors markieren, für die eine vollständige Synchronisierung ausgeführt werden soll.
+
+`Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullImportRequired $true`
+
+`Set-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid> -FullSyncRequired $true`
+
+`Get-ADSyncSchedulerConnectorOverride -Connector <ConnectorGuid>` 
+
+Beispiel:  Wenn Sie Änderungen an den Synchronisierungsregeln für den Connector „AD Forest A“ vorgenommen haben, für die keine neuen Attribute importiert werden müssen, verwenden Sie die folgenden Cmdlets, damit ein Deltasynchronisierungszyklus ausgeführt wird, der auch den Schritt „Vollständige Synchronisierung“ für diesen Connector enthält.
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
+
+`Start-ADSyncSyncCycle -PolicyType Delta`
+
+Beispiel:  Wenn Sie Änderungen an den Synchronisierungsregeln für den Connector „AD Forest A“ vorgenommen haben, wodurch ein neues Attribut importiert werden muss, verwenden Sie die folgenden Cmdlets, damit ein Deltasynchronisierungszyklus ausgeführt wird, der auch die Schritte „Vollständiger Import“ und „Vollständige Synchronisierung“ für diesen Connector enthält.
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullImportRequired $true`
+
+`Set-ADSyncSchedulerConnectorOverride -ConnectorName “AD Forest A” -FullSyncRequired $true`
+
+`Start-ADSyncSyncCycle -PolicyType Delta`
+
 
 ## <a name="stop-the-scheduler"></a>Beenden des Schedulers
 Wenn der Scheduler gerade einen Synchronisierungszyklus ausführt, müssen Sie diesen beenden. Dies ist zum Beispiel der Fall, wenn Sie beim Starten des Installations-Assistenten den folgenden Fehler erhalten:

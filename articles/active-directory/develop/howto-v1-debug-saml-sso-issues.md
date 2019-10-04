@@ -2,26 +2,26 @@
 title: Debuggen des SAML-basierten einmaligen Anmeldens – Azure Active Directory | Microsoft-Dokumentation
 description: Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory.
 services: active-directory
-author: CelesteDG
+author: rwike77
 documentationcenter: na
-manager: mtillman
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/18/2019
-ms.author: celested
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, smalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fcc6cb40d83c06a1c9f0a97c72565464e74e655
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 4331acf639af90448b5508e3487f4979e9b82c45
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336072"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482723"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory.
 
@@ -37,7 +37,6 @@ Verwenden Sie zum Herunterladen und Installieren der Erweiterung zur sicheren An
 - [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
-
 ## <a name="test-saml-based-single-sign-on"></a>Testen des einmaligen SAML-basierten Anmeldens
 
 So testen Sie das einmalige SAML-basierte Anmelden zwischen Azure AD und einer Zielanwendung:
@@ -48,26 +47,24 @@ So testen Sie das einmalige SAML-basierte Anmelden zwischen Azure AD und einer Z
 1. Navigieren Sie zu **Einmaliges Anmelden testen** (Schritt 5), um die Testumgebung für SAML-basiertes einmaliges Anmelden zu öffnen. Wenn die Schaltfläche **Test** ausgegraut ist, müssen Sie die erforderlichen Attribute zuerst im Abschnitt **Grundlegende SAML-Konfiguration** einfügen und speichern.
 1. Melden Sie sich auf dem Blatt **Einmaliges Anmelden testen** mit Ihren Unternehmensanmeldeinformationen bei der Zielanwendung an. Sie können sich als der aktuelle Benutzer oder anderer Benutzer anmelden. Wenn Sie sich als anderer Benutzer anmelden, werden Sie in einer Eingabeaufforderung aufgefordert, sich zu authentifizieren.
 
-    ![Test-SAML-Seite](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
-
+    ![Screenshot der Seite für das Testen des einmaligen SAML-basierten Anmeldens](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
 
 Wenn Sie sich erfolgreich angemeldet haben, haben Sie den Test bestanden. Azure AD hat in diesem Fall ein SAML-Antworttoken für die Anwendung ausgestellt. Die Anwendung verwendete das SAML-Token, um Sie erfolgreich anzumelden.
 
 Wenn die Unternehmensanmeldeseite oder die Anwendungsseite einen Fehler aufweist, lösen Sie den Fehler in einem der nächsten Abschnitte auf.
 
-
 ## <a name="resolve-a-sign-in-error-on-your-company-sign-in-page"></a>Auflösen eines Anmeldefehlers auf Ihrer Unternehmensanmeldeseite
 
 Wenn Sie versuchen, sich anzumelden, wird auf der Anmeldeseite Ihres Unternehmens ggf. ein Fehler angezeigt, der dem folgenden Beispiel ähnelt.
 
-![Anmeldefehler](./media/howto-v1-debug-saml-sso-issues/error.png)
+![Beispiel für einen Fehler auf der Unternehmensanmeldeseite](./media/howto-v1-debug-saml-sso-issues/error.png)
 
-Um diesen Fehler zu debuggen, benötigen Sie die Fehlermeldung und die SAML-Anforderung. Die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ erfasst automatisch diese Informationen und zeigt eine Auflösungsanleitung in Azure AD an. 
+Um diesen Fehler zu debuggen, benötigen Sie die Fehlermeldung und die SAML-Anforderung. Die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ erfasst automatisch diese Informationen und zeigt eine Auflösungsanleitung in Azure AD an.
 
 ### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>Beheben des Anmeldefehlers, wenn die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ installiert ist
 
-1. Wenn ein Fehler auftritt, leitet die Erweiterung Sie zurück zum Azure AD-Blatt **Einmaliges Anmelden testen**. 
-1. Wählen Sie auf dem Blatt **Einmaliges Anmelden testen** die Option **SAML-Anforderung herunterladen**. 
+1. Wenn ein Fehler auftritt, leitet die Erweiterung Sie zurück zum Azure AD-Blatt **Einmaliges Anmelden testen**.
+1. Wählen Sie auf dem Blatt **Einmaliges Anmelden testen** die Option **SAML-Anforderung herunterladen**.
 1. Sie sollten eine spezifische Auflösungsanleitung auf Basis der Fehler und Werte in der SAML-Anforderung sehen.
 1. Die Schaltfläche **Korrigieren** wird angezeigt, mit der die Konfiguration in Azure AD automatisch aktualisiert wird, um das Problem zu beheben. Wenn diese Schaltfläche nicht angezeigt wird, ist der Grund für das Anmeldungsproblem nicht eine Fehlkonfiguration in Azure AD.
 
@@ -88,25 +85,24 @@ Wenn für den Anmeldefehler keine Lösung angegeben ist, schlagen wir vor, das T
 
 ## <a name="resolve-a-sign-in-error-on-the-application-page"></a>Auflösen eines Anmeldefehlers auf der Anwendungsseite
 
-Sie können sich vielleicht erfolgreich anmelden und sehen dann die Anzeige einer Fehlermeldung auf der Anwendungsseite. Dies geschieht, wenn Azure AD ein Token für die Anwendung ausgestellt hat, aber die Anwendung die Antwort nicht akzeptiert.   
+Sie können sich vielleicht erfolgreich anmelden und sehen dann die Anzeige einer Fehlermeldung auf der Anwendungsseite. Dies geschieht, wenn Azure AD ein Token für die Anwendung ausgestellt hat, aber die Anwendung die Antwort nicht akzeptiert.
 
 Gehen Sie folgendermaßen vor, um den Fehler zu beheben:
 
 1. Wenn sich die Anwendung im Azure AD-Katalog befindet, sollten Sie sich vergewissern, dass Sie alle Schritte zur Integration der Anwendung in Azure AD ausgeführt haben. Die Integrationsanweisungen für Ihre Anwendung finden Sie in der [Liste der Tutorials zur Integration von SaaS-Anwendungen](../saas-apps/tutorial-list.md).
 1. Rufen Sie die SAML-Antwort ab.
     - Wenn die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ installiert ist, klicken Sie im Blatt **Einmaliges Anmelden testen** auf **SAML-Antwort herunterladen**.
-    - Wenn die Erweiterung nicht installiert ist, verwenden Sie ein Tool wie [Fiddler](https://www.telerik.com/fiddler) zum Abrufen der SAML-Antwort. 
+    - Wenn die Erweiterung nicht installiert ist, verwenden Sie ein Tool wie [Fiddler](https://www.telerik.com/fiddler) zum Abrufen der SAML-Antwort.
 1. Beachten Sie diese Elemente im SAML-Antworttoken:
    - Für den Benutzer eindeutiger Bezeichner von Wert und Format der NameID
    - Im Token ausgestellte Ansprüche
-   - Zum Signieren des Tokens verwendetes Zertifikat. 
+   - Zum Signieren des Tokens verwendetes Zertifikat.
 
      Weitere Informationen zur SAML-Antwort finden Sie unter [SAML-Protokoll für einmaliges Anmelden](single-sign-on-saml-protocol.md).
 
 1. Da Sie nun die SAML-Antwort überprüft haben, können Sie unter [Fehler auf der Seite einer Anwendung nach dem Anmelden](../manage-apps/application-sign-in-problem-application-error.md) die Anleitung zum Beheben des Problems verwenden. 
 1. Wenn Sie sich immer noch nicht erfolgreich anmelden können, sollten Sie beim Anwendungsanbieter erfragen, was in der SAML-Antwort fehlt.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Da nun einmaliges Anmelden für Ihre Anwendung funktioniert, können Sie mit [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md) oder [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](../conditional-access/app-based-conditional-access.md) fortfahren.
+Da nun einmaliges Anmelden für Ihre Anwendung funktioniert, können Sie mit dem [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md) fortfahren oder [die ersten Schritte mit bedingtem Zugriff ausführen](../conditional-access/app-based-conditional-access.md).

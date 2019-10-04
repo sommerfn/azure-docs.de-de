@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Ihr Azure Cosmos DB-Konto anhand von Leistung
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a12e0f567747b67c67f7bc825df1079d852e2f16
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d8e80594e0c56f57527d1703b0cf1323571cf351
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448237"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68855712"
 ---
 # <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Überwachen von Leistungs- und Speichermetriken in Azure Cosmos DB
 
@@ -48,6 +48,10 @@ Metriken können auf der Seite „Konto“, der neuen Seite „Metriken“ oder 
 4. Auf der Seite **Metrik** werden die Details zur Gesamtzahl der Anforderungen angezeigt. 
 
 ## <a name="set-up-alerts-in-the-portal"></a>Einrichten von Warnungen im Portal
+
+> [!NOTE]
+> Die klassischen Warnungen in Azure Monitor werden in Kürze eingestellt. Das Azure-Portal bietet ein [Migrationstool](../azure-monitor/platform/alerts-using-migration-tool.md) zum Migrieren von Regeln für klassische Warnungen. Allerdings können nicht alle klassischen Warnungen zu Azure Cosmos DB-Metriken migriert werden, denn es gibt einige Ausnahmen. Eine Liste der klassischen Warnungen, die nicht migriert werden können, finden Sie im Artikel zu [Azure Monitor](../azure-monitor/platform/alerts-understand-migration.md#cosmos-db-metrics). 
+
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Alle Dienste**, dann auf **Azure Cosmos DB** und anschließend auf den Namen des Azure Cosmos DB-Kontos, für das Sie Warnungen zu Leistungsmetriken einrichten möchten.
 2. Klicken Sie im Ressourcenmenü auf **Warnungsregeln**, um die Seite „Warnungsregeln“ zu öffnen.  
    ![Screenshot des ausgewählten Warnungsregelnteils](./media/monitor-accounts/madocdb10.5.png)

@@ -2,18 +2,18 @@
 title: Beheben von Fehlern mit Updateverwaltung
 description: Erfahren Sie, wie Sie Fehler mit Updateverwaltung beheben können.
 services: automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 04/05/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 22e3ea1c90946902fc2a16d947ff2884e5e0a44b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 48d2463eee2caeaae36118bf736d00eed84c897a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274585"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186214"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
@@ -22,6 +22,42 @@ In diesem Artikel werden Lösungen zum Beheben von Problemen beschrieben, die be
 Es gibt eine Agent-Problembehandlung für den Hybrid Worker-Agent, mit dem das zugrunde liegende Problem ermittelt werden kann. Informationen zur Problembehandlung finden Sie unter [Beheben von Problemen mit dem Update-Agent](update-agent-issues.md). Bei allen anderen Problemen finden Sie weiter unten ausführliche Informationen zu möglichen Problemen.
 
 ## <a name="general"></a>Allgemein
+
+### <a name="rp-register"></a>Szenario: Der Automation-Ressourcenanbieter für Abonnements kann nicht registriert werden.
+
+#### <a name="issue"></a>Problem
+
+Beim Arbeiten mit Lösungen in Ihrem Automation-Konto erhalten Sie eventuell folgenden Fehler.
+
+```error
+Error details: Unable to register Automation Resource Provider for subscriptions:
+```
+
+#### <a name="cause"></a>Ursache
+
+Der Automation-Ressourcenanbieter ist im Abonnement nicht registriert.
+
+#### <a name="resolution"></a>Lösung
+
+Sie können die Automation-Ressourcenanbieter mit den folgenden Schritten im Azure-Portal registrieren:
+
+1. Klicken Sie unten in der Azure-Dienstliste auf **Alle Dienste**, und wählen Sie dann in der Dienstgruppe _Allgemein_ die Option **Abonnements** aus.
+2. Wählen Sie Ihr Abonnement aus.
+3. Klicken Sie unter _Einstellungen_ auf **Ressourcenanbieter**.
+4. Überprüfen Sie in der Liste der Ressourcenanbieter, ob der Ressourcenanbieter **Microsoft.Automation** registriert ist.
+5. Wenn der Anbieter nicht aufgeführt ist, registrieren Sie den Anbieter **Microsoft.Automation** mit den unter [](/azure/azure-resource-manager/resource-manager-register-provider-errors) aufgeführten Schritten.
+
+### <a name="mw-exceeded"></a>Szenario: Die geplante Updateverwaltung ist mit dem Fehler „MaintenanceWindowExceeded“ fehlgeschlagen.
+
+#### <a name="issue"></a>Problem
+
+Das Standardwartungsfenster für Updates beträgt 120 Minuten. Sie können das Wartungsfenster auf maximal sechs (6) Stunden oder 360 Minuten erhöhen.
+
+#### <a name="resolution"></a>Lösung
+
+Bearbeiten Sie alle fehlgeschlagenen, geplanten Updatebereitstellungen, und vergrößern Sie das Wartungsfenster.
+
+Weitere Informationen zu Wartungsfenstern finden Sie unter [Installieren von Updates](../automation-update-management.md#install-updates).
 
 ### <a name="components-enabled-not-working"></a>Szenario: Die Komponenten für die Lösung „Updateverwaltung“ wurden aktiviert, und diese VM wird nun konfiguriert.
 
@@ -78,19 +114,66 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
-### <a name="nologs"></a>Szenario: Die Daten der Updateverwaltung für einen Computer werden nicht in Azure Monitor-Protokolle angezeigt
+### <a name="updates-nodeployment"></a>Szenario: Installation von Updates ohne Bereitstellung
+
+### <a name="issue"></a>Problem
+
+Wenn Sie einen Windows-Computer in der Updateverwaltung registrieren, kann es sein, dass Updates ohne Bereitstellung installiert werden.
+
+### <a name="cause"></a>Ursache
+
+Unter Windows werden Updates automatisch installiert, sobald sie verfügbar sind. Dies kann verwirrend sein, wenn Sie ein Update nicht für die Bereitstellung auf dem Computer eingeplant haben.
+
+### <a name="resolution"></a>Lösung
+
+Der Windows-Registrierungsschlüssel `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` hat die Standardeinstellung „4“: **Automatisches Herunterladen und Installieren**.
+
+Für Clients für die Updateverwaltung empfehlen wir Ihnen, diesen Schlüssel auf „3“ festzulegen: **Automatisches Herunterladen, keine automatische Installation**.
+
+Weitere Informationen finden Sie unter [Automatische Updates konfigurieren](https://docs.microsoft.com/en-us/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
+
+### <a name="nologs"></a>Szenario: Im Portal werden unter „Updateverwaltung“ keine Computer angezeigt
 
 #### <a name="issue"></a>Problem
 
-Bei einigen Ihrer Computer wird **Nicht bewertet** unter **Compliance** angezeigt, es werden aber Heartbeatdaten in Azure Monitor-Protokolle für den Hybrid Runbook Worker, jedoch nicht für die Updateverwaltung angezeigt.
+Sie können auf die folgenden Szenarien stoßen:
+
+* In der Ansicht „Updateverwaltung“ einer VM wird Ihr Computer als **Nicht konfiguriert** angezeigt
+
+* Ihre Computer fehlen in der Ansicht „Updateverwaltung“ Ihres Automation-Kontos
+
+* Bei einigen Ihrer Computer wird **Nicht bewertet** unter **Compliance** angezeigt, es werden aber Heartbeatdaten in Azure Monitor-Protokolle für den Hybrid Runbook Worker, jedoch nicht für die Updateverwaltung angezeigt.
 
 #### <a name="cause"></a>Ursache
 
+Dies kann durch potenzielle lokale Konfigurationsprobleme oder eine falsch konfigurierte Bereichskonfiguration verursacht werden.
+
 Der Hybrid Runbook Worker muss eventuell erneut registriert und installiert werden.
+
+Möglicherweise haben Sie in Ihrem Arbeitsbereich ein Kontingent festgelegt, das erreicht ist und verhindert, dass Daten gespeichert werden.
 
 #### <a name="resolution"></a>Lösung
 
-Führen Sie die Schritte unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) aus, um den Hybrid Worker für Windows neu zu installieren (bzw. [Bereitstellen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md) für Linux).
+* Vergewissern Sie sich, dass Ihr Computer dem richtigen Arbeitsbereich Bericht erstattet. Überprüfen Sie, welchem Arbeitsbereich Ihr Computer Berichte erstattet. Entsprechende Anweisungen dazu finden Sie unter [Überprüfen der Agent-Konnektivität mit Log Analytics](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics). Vergewissern Sie sich anschließend, dass dies der Arbeitsbereich ist, der mit Ihrem Azure Automation-Konto verknüpft ist. Um dies zu bestätigen, navigieren Sie zu Ihrem Automation-Konto und klicken Sie unter **Verwandte Ressourcen** auf **Verknüpfter Arbeitsbereich**.
+
+* Prüfen Sie, ob die Computer in Ihrem Log Analytics-Arbeitsbereich angezeigt werden. Führen Sie in Ihrem Log Analytics-Arbeitsbereich, der mit Ihrem Automation-Konto verknüpft ist, die folgende Abfrage aus. Wenn Ihr Computer nicht in den Suchergebnissen zu sehen ist, sendet Ihr Computer kein Taktsignal, was bedeutet, dass höchstwahrscheinlich ein lokales Konfigurationsproblem vorliegt. Sie können je nach Betriebssystem die Problembehandlung für [Windows](update-agent-issues.md#troubleshoot-offline) oder [Linux](update-agent-issues-linux.md#troubleshoot-offline) ausführen oder den [Agent neu installieren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). Wenn Ihr Computer in den Suchergebnissen aufgeführt ist, müssen Sie die im folgenden Aufzählungspunkt angegebene Bereichskonfiguration überprüfen.
+
+  ```loganalytics
+  Heartbeat
+  | summarize by Computer, Solutions
+  ```
+
+* Suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../automation-onboard-solutions-from-automation-account.md#scope-configuration) bestimmt, welche Computer für die Lösung konfiguriert werden. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber sonst nicht angezeigt wird, müssen Sie die Bereichskonfiguration entsprechend den Computern konfigurieren. Informationen hierzu finden Sie unter [Integrieren von Computern in den Arbeitsbereich](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
+
+* Wenn Sie das Problem nicht anhand der obigen Schritte beheben können, führen Sie die Schritte unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) aus, um den Hybrid Worker für Windows neu zu installieren (bzw. [Bereitstellen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md) für Linux).
+
+* Führen Sie in Ihrem Arbeitsbereich die folgende Abfrage aus. Wenn Sie das Ergebnis `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` sehen, haben Sie ein Kontingent für Ihren Arbeitsbereich festgelegt, das erreicht ist, wodurch das Speichern von Daten verhindert wird. Wechseln Sie in Ihrem Arbeitsbereich zu **Nutzung und geschätzte Kosten** > **Datenvolumenverwaltung**. Überprüfen Sie das eingerichtete Kontingent, oder heben Sie es auf.
+
+  ```loganalytics
+  Operation
+  | where OperationCategory == 'Data Collection Status'
+  | sort by TimeGenerated desc
+  ```
 
 ## <a name="windows"></a>Windows
 
@@ -160,6 +243,38 @@ Der Hybrid Runbook Worker konnte kein selbstsigniertes Zertifikat generieren.
 
 Überprüfen Sie, ob das Systemkonto über Lesezugriff auf den Ordner **C:\ProgramData\Microsoft\Crypto\RSA** verfügt, und versuchen Sie es erneut.
 
+### <a name="failed-to-start"></a>Szenario: Beim Starten eines Computers in einer Updatebereitstellung wird die Fehlermeldung „Fehler beim Starten“ zurückgegeben
+
+#### <a name="issue"></a>Problem
+
+Für einen Computer wird der Status **Fehler beim Starten** angezeigt. Wenn Sie sich die Detailinformationen für den Computer ansehen, wird der folgende Fehler angezeigt:
+
+```error
+Failed to start the runbook. Check the parameters passed. RunbookName Patch-MicrosoftOMSComputer. Exception You have requested to create a runbook job on a hybrid worker group that does not exist.
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler kann folgende Ursachen haben:
+
+* Der Computer ist nicht mehr vorhanden.
+* Der Computer ist ausgeschaltet und nicht erreichbar.
+* Für den Computer besteht ein Netzwerkverbindungsproblem, und der Hybrid Worker auf dem Computer ist nicht erreichbar.
+* Ein Update von Microsoft Monitoring Agent hat zu einer Änderung von SourceComputerId geführt.
+* Die Ausführung des Updates wurde möglicherweise gedrosselt, wenn das Limit von 2.000 gleichzeitigen Aufträgen in einem Automation-Konto erreicht wurde. Jede Bereitstellung kann als Auftrag betrachtet werden, und jeder Computer in einer Updatebereitstellung zählt als Auftrag. Jeder andere Automatisierungsauftrag oder jede Updatebereitstellung, der bzw. die in Ihrem Automation-Konto ausgeführt wird, wird auf das Limit für gleichzeitige Aufträge angerechnet.
+
+#### <a name="resolution"></a>Lösung
+
+Verwenden Sie [dynamische Gruppen](../automation-update-management.md#using-dynamic-groups) (falls vorhanden) für Ihre Updatebereitstellungen.
+
+* Stellen Sie sicher, dass der Computer noch vorhanden und erreichbar ist. Wenn er nicht mehr vorhanden ist, bearbeiten Sie Ihre Bereitstellung und entfernen Sie den Computer.
+* Im Abschnitt zu [Netzwerkplanung](../automation-update-management.md#ports) finden Sie eine Liste der Ports und Adressen, die für die Updateverwaltung erforderlich sind. Stellen Sie sicher, dass Ihr Computer diese Anforderungen erfüllt.
+* Führen Sie die folgende Abfrage in Log Analytics aus, um nach Computern in Ihrer Umgebung zu suchen, bei denen sich `SourceComputerId` geändert hat. Suchen Sie nach Computern, die denselben `Computer`-Wert, aber einen anderen `SourceComputerId`-Wert haben. Sobald Sie die betroffenen Computer gefunden haben, müssen Sie die Updatebereitstellungen für diese Computer bearbeiten und die Computer entfernen und dann erneut hinzufügen, damit `SourceComputerId` den richtigen Wert aufweist.
+
+   ```loganalytics
+   Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
+   ```
+
 ### <a name="hresult"></a>Szenario: Computer wird als nicht bewertet mit einer HResult-Ausnahme angezeigt.
 
 #### <a name="issue"></a>Problem
@@ -177,8 +292,11 @@ Doppelklicken Sie auf die rot angezeigte Ausnahme, um die vollständige Ausnahme
 |Ausnahme  |Lösung oder Aktion  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | Suchen Sie den entsprechenden Fehlercode in der [Windows Update-Fehlercodeliste](https://support.microsoft.com/help/938205/windows-update-error-code-list), um weitere Details zur Ursache der Ausnahme zu erfahren.        |
-|`0x8024402C` oder `0x8024401C`     | Diese Fehler deuten auf Netzwerkkonnektivitätsprobleme hin. Stellen Sie sicher, dass Ihr Computer über die richtige Netzwerkkonnektivität für die Updateverwaltung verfügt. Im Abschnitt [Netzwerkplanung](../automation-update-management.md#ports) finden Sie eine Liste der erforderlichen Ports und Adressen.        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Diese Fehler deuten auf Netzwerkkonnektivitätsprobleme hin. Stellen Sie sicher, dass Ihr Computer über die richtige Netzwerkkonnektivität für die Updateverwaltung verfügt. Im Abschnitt [Netzwerkplanung](../automation-update-management.md#ports) finden Sie eine Liste der erforderlichen Ports und Adressen.        |
+|`0x8024001E`| Der Updatevorgang konnte nicht abgeschlossen werden, da der Dienst oder das System heruntergefahren wurden.|
+|`0x8024002E`| Der Windows Update-Dienst ist deaktiviert.|
 |`0x8024402C`     | Wenn Sie einen WSUS-Server verwenden, stellen Sie sicher, dass die Registrierungswerte für `WUServer` und `WUStatusServer` unter dem Registrierungsschlüssel `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` den richtigen WSUS-Server aufweisen.        |
+|`0x80072EE2`|Netzwerkkonnektivitätsproblem oder Problem bei der Kommunikation mit einem konfigurierten WSUS-Server. Überprüfen Sie die WSUS-Einstellungen, und stellen Sie sicher, dass der Client darauf zugreifen kann.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Stellen Sie sicher, dass der Windows Update-Dienst (wuauserv) ausgeführt wird und nicht deaktiviert ist.        |
 |Weitere generische Ausnahmen     | Suchen Sie im Internet nach möglichen Lösungen, und arbeiten Sie mit Ihrem lokalen IT-Support zusammen.         |
 
@@ -233,6 +351,51 @@ Wenn Sie ein Patchproblem nicht beheben können, erstellen Sie eine Kopie der fo
 
 ```bash
 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
+```
+
+## <a name="patches-are-not-installed"></a>Patches sind nicht installiert.
+
+### <a name="machines-do-not-install-updates"></a>Computer installieren keine Updates.
+
+* Versuchen Sie, Updates direkt auf dem Computer auszuführen. Kann der Computer nicht aktualisiert werden, sehen Sie sich die [Liste mit potenziellen Fehlern im Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult) an.
+* Wenn Updates lokal ausgeführt werden, versuchen Sie, den Agent auf dem Computer zu entfernen und neu zu installieren, bevor Sie die Anweisungen unter [Entfernen eines virtuellen Computers für die Updateverwaltung](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-from-update-management) befolgen.
+
+### <a name="i-know-updates-are-available-but-they-dont-show-as-needed-on-my-machines"></a>Ich weiß, dass Updates verfügbar sind, diese werden auf meinen Computern aber nicht als erforderlich angezeigt.
+
+* Dies geschieht häufig, wenn Computer so konfiguriert sind, dass sie Updates von WSUS/SCCM erhalten, aber WSUS/SCCM die Updates nicht genehmigt haben.
+* Sie können überprüfen, ob Computer für WSUS/SCCM konfiguriert sind. [Vergleichen Sie dazu den Registrierungsschlüssel „UseWUServer“ mit den Registrierungsschlüsseln im Abschnitt „Konfigurieren der Funktion „Automatische Updates“ in diesem Dokument.](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)
+
+### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>**Updates werden als installiert angezeigt, ich kann sie aber nicht auf meinem Computer finden.**
+
+* Updates werden oft durch andere Updates ersetzt. Weitere Informationen finden Sie unter [„Das Update ist nicht auf Ihrem Computer anwendbar“ im Dokument „Windows Update-Problembehandlung“](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
+
+### <a name="installing-updates-by-classification-on-linux"></a>**Installieren von Updates durch Klassifizierung unter Linux**
+
+* Die Bereitstellung von Updates für Linux durch Klassifizierung („Kritische und Sicherheitsupdates“) hat wichtige Einschränkungen, insbesondere für CentOS. Diese [Einschränkungen sind auf der Übersichtsseite für die Updateverwaltung dokumentiert](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2).
+
+### <a name="kb2267602-is-consistently--missing"></a>**KB2267602 fehlt ständig**
+
+* KB2267602 ist das [Windows Defender-Definitionsupdate](https://www.microsoft.com/wdsi/definitions). Es wird täglich aktualisiert.
+
+## <a name="other"></a>Szenario: Mein Problem ist oben nicht aufgeführt
+
+### <a name="issue"></a>Problem
+
+Es liegt ein Problem vor, das über die anderen aufgeführten Szenarien nicht behoben werden kann.
+
+### <a name="cause"></a>Ursache
+
+Falsch konfigurierte oder fehlende Registrierungsschlüssel können zu Problemen in der Updateverwaltung führen.
+
+### <a name="resolution"></a>Lösung
+
+Löschen Sie den Registrierungsschlüssel `HKLM:\SOFTWARE\Microsoft\HybridRunbookWorker`, und starten Sie den **Integritätsdienst** neu.
+
+Sie können auch die folgenden PowerShell-Befehle verwenden.
+
+```powershell
+Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force
+Restart-Service healthservice
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,19 +1,18 @@
 ---
-title: Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in VMM-Clouds in einem sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation
+title: Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in VMM-Clouds in einem sekundären Standort mit Azure Site Recovery
 description: Fasst Informationen zur Unterstützung für die Replikation von virtuellen Hyper-V-Computern in VMM-Clouds an einen sekundären Standort mit Azure Site Recovery zusammen.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 9c3a19d44a4ac0fba37f4815b65b17c26d257dbc
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360792"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813624"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in einem sekundären Standort
 
@@ -58,10 +57,10 @@ Nur Linux-Computer mit dem folgenden Speicher können repliziert werden:
 Host – NIC-Teamvorgang | Ja 
 Host – VLAN | Ja 
 Host – IPv4 | Ja 
-Host – IPv6 | Nein  
-Gast-VM – NIC-Teamvorgang | Nein 
+Host – IPv6 | Nein 
+Gast-VM – NIC-Teamvorgang | Nein
 Gast-VM – IPv4 | Ja
-Gast-VM – IPv6 | Nein 
+Gast-VM – IPv6 | Nein
 Gast-VM – Windows/Linux – Statische IP-Adresse | Ja
 Gast-VM – Multi-NIC | Ja
 
@@ -84,16 +83,16 @@ Multipfad (MPIO) | Ja
 VMDK |  –
 VHD/VHDX | Ja (bis zu 16 Datenträger)
 Gen 2-VM | Ja
-Freigegebener Clusterdatenträger | Nein 
-Verschlüsselter Datenträger | Nein 
+Freigegebener Clusterdatenträger | Nein
+Verschlüsselter Datenträger | Nein
 UEFI| –
-NFS | Nein 
-SMB 3.0 | Nein 
+NFS | Nein
+SMB 3.0 | Nein
 RDM | –
 Datenträger > 1 TB | Ja
 Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | Ja
 Speicherplätze | Ja
-Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein 
+Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein
 Ausschließen von Datenträgern | Ja
 Multipfad (MPIO) | Ja
 
@@ -101,14 +100,14 @@ Multipfad (MPIO) | Ja
 
 **Aktion** | **Unterstützt**
 --- | --- 
-Verschieben von Tresoren zwischen Ressourcengruppen (innerhalb oder zwischen Abonnements) |  Nein 
-Verschieben von Speicher, Netzwerk, Azure-VMs zwischen Ressourcengruppen (innerhalb oder zwischen Abonnements) | Nein 
+Verschieben von Tresoren zwischen Ressourcengruppen (innerhalb oder zwischen Abonnements) |  Nein
+Verschieben von Speicher, Netzwerk, Azure-VMs zwischen Ressourcengruppen (innerhalb oder zwischen Abonnements) | Nein
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery-Anbieter
 
 Der Anbieter koordiniert die Kommunikation zwischen VMM-Servern. 
 
-**Neueste Version** | **Aktualisierungen**
+**Neueste** | **Updates**
 --- | --- 
 5.1.19 ([über das Portal verfügbar](https://aka.ms/downloaddra)) | [Neueste Features und Fixes](https://support.microsoft.com/kb/3155002)
 

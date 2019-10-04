@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 5b3c6c99b05320ee53c3ff49f5c299650c32e939
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 6ee8891eae108256875660cc3f2256b65703a1aa
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498331"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65406790"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Umsteigen von der VM-Erweiterung für verwaltete Identitäten auf Azure Instance Metadata Service
 
@@ -35,7 +35,7 @@ Die VM-Erweiterung für verwaltete Identitäten wird aufgrund diverser Einschrä
 
 ### <a name="provision-the-extension"></a>Bereitstellen der Erweiterung 
 
-Wenn Sie einen virtuellen Computer oder eine VM-Skalierungsgruppe mit einer verwalteten Identität konfigurieren, können Sie die verwalteten Identitäten optional für die VM-Erweiterung für verwaltete Identitäten für Azure-Ressourcen bereitstellen, indem Sie das Cmdlet [ Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) mit dem Parameter `-Type` verwenden. Sie können abhängig von der Art des virtuellen Computers entweder `ManagedIdentityExtensionForWindows` oder `ManagedIdentityExtensionForLinux` übergeben und mithilfe des Parameters `-Name` einen Namen festlegen. Der `-Settings`-Parameter gibt den Port an, der vom OAuth-Token-Endpunkt für den Tokenabruf verwendet wird:
+Wenn Sie einen virtuellen Computer oder eine VM-Skalierungsgruppe mit einer verwalteten Identität konfigurieren, können Sie die verwalteten Identitäten optional für die VM-Erweiterung für Azure-Ressourcen bereitstellen, indem Sie das Cmdlet [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) mit dem Parameter `-Type` verwenden. Sie können abhängig von der Art des virtuellen Computers entweder `ManagedIdentityExtensionForWindows` oder `ManagedIdentityExtensionForLinux` übergeben und mithilfe des Parameters `-Name` einen Namen festlegen. Der `-Settings`-Parameter gibt den Port an, der vom OAuth-Token-Endpunkt für den Tokenabruf verwendet wird:
 
 ```powershell
    $settings = @{ "port" = 50342 }

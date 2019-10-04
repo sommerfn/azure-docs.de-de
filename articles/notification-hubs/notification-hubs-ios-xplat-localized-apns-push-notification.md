@@ -3,9 +3,9 @@ title: Senden von lokalisierten Benachrichtigungen an iOS-Geräte mit Azure Noti
 description: Informationen zum Senden von lokalisierten Benachrichtigungen an iOS-Geräte mit Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 484914b5-e081-4a05-a84a-798bbd89d428
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 527e9979b624970dd55b4300fe63c27386640ac4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 8eb4cf5e12c16c3c164ecce41a84a9cd32fd85ee
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886601"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211897"
 ---
 # <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Tutorial: Senden von lokalisierten Benachrichtigungen an iOS-Geräte mit Azure Notification Hubs
 
@@ -49,7 +51,7 @@ In [Verwenden von Benachrichtigungshubs zum Übermitteln von Nachrichten] haben 
 > [!NOTE]
 > Sie können mehrere Versionen der einzelnen Tags erstellen, um lokalisierte Benachrichtigungen zu verschicken. Für Englisch, Französisch und Mandarin müssen Sie z.B. drei verschiedene Markierungen für Weltnachrichten erstellen: „world_en“, „world_fr“ und „world_ch“. Anschließend müssten Sie eine lokalisierte Version der Nachrichten an die einzelnen Tags schicken. In diesem Thema verwenden Sie Vorlagen, um die Anzahl der Tags einzugrenzen und den Versand mehrerer Nachrichten zu vermeiden.
 
-Mit Vorlagen können Sie auf einer hohen Ebene festlegen, wie ein bestimmtes Gerät eine Benachrichtigung empfangen soll. Die Vorlage gibt das exakte Format der Nutzlast anhand von Eigenschaften an, die Teil der von Ihrem Back-End verschickten Nachricht sind. In Ihrem Fall senden Sie eine sprachenunabhängige Nachricht, die alle unterstützten Sprachen enthält:
+Mit Vorlagen können Sie festlegen, wie ein bestimmtes Gerät eine Benachrichtigung empfangen soll. Die Vorlage gibt das exakte Format der Nutzlast anhand von Eigenschaften an, die Teil der von Ihrem Back-End verschickten Nachricht sind. In Ihrem Fall senden Sie eine sprachenunabhängige Nachricht, die alle unterstützten Sprachen enthält:
 
 ```json
 {
@@ -74,7 +76,7 @@ Weitere Informationen zu Vorlagen finden Sie im Artikel [Vorlagen](notification-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Arbeiten Sie das Tutorial [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten](notification-hubs-ios-xplat-segmented-apns-push-notification.md) durch, und halten Sie den Code verfügbar, da dieses Tutorial direkt auf diesem Code aufbaut.
-* Visual Studio 2017 ist optional.
+* Visual Studio 2019 ist optional.
 
 ## <a name="update-the-app-user-interface"></a>Aktualisieren der App-Benutzeroberfläche
 

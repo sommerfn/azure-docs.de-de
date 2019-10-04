@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 3d51f5328aec66eee0d8382026e8795db45a6a2c
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.author: christoc
+ms.reviewer: xpouyat; juliako
+ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189783"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "69016726"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Erweiterte Media Encoder Premium Workflow-Tutorials
 ## <a name="overview"></a>Übersicht
@@ -760,7 +761,7 @@ Dies wurde mit normalen Vorgängen zum Ändern von Zeichenfolgen erreicht. Die s
 
 *Protokollieren der sich ergebenden Clipliste*
 
-Führen Sie einen Testlauf durch, um anzuzeigen, wie die Video- und Audiodatenströme gekürzt wurden. Wenn Sie mehr als einen Testlauf mit unterschiedlichen Werten für die Kürzungspunkte durchführen, werden Sie aber merken, dass diese nicht berücksichtigt werden. Dies liegt daran, dass der Designer – im Gegensatz zur Azure-Laufzeit – die Cliplisten-XML-Datei NICHT bei jeder Ausführung überschreibt. Dies bedeutet Folgendes: Nur das erstmalige Festlegen der Start- und Endpunkte führt zu einer Transformation der XML-Datei. In den nachfolgenden Fällen verhindert unsere Schutzklausel (if(clipListXML.indexOf("<trim>") == -1)), dass vom Workflow ein weiteres trim-Element hinzugefügt wird, wenn bereits ein trim-Element vorhanden ist.
+Führen Sie einen Testlauf durch, um anzuzeigen, wie die Video- und Audiodatenströme gekürzt wurden. Wenn Sie mehr als einen Testlauf mit unterschiedlichen Werten für die Kürzungspunkte durchführen, werden Sie aber merken, dass diese nicht berücksichtigt werden. Dies liegt daran, dass der Designer – im Gegensatz zur Azure-Laufzeit – die Cliplisten-XML-Datei NICHT bei jeder Ausführung überschreibt. Dies bedeutet Folgendes: Nur das erstmalige Festlegen der Start- und Endpunkte führt zu einer Transformation der XML-Datei. In den nachfolgenden Fällen verhindert unsere Schutzklausel (if(`clipListXML.indexOf("<trim>") == -1`)), dass vom Workflow ein weiteres trim-Element hinzugefügt wird, wenn bereits ein trim-Element vorhanden ist.
 
 Um das lokale Testen für unseren Workflow zu vereinfachen, fügen wir am besten Wartungscode hinzu, mit dem das Vorhandensein eines trim-Elements untersucht werden kann. Wenn dies der Fall ist, können wir es vor dem Fortfahren entfernen, indem wir die XML-Datei mit den neuen Werten ändern. Anstatt eine normale Zeichenfolgenänderung durchzuführen, ist es meistens sicherer, hierfür eine echte XML-Objektmodellanalyse zu verwenden.
 

@@ -3,8 +3,8 @@ title: Überwachen von Netzwerkkommunikation – Tutorial – Azure-Portal | Mic
 description: Informationen zum Überwachen der Netzwerkkommunikation zwischen zwei VMs mit der Verbindungsmonitorfunktion des Network Watchers von Azure.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 1d8a9cf10bf9b4aab02dd5033ecdd4fdc1f9423e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429246"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66233888"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Tutorial: Überwachen der Netzwerkkommunikation zwischen zwei virtuellen Computern über das Azure-Portal
 
@@ -56,7 +56,7 @@ Erstellen Sie zwei virtuelle Computer.
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
-    |Standort| Wählen Sie **USA, Osten** aus.|
+    |Location| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Wählen Sie unter **Einstellungen** die Option **Erweiterungen** aus. Wählen Sie **Erweiterung hinzufügen** und dann **Network Watcher-Agent für Windows** aus, wie in der folgenden Abbildung gezeigt:
@@ -77,7 +77,7 @@ Führen Sie die Schritte in [Erstellen des ersten virtuellen Computers](#create-
 | 3 | NAME                                  | myVm2                                                                   |
 | 3 | Authentifizierungsart                   | Fügen Sie Ihren öffentlichen SSH-Schlüssel ein, oder wählen Sie **Kennwort** aus, und geben Sie ein Kennwort ein. |
 | 3 | Ressourcengruppe                        | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.                 |
-| 6 | Erweiterungen                            | **Netzwerk-Agent für Linux**                                             |
+| 6 | Erweiterungen                            | **Network Watcher-Agent für Linux**                                             |
 
 Die Bereitstellung des virtuellen Computers dauert einige Minuten. Warten Sie, bis die Bereitstellung des virtuellen Computers abgeschlossen ist, bevor Sie mit den weiteren Schritten fortfahren.
 
@@ -94,7 +94,7 @@ Erstellen Sie einen Verbindungsmonitor zum Überwachen der Kommunikation über T
     | Einstellung                  | Wert               |
     | ---------                | ---------           |
     | NAME                     | myVm1-myVm2(22)     |
-    | Quelle                   |                     |
+    | `Source`                   |                     |
     | Virtueller Computer          | myVm1               |
     | Ziel              |                     |
     | Wählen Sie einen virtuellen Computer aus. |                     |

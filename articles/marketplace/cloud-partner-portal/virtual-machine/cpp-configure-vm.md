@@ -1,25 +1,18 @@
 ---
-title: Konfigurieren der in Microsoft Azure gehosteten VM für den Azure Marketplace | Microsoft-Dokumentation
+title: Konfigurieren der in Microsoft Azure gehosteten VM für den Azure Marketplace
 description: Es wird beschrieben, wie Sie für eine in Azure gehostete VM die Größe festlegen und sie aktualisieren und generalisieren.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9cf363bc5f4230306c2fec99eb6287b23e598a4c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 1270dff0bcb8de117247a454ab9c144250cfb17c
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57833500"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880363"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurieren der in Azure gehosteten VM
 
@@ -73,11 +66,11 @@ Windows-Betriebssystemdatenträger werden mit dem [Sysprep-Tool](https://docs.mi
 > [!WARNING]
 >  Da Updates unter Umständen automatisch ausgeführt werden, sollten Sie die VM nach der Ausführung von Sysprep bis zur Bereitstellung herunterfahren.  Durch das Herunterfahren wird vermieden, dass nachfolgende Updates instanzspezifische Änderungen am VHD-Betriebssystem oder den installierten Diensten vornehmen.
 
-Weitere Informationen zum Ausführen von Sysprep finden Sie unter [Schritte zum Generalisieren einer VHD](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#steps-to-generalize-a-vhd).
+Weitere Informationen zum Ausführen von Sysprep finden Sie unter [Schritte zum Generalisieren einer VHD](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep).
 
 ### <a name="linux"></a>Linux
 
-Mit dem folgenden aus zwei Schritten bestehenden Prozess wird eine Linux-VM generalisiert und als separate VM erneut bereitgestellt.  Weitere Informationen finden Sie unter [Vorgehensweise zum Erstellen eines Image von einem virtuellen Computer oder einer VHD](../../../virtual-machines/linux/capture-image.md). 
+Mit dem folgenden aus zwei Schritten bestehenden Prozess wird eine Linux-VM generalisiert und als separate VM erneut bereitgestellt. Diese beiden Schritte bilden lediglich die Grundlagen des Prozesses. Weitere Informationen zu diesen beiden Schritten und ihren Gründen finden Sie unter [Vorgehensweise zum Erstellen eines Image von einem virtuellen Computer oder einer VHD](../../../virtual-machines/linux/capture-image.md). Zum Erstellen der VHD für Ihr Azure Marketplace-Angebot müssen Sie nur die Schritte bis zum Abschnitt „Bereitstellen eines virtuellen Computers anhand des erfassten Images“ ausführen.
 
 #### <a name="remove-the-azure-linux-agent"></a>Entfernen des Azure Linux-Agents
 1.  Stellen Sie mit einem SSH-Client eine Verbindung mit Ihrer Linux-VM her.
@@ -102,4 +95,4 @@ Die Erstellung von Kopien einer VM ist häufig nützlich, um Sicherungen zu erst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Ihre VM konfiguriert wurde, können Sie [einen virtuellen Computer über eine virtuelle Festplatte bereitstellen](./cpp-deploy-vm-vhd.md).
+Nachdem Ihre VM generalisiert, deren Zuordnung aufgehoben und ein Image der VM erstellt wurde, sind Sie bereit, [einen virtuellen Computer von einer virtuellen Festplatte aus bereitzustellen](./cpp-deploy-vm-vhd.md).

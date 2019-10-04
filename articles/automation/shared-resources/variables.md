@@ -4,17 +4,17 @@ description: Variablenobjekte sind Werte, die allen Runbooks und DSC-Konfigurati
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
-ms.date: 04/01/2019
+author: bobbytreed
+ms.author: robreed
+ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc26c0357dcb071c4c75e8684fe47144a04177e4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3fe008d20ab43636b59861bcc5a7914ba0fca17e
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58807314"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910064"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variable Objekte in Azure Automation
 
@@ -28,7 +28,7 @@ Variablenobjekte sind Werte, die allen Runbooks und DSC-Konfigurationen in Ihrem
 
 Da Automation-Variablen persistent gespeichert werden, bleiben sie auch dann verfügbar, wenn die Ausführung eines Runbooks oder einer DSC-Konfiguration misslingt. Durch dieses Verhalten kann ein Wert von einem Runbook festgelegt und anschließend bei der nächsten Ausführung von einem anderen oder gleichen Runbook bzw. von einer anderen oder der gleichen DSC-Konfiguration verwendet werden.
 
-Beim Erstellen einer Variablen können Sie festlegen, dass diese verschlüsselt gespeichert wird. Verschlüsselte Variablen werden sicher in Azure Automation gespeichert. Ihr Wert kann vom Cmdlet [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable), das zum Funktionsumfang des Azure PowerShell-Moduls gehört, nicht abgerufen werden. Ein verschlüsselter Wert kann ausschließlich über die Aktivität **Get-AutomationVariable** in einem Runbook oder einer DSC-Konfiguration abgerufen werden.
+Beim Erstellen einer Variablen können Sie festlegen, dass diese verschlüsselt gespeichert wird. Verschlüsselte Variablen werden sicher in Azure Automation gespeichert. Ihr Wert kann vom Cmdlet [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable), das zum Funktionsumfang des Azure PowerShell-Moduls gehört, nicht abgerufen werden. Ein verschlüsselter Wert kann ausschließlich über die Aktivität **Get-AutomationVariable** in einem Runbook oder einer DSC-Konfiguration abgerufen werden. Wenn Sie eine verschlüsselte Variable in „nicht verschlüsselt“ ändern möchten, müssen Sie sie löschen und unverschlüsselt neu erstellen.
 
 >[!NOTE]
 >Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Dieser Schlüssel wird in einem systemseitig verwalteten Schlüsseltresor (Key Vault) gespeichert. Vor dem Speichern eines sicheren Objekts wird der Schlüssel aus Key Vault geladen und dann zum Verschlüsseln des Objekts verwendet. Dieser Prozess wird von Azure Automation verwaltet.
@@ -42,7 +42,7 @@ Sie können mehrere Werte in einer einzigen Variable speichern, indem Sie ein Ar
 Im Folgenden finden Sie eine Liste von in Automation verfügbaren Variablentypen:
 
 * Zeichenfolge
-* Ganze Zahl 
+* Integer
 * Datetime
 * Boolean
 * Null
@@ -58,11 +58,11 @@ Die Cmdlets in der folgenden Tabelle werden für AzureRM zum Erstellen und Verwa
 |[Remove-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationVariable)|Entfernt eine vorhandene Variable.|
 |[Set-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable)|Legt den Wert für eine vorhandene Variable fest.|
 
-## <a name="activities"></a>Aktivitäten
+## <a name="activities"></a>activities
 
-Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Anmeldeinformationen in einem Runbook und DSC-Konfigurationen verwendet.
+Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Variablen in einem Runbook oder DSC-Konfigurationen verwendet. Der Unterschied zwischen den Cmdlets „Get-AzureRmAutomationVariable“ und „Get-AutomationVariable“ ist oben am Anfang dieses Dokuments erläutert.
 
-| Aktivitäten | BESCHREIBUNG |
+| activities | BESCHREIBUNG |
 |:---|:---|
 |Get-AutomationVariable|Ruft den Wert einer vorhandenen Variable ab.|
 |Set-AutomationVariable|Legt den Wert für eine vorhandene Variable fest.|
@@ -135,45 +135,6 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
     Write-Output "$i`: $SampleMessage"
 }
 Set-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
-```
-
-#### <a name="setting-and-retrieving-a-complex-object-in-a-variable"></a>Festlegen und Abrufen eines komplexen Objekts in einer Variablen
-
-Der folgende Beispielcode zeigt, wie eine Variable mit einem komplexen Wert in einem Textrunbook aktualisiert wird. In diesem Beispiel wird ein virtueller Azure-Computer mit **Get-AzureVM** abgerufen und in einer vorhandenen Automation-Variablen gespeichert.  Wie im Abschnitt [Variablentypen](#variable-types)erläutert, erfolgt die Speicherung als "PSCustomObject".
-
-```powershell
-$vm = Get-AzureVM -ServiceName "MyVM" -Name "MyVM"
-Set-AutomationVariable -Name "MyComplexVariable" -Value $vm
-```
-
-Im folgenden Code wird der Wert aus der Variablen abgerufen und zum Starten des virtuellen Computers verwendet.
-
-```powershell
-$vmObject = Get-AutomationVariable -Name "MyComplexVariable"
-if ($vmObject.PowerState -eq 'Stopped') {
-    Start-AzureVM -ServiceName $vmObject.ServiceName -Name $vmObject.Name
-}
-```
-
-#### <a name="setting-and-retrieving-a-collection-in-a-variable"></a>Festlegen und Abrufen eine Auflistung in einer Variablen
-
-Der folgende Beispielcode zeigt, wie eine Variable mit einer Auflistung komplexer Werte in einem Textrunbook aktualisiert wird. In diesem Beispiel werden mehrere virtuelle Azure-Computer mit **Get-AzureVM** abgerufen und in einer vorhandenen Automation-Variablen gespeichert. Wie im Abschnitt [Variablentypen](#variable-types)erläutert, erfolgt die Speicherung als PSCustomObject-Auflistung gespeichert.
-
-```powershell
-$vms = Get-AzureVM | Where -FilterScript {$_.Name -match "my"}
-Set-AutomationVariable -Name 'MyComplexVariable' -Value $vms
-```
-
-Im folgenden Code wird die Auflistung aus der Variablen abgerufen und zum Starten der virtuellen Computer verwendet.
-
-```powershell
-$vmValues = Get-AutomationVariable -Name "MyComplexVariable"
-ForEach ($vmValue in $vmValues)
-{
-    if ($vmValue.PowerState -eq 'Stopped') {
-        Start-AzureVM -ServiceName $vmValue.ServiceName -Name $vmValue.Name
-    }
-}
 ```
 
 #### <a name="setting-and-retrieving-a-variable-in-python2"></a>Festlegen und Abrufen einer Variablen in Python2

@@ -1,17 +1,17 @@
 ---
 title: Aktivieren der Replikation von virtuellen VMware-Computern für die Notfallwiederherstellung in Azure mit Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Site Recovery die Replikation von virtuellen VMware-Computern für die Notfallwiederherstellung in Azure aktivieren.
-author: mayurigupta13
+author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 3/6/2019
+ms.date: 06/28/2019
 ms.topic: conceptual
-ms.author: mayg
-ms.openlocfilehash: 472ff7810852bd03ef322cd5eb647c3d61f09b01
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.author: ramamill
+ms.openlocfilehash: 3f4e4afb4d94a7b2e2a6b246a371cf6234577463
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418107"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491732"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivieren der Replikation in Azure für VMware-VMs
 
@@ -37,22 +37,25 @@ Wenn Sie virtuelle VMware-Computer replizieren, beachten Sie Folgendes:
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 
 Bevor Sie die Schritte in diesem Abschnitt ausführen, beachten Sie die Folgendes:
-* Azure Site Recovery führt jetzt bei allen neuen Replikationen die Replikation direkt auf verwaltete Datenträger aus. Der Prozessserver schreibt Replikationsprotokolle in ein Cachespeicherkonto in der Zielregion. Diese Protokolle werden verwendet, um Wiederherstellungspunkte in verwalteten Replikatdatenträgern zu erstellen.
+* Azure Site Recovery führt jetzt bei allen neuen Replikationen die Replikation direkt auf verwaltete Datenträger aus. Der Prozessserver schreibt Replikationsprotokolle in ein Cachespeicherkonto in der Zielregion. Diese Protokolle werden verwendet, um die Wiederherstellungspunkte auf verwalteten Replikatdatenträger mit der Benennungskonvention „asrseeddisk“ zu erstellen.
+* Powershell-Unterstützung für die Replikation auf verwaltete Datenträger ist ab [Az.RecoveryServices-Modulversion 2.0.0](https://www.powershellgallery.com/packages/Az.RecoveryServices/2.0.0-preview) verfügbar 
 * Zum Zeitpunkt des Failovers wird der von Ihnen ausgewählte Wiederherstellungspunkt verwendet, um den verwalteten Zieldatenträger zu erstellen.
 * Virtuelle Computer, die zuvor für die Replikation in Zielspeicherkonten konfiguriert wurden, sind davon nicht betroffen.
 * Eine Replikation in Speicherkonten für einen neuen virtuellen Computer ist nur über die REST-API (Representational State Transfer) und Powershell verfügbar. Verwenden Sie die Azure REST-API-Version 2016-08-10 oder 2018-01-10 für die Replikation in Speicherkonten.
 
-1. Fahren Sie fort mit **Schritt 2: Replikation Anwendung** > **Quelle**. Wählen Sie nach der erstmaligen Aktivierung der Replikation im Tresor die Option **+Replizieren** aus, um die Replikation für weitere virtuelle Computer zu aktivieren.
-1. Wählen Sie auf der Seite **Quelle** unter **Quelle** den Konfigurationsserver aus.
-1. Wählen Sie unter **Computertyp** die Option **Virtuelle Computer** oder **Physische Computer** aus.
-1. Wählen Sie unter **vCenter-/vSphere-Hypervisor** den vCenter-Server aus, der den vSphere-Host verwaltet, oder wählen Sie den Host aus. Wenn Sie physische Computer replizieren, ist diese Einstellung nicht relevant.
-1. Wählen Sie den Prozessserver aus, der als Konfigurationsserver verwendet werden soll, wenn Sie keine zusätzlichen Prozessserver erstellt haben. Wählen Sie dann **OK**aus.
+Führen Sie die folgenden Schritte aus, um die Replikation zu aktivieren:
+1. Fahren Sie fort mit **Schritt 2: Replizieren Sie die Anwendung** > **Quelle**. Wählen Sie nach der erstmaligen Aktivierung der Replikation im Tresor die Option **+Replizieren** aus, um die Replikation für weitere virtuelle Computer zu aktivieren.
+2. Wählen Sie auf der Seite **Quelle** unter **Quelle** den Konfigurationsserver aus.
+3. Wählen Sie unter **Computertyp** die Option **Virtuelle Computer** oder **Physische Computer** aus.
+4. Wählen Sie unter **vCenter-/vSphere-Hypervisor** den vCenter-Server aus, der den vSphere-Host verwaltet, oder wählen Sie den Host aus. Wenn Sie physische Computer replizieren, ist diese Einstellung nicht relevant.
+5. Wählen Sie den Prozessserver aus. Wurden keine zusätzlichen Prozessserver erstellt, ist der integrierte Prozessserver des Konfigurationsservers in der Dropdownliste verfügbar. Der Integritätsstatus der einzelnen Prozessserver wird gemäß der empfohlenen Grenzwerte und anderer Parameter angezeigt. Wählen Sie einen fehlerfreien Prozessserver aus. Ein [kritischer](vmware-physical-azure-monitor-process-server.md#process-server-alerts) Prozessserver kann nicht ausgewählt werden. Sie können entweder die Fehler [behandeln und beheben](vmware-physical-azure-troubleshoot-process-server.md) **oder** einen [horizontal hochskalierten Prozessserver](vmware-azure-set-up-process-server-scale.md) einrichten.
+    ![Fenster „Replikation aktivieren: Quelle“](media/vmware-azure-enable-replication/ps-selection.png)
 
-    ![Fenster „Replikation aktivieren: Quelle“](./media/vmware-azure-enable-replication/enable-replication2.png)
+> [!NOTE]
+> Ab [Version 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups) wurden weitere Warnungen eingeführt, um die Integritätswarnungen des Prozessservers zu verbessern. Aktualisieren Sie die Site Recovery-Komponenten auf Version 9.24 oder höher, damit alle Warnungen generiert werden.
 
-1. Wählen Sie unter **Ziel** das Abonnement und die Ressourcengruppe aus, in dem bzw. der Sie die virtuellen Computer erstellen möchten, für ein Failover erfolgt ist. Wählen Sie das Bereitstellungsmodell aus, das Sie in Azure für die virtuellen Computer verwenden möchten, für die ein Failover erfolgt ist.
-
-1. Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem virtuelle Azure-Computer nach dem Failover eine Verbindung herstellen. Das Netzwerk muss sich in derselben Region wie der Tresor des Site Recovery-Diensts befinden.
+6. Wählen Sie unter **Ziel** das Abonnement und die Ressourcengruppe aus, in dem bzw. der Sie die virtuellen Computer erstellen möchten, für ein Failover erfolgt ist. Wählen Sie das Bereitstellungsmodell aus, das Sie in Azure für die virtuellen Computer verwenden möchten, für die ein Failover erfolgt ist.
+2. Wählen Sie das Azure-Netzwerk und das Subnetz aus, mit dem virtuelle Azure-Computer nach dem Failover eine Verbindung herstellen. Das Netzwerk muss sich in derselben Region wie der Tresor des Site Recovery-Diensts befinden.
 
    Wählen Sie **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellung auf alle virtuellen Computer anzuwenden, die geschützt werden sollen. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk über einzelne virtuelle Computer auszuwählen. Wenn Sie über kein Netzwerk verfügen, müssen Sie ein Netzwerk erstellen. Wählen Sie zum Erstellen eines Netzwerks mit Azure Resource Manager **Neu erstellen** aus. Wählen Sie ein Subnetz aus (falls zutreffend), und wählen Sie dann **OK** aus.
    
@@ -89,7 +92,7 @@ Bevor Sie die Schritte in diesem Abschnitt ausführen, beachten Sie die Folgende
     ![Fenster „Compute- und Netzwerkeigenschaften“](./media/vmware-azure-enable-replication/vmproperties.png)
 
     * Name des virtuellen Azure-Computers: Ändern Sie ggf. den Namen, damit er den Azure-Anforderungen entspricht.
-    * Größe oder Typ des virtuellen Zielcomputers: Die Standardgröße des virtuellen Computers wird anhand der Größe des virtuellen Quellcomputers ausgewählt. Sie können je nach Bedarf jederzeit vor dem Failover eine andere VM-Größe auswählen. Beachten Sie, dass die VM-Datenträgergröße auch auf der Größe des Quelldatenträgers basiert, und die kann nur nach dem Failover geändert werden. Weitere Informationen zu Datenträgergrößen und IOPS-Raten finden Sie unter [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](../virtual-machines/windows/disk-scalability-targets.md).
+    * Größe oder Typ des virtuellen Zielcomputers: Die Standard-VM-Größe wird basierend auf einigen Parametern ausgewählt, zu denen Anzahl der Datenträger, NIC-Anzahl, Anzahl der CPU-Kerne, Arbeitsspeicher und verfügbare VM-Rollengrößen in der Azure-Zielregion zählen. Azure Site Recovery wählt die erste verfügbare VM-Größe aus, die alle Kriterien erfüllt. Sie können je nach Bedarf jederzeit vor dem Failover eine andere VM-Größe auswählen. Beachten Sie, dass die VM-Datenträgergröße auch auf der Größe des Quelldatenträgers basiert, und die kann nur nach dem Failover geändert werden. Weitere Informationen zu Datenträgergrößen und IOPS-Raten finden Sie unter [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](../virtual-machines/windows/disk-scalability-targets.md).
 
     *  Ressourcengruppe: Sie können eine [Ressourcengruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) auswählen, der ein virtueller Computer nach einem Failover angehören soll. Sie können diese Einstellung jederzeit vor dem Failover ändern. Wenn Sie den virtuellen Computer nach dem Failover zu einer anderen Ressourcengruppe migrieren, funktionieren die Schutzeinstellungen des virtuellen Computers nicht mehr.
     * Verfügbarkeitsgruppe: Sie können eine [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) auswählen, wenn der virtuelle Computer nach dem Failover einer Verfügbarkeitsgruppe angehören muss. Bei Auswahl einer Verfügbarkeitsgruppe sollten Sie Folgendes beachten:
@@ -108,7 +111,7 @@ Die Anzahl der Netzwerkadapter hängt von der Größe ab, die Sie für den virtu
 
 - Wenn die Anzahl der Netzwerkadapter des virtuellen Quellcomputers der Anzahl der für die Größe des virtuellen Zielcomputers zulässigen Netzwerkadapter entspricht oder diese Anzahl unterschreitet, verfügt der Zielcomputer über dieselbe Anzahl von Netzwerkadaptern wie der Quellcomputer.
 - Wenn die Anzahl der Netzwerkadapter für den virtuellen Quellcomputer die maximal zulässige Anzahl für die Größe des virtuellen Zielcomputers überschreitet, wird die Anzahl verwendet, die maximal für die Größe des virtuellen Zielcomputers zulässig ist. Beispiel: Wenn ein Quellcomputer zwei Netzwerkadapter hat und der virtuelle Zielcomputer aufgrund seiner Größe vier Netzwerkadapter unterstützt, erhält der virtuelle Zielcomputer zwei Netzwerkadapter. Wenn der virtuelle Quellcomputer zwei Netzwerkadapter hat, der virtuelle Zielcomputer aufgrund seiner Größe aber nur einen Adapter unterstützt, erhält der virtuelle Zielcomputer nur einen Adapter.
-- Wenn der virtuelle Computer über mehrere Netzwerkadapter verfügt, werden alle mit dem gleichen Netzwerk verbunden. Außerdem wird der erste in der Liste angezeigte Adapter als *Standard*netzwerkadapter des virtuellen Azure-Computers festgelegt. 
+- Wenn der virtuelle Computer über mehrere Netzwerkkarten verfügt, werden alle mit dem gleichen Netzwerk verbunden. Außerdem wird der erste in der Liste angezeigte Adapter als *Standard*netzwerkadapter des virtuellen Azure-Computers festgelegt. 
 
 ### <a name="azure-hybrid-benefit"></a>Azure-Hybridvorteil
 

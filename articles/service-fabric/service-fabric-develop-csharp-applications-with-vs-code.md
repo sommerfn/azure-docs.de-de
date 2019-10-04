@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 680c141e32333c4747ee69919229bd9381f536a4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 60b634b0b927804249148737ee7a99c0e86dd7d6
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664240"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67537767"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Entwickeln von C# Service Fabric-Anwendungen mit Visual Studio Code
 
@@ -77,6 +77,17 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie im lokalen Cluster ber
 4. Nachdem Sie sichergestellt haben, dass die Anwendung ausgeführt wird, starten Sie einen Browser. Öffnen Sie folgende Seite: \//localhost:31002. Hierbei handelt es sich um das Web-Front-End der Anwendung. Aktualisieren Sie die Seite, um den aktuellen Wert des Zählers bei der Erhöhung anzuzeigen.
 
    ![Zählerdienstanwendung im Browser](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
+
+## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>Veröffentlichen Sie die Anwendung auf einem Azure Service Fabric-Cluster
+Während Sie die Anwendung für den lokalen Cluster bereitstellen, können Sie sie auch auf einem Remote-Azure Service Fabric-Cluster veröffentlichen. 
+
+1. Stellen Sie sicher, dass Sie Ihre Anwendung anhand der obigen Anweisungen erstellt haben. Aktualisieren Sie die generierte Konfigurationsdatei `Cloud.json` mit den Details des Remote-Clusters, auf dem sie die Anwendung veröffentlichen wollen.
+
+2. Wählen Sie in der **Befehlspalette** den Befehl **Service Fabric: „Anwendung veröffentlichen“-Befehl** . Die Ausgabe des Installationsvorgangs wird an das integrierte Terminal gesendet.
+
+   ![„Anwendung veröffentlichen“-Befehl in VS Code](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+
+3. Starten Sie nach Abschluss der Bereitstellung einen Browser, und öffnen Sie Service Fabric Explorer: `https:<clusterurl>:19080/Explorer`. Es sollte angezeigt werden, dass die Anwendung ausgeführt wird. Dies kann einige Zeit dauern. Haben Sie daher etwas Geduld. 
 
 ## <a name="debug-the-application"></a>Debuggen der Anwendung
 Beim Debuggen von Anwendungen in VS Code muss die Anwendung in einem lokalen Cluster ausgeführt werden. Dem Code können Haltepunkte hinzugefügt werden.

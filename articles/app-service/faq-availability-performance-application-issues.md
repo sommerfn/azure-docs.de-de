@@ -4,26 +4,29 @@ description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Verfüg
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2bb6237e53f945b645f1ee757a53ef67270e2416
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 9cd529424a022edfa64f9053a53cbbe9f756637e
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268378"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122068"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Anwendungsleistung von Web-Apps in Azure
+
+> [!NOTE]
+> Einige der folgende Richtlinien funktionieren eventuell nur mit Windows oder Linux App Services. Linux App Services werden beispielsweise standardmäßig im 64-Bit-Modus ausgeführt.
+>
 
 In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zu Problemen mit der Anwendungsleistung bei [Azure App Service-Web-Apps](https://azure.microsoft.com/services/app-service/web/).
 
@@ -35,11 +38,11 @@ Mehrere Faktoren können für eine langsame App-Leistung verantwortlich sein. Au
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>Wie behebe ich das Problem einer hohen CPU-Auslastung?
 
-In einigen Szenarien mit hoher CPU-Auslastung kann Ihre App tatsächlich mehr Computeressourcen benötigen. Erwägen Sie in diesem Fall eine Skalierung auf einen höheren Diensttarif, damit die Anwendung alle Ressourcen erhält, die sie benötigt. In einigen Fällen wird eine hohe CPU-Auslastung möglicherweise durch eine fehlerhafte Schleife oder einen fehlerhaften Programmierstil verursacht. Das Gewinnen von Einblicken, wodurch die gestiegene CPU-Auslastung ausgelöst wird, erfolgt in zwei Schritten. Erstellen Sie zunächst ein Speicherabbild des Prozesses, das Sie anschließend untersuchen. Weitere Informationen finden Sie unter [Capture and analyze a dump file for high CPU consumption for Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/) (Erfassen und Analysieren einer Speicherabbilddatei bei hohe CPU-Nutzung durch Web-Apps).
+In einigen Szenarien mit hoher CPU-Auslastung kann Ihre App tatsächlich mehr Computeressourcen benötigen. Erwägen Sie in diesem Fall eine Skalierung auf eine höhere Dienstebene, damit die Anwendung alle Ressourcen erhält, die sie benötigt. In einigen Fällen wird eine hohe CPU-Auslastung möglicherweise durch eine fehlerhafte Schleife oder einen fehlerhaften Programmierstil verursacht. Das Gewinnen von Einblicken, wodurch die gestiegene CPU-Auslastung ausgelöst wird, erfolgt in zwei Schritten. Erstellen Sie zunächst ein Speicherabbild des Prozesses, das Sie anschließend untersuchen. Weitere Informationen finden Sie unter [Capture and analyze a dump file for high CPU consumption for Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/) (Erfassen und Analysieren einer Speicherabbilddatei bei hohe CPU-Nutzung durch Web-Apps).
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>Wie behebe ich das Problem einer hohen Arbeitsspeicherbelegung?
 
-In einigen Szenarien mit hoher Arbeitsspeicherbelegung kann Ihre App tatsächlich mehr Computeressourcen benötigen. Erwägen Sie in diesem Fall eine Skalierung auf einen höheren Diensttarif, damit die Anwendung alle Ressourcen erhält, die sie benötigt. Mitunter kann ein Fehler im Code einen Arbeitsspeicherverlust verursachen. Ein bestimmter Programmierstil kann auch die Arbeitsspeichernutzung erhöhen. Das Gewinnen von Einblicken, wodurch die gestiegene Arbeitsspeichernutzung ausgelöst wird, erfolgt in zwei Schritten. Erstellen Sie zunächst ein Speicherabbild des Prozesses, das Sie anschließend untersuchen. Mit dem Tool Crash Diagnoser im Katalog mit den Azure-Websiteerweiterungen können Sie diese beiden Schritte effizient ausführen. Weitere Informationen finden Sie unter [Capture and analyze a dump file for intermittent high memory for Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/) (Erfassen und Analysieren einer Speicherabbilddatei bei zeitweiliger hoher Arbeitsspeichernutzung durch Web-Apps).
+In einigen Szenarien mit hoher Arbeitsspeicherbelegung kann Ihre App tatsächlich mehr Computeressourcen benötigen. Erwägen Sie in diesem Fall eine Skalierung auf eine höhere Dienstebene, damit die Anwendung alle Ressourcen erhält, die sie benötigt. Mitunter kann ein Fehler im Code einen Arbeitsspeicherverlust verursachen. Ein bestimmter Programmierstil kann auch die Arbeitsspeichernutzung erhöhen. Das Gewinnen von Einblicken, wodurch die gestiegene Arbeitsspeichernutzung ausgelöst wird, erfolgt in zwei Schritten. Erstellen Sie zunächst ein Speicherabbild des Prozesses, das Sie anschließend untersuchen. Mit dem Tool Crash Diagnoser im Katalog mit den Azure-Websiteerweiterungen können Sie diese beiden Schritte effizient ausführen. Weitere Informationen finden Sie unter [Capture and analyze a dump file for intermittent high memory for Web Apps](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/) (Erfassen und Analysieren einer Speicherabbilddatei bei zeitweiliger hoher Arbeitsspeichernutzung durch Web-Apps).
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Wie automatisiere ich App Service-Web-Apps mithilfe von PowerShell?
 
@@ -157,7 +160,7 @@ Erwägen Sie einen Wechsel zu 64-Bit-Prozessen, damit Sie den zusätzlichen Arbe
 
 Beachten Sie außerdem, dass eine 64-Bit-Umgebung einen Serviceplan des Typs „Basic“ oder „Standard“ erfordert. Die Servicepläne „Free“ und „Shared“ werden stets in einer 32-Bit-Umgebung ausgeführt.
 
-Weitere Informationen finden Sie unter [Konfigurieren von Web-Apps in App Service](web-sites-configure.md).
+Weitere Informationen finden Sie unter [Konfigurieren von Web-Apps in App Service](configure-common.md).
 
 ## <a name="why-does-my-request-time-out-after-230-seconds"></a>Warum erfolgt für meine Anforderung nach 230 Sekunden ein Timeout?
 

@@ -9,17 +9,16 @@ ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 36324ccd9b6e9470c93949efed6c29a9b8d3ab61
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: e80c0e4e57f8af067c17d0dcfefd26ce7ce8255f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389288"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069451"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurieren Ihrer App Service-Umgebung mit erzwungenem Tunneling
 
@@ -82,7 +81,7 @@ Führen Sie die folgenden Schritte aus, um das Routing für den gesamten ausgehe
 
 Wenn Sie Ihre ASE in einem virtuellen Netzwerk erstellen möchten, das bereits für die lokale Weiterleitung sämtlichen Datenverkehrs konfiguriert ist, müssen Sie Ihre ASE unter Verwendung einer Resource Manager-Vorlage erstellen.  Über das Portal kann keine ASE in einem vorhandenen Subnetz erstellt werden.  Wenn Sie Ihre ASE in einem VNet bereitstellen, das bereits für die lokale Weiterleitung ausgehenden Datenverkehrs konfiguriert ist, müssen Sie Ihre ASE unter Verwendung einer Resource Manager-Vorlage erstellen. Hierbei können Sie dann ein bereits vorhandenes Subnetz angeben. Ausführliche Informationen zum Bereitstellen einer ASE mit einer Vorlage finden Sie unter [Erstellen einer ASE mit einer Azure Resource Manager-Vorlage][template].
 
-Dienstendpunkte ermöglichen Ihnen das Beschränken des Zugriffs auf mehrinstanzenfähige Dienste auf eine Gruppe von virtuellen Azure-Netzwerken und Subnetzen. Weitere Informationen zu Dienstendpunkten finden Sie in der Dokumentation [Dienstendpunkte im virtuellen Netzwerk][serviceendpoints]. 
+Dienstendpunkte ermöglichen Ihnen das Beschränken des Zugriffs auf mehrinstanzenfähige Dienste auf eine Gruppe von virtuellen Azure-Netzwerken und Subnetzen. Weitere Informationen zu Dienstendpunkten finden Sie in der Dokumentation zu [VNET-Dienstendpunkten][serviceendpoints]. 
 
 Wenn Sie die Dienstendpunkte auf einer Ressource aktivieren, werden Routen erstellt, die eine höhere Priorität als alle anderen Routen haben. Bei Verwendung von Dienstendpunkten mit einer ASE mit Tunnelerzwingung wird für den Azure SQL- und Azure Storage-Verwaltungsdatenverkehr kein Tunneling erzwungen. Für den restlichen ASE-Abhängigkeitsdatenverkehr wird das Tunneling erzwungen, und er darf nicht verloren gehen, da die ASE ansonsten nicht richtig funktioniert.
 

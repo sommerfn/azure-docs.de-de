@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Sie Azure Cosmos DB-Daten a
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 1d886e146e9e18eb735e6f88d2cb2c1a4a472924
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996879"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240765"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Wiederherstellen von Daten aus einer Sicherung in Azure Cosmos DB 
 
@@ -39,7 +39,7 @@ Sie benötigen für das Anfordern einer Wiederherstellung die folgenden Informat
   * Wenn Sie versehentlich Ihre Datenbank oder Ihren Container gelöscht haben, eröffnen Sie beim Azure-Support einen Fall mit Schweregrad B oder C. 
   * Wenn Sie versehentlich Dokumente im Container gelöscht oder beschädigt haben, eröffnen Sie einen Supportfall mit dem Schweregrad A. 
 
-Falls eine Datenbeschädigung aufgetreten ist oder Dokumente in einem Container geändert oder gelöscht wurden, **löschen Sie den Container so bald wie möglich**. Durch Löschen des Containers können Sie verhindern, dass Azure Cosmos DB die Sicherungen überschreibt. Wenn aus irgendeinem Grund das Löschen nicht möglich ist, sollten Sie so bald wie möglich ein Ticket erstellen. Zusätzlich zum Namen des Azure Cosmos-Kontos, den Datenbanknamen und den Sammlungsnamen sollten Sie Zeitpunkt angeben, zu dem die Daten wiederhergestellt werden können. Es ist wichtig, dabei so präzise wie möglich zu sein, damit wir die besten verfügbaren Sicherungen für diesen Zeitpunkt bestimmen können. Es ist auch wichtig, die Uhrzeit in UTC anzugeben. 
+Falls eine Datenbeschädigung aufgetreten ist oder Dokumente in einem Container geändert oder gelöscht wurden, **löschen Sie den Container so bald wie möglich**. Durch Löschen des Containers können Sie verhindern, dass Azure Cosmos DB die Sicherungen überschreibt. Wenn aus irgendeinem Grund das Löschen nicht möglich ist, sollten Sie so bald wie möglich ein Ticket erstellen. Zusätzlich zum Namen des Azure Cosmos-Kontos, den Datenbanknamen und den Containernamen sollten Sie den Zeitpunkt angeben, zu dem die Daten wiederhergestellt werden können. Es ist wichtig, dabei so präzise wie möglich zu sein, damit wir die besten verfügbaren Sicherungen für diesen Zeitpunkt bestimmen können. Es ist auch wichtig, die Uhrzeit in UTC anzugeben. 
 
 Der folgende Screenshot veranschaulicht das Erstellen einer Supportanfrage für einen Container (Sammlung/Graph/Tabelle) zum Wiederherstellen von Daten mithilfe des Azure-Portals. Geben Sie zusätzliche Details wie z.B. den Datentyp, den Zweck der Wiederherstellung und den Zeitpunkt der Datenlöschung an, damit wir die Anforderung priorisieren können.
 

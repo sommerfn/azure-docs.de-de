@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53140c7b02dd657036b76db0dd137bd770d97f4d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 794a99481d9394229e77168e75c48f4110735578
+ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369529"
+ms.lasthandoff: 07/03/2019
+ms.locfileid: "67536926"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -50,15 +50,14 @@ Die Art und Weise, wie Aktivitäten zur Kennwortzurücksetzung und zur Registrie
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 2. Wählen Sie **Alle Dienste** im linken Bereich aus.
 3. Suchen Sie in der Liste mit den Diensten nach **Azure Active Directory**, und wählen Sie diesen Eintrag aus.
-4. Wählen Sie **Benutzer und Gruppen**.
-5. Wählen Sie **Überwachungsprotokolle** im Menü **Benutzer und Gruppen** aus. Daraufhin werden sämtliche Überwachungsereignisse angezeigt, die für alle Benutzer in Ihrem Verzeichnis aufgetreten sind. Diese Ansicht kann gefiltert werden, um alle kennwortbezogenen Ereignisse anzuzeigen.
-6. Möchten Sie diese Ansicht filtern, sodass nur die kennwortbezogenen Ereignisse angezeigt werden, wählen Sie im oberen Bereich des Blatts die Schaltfläche **Filter** aus.
-7. Wählen Sie im Menü **Filter** die Dropdownliste **Kategorie** aus, und legen Sie für diese den Kategorietyp **Self-Service-Kennwortverwaltung** fest.
-8. Grenzen Sie die Liste optional weiter ein, indem Sie die spezielle **Aktivität** auswählen, für die Sie sich interessieren.
+4. Wählen Sie im Abschnitt „Verwalten“ die Option **Benutzer** aus.
+5. Wählen Sie auf dem Blatt **Benutzer** die Option **Überwachungsprotokolle** aus. Daraufhin werden sämtliche Überwachungsereignisse angezeigt, die für alle Benutzer in Ihrem Verzeichnis aufgetreten sind. Diese Ansicht kann gefiltert werden, um alle kennwortbezogenen Ereignisse anzuzeigen.
+6. Wählen Sie am oberen Rand des Bereichs im Menü **Filter** die Dropdownliste **Dienst** aus, und ändern Sie den Diensttyp in **Self-Service-Kennwortverwaltung**.
+7. Grenzen Sie die Liste optional weiter ein, indem Sie die spezielle **Aktivität** auswählen, für die Sie sich interessieren.
 
 ### <a name="converged-registration-preview"></a>Zusammengeführte Registrierung (Vorschau)
 
-Wenn Sie an der Public Preview der zusammengeführten Registrierung teilnehmen, finden Sie Informationen zur Benutzeraktivität in den Überwachungsprotokollen unter der Kategorie **Authentifizierungsmethoden**.
+Wenn Sie an der öffentlichen Vorschau der zusammengeführten Registrierung teilnehmen, finden Sie Informationen zur Benutzeraktivität in den Überwachungsprotokollen unter dem Dienst **Authentifizierungsmethoden**.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Beschreibung der Berichtsspalten im Azure-Portal
 
@@ -118,7 +117,7 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 In der folgenden Liste werden die Details dieser Aktivität erläutert:
 
 * **Beschreibung der Aktivität**: Gibt an, dass ein Administrator im Auftrag eines Benutzers ein Kennwort über das Azure-Portal zurückgesetzt hat.
-* **Akteur der Aktivität**: Der Administrator, der das Kennwort im Auftrag eines anderen Endbenutzers oder Administrators zurückgesetzt hat Hierbei muss es sich um einen globalen Administrator, um einen Kennwortadministrator, um einen Benutzeradministrator oder um einen Helpdeskadministrator handeln.
+* **Akteur der Aktivität**: Der Administrator, der das Kennwort im Auftrag eines anderen Endbenutzers oder Administrators zurückgesetzt hat Dabei muss es sich um einen Kennwortadministrator, Benutzeradministrator oder Helpdeskadministrator handeln.
 * **Ziel der Aktivität**: Der Benutzer, dessen Kennwort zurückgesetzt wurde. Der Benutzer kann ein Endbenutzer oder ein anderer Administrator sein.
 * **Aktivitätsstatus**:
   * _Erfolg_: Gibt an, dass ein Administrator das Kennwort eines Benutzers erfolgreich zurückgesetzt hat.
@@ -176,6 +175,7 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Nutzungs- und Insights-Berichte für SSPR und MFA](howto-authentication-methods-usage-insights.md)
 * [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md)
 * [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrieren für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md)

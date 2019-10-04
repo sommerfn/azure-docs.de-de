@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/24/2019
+ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7010ec16592fea2f530329916e00056ca03a70
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2dca71023cbed34ef3661ca980cf1eac4ca620c1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176389"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65784294"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
 In diesem Thema werden die Attribute aufgelistet, die bei der Azure AD Connect-Synchronisierung synchronisiert werden.  
 Die Attribute sind nach den zugehörigen Azure AD-Apps gruppiert.
 
 ## <a name="attributes-to-synchronize"></a>Zu synchronisierende Attribute
-Häufig wird die Frage gestellt, *welche Attribute als Mindestvoraussetzung synchronisiert werden müssen*. Die standardmäßige und empfohlene Vorgehensweise besteht darin, die Standardattribute beizubehalten, damit in der Cloud eine vollständige GAL (Globale Adressliste) erstellt werden kann und alle Features in Office 365-Workloads abgerufen werden können. In einigen Fällen können Attribute vorhanden sein, die für Ihre Organisation nicht mit der Cloud synchronisiert werden sollen, da sie sensible Daten oder personenbezogene Informationen (Personally Identifiable Information, PII) enthalten, wie etwa in diesem Beispiel:   
+Häufig wird die Frage gestellt, *welche Attribute als Mindestvoraussetzung synchronisiert werden müssen*. Die standardmäßige und empfohlene Vorgehensweise besteht darin, die Standardattribute beizubehalten, damit in der Cloud eine vollständige GAL (Globale Adressliste) erstellt werden kann und alle Features in Office 365-Workloads abgerufen werden können. In einigen Fällen können Attribute vorhanden sein, die für Ihre Organisation nicht mit der Cloud synchronisiert werden sollen, da sie sensible Daten oder personenbezogene Informationen (Personally Identifiable Information, PII) enthalten, wie etwa in diesem Beispiel:  
 ![Fehlerhafte Attribute](./media/reference-connect-sync-attributes-synchronized/badextensionattribute.png)
 
 In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attributen und identifizieren die Attribute, die unter Umständen sensible oder personenbezogene Informationen enthalten und nicht synchronisiert werden können. Deaktivieren Sie diese Attribute per [Azure AD-App- und Attributfilterung](how-to-connect-install-custom.md#azure-ad-app-and-attribute-filtering) während der Installation.
@@ -48,7 +48,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | pwdLastSet |X |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
 |samAccountName|X| |
 | sourceAnchor |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
-| usageLocation |X |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="exchange-online"></a>Exchange Online
@@ -64,7 +64,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | company |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| Beschreibung |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -158,7 +158,6 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Von Kennwortsynchronisierung und Verbund verwendet. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| securityEnabled | | |X |Abgeleitet von "groupType" |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
 | st |X |X | | |
@@ -169,7 +168,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | thumbnailphoto |X |X | | |
 | title |X |X | | |
 | unauthOrig |X |X |X | |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userCertificate |X |X | | |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 | userSMIMECertificates |X |X | | |
@@ -186,7 +185,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | company |X |X | | |
 | countryCode |X |X | | |
 | department |X |X | | |
-| Beschreibung |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
 | dLMemSubmitPerms |X |X |X | |
@@ -241,7 +240,6 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
-| securityEnabled | | |X |Abgeleitet von "groupType" |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
 | st |X |X | | |
@@ -252,12 +250,13 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | thumbnailphoto |X |X | | |
 | title |X |X | | |
 | unauthOrig |X |X |X | |
-| URL |X |X | | |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| url |X |X | | |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers
+. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 | wWWHomePage |X |X | | |
 
-## <a name="lync-online-subsequently-known-as-skype-for-business"></a>Lync Online (nachfolgend Skype for Business genannt)
+## <a name="teams-and-skype-for-business-online"></a>Teams und Skype for Business Online
 | Attributname | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |X | | |Definiert, ob ein Konto aktiviert ist. |
@@ -266,7 +265,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | co |X |X | | |
 | company |X |X | | |
 | department |X |X | | |
-| Beschreibung |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
 | givenName |X |X | | |
@@ -294,7 +293,6 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
-| securityEnabled | | |X |Abgeleitet von "groupType" |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
 | st |X |X | | |
@@ -302,7 +300,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | telephoneNumber |X |X | | |
 | thumbnailphoto |X |X | | |
 | title |X |X | | |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 | wWWHomePage |X |X | | |
 
@@ -317,9 +315,8 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | objectSID |X | |X |Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten. |
 | proxyAddresses |X |X |X |Mechanische Eigenschaft. Von Azure AD verwendet. Enthält alle sekundären E-Mail-Adressen für den Benutzer. |
 | pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. |
-| securityEnabled | | |X |Abgeleitet von "groupType" |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="intune"></a>Intune
@@ -328,7 +325,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | accountEnabled |X | | |Definiert, ob ein Konto aktiviert ist. |
 | c |X |X | | |
 | cn |X | |X | |
-| Beschreibung |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | mail |X |X |X | |
 | mailNickname |X |X |X | |
@@ -336,9 +333,8 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | objectSID |X | |X |Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten. |
 | proxyAddresses |X |X |X | |
 | pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
-| securityEnabled | | |X |Abgeleitet von "groupType" |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
@@ -350,7 +346,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | co |X |X | | |
 | company |X |X | | |
 | countryCode |X |X | | |
-| Beschreibung |X |X |X | |
+| description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X | | |
 | givenName |X |X | | |
@@ -364,14 +360,13 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
 | pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
-| securityEnabled | | |X |Abgeleitet von "groupType" |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
 | st |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
 | title |X |X | | |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="3rd-party-applications"></a>Drittanbieteranwendungen
@@ -387,6 +382,7 @@ Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, we
 | accountEnabled |X | | |Definiert, ob ein Konto aktiviert ist. |
 | cn |X | |X | |
 | displayName |X |X |X | |
+| employeeID |X |  |  | |
 | givenName |X |X | | |
 | mail |X | |X | |
 | managedBy | | |X | |
@@ -397,7 +393,7 @@ Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, we
 | pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
-| usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
+| usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 
 ## <a name="windows-10"></a>Windows 10
@@ -423,10 +419,10 @@ Diese Attribute für **Benutzer** ergänzen die anderen Apps, die Sie ausgewähl
 | domainNetBios |X |Auch als „netBiosName“ bezeichnet. Beispiel: CONTOSO |
 | msDS-KeyCredentialLink |X |Nach der Registrierung des Benutzers in Windows Hello für Business | 
 
-## <a name="exchange-hybrid-writeback"></a>Exchange-Hybridrückschreiben  
+## <a name="exchange-hybrid-writeback"></a>Exchange-Hybridrückschreiben
 Diese Attribute werden vom Azure AD in das lokale Active Directory zurückgeschrieben, wenn Sie **Exchange-Hybrid**aktivieren. Abhängig von Ihrer Exchange-Version werden möglicherweise weniger Attribute synchronisiert.
 
-| Attributname (Connect-Benutzeroberfläche) |Attributname (lokales AD) | Benutzer | Kontakt | Group | Comment |
+| Attributname (lokales AD) | Attributname (Connect-Benutzeroberfläche) | Benutzer | Kontakt | Group | Comment |
 | --- |:---:|:---:|:---:| --- |---|
 | msDS-ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |X | | |Abgeleitet von cloudAnchor in Azure AD. Dies ist ein neues Attribut in Exchange 2016 und Windows Server 2016 AD. |
 | msExchArchiveStatus| ms-Exch-ArchiveStatus |X | | |Onlinearchiv: Ermöglicht Kunden, E-Mail-Nachrichten zu archivieren. |

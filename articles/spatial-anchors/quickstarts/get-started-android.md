@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8f2a5fdaf2222de7a802e8ff2a1f6fdb37dae4c3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 40969362e339770f18374ff22af5b3fe63908e65
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880036"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68845733"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Schnellstart: Erstellen einer Android-App mit Azure Spatial Anchors
 
@@ -32,20 +32,35 @@ Sie lernen Folgendes:
 
 Stellen Sie für diese Schnellstartanleitung sicher, dass Sie über Folgendes verfügen:
 
-- Einen Windows- oder macOS-Computer mit <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3+</a>.
+- Einen Windows- oder macOS-Computer mit <a href="https://developer.android.com/studio/" target="_blank">mindestens Android Studio 3.4</a>.
   - Unter Windows benötigen Sie auch <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a>.
   - Unter macOS muss Git über Homebrew installiert werden. Geben Sie den folgenden Befehl in einer einzelnen Zeile am Terminal ein: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Führen Sie dann `brew install git` aus.
-  - Zum Erstellen des NDK-Beispiels müssen Sie auch NDK und die CMake 3.6 SDK Tools in Android Studio installieren.
+  - Zum Erstellen des NDK-Beispiels müssen Sie auch NDK und die SDK Tools für CMake 3.6 oder höher in Android Studio installieren.
 - Ein <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">für Entwickler geeignetes</a> und <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore-fähiges</a> Android-Gerät.
-- Ihre App muss auf ARCore 1.5 ausgerichtet sein (Unterstützung für ARCore 1.6+ ist in Kürze verfügbar).
+  - Möglicherweise sind zusätzliche Gerätetreiber erforderlich, damit Ihr Computer mit Ihrem Android-Gerät kommunizieren kann. Weitere Informationen und Anweisungen finden Sie [hier](https://developer.android.com/studio/run/device.html).
+- Ihre App muss für ARCore **1.8** geeignet sein.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
 ## <a name="open-the-sample-project"></a>Öffnen des Beispielprojekts
 
+# <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
+
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Beim Erstellen des Android-NDK-Beispiels müssen Sie `arcore_c_api.h` [hier](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.5.0/libraries/include/arcore_c_api.h) herunterladen und in `Android\NDK\libraries\include` einfügen.
+# <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
+
+[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
+
+Laden Sie `arcore_c_api.h` [hier](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.8.0/libraries/include/arcore_c_api.h) herunter, und legen Sie das Projekt unter `Android\NDK\libraries\include` ab.
+
+Initialisieren Sie im neu geklonten Repository Submodule, indem Sie den folgenden Befehl ausführen:
+
+```console
+git submodule update --init --recursive
+```
+
+---
 
 Öffnen Sie Android Studio.
 
@@ -57,7 +72,7 @@ Wählen Sie **Open an existing Android Studio project** (Vorhandenes Android Stu
 
 Wählen Sie **Open an existing Android Studio project** (Vorhandenes Android Studio-Projekt öffnen), und wählen Sie das Projekt unter `Android/NDK/` aus.
 
-***
+---
 
 ## <a name="configure-account-identifier-and-key"></a>Konfigurieren des Kontobezeichners und -schlüssels
 
@@ -65,7 +80,7 @@ Im nächsten Schritt wird die App zur Verwendung des Kontobezeichners und Kontos
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-Öffnen Sie `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsActivity.java`.
+Öffnen Sie `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsManager.java`.
 
 Suchen Sie nach dem Feld `SpatialAnchorsAccountKey`, und ersetzen Sie `Set me` durch den Kontoschlüssel.
 
@@ -73,13 +88,13 @@ Suchen Sie nach dem Feld `SpatialAnchorsAccountId`, und ersetzen Sie `Set me` du
 
 # <a name="ndktabopenproject-ndk"></a>[NDK](#tab/openproject-ndk)
 
-Öffnen Sie `Android/NDK/app/src/main/cpp/spatial_services_application.cc`.
+Öffnen Sie `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
 
 Suchen Sie nach dem Feld `SpatialAnchorsAccountKey`, und ersetzen Sie `Set me` durch den Kontoschlüssel.
 
 Suchen Sie nach dem Feld `SpatialAnchorsAccountId`, und ersetzen Sie `Set me` durch den Kontobezeichner.
 
-***
+---
 
 ## <a name="deploy-the-app-to-your-android-device"></a>Bereitstellen der App auf Ihrem Android-Gerät
 

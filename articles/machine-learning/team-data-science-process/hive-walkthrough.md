@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a7aa5401cbba9fafda9f995a882934ef0edfa481
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d26bc6044ca106b0f081cee5a39405b4b78ce7ac
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881145"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60303904"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern
 In dieser exemplarischen Vorgehensweise wird der [Team Data Science-Prozess (TDSP)](overview.md) in einem durchgängigen Szenario verwendet. Es wird ein [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) verwendet, um Daten aus dem öffentlich zugänglichen [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/)-Dataset zu speichern, zu untersuchen und merkmalbezogen zu analysieren sowie ein Downsampling auf die Daten anzuwenden. Um eine binäre Klassifizierung und eine Multiklassenklassifizierung sowie Regressionsvorhersageaufgaben durchzuführen, werden Modelle der Daten mit Azure Machine Learning entwickelt. 
@@ -88,11 +88,11 @@ Wenn Sie das [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/)-Dataset au
 
 Nachfolgend wird erläutert, wie Sie AzCopy zum Übertragen der Dateien verwenden, die Daten enthalten. Folgen Sie den Anweisungen unter [Erste Schritte mit dem Befehlszeilenprogramm AzCopy](../../storage/common/storage-use-azcopy.md), um AzCopy herunterzuladen und zu installieren.
 
-1. Führen Sie über ein Eingabeaufforderungsfenster die folgenden AzCopy-Befehle aus, und ersetzen Sie *<path_to_data_folder>* durch den gewünschten Speicherort:
+1. Führen Sie über ein Eingabeaufforderungsfenster die folgenden AzCopy-Befehle aus, und ersetzen Sie *\<path_to_data_folder>* durch den gewünschten Speicherort:
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. Nach Abschluss des Kopiervorgangs sehen Sie insgesamt 24 gezippte Dateien im ausgewählten Datenordner. Entzippen Sie die heruntergeladenen Dateien in dasselbe Verzeichnis auf Ihrem lokalen Computer. Notieren Sie sich den Ordner mit den extrahierten Dateien. Sie verweisen nachfolgend mit *<path\_to\_unzipped_data\_files\>* auf diesen Ordner.
+1. Nach Abschluss des Kopiervorgangs sehen Sie insgesamt 24 gezippte Dateien im ausgewählten Datenordner. Entzippen Sie die heruntergeladenen Dateien in dasselbe Verzeichnis auf Ihrem lokalen Computer. Notieren Sie sich den Ordner mit den extrahierten Dateien. Sie verweisen nachfolgend mit *\<path\_to\_unzipped_data\_files\>* auf diesen Ordner.
 
 ## <a name="upload"></a>Hochladen der Daten in den Standardcontainer des HDInsight Hadoop-Clusters
 > [!NOTE]
@@ -102,10 +102,10 @@ Nachfolgend wird erläutert, wie Sie AzCopy zum Übertragen der Dateien verwende
 
 Ersetzen Sie in den folgenden AzCopy-Befehlen die folgenden Parameter durch die tatsächlichen Werte, die Sie beim Erstellen des Hadoop-Clusters und beim Entzippen der Dateien angegeben haben.
 
-* ***<path_to_data_folder>***: Das Verzeichnis (einschließlich des Pfads) auf Ihrem Computer, das die extrahierten Datendateien enthält.  
-* ***<storage account name of Hadoop cluster>***: Das Ihrem HDInsight-Cluster zugeordnete Speicherkonto.
-* ***<default container of Hadoop cluster>***: Der von Ihrem Cluster verwendete Standardcontainer. Beachten Sie, dass der Name des Standardcontainers üblicherweise mit dem des Clusters übereinstimmt. Wenn der Cluster beispielsweise den Namen "abc123.azurehdinsight.net" verwendet, heißt der Standardcontainer "abc123".
-* ***<storage account key>***: Der Schlüssel für das von Ihrem Cluster verwendete Speicherkonto.
+* ***\<path_to_data_folder>***: Das Verzeichnis (einschließlich des Pfads) auf Ihrem Computer, das die extrahierten Datendateien enthält.  
+* ***\<storage account name of Hadoop cluster>***: Das Ihrem HDInsight-Cluster zugeordnete Speicherkonto.
+* ***\<default container of Hadoop cluster>***: Der von Ihrem Cluster verwendete Standardcontainer. Beachten Sie, dass der Name des Standardcontainers üblicherweise mit dem des Clusters übereinstimmt. Wenn der Cluster beispielsweise den Namen "abc123.azurehdinsight.net" verwendet, heißt der Standardcontainer "abc123".
+* ***\<storage account key>***: Der Schlüssel für das von Ihrem Cluster verwendete Speicherkonto.
 
 Führen Sie über eine Eingabeaufforderung oder ein Windows PowerShell-Fenster die folgenden beiden AzCopy-Befehle aus.
 
@@ -814,7 +814,7 @@ Sie können nun mit der Modellentwicklung und -bereitstellung in [Machine Learni
   Hier lautet der Bestimmungskoeffizient 0,709, was impliziert, dass etwa 71 Prozent der Varianz durch die Modellkoeffizienten erklärt werden.
 
 > [!IMPORTANT]
-> Weitere Informationen zu Machine Learning und dazu, wie Sie darauf zugreifen und es verwenden, finden Sie unter [Was ist Machine Learning?](../studio/what-is-machine-learning.md). Zudem umfasst der [Azure AI-Katalog](https://gallery.cortanaintelligence.com/) eine große Palette an Experimenten und bietet eine umfassende Einführung in die Möglichkeiten von Machine Learning.
+> Weitere Informationen zu Machine Learning und dazu, wie Sie darauf zugreifen und es verwenden, finden Sie unter [Was ist Machine Learning?](../studio/what-is-machine-learning.md). Zudem umfasst der [Azure KI-Katalog](https://gallery.cortanaintelligence.com/) eine große Palette an Experimenten und bietet eine umfassende Einführung in die Möglichkeiten von Machine Learning.
 > 
 > 
 

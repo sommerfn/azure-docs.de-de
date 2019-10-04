@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 1e6c71a68c4357d82d086f3e2ca098e4039def5a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 25d58bdc5791de868c6302b4d2763fa34e98af17
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295756"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60615042"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -36,7 +36,7 @@ Nun erstellen Sie gleichzeitig ein Data Lake Analytics- und ein Azure Data Lake 
    * **Abonnement**: Wählen Sie das Azure-Abonnement aus, das für das Analytics-Konto verwendet wird.
    * **Ressourcengruppe**. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe.
    * **Standort**: Wählen Sie ein Azure-Rechenzentrum für das Data Lake Analytics-Konto aus.
-   * **Data Lake Storage Gen1**: Führen Sie die Anweisungen zum Erstellen eines neuen Data Lake Storage Gen1-Kontos aus, oder wählen Sie ein vorhandenes Konto aus. 
+   * **Data Lake Storage Gen1:** Führen Sie die Anweisungen zum Erstellen eines neuen Data Lake Storage Gen1-Kontos aus, oder wählen Sie ein vorhandenes Konto aus. 
 4. Wählen Sie optional einen Tarif für Ihr Data Lake Analytics-Konto aus.
 5. Klicken Sie auf **Create**. 
 

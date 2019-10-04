@@ -1,71 +1,80 @@
 ---
 title: 'Schnellstart: Erstellen einer neuen App im LUIS-Portal'
-titleSuffix: Language Understanding - Azure Cognitive Services
-description: In diesem Schnellstart erstellen Sie im LUIS-Portal eine neue App. Erstellen Sie die grundlegenden Teile der App, die Absichten und Entitäten, und testen Sie die App anschließend, indem Sie im interaktiven Testbereich eine Beispielbenutzeräußerung eingeben, um die vorhergesagte Absicht zu erhalten. Das Erstellen einer App ist kostenlos. Es ist kein Azure-Abonnement erforderlich.
+titleSuffix: Azure Cognitive Services
+description: In diesem Schnellstart erstellen Sie im LUIS-Portal eine neue App. Erstellen Sie die Grundbestandteile einer App, Absichten und Entitäten. Testen Sie die App, indem Sie im interaktiven Testbereich eine Beispielbenutzeräußerung eingeben, um die vorhergesagte Absicht zu erhalten. Das Erstellen einer App ist kostenlos. Es ist kein Azure-Abonnement erforderlich.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: e97be28261d28c2a72e507adcdac0248691745c7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ff666437790a1e32dde83f9e3be90b4c62637181
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57783169"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307722"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Schnellstart: Erstellen einer neuen App im LUIS-Portal
 
-In diesem Schnellstart erstellen Sie eine neue App im [LUIS-Portal](https://www.luis.ai). Erstellen Sie die grundlegenden Teile der App, die **Absichten** und **Entitäten**, und testen Sie die App anschließend, indem Sie im interaktiven Testbereich eine Beispielbenutzeräußerung eingeben, um die vorhergesagte Absicht zu erhalten.
+In diesem Schnellstart erstellen Sie eine neue App im [LUIS-Portal](https://www.luis.ai). Zuerst erstellen Sie die Grundbestandteile einer App, **Absichten** und **Entitäten**. Anschließend testen Sie die App, indem Sie im interaktiven Testbereich eine Beispielbenutzeräußerung eingeben, um die vorhergesagte Absicht zu erhalten.
 
-Das Erstellen einer App ist kostenlos. Es ist kein Azure-Abonnement erforderlich. Wenn Sie zum Bereitstellen Ihrer App bereit sind, erstellen Sie eine Azure Cognitive Services-Ressource und weisen sie der App zu. Der Bereitstellungsprozess wird im [nächsten Schnellstart](get-started-portal-deploy-app.md) erläutert.
+Das Erstellen einer App ist kostenlos, und es ist kein Azure-Abonnement erforderlich. Wenn Sie so weit sind, Ihre App bereitzustellen, lesen Sie den [Schnellstart zum Bereitstellen einer App](get-started-portal-deploy-app.md). Dort erfahren Sie, wie Sie eine Azure Cognitive Service-Ressource erstellen und sie der App zuweisen.
 
-## <a name="create-app"></a>Erstellen einer App 
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
-1. Öffnen Sie das [LUIS-Portal](https://www.luis.ai) in einem Browser, und melden Sie sich an. Wenn Sie sich zum ersten Mal anmelden, müssen Sie ein kostenloses LUIS-Portalbenutzerkonto erstellen.
+## <a name="create-an-app"></a>Erstellen einer App
 
 1. Wählen Sie auf der Kontextsymbolleiste die Option **Neue App erstellen** aus.
 
-    [![Erstellen einer neuen App im LUIS-Portal](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [![Erstellen einer neuen App im LUIS-Portal](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
 
 1. Konfigurieren Sie die App im Popupfenster mit den folgenden Einstellungen, und wählen Sie dann **Fertig** aus.
 
-    |Einstellungsname| Wert | Zweck|
-    |--|--|--|
-    |NAME|`myEnglishApp`|Eindeutiger Name der LUIS-App<br>required|
-    |Kultur|**Englisch**|Sprache der Äußerungen von Benutzern, **en-us**<br>required|
-    |BESCHREIBUNG|`App made with LUIS Portal`|Beschreibung der App<br>optional|
+   |Einstellungsname| Wert | Zweck|
+   |--|--|--|
+   |NAME|`myEnglishApp`|Eindeutiger Name der LUIS-App<br>required|
+   |Kultur|**Englisch**|Sprache der Äußerungen von Benutzern, **en-us**<br>required|
+   |BESCHREIBUNG|`App made with LUIS Portal`|Beschreibung der App<br>optional|
+   | | | |
 
-    ![Eingeben der Einstellungen für die neue App](./media/get-started-portal-build-app/create-new-app-settings.png)
+   ![Eingeben der Einstellungen für die neue App](./media/get-started-portal-build-app/create-new-app-settings.png)
 
+## <a name="create-intents"></a>Erstellen von Absichten
 
-## <a name="create-intent"></a>Erstellen einer Absicht 
+Nachdem die LUIS-App erstellt wurde, müssen Sie Absichten erstellen. Absichten dienen zum Kategorisieren der Texteingaben von Benutzern. Beispielsweise kann eine Personalverwaltungs-App zwei Funktionen aufweisen. Personen dabei zu helfen:
 
-Nachdem die App erstellt wurde, erstellen Sie als Nächstes die Absichten. Absichten dienen zum Kategorisieren der Texteingaben von Benutzern. Angenommen, Sie haben eine Personal-App mit zwei Funktionen: erstens Suchen nach Personen und Bewerben um Stellen und zweitens Suchen nach Formularen zur Bewerbung um Stellen. In diesem Fall entsprechen diese zwei unterschiedlichen _Absichten bzw. Funktionen_ den folgenden Absichten:
+ 1. Stellen zu finden und sich auf sie zu bewerben
+ 1. Formulare für die Bewerbung auf Stellen zu finden
+
+Die zwei verschiedenen _Absichten_ der App richten sich an den folgenden Absichten aus:
 
 |Absicht|Beispieltext vom Benutzer<br>bezeichnet als _Äußerung_|
 |--|--|
 |ApplyForJob|`I want to apply for the new software engineering position in Cairo.`|
 |FindForm|`Where is the job transfer form hrf-123456?`|
 
-1. Nachdem die App erstellt wurde, wird die Seite **Intents** (Absichten) des Abschnitts **Erstellen** angezeigt. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus. 
+Führen Sie die folgenden Schritte aus, um Absichten zu erstellen:
 
-    [![Auswählen der Schaltfläche „Create new intent“ (Neue Absicht erstellen)](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+1. Nachdem die App erstellt wurde, wird die Seite **Intents** (Absichten) des Abschnitts **Erstellen** angezeigt. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus.
 
-1. Geben Sie den Namen der Absicht `FindForm` ein, und klicken Sie auf **Fertig**.
+   [![Auswählen der Schaltfläche „Create new intent“ (Neue Absicht erstellen)](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-    ![Eingeben des Absichtsnamens „FindForm“](./media/get-started-portal-build-app/create-new-intent-dialog.png)
+1. Geben Sie den Namen der Absicht ein, `FindForm`, und wählen Sie dann **Fertig** aus.
 
-## <a name="add-example-utterance"></a>Hinzufügen einer Beispieläußerung 
+   ![Eingeben des Absichtsnamens „FindForm“](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
-Nachdem Sie die Absicht erstellt haben, fügen Sie als Nächstes Beispieläußerungen hinzu. Diese Äußerungen sind in einem Chatbot oder einer anderen Clientanwendung vom Benutzer eingegebene Texte, durch die die Absicht des Benutzers einer LUIS-Absicht zugeordnet wird. 
+## <a name="add-an-example-utterance"></a>Hinzufügen einer Beispieläußerung
 
-Für die Absicht `FindForm` dieser Beispielanwendung enthalten Beispieläußerungen die Formularnummer. Dies ist eine wichtige Information innerhalb der Äußerung, die von der Clientanwendung zum Erfüllen der Anforderung des Benutzers benötigt wird. 
+Nach dem Erstellen von Absichten fügen Sie Beispieläußerungen hinzu. Beispieläußerungen sind Text, den ein Benutzer in einen Chatbot oder eine andere Clientanwendung eingibt. Sie bilden die Absicht des Texts des Benutzers auf eine LUIS-Absicht ab.
 
-Fügen Sie der Absicht `FindForm` die folgenden 15 Beispieläußerungen hinzu (die Übersetzungen in Klammern dienen lediglich zur Information). 
+Für die `FindForm`-Absicht dieser Beispielanwendung gehört zu den Beispieläußerungen die Formularnummer. Die Clientanwendung benötigt die Formularnummer, um die Anforderung des Benutzers zu erfüllen, daher ist es wichtig, sie in die Äußerung einzuschließen.
+
+[![Eingeben von Beispieläußerungen für die Absicht „FindForm“](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+
+Fügen Sie der `FindForm`-Absicht die folgenden 15 Beispieläußerungen hinzu.
 
 |#|Beispiele für Äußerungen|
 |--|--|
@@ -85,7 +94,7 @@ Fügen Sie der Absicht `FindForm` die folgenden 15 Beispieläußerungen hinzu (
 |14|will hrf-234567 be edited for new requirements (Wird hrf-234567 mit neuen Anforderungen überarbeitet)|
 |15|hrf-123456, hrf-123123, hrf-234567|
 
-Diese Beispieläußerungen unterscheiden sich gewollt in folgenden Punkten:
+Diese Beispieläußerungen unterscheiden sich entwurfsbedingt in folgenden Punkten:
 
 * Länge der Äußerung
 * Interpunktion
@@ -93,51 +102,51 @@ Diese Beispieläußerungen unterscheiden sich gewollt in folgenden Punkten:
 * Zeitform des Verbs (is, was, will be)
 * Reihenfolge der Wörter
 
-[![Eingeben von Beispieläußerungen für die Absicht „FindForm“](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
-## <a name="create-regular-expression-entity"></a>Erstellen einer Entität vom Typ „Regulärer Ausdruck“ 
 
-Um die Formularnummer abzurufen, die als Teil der Vorhersageantwort zur Laufzeit zurückgegeben wird, muss das Formular als Entität markiert werden. Da der Text mit der Formularnummer sehr strukturiert ist, kann er als Entität vom Typ „Regulärer Ausdruck“ markiert werden. Gehen Sie wie folgt vor, um die Entität zu erstellen. 
+## <a name="create-a-regular-expression-entity"></a>Erstellen einer Entität vom Typ „Regulärer Ausdruck“
 
-1. Wählen Sie im linken Navigationsmenü die Option **Entitäten** aus. 
+Um in der Vorhersageantwort zur Laufzeit die Formularnummer zurückzugeben, muss das Formular als Entität gekennzeichnet sein. Da der Text mit der Formularnummer sehr strukturiert ist, können Sie ihn mithilfe einer Entität vom Typ „Regulärer Ausdruck“ markieren. Gehen Sie wie folgt vor, um die Entität zu erstellen:
 
-1. Wählen Sie auf der Seite „Entitäten“ die Option **Neue Entität erstellen** aus.
+1. Wählen Sie im Menü links die Option **Entitäten** aus.
 
-1. Geben Sie den Namen `Human Resources Form Number` ein, wählen Sie den Entitätstyp **RegEx** aus, und geben Sie den regulären Ausdruck `hrf-[0-9]{6}` ein. Dieser Ausdruck entspricht den Literalzeichen `hrf-` und lässt genau sechs Ziffern zu. 
+1. Wählen Sie auf der Seite **Entitäten** die Option **Neue Entität erstellen** aus.
 
-    ![Eingeben der Entitätsinformationen für die Entität vom Typ „Regulärer Ausdruck“](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+1. Geben Sie den Namen `Human Resources Form Number` ein, wählen Sie den Entitätstyp **RegEx** aus, und geben Sie den regulären Ausdruck `hrf-[0-9]{6}` ein. Dieser Eintrag entspricht den Literalzeichen `hrf-` und lässt genau sechs Ziffern zu.
 
-1. Wählen Sie **Fertig**aus. 
+   ![Eingeben der Entitätsinformationen für die Entität vom Typ „Regulärer Ausdruck“](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
-## <a name="add-example-utterances-to-none-intent"></a>Hinzufügen von Beispieläußerungen zur Absicht „None“
+1. Wählen Sie **Fertig**aus.
 
-Die Absicht **None** ist die Fallbackabsicht und sollte nicht leer gelassen werden. Diese Absicht sollte für jeweils zehn der restlichen Absichten der App eine Äußerung enthalten. 
+## <a name="add-example-utterances-to-the-none-intent"></a>Hinzufügen von Beispieläußerungen zur Absicht „None“
 
-Die Beispieläußerungen der Absicht **None** dürfen nicht im Bereich der Clientanwendung enthalten sein. 
+Die Absicht **None** ist die Fallbackabsicht und sollte nicht leer gelassen werden. Diese Absicht sollte eine Äußerung für jeweils 10 Beispieläußerungen enthalten, die Sie für die anderen Absichten der App hinzugefügt haben.
 
-1. Klicken Sie im linken Menü auf **Intents** (Absichten), und wählen Sie dann in der Liste der Absichten **None** aus.
+Die Beispieläußerungen der Absicht **None** dürfen nicht im Bereich der Clientanwendung enthalten sein.
+
+1. Klicken Sie im linken Menü auf **Intents** (Absichten), und wählen Sie dann in der Liste der Absichten **None** (Keine) aus.
 
 1. Fügen Sie der Absicht die folgenden Beispieläußerungen hinzu.
 
-    |Beispieläußerungen für die Absicht „None“|
-    |--|
-    |Bellende Hunde sind nervig|
-    |Bestell mir eine Pizza|
-    |Pinguine im Ozean|
+   |Beispieläußerungen für die Absicht „None“|
+   |--|
+   |Bellende Hunde sind nervig|
+   |Bestell mir eine Pizza|
+   |Pinguine im Ozean|
 
-    Diese Beispieläußerungen sind nicht im Bereich der Personal-App enthalten. Falls der Bereich Ihrer Personal-App Begriffe aus den Bereichen Tiere und Lebensmittel oder das Wort Ozean enthält, sollten diese Beispieläußerungen nicht für die Absicht **None** verwendet werden. 
+   Diese Beispieläußerungen sind nicht im Bereich der Personal-App enthalten. Falls der Bereich Ihrer Personal-App Begriffe aus den Bereichen Tiere und Lebensmittel oder das Wort Ozean enthält, sollten Sie für die Absicht **None** andere Beispieläußerungen verwenden.
 
 ## <a name="train-the-app"></a>Trainieren der App
 
-Wählen Sie im oberen rechten Navigationsbereich **Train** (Trainieren) aus, um die Änderungen der Absicht und des Entitätsmodells auf die aktuelle Version der App anzuwenden. 
+Wählen Sie im Menü oben rechts **Train** (Trainieren) aus, um die Änderungen der Absicht und des Entitätsmodells auf die aktuelle Version der App anzuwenden.
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Überprüfen der Entität vom Typ „Regulärer Ausdruck“ in den Beispieläußerungen
 
-1. Überprüfen Sie, ob die Entität in der Absicht **FindForm** gefunden wird, indem Sie im linken Menü **Intents** (Absichten) und dann **FindForm** auswählen. 
+1. Überprüfen Sie, ob die Entität in der Absicht **FindForm** gefunden wird, indem Sie im linken Menü **Intents** (Absichten) auswählen. Wählen Sie dann die Absicht **FindForm** aus.
 
-    Die Entität ist an den Stellen markiert, an denen sie in den Beispieläußerungen vorkommt. Falls Sie anstelle des Entitätsnamens den ursprünglichen Text anzeigen möchten, schalten Sie über die Symbolleiste die **Entities View** (Entitätsansicht) um.
+   Die Entität ist an den Stellen markiert, an denen sie in den Beispieläußerungen vorkommt. Falls Sie anstelle des Entitätsnamens den ursprünglichen Text anzeigen möchten, schalten Sie über die Symbolleiste die **Entities View** (Entitätsansicht) um.
 
-    [![Alle Beispieläußerungen mit markierten Entitäten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   [![Alle Beispieläußerungen mit markierten Entitäten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Testen der neuen App im interaktiven Testbereich
 
@@ -147,16 +156,17 @@ Verwenden Sie den interaktiven **Testbereich** im LUIS-Portal, um zu überprüfe
 
 1. Fügen Sie eine neue Äußerung hinzu, und drücken Sie dann die EINGABETASTE:
 
-    ```Is there a form named hrf-234098```
+   ```Is there a form named hrf-234098```
 
-    ![Testen einer neuen Äußerung im Testbereich](./media/get-started-portal-build-app/test-new-utterance.png)
+   ![Testen einer neuen Äußerung im Testbereich](./media/get-started-portal-build-app/test-new-utterance.png)
 
-    Als Absicht mit der höchsten Bewertung wird korrekt **FindForm** mit einer Zuverlässigkeit von mehr als 90 % (0,977) angezeigt, und die Entität **Human Resources Form Number** wurde mit dem Wert „hrf-234098“ extrahiert. 
+   Die am stärksten vorhergesagte Absicht ist richtigerweise **FindForm** mit einer Zuverlässigkeit von mehr als 90 % (0,977). Die Entität **Personalwesen-Formularnummer** wird mit dem Wert hrf-234098 extrahiert.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Wenn Sie mit diesem Schnellstart fertig sind und nicht mit dem nächsten Schnellstart fortfahren möchten, wählen Sie im oberen Navigationsmenü **Meine Apps** aus. Aktivieren Sie dann in der Liste das Kontrollkästchen links neben der App, und wählen Sie auf der Kontextsymbolleiste über der Liste **Löschen** aus. 
 
-[![Löschen der App aus der Liste „Meine Apps“](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+Wenn Sie mit diesem Schnellstart fertig sind und nicht mit dem nächsten Schnellstart fortfahren möchten, wählen Sie im oberen Navigationsmenü **Meine Apps** aus. Aktivieren Sie dann in der Liste das Kontrollkästchen links neben der App, und wählen Sie auf der Kontextsymbolleiste über der Liste die Option **Löschen** aus.
+
+[![App aus der Liste „Meine Apps“ löschen](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

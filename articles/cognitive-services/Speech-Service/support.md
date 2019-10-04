@@ -1,21 +1,21 @@
 ---
-title: Support- und Hilfeoptionen
-titlesuffix: Azure Cognitive Services
+title: Support- und Hilfeoptionen – Spracherkennungsdienst
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Hilfe und Support zu Fragen und Problemen beim Erstellen von Anwendungen, die in den Speech-Dienst integriert werden, erhalten.
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/26/2018
-ms.author: wolfma
-ms.openlocfilehash: bf0916f197ff5bf1a9531fde98fe8cefc8d7727f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 07/23/2019
+ms.author: jhakulin
+ms.openlocfilehash: 26d66868ab4c003dbd962e0c94009bc38bb36345
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358066"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68558842"
 ---
 # <a name="support-and-help-options"></a>Support- und Hilfeoptionen
 
@@ -64,13 +64,14 @@ Stack Overflow ist der bevorzugte Kanal für entwicklungsbezogene Fragen. Dort s
 
 Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, übermitteln Sie eine neue Frage in Stack Overflow. Verwenden Sie beim Formulieren der Frage eines der folgenden Tags:
 
-|Komponente/Bereich  |Tags  |
+|Komponente/Bereich  |`Tags`  |
 |---------|---------|
 |Spracherkennung |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
 |Sprachsynthese |[[microsoft-cognitive+text-to-speech]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
 |Sprachübersetzung |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
 |Sprechabsicht |[[microsoft-cognitive+luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
 |Allgemeines Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
+| Virtuelle Voice-First-Assistenten (Vorschauversion) | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
 
 > [!TIP]
 > Die folgenden Beiträge aus Stack Overflow enthalten Tipps zum Formulieren von Fragen und zum Hinzufügen von Quellcode. Das Befolgen dieser Hinweis kann dazu beitragen, dass Mitglieder der Community schneller auf Ihre Frage reagieren:  
@@ -82,7 +83,7 @@ Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, übermit
 Beispiele werden häufig als Open Source-Dateien bereitgestellt. Erstellen Sie bei Fragen und Problemen ein *Problem* im entsprechenden GitHub-Repository. Sie können einen Pull Request übermitteln. Die folgende Liste enthält Links zu den Beispielrepositorys:
 
 * [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
-* [Geräte-SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+* [Speech-Geräte-SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
 Sie können einen Fehlerbericht oder eine Featureanforderung erstellen oder eine allgemeine Frage stellen, aber auch bewährte Methoden teilen. Befolgen Sie für das Melden von Fehlern die bereitgestellte Vorlage:
 

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 514f0c193dbbca6d8583c9f93feadee3415f163c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6f35bf82e1c3275772bc9f5ccdcaceed024bd7d9
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426272"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68967788"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -56,22 +56,7 @@ ms.locfileid: "59426272"
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="">
-                                                    <div class="cardSize">
-                                                        <div class="cardPadding">
-                                                            <div class="card">
-                                                                <div class="cardImageOuter">
-                                                                    <div class="cardImage">
-                                                                        <img alt="" src="/learn/achievements/secure-azure-resources-with-conditional-access.svg" data-linktype="external">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="cardText" style="padding-left: 0px">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
+                                           </li>
                                         </ul>
                                     </li>
                                     <li>
@@ -79,12 +64,18 @@ ms.locfileid: "59426272"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
+                                                        <h3>Neuerungen</h3>
+                                                        <p>
+                                                            <a href="./app/azure-vm-vmss-apps.md">Überwachung für Anwendungen auf virtuellen Azure-Computern und Azure-VM-Skalierungsgruppen ohne Code</a><br>
+                                                            <a href="./app/kubernetes.md">Überwachen von Kubernetes-Anwendungen</a><br>
+                                                            <a href="./app/status-monitor-v2-overview.md">Statusmonitor v2 für IIS-Apps</a><br>
+                                                        </p>
+                                                        <br><br>
                                                         <h3>Schnellstarts</h3>
                                                         <p>
                                                             <a href="./learn/quick-monitor-portal.md">ASP.NET</a><br>
                                                             <a href="./learn/dotnetcore-quick-start.md">ASP.NET Core</a><br>
                                                             <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
-                                                            <a href="./learn/java-quick-start.md">Java</a><br>
                                                             <a href="./learn/mobile-center-quickstart.md">Mobile</a><br>
                                                             <a href="./app/website-monitoring.md">Browser-/clientseitige Überwachung</a>
                                                         </p>
@@ -155,6 +146,7 @@ ms.locfileid: "59426272"
                                                             <a href="./app/asp-net.md">Umfassende Überwachungskonfiguration</a><br>
                                                             <a href="./app/monitor-performance-live-website-now.md">Statusmonitor</a><br>
                                                             <a href="./app/azure-web-apps.md">App Service-Überwachung</a><br>
+                                                            <a href="./app/azure-vm-vmss-apps.md">Überwachung von Anwendungen auf VMs und VM-Skalierungsgruppen</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Benutzerdefinierte Ereignisse und Metriken</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">Open Source SDK für .NET – GitHub-Repository</a>
                                                         </p>

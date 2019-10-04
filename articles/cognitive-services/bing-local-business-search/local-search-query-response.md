@@ -1,20 +1,21 @@
 ---
-title: Senden und Verwenden von Abfragen und Antworten der API für die Bing-Suche nach ortsansässigen Unternehmen | Microsoft-Dokumentation
+title: Senden und Verwenden von Abfragen und Antworten der API für die Bing-Suche nach ortsansässigen Unternehmen
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erfahren Sie, wie Sie Suchabfragen mit der API für die Bing-Suche nach ortsansässigen Unternehmen senden und verwenden.
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 11/01/2018
-ms.author: rosh; v-gedod
-ms.openlocfilehash: 79219de775be96f35bd11ac85640efcc4a04a93b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.subservice: bing-local-business
+ms.topic: conceptual
+ms.date: 06/26/2018
+ms.author: rosh
+ms.openlocfilehash: 31f81d76ff433d5f2e634b9a8f5fac50f8425f49
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779792"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906355"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Senden und Verwenden von Abfragen und Antworten der API für die Bing-Suche nach ortsansässigen Unternehmen
 
@@ -22,7 +23,7 @@ Sie können mit der API für die Bing-Suche nach ortsansässigen Unternehmen lok
 
 ## <a name="creating-a-request"></a>Erstellen einer Anforderung
 
-Um eine Anforderung an die API für die Bing-Suche nach ortsansässigen Unternehmen zu senden, fügen Sie einen Suchbegriff an den Parameter `q=` an, bevor Sie ihn dem API-Endpunkt hinzufügen, einschließlich des Headers `Ocp-Apim-Subscription-Key`. Beispiel: 
+Um eine Anforderung an die API für die Bing-Suche nach ortsansässigen Unternehmen zu senden, fügen Sie einen Suchbegriff an den Parameter `q=` an, bevor Sie ihn dem API-Endpunkt hinzufügen, einschließlich des Headers `Ocp-Apim-Subscription-Key`. Beispiel:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
@@ -37,6 +38,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localC
 ## <a name="using-responses"></a>Verwenden von Antworten
 
 JSON-Antworten aus der API für die Bing-Suche nach ortsansässigen Unternehmen enthalten ein `SearchResponse`-Objekt. Die API gibt relevante Suchergebnisse im Feld `places` zurück. Wenn keine Ergebnisse gefunden werden, wird das Feld `places` nicht in die Antwort aufgenommen.
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
 ```
 {
@@ -61,7 +64,7 @@ Die von der API zurückgegebenen JSON-Ergebnisse beinhalten die folgenden Attrib
 * name
 * routeablePoint
 * telephone
-* URL
+* url
 
 Weitere Informationen zu Headern, Parametern, Marktcodes, Antwortobjekten, Fehlern usw. finden Sie in der Referenz für die [API für die Bing-Suche nach ortsansässigen Unternehmen v7](local-search-reference.md).
 

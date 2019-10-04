@@ -1,20 +1,20 @@
 ---
-title: Transformieren von Daten mit Azure Data Box Edge | Microsoft-Dokumentation
+title: Tutorial zum Filtern und Analysieren von Daten mit Compute auf Azure Data Box Edge | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie die Computerolle in Data Box Edge konfigurieren und verwenden, um Daten vor dem Senden an Azure zu transformieren.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/19/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 31911c124aeafecb8ee37d14e58d3a0bdc0d4955
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b641ae62ba6e0cdacaeb46b1ffee2f02c7544763
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400742"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277133"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge"></a>Tutorial: Transformieren von Daten mit Azure Data Box Edge
 
@@ -61,6 +61,9 @@ Um die Computeumgebung auf Ihrer Data Box Edge-Instanz zu konfigurieren, erstell
     
     ![Erste Schritte mit Compute](./media/data-box-edge-deploy-configure-compute/configure-compute-3.png)
 
+    > [!NOTE]
+    > Wird das Dialogfeld **Compute konfigurieren** geschlossen, bevor die IoT Hub-Instanz mit dem Data Box Edge-Gerät verknüpft wird, wird die IoT Hub-Instanz erstellt, aber nicht in der Computekonfiguration angezeigt. 
+    
     Wenn die Edge-Computerolle auf dem Edge-Gerät eingerichtet ist, werden zwei Geräte erstellt: ein IoT-Gerät und ein IoT Edge-Gerät. Beide Geräte können in der IoT Hub-Ressource angezeigt werden. Auf diesem IoT Edge-Gerät wird auch eine IoT Edge-Runtime ausgeführt. Derzeit ist für Ihr IoT Edge-Gerät nur die Linux-Plattform verfügbar.
 
 

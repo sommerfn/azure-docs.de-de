@@ -1,7 +1,6 @@
 ---
 title: Veröffentlichen von Azure HDInsight-Anwendungen
 description: Informationen zum Erstellen einer HDInsight-Anwendung und deren anschließender Veröffentlichung im Azure Marketplace.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: fd6d47d8300872f5bcdf36aec492289f93858504
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e64bf253a73df3a2f8170109dc1dfb9a59613733
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814187"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64685327"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace
 Sie können eine Azure HDInsight-Anwendung auf einem Linux-basierten HDInsight-Cluster installieren. In diesem Artikel erfahren Sie, wie Sie eine HDInsight-Anwendung im Azure Marketplace veröffentlichen. Allgemeine Informationen zum Veröffentlichen im Azure Marketplace finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
@@ -92,8 +91,8 @@ So veröffentlichen Sie eine HDInsight-Anwendung:
 3. Geben Sie einen Titel ein, und wählen Sie dann **Neue Lösungsvorlage erstellen**.
 4. Wenn Sie Ihr Unternehmen noch nicht registriert haben, wählen Sie **Create Dev Center account and join the Azure program** (Dev Center-Konto erstellen und am Azure-Programm teilnehmen).  Weitere Informationen hierzu finden Sie unter [Erstellen eines Microsoft-Entwicklerkontos](../marketplace/marketplace-publishers-guide.md).
 5. Wählen Sie **Define some Topologies to get Started** (Definieren einiger Topologien für den Einstieg). Eine Lösungsvorlage ist allen zugehörigen Topologien übergeordnet. Sie können in einem Angebot/einer Lösungsvorlage mehrere Topologien definieren. Wenn ein Angebot in die Stagingumgebung überführt wird, werden alle Topologien einbezogen. 
-6. Geben Sie einen Topologienamen ein, und wählen Sie dann **+**.
-7. Geben Sie eine neue Version ein, und wählen Sie dann **+**.
+6. Geben Sie einen Topologienamen ein, und wählen Sie dann **+** .
+7. Geben Sie eine neue Version ein, und wählen Sie dann **+** .
 8. Laden Sie die ZIP-Datei hoch, die Sie erstellt haben, als Sie die Anwendung gepackt haben.  
 9. Wählen Sie **Zertifizierung anfordern**. Das Microsoft-Zertifizierungsteam prüft die Dateien und zertifiziert die Topologie.
 

@@ -1,62 +1,57 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 888ed15344ff3709a7a84d5be7e863535bed1792
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734692"
 documentType: LandingData
 title: 'Bing-Such-API für ortsansässige Unternehmen: Dokumentation'
 titleSuffix: Azure Cognitive Services
 metadata:
   title: 'Bing-Such-API für ortsansässige Unternehmen: Dokumentation'
-  description: Die Bing-Such-API für ortsansässige Unternehmen ist ein RESTful-Dienst, mit dem Ihre Anwendungen basierend auf Suchabfragen Unternehmen in der näheren Umgebung suchen können.
+  titleSuffix: Azure Cognitive Services
+  description: 'Die Bing-Such-API für ortsansässige Unternehmen ist ein RESTful-Dienst, mit dem Ihre Anwendungen basierend auf Suchabfragen Unternehmen in der näheren Umgebung suchen können.'
   services: cognitive-services
-  author: mikedodaro
-  manager: rosh
+  author: aahill
+  manager: nitinme
+  ms.service: cognitive-services
   ms.subservice: bing-local-business
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/02/2018
-  ms.author: rosh, v-gedod
+  ms.author: rosh
 abstract:
   description: Mit der Bing-Such-API für ortsansässige Unternehmen können Ihre Anwendungen basierend auf Suchabfragen Kontakt- und Standortdaten von Unternehmen in der näheren Umgebung suchen.
 sections:
-- title: Schnellstarts
-  items:
-  - type: paragraph
-    text: 'Erste Schritte mit der Bing-Such-API für ortsansässige Unternehmen durch Senden von Suchabfragen und Anzeigen der JSON-Antwort:'
-  - type: list
-    style: icon48
+  - title: Schnellstarts
     items:
-    - image:
-        src: media/logo_csharp.svg
-      href: quickstarts/local-quickstart.md
-      text: C#
-    - image:
-        src: media/logo_java.svg
-      href: quickstarts/local-search-java-quickstart.md
-      text: Java
-    - image:
-        src: media/logo_nodejs.svg
-      href: quickstarts/local-search-node-quickstart.md
-      text: Knoten
-    - image:
-        src: media/logo_python.svg
-      href: quickstarts/local-search-python-quickstart.md
-      text: Python
-- title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Erste Schritte mit der Bing-Such-API für ortsansässige Unternehmen durch Senden von Suchabfragen und Anzeigen der JSON-Antwort:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/logo_csharp.svg
+            href: quickstarts/local-quickstart.md
+            text: 'C#'
+          - image:
+              src: media/logo_java.svg
+            href: quickstarts/local-search-java-quickstart.md
+            text: Java
+          - image:
+              src: media/logo_nodejs.svg
+            href: quickstarts/local-search-node-quickstart.md
+            text: Knoten
+          - image:
+              src: media/logo_python.svg
+            href: quickstarts/local-search-python-quickstart.md
+            text: Python
+  - title: Verweis
     items:
-    - title: REST-API
-      html: >
-        <p><a href="local-search-reference.md">REST-API-Referenz</a></p>
-    - title: PowerShell
-      html: >
-        <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: Befehlszeilenschnittstelle (CLI)
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure-Befehlszeilenschnittstelle</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST-API
+            html: |
+              <p><a href="local-search-reference.md">REST-API-Referenz</a></p>
+          - title: PowerShell
+            html: |
+              <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
+          - title: Befehlszeilenschnittstelle (CLI)
+            html: |
+              <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure-Befehlszeilenschnittstelle</a></p>

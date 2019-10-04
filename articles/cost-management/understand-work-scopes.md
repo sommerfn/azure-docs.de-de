@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 07/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 4e7956e8873b552fcd73c51a51f51d99f21af324
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002939"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338633"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -37,7 +37,7 @@ Cost Management ist in allen Bereichen oberhalb von Ressourcen aktiv, damit Orga
 
 Azure unterstützt für die Ressourcenverwaltung drei Bereiche. Jeder Bereich unterstützt die Verwaltung von Zugriff und Governance, einschließlich, aber nicht beschränkt auf Kostenverwaltung.
 
-- [**Verwaltungsgruppen**](../governance/management-groups/index.md): Hierarchische Container mit bis zu acht Ebenen zum Organisieren von Azure-Abonnements.
+- [**Verwaltungsgruppen**](../governance/management-groups/overview.md): Hierarchische Container mit bis zu acht Ebenen zum Organisieren von Azure-Abonnements.
 
     Ressourcentyp: [Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
 
@@ -60,14 +60,14 @@ Cost Management unterstützt für jeden der folgenden Bereiche die folgenden int
 - [**Besitzer**](../role-based-access-control/built-in-roles.md#owner): Ermöglicht das Anzeigen von Kosten und das Verwalten sämtlicher Aspekte einschließlich Kostenkonfiguration.
 - [**Mitwirkender**](../role-based-access-control/built-in-roles.md#contributor): Ermöglicht das Anzeigen von Kosten und das Verwalten sämtlicher Aspekte einschließlich Kostenkonfiguration, aber ausschließlich Zugriffssteuerung.
 - [**Leser**](../role-based-access-control/built-in-roles.md#reader): Ermöglicht das Anzeigen sämtlicher Daten einschließlich Kostendaten und Konfiguration, aber nicht das Vornehmen von Änderungen.
-- [**Cost Management-Mitwirkender**](../role-based-access-control/built-in-roles.md#cost-management-contributor): Ermöglicht das Anzeigen der Kosten und das Verwalten der Kostenkonfiguration.
-- [**Cost Management-Leser**](../role-based-access-control/built-in-roles.md#cost-management-reader): Ermöglicht das Anzeigen der Kosten und Konfiguration.
+- [**Cost Management-Mitwirkender**](../role-based-access-control/built-in-roles.md#cost-management-contributor): Ermöglicht das Anzeigen der Kosten, das Verwalten der Kostenkonfiguration und die Anzeige von Empfehlungen.
+- [**Cost Management-Leser**](../role-based-access-control/built-in-roles.md#cost-management-reader): Ermöglicht die Anzeige von Kostendaten, Kostenkonfiguration und Empfehlungen.
 
 „Cost Management-Mitwirkender“ ist die empfohlene Rolle mit geringstmöglichen Berechtigungen. Sie ermöglicht den Zugriff für die Erstellung und Verwaltung von Budgets und Exporten, um die Kosten effektiver zu überwachen und zu dokumentieren. Cost Management-Mitwirkende benötigen ggf. auch zusätzliche Rollen, um Kostenverwaltungsszenarien durchgängig unterstützen zu können. Stellen Sie sich die folgenden Szenarien vor:
 
 - **Eingreifen bei Überschreitung von Budgets**: Cost Management-Mitwirkende benötigen auch Zugriff für das Erstellen und/oder Verwalten von Aktionsgruppen, um bei Überschreitungen automatisch zu reagieren. Erwägen Sie das Zuweisen der Rolle [Mitwirkender an der Überwachung](../role-based-access-control/built-in-roles.md#monitoring-contributor) zu einer Ressourcengruppe, die die zu verwendende Aktionsgruppe enthält, wenn Budgetschwellenwerte überschritten werden. Die Automatisierung bestimmter Aktionen erfordert zusätzliche Rollen für die verwendeten spezifischen Dienste, wie z.B. Azure Automation und Azure Functions.
 - **Planen des Exports von Kostendaten**: Cost Management-Mitwirkende benötigen auch Zugriff für das Verwalten von Speicherkonten, um einen Export zum Kopieren von Daten in ein Speicherkonto zu planen. Erwägen Sie das Zuweisen der Rolle [Speicherkontomitwirkender](../role-based-access-control/built-in-roles.md#storage-account-contributor) zu einer Ressourcengruppe, die das Speicherkonto enthält, in das Kostendaten exportiert werden.
-- **Anzeigen von Empfehlungen für Kosteneinsparungen**: Cost Management-Leser und -Mitwirkende haben in der Standardeinstellung keinen Zugriff auf Empfehlungen. Der Zugriff auf Empfehlungen erfordert Lesezugriff auf einzelne Ressourcen. Erwägen Sie das Gewähren der Rolle [Leser](../role-based-access-control/built-in-roles.md#reader) oder einer [dienstspezifischen Rolle](../role-based-access-control/built-in-roles.md#built-in-role-descriptions).
+- **Anzeigen von Empfehlungen für Kosteneinsparungen**: Cost Management-Leser und Cost Management-Mitwirkende haben in der Standardeinstellung Zugriff auf die *Anzeige* von Empfehlungen. Der Zugriff auf die Kostenempfehlungen erfordert jedoch den Zugriff auf einzelne Ressourcen. Erwägen Sie, eine [dienstspezifische Rolle](../role-based-access-control/built-in-roles.md#built-in-role-descriptions) zuzulassen, wenn Sie auf eine kostenbasierte Empfehlung reagieren möchten.
 
 ## <a name="enterprise-agreement-scopes"></a>Enterprise Agreement-Bereiche
 
@@ -100,19 +100,19 @@ Azure-Abonnements werden unter Registrierungskonten geschachtelt. Abrechnungsben
 
 Abrechnungsbenutzer haben keinen Zugriff auf Verwaltungsgruppen, da sie nicht explizit zu einem bestimmten Abrechnungskonto gehören. Der Zugriff muss Verwaltungsgruppen explizit gewährt werden. In Verwaltungsgruppen werden Kosten aus allen geschachtelten Abonnements zusammengetragen. Allerdings enthalten sie nur nutzungsbasierte Käufe. Sie enthalten keine Käufe wie Reservierungen und Marketplace-Angebote von Drittanbietern. Um diese Kosten anzuzeigen, verwenden Sie das EA-Abrechnungskonto.
 
-## <a name="individual-agreement-pay-as-you-go-scopes"></a>Bereiche für Einzelverträge (nutzungsbasierte Zahlung)
+## <a name="individual-agreement-scopes"></a>Bereiche für einzelne Verträge
 
-Abonnements mit nutzungsbasierter Zahlung, einschließlich zugehöriger Typen wie kostenlose und Testversionen und Entwicklungs-/Testangebote, haben keinen expliziten Abrechnungskontobereich. Stattdessen hat jedes Abonnement einen Kontobesitzer oder Kontoadministrator, der mit dem EA-Kontobesitzer vergleichbar ist.
+Für aus einzelnen Angeboten wie nutzungsbasierte Bezahlung und verwandten Typen (z. B. kostenlose Testversionen und Entwicklungs-/Testangebote) erstellte Azure-Abonnements gibt es keinen expliziten Abrechnungskontobereich. Stattdessen hat jedes Abonnement einen Kontobesitzer oder Kontoadministrator, der mit dem EA-Kontobesitzer vergleichbar ist.
 
 - [**Abrechnungskonto**](../billing/billing-view-all-accounts.md): Stellt einen Besitzer mit einem einzelnen Konto für ein oder mehrere Azure-Abonnements dar. Unterstützt derzeit nicht das Gewähren des Zugriffs für mehrere Personen oder des Zugriffs auf aggregierte Kostenansichten.
 
     Ressourcentyp: Nicht zutreffend
 
-Kontoadministratoren für Abonnements mit nutzungsbasierter Zahlung können im [Azure-Kontocenter](https://account.azure.com/subscriptions) Abrechnungsdaten einsehen und verwalten, wie z.B. Rechnungen und Zahlungen. Sie können jedoch im Azure-Portal keine Kostendaten einsehen und keine Ressourcen verwalten. Um dem Kontoadministrator Zugriff zu gewähren, verwenden Sie die zuvor genannten Cost Management-Rollen.
+Kontoadministratoren für einzelne Azure-Abonnements können im [Azure-Kontocenter](https://account.azure.com/subscriptions) Abrechnungsdaten wie Rechnungen und Zahlungen anzeigen und verwalten. Sie können jedoch im Azure-Portal keine Kostendaten einsehen und keine Ressourcen verwalten. Um dem Kontoadministrator Zugriff zu gewähren, verwenden Sie die zuvor genannten Cost Management-Rollen.
 
-Im Gegensatz zu EA können Kontoadministratoren für Abonnements mit nutzungsbasierter Zahlung ihre Rechnungen im Azure-Portal einsehen. Beachten Sie, dass die Rollen „Cost Management-Leser“ und „Cost Management-Mitwirkender“ keinen Zugriff auf Rechnungen bieten. Weitere Informationen finden Sie unter [Gewähren von Zugriff auf Rechnungen für nutzungsbasierte Zahlung](../billing/billing-manage-access.md#give-access-to-billing).
+Im Gegensatz zu EA können Kontoadministratoren für einzelne Azure-Abonnements ihre Rechnungen im Azure-Portal anzeigen. Beachten Sie, dass die Rollen „Cost Management-Leser“ und „Cost Management-Mitwirkender“ keinen Zugriff auf Rechnungen bieten. Weitere Informationen finden Sie unter [Gewähren des Zugriffs auf Rechnungen](../billing/billing-manage-access.md##give-read-only-access-to-billing).
 
-## <a name="customer-agreement-scopes"></a>Bereiche für Microsoft-Kundenvereinbarung
+## <a name="microsoft-customer-agreement-scopes"></a>Bereiche für Microsoft-Kundenvereinbarung
 
 Abrechnungskonten der Microsoft-Kundenvereinbarung haben die folgenden Bereiche:
 
@@ -142,13 +142,25 @@ Azure-Abonnements werden ähnlich wie unter EA-Registrierungskonten unter Rechnu
 
 Abrechnungsbenutzer haben keinen Zugriff auf Verwaltungsgruppen, da sie nicht explizit zum Abrechnungskonto gehören. Wenn jedoch Verwaltungsgruppen für die Organisation aktiviert sind, werden alle Abonnementkosten im Abrechnungskonto und in der Stammverwaltungsgruppe zusammengeführt, da sie beide auf ein einziges Verzeichnis beschränkt sind. Verwaltungsgruppen enthalten nur Käufe, die nutzungsbasiert sind. Käufe wie Reservierungen und Marketplace-Angebote von Drittanbietern fließen nicht in Verwaltungsgruppen ein. Daher können das Abrechnungskonto und die Stammverwaltungsgruppe unterschiedliche Summen ausweisen. Um diese Kosten anzuzeigen, verwenden Sie das Abrechnungskonto oder entsprechende Abrechnungsprofil.
 
+## <a name="aws-scopes"></a>AWS-Bereiche
+
+Wenn die AWS-Integration abgeschlossen ist, finden Sie weitere Informationen unter [Einrichten und Konfigurieren der AWS-Integration](aws-integration-set-up-configure.md). Folgende Bereiche sind verfügbar:
+
+- **Externes Abrechnungskonto**: Repräsentiert eine Kundenvereinbarung mit einem Drittanbieter. Dies ist vergleichbar mit dem Abrechnungskonto für Enterprise Agreements.
+
+    Ressourcentyp: `Microsoft.CostManagement/externalBillingAccounts`
+    
+- **Externes Abonnement**: Repräsentiert ein operatives Kundenkonto bei einem Drittanbieter. Dies ist vergleichbar mit einem Azure-Abonnement.
+
+    Ressourcentyp: `Microsoft.CostManagement/externalSubscriptions`
+
 ## <a name="cloud-solution-provider-csp-scopes"></a>Bereiche für Cloud Solution Provider (CSP)
 
 Cloud Solution Provider-Partner (CSP) werden derzeit in Cost Management nicht unterstützt. Stattdessen können Sie das [Partner Center](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) verwenden.
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Umschalten zwischen Bereichen in Cost Management
 
-Alle Cost Management-Ansichten im Azure-Portal enthalten links oben die Option **Bereich**. Hierüber können Sie den Bereich rasch ändern. Klicken Sie auf **Bereich**, um die Bereichsauswahl zu öffnen. Hier werden Abrechnungskonten, die Stammverwaltungsgruppe und alle Abonnements angezeigt, die nicht unter der Stammverwaltungsgruppe geschachtelt sind. Um einen Bereich auszuwählen, klicken Sie auf den Hintergrund, um ihn zu markieren, und dann unten auf **Auswählen**. Für eine Detailsuche in geschachtelten Bereichen, wie beispielsweise Ressourcengruppen in einem Abonnement, klicken Sie auf den Link „Bereichsname“. Um den übergeordneten Bereich auf einer geschachtelten Ebene auszuwählen, klicken Sie oben in der Bereichsauswahl auf **Diesen &lt;Bereich&gt; auswählen**.
+Alle Cost Management-Ansichten im Azure-Portal enthalten links oben die Auswahloption **Bereich**. Hierüber können Sie den Bereich rasch ändern. Klicken Sie auf **Bereich**, um die Bereichsauswahl zu öffnen. Hier werden Abrechnungskonten, die Stammverwaltungsgruppe und alle Abonnements angezeigt, die nicht unter der Stammverwaltungsgruppe geschachtelt sind. Um einen Bereich auszuwählen, klicken Sie auf den Hintergrund, um ihn zu markieren, und dann unten auf **Auswählen**. Für eine Detailsuche in geschachtelten Bereichen, wie beispielsweise Ressourcengruppen in einem Abonnement, klicken Sie auf den Link „Bereichsname“. Um den übergeordneten Bereich auf einer geschachtelten Ebene auszuwählen, klicken Sie oben in der Bereichsauswahl auf **Diesen &lt;Bereich&gt; auswählen**.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Bestimmen der Ressourcen-ID eines Bereichs
 
@@ -204,7 +216,7 @@ Bei der Arbeit mit Cost Management-APIs ist es wichtig, den Bereich zu kennen. E
 3. Kopieren Sie die Verwaltungsgruppen-ID aus der Tabelle.
 4. Ihr Bereich ist: `"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>Abonnement
+### <a name="subscription"></a>Subscription
 
 1. Öffnen Sie das Azure-Portal, und navigieren Sie in der Liste der Dienste zu **Abonnements**.
 2. Kopieren Sie die Abonnement-ID aus der Tabelle.
@@ -218,7 +230,7 @@ Bei der Arbeit mit Cost Management-APIs ist es wichtig, den Bereich zu kennen. E
 4. Kopieren Sie den Wert des Felds „Ressourcen-ID“.
 5. Ihr Bereich ist: `"/subscriptions/{id}/resourceGroups/{name}"`
 
-Cost Management wird derzeit in [Azure Global](https://management.azure.com) und [Azure Government](https://management.usgovcloudapi.net) unterstützt. Weitere Informationen zu Azure Government finden Sie unter [API-Endpunkte für Azure Global und Azure Government](../azure-government/documentation-government-developer-guide.md#endpoint-mapping)_._
+Cost Management wird derzeit in [Azure Global](https://management.azure.com) und [Azure Government](https://management.usgovcloudapi.net) unterstützt. Weitere Informationen zu Azure Government finden Sie unter [API-Endpunkte für Azure Global und Azure Government](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
 
 ## <a name="next-steps"></a>Nächste Schritte
 

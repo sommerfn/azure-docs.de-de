@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3055bf4be024065bcd8db9cf523de93a5ab6b22b
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 81a355cc7c0d1190ee86fac6ed155380e6e5c0d1
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905935"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877526"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler eine Verbindung zwischen einem MXChip IoT DevKit-Gerät (DevKit) und Ihrer Microsoft Azure IoT Central-Anwendung herstellen.
 
@@ -24,7 +26,7 @@ In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler eine Verbindun
 Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen:
 
 1. Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
-1. Ein DevKit-Gerät. Um ein DevKit-Gerät zu erwerben, besuchen Sie [MXChip IoT DevKit](http://mxchip.com/az3166).
+1. Ein DevKit-Gerät. Um ein DevKit-Gerät zu erwerben, besuchen Sie [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/).
 
 ## <a name="sample-devkits-application"></a>Anwendung Beispiel-DevKits
 
@@ -66,7 +68,7 @@ Wenn Sie das Gerät zuvor genutzt haben und es zur Verwendung eines anderen WLAN
 #### <a name="to-prepare-the-devkit-device"></a>So bereiten Sie das DevKit-Gerät vor
 
 1. Laden Sie die neueste vorgefertigte Azure IoT Central-Firmware für den MXChip von der Seite [Releases](https://aka.ms/iotcentral-docs-MXChip-releases) in GitHub herunter.
-1. Stellen Sie über ein USB-Kabel eine Verbindung zwischen dem DevKit-Gerät und dem Entwicklungscomputer her. Unter Windows wird ein Datei-Explorer-Fenster für ein Laufwerk geöffnet, das dem Speicher auf dem DevKit-Gerät zugeordnet ist. Das Laufwerk heißt beispielsweise **AZ3166 (D:)**.
+1. Stellen Sie über ein USB-Kabel eine Verbindung zwischen dem DevKit-Gerät und dem Entwicklungscomputer her. Unter Windows wird ein Datei-Explorer-Fenster für ein Laufwerk geöffnet, das dem Speicher auf dem DevKit-Gerät zugeordnet ist. Das Laufwerk heißt beispielsweise **AZ3166 (D:)** .
 1. Ziehen Sie die Datei **iotCentral.bin** auf das Laufwerksfenster. Wenn der Kopiervorgang abgeschlossen ist, wird das Gerät mit der neuen Firmware neu gestartet.
 
 1. Beim Neustart des DevKit-Geräts wird der folgende Bildschirm angezeigt:
@@ -208,12 +210,12 @@ Eine Anwendung, die mit der Anwendungsvorlage „Beispiel-DevKits“ erstellt wu
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>Zustände 
-| NAME          | Anzeigename   | NORMAL | VORSICHT | GEFAHR | 
+| NAME          | `Display name`   | NORMAL | VORSICHT | GEFAHR | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | Gerätestatus   | Grün  | Orange  | Rot    | 
 
-#### <a name="events"></a>Ereignisse 
-| NAME             | Anzeigename      | 
+#### <a name="events"></a>Events 
+| NAME             | `Display name`      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | Schaltfläche „B“ gedrückt  | 
 
@@ -221,7 +223,7 @@ Eine Anwendung, die mit der Anwendungsvorlage „Beispiel-DevKits“ erstellt wu
 
 Numerische Einstellungen
 
-| Anzeigename | Feldname | Units | Dezimalstellen | Minimum | Maximum | Initial |
+| `Display name` | Feldname | Units | Dezimalstellen | Minimum | Maximum | Initial |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Spannung      | setVoltage | Volt | 0              | 0       | 240     | 0       |
 | Aktuell      | setCurrent | Ampere  | 0              | 0       | 100     | 0       |
@@ -229,13 +231,13 @@ Numerische Einstellungen
 
 Einstellungen zum Ein-/Ausschalten
 
-| Anzeigename | Feldname | Text, wenn „eingeschaltet“ | Text, wenn „ausgeschaltet“ | Initial |
+| `Display name` | Feldname | Text, wenn „eingeschaltet“ | Text, wenn „ausgeschaltet“ | Initial |
 | ------------ | ---------- | ------- | -------- | ------- |
 | IR           | activateIR | EIN      | OFF      | Aus     |
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
-| Type            | Anzeigename | Feldname | Datentyp |
+| type            | `Display name` | Feldname | Datentyp |
 | --------------- | ------------ | ---------- | --------- |
 | Geräteeigenschaft | Nummer   | dieNumber  | number    |
 | Geräteeigenschaft | Gerätestandort   | location  | location    |
@@ -243,11 +245,11 @@ Einstellungen zum Ein-/Ausschalten
 
 ### <a name="commands"></a>Befehle
 
-| Anzeigename | Feldname | Rückgabetyp | Anzeigename des Eingabefelds | Name des Eingabefelds | Typ des Eingabefelds |
+| `Display name` | Feldname | Rückgabetyp | Anzeigename des Eingabefelds | Name des Eingabefelds | Typ des Eingabefelds |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
 | Echo         | Echo       | text        | value to display (Anzuzeigender Wert)         | displayedValue   | text             |
 | Countdown    | countdown  | number      | Count from (Zählen ab)               | countFrom        | number           |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie erfahren haben, wie Sie ein DevKit-Gerät mit Ihrer Azure IoT Central-Anwendung verbinden, empfiehlt sich als nächster Schritt das [Vorbereiten und Verbinden eines Raspberry Pi-Geräts](howto-connect-raspberry-pi-python.md).
+Da Sie nun wissen, wie ein MXChip IoT DevKit mit Ihrer Azure IoT Central-Anwendung verbunden wird, empfiehlt sich als nächster Lernschritt das [Einrichten einer benutzerdefinierten Gerätevorlage](howto-set-up-template.md) für Ihr eigenes IoT-Gerät.

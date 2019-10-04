@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 850d8bbb525763e0e7d0c0441173180b7c469dd8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085149"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61442928"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrieren von Azure Time Series Insights mit Remoteüberwachung
 
@@ -62,7 +62,7 @@ Stellen Sie als Nächstes Time Series Insights als zusätzliche Ressource in Ihr
     | Umgebungsname | Im folgenden Screenshot wird der Name **contorosrmtsi** verwendet. Wählen Sie Ihren eigenen eindeutigen Namen, wenn Sie diesen Schritt durchführen. |
     | Abonnement | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
     | Ressourcengruppe | **Vorhandene verwenden**: Wählen Sie den Namen Ihrer vorhandenen Ressourcengruppe für die Remoteüberwachung aus. |
-    | Standort | Hier verwenden wir **USA, Osten**. Erstellen Sie Ihre Umgebung nach Möglichkeit in derselben Region wie Ihre Remoteüberwachungslösung. |
+    | Location | Hier verwenden wir **USA, Osten**. Erstellen Sie Ihre Umgebung nach Möglichkeit in derselben Region wie Ihre Remoteüberwachungslösung. |
     | Sku |**S1** |
     | Capacity | **1** |
 
@@ -89,7 +89,7 @@ Erstellen Sie eine neue Ereignisquelle für die Verbindung mit Ihrem IoT Hub. St
     | Einstellung | Wert |
     | ------- | ----- |
     | Name der Ereignisquelle | Im folgenden Screenshot wird der Name **contosorm-iot-hub** verwendet. Verwenden Sie Ihren eigenen eindeutigen Namen, wenn Sie diesen Schritt durchführen. |
-    | Quelle | **IoT Hub** |
+    | `Source` | **IoT Hub** |
     | Importoption | **Verwenden eines IoT Hub aus verfügbaren Abonnements** |
     | Abonnement-ID | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
     | IoT Hub-Name | **contosorma57a6**. Verwenden Sie den Namen Ihres IoT Hub aus Ihrer Remoteüberwachungslösung. |
@@ -136,7 +136,7 @@ Im nächsten Schritt wird der Azure Stream Analytics-Manager-Microservice konfig
 
 1. Wählen Sie die Ressourcengruppe **ContosoRM** aus.
 
-1. Suchen Sie in der Liste mit den Ressourcen nach dem ASA-Streamingauftrag (Azure Stream Analytics). Der Ressourcenname beginnt mit **streamingjobs-**.
+1. Suchen Sie in der Liste mit den Ressourcen nach dem ASA-Streamingauftrag (Azure Stream Analytics). Der Ressourcenname beginnt mit **streamingjobs-** .
 
 1. Klicken Sie oben auf die Schaltfläche zum Beenden der ASA-Streamingaufträge.
 
@@ -236,6 +236,9 @@ Konfigurieren Sie die Umgebung für die Bereitstellung vom Typ `basic` für die 
 1. Navigieren Sie zum **ASA-Manager-Dienst**, und bearbeiten Sie die Docker Compose-Datei, indem Sie `PCS_TELEMETRY_STORAGE_TYPE` hinzufügen.
 
 1. Starten Sie die Docker-Container mit `sudo ./start.sh` auf dem virtuellen Computer neu.
+
+> [!NOTE]
+> Die obige Konfiguration von Umgebungsvariablen gilt für Versionen der Remoteüberwachung vor Version 1.0.2.
 
 ### <a name="standard-deployments"></a>Standard-Bereitstellungen
 

@@ -4,19 +4,18 @@ description: Erstellen automatisierter Tests für eine C# -Funktion in Visual St
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur, Tests
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: e0009e1c6380e02e2e0e24bf86e6dab435b6c022
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ff3d7d1272f9067f6bf9791c7964f8bf5f71945b
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357643"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709338"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategien zum Testen Ihres Codes in Azure Functions
 
@@ -221,7 +220,7 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string()
         {
             var request = TestFactory.CreateHttpRequest("name", "Bill");
-            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
+            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
             Assert.Equal("Hello, Bill", response.Value);
         }
 
@@ -230,7 +229,7 @@ namespace Functions.Tests
         public async void Http_trigger_should_return_known_string_from_member_data(string queryStringKey, string queryStringValue)
         {
             var request = TestFactory.CreateHttpRequest(queryStringKey, queryStringValue);
-            var response = (OkObjectResult)await HttpTrigger.Run(request, logger);
+            var response = (OkObjectResult)await HttpFunction.Run(request, logger);
             Assert.Equal($"Hello, {queryStringValue}", response.Value);
         }
 
@@ -312,7 +311,7 @@ module.exports = {
 ```
 Dieses Modul implementiert die `IsPastDue`-Eigenschaft so, dass sie als Fake-Zeitgeberinstanz fungiert.
 
-Verwenden Sie als Nächstes die VS Code-Functions-Erweiterungen, um [eine neue JavaScript-HTTP-Funktion zu erstellen](https://code.visualstudio.com/tutorials/functions-extension/getting-started), und nennen Sie sie *HttpTrigger*. Nachdem die Funktion erstellt wurde, fügen Sie im selben Ordner eine neue Datei namens **index.test.js** hinzu, und fügen Sie den folgenden Code hinzu:
+Verwenden Sie als Nächstes die VS Code-Functions-Erweiterungen, um [eine neue JavaScript-HTTP-Funktion zu erstellen](/azure/javascript/tutorial-vscode-serverless-node-01), und nennen Sie sie *HttpTrigger*. Nachdem die Funktion erstellt wurde, fügen Sie im selben Ordner eine neue Datei namens **index.test.js** hinzu, und fügen Sie den folgenden Code hinzu:
 
 ```javascript
 const httpFunction = require('./index');
@@ -347,7 +346,7 @@ test('Timer trigger should log message', () => {
 Die Zeitgeberfunktion aus der Vorlage protokolliert eine Meldung am Ende des Hauptteils der Funktion. Dieser Test stellt sicher, dass die *log*-Funktion einmal aufgerufen wird.
 
 ### <a name="run-tests"></a>Ausführen von Tests
-Um die Tests auszuführen, drücken Sie **STRG+~**, um das Befehlsfenster zu öffnen, und führen Sie `npm test` aus:
+Um die Tests auszuführen, drücken Sie **STRG+~** , um das Befehlsfenster zu öffnen, und führen Sie `npm test` aus:
 
 ```bash
 npm test

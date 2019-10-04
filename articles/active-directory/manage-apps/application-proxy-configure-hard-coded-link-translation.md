@@ -3,25 +3,25 @@ title: Übersetzen von Links und URLs – Azure AD-Anwendungsproxy | Microsoft-D
 description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungsproxy-Connectors.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/04/2018
-ms.author: celested
-ms.reviewer: harshja
+ms.date: 08/15/2019
+ms.author: mimart
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2949559542759cadf90d329bc50b352998b3eb7e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262549"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533702"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Umleiten von hartcodierten Links für Apps, die mit Azure AD-Anwendungsproxy veröffentlicht wurden
 
@@ -30,13 +30,16 @@ Azure AD-Anwendungsproxy stellt Ihre lokalen Apps Benutzern zur Verfügung, die 
 Die beste Möglichkeit sicherzustellen, dass Links sowohl innerhalb als auch außerhalb des Unternehmensnetzwerks identisch funktionieren, besteht darin, die externen URLs Ihrer Apps entsprechend ihren internen URLs zu konfigurieren. Arbeiten Sie mit [benutzerdefinierten Domänen](application-proxy-configure-custom-domain.md), um Ihre externen URLs so zu konfigurieren, dass sie den Namen Ihrer Unternehmensdomäne anstelle der standardmäßigen Anwendungsproxydomäne aufweisen.
 
 
-Wenn Sie in Ihrem Mandanten keine benutzerdefinierten Domänen verwenden können, stehen mehrere andere Optionen für die Bereitstellung dieser Funktionalität zur Verfügung. Alle diese Optionen sind auch mit benutzerdefinierten Domänen und untereinander kompatibel, sodass Sie bei Bedarf benutzerdefinierte Domänen und andere Lösungen konfigurieren können. 
+Wenn Sie in Ihrem Mandanten keine benutzerdefinierten Domänen verwenden können, stehen mehrere andere Optionen für die Bereitstellung dieser Funktionalität zur Verfügung. Alle diese Optionen sind auch mit benutzerdefinierten Domänen und untereinander kompatibel, sodass Sie bei Bedarf benutzerdefinierte Domänen und andere Lösungen konfigurieren können.
 
-**Option 1: Verwenden von Managed Browser:** Diese Lösung ist nur anwendbar, wenn Sie empfehlen oder festlegen möchten, dass Benutzer über Intune Managed Browser auf die Anwendung zugreifen. Es werden alle veröffentlichten URLs verarbeitet. 
+> [!NOTE]
+> Die Linkübersetzung wird für hartcodierte interne URLs, die mit JavaScript generiert wurden, nicht unterstützt.
+
+**Option 1: Verwenden von Managed Browser oder Microsoft Edge:** Diese Lösung ist nur anwendbar, wenn Sie empfehlen oder festlegen möchten, dass Benutzer über Intune Managed Browser oder den Microsoft Edge-Browser auf die Anwendung zugreifen. Es werden alle veröffentlichten URLs verarbeitet. 
 
 **Option 2: Verwenden der MyApps-Erweiterung:** Für diese Lösung müssen Benutzer eine clientseitige Browsererweiterung installieren. Die Lösung kann aber alle veröffentlichten URLs verarbeiten und in den meisten gängigen Browsern verwendet werden. 
 
-**Option 3: Verwenden der Einstellung für die Linkübersetzung:** Diese Einstellung wird vom Administrator festgelegt und ist für Benutzer nicht sichtbar. Allerdings werden nur URLs in HTML und CSS verarbeitet. Hartcodierte interne URLs, die (beispielsweise) über JavaScript generiert werden, werden nicht ausgeführt.  
+**Option 3: Verwenden der Einstellung für die Linkübersetzung:** Diese Einstellung wird vom Administrator festgelegt und ist für Benutzer nicht sichtbar. Allerdings werden nur URLs in HTML und CSS verarbeitet.   
 
 Mit diesen drei Features funktionieren Ihre Links unabhängig davon, wo sich Ihre Benutzer befinden. Wenn Sie über Apps verfügen, die direkt auf interne Endpunkte oder Ports verweisen, können Sie diese internen URLs den veröffentlichten externen Anwendungsproxy-URLs zuordnen. 
 
@@ -47,9 +50,9 @@ Mit diesen drei Features funktionieren Ihre Links unabhängig davon, wo sich Ihr
 > Wenn die Anwendung, die Sie mit Linkübersetzung konfigurieren müssen, SharePoint ist, finden Sie unter [Konfigurieren alternativer Zugriffszuordnungen für SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) ein weiteres Verfahren zum Zuordnen von Links. 
 
  
-### <a name="option-1-intune-managed-browser-integration"></a>Option 1: Integration von Intune Managed Browser 
+### <a name="option-1-intune-managed-browser-and-microsoft-edge-integration"></a>Option 1: Integration von Intune Managed Browser und Microsoft Edge 
 
-Mithilfe von Intune Managed Browser können Sie die Anwendung und die Inhalte zusätzlich schützen. Zur Verwendung dieser Lösung müssen Sie empfehlen bzw. festlegen, dass Benutzer über Intune Managed Browser auf die Anwendung zugreifen. Alle internen mit dem Anwendungsproxy veröffentlichten URLs werden von Managed Browser erkannt und an die entsprechende externe URL umgeleitet. Dadurch wird sichergestellt, dass alle hartcodierten internen URLs funktionieren. Wenn ein Benutzer im Browser direkt die interne URL eingibt, funktioniert diese, auch wenn der Benutzer remote arbeitet.  
+Mithilfe von Intune Managed Browser oder Microsoft Edge können Sie die Anwendung und die Inhalte zusätzlich schützen. Zur Verwendung dieser Lösung müssen Sie empfehlen bzw. festlegen, dass Benutzer über Intune Managed Browser auf die Anwendung zugreifen. Alle internen mit dem Anwendungsproxy veröffentlichten URLs werden von Managed Browser erkannt und an die entsprechende externe URL umgeleitet. Dadurch wird sichergestellt, dass alle hartcodierten internen URLs funktionieren. Wenn ein Benutzer im Browser direkt die interne URL eingibt, funktioniert diese, auch wenn der Benutzer remote arbeitet.  
 
 Weitere Informationen, auch zum Konfigurieren dieser Option, finden Sie in der Dokumentation zu [Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser).  
 
@@ -59,13 +62,14 @@ Mit der MyApps-Browsererweiterung werden alle internen mit dem Anwendungsproxy v
 
 Zur Verwendung dieses Features muss der Benutzer die Erweiterung herunterladen und angemeldet sein. Administratoren oder Benutzer müssen keine weitere Konfiguration vornehmen. 
 
- 
+Weitere Informationen, auch zum Konfigurieren dieser Option, finden Sie in der Dokumentation [MyApps-Browsererweiterung](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension).
 
 ### <a name="option-3-link-translation-setting"></a>Option 3: Einstellung für die Linkübersetzung 
 
-Wenn die Linkübersetzung aktiviert ist, durchsucht der Anwendungsproxydienst HTML- und CSS-Tags nach veröffentlichten internen Links und übersetzt sie, sodass bei Benutzern keine Unterbrechung stattfindet. 
+Wenn die Linkübersetzung aktiviert ist, durchsucht der Anwendungsproxydienst HTML- und CSS-Tags nach veröffentlichten internen Links und übersetzt sie, sodass bei Benutzern keine Unterbrechung stattfindet. Die MyApps-Browsererweiterung wird gegenüber der Einstellung für die Linkübersetzung bevorzugt verwendet, da sie dem Benutzer eine leistungsstärkere Erfahrung bietet.
 
-
+> [!NOTE]
+> Wenn Sie Option 2 oder 3 verwenden, sollte jeweils nur eine dieser Optionen aktiviert werden.
 
 ## <a name="how-link-translation-works"></a>Funktionsweise der Linkübersetzung
 
@@ -101,7 +105,7 @@ In der vollständigen Liste der HTML-Codetags, für die der Anwendungsproxy die 
 * meta
 * object
 * script
-* Quelle
+* source
 * track
 * video
 
@@ -148,4 +152,4 @@ Wir sind auf Ihre Hilfe angewiesen, damit dieses Feature für alle Ihre Apps fun
 ## <a name="next-steps"></a>Nächste Schritte
 [Verwenden von benutzerdefinierten Domänen mit Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md), damit diese dieselbe interne und externe URL aufweisen
 
-[Configure alternate access mappings for SharePoint 2013 (Konfigurieren alternativer Zugriffszuordnungen für SharePoint 2013)](https://technet.microsoft.com/library/cc263208.aspx)
+[Konfigurieren alternativer Zugriffszuordnungen für SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx)

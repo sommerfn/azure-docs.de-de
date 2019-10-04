@@ -1,6 +1,6 @@
 ---
 title: Anmerkungen zu dieser Version – Custom Vision Service
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -9,14 +9,32 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 2b0d8b8a86c3105b1bda7fb0d72cbcb72ed82995
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 79f3f2a5545b8cdcee86e52f35bd22a31e93d387
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785724"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564096"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service: Anmerkungen zu dieser Version
+
+## <a name="may-2-2019-and-may-10-2019"></a>2\. Mai 2019 und 10. Mai 2019
+
+- Fehlerbehebungen und Back-End-Verbesserungen
+
+## <a name="may-23-2019"></a>23. Mai 2019
+
+- Verbesserte UX-Portalerfahrung in Bezug auf Azure-Abonnements, die die Auswahl von Azure-Verzeichnissen vereinfacht.
+
+## <a name="april-18-2019"></a>18. April 2019 
+
+- Der Export der Objekterkennung für das Developer Kit für KI für maschinelles Sehen wurde hinzugefügt.
+- Optimierungen der Benutzeroberfläche, einschließlich der Projektsuche.
+
+## <a name="april-3-2019"></a>3\. April 2019
+
+- Der Grenzwert für die Anzahl der Begrenzungsrahmen pro Bild wurde auf 200 erhöht. 
+- Fehlerbehebungen, einschließlich eines umfangreichen Leistungsupdates für Modelle, die nach TensorFlow exportiert wurden. 
 
 ## <a name="march-26-2019"></a>26. März 2019
 
@@ -45,11 +63,11 @@ ms.locfileid: "59785724"
 - Das Basismodell für die Objekterkennungsdomäne wurde für eine bessere Qualität bei der Objekterkennung aktualisiert.
 - Fehlerbehebungen.
 
-## <a name="november-6-2018"></a>6. November 2018
+## <a name="november-6-2018"></a>6\. November 2018
 
 - Unterstützung für Logo-Domäne in der Objekterkennung wurde hinzugefügt.
 
-## <a name="october-9-2018"></a>9. Oktober 2018
+## <a name="october-9-2018"></a>9\. Oktober 2018
 
 - Objekterkennung geht in die kostenpflichtige Vorschauphase. Sie können jetzt Objekterkennungsprojekte mit einer Azure-Ressource erstellen.
 - Der Website wurde die Funktion „In Azure verschieben“ hinzugefügt, um das Upgrade eines begrenzten Testprojekts zu vereinfachen, sodass es mit einem Azure- Ressourcenlinkprojekt (F0 oder S0) verknüpft werden kann. Sie finden diese Funktion auf der Seite „Einstellungen“ für Ihr Produkt.  
@@ -72,7 +90,7 @@ Fehlerbehebungen, einschließlich für den ONNX-Export mit Sonderzeichen.
 - Verbesserungen an der Machine Learning-Pipeline zum Vorteil für Projekten mit mehreren Bezeichnungen mit einer großen Anzahl von Tags.
 - Korrektur eines Fehlers beim TensorFlow-Export. Export der Modellversionsverwaltung aktiviert, damit Iterationen mehrmals exportiert werden können.
 
-## <a name="may-7-2018"></a>7. Mai 2018
+## <a name="may-7-2018"></a>7\. Mai 2018
 
 - Einführung der Vorschauversion des Features für die Objekterkennung für Projekte mit eingeschränkter Testversion.
 - Upgrade auf 2.0-APIs
@@ -82,7 +100,7 @@ Fehlerbehebungen, einschließlich für den ONNX-Export mit Sonderzeichen.
 - Modellexport für Dockerfile hinzugefügt. Hiermit können Sie die Artefakte zum Erstellen Ihrer eigenen Windows- oder Linux-Container herunterladen, z.B. eine DockerFile, ein TensorFlow-Modell und Dienstcode.
 - Für neu trainierte Modelle, die für TensorFlow in die Domänen „General (Compact)“ (Allgemein (Kompakt)) und „Landmark (Compact)“ (Wahrzeichen (Kompakt)) exportiert werden, [betragen die Mittelwerte jetzt (0,0,0)](https://github.com/azure-samples/cognitive-services-android-customvision-sample). Dies ist der Fall, um für alle Projekte eine übergreifende Konsistenz zu erzielen.
 
-## <a name="march-1-2018"></a>1. März 2018
+## <a name="march-1-2018"></a>1\. März 2018
 
 - Kostenpflichtige Vorschauversion und Onboarding im Azure-Portal. Projekte können nun an Azure-Ressourcen mit einem F0- (Free) oder S0-Tarif (Standard) angefügt werden. Einführung von Projekten mit dem S0-Tarif, für die bis zu 100 Tags und 25.000 Bilder zulässig sind.
 - Back-End-Änderungen am Machine Learning-Pipeline-/Normalisierungsparameter. Kunden erhalten hiermit beim Anpassen des Wahrscheinlichkeitsschwellenwerts eine bessere Steuerungsmöglichkeit in Bezug auf den Precision-Recall-Kompromiss. Im Rahmen dieser Änderungen wurde der Standard-Wahrscheinlichkeitsschwellenwert im CustomVision.ai-Portal auf 50% festgelegt.

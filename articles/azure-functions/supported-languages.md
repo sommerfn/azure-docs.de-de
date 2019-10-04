@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 5f55122b3bf4bb7160459d524b20dd1303cc0fd8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8839fc0fb9f19a1cfa95a4191213503dba7602c6
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835419"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65148824"
 ---
 # <a name="supported-languages-in-azure-functions"></a>In Azure Functions unterstützte Sprachen
 
@@ -25,7 +25,7 @@ In diesem Artikel werden die Unterstützungsebenen für Sprachen erläutert, die
 
 Es gibt drei Unterstützungsebenen:
 
-* **Allgemein verfügbar (generally available, GA)**: Vollständige Unterstützung und Freigabe für die Verwendung in Produktionsumgebungen.
+* **Allgemein verfügbar (generally available, GA)** : Vollständige Unterstützung und Freigabe für die Verwendung in Produktionsumgebungen.
 * **Vorschau**: Noch nicht unterstützt, die Erreichung der allgemeinen Verfügbarkeit wird aber für die Zukunft erwartet.
 * **Experimentell**: Nicht unterstützt und möglicherweise in der Zukunft wieder aufgegeben; die eventuelle Erreichung des Vorschaustatus oder der allgemeinen Verfügbarkeit ist nicht garantiert.
 
@@ -37,7 +37,7 @@ Es sind [zwei Versionen der Azure Functions-Runtime](functions-versions.md) verf
 
 ### <a name="experimental-languages"></a>Experimentelle Sprachen
 
-Die experimentellen Sprachen in Version 1.x sind nicht gut skalierbar und unterstützen nicht alle Bindungen. Beispielsweise ist die experimentelle Unterstützung für PowerShell in 1.x auf Version 5.1 eingeschränkt, weil diese Version standardmäßig auf den virtuellen Computern installiert ist, auf denen Funktions-Apps ausgeführt werden. Wenn Sie PowerShell-Skripts ausführen möchten, ziehen Sie [Azure Automation](https://azure.microsoft.com/services/automation/) in Erwägung.
+Die experimentellen Sprachen in Version 1.x sind nicht gut skalierbar und unterstützen nicht alle Bindungen.
 
 Verwenden Sie keine experimentellen Funktionen für Bereiche, die für Sie sehr wichtig sind, da es dafür keinen offiziellen Support gibt. Für Probleme mit experimentellen Sprachen sollten keine Supportfälle erstellt werden. 
 

@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: 80776f9284752e8554486cb458096ccc9319949e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f6ece10c43c2c4a6bea92d14a8bf6fbdb49fd318
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112312"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261369"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps
 
@@ -35,7 +35,7 @@ Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfäl
 
 2. Wählen Sie Ihre Logik-App aus, und wählen Sie dann die Option **Übersicht**.
 
-   Im Azure-Portal wird der Ausführungs- und Triggerverlauf für Ihre Logik-App angezeigt. Beispiel: 
+   Im Azure-Portal wird der Ausführungs- und Triggerverlauf für Ihre Logik-App angezeigt. Beispiel:
 
    ![Ausführungs- und Triggerverlauf von Logik-Apps](media/logic-apps-monitor-your-logic-apps/overview.png)
 
@@ -49,7 +49,7 @@ Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfäl
 
 3. Wählen Sie unter **Ausführungsverlauf** eine bestimmte Ausführung aus, um die dazugehörigen Schritte anzuzeigen. 
 
-   In der Überwachungsansicht werden die einzelnen Schritte der Ausführung angezeigt. Beispiel: 
+   In der Überwachungsansicht werden die einzelnen Schritte der Ausführung angezeigt. Beispiel:
 
    ![Aktionen für eine bestimmte Ausführung](media/logic-apps-monitor-your-logic-apps/monitor-view-updated.png)
 
@@ -59,7 +59,7 @@ Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfäl
 
    Sie können beispielsweise die **Korrelations-ID** der Ausführung abrufen, die Sie ggf. benötigen, wenn Sie die [REST-API für Logik-Apps](https://docs.microsoft.com/rest/api/logic) verwenden.
 
-5. Wählen Sie diesen Schritt aus, um die Details zu einem bestimmten Schritt zu erhalten. Sie können jetzt Details wie Eingaben, Ausgaben und Fehler für diesen Schritt prüfen. Beispiel: 
+5. Wählen Sie diesen Schritt aus, um die Details zu einem bestimmten Schritt zu erhalten. Sie können jetzt Details wie Eingaben, Ausgaben und Fehler für diesen Schritt prüfen. Beispiel:
 
    ![Schrittdetails](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
@@ -158,9 +158,9 @@ Wählen Sie **+Hinzufügen**, um die Abfrage durch das Hinzufügen eines Filters
 In Verbindung mit Azure Monitor-Protokollen können Sie die Nutzung der Diagnosedaten Ihrer Logik-App um andere Azure-Dienste erweitern, z.B.: 
 
 * [Archivieren von Azure-Diagnoseprotokollen in Azure Storage](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [Streamen von Azure-Diagnoseprotokollen an Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
+* [Streamen von Azure-Diagnoseprotokollen an Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
-Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../azure-monitor/platform/powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel: 
+Durch die Verwendung von Telemetriedaten und Analysen anderer Dienste (beispielsweise [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) und [Power BI](../azure-monitor/platform/powerbi.md)) können Sie dann eine Überwachung in Echtzeit implementieren. Beispiel:
 
 * [Streamen von Daten von Event Hubs zu Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analysieren von Streamingdaten mit Stream Analytics und Erstellen eines Dashboards für die Echtzeitanalyse in Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
@@ -270,9 +270,29 @@ Beispielsweise verfügt das `ActionCompleted`-Ereignis über die Eigenschaften `
     }
   }
   ```
+  Es folgt ein weiteres Beispiel, in dem die Aktion **Variable initialisieren** verwendet wird. Im Beispiel werden überwachte Eigenschaften aus der Eingabe der Aktion hinzugefügt, wobei die Eingabe ein Array und kein Datensatz ist.  
+
+  ``` json
+  "actions": { 
+   "Initialize_variable": { 
+      "inputs": { 
+         "variables": [{ 
+            "name": "ConnectorName", 
+            "type": "String", 
+            "value": "SFTP-SSH" 
+         }]
+      },
+      "runAfter": {},
+      "trackedProperties": { 
+         "Track1": "@action().inputs.variables[0].value"
+      },
+      "type": "InitializeVariable"
+   } 
+  }
+  ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen von Vorlagen für die Bereitstellungs- und Versionsverwaltung von Logik-Apps](../logic-apps/logic-apps-create-deploy-template.md)
+* [Automatisieren der Logik-App-Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
 * [Übersicht: B2B-Szenarien und Kommunikation mit dem Enterprise-Integrationspaket](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [Überwachen von B2B-Nachrichten](../logic-apps/logic-apps-monitor-b2b-message.md)

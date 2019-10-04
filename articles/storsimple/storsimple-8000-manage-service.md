@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: eb1fe69a7fb99949ac95291c33e76c1a32bf5439
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310056"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965458"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Bereitstellen des StorSimple-Geräte-Manager-Diensts für Geräte der StorSimple 8000-Serie
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
 ## <a name="overview"></a>Übersicht
 
@@ -176,7 +178,7 @@ Führen Sie die folgenden Schritte aus, um den Verschlüsselungsschlüssel für 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>So aktualisieren Sie den Dienstdatenverschlüsselungs-Schlüssel auf physischen Geräten
 1. Verwenden Sie Windows PowerShell für StorSimple für die Verbindung mit der Konsole. Wählen Sie Option 1, um sich mit Vollzugriff anzumelden.
 2. Geben Sie an der Eingabeaufforderung Folgendes ein: `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`.
-3. Geben Sie den Verschlüsselungsschlüssel für Dienstdaten an, den Sie in [Schritt 2: Verwenden von Windows PowerShell für StorSimple, um die Änderung des Verschlüsselungsschlüssels für Dienstdaten zu initialisieren](#to-initiate-the-service-data-encryption-key-change) abgerufen haben.
+3. Geben Sie den Dienstdatenverschlüsselungs-Schlüssel an, den Sie in [Schritt2: Verwenden von Windows PowerShell für StorSimple, um die Änderung des Verschlüsselungsschlüssels für Dienstdaten zu initialisieren](#to-initiate-the-service-data-encryption-key-change) abgerufen haben.
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>So aktualisieren Sie den Dienstdatenverschlüsselungs-Schlüssel auf allen 8010/8020 Cloud Appliances
 1. Laden Sie das PowerShell-Skript [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) herunter, und richten Sie es ein. 
@@ -194,16 +196,16 @@ Im Azure-Portal werden nur die StorSimple-Geräte mit ausgeführtem Update 5.0 u
 | Suchen nach, Herunterladen und Installieren von Updates                                                                                             | Ja            |
 | Deaktivieren des Geräts                                                                                                               | Ja            |
 | Löschen des Geräts                                                                                                                   | Ja            |
-| Erstellen, Ändern und Löschen eines Volumecontainers                                                                                   | Nein              |
-| Erstellen, Ändern und Löschen eines Volumes                                                                                             | Nein              |
-| Erstellen, Ändern und Löschen einer Sicherungsrichtlinie                                                                                      | Nein              |
-| Erstellen einer manuellen Sicherung                                                                                                            | Nein              |
+| Erstellen, Ändern und Löschen eines Volumecontainers                                                                                   | Nein             |
+| Erstellen, Ändern und Löschen eines Volumes                                                                                             | Nein             |
+| Erstellen, Ändern und Löschen einer Sicherungsrichtlinie                                                                                      | Nein             |
+| Erstellen einer manuellen Sicherung                                                                                                            | Nein             |
 | Erstellen einer geplanten Sicherung                                                                                                         | Nicht zutreffend |
-| Wiederherstellen eines Sicherungssatzes                                                                                                        | Nein              |
+| Wiederherstellen eines Sicherungssatzes                                                                                                        | Nein             |
 | Klonen eines Gerät mit ausgeführtem Update 3.0 und höher <br> Auf dem Quellgerät wird eine Version vor Update 3.0 ausgeführt.                                | Ja            |
-| Klonen eines Gerät mit ausgeführter Version vor Update 3.0                                                                          | Nein              |
+| Klonen eines Gerät mit ausgeführter Version vor Update 3.0                                                                          | Nein             |
 | Failover als Quellgerät <br> (von einem Gerät mit Version vor Update 3.0 auf ein Gerät mit Update 3.0 und höher)                                                               | Ja            |
-| Failover als Zielgerät <br> (auf ein Gerät mit Softwareversion vor Update 3.0)                                                                                   | Nein              |
+| Failover als Zielgerät <br> (auf ein Gerät mit Softwareversion vor Update 3.0)                                                                                   | Nein             |
 | Erstellen einer Warnung                                                                                                                  | Ja            |
 | Anzeigen von im klassischen Portal erstellten Sicherungsrichtlinien, Sicherungskatalogen, Volumes, Volumecontainern, Überwachungsdiagrammen, Aufträgen und Warnungen | Ja            |
 | Aktivieren und Deaktivieren von Gerätecontrollern                                                                                              | Ja            |

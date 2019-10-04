@@ -7,15 +7,15 @@ ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: plarsen, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a7079115b381d094cec77f96015342b5bc568c27
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878399"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051033"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Verwalten von Ressourcen mit IBM DB2-REST-APIs und Azure Logic Apps
 
@@ -25,9 +25,9 @@ In diesem Artikel wird gezeigt, wie Sie eine Logik-App erstellen können, die ve
 
 ## <a name="supported-platforms-and-versions"></a>Unterstützte Plattformen und Versionen
 
-Dieser DB2-Connector enthält einen Microsoft-Client zum Kommunizieren mit DB2-Remoteserverservern über ein TCP/IP-Netzwerk. Sie können diesen Connector für den Zugriff auf Clouddatenbanken verwenden, z.B. IBM Bluemix DashDB oder IBM DB2 für Windows, die in der Azure-Virtualisierung ausgeführt werden. Nach der [Installation und Einrichtung des lokalen Datengateway](../logic-apps/logic-apps-gateway-connection.md) können Sie auch auf lokale DB2-Datenbanken zugreifen.
+Dieser DB2-Connector enthält einen Microsoft-Client zum Kommunizieren mit DB2-Remoteserverservern über ein TCP/IP-Netzwerk. Sie können diesen Connector für den Zugriff auf Clouddatenbanken verwenden, z. B. IBM DB2 für Windows, die in der Azure-Virtualisierung ausgeführt werden. Nach der [Installation und Einrichtung des lokalen Datengateway](../logic-apps/logic-apps-gateway-connection.md) können Sie auch auf lokale DB2-Datenbanken zugreifen.
 
-Der IBM DB2-Connector unterstützt diese IBM DB2-Plattformen und -Versionen sowie IBM DB2-kompatible Produkte, z.B. IBM Bluemix DashDB, die Distributed Relational Database Architecture (DRDA) SQL Access Manager (SQLAM) Version 10 und 11 unterstützen:
+Der IBM DB2-Connector unterstützt diese IBM DB2-Plattformen und -Versionen sowie IBM DB2-kompatible Produkte, die Distributed Relational Database Architecture (DRDA) SQL Access Manager (SQLAM) Version 10 und 11 unterstützen:
 
 | Plattform | Version | 
 |----------|---------|
@@ -52,7 +52,7 @@ Der IBM DB2-Connector unterstützt diese Datenbankvorgänge, die den entsprechen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein IBM DB2-Datenbank, entweder cloudbasiert oder lokal
 
@@ -85,15 +85,15 @@ Um die Verbindung einzurichten, geben Sie diese Verbindungsdetails ein, wenn Sie
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 |----------|----------|-------------|
-| **Über lokales Datengateway verbinden** | Nein  | Gilt nur für lokale Verbindungen. |
+| **Connect via on-premises gateway** (Über lokales Datengateway verbinden) | Nein | Gilt nur für lokale Verbindungen. |
 | **Verbindungsname** | Ja | Der Name Ihrer Verbindung, z.B. „MyLogicApp-DB2-connection“ |
 | **Server** | Ja | Die Adresse oder Aliasportnummer für Ihren DB2-Server, z.B. „myDB2server.cloudapp.net:50000“ <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge im IPv4- oder IPv6-Format, die für eine TCP/IP-Adresse oder einen Alias steht, gefolgt von einem Doppelpunkt und einer TCP/IP-Portnummer. |
 | **Datenbank** | Ja | Der Name Ihrer Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, die einen DRDA-Namen einer relationalen Datenbank (RDBNAM) darstellt: <p>- DB2 für z/OS akzeptiert eine 16-Byte-Zeichenfolge, wobei die Datenbank ein Speicherort vom Typ „IBM DB2 für z/OS“ ist. <br>- DB2 für i akzeptiert eine 18-Byte-Zeichenfolge, wobei die Datenbank eine relationale Datenbank vom Typ „IBM DB2 für i“ ist. <br>- DB2 für LUW akzeptiert eine 8-Byte-Zeichenfolge. |
-| **Username** | Ja | Ihr Benutzername für die Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, deren Länge auf der betreffenden Datenbank basiert: <p><p>- DB2 für z/OS akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für i akzeptiert eine 10-Byte-Zeichenfolge. <br>- DB2 für Linux oder UNIX akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für Windows akzeptiert eine 30-Byte-Zeichenfolge. |
+| **Benutzername** | Ja | Ihr Benutzername für die Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, deren Länge auf der betreffenden Datenbank basiert: <p><p>- DB2 für z/OS akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für i akzeptiert eine 10-Byte-Zeichenfolge. <br>- DB2 für Linux oder UNIX akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für Windows akzeptiert eine 30-Byte-Zeichenfolge. |
 | **Kennwort** | Ja | Ihr Kennwort für die Datenbank |
 ||||
 
-Beispiel: 
+Beispiel:
 
 ![Verbindungsdetails für cloudbasierte Datenbanken](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
 
@@ -105,17 +105,17 @@ Vor dem Herstellen einer Verbindung muss Ihr lokales Datengateway bereits instal
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 |----------|----------|-------------|
-| **Über lokales Datengateway verbinden** | Ja | Gilt, wenn Sie eine lokale Verbindung herstellen möchten, und zeigt die lokale Verbindungseigenschaften an. |
+| **Connect via on-premises gateway** (Über lokales Datengateway verbinden) | Ja | Gilt, wenn Sie eine lokale Verbindung herstellen möchten, und zeigt die lokale Verbindungseigenschaften an. |
 | **Verbindungsname** | Ja | Der Name Ihrer Verbindung, z.B. „MyLogicApp-DB2-connection“ | 
 | **Server** | Ja | Die Adresse oder Aliasportnummer für Ihren DB2-Server, z.B. „myDB2server:50000“ <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge im IPv4- oder IPv6-Format, die für eine TCP/IP-Adresse oder einen Alias steht, gefolgt von einem Doppelpunkt und einer TCP/IP-Portnummer. |
 | **Datenbank** | Ja | Der Name Ihrer Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, die einen DRDA-Namen einer relationalen Datenbank (RDBNAM) darstellt: <p>- DB2 für z/OS akzeptiert eine 16-Byte-Zeichenfolge, wobei die Datenbank ein Speicherort vom Typ „IBM DB2 für z/OS“ ist. <br>- DB2 für i akzeptiert eine 18-Byte-Zeichenfolge, wobei die Datenbank eine relationale Datenbank vom Typ „IBM DB2 für i“ ist. <br>- DB2 für LUW akzeptiert eine 8-Byte-Zeichenfolge. |
-| **Authentication** | Ja | Der Authentifizierungstyp für Ihre Verbindung, z.B. „Basic“ <p><p>**Hinweis**: Wählen Sie diesen Wert aus der Liste, die „Basic“ oder „Windows“ (Kerberos) enthält. |
-| **Username** | Ja | Ihr Benutzername für die Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, deren Länge auf der betreffenden Datenbank basiert: <p><p>- DB2 für z/OS akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für i akzeptiert eine 10-Byte-Zeichenfolge. <br>- DB2 für Linux oder UNIX akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für Windows akzeptiert eine 30-Byte-Zeichenfolge. |
+| **Authentifizierung** | Ja | Der Authentifizierungstyp für Ihre Verbindung, z.B. „Basic“ <p><p>**Hinweis**: Wählen Sie diesen Wert aus der Liste, die „Basic“ oder „Windows“ (Kerberos) enthält. |
+| **Benutzername** | Ja | Ihr Benutzername für die Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, deren Länge auf der betreffenden Datenbank basiert: <p><p>- DB2 für z/OS akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für i akzeptiert eine 10-Byte-Zeichenfolge. <br>- DB2 für Linux oder UNIX akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für Windows akzeptiert eine 30-Byte-Zeichenfolge. |
 | **Kennwort** | Ja | Ihr Kennwort für die Datenbank |
 | **Gateway** | Ja | Der Name Ihres installierten lokalen Datengateways <p><p>**Hinweis**: Wählen Sie diesen Wert aus der Liste, die alle installierten Datengateways in Ihrem Azure-Abonnement und der Ressourcengruppe enthält. |
 ||||
 
-Beispiel: 
+Beispiel:
 
 ![Verbindungsdetails für die lokalen Datenbanken](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
 
@@ -242,7 +242,7 @@ Um einen einzelnen Datensatz zu einer DB2-Datenbanktabelle hinzuzufügen, verwen
    | **Regions-ID** | Ja | Die ID für die hinzuzufügenden Region, z.B. „102“ |
    |||| 
 
-   Beispiel: 
+   Beispiel:
 
    ![Tabelle auswählen](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
@@ -290,7 +290,7 @@ Um einen einzelnen Datensatz in einer DB2-Datenbanktabelle zu aktualisieren, ver
    | **Regions-ID** | Ja | Die neue Regions-ID, z.B. „102“ |
    ||||
 
-   Beispiel: 
+   Beispiel:
 
    ![Tabelle auswählen](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
@@ -335,7 +335,7 @@ Um einen einzelnen Datensatz aus einer DB2-Datenbanktabelle zu löschen, verwend
    | **Zeilen-ID** | Ja | Die ID für den zu löschenden Datensatz, z.B. „99999“ |
    ||||
 
-   Beispiel: 
+   Beispiel:
 
    ![Tabelle auswählen](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
@@ -363,11 +363,6 @@ Erweitern Sie die Aktion **Zeile löschen**.
 ## <a name="connector-reference"></a>Connector-Referenz
 
 Technische Details wie Trigger, Aktionen und Limits, wie sie in der OpenAPI-Datei (ehemals Swagger) des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/db2/).
-
-## <a name="get-support"></a>Support
-
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,19 +4,19 @@ description: Erstellen Sie eine Funktion, die Azure Logic Apps und Azure Cogniti
 services: functions, logic-apps, cognitive-services
 keywords: Workflow, Cloud-Apps, Cloud-Dienste, Geschäftsprozesse, Systemintegration, Enterprise Application Integration, EAI
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 5e0ef8287b7ce257cd551a1ace043ccbed72b50b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 11e0170464d8ed901253925eb62cce12d42c0008
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087090"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67480035"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Erstellen einer Funktion, die in Azure Logic Apps integriert ist
 
@@ -125,7 +125,7 @@ Die Cognitive Services-APIs sind in Azure als einzelne Ressourcen verfügbar. Ve
     ```
     Dieser Funktionscode gibt eine Farbkategorie zurück, die auf dem mit der Anforderung empfangenen Stimmungswert basiert. 
 
-4. Klicken Sie zum Testen der Funktion ganz rechts auf **Testen**, um die Registerkarte „Testen“ zu erweitern. Geben Sie den Wert  für Anforderungstext`0.2` ein, und klicken Sie dann auf **Ausführen**. Im Text der Antwort wird der Wert **RED** (ROT) zurückgegeben. 
+4. Klicken Sie zum Testen der Funktion ganz rechts auf **Testen**, um die Registerkarte „Testen“ zu erweitern. Geben Sie den Wert `0.2` für **Anforderungstext** ein, und klicken Sie dann auf **Ausführen**. Im Text der Antwort wird der Wert **RED** (ROT) zurückgegeben. 
 
     ![Testen der Funktion im Azure-Portal](./media/functions-twitter-email/07-function-test.png)
 
@@ -145,7 +145,7 @@ Sie verfügen nun über eine Funktion zum Kategorisieren von Stimmungswerten. Al
     | ----------------- | ------------ | ------------- |
     | **Name** | TweetSentiment | Wählen Sie einen geeigneten Namen für Ihre App. |
     | **Ressourcengruppe** | myResourceGroup | Wählen Sie dieselbe vorhandene Ressourcengruppe wie zuvor. |
-    | **Location** | USA (Ost) | Wählen Sie einen Standort in Ihrer Nähe aus. |    
+    | **Location** | East US | Wählen Sie einen Standort in Ihrer Nähe aus. |    
 
 4. Nachdem Sie die richtigen Einstellungswerte eingegeben haben, klicken Sie auf **Erstellen**, um Ihre Logik-App zu erstellen. 
 

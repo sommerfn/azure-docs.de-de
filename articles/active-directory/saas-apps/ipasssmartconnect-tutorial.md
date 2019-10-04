@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: bf8c7e76aa6dd69cc505be237e47d8e10e7e8db5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9417d7b957d69dc802ecb2f9f78723eb7aba08ba
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264861"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67099854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Tutorial: Azure Active Directory-Integration mit iPass SmartConnect
 
@@ -77,12 +77,12 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei iPass SmartConnect müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für iPass SmartConnect](#configure-ipass-smartconnect-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines iPass SmartConnect-Testbenutzers](#create-ipass-smartconnect-test-user)**, um eine Entsprechung von Britta Simon in iPass SmartConnect zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für iPass SmartConnect](#configure-ipass-smartconnect-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines iPass SmartConnect-Testbenutzers](#create-ipass-smartconnect-test-user)** , um eine Entsprechung von Britta Simon in iPass SmartConnect zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -122,8 +122,8 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei iPass Sm
     | ---------------| ----------|
     | firstName | user.givenname |
     | lastName | user.surname |
-    | E-Mail | user.userprincipalname |
-    | username | user.userprincipalname |
+    | email | user.userprincipalname |
+    | userName | user.userprincipalname |
     | | |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
@@ -215,7 +215,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-ipass-smartconnect-test-user"></a>Erstellen eines iPass SmartConnect-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in iPass SmartConnect einen Benutzer namens Britta Simon. Das  [iPass SmartConnect-Supportteam](mailto:help@ipass.com) kann Sie beim Hinzufügen von Benutzern oder Domänen unterstützen, die auf der iPass SmartConnect-Plattform auf die Whitelist gesetzt werden sollen. Wird die Domäne vom Team hinzugefügt, werden Benutzer automatisch auf der iPass SmartConnect-Plattform bereitgestellt. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in iPass SmartConnect einen Benutzer namens Britta Simon. Das  [iPass SmartConnect-Supportteam](mailto:help@ipass.com)  kann Sie beim Hinzufügen von Benutzern oder Domänen unterstützen, die zu einer Zulassungsliste für die iPass SmartConnect-Plattform hinzugefügt werden müssen. Wird die Domäne vom Team hinzugefügt, werden Benutzer automatisch auf der iPass SmartConnect-Plattform bereitgestellt. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

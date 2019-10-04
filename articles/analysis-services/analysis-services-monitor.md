@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: cdffa8e138062a91bd1876ac6e44728c47d9cdd7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7c7aaf911930f83775f66c47377bc68edb059519
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893179"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958984"
 ---
 # <a name="monitor-server-metrics"></a>Überwachen von Servermetriken
 
-Analysis Services bietet Metriken zum Überwachen von Leistung und Integrität Ihres Servers. Überwachen Sie z.B. Arbeitsspeicher- und CPU-Nutzung, Anzahl der Clientverbindungen und Ressourcenverbrauch für Abfragen. Analysis Services verwendet das gleiche Überwachungsframework wie die meisten anderen Azure-Dienste. Weitere Informationen finden Sie unter [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
+Analysis Services bietet Metriken zum Überwachen von Leistung und Integrität Ihres Servers. Diese Metriken werden im Azure Metrik-Explorer, einem kostenlosen Tool im Portal, angezeigt. Überwachen Sie z.B. Arbeitsspeicher- und CPU-Nutzung, Anzahl der Clientverbindungen und Ressourcenverbrauch für Abfragen. Analysis Services verwendet das gleiche Überwachungsframework wie die meisten anderen Azure-Dienste. Weitere Informationen finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md).
 
-Um eine ausführlichere Diagnose auszuführen, Leistung nachzuverfolgen und mehrere Dienstressourcen in einer Ressourcengruppe oder einem Abonnement übergreifende Trends zu identifizieren, verwenden Sie [Azure Monitor](https://azure.microsoft.com/services/monitor/). Die Leistungen des Diensts Azure Monitor werden möglicherweise in Rechnung gestellt.
+Um eine ausführlichere Diagnose auszuführen, Leistung nachzuverfolgen und mehrere Dienstressourcen in einer Ressourcengruppe oder einem Abonnement übergreifende Trends zu identifizieren, verwenden Sie [Azure Monitor](../azure-monitor/overview.md). Die Leistungen des Diensts Azure Monitor werden möglicherweise in Rechnung gestellt.
 
 
 ## <a name="to-monitor-metrics-for-an-analysis-services-server"></a>So überwachen Sie Metriken für einen Analysis Services-Server
@@ -46,7 +46,7 @@ Bestimmen Sie mit dieser Tabelle, welche Metriken für Ihr Überwachungsszenario
 |mashup_engine_memory_metric|M-Engine – Arbeitsspeicher|Byte|Durchschnitt|Arbeitsspeichernutzung durch Mashup-Engine-Prozesse|
 |mashup_engine_qpu_metric|M-Engine – QPU|Count|Durchschnitt|QPU-Nutzung durch Mashup-Engine-Prozesse|
 |memory_metric|Arbeitsspeicher|Byte|Durchschnitt|Arbeitsspeicher. Bereich: 0–25 GB für S1, 0–50 GB für S2 und 0–100 GB für S4|
-|memory_thrashing_metric|Arbeitsspeicherüberlastung|Prozent|Durchschnitt|Durchschnittliche Arbeitsspeicherüberlastung.|
+|memory_thrashing_metric|Arbeitsspeicherüberlastung|Percent|Durchschnitt|Durchschnittliche Arbeitsspeicherüberlastung.|
 |CleanerCurrentPrice|Arbeitsspeicher: Bereinigung – aktueller Preis|Count|Durchschnitt|Aktueller Preis des Arbeitsspeichers, $/Byte/Zeit, normalisiert auf 1000.|
 |CleanerMemoryNonshrinkable|Arbeitsspeicher: Bereinigung – nicht verkleinerbarer Arbeitsspeicher|Byte|Durchschnitt|Die Menge des Arbeitsspeichers in Byte, die nicht durch den Hintergrundbereinigungsprozess bereinigt wird.|
 |CleanerMemoryShrinkable|Arbeitsspeicher: Bereinigung – verkleinerbarer Arbeitsspeicher|Byte|Durchschnitt|Die Menge des Arbeitsspeichers in Byte, die durch den Hintergrundbereinigungsprozess bereinigt wird.|
@@ -55,6 +55,10 @@ Bestimmen Sie mit dieser Tabelle, welche Metriken für Ihr Überwachungsszenario
 |MemoryLimitLow|Arbeitsspeicher: Untere Arbeitsspeichergrenze|Byte|Durchschnitt|Unterer Grenzwert für den Arbeitsspeicher gemäß Konfigurationsdatei.|
 |MemoryLimitVertiPaq|Arbeitsspeicher: VertiPaq-Arbeitsspeichergrenze|Byte|Durchschnitt|In-Memory-Grenzwert gemäß Konfigurationsdatei.|
 |MemoryUsage|Arbeitsspeicher: Speicherauslastung|Byte|Durchschnitt|Speicherauslastung des Serverprozesses, wie bei der Berechnung des Arbeitsspeicherpreises für die Bereinigung verwendet. Entspricht dem Indikator „Process\PrivateBytes“ zuzüglich der Größe der im Speicher abgebildeten Daten. Von der In-Memory-Analyse-Engine (VertiPaq) abgebildeter oder belegter Arbeitsspeicher, der über die Arbeitsspeichergrenze der Engine hinausgeht, wird dabei ignoriert.|
+|private_bytes_metric|Private Bytes |Byte|Durchschnitt|Die Gesamtmenge an Speicher, die der Analysis Services-Engineprozess und die Mashupcontainerprozesse zugewiesen haben, ohne den mit anderen Prozessen gemeinsam genutzten Speicher.|
+|virtual_bytes_metric|Virtuelle Bytes |Byte|Durchschnitt|Die aktuelle Größe des virtuellen Adressraums, den der Analysis Services-Engineprozess und die Mashupcontainerprozesse verwenden.|
+|mashup_engine_private_bytes_metric|Private Bytes für M-Engine |Byte|Durchschnitt|Die Gesamtmenge an Speicher, die die Mashupcontainerprozesse zugewiesen haben, ohne den mit anderen Prozessen gemeinsam genutzten Speicher.|
+|mashup_engine_virtual_bytes_metric|Virtuelle Bytes für M-Engine |Byte|Durchschnitt|Die aktuelle Größe des virtuellen Adressraums, den die Mashupcontainerprozesse verwenden.|
 |Kontingent|Arbeitsspeicher: Kontingent|Byte|Durchschnitt|Aktuelles Arbeitsspeicherkontingent in Byte. Das Arbeitsspeicherkontingent wird auch als Speicherzuweisung oder Speicherreservierung bezeichnet.|
 |QuotaBlocked|Arbeitsspeicher: Kontingent blockiert|Count|Durchschnitt|Aktuelle Anzahl von Kontingentanforderungen, die blockiert werden, bis andere Arbeitsspeicherkontingente freigegeben werden.|
 |VertiPaqNonpaged|Arbeitsspeicher: Nicht ausgelagerte VertiPaq-Daten|Byte|Durchschnitt|Bytes von Arbeitsspeicher, die im Arbeitssatz zur Verwendung durch die In-Memory-Engine gesperrt sind.|
@@ -85,6 +89,6 @@ Bestimmen Sie mit dieser Tabelle, welche Metriken für Ihr Überwachungsszenario
 |TotalConnectionRequests|Total Connection Requests (Verbindungsanforderungen gesamt)|Count|Durchschnitt|Gesamtanzahl von Verbindungsanforderungen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Überwachung in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md)   
-[Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)   
+[Azure Monitor – Übersicht](../azure-monitor/overview.md)      
+[Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md)      
 [Metriken](/rest/api/monitor/metrics)

@@ -1,24 +1,26 @@
 ---
-title: Übersicht über Azure Firewall-Protokolle
-description: Dieser Artikel ist eine Übersicht über die Azure Firewall-Diagnoseprotokolle.
+title: Übersicht über Azure Firewall-Protokolle und -Metriken
+description: Dieser Artikel bietet eine Übersicht über die Diagnoseprotokolle und Metriken in Azure Firewall.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/24/2018
+ms.date: 08/22/2019
 ms.author: victorh
-ms.openlocfilehash: c129c394f3d694b832722287027c1f9e58028a33
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: fea00358fc21cf6f57673e14ebd0feafe532b620
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957690"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876557"
 ---
-# <a name="azure-firewall-logs"></a>Azure Firewall-Protokolle
+# <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-Protokolle und -Metriken
 
 Azure Firewall kann mithilfe von Firewallprotokollen überwacht werden. Sie können aber auch Aktivitätsprotokolle verwenden, um Vorgänge für Azure Firewall-Ressourcen zu überwachen.
 
 Sie können auf einige dieser Protokolle über das Portal zugreifen. Protokolle können an [Azure Monitor-Protokolle](../azure-monitor/insights/azure-networking-analytics.md), Storage und Event Hubs gesendet und in Azure Monitor-Protokollen oder durch andere Tools wie Excel oder Power BI analysiert werden.
+
+Metriken sind einfach und können Szenarien nahezu in Echtzeit unterstützen. Dadurch lassen sie sich für Warnungen und zur schnellen Problemerkennung einsetzen. 
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
 
@@ -26,7 +28,7 @@ Sie können auf einige dieser Protokolle über das Portal zugreifen. Protokolle 
 
 * **Anwendungsregelprotokoll**
 
-   Das Anwendungsregelprotokoll wird nur dann in einem Speicherkonto gespeichert, an Event Hubs gestreamt und/oder an Azure Monitor gesendet, wenn Sie es für die einzelnen Azure Firewall-Instanzen aktiviert haben. Jede neue Verbindung, die einer Ihrer konfigurierten Anwendungsregeln entspricht, führt zu einem Protokoll für die akzeptierte/abgelehnte Verbindung. Die Daten werden im JSON-Format protokolliert, wie im folgenden Beispiel zu sehen:
+   Das Anwendungsregelprotokoll wird nur dann in einem Speicherkonto gespeichert, an Event Hubs gestreamt und/oder an Azure Monitor-Protokolle gesendet, wenn Sie es für die einzelnen Azure Firewall-Instanzen aktiviert haben. Jede neue Verbindung, die einer Ihrer konfigurierten Anwendungsregeln entspricht, führt zu einem Protokoll für die akzeptierte/abgelehnte Verbindung. Die Daten werden im JSON-Format protokolliert, wie im folgenden Beispiel zu sehen:
 
    ```
    Category: application rule logs.
@@ -49,7 +51,7 @@ Sie können auf einige dieser Protokolle über das Portal zugreifen. Protokolle 
 
 * **Netzwerkregelprotokoll**
 
-   Das Netzwerkregelprotokoll wird nur dann in einem Speicherkonto gespeichert, an Event Hubs gestreamt und/oder an Azure Monitor gesendet, wenn Sie es für die einzelnen Azure Firewall-Instanzen aktiviert haben. Jede neue Verbindung, die einer Ihrer konfigurierten Netzwerkregeln entspricht, führt zu einem Protokoll für die akzeptierte/abgelehnte Verbindung. Die Daten werden im JSON-Format protokolliert, wie im folgenden Beispiel zu sehen:
+   Das Netzwerkregelprotokoll wird nur dann in einem Speicherkonto gespeichert, an Event Hubs gestreamt und/oder an Azure Monitor-Protokolle gesendet, wenn Sie es für die einzelnen Azure Firewall-Instanzen aktiviert haben. Jede neue Verbindung, die einer Ihrer konfigurierten Netzwerkregeln entspricht, führt zu einem Protokoll für die akzeptierte/abgelehnte Verbindung. Die Daten werden im JSON-Format protokolliert, wie im folgenden Beispiel zu sehen:
 
    ```
    Category: network rule logs.
@@ -81,9 +83,47 @@ Sie haben drei Möglichkeiten, um Ihre Protokolle zu speichern:
 
    Aktivitätsprotokolleinträge werden standardmäßig gesammelt und können im Azure-Portal angezeigt werden.
 
-   Mit dem Feature [Azure-Aktivitätsprotokolle](../azure-resource-manager/resource-group-audit.md) (ehemals Betriebs- und Überwachungsprotokolle) können Sie alle an Ihr Azure-Abonnement übermittelten Vorgänge anzeigen.
+   Mit [Azure-Aktivitätsprotokollen](../azure-resource-manager/resource-group-audit.md) (ehemals Betriebs- und Überwachungsprotokolle) können Sie alle an Ihr Azure-Abonnement übermittelten Vorgänge anzeigen.
+
+## <a name="metrics"></a>metrics
+
+Metriken in Azure Monitor sind numerische Werte, die einen Aspekt eines Systems zu einem bestimmten Zeitpunkt beschreiben. Metriken werden jede Minute erfasst und eignen sich gut für Warnmeldungen, da sie häufig abgefragt werden können. Eine Warnung kann mit relativ einfacher Logik schnell ausgelöst werden.
+
+Für Azure Firewall sind folgende Metriken verfügbar:
+
+- **Application rules hit count** (Trefferanzahl für Anwendungsregeln): Gibt an, wie oft eine Anwendungsregel ausgelöst wurde.
+
+    Einheit: Anzahl
+
+- **Network rules hit count** (Trefferanzahl für Netzwerkregeln): Gibt an, wie oft eine Netzwerkregel ausgelöst wurde.
+
+    Einheit: Anzahl
+
+- **Verarbeitete Daten:** Datenmenge, die die Firewall durchläuft.
+
+    Einheit: Bytes
+
+- **Firewall health state** (Firewallintegritätszustand): Gibt die Integrität der Firewall an.
+
+    Einheit: Prozent
+
+   Diese Metrik enthält zwei Dimensionen:
+  - **Status:** Mögliche Werte sind *Fehlerfrei*, *Beeinträchtigt* und *Fehlerhaft*.
+  - **Grund:** Gibt den Grund für den entsprechenden Status der Firewall an. Beispielsweise kann *SNAT-Ports* angegeben sein, wenn der Firewallstatus „Beeinträchtigt“ oder „Fehlerhaft“ lautet.
+
+
+
+
+
+- **SNAT port utilization** (SNAT-Portnutzung): Prozentangabe der SNAT-Ports, die durch die Firewall genutzt werden.
+
+    Einheit: Prozent
+
+   Wenn Sie der Firewall weitere öffentliche IP-Adressen hinzufügen, sind zusätzliche SNAT-Ports verfügbar, wodurch die Auslastung der SNAT-Ports reduziert wird. Wenn die Firewall aus unterschiedlichen Gründen horizontal hochskaliert wird (z. B. CPU oder Durchsatz), sind ebenfalls zusätzliche SNAT-Ports verfügbar. Ein bestimmter Prozentsatz der SNAT-Portnutzung kann sich also effektiv verringern, ohne dass Sie öffentliche IP-Adressen hinzufügen, sondern nur weil der Dienst horizontal hochskaliert wurde. Sie können die Anzahl der verfügbaren öffentlichen IP-Adressen direkt steuern, um die für die Firewall verfügbaren Ports zu erhöhen. Die Firewallskalierung können Sie jedoch nicht direkt steuern. Derzeit werden SNAT-Ports nur für die ersten fünf öffentlichen IP-Adressen hinzugefügt.   
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Überwachen von Azure Firewall-Protokollen und Metriken finden Sie unter [Tutorial: Überwachen von Azure Firewall-Protokollen](tutorial-diagnostics.md).
+- Informationen zum Überwachen von Azure Firewall-Protokollen und Metriken finden Sie unter [Tutorial: Überwachen von Azure Firewall-Protokollen](tutorial-diagnostics.md).
+
+- Weitere Informationen zu Metriken in Azure Monitor finden Sie unter [Metriken in Azure Monitor](../azure-monitor/platform/data-platform-metrics.md).

@@ -1,8 +1,6 @@
 ---
-title: Erstellen eines zusätzlichen Azure-Abonnements für Ihr Abrechnungskonto | Microsoft-Dokumentation
+title: Erstellen eines zusätzlichen Azure-Abonnements für Ihr Abrechnungskonto
 description: Erfahren Sie, wie Sie ein neues Azure-Abonnement im Azure-Portal erstellen.
-services: billing
-documentationcenter: ''
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -12,30 +10,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 105b8481486c088a05e3acb95081d3ee55b55f52
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e1fafafe5f67d1775ca80a1f7c2aff4dec9e0bc4
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897101"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709587"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>Erstellen eines zusätzlichen Azure-Abonnements für eine Microsoft-Kundenvereinbarung
 
 Erstellen Sie weitere Abonnements für Ihr Abrechnungskonto, um separate Umgebungen für Entwicklung und Tests einzurichten, um die Sicherheit zu erhöhen oder Daten aus Compliancegründen zu isolieren.
 
-Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben](#check-access-to-a-microsoft-customer-agreement). Wenn Sie Abonnements für andere Abrechnungskonten erstellen möchten, lesen Sie [Erstellen eines zusätzlichen Azure-Abonnements im Azure-Portal](billing-create-subscription.md).
+Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access) Wenn Sie Abonnements für andere Typen von Abrechnungskonten erstellen möchten, lesen Sie [Erstellen eines zusätzlichen Azure-Abonnements im Azure-Portal](billing-create-subscription.md).
 
-Um ein Abonnement erstellen zu können, muss Ihnen die Rolle **Rechnungsabschnitt (Besitzer)**, **Rechnungsabschnitt (Mitwirkender)** oder **Azure-Abonnementersteller** zugewiesen sein. Weitere Informationen finden Sie unter [Rollen und Aufgaben für die Abonnementabrechnung](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks). Wenn Sie anderen Benutzern die Berechtigung zum Erstellen von Azure-Abonnements für Ihr Abrechnungskonto erteilen möchten, lesen Sie den Abschnitt [Zuweisen der Berechtigung zum Erstellen von Azure-Abonnements für andere Benutzer](#give-others-permission-to-create-azure-subscriptions).
+Um ein Abonnement erstellen zu können, muss Ihnen die Rolle **Rechnungsabschnitt (Besitzer)** , **Rechnungsabschnitt (Mitwirkender)** oder **Azure-Abonnementersteller** zugewiesen sein. Weitere Informationen finden Sie unter [Rollen und Aufgaben für die Abonnementabrechnung](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks). Wenn Sie anderen Benutzern die Berechtigung zum Erstellen von Azure-Abonnements für Ihr Abrechnungskonto erteilen möchten, lesen Sie den Abschnitt [Zuweisen der Berechtigung zum Erstellen von Azure-Abonnements für andere Benutzer](#give-others-permission).
 
-## <a name="create-a-subscription-in-the-azure-portal"></a>Erstellen eines Abonnements im Azure-Portal
+## <a name="create-a-subscription"></a>Erstellen eines Abonnements
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Suchen Sie nach **Abonnements**.
 
-   ![Screenshot der Suche im Portal nach Abonnements](./media/billing-mca-create-subscription/billing-search-cost-management-billing.png)
+   ![Screenshot der Suche im Portal nach Abonnements](./media/billing-mca-create-subscription/billing-search-subscriptions.png)
 
 3. Wählen Sie **Hinzufügen** aus.
 
@@ -43,9 +41,9 @@ Um ein Abonnement erstellen zu können, muss Ihnen die Rolle **Rechnungsabschnit
 
    ![Screenshot der Seite „Abonnement erstellen“](./media/billing-mca-create-subscription/billing-mca-create-azure-subscription.png)
 
-5. Wählen Sie ein Abrechnungsprofil aus. Die Gebühren für Ihr Abonnement werden auf der Rechnung des Abrechnungsprofils angezeigt und über die entsprechenden Zahlungsmethoden bezahlt. Wenn Sie nur auf ein Abrechnungsprofil zugreifen können, wird die Auswahl abgeblendet dargestellt.
+5. Wählen Sie ein Abrechnungsprofil aus. Die Gebühren für Ihr Abonnement werden dem ausgewählten Abrechnungsprofil in Rechnung gestellt. Wenn Sie nur auf ein Abrechnungsprofil zugreifen können, wird die Auswahl abgeblendet dargestellt.
 
-6. Wählen Sie einen Rechnungsabschnitt aus. Die Gebühren für Ihr Abonnement werden in diesem Abschnitt der Rechnung des Abrechnungsprofils angezeigt. Wenn Sie nur auf einen Rechnungsabschnitt zugreifen können, wird die Auswahl abgeblendet dargestellt.
+6. Wählen Sie einen Rechnungsabschnitt aus. Die Gebühren für Ihr Abonnement werden diesem Abschnitt der Rechnung des Rechnungsprofils in Rechnung gestellt. Wenn Sie nur auf einen Rechnungsabschnitt zugreifen können, wird die Auswahl abgeblendet dargestellt.
 
 7. Wählen Sie einen Plan für das Abonnement aus. Wählen Sie **Microsoft Azure-Plan für Dev/Test** aus, wenn Sie dieses Abonnement für Entwicklungs- oder Testworkloads verwenden möchten. Für alle anderen Workloads verwenden Sie **Microsoft Azure-Plan**. Wenn Sie nur auf einen Plan zugreifen können, wird die Auswahl abgeblendet dargestellt.
 
@@ -53,7 +51,7 @@ Um ein Abonnement erstellen zu können, muss Ihnen die Rolle **Rechnungsabschnit
 
 9. Klicken Sie auf **Erstellen**.
 
-## <a name="give-others-permission-to-create-azure-subscriptions"></a>Zuweisen der Berechtigung zum Erstellen von Azure-Abonnements für andere Benutzer
+## <a name="give-others-permission"></a>Anderen Berechtigung erteilen
 
 Fügen Sie in einem Rechnungsabschnitt Benutzer als Azure-Abonnementersteller hinzu, um diesen Benutzern die Berechtigung zum Erstellen von Azure-Abonnements zu erteilen.
 
@@ -63,7 +61,9 @@ Fügen Sie in einem Rechnungsabschnitt Benutzer als Azure-Abonnementersteller hi
 
    ![Screenshot der Suche im Portal nach Abonnements](./media/billing-mca-create-subscription/billing-search-cost-management-billing.png)
 
-3. Navigieren Sie zum Rechnungsabschnitt. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise ein Abrechnungskonto oder ein Abrechnungsprofil auswählen. Wählen Sie im Abrechnungskonto oder -profil die Option **Rechnungsabschnitte** aus, und wählen Sie dann einen Rechnungsabschnitt aus.
+3. Navigieren Sie zum Rechnungsabschnitt. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise ein Abrechnungskonto oder ein Abrechnungsprofil auswählen. Wählen Sie im Abrechnungskonto oder -profil die Option **Rechnungsabschnitte** aus, und wählen Sie dann in der Liste einen Rechnungsabschnitt aus. Alle Abonnements, die von den Benutzern erstellt wurden, werden diesem Rechnungsabschnitt in Rechnung gestellt.
+   
+   ![Screenshot der Auswahl von Rechnungsabschnitten](./media/billing-mca-create-subscription/mca-select-invoice-sections.png)        
 
 4. Wählen Sie oben links die Option **Zugriffsverwaltung (IAM)** aus.
 
@@ -71,13 +71,11 @@ Fügen Sie in einem Rechnungsabschnitt Benutzer als Azure-Abonnementersteller hi
 
 6. Wählen Sie die Rolle **Azure-Abonnementersteller** aus.
 
-   ![Screenshot, in dem einem Benutzer die Rolle „Azure-Abonnementersteller“ zugewiesen wird](./media/billing-mca-create-subscription/billing-mca-add-azure-subscription-creator.png)
-
 7. Geben Sie die E-Mail-Adresse des Benutzers ein, dem Sie Zugriff erteilen möchten.
 
 8. Wählen Sie **Speichern** aus.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
+## <a name="check-access"></a>Zugriff überprüfen
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren

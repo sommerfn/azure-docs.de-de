@@ -7,13 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/11/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: fd8eecbd20446bfde8d3a7467e2982398c3b8c19
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: d94f6297f27eb3ea130b443ccf94052d391eb46d
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044962"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985340"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Initiieren eines Speicherkontofailovers (Vorschau)
 
@@ -66,13 +67,14 @@ Zur Verwendung von PowerShell zum Initiieren eines Kontofailovers müssen Sie zu
 1. Deinstallieren Sie alle älteren Installationen von Azure PowerShell:
 
     - Entfernen Sie alle früheren Installationen von Azure PowerShell mit der Einstellung **Apps & Features** (unter **Einstellungen**) aus Windows.
-    - Entfernen Sie alle **Azure***-Module aus `%Program Files%\WindowsPowerShell\Modules`.
-    
+    - Entfernen Sie alle **Azure**-Module aus `%Program Files%\WindowsPowerShell\Modules`.
+
 1. Vergewissern Sie sich, dass die aktuelle Version von PowerShellGet installiert ist. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie den folgenden Befehl aus, um die neueste Version zu installieren:
- 
+
     ```powershell
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
+
 1. Schließen Sie nach dem Installieren von PowerShellGet das PowerShell-Fenster, und öffnen Sie es dann erneut. 
 
 1. Installieren Sie die neueste Version von Azure PowerShell:
@@ -81,14 +83,14 @@ Zur Verwendung von PowerShell zum Initiieren eines Kontofailovers müssen Sie zu
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. Installieren ein Azure Storage-Vorschaumodul, das Azure AD unterstützt:
-   
+1. Installieren ein Azure Storage-Vorschaumodul, das Kontofailover unterstützt:
+
     ```powershell
     Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force 
     ```
+
 1. Schließen Sie das PowerShell-Fenster, und öffnen Sie es dann erneut.
  
-
 Führen Sie den folgenden Befehl aus, um ein Kontofailover über PowerShell zu initiieren:
 
 ```powershell
@@ -106,6 +108,6 @@ az storage account failover \ --name accountName
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Notfallwiederherstellung und Speicherkontofailover (Vorschau) in Azure Storage](storage-disaster-recovery-guidance.md)
+- [Notfallwiederherstellung und Kontofailover (Vorschau) in Azure Storage](storage-disaster-recovery-guidance.md)
 - [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS](storage-designing-ha-apps-with-ragrs.md)
-- [Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blobspeicher](../blobs/storage-create-geo-redundant-storage.md) 
+- [Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blob Storage](../blobs/storage-create-geo-redundant-storage.md) 

@@ -12,19 +12,21 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbfcab7900a1552a46341ec71b8b0ea4b41b0bce
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 31847f3cc47ddf1ed784263a543e94ebca454222
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339163"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382972"
 ---
 # <a name="view-your-privacy-related-info-from-the-my-profile-preview-portal"></a>Anzeigen Ihrer datenschutzrelevanten Informationen im Portal „Mein Profil“ (Vorschauversion)
+
 Im Portal **Mein Profil** können Sie auf der Seite **Datenschutz** anzeigen, wie Ihre Organisation Ihre Daten verwendet.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
 ## <a name="view-your-privacy-related-info"></a>Anzeigen der datenschutzrelevanten Informationen
+
 1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
 
 2. Wählen Sie im linken Navigationsbereich **Datenschutz** aus, oder wählen Sie im Block **Datenschutz** den Link **Datenschutz überprüfen** aus.

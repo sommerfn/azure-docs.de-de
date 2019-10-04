@@ -2,22 +2,19 @@
 title: 'Azure Key Vault-Funktionen für Kundendaten: Azure Key Vault | Microsoft-Dokumentation'
 description: Informationen zu Kundendaten in Key Vault
 services: key-vault
-documentationcenter: ''
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: reference
 ms.date: 01/07/2019
-ms.author: barclayn
-ms.openlocfilehash: 12492fad419fdc703ddabcf2288be282f2fd47be
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 67e1aeab4211249075b51bd0138d7875756a3483
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111780"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883325"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault-Funktionen für Kundendaten
 

@@ -1,31 +1,26 @@
 ---
 title: Sichere Methoden zur regionsübergreifenden Bereitstellung – Azure-Bereitstellungs-Manager
 description: Beschreibt die zahlreiche Regionen umfassende Bereitstellung eines Diensts mit dem Azure-Bereitstellungs-Manager. Zeigt sichere Bereitstellungsmethoden, mit denen Sie die Stabilität Ihrer Bereitstellung vor dem Rollout in alle Regionen überprüfen können.
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/09/2018
+ms.date: 05/31/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: a615ab26e4ea046ced70ce2c154a0c304b741986
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6a25444f0207ec5eceb029c5d31d222a31813e22
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138346"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066818"
 ---
-# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Aktivieren von sicheren Bereitstellungsmethoden mit dem Azure-Bereitstellungs-Manager (private Vorschau)
+# <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Sichere Bereitstellungsmethoden mit dem Azure-Bereitstellungs-Manager (öffentliche Vorschau)
 
 Um Ihren Dienst in vielen Regionen bereitzustellen und sicherzustellen, dass er in jeder Region wie erwartet ausgeführt wird, koordinieren Sie mit dem Bereitstellungs-Manager von Azure einen gestaffelten Rollout des Diensts. Gehen Sie wie bei jeder anderen Azure-Bereitstellung vor. Definieren Sie die Ressourcen für Ihren Dienst in [Resource Manager-Vorlagen](resource-group-authoring-templates.md). Wenn Sie die Vorlagen erstellt haben, beschreiben Sie mit dem Bereitstellungs-Manager die Topologie Ihres Diensts und den konkreten Rollout.
 
-Der Bereitstellungs-Manager ist eine Funktion von Resource Manager. Er erweitert die verfügbaren Funktionen beim Bereitstellen. Verwenden Sie den Bereitstellungs-Manager für komplexe Dienste, die Sie in mehreren Regionen bereitstellen möchten. Mit der phasenweisen Einführung des Diensts können Sie mögliche Probleme finden, bevor er in allen Regionen bereitgestellt ist. Wenn Sie auf die zusätzlichen Vorsichtsmaßnahmen eines gestaffelten Rollouts verzichten möchten, verwenden Sie die standardmäßigen [Bereitstellungsoptionen](resource-group-template-deploy-portal.md) für Resource Manager. Der Bereitstellungs-Manager lässt sich nahtlos in alle vorhandenen Tools von Drittanbietern integrieren, die Resource Manager-Bereitstellungen unterstützen, z.B. CI- und CD-Angebote (Continuous Integration und Continuous Delivery). 
+Der Bereitstellungs-Manager ist eine Funktion von Resource Manager. Er erweitert die verfügbaren Funktionen beim Bereitstellen. Verwenden Sie den Bereitstellungs-Manager für komplexe Dienste, die Sie in mehreren Regionen bereitstellen möchten. Mit der phasenweisen Einführung des Diensts können Sie mögliche Probleme finden, bevor er in allen Regionen bereitgestellt ist. Wenn Sie auf die zusätzlichen Vorsichtsmaßnahmen eines gestaffelten Rollouts verzichten möchten, verwenden Sie die standardmäßigen [Bereitstellungsoptionen](resource-group-template-deploy-portal.md) für Resource Manager. Der Bereitstellungs-Manager lässt sich nahtlos in alle vorhandenen Tools von Drittanbietern integrieren, die Resource Manager-Bereitstellungen unterstützen, z.B. CI- und CD-Angebote (Continuous Integration und Continuous Delivery).
 
-Der Azure-Bereitstellungs-Manager befindet sich in der privaten Vorschau. Füllen Sie das [Anmeldeformular](https://aka.ms/admsignup) aus, um den Azure-Bereitstellungs-Manager zu verwenden. Helfen Sie dabei, die Funktion zu verbessern, indem Sie uns [Feedback senden](https://aka.ms/admfeedback).
+Der Azure-Bereitstellungs-Manager befindet sich in der Vorschau. Helfen Sie uns dabei, das Feature zu verbessern, indem Sie uns [Feedback senden](https://aka.ms/admfeedback).
 
 Um den Bereitstellungs-Manager zu verwenden, müssen Sie vier Dateien erstellen:
 
@@ -36,17 +31,18 @@ Um den Bereitstellungs-Manager zu verwenden, müssen Sie vier Dateien erstellen:
 
 Die Topologievorlage wird vor der Rolloutvorlage bereitgestellt.
 
-Die REST-API-Referenz für den Azure-Bereitstellungs-Manager finden Sie [hier](https://docs.microsoft.com/rest/api/deploymentmanager/).
+Zusätzliche Ressourcen:
 
-## <a name="supported-locations"></a>Unterstützte Standorte
-
-In der Vorschau werden die Ressourcen des Bereitstellungs-Managers in den Regionen „USA, Mitte“ und „USA, Osten 2“ unterstützt. Wenn Sie Ressourcen in Ihren Topologie- und Rolloutvorlagen definieren, z.B. die in diesem Artikel beschriebenen Diensteinheiten, Artefaktquellen und Rollouts, müssen Sie eine dieser Regionen als Standort angeben. Die Ressourcen, die Sie zum Erstellen Ihres Diensts bereitstellen, z.B. VMs, Speicherkonten und Web-Apps, werden jedoch an allen [Standardstandorten](https://azure.microsoft.com/global-infrastructure/services/?products=all) unterstützt.  
+- Die [REST-API-Referenz für den Azure-Bereitstellungs-Manager](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- [Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (private Vorschau)](./deployment-manager-tutorial.md) beschrieben vor.
+- [Tutorial: Verwenden der Integritätsprüfung im Azure-Bereitstellungs-Manager (Public Preview)](./deployment-manager-tutorial-health-check.md).
+- [Ein Beispiel zum Azure-Bereitstellungs-Manager](https://github.com/Azure-Samples/adm-quickstart).
 
 ## <a name="identity-and-access"></a>Identität und Zugriff
 
 Im Falle des Bereitstellungs-Managers führt eine [benutzerseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) die Bereitstellungsaktionen durch. Sie erstellen diese Identität vor Beginn der Bereitstellung. Sie muss Zugriff auf das Abonnement haben, für das Sie den Dienst bereitstellen, und über die nötigen Berechtigungen zum Abschließen der Bereitstellung verfügen. Weitere Informationen zu den Aktionen, die durch Rollen gewährt werden, finden Sie unter [Integrierte Rollen für Azure-Ressourcen](../role-based-access-control/built-in-roles.md).
 
-Die Identität muss sich an einem Standort befinden, der vom Bereitstellungs-Manager unterstützt wird und dem Rolloutstandort entspricht.
+Die Identität muss sich am gleichen Speicherort wie der Rollout befinden.
 
 ## <a name="topology-template"></a>Topologievorlage
 
@@ -200,7 +196,9 @@ In der Rolloutvorlage erstellen Sie eine Artefaktquelle für die Binärdateien, 
 
 ### <a name="steps"></a>Schritte
 
-Sie können einen Schritt definieren, der entweder vor oder nach der Bereitstellung ausgeführt werden soll. Derzeit ist nur der Schritt `wait` verfügbar. Der Warteschritt hält die Bereitstellung zwischendurch an. So können Sie überprüfen, ob Ihr Dienst wie erwartet ausgeführt wird, bevor Sie die nächste Diensteinheit bereitstellen. Das folgende Beispiel zeigt das allgemeine Format eines Warteschritts.
+Sie können einen Schritt definieren, der entweder vor oder nach der Bereitstellung ausgeführt werden soll. Derzeit stehen nur die Schritte `wait` und „healthCheck“ zur Verfügung.
+
+Der Warteschritt hält die Bereitstellung zwischendurch an. So können Sie überprüfen, ob Ihr Dienst wie erwartet ausgeführt wird, bevor Sie die nächste Diensteinheit bereitstellen. Das folgende Beispiel zeigt das allgemeine Format eines Warteschritts.
 
 ```json
 {
@@ -218,6 +216,8 @@ Sie können einen Schritt definieren, der entweder vor oder nach der Bereitstell
 ```
 
 Die Eigenschaft „duration“ verwendet den [ISO 8601-Standard](https://en.wikipedia.org/wiki/ISO_8601#Durations). Das vorherige Beispiel gibt eine Wartezeit von einer Minute an.
+
+Weitere Informationen zum Integritätsüberprüfungsschritt finden Sie unter [Rollout der Integritätsintegration in Azure-Bereitstellungs-Manager](./deployment-manager-health-check.md) und im [Tutorial: Verwenden der Integritätsprüfung im Azure-Bereitstellungs-Manager (Public Preview)](./deployment-manager-tutorial-health-check.md).
 
 Weitere Informationen finden Sie in der [steps-Vorlagenreferenz](/azure/templates/Microsoft.DeploymentManager/steps).
 
@@ -267,13 +267,13 @@ Weitere Informationen finden Sie in der [rollouts-Vorlagenreferenz](/azure/templ
 
 ## <a name="parameter-file"></a>Parameterdatei
 
-Erstellen Sie zwei Parameterdateien. Eine Parameterdatei wird bei der Bereitstellung der Diensttopologie und die andere bei der Rolloutbereitstellung verwendet. Bei einigen Werte müssen Sie darauf achten, dass sie in beiden Parameterdateien identisch sind.  
+Erstellen Sie zwei Parameterdateien. Eine Parameterdatei wird bei der Bereitstellung der Diensttopologie und die andere bei der Rolloutbereitstellung verwendet. Bei einigen Werte müssen Sie darauf achten, dass sie in beiden Parameterdateien identisch sind.
 
 ## <a name="containerroot-variable"></a>containerRoot-Variable
 
 Bei versionierten Bereitstellungen ändert sich der Pfad zu Ihren Artefakten mit jeder neuen Version. Wenn Sie eine Bereitstellung zum ersten Mal ausführen, lautet der Pfad beispielsweise `https://<base-uri-blob-container>/binaries/1.0.0.0`. Beim zweiten Mal möglicherweise `https://<base-uri-blob-container>/binaries/1.0.0.1`. Der Bereitstellungs-Manager vereinfacht das Abrufen des korrekten Stammpfads für die aktuelle Bereitstellung mithilfe der Variablen `$containerRoot`. Dieser Wert ändert sich mit jeder Version und ist vor der Bereitstellung nicht bekannt.
 
-Verwenden Sie die Variable `$containerRoot` in der Parameterdatei für die Vorlage zum Bereitstellen der Azure-Ressourcen. Bei der Bereitstellung wird diese Variable durch die Istwerte aus dem Rollout ersetzt. 
+Verwenden Sie die Variable `$containerRoot` in der Parameterdatei für die Vorlage zum Bereitstellen der Azure-Ressourcen. Bei der Bereitstellung wird diese Variable durch die Istwerte aus dem Rollout ersetzt.
 
 Beim Rollout erstellen Sie beispielsweise eine Artefaktquelle für die binären Artefakte.
 

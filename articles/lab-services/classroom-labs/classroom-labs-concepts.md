@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 82f9d7090d7283e0b00b36e0928fffb3395ca4c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8bbb486b0dbf1a5e25f5ee4d1f8e5e01b999a8ba
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102634"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067390"
 ---
 # <a name="classroom-labs-concepts"></a>Konzepte von Classroom-Labs
 Die folgende Liste enthält wichtige Lab Services-Konzepte und -Definitionen:
 
 ## <a name="quota"></a>Kontingent
-Das Kontingent ist das Zeitlimit (in Stunden), das ein Kursleiter für die Verwendung einer Lab-VM durch einen Kursteilnehmer festlegen kann. Es kann auf 0, unbegrenzt oder eine bestimmte Anzahl von Stunden festgelegt werden. Wenn das Kontingent auf 0 festgelegt wird, kann der Kursteilnehmer den virtuellen Computer nur verwenden, wenn ein Zeitplan ausgeführt wird oder wenn ein Kursleiter den virtuellen Computer manuell für den Kursteilnehmer einschaltet.
+Das Kontingent ist das Zeitlimit (in Stunden), das ein Kursleiter für die Verwendung einer Lab-VM durch einen Kursteilnehmer festlegen kann. Es kann auf 0 (null) oder eine bestimmte Anzahl von Stunden festgelegt werden. Wenn das Kontingent auf 0 festgelegt wird, kann der Kursteilnehmer den virtuellen Computer nur verwenden, wenn ein Zeitplan ausgeführt wird oder wenn ein Kursleiter den virtuellen Computer manuell für den Kursteilnehmer einschaltet.
  
 ## <a name="schedules"></a>Zeitpläne
 Zeitpläne sind die Zeitfenster (einmalig oder wiederkehrend), die ein Kursleiter für die Klasse erstellen kann. Alle virtuellen Computer im Lab werden zu Beginn des Zeitplans automatisch gestartet und am Ende des Zeitplans automatisch beendet. Kontingentstunden werden nicht verbraucht, wenn ein Zeitplan ausgeführt wird.

@@ -3,29 +3,28 @@ title: Anpassen der SQL Information Protection-Richtlinie im Azure Security Cent
 description: Erfahren Sie, wie Sie Information Protection-Richtlinien im Azure Security Center anpassen.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2ebf2bc7-232a-45c4-a06a-b3d32aaf2500
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
-ms.author: rkarlin
-ms.openlocfilehash: 9b63fb963408b8f22453c7ea78e36a49402273a7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 04/29/2019
+ms.author: memildin
+ms.openlocfilehash: edd415c330656d4cecc42a39d27598a88a1a8d2c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105721"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202097"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Anpassen der SQL Information Protection-Richtlinie im Azure Security Center (Vorschau)
  
 Im Azure Security Center kann eine SQL Information Protection-Richtlinie für Ihren gesamten Azure-Mandanten definiert und angepasst werden.
 
-Information Protection ist eine erweiterte Sicherheitsfunktion für die Ermittlung, Klassifizierung, Bezeichnung und den Schutz sensibler Daten in Ihren Azure-Datenressourcen. Das Ermitteln und Klassifizieren Ihrer sensiblen Daten (Geschäfts-/Finanz-/Gesundheitsdaten, PII usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Das Feature kann als Infrastruktur für Folgendes dienen:
+Information Protection ist eine erweiterte Sicherheitsfunktion für die Ermittlung, Klassifizierung, Bezeichnung und den Schutz sensibler Daten in Ihren Azure-Datenressourcen. Das Ermitteln und Klassifizieren Ihrer vertraulichen Daten (Geschäfts-, Finanz-, Gesundheits-, personenbezogene Daten usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Das Feature kann als Infrastruktur für Folgendes dienen:
 - Unterstützen der Einhaltung von Datenschutzstandards und gesetzlicher Bestimmungen
 - Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnung bei anomalen Zugriff auf sensible Daten
 - Steuern des Zugriffs auf und Härten der Sicherheit von Datenspeichern, die sensible Daten enthalten
@@ -41,12 +40,11 @@ Information Protection umfasst eine integrierte Gruppe von Bezeichnungen und Typ
 ## <a name="customize-the-information-protection-policy"></a>Anpassen der Information Protection-Richtlinie
 Um die Information Protection-Richtlinie für Ihren Azure-Mandanten anpassen zu können, benötigen Sie [Administratorrechte für die Stammverwaltungsgruppe des Mandanten](security-center-management-groups.md). 
  
-1. Wählen Sie im Hauptmenü von Security Center die Option **Sicherheitsrichtlinie** aus.
-2. Wählen Sie **Hierarchische Ansicht (Vorschau)**, und klicken Sie dann unter **Mandantenstammgruppe** auf **Einstellungen bearbeiten**.
- 
+1. Navigieren Sie im Security Center-Hauptmenü unter **RESSOURCENSICHERHEIT** zu **Daten & Speicherung**, und klicken Sie auf die Schaltfläche **SQL Information Protection**.
+
    ![Konfigurieren der Information Protection-Richtlinie](./media/security-center-info-protection-policy/security-policy.png) 
  
-3. Klicken Sie unter **Richtlinienkomponenten** auf **Information Protection**. Auf der Seite **Information Protection-Einstellungen** sehen Sie die aktuelle Gruppe von Bezeichnungen. Dies sind die wichtigsten Klassifizierungsattribute, die verwendet werden, um die Vertraulichkeitsstufe Ihrer Daten zu kategorisieren. In dieser Ansicht können Sie die **Information Protection-Bezeichnungen** und **Informationstypen** für den Mandanten konfigurieren. 
+2. Auf der Seite **SQL Information Protection** sehen Sie die aktuelle Gruppe von Bezeichnungen. Dies sind die wichtigsten Klassifizierungsattribute, die verwendet werden, um die Vertraulichkeitsstufe Ihrer Daten zu kategorisieren. In dieser Ansicht können Sie die **Information Protection-Bezeichnungen** und **Informationstypen** für den Mandanten konfigurieren. 
  
 ### <a name="customizing-labels"></a>Anpassen von Bezeichnungen
  

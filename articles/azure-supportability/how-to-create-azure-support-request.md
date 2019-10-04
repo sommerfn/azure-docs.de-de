@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-ms.openlocfilehash: 0b45bd2a1a2599908d2077198dce0062071b79af
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 462a14d7845c6723a3482e50b01c50e3d913beee
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31512509"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71072082"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Gewusst wie: Erstellen einer Azure-Supportanfrage
 ## <a name="summary"></a>Zusammenfassung
 Azure-Kunden können Supportanfragen im Azure-Portal unter [https://portal.azure.com](https://portal.azure.com) erstellen und verwalten.
 
 > [!NOTE]
-> Das Azure-Portal für Deutschland befindet sich unter [https://portal.microsoftazure.de](https://portal.microsoftazure.de) .  
-> Das Azure-Portal für die US-Regierung befindet sich unter [https://portal.azure.us](https://portal.azure.us).
+> Azure-Portal zur kommerziellen Verwendung: [https://portal.azure.com](https://portal.azure.com). Azure-Portal für Deutschland: [https://portal.microsoftazure.de](https://portal.microsoftazure.de) .  
+> Azure-Portal für die US-Regierung: [https://portal.azure.us](https://portal.azure.us).
 
 
 Basierend auf Kundenfeedback haben wir die Benutzeroberfläche für Supportanfragen aktualisiert, um drei Hauptziele zu erreichen:
 
 * **Optimierung**: Die Anzahl von Klicks und Blättern wurde reduziert, um die Übermittlung einer Supportanfrage zu vereinfachen.
 * **Integration**: Wenn Sie die Problembehandlung für ein Problem mit einer Azure-Ressource durchführen, sollte das Öffnen einer Supportanfrage für diese Ressource leicht möglich sein, ohne den Kontext zu wechseln.
-* **Effizienz**: Sammeln Sie die wichtigen Informationen, die Ihr Supporttechniker benötigt, um das Problem effizient zu lösen.
+* **Effizient**: Sammeln Sie die wichtigen Informationen, die Ihr Supporttechniker benötigt, um das Problem effizient zu lösen.
 
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Supportanfrage oben über das Navigationsmenü oder direkt auf dem Blatt einer Ressource erstellen.
@@ -54,7 +54,7 @@ Wählen Sie auf der Seite „Hilfe und Support“ die Option „Neue Supportanfr
 ## <a name="basics"></a>Grundlagen
 Im ersten Schritt des Prozesses für Supportanfragen werden grundlegende Informationen zu Ihrem Problem und Supportplan gesammelt.
 
-Beispiel: Für Ihren virtuellen Computer sind technische Schwierigkeiten aufgetreten, und Sie vermuten, dass es sich um ein Problem mit der Netzwerkverbindung handelt.
+Sehen wir uns ein Beispiel an: Für Ihren virtuellen Computer sind technische Schwierigkeiten aufgetreten, und Sie vermuten, dass es sich um ein Problem mit der Netzwerkverbindung handelt.
 Indem Sie im ersten Schritt des Assistenten den Dienst („Virtueller Computer unter Windows“) und die Ressource (Name Ihres virtuellen Computers) auswählen, wird der Prozess gestartet, mit dem Sie Hilfe zu diesem Problem erhalten.
 
 ![Blatt "Grundlagen"](./media/how-to-create-azure-support-request/Basics.png)

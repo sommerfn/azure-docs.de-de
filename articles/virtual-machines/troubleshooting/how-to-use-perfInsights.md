@@ -4,22 +4,21 @@ description: Lernen Sie, wie Sie Leistungsprobleme bei virtuellen Windows-Comput
 services: virtual-machines-windows'
 documentationcenter: ''
 author: anandhms
-manager: cshepard
+manager: dcscontentpm
 editor: na
 tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275734"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058176"
 ---
 # <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights
 
@@ -105,27 +104,27 @@ Informationen zu virtuellen Windows-Computern, Datenträger- oder Speicherpoolko
 |Gesammelte Daten                              |  |  | Leistungsszenarien |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
 |                               | Schnelle Leistungsanalyse | Benchmarktests | Leistungsanalyse | Azure Files-Analyse | Erweiterte Leistungsanalyse |
-| Informationen aus Ereignisprotokollen       | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Systeminformationen                | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Volumezuordnung                        | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Datenträgerzuordnung                          | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Ausgeführte Aufgaben                     | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Speicherzuverlässigkeitszähler      | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Speicherinformationen               | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| FSUTIL-Ausgabe                     | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Filtertreiberinformationen                | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Netstat-Ausgabe                    | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Network Configuration             | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Firewall-Konfiguration            | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| SQL Server-Konfiguration          | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Leistungsdiagnose-Ablaufverfolgungen *  | JA                        | Ja                                | Ja                      | Ja                  | JA                  |
-| Leistungsindikator-Ablaufverfolgung **      |                            |                                    | JA                      |                      | JA                  |
-| SMB-Indikatorablaufverfolgung **              |                            |                                    |                          | JA                  |                      |
-| SQL Server-Indikatorablaufverfolgung **       |                            |                                    | JA                      |                      | JA                  |
-| XPerf-Ablaufverfolgung                       |                            |                                    |                          |                      | JA                  |
-| StorPort-Ablaufverfolgung                    |                            |                                    |                          |                      | JA                  |
-| Netzwerkablaufverfolgung                     |                            |                                    |                          | JA                  | JA                  |
-| DiskSpd-Vergleichstest-Ablaufverfolgung ***       |                            | JA                                |                          |                      |                      |
+| Informationen aus Ereignisprotokollen       | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Systeminformationen                | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Volumezuordnung                        | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Datenträgerzuordnung                          | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Ausgeführte Aufgaben                     | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Speicherzuverlässigkeitszähler      | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Speicherinformationen               | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| FSUTIL-Ausgabe                     | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Filtertreiberinformationen                | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Netstat-Ausgabe                    | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Netzwerkkonfiguration             | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Firewall-Konfiguration            | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| SQL Server-Konfiguration          | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Leistungsdiagnose-Ablaufverfolgungen *  | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Leistungsindikator-Ablaufverfolgung **      |                            |                                    | Ja                      |                      | Ja                  |
+| SMB-Indikatorablaufverfolgung **              |                            |                                    |                          | Ja                  |                      |
+| SQL Server-Indikatorablaufverfolgung **       |                            |                                    | Ja                      |                      | Ja                  |
+| XPerf-Ablaufverfolgung                       |                            |                                    |                          |                      | Ja                  |
+| StorPort-Ablaufverfolgung                    |                            |                                    |                          |                      | Ja                  |
+| Netzwerkablaufverfolgung                     |                            |                                    |                          | Ja                  | Ja                  |
+| DiskSpd-Vergleichstest-Ablaufverfolgung ***       |                            | Ja                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Leistungsdiagnose-Ablaufverfolgung (*)
@@ -134,7 +133,7 @@ Führt im Hintergrund eine regelbasiertes Engine aus, um Daten zu sammeln und ak
 
 - HighCpuUsage-Regel: Erkennt Zeiträume mit hoher CPU-Auslastung und zeigt die stärksten CPU-Ressourcenverbraucher während dieser Zeiträume an.
 - HighDiskUsage-Regel: Erkennt Zeiträume mit hoher Datenträgerauslastung auf physischen Datenträgern und zeigt die stärksten Datenträger-Ressourcenverbraucher während dieser Zeiträume an.
-- HighResolutionDiskMetric-Regel: Zeigt IOPS, Durchsatz und E/A-Latenzmetriken pro 50 Millisekunden für jeden physischen Datenträger an. Mit der Lösung lassen sich schnell Datenträgerdrosselungs-Perioden identifizieren.
+- HighResolutionDiskMetric-Regel: Zeigt IOPS, Durchsatz und E/A-Latenzmetriken pro 50 Millisekunden für jeden physischen Datenträger an. Mit der Lösung lassen sich schnell Datenträgerdrosselungs-Perioden identifizieren.
 - HighMemoryUsage-Regel: Erkennt Perioden mit hoher Arbeitsspeicherauslastung und zeigt die stärksten Arbeitsspeicher-Ressourcenverbraucher während dieser Periode an.
 
 > [!NOTE] 
@@ -167,7 +166,7 @@ DiskSpd-E/A-Workloadtests (Betriebssystemdatenträger [Schreibzugriff] und Pooll
 
 -  Dieses Tool muss auf dem virtuellen Computer ausgeführt werden, auf dem das Leistungsproblem besteht. 
 
--  Die folgenden Betriebssysteme werden unterstützt: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016; Windows 8.1 und Windows 10.
+-  Folgende Betriebssysteme werden unterstützt: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016; Windows 8.1 und Windows 10.
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Mögliche Probleme bei Ausführung des Tools auf Produktions-VMs
 
@@ -194,7 +193,7 @@ Gehen Sie wie folgt vor, um das Tool PerfInsights auszuführen:
 
 2. Entsperren Sie die Datei „PerfInsights.zip“. Klicken Sie zu diesem Zweck mit der rechten Maustaste auf die Datei „PerfInsights.zip“, und wählen Sie **Eigenschaften**. Wählen Sie auf der Registerkarte **Allgemein** die Option **Entsperren**, und klicken Sie auf **OK**. So stellen Sie sicher, dass das Tool ohne zusätzliche Sicherheitsabfragen ausgeführt wird.  
 
-    ![Screenshot der PerfInsights-Eigenschaften, auf dem die Option „Entsperren“ hervorgehoben ist](media/how-to-use-perfInsights/unlock-file.png)
+    ![Screenshot der PerfInsights-Eigenschaften, auf dem die Option „Entsperren“ hervorgehoben ist](media/how-to-use-perfInsights/pi-unlock-file.png)
 
 3.  Extrahieren Sie die komprimierte Datei „PerfInsights.zip“ auf das temporäre Laufwerk (standardmäßig in der Regel Laufwerk „D“). 
 
@@ -204,7 +203,7 @@ Gehen Sie wie folgt vor, um das Tool PerfInsights auszuführen:
     cd <the path of PerfInsights folder>
     PerfInsights
     ```
-    ![Screenshot: Ausgabe der PerfInsights-Befehlszeile](media/how-to-use-perfInsights/PerfInsightsCommandline.png)
+    ![Screenshot: Ausgabe der PerfInsights-Befehlszeile](media/how-to-use-perfInsights/pi-commandline.png)
     
     Die grundlegende Syntax für die Ausführung von PerfInsights-Szenarien lautet:
     
@@ -253,8 +252,8 @@ In der Datei **PerformanceDiagnostics\_jjjj-MM-tt\_hh-mm-ss-fff.zip** finden Sie
 
 Wählen Sie die Registerkarte **Ergebnisse**.
 
-![Screenshot des PerfInsights-Berichts](media/how-to-use-perfInsights/findingtab.png)
-![Screenshot des PerfInsights-Berichts](media/how-to-use-perfInsights/findings.PNG)
+![Screenshot des PerfInsights-Berichts](media/how-to-use-perfInsights/pi-finding-tab.png)
+![Screenshot des PerfInsights-Berichts](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > Bei Ergebnissen, die als „Hoch“ eingestuft werden, handelt es sich um bekannte Probleme, die zu Leistungsproblemen führen können. Ergebnisse vom Typ „Mittel“ sind suboptimale Konfigurationen, die nicht unbedingt Leistungsprobleme verursachen. Ergebnisse, die als „Niedrig“ eingestuft werden, dienen lediglich zur Information.
@@ -269,17 +268,17 @@ Die Abschnitte **Datenträgerzuordnung** und **Volumezuordnung** beschreiben, wi
 
 In der Perspektive für physische Datenträger (Datenträgerzuordnung) zeigt die Tabelle alle logischen Volumes, die auf dem Datenträger ausgeführt werden. Im folgenden Beispiel führt **PhysicalDrive2** zwei logische Volumes aus, die auf mehreren Partitionen („J“ und „H“) erstellt werden:
 
-![Screenshot der Datenträger-Registerkarte](media/how-to-use-perfInsights/disktab.png)
+![Screenshot der Datenträger-Registerkarte](media/how-to-use-perfInsights/pi-disk-tab.png)
 
 In der Volume-Perspektive (Volumezuordnung) zeigen die Tabellen alle physischen Datenträger unter den einzelnen logischen Volumes an. Beachten Sie, dass Sie für RAID-Datenträger und dynamische Datenträger ein logisches Volume auf mehreren physischen Datenträgern ausführen können. Im folgenden Beispiel ist *C:\\mount* ein Bereitstellungspunkt, der als *SpannedDisk* auf den physischen Datenträgern 2 und 3 konfiguriert ist:
 
-![Screenshot der Registerkarte „Volume“](media/how-to-use-perfInsights/volumetab.png)
+![Screenshot der Registerkarte „Volume“](media/how-to-use-perfInsights/pi-volume-tab.png)
 
 ### <a name="sql-tab"></a>Registerkarte „SQL“
 
 Wenn der virtuelle Zielcomputer SQL Server-Instanzen hostet, sehen Sie im Bericht eine zusätzliche Registerkarte mit dem Namen **SQL**:
 
-![Screenshot der Registerkarte „SQL“](media/how-to-use-perfInsights/sqltab.png)
+![Screenshot der Registerkarte „SQL“](media/how-to-use-perfInsights/pi-sql-tab.png)
 
 Dieser Abschnitt enthält die Registerkarte **Ergebnisse** und zusätzliche Registerkarten für jede SQL Server-Instanz, die auf dem virtuellen Computer gehostet wird.
 
@@ -287,7 +286,7 @@ Die Registerkarte **Ergebnisse** enthält eine Liste mit allen SQL-bezogenen Lei
 
 Im folgenden Beispiel wird **PhysicalDrive0** (auf Laufwerk „C“ ausgeführt) angezeigt. Das liegt daran, dass sich sowohl die Datei **modeldev** als auch die Datei **modellog** auf Laufwerk „C“ befindet und sie unterschiedlichen Typs sind (z.B. Datendatei und Transaktionsprotokoll).
 
-![Screenshot der Protokollinformationen](media/how-to-use-perfInsights/loginfo.png)
+![Screenshot der Protokollinformationen](media/how-to-use-perfInsights/pi-log-info.png)
 
 Die Registerkarten für bestimmte SQL Server-Instanzen enthalten einen allgemeinen Abschnitt, in dem grundlegende Informationen zur ausgewählten Instanz angezeigt werden. Die Registerkarten enthalten außerdem zusätzliche Abschnitte für erweiterte Informationen, einschließlich Einstellungen, Konfigurationen und Benutzeroptionen.
 
@@ -310,7 +309,7 @@ Sie können Diagnoseprotokolle und Berichte an den Microsoft-Support zur weitere
 
 Der folgende Screenshot zeigt eine Nachricht, die der an Sie gesendeten Nachricht ähnelt:
 
-![Screenshot der Beispielnachricht vom Microsoft-Support](media/how-to-use-perfInsights/supportemail.png)
+![Screenshot der Beispielnachricht vom Microsoft-Support](media/how-to-use-perfInsights/pi-support-email.png)
 
 Befolgen Sie die Anweisungen in der Nachricht, um auf den Arbeitsbereich für die Dateiübertragung zuzugreifen. Zur Erhöhung der Sicherheit müssen Sie das Kennwort bei der ersten Verwendung ändern.
 

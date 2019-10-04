@@ -1,27 +1,26 @@
 ---
 title: Auflisten von Azure Storage-Ressourcen mit der Speicherclientbibliothek für C++ | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Auflistungs-APIs in Microsoft Azure Storage Client Library for C++ verwenden können, um Container, BLOBs, Warteschlangen, Tabellen und Entitäten aufzuzählen.
-services: storage
-author: dineshmurthy
-ms.service: storage
-ms.topic: article
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 01/23/2017
-ms.author: dineshm
+ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 13ddb4d64908421e999174623003acd2fb24024d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.topic: conceptual
+ms.reviewer: dineshm
+ms.openlocfilehash: 3a87e39c9435ba02357b4b655e95e96666242b71
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014892"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721915"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Auflisten von Azure Storage-Ressourcen in C++
+
 Auflistungsvorgänge sind der Schlüssel für viele Entwicklungsszenarien mit Azure Storage. Dieser Artikel beschreibt, wie Objekte in Azure Storage mit den Auflistungs-APIs, die in der Microsoft Azure Storage Client Library for C++ bereitgestellt werden, am effizientesten aufgelistet werden können.
 
 > [!NOTE]
 > Diese Anleitung gilt für die Version 2.x der Azure Storage Client Library for C++, die über [NuGet](https://www.nuget.org/packages/wastorage) oder [GitHub](https://github.com/Azure/azure-storage-cpp) verfügbar ist.
-> 
-> 
 
 Die Storage Client Library stellt eine Vielzahl von Methoden bereit, um Objekte in Azure Storage aufzulisten oder abzufragen. Dieser Artikel behandelt die folgenden Szenarien:
 
@@ -34,7 +33,8 @@ Die Storage Client Library stellt eine Vielzahl von Methoden bereit, um Objekte 
 Jede dieser Methoden wird mit unterschiedlichen Überladungen für unterschiedliche Szenarios dargestellt.
 
 ## <a name="asynchronous-versus-synchronous"></a>Asynchrone und synchrone Vorgänge
-Da die Storage Client Library for C++ auf Basis der [C++ REST-Bibliothek](https://github.com/Microsoft/cpprestsdk) erstellt wurde, werden asynchrone Vorgänge grundsätzlich unterstützt, indem [pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) verwendet wird. Beispiel: 
+
+Da die Storage Client Library for C++ auf Basis der [C++ REST-Bibliothek](https://github.com/Microsoft/cpprestsdk) erstellt wurde, werden asynchrone Vorgänge grundsätzlich unterstützt, indem [pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) verwendet wird. Beispiel:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -52,13 +52,14 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 Wenn Sie mit mehreren Threadinganwendungen oder -diensten arbeiten, empfiehlt es sich, dass Sie die asynchronen APIs direkt verwenden, anstatt einen Thread zu erstellen, mit dem die synchronen APIs aufgerufen werden, wodurch die Leistung erheblich beeinträchtigt wird.
 
 ## <a name="segmented-listing"></a>Segmentiertes Auflisten
+
 Der Umfang von Cloud-Speicher erfordert segmentiertes Auflisten. Beispielsweise können Sie über eine Million BLOBs in einem Azure-BLOB-Container oder über eine Milliarde Entitäten in einer Azure-Tabelle haben. Dies sind keine theoretischen Zahlen, sondern echte Anwendungsfälle von Kunden.
 
 Daher ist es unpraktisch, alle Objekte in einer einzigen Antwort aufzulisten. Stattdessen können Sie Objekte mithilfe von Paging (Auslagern) auflisten. Jede der Auflistungs-APIs hat eine *segmentierte* Überladung.
 
 Die Antwort für einen Vorgang mit segmentierter Auflistung enthält Folgendes:
 
-* <i>_segment</i>, das die Ergebnisse enthält, die für einen einzelnen Aufruf der Auflistungs-API zurückgegeben wurden.
+* *_segment*, das die Ergebnisse enthält, die für einen einzelnen Aufruf der Auflistungs-API zurückgegeben wurden.
 * *continuation_token*, das an den nächsten Aufruf übergeben wird, damit die nächste Seite mit Ergebnissen abgerufen wird. Gibt es keine weiteren zurückzugebenden Ergebnisse, ist das Fortsetzungstoken (continuation_token) gleich NULL.
 
 Ein typischer Aufruf zum Auflisten alle BLOBs in einem Container könnte beispielsweise wie der folgende Codeausschnitt aussehen. Der Code ist in unseren [Beispielen](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)verfügbar:
@@ -101,6 +102,7 @@ Beachten Sie außerdem, dass eine Abfrage für den Azure-Tabellenspeicher mögli
 Das empfohlene Codierungsmuster für die meisten Szenarios ist segmentiertes Auflisten, das expliziten Fortschritt für Auflisten oder Abfragen bereitstellt und festlegt, wie der Dienst auf jede Anforderungen reagiert. Insbesondere für C++-Anwendungen oder -Dienste kann eine auf niedrigerer Ebene erfolgende Steuerung des Auflistungsfortschritts hilfreich sein, den Arbeitsspeicher und die Leistung zu kontrollieren.
 
 ## <a name="greedy-listing"></a>Gieriges Auflisten
+
 Frühere Versionen der Storage Client Library for C++ (Version 0.5.0 Preview und früher) enthalten APIs für nicht segmentiertes Auflisten für Tabellen und Warteschlangen, wie im folgenden Beispiel:
 
 ```cpp
@@ -146,6 +148,7 @@ Durch Angeben des *max_results*-Parameters des Segments können Sie zwischen der
 Außerdem sollten Sie, wenn Sie APIs für segmentiertes Auflisten verwenden, die Daten aber in einer lokalen Sammlung in einem „gierigen“ Stil speichern, Ihren Code so ändern, dass das Speichern von Daten in einer lokalen Sammlung sorgfältig entsprechend dem Umfang erfolgt.
 
 ## <a name="lazy-listing"></a>Faules (lazy) Auflisten
+
 Obwohl gieriges Auflisten möglicherweise Probleme verursacht, ist es praktisch, wenn der Container nicht zu viele Objekte enthält.
 
 Wenn Sie auch C# oder Oracle Java SDKs verwenden, sind Sie vermutlich mit dem Enumerable-Programmiermodell vertraut, das ein faules Auflisten bereitstellt, bei dem die Daten an einem bestimmten Offset nur abgerufen werden, wenn dies erforderlich ist. In C++ bietet die iteratorbasierte Vorlage einen ähnlichen Ansatz.
@@ -181,6 +184,7 @@ Im Gegensatz zum gierigen Auflisten werden beim faulen Auflisten Daten nur bei B
 APIs für faules Auflisten sind in der Version 2.2.0 der Storage Client Library for C++ enthalten.
 
 ## <a name="conclusion"></a>Zusammenfassung
+
 In diesem Artikel werden verschiedene Überladungen für Auflistungs-APIs für unterschiedliche Objekte erläutert, die in der Storage Client Library for C++ enthalten sind. Zusammenfassung:
 
 * Asynchrone APIs sollten in allen Fällen verwendet werden, in denen mit Threading gearbeitet wird.
@@ -189,6 +193,7 @@ In diesem Artikel werden verschiedene Überladungen für Auflistungs-APIs für u
 * Gieriges Auflisten ist nicht zu empfehlen und wurde aus der Bibliothek entfernt.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu Azure Storage und zur Client Library for C++ finden Sie in den folgenden Ressourcen.
 
 * [Verwenden des Blob-Speichers mit C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
@@ -197,4 +202,3 @@ Weitere Informationen zu Azure Storage und zur Client Library for C++ finden Sie
 * [Azure Storage Client Library for C++ API Documentation.](https://azure.github.io/azure-storage-cpp/)
 * [Azure Storage-Teamblog](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)
-

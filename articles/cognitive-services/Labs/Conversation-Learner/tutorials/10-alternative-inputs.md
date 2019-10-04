@@ -3,19 +3,20 @@ title: Alternative Eingaben im Unterhaltungslernmodul – Microsoft Cognitive Se
 titleSuffix: Azure
 description: Informationen zum Verwenden alternativer Eingaben im Unterhaltungslernmodul
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 10335f9c74b9033b303c960a77af136cc80d75bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7416939db8d6552f79fba700b8432de2ad228846
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094363"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704213"
 ---
 # <a name="how-to-use-alternative-inputs"></a>Alternative Eingaben
 

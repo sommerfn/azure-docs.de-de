@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: bd863a8ddd9e2277b628673d2146efd8c458c319
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 692046070ffc04942a5d8a73825f6cb59e462f8b
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979495"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147208"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Erweitern des Betriebssystemlaufwerks eines virtuellen Computers
 
@@ -32,13 +31,13 @@ Beim Erstellen eines neuen virtuellen Computers in einer Ressourcengruppe durch 
 
 
 > [!IMPORTANT]
-> Das Ändern der Größe des Betriebssystemdatenträgers eines virtuellen Azure-Computers führt dazu, dass dieser neu gestartet wird.
+> Ein Ändern der Größe des Betriebssystemdatenträgers eines virtuellen Azure-Computers erfordert, dass die Zuordnung des virtuellen Computers aufgehoben wird.
 >
 > Wenn Sie die Datenträger erweitern, müssen Sie [das Volume innerhalb des Betriebssystems erweitern](#expand-the-volume-within-the-os), um den größere Datenträger nutzen zu können.
 > 
 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 
 ## <a name="resize-a-managed-disk"></a>Ändern der Größe eines verwalteten Datenträgers

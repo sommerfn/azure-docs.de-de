@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 05/07/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 97a3ac275613b644dfd90144039e4f3127186997
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58164925"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65603111"
 ---
 # <a name="what-is-azure-importexport-service"></a>Was ist der Azure Import/Export-Dienst?
 
@@ -74,9 +74,9 @@ Ein Importauftrag umfasst im Allgemeinen die folgenden Schritte:
 8. Die Festplatten werden über Ihr Kurierdienstkonto an die Rücksendeadresse zurückgeschickt, die im Importauftrag angegeben ist.
 
 > [!NOTE]
-> Geben Sie für nationale Lieferungen (innerhalb des Landes, in dem sich das Rechenzentrum befindet) ein inländisches Spediteurkonto an. 
+> Geben Sie für nationale Lieferungen (innerhalb des Landes/der Region, in dem/der sich das Rechenzentrum befindet) ein inländisches Spediteurkonto an. 
 >
-> Geben Sie für internationale Lieferungen (außerhalb des Lands, in dem sich das Rechenzentrum befindet) ein internationales Spediteurkonto an.
+> Geben Sie für internationale Lieferungen (außerhalb des Lands/der Region, in dem/der sich das Rechenzentrum befindet) ein internationales Spediteurkonto an.
 
  ![Abbildung 1: Ablauf eines Importauftrags](./media/storage-import-export-service/importjob.png)
 
@@ -104,9 +104,9 @@ Ein Exportauftrag umfasst im Allgemeinen die folgenden Schritte:
 10. Die Festplatten werden über Ihr Kurierdienstkonto an die Rücksendeadresse zurückgeschickt, die im Importauftrag angegeben ist.
 
 > [!NOTE]
-> Geben Sie für nationale Lieferungen (innerhalb des Landes, in dem sich das Rechenzentrum befindet) ein inländisches Spediteurkonto an. 
+> Geben Sie für nationale Lieferungen (innerhalb des Landes/der Region, in dem/der sich das Rechenzentrum befindet) ein inländisches Spediteurkonto an. 
 >
-> Geben Sie für internationale Lieferungen (außerhalb des Lands, in dem sich das Rechenzentrum befindet) ein internationales Spediteurkonto an.
+> Geben Sie für internationale Lieferungen (außerhalb des Lands/der Region, in dem/der sich das Rechenzentrum befindet) ein internationales Spediteurkonto an.
   
  ![Abbildung 2: Ablauf eines Exportauftrags](./media/storage-import-export-service/exportjob.png)
 
@@ -119,7 +119,7 @@ Der Azure Import/Export-Dienst unterstützt das Kopieren von Daten von bzw. in a
 ### <a name="supported-shipping-locations"></a>Unterstützte Versandstandorte
 
 
-|Country  |Country  |Country  |Country  |
+|Land/Region  |Land/Region  |Land/Region  |Land/Region  |
 |---------|---------|---------|---------|
 |USA (Ost)    | Nordeuropa        | Indien, Mitte        |US Gov Iowa         |
 |USA (Westen)     |Europa, Westen         | Indien (Süden)        | US DoD, Osten        |
@@ -160,7 +160,7 @@ Wenn Sie Festplatten an Azure schicken, übernehmen Sie die Versandkosten des Ku
 
 **Transaktionskosten**
 
-Neben den standardmäßigen Speichertransaktionskosten beim Importieren von Daten in Azure Storage gibt es keine zusätzlichen Transaktionskosten. Die standardmäßigen Gebühren für ausgehende Übertragungen fallen an, wenn Daten aus Blob Storage exportiert werden. Weitere Informationen zu den Transaktionskosten finden Sie unter [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/data-transfers/)
+Für den Import und Export von Daten fallen [Standard-Speichertransaktionsgebühren](https://azure.microsoft.com/pricing/details/storage/) an. Standardgebühren für ausgehende Daten fallen zusammen mit Speichertransaktionsgebühren ebenfalls an, wenn Daten aus Azure Storage exportiert werden. Weitere Informationen zu den Ausgangskosten finden Sie unter [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/data-transfers/).
 
 
 

@@ -9,37 +9,38 @@ ms.assetid: 94dd0222-b960-469c-85da-7fcb98654241
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4a2c90accaafea0c17456f8e6c5eae41199b17ed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 19d58ed90de4bdbd3cd7606d15c115bb1633770a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105164"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069691"
 ---
+# <a name="create-an-external-app-service-environment"></a>Erstellen einer externen App Service-Umgebung
+
+Die Azure App Service-Umgebung ist eine Bereitstellung von Azure App Service in einem Subnetz in einem virtuellen Azure-Netzwerk (VNET).
+
 > [!NOTE]
 > Jede App Service-Umgebung verfügt über eine virtuelle IP-Adresse (VIP), die für den Kontakt mit der App Service-Umgebung verwendet werden kann.
-> 
-> # <a name="create-an-external-app-service-environment"></a>Erstellen einer externen App Service-Umgebung #
 
-Die Azure App Service-Umgebung ist eine Bereitstellung von Azure App Service in einem Subnetz in einem virtuellen Azure-Netzwerk (VNET). Eine App Service-Umgebung (App Service Environment, ASE) kann auf zwei Arten bereitgestellt werden:
+Eine App Service-Umgebung (App Service Environment, ASE) kann auf zwei Arten bereitgestellt werden:
 
 - Mit einer VIP unter einer externen IP-Adresse, die häufig als „externe ASE“ bezeichnet wird
 - Mit der VIP unter einer internen IP-Adresse, die häufig als ILB-ASE bezeichnet wird, da der interne Endpunkt ein interner Load Balancer (ILB) ist.
 
 In diesem Artikel wird gezeigt, wie Sie eine externe ASE erstellen. Eine Übersicht über die ASE finden Sie unter [Einführung in die App Service-Umgebung][Intro]. Informationen zum Erstellen einer ILB-ASE finden Sie unter [Erstellen und Verwenden einer ILB-ASE][MakeILBASE].
 
-## <a name="before-you-create-your-ase"></a>Bevor Sie Ihre ASE erstellen ##
+## <a name="before-you-create-your-ase"></a>Bevor Sie Ihre ASE erstellen
 
 Nach dem Erstellen einer ASE können Sie folgende Elemente nicht mehr ändern:
 
 - Speicherort
-- Abonnement
-- Ressourcengruppe
+- Subscription
+- Resource group
 - Verwendetes VNET
 - Verwendetes Subnetz
 - Subnetzgröße
@@ -48,7 +49,7 @@ Nach dem Erstellen einer ASE können Sie folgende Elemente nicht mehr ändern:
 > Stellen Sie beim Auswählen eines virtuellen Netzwerks und Angeben eines Subnetzes sicher, dass die jeweilige Größe in Bezug auf zukünftige Wachstums- und Skalierungsanforderungen ausreichend hoch gewählt ist. Es wird eine Größe von `/24` mit 256 Adressen empfohlen.
 >
 
-## <a name="three-ways-to-create-an-ase"></a>Drei Möglichkeiten zum Erstellen einer ASE ##
+## <a name="three-ways-to-create-an-ase"></a>Drei Möglichkeiten zum Erstellen einer ASE
 
 Es gibt drei Möglichkeiten, eine ASE zu erstellen:
 
@@ -58,7 +59,7 @@ Es gibt drei Möglichkeiten, eine ASE zu erstellen:
 
 Eine externe ASE verfügt über eine öffentliche VIP – das bedeutet, dass sämtlicher HTTP-/HTTPS-Datenverkehr zu den Apps in der ASE auf eine über das Internet zugängliche IP-Adresse trifft. Eine ASE mit einem ILB verfügt über eine IP-Adresse aus dem von der ASE verwendeten Subnetz. Die Apps, die in einer ILB-ASE gehostet werden, sind nicht für den direkten Zugriff aus dem Internet verfügbar.
 
-## <a name="create-an-ase-and-an-app-service-plan-together"></a>Gemeinsames Erstellen einer ASE und eines App Service-Plans ##
+## <a name="create-an-ase-and-an-app-service-plan-together"></a>Gemeinsames Erstellen einer ASE und eines App Service-Plans
 
 Der App Service-Plan ist ein Container mit Apps. Wenn Sie in App Service eine App erstellen, müssen Sie einen App Service-Plan auswählen oder erstellen. App Service-Umgebungen enthalten App Service-Pläne, und App Service-Pläne enthalten Apps.
 
@@ -94,7 +95,7 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 
     b. Geben Sie einen neuen Subnetznamen an.
 
-    c. Wählen Sie die Größe des Subnetzes aus. *Die Größe sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken.* Die empfohlene Größe ist `/25` mit 128 Adressen zur Verarbeitung einer ASE maximaler Größe. `/28` ist beispielsweise nicht zu empfehlen, da nur 16 Adressen verfügbar sind. In der Infrastruktur werden mindestens sieben und im Azure-Netzwerk weitere fünf Adressen verwendet. In einem `/28`-Subnetz können Sie höchstens vier Instanzen des App Service-Plans für eine externe ASE und nur drei Instanzen des App Service-Plans für eine ILB-ASE skalieren.
+    c. Wählen Sie die Größe des Subnetzes aus. *Die Größe sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken.* Die empfohlene Größe ist `/24` mit 128 Adressen zur Verarbeitung einer ASE maximaler Größe. `/28` ist beispielsweise nicht zu empfehlen, da nur 16 Adressen verfügbar sind. In der Infrastruktur werden mindestens sieben und im Azure-Netzwerk weitere fünf Adressen verwendet. In einem `/28`-Subnetz können Sie höchstens vier Instanzen des App Service-Plans für eine externe ASE und nur drei Instanzen des App Service-Plans für eine ILB-ASE skalieren.
 
     d. Wählen Sie den IP-Bereich des Subnetzes aus.
 
@@ -130,7 +131,7 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 
     b. Geben Sie einen neuen Subnetznamen an.
 
-    c. Wählen Sie die Größe des Subnetzes aus. *Die Größe sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken.* Die empfohlene Größe ist `/25` mit 128 Adressen zur Verarbeitung einer ASE maximaler Größe. `/28` ist beispielsweise nicht zu empfehlen, da nur 16 Adressen verfügbar sind. In der Infrastruktur werden mindestens sieben und im Azure-Netzwerk weitere fünf Adressen verwendet. In einem `/28`-Subnetz können Sie höchstens vier Instanzen des App Service-Plans für eine externe ASE und nur drei Instanzen des App Service-Plans für eine ILB-ASE skalieren.
+    c. Wählen Sie die Größe des Subnetzes aus. *Die Größe sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken.* Die empfohlene Größe ist `/24` mit 128 Adressen zur Verarbeitung einer ASE maximaler Größe. `/28` ist beispielsweise nicht zu empfehlen, da nur 16 Adressen verfügbar sind. In der Infrastruktur werden mindestens sieben und im Azure-Netzwerk weitere fünf Adressen verwendet. In einem `/28`-Subnetz können Sie höchstens vier Instanzen des App Service-Plans für eine externe ASE und nur drei Instanzen des App Service-Plans für eine ILB-ASE skalieren.
 
     d. Wählen Sie den IP-Bereich des Subnetzes aus.
 
@@ -142,7 +143,7 @@ Um eine ASE zu erstellen, während Sie einen App Service-Plan erstellen, gehen S
 1. Wählen Sie **Erstellen**, um die ASE zu erstellen. Dieser Prozess erstellt auch den App Service-Plan und die App. Die ASE, der App Service-Plan und die App befinden sich im gleichen Abonnement und in der gleichen Ressourcengruppe. Wenn für Ihre ASE eine separate Ressourcengruppe erforderlich ist oder Sie eine ILB-ASE benötigen, führen Sie die Schritte zum Erstellen einer eigenständigen ASE aus.
 
 
-## <a name="create-an-ase-by-itself"></a>Erstellen einer eigenständigen ASE ##
+## <a name="create-an-ase-by-itself"></a>Erstellen einer eigenständigen ASE
 
 Wenn Sie eine eigenständige ASE erstellen, enthält sie keinerlei Elemente. Für eine leere ASE fällt trotzdem eine monatliche Gebühr für die Infrastruktur an. Führen Sie diese Schritte aus, um eine ASE mit einem ILB oder eine ASE in einer eigenen Ressourcengruppe zu erstellen. Nach dem Erstellen der ASE können Sie mit der ganz normalen Vorgehensweise Apps darin erstellen. Wählen Sie Ihre neue ASE als Standort aus.
 
@@ -170,7 +171,7 @@ Wenn Sie eine eigenständige ASE erstellen, enthält sie keinerlei Elemente. Fü
     
     * Wenn Sie ein vorhandenes VNET auswählen, wird bei der Erstellung der ASE ein neues Subnetz erstellt. *Ein vorab erstelltes Subnetz kann nicht im Portal verwendet werden. Sie können eine ASE mit einem vorhandenen Subnetz erstellen, wenn Sie eine Resource Manager-Vorlage verwenden.* Informationen zum Erstellen einer ASE mit einer Vorlage finden Sie unter [Erstellen einer ASE aus einer Vorlage][MakeASEfromTemplate].
 
-## <a name="app-service-environment-v1"></a>App Service-Umgebung v1 ##
+## <a name="app-service-environment-v1"></a>App Service-Umgebung v1
 
 Sie können weiterhin Instanzen der ersten Version der App Service-Umgebung (ASEv1) erstellen. Um diesen Prozess zu starten, suchen Sie im Marketplace nach **App Service-Umgebung v1**. Eine solche ASE erstellen Sie auf die gleiche Weise wie eine eigenständige ASE. Nach Abschluss der Einrichtung verfügt Ihre ASEv1 über zwei Front-Ends und zwei Worker. Bei ASEv1 müssen Sie die Front-Ends und Worker verwalten. Diese werden beim Erstellen Ihrer App Service-Pläne nicht automatisch hinzugefügt. Die Front-Ends agieren als HTTP-/HTTPS-Endpunkte und senden Datenverkehr an die Worker. Die Worker sind die Rollen, die Ihre Apps hosten. Sie können die Anzahl von Front-Ends und Workern nach dem Erstellen der ASE anpassen. 
 

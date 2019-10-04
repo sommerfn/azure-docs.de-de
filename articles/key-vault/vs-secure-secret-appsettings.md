@@ -2,23 +2,19 @@
 title: Sicheres Speichern von Geheimnis-Anwendungseinstellungen für eine Webanwendung – Azure Key Vault | Microsoft-Dokumentation
 description: Informationen zum sicheren Speichern von Geheimnis-Anwendungseinstellungen, wie etwa Azure-Anmeldeinformationen oder API-Schlüsseln von Drittanbietern, mithilfe des Key Vault-Anbieters von ASP.NET Core, User Secret oder der .NET 4.7.1-Konfigurationsbuilder
 services: visualstudio
-documentationcenter: ''
 author: cawaMS
 manager: paulyuk
 editor: ''
-ms.assetid: ''
 ms.service: key-vault
-ms.workload: web, azure
-ms.tgt_pltfrm: vs-getting-started
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: 79b1c740bca56982243ddc130d8747fdc955247f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d5662fa3cae8ba0cec0fd76965597ccac7c83889
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124115"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69639486"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Sicheres Speichern von Geheimnis-Anwendungseinstellungen für eine Webanwendung
 
@@ -45,7 +41,7 @@ Wenn Sie ein Projekt entwickeln und Quellcode in sicherer Weise teilen müssen, 
 
     ![Azure Key Vault erstellen](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. Erteilen Sie sich und Ihren Teammitgliedern Zugriff auf den Key Vault. Bei einem großen Team können Sie eine [Azure Active Directory-Gruppe](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal) erstellen und dem Key Vault den Zugriff auf diese Sicherheitsgruppe hinzufügen. Markieren Sie in der Dropdownliste *Berechtigungen für Geheimnis* die Optionen *Abrufen* und *Auflisten* unter *Verwaltungsvorgänge für Geheimnisse*.
+2. Erteilen Sie sich und Ihren Teammitgliedern Zugriff auf den Key Vault. Bei einem großen Team können Sie eine [Azure Active Directory-Gruppe](../active-directory/active-directory-groups-create-azure-portal.md) erstellen und dem Key Vault den Zugriff auf diese Sicherheitsgruppe hinzufügen. Markieren Sie in der Dropdownliste *Berechtigungen für Geheimnis* die Optionen *Abrufen* und *Auflisten* unter *Verwaltungsvorgänge für Geheimnisse*.
 
     ![Hinzufügen der Key Vault-Zugriffsrichtlinie](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
@@ -53,14 +49,16 @@ Wenn Sie ein Projekt entwickeln und Quellcode in sicherer Weise teilen müssen, 
 
     ![Hinzufügen eines Key Vault-Geheimnisses](./media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
-4. Installieren Sie die [Azure-Dienste-Authentifizierungserweiterung für Visual Studio](https://go.microsoft.com/fwlink/?linkid=862354). Durch diese Erweiterung kann die App mit der Anmeldeidentität von Visual Studio auf Key Vault zugreifen.
-
-5. Fügen Sie Ihrem Projekt die folgenden NuGet-Pakete hinzu:
+    > [!NOTE] 
+    > Vor Visual Studio 2017 V15.6 wurde die Installation der Azure Services Authentication-Erweiterung für Visual Studio empfohlen. Aber diese ist jetzt veraltet, da die Funktionalität in Visual Studio integriert ist. Wenn Sie also eine ältere Version von Visual Studio 2017 verwenden, wird empfohlen, auf mindestens VS 2017 15.6 oder höher zu aktualisieren, damit Sie diese Funktionalität nativ nutzen und über die Visual Studio-Anmeldeidentität selbst auf den Schlüsseltresor zugreifen können.
+    >
+ 
+4. Fügen Sie Ihrem Projekt die folgenden NuGet-Pakete hinzu:
 
     ```
     Microsoft.Azure.Services.AppAuthentication
     ```
-6. Fügen Sie der Datei „Program.cs“ folgenden Code hinzu:
+5. Fügen Sie der Datei „Program.cs“ folgenden Code hinzu:
 
     ```csharp
     public static IWebHost BuildWebHost(string[] args) =>
@@ -83,11 +81,11 @@ Wenn Sie ein Projekt entwickeln und Quellcode in sicherer Weise teilen müssen, 
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-7. Fügen Sie Ihre Key Vault-URL der Datei „launchsettings.json“ hinzu. Der Name der Umgebungsvariablen *KEYVAULT_ENDPOINT* ist in dem Code definiert, den Sie in Schritt 6 hinzugefügt haben.
+6. Fügen Sie Ihre Key Vault-URL der Datei „launchsettings.json“ hinzu. Der Name der Umgebungsvariablen *KEYVAULT_ENDPOINT* ist in dem Code definiert, den Sie in Schritt 6 hinzugefügt haben.
 
     ![Hinzufügen der Key Vault-URL als Projektumgebungsvariable](./media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
-8. Beginnen Sie mit dem Debuggen des Projekts. Es sollte erfolgreich ausgeführt werden.
+7. Beginnen Sie mit dem Debuggen des Projekts. Es sollte erfolgreich ausgeführt werden.
 
 ## <a name="aspnet-and-net-applications"></a>ASP.NET- und .NET-Anwendungen
 
@@ -97,9 +95,9 @@ Um fortzufahren, [laden Sie .NET 4.7.1 herunter](https://www.microsoft.com/downl
 ### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Speichern der Geheimniseinstellungen in einer Geheimnisdatei außerhalb des Ordners für die Quellcodeverwaltung
 Wenn Sie einen schnellen Prototyp entwickeln und keine Azure-Ressourcen bereitstellen möchten, verwenden Sie diese Option.
 
-1. Installieren Sie das folgende NuGet-Paket in Ihrem Projekt
+1. Installieren Sie das folgende NuGet-Paket in Ihrem Projekt.
     ```
-    Microsoft.Configuration.ConfigurationBuilders.Basic
+    Microsoft.Configuration.ConfigurationBuilders.Base
     ```
 
 2. Erstellen Sie eine Datei ähnlich der folgenden. Speichern Sie sie an einem Speicherort außerhalb Ihres Projektordners.
@@ -125,7 +123,7 @@ Wenn Sie einen schnellen Prototyp entwickeln und keine Azure-Ressourcen bereitst
     </configBuilders>
     ```
 
-4. Geben Sie an, dass der Abschnitt „appSettings“ den Geheimniskonfigurationsbuilder verwendet. Achten Sie darauf, dass die Geheimniseinstellung einen beliebigen Dummywert enthält.
+4. Geben Sie an, dass der Abschnitt „appSettings“ den Geheimniskonfigurationsbuilder verwendet. Achten Sie darauf, dass die Geheimniseinstellung einen Dummywert enthält.
 
     ```xml
         <appSettings configBuilders="Secrets">

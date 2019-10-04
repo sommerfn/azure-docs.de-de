@@ -2,30 +2,30 @@
 title: Übersicht über Benutzerkonten in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Informationen zu Benutzerkonten in Azure Active Directory B2C
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9d4bcc66cfd82fee13ce57d096e061ddd8706720
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 0ef4bca3a2b08271b3623a346df6613b5ad16995
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100124"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063143"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Übersicht über Benutzerkonten in Azure Active Directory B2C
 
-In Azure Active Directory (Azure AD) B2C können Sie verschiedene Arten von Konten verwenden. In Azure Active Directory, Azure Active Directory B2B und Azure Active Directory B2C können dieselben Arten von Benutzerkonten verwendet werden.
+In Azure Active Directory B2C (Azure AD B2C) können Sie verschiedene Arten von Konten verwenden. In Azure Active Directory, Azure Active Directory B2B und Azure Active Directory B2C können dieselben Arten von Benutzerkonten verwendet werden.
 
 Die folgenden Arten von Konten sind verfügbar:
 
 - **Geschäftskonto**: Ein Geschäftskonto kann auf Ressourcen in einem Mandanten zugreifen und mit einer Administratorrolle Mandanten verwalten.
-- **Gastkonto**: Ein Gastkonto kann nur ein Microsoft-Konto oder ein Azure Active Directory-Benutzerkonto sein, das für den Zugriff auf Anwendungen oder die Verwaltung von Mandanten verwendet werden kann. 
-- **Consumerkonto**: Ein Consumerkonto wird erstellt, indem ein Benutzerflow für die Registrierung in einer Azure AD B2C-Anwendung durchlaufen oder die Azure AD Graph-API verwendet wird. Ein Consumerkonto wird von Benutzern der Anwendungen verwendet, die bei Azure AD B2C registriert sind. 
+- **Gastkonto**: Ein Gastkonto kann nur ein Microsoft-Konto oder ein Azure Active Directory-Benutzerkonto sein, das für den Zugriff auf Anwendungen oder die Verwaltung von Mandanten verwendet werden kann.
+- **Consumerkonto**: Ein Consumerkonto wird erstellt, indem ein Benutzerflow für die Registrierung in einer Azure AD B2C-Anwendung durchlaufen oder die Azure AD Graph-API verwendet wird. Ein Consumerkonto wird von Benutzern der Anwendungen verwendet, die bei Azure AD B2C registriert sind.
 
 ## <a name="work-account"></a>Geschäftskonto
 
@@ -35,12 +35,12 @@ Beim Hinzufügen eines neuen Geschäftskontos müssen Sie die folgenden Konfigur
 
 - **Name** und **Benutzername**: Die Eigenschaft **Name** enthält den Vor- und Nachnamen des Benutzers. Der **Benutzername** ist der Bezeichner, den der Benutzer eingibt, um sich anzumelden. Der Benutzername enthält den vollständigen Domänennamen. Der Domänennamensteil des Benutzernamens muss entweder der anfängliche Standarddomänenname *Ihre_Domäne.onmicrosoft.com* oder ein bestätigter, nicht im Verbund konfigurierter [benutzerdefinierter Domänenname](../active-directory/fundamentals/add-custom-domain.md) wie *contoso.com* sein.
 - **Profil**: Das Konto wird mit einem Profil mit Daten des Benutzers eingerichtet. Sie haben die Möglichkeit, einen Vornamen, Nachnamen, eine Position und einen Abteilungsnamen einzugeben. Sie können das Profil bearbeiten, nachdem das Konto erstellt wurde.
-- **Gruppen**: Sie verwenden eine Gruppe zum Durchführen von Verwaltungsaufgaben, z.B. Zuweisen von Lizenzen oder Berechtigungen für mehrere Benutzer oder Geräte in einem Arbeitsschritt. Sie können das neue Konto einer bestehenden [Gruppe](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) in Ihrem Mandanten zuordnen. 
+- **Gruppen**: Sie verwenden eine Gruppe zum Durchführen von Verwaltungsaufgaben, z.B. Zuweisen von Lizenzen oder Berechtigungen für mehrere Benutzer oder Geräte in einem Arbeitsschritt. Sie können das neue Konto einer bestehenden [Gruppe](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) in Ihrem Mandanten zuordnen.
 - **Verzeichnisrolle**: Sie müssen die Zugriffsebene angeben, die das Benutzerkonto auf Ressourcen in Ihrem Mandanten hat. Die folgenden Berechtigungsebenen sind verfügbar:
 
     - **Benutzer**: Benutzer können auf zugewiesene Ressourcen zugreifen, aber die meisten Mandantenressourcen nicht verwalten.
     - **Globaler Administrator**: Globale Administratoren haben Vollzugriff auf alle Mandantenressourcen.
-    - **Eingeschränkter Administrator**: Wählen Sie die Verwaltungsrollen für den Benutzer aus. Weitere Informationen zu Rollen, die ausgewählt werden können, finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md). 
+    - **Eingeschränkter Administrator**: Wählen Sie die Verwaltungsrollen für den Benutzer aus. Weitere Informationen zu Rollen, die ausgewählt werden können, finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ### <a name="create-a-work-account"></a>Erstellen eines Geschäftskontos
 
@@ -58,7 +58,7 @@ Befolgen Sie zum Aktualisieren des Profils eines Benutzers die folgenden Angaben
 
 ### <a name="reset-a-password-for-a-user"></a>Zurücksetzen eines Kennworts für einen Benutzer
 
-Befolgen Sie zum Zurücksetzen des Kennworts eines Benutzers die folgenden Angaben: 
+Befolgen Sie zum Zurücksetzen des Kennworts eines Benutzers die folgenden Angaben:
 
 - [Azure-Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)

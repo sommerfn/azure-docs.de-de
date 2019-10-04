@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: db26380ef50fd7546f90ceccaec854587e4690c4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 572313f65d5d97211dcb664d79122ea6be520bab
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59491057"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786550"
 ---
 # <a name="migrate-storage-resources-to-global-azure"></a>Migrieren von Speicherressourcen zu Azure weltweit
 
@@ -44,7 +44,7 @@ https://<storageaccountname>.blob.core.windows.net/<containername>/<blobname>
 
 Sie erhalten die drei Teile des URIs (*storageaccountname*, *containername* und *blobname*) über das Portal, durch Verwenden von PowerShell oder durch Verwenden der Azure-Befehlszeilenschnittstelle. Der Name des Blobs kann Teil des URIs sein, oder er kann als ein Muster (z. B. *vm121314.vhd*) angegeben sein.
 
-Außerdem benötigen Sie die Speicherkontoschlüssel, um auf das Azure Storage-Konto zugreifen zu können. Rufen Sie diese über das Portal, durch Verwenden von PowerShell oder durch Verwenden der Befehlszeilenschnittstelle ab. Beispiel: 
+Außerdem benötigen Sie die Speicherkontoschlüssel, um auf das Azure Storage-Konto zugreifen zu können. Rufen Sie diese über das Portal, durch Verwenden von PowerShell oder durch Verwenden der Befehlszeilenschnittstelle ab. Beispiel:
 
 ```powershell
 Get-AzStorageAccountKey -Name <saname> -ResourceGroupName <rgname>
@@ -91,7 +91,7 @@ Da Sie keinen direkten Zugriff auf die VHD-Datei haben, können Sie Tools wie Az
 
 ### <a name="step-2-azcopy"></a>Schritt 2: AzCopy
 
-Beispiele zur Verwendung von AzCopy finden Sie unter [Blobs](#blobs). Verwenden Sie AzCopy (oder ein vergleichbares Tool), um den Datenträger direkt aus Ihrer Quellumgebung in die Zielumgebung zu kopieren. In AzCopy müssen Sie den URI in den Basis-URI und den SAS-Bestandteil (Shared Access Signature) aufteilen. Der SAS-Bestandteil des URIs beginnt mit dem Zeichen „**?**“. Das Portal stellt diesen URI für den SAS-URI bereit:
+Beispiele zur Verwendung von AzCopy finden Sie unter [Blobs](#blobs). Verwenden Sie AzCopy (oder ein vergleichbares Tool), um den Datenträger direkt aus Ihrer Quellumgebung in die Zielumgebung zu kopieren. In AzCopy müssen Sie den URI in den Basis-URI und den SAS-Bestandteil (Shared Access Signature) aufteilen. Der SAS-Bestandteil des URIs beginnt mit dem Zeichen „ **?** “. Das Portal stellt diesen URI für den SAS-URI bereit:
 
 ```http
 https://md-kp4qvrzhj4j5.blob.core.cloudapi.de/r0pmw4z3vk1g/abcd?sv=2017-04-17&sr=b&si=22970153-4c56-47c0-8cbb-156a24b6e4b5&sig=5Hfu0qMw9rkZf6mCjuCE4VMV6W3IR8FXQSY1viji9bg%3D>
@@ -133,7 +133,7 @@ Wie bereits erwähnt, gibt es mehrere Möglichkeiten, einen virtuellen Computer 
 Weitere Informationen finden Sie unter:
 
 - Erfahren Sie, wie Sie [über die API](/rest/api/compute/disks/grantaccess) auf den Datenträger exportieren, indem Sie einen Shared Access Signature-URI abrufen. 
-- Erfahren Sie, wie Sie einen verwalteten Datenträger [über die API](/rest/api/compute/disks/createorupdate#create_a_managed_disk_by_importing_an_unmanaged_blob_from_a_different_subscription.) aus einem nicht verwalteten Blob erstellen.
+- Erfahren Sie, wie Sie einen verwalteten Datenträger [über die API](/rest/api/compute/disks/createorupdate#create-a-managed-disk-by-importing-an-unmanaged-blob-from-a-different-subscription.) aus einem nicht verwalteten Blob erstellen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

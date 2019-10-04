@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 4/1/2019
 ms.author: victorh
 ms.openlocfilehash: 7ee92a7508918635849caafab4632bbba81ee628
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784822"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60193774"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrieren von Azure Firewall mit Azure Load Balancer Standard
 
 Sie können eine Azure Firewall mit einem Azure Load Balancer Standard (öffentlich oder intern) in ein virtuelles Netzwerk integrieren. 
 
-Der bevorzugte Entwurf ist die Integration eines internen Load Balancers in Ihre Azure-Firewall, da dies ein viel einfacheres Design ist. Sie können einen öffentlichen Load Balancer verwenden, wenn Sie bereits einen bereitgestellt haben und diesen beibehalten möchten. Sie müssen jedoch wissen, dass es ein Problem mit asymmetrischem Routing geben kann, das die Funktionalität mit dem Szenario eines öffentlichen Load Balancers (Lastenausgleich) beeinträchtigen kann.
+Der bevorzugte Entwurf ist die Integration eines internen Load Balancers in Ihre Azure Firewall, da dies ein viel einfacheres Design ist. Sie können einen öffentlichen Load Balancer verwenden, wenn Sie bereits einen bereitgestellt haben und diesen beibehalten möchten. Sie müssen jedoch wissen, dass es ein Problem mit asymmetrischem Routing geben kann, das die Funktionalität mit dem Szenario eines öffentlichen Load Balancers (Lastenausgleich) beeinträchtigen kann.
 
 Weitere Informationen zu Azure Load Balancer finden Sie unter [Was versteht man unter Azure Load Balancer?](../load-balancer/load-balancer-overview.md).
 

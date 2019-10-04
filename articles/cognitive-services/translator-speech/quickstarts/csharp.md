@@ -3,20 +3,20 @@ title: 'Schnellstart: Sprachübersetzungs-API (C#)'
 titlesuffix: Azure Cognitive Services
 description: Hier erhalten Sie Informationen und Codebeispiele für einen schnellen Einstieg in die Sprachübersetzungs-API.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
-ms.date: 3/5/2018
-ms.author: v-jaswel
+ms.date: 04/26/2019
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a76c11341d0e145e6d2e9f86a7300ddb9319f6f5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 359d962db8b7d8cfdc17c230351bc5556604ebbe
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673886"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965417"
 ---
 # <a name="quickstart-translator-speech-api-with-c"></a>Schnellstart: Sprachübersetzungs-API mit C#
 <a name="HOLTop"></a>
@@ -27,7 +27,7 @@ In diesem Artikel wird gezeigt, wie Sie mit der Sprachübersetzungs-API gesproch
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen [Visual Studio 2017](https://www.visualstudio.com/downloads/), um diesen Code unter Windows ausführen zu können. (Die kostenlose Community Edition ist hierfür geeignet.) Unter Mac OS oder Linux können Sie alternativ auch den Text-Editor ([Visual Studio Code](https://code.visualstudio.com/Download)) verwenden.
+Sie benötigen [Visual Studio 2019](https://www.visualstudio.com/downloads/), um diesen Code unter Windows ausführen zu können. (Die kostenlose Community Edition ist hierfür geeignet.) Unter Mac OS oder Linux können Sie alternativ auch den Text-Editor ([Visual Studio Code](https://code.visualstudio.com/Download)) verwenden.
 
 Sie benötigen eine WAV-Datei namens „speak.wav“, die im gleichen Ordner gespeichert ist wie die ausführbare Datei, die Sie aus dem unten angegebenen Code kompilieren. Diese WAV-Datei muss im PCM-Standardformat mit 16 Bit, 16 kHz und in mono vorliegen.
 

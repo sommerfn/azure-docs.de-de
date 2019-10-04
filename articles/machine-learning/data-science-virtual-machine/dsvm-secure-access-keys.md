@@ -1,37 +1,31 @@
 ---
-title: Sicheres Speichern von Anmeldeinformationen auf dem virtuellen Computer für Data Science – Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Anmeldeinformationen auf der Data Science Virtual Machine sicher speichern können. Sie lernen, wie Sie verwaltete Dienstidentitäten und Azure Key Vault verwenden, um Zugangsanmeldeinformationen zu speichern.
+title: Sicheres Speichern von Zugriffsanmeldeinformationen
+titleSuffix: Azure Data Science Virtual Machine
+description: Erfahren Sie, wie Sie Anmeldeinformationen auf der Data Science Virtual Machine sicher speichern können. Sie erfahren, wie Sie verwaltete Dienstidentitäten und Azure Key Vault verwenden, um Zugangsanmeldeinformationen zu speichern.
 keywords: Deep Learning, KI, Data Science-Tools, virtueller Data Science-Computer, räumliche Analysen, Data Science-Teamprozess
 services: machine-learning
-documentationcenter: ''
-author: gopitk
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: vijetajo
+ms.author: vijetaj
+ms.topic: conceptual
 ms.date: 05/08/2018
-ms.author: gokuma
-ms.openlocfilehash: 79dba586a5f7102d0012c381593551a951f1b38e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 17e611007d2b5400497597946159826df7aa4848
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451291"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195610"
 ---
-# <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>Sicheres Speichern von Anmeldeinformationen auf dem virtuellen Computer für Data Science
+# <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Sicheres Speichern von Zugriffsanmeldeinformationen in einer Azure Data Science Virtual Machine-Instanz
 
-Eine gängige Herausforderung beim Erstellen von Cloudanwendungen ist die Verwaltung der Anmeldeinformationen, die für die Authentifizierung bei Clouddiensten im Code enthalten sein müssen. Der Schutz dieser Anmeldeinformationen ist eine wichtige Aufgabe. Im Idealfall werden sie nie auf Entwicklerarbeitsstationen angezeigt oder in die Quellcodeverwaltung eingecheckt. 
+Üblicherweise enthält der Code in Cloudanwendungen Anmeldeinformationen für die Authentifizierung bei Clouddiensten. Das Verwalten und Schützen dieser Anmeldeinformationen ist eine bekannte Herausforderung beim Erstellen von Cloudanwendungen. Im Idealfall werden Anmeldeinformationen nie auf Entwicklerarbeitsstationen angezeigt oder in die Quellcodeverwaltung eingecheckt.
 
-Mithilfe der [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
+Die [verwalteten Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) vereinfachen die Lösung dieses Problems, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
-Eine Möglichkeit zum Schützen der Anmeldeinformationen ist, MSI in Kombination mit [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/), einem verwalteten Azure-Dienst zum sicheren Speichern von Geheimnissen und kryptografischen Schlüsseln, zu verwenden. Sie können mit der verwalteten Identität auf einen Schlüsseltresor zugreifen und die autorisierten Geheimnisse und kryptografischen Schlüssel aus dem Schlüsseltresor abrufen. 
+Eine Möglichkeit zum Schützen der Anmeldeinformationen ist, Windows Installer (MSI) in Kombination mit [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/), einem verwalteten Azure-Dienst zum sicheren Speichern von Geheimnissen und kryptografischen Schlüsseln, zu verwenden. Sie können mit der verwalteten Identität auf einen Schlüsseltresor zugreifen und dann die autorisierten Geheimnisse und kryptografischen Schlüssel aus dem Schlüsseltresor abrufen.
 
-Die Dokumentation zu den verwalteten Identitäten für Azure-Ressourcen und Key Vault ist eine umfassende Quelle für ausführliche Informationen zu diesen Diensten. Der Rest dieses Artikels beschreibt die grundlegende Verwendung von MSI und Key Vault auf dem virtuellen Computer für Data Science (Data Science Virtual Machine, DSVM) für den Zugriff auf Azure-Ressourcen. 
+Die Dokumentation zu den verwalteten Identitäten für Azure-Ressourcen und Key Vault bietet eine umfassende Quelle für ausführliche Informationen zu diesen Diensten. Der Rest dieses Artikels beschreibt die grundlegende Verwendung von MSI und Key Vault auf dem virtuellen Computer für Data Science (Data Science Virtual Machine, DSVM) für den Zugriff auf Azure-Ressourcen. 
 
 ## <a name="create-a-managed-identity-on-the-dsvm"></a>Erstellen einer verwalteten Identität auf der DSVM 
 
@@ -46,11 +40,11 @@ az resource list -n <Name of the VM> --query [*].identity.principalId --out tsv
 ```
 
 
-## <a name="assign-key-vault-access-permission-to-a-vm-principal"></a>Zuweisen von Key Vault-Zugriffsberechtigungen zum VM-Prinzipal
+## <a name="assign-key-vault-access-permissions-to-a-vm-principal"></a>Zuweisen von Key Vault-Zugriffsberechtigungen zu einem VM-Prinzipal
 ```
-# Prerequisite: You have already created an empty Key Vault resource on Azure by using the Azure portal or Azure CLI. 
+# Prerequisite: You have already created an empty Key Vault resource on Azure by using the Azure portal or Azure CLI.
 
-# Assign only get and set permission but not the capability to list the keys.
+# Assign only get and set permissions but not the capability to list the keys.
 az keyvault set-policy --object-id <Principal ID of the DSVM from previous step> --name <Key Vault Name> -g <Resource Group of Key Vault>  --secret-permissions get set
 ```
 
@@ -61,14 +55,14 @@ az keyvault set-policy --object-id <Principal ID of the DSVM from previous step>
 x=`curl http://localhost:50342/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true`
 token=`echo $x | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"`
 
-# Access the key vault by using the access token. 
+# Access the key vault by using the access token.
 curl https://<Vault Name>.vault.azure.net/secrets/SQLPasswd?api-version=2016-10-01 -H "Authorization: Bearer $token"
 ```
 
 ## <a name="access-storage-keys-from-the-dsvm"></a>Zugreifen auf Speicherschlüssel von der DSVM
 
 ```
-# Prerequisite: You have granted your VM's MSI access to use storage account access keys based on instructions from the article at https://docs.microsoft.com/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
+# Prerequisite: You have granted your VMs MSI access to use storage account access keys based on instructions at https://docs.microsoft.com/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
 
 y=`curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true`
 ytoken=`echo $y | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"`
@@ -91,15 +85,16 @@ credentials = MSIAuthentication(
 
 # Create a Key Vault client.
 key_vault_client = KeyVaultClient(
-credentials
+    credentials
 )
 
 key_vault_uri = "https://<key Vault Name>.vault.azure.net/"
 
 secret = key_vault_client.get_secret(
-key_vault_uri,  # Your key vault URL.
-"SQLPasswd",       # The name of your secret that already exists in the key vault.
-""              # The version of the secret; empty string for latest.
+    key_vault_uri,  # Your key vault URL.
+    # The name of your secret that already exists in the key vault.
+    "SQLPasswd",
+    ""              # The version of the secret; empty string for latest.
 )
 print("My secret value is {}".format(secret.value))
 ```
@@ -107,8 +102,8 @@ print("My secret value is {}".format(secret.value))
 ## <a name="access-the-key-vault-from-azure-cli"></a>Zugreifen auf den Schlüsseltresor aus Azure CLI
 
 ```
-# With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. Here are commands to access the key vault from Azure CLI without having to log in to an Azure account. 
-# Prerequisites: MSI is already set up on the DSVM as indicated earlier. Specific permission, like accessing storage account keys, reading specific secrets, and writing new secrets, is provided to the MSI. 
+# With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. The following commands enable access to the key vault from Azure CLI without requiring login to an Azure account.
+# Prerequisites: MSI is already set up on the DSVM as indicated earlier. Specific permissions, like accessing storage account keys, reading specific secrets, and writing new secrets, are provided to the MSI.
 
 # Authenticate to Azure CLI without requiring an Azure account. 
 az login --msi

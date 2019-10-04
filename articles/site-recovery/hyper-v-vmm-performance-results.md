@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 7e2f5c344a0fb632956ab5d5b951ee69cff528ec
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a7413b2dcb24a42092eb2af9816b1d29a8306e19
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482799"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68377211"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Testergebnisse für die Hyper-V-Replikation an einen sekundären Standort
 
@@ -108,7 +108,7 @@ Die Ergebnisse zeigen deutlich, dass Site Recovery in Kombination mit Hyper-V Re
 
 | Server | RAM | Modell | Prozessor | Anzahl der Prozessoren | NIC | Software |
 | --- | --- | --- | --- | --- | --- | --- |
-| Hyper-V-Server im Cluster:  <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128 MB (ESTLAB-HOST25: 256 MB) |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 mit \@ 2,20 GHz |4 |1 GBit/s (4x) |Windows Server Datacenter 2012 R2 (x64) + Hyper-V-Rolle |
+| Hyper-V-Server im Cluster: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB-HOST25 hat 256 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 mit \@ 2,20 GHz |4 |1 GBit/s (4x) |Windows Server Datacenter 2012 R2 (x64) + Hyper-V-Rolle |
 | VMM-Server |2 | | |2 |1 GBit/s |Windows Server Datacenter 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>Sekundärer Standort
@@ -120,7 +120,7 @@ Die Ergebnisse zeigen deutlich, dass Site Recovery in Kombination mit Hyper-V Re
 
 | Server | RAM | Modell | Prozessor | Anzahl der Prozessoren | NIC | Software |
 | --- | --- | --- | --- | --- | --- | --- |
-| Hyper-V-Server im Cluster:  <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 mit \@ 2,30 GHz |2 |1 GBit/s (4x) |Windows Server Datacenter 2012 R2 (x64) + Hyper-V-Rolle |
+| Hyper-V-Server im Cluster: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Intel(R) Xeon(R) CPU E5-2630 0 mit \@ 2,30 GHz |2 |1 GBit/s (4x) |Windows Server Datacenter 2012 R2 (x64) + Hyper-V-Rolle |
 | ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 mit \@ 2,20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V-Rolle |
 | ESTLAB-HOST24 |256 |Dell™ PowerEdge™ R820 |Intel(R) Xeon(R) CPU E5-4620 0 mit \@ 2,20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V-Rolle |
 | VMM-Server |2 | | |2 |1 GBit/s |Windows Server Datacenter 2012 R2 (x64) + VMM 2012 R2 |
@@ -133,11 +133,11 @@ Die Ergebnisse zeigen deutlich, dass Site Recovery in Kombination mit Hyper-V Re
 
 | Workload | E/A-Größe (KB) | Prozent (Zugriff) | Prozent (Lesen) | Ausstehende E/A-Vorgänge | E/A-Muster |
 | --- | --- | --- | --- | --- | --- |
-| Dateiserver |48163264 |60 % 20 % 5 % 5 % 10 % |80 % 80 % 80 % 80 % 80 % |88888 |Alle 100 % zufällig |
-| SQL Server (Volume 1) SQL Server (Volume 2) |864 |100 % 100 % |70 % 0 % |88 |100 % zufällig 100 % sequenziell |
+| Dateiserver |4<br />8<br />16<br />32<br />64 |60 %<br />20%<br />5 %<br />5 %<br />10% |80 %<br />80 %<br />80 %<br />80 %<br />80 % |8<br />8<br />8<br />8<br />8 |Alle 100 % zufällig |
+| SQL Server (Volume 1)<br />SQL Server (Volume 2) |8<br />64 |100 %<br />100 % |70 %<br />0 % |8<br />8 |100 % zufällig<br />100 % sequenziell |
 | Exchange |32 |100 % |67 % |8 |100 % zufällig |
-| Arbeitsstation/VDI |464 |66 % 34 % |70 % 95 % |11 |Beides 100 % zufällig |
-| Webdateiserver |4864 |33 % 34 % 33 % |95 % 95 % 95 % |888 |Alle 75 % zufällig |
+| Arbeitsstation/VDI |4<br />64 |66 %<br />34 % |70 %<br />95 % |1<br />1 |Beides 100 % zufällig |
+| Webdateiserver |4<br />8<br />64 |33 %<br />34 %<br />33 % |95 %<br />95 %<br />95 % |8<br />8<br />8 |Alle 75 % zufällig |
 
 ### <a name="vm-configuration"></a>Konfiguration des virtuellen Computers
 

@@ -8,19 +8,16 @@ ms.topic: tutorial
 ms.date: 2/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 616a710237c31ef2b4a19c3e1e61838164a78530
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 8ee43a54df019b862d1f8698363d8b0a022bdcb4
+ms.sourcegitcommit: ed66a704d8e2990df8aa160921b9b69d65c1d887
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308566"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64947150"
 ---
 # <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Tutorial: Erstellen eines Anwendungsgateways, das den Zugriff auf die Webanwendung verbessert
 
 Wenn Sie als IT-Administrator für die Verbesserung des Zugriffs auf die Webanwendung verantwortlich sind, können Sie Ihr Anwendungsgateway optimieren, sodass es der Kundennachfrage gemäß skaliert wird und mehrere Verfügbarkeitszonen abdeckt. Dieses Tutorial hilft Ihnen beim Konfigurieren der Azure Application Gateway-Features für automatische Skalierung, Zonenredundanz und reservierte virtuellen IP-Adressen (VIPs) bzw. statische IP-Adressen. Sie verwenden Azure PowerShell-Cmdlets und das Azure Resource Manager-Bereitstellungsmodell, um das Problem zu lösen.
-
-> [!IMPORTANT] 
-> Die Application Gateway-SKU mit automatischer Skalierung und Zonenredundanz ist derzeit als öffentliche Vorschau verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 In diesem Tutorial lernen Sie Folgendes:
 

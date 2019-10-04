@@ -7,7 +7,7 @@
     - name: Informationen zu App Service unter Linux
       href: app-service-linux-intro.md
     - name: Vergleich von Hostingoptionen
-      href: ../overview-compare.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+      href: /azure/architecture/guide/technology-choices/compute-decision-tree
 - name: Schnellstarts
   expanded: true
   items:
@@ -24,7 +24,7 @@
     - name: Erstellen einer Ruby-App
       href: quickstart-ruby.md
     - name: Ausführen eines benutzerdefinierten Containers
-      href: quickstart-docker-go.md
+      href: quickstart-docker.md
     - name: Erstellen einer App mit mehreren Containern
       href: quickstart-multi-container.md
 - name: Lernprogramme
@@ -65,8 +65,6 @@
       href: ../samples-powershell.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
 - name: Konzepte
   items:
-    - name: So funktioniert App Service
-      href: ../app-service-how-works-readme.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: App Service-Pläne
       href: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: App Service-Umgebung
@@ -83,8 +81,8 @@
   items:
     - name: Konfigurieren der App
       items:
-        - name: Verwenden der App-Einstellungen
-          href: ../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Konfigurieren allgemeiner Einstellungen
+          href: ../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: Konfigurieren von ASP.NET Core
           href: configure-language-dotnetcore.md
         - name: Konfigurieren von Node.js
@@ -152,7 +150,7 @@
     - name: Skalieren der App
       items:
         - name: Zentrales Hochskalieren der Serverkapazität
-          href: ../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+          href: ../manage-scale-up.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: Horizontales Hochskalieren auf mehrere Instanzen
           href: ../../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: High Density-Hosting
@@ -195,6 +193,8 @@
       href: '../../azure-subscription-service-limits.md#app-service-limits'
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: Leitfäden zu Migration Assistant
+      href: 'https://github.com/Azure/App-Service-Migration-Assistant/tree/master/MigrationDocs'
     - name: Bewährte Methoden
       href: ../app-service-best-practices.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Beispiele
@@ -204,7 +204,7 @@
     - name: Cookbooks
       items:
         - name: Referenzarchitekturen
-          href: /azure/architecture/reference-architectures/app-service-web-app/
+          href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: Bereitstellungsskripts
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Problembehandlung

@@ -1,24 +1,24 @@
 ---
-title: Azure HDInsight Go SDK
-description: Referenz zum Azure HDInsight Go SDK
-services: hdinsight
+title: Azure HDInsight SDK für Go
+description: Referenzmaterial für die Verwendung des Azure HDInsight SDK für Go- und Apache Hadoop-Cluster
 author: tylerfox
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 05/8/2019
 ms.author: tyfox
+ms.reviewer: jasonh
 ms.custom: seodec18
-ms.openlocfilehash: b430c69f4ed9206b34f8ca66534aa82e85c0b240
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 60ac0509aed1fc83bc7f660783d4bdbd6cb7d976
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224786"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077133"
 ---
-# <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go Management SDK – Vorschau
+# <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK für Go (Vorschau)
 
 ## <a name="overview"></a>Übersicht
-Das HDInsight Go SDK bietet Klassen und Funktionen, mit denen Sie Ihre HDInsight-Cluster verwalten können. Es enthält Vorgänge zum Erstellen, Löschen, Aktualisieren, Auflisten, Ändern der Größe, Ausführen von Skriptaktionen, Überwachen, Abrufen der Eigenschaften von HDInsight-Clustern und mehr.
+Das HDInsight SDK für Go bietet Klassen und Funktionen, mit denen Sie Ihre HDInsight-Cluster verwalten können. Es enthält Vorgänge zum Erstellen, Löschen, Aktualisieren, Auflisten, Ändern der Größe, Ausführen von Skriptaktionen, Überwachen, Abrufen der Eigenschaften von HDInsight-Clustern und mehr.
 
 > [!NOTE]  
 >GoDoc-Referenzmaterial für dieses SDK ist auch [hier verfügbar](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).
@@ -37,7 +37,7 @@ Führen Sie von GOPATH aus folgenden Befehl aus: `go get github.com/Azure/azure-
 Das SDK muss zunächst für Ihr Azure-Abonnement authentifiziert werden.  Erstellen Sie anhand des Beispiels unten einen Dienstprinzipal, und verwenden Sie ihn für die Authentifizierung. Nachdem dies erfolgt ist, verfügen Sie über eine Instanz von `ClustersClient` mit vielen Funktionen (in den Abschnitten unten beschrieben), die zum Durchführen von Verwaltungsvorgängen verwendet werden können.
 
 > [!NOTE]  
-> Neben dem Beispiel unten gibt es noch andere Möglichkeiten der Authentifizierung, die für Ihre Anforderungen unter Umständen besser geeignet sind. Hier werden alle Funktionen beschrieben: [Authentifizierungsfunktionen im Azure SDK für Go](https://docs.microsoft.com/go/azure/azure-sdk-go-authorization)
+> Neben dem Beispiel unten gibt es noch andere Möglichkeiten der Authentifizierung, die für Ihre Anforderungen unter Umständen besser geeignet sind. Hier werden alle Funktionen beschrieben: [Authentifizierungsfunktionen im Azure SDK für Go](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
 
 ### <a name="authentication-example-using-a-service-principal"></a>Beispiel für die Authentifizierung mit einem Dienstprinzipal
 

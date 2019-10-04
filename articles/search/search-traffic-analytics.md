@@ -2,19 +2,19 @@
 title: Implementieren von „Datenverkehrsanalyse durchsuchen“ – Azure Search
 description: Aktivieren Sie „Datenverkehrsanalyse durchsuchen“ für Azure Search, um Protokolldateien Telemetriedaten und vom Benutzer initiierte Ereignisse hinzuzufügen.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c30c8bae3e76778a31cdd0695acde52b5b1c6b02
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: bb12ed2f18df100ab3f679e7a8a3ef1e7c1aca45
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079663"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647816"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-search"></a>Implementieren von „Datenverkehrsanalyse durchsuchen“ in Azure Search
 „Datenverkehrsanalyse durchsuchen“ ist ein Muster für das Implementieren einer Feedbackschleife für Ihren Suchdienst. Dieses Muster beschreibt die erforderlichen Daten, und wie Sie sie mit Application Insights sammeln, einem branchenführenden Tool für die Überwachung von Diensten auf mehrere Plattformen.
@@ -79,7 +79,7 @@ Entnehmen Sie andere Sprachen und Plattformen bitte der vollständigen [Liste](h
 
     // This sample uses the Azure Search .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search
 
-    var client = new SearchIndexClient(<ServiceName>, <IndexName>, new SearchCredentials(<QueryKey>)
+    var client = new SearchIndexClient(<SearchServiceName>, <IndexName>, new SearchCredentials(<QueryKey>)
     var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
     var response = await client.Documents.SearchWithHttpMessagesAsync(searchText: searchText, searchParameters: parameters, customHeaders: headers);
     IEnumerable<string> headerValues;
@@ -98,7 +98,7 @@ Entnehmen Sie andere Sprachen und Plattformen bitte der vollständigen [Liste](h
 
 Bei jeder Suchanforderung eines Benutzers sollten Sie dies mit folgendem Schema als Suchereignis in einem benutzerdefinierten Application Insights-Ereignis protokollieren:
 
-**ServiceName**: (String) Suchdienstname **SearchId**: (GUID) eindeutiger Bezeichner der Suchabfrage (enthalten in der Suchantwort) **IndexName**: (String) abzufragender Suchdienstindex **QueryTerms**: (String) vom Benutzer eingegebene Suchbegriffe **ResultCount**: (Int) Anzahl der zurückgegebenen Dokumente (enthalten in der Suchantwort) **ScoringProfile**: (String) Ggf. Name des verwendeten Bewertungsprofils
+**SearchServiceName**: (String) Suchdienstname **SearchId**: (GUID) eindeutiger Bezeichner der Suchabfrage (in der Suchantwort enthalten) **IndexName**: (String) abzufragender Suchdienstindex **QueryTerms**: (String) vom Benutzer eingegebene Suchbegriffe **ResultCount**: (Int) Anzahl der zurückgegebenen Dokumente (in der Suchantwort enthalten) **ScoringProfile**: (String) Name des verwendeten Bewertungsprofils, falls vorhanden
 
 > [!NOTE]
 > Fordern Sie die Anzahl vom Benutzer generierter Abfragen an, indem Sie „$count = true“ Ihrer Suchabfrage hinzufügen. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
@@ -197,7 +197,7 @@ Im folgenden Screenshot sind die integrierten Berichte und Diagramme für die An
 ## <a name="next-steps"></a>Nächste Schritte
 Instrumentieren Sie Ihre Suchanwendung, um aussagekräftige Daten über Ihren Suchdienst zu erhalten.
 
-Weitere Informationen finden Sie unter [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Besuchen Sie auch die [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/application-insights/), um mehr über die verschiedenen Diensttarife zu erfahren.
+Weitere Informationen finden Sie unter [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Besuchen Sie auch die [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/application-insights/), um mehr über die verschiedenen Dienstebenen zu erfahren.
 
 Erfahren Sie hier mehr über das Erstellen erstaunlicher Berichte. Weitere Informationen finden Sie unter [Erste Schritte mit Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/).
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 43dc76e6d1e1ec2a6167f1d3e3cc7b8780f843db
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 9422d543ad83f29d60fd7e1de51a79c3416e5b14
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551060"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65956161"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Konfigurieren einer Linux-Node.js-App für Azure App Service
 
@@ -55,7 +55,7 @@ Diese Einstellung legt die zu verwendende Version von Node.js fest, sowohl zur L
 
 ## <a name="configure-nodejs-server"></a>Konfigurieren des Node.js-Servers
 
-Die Node.js-Container werden mit [PM2](http://pm2.keymetrics.io/), einem Manager für den Produktionsprozess, ausgeliefert. Sie können Ihre App so konfigurieren, dass sie mit PM2, mit NPM oder mit einem benutzerdefinierten Befehl startet.
+Die Node.js-Container werden mit [PM2](https://pm2.keymetrics.io/), einem Manager für den Produktionsprozess, ausgeliefert. Sie können Ihre App so konfigurieren, dass sie mit PM2, mit NPM oder mit einem benutzerdefinierten Befehl startet.
 
 - [Benutzerdefinierten Befehl ausführen](#run-custom-command)
 - [NPM-Start ausführen](#run-npm-start)
@@ -71,7 +71,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ### <a name="run-npm-start"></a>NPM-Start ausführen
 
-Um Ihre App mit `npm start` zu starten, stellen Sie einfach sicher, dass sich ein `start`-Skript in der Datei *package.json* befindet. Beispiel: 
+Um Ihre App mit `npm start` zu starten, stellen Sie einfach sicher, dass sich ein `start`-Skript in der Datei *package.json* befindet. Beispiel:
 
 ```json
 {
@@ -99,12 +99,12 @@ Der Container startet Ihre App automatisch mit PM2, wenn sich eine der üblichen
 - *app.js*
 - *index.js*
 - *hostingstart.js*
-- Eine der folgenden [PM2-Dateien](http://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json* und *ecosystem.config.js*
+- Eine der folgenden [PM2-Dateien](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file): *process.json* und *ecosystem.config.js*
 
 Sie können auch eine benutzerdefinierte Startdatei mit den folgenden Erweiterungen konfigurieren:
 
 - Eine *.js*-Datei
-- Eine [PM2-Datei](http://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) mit der Erweiterung *.json*, *.config.js*, *.yaml* oder *.yml*.
+- Eine [PM2-Datei](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file) mit der Erweiterung *.json*, *.config.js*, *.yaml* oder *.yml*.
 
 Führen Sie zum Hinzufügen einer benutzerdefinierten Startdatei den folgenden Befehl in der [Cloud Shell](https://shell.azure.com) aus:
 
@@ -119,7 +119,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 Sie können Ihre Node.js-App remote in [Visual Studio Code](https://code.visualstudio.com/) debuggen, wenn Sie sie so konfigurieren, dass sie [mit PM2 ausgeführt](#run-with-pm2) wird, außer Sie führen sie mit einer *.config.js, *.yml oder *.yaml* aus.
 
-In den meisten Fällen ist keine zusätzliche Konfiguration für Ihre App erforderlich. Wenn Ihre App mit einer *process.json*-Datei (Standard oder benutzerdefiniert) ausgeführt wird, muss sie über eine `script`-Eigenschaft im JSON-Stammverzeichnis verfügen. Beispiel: 
+In den meisten Fällen ist keine zusätzliche Konfiguration für Ihre App erforderlich. Wenn Ihre App mit einer *process.json*-Datei (Standard oder benutzerdefiniert) ausgeführt wird, muss sie über eine `script`-Eigenschaft im JSON-Stammverzeichnis verfügen. Beispiel:
 
 ```json
 {
@@ -137,7 +137,7 @@ Nachdem Sie mit dem Debuggen fertig sind, stoppen Sie den Debugger, indem Sie **
 
 ## <a name="access-environment-variables"></a>Zugreifen auf Umgebungsvariablen
 
-In App Service können Sie [App-Einstellungen außerhalb Ihres App-Codes festlegen](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings). Anschließend können Sie darauf unter Verwendung des Node.js-Standardmusters zugreifen. Verwenden Sie beispielsweise den folgenden Code, um auf eine App-Einstellung namens `NODE_ENV` zuzugreifen:
+In App Service können Sie [App-Einstellungen außerhalb Ihres App-Codes festlegen](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings). Anschließend können Sie darauf unter Verwendung des Node.js-Standardmusters zugreifen. Verwenden Sie beispielsweise den folgenden Code, um auf eine App-Einstellung namens `NODE_ENV` zuzugreifen:
 
 ```javascript
 process.env.NODE_ENV
@@ -147,7 +147,7 @@ process.env.NODE_ENV
 
 Standardmäßig führt Kudu `npm install --production` aus, wenn es erkennt, dass eine Node.js-App bereitgestellt wird. Wenn Ihre App eines der beliebten Automationstools wie Grunt, Bower oder Gulp benötigt, müssen Sie ein [benutzerdefiniertes Bereitstellungsskript](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) bereitstellen, um es auszuführen.
 
-Damit Ihr Repository diese Tools ausführen kann, müssen Sie sie zu den Abhängigkeiten in *package.json* hinzufügen. Beispiel: 
+Damit Ihr Repository diese Tools ausführen kann, müssen Sie sie zu den Abhängigkeiten in *package.json* hinzufügen. Beispiel:
 
 ```json
 "dependencies": {
@@ -224,9 +224,9 @@ fi
 
 ## <a name="detect-https-session"></a>Erkennen einer HTTPS-Sitzung
 
-In App Service erfolgt die [SSL-Beendigung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
+In App Service erfolgt die [SSL-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App als unverschlüsselte HTTP-Anforderungen erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
 
-Gängige Webframeworks ermöglichen den Zugriff auf die Information `X-Forwarded-*` in Ihrem App-Standardmuster. In [Express](https://expressjs.com/) können Sie [trust proxies](http://expressjs.com/guide/behind-proxies.html) (Proxys vertrauen) verwenden. Beispiel: 
+Gängige Webframeworks ermöglichen den Zugriff auf die Information `X-Forwarded-*` in Ihrem App-Standardmuster. In [Express](https://expressjs.com/) können Sie [trust proxies](https://expressjs.com/guide/behind-proxies.html) (Proxys vertrauen) verwenden. Beispiel:
 
 ```javascript
 app.set('trust proxy', 1)
@@ -249,11 +249,11 @@ if (req.secure) {
 Wenn sich eine funktionierende Node.js-App in App Service anders verhält oder Fehler aufweist, versuchen Sie Folgendes:
 
 - [Greifen Sie auf den Protokolldatenstrom zu](#access-diagnostic-logs).
-- Testen Sie die App lokal im Produktionsmodus. App Service führt Ihre Node.js-Apps im Produktionsmodus aus, daher müssen Sie sicherstellen, dass Ihr Projekt lokal wie erwartet im Produktionsmodus funktioniert. Beispiel: 
+- Testen Sie die App lokal im Produktionsmodus. App Service führt Ihre Node.js-Apps im Produktionsmodus aus, daher müssen Sie sicherstellen, dass Ihr Projekt lokal wie erwartet im Produktionsmodus funktioniert. Beispiel:
     - Abhängig von Ihrer *package.json* können verschiedene Pakete für den Produktionsmodus installiert sein (`dependencies` oder `devDependencies`).
     - Bestimmte Webframeworks können statische Dateien im Produktionsmodus unterschiedlich bereitstellen.
     - Bestimmte Webframeworks können benutzerdefinierte Startskripts verwenden, wenn sie im Produktionsmodus ausgeführt werden.
-- Führen Sie Ihre App in App Service im Entwicklungsmodus aus. In [MEAN.js](http://meanjs.org/) können Sie Ihre App z. B. zur Laufzeit in den Entwicklungsmodus versetzen, indem Sie die [App-Einstellung `NODE_ENV` festlegen](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+- Führen Sie Ihre App in App Service im Entwicklungsmodus aus. In [MEAN.js](https://meanjs.org/) können Sie Ihre App z. B. zur Laufzeit in den Entwicklungsmodus versetzen, indem Sie die [App-Einstellung `NODE_ENV` festlegen](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

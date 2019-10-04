@@ -2,7 +2,7 @@
 title: Verwenden des Azure Active Directory-Power BI-Inhaltspakets | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie das Azure Active Directory-Power BI-Inhaltspaket verwenden.
 services: active-directory
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 934562147fedcc81b16fd1ad2534af5662ef4b78
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 4d56802e96028b6b01b6be749405c56df2648161
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436828"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988236"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Verwenden des Power BI-Inhaltspakets für Azure Active Directory
 
@@ -59,7 +59,7 @@ Sie können die Ergebnisse auch filtern, indem Sie ein bestimmtes Datum oder ein
 
 - Benutzername
 - IP-Adresse
-- Standort 
+- Location 
 - Anmeldestatus 
 
 **SSPR-Trichter**: Mit diesem Bericht können Sie nachvollziehen, wie das SSPR-Tool in Ihrer Organisation verwendet wird. Sie können anzeigen, wie viele Kennwortzurücksetzungen mit dem SSPR-Tool durchgeführt wurden und wie viele davon erfolgreich waren. Zudem können Sie Fehler bei der Kennwortzurücksetzung genauer analysieren, damit Sie verstehen, warum bestimmte Fehler aufgetreten sind. 

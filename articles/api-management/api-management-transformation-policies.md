@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 72348085a69746306e40029bc7473df271b60221
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4f57f7cbc4e93f8a98b64b31ca51e0f1e32c375c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105283"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073296"
 ---
 # <a name="api-management-transformation-policies"></a>Azure API Management-Transformationsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -79,15 +78,15 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |apply|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – always – Die Konvertierung immer anwenden.<br />– content-type-json – Nur konvertieren, wenn der Content-Type-Header der Antwort das Vorhandensein von JSON angibt.|Ja|–|
-|consider-accept-header|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – true – Die Konvertierung anwenden, wenn JSON im Accept-Header der Anforderung angefordert wird.<br />– false – Die Konvertierung immer anwenden.|Nein |true|
-|parse-date|Ist dieses Attribut auf `false` festgelegt, werden Datumswerte während der Transformation einfach kopiert.|Nein |true|
+|consider-accept-header|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – true – Die Konvertierung anwenden, wenn JSON im Accept-Header der Anforderung angefordert wird.<br />– false – Die Konvertierung immer anwenden.|Nein|true|
+|parse-date|Ist dieses Attribut auf `false` festgelegt, werden Datumswerte während der Transformation einfach kopiert.|Nein|true|
 
 ### <a name="usage"></a>Verwendung
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, on-error
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="ConvertXMLtoJSON"></a> XML in JSON konvertieren
  Die Richtlinie `xml-to-json` konvertiert einen Anforderungs- oder Antworttext von XML in JSON. Diese Richtlinie kann verwendet werden, um APIs basierend auf reinen XML-Back-End-Webdiensten zu aktualisieren.
@@ -124,14 +123,14 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |----------|-----------------|--------------|-------------|
 |kind|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – javascript-friendly – Die konvertierte JSON hat ein für JavaScript-Entwickler verständliches Format.<br />– direct – Die konvertierte JSON spiegelt die Struktur des ursprünglichen XML-Dokuments wider.|Ja|–|
 |apply|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – always – Immer konvertieren.<br />– content-type-xml – Nur konvertieren, wenn der Content-Type-Header der Antwort das Vorhandensein von XML angibt.|Ja|–|
-|consider-accept-header|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – true – Die Konvertierung anwenden, wenn XML im Accept-Header der Anforderung angefordert wird.<br />– false – Die Konvertierung immer anwenden.|Nein |true|
+|consider-accept-header|Das Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> – true – Die Konvertierung anwenden, wenn XML im Accept-Header der Anforderung angefordert wird.<br />– false – Die Konvertierung immer anwenden.|Nein|true|
 
 ### <a name="usage"></a>Verwendung
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, outbound, on-error
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="Findandreplacestringinbody"></a> Zeichenfolge in Text ersetzen
  Die Richtlinie `find-and-replace` sucht nach einer Teilzeichenfolge in der Antwort oder Anforderung und ersetzt diese durch eine andere Teilzeichenfolge.
@@ -166,7 +165,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="MaskURLSContent"></a> URLs in Inhalt maskieren
  Die Richtlinie `redirect-content-urls` ändert (maskiert) Links im Antworttext, sodass diese über das Gateway auf den äquivalenten Link zeigen. Verwenden Sie sie im Abschnitt „outbound“, um Links im Antworttext so zu ändern, dass sie auf das Gateway zeigen. Verwenden Sie sie im Abschnitt „inbound“ für den entgegengesetzten Effekt.
@@ -197,7 +196,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 -   **Richtlinienabschnitte**: inbound, outbound
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="SetBackendService"></a> Back-End-Dienst festlegen
  Verwenden Sie die Richtlinie `set-backend-service`, um eine eingehende Anforderung an einen anderen Back-End umzuleiten, als in den API-Einstellungen für diesen Vorgang angegeben ist. Diese Richtlinie ändert die Basis-URL des Back-End-Diensts der eingehenden Anforderung in die in der Richtlinie angegebene.
@@ -215,7 +214,7 @@ oder
 ```
 
 > [!NOTE]
-> Back-End-Entitäten können über die Verwaltungs-[API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) oder [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) verwaltet werden.
+> Back-End-Entitäten können über die Verwaltungs-[API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) oder [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) verwaltet werden.
 
 ### <a name="example"></a>Beispiel
 
@@ -270,28 +269,28 @@ In diesem Beispiel leitet die Richtlinie die Anforderung an das Service Fabric-B
 |NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |base-url|Neue Basis-URL für den Back-End-Dienst.|Entweder `base-url` oder `backend-id` muss vorhanden sein.|–|
-|backend-id|Der Bezeichner des Back-Ends, an den die Weiterleitung stattfinden soll (Back-End-Entitäten werden über die [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) und in [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) verwaltet.)|Entweder `base-url` oder `backend-id` muss vorhanden sein.|–|
-|sf-partition-key|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt, der über „backend-id“ angegeben wurde. Wird verwendet, um eine bestimmte Partition aus dem Namensauflösungsdienst aufzulösen.|Nein |–|
-|sf-replica-type|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt, der über „backend-id“ angegeben wurde. Steuert, ob die Anforderung das primäre oder sekundäre Replikat einer Partition betreffen soll. |Nein |–|
-|sf-resolve-condition|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt. Bedingung, die angibt, ob der Aufruf des Service Fabric-Back-Ends mit einer neuen Auflösung wiederholt werden muss.|Nein |–|
-|sf-service-instance-name|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt. Ermöglicht das Ändern von Dienstinstanzen zur Laufzeit. |Nein |–|
-|sf-listener-name|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt, der über „backend-id“ angegeben wurde. Service Fabric Reliable Services ermöglichen die Erstellung mehrerer Listener in einem Dienst. Mit diesem Attribut wird ein bestimmter Listener ausgewählt, wenn eine Reliable Services-Instanz eines Back-Ends über mehrere Listener verfügt. Wenn dieses Attribut nicht angegeben wird, versucht API Management einen Listener ohne Namen zu verwenden. Ein Listener ohne Name ist typisch für Reliable Services mit nur einem Listener. |Nein |–|
+|backend-id|Der Bezeichner des Back-Ends, an den die Weiterleitung stattfinden soll (Back-End-Entitäten werden über die [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) und in [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) verwaltet.)|Entweder `base-url` oder `backend-id` muss vorhanden sein.|–|
+|sf-partition-key|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt, der über „backend-id“ angegeben wurde. Wird verwendet, um eine bestimmte Partition aus dem Namensauflösungsdienst aufzulösen.|Nein|–|
+|sf-replica-type|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt, der über „backend-id“ angegeben wurde. Steuert, ob die Anforderung das primäre oder sekundäre Replikat einer Partition betreffen soll. |Nein|–|
+|sf-resolve-condition|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt. Bedingung, die angibt, ob der Aufruf des Service Fabric-Back-Ends mit einer neuen Auflösung wiederholt werden muss.|Nein|–|
+|sf-service-instance-name|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt. Ermöglicht das Ändern von Dienstinstanzen zur Laufzeit. |Nein|–|
+|sf-listener-name|Nur gültig, wenn es sich bei dem Back-End um einen Service Fabric-Dienst handelt, der über „backend-id“ angegeben wurde. Service Fabric Reliable Services ermöglichen die Erstellung mehrerer Listener in einem Dienst. Mit diesem Attribut wird ein bestimmter Listener ausgewählt, wenn eine Reliable Services-Instanz eines Back-Ends über mehrere Listener verfügt. Wenn dieses Attribut nicht angegeben wird, versucht API Management einen Listener ohne Namen zu verwenden. Ein Listener ohne Name ist typisch für Reliable Services mit nur einem Listener. |Nein|–|
 
 ### <a name="usage"></a>Verwendung
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte:** inbound, backend
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="SetBody"></a> Text festlegen
  Verwenden Sie die Richtlinie `set-body`, um den Nachrichtentext für eingehende und ausgehende Anforderungen festzulegen. Um auf den Nachrichtentext zuzugreifen, können Sie die Eigenschaft `context.Request.Body` oder `context.Response.Body` verwenden, je nachdem, ob sich die Richtlinie im Abschnitt „inbound“ oder „outbound“ befindet.
 
 > [!IMPORTANT]
 >  Beachten Sie, dass beim Zugriff auf den Nachrichtentext mit `context.Request.Body` oder `context.Response.Body` der ursprüngliche Nachrichtentext standardmäßig verloren geht und festgelegt werden muss, indem der Text wieder im Ausdruck zurückgegeben wird. Um den Nachrichtentext zu erhalten, legen Sie den Parameter `preserveContent` auf `true` fest, wenn Sie auf die Nachricht zugreifen. Wenn `preserveContent` auf `true` festgelegt ist und ein anderer Text vom Ausdruck zurückgegeben wird, wird der zurückgegebene Text verwendet.
-> 
+>
 >  Beachten Sie Folgendes, wenn Sie die Richtlinie `set-body` verwenden.
-> 
+>
 > - Wenn Sie die Richtlinie `set-body` verwenden, um einen neuen oder aktualisierten Text zurückzugeben, müssen Sie `preserveContent` nicht auf `true` festlegen, da Sie den Inhalt des neuen Texts explizit angeben.
 >   -   Das Beibehalten des Inhalts einer Antwort in der eingehenden Pipeline ergibt keinen Sinn, da noch keine Antwort vorliegt.
 >   -   Das Beibehalten des Inhalts einer Anforderung in der ausgehenden Pipeline ergibt keinen Sinn, da die Anforderung zu diesem Zeitpunkt bereits an den Back-End gesendet wurde.
@@ -401,11 +400,11 @@ Die Richtlinie `set-body` kann so konfiguriert werden, dass Sie den Hauptteil ei
 |----------|-----------------|--------------|
 |set-body|Stammelement Enthält den Text oder einen Ausdruck, der einen Text zurückgibt.|Ja|
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
 |NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
-|Vorlage|Es wird verwendet, um den Vorlagenmodus zu ändern, in dem die Richtlinie zum Festlegen von Text ausgeführt werden wird. Der einzige derzeit unterstützte Wert ist:<br /><br />– Liquid: Die Richtlinie zum Festlegen von Text verwendet die Liquid-Vorlagen-Engine. |Nein |Liquid|
+|Vorlage|Es wird verwendet, um den Vorlagenmodus zu ändern, in dem die Richtlinie zum Festlegen von Text ausgeführt werden wird. Der einzige derzeit unterstützte Wert ist:<br /><br />– Liquid: Die Richtlinie zum Festlegen von Text verwendet die Liquid-Vorlagen-Engine. |Nein||
 
 Für den Zugriff auf Informationen über die Anforderung und Antwort, kann die Liquid-Vorlage an ein context-Objekt mit den folgenden Eigenschaften binden: <br />
 <pre>context.
@@ -452,7 +451,7 @@ OriginalUrl.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="SetHTTPheader"></a> HTTP-Header setzen
  Die Richtlinie `set-header` weist einem vorhandenen Antwort- und/oder Anforderungsheader einen Wert zu oder fügt einen neuen Antwort- und/oder Anforderungsheader hinzu.
@@ -509,11 +508,11 @@ OriginalUrl.
 |set-header|Stammelement|Ja|
 |value|Der Wert für den zu setzenden Header. Fügen Sie bei mehreren Headern mit dem gleichen Namen weitere `value`-Elemente hinzu.|Ja|
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
 |NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
-|exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein |override|
+|exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein|override|
 |name|Der Name des zu setzenden Headers.|Ja|–|
 
 ### <a name="usage"></a>Verwendung
@@ -521,7 +520,7 @@ OriginalUrl.
 
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="SetQueryStringParameter"></a> Abfrageparameter setzen
  Die Richtlinie `set-query-parameter` fügt Abfrageparameter von Anforderungen hinzu, löscht diese oder ersetzt deren Werte. Mit dieser Richtlinie können Sie erwartete Abfrageparameter an den Back-End-Dienst übergeben, die optional sind oder in der Anforderung nie vorkommen.
@@ -569,11 +568,11 @@ OriginalUrl.
 |set-query-parameter|Stammelement|Ja|
 |value|Gibt den Wert des festzulegenden Abfrageparameters an. Fügen Sie bei mehreren Abfrageparametern mit dem gleichen Namen weitere `value`-Elemente hinzu.|Ja|
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 
 |NAME|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
-|exists-action|Gibt die auszuführende Aktion an, wenn ein Abfrageparameter bereits vorhanden ist. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Parameters.<br />– skip – Ersetzt den vorhandenen Abfrageparameterwert nicht.<br />– append – Fügt den Wert an den vorhandenen Abfrageparameterwert an.<br />– delete – Entfernt den Abfrageparameter aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Abfrageparameter gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein |override|
+|exists-action|Gibt die auszuführende Aktion an, wenn ein Abfrageparameter bereits vorhanden ist. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Parameters.<br />– skip – Ersetzt den vorhandenen Abfrageparameterwert nicht.<br />– append – Fügt den Wert an den vorhandenen Abfrageparameterwert an.<br />– delete – Entfernt den Abfrageparameter aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Abfrageparameter gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein|override|
 |name|Gibt den Namen des festzulegenden Abfrageparameters an.|Ja|–|
 
 ### <a name="usage"></a>Verwendung
@@ -581,7 +580,7 @@ OriginalUrl.
 
 -   **Richtlinienabschnitte:** inbound, backend
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="RewriteURL"></a> URL umschreiben
  Die Richtlinie `rewrite-uri` konvertiert eine Anforderungs-URL von der öffentlichen Form in die vom Webdienst erwartete Form, wie im folgenden Beispiel gezeigt.
@@ -652,14 +651,14 @@ OriginalUrl.
 |Attribut|BESCHREIBUNG|Erforderlich|Standard|
 |---------------|-----------------|--------------|-------------|
 |Vorlage|Die eigentliche Webdienst-URL mit allen Abfrageparametern. Wenn Sie Ausdrücke verwenden, muss der gesamte Wert ein Ausdruck sein.|Ja|–|
-|copy-unmatched-params|Gibt an, ob Abfrageparameter in der eingehenden Anforderung, die in der ursprünglichen URL-Vorlage nicht enthalten sind, der von der Umschreibevorlage festgelegten URL hinzugefügt werden.|Nein |true|
+|copy-unmatched-params|Gibt an, ob Abfrageparameter in der eingehenden Anforderung, die in der ursprünglichen URL-Vorlage nicht enthalten sind, der von der Umschreibevorlage festgelegten URL hinzugefügt werden.|Nein|true|
 
 ### <a name="usage"></a>Verwendung
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 -   **Richtlinienabschnitte**: inbound
 
--   **Richtlinienbereiche**: global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ##  <a name="XSLTransform"></a> XML mithilfe von XSLT transformieren
  Die Richtlinie `Transform XML using an XSLT` wendet eine XSL-Transformation auf XML im Anforderungs- oder Antworttext an.
@@ -715,7 +714,7 @@ OriginalUrl.
 |NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |xsl-transform|Stammelement|Ja|
-|Parameter|Wird verwendet, um in der Transformation verwendete Variablen zu definieren.|Nein |
+|Parameter|Wird verwendet, um in der Transformation verwendete Variablen zu definieren.|Nein|
 |xsl:stylesheet|Stylesheet-Stammelement. Für alle darunter definierten Elemente und Attribute gilt die standardmäßige [XSLT-Spezifikation](https://www.w3.org/TR/xslt)|Ja|
 
 ### <a name="usage"></a>Verwendung
@@ -723,7 +722,7 @@ OriginalUrl.
 
 -   **Richtlinienabschnitte**: inbound, outbound
 
--   **Richtlinienbereiche:** global, Produkt, API, Vorgang
+-   **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,15 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-manager: craigg
-ms.date: 02/08/2019
+ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: d09af0a4c2d09004d5c1bbf3261a14850eef7714
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496436"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231194"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Tutorial: Schützen einer Einzel- oder Pooldatenbank
 
@@ -28,7 +27,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > - Verwalten des Benutzerzugriffs mit SQL-Authentifizierung, Azure AD-Authentifizierung und sicheren Verbindungszeichenfolgen
 > - Aktivieren von Sicherheitsfeatures (beispielsweise Advanced Data Security, Überwachung, Datenmaskierung und Verschlüsselung)
 
-Azure SQL-Datenbank bietet folgende Möglichkeiten, um Daten in einer Einzeldatenbank oder einer in einem Pool zusammengefassten Datenbank zu schützen:
+Azure SQL-Datenbank bietet folgende Möglichkeiten, um Daten in einer Einzel- oder Pooldatenbank zu schützen:
 
 - Beschränken des Zugriffs mithilfe von Firewallregeln
 - Verwenden von Authentifizierungsmechanismen mit Identitätsnachweis
@@ -39,6 +38,9 @@ Azure SQL-Datenbank bietet folgende Möglichkeiten, um Daten in einer Einzeldate
 > Eine Azure SQL-Datenbank in einer verwalteten Instanz wird mithilfe von Netzwerksicherheitsregeln und privaten Endpunkten geschützt, wie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-index.yml) und unter [Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connectivity-architecture.md) beschrieben.
 
 Weitere Informationen finden Sie in den Artikeln [Azure SQL-Datenbank – Erweiterte Sicherheit](/azure/sql-database/sql-database-security-index) und [Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank](sql-database-security-overview.md).
+
+> [!TIP]
+> In den folgenden Microsoft Learn-Modulen können Sie sich kostenlos über das [Schützen von Azure SQL-Datenbank](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/) informieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -56,16 +58,16 @@ Für alle Schritte in diesem Tutorial ist eine Anmeldung beim [Azure-Portal](htt
 
 ## <a name="create-firewall-rules"></a>Erstellen von Firewallregeln
 
-SQL-Datenbanken werden in Azure durch Firewalls geschützt. Standardmäßig werden alle Verbindungen mit dem Server und den Datenbanken abgelehnt. Davon ausgenommen sind nur Verbindungen von anderen Azure-Diensten. Weitere Informationen finden Sie unter [Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank](sql-database-firewall-configure.md).
+SQL-Datenbanken werden in Azure durch Firewalls geschützt. Standardmäßig werden alle Verbindungen mit dem Server und der Datenbank abgelehnt. Weitere Informationen finden Sie unter [Firewallregeln auf Serverebene und Datenbankebene für Azure SQL-Datenbank](sql-database-firewall-configure.md).
 
 Die sicherste Konfiguration erhalten Sie, indem Sie **Zugriff auf Azure-Dienste erlauben** auf **AUS** festlegen. Erstellen Sie anschließend für die Ressource, die eine Verbindung herstellen muss (beispielsweise ein virtueller Computer oder ein Clouddienst), eine [reservierte IP-Adresse (klassische Bereitstellung)](../virtual-network/virtual-networks-reserved-public-ip.md), und lassen Sie den Zugriff durch die Firewall nur für diese IP-Adresse zu. Bei Verwendung des [Resource Manager-Bereitstellungsmodells](/azure/virtual-network/virtual-network-ip-addresses-overview-arm) wird für jede Ressource eine dedizierte öffentliche IP-Adresse benötigt.
 
 > [!NOTE]
-> SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbankserver herstellen, wenn Ihr Administrator den Port 1433 öffnet.
+> SQL-Datenbank kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herstellen, wenn Ihr Administrator den Port 1433 öffnet.
 
-### <a name="set-up-sql-database-server-firewall-rules"></a>Einrichten von Firewallregeln für SQL-Datenbankserver
+### <a name="set-up-sql-database-server-firewall-rules"></a>Einrichten von Firewallregeln für SQL-Datenbank-Server
 
-IP-Firewallregeln auf Serverebene gelten für alle Datenbanken auf dem gleichen SQL-Datenbankserver.
+IP-Firewallregeln auf Serverebene gelten für alle Datenbanken auf dem gleichen SQL-Datenbank-Server.
 
 So richten Sie eine Firewallregel auf Serverebene ein:
 
@@ -85,9 +87,6 @@ So richten Sie eine Firewallregel auf Serverebene ein:
    1. Wählen Sie **OK** aus, und schließen Sie die Seite **Firewalleinstellungen**.
 
 Sie können nun eine Verbindung zu einer beliebigen Datenbank auf dem Server mit der angegebenen IP-Adresse oder dem angegebenen IP-Adressbereich herstellen.
-
-> [!IMPORTANT]
-> Standardmäßig ist der Zugriff durch die SQL-Datenbankfirewall für alle Azure-Dienste aktiviert (unter **Zugriff auf Azure-Dienste erlauben**). Wählen Sie **AUS** aus, um den Zugriff für alle Azure-Dienste zu deaktivieren.
 
 ### <a name="setup-database-firewall-rules"></a>Einrichten von Firewallregeln für eine Datenbank
 

@@ -7,19 +7,19 @@ author: mdgattuso
 manager: danielgi
 editor: ''
 ms.assetid: ''
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: magattus
-ms.openlocfilehash: cc866691aac884def72030345bb4dfcbe87ea689
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 488f7bc4cb715e9cdb99b7a7c79407b9bbc0d29c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092268"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593595"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN-POP-Standorte nach Abkürzung
 > [!div class="op_single_selector"]
@@ -30,71 +30,71 @@ ms.locfileid: "49092268"
 
 In diesem Artikel werden die POP-Standorte nach POP-Abkürzung sortiert für **Azure CDN aus Verizon** aufgelistet.
 
-Abkürzung | Standort | Region
+Abkürzung | Location | Region
 | --- | --- | --- |
-AGA | Atlanta, Georgia, USA | Nordamerika: Ostküste, USA
-AGB | Atlanta, Georgia, USA | Nordamerika: Ostküste, USA
+AGA | Atlanta, Georgia, USA | Nordamerika: USA, Ostküste
+AGB | Atlanta, Georgia, USA | Nordamerika: USA, Ostküste
 AKL | Auckland, Neuseeland | Asien
 AMA | Amsterdam, Niederlande | Europa
 AMB | Amsterdam, Niederlande | Europa
 AMS | Amsterdam, Niederlande | Europa
 ARN | Stockholm, Schweden | Europa
-ATL | Atlanta, Georgia, USA | Nordamerika: Ostküste, USA
+ATL | Atlanta, Georgia, USA | Nordamerika: USA, Ostküste
 BAQ | Barranquilla, Kolumbien | Lateinamerika
 BLR | Bengaluru (Bangalore), Indien | Asien
-BNJ | Newark, New Jersey, USA | Nordamerika: Ostküste, USA
-BOS | Boston, Massachusetts, USA | Nordamerika: Ostküste, USA
+BNJ | Newark, New Jersey, USA | Nordamerika: USA, Ostküste
+BOS | Boston, Massachusetts, USA | Nordamerika: USA, Ostküste
 BTH | Batam, Indonesien | Asien
 BUE | Buenos Aires, Argentinien | Lateinamerika
-BUR | Los Angeles, Kalifornien, USA | Nordamerika: Westküste, USA
+BUR | Los Angeles, Kalifornien, USA | Nordamerika: USA, Westküste
 CDG | Paris, Frankreich | Europa
 CGH | São Paulo, Brasilien | Lateinamerika
 CGK | Jakarta, Indonesien | Asien
-CHA | Chicago, Illinois, USA | Nordamerika: Ostküste, USA
-CHB | Chicago, Illinois, USA | Nordamerika: Ostküste, USA
-CNJ | Newark, New Jersey, USA | Nordamerika: Ostküste, USA
+CHA | Chicago, Illinois, USA | Nordamerika: USA, Ostküste
+CHB | Chicago, Illinois, USA | Nordamerika: USA, Ostküste
+CNJ | Newark, New Jersey, USA | Nordamerika: USA, Ostküste
 CPH | Kopenhagen, Dänemark | Europa
-CPM | Los Angeles, Kalifornien, USA | Nordamerika: Westküste, USA
-CVA | Ashburn, Virginia, USA | Nordamerika: Ostküste, USA
-DAA | Dallas, Texas, USA | Nordamerika: Golfküste, USA
-DAB | Dallas, Texas, USA | Nordamerika: Golfküste, USA
-DCA | Ashburn, Virginia, USA | Nordamerika: Ostküste, USA
-DCB | Ashburn, Virginia, USA | Nordamerika: Ostküste, USA
-DCC | Ashburn, Virginia, USA | Nordamerika: Ostküste, USA
+CPM | Los Angeles, Kalifornien, USA | Nordamerika: USA, Westküste
+CVA | Ashburn, Virginia, USA | Nordamerika: USA, Ostküste
+DAA | Dallas, Texas, USA | Nordamerika: USA, Central Coast
+DAB | Dallas, Texas, USA | Nordamerika: USA, Central Coast
+DCA | Ashburn, Virginia, USA | Nordamerika: USA, Ostküste
+DCB | Ashburn, Virginia, USA | Nordamerika: USA, Ostküste
+DCC | Ashburn, Virginia, USA | Nordamerika: USA, Ostküste
 DEL | Noida, Indien | Asien
-DEN | Denver, Colorado, USA | Nordamerika: Mitte, USA
-DFW | Dallas, Texas, USA | Nordamerika: Mitte, USA
-EWR | New York, New York, USA | Nordamerika: Ostküste, USA
+DEN | Denver, Colorado, USA | Nordamerika: USA, Mitte
+DFW | Dallas, Texas, USA | Nordamerika: USA, Mitte
+EWR | New York, New York, USA | Nordamerika: USA, Ostküste
 EZE | Buenos Aires, Argentinien | Lateinamerika
 FCN | Frankfurt, Deutschland | Europa
-FLL | Miami, Florida, USA | Nordamerika: Ostküste, USA
+FLL | Miami, Florida, USA | Nordamerika: USA, Ostküste
 FRA | Frankfurt, Deutschland | Europa
 FRB | Frankfurt, Deutschland | Europa
 FRC | Frankfurt, Deutschland | Europa
 FRF | Frankfurt, Deutschland | Europa
-FTW | Dallas, Texas, USA | Nordamerika: Mitte, USA
-FTY | Atlanta, Georgia, USA | Nordamerika: Ostküste, USA
+FTW | Dallas, Texas, USA | Nordamerika: USA, Mitte
+FTY | Atlanta, Georgia, USA | Nordamerika: USA, Ostküste
 GIG | Rio de Janeiro, Brasilien | Lateinamerika
 GRU | São Paulo, Brasilien | Lateinamerika
 HEL | Helsinki, Finnland | Europa
-HHP | Hongkong | Asien
-HKC | Hongkong | Asien
-HKG | Hongkong | Asien
+HHP | Hongkong (SAR) | Asien
+HKC | Hongkong (SAR) | Asien
+HKG | Hongkong (SAR) | Asien
 HND | Tokio, Japan | Asien
-IAD | Ashburn, Virginia, USA | Nordamerika: Ostküste, USA
+IAD | Ashburn, Virginia, USA | Nordamerika: USA, Ostküste
 ICN | Seoul, Korea | Asien
 ITM | Osaka, Japan | Asien
-JFK | New York, New York, USA | Nordamerika: Ostküste, USA
+JFK | New York, New York, USA | Nordamerika: USA, Ostküste
 JNB | Johannesburg, Südafrika | Europa
 KHH | Kaohsiung, Taiwan | Asien
 KIX | Osaka, Japan | Asien
-LAA | Los Angeles, Kalifornien, USA | Nordamerika: Westküste, USA
-LAB | Los Angeles, Kalifornien, USA | Nordamerika: Westküste, USA
-LAM | Los Angeles, Kalifornien, USA | Nordamerika: Westküste, USA
-LAN | Los Angeles, Kalifornien, USA | Nordamerika: Westküste, USA
-LAX | Los Angeles, Kalifornien, USA | Nordamerika: Westküste, USA
+LAA | Los Angeles, Kalifornien, USA | Nordamerika: USA, Westküste
+LAB | Los Angeles, Kalifornien, USA | Nordamerika: USA, Westküste
+LAM | Los Angeles, Kalifornien, USA | Nordamerika: USA, Westküste
+LAN | Los Angeles, Kalifornien, USA | Nordamerika: USA, Westküste
+LAX | Los Angeles, Kalifornien, USA | Nordamerika: USA, Westküste
 LCY | London, Großbritannien | Europa
-LGA | New York, New York, USA | Nordamerika: Ostküste, USA
+LGA | New York, New York, USA | Nordamerika: USA, Ostküste
 LHA | London, Großbritannien | Europa
 LHB | London, Großbritannien | Europa
 LHM | London, Großbritannien | Europa
@@ -104,45 +104,45 @@ LIM | Lima, Peru | Lateinamerika
 MAA | Chennai, Indien | Asien
 MAD | Madrid, Spanien | Europa
 MDE | Medellin, Kolumbien | Lateinamerika
-MDW | Chicago, Illinois, USA | Nordamerika: Ostküste, USA
+MDW | Chicago, Illinois, USA | Nordamerika: USA, Ostküste
 MEB | Melbourne, Australien | Asien
 MEL | Melbourne, Australien | Asien
 MEX | Mexiko-Stadt, Mexiko | Nordamerika
-MIA | Miami, Florida, USA | Nordamerika: Ostküste, USA
-MIB | Miami, Florida, USA | Nordamerika: Ostküste, USA
-MIC | Miami, Florida, USA | Nordamerika: Ostküste, USA
+MIA | Miami, Florida, USA | Nordamerika: USA, Ostküste
+MIB | Miami, Florida, USA | Nordamerika: USA, Ostküste
+MIC | Miami, Florida, USA | Nordamerika: USA, Ostküste
 MRS | Marseille, Frankreich | Europa
 MXP | Mailand, Italien | Europa
 NAG | Mumbai, Indien | Asien
 NDL | Delhi, Indien | Asien
 NRT | Tokio, Japan | Asien
-NYA | New York, New York, USA | Nordamerika: Ostküste, USA
-NYB | New York, New York, USA | Nordamerika: Ostküste, USA
+NYA | New York, New York, USA | Nordamerika: USA, Ostküste
+NYB | New York, New York, USA | Nordamerika: USA, Ostküste
 OMM | Maskat, Oman | Naher Osten
-ORD | Chicago, Illinois, USA | Nordamerika: Mitte, USA
+ORD | Chicago, Illinois, USA | Nordamerika: USA, Mitte
 ORY | Paris, Frankreich | Europa
-OXR | Los Angeles, Kalifornien, USA | Nordamerika: Westküste, USA
+OXR | Los Angeles, Kalifornien, USA | Nordamerika: USA, Westküste
 PAB | Paris, Frankreich | Europa
-PAE | Seattle, Washington, USA | Nordamerika: Westküste, USA
+PAE | Seattle, Washington, USA | Nordamerika: USA, Westküste
 PBC | Puebla, Mexiko | Nordamerika
-PHL | Philadelphia, Pennsylvania, USA | Nordamerika: Ostküste, USA
+PHL | Philadelphia, Pennsylvania, USA | Nordamerika: USA, Ostküste
 PNQ | Mumbai, Indien | Asien
 POX | Paris, Frankreich | Europa
 QRO | Santiago de Querétaro, Mexiko | Nordamerika
-RHV | San José, Kalifornien, USA | Nordamerika: Westküste, USA
+RHV | San José, Kalifornien, USA | Nordamerika: USA, Westküste
 RIB | Rio de Janeiro, Brasilien | Lateinamerika
 RIX | Riga, Lettland | Europa
 RTM | Amsterdam, Niederlande | Europa
-SAA | San José, Kalifornien, USA | Nordamerika: Westküste, USA
-SAB | San José, Kalifornien, USA | Nordamerika: Westküste, USA
+SAA | San José, Kalifornien, USA | Nordamerika: USA, Westküste
+SAB | San José, Kalifornien, USA | Nordamerika: USA, Westküste
 SCL | Valparaíso, Chile | Lateinamerika
-SEA | Seattle, Washington, USA | Nordamerika: Westküste, USA
-SEB | Seattle, Washington, USA | Nordamerika: Westküste, USA
-SEC | Seattle, Washington, USA | Nordamerika: Westküste, USA
+SEA | Seattle, Washington, USA | Nordamerika: USA, Westküste
+SEB | Seattle, Washington, USA | Nordamerika: USA, Westküste
+SEC | Seattle, Washington, USA | Nordamerika: USA, Westküste
 SGB | Singapur | Asien
 SIN | Singapur | Asien
-SJC | San José, Kalifornien, USA | Nordamerika: Westküste, USA
-SJO | San José, Kalifornien, USA | Nordamerika: Westküste, USA
+SJC | San José, Kalifornien, USA | Nordamerika: USA, Westküste
+SJO | San José, Kalifornien, USA | Nordamerika: USA, Westküste
 STO | Stockholm, Schweden | Europa
 SYD | Sydney, Australien | Asien
 TIR | Chennai, Indien | Asien
@@ -152,7 +152,7 @@ TOJ | Madrid, Spanien | Europa
 Vereinigte Arabische Emirate | Fujairah, Vereinigte Arabische Emirate | Europa
 UIO | Quito, Ecuador | Lateinamerika
 VIE | Wien, Österreich | Europa
-VNY | Los Angeles, Kalifornien, USA | Nordamerika: Westküste, USA
+VNY | Los Angeles, Kalifornien, USA | Nordamerika: USA, Westküste
 WAW | Warschau, Polen | Europa
 
 

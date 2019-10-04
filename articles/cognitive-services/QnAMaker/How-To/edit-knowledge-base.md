@@ -3,20 +3,20 @@ title: 'Bearbeiten einer Wissensdatenbank: QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerfreundlichen Bearbeitungsoberfläche verwalten.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 03/26/2019
-ms.author: tulasim
+ms.topic: conceptual
+ms.date: 05/10/2019
+ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 22d408204b69e0a564103efd29468c6f0d68d93a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 1450d6b41d9a193f8069509aacd3343ae646c6ac
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577203"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307018"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>Bearbeiten einer Wissensdatenbank in QnA Maker
 
@@ -54,7 +54,7 @@ Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerf
 
 ## <a name="add-a-qna-pair"></a>Hinzufügen eines Fragen-und-Antworten-Paars
 
-Wählen Sie auf der Seite **Einstellungen** die Option **Fragen-und-Antworten-Paar hinzufügen** aus, um der Wissensdatenbanktabelle eine neue Zeile hinzuzufügen.
+Wählen Sie auf der Seite **BEARBEITEN** die Option **Fragen-und-Antworten-Paar hinzufügen** aus, um der Wissensdatenbanktabelle eine neue Zeile hinzuzufügen.
 
 ![Hinzufügen eines Fragen-und-Antworten-Paars](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
@@ -72,8 +72,7 @@ Fügen Sie alternative Fragen zu einem vorhandenen Fragen-und-Antworten-Paar hin
 
 ## <a name="add-metadata"></a>Hinzufügen von Metadaten
 
-
-Fügen Sie Metadatenpaare durch Auswahl des Metadatensymbols hinzu. Ein Metadatenpaar besteht aus einem Schlüssel und einen Wert.
+Fügen Sie Metadatenpaare hinzu, indem Sie zuerst **Ansichtsoptionen** und dann **Metadaten anzeigen** auswählen. Dadurch wird die Metadatenspalte angezeigt. Wählen Sie anschließend das Zeichen **+** aus, um ein Metadatenpaar hinzuzufügen. Dieses Paar besteht aus einem Schlüssel und einen Wert.
 
 ![Hinzufügen von Metadaten](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 

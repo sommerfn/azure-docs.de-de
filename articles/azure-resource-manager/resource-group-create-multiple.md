@@ -2,35 +2,62 @@
 title: Bereitstellen mehrerer Instanzen von Azure-Ressourcen | Microsoft-Dokumentation
 description: Verwenden Sie den copy-Vorgang und Arrays in einer Azure-Ressourcen-Manager-Vorlage, um sie beim Bereitstellen von Ressourcen mehrere Male zu durchlaufen.
 services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
-editor: ''
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/15/2019
+ms.date: 09/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 84f2d82ba6103382d7f9ff850bb6f1930ebbeb9b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b349576f5e9f5410afc29f48e40c38e12168252d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904592"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258894"
 ---
-# <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Bereitstellen mehrerer Instanzen einer Ressource oder Eigenschaft in Azure Resource Manager-Vorlagen
+# <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iteration von Ressourcen, Eigenschaften oder Variablen in Azure Resource Manager-Vorlagen
 
-In diesem Artikel erfahren Sie, wie Sie die Azure Resource Manager-Vorlage durchlaufen können, um mehrere Instanzen einer Ressource zu erstellen. Wenn Sie angeben müssen, ob eine Ressource überhaupt bereitgestellt wird, finden Sie die erforderlichen Informationen unter [Element „condition“](resource-group-authoring-templates.md#condition).
+In diesem Artikel erfahren Sie, wie Sie in Ihrer Azure Resource Manager-Vorlage mehrere Instanzen einer Ressource, Variablen oder Eigenschaft erstellen. Um mehrere Instanzen zu erstellen, fügen Sie das `copy`-Objekt zur Vorlage hinzu.
 
-Ein Tutorial finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](./resource-manager-tutorial-create-multiple-instances.md).
+Bei Verwendung mit einer Ressource weist das copy-Objekt das folgende Format auf:
 
+```json
+"copy": {
+    "name": "<name-of-loop>",
+    "count": <number-of-iterations>,
+    "mode": "serial" <or> "parallel",
+    "batchSize": <number-to-deploy-serially>
+}
+```
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Bei Verwendung mit einer Variablen oder Eigenschaft weist das copy-Objekt das folgende Format auf:
+
+```json
+"copy": [
+  {
+      "name": "<name-of-loop>",
+      "count": <number-of-iterations>,
+      "input": <values-for-the-property-or-variable>
+  }
+]
+```
+
+Beide Verwendungen werden in diesem Artikel ausführlicher beschrieben. Ein Tutorial finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](./resource-manager-tutorial-create-multiple-instances.md).
+
+Wenn Sie angeben müssen, ob eine Ressource überhaupt bereitgestellt wird, finden Sie die erforderlichen Informationen unter [Element „condition“](conditional-resource-deployment.md).
+
+## <a name="copy-limits"></a>Einschränkungen für „copy“
+
+Um die Anzahl der Iterationen festzulegen, geben Sie einen Wert für die count-Eigenschaft an. Der Wert von „count“ darf 800 nicht überschreiten.
+
+Der Wert von „count“ darf nicht negativ sein. Wenn Sie eine Vorlage mit Azure PowerShell 2.6 oder höher oder mit der REST-API-Version **2019-05-10** oder höher bereitstellen, können Sie „count“ auf „0“ (null) festlegen. Frühere Versionen von PowerShell und der REST-API unterstützen den Wert „0“ (null) für „count“ nicht. Die Azure-Befehlszeilenschnittstelle unterstützt den Wert „0“ (null) für „count“ derzeit nicht, aber diese Unterstützung wird in einer zukünftigen Version hinzugefügt.
+
+Wenden Sie die [Bereitstellung im vollständigen Modus](deployment-modes.md) mit Kopieren mit Vorsicht an. Wenn Sie mit dem vollständigen Modus erneut in einer Ressourcengruppe bereitstellen, werden alle Ressourcen, die nicht in der Vorlage angegeben sind, nach dem Auflösen der Kopierschleife gelöscht.
+
+Die Einschränkungen für „count“ sind für Ressourcen, Variablen und Eigenschaften gleich.
 
 ## <a name="resource-iteration"></a>Ressourceniteration
 
-Wenn Sie sich während der Bereitstellung entscheiden müssen, eine oder mehrere Instanzen einer Ressource zu erstellen, fügen Sie dem Ressourcentyp ein `copy`-Element hinzu. Im copy-Element geben Sie die Anzahl von Iterationen und einen Namen für diese Schleife an. Der count-Wert muss eine positive ganze Zahl sein und darf 800 nicht überschreiten. 
+Wenn Sie sich während der Bereitstellung entscheiden müssen, eine oder mehrere Instanzen einer Ressource zu erstellen, fügen Sie dem Ressourcentyp ein `copy`-Element hinzu. Geben Sie im copy-Element die Anzahl von Iterationen und einen Namen für diese Schleife an.
 
 Die Ressource zum mehrfachen Erstellen übernimmt das folgende Format:
 
@@ -71,7 +98,7 @@ Namen:
 * storage1
 * storage2
 
-Zum Versetzen des Indexwerts können Sie einen Wert in der copyIndex()-Funktion übergeben. Die Anzahl von durchzuführenden Durchläufen wird weiterhin im copy-Element angegeben, aber der Wert von copyIndex wird um den angegebenen Wert versetzt. Im folgenden Beispiel werden die unten aufgeführten Namen erstellt:
+Zum Versetzen des Indexwerts können Sie einen Wert in der copyIndex()-Funktion übergeben. Die Anzahl von Iterationen wird weiterhin im copy-Element angegeben, aber der Wert von „copyIndex“ wird um den angegebenen Wert versetzt. Im folgenden Beispiel werden die unten aufgeführten Namen erstellt:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -114,9 +141,9 @@ Namen:
 * storagefabrikam
 * storagecoho
 
-Resource Manager erstellt die Ressourcen standardmäßig gleichzeitig. Die Reihenfolge, in der sie erstellt werden, ist nicht garantiert. Es ist aber möglicherweise sinnvoll, anzugeben, dass die Ressource sequenziell bereitgestellt werden. Wenn Sie z.B. eine Produktionsumgebung aktualisieren, möchten Sie die Updates möglicherweise staffeln, sodass nur eine bestimmte Anzahl von Ressourcen gleichzeitig aktualisiert wird.
+Resource Manager erstellt die Ressourcen standardmäßig gleichzeitig. Es gilt keine Beschränkung für die Anzahl der parallel bereitgestellten Ressourcen, mit Ausnahme der Begrenzung der Gesamtanzahl auf 800 Ressourcen in der Vorlage. Die Reihenfolge, in der sie erstellt werden, ist nicht garantiert.
 
-Legen Sie zum seriellen Bereitstellen mehrerer Instanzen einer Ressource `mode` auf **serial** und `batchSize` auf die Anzahl der Instanzen fest, die zu einem Zeitpunkt bereitgestellt werden sollen. Im seriellen Modus erstellt Resource Manager eine Abhängigkeit von früheren Instanzen in der Schleife, sodass ein Batch erst dann gestartet wird, wenn der vorherige Batch abgeschlossen wurde.
+Es ist aber möglicherweise sinnvoll, anzugeben, dass die Ressource sequenziell bereitgestellt werden. Wenn Sie z.B. eine Produktionsumgebung aktualisieren, möchten Sie die Updates möglicherweise staffeln, sodass nur eine bestimmte Anzahl von Ressourcen gleichzeitig aktualisiert wird. Legen Sie zum seriellen Bereitstellen mehrerer Instanzen einer Ressource `mode` auf **serial** und `batchSize` auf die Anzahl der Instanzen fest, die zu einem Zeitpunkt bereitgestellt werden sollen. Im seriellen Modus erstellt Resource Manager eine Abhängigkeit von früheren Instanzen in der Schleife, sodass ein Batch erst dann gestartet wird, wenn der vorherige Batch abgeschlossen wurde.
 
 Zum seriellen Bereitstellen von zwei Speicherkonten gleichzeitig verwenden Sie beispielsweise:
 
@@ -149,12 +176,14 @@ Zum seriellen Bereitstellen von zwei Speicherkonten gleichzeitig verwenden Sie b
 
 Die mode-Eigenschaft akzeptiert auch **parallel**, wobei es sich um den Standardwert handelt.
 
+Informationen zur Verwendung des „copy“-Elementes mit geschachtelten Vorlagen finden Sie unter [Verwenden des „copy“-Elements](resource-group-linked-templates.md#using-copy).
+
 ## <a name="property-iteration"></a>Iteration von Eigenschaften
 
 Wenn Sie mehrere Werte für eine Eigenschaft einer Ressource erstellen möchten, fügen Sie im properties-Element ein `copy`-Array hinzu. Dieses Array enthält Objekte, und jedes Objekt weist die folgenden Eigenschaften auf:
 
 * „name“ – der Name der Eigenschaft, für die mehrere Werte erstellt werden sollen
-* „count“ – die Anzahl der zu erstellenden Werte. Der count-Wert muss eine positive ganze Zahl sein und darf 800 nicht überschreiten.
+* „count“ – die Anzahl der zu erstellenden Werte.
 * „input“ – ein Objekt, das die Werte enthält, die der Eigenschaft zugewiesen werden sollen  
 
 Im folgenden Beispiel wird veranschaulicht, wie `copy` auf die dataDisks-Eigenschaft auf einem virtuellen Computer angewendet wird:

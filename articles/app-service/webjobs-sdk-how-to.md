@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 88664238fa7cf21381ad6f95e77e02ad89103556
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895206"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68850846"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -171,6 +171,7 @@ public static void Run(
 
 Das `QueueTrigger`-Attribut weist die Runtime an, die Funktion jedes Mal aufzurufen, wenn eine Warteschlangennachricht in der `myqueue-items`-Warteschlange angezeigt wird. Das `Blob`-Attribut weist die Runtime an, die Warteschlangennachricht zum Lesen eines Blobs im Container *Beispielarbeitselemente* zu verwenden. Der Inhalt der Warteschlangennachricht, der im `myQueueItem`-Parameter an die Funktion übergeben wird, ist der Name des Blobs.
 
+[!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
 ### <a name="manual-triggers"></a>Manuelle Trigger
 
@@ -370,7 +371,7 @@ Sie können die folgenden Bindungen konfigurieren:
 
 * [Azure Cosmos DB-Trigger](#azure-cosmosdb-trigger-configuration-version-3x)
 * [Event Hubs-Trigger](#event-hubs-trigger-configuration-version-3x)
-* Queue Storage-Trigger
+* [Queue Storage-Trigger](#queue-storage-trigger-configuration)
 * [SendGrid-Bindung](#sendgrid-binding-configuration-version-3x)
 * [Service Bus-Trigger](#service-bus-trigger-configuration-version-3x)
 
@@ -1008,7 +1009,7 @@ config.LoggerFactory = new LoggerFactory()
 
 ## <a id="nextsteps"></a> Nächste Schritte
 
-In diesem Artikel wurden Codeausschnitte bereitgestellt, die zeigen, wie häufige Szenarien für das Arbeiten mit dem WebJobs SDK behandelt werden. Vollständige Beispiele finden Sie unter [azure-webjobs-sdk-samples](https://github.com/Azure/azure-webjobs-sdk-samples).
+In diesem Artikel wurden Codeausschnitte bereitgestellt, die zeigen, wie häufige Szenarien für das Arbeiten mit dem WebJobs SDK behandelt werden. Vollständige Beispiele finden Sie unter [azure-webjobs-sdk-samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 
 [ExecutionContext]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
 [TelemetryClient]: /dotnet/api/microsoft.applicationinsights.telemetryclient

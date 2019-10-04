@@ -2,20 +2,20 @@
 title: Verwenden von T-SQL-Ansichten in Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Tipps für die Verwendung von T-SQL-Sichten in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
 services: sql-data-warehouse
-author: ronortloff
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: rortloff
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: dba6d49590cc4064155e58784a166d3abbb19b6f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8a770e66120e69271744942899186ece39b2a3c3
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468426"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479522"
 ---
 # <a name="views-in-azure-sql-data-warehouse"></a>Sichten in Azure SQL Data Warehouse
 Tipps für die Verwendung von T-SQL-Sichten in Azure SQL Data Warehouse zum Entwickeln von Lösungen. 
@@ -23,12 +23,18 @@ Tipps für die Verwendung von T-SQL-Sichten in Azure SQL Data Warehouse zum Entw
 ## <a name="why-use-views"></a>Gründe für die Verwendung von Sichten
 Sichten können auf verschiedene Weisen zur Verbesserung der Qualität Ihrer Lösung verwendet werden.  Dieser Artikel enthält einige Beispiele dafür, wie Sie Ihre Lösung mit Sichten bereichern können, sowie Informationen zu den Einschränkungen, die zu berücksichtigen sind.
 
+
+> [!IMPORTANT]
+> Sehen Sie sich die Syntax für die neue materialisierte Sicht unter [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) an.  Weitere Informationen finden Sie in den [Versionshinweisen](/azure/sql-data-warehouse/release-notes-10-0-10106-0).
+>
+
+
 > [!NOTE]
 > Die Syntax für CREATE VIEW wird in diesem Artikel nicht erörtert. Weitere Informationen finden Sie in der Dokumentation zu [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql).
 > 
-> 
 
 ## <a name="architectural-abstraction"></a>Architekturabstraktion
+
 Ein häufig verwendetes Anwendungsmuster ist das erneute Erstellen von Tabellen mit CREATE TABLE AS SELECT (CTAS) gefolgt von einem Muster zur Objektumbenennung beim Laden von Daten.
 
 Im folgenden Beispiel werden einer Datumsdimension neue Datumsdatensätze hinzugefügt. Beachten Sie, wie eine neue Tabelle (DimDate_New) zuerst erstellt und dann umbenannt wird, um die ursprüngliche Version der Tabelle zu ersetzen.

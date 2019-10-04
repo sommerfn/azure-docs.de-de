@@ -1,64 +1,150 @@
 ---
 title: Indizierung in Azure Cosmos DB
 description: Erhalten Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB.
-author: rimman
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: rimman
-ms.openlocfilehash: ecf53251020ce1b639a5bf8da65f5d31ff699db9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.date: 09/10/2019
+ms.author: thweiss
+ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59265694"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914195"
 ---
-# <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
+# <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
 
-Azure Cosmos DB ist eine schemaunabhängige Datenbank und ermöglicht es Ihnen, schnell Ihre Anwendung zu durchlaufen, ohne sich mit Schema- oder Indexverwaltung befassen zu müssen. Standardmäßig indiziert Azure Cosmos DB automatisch alle Elemente in Ihrem Container, ohne dass Schema- oder Sekundärindizes von Entwicklern benötigt werden.
+Azure Cosmos DB ist eine schemaunabhängige Datenbank, die es Ihnen ermöglicht, Ihre Anwendung zu durchlaufen, ohne sich mit Schema- oder Indexverwaltung befassen zu müssen. Standardmäßig indiziert Azure Cosmos DB automatisch alle Eigenschaften für sämtliche Elemente in Ihrem [Container](databases-containers-items.md#azure-cosmos-containers), ohne dass ein Schema definiert oder Sekundärindizes konfiguriert werden müssen.
 
-## <a name="items-as-trees"></a>Elemente als Strukturen
+In diesem Artikel wird beschrieben, wie Azure Cosmos DB Daten indiziert und wie Indizes zur Verbesserung der Abfrageleistung verwendet werden. Sie sollten zunächst diesen Abschnitt lesen, bevor Sie sich mit dem Anpassen von [Indizierungsrichtlinien](index-policy.md) beschäftigen.
 
-Indem Elemente in einem Container als JSON-Dokumente projiziert und als Strukturen dargestellt werden, normalisiert Azure Cosmos DB sowohl die Struktur als auch die Instanzwerte für alle Elemente in das vereinheitlichende Konzept einer **dynamisch codierten Pfadstruktur**. In dieser Darstellung wird jede Bezeichnung in einem JSON-Dokument, das sowohl die Eigenschaftennamen als auch deren Werte enthält, zu einem Knoten des Struktur. Die Blätter des Strukturbaums enthalten die tatsächlichen Werte, und die Zwischenknoten enthalten die Schemainformationen. Das folgende Bild zeigt die Strukturen, die für zwei Elemente (1 und 2) in einem Azure Cosmos-Container erstellt wurden:
+## <a name="from-items-to-trees"></a>Von Elementen zu Strukturen
 
-![Strukturdarstellung für zwei verschiedene Elemente in einem Azure Cosmos-Container](./media/index-overview/indexing-as-tree.png)
+Bei jedem Speichern eines Elements in einem Container wird dessen Inhalt als ein JSON-Dokument projiziert und anschließend in eine strukturierte Darstellung konvertiert. Das bedeutet, dass jede Eigenschaft dieses Elements als Knoten in einer Struktur dargestellt wird. Als übergeordnetes Element für alle Eigenschaften auf oberster Ebene des Elements wird ein Pseudostammknoten erstellt. Die Blattknoten enthalten die eigentlichen Skalarwerte eines Elements.
 
-Ein Pseudostammknoten wird als übergeordneter Knoten zu den eigentlichen Knoten angelegt, die den Bezeichnungen im darunter liegenden JSON-Dokument entsprechen. Die geschachtelten Datenstrukturen unterstützen die Hierarchie in der Struktur. Zwischenliegende künstliche Knoten, die mit numerischen Werten bezeichnet sind (z.B. 0, 1, ....), werden zur Darstellung von Enumerationen und Arrayindizes verwendet.
+Betrachten Sie z. B. dieses Element:
 
-## <a name="index-paths"></a>Indexpfade
+```json
+    {
+        "locations": [
+            { "country": "Germany", "city": "Berlin" },
+            { "country": "France", "city": "Paris" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 250 },
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" }
+        ]
+    }
+```
 
-Azure Cosmos DB stellt Elemente in einem Azure Cosmos-Container als JSON-Dokumente und den Index als Strukturen dar. Sie können die Indexrichtlinien für Pfade innerhalb der Struktur optimieren. Sie können Pfade in die Indizierung einschließen bzw. von dieser ausschließen. Dies kann bessere Schreibleistungen und geringeren Indexspeicherbedarf für Szenarien bieten, in denen die Abfragemuster im Voraus bekannt sind. Weitere Informationen finden Sie unter [Indexpfade](index-paths.md).
+Es wird durch die folgende Struktur dargestellt:
 
-## <a name="indexing-under-the-hood"></a>Indizierung: Im Hintergrund
+![Das vorherige Element als Struktur dargestellt](./media/index-overview/item-as-tree.png)
 
-Die Azure Cosmos-Datenbank wendet die *automatische Indizierung* auf die Daten an, wobei jeder Pfad in einer Struktur indiziert wird, es sei denn, Sie schließen in der Konfiguration bestimmte Pfade aus.
+Beachten Sie, wie Arrays in der Struktur codiert werden: Jeder Eintrag in einem Array erhält direkt einen Zwischenknoten, der mit dem Index dieses Eintrags innerhalb des Arrays bezeichnet ist (0, 1 usw.).
 
-Die Azure Cosmos-Datenbank verwendet eine invertierte Indexdatenstruktur, um die Informationen zu jedem Element zu speichern und eine effiziente Darstellung der Abfrage zu ermöglichen. Die Indexstruktur ist ein Dokument, das aus der Vereinigung aller Strukturen besteht, die einzelne Elemente in einem Container darstellen. Die Indexstruktur wächst im Lauf der Zeit, wenn neue Elemente hinzugefügt oder bestehende Elemente im Container aktualisiert werden. Im Gegensatz zur Indexierung relationaler Datenbanken startet Azure Cosmos DB die Indizierung nicht von Grund auf neu, wenn neue Felder eingeführt werden. Neue Elemente werden der vorhandenen Indexstruktur hinzugefügt. 
+## <a name="from-trees-to-property-paths"></a>Von Strukturen zu Eigenschaftenpfaden
 
-Jeder Knoten der Indexstruktur ist ein Indexeintrag, der die Bezeichnungs- und Positionswerte, die sogenannte *Benennung*, und die IDs der Elemente, die sogenannten *Postings*, enthält. Die Postings in den geschweiften Klammern (z. B. {1,2}) in der invertierten Indexzahl entsprechen den Elementen wie *Document1* und *Document2*, die den angegebenen Bezeichungswert enthalten. Eine wichtige Schlussfolgerung für eine einheitliche Behandlung sowohl der Schemabezeichnungen als auch der Instanzwerte ist, dass alles in einen großen Index eingebunden ist. Ein Instanzwert, der sich noch in den Blättern befindet, wird nicht wiederholt, er kann in unterschiedlichen Elemente verschiedenen Rollen mit unterschiedlichen Schemabezeichnungen einnehmen, aber es ist derselbe Wert. Die folgende Abbildung zeigt die invertierte Indizierung für zwei unterschiedliche Elemente:
+Azure Cosmos DB transformiert die Elemente in Strukturen, da so über die Pfade innerhalb dieser Strukturen auf Elemente verwiesen werden kann. Um den Pfad für eine Eigenschaft abzurufen, können Sie die Struktur vom Stammknoten aus bis zu dieser Eigenschaft durchlaufen. Verketten Sie dabei die Bezeichnungen aller durchlaufenen Knoten.
 
-![Funktionsweise der Indizierung, invertierter Index](./media/index-overview/inverted-index.png)
+Dies sind die Pfade für jede Eigenschaft aus dem oben beschriebenen Beispielelement:
 
-> [!NOTE]
-> Der invertierte Index kann ähnlich aussehen wie die Indizierungsstrukturen, die in einer Suchmaschine in der Domäne zum Abrufen von Information verwendet werden. Mit dieser Methode ermöglicht es Ihnen Azure Cosmos DB, Ihre Datenbank unabhängig von seiner Schemastruktur nach jedem Element zu durchsuchen.
+    /locations/0/country: "Germany"
+    /locations/0/city: "Berlin"
+    /locations/1/country: "France"
+    /locations/1/city: "Paris"
+    /headquarters/country: "Belgium"
+    /headquarters/employees: 250
+    /exports/0/city: "Moscow"
+    /exports/1/city: "Athens"
 
-Für den normalisierten Pfad codiert der Index den Weiterleitungspfad vom Stammverzeichnis bis zum Wert zusammen mit den Typinformationen des Wertes. Der Pfad und der Wert werden codiert, um verschiedene Arten der Indizierung bereitzustellen, wie z. B. nach Bereich, räumlich usw. Die Wertecodierung ist so konzipiert, dass sie einen eindeutigen Wert oder eine Zusammensetzung aus einer Reihe von Pfaden liefert.
+Wenn ein Element geschrieben wird, indiziert Azure Cosmos DB den Pfad jeder Eigenschaft und den zugehörigen Wert.
+
+## <a name="index-kinds"></a>Indextypen
+
+Azure Cosmos DB unterstützt derzeit drei Arten von Indizes:
+
+Der **Range**-Indextyp wird für Folgendes verwendet:
+
+- Gleichheitsabfragen:
+
+    ```sql
+   SELECT * FROM container c WHERE c.property = 'value'
+   ```
+
+- Bereichsabfragen:
+
+   ```sql
+   SELECT * FROM container c WHERE c.property > 'value'
+   ```
+  (funktioniert für `>`, `<`, `>=`, `<=`, `!=`)
+
+- `ORDER BY` fragt Folgendes ab:
+
+   ```sql 
+   SELECT * FROM container c ORDER BY c.property
+   ```
+
+- `JOIN` fragt Folgendes ab:
+
+   ```sql
+   SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
+   ```
+
+Range-Indizes können für Skalarwerte (Zeichenfolge oder Zahl) verwendet werden.
+
+Der **Spatial**-Indextyp wird für Folgendes verwendet:
+
+- Abfragen zum räumlichen Abstand: 
+
+   ```sql
+   SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
+   ```
+
+- Räumliche Abfragen: 
+
+   ```sql
+   SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
+   ```
+
+Spatial-Indizes können für ordnungsgemäß formatierte [GeoJSON](geospatial.md)-Objekte verwendet werden. Derzeit werden Point, LineString, Polygon und MultiPolygon unterstützt.
+
+Der **zusammengesetzte** Index wird für Folgendes verwendet:
+
+- `ORDER BY` fragt mehrere Eigenschaften ab:
+
+```sql
+ SELECT * FROM container c ORDER BY c.property1, c.property2
+```
+
+- Abfragen mit einem Filter und `ORDER BY`. Diese Abfragen können einen zusammengesetzten Index verwenden, wenn die Filter-Eigenschaft der `ORDER BY`-Klausel hinzugefügt wird.
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
+```
+
+- Abfragen mit einem Filter für zwei oder mehr Eigenschaften, bei denen mindestens eine Eigenschaft ein Gleichheitsfilter ist
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
+```
 
 ## <a name="querying-with-indexes"></a>Abfragen mit Indizes
 
-Der invertierte Index ermöglicht es einer Abfrage, die Dokumente, die mit dem Abfrageprädikat übereinstimmen, schnell zu identifizieren. Durch die einheitliche Behandlung von Schema- und Instanzwerten in Bezug auf Pfade ist der invertierte Index auch eine Struktur. Somit können der Index und die Ergebnisse zu einem gültigen JSON-Dokument serialisiert und bei der Rückgabe in der Strukturdarstellung selbst als Dokumente zurückgegeben werden. Diese Methode ermöglicht es, die Ergebnisse für zusätzliche Abfragen zu wiederholen. Die folgende Abbildung zeigt ein Beispiel für die Indizierung in einer Punktabfrage:  
+Die während der Indizierung der Daten extrahierten Pfade vereinfachen das Suchen im Index bei der Verarbeitung einer Abfrage. Durch einen Abgleich der `WHERE`-Klausel einer Abfrage mit der Liste der indizierten Pfade ist es möglich, sehr schnell die Elemente zu ermitteln, die dem Abfrageprädikat entsprechen.
 
-![Beispiel für eine Punktabfrage](./media/index-overview/index-point-query.png)
+Betrachten Sie beispielsweise die folgende Abfrage: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. Das Abfrageprädikat (nach Elementen filtern, die an beliebiger Stelle „France“ als Land enthalten) würde dem Pfad entsprechen, der rot hervorgehoben ist:
 
-Bei einer Bereichsabfrage ist *GermanTax* eine [benutzerdefinierte Funktion](stored-procedures-triggers-udfs.md#udfs), die im Rahmen der Abfrageverarbeitung ausgeführt wird. Die benutzerdefinierte Funktion ist eine beliebige registrierte JavaScript-Funktion, die eine umfangreiche Programmierlogik bieten kann, die in die Abfrage integriert ist. Die folgende Abbildung zeigt ein Beispiel für die Indizierung in einer Bereichsabfrage:
+![Abgleichen mit einem bestimmten Pfad in einer Struktur](./media/index-overview/matching-path.png)
 
-![Beispiel für eine Bereichsabfrage](./media/index-overview/index-range-query.png)
+> [!NOTE]
+> Eine `ORDER BY`-Klausel, die anhand einer einzelnen Eigenschaft geordnet wird, benötigt *immer* einen Range-Index. Falls der referenzierte Pfad diesen nicht aufweist, tritt ein Fehler auf. Ebenso benötigt eine `ORDER BY`-Abfrage, die nach mehreren Eigenschaften sortiert, *immer* einen zusammengesetzten Index.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Indizierung erhalten Sie in den folgenden Artikeln:
 
 - [Indizierungsrichtlinie](index-policy.md)
-- [Indextypen](index-types.md)
-- [Indexpfade](index-paths.md)
-- [Verwalten von Indizierungsrichtlinien](how-to-manage-indexing-policy.md)
+- [Gewusst wie: Verwalten der Indizierungsrichtlinie](how-to-manage-indexing-policy.md)

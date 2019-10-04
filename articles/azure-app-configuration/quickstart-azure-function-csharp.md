@@ -14,30 +14,34 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 9b0c48b3a3fb3a1b4e4fbe94a368297823a86778
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: a15b4e10938c39ba599ffb1ce7437feb788b1115
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579579"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075959"
 ---
-# <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Schnellstart: Erstellen einer Azure-Funktion mit App Configuration
+# <a name="quickstart-create-an-azure-function-with-azure-app-configuration"></a>Schnellstart: Erstellen einer Azure-Funktion mit Azure App Configuration
 
-Azure App Configuration ist ein verwalteter Konfigurationsdienst in Azure. Mit diesem Dienst können Sie Ihre gesamten Anwendungseinstellungen komfortabel an einem zentralen Ort speichern und verwalten, der von Ihrem Code getrennt ist. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie den Dienst in eine Azure-Funktion einbinden. 
-
-Für die Ausführung der Schritte dieser Schnellstartanleitung können Sie einen beliebigen Code-Editor verwenden. [Visual Studio Code](https://code.visualstudio.com/) ist eine hervorragende Option, die auf Windows-, macOS- und Linux-Plattformen verfügbar ist.
-
-![Schnellstart – Lokale Durchführung](./media/quickstarts/dotnet-core-function-launch-local.png)
+In dieser Schnellanleitung integrieren Sie den Azure App Configuration-Dienst in eine Azure-Funktion, um die Speicherung und Verwaltung von allen Anwendungseinstellungen getrennt von Ihrem Code zu zentralisieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Installieren Sie [Visual Studio 2017](https://visualstudio.microsoft.com/vs), um diese Schnellstartanleitung auszuführen. Vergewissern Sie sich, dass auch die Workload **Azure-Entwicklung** installiert ist. Installieren Sie außerdem die [neuesten Azure Functions-Tools](../azure-functions/functions-develop-vs.md#check-your-tools-version).
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+- Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) mit der Workload **Azure-Entwicklung**.
+- [Azure Functions-Tools](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
 ## <a name="create-an-app-configuration-store"></a>Erstellen eines App-Konfigurationsspeichers
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+
+    | Schlüssel | Wert |
+    |---|---|
+    | TestApp:Settings:Message | Daten aus Azure App Configuration |
+
+    Lassen Sie **Bezeichnung** und **Inhaltstyp** vorerst leer.
 
 ## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
@@ -48,12 +52,13 @@ Installieren Sie [Visual Studio 2017](https://visualstudio.microsoft.com/vs), um
 1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie auf der Registerkarte **Durchsuchen** die folgenden NuGet-Pakete, und fügen Sie sie Ihrem Projekt hinzu. Wenn Sie sie nicht finden können, aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**.
 
     ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 2.0.0-preview-009200001-1437 or later
     ```
 
-2. Öffnen Sie *Function1.cs*, und fügen Sie einen Verweis auf einen App Configuration-.NET Core-Konfigurationsanbieter hinzu.
+2. Öffnen Sie *Function1.cs*, und fügen Sie einen Verweis auf den allgemeinen .NET Core-Konfigurationsanbieter und den App Configuration-Anbieter für .NET Core hinzu.
 
     ```csharp
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
@@ -95,7 +100,7 @@ Installieren Sie [Visual Studio 2017](https://visualstudio.microsoft.com/vs), um
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. Drücken Sie F5, um Ihre Funktion zu testen. Akzeptieren Sie die entsprechende Aufforderung von Visual Studio zum Herunterladen und Installieren der **Azure Functions Core (CLI)**-Tools. Sie müssen möglicherweise auch eine Firewallausnahme aktivieren, damit die Tools HTTP-Anforderungen verarbeiten können.
+2. Drücken Sie F5, um Ihre Funktion zu testen. Akzeptieren Sie die entsprechende Aufforderung von Visual Studio zum Herunterladen und Installieren der **Azure Functions Core (CLI)** -Tools. Sie müssen möglicherweise auch eine Firewallausnahme aktivieren, damit die Tools HTTP-Anforderungen verarbeiten können.
 
 3. Kopieren Sie die URL Ihrer Funktion aus der Azure Functions-Laufzeitausgabe.
 
@@ -114,4 +119,4 @@ Installieren Sie [Visual Studio 2017](https://visualstudio.microsoft.com/vs), um
 In dieser Schnellstartanleitung haben Sie einen neuen App-Konfigurationsspeicher erstellt und mit einer Azure-Funktion verwendet. Weitere Informationen zur Verwendung von App Configuration finden Sie im nächsten Tutorial, in dem es um die Authentifizierung geht.
 
 > [!div class="nextstepaction"]
-> [Verwaltete Identitäten für Azure-Ressourcenintegration](./integrate-azure-managed-service-identity.md)
+> [Integration der verwalteten Identität](./howto-integrate-azure-managed-service-identity.md)

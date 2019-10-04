@@ -5,15 +5,15 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: overview
-ms.service: iot-industrialiot
+ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d1c10e056de1bc61b5365550bf2543d2cdf61229
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6ce9394f3d454bda5ead51f2c77a47db137a5136
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783901"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606177"
 ---
 # <a name="opc-twin-architecture"></a>OPC Twin-Architektur
 
@@ -35,6 +35,6 @@ In den folgenden Diagrammen wird die OPC Twin-Architektur veranschaulicht.
 
    ![Funktionsweise von OPC Twin](media/overview-opc-twin-architecture/opc-twin3.png)
 
-1. Die REST-Schnittstelle des Twin-Diensts kann auch zum Erstellen von überwachten Elementen und Abonnements in OPC Publisher verwendet werden. Mit OPC Publisher können Telemetriedaten von OPC UA-Serversystemen an IoT Hub gesendet werden. Weitere Informationen zu OPC Publisher finden Sie im [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher)-Repository auf GitHub.
+1. Die REST-Schnittstelle des Twin-Diensts kann auch zum Erstellen von überwachten Elementen und Abonnements in OPC Publisher verwendet werden. Mit OPC Publisher können Telemetriedaten von OPC UA-Serversystemen an IoT Hub gesendet werden. Weitere Informationen zu OPC Publisher finden Sie unter [Was ist OPC Publisher?](overview-opc-publisher.md).
 
    ![Funktionsweise von OPC Twin](media/overview-opc-twin-architecture/opc-twin4.png)

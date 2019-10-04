@@ -61,7 +61,7 @@
             - name: Node.js auf Raspberry Pi
               href: iot-accelerators-connecting-pi-node.md
             - name: MXChip IoT DevKit
-              href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
+              href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md
         - name: Simulieren eines Geräts
           items:
             - name: Erstellen Sie ein simuliertes Gerät.
@@ -133,36 +133,30 @@
       items:
         - name: Was ist das industrielle IoT?
           href: overview-iot-industrial.md
-        - name: OPC-Zwilling
-          items:
-            - name: Was ist ein OPC-Zwilling?
-              href: overview-opc-twin.md
-            - name: Architektur für OPC-Zwillinge
-              href: overview-opc-twin-architecture.md
-        - name: OPC-Tresor
-          items:
-            - name: Was ist ein OPC-Tresor?
-              href: overview-opc-vault.md
-        - name: Verbundene Factory
-          items:
-            - name: 'Verbundene Factory: Übersicht'
-              href: iot-accelerators-connected-factory-features.md
-            - name: 'Verbundene Factory: Architektur'
-              href: iot-accelerators-connected-factory-sample-walkthrough.md
+        - name: Was ist ein OPC-Zwilling?
+          href: overview-opc-twin.md
+        - name: Was ist ein OPC-Tresor?
+          href: overview-opc-vault.md
+        - name: Was ist OPC Publisher?
+          href: overview-opc-publisher.md
+        - name: Was ist die verbundene Factory?
+          href: iot-accelerators-connected-factory-features.md
     - name: Schnellstarts
       items:
         - name: Testen einer Lösung für verbundene Factorys
           href: quickstart-connected-factory-deploy.md
+    - name: Konzepte
+      items:
+        - name: Architektur für OPC-Zwillinge
+          href: overview-opc-twin-architecture.md
+        - name: "OPC\_Vault-Architektur"
+          href: overview-opc-vault-architecture.md
     - name: Anleitungen
       items:
         - name: Verbundene Factory
           items:
             - name: Verwenden des Dashboards
               href: iot-accelerators-connected-factory-dashboard.md
-            - name: Bereitstellen eines Gateways
-              href: iot-accelerators-connected-factory-gateway-deployment.md
-            - name: Verwenden von OPC Publisher
-              href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
             - name: Konfigurieren des Solution Accelerators
               href: iot-accelerators-connected-factory-configure.md
             - name: Anpassen des Solution Accelerators
@@ -177,14 +171,20 @@
               href: howto-opc-twin-deploy-dependencies.md
         - name: OPC-Tresor
           items:
-            - name: Bereitstellen eines OPC-Tresors in einem vorhandenen Projekt
-              items:
-                - name: Schützen der Kommunikation zwischen OPC-Client und OPC PLC
-                  href: howto-opc-vault-deploy-existing-client-plc-communication.md
-                - name: Schützen der Anwendungen für OPC UA-Clients und OPC UA-Server
-                  href: howto-opc-vault-deploy-existing-client-server-communication.md
-            - name: Bereitstellen eines OPC-Tresors von Grund auf
-              href: howto-opc-vault-deploy-scratch.md
+            - name: "Bereitstellen des OPC\_Vault-Diensts"
+              href: howto-opc-vault-deploy.md
+            - name: "Verwalten des OPC\_Vault-Diensts"
+              href: howto-opc-vault-manage.md
+            - name: "Sichere OPC\_UA-Gerätekommunikation mit OPC\_Vault"
+              href: howto-opc-vault-secure.md
+            - name: "Sicheres Betreiben des OPC\_Vault-Diensts"
+              href: howto-opc-vault-secure-ca.md
+        - name: OPC Publisher
+          items:
+            - name: Konfigurieren von OPC Publisher
+              href: howto-opc-publisher-configure.md
+            - name: Ausführen von OPC Publisher
+              href: howto-opc-publisher-run.md
     - name: Ressourcen
       items:
         - name: GitHub-Repository
@@ -213,7 +213,7 @@
           href: iot-accelerators-device-simulation-advanced-device.md
         - name: Visualisieren von Telemetriedaten mit Time Series Insights
           href: iot-accelerators-device-simulation-time-series-insights.md
-        - name: Serialisieren von Telemetrie mithilfe von Protbuf
+        - name: Serialisieren von Telemetrie mithilfe von Protobuf
           href: iot-accelerators-device-simulation-protobuf.md
         - name: Bereitstellen eines benutzerdefinierten Docker-Images
           href: iot-accelerators-device-simulation-deploy-image.md
@@ -238,9 +238,7 @@
 - name: Referenzarchitektur
   items:
     - name: Übersicht
-      href: iot-accelerators-architecture-overview.md
-    - name: Download
-      href: 'https://aka.ms/iotrefarchitecture'
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/iot/'
     - name: Partnerimplementierungen
       items:
         - name: Intel Connected Logistics Platform
@@ -253,14 +251,16 @@
   items:
     - name: Lösungen
       items:
-        - name: IoT Solution Accelerators
-          href: /azure/iot-accelerators
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Solution Accelerators
+          href: /azure/iot-accelerators
     - name: Plattformdienste
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: "IoT\_Plug\_&\_Play"
+          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
         - name: IoT-Dienst-SDKs
@@ -269,18 +269,12 @@
           href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Microsoft Edge
+    - name: IoT Edge
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /azure/iot-edge
         - name: IoT-Geräte-SDKs
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
-    - name: Stream Analytics
-      href: /azure/stream-analytics/
-    - name: Event Hubs
-      href: /azure/event-hubs/
-    - name: Machine Learning
-      href: /azure/machine-learning/
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

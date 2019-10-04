@@ -4,22 +4,21 @@ description: Überwachung und Problembehandlung von SAP HANA in Azure (große In
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 392dd39e2b3b0e26e7b0ba645bf5a70231167ad5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e2c596a876817f0a501025c37e463a7eebb55cf2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014402"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099837"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>Überwachung und Problembehandlung auf HANA-Seite
 
@@ -63,7 +62,7 @@ Das Diagramm „Load“ kann eine hohe CPU-Auslastung bzw. hohe Auslastung in de
 
 ![Das Diagramm „Load“ kann eine hohe CPU-Auslastung bzw. eine hohe Auslastung in der Vergangenheit anzeigen](./media/troubleshooting-monitoring/image4-load-graph.png)
 
-Eine Warnung, die aufgrund einer hohen CPU-Auslastung ausgelöst wird, kann mehrere Ursachen haben. Dazu zählen u.a. die Ausführung bestimmter Transaktionen, das Laden von Daten, hängende Aufträge, lang ausgeführte SQL-Anweisungen und eine schwache Abfrageleistung (z.B. bei BW in HANA-Cubes).
+Eine Warnung, die aufgrund einer hohen CPU-Auslastung ausgelöst wird, kann mehrere Ursachen haben. Dazu zählen u.a. die Ausführung bestimmter Transaktionen, das Laden von Daten, Aufträge, die nicht reagieren, zeitintensive SQL-Anweisungen und eine schwache Abfrageleistung (z.B. bei BW in HANA-Cubes).
 
 Suchen Sie in der [SAP HANA-Problembehandlung: CPU Related Causes and Solutions](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false). Dort finden Sie ausführliche Schritte zur Problembehandlung.
 

@@ -4,21 +4,20 @@ description: Erfahren Sie, wie Trigger mit Timer in Azure Functions verwendet we
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 0779ca2083691949821999322a3d732aed7b2694
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 77fa97cd339b6498263e12eae9cea50187493a89
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760766"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097120"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -45,8 +44,9 @@ Sehen Sie sich das sprachspezifische Beispiel an:
 * [C#](#c-example)
 * [C#-Skript (.csx)](#c-script-example)
 * [F#](#f-example)
-* [JavaScript](#javascript-example)
 * [Java](#java-example)
+* [JavaScript](#javascript-example)
+* [Python](#python-example)
 
 ### <a name="c-example"></a>C#-Beispiel
 
@@ -117,6 +117,21 @@ let Run(myTimer: TimerInfo, log: ILogger ) =
     log.LogInformation(sprintf "F# function executed at %s!" now)
 ```
 
+### <a name="java-example"></a>Java-Beispiel
+
+Die folgende Beispielfunktion wird ausgelöst und alle fünf Minuten ausgeführt. Die `@TimerTrigger`-Anmerkung für die Funktion definiert den Zeitplan mit dem gleichen Zeichenfolgeformat wie [CRON-Ausdrücke](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
+```
+
 ### <a name="javascript-example"></a>JavaScript-Beispiel
 
 Das folgende Beispiel zeigt eine Triggerbindung mit Timer in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion schreibt ein Protokoll, das angibt, ob dieser Funktionsaufruf aufgrund eines versäumten Zeitplantermins erfolgt. Ein[Timerobjekt](#usage) wird an die Funktion übergeben.
@@ -148,19 +163,38 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="java-example"></a>Java-Beispiel
+### <a name="python-example"></a>Beispiel für Python
 
-Die folgende Beispielfunktion wird ausgelöst und alle fünf Minuten ausgeführt. Die `@TimerTrigger`-Anmerkung für die Funktion definiert den Zeitplan mit dem gleichen Zeichenfolgeformat wie [CRON-Ausdrücke](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+Im folgenden Beispiel wird eine Triggerbindung mit Timer verwendet, deren Konfiguration in der Datei *function.json* beschrieben ist. Die eigentliche [Python-Funktion](functions-reference-python.md), von der die Bindung genutzt wird, ist in der Datei *__init__.py* beschrieben. Das an die Funktion übergebene Objekt hat den Typ [azure.functions.TimerRequest-Objekt](/python/api/azure-functions/azure.functions.timerrequest). Mit der Funktionslogik werden Daten in die Protokolle geschrieben, um anzugeben, ob der aktuelle Aufruf aufgrund eines versäumten Zeitplantermins erfolgt. 
 
-```java
-@FunctionName("keepAlive")
-public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
-      ExecutionContext context
- ) {
-     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
-     context.getLogger().info("Timer is triggered: " + timerInfo);
+Bindungsdaten in der Datei *function.json*:
+
+```json
+{
+    "name": "mytimer",
+    "type": "timerTrigger",
+    "direction": "in",
+    "schedule": "0 */5 * * * *"
 }
+```
+
+Dies ist der Python-Code:
+
+```python
+import datetime
+import logging
+
+import azure.functions as func
+
+
+def main(mytimer: func.TimerRequest) -> None:
+    utc_timestamp = datetime.datetime.utcnow().replace(
+        tzinfo=datetime.timezone.utc).isoformat()
+
+    if mytimer.past_due:
+        logging.info('The timer is past due!')
+
+    logging.info('Python timer trigger function ran at %s', utc_timestamp)
 ```
 
 ## <a name="attributes"></a>Attribute
@@ -190,14 +224,14 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**type** | – | Muss auf „timerTrigger“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen.|
 |**direction** | – | Muss auf „in“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
 |**name** | – | Der Name der Variablen, die das Timerobjekt im Funktionscode darstellt. | 
-|**schedule**|**ScheduleExpression**|Ein [CRON-Ausdruck](#cron-expressions) oder ein [TimeSpan](#timespan)-Wert. `TimeSpan` kann nur für eine Funktionen-App verwendet werden, die in einem App Service-Plan ausgeführt wird. Sie können den Zeitplanausdruck in eine App-Einstellung einfügen und diese Eigenschaft auf den Namen der App-Einstellung festlegen, der wie in diesem Beispiel **%**-Zeichen als Wrapper verwendet: „%ScheduleAppSetting%“. |
+|**schedule**|**ScheduleExpression**|Ein [CRON-Ausdruck](#ncrontab-expressions) oder ein [TimeSpan](#timespan)-Wert. `TimeSpan` kann nur für eine Funktionen-App verwendet werden, die in einem App Service-Plan ausgeführt wird. Sie können den Zeitplanausdruck in eine App-Einstellung einfügen und diese Eigenschaft auf den Namen der App-Einstellung festlegen, der wie in diesem Beispiel **%** -Zeichen als Wrapper verwendet: „%ScheduleAppSetting%“. |
 |**runOnStartup**|**RunOnStartup**|Wenn `true`, wird die Funktion beim Starten der Laufzeit aufgerufen. Die Laufzeit startet beispielsweise, wenn die Funktionen-App nach dem Leerlauf aufgrund von Inaktivität reaktiviert wird, wenn die Funktionen-App aufgrund von Funktionsänderungen neu gestartet wird und wenn die Funktionen-App horizontal hochskaliert wird. Daher sollte **runOnStartup** selten, wenn überhaupt, auf `true` festgelegt werden, insbesondere in der Produktionsumgebung. |
 |**useMonitor**|**UseMonitor**|Legen Sie diese Eigenschaft auf `true` oder `false` fest, um anzugeben, ob der Zeitplan überwacht werden soll. Durch die Überwachung des Zeitplans werden Zeitplantermine beibehalten, mit deren Hilfe sichergestellt werden kann, dass der Zeitplan richtig eingehalten wird, selbst wenn Instanzen der Funktionen-App neu gestartet werden. Wenn diese Eigenschaft nicht explizit festgelegt wird, lautet der Standardwert `true` für Zeitpläne mit einem Wiederholungsintervall von mehr als einer Minute. Bei Zeitplänen, die mehr als einmal pro Minute ausgelöst werden, lautet der Standardwert `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> Es wird empfohlen, **runOnStartup** in der Produktionsumgebung nicht auf `true` festzulegen. Bei Verwendung dieser Einstellung wird der Code zu schwer vorhersehbaren Zeiten ausgeführt. In bestimmten Produktionseinstellungen können diese zusätzlichen Ausführungen zu deutlich höheren Kosten für Anwendungen führen, die in nutzungsbasierten Tarifen gehostet werden. So wurde z. B. mit **runOnStartup** der Trigger aktiviert, der bei jeder Skalierung Ihrer Funktions-App aufgerufen wird. Stellen Sie sicher, dass Sie das Produktionsverhalten Ihrer Funktionen vollständig verstehen, bevor Sie **runOnStartup** in der Produktionsumgebung aktivieren.   
+> Es wird empfohlen, **runOnStartup** in der Produktionsumgebung nicht auf `true` festzulegen. Bei Verwendung dieser Einstellung wird der Code zu schwer vorhersehbaren Zeiten ausgeführt. In bestimmten Produktionseinstellungen können diese zusätzlichen Ausführungen zu deutlich höheren Kosten für Anwendungen führen, die in nutzungsbasierten Tarifen gehostet werden. So wird z. B. der Trigger immer dann mit aktiviertem **runOnStartup** aufgerufen, wenn Ihre Funktions-App skaliert wird. Stellen Sie sicher, dass Sie das Produktionsverhalten Ihrer Funktionen vollständig verstehen, bevor Sie **runOnStartup** in der Produktionsumgebung aktivieren.   
 
 ## <a name="usage"></a>Verwendung
 
@@ -218,15 +252,15 @@ Bei Aufruf einer Trigger-mit-Timer-Funktion wird ein Timerobjekt an die Funktion
 
 Die Eigenschaft `IsPastDue` lautet `true`, wenn der aktuelle Funktionsaufruf später als geplant erfolgt. Beispielsweise kann ein Neustart der Funktionen-App dazu führen, dass ein Aufruf nicht erkannt wird.
 
-## <a name="cron-expressions"></a>CRON-Ausdrücke 
+## <a name="ncrontab-expressions"></a>NCRONTAB-Ausdrücke 
 
-Azure Functions verwendet die Bibliothek [NCronTab](https://github.com/atifaziz/NCrontab), um CRON-Ausdrücke zu interpretieren. Ein CRON-Ausdruck enthält sechs Felder:
+Azure Functions verwendet die Bibliothek [NCronTab](https://github.com/atifaziz/NCrontab), um NCRONTAB-Ausdrücke zu interpretieren. Ein NCRONTAB-Ausdruck ähnelt einem CRON-Ausdruck, enthält jedoch am Anfang ein zusätzliches sechstes Feld für sekundengenaue Zeitangaben:
 
 `{second} {minute} {hour} {day} {month} {day-of-week}`
 
 Jedes Feld kann einen der folgenden Werttypen aufweisen:
 
-|Type  |Beispiel  |Auslösung  |
+|type  |Beispiel  |Auslösung  |
 |---------|---------|---------|
 |Ein bestimmter Wert |<nobr>"0 5 * * * *"</nobr>|um hh:05:00, wobei „hh“ für jede Stunde steht (einmal pro Stunde)|
 |Alle Werte (`*`)|<nobr>"0 * 5 * * *"</nobr>|täglich um 5:mm:00, wobei „mm“ für jede Minute in der Stunde steht (sechzigmal pro Tag)|
@@ -234,16 +268,11 @@ Jedes Feld kann einen der folgenden Werttypen aufweisen:
 |Eine Gruppe von Werten (`,`-Operator)|<nobr>"5,8,10 * * * * *"</nobr>|um hh:mm:05, hh:mm:08 und hh:mm:10, wobei „hh:mm“ für jede Minute in jeder Stunde steht (dreimal pro Minute)|
 |Ein Intervallwert (`/`-Operator)|<nobr>"0 */5 * * * *"</nobr>|um hh:05:00, hh:10:00, hh:15:00 usw. bis hh:55:00, wobei „hh“ für jede Stunde steht (zwölfmal pro Stunde)|
 
-Um Monate oder Tage anzugeben, können Sie numerische Werte, Namen oder Abkürzungen von Namen verwenden:
+[!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
-* Bei Tagen reichen die numerischen Werte von 0 bis 6, wobei die 0 für Sonntag steht.
-* Die Namen werden auf Englisch angegeben. Beispiel: `Monday`, `January`.
-* Bei Namen wird die Groß-/Kleinschreibung nicht berücksichtigt.
-* Namen können abgekürzt werden. Drei Buchstaben sind die empfohlene Länge der Abkürzung.  Beispiel: `Mon`, `Jan`. 
+### <a name="ncrontab-examples"></a>NCRONTAB-Beispiele
 
-### <a name="cron-examples"></a>CRON-Beispiele
-
-Die folgenden Beispiele zeigen CRON-Ausdrücke, die Sie für den Trigger mit Timer in Azure Functions verwenden können.
+Die folgenden Beispiele zeigen NCRONTAB-Ausdrücke, die Sie für den Trigger mit Timer in Azure Functions verwenden können:
 
 |Beispiel|Auslösung  |
 |---------|---------|
@@ -254,25 +283,24 @@ Die folgenden Beispiele zeigen CRON-Ausdrücke, die Sie für den Trigger mit Tim
 |`"0 30 9 * * *"`|täglich um 9:30 Uhr|
 |`"0 30 9 * * 1-5"`|werktags um 9:30 Uhr|
 |`"0 30 9 * Jan Mon"`|jeden Montag im Januar um 9:30|
->[!NOTE]   
->Sie können Beispiele für CRON-Ausdrücke online finden, doch wird bei vielen das Feld `{second}` ausgelassen. Wenn Sie einen dieser Ausdrücke kopieren, fügen das fehlende `{second}`-Feld hinzu. In der Regel sollte dieses Feld eine 0 (null) und kein Sternchen enthalten.
 
-### <a name="cron-time-zones"></a>CRON-Zeitzonen
+
+### <a name="ncrontab-time-zones"></a>NCRONTAB-Zeitzonen
 
 Die Zahlen in einem CRON-Ausdruck beziehen sich auf ein Datum und eine Uhrzeit, nicht auf einen Zeitraum. Beispielsweise bezieht sich eine 5 im Feld `hour` auf 5:00 Uhr, nicht auf alle 5 Stunden.
 
 Als Standardzeitzone wird in Verbindung mit den CRON-Ausdrücken die Coordinated Universal Time (UTC) verwendet. Wenn Sie möchten, dass Ihr CRON-Ausdruck auf einer anderen Zeitzone basiert, erstellen Sie eine App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE`. Legen Sie den Wert auf den Namen der gewünschten Zeitzone gemäß [Microsoft Time Zone Index](https://technet.microsoft.com/library/cc749073) (Microsoft-Zeitzonenindex) fest. 
 
-Beispiel: *Eastern Normalzeit* ist UTC-05:00. Wenn Sie Ihren Trigger mit Timer täglich um 10:00 Uhr EST auslösen möchten, verwenden Sie den folgenden CRON-Ausdruck, der die UTC-Zeitzone berücksichtigt:
+Beispiel: *Eastern Normalzeit* ist UTC-05:00. Wenn Sie Ihren Trigger mit Timer täglich um 10:00 Uhr (EST) auslösen möchten, verwenden Sie den folgenden NCRONTAB-Ausdruck, der die UTC-Zeitzone berücksichtigt:
 
-```json
-"schedule": "0 0 15 * * *"
+```
+"0 0 15 * * *"
 ``` 
 
-Sie können auch eine App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE` erstellen und den Wert auf **Eastern Standard Time** (Eastern Normalzeit) festlegen.  Dann wird der folgende CRON-Ausdruck verwendet: 
+Sie können auch eine App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE` erstellen und den Wert auf **Eastern Standard Time** (Eastern Normalzeit) festlegen.  Dann wird der folgende NCRONTAB-Ausdruck verwendet: 
 
-```json
-"schedule": "0 0 10 * * *"
+```
+"0 0 10 * * *"
 ``` 
 
 Wenn Sie `WEBSITE_TIME_ZONE` verwenden, wird die Uhrzeit an Abweichungen in der jeweiligen Zeitzone angepasst, z.B. an die Sommerzeit. 
@@ -289,7 +317,8 @@ Dieser Wert wird als Zeichenfolge ausgedrückt, und das `TimeSpan`-Format ist `h
 |---------|---------|
 |"01:00:00" | stündlich        |
 |"00:01:00"|minütlich         |
-|"24:00:00" | täglich        |
+|"24:00:00" | alle 24 Tage        |
+|„1.00:00:00“ | täglich        |
 
 ## <a name="scale-out"></a>Horizontales Skalieren
 

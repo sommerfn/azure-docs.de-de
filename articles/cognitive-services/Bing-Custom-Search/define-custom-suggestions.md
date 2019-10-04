@@ -1,6 +1,6 @@
 ---
 title: Definieren von Vorschlägen für die benutzerdefinierte Vorschlagssuche | Benutzerdefinierte Bing-Suche
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Konfigurieren der benutzerdefinierten Vorschlagssuche mit benutzerdefinierten Vorschlägen
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: bbad72b41a177bdbafd6cf98bfd2025190d98b16
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: b08eb49b0c4f9655326d2ab09ce39210205e28a9
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237636"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405104"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Konfigurieren der benutzerdefinierten Vorschlagssuche
 
@@ -36,7 +36,7 @@ Schalten Sie den Schieberegler für **Automatische Bing-Vorschläge** auf die Po
 
 ## <a name="add-your-own-suggestions"></a>Hinzufügen eigener Vorschläge
 
-Ihre eigenen Vorschläge für Abfragezeichenfolgen fügen Sie der Liste mit **benutzerdefinierten Vorschlägen** hinzu. Nachdem Sie der Liste einen Vorschlag hinzugefügt haben, drücken Sie die EINGABETASTE, oder klicken Sie auf das Symbol **+**. Sie können die Vorschläge in einer beliebigen Sprache angeben. Sie können maximal 5.000 Vorschläge für Abfragezeichenfolgen hinzufügen.
+Ihre eigenen Vorschläge für Abfragezeichenfolgen fügen Sie der Liste mit **benutzerdefinierten Vorschlägen** hinzu. Nachdem Sie der Liste einen Vorschlag hinzugefügt haben, drücken Sie die EINGABETASTE, oder klicken Sie auf das Symbol **+** . Sie können die Vorschläge in einer beliebigen Sprache angeben. Sie können maximal 5.000 Vorschläge für Abfragezeichenfolgen hinzufügen.
 
 ## <a name="upload-suggestions"></a>Hochladen von Vorschlägen
 
@@ -48,7 +48,7 @@ Wenn Sie einen Vorschlag für eine Abfragezeichenfolge entfernen möchten, klick
 
 ## <a name="block-suggestions"></a>Blockieren von Vorschlägen
 
-Wenn Sie Bing-Vorschläge einschließen, können Sie eine Liste von Abfragezeichenfolgen für die Suche hinzufügen, die Bing nicht zurückgeben soll. Wenn Sie blockierte Abfragezeichenfolgen hinzufügen möchten, klicken Sie auf **Show blocked suggestions** (Blockierte Vorschläge anzeigen). Fügen Sie die Abfragezeichenfolge der Liste hinzu, und drücken Sie die EINGABETASTE, oder klicken Sie auf das Symbol **+**. Sie können maximal 50 blockierte Abfragezeichenfolgen hinzufügen.
+Wenn Sie Bing-Vorschläge einschließen, können Sie eine Liste von Abfragezeichenfolgen für die Suche hinzufügen, die Bing nicht zurückgeben soll. Wenn Sie blockierte Abfragezeichenfolgen hinzufügen möchten, klicken Sie auf **Show blocked suggestions** (Blockierte Vorschläge anzeigen). Fügen Sie die Abfragezeichenfolge der Liste hinzu, und drücken Sie die EINGABETASTE, oder klicken Sie auf das Symbol **+** . Sie können maximal 50 blockierte Abfragezeichenfolgen hinzufügen.
 
 
 

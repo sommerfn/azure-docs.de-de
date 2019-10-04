@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren einer gehostete Benutzeroberfläche für die benutzerdefinierte Bing-Suche | Microsoft-Dokumentation
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diesen Artikel zum Konfigurieren und Integrieren einer gehosteten Benutzeroberfläche für die benutzerdefinierte Bing-Suche.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2cc89bf57167db75404c044f58d18ab48edfaf38
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084131"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854085"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurieren der gehosteten Benutzeroberfläche
 
@@ -78,7 +78,7 @@ Die gehostete Benutzeroberfläche kann auf zwei Arten genutzt werden:
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Fügen Sie nach Bedarf der URL die folgenden Abfrageparameter hinzu. Weitere Informationen zu diesen Parametern finden Sie in der Referenz zur [API für die benutzerdefinierte Suche](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters).
+  > Fügen Sie nach Bedarf der URL die folgenden Abfrageparameter hinzu. Weitere Informationen zu diesen Parametern finden Sie in der Referenz zur [API für die benutzerdefinierte Suche](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters).
   >
   > - q
   > - mkt
@@ -165,5 +165,5 @@ Die folgenden Konfigurationen gelten nur, wenn Sie die gehostete Benutzeroberfl�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwenden von Dekorationsmarkierungen zum Hervorheben von Text](./hit-highlighting.md)
+- [Verwenden von Dekorationsmarkierungen zum Hervorheben von Text](../bing-web-search/hit-highlighting.md)
 - [Einteilen von Webseiten](./page-webpages.md)

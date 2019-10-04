@@ -1,24 +1,22 @@
 ---
 title: APIs für die Automatisierung von Azure-Reservierungen | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Azure-APIs, mit denen Sie programmgesteuert Reservierungsinformationen abrufen können.
-documentationcenter: ''
 author: yashesvi
 manager: yashesvi
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 246278df61d4f13e2634a1cdfc5ff6b635cecbbf
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 50de654fb9222951a7380a322160496421006e7a
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008210"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719680"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>APIs für die Automatisierung von Azure-Reservierungen
 
@@ -32,7 +30,38 @@ Sie können auch Ihre Ressourcennutzung analysieren, indem Sie die Verbrauchs-AP
 
 ## <a name="buy-a-reservation"></a>Kaufen einer Reservierung
 
-Sie können derzeit keine Reservierung programmgesteuert erwerben. Weitere Informationen zum Erwerben einer Reservierungen finden Sie in den folgenden Artikeln:
+Sie können Azure-Reservierungen und Softwarepläne programmgesteuert über REST-APIs erwerben. Weitere Informationen finden Sie unter [Reservierungsauftrag – Kauf-API](/rest/api/reserved-vm-instances/reservationorder/purchase).
+
+Hier sehen Sie eine Beispielanforderung, mit der Sie einen Kauf über die REST-API tätigen können:
+
+```
+PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/<GUID>?api-version=2019-04-01
+```
+
+Anforderungstext:
+
+```
+{
+ "sku": {
+    "name": "standard_D1"
+  },
+ "location": "westus",
+ "properties": {
+    "reservedResourceType": "VirtualMachines",
+    "billingScopeId": "/subscriptions/ed3a1871-612d-abcd-a849-c2542a68be83",
+    "term": "P1Y",
+    "quantity": "1",
+    "displayName": "TestReservationOrder",
+    "appliedScopes": null,
+    "appliedScopeType": "Shared",
+    "reservedResourceProperties": {
+      "instanceFlexibility": "On"
+    }
+  }
+}
+```
+
+Sie können eine Reservierung auch im Azure-Portal erwerben. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 Servicepläne:
 - [Virtueller Computer](../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)
@@ -55,7 +84,7 @@ Wenn Sie feststellen, dass die Reservierungen Ihrer Organisation zu wenig genutz
 - Vergewissern Sie sich, dass die virtuellen Computer, die für Ihre Organisation erstellt werden, mit der VM-Größe übereinstimmen, die zur Reservierung gehört.
 - Vergewissern Sie sich, dass Instanzgrößenflexibilität aktiviert ist. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Ändern der Optimierungseinstellung für reservierte VM-Instanzen](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
 - Ändern Sie den Bereich der Reservierung in „Freigegeben“, sodass sie umfassender gilt. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Ändern des Bereichs für eine Reservierung](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
-- Tauschen Sie die nicht verwendete Menge. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Stornierungen und Umtausch](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges).
+- Tauschen Sie die nicht verwendete Menge. Weitere Informationen finden Sie unter [Verwalten von Reservierungen](billing-manage-reserved-vm-instance.md).
 
 ## <a name="give-access-to-reservations"></a>Gewähren von Zugriff auf Reservierungen
 
@@ -75,7 +104,7 @@ Um zwei Reservierungen in eine Reservierung zusammenzuführen, verwenden Sie die
 
 ## <a name="change-scope-for-a-reservation"></a>Ändern des Bereichs für eine Reservierung
 
-Der Bereich einer Reservierung können ein einzelnes Abonnement oder alle Abonnements in Ihrem Abrechnungskontext sein. Wenn Sie den Umfang auf ein Einzelabonnement festlegen, wird die Reservierung mit den ausgeführten Ressourcen im ausgewählten Abonnement abgestimmt. Wenn Sie den Umfang auf „Freigegeben“ festlegen, ordnet Azure die Reservierung Ressourcen zu, die in allen Abonnements innerhalb des Abrechnungskontexts ausgeführt werden. Der Abrechnungskontext ist abhängig von dem Abonnement, das Sie verwendet haben, um die Reservierung zu erwerben. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Ändern des Bereichs](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+Der Bereich einer Reservierung können ein einzelnes Abonnement, eine einzelne Ressourcengruppe oder alle Abonnements in Ihrem Abrechnungskontext sein. Wenn Sie den Umfang auf ein Einzelabonnement oder eine einzelne Ressourcengruppe festlegen, wird die Reservierung mit den ausgeführten Ressourcen im ausgewählten Abonnement abgestimmt. Wenn Sie das Abonnement oder die Ressourcengruppe löschen oder verschieben, wird die Reservierung nicht verwendet.  Wenn Sie den Umfang auf „Freigegeben“ festlegen, ordnet Azure die Reservierung Ressourcen zu, die in allen Abonnements innerhalb des Abrechnungskontexts ausgeführt werden. Der Abrechnungskontext ist abhängig von dem Abonnement, das Sie verwendet haben, um die Reservierung zu erwerben. Sie können den Bereich beim Kauf auswählen oder jederzeit nach dem Kauf ändern. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Ändern des Bereichs](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 
 Um den Bereich programmgesteuert zu ändern, verwenden Sie die API [Reservierung – Update](/rest/api/reserved-vm-instances/reservation/update).
 

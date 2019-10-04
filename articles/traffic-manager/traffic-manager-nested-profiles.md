@@ -4,7 +4,7 @@ titlesuffix: Azure Traffic Manager
 description: Dieser Artikel erläutert das Feature der geschachtelten Profile von Azure Traffic Manager.
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
-ms.author: kumud
-ms.openlocfilehash: 6fb6b3e4476efec87b15d175d354afab777e6830
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.author: allensu
+ms.openlocfilehash: 8815d852ad9f8a1823e1c21cc2d233409518da33
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54228825"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68333790"
 ---
 # <a name="nested-traffic-manager-profiles"></a>Geschachtelte Traffic Manager-Profile
 
@@ -30,7 +30,7 @@ Die folgenden Beispiele zeigen, wie geschachtelte Traffic Manager-Profile in ver
 
 ## <a name="example-1-combining-performance-and-weighted-traffic-routing"></a>Beispiel 1: Kombinieren des leistungsorientierten Datenverkehrsroutings mit dem gewichteten Datenverkehrsrouting
 
-Angenommen, Sie haben eine Anwendung in den folgenden Azure-Regionen bereitgestellt:  „USA, Westen“, „Europa, Westen“ und „Asien, Osten“. Sie verwenden die leistungsorientierte Traffic Manager-Methode für das Datenverkehrsrouting, um den Datenverkehr an die Region zu verteilen, die dem Benutzer am nächsten ist.
+Angenommen, Sie haben eine Anwendung in den folgenden Azure-Regionen bereitgestellt: „USA, Westen“, „Europa, Westen“ und „Asien, Osten“. Sie verwenden die leistungsorientierte Traffic Manager-Methode für das Datenverkehrsrouting, um den Datenverkehr an die Region zu verteilen, die dem Benutzer am nächsten ist.
 
 ![Einzelnes Traffic Manager-Profil][4]
 
@@ -94,6 +94,20 @@ Angenommen, Sie verwenden Traffic Manager, um den Datenverkehr nahtlos zwischen 
 Die Überwachungseinstellungen in einem Traffic Manager-Profil gelten für alle Endpunkte innerhalb eines Profils. Bei geschachtelten Profilen können Sie für jede Website ein anderes untergeordnetes Profil verwenden, um unterschiedliche Überwachungseinstellungen zu definieren.
 
 ![Traffic Manager-Endpunktüberwachung mit separaten Einstellungen für jeden Endpunkt][10]
+
+## <a name="faqs"></a>Häufig gestellte Fragen
+
+* [Wie konfiguriere ich geschachtelte Profile?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#traffic-manager-endpoint-monitoring)
+
+* [Wie viele Schachtelungsebenen werden in Traffic Manager unterstützt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-layers-of-nesting-does-traffic-manger-support)
+
+* [Kann ich andere Endpunkttypen mit geschachtelten untergeordneten Profilen im gleichen Traffic Manager-Profil kombinieren?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile)
+
+* [Wie wird das Abrechnungsmodell auf geschachtelte Profile angewendet?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-billing-model-apply-for-nested-profiles)
+
+* [Wirken sich geschachtelte Profile auf die Leistung aus?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-there-a-performance-impact-for-nested-profiles)
+
+* [Wie berechnet Traffic Manager die Integrität eines geschachtelten Endpunkts in einem übergeordneten Profil?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

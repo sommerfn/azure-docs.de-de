@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/18/2018
-ms.openlocfilehash: 38b283ed666b39b4e090bd95051a4454a9b47e62
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/18/2019
+ms.openlocfilehash: c1422b6411fc60383cffa6c3082108bb940c4343
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57975660"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996214"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>.NET Standard-API für Azure Cosmos DB-Tabellen: Download und Versionshinweise
 > [!div class="op_single_selector"]
@@ -31,8 +31,33 @@ ms.locfileid: "57975660"
 |**Schnellstart**|[Schnellstart](create-table-dotnet.md)|
 |**Tutorial**|[Tutorial](tutorial-develop-table-dotnet.md)|
 |**Aktuelles unterstütztes Framework**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
+|**Problem melden**|[Problem melden](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
-## <a name="release-notes"></a>Versionshinweise
+## <a name="release-notes-for-200-series"></a>Versionshinweise für die Serie 2.0.0
+Die Serie 2.0.0 übernimmt die Abhängigkeit von [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) mit Leistungsverbesserungen und Namespacekonsolidierung zum Cosmos DB-Endpunkt.
+
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
+* Die erste Vorschauversion des Tabellen-SDK 2.0.0 übernimmt die Abhängigkeit von [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) mit Leistungsverbesserungen und Namespacekonsolidierung zum Cosmos DB-Endpunkt. Die öffentliche API bleibt unverändert.
+
+## <a name="release-notes-for-100-series"></a>Versionshinweise für die Serie 1.0.0
+Die Serie 1.0.0 übernimmt die Abhängigkeit von [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/).
+
+### <a name="a-name105105"></a><a name="1.0.5"/>1.0.5
+* Einführung einer neuen Konfiguration unter TableClientConfiguration, um Rest Executor für die Kommunikation mit der Cosmos DB-Tabellen-API zu verwenden
+
+### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5-preview
+* Fehlerbehebungen
+
+### <a name="a-name104104"></a><a name="1.0.4"/>1.0.4
+* Fehlerbehebungen
+* Bereitstellung der HttpClientTimeout-Option für „RestExecutorConfiguration“
+
+### <a name="a-name104-preview104-preview"></a><a name="1.0.4-preview"/>1.0.4-preview
+* Fehlerbehebungen
+* Bereitstellung der HttpClientTimeout-Option für „RestExecutorConfiguration“
+
+### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
+* Fehlerbehebungen
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * Release zur allgemeinen Verfügbarkeit
@@ -60,10 +85,24 @@ ms.locfileid: "57975660"
 ## <a name="release-and-retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
 Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
 
+Die plattformübergreifende .NET Standard-Bibiliothek [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) ersetzt die .NET Framework-Bibliothek [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table).
+
+### <a name="200-series"></a>Serie 2.0.0
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.0.0-preview](#2.0.0-preview) |22. August 2019 |--- |
+
+### <a name="100-series"></a>Serie 1.0.0
+| Version | Herausgabedatum | Deaktivierungstermine |
+| --- | --- | --- |
+| [1.0.5](#1.0.5) |13. September 2019 |--- |
+| [1.0.5-preview](#1.0.5-preview) |20. August 2019 |--- |
+| [1.0.4](#1.0.4) |12. August 2019 |--- |
+| [1.0.4-preview](#1.0.4-preview) |26. Juli 2019 |--- |
+| 1.0.2-preview |2\. Mai 2019 |--- |
+| [1.0.1](#1.0.1) |19. April 2019 |--- |
 | [1.0.0](#1.0.0) |13. März 2019 |--- |
-| [0.11.0-preview](#0.11.0-preview) |5. März 2019 |--- |
+| [0.11.0-preview](#0.11.0-preview) |5\. März 2019 |--- |
 | [0.10.1-preview](#0.10.1-preview) |22. Januar 2019 |--- |
 | [0.10.0-preview](#0.10.0-preview) |18. Dezember 2018 |--- |
 | [0.9.1-preview](#0.9.1-preview) |18. Oktober 2018 |--- |
@@ -74,4 +113,4 @@ Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher b
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Weitere Informationen
-Weitere Informationen zur Table-API von Azure Cosmos DB finden Sie in der [Einführung in die Tabellen-API von Azure Cosmos DB](table-introduction.md). 
+Weitere Informationen zur Table-API von Azure Cosmos DB finden Sie in der [Einführung in die Tabellen-API von Azure Cosmos DB](table-introduction.md).

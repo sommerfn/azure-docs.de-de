@@ -3,50 +3,48 @@ title: Anleitung zur Verwendung einer Apache Hadoop-Sandbox – Emulator – Azu
 description: 'Um sich mit dem Apache Hadoop-Ökosystem vertraut zu machen, können Sie eine Hadoop-Sandbox von Hortonworks auf einem virtuellen Azure-Computer einrichten. '
 keywords: hadoop emulator,hadoop sandbox
 ms.reviewer: jasonh
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 12/11/2017
+ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1da676787eeee1eb75095a5e3a6b3f40056567ad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9515f0ecae92e6350924b3856aa6cbf20e608d51
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005773"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066696"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Erste Schritte mit einer Apache Hadoop-Sandbox, einem Emulator auf einem virtuellen Computer
 
 Hier erfahren Sie, wie Sie die Apache Hadoop-Sandbox von Hortonworks auf einem virtuellen Computer installieren, um sich mit dem Hadoop-Ökosystem vertraut zu machen. Die Sandbox bietet eine lokale Entwicklungsumgebung, in der Sie Hadoop, Hadoop Distributed File System (HDFS) und die Übermittlung von Aufträgen kennenlernen. Nachdem Sie sich mit Hadoop vertraut gemacht haben, können Sie Hadoop in Azure verwenden und einen HDInsight-Cluster erstellen. Weitere Informationen für Ihren Einstieg finden Sie unter [Erste Schritte mit Hadoop in HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 * [Oracle VirtualBox](https://www.virtualbox.org/). Sie können die Software [hier](https://www.virtualbox.org/wiki/Downloads) herunterladen und installieren.
 
-
-
 ## <a name="download-and-install-the-virtual-machine"></a>Herunterladen und Installieren des virtuellen Computers
-1. Navigieren Sie zur [Downloadseite von Hortonworks](https://hortonworks.com/downloads/#sandbox).
 
-2. Klicken Sie auf **DOWNLOAD FOR VIRTUALBOX** (FÜR VIRTUALBOX HERUNTERLADEN), um die neueste Hortonworks Sandbox auf einen virtuellen Computer herunterzuladen. Vor Beginn des Downloads werden Sie aufgefordert, sich bei Hortonworks zu registrieren. Das Herunterladen dauert je nach Geschwindigkeit des Netzwerks ein bis zwei Stunden.
+1. Navigieren Sie zu den [Cloudera-Downloads](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html).
 
-    ![Abbildung des Links zum Herunterladen von Hortonworks Sandbox für VirtualBox](./media/apache-hadoop-emulator-get-started/download-sandbox.png)
-3. Klicken Sie auf der gleichen Webseite auf den Link **Import on Virtual Box** (In VirtualBox importieren), um eine PDF-Datei mit Installationsanweisungen für den virtuellen Computer herunterzuladen.
+1. Klicken Sie unter **Choose Installation Type** (Installationsart auswählen) auf **VIRTUALBOX**, um die aktuelle Hortonworks Sandbox auf eine VM herunterzuladen. Melden Sie sich an, oder füllen Sie das Produktinteresse-Formular aus.
 
-Erweitern Sie das Archiv, um eine Sandbox einer älteren HDP-Version herunterzuladen:
+1. Klicken Sie auf die Schaltfläche **HDP SANDBOX (LATEST)** , um den Download zu starten.
 
-![Hortonworks Sandbox archive (Hortonworks Sandbox-Archiv)](./media/apache-hadoop-emulator-get-started/hortonworks-sandbox-archive.png)
+Eine Anleitung zum Einrichten der Sandbox finden Sie im [Sandbox Deployment and Install Guide](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/) (Leitfaden zur Sandbox-Bereitstellung und -Installation).
 
+Informationen zum Herunterladen einer älteren HDP Sandbox-Version erhalten Sie über die Links unter **Older Versions** (Frühere Versionen).
 
 ## <a name="start-the-virtual-machine"></a>Starten des virtuellen Computers
 
 1. Öffnen Sie Oracle VirtualBox.
-2. Klicken Sie im Menü **File** (Datei) auf **Import Appliance** (Appliance importieren), und geben Sie dann das Bild Hortonworks Sandbox-Image an.
+1. Klicken Sie im Menü **File** (Datei) auf **Import Appliance** (Appliance importieren), und geben Sie dann das Bild Hortonworks Sandbox-Image an.
 1. Wählen Sie „Hortonworks Sandbox“, **Start** und anschließend **Normal Start** (Normaler Start) aus. Nach Abschluss des Startvorgangs für den virtuellen Computer werden Anmeldeanweisungen angezeigt.
 
-    ![Normaler Start](./media/apache-hadoop-emulator-get-started/normal-start.png)
-2. Öffnen Sie einen Webbrowser, und navigieren Sie zur angezeigten URL (in der Regel `http://127.0.0.1:8888`).
+    ![Normaler Start des VirtualBox-Managers](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
+
+1. Öffnen Sie einen Webbrowser, und navigieren Sie zur angezeigten URL (in der Regel `http://127.0.0.1:8888`).
 
 ## <a name="set-sandbox-passwords"></a>Festlegen der Sandbox-Kennwörter
 
@@ -76,7 +74,9 @@ Erweitern Sie das Archiv, um eine Sandbox einer älteren HDP-Version herunterzul
         select * from sample_07 limit 10;
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verwenden von Visual Studio mit der Sandbox von Hortonworks](../hdinsight-hadoop-emulator-visual-studio.md)
-* [Learning the ropes of the Hortonworks Sandbox](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Hadoop tutorial - Getting started with HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
 
+* [Verwenden von Visual Studio mit der Sandbox von Hortonworks](../hdinsight-hadoop-emulator-visual-studio.md)
+
+* [Learning the ropes of the Hortonworks Sandbox](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+
+* [Hadoop tutorial - Getting started with HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

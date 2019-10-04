@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services-Konzepte – Azure | Microsoft-Dokumentation
-description: Dieses Thema bietet eine kurze Übersicht über die Konzepte von Azure Media Services und stellt Links zu Details zur Verfügung.
+title: Azure Media Services-Terminologie und -Konzepte – Azure | Microsoft-Dokumentation
+description: Dieses Thema bietet eine kurze Übersicht über die Terminologie und die Konzepte von Azure Media Services und stellt Links zu weiteren Details zur Verfügung.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,23 +9,41 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8f21374ae5da76c9954acc5227f593ab4be19ce9
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 47c7e35f71fd33cc53d498867ef015364252d5ea
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630552"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910321"
 ---
 # <a name="media-services-concepts"></a>Media Services-Konzepte
 
-Dieses Thema bietet eine kurze Übersicht über die Konzepte von Azure Media Services und stellt Links zu Artikeln mit ausführlichen Erläuterungen zu Konzepten und Funktionen von Media Services v3 bereit. Es empfiehlt sich, sich vor Entwicklungsbeginn mit den grundlegenden Konzepten vertraut zu machen, die in diesen Themen behandelt werden.
+Dieses Thema bietet eine kurze Übersicht über die Azure Media Services-Terminologie und -Konzepte. Darüber hinaus enthält der Artikel Links zu Artikeln mit ausführlicheren Erläuterungen zu Konzepten und Funktionen von Media Services v3. 
+
+Es empfiehlt sich, sich vor Entwicklungsbeginn mit den grundlegenden Konzepten vertraut zu machen, die in diesen Themen behandelt werden.
 
 > [!NOTE]
-> Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-ref), die [Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](developers-guide.md).
+> Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-ref), die [Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
+## <a name="terminology"></a>Begriff
+
+In diesem Abschnitt wird beschrieben, inwiefern sich einige allgemeine Begriffe aus der Branche der Media Services v3-API zuordnen lassen.
+
+### <a name="live-event"></a>Liveereignis
+
+Ein **Liveereignis** stellt eine Pipeline zum Erfassen, Transcodieren (optional) und Packen von Video- und Audiolivestreams sowie von Echtzeit-Metadaten dar.
+
+Für Kunden, die von Media Services v2-APIs migrieren, ersetzt das **Liveereignis** die **Channel**-Entität in v2. Weitere Informationen finden Sie unter [Hinweise zur Migration von Media Services v2 zu v3](migrate-from-v2-to-v3.md).
+
+### <a name="streaming-endpoint-packaging-and-origin"></a>Streamingendpunkt (Paketerstellung und Ursprung)
+
+Ein **Streamingendpunkt** stellt einen dynamischen (Just-In-Time-) Paketerstellungs- und Ursprungsdienst dar, der Ihre Live- und On-Demand-Inhalte direkt an eine Clientplayeranwendung bereitstellen kann und dabei eines der allgemeinen Streamingmedienprotokolle (HLS oder DASH) verwendet. Zudem sorgt der **Streamingendpunkt** für eine dynamische (Just-In-Time-)Verschlüsselung zu branchenführenden DRMs.
+
+In der Medienstreamingbranche wird dieser Dienst häufig als **Paketerstellungs-Manager** oder **Ursprung** bezeichnet.  JITP (Just-in-time-Packager, Just-In-Time-Paketerstellungs-Manager) oder JITE (Just-in-time-Encryption, Just-In-Time-Verschlüsselung) sind weitere in der Branche häufig verwendete Begriffe für diese Funktion. 
+ 
 ## <a name="cloud-upload-and-storage"></a>Clouduploads und Cloudspeicherung
 
 Um mit dem Verwalten, Verschlüsseln, Codieren, Analysieren und Streamen von Medieninhalten in Azure beginnen zu können, müssen Sie ein Media Services-Konto erstellen und Ihre digitalen Dateien in **Medienobjekte** hochladen.
@@ -52,7 +70,7 @@ Um Ihre Video- und Audiodateien zu analysieren, müssen Sie auch **Transformatio
 
 ## <a name="packaging-delivery-protection"></a>Verpackung, Bereitstellung, Schutz
 
-Sobald Ihre Inhalte codiert sind, können Sie die Vorteile der **dynamischen Paketerstellung** nutzen. **Streamingendpunkt** ist der dynamische Paketerstellungsdienst in Media Services mit dem Medieninhalte für Clientplayer bereitgestellt werden. Um Videos im Ausgabeobjekt für die Wiedergabe durch Clients verfügbar zu machen, müssen Sie einen **Streaminglocator** erstellen und dann die Streaming-URLs erstellen. 
+Sobald Ihre Inhalte codiert sind, können Sie die Vorteile der **dynamischen Paketerstellung** nutzen. Bei Media Services ist ein **Streamingendpunkt**/Ursprung der dynamische Paketerstellungsdienst, mit dem Medieninhalte für Clientplayer bereitgestellt werden. Um Videos im Ausgabeobjekt für die Wiedergabe durch Clients verfügbar zu machen, müssen Sie einen **Streaminglocator** erstellen und dann die Streaming-URLs erstellen. 
 
 Beim Erstellen des **Streaminglocators** müssen Sie zusätzlich zum Namen des Objekts eine **Streamingrichtlinie** angeben. Mithilfe von **Streamingrichtlinien** können Sie Streamingprotokolle und Verschlüsselungsoptionen (falls zutreffend) für Ihre **Streaminglocators** definieren.
 
@@ -115,6 +133,10 @@ Zum Anzeigen des Auftragsfortschritts sollten Sie **Event Grid** verwenden. Medi
 Mit dem Azure Media Player können Sie von Media Services gestreamte Medieninhalte auf einer Vielzahl von Browsern und Geräten wiedergeben. Der Azure Media Player nutzt Industriestandards wie HTML5, MSE (Media Source Extensions) und EME (Encrypted Media Extensions) für ein funktionsreiches adaptives Streaming. 
 
 - [Übersicht über Azure Media Player](use-azure-media-player.md)
+
+## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
+
+Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

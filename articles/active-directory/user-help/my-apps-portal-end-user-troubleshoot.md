@@ -13,24 +13,29 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6e87ae0a8adf28176d9a97cbf1b78943179884a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 11a7376720661e13a03be65df4ee180e0bca20c3
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339902"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383063"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>Problembehandlung beim Portal „Meine Apps“
+
 Wenn Sie Probleme haben, sich beim Portal **Meine Apps** anzumelden oder das Portal zu verwenden, sollten Sie diese Tipps zur Fehlerbehebung ausprobieren, bevor Sie sich an den Helpdesk oder Ihren Administrator wenden.
 
 ## <a name="im-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Ich habe Probleme bei der Installation der My Apps Secure Sign-in-Erweiterung
+
 Wenn Sie Probleme mit der Installation der My Apps Secure Sign-in-Erweiterung haben:
 
 - Vergewissern Sie sich, dass Sie einen unterstützten Browser verwenden:
 
     - **Microsoft Edge.** Ausführung unter Windows 10 Anniversary Edition oder höher.
+
     - **Google Chrome.** Ausführung unter Windows 7 oder höher und Mac OS X oder höher.
+
     - **Mozilla Firefox 26.0 oder höher.** Ausführung unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher.
+
     - **Internet Explorer 11.** Ausführung unter Windows 7 oder höher (eingeschränkte Unterstützung).
 
 - Stellen Sie sicher, dass die Erweiterungseinstellungen Ihres Browsers aktiviert sind.
@@ -40,6 +45,7 @@ Wenn Sie Probleme mit der Installation der My Apps Secure Sign-in-Erweiterung ha
 - Versuchen Sie, die Cookies im Browser zu löschen, den Browser neu zu starten und sich erneut am Portal **Meine Apps** anzumelden.
 
 ## <a name="i-cant-sign-in-to-the-my-apps-portal"></a>Ich kann mich nicht am Portal **Meine Apps** anmelden
+
 Wenn Sie Probleme haben, sich am Portal **Meine Apps** anzumelden, können Sie Folgendes versuchen:
 
 - Stellen Sie sicher, dass Sie die richtige URL verwenden. Hierbei muss es sich um https://myapps.microsoft.com oder um eine benutzerdefinierte Seite Ihrer Organisation handeln, z. B. https://myapps.microsoft.com/contoso.com.
@@ -53,12 +59,15 @@ Wenn Sie Probleme haben, sich am Portal **Meine Apps** anzumelden, können Sie F
 - Löschen Sie den Cache des Browsers, und versuchen Sie erneut, sich anzumelden.
 
 ## <a name="my-password-isnt-working"></a>Mein Kennwort funktioniert nicht
+
 Wenn Sie Ihr Kennwort ändern möchten, es vergessen oder nie von Ihrer Organisation erhalten haben oder aus Ihrem Konto ausgesperrt wurden, finden Sie unter [Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos](active-directory-passwords-update-your-own-password.md) weitere Informationen.
 
 ## <a name="i-want-to-be-able-to-reset-my-own-password"></a>Ich möchte mein Kennwort eigenständig zurücksetzen können
+
 Um Ihr Kennwort eigenständig zurücksetzen zu können, muss Ihr Administrator zunächst dieses Feature für Ihre Organisation aktivieren. Anschließend müssen Sie die benötigten Überprüfungsmethoden aktualisieren und überprüfen. Weitere Informationen dazu, wie Sie Ihre Überprüfungsmethoden aktualisieren, finden Sie unter [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md).
 
 ## <a name="im-getting-an-access-denied-message-when-i-start-an-app"></a>Mir wird die Meldung „Zugriff verweigert“ angezeigt, wenn ich eine App starte
+
 Wenn Sie die Meldung **Zugriff verweigert** erhalten, nachdem Sie eine App aus dem Portal **Meine Apps** starten, können Sie Folgendes versuchen:
 
 - Vergewissern Sie sich, dass Sie die [My Apps Secure Sign-in-Erweiterung ](my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) installiert haben und einen [unterstützten Browser](my-apps-portal-end-user-access.md#supported-browsers) verwenden.
@@ -74,12 +83,13 @@ Wenn Sie die Meldung **Zugriff verweigert** erhalten, nachdem Sie eine App aus d
 Wenn Sie nach dem Ausprobieren dieser Maßnahmen noch immer nicht auf Ihre App zugreifen können, müssen Sie den Helpdesk Ihrer Organisation um Unterstützung bitten.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie sich am Portal **Meine Apps** angemeldet haben, können Sie auch Ihre Profil- und Kontoinformationen, Ihre Gruppeninformationen und Ihre Informationen für die Zugriffsüberprüfung aktualisieren (sofern Sie über die entsprechenden Berechtigungen verfügen).
 
 - [Access and use apps on the My Apps portal (Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“)](my-apps-portal-end-user-access.md)
 
-- [Change your profile information (Ändern von Profilinformationen)](my-apps-portal-end-user-update-profile.md)
+- [Ändern Ihrer Profilinformationen](my-apps-portal-end-user-update-profile.md)
 
-- [View and update your groups-related information (Anzeigen und Aktualisieren gruppenbezogener Informationen)](my-apps-portal-end-user-groups.md).
+- [Anzeigen und Aktualisieren gruppenbezogener Informationen](my-apps-portal-end-user-groups.md)
 
-- [Perform your own access reviews (Durchführen eigener Zugriffsüberprüfungen)](my-apps-portal-end-user-access-reviews.md)
+- [Durchführen eigener Zugriffsüberprüfungen](my-apps-portal-end-user-access-reviews.md)

@@ -1,52 +1,54 @@
 ---
-title: Ausführen von Ansible mit Bash in Azure Cloud Shell
-description: Hier erfahren Sie, wie Sie verschiedene Ansible-Aufgaben mit Bash in Azure Cloud Shell ausführen.
-ms.service: azure
+title: 'Schnellstart: Ausführen von Ansible-Playbooks per Bash in Azure Cloud Shell | Microsoft-Dokumentation'
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie verschiedene Ansible-Aufgaben mit Bash in Azure Cloud Shell durchführen.
 keywords: Ansible, Azure, DevOps, Bash, CloudShell, Playbook, Bash
+ms.topic: quickstart
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 08/07/2018
-ms.topic: quickstart
-ms.openlocfilehash: 37426f1cdc51734c28b2c9739e26ad35f08e606f
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 04/30/2019
+ms.openlocfilehash: 083d10de94c39ab134b8e475b66ebf2df30088bc
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791391"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407650"
 ---
-# <a name="run-ansible-with-bash-in-azure-cloud-shell"></a>Ausführen von Ansible mit Bash in Azure Cloud Shell
+# <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>Schnellstart: Ausführen von Ansible-Playbooks per Bash in Azure Cloud Shell
 
-In diesem Tutorial erfahren Sie, wie Sie Bash in Cloud Shell verwenden, um ein Azure-Abonnement als Ihren Ansible-Arbeitsbereich zu konfigurieren. 
+Azure Cloud Shell ist eine interaktive, über den Browser zugängliche Shell für die Verwaltung von Azure-Ressourcen. Mit Cloud Shell können Sie entweder eine Bash- oder PowerShell-Befehlszeile verwenden. In diesem Artikel nutzen Sie Bash in Azure Cloud Shell, um ein Ansible-Playbook auszuführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **Azure-Abonnement:** Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen.
-
-- **Konfigurieren von Azure Cloud Shell:** Sollten Sie noch nicht mit Azure Cloud Shell vertraut sein, finden Sie im Artikel [Schnellstart für Bash in Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart) Informationen zu den ersten Schritten mit Cloud Shell sowie zur Konfiguration. 
-
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- **Konfigurieren von Azure Cloud Shell**: Wenn Sie mit Azure Cloud Shell noch nicht vertraut sind, helfen Ihnen die Informationen unter [Schnellstart für Bash in Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart) weiter.
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="automatic-credential-configuration"></a>Automatische Konfiguration von Anmeldeinformationen
 
-Wenn Sie bei Cloud Shell angemeldet sind, führt Ansible eine Authentifizierung bei Azure durch, um die Infrastruktur ohne zusätzliche Konfiguration verwalten zu können. Wenn Sie über mehrere Abonnements verfügen, können Sie auswählen, welches Abonnement Ansible verwenden soll, indem Sie die Umgebungsvariable `AZURE_SUBSCRIPTION_ID` exportieren. Zum Auflisten all Ihrer Azure-Abonnements führen Sie den folgenden Befehl aus:
+Wenn Sie bei Cloud Shell angemeldet sind, führt Ansible eine Authentifizierung bei Azure durch, um die Infrastruktur ohne zusätzliche Konfiguration verwalten zu können. 
+
+Geben Sie bei Verwendung von mehreren Abonnements das von Ansible genutzte Abonnement an, indem Sie die Umgebungsvariable `AZURE_SUBSCRIPTION_ID` exportieren. 
+
+Zum Auflisten all Ihrer Azure-Abonnements führen Sie den folgenden Befehl aus:
 
 ```azurecli-interactive
 az account list
 ```
 
-Setzen Sie anhand der **ID** des Abonnements, mit dem Sie arbeiten möchten, die **AZURE_SUBSCRIPTION_ID** wie folgt fest:
+Legen Sie die `AZURE_SUBSCRIPTION_ID` wie folgt fest, indem Sie Ihre Azure-Abonnement-ID verwenden:
 
 ```azurecli-interactive
 export AZURE_SUBSCRIPTION_ID=<your-subscription-id>
 ```
 
 ## <a name="verify-the-configuration"></a>Überprüfen der Konfiguration
-Erstellen Sie mithilfe von Ansible eine Ressourcengruppe, um zu überprüfen, ob die Konfiguration erfolgreich war.
+Erstellen Sie mit Ansible eine Azure-Ressourcengruppe, um zu überprüfen, ob die Konfiguration erfolgreich war.
 
-[!INCLUDE [create-resource-group-with-ansible.md](../../includes/ansible-create-resource-group.md)]
+[!INCLUDE [create-resource-group-with-ansible.md](../../includes/ansible-snippet-create-resource-group.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"] 
-> [Erstellen eines einfachen virtuellen Computers in Azure mit Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Schnellstart: Konfigurieren eines virtuellen Computers in Azure mit Ansible](/azure/virtual-machines/linux/ansible-create-vm)

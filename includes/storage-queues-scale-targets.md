@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 781087023bf9783bc3a153578b60b4941dc75c0e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553732"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67178301"
 ---
-| Ressource | Ziel |
+| Resource | Ziel |
 |----------|---------------|
 | Maximale Größe einer einzelnen Warteschlange | 500 TiB |
 | Maximale Größe einer Nachricht in einer Warteschlange | 64 KiB |

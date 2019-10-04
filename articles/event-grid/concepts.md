@@ -7,22 +7,23 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 40c749adee08e66319bed88f26c3c898428a41ad
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 0821c749a6cb718e1b8abb74a2925bc041850eaf
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474352"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66305268"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Begriffe in Azure Event Grid
 
 Dieser Artikel beschreibt die zentralen Begriffe in Azure Event Grid.
 
-## <a name="events"></a>Ereignisse
+## <a name="events"></a>Events
 
 Ein Ereignis ist die kleinste Informationsmenge, die einen Vorgang im System umfassend beschreibt. Jedes Ereignis enthält allgemeine Informationen wie Quelle des Ereignisses, Zeitpunkt, an dem das Ereignis aufgetreten ist, und den eindeutigen Bezeichner. Jedes Ereignis enthält auch spezielle Informationen, die nur für den jeweiligen Ereignistyp relevant sind. Beispielsweise enthält ein Ereignis zu einer neuen Datei, die in Azure Storage erstellt wird, Details über die Datei, z.B. den Wert von `lastTimeModified`. Alternativ dazu enthält ein Event Hubs-Ereignis die URL der Erfassungsdatei. 
 
-Jedes Ereignis ist auf 64 KB Daten begrenzt.
+Ein Ereignis mit einer Größe von bis zu 64 KB wird von der Vereinbarung zum Servicelevel (SLA) für die allgemeine Verfügbarkeit (GA) abgedeckt. Die Unterstützung für ein Ereignis von einer Größe bis zu 1 MB ist derzeit in der Vorschauversion verfügbar. Ereignisse, die größer als 64 KB sind, werden in Schritten von 64 KB in Rechnung gestellt. 
+
 
 Die gesendeten Ereigniseigenschaften finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
@@ -40,7 +41,7 @@ Informationen zum Implementieren der unterstützten Event Grid-Quellen finden Si
 
 Das Event Grid-Thema stellt einen Endpunkt bereit, an den die Ereignisquelle Ereignisse sendet. Der Herausgeber erstellt das Thema und legt fest, ob eine Ereignisquelle ein Thema oder mehrere Themen benötigt. Ein Event Grid-Thema wird für eine Sammlung ähnlicher Ereignisse verwendet. Um auf bestimmte Arten von Ereignissen zu reagieren, legen Abonnenten fest, welche Themen sie abonnieren.
 
-Systemthemen sind integrierte Themen, die von Azure-Diensten bereitgestellt werden. Sie können keine Systemthemen in Ihrem Azure-Abonnement ansehen, weil diese dem Herausgeber gehören. Allerdings haben Sie die Möglichkeit, diese zu abonnieren. Dafür stellen Sie Informationen zu der Ressource bereit, deren Ereignisse Sie empfangen möchten. Solange Sie Zugriff auf eine Ressource haben, können Sie auch ihre Ereignisse abonnieren.
+Systemthemen sind integrierte Themen, die von Azure-Diensten bereitgestellt werden. Sie können keine Systemthemen in Ihrem Azure-Abonnement ansehen, weil diese dem Herausgeber gehören. Allerdings haben Sie die Möglichkeit, diese zu abonnieren. Dafür stellen Sie Informationen zu der Ressource bereit, deren Ereignisse Sie empfangen möchten. Solange Sie Zugriff auf die Ressource haben, können Sie auch ihre Ereignisse abonnieren.
 
 Benutzerdefinierte Themen sind Anwendungs- und Drittanbieterthemen. Wenn Sie ein benutzerdefiniertes Thema erstellen oder Zugriff darauf erhalten, wird das benutzerdefinierte Thema in Ihrem Abonnement angezeigt.
 
@@ -59,9 +60,6 @@ Beispiele für das Erstellen von Abonnements finden Sie unter:
 Weitere Informationen zum Abfragen Ihrer aktuellen Event Grid-Abonnements finden Sie unter [Abfragen von Event Grid-Abonnements](query-event-subscriptions.md).
 
 ## <a name="event-subscription-expiration"></a>Ereignisabonnementablauf
-
-Mit der [Event Grid-Erweiterung](/cli/azure/azure-cli-extensions-list) für Azure CLI können Sie beim Erstellen eines Ereignisabonnements ein Ablaufdatum festlegen. Wenn Sie die REST-API verwenden, verwenden Sie `api-version=2018-09-15-preview`
-
 Das Ereignisabonnement läuft nach diesem Datum automatisch ab. Legen Sie ein Ablaufdatum für Ereignisabonnements fest, die nur für einen begrenzten Zeitraum erforderlich sind und um deren Bereinigung Sie sich nicht kümmern möchten. Beispielsweise könnten Sie beim Erstellen eines Ereignisabonnements zum Testen eines Szenarios ein Ablaufdatum festlegen. 
 
 Ein Beispiel für das Festlegen eines Ablaufdatums finden Sie unter [Abonnieren mit erweiterten Filtern](how-to-filter-events.md#subscribe-with-advanced-filters).
@@ -82,7 +80,10 @@ Wenn Event Grid nicht bestätigen kann, dass ein Ereignis beim Endpunkt des Abon
 
 ## <a name="batching"></a>Batchverarbeitung
 
-Wenn Sie ein benutzerdefiniertes Thema verwenden, müssen die Ereignisse immer in einem Array veröffentlicht werden. Dies kann für Szenarien mit geringem Durchsatz ein Batch mit nur einem Element sein. Für Anwendungsfälle mit hohem Volumen wird aber empfohlen, pro Veröffentlichung mehrere Ereignisse zu Batches zusammenzufassen, um eine höhere Effizienz zu erzielen. Batches können eine Größe von bis zu 1 MB haben. Für die einzelnen Ereignisse sollte trotzdem eine Größe von 64 KB nicht überschritten werden.
+Wenn Sie ein benutzerdefiniertes Thema verwenden, müssen die Ereignisse immer in einem Array veröffentlicht werden. Dies kann für Szenarien mit geringem Durchsatz ein Batch mit nur einem Element sein. Für Anwendungsfälle mit hohem Volumen wird aber empfohlen, pro Veröffentlichung mehrere Ereignisse zu Batches zusammenzufassen, um eine höhere Effizienz zu erzielen. Batches können eine Größe von bis zu 1 MB haben. Für die einzelnen Ereignisse sollte trotzdem eine Größe von 64 KB (Allgemeine Verfügbarkeit) bzw. 1 MB (Vorschauversion) nicht überschritten werden.
+
+> [!NOTE]
+> Ein Ereignis mit einer Größe von bis zu 64 KB wird von der Vereinbarung zum Servicelevel (SLA) für die allgemeine Verfügbarkeit (GA) abgedeckt. Die Unterstützung für ein Ereignis von einer Größe bis zu 1 MB ist derzeit in der Vorschauversion verfügbar. Ereignisse, die größer als 64 KB sind, werden in Schritten von 64 KB in Rechnung gestellt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

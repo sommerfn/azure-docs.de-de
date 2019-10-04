@@ -7,17 +7,16 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: MightyPen
-manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: ad66253d33b2e99f0be79bfaddc86b3274f5cab0
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: e869b2bba3bd64b58d9063e9445889ef709efdc3
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258920"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567945"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Verwenden von In-Memory-OLTP zur Verbesserung der Anwendungsleistung in SQL-Datenbank
 
@@ -54,7 +53,7 @@ Weitere Informationen finden Sie unter [Bestimmen, ob eine Tabelle oder eine ges
 ## <a name="step-3-create-a-comparable-test-database"></a>Schritt 3: Erstellen einer vergleichbaren Testdatenbank
 Nehmen Sie an, der Bericht zeigt, dass die Datenbank über eine Tabelle verfügt, für die eine Umwandlung in eine speicheroptimierte Tabelle von Vorteil wäre. Sie sollten diese Angabe zunächst zur Bestätigung testen.
 
-Sie benötigen eine Testkopie der Produktionsdatenbank. Die Testdatenbank muss sich auf der gleichen Seviceebene befinden wie die Produktionsdatenbank.
+Sie benötigen eine Testkopie der Produktionsdatenbank. Die Testdatenbank muss sich auf der gleichen Dienstebene befinden wie die Produktionsdatenbank.
 
 Um das Testen zu erleichtern, optimieren Sie die Testdatenbank wie folgt:
 
@@ -94,7 +93,7 @@ So verwenden Sie diese Migrationsoption:
 2. Rufen Sie das vollständige T-SQL-Skript für die Tabelle und ihre Indizes ab.
    
    * Klicken Sie in SSMS mit der rechten Maustaste auf Ihren Tabellenknoten.
-   * Klicken Sie auf **Skript für Tabelle als** > **CREATE in** > **Fenster 'Neue Abfrage'**.
+   * Klicken Sie auf **Skript für Tabelle als** > **CREATE in** > **Fenster 'Neue Abfrage'** .
 3. Fügen Sie im Skriptfenster WITH (MEMORY_OPTIMIZED = ON) der CREATE TABLE-Anweisung hinzu.
 4. Wenn ein Index als CLUSTERED gekennzeichnet ist, ändern Sie ihn in NONCLUSTERED.
 5. Benennen Sie die vorhandene Tabelle mittels SP_RENAME um.

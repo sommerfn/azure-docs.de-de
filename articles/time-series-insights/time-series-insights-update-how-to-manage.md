@@ -2,20 +2,20 @@
 title: Bereitstellen und Verwalten der Vorschauversion von Azure Time Series Insights | Microsoft-Dokumentation
 description: Grundlagen zum Bereitstellen und Verwalten von Azure Time Series Insights Preview.
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 ms.workload: big-data
 manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/10/2018
+ms.date: 09/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 85d5bb822bc9b89c68c70633a22a1bed74118f49
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a84c587a2666982e862f0640b30d2d6bef3b9a42
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758187"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744657"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Bereitstellen und Verwalten der Vorschauversion von Azure Time Series Insights
 
@@ -33,7 +33,7 @@ Wenn Sie eine Azure Time Series Insights Preview-Umgebung bereitstellen, erstell
 Erfahren Sie, [wie Sie Ihre Umgebung planen](./time-series-insights-update-plan.md).
 
 >[!IMPORTANT]
-> Stellen Sie für die Vorschauversion sicher, dass Sie ein GPv1-Konto (Azure Storage Universell V1) verwenden.  Die Unterstützung für GPv2 und höher wird in naher Zukunft hinzugefügt.  
+> Stellen Sie für die Vorschauversion sicher, dass Sie ein GPv1-Konto (Azure Storage Universell V1) verwenden.
 
 Sie können jede Azure Time Series Insights-Umgebung (Vorschauversion) optional mit einer Ereignisquelle verknüpfen. Weitere Informationen finden Sie unter [Hinzufügen einer Event Hub-Quelle](./time-series-insights-how-to-add-an-event-source-eventhub.md) und [Hinzufügen einer IoT Hub-Quelle](./time-series-insights-how-to-add-an-event-source-iothub.md). Sie geben in diesem Schritt eine „Timestamp ID“-Eigenschaft sowie eine eindeutige Consumergruppe an. Auf diese Weise wird sichergestellt, dass die Umgebung Zugriff auf die entsprechenden Ereignisse hat.
 
@@ -45,7 +45,7 @@ Die folgenden Schritte beschreiben, wie Sie eine Azure Time Series Insights Prev
 
 1. Wählen Sie die Schaltfläche **PAYG** im Menü **SKU** aus. Geben Sie einen Umgebungsnamen an, und wählen Sie aus, welche Abonnementgruppe und welche Ressourcengruppe verwendet werden sollen. Wählen Sie dann einen unterstützten Ort für die Umgebung aus, wo sie gehostet werden soll.
 
-   ![Erstellen Sie eine Azure Time Series Insights-Instanz.][1]
+   [![Erstellen Sie eine Azure Time Series Insights-Instanz.](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 1. Geben Sie eine Time Series-ID ein.
 
@@ -56,7 +56,7 @@ Die folgenden Schritte beschreiben, wie Sie eine Azure Time Series Insights Prev
 
 1. Erstellen Sie ein Azure Storage-Konto, indem Sie einen Namen für das Konto auswählen und eine Replikationsauswahl treffen. Hierdurch wird automatisch ein Azure Storage-Konto vom Typ „Allgemein v1“ erstellt. Es wird in derselben Region wie die Azure Time Series Insights-Umgebung (Vorschauversion) erstellt, die Sie zuvor ausgewählt haben.
 
-    ![Erstellen eines Azure Storage-Kontos für Ihre Instanz][5]
+    [![Erstellen eines Azure Storage-Kontos für Ihre Instanz](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
 
 1. Optional können Sie eine Ereignisquelle hinzufügen.
 
@@ -67,11 +67,11 @@ Die folgenden Schritte beschreiben, wie Sie eine Azure Time Series Insights Prev
      > [!TIP]
      > Die in der Warteschlange verbrachte Zeit einer Nachricht ist möglicherweise nicht die beste konfigurierte Einstellung, um sie in Uploadszenarien mit Batch-Ereignissen oder Verlaufsdaten zu verwenden. Stellen Sie sicher, dass Sie Ihre Entscheidung überprüfen, ob in solchen Fällen eine „Timestamp“-Eigenschaft verwendet werden soll oder nicht.
 
-     ![Registerkarte „Ereignisquelle“][2]
+     [![Registerkarte „Ereignisquelle“](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
 
 1. Vergewissern Sie sich, dass Ihre Umgebung mit den gewünschten Einstellungen bereitgestellt wurde.
 
-    ![Registerkarte „Bewerten + erstellen“][3]
+    [![Registerkarte „Bewerten + erstellen“](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
 ## <a name="manage-the-environment"></a>Verwalten der Umgebung
 
@@ -88,19 +88,12 @@ Sie können Ihre Azure Time Series Insights-Umgebung (Vorschauversion) über das
 
 * Das Datenblatt **Verweisdaten** im Azure-Portal wurde in der Vorschauversion von Azure Time Series Insights entfernt, da Verweisdaten keine Komponente von Umgebungen mit nutzungsbasierter Bezahlung sind.
 
-![Time Series Insights-Umgebung (Vorschauversion) im Azure-Portal][4]
+[![Time Series Insights-Umgebung (Vorschauversion) im Azure-Portal](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie [Planen der Umgebung](./time-series-insights-update-plan.md).
+- Lesen Sie [Planen der Umgebung](./time-series-insights-update-plan.md).
 
-Lesen Sie [Hinzufügen einer Event Hub-Quelle](./time-series-insights-how-to-add-an-event-source-eventhub.md).
+- Informieren Sie sich über das [Hinzufügen einer Event Hub-Quelle](./time-series-insights-how-to-add-an-event-source-eventhub.md).
 
-Lesen Sie [Hinzufügen einer IoT-Hub-Quelle](./time-series-insights-how-to-add-an-event-source-iothub.md).
-
-<!-- Images -->
-[1]: media/v2-update-manage/manage_one.PNG
-[2]: media/v2-update-manage/manage_two.PNG
-[3]: media/v2-update-manage/manage_three.PNG
-[4]: media/v2-update-manage/manage_four.PNG
-[5]: media/v2-update-manage/manage_five.PNG
+- Konfigurieren [einer IoT-Hub-Quelle](./time-series-insights-how-to-add-an-event-source-iothub.md).

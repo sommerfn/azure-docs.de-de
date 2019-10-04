@@ -1,21 +1,21 @@
 ---
 title: Anpassen der Übersetzung – Textübersetzungs-API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Verwenden Sie den Microsoft Translator-Hub zum Erstellen Ihres eigenen Systems für die maschinelle Übersetzung mit der Terminologie und dem Stil, den Sie bevorzugen.
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 02/21/2019
-ms.author: v-jansko
-ms.openlocfilehash: b9a182da0ce03bf3964b6da30f1ed68de38c8141
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/04/2019
+ms.author: swmachan
+ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918228"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257628"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
 
@@ -29,7 +29,7 @@ Mit dem benutzerdefinierten Translator können Sie neuronale Übersetzungssystem
 
 ### <a name="how-does-it-work"></a>Wie funktioniert dies?
 
-Verwenden Sie zuvor übersetzte Dokumente (Broschüren, Webseiten, Dokumentationen usw.), um ein Übersetzungssystem zu erstellen, das die domänenspezifische Terminologie und den Stil besser als ein herkömmliches Übersetzungssystem widerspiegelt. Benutzer können Dokumente in den folgenden Dateiformaten hochladen: TMX, XLIFF, TXT, DOCX und XLSX.  
+Verwenden Sie zuvor übersetzte Dokumente (Broschüren, Webseiten, Dokumentationen usw.), um ein Übersetzungssystem zu erstellen, das die domänenspezifische Terminologie und den Stil besser als ein Standardübersetzungssystem widerspiegelt. Benutzer können Dokumente in den folgenden Dateiformaten hochladen: TMX, XLIFF, TXT, DOCX und XLSX.  
 
 Das System akzeptiert auch Daten, die parallel auf Dokumentebene parallel sind, jedoch noch nicht auf Satzebene ausgerichtet wurden. Wenn Sie über Zugriff auf Versionen mit dem gleichen Inhalt in mehreren Sprachen verfügen, die sich jedoch in separaten Dokumenten befinden, kann der benutzerdefinierte Translator Sätze über mehrere Dokumente hinweg automatisch abgleichen.  Das System kann auch einsprachige Daten in einer oder beiden Sprachen verwenden, um die parallelen Trainingsdaten zu ergänzen, um die Übersetzungen zu verbessern.
 
@@ -43,7 +43,7 @@ Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf ver
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator-Hub
 
 > [!NOTE]
-> Der Microsoft Translator-Legacyhub wird am 30. April 2019 eingestellt. [Anzeigen von wichtigen Migrationsinformationen und Datumsangaben](https://www.microsoft.com/translator/business/hub/).  
+> Der veraltete Microsoft Translator-Hub wird am 17. April 2019 eingestellt. [Anzeigen von wichtigen Migrationsinformationen und Datumsangaben](https://www.microsoft.com/translator/business/hub/).  
 
 ## <a name="custom-translator-versus-hub"></a>Benutzerdefinierter Translator im Vergleich zum Hub
 
@@ -51,17 +51,15 @@ Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf ver
 |:-----|:----:|:----:|
 |Status des Anpassungsfeatures   | Allgemeine Verfügbarkeit  | Allgemeine Verfügbarkeit |
 | Version der Text-API  | Nur V2   | Nur V3 |
-| SMT-Anpassung | Ja   | Nein  |
-| NMT-Anpassung | Nein     | Ja |
-| Neue einheitliche Anpassung der Sprachdienste | Nein     | Ja |
+| SMT-Anpassung | Ja   | Nein |
+| NMT-Anpassung | Nein    | Ja |
+| Neue einheitliche Anpassung der Sprachdienste | Nein    | Ja |
 | [No Trace (Keine Ablaufverfolgung)](https://www.aka.ms/notrace) | Ja  | Ja |
 
 ## <a name="collaborative-translations-framework"></a>Framework für kollaborative Übersetzungen
 
 > [!NOTE]
 > Seit dem 1. Februar 2018 sind „AddTranslation()“ und „AddTranslationArray()“ nicht mehr für die Verwendung mit der Textübersetzungs-API V2.0 verfügbar. Diese Methoden schlagen fehl, und nichts wird geschrieben. Die Textübersetzungs-API V3.0 unterstützt diese Methoden nicht.
-> 
-> In der Translator-Hub-API stehen ähnliche Funktionen zur Verfügung. Siehe [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

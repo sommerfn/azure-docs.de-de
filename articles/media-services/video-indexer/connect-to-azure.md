@@ -6,15 +6,16 @@ services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/12/2019
+ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: affa6f9a808543401b7d57812c7d2bef4324a83c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0f67b2e37e264febf11f3fa55b4469d392c59712
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796544"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815663"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Erstellen eines Video Indexer-Kontos mit Azure-Verbindung
 
@@ -32,7 +33,7 @@ In diesem Artikel wird veranschaulicht, wie Sie ein Video Indexer-Konto erstelle
 
     Wenn Sie nicht über eine Azure AD-Domäne verfügen, können Sie diese mit Ihrem Azure-Abonnement erstellen. Weitere Informationen finden Sie unter [Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory](../../active-directory/users-groups-roles/domains-manage.md).
 
-* Einen Benutzer und ein Mitglied in Ihrer Azure AD-Domäne. Sie verwenden dieses Mitglied beim Herstellen der Verbindung für Ihr Video Indexer-Konto mit Azure.
+* Ein Benutzer in Ihrer Azure AD-Domäne mit der Rolle **Anwendungsadministrator**. Sie verwenden dieses Mitglied beim Herstellen der Verbindung für Ihr Video Indexer-Konto mit Azure.
 
     Dieser Benutzer muss ein Azure AD-Benutzer mit einem Geschäfts-, Schul- oder Unikonto sein. Es darf kein persönliches Konto wie „outlook.com“, „live.com“ oder „hotmail.com“ verwendet werden.
 
@@ -57,6 +58,9 @@ Suchen Sie nach **Microsoft.Media** und **Microsoft.EventGrid**. Klicken Sie auf
 ![EventGrid](./media/create-account/event-grid.png)
 
 ## <a name="connect-to-azure"></a>Herstellen einer Verbindung mit Azure
+
+> [!NOTE]
+> Wenn für Ihr Azure-Abonnement die zertifikatbasierte mehrstufige Authentifizierung verwendet wird, ist es wichtig, die folgenden Schritte auf einem Gerät auszuführen, auf dem die erforderlichen Zertifikate installiert sind.
 
 1. Navigieren Sie zur [Video Indexer](https://www.videoindexer.ai/)-Website, und melden Sie sich an.
 
@@ -103,7 +107,7 @@ Wenn die Verbindungsherstellung mit Azure nicht erfolgreich war, können Sie ver
 
 1. Verwenden Sie das [Azure](https://portal.azure.com/)-Portal, um ein Azure Media Services-Konto zu erstellen, wie beschrieben unter [Erstellen eines Kontos](../previous/media-services-portal-create-account.md).
 
-    Wenn Sie ein Speicherkonto für Ihr Media Services-Konto erstellen, wählen Sie als Kontoart **StorageV2** und für die Replikation **Georedundant (RGS)** aus.
+    Wenn Sie ein Speicherkonto für Ihr Media Services-Konto erstellen, wählen Sie als Kontoart **StorageV2** und für die Replikation **Georedundant (GRS)** aus.
 
     ![Neues Azure Media Services-Konto](./media/create-account/create-ams-account1.png)
 

@@ -3,23 +3,19 @@ title: Installieren von .NET in Rollen in Azure Cloud Services | Microsoft-Dokum
 description: Dieser Artikel beschreibt die manuelle Installation von .NET Framework in Clouddienstweb- und -workerrollen.
 services: cloud-services
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: 8d1243dc-879c-4d1f-9ed0-eecd1f6a6653
+author: georgewallace
+manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/22/2018
-ms.author: jeconnoc
-ms.openlocfilehash: 4b6aeb2968d7642881535753cb6c8434cfe10886
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: gwallace
+ms.openlocfilehash: 25151f154b9806646406639df3efd7616e53f6bf
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534070"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359635"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Installieren von .NET in Rollen in Azure Cloud Services
 Dieser Artikel beschreibt die Installation von .NET Framework-Versionen, die nicht im Funktionsumfang des Azure-Gastbetriebssystems vorhanden sind. Sie können .NET im Gastbetriebssystem zum Konfigurieren Ihrer Clouddienstweb- und -workerrollen nutzen.
@@ -34,6 +30,7 @@ Zum Installieren von .NET für Ihre Web- und Workerrollen fügen Sie Ihrem Cloud
 ## <a name="add-the-net-installer-to-your-project"></a>Das Installationsprogramm für .NET zu Ihrem Projekt hinzufügen
 Laden Sie den Webinstaller der .NET Framework-Version herunter, die Sie installieren möchten:
 
+* [Webinstaller für .NET 4.8](https://dotnet.microsoft.com/download/thank-you/net48)
 * [Webinstaller für .NET 4.7.2](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [Webinstaller für .NET 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
 
@@ -102,7 +99,8 @@ Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet w
    REM ***** To install .NET 4.7.1 set the variable netfx to "NDP471" ***** https://go.microsoft.com/fwlink/?LinkId=852095
    REM ***** To install .NET 4.7.2 set the variable netfx to "NDP472" ***** https://go.microsoft.com/fwlink/?LinkId=863262
    set netfx="NDP472"
-   
+   REM ***** To install .NET 4.8 set the variable netfx to "NDP48" ***** https://dotnet.microsoft.com/download/thank-you/net48
+      
    REM ***** Set script start timestamp *****
    set timehour=%time:~0,2%
    set timestamp=%date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2%
@@ -225,9 +223,9 @@ Dieser XML-Code dient zum Konfigurieren der Diagnose zur Übertragung der Dateie
 Wenn Sie Ihren Clouddienst bereitstellen, installieren die Startaufgaben .NET Framework, sofern es nicht bereits installiert ist. Ihre Clouddienstrollen haben, während das Framework installiert wird, den Status *Ausgelastet*. Wenn die Installation des Frameworks einen Neustart erfordert, werden möglicherweise die Dienstrollen auch neu gestartet. 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Installieren von .NET Framework][Installing the .NET Framework]
-* [Ermitteln der installierten .NET Framework-Versionen][How to: Determine Which .NET Framework Versions Are Installed]
-* [Beheben von Problemen bei .NET Framework-Installationen][Troubleshooting .NET Framework Installations]
+* [Installation des .NET Frameworks][Installing the .NET Framework]
+* [Ermitteln der installierten .NET Framework-Versionen][How to: Determine Which .NET Framework Versions Are Installed]
+* [Beheben von Problemen bei .NET Framework-Installationen][Troubleshooting .NET Framework Installations]
 
 [How to: Determine Which .NET Framework Versions Are Installed]: /dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
 [Installing the .NET Framework]: /dotnet/framework/install/guide-for-developers

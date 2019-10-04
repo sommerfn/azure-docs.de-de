@@ -2,8 +2,8 @@
 title: Überwachungsoptionen – Azure Dedicated HSM | Microsoft-Dokumentation
 description: Übersicht über Azure Dedicated HSM-Überwachungsoptionen und die Überwachungszuständigkeiten
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: barclayn
-ms.openlocfilehash: 76a50c483b9246e3e2f9df97d5287f3e2fbd9897
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 3fde577a6b0efb7584e1c9efd57c95583ebe4ec9
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104617"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881424"
 ---
 # <a name="azure-dedicated-hsm-monitoring"></a>Azure-Dienst für dedizierte HSMs – Überwachung
 

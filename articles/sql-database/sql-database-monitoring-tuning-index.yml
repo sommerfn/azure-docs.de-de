@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 51bec37f6b052d51d6cc8f5a8667789bec9e6881
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235964"
 documentType: LandingData
 title: 'Azure SQL-Datenbank: Überwachung und Optimierung'
 metadata:
@@ -17,47 +11,47 @@ metadata:
   manager: craigg
   ms.service: sql-database
   ms.tgt_pltfrm: na
-  ms.devlang: 
+  ms.devlang: null
   ms.topic: overview
   ms.date: 02/08/2019
   ms.author: jovanpop
 sections:
-- items:
-  - type: paragraph
-    text: Mit Azure SQL-Datenbank können Sie Ihre Datenbankworkload komfortabel überwachen und optimieren.
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: paragraph
+        text: Mit Azure SQL-Datenbank können Sie Ihre Datenbankworkload komfortabel überwachen und optimieren.
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: Statistik zur Abfrageleistung
+            href: /azure/sql-database/sql-database-query-performance
+            html: <p>Die integrierten Überwachungsfunktionen im Azure-Portal ermöglichen eine mühelose Überwachung der Ressourcennutzung in Ihrer Azure SQL-Datenbank (Einzel- oder Pooldatenbank).</p>
+          - title: Azure SQL-Analysen
+            href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql?toc=/azure/sql-database/toc.json'
+            html: '<p>Mit der Überwachung der Azure SQL-Analyse können Sie problemlos eine große Anzahl von Datenbanken, Pools für elastische Datenbanken und Instanzen an einer zentralen Stelle überwachen.</p>'
+          - title: Automatische Optimierung
+            href: /azure/sql-database/sql-database-automatic-tuning
+            html: '<p>Die automatische Optimierung bietet automatisch Empfehlungen und Problembehebungen für Abfragepläne und erstellt oder löscht Indizes, um die Leistung zu verbessern.</p>'
+          - title: Intelligente Leistungsinformationen
+            href: /azure/sql-database/sql-database-intelligent-insights
+            html: '<p>Die integrierte Logik von Azure SQL-Datenbank erkennt Störungen, die die Leistung Ihrer Datenbanken beeinträchtigen, und stellt Empfehlungen für die Problembehandlung bereit (sofern verfügbar).</p>'
+          - title: Empfehlungen zur Leistung
+            href: /azure/sql-database/sql-database-advisor
+            html: <p>Azure SQL-Datenbank stellt Empfehlungen für die Datenbankoptimierung im Azure-Portal bereit.</p>
+          - title: Metriken und Protokollierung
+            href: /azure/sql-database/sql-database-metrics-diag-logging
+            html: '<p>Streamen Sie die Telemetriedaten Ihrer Datenbankdiagnose an die Azure SQL-Analyse, an Azure Event Hubs oder Azure Blob Storage, um benutzerdefinierte Integrationen zu implementieren.</p>'
+  - title: Weitere Ressourcen
     items:
-    - title: Statistik zur Abfrageleistung
-      href: /azure/sql-database/sql-database-query-performance
-      html: <p>Die integrierten Überwachungsfunktionen im Azure-Portal ermöglichen eine mühelose Überwachung der Ressourcennutzung in Ihrer Azure SQL-Datenbank (Singleton oder Datenbank in einem Pool).</p>
-    - title: Azure SQL-Analysen
-      href: https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql?toc=/azure/sql-database/toc.json
-      html: <p>Mit der Überwachung der Azure SQL-Analyse können Sie problemlos eine große Anzahl von Datenbanken, Pools für elastische Datenbanken und Instanzen an einer zentralen Stelle überwachen.</p>
-    - title: Automatische Optimierung
-      href: /azure/sql-database/sql-database-automatic-tuning
-      html: <p>Die automatische Optimierung bietet automatisch Empfehlungen und Problembehebungen für Abfragepläne und erstellt oder löscht Indizes, um die Leistung zu verbessern.</p>
-    - title: Intelligente Leistungsinformationen
-      href: /azure/sql-database/sql-database-intelligent-insights
-      html: <p>Die integrierte Logik von Azure SQL-Datenbank erkennt Störungen, die die Leistung Ihrer Datenbanken beeinträchtigen, und stellt Empfehlungen für die Problembehandlung bereit (sofern verfügbar).</p>
-    - title: Empfehlungen zur Leistung
-      href: /azure/sql-database/sql-database-advisor
-      html: <p>Azure SQL-Datenbank stellt Empfehlungen für die Datenbankoptimierung im Azure-Portal bereit.</p>
-    - title: Metriken und Protokollierung
-      href: /azure/sql-database/sql-database-metrics-diag-logging
-      html: <p>Streamen Sie die Telemetriedaten Ihrer Datenbankdiagnose an die Azure SQL-Analyse, an Azure Event Hubs oder Azure Blob Storage, um benutzerdefinierte Integrationen zu implementieren.</p>
-- title: Weitere Ressourcen
-  items:
-  - type: paragraph
-    text: Lernen Sie weitere hilfreiche Features zur Optimierung der Datenbankleistung kennen.
-  - type: list
-    style: unordered
-    items:
-    - html: Informieren Sie sich ausführlicher über die <a href="sql-database-monitor-tune-overview.md">Überwachung und Optimierung</a> in Azure SQL-Datenbank.
-    - html: Erfahren Sie, wie eine <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json">intelligente Abfrageverarbeitung</a> die Leistung Ihrer Datenbank verbessern kann.
-    - html: Informieren Sie sich über die Einrichtung und Verwendung von <a href="sql-database-operate-query-store.md">Abfragespeicher</a>, die SQL Server-Schlüsseltechnologie, mit der Sie in Echtzeit Erkenntnisse über die Abfrageleistung gewinnen können.
-    - html: Erfahren Sie, wie Sie mithilfe von <a href="sql-database-operate-query-store.md">dynamischen Verwaltungssichten</a> die Leistung Ihrer Workload analysieren.
-    - html: Erfahren Sie, wie Sie Datenbankaktivitäten mit <a href="sql-database-xevent-db-diff-from-svr.md">XEvents</a> überwachen.
-    - html: Machen Sie sich mit der <a href="sql-database-performance-guidance.md">manuellen Optimierung Ihrer Datenbank</a> vertraut.
+      - type: paragraph
+        text: Lernen Sie weitere hilfreiche Features zur Optimierung der Datenbankleistung kennen.
+      - type: list
+        style: unordered
+        items:
+          - html: Informieren Sie sich ausführlicher über die <a href="sql-database-monitor-tune-overview.md">Überwachung und Optimierung</a> in Azure SQL-Datenbank.
+          - html: 'Erfahren Sie, wie eine <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json">intelligente Abfrageverarbeitung</a> die Leistung Ihrer Datenbank verbessern kann.'
+          - html: 'Informieren Sie sich über die Einrichtung und Verwendung von <a href="sql-database-operate-query-store.md">Abfragespeicher</a>, die SQL Server-Schlüsseltechnologie, mit der Sie in Echtzeit Erkenntnisse über die Abfrageleistung gewinnen können.'
+          - html: 'Erfahren Sie, wie Sie mithilfe von <a href="sql-database-operate-query-store.md">dynamischen Verwaltungssichten</a> die Leistung Ihrer Workload analysieren.'
+          - html: 'Erfahren Sie, wie Sie Datenbankaktivitäten mit <a href="sql-database-xevent-db-diff-from-svr.md">XEvents</a> überwachen.'
+          - html: Machen Sie sich mit der <a href="sql-database-performance-guidance.md">manuellen Optimierung Ihrer Datenbank</a> vertraut.

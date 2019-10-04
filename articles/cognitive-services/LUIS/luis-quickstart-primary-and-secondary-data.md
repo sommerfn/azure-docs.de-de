@@ -1,5 +1,5 @@
 ---
-title: Simple-Entität, Begriffsliste
+title: 'Tutorial: Einfache Entität, Begriffsliste: LUIS'
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial werden maschinell gelernte Daten einer Stellenbezeichnung mithilfe der Simple-Entität aus einer Äußerung extrahiert. Um die Genauigkeit der Extraktion zu steigern, fügen Sie der Simple-Entität eine Begriffsliste mit spezifischen Ausdrücken hinzu.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: ea9a2df1f06ba6836ef88bc57dc3f95fd31e1ee9
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 87e4fe3671f419383cb342fdb7dca55a8d2eb45d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526563"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376264"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Tutorial: Extrahieren von Namen mit der Simple-Entität und einer Begriffsliste
 
@@ -58,7 +58,7 @@ Sehen Sie sich die folgenden Äußerungen eines Chatbots an:
 |Submit my resume for the engineering position. (Meinen Lebenslauf für die Technikerstelle einsenden.)|engineering (Techniker)|
 |Fill out application for job 123456 (Bewerbungsbogen für die Stelle 123456 ausfüllen)|123456|
 
-Der Stellenname ist nicht ganz einfach zu ermitteln, da es sich dabei um ein Substantiv, um ein Verb oder um einen Ausdruck mit mehreren Wörtern handeln kann. Beispiel: 
+Der Stellenname ist nicht ganz einfach zu ermitteln, da es sich dabei um ein Substantiv, um ein Verb oder um einen Ausdruck mit mehreren Wörtern handeln kann. Beispiel:
 
 |Aufträge|
 |--|
@@ -229,7 +229,7 @@ Da ein Name eine beliebige Zeichenfolge sein kann, sagt LUIS Entitäten präzise
 
 1. Klicken Sie auf **Create new phrase list** (Neue Begriffsliste erstellen). 
 
-1. Nennen Sie die Begriffsliste `JobNames`, und kopieren Sie die Liste aus „jobs-phrase-list.csv“ in das Textfeld **Werte**. Drücken Sie die EINGABETASTE. 
+1. Nennen Sie die Begriffsliste `JobNames`, und kopieren Sie die Liste aus „jobs-phrase-list.csv“ in das Textfeld **Werte**.
 
     [![Screenshot: Popupdialogfeld zum Erstellen einer neuen Begriffsliste](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Screenshot: Popupdialogfeld zum Erstellen einer neuen Begriffsliste")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
@@ -237,7 +237,7 @@ Da ein Name eine beliebige Zeichenfolge sein kann, sagt LUIS Entitäten präzise
 
     Achten Sie darauf, dass die Option **Diese Werte sind austauschbar** aktiviert bleibt, da diese Werte alle als Synonyme für Aufträge behandelt werden sollen. Erfahren Sie mehr über die Konzepte von austauschbaren bzw. nicht austauschbaren [Begriffslisten](luis-concept-feature.md#how-to-use-phrase-lists).
 
-1. Klicken Sie auf **Speichern**, um die Begriffsliste zu aktivieren.
+1. Klicken Sie auf **Fertig**, um die Begriffsliste zu aktivieren.
 
     [![Screenshot des Popupdialogfelds zum Erstellen einer neuen Begriffsliste mit Wörtern im Feld für die Begriffslistenwerte](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Screenshot des Popupdialogfelds zum Erstellen einer neuen Begriffsliste mit Wörtern im Feld für die Begriffslistenwerte")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 

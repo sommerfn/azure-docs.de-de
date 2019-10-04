@@ -1,20 +1,20 @@
 ---
-title: Herstellen einer Verbindung mit Windows Virtual Desktop (Vorschauversion) mit Windows 7 und Windows 10 – Azure
-description: Es wird beschrieben, wie Sie mit Windows 7 oder Windows 10 eine Verbindung mit dem Windows Virtual Desktop-Dienst (Vorschauversion) herstellen.
+title: 'Herstellen einer Verbindung mit Windows Virtual Desktop (Vorschauversion) von Windows 10 oder Windows 7: Azure'
+description: Erfahren Sie, wie Sie von Windows 10 oder Windows 7 eine Verbindung mit Windows Virtual Desktop (Vorschauversion) herstellen.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: how-to
-ms.date: 03/27/2019
+ms.topic: conceptual
+ms.date: 04/24/2019
 ms.author: helohr
-ms.openlocfilehash: 8b5a649d767dae9ae9c0fb077f550451a7f83601
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 66b423ea27cc0f9112349964fcfd0d75f08c12bd
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630384"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67620121"
 ---
-# <a name="connect-with-windows-7-and-windows-10"></a>Herstellen einer Verbindung mit Windows 7 und Windows 10
+# <a name="connect-from-windows-10-or-windows-7"></a>Herstellen einer Verbindung über Windows 10 oder Windows 7
 
 > Gilt für: Windows 7 und Windows 10.
 
@@ -25,11 +25,11 @@ Es ist ein Client als Download verfügbar, der den Zugriff auf Windows Virtual D
 
 ## <a name="install-the-client"></a>Installieren des Clients
 
-Führen Sie den [Download](https://go.microsoft.com/fwlink/?linkid=2068602) des Clients und dann die Installation auf Ihrem lokalen PC durch. Hierfür sind Administratorrechte erforderlich.
+Führen Sie den [Download](https://go.microsoft.com/fwlink/?linkid=2068602) des Clients und dann die Installation auf Ihrem lokalen PC durch. Für die Installation sind Administratorrechte erforderlich.
 
 ## <a name="subscribe-to-a-feed"></a>Abonnieren eines Feeds
 
-Rufen Sie die Liste mit den verfügbaren Ressourcen über Ihren lokalen PC ab, indem Sie den von Ihrem Administrator bereitgestellten Feed abonnieren.
+Rufen Sie die Liste mit den verfügbaren verwalteten Ressourcen ab, indem Sie den von Ihrem Administrator bereitgestellten Feed abonnieren. Durch das Abonnieren werden die Ressourcen auf Ihrem lokalen PC verfügbar gemacht.
 
 Abonnieren Sie einen Feed wie folgt:
 
@@ -44,6 +44,33 @@ Sie können zwei Methoden nutzen, um Ressourcen zu starten.
 - Doppelklicken Sie auf der Hauptseite des Clients auf eine Ressource, um sie zu starten.
 - Starten Sie eine Ressource über das Startmenü, wie Sie dies sonst auch für andere Apps tun.
   - Sie können auch in der Suchleiste nach Apps suchen.
+
+Nachdem Sie einen Feed abonniert haben, wird der Inhalt des Feeds in regelmäßigen Abständen automatisch aktualisiert. Ressourcen können basierend auf Änderungen durch Ihren Administrator hinzugefügt, geändert oder entfernt werden.
+
+## <a name="view-the-details-of-a-feed"></a>Anzeigen von Details zu einem Feed
+
+Nach Abschluss des Abonnements können Sie weitere Informationen zum Feed im Bereich „Details“ anzeigen.
+
+1. Wählen Sie auf der Hauptseite des Clients die Auslassungspunkte ( **...** ) rechts neben dem Feednamen aus.
+1. Wählen Sie im Dropdownmenü **Details** aus.
+1. Der Bereich „Details“ wird auf der rechten Seite des Clients angezeigt.
+
+Der Bereich „Details“ enthält nützliche Informationen zum Feed:
+
+- URL und Benutzername zum Abonnement
+- Anzahl der Apps und Desktops
+- Datum/Uhrzeit der letzten Aktualisierung
+- Status der letzten Aktualisierung
+
+Bei Bedarf können Sie ein manuelles Update starten, indem Sie **Jetzt aktualisieren** auswählen.
+
+## <a name="unsubscribe-from-a-feed"></a>Kündigen von Feeds
+
+In diesem Abschnitt erfahren Sie, wie Sie einen Feed kündigen. Sie können das Abonnement kündigen, um es mit einem anderen Konto zu erneuern oder um Ihre Ressourcen aus dem System zu entfernen.
+
+1. Wählen Sie auf der Hauptseite des Clients die Auslassungspunkte ( **...** ) rechts neben dem Feednamen aus.
+1. Wählen Sie im Dropdownmenü **Abbestellen** aus.
+1. Überprüfen Sie die Angaben, und wählen Sie im Dialogfeld **Weiter** aus.
 
 ## <a name="update-the-client"></a>Aktualisieren des Clients
 

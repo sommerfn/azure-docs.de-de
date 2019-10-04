@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 522dddde4994bb019e6547fcd18465b201f048d8
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: daf7b01725a931b8fa76be14e06e2b32cffe5da6
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401726"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900634"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge
 
@@ -36,7 +36,7 @@ Auf dem Data Box Edge-Gerät können IoT Edge-Module bereitgestellt und ausgefü
 2. Der Dateiereignisgenerator erstellt ein Dateiereignis für jede in die lokale Freigabe geschriebene Datei. Die Dateiereignisse werden auch generiert, wenn eine Datei geändert wird. Die Dateiereignisse werden dann an den IoT Edge-Hub gesendet (in der IoT Edge-Runtime).
 3. Das benutzerdefinierte IoT Edge-Modul verarbeitet das Dateiereignis und erstellt ein Dateiereignisobjekt, das auch einen relativen Pfad für die Datei enthält. Das Modul generiert anhand des relativen Dateipfads einen absoluten Pfad und kopiert die Datei von der lokalen Freigabe in die Cloudfreigabe. Das Modul löscht dann die Datei aus der lokalen Freigabe.
 
-![Funktionsweise des Azure IoT Edge-Moduls in Data Box Edge](./media/data-box-edge-create-iot-edge-module/how-module-works.png)
+![Funktionsweise des Azure IoT Edge-Moduls in Data Box Edge](./media/data-box-edge-create-iot-edge-module/how-module-works-1.png)
 
 Sobald sich die Datei in der Cloudfreigabe befindet, wird sie automatisch in Ihr Azure Storage-Konto hochgeladen.
 
@@ -127,8 +127,10 @@ Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können
 2. Fügen Sie oben im Namespace **FileCopyModule** die folgenden using-Anweisungen für Typen hinzu, die im weiteren Verlauf verwendet werden. **Microsoft.Azure.Devices.Client.Transport.Mqtt** ist ein Protokoll zum Senden von Nachrichten an den IoT Edge-Hub.
 
     ```
-    using Microsoft.Azure.Devices.Client.Transport.Mqtt;
-    using Newtonsoft.Json;
+    namespace FileCopyModule
+    {
+        using Microsoft.Azure.Devices.Client.Transport.Mqtt;
+        using Newtonsoft.Json;
     ```
 3. Fügen Sie der Program-Klasse die Variablen **InputFolderPath** und **OutputFolderPath** hinzu.
 
@@ -140,11 +142,11 @@ Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. Fügen Sie der Program-Klasse die **MessageBody**-Klasse hinzu. Diese Klassen definieren das erwartete Schema für den Textkörper eingehender Nachrichten.
+4. Fügen Sie direkt nach dem vorherigen Schritt die **FileEvent**-Klasse hinzu, um den Nachrichtentext zu definieren.
 
     ```
     /// <summary>
-    /// The MessageBody class defines the expected schema for the body of incoming messages. 
+    /// The FileEvent class defines the body of incoming messages. 
     /// </summary>
     private class FileEvent
     {
@@ -156,7 +158,7 @@ Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können
     }
     ```
 
-5. In der **Init**-Methode erstellt und konfiguriert der Code ein **ModuleClient**-Objekt. Mit diesem Objekt kann das Modul über das MQTT-Protokoll die Verbindung mit der lokalen Azure IoT Edge-Runtime herstellen, um Nachrichten zu senden und zu empfangen. Die in der Init-Methode verwendete Verbindungszeichenfolge wird durch die IoT Edge-Runtime für das Modul bereitgestellt. Der Code registriert einen FileCopy-Rückruf, um über den Endpunkt **input1** Nachrichten von einem IoT Edge-Hub zu empfangen.
+5. In der **Init**-Methode wird mit dem Code ein **ModuleClient**-Objekt erstellt und konfiguriert. Mit diesem Objekt kann das Modul über das MQTT-Protokoll die Verbindung mit der lokalen Azure IoT Edge-Runtime herstellen, um Nachrichten zu senden und zu empfangen. Die in der Init-Methode verwendete Verbindungszeichenfolge wird durch die IoT Edge-Runtime für das Modul bereitgestellt. Der Code registriert einen FileCopy-Rückruf, um über den Endpunkt **input1** Nachrichten von einem IoT Edge-Hub zu empfangen. Ersetzen Sie die **Init**-Methode durch den folgenden Code.
 
     ```
     /// <summary>
@@ -178,11 +180,11 @@ Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können
     }
     ```
 
-6. Fügen Sie den Code für **FileCopy** ein.
+6. Entfernen Sie den Code für die **Pipe message**-Methode, und fügen Sie stattdessen den Code für **FileCopy** ein.
 
     ```
         /// <summary>
-        /// This method is called whenever the module is sent a message from the IoT Edge Hub. 
+        /// This method is called whenever the module is sent a message from the IoT Edge Hub.
         /// This method deserializes the file event, extracts the corresponding relative file path, and creates the absolute input file path using the relative file path and the InputFolderPath.
         /// This method also forms the absolute output file path using the relative file path and the OutputFolderPath. It then copies the input file to output file and deletes the input file after the copy is complete.
         /// </summary>
@@ -236,6 +238,7 @@ Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können
     ```
 
 7. Speichern Sie diese Datei.
+8. Sie können auch [ein vorhandenes Codebeispiel](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) für dieses Projekt herunterladen. Anschließend können Sie die Datei, die Sie gespeichert haben, mit der Datei **program.cs** im Codebeispiel vergleichen.
 
 ## <a name="build-your-iot-edge-solution"></a>Erstellen Ihrer IoT Edge-Projektmappe
 
@@ -246,7 +249,7 @@ Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und Code i
 
     `docker login <ACR login server> -u <ACR username>`
 
-    Verwenden Sie den Anmeldeserver und den Benutzernamen, die Sie aus Ihrer Containerregistrierung kopiert haben. 
+    Verwenden Sie den Anmeldeserver und den Benutzernamen, die Sie aus Ihrer Containerregistrierung kopiert haben.
 
     ![Erstellen und Pushen der IoT Edge-Projektmappe](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-1.png)
 

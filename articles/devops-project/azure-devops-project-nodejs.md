@@ -1,28 +1,27 @@
 ---
-title: 'Schnellstart: Erstellen einer CI/CD-Pipeline für Node.js mit Azure DevOps Projects'
+title: Erstellen einer CI/CD-Pipeline für Node.js mit Azure DevOps Projects
 description: DevOps Projects erleichtert die ersten Schritte mit Azure. Damit können Sie eine App in einem Azure-Dienst Ihrer Wahl in einigen wenigen Schritten starten.
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
 author: mlearned
-manager: douge
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
-ms.custom: mvc
+ms.custom: mvc, seo-javascript-september2019
 monikerRange: vsts
-ms.openlocfilehash: dadc394e9c9ddb152923095de10b8f727310d3f7
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: c59df73e7fa1d19db4c83a1c9a317f9b69ec8a37
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164522"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091165"
 ---
 #  <a name="create-a-cicd-pipeline-for--nodejs-with-azure-devops-projects"></a>Erstellen einer CI/CD-Pipeline für Node.js mit Azure DevOps Projects 
 
@@ -54,9 +53,9 @@ Mit DevOps Projects wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie k�
 
 1. Sie können eine neue Azure DevOps-Organisation erstellen oder eine bestehende Organisation auswählen. 
 
-    a. Wählen Sie einen Namen für Ihr Projekt aus. 
+    a. Geben Sie einen Namen für das Projekt ein.
 
-    b. Wählen Sie Ihr Azure-Abonnement und den Standort sowie einen Namen für Ihre Anwendung aus, und klicken Sie dann auf **Fertig**.  
+    b. Wählen Sie Ihr Azure-Abonnement und den Standort aus, geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie dann **Fertig** aus.  
     Nach wenigen Minuten wird das DevOps Projects-Dashboard im Azure-Portal angezeigt. Eine Beispielanwendung wird in einem Repository in Ihrer Azure DevOps-Organisation eingerichtet, ein Build wird ausgeführt, und Ihre Anwendung wird in Azure bereitgestellt. Dieses Dashboard bietet Einblick in Ihr Coderepository, in Ihre CI/CD-Pipeline und in Ihre Anwendung in Azure.
      
 3. Wählen Sie **Durchsuchen** aus, um Ihre ausgeführte Anwendung anzuzeigen.
@@ -78,7 +77,7 @@ DevOps Projects erstellt ein Git-Repository in Azure Repos oder GitHub. Führen 
 1. Navigieren Sie auf der linken Seite des Browsers zur Datei **views/index.pug**.
 
 1. Wählen Sie **Bearbeiten** aus, und ändern Sie die h2-Überschrift.  
-    Geben Sie z.B. **Direkt mit Azure DevOps-Projekt loslegen** ein, oder nehmen Sie eine andere Änderung vor.
+    Geben Sie beispielsweise **Get started right away with Azure DevOps Projects** ein, oder nehmen Sie eine andere Änderung vor.
 
 1. Wählen Sie **Commit** aus, und speichern Sie anschließend die Änderungen.
 

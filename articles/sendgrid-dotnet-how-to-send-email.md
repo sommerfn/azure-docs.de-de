@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
-ms.author: dx@sendgrid.com
-ms.openlocfilehash: 91d28802b4af23da5b8060fa7c8f9a7e843a7dab
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: erikre
+ms.reviewer: dx@sendgrid.com
+ms.openlocfilehash: c3211ba9f8a8b16ad4372c82d8e50c46f3ad6897
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840264"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876382"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Senden von E-Mails in Azure mit SendGrid
 ## <a name="overview"></a>Übersicht
-Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem E-Mail-Dienst SendGrid in Azure. Die Beispiele sind in C\# geschrieben und unterstützen .NET Standard 1.3. Folgende Szenarien werden beschrieben: Schreiben einer E-Mail, Senden einer E-Mail, Hinzufügen von Anhängen und Aktivieren von verschiedenen Einstellungen für E-Mail und Nachverfolgung. Weitere Informationen zu SendGrid und zum Senden von E-Mails finden Sie im Abschnitt [Nächste Schritte][Next steps].
+Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem E-Mail-Dienst SendGrid in Azure. Die Beispiele sind in C\# geschrieben und unterstützen .NET Standard 1.3. Folgende Szenarien werden beschrieben: Schreiben einer E-Mail, Senden einer E-Mail, Hinzufügen von Anhängen und Aktivieren von verschiedenen Einstellungen für E-Mail und Nachverfolgung. Weitere Informationen zu SendGrid und zum Senden von E-Mails erhalten Sie im Abschnitt [Nächste Schritte][Next steps] .
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Was ist der SendGrid-E-Mail-Dienst?
 SendGrid ist ein [cloudbasierter E-Mail-Dienst], der zuverlässige [transaktionale E-Mail-Übermittlung], Skalierbarkeit und Echtzeitanalysen mit flexiblen APIs bietet, die die benutzerdefinierte Integration erleichtern. Dies sind häufige Anwendungsfälle für SendGrid:
@@ -232,7 +233,7 @@ Sie können einer Nachricht Anhänge hinzufügen, indem Sie die Methode **AddAtt
     msg.AddAttachment(banner2);
 
 ## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Gewusst wie: Verwenden von E-Mail-Einstellungen zum Aktivieren von Fußzeilen sowie für Nachverfolgung und Analysen
-SendGrid bietet zusätzliche E-Mail-Funktionen durch Einstellungen für E-Mail und Nachverfolgung. Diese Einstellungen können zu einer E-Mail-Nachricht hinzugefügt werden, um bestimmte Funktionen wie Klickprotokollierung, Google Analytics, Abonnementnachverfolgung usw. zu aktivieren. Eine vollständige Liste der Apps finden Sie unter [Settings (Filters)][settings-documentation] (Einstellungen [Filter]).
+SendGrid bietet zusätzliche E-Mail-Funktionen durch Einstellungen für E-Mail und Nachverfolgung. Diese Einstellungen können zu einer E-Mail-Nachricht hinzugefügt werden, um bestimmte Funktionen wie Klickprotokollierung, Google Analytics, Abonnementnachverfolgung usw. zu aktivieren. Eine vollständige Liste der Apps finden Sie unter [Settings (Filters)][settings-documentation] (Einstellungen (Filter)).
 
 Apps können mithilfe von Methoden, die als Teil der **SendGridMessage**-Klasse implementiert wurden, auf **SendGrid**-E-Mails angewendet werden. Die folgenden Beispiele veranschaulichen die Filter für die Fußzeile und die Klickprotokollierung:
 
@@ -248,7 +249,7 @@ Die folgenden Beispiele veranschaulichen die Filter für die Fußzeile und die K
     msg.SetClickTracking(true);
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>Gewusst wie: Verwenden zusätzlicher SendGrid-Dienste
-SendGrid bietet verschiedene APIs und Webhooks, die Sie zur Nutzung zusätzlicher Funktionen in Ihrer Azure-Anwendung einsetzen können. Weitere Informationen finden Sie in der [SendGrid API Reference][SendGrid API documentation] (SendGrid-API-Referenz).
+SendGrid bietet verschiedene APIs und Webhooks, die Sie zur Nutzung zusätzlicher Funktionen in Ihrer Azure-Anwendung einsetzen können. Weitere Informationen finden Sie in der [SendGrid-API-Referenz][SendGrid API documentation].
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie nun mit den Grundlagen des E-Mail-Dienstes SendGrid vertraut sind, finden Sie unter diesen Links weitere Informationen.

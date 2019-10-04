@@ -2,19 +2,19 @@
 title: Grundlegende Informationen zu den Windows-Agent-Überprüfungsergebnissen in der Azure-Updateverwaltung
 description: Erfahren Sie, wie Sie Fehler mit dem Updateverwaltungs-Agent beheben können.
 services: automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 12/14/2018
+author: bobbytreed
+ms.author: robreed
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: d4331942526b3dbda376605db2618ceeaec3f60a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 956e31c157c667acd2f830702467249d869648cb
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58165997"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971276"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Grundlegende Informationen zu den Windows-Agent-Überprüfungsergebnissen in der Updateverwaltung
 
@@ -25,6 +25,9 @@ In der folgende Liste finden Sie die drei Bereitschaftszustände, in denen sich 
 * **Bereit**: Der Update-Agent ist bereitgestellt und wurde vor weniger als 1 Stunde zuletzt angezeigt.
 * **Getrennt**: Der Update-Agent ist bereitgestellt und wurde vor mehr als 1 Stunde zuletzt angezeigt.
 * **Nicht konfiguriert**: Der Update-Agent wurde nicht gefunden oder hat das Onboarding noch nicht abgeschlossen.
+
+> [!NOTE]
+> Möglicherweise gibt es eine kleine Verzögerung zwischen der Anzeige des Azure-Portals und dem aktuellen Zustand des Computers.
 
 ## <a name="start-the-troubleshooter"></a>Starten der Problembehandlung
 
@@ -52,15 +55,15 @@ Die Betriebssystemprüfung untersucht, ob der Hybrid Runbook Worker unter einem 
 |Betriebssystem  |Notizen  |
 |---------|---------|
 |Windows Server 2008 R2 RTM, Windows Server 2008 | Unterstützt nur Updatebewertungen.         |
-|Windows Server 2008 R2 SP1 und höher |.NET Framework 4.5.1 oder höher ist erforderlich. ([.NET Framework herunterladen](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 oder höher ist erforderlich. ([Windows Management Framework 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 empfohlen.  ([Windows Management Framework 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 SP1 und höher |.NET Framework 4.6.1 oder höher ist erforderlich. ([.NET Framework herunterladen](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 5.1 ist erforderlich.  ([Windows Management Framework 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
-### <a name="net-451"></a>.NET 4.5.1
+### <a name="net-461"></a>.NET 4.6.1+
 
-Bei der .NET Framework-Überprüfung wird untersucht, ob auf dem System mindestens [.NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=30653) installiert ist.
+Bei der .NET Framework-Überprüfung wird überprüft, ob auf dem System mindestens [.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981) installiert ist.
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-Bei der WMF-Überprüfung wird untersucht, ob auf dem System die erforderliche Version des Windows Management Framework (WMF) installiert ist. [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) ist die niedrigste unterstützte Version. Es wird empfohlen, [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616) zu installieren, um die Zuverlässigkeit des Hybrid Runbook Workers zu erhöhen.
+Bei der WMF-Überprüfung wird überprüft, ob auf dem System die erforderliche WMF-Version (Windows Management Framework) installiert ist: [Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616).
 
 ### <a name="tls-12"></a>TLS 1.2
 
@@ -104,7 +107,9 @@ Bei der Überprüfung des Zugriffs auf den Crypto-Ordner wird untersucht, ob das
 
 ## <a name="troubleshoot-offline"></a>Offlineproblembehandlung
 
-Sie können die Problembehandlung offline auf einem Hybrid Runbook Worker ausführen, indem Sie das Skript lokal ausführen. Sie finden das Skript [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) im PowerShell-Katalog. Die Ausgabe dieses Skripts ähnelt dem folgenden Beispiel:
+Sie können die Problembehandlung offline auf einem Hybrid Runbook Worker ausführen, indem Sie das Skript lokal ausführen. Sie finden das Skript [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) im PowerShell-Katalog. Zum Ausführen des Skripts muss WMF 4.0 oder höher installiert sein. Informationen zum Herunterladen der neueste Version von PowerShell finden Sie unter [Installieren verschiedener Versionen von PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell).
+
+Die Ausgabe dieses Skripts ähnelt dem folgenden Beispiel:
 
 ```output
 RuleId                      : OperatingSystemCheck
@@ -141,7 +146,7 @@ RuleId                      : AutomationAgentServiceConnectivityCheck1
 RuleGroupId                 : connectivity
 RuleName                    : Registration endpoint
 RuleGroupName               : connectivity
-RuleDescription             : 
+RuleDescription             :
 CheckResult                 : Failed
 CheckResultMessage          : Unable to find Workspace registration information in registry
 CheckResultMessageId        : AutomationAgentServiceConnectivityCheck1.Failed.NoRegistrationFound

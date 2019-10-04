@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Moderieren von Videos und Transkripts in .NET – Content Moderator'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: In diesem ausführlichen Tutorial erfahren Sie, wie Sie eine vollständige Lösung für die Video- und Transkriptmoderation mit computergestützter Moderation und Erstellung von Überprüfungen mit menschlicher Beteiligung entwickeln.
 services: cognitive-services
 author: PatrickFarley
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: fc49081c765834a0ed0e5199923606ced7daa081
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e1c3d3d95261b959a7540aab73faf12f92801d4c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522076"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564275"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Tutorial: Video- und Transkriptmoderation
 
@@ -37,22 +37,22 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 - Registrieren Sie sich für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/), und erstellen Sie benutzerdefinierte Tags. Weitere Informationen zu diesem Schritt finden Sie bei Bedarf unter [Erstellen und Verwenden von Moderationstags](Review-Tool-User-Guide/tags.md).
 
     ![Screenshot: Benutzerdefinierte Tags für die Videomoderation](images/video-tutorial-custom-tags.png)
-- Um die Beispielanwendung ausführen zu können, benötigen Sie ein Azure-Konto, eine Azure Media Services-Ressource, eine Azure Content Moderator-Ressource sowie Azure Active Directory-Anmeldeinformationen. Wie Sie diese Komponenten erhalten, erfahren Sie im [Leitfaden für die Videomoderations-API](video-moderation-api.md).
+- Um die Beispielanwendung ausführen zu können, benötigen Sie ein Azure-Konto, eine Azure Media Services-Ressource, eine Azure Content Moderator-Ressource sowie Azure Active Directory-Anmeldeinformationen. Wie Sie diese Ressourcen erhalten, erfahren Sie im [Leitfaden für die Videomoderations-API](video-moderation-api.md).
 - Laden Sie die App [VideoReviewConsoleApp](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) aus GitHub herunter.
 
 ## <a name="enter-credentials"></a>Eingeben von Anmeldeinformationen
 
 Bearbeiten Sie die Datei `App.config`, und fügen Sie den Active Directory-Mandantennamen, Dienstendpunkte und Abonnementschlüssel (mit `#####` gekennzeichnet) hinzu. Sie benötigen die folgenden Informationen:
 
-    |Schlüssel|BESCHREIBUNG|
-    |-|-|
-    |`AzureMediaServiceRestApiEndpoint`|Endpunkt für die AMS-API (Azure Media Services)|
-    |`ClientSecret`|Abonnementschlüssel für Azure Media Services|
-    |`ClientId`|Client-ID für Azure Media Services|
-    |`AzureAdTenantName`|Active Directory-Mandantenname für Ihre Organisation|
-    |`ContentModeratorReviewApiSubscriptionKey`|Abonnementschlüssel für die Content Moderator-Überprüfungs-API|
-    |`ContentModeratorApiEndpoint`|Endpunkt für die Content Moderator-API|
-    |`ContentModeratorTeamId`|Content Moderator-Team-ID|
+|Schlüssel|BESCHREIBUNG|
+|-|-|
+|`AzureMediaServiceRestApiEndpoint`|Endpunkt für die AMS-API (Azure Media Services)|
+|`ClientSecret`|Abonnementschlüssel für Azure Media Services|
+|`ClientId`|Client-ID für Azure Media Services|
+|`AzureAdTenantName`|Active Directory-Mandantenname für Ihre Organisation|
+|`ContentModeratorReviewApiSubscriptionKey`|Abonnementschlüssel für die Content Moderator-Überprüfungs-API|
+|`ContentModeratorApiEndpoint`|Endpunkt für die Content Moderator-API|
+|`ContentModeratorTeamId`|Content Moderator-Team-ID|
 
 ## <a name="examine-the-main-code"></a>Untersuchen des Hauptcodes
 
@@ -225,7 +225,7 @@ Eine Transkription der Audiodaten aus dem Video wird auch produziert, wenn das `
 > [!NOTE]
 > Die Konsolenanwendung nutzt die [Azure Media Indexer-API](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2), um aus dem Audiotitel des hochgeladenen Videos Transkripts zu generieren. Die Ergebnisse werden im WebVTT-Format bereitgestellt. Weitere Informationen zu diesem Format finden Sie unter [Web Video Text Tracks Format](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) (Webvideo-Texttitelformat).
 
-## <a name="create-a-the-human-in-the-loop-review"></a>Erstellen einer Überprüfung mit menschlicher Beteiligung
+## <a name="create-a-human-review"></a>Erstellen einer Überprüfung durch Personen
 
 Der Moderationsprozess gibt eine Liste mit Keyframes aus dem Video zurück – zusammen mit einem Transkript der Audiotitel. Der nächste Schritt ist das Erstellen einer Überprüfung im Content Moderator-Prüfungstool für menschliche Moderatoren. Wenn Sie zurück zur `ProcessVideo()`-Methode in `Program.cs` navigieren, sehen Sie den Aufruf der `CreateVideoReviewInContentModerator()`-Methode. Diese Methode befindet sich in der `videoReviewApi`-Klasse, die in `VideoReviewAPI.cs` enthalten ist. Sie ist hier dargestellt.
 

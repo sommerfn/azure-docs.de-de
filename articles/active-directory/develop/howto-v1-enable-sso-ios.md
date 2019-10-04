@@ -2,26 +2,26 @@
 title: 'Gewusst wie: Aktivieren von App-übergreifendem SSO unter iOS mit ADAL | Microsoft Docs'
 description: Verwenden der ADAL SDK-Features zum Aktivieren von SSO über Ihre Anwendungen hinweg.
 services: active-directory
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e79b73123b33a012c062a89fb9748fa101fabcea
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 19b010091ebd909745b272fca704bb87adf7924b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448678"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65962625"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Gewusst wie: Aktivieren von App-übergreifendem SSO unter iOS mit ADAL
 
@@ -44,7 +44,7 @@ Diese Anleitung gilt für:
 
 In dieser Anleitung wird davon ausgegangen, dass Sie mit folgenden Schritten vertraut sind:
 
-* Bereitstellen Ihrer App mit dem Legacyportal für Azure AD. Weitere Informationen finden Sie unter [Registrieren einer App mit dem Azure AD v1.0-Endpunkt](quickstart-v1-add-azure-ad-app.md).
+* Bereitstellen Ihrer App mit dem Legacyportal für Azure AD. Weitere Informationen finden Sie unter [Registrieren einer App](quickstart-register-app.md).
 * Integrieren Ihrer Anwendung mit dem [Azure AD iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc).
 
 ## <a name="single-sign-on-concepts"></a>Konzepte für einmaliges Anmelden
@@ -165,7 +165,7 @@ Für nicht brokergestütztes, anwendungsübergreifendes SSO übernehmen die SDKs
 
 Gehen Sie folgendermaßen vor, um übergreifendes SSO für Anwendungen in Ihrem Besitz zu aktivieren:
 
-1. Stellen Sie sicher, dass all Ihre Anwendungen die gleiche Client-ID oder Anwendungs-ID verwenden.
+1. Stellen Sie sicher, dass alle Ihre Anwendungen die gleiche Client-ID oder Anwendungs-ID verwenden.
 2. Stellen Sie sicher, dass alle Ihre Anwendungen das gleiche Signaturzertifikat von Apple verwenden, um die gemeinsame Verwendung von Keychains zu ermöglichen.
 3. Fordern Sie für jede Ihrer Anwendungen die gleichen Schlüsselbundberechtigung an.
 4. Informieren Sie die SDKs über die freigegebenen Keychains, die Sie verwenden möchten.

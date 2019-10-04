@@ -4,16 +4,16 @@ description: 'Azure Storage Table – Entwurfshandbuch: Entwerfen von skalierbar
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 05/21/2019
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 84749332c5b7ab5fec2905c0fc36d89863adc3d2
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0812828f8d7c0be38fb03c06f4a10019e2ed153c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960212"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67447302"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure Storage Table – Entwurfshandbuch: Entwerfen von skalierbaren und leistungsfähigen Tabellen
 
@@ -37,7 +37,7 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Zeitstempel</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -200,12 +200,12 @@ In den folgenden Beispielen wird angenommen, dass der Tabellenspeicherdienst Ent
 
 | *Spaltenname* | *Datentyp* |
 | --- | --- |
-| **PartitionKey** (Abteilungsname) |Zeichenfolge |
-| **RowKey** (Mitarbeiter-ID) |Zeichenfolge |
-| **Vorname** |Zeichenfolge |
-| **Nachname** |Zeichenfolge |
-| **Alter** |Ganze Zahl  |
-| **EmailAddress** |Zeichenfolge |
+| **PartitionKey** (Abteilungsname) |string |
+| **RowKey** (Mitarbeiter-ID) |string |
+| **Vorname** |string |
+| **Nachname** |string |
+| **Alter** |Integer |
+| **EmailAddress** |string |
 
 Im Abschnitt „Übersicht über den Azure-Tabellenspeicherdienst“ weiter oben werden einige der wichtigsten Funktionen des Azure-Tabellenspeicherdiensts beschrieben, die direkten Einfluss auf den Entwurf für Abfragen haben. Dadurch ergeben sich die folgenden allgemeinen Richtlinien für den Entwurf von Abfragen für den Tabellenspeicherdienst. Die in den Beispielen unten verwendete Filtersyntax stammt aus dem REST-API-Tabellenspeicherdienst. Weitere Informationen finden Sie unter [Query Entities](https://msdn.microsoft.com/library/azure/dd179421.aspx) (Abfragen von Entitäten).  
 
@@ -653,7 +653,7 @@ In einer relationalen Datenbank normalisieren Sie typischerweise Daten, um Dupli
 ![Abteilungsentität und Mitarbeiterentität][16]
 
 #### <a name="solution"></a>Lösung
-Anstatt die Daten in zwei separaten Entitäten zu speichern, denormalisieren Sie die Daten und bewahren eine Kopie der Details des Managers in der Abteilungsentität auf. Beispiel:   
+Anstatt die Daten in zwei separaten Entitäten zu speichern, denormalisieren Sie die Daten und bewahren eine Kopie der Details des Managers in der Abteilungsentität auf. Beispiel:  
 
 ![Denormalisierte und kombinierte Abteilungsentität][17]
 
@@ -1112,7 +1112,7 @@ Der Tabellenspeicherdienst ist ein *schemaloser* Tabellenspeicher. Das bedeutet,
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Zeitstempel</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -1204,7 +1204,7 @@ Trotzdem muss jede Entität über **PartitionKey**-, **RowKey**- und **Timestamp
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Zeitstempel</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>

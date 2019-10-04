@@ -1,5 +1,5 @@
 ---
-title: Anwenden von Inhaltstags auf Bilder – maschinelles Sehen
+title: 'Inhaltstags: Maschinelles Sehen'
 titleSuffix: Azure Cognitive Services
 description: Machen Sie sich mit Konzepten des Bildmarkierungsfeatures der Maschinelles Sehen-API vertraut.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: aeb03566a650fe46286d77913e0d36dcbb19f436
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ad01751f7f7c573352c8fd15cc0f8cc2ebbbe700
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311068"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945105"
 ---
 # <a name="applying-content-tags-to-images"></a>Anwenden von Inhaltstags auf Bilder
 

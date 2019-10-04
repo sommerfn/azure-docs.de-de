@@ -3,9 +3,8 @@ title: 'Schnellstart für Azure Security Center: Einbinden von Linux-Computern i
 description: Dieser Schnellstart zeigt, wie Sie Ihre Linux-Computer in Security Center integrieren.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -14,18 +13,18 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
-ms.author: rkarlin
-ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.author: memildin
+ms.openlocfilehash: 82ce466f12acef529b5e45e5dd94c64b94be0f7e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521919"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202891"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Schnellstart: Einbinden von Linux-Computern in Azure Security Center
-Nachdem Sie Ihre Azure-Abonnements integriert haben, können Sie Security Center für Linux-Ressourcen aktivieren, die außerhalb von Azure ausgeführt werden, z.B. lokale Ressourcen oder Ressourcen in anderen Clouds, indem Sie den Linux-Agent bereitstellen.
+Nachdem Sie Ihre Azure-Abonnements integriert haben, können Sie Security Center für Linux-Ressourcen aktivieren, die außerhalb von Azure (etwa lokal oder in anderen Clouds) ausgeführt werden. Stellen Sie dazu einen Agent bereit. Der Agent heißt Microsoft Monitoring Agent (MMA), wird aber auch als OMS-Agent bezeichnet.
 
-Dieser Schnellstart veranschaulicht die Installation des Linux-Agents auf einem Linux-Computer.
+Dieser Schnellstart veranschaulicht die Installation des Agents auf einem Linux-Computer.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
@@ -57,7 +56,7 @@ Vor dem Start dieses Schnellstarts müssen Sie zum Tarif „Standard“ von Secu
 
    ![Installieren des Agents][5]
 
-Die Protokolle für den Security Center-Agent für Linux befinden sich in: */var/opt/microsoft/omsagent/\<workspace id>/log/*
+Die Protokolle für den Agent befinden sich unter */var/opt/microsoft/omsagent/\<Arbeitsbereichs-ID>/log/* :
 
   ![Protokolle für Agent][6]
 
@@ -69,7 +68,7 @@ Jetzt können Sie Ihre Azure-VMs und Nicht-Azure-Computer zentral überwachen. U
 
   ![icon1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Nicht-Azure-Computer
 
-  ![icon2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure-VM
+  ![icon2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn er nicht mehr benötigt wird, können Sie den Agent vom Linux-Computer entfernen.

@@ -3,8 +3,8 @@ title: Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0 | Azu
 description: In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Im-Auftrag-von-Fluss von OAuth 2.0 verwenden.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4de33bb02a008d6b394055c64119ac2a4fbc4d9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 7582cd8453b25f071c18566f09d2155a6377a0a6
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276047"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482171"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0
 
@@ -42,7 +42,7 @@ Es wird davon ausgegangen, dass der Benutzer in einer Anwendung authentifiziert 
 
 Die folgenden Schritte entsprechen dem OBO-Fluss und werden anhand des folgenden Diagramms erläutert.
 
-![OAuth2.0 – On-Behalf-Of-Fluss](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![Zeigt den On-Behalf-Of-Fluss von OAuth 2.0](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
 1. Die Clientanwendung stellt mit Token A eine Anforderung an die API A (mit dem Anspruch `aud` von API A).
 1. API A wird beim Tokenausstellungs-Endpunkt der Microsoft Identity Platform authentifiziert und fordert ein Token für den Zugriff auf API B an.
@@ -55,7 +55,7 @@ Die folgenden Schritte entsprechen dem OBO-Fluss und werden anhand des folgenden
 
 ## <a name="service-to-service-access-token-request"></a>Dienst-zu-Dienst-Zugriffstokenanforderung
 
-Verwenden Sie zum Anfordern eines Zugriffstokens einen HTTP POST-Aufruf an das mandantenspezifischen v2.0-Token unter Verwendung der folgenden Parameter:
+Verwenden Sie zum Anfordern eines Zugriffstokens einen HTTP POST-Aufruf an das mandantenspezifischen Token der Microsoft Identity Platform unter Verwendung der folgenden Parameter:
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
@@ -163,7 +163,7 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung eines
 
 ### <a name="error-response-example"></a>Beispiel für eine fehlerhafte Antwort
 
-Der Tokenendpunkt gibt bei dem Versuch, ein Zugriffstoken für eine nachgelagerte API zu erhalten, einen Fehler zurück, wenn der Zugriff auf die nachgelagerte API durch eine Richtlinie wie mehrstufige Authentifizierung begrenzt ist. Der Dienst der mittleren Ebene zeigt diesen Fehler der Clientanwendung an, so dass diese der Richtlinie entsprechend die geeignete Benutzerinteraktion bieten kann.
+Der Tokenendpunkt gibt bei dem Versuch, ein Zugriffstoken für eine nachgelagerte API abzurufen, einen Fehler zurück, wenn für die nachgelagerte API eine Richtlinie für bedingten Zugriff (z. B. mehrstufige Authentifizierung) festgelegt ist. Der Dienst der mittleren Ebene zeigt diesen Fehler der Clientanwendung an, damit die Clientanwendung die entsprechende Benutzerinteraktion bereitstellen kann, um die Richtlinie für bedingten Zugriff zu erfüllen.
 
 ```
 {
@@ -191,13 +191,13 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Erhalten der Zustimmung für die Anwendung der mittleren Ebene
 
-Abhängig von der Benutzergruppe für Ihre Anwendung können Sie verschiedene Strategien in Betracht ziehen, um sicherzustellen, dass der OBO-Flow erfolgreich ist. In allen Fällen geht es letztlich darum, eine ordnungsgemäße Einwilligung zu gewährleisten. Wie das geschieht, hängt jedoch davon ab, welche Benutzer Ihre Anwendung unterstützt. 
+Abhängig von der Benutzergruppe für Ihre Anwendung können Sie verschiedene Strategien in Betracht ziehen, um sicherzustellen, dass der OBO-Flow erfolgreich ist. In allen Fällen geht es letztlich darum, eine ordnungsgemäße Einwilligung zu gewährleisten. Wie das geschieht, hängt jedoch davon ab, welche Benutzer Ihre Anwendung unterstützt.
 
 ### <a name="consent-for-azure-ad-only-applications"></a>Einwilligung für Nur Azure AD-Anwendungen
 
 #### <a name="default-and-combined-consent"></a>/.default und kombinierten Einwilligung
 
-Für Anwendungen, die nur Geschäfts-, Schul- oder Unikonten anmelden müssen, reicht der traditionelle Ansatz „Bekannte Clientanwendung“ aus. Die Anwendung der mittleren Ebene fügt den Client in ihrem Manifest der Liste der bekannten Clientanwendungen hinzu, und dann kann der Client einen kombinierten Einwilligungsfluss für sich selbst und die Anwendung der mittleren Ebene auslösen. Auf dem v2.0-Endpunkt geschieht dies mit Hilfe des [`/.default`-Bereichs](v2-permissions-and-consent.md#the-default-scope). Wenn Sie einen Einwilligungssbildschirm mit bekannten Clientanwendungen und `/.default` auslösen, zeigt der Bildschirm sowohl Berechtigungen für den Client an die API der mittleren Ebene an als auch die von der API der mittleren Ebene benötigten Berechtigungen an. Der Benutzer gibt die Einwilligung für beide Anwendungen, und dann funktioniert der OBO-Fluss.
+Für Anwendungen, die nur Geschäfts-, Schul- oder Unikonten anmelden müssen, reicht der traditionelle Ansatz „Bekannte Clientanwendung“ aus. Die Anwendung der mittleren Ebene fügt den Client in ihrem Manifest der Liste der bekannten Clientanwendungen hinzu, und dann kann der Client einen kombinierten Einwilligungsfluss für sich selbst und die Anwendung der mittleren Ebene auslösen. Für den Microsoft Identity Platform-Endpunkt erfolgt dies mit dem [`/.default`-Bereich](v2-permissions-and-consent.md#the-default-scope). Wenn Sie einen Einwilligungssbildschirm mit bekannten Clientanwendungen und `/.default` auslösen, zeigt der Bildschirm sowohl Berechtigungen für den Client an die API der mittleren Ebene an als auch die von der API der mittleren Ebene benötigten Berechtigungen an. Der Benutzer gibt die Einwilligung für beide Anwendungen, und dann funktioniert der OBO-Fluss.
 
 Derzeit unterstützt das persönliche Microsoft-Kontosystem keine kombinierte Einwilligung, sodass dieser Ansatz für Apps, die sich gezielt in persönlichen Konten anmelden möchten, nicht funktioniert. Persönliche Microsoft-Konten, die als Gastkonten bei einem Mandanten verwendet werden, werden über das Azure AD-System verwaltet und können eine kombinierten Einwilligung durchlaufen.
 

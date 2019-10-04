@@ -1,0 +1,60 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation zur sicheren Entwicklung
+metadata:
+  document_id: null
+  title: Dokumentation zur sicheren Entwicklung in Microsoft Azure
+  meta.description: Learn how to develop secure apps on Azure.
+  services: security
+  author: TerryLanfear
+  manager: rkarlin
+  ms.service: security
+  ms.subservice: develop
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/30/2019
+  ms.author: terrylan
+abstract:
+  description: 'Anhand unserer Beispiel-Apps, Best Practices und Anleitungen erfahren Sie, wie Sie sichere Anwendungen in Azure entwickeln und bereitstellen.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: /azure/security/develop/secure-dev-overview
+            html: <p>Entwickeln einer sicheren Webanwendung in Azure</p>
+            image:
+              src: 'https://docs.microsoft.com/media/common/i_get-started.svg'
+            title: Erste Schritte
+          - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
+            html: <p>Die fünf wichtigsten Sicherheitselemente für Web-Apps</p>
+            image:
+              src: 'https://docs.microsoft.com/media/common/i_learn-about.svg'
+            title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+  - title: Sichere Beispiel-Apps
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/secure-web-app">Web-App in einem Linux-Container</a>
+          - html: <a href="/azure/security/develop/secure-aad-app">Web-App mit Azure Active Directory</a>
+          - html: <a href="/azure/security/develop/secure-pci-web-app">Payment Card Industry</a>
+  - title: Konzepte
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="/azure/security/develop/secure-dev-overview">Sichere Entwicklung: Best Practices</a>'
+  - title: Ressourcen
+    items:
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/security/develop/security-code-analysis-overview">Analyse des Microsoft-Sicherheitscodes</a>
+          - html: <a href="/azure/security/develop/threat-modeling-tool">Threat Modeling Tool</a>

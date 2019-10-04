@@ -1,21 +1,19 @@
 ---
-title: Verwenden des Warteschlangenspeichers mit PHP | Microsoft Docs
+title: 'Verwenden von Queue Storage mit PHP: Azure Storage'
 description: Erfahren Sie, wie Sie den Azure-Warteschlangenspeicherdienst zum Erstellen und Löschen von Warteschlangen sowie zum Einfügen, Abrufen und Löschen von Nachrichten verwenden. Die Beispiele sind in PHP geschrieben.
-services: storage
-author: roygara
-ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: php
-ms.topic: article
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 01/11/2018
-ms.author: rogarana
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 0f9cc11e64e2517ef7aff0cd51705c39bf212b37
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.openlocfilehash: b175c34f131a7a0f172c7be0dda083fbfda3dc1e
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011433"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68721443"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Verwenden des Warteschlangenspeichers mit PHP
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -87,7 +85,7 @@ UseDevelopmentStorage=true
 Um einen Azure Queue-Dienstclient erstellen zu können, müssen Sie die **QueueRestProxy**-Klasse verwenden. Dazu können Sie eine der folgenden Methoden verwenden:
 
 * die Verbindungszeichenfolge direkt an die Klasse weitergeben.
-* Verwenden Sie Umgebungsvariablen in Ihrer Web-App, um die Verbindungszeichenfolge zu speichern. Weitere Informationen zum Konfigurieren von Verbindungszeichenfolgen finden Sie im Dokument [Azure web app configuration settings (Konfigurationseinstellungen für die Azure-Web-App)](../../app-service/web-sites-configure.md).
+* Verwenden Sie Umgebungsvariablen in Ihrer Web-App, um die Verbindungszeichenfolge zu speichern. Weitere Informationen zum Konfigurieren von Verbindungszeichenfolgen finden Sie im Dokument [Azure web app configuration settings (Konfigurationseinstellungen für die Azure-Web-App)](../../app-service/configure-common.md).
 Für die hier erläuterten Beispiele wird die Verbindungszeichenfolge direkt weitergegeben.
 
 ```php
@@ -419,7 +417,7 @@ Nachdem Sie sich nun mit den Grundlagen des Azure-Warteschlangenspeichers vertra
 Weitere Informationen finden Sie außerdem im [PHP Developer Center](https://azure.microsoft.com/develop/php/).
 
 [download]: https://github.com/Azure/azure-storage-php
-[require_once]: http://www.php.net/manual/en/function.require-once.php
+[require_once]: https://www.php.net/manual/en/function.require-once.php
 [Azure Portal]: https://portal.azure.com
 [composer-phar]: https://getcomposer.org/composer.phar
 

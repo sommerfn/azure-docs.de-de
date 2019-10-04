@@ -1,19 +1,18 @@
 ---
 title: Grundlegendes zum Cloudtiering der Azure-Dateisynchronisierung | Microsoft-Dokumentation
 description: Erfahren Sie mehr über das Cloudtieringfeature der Azure-Dateisynchronisierung.
-services: storage
-author: sikoo
+author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/21/2018
-ms.author: sikoo
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 871eb1663d6cba550f1403215b1d3ce5fe8278d3
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: efaa1ef4c5b82da9b905f75483daf9eb3536b15a
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486103"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219335"
 ---
 # <a name="cloud-tiering-overview"></a>Übersicht über Cloudtiering
 Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, bei dem häufig verwendete Dateien lokal auf dem Server zwischengespeichert werden, während alle anderen Dateien gemäß Richtlinieneinstellungen in Azure Files ausgelagert werden. Beim Tiering einer Datei ersetzt der Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) die Datei lokal durch einen Zeiger oder Analysepunkt. Der Analysepunkt stellt eine URL zur Datei in Azure Files dar. Eine per Tiering ausgelagerte Datei weist sowohl das offline-Attribut als auch das in NTFS festgelegte FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS-Attribut auf, sodass Drittanwendungen Tieringdateien sicher identifizieren können.
@@ -50,7 +49,7 @@ Wenn auf einem Volume mehrere Serverendpunkte vorhanden sind, gilt als freier Sp
 
 <a id="date-tiering-policy"></a>
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Wie funktioniert die datumsbasierte Tieringrichtlinie in Verbindung mit der Tieringrichtlinie für freien Speicherplatz auf dem Volume? 
-Wenn Sie Cloudtiering auf einem Serverendpunkt aktivieren, legen Sie eine Richtlinie für freien Speicherplatz auf dem Volume fest. Diese Richtlinie hat immer Vorrang vor allen anderen Richtlinien, einschließlich der Datumsrichtlinie. Optional können Sie eine Datumsrichtlinie für jeden Serverendpunkt auf dem Volume aktivieren, sodass nur die Dateien lokal gespeichert werden, auf die innerhalb der festgelegten Anzahl von Tagen in der Richtlinie per Lese- oder Schreibvorgang zugegriffen wurde. Ältere Dateien werden ausgelagert. Denken Sie daran, dass die Richtlinie für freien Speicherplatz auf dem Volume immer Vorrang hat. Ist auf dem Volume nicht genügend freier Speicherplatz für die gemäß der Datumsrichtlinie zu speichernden Dateien verfügbar, lagert Azure File Sync die ältesten Dateien weiter per Tiering aus, bis der erforderliche Prozentsatz an freiem Speicherplatz auf dem Volume erreicht ist.
+Wenn Sie Cloudtiering auf einem Serverendpunkt aktivieren, legen Sie eine Richtlinie für freien Speicherplatz auf dem Volume fest. Diese Richtlinie hat immer Vorrang vor allen anderen Richtlinien, einschließlich der Datumsrichtlinie. Optional können Sie eine Datumsrichtlinie für jeden Serverendpunkt auf dem Volume aktivieren, sodass nur die Dateien lokal gespeichert werden, auf die innerhalb der festgelegten Anzahl von Tagen in der Richtlinie per Lese- oder Schreibvorgang zugegriffen wurde. Ältere Dateien werden ausgelagert. Denken Sie daran, dass die Richtlinie für freien Speicherplatz auf dem Volume immer Vorrang hat. Ist auf dem Volume nicht genügend freier Speicherplatz für die gemäß der Datumsrichtlinie zu speichernden Dateien verfügbar, lagert die Azure-Dateisynchronisierung die ältesten Dateien weiter per Tiering aus, bis der erforderliche Prozentsatz an freiem Speicherplatz auf dem Volume erreicht ist.
 
 Angenommen, Sie haben eine datumsbasierte Tieringrichtlinie von 60 Tagen und eine Richtlinie für freien Speicherplatz auf dem Volume von 20 %. Wenn der freie Speicherplatz auf dem Volume nach dem Anwenden der Datumsrichtlinie unter 20 % liegt, setzt die Richtlinie für freien Speicherplatz auf dem Volume die Datumsrichtlinie außer Kraft. Da dadurch mehr Dateien ausgelagert werden, kann die auf dem Server beibehaltene Datenmenge von Daten für 60 Tage auf Daten für 45 Tage reduziert werden. Umgekehrt erzwingt diese Richtlinie auch dann das Tiering von Dateien außerhalb des Zeitbereichs, wenn der Schwellenwert für den freien Speicherplatz nicht erreicht wurde. Eine Datei, die 61 Tage alt ist, wird also selbst dann ausgelagert, wenn das Volume leer ist.
 
@@ -101,10 +100,19 @@ Der einfachste Weg zum Zurückrufen einer Datei auf den Datenträger besteht dar
 
 Sie können auch PowerShell nutzen, um für eine Datei das Zurückrufen zu erzwingen. Diese Option kann nützlich sein, wenn Sie mehrere Dateien auf einmal zurückrufen möchten, z.B. alle Dateien in einem Ordner. Öffnen Sie eine PowerShell-Sitzung auf dem Serverknoten, auf dem die Azure-Dateisynchronisierung installiert ist, und führen Sie anschließend die folgenden PowerShell-Befehle aus:
     
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
+```
+
+Wenn Sie `-Order CloudTieringPolicy` angeben, werden zuerst die zuletzt geänderten Dateien abgerufen.
+Andere optionale Parameter:
+* `-ThreadCount` bestimmt, wie viele Dateien parallel abgerufen werden können.
+* `-PerFileRetryCount` bestimmt, wie oft ein Abruf einer Datei versucht wird, die derzeit blockiert ist.
+* `-PerFileRetryDelaySeconds` bestimmt die Zeit in Sekunden zwischen den Versuchen zum erneuten Abrufen und sollte immer in Kombination mit dem vorherigen Parameter verwendet werden.
+
+> [!Note]  
+> Wenn das lokale Volume, das den Server hostet, nicht genügend freien Speicherplatz aufweist, um alle ausgelagerten Daten abzurufen, schlägt das Cmdlet `Invoke-StorageSyncFileRecall` fehl.  
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Warum stimmt die Eigenschaft *Größe auf Datenträger* einer Datei nach der Verwendung der Azure-Dateisynchronisierung nicht mit der Eigenschaft *Größe* überein? 
@@ -114,10 +122,10 @@ Der Windows-Datei-Explorer verwendet zwei Eigenschaften zur Darstellung einer Da
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Wie kann ich das Tiering einer Datei oder eines Verzeichnisses erzwingen?
 Wenn das Cloudtiering-Feature aktiviert ist, wird beim Cloudtiering automatisch basierend auf dem letzten Zugriff und den Änderungszeiten gefiltert, um den auf dem Cloudendpunkt angegebenen freien Volumespeicherplatz zu erzielen. In einigen Fällen kann es auch erforderlich sein, das Tiering für eine Datei manuell zu erzwingen. Dies kann beispielsweise nützlich sein, wenn Sie eine große Datei speichern, die Sie für längere Zeit nicht mehr verwenden werden, und den freien Speicherplatz auf Ihrem Volume nun für andere Dateien und Ordner nutzen möchten. Sie können das Tiering mithilfe der folgenden PowerShell-Befehle erzwingen:
 
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)

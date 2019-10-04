@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d6ff44a8d760150df491b67ee56d62c4daff31
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ccf3894daf71be0defe4271a08ec5e8d963e0d34
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882789"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68227498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Tutorial: Azure Active Directory-Integration mit AnswerHub
 
@@ -80,7 +80,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für AnswerHu
 2. [Konfigurieren des einmaligen Anmeldens für AnswerHub](#configure-answerhub-single-sign-on), um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite einzurichten.
 3. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user) mit dem Namen „Britta Simon“.
 4. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. [Erstellen eines AnswerHub-Testbenutzers](#create-answerhub-test-user), der dem Azure AD-Testbenutzer entspricht und damit verknüpft ist.
+5. Erstellen eines AnswerHub-Testbenutzers, der dem Azure AD-Testbenutzer entspricht und damit verknüpft ist.
 6. [Testen des einmaligen Anmeldens](#test-single-sign-on), um sicherzustellen, dass die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
@@ -184,7 +184,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
 
     a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** den Namen **brittasimon@<ihreunternehmensdomäne.erweiterung>** ein.  
+    b. Geben Sie im Feld **Benutzername** die Zeichenfolge **brittasimon\@<Ihreunternehmensdomäne.erweiterung>** ein.  
     Beispiel: BrittaSimon@contoso.com.
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
@@ -193,7 +193,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt richten Sie Britta Simon für die Verwendung des einmaligen Anmeldens von Azure AD ein, indem Sie ihr Zugriff auf AnswerHub gewähren.
+In diesem Abschnitt richten Sie die Benutzerin Britta Simon für die Verwendung des einmaligen Anmeldens von Azure AD ein, indem Sie ihr Zugriff auf AnswerHub gewähren.
 
 **Weisen Sie den Azure AD-Testbenutzer wie folgt zu:**
 

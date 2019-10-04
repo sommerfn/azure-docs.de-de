@@ -1,37 +1,47 @@
 ---
-title: Bereitstellen von Anwendungen für VM-Skalierungsgruppen in Azure mithilfe von Ansible
-description: Erfahren Sie, wie Sie Ansible zum Konfigurieren einer VM-Skalierungsgruppe und Bereitstellen der Anwendung auf der VM-Skalierungsgruppe in Azure verwenden
-ms.service: azure
+title: 'Tutorial: Bereitstellen von Apps für VM-Skalierungsgruppen in Azure mit Ansible | Microsoft-Dokumentation'
+description: Es wird beschrieben, wie Sie Ansible zum Konfigurieren von Azure-VM-Skalierungsgruppen und Bereitstellen von Anwendungen in der Skalierungsgruppe verwenden.
 keywords: ansible, azure, devops, bash, playbook, vm, vm-skalierungsgruppen, vmss
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 09/11/2018
-ms.openlocfilehash: 2214dd9505dff86ac26f01967a360140dee0069f
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 04/30/2019
+ms.openlocfilehash: a44fd06ace9b21122f5f4253ac7d9601b54e6b62
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791731"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231057"
 ---
-# <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Bereitstellen von Anwendungen für VM-Skalierungsgruppen in Azure mithilfe von Ansible
-Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mithilfe von Ansible Ihre Anwendungen in Azure bereitstellen. In diesem Artikel wird veranschaulicht, wie Sie eine Java-Anwendung in einer Azure-VM-Skalierungsgruppe (VMSS) bereitstellen.
+# <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Tutorial: Bereitstellen von Apps für VM-Skalierungsgruppen in Azure mit Ansible
+
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
+
+[!INCLUDE [open-source-devops-intro-vmss.md](../../includes/open-source-devops-intro-vmss.md)]
+
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
+
+> [!div class="checklist"]
+>
+> * Abrufen der Hostinformationen für eine Gruppe von virtuellen Azure-Computern
+> * Klonen und Erstellen der Beispiel-App
+> * Installieren einer JRE-Instanz (Java Runtime Environment) in einer Skalierungsgruppe
+> * Bereitstellen der Java-Anwendung in einer Skalierungsgruppe
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- **Azure-Abonnement:** Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)][!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
-- **VM-Skalierungsgruppe**: Wenn Sie noch keine VM-Skalierungsgruppe festgelegt haben, können Sie [eine VM-Skalierungsgruppe mit Ansible erstellen](ansible-create-configure-vmss.md).
+
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
+[!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
 - **Git** - [Git](https://git-scm.com) wird verwendet, um ein in diesem Tutorial verwendetes Java-Beispiel herunterzuladen.
 - **Java SE Development Kit (JDK)**: Mit dem [JDK](https://aka.ms/azure-jdks) wird das Java-Beispielprojekt erstellt.
-- **Buildtools für Apache Maven**: Die [Buildtools für Apache Maven](https://maven.apache.org/download.cgi) werden verwendet, um das Java-Beispielprojekt zu erstellen.
-
-> [!Note]
-> Für die Ausführung der folgenden Beispielplaybooks in diesem Tutorial ist Ansible 2.6 erforderlich.
+- **Apache Maven** - [Apache Maven](https://maven.apache.org/download.cgi) wird verwendet, um das Java-Beispielprojekt zu erstellen.
 
 ## <a name="get-host-information"></a>Abrufen der Hostinformationen
 
-In diesem Abschnitt wird veranschaulicht, wie Ansible zum Abrufen der Hostinformationen für eine Gruppe von virtuellen Azure-Computern verwendet wird. Weiter unten finden Sie ein Ansible-Beispielplaybook. Der Code ruft die öffentlichen IP-Adressen und Load Balancer in der angegebenen Ressourcengruppe ab und erstellt die Hostgruppe **saclesethosts** im Bestand.
+Mit dem Playbookcode in diesem Abschnitt werden Hostinformationen für eine Gruppe virtueller Computer abgerufen. Der Code ruft die öffentlichen IP-Adressen und den Load Balancer in einer angegebenen Ressourcengruppe ab und erstellt im Bestand eine Hostgruppe mit dem Namen `scalesethosts`.
 
 Speichern Sie das folgende Beispielplaybook als `get-hosts-tasks.yml`:
 
@@ -61,7 +71,9 @@ Speichern Sie das folgende Beispielplaybook als `get-hosts-tasks.yml`:
 
 ## <a name="prepare-an-application-for-deployment"></a>Vorbereiten einer Anwendung für die Bereitstellung
 
-In diesem Abschnitt verwenden Sie Git, um ein Java-Beispielprojekt von GitHub zu klonen, und erstellen das Projekt. Speichern Sie das folgende Playbook als `app.yml`:
+Im Playbookcode in diesem Abschnitt wird `git` verwendet, um ein Java-Beispielprojekt von GitHub zu klonen, und das Projekt wird erstellt. 
+
+Speichern Sie das folgende Playbook als `app.yml`:
 
   ```yml
   - hosts: localhost
@@ -85,79 +97,97 @@ Führen Sie das Ansible-Beispielplaybook mit dem folgenden Befehl aus:
   ansible-playbook app.yml
   ```
 
-Die Ausgabe des Befehls „ansible-playbook“ ähnelt der Folgenden, und Sie sehen, dass die von GitHub geklonte Beispiel-App erstellt wurde:
+Nach dem Ausführen des Playbooks wird in etwa die folgende Ausgabe angezeigt:
 
   ```Output
-  PLAY [localhost] **********************************************************
+  PLAY [localhost] 
 
-  TASK [Gathering Facts] ****************************************************
+  TASK [Gathering Facts] 
   ok: [localhost]
 
-  TASK [Git Clone sample app] ***************************************************************************
+  TASK [Git Clone sample app] 
   changed: [localhost]
 
-  TASK [Build sample app] ***************************************************
+  TASK [Build sample app] 
   changed: [localhost]
 
-  PLAY RECAP ***************************************************************************
+  PLAY RECAP 
   localhost                  : ok=3    changed=2    unreachable=0    failed=0
 
   ```
 
-## <a name="deploy-the-application-to-vmss"></a>Bereitstellen der Anwendung für VMSS
+## <a name="deploy-the-application-to-a-scale-set"></a>Bereitstellen der Anwendung in einer Skalierungsgruppe
 
-Im folgenden Abschnitt eines Ansible-Playbooks wird die JRE (Java Runtime Environment) in der Hostgruppe **saclesethosts** installiert, und die Java-Anwendung wird in der Hostgruppe **saclesethosts** bereitgestellt:
+Der Playbookcode in diesem Abschnitt wird für Folgendes verwendet:
 
-(Ändern Sie `admin_password` in Ihr eigenes Kennwort.)
+* Installieren der JRE in einer Hostgruppe mit dem Namen `saclesethosts`
+* Bereitstellen der Java-Anwendung in einer Hostgruppe mit dem Namen `saclesethosts`
 
-  ```yml
-  - hosts: localhost
-    vars:
-      resource_group: myResourceGroup
-      scaleset_name: myVMSS
-      loadbalancer_name: myVMSSlb
-      admin_username: azureuser
-      admin_password: "your_password"
-    tasks:
-    - include: get-hosts-tasks.yml
+Es gibt zwei Möglichkeiten, das Beispielplaybook abzurufen:
 
-  - name: Install JRE on VMSS
-    hosts: scalesethosts
-    become: yes
-    vars:
-      workspace: ~/src/helloworld
-      admin_username: azureuser
+* [Laden Sie das Playbook herunter](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml), und speichern Sie es als `vmss-setup-deploy.yml`.
+* Erstellen Sie eine neue Datei mit dem Namen `vmss-setup-deploy.yml`, und kopieren Sie die folgenden Inhalte in diese Datei:
 
-    tasks:
-    - name: Install JRE
-      apt:
-        name: default-jre
-        update_cache: yes
+```yml
+- hosts: localhost
+  vars:
+    resource_group: myResourceGroup
+    scaleset_name: myScaleSet
+    loadbalancer_name: myScaleSetLb
+    admin_username: azureuser
+    admin_password: "{{ admin_password }}"
+  tasks:
+  - include: get-hosts-tasks.yml
 
-    - name: Copy app to Azure VM
-      copy:
-        src: "{{ workspace }}/complete/target/gs-spring-boot-0.1.0.jar"
-        dest: "/home/{{ admin_username }}/helloworld.jar"
-        force: yes
-        mode: 0755
+- name: Install JRE on a scale set
+  hosts: scalesethosts
+  become: yes
+  vars:
+    workspace: ~/src/helloworld
+    admin_username: azureuser
 
-    - name: Start the application
-      shell: java -jar "/home/{{ admin_username }}/helloworld.jar" >/dev/null 2>&1 &
-      async: 5000
-      poll: 0
-  ```
+  tasks:
+  - name: Install JRE
+    apt:
+      name: default-jre
+      update_cache: yes
 
-Sie können das vorstehende Ansible-Beispielplaybook als `vmss-setup-deploy.yml` speichern oder [das gesamte Beispielplaybook herunterladen](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss).
+  - name: Copy app to Azure VM
+    copy:
+      src: "{{ workspace }}/complete/target/gs-spring-boot-0.1.0.jar"
+      dest: "/home/{{ admin_username }}/helloworld.jar"
+      force: yes
+      mode: 0755
 
-Um den Verbindungstyp „SSH“ mit Kennwörtern zu verwenden, müssen Sie das Programm SSHPASS installieren.
-  - Führen Sie für Ubuntu 16.04 den Befehl `apt-get install sshpass` aus.
-  - Führen Sie für CentOS 7.4 den Befehl `yum install sshpass` aus.
+  - name: Start the application
+    shell: java -jar "/home/{{ admin_username }}/helloworld.jar" >/dev/null 2>&1 &
+    async: 5000
+    poll: 0
+```
 
-Möglicherweise wird eine Fehlermeldung angezeigt, die der folgenden ähnelt: **Verwendung eines SSH-Kennworts anstelle eines Schlüssels ist nicht möglich, da die Hostschlüsselüberprüfung aktiviert ist, aber nicht von SSHPASS unterstützt wird. Fügen Sie den Fingerabdruck dieses Hosts Ihrer Datei „known_hosts“ hinzu, um diesen Host zu verwalten.** Wenn dieser Fehler angezeigt wird, können Sie die Hostschlüsselüberprüfung deaktivieren, indem Sie der Datei `/etc/ansible/ansible.cfg` oder der Datei `~/.ansible.cfg` die folgende Zeile hinzufügen:
-  ```bash
-  [defaults]
-  host_key_checking = False
-  ```
+Beachten Sie vor dem Ausführen des Playbooks die folgenden Hinweise:
+
+* Ersetzen Sie im Abschnitt `vars` den Platzhalter `{{ admin_password }}` durch Ihr eigenes Kennwort.
+* Installieren Sie das Programm sshpass, um den Verbindungstyp „ssh“ mit Kennwörtern zu verwenden:
+
+    Ubuntu:
+
+    ```bash
+    apt-get install sshpass
+    ```
+
+    CentOS:
+
+    ```bash
+    yum install sshpass
+    ```
+
+* In einigen Umgebungen wird ggf. ein Fehler mit dem Hinweis angezeigt, das anstelle eines Schlüssels ein SSH-Kennwort verwendet werden muss. Wenn Sie diesen Fehler erhalten, können Sie die Überprüfung des Hostschlüssels deaktivieren, indem Sie `/etc/ansible/ansible.cfg` oder `~/.ansible.cfg` die folgende Zeile hinzufügen:
+
+    ```bash
+    [defaults]
+    host_key_checking = False
+    ```
 
 Führen Sie das Playbook mit dem folgenden Befehl aus:
 
@@ -165,47 +195,50 @@ Führen Sie das Playbook mit dem folgenden Befehl aus:
   ansible-playbook vmss-setup-deploy.yml
   ```
 
-Die Ausgabe der Ausführung des Befehls „ansible-playbook“ gibt an, dass die Java-Beispielanwendung auf der Hostgruppe der VM-Skalierungsgruppe installiert wurde:
+In der Ausgabe nach Ausführung des Befehls „ansible-playbook“ ist angegeben, dass die Java-Beispielanwendung in der Hostgruppe der Skalierungsgruppe installiert wurde:
 
   ```Output
-  PLAY [localhost] **********************************************************
+  PLAY [localhost]
 
-  TASK [Gathering Facts] ****************************************************
+  TASK [Gathering Facts]
   ok: [localhost]
 
-  TASK [Get facts for all Public IPs within a resource groups] **********************************************
+  TASK [Get facts for all Public IPs within a resource groups]
   ok: [localhost]
 
-  TASK [Get loadbalancer info] ****************************************************************************
+  TASK [Get loadbalancer info]
   ok: [localhost]
 
-  TASK [Add all hosts] *****************************************************************************
+  TASK [Add all hosts]
   changed: [localhost] ...
 
-  PLAY [Install JRE on VMSS] *****************************************************************************
+  PLAY [Install JRE on scale set]
 
-  TASK [Gathering Facts] *****************************************************************************
+  TASK [Gathering Facts]
   ok: [40.114.30.145_50000]
   ok: [40.114.30.145_50003]
 
-  TASK [Copy app to Azure VM] *****************************************************************************
+  TASK [Copy app to Azure VM]
   changed: [40.114.30.145_50003]
   changed: [40.114.30.145_50000]
 
-  TASK [Start the application] ********************************************************************
+  TASK [Start the application]
   changed: [40.114.30.145_50000]
   changed: [40.114.30.145_50003]
 
-  PLAY RECAP ************************************************************************************************
+  PLAY RECAP
   40.114.30.145_50000        : ok=4    changed=3    unreachable=0    failed=0
   40.114.30.145_50003        : ok=4    changed=3    unreachable=0    failed=0
   localhost                  : ok=4    changed=1    unreachable=0    failed=0
   ```
 
-Glückwunsch! Ihre Anwendung wird jetzt in Azure ausgeführt. Sie können nun zur URL des Load Balancers für Ihre VM-Skalierungsgruppe navigieren:
+## <a name="verify-the-results"></a>Überprüfen der Ergebnisse
 
-![Die Java-App wird in einer VM-Skalierungsgruppe in Azure ausgeführt.](media/ansible-deploy-app-vmss/ansible-deploy-app-vmss.png)
+Überprüfen Sie die Ergebnisse Ihrer Arbeit, indem Sie zur URL des Lastenausgleichs für Ihre Skalierungsgruppe navigieren:
+
+![Ausgeführte Java-App in einer Skalierungsgruppe in Azure.](media/ansible-vmss-deploy/ansible-deploy-app-vmss.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 > [!div class="nextstepaction"]
-> [Automatisches Skalieren einer VM-Skalierungsgruppe mit Ansible](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)
+> [Tutorial: Automatisches Skalieren einer VM-Skalierungsgruppe in Azure mit Ansible](./ansible-auto-scale-vmss.md)

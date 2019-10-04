@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 07/10/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e87a4c7ebafd8ddcfa54c87b189316b0ce98b0f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2d56b1f800c71a5bbef7ffb1155d05e096113e2c
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358994"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162433"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff
 
@@ -33,7 +33,7 @@ Falls Sie andere Informationen benötigen, hinterlassen Sie einen Kommentar am E
 
 ## <a name="cloud-apps-assignments"></a>Zuweisungen von Cloud-Apps
 
-Mit Richtlinien für bedingten Zugriff steuern Sie, wie Ihre Benutzer auf [Cloud-Apps](conditions.md#cloud-apps) zugreifen. Wenn Sie eine Richtlinie für bedingten Zugriff konfigurieren, müssen Sie mindestens eine Cloud-App auswählen. 
+Mit Richtlinien für bedingten Zugriff steuern Sie, wie Ihre Benutzer auf [Cloud-Apps](conditions.md#cloud-apps-and-actions) zugreifen. Wenn Sie eine Richtlinie für bedingten Zugriff konfigurieren, müssen Sie mindestens eine Cloud-App auswählen. 
 
 ![Auswählen der Cloud-Apps für Ihre Richtlinie](./media/technical-reference/09.png)
 
@@ -48,7 +48,6 @@ Sie können folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zu
 - Microsoft Application Insights Analytics
 - Microsoft Azure Information Protection – [Weitere Informationen](https://docs.microsoft.com/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - Microsoft Azure-Verwaltung – [Weitere Informationen](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
-- Microsoft Azure RemoteApp
 - Microsoft Azure-Abonnementverwaltung
 - Microsoft Cloud App Security
 - Portal für die Zugriffssteuerung auf Microsoft Commerce-Tools
@@ -58,7 +57,6 @@ Sie können folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zu
 - Microsoft Intune
 - Microsoft Intune-Registrierung
 - Microsoft Planner
-- Microsoft Power BI
 - Microsoft PowerApps
 - Microsoft-Suche in Bing
 - Microsoft StaffHub
@@ -70,6 +68,7 @@ Sie können folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zu
 - Office Delve
 - Office Sway
 - Outlook-Gruppen
+- Power BI-Dienst
 - Project Online
 - Skype for Business Online
 - Virtuelles privates Netzwerk (VPN):
@@ -98,11 +97,13 @@ In einer Richtlinie für bedingten Zugriff können Sie die Geräteplattformbedin
 
 ![Binden der Zugriffsrichtlinie an das Clientbetriebssystem](./media/technical-reference/41.png)
 
+Wenn Sie die ältere Authentifizierung mit der Bedingung **„Andere Clients“** blockieren, können Sie auch die Geräteplattform als Bedingung festlegen.
+
 ## <a name="client-apps-condition"></a>Client-Apps-Bedingung
 
 In der Richtlinie für bedingten Zugriff können Sie die [Client-Apps](conditions.md#client-apps)-Bedingung konfigurieren, um die Richtlinie mit der Client-App zu verknüpfen, die einen Zugriffsversuch initiiert hat. Legen Sie die Client-Apps-Bedingung fest, um den Zugriff zu gewähren oder zu verweigern, wenn mit den folgenden Arten von Client-Apps ein Zugriffsversuch unternommen wird:
 
-- "Browser"
+- Browser
 - Mobile Apps und Desktop-Apps
 
 ![Steuern des Zugriffs für Client-Apps](./media/technical-reference/03.png)
@@ -115,19 +116,20 @@ In der Richtlinie für bedingten Zugriff können Sie als Client-App **Browser** 
 
 Diese Einstellung funktioniert mit allen Browsern. Die folgenden Betriebssysteme und Browser werden jedoch unterstützt, um eine Geräterichtlinie, z. B. eine konforme Geräteanforderung, zu erfüllen:
 
-| Betriebssystem                     | Browser                                      |
-| :--                    | :--                                           |
-| Windows 10             | Internet Explorer, Microsoft Edge, Chrome     |
-| Windows 8/8.1        | Internet Explorer, Chrome                     |
-| Windows 7              | Internet Explorer, Chrome                     |
-| iOS                    | Safari, Microsoft Edge, Intune Managed Browser |
-| Android                | Chrome, Microsoft Edge, Intune Managed Browser |
-| Windows Phone          | Internet Explorer, Microsoft Edge             |
-| Windows Server 2016    | Internet Explorer, Microsoft Edge             |
-| Windows Server 2016    | Chrome                                        |
-| Windows Server 2012 R2 | Internet Explorer, Chrome                     |
-| Windows Server 2008 R2 | Internet Explorer, Chrome                     |
-| macOS                  | Chrome, Safari                                |
+| OS                     | Browser                                        |
+| :--                    | :--                                             |
+| Windows 10             | Microsoft Edge, Internet Explorer, Chrome       |
+| Windows 8/8.1        | Internet Explorer, Chrome                       |
+| Windows 7              | Internet Explorer, Chrome                       |
+| iOS                    | Microsoft Edge, Intune Managed Browser, Safari  |
+| Android                | Microsoft Edge, Intune Managed Browser, Chrome  |
+| Windows Phone          | Microsoft Edge, Internet Explorer               |
+| Windows Server 2019    | Microsoft Edge, Internet Explorer, Chrome       |
+| Windows Server 2016    | Internet Explorer |
+| Windows Server 2012 R2 | Internet Explorer                       |
+| Windows Server 2008 R2 | Internet Explorer                       |
+| macOS                  | Chrome, Safari                                  |
+
 
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>Warum wird im Browser eine Aufforderung zur Clientzertifikatauswahl angezeigt?
 
@@ -135,25 +137,25 @@ Unter Windows 7, iOS, Android und macOS identifiziert Azure AD das Gerät anhand
 
 #### <a name="chrome-support"></a>Chrome-Unterstützung
 
-Installieren Sie [diese Erweiterung](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji), damit Chrome unter **Windows 10 Creators Update (Version 1703**) oder höher unterstützt wird.
+Installieren Sie die [Erweiterung für Windows 10-Konten](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji), damit Chrome ab **Windows 10 Creators Update (Version 1703)** unterstützt wird. Diese Erweiterung ist erforderlich, wenn eine Richtlinie für bedingten Zugriff gerätespezifische Details erfordert.
 
 Um diese Erweiterung für Chrome-Browser automatisch bereitzustellen, erstellen Sie den folgenden Registrierungsschlüssel:
 
 |    |    |
 | --- | --- |
-| path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | NAME | 1 |
-| Type | REG_SZ (Zeichenfolge) |
-| Daten | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
+| type | REG_SZ (Zeichenfolge) |
+| Data | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
 
 Erstellen Sie den folgenden Registrierungsschlüssel, damit Chrome unter **Windows 8.1 und 7** unterstützt wird:
 
 |    |    |
 | --- | --- |
-| path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | NAME | 1 |
-| Type | REG_SZ (Zeichenfolge) |
-| Daten | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+| type | REG_SZ (Zeichenfolge) |
+| Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 Diese Browser unterstützen die Geräteauthentifizierung, sodass das Gerät identifiziert und anhand einer Richtlinie überprüft werden kann. Bei der Geräteüberprüfung tritt ein Fehler auf, wenn der Browser im privaten Modus ausgeführt wird.
 
@@ -167,7 +169,6 @@ Diese Einstellung hat Auswirkungen auf Zugriffsversuche von den folgenden mobile
 
 | Client-Apps | Zieldienst | Plattform |
 | --- | --- | --- |
-| Azure RemoteApp | Azure Remote-App-Dienst | Windows 10, Windows 8.1, Windows 7, iOS, Android und macOS |
 | Dynamics CRM-App | Dynamics CRM | Windows 10, Windows 8.1, iOS und Android |
 | E-Mail-/Kalender-/Kontakte-App, Outlook 2016, Outlook 2013 (mit moderner Authentifizierung)| Microsoft Office 365 Exchange Online | Windows 10 |
 | MFA- und Standort-Richtlinien für Apps Gerätebasierte Richtlinien werden nicht unterstützt.| Alle Meine Apps-App-Dienste| Android und iOS |
@@ -203,6 +204,9 @@ Sie können in der Richtlinie für bedingten Zugriff vorschreiben, dass ein Zugr
 Diese Einstellung gilt für die folgenden Client-Apps:
 
 - Microsoft Azure Information Protection
+- Microsoft Bookings
+- Microsoft Cortana
+- Microsoft Dynamics 365
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
@@ -241,8 +245,10 @@ In Ihrer Richtlinie für bedingten Zugriff können Sie verlangen, dass eine App-
 
 Diese Einstellung gilt für die folgenden Client-Apps:
 
+- Microsoft Cortana
 - Microsoft OneDrive
 - Microsoft Outlook
+- Microsoft Planner
 
 **Anmerkungen**
 

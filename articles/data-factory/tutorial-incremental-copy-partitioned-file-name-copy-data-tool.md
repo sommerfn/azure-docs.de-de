@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: c89764d746f07e6100b1f250d4c107bb700fe014
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 8081d7112d67e3bb4e72c6f6e88d765a159e047f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445847"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933920"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer Dateien basierend auf dem zeitpartitionierten Dateinamen und mithilfe des Tools „Daten kopieren“
 
@@ -56,17 +56,15 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
 1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Daten + Analysen** > **Data Factory** aus: 
    
-   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 2. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein. 
-      
-    ![Neue Data Factory](./media/tutorial-copy-data-tool/new-azure-data-factory.png)
     
     Der Name der Data Factory muss _global eindeutig_ sein. Sie erhalten unter Umständen die folgende Fehlermeldung:
    
-   ![Fehlermeldung zu neuer Data Factory](./media/tutorial-copy-data-tool/name-not-available-error.png)
+   ![Fehlermeldung zu neuer Data Factory](./media/doc-common-process/name-not-available-error.png)
    
-   Wenn eine Fehlermeldung zum Namenswert angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Verwenden Sie beispielsweise den Namen _**IhrName**_**ADFTutorialDataFactory**. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
+   Wenn eine Fehlermeldung zum Namenswert angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Verwenden Sie beispielsweise den Namen _**IhrName**_ **ADFTutorialDataFactory**. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
 3. Wählen Sie das **Azure-Abonnement** aus, in dem die neue Data Factory erstellt werden soll. 
 4. Führen Sie unter **Ressourcengruppe** einen der folgenden Schritte aus:
      
@@ -85,14 +83,14 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
     ![Kachel „Deploying Data Factory“ (Data Factory wird bereitgestellt...)](media/tutorial-copy-data-tool/deploying-data-factory.png)
 10. Nach Abschluss der Erstellung wird die Startseite von **Data Factory** angezeigt.
    
-    ![Data Factory-Startseite](./media/tutorial-copy-data-tool/data-factory-home-page.png)
+    ![Data Factory-Startseite](./media/doc-common-process/data-factory-home-page.png)
 11. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten. 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Erstellen einer Pipeline mithilfe des Tools zum Kopieren von Daten
 
 1. Klicken Sie auf der Seite **Let's get started** (Erste Schritte) auf **Copy Data** (Daten kopieren), um das Tool zum Kopieren von Daten zu starten. 
 
-   ![Kachel für das Tool zum Kopieren von Daten](./media/tutorial-copy-data-tool/copy-data-tool-tile.png)
+   ![Kachel für das Tool zum Kopieren von Daten](./media/doc-common-process/get-started-page.png)
    
 2. Gehen Sie auf der Seite **Properties** (Eigenschaften) wie folgt vor:
 
@@ -136,7 +134,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
     
     ![Auswählen der Eingabedatei bzw. des Eingabeordners](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-loading-behavior.png)
     
-    c. Schreiben Sie den dynamischen Ordnerpfad als **source/{Jahr}/{Monat}/{Tag}/{Stunde}/**, und ändern Sie das Format wie folgt:
+    c. Schreiben Sie den dynamischen Ordnerpfad als **source/{Jahr}/{Monat}/{Tag}/{Stunde}/** , und ändern Sie das Format wie folgt:
     
     ![Auswählen der Eingabedatei bzw. des Eingabeordners](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name.png)
     
@@ -152,7 +150,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
     
     ![Auswählen der Ausgabedatei oder des Ausgabeordners](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-output-file-folder.png)   
     
-    b. Schreiben Sie den dynamischen Ordnerpfad als **source/{Jahr}/{Monat}/{Tag}/{Stunde}/**, und ändern Sie das Format wie folgt:
+    b. Schreiben Sie den dynamischen Ordnerpfad als **source/{Jahr}/{Monat}/{Tag}/{Stunde}/** , und ändern Sie das Format wie folgt:
     
     ![Auswählen der Ausgabedatei oder des Ausgabeordners](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/input-file-name2.png)    
     
@@ -176,7 +174,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
     ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
     
-    Sie können dies auch bestätigen, indem Sie den Azure Storage-Explorer (https://storageexplorer.com/)) verwenden, um die Dateien zu überprüfen.
+    Sie können dies auch bestätigen, indem Sie den Azure Storage-Explorer (https://storageexplorer.com/) ) verwenden, um die Dateien zu überprüfen.
     
     ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
 12. Erstellen Sie eine weitere leere Textdatei, und nennen Sie sie **file2.txt**. Laden Sie die Datei „file2.txt“ in den Ordnerpfad (**source/2019/02/26/15**) in Ihrem Speicherkonto hoch.   Sie können für diese Aufgaben verschiedene Tools verwenden, etwa [Azure Storage-Explorer](https://storageexplorer.com/).   
@@ -198,7 +196,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
     
     ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs7.png) 
     
-    Sie können dies auch bestätigen, indem Sie den Azure Storage-Explorer (https://storageexplorer.com/)) verwenden, um die Dateien im Container **destination** zu überprüfen.
+    Sie können dies auch bestätigen, indem Sie den Azure Storage-Explorer (https://storageexplorer.com/) ) verwenden, um die Dateien im Container **destination** zu überprüfen.
     
     ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs8.png)
 

@@ -3,15 +3,15 @@ title: Abfragen von Containern in Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie Container in Azure Cosmos DB abfragen.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 11/06/2018
+ms.topic: conceptual
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 2ea228a1db204170f947b5fe71f1865a4620b0f4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 799fa43ad6ff12e5fa84326cbb41842e76daff12
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549033"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092968"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Abfragen eines Azure Cosmos-Containers
 

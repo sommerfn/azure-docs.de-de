@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 2aa98c3958f1dffeb8adbad5e91a11f397d4a9fd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e3e819fc90e8900219ebc7809adb293369084a72
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005726"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828213"
 ---
 # <a name="in-memory-sample"></a>In-Memory-Beispiel
 
@@ -50,9 +49,9 @@ Eine einfachere, aber visuell ansprechendere Demo der Leistung von In-Memory-OLT
 
 2. Stellen Sie eine Verbindung mit der Datenbank mit SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx)her.
 
-3. Kopieren Sie das [In-Memory OLTP Transact-SQL-Skript](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) in die Zwischenablage. Das T-SQL-Skript erstellt die erforderlichen In-Memory-Objekte in der in Schritt 1 erstellten Beispieldatenbank „AdventureWorksLT“.
+3. Kopieren Sie das [In-Memory OLTP Transact-SQL-Skript](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) in die Zwischenablage. Das T-SQL-Skript erstellt die erforderlichen In-Memory-Objekte in der in Schritt 1 erstellten Beispieldatenbank „AdventureWorksLT“.
 
-4. Fügen Sie das T-SQL-Skript in SSMS ein, und führen Sie es aus. Unerlässlich ist die `MEMORY_OPTIMIZED = ON`-Klausel in den CREATE TABLE-Anweisungen. Beispiel: 
+4. Fügen Sie das T-SQL-Skript in SSMS ein, und führen Sie es aus. Unerlässlich ist die `MEMORY_OPTIMIZED = ON`-Klausel in den CREATE TABLE-Anweisungen. Beispiel:
 
 
 ```sql
@@ -74,7 +73,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
 
-Das Ergebnis **0** bedeutet, dass In-Memory nicht unterstützt wird. **1** bedeutet Unterstützung. Stellen Sie für die Problemdiagnose sicher, dass die Datenbank dem Premium-Tarif unterliegt.
+Das Ergebnis **0** bedeutet, dass In-Memory nicht unterstützt wird. **1** bedeutet Unterstützung. Stellen Sie für die Problemdiagnose sicher, dass für die Datenbank die Dienstebene „Premium“ gilt.
 
 
 #### <a name="about-the-created-memory-optimized-items"></a>Informationen zu speicheroptimierten Elementen
@@ -199,7 +198,7 @@ whereas for SQL 2016+
 
 
 
-### <a name="run-the-inmem-stress-workload-first"></a>Zuerst Belastungsworkload *_inmem* ausführen
+### <a name="run-the-_inmem-stress-workload-first"></a>Zuerst Belastungsworkload *_inmem* ausführen
 
 
 Sie können ein Fenster mit einer *RML-Eingabeaufforderung* zum Ausführen der „ostress.exe“-Befehlszeile verwenden. Die Befehlszeilenparameter weisen `ostress` an, die folgenden Aktionen auszuführen:
@@ -237,7 +236,7 @@ Wenn `ostress.exe` abgeschlossen ist, wird die Testlaufdauer im RML-Befehlsfenst
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-ondisk-then-rerun"></a>Zurücksetzen, für *_ondisk* bearbeiten, danach erneut ausführen
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Zurücksetzen, für *_ondisk* bearbeiten, danach erneut ausführen
 
 
 Sobald Sie über das Ergebnis der Ausführung von *_inmem* verfügen, führen Sie die folgenden Schritte für die Ausführung von *_ondisk* durch:
@@ -278,18 +277,18 @@ Für Echtzeitanalysen einer OLTP-Workload empfiehlt es sich häufig, einen nicht
 
 1. Erstellen Sie im Azure-Portal anhand des Beispiels eine neue AdventureWorksLT-Datenbank.
    - Verwenden Sie denselben Namen.
-   - Wählen Sie den Tarif „Premium“.
+   - Wählen Sie die Dienstebene „Premium“ aus.
 
-2. Kopieren Sie [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) in die Zwischenablage.
+2. Kopieren Sie [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) in die Zwischenablage.
    - Das T-SQL-Skript erstellt die erforderlichen In-Memory-Objekte in der in Schritt 1 erstellten Beispieldatenbank „AdventureWorksLT“.
    - Das Skript erstellt die Dimensionstabelle und zwei Faktentabellen. Beide Faktentabellen werden mit 3,5 Mio. Zeilen aufgefüllt.
    - Die Ausführung des Skripts kann 15 dauern.
 
 3. Fügen Sie das T-SQL-Skript in SSMS ein, und führen Sie es aus. Unerlässlich ist das Schlüsselwort **COLUMNSTORE** in einer **CREATE INDEX**-Anweisung wie in:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
-4. Legen Sie „AdventureWorksLT“ auf den Kompatibilitätsgrad 130 fest: <br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
+4. Legen Sie „AdventureWorksLT“ auf den Kompatibilitätsgrad 130 fest:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
 
-    Der Kompatibilitätsgrad 130 steht nicht in direkter Beziehung mit den In-Memory-Features  Doch der Grad 130 bietet im Allgemeinen eine höhere Abfrageleistung als 120.
+    Der Kompatibilitätsgrad 130 steht nicht in direkter Beziehung mit den In-Memory-Features Doch der Grad 130 bietet im Allgemeinen eine höhere Abfrageleistung als 120.
 
 
 #### <a name="key-tables-and-columnstore-indexes"></a>Wichtige Tabellen und Columnstore-Indizes
@@ -303,7 +302,7 @@ Für Echtzeitanalysen einer OLTP-Workload empfiehlt es sich häufig, einen nicht
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>Wichtige Abfragen zum Vergleichen des Columnstore-Indexes
 
 
-[Hier](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) finden Sie mehrere T-SQL-Abfragetypen, die Sie ausführen können, um Leistungssteigerungen zu erkennen. Achten Sie in Schritt 2 im T-SQL-Skript auf dieses Paar von Abfragen. Die beiden Abfragen unterscheiden sich nur in einer Zeile:
+[Hier](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/clustered_columnstore_sample_queries.sql) finden Sie mehrere T-SQL-Abfragetypen, die Sie ausführen können, um Leistungssteigerungen zu erkennen. Achten Sie in Schritt 2 im T-SQL-Skript auf dieses Paar von Abfragen. Die beiden Abfragen unterscheiden sich nur in einer Zeile:
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`

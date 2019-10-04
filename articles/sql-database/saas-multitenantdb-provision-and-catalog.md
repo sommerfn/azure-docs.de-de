@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
-manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3e8e0c69c93c992f31c515c2033a9ae57d2ee3e0
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835780"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570302"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Bereitstellen und Katalogisieren neuer Mandanten in einer SaaS-Anwendung unter Verwendung einer mehrinstanzenfähigen Azure SQL-Datenbank mit Sharding
 
@@ -61,7 +60,7 @@ Die Verwendung eines Katalogs ermöglicht es, den Namen oder Speicherort einer M
 #### <a name="tenant-metadata-beyond-location"></a>Mandantenmetadaten nach Speicherort
 
 Darüber hinaus kann der Katalog angeben, ob ein Mandant offline ist (beispielsweise zur Wartung). Zudem kann der Katalog erweitert werden, um zusätzliche Mandanten- oder Datenbankmetadaten wie etwa folgende Elemente zu speichern:
-- Den Diensttarif oder die Edition einer Datenbank
+- Die Dienstebene oder die Edition einer Datenbank
 - Die Version des Datenbankschemas
 - Den Namen des Mandanten und seiner SLA (Vereinbarung zum Servicelevel)
 - Informationen zu Anwendungsverwaltung, Kundensupport oder DevOps-Prozessen  
@@ -86,7 +85,7 @@ Wenn Sie einen neuen Mandanten in einer vorhandenen gemeinsam genutzten Datenban
 - Enthält die Datenbank Tabellen mit den erforderlichen Verweisdaten für den neuen Mandanten, oder können die Daten hinzugefügt werden?
 - Weist sie die entsprechende Version des Basisschemas für den neuen Mandanten auf?
 - Befindet sie sich am entsprechenden geografischen Standort in der Nähe des neuen Mandanten?
-- Weist sie den richtigen Diensttarif für den neuen Mandanten auf?
+- Weist sie die richtige Dienstebene für den neuen Mandanten auf?
 
 Wenn der neue Mandant in der eigenen Datenbank isoliert werden soll, können Sie eine entsprechende Datenbank gemäß den Spezifikation des Mandanten erstellen.
 
@@ -161,7 +160,7 @@ Um nachzuvollziehen, wie die Wingtip-App die Bereitstellung neuer Mandanten in e
    - **$VenueType** = **blues**, einer der vordefinierten Veranstaltungsorttypen: blues, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (in Kleinbuchstaben ohne Leerzeichen)
    - **$DemoScenario** = **1**, Bereitstellen eines Mandanten in einer mit anderen Mandanten gemeinsam genutzten Datenbank
 
-2. Fügen Sie einen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in Zeile 38 bewegen. Es handelt sich um die Zeile, die folgendermaßen lautet: *New-Tenant `*. Drücken Sie dann **F9**.
+2. Fügen Sie einen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in Zeile 38 bewegen. Es handelt sich um die Zeile, die folgendermaßen lautet: *New-Tenant `* . Drücken Sie dann **F9**.
 
    ![Haltepunkt](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
@@ -201,7 +200,7 @@ Durchlaufen Sie nun den Skriptprozess zum Erstellen eines Mandanten in seiner ei
    - **$VenueType** = **soccer**, einer der vordefinierten Veranstaltungsorttypen: blues, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (Kleinschreibung, keine Leerzeichen)
    - **$DemoScenario** = **2**, Bereitstellen eines Mandanten in seiner eigenen Datenbank
 
-2. Fügen Sie einen neuen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in Zeile 57 bewegen (der Zeile mit *&&nbsp;$PSScriptRoot\New-TenantAndDatabase `*) und **F9** drücken.
+2. Fügen Sie einen neuen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in Zeile 57 bewegen (der Zeile mit *&&nbsp;$PSScriptRoot\New-TenantAndDatabase `* ) und **F9** drücken.
 
    ![Haltepunkt](media/saas-multitenantdb-provision-and-catalog/breakpoint2.png)
 
@@ -220,7 +219,7 @@ In dieser Übung wird ein Batch mit 17 Mandanten bereitgestellt. Es empfiehlt si
 
 ### <a name="verify-the-deployed-set-of-tenants"></a>Überprüfen der bereitgestellten Gruppe von Mandanten 
 
-In dieser Phase haben Sie eine Kombination von Mandanten, die in einer gemeinsam genutzten Datenbank bereitgestellt wurden, und Mandanten, die in ihren eigenen Datenbanken bereitgestellt wurden. Im Azure-Portal können die erstellten Datenbanken überprüft werden. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Server **tenants1-mt-\<USER\>**, indem Sie zur Liste der SQL-Server navigieren.  Die Liste **SQL-Datenbanken** sollte die gemeinsame genutzte Datenbank **tenants1** und die Datenbanken für die Mandanten mit eigener Datenbank enthalten:
+In dieser Phase haben Sie eine Kombination von Mandanten, die in einer gemeinsam genutzten Datenbank bereitgestellt wurden, und Mandanten, die in ihren eigenen Datenbanken bereitgestellt wurden. Im Azure-Portal können die erstellten Datenbanken überprüft werden. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Server **tenants1-mt-\<USER\>** , indem Sie zur Liste der SQL-Server navigieren.  Die Liste **SQL-Datenbanken** sollte die gemeinsame genutzte Datenbank **tenants1** und die Datenbanken für die Mandanten mit eigener Datenbank enthalten:
 
    ![Datenbankliste](media/saas-multitenantdb-provision-and-catalog/Databases.png)
 

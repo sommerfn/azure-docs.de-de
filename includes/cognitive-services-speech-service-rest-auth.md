@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 9cad860b8808dd2682995768c282d8376ab5d9be
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 22a95be43f06e95a6067b179b3023ba94ee5795d
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671778"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68362523"
 ---
 ## <a name="authentication"></a>Authentication
 
@@ -17,17 +17,16 @@ Jede Anforderung erfordert einen Autorisierungsheader. Diese Tabelle zeigt, welc
 
 | Unterstützte Autorisierungsheader | Spracherkennung | Text-zu-Sprache |
 |------------------------|----------------|----------------|
-| Ocp-Apim-Subscription-Key | Ja | Nein  |
+| Ocp-Apim-Subscription-Key | Ja | Nein |
 | Autorisierung: Bearer | Ja | Ja |
 
-Wenn Sie den Header `Ocp-Apim-Subscription-Key` verwenden, müssen Sie nur Ihren Abonnementschlüssel angeben. Beispiel: 
+Wenn Sie den Header `Ocp-Apim-Subscription-Key` verwenden, müssen Sie nur Ihren Abonnementschlüssel angeben. Beispiel:
 
 ```
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-Wenn Sie den Header `Authorization: Bearer` verwenden, müssen Sie eine Anforderung an den Endpunkt `issueToken` stellen. In dieser Anforderung tauschen Sie Ihren Abonnementschlüssel gegen ein Zugriffstoken, der 10 Minuten lang gültig ist. In den nächsten Abschnitten erfahren Sie, wie Sie ein Token abrufen, verwenden und aktualisieren können.
-
+Wenn Sie den Header `Authorization: Bearer` verwenden, müssen Sie eine Anforderung an den Endpunkt `issueToken` stellen. In dieser Anforderung tauschen Sie Ihren Abonnementschlüssel gegen ein Zugriffstoken, der 10 Minuten lang gültig ist. In den nächsten Abschnitten erfahren Sie, wie Sie ein Token abrufen und verwenden können.
 
 ### <a name="how-to-get-an-access-token"></a>Abrufen eines Zugriffstokens
 
@@ -130,6 +129,7 @@ public class Authentication
 import requests
 
 subscription_key = 'REPLACE_WITH_YOUR_KEY'
+
 
 def get_token(subscription_key):
     fetch_token_url = 'https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken'

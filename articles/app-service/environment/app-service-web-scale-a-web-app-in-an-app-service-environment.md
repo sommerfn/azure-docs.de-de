@@ -10,17 +10,16 @@ ms.assetid: 78eb1e49-4fcd-49e7-b3c7-f1906f0f22e3
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6e683eb07b690d7d5680b7a4d429d1150f22f67e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 711dc4d59785418d6637eb144b644948ed495e2c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717840"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069726"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>Skalieren von Apps in einer App Service-Umgebung
 In Azure App Service können üblicherweise drei Faktoren skaliert werden:
@@ -40,9 +39,9 @@ Das Ändern dieser Elemente erfolgt über die entsprechende Benutzeroberfläche 
 
 ![][1]
 
-Beachten Sie, dass Ihr ASP nicht über die Anzahl der verfügbaren Computeressourcen, die im Workerpool Ihres ASP enthalten sind, hinaus zentral hochskaliert werden kann.  Wenn Sie in diesem Workerpool Compute-Ressourcen benötigen, bitten Sie den Administrator Ihrer App Service-Umgebung, diese hinzuzufügen.  Weitere Informationen rund um die Neukonfiguration der App Service-Umgebung finden Sie unter  [Konfigurieren einer App Service-Umgebung][HowtoConfigureASE].  Sie sollten auch die Features für das automatische Skalieren der App Service-Umgebung nutzen, um nach Zeitplan oder Metriken Kapazitäten hinzuzufügen.  Weitere Informationen zum Konfigurieren der automatischen Skalierung für die App Service-Umgebung selbst finden Sie unter [Skalieren von Apps in einer App Service-Umgebung][ASEAutoscale].
+Beachten Sie, dass Ihr ASP nicht über die Anzahl der verfügbaren Computeressourcen, die im Workerpool Ihres ASP enthalten sind, hinaus zentral hochskaliert werden kann.  Wenn Sie in diesem Workerpool Compute-Ressourcen benötigen, bitten Sie den Administrator Ihrer App Service-Umgebung, diese hinzuzufügen.  Weitere Informationen rund um die Neukonfiguration der App Service-Umgebung finden Sie hier: [Konfigurieren einer App Service-Umgebung][HowtoConfigureASE].  Sie sollten auch die Features für das automatische Skalieren der App Service-Umgebung nutzen, um nach Zeitplan oder Metriken Kapazitäten hinzuzufügen.  Weitere Informationen zum Konfigurieren der automatischen Skalierung für die App Service-Umgebung selbst finden Sie unter [Skalieren von Apps in einer App Service-Umgebung][ASEAutoscale].
 
-Sie können mehrere App Service-Pläne mit Computeressourcen aus verschiedenen Workerpools erstellen. Sie können aber auch den gleichen Workerpool verwenden.  Wenn in Workerpool 1 beispielsweise (10) Computeressourcen verfügbar sind, können Sie einen App Service-Plan mit (6) Computeressourcen und einen zweiten mit (4) Computeressourcen erstellen. 
+Sie können mehrere App Service-Pläne mit Computeressourcen aus verschiedenen Workerpools erstellen. Sie können aber auch den gleichen Workerpool verwenden.  Wenn in Workerpool 1 beispielsweise (10) Computeressourcen verfügbar sind, können Sie einen App Service-Plan mit (6) Computeressourcen und einen zweiten mit (4) Computeressourcen erstellen.
 
 ### <a name="scaling-the-number-of-instances"></a>Skalieren der Anzahl von Instanzen
 Wenn Sie Ihre Web-App in einer App Service-Umgebung erstellen, beginnt sie mit einer Instanz.  Sie können dann auf zusätzliche Instanzen horizontal hochskalieren, um zusätzliche Computeressourcen für Ihre App bereitzustellen .   
@@ -66,7 +65,7 @@ Vor dem Verschieben des ASPs aus einem Workerpool in einen anderen sollten Sie s
 > 
 
 ## <a name="getting-started"></a>Erste Schritte
-Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen einer App Service-Umgebung][HowtoCreateASE].
+Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen einer App Service-Umgebung][HowtoCreateASE]
 
 <!--Image references-->
 [1]: ./media/app-service-web-scale-a-web-app-in-an-app-service-environment/aseappscale-aspblade.png
@@ -75,12 +74,12 @@ Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen
 
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
-[ScaleWebapp]: ../web-sites-scale.md
+[ScaleWebapp]: ../manage-scale-up.md
 [HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [CreateWebappinASE]: app-service-web-how-to-create-a-web-app-in-an-ase.md
 [Appserviceplans]: ../overview-hosting-plans.md
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 [ASEAutoscale]: app-service-environment-auto-scale.md
-[AppScale]: ../web-sites-scale.md
+[AppScale]: ../manage-scale-up.md
 [AppWarmup]: https://ruslany.net/2015/09/how-to-warm-up-azure-web-app-during-deployment-slots-swap/

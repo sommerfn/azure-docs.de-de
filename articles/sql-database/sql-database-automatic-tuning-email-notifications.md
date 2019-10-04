@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 25a100a224984b0d5608ba933b7a4fa024c22c9d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 06/03/2019
+ms.openlocfilehash: df9390c00c34fce82de8cc17efb5cc3bce2e4e3d
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481160"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569434"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-Mail-Benachrichtigungen zur automatischen Optimierung
 
@@ -59,14 +58,9 @@ Wenn Sie über mehrere Azure-Abonnements verfügen, für die Sie die gleiche Aut
 
 ## <a name="update-azure-automation-modules"></a>Aktualisieren von Azure Automation-Modulen
 
-Das PowerShell-Skript zum Abrufen der Empfehlungen zur automatischen Optimierung verwendet die Befehle [Get-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) und [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction), für die ein Update der Azure-Module auf Version 4 oder höher erforderlich ist.
+Das PowerShell-Skript zum Abrufen der Empfehlungen zur automatischen Optimierung verwendet die Befehle [Get-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource) und [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction), für die mindestens Version 4 des Azure-Moduls erforderlich ist.
 
-Befolgen Sie die folgenden Schritte zum Aktualisieren von Azure PowerShell-Modulen:
-
-- Wählen Sie im Automation-App-Bereich im linken Menü die Option **Module** aus (scrollen Sie nach unten, das Menü befindet sich unter „Freigegebene Ressourcen“).
-- Klicken Sie im Bereich „Module“ oben auf **Azure-Module aktualisieren**, und warten Sie, bis die Meldung „Die Azure-Module wurden aktualisiert“ angezeigt wird. Dieser Vorgang kann einige Minuten dauern.
-
-![Aktualisieren von Azure Automation-Modulen](./media/sql-database-automatic-tuning-email-notifications/howto-email-02.png)
+- Falls Sie Ihre Azure-Module aktualisieren müssen, helfen Ihnen die Informationen unter [Unterstützung für Az-Module in Azure Automation](../automation/az-modules.md) weiter.
 
 ## <a name="create-azure-automation-runbook"></a>Erstellen eines Azure Automation-Runbooks
 

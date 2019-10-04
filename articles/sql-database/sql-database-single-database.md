@@ -1,5 +1,5 @@
 ---
-title: Was ist eine Azure SQL-Einzeldatenbank? | Microsoft-Dokumentation
+title: Was ist eine Einzeldatenbank in Azure SQL-Datebank? | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Einzeldatenbank in Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
@@ -7,21 +7,20 @@ ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-manager: craigg
-ms.date: 034/08/2019
-ms.openlocfilehash: 0437ba24727c06e874b49908a5a22d0063de72fd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/08/2019
+ms.openlocfilehash: 1dc1d2780dcaf27e0c60cfffe84581c0278491dd
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799098"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566539"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Einzeldatenbank in Azure SQL-Datenbank?
 
-Die Bereitstellungsoption für Singletons erstellt eine Datenbank in Azure SQL-Datenbank mit einem eigenen Satz von Ressourcen und wird über einen SQL-Datenbank-Server verwaltet. Bei einer Einzeldatenbank ist jede Datenbank isoliert und somit portabel, außerdem besitzt jede Datenbank eine eigene Dienstebene im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) mit einer garantierten Computegröße.
+Die Bereitstellungsoption für Singletons erstellt eine Datenbank in Azure SQL-Datenbank mit einem eigenen Satz von Ressourcen und wird über einen SQL-Datenbank-Server verwaltet. Bei einer Einzeldatenbank ist jede Datenbank isoliert und somit portabel, außerdem besitzt jede Datenbank eine eigene Dienstebene im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder [vCore-basierten Kaufmodell](sql-database-service-tiers-vcore.md) mit einer garantierten Computegröße.
 
 > [!IMPORTANT]
 > Einzeldatenbank ist eine der drei Bereitstellungsoptionen für Azure SQL-Datenbank. Die anderen zwei sind [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und [verwaltete Instanz](sql-database-managed-instance.md).
@@ -30,7 +29,7 @@ Die Bereitstellungsoption für Singletons erstellt eine Datenbank in Azure SQL-D
 
 ## <a name="dynamic-scalability"></a>Dynamische Skalierbarkeit
 
-Sie können für eine geringe monatliche Gebühr Ihre erste App in einer kleinen Einzeldatenbank in einem Diensttarif mit geringem Preis und geringer Leistung erstellen und [diesen dann jederzeit manuell oder programmgesteuert](sql-database-single-database-scale.md) in einen Tarif mit höherem Preis und besserer Leistung ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
+Sie können Ihre erste App auf einer kleinen Einzeldatenbank kostengünstig auf der serverlosen (Vorschauversion) Computeebene oder einer kleinen Computegröße auf der bereitgestellten Computeebene erstellen. Die [Compute- oder Dienstebene](sql-database-single-database-scale.md) können Sie jederzeit manuell oder programmgesteuert ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
 
 ## <a name="single-databases-and-elastic-pools"></a>Einzeldatenbanken und Pools für elastische Datenbanken
 

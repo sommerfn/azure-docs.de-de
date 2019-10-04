@@ -1,52 +1,23 @@
 ---
-title: Ausfüllen des Formulars „Angebotseinstellungen“ | Microsoft-Dokumentation
-description: Erläutert die verschiedenen Felder, die Werte im Formular Angebotseinstellungen für eine neue Dynamics 365 Business Central-Anwendung erfordern.
-services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
-author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
+title: Ausfüllen des Formulars „Angebotseinstellungen“ | Azure Marketplace
+description: 'Veralteter Artikel mit Links zu PC-Artikeln. Bisher: „Erläutert die verschiedenen Felder, die Werte im Formular Angebotseinstellungen für eine neue Dynamics 365 Business Central-Anwendung erfordern.“'
+services: Azure, Marketplace, Cloud Partner Portal
+author: ChJenk
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/17/2018
-ms.author: pbutlerm
-ms.openlocfilehash: a050a8cfdd67f662786fc0b9b7ed5451c88dccb1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 09/18/2019
+ms.author: pabutler
+ms.openlocfilehash: 84932d693c9c74c74095eb78e750f8d3b1452068
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806653"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105551"
 ---
-<a name="how-to-fill-out-the-offer-settings-form"></a>So füllen Sie das Formular „Angebotseinstellungen“ aus
-=======================================
+# <a name="how-to-fill-out-the-offer-settings-form"></a>So füllen Sie das Formular „Angebotseinstellungen“ aus
 
-Das Formular für die Angebotseinstellungen ist ein grundlegendes Formular, in dem Sie die Angebotseinstellungen angeben.
-Die erforderlichen Felder werden nachfolgend beschrieben.
+Das [Cloud-Partnerportal](https://cloudpartner.azure.com/) unterstützt die Erstellung und Verwaltung von Angeboten für Dynamics 365 Business Central nicht mehr. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Weitere Informationen finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 Business Central](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer).
 
-### <a name="offer-id"></a>Angebots-ID
+## <a name="next-steps"></a>Nächste Schritte
 
-`OfferId` ist ein eindeutiger Bezeichner für das Angebot innerhalb eines Herausgeberprofils.
-Diese ID wird in den Produkt-URLs angezeigt. Sie darf nur aus klein geschriebenen alphanumerischen Zeichen oder Bindestrichen (-) bestehen. Die ID darf nicht mit einem Bindestrich enden und darf höchstens 50 Zeichen umfassen. Beachten Sie, dass dieses Feld gesperrt wird, sobald ein Angebot online geschaltet wird.
-
-Wenn z. B. der Partner „Contoso“ eine Angebots-ID namens „sample-Web App“ erstellt, wird diese in AppSource wie folgt angezeigt:
-
-&emsp;`https://appsource.microsoft.com/marketplace/apps/contoso.sample-Web App?tab=Overview`
-
-
-### <a name="publisher-id"></a>Herausgeber-ID
-
-In dieser Dropdownliste können Sie das Herausgeberprofil auswählen, unter dem das Angebot veröffentlicht werden soll. Beachten Sie, dass dieses Feld gesperrt wird, sobald ein Angebot online geschaltet wird.
-
-
-### <a name="name"></a>NAME
-
-Dies ist der Anzeigename für Ihr(e) App/Angebot, der in Microsoft [AppSource](https://appsource.microsoft.com/) angezeigt wird. Er darf aus höchstens 50 Zeichen bestehen.
-
-> [!NOTE]
-> Der Kurzname muss mit dem im App-Manifest angegebenen Herausgebernamen übereinstimmen.
-
-Klicken Sie auf **Speichern**, um Ihre Eingaben zu speichern. Als Nächstes fügen Sie technische Informationen für Ihr Angebot hinzu.
+Bevor Sie mit dem Erstellen von Dynamics 365 Business Central-Angeboten beginnen, sollten Sie zunächst den Artikel [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lesen und dann das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/directory) öffnen, und darin die Seite **Übersicht** auswählen. Befolgen Sie die Anweisungen unter [Erstellen eines neuen Angebots für Dynamics 365 Business Central](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer), um Ihr Angebot zu erstellen.

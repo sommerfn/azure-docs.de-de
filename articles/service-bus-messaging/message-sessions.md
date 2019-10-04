@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7264b8e5a536c90d106b3bf4a5e26093744327d6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500140"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091813"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Nachrichtensitzungen: FIFO (First In, First Out) 
 
@@ -40,6 +40,9 @@ Das Sitzungsfeature in Service Bus ermöglicht einen bestimmten Empfangsvorgang 
 Im Portal legen Sie das Flag mit dem folgenden Kontrollkästchen fest:
 
 ![][2]
+
+> [!NOTE]
+> Wenn Sitzungen für eine Warteschlange oder ein Abonnement aktiviert sind, können die Clientanwendungen ***keine*** regulären Nachrichten mehr senden/empfangen. Alle Nachrichten müssen im Rahmen einer Sitzung (durch Festlegen der Sitzungs-ID) gesendet und durch Empfangen der Sitzung empfangen werden.
 
 Die APIs für Sitzungen sind für Warteschlangen- und Abonnementclients vorhanden. Es gibt ein verbindliches Modell, das steuert, wann Sitzungen und Nachrichten empfangen werden, und ein auf einem Handler basierendes Modell, ähnlich *OnMessage*, das die Komplexität der Verwaltung der Empfangsschleife verbirgt.
 
@@ -77,10 +80,19 @@ Alle vorhandenen Sitzungen in einer Warteschlange oder einem Abonnement können 
 
 Der Sitzungszustand, der in einer Warteschlange oder in einem Abonnement gespeichert ist, wird auf das Speicherkontingent dieser Entität angerechnet. Wenn die Anwendung mit einer Sitzung fertig ist, empfiehlt es sich daher für die Anwendung, ihren beibehaltenen Zustand zu bereinigen, um externe Verwaltungskosten zu vermeiden.
 
+## <a name="impact-of-delivery-count"></a>Auswirkungen der Übermittlungsanzahl
+
+Die Definition der Übermittlungsanzahl pro Nachricht im Kontext von Sitzungen weicht geringfügig von der Definition bei fehlenden Sitzungen ab. Hier ist eine Tabelle mit einer Zusammenfassung der Umstände, unter denen die Übermittlungsanzahl erhöht wird.
+
+| Szenario | Übermittlungsanzahl der Nachricht inkrementiert? |
+|----------|---------------------------------------------|
+| Die Sitzung wird akzeptiert, aber die Sitzungssperre läuft ab (aufgrund eines Timeouts). | Ja |
+| Die Sitzung wird akzeptiert, die Nachrichten innerhalb der Sitzung werden nicht abgeschlossen (selbst wenn sie gesperrt sind), und die Sitzung wird geschlossen. | Nein |
+| Die Sitzung wird akzeptiert, Nachrichten werden abgeschlossen, und die Sitzung wird explizit geschlossen. | Nicht zutreffend (Standardflow. Hier werden die Nachrichten aus der Sitzung entfernt.) |
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Ein vollständiges Beispiel](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient) für das Senden und Empfangen sitzungsbasierter Nachrichten aus Service Bus-Warteschlangen mithilfe der .NET Standard-Bibliothek.
-- [Ein Beispiel](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions), das den .NET Framework-Client verwendet, um sitzungsabhängige Nachrichten zu verarbeiten. 
+- Ein Beispiel, das den .NET Framework-Client verwendet, um für Sitzungen aktivierte Nachrichten zu verarbeiten, finden Sie unter [Microsoft.Azure.ServiceBus-Beispiele](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) oder [Microsoft.ServiceBus.Messaging-Beispiele](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions). 
 
 Weitere Informationen zum Service Bus-Messaging finden Sie in folgenden Themen:
 

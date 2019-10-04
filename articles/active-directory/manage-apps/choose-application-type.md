@@ -3,8 +3,8 @@ title: Auswählen des zu verwendenden Anwendungstyps beim Hinzufügen einer Anwe
 description: Erhalten Sie Informationen zu den unterstützten Typen von Anwendungen, die Sie in Azure AD integrieren können, sowie zu den zugehörigen Konfigurationsoptionen.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -12,56 +12,58 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.author: celested
+ms.date: 09/03/2019
+ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13b0c03f03012058616dba21536cfc3f292fff4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ROBOTS: NOINDEX
+ms.openlocfilehash: d5bd2397c345a4f670bde343f751cd69f825ecb9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091510"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056063"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Auswählen des Anwendungstyps beim Hinzufügen einer Anwendung in Azure Active Directory
-Erfahren Sie mehr über die vier Anwendungstypen, die Azure Active Directory (Azure AD) hinzugefügt werden können. Wenn Sie eine Anwendung in Azure Active Directory hinzufügen, werden Sie aufgefordert, einen der vier Anwendungstypen auszuwählen. 
+
+Erfahren Sie mehr über die vier Anwendungstypen, die Azure Active Directory (Azure AD) hinzugefügt werden können. Wenn Sie eine Anwendung in Azure Active Directory hinzufügen, werden Sie aufgefordert, einen der vier Anwendungstypen auszuwählen.
 
 ## <a name="what-are-the-types-of-applications"></a>Was sind diese Anwendungstypen?
 
 Azure AD unterstützt vier wichtige Anwendungstypen, die Sie mithilfe der **Hinzufügen**-Funktion unter **Unternehmensanwendungen** hinzufügen können. Das umfasst:
 
--   **Azure AD-Kataloganwendungen**: Anwendungen, die für das einmalige Anmelden mit Azure AD vorab integriert wurden.
+- **Azure AD-Kataloganwendungen**: Anwendungen, die für das einmalige Anmelden mit Azure AD vorab integriert wurden.
 
--   **Anwendungen für den Anwendungsproxy**: Anwendungen, die in Ihrer lokalen Umgebung ausgeführt werden und für die Sie das sichere einmalige Anmelden von externen Standorten bereitstellen möchten.
+- **Anwendungen für den Anwendungsproxy**: Anwendungen, die in Ihrer lokalen Umgebung ausgeführt werden und für die Sie das sichere einmalige Anmelden von externen Standorten bereitstellen möchten.
 
--   **Benutzerdefiniert entwickelte Anwendungen**: Anwendungen, die Ihre Organisation auf der Azure AD-Anwendungsentwicklungsplattform entwickeln möchte, die aber möglicherweise noch nicht vorhanden sind.
+- **Benutzerdefiniert entwickelte Anwendungen**: Anwendungen, die Ihre Organisation auf der Azure AD-Anwendungsentwicklungsplattform entwickeln möchte, die aber möglicherweise noch nicht vorhanden sind.
 
--   **Nicht im Katalog vorhandene Anwendungen**: Nutzen Sie Ihre eigenen Anwendungen (BYOD, Bring Your Own Applications). Hierbei kann es sich um beliebige Weblinks oder Anwendungen handeln, die Felder für Benutzername und Kennwort generieren, SAML oder OpenID Connect-Protokolle oder SCIM unterstützen, und die Sie für das einmalige Anmelden in Azure AD integrieren möchten.
+- **Nicht im Katalog vorhandene Anwendungen**: Nutzen Sie Ihre eigenen Anwendungen (BYOD, Bring Your Own Applications). Hierbei kann es sich um beliebige Weblinks oder Anwendungen handeln, die Felder für Benutzername und Kennwort generieren, SAML oder OpenID Connect-Protokolle oder SCIM unterstützen, und die Sie für das einmalige Anmelden in Azure AD integrieren möchten.
 
 ## <a name="features-and-capabilities-supported-by-the-application-types"></a>Von den Anwendungstypen unterstützte Features und Funktionen
 
 Die folgenden Funktionen werden von allen vier vorstehend genannten Anwendungstypen in Azure AD unterstützt:
 
--   **Schnellstart**: Stellen Sie Anwendungen im Handumdrehen bereit, indem Sie [einfache Bereitstellungsschritte](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started) ausführen.
+- **Schnellstart**: Stellen Sie Anwendungen mithilfe [einfacher Bereitstellungsschritte](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started) im Handumdrehen bereit.
 
--   **Verwalten allgemeiner Eigenschaften**: Sie erhalten einen [direkten Deeplink](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) zu einer Anwendung, können das [Branding einer Anwendung anpassen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) oder die [Anwendung für alle Benutzer deaktivieren](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal).
+- **Verwalten allgemeiner Eigenschaften**: Sie erhalten einen [direkten Deeplink](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) zu einer Anwendung, können das [Branding einer Anwendung anpassen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) oder die [Anwendung für alle Benutzer deaktivieren](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal).
 
--   **Benutzer- und Gruppenverwaltung**: Sie können Benutzer und Gruppen zu einer Anwendung [zuweisen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) oder daraus [entfernen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) und optional die spezifischen Anwendungsrollen zuweisen, auf die diese Benutzer und Gruppen Zugriff erhalten sollen.
+- **Benutzer- und Gruppenverwaltung**: Sie können Benutzer und Gruppen zu einer Anwendung [zuweisen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) oder daraus [entfernen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) und optional die spezifischen Anwendungsrollen zuweisen, auf die diese Benutzer und Gruppen Zugriff erhalten sollen.
 
--   **Self-Service-Anwendungszugriff**: Ermöglichen Sie Ihren Benutzern, über ihre Anwendungszugriffsbereiche [Self-Service-Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) auf Anwendungen zu erhalten. Hierzu fügen Sie eine Anwendung entweder direkt hinzu oder [fügen Benutzer zu einer für den Self-Service-Zugriff aktivierten Gruppe hinzu](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management). Optional können Sie dabei die Genehmigung des Unternehmens anfordern.
+- **Self-Service-Anwendungszugriff**: Ermöglichen Sie Ihren Benutzern, über ihre Anwendungszugriffsbereiche [Self-Service-Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) auf Anwendungen zu erhalten. Hierzu fügen Sie eine Anwendung entweder direkt hinzu oder [fügen Benutzer zu einer für den Self-Service-Zugriff aktivierten Gruppe hinzu](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management). Optional können Sie dabei die Genehmigung des Unternehmens anfordern.
 
--   **Anmeldeprotokolle**: Erhalten Sie Einblick in [alle Anmeldungen bei einer Anwendung](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins) oder bei all Ihren Anwendungen.
+- **Anmeldeprotokolle**: Erhalten Sie Einblick in [alle Anmeldungen bei einer Anwendung](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins) oder bei all Ihren Anwendungen.
 
--   **Überwachungsprotokolle**: Erhalten Sie Einblick in [detaillierte Überwachungsprotokolle zu Änderungen an einer Anwendung](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs) oder an all Ihren Anwendungen.
+- **Überwachungsprotokolle**: Erhalten Sie Einblick in [detaillierte Überwachungsprotokolle zu Änderungen an einer Anwendung](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs) oder an all Ihren Anwendungen.
 
--   **Bedingter und risikobasierter Zugriff**: Legen Sie leistungsstarke [bedingungsbasierte Zugriffsregeln](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) fest, die erzwungen werden, wenn Benutzer versuchen, sich bei einer bestimmten Anwendung anzumelden.
+- **Bedingter und risikobasierter Zugriff**: Legen Sie leistungsstarke [bedingungsbasierte Zugriffsregeln](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) fest, die erzwungen werden, wenn Benutzer versuchen, sich bei einer bestimmten Anwendung anzumelden.
 
--   **Anzeigen von Berechtigungen**: Erhalten Sie in einer zentralen Ansicht Einblick in alle [OAuth2-Berechtigungen](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent), auf die eine Anwendung in Ihrem Verzeichnis zugreifen kann.
+- **Anzeigen von Berechtigungen**: Erhalten Sie in einer zentralen Ansicht Einblick in alle [OAuth2-Berechtigungen](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent), auf die eine Anwendung in Ihrem Verzeichnis zugreifen kann.
 
 ## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>Von bestimmten Anwendungstypen unterstützte Modi für das einmalige Anmelden und die Bereitstellung
 
 Die folgende Tabelle beschreibt die verschiedenen Modi für das einmalige Anmelden und die Bereitstellung, die von den vorstehenden Anwendungstypen unterstützt werden. In dieser Tabelle erfahren Sie, welche Anwendung Sie hinzufügen müssen, um ein bestimmtes Ziel zu erreichen.
 
-  ![Tabelle der Anwendungstypen](./media/choose-application-type/table1.png)
+  ![Tabelle: Von den einzelnen App-Typen unterstützte SSO- und Bereitstellungsmodi](./media/choose-application-type/table1.png)
 
 ## <a name="how-to-choose-a-single-sign-on-mode"></a>Auswählen eines Modus für das einmalige Anmelden
 
@@ -77,56 +79,45 @@ Nachfolgend werden die unterstützten Modi für das **einmalige Anmelden** für 
 
   >[!NOTE]
   >Diese Option ist nicht verfügbar, wenn für eine Anwendung der Anwendungsproxy konfiguriert ist.
-  >
-  >
 
-- **Headerbasierte Anmeldung**: Wählen Sie [Headerbasierte Anmeldung](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) als Modus für das einmalige Anmelden aus, wenn das einmalige Anmelden bei einer Anwendung mit PingAccess-Funktion erfolgen soll, die die HTTP-Header-basierte Authentifizierung unterstützt. 
+- **Headerbasierte Anmeldung**: Wählen Sie [Headerbasierte Anmeldung](application-proxy-configure-single-sign-on-with-ping-access.md) als Modus für das einmalige Anmelden aus, wenn das einmalige Anmelden bei einer Anwendung mit PingAccess-Funktion erfolgen soll, die die HTTP-Header-basierte Authentifizierung unterstützt.
 
   >[!NOTE]
   >Diese Option ist nur verfügbar, wenn für eine Anwendung der Anwendungsproxy sowie PingAccess konfiguriert sind.
-  >
-  >
 
-- **Integrierte Windows-Authentifizierung**: Wählen Sie [Integrierte Windows-Authentifizierung](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) als Modus für das einmalige Anmelden aus, wenn Sie eine lokale WIA-Anwendung verfügbar machen, bei der das einmalige Anmelden erfolgen soll. 
+- **Integrierte Windows-Authentifizierung**: Wählen Sie [Integrierte Windows-Authentifizierung](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) als Modus für das einmalige Anmelden aus, wenn Sie eine lokale WIA-Anwendung verfügbar machen, bei der das einmalige Anmelden erfolgen soll.
 
   >[!NOTE]
   >Diese Option ist nur verfügbar, wenn für eine Anwendung der Anwendungsproxy konfiguriert ist.
-  >
-  >
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Modi für das einmalige Anmelden für benutzerdefiniert entwickelte Anwendungen
 
 Benutzerdefiniert entwickelte Anwendungen unterstützen weitere Modi für das einmalige Anmelden, die oben nicht aufgeführt sind. Hierzu zählen:
 
--   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)-basiertes Anmelden
+- [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)-basiertes Anmelden
 
--   [OpenID Connect 1.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)-basiertes Anmelden
+- [OpenID Connect 1.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)-basiertes Anmelden
 
--   [WS-Federation 1.2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html)-basiertes Anmelden
+- [WS-Federation 1.2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html)-basiertes Anmelden
 
--   [SAML 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference)-basiertes Anmelden
+- [SAML 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference)-basiertes Anmelden
 
 Weitere Informationen zum Erstellen einer benutzerdefiniert entwickelten Anwendung, die diese Modi für das einmalige Anmelden unterstützt, finden Sie im [Entwicklerleitfaden zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
 ## <a name="how-to-set-an-applications-single-sign-on-mode"></a>Festlegen des Modus für das einmalige Anmelden für eine Anwendung
 
-Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, folgen Sie diesen Anweisungen:
+Um den Modus für einmaliges Anmelden für eine Anwendung festzulegen, folgen Sie diesen Anweisungen:
 
 1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
-
-2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
-
-3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
-
-4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
-
-5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+1. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+1. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+1. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+1. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
 
    * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
 
-6. Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
-
-7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
+1. Wählen Sie die Anwendung aus, für die Sie das einmalige Anmelden konfigurieren möchten.
+1. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Einmaliges Anmelden**.
 
 ## <a name="how-to-choose-a-provisioning-mode"></a>Auswählen eines Bereitstellungsmodus
 
@@ -134,39 +125,26 @@ Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, fo
 
 - **Automatische Bereitstellung**: Wählen Sie [Automatisch](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) als **Bereitstellungsmodus** aus, wenn Sie die automatische API-basierte Bereitstellung und/oder Aufhebung der Bereitstellung von Benutzerkonten für diese Anwendung aktivieren möchten. 
 
-  >[!NOTE]
-  >Diese Option ist nur für Anwendungen in der Kategorie **Ausgewählte Apps** des [Azure AD-Anwendungskatalogs](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal) verfügbar.
-  >
-  >
-
 - **SCIM-basierte automatische Bereitstellung**: Verwenden Sie die [SCIM-basierte automatische Bereitstellung](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning), wenn Ihre Anwendung das SCIM-Protokoll zum Erkennen von Änderungen an Benutzern und Gruppen unterstützt. Diese werden automatisch ausgegeben, wenn eine in Azure AD integrierte Anwendung geändert wird. 
 
   >[!NOTE]
   >Diese Option ist nicht als spezifischer Bereitstellungsmodus aufgeführt, ist aber standardmäßig für alle Anwendungen aktiviert, die in Azure AD integriert sind.
-  >
-  >
 
 ## <a name="how-to-set-an-applications-provisioning-mode"></a>Festlegen des Bereitstellungsmodus einer Anwendung
 
 Um den **Bereitstellungsmodus** für eine Anwendung festzulegen, folgen Sie diesen Anweisungen:
 
-Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, folgen Sie diesen Anweisungen:
-
 1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
-
-2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
-
-3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
-
-4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
-
-5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
+1. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+1. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+1. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
+1. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
 
    * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
 
-6. Wählen Sie die Anwendung aus, für die Sie die Bereitstellung konfigurieren möchten.
-
-7. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Bereitstellung**.
+1. Wählen Sie die Anwendung aus, für die Sie die Bereitstellung konfigurieren möchten.
+1. Nachdem die Anwendung geladen wurde, klicken Sie im linken Navigationsmenü der Anwendung auf **Bereitstellung**.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Verwalten von Anwendungen mit Azure Active Directory](what-is-application-management.md)

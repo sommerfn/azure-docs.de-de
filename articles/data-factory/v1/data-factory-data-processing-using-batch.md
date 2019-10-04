@@ -3,22 +3,20 @@ title: Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 description: Beschreibt, wie Sie große Datenmengen in einer Azure Data Factory-Pipeline verarbeiten, indem Sie die Parallelverarbeitungsfunktion von Azure Batch nutzen.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 688b964b-51d0-4faa-91a7-26c7e3150868
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fe015e2ffa371c0c31f7f5f43c433d44f3ca3c42
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124149"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140043"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]
@@ -124,7 +122,7 @@ Erstellen Sie einen Batch-Pool mit mindestens zwei Computeknoten.
    f. Klicken Sie auf **OK**, um den Pool zu erstellen.
 
 #### <a name="azure-storage-explorer"></a>Azure Storage-Explorer
-Sie verwenden [Azure Storage-Explorer 6](https://azurestorageexplorer.codeplex.com/) oder [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) (von ClumsyLeaf Software), um die Daten in Ihren Storage-Projekten zu überprüfen und zu ändern. Sie können auch die Daten in den Protokollen Ihrer in der Cloud gehosteten Anwendungen einsehen und ändern.
+Sie verwenden [Azure Storage-Explorer 6](https://azurestorageexplorer.codeplex.com/) oder [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (von ClumsyLeaf Software), um die Daten in Ihren Storage-Projekten zu überprüfen und zu ändern. Sie können auch die Daten in den Protokollen Ihrer in der Cloud gehosteten Anwendungen einsehen und ändern.
 
 1. Erstellen Sie einen Container mit dem Namen **mycontainer** mit privatem Zugriff (ohne anonymen Zugriff).
 
@@ -409,7 +407,7 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen:
 #### <a name="execute-method"></a>Execute-Methode
 Dieser Abschnitt enthält weitere Details und Hinweise zum Code in der „Execute“-Methode.
 
-1. Die Elemente zum Durchlaufen der Eingabesammlung finden Sie unter dem Namespace [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) . Zum Durchlaufen der Blobsammlung müssen Sie die **BlobContinuationToken**-Klasse verwenden. Im Wesentlichen müssen Sie eine do-while-Schleife mit dem Token als Mechanismus zum Beenden der Schleife verwenden. Weitere Informationen finden Sie unter [Verwenden von Blob Storage in .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Eine einfache Schleife ist hier dargestellt:
+1. Die Elemente zum Durchlaufen der Eingabesammlung finden Sie unter dem Namespace [Microsoft.WindowsAzure.Storage.Blob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob) . Zum Durchlaufen der Blobsammlung müssen Sie die **BlobContinuationToken**-Klasse verwenden. Im Wesentlichen müssen Sie eine do-while-Schleife mit dem Token als Mechanismus zum Beenden der Schleife verwenden. Weitere Informationen finden Sie unter [Verwenden von Blob Storage in .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Eine einfache Schleife ist hier dargestellt:
 
     ```csharp
     // Initialize the continuation token.
@@ -432,7 +430,7 @@ Dieser Abschnitt enthält weitere Details und Hinweise zum Code in der „Execut
     } while (continuationToken != null);
 
     ```
-   Weitere Informationen finden Sie in der Dokumentation für die [ListBlobsSegmented](https://msdn.microsoft.com/library/jj717596.aspx)-Methode.
+   Weitere Informationen finden Sie in der Dokumentation für die [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented)-Methode.
 
 1. Der Code für die Verwendung durch den Satz von Blobs geht logischerweise in die do-while-Schleife ein. In der **Execute**-Methode übergibt die do-while-Schleife die Liste der Blobs an eine Methode namens **Calculate**. Die Methode gibt eine Zeichenfolgenvariable mit dem Namen **output** zurück, die das Ergebnis des Durchlaufens aller Blobs im Segment ist.
 

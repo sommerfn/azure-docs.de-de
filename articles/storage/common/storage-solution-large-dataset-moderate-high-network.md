@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 8dd55032c933cdc31b848addfdac991550376dcf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f7177a95bdd585ff2822c9ac8c94a85d12f9259b
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805581"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900364"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Datenübertragung für große Datasets mit mittlerer bis hoher Netzwerkbandbreite
  
@@ -69,7 +69,7 @@ Wenn Sie die Offlinedatenübertragung nutzen, verwenden Sie die folgende Tabelle
 |    Formfaktor                      |    5 SSDs pro Auftrag             |    1 x 22,7 kg Gerät in Desktopgröße pro Auftrag    |    1 x ca. 226,8 kg großes Gerät pro Auftrag    |    Bis zu 10 HDDs/SSDs pro Auftrag        |
 |    Für Anfangskonfiguration benötigte Zeit               |    Niedrig <br>(15 Min.)            |    Niedrig bis mittel <br> (< 30 Min.)               |    Moderat<br>(1 bis 2 Stunden)               |    Mittel bis schwierig<br>(variabel) |
 |    Senden von Daten an Azure               |    Ja                          |    Ja                                           |    Ja                                   |    Ja                                 |
-|    Exportieren von Daten aus Azure           |    Nein                            |    Nein                                             |    Nein                                     |    Ja                                 |
+|    Exportieren von Daten aus Azure           |    Nein                           |    Nein                                            |    Nein                                    |    Ja                                 |
 |    Verschlüsselung                       |    AES 128-Bit                  |    AES 256-Bit                                   |    AES 256-Bit                           |    AES 128-Bit                         |
 |    Hardware                         |     Von Microsoft bereitgestellt          |    Von Microsoft bereitgestellt                            |    Von Microsoft bereitgestellt                    |    Vom Kunden bereitgestellt                   |
 |    Netzwerkschnittstelle                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
@@ -88,8 +88,8 @@ Bei Nutzung von Onlinedatenübertragung verwenden Sie die Tabelle im folgenden A
 |    Datentyp                  |    Azure-Blobs, Azure Files, Azure Tables    |    Azure-Blobs, Azure Files, Azure Tables    |    Azure-Blobs, Azure Files                           |   Unterstützt mehr als 70 Datenconnectors für Datenspeicher und Formate    |
 |    Formfaktor                |    Befehlszeilentools                        |    Programmgesteuerte Schnittstelle                    |    Microsoft stellt ein virtuelles <br>oder physisches Gerät bereit     |    Dienst im Azure-Portal                                            |
 |    Anfängliche einmalige Konfiguration     |    Einfach               |    Moderat                       |    Einfach (< 30 Minuten) bis mittel (1 bis 2 Stunden)            |    Umfangreich                                                          |
-|    Datenvorverarbeitung              |    Nein                                         |    Nein                                         |    Ja (mit Edge-Compute)                               |    Ja                                                                |
-|    Übertragung aus anderen Clouds       |    Nein                                         |    Nein                                         |    Nein                                                     |    Ja                                                                |
+|    Datenvorverarbeitung              |    Nein                                        |    Nein                                        |    Ja (mit Edge-Compute)                               |    Ja                                                                |
+|    Übertragung aus anderen Clouds       |    Nein                                        |    Nein                                        |    Nein                                                    |    Ja                                                                |
 |    Benutzertyp                        |    IT-Profi oder Entwickler                                       |    Entwicklung                                       |    IT-Profi                                                |    IT-Profi                                                             |
 |    Preise                          |    Kostenlos, Gebühren für Datenerfassung fallen an         |    Kostenlos, Gebühren für Datenerfassung fallen an         |    [Preise](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Preise](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 
@@ -108,4 +108,4 @@ Bei Nutzung von Onlinedatenübertragung verwenden Sie die Tabelle im folgenden A
 - Verwenden der REST-APIs zum Übertragen von Daten
 
     - [In .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)
+    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage)

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: a4e0432260cfb9ee11ed318305fb967d160de835
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 901544886e0a0c90c29e83fc71f7a7a25ffc6862
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652551"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66244882"
 ---
-# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-azure-monitor"></a>Verwenden von Azure Blob Storage für IIS und Azure Table Storage für Ereignisse mit Azure Monitor
+# <a name="collect-azure-diagnostic-logs-from-azure-storage"></a>Sammeln von Azure-Diagnoseprotokollen aus Azure Storage
 
 Azure Monitor kann die Protokolle für die folgenden Dienste, die Diagnosedaten in Table Storage schreiben, sowie die IIS-Protokolle, die in Blob Storage geschrieben werden, lesen:
 
@@ -36,7 +36,7 @@ Die Azure-Diagnose ist eine Azure-Erweiterung, mit der Sie Diagnosedaten von ein
 
 Damit Azure Monitor die Protokolle von Azure-Diagnose sammeln kann, müssen diese sich an den folgenden Speicherorten befinden:
 
-| Protokolltyp | Ressourcentyp | Standort |
+| Protokolltyp | Ressourcentyp | Location |
 | --- | --- | --- |
 | IIS-Protokolle |Virtual Machines <br> Webrollen <br> Workerrollen |wad-iis-logfiles (Blob Storage) |
 | syslog |Virtual Machines |LinuxsyslogVer2v0 (Table Storage) |

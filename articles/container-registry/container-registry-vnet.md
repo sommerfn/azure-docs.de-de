@@ -1,28 +1,32 @@
 ---
-title: Bereitstellen einer Azure-Containerregistrierung in einem virtuellen Netzwerk
+title: Beschränken des Zugriffs auf eine Azure-Containerregistrierung auf ein virtuelles Netzwerk
 description: Erlauben Sie den Zugriff auf eine Azure-Containerregistrierung nur von Ressourcen in einem virtuellen Azure-Netzwerk oder von öffentlichen IP-Adressbereichen.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 15b67218b129b5e017e67651587c389af412d7a1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268412"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619886"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Beschränken des Zugriffs auf eine Azure-Containerregistrierung mithilfe eines virtuellen Azure-Netzwerks oder mit Firewallregeln
 
-Das virtuelle Azure-Netzwerk ([Azure Virtual Network](../virtual-network/virtual-networks-overview.md)) stellt ein sicheres, privates Netzwerk für Ihre Azure- und lokalen Ressourcen bereit. Indem Sie in einem virtuellen Azure-Netzwerk Ihre private Azure-Containerregistrierung (Azure Container Registry) bereitstellen, gewährleisten Sie, dass nur Ressourcen im virtuellen Netzwerk Zugriff auf die Registrierung haben. Bei standortübergreifenden Szenarios können Sie außerdem Firewallregeln konfigurieren, um den Zugriff auf die Registrierung nur von bestimmten IP-Adressen zuzulassen.
+Das virtuelle Azure-Netzwerk ([Azure Virtual Network](../virtual-network/virtual-networks-overview.md)) stellt ein sicheres, privates Netzwerk für Ihre Azure- und lokalen Ressourcen bereit. Indem Sie den Zugriff auf Ihre private Azure-Containerregistrierung nur von einem virtuellen Azure-Netzwerk aus zulassen, gewährleisten Sie, dass nur Ressourcen im virtuellen Netzwerk Zugriff auf die Registrierung haben. Bei standortübergreifenden Szenarios können Sie außerdem Firewallregeln konfigurieren, um den Zugriff auf die Registrierung nur von bestimmten IP-Adressen zuzulassen.
 
-In diesem Artikel werden zwei Szenarios vorgestellt, bei denen mithilfe von Netzwerkzugriffsregeln der Zugriff auf die Azure-Containerregistrierung eingeschränkt wird: Zugriff von einem im gleichen Netzwerk bereitgestellten virtuellen Computer und Zugriff von der öffentlichen IP-Adresse eines virtuellen Computers.
+In diesem Artikel werden zwei Szenarien zum Konfigurieren von Zugriffsregeln für eingehenden Netzwerkdatenverkehr in einer Containerregistrierung vorgestellt: Zugriff von einem in einem virtuellen Netzwerk bereitgestellten virtuellen Computer und Zugriff von der öffentlichen IP-Adresse eines virtuellen Computers.
 
 > [!IMPORTANT]
-> Dieses Feature befindet sich derzeit in der Vorschauphase. Es gelten einige [Einschränkungen](#preview-limitations). Wenn Sie Vorschauversionen nutzen möchten, müssen Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> Dieses Feature befindet sich derzeit in der Vorschauphase. Es gelten einige [Einschränkungen](#preview-limitations). Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 >
+
+Wenn Sie stattdessen Zugriffsregeln für Ressourcen einrichten müssen, um von einem Standort hinter einer Firewall auf eine Containerregistrierung zuzugreifen, lesen Sie die Informationen unter [Configure rules to access an Azure container registry behind a firewall](container-registry-firewall-access-rules.md) (Konfigurieren von Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall).
+
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
@@ -30,15 +34,23 @@ In diesem Artikel werden zwei Szenarios vorgestellt, bei denen mithilfe von Netz
 
 * Nur ein [Azure Kubernetes Service](../aks/intro-kubernetes.md)-Cluster oder ein [virtueller Azure-Computer](../virtual-machines/linux/overview.md) kann in einem virtuellen Netzwerk als Host für den Zugriff auf die Containerregistrierung verwendet werden. *Andere Azure-Dienste einschließlich Azure Container Instances werden derzeit nicht unterstützt.*
 
-* [ACR Tasks](container-registry-tasks-overview.md)-Vorgänge werden derzeit in einer Containerregistrierung, die in einem virtuellen Netzwerk bereitgestellt wurde, nicht unterstützt.
+* [ACR Tasks](container-registry-tasks-overview.md)-Vorgänge werden derzeit in einer Containerregistrierung, auf die in einem virtuellen Netzwerk zugegriffen wird, nicht unterstützt.
 
 * Jede Registrierung unterstützt bis zu 100 Regeln für virtuelle Netzwerke.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Um in diesem Artikel die Schritte an der Azure-Befehlszeilenschnittstelle (CLI) ausführen zu können, ist Azure CLI-Version 2.0.58 oder höher erforderlich. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli] Informationen dazu.
+* Um in diesem Artikel die Schritte an der Azure-Befehlszeilenschnittstelle (CLI) ausführen zu können, ist Azure CLI-Version 2.0.58 oder höher erforderlich. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
-* Wenn Sie noch keine Containerregistrierung haben, können Sie eine Registrierung erstellen (Premium-SKU erforderlich) und mithilfe von Push ein Beispielimage wie `hello-world` vom Docker-Hub übertragen. Zum Erstellen einer Registrierung können Sie das [Azure-Portal][quickstart-portal] oder die [Azure-Befehlszeilenschnittstelle (CLI)][quickstart-cli] verwenden. 
+* Wenn Sie noch keine Containerregistrierung haben, können Sie eine Registrierung erstellen (Premium-SKU erforderlich) und mithilfe von Push ein Beispielimage wie `hello-world` vom Docker-Hub übertragen. Zum Erstellen einer Registrierung können Sie das [Azure-Portal][quickstart-portal] oder die [Azure-Befehlszeilenschnittstelle][quickstart-cli] verwenden. 
+
+* Wenn Sie den Registrierungszugriff mithilfe eines virtuellen Netzwerks in einem anderen Azure-Abonnement einschränken möchten, müssen Sie den Ressourcenanbieter für Azure Container Registry in diesem Abonnement registrieren. Beispiel:
+
+  ```azurecli
+  az account set --subscription <Name or ID of subscription of virtual network>
+
+  az provider register --namespace Microsoft.ContainerRegistry
+  ``` 
 
 ## <a name="about-network-rules-for-a-container-registry"></a>Informationen zu Netzwerkregeln für eine Containerregistrierung
 
@@ -216,7 +228,7 @@ Eine Azure-Containerregistrierung lässt standardmäßig Verbindungen von Hosts 
 
 ## <a name="allow-access-from-an-ip-address"></a>Zulassen des Zugriffs von einer IP-Adresse
 
-In diesem Abschnitt konfigurieren Sie Ihre Containerregistrierung für den Zugriff aus einem Subnetz in einem virtuellen Azure-Netzwerk. Die Schritte werden jeweils bei Verwendung der Azure-Befehlszeilenschnittstelle (CLI) bzw. des Azure-Portals erläutert.
+In diesem Abschnitt konfigurieren Sie Ihre Containerregistrierung für den Zugriff von einer bestimmten IP-Adresse oder einem IP-Adressbereich. Die Schritte werden jeweils bei Verwendung der Azure-Befehlszeilenschnittstelle (CLI) bzw. des Azure-Portals erläutert.
 
 ### <a name="allow-access-from-an-ip-address---cli"></a>Zulassen des Zugriffs von einer IP-Adresse – Befehlszeilenschnittstelle (CLI)
 
@@ -326,7 +338,7 @@ Um eine Liste der Netzwerkregeln anzuzeigen, die für Ihre Registrierung konfigu
 az acr network-rule list--name mycontainerregistry 
 ```
 
-Führen Sie für jede konfigurierte Regel den Befehl [az acr network-rule remove][az-acr-network-rule-remove] Befehl aus, um die Regel zu entfernen. Beispiel: 
+Führen Sie für jede konfigurierte Regel den Befehl [az acr network-rule remove][az-acr-network-rule-remove] aus, um die Regel zu entfernen. Beispiel:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.

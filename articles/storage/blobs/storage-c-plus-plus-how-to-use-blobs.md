@@ -1,19 +1,18 @@
 ---
 title: Verwenden des Objektspeichers (Blob-Speichers) mit C++ – Azure | Microsoft-Dokumentation
 description: Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher).
-services: storage
-author: MichaelHauss
-ms.service: storage
-ms.topic: conceptual
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 03/21/2018
-ms.author: michaelhauss
+ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: d86b2c71515900405b0e7714d2c36cd8e4cbc7fc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.topic: conceptual
+ms.openlocfilehash: f64856d5b0140d529e939d92d4be61b074928d6e
+ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993229"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68726423"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Verwenden des Blob-Speichers mit C++
 
@@ -67,7 +66,7 @@ Wählen Sie zum Starten des Azure-Speicheremulators die Schaltfläche **Start**,
 
 In den folgenden Beispielen wird davon ausgegangen, dass Sie eine dieser zwei Methoden verwendet haben, um die Speicherverbindungszeichenfolge abzurufen.  
 
-## <a name="retrieve-your-connection-string"></a>Abrufen der Verbindungszeichenfolge
+## <a name="retrieve-your-storage-account"></a>Abrufen Ihres Speicherkontos
 Sie können Ihre Speicherkontoinformationen mit der Klasse **cloud_storage_account** angeben. Verwenden Sie zum Abrufen von Speicherkontoinformationen aus der Speicher-Verbindungszeichenfolge die **parse** -Methode.  
 
 ```cpp

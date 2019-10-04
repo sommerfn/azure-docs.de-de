@@ -2,23 +2,23 @@
 title: Übersicht über die Architektur – Azure Active Directory | Microsoft-Dokumentation
 description: Sie erfahren, was ein Azure Active Directory-Mandant ist und wie Azure über Azure Active Directory verwaltet wird.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/23/2018
-ms.author: lizross
+ms.date: 05/23/2019
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12819bdc20dea57a8a114bb4ff311f828be8b15a
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: b124475b44778ef3bb0dc9eba0c59bb3a277b85a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286211"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562051"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Was ist die Azure Active Directory-Architektur?
 Mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Azure-Dienste und Ressourcen für Ihre Benutzer sicher verwalten. In Azure AD ist eine vollständige Suite mit Funktionen zur Identitätsverwaltung enthalten. Weitere Informationen zu Azure AD-Features finden Sie unter [Was ist Azure Active Directory?](active-directory-whatis.md).
@@ -30,14 +30,14 @@ Die geografisch verteilte Architektur von Azure AD bietet umfassende Funktionen 
 
 In diesem Artikel werden die folgenden Architekturelemente behandelt:
  *  Design der Dienstarchitektur
- *  Benutzerfreundlichkeit 
+ *  Skalierbarkeit
  *  Fortlaufende Verfügbarkeit
  *  Rechenzentren
 
 ### <a name="service-architecture-design"></a>Design der Dienstarchitektur
 Zum Erstellen eines zugänglichen und verwendbaren Systems mit umfassenden Daten werden am häufigsten unabhängige Bausteine oder Skalierungseinheiten verwendet. In der Azure AD-Datenschicht werden Skalierungseinheiten als *Partitionen* bezeichnet. 
 
-Die Datenschicht verfügt über mehrere Front-End-Dienste, über die Lese-/Schreibfunktionen bereitgestellt werden. Im folgenden Diagramm ist dargestellt, wie die Komponenten einer Partition mit einem Verzeichnis in geografisch verteilten Rechenzentren bereitgestellt werden. 
+Die Datenschicht verfügt über mehrere Front-End-Dienste, über die Lese-/Schreibfunktionen bereitgestellt werden. Das folgende Diagramm zeigt, wie die Komponenten einer Partition mit einem Verzeichnis in geografisch verteilten Datencentern bereitgestellt werden. 
 
   ![Diagramm einer Partition mit einem einzelnen Verzeichnis](./media/active-directory-architecture/active-directory-architecture.png)
 
@@ -49,7 +49,7 @@ Das *primäre Replikat* empfängt alle *Schreibvorgänge* für die Partition, zu
 
 **Sekundäre Replikate**
 
-Alle *Lesevorgänge* des Verzeichnisses werden über *sekundäre Replikate* abgewickelt, bei denen es sich um Rechenzentren handelt, die physisch auf verschiedene geografische Regionen verteilt sind. Es gibt viele sekundäre Replikate, weil die Daten asynchron repliziert werden. Lesevorgänge des Verzeichnisses, z.B. Authentifizierungsanforderungen, werden über Rechenzentren abgewickelt, die sich in der Nähe der Kunden befinden. Die sekundären Replikate sind für die Skalierbarkeit der Lesevorgänge zuständig.
+Alle *Lesevorgänge* des Verzeichnisses werden über *sekundäre Replikate* abgewickelt, bei denen es sich um Datencenter handelt, die physisch auf verschiedene geografische Regionen verteilt sind. Es gibt viele sekundäre Replikate, weil die Daten asynchron repliziert werden. Lesevorgänge des Verzeichnisses (beispielsweise Authentifizierungsanforderungen) werden über Datencenter abgewickelt, die sich in der Nähe der Kunden befinden. Die sekundären Replikate sind für die Skalierbarkeit der Lesevorgänge zuständig.
 
 ### <a name="scalability"></a>Skalierbarkeit
 
@@ -61,7 +61,7 @@ Für Verzeichnisanwendungen wird eine Verbindung mit den Rechenzentren in der N�
 
 ### <a name="continuous-availability"></a>Fortlaufende Verfügbarkeit
 
-Anhand der Verfügbarkeit (bzw. Betriebszeit) wird definiert, inwiefern ein System ohne Unterbrechungen betrieben werden kann. Der Schlüssel zur hohen Verfügbarkeit von Azure AD liegt darin, dass die Dienste Datenverkehr schnell in mehrere geografisch verteilte Rechenzentren verlagern können. Jedes Rechenzentrum ist unabhängig, sodass Fehlermodi ohne Korrelation möglich sind.
+Anhand der Verfügbarkeit (bzw. Betriebszeit) wird definiert, inwiefern ein System ohne Unterbrechungen betrieben werden kann. Der Schlüssel zur Hochverfügbarkeit von Azure AD liegt darin, dass die Dienste Datenverkehr schnell in mehrere geografisch verteilte Datencenter verlagern können. Jedes Datencenter ist unabhängig, was Fehlermodi ohne Korrelation ermöglicht. Durch diesen Entwurf für Hochverfügbarkeit erfordert Azure AD keine Ausfallzeiten für Wartungsarbeiten.
 
 Der Partitionsentwurf von Azure AD ist im Vergleich mit dem AD-Unternehmensentwurf einfach. Es wird ein Entwurf mit nur einem Master verwendet, der über einen sorgfältig orchestrierten und deterministischen Failoverprozess für primäre Replikate verfügt.
 
@@ -73,21 +73,21 @@ Für Lesevorgänge (deren Zahl die Schreibvorgänge weit übersteigt) werden nur
 
 **Dauerhaftigkeit von Daten**
 
-Bevor ein Schreibvorgang bestätigt wird, erfolgt dafür ein dauerhafter Commit in mindestens zwei Rechenzentren. Hierfür wird für den Schreibvorgang zuerst auf dem primären Replikat ein Commit durchgeführt, und anschließend wird er sofort in mindestens einem anderen Rechenzentrum repliziert. Mit dieser Schreibaktion wird sichergestellt, dass in einer Notfallsituation ein potenzieller Ausfall des Rechenzentrums, auf dem das primäre Replikat gehostet wird, nicht zu Datenverlust führt.
+Bevor ein Schreibvorgang bestätigt wird, erfolgt dafür ein dauerhafter Commit in mindestens zwei Datencentern. Hierfür wird für den Schreibvorgang zuerst ein Commit im primären Datencenter ausgeführt, und anschließend wird er sofort in mindestens einem anderen Datencenter repliziert. Mit dieser Schreibaktion wird sichergestellt, dass in einer Notfallsituation ein potenzieller Ausfall des Datencenters, in dem das primäre Replikat gehostet wird, nicht zu Datenverlusten führt.
 
 In Azure AD wird ein RTO-Wert ([Recovery Time Objective](https://en.wikipedia.org/wiki/Recovery_time_objective)) von null verwendet, damit bei Failovern keine Daten verloren gehen. Dies umfasst:
 -  Tokenausstellung und Verzeichnislesevorgänge
 -  Nur RTO-Wert von 5 Minuten für Verzeichnisschreibvorgänge
 
-### <a name="data-centers"></a>Rechenzentren
+### <a name="datacenters"></a>Rechenzentren
 
-Die Replikate von Azure AD werden in Rechenzentren gespeichert, die weltweit verteilt sind. Weitere Informationen finden Sie unter [Azure-Rechenzentren](https://azure.microsoft.com/overview/datacenters).
+Die Replikate von Azure AD werden in Rechenzentren gespeichert, die weltweit verteilt sind. Weitere Informationen finden Sie unter [Globale Azure-Infrastruktur](https://azure.microsoft.com/global-infrastructure/).
 
-Azure AD wird basierend auf Rechenzentren mit den folgenden Merkmalen betrieben:
+Azure AD wird in Datencentern mit folgenden Merkmalen betrieben:
 
- * Authentifizierung, Graph und andere AD-Dienste sind hinter dem Gatewaydienst angeordnet. Das Gateway verwaltet den Lastenausgleich dieser Dienste. Es wird automatisch ein Failover durchgeführt, wenn mit transaktionalen Integritätstests fehlerhafte Server erkannt werden. Basierend auf diesen Integritätstests wird Datenverkehr vom Gateway dynamisch an fehlerfreie Rechenzentren weitergeleitet.
- * Für *Lesevorgänge* verfügt das Verzeichnis über sekundäre Replikate und entsprechende Front-End-Dienste in einer Aktiv/Aktiv-Konfiguration, die in mehreren Rechenzentren betrieben wird. Wenn ein gesamtes Rechenzentrum ausfällt, wird der Datenverkehr automatisch an ein anderes Rechenzentrum weitergeleitet.
- *  Für *Schreibvorgänge* führt das Verzeichnis für primäre Replikate (Master) ein Failover für alle Rechenzentren durch, indem Schritte für geplante Failover (neues primäres Replikat wird mit altem primärem Replikat synchronisiert) oder Notfallfailover ausgeführt werden. Die Dauerhaftigkeit der Daten wird erreicht, indem ein Commit in mindestens zwei Rechenzentren repliziert wird.
+ * Authentifizierung, Graph und andere AD-Dienste sind hinter dem Gatewaydienst angeordnet. Das Gateway verwaltet den Lastenausgleich dieser Dienste. Es wird automatisch ein Failover durchgeführt, wenn mit transaktionalen Integritätstests fehlerhafte Server erkannt werden. Basierend auf diesen Integritätstests wird Datenverkehr vom Gateway dynamisch an fehlerfreie Datencenter weitergeleitet.
+ * Für *Lesevorgänge* verfügt das Verzeichnis über sekundäre Replikate und entsprechende Front-End-Dienste in einer Aktiv/Aktiv-Konfiguration, die in mehreren Datencentern betrieben werden. Wenn ein gesamtes Datencenter ausfällt, wird der Datenverkehr automatisch an ein anderes Datencenter weitergeleitet.
+ *  Für *Schreibvorgänge* führt das Verzeichnis ein datencenterübergreifendes Failover für das primäre Replikat (Master) durch – entweder in Form eines geplanten Failovers (neues primäres Replikat wird mit altem primärem Replikat synchronisiert) oder in Form eines Notfallfailovers. Die Dauerhaftigkeit der Daten wird erreicht, indem ein Commit in mindestens zwei Datencentern repliziert wird.
 
 **Datenkonsistenz**
 
@@ -95,7 +95,7 @@ Das Verzeichnismodell lautet „Letztliche Konsistenz“. Ein typisches Problem 
 
 Azure AD bietet Lese-/Schreibkonsistenz für Anwendungen, die auf ein sekundäres Replikat abzielen, indem die zugehörigen Schreibvorgänge an das primäre Replikat weitergeleitet und synchron dazu die Schreibvorgänge zurück auf das sekundäre Replikat verschoben werden.
 
-Anwendungsschreibvorgänge, für die die Graph-API von Azure AD verwendet wird, werden in Bezug auf die Beibehaltung der Affinität mit einem Verzeichnisreplikat für Schreib-/Lesekonsistenz abstrahiert. Der Graph-Dienst von Azure AD verfügt über eine logische Sitzung mit einer Affinität mit einem sekundären Replikat, das für Lesevorgänge verwendet wird. Die Affinität wird in einem „Replikattoken“ erfasst, das vom Graphdienst mithilfe eines verteilten Cache zwischengespeichert wird. Dieses Token wird dann für nachfolgende Vorgänge in derselben logischen Sitzung verwendet. 
+Anwendungsschreibvorgänge, für die die Graph-API von Azure AD verwendet wird, werden in Bezug auf die Beibehaltung der Affinität mit einem Verzeichnisreplikat für Schreib-/Lesekonsistenz abstrahiert. Der Graph-Dienst von Azure AD verfügt über eine logische Sitzung mit einer Affinität mit einem sekundären Replikat, das für Lesevorgänge verwendet wird. Die Affinität wird in einem „Replikattoken“ erfasst, das vom Diagrammdienst mithilfe eines verteilten Cache im sekundären Replikatdatencenter zwischengespeichert wird. Dieses Token wird dann für nachfolgende Vorgänge in derselben logischen Sitzung verwendet. Um weiterhin dieselbe logische Sitzung zu verwenden, müssen nachfolgende Anforderungen an das gleiche Azure AD-Datencenter geroutet werden. Es ist nicht möglich, eine logische Sitzung fortzusetzen, wenn die Verzeichnisclientanforderungen an mehrere Azure AD-Datenzentren geroutet werden. Falls dies passiert, verfügt der Client über mehrere logische Sitzungen mit unabhängigen Lese-/Schreibkonsistenzen.
 
  >[!NOTE]
  >Schreibvorgänge werden sofort auf dem sekundären Replikat repliziert, für das die Lesevorgänge der logischen Sitzung ausgestellt wurden.

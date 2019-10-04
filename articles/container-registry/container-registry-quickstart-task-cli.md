@@ -3,17 +3,18 @@ title: 'Schnellstart: Erstellen und Ausführen eines Containerimages in Azure Co
 description: Führen Sie mit Azure Container Registry schnell Aufgaben aus, um bei Bedarf ein Containerimage in der Cloud zu erstellen und auszuführen.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 61a17842158326c927f049af893a00818f3acc55
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e5e02d8194f9164a03bb27d932df45d91486c518
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793385"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310629"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Schnellstart: Erstellen und Ausführen eines Containerimages mithilfe von Azure Container Registry Tasks
 
@@ -25,7 +26,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][azu
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für diesen Schnellstart verwenden. Für die lokale Verwendung wird mindestens die Version 2.0.58 empfohlen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
+Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für diesen Schnellstart verwenden. Für die lokale Verwendung wird mindestens die Version 2.0.58 empfohlen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -45,14 +46,14 @@ Erstellen Sie mithilfe des Befehls [az acr create][az-acr-create] eine Container
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-In diesem Beispiel wird eine Registrierung vom Typ *Basic* erstellt. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Diensttarifen finden Sie unter [Azure Container Registry-SKUs][container-registry-skus].
+In diesem Beispiel wird eine Registrierung vom Typ *Basic* erstellt. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Dienstebenen finden Sie unter [Azure Container Registry-SKUs][container-registry-skus].
 
 ## <a name="build-an-image-from-a-dockerfile"></a>Erstellen eines Images auf der Grundlage eines Dockerfile
 
 Erstellen Sie nun mithilfe von Azure Container Registry ein Image. Erstellen Sie zunächst ein Arbeitsverzeichnis und anschließend ein Dockerfile namens *Dockerfile* mit folgendem Inhalt. Hierbei handelt es sich um ein einfaches Beispiel für die Erstellung eines Linux-Containerimages. Sie können jedoch Ihr eigenes Standard-Dockerfile sowie Images für andere Plattformen erstellen.
 
 ```bash
-echo "FROM hello-world" > Dockerfile
+echo FROM hello-world > Dockerfile
 ```
 
 Führen Sie den Befehl [az acr build][az-acr-build] aus, um das Image zu erstellen. Nach erfolgreicher Erstellung wird das Image mithilfe von Push an Ihre Registrierung übertragen. Im folgenden Beispiel wird das Image `sample/hello-world:v1` mithilfe von Push übertragen. Der Punkt (`.`) am Ende des Befehls legt den Speicherort des Dockerfile fest (in diesem Fall: das aktuelle Verzeichnis).
@@ -117,7 +118,7 @@ Run ID: ca8 was successful after 10s
 
 Führen Sie nun schnell das Image aus, das Sie erstellt und mithilfe von Push an Ihre Registrierung übertragen haben. In Ihrem Workflow für die Containerentwicklung kann dieser Schritt zur Überprüfung vor der Imagebereitstellung genutzt werden.
 
-Erstellen Sie in einem lokalen Arbeitsverzeichnis eine Datei namens *quickrun.yaml* mit dem folgenden Inhalt für einen einzelnen Schritt. Ersetzen Sie den Namen des Anmeldeservers Ihrer Registrierung durch *\<acrLoginServer\>*. Der Name des Anmeldeservers wird im Format *\<Registrierungsname\>.azurecr.io* (nur Kleinbuchstaben) angegeben (Beispiel: *mycontainerregistry008.azurecr.io*). In diesem Beispiel wird davon ausgegangen, dass Sie im vorherigen Abschnitt das Image `sample/hello-world:v1` erstellt und mithilfe von Push übertragen haben:
+Erstellen Sie in einem lokalen Arbeitsverzeichnis eine Datei namens *quickrun.yaml* mit dem folgenden Inhalt für einen einzelnen Schritt. Ersetzen Sie den Namen des Anmeldeservers Ihrer Registrierung durch *\<acrLoginServer\>* . Der Name des Anmeldeservers wird im Format *\<Registrierungsname\>.azurecr.io* (nur Kleinbuchstaben) angegeben (Beispiel: *mycontainerregistry008.azurecr.io*). In diesem Beispiel wird davon ausgegangen, dass Sie im vorherigen Abschnitt das Image `sample/hello-world:v1` erstellt und mithilfe von Push übertragen haben:
 
 ```yml
 steps:

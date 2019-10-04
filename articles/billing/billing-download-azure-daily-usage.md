@@ -1,26 +1,23 @@
 ---
-title: Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren | Microsoft-Dokumentation
+title: Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren
 description: Hier wird beschrieben, wie Sie Azure-Daten zur täglichen Nutzung und zu den Gebühren herunterladen oder anzeigen.
 keywords: Nutzungsabrechnung, Nutzungsgebühren, Nutzung herunterladen, Nutzung anzeigen, Azure-Rechnung, Azure-Nutzung
-services: billing
-documentationcenter: ''
-author: genlin
+author: bandersmsft
 manager: jureid
-editor: ''
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 520d3f6a45b44ba2023dee34642f796689f48221
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 23cd7c3765fc99eb5907aa853d7431d5e247aea6
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648845"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709723"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren
 
@@ -32,7 +29,7 @@ Wenn Sie über eine [Microsoft-Kundenvereinbarung](#check-your-access-to-a-micro
 
 ## <a name="download-usage-from-the-account-center-csv"></a>Herunterladen der Nutzungsdaten aus dem Kontocenter (CSV)
 
-1. Melden Sie sich als Kontoadministrator im [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) an.
+1. Melden Sie sich beim [Azure-Kontocenter](https://account.windowsazure.com/subscriptions) als Kontoadministrator an.
 
 2. Wählen Sie das Abonnement, für das Sie die Rechnung und Nutzungsinformationen abrufen möchten.
 
@@ -60,7 +57,7 @@ Weitere Informationen über Ihre Daten zur täglichen Nutzung finden Sie unter [
 
 ## <a name="download-usage-for-ea-customers"></a>Herunterladen von Nutzungsdaten für EA-Kunden
 
-Um Nutzungsdaten als EA-Kunde anzeigen und herunterladen zu können, müssen Sie Unternehmensadministrator, Kontobesitzer oder Abteilungsadministrator sein. Außerdem muss die Richtlinie zum Anzeigen von Gebühren aktiviert sein.
+Sie müssen Unternehmensadministrator, Kontobesitzer oder Abteilungsadministrator sein, um Nutzungsdaten als EA-Kunde anzeigen und herunterladen zu können. Außerdem muss die Richtlinie zum Anzeigen von Gebühren aktiviert sein.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach *Kostenverwaltung + Abrechnung*.
@@ -77,7 +74,7 @@ Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, können Sie die Azur
 ### <a name="download-usage-for-billed-charges"></a>Herunterladen der Nutzung für in Rechnung gestellte Gebühren
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
+2. Suchen Sie nach *Kostenverwaltung + Abrechnung*.
 3. Wählen Sie ein Abrechnungsprofil aus. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise zuerst ein Abrechnungskonto auswählen.
 4. Wählen Sie **Rechnungen** aus.
 5. Suchen Sie im Rechnungsraster nach der Zeile der Rechnung, die der Nutzung entspricht, die Sie herunterladen möchten.
@@ -94,9 +91,9 @@ Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, können Sie die Azur
 Sie können auch die Nutzungsgebühren für den bisherigen Kalendermonat für den aktuellen Abrechnungszeitraum herunterladen. Diese Nutzungsgebühren wurden noch nicht in Rechnung gestellt.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
+2. Suchen Sie nach *Kostenverwaltung + Abrechnung*.
 3. Wählen Sie ein Abrechnungsprofil aus. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise zuerst ein Abrechnungskonto auswählen.
-4. Suchen Sie auf dem Blatt **Übersicht** nach den Downloadlinks unter den Gebühren für den bisherigen Kalendermonat.
+4. Suchen Sie im Bereich **Übersicht** nach den Downloadlinks unter den Gebühren für den bisherigen Kalendermonat.
 5. Wählen Sie **Azure-Nutzung und -Gebühren** aus.
 
     ![Screenshot des Blatts „Übersicht“ mit dem Downloadlink](./media/billing-download-azure-usage/open-usage.png)
@@ -104,9 +101,9 @@ Sie können auch die Nutzungsgebühren für den bisherigen Kalendermonat für de
 ## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 11587d5a0520d42d554c13a525c3b57db82326aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5417f66696191cebadc2af9c6d634419a0eb8e5b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229474"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60615385"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Debuggen von benutzerdefiniertem C#-Code für fehlerhafte U-SQL-Aufträge
 
@@ -28,7 +28,7 @@ Das folgende Video zeigt die Verwendung des Features „Debuggen von Vertexfehle
 >
 
 > [!IMPORTANT]
-> Für Visual Studio müssen zur Nutzung dieses Features die beiden folgenden Updates installiert sein: [Microsoft Visual C++ 2015 Redistributable Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) und die [universelle Windows 10-C-Runtime](https://www.microsoft.com/download/details.aspx?id=50410).
+> Für Visual Studio müssen zur Nutzung dieses Features die beiden folgenden Updates installiert sein: [Microsoft Visual C++ 2015 Redistributable Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) und [Universelle C-Runtime für Windows](https://www.microsoft.com/download/details.aspx?id=50410).
 >
 
 ## <a name="download-failed-vertex-to-local-machine"></a>Herunterladen eines fehlerhaften Vertex auf den lokalen Computer
@@ -80,7 +80,7 @@ Wenn der Benutzercode nicht in der CodeBehind-Datei enthalten ist oder Sie die A
 
 2. Rufen Sie den Projektordnerpfad für das Projekt **FailedVertexDebugHost** ab. 
 
-3. Klicken Sie mit der rechten Maustaste auf das hinzugefügte Projekt mit dem Assemblyquellcode, klicken Sie auf **Eigenschaften**, wählen Sie links die Registerkarte **Erstellen** aus, und fügen Sie den in Schritt 2 kopierten Pfad, der auf „\bin\debug“ endet, als **Ausgabe > Ausgabepfad** ein. Der endgültige Ausgabepfad lautet „<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\"“.
+3. Klicken Sie mit der rechten Maustaste auf das hinzugefügte Projekt mit dem Assemblyquellcode, klicken Sie auf **Eigenschaften**, wählen Sie links die Registerkarte **Erstellen** aus, und fügen Sie den in Schritt 2 kopierten Pfad, der auf „\bin\debug“ endet, als **Ausgabe > Ausgabepfad** ein. Der endgültige Ausgabepfad lautet `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`.
 
     ![Azure Data Lake Analytics-U-SQL-Debugprojekt, PDB-Pfad einrichten](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 

@@ -1,23 +1,25 @@
 ---
-title: Überwachen eines Azure Storage-Kontos | Microsoft-Dokumentation
+title: Überwachen eines Azure Storage-Kontos im Azure-Portal | Microsoft-Dokumentation
 description: Erfahren Sie, wie ein Speicherkonto in Azure mithilfe des Azure-Portals überwacht wird.
-services: storage
-author: tamram
+author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/31/2018
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 64cfac0d689df88c4d432e772bcd0a0cc7ab4ade
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317679"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211856"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
 
-[Azure-Speicheranalyse](storage-analytics.md) enthält Metriken für alle Speicherdienste und Protokolle für Blobs, Warteschlangen und Tabellen. Sie können im [Azure-Portal](https://portal.azure.com) konfigurieren, welche Metriken und Protokolle für Ihr Konto aufgezeichnet werden, und Diagramme konfigurieren, die visuelle Darstellungen der Metrikdaten bereitstellen.
+[Azure-Speicheranalyse](storage-analytics.md) enthält Metriken für alle Speicherdienste und Protokolle für Blobs, Warteschlangen und Tabellen. Sie können im [Azure-Portal](https://portal.azure.com) konfigurieren, welche Metriken und Protokolle für Ihr Konto aufgezeichnet werden, und Diagramme konfigurieren, die visuelle Darstellungen der Metrikdaten bereitstellen. 
+
+Es wird empfohlen, [Azure Monitor für Storage](../../azure-monitor/insights/storage-insights-overview.md) (Vorschauversion) zu überprüfen. Dieses Feature von Azure Monitor ermöglicht eine umfassende Überwachung ihrer Azure Storage-Konten, indem eine einheitliche Ansicht der Leistung, Kapazität und Verfügbarkeit Ihrer Azure Storage-Dienste bereitgestellt wird. Sie müssen nichts aktivieren oder konfigurieren und können diese Metriken aus den vordefinierten interaktiven Diagrammen und anderen darin enthaltenen Visualisierungen sofort anzeigen.
 
 > [!NOTE]
 > Für die Untersuchung von Überwachungsdaten im Azure-Portal fallen Kosten an. Weitere Informationen finden Sie unter [Storage Analytics](storage-analytics.md).
@@ -38,7 +40,7 @@ ms.locfileid: "58317679"
 
     ![Überwachungsoptionen](./media/storage-monitor-storage-account/storage-enable-metrics-01.png)
 
-   Zum Festlegen der Datenaufbewahrungsrichtlinie verschieben Sie den Schieberegler **Aufbewahrung (Tage)**, oder geben Sie die Anzahl der Tage ein, für die Daten aufbewahrt werden sollen (zwischen 1 und 365). Die Standardeinstellung für neue Speicherkonten beträgt sieben Tage. Wenn Sie keine Aufbewahrungsrichtlinie festlegen möchten, geben Sie null (0) ein. Ist keine Aufbewahrungsrichtlinie festgelegt, müssen Sie die Überwachungsdaten selbst löschen.
+   Zum Festlegen der Datenaufbewahrungsrichtlinie verschieben Sie den Schieberegler **Aufbewahrung (Tage)** , oder geben Sie die Anzahl der Tage ein, für die Daten aufbewahrt werden sollen (zwischen 1 und 365). Die Standardeinstellung für neue Speicherkonten beträgt sieben Tage. Wenn Sie keine Aufbewahrungsrichtlinie festlegen möchten, geben Sie null (0) ein. Ist keine Aufbewahrungsrichtlinie festgelegt, müssen Sie die Überwachungsdaten selbst löschen.
 
    > [!WARNING]
    > Ihnen werden Gebühren berechnet, wenn Sie Metrikdaten manuell löschen. Veraltete Analysedaten (Daten, die älter sind als die Aufbewahrungsrichtlinie) werden vom System kostenlos gelöscht. Wir empfehlen, die Aufbewahrungsrichtlinie entsprechend dem Zeitraum festzulegen, den Sie Speicheranalysedaten für Ihr Konto behalten möchten. Weitere Informationen finden Sie unter [Abrechnung für Speichermetriken](storage-analytics-metrics.md#billing-on-storage-metrics).
@@ -93,8 +95,8 @@ Die Metriken, die Sie in **Diagnose** ausgewählt haben, bestimmen die Auflösun
 
 Sie können Warnungen erstellen, damit Sie benachrichtigt werden, wenn Speicherressourcenmetriken Schwellenwerte erreichen.
 
-1. Um das ‚Blatt **Warnungsregeln** zu öffnen, scrollen Sie zum Abschnitt **ÜBERWACHUNG** des **Menüblatts** nach unten, und wählen Sie **Warnungen (klassisch)**.
-2. Wählen Sie **Metrikwarnung hinzufügen (klassisch)**, um das Blatt **Warnungsregel hinzufügen** zu öffnen.
+1. Um das ‚Blatt **Warnungsregeln** zu öffnen, scrollen Sie zum Abschnitt **ÜBERWACHUNG** des **Menüblatts** nach unten, und wählen Sie **Warnungen (klassisch)** .
+2. Wählen Sie **Metrikwarnung hinzufügen (klassisch)** , um das Blatt **Warnungsregel hinzufügen** zu öffnen.
 3. Geben Sie einen **Namen** und eine **Beschreibung** für Ihre neue Warnungsregel ein.
 4. Wählen Sie die **Metrik**, für die Sie eine Warnung hinzufügen möchten, eine **Bedingung** für die Warnung und einen **Schwellenwert**. Der Schwellenwerteinheiten-Typ ändert sich je nach der Metrik, die Sie ausgewählt haben. Beispielsweise ist „count“ der Einheitentyp für *ContainerCount*, die Einheit für die Metrik *PercentNetworkError* ist dagegen ein Prozentsatz.
 5. Wählen Sie den **Zeitraum** aus. Metriken, die den Schwellenwert innerhalb des Zeitraums erreichen oder überschreiten, lösen eine Warnung aus.
@@ -107,7 +109,7 @@ Sie können Warnungen erstellen, damit Sie benachrichtigt werden, wenn Speicherr
 Sie können Ihrem Portaldashboard Azure Storage-Metrikdiagramme für beliebige Ihrer Speicherkonten hinzufügen.
 
 1. Wählen Sie **Dashboard bearbeiten**, während Ihr Dashboard im [Azure-Portal](https://portal.azure.com) angezeigt wird.
-1. Wählen Sie im **Kachelkatalog** die Option **Kacheln suchen nach:** > **Typ**.
+1. Wählen Sie im **Kachelkatalog** die Option **Kacheln suchen nach:**  > **Typ**.
 1. Wählen Sie **Typ** > **Speicherkonten**.
 1. Wählen Sie in **Ressourcen** das Speicherkonto aus, dessen Metriken Sie dem Dashboard hinzufügen möchten.
 1. Wählen Sie **Kategorien** > **Überwachung**.

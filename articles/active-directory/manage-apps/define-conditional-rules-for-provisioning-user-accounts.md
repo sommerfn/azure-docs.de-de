@@ -3,8 +3,8 @@ title: Bereitstellen von Apps mit Bereichsfiltern | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe von Bereichsfiltern verhindern, dass Objekte in Apps mit automatisierter Benutzerbereitstellung bereitgestellt werden, wenn ein Objekt Ihre Geschäftsanforderungen nicht erfüllt.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: celested
+ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ebc6c1e8a264c5570f3100885c4fca7d0d0d90d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208373"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812683"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern
 In diesem Artikel wird die Verwendung von Bereichsfiltern zum Definieren attributbasierter Regeln beschrieben, die festlegen, welche Benutzer für eine Anwendung bereitgestellt werden.
@@ -108,7 +108,7 @@ Bereichsfilter werden im Rahmen der Attributzuordnungen für jeden Bereitstellun
 13. Klicken Sie auf dem Bildschirm **Attributzuordnung** auf **Speichern**. 
 
 >[!IMPORTANT] 
-> Beim Speichern eines neuen Bereichsfilters wird eine neue vollständige Synchronisierung für die Anwendung ausgelöst, bei der alle Benutzer im Quellsystem für den neuen Bereichsfilter neu ausgewertet werden. Wenn ein Benutzer in der Anwendung im Bereitstellungsbereich enthalten war und sich dies ändert, wird sein Konto in der Anwendung deaktiviert (bzw. die Bereitstellung aufgehoben).
+> Beim Speichern eines neuen Bereichsfilters wird eine neue vollständige Synchronisierung für die Anwendung ausgelöst, bei der alle Benutzer im Quellsystem für den neuen Bereichsfilter neu ausgewertet werden. Wenn ein Benutzer in der Anwendung im Bereitstellungsbereich enthalten war und sich dies ändert, wird sein Konto in der Anwendung deaktiviert (bzw. die Bereitstellung aufgehoben). Informationen zum Außerkraftsetzen dieses Standardverhaltens finden Sie unter [Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md).
 
 
 ## <a name="related-articles"></a>Verwandte Artikel

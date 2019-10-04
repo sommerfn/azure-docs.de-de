@@ -2,19 +2,19 @@
 title: Häufig gestellte Fragen (FAQ) – Azure Search
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Microsoft Azure Search-Dienst, einem in der Cloud gehosteten Suchdienst für Microsoft Azure.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9ea4e4ec78e5613758bd9e5ff7a4fbd3273208c6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d4aae2f2ef9ccbc645647125682d999c11c99ab6
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312815"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649826"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search – Häufig gestellte Fragen (FAQ)
 
@@ -64,7 +64,7 @@ Es gelten keine Einschränkungen für die Verwendung von primären oder sekundä
 
 Nein. Dieser Vorgang wird nicht unterstützt. Die Suche ist immer auf einen einzelnen Index beschränkt.
 
-### <a name="can-i-restrict-search-corpus-access-by-user-identity"></a>Kann ich den Zugriff auf den Suchkorpus nach Benutzeridentität beschränken?
+### <a name="can-i-restrict-search-index-access-by-user-identity"></a>Kann ich den Zugriff auf den Suchindex nach Benutzeridentität beschränken?
 
 Sie können [Sicherheitsfilter](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) mit einem `search.in()`-Filter implementieren. Der Filter lässt sich gut mit [Identitätsverwaltungsdiensten wie Azure Active Directory(AAD)](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) kombinieren, um Suchergebnisse auf der Grundlage definierter Benutzergruppenzugehörigkeit zu trimmen.
 

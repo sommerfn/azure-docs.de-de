@@ -3,8 +3,8 @@ title: Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus | 
 description: Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Verwalten von Ressourcen im Resource Manager-Bereitstellungsmodell
 services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
 documentationcenter: ''
-author: dlepow
-manager: jeconnoc
+author: cynthn
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: be37da5b-72fe-41a1-9fa0-8937b69464ec
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: command-line-interface
 ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
-ms.author: danlep
-ms.openlocfilehash: 8b76e1a168d39d2f39098754f43bae73c21c2049
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.author: cynthn
+ms.openlocfilehash: 1ec1856508588d07e55e60e251a1369ecc3fa985
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155813"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174051"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus
 Dieser Artikel enthält Informationen zur Syntax und zu den Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie für gewöhnlich zum Erstellen und Verwalten von Azure-Ressourcen im Azure Resource Manager-Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im ARM-Modus ausführen. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen. Eine allgemeine Übersicht über Azure-Ressourcen und -Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).  
@@ -48,7 +48,7 @@ Verwenden Sie den folgenden Befehl, um Befehle für den Resource Manager-Modus d
 > 
 > 
 
-## <a name="azure-account-manage-your-account-information"></a>Azure-Konto: Verwalten Ihrer Kontoinformationen
+## <a name="azure-account-manage-your-account-information"></a>azure account: Verwalten Ihrer Kontoinformationen
 Das Tool verwendet Ihre Azure-Kontoinformationen, um sich mit Ihrem Benutzerkonto zu verbinden.
 
 **Auflisten der importierten Abonnements**
@@ -189,7 +189,7 @@ Das Tool verwendet Ihre Azure-Kontoinformationen, um sich mit Ihrem Benutzerkont
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>azure hdinsight: Befehle für das Verwalten von HDInsight-Clustern
+## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>azure hdinsight: Befehle zum Verwalten von HDInsight-Clustern
 **Befehle zum Erstellen oder Hinzufügen einer Cluster-Konfigurationsdatei**
 
     hdinsight config create [options] <configFilePath> <overwrite>
@@ -969,6 +969,7 @@ Parameteroptionen:
      -s, --subscription <subscription>      the subscription identifier
 
 <BR>
+
     network lb address-pool delete [options] <resource-group> <lb-name> <name>
 
 Entfernt die Back-End-IP-Pool-Bereichsressource aus dem Lastenausgleichsmodul.
@@ -1333,7 +1334,9 @@ Parameteroptionen:
     -s, --subscription <subscription>            the subscription identifier
 
 <br>
-    network public-ip list [options] &lt;resource-group&gt; Listet alle öffentlichen IP-Ressourcen innerhalb einer Ressourcengruppe auf.
+
+    network public-ip list [options] <resource-group>
+Listet alle öffentliche IP-Ressourcen innerhalb einer Ressourcengruppe auf.
 
     azure network public-ip list -g myresourcegroup
 
@@ -1353,7 +1356,9 @@ Parameteroptionen:
     --json                                 use json output
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
+
 <BR>
+
     network public-ip show [options] <resource-group> <name>
 
 Zeigt die Eigenschaften der öffentlichen IP für eine öffentliche IP-Ressource innerhalb einer Ressourcengruppe an.
@@ -1504,7 +1509,7 @@ Parameteroptionen:
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>azure provider: Befehle zum Verwalten von Ressourcenanbieter-Registrierungen
+## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>azure provider: Befehle zum Verwalten von Ressourcenanbieterregistrierungen
 **Auflisten der zuletzt registrierten Anbieter in Resource Manager**
 
     provider list [options]
@@ -1542,7 +1547,7 @@ Parameteroptionen:
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role-commands-to-manage-your-azure-roles"></a>azure role: Befehle zum Verwalten Ihrer Azure-Rollen
+## <a name="azure-role-commands-to-manage-your-azure-roles"></a>azure role: Befehle zum Verwalten der Azure-Rollen
 **Abrufen aller verfügbaren Rollendefinitionen**
 
     role list [options]
@@ -1697,7 +1702,7 @@ Parameteroptionen:
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>azure vm: Befehle zum Verwalten Ihrer virtuellen Azure-Computer
+## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>azure vm: Befehle zum Verwalten Ihrer Azure Virtual Machines-Instanzen
 **Erstellen eines virtuellen Computers**
 
     vm create [options] <resource-group> <name> <location> <os-type>

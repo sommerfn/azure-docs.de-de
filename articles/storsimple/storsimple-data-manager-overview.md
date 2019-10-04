@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
-ms.author: vidarmsft
-ms.openlocfilehash: c5ffe3ec2ec3cb06297df6be4ba7021f692633bf
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.author: alkohli
+ms.openlocfilehash: 2ffe17bf7ef4f01c18d2c26f4a045add7302272d
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312487"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67876104"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>Übersicht über die StorSimple Data Manager-Lösung
 
@@ -48,7 +48,7 @@ Sie können Data Manager mit Azure Functions, Azure Automation und Azure Data Fa
 Der StorSimple Manager ist in den folgenden sieben Regionen verfügbar:
 
  - Asien, Südosten
- - USA (Ost)
+ - East US
  - USA (Westen)
  - USA, Westen 2
  - USA, Westen-Mitte

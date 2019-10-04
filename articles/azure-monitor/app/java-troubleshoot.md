@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/14/2018
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: eaade5f9ec9db7e8d224305147dafc264916d9c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a26302b0c0b4361fe3e7aae6aba798f433c72ade
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995595"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742197"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für Java
 Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights in Java][java]? Hier sind einige Tipps.
@@ -35,7 +35,7 @@ Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights i
 * Stellen Sie sicher, dass es in der XML-Datei keinen Knoten `<DisableTelemetry>true</DisableTelemetry>` gibt.
 * In Ihrer Firewall müssen Sie möglicherweise die TCP-Ports 80 und 443 für ausgehenden Datenverkehr zu „dc.services.visualstudio.com“ öffnen. Weitere Informationen finden Sie in den [hier](../../azure-monitor/app/ip-addresses.md)
 * Schauen Sie sich auf der Startseite von Microsoft Azure die Dienststatusübersicht an. Falls es eine Warnungsanzeige gibt, warten Sie, bis sie wieder "OK" anzeigt, und schließen Sie das Application Insights-Anwendungsfenster, bevor Sie es erneut öffnen.
-* Aktivieren Sie die Protokollierung im IDE-Konsolenfenster durch Hinzufügen eines `<SDKLogger />`-Elements unter dem Stammknoten in der Datei „ApplicationInsights.xml“ (im Ressourcenordner Ihres Projekts), und suchen Sie nach Einträgen, denen „AI: INFO/WARN/ERROR“ für verdächtige Protokolleinträge vorangestellt ist.
+* [Aktivieren Sie die Protokollierung](#debug-data-from-the-sdk) durch Hinzufügen eines `<SDKLogger />`-Elements unter dem Stammknoten in der Datei „ApplicationInsights.xml“ (im Ressourcenordner Ihres Projekts), und suchen Sie nach Einträgen, denen „AI: INFO/WARN/ERROR“ für verdächtige Protokolleinträge vorangestellt ist. 
 * Stellen Sie sicher, dass die richtige Datei "ApplicationInsights.xml" vom Java-SDK geladen wurde, indem Sie die von der Konsole ausgegebenen Meldungen auf den Hinweis untersuchen, dass die Konfigurationsdatei gefunden wurde.
 * Wenn die Konfigurationsdatei nicht gefunden wird, stellen Sie anhand der Ausgabemeldungen fest, wo nach der Konfigurationsdatei gesucht wird, und stellen Sie sicher, dass sich die Datei "ApplicationInsights.xml" an einem dieser durchsuchten Speicherorte befindet. Als Faustregel können Sie die Konfigurationsdatei bei den JAR-Dateien des Application Insights-SDK ablegen. Beispiel: In Tomcat wäre dies der Ordner „WEB-INF/classes“. Während der Entwicklung können Sie „ApplicationInsights.xml“ im Ressourcenordner des Webprojekts platzieren.
 * Informieren Sie sich auch auf der [GitHub-Problemseite](https://github.com/Microsoft/ApplicationInsights-Java/issues) über bekannte Probleme mit dem SDK.
@@ -62,7 +62,7 @@ Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights i
 ## <a name="no-usage-data"></a>Keine Nutzungsdaten
 **Ich sehe Daten zu Anforderungen und Antwortzeiten, aber keine Seitenzugriffs-, Browser- oder Benutzerdaten.**
 
-Sie haben Ihre App erfolgreich so eingerichtet, dass Telemetriedaten vom Server gesendet werden. Jetzt ist der nächste Schritt das [Einrichten Ihrer Webseiten für das Senden von Telemetrie aus dem Webbrowser][usage].
+Sie haben Ihre App erfolgreich so eingerichtet, dass Telemetriedaten vom Server gesendet werden. Jetzt ist der nächste Schritt das [Einrichten Ihrer Webseiten für das Senden von Telemetriedaten aus dem Webbrowser][usage].
 
 Wenn der Client eine App auf einem [Smartphone oder anderen Gerät][platforms] ist, können Sie Telemetriedaten von dort aus senden.
 
@@ -110,7 +110,7 @@ Um weitere Informationen zu API-Vorgängen zu erhalten, fügen Sie `<SDKLogger/>
 Sie können das Protokollierungstool auch anweisen, Dateien auszugeben:
 
 ```XML
-  <SDKLogger type="FILE">
+  <SDKLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
     <Level>TRACE</Level>
     <UniquePrefix>AI</UniquePrefix>
     <BaseFolderPath>C:/agent/AISDK</BaseFolderPath>
@@ -127,16 +127,38 @@ azure.application-insights.logger.base-folder-path=C:/agent/AISDK
 azure.application-insights.logger.level=trace
 ```
 
+oder zum Ausgeben des Standardfehlers:
+
+```yaml
+azure.application-insights.logger.type=console
+azure.application-insights.logger.level=trace
+```
+
 ### <a name="java-agent"></a>Java-Agent
 
-Zum Aktivieren der JVM-Agent-Protokollierung aktualisieren Sie die [Datei „AI-Agent.xml“](java-agent.md).
+Zum Aktivieren der JVM-Agent-Protokollierung aktualisieren Sie die [Datei „AI-Agent.xml“](java-agent.md):
 
 ```xml
-<AgentLogger type="FILE">
+<AgentLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->
     <Level>TRACE</Level>
     <UniquePrefix>AI</UniquePrefix>
     <BaseFolderPath>C:/agent/AIAGENT</BaseFolderPath>
 </AgentLogger>
+```
+
+### <a name="java-command-line-properties"></a>Java-Befehlszeileneigenschaften
+_Seit Version 2.4.0_
+
+So aktivieren Sie die Protokollierung mithilfe von Befehlszeilenoptionen, ohne die Konfigurationsdateien zu ändern
+
+```
+java -Dapplicationinsights.logger.file.level=trace -Dapplicationinsights.logger.file.uniquePrefix=AI -Dapplicationinsights.logger.baseFolderPath="C:/my/log/dir" -jar MyApp.jar
+```
+
+oder zum Ausgeben des Standardfehlers:
+
+```
+java -Dapplicationinsights.logger.console.level=trace -jar MyApp.jar
 ```
 
 ## <a name="the-azure-start-screen"></a>Der Azure-Startbildschirm
@@ -158,7 +180,7 @@ In Ihrer Firewall müssen Sie möglicherweise die TCP-Ports 80 und 443 für ausg
 ## <a name="data-retention"></a>Beibehaltung von Daten
 **Wie lange werden Daten im Portal aufbewahrt? Ist Sicherheit gewährleistet?**
 
-Informationen hierzu finden Sie unter [Datenspeicherung und Datenschutz][data].
+Informationen hierzu finden Sie unter [Datensammlung, -aufbewahrung und -speicherung in Application Insights][data].
 
 ## <a name="debug-logging"></a>Debugprotokollierung
 Application Insights verwendet `org.apache.http`. Dies wird innerhalb der Kern-JARs von Application Insights unter dem Namespace `com.microsoft.applicationinsights.core.dependencies.http` verschoben. So kann Application Insights Szenarien bearbeiten, bei denen verschiedene Versionen des gleichen `org.apache.http` in einer Codebasis vorhanden sind.

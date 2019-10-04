@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: machine-learning
 author: sdgilley
 ms.service: machine-learning
@@ -9,14 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 01/25/2019
-ms.openlocfilehash: d90034e3de77f67ec3a74123c9655fda95b113fe
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: b53d3d6ad5471cfe4ce105a3aace3bc55390a610
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302219"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68843210"
 ---
-1. Führen Sie die Schritte unter [Schnellstart: Verwenden des Azure-Portals zum Ausführen der ersten Schritte mit Azure Machine Learning](../articles/machine-learning/service/quickstart-get-started.md) durch, um einen Arbeitsbereich zu erstellen und Azure Notebooks zu starten. Wenn Sie möchten, können Sie den Abschnitt zum **Verwenden des Notebooks** überspringen.
-1. Wenn Sie den [Schnellstart](../articles/machine-learning/service/quickstart-get-started.md) bereits abgeschlossen haben, melden Sie sich erneut bei [Azure Notebooks](https://notebooks.azure.com/) an, und öffnen Sie das Projekt **Erste Schritte**.  
-1. Denken Sie daran, das Projekt zu starten, falls sein Status als „Beendet“ angezeigt wird.
-    ![Starten des Projekts](./media/aml-azure-notebooks/start-project.png)
+* Absolvieren Sie [Tutorial: Einrichten der Umgebung und des Arbeitsbereichs](../articles/machine-learning/service/tutorial-1st-experiment-sdk-setup.md), um einen Arbeitsbereich zu erstellen und die Notebook-Webseite zu starten. 
+

@@ -1,25 +1,25 @@
 ---
 title: 'Tutorial: Laden von Daten in Azure SQL Data Warehouse | Microsoft-Dokumentation'
-description: In diesem Tutorial werden das Azure-Portal und SQL Server Management Studio verwendet, um das Data Warehouse „WideWorldImportersDW“ aus einem öffentlichen Azure-Blob in Azure SQL Data Warehouse zu laden.
+description: In diesem Tutorial werden das Azure-Portal und SQL Server Management Studio verwendet, um das Data Warehouse „WideWorldImportersDW“ aus einem globalen Azure-Blob in Azure SQL Data Warehouse zu laden.
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.subservice: load-data
+ms.date: 07/17/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 44ad37120034d59161fe3b5f0ed521fc6f630b0f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f81a19631b29954f9bd3da55a4b332e37746152e
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454333"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574938"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Tutorial: Laden von Daten in Azure SQL Data Warehouse
 
-In diesem Tutorial wird PolyBase zum Laden des Data Warehouse „WideWorldImportersDW“ aus Azure-Blobspeicher in Azure SQL Data Warehouse verwendet. In diesem Tutorial werden das [Azure-Portal](https://portal.azure.com) und [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) für folgende Zwecke verwendet: 
+In diesem Tutorial wird PolyBase zum Laden des Data Warehouse „WideWorldImportersDW“ aus Azure-Blobspeicher in Azure SQL Data Warehouse verwendet. In diesem Tutorial werden das [Azure-Portal](https://portal.azure.com) und [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) für folgende Zwecke verwendet:
 
 > [!div class="checklist"]
 > * Erstellen eines Data Warehouse im Azure-Portal
@@ -38,14 +38,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Bevor Sie mit diesem Tutorial beginnen, laden Sie die neueste Version von [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) herunter, und installieren Sie sie.
 
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
-
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Erstellen eines leeren SQL Data Warehouse
 
-Ein Azure SQL Data Warehouse wird mit einer definierten Gruppe von [Computeressourcen](memory-and-concurrency-limits.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
+Eine Azure SQL Data Warehouse-Instanz wird mit einem definierten Satz von [Computeressourcen](memory-and-concurrency-limits.md) erstellt. Die Datenbank wird innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
 
 Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz zu erstellen. 
 
@@ -79,9 +78,9 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz
 
 5. Klicken Sie auf **Auswählen**.
 
-6. Klicken Sie auf **Leistungsstufe**, um anzugeben, ob das Data Warehouse für Elastizität oder Compute optimiert wird, und um die Anzahl von Data Warehouse-Einheiten festzulegen. 
+6. Klicken Sie auf **Leistungsstufe**, um anzugeben, ob „Gen1“ oder „Gen2“ für das Data Warehouse verwendet werden soll, und um die Anzahl von Data Warehouse-Einheiten festzulegen. 
 
-7. Wählen Sie für dieses Tutorial die Leistungsstufe **Optimiert für Elastizität** aus. Der Schieberegler ist standardmäßig auf **DW400** gesetzt.  Schieben Sie ihn nach oben und unten, um sich mit der Funktionsweise vertraut zu machen. 
+7. Wählen Sie für dieses Tutorial die Dienstebene **Gen1** aus. Der Schieberegler ist standardmäßig auf **DW400** gesetzt.  Schieben Sie ihn nach oben und unten, um sich mit der Funktionsweise vertraut zu machen. 
 
     ![Konfigurieren der Leistung](media/load-data-wideworldimportersdw/configure-performance.png)
 
@@ -101,7 +100,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz
 Der SQL Data Warehouse-Dienst erstellt eine Firewall auf Serverebene, um zu verhindern, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen. Zum Herstellen von Konnektivität können Sie Firewallregeln hinzufügen, mit denen Konnektivität für bestimmte IP-Adressen ermöglicht wird.  Führen Sie die folgenden Schritte aus, um eine [Firewallregel auf Serverebene](../sql-database/sql-database-firewall-configure.md) für die IP-Adresse Ihres Clients zu erstellen. 
 
 > [!NOTE]
-> SQL Data Warehouse kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbankserver herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
+> SQL Data Warehouse kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
 >
 
 1. Klicken Sie nach Abschluss der Bereitstellung im Menü auf der linken Seite auf **SQL-Datenbanken**, und klicken Sie dann auf der Seite **SQL-Datenbanken** auf **SampleDW**. Die Übersichtsseite für Ihre Datenbank wird geöffnet, die den vollqualifizierten Servernamen (z.B. **sample-svr.database.windows.net**) und Optionen für die weitere Konfiguration enthält. 
@@ -114,7 +113,7 @@ Der SQL Data Warehouse-Dienst erstellt eine Firewall auf Serverebene, um zu verh
 
     ![Servereinstellungen](media/load-data-wideworldimportersdw/server-settings.png) 
 
-5. Klicken Sie auf **Firewalleinstellungen anzeigen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet. 
+5. Klicken Sie auf **Firewalleinstellungen anzeigen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbank-Server wird geöffnet. 
 
     ![Serverfirewallregel](media/load-data-wideworldimportersdw/server-firewall-rule.png) 
 
@@ -133,7 +132,7 @@ Jetzt können Sie mithilfe dieser IP-Adresse eine Verbindung mit dem SQL-Server 
 
 Rufen Sie den vollqualifizierten Servernamen für Ihren SQL-Server im Azure-Portal ab. Später verwenden Sie den vollqualifizierten Namen zum Herstellen einer Verbindung mit dem Server.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
 3. Suchen Sie im Azure-Portal auf der Seite für Ihre Datenbank unter **Zusammenfassung** nach Ihrer Datenbank, und kopieren Sie den **Servernamen**. In diesem Beispiel lautet der vollqualifizierte Name „mynewserver-20171113.database.windows.net“. 
 
@@ -151,7 +150,7 @@ In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-s
     | ------------ | --------------- | ----------- | 
     | Servertyp | Datenbank-Engine | Dieser Wert ist erforderlich. |
     | Servername | Der vollqualifizierte Servername | **sample-svr.database.windows.net** ist beispielsweise ein vollqualifizierter Servername. |
-    | Authentifizierung | SQL Server-Authentifizierung | In diesem Tutorial ist die SQL-Authentifizierung der einzige konfigurierte Authentifizierungstyp. |
+    | Authentication | SQL Server-Authentifizierung | In diesem Tutorial ist die SQL-Authentifizierung der einzige konfigurierte Authentifizierungstyp. |
     | Anmeldung | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie beim Erstellen des Servers angegeben haben. |
     | Password | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
 
@@ -159,7 +158,7 @@ In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-s
 
 4. Klicken Sie auf **Verbinden**. Die Objekt-Explorer-Fenster wird in SSMS geöffnet. 
 
-5. Erweitern Sie im Objekt-Explorer die Option **Datenbanken**. Erweitern Sie dann **Systemdatenbanken** und **Master**, um die Objekte in der Masterdatenbank anzuzeigen.  Erweitern Sie **mySampleDatabase**, um die Objekte in der neuen Datenbank anzuzeigen.
+5. Erweitern Sie im Objekt-Explorer die Option **Datenbanken**. Erweitern Sie dann **Systemdatenbanken** und **Master**, um die Objekte in der Masterdatenbank anzuzeigen.  Erweitern Sie **SampleDW**, um die Objekte in Ihrer neuen Datenbank anzuzeigen.
 
     ![Datenbankobjekte](media/load-data-wideworldimportersdw/connected.png) 
 
@@ -218,7 +217,7 @@ Im ersten Schritt zum Laden von Daten melden Sie sich als „LoaderRC60“ an.
 
 Sie können nun mit dem Laden von Daten in das neue Data Warehouse beginnen. Informationen zum Übertragen Ihrer Daten in Azure-Blobspeicher oder zum direkten Laden der Daten aus Ihrer Quelle in SQL Data Warehouse finden Sie in der [Ladeübersicht](sql-data-warehouse-overview-load.md).
 
-Führen Sie die folgenden SQL-Skripts aus, um Informationen zu den Daten anzugeben, die Sie laden möchten. Diese Informationen umfassen den aktuellen Speicherort der Daten, das Format des Dateninhalts und die Tabellendefinition für die Daten. Die Daten befinden sich in einem öffentlichen Azure-Blob.
+Führen Sie die folgenden SQL-Skripts aus, um Informationen zu den Daten anzugeben, die Sie laden möchten. Diese Informationen umfassen den aktuellen Speicherort der Daten, das Format des Dateninhalts und die Tabellendefinition für die Daten. Die Daten befinden sich in einem globalen Azure-Blob.
 
 1. Im vorherigen Abschnitt haben Sie sich als „LoaderRC60“ beim Data Warehouse angemeldet. Klicken Sie in SSMS unter Ihrer LoaderRC60-Verbindung mit der rechten Maustaste auf **SampleDW**, und wählen Sie **Neue Abfrage**.  Ein neues Abfragefenster wird angezeigt. 
 
@@ -232,7 +231,7 @@ Führen Sie die folgenden SQL-Skripts aus, um Informationen zu den Daten anzugeb
     CREATE MASTER KEY;
     ```
 
-4. Führen Sie die folgende Anweisung [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) aus, um den Speicherort des Azure-Blobs zu definieren. Dies ist der Speicherort der externen Taxidaten.  Zum Ausführen eines Befehls, den Sie im Abfragefenster angefügt haben, markieren Sie die auszuführenden Befehle, und klicken Sie auf **Ausführen**.
+4. Führen Sie die folgende Anweisung [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) aus, um den Speicherort des Azure-Blobs zu definieren. Dies ist der Speicherort mit den Daten zu den externen weltweiten Importeuren.  Zum Ausführen eines Befehls, den Sie im Abfragefenster angefügt haben, markieren Sie die auszuführenden Befehle, und klicken Sie auf **Ausführen**.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -541,13 +540,13 @@ Führen Sie die folgenden SQL-Skripts aus, um Informationen zu den Daten anzugeb
     );
     ```
 
-8. Erweitern Sie im Objekt-Explorer die Option „SampleDW“, um die Liste mit den externen Tabellen anzuzeigen, die Sie gerade erstellt haben.
+8. Erweitern Sie im Objekt-Explorer die Option „SampleDW“, um die Liste mit den externen Tabellen anzuzeigen, die Sie erstellt haben.
 
     ![Anzeigen externer Tabelle](media/load-data-wideworldimportersdw/view-external-tables.png)
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>Laden der Daten in das Data Warehouse
 
-In diesem Abschnitt werden die soeben definierten externen Tabellen verwendet, um die Beispieldaten aus dem Azure-Blob in SQL Data Warehouse zu laden.  
+In diesem Abschnitt werden die definierten externen Tabellen verwendet, um die Beispieldaten aus dem Azure-Blob in SQL Data Warehouse zu laden.  
 
 > [!NOTE]
 > In diesem Tutorial werden die Daten direkt in die endgültige Tabelle geladen. In einer Produktionsumgebung verwenden Sie normalerweise CREATE TABLE AS SELECT für das Laden in eine Stagingtabelle. Während sich die Daten in der Stagingtabelle befinden, können Sie alle erforderlichen Transformationen durchführen. Zum Anfügen der Daten einer Stagingtabelle an eine Produktionstabelle können Sie die INSERT...SELECT-Anweisung verwenden. Weitere Informationen finden Sie unter [Einfügen von Daten in eine Produktionstabelle](guidance-for-loading-data.md#inserting-data-into-a-production-table).
@@ -555,7 +554,7 @@ In diesem Abschnitt werden die soeben definierten externen Tabellen verwendet, u
 
 Das Skript verwendet die T-SQL-Anweisung [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse), um die Daten aus Azure Storage Blob in neue Tabellen in Ihrem Data Warehouse zu laden. CTAS erstellt eine neue Tabelle basierend auf den Ergebnissen einer SELECT-Anweisung. Die neue Tabelle weist die gleichen Spalten und Datentypen wie die Ergebnisse der SELECT-Anweisung auf. Wenn mit der SELECT-Anweisung eine Auswahl aus einer externen Tabelle getroffen wird, importiert SQL Data Warehouse die Daten in eine relationale Tabelle im Data Warehouse. 
 
-Mit diesem Skript werden keine Daten in die Tabellen „wwi.dimension_Date“ und „wwi.fact_Sales“ geladen. Diese Tabellen werden in einem späteren Schritt generiert, um sicherzustellen, dass die Tabellen über eine ausreichend große Anzahl von Zeilen verfügen.
+Mit diesem Skript werden keine Daten in die Tabellen „wwi.dimension_Date“ und „wwi.fact_Sale“ geladen. Diese Tabellen werden in einem späteren Schritt generiert, um sicherzustellen, dass die Tabellen über eine ausreichend große Anzahl von Zeilen verfügen.
 
 1. Führen Sie das folgende Skript aus, um die Daten in neue Tabellen im Data Warehouse zu laden.
 
@@ -751,7 +750,7 @@ Mit diesem Skript werden keine Daten in die Tabellen „wwi.dimension_Date“ un
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Erstellen von Tabellen und Prozeduren zum Generieren der Tabellen „Date“ und „Sales“
 
-In diesem Abschnitt werden die Tabellen „wwi.dimension_Date“ und „wwi.fact_Sales“ erstellt. Außerdem werden gespeicherte Prozeduren erstellt, mit denen Millionen von Zeilen in den Tabellen „wwi.dimension_Date“ und „wwi.fact_Sales“ generiert werden.
+In diesem Abschnitt werden die Tabellen „wwi.dimension_Date“ und „wwi.fact_Sale“ erstellt. Außerdem werden gespeicherte Prozeduren erstellt, mit denen Millionen von Zeilen in den Tabellen „wwi.dimension_Date“ und „wwi.fact_Sale“ generiert werden.
 
 1. Erstellen Sie die Tabellen „dimension_Date“ und „fact_Sale“.  
 
@@ -894,7 +893,7 @@ In diesem Abschnitt werden die Tabellen „wwi.dimension_Date“ und „wwi.fact
     DROP table #days;
     END;
     ```
-4. Erstellen Sie diese Prozedur, mit der die Tabellen „wwi.dimension_Date“ und „wwi.fact_Sales“ aufgefüllt werden. Bei diesem Vorgang wird „[wwi].[PopulateDateDimensionForYear]“ aufgerufen, um „wwi.dimension_Date“ aufzufüllen.
+4. Erstellen Sie diese Prozedur, mit der die Tabellen „wwi.dimension_Date“ und „wwi.fact_Sale“ aufgefüllt werden. Bei diesem Vorgang wird „[wwi].[PopulateDateDimensionForYear]“ aufgerufen, um „wwi.dimension_Date“ aufzufüllen.
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -950,7 +949,7 @@ In diesem Abschnitt werden die Tabellen „wwi.dimension_Date“ und „wwi.fact
     ```
 
 ## <a name="generate-millions-of-rows"></a>Millionen von Zeilen generieren
-Verwenden Sie die gespeicherten Prozeduren, die Sie zum Generieren von Millionen von Zeilen in der Tabelle „wwi.fact_Sales“ und der entsprechenden Daten in der Tabelle „wwi.dimension_Date“ erstellt haben. 
+Verwenden Sie die gespeicherten Prozeduren, die Sie zum Generieren von Millionen von Zeilen in der Tabelle „wwi.fact_Sale“ und der entsprechenden Daten in der Tabelle „wwi.dimension_Date“ erstellt haben. 
 
 
 1. Führen Sie dieses Verfahren aus, um „[wwi].[seed_Sale]“ mit mehr Zeilen anzulegen.
@@ -959,7 +958,7 @@ Verwenden Sie die gespeicherten Prozeduren, die Sie zum Generieren von Millionen
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. Führen Sie dieses Verfahren aus, um „wwi.fact_Sales“ mit 100.000 Zeilen pro Tag für jeden Tag des Jahres 2000 aufzufüllen.
+2. Führen Sie dieses Verfahren aus, um „wwi.fact_Sale“ mit 100.000 Zeilen pro Tag für jeden Tag des Jahres 2000 aufzufüllen.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000
@@ -1121,7 +1120,7 @@ Sie haben folgende Schritte ausgeführt:
 > * Anzeigen des Fortschritts beim Laden von Daten
 > * Erstellen von Statistiken für die neu geladenen Daten
 
-Fahren Sie mit der Übersicht über die Migration fort, um zu erfahren, wie Sie eine vorhandene Datenbank in SQL Data Warehouse migrieren.
+Fahren Sie mit der Entwicklungsübersicht fort, um zu erfahren, wie Sie eine vorhandene Datenbank in SQL Data Warehouse migrieren.
 
 > [!div class="nextstepaction"]
->[Informationen zum Migrieren einer vorhandenen Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)
+>[Entwurfsentscheidungen zum Migrieren einer vorhandenen Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-develop.md)

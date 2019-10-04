@@ -1,5 +1,5 @@
 ---
-title: Tutorial zu zusammengesetzten Entitäten
+title: 'Tutorial: Tutorial zu zusammengesetzten Entitäten: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Hinzufügen einer zusammengesetzten Entität, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
 services: cognitive-services
@@ -8,20 +8,20 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 02/19/2019
+ms.topic: tutorial
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: c49090a5563a6d63c90b29cc7442c1e4ed9886e0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f20661a74397487e141e69681f207418db8ac386
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091578"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70388044"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Tutorial: Gruppieren und Extrahieren zugehöriger Daten
 In diesem Tutorial fügen Sie eine zusammengesetzte Entität hinzu, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
 
-Zusammengesetzte Entitäten dienen dazu, verknüpfte Entitäten in einer Entität der übergeordneten Kategorie zu gruppieren. Die Informationen sind vor dem Erstellen einer zusammengesetzten Entität jeweils separate Entitäten. Sie ähnelt einer hierarchischen Entität, kann aber verschiedene Arten von Entitäten enthalten. 
+Zusammengesetzte Entitäten dienen dazu, verknüpfte Entitäten in einer Entität der übergeordneten Kategorie zu gruppieren. Die Informationen sind vor dem Erstellen einer zusammengesetzten Entität jeweils separate Entitäten. 
 
 Die zusammengesetzte Entität ist eine gute Wahl für diese Art von Daten, da für die Daten Folgendes gilt:
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 6b79a26d63c02dd06b62ea6ad09941f947704dc0
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: c07086feef1851f1a6e2a5cda2f541d52a50d91d
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418634"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163490"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Identifizieren von Problemen mit der Diagnosefunktion
 
@@ -24,7 +24,11 @@ Windows Virtual Desktop (Vorschauversion) verfügt über eine Diagnosefunktion, 
   
 Verbindungen, die Windows Virtual Desktop nicht erreichen, werden nicht in den Diagnoseergebnissen angezeigt, da der Diagnoserollendienst selbst Teil von Windows Virtual Desktop ist. Windows Virtual Desktop-Verbindungsprobleme können auftreten, wenn es für den Endbenutzer zu Problemen mit der Netzwerkkonnektivität kommt.
 
-Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), um es in Ihrer PowerShell-Sitzung verwenden zu können.
+Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie anschließend das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="diagnose-issues-with-powershell"></a>Diagnostizieren von Problemen mit PowerShell
 
@@ -54,6 +58,14 @@ Mit dem Parameter **-ActivityId** wird eine bestimmte Diagnoseaktivität zurück
 
 ```powershell
 Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityIdGuid>
+```
+
+### <a name="view-error-messages-for-a-failed-activity-by-activity-id"></a>Anzeigen von Fehlermeldungen für eine fehlerhafte Aktivität nach Aktivitäts-ID
+
+Zum Anzeigen der Fehlermeldungen für eine fehlerhafte Aktivität müssen Sie das Cmdlet mit dem Parameter **-Detailed** ausführen. Sie können die Liste der Fehler anzeigen, indem Sie das Cmdlet **Select-Object** ausführen.
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
 ```
 
 ### <a name="filter-diagnostic-activities-by-user"></a>Filtern von Diagnoseaktivitäten nach Benutzer
@@ -118,7 +130,7 @@ Der Parameter **-Outcome** kann auch mit anderen optionalen Filterparametern kom
 
 Fehlerszenarien werden in die Bereiche „Dienstintern“ und „Außerhalb von Windows Virtual Desktop“ (extern) kategorisiert.
 
-* Internes Problem: Betrifft Szenarien, die nicht vom Mandantenadministrator gelöst werden können und als Supportproblem behandelt werden müssen. Geben Sie beim Erstellen eines Tickets die Aktivitäts-ID, den Mandantennamen und den ungefähren Zeitrahmen an, in dem das Problem aufgetreten ist.
+* Internes Problem: Betrifft Szenarien, die nicht vom Mandantenadministrator gelöst werden können und als ein Supportproblem behandelt werden müssen. Wenn Sie Feedback über die [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) bereitstellen, geben Sie die Aktivitäts-ID sowie den ungefähren Zeitrahmen an, in dem das Problem aufgetreten ist.
 * Externes Problem: Betrifft Szenarien, die vom Systemadministrator gelöst werden können. Dies erfolgt außerhalb von Windows Virtual Desktop.
 
 In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Administratoren ggf. auftreten können.
@@ -142,10 +154,10 @@ In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Adminis
 |6022|RemoteAppNotFound|Der von Ihnen eingegebene RemoteApp-Name stimmt nicht mit vorhandenen RemoteApps überein. Überprüfen Sie den RemoteApp-Namen auf Tippfehler, und wiederholen Sie den Vorgang.|
 |6010|PublishedItemsExist|Der Name der Ressource, die Sie veröffentlichen möchten, ist mit dem Namen einer bereits vorhandenen Ressource identisch. Ändern Sie den Namen der Ressource, und wiederholen Sie den Vorgang.|
 |7002|NameNotValidWhiteSpace|Verwenden Sie keine Leerzeichen im Namen.|
-|8.000|InvalidAuthorizationRoleScope|Der von Ihnen eingegebene Rollenname stimmt nicht mit vorhandenen Rollennamen überein. Überprüfen Sie den Rollennamen auf Tippfehler, und wiederholen Sie den Vorgang. |
+|8\.000|InvalidAuthorizationRoleScope|Der von Ihnen eingegebene Rollenname stimmt nicht mit vorhandenen Rollennamen überein. Überprüfen Sie den Rollennamen auf Tippfehler, und wiederholen Sie den Vorgang. |
 |8001|UserNotFound |Der von Ihnen eingegebene Benutzername stimmt nicht mit vorhandenen Benutzernamen überein. Überprüfen Sie den Namen auf Tippfehler, und wiederholen Sie den Vorgang.|
 |8005|UserNotFoundInAAD |Der von Ihnen eingegebene Benutzername stimmt nicht mit vorhandenen Benutzernamen überein. Überprüfen Sie den Namen auf Tippfehler, und wiederholen Sie den Vorgang.|
-|8008|TenantConsentRequired|Befolgen Sie [diese Anleitung](tenant-setup-azure-active-directory.md#grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service), um die Einwilligung für Ihren Mandanten zu erteilen.|
+|8008|TenantConsentRequired|Befolgen Sie [diese Anleitung](tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop), um die Einwilligung für Ihren Mandanten zu erteilen.|
 
 ### <a name="external-connection-error-codes"></a>Externe Verbindung: Fehlercodes
 

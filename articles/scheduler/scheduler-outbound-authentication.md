@@ -9,17 +9,17 @@ ms.reviewer: klam
 ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: 88f2fe0781bad4b652826b6a8d1961dd39b063e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2ea09330fb8d3d97da5fbc197dba9668f1a4f685
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993330"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300843"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Ausgehende Authentifizierung für Azure Scheduler
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt den Azure Scheduler, der in Kürze eingestellt wird. Zum Planen von Aufträgen sollten Sie stattdessen [Azure Logic Apps ausprobieren](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+> Azure Scheduler wird [eingestellt](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) und durch [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt. Wenn Sie weiterhin mit den Aufträgen arbeiten möchten, die Sie in Scheduler eingerichtet haben, sollten Sie so bald wie möglich [zu Azure Logic Apps migrieren](../scheduler/migrate-from-scheduler-to-logic-apps.md).
 
 Azure Scheduler-Aufträge müssen möglicherweise Dienste aufrufen, die eine Authentifizierung verlangen, z.B. andere Azure-Dienste, Salesforce.com, Facebook und sichere benutzerdefinierte Websites. Der aufgerufene Dienst kann festlegen, ob dem Scheduler-Auftrag Zugriff auf die angeforderten Ressourcen gewährt werden soll. 
 
@@ -47,9 +47,9 @@ Wenn Sie die Authentifizierung anhand des `ClientCertificate`-Modells hinzufüge
 | Element | Erforderlich | BESCHREIBUNG |
 |---------|----------|-------------|
 | **authentication** (übergeordnetes Element) | Das Authentifizierungsobjekt für die Verwendung eines SSL-Clientzertifikats |
-| **type** | JA | Der Authentifizierungstyp. Für SSL-Clientzertifikate lautet der Wert `ClientCertificate`. |
-| **pfx** | JA | Der Base64-codierte Inhalt der PFX-Datei |
-| **password** | JA | Der Parameter für den Zugriff auf die PFX-Datei |
+| **type** | Ja | Der Authentifizierungstyp. Für SSL-Clientzertifikate lautet der Wert `ClientCertificate`. |
+| **pfx** | Ja | Der Base64-codierte Inhalt der PFX-Datei |
+| **password** | Ja | Der Parameter für den Zugriff auf die PFX-Datei |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>Antworttext: Clientzertifikat 
@@ -167,9 +167,9 @@ Wenn Sie die Authentifizierung anhand des `Basic`-Modells hinzufügen, geben Sie
 | Element | Erforderlich | BESCHREIBUNG |
 |---------|----------|-------------|
 | **authentication** (übergeordnetes Element) | Das Authentifizierungsobjekt für die Verwendung der Standardauthentifizierung | 
-| **type** | JA | Der Authentifizierungstyp. Für die Standardauthentifizierung lautet der Wert `Basic`. | 
-| **username** | JA | Der zu authentifizierende Benutzername | 
-| **password** | JA | Das zu authentifizierende Kennwort |
+| **type** | Ja | Der Authentifizierungstyp. Für die Standardauthentifizierung lautet der Wert `Basic`. | 
+| **username** | Ja | Der zu authentifizierende Benutzername | 
+| **password** | Ja | Das zu authentifizierende Kennwort |
 |||| 
 
 ### <a name="response-body---basic"></a>Antworttext: Standard
@@ -284,12 +284,12 @@ Wenn Sie die Authentifizierung anhand des `ActiveDirectoryOAuth`-Modells hinzuf�
 
 | Element | Erforderlich | BESCHREIBUNG |
 |---------|----------|-------------|
-| **authentication** (übergeordnetes Element) | JA | Das Authentifizierungsobjekt für die Verwendung der ActiveDirectoryOAuth-Authentifizierung |
-| **type** | JA | Der Authentifizierungstyp. Für die ActiveDirectoryOAuth-Authentifizierung lautet der Wert `ActiveDirectoryOAuth`. |
-| **tenant** | JA | Die Mandanten-ID für den Azure AD-Mandanten. Durch Ausführen von `Get-AzureAccount` in Azure PowerShell können Sie die Mandanten-ID für den Azure AD-Mandanten ermitteln. |
-| **audience** | JA | Dieser Wert ist auf `https://management.core.windows.net/` festgelegt. | 
-| **clientId** | JA | Die Client-ID für die Azure AD-Anwendung | 
-| **secret** | JA | Das Geheimnis für den Client, der das Token anfordert | 
+| **authentication** (übergeordnetes Element) | Ja | Das Authentifizierungsobjekt für die Verwendung der ActiveDirectoryOAuth-Authentifizierung |
+| **type** | Ja | Der Authentifizierungstyp. Für die ActiveDirectoryOAuth-Authentifizierung lautet der Wert `ActiveDirectoryOAuth`. |
+| **tenant** | Ja | Die Mandanten-ID für den Azure AD-Mandanten. Durch Ausführen von `Get-AzureAccount` in Azure PowerShell können Sie die Mandanten-ID für den Azure AD-Mandanten ermitteln. |
+| **audience** | Ja | Dieser Wert ist auf `https://management.core.windows.net/` festgelegt. | 
+| **clientId** | Ja | Die Client-ID für die Azure AD-Anwendung | 
+| **secret** | Ja | Das Geheimnis für den Client, der das Token anfordert | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>Antworttext: Active Directory OAuth

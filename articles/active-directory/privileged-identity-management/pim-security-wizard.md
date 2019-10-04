@@ -3,7 +3,7 @@ title: Sicherheitsassistent für Azure AD-Rollen in PIM – Azure Active Directo
 description: Beschreibt den Sicherheitsassistenten, mit dem Sie mit Azure AD Privileged Identity Management (PIM) permanent privilegierte Azure AD-Rollenzuweisungen in berechtigte Rollen konvertieren können.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6f978612cbbf0c326c3e66f25a0fbf4b749cc73
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0d6d94df29ba16ecee06d70f5edac15a96a4299d
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496606"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804018"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>Sicherheitsassistent für Azure AD-Rollen in PIM
 
@@ -43,27 +43,27 @@ Im zweiten Schritt des Assistenten haben Sie die Möglichkeit, die Rollenzuweisu
 
 1. Klicken Sie auf **Azure AD-Rollen** und dann auf **Assistenten**.
 
-    ![Azure AD-Rollen – Assistent](./media/pim-security-wizard/wizard-start.png)
+    ![Azure AD-Rollen – Seite des Assistenten mit den 3 Schritten zum Ausführen des Assistenten](./media/pim-security-wizard/wizard-start.png)
 
 1. Klicken Sie auf **1 Privilegierte Rollen ermitteln**.
 
 1. Überprüfen Sie die Liste der Rollen, um festzustellen, welche Benutzer permanente oder berechtigte Zuweisungen haben.
 
-    ![Ermitteln von Benutzern mit privilegierten Rollen](./media/pim-security-wizard/discover-privileged-roles-users.png)
+    ![Privilegierte Rollen ermitteln – Bereich „Rollen“ mit permanenten und berechtigten Mitgliedern](./media/pim-security-wizard/discover-privileged-roles-users.png)
 
 1. Klicken Sie auf **Weiter**, um die Mitglieder auszuwählen, denen Sie in berechtige Mitglieder umwandeln möchten.
 
-    ![Mitglieder in berechtigte Mitglieder konvertieren](./media/pim-security-wizard/convert-members-eligible.png)
+    ![Seite „Mitglieder in berechtigte Mitglieder konvertieren“ mit Optionen zum Auswählen von Mitgliedern, die in berechtigte Mitglieder für Rollen umgewandelt werden sollen](./media/pim-security-wizard/convert-members-eligible.png)
 
 1. Klicken Sie nach dem Auswählen der Mitglieder auf **Weiter**.
 
-    ![Änderungen überprüfen](./media/pim-security-wizard/review-changes.png)
+    ![Seite „Änderungen überprüfen“ mit Mitgliedern mit permanenten Rollenzuweisungen, die umgewandelt werden](./media/pim-security-wizard/review-changes.png)
 
 1. Klicken Sie auf **OK**, um die permanenten in berechtigte Zuweisungen zu konvertieren.
 
     Nach Abschluss der Konvertierung wird eine Benachrichtigung angezeigt.
 
-    ![Benachrichtigungen](./media/pim-security-wizard/notification-completion.png)
+    ![Benachrichtigung mit dem Status einer Konvertierung](./media/pim-security-wizard/notification-completion.png)
 
 Wenn Sie weitere privilegierte Rollenzuweisungen in berechtigte Zuweisungen konvertieren müssen, führen Sie den Assistenten erneut aus. Wenn Sie die PIM-Schnittstelle anstelle des Assistenten verwenden möchten, lesen Sie [Zuweisen von Azure AD-Rollen in PIM](pim-how-to-add-role-to-user.md).
 

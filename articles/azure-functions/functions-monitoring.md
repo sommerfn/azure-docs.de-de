@@ -7,22 +7,21 @@ manager: jeconnoc
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 0e4c308e745cbf2ffbc18f64101043aff3ddde35
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 8092108ef13f4b86f20cf5a8a0b41b49d75aa626
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471017"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098689"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
 [Azure Functions](functions-overview.md) bietet von Haus aus Integration in [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) zum Überwachen von Funktionen. In diesem Artikel wird veranschaulicht, wie Sie Azure Functions zum Senden von systemseitig generierten Protokolldateien an Application Insights konfigurieren.
 
-Es wird empfohlen, Protokoll-, Leistungs- und Fehlerdaten mithilfe von Application Insights zu erfassen. Der Dienst erkennt Leistungsanomalien automatisch und verfügt über leistungsstarke Analysetools, mit denen Sie Probleme untersuchen und nachvollziehen können, wie Ihre Funktionen verwendet werden. Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Sie können Application Insights auch während der lokalen Entwicklung an Funktions-App-Projekten verwenden. Weitere Informationen finden Sie unter [Was ist Application Insights?](../azure-monitor/app/app-insights-overview.md)
+Es wird empfohlen, Protokoll-, Leistungs- und Fehlerdaten mithilfe von Application Insights zu erfassen. Der Dienst erkennt Leistungsanomalien automatisch und verfügt über leistungsstarke Analysetools, mit denen Sie Probleme untersuchen und nachvollziehen können, wie Ihre Funktionen verwendet werden. Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Sie können Application Insights auch während der lokalen Entwicklung an Funktions-App-Projekten verwenden. Weitere Informationen finden Sie unter [Was ist Application Insights?](../azure-monitor/app/app-insights-overview.md).
 
 Da die erforderliche Instrumentierung von Application Insights in Azure Functions integriert ist, benötigen Sie lediglich einen gültigen Instrumentierungsschlüssel, um Ihre Funktions-App mit einer Application Insights-Ressource zu verbinden.
 
@@ -128,7 +127,7 @@ Die verfügbaren Tabellen werden links auf der Registerkarte **Schema** angezeig
 | ----- | ----------- |
 | **traces** | Protokolle, die von der Laufzeit und durch Funktionscode erstellt wurden. |
 | **requests** | Jeweils eine Anforderung pro Funktionsaufruf. |
-| **Ausnahmen** | Alle Ausnahmen, die von der Laufzeit ausgelöst werden. |
+| **exceptions** | Alle Ausnahmen, die von der Laufzeit ausgelöst werden. |
 | **customMetrics** | Die Anzahl von erfolgreichen und nicht erfolgreichen Aufrufen, Erfolgsrate und Dauer. |
 | **customEvents** | Ereignisse, die von der Runtime verfolgt werden, z. B.: HTTP-Anforderungen, die eine Funktion auslösen. |
 | **performanceCounters** | Informationen zur Leistung der Server, auf denen die Funktionen ausgeführt werden. |
@@ -152,9 +151,9 @@ Sie können Application Insights ganz ohne benutzerdefinierte Konfiguration verw
 
 Die Azure Functions-Protokollierung enthält eine *Kategorie* für jedes Protokoll. Mit der Kategorie wird angegeben, von welchem Teil des Laufzeitcodes bzw. Ihres Funktionscodes das Protokoll geschrieben wurde. 
 
-Mit der Functions-Runtime werden Protokolle mit einer Kategorie erstellt, die mit „Host“ beginnen. Die Protokolle „function started“, „function executed“ und „function completed“ weisen die Kategorie „Host.Executor“ auf. 
+Mit der Functions-Runtime werden Protokolle mit einer Kategorie erstellt, die mit „Host“ beginnen. In Version 1.x haben die Protokolle `function started`, `function executed` und `function completed` die Kategorie `Host.Executor`. Ab Version 2.x lautet für diese Protokolle die Kategorie `Function.<YOUR_FUNCTION_NAME>`.
 
-Wenn Sie Protokolle in Ihren Funktionscode schreiben, lautet deren Kategorie „Function“.
+Wenn Sie Protokolle in ihren Funktionscode schreiben, lautet in Version 1.x der Functions-Runtime die Kategorie `Function`. In Version 2.x lautet die Kategorie `Function.<YOUR_FUNCTION_NAME>.User`.
 
 ### <a name="log-levels"></a>Protokollebenen
 
@@ -570,7 +569,7 @@ Legen Sie nicht `telemetryClient.Context.Operation.Id` fest. Diese globale Einst
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>Protokollieren von benutzerdefinierter Telemetrie in JavaScript-Funktionen
 
-Das [Application Insights Node.js SDK](https://www.npmjs.com/package/applicationinsights) ist derzeit als Betaversion verfügbar. Hier ist Beispielcode angegeben, mit dem benutzerdefinierte Telemetriedaten an Application Insights gesendet werden:
+Im Folgenden finden Sie einen Beispielcodeausschnitt, der benutzerdefinierte Telemetriedaten mit dem [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js) sendet:
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -595,7 +594,9 @@ Mit dem Parameter `tagOverrides` wird die `operation_Id` auf die Aufrufkennung d
 
 ## <a name="dependencies"></a>Abhängigkeiten
 
-Abhängigkeiten der Funktion von anderen Diensten werden nicht automatisch angezeigt. Sie können benutzerdefinierten Code schreiben, um die Abhängigkeiten anzuzeigen. Dies wird beispielsweise im Beispielcode im [Abschnitt zu den benutzerdefinierten C#-Telemetriedaten](#log-custom-telemetry-in-c-functions) veranschaulicht. Der Beispielcode ergibt in Application Insights eine *Anwendungszuordnung*, die wie die folgende Abbildung aussieht:
+Functions v2 erfasst automatisch Abhängigkeiten für HTTP-Anforderungen, Service Bus und SQL.
+
+Sie können benutzerdefinierten Code schreiben, um die Abhängigkeiten anzuzeigen. Dies wird beispielsweise im Beispielcode im [Abschnitt zu den benutzerdefinierten C#-Telemetriedaten](#log-custom-telemetry-in-c-functions) veranschaulicht. Der Beispielcode ergibt in Application Insights eine *Anwendungszuordnung*, die wie die folgende Abbildung aussieht:
 
 ![Anwendungszuordnung](./media/functions-monitoring/app-map.png)
 
@@ -605,14 +606,21 @@ Abhängigkeiten der Funktion von anderen Diensten werden nicht automatisch angez
 
 ## <a name="streaming-logs"></a>Streamingprotokolle
 
-Beim Entwickeln einer Anwendung ist es häufig nützlich, Protokollinformationen nahezu in Echtzeit zu sehen. Sie können entweder im Azure-Portal oder in einer Befehlszeilensitzung auf Ihrem lokalen Computer einen Stream von Protokolldateien anzeigen, die von Ihren Funktionen generiert werden.
+Während der Entwicklung einer Anwendung möchten Sie oft in Echtzeit sehen, was bei der Ausführung in Azure in die Protokolle geschrieben wird.
 
-Dies entspricht der Ausgabe, die beim Debuggen Ihrer Funktionen bei der [lokalen Entwicklung](functions-develop-local.md) zu sehen ist. Weitere Informationen finden Sie unter [Vorgehensweise: Streaming von Protokollen](../app-service/troubleshoot-diagnostic-logs.md#streamlogs).
+Es gibt zwei Möglichkeiten, einen Datenstrom von Protokolldateien anzuzeigen, die bei den Ausführungen Ihrer Funktion generiert werden.
 
-> [!NOTE]
-> Streamingprotokolle unterstützen nur eine einzige Instanz des Azure Functions-Hosts. Wenn Ihre Funktion auf mehrere Instanzen skaliert wird, werden Daten aus anderen Instanzen nicht im Protokollstream angezeigt. Der [Live Metrics Stream](../azure-monitor/app/live-stream.md) in Application Insights unterstützt mehrere Instanzen. Obwohl auch in nahezu Echtzeit basiert die Streamanalyse auch auf [Stichprobendaten](#configure-sampling).
+* **Integriertes Protokollstreaming**: Mithilfe der App Service-Plattform können Sie einen Datenstrom Ihrer Anwendungsprotokolldateien einsehen. Dies entspricht der Ausgabe, die beim Debuggen Ihrer Funktionen bei der [lokalen Entwicklung](functions-develop-local.md) oder bei Verwenden der Registerkarte **Test** im Portal zu sehen ist. Alle protokollbasierten Informationen werden angezeigt. Weitere Informationen finden Sie unter [Streamen von Protokollen](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Diese Streamingmethode unterstützt nur eine einzelne Instanz und kann nicht mit einer App verwendet werden, die unter Linux in einem Verbrauchstarif ausgeführt wird.
+
+* **Live Metrics Stream**: Wenn Ihre Funktions-App [mit Application Insights verbunden](#enable-application-insights-integration) ist, können Sie im Azure-Portal mithilfe von [Live Metrics Stream](../azure-monitor/app/live-stream.md) Protokolldaten und andere Metriken nahezu in Echtzeit anzeigen. Verwenden Sie diese Methode, wenn Sie Funktionen überwachen, die auf mehreren Instanzen oder unter Linux in einem Verbrauchstarif ausgeführt werden. Diese Methode verwendet [Stichprobendaten](#configure-sampling).
+
+Protokolldatenströme können sowohl im Portal als auch in den meisten lokalen Entwicklungsumgebungen eingesehen werden. 
 
 ### <a name="portal"></a>Portal
+
+Sie können im Portal beide Arten von Protokolldatenströmen einsehen.
+
+#### <a name="built-in-log-streaming"></a>Integriertes Protokollstreaming
 
 Um Streamingprotokolle im Portal anzuzeigen, wählen Sie in Ihrer Funktions-App die Registerkarte **Plattformfeatures** aus. Klicken Sie unter **Überwachung** auf **Protokollstreaming**.
 
@@ -622,9 +630,25 @@ Dadurch wird Ihre App mit dem Protokollstreamingdienst verbunden, woraufhin Anwe
 
 ![Anzeigen von Streamingprotokollen im Portal](./media/functions-monitoring/streaming-logs-window.png)
 
+#### <a name="live-metrics-stream"></a>Live Metrics Stream
+
+Um den Live Metrics Stream für Ihre App anzuzeigen, wählen Sie die Registerkarte **Übersicht** Ihrer Funktions-App aus. Wenn Application Insights aktiviert ist, wird unter **Konfigurierte Features** der Link **Application Insights** angezeigt. Über diesen Link gelangen Sie zur Application Insights-Seite für Ihre App.
+
+Wählen Sie in Application Insights **Live Metrics Stream** aus. [Stichprobenhafte Protokolleinträge](#configure-sampling) werden unter **Beispieltelemetrie** angezeigt.
+
+![Anzeigen von Live Metrics Stream im Portal](./media/functions-monitoring/live-metrics-stream.png) 
+
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+[!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
+
+### <a name="core-tools"></a>Kerntools
+
+[!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
+
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Sie können Streamingprotokolle über die [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/install-azure-cli) aktivieren. Verwenden Sie für die Azure CLI die folgenden Befehle, um sich anzumelden, Ihr Abonnement auszuwählen und Protokolldateien zu streamen:
+Sie können Streamingprotokolle mithilfe der [Azure CLI](/cli/azure/install-azure-cli) aktivieren. Verwenden Sie die folgenden Befehle, um sich anzumelden, Ihr Abonnement auszuwählen und Protokolldateien zu streamen:
 
 ```azurecli
 az login

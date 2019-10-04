@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7fa903f65a6c7d244ff424eae4a0def258b50bbc
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0a31ed174c7a5986594f7c07b7ce00b1649413c8
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994706"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907978"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Erstellen einer VM-Skalierungsgruppe, die Verfügbarkeitszonen verwendet
 
@@ -34,18 +34,18 @@ Beim Bereitstellen einer Skalierungsgruppe in einer oder mehreren Zonen haben Si
 
 Bei der maximalen Zuweisung ist in der VM-Instanzansicht für Skalierungsgruppen und in den Instanzmetadaten nur eine Fehlerdomäne zu sehen. Dies gilt unabhängig davon, auf wie viele Fehlerdomänen die VMs verteilt werden. Die Zuweisung in einer Zone erfolgt jeweils implizit.
 
-Legen Sie *platformFaultDomainCount* auf *1* fest, um die maximale Zuweisung zu verwenden. Legen Sie *platformFaultDomainCount* auf *5* fest, um die statische Zuweisung mit fünf Fehlerdomänen zu verwenden. In API-Version *2017-12-01* ist *platformFaultDomainCount* für Skalierungsgruppen für eine oder mehrere Zonen standardmäßig auf *1* festgelegt. Derzeit wird für regionale Skalierungsgruppen nur die statische Zuweisung mit fünf Fehlerdomänen unterstützt.
+Legen Sie *platformFaultDomainCount* auf *1* fest, um die maximale Zuweisung zu verwenden. Legen Sie *platformFaultDomainCount* auf *5* fest, um die statische Zuweisung mit fünf Fehlerdomänen zu verwenden. In API-Version *2017-12-01* ist *platformFaultDomainCount* für Skalierungsgruppen für eine oder mehrere Zonen standardmäßig auf *1* festgelegt. Derzeit wird für regionale (nicht zonale) Skalierungsgruppen nur die statische Zuweisung mit fünf Fehlerdomänen unterstützt.
 
 ### <a name="placement-groups"></a>Platzierungsgruppen
 
-Bei der Bereitstellung einer Skalierungsgruppe haben Sie auch die Möglichkeit, diese mit einer einzelnen oder mit mehreren [Platzierungsgruppen](./virtual-machine-scale-sets-placement-groups.md) pro Verfügbarkeitszone durchzuführen. Bei regionalen Skalierungsgruppen ist eine Auswahl zwischen einer einzelnen oder mehreren Platzierungsgruppen in der Region möglich. Für die meisten Workloads empfehlen wir mehrere Platzierungsgruppen, um eine bessere Skalierbarkeit zu erzielen. In API-Version *2017-12-01* werden für Skalierungsgruppen standardmäßig mehrere Platzierungsgruppen für einzelne Zonen und mehrere Zonen verwendet, aber für regionale Skalierungsgruppen wird standardmäßig nur eine einzelne Platzierungsgruppe genutzt.
+Bei der Bereitstellung einer Skalierungsgruppe haben Sie auch die Möglichkeit, diese mit einer einzelnen oder mit mehreren [Platzierungsgruppen](./virtual-machine-scale-sets-placement-groups.md) pro Verfügbarkeitszone durchzuführen. Bei regionalen (nicht zonalen) Skalierungsgruppen kann zwischen einer einzelnen Platzierungsgruppe oder mehreren Platzierungsgruppen in der Region gewählt werden. Für die meisten Workloads empfehlen wir mehrere Platzierungsgruppen, um eine bessere Skalierbarkeit zu erzielen. In der API-Version *2017-12-01* werden für Skalierungsgruppen standardmäßig mehrere Platzierungsgruppen für einzelne und mehrere Zonen verwendet. Für regionale (nicht zonale) Skalierungsgruppen wird dagegen standardmäßig nur eine einzelne Platzierungsgruppe genutzt.
 
 > [!NOTE]
 > Bei der maximalen Zuweisung müssen Sie mehrere Platzierungsgruppen verwenden.
 
 ### <a name="zone-balancing"></a>Sicherstellen eines Zonengleichgewichts
 
-Für Skalierungsgruppen, die über mehrere Zonen hinweg bereitgestellt werden, können Sie auch „bestmögliches Zonengleichgewicht“ oder „strenges Zonengleichgewicht“ wählen. Eine Skalierungsgruppe befindet sich „im Gleichgewicht“, wenn die gleiche Anzahl von VMs oder +\\– 1 VM in allen anderen Zonen der Skalierungsgruppe liegt. Beispiel: 
+Für Skalierungsgruppen, die über mehrere Zonen hinweg bereitgestellt werden, können Sie auch „bestmögliches Zonengleichgewicht“ oder „strenges Zonengleichgewicht“ wählen. Eine Skalierungsgruppe befindet sich „im Gleichgewicht“, wenn die gleiche Anzahl von VMs oder +\\– 1 VM in allen anderen Zonen der Skalierungsgruppe liegt. Beispiel:
 
 - Eine Skalierungsgruppe wird mit zwei VMs in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 als im Gleichgewicht befindlich angesehen. Es ist nur eine Zone mit einer unterschiedlichen VM-Anzahl vorhanden, und diese Anzahl ist nur 1 geringer als die Anzahl der VMs in anderen Zonen. 
 - Eine Skalierungsgruppe wird mit einer VM in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 als nicht im Gleichgewicht befindlich angesehen. Zone 1 verfügt über zwei VMs weniger als Zone 2 und 3.

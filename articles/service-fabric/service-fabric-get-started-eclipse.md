@@ -14,18 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: c33ecce5610dbef0dce13aa95f04ae4f0620603b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: c15ca6d68512bc79ce4e5a27f5ce4f7ea6bc3080
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666935"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035440"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Service Fabric-Plug-In für die Entwicklung von Eclipse-Java-Anwendungen
 Eclipse ist eine der am häufigsten genutzten IDEs (Integrated Development Environments) für Java-Entwickler. In diesem Artikel wird beschrieben, wie Sie Ihre Eclipse-Entwicklungsumgebung für Azure Service Fabric einrichten. Hier erfahren Sie, wie Sie das Service Fabric-Plug-In installieren, eine Service Fabric-Anwendung erstellen und Ihre Service Fabric-Anwendung in einem lokalen Service Fabric-Cluster oder Service Fabric-Remotecluster in Eclipse bereitstellen. 
 
 > [!NOTE]
 > Das Eclipse-Plug-In wird unter Windows aktuell nicht unterstützt. 
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass JDK 8 auf dem System installiert und in Eclipse ausgewählt ist.
 
 ## <a name="install-or-update-the-service-fabric-plug-in-in-eclipse"></a>Installieren oder Aktualisieren des Service Fabric-Plug-Ins in Eclipse
 Sie können ein Service Fabric-Plug-In in Eclipse installieren. Das Plug-In kann dazu beitragen, den Prozess der Erstellung und Bereitstellung von Java-Diensten zu vereinfachen.
@@ -205,7 +208,7 @@ Führen Sie die folgenden Schritte aus, um einer vorhandenen Service Fabric-Anwe
 
 ## <a name="edit-manifest-versions-of-your-service-fabric-java-application"></a>Bearbeiten von Manifestversionen Ihrer Service Fabric-Java-Anwendung
 
-Klicken Sie zum Bearbeiten von Manifestversionen mit der rechten Maustaste auf das Projekt, navigieren Sie zu **Service Fabric**, und wählen Sie in der Dropdownliste des Menüs die Option **Manifestversionen bearbeiten...**. Im Assistenten können Sie die Manifestversionen für das Anwendungsmanifest, das Dienstmanifest und die Versionen für die Pakete **Code**, **Config** und **Data** aktualisieren.
+Klicken Sie zum Bearbeiten von Manifestversionen mit der rechten Maustaste auf das Projekt, navigieren Sie zu **Service Fabric**, und wählen Sie in der Dropdownliste des Menüs die Option **Manifestversionen bearbeiten...** . Im Assistenten können Sie die Manifestversionen für das Anwendungsmanifest, das Dienstmanifest und die Versionen für die Pakete **Code**, **Config** und **Data** aktualisieren.
 
 Wenn Sie die Option **Anwendung und Dienstversionen automatisch aktualisieren** aktivieren und dann eine Version aktualisieren, werden die Manifestversionen automatisch aktualisiert. Beispiel: Sie aktivieren zuerst das Kontrollkästchen und aktualisieren dann die Version von **Code** von 0.0.0 auf 0.0.1 und klicken auf **Fertig stellen**. Die Versionen des Dienstmanifests und des Anwendungsmanifests werden dann automatisch auf 0.0.1 aktualisiert.
 

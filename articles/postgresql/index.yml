@@ -1,74 +1,139 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation zur Azure-Datenbank für PostgreSQL
+### YamlMime:Landing
+title: Dokumentation zu Azure Database for PostgreSQL
+summary: 'Azure Database for PostgreSQL ist ein relationaler Datenbankdienst, der auf der Open-Source-Postgres-Datenbank-Engine basiert. Das vollständig verwaltete Database-as-a-Service-Angebot kann geschäftskritische Workloads mit planbarer Leistung, Sicherheit, Hochverfügbarkeit und dynamischer Skalierung verarbeiten. Es gibt zwei Bereitstellungsoptionen: als einzelner Server und als Hyperscale (Citus)-Cluster (Vorschauversion). Bei der Hyperscale (Citus)-Option werden Abfragen mithilfe von Sharding horizontal über mehrere Computer hinweg skaliert. Sie eignet sich für Anwendungen, für die eine umfangreichere Skalierbarkeit und eine höhere Leistung erforderlich sind. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie die Azure-Datenbank für PostgreSQL verwenden.'
 metadata:
-  document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
-  title: 'Dokumentation für Azure PostgreSQL – Tutorials, API-Referenz'
-  description: 'Azure Database for PostgreSQL ist ein relationaler Datenbankdienst in Microsoft Cloud für Entwickler, der auf der Open-Source-PostgreSQL-Datenbank-Engine basiert.'
+  description: Azure Database for PostgreSQL ist ein relationaler Datenbankdienst in Microsoft Cloud für Entwickler, der auf der Open-Source-PostgreSQL-Datenbank-Engine basiert.
   author: rachel-msft
   ms.author: raagyema
+  ms.date: 08/30/2019
   ms.service: postgresql
   ms.topic: landing-page
-  ms.date: 02/25/2019
-abstract:
-  description: 'Azure Database for PostgreSQL ist ein relationaler Datenbankdienst, der auf der Open-Source-Postgres-Datenbank-Engine basiert.  Das vollständig verwaltete Database-as-a-Service-Angebot kann geschäftskritische Workloads mit vorhersagbarer Leistung, Sicherheit, Hochverfügbarkeit und dynamischer Skalierung verarbeiten.  Beim Entwickeln von Anwendungen mit Azure Database for PostgreSQL können Sie die Open-Source-Tools und die Plattform Ihrer Wahl verwenden.  Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie die Azure-Datenbank für PostgreSQL verwenden.'
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie eine PostgreSQL-Datenbank mit Folgendem erstellen:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Azure-Portal
-            href: /azure/postgresql/quickstart-create-server-database-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/cli.svg'
-            text: Azure-Befehlszeilenschnittstelle
-            href: /azure/postgresql/quickstart-create-server-database-azure-cli
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'In diesem Artikel werden folgende Themen erläutert:'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Erstellen einer Datenbank&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure-Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
-          - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Erstellen einer Web-App mit Python und der CLI</a>
-          - html: <a href="/azure/postgresql/tutorial-monitor-and-tune">Überwachen und Optimieren des Diensts</a>
-  - title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Erstellen einer Azure-Datenbank für PostgreSQL-Server
-            href: /learn/modules/create-azure-db-for-postgresql-server/
-            image:
-              src: /learn/achievements/create-azure-db-for-postgresql-server.svg
-              href: /learn/modules/create-azure-db-for-postgresql-server/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure">Mehr interaktives Lernen...</a>
-  - title: Beispiele
-    items:
-      - type: paragraph
-        text: Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure-Befehlszeilenschnittstelle</a>
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Befehlszeile
-            html: <p><a href="/cli/azure/postgres">Azure-Befehlszeilenschnittstelle</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/postgresql">REST-API</a></p>
-          - title: Azure Resource Manager
-            html: <p><a href="/azure/templates/microsoft.dbforpostgresql/allversions">Resource Manager-Vorlagen</a></p>
+  ms.openlocfilehash: 6d35798d5e87945656acb298ec6fa06518487f3e
+  ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70259174"
+landingContent:
+- title: Informationen zu Azure Database for PostgreSQL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure-Datenbank für PostgreSQL?
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Zu unserem Blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+- title: Erstellen eines einzelnen Servers
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen eines Servers über das Azure-Portal
+      url: quickstart-create-server-database-portal.md
+    - text: Erstellen eines Servers über die Azure-Befehlszeilenschnittstelle
+      url: quickstart-create-server-database-azure-cli.md
+  - linkListType: learn
+    links:
+    - text: 'Lernmodul: Erstellen einer Azure-Datenbank für PostgreSQL-Server'
+      url: /learn/modules/create-azure-db-for-postgresql-server/
+  - linkListType: concept
+    links:
+    - text: Tarife
+      url: concepts-pricing-tiers.md
+    - text: Einschränkungen
+      url: concepts-limits.md
+    - text: PostgreSQL-Versionen
+      url: concepts-supported-versions.md
+    - text: PostgreSQL-Erweiterungen (einzelner Server)
+      url: concepts-extensions.md
+  - linkListType: tutorial
+    links:
+    - text: Entwerfen einer Datenbank über das Azure-Portal
+      url: tutorial-design-database-using-azure-portal.md
+    - text: Entwerfen einer Datenbank über die Azure-Befehlszeilenschnittstelle
+      url: tutorial-design-database-using-azure-cli.md
+    - text: Erstellen einer Web-App mit Python und der Befehlszeilenschnittstelle
+      url: /azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json
+    - text: Überwachen und Optimieren des Diensts
+      url: tutorial-monitor-and-tune.md
+- title: Erstellen eines Hyperscale (Citus)-Clusters (Vorschauversion)
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen eines Hyperscale (Citus)-Clusters (Vorschauversion) über das Azure-Portal
+      url: quickstart-create-hyperscale-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Entwerfen einer mehrinstanzenfähigen Datenbank
+      url: tutorial-design-database-hyperscale-multi-tenant.md
+    - text: Entwerfen einer Echtzeitdatenbank
+      url: tutorial-design-database-hyperscale-realtime.md
+  - linkListType: concept
+    links:
+    - text: PostgreSQL-Erweiterungen (Hyperscale)
+      url: concepts-hyperscale-extensions.md
+    - text: Grundlegendes zu Knoten
+      url: concepts-hyperscale-nodes.md
+    - text: Grundlegendes zu verteilten Daten
+      url: concepts-hyperscale-distributed-data.md
+    - text: Konfigurieren von Leistungsoptionen
+      url: concepts-hyperscale-configuration-options.md
+- title: Herstellen einer Verbindung mit einem einzelnen Server
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Grundlegendes zur Firewall
+      url: concepts-firewall-rules.md
+    - text: Erstellen von Firewallregeln
+      url: howto-manage-firewall-using-portal.md
+    - text: Konfigurieren von SSL
+      url: concepts-ssl-connection-security.md
+  - linkListType: get-started
+    links:
+    - text: Herstellen einer Verbindung unter Verwendung von Python
+      url: connect-python.md
+    - text: Herstellen einer Verbindung unter Verwendung von Node.js
+      url: connect-nodejs.md
+    - text: Herstellen einer Verbindung unter Verwendung von Java
+      url: connect-java.md
+    - text: Herstellen einer Verbindung unter Verwendung von Ruby
+      url: connect-ruby.md
+    - text: Herstellen einer Verbindung unter Verwendung von PHP
+      url: connect-php.md
+    - text: Herstellen einer Verbindung unter Verwendung von .NET
+      url: connect-csharp.md
+    - text: Herstellen einer Verbindung unter Verwendung von Go
+      url: connect-go.md
+- title: Programmieren mit Programmier-APIs
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure CLI-Skripts für allgemeine Aufgaben
+      url: /azure/postgresql/sample-scripts-azure-cli
+  - linkListType: reference
+    links:
+    - text: Azure CLI-Entwicklerreferenz
+      url: /rest/api/postgresql/
+    - text: REST-API-Entwicklerreferenz
+      url: /cli/azure/postgres
+    - text: Azure-Ressourcen-Manager-Vorlagen
+      url: /azure/templates/microsoft.dbforpostgresql/allversions
+- title: Sichern und Migrieren von Daten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Sichern und Wiederherstellen auf einem einzelnen Server
+      url: concepts-backup.md
+  - linkListType: how-to-guide
+    links:
+    - text: Wiederherstellen eines Servers über das Azure-Portal
+      url: howto-restore-server-portal.md
+    - text: Wiederherstellen eines Servers über die Azure-Befehlszeilenschnittstelle
+      url: howto-restore-server-cli.md
+    - text: Migrieren einer Datenbank durch Sichern und Wiederherstellen
+      url: howto-migrate-using-dump-and-restore.md
+    - text: Migrieren einer Datenbank durch Exportieren und Importieren
+      url: howto-migrate-using-export-and-import.md
+    - text: Migrationen mit minimaler Downtime
+      url: howto-migrate-online.md

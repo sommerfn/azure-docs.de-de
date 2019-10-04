@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 536a74046f46c7f83907833846e9ec99e8d8a289
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 7feea92d48a826000fd8aa878b95658b79d6d908
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370277"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64869993"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps-Renderabdeckung
 
@@ -45,7 +45,6 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Zentralafrikanische Republik         | ✓ | Ø |
 | Tschad                             | ✓ | Ø |
 | Komoren                          | ✓ | Ø |
-| Kongo (Demokratische Republik)                            | ✓ | ✓ |
 | Demokratische Republik Kongo | ✓ | ✓ |
 | Côte d'Ivoire                    | ✓ | Ø |
 | Dschibuti                         | ✓ | Ø |
@@ -109,7 +108,6 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Kanada                    | ✓ | ✓ |
 | Kaimaninseln            | ✓ | ✓ |
 | Chile                     | ✓ | ✓ |
-| Clippertoninsel         | ✓ | ✓ |
 | Kolumbien                  | ✓ | ✓ |
 | Costa Rica                | ✓ | ✓ |
 | Kuba                      | ✓ | ✓ |
@@ -169,7 +167,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Kokosinseln   |   | Ø |
 | Demokratische Volksrepublik Korea |   | Ø |
 | Dokdo und Takeshima       |   | Ø |
-| Hongkong                 | ✓ | ✓ |
+| Hongkong (SAR)             | ✓ | ✓ |
 | Indien                     | Ø | ✓ | 
 | Indonesien                 | ✓ | ✓ |
 | Iran                      |   | Ø |
@@ -182,7 +180,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Kirgisistan                |   | Ø |
 | Demokratische Volksrepublik Laos |   | Ø |
 | Libanon                   | ✓ | ✓ |
-| Macau (SAR)                     | ✓ | ✓ |
+| Macau (SAR)                 | ✓ | ✓ |
 | Malaysia                  | ✓ | ✓ |
 | Malediven                  |   | Ø |
 | Mongolei                  |   | Ø |
@@ -276,7 +274,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Liechtenstein             | ✓ | ✓ |
 | Litauen                 | ✓ | ✓ |
 | Luxemburg                | ✓ | ✓ |
-| Nordmazedonien                 | ✓ | ✓ |
+| Nordmazedonien           | ✓ | ✓ |
 | Malta                     | ✓ | ✓ |
 | Moldau                   | ✓ | ✓ |
 | Monaco                    | ✓ | ✓ |

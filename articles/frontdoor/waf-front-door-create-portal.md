@@ -11,14 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/8/2019
-ms.author: kumud;tyao
-ms.openlocfilehash: 26db3a67c3efbd0ba2a5c58facd0c07175f7ed12
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.date: 05/31/2019
+ms.author: kumud
+ms.reviewer: tyao
+ms.openlocfilehash: abaef0fb521d848134885a06591b0656c60c67e6
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59564138"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846391"
 ---
 # <a name="create-a-waf-policy-for-azure-front-door-by-using-the-azure-portal"></a>Erstellen einer WAF-Richtlinie für Azure Front Door im Azure-Portal
 
@@ -37,8 +38,8 @@ Erstellen Sie zuerst im Portal mithilfe des verwalteten Standardregelsatzes eine
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Abonnement            |Wählen Sie den Namen Ihres Front Door-Abonnements aus.|
-    | Ressourcengruppe          |Wählen Sie den Namen Ihrer Front Door-Ressourcengruppe aus.|
+    | Subscription            |Wählen Sie den Namen Ihres Front Door-Abonnements aus.|
+    | Resource group          |Wählen Sie den Namen Ihrer Front Door-Ressourcengruppe aus.|
     | Richtlinienname             |Geben Sie einen eindeutigen Namen für Ihre WAF-Richtlinie ein.|
 
    ![Erstellen einer WAF-Richtlinie](./media/waf-front-door-create-portal/basic.png)
@@ -63,17 +64,19 @@ Um WAF in Aktion zu sehen, können Sie den Modus von **Erkennung** in **Prävent
 
  ![Ändern des WAF-Richtlinienmodus](./media/waf-front-door-create-portal/policy.png)
 
+### <a name="custom-rules"></a>Benutzerdefinierte Regeln
+
+Sie können eine benutzerdefinierte Regel erstellen, indem Sie im Abschnitt **Benutzerdefinierte Regeln** die Option **Benutzerdefinierte Regel hinzufügen** wählen. Die Seite für die Konfiguration einer benutzerdefinierten Regel wird geöffnet. Unten ist ein Beispiel für die Konfiguration einer benutzerdefinierten Regel zum Blockieren einer Anforderung für den Fall angegeben, in dem die Abfragezeichenfolge **blockme** enthält.
+
+![Ändern des WAF-Richtlinienmodus](./media/waf-front-door-create-portal/customquerystring2.png)
+
 ### <a name="default-rule-set-drs"></a>Standardregelsatz
 
 Der von Azure verwaltete Standardregelsatz ist standardmäßig aktiviert. Um eine einzelne Regel innerhalb einer Regelgruppe zu deaktivieren, erweitern Sie die Regeln innerhalb dieser Regelgruppe. Aktivieren Sie das **Kontrollkästchen** vor der Regelnummer, und klicken Sie oben auf der Registerkarte auf **Deaktivieren**. Um Aktionstypen für einzelne Regeln innerhalb des Regelsatzes zu ändern, aktivieren Sie das Kontrollkästchen vor der Regelnummer, und wählen Sie dann oben die Registerkarte **Aktion ändern** aus.
 
- ![Ändern des WAF-Regelsatzes](./media/waf-front-door-create-portal/managed.png)
+ ![Ändern des WAF-Regelsatzes](./media/waf-front-door-create-portal/managed2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu Azure Web Application Firewall finden Sie [hier](waf-overview.md).
 - Erfahren Sie mehr zu [Azure Front Door](front-door-overview.md).
-
-
-
-

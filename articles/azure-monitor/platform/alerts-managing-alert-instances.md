@@ -1,46 +1,58 @@
 ---
-title: Verwalten von Warnungsinstanzen
+title: Verwalten von Warnungsinstanzen in Azure Monitor
 description: Verwalten von Warnungsinstanzen in Azure
 author: anantr
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: cb93f38c05156d7ab5acb89ffff810949583e507
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 91a770b522011f3955ae0956e289886eb204cf47
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089402"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702907"
 ---
-# <a name="manage-alert-instances"></a>Verwalten von Warnungsinstanzen
-Mit der [einheitlichen Oberfläche für Warnungen](https://aka.ms/azure-alerts-overview) in Azure Monitor können Sie jetzt Ihre gesamten verschiedenen Warnungstypen in Azure, die mehrere Abonnements umfassen, in einem einzelnen Bereich anzeigen. Dieser Artikel führt Sie durch die Möglichkeiten, wie Sie Ihre Warnungsinstanzen anzeigen und wie Sie im Portal intensiv nach bestimmten Warnungsinstanzen zur Fehlerbehebung suchen können.
+# <a name="manage-alert-instances-with-unified-alerts"></a>Verwalten von Warnungsinstanzen mit der einheitlichen Oberfläche für Warnungen
+Mit der [einheitlichen Oberfläche für Warnungen](https://aka.ms/azure-alerts-overview) in Azure Monitor können Sie alle Ihre verschiedenen Warnungstypen in Azure anzeigen. Dies umfasst die Anzeige mehrerer Abonnements in einem einzelnen Bereich. In diesem Artikel wird gezeigt, wie Sie Ihre Warnungsinstanzen anzeigen und nach bestimmten Warnungsinstanzen zur Fehlerbehebung suchen können.
 
-1. Es gibt drei Möglichkeiten, um auf die Seite „Warnungen“ zu gelangen
+> [!NOTE]
+   >  Sie können nur auf Warnungen zugreifen, die in den letzten 30 Tagen generiert wurden.
 
-   + Wählen Sie im [Portal](https://portal.azure.com/) die Option **Überwachen** und im Abschnitt „Überwachen“ dann **Warnungen** aus.  
-     ![Überwachung](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
+## <a name="go-to-the-alerts-page"></a>Navigieren zur Seite „Warnungen“
+
+Sie können auf eine der folgenden Arten zur Seite „Warnungen“ navigieren:
+
+   + Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option **Monitor** > **Warnungen** aus.  
+     ![Screenshot der Seite „Monitor – Warnungen“](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   
-   + Sie können aus dem Kontext einer bestimmten **Ressource** heraus zu „Warnungen“ navigieren. Sobald eine Ressource geöffnet ist, navigieren Sie durch ihr Inhaltsverzeichnis zum Überwachungsabschnitt, und wählen Sie **Warnungen** aus, wobei die Zielseite für Warnungen zu dieser spezifischen Ressource vorgefiltert ist.
+   + Verwenden Sie den Kontext einer bestimmten Ressource. Öffnen Sie eine Ressource, wechseln Sie zum Abschnitt **Überwachung**, und wählen Sie **Warnungen** aus. Die Startseite wird vorab nach Warnungen für diese bestimmte Ressource gefiltert.
    
-     ![Überwachung](media/alerts-managing-alert-instances/alert-resource.JPG)
+     ![Screenshot von „Überwachung“ – „Warnungen“ für eine Ressource](media/alerts-managing-alert-instances/alert-resource.JPG)
     
-   + Sie können aus dem Kontext einer bestimmten **Ressourcengruppe** heraus zu „Warnungen“ navigieren. Sobald eine Ressourcengruppe geöffnet ist, navigieren Sie durch ihr Inhaltsverzeichnis zum Überwachungsabschnitt, und wählen Sie **Warnungen** aus, wobei die Zielseite für Warnungen zu dieser spezifischen Ressourcengruppe vorgefiltert ist.    
+   + Verwenden Sie den Kontext einer bestimmten Ressourcengruppe. Öffnen Sie eine Ressourcengruppe, wechseln Sie zum Abschnitt **Überwachung**, und wählen Sie **Warnungen** aus. Die Startseite wird vorab nach Warnungen für diese bestimmte Ressourcengruppe gefiltert.    
    
-     ![Überwachung](media/alerts-managing-alert-instances/alert-rg.JPG)
+     ![Screenshot von „Überwachung“ – „Warnungen“ für eine Ressourcengruppe](media/alerts-managing-alert-instances/alert-rg.JPG)
 
-1. Sie gelangen auf die Seite **Zusammenfassung von Warnungen**, die Ihnen einen Überblick über Ihre gesamten Warnungsinstanzen in Azure gibt. Sie können die zusammenfassende Übersicht ändern, indem Sie **mehrere Abonnements** (maximal fünf) auswählen oder nach **Ressourcengruppen**, bestimmten **Ressourcen** oder **Zeitbereichen** filtern. Klicken Sie entweder auf „Warnungen gesamt“ oder einen der Schweregrade, um in die Listenansicht für Ihre Warnungen zu gelangen.     
-   ![Zusammenfassung von Warnungen](media/alerts-managing-alert-instances/alerts-summary.jpg)
+## <a name="find-alert-instances"></a>Suchen von Warnungsinstanzen
+
+Die Seite **Warnungszusammenfassung** gibt Ihnen einen Überblick über Ihre gesamten Warnungsinstanzen in Azure. Sie können die zusammenfassende Übersicht ändern, indem Sie **mehrere Abonnements** (maximal fünf) auswählen oder nach **Ressourcengruppen**, bestimmten **Ressourcen** oder **Zeitbereichen** filtern. Wählen Sie **Warnungen gesamt** oder einen der Schweregrade aus, um zur Listenansicht für Ihre Warnungen zu gelangen.     
+   ![Screenshot der Seite „Warnungszusammenfassung“](media/alerts-managing-alert-instances/alerts-summary.jpg)
  
-1. Sie gelangen auf die Seite **Alle Warnungen**, auf der alle Warnungsinstanzen in Azure aufgelistet werden. Wenn Sie über eine Warnungsbenachrichtigung zum Portal gelangen, können Sie die verfügbaren Filter verwenden, um die Eingrenzung auf diese bestimmte Warnungsinstanz vorzunehmen. (**Hinweis**: Wenn Sie durch Klicken auf einen der Schweregrade auf die Seite gelangt sind, wird die Liste vorab nach diesem Schweregrad gefiltert). Neben den auf der vorherigen Seite verfügbaren Filtern können Sie jetzt auch auf Basis des Überwachungsdiensts (z. B. Plattform für Metriken), der Überwachungsbedingung (ausgelöst oder gelöst), des Schweregrads, des Warnungszustands (neu/bestätigt/geschlossen) oder der ID der intelligenten Gruppe filtern.
+Auf der Seite **Alle Warnungen** werden alle Warnungsinstanzen in Azure aufgelistet. Wenn Sie über eine Warnungsbenachrichtigung zum Portal gelangen, können Sie die verfügbaren Filter verwenden, um die Eingrenzung auf diese bestimmte Warnungsinstanz vorzunehmen.
 
-   ![Alle Warnungen](media/alerts-managing-alert-instances/all-alerts.jpg)
+> [!NOTE]
+>  Wenn Sie durch Auswahl eines der Schweregrade auf die Seite gelangt sind, wird die Liste vorab nach diesem Schweregrad gefiltert.
+
+Neben den auf der vorherigen Seite verfügbaren Filtern können Sie auch auf Basis des Überwachungsdiensts (z.B. Plattform für Metriken), der Überwachungsbedingung (ausgelöst oder gelöst), des Schweregrads, des Warnungszustands (neu/bestätigt/geschlossen) oder der ID der intelligenten Gruppe filtern.
+
+   ![Screenshot der Seite „Alle Warnungen“](media/alerts-managing-alert-instances/all-alerts.jpg)
 
    > [!NOTE]
-   >  Wenn Sie durch Klicken auf einen der Schweregrade auf die Seite gelangt sind, wird die Liste vorab nach diesem Schweregrad gefiltert.
+   >  Wenn Sie durch Auswahl eines der Schweregrade auf die Seite gelangt sind, wird die Liste vorab nach diesem Schweregrad gefiltert.
  
-1. Wenn Sie auf eine beliebige Warnungsinstanz klicken, wird die Seite **Warnungsdetails** geöffnet, auf der Sie die Informationen zu dieser bestimmten Warnungsinstanz eingehend untersuchen können.   
-   ![Warnungsdetails](media/alerts-managing-alert-instances/alert-details.jpg)  
+Wenn Sie eine beliebige Warnungsinstanz auswählen, wird die Seite **Warnungsdetails** geöffnet, auf der Sie weitere Informationen zu dieser bestimmten Warnungsinstanz finden.   
+   ![Screenshot der Seite „Warnungsdetails“](media/alerts-managing-alert-instances/alert-details.jpg)  
 

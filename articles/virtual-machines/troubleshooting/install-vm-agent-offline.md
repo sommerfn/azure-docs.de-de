@@ -4,22 +4,21 @@ description: Erfahren Sie mehr über das Installieren des Azure-VM-Agents im Off
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e9fc8351b5e9a4f2274f0906d4071f86dcbcff26
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 438143d3253f1cab1afb958a90f427dcba59a98e
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259681"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059249"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Installieren des Azure-VM-Agents im Offlinemodus 
 
@@ -36,27 +35,17 @@ In den folgenden Szenarien können Sie den VM-Agent im Offlinemodus installieren
 
 Mit den folgenden Schritten installieren Sie den VM-Agent im Offlinemodus:
 
-> [!NOTE]
-> Sie können das Installieren des VM-Agents im Offlinemodus automatisieren.
-> Verwenden Sie hierzu die [Azure VM-Wiederherstellungsskripts](https://github.com/Azure/azure-support-scripts/blob/master/VMRecovery/ResourceManager/README.md). Wenn Sie die Azure VM-Wiederherstellungsskripts verwenden möchten, können Sie den folgenden Prozess verwenden:
-> 1. Überspringen Sie Schritt 1, indem Sie mit Hilfe der Skripte den Betriebssystemdatenträger der betroffenen VM einer Wiederherstellungs-VM anfügen.
-> 2. Führen Sie die Schritte 2 bis 10 aus, um die Risikominderungen anzuwenden.
-> 3. Überspringen Sie Schritt 11 mithilfe der Skripts, um die VM neu zu erstellen.
-> 4. Führen Sie Schritt 12 aus.
-
 ### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>Schritt 1: Anfügen des Betriebssystem-Datenträgers des virtuellen Computers als Datenträger an einen anderen virtuellen Computer
 
-1.  Löschen Sie den virtuellen Computer. Aktivieren Sie beim Löschen die Option für die **Beibehaltung der Datenträger**.
+1. Erstellen Sie eine Momentaufnahme für den Betriebssystemdatenträger der betroffenen VM, erstellen Sie aus der Momentaufnahme einen Datenträger, und fügen Sie diesen an eine VM zur Problembehebung an. Weitere Informationen finden Sie unter [Beheben von Problemen mit einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM im Azure-Portal](troubleshoot-recovery-disks-portal-windows.md). Bei einer klassischen VM löschen Sie die VM, behalten den Betriebssystemdatenträger bei und fügen diesen an eine VM zur Problembehebung an.
 
-2.  Fügen Sie den Betriebssystemdatenträger als Datenträger an einen anderen virtuellen Computer (die _Problembehandlungs_-VM) an. Weitere Informationen finden Sie unter [Anfügen eines Datenträgers an eine Windows-VM im Azure-Portal](../windows/attach-managed-disk-portal.md).
-
-3.  Stellen Sie eine Verbindung mit der Problembehebungs-VM her. Öffnen Sie **Computerverwaltung** > **Datenträgerverwaltung**. Stellen Sie sicher, dass der Betriebssystemdatenträger online ist und dass den Datenträgerpartitionen Laufwerkbuchstaben zugewiesen sind.
+2.  Stellen Sie eine Verbindung mit der Problembehebungs-VM her. Öffnen Sie **Computerverwaltung** > **Datenträgerverwaltung**. Stellen Sie sicher, dass der Betriebssystemdatenträger online ist und dass den Datenträgerpartitionen Laufwerkbuchstaben zugewiesen sind.
 
 ### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Schritt 2: Ändern des Betriebssystem-Datenträgers zum Installieren des Azure-VM-Agents
 
 1.  Stellen Sie eine Remotedesktopverbindung mit der Problembehebungs-VM her.
 
-2.  Navigieren Sie auf dem angefügten Betriebssystemdatenträger zum Ordner \windows\system32\config. Kopieren Sie alle Dateien in diesem Ordner als Sicherung für den Fall, dass ein Zurücksetzen erforderlich ist.
+2.  Navigieren Sie auf der Problembehebungs-VM zum angefügten Betriebssystemdatenträger, und öffnen Sie den Ordner „\windows\system32\config“. Kopieren Sie alle Dateien in diesem Ordner als Sicherung für den Fall, dass ein Zurücksetzen erforderlich ist.
 
 3.  Starten Sie den **Registrierungs-Editor** (regedit.exe).
 
@@ -109,7 +98,7 @@ Mit den folgenden Schritten installieren Sie den VM-Agent im Offlinemodus:
 
 10.  Wählen Sie **BROKENSOFTWARE**. Wählen Sie im Menü **Datei** > **Struktur laden**.
 
-11.  Trennen Sie den Betriebssystemdatenträger, und erstellen Sie damit den virtuellen Computer neu.
+11.  Trennen Sie den Betriebssystemdatenträger, und [ändern Sie ihn für die betroffene VM](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm). Bei einer klassischen VM erstellen Sie eine neue VM mithilfe des reparierten Betriebssystemdatenträgers.
 
 12.  Greifen Sie auf den virtuellen Computer zu. Prüfen Sie, ob RdAgent ausgeführt wird und die Protokolle generiert werden.
 

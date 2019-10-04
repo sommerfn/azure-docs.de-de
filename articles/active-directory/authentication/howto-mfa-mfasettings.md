@@ -5,24 +5,24 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 06/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f1dbd4b6635d615cc7bed4cf5cc38234ec0c3f1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cf732ec97a57a5bc1d2bcaa39e5fd14a305504d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885994"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075499"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
-Dieser Artikel unterstützt Sie beim Verwalten der Einstellungen der Azure Multi-Factor Authentication im Azure-Portal. Der Artikel umfasst eine Vielzahl von Themen, die Ihnen dabei helfen, Azure Multi-Factor Authentication optimal zu nutzen. Nicht alle Funktionen sind in jeder [Version von Azure Multi-Factor Authentication](concept-mfa-whichversion.md#what-features-do-i-need) verfügbar.
+Dieser Artikel unterstützt Sie beim Verwalten der Einstellungen der Azure Multi-Factor Authentication im Azure-Portal. Der Artikel umfasst eine Vielzahl von Themen, die Ihnen dabei helfen, Azure Multi-Factor Authentication optimal zu nutzen. Nicht alle Funktionen sind in jeder Version von Azure Multi-Factor Authentication verfügbar.
 
-Sie können vom Azure-Portal aus auf Einstellungen für die Multi-Factor Authentication zugreifen, indem Sie zu **Azure Active Directory** > **MFA** navigieren.
+Sie können vom Azure-Portal aus auf Einstellungen für die Azure Multi-Factor Authentication zugreifen, indem Sie zu **Azure Active Directory** > **MFA** navigieren.
 
 ![Azure-Portal – Einstellungen für Azure AD Multi-Factor Authentication](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -33,9 +33,9 @@ Einige dieser Einstellungen gelten für MFA-Server, Azure-MFA oder beide Optione
 | Feature | BESCHREIBUNG |
 | ------- | ----------- |
 | Kontosperrung | Hiermit werden Konten im MFA-Dienst temporär gesperrt, wenn zu viele aufeinanderfolgende Authentifizierungsversuche abgelehnt werden. Dieses Feature wird nur auf Benutzer angewendet, die zur Authentifizierung eine PIN eingeben. (MFA-Server) |
-| [Benutzer sperren/zulassen](#block-and-unblock-users) | Wird verwendet, um bestimmte Benutzer auf dem MFA-Server (lokal) daran zu hindern, Multi-Factor Authentication-Anforderungen zu empfangen. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt. |
+| [Benutzer sperren/zulassen](#block-and-unblock-users) | Wird verwendet, um zu verhindern, dass bestimmte Benutzer Multi-Factor Authentication-Anforderungen empfangen. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt. |
 | [Betrugswarnung](#fraud-alert) | Konfigurieren Sie Einstellungen, damit Benutzer betrügerische Überprüfungsanforderungen melden können. |
-| Benachrichtigungen | Aktivieren Sie Benachrichtigungen für Ereignisse vom MFA-Server. |
+| [Notifications](#notifications) | Aktivieren Sie Benachrichtigungen für Ereignisse vom MFA-Server. |
 | [OATH-Token](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Wird in Cloud-basierten Azure MFA-Umgebungen verwendet, um OATH-Token für Benutzer zu verwalten. |
 | [Einstellungen für Telefonanruf](#phone-call-settings) | Konfigurieren Sie Einstellungen für Telefonanrufe und Ansagen für Cloud- und lokale Umgebungen. |
 | Anbieter | Hier werden alle vorhandenen Authentifizierungsanbieter angezeigt, die Sie möglicherweise mit Ihrem Konto verknüpft haben. Neue Authentifizierungsanbieter können ab 1. September 2018 nicht mehr erstellt werden. |
@@ -89,7 +89,7 @@ Konfigurieren Sie das Feature _Betrugswarnung_, damit Ihre Benutzer betrügerisc
 ### <a name="configuration-options"></a>Konfigurationsoptionen
 
 * **Benutzer bei Betrugsmeldung sperren**: Wenn ein Benutzer einen Betrug meldet, wird sein Konto 90 Tage lang oder so lange gesperrt, bis ein Administrator die Sperre für das Konto aufhebt. Ein Administrator kann anhand des Anmeldeberichts Anmeldungen überprüfen und entsprechende Maßnahmen ergreifen, um weiterem Betrug vorzubeugen. Ein Administrator kann dann die Sperre für das Konto des Benutzers [aufheben](#unblock-a-user).
-* **Code zum Melden von Betrugsversuchen während der Begrüßung**: Wenn Benutzer einen Telefonanruf zur Ausführung der zweistufigen Überprüfung empfangen, drücken sie normalerweise die **#**-Taste, um ihre Anmeldung zu bestätigen. Wenn sie einen Betrug melden möchten, geben sie vor dem Drücken der **#**-Taste einen Code ein. Dieser Code ist standardmäßig **0**, Sie können ihn jedoch anpassen.
+* **Code zum Melden von Betrugsversuchen während der Begrüßung**: Wenn Benutzer einen Telefonanruf zur Ausführung der zweistufigen Überprüfung empfangen, drücken sie normalerweise die **#** -Taste, um ihre Anmeldung zu bestätigen. Wenn sie einen Betrug melden möchten, geben sie vor dem Drücken der **#** -Taste einen Code ein. Dieser Code ist standardmäßig **0**, Sie können ihn jedoch anpassen.
 
    >[!NOTE]
    >In der Standardansage von Microsoft wird der Benutzer aufgefordert, zum Senden einer Betrugswarnung die Zeichenfolge **0#** einzugeben. Wenn Sie einen anderen Code als **0** verwenden möchten, sollten Sie eine benutzerdefinierte Ansage mit den passenden Anweisungen für Ihre Benutzer aufnehmen und hochladen.
@@ -99,6 +99,12 @@ Konfigurieren Sie das Feature _Betrugswarnung_, damit Ihre Benutzer betrügerisc
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Azure Active Directory** > **Anmeldungen** aus. Der Betrugsbericht ist damit Teil des standardmäßigen Azure AD-Berichts zu Anmeldungen.
+
+## <a name="notifications"></a>Benachrichtigungen
+
+Konfigurieren Sie hier E-Mail-Adressen für Benutzer, die E-Mails mit Betrugswarnungen erhalten.
+
+![Benachrichtigungsbeispiel für eine E-Mail mit Betrugswarnung](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 
 ## <a name="phone-call-settings"></a>Einstellungen für Telefonanruf
 
@@ -143,6 +149,31 @@ Wenn beispielsweise nur eine benutzerdefinierte Nachricht in der Sprache Deutsch
 1. Wählen Sie die Sprache aus.
 1. Wählen Sie eine MP3- oder WAV-Audiodatei zum Hochladen aus.
 1. Wählen Sie **Hinzufügen**.
+
+### <a name="custom-voice-message-defaults"></a>Benutzerdefinierte Standardsprachnachrichten
+
+Beispielskripts zum Erstellen von benutzerdefinierten Nachrichten.
+
+| Nachrichtenname | Skript |
+| --- | --- |
+| Authentifizierung erfolgreich | Ihre Anmeldung wurde erfolgreich überprüft. Auf Wiedersehen. |
+| Grußformel bei Durchwahl | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie #, um Ihre Anmeldung abzuschließen. |
+| Betrugsmeldung bestätigen | Eine Betrugswarnung wurde ausgegeben. Wenden Sie sich an den IT-Helpdesk Ihres Unternehmens, um die Sperrung Ihres Kontos aufzuheben. |
+| Betrug – Grußformel (Standardmodus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie das Nummernzeichen, um die Überprüfung abzuschließen. Wenn Sie diese Überprüfung nicht initiiert haben, versucht möglicherweise jemand, auf Ihr Konto zuzugreifen. Drücken Sie die Taste 0 (null), um eine Betrugswarnung abzusenden. So benachrichtigen Sie das IT-Team Ihres Unternehmens und blockieren weitere Überprüfungsversuche. |
+| Betrug wurde gemeldet. Eine Betrugswarnung wurde ausgegeben. | Wenden Sie sich an den IT-Helpdesk Ihres Unternehmens, um die Sperrung Ihres Kontos aufzuheben. |
+| Aktivierung | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Authentifizierung abgelehnt. Erneut versuchen. | Überprüfung abgelehnt. |
+| Erneut versuchen (Standardmodus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Grußformel (Standardmodus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Grußformel (PIN-Modus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Geben Sie Ihre PIN ein, und drücken Sie danach das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Betrug – Grußformel (PIN-Modus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden.  Geben Sie Ihre PIN ein, und drücken Sie danach das Nummernzeichen, um die Überprüfung abzuschließen. Wenn Sie diese Überprüfung nicht initiiert haben, versucht möglicherweise jemand, auf Ihr Konto zuzugreifen. Drücken Sie die Taste 0 (null), um eine Betrugswarnung abzusenden. So benachrichtigen Sie das IT-Team Ihres Unternehmens und blockieren weitere Überprüfungsversuche. |
+| Erneut versuchen (PIN-Modus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Geben Sie Ihre PIN ein, und drücken Sie danach das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Grußformel nach Ansage der Durchwahlziffern | Wenn Sie bereits bei dieser Durchwahl sind, drücken Sie zum Fortfahren das Nummernzeichen. |
+| Authentifizierung abgelehnt | Sie können zurzeit leider nicht angemeldet werden. Versuchen Sie es später noch mal. |
+| Grußformel bei der Aktivierung (Standardmodus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Aktivierung erneut versuchen (Standardmodus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Drücken Sie das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Grußformel bei der Aktivierung (PIN-Modus) | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Geben Sie Ihre PIN ein, und drücken Sie danach das Nummernzeichen, um die Überprüfung abzuschließen. |
+| Grußformel vor Ansage der Durchwahlziffern | Vielen Dank, dass Sie das Anmeldungsüberprüfungssystem von Microsoft verwenden. Übertragen Sie diesen Anruf an Durchwahl ... |
 
 ## <a name="one-time-bypass"></a>Einmalumgehung
 
@@ -243,7 +274,7 @@ Azure AD unterstützt den Verbund oder das einmalige Anmelden (SSO) mit lokalen 
 Standardmäßig können Benutzer keine App-Kennwörter erstellen. Das Feature für App-Kennwörter muss aktiviert werden. Gehen Sie wie folgt vor, um Benutzern die Erstellung von App-Kennwörtern zu ermöglichen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Benutzer** aus.
+2. Wählen Sie im linken Bereich **Azure Active Directory** > **Benutzer** aus.
 3. Wählen Sie **Multi-Factor Authentication** aus.
 4. Klicken Sie unter „Multi-Factor Authentication“ auf **Diensteinstellungen**.
 5. Wählen Sie auf der Seite **Diensteinstellungen** die Option **Benutzern das Erstellen von App-Kennwörtern zum Anmelden bei nicht browserbasierten Apps gestatten** aus.
@@ -283,7 +314,7 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
 ### <a name="enable-named-locations-by-using-conditional-access"></a>Aktivieren benannter Orte mit bedingtem Zugriff
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie links **Azure Active Directory** > **Bedingter Zugriff** > **Benannte Orte** aus.
+2. Wählen Sie auf der linken Seite die Optionen **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** > **Benannte Orte** aus.
 3. Wählen Sie **Neuer Ort** aus.
 4. Geben Sie einen Namen für den Standort ein.
 5. Wählen Sie **Als vertrauenswürdigen Standort markieren** aus.
@@ -293,7 +324,7 @@ Unabhängig davon, ob das Feature „Vertrauenswürdige IPs“ aktiviert ist, is
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>Aktivieren des Features „Vertrauenswürdige IPs“ mit bedingtem Zugriff
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie links **Azure Active Directory** > **Bedingter Zugriff** > **Benannte Orte** aus.
+2. Wählen Sie auf der linken Seite die Optionen **Azure Active Directory** > **Sicherheit** >  **Bedingter Zugriff** > **Benannte Orte** aus.
 3. Wählen Sie **Durch MFA bestätigte IPs konfigurieren** aus.
 4. Wählen Sie auf der Seite **Diensteinstellungen** unter **Vertrauenswürdige IPs** eine der folgenden beiden Optionen aus:
 
@@ -343,7 +374,7 @@ Wenn Ihre Benutzer ihre Konten für Azure Multi-Factor Authentication registrier
 ### <a name="enable-and-disable-verification-methods"></a>Aktivieren und Deaktivieren von Überprüfungsmethoden
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Benutzer** aus.
+2. Wählen Sie im linken Bereich **Azure Active Directory** > **Benutzer** aus.
 3. Wählen Sie **Multi-Factor Authentication** aus.
 4. Klicken Sie unter „Multi-Factor Authentication“ auf **Diensteinstellungen**.
 5. Aktivieren oder deaktivieren Sie auf der Seite **Diensteinstellungen** unter **Überprüfungsoptionen** die Methoden, die den Benutzern zur Verfügung gestellt werden.
@@ -358,8 +389,7 @@ Das Feature _Multi-Factor Authentication speichern_ für Geräte und Browser, di
 >[!IMPORTANT]
 >Wenn ein Konto oder Gerät gefährdet ist, kann das Speichern von Multi-Factor Authentication für vertrauenswürdige Geräte die Sicherheit beeinträchtigen. Wenn ein Unternehmenskonto kompromittiert wird oder ein vertrauenswürdiges Gerät verloren geht oder gestohlen wird, sollten Sie die [Multi-Factor Authentication auf allen Geräten wiederherstellen](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
 >
->Durch die Wiederherstellungsaktion wird der vertrauenswürdige Status aller Geräte widerrufen, und der Benutzer muss wieder die zweistufige Überprüfung ausführen. Sie können Ihre Benutzer auch anweisen, Multi-Factor Authentication auf ihren eigenen Geräten anhand der Anweisungen unter [Verwalten der Einstellungen für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted) wiederherzustellen.
->
+>Durch die Wiederherstellungsaktion wird der vertrauenswürdige Status aller Geräte widerrufen, und der Benutzer muss wieder die zweistufige Überprüfung ausführen. Sie können Ihre Benutzer auch anweisen, Multi-Factor Authentication auf ihren eigenen Geräten anhand der Anweisungen unter [Verwalten der Einstellungen für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) wiederherzustellen.
 
 ### <a name="how-the-feature-works"></a>Funktionsweise des Features
 
@@ -374,11 +404,13 @@ Mit dem Feature reduziert sich die Anzahl der Authentifizierungen für Web-Apps,
 >
 >Wenn Ihre Benutzer in AD FS **Angemeldet bleiben** auswählen und ihr Gerät außerdem als für Multi-Factor Authentication vertrauenswürdig markieren, werden sie nach Ablauf der Anzahl von Tagen, die unter **Multi-Factor Authentication speichern** angegeben wurde, nicht automatisch überprüft. Azure AD fordert eine neue zweistufige Überprüfung an, aber AD FS gibt ein Token mit dem ursprünglichen Multi-Factor Authentication-Anspruch und Datum zurück, statt die zweistufige Überprüfung erneut durchzuführen. **Durch diese Reaktion entsteht eine Schleife bei der Überprüfung zwischen Azure AD und AD FS.**
 >
+>Das Feature **Multi-Factor Authentication speichern** ist nicht mit B2B-Benutzern kompatibel und wird B2B-Benutzer nicht angezeigt, wenn sie sich bei den eingeladenen Mandanten anmelden.
+>
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Aktivieren der Speicherung von Multi-Factor Authentication
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Benutzer** aus.
+2. Wählen Sie im linken Bereich **Azure Active Directory** > **Benutzer** aus.
 3. Wählen Sie **Multi-Factor Authentication** aus.
 4. Klicken Sie unter „Multi-Factor Authentication“ auf **Diensteinstellungen**.
 5. Wählen Sie auf der Seite **Diensteinstellungen** unter **Multi-Factor Authentication speichern** die Option **Benutzern das Speichern der mehrstufigen Authentifizierung auf vertrauenswürdigen Geräten ermöglichen** aus.

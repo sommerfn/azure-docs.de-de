@@ -10,11 +10,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: e955d21132dda6caa137ad3b5de9d00ccf7ed1b4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811051"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61369847"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -40,7 +40,7 @@ Sie können dieses Beispiel verwenden, um mithilfe von Azure IoT Hub-Gerätezwil
 
 ## <a name="provision-azure-services"></a>Bereitstellen von Azure-Diensten
 
-1. Klicken Sie in Visual Studio Code auf das Dropdownmenü **Aufgabe**, und wählen Sie **Aufgabe ausführen...** - **cloud-provision**.
+1. Klicken Sie in Visual Studio Code auf das Dropdownmenü **Aufgabe**, und wählen Sie **Aufgabe ausführen...**  - **cloud-provision**.
 
 2. Der Fortschritt wird unter der Registerkarte **TERMINAL** des Bereichs **Willkommen** angezeigt.
 
@@ -55,19 +55,19 @@ Sie können dieses Beispiel verwenden, um mithilfe von Azure IoT Hub-Gerätezwil
 
 6. Die Anzeige sieht etwa wie folgt aus: *Funktions-App: Name der Funktions-App: xxx*. Notieren Sie sich den Namen der Funktions-App; er wird in einem späteren Schritt verwendet.
 
-7. Warten Sie, bis die Bereitstellung der Azure Resource Manager-Vorlage abgeschlossen ist. Dies wird durch die Meldung *Resource Manager template deployment:  Done* (Bereitstellung der Resource Manager-Vorlage: Abgeschlossen) angegeben.
+7. Warten Sie, bis die Bereitstellung der Azure Resource Manager-Vorlage abgeschlossen ist. Dies wird durch die Meldung *Bereitstellung von Resource Manager-Vorlage: Abgeschlossen* angezeigt.
 
 ## <a name="deploy-function-app"></a>Bereitstellen der Funktionen-App
 
-1. Klicken Sie in Visual Studio Code auf das Dropdownmenü **Aufgabe**, und wählen Sie **Aufgabe ausführen...** - **cloud-deploy**.
+1. Klicken Sie in Visual Studio Code auf das Dropdownmenü **Aufgabe**, und wählen Sie **Aufgabe ausführen...**  - **cloud-deploy**.
 
-2. Warten Sie, bis der Funktions-App-Code hochgeladen ist; die Meldung *function app deploys:  Done* (Funktions-App-Bereitstellungen: Abgeschlossen) wird angezeigt.
+2. Warten Sie, bis das Hochladen des Funktions-App-Codes abgeschlossen ist. Es wird die Meldung *Funktions-App-Bereitstellungen: Abgeschlossen* angezeigt.
 
 ## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>Konfigurieren der Verbindungszeichenfolge für das IoT Hub-Gerät in DevKit
 
 1. Stellen Sie eine Verbindung zwischen dem MXChip IoT DevKit und Ihrem Computer her.
 
-2. Klicken Sie in Visual Studio Code auf das Dropdownmenü **Aufgabe**, und wählen Sie **Aufgabe ausführen...** - **config-device-connection**.
+2. Klicken Sie in Visual Studio Code auf das Dropdownmenü **Aufgabe**, und wählen Sie **Aufgabe ausführen...**  - **config-device-connection**.
 
 3. Halten Sie im MXChip IoT DevKit die Taste **A** gedrückt, drücken Sie die **Rücksetztaste**, und lassen Sie dann die Taste **A** los, um den Konfigurationsmodus für das DevKit zu aktivieren.
 
@@ -77,7 +77,7 @@ Sie können dieses Beispiel verwenden, um mithilfe von Azure IoT Hub-Gerätezwil
 
 Führen Sie die folgenden Schritte aus, während Ihr MXChip IoT DevKit mit Ihrem Computer verbunden ist:
 
-1. Klicken Sie in Visual Studio Code auf das Dropdownmenü **Aufgabe**, und wählen Sie **Buildtask ausführen...**. Die Arduino-Skizze wird kompiliert und zum DevKit hochgeladen.
+1. Klicken Sie in Visual Studio Code auf das Dropdownmenü **Aufgabe**, und wählen Sie **Buildtask ausführen...** . Die Arduino-Skizze wird kompiliert und zum DevKit hochgeladen.
 
 2. Nach dem erfolgreichen Hochladen der Skizze wird die Meldung *Build & Upload Sketch: success* (Skizze erstellen und hochladen: Erfolg) angezeigt.
 
@@ -106,7 +106,7 @@ Führen Sie die folgenden Schritte aus, während Ihr MXChip IoT DevKit mit Ihrem
 ![Beispieltestprozedur](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Sie können die unformatierten Daten des Gerätezwillings im Azure-Portal anzeigen: IoT Hub –\> IoT-Geräte –\> *\<Ihr Gerät\>* -\> Gerätezwilling.
+> Sie können die unformatierten Daten des Gerätezwillings im Azure-Portal anzeigen: IoT Hub –\> IoT-Geräte –\> *\<Ihr Gerät\>*  -\> Gerätezwilling.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

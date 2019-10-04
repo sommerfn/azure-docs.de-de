@@ -3,7 +3,7 @@ title: Hinzufügen von Authentifizierung zu Apache Cordova mit Mobile Apps| Micr
 description: Erfahren Sie, wie Sie Mobile Apps in Azure App Service verwenden, um die Benutzer Ihrer Apache Cordova-App über verschiedene Identitätsanbieter, einschließlich Google, Facebook, Twitter und Microsoft, zu authentifizieren.
 services: app-service\mobile
 documentationcenter: javascript
-author: conceptdev
+author: elamalani
 manager: crdun
 editor: ''
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
@@ -12,20 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/30/2016
-ms.author: crdun
-ms.openlocfilehash: b5cce832ae7ae83552c2a5ded2f5f5bda0ac76bf
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.date: 06/25/2019
+ms.author: emalani
+ms.openlocfilehash: b0634038dbf5771ac1aa0bc00d007e758171b238
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27591945"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67443507"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Hinzufügen von Authentifizierung zu Ihrer Apache Cordova-App
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
+> [!NOTE]
+> Im Rahmen von Visual Studio App Center wird in neue und integrierte Dienste investiert, die für die Entwicklung mobiler Anwendungen von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren. Besuchen Sie noch heute das [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-users).
+>
+
 ## <a name="summary"></a>Zusammenfassung
-In diesem Tutorial fügen Sie dem Aufgabenlisten-Schnellstartprojekt unter Apache Cordova mithilfe eines unterstützten Identitätsanbieters eine Authentifizierung hinzu. Dieses Tutorial baut auf dem Tutorial [Erstellen einer Apache Cordova-App] auf, das Sie zuerst abschließen müssen.
+In diesem Tutorial fügen Sie dem Aufgabenlisten-Schnellstartprojekt unter Apache Cordova mithilfe eines unterstützten Identitätsanbieters eine Authentifizierung hinzu. Dieses Tutorial baut auf dem Tutorial [Erste Schritte mit Mobile Apps] auf, das Sie zuerst abschließen müssen.
 
 ## <a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
@@ -37,7 +41,7 @@ In diesem Tutorial fügen Sie dem Aufgabenlisten-Schnellstartprojekt unter Apach
 
 Nun können Sie überprüfen, ob der anonyme Zugriff auf Ihr Back-End deaktiviert wurde. In Visual Studio:
 
-* Öffnen Sie das Projekt, das Sie im Tutorial [Erstellen einer Apache Cordova-App] erstellt haben.
+* Öffnen Sie das Projekt, das Sie im Tutorial [Erste Schritte mit Mobile Apps] erstellt haben.
 * Führen Sie Ihre Anwendung im **Google Android-Emulator** aus.
 * Vergewissern Sie sich, dass nach dem Start der App ein unerwarteter Verbindungsfehler angezeigt wird.
 
@@ -60,7 +64,7 @@ Aktualisieren Sie nun die App, um Benutzer vor dem Anfordern von Ressourcen des 
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'
             data: gap: https://login.microsoftonline.com https://yourapp.azurewebsites.net; style-src 'self'">
 
-    Ersetzen Sie `https://login.microsoftonline.com` durch den OAuth-Host aus der obigen Tabelle.  Weitere Informationen zum Content-Security-Policy-Metatag finden Sie in der [entsprechenden Dokumentation].
+    Ersetzen Sie `https://login.microsoftonline.com` durch den OAuth-Host aus der obigen Tabelle.  Weitere Informationen zum Content-Security-Policy-Metatag finden Sie in der [Whitelist Guide].
 
     Bei Verwendung auf geeigneten Mobilgeräten ist bei einigen Authentifizierungsanbietern keine Änderung von Content-Security-Policy erforderlich.  Beispielsweise sind bei Verwendung der Google-Authentifizierung auf einem Android-Gerät keine Änderungen an Content-Security-Policy notwendig.
 
@@ -104,8 +108,8 @@ Erfahren Sie, wie Sie die SDKs nutzen,
 * [Node.js Server-SDK]
 
 <!-- URLs. -->
-[Erstellen einer Apache Cordova-App]: app-service-mobile-cordova-get-started.md
-[entsprechenden Dokumentation]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
+[Erste Schritte mit Mobile Apps]: app-service-mobile-cordova-get-started.md
+[Whitelist Guide]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
 [Pushbenachrichtigungen]: app-service-mobile-cordova-get-started-push.md
 [Authentifizierung]: app-service-mobile-auth.md
 [Apache Cordova-SDK]: app-service-mobile-cordova-how-to-use-client-library.md

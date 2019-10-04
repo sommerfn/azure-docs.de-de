@@ -1,25 +1,19 @@
 ---
-title: Erstellen des Dynamics 365 for Operations-Angebots über das Cloudpartnerportal | Microsoft-Dokumentation
+title: Erstellen des Dynamics 365 for Operations-Angebots über das Cloudpartnerportal
 description: Erstellen des Dynamics 365 for Operations-Angebots über das Cloudpartnerportal
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 93c70e038589667ae97acb86663a6179dcc81637
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: a9ada25641e2a56beb9083b145a507c8fd41a46f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877325"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935098"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>Erstellen des Dynamics 365 for Operations-Angebots über das Cloudpartnerportal
 

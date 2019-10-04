@@ -1,21 +1,21 @@
 ---
 title: Sichern von SQL Server-Workloads auf Azure Stack
 description: Verwenden Sie Azure Backup Server zum Schützen von SQL Server-Workloads auf Azure Stack.
-services: backup
-author: adigan
-manager: shivamg
+ms.reviewer: adigan
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/8/2018
-ms.author: adigan
-ms.openlocfilehash: fb064c39fa014515fb2a3f4ccc96ce216f2f7b2e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 06/08/2018
+ms.author: dacurwin
+ms.openlocfilehash: ab65a1bf371ff8581f347403b49fafed6697374c
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493506"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210234"
 ---
-# <a name="back-up-sql-server-on-stack"></a>Sichern von SQL Server in Stack
+# <a name="back-up-sql-server-on-azure-stack"></a>Sichern von SQL Server auf Azure Stack
 Verwenden Sie diesen Artikel, um Microsoft Azure Backup Server (MABS) zum Schutz von SQL Server-Datenbanken auf Azure Stack zu konfigurieren.
 
 Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und aus Azure umfasst drei Schritte:
@@ -41,7 +41,7 @@ Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und au
 
     ![Auswählen des Schutzgruppentyp – "Server"](./media/backup-azure-backup-sql/pg-servers.png)
 
-4. Auf dem Bildschirm **Gruppenmitglieder auswählen** zeigt die Liste „Verfügbare Mitglieder“ die verschiedenen Datenquellen an. Klicken Sie auf **+**, um einen Ordner zu erweitern und die Unterordner anzuzeigen. Aktivieren Sie das Kontrollkästchen, um ein Element auszuwählen.
+4. Auf dem Bildschirm **Gruppenmitglieder auswählen** zeigt die Liste „Verfügbare Mitglieder“ die verschiedenen Datenquellen an. Klicken Sie auf **+** , um einen Ordner zu erweitern und die Unterordner anzuzeigen. Aktivieren Sie das Kontrollkästchen, um ein Element auszuwählen.
 
     ![Auswählen einer SQL-Datenbank](./media/backup-azure-backup-sql/pg-databases.png)
 

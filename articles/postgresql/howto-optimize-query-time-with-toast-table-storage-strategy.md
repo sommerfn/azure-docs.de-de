@@ -1,17 +1,17 @@
 ---
-title: Optimieren der Abfragezeit auf einem Azure Database for PostgreSQL-Server mithilfe der Strategie für TOAST-Tabellenspeicher
-description: In diesem Artikel wird beschrieben, wie Sie die Abfragezeit mithilfe der Strategie für TOAST-Tabellenspeicher auf einem Azure Database for PostgreSQL-Server optimieren.
+title: Optimieren der Abfragezeit mithilfe der Strategie für TOAST-Tabellenspeicher in Azure Database for PostgreSQL (Einzelserver)
+description: In diesem Artikel wird beschrieben, wie Sie die Abfragezeit mithilfe der Strategie für TOAST-Tabellenspeicher auf einem Azure Database for PostgreSQL-Einzelserver optimieren.
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.openlocfilehash: 96793cb1785a7ffa86331285f401453641b50dac
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 5/6/2019
+ms.openlocfilehash: ac1dc43a2b89bc1cc748947ec08e6ada87edbfcb
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820868"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65066964"
 ---
 # <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>Optimieren der Abfragezeit mithilfe der Strategie für TOAST-Tabellenspeicher 
 In diesem Artikel wird beschrieben, wie Sie die Abfragezeit mithilfe der Strategie für TOAST-Tabellenspeicher optimieren.

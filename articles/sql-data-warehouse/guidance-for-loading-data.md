@@ -2,21 +2,21 @@
 title: Bewährte Methoden für das Laden von Daten – Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Dieser Artikel enthält Empfehlungen und Leistungsoptimierungen für das Laden von Daten in Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ckarst
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
-ms.reviewer: jrasnick
+ms.subservice: load-data
+ms.date: 08/08/2019
+ms.author: kevin
+ms.reviewer: igorstan
 ms.custom: seoapril2019
-ms.openlocfilehash: a8cb3714d11994b36991e56df7fc0f97d08c89ff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a1433139695eb59fa3fd721852fae3181b8f892b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791370"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882478"
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Bewährte Methoden zum Laden von Daten in Azure SQL Data Warehouse
 
@@ -69,8 +69,8 @@ Oftmals müssen mehrere Benutzer in der Lage sein, Daten in ein Data Warehouse z
 Beispiel: Wenn Sie über die Datenbankschemas Schema_A für Abteilung A und Schema_B für Abteilung B verfügen, sollten Sie beachten, dass die Datenbankbenutzer Benutzer_A und Benutzer_B Benutzer von PolyBase sind und in Abteilung A bzw. B geladen werden. Beiden wurden CONTROL-Datenbankberechtigungen erteilt. Die Ersteller von Schema A und B sperren ihre Schemas jetzt mit der DENY-Anweisung:
 
 ```sql
-   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
-   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
+   DENY CONTROL ON SCHEMA :: schema_A TO user_B;
+   DENY CONTROL ON SCHEMA :: schema_B TO user_A;
 ```
 
 Benutzer_A und Benutzer_B sind für das Schema der anderen Abteilung jetzt gesperrt.
@@ -88,6 +88,9 @@ Columnstore-Indizes erfordern große Mengen an Arbeitsspeicher, um Daten in Zeil
 - Verwenden Sie Ladebenutzer, die Mitglieder einer mittelgroßen oder großen Ressourcenklasse sind, um sicherzustellen, dass der Ladebenutzer über genügend Arbeitsspeicher zur Erreichung der maximalen Komprimierungsraten verfügt. 
 - Laden Sie eine ausreichende Zahl von Zeilen, um neue Zeilengruppen vollständig zu füllen. Während eines Massenladevorgangs werden alle 1.048.576 Zeilen im Columnstore direkt als vollständige Zeilengruppe komprimiert. Ladevorgänge mit weniger als 102.400 Zeilen senden die Zeilen an den Deltaspeicher, in dem Zeilen in einem B-Strukturindex gespeichert werden. Wenn Sie eine zu kleine Zahl von Zeilen laden, werden diese ggf. allesamt im Deltastore abgelegt und nicht sofort in das Columnstore-Format komprimiert.
 
+## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Vergrößern von Batches bei Verwendung der SQLBulkCopy-API oder von BCP
+Wie bereits erwähnt erzielt das Laden mit PolyBase den höchsten Durchsatz bei SQL Data Warehouse. Falls Sie zum Laden nicht PolyBase verwenden können, sondern die SQLBulkCopy-API (oder BCP) nutzen müssen, sollten Sie für einen höheren Durchsatz den Batch vergrößern. 
+
 ## <a name="handling-loading-failures"></a>Behandeln von Ladefehlern
 
 Das Laden von Daten mithilfe einer externen Tabelle kann folgenden Fehler auslösen: *Abfrage abgebrochen – der maximale Ablehnungsgrenzwert wurde beim Lesen aus einer externen Quelle erreicht*. Diese Meldung weist darauf hin, dass die externen Daten fehlerhafte Datensätze enthalten. Ein Datensatz gilt als fehlerhaft, wenn die Datentypen und die Spaltenanzahl nicht den Spaltendefinitionen der externen Tabelle entsprechen oder wenn die Daten nicht im angegebenen externen Dateiformat vorliegen. 
@@ -102,7 +105,9 @@ Wenn Sie im Laufe eines Tages über Tausende oder mehr einzelne Einfügungen ver
 
 ## <a name="creating-statistics-after-the-load"></a>Erstellen von Statistiken nach dem Laden
 
-Zur Verbesserung der Abfrageleistung ist es wichtig, nach dem ersten Laden oder nach Datenänderungen Statistiken für alle Spalten sämtlicher Tabellen zu erstellen.  Eine ausführliche Erläuterung von Statistiken finden Sie unter [Statistiken](sql-data-warehouse-tables-statistics.md). Im folgenden Beispiel werden Statistiken für fünf Spalten der Tabelle „Customer_Speed“ erstellt.
+Zur Verbesserung der Abfrageleistung ist es wichtig, nach dem ersten Laden oder nach Datenänderungen Statistiken für alle Spalten sämtlicher Tabellen zu erstellen.  Dies kann manuell ausgeführt werden, oder Sie können das [automatische Erstellen von Statistiken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) aktivieren.
+
+Eine ausführliche Erläuterung von Statistiken finden Sie unter [Statistiken](sql-data-warehouse-tables-statistics.md). Im folgenden Beispiel wird gezeigt, wie Statistiken für fünf Spalten der Tabelle „Customer_Speed“ manuell erstellt werden.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -126,7 +131,7 @@ Originalschlüssel wird erstellt
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1'
-``` 
+```
 
 Für den Schlüssel wird von Schlüssel 1 zu Schlüssel 2 rotiert
 
@@ -141,6 +146,3 @@ Es sind keine weiteren Änderungen an zugrunde liegenden externen Datenquellen e
 - Weitere Informationen zu PolyBase und zum Entwerfen eines ELT-Prozesses (Extrahieren, Laden und Transformieren) finden Sie unter [Designing Extract, Load, and Transform (ELT) for Azure SQL Data Warehouse](design-elt-data-loading.md) (ELT-Entwurf (Extrahieren, Laden und Transformieren) für Azure SQL Data Warehouse).
 - Ein Tutorial zum Ladevorgang finden Sie unter [Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage in Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
 - Informationen zum Überwachen von Datenladevorgängen finden Sie unter [Überwachen Ihrer Workload mit dynamischen Verwaltungssichten](sql-data-warehouse-manage-monitor.md).
-
-
-

@@ -4,26 +4,30 @@ description: Hosten Sie Ihre IBM z/OS-Mainframe-Workloads mithilfe der Micro Foc
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
+ms.author: edprice
 manager: edprice
 editor: edprice
+ms.topic: conceptual
+ms.date: 05/29/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 33d0baf10df1882baf212c3e2c2683c8ca072fcc
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.service: multiple
+ms.openlocfilehash: a5426c3cd7552b24739f9a20e01d5a4b42bd383c
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896729"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68834575"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Installieren von Micro Focus Enterprise Server 4.0 und Enterprise Developer 4.0 in Azure
 
 In diesem Artikel wird gezeigt, wie Sie [Micro Focus Enterprise Server 4.0](https://www.microfocus.com/documentation/enterprise-developer/es30/) und [Micro Focus Enterprise Developer 4.0](https://www.microfocus.com/documentation/enterprise-developer/ed_30/) in Azure einrichten.
 
-Ein häufiger Workload in Azure sind Entwicklungs- und Testumgebungen, da Bereitstellung und Beseitigung so kostengünstig und einfach sind. Mit Enterprise Server hat Micro Focus eine der größten verfügbaren Mainframe-Rehostingplattformen erstellt. Sie können z/OS-Workloads auf einer weniger teuren x86-Plattform in Azure mithilfe von wahlweise Windows- oder Linux-VMs ausführen.
+Eine gängige Workload für Azure ist eine Entwicklungs- und Testumgebung. Dieses Szenario ist gängig, weil es so kostengünstig sowie einfach bereitzustellen und zu beenden ist. Mit Enterprise Server hat Micro Focus eine der größten verfügbaren Mainframe-Rehostingplattformen erstellt. Sie können z/OS-Workloads auf einer weniger teuren x86-Plattform in Azure mithilfe von wahlweise Windows- oder Linux-VMs ausführen.
 
 Dieses Setup verwendet Azure-VMs, die das Windows Server 2016-Image aus dem Azure Marketplace mit bereits installiertem Microsoft SQL Server 2017 ausführen. Dieses Setup ist auch für Azure Stack gültig.
 
-Die entsprechende Entwicklungsumgebung für Enterprise Server ist Enterprise Developer und wird wahlweise in Microsoft Visual Studio 2017, Visual Studio Community (kostenloser Download) oder Eclipse ausgeführt. In diesem Artikel erfahren Sie, wie Sie es in einer Windows Server 2016-VM mit installiertem Visual Studio 2017 bereitstellen.
+Die entsprechende Entwicklungsumgebung für Enterprise Server ist Enterprise Developer und wird wahlweise in Microsoft Visual Studio 2017 oder höher, Visual Studio Community (kostenloser Download) oder Eclipse ausgeführt. In diesem Artikel erfahren Sie, wie Sie es in einer Windows Server 2016-VM mit installiertem Visual Studio 2017 oder höher bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,15 +44,15 @@ Die entsprechende Entwicklungsumgebung für Enterprise Server ist Enterprise Dev
 
 ## <a name="install-enterprise-server"></a>Installieren von Enterprise Server
 
-1. Um bessere Sicherheit und Verwaltbarkeit zu erzielen, sollten Sie die Erstellung einer neuen Ressourcengruppe eigens für dieses Projekt in Erwägung ziehen – beispielsweise **RGMicroFocusEntServer**. Verwenden Sie den ersten Teil des Namens in Azure, um den Typ der Ressource zu bezeichnen, damit sie sich in einer Liste leichter finden lässt.
+1. Um bessere Sicherheit und Verwaltbarkeit zu erzielen, sollten Sie die Erstellung einer neuen Ressourcengruppe eigens für dieses Projekt in Erwägung ziehen – beispielsweise **RGMicroFocusEntServer**. Verwenden Sie den ersten Teil des Namens in Azure, um den Typ der Ressource auszuwählen, damit sie sich in einer Liste leichter finden lässt.
 
 2. Erstellen Sie eine VM. Wählen Sie im Azure Marketplace den virtuellen Computer und das Betriebssystem Ihrer Wünsche aus. Ein empfohlenes Setup finden Sie hier:
 
-    - **Enterprise Server**: Wählen Sie ES2 v3 VM (mit 2 vCPUs und 16 GB Arbeitsspeicher) mit installiertem Windows Server 2016 und SQL Server 2017. Dieses Image ist im Azure Marketplace verfügbar. Enterprise Server kann ebenso gut Azure SQL Database verwenden.
+    - **Enterprise Server**: Wählen Sie ES2 v3 VM (mit 2 vCPUs und 16 GB Arbeitsspeicher) mit installiertem Windows Server 2016 und SQL Server 2017. Dieses Image ist im Azure Marketplace verfügbar. Enterprise Server kann ebenso gut Azure SQL-Datenbank verwenden.
 
     - **Enterprise Developer**: Wählen Sie B2ms VM (mit 2 vCPUs und 8 GB Arbeitsspeicher) mit installiertem Windows 10 und Visual Studio. Dieses Image ist im Azure Marketplace verfügbar.
 
-3. Geben Sie auf dem Blatt **Grundlegende Einstellungen** Ihren Benutzernamen und Ihr Kennwort ein. Wählen Sie das **Abonnement** und **den Standort/die Region** aus, die Sie für die VMs verwenden möchten. Wählen Sie **RGMicroFocusEntServer** für die Ressourcengruppe aus.
+3. Geben Sie im Abschnitt **Grundlegende Einstellungen** Ihren Benutzernamen und Ihr Kennwort ein. Wählen Sie das **Abonnement** und **den Standort/die Region** aus, die Sie für die VMs verwenden möchten. Wählen Sie **RGMicroFocusEntServer** für die Ressourcengruppe aus.
 
 4. Platzieren Sie beide VMs im gleichen virtuellen Netzwerk, damit sie miteinander kommunizieren können.
 
@@ -56,9 +60,9 @@ Die entsprechende Entwicklungsumgebung für Enterprise Server ist Enterprise Dev
 
 6. Wenn die virtuellen Computer erstellt wurden, öffnen Sie die eingehenden Ports 9003, 86 und 80 für HTTP, 3389 für RDP auf dem Enterprise Server-Computer sowie 3389 auf dem Developer-Computer.
 
-7. Um sich bei der Enterprise Server-VM anzumelden, wählen Sie im Azure-Portal die ES2 v3 VM aus. Navigieren Sie zum Blatt **Übersicht**, und wählen Sie **Verbinden** aus, um eine RDP-Sitzung zu starten. Melden Sie sich mit den Anmeldeinformationen an, die Sie für die VM erstellt haben.
+7. Um sich bei der Enterprise Server-VM anzumelden, wählen Sie im Azure-Portal die ES2 v3 VM aus. Navigieren Sie zum Abschnitt **Übersicht**, und wählen Sie **Verbinden** aus, um eine RDP-Sitzung zu starten. Melden Sie sich mit den Anmeldeinformationen an, die Sie für die VM erstellt haben.
 
-8. Laden Sie aus der RDP-Sitzung die beiden folgenden Dateien. Da es sich um Windows handelt, können Sie die Dateien per Drag & Drop in die RDP-Sitzung ziehen:
+8. Laden Sie aus der RDP-Sitzung die beiden folgenden Dateien. Da Sie Windows verwenden, können Sie die Dateien per Drag & Drop in die RDP-Sitzung ziehen:
 
     - **es\_40.exe**, die Installationsdatei von Enterprise-Server.
 
@@ -84,7 +88,7 @@ Achten Sie nach der Installation darauf, auf eventuell verfügbare Updates zu pr
 
      ![Micro Fokus-Lizenzverwaltung (Dialogfeld)](media/03-enterprise-server.png)
 
-3. Überprüfen Sie, ob Enterprise Server geladen wird. Versuchen Sie, die Enterprise Server Administration-Website mit dieser URL  <http://localhost:86/>  in einem Browser zu starten. Die Enterprise Server Administration-Seite wird wie dargestellt angezeigt.
+3. Überprüfen Sie, ob Enterprise Server geladen wird. Versuchen Sie, die Enterprise Server Administration-Website mit dieser URL <http://localhost:86/>  in einem Browser zu starten. Die Enterprise Server Administration-Seite wird wie dargestellt angezeigt.
 
      ![Enterprise Server Administration-Seite](media/04-enterprise-admin.png)
 
@@ -92,7 +96,7 @@ Achten Sie nach der Installation darauf, auf eventuell verfügbare Updates zu pr
 
 1. Wählen Sie die zuvor erstellte Ressourcengruppe (beispielsweise **RGMicroFocusEntServer**) und dann das Entwicklerimage aus.
 
-2. Um sich beim virtuellen Computer anzumelden, wechseln Sie zum Blatt **Übersicht**, und wählen Sie **Verbinden** aus. Dadurch wird eine RDP-Sitzung gestartet. Melden Sie sich mit den Anmeldeinformationen an, die Sie für die VM erstellt haben.
+2. Um sich beim virtuellen Computer anzumelden, wechseln Sie zum Abschnitt **Übersicht**, und wählen Sie **Verbinden** aus. Durch diese Anmeldung wird eine RDP-Sitzung gestartet. Melden Sie sich mit den Anmeldeinformationen an, die Sie für die VM erstellt haben.
 
 3. Laden Sie aus der RDP-Sitzung die beiden folgenden Dateien (per Drag & Drop, wenn Sie möchten):
 
@@ -112,7 +116,7 @@ Achten Sie nach der Installation darauf, auf eventuell verfügbare Updates zu pr
 
 7. Wählen Sie den Typ des hochzuladenden Lizenzformats aus: eine Lizenzdatei oder ein 16-stelliger Lizenzcode. Navigieren Sie beispielsweise für eine Datei unter **Lizenzdatei** zu der **mflic**-Datei, die Sie zuvor in die VM hochgeladen haben, und wählen Sie **Lizenzen installieren** aus.
 
-     ![Micro Fokus-Lizenzverwaltung (Dialogfeld)](/edia/07-enterprise-server.png)
+     ![Micro Fokus-Lizenzverwaltung (Dialogfeld)](media/07-enterprise-server.png)
 
 Wenn Enterprise Developer geladen wird, ist Ihre Bereitstellung einer Micro Focus-Entwicklungs- und Testumgebung in Azure abgeschlossen!
 

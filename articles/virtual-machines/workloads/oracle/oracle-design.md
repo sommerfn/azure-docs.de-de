@@ -4,29 +4,29 @@ description: Entwerfen und implementieren Sie eine Oracle-Datenbank in Ihrer Azu
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 8241dc0303b7e60f9ce1e04e56d152c9a0b3906c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c2c2d1a9affe13d485bfeef52c781ed259b53bc8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327509"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100128"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
 
 ## <a name="assumptions"></a>Annahmen
 
 - Sie planen die Migration einer Oracle-Datenbank von einem lokalen Standort zu Azure.
+- Sie verfügen über das [Diagnostics Pack](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm) für die Oracle Database, die Sie migrieren möchten.
 - Sie kennen die verschiedene Metriken in Oracle-AWR-Berichten.
 - Sie besitzen Grundkenntnisse über Anwendungsleistung und Plattformnutzung.
 
@@ -51,7 +51,7 @@ Die folgende Tabelle enthält einige der Unterschiede zwischen einer lokalen Imp
 > | **Resilienz** |MTBF (Mean Time Between Failure, mittlere Betriebsdauer zwischen Ausfällen) |MTTR (Mean Time To Recover, mittlere Reparaturzeit)|
 > | **Geplante Wartung** |Patchen/Upgrades|[Verfügbarkeitsgruppen](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (Patchen/Upgrades werden von Azure verwaltet) |
 > | **Ressource** |Dediziert  |Für andere Clients freigegeben|
-> | **Regionen** |Rechenzentren |[Regionspaare](https://docs.microsoft.com/azure/virtual-machines/windows/regions-and-availability)|
+> | **Regionen** |Rechenzentren |[Regionspaare](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
 > | **Speicher** |SAN-/Physische Datenträger |[Von Azure verwalteter Speicher](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **Skalieren** |Vertikale Skalierung |Horizontale Skalierung|
 
@@ -72,11 +72,11 @@ Es gibt vier mögliche Bereiche, die Sie optimieren können, um die Leistung in 
 
 ### <a name="generate-an-awr-report"></a>Generieren eines AWR-Berichts
 
-Wenn Sie über eine Oracle-Datenbank verfügen und die Migration in Azure planen, können Sie zwischen mehreren Optionen wählen. Sie können den Oracle-AWR Bericht zum Abrufen der Metriken (IOPS, MBit/s, GiB usw.) ausführen. Wählen Sie dann die VM auf Basis der Metriken aus, die Sie erfasst haben. Sie können sich aber auch an Ihr Infrastrukturteam wenden, um ähnliche Informationen zu erhalten.
+Wenn Sie über eine Oracle-Datenbank verfügen und die Migration in Azure planen, können Sie zwischen mehreren Optionen wählen. Wenn Sie das [Diagnostics Pack](https://www.oracle.com/technetwork/oem/pdf/511880.pdf) für Ihre Oracle-Instanzen haben, können Sie den Oracle AWR-Bericht ausführen, um die Metriken (IOPS, Mbit/s, GiB/s) abzurufen. Wählen Sie dann die VM auf Basis der Metriken aus, die Sie erfasst haben. Sie können sich aber auch an Ihr Infrastrukturteam wenden, um ähnliche Informationen zu erhalten.
 
 Sie können den AWR-Bericht auch für reguläre und maximale Workloads ausführen und die Ergebnisse nachfolgend vergleichen. Anhand dieser Berichte können Sie die Größe der VMs dann entweder nach der durchschnittlichen oder maximalen Workload auswählen.
 
-Im folgenden Beispiel wird gezeigt, wie ein AWR-Bericht generiert wird:
+Es folgt ein Beispiel zur Erstellung eines AWR-Berichts (Generieren Sie Ihre AWR-Berichte mit Oracle Enterprise Manager, falls in Ihrer aktuellen Installation vorhanden):
 
 ```bash
 $ sqlplus / as sysdba
@@ -143,6 +143,10 @@ Je nach Ihren Anforderungen an die Netzwerkbandbreite können Sie aus verschiede
 
 - Die Netzwerklatenz ist höher als bei einer lokalen Bereitstellung. Eine Verringerung der Netzwerkroundtrips kann die Leistung deutlich verbessern.
 - Zur Reduzierung von Roundtrips sollten Anwendungen, die ein hohes Transaktionsaufkommen aufweisen oder kommunikationsintensiv sind, auf demselben virtuellen Computer konsolidiert werden.
+- Verwenden Sie Virtual Machines mit [beschleunigtem Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli), um eine bessere Netzwerkleistung zu erzielen.
+- Erwägen Sie für bestimmte Linux-Distributionen die Aktivierung der [TRIM/UNMAP-Unterstützung](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support).
+- Installieren Sie [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) auf einem separaten virtuellen Computer.
+- Große Seiten sind unter Linux nicht standardmäßig aktiviert. Erwägen Sie das Aktivieren großer Seiten, und legen Sie `use_large_pages = ONLY` für die Oracle Database fest. Dies kann helfen, die Leistung zu steigern. Weitere Informationen finden Sie [hier](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 
 ### <a name="disk-types-and-configurations"></a>Datenträgertypen und -konfigurationen
 
@@ -183,20 +187,21 @@ Sobald Sie eine genaue Vorstellung von den E/A-Anforderungen haben, können Sie 
 - Reduzieren Sie die E/A mit Datenkomprimierung (für Daten und Indizes).
 - Trennen Sie Redo-Protokolle, SYSTEM- und TEMP- sowie UNDO-Tabellenbereiche durch separate Datenträger.
 - Speichern Sie keine Anwendungsdateien auf dem standardmäßigen Betriebssystemdatenträger (/dev/sda). Diese Datenträger sind für schnelle VM-Startzeiten optimiert und erbringen für Ihre Anwendung möglicherweise keine gute Leistung.
+- Wenn Sie VMs der M-Serie in Storage Premium verwenden, aktivieren Sie [Schreibbeschleunigung](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) für Datenträger mit Wiederholungsprotokollen.
 
 ### <a name="disk-cache-settings"></a>Cacheeinstellungen von Datenträgern
 
 Es gibt drei Optionen für die Hostzwischenspeicherung:
 
-- *Schreibgeschützt*: Alle Anfragen werden für zukünftige Lesevorgänge zwischengespeichert. Alle Schreibvorgänge werden direkt in Azure Blob Storage gespeichert.
+- *ReadOnly*: Alle Anfragen werden für zukünftige Lesevorgänge zwischengespeichert. Alle Schreibvorgänge werden direkt in Azure Blob Storage gespeichert.
 
-- *Lese-/Schreibzugriff*:  Dies ist ein „Vorauslese“-Algorithmus. Die Lese- und Schreibvorgänge werden für zukünftige Lesevorgänge zwischengespeichert. Schreibvorgänge ohne Durchschreiben werden zuerst im lokalen Cache gespeichert. Für SQL Server werden Schreibvorgänge in Azure Storage gespeichert, da Durchschreiben verwendet wird. Darüber hinaus bietet dies die niedrigste Datenträgerlatenz für schlanke Workloads.
+- *ReadWrite*: Dies ist ein „Im Voraus lesen“-Algorithmus. Die Lese- und Schreibvorgänge werden für zukünftige Lesevorgänge zwischengespeichert. Schreibvorgänge ohne Durchschreiben werden zuerst im lokalen Cache gespeichert. Darüber hinaus bietet dies die niedrigste Datenträgerlatenz für schlanke Workloads. Das Verwenden eines „ReadWrite“-Caches mit einer Anwendung, die die benötigten Daten nicht beständig speichert, kann zu Datenverlusten führen, sollte die VM abstürzen.
 
-- *Keine* (deaktiviert):  Mit dieser Option können Sie den Cache umgehen. Alle Daten werden auf den Datenträger übertragen und in Azure Storage gespeichert. Diese Methode bietet Ihnen die höchste E/A-Rate für E/A-intensive Workloads. Sie müssen auch die „Transaktionskosten“ berücksichtigen.
+- *Keine* (deaktiviert): Mit dieser Option können Sie den Cache umgehen. Alle Daten werden auf den Datenträger übertragen und in Azure Storage gespeichert. Diese Methode bietet Ihnen die höchste E/A-Rate für E/A-intensive Workloads. Sie müssen auch die „Transaktionskosten“ berücksichtigen.
 
 **Empfehlungen**
 
-Zur Maximierung des Durchsatzes sollten Sie für das Hostzwischenspeichern mit **Kein** beginnen. Beachten Sie bei Storage Premium, dass Sie die „Barrieren“ deaktivieren müssen, wenn Sie das Dateisystem mit der Option **Schreibgeschützt** oder **Kein** bereitstellen. Aktualisieren Sie die Datei „/etc/fstab“ mit der UUID auf die Datenträger.
+Zur Maximierung des Durchsatzes sollten Sie das Hostzwischenspeichern mit **Kein** beginnen. Beachten Sie bei Storage Premium, dass Sie die „Barrieren“ deaktivieren müssen, wenn Sie das Dateisystem mit der Option **Schreibgeschützt** oder **Kein** bereitstellen. Aktualisieren Sie die Datei „/etc/fstab“ mit der UUID auf die Datenträger.
 
 ![Screenshot der Seite „Verwaltete Datenträger“](./media/oracle-design/premium_disk02.png)
 
@@ -206,19 +211,18 @@ Zur Maximierung des Durchsatzes sollten Sie für das Hostzwischenspeichern mit *
 
 Nachdem Ihre Einstellung für den Datenträger gespeichert wurde, können Sie die Einstellung für das Hostzwischenspeichern nur ändern, wenn Sie die Einbindung des Laufwerks auf Betriebssystemebene aufheben. Nach Vornahme der Änderung müssen Sie das Laufwerk dann wieder einbinden.
 
-
 ## <a name="security"></a>Sicherheit
 
 Nachdem Sie Ihre Azure-Umgebung eingerichtet und konfiguriert haben, besteht der nächste Schritt im Sichern des Netzwerks. Hier sind einige Empfehlungen dafür:
 
-- *NSG-Richtlinie*: NSG kann von einem Subnetz oder einer NIC definiert werden. Für Anwendungsfirewalls etwa vereinfacht die Zugriffssteuerung auf Subnetzebene Sicherheitsimplementierung und Zwangsrouting.
+- *NSG-Richtlinie*: NSG kann von einem Subnetz oder einer NIC definiert werden. Für Anwendungsfirewalls etwa vereinfacht die Zugriffssteuerung auf Subnetzebene die Sicherheitsimplementierung und Routingerzwingung.
 
 - *Jumpbox:* Damit der Zugriff noch sicherer wird, sollten Administratoren keine direkte Verbindung zum Anwendungsdienst oder zur Datenbank herstellen. Eine Jumpbox wird als Medium zwischen dem Administratorcomputer und Azure-Ressourcen verwendet.
 ![Screenshot der Jumpbox-Topologieseite](./media/oracle-design/jumpbox.png)
 
     Der Administratorcomputer sollte nur IP-beschränkten Zugriff auf die Jumpbox bieten. Die Jumpbox sollte dann Zugriff auf Anwendung und Datenbank haben.
 
-- *Privates Netzwerk* (Subnetze):  Sie sollten Anwendungsdienst und Datenbank in separaten Subnetzen unterbringen, damit eine bessere Steuerung durch die NSG-Richtlinie festgelegt werden kann.
+- *Privates Netzwerk* (Subnetze): Sie sollten den Anwendungsdienst und die Datenbank in separaten Subnetzen installieren, damit eine bessere Steuerung über die NSG-Richtlinie festgelegt werden kann.
 
 
 ## <a name="additional-reading"></a>Zusätzliche Lektüre

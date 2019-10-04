@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 03/12/2019
 ms.author: spelluru
 ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084326"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60345463"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Azure Event Grid-Ereignisschema für Container Registry
 
@@ -157,47 +157,47 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | string | Eindeutiger Bezeichner für das Ereignis. |
 | data | object | Ereignisdaten für Blob Storage. |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| id | Zeichenfolge | Die Ereignis-ID. |
-| timestamp | Zeichenfolge | Der Zeitpunkt, an dem das Ereignis aufgetreten ist. |
-| action | Zeichenfolge | Die Aktion, die das angegebene Ereignis umfasst. |
-| Ziel | object | Das Ziel des Ereignisses. |
+| id | string | Die Ereignis-ID. |
+| timestamp | string | Der Zeitpunkt, an dem das Ereignis aufgetreten ist. |
+| action | string | Die Aktion, die das angegebene Ereignis umfasst. |
+| target | object | Das Ziel des Ereignisses. |
 | request | object | Die Anforderung, die das Ereignis generiert hat. |
 
 Das Zielobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| mediaType | Zeichenfolge | Der MIME-Typ des Objekts, auf das verwiesen wird. |
+| mediaType | string | Der MIME-Typ des Objekts, auf das verwiesen wird. |
 | size | integer | Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Length“ (Länge). |
-| digest | Zeichenfolge | Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2). |
+| digest | string | Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2). |
 | length | integer | Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Size“ (Größe). |
-| repository | Zeichenfolge | Der Name des Repositorys. |
-| tag | Zeichenfolge | Der Tagname. |
-| name | Zeichenfolge | Der Diagrammname. |
-| Version | Zeichenfolge | Die Diagrammversion. |
+| repository | string | Der Name des Repositorys. |
+| tag | string | Der Tagname. |
+| name | string | Der Diagrammname. |
+| version | string | Die Diagrammversion. |
 
 Das Anforderungsobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| id | Zeichenfolge | Die ID der Anforderung, die das Ereignis initiiert hat. |
-| addr | Zeichenfolge | Die IP-Adresse oder der Hostname und u.U. der Port der Clientverbindung, die das Ereignis initiiert hat. Dieser Wert ist die „RemoteAddr“ aus der standardmäßigen HTTP-Anforderung. |
-| host | Zeichenfolge | Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist. |
-| method | Zeichenfolge | Die Anforderungsmethode, die das Ereignis generiert hat. |
-| useragent | Zeichenfolge | Der Benutzer-Agent-Header der Anforderung. |
+| id | string | Die ID der Anforderung, die das Ereignis initiiert hat. |
+| addr | string | Die IP-Adresse oder der Hostname und u.U. der Port der Clientverbindung, die das Ereignis initiiert hat. Dieser Wert ist die „RemoteAddr“ aus der standardmäßigen HTTP-Anforderung. |
+| host | string | Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist. |
+| method | string | Die Anforderungsmethode, die das Ereignis generiert hat. |
+| useragent | string | Der Benutzer-Agent-Header der Anforderung. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

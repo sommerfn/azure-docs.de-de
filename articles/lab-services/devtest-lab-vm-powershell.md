@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 0e68958070e9c35e12dd9446b351f880dfea6f69
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 1a6938bd541e316dbe9f333c670c382faab6ad21
+ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009341"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67854267"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Erstellen einer VM in DevTest Labs mithilfe von Azure PowerShell
 In diesem Artikel wird das Erstellen einer VM in Azure DevTest Labs mithilfe von Azure PowerShell erläutert. Sie können PowerShell-Skripts verwenden, um die Erstellung von VMs in einem Lab in Azure DevTest Labs zu automatisieren. 
@@ -27,10 +27,10 @@ In diesem Artikel wird das Erstellen einer VM in Azure DevTest Labs mithilfe vo
 Vorbereitungen
 
 - [Erstellen Sie ein Lab](devtest-lab-create-lab.md), falls Sie kein vorhandenes Lab zum Testen des Skripts oder der Befehle in diesem Artikel verwenden möchten. 
-- [Installieren Sie Azure PowerShell](/powershell/azure/azurerm/other-install), oder verwenden Sie den integrierten Azure Cloud Shell-Dienst im Azure-Portal. 
+- [Installieren Sie Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0), oder verwenden Sie den integrierten Azure Cloud Shell-Dienst im Azure-Portal. 
 
 ## <a name="powershell-script"></a>PowerShell-Skript
-Das Beispielskript in diesem Abschnitt verwendet das Cmdlet [Invoke-AzureRmResourceAction](/powershell/module/azurerm.resources/invoke-azurermresourceaction).  Das Cmdlet erfordert die Ressourcen-ID des Labs, den Namen der auszuführenden Aktion (`createEnvironment`) und die zum Ausführen dieser Aktion erforderlichen Parameter. Die Parameter sind in einer Hashtabelle mit allen VM-Beschreibungseigenschaften enthalten. 
+Das Beispielskript in diesem Abschnitt verwendet das Cmdlet [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0).  Das Cmdlet erfordert die Ressourcen-ID des Labs, den Namen der auszuführenden Aktion (`createEnvironment`) und die zum Ausführen dieser Aktion erforderlichen Parameter. Die Parameter sind in einer Hashtabelle mit allen VM-Beschreibungseigenschaften enthalten. 
 
 ```powershell
 [CmdletBinding()]
@@ -48,11 +48,11 @@ pushd $PSScriptRoot
 
 try {
     if ($SubscriptionId -eq $null) {
-        $SubscriptionId = (Get-AzureRmContext).Subscription.SubscriptionId
+        $SubscriptionId = (Get-AzContext).Subscription.SubscriptionId
     }
 
     $API_VERSION = '2016-05-15'
-    $lab = Get-AzureRmResource -ResourceId "/subscriptions/$SubscriptionId/resourceGroups/$LabResourceGroup/providers/Microsoft.DevTestLab/labs/$LabName"
+    $lab = Get-AzResource -ResourceId "/subscriptions/$SubscriptionId/resourceGroups/$LabResourceGroup/providers/Microsoft.DevTestLab/labs/$LabName"
 
     if ($lab -eq $null) {
        throw "Unable to find lab $LabName resource group $LabResourceGroup in subscription $SubscriptionId."
@@ -61,9 +61,9 @@ try {
     #For this example, we are getting the first allowed subnet in the first virtual network
     #  for the lab.
     #If a specific virtual network is needed use | to find it. 
-    #ie $virtualNetwork = @(Get-AzureRmResource -ResourceType  'Microsoft.DevTestLab/labs/virtualnetworks' -ResourceName $LabName -ResourceGroupName $lab.ResourceGroupName -ApiVersion $API_VERSION) | Where-Object Name -EQ "SpecificVNetName"
+    #ie $virtualNetwork = @(Get-AzResource -ResourceType  'Microsoft.DevTestLab/labs/virtualnetworks' -ResourceName $LabName -ResourceGroupName $lab.ResourceGroupName -ApiVersion $API_VERSION) | Where-Object Name -EQ "SpecificVNetName"
 
-    $virtualNetwork = @(Get-AzureRmResource -ResourceType  'Microsoft.DevTestLab/labs/virtualnetworks' -ResourceName $LabName -ResourceGroupName $lab.ResourceGroupName -ApiVersion $API_VERSION)[0]
+    $virtualNetwork = @(Get-AzResource -ResourceType  'Microsoft.DevTestLab/labs/virtualnetworks' -ResourceName $LabName -ResourceGroupName $lab.ResourceGroupName -ApiVersion $API_VERSION)[0]
 
     $labSubnetName = $virtualNetwork.properties.allowedSubnets[0].labSubnetName
 
@@ -82,6 +82,7 @@ try {
           "labSubnetName"           = $labSubnetName;
           "notes"                   = "Windows Server 2016 Datacenter";
           "osType"                  = "windows"
+          "expirationDate"          = "2019-12-01"
           "galleryImageReference"   = @{
              "offer"     = "WindowsServer";
              "publisher" = "MicrosoftWindowsServer";
@@ -107,7 +108,7 @@ try {
     #The following line is the same as invoking
     # https://azure.github.io/projects/apis/#!/Labs/Labs_CreateEnvironment rest api
 
-    Invoke-AzureRmResourceAction -ResourceId $lab.ResourceId -Action 'createEnvironment' -Parameters $parameters -ApiVersion $API_VERSION -Force -Verbose
+    Invoke-AzResourceAction -ResourceId $lab.ResourceId -Action 'createEnvironment' -Parameters $parameters -ApiVersion $API_VERSION -Force -Verbose
 }
 finally {
    popd
@@ -188,6 +189,39 @@ Im Folgenden wird erläutert, wie Sie die Eigenschaften eines Images mit der RES
 5. Klicken Sie auf **Run** (Ausführen).
 6. Die **Eigenschaften für das Image**, auf deren Grundlage die VM erstellt wurde, werden angezeigt. 
 
+## <a name="set-expiration-date"></a>Festlegen des Ablaufdatums
+In Szenarien wie Schulungen, Demos und Testversionen können Sie virtuelle Computer erstellen und diese nach einer festgelegten Dauer automatisch löschen, damit keine unnötigen Kosten entstehen. Sie können das Ablaufdatum für einen virtuellen Computer beim Erstellen mithilfe von PowerShell festlegen, wie im Abschnitt mit dem [PowerShell](#powershell-script)-Beispielskript gezeigt.
+
+Hier finden Sie ein PowerShell-Beispielskript, mit dem das Ablaufdatum für alle vorhandenen virtuellen Computer in einem Lab festgelegt wird:
+
+```powershell
+# Values to change
+$subscriptionId = '<Enter the subscription Id that contains lab>'
+$labResourceGroup = '<Enter the lab resource group>'
+$labName = '<Enter the lab name>'
+$VmName = '<Enter the VmName>'
+$expirationDate = '<Enter the expiration date e.g. 2019-12-16>'
+
+# Log into your Azure account
+Login-AzureRmAccount
+
+Select-AzureRmSubscription -SubscriptionId $subscriptionId
+$VmResourceId = "subscriptions/$subscriptionId/resourcegroups/$labResourceGroup/providers/microsoft.devtestlab/labs/$labName/virtualmachines/$VmName"
+
+$vm = Get-AzureRmResource -ResourceId $VmResourceId -ExpandProperties
+
+# Get all the Vm properties
+$VmProperties = $vm.Properties
+
+# Set the expirationDate property
+If ($VmProperties.expirationDate -eq $null) {
+    $VmProperties | Add-Member -MemberType NoteProperty -Name expirationDate -Value $expirationDate
+} Else {
+    $VmProperties.expirationDate = $expirationDate
+}
+
+Set-AzureRmResource -ResourceId $VmResourceId -Properties $VmProperties -Force
+```
 
 
 ## <a name="next-steps"></a>Nächste Schritte

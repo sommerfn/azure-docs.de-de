@@ -4,271 +4,198 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: b436d2f6-bfa5-43fd-a8f9-d2144dc25669
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/12/2018
+ms.topic: tutorial
+ms.date: 08/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22c136225e5a8526afd482e5ef8400198947422f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 69103ea0e6088b4a823df34ebd982c67e2502cb3
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199679"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879490"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kanbanize"></a>Tutorial: Azure Active Directory-Integration mit Kanbanize
+# <a name="tutorial-integrate-kanbanize-with-azure-active-directory"></a>Tutorial: Integrieren von Kanbanize in Azure Active Directory
 
-In diesem Tutorial erfahren Sie, wie Sie Kanbanize in Azure Active Directory (Azure AD) integrieren.
+In diesem Tutorial erfahren Sie, wie Sie Kanbanize in Azure Active Directory (Azure AD) integrieren. Die Integration von Kanbanize in Azure AD ermöglicht Folgendes:
 
-Die Integration von Kanbanize in Azure AD bietet die folgenden Vorteile:
+* Steuern Sie in Azure AD, wer Zugriff auf Kanbanize hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Kanbanize anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-- Sie können in Azure AD steuern, wer Zugriff auf Kanbanize hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Kanbanize anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Konfigurieren der Azure AD-Integration in Kanbanize benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein für das einmalige Anmelden aktiviertes Kanbanize-Abonnement
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Kanbanize-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von Kanbanize aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* Kanbanize unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+* Kanbanize unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 ## <a name="adding-kanbanize-from-the-gallery"></a>Hinzufügen von Kanbanize aus dem Katalog
+
 Zum Konfigurieren der Integration von Kanbanize in Azure AD müssen Sie Kanbanize aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Kanbanize aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
-
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
-
-    ![Schaltfläche „Azure Active Directory“][1]
-
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
-
-    ![Blatt „Unternehmensanwendungen“][2]
-    
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
-
-    ![Schaltfläche „Neue Anwendung“][3]
-
-4. Geben Sie im Suchfeld **Kanbanize** ein, klicken Sie im Ergebnisbereich auf **Kanbanize** und anschließend auf **Hinzufügen**, um die Anwendung hinzuzufügen.
-
-    ![Kanbanize in der Ergebnisliste](./media/kanbanize-tutorial/tutorial_kanbanize_addfromgallery.png)
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Kanbanize** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Kanbanize** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden mit Azure AD bei Kanbanize mithilfe einer Testbenutzerin namens Britta Simon.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Kanbanize mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Kanbanize eingerichtet werden.
 
-Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Kanbanize als Gegenstück für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Kanbanize muss eine Linkbeziehung eingerichtet werden.
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Kanbanize die folgenden Schritte aus:
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Kanbanize müssen Sie die folgenden Bausteine ausführen:
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Kanbanize](#configure-kanbanize-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+5. **[Erstellen eines Kanbanize-Testbenutzers](#create-kanbanize-test-user)** , um eine Entsprechung von B. Simon in Kanbanize zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Kanbanize-Testbenutzers](#create-a-kanbanize-test-user)**, um eine Entsprechung von Britta Simon in Kanbanize zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Kanbanize-Anwendung.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Kanbanize** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Kanbanize die folgenden Schritte aus:**
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Kanbanize** auf **Einmaliges Anmelden**.
+1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte in die folgenden Felder ein, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<subdomain>.kanbanize.com/`
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/kanbanize-tutorial/tutorial_kanbanize_samlbase.png)
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<subdomain>.kanbanize.com/saml/acs`
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Kanbanize** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+    c. Klicken Sie auf **Zusätzliche URLs festlegen**.
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Kanbanize](./media/kanbanize-tutorial/tutorial_kanbanize_url.png)
+    d. Geben Sie im Textfeld **Relayzustand** eine URL ein: `/ctrl_login/saml_login`
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<subdomain>.kanbanize.com/`
+1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<subdomain>.kanbanize.com/saml/acs`
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.kanbanize.com`
 
-    c. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**.
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Kundensupportteam von Kanbanize](mailto:support@ms.kanbanize.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-    d.  Geben Sie im Textfeld **Relayzustand** eine URL ein: `/ctrl_login/saml_login`
+1. Die Kanbanize-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. nameidentifier ist hier **user.userprincipalname** zugeordnet. Die Kanbanize-Anwendung erwartet, dass nameidentifier der Wert **user.mail** zugeordnet ist. Sie müssen die Attributzuordnung daher entsprechend ändern, indem Sie auf das Symbol „Bearbeiten“ klicken.
 
-    e. Wenn Sie die Anwendung im **SP**-initiierten Modus konfigurieren möchten, geben Sie im Textfeld **Anmelde-URL** eine URL unter Verwendung des folgenden Musters ein: `https://<subdomain>.kanbanize.com`
-     
-    > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von Kanbanize](mailto:support@ms.kanbanize.com), um diese Werte zu erhalten. 
+    ![image](common/edit-attribute.png)
 
-5. Die Kanbanize-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Der Standardwert von **Benutzer-ID** lautet **user.userprincipalname**, aber Kanbanize erwartet, dass dieser Wert der E-Mail-Adresse des Benutzers zugeordnet ist. Hierfür können Sie das **user.mail**-Attribut aus der Liste verwenden oder den entsprechenden Attributwert gemäß der Konfiguration in Ihrer Organisation angeben.
-    
-    ![Configure single sign-on](./media/kanbanize-tutorial/tutorial_Kanbanize_attribute.png)
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
-6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-    ![Downloadlink für das Zertifikat](./media/kanbanize-tutorial/tutorial_kanbanize_certificate.png) 
+1. Kopieren Sie im Abschnitt **Kanbanize einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-7. Klicken Sie auf die Schaltfläche **Save** .
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/kanbanize-tutorial/tutorial_general_400.png)
-    
-8. Klicken Sie im Abschnitt **Kanbanize-Konfiguration** auf **Kanbanize konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+### <a name="configure-kanbanize-sso"></a>Konfigurieren des einmaligen Anmeldens für Kanbanize
 
-    ![Kanbanize-Konfiguration](./media/kanbanize-tutorial/tutorial_kanbanize_configure.png)
+1. Melden Sie sich in einem anderen Webbrowserfenster als Sicherheitsadministrator bei Kanbanize an.
 
-9. Melden Sie sich in einem anderen Webbrowserfenster als Sicherheitsadministrator bei Kanbanize an. 
+2. Klicken Sie rechts oben auf der Seite auf das Logo **Einstellungen**.
 
-10. Klicken Sie rechts oben auf der Seite auf das Logo **Einstellungen**.
+    ![Kanbanize-Einstellungen](./media/kanbanize-tutorial/tutorial-kanbanize-set.png)
 
-    ![Kanbanize-Einstellungen](./media/kanbanize-tutorial/tutorial_kanbanize_set.png)
+3. Klicken Sie auf der Seite „Verwaltungsbereich“ auf der linken Seite des Menüs auf **Integrationen**, und aktivieren Sie dann **Einmaliges Anmelden**.
 
-11. Klicken Sie auf der Seite „Verwaltungsbereich“ auf der linken Seite des Menüs auf **Integrationen**, und aktivieren Sie dann **Einmaliges Anmelden**. 
+    ![Kanbanize-Integrationen](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
 
-    ![Kanbanize-Integrationen](./media/kanbanize-tutorial/tutorial_kanbanize_admin.png)
+4. Klicken Sie im Abschnitt „Integrationen“ auf **KONFIGURIEREN**, um die **Konfigurationsseite für einmaliges Anmelden** zu öffnen.
 
-12. Klicken Sie im Abschnitt „Integrationen“ auf **KONFIGURIEREN**, um die **Konfigurationsseite für einmaliges Anmelden** zu öffnen.
+    ![Kanbanize.Konfiguration](./media/kanbanize-tutorial/tutorial-kanbanize-config.png)
 
-    ![Kanbanize.Konfiguration](./media/kanbanize-tutorial/tutorial_kanbanize_config.png)
+5. Führen Sie auf der **Konfigurationsseite für einmaliges Anmelden** unter **Konfigurationen** die folgenden Schritte aus:
 
-13. Führen Sie auf der **Konfigurationsseite für einmaliges Anmelden** unter **Konfigurationen** die folgenden Schritte aus:
+    ![Kanbanize-Integrationen](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
 
-    ![Kanbanize-Integrationen](./media/kanbanize-tutorial/tutorial_kanbanize_save.png)
+    a. Fügen Sie in das Textfeld **IdP Entity Id** (IdP-Entitäts-ID) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    a. Fügen Sie in das Textfeld **IdP-Entitäts-ID** den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
+    b. Fügen Sie in das Textfeld **IdP Login Endpoint** (IdP-Anmeldeendpunkt) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    b. Fügen Sie in das Textfeld **IdP Login URL** (IdP-Anmelde-URL) den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    c. Fügen Sie in das Textfeld **IdP-Abmeldeendpunkt** den Wert der **Abmelde-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
+    c. Fügen Sie in das Textfeld **IdP Logout Endpoint** (IdP-Abmeldeendpunkt) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     d. Geben Sie im Textfeld **Attribute name for Email** (Attributname für E-Mail) den Wert `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein.
 
     e. Geben Sie im Textfeld **Attribute name for First Name** (Attributname für Vornamen) den Wert `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` ein.
 
-    f. Geben Sie im Textfeld **Attribute name for Last Name** (Attributname für Nachnamen) den Wert `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` ein. 
+    f. Geben Sie im Textfeld **Attribute name for Last Name** (Attributname für Nachnamen) den Wert `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` ein.
+
     > [!Note]
     > Sie können diese Werte durch Kombination der Werte von Namespace und Name des entsprechenden Attributs aus dem Abschnitt „Benutzerattribute“ im Azure-Portal abrufen.
 
-    g. Öffnen Sie in Editor das Base64-codierte Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt, und fügen Sie ihn anschließend (ohne Anfangs und Endmarker) in das Feld  **Idp X.509 Certificate** (X.509-Zertifikat des IDP) ein.
+    g. Öffnen Sie im Editor das Base64-codierte Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt, und fügen Sie ihn anschließend (ohne Anfangs und Endmarker) in das Feld **X.509-Zertifikat** ein.
 
     h. Aktivieren Sie **Enable login with both SSO and Kanbanize** (Anmeldung mit SSO und Kanbanize aktivieren).
-    
+
     i. Klicken Sie auf **Einstellungen speichern**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
-
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
-
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
-
-    ![Schaltfläche „Azure Active Directory“](./media/kanbanize-tutorial/create_aaduser_01.png)
-
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
-
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/kanbanize-tutorial/create_aaduser_02.png)
-
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
-
-    ![Schaltfläche „Hinzufügen“](./media/kanbanize-tutorial/create_aaduser_03.png)
-
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
-
-    ![Dialogfeld „Benutzer“](./media/kanbanize-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
-
-    d. Klicken Sie auf **Create**.
- 
-### <a name="create-a-kanbanize-test-user"></a>Erstellen eines Kanbanize-Testbenutzers
-
-Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Kanbanize. Kanbanize unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Kanbanize ein neuer Benutzer erstellt.
-
->[!Note]
->Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das  [Kanbanize-Clientsupportteam](mailto:support@ms.kanbanize.com).
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon, das einmalige Anmelden von Azure zu verwenden, indem Sie ihr Zugriff auf Kanbanize gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Kanbanize gewähren.
 
-![Zuweisen der Benutzerrolle][200] 
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste **Kanbanize** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
-**Um Britta Simon Kanbanize zuzuweisen, führen Sie die folgenden Schritte aus:**
+   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Benutzer zuweisen][201] 
+    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-2. Wählen Sie in der Anwendungsliste **Kanbanize** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-    ![Kanbanize-Link in der Anwendungsliste](./media/kanbanize-tutorial/tutorial_kanbanize_app.png)  
+### <a name="create-kanbanize-test-user"></a>Erstellen eines Kanbanize-Testbenutzers
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in Kanbanize erstellt. Kanbanize unterstützt die Just-in-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Kanbanize vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt. Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Kundensupportteam von Kanbanize](mailto:support@ms.kanbanize.com) in Verbindung.
 
-    ![Link „Benutzer und Gruppen“][202]
-
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Bereich „Zuweisung hinzufügen“][203]
-
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
-
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
-
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Kanbanize“ klicken, sollten Sie automatisch bei Ihrer Kanbanize-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „Kanbanize“ klicken, sollten Sie automatisch bei der Kanbanize-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/kanbanize-tutorial/tutorial_general_01.png
-[2]: ./media/kanbanize-tutorial/tutorial_general_02.png
-[3]: ./media/kanbanize-tutorial/tutorial_general_03.png
-[4]: ./media/kanbanize-tutorial/tutorial_general_04.png
-
-[100]: ./media/kanbanize-tutorial/tutorial_general_100.png
-
-[200]: ./media/kanbanize-tutorial/tutorial_general_200.png
-[201]: ./media/kanbanize-tutorial/tutorial_general_201.png
-[202]: ./media/kanbanize-tutorial/tutorial_general_202.png
-[203]: ./media/kanbanize-tutorial/tutorial_general_203.png
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

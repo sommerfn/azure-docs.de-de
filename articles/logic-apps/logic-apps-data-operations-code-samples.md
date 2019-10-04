@@ -1,27 +1,27 @@
 ---
-title: Beispiele für Datenvorgänge – Azure Logic Apps | Microsoft-Dokumentation
-description: Codebeispiele für Aktionsdefinitionen von Datenvorgängen in Azure Logic Apps
+title: 'Beispiele für Datenvorgänge: Azure Logic Apps'
+description: Codebeispiele für Datenvorgangsaktionen in Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: reference
-ms.date: 07/25/2018
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 8de70e8df50b79f27c19c74307d9321ff8cd1eb5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.topic: reference
+ms.date: 09/01/2019
+ms.openlocfilehash: d692d943249c9fc6b46ed6eb1ddff3f07152f5b6
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229962"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179134"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Codebeispiele für Datenvorgänge in Azure Logic Apps
 
 Hier sind die Codebeispiele für die Aktionsdefinitionen von Datenvorgängen des Artikels [Durchführen von Datenvorgängen](../logic-apps/logic-apps-perform-data-operations.md) angegeben. Sie können diese Beispiele verwenden, um sie für die zugrunde liegende Workflowdefinition Ihrer eigenen Logik-App, Ihr Azure-Abonnement und die API-Verbindungen auszuprobieren. Kopieren Sie diese Aktionsdefinitionen einfach, und fügen Sie sie in den Codeansicht-Editor für die Workflowdefinition Ihrer Logik-App ein. Ändern Sie die Definitionen dann gemäß Ihrem spezifischen Workflow. 
 
-Diese Aktionsdefinitionen werden basierend auf den JSON-Standards (JavaScript Object Notation) in alphabetischer Reihenfolge angezeigt. Im Logik-App-Designer wird jede Definition für Ihren Workflow aber in der richtigen Abfolge angezeigt, da mit der `runAfter`-Eigenschaft einer Aktionsdefinition jeweils die Ausführungsreihenfolge angegeben wird. 
+Diese Aktionsdefinitionen werden basierend auf den JSON-Standards (JavaScript Object Notation) in alphabetischer Reihenfolge angezeigt. Im Logik-App-Designer wird jede Definition für Ihren Workflow aber in der richtigen Abfolge angezeigt, da mit der `runAfter`-Eigenschaft einer Aktionsdefinition jeweils die Ausführungsreihenfolge angegeben wird.
 
 <a name="compose-action-example"></a>
 
@@ -366,11 +366,6 @@ Für das [Beispiel zur Aktion **Select**](../logic-apps/logic-apps-perform-data-
    }
 },
 ```
-
-## <a name="get-support"></a>Support
-
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

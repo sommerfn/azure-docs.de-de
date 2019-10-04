@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: cf037f7f1c1384b654a7144485d38f569eb7c167
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8ad3f09bf46caf426b2008b583ebd2ff78522462
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187333"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64713068"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>Problembehandlung bei einem betriebsbereiten StorSimple-Gerät
 > [!NOTE]
-> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [FAQ: Move to Azure portal (Verschieben in das Azure-Portal: häufig gestellte Fragen (FAQ))](storsimple-8000-move-azure-portal-faq.md).
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
 
 ## <a name="overview"></a>Übersicht
 Dieser Artikel enthält Anleitungen zum Beheben von Konfigurationsproblemen, die bei einem bereitgestellten und betriebsbereiten StorSimple-Gerät auftreten können. Es werden allgemeine Probleme, mögliche Ursachen und empfohlene Schritte zum Beheben von Problemen bei der Ausführung von Microsoft Azure StorSimple beschrieben. Diese Informationen gelten sowohl für lokale physische als auch für virtuelle StorSimple-Geräte.
@@ -48,9 +48,9 @@ In der folgenden Tabelle sind die Fehler, die beim Ausführen des Setup-Assisten
 | Nein. | Fehlermeldung oder -bedingung | Mögliche Ursachen | Empfohlene Maßnahme |
 |:--- |:--- |:--- |:--- |
 | 1 |Fehler 350032: Dieses Gerät wurde bereits deaktiviert. |Dieser Fehler wird angezeigt, wenn Sie den Setup-Assistenten auf einem deaktivierten Gerät ausführen. |[Wenden Sie sich an den Microsoft Support](storsimple-contact-microsoft-support.md) für weitere Schritte. Ein deaktiviertes Gerät kann nicht in Betrieb genommen werden. Sie müssen das Gerät möglicherweise auf die Werkseinstellungen zurücksetzen, bevor es erneut aktiviert werden kann. |
-| 2 |Invoke-HcsSetupWizard : ERROR_INVALID_FUNCTION(Ausnahme von HRESULT: 0x80070001) |Das Update des DNS-Servers ist fehlgeschlagen. DNS-Einstellungen sind globale Einstellungen und gelten für alle aktivierten Netzwerkschnittstellen. |Aktivieren Sie die Schnittstelle, und wenden Sie die DNS-Einstellungen erneut an. Dies kann das Netzwerk für andere aktivierten Schnittstellen beeinträchtigen, da es sich um globale Einstellungen handelt. |
+| 2 |Invoke-HcsSetupWizard : ERROR_INVALID_FUNCTION (Ausnahme von HRESULT: 0x80070001) |Das Update des DNS-Servers ist fehlgeschlagen. DNS-Einstellungen sind globale Einstellungen und gelten für alle aktivierten Netzwerkschnittstellen. |Aktivieren Sie die Schnittstelle, und wenden Sie die DNS-Einstellungen erneut an. Dies kann das Netzwerk für andere aktivierten Schnittstellen beeinträchtigen, da es sich um globale Einstellungen handelt. |
 | 3 |Das Gerät wird im StorSimple-Manager-Dienstportal als online aufgeführt. Wenn Sie jedoch versuchen, die Mindestinstallation abzuschließen und die Konfiguration speichern, schlägt der Vorgang fehl. |Der Webproxy wurde während der ersten Installation nicht konfiguriert, obwohl ein Proxyserver tatsächlich vorhanden war. |Verwenden Sie das Cmdlet [Test-HcsmConnection][2], um den Fehler zu suchen. [Wenden Sie sich an den Microsoft Support](storsimple-contact-microsoft-support.md) , wenn Sie das Problem nicht beheben können. |
-| 4 |Invoke-HcsSetupWizard: Der Wert liegt nicht innerhalb des erwarteten Bereichs. |Dieser Fehler wird durch eine falsche Subnetzmaske erzeugt. Mögliche Ursachen sind:  <ul><li> Die Subnetzmaske ist nicht vorhanden oder leer.</li><li>Das Format des Ipv6-Präfixes ist falsch.</li><li>Die Schnittstelle ist für die Cloud aktiviert, aber das Gateway ist nicht vorhanden oder ungültig.</li></ul>Beachten Sie, dass die DATA 0-Schnittstelle automatisch über Cloudfunktionalität verfügt, wenn sie über den Setup-Assistenten konfiguriert wird. |Um das Problem zu bestimmen, verwenden Sie die Subnetzmaske 0.0.0.0 oder 256.256.256.256 und überprüfen die Ausgabe. Geben Sie ggf. die korrekten Werte für Subnetzmaske, Gateway und IPv6-Präfix ein. |
+| 4 |Invoke-HcsSetupWizard: Der Wert liegt nicht innerhalb des erwarteten Bereichs. |Dieser Fehler wird durch eine falsche Subnetzmaske erzeugt. Mögliche Ursachen sind: <ul><li> Die Subnetzmaske ist nicht vorhanden oder leer.</li><li>Das Format des Ipv6-Präfixes ist falsch.</li><li>Die Schnittstelle ist für die Cloud aktiviert, aber das Gateway ist nicht vorhanden oder ungültig.</li></ul>Beachten Sie, dass die DATA 0-Schnittstelle automatisch über Cloudfunktionalität verfügt, wenn sie über den Setup-Assistenten konfiguriert wird. |Um das Problem zu bestimmen, verwenden Sie die Subnetzmaske 0.0.0.0 oder 256.256.256.256 und überprüfen die Ausgabe. Geben Sie ggf. die korrekten Werte für Subnetzmaske, Gateway und IPv6-Präfix ein. |
 
 ## <a name="error-codes"></a>Fehlercodes
 Die Fehler sind in numerischer Reihenfolge aufgeführt.

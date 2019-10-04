@@ -4,25 +4,24 @@ description: Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWe
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 37f5040585681a53743fb3426b7f7ffac36de51c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f4352fbf71b23aedc1dddd3e454b58196d4f5a6e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008696"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078471"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektur und Szenarien für die Hochverfügbarkeit von SAP NetWeaver
 
@@ -250,7 +249,7 @@ Hochverfügbarkeit von SAP in Azure kann in drei Typen unterteilt werden:
 
 * **Hochverfügbarkeit von SAP-Anwendungen:** 
 
-    Für eine vollständige Hochverfügbarkeit von SAP-Systemen müssen Sie alle kritischen SAP-Systemkomponenten schützen. Beispiel: 
+    Für eine vollständige Hochverfügbarkeit von SAP-Systemen müssen Sie alle kritischen SAP-Systemkomponenten schützen. Beispiel:
     * Redundante SAP-Anwendungsserver
     * Einmalig auftretende Komponenten. Beispiel: eine Single Point of Failure-Komponente (SPOF) wie z.B. eine SAP ASCS/SCS-Instanz oder ein Datenbank-Managementsystem (DBMS).
 
@@ -268,7 +267,7 @@ Als Grundlage für die Berechnung werden 30 Tage pro Monat bzw. 43.200 Minuten v
 
 (Verfügbarkeitsdienst Nr. 1/100) × (Verfügbarkeitsdienst Nr. 2/100) × (Verfügbarkeitsdienst Nr. 3/100) \*…
 
-Beispiel: 
+Beispiel:
 
 (99,95/100) * (99,9/100) * (99,9/100) = 0,9975 bzw. eine allgemeine Verfügbarkeit von 99,75 Prozent.
 
@@ -335,7 +334,7 @@ Weitere Informationen zu diesem Ansatz finden Sie unter [Verwenden der Neustartf
 
 ## <a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Hochverfügbarkeit von SAP-Anwendungen in Azure IaaS
 
-Für eine vollständige Hochverfügbarkeit von SAP-Systemen müssen Sie alle kritischen SAP-Systemkomponenten schützen. Beispiel: 
+Für eine vollständige Hochverfügbarkeit von SAP-Systemen müssen Sie alle kritischen SAP-Systemkomponenten schützen. Beispiel:
   * Redundante SAP-Anwendungsserver
   * Einmalig auftretende Komponenten. Beispiel: eine Single Point of Failure-Komponente (SPOF) wie z.B. eine SAP ASCS/SCS-Instanz oder ein Datenbank-Managementsystem (DBMS).
 
@@ -369,7 +368,7 @@ Die Anzahl der von einer Azure-Verfügbarkeitsgruppe innerhalb einer Azure-Skali
 Wenn Sie mehrere SAP-Anwendungsserverinstanzen auf eigenen dedizierten virtuellen Computern bereitstellen, entsteht bei fünf Updatedomänen das folgende Bild. Die aktuelle maximale Anzahl von Update- und Fehlerdomänen innerhalb einer Verfügbarkeitsgruppe kann sich zukünftig ändern:
 
 ![Abbildung 2: Hochverfügbarkeit von SAP-Anwendungsservern in einer Azure-Verfügbarkeitsgruppe][planning-guide-figure-3000]
-_**Abbildung 2:** Hochverfügbarkeit von SAP-Anwendungsservern in einer Azure-Verfügbarkeitsgruppe_
+ _**Abbildung 2:** Hochverfügbarkeit von SAP-Anwendungsservern in einer Azure-Verfügbarkeitsgruppe_
 
 Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure][azure-virtual-machines-manage-availability].
 
@@ -388,15 +387,15 @@ Weitere Informationen finden Sie im Abschnitt [Azure-Verfügbarkeitsgruppen][pla
 
 Sie können eine WSFC-Lösung zum Schützen der SAP ASCS/SCS-Instanz verwenden. Die Lösung weist zwei Varianten auf:
 
-* **Gruppieren der SAP ASCS/SCS-Instanz mithilfe freigegebener Datenträger für Cluster:** Weitere Informationen zu dieser Architektur finden Sie unter [Gruppieren von SAP ASCS/SCS-Instanzen auf Windows-Failoverclustern mithilfe freigegebener Datenträger für Cluster][sap-high-availability-guide-wsfc-shared-disk].   
+* **Gruppieren der SAP ASCS/SCS-Instanz mithilfe freigegebener Datenträger für Cluster:** Weitere Informationen zu dieser Architektur finden Sie unter [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure][sap-high-availability-guide-wsfc-shared-disk].   
 
-* **Gruppieren der SAP ASCS/SCS-Instanz mithilfe einer Dateifreigabe:** Weitere Informationen zu dieser Architektur finden Sie unter [Gruppieren von SAP ASCS/SCS-Instanzen auf Windows-Failoverclustern mithilfe von Dateifreigaben][sap-high-availability-guide-wsfc-file-share].
+* **Gruppieren der SAP ASCS/SCS-Instanz mithilfe einer Dateifreigabe:** Weitere Informationen zu dieser Architektur finden Sie unter [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster per Dateifreigabe in Azure][sap-high-availability-guide-wsfc-file-share].
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Hochverfügbarkeitsarchitektur für eine SAP ASCS/SCS-Instanz unter Linux
 
 > ![Linux][Logo_Linux] Linux
 > 
-> Weitere Informationen zum Clustering der SAP ASCS/SCS-Instanz mithilfe des SLES-Clusterframeworks finden Sie unter [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server for SAP Applications][sap-suse-ascs-ha]. Informationen zu einer alternativen Hochverfügbarkeitsarchitektur unter SLES, für die kein hoch verfügbares NFS erforderlich ist, finden Sie unter [High-availability guide for SAP NetWeaver on SUSE Linux Enterprise Server with Azure NetApp Files for SAP applications][sap-suse-ascs-ha-anf] (Leitfaden zur Hochverfügbarkeit für SAP NetWeaver unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen).
+> Weitere Informationen zum Clustering der SAP ASCS/SCS-Instanz mithilfe des SLES-Clusterframeworks finden Sie unter [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs auf dem SUSE Linux Enterprise Server for SAP Applications][sap-suse-ascs-ha]. Informationen zu einer alternativen Hochverfügbarkeitsarchitektur unter SLES, für die kein hochverfügbares NFS erforderlich ist, finden Sie unter [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen][sap-suse-ascs-ha-anf].
 
 Weitere Informationen zum Clustering der SAP ASCS/SCS-Instanz mithilfe des Red Hat-Clusterframeworks finden Sie unter [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel).
 
@@ -409,9 +408,9 @@ Weitere Informationen zum Clustering der SAP ASCS/SCS-Instanz mithilfe des Red H
 > 
 > Weitere Informationen zur Multi-SID-Hochverfügbarkeitsarchitektur finden Sie unter:
 
-* [Hochverfügbarkeit für SAP ASCS/SCS-Multi-SID-Instanzen mit Windows Server-Failoverclustering und Dateifreigabe][sap-ascs-ha-multi-sid-wsfc-file-share]
+* [Hochverfügbarkeit von SAP ASCS/SCS-Instanzen mit Multi-SID-Konfiguration mithilfe von Windows Server-Failoverclustering und Dateifreigaben in Azure][sap-ascs-ha-multi-sid-wsfc-file-share]
 
-* [Hochverfügbarkeit für SAP ASCS/SCS-Multi-SID-Instanzen mit Windows Server-Failoverclustering und freigegebenem Datenträger][sap-ascs-ha-multi-sid-wsfc-shared-disk]
+* [Multi-SID-Hochverfügbarkeit für SAP ASCS/SCS-Instanzen unter Verwendung von Windows Server-Failoverclustering und freigegebene Datenträger in Azure][sap-ascs-ha-multi-sid-wsfc-shared-disk]
 
 ### <a name="high-availability-dbms-instance"></a>Hochverfügbarkeit für DBMS-Instanzen
 

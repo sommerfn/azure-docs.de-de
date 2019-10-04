@@ -3,17 +3,18 @@ title: Häufig gestellte Fragen zur Azure Storage-Migration | Microsoft-Dokument
 description: Antworten auf allgemeine Fragen zum Migrieren von Azure Storage
 services: storage
 author: genlin
+manager: dcscontentpm
 ms.service: storage
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: cf1cba6f6d26d66fc560c86ea42459fa276cc880
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 250cdedaa5155f1487cb842be492acd82c0f26b3
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310845"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090821"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Häufig gestellte Fragen zur Azure Storage-Migration
 
@@ -37,7 +38,7 @@ Das Automatisierungsskript ist auf die Azure Resource Manager-Bereitstellung und
 
 **Fallen für das Kopieren von Daten zwischen zwei Dateifreigaben im selben Speicherkonto in der gleichen Region Gebühren an?**
 
- Nein. Für diesen Vorgang fallen keine Gebühren an.
+Nein. Für diesen Vorgang fallen keine Gebühren an.
 
 **Wie kann ich mein gesamtes Speicherkonto in einem anderen Speicherkonto sichern?**
 
@@ -193,7 +194,7 @@ Sie können eine VHD mit dem [Storage-Explorer](https://azure.microsoft.com/feat
 
 **Gelten für das Ändern der Replikation eines Speicherkontos von georedundantem Speicher in lokal redundanten Speicher bestimmte Voraussetzungen?**
 
- Nein. 
+Nein. 
 
 **Wie greife ich auf redundanten Azure Files-Speicher zu?**
 
@@ -276,11 +277,11 @@ So gewähren Sie anderen Personen Zugriff auf die Speicherressourcen:
 
 -   Bei Verwendung von georedundantem Speicher mit Lesezugriff können Sie jederzeit auf Daten in der sekundären Region zugreifen. Verwenden Sie eine der folgenden Methoden an:  
       
-    - **AzCopy:** Fügen Sie in der URL an den Speicherkontonamen **-secondary** an, um auf den sekundären Endpunkt zuzugreifen. Beispiel:   
+    - **AzCopy:** Fügen Sie in der URL an den Speicherkontonamen **-secondary** an, um auf den sekundären Endpunkt zuzugreifen. Beispiel:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
-    - **SAS-Token:** Greifen Sie von einem Endpunkt mithilfe eines SAS-Tokens auf Daten zu. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](storage-dotnet-shared-access-signature-part-1.md).
+    - **SAS-Token:** Greifen Sie von einem Endpunkt mithilfe eines SAS-Tokens auf Daten zu. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](storage-sas-overview.md).
 
 **Wie verwende ich eine benutzerdefinierte HTTPS-Domäne mit meinem Speicherkonto? Wie kann ich beispielsweise „https:\//mystorageaccountname.blob.core.windows.net/images/image.gif“ als „https:\//www.contoso.com/images/image.gif“ anzeigen?**
 
@@ -291,7 +292,7 @@ Sie können jedoch benutzerdefinierte Domänen ohne HTTPS verwenden. Weitere Inf
 
 Es gibt keine Möglichkeit, mit FTP direkt auf ein Speicherkonto zuzugreifen. Sie können jedoch einen virtuellen Azure-Computer einrichten und anschließend einen FTP-Server auf dem virtuellen Computer installieren. Sie können festlegen, dass der FTP-Server Dateien auf einer Azure Files-Freigabe oder auf einem Datenträger speichert, der für den virtuellen Computer verfügbar ist.
 
-Wenn Sie Daten nur herunterladen möchten, ohne den Storage-Explorer oder eine ähnliche Anwendung verwenden zu müssen, können Sie unter Umständen ein SAS-Token nutzen. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](storage-dotnet-shared-access-signature-part-1.md).
+Wenn Sie Daten nur herunterladen möchten, ohne den Storage-Explorer oder eine ähnliche Anwendung verwenden zu müssen, können Sie unter Umständen ein SAS-Token nutzen. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](storage-sas-overview.md).
 
 **How do I migrate Blobs from one storage account to another?** (Gewusst wie: Migrieren von Blobs aus einem Speicherkonto in ein anderes)
 

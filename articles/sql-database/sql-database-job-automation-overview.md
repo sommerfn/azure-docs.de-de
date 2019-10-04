@@ -9,26 +9,25 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 4e80bbc868376a41212d924bd31df6ac70a52ded
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 432580017cec548b7ecd7cf766aa8f5cdb2253cc
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901966"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113592"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatisieren von Verwaltungsaufgaben mithilfe von Datenbankaufträgen
 
 Azure SQL-Datenbank ermöglicht die Erstellung und Planung von Aufträgen, die in regelmäßigen Abständen für einzelne oder mehrere Datenbanken ausgeführt werden können, um T-SQL-Abfragen und Wartungsaufgaben auszuführen. Jeder Auftrag protokolliert den Ausführungsstatus und wiederholt die Vorgänge im Falle eines Fehlers automatisch.
 Sie können die Zieldatenbank oder Gruppen von Azure SQL-Datenbanken sowie Zeitpläne für die Auftragsausführung definieren.
-Ein Auftrag nimmt Ihnen die Anmeldung bei der Zieldatenbank ab. Zudem können Sie Transact-SQL-Skripts zur Ausführung für eine Gruppe von Azure SQL-Datenbanken definieren, verwalten und speichern.
+Ein Auftrag übernimmt die Aufgabe der Anmeldung bei der Zieldatenbank. Zudem können Sie Transact-SQL-Skripts zur Ausführung für eine Gruppe von Azure SQL-Datenbanken definieren, verwalten und speichern.
 
 ## <a name="when-to-use-automated-jobs"></a>Verwendung der automatisierten Aufträge
 
 Die Auftragsautomatisierung kann in verschiedenen Szenarien hilfreich sein:
 
-- Automatisierung von Verwaltungsaufgaben, die beispielsweise an jedem Werktag oder nach Geschäftsschluss ausgeführt werden sollen.
+- Automatisierung von Verwaltungsaufgaben und Planung der Ausführung beispielsweise an jedem Werktag oder nach Geschäftsschluss usw.
   - Bereitstellung von Schemaänderungen, Anmeldeinformationsverwaltung, Leistungsdatensammlung oder Telemetrieerfassung für Mandanten (Kunden).
   - Aktualisierung von Referenzdaten (datenbankübergreifende Informationen), Laden von Daten aus Azure Blob Storage.
   - Neuerstellung von Indizes zum Verbessern der Abfrageleistung. Konfiguration von Aufträgen, sodass diese für eine gesamte Sammlung von Datenbanken auf wiederkehrender Basis ausgeführt werden (etwa in Zeiten mit geringer Auslastung).
@@ -37,27 +36,27 @@ Die Auftragsautomatisierung kann in verschiedenen Szenarien hilfreich sein:
   - Aggregation von Daten aus einer Sammlung von Azure SQL-Datenbanken in einer einzelnen Zieltabelle.
   - Ausführung von Abfragen zur Datenverarbeitung mit längerer Laufzeit für eine große Anzahl von Datenbanken, z.B. bei der Sammlung von Kundentelemetrie. Die Ergebnisse werden zur weiteren Analyse in einer einzelnen Zieltabelle gesammelt.
 - Datenverschiebungen
-  - Erstellung von Aufträgen, die Änderungen an Ihren Datenbanken in anderen Datenbanken replizieren oder Aktualisierungen aus Remotedatenbanken erfassen und die Änderungen auf die Datenbank anwenden.
+  - Erstellung von Aufträgen, die Änderungen an Ihren Datenbanken in anderen Datenbanken replizieren oder Aktualisierungen aus Remotedatenbanken erfassen und die Änderungen in der Datenbank anwenden.
   - Erstellung von Aufträgen, die Daten mithilfe von SQL Server Integration Services (SSIS) aus Ihren oder in Ihre Datenbanken laden.
 
 ## <a name="overview"></a>Übersicht
 
 In Azure SQL-Datenbank stehen folgende Auftragsplanungstechnologien zur Verfügung:
 
-- **SQL-Agent-Aufträge** sind eine klassische und bewährte SQL Server-Auftragsplanungskomponente, die in verwalteten Instanzen verfügbar ist. In Einzeldatenbanken stehen SQL-Agent-Aufträge nicht zur Verfügung.
-- **Elastische Datenbankaufträge** sind ein Auftragsplanungsdienst, der benutzerdefinierte Aufträge für einzelne oder mehrere Azure SQL-Datenbanken ausführt.
+- **SQL-Agent-Aufträge** sind eine klassische und bewährte SQL Server-Auftragsplanungskomponente, die in verwalteten Instanzen verfügbar ist. In Azure SQL-Einzeldatenbanken stehen SQL-Agent-Aufträge nicht zur Verfügung.
+- **Aufträge für die elastische Datenbank (Vorschau)** sind Auftragsplanungsdienste, die benutzerdefinierte Aufträge in einzelnen oder mehreren Azure SQL-Datenbank-Instanzen ausführen.
 
 Zwischen dem SQL-Agent (lokal und als Komponente einer verwalteten SQL-Datenbank-Instanz verfügbar) und dem Datenbank-Agent für elastische Aufträge (für Einzeldatenbanken in Azure SQL-Datenbank und Datenbanken in SQL Data Warehouse verfügbar) gibt es einige Unterschiede.
 
 |  |Elastische Aufträge  |SQL-Agent |
 |---------|---------|---------|
-|Bereich     |  Beliebige Anzahl von Azure SQL-Datenbanken und/oder Data Warehouses in der gleichen Azure-Cloud wie der Auftrags-Agent. Ziele können sich auf unterschiedlichen SQL-Datenbankservern, in unterschiedlichen Abonnements und/oder in unterschiedlichen Regionen befinden. <br><br>Zielgruppen können einzelne Datenbanken/Data Warehouses oder alle Datenbanken auf einem Server, in einem Pool oder in einer Shardzuordnung (dynamisch zur Auftragslaufzeit aufgezählt) enthalten. | Beliebige einzelne Datenbank in der gleichen SQL Server-Instanz wie der SQL-Agent. |
+|`Scope`     |  Beliebige Anzahl von Azure SQL-Datenbanken und/oder Data Warehouses in der gleichen Azure-Cloud wie der Auftrags-Agent. Ziele können sich auf unterschiedlichen SQL-Datenbank-Servern, in unterschiedlichen Abonnements und/oder in unterschiedlichen Regionen befinden. <br><br>Zielgruppen können einzelne Datenbanken/Data Warehouses oder alle Datenbanken auf einem Server, in einem Pool oder in einer Shardzuordnung (dynamisch zur Auftragslaufzeit aufgezählt) enthalten. | Beliebige einzelne Datenbank in der gleichen SQL Server-Instanz wie der SQL-Agent. |
 |Unterstützte APIs und Tools     |  Portal, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
 
 ## <a name="sql-agent-jobs"></a>SQL-Agent-Aufträge
 
-Bei SQL-Agent-Aufträgen handelt es sich um eine angegebene Reihe von T-SQL-Skripts für Ihre Datenbank. Verwenden Sie Aufträge, um eine Verwaltungsaufgabe zu definieren, die einmalig oder mehrmals ausgeführt und deren Erfolgsstatus überwacht werden kann.
-Ein Auftrag kann auf einem einzelnen lokalen Server oder auf mehreren Remoteservern ausgeführt werden. Ein SQL-Agent-Auftrag ist eine interne Komponente der Datenbank-Engine, die innerhalb des Diensts für die verwaltete Instanz ausgeführt wird.
+Bei SQL-Agent-Aufträgen handelt es sich um eine angegebene Reihe von T-SQL-Skripts, die für Ihre Datenbank ausgeführt werden. Verwenden Sie Aufträge, um eine Verwaltungsaufgabe zu definieren, die einmalig oder mehrmals ausgeführt und deren Erfolgsstatus überwacht werden kann.
+Ein Auftrag kann auf einem einzelnen lokalen Server oder auf mehreren Remoteservern ausgeführt werden. Ein SQL-Agent-Auftrag ist eine interne Komponente der Datenbank-Engine, die innerhalb des Diensts für verwaltete Instanzen ausgeführt wird.
 Im Zusammenhang mit SQL-Agent-Aufträgen gibt es mehrere wichtige Konzepte:
 
 - **Auftragsschritte:** Eine Gruppe von einzelnen oder mehreren Schritten, die im Rahmen des Auftrags ausgeführt werden sollen. Für jeden Auftragsschritt können Sie eine Wiederholungsstrategie und die Aktion definieren, die ausgeführt werden soll, wenn der Auftragsschritt erfolgreich oder nicht erfolgreich war.
@@ -67,7 +66,7 @@ Im Zusammenhang mit SQL-Agent-Aufträgen gibt es mehrere wichtige Konzepte:
 ### <a name="job-steps"></a>Auftragsschritte
 
 SQL-Agent-Auftragsschritte sind Aktionssequenzen, die der SQL-Agent ausführen soll. Jeder Schritt verfügt über den nächsten Schritt, der ausgeführt werden soll, wenn der Schritt erfolgreich oder nicht erfolgreich war, sowie die Anzahl von Wiederholungsversuchen, falls der Schritt nicht erfolgreich war.
-Der SQL-Agent ermöglicht die Erstellung verschiedener Arten von Auftragsschritten. Hierzu zählen etwa Transact-SQL-Auftragsschritte zum Ausführen eines einzelnen Transact-SQL-Batchs für die Datenbank, Betriebssystembefehl-/PowerShell-Schritte zum Ausführen eines benutzerdefinierten Betriebssystemskripts, SSIS-Auftragsschritte zum Laden von Daten unter Verwendung der SSIS-Runtime sowie [Replikationsschritte](sql-database-managed-instance-transactional-replication.md) zum Veröffentlichen von Änderungen aus Ihrer Datenbank in anderen Datenbanken.
+Der SQL-Agent ermöglicht die Erstellung verschiedener Arten von Auftragsschritten. Hierzu zählen etwa Transact-SQL-Auftragsschritte zum Ausführen eines einzelnen Transact-SQL-Batchs in der Datenbank, Betriebssystembefehl-/PowerShell-Schritte zum Ausführen eines benutzerdefinierten Betriebssystemskripts, SSIS-Auftragsschritte zum Laden von Daten unter Verwendung der SSIS-Runtime sowie [Replikationsschritte](sql-database-managed-instance-transactional-replication.md) zum Veröffentlichen von Änderungen aus Ihrer Datenbank in anderen Datenbanken.
 
 [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) ist ein Datenbank-Engine-Feature, mit dem Sie die Änderungen an einzelnen oder mehreren Tabellen in einer einzelnen Datenbank veröffentlichen und an eine Gruppe von Abonnentendatenbank verteilen bzw. darin veröffentlichen können. Die Veröffentlichung der Änderungen wird mithilfe folgender SQL-Agent-Auftragsschritttypen implementiert:
 
@@ -91,7 +90,7 @@ Ein Zeitplan kann folgende Bedingungen für die Ausführungszeit eines Auftrags 
 - Auf der Grundlage einer Zeitplanserie.
 
 > [!Note]
-> Für die verwaltete Instanz können derzeit keine Aufträge gestartet werden, wenn sich die Instanz im Leerlauf befindet.
+> Für verwaltete Instanzen können derzeit keine Aufträge gestartet werden, wenn sich die Instanz im Leerlauf befindet.
 
 ### <a name="job-notifications"></a>Auftragsbenachrichtigungen
 
@@ -147,7 +146,7 @@ EXEC msdb.dbo.sp_add_operator
         @email_address=N'mihajlo.pupin@contoso.com'
 ```
 
-Sie können beliebige Aufträge ändern und Bediener zuweisen, die per E-Mail benachrichtigt werden sollen, wenn ein Auftrag abgeschlossen wird, nicht erfolgreich war oder erfolgreich war. Hierzu können Sie entweder SSMS oder das folgende Transact-SQL-Skript verwenden:
+Sie können jeden Auftrag ändern und Bediener zuweisen, die per E-Mail benachrichtigt werden sollen, wenn ein Auftrag abgeschlossen wird, nicht erfolgreich war oder erfolgreich war. Hierzu können Sie entweder SSMS oder das folgende Transact-SQL-Skript verwenden:
 
 ```sql
 EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS', 
@@ -159,17 +158,17 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 Einige der in SQL Server verfügbaren SQL-Agent-Features werden in verwalteten Instanzen nicht unterstützt:
 - SQL-Agent-Einstellungen sind schreibgeschützt. Die Prozedur `sp_set_agent_properties` wird in einer verwalteten Instanz nicht unterstützt.
-- Das Aktivieren/Deaktivieren des Agents wird derzeit in verwalteten Instanzen nicht unterstützt. Der SQL-Agent wird kontinuierlich ausgeführt.
+- Das Aktivieren/Deaktivieren des SQL-Agents wird in verwalteten Instanzen derzeit nicht unterstützt. Der SQL-Agent wird kontinuierlich ausgeführt.
 - Benachrichtigungen werden teilweise unterstützt.
   - Der Pager wird nicht unterstützt.
   - NetSend wird nicht unterstützt.
-  - Warnungen werden noch nicht unterstützt.
+  - Warnungen werden nicht unterstützt.
 - Proxys werden nicht unterstützt.
 - EventLog wird nicht unterstützt.
 
 Weitere Informationen zum SQL Server-Agent finden Sie unter [SQL Server-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
 
-## <a name="elastic-database-jobs"></a>Aufträge für die elastische Datenbank
+## <a name="elastic-database-jobs-preview"></a>Aufträge für die elastische Datenbank (Vorschau)
 
 Mit **Aufträgen für die elastische Datenbank** können Sie einzelne oder mehrere T-SQL-Skripts parallel für eine große Anzahl von Datenbanken ausführen – entweder gemäß einem Zeitplan oder nach Bedarf.
 
@@ -195,7 +194,7 @@ Bei einem Agent für elastische Aufträge handelt es sich um die Azure-Ressource
 
 Zum Erstellen eines **Agents für elastische Aufträge** muss eine SQL­-Datenbank vorhanden sein. Der Agent konfiguriert die vorhandene Datenbank als [*Auftragsdatenbank*](#job-database).
 
-Der Agent für elastische Aufträge ist kostenlos. Die Auftragsdatenbank wird zum Tarif für SQL-Datenbanken abgerechnet.
+Der Agent für elastische Aufträge ist kostenlos. Die Auftragsdatenbank wird zum gleichen Tarif abgerechnet wie SQL-Datenbanken.
 
 #### <a name="job-database"></a>Auftragsdatenbank
 
@@ -224,7 +223,7 @@ Im Zuge der Erstellung des Auftrags-Agents werden in der *Auftragsdatenbank* ein
 
 Eine *Zielgruppe* definiert die Gruppe von Datenbanken, für die ein Auftragsschritt ausgeführt wird. Eine Zielgruppe kann eine beliebige Anzahl und Kombination der folgenden Optionen enthalten:
 
-- **SQL-Datenbankserver:** Bei Angabe eines Servers werden alle Datenbanken, die sich zum Zeitpunkt der Auftragsausführung auf dem Server befinden, in die Gruppe einbezogen. Damit die Gruppe vor der Auftragsausführung aufgezählt und aktualisiert werden kann, müssen die Anmeldeinformationen für die Masterdatenbank angegeben werden.
+- **SQL-Datenbank-Server:** Bei Angabe eines Servers werden alle Datenbanken, die sich zum Zeitpunkt der Auftragsausführung auf dem Server befinden, in die Gruppe einbezogen. Damit die Gruppe vor der Auftragsausführung aufgezählt und aktualisiert werden kann, müssen die Anmeldeinformationen für die Masterdatenbank angegeben werden.
 - **Pool für elastische Datenbanken:** Bei Angabe eines Pools für elastische Datenbanken werden alle Datenbanken, die sich zum Zeitpunkt der Auftragsausführung in dem Pool für elastische Datenbanken befinden, in die Gruppe einbezogen. Genau wie bei einem Server müssen die Anmeldeinformationen für die Masterdatenbank angegeben werden, damit die Gruppe vor der Auftragsausführung aktualisiert werden kann.
 - **Einzelne Datenbank:** Geben Sie eine oder mehrere einzelne Datenbanken an, die in die Gruppe einbezogen werden sollen.
 - **Shardzuordnung:** Datenbanken einer Shardzuordnung.
@@ -249,7 +248,7 @@ Die folgenden Beispiele zeigen, wie verschiedene Zielgruppendefinitionen zum Zei
 
 ![Beispiele für Zielgruppen](media/elastic-jobs-overview/targetgroup-examples2.png)
 
-**Beispiel 5** und **Beispiel 6** zeigen erweiterte Szenarien, bei denen Azure SQL-Server, Datenbanken und Pools für elastische Datenbanken mithilfe von Ein- und Ausschlussregeln kombiniert werden können.<br>
+**Beispiel 5** und **Beispiel 6** zeigen erweiterte Szenarien, bei denen Azure SQL Server-Instanzen, Datenbanken und Pools für elastische Datenbanken mithilfe von Ein- und Ausschlussregeln kombiniert werden können.<br>
 **Beispiel 7** zeigt, dass die Shards in einer Shard-Zuordnung zum Zeitpunkt der Auftragsausführung ebenfalls ausgewertet werden können.
 
 #### <a name="job"></a>Auftrag

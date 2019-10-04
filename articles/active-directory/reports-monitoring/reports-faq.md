@@ -3,7 +3,7 @@ title: Häufig gestellte Fragen zu Azure Active Directory-Berichten | Microsoft-
 description: Häufig gestellte Fragen zu Azure Active Directory-Berichten
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc90d62f889bfd9f439a7e8955f049c6c979746
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e8c3138b82c7dc4a7217e8cb67448a5d824398ba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437440"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127025"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
@@ -37,7 +37,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Ich verwende derzeit die Endpunkt-APIs unter „`https://graph.windows.net/<tenant-name>/reports/`“ zum programmgesteuerten Abrufen der Azure AD-Sicherheitsberichte (bestimmte Arten von Erkennungen, z.B. kompromittierte Anmeldeinformationen oder Anmeldungen über anonyme IP-Adressen) in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
 
-**A:** Sie können die [API für Identity Protection-Risikoereignisse](../identity-protection/graph-get-started.md) für den Zugriff auf Sicherheitserkennungen über Microsoft Graph verwenden. Dieses neue Format ermöglicht höhere Flexibilität beim Abfragen von Daten mit erweiterter Filterung, Feldauswahl und vielem mehr, und standardisiert Risikoereignisse in einem Typ zur einfacheren Integration in SIEMs und andere Tools zur Datensammlung. Da die Daten in einem anderen Format vorliegen, können Sie Ihre alten Abfragen nicht durch eine neue Abfrage ersetzen. Allerdings [verwendet die neue API Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), den Microsoft-Standard für diese APIs wie z.B. Office 365 oder Azure AD. So können Sie entweder Ihre aktuellen MS Graph-Investitionen erweitern oder die Umstellung auf diese neue Standardplattform beginnen.
+**A:** Sie können die [API für Identity Protection-Risikoerkennungen](../identity-protection/graph-get-started.md) für den Zugriff auf Sicherheitserkennungen über Microsoft Graph verwenden. Dieses neue Format ermöglicht höhere Flexibilität beim Abfragen von Daten mit erweiterter Filterung, Feldauswahl und vielem mehr, und standardisiert Risikoerkennungen in einem Typ zur einfacheren Integration in SIEMs und andere Tools zur Datensammlung. Da die Daten in einem anderen Format vorliegen, können Sie Ihre alten Abfragen nicht durch eine neue Abfrage ersetzen. Allerdings [verwendet die neue API Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), den Microsoft-Standard für diese APIs wie z.B. Office 365 oder Azure AD. So können Sie entweder Ihre aktuellen MS Graph-Investitionen erweitern oder die Umstellung auf diese neue Standardplattform beginnen.
 
 ---
 
@@ -107,7 +107,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 ## <a name="risky-sign-ins"></a>Riskante Anmeldungen
 
-**F: Es gibt ein Risikoereignis in Identity Protection, aber ich sehe im Anmeldebericht keinen entsprechenden Anmeldevorgang. Entspricht dies dem erwarteten Verhalten?**
+**F: Es gibt eine Risikoerkennung in Identity Protection, aber ich sehe im Anmeldebericht keinen entsprechenden Anmeldevorgang. Entspricht dies dem erwarteten Verhalten?**
 
 **A:** Ja, Identity Protection beurteilt das Risiko für alle Authentifizierungsflows, ganz gleich, ob diese interaktiv oder nicht interaktiv sind. „Alle Anmeldungen“ führt jedoch nur die interaktiven Anmeldungen auf.
 
@@ -115,7 +115,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Wie erfahre ich, warum eine Anmeldung oder ein Benutzer im Azure-Portal als riskant gekennzeichnet wurde?**
 
-**A:** Wenn Sie über ein **Azure AD Premium**-Abonnement verfügen, erfahren Sie mehr über die zugrunde liegenden Risikoereignisse, wenn Sie unter **Benutzer mit Risikomarkierung** einen Benutzer oder im Bericht **Riskante Anmeldungen** einen Datensatz auswählen. Wenn Sie ein **Free**- oder **Basic**-Abonnement haben, können Sie zwar die Benutzer mit Risikomarkierung und die Berichte „Riskante Anmeldungen“ anzeigen, allerdings nicht die zugrunde liegenden Risikoereignisinformationen.
+**A:** Wenn Sie über ein **Azure AD Premium**-Abonnement verfügen, erfahren Sie mehr über die zugrunde liegenden Risikoerkennungen, wenn Sie unter **Benutzer mit Risikomarkierung** einen Benutzer oder im Bericht **Riskante Anmeldungen** einen Datensatz auswählen. Wenn Sie ein **Free**- oder **Basic**-Abonnement haben, können Sie zwar die Benutzer mit Risikomarkierung und die Berichte „Riskante Anmeldungen“ anzeigen, allerdings nicht die Informationen zu den zugrunde liegenden Risikoerkennungen.
 
 ---
 
@@ -125,7 +125,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 ---
 
-**F: Was bedeutet das Risikoereignis „Anmeldung mit erhöhtem Risiko erkannt“?**
+**F: Was bedeutet die Risikoerkennung „Anmeldung mit erhöhtem Risiko erkannt“?**
 
 **A:** Die Funktion „Anmeldung mit erhöhtem Risiko erkannt“ dient als Platzhalter für Anmeldungen für Erkennungen, die exklusiv Azure AD Identity Protection-Abonnenten zur Verfügung stehen, um Ihnen einen Einblick in alle riskante Anmeldungen in Ihrer Umgebung zu geben.
 

@@ -1,21 +1,21 @@
 ---
 title: Verwenden von Inhaltsüberprüfungen über das Prüfungstool – Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie menschliche Moderatoren mit dem Prüfungstool Bilder in einem Webportal überprüfen können.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: a482ecf4a0d321525ab7e392695d2c4c0eebeadc
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 065d3cd80f93753eb91571d4ada4fe7151258ec0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758489"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882657"
 ---
 # <a name="create-human-reviews"></a>Erstellen von Überprüfungen durch Personen
 

@@ -11,24 +11,26 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 05/09/2019
 ms.author: bwren
-ms.openlocfilehash: 8c3ef3f115d37400eb72fdaca5df4f326382df5c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 6eb066e04cfa561a4fa443b8c8f9582e286a4d7b
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871637"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076759"
 ---
-# <a name="get-started-with-azure-monitor-log-queries"></a>Erste Schritte mit Azure Monitor-Protokollabfragen
+# <a name="get-started-with-log-queries-in-azure-monitor"></a>Erste Schritte mit Protokollabfragen in Azure Monitor
 
 
 > [!NOTE]
 > Vor der Durchführung dieses Tutorials sollten Sie [Erste Schritte mit Azure Monitor Log Analytics](get-started-portal.md) lesen.
 
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+> [!NOTE]
+> Sie können diese Übung in Ihrer eigenen Umgebung durcharbeiten, wenn Sie Daten von mindestens einem virtuellen Computer sammeln. Andernfalls verwenden Sie die [Demoumgebung](https://portal.loganalytics.io/demo), die eine Vielzahl von Beispieldaten enthält.
 
-In diesem Tutorial erfahren Sie, wie Sie Azure Monitor-Protokollabfragen schreiben. Es wird Folgendes vermittelt:
+
+In diesem Tutorial erfahren Sie, wie Sie Protokollabfragen in Azure Monitor schreiben. Es wird Folgendes vermittelt:
 
 - Grundlegendes zur Abfragestruktur
 - Sortieren von Abfrageergebnissen
@@ -38,6 +40,8 @@ In diesem Tutorial erfahren Sie, wie Sie Azure Monitor-Protokollabfragen schreib
 - Definieren und Verwenden von benutzerdefinierten Feldern
 - Aggregieren und Gruppieren von Ergebnissen
 
+Ein Tutorial zur Verwendung von Log Analytics im Azure-Portal finden Sie unter [Erste Schritte mit Azure Monitor Log Analytics](get-started-portal.md).<br>
+Weitere Informationen zu Protokollabfragen in Azure Monitor finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](log-query-overview.md).
 
 ## <a name="writing-a-new-query"></a>Schreiben einer neuen Abfrage
 Abfragen können entweder mit einem Tabellennamen oder dem *search*-Befehl beginnen. Sie sollten mit einem Tabellennamen beginnen, da er einen klaren Gültigkeitsbereich für die Abfrage definiert und die Abfrageleistung und -relevanz der Ergebnisse verbessert.
@@ -71,8 +75,8 @@ search in (SecurityEvent) "Cryptographic"
 
 Diese Abfrage sucht die *SecurityEvent*-Tabelle für Datensätze, die den Ausdruck „Cryptographic“ enthalten. Von diesen Datensätzen werden 10 Datensätze zurückgegeben und angezeigt. Wenn wir den Teil `in (SecurityEvent)` auslassen und nur `search "Cryptographic"` ausführen, geht die Suche *alle* Tabellen durch, was mehr Zeit in Anspruch nehmen würde und weniger effizient wäre.
 
-> [!NOTE]
-> Standardmäßig ist ein Zeitbereich _Letzte 24 Stunden_ festgelegt. Wenn Sie einen anderen Bereich verwenden möchten, verwenden Sie die Zeitauswahl (neben der Schaltfläche *Los*), oder fügen Sie Ihrer Abfrage einen expliziten Zeitbereichsfilter hinzu.
+> [!WARNING]
+> Suchabfragen sind in der Regel langsamer als tabellengestützte Abfragen, da sie mehr Daten verarbeiten müssen. 
 
 ## <a name="sort-and-top"></a>„sort“ und „top“
 Zwar können mit **take** einige Datensätze abgerufen werden, allerdings werden die Ergebnisse in keiner bestimmten Reihenfolge ausgewählt und angezeigt. Um eine sortierte Ansicht zu erhalten, können Sie diese nach der bevorzugten Spalte **sortieren**:
@@ -179,12 +183,12 @@ SecurityEvent
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
 ```
 
-**extend** behält alle ursprünglichen Spalten im Resultset bei und definiert weitere Typen. Die folgende Abfrage verwendet **extend**, um eine *localtime*-Spalte hinzuzufügen, die einen lokalisierten TimeGenerated-Wert enthält.
+**extend** behält alle ursprünglichen Spalten im Resultset bei und definiert weitere Typen. Die folgende Abfrage verwendet **extend** zum Hinzufügen der Spalte *EventCode*. Beachten Sie, dass diese Spalte möglicherweise nicht am Ende der Tabellenergebnisse angezeigt wird. In diesem Fall müssen Sie zum Anzeigen die Details eines Datensatzes erweitern.
 
 ```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
-| extend localtime = TimeGenerated-8h
+| extend EventCode=substring(Activity, 0, 4)
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>„summarize“: Aggregieren von Zeilengruppen
@@ -224,7 +228,7 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>Zusammenfassen nach einer Zeitspalte
 Die Gruppierung von Ergebnissen kann auch auf einer Zeitspalte oder einem anderen kontinuierlichen Wert basieren. Durch das bloße Zusammenfassen von `by TimeGenerated` würden Gruppen für jede einzelne Millisekunde für den Zeitbereich erstellt werden, da es sich um eindeutige Werte handelt. 
 
-Zum Erstellen von Gruppen, die auf kontinuierlichen Werten basieren, wird empfohlen, den Bereich mittels **bin** in verwaltbare Einheiten zu unterteilen. Die folgende Abfrage analysiert *Perf*-Datensätze, die den freien Arbeitsspeicher (*MBytes*) auf einem bestimmten Computer ermitteln. Berechnet wird der Durchschnittswert für jeden Zeitraum je 1 Stunde in den letzten 7 Tagen:
+Zum Erstellen von Gruppen, die auf kontinuierlichen Werten basieren, wird empfohlen, den Bereich mittels **bin** in verwaltbare Einheiten zu unterteilen. Die folgende Abfrage analysiert *Perf*-Datensätze, die den freien Arbeitsspeicher (*MBytes*) auf einem bestimmten Computer ermitteln. Sie berechnet den Durchschnittswert für jeden Zeitraum von einer Stunde über die letzten sieben Tage:
 
 ```Kusto
 Perf 

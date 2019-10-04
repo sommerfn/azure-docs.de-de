@@ -4,7 +4,7 @@ description: Übersicht über die Notfallwiederherstellungs-Lösungen mit Azure 
 services: dns
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: ec252c1f45e5c27f17b725f6ab68cc94f67897c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a560cc526e73f3ce7e851f2a545f9b16fa53b423
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120736"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65501694"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Notfallwiederherstellung mit Azure DNS und Traffic Manager
 
@@ -141,6 +141,7 @@ Anhand der folgenden Schritte konfigurieren Sie das Failover mit Azure Traffic M
 Erstellen Sie ein neues Azure Traffic Manager-Profil mit dem Namen contoso123, und wählen Sie die Routingmethode „Priorität“. Wenn Sie eine bereits existierende Ressourcengruppe haben, die Sie zuordnen möchten, können Sie eine vorhandene Ressourcengruppe auswählen, andernfalls können Sie eine neue Ressourcengruppe anlegen.
 
 ![Erstellen eines Traffic Manager-Profils](./media/disaster-recovery-dns-traffic-manager/create-traffic-manager-profile.png)
+
 *Abbildung – Erstellen eines Traffic Manager-Profils*
 
 ### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>Schritt 2: Erstellen von Endpunkten innerhalb des Traffic Manager-Profils

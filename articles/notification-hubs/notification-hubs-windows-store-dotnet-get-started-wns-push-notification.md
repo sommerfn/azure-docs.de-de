@@ -1,11 +1,11 @@
 ---
 title: Senden von Benachrichtigungen an Apps für die universelle Windows-Plattform mit Azure Notification Hubs | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs Pushbenachrichtigungen an eine App für die universelle Windows-Plattform senden.
+description: Hier erfahren Sie, wie Sie mithilfe von Azure Notification Hubs Pushbenachrichtigungen an eine App für die universelle Windows-Plattform senden.
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,24 +14,26 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: 093528dff09c71b999d58f0285044340fa0ec360
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: 82f983f6fc55c01c4e445915d06da33889977d24
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403203"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213436"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>Tutorial: Senden von Benachrichtigungen an Apps für die universelle Windows-Plattform mit Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-In diesem Tutorial erstellen Sie einen Notification Hub, um Pushbenachrichtigungen an eine App für die universelle Windows-Plattform (UWP) zu senden. Sie erstellen eine leere Windows Store-App, die Pushbenachrichtigungen unter Verwendung des Windows-Pushbenachrichtigungsdiensts (WNS) empfängt. Dann können Sie über Ihren Notification Hub Pushbenachrichtigungen an alle Geräte senden, die Ihre App ausführen.
+In diesem Tutorial erstellen Sie einen Notification Hub, um Pushbenachrichtigungen an eine App für die universelle Windows-Plattform (UWP) zu senden. Sie erstellen eine leere Windows Store-App, die Pushbenachrichtigungen unter Verwendung des Windows-Pushbenachrichtigungsdiensts (WNS) empfängt. Dann senden Sie über Ihren Notification Hub Pushbenachrichtigungen an alle Geräte, die Ihre App ausführen.
 
 > [!NOTE]
-> Den vollständigen Code für dieses Tutorial finden Sie auf [GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal).
+> Den vollständigen Code für dieses Tutorial finden Sie auf [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/UwpSample).
 
-In diesem Tutorial führen Sie die folgenden Schritte aus:
+Führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
 > * Erstellen einer App im Windows Store
@@ -45,6 +47,11 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 - [Microsoft Visual Studio Community 2015 oder höher](https://www.visualstudio.com/products/visual-studio-community-vs)
 - [Installierte Entwicklungstools für UWP-Apps](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
 - Ein aktives Windows Store-Konto
+- Vergewissern Sie sich, dass die Einstellung **Benachrichtigungen von Apps und anderen Absendern abrufen** aktiviert ist. 
+    - Starten Sie das Fenster **Einstellungen** auf Ihrem Computer.
+    - Wählen Sie die Kachel **System** aus.
+    - Wählen Sie links im Menü **Benachrichtigungen und Aktionen** aus. 
+    - Vergewissern Sie sich, dass die Einstellung **Benachrichtigungen von Apps und anderen Absendern abrufen** aktiviert ist. Ist sie nicht aktiviert, aktivieren Sie sie. 
 
 Dieses Tutorial muss für alle anderen Notification Hubs-Tutorials für UWP-Apps abgeschlossen werden.
 
@@ -61,7 +68,7 @@ Ordnen Sie Ihre App dem Windows Store zu, um Pushbenachrichtigungen an UWP-Apps 
 3. Erweitern Sie **App-Verwaltung**, wählen Sie **WNS/MPNS** und dann **Live Services-Website** aus. Anmelden bei Ihrem Azure-Konto Das **App-Registrierungsportal** wird auf einer neuen Registerkarte geöffnet. Alternativ können Sie direkt zum [App-Registrierungsportal](https://apps.dev.microsoft.com) navigieren und Ihren Anwendungsnamen auswählen, um zu dieser Seite zu gelangen.
 
     ![WNS/MPNS-Seite](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
-4. Notieren Sie sich das Kennwort unter **Anwendungsgeheimnis** sowie die **Paketsicherheits-ID (SID)**.
+4. Notieren Sie sich das Kennwort unter **Anwendungsgeheimnis** sowie die **Paketsicherheits-ID (SID)** .
 
     >[!WARNING]
     >Der geheime Schlüssel der Anwendung und die Paket-SID sind wichtige Sicherheitsanmeldeinformationen. Geben Sie diese Werte nicht weiter, und verteilen Sie sie nicht mit Ihrer Anwendung.
@@ -85,7 +92,7 @@ Ihr Notification Hub ist jetzt für die Zusammenarbeit mit WNS konfiguriert. Sie
 1. Öffnen Sie in Visual Studio das Menü **Datei**, und wählen Sie die Optionen **Neu** und **Projekt**.
 2. Führen Sie im Dialogfenster **Neues Projekt** die folgenden Schritte aus:
 
-    1. Erweitern Sie **Visual C#**.
+    1. Erweitern Sie **Visual C#** .
     2. Wählen Sie **Windows Universal** aus.
     3. Wählen Sie **Leere App (universelles Windows)** aus.
     4. Geben Sie einen **Namen** für das Projekt ein.
@@ -170,8 +177,7 @@ Der Benachrichtigungsempfang in der App kann schnell durch Senden von Benachrich
     ![Benachrichtigungsmeldung](./media/notification-hubs-windows-store-dotnet-get-started/test-notification-message.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Tutorial haben Sie über das Portal oder über eine Konsolen-App Übertragungsbenachrichtigungen an alle Ihre Windows-Geräte gesendet. Um zu erfahren, wie Sie Pushbenachrichtigungen an bestimmte Geräte senden, fahren Sie mit dem folgenden Tutorial fort:
+Sie haben über das Portal oder über eine Konsolen-App Übertragungsbenachrichtigungen an alle Ihre Windows-Geräte gesendet. Um zu erfahren, wie Sie Pushbenachrichtigungen an bestimmte Geräte senden, fahren Sie mit dem folgenden Tutorial fort:
 
 > [!div class="nextstepaction"]
 >[Senden von Pushbenachrichtigungen an bestimmte Geräte](

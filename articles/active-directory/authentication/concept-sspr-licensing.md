@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 08/19/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e4e32aef97d406fa47a2ccfe8cddb12b97ff088
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 4d7a23ed0a84ebd671c69744dfec145763ef6897
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316846"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622713"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung
 
-Azure Active Directory ist in vier Editionen erhältlich: Free, Basic, Premium P1 und Premium P2. Die Self-Service-Kennwortzurücksetzung setzt sich aus mehreren verschiedenen Features einschließlich Ändern, Zurücksetzen, Entsperren und Rückschreiben zusammen, die in den verschiedenen Editionen von Azure AD verfügbar sind. In diesem Artikel werden die Unterschiede erläutert. Weitere Informationen zu den in den einzelnen Editionen von Azure AD enthaltenen Features finden Sie auf der Seite [Azure Active Directory – Preise ](https://azure.microsoft.com/pricing/details/active-directory/).
+Azure Active Directory (Azure AD) ist in verschiedenen Editionen erhältlich: Free, Premium P1 und Premium P2. Die Self-Service-Kennwortzurücksetzung setzt sich aus mehreren verschiedenen Features einschließlich Ändern, Zurücksetzen, Entsperren und Rückschreiben zusammen, die in den verschiedenen Editionen von Azure AD verfügbar sind. In diesem Artikel werden die Unterschiede erläutert. Weitere Informationen zu den in den einzelnen Editionen von Azure AD enthaltenen Features finden Sie auf der Seite [Azure Active Directory – Preise ](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="compare-editions-and-features"></a>Vergleich von Editionen und Features
 
@@ -34,7 +34,7 @@ Die Azure AD-Self-Service-Kennwortzurücksetzung wird pro Benutzer lizenziert. A
 * Self-Service-Kennwortrücksetzung für Cloudbenutzer
    * Ich bin ein **reiner Cloudbenutzer** und habe mein Kennwort vergessen.
       * Ich würde mein Kennwort gerne auf etwas **zurücksetzen**, was ich kenne.
-   * Diese Funktionalität ist in Azure AD Basic, Premium P1 oder P2 oder Microsoft 365 Business enthalten.
+   * Diese Funktionalität ist in Azure AD Premium P1 oder P2 oder Microsoft 365 Business und Office 365 enthalten.
 
 * Self-Service-Kennwortzurücksetzung/-änderung/-entsperrung **mit lokalem Rückschreiben**
    * Ich bin ein **Hybridbenutzer** – mein lokales Active Directory-Benutzerkonto ist mittels Azure AD Connect mit meinem Azure AD-Konto synchronisiert. Ich möchte mein Kennwort ändern, habe mein Kennwort vergessen oder wurde ausgesperrt.
@@ -51,7 +51,7 @@ Weitere Informationen zur Lizenzierung, einschließlich der Kosten, finden Sie a
 * [Azure Active Directory-Features und -Funktionen](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
-* [Microsoft 365 Business – Dienstbeschreibung](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-business-service-description)
+* [Microsoft 365 Business – Dienstbeschreibung](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
 ## <a name="enable-group-or-user-based-licensing"></a>Aktivieren der gruppen- oder benutzerbasierten Lizenzierung
 

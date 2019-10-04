@@ -4,25 +4,24 @@ description: Multi-SID-Hochverfügbarkeit für SAP ASCS/SCS-Instanzen unter Verw
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dbc21922be66c793e76882cbd145f19681684252
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fada16b3ca5307a28eebca4dfe97dc96ba389212
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786884"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098694"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -209,7 +208,7 @@ ms.locfileid: "59786884"
 > ![Windows][Logo_Windows] Windows
 >
 
-Im September 2016 veröffentlichte Microsoft ein Feature, mit dem Sie mithilfe eines [internen Azure-Lastenausgleichs][load-balancer-multivip-overview] mehrere virtuelle IP-Adressen verwalten können. Diese Funktionalität ist im externen Azure-Lastenausgleich bereits vorhanden. 
+Im September 2016 veröffentlichte Microsoft ein Feature, mit dem Sie mithilfe eines [internen Azure-Lastenausgleichs][load-balancer-multivip-overview] mehrere virtuelle IP-Adressen verwalten können. Diese Funktionalität ist im externen Azure-Lastenausgleich bereits vorhanden. 
 
 Wenn Sie über eine SAP-Bereitstellung verfügen, müssen Sie einen internen Lastenausgleich verwenden, um eine Windows-Clusterkonfiguration für SAP Central Services-Instanzen (ASCS/SCS) zu erstellen.
 
@@ -406,7 +405,7 @@ Eine Beschreibung des gesamten Vorgangs zum Installieren eines zweiten SAP-SID2-
 
 Das allgemeine Verfahren lautet wie folgt:
 
-1. [Install SAP with a high-availability ASCS/SCS instance (Installieren von SAP mit einer hoch verfügbaren ASCS/SCS-Instanz)][sap-high-availability-installation-wsfc-shared-disk-install-ascs].  
+1. [Installieren von SAP mit einer ASCS/SCS-Hochverfügbarkeitsinstanz][sap-high-availability-installation-wsfc-shared-disk-install-ascs]  
  In diesem Schritt installieren Sie SAP mit einer hochverfügbaren ASCS/SCS-Instanz auf dem bereits vorhandenen WSFC-Clusterknoten 1.
 
 2. [Ändern des SAP-Profils der ASCS/SCS-Instanz][sap-high-availability-installation-wsfc-shared-disk-modify-ascs-profile]
@@ -433,7 +432,7 @@ Das allgemeine Verfahren lautet wie folgt:
 
 9. Installieren des zusätzlichen SAP-Anwendungsservers auf dem neuen dedizierten virtuellen Computer, wie in den SAP-Installationsanweisungen beschrieben.
 
-10. [Testen des Failovers der SAP ASCS/SCS-Instanz und der SIOS-Replikation][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl]
+10. [Testen des Failovers der SAP ASCS/SCS-Instanz und der SIOS-Replikation][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

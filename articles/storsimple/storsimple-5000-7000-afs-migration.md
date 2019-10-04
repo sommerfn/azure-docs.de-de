@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: c27244af6da01163fa9ab554b6b9c1d9c99bab23
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104572"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65150735"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrieren von Daten aus der StorSimple-Serie 5000/7000 zur Azure-Dateisynchronisierung
 
 > [!IMPORTANT]
-> Ab dem 31. Juli 2019 wird die StorSimple-Serie 5000/7000 nicht mehr unterstützt. Es wird empfohlen, dass Kunden der StorSimple-Serie 5000/7000 zu einer der in diesem Dokument beschriebenen Alternativen migrieren.
+> Ab dem 9. Juli 2019 werden die StorSimple-Serien 5000 und 7000 nicht mehr unterstützt. Es wird empfohlen, dass Kunden der StorSimple-Serie 5000/7000 zu einer der in diesem Dokument beschriebenen Alternativen migrieren.
 
 Die Datenmigration ist der Prozess des Verschiebens von Daten aus einem Speicherort in einen anderen. Dabei muss eine genaue Kopie der auf einem Gerät befindlichen aktuellen Daten einer Organisation auf einem anderen Gerät erstellt werden – vorzugsweise ohne Unterbrechung oder Deaktivierung aktiver Anwendungen – und dann die gesamte Eingabe/Ausgabe-Aktivität (E/A) auf das neue Gerät umgeleitet werden. 
 
@@ -42,8 +42,8 @@ Bei der Verschiebung zur AFS sollten die folgenden Aspekte beachtet werden:
 1. Für Azure Files gilt derzeit eine Einschränkung von 5 TB pro Freigabe. Um diese Einschränkung zu überwinden, kann die Azure-Dateisynchronisierung mit Datenverteilung über mehrere Azure Files-Freigaben verwendet werden. Weitere Informationen finden Sie unter [Planung für eine Azure Files-Bereitstellung](https://docs.microsoft.com/azure/storage/files/storage-files-planning).
 2. Diese Migration lädt das gesamte primäre Dataset auf ein lokales Gerät, wenn das Kopieren der Daten von einem lokalen Gerät erfolgt. Stellen Sie sicher, dass Sie über genügend Bandbreite für diese Übertragung verfügen.
 3. Dabei werden die bereits erstellten Momentaufnahmen nicht beibehalten. Es werden nur die primären Daten migriert. Der Prozess behält auch nicht die zugeordneten Bandbreitenvorlagen oder Sicherungsrichtlinien bei. [Verwenden Sie Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-files), um nach dem Migrieren der Daten zur Azure-Dateifreigabe die Sicherungsrichtlinien einzurichten.
-4. StorSimple stellt Erstanbieterhardware bereit. Mit Azure Files/Azure-Dateisynchronisierung verwenden Sie jedoch Ihre eigene lokale Windows Server-Hardware als lokalen Cache. Sie müssen sicherstellen, dass ausreichend Speicherkapazität zur Verfügung steht, um das Dataset Ihrer Wahl lokal zu speichern. Weitere Informationen zu Tiering und dem Einrichten eines Ziels mit erforderlichem freiem Speicherplatz finden Sie unter [Bereitstellen von Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). 
-5. Informieren Sie sich über die [Preise für Azure Files](https://azure.microsoft.com/pricing/details/storage/files/), da sie von StorSimple abweichen. Im Gegensatz zu StorSimple werden Deduplizierung und Komprimierung bei AFS nicht eingesetzt.
+4. StorSimple stellt Erstanbieterhardware bereit. Mit Azure Files/Azure-Dateisynchronisierung verwenden Sie jedoch Ihre eigene lokale Windows Server-Hardware als lokalen Cache. Sie müssen sicherstellen, dass ausreichend Speicherkapazität zur Verfügung steht, um das Dataset Ihrer Wahl lokal zu speichern. Weitere Informationen zu Tiering und dem Einrichten eines Ziels mit erforderlichem freiem Speicherplatz finden Sie unter [Bereitstellen von Azure-Dateisynchronisierung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). 
+5. Informieren Sie sich über die [Preise für Azure-Dateisynchronisierung](https://azure.microsoft.com/pricing/details/storage/files/), da sie von StorSimple abweichen. Im Gegensatz zu StorSimple werden Deduplizierung und Komprimierung bei AFS nicht eingesetzt.
 
 ## <a name="migration-prerequisites"></a>Voraussetzungen für die Migration
 
@@ -87,7 +87,7 @@ Führen Sie die folgenden Schritte aus, um die auf StorSimple-Volumes konfigurie
     Überspringen Sie diesen Schritt, und fahren Sie mit dem nächsten Schritt fort, wenn Sie einen anderen Windows Server-Host verwenden. Wenn Sie den gleichen Windows-Dateiserver für AFS verwenden, treten jetzt einige Minuten Ausfallzeit auf. 
     - **Ausfallzeit beginnt**: Löschen Sie den Serverendpunkt, den Sie in *Schritt 1F* erstellt haben. 
     - Erstellen Sie einen neuen Serverendpunkt mit dem Pfad, in den die zu speichernden Daten geleitet werden sollen.
-    - Sobald der Serverendpunkt als „Fehlerfrei“ angezeigt wird (dies kann einige Minuten dauern), sehen Sie die Daten an diesem neuen Speicherort. Sie können jetzt Ihren Windows Server-Host dazu konfigurieren, von diesem neuen Standort aus Dateien bereitzustellen. -**Ausfallzeit endet**.
+    - Sobald der Serverendpunkt als „Fehlerfrei“ angezeigt wird (dies kann einige Minuten dauern), sehen Sie die Daten an diesem neuen Speicherort. Sie können jetzt Ihren Windows Server-Host dazu konfigurieren, von diesem neuen Standort aus Dateien bereitzustellen. - **Ausfallzeit endet**.
 5.  Wenn Sie einen anderen Windows-Dateiserver zur Azure-Dateisynchronisierung verwenden, treten keine Ausfallzeiten auf. 
     - Fügen Sie einen anderen Serverendpunkt mit dem Pfad des lokalen Speichers hinzu, den Sie für die Verwendung als Cache statt des StorSimple-Geräts vorbereitet haben. 
     - In einigen Minuten werden die Dateien auf dem neuen Server angezeigt. Sie können den Wechsel von Ihrem StorSimple-Gerät zu diesem neuen Speicherort auf dem Host zu einem beliebigen Zeitpunkt durchführen.

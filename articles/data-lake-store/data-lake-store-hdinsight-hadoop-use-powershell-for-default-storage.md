@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9daa7fc15ecbb4065c8d26bb5cefa27f17f66f4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c57a45145d9abc43d0ca79839ea297dfc025db9b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878260"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66161415"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Erstellen von HDInsight-Clustern mit Azure Data Lake Storage Gen1 als Standardspeicher mithilfe von PowerShell
 
@@ -25,7 +25,7 @@ ms.locfileid: "58878260"
 > * [Verwenden des Azure-Portals](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Verwenden von PowerShell (für Standardspeicher)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [Verwenden von PowerShell (für zusätzlichen Speicher)](data-lake-store-hdinsight-hadoop-use-powershell.md)
-> * [Verwenden von Resource Manager](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+> * [Verwenden des Ressourcen-Managers](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
 Erfahren Sie, wie Sie mithilfe von Azure PowerShell Azure HDInsight-Cluster mit Azure Data Lake Storage Gen1 als Standardspeicher konfigurieren. Anleitungen zum Erstellen eines HDInsight-Clusters mit Data Lake Storage Gen1 als zusätzlichem Speicher finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Storage Gen1 (als zusätzlichem Speicher) mithilfe von Azure PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md).
 
@@ -215,7 +215,7 @@ In diesem Abschnitt erstellen Sie einen HDInsight Hadoop-Linux-Cluster mit Data 
     Nachdem Sie das Cmdlet erfolgreich abgeschlossen wurde, sollte eine Ausgabe angezeigt werden, in denen die Clusterdetails aufgeführt werden.
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Ausführen von Testaufträgen im HDInsight-Cluster für die Verwendung von Data Lake Storage Gen1
-Nachdem Sie einen HDInsight-Cluster konfiguriert haben, können Sie Testaufträge ausführen, um zu testen, ob er auf Daten in Data Lake Storage Gen1 zugreifen kann. Führen Sie hierzu einen Hive-Beispielauftrag aus, um eine Tabelle zu erstellen, die in Data Lake Storage Gen1 unter *<cluster root>/example/data/sample.log* bereits verfügbar ist.
+Nachdem Sie einen HDInsight-Cluster konfiguriert haben, können Sie Testaufträge ausführen, um zu testen, ob er auf Daten in Data Lake Storage Gen1 zugreifen kann. Führen Sie hierzu einen Hive-Beispielauftrag aus, um eine Tabelle zu erstellen, die in Data Lake Storage Gen1 unter *\<Clusterstamm>/example/data/sample.log* bereits verfügbar ist.
 
 In diesem Abschnitt erstellen Sie eine Secure Shell-Verbindung (SSH) zum HDInsight Linux-Cluster her, den Sie erstellt haben, und führen anschließend eine Hive-Beispielabfrage aus.
 

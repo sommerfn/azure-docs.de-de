@@ -1,22 +1,21 @@
 ---
-title: 'Schnellstart: Verwenden von Azure Storage-Explorer zum Verwalten von Daten in Azure Data Lake Storage Gen2 '
-description: In diesem Schnellstart erfahren Sie, wie Sie mit dem Azure Storage-Explorer ein Dateisystem in einem Azure Data Lake Storage Gen2-Konto sowie ein Verzeichnis und eine Datei erstellen. Als Nächstes erfahren Sie, wie Sie die Datei auf Ihren lokalen Computer herunterladen, und wie Sie die gesamte Datei in einem Verzeichnis anzeigen.
-services: storage
-author: tamram
+title: Verwenden von Azure Storage-Explorer zum Verwalten von Daten in Azure Data Lake Storage Gen2
+description: In diesem Schnellstart erfahren Sie, wie Sie mit dem Azure Storage-Explorer einen Container in einem Azure Data Lake Storage Gen2-Konto sowie ein Verzeichnis und eine Datei erstellen. Als Nächstes erfahren Sie, wie Sie die Datei auf Ihren lokalen Computer herunterladen, und wie Sie die gesamte Datei in einem Verzeichnis anzeigen.
+author: normesta
 ms.subservice: data-lake-storage-gen2
-ms.custom: mvc
 ms.service: storage
-ms.topic: quickstart
-ms.date: 12/05/2018
-ms.author: tamram
-ms.openlocfilehash: 6f3aa81f0fa2497db02d069e93e007b43c37beb9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.topic: conceptual
+ms.date: 07/19/2019
+ms.author: normesta
+ms.reviewer: stewu
+ms.openlocfilehash: 95d7a58c8188e8c6633f6be50af608aed437edff
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250451"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991418"
 ---
-# <a name="quickstart-use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Schnellstart: Verwenden von Azure Storage-Explorer zum Verwalten von Daten in einem Azure Data Lake Storage Gen2-Konto
+# <a name="use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Verwenden von Azure Storage-Explorer zum Verwalten von Daten in einem Azure Data Lake Storage Gen2-Konto
 
 In diesem Schnellstart erfahren Sie, wie Sie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, um einen Verzeichnis und ein Blob zu erstellen. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Verzeichnis anzeigen. Außerdem erfahren Sie, wie Sie eine Momentaufnahme eines Blobs erstellen, Zugriffsrichtlinien für ein Verzeichnis verwalten und eine SAS (Shared Access Signature) erstellen.
 
@@ -26,7 +25,7 @@ In diesem Schnellstart erfahren Sie, wie Sie [Azure Storage-Explorer](https://az
 
 Diese Schnellstartanleitung setzt voraus, dass Sie Azure Storage-Explorer installiert haben. Informationen zum Installieren von Azure Storage-Explorer für Windows, Macintosh oder Linux finden Sie unter [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
-## <a name="log-in-to-storage-explorer"></a>Anmelden an Storage-Explorer
+## <a name="sign-in-to-storage-explorer"></a>Anmelden bei Storage-Explorer
 
 Nach dem ersten Start wird das Fenster **Microsoft Azure Storage-Explorer – Verbinden** angezeigt. Obwohl der Storage-Explorer mehrere Möglichkeiten zur Verbindung mit Speicherkonten bietet, wird derzeit nur eine Möglichkeit zur Verwaltung von ACLs unterstützt.
 
@@ -34,21 +33,21 @@ Nach dem ersten Start wird das Fenster **Microsoft Azure Storage-Explorer – Ve
 |---|---|
 |Hinzufügen eines Azure-Kontos | Führt die Umleitung auf die Anmeldeseite Ihrer Organisation durch, um Sie für Azure zu authentifizieren. Dies ist derzeit die einzige unterstützte Authentifizierungsmethode, wenn Sie ACLs verwalten und festlegen möchten. |
 
-Wählen Sie **Azure-Konto hinzufügen**, und klicken Sie auf **Anmelden...**. Befolgen Sie die Anweisungen auf dem Bildschirm, um sich an Ihrem Azure-Konto anzumelden.
+Wählen Sie **Azure-Konto hinzufügen**, und klicken Sie auf **Anmelden...** . Befolgen Sie die Anweisungen auf dem Bildschirm, um sich an Ihrem Azure-Konto anzumelden.
 
 ![Fenster „Microsoft Azure Storage-Explorer – Verbinden“](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
-Nach Abschluss des Verbindungsvorgangs wird Azure Storage-Explorer geladen, und die Registerkarte **Explorer** wird angezeigt. So erhalten Sie einen Einblick in Ihre gesamten Azure Storage-Konten und in den lokalen Speicher, der über den [Azure-Speicheremulator](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-Konten oder [Azure Stack](../../azure-stack/user/azure-stack-storage-connect-se.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-Umgebungen konfiguriert wurde.
+Nach Abschluss des Verbindungsvorgangs wird Azure Storage-Explorer geladen, und die Registerkarte **Explorer** wird angezeigt. So erhalten Sie einen Einblick in Ihre gesamten Azure Storage-Konten und in den lokalen Speicher, der über den [Azure-Speicheremulator](../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-Konten oder [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)-Umgebungen konfiguriert wurde.
 
 ![Fenster „Microsoft Azure Storage-Explorer – Verbinden“](media/storage-quickstart-blobs-storage-explorer/mainpage.png)
 
-## <a name="create-a-filesystem"></a>Erstellen eines Dateisystems
+## <a name="create-a-container"></a>Erstellen eines Containers
 
 Blobs werden immer in ein Verzeichnis hochgeladen. So können Sie Gruppen von Blobs wie Dateien in Ordnern auf Ihrem Computer organisieren.
 
-Erweitern Sie das Speicherkonto, das Sie im vorherigen Schritt erstellt haben, um ein Verzeichnis zu erstellen. Wählen Sie **BLOB-Container**, klicken Sie mit der rechten Maustaste, und wählen Sie **BLOB-Container erstellen**. Geben Sie den Namen für Ihr Dateisystem ein. Drücken Sie nach Abschluss des Vorgangs die **EINGABETASTE**, um das Dateisystem zu erstellen. Nach der erfolgreichen Erstellung des BLOB-Containers wird er im Ordner **BLOB-Container** für das ausgewählte Speicherkonto angezeigt.
+Erweitern Sie das Speicherkonto, das Sie im vorherigen Schritt erstellt haben, um ein Verzeichnis zu erstellen. Wählen Sie **BLOB-Container**, klicken Sie mit der rechten Maustaste, und wählen Sie **BLOB-Container erstellen**. Geben Sie den Namen für den Container ein. Drücken Sie nach Abschluss des Vorgangs die **EINGABETASTE**, um den Container zu erstellen. Nach der erfolgreichen Erstellung des BLOB-Containers wird er im Ordner **BLOB-Container** für das ausgewählte Speicherkonto angezeigt.
 
-![Microsoft Azure Storage-Explorer – Erstellen eines Dateisystems](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
+![Microsoft Azure Storage-Explorer – Erstellen eines Containers](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
 
 ## <a name="upload-blobs-to-the-directory"></a>Hochladen von Blobs in das Verzeichnis
 
@@ -58,7 +57,7 @@ Wählen Sie im Menüband des Verzeichnisses die Option **Hochladen**. Bei diesem
 
 Wählen Sie die Dateien oder den Ordner für den Upload aus. Wählen Sie den **BLOB-Typ** aus. Zulässige Optionen sind **Anfüge**-, **Seiten**- oder **Blockblobs**.
 
-Wählen Sie **VHD-/VHDX-Dateien als Seitenblobs hochladen (empfohlen)**, falls Sie eine VHD- oder VHDX-Datei hochladen.
+Wählen Sie **VHD-/VHDX-Dateien als Seitenblobs hochladen (empfohlen)** , falls Sie eine VHD- oder VHDX-Datei hochladen.
 
 Geben Sie im Feld **In Ordner hochladen (optional)** den Namen eines Ordners ein, in dem die Dateien oder Ordner unter dem Verzeichnis gespeichert werden sollen. Wenn kein Ordner ausgewählt ist, werden die Dateien in den Ordner auf der Ebene direkt unterhalb des Verzeichnisses hochgeladen.
 

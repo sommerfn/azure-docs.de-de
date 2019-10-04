@@ -1,21 +1,20 @@
 ---
-title: Verwenden des Warteschlangenspeichers mit Node.js | Microsoft Docs
+title: Verwenden von Azure Queue Storage mit Node.js – Azure Storage
 description: Erfahren Sie, wie Sie den Azure-Warteschlangendienst zum Erstellen und Löschen von Warteschlangen sowie zum Einfügen, Abrufen und Löschen von Nachrichten verwenden. Die Beispiele sind in Node.js geschrieben.
-services: storage
-author: tamram
+author: mhopkins-msft
 ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: nodejs
-ms.topic: article
+ms.author: mhopkins
 ms.date: 12/08/2016
-ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 31f0be804085643d048a35dd61da9156f291f7da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.topic: conceptual
+ms.reviewer: cbrooks
+ms.custom: seo-javascript-september2019
+ms.openlocfilehash: 83aecc9c05fec5869a82930f2d687ac907981c00
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006464"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858663"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Verwenden des Warteschlangenspeichers mit Node.js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -328,8 +327,8 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gemacht haben, folgen Sie diesen Links, um zu erfahren, wie komplexere Speicheraufgaben ausgeführt werden.
 
-* Besuchen Sie den [Azure Storage-Teamblog][Azure Storage Team Blog].
-* Besuchen Sie das [Azure Storage-SDK für Node][Azure Storage SDK for Node]-Repository auf GitHub.
+* Besuchen Sie den [Blog des Azure-Speicherteams][Azure Storage Team Blog].
+* Besuchen Sie das [Azure Storage SDK für Node][Azure Storage SDK for Node] -Repository auf GitHub.
 
 
 

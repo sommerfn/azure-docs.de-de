@@ -2,25 +2,17 @@
 title: Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal | Microsoft-Dokumentation
 description: Erstellen Sie eine VPN Gateway-Verbindung zwischen VNets unter Verwendung von Resource Manager und Azure-Portal.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: a7015cfc-764b-46a1-bfac-043d30a275df
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/03/2018
+ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 94b32595cf2c884ccfd1362f6c8d03f542aabfc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ad83327d5b85784f523a5931f277cd00009e0ed
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090099"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266463"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal
 
@@ -39,7 +31,6 @@ Die Schritte in diesem Artikel gelten für das Azure Resource Manager-Bereitstel
 > * [Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 >
 >
-
 
 ## <a name="about-connecting-vnets"></a>Informationen zum Verbinden von VNETs
 
@@ -94,7 +85,6 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNET-zu-VN
     - **Gatewaysubnetz**:
         - **Name**: *GatewaySubnet* wird automatisch eingetragen.
         - **Adressbereich**: Geben Sie *10.11.255.0/27* ein.
-    - **DNS-Server**: Wählen Sie **Benutzerdefiniert** aus, und geben Sie die IP-Adresse Ihres DNS-Servers ein.
 
 - **Einstellungen des Gateways für virtuelle Netzwerke** 
     - **Name**: Geben Sie *TestVNet1GW* ein.
@@ -120,7 +110,6 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNET-zu-VN
    - **GatewaySubnet** 
       - **Name**: *GatewaySubnet* wird automatisch eingetragen.
       - **Adressbereich**: Geben Sie *10.41.255.0/27* ein.
-   - **DNS-Server**: Wählen Sie **Benutzerdefiniert** aus, und geben Sie die IP-Adresse Ihres DNS-Servers ein.
 
 - **Einstellungen des Gateways für virtuelle Netzwerke** 
     - **Name**: Geben Sie *TestVNet4GW* ein.
@@ -133,7 +122,7 @@ In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNET-zu-VN
        - **Gemeinsam verwendeter Schlüssel**: Geben Sie *abc123* ein. Sie können den gemeinsam verwendeten Schlüssel selbst erstellen. Wenn Sie die Verbindung zwischen den VNETs herstellen, müssen die Werte übereinstimmen.
 
 ## <a name="create-and-configure-testvnet1"></a>Erstellen und Konfigurieren von „TestVNet1“
-Wenn Sie bereits über ein VNet verfügen, sollten Sie überprüfen, ob die Einstellungen mit Ihrem Entwurf des VPN Gateways kompatibel sind. Achten Sie besonders auf Subnetze, die sich unter Umständen mit anderen Netzwerken überlappen. Bei überlappenden Subnetzen funktioniert die Verbindung nicht einwandfrei. Wenn Ihr VNET mit den richtigen Einstellungen konfiguriert wurde, können Sie mit den Schritten im Abschnitt „Angeben eines DNS-Servers“ beginnen.
+Wenn Sie bereits über ein VNet verfügen, sollten Sie überprüfen, ob die Einstellungen mit Ihrem Entwurf des VPN Gateways kompatibel sind. Achten Sie besonders auf Subnetze, die sich unter Umständen mit anderen Netzwerken überlappen. Bei überlappenden Subnetzen funktioniert die Verbindung nicht einwandfrei.
 
 ### <a name="to-create-a-virtual-network"></a>So erstellen Sie ein virtuelles Netzwerk
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
@@ -143,26 +132,15 @@ Sie können dem VNet nach dem Erstellen weitere Adressräume hinzufügen und Sub
 
 [!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
-## <a name="create-a-gateway-subnet"></a>Erstellen eines Gatewaysubnetzes
-Bevor Sie ein Gateway für Ihr virtuelles Netzwerk erstellen, müssen Sie zunächst das Gatewaysubnetz erstellen. Das Gatewaysubnetz enthält die IP-Adressen, die vom Gateway des virtuellen Netzwerks verwendet werden. Erstellen Sie nach Möglichkeit ein Gatewaysubnetz mit einem CIDR-Block vom Typ „/28“ oder „/27“, damit genügend IP-Adressen für zukünftige zusätzliche Konfigurationsanforderungen zur Verfügung stehen.
-
-Wenn Sie diese Konfiguration als Übung erstellen, können Sie beim Erstellen des Gatewaysubnetzes diese [Beispieleinstellungen](#example-settings) verwenden.
-
-[!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
-
-### <a name="to-create-a-gateway-subnet"></a>So erstellen Sie ein Gatewaysubnetz
-[!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
-
-## <a name="specify-a-dns-server-optional"></a>Angeben eines DNS-Servers (optional)
-DNS ist für VNET-zu-VNET-Verbindungen nicht erforderlich. Wenn Sie für Ressourcen, die in Ihren virtuellen Netzwerken bereitgestellt werden, die Namensauflösung verwenden möchten, müssen Sie aber einen DNS-Server angeben. Diese Einstellung bietet die Möglichkeit, den DNS-Server anzugeben, den Sie zur Namensauflösung für dieses virtuelle Netzwerk verwenden möchten. Mit dieser Einstellung wird kein DNS-Server erstellt.
-
-[!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
-
 ## <a name="create-a-virtual-network-gateway"></a>Erstellen eines Gateways für das virtuelle Netzwerk
 In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Häufig kann die Erstellung eines Gateways je nach ausgewählter Gateway-SKU mindestens 45 Minuten dauern. Falls Sie diese Konfiguration zu Übungszwecken erstellen, können Sie die [Beispieleinstellungen](#example-settings) verwenden.
 
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
+
 ### <a name="to-create-a-virtual-network-gateway"></a>So erstellen Sie ein Gateway für das virtuelle Netzwerk
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+
+[!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="create-and-configure-testvnet4"></a>Erstellen und Konfigurieren von „TestVNet4“
 Nachdem Sie „TestVNet1“ konfiguriert haben, erstellen Sie „TestVNet4“. Wiederholen Sie hierzu die vorherigen Schritte, und ersetzen Sie die Werte mit den Werten von „TestVNet4“. Sie können mit dem Konfigurieren von „TestVNet4“ beginnen, auch wenn die Erstellung des virtuellen Netzwerkgateways für „TestVNet1“ noch nicht abgeschlossen ist. Achten Sie bei Verwendung eigener Werte darauf, dass sich die Adressräume nicht mit anderen VNETs überschneiden, mit denen Sie eine Verbindung herstellen möchten.
@@ -190,7 +168,7 @@ Nach Abschluss der Vorgänge für die virtuellen Netzwerkgateways für „TestVN
 
      - Wählen Sie das Gateway für virtuelle Netzwerke aus, mit dem Sie eine Verbindung herstellen möchten.
 
-     - **Gemeinsam verwendeter Schlüssel (PSK)**: Geben Sie in diesem Feld einen gemeinsam verwendeten Schlüssel für die Verbindung ein. Diesen Schlüssel können Sie selbst generieren oder erstellen. Bei einer Site-to-Site-Verbindung wird für Ihr lokales Gerät und für Ihre Verbindung mit dem Gateway für virtuelle Netzwerke der gleiche Schlüssel verwendet. Das Konzept ist hier ähnlich, nur dass diesmal keine Verbindung mit einem VPN-Gerät hergestellt wird, sondern mit einem anderen Gateway für virtuelle Netzwerke.
+     - **Gemeinsam verwendeter Schlüssel (PSK)** : Geben Sie in diesem Feld einen gemeinsam verwendeten Schlüssel für die Verbindung ein. Diesen Schlüssel können Sie selbst generieren oder erstellen. Bei einer Site-to-Site-Verbindung wird für Ihr lokales Gerät und für Ihre Verbindung mit dem Gateway für virtuelle Netzwerke der gleiche Schlüssel verwendet. Das Konzept ist hier ähnlich, nur dass diesmal keine Verbindung mit einem VPN-Gerät hergestellt wird, sondern mit einem anderen Gateway für virtuelle Netzwerke.
     
 4. Klicken Sie zum Speichern der Änderungen auf **OK** .
 

@@ -4,32 +4,31 @@ description: Erfahren Sie, was Azure Cache for Redis ist und wie dieser Cache ü
 services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
+manager: martinekuan
 editor: ''
 ms.service: cache
 ms.workload: tbd
 ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 9d789572abf0545eb51b357da091e5a1d712eab2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1f0c943bed473178dadb09cfb9d355821e5236e8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433806"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066848"
 ---
-# <a name="what-is-azure-cache-for-redis"></a>Was ist Azure Cache for Redis?
+# <a name="azure-cache-for-redis-description"></a>Beschreibung von Azure Cache for Redis
 
 Azure Cache for Redis basiert auf der beliebten Software [Redis](https://redis.io/). Er wird in der Regel als Cache zum Verbessern der Leistung und Skalierbarkeit von Systemen verwendet, die stark von Back-End-Datenspeichern abhängig sind. Die Leistung wird durch vorübergehendes Kopieren häufig verwendeter Daten in einen schnellen Speicher verbessert, der sich in der Nähe der Anwendung befindet. Bei [Azure Cache for Redis](https://redis.io/) befindet sich dieser schnelle Speicher im Speicher mit Azure Cache for Redis, anstatt von einer Datenbank vom Datenträger geladen zu werden.
 
 Azure Cache for Redis kann auch als In-Memory-Datenstrukturspeicher, verteilte nicht relationale Datenbank und Nachrichtenbroker verwendet werden. Die Anwendungsleistung wird durch die Nutzung der Leistung des Redis-Moduls mit niedriger Latenz und hohem Durchsatz verbessert.
 
-Azure Cache for Redis bietet Ihnen Zugriff auf einen sicheren, dedizierten Azure Cache for Redis, der von Microsoft verwaltet und in Azure gehostet wird und auf den jede Anwendung innerhalb oder außerhalb von Azure zugreifen kann.
+Azure Cache for Redis bietet Ihnen Zugriff auf einen sicheren, dedizierten Redis Cache. Azure Cache for Redis wird von Microsoft verwaltet und in Azure gehostet, und jede Anwendung innerhalb oder außerhalb von Azure kann darauf zugreifen.
 
-## <a name="why-use-azure-cache-for-redis"></a>Gründe für die Verwendung von Azure Cache for Redis
+## <a name="using-azure-cache-for-redis"></a>Verwenden von Azure Cache for Redis
 
 Es gibt viele allgemeine Muster, bei denen Azure Cache for Redis verwendet wird, um die Anwendungsarchitektur zu unterstützen oder die Anwendungsleistung zu verbessern. Nachfolgend sind einige der am häufigsten verwendeten Muster aufgeführt:
 
@@ -49,7 +48,7 @@ Azure Cache for Redis ist in folgenden Tarifen verfügbar:
 |---|---|
 Basic | Ein Cache mit einem einzelnen Knoten. Dieser Tarif unterstützt mehrere Arbeitsspeichergrößen (250 MB - 53 GB). Dieser Tarif eignet sich ideal zu Entwicklungs-/Testzwecken und für nicht kritische Workloads. Für den Basic-Tarif gilt keine Vereinbarung zum Servicelevel (Service-Level Agreement, SLA). |
 | Standard | Ein replizierter Cache in einer Primär-/Sekundärkonfiguration mit zwei Knoten, die von Microsoft verwaltet wird, mit Hochverfügbarkeits-SLA (99,9 %) |
-| Premium | Der Premium-Tarif ist der unternehmensfähige Tarif. Caches im Premium-Tarif unterstützen mehr Funktionen und bieten einen höheren Durchsatz bei niedrigeren Latenzen. Caches im Premium-Tarif werden auf leistungsfähigerer Hardware bereitgestellt und bieten im Vergleich zu den Tarifen „Basic“ und „Standard“ eine bessere Leistung. Dieser Vorteil bedeutet, dass der Durchsatz für einen Cache derselben Größe im Premium-Tarif höher ist als im Standard-Tarif. |
+| Premium | Die Dienstebene „Premium“ ist die Ebene für Unternehmen. Caches im Premium-Tarif unterstützen mehr Funktionen und bieten einen höheren Durchsatz bei niedrigeren Latenzen. Caches im Premium-Tarif werden auf leistungsfähigerer Hardware bereitgestellt und bieten im Vergleich zu den Tarifen „Basic“ und „Standard“ eine bessere Leistung. Dieser Vorteil bedeutet, dass der Durchsatz für einen Cache derselben Größe in der Premium-Dienstebene höher ist als in der Standard-Dienstebene. |
 
 > [!TIP]
 > Weitere Informationen zur Größe, zum Durchsatz und zur Bandbreite von Premium-Caches finden Sie in den [häufig gestellten Fragen zu Azure Cache for Redis](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
@@ -57,7 +56,7 @@ Basic | Ein Cache mit einem einzelnen Knoten. Dieser Tarif unterstützt mehrere 
 
 Nach der Erstellung können Sie Ihren Cache auf einen höheren Tarif skalieren. Die Herunterskalierung auf einen niedrigeren Tarif wird nicht unterstützt. Ausführliche Anweisungen zur Skalierung finden Sie unter [How to Scale Azure Cache for Redis](cache-how-to-scale.md) (Skalieren von Azure Cache for Redis) und [How to automate a scaling operation](cache-how-to-scale.md#how-to-automate-a-scaling-operation) (Automatisieren eines Skalierungsvorgangs).
 
-### <a name="feature-comparison"></a>Funktionsvergleich
+### <a name="feature-comparison"></a>Funktionsvergleiche
 
 Auf der Seite [Azure Cache for Redis – Preise](https://azure.microsoft.com/pricing/details/cache/) finden Sie einen detaillierten Vergleich der einzelnen Tarife. In der folgenden Tabelle werden einige der unterstützten Features nach Tarif aufgeführt:
 
@@ -67,9 +66,10 @@ Auf der Seite [Azure Cache for Redis – Preise](https://azure.microsoft.com/pri
 | [Redis-Datenpersistenz](cache-how-to-premium-persistence.md) |✔|-|-|
 | [Redis-Cluster](cache-how-to-premium-clustering.md) |✔|-|-|
 | [Sicherheit über Firewallregeln](cache-configure.md#firewall) |✔|✔|✔|
+| Verschlüsselung während der Übertragung |✔|✔|✔|
 | [Verbesserte Sicherheit und Isolation mit VNet](cache-how-to-premium-vnet.md) |✔|-|-|
 | [Import/Export](cache-how-to-import-export-data.md) |✔|-|-|
-| [Planen von Updates](cache-administration.md#schedule-updates) |✔|-|-|
+| [Geplante Updates](cache-administration.md#schedule-updates) |✔|✔|✔|
 | [Georeplikation](cache-how-to-geo-replication.md) |✔|-|-|
 | [Neustart](cache-administration.md#reboot) |✔|✔|✔|
 

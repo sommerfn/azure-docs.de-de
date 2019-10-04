@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 07/29/2019
 ms.author: mayg
-ms.openlocfilehash: 55ccfd17a39a19bec01924e263d8f4892bd6101d
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 4e1d27d133b2eb4e0d4d45a5de563e119513c79f
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216746"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68620063"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Informationen zum Azure Site Recovery-Bereitstellungsplaner für VMware in Azure
 Dieser Artikel ist der Leitfaden zum Azure Site Recovery-Bereitstellungsplaner für Bereitstellungen von „VMware zu Azure“ in der Produktion.
@@ -41,10 +41,9 @@ Das Tool umfasst die folgenden Details:
 
 **Azure-Infrastrukturanforderungen**
 
-* Speichertypanforderung (Standard- oder Storage Premium-Konto) für jede VM
-* Gesamtzahl von Standard- und Storage Premium-Konten zur Einrichtung für die Replikation
+* Speichertypanforderung (Storage Standard oder Storage Premium) für jeden virtuellen Computer
+* Gesamtzahl von Storage Standard- und Storage Premium-Konten zur Einrichtung für die Replikation (einschließlich Cachespeicherkonten)
 * Vorschläge für die Benennung von Speicherkonten gemäß Storage-Vorgabe
-* Anordnung von Speicherkonten für alle VMs
 * Anzahl von einzurichtenden Azure-Kernen vor dem Testfailover oder Failover für das Abonnement
 * Empfohlene Azure-VM-Größe für jede lokale VM
 
@@ -65,8 +64,8 @@ Das Tool umfasst die folgenden Details:
 
 | | **VMware zu Azure** |**Hyper-V in Azure**|**Azure zu Azure**|**Hyper-V zum sekundären Standort**|**VMware zum sekundären Standort**
 --|--|--|--|--|--
-Unterstützte Szenarien |Ja|Ja|Nein |Ja*|Nein 
-Unterstützte Version | vCenter 6.5, 6.0 oder 5.5| Windows Server 2016, Windows Server 2012 R2 | Nicht verfügbar |Windows Server 2016, Windows Server 2012 R2|Nicht verfügbar
+Unterstützte Szenarien |Ja|Ja|Nein|Ja*|Nein
+Unterstützte Version | vCenter 6.7, 6.5, 6.0 oder 5.5| Windows Server 2016, Windows Server 2012 R2 | Nicht verfügbar |Windows Server 2016, Windows Server 2012 R2|Nicht verfügbar
 Unterstützte Konfiguration|vCenter, ESXi| Hyper-V-Cluster, Hyper-V-Host|Nicht verfügbar|Hyper-V-Cluster, Hyper-V-Host|Nicht verfügbar|
 Anzahl von Servern, für die pro ausgeführter Site Recovery-Bereitstellungsplaner-Instanz die Profilerstellung durchgeführt werden kann |Einzeln (für VMs, die zu einem vCenter Server oder einem ESXi-Server gehören, kann die Profilerstellung auf einmal durchgeführt werden)|Mehrere (für VMs mehrerer Hosts oder Hostcluster kann die Profilerstellung auf einmal durchgeführt werden)| Nicht verfügbar |Mehrere (für VMs mehrerer Hosts oder Hostcluster kann die Profilerstellung auf einmal durchgeführt werden)| Nicht verfügbar
 
@@ -104,6 +103,9 @@ Der Ordner enthält mehrere Dateien und Unterordner. Die ausführbare Datei ist 
     E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
 
 ### <a name="update-to-the-latest-version-of-deployment-planner"></a>Aktualisieren auf die neueste Version des Bereitstellungsplaners
+
+Die neuesten Updates werden im [Versionsverlauf](site-recovery-deployment-planner-history.md) des Bereitstellungsplaners zusammengefasst.
+
 Wählen Sie eine der folgenden Vorgehensweisen, wenn Sie über eine vorherige Version des Bereitstellungsplaners verfügen:
  * Falls die aktuelle Version keine Fehlerbehebung für die Profilerstellung enthält und die Profilerstellung bereits mit der aktuellen Planner-Version ausgeführt wird, ist es ratsam, die Profilerstellung fortzusetzen.
  * Wenn die aktuelle Version eine Fehlerbehebung für die Profilerstellung enthält, empfehlen wir Ihnen, die Profilerstellung für die aktuelle Version zu beenden und mit der neuen Version neu zu starten.
@@ -117,8 +119,8 @@ Wählen Sie eine der folgenden Vorgehensweisen, wenn Sie über eine vorherige Ve
 
 
 ## <a name="version-history"></a>Versionsverlauf
-Die aktuelle Version des Site Recovery-Bereitstellungsplaners ist 2.3.
-Auf der Seite [Site Recovery Deployment Planner version history](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) (Site Recovery-Bereitstellungsplaner – Versionsverlauf) finden Sie Informationen zu den Fehlerbehebungen, die in den einzelnen Updates hinzugefügt werden.
+Die aktuelle Version des Site Recovery-Bereitstellungsplaners ist 2.5.
+Auf der Seite [Site Recovery Deployment Planner version history](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history) (Site Recovery-Bereitstellungsplaner – Versionsverlauf) finden Sie Informationen zu den Fehlerbehebungen, die in den einzelnen Updates hinzugefügt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Ausführen von Azure Site Recovery-Bereitstellungsplaner für „VMware zu Azure“](site-recovery-vmware-deployment-planner-run.md)

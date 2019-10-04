@@ -1,25 +1,23 @@
 ---
 title: Erstellen einer Qualifikationsgruppe in einer Pipeline der kognitiven Suche – Azure Search
 description: Definieren Sie Datenextrahierung, Verarbeitung natürlicher Sprache oder Bildanalyseschritte, um strukturierte Informationen aus Ihren Daten für die Verwendung in Azure Search anzureichern und zu extrahieren.
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: 9369e076517e295a7d17011e024353614ec8ad46
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751972"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265529"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Erstellen eines Skillsets in einer Anreicherungspipeline
 
-Die kognitive Suche extrahiert Daten und reichert diese an, um sie in Azure Search durchsuchbar zu machen. Extrahierungs- und Anreicherungsschritte werden als *kognitive Skills* bezeichnet, die in einem *Skillset* kombiniert sind, auf das während der Indizierung verwiesen wird. Ein Skillset kann [vordefinierte Skills](cognitive-search-predefined-skills.md) oder benutzerdefinierte Skills verwenden (Weitere Informationen finden Sie unter [Beispiel: Erstellen eines benutzerdefinierten Skills](cognitive-search-create-custom-skill-example.md)).
+Die kognitive Suche extrahiert Daten und reichert diese an, um sie in Azure Search durchsuchbar zu machen. Extrahierungs- und Anreicherungsschritte werden als *kognitive Skills* bezeichnet, die in einem *Skillset* kombiniert sind, auf das während der Indizierung verwiesen wird. Ein Skillset kann [integrierte Qualifikationen](cognitive-search-predefined-skills.md) oder benutzerdefinierte Qualifikationen verwenden. Weitere Informationen finden Sie unter [Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API](cognitive-search-create-custom-skill-example.md).
 
 In diesem Artikel erfahren Sie, wie Sie eine Anreicherungspipeline für die Skills erstellen, die Sie verwenden möchten. Ein Skillset wird an einen [Azure Search-Indexer](search-indexer-overview.md) angehängt. Ein Teil des Pipelineentwurfs, der in diesem Artikel behandelt wird, ist die Konstruktion des Skillsets selbst. 
 
@@ -57,7 +55,7 @@ Im Diagramm erfolgt der Schritt zur *Dokumententschlüsselung* automatisch. Beka
 Ein Skillset wird als ein Array von Skills definiert. Jeder Skill definiert die Quelle der Eingaben und den Namen der erzeugten Ausgaben. Mit der [REST-API zum Erstellen von Skillsets](https://docs.microsoft.com/rest/api/searchservice/create-skillset) können Sie einen Skillset definieren, der dem vorherigen Diagramm entspricht: 
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -69,7 +67,7 @@ Content-Type: application/json
   "skills":
   [
     {
-      "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
       "context": "/document",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
@@ -138,11 +136,11 @@ Beim Erstellen eines Skillsets können Sie eine Beschreibung angeben, um das Ski
 }
 ```
 
-Das nächste Segment im Skillset ist ein Array von Skills. Man kann sich jeden Skill als einen Grundtyp für die Anreicherung vorstellen. In dieser Anreicherungspipeline führt jeder Skill eine kleine Aufgabe aus. Dies ist eine Eingabe (oder eine Reihe von Eingaben), durch die einige Ausgaben zurückgegeben werden. In den nächsten Abschnitten geht es darum, vordefinierte und benutzerdefinierte Skills festzulegen und diese durch Eingabe- und Ausgabeverweise miteinander zu verketten. Eingaben können aus Quelldaten oder aus einem anderen Skill stammen. Ausgaben können einem Feld in einem Suchindex zugeordnet oder als Eingabe für einen nachfolgenden Skill verwendet werden.
+Das nächste Segment im Skillset ist ein Array von Skills. Man kann sich jeden Skill als einen Grundtyp für die Anreicherung vorstellen. In dieser Anreicherungspipeline führt jeder Skill eine kleine Aufgabe aus. Dies ist eine Eingabe (oder eine Reihe von Eingaben), durch die einige Ausgaben zurückgegeben werden. In den nächsten Abschnitten geht es darum, vordefinierte und integrierte Qualifikationen festzulegen und diese durch Eingabe- und Ausgabeverweise miteinander zu verketten. Eingaben können aus Quelldaten oder aus einem anderen Skill stammen. Ausgaben können einem Feld in einem Suchindex zugeordnet oder als Eingabe für einen nachfolgenden Skill verwendet werden.
 
-## <a name="add-predefined-skills"></a>Hinzufügen vordefinierter Skills
+## <a name="add-built-in-skills"></a>Hinzufügen integrierter Qualifikationen
 
-Betrachten Sie den ersten Skill, bei dem es sich um den vordefinierten [Skill zur Erkennung von Entitäten](cognitive-search-skill-entity-recognition.md) handelt:
+Betrachten Sie die erste Qualifikation, bei der es sich um die integrierte [Qualifikation „Entitätserkennung“](cognitive-search-skill-entity-recognition.md) handelt:
 
 ```json
     {
@@ -165,15 +163,15 @@ Betrachten Sie den ersten Skill, bei dem es sich um den vordefinierten [Skill zu
     }
 ```
 
-* Jeder vordefinierte Skill verfügt über die Eigenschaften `odata.type`, `input` und `output`. Skillspezifische Eigenschaften bieten zusätzliche Informationen, die auf diesen Skill anwendbar sind. Bei der Entitätserkennung ist `categories` eine Entität aus einem festen Satz von Entitätstypen, die das vortrainierte Modell erkennen kann.
+* Jede integrierte Qualifikation verfügt über die Eigenschaften `odata.type`, `input` und `output`. Skillspezifische Eigenschaften bieten zusätzliche Informationen, die auf diesen Skill anwendbar sind. Bei der Entitätserkennung ist `categories` eine Entität aus einem festen Satz von Entitätstypen, die das vortrainierte Modell erkennen kann.
 
-* Jeder Skill muss über ein ```"context"```-Element verfügen. Der Kontext stellt die Ebene dar, auf der Vorgänge ausgeführt werden. Im oben gezeigten Skill ist der Kontext das gesamte Dokument. Das bedeutet, dass die der Skill zur Erkennung benannter Entitäten einmal pro Dokument aufgerufen wird. Auf dieser Ebene werden auch Ausgaben erzeugt. Genauer gesagt werden ```"organizations"``` als Element von ```"/document"``` generiert. In den nachfolgenden Skills wird auf diese neu erstellten Informationen mit ```"/document/organizations"``` verwiesen.  Wenn das Feld ```"context"``` nicht explizit festgelegt ist, wird das Dokument als Standardkontext genommen.
+* Jeder Skill muss über ein ```"context"```-Element verfügen. Der Kontext stellt die Ebene dar, auf der Vorgänge ausgeführt werden. In der oben gezeigten Qualifikation ist der Kontext das gesamte Dokument. Das bedeutet, dass die Qualifikation „Entitätserkennung“ einmal pro Dokument aufgerufen wird. Auf dieser Ebene werden auch Ausgaben erzeugt. Genauer gesagt werden ```"organizations"``` als Element von ```"/document"``` generiert. In den nachfolgenden Skills wird auf diese neu erstellten Informationen mit ```"/document/organizations"``` verwiesen.  Wenn das Feld ```"context"``` nicht explizit festgelegt ist, wird das Dokument als Standardkontext genommen.
 
-* Der Skill hat eine Eingabe namens „text“, wobei die Eingabe der Quelle auf ```"/document/content"``` gesetzt ist. Der Skill (Erkennung benannter Entitäten) wird für das *content*-Feld jedes Dokuments ausgeführt. Hierbei handelt es sich um ein Standardfeld, das vom Azure Blob-Indexer erstellt wird. 
+* Der Skill hat eine Eingabe namens „text“, wobei die Eingabe der Quelle auf ```"/document/content"``` gesetzt ist. Die Qualifikation (Entitätserkennung) wird für das *content*-Feld jedes Dokuments ausgeführt. Hierbei handelt es sich um ein Standardfeld, das vom Azure Blob-Indexer erstellt wird. 
 
 * Der Skill verfügt über eine Ausgabe mit der Bezeichnung ```"organizations"```. Ausgaben gibt es nur während der Verarbeitung. Um diese Ausgabe mit der Eingabe eines nachfolgenden Skills zu verketten, verweisen Sie auf die Ausgabe mit ```"/document/organizations"```.
 
-* Für ein bestimmtes Dokument ist der Wert von ```"/document/organizations"``` ein Array von Organisationen, die aus dem Text extrahiert werden. Beispiel: 
+* Für ein bestimmtes Dokument ist der Wert von ```"/document/organizations"``` ein Array von Organisationen, die aus dem Text extrahiert werden. Beispiel:
 
   ```json
   ["Microsoft", "LinkedIn"]
@@ -212,7 +210,7 @@ Erinnern Sie sich an die Struktur der benutzerdefinierten Anreicherungsfunktion 
       "uri": "https://indexer-e2e-webskill.azurewebsites.net/api/InvokeTextAnalyticsV3?code=foo",
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
-      }
+      },
       "context": "/document/organizations/*",
       "inputs": [
         {
@@ -229,13 +227,13 @@ Erinnern Sie sich an die Struktur der benutzerdefinierten Anreicherungsfunktion 
     }
 ```
 
-Diese Definition ist ein [benutzerdefinierter Skill](cognitive-search-custom-skill-web-api.md), der eine Web-API als Teil des Anreicherungsprozesses aufruft. Für jede Organisation, die durch die Erkennung von benannten Entitäten identifiziert wird, ruft dieser Skill eine Web-API auf, um die Beschreibung dieser Organisation zu suchen. Eine interne Anreicherungs-Engine regelt die Orchestrierung, wann die Web-API aufgerufen werden soll und wie die empfangenen Informationen weitergeleitet werden sollen. Die für den Aufruf dieser benutzerdefinierten API erforderliche Initialisierung muss jedoch über das JSON-Dokument bereitgestellt werden (z.B. URI, HTTP-Header und die erwarteten Eingaben). Informationen zum Erstellen einer benutzerdefinierten Web-API für die Anreicherungspipeline finden Sie unter [Definieren einer benutzerdefinierten Schnittstelle](cognitive-search-custom-skill-interface.md).
+Diese Definition ist ein [benutzerdefinierter Skill](cognitive-search-custom-skill-web-api.md), der eine Web-API als Teil des Anreicherungsprozesses aufruft. Für jede Organisation, die durch die Entitätserkennung identifiziert wird, ruft diese Qualifikation eine Web-API auf, um die Beschreibung dieser Organisation zu suchen. Eine interne Anreicherungs-Engine regelt die Orchestrierung, wann die Web-API aufgerufen werden soll und wie die empfangenen Informationen weitergeleitet werden sollen. Die für den Aufruf dieser benutzerdefinierten API erforderliche Initialisierung muss jedoch über das JSON-Dokument bereitgestellt werden (z.B. URI, HTTP-Header und die erwarteten Eingaben). Informationen zum Erstellen einer benutzerdefinierten Web-API für die Anreicherungspipeline finden Sie unter [Definieren einer benutzerdefinierten Schnittstelle](cognitive-search-custom-skill-interface.md).
 
 Beachten Sie, dass das Feld „context“ mit einem Sternchen auf ```"/document/organizations/*"``` gesetzt ist, d.h. der Anreicherungsschritt wird *für jede* Organisation unter ```"/document/organizations"``` aufgerufen. 
 
 Die Ausgabe, in diesem Fall eine Firmenbeschreibung, wird für jede identifizierte Organisation generiert. Bei Bezugnahme auf die Beschreibung in einem nachfolgenden Schritt (z.B. bei der Schlüsselbegriffserkennung) würden Sie dazu den Pfad ```"/document/organizations/*/description"``` verwenden. 
 
-## <a name="enrichments-create-structure-out-of-unstructured-information"></a>Strukturieren von unstrukturierten Informationen mithilfe von Anreicherungen
+## <a name="add-structure"></a>Hinzufügen einer Struktur
 
 Das Skillset generiert strukturierte Informationen aus unstrukturierten Daten. Betrachten Sie das folgende Beispiel:
 
@@ -245,9 +243,38 @@ Ein wahrscheinliches Ergebnis wäre eine generierte Struktur ähnlich der folgen
 
 ![Beispiel für Ausgabestruktur](media/cognitive-search-defining-skillset/enriched-doc.png "Beispiel für Ausgabestruktur")
 
-Beachten Sie, dass dies eine interne Struktur ist. Dieses Diagramm können Sie nicht tatsächlich aus dem Code abrufen.
+Bis jetzt wurde diese Struktur nur intern, ausschließlich im Arbeitsspeicher und nur in Azure Search-Indizes verwendet. Das Hinzufügen eines Wissensspeichers bietet Ihnen eine Möglichkeit zum Speichern von Anreicherungen mit Formen zur Verwendung außerhalb der Suche.
+
+## <a name="add-a-knowledge-store"></a>Hinzufügen von Wissensspeichern
+
+Ein [Wissensspeicher](knowledge-store-concept-intro.md) ist eine Previewfunktion in Azure Search zum Speichern Ihrer angereicherten Dokumente. Wenn Sie einen Wissensspeicher erstellen, der durch ein Azure Storage-Konto unterstützt wird, fungiert er als Repository für Ihre angereicherten Daten. 
+
+Die Definition eines Wissensspeichers wird einer Qualifikationsgruppe hinzugefügt. Eine exemplarische Vorgehensweise des gesamten Prozesses finden Sie unter [Erste Schritte mit Wissensspeichern](knowledge-store-howto.md).
+
+```json
+"knowledgeStore": {
+  "storageConnectionString": "<an Azure storage connection string>",
+  "projections" : [
+    {
+      "tables": [ ]
+    },
+    {
+      "objects": [
+        {
+          "storageContainer": "containername",
+          "source": "/document/EnrichedShape/",
+          "key": "/document/Id"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Sie können angereicherte Dokumente auch als Tabellen mit hierarchischen Beziehungen oder als JSON-Dokumente in Blob Storage speichern. Die Ausgabe einer der Qualifikationen in der Qualifikationsgruppe kann als Eingabe für die Projektion verwendet werden. Wenn Sie die Daten in eine bestimmte Form projizieren möchten, kann die aktualisierte [Qualifikation „Shaper“](cognitive-search-skill-shaper.md) nun auch komplexe Typen modellieren, die Sie dann verwenden können. 
 
 <a name="next-step"></a>
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nun, da Sie mit der Anreicherungspipeline und den Skillsets vertraut sind, können Sie mit den Artikeln [Verweisen auf Anmerkungen in einem Skillset](cognitive-search-concept-annotations-syntax.md) oder [Zuordnen von Ausgaben zu Feldern in einem Index](cognitive-search-output-field-mapping.md) fortfahren. 

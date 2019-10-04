@@ -2,27 +2,21 @@
 title: Azure Active Directory (Azure AD) Identity Protection – Sicherheitsübersicht | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit der Sicherheitsübersicht einen Einblick in den Sicherheitsstatus Ihrer Organisation erhalten.
 services: active-directory
-keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 610668768c7baca13cb60caf1d810cced31ebec3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b894f7020083dd6ca46c394ec2930a3da36bc76d
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516432"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335205"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – Sicherheitsübersicht
 
@@ -31,9 +25,7 @@ Mit der [Sicherheitsübersicht](https://aka.ms/IdentityProtectionRefresh) erhalt
 Die Sicherheitsübersicht ist grob in zwei Abschnitte unterteilt:
 
 - Durch Trends wird im linken Bereich eine Zeitachse der Risiken in Ihrer Organisation dargestellt.
-
 - Im rechten Bereich werden in Kacheln wichtige aktuelle Probleme in Ihrer Organisation hervorgehoben und Vorschläge zu schnellen Maßnahmen angezeigt.
-
 
 ![Sicherheitsübersicht](./media/security-overview/01.png)
   
@@ -55,7 +47,6 @@ Auf der Kachel „Benutzer mit hohem Risiko“ wird die aktuelle Anzahl der Benu
 
 ![Sicherheitsübersicht](./media/security-overview/02.png)
 
-
 ### <a name="medium-risk-users"></a>Benutzer mit mittlerem Risiko
 Auf der Kachel „Benutzer mit mittlerem Risiko“ wird die aktuelle Anzahl der Benutzer mit mittlerer Wahrscheinlichkeit eines Identitätsmissbrauchs angezeigt. Durch Klicken auf die Kachel „Benutzer mit mittlerem Risiko“ erfolgt eine Weiterleitung zu einer gefilterten Ansicht des Berichts „Riskante Benutzer“, in der nur Benutzer mit der Risikostufe „Mittel“ angezeigt werden. Mithilfe dieses Berichts können Sie weitere Untersuchungen durchführen und diese Benutzer bereinigen.
 
@@ -63,20 +54,15 @@ Auf der Kachel „Benutzer mit mittlerem Risiko“ wird die aktuelle Anzahl der 
 
 Auf der Kachel „Nicht geschützte riskante Anmeldungen“ wird die Anzahl der erfolgreichen Risikoanmeldungen in Echtzeit in der letzten Woche angezeigt, die weder durch eine Richtlinie für bedingten Zugriff, eine Identity Protection-Risikorichtlinie oder eine benutzerbasierte mehrstufige Authentifizierung blockiert noch durch mehrstufige Authentifizierung überprüft wurden. Hierbei handelt es sich um potenziell kompromittierte Anmeldungen, die erfolgreich waren und nicht durch mehrstufige Authentifizierung überprüft wurden. Um diese Anmeldungen in Zukunft zu schützen, müssen Sie eine Richtlinie zum Anmelderisiko anwenden. Durch Klicken auf die Kachel „Nicht geschützte riskante Anmeldungen“ werden Sie zum Blatt für die Konfiguration von Richtlinien zum Anmelderisiko weitergeleitet, auf dem Sie die Richtlinie zum Anmelderisiko so konfigurieren können, dass bei einer Anmeldung mit einer angegebenen Risikostufe eine mehrstufige Authentifizierung erforderlich ist.
 
-
 ### <a name="legacy-authentication"></a>Legacyauthentifizierung
 
 Auf der Kachel „Legacyauthentifizierung“ wird die Anzahl der Legacyauthentifizierungen in Ihrer Organisation in der letzten Woche angezeigt. Ältere Authentifizierungsprotokolle unterstützen keine modernen Sicherheitsmethoden wie z.B. eine mehrstufige Authentifizierung. Um Legacyauthentifizierungen zu verhindern, können Sie eine Richtlinie für bedingten Zugriff anwenden. Durch Klicken auf die Kachel „Legacyauthentifizierung“ gelangen Sie zu „Identity Secure Score“.
-
 
 ### <a name="identity-secure-score"></a>Identity Secure Score
 
 Identity Secure Score misst und vergleicht Ihren Sicherheitsstatus mit Branchenmustern. Wenn Sie auf die Kachel „Identity Secure Score (Vorschau)“ klicken, werden Sie zum Blatt „Identity Secure Score (Vorschau)“ weitergeleitet, auf dem Sie weitere Informationen zur Verbesserung des Sicherheitsstatus erhalten.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Channel 9: Show zu Azure AD und Identität: Identity Protection Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview) (Channel 9: Azure AD- und Identity-Show: Vorschau von Identity Protection)
-
 - [Aktivieren von Azure Active Directory Identity Protection](enable.md)
-

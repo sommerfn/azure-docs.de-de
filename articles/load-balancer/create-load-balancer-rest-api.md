@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie eine Azure Load Balancer-Instanz mit der REST-API erstellen.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
-ms.author: kumud
-ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.author: allensu
+ms.openlocfilehash: ae8fb4494d27d0c145963c9b32757bdb802e0cc7
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079720"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68275559"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Erstellen einer Azure Basic Load Balancer-Instanz mit der REST-API
 
@@ -35,10 +35,10 @@ Verwenden Sie die folgende HTTP PUT-Anforderung, um eine neue Azure Basic Load B
 
 |NAME  |Geben Sie in  |Erforderlich |Typ |BESCHREIBUNG |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  path       |  True       |   Zeichenfolge      |  Die Abonnementanmeldeinformationen, die das Microsoft Azure-Abonnement eindeutig identifizieren. Die Abonnement-ID ist Teil des URI für jeden Dienstaufruf.      |
-|resourceGroupName     |     path    | True        |  Zeichenfolge       |   Der Name der Ressourcengruppe.     |
-|loadBalancerName     |  path       |      True   |    Zeichenfolge     |    Der Name des Load Balancer.    |
-|api-version    |   query     |  True       |     Zeichenfolge    |  Client-API-Version.      |
+|subscriptionId   |  path       |  True       |   string      |  Die Abonnementanmeldeinformationen, die das Microsoft Azure-Abonnement eindeutig identifizieren. Die Abonnement-ID ist Teil des URI für jeden Dienstaufruf.      |
+|resourceGroupName     |     path    | True        |  string       |   Der Name der Ressourcengruppe.     |
+|loadBalancerName     |  path       |      True   |    string     |    Der Name des Load Balancer.    |
+|api-version    |   query     |  True       |     string    |  Client-API-Version.      |
 
 
 
@@ -46,16 +46,16 @@ Verwenden Sie die folgende HTTP PUT-Anforderung, um eine neue Azure Basic Load B
 
 Der einzige erforderliche Parameter ist `location`. Wenn Sie die *SKU*-Version nicht definieren, wird standardmäßig eine Basic Load Balancer-Instanz erstellt.  Verwenden Sie [optionale Parameter](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body) zum Anpassen der Load Balancer-Instanz.
 
-| NAME | Typ | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | :--- | :--- | :---------- |
-| location | Zeichenfolge | Ressourcenspeicherort Rufen Sie mit dem Vorgang [List Locations](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) eine aktuelle Liste der Standorte auf. |
+| location | string | Ressourcenspeicherort Rufen Sie mit dem Vorgang [List Locations](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) eine aktuelle Liste der Standorte auf. |
 
 
 ## <a name="example-create-and-update-a-basic-load-balancer"></a>Beispiel: Erstellen und Aktualisieren einer Load Balancer-Instanz im Tarif „Basic“
 
 In diesem Beispiel erstellen Sie zunächst eine Basic Load Balancer-Instanz zusammen mit den zugehörigen Ressourcen. Anschließend konfigurieren Sie die Load Balancer-Ressourcen, darunter eine Front-End-IP-Konfiguration, einen Back-End-Adresspool, eine Lastenausgleichsregel, einen Integritätstest und eine eingehende NAT-Regel.
 
-Vor dem Erstellen einer Load Balancer-Instanz anhand des nachfolgenden Beispiels erstellen Sie das virtuelle Netzwerk *vnetlb* mit dem Subnetz *subnetlb* in der Ressourcengruppe *rg1* am Standort **USA, Osten**.
+Vor dem Erstellen einer Load Balancer-Instanz anhand des nachfolgenden Beispiels erstellen Sie das virtuelle Netzwerk *vnetlb* mit dem Subnetz *subnetlb* in der Ressourcengruppe *rg1* am Standort **EAST US**.
 
 ### <a name="step-1-create-a-basic-load-balancer"></a>Schritt 1: Erstellen eines Load Balancers im Tarif „Basic“
 In diesem Schritt erstellen Sie eine Basic Load Balancer-Instanz mit dem Namen *lb* am Standort **USA, Osten** in der Ressourcengruppe *rg1*.

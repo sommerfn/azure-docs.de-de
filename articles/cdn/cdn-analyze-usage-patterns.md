@@ -1,25 +1,25 @@
 ---
 title: Kernberichte aus Verizon | Microsoft-Dokumentation
-description: 'Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Ihr CDN anzeigen: Bandbreite, Übertragene Daten, Treffer, Cachestatus, Cachetrefferquote, Übertragene IPV4/IPV6-Daten.'
+description: 'Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Content Delivery Network anzeigen: Bandbreite, übertragene Daten, Treffer, Cachestatus, Cachetrefferquote, übertragene IPv4-/IPv6-Daten.'
 services: cdn
 documentationcenter: ''
 author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 5a0d9018-8bdb-48ff-84df-23648ebcf763
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d10a40d03f0f76676e70afdec94e9adfaa0dd09f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162069"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594157"
 ---
 # <a name="core-reports-from-verizon"></a>Kernberichte aus Verizon
 
@@ -104,8 +104,8 @@ Gehen Sie wie folgt vor, um abgelaufene Cachetreffer zu reduzieren: Legen Sie da
 * TCP_EXPIRED_MISS: Dieser Status wird gemeldet, wenn eine neuere Version eines abgelaufenen zwischengespeicherten Medienobjekts vom POP für den Client bereitgestellt wird. Dieser Status tritt auf, wenn die Gültigkeitsdauer für eine zwischengespeicherte Ressource abgelaufen ist (z. B. „max-age“ abgelaufen) und der Ursprungsserver eine neuere Version dieser Ressource zurückgibt. Diese neue Version der Ressource wird für den Client und nicht für die zwischengespeicherte Version bereitgestellt. Darüber hinaus wird sie auf dem Edgeserver und auf dem Client zwischengespeichert.
 * CONFIG_NOCACHE: Dieser Status gibt an, dass eine kundenspezifische Konfiguration auf dem Edge-POP die Zwischenspeicherung des Medienobjekts verhindert.
 * NONE: Dieser Status gibt an, dass keine Überprüfung der Aktualität des Cache-Inhalts durchgeführt wurde.
-* TCP_CLIENT_REFRESH_MISS: Dieser Status wird gemeldet, wenn ein HTTP-Client (z.B. ein Browser) einen Edge-POP zwingt, eine neue Version einer veralteten Ressource vom Ursprungsserver abzurufen. Standardmäßig verhindern die Server, dass ein HTTP-Client die Edgeserver zwingt, eine neue Version des Medienobjekts vom Ursprungsserver abzurufen.
-* TCP_PARTIAL_HIT: Dieser Status wird gemeldet, wenn eine Bytebereichsanforderung zu einem Treffer für ein teilweise zwischengespeichertes Medienobjekt führt. Der angeforderte Bytebereich wird sofort vom POP an den Client übermittelt.
+* TCP_CLIENT_REFRESH_MISS: Dieser Status wird gemeldet, wenn ein HTTP-Client (z. B. ein Browser) einen Edge-POP zwingt, eine neue Version einer veralteten Ressource vom Ursprungsserver abzurufen. Standardmäßig verhindern die Server, dass ein HTTP-Client die Edgeserver zwingt, eine neue Version des Medienobjekts vom Ursprungsserver abzurufen.
+* TCP_PARTIAL_HIT: Dieser Status wird gemeldet, wenn eine Bytebereichanforderung zu einem Treffer für ein teilweise zwischengespeichertes Medienobjekt führt. Der angeforderte Bytebereich wird sofort vom POP an den Client übermittelt.
 * UNCACHEABLE: Dieser Status wird gemeldet, wenn die Header `Cache-Control` und `Expires` eines Medienobjekts darauf hinweisen, dass dieses nicht auf einem POP oder vom HTTP-Client zwischengespeichert werden soll. Diese Anforderungstypen werden vom Ursprungsserver bereitgestellt.
 
 ## <a name="cache-hit-ratio"></a>Cachetrefferquote
@@ -119,11 +119,11 @@ Die Details finden Sie im folgenden Bericht:
 
 Folgende Elemente sind im Bericht nicht enthalten:
 
-* Anforderungen, die aufgrund von Länderfilteroptionen verweigert werden.
+* Anforderungen, die aufgrund von Filteroptionen für Länder oder Regionen verweigert werden.
 * Anforderungen für Medienobjekte, deren Header darauf hinweisen, dass sie nicht zwischengespeichert werden sollen. Durch die Header `Cache-Control: private`, `Cache-Control: no-cache` oder `Pragma: no-cache` wird beispielsweise verhindert, dass ein Medienobjekt zwischengespeichert wird.
 * Bytebereichsanforderungen für teilweise zwischengespeicherte Inhalte.
 
-Die Formel lautet: (TCP_ HIT/(TCP_ HIT+TCP_MISS))*100
+Die Formel lautet: (TCP_HIT/(TCP_HIT+TCP_MISS))×100
 
 ![Bericht zur Cachetrefferquote](./media/cdn-reports/cdn-cache-hit-ratio.png)
 

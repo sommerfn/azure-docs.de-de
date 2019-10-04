@@ -1,115 +1,127 @@
 ---
-title: 'Beispiel: Aufrufen der API für die Bildanalyse – Maschinelles Sehen-API'
-titlesuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mithilfe von REST in Azure Cognitive Services die Maschinelles Sehen-API aufrufen.
+title: Aufrufen der Maschinelles Sehen-API
+titleSuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie mithilfe der REST-API in Azure Cognitive Services die Maschinelles Sehen-API aufrufen.
 services: cognitive-services
 author: KellyDF
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
-ms.date: 03/21/2019
+ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: e6ebd4ff465565be49d98162cd9ca67c194593a4
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 417ff7ac345b9a83b3d3f4c50e9fd141d74bc99c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563369"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103545"
 ---
-# <a name="example-how-to-call-the-computer-vision-api"></a>Beispiel: Aufrufen der Maschinelles Sehen-API
+# <a name="call-the-computer-vision-api"></a>Aufrufen der Maschinelles Sehen-API
 
-Diese Anleitung veranschaulicht, wie Sie die Maschinelles Sehen-API mithilfe von REST aufrufen. Die Beispiele wurden in C# sowohl mithilfe der Clientbibliothek der Maschinelles Sehen-API als auch als HTTP POST/GET-Aufrufe geschrieben. Wir konzentrieren uns auf folgende Themen:
+In diesem Artikel wird beschrieben, wie die Maschinelles Sehen-API mithilfe der Rest-API aufgerufen wird. Die Beispiele wurden in C# sowohl mithilfe der Clientbibliothek der Maschinelles Sehen-API als auch als HTTP POST- oder GET-Aufrufe geschrieben. Der Schwerpunkt dieses Artikels liegt auf Folgendem:
 
-- Abrufen von „Tags“, „Description“ und „Category“
-- Abrufen von „domänenspezifischen“ Informationen (Prominente)
+- Abrufen von Tags, einer Beschreibung und Kategorien
+- Abrufen domänenspezifischer Informationen bzw. „Prominenten“
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Bild-URL oder Pfad zum lokal gespeicherten Bild.
-- Unterstützte Eingabemethoden: Unformatierte Bildbinärdaten in Form einer Anwendung/eines Oktettdatenstroms oder einer Bild-URL
-- Unterstützte Bildformate: JPEG, PNG, GIF, BMP
-- Bilddateigröße: Weniger als 4 MB
-- Bildgröße: Mindestens 50 x 50 Pixel
+- Eine Bild-URL oder ein Pfad zum lokal gespeicherten Bild
+- Unterstützte Eingabemethoden: rohe Bildbinärdaten in Form einer Anwendung/eines Oktettdatenstroms oder einer Bild-URL
+- Unterstützte Bildformate: JPEG, PNG, GIF und BMP
+- Bilddateigröße: maximal 4 MB
+- Bildmaße: mindestens 50 &times; 50 Pixel
   
-Im Beispiel unten werden die folgenden Funktionen demonstriert:
+In den Beispielen dieses Artikels werden die folgenden Features gezeigt:
 
-1. Analysieren eines Bildes und Rückgabe eines Arrays an Tags und einer Beschreibung
-2. Analysieren eines Bildes mit einem domänenspezifischen Modell (speziell dem „Prominenten“-Modell) und Erhalten des entsprechenden Ergebnisses in JSON Retune.
+* Analysieren eines Bilds zur Rückgabe eines Arrays an Tags und einer Beschreibung
+* Analysieren eines Bilds mit einem domänenspezifischen Modell (insbesondere dem „Prominenten“-Modell) zur Rückgabe des entsprechenden Ergebnisses in JSON
 
-Funktionen werden in folgende Bereiche unterteilt:
+Die Features bieten die folgenden Optionen:
 
-- **Option 1:** Bereichsbezogene-Analyse – Analyse nur für ein angegebenes Modell
-- **Option 2:** Erweiterte Analyse – Analyse zur Bereitstellung zusätzlicher Details mit [86 Kategorien der Taxonomie](../Category-Taxonomy.md)
+- **Option 1**: Bereichsbezogene Analyse – Analyse nur für ein angegebenes Modell
+- **Option 2**: Erweiterte Analyse – Analyse zur Bereitstellung zusätzlicher Details mit der [Taxonomie mit 86 Kategorien](../Category-Taxonomy.md)
   
 ## <a name="authorize-the-api-call"></a>Autorisieren des API-Aufrufs
 
-Für jeden Aufruf der Maschinelles Sehen-API ist ein Abonnementschlüssel erforderlich. Dieser Schlüssel muss entweder über einen Abfragezeichenfolgen-Parameter übergeben oder im Anforderungsheader angegeben werden.
+Für jeden Aufruf der Maschinelles Sehen-API ist ein Abonnementschlüssel erforderlich. Dieser Schlüssel muss entweder über einen Parameter mit der Abfragezeichenfolge übergeben oder im Anforderungsheader angegeben werden.
 
-Wie Sie einen Abonnementschlüssel erhalten, erfahren Sie unter [Abrufen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md
-).
+Um einen kostenlosen Testschlüssel zu erhalten, führen Sie einen der folgenden Schritte aus:
+* Navigieren Sie zur Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). 
+* Wechseln Sie zur Seite [Erstellen einer Cognitive Services-Ressource](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), um maschinelles Sehen zu abonnieren.
 
-1. Informationen zur Übergabe des Abonnementschlüssels über eine Abfragezeichenfolge finden Sie weiter unten als Beispiel für die Maschinelles Sehen-API:
+Sie können den Abonnementschlüssel übergeben, indem Sie eine der folgenden Aktionen ausführen:
 
-```https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>```
+* Übergeben Sie ihn wie in diesem Beispiel für die Maschinelles Sehen-API über eine Abfragezeichenfolge:
 
-1. Die Übergabe des Abonnementschlüssels kann auch im HTTP-Anforderungsheader angegeben werden:
+  ```
+  https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+  ```
 
-```ocp-apim-subscription-key: <Your subscription key>```
+* Geben Sie ihn im HTTP-Anforderungsheader an:
 
-1. Wenn Sie eine Clientbibliothek verwenden, wird der Abonnementschlüssel durch den VisionServiceClient-Konstruktor übergeben:
+  ```
+  ocp-apim-subscription-key: <Your subscription key>
+  ```
 
-```var visionClient = new VisionServiceClient("Your subscriptionKey");```
+* Übergeben Sie den Schlüssel bei Verwendung der Clientbibliothek über den ComputerVisionClient-Konstruktor, und geben Sie die Region in einer Eigenschaft des Clients an:
 
-## <a name="upload-an-image-to-the-computer-vision-api-service-and-get-back-tags-descriptions-and-celebrities"></a>Hochladen eines Bilds in den Maschinelles Sehen-API-Dienst und Rückgabe von Tags, Beschreibungen und Prominenten
+    ```
+    var visionClient = new ComputerVisionClient(new ApiKeyServiceClientCredentials("Your subscriptionKey"))
+    {
+        Endpoint = "https://westus.api.cognitive.microsoft.com"
+    }
+    ```
 
-Die einfachste Möglichkeit für den Aufruf der Maschinelles Sehen-API ist das direkte Hochladen eines Bilds. Dies erfolgt durch Senden einer POST-Anforderung des Inhaltstyps „application/octet-stream“ beim Lesen von Daten aus einem Bild. Für „Tags“ und „Description“ ist diese Uploadmethode für alle Aufrufe der Maschinelles Sehen-API gleich. Der einzige Unterschied besteht in den Abfrageparametern, die der Benutzer angibt. 
+## <a name="upload-an-image-to-the-computer-vision-api-service"></a>Hochladen eines Bilds zum Maschinelles Sehen-API-Dienst
 
-So rufen Sie „Tags“ und „Description“ für ein bestimmtes Bild ab:
+Die einfachste Möglichkeit für den Aufruf der Maschinelles Sehen-API und die Rückgabe von Tags, eine Beschreibung und Prominenten ist das direkte Hochladen eines Bilds. Senden Sie hierzu eine „POST“-Anforderung mit dem Bild im HTTP-Text zusammen mit den aus dem Bild gelesenen Daten. Die Uploadmethode ist für alle Maschinelles Sehen-API-Aufrufe identisch. Der einzige Unterschied besteht in den von Ihnen festgelegten Abfrageparametern. 
 
-**Option 1:** Abrufen der Liste mit „Tags“ und einer „Description“
+Rufen Sie für ein bestimmtes Bild Tags und eine Beschreibung mithilfe einer der folgenden Optionen ab:
+
+### <a name="option-1-get-a-list-of-tags-and-a-description"></a>Option 1: Abrufen einer Liste mit Tags und einer Beschreibung
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
 ```
 
 ```csharp
-using Microsoft.ProjectOxford.Vision;
-using Microsoft.ProjectOxford.Vision.Contract;
 using System.IO;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
+using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 
-AnalysisResult analysisResult;
-var features = new VisualFeature[] { VisualFeature.Tags, VisualFeature.Description };
+ImageAnalysis imageAnalysis;
+var features = new VisualFeatureTypes[] { VisualFeatureTypes.Tags, VisualFeatureTypes.Description };
 
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
-  analysisResult = await visionClient.AnalyzeImageAsync(fs, features);
+  imageAnalysis = await visionClient.AnalyzeImageInStreamAsync(fs, features);
 }
 ```
 
-**2. Option** Abrufen der Liste mit nur „Tags“ oder einer Liste mit nur „Description“:
+### <a name="option-2-get-a-list-of-tags-only-or-a-description-only"></a>Option 2: Abrufen einer Liste mit nur Tags oder nur einer Beschreibung
 
-###### <a name="tags-only"></a>Nur „Tags“:
-
-```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag&subscription-key=<Your subscription key>
-var analysisResult = await visionClient.GetTagsAsync("http://contoso.com/example.jpg");
-```
-
-###### <a name="description-only"></a>Nur „Description“:
+Führen Sie für nur Tags Folgendes aus:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe&subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag?subscription-key=<Your subscription key>
+var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
+```
+
+Führen Sie für nur eine Beschreibung Folgendes aus:
+
+```
+POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe?subscription-key=<Your subscription key>
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
-  analysisResult = await visionClient.DescribeAsync(fs);
+  imageDescription = await visionClient.DescribeImageInStreamAsync(fs);
 }
 ```
 
-### <a name="get-domain-specific-analysis-celebrities"></a>Abrufen domänenspezifischer Analysen (Prominente)
+## <a name="get-domain-specific-analysis-celebrities"></a>Abrufen domänenspezifischer Analysen (Prominente)
 
-**Option 1:** Bereichsbezogene-Analyse – Analyse nur für ein angegebenes Modell
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Option 1: Bereichsbezogene Analyse – Analyse nur für ein angegebenes Modell
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
@@ -122,17 +134,17 @@ GET https://westus.api.cognitive.microsoft.com/vision/v2.0/models
 var models = await visionClient.ListModelsAsync();
 ```
 
-**Option 2:** Erweiterte Analyse – Analyse zur Bereitstellung zusätzlicher Details mit [86 Kategorien der Taxonomie](../Category-Taxonomy.md)
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-86-categories-taxonomy"></a>Option 2: Erweiterte Analyse – Analyse zur Bereitstellung zusätzlicher Details mit der 86-Kategorien-Taxonomie
 
-Für Anwendungen, bei denen Sie neben Details aus einem oder mehreren domänenspezifischen Modellen auch eine generische Bildanalyse wünschen, erweitern wir die v1-API um den Modellabfrageparameter.
+Für Anwendungen, bei denen Sie neben Details aus mindestens einem domänenspezifischen Modell auch eine generische Bildanalyse wünschen, erweitern Sie die v1-API mithilfe des Modellabfrageparameters.
 
 ```
 POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=celebrities
 ```
 
-Wenn diese Methode aufgerufen wird, werden wir zuerst die 86-Kategorie-Klassifizierung aufrufen. Wenn eine der Kategorien mit der eines bekannten/übereinstimmenden Modells übereinstimmt, wird die Klassifizierung ein zweites Mal aufgerufen. Wenn zum Beispiel „details=all“ oder „details“ „celebrities“ beinhalten, rufen wir das Prominentenmodell auf, nachdem der 86-Kategorie-Klassifizierer aufgerufen wurde und das Ergebnis die Kategorie „person“ beinhaltet. Dies wird die Latenzzeit für Benutzer, die sich für Prominente interessieren, im Vergleich zu Option 1 erhöhen.
+Wenn Sie diese Methode aufrufen, rufen Sie zuerst den Klassifizierer [86 Kategorien](../Category-Taxonomy.md) auf. Wenn eine der Kategorien mit der eines bekannten oder übereinstimmenden Modells übereinstimmt, wird der Klassifizierer ein zweites Mal aufgerufen. Wenn beispielsweise „celebrities“ in „details=all“ oder „details“ enthalten ist, rufen Sie nach dem 86-Kategorien-Klassifizierer das Prominentenmodell auf. Das Ergebnis enthält die Kategorieperson. Im Gegensatz zu Option 1 erhöht diese Methode die Wartezeit für Benutzer, die an Prominenten interessiert sind.
 
-Alle v1-Abfrageparameter verhalten sich in diesem Fall gleich.  Wenn „visualFeatures=categories“ nicht angegeben ist, wird es implizit aktiviert.
+Alle v1-Abfrageparameter verhalten sich in diesem Fall gleich. Wenn Sie „visualFeatures=categories“ nicht angeben, ist es implizit aktiviert.
 
 ## <a name="retrieve-and-understand-the-json-output-for-analysis"></a>Abrufen und Nachvollziehen der JSON-Ausgabe für die Analyse
 
@@ -165,21 +177,21 @@ Hier sehen Sie ein Beispiel:
 }
 ```
 
-Feld | Type | Inhalt
+Feld | type | Inhalt
 ------|------|------|
-Tags  | `object` | Objekt der obersten Ebene für das Array von Tags
-tags[].Name | `string`  | Schlüsselwort von Tags-Klassifizierung
-tags[].Score    | `number`  | Zuverlässigkeitsbewertung, zwischen 0 und 1.
-Beschreibung  | `object` | Objekt der obersten Ebene für eine Beschreibung.
-description.tags[] |    `string`    | Liste der Tags.  Wenn nicht sicher ist, dass eine Beschriftung erstellt werden kann, sind diese Tags ggf. die einzigen Informationen, die dem Aufrufenden zur Verfügung stehen.
+`Tags`  | `object` | Das Objekt der obersten Ebene für das Array von Tags
+tags[].Name | `string`  | Das Schlüsselwort vom Tags-Klassifizierer
+tags[].Score    | `number`  | Die Zuverlässigkeitsbewertung, zwischen 0 und 1
+description  | `object` | Das Objekt der obersten Ebene für eine Beschreibung
+description.tags[] |    `string`    | Die Liste der Tags.  Wenn nicht sicher ist, dass eine Beschriftung erstellt werden kann, sind diese Tags ggf. die einzigen Informationen, die dem Aufrufenden zur Verfügung stehen.
 description.captions[].text | `string`  | Ein Ausdruck, der das Bild beschreibt.
-description.captions[].confidence   | `number`  | Zuverlässigkeit für den Ausdruck.
+description.captions[].confidence   | `number`  | Die Zuverlässigkeit für den Ausdruck
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Abrufen und Nachvollziehen der JSON-Ausgabe für domänenspezifische Modelle
 
-**Option 1:** Bereichsbezogene-Analyse – Analyse nur für ein angegebenes Modell
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Option 1: Bereichsbezogene Analyse – Analyse nur für ein angegebenes Modell
 
-Die Ausgabe wird ein Array von Tags sein, wie beispielsweise unten:
+Bei der Ausgabe handelt es sich um ein Array von Tags, wie im folgenden Beispiel gezeigt:
 
 ```json
 {  
@@ -196,9 +208,9 @@ Die Ausgabe wird ein Array von Tags sein, wie beispielsweise unten:
 }
 ```
 
-**Option 2:** Erweiterte Analyse – Analyse zur Bereitstellung zusätzlicher Details mit 86 Kategorien der Taxonomie
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-the-86-categories-taxonomy"></a>Option 2: Erweiterte Analyse – Analyse zur Bereitstellung zusätzlicher Details mit der 86-Kategorien-Taxonomie
 
-Bei domänenspezifischen Modellen mit Option 2 (Erweiterte Analyse) wird der Rückgabetyp „categories“ erweitert. Ein Beispiel folgt:
+Bei domänenspezifischen Modellen mit Option 2 (erweiterte Analyse) wird der Rückgabetyp „categories“ wie im folgenden Beispiel gezeigt erweitert:
 
 ```json
 {  
@@ -225,20 +237,20 @@ Bei domänenspezifischen Modellen mit Option 2 (Erweiterte Analyse) wird der Rü
 }
 ```
 
-Das Feld „categories“ ist eine Liste einer oder mehrerer der [86 Kategorien](../Category-Taxonomy.md) in der ursprünglichen Taxonomie. Beachten Sie auch, dass Kategorien, die mit einem Unterstrich enden, mit dieser Kategorie und ihren untergeordneten Kategorien übereinstimmen (z.B. „people_“ sowie „people_group“, für Prominentenmodell).
+Das Feld „categories“ ist eine Liste einer oder mehrerer der [86 Kategorien](../Category-Taxonomy.md) in der ursprünglichen Taxonomie. Kategorien, die mit einem Unterstrich enden, stimmen mit dieser Kategorie und ihren untergeordneten Kategorien überein (z.B. „people_“ sowie „people_group“, für Prominentenmodell).
 
-Feld   | Type  | Inhalt
+Feld   | type  | Inhalt
 ------|------|------|
-categories | `object`   | Objekt der obersten Ebene
-categories[].name    | `string` | Name aus der 86-Kategorie-Taxonomie
-categories[].score  | `number`  | Zuverlässigkeitsbewertung, zwischen 0 und 1
-categories[].detail  | `object?`      | Optionales Detailobjekt
+categories | `object`   | Das Objekt der obersten Ebene
+categories[].name    | `string` | Der Name aus der Taxonomieliste mit 86 Kategorien
+categories[].score  | `number`  | Die Zuverlässigkeitsbewertung, zwischen 0 und 1
+categories[].detail  | `object?`      | (Optional) Das Detailobjekt
 
-Beachten Sie, dass, wenn mehrere Kategorien übereinstimmen (z.B. gibt die 86-Kategorie-Klassifizierung eine Bewertung für „people_“ und „people_young“ zurück, wenn „model=celebrities“), die Details an die allgemeinste Übereinstimmung angehängt werden („people_“ in diesem Beispiel.).
+Wenn mehrere Kategorien übereinstimmen (z. B. wenn der 86-Kategorie-Klassifizierer eine Bewertung für „people_“ und „people_young“ zurückgibt, wenn „model=celebrities“), werden die Details an die allgemeinste Übereinstimmung angehängt („people_“ in diesem Beispiel).
 
-## <a name="errors-responses"></a>Fehlermeldungen
+## <a name="error-responses"></a>Fehlercodes
 
-Diese sind identisch mit vision.analyze, mit dem zusätzlichen Fehler „NotSupportedModel Error (HTTP 400)“, der sowohl in Szenarios in Option 1 als auch in Option 2 zurückgegeben werden kann. Für Option 2 (Erweiterte Analyse) gibt die API ein „NotSupportedModel zurück“, wenn eines der in den Details angegebenen Modelle nicht erkannt wird, auch wenn eines oder mehrere von ihnen gültig sind.  Benutzer können „listModels“ aufrufen, um zu sehen, welche Modelle unterstützt werden.
+Diese Fehler sind identisch mit den Fehlern in „vision.analyze“ mit dem zusätzlichen Fehler „NotSupportedModel“ (HTTP 400), der sowohl in Szenarien in Option 1 als auch in Option 2 zurückgegeben werden kann. Für Option 2 (erweiterte Analyse) gibt die API „NotSupportedModel“ zurück, wenn eines der in den Details angegebenen Modelle nicht erkannt wird, auch wenn mindestens eines davon gültig ist. Rufen Sie „listModels“ auf, um zu sehen, welche Modelle unterstützt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

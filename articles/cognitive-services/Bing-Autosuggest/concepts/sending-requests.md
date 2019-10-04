@@ -1,25 +1,25 @@
 ---
 title: Senden von Anforderungen an die Bing-Vorschlagssuche-API
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie Anforderungen an die Bing-Vorschlagssuche-API senden.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
-ms.topic: quickstart
-ms.date: 02/20/2019
+ms.topic: conceptual
+ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: 597ef48fd7499a9d33b214b182d6dd1354756cdf
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: dbc8e2ccbd0a9d8c395a3b4e8a95e4e51f152792
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011582"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882419"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Senden von Anforderungen an die Bing-Vorschlagssuche-API
 
-Wenn Ihre Anwendung Abfragen an eine der Bing-Suche-APIs senden, können Sie die Bing-Vorschlagssuche-API verwenden, um die Suchumgebung des Benutzers zu verbessern. Die Bing-Vorschlagssuche-API gibt eine Liste vorgeschlagener Abfragen basierend auf der unvollständigen Abfragezeichenfolge im Suchfeld zurück. Bei der Eingabe von Zeichen in das Suchfeld Ihrer Anwendung können Sie Vorschläge in einer Dropdownliste anzeigen. In diesem Artikel erfahren Sie mehr über das Senden von Anforderungen an diese API.
+Wenn Ihre Anwendung Abfragen an eine der Bing-Suche-APIs senden, können Sie die Bing-Vorschlagssuche-API verwenden, um die Suchumgebung des Benutzers zu verbessern. Die Bing-Vorschlagssuche-API gibt eine Liste vorgeschlagener Abfragen basierend auf der unvollständigen Abfragezeichenfolge im Suchfeld zurück. Bei der Eingabe von Zeichen in das Suchfeld Ihrer Anwendung können Sie Vorschläge in einer Dropdownliste anzeigen. In diesem Artikel erfahren Sie mehr über das Senden von Anforderungen an diese API. 
 
 ## <a name="bing-autosuggest-api-endpoint"></a>Endpunkt der Bing-Vorschlagssuche-API
 
@@ -33,7 +33,7 @@ Um mithilfe der Bing-API vorgeschlagene Abfragen zu erhalten, senden Sie eine `G
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
 ```
 
-Weitere Informationen zu Headern, Parametern, Marktcodes, Antwortobjekten, Fehlern usw. finden Sie in der Referenz [Bing-Vorschlagssuche-API V7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference).
+Weitere Informationen zu Headern, Parametern, Marktcodes, Antwortobjekten, Fehlern usw. finden Sie in der Referenz [Bing-Vorschlagssuche-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference).
 
 Die **Bing**-APIs unterstützen Suchaktionen, die Ergebnisse gemäß ihrem Typ zurückgeben. Alle Suchendpunkte geben Ergebnisse als JSON-Antwortobjekte zurück.
 Alle Endpunkte unterstützen Abfragen, die eine bestimmte Sprache und/oder einen bestimmten Ort nach Längengrad, Breitengrad und Suchradius zurückgeben.
@@ -44,7 +44,7 @@ Beispiele für grundlegende Anforderungen, die die Vorschlagssuche-API verwenden
 ## <a name="bing-autosuggest-api-requests"></a>Anforderungen für die Bing-Vorschlagssuche-API
 
 > [!NOTE]
-> Bei Anforderungen für die Bing-Vorschlagssuche-API muss das HTTPS-Protokoll verwendet werden.
+> * Bei Anforderungen für die Bing-Vorschlagssuche-API muss das HTTPS-Protokoll verwendet werden.
 
 Alle Anforderungen sollten von einem Server stammen. Wird der Schlüssel zusammen mit einer Clientanwendung verteilt, erhöht sich das Risiko, dass eine böswillige dritte Partei darauf zugreift. Aufrufe über einen Server ermöglichen zudem die Verwendung eines einzelnen Upgradepunkts für zukünftige Updates.
 
@@ -95,11 +95,13 @@ Im folgenden Beispiel wird eine Anforderung gezeigt, die die vorgeschlagene Abfr
 
 Wenn Sie zuvor noch keine der Bing-APIs aufgerufen haben, lassen Sie den Client-ID-Header weg. Schließen Sie den Client-ID-Header nur ein, wenn Sie bereits eine Bing-API aufgerufen haben und Bing eine Client-ID für die Kombination aus Benutzer und Gerät zurückgegeben hat.
 
-Das folgende Beispiel zeigt die Antwort auf die vorherige Anforderung. Die Antwort enthält eine Web-Vorschlagsgruppe, die eine Liste von Abfragevorschlägen enthält. Jeder Vorschlag enthält die Felder `displayText`, `query` und `url`.
+Die folgende Webvorschlagsgruppe ist eine Antwort auf die oben genannte Anforderung. Die Gruppe enthält eine Liste von Vorschlägen für Suchanfragen, wobei jeder Vorschlag ein `displayText`-, `query`- und `url`-Feld enthält.
 
 Das `displayText`-Feld enthält die vorgeschlagene Abfrage, die Sie zum Auffüllen der Dropdownliste des Suchfelds verwenden. Sie müssen alle in der Antwort enthaltenen Vorschläge in der angegebenen Reihenfolge anzeigen.  
 
-Wenn der Benutzer eine Abfrage aus der Dropdownliste auswählt, können Sie damit eine der [Bing-Suche-API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) aufrufen und die Ergebnisse selbst anzeigen oder den Benutzer unter Verwendung des zurückgegebenen Felds `url` zur Bing-Ergebnisseite weiterleiten. Im folgenden Beispiel wird die Bing-Websuche-API verwendet:
+Wenn der Benutzer eine Abfrage aus der Dropdownliste auswählt, können Sie damit eine der [Bing-Suche-API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/bing-api-comparison?toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fbing-autosuggest%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json) aufrufen und die Ergebnisse selbst anzeigen oder den Benutzer unter Verwendung des zurückgegebenen Felds `url` zur Bing-Ergebnisseite weiterleiten.
+
+[!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
 ```json
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
@@ -168,5 +170,5 @@ BingAPIs-Market: en-US
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Worum handelt es sich bei der Bing-Vorschlagssuche?](../get-suggested-search-terms.md)
-- [Referenz für die Bing-Vorschlagssuche-API V7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference)
+- [Referenz für die Bing-Vorschlagssuche-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
 - [Abrufen vorgeschlagener Suchbegriffe über die Bing-Vorschlagssuche-API](get-suggestions.md)

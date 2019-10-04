@@ -1,21 +1,20 @@
 ---
-title: Sichern von Azure-Dateifreigaben
+title: Sichern und Wiederherstellen von Azure-Dateifreigaben
 description: Dieser Artikel enthält ausführliche Informationen zum Sichern und Wiederherstellen von Azure-Dateifreigaben sowie Informationen zu Verwaltungsaufgaben.
-services: backup
-author: rayne-wiselman
-ms.author: raynew
-ms.date: 01/31/2019
+author: dcurwin
+ms.author: dacurwin
+ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: ac9a748742bda6b1e7a321a427090662542f1032
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 44a2b0feab19d042de58359a7ea13814415e6c9e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486910"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129562"
 ---
-# <a name="back-up-azure-file-shares"></a>Sichern von Azure-Dateifreigaben
+# <a name="back-up-and-restore-azure-file-shares"></a>Sichern und Wiederherstellen von Azure-Dateifreigaben
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](../storage/files/storage-files-introduction.md) sichern und wiederherstellen.
 
 In diesem Artikel lernen Sie Folgendes:
@@ -32,18 +31,16 @@ Um eine Azure-Dateifreigabe sichern zu können, muss sie sich unter einem der [u
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Einschränkungen beim Sichern von Azure-Dateifreigaben während der Vorschauphase
 Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Azure-Dateifreigaben in Speicherkonten vom Typ „Universell V1“ und „Universell V2“ werden unterstützt. Folgende Sicherungsszenarien werden für Azure-Dateifreigaben nicht unterstützt:
-- Sie können Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [RA-GRS](../storage/common/storage-redundancy-grs.md) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff) nicht schützen.*
-- Sie können Azure-Dateifreigaben in Speicherkonten mit aktivierten virtuellen Netzwerken oder aktivierter Firewall nicht schützen.
+- Unterstützung für die Sicherung von Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy-zrs.md) (Zone Redundant Storage, zonenredundanter Speicher) ist momentan auf [diese Regionen](backup-azure-files-faq.md#in-which-geos-can-i-back-up-azure-file-shares-) beschränkt.
 - Für den Schutz von Azure Files mit Azure Backup ist keine Befehlszeilenschnittstelle verfügbar.
+- Azure Backup unterstützt derzeit das Konfigurieren geplanter einmaliger täglicher Sicherungen von Azure-Dateifreigaben.
 - Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.
 - Die Anzahl bedarfsgesteuerter Sicherungen ist auf vier Sicherungen pro Tag begrenzt.
 - Verwenden Sie [Ressourcensperren](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) für das Speicherkonto, um das versehentliche Löschen von Sicherungen in Ihrem Recovery Services-Tresor zu verhindern.
 - Löschen Sie keine Momentaufnahmen, die mit Azure Backup erstellt wurden. Das Löschen von Momentaufnahmen kann zum Verlust von Wiederherstellungspunkten bzw. zu Wiederherstellungsfehlern führen.
 - Löschen Sie keine Dateifreigaben, die durch Azure Backup geschützt sind. In der aktuellen Lösung werden nach dem Löschen der Dateifreigabe alle von Azure Backup erstellten Momentaufnahmen gelöscht, sodass alle Wiederherstellungspunkte verloren gehen.
 
-\*Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [RA-GRS](../storage/common/storage-redundancy-grs.md) (Read-Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff) werden als GRS verwendet und zu GRS-Preisen abgerechnet.
 
-Die Sicherung für Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy-zrs.md) (Zone Redundant Storage, zonenredundanter Speicher) steht momentan nur in den Regionen „USA, Mitte“ (CUS), „USA, Osten (EUS), „USA, Osten 2“ (EUS2), „Europa, Norden“ (NE), „Asien, Südosten“ (SEA), „Europa, Westen“ (WE) und „USA, Westen 2“ (WUS2) zur Verfügung.
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurieren der Sicherung für eine Azure-Dateifreigabe
 In diesem Tutorial wird davon ausgegangen, dass Sie bereits eine Azure-Dateifreigabe eingerichtet haben. So sichern Sie Ihre Azure-Dateifreigabe
@@ -56,7 +53,7 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits eine Azure-Dateifrei
 
     ![Auswählen einer Azure-Dateifreigabe als Sicherungsziel](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
 
-3. Klicken Sie auf **Sicherung**, um die Azure-Dateifreigabe für Ihren Recovery Services-Tresor zu konfigurieren. 
+3. Klicken Sie auf **Sicherung**, um die Azure-Dateifreigabe für Ihren Recovery Services-Tresor zu konfigurieren.
 
    ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/backup-file-shares/set-backup-goal.png)
 
@@ -89,13 +86,15 @@ Gelegentlich empfiehlt es sich, eine Sicherungsmomentaufnahme oder einen Wiederh
 
    ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/backup-file-shares/list-of-azure-files-backup-items.png)
 
-3. Wählen Sie in der Liste der Azure-Dateifreigaben die gewünschte Dateifreigabe aus. Das Menü „Sicherungselemente“ wird für die ausgewählte Dateifreigabe geöffnet.
+3. Wählen Sie in der Liste der Azure-Dateifreigaben die gewünschte Dateifreigabe aus. Einzelheiten zum **Sicherungselement** werden angezeigt. Klicken Sie im Menü **Sicherungselement** auf **Jetzt sichern**. Da es sich um einen bedarfsgesteuerten Sicherungsauftrag handelt, ist dem Wiederherstellungspunkt keine Aufbewahrungsrichtlinie zugeordnet.
 
    ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/backup-file-shares/backup-item-menu.png)
 
-4. Klicken Sie im Menü „Sicherungselemente“ auf **Jetzt sichern**. Da es sich um einen bedarfsgesteuerten Sicherungsauftrag handelt, ist dem Wiederherstellungspunkt keine Aufbewahrungsrichtlinie zugeordnet. Das Dialogfeld **Jetzt sichern** wird geöffnet. Geben Sie den Tag an, bis zu dem der Wiederherstellungspunkt aufbewahrt werden soll.
+4. Das Dialogfeld **Jetzt sichern** wird geöffnet. Geben Sie den Tag an, bis zu dem der Wiederherstellungspunkt aufbewahrt werden soll.
 
    ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/backup-file-shares/backup-now-menu.png)
+
+5. Klicken Sie auf **OK**, um den bedarfsgesteuerten Sicherungsauftrag zu bestätigen.
 
 ## <a name="restore-from-backup-of-azure-file-share"></a>Wiederherstellen aus der Sicherung einer Azure-Dateifreigabe
 Wenn Sie eine gesamte Dateifreigabe oder einzelne Dateien oder Ordner auf der Grundlage eines Wiederherstellungspunkts wiederherstellen müssen, navigieren Sie zu „Sicherungselemente“, wie im vorherigen Abschnitt erläutert. Wählen Sie **Restore Share** (Freigabe wiederherstellen), um für eine gesamte Dateifreigabe eine Zeitpunktwiederherstellung durchzuführen. Wählen Sie in der Liste der angezeigten Wiederherstellungspunkte einen Punkt aus, um die aktuelle Dateifreigabe zu überschreiben oder den Punkt als alternative Dateifreigabe in der gleichen Region wiederherzustellen.
@@ -123,10 +122,12 @@ Sie können den Status aller Aufträge auf der Seite **Sicherungsaufträgen** ü
 So öffnen Sie die Seite **Sicherungsaufträge**
 
 - Öffnen Sie den zu überwachenden Recovery Services-Tresor, und klicken Sie im Menü des Recovery Services-Tresors auf **Aufträge** und anschließend auf **Sicherungsaufträge**.
+
    ![Auswählen des zu überwachenden Auftrags](./media/backup-file-shares/open-backup-jobs.png)
 
     Die Liste der Sicherungsaufträge und der Status dieser Aufträge werden angezeigt.
-   ![Auswählen des zu überwachenden Auftrags](./media/backup-file-shares/backup-jobs-progress-list.png)
+
+    ![Auswählen des zu überwachenden Auftrags](./media/backup-file-shares/backup-jobs-progress-list.png)
 
 ### <a name="create-a-new-policy"></a>Erstellen einer neuen Richtlinie
 

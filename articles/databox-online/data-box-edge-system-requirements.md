@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: d1e4af6e73c272a7ccc8996b0ccc854be64dd74b
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006350"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60756544"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Systemanforderungen für Azure Data Box Edge
 
@@ -82,7 +82,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 | URL-Muster                      | Komponente oder Funktion                     |   
 |----------------------------------|---------------------------------------------|
-| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft-Containerregistrierung (erforderlich)               |
+| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft-Containerregistrierung (erforderlich)               |
 | https://\*.azurecr.io                     | Persönliche Containerregistrierungen und Containerregistrierungen von Drittanbietern (optional) | 
 | https://\*.azure-devices.net              | IoT Hub-Zugriff (erforderlich)                             | 
 
@@ -94,7 +94,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 | URL-Muster                      | Komponente oder Funktion                     |  
 |----------------------------------|---------------------------------------------|
-| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft-Containerregistrierung (erforderlich)               |
+| https:\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft-Containerregistrierung (erforderlich)               |
 | https://\*.azure-devices.us              | IoT Hub-Zugriff (erforderlich)           |
 | https://\*.azurecr.us                    | Persönliche Containerregistrierungen und Containerregistrierungen von Drittanbietern (optional) | 
 
@@ -123,10 +123,10 @@ Um die Leistung Ihrer Lösung zu verstehen und zu optimieren, können Sie Folgen
 - Die im Azure-Portal verfügbaren Computemetriken. Wechseln Sie zu Ihrer Data Box Edge-Ressource und dann zu **Überwachung > Metriken**. Betrachten Sie **Edgecomputing – Arbeitsspeichernutzung** und **Edgecomputing – CPU in Prozent**, um die verfügbaren Ressourcen zu verstehen und wie die Ressourcen verbraucht werden.
 - Die über die PowerShell-Schnittstelle des Geräts verfügbaren Überwachungsbefehle wie:
 
-    - `dkr` Statistiken zum Abrufen eines Livestreams der Ressourcennutzungsstatistiken für Container. Der Befehl unterstützt Metriken zu CPU, Arbeitsspeicherauslastung, Arbeitsspeicherlimit und Netzwerk-E/A.
-    - `dkr system df` um Informationen bezüglich des belegten Speicherplatzes zu erhalten. 
-    - `dkr image [prune]` um nicht verwendete Images zu löschen und Speicherplatz freizugeben.
-    - `dkr ps --size` um die ungefähre Größe eines aktiven Containers anzuzeigen. 
+    - `dkr`: Statistiken zum Abrufen eines Livestreams der Ressourcennutzungsstatistiken für Container. Der Befehl unterstützt Metriken zu CPU, Arbeitsspeicherauslastung, Arbeitsspeicherlimit und Netzwerk-E/A.
+    - `dkr system df`: zum Abrufen von Informationen bezüglich des belegten Speicherplatzes. 
+    - `dkr image [prune]`: zum Löschen nicht verwendeter Images und Freigeben von Speicherplatz.
+    - `dkr ps --size`: zum Anzeigen der ungefähren Größe eines aktiven Containers. 
 
     Weitere Informationen zu den verfügbaren Befehlen finden Sie unter [Überwachung und Problembehandlung von Computemodulen](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
 

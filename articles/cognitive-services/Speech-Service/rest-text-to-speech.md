@@ -1,5 +1,5 @@
 ---
-title: Sprachsynthese-API-Referenz (REST) – Sprachdienste
+title: Text-to-Speech-API-Referenz (REST) – Speech Service
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Sprachsynthese-REST-API verwenden. In diesem Artikel erfahren Sie mehr über Autorisierungs- und Abfrageoptionen sowie darüber, wie Sie eine Anforderung strukturieren und eine Antwort erhalten.
 services: cognitive-services
@@ -8,15 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 71710cd940aad3a56dae6c19d4d52a5b141b3d80
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b0a0d788c9fadd13b9a37f541a81945c86b37c29
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58660965"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559176"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-to-Speech-REST-API
 
@@ -44,25 +43,25 @@ Der Endpunkt `voices/list` ermöglicht es Ihnen, eine vollständige Liste der St
 
 | Region | Endpunkt |
 |--------|----------|
-| Australien (Osten) | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Brasilien Süd | https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Kanada, Mitte | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA (Mitte) | https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Asien, Osten | https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA (Ost) | https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA (Ost) 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Frankreich, Mitte | https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Indien, Mitte | https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Japan, Osten | https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Korea, Mitte | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA Nord Mitte | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Nordeuropa | https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA (Mitte/Süden) | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Asien, Südosten | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| UK, Süden | https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Europa, Westen | https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA (Westen) | https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA, Westen 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Australien (Osten) | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Brasilien Süd | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Kanada, Mitte | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA (Mitte) | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Asien, Osten | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| East US | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA (Ost) 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Frankreich, Mitte | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Indien, Mitte | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Japan, Osten | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Korea, Mitte | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA Nord Mitte | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Nordeuropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA (Mitte/Süden) | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Asien, Südosten | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| UK, Süden | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Europa, Westen | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA (Westen) | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA, Westen 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
 ### <a name="request-headers"></a>Anforderungsheader
 
@@ -168,7 +167,7 @@ Diese Tabelle führt die erforderlichen und optionalen Header für Text-to-Speec
 
 ### <a name="audio-outputs"></a>Audioausgaben
 
-Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung als `X-Microsoft-OutputFormat`-Header gesendet werden. Es wird jeweils eine Bitrate und ein Codierungstyp angegeben. Der Speech-Dienst unterstützt Audioausgaben mit 24kHz, 16kHz und 8kHz.
+Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung als `X-Microsoft-OutputFormat`-Header gesendet werden. Es wird jeweils eine Bitrate und ein Codierungstyp angegeben. Der Spracherkennungsdienst unterstützt Audioausgaben mit 24 kHz, 16 kHz und 8 kHz.
 
 |||
 |-|-|
@@ -181,7 +180,7 @@ Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung al
 | `audio-24khz-48kbitrate-mono-mp3` | |
 
 > [!NOTE]
-> Wenn die ausgewählte Stimme und das ausgewählte Ausgabeformat unterschiedliche Bitraten aufweisen, wird das Audio nach Bedarf neu gesampelt. 24-KHz-Stimmen unterstützen keine `audio-16khz-16kbps-mono-siren`- und `riff-16khz-16kbps-mono-siren`-Ausgabeformate.
+> Wenn die ausgewählte Stimme und das ausgewählte Ausgabeformat unterschiedliche Bitraten aufweisen, wird das Audio nach Bedarf neu gesampelt. Jedoch unterstützen 24 khz-Stimmen keine `audio-16khz-16kbps-mono-siren`- und `riff-16khz-16kbps-mono-siren`-Ausgabeformate.
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -204,7 +203,7 @@ Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>
+    name='en-US-JessaRUS'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
@@ -225,6 +224,7 @@ Der HTTP-Statuscode jeder Antwort zeigt den Erfolg oder allgemeine Fehler an.
 | 400 | Ungültige Anforderung | Ein erforderlicher Parameter fehlt, ist leer oder Null. Oder der an einen erforderlichen oder optionalen Parameter übergebene Wert ist ungültig. Ein häufiges Problem sind zu lange Kopfzeilen. |
 | 401 | Nicht autorisiert | Die Anforderung ist nicht autorisiert. Stellen Sie sicher, dass Ihr Abonnementschlüssel oder -token gültig ist und sich in der richtigen Region befindet. |
 | 413 | Anforderungsentität zu groß | Die SSML-Eingabe umfasst mehr als 1024 Zeichen. |
+| 415 | Nicht unterstützter Medientyp | Möglicherweise wurde der falsche `Content-Type`-Wert bereitgestellt. `Content-Type` sollte auf `application/ssml+xml` festgelegt sein. |
 | 429 | Zu viele Anforderungen | Sie haben das Kontingent oder die Rate der Anforderungen überschritten, das bzw. die für Ihr Abonnement zulässig ist. |
 | 502 | Ungültiges Gateway | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen. |
 

@@ -3,9 +3,8 @@ title: Behandeln von Endpoint Protection-Problemen mit Azure Security Center | M
 description: Hier erfahren Sie, wie Sie Endpoint Protection-Probleme in Azure Security Center behandeln.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
-ms.author: rkarlin
-ms.openlocfilehash: 4ed0be3178f9d5d014e9e50c11d555b586ced765
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.author: memildin
+ms.openlocfilehash: b1bcce1e94a64253986ad9b1fd77874ba0a39839
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579324"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202074"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Behandeln von Endpoint Protection-Problemen mit Azure Security Center
 Azure Security Center überwacht den Status des Antischadsoftware-Schutzes und meldet diesen auf dem Blatt „Endpoint protection issues“ (Endpoint Protection-Probleme). Security Center hebt Probleme wie erkannte Bedrohungen und unzureichenden Schutz hervor, die Ihre virtuellen Computer (VMs) und physischen Computer anfällig für Antischadsoftwarebedrohungen machen können. Mithilfe der Informationen unter **Endpoint protection issues** (Endpoint Protection-Probleme) können Sie die Behandlung der erkannten Probleme planen.
@@ -31,12 +30,12 @@ Security Center meldet folgende Endpoint Protection-Probleme:
 - Endpoint Protection-Integrität:
 
   - Signatur veraltet: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese verfügt jedoch nicht über die neuesten Antischadsoftware-Signaturen.
-  - Kein Echtzeitschutz: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese ist jedoch nicht für Echtzeitschutz konfiguriert.   Der Dienst wurde möglicherweise deaktiviert, oder Security Center kann den Status nicht abrufen, da die Lösung nicht unterstützt wird. Eine Liste mit unterstützten Lösungen finden Sie unter [Partnerintegration in Azure Security Center](security-center-os-coverage.md#supported-endpoint-protection-solutions).
+  - Kein Echtzeitschutz: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese ist jedoch nicht für Echtzeitschutz konfiguriert.   Der Dienst wurde möglicherweise deaktiviert, oder Security Center kann den Status nicht abrufen, da die Lösung nicht unterstützt wird. Eine Liste mit unterstützten Lösungen finden Sie unter [Partnerintegration in Azure Security Center](security-center-services.md#endpoint-supported).
   - Keine Berichterstattung: Von der installierten Antischadsoftware-Lösung werden keine Daten gemeldet.
   - Unbekannt: Eine Antischadsoftware-Lösung ist installiert, aber der Status ist unbekannt, oder es wird ein unbekannter Fehler gemeldet.
 
     > [!NOTE]
-    > Eine Liste der Sicherheitslösungen für den Endpunktschutz, die in Security Center integriert sind, finden Sie unter [Integrieren von Sicherheitslösungen](security-center-os-coverage.md#supported-endpoint-protection-solutions).
+    > Eine Liste der Sicherheitslösungen für den Endpunktschutz, die in Security Center integriert sind, finden Sie unter [Integrieren von Sicherheitslösungen](security-center-services.md#endpoint-supported).
     >
     >
 
@@ -47,7 +46,7 @@ In diesem Beispiel verwenden wir **Compute**.  Sie erfahren, wie Sie Antischadso
 
 ## <a name="install-antimalware-on-azure-vms"></a>Installieren von Antischadsoftware auf virtuellen Azure-Computern
 
-1. Klicken Sie im Hauptmenü von Security Center oder unter **Übersicht** auf **Compute**.
+1. Klicken Sie im Hauptmenü von Security Center oder unter **Übersicht** auf **Compute und Apps**.
 
    ![Auswählen von „Compute“][1]
 
@@ -100,7 +99,7 @@ Ein weiteres Suchergebnis wird geöffnet, das gefilterte Informationen für dies
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Endpoint Protection installieren“ implementieren. Weitere Informationen zum Aktivieren von Antischadsoftware von Microsoft finden Sie in den folgenden Dokumenten:
 
-* [Microsoft Antimalware for Cloud Services and Virtual Machine (Antischadsoftware von Microsoft für Cloud Services und virtuelle Computer)](../security/azure-security-antimalware.md): Erfahren Sie mehr zur Bereitstellung von Antischadsoftware von Microsoft.
+* [Microsoft Antimalware for Cloud Services and Virtual Machine (Antischadsoftware von Microsoft für Cloud Services und virtuelle Computer)](../security/fundamentals/antimalware.md): Erfahren Sie mehr zur Bereitstellung von Antischadsoftware von Microsoft.
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Dokumenten:
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/30/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d38d93a1c9716cc3a71d904b7b1a46fb8b1c2ee0
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 527dd99f122ec70cc47305947a5cbce3207b9664
+ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369223"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68666299"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Anpassen der Azure AD-Funktionalität für die Self-Service-Kennwortzurücksetzung
 
@@ -24,12 +24,20 @@ IT-Experten, die die Self-Service-Kennwortzurücksetzung (Self-Service Password 
 
 ## <a name="customize-the-contact-your-administrator-link"></a>Anpassen des Links „Wenden Sie sich an Ihren Administrator“
 
-Selbst wenn SSPR nicht aktiviert ist, gibt es für Benutzer im Portal für die Kennwortzurücksetzung den Link „Wenden Sie sich an Ihren Administrator“. Wählt ein Benutzer diesen Link aus, wird einer der folgenden Vorgänge ausgelöst:
+Benutzern mit Self-Service-Kennwortzurücksetzung wird im Portal für die Kennwortzurücksetzung ein Link „Wenden Sie sich an Ihren Administrator“ angezeigt. Wenn ein Benutzer auf diesen Link klickt, geschieht Folgendes:
 
-* Es wird eine E-Mail an Ihre Administratoren gesendet, in der diese gebeten werden, den Benutzer beim Ändern des Kennworts zu unterstützen.
-* Die Benutzer werden an eine URL weitergeleitet, die Sie für Unterstützung angegeben haben.
+* Link im Standardzustand:
+   * Es wird eine E-Mail an Ihre Administratoren gesendet, in der diese gebeten werden, den Benutzer beim Ändern des Kennworts zu unterstützen. Nachstehend finden Sie eine [Beispiel-E-Mail](#sample-email).
+* Angepasster Link:
+   * Ihre Benutzer werden an eine vom Administrator angegebene Webseite oder E-Mail-Adresse weitergeleitet, über die sie Unterstützung erhalten.
 
-Es wird empfohlen, diesen Kontakt für Ihre Benutzer beispielsweise auf eine vertraute E-Mail-Adresse oder Website festzulegen, die von Ihren Benutzern bereits für Fragen an den Support verwendet wird.
+> [!TIP]
+> Bei einer Anpassung wird empfohlen, eine Einstellung zu verwenden, die den Benutzern für den Support bereits vertraut ist.
+
+> [!WARNING]
+> Wenn Sie diese Einstellung mit einer E-Mail-Adresse und einem Konto anpassen, für die bzw. das eine Kennwortzurücksetzung erforderlich ist, können die Benutzer möglicherweise keine Unterstützung anfordern.
+
+### <a name="sample-email"></a>Beispiel-E-Mail
 
 ![Beispielanforderung zum Zurücksetzen der an den Administrator gesendeten E-Mail][Contact]
 

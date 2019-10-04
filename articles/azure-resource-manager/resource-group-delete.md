@@ -1,29 +1,24 @@
 ---
 title: Löschen von Ressourcengruppen und Ressourcen – Azure Resource Manager
-description: Beschreibt, in welcher Reihenfolge Azure Resource Manager das Löschen von Ressourcen beim Löschen einer Ressourcengruppe ausführt. Sie erhalten Informationen zu den Antwortcodes und dazu, wie Resource Manager anhand der Codes bestimmt, ob die Löschung erfolgreich war.
-services: azure-resource-manager
-documentationcenter: na
+description: Beschreibt, wie Ressourcengruppen und Ressourcen gelöscht werden. Es wird beschrieben, in welcher Reihenfolge Azure Resource Manager das Löschen von Ressourcen beim Löschen einer Ressourcengruppe ausführt. Sie erhalten Informationen zu den Antwortcodes und dazu, wie Resource Manager anhand der Codes bestimmt, ob die Löschung erfolgreich war.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/09/2018
+ms.date: 09/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: c38b1ccf7f7ccfe57e2b29f236f642238c4706a7
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 30a394fd33ed5d928175fc27e003661c2b53de9a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492741"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275084"
 ---
-# <a name="azure-resource-manager-resource-group-deletion"></a>Azure Resource Manager: Löschvorgang von Ressourcengruppen
+# <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Löschen von Ressourcengruppen und Ressourcen mit Azure Resource Manager
 
-In diesem Artikel wird beschrieben, in welcher Reihenfolge Azure Resource Manager das Löschen von Ressourcen ausführt, wenn Sie eine Ressourcengruppe löschen.
+Dieser Artikel zeigt, wie Ressourcengruppen und Ressourcen gelöscht werden. Er beschreibt, in welcher Reihenfolge Azure Resource Manager das Löschen von Ressourcen ausführt, wenn Sie eine Ressourcengruppe löschen.
 
-## <a name="determine-order-of-deletion"></a>Bestimmen der Reihenfolge des Löschvorgangs
+## <a name="how-order-of-deletion-is-determined"></a>Vorgehensweise zur Bestimmung der Reihenfolge des Löschvorgangs
 
 Wenn Sie eine Ressourcengruppe löschen, bestimmt Resource Manager die Reihenfolge, in der Ressourcen gelöscht werden. Die folgende Reihenfolge wird verwendet:
 
@@ -32,8 +27,6 @@ Wenn Sie eine Ressourcengruppe löschen, bestimmt Resource Manager die Reihenfol
 2. Ressourcen, die andere Ressourcen verwalten, werden im nächsten Schritt gelöscht. Bei einer Ressource kann die Eigenschaft `managedBy` festgelegt sein, um anzuzeigen, dass eine andere Ressource sie verwaltet. Wenn diese Eigenschaft festgelegt ist, wird die Ressource, die die andere Ressource verwaltet, vor den anderen Ressourcen gelöscht.
 
 3. Die verbleibenden Ressourcen werden im Anschluss an die oben genannten beiden Kategorien gelöscht.
-
-## <a name="resource-deletion"></a>Ressourcenlöschung
 
 Nachdem die Reihenfolge ermittelt wurde, gibt Resource Manager einen DELETE-Vorgang für jede Ressource aus. Es wird gewartet, bis alle Abhängigkeiten beendet wurden, bevor der Vorgang fortgesetzt wird.
 
@@ -45,7 +38,7 @@ Für synchrone Vorgänge lauten die erwarteten Antwortcodes bei Erfolg folgender
 
 Für asynchrone Vorgänge lautet die erwartete Antwort bei Erfolg 202. Resource Manager verfolgt den Location-Header oder den azure-async-Vorgangsheader nach, um den Status des asynchronen Löschvorgangs zu ermitteln.
   
-### <a name="errors"></a>Errors
+### <a name="deletion-errors"></a>Fehler beim Löschen
 
 Wenn ein Löschvorgang einen Fehler zurückgibt, wiederholt Resource Manager den DELETE-Aufruf. Wiederholungsversuche finden für die Statuscodes 5xx, 429 und 408 statt. Standardmäßig beträgt der Zeitraum für Wiederholungsversuche 15 Minuten.
 
@@ -55,8 +48,6 @@ Resource Manager gibt einen GET-Aufruf für jede Ressource aus, für die ein Lö
 
 Wenn der GET-Aufruf für die Ressource jedoch 200 oder 201 zurückgibt, erstellt Resource Manager die Ressource erneut.
 
-### <a name="errors"></a>Errors
-
 Wenn der GET-Vorgang einen Fehler zurückgibt, wiederholt Resource Manager die GET-Anforderung für die folgenden Fehlercodes:
 
 * Kleiner als 100
@@ -65,6 +56,69 @@ Wenn der GET-Vorgang einen Fehler zurückgibt, wiederholt Resource Manager die G
 * Größer als 500
 
 Bei anderen Fehlercodes kann Resource Manager das Löschen der Ressource nicht durchführen.
+
+## <a name="delete-resource-group"></a>Ressourcengruppe löschen
+
+Verwenden Sie eine der folgenden Methoden, um die Ressourcengruppe zu löschen.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name ExampleResourceGroup
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli-interactive
+az group delete --name ExampleResourceGroup
+```
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+1. Wählen Sie im [Portal](https://portal.azure.com) die Ressourcengruppe aus, die Sie löschen möchten.
+
+1. Wählen Sie die Option **Ressourcengruppe löschen**.
+
+   ![Ressourcengruppe löschen](./media/resource-group-delete/delete-group.png)
+
+1. Geben Sie den Namen der Ressourcengruppe ein, um den Löschvorgang zu bestätigen.
+
+---
+
+## <a name="delete-resource"></a>Ressource löschen
+
+Verwenden Sie eine der folgenden Methoden, um eine Ressource zu löschen.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Remove-AzResource `
+  -ResourceGroupName ExampleResourceGroup `
+  -ResourceName ExampleVM `
+  -ResourceType Microsoft.Compute/virtualMachines
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli-interactive
+az resource delete \
+  --resource-group ExampleResourceGroup \
+  --name ExampleVM \
+  --resource-type "Microsoft.Compute/virtualMachines"
+```
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+1. Wählen Sie im [Portal](https://portal.azure.com) die Ressource aus, die Sie löschen möchten.
+
+1. Klicken Sie auf **Löschen**. Der folgende Screenshot zeigt die Verwaltungsoptionen für einen virtuellen Computer.
+
+   ![Ressource löschen](./media/resource-group-delete/delete-resource.png)
+
+1. Bestätigen Sie den Löschvorgang, wenn Sie dazu aufgefordert werden.
+
+---
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,25 +10,26 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: bd37665e962ada59149b54075d7f8acbea895c50
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4b9431469a7925d26003ad9c34f6b401e5767f6d
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437461"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704940"
 ---
 # <a name="paper-entity"></a>Artikelentität
 
 <sub> * Die folgenden Attribute sind spezifisch für die Artikelentität. (Ty = '0') </sub>
 
 
-NAME    |BESCHREIBUNG                                        |Type       | Vorgänge
+NAME    |BESCHREIBUNG                                        |type       | Vorgänge
 ------- | ------------------------------------------------- | --------- | ----------------------------
-id      |Entitäts-ID                                          |Int64      |Equals
+Id      |Entitäts-ID                                          |Int64      |Equals
 Ti      |Titel des Artikels                                        |Zeichenfolge     |Equals,<br/>StartsWith
-L       |Sprachcode des Artikels, getrennt durch „\@@@“            |Zeichenfolge     |Equals
+L       |Sprachcode des Artikels, getrennt durch „\@\@\@“          |Zeichenfolge     |Equals
 J       |Jahr des Artikels                                         |Int32      |Equals,<br/>IsBetween
-D       |Datum des Artikels                                         |Datum       |Equals,<br/>IsBetween
+D       |Datum des Artikels                                         |Date       |Equals,<br/>IsBetween
 CC      |Anzahl der Zitate                                     |Int32      |none  
 ECC     |Geschätzte Zitatanzahl                           |Int32      |none
 AA.AuN  |Name des Autors                                        |Zeichenfolge     |Equals,<br/>StartsWith

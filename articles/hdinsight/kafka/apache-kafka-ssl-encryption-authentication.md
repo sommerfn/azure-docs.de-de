@@ -1,81 +1,119 @@
 ---
 title: Einrichten von SSL-Verschlüsselung und -Authentifizierung für Apache Kafka in Azure HDInsight
 description: Einrichten von SSL-Verschlüsselung für die Kommunikation zwischen Kafka-Clients und Kafka-Brokern sowie zwischen Kafka-Brokern. Einrichten von SSL-Authentifizierung von Clients.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: cd850808f656b211bf1fdbfd2fe7c5799150b030
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5d567074a0038915cc43a585b34c9c71ccf3eb1b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839660"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65464995"
 ---
-# <a name="setup-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Einrichten von Secure Sockets Layer-Verschlüsselung (SSL) und -Authentifizierung für Apache Kafka in Azure HDInsight
+# <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Einrichten von Secure Sockets Layer-Verschlüsselung (SSL) und -Authentifizierung für Apache Kafka in Azure HDInsight
 
-In diesem Artikel wird beschrieben, wie Sie SSL-Verschlüsselung zwischen Apache Kafka-Clients und Apache Kafka-Brokern einrichten. Außerdem enthält der Artikel die Schritte, die erforderlich sind, um die Authentifizierung von Clients einzurichten (auch als bidirektionaler SSL bezeichnet).
+In diesem Artikel erfahren Sie, wie Sie SSL-Verschlüsselung zwischen Apache Kafka-Clients und Apache Kafka-Brokern einrichten. Außerdem zeigt Ihnen der Artikel, wie Sie die Authentifizierung von Clients einrichten (auch als bidirektionaler SSL bezeichnet).
 
-## <a name="server-setup"></a>Einrichten des Servers
+> [!Important]
+> Es gibt zwei Clients, die Sie für Kafka-Anwendungen verwenden können: einen Java-Client und einen Konsolenclient. Nur der Java-Client `ProducerConsumer.java` kann SSL sowohl zum Erzeugen als auch nutzen verwenden. Der Konsolenproducerclient `console-producer.sh` funktioniert nicht mit SSL.
 
-Der erste Schritt besteht im Erstellen eines Keystore und eines Truststore auf jedem Kafka-Broker. Nachdem diese erstellt wurden, importieren Sie die Zertifizierungsstellen- und die Brokerzertifikate in diese Speicher.
+## <a name="apache-kafka-broker-setup"></a>Einrichtung des Apache Kafka-Brokers
+
+Das Kafka-SSL-Brokersetup verwendet vier HDInsight-Cluster-VMs auf folgende Weise:
+
+* Hauptknoten 0 – Zertifizierungsstelle (Certificate Authority, CA)
+* Workerknoten 0, 1 und 2 – Broker
 
 > [!Note] 
 > In dieser Anleitung werden selbstsignierte Zertifikate verwendet, aber die sicherste Lösung ist die Verwendung von Zertifikaten, die von vertrauenswürdigen Zertifizierungsstellen ausgestellt wurden.
 
-Gehen Sie folgendermaßen vor, um das Serversetup abzuschließen:
+Die Zusammenfassung des Brokereinrichtungsvorgangs lautet wie folgt:
 
-1. Erstellen Sie einen Ordner namens „ssl“, und exportieren Sie das Serverkennwort als Umgebungsvariable. Ersetzen Sie `<server_password>` für den Rest dieser Anleitung durch das tatsächliche Administratorkennwort für den Server.
-1. Erstellen Sie danach einen Java-Keystore (kafka.server.keystore.jks) und ein Zertifizierungsstellenzertifikat.
-1. Erstellen Sie anschließend eine Signieranforderung, damit das Zertifikat, das Sie im vorherigen Schritt erstellt haben, von der Zertifizierungsstelle signiert wird.
-1. Senden Sie nun die Signieranforderung an die Zertifizierungsstelle, damit dieses Zertifikat signiert wird. Da ein selbstsigniertes Zertifikat verwendet wird, wird das Zertifikat mit der eigenen Zertifizierungsstelle mit dem Befehl `openssl` signiert.
-1. Erstellen Sie einen Vertrauensspeicher, und importieren Sie das Zertifikat der Zertifizierungsstelle.
-1. Importieren Sie das öffentliche Zertifikat der Zertifizierungsstelle in den Keystore.
-1. Importieren Sie das signierte Zertifikat in den Keystore.
+1. Die folgenden Schritte werden auf jedem der drei Workerknoten wiederholt:
 
-Die Befehle zum Ausführen dieser Schritte werden im folgenden Codeausschnitt gezeigt.
+    1. Generieren eines Zertifikats.
+    1. Erstellen einer Anforderung zur Zertifikatsignierung.
+    1. Senden der Anforderung zur Zertifikatsignierung an die Zertifizierungsstelle (ZS).
+    1. Anmelden bei der Zertifizierungsstelle und Signieren des Zertifikats.
+    1. Zurücksenden des signierten Zertifikats mit SCP auf den Workerknoten.
+    1. Senden des öffentlichen Zertifikats der ZS mit SCP an den Workerknoten.
 
-```bash
-export SRVPASS=<server_password>
-mkdir ssl
-cd ssl
+1. Sobald Sie über alle Zertifikate verfügen, legen Sie die Zertifikate im Zertifikatspeicher ab.
+1. Navigieren Sie zu Ambari, und ändern Sie die Konfigurationen.
 
-# Create a java keystore (kafka.server.keystore.jks) and a CA certificate.
+Schließen Sie die Brokereinrichtung mit folgenden detaillierten Anweisungen ab:
 
-keytool -genkey -keystore kafka.server.keystore.jks -validity 365 -storepass $SRVPASS -keypass $SRVPASS -dname "CN=wn0-umakaf.xvbseke35rbuddm4fyvhm2vz2h.cx.internal.cloudapp.net" -storetype pkcs12
+> [!Important]
+> In den folgenden Codeausschnitten ist wnX eine Abkürzung für einen der drei Workerknoten und sollte entsprechend durch `wn0`, `wn1` oder `wn2` ersetzt werden. `WorkerNode0_Name` und `HeadNode0_Name` sollten durch die Namen der entsprechenden Computer ersetzt werden, z.B. `wn0-abcxyz` oder `hn0-abcxyz`.
 
-# Create a signing request to get the certificate created in the previous step signed by the CA.
+1. Führen Sie das anfängliche Setup auf Hauptknoten 0 durch, der für HDInsight die Rolle der Zertifizierungsstelle (ZS) übernimmt.
 
-keytool -keystore kafka.server.keystore.jks -certreq -file cert-file -storepass $SRVPASS -keypass $SRVPASS
+    ```bash
+    # Create a new directory 'ssl' and change into it
+    mkdir ssl
+    cd ssl
+    ```
 
-# Send the signing request to the CA and get this certificate signed.
+1. Führen Sie das gleiche anfängliche Setup für jeden der Broker durch (Workerknoten 0, 1 und 2).
 
-openssl x509 -req -CA ca-cert -CAkey ca-key -in cert-file -out cert-signed -days 365 -CAcreateserial -passin pass:$SRVPASS
+    ```bash
+    # Create a new directory 'ssl' and change into it
+    mkdir ssl
+    cd ssl
+    ```
 
-# Create a trust store and import the certificate of the CA.
+1. Führen Sie auf allen Workerknoten die folgenden Schritte mit dem folgenden Codeausschnitt aus.
+    1. Erstellen Sie einen Keystore, und füllen Sie ihn mit einem neuen privaten Zertifikat.
+    1. Erstellen Sie eine Anforderung zur Zertifikatsignierung.
+    1. Senden Sie die Anforderung zur Zertifikatsignierung mit SCP an die Zertifizierungsstelle (headnode0).
 
-keytool -keystore kafka.server.truststore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
+    ```bash
+    keytool -genkey -keystore kafka.server.keystore.jks -validity 365 -storepass "MyServerPassword123" -keypass "MyServerPassword123" -dname "CN=FQDN_WORKER_NODE" -storetype pkcs12
+    keytool -keystore kafka.server.keystore.jks -certreq -file cert-file -storepass "MyServerPassword123" -keypass "MyServerPassword123"
+    scp cert-file sshuser@HeadNode0_Name:~/ssl/wnX-cert-sign-request
+    ```
 
-# Import the public CA certificate into the keystore.
+1. Wechseln Sie zum ZS-Computer, und lassen Sie alle empfangenen Anforderungen zur Zertifikatsignierung ausführen:
 
-keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
+    ```bash
+    openssl x509 -req -CA ca-cert -CAkey ca-key -in wn0-cert-sign-request -out wn0-cert-signed -days 365 -CAcreateserial -passin pass:"MyServerPassword123"
+    openssl x509 -req -CA ca-cert -CAkey ca-key -in wn1-cert-sign-request -out wn1-cert-signed -days 365 -CAcreateserial -passin pass:"MyServerPassword123"
+    openssl x509 -req -CA ca-cert -CAkey ca-key -in wn2-cert-sign-request -out wn2-cert-signed -days 365 -CAcreateserial -passin pass:"MyServerPassword123"
+    ```
 
-# Import the signed certificate into the keystore.
+1. Senden Sie die signierten Zertifikate von der ZS (headnode0) zurück an die Workerknoten.
 
-keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert -storepass $SRVPASS -keypass $SRVPASS -noprompt
+    ```bash
+    scp wn0-cert-signed sshuser@WorkerNode0_Name:~/ssl/cert-signed
+    scp wn1-cert-signed sshuser@WorkerNode1_Name:~/ssl/cert-signed
+    scp wn2-cert-signed sshuser@WorkerNode2_Name:~/ssl/cert-signed
+    ```
 
-# The output should say "Certificate reply was added to keystore"
-```
+1. Senden Sie das öffentliche Zertifikat der ZS an die einzelnen Workerknoten.
 
-Importieren des signierten Zertifikats in den Keystore ist der letzte Schritt, der dazu erforderlich ist, den Truststore und den Keystore für einen Kafka-Broker zu konfigurieren.
+    ```bash
+    scp ca-cert sshuser@WorkerNode0_Name:~/ssl/ca-cert
+    scp ca-cert sshuser@WorkerNode1_Name:~/ssl/ca-cert
+    scp ca-cert sshuser@WorkerNode2_Name:~/ssl/ca-cert
+    ```
+
+1. Fügen Sie auf jedem Workerknoten das öffentliche Zertifikat der ZS dem Truststore und dem Keystore hinzu. Fügen Sie dann das eigene signierte Zertifikat des Workerknotens dem Keystore hinzu.
+
+    ```bash
+    keytool -keystore kafka.server.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyServerPassword123" -keypass "MyServerPassword123" -noprompt
+    keytool -keystore kafka.server.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyServerPassword123" -keypass "MyServerPassword123" -noprompt
+    keytool -keystore kafka.server.keystore.jks -import -file cert-signed -storepass "MyServerPassword123" -keypass "MyServerPassword123" -noprompt
+
+    ```
 
 ## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>Aktualisieren der Kafka-Konfiguration zur Verwendung von SSL und Neustarten der Broker
 
-Sie haben nun jeden Kafka-Broker mit einem Keystore und einem Truststore erstellt und die richtigen Zertifikate importiert.  Ändern Sie nun die zugehörigen Kafka-Konfigurationseigenschaften mit Ambari, und starten Sie die Kafka-Broker dann neu. 
+Sie haben jetzt jeden Kafka-Broker mit einem Keystore und Truststore eingerichtet sowie die richtigen Zertifikate importiert. Ändern Sie nun die zugehörigen Kafka-Konfigurationseigenschaften mit Ambari, und starten Sie die Kafka-Broker dann neu.
 
 Führen Sie die folgenden Schritte aus, um die Konfigurationsänderung abzuschließen:
 
@@ -98,10 +136,10 @@ Führen Sie die folgenden Schritte aus, um die Konfigurationsänderung abzuschli
     sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092,SSL://$IP_ADDRESS:9093" >> /usr/hdp/current/kafka-broker/conf/server.properties
     echo "ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.password=<server_password>" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.key.password=<server_password>" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.keystore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.key.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     echo "ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.password=<server_password>" >> /usr/hdp/current/kafka-broker/conf/server.properties
+    echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
 1. Um zu überprüfen, ob die vorherigen Änderungen ordnungsgemäß vorgenommen wurden, können Sie feststellen, ob die folgenden Zeilen in der Kafka-Datei `server.properties` vorhanden sind.
@@ -109,13 +147,14 @@ Führen Sie die folgenden Schritte aus, um die Konfigurationsänderung abzuschli
     ```bash
     advertised.listeners=PLAINTEXT://10.0.0.11:9092,SSL://10.0.0.11:9093
     ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks
-    ssl.keystore.password=<server_password>
-    ssl.key.password=<server_password>
+    ssl.keystore.password=MyServerPassword123
+    ssl.key.password=MyServerPassword123
     ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks
-    ssl.truststore.password=<server_password>
+    ssl.truststore.password=MyServerPassword123
     ```
 
 1. Starten Sie alle Kafka-Broker neu.
+1. Starten Sie den Adminclient mit Producer- und Consumer Optionen, um sicherzustellen, dass sowohl Producer als auch Consumer and Port 9093 funktionieren.
 
 ## <a name="client-setup-with-authentication"></a>Einrichten des Clients (mit Authentifizierung)
 
@@ -125,39 +164,37 @@ Führen Sie die folgenden Schritte aus, um die Konfigurationsänderung abzuschli
 Führen Sie zum Abschließen des Clientsetups die folgenden Schritte aus:
 
 1. Melden Sie sich beim Clientcomputer (hn1) an.
-1. Exportieren Sie das Clientkennwort. Ersetzen Sie `<client_password>` durch das tatsächliche Administratorkennwort auf dem Kafka-Clientcomputer.
 1. Erstellen Sie einen Java-Keystore, und rufen Sie ein signiertes Zertifikat für den Broker ab. Kopieren Sie dann das Zertifikat auf den virtuellen Computer, auf dem die Zertifizierungsstelle ausgeführt wird.
-1. Wechseln Sie zum Zertifizierungsstellencomputer (wn0), um das Clientzertifikat zu signieren.
+1. Wechseln Sie zum Zertifizierungsstellencomputer (hn0), um das Clientzertifikat zu signieren.
 1. Wechseln Sie zum Clientcomputer (hn1), und navigieren Sie zum Ordner `~/ssl`. Kopieren Sie das signierte Zertifikat auf den Clientcomputer.
 
 ```bash
-export CLIPASS=<client_password>
 cd ssl
 
 # Create a java keystore and get a signed certificate for the broker. Then copy the certificate to the VM where the CA is running.
 
-keytool -genkey -keystore kafka.client.keystore.jks -validity 365 -storepass $CLIPASS -keypass $CLIPASS -dname "CN=mylaptop1" -alias my-local-pc1 -storetype pkcs12
+keytool -genkey -keystore kafka.client.keystore.jks -validity 365 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -dname "CN=mylaptop1" -alias my-local-pc1 -storetype pkcs12
 
-keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-request -alias my-local-pc1 -storepass $CLIPASS -keypass $CLIPASS
+keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-request -alias my-local-pc1 -storepass "MyClientPassword123" -keypass "MyClientPassword123"
 
-# Copy the cert to the vm where the CA is
-scp client-cert-sign-request3 sshuser@wn0-umakaf:~/tmp1/client-cert-sign-request
+# Copy the cert to the CA
+scp client-cert-sign-request3 sshuser@HeadNode0_Name:~/tmp1/client-cert-sign-request
 
-# Switch to the CA machine (wn0) to sign the client certificate.
+# Switch to the CA machine (hn0) to sign the client certificate.
 cd ssl
-openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:<server_password>
+openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:MyServerPassword123
 
-# Return to the client machine (hn1), navigate to ~/ssl folder and copy signed cert to client machine
-scp -i ~/kafka-security.pem sshuser@wn0-umakaf:/tmp1/client-cert-signed
+# Return to the client machine (hn1), navigate to ~/ssl folder and copy signed cert from the CA (hn0) to client machine
+scp -i ~/kafka-security.pem sshuser@HeadNode0_Name:/tmp1/client-cert-signed
 
 # Import CA cert to trust store
-keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
+keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 
 # Import CA cert to key store
-keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
+keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 
 # Import signed client (cert client-cert-signed1) to keystore
-keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -alias my-local-pc1 -storepass $CLIPASS -keypass $CLIPASS -noprompt
+keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -alias my-local-pc1 -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 ```
 
 Zeigen Sie schließlich die Datei `client-ssl-auth.properties` mit dem Befehl `cat client-ssl-auth.properties` an. Die Datei sollte folgende Zeilen enthalten:
@@ -165,18 +202,17 @@ Zeigen Sie schließlich die Datei `client-ssl-auth.properties` mit dem Befehl `c
 ```bash
 security.protocol=SSL
 ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
-ssl.truststore.password=<client_password>
+ssl.truststore.password=MyClientPassword123
 ssl.keystore.location=/home/sshuser/ssl/kafka.client.keystore.jks
-ssl.keystore.password=<client_password>
-ssl.key.password=<client_password>
+ssl.keystore.password=MyClientPassword123
+ssl.key.password=MyClientPassword123
 ```
 
 ## <a name="client-setup-without-authentication"></a>Einrichten des Clients (ohne Authentifizierung)
 
-Wenn Sie keine Authentifizierung benötigen, dienen folgende Schritte nur zum Einrichten von SSL-Verschlüsselung:
+Wenn Sie keine Authentifizierung benötigen, dienen folgende Schritte zum ausschließlichen Einrichten der SSL-Verschlüsselung:
 
 1. Melden Sie sich beim Clientcomputer (hn1) an, und navigieren Sie zum Ordner `~/ssl`.
-1. Exportieren Sie das Clientkennwort. Ersetzen Sie `<client_password>` durch das tatsächliche Administratorkennwort auf dem Kafka-Clientcomputer.
 1. Kopieren Sie das signierte Zertifikat vom Computer der Zertifizierungsstelle (wn0) auf den Clientcomputer.
 1. Importieren Sie das Zertifizierungsstellenzertifikat in den Truststore.
 1. Importieren Sie das Zertifizierungsstellenzertifikat in den Keystore.
@@ -184,17 +220,16 @@ Wenn Sie keine Authentifizierung benötigen, dienen folgende Schritte nur zum Ei
 Diese Schritte werden im folgenden Codeausschnitt gezeigt.
 
 ```bash
-export CLIPASS=<client_password>
 cd ssl
 
 # Copy signed cert to client machine
 scp -i ~/kafka-security.pem sshuser@wn0-umakaf:/home/sshuser/ssl/ca-cert .
 
 # Import CA cert to truststore
-keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass $CLIPASS -keypass $CLIPASS -noprompt
+keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 
 # Import CA cert to keystore
-keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file cert-signed -storepass $CLIPASS -keypass $CLIPASS -noprompt
+keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
 ```
 
 Zeigen Sie schließlich die Datei `client-ssl-auth.properties` mit dem Befehl `cat client-ssl-auth.properties` an. Die Datei sollte folgende Zeilen enthalten:
@@ -202,7 +237,7 @@ Zeigen Sie schließlich die Datei `client-ssl-auth.properties` mit dem Befehl `c
 ```bash
 security.protocol=SSL
 ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
-ssl.truststore.password=<client_password>
+ssl.truststore.password=MyClientPassword123
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

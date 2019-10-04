@@ -3,7 +3,7 @@ title: Azure CLI-Skriptbeispiel – Erstellen einer App und Continuous Deploymen
 description: 'Azure CLI-Skriptbeispiel: Erstellen einer App mit Continuous Deployment über Azure Repos'
 services: app-service\web
 documentationcenter: ''
-author: msangapu
+author: msangapu-msft
 manager: jeconnoc
 editor: ''
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
-ms.author: jeconnoc
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 67e4f99046820aa21392ff1238318e1b48bb5354
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f7b28e75e8ae722169f3e41f657ef6292e12cc6b
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901082"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879017"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Erstellen einer App Service-App mit Continuous Deployment mit der Azure CLI
 

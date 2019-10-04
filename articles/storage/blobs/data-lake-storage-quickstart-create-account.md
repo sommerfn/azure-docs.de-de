@@ -1,23 +1,23 @@
 ---
 title: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie über das Azure-Portal, Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI) ein neues Speicherkonto mit Zugriff auf Data Lake Storage Gen2 erstellen.
-services: storage
-author: jamesbak
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/06/2018
-ms.author: jamesbak
-ms.openlocfilehash: 2eb57268aece081423b6b0beaa314a244b6fdd8f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 08/19/2019
+ms.author: normesta
+ms.reviewer: stewu
+ms.openlocfilehash: 2063dd22e3253b0707f6920f3a5c0c7a6bb01126
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456005"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992319"
 ---
-# <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Schnellstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos
+# <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos
 
-Azure Data Lake Storage Gen2 [unterstützt einen hierarchischen Namespacedienst](data-lake-storage-introduction.md), der ein natives verzeichnisbasiertes Dateisystem für die Verwendung mit dem Hadoop Distributed File System (HDFS) bereitstellt. Wenn Sie über Hadoop Distributed File System auf Data Lake Storage Gen2-Daten zugreifen möchten, ist dies über den [ABFS-Treiber](data-lake-storage-abfs-driver.md) möglich.
+Azure Data Lake Storage Gen2 [unterstützt einen hierarchischen Namespace](data-lake-storage-introduction.md), der einen nativen verzeichnisbasierten Container für die Verwendung mit dem Hadoop Distributed File System (HDFS) bereitstellt. Wenn Sie über Hadoop Distributed File System auf Data Lake Storage Gen2-Daten zugreifen möchten, ist dies über den [ABFS-Treiber](data-lake-storage-abfs-driver.md) möglich.
 
 In dieser Schnellstartanleitung wird gezeigt, wie Sie ein Konto mit dem [Azure-Portal](https://portal.azure.com/), mit [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) oder mit der [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) erstellen.
 
@@ -28,7 +28,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 |           | Voraussetzung |
 |-----------|--------------|
 |Portal     | Keine         |
-|PowerShell | Für diesen Schnellstart ist Version **0.7** oder höher des PowerShell-Moduls „Az.Storage“ erforderlich. Führen Sie den Befehl `Get-Module -ListAvailable Az.Storage` aus, um Ihre aktuelle Version zu ermitteln. Wenn nach dem Ausführen dieses Befehls keine Ergebnisse angezeigt werden oder eine andere Version als **0.7** angezeigt wird, müssen Sie Ihr PowerShell-Modul aktualisieren. Informationen dazu finden Sie im Abschnitt [Aktualisieren Ihres PowerShell-Moduls](#upgrade-your-powershell-module) dieser Anleitung.
+|PowerShell | Für diesen Schnellstart ist Version **0.7** oder höher des PowerShell-Moduls „Az.Storage“ erforderlich. Führen Sie den Befehl `Get-Module -ListAvailable Az.Storage` aus, um Ihre aktuelle Version zu ermitteln. Wenn nach dem Ausführen dieses Befehls keine Ergebnisse angezeigt werden oder eine ältere Version als **0.7** angezeigt wird, müssen Sie Ihr PowerShell-Modul aktualisieren. Informationen dazu finden Sie im Abschnitt [Aktualisieren Ihres PowerShell-Moduls](#upgrade-your-powershell-module) dieser Anleitung.
 |Befehlszeilenschnittstelle (CLI)        | Sie können sich bei Azure anmelden und Azure-CLI-Befehle ausführen. Dazu haben Sie zwei Möglichkeiten: <ul><li>Sie können CLI-Befehle innerhalb des Azure-Portals in Azure Cloud Shell ausführen. </li><li>Sie können die Befehlszeilenschnittstelle installieren und CLI-Befehle lokal ausführen.</li></ul>|
 
 Bei Verwendung der Befehlszeile können Sie Azure Cloud Shell ausführen oder die Befehlszeilenschnittstelle lokal installieren.
@@ -63,7 +63,7 @@ Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 
 ## <a name="create-an-account-using-the-azure-portal"></a>Erstellen eines Kontos im Azure-Portal
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -105,7 +105,7 @@ Das Speicherkonto wird jetzt über das Portal erstellt.
 So entfernen Sie eine Ressourcengruppe über das Azure-Portal:
 
 1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Ressourcengruppen**, um die Liste mit Ihren Ressourcengruppen anzuzeigen.
-2. Suchen Sie die zu löschende Ressourcengruppe, und klicken Sie mit der rechten Maustaste rechts neben dem Eintrag auf die Schaltfläche **Mehr** (**...**).
+2. Suchen Sie die zu löschende Ressourcengruppe, und klicken Sie mit der rechten Maustaste rechts neben dem Eintrag auf die Schaltfläche **Mehr** ( **...** ).
 3. Klicken Sie auf **Ressourcengruppe löschen**, und bestätigen Sie den Vorgang.
 
 ## <a name="create-an-account-using-powershell"></a>Erstellen eines Kontos mithilfe von PowerShell
@@ -125,10 +125,10 @@ Um über PowerShell mit Data Lake Storage Gen2 interagieren zu können, müssen 
 Installieren des Moduls „Az.Storage“
 
 ```powershell
-Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
+Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 ```
 
-### <a name="log-in-to-your-azure-subscription"></a>Anmelden bei Ihrem Azure-Abonnement
+### <a name="sign-in-to-your-azure-subscription"></a>Melden Sie sich bei Ihrem Azure-Abonnement an.
 
 Verwenden Sie den Befehl `Login-AzAccount`, und folgen Sie den Anweisungen auf dem Bildschirm, um sich zu authentifizieren.
 

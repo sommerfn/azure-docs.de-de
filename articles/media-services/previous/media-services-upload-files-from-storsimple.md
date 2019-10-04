@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8a2972b8fbc31a3f945f40949128b3f37f2f4b77
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c77b700cab4afd411c3a2df824ee8335cb394cda
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312477"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64868313"
 ---
 # <a name="upload-files-into-an-azure-media-services-account-from-azure-storsimple"></a>Hochladen von Dateien in ein Azure Media Services-Konto über Azure StorSimple  
 
-Dieser Artikel enthält eine kurze Übersicht über Azure StorSimple Data Manager. Darüber hinaus enthält der Artikel Links zu Tutorials, die zeigen, wie Sie Daten aus StorSimple extrahieren und als Objekte in ein AMS-Konto (Azure Media Services) hochladen.
-
-> 
 > [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+>
+> 
 > Azure StorSimple Data Manager befindet sich derzeit in der privaten Vorschauphase. 
 > 
 

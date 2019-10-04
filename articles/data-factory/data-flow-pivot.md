@@ -1,21 +1,19 @@
 ---
 title: 'Azure Data Factory Mapping Data Flow: Pivottransformation'
-description: 'Azure Data Factory Mapping Data Flow: Pivottransformation'
+description: Pivotieren Sie Daten aus Zeilen in Spalten mithilfe der Azure Data Factory Mapping Data Flow-Pivottransformation
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 5548a62218aaac2e4da3853e8e5d43a584922bc0
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 0b68007f8c3383997f0d31888198af866d38b590
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569891"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178671"
 ---
-# <a name="azure-data-factory-mapping-data-flow-pivot-transformation"></a>Azure Data Factory Mapping Data Flow: Pivottransformation
-
+# <a name="azure-data-factory-pivot-transformation"></a>Azure Data Factory-Pivottransformation
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 Verwenden Sie Pivot in ADF-Datenfluss als Aggregation, bei der die unterschiedlichen Zeilenwerte einer oder mehrerer Gruppierungsspalten in einzelne Spalten transformiert wurden. Im Wesentlichen können Sie Zeilenwerte in neue Spalten pivotieren (Daten in Metadaten umwandeln).
@@ -32,7 +30,7 @@ Legen Sie zuerst die Spalten fest, nach denen Sie für Ihre Pivotaggregation gru
 
 ![Pivotoptionen](media/data-flow/pivot3.png "Pivot 3")
 
-Der Pivotschlüssel ist die Spalte, die ADF von Zeile in Spalte pivotiert. Standardmäßig wird jeder eindeutige Wert im Dataset für dieses Feld in eine Spalte pivotiert. Sie können jedoch die Werte aus dem Dataset optional eingeben, die in Spaltenwerte pivotiert werden sollen.
+Der Pivotschlüssel ist die Spalte, die ADF von Zeile in Spalte pivotiert. Standardmäßig wird jeder eindeutige Wert im Dataset für dieses Feld in eine Spalte pivotiert. Sie können jedoch die Werte aus dem Dataset optional eingeben, die in Spaltenwerte pivotiert werden sollen. Dies ist die Spalte, die die neuen, zu erstellenden Spalten bestimmt.
 
 ## <a name="pivoted-columns"></a>Pivotierte Spalten
 
@@ -54,9 +52,26 @@ Klicken Sie zum Festlegen der für die Pivotwerte zu verwendenden Aggregation au
 
 Verwenden Sie die ADF-Datenfluss-Ausdruckssprache, um die Transformationen der pivotierten Spalten im Ausdrucks-Generator zu beschreiben: https://aka.ms/dataflowexpressions.
 
+## <a name="pivot-metadata"></a>Pivotmetadaten
+
+Die Pivottransformation generiert auf der Basis Ihrer eingehenden Daten neue, dynamische Spaltendaten. Der Pivotschlüssel produziert die Werte für jeden neuen Spaltennamen. Wenn Sie keine einzelnen Namen angeben und dynamische Spaltennamen für jeden eindeutigen Wert in Ihrem Pivotschlüssel erstellen möchten, werden die Metadaten auf der Benutzeroberfläche nicht in „Untersuchen“ angezeigt, und es gibt keine Spaltenweitergabe an die Sink-Transformation. Wenn Sie Werte für den Pivotschlüssel festlegen, kann ADF die neuen Spaltennamen bestimmen, und diese Spaltennamen stehen Ihnen in der Inspect- und Sink-Zuordnung zur Verfügung.
+
+### <a name="generate-a-new-model-from-dynamic-columns"></a>Generieren eines neuen Modells aus dynamischen Spalten
+
+Pivot generiert neue Spaltennamen dynamisch basierend auf Zeilenwerten. Sie können diese neuen Spalten in Metadaten umwandeln, auf die später im Datenfluss verwiesen werden kann. Klicken Sie hierzu auf die Registerkarte „Datenvorschau“. Alle neuen Spalten, die von Ihrer Pivot-Transformation generiert werden, werden mit einem „abweichenden“ Symbol in der Tabellenkopfzeile angezeigt. Klicken Sie auf die Schaltfläche „Abweichende zuordnen“, um diese neuen Spalten in Metadaten umzuwandeln, sodass Sie zu einem Teil des Modells des Datenflusses werden.
+
+![Pivotspalten](media/data-flow/newpivot1.png "Zuordnen abweichender Pivotspalten")
+
+### <a name="landing-new-columns-in-sink"></a>Bereitstellen neuer Spalten in Sink
+
+Trotz dynamischer Spaltennamen in Pivot können Sie Ihre neuen Spaltennamen und -werte in Ihren Zieldatenspeicher senken. Legen Sie einfach in Ihren Sink-Einstellungen „Schemaabweichung zulassen“ fest. Die neuen dynamischen Namen werden nicht in Ihren Spaltenmetadaten angezeigt, die Option zur Schemaabweichung ermöglicht Ihnen aber trotzdem die Bereitstellung der Daten.
+
+### <a name="view-metadata-in-design-mode"></a>Anzeigen von Metadaten im Entwurfsmodus
+
+Wenn Sie die neuen Spaltennamen in „Untersuchen“ als Metadaten anzeigen und die Weitergabe der Spalten an die Sink-Transformation explizit sehen möchten, legen Sie auf der Registerkarte Pivotschlüssel explizite Werte fest.
+
 ### <a name="how-to-rejoin-original-fields"></a>So verknüpfen Sie die ursprünglichen Felder erneut
-> [!NOTE]
-> Die Pivottransformation projiziert nur die in der Aggregation, Gruppierung und Pivotaktion verwendeten Spalten. Wenn Sie die anderen Spalten aus dem vorherigen Schritt in Ihren Datenfluss einbeziehen möchten, verwenden Sie eine neue Verzweigung aus dem vorherigen Schritt, und verwenden Sie dann das Selbstverknüpfungsmuster, um den Datenfluss mit den ursprünglichen Metadaten zu verbinden.
+Die Pivottransformation projiziert nur die in der Aggregation, Gruppierung und Pivotaktion verwendeten Spalten. Wenn Sie die anderen Spalten aus dem vorherigen Schritt in Ihren Datenfluss einbeziehen möchten, verwenden Sie eine neue Verzweigung aus dem vorherigen Schritt, und verwenden Sie dann das Selbstverknüpfungsmuster, um den Datenfluss mit den ursprünglichen Metadaten zu verbinden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

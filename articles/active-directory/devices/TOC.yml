@@ -1,8 +1,8 @@
-- name: Dokumentation zur Geräteverwaltung
+- name: Dokumentation zu Geräteidentitäten
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist Geräteverwaltung in Azure AD?
+    - name: Was ist eine Geräteidentität?
       href: overview.md
     - name: Was ist Enterprise State Roaming?
       href: enterprise-state-roaming-overview.md
@@ -18,37 +18,55 @@
     - name: Konfigurieren der Azure AD-Einbindung während des Eindrucks beim ersten Ausführen von Windows 10
       href: azuread-joined-devices-frx.md
 - name: Konzepte
-  expanded: false
-  items:
-    - name: Einmaliges Anmelden bei lokalen Ressourcen
-      href: azuread-join-sso.md
-- name: Anleitungen
   expanded: true
   items:
-    - name: Verwalten von Geräten mithilfe des Azure-Portals
+    - name: Bei Azure AD registrierte Geräte
+      href: concept-azure-ad-register.md
+    - name: In Azure AD eingebundene Geräte
+      href: concept-azure-ad-join.md
+    - name: In Azure AD eingebundene Hybridgeräte
+      href: concept-azure-ad-join-hybrid.md
+    - name: Einmaliges Anmelden bei lokalen Ressourcen
+      href: azuread-join-sso.md
+    - name: Primäre Aktualisierungstoken
+      href: concept-primary-refresh-token.md
+    - name: Mit Azure verwaltete Arbeitsstationen
+      href: concept-azure-managed-workstation.md
+- name: Anleitungen
+  expanded: false
+  items:
+    - name: Planen der Implementierung Ihrer Azure AD-Einbindung
+      href: azureadjoin-plan.md
+    - name: Zuweisen lokaler Administratoren zu in Azure AD eingebundenen Geräten
+      href: assign-local-admin.md
+    - name: Planen der Implementierung Ihrer Azure AD-Hybrideinbindung
+      href: hybrid-azuread-join-plan.md
+    - name: Kontrollierte Überprüfung der Azure AD-Hybrideinbindung
+      href: hybrid-azuread-join-control.md
+    - name: Verwalten von Geräteidentitäten
       href: device-management-azure-portal.md
     - name: Verwalten von veralteten Geräten
       href: manage-stale-devices.md
-    - name: Planen der Implementierung Ihrer Azure AD-Einbindung
-      href: azureadjoin-plan.md
-    - name: Planen der Implementierung Ihrer Azure AD-Hybrideinbindung
-      href: hybrid-azuread-join-plan.md
-    - name: Steuern der Azure AD-Hybrideinbindung für Ihre Geräte
-      href: hybrid-azuread-join-control.md
-    - name: Zuweisen lokaler Administratoren zu in Azure AD eingebundenen Geräten
-      href: assign-local-admin.md
     - name: Aktivieren von Enterprise State Roaming
       href: enterprise-state-roaming-enable.md
-    - name: Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte
-      href: troubleshoot-hybrid-join-windows-current.md
-    - name: Problembehandlung für in Azure AD eingebundene ältere Windows-Hybridgeräte
-      href: troubleshoot-hybrid-join-windows-legacy.md
-    - name: Problembehandlung für Enterprise State Roaming
-      href: enterprise-state-roaming-troubleshooting.md
+    - name: Bereitstellen der mit Azure verwalteten Arbeitsstationen
+      href: howto-azure-managed-workstation.md
+    - name: Problembehandlung für Geräteidentitäten
+      items:
+        - name: Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte
+          href: troubleshoot-hybrid-join-windows-current.md
+        - name: Troubleshooting mithilfe von dsregcmd
+          href: troubleshoot-device-dsregcmd.md
+        - name: Troubleshooting für in Azure AD eingebundene kompatible Windows-Hybridgeräte
+          href: troubleshoot-hybrid-join-windows-legacy.md
+        - name: Problembehandlung für Enterprise State Roaming
+          href: enterprise-state-roaming-troubleshooting.md
     - name: Häufig gestellte Fragen
-      href: faq.md
-    - name: 'Aktivieren von Enterprise State Roaming: häufig gestellte Fragen'
-      href: enterprise-state-roaming-faqs.md
+      items:
+        - name: Häufig gestellte Fragen
+          href: faq.md
+        - name: 'Aktivieren von Enterprise State Roaming: häufig gestellte Fragen'
+          href: enterprise-state-roaming-faqs.md
 - name: Verweis
   items:
     - name: 'Enterprise State Roaming: GPO-Einstellungen'

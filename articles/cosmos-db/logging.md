@@ -4,19 +4,19 @@ description: Hier erfahren Sie, wie Sie in Azure Cosmos DB gespeicherte Daten pr
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/15/2019
+ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8839d7ea93bcb205b1900e63d3ab98394e72cd75
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e43bc4b8eb1db91493f279f5c46681483e4b18c4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904864"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261390"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnoseprotokollierung in Azure Cosmos DB 
 
-Sobald Sie damit begonnen haben, mindestens eine Azure Cosmos DB-Datenbank zu verwenden, möchten Sie wahrscheinlich überwachen, wie und wann auf Ihre Datenbanken zugegriffen wird. Dieser Artikel enthält eine Übersicht über die Protokolle, die auf der Azure-Plattform verfügbar sind. Sie erfahren, wie die Diagnoseprotokollierung für Überwachungszwecke zum Senden von Protokollen an [Azure Storage](https://azure.microsoft.com/services/storage/) aktiviert wird, wie Protokolle an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gestreamt werden und wie Protokolle in [Azure Monitor-Protokolle](https://azure.microsoft.com/services/log-analytics/) exportiert werden.
+Sobald Sie damit begonnen haben, mindestens eine Azure Cosmos-Datenbank zu verwenden, möchten Sie wahrscheinlich überwachen, wie und wann auf Ihre Datenbanken zugegriffen wird. Dieser Artikel enthält eine Übersicht über die Protokolle, die auf der Azure-Plattform verfügbar sind. Sie erfahren, wie die Diagnoseprotokollierung für Überwachungszwecke zum Senden von Protokollen an [Azure Storage](https://azure.microsoft.com/services/storage/) aktiviert wird, wie Protokolle an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gestreamt werden und wie Protokolle in [Azure Monitor-Protokolle](https://azure.microsoft.com/services/log-analytics/) exportiert werden.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -54,7 +54,7 @@ Aktivitätsprotokolle (Vorgänge auf Steuerungsebene) können weitaus umfangreic
 
 ### <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
 
-Azure-Diagnoseprotokolle werden von einer Ressource ausgegeben und stellen umfangreiche und in kurzen Abständen erfasste Betriebsdaten der Ressource bereit. Der Inhalt dieser Protokolle variiert je nach Ressourcentyp. Diagnoseprotokolle auf Ressourcenebene unterscheiden sich auch von Diagnoseprotokollen auf Gastbetriebssystemebene. Diagnoseprotokolle auf Gastbetriebssystemebene werden von einem Agent erfasst, der auf einem virtuellen Computer oder einem anderen Ressourcentyp ausgeführt wird. Diagnoseprotokolle auf Ressourcenebene erfordern keinen Agent und erfassen ressourcenspezifischen Daten von der Azure-Plattform selbst. Diagnoseprotokolle auf Gastbetriebssystemebene erfassen Daten vom Betriebssystem und von Anwendungen, die auf einem virtuellen Computer ausgeführt werden.
+Azure-Diagnoseprotokolle werden von einer Ressource ausgegeben und stellen umfangreiche und in kurzen Abständen erfasste Betriebsdaten der Ressource bereit. Diese Protokolle werden auf Anforderung erfasst. Der Inhalt dieser Protokolle variiert je nach Ressourcentyp. Diagnoseprotokolle auf Ressourcenebene unterscheiden sich auch von Diagnoseprotokollen auf Gastbetriebssystemebene. Diagnoseprotokolle auf Gastbetriebssystemebene werden von einem Agent erfasst, der auf einem virtuellen Computer oder einem anderen Ressourcentyp ausgeführt wird. Diagnoseprotokolle auf Ressourcenebene erfordern keinen Agent und erfassen ressourcenspezifischen Daten von der Azure-Plattform selbst. Diagnoseprotokolle auf Gastbetriebssystemebene erfassen Daten vom Betriebssystem und von Anwendungen, die auf einem virtuellen Computer ausgeführt werden.
 
 ![Diagnoseprotokollierung für Storage, Event Hubs oder Azure Monitor-Protokolle](./media/logging/azure-cosmos-db-logging-overview.png)
 
@@ -68,26 +68,47 @@ Azure-Diagnoseprotokolle werden von einer Ressource ausgegeben und stellen umfan
 <a id="#turn-on"></a>
 ## <a name="turn-on-logging-in-the-azure-portal"></a>Aktivieren der Protokollierung im Azure-Portal
 
-Zum Aktivieren der Diagnoseprotokollierung sind die folgenden Ressourcen erforderlich:
-
-* Azure Cosmos DB-Konto, -Datenbank und -Container müssen vorhanden sein. Anweisungen zum Erstellen dieser Ressourcen finden Sie unter [Erstellen eines Datenbankkontos mit dem Azure-Portal](create-sql-api-dotnet.md#create-account), [Azure CLI-Beispiele](cli-samples.md) und [PowerShell-Beispiele](powershell-samples.md).
-
 Führen Sie zum Aktivieren der Diagnoseprotokollierung im Azure-Portal die folgenden Schritte aus:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) in Ihrem Azure Cosmos DB-Konto im linken Navigationsbereich **Diagnoseprotokolle** aus, und wählen Sie dann **Diagnose aktivieren** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
+
+1. Navigieren Sie zu Ihrem Azure Cosmos-Konto. Öffnen Sie den Bereich **Diagnoseeinstellungen**, und wählen Sie dann die Option **Diagnoseeinstellung hinzufügen** aus.
 
     ![Aktivieren der Diagnoseprotokollierung für Azure Cosmos DB im Azure-Portal](./media/logging/turn-on-portal-logging.png)
 
-2. Führen Sie auf der Seite **Diagnoseeinstellungen** die folgenden Schritte aus: 
+1. Füllen Sie auf der Seite **Diagnoseeinstellungen** das Formular mit den folgenden Details aus: 
 
-    * **Name:** Geben Sie einen Namen für die zu erstellenden Protokolle ein.
+    * **Name**: Geben Sie einen Namen für die zu erstellenden Protokolle ein.
 
-    * **Archivieren in einem Speicherkonto:** Sie benötigen ein vorhandenes Speicherkonto, mit dem eine Verbindung hergestellt werden kann, um diese Option verwenden zu können. Informationen zum Erstellen eines neuen Speicherkontos im Portal finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md). Befolgen Sie die Anweisungen zum Erstellen eines Azure Resource Manager-Kontos für allgemeine Zwecke. Kehren Sie anschließend auf diese Seite im Portal zurück, und wählen Sie Ihr Speicherkonto aus. Es dauert möglicherweise einige Minuten, bis neu erstellte Speicherkonten im Dropdownmenü angezeigt werden.
-    * **Streamen an einen Event Hub:** Für diese Option benötigen Sie einen vorhandenen Event Hubs-Namespace und einen Event Hub, mit dem eine Verbindung hergestellt werden kann. Weitere Informationen zum Erstellen eines Event Hubs-Namespaces finden Sie unter [Erstellen eines Event Hubs-Namespaces und eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md). Kehren Sie anschließend auf diese Seite im Portal zurück, um den Event Hubs-Namespace und den Richtliniennamen auszuwählen.
-    * **Senden an Log Analytics:** Für diese Option können Sie entweder einen vorhandenen Arbeitsbereich verwenden oder über das Portal mithilfe der Schritte zum [Erstellen eines neuen Arbeitsbereichs](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) einen neuen Log Analytics-Arbeitsbereich erstellen. Weitere Informationen zum Anzeigen Ihrer Protokolle in Azure Monitor-Protokolle finden Sie unter „Anzeigen von Protokollen in Azure Monitor-Protokolle“.
-    * **Protokollieren von „DataPlaneRequests“:** Verwenden Sie diese Option, um Back-End-Anforderungen der zugrunde liegenden verteilten Azure Cosmos DB-Plattform für SQL-, Graph-, MongoDB-, Cassandra- und Tabellen-API-Konten zu protokollieren. Wenn die Archivierung in einem Speicherkonto erfolgt, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf der Aufbewahrungsdauer automatisch gelöscht.
-    * **Protokollieren von „MongoRequests“:** Wählen Sie diese Option aus, um vom Benutzer initiierte Anforderungen vom Front-End von Azure Cosmos DB für Cosmos-Konten zu protokollieren, die mit der API für MongoDB von Azure Cosmos DB konfiguriert wurden. Wenn die Archivierung in einem Speicherkonto erfolgt, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf der Aufbewahrungsdauer automatisch gelöscht.
-    * **Metrikanforderungen:** Verwenden Sie diese Option, um ausführliche Daten in [Azure-Metriken](../azure-monitor/platform/metrics-supported.md) zu speichern. Wenn die Archivierung in einem Speicherkonto erfolgt, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf der Aufbewahrungsdauer automatisch gelöscht.
+    * Sie können die Protokolle in folgenden Diensten speichern:
+
+      * **In einem Speicherkonto archivieren:** Sie benötigen ein vorhandenes Speicherkonto, mit dem eine Verbindung hergestellt werden kann, um diese Option verwenden zu können. Informationen zum Erstellen eines neuen Speicherkontos im Portal finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md). Kehren Sie dann zum Diagnoseeinstellungenbereich von Azure Cosmos DB im Portal zurück, um Ihr Speicherkonto auszuwählen. Es dauert möglicherweise einige Minuten, bis neu erstellte Speicherkonten im Dropdownmenü angezeigt werden.
+
+      * **Streamen an einen Event Hub:** Für diese Option benötigen Sie einen vorhandenen Event Hubs-Namespace und einen Event Hub, mit dem eine Verbindung hergestellt werden kann. Weitere Informationen zum Erstellen eines Event Hubs-Namespaces finden Sie unter [Erstellen eines Event Hubs-Namespaces und eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md). Kehren Sie anschließend auf diese Seite im Portal zurück, um den Event Hub-Namespace und den Richtliniennamen auszuwählen.
+
+      * **An Log Analytics senden:** Für diese Option können Sie entweder einen vorhandenen Arbeitsbereich verwenden oder über das Portal mithilfe der Schritte zum [Erstellen eines neuen Arbeitsbereichs](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) einen neuen Log Analytics-Arbeitsbereich erstellen. 
+
+   * Sie können die folgenden Daten protokollieren:
+
+      * **DataPlaneRequests**: Verwenden Sie diese Option, um Back-End-Anforderungen an alle APIs in Azure Cosmos DB zu protokollieren, worin SQL-, Graph-, MongoDB-, Cassandra- und Tabellen-API-Konten einbezogen sind. Wenn die Archivierung in einem Speicherkonto erfolgt, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf der Aufbewahrungsdauer automatisch gelöscht. Die folgenden JSON-Daten sind eine Beispielausgabe mit DataPlaneRequests protokollierter Details. Wichtige zu beachtende Eigenschaften sind: Requestcharge, statusCode, clientIPaddress und partitionID:
+
+       ```
+       { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
+       ```
+
+      * **MongoRequests**: Verwenden Sie diese Option, um vom Benutzer initiierte Anforderungen vom Front-End zum Erfüllen von Anforderungen an die API für MongoDB von Azure Cosmos DB zu protokollieren. MongoDB-Anforderungen werden in MongoRequests sowie DataPlaneRequests angezeigt. Wenn die Archivierung in einem Speicherkonto erfolgt, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf der Aufbewahrungsdauer automatisch gelöscht. Die folgenden JSON-Daten sind eine Beispielausgabe mit MongoRequests protokollierter Details. Wichtige zu beachtende Eigenschaften sind: Requestcharge, opCode:
+
+       ```
+       { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
+       ```
+
+      * **QueryRuntimeStatistics**: Wählen Sie diese Option aus, um den Abfragetext zu protokollieren, der ausgeführt wurde.  Die folgenden JSON-Daten sind eine Beispielausgabe mit QueryRuntimeStatistics protokollierter Details:
+
+       ```
+       { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
+       ```
+
+      * **Metrikanforderungen:** Verwenden Sie diese Option, um ausführliche Daten in [Azure-Metriken](../azure-monitor/platform/metrics-supported.md) zu speichern. Wenn die Archivierung in einem Speicherkonto erfolgt, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf der Aufbewahrungsdauer automatisch gelöscht.
 
 3. Wählen Sie **Speichern** aus.
 
@@ -162,7 +183,7 @@ Weitere Informationen zum Konfigurieren von Azure PowerShell finden Sie unter [I
 ### <a id="storage"></a>Erstellen eines neuen Speicherkontos für Ihre Protokolle
 Sie können zwar ein vorhandenes Speicherkonto für Ihre Protokolle verwenden, in diesem Tutorial wird jedoch ein neues Speicherkonto erstellt, das für Azure Cosmos DB-Protokolle bestimmt ist. Der Einfachheit halber speichern wir die Details zum Speicherkonto in einer Variablen mit dem Namen **sa**.
 
-Um die Verwaltung noch weiter zu vereinfachen, verwenden wir in diesem Tutorial dieselbe Ressourcengruppe, die auch die Azure Cosmos DB-Datenbank enthält. Ersetzen Sie die Werte für die Parameter **ContosoResourceGroup**, **contosocosmosdblogs** und **North Central US** durch Ihre eigenen Werte:
+Um die Verwaltung noch weiter zu vereinfachen, verwenden wir in diesem Tutorial dieselbe Ressourcengruppe, die auch die Azure Cosmos-Datenbank enthält. Ersetzen Sie die Werte für die Parameter **ContosoResourceGroup**, **contosocosmosdblogs** und **North Central US** durch Ihre eigenen Werte:
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup `
@@ -230,7 +251,7 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 ```
 
 ### <a id="access"></a>Zugreifen auf Ihre Protokolle
-Azure Cosmos DB-Protokolle für die Kategorie **DataPlaneRequests** werden im Container **insights-logs-data-plane-requests** im angegebenen Speicherkonto gespeichert. 
+Azure Cosmos DB-Protokolle für die Kategorie **DataPlaneRequests** werden im Container **insights-logs-dataplanerequests** im angegebenen Speicherkonto gespeichert. 
 
 Erstellen Sie zunächst eine Variable für den Containernamen. Die Variable wird in der gesamten exemplarischen Vorgehensweise verwendet.
 
@@ -266,7 +287,7 @@ Für die Werte für Datum und Uhrzeit wird UTC verwendet.
 
 Da dasselbe Speicherkonto zum Erfassen von Protokollen für mehrere Ressourcen verwendet werden kann, kann die vollqualifizierte Ressourcen-ID im Blobnamen verwendet werden, um auf die jeweils benötigten Blobs zuzugreifen bzw. diese herunterzuladen. Zunächst wird aber beschrieben, wie Sie alle Blobs herunterladen.
 
-Erstellen Sie zunächst einen Ordner zum Herunterladen der Blobs. Beispiel: 
+Erstellen Sie zunächst einen Ordner zum Herunterladen der Blobs. Beispiel:
 
 ```powershell
 New-Item -Path 'C:\Users\username\ContosoCosmosDBLogs'`
@@ -288,7 +309,7 @@ $blobs | Get-AzStorageBlobContent `
 
 Beim Ausführen dieses zweiten Befehls wird mit dem Trennzeichen **/** in den Blobnamen eine vollständige Ordnerstruktur unter dem Zielordner erstellt. Diese Struktur wird zum Herunterladen und Speichern der Blobs als Dateien verwendet.
 
-Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel: 
+Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
 
 * Wenn Sie über mehrere Datenbanken verfügen und Protokolle für nur eine Datenbank mit dem Namen **CONTOSOCOSMOSDB3** herunterladen möchten, verwenden Sie den folgenden Befehl:
 
@@ -376,7 +397,7 @@ Jetzt haben Sie die Datensammlung aktiviert und können das folgende Protokollsu
 <a id="#queries"></a>
 ### <a name="queries"></a>Abfragen
 
-Hier sind einige zusätzliche Abfragen, die Sie in das Feld **Protokollsuche** eingeben können, um die Überwachung Ihrer Azure Cosmos DB-Container zu vereinfachen. Diese Abfragen arbeiten mit der [neuen Sprache](../log-analytics/log-analytics-log-search-upgrade.md). 
+Hier sind einige zusätzliche Abfragen, die Sie in das Feld **Protokollsuche** eingeben können, um die Überwachung Ihrer Azure Cosmos-Container zu vereinfachen. Diese Abfragen arbeiten mit der [neuen Sprache](../log-analytics/log-analytics-log-search-upgrade.md). 
 
 Informationen zur Bedeutung der von jeder Protokollsuche zurückgegebenen Daten finden Sie unter [Interpretieren der Azure Cosmos DB-Protokolle](#interpret).
 
@@ -415,7 +436,7 @@ Informationen zur Bedeutung der von jeder Protokollsuche zurückgegebenen Daten 
 * So fragen Sie ab, welche Vorgänge länger als 3 Millisekunden dauern:
 
     ```
-    AzureDiagnostics | where toint(duration_s) > 30000 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
+    AzureDiagnostics | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
     ```
 
 * So fragen Sie ab, welcher Agent die Vorgänge ausführt:
@@ -427,7 +448,7 @@ Informationen zur Bedeutung der von jeder Protokollsuche zurückgegebenen Daten 
 * So fragen Sie ab, wann die Vorgänge mit langer Ausführungszeit ausgeführt wurden:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , toint(duration_s)/1000 | render timechart
+    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , duration_s | render timechart
     ```
 
 Weitere Informationen zur Verwendung der neuen Sprache für die Protokollsuche finden Sie unter [Grundlegendes zu Protokollsuchvorgängen in Azure Monitor-Protokolle](../log-analytics/log-analytics-log-search-new.md). 
@@ -453,14 +474,14 @@ Die folgende Tabelle beschreibt die Inhalte der einzelnen Protokolleinträge.
 | **clientIpAddress** | **clientIpAddress_s** | Die IP-Adresse des Clients. |
 | **requestCharge** | **requestCharge_s** | Die Anzahl der vom Vorgang verwendeten RUs. |
 | **collectionRid** | **collectionId_s** | Die eindeutige ID für die Sammlung.|
-| **duration** | **duration_s** | Die Dauer des Vorgangs in Ticks. |
+| **duration** | **duration_s** | Die Dauer des Vorgangs in Millisekunden. |
 | **requestLength** | **requestLength_s** | Die Länge der Anforderung in Bytes. |
 | **responseLength** | **responseLength_s** | Die Länge der Antwort in Bytes.|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Dieser Wert ist nicht leer, wenn [Ressourcentoken](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens) für die Authentifizierung verwendet werden. Der Wert verweist auf die Ressourcen-ID des Benutzers. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie sich mit dem Aktivieren der Protokollierung vertraut machen und darüber hinaus ein Verständnis der von den verschiedenen Azure-Diensten unterstützten Metriken und Protokollkategorien erlangen möchten, lesen Sie die Artikel [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md) und [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md).
+- Wenn Sie sich mit dem Aktivieren der Protokollierung vertraut machen und darüber hinaus ein Verständnis der von den verschiedenen Azure-Diensten unterstützten Metriken und Protokollkategorien erlangen möchten, lesen Sie die Artikel [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md) und [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/resource-logs-overview.md).
 - Lesen Sie diese Artikel durch, um sich über Event Hubs zu informieren:
    - [Was ist Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

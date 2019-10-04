@@ -5,14 +5,12 @@ metadata:
   title: 'Dokumentation für Azure API Management – Tutorials, API-Referenz | Microsoft-Dokumentation'
   description: 'Hier erfahren Sie, wie Sie APIs mithilfe von API Management sicher und skalierbar für externe und interne Entwickler sowie für Entwicklungspartner veröffentlichen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie moderne API-Gateways für vorhandene Back-End-Dienste erstellen und verwalten – ganz gleich, wo diese gehostet werden.'
   services: api-management
-  author: czeumault
-  manager: carolz
+  author: georgewallace
+  manager: gwallace
   ms.service: api-management
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 11/15/2017
-  ms.author: carolz
+  ms.author: gwallace
 abstract:
   description: 'Hier erfahren Sie, wie Sie APIs mithilfe von API Management sicher und skalierbar für externe und interne Entwickler sowie für Entwicklungspartner veröffentlichen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie moderne API-Gateways für vorhandene Back-End-Dienste erstellen und verwalten – ganz gleich, wo diese gehostet werden.'
 sections:

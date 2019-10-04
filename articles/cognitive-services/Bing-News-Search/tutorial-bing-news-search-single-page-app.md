@@ -1,22 +1,22 @@
 ---
-title: 'Tutorial: Erstellen einer Single-Page-Web-App – Bing-News-Suche-API'
-titlesuffix: Azure Cognitive Services
+title: 'Tutorial: Erstellen einer Single-Page-Web-App mit der Bing-News-Suche-API'
+titleSuffix: Azure Cognitive Services
 description: Erstellen Sie mithilfe dieses Tutorials eine Single-Page-Webanwendung, die Suchabfragen an die Bing-News-API senden und die Ergebnisse auf der Webseite anzeigen kann.
 services: cognitive-services
-author: mikedodaro
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 01/10/2019
-ms.author: v-gedod
+ms.date: 07/12/2019
+ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 29539ba39e724208093910f8fb6fa2d3bc309bda
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885037"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423606"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Tutorial: Erstellen einer Single-Page-Web-App
 
@@ -381,7 +381,7 @@ Die Funktion zum Rendern von News führt folgende Vorgänge aus:
 > * Erstellt die `<a>`-HTML-Tags, die eine Verknüpfung mit dem Bild und der Seite, die das Bild enthält, darstellen.
 > * Erstellt die Beschreibung, die Informationen über das Bild und die Website, auf der sich das Bild befindet, angibt.
 
-Die Größe des Miniaturbilds wird sowohl im `<img>`-Tag als auch in den Feldern `h` und `w` in der URL des Miniaturbilds verwendet. Der [Bing-Dienst für Miniaturbilder](resize-and-crop-thumbnails.md) übermittelt anschließend ein Miniaturbild in genau dieser Größe.
+Die Größe des Miniaturbilds wird sowohl im `<img>`-Tag als auch in den Feldern `h` und `w` in der URL des Miniaturbilds verwendet. Der [Bing-Dienst für Miniaturbilder](../bing-web-search/resize-and-crop-thumbnails.md) übermittelt anschließend ein Miniaturbild in genau dieser Größe.
 
 ## <a name="persisting-client-id"></a>Persistentes Speichern der Client-ID
 Antworten, die von Bing-Suche-APIs gesendet werden, können einen `X-MSEdge-ClientID`-Header enthalten, der mit den nachfolgenden Anforderungen an die API zurückgesendet werden sollte. Wenn mehrere Bing-Suche-APIs genutzt werden, sollte nach Möglichkeit dieselbe Client-ID für alle APIs verwendet werden.
@@ -397,7 +397,7 @@ Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header m
 > [!NOTE]
 > In einer Web-App für eine Produktionsumgebung sollten Sie die Anforderung serverseitig ausführen. Andernfalls muss der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
 
-In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern, die JavaScript zur Verfügung gestellt werden.
+In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header, der Antwortheader zulässt und für JavaScript zur Verfügung stellt.
 
 Die Installation eines CORS-Proxys, mit dem die Tutorial-App auf den Client-ID-Header zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie anschließend folgenden Befehl in ein Befehlsfenster ein:
 

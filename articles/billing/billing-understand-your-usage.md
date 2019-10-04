@@ -1,93 +1,141 @@
 ---
-title: Grundlegendes über die detaillierte Nutzung in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Abschnitte Ihrer CSV-Datei mit ausführlichen Nutzungsdaten Ihres Azure-Abonnements anzeigen und verstehen.
-services: ''
-documentationcenter: ''
+title: Grundlegendes zu detaillierter Nutzung und Gebühren | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ihre detaillierte Nutzung und Gebühren lesen und verstehen.
 author: bandersmsft
-manager: alherz
-editor: ''
+manager: micflan
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: a143fc6d9dbd78ae365f943a00ac9f8492d5e51c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1842d32a838470d9b2af3a778c44c37464d32294
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897145"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "68954341"
 ---
-# <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Grundlegendes über Benennungen zu den Gebühren in der Datei mit ausführlichen Nutzungsdaten zu Microsoft Azure 
+# <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren
 
-Die CSV-Datei mit ausführlichen Informationen zu Nutzungsgebühren enthält Gebühren für die tägliche Nutzung und die Nutzung auf der Ebene von Verbrauchseinheiten für den aktuellen Abrechnungszeitraum. 
+Die Datei zu detaillierter Nutzung und Gebühren enthält die tägliche bewertete Nutzung basierend auf vereinbarten Tarifen, Einkäufen (z.B. Reservierungen, Marketplace-Gebühren) und Rückerstattungen für den angegebenen Zeitraum.
+Die Gebühren beinhalten keine Gutschriften, Steuern oder andere Gebühren und Rabatte.
+Die folgende Tabelle zeigt, welche Gebühren für jeden Kontotyp enthalten sind.
 
-Informationen zum Abrufen der Datei mit ausführlichen Nutzungsdaten finden Sie unter [Vorgehensweise zum Abrufen von Azure-Rechnungen und Daten zur täglichen Nutzung](billing-download-azure-invoice-daily-usage-date.md).
-Sie ist als Datei mit kommagetrennten Werten (CSV) verfügbar, die Sie in einem Tabellenkalkulationsprogramm öffnen können. Wenn zwei Versionen verfügbar sind, laden Sie Version 2 herunter. Das ist das aktuellste Dateiformat.
+Kontotyp | Azure-Nutzung | Marketplace-Nutzung | Einkäufe | Rückerstattungen
+--- | --- | --- | --- | ---
+Enterprise Agreement (EA) | Ja | Ja | Ja | Nein
+Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) | Ja | Ja | Ja | Ja
+Nutzungsbasierte Bezahlung (Pay-as-you-go, PAYG) | Ja | Ja | Nein | Nein
 
-Nutzungsgebühren sind die **monatlichen** Gesamtgebühren für ein Abonnement. Die Nutzungsgebühren berücksichtigen keine Guthaben oder Rabatte.
+Weitere Informationen zu Marketplace-Bestellungen (auch als externe Dienstleistungen bezeichnet) finden Sie unter [Grundlegendes zu Azure-Gebühren für externe Dienste](billing-understand-your-azure-marketplace-charges.md).
 
->[!VIDEO https://www.youtube.com/embed/p13S350M2Vk]
+Anweisungen für den Download finden Sie unter [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md).
+Sie können Ihre Nutzungs- und Gebühren-CSV-Datei in Microsoft Excel oder einer anderen Tabellenkalkulationsanwendung öffnen.
 
-## <a name="detailed-terms-and-descriptions-of-your-detailed-usage-file"></a>Detaillierte Erläuterungen zu Benennungen und Beschreibungen der Datei mit ausführlichen Nutzungsdaten
+## <a name="list-of-terms-and-descriptions"></a>Liste der Begriffe und Beschreibungen
 
-In den folgenden Abschnitten werden die in Version 2 der Datei mit den detaillierten Informationen zur Nutzung verwendeten Benennungen beschrieben.
+In der folgenden Tabelle werden die wichtigen Begriffe in der neuesten Version der Datei für die Azure-Nutzung und -Gebühren erläutert.
+Die Liste umfasst Konten für nutzungsbasierte Bezahlung (Pay-as-you-go, PAYG), Enterprise Agreement (EA) und Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA).
 
-### <a name="statement"></a>Anweisung
+Begriff | Kontotyp | BESCHREIBUNG
+--- | --- | ---
+AccountName | EA, PAYG | Anzeigename des EA-Registrierungs- oder PAYG-Abrechnungskontos.
+AccountOwnerId<sup>1</sup> | EA, PAYG | Eindeutiger Bezeichner des EA-Registrierungs- oder PAYG-Abrechnungskontos.
+AdditionalInfo | Alle | Dienstspezifische Metadaten. Dies kann beispielsweise ein Imagetyp für einen virtuellen Computer sein.
+BillingAccountId<sup>1</sup> | Alle | Eindeutiger Bezeichner für das Stammabrechnungskonto.
+BillingAccountName | Alle | Name des Abrechnungskontos.
+BillingCurrency | Alle | Dem Abrechnungskonto zugeordnete Währung.
+BillingPeriod | EA, PAYG | Abrechnungszeitraum der Gebühren.
+BillingPeriodEndDate | Alle | Enddatum des Abrechnungszeitraums.
+BillingPeriodStartDate | Alle | Startdatum des Abrechnungszeitraums.
+BillingProfileId<sup>1</sup> | Alle | Eindeutiger Bezeichner des EA-Registrierungs-, PAYG-Abonnement-, MCA-Abrechnungsprofil- oder konsolidierten AWS-Kontos.
+BillingProfileName | Alle | Name des EA-Registrierungs-, PAYG-Abonnement-, MCA-Abrechnungsprofil- oder konsolidierten AWS-Kontos.
+ChargeType | Alle | Gibt an, ob die Gebühren die Nutzung (**Nutzung**), einen Kauf (**Einkauf**) oder eine Erstattung (**Rückerstattung**) darstellt.
+ConsumedService | Alle | Name des Diensts, dem die Gebühren zugeordnet sind.
+CostCenter<sup>1</sup> | EA, MCA | Die Kostenstelle, die im Abonnement für die Nachverfolgung der Kosten festgelegt wurde (nur in offenen Abrechnungszeiträumen für MCA-Konten verfügbar).
+Kosten | EA, PAYG | Siehe „CostInBillingCurrency“.
+CostInBillingCurrency | MCA | Kosten der Gebühren in der Abrechnungswährung vor Gutschriften oder Steuern.
+CostInPricingCurrency | MCA | Kosten der Gebühren in der Preiswährung vor Gutschriften oder Steuern.
+Currency | EA, PAYG | Siehe „BillingCurrency“.
+Date<sup>1</sup> | Alle | Verbrauchs- oder Kaufdatum der Gebühren.
+EffectivePrice | Alle | Gemischter Einzelpreis für den Zeitraum. Mit den gemischten Preisen wird aus allen Einzelpreisschwankungen (wie z.B. abgestuftem Tiering) der Durchschnitt ermittelt, wodurch der Preis sinkt, da die Menge im Laufe der Zeit wächst.
+ExchangeRateDate | MCA | Datum, an dem der Wechselkurs festgelegt wurde.
+ExchangeRatePricingToBilling | MCA | Der für die Umrechnung der Kosten aus der Preiswährung in die Abrechnungswährung verwendete Wechselkurs.
+Frequency | Alle | Gibt an, ob eine Gebühr sich voraussichtlich wiederholt. Gebühren fallen entweder einmal (**OneTime**), wiederholt monatlich oder jährlich (**Recurring**) oder basierend auf der Nutzung (**UsageBased**) an.
+InvoiceId | PAYG, MCA | Die eindeutige Dokument-ID, die in der PDF-Datei für die Rechnung aufgeführt ist.
+InvoiceSection | MCA | Siehe „InvoiceSectionName“.
+InvoiceSectionId<sup>1</sup> | EA, MCA | Eindeutiger Bezeichner für EA-Abteilung oder MCA-Rechnungsabschnitt.
+InvoiceSectionName | EA, MCA | Name für EA-Abteilung oder MCA-Rechnungsabschnitt.
+IsAzureCreditEligible | Alle | Gibt an, ob die Gebühr mit einer Azure-Gutschrift bezahlt werden kann (Werte: True, False).
+Location | MCA | Standort des Rechenzentrums, in dem die Ressource ausgeführt wird.
+MeterCategory | Alle | Name der Klassifizierungskategorie der Verbrauchseinheit. Beispiele: *Clouddienste* und *Netzwerk*.
+MeterId<sup>1</sup> | Alle | Der eindeutige Bezeichner für die Verbrauchseinheit.
+MeterName | Alle | Der Name der Verbrauchseinheit.
+MeterRegion | Alle | Der Name des Standorts des Rechenzentrums für auf Basis des Standorts abgerechnete Dienste. Siehe „Location“.
+MeterSubCategory | Alle | Name der Unterklassifizierungskategorie der Verbrauchseinheit.
+OfferId<sup>1</sup> | Alle | Der Name des erworbenen Angebots.
+PartNumber<sup>1</sup> | EA, PAYG | Der Bezeichner, der verwendet wird, um bestimmte Verbrauchseinheitspreise zu erhalten.
+PlanName | EA, PAYG | Name des Marketplace-Plans.
+PreviousInvoiceId | MCA | Verweis auf die ursprüngliche Rechnung, wenn es sich bei diesem Posten um eine Rückerstattung handelt.
+PricingCurrency | MCA | Währung, die verwendet wird, wenn die Bewertung basierend auf vereinbarten Preisen erfolgt.
+Produkt | Alle | Der Name des Produkts.
+ProductId<sup>1</sup> | MCA | Der eindeutige Bezeichner für das Produkt.
+ProductOrderId | Alle | Der eindeutige Bezeichner für die Produktbestellung.
+ProductOrderName | Alle | Der eindeutige Name für die Produktbestellung.
+PublisherName | Alle | Herausgeber für Marketplace-Dienste.
+PublisherType | Alle | Typ des Herausgebers (Werte: **Azure**, **AWS**, **Marketplace**).
+Menge | Alle | Die Anzahl der erworbenen oder genutzten Einheiten.
+ReservationId | EA, MCA | Der eindeutige Bezeichner für die erworbene Reservierungsinstanz.
+ReservationName | EA, MCA | Der Name der erworbenen Reservierungsinstanz.
+ResourceGroup | Alle | Name der [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), in der sich die Ressource befindet.
+ResourceId<sup>1</sup> | Alle | Der eindeutige Bezeichner der [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources)-Ressource.
+ResourceLocation | Alle | Standort des Rechenzentrums, in dem die Ressource ausgeführt wird. Siehe „Location“.
+ResourceName | EA, PAYG | Der Name der Ressource.
+ResourceType | MCA | Der Ressourceninstanztyp.
+ServiceFamily | MCA | Die Dienstfamilie, zu der der Dienst gehört.
+ServiceInfo1 | Alle | Dienstspezifische Metadaten.
+ServiceInfo2 | Alle | Ein Legacyfeld mit optionalen dienstspezifischen Metadaten.
+ServicePeriodEndDate | MCA | Das Enddatum des Bewertungszeitraums, durch den die Preise für den genutzten oder erworbenen Dienst festgelegt wurden.
+ServicePeriodStartDate | MCA | Das Startdatum des Bewertungszeitraums, durch den die Preise für den genutzten oder erworbenen Dienst festgelegt wurden.
+SubscriptionId<sup>1</sup> | Alle | Der eindeutige Bezeichner für das Azure-Abonnement.
+SubscriptionName | Alle | Der Name des Azure-Abonnements.
+Tags<sup>1</sup> | Alle | Tags, die der Ressource zugewiesen werden. Umfasst keine Ressourcengruppen-Tags. Kann verwendet werden, um die Kosten für interne verbrauchsbasierte Kostenzuteilung zu gruppieren oder zu verteilen. Weitere Informationen finden Sie unter [Organisieren von Azure-Ressourcen mit Tags](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
+Begriff | Alle | Zeigt den Zeitraum für die Gültigkeit des Angebots an. Beispiel:  Bei reservierten Instanzen werden 12 Monate als „Zeitraum“ angezeigt. Für einmalige Käufe oder wiederkehrende Käufe beträgt „Zeitraum“ 1 Monat (SaaS, Marketplace-Support). Dies gilt nicht für den Azure-Verbrauch.
+UnitOfMeasure | Alle | Die Abrechnungsmaßeinheiten für den Dienst. Computedienste werden beispielsweise pro Stunde abgerechnet.
+UnitPrice | EA, PAYG | Der Preis pro Einheit für die Gebühren.
 
-Im obersten Abschnitt der CSV-Datei mit ausführlichen Nutzungsdaten werden die während des Abrechnungszeitraums des Monats verwendeten Dienste angezeigt. Die folgende Tabelle enthält die in diesem Abschnitt aufgeführten Begriffe und Beschreibungen.
+_<sup>**1**</sup> Felder zum Erstellen einer eindeutigen ID für einen einzelnen Kostendatensatz_
 
-| Begriff | BESCHREIBUNG |
-| --- | --- |
-|Billing Period |Der Abrechnungszeitraum, in dem die Verbrauchseinheiten verwendet wurden |
-|Meter Category |Gibt den Dienst der obersten Ebene für die Nutzung an |
-|Meter Sub-Category |Definiert den Typ des Azure-Diensts und kann sich auf den Tarif auswirken |
-|Meter Name |Gibt die Maßeinheit für die genutzte Verbrauchseinheit an |
-|Meter Region |Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden |
-|SKU |Gibt den eindeutigen Systembezeichner für jede Azure-Verbrauchseinheit an |
-|Unit |Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele sind GB, Stunden oder 10.000 s. |
-|Consumed Quantity |Die Menge der Verbrauchseinheit, die während des Abrechnungszeitraums genutzt wurde |
-|Included Quantity |Die Menge der Verbrauchseinheit, die kostenlos in Ihrem Abrechnungszeitraum inbegriffen ist |
-|Overage Quantity |Zeigt den Unterschied zwischen der verbrauchten und der enthaltenen Menge an. Dieser Betrag wird Ihnen in Rechnung gestellt. Bei Angeboten mit nutzungsbasierter Bezahlung ohne eine im Angebot enthaltene Menge entspricht der Wert hier dem Wert unter „Verbrauchte Menge“. |
-|Within Commitment |Zeigt die Gebühren für Verbrauchseinheiten an, die von Ihrem Verpflichtungsbetrag im Rahmen Ihres 6- oder 12-monatigen Angebots abgezogen werden. Die Gebühren für Verbrauchseinheiten werden in chronologischer Reihenfolge von Ihrem Verpflichtungsbetrag abgezogen. |
-|Currency |Die für den aktuellen Abrechnungszeitraum verwendete Währung |
-|Überschreitung |Zeigt die Gebühren für Verbrauchseinheiten an, die Ihren Verpflichtungsbetrag im Rahmen Ihres 6- oder 12-monatigen Angebots überschreiten |
-|Commitment Rate |Zeigt den Verpflichtungssatz basierend auf dem Gesamtverpflichtungsbetrag im Rahmen Ihres 6- oder 12-monatigen Angebots an |
-|Rate |Die Rate, die Ihnen pro abrechenbare Einheit in Rechnung gestellt wird |
-|Wert |Zeigt das Ergebnis der Multiplikation der Spalte „Overage Quantity“ mit der Spalte „Rate“ an. Wenn die verbrauchte Menge die enthaltene Menge nicht überschreitet, fallen in dieser Spalte keine Gebühren an. |
+Beachten Sie, dass einige Felder bei den verschiedenen Kontotypen in Groß-/Kleinschreibung und Abstand abweichen können.
+Ältere Versionen von Pay-as-you-go-Nutzungsdateien verfügen über separate Abschnitte für Abrechnung und tägliche Nutzung.
 
-### <a name="daily-usage"></a>Tägliche Nutzung
+### <a name="list-of-terms-from-older-apis"></a>Liste der Begriffe aus älteren APIs
+In der folgenden Tabelle werden die in älteren APIs verwendeten Begriffe den neuen Begriffen zugeordnet. Diese Beschreibungen finden Sie in der obigen Tabelle.
 
-Im Abschnitt „Tägliche Nutzung“ der CSV-Datei werden Nutzungsdetails angezeigt, die sich auf die Fakturierungshäufigkeiten auswirken. Die folgende Tabelle enthält die in diesem Abschnitt aufgeführten Begriffe und Beschreibungen.
+Alter Begriff | Neuer Begriff
+--- | ---
+ConsumedQuantity | Menge
+IncludedQuantity | –
+InstanceId | resourceId
+Rate | EffectivePrice
+Unit | UnitOfMeasure
+UsageDate | Date
+UsageEnd | Date
+UsageStart | Date
 
-| Begriff | BESCHREIBUNG |
-| --- | --- |
-|Usage Date |Das Datum, an dem die Verbrauchseinheit genutzt wurde |
-|Meter Category |Gibt den Dienst der obersten Ebene an, zu dem dieser Verbrauch gehört |
-|Meter ID |Der Bezeichner der berechneten Verbrauchseinheit, der für die Preisfeststellung für die Nutzung verwendet wird |
-|Meter Sub-Category |Definiert den Typ des Azure-Diensts und kann sich auf den Tarif auswirken |
-|Meter Name |Gibt die Maßeinheit für die genutzte Verbrauchseinheit an |
-|Meter Region |Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden |
-|Unit |Gibt die Einheit an, in der die Verbrauchseinheit in Rechnung gestellt wird. Beispiele sind GB, Stunden oder 10.000 s. |
-|Consumed Quantity |Die Menge der Verbrauchseinheit, die an diesem Tag verbraucht wurde |
-|Resource Location |Gibt das Rechenzentrum an, in dem die Verbrauchseinheit ausgeführt wird |
-|Consumed Service |Der verwendete Azure-Plattformdienst |
-|Ressourcengruppe |Die Ressourcengruppe, in der die bereitgestellte Verbrauchseinheit ausgeführt wird. <br/><br/>Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). |
-|Instance ID | Der Bezeichner für die Verbrauchseinheit. <br/><br/> Der Bezeichner enthält den Namen, den Sie für die Verbrauchseinheit bei der Erstellung angegeben haben. Es ist entweder der Name der Ressource oder die vollqualifizierte Ressourcen-ID. Weitere Informationen finden Sie unter [Azure Resource Manager-API](https://docs.microsoft.com/rest/api/resources/resources). |
-|Tags | Tag, den Sie der Verbrauchseinheit zuweisen. Verwenden Sie Tags zum Gruppieren von Abrechnungsdatensätzen.<br/><br/>Beispielsweise können Sie Tags verwenden, um Kosten nach den Abteilungen zu unterteilen, die die Verbrauchseinheit nutzen. Dienste, die das Ausgeben von Tags unterstützen, sind virtuelle Computer, Speicher und Netzwerkdienste, die mit der [Azure Resource Manager-API](https://docs.microsoft.com/rest/api/resources/resources) bereitgestellt werden. Weitere Informationen finden Sie unter [Organisieren von Azure-Ressourcen mit Tags](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/). |
-|Additional Info |Dienstspezifische Metadaten. Dies kann beispielsweise ein Imagetyp für einen virtuellen Computer sein. |
-|Service Info 1 |Der Name des Projekts, zu dem der Dienst in Ihrem Abonnement gehört |
-|Service Info 2 |Ein Legacyfeld, in dem optionale dienstspezifische Metadaten erfasst werden |
 
-## <a name="how-do-i-make-sure-that-the-charges-in-my-detailed-usage-file-are-correct"></a>Wie stelle ich sicher, dass die in meiner Datei mit detaillierten Nutzungsdaten aufgeführten Gebühren richtig sind?
-Wenn Sie mehr über eine Gebühr in Ihrer Datei mit detaillierten Nutzungsdaten erfahren möchten, lesen Sie den Abschnitt [Grundlegendes über Ihre Rechnung für Microsoft Azure](./billing-understand-your-bill.md).
+## <a name="ensure-charges-are-correct"></a>Sicherstellen, dass Gebühren richtig sind
 
-## <a name="external"></a>Wie verhält es sich mit Gebühren für externe Dienste?
-Externe Dienste (auch als „Marketplace-Bestellungen“ bezeichnet) werden von unabhängigen Dienstanbietern bereitgestellt und separat in Rechnung gestellt. Die Gebühren werden nicht in der Azure-Rechnung aufgeführt. Weitere Informationen finden Sie unter [Grundlegendes zu Azure-Gebühren für externe Dienste](billing-understand-your-azure-marketplace-charges.md).
+Weitere Informationen über detaillierte Nutzung und Gebühren finden Sie in den Grundlegenden Informationen zur Rechnung nach [nutzungsbasierter Bezahlung (Pay-as-you-go)](./billing-understand-your-bill.md) oder [Microsoft-Kundenvereinbarung](billing-mca-understand-your-bill.md).
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Anzeigen und Herunterladen der Microsoft Azure-Rechnung](billing-download-azure-invoice.md)
+- [Anzeigen und Herunterladen der Microsoft Azure-Nutzung und -Gebühren](billing-download-azure-daily-usage.md)

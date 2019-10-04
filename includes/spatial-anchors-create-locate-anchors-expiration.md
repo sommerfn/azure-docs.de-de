@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 1598d89d254e788ecf94f9a42b83cbe22b62204a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57907671"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67177806"
 ---
 ## <a name="set-expiration"></a>Ablaufdatum festlegen
 

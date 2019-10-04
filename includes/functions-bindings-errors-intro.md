@@ -4,14 +4,32 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: c1784111cd2fc2c93b67510f310b9e513cf2b86e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f771b6b0416c5777c1ebde7e2cf2c4ffc6f375ff
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978682"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155299"
 ---
-[Trigger und Bindungen](../articles/azure-functions/functions-triggers-bindings.md) von Azure Functions kommunizieren mit verschiedenen Azure-Diensten. Bei der Integration in diese Dienste können Fehler auftreten, deren Ursache in den APIs der zugrunde liegenden Azure-Dienste liegt. Fehler können auch auftreten, wenn Sie versuchen, mit anderen Diensten aus Ihrem Funktionscode über REST oder Clientbibliotheken zu kommunizieren. Zur Vermeidung von Datenverlusten und zum Sicherstellen eines ordnungsgemäßen Verhaltens der Funktionen ist es wichtig, Fehler aus allen Quellen zu behandeln.
+In Azure Functions auftretende Fehler können einen der folgenden Ursprünge haben:
+
+- Verwendung integrierter Azure Functions-[Trigger und -Bindungen](..\articles\azure-functions\functions-triggers-bindings.md)
+- Aufrufe an APIs zugrunde liegender Azure-Dienste
+- Aufrufe an REST-Endpunkte
+- Aufrufe an Clientbibliotheken, Pakete oder Drittanbieter-APIs
+
+Die folgenden bewährten Methoden für die Fehlerbehandlung sind wichtig, um den Verlust von Daten oder verpasste Nachrichten zu vermeiden. Empfohlene Vorgehensweisen zur Fehlerbehandlung umfassen folgende Aktionen:
+
+- [Aktivieren von Application Insights](../articles/azure-functions/functions-monitoring.md)
+- [Verwenden strukturierter Fehlerbehandlung](#use-structured-error-handling)
+- [Design für Idempotenz](../articles/azure-functions/functions-idempotent.md)
+- Implementieren von Wiederholungsrichtlinien (wo geeignet)
+
+### <a name="use-structured-error-handling"></a>Verwenden strukturierter Fehlerbehandlung
+
+Das Erfassen und Veröffentlichen von Fehlern ist kritisch für die Überwachung der Integrität Ihrer Anwendung. Die oberste Ebene jedes Funktioncodes sollte einen try/catch-Block enthalten. Im catch-Block können Sie Fehler erfassen und veröffentlichen.
+
+### <a name="retry-support"></a>Wiederholungsunterstützung
 
 Die folgenden Trigger bieten eine integrierte Unterstützung der Wiederholung:
 
@@ -19,8 +37,6 @@ Die folgenden Trigger bieten eine integrierte Unterstützung der Wiederholung:
 * [Azure Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (Warteschlange/Thema)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-Standardmäßig werden für diese Trigger bis zu fünf Wiederholungsversuche ausgeführt. Nach dem fünften Wiederholungsversuch schreiben diese Trigger eine Nachricht in eine spezielle [Warteschlange für nicht verarbeitete Nachrichten](../articles/azure-functions/functions-bindings-storage-queue.md#trigger---poison-messages).
+Standardmäßig wiederholen diese Trigger Anforderungen bis zu fünfmal. Nach dem fünften Wiederholungsversuch schreiben beide Trigger eine Nachricht in die [Warteschlange für nicht verarbeitbare Nachrichten](..\articles\azure-functions\functions-bindings-storage-queue.md#trigger---poison-messages).
 
-Für die anderen Trigger von Funktionen ist kein integrierter Wiederholungsmechanismus beim Auftreten von Fehlern während der Funktionsausführung vorhanden. Um den Verlust von Triggerinformationen zu verhindern, wenn ein Fehler in Ihrer Funktion auftritt, wird empfohlen, try-catch-Blöcke zum Abfangen von Fehlern in Ihrem Funktionscode zu verwenden. Wenn ein Fehler auftritt, schreiben Sie die Informationen, die vom Trigger an die Funktion übergeben werden, in eine spezielle Warteschlange für „unzustellbare“ Nachrichten. Dieser Ansatz wird auch für den [Blob Storage-Trigger](../articles/azure-functions/functions-bindings-storage-blob.md#trigger---poison-blobs) verwendet.
-
-Auf diese Weise können Sie Triggerereignisse, die aufgrund von Fehlern verloren gehen könnten, erfassen und zu einem späteren Zeitpunkt mit einer anderen Funktion wiederholen, um Nachrichten aus der Warteschlange für nicht verarbeitete Nachrichten mit den gespeicherten Informationen zu verarbeiten.  
+Sie müssen Wiederholungsrichtlinien für alle anderen Trigger- oder Bindungstypen manuell implementieren. Manuelle Implementierungen können das Schreiben von Fehlerinformationen in eine [Warteschlange für nicht verarbeitbare Nachrichten](..\articles\azure-functions\functions-bindings-storage-blob.md#trigger---poison-blobs) umfassen. Durch das Schreiben in eine Warteschlange für nicht verarbeitbare Nachrichten erhalten Sie die Möglichkeit, Vorgänge zu einem späteren Zeitpunkt zu wiederholen. Dieser Ansatz ist mit dem vom Blob Storage-Trigger verwendeten identisch.

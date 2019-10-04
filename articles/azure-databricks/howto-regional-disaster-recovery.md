@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 354f6014e3230b65a0c4f1cd7507e58ca94474dd
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 3718b79562ec05383b9881a1a97cc5bcc5e04258
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188100"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075451"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionale Notfallwiederherstellung für Azure Databricks-Cluster
 
@@ -31,7 +31,7 @@ Diese Architektur hat unter anderem den Vorteil, dass Benutzer Azure Databricks 
 
 ## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>Erstellen einer Topologie für die regionale Notfallwiederherstellung
 
-Wie Sie der obigen Architekturbeschreibung entnehmen können, umfasst eine Big Data-Pipeline mit Azure Databricks mehrere Komponenten.   Dazu zählen unter anderem Azure Storage, Azure-Datenbank und andere Datenquellen. Azure Databricks ist die *Computekomponente* für die Big Data-Pipeline. Sie ist von Natur aus *kurzlebig*. Das bedeutet, Ihre Daten stehen weiterhin in Azure Storage zur Verfügung, die *Computekomponente* (Azure Databricks-Cluster) kann jedoch beendet werden, damit Sie nicht für Computefunktionen bezahlen müssen, wenn Sie sie nicht benötigen. Die *Computekomponente* (Azure Databricks) und die Speicherquellen müssen sich in der gleichen Region befinden, um lange Wartezeiten bei Aufträgen zu vermeiden.  
+Wie aus der obigen Beschreibung der Architektur hervorgeht, gibt es eine Vielzahl von Komponenten für Big Data-Pipelines mit Azure Databricks:  Azure Storage, Azure-Datenbank und andere Datenquellen. Azure Databricks ist die *Computekomponente* für die Big Data-Pipeline. Sie ist von Natur aus *kurzlebig*. Das bedeutet, Ihre Daten stehen weiterhin in Azure Storage zur Verfügung, die *Computekomponente* (Azure Databricks-Cluster) kann jedoch beendet werden, damit Sie nicht für Computefunktionen bezahlen müssen, wenn Sie sie nicht benötigen. Die *Computekomponente* (Azure Databricks) und die Speicherquellen müssen sich in der gleichen Region befinden, um lange Wartezeiten bei Aufträgen zu vermeiden.  
 
 Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erstellen möchten, gehen Sie wie folgt vor:
 
@@ -136,45 +136,84 @@ Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erste
    Kopieren Sie das folgende Python-Skript, speichern Sie es in einer Datei, und führen Sie sie über die Databricks-Befehlszeile aus. Beispiel: `python scriptname.py`.
 
    ```python
-   from subprocess import call, check_output import json
+   from subprocess import call, check_output
+   import json, os
 
    EXPORT_PROFILE = "primary"
    IMPORT_PROFILE = "secondary"
 
-   # Get all clusters info from old workspace 
-   clusters_out = check_output(["databricks", "clusters", "list", "--profile", EXPORT_PROFILE]) clusters_info_list = clusters_out.splitlines()
+   # Get all clusters info from old workspace
+   clusters_out = check_output(["databricks", "clusters", "list", "--profile", EXPORT_PROFILE])
+   clusters_info_list = clusters_out.splitlines()
 
-   # Create a list of all cluster ids 
-   clusters_list = [] for cluster_info in clusters_info_list:   clusters_list.append(cluster_info.split(None, 1)[0])
+   # Create a list of all cluster ids
+   clusters_list = []
+   ##for cluster_info in clusters_info_list: clusters_list.append(cluster_info.split(None, 1)[0])
+
+   for cluster_info in clusters_info_list: 
+      if cluster_info != '':
+         clusters_list.append(cluster_info.split(None, 1)[0])
 
    # Optionally filter cluster ids out manually, so as to create only required ones in new workspace
 
-   # Create a list of mandatory / optional create request elements 
-   cluster_req_elems = ["num_workers","autoscale","cluster_name","spark_version","spark_conf"," node_type_id","driver_node_type_id","custom_tags","cluster_log_conf","sp ark_env_vars","autotermination_minutes","enable_elastic_disk"]
+   # Create a list of mandatory / optional create request elements
+   cluster_req_elems = ["num_workers","autoscale","cluster_name","spark_version","spark_conf","node_type_id","driver_node_type_id","custom_tags","cluster_log_conf","spark_env_vars","autotermination_minutes","enable_elastic_disk"]
 
+   print(str(len(clusters_list)) + " clusters found in the primary site" )
+
+   print ("---------------------------------------------------------")
    # Try creating all / selected clusters in new workspace with same config as in old one.
-   cluster_old_new_mappings = {} for cluster in clusters_list:   print "Trying to migrate cluster " + cluster
+   cluster_old_new_mappings = {}
+   i = 0
+   for cluster in clusters_list:
+      i += 1
+      print("Checking cluster " + str(i) + "/" + str(len(clusters_list)) + " : " + cluster)
+      cluster_get_out = check_output(["databricks", "clusters", "get", "--cluster-id", cluster, "--profile", EXPORT_PROFILE])
+      print ("Got cluster config from old workspace")
 
-   cluster_get_out = check_output(["databricks", "clusters", "get", "--cluster-id", cluster, "--profile", EXPORT_PROFILE])
-   print "Got cluster config from old workspace"
+       # Remove extra content from the config, as we need to build create request with allowed elements only
+      cluster_req_json = json.loads(cluster_get_out)
+      cluster_json_keys = cluster_req_json.keys()
 
-   # Remove extra content from the config, as we need to build create request with allowed elements only
-   cluster_req_json = json.loads(cluster_get_out)    
-   cluster_json_keys = cluster_req_json.keys()   
+      #Don't migrate Job clusters
+      if cluster_req_json['cluster_source'] == u'JOB' : 
+         print ("Skipping this cluster as it is a Job cluster : " + cluster_req_json['cluster_id'] )
+         print ("---------------------------------------------------------")
+         continue
 
-   for key in cluster_json_keys:     
-      if key not in cluster_req_elems:       
-         cluster_req_json.pop(key, None)
-  
-   # Create the cluster, and store the mapping from old to new cluster ids
-   cluster_create_out = check_output(["databricks", "clusters", "create", "--json", json.dumps(cluster_req_json), "--profile", IMPORT_PROFILE]) 
-   cluster_create_out_json = json.loads(cluster_create_out)   
-   cluster_old_new_mappings[cluster] = cluster_create_out_json['cluster_id']
+      for key in cluster_json_keys:
+         if key not in cluster_req_elems:
+            cluster_req_json.pop(key, None)
 
-   print "Sent cluster create request to new workspace successfully"
+      # Create the cluster, and store the mapping from old to new cluster ids
 
-   print "Cluster mappings: " + json.dumps(cluster_old_new_mappings)
-   print "All done"
+      #Create a temp file to store the current cluster info as JSON
+      strCurrentClusterFile = "tmp_cluster_info.json" 
+
+      #delete the temp file if exists
+      if os.path.exists(strCurrentClusterFile) : 
+         os.remove(strCurrentClusterFile)
+
+      fClusterJSONtmp = open(strCurrentClusterFile,"w+")
+      fClusterJSONtmp.write(json.dumps(cluster_req_json))
+      fClusterJSONtmp.close()
+
+      #cluster_create_out = check_output(["databricks", "clusters", "create", "--json", json.dumps(cluster_req_json), "--profile", IMPORT_PROFILE])
+      cluster_create_out = check_output(["databricks", "clusters", "create", "--json-file", strCurrentClusterFile , "--profile", IMPORT_PROFILE])
+      cluster_create_out_json = json.loads(cluster_create_out)
+      cluster_old_new_mappings[cluster] = cluster_create_out_json['cluster_id']
+
+      print ("Cluster create request sent to secondary site workspace successfully")
+      print ("---------------------------------------------------------")
+
+      #delete the temp file if exists
+      if os.path.exists(strCurrentClusterFile) : 
+         os.remove(strCurrentClusterFile)
+
+   print ("Cluster mappings: " + json.dumps(cluster_old_new_mappings))
+   print ("All done")
+   print ("P.S. : Please note that all the new clusters in your secondary site are being started now!")
+   print ("       If you won't use those new clusters at the moment, please don't forget terminating your new clusters to avoid charges")
    ```
 
 6. **Migrieren der Auftragskonfiguration**
@@ -247,7 +286,7 @@ Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erste
 
 8. **Migrieren von Azure-Blobspeicher- und Azure Data Lake Store-Einbindungen**
 
-   Binden Sie alle [Azure-Blobspeicher](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html)- und [Azure Data Lake Store (Gen 1)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html)-Bereitstellungspunkte mithilfe einer notebookbasierten Lösung ein. Die Speicherressourcen waren im primären Arbeitsbereich bereitgestellt, und dies muss im sekundären Arbeitsbereich wiederholt werden. Für Einbindungen steht keine externe API zur Verfügung.
+   Binden Sie alle [Azure-Blobspeicher](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html)- und [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)-Bereitstellungspunkte mithilfe einer notebookbasierten Lösung manuell ein. Die Speicherressourcen waren im primären Arbeitsbereich bereitgestellt, und dies muss im sekundären Arbeitsbereich wiederholt werden. Für Einbindungen steht keine externe API zur Verfügung.
 
 9. **Migrieren von Clusterinitialisierungsskripts**
 

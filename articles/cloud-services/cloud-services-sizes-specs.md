@@ -3,23 +3,17 @@ title: Größen virtueller Computer und Azure-Clouddienste | Microsoft-Dokumenta
 description: Führt die verschiedenen VM-Größen (und IDs) für Web-und Workerrollen von Azure-Clouddiensten auf.
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: jpconnock
-editor: ''
-ms.assetid: 1127c23e-106a-47c1-a2e9-40e6dda640f6
+author: georgewallace
 ms.service: cloud-services
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 6f3177c37a2db03b8821e3e4f5b68c8b1315a016
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: gwallace
+ms.openlocfilehash: 0df9ee859ae8e341537f5e832d9ff90e9736cb0c
+ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358249"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68443010"
 ---
 # <a name="sizes-for-cloud-services"></a>Größen für Clouddienste
 In diesem Thema werden die verfügbaren Größen und Optionen für Cloud Service-Rolleninstanzen (Web- und Workerrollen) beschrieben. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. Jede Größe besitzt eine ID, die Sie in Ihre [Dienstdefinitionsdatei](cloud-services-model-and-package.md#csdef) einfügen. Preise für jede Größe sind auf der Seite [Cloud Services Preise](https://azure.microsoft.com/pricing/details/cloud-services/) verfügbar.
@@ -82,7 +76,7 @@ In den folgenden Tabellen sind die Größe und die von den einzelnen Größen be
 * Bei der maximalen Netzwerkbandbreite handelt es sich um die maximale aggregierte Bandbreite, die pro VM-Typ zugewiesen wurde. Die maximale Bandbreite dient als Orientierungshilfe bei der Wahl des richtigen VM-Typs, um sicherzustellen, dass ausreichend Netzwerkkapazität verfügbar ist. Bei einem Wechsel zu „niedrig“, „mittel“, „hoch“ oder „sehr hoch“ ändert sich der Durchsatz entsprechend. Die tatsächliche Netzwerkleistung hängt von zahlreichen Faktoren ab. Hierzu zählen beispielsweise die Netzwerk- und Anwendungslast und die Netzwerkeinstellungen der Anwendung.
 
 ## <a name="a-series"></a>A-Serie
-| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher: GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Size            | CPU-Kerne | Memory: GiB  | Temporärer Speicher: GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Sehr klein      | 1         | 0,768        | 20                   | 1/niedrig |
 | Klein           | 1         | 1,75         | 225                  | 1/moderat |
@@ -96,7 +90,7 @@ In den folgenden Tabellen sind die Größe und die von den einzelnen Größen be
 ## <a name="a-series---compute-intensive-instances"></a>A-Serie: Rechenintensive Instanzen
 Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [Größen für leistungsstarke Compute-VMs](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher: GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Size            | CPU-Kerne | Memory: GiB  | Temporärer Speicher: GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | A8*             |8          | 56           | 1817                 | 2/hoch |
 | A9*             |16         | 112          | 1817                 | 4/sehr hoch |
@@ -107,7 +101,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 ## <a name="av2-series"></a>Av2-Serie
 
-| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Size            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_A1_v2  | 1         | 2            | 10                   | 1/moderat                 |
 | Standard_A2_v2  | 2         | 4            | 20                   | 2/moderat                 |
@@ -119,7 +113,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 
 ## <a name="d-series"></a>D-Serie
-| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Size            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1     | 1         | 3,5          | 50                   | 1/moderat |
 | Standard_D2     | 2         | 7            | 100                  | 2/hoch |
@@ -131,7 +125,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 | Standard_D14    | 16        | 112          | 800                  | 8/sehr hoch |
 
 ## <a name="dv2-series"></a>Dv2-Serie
-| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Size            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1_v2  | 1         | 3,5          | 50                   | 1/moderat |
 | Standard_D2_v2  | 2         | 7            | 100                  | 2/hoch |
@@ -142,11 +136,11 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 | Standard_D12_v2 | 4         | 28           | 200                  | 4/hoch |
 | Standard_D13_v2 | 8         | 56           | 400                  | 8/hoch |
 | Standard_D14_v2 | 16        | 112          | 800                  | 8/äußerst hoch |
-| Standard_D15_v2 | 20        | 140          | 1.000                | 8/äußerst hoch |
+| Standard_D15_v2 | 20        | 140          | 1\.000                | 8/äußerst hoch |
 
 ## <a name="dv3-series"></a>Dv3-Serie
 
-| Größe            | CPU-Kerne | Memory: GiB   | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Size            | CPU-Kerne | Memory: GiB   | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_D2_v3  | 2         | 8             | 50                   | 2/moderat |
 | Standard_D4_v3  | 4         | 16            | 100                  | 2/hoch |
@@ -157,7 +151,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 ## <a name="ev3-series"></a>Ev3-Serie
 
-| Größe            | CPU-Kerne | Memory: GiB   | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Size            | CPU-Kerne | Memory: GiB   | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_E2_v3  | 2         | 16            | 50                   | 2/moderat |
 | Standard_E4_v3  | 4         | 32            | 100                  | 2/hoch |
@@ -168,20 +162,20 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 
 ## <a name="g-series"></a>G-Serie
-| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Size            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_G1     | 2         | 28           | 384                  |1/hoch |
 | Standard_G2     | 4         | 56           | 768                  |2/hoch |
-| Standard_G3     | 8         | 112          | 1.536                |4/sehr hoch |
-| Standard_G4     | 16        | 224          | 3.072                |8/äußerst hoch |
-| Standard_G5     | 32        | 448          | 6.144                |8/äußerst hoch |
+| Standard_G3     | 8         | 112          | 1\.536                |4/sehr hoch |
+| Standard_G4     | 16        | 224          | 3\.072                |8/äußerst hoch |
+| Standard_G5     | 32        | 448          | 6\.144                |8/äußerst hoch |
 
 ## <a name="h-series"></a>H-Reihe
 Virtuelle Azure-Computer der H-Reihe sind High Performing Computing-VMs der nächsten Generation für High-End-Berechnungsanforderungen, z.B. Molekülmodellierung und Strömungsdynamikberechnung. Diese virtuellen Computer mit 8 und 16 Kernen basieren auf der Intel Haswell E5-2667 V3-Prozessortechnologie mit DDR4-Speicher und lokalem SSD-Speicher.
 
 Neben beträchtlicher CPU-Leistung bietet die H-Serie verschiedene Optionen für RDMA-Netzwerke mit niedriger Latenz unter Verwendung von FDR InfiniBand sowie verschiedene Speicherkonfigurationen für Berechnungsanforderungen mit hohem Speicherbedarf.
 
-| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Size            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_H8     | 8         | 56           | 1000                 | 8/hoch |
 | Standard_H16    | 16        | 112          | 2000                 | 8/sehr hoch |

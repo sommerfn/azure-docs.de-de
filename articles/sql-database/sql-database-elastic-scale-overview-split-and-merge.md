@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 2127c05d7e52b0103d91ecfac4fb5977a4815f31
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 841794dcbb41249ea25f615524150df4bd257b45
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901932"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568386"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken
 
@@ -101,7 +100,7 @@ Das Split-Merge-Tool wird als Azure-Webdienst ausgeführt. Ein Administrator ode
 
     Die Informationen zu Verweistabellen und Shardtabellen werden von den `SchemaInfo`-APIs für die Shardzuordnung bereitgestellt. Das folgende Beispiel veranschaulicht die Verwendung dieser APIs anhand eines bestimmten Shardzuordnungs-Manager-Objekts:
 
-    ```c#
+    ```csharp
     // Create the schema annotations
     SchemaInfo schemaInfo = new SchemaInfo();
 
@@ -136,7 +135,7 @@ Das Split-Merge-Dienstpaket enthält eine Workerrolle und eine Webrolle. Mit der
 
 - **Shard Map**
 
-  Der nächste Abschnitt von Anforderungsparametern enthält Informationen zu der Shardzuordnung und der Datenbank, in der Ihre Shardzuordnung gehostet wird. Sie müssen den Namen des Azure SQL-Datenbankservers und der Datenbank, in der die Shard-Zuordnung gehostet wird, die Anmeldeinformationen zum Herstellen einer Verbindung mit der Shard-Zuordnungsdatenbank und schließlich den Namen der Shard-Zuordnung angeben. Der Vorgang akzeptiert momentan nur einen einzigen Satz von Anmeldeinformationen. Diese Anmeldeinformationen müssen über ausreichende Berechtigungen verfügen, um die Shard-Zuordnung und die Benutzerdaten in den Shards ändern zu können.
+  Der nächste Abschnitt von Anforderungsparametern enthält Informationen zu der Shardzuordnung und der Datenbank, in der Ihre Shardzuordnung gehostet wird. Sie müssen den Namen des Azure SQL-Datenbank-Servers und der Datenbank, in der die Shard-Zuordnung gehostet wird, die Anmeldeinformationen zum Herstellen einer Verbindung mit der Shard-Zuordnungsdatenbank und schließlich den Namen der Shard-Zuordnung angeben. Der Vorgang akzeptiert momentan nur einen einzigen Satz von Anmeldeinformationen. Diese Anmeldeinformationen müssen über ausreichende Berechtigungen verfügen, um die Shard-Zuordnung und die Benutzerdaten in den Shards ändern zu können.
 
 - **Source Range (Split und Merge)**
 
@@ -248,7 +247,7 @@ Die in der obigen Abbildung hervorgehobene Tabelle WADLogsTable enthält die det
 
 ## <a name="performance"></a>Leistung
 
-Im Allgemeinen ist von den höheren, leistungsstärkeren Dienstebenen in Azure SQL-Datenbank eine bessere Leistung zu erwarten. Die vom Split-Merge-Dienst verwendeten Massenkopier- und -löschvorgänge profitieren von höheren E/A-, CPU- und Speicherressourcenzuteilungen für die höheren Dienstebenen. Aus diesem Grund erhöhen Sie die Dienstebene nur für diese Datenbanken für einen definierten, begrenzten Zeitraum.
+Im Allgemeinen ist von den höheren, leistungsstärkeren Dienstebenen in Azure SQL-Datenbank eine bessere Leistung zu erwarten. Die vom Split-Merge-Dienst verwendeten Vorgänge für Massenkopieren und -löschung profitieren von höheren E/A-, CPU- und Speicherressourcenzuteilungen für die höheren Dienstebenen. Aus diesem Grund erhöhen Sie die Dienstebene nur für diese Datenbanken für einen definierten, begrenzten Zeitraum.
 
 Der Dienst führt im Rahmen der normalen Vorgänge auch Überprüfungsabfragen aus. Mit diesen Überprüfungsabfragen wird geprüft, ob Daten unerwartet im Zielbereich vorhanden sind, und sichergestellt, dass alle Split/Merge/Move-Vorgänge in einem konsistenten Zustand gestartet werden. Für diese Abfragen werden Sharding-Schlüsselbereiche verwendet, die durch den Umfang des Vorgangs und die Batchgröße, die als Teil der Anforderungsdefinition angegeben wird, definiert werden. Diese Abfragen funktionieren am besten, wenn ein Index vorhanden ist, in dem der Shardingschlüssel die führende Spalte bildet.
 

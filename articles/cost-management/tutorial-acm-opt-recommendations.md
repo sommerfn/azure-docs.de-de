@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 05/30/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 8471ae8ed0b391df11d81569b5660a2b098f5793
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9306e44655bd172343f20ac4fda2b2c56afcfb88
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000921"
+ms.lasthandoff: 06/17/2019
+ms.locfileid: "67164488"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Tutorial: Optimieren von Kosten mithilfe von Empfehlungen
 
@@ -49,7 +49,17 @@ Um Empfehlungen zur Kostenoptimierung für ein Abonnement anzuzeigen, öffnen Si
 
 Die Liste der Empfehlungen identifiziert Nutzungsineffizienzen oder zeigt Kaufempfehlungen, die Ihnen helfen können, zusätzliches Geld zu sparen. Die Summe **Potenzielle jährliche Einsparungen** zeigt den Gesamtbetrag, den Sie sparen können, wenn Sie alle Ihre VMs, die den Empfehlungsregeln entsprechen, herunterfahren oder freigeben. Wenn Sie sie nicht herunterfahren möchten, sollten Sie eine Größenänderung auf eine kostengünstigere VM-SKU in Betracht ziehen.
 
-Die Kategorie **Auswirkungen** und die Kategorie **Potenzielle jährliche Einsparungen** sollen helfen, Empfehlungen zu identifizieren, die das Potenzial haben, so viel wie möglich zu sparen. Die wirkungsvollsten Empfehlungen sind [Erwerben reservierter VM-Instanzen, um gegenüber dem nutzungsbasierten Modell Kosten einzusparen](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs) und [Optimieren der Kosten für virtuelle Computer durch Ändern der Größe oder Herunterfahren von zu gering ausgelasteten Instanzen](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances). Empfehlungen mit mittlerer Auswirkung sind [Kostensenkung durch die Beseitigung nicht bereitgestellter ExpressRoute-Verbindungen](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits) und [Verringern der Kosten durch Löschen oder Neukonfigurieren von Gateways für virtuelle Netzwerke im Leerlauf](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways).
+Die Kategorie **Auswirkungen** und die Kategorie **Potenzielle jährliche Einsparungen** sollen helfen, Empfehlungen zu identifizieren, die das Potenzial haben, so viel wie möglich zu sparen.
+
+Empfehlungen mit starken Auswirkungen:
+- [Erwerben reservierter VM-Instanzen, um gegenüber dem nutzungsbasierten Modell Kosten einzusparen](../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs)
+- [Optimieren der Kosten für virtuelle Computer durch Ändern der Größe oder Herunterfahren von zu gering ausgelasteten Instanzen](../advisor/advisor-cost-recommendations.md#optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances)
+- [Verwenden von Storage Standard zum Speichern von Momentaufnahmen für verwaltete Datenträger](../advisor/advisor-cost-recommendations.md#use-standard-snapshots-for-managed-disks)
+
+Empfehlungen mit mittleren Auswirkungen:
+- [Löschen fehlerhafter Azure Data Factory-Pipelines](../advisor/advisor-cost-recommendations.md#delete-azure-data-factory-pipelines-that-are-failing)
+- [Kostensenkung durch die Beseitigung nicht bereitgestellter ExpressRoute-Verbindungen](../advisor/advisor-cost-recommendations.md#reduce-costs-by-eliminating-unprovisioned-expressroute-circuits)
+- [Verringern der Kosten durch Löschen oder Neukonfigurieren von Gateways für virtuelle Netzwerke im Leerlauf](../advisor/advisor-cost-recommendations.md#reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways)
 
 ## <a name="act-on-a-recommendation"></a>Umsetzen einer Empfehlung
 

@@ -1,5 +1,5 @@
 ---
-title: Bedingter Zugriff für B2B Collaboration-Benutzer – Azure Active Directory | Microsoft-Dokumentation
+title: Bedingter Zugriff für Benutzer von B2B-Zusammenarbeit – Azure Active Directory | Microsoft-Dokumentation
 description: Azure Active Directory B2B-Zusammenarbeit unterstützt die Multi-Factor Authentication (MFA) für den selektiven Zugriff auf Ihre Unternehmensanwendungen.
 services: active-directory
 ms.service: active-directory
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celestedg
+ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5234443e234d232a9711274bea2f73427266f6e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5a54e5006a268347148945fbe7fc5f18cfa41036
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113485"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68357121"
 ---
-# <a name="conditional-access-for-b2b-collaboration-users"></a>Bedingter Zugriff für Benutzer der B2B-Zusammenarbeit
+# <a name="conditional-access-for-b2b-collaboration-users"></a>Bedingter Zugriff für Benutzer von B2B-Zusammenarbeit
 
 ## <a name="multi-factor-authentication-for-b2b-users"></a>Multi-Factor Authentication für B2B-Benutzer
 Azure AD B2B-Zusammenarbeit bietet Organisationen die Möglichkeit, Multi-Factor Authentication-Richtlinien (MFA) für B2B-Benutzer zu erzwingen. Diese Richtlinien können auf Mandantenebene, App-Ebene oder der Ebene einzelner Benutzer auf die gleiche Weise erzwungen werden, wie sie für Vollzeitmitarbeiter und Mitglieder der Organisation aktiviert werden können. MFA-Richtlinien werden in der Ressourcenorganisation erzwungen.
@@ -57,7 +57,7 @@ Zurzeit kann ein Administrator eine erneute Authentifizierung von B2B-Zusammenar
    ```
    Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
    ```
-   Beispiel: 
+   Beispiel:
 
    ```
    Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
@@ -92,6 +92,10 @@ Deshalb wird im Hinblick auf MFA für B2B-Benutzer empfohlen, MFA immer im einla
 Wenn Contoso gerätebasierte Richtlinien für den bedingten Zugriff auf seine Unternehmensdaten aktiviert, wird der Zugriff von nicht verwalteten Geräten (d.h. von Geräten, die nicht von Contoso verwaltet werden und nicht die Contoso-Geräterichtlinien erfüllen) verhindert.
 
 Wenn das Gerät des B2B-Benutzers nicht von Contoso verwaltet wird, wird der Zugriff von B2B-Benutzern aus den Partnerorganisationen in jedem Kontext, in dem diese Richtlinien erzwungen werden, blockiert. Contoso kann jedoch Ausschlusslisten erstellen, die bestimmte Partnerbenutzer enthalten, die gemäß der gerätebasierten Richtlinie für bedingten Zugriff ausgeschlossen werden sollen.
+
+#### <a name="mobile-application-management-policies-for-b2b"></a>B2B-Richtlinien für die Verwaltung mobiler Anwendungen
+
+App-Schutzrichtlinien für bedingten Zugriff können nicht auf B2B-Benutzer angewendet werden, da die einladende Organisation keinen Einblick in die Organisation des B2B-Benutzers hat.
 
 #### <a name="location-based-conditional-access-for-b2b"></a>Standortbasierter bedingter Zugriff für B2B
 

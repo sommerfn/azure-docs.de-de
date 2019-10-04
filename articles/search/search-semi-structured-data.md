@@ -1,20 +1,20 @@
 ---
-title: 'Tutorial: Indizieren von teilweise strukturierten Daten in JSON-Blobs: Azure Search'
+title: 'REST-Tutorial: Indizieren von teilweise strukturierten Daten in JSON-Blobs: Azure Search'
 description: Erfahren Sie, wie Sie teilweise strukturierte Azure-JSON-Blobs mithilfe von Azure Search-REST-APIs und Postman indizieren und durchsuchen.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 147f67f40a060f3e274fe1f3fa368ebfd01711b6
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: cb9c97efd62a56ad0eac49956f11fb422a448194
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525346"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647856"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>REST-Tutorial: Indizieren und Durchsuchen von teilweise strukturierten Daten (JSON-Blobs) in Azure Search
 
@@ -27,9 +27,6 @@ In diesem Tutorial verwenden Sie die [Azure Search-REST-APIs](https://docs.micro
 > * Erstellen eines Azure Search-Index mit durchsuchbarem Inhalt
 > * Konfigurieren und Ausführen eines Indexers zum Lesen des Containers und zum Extrahieren von durchsuchbaren Inhalten aus Azure Blob Storage
 > * Durchsuchen des soeben erstellten Index
-
-> [!NOTE]
-> Dieses Tutorial basiert auf JSON-Array-Unterstützung, die derzeit als Vorschaufeature in Azure Search vorhanden ist. Sie ist nicht im Portal verfügbar. Aus diesem Grund verwenden wir die Vorschauversion der REST-API, in der dieses Feature enthalten ist, und ein REST-Clienttool zum Aufrufen der API.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,7 +48,7 @@ Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anfor
 
 1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-fiddler/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
+![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
@@ -73,7 +70,7 @@ Nach Abschluss des Uploads sollten die Dateien im Datencontainer in einem eigene
 
 ## <a name="set-up-postman"></a>Einrichten von Postman
 
-Starten Sie Postman, und richten Sie eine HTTP-Anforderung ein. Wenn Sie mit diesem Tool nicht vertraut sind, lesen Sie [Untersuchen von Azure Search-REST-APIs mit Postman oder Fiddler](search-fiddler.md).
+Starten Sie Postman, und richten Sie eine HTTP-Anforderung ein. Wenn Sie mit diesem Tool nicht vertraut sind, lesen Sie [Untersuchen von Azure Search-REST-APIs mit Postman oder Fiddler](search-get-started-postman.md).
 
 Für alle Aufrufe in diesem Tutorial wird die Anforderungsmethode **POST** verwendet. Die Headerschlüssel sind „Content-type“ und „api-key“. Die Werte der Headerschlüssel sind „application/json“ bzw. Ihr „Administratorschlüssel“ (der Administratorschlüssel ist ein Platzhalter für Ihren Primärschlüssel für die Suche). Im Text ordnen Sie den eigentlichen Inhalt Ihres Aufrufs an. Je nach verwendetem Client kann der Aufbau Ihrer Abfrage leicht abweichen, aber hier erhalten Sie die grundlegenden Informationen.
 
@@ -81,7 +78,7 @@ Für alle Aufrufe in diesem Tutorial wird die Anforderungsmethode **POST** verwe
 
 Wir nutzen Postman zum Senden von drei API-Aufrufen an Ihren Suchdienst, um eine Datenquelle, einen Index und einen Indexer zu erstellen. Die Datenquelle enthält einen Zeiger auf Ihr Speicherkonto und Ihre JSON-Daten. Ihr Suchdienst stellt die Verbindung beim Laden der Daten her.
 
-Die Abfragezeichenfolge muss eine Vorschau-API (z. B. **api-version=2017-11-11-Preview**) enthalten, und für jeden Aufruf sollte **201 Created** zurückgegeben werden. Die allgemein verfügbare API-Version verfügt noch nicht über die Funktion zum Behandeln von json als jsonArray. Dies ist derzeit nur für die API-Vorschauversion möglich.
+In Abfragezeichenfolgen muss eine API-Version angegeben werden, und für jeden Aufruf sollte **201 Created** zurückgegeben werden. Die allgemein verfügbare API-Version zur Verwendung von JSON-Arrays lautet `2019-05-06`.
 
 Führen Sie die folgenden drei API-Aufrufe über Ihren REST-Client aus.
 
@@ -89,7 +86,7 @@ Führen Sie die folgenden drei API-Aufrufe über Ihren REST-Client aus.
 
 Die [API zum Erstellen einer Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source) erstellt ein Azure Search-Objekt, das angibt, welche Daten indiziert werden sollen.
 
-Der Endpunkt dieses Aufrufs lautet `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview`. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts. 
+Der Endpunkt dieses Aufrufs lautet `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts. 
 
 Für diesen Aufruf muss der Anforderungstext den Namen Ihres Speicherkontos, den Speicherkontoschlüssel und den Namen des Blobcontainers enthalten. Sie finden den Speicherkontoschlüssel im Azure-Portal unter den **Zugriffsschlüsseln** Ihres Speicherkontos. Der Speicherort ist in der folgenden Abbildung angegeben:
 
@@ -130,9 +127,9 @@ Die Antwort sollte in etwa wie folgt aussehen:
 
 ## <a name="create-an-index"></a>Erstellen eines Index
     
-Beim zweiten Aufruf wird die [API zum Erstellen eines Index](https://docs.microsoft.com/rest/api/searchservice/create-data-source) aufgerufen, die einen Azure Search-Index mit allen durchsuchbaren Daten erstellt. Ein Index gibt alle Parameter und die dazugehörigen Attribute an.
+Beim zweiten Aufruf wird die [API zum Erstellen eines Index](https://docs.microsoft.com/rest/api/searchservice/create-indexer) aufgerufen, die einen Azure Search-Index mit allen durchsuchbaren Daten erstellt. Ein Index gibt alle Parameter und die dazugehörigen Attribute an.
 
-Die URL für diesen Aufruf lautet `https://[service name].search.windows.net/indexes?api-version=2016-09-01-Preview`. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts.
+Die URL für diesen Aufruf lautet `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts.
 
 Ersetzen Sie zunächst die URL. Fügen Sie den folgenden Code in den Text ein, und führen Sie die Abfrage aus.
 
@@ -222,7 +219,7 @@ Die Antwort sollte in etwa wie folgt aussehen:
 
 Ein Indexer verbindet die Datenquelle, importiert Daten in den Zielsuchindex und stellt optional einen Zeitplan für die Automatisierung der Datenaktualisierung bereit. Die REST-API für diese Aufgabe ist [Indexer erstellen](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-Die URL für diesen Aufruf lautet `https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview`. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts.
+Die URL für diesen Aufruf lautet `https://[service name].search.windows.net/indexers?api-version=2019-05-06`. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts.
 
 Ersetzen Sie zunächst die URL. Kopieren Sie dann den folgenden Code, fügen Sie ihn in den Text ein, und senden Sie die Anforderung. Die Anforderung wird sofort verarbeitet. Wenn die Antwort eintrifft, verfügen Sie über einen Index, der für die Volltextsuche verwendet werden kann.
 
@@ -267,7 +264,7 @@ Sie können mit der Suche beginnen, sobald das erste Dokument geladen wurde. Ver
 
 Öffnen Sie im Azure-Portal die Seite **Übersicht** des Suchdiensts, und suchen Sie in der Liste **Indizes** nach dem Index, den Sie erstellt haben.
 
-Wählen Sie den soeben erstellten Index aus. Bei der API-Version kann es sich um eine Vorschauversion oder eine allgemein verfügbare Version handeln. Bei der Vorschauversion galt lediglich eine Anforderung für die Indizierung von JSON-Arrays.
+Wählen Sie den soeben erstellten Index aus. 
 
   ![Unstrukturierte Suche](media/search-semi-structured-data/indexespane.png)
 

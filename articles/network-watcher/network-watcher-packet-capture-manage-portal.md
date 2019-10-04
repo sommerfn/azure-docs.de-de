@@ -3,8 +3,8 @@ title: Verwalten von Paketerfassungen mit Azure Network Watcher – Azure-Portal
 description: Erfahren Sie, wie das Network Watcher-Feature zur Paketerfassung über das Azure-Portal verwaltet wird.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 59edd945-34ad-4008-809e-ea904781d918
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: jdial
-ms.openlocfilehash: 22bdd50f129a48ade97db323f904f7e652a00d39
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: 00349a7e681beab447e585139e481c04755b7879
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889980"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102866"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Verwalten von Paketerfassungen mit Azure Network Watcher über das Portal
 
@@ -34,7 +34,7 @@ Für die Paketerfassung sind folgende Verbindungen erforderlich:
 * Eingehende und ausgehende Verbindung mit 169.254.169.254
 * Eingehende und ausgehende Verbindung mit 168.63.129.16
 
-Wenn eine Netzwerksicherheitsgruppe der Netzwerkschnittstelle oder einem Subnetz, in dem sich die Netzwerkschnittstelle befindet, zugeordnet ist, stellen Sie sicher, dass Regeln definiert sind, die die oben genannten Ports zulassen. 
+Wenn eine Netzwerksicherheitsgruppe der Netzwerkschnittstelle oder einem Subnetz, in dem sich die Netzwerkschnittstelle befindet, zugeordnet ist, stellen Sie sicher, dass Regeln definiert sind, die die oben genannten Ports zulassen. Auf ähnliche Weise kann das Hinzufügen von benutzerdefinierten Datenverkehrsrouten zu Ihrem Netzwerk Verbindungen mit den oben erwähnten IP-Adressen und Ports verhindern. Stellen Sie sicher, dass diese erreichbar sind. 
 
 ## <a name="start-a-packet-capture"></a>Starten einer Paketerfassung
 
@@ -54,7 +54,7 @@ Wenn eine Netzwerksicherheitsgruppe der Netzwerkschnittstelle oder einem Subnetz
 
    - **Maximale Anzahl von Bytes pro Paket**: Die Anzahl der Bytes aus jedem Paket, die erfasst werden. Wenn keine Angabe erfolgt, werden alle Bytes erfasst.
    - **Maximale Anzahl von Bytes pro Sitzung**: Die Gesamtzahl der erfassten Bytes. Wenn dieser Wert erreicht wird, wird die Paketerfassung beendet.
-   - **Zeitlimit (Sekunden)**: Das Zeitlimit, nach dem die Paketerfassung beendet wird. Der Standardwert ist 18.000 Sekunden.
+   - **Zeitlimit (Sekunden)** : Das Zeitlimit, nach dem die Paketerfassung beendet wird. Der Standardwert ist 18.000 Sekunden.
    - Filterung (optional). Wählen Sie **+ Filter hinzufügen** aus.
      - **Protokoll:** Das zu filternde Protokoll für die Paketerfassung. Die verfügbaren Werte sind „TCP“, „UDP“ und „Alle“.
      - **Lokale IP-Adresse**: Filtert die Paketerfassung für Pakete, deren lokale IP-Adresse mit diesem Wert übereinstimmt.

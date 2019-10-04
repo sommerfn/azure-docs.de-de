@@ -11,13 +11,12 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
 ms.date: 03/12/2019
-manager: craigg
-ms.openlocfilehash: bc7274308b8a349d16866f107eac4a57e115be9e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4f36dcc9953134ac5dd24d3d762ac0dde9949ab7
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850172"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561375"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Herstellen einer Verbindung zu Azure SQL-Datenbank mit Azure Multi-Factor Authentication
 
@@ -50,7 +49,7 @@ Screenshots zu diesen Dialogfeldern finden Sie unter [Konfigurieren der mehrstuf
 
 ## <a name="configure-your-c-application-in-the-azure-portal"></a>Konfigurieren der C#-Anwendung im Azure-Portal
 
-Zu Beginn wird vorausgesetzt, dass ein [Azure SQL-Datenbankserver](sql-database-get-started-portal.md) erstellt wurde und verfügbar ist.
+Zu Beginn wird vorausgesetzt, dass ein [Azure SQL-Datenbank-Server](sql-database-get-started-portal.md) erstellt wurde und verfügbar ist.
 
 ### <a name="register-your-app-and-set-permissions"></a>Registrieren der App und Festlegen von Berechtigungen
 
@@ -80,7 +79,7 @@ So können Sie sich registrieren und die erforderlichen Berechtigungen für die 
 
     ![Delegieren von Berechtigungen an die API für Azure SQL-Datenbank](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
-### <a name="set-an-azure-ad-admin-for-your-sql-database-server"></a>Festlegen eines Azure AD-Administrators für den SQL-Datenbankserver
+### <a name="set-an-azure-ad-admin-for-your-sql-database-server"></a>Festlegen eines Azure AD-Administrators für den SQL-Datenbank-Server
 
 Damit Ihr C#-Programm ausgeführt wird, muss dem Azure SQL-Datenbank-Server von einem Azure SQL-Serveradministrator ein Azure AD-Administrator zugewiesen werden. 
 
@@ -90,7 +89,7 @@ Weitere Informationen zu Azure AD-Administratoren und Benutzern für Azure SQL-D
 
 ### <a name="add-a-non-admin-user-to-a-specific-database-optional"></a>Hinzufügen eines Benutzers ohne Administratorrechte zu einer bestimmten Datenbank (optional)
 
-Ein Azure AD-Administrator für einen SQL-Datenbankserver kann das C#-Beispielprogramm ausführen. Ein Azure AD-Benutzer kann das Programm ausführen, wenn er der Datenbank hinzugefügt wurde. Ein Azure AD SQL-Administrator oder Azure AD-Benutzer, der bereits in der Datenbank vorhanden ist und für die Datenbank über die Berechtigung `ALTER ANY USER` verfügt,kann einen Benutzer hinzufügen.
+Ein Azure AD-Administrator für einen SQL-Datenbank-Server kann das C#-Beispielprogramm ausführen. Ein Azure AD-Benutzer kann das Programm ausführen, wenn er der Datenbank hinzugefügt wurde. Ein Azure AD SQL-Administrator oder Azure AD-Benutzer, der bereits in der Datenbank vorhanden ist und für die Datenbank über die Berechtigung `ALTER ANY USER` verfügt,kann einen Benutzer hinzufügen.
 
 Sie können der Datenbank mit dem SQL-Befehl [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) einen Benutzer hinzufügen. Ein Beispiel ist `CREATE USER [<username>] FROM EXTERNAL PROVIDER`.
 
@@ -122,7 +121,7 @@ Damit das C#-Programm erfolgreich ausgeführt wird, müssen Sie statischen Felde
 | AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **Azure Active Directory** > **Benutzer** > **Neuer Gastbenutzer** |
 | Initial_DatabaseName | „myDatabase“ | **SQL-Server** > **SQL-Datenbanken** |
 | ClientApplicationID | „a94f9c62-97fe-4d19-b06d-111111111111“ | **Azure Active Directory** > **App-Registrierungen** > **Nach Namen suchen** > **Anwendungs-ID** |
-| RedirectUri | new Uri("https://mywebserver.com/") | **Azure Active Directory** > **App-Registrierungen** > **Nach Namen suchen** > *[Ihre-App-Registrierung]* > **Einstellungen** > **RedirectURIs**<br /><br />Im Rahmen dieses Artikels ist jeder gültige Wert für RedirectUri geeignet, da er hier nicht verwendet wird. |
+| RedirectUri | new Uri("https://mywebserver.com/") | **Azure Active Directory** > **App-Registrierungen** > **Nach Namen suchen** >  *[Ihre-App-Registrierung]*  > **Einstellungen** > **RedirectURIs**<br /><br />Im Rahmen dieses Artikels ist jeder gültige Wert für RedirectUri geeignet, da er hier nicht verwendet wird. |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="verify-with-sql-server-management-studio"></a>Durchführen einer Überprüfung mit SQL Server Management Studio
@@ -131,7 +130,7 @@ Bevor Sie das C#-Programm ausführen, sollten Sie in SQL Server Management Studi
 
 ### <a name="verify-sql-database-firewall-ip-addresses"></a>Überprüfen der SQL-Datenbank-Firewall-IP-Adressen
 
-Führen Sie SSMS auf demselben Computer und im selben Gebäude aus, auf bzw. in dem auch das C#-Programm ausgeführt werden soll. Für diesen Test kann ein beliebiger **Authentifizierungsmodus** verwendet werden. Bei Anzeichen, dass die Datenbankserver-Firewall Ihre IP-Adresse nicht akzeptiert, finden Sie hilfreiche Informationen unter [Firewallregeln auf Server- und Datenbankebene für Azure SQL-Datenbank](sql-database-firewall-configure.md).
+Führen Sie SSMS auf demselben Computer und im selben Gebäude aus, auf bzw. in dem auch das C#-Programm ausgeführt werden soll. Für diesen Test kann ein beliebiger **Authentifizierungsmodus** verwendet werden. Bei Anzeichen, dass die Datenbankserver-Firewall Ihre IP-Adresse nicht akzeptiert, finden Sie hilfreiche Informationen unter [Firewallregeln auf Server- und Datenbankebene für Azure SQL-Datenbank-Server](sql-database-firewall-configure.md).
 
 ### <a name="verify-azure-active-directory-multi-factor-authentication"></a>Überprüfen von Azure Active Directory Multi-Factor Authentication
 

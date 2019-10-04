@@ -8,19 +8,18 @@ manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
-ms.devlang: azure-cli
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1c75d781c8a83b54ac9474c83388cf02b5d03e3c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b4fc6f91ee2429205974b9cb7ceb05b7cff53f15
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532081"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034209"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Konfigurieren einer Gatewayressource zum Weiterleiten von Anforderungen
 
@@ -228,8 +227,8 @@ Die vollständige Konfiguration einer Gatewayressource sieht folgendermaßen aus
 ```
 
 Dieses Gateway wird für eine Linux-Anwendung „MeshAppLinux“ konfiguriert, die aus mindestens zwei Diensten besteht („helloWorldService“ und „counterService“) und an Port 80 lauscht. Abhängig von der URL-Struktur der eingehenden Anforderung wird die Anforderung an einen dieser Dienste weitergeleitet. 
-* Bei „<IPAddress>:80/helloWorld/\<Anforderung\>“ wird eine Anforderung an den helloWorldListener im helloWorldService weitergeleitet. 
-* Bei „<IPAddress>:80/counter/\<Anforderung\>“ wird eine Anforderung an den counterListener im counterService weitergeleitet. 
+* Bei „\<IPAddress>:80/helloWorld/\<Anforderung\>“ wird eine Anforderung an den helloWorldListener im helloWorldService weitergeleitet. 
+* Bei „\<IPAddress>:80/counter/\<Anforderung\>“ wird eine Anforderung an den counterListener im counterService weitergeleitet. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Bereitstellen des [Eingangsbeispiels](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress), um Gateways in Aktion zu erleben

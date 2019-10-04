@@ -9,106 +9,22 @@
     - name: Schnellstarts
       items:
         - name: Text übersetzen
-          items:
-            - name: 'C#, REST'
-              href: quickstart-csharp-translate.md
-            - name: 'Go, REST'
-              href: quickstart-go-translate.md
-            - name: 'Java, REST'
-              href: quickstart-java-translate.md
-            - name: 'Node.js, REST'
-              href: quickstart-nodejs-translate.md
-            - name: 'PHP, REST'
-              href: quickstart-php-translate.md
-            - name: 'Python, REST'
-              href: quickstart-python-translate.md
-            - name: 'Ruby, REST'
-              href: quickstart-ruby-translate.md
+          href: quickstart-translate.md
         - name: Transliteration von Text
-          items:
-            - name: 'C#, REST'
-              href: quickstart-csharp-transliterate.md
-            - name: 'Go, REST'
-              href: quickstart-go-transliterate.md
-            - name: 'Java, REST'
-              href: quickstart-java-transliterate.md
-            - name: 'Node.js, REST'
-              href: quickstart-nodejs-transliterate.md
-            - name: 'PHP, REST'
-              href: quickstart-php-transliterate.md
-            - name: 'Python, REST'
-              href: quickstart-python-transliterate.md
-            - name: 'Ruby, REST'
-              href: quickstart-ruby-transliterate.md
-        - name: Identifizieren der Sprache
-          items:
-            - name: 'C#, REST'
-              href: quickstart-csharp-detect.md
-            - name: 'Go, REST'
-              href: quickstart-go-detect.md
-            - name: 'Java, REST'
-              href: quickstart-java-detect.md
-            - name: 'Node.js, REST'
-              href: quickstart-nodejs-detect.md
-            - name: 'PHP, REST'
-              href: quickstart-php-detect.md
-            - name: 'Python, REST'
-              href: quickstart-python-detect.md
-            - name: 'Ruby, REST'
-              href: quickstart-ruby-detect.md
+          href: quickstart-transliterate.md
+        - name: Sprache erkennen
+          href: quickstart-detect.md
         - name: Nachschlagen von Wortübersetzungen
-          items:
-            - name: 'C#, REST'
-              href: quickstart-csharp-dictionary.md
-            - name: 'Go, REST'
-              href: quickstart-go-dictionary.md
-            - name: 'Java, REST'
-              href: quickstart-java-dictionary.md
-            - name: 'Node.js, REST'
-              href: quickstart-nodejs-dictionary.md
-            - name: 'PHP, REST'
-              href: quickstart-php-dictionary.md
-            - name: 'Python, REST'
-              href: quickstart-python-dictionary.md
-            - name: 'Ruby, REST'
-              href: quickstart-ruby-dictionary.md
+          href: quickstart-dictionary.md
         - name: Abrufen der unterstützten Sprachen
-          items:
-            - name: 'C#, REST'
-              href: quickstart-csharp-languages.md
-            - name: 'Go, REST'
-              href: quickstart-go-languages.md
-            - name: 'Java, REST'
-              href: quickstart-java-languages.md
-            - name: 'Node.js, REST'
-              href: quickstart-nodejs-languages.md
-            - name: 'PHP, REST'
-              href: quickstart-php-languages.md
-            - name: 'Python, REST'
-              href: quickstart-python-languages.md
-            - name: 'Ruby, REST'
-              href: quickstart-ruby-languages.md
+          href: quickstart-languages.md
         - name: Bestimmen der Satzlänge
-          items:
-            - name: 'C#, REST'
-              href: quickstart-csharp-sentences.md
-            - name: 'Go, REST'
-              href: quickstart-go-sentences.md
-            - name: 'Java, REST'
-              href: quickstart-java-sentences.md
-            - name: 'Node.js, REST'
-              href: quickstart-nodejs-sentences.md
-            - name: 'PHP, REST'
-              href: quickstart-php-sentences.md
-            - name: 'Python, REST'
-              href: quickstart-python-sentences.md
-            - name: 'Ruby, REST'
-              href: quickstart-ruby-sentences.md
+          href: quickstart-sentences.md
     - name: Lernprogramme
       items:
-        - name: Erstellen einer WPF-App für Textübersetzung
+        - name: 'Erstellen einer WPF-App für Textübersetzung (C#)'
           href: tutorial-wpf-translation-csharp.md
-        - name: Erstellen einer Flask-Übersetzungs-App
+        - name: Erstellen einer Flask-Übersetzungs-App (Python)
           href: tutorial-build-flask-app-translation-synthesis.md
     - name: Konzepte
       items:
@@ -132,6 +48,22 @@
           href: dynamic-dictionary.md
         - name: Übersetzen hinter Firewalls
           href: firewalls.md
+    - name: Beispiele
+      items:
+        - name: 'C#'
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp'
+        - name: Java
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Java'
+        - name: Python
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python'
+        - name: Node.js
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-NodeJS'
+        - name: Go
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go'
+        - name: PHP
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP'
+        - name: Ruby
+          href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Ruby'
     - name: Verweis
       items:
         - name: Referenz für Version 3 der Textübersetzungs-API
@@ -166,20 +98,18 @@
           href: 'https://aka.ms/TranslatorGitHub'
         - name: Häufig gestellte Fragen
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: Wissensdatenbank
-          href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
         - name: Sprach- und Regionsunterstützung
           href: language-support.md
         - name: Preise
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: Regionale Verfügbarkeit
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: Compliance
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: Anforderungsgrenzwerte
           href: request-limits.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
-        - name: UserVoice
-          href: 'https://cognitive.uservoice.com/forums/558796-translator'
 - name: Benutzerdefinierter Translator
   items:
     - name: Übersicht
@@ -228,6 +158,8 @@
           href: custom-translator/how-to-manage-settings.md
         - name: Migrieren von Hub
           href: custom-translator/how-to-migrate.md
+        - name: Bereitstellungen in nicht unterstützten Sprachen
+          href: custom-translator/unsupported-language-deployments.md
     - name: Ressourcen
       items:
         - name: Sprachunterstützung
@@ -238,7 +170,7 @@
           href: custom-translator/faq.md
         - name: Preise
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
+        - name: Compliance
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
-        - name: UserVoice
-          href: 'https://cognitive.uservoice.com/knowledgebase/articles/1855897-custom-translator-preview-resource-guide'

@@ -1,18 +1,18 @@
 ---
 title: Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers mit Azure Backup
 description: Hier wird beschrieben, wie die Sicherung beim Erstellen eines virtuellen Azure-Computers mit Azure Backup aktiviert wird.
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/22/2019
-ms.author: raynew
-ms.openlocfilehash: d96b898c8f72abd7e4eb3522ae046e9fc926f387
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.date: 06/13/2019
+ms.author: dacurwin
+ms.openlocfilehash: 90f69371457bbfe37789b12971343f738ff35e8e
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403577"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639716"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie die Sicherung beim Erstellen eines virtu
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Falls Sie noch nicht bei Ihrem Konto angemeldet sind, melden Sie beim [Azure-Portal](https://portal.azure.com) an.
- 
+
 ## <a name="create-a-vm-with-backup-configured"></a>Erstellen einer VM mit konfigurierter Sicherung
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
@@ -41,28 +41,33 @@ Falls Sie noch nicht bei Ihrem Konto angemeldet sind, melden Sie beim [Azure-Por
 6. Akzeptieren Sie den vorgeschlagenen Tresornamen, oder geben Sie einen eigenen an.
 7. Geben Sie eine Ressourcengruppe an oder erstellen Sie sie, in der sich der Tresor befinden wird. Der Tresor der Ressourcengruppe kann sich von der VM-Ressourcengruppe unterscheiden.
 
-    ![Aktivieren der Sicherung für einen virtuellen Computer](./media/backup-during-vm-creation/enable-backup.png) 
+    ![Aktivieren der Sicherung für einen virtuellen Computer](./media/backup-during-vm-creation/enable-backup.png)
 
 8. Akzeptieren Sie die Standardsicherungsrichtlinie, oder ändern Sie die Einstellungen.
-    - Eine Sicherungsrichtlinie gibt an, wie häufig Sicherungsmomentaufnahmen des virtuellen Computers erstellt und wie lang die Sicherungskopien aufbewahrt werden sollen. 
+    - Eine Sicherungsrichtlinie gibt an, wie häufig Sicherungsmomentaufnahmen des virtuellen Computers erstellt und wie lang die Sicherungskopien aufbewahrt werden sollen.
     - Die Standardrichtlinie sichert den virtuellen Computer einmal täglich.
     - Sie können Ihre eigene Sicherungsrichtlinie für eine Azure-VM anpassen, um täglich oder wöchentlich Sicherungen zu erstellen.
     - [Weitere Informationen](backup-azure-vms-introduction.md#backup-and-restore-considerations) zu Überlegungen zur Sicherung für Azure-VMs.
     - [Weitere Informationen](backup-instant-restore-capability.md) zur Funktionalität der sofortigen Wiederherstellung.
 
-      ![Standardsicherungsrichtlinie](./media/backup-during-vm-creation/daily-policy.png) 
+      ![Standardsicherungsrichtlinie](./media/backup-during-vm-creation/daily-policy.png)
 
 
-## <a name="start-a-backup-after-creating-the-vm"></a>Starten einer Sicherung nach dem Erstellen der VM 
+> [!NOTE]
+> Der Azure Backup-Dienst erstellt zum Speichern der Momentaufnahme eine separate Ressourcengruppe (nicht die VM-Ressourcengruppe) mit dem Namensformat **AzureBackupRG_geography_number** (Beispiel: AzureBackupRG_northeurope_1). Die Daten in dieser Ressourcengruppe werden so lange aufbewahrt, wie dies in der Sicherungsrichtlinie für virtuelle Azure-Computer unter *Momentaufnahme(n) zur sofortigen Wiederherstellung beibehalten für* angegeben ist (in Tagen).  Das Anwenden einer Sperre auf diese Ressourcengruppe kann zu Sicherungsfehlern führen.<br>
+Diese Ressourcengruppe sollte von allen Namens-/Tag-Einschränkungen ausgeschlossen werden, da eine Einschränkungsrichtlinie die Erstellung von Wiederherstellungspunktsammlungen in dieser Gruppe blockieren und erneut zu Fehlern führen würde.
 
-Ihre VM-Sicherung wird in Übereinstimmung mit Ihrer Sicherungsrichtlinie ausgeführt. Es wird jedoch empfohlen, eine erste Sicherung auszuführen. 
+
+## <a name="start-a-backup-after-creating-the-vm"></a>Starten einer Sicherung nach dem Erstellen der VM
+
+Ihre VM-Sicherung wird in Übereinstimmung mit Ihrer Sicherungsrichtlinie ausgeführt. Es wird jedoch empfohlen, eine erste Sicherung auszuführen.
 
 Nachdem die VM erstellt wurde, gehen Sie wie folgt vor:
 
 1. Klicken Sie unter den VM-Eigenschaften auf **Sicherung**. Der VM-Status lautet „Erste Sicherung ausstehend“, bis die erste Sicherung ausgeführt wird.
 2. Klicken Sie auf **Jetzt sichern**, um eine On-Demand-Sicherung auszuführen.
 
-    ![Ausführen einer On-Demand-Sicherung](./media/backup-during-vm-creation/run-backup.png) 
+    ![Ausführen einer On-Demand-Sicherung](./media/backup-during-vm-creation/run-backup.png)
 
 ## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>Bereitstellen einer geschützten VM mithilfe einer Resource Manager-Vorlage
 
@@ -70,11 +75,11 @@ In den vorherigen Schritten wurde erläutert, wie Sie eine VM über das Azure-Po
 
 
 
-## <a name="next-steps"></a>Nächste Schritte 
+## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie Ihre VM geschützt haben, erfahren Sie, wie Sie diese verwalten und wiederherstellen können.
 
-- [Verwalten und Überwachen virtueller Computer](backup-azure-manage-vms.md) 
-- [Wiederherstellen eines virtuellen Computers](backup-azure-arm-restore-vms.md) 
+- [Verwalten und Überwachen virtueller Computer](backup-azure-manage-vms.md)
+- [Wiederherstellen eines virtuellen Computers](backup-azure-arm-restore-vms.md)
 
 Wenn Sie auf Probleme stoßen, [lesen](backup-azure-vms-troubleshoot.md) Sie den Leitfaden zur Problembehandlung.

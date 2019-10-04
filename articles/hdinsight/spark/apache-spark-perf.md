@@ -1,7 +1,6 @@
 ---
 title: Optimieren von Spark-Aufträgen im Hinblick auf die Leistung – Azure HDInsight
-description: Dieser Artikel zeigt allgemeine Strategien zum Optimieren der Leistung von Spark-Clustern.
-services: hdinsight
+description: Dieser Artikel zeigt allgemeine Strategien zum Optimieren der Leistung von Apache Spark-Clustern in Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: b846b19d180bf19a0d023a9cd0b92393132f47d4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 64dfd26e02526664a4edb204521f7a47a4463a12
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59283068"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181076"
 ---
-# <a name="optimize-apache-spark-jobs"></a>Optimieren von Apache Spark-Aufträgen
+# <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Optimieren von Apache Spark-Aufträgen in HDInsight
 
 Hier erfahren Sie, wie Sie die [Apache Spark](https://spark.apache.org/)-Clusterkonfiguration für Ihre spezielle Workload optimieren.  Die häufigste Herausforderung ist unzureichender Arbeitsspeicher aufgrund von nicht ordnungsgemäßen Konfigurationen (insbesondere bei falsch dimensionierten Executors), Vorgängen mit langer Ausführungsdauer und Tasks, die zu kartesischen Vorgängen führen. Sie können Aufträge beschleunigen, indem Sie ausreichend Cachespeicherplatz zuweisen und [Datenschiefe](#optimize-joins-and-shuffles) zulassen. Um die beste Leistung zu erzielen, überwachen und überprüfen Sie Spark-Auftragsausführungen mit langer Ausführungsdauer und hohem Ressourcenverbrauch.
 
@@ -26,14 +25,14 @@ Die folgenden Abschnitte beschreiben allgemeine Optimierungen und Empfehlungen f
 
 Frühere Versionen von Spark verwenden RDDs zum Abstrahieren von Daten. In Spark 1.3 und 1.6 wurden DataFrames und Datasets eingeführt. Diese Features bieten jeweils folgende Vorteile:
 
-* **DataFrames**
+* **Dataframes**
     * In den meisten Situationen die beste Wahl.
     * Ermöglicht die Abfrageoptimierung durch Catalyst.
     * Codegenerierung für die gesamte Phase.
     * Direkter Zugriff auf den Arbeitsspeicher.
     * Geringer Overhead durch Garbage Collection (GC).
     * Nicht so entwicklerfreundlich wie Datasets, da keine Überprüfungen zur Kompilierzeit und Domänenobjektprogrammierung vorhanden sind.
-* **DataSets**
+* **Datasets**
     * Gut geeignet für komplexe ETL-Pipelines (Extrahieren, Transformieren, Laden), in denen die Leistungseinbußen akzeptabel sind.
     * Nicht gut geeignet in Aggregationen, in denen die Auswirkungen auf die Leistung beträchtlich sein können.
     * Ermöglicht die Abfrageoptimierung durch Catalyst.
@@ -60,10 +59,10 @@ Wenn Sie einen neuen Spark-Cluster erstellen, stehen Azure Blob Storage oder Azu
 
 | Speichertyp | Dateisystem | Geschwindigkeit | Kurzlebig | Anwendungsfälle |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb[s]:**//url/ | **Standard** | Ja | Kurzlebiger Cluster |
-| Azure Data Lake Storage Gen 2| **abfs[s]:**//url/ | **Schneller** | Ja | Kurzlebiger Cluster |
-| Azure Data Lake Storage Gen 1| **adl:**//url/ | **Schneller** | Ja | Kurzlebiger Cluster |
-| Lokales HDFS | **hdfs:**//url/ | **Sehr schnell** | Nein  | Interaktiver 24/7-Cluster |
+| Azure Blob Storage | **wasb:** //url/ | **Standard** | Ja | Kurzlebiger Cluster |
+| Azure Data Lake Storage Gen 2| **abfs:** //url/ | **Schneller** | Ja | Kurzlebiger Cluster |
+| Azure Data Lake Storage Gen 1| **adl:** //url/ | **Schneller** | Ja | Kurzlebiger Cluster |
+| Lokales HDFS | **hdfs:** //url/ | **Sehr schnell** | Nein | Interaktiver 24/7-Cluster |
 
 ## <a name="use-the-cache"></a>Verwenden des Caches
 
@@ -78,7 +77,7 @@ Spark stellt einen eigenen nativen Cachemechanismus bereit, der über verschiede
     * Verwendet In-Memory- und SSD-Caching.
 
 * Lokales HDFS (empfohlen)
-    * `hdfs://mycluster` -Pfad.
+    * Pfad: `hdfs://mycluster`.
     * Verwendet SSD-Caching.
     * Zwischengespeicherte Daten gehen verloren, wenn Sie den Cluster löschen, daher ist eine Neuerstellung des Caches erforderlich.
 
@@ -97,7 +96,7 @@ Die folgende Abbildung zeigt die Spark-Arbeitsspeicherstruktur und einige wichti
 
 Bei Verwendung von [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) steuert YARN den maximal von allen Containern auf jedem Spark-Knoten verwendeten Gesamtarbeitsspeicher.  Das folgende Diagramm zeigt die wichtigsten Objekte und ihre Beziehungen.
 
-![Übersicht über die YARN-Spark-Arbeitsspeicherverwaltung](./media/apache-spark-perf/yarn-spark-memory.png)
+![Übersicht über die YARN-Spark-Arbeitsspeicherverwaltung](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
 Um Meldungen zu unzureichendem Arbeitsspeicher zu beheben, versuchen Sie Folgendes:
 
@@ -214,8 +213,8 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Debuggen von Apache Spark-Aufträgen, die in HDInsight ausgeführt werden](apache-spark-job-debugging.md)
-* [Verwalten von Ressourcen für den Apache Spark-Cluster unter Azure HDInsight](apache-spark-resource-manager.md)
-* [Übermitteln von Remoteaufträgen an einen HDInsight Spark-Cluster mithilfe der Apache Spark-REST-API](apache-spark-livy-rest-interface.md)
-* [Tuning Apache Spark (Optimieren von Apache Spark)](https://spark.apache.org/docs/latest/tuning.html)
-* [How to Actually Tune Your Spark Jobs So They Work (So optimieren Sie Ihre Spark-Aufträge, damit sie funktionieren)](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
-* [Kryo Serialization (Kryo-Serialisierung)](https://github.com/EsotericSoftware/kryo)
+* [Verwalten von Ressourcen für den Apache Spark-Cluster unter HDInsight](apache-spark-resource-manager.md)
+* [Übermitteln von Remoteaufträgen an einen Apache Spark-Cluster mithilfe der Apache Spark-REST-API](apache-spark-livy-rest-interface.md)
+* [Optimieren von Apache Spark](https://spark.apache.org/docs/latest/tuning.html)
+* [How to Actually Tune Your Spark Jobs So They Work](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work) (So optimieren Sie Ihre Spark-Aufträge, damit sie funktionieren)
+* [Kryo Serialization](https://github.com/EsotericSoftware/kryo) (Kryo-Serialisierung)

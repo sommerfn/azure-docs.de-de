@@ -1,95 +1,100 @@
 ---
-title: Was ist der bedingte Zugriff in Azure Active Directory? | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe des bedingten Zugriffs in Azure Active Directory die automatisierte Zugriffswahl implementieren, die nicht nur darauf basiert, wer auf eine Ressource zugreifen möchte, sondern auch darauf, wie auf die Ressource zugegriffen wird.
+title: Was ist der bedingte Zugriff in Azure Active Directory?
+description: Erfahren Sie, weshalb der bedingte Zugriff den Mittelpunkt der neuen identitätsbasierten Steuerungsebene darstellt.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 02/14/2019
+ms.date: 09/17/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb1289ba615fea6e6c43b256da6978534d9edc7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b0463ffad87d00421c2fcb5c8357406d5f692144
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799384"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075321"
 ---
-# <a name="what-is-conditional-access-in-azure-active-directory"></a>Was ist der bedingte Zugriff in Azure Active Directory?
+# <a name="what-is-conditional-access"></a>Was ist bedingter Zugriff?
 
-Sicherheit ist ein wichtiges Anliegen von Organisationen, die die Cloud nutzen. Wichtige Aspekte der Cloudsicherheit, wenn es um die Verwaltung von Cloudressourcen geht, sind Identität und Zugriff. In einer von Mobilgeräten und der Cloud geprägten Welt können Benutzer mithilfe einer Vielzahl von Geräten und Apps von überall aus auf Ressourcen in Ihrer Organisation zugreifen. Daher reicht eine Konzentration darauf, wer auf Ihre Ressourcen Zugriff hat, nicht mehr aus. Um das Gleichgewicht zwischen Sicherheit und Produktivität zu bewahren, müssen Sie bei der Wahl der Zugriffssteuerung auch berücksichtigen, auf welche Weise auf eine Ressource zugegriffen wird. Mit dem bedingten Zugriff von Azure Active Directory (Azure AD) können Sie diese Anforderung erfüllen. Der bedingte Zugriff ist eine Funktion von Azure Active Directory. Mit dem bedingten Zugriff können Sie basierend auf bestimmten Bedingungen automatisierte Entscheidungen hinsichtlich der Zugriffssteuerung für den Zugriff auf Ihre Cloud-Apps implementieren.
+Der moderne Sicherheitsperimeter erstreckt sich jetzt über das Netzwerk einer Organisation hinaus und bezieht auch die Benutzer- und Geräteidentität mit ein. Organisationen können diese Identitätssignale als Teil ihrer Entscheidungen in Bezug auf die Zugriffssteuerung nutzen. 
 
-Richtlinien für den bedingten Zugriff werden durchgesetzt, nachdem die First-Factor-Authentifizierung abgeschlossen ist. Daher ist der bedingte Zugriff nicht als erste Abwehrmaßnahme für Szenarien wie Denial-of-Service-Angriffe (DoS) gedacht, sondern kann Signale von diesen Ereignissen (z. B. der Risikostufe für die Anmeldung, den Standort der Anforderung usw.) nutzen, um den Zugriff zu bestimmen.  
+Der bedingte Zugriff ist das Tool, das von Azure Active Directory verwendet wird, um Signale zusammenzuführen, Entscheidungen zu treffen und Organisationsrichtlinien zu erzwingen. Der bedingte Zugriff ist der Kern der neuen identitätsbasierten Steuerungsebene.
 
-![Kontrolle](./media/overview/81.png)
+![Konzeptionelles bedingtes Signal plus Entscheidung zum Erzwingen](./media/overview/conditional-access-signal-decision-enforcement.png)
 
-Dieser Artikel bietet eine konzeptionelle Übersicht über den bedingten Zugriff in Azure AD.
+Die einfachsten Richtlinien für den bedingten Zugriff sind if-Anweisungen: Wenn ein Benutzer auf eine Ressource zugreifen möchte, muss er eine Aktion ausführen. Beispiel: Der Leiter der Lohnbuchhaltung möchte auf die Gehaltsabrechnungsanwendung zugreifen und muss für den Zugriff auf die Anwendung eine mehrstufige Authentifizierung durchführen.
 
-## <a name="common-scenarios"></a>Häufige Szenarios
-
-In einer Welt, in der Mobilität und die Cloud an erster Stelle stehen, ermöglicht Azure Active Directory das einmalige Anmelden an Geräten, Apps und Diensten an jedem Ort. Aufgrund der steigenden Zahl von Geräten (z.B. durch das BYOD-Konzept [Bring Your Own Device]), der zunehmenden Arbeit außerhalb von Unternehmensnetzwerken und der vermehrten Nutzung von SaaS-Apps von Drittanbietern stehen Sie vor zwei gegensätzlichen Zielsetzungen:
+Administratoren haben zwei primäre Ziele:
 
 - Schaffen von Bedingungen für Benutzer, unter denen sie an jedem Ort und zu jeder Zeit produktiv sein können
-- Lückenloses Schützen der Assets eines Unternehmens
+- Schützen der Ressourcen einer Organisation
 
-Mithilfe von Richtlinien für bedingten Zugriff können Sie die passende Zugriffssteuerung unter den erforderlichen Bedingungen anwenden. Der bedingte Zugriff von Azure AD bietet zusätzliche Sicherheit, wenn er benötigt wird, ohne die Benutzer andernfalls zu behindern.
+Mithilfe von Richtlinien für den bedingten Zugriff können Sie bei Bedarf die richtigen Zugriffssteuerungen anwenden, um die Sicherheit Ihrer Organisation zu gewährleisten, und behindern die Benutzer nicht unnötig.
 
-Im Folgenden finden Sie einige allgemeine Überlegungen zum Zugriff, bei denen der bedingte Zugriff Ihnen helfen kann:
+![Prozessfluss für den konzeptionellen bedingten Zugriff](./media/overview/conditional-access-overview-how-it-works.png)
 
-- **[Anmelderisiko](conditions.md#sign-in-risk)**: Azure AD Identity Protection erkennt Anmelderisiken. Wie schränken Sie den Zugriff ein, wenn ein erkanntes Anmelderisiko auf einen böswilligen Benutzer hindeutet? Was geschieht, wenn Sie einen fundierteren Beweis dafür benötigen, dass eine Anmeldung durch einen berechtigten Benutzer durchgeführt wurde? Was geschieht, wenn Ihre Zweifel so stark sind, dass Sie für bestimmte Benutzer den Zugriff auf eine App blockieren möchten?  
+Richtlinien für den bedingten Zugriff werden durchgesetzt, nachdem die First-Factor-Authentifizierung abgeschlossen ist. Der bedingte Zugriff nicht ist als erste Abwehrmaßnahme einer Organisation für Szenarien wie Denial-of-Service-Angriffe (DoS) gedacht, sondern kann Signale von diesen Ereignissen nutzen, um den Zugriff zu bestimmen.
 
-- **[Netzwerkadresse](location-condition.md)**: Der Zugriff auf Azure AD ist von überall aus möglich. Was geschieht, wenn ein Zugriffsversuch von einer Netzwerkadresse ausgeführt wird, die nicht durch Ihre IT-Abteilung kontrolliert wird? Eine Kombination aus Benutzername und Kennwort ist vermutlich ein ausreichender Identitätsnachweis für Zugriffsversuche aus Ihrem Unternehmensnetzwerk. Was geschieht aber, wenn Sie einen stärkeren Nachweis der Identität für den Zugriff aus anderen, unerwarteten Ländern oder Regionen der Welt benötigen? Was geschieht, wenn Sie sogar alle Zugriffsversuche von bestimmten Standorten blockieren möchten?  
+## <a name="common-signals"></a>Häufige Signale
 
-- **[Geräteverwaltung](conditions.md#device-platforms)**: In Azure AD können Benutzer über eine breite Palette von Geräten, einschließlich mobiler und persönlicher Geräte, auf Cloud-Apps zugreifen. Was geschieht, wenn Sie festlegen möchten, dass der Zugriff nur noch mit Geräten möglich sein soll, die von Ihrer IT-Abteilung verwaltet werden? Was geschieht, wenn Sie darüber hinaus den Zugriff auf Cloud-Apps in Ihrer Umgebung für bestimmte Gerätetypen blockieren möchten?
+Häufige Signale, die der bedingte Zugriff bei der Entscheidungsfindung in Bezug auf eine Richtlinie berücksichtigen kann, sind unter anderem folgende:
 
-- **[Clientanwendung](conditions.md#client-apps)**: Heute können Sie mit verschiedenen Arten von Apps auf viele Cloud-Apps zugreifen, z.B. mit webbasierten Apps, mobilen Apps oder Desktop-Apps. Was geschieht, wenn ein Zugriffsversuch mithilfe eines Client-App-Typs durchgeführt wird, der bekannte Probleme verursacht? Was geschieht, wenn Sie für bestimmte App-Typen ein Gerät vorschreiben möchten, das von Ihrer IT-Abteilung verwaltet wird?
+- Benutzer oder Gruppenmitgliedschaft
+   - Richtlinien können auf bestimmte Benutzer und Gruppen ausgerichtet werden, sodass Administratoren eine differenzierte Kontrolle über den Zugriff haben.
+- IP-Standortinformationen
+   - Organisationen können vertrauenswürdige IP-Adressbereiche erstellen, die beim Treffen von Richtlinienentscheidungen verwendet werden können. 
+   - Administratoren können IP-Bereiche ganzer Länder angeben, um den Datenverkehr zu blockieren oder zuzulassen.
+- Gerät
+   - Benutzer mit Geräten bestimmter Plattformen oder mit einer Kennzeichnung zu einem bestimmten Zustand können beim Erzwingen von Richtlinien für den bedingten Zugriff verwendet werden.
+- Anwendung
+   - Benutzer, die auf bestimmte Anwendungen zugreifen, können unterschiedliche Richtlinien für den bedingten Zugriff auslösen. 
+- Erkennung in Echtzeit und kalkulierte Risiken
+   - Die Signalintegration in Azure AD Identity Protection ermöglicht bedingte Zugriffsrichtlinien, um riskantes Anmeldeverhalten zu erkennen. Richtlinien können dann erzwingen, dass Benutzer Kennwortänderungen vornehmen oder die mehrstufige Authentifizierung durchführen, um ihr Risiko zu verringern oder den Zugriff zu blockieren, bis ein Administrator manuelle Maßnahmen ergreift.
+- Microsoft Cloud App Security (MCAS)
+   - Ermöglicht es, den Benutzerzugriff auf Anwendungen und Sitzungen zu kontrollieren und in Echtzeit zu überwachen, was die Transparenz und die Kontrolle über den Zugriff auf Ihre Cloudumgebung sowie über darin ausgeführte Aktivitäten ermöglicht.
 
-Diese Fragen und die zugehörigen Antworten stellen allgemeinen Szenarien für den bedingten Zugriff von Azure AD dar.
-Der bedingte Zugriff ist eine Funktion von Azure Active Directory, die es Ihnen ermöglicht, Zugriffsszenarien mithilfe eines richtlinienbasierten Ansatzes zu behandeln.
+## <a name="common-decisions"></a>Häufige Entscheidungen
 
-> [!VIDEO https://www.youtube.com/embed/eLAYBwjCGoA]
+- Zugriff blockieren
+   - Stark restriktive Entscheidung
+- Gewähren von Zugriff
+   - Kaum restriktive Entscheidungen, unter Umständen ist weiterhin mindestens eine der folgenden Optionen erforderlich:
+      - Mehrstufige Authentifizierung erforderlich
+      - Markieren des Geräts als kompatibel erforderlich
+      - In Azure AD eingebundenes Hybridgerät erforderlich
+      - Genehmigte Client-App erforderlich
+      - App-Schutzrichtlinie erforderlich (Vorschau)
 
-## <a name="conditional-access-policies"></a>Richtlinien für bedingten Zugriff
+## <a name="commonly-applied-policies"></a>Häufig verwendete Richtlinien
 
-Eine Richtlinie für bedingten Zugriff ist die Definition eines Zugriffsszenarios mithilfe des folgenden Musters:
+Viele Organisationen haben allgemeine Bedenken in Bezug auf den Zugriff, bei denen Richtlinien für den bedingten Zugriff wie etwa die folgenden hilfreich sein können:
 
-![Kontrolle](./media/overview/10.png)
+- Erzwingen der mehrstufigen Authentifizierung für Benutzer mit Administratorrollen
+- Erzwingen der mehrstufigen Authentifizierung für Azure-Verwaltungsaufgaben
+- Blockieren von Anmeldungen für Benutzer, die ältere Authentifizierungsprotokolle verwenden
+- Erzwingen vertrauenswürdiger Speicherorte für die Azure Multi-Factor Authentication-Registrierung
+- Blockieren oder Gewähren von Zugriff von bestimmten Standorten aus
+- Blockieren riskanter Anmeldeverhalten
+- Erzwingen von durch die Organisation verwaltete Geräte für bestimmte Anwendungen
 
-**Then do this** (Dann diese Aktion ausführen) gibt die Reaktion Ihrer Richtlinie an. Es ist wichtig zu beachten, dass das Ziel einer Richtlinie für bedingten Zugriff nicht das Gewähren des Zugriffs auf eine Cloud-App ist. In Azure AD erfolgt das Gewähren des Zugriffs auf Cloud-Apps über Benutzerzuweisungen. Mit einer Richtlinie für bedingten Zugriff steuern Sie, wie autorisierte Benutzer (Benutzer, denen der Zugriff auf einen Cloud-App gewährt wurde) unter bestimmten Bedingungen auf Cloud-Apps zugreifen können. In Ihrer Antwort erzwingen Sie zusätzliche Anforderungen wie z.B. eine mehrstufige Authentifizierung, ein verwaltetes Gerät usw. Im Kontext des bedingten Zugriffs von Azure AD heißen diese Anforderungen, die Ihre Richtlinie erzwingt, „Zugriffssteuerungen“. In der am stärksten einschränkenden Form kann Ihre Richtlinie den Zugriff blockieren. Weitere Informationen finden Sie unter [Zugriffssteuerungen beim bedingten Zugriff von Azure Active Directory](controls.md).
+## <a name="license-requirements"></a>Lizenzanforderungen
 
-**When this happens** (Wenn dies geschieht) definiert den Grund für das Auslösen der Richtlinie. Dieser Grund wird durch eine Gruppe von Bedingungen gekennzeichnet, die erfüllt wurden. Beim bedingten Zugriff von Azure AD spielen zwei Zuordnungsbedingungen eine besondere Rolle:
+[!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-- **[Benutzer](conditions.md#users-and-groups)**: Dies ist der Benutzer, der einen Zugriffsversuch durchführt (**Wer**).
-
-- **[Cloud-Apps](conditions.md#cloud-apps)**: Dies sind die Ziele des Zugriffsversuchs (**Was**).
-
-Beide Bedingungen müssen in einer Richtlinie für bedingten Zugriff angegeben werden. Zusätzlich zu den beiden obligatorischen Bedingungen können Sie auch zusätzliche Bedingungen einfügen, die beschreiben, wie der Zugriffsversuch erfolgt. Gängige Beispiele sind mobile Geräte oder Standorte außerhalb des Unternehmensnetzwerks. Weitere Informationen finden Sie unter [Bedingungen beim bedingten Zugriff von Azure Active Directory](conditions.md).
-
-Die Kombination aus Bedingungen und Ihren Zugriffssteuerungen ergibt eine Richtlinie für bedingten Zugriff.
-
-![Kontrolle](./media/overview/51.png)
-
-Mit dem bedingten Zugriff von Azure AD können Sie den Zugriff von autorisierten Benutzern auf Ihre Cloud-Apps steuern. Ziel einer Richtlinie für bedingten Zugriff ist es, bei einem Zugriffsversuch auf eine Cloud-App abhängig von der Art des Zugriffsversuchs zusätzliche Zugriffssteuerungen zu erzwingen.
-
-Mit einem richtlinienbasierten Ansatz zum Schutz des Zugriffs auf Ihre Cloud-Apps können Sie die Richtlinienanforderungen für Ihre Umgebung mit der in diesem Artikel beschriebenen Struktur entwerfen, ohne sich über die technische Implementierung Gedanken machen zu müssen.
-
-## <a name="azure-ad-conditional-access-and-federated-authentication"></a>Bedingter Azure AD-Zugriff und Verbundauthentifizierung
-
-Richtlinien für bedingten Zugriff arbeiten problemlos mit der [Verbundauthentifizierung](../../security/azure-ad-choose-authn.md#federated-authentication) zusammen. Diese Unterstützung umfasst alle unterstützten Bedingungen und Steuerungen und gibt mithilfe der [Azure AD-Berichterstellung](../reports-monitoring/concept-sign-ins.md) Aufschluss darüber, wie die Richtlinie auf Anmeldungen aktiver Benutzer angewendet wird.
-
-*Verbundauthentifizierung mit Azure AD* bedeutet, dass die Benutzerauthentifizierung bei Azure AD über einen vertrauenswürdigen Authentifizierungsdienst abgewickelt wird. Als vertrauenswürdigen Authentifizierungsdienst können Sie beispielsweise die Active Directory-Verbunddienste (AD FS) oder einen beliebigen anderen Verbunddienst verwenden. Bei dieser Konfiguration führt der Dienst die primäre Benutzerauthentifizierung durch, und Azure AD wird anschließend für die Anmeldung bei einzelnen Anwendungen verwendet. Bedingter Zugriff auf Azure AD wird angewendet, bevor Zugriff auf die Anwendung gewährt wird, auf die der Benutzer zugreift. 
-
-Wenn die konfigurierte Richtlinie für bedingten Zugriff eine mehrstufige Authentifizierung vorsieht, verwendet Azure AD standardmäßig Azure MFA. Wenn Sie den Verbunddienst für MFA verwenden, können Sie `-SupportsMFA` in [PowerShell](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings) auf `$true` festlegen, um Azure AD mit einer Umleitung zum Verbunddienst zu konfigurieren, wenn MFA erforderlich ist. Diese Einstellung funktioniert für Verbundauthentifizierungsdienste, die die Anforderung der MFA-Überprüfung unterstützen, die von Azure AD mithilfe von `wauth= http://schemas.microsoft.com/claims/multipleauthn` ausgegeben wird.
-
-Nachdem sich der Benutzer bei dem Verbundauthentifizierungsdienst angemeldet hat, kümmert sich Azure AD um weitere Richtlinienanforderungen wie Gerätekonformität oder eine genehmigte Anwendung.
-
-## <a name="license-requirements-for-using-conditional-access"></a>Lizenzanforderungen für die Verwendung des bedingten Zugriffs
-
-Für die Verwendung des bedingten Zugriffs ist eine Azure AD Premium-Lizenz erforderlich. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich: Allgemein verfügbare Features der Editionen Free, Basic und Premium](https://azure.microsoft.com/pricing/details/active-directory/).
+Kunden mit [Microsoft 365 Business-Lizenzen](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) haben auch Zugriff auf Funktionen für bedingten Zugriff. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+[Erstellen einer Richtlinie für bedingten Zugriff](concept-conditional-access-policies.md)
+
 Unter [Anleitung: Planen der Bereitstellung von bedingtem Zugriff in Azure Active Directory](plan-conditional-access.md) erfahren Sie, wie Sie bedingten Zugriff in Ihrer Umgebung implementieren.
+
+[Informationen zu Identity Protection](../identity-protection/overview-v2.md)
+
+[Informationen zu Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)
+
+[Informationen zu Microsoft Intune](https://docs.microsoft.com/intune/index)

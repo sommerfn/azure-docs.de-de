@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2019
+ms.date: 06/28/2019
 ms.custom: mvc
-ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c576020118778e34b80187ec056fca22a4d9c5b1
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59008901"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485832"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Tutorial: Implementieren eines Updateprozesses für die Gerätefirmware
 
@@ -41,7 +41,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die beiden in dieser Schnellstartanleitung ausgeführten Beispielanwendungen sind in Node.js geschrieben. Sie benötigen Node.js v4.x.x oder höher auf Ihrem Entwicklungscomputer.
+Die beiden in dieser Schnellstartanleitung ausgeführten Beispielanwendungen sind in Node.js geschrieben. Sie benötigen mindestens Node.js v10.x.x auf Ihrem Entwicklungscomputer.
 
 Sie können Node.js für mehrere Plattformen von [nodejs.org](https://nodejs.org) herunterladen.
 
@@ -73,7 +73,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --name $hubname -o table
+az iot hub show-connection-string --name $hubname -policy-name service -o table
 
 ```
 
@@ -95,8 +95,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 ```
 
 > [!TIP]
-> Wenn Sie diese Befehle an einer Windows-Befehlseingabeaufforderung oder PowerShell-Eingabeaufforderung ausführen, helfen Ihnen die Informationen auf der Seite mit den [Tipps zu azure-iot-cli-extension](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
-) beim Zitieren von JSON-Zeichenfolgen weiter.
+> Wenn Sie diese Befehle an einer Windows-Befehlseingabeaufforderung oder PowerShell-Eingabeaufforderung ausführen, helfen Ihnen die Informationen auf der Seite mit den [Tipps zu azure-iot-cli-extension](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips) beim Zitieren von JSON-Zeichenfolgen weiter.
 
 ## <a name="start-the-firmware-update"></a>Starten des Firmwareupdates
 
@@ -187,7 +186,7 @@ Im folgenden Screenshot ist die Ausgabe der Back-End-Anwendung dargestellt und h
 
 ![Back-End-Anwendung](./media/tutorial-firmware-update/BackEnd2.png)
 
-Aufgrund der Latenz in der IoT Hub-Geräteidentitätsregistrierung wird unter Umständen nicht jedes Statusupdate angezeigt, das an die Back-End-Anwendung gesendet wird. Sie können die Metriken auch im Portal im Abschnitt **Automatic device management > IoT device configuration** (Automatische Geräteverwaltung > IoT-Gerätekonfiguration) für Ihren IoT Hub anzeigen:
+Da automatische Gerätekonfigurationen zum Zeitpunkt der Erstellung und dann alle fünf Minuten ausgeführt werden, wird möglicherweise nicht jede Statusaktualisierung an die Back-End-Anwendung gesendet. Sie können die Metriken auch im Portal im Abschnitt **Automatic device management > IoT device configuration** (Automatische Geräteverwaltung > IoT-Gerätekonfiguration) für Ihren IoT Hub anzeigen:
 
 ![Anzeigen der Konfiguration im Portal](./media/tutorial-firmware-update/portalview.png)
 

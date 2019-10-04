@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 6c9cb7282ba9d99ea643bbd023d876b8fbe3904c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: be77ae932ec72239bea04fce298d7f1b84e5e4d8
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045593"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240646"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Datenerfassung im Azure-Daten-Explorer
 
@@ -52,7 +52,7 @@ Azure Data Explorer unterstützt derzeit Folgendes:
 
 ### <a name="ingestion-using-integration-services"></a>Erfassung mit Integrationsdiensten
 
-* Azure Data Factory (ADF) ist ein vollständig verwalteter Datenintegrationsdienst für Analyseworkloads in Azure, mit dem mithilfe [unterstützter Datenspeicher und -formate](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) Daten in und aus Azure Data Explorer kopiert werden können. Weitere Informationen finden Sie unter [Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory](/azure/data-factory/connector-azure-data-explorer).
+* Azure Data Factory (ADF) ist ein vollständig verwalteter Datenintegrationsdienst für Analyseworkloads in Azure, mit dem mithilfe [unterstützter Datenspeicher und -formate](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) Daten in und aus Azure Data Explorer kopiert werden können. Weitere Informationen finden Sie unter [Copy data to Azure Data Explorer using Azure Data Factory (Kopieren von Daten aus Azure Data Factory in Azure Data Explorer)](/azure/data-explorer/data-factory-load-data).
 
 ### <a name="programmatic-ingestion"></a>Programmgesteuerte Erfassung
 
@@ -66,7 +66,7 @@ Kusto bietet Client SDKs, die zum Erfassen und Abfragen von Daten mit folgenden 
 
 * [.NET SDK](/azure/kusto/api/netfx/about-the-sdk)
 
-* [Java-SDK](/azure/kusto/api/java/kusto-java-client-library)
+* [Java SDK](/azure/kusto/api/java/kusto-java-client-library)
 
 * [Node SDK](/azure/kusto/api/node/kusto-node-client-library)
 
@@ -91,9 +91,9 @@ Kusto bietet Client SDKs, die zum Erfassen und Abfragen von Daten mit folgenden 
 | Methode | Latency |
 | --- | --- |
 | **Inline-Erfassung** | Unmittelbar |
-| **Erfassung aus der Abfrage** | Abfragezeit + Verarbeitungszeit |
+| **Erfassen aus der Abfrage** | Abfragezeit + Verarbeitungszeit |
 | **Erfassung aus dem Speicher** | Downloadzeit + Verarbeitungszeit |
-| **Erfassung aus der Warteschlange** | Batchverarbeitungszeit + Verarbeitungszeit |
+| **Erfassen aus der Warteschlange** | Batchverarbeitungszeit + Verarbeitungszeit |
 | |
 
 Verarbeitungszeit hängt von der Größe der Daten ab – weniger als einige Sekunden. Die Batchverarbeitungszeit beträgt standardmäßig fünf Minuten.
@@ -113,13 +113,13 @@ Bevor Sie mit der Datenerfassung beginnen, sollten Sie sich folgende Fragen stel
 * Wie lauten die Latenzanforderungen? 
 * Kann eine der vorhandenen verwalteten Erfassungspipelines verwendet werden? 
 
-Für Organisationen mit einer vorhandenen Infrastruktur, die auf einem Messaging-Dienst wie Event Hub basieren, ist die Verwendung eines Connektors wahrscheinlich die am besten geeignete Lösung. Die Erfassung in der Warteschlange eignet sich für große Datenmengen.
+Für Organisationen mit einer vorhandenen Infrastruktur, die auf einem Messagingdienst wie Event Hub und IoT Hub basieren, ist die Verwendung eines Connectors wahrscheinlich die am besten geeignete Lösung. Die Erfassung in der Warteschlange eignet sich für große Datenmengen.
 
 ## <a name="supported-data-formats"></a>Unterstützte Datenformate
 
 Formatieren Sie die Daten für alle Erfassungsmethoden außer Erfassen aus der Abfrage so, dass sie von Azure Data Explorer analysiert werden können. Die folgenden Datenformate werden unterstützt:
 
-* CSV, TSV, PSV, SCSV, SOH
+* CSV, TSV, TSVE, PSV, SCSV, SOH
 * JSON (getrennte Zeilen, mehrzeilig) Avro
 * ZIP und GZIP 
 
@@ -144,7 +144,7 @@ Die Schemazuordnung hilft dabei, Quelldatenfelder an Spalten der Zieltabelle zu 
 > [Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md)
 
 > [!div class="nextstepaction"]
-> [Erfassen von Blobs in Azure Data Explorer durch das Abonnieren von Event Grid-Benachrichtigungen](ingest-data-event-grid.md)
+> [Erfassen von Azure-Blobs in Azure Data Explorer durch Abonnieren von Event Grid-Benachrichtigungen](ingest-data-event-grid.md)
 
 > [!div class="nextstepaction"]
 > [Erfassen von Daten aus Kafka in Azure Data Explorer](ingest-data-kafka.md)

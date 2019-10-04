@@ -2,26 +2,26 @@
 title: Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien – Azure Active Directory B2C | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Benutzereingaben anpassen und Ansprüche zur User Journey bei Registrierung bzw. Anmeldung in Azure Active Directory B2C hinzufügen.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e3eb7ce49c5d22b11b0b6f018e025bdfa2a67703
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e29e2e3e61594870cc9d704d64b1040a4211a520
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432004"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066225"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In diesem Artikel fügen Sie der User Journey für die Registrierung in Azure Active Directory (Azure AD) B2C eine neue Benutzereingabe (einen Anspruch) hinzu.  Sie konfigurieren die Eingabe als Dropdownliste und legen fest, ob sie erforderlich ist.
+In diesem Artikel fügen Sie der User Journey für die Registrierung in Azure Active Directory B2C (Azure AD B2C) eine neue Benutzereingabe (einen Anspruch) hinzu.  Sie konfigurieren die Eingabe als Dropdownliste und legen fest, ob sie erforderlich ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,12 +29,12 @@ Führen Sie die Schritte im Artikel [Erste Schritte mit benutzerdefinierten Rich
 
 ## <a name="add-claims"></a>Hinzufügen von Ansprüchen
 
-Das Sammeln der anfänglichen Daten von Ihren Benutzern erfolgt mithilfe der User Journey für die Registrierung bzw. Anmeldung. Weitere Ansprüche können später mit einer User Journey für die Profilbearbeitung gesammelt werden. Jedes Mal, wenn Azure AD B2C auf interaktive Weise Informationen direkt vom Benutzer erfasst, wird vom Identity Experience Framework der selbstbestätigte (selfasserted) Anbieter verwendet.
+Das Sammeln der anfänglichen Daten von Ihren Benutzern erfolgt mithilfe der User Journey für die Registrierung bzw. Anmeldung. Weitere Ansprüche können später mit einer User Journey für die Profilbearbeitung gesammelt werden. Jedes Mal, wenn Azure AD B2C auf interaktive Weise Informationen direkt vom Benutzer erfasst, wird vom Identity Experience Framework der selbstbestätigte Anbieter verwendet.
 
 
 ### <a name="define-the-claim"></a>Definieren des Anspruchs
 
-Wir fragen vom Benutzer den Ort ab. Fügen Sie dem Element **ClaimsSchema** in der Richtliniendatei „TrustFrameworkBase“ das folgende Element hinzu:
+Sie fragen zum Beispiel den Benutzer nach seinem Wohnort. Fügen Sie dem Element **ClaimsSchema** in der Richtliniendatei „TrustFrameworkBase“ das folgende Element hinzu:
 
 ```xml
 <ClaimType Id="city">
@@ -79,7 +79,7 @@ Die folgenden Elemente werden zum Definieren des Anspruchs verwendet:
 
 #### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
-![Screenshot der Dropdownoption](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
+![Dropdown-Steuerelement für Einzelauswahl mit mehreren Optionen](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -96,7 +96,7 @@ Die folgenden Elemente werden zum Definieren des Anspruchs verwendet:
 
 #### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
-![Screenshot der Option für die Mehrfachauswahl](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
+![Kontrollkästchen-Steuerelement für Mehrfachauswahl mit mehreren Optionen](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 ```xml
 <ClaimType Id="city">
@@ -235,7 +235,7 @@ Die folgenden Elemente werden zum Definieren des Anspruchs verwendet:
       <IncludeTechnicalProfile ReferenceId="AAD-Common" />
     </TechnicalProfile>
     ```
-   
+
 4. Fügen Sie den Anspruch `<OutputClaim ClaimTypeReferenceId="city" />` der Datei „SignUporSignIn.xml“ hinzu, sodass dieser Anspruch nach einer erfolgreichen User Journey an die Anwendung im Token gesendet wird.
 
     ```xml
@@ -261,7 +261,7 @@ Die folgenden Elemente werden zum Definieren des Anspruchs verwendet:
 ## <a name="test-the-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten enthält, indem Sie im oberen Menü den **Verzeichnis- und Abonnementfilter** und dann das Verzeichnis auswählen, das Ihren Azure AD-Mandanten enthält.
 3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
 4. Wählen Sie **Identity Experience Framework (Preview)** aus.
 5. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus, und laden Sie dann die beiden geänderten Richtliniendateien hoch.

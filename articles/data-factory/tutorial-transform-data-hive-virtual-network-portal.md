@@ -11,12 +11,12 @@ ms.date: 01/04/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 9cea3e7494ee81638923cbcaff9f1b82d08a1ad1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b6e57500da0ca863f0c5810f625d6a4b0c56d1bf
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085030"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68277473"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten in Azure Virtual Network mithilfe einer Hive-Aktivität in Azure Data Factory
 In diesem Tutorial verwenden Sie das Azure-Portal, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Hive-Aktivität in einem HDInsight-Cluster transformiert, der sich in einem virtuellen Azure-Netzwerk (VNet) befindet. In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -201,7 +201,7 @@ In diesem Schritt erstellen Sie eine neue Pipeline mit einer Hive-Aktivität. Di
 Beachten Sie folgende Punkte:
 
 - **scriptPath** zeigt auf den Pfad zu dem Hive-Skript im Azure Storage-Konto, das Sie für „MyStorageLinkedService“ verwendet haben. Beim Pfad wird die Groß-/Kleinschreibung beachtet.
-- **Output** ist ein im Hive-Skript verwendetes Argument. Verwenden Sie das Format `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`, um auf einen vorhandenen Ordner in Ihrem Azure Storage zu zeigen. Beim Pfad wird die Groß-/Kleinschreibung beachtet. 
+- **Output** ist ein im Hive-Skript verwendetes Argument. Verwenden Sie das Format `wasbs://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`, um auf einen vorhandenen Ordner in Ihrem Azure Storage zu zeigen. Beim Pfad wird die Groß-/Kleinschreibung beachtet. 
 
 1. Klicken Sie im linken Bereich der Data Factory-Benutzeroberfläche auf **+** (Pluszeichen) und dann auf **Pipeline**. 
 
@@ -226,7 +226,7 @@ Beachten Sie folgende Punkte:
         ![Skripteinstellungen](./media/tutorial-transform-data-using-hive-in-vnet-portal/confirm-hive-script-settings.png)
     5. Erweitern Sie auf der Registerkarte **Skript** den Abschnitt **Erweitert**. 
     6. Klicken Sie unter **Parameter** auf **Auto-fill from script** (Automatisch anhand des Skripts ausfüllen). 
-    7. Geben Sie den Wert für den Parameter **Ausgabe** im folgenden Format ein: `wasb://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Beispiel: `wasb://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
+    7. Geben Sie den Wert für den Parameter **Ausgabe** im folgenden Format ein: `wasbs://<Blob Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`. Beispiel: `wasbs://adftutorial@mystorageaccount.blob.core.windows.net/outputfolder/`.
  
         ![Skriptargumente](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. Klicken Sie auf **Veröffentlichen**, um Artefakte für Data Factory zu veröffentlichen.

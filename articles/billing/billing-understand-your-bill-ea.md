@@ -1,25 +1,22 @@
 ---
-title: Grundlegendes zu Ihrer Azure Enterprise-Rechnung | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ihre Nutzung und Abrechnung für Azure Enterprise-Vereinbarungen lesen und verstehen.
-services: ''
-documentationcenter: ''
+title: Erläuterungen zur Rechnung für Kunden mit einem Azur Enterprise Agreement
+description: Erfahren Sie, wie Sie Ihre Nutzung und Abrechnung für Azure Enterprise Agreements lesen und verstehen.
 author: adpick
 manager: dougeby
-editor: ''
 tags: billing
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2019
+ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 810d0795bd005cc313ec3567811ad55ba1d9d522
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848826"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "67490280"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Grundlegendes zu Ihrer Azure Enterprise-Rechnung
 
@@ -29,7 +26,7 @@ Das Guthaben Ihrer Organisation schließt Ihre finanzielle Verpflichtung ein. De
 
 ## <a name="invoices-for-most-customers"></a>Rechnungen für die meisten Kunden
 
-Dieser Abschnitt gilt nicht für Azure-Kunden in Australien, Japan oder Singapur. Wenn Sie in einem dieser Länder sind, lesen Sie [Rechnungen für andere Kunden](#invoices-for-other-customers).
+Dieser Abschnitt gilt nicht für Azure-Kunden in Australien, Japan oder Singapur. Wenn Sie sich in einem dieser Länder/Regionen befinden, lesen Sie [Rechnungen für andere Kunden](#invoices-for-other-customers).
 
 Wenn einer der folgenden Punkte während des Abrechnungszyklus auftritt, erhalten Sie eine Azure-Rechnung:
 

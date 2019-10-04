@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 298bf10cf07467de897c7e38af9539fc71375eab
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776647"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60595763"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Erstellen einer Verwaltungslösungsdatei in Azure (Vorschau)
 > [!NOTE]
@@ -73,7 +73,7 @@ In der folgenden Tabelle werden die Attribute eines Parameters beschrieben.
 | type |Der Datentyp für den Parameter. Das für den Benutzer angezeigte Eingabesteuerelement hängt vom Datentyp ab.<br><br>bool – Dropdownfeld<br>string – Textfeld<br>int – Textfeld<br>securestring – Kennwortfeld<br> |
 | category |Optionale Kategorie für den Parameter.  Parameter in der gleichen Kategorie werden gruppiert. |
 | control |Zusätzliche Funktionen für Abfrageparameter<br><br>datetime – die Datetime-Steuerung wird angezeigt<br>guid – der GUID-Wert wird automatisch generiert, und er Parameter wird nicht angezeigt. |
-| Beschreibung |Optionale Beschreibung für den Parameter.  Wird in einer Informationssprechblase neben dem Parameter angezeigt. |
+| description |Optionale Beschreibung für den Parameter.  Wird in einer Informationssprechblase neben dem Parameter angezeigt. |
 
 ### <a name="standard-parameters"></a>Standardparameter
 In der folgenden Tabelle werden die Standardparameter für alle Verwaltungslösungen aufgelistet.  Diese Werte werden für den Benutzer aufgefüllt, es gibt keine Aufforderung, wenn Ihre Lösung vom Azure Marketplace oder von Schnellstartvorlagen installiert wird.  Der Benutzer muss Werte für diese bereitstellen, wenn die Lösung mit einer anderen Methode installiert wurde.
@@ -85,12 +85,12 @@ In der folgenden Tabelle werden die Standardparameter für alle Verwaltungslösu
 
 | Parameter | Type | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| .<Name der Region |Zeichenfolge |Azure Automation-Kontoname |
-| pricingTier |Zeichenfolge |Der Tarif für den Log Analytics-Arbeitsbereich und das Azure Automation-Konto |
-| regionId |Zeichenfolge |Region des Azure Automation-Kontos |
-| solutionName |Zeichenfolge |Name der Lösung  Wenn Sie die Lösung über Schnellstartvorlagen bereitstellen, sollten Sie „solutionName“ als Parameter definieren, damit Sie eine Zeichenfolge definieren können und dies nicht durch den Benutzer erfolgen muss. |
-| workspaceName |Zeichenfolge |Name des Log Analytics-Arbeitsbereichs. |
-| workspaceRegionId |Zeichenfolge |Region des Azure Log Analytics-Arbeitsbereichs |
+| .<Name der Region |string |Azure Automation-Kontoname |
+| pricingTier |string |Der Tarif für den Log Analytics-Arbeitsbereich und das Azure Automation-Konto |
+| regionId |string |Region des Azure Automation-Kontos |
+| solutionName |string |Name der Lösung  Wenn Sie die Lösung über Schnellstartvorlagen bereitstellen, sollten Sie „solutionName“ als Parameter definieren, damit Sie eine Zeichenfolge definieren können und dies nicht durch den Benutzer erfolgen muss. |
+| workspaceName |string |Name des Log Analytics-Arbeitsbereichs. |
+| workspaceRegionId |string |Region des Azure Log Analytics-Arbeitsbereichs |
 
 
 Unten stehend finden Sie die Struktur der Standardparameter, die Sie kopieren und in Ihrer Lösungsdatei einfügen können.  
@@ -129,7 +129,7 @@ Unten stehend finden Sie die Struktur der Standardparameter, die Sie kopieren un
     }
 
 
-Sie verweisen in anderen Elementen der Lösung mit der Syntax **parameters('parameter name')** auf die Parameterwerte.  Um z.B. auf den Namen des Arbeitsbereichs zuzugreifen, verwenden Sie **parameters('workspaceName')**.
+Sie verweisen in anderen Elementen der Lösung mit der Syntax **parameters('parameter name')** auf die Parameterwerte.  Um z.B. auf den Namen des Arbeitsbereichs zuzugreifen, verwenden Sie **parameters('workspaceName')** .
 
 ## <a name="variables"></a>Variables
 [Variablen](../../azure-resource-manager/resource-group-authoring-templates.md#variables) sind Werte, die Sie in der restlichen Verwaltungslösung verwenden.  Diese Werte werden dem Benutzer, der die Lösung installiert, nicht verfügbar gemacht.  Sie stellen dem Ersteller einen zentralen Ort bereit, an dem dieser Werte verwalten kann, die in der Lösung möglicherweise mehrfach verwendet werden. Platzieren Sie beliebige Werte für Ihre Lösung in Variablen anstatt sie im **resources**-Element hartzucodieren.  Dadurch ist der Code besser lesbar und Sie können diese Werte einfach in späteren Versionen ändern.
@@ -144,7 +144,7 @@ Im Folgenden finden Sie ein Beispiel eines **variables**-Elements mit typischen 
         "AutomationApiVersion": "2015-10-31"
     },
 
-Sie verweisen in der Lösung mit der Syntax **variables('variable name')** auf Variablenwerte.  Um beispielsweise auf die SolutionName-Variable zuzugreifen, verwenden Sie **variables('SolutionName')**.
+Sie verweisen in der Lösung mit der Syntax **variables('variable name')** auf Variablenwerte.  Um beispielsweise auf die SolutionName-Variable zuzugreifen, verwenden Sie **variables('SolutionName')** .
 
 Sie können auch komplexe Variablen mit mehreren Gruppen von Werten definieren.  Diese sind in Verwaltungslösungen besonders nützlich, wenn Sie mehrere Eigenschaften für verschiedene Arten von Ressourcen definieren.  Sie könnten beispielsweise die oben aufgeführten Lösungsvariablen die folgendermaßen umstrukturieren.
 
@@ -213,7 +213,7 @@ Die Lösungsressource weist die Eigenschaften in der folgenden Tabelle auf.  Die
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| workspaceResourceId |ID des Log Analytics-Arbeitsbereichs im Format *<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>*. |
+| workspaceResourceId |ID des Log Analytics-Arbeitsbereichs im Format *\<Ressourcengruppen-ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* . |
 | referencedResources |Liste der Ressourcen in der Lösung, die nicht entfernt werden sollen, wenn die Lösung entfernt wird. |
 | containedResources |Liste der Ressourcen in der Lösung, die entfernt werden sollen, wenn die Lösung entfernt wird. |
 
@@ -225,9 +225,9 @@ Die Entität **Plan** der Lösungsressource weist die Eigenschaften in der folge
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | name |Name der Lösung |
-| Version |Die Version der Lösung, wie vom Autor festgelegt. |
+| version |Die Version der Lösung, wie vom Autor festgelegt. |
 | product |Eindeutige Zeichenfolge zum Identifizieren der Lösung. |
-| Herausgeber |Herausgeber der Lösung |
+| publisher |Herausgeber der Lösung |
 
 
 

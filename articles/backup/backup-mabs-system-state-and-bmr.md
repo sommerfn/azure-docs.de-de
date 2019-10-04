@@ -1,20 +1,19 @@
 ---
 title: Azure Backup Server schützt den Systemstatus und stellt Bare-Metal-Sicherungen wieder her
 description: Verwenden Sie Azure Backup Server, um Ihren Systemstatus zu sichern und Bare-Metal-Recovery-Schutz (BMR) zu bieten.
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 keywords: ''
 ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: raynew
-ms.openlocfilehash: 35ab150670cdc27efcedca233928e0c2184aeca6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.author: dacurwin
+ms.openlocfilehash: 12412122ba116eedc592fadc57949f707e52c355
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880096"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68639670"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Sichern des Systemstatus und Bare-Metal-Wiederherstellung mit Azure Backup Server
 
@@ -34,7 +33,7 @@ In der folgenden Tabelle wird zusammengefasst, was Sie sichern und wiederherstel
 |**Dateidaten**<br /><br />Reguläre Datensicherung<br /><br />BMR-/Systemstatussicherung|Verlust von Dateidaten|J|N|N|
 |**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlust oder Beschädigung des Betriebssystems|N|J|J|
 |**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlust eines Servers (Datenvolumes intakt)|N|N|J|
-|**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlust eines Servers (Verlust von Datenvolumes)|J|Nein |Ja (BMR, gefolgt von regulärer Wiederherstellung gesicherter Dateidaten)|
+|**Dateidaten**<br /><br />Azure Backup Server-Sicherung von Dateidaten<br /><br />BMR-/Systemstatussicherung|Verlust eines Servers (Verlust von Datenvolumes)|J|Nein|Ja (BMR, gefolgt von regulärer Wiederherstellung gesicherter Dateidaten)|
 |**SharePoint-Daten**:<br /><br />Azure Backup Server-Sicherung von Farmdaten<br /><br />BMR-/Systemstatussicherung|Verlust von Website, Listen, Listenelementen, Dokumenten|J|N|N|
 |**SharePoint-Daten**:<br /><br />Azure Backup Server-Sicherung von Farmdaten<br /><br />BMR-/Systemstatussicherung|Verlust oder Beschädigung des Betriebssystems|N|J|J|
 |**SharePoint-Daten**:<br /><br />Azure Backup Server-Sicherung von Farmdaten<br /><br />BMR-/Systemstatussicherung|Notfallwiederherstellung|N|N|N|

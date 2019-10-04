@@ -1,25 +1,25 @@
 ---
 title: Ausführen des Azure Site Recovery-Bereitstellungsplaners für die VMware-Notfallwiederherstellung in Azure | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie den Azure Site Recovery-Bereitstellungsplaner für die VMware-Notfallwiederherstellung in Azure ausführen.
-author: nsoneji
-manager: garavd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: 1cf324887a225ecb9ba2cb40176a1f358e40a8e1
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 3a6c9e50804db573395984b8ba38838eb15b0792
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361996"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "61276687"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für die VMware-Notfallwiederherstellung in Azure
 Dieser Artikel ist der Leitfaden zum Deployment Planner (Bereitstellungsplaner) von Azure Site Recovery für Bereitstellungen von „VMware zu Azure“ in der Produktion.
 
 
 ## <a name="modes-of-running-deployment-planner"></a>Modi der Bereitstellungsplaner-Ausführung
-Sie können das Befehlszeilentool (ASRDeploymentPlanner.exe) in einem der folgenden vier Modi ausführen:
+Sie können das Befehlszeilentool (ASRDeploymentPlanner.exe) in einem der folgenden drei Modi ausführen:
 
 1.  [Profilerstellung](#profile-vmware-vms)
 2.  [Berichterstellung](#generate-report)
@@ -136,10 +136,10 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>Erstellen des Berichts
-Das Tool generiert eine makrofähige Microsoft Excel-Datei (XLSM-Datei) als Berichtsausgabe, in der alle Empfehlungen für die Bereitstellung zusammengefasst sind. Der Bericht hat den Namen „DeploymentPlannerReport_<unique numeric identifier>.xlsm“ und wird im angegebenen Verzeichnis gespeichert.
+Das Tool generiert eine makrofähige Microsoft Excel-Datei (XLSM-Datei) als Berichtsausgabe, in der alle Empfehlungen für die Bereitstellung zusammengefasst sind. Der Bericht hat den Namen `DeploymentPlannerReport_<unique numeric identifier>.xlsm` und wird im angegebenen Verzeichnis gespeichert.
 
 >[!NOTE]
->Für diesen Bericht muss das Dezimalzeichen als „.“ konfiguriert sein, um Kostenschätzungen auf dem Server zu ergeben, auf dem Sie den Bereitstellungsplaner ausführen. Falls Sie „,“ als Dezimalzeichen auf einem Windows-Computer eingerichtet haben, navigieren Sie bitte in der Systemsteuerung zu „Ändern von Datums-, Uhrzeit- oder Zahlenformaten“ und navigieren Sie zu „Weitere Einstellungen“, um das Dezimalzeichen in „.“ zu ändern.
+>Damit der Bericht erstellt werden kann, ist ein Windows-PC oder Windows-Server mit Excel 2013 oder höher erforderlich. Das Dezimalzeichen auf diesem Computer sollte als „.“ festgelegt sein, damit die Kostenschätzungen erstellt werden können. Falls Sie „,“ als Dezimalzeichen eingerichtet haben, navigieren Sie bitte in der Systemsteuerung zu „Ändern von Datums-, Uhrzeit- oder Zahlenformaten“ und navigieren Sie zu „Weitere Einstellungen“, um das Dezimalzeichen in „.“ zu ändern.
 
 Nach Abschluss der Profilerstellung können Sie das Tool im Berichterstellungsmodus ausführen. Die folgende Tabelle enthält eine Liste mit den erforderlichen und optionalen Toolparametern für die Ausführung im Modus für die Berichterstellung.
 
@@ -240,12 +240,12 @@ Es wird dringend empfohlen, beim Planen der Bereitstellung den Zuwachs zu berüc
 
 Der erstellte Microsoft Excel-Bericht enthält die folgenden Informationen:
 
-* [On-premises Summary (Lokale Zusammenfassung)](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
+* [On-premises Summary](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary) (Lokale Zusammenfassung)
 * [Empfehlungen](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [VM<->Storage Placement (VM/Speicher-Anordnung)](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
-* [Kompatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
-* [Inkompatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
-* [Cost Estimation (Kostenvorkalkulation)](site-recovery-vmware-deployment-planner-cost-estimation.md)
+* [VM&lt;-&gt;Storage Placement](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement) (VM/Speicher-Anordnung)
+* [Compatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms) (Kompatible VMs)
+* [Incompatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms) (Inkompatible VMs)
+* [Cost Estimation](site-recovery-vmware-deployment-planner-cost-estimation.md) (Kostenvorkalkulation)
 
 ![Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
 

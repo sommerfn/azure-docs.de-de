@@ -1,122 +1,129 @@
 ---
-title: Erkunden von Daten mit dem Azure Time Series Insights-Explorer | Microsoft-Dokumentation
+title: Erkunden von Daten mithilfe des Azure Time Series Insights-Explorers | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe des Azure Time Series Insights-Explorers im Webbrowser schnell eine globale Ansicht Ihrer Big Data anzeigen und die IoT-Umgebung überprüfen können.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: anshan
+ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/30/2017
+ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 301326f4ba858c7aef6c8bdec8f2cae3ed926847
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9ea9240ce5fa791734ab7b650ebdfa56b3f8dced
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121042"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68840565"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights-Explorer
-In diesem Artikel werden die verschiedenen in der Web-App des Time Series Insights-Explorers verfügbaren Funktionen und Optionen vorgestellt. Sie verwenden den Time Series Insights-Explorer in Ihrem Webbrowser, um Visualisierungen Ihrer Daten zu erstellen.
- 
+
+In diesem Artikel werden die allgemein verfügbaren Features und Optionen der [Explorer-Web-App](https://insights.timeseries.azure.com/) für Azure Time Series Insights beschrieben. Der Time Series Insights-Explorer veranschaulicht die leistungsstarken Datenvisualisierungsfunktionen, die der Dienst bereitstellt und auf die innerhalb Ihrer eigenen Umgebung zugegriffen werden kann.
+
 Azure Time Series Insights ist ein vollständig verwalteter Analyse-, Speicher- und Visualisierungsdienst, der die simultane Untersuchung und Analyse von Milliarden von IoT-Ereignissen ermöglicht. Sie erhalten globale Einblicke in Ihre Daten und können basierend darauf Ihre IoT-Lösung schneller überprüfen und kostenintensive Ausfallzeiten unternehmenskritischer Geräte vermeiden. Sie können versteckte Trends aufdecken, Abweichungen erkennen und Ursachenanalysen nahezu in Echtzeit durchführen. Der Time Series Insights-Explorer ist derzeit als öffentliche Vorschau verfügbar.
 
-## <a name="video"></a>Video:
+> [!TIP]
+> Eine interaktive Tour durch die Demoumgebung finden Sie in der [Schnellstartanleitung für Azure Time Series Insights](time-series-quickstart.md).
 
-In diesem Video wird die Abfrage von Daten mit dem Time Series Insights Explorer behandelt. 
+## <a name="video"></a>Video
 
-Dieses Video baut auf Video Time Series Insights auf:  
-<span style="color:blue">Erste Schritte mit Time Series Insights mit einem Azure IoT Solution Accelerator.</span>
-</br>
+### <a name="learn-about-querying-data-by-using-the-time-series-insights-explorer-br"></a>Informieren Sie sich über das Abfragen von Daten mit dem Time Series Insights-Explorer. </br>
 
 > [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
+
+>[!NOTE]
+>Sehen Sie sich das obige Video <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">Getting started with Time Series Insights by using an Azure IoT Solution Accelerator</a> (Erste Schritte mit Time Series Insights unter Verwendung eines Azure IoT Solution Accelerators) an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Vor der Verwendung des Time Series Insights-Explorers müssen Sie folgende Schritte ausführen:
-- Erstellen einer Time Series Insights-Umgebung
-- Bereitstellen des Zugriffs auf Ihr Konto in der Umgebung
-- Hinzufügen und Speichern einer Ereignisquelle zum Erfassen von Daten
+
+- Erstellen Sie eine Time Series Insights-Umgebung. Weitere Informationen finden Sie unter [Erste Schritte mit Time Series Insights](./time-series-insights-get-started.md).
+- [Erteilen Sie Zugriff](time-series-insights-data-access.md) auf Ihr Konto in der Umgebung.
+- Fügen Sie eine [IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md)- oder [Event Hub](time-series-insights-how-to-add-an-event-source-eventhub.md)-Ereignisquelle hinzu.
 
 ## <a name="explore-and-query-data"></a>Untersuchen und Abfragen von Daten
+
 Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Time Series Insights-Umgebung können Sie Ihre Zeitreihendaten untersuchen und abfragen.
 
-1. Öffnen Sie zunächst den [Time Series Insights-Explorer](https://insights.timeseries.azure.com/) in Ihrem Webbrowser, und wählen Sie links im Fenster eine Umgebung aus. Alle Umgebungen, auf die Sie Zugriff haben, sind in alphabetischer Reihenfolge aufgeführt.
+1. Öffnen Sie zunächst den [Time Series Insights-Explorer](https://insights.timeseries.azure.com/) in Ihrem Webbrowser. Wählen Sie auf der linken Seite des Fensters eine Umgebung aus. Alle Umgebungen, auf die Sie Zugriff haben, sind in alphabetischer Reihenfolge aufgeführt.
 
-2. Nachdem Sie eine Umgebung ausgewählt haben, verwenden Sie entweder die Konfigurationen **VON** und **BIS** im oberen Bereich, oder ziehen Sie die gewünschte Zeitspanne.  Klicken Sie auf die Lupe oben rechts, oder klicken Sie mit der rechten Maustaste auf die ausgewählte Zeitspanne, und wählen Sie **Suchen** aus.  
+1. Nachdem Sie eine Umgebung ausgewählt haben, können Sie die Konfigurationen **Von** und **Bis** im oberen Bereich verwenden. Sie können aber auch klicken und den Zeiger über die gewünschte Zeitspanne ziehen. Klicken Sie rechts oben auf die Lupe, oder klicken Sie mit der rechten Maustaste auf die ausgewählte Zeitspanne, und wählen Sie **Suchen** aus.
 
-3. Sie können zudem die Verfügbarkeit automatisch einmal pro Minute aktualisieren, indem Sie die Schaltfläche **Auto On** (Automatisch ein) auswählen.  Beachten Sie, dass die Schaltfläche „Auto-Ein“ nur für das Verfügbarkeitsdiagramm gilt, nicht jedoch für den Inhalt der Hauptvisualisierung.
+1. Mithilfe der Schaltfläche **Auto On** (Automatisch ein) können Sie außerdem festlegen, dass die Verfügbarkeit automatisch einmal pro Minute aktualisiert werden soll. Die Schaltfläche **Auto On** (Automatisch ein) gilt nur für das Verfügbarkeitsdiagramm, nicht für den Inhalt der Hauptvisualisierung.
 
-4. Beachten Sie, dass Sie über das Azure-Cloudsymbol zu Ihrer Umgebung im Azure-Portal gelangen.
+1. Über das Azure-Cloudsymbol gelangen Sie zu Ihrer Umgebung im Azure-Portal.
 
-   ![Time Series Insights-Umgebung](media/time-series-insights-explorer/explorer1.png)
+   [![Time Series Insights-Umgebung](media/time-series-insights-explorer/explorer1.png)](media/time-series-insights-explorer/explorer1.png#lightbox)
 
-5. Als Nächstes sehen Sie ein Diagramm, in dem die Anzahl aller Ereignisse in der ausgewählten Zeitspanne angezeigt wird.  Hier stehen mehrere Steuerelemente zur Verfügung:
+1. Als Nächstes sehen Sie ein Diagramm, in dem die Anzahl aller Ereignisse in der ausgewählten Zeitspanne angezeigt wird. Hier stehen mehrere Steuerelemente zur Verfügung:
 
-    **Editor-Bereich für Begriffe**:  Im Begriffsbereich führen Sie Abfragen in Ihrer Umgebung durch.  Er befindet sich auf der linken Seite des Bildschirms und umfasst folgende Optionen: 
-      - **Measure**:  In dieser Dropdownliste werden alle numerischen Spalten (Doubles) angezeigt.
-      - **Aufteilen nach**: In dieser Dropdownliste werden Kategoriespalten (Strings) angezeigt.
-      - Über die Systemsteuerung neben „Measure“ können Sie die Schrittinterpolation aktivieren, Mindest- und Höchstwerte anzeigen und die Y-Achse anpassen.  Zudem können Sie festlegen, ob die angezeigten Daten als Anzahl, Durchschnitt oder Summe der Daten angezeigt wird.
-      - Sie können bis zu fünf Begriffe hinzufügen, die auf derselben X-Achse angezeigt werden.  Verwenden Sie die Schaltfläche **copy-down** (Kopieren), um einen zusätzlichen Begriff hinzuzufügen, oder klicken Sie auf **Hinzufügen**, um einen neuen Begriff hinzuzufügen.
-     
-        ![Editor-Bereich für Begriffe](media/time-series-insights-explorer/explorer2.png)
+    - **Editor-Bereich für Begriffe**: Im Begriffsbereich führen Sie Abfragen in Ihrer Umgebung durch. Er befindet sich auf der linken Seite des Bildschirms:
+      - **Measure**: In dieser Dropdownliste werden alle numerischen Spalten (**Doubles**) angezeigt.
+      - **Aufteilen nach**: In dieser Dropdownliste werden Kategoriespalten (**Zeichenfolgen**) angezeigt.
+      - Mithilfe der Einstellungen neben **Measure** können Sie die Schrittinterpolation aktivieren, Mindest- und Höchstwerte anzeigen und die Y-Achse anpassen. Außerdem können Sie festlegen, ob die angezeigten Daten als Anzahl, Durchschnitt oder Summe der Daten angezeigt werden sollen.
+      - Sie können bis zu fünf Begriffe hinzufügen, um sie auf der gleichen X-Achse anzuzeigen. Verwenden Sie die Schaltfläche **Copy-down** (Kopieren), um einen zusätzlichen Begriff hinzuzufügen, oder wählen Sie **Hinzufügen** aus, um einen neuen Begriff hinzuzufügen.
 
-      - **Prädikat**:  Über das Prädikat können Sie die Ereignisse mithilfe der unten aufgeführten Operanden schnell filtern. Wenn Sie eine Suche durch Auswählen/Klicken durchführen, wird das Prädikat basierend auf dieser Suche automatisch aktualisiert.      Folgende Operandentypen werden unterstützt:
+        [![Editor-Bereich für Begriffe](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
+
+      - **Prädikat**: Mithilfe des Prädikats können Sie Ihre Ereignisse schnell unter Verwendung der in der folgenden Tabelle aufgeführten Gruppe von Operanden filtern. Wenn Sie eine Suche durch Auswählen oder Klicken ausführen, wird das Prädikat basierend auf dieser Suche automatisch aktualisiert. Folgende Operandentypen werden unterstützt:
 
          |Vorgang  |Unterstützte Typen  |Notizen  |
          |---------|---------|---------|
-         |<, >, <=, >=     |  Double, DateTime, TimeSpan       |         |
-         |=, !=, <>     | String, Bool, Double, DateTime, TimeSpan, NULL        |         |
+         |`<`, `>`, `<=`, `>=`     |  Double, DateTime, TimeSpan       |         |
+         |`=`, `!=`, `<>`     | String, Bool, Double, DateTime, TimeSpan, NULL        |         |
          |IN     | String, Bool, Double, DateTime, TimeSpan, NULL        |  Alle Operanden müssen denselben Typ aufweisen oder eine NULL-Konstante sein.        |
          |HAS     | Zeichenfolge        |  Im rechten Bereich sind nur konstante Zeichenfolgenliterale zulässig. Leere Zeichenfolgen und NULL sind nicht zulässig.       |
 
       - **Beispiele für Abfragen**
-      
-         ![Beispielabfragen](media/time-series-insights-explorer/explorer9.png)
 
-6. Mit dem Schieberegler für die **Intervallgröße** können Sie die Intervalle in einer Zeitspanne vergrößern und verkleinern.  Dies ermöglicht eine genauere Steuerung der Bewegung zwischen größeren Zeitabschnitten, die Trends gleichmäßig bis hin zu kleinsten Zeitabschnitten in Millisekunden anzeigen, sodass Sie präzise, hochauflösende Schnitte Ihrer Daten anzeigen können. Der Standardstartpunkt des Schiebereglers ist als optimierte Ansicht der Daten aus Ihrer Auswahl festgelegt und gleicht somit Auflösung, Abfragegeschwindigkeit und Granularität aus.
+         [![Beispielabfragen](media/time-series-insights-explorer/explorer9.png)](media/time-series-insights-explorer/explorer9.png#lightbox)
 
-7. Mit dem Tool **Time Brush** können Sie problemlos zwischen den einzelnen Zeitspannen navigieren, sodass in der intuitiven Benutzeroberfläche eine nahtlose Bewegung zwischen Zeitspannen möglich ist.
+1. Mit dem Schieberegler für die **Intervallgröße** können Sie die Intervalle in einer Zeitspanne vergrößern und verkleinern. Dies ermöglicht eine genauere Steuerung der Bewegung zwischen größeren Zeitabschnitten, die Trends gleichmäßig bis hin zu kleinsten Zeitabschnitten in Millisekunden anzeigen, um präzise, hochauflösende Schnitte Ihrer Daten zu erhalten. Der Standardstartpunkt des Schiebereglers ist auf die optimale Darstellung der Daten aus Ihrer Auswahl festgelegt und bietet ein ausgewogenes Verhältnis zwischen Auflösung, Abfragegeschwindigkeit und Granularität.
 
-8. Mit dem Befehl **Speichern** können Sie die aktuelle Abfrage speichern und zur Freigabe für andere Benutzer der Umgebung aktivieren. Über **Öffnen** können Sie alle Ihre gespeicherten Abfragen und alle für andere Benutzer in Umgebungen, auf die Sie Zugriff haben, freigegebenen Abfragen anzeigen. 
+1. Mit dem Tool **Time Brush** können Sie komfortabel zwischen den einzelnen Zeitspannen navigieren.
 
-   ![Abfragen](media/time-series-insights-explorer/explorer3.png)
+1. Mit dem Befehl **Speichern** können Sie Ihre aktuelle Abfrage speichern und für andere Benutzer der Umgebung freigeben. Über **Öffnen** können Sie alle Ihre gespeicherten Abfragen sowie freigegebene Abfragen anderer Benutzer in Umgebungen anzeigen, auf die Sie Zugriff haben.
 
-9. Das Tool **Perspektivische Ansicht** ermöglicht eine parallele Ansicht von bis zu vier eindeutigen Abfragen. Die Schaltfläche „Perspektivische Ansicht“ finden Sie oben rechts im Diagramm.  
+   [![Abfragen](media/time-series-insights-explorer/explorer3.png)](media/time-series-insights-explorer/explorer3.png#lightbox)
 
-   ![Perspektivische Ansicht](media/time-series-insights-explorer/explorer4.png)
+## <a name="visualize-data"></a>Visualisieren von Daten
 
-10. Im **Diagramm** können Sie Ihre Daten visuell untersuchen. Folgende Diagrammtools sind verfügbar:
+1. Mit dem Tool **Perspektivische Ansicht** können Sie bis zu vier eindeutige Abfragen parallel anzeigen. Die Schaltfläche **Perspektivische Ansicht** befindet sich in der rechten oberen Ecke des Diagramms.
 
-    - Auswählen/Klicken und dadurch Aktivieren einer Auswahl einer bestimmten Zeitspanne oder einer einzelnen Datenreihe.  
-    - Innerhalb einer Zeitspannenauswahl können Sie Ereignisse vergrößern oder untersuchen.  
+   [![Perspektivische Ansicht](media/time-series-insights-explorer/explorer4.png)](media/time-series-insights-explorer/explorer4.png#lightbox)
+
+1. Zeigen Sie ein Diagramm an, um Ihre Daten visuell zu untersuchen, und verwenden Sie die **Diagrammtools**:
+
+    - **Wählen Sie eine bestimmte Zeitspanne oder eine einzelne Datenreihe aus**, oder **klicken Sie auf eine bestimmte Zeitspanne oder auf eine einzelne Datenreihe**.
+    - Innerhalb einer Zeitspannenauswahl können Sie zoomen und Ereignisse untersuchen.
     - Innerhalb einer Datenreihe können Sie die Reihe nach einer anderen Spalte teilen, die Reihe als neuen Begriff hinzufügen, nur die ausgewählte Reihe anzeigen, die ausgewählte Reihe ausschließen, die Reihe anheften oder Ereignisse aus der ausgewählten Reihe untersuchen.
-    - Im Filterbereich links neben dem Diagramm können Sie alle angezeigten Datenreihen sehen und diese nach Wert oder Namen neu anordnen sowie alle Datenreihen oder spezifische angeheftete oder getrennte Reihen anzeigen.  Sie können außerdem eine einzelne Datenreihe auswählen und nach einer anderen Spalte teilen, die Reihe als neuen Begriff hinzufügen, nur die ausgewählte Reihe anzeigen, die ausgewählte Reihe ausschließen, die Reihe anheften oder Ereignisse aus der ausgewählten Reihe untersuchen.
-    - Beim gleichzeitigen Anzeigen von mehreren Begriffen können Sie über die Schaltflächen oben rechts im Diagramm Stapel bilden, die Stapelung aufheben, weitere Daten zu einer Datenreihe anzeigen und für alle Begriffe dieselbe Y-Achse verwenden.
- 
-    ![Diagrammtool](media/time-series-insights-explorer/explorer5.png) 
+    - Im Filterbereich links neben dem Diagramm können Sie alle dargestellten Datenreihen sehen und nach Wert oder Name sortieren. Darüber hinaus können Sie alle Datenreihen oder alle angehefteten/getrennten Reihen anzeigen. Sie können eine einzelne Datenreihe auswählen und nach einer anderen Spalte teilen, die Reihe als neuen Begriff hinzufügen, nur die ausgewählte Reihe anzeigen, die ausgewählte Reihe ausschließen, die Reihe anheften oder Ereignisse aus der ausgewählten Reihe untersuchen.
+    - Bei gleichzeitiger Darstellung mehrerer Begriffe können Sie Stapel bilden, die Stapelung aufheben, weitere Daten zu einer Datenreihe anzeigen und für alle Begriffe die gleiche Y-Achse verwenden. Verwenden Sie hierzu die Schaltflächen in der rechten oberen Ecke des Diagramms.
 
-11. Mithilfe des **Wärmebilds** können Sie schnell eindeutige oder ungewöhnliche Datenreihen in einer bestimmten Abfrage erkennen. Nur ein Suchbegriff kann als Wärmebild visualisiert werden.    
+    [![Diagrammtool](media/time-series-insights-explorer/explorer5.png)](media/time-series-insights-explorer/explorer5.png#lightbox)
 
-    ![Wärmebild](media/time-series-insights-explorer/explorer6.png)
+1. Mithilfe des **Wärmebilds** können Sie schnell besondere oder ungewöhnliche Datenreihen in einer bestimmten Abfrage erkennen. Nur ein Suchbegriff kann als Wärmebild visualisiert werden.
 
-12. **Ereignisse**:  Wenn Sie oben beim Auswählen oder Klicken mit der rechten Maustaste Ereignisse untersuchen möchten, wird der Ereignisbereich angezeigt.  Hier können Sie alle Ihre Rohereignisse anzeigen und die Ereignisse als JSON- oder CSV-Dateien exportieren. Beachten Sie, dass in Time Series Insights alle Rohdaten gespeichert werden.
+    [![Wärmebild](media/time-series-insights-explorer/explorer6.png)](media/time-series-insights-explorer/explorer6.png#lightbox)
 
-    ![Ereignisse](media/time-series-insights-explorer/explorer7.png)
+1. Beim Untersuchen von Ereignissen durch Auswählen oder Klicken mit der rechten Maustaste wird der **Ereignisbereich** angezeigt. Hier können Sie alle Ihre Rohereignisse anzeigen und die Ereignisse als JSON- oder CSV-Dateien exportieren. In Time Series Insights werden alle Rohdaten gespeichert.
 
-13. Klicken Sie nach dem Untersuchen von Ereignissen auf die Registerkarte **STATISTIK**, um die Funktionen für Muster und Spaltenstatistik anzuzeigen.  
+    [![Ereignisse](media/time-series-insights-explorer/explorer7.png)](media/time-series-insights-explorer/explorer7.png#lightbox)
 
-    - **Muster:** Mit diesem Feature werden die meisten statistisch signifikanten Muster in einer ausgewählten Datenregion angezeigt. So müssen Sie nicht Tausende von Ereignissen prüfen, um festzustellen, welche Muster am meisten Zeit und Energie rechtfertigen. Darüber hinaus können Sie in Time Series Insights direkt in diese statistisch signifikanten Muster springen und dann eine Analyse durchführen. Dieses Feature ist auch nützlich für nachträgliche Überprüfungen von Verlaufsdaten. 
+1. Wählen Sie nach dem Untersuchen von Ereignissen die Registerkarte **STATISTIK** aus, um die Funktionen für Muster und Spaltenstatistik anzuzeigen.
 
-    - **Spaltenstatistik**:  Mit der Spaltenstatistik werden Diagramme und Tabellen angezeigt, in denen Daten aus den einzelnen Spalten der ausgewählten Datenreihe über die ausgewählte Zeitspanne unterteilt sind.  
- 
-      ![STATISTIK](media/time-series-insights-explorer/explorer8.png) 
+    - **Muster**: Dieses proaktive Feature zeigt die Muster an, die in einer ausgewählten Datenregion statistisch besonders signifikant sind. Sie müssen nicht Tausende von Ereignissen überprüfen, um zu ermitteln, welche Muster die meiste Zeit und Energie erfordern. Mit Time Series Insights können Sie direkt zu diesen statistisch signifikanten Mustern navigieren und Ihre Analyse fortsetzen. Dieses Feature ist auch nützlich für nachträgliche Überprüfungen von Verlaufsdaten.
+    - **Spaltenstatistik**: Die Spaltenstatistik liefert Diagramme und Tabellen, in denen Daten aus den einzelnen Spalten der ausgewählten Datenreihe über die ausgewählte Zeitspanne aufgeschlüsselt sind.
 
-Damit kennen Sie nun die verschiedenen in der Web-App des Time Series Insights-Explorers verfügbaren Funktionen und Optionen. 
+      [![STATISTIK](media/time-series-insights-explorer/explorer8.png)](media/time-series-insights-explorer/explorer8.png#lightbox)
+
+Damit kennen Sie nun die verschiedenen Features und Optionen, die in der Explorer-Web-App von Time Series Insights zur Verfügung stehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-> [!div class="nextstepaction"]
->[Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung](time-series-insights-diagnose-and-solve-problems.md)
+
+- Informieren Sie sich, wie Sie [Probleme in Ihrer Time Series Insights-Umgebung diagnostizieren und beheben](time-series-insights-diagnose-and-solve-problems.md).
+- Sehen Sie sich die [Schnellstartanleitung für Azure Time Series Insights](time-series-quickstart.md) an.

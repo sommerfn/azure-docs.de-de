@@ -3,23 +3,17 @@ title: Allgemeine Verwaltungsaufgaben für Clouddienste | Microsoft-Dokumentatio
 description: Hier erfahren Sie mehr über die Verwaltung von Clouddiensten im Azure-Portal. In diesen Beispielen wird das Azure-Portal verwendet.
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: cb218ad9-77d4-4149-83db-71159c00767e
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: jeconnoc
-ms.openlocfilehash: e9f4153c68f0a2a4ce83f900ff63152311163ff6
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.author: gwallace
+ms.openlocfilehash: 8ec7784fb51d0fa4de2563f76444b0b5e5f34902
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038265"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68359596"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Verwalten von Clouddiensten im Azure-Portal
 Im Bereich **Clouddienste** des Azure-Portals haben Sie folgende Möglichkeiten:
@@ -34,7 +28,7 @@ Weitere Informationen zum Skalieren Ihres Clouddiensts finden Sie unter [Konfigu
 ## <a name="update-a-cloud-service-role-or-deployment"></a>Aktualisieren einer Clouddienstrolle oder -bereitstellung
 Wenn Sie den Anwendungscode für den Clouddienst aktualisieren müssen, verwenden Sie die Option **Aktualisieren** auf dem Blatt für Clouddienste. Sie können eine oder alle Rollen aktualisieren. Zum Aktualisieren können Sie ein neues Dienstpaket oder eine Dienstkonfigurationsdatei hochladen.
 
-1. Wählen Sie im [Azure-Portal][Azure portal] den Clouddienst aus, den Sie aktualisieren möchten. Dieser Schritt öffnet das Blatt für die Clouddienstinstanz.
+1. Wählen Sie im [Azure-Portal][Azure portal]den Clouddienst aus, den Sie aktualisieren möchten. Dieser Schritt öffnet das Blatt für die Clouddienstinstanz.
 
 2. Wählen Sie auf dem Blatt **Aktualisieren** aus.
 
@@ -59,7 +53,7 @@ Wenn Sie beschließen, eine neue Version eines Clouddiensts bereitzustellen, ste
 
 Sie können Bereitstellungen über die Seite **Cloud-Dienste** oder über das Dashboard austauschen.
 
-1. Wählen Sie im [Azure-Portal][Azure portal] den Clouddienst aus, den Sie aktualisieren möchten. Dieser Schritt öffnet das Blatt für die Clouddienstinstanz.
+1. Wählen Sie im [Azure-Portal][Azure portal]den Clouddienst aus, den Sie aktualisieren möchten. Dieser Schritt öffnet das Blatt für die Clouddienstinstanz.
 
 2. Wählen Sie auf dem Blatt **Tausch** aus.
 
@@ -98,7 +92,7 @@ Um Rechenkosten zu sparen, können Sie Ihre Stagingbereitstellung löschen, nach
 
 Gehen Sie folgendermaßen vor, um eine Bereitstellung oder Ihren Cloud-Dienst zu löschen.
 
-1. Wählen Sie im [Azure-Portal][Azure portal] den Clouddienst aus, den Sie löschen möchten. Dieser Schritt öffnet das Blatt für die Clouddienstinstanz.
+1. Wählen Sie im [Azure-Portal][Azure portal]den Clouddienst aus, den Sie löschen möchten. Dieser Schritt öffnet das Blatt für die Clouddienstinstanz.
 
 2. Wählen Sie auf dem Blatt **Löschen** aus.
 

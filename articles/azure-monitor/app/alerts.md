@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8026576478b16b753ba960155c383ffec62c61ce
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: eb8e98f66d000290ce7eb07d3d73e82fbc43514a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59469793"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60693384"
 ---
 # <a name="set-alerts-in-application-insights"></a>Einrichten von Warnungen in Application Insights
 [Azure Application Insights][start] kann Sie bei Änderungen der Leistung oder von Nutzungsmetriken in Ihrer Web-App benachrichtigen. 
@@ -45,7 +45,7 @@ Es gibt mehrere Warnungstypen:
 * Legen Sie eine [Webhookadresse](../../azure-monitor/platform/alerts-webhooks.md) fest, wenn Sie eine Web-App eingerichtet haben, die auf Warnungen reagiert. Der Aufruf erfolgt bei Aktivierung der Warnung und bei Auflösung der Warnung. (Beachten Sie aber, dass Abfrageparameter derzeit nicht als Webhook-Eigenschaften übergeben werden.)
 * Sie können die Warnung deaktivieren oder aktivieren: Die zugehörigen Schaltflächen sehen Sie oben.
 
-*Ich sehe die Schaltfläche „Warnung hinzufügen“ nicht.*
+*Ich sehe keine Schaltfläche zum Hinzufügen von Benachrichtigungen.*
 
 * Verwenden Sie ein Organisationskonto? Sie können Warnungen festlegen, wenn Sie für diese Anwendungsressource über Zugriffsberechtigungen für Besitzer oder Mitwirkende verfügen. Sehen Sie sich die Registerkarte „Access Control“ an. [Erfahren Sie mehr über Access Control][roles].
 
@@ -147,7 +147,7 @@ In diesem Abschnitt erfahren Sie, wie eine abfragebasierte Ausnahmewarnung festg
 
 ## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Abbestellen von E-Mail-Benachrichtigungen zu klassischen Warnungen
 
-Dieser Abschnitt bezieht sich auf **klassische Verfügbarkeitswarnungen**, **Application Insights-Metrikwarnungen** und **klassische Warnungen zu Fehleranomalien**.
+Dieser Abschnitt bezieht sich auf **klassische Verfügbarkeitswarnungen**, **klassische Application Insights-Metrikwarnungen** und **klassische Warnungen zu Fehleranomalien**.
 
 Sie erhalten E-Mail-Benachrichtigungen für diese klassischen Warnungen, wenn Folgendes zutrifft:
 

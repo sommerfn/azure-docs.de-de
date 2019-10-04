@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit C# | Microsoft-Dokumentation'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnissen von Ihrer Instanz der benutzerdefinierten Bing-Suche in C# zu beginnen.
 services: cognitive-services
 author: aahill
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 05/07/2018
+ms.date: 07/15/2019
 ms.author: maheshb
-ms.openlocfilehash: a775c1c864a8a5513be546195da5c0891f8bb1f6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c1b118ec08e00705ad3eab9141d116fb9e6ef257
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849396"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68405196"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit C# 
 
@@ -25,10 +25,10 @@ Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnis
 
 - Eine Instanz der benutzerdefinierten Bing-Suche. Weitere Informationen finden Sie unter [Schnellstart: Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
 - Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
-- Eine beliebige [Visual Studio 2017](https://www.visualstudio.com/downloads/)-Edition
+- Eine beliebige Edition von [Visual Studio 2019 oder höher](https://www.visualstudio.com/downloads/)
 - Unter Linux/macOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden
-- Ein installiertes [NuGet-Paket für die benutzerdefinierte Suche](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0). 
-    - Klicken Sie im Projektmappen-Explorer in Visual Studio mit der rechten Maustaste auf Ihr Projekt, und wählen Sie im Menü `Manage NuGet Packages` (NuGet-Pakete verwalten) aus. Installieren Sie das `Microsoft.Azure.CognitiveServices.Search.CustomSearch`-Paket. Bei der Installation des NuGet-Pakets für die benutzerdefinierte Suche werden gleichzeitig die folgenden Assemblys installiert:
+- Das NuGet-Paket für die [benutzerdefinierte Bing-Suche](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0). 
+    - Klicken Sie im **Projektmappen-Explorer** in Visual Studio mit der rechten Maustaste auf Ihr Projekt, und wählen Sie im Menü **NuGet-Pakete verwalten** aus. Installieren Sie das `Microsoft.Azure.CognitiveServices.Search.CustomSearch`-Paket. Bei der Installation des NuGet-Pakets für die benutzerdefinierte Suche werden gleichzeitig die folgenden Assemblys installiert:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -104,7 +104,7 @@ Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnis
     ```
    ## <a name="process-and-view-the-results"></a>Lassen Sie die Ergebnisse verarbeiten und anzeigen.
 
-1. Durchlaufen Sie das Antwortobjekt, um Informationen zu den einzelnen Suchergebnissen anzuzeigen, z.B. Name, URL und das Datum des letzten Crawl-Vorgangs der Webseite.
+3. Durchlaufen Sie das Antwortobjekt, um Informationen zu den einzelnen Suchergebnissen anzuzeigen, z.B. Name, URL und das Datum des letzten Crawl-Vorgangs der Webseite.
 
     ```csharp
     for(int i = 0; i < response.webPages.value.Length; i++) {                

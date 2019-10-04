@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, stein
-manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: 8f19303dba7fcf2a9edb325464fdd3748220903e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2ddb1fe40507da5caa218f73284a1095035df951
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994921"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570369"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung mit Sharding
 
@@ -51,14 +50,14 @@ Eine Reihe von verwandten Tutorials steht zur Verfügung, die auf dieser anfäng
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-- Die neueste Azure PowerShell ist installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell][link-azure-get-started-powershell-41q].
+- Die neueste Azure PowerShell ist installiert. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure PowerShell][link-azure-get-started-powershell-41q].
 
 ## <a name="deploy-the-wingtip-tickets-app"></a>Bereitstellen der Wingtip Tickets-App
 
 ### <a name="plan-the-names"></a>Planen von Namen
 
 In den Schritten in diesem Abschnitt geben Sie einen Wert für *Benutzer* an, mit dem sichergestellt wird, dass Ressourcennamen global eindeutig sind, sowie einen Namen für die *Ressourcengruppe*, die alle Ressourcen enthält, die durch eine Bereitstellung der App erstellt werden. Für eine Person mit dem Namen *Ann Finley* wird Folgendes empfohlen:
-- *Benutzer:* **af1** *(Die Initialen mit einer Ziffer. Verwenden Sie einen anderen Wert (z. B. „af2“), wenn Sie die App ein zweites Mal bereitstellen.)*
+- *Benutzer:* **af1** *(Dessen Initialen mit einer Ziffer. Verwenden Sie einen anderen Wert (z. B. „af2“), wenn Sie die App ein zweites Mal bereitstellen.)*
 - *Ressourcengruppe:* **wingtip-mt-af1** *(„wingtip-mt“ gibt an, dass es sich um die mehrinstanzenfähige App mit Sharding handelt. Durch Anhängen des Benutzernamens „af1“ wird der Name der Ressourcengruppe mit den Namen der darin enthaltenen Ressourcen korreliert.)*
 
 Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese. 
@@ -104,7 +103,7 @@ Laden Sie den Quellcode der Anwendung und die Verwaltungsskripts herunter, währ
 6. Klicken Sie auf **OK**.
 7. Extrahieren Sie die Dateien.
 
-Skripts befinden sich im Ordner „*..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\*“.
+Skripts befinden sich im Ordner „ *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\* “.
 
 ## <a name="update-the-configuration-file-for-this-deployment"></a>Aktualisieren der Konfigurationsdatei für diese Bereitstellung
 
@@ -125,19 +124,19 @@ Jeder Veranstaltungsort erhält eine personalisierte Web-App, über die Veransta
 Auf der zentralen Webseite **Veranstaltungshub** wird eine Liste mit Links zu den Mandanten in der jeweiligen Bereitstellung aufgeführt. Anhand der folgenden Schritte können Sie die Webseite **Veranstaltungshub** und die jeweilige Web-App erkunden:
 
 1. Öffnen Sie den **Ereignis-Hub** in Ihrem Webbrowser:
-   - http://events.wingtip-mt.&lt;Benutzer&gt;.trafficmanager.net &nbsp; *(Ersetzen Sie &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.)*
+   - http://events.wingtip-mt.&lt ;Benutzer&gt;.trafficmanager.net &nbsp; *(Ersetzen Sie &lt; Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.)*
 
      ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. Klicken Sie im **Ereignis-Hub** auf **Fabrikam Jazz Club**.
 
-   ![Ereignisse](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
+   ![Events](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
 ### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 Zum Steuern der Verteilung eingehender Anforderungen nutzt die Wingtip-App den [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Die Veranstaltungsseite für die einzelnen Mandanten enthalten den Mandantennamen in der URL. Jede URL enthält auch den jeweiligen Benutzerwert. Bei jeder URL wird durch Ausführung der folgenden Schritte die Erfüllung des angezeigten Formats sichergestellt:
 
-- http://events.wingtip-mt.&lt;Benutzer&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt ;Benutzer&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Die Veranstaltungs-App analysiert den Mandantennamen aus der URL. Der Mandantenname in der vorangehenden Beispiel-URL lautet *fabrikamjazzclub*.
 2. Die App hashcodiert anschließend den Mandantennamen, um einen Schlüssel für den Zugriff auf einen Katalog mithilfe der [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) zu erstellen.
@@ -212,7 +211,7 @@ Betrachten wir nun einige der Ressourcen, die bereitgestellt wurden:
 
    ![Ressourcengruppe](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
-2. Klicken Sie auf den Server **catalog-mt&lt;Benutzer&gt;**. Der Katalogserver enthält zwei Datenbanken: *tenantcatalog* und *basetenantdb*. Die Datenbank *basetenantdb* ist eine leere Vorlagendatenbank. Kopieren Sie diese Vorlagendatenbank, um eine neue Mandantendatenbank für mehrere oder für nur einen Mandanten zu erstellen.
+2. Klicken Sie auf den Server **catalog-mt&lt;Benutzer&gt;** . Der Katalogserver enthält zwei Datenbanken: *tenantcatalog* und *basetenantdb*. Die Datenbank *basetenantdb* ist eine leere Vorlagendatenbank. Kopieren Sie diese Vorlagendatenbank, um eine neue Mandantendatenbank für mehrere oder für nur einen Mandanten zu erstellen.
 
    ![Katalogserver](./media/saas-multitenantdb-get-started-deploy/catalog-server.png)
 
@@ -226,13 +225,13 @@ Betrachten wir nun einige der Ressourcen, die bereitgestellt wurden:
 
 Wenn der Lastengenerator mehrere Minuten ausgeführt wurde, sollten genügend Telemetriedaten verfügbar sein, um einige der in das Azure-Portal integrierten Datenbanküberwachungsfunktionen zu betrachten.
 
-1. Navigieren Sie zum Server **tenants1-mt&lt;Benutzer&gt;**, und klicken Sie auf **tenants1**, um die Ressourcenverwendung für die Datenbank anzuzeigen, die vier Mandanten enthält. Jeder Mandant unterliegt einer sporadischen hohen Auslastung durch den Lastengenerator:
+1. Navigieren Sie zum Server **tenants1-mt&lt;Benutzer&gt;** , und klicken Sie auf **tenants1**, um die Ressourcenverwendung für die Datenbank anzuzeigen, die vier Mandanten enthält. Jeder Mandant unterliegt einer sporadischen hohen Auslastung durch den Lastengenerator:
 
    ![Überwachen von tenants1](./media/saas-multitenantdb-get-started-deploy/monitor-tenants1.png)
 
    Das DTU-Workloaddiagramm veranschaulicht auf verständliche Weise, wie eine mehrinstanzenfähige Datenbank eine nicht vorhersagbare Arbeitslast über viele Mandanten hinweg unterstützen kann. In diesem Fall wendet der Lastengenerator eine sporadische Last von ungefähr 30 Datenübertragungseinheiten auf jeden Mandant an. Diese Last entspricht einer 60-prozentigen Auslastung einer Datenbank mit 50 Datenübertragungseinheiten. Spitzen, die die 60 % überschreiten, sind das Ergebnis der auf mehrere Mandanten gleichzeitig angewendeten Last.
 
-2. Navigieren Sie zum Server **tenants1-mt&lt;Benutzer&gt;**, und klicken Sie auf die Datenbank **salixsalsa**. Sie können die Ressourcenverwendung für diese Datenbank, die nur einen einzigen Mandanten enthält, sehen.
+2. Navigieren Sie zum Server **tenants1-mt&lt;Benutzer&gt;** , und klicken Sie auf die Datenbank **salixsalsa**. Sie können die Ressourcenverwendung für diese Datenbank, die nur einen einzigen Mandanten enthält, sehen.
 
    ![Datenbank „salixsalsa“](./media/saas-multitenantdb-get-started-deploy/monitor-salix.png)
 
@@ -251,7 +250,7 @@ Die vom Lastengeneratorskript generierten Workloads dienen lediglich zur Veransc
 - Weitere Informationen zu Pools für elastische Datenbanken finden Sie hier:
 
   - [Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen](sql-database-elastic-pool.md)
-  - [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md)
+  - [Erweitern mit Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

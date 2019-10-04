@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Generieren von Metadaten für Azure Storage-Bilder'
+title: 'Tutorial: Generieren von Metadaten für Azure-Images'
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial wird beschrieben, wie Sie den Azure-Dienst „Maschinelles Sehen“ in eine Web-App integrieren, um Metadaten für Bilder zu generieren.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: e5124b07a5aff67d53213149565ddae4ea6dda33
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7caf4493db32201a8e83ffb3722c80c5e9b41a8f
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447998"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057740"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Tutorial: Verwenden von „Maschinelles Sehen“ zum Generieren von Bildmetadaten in Azure Storage
 
@@ -40,23 +40,20 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-a-computer-vision-resource"></a>Erstellen einer Maschinelles Sehen-Ressource
 
-Sie müssen für Ihr Azure-Konto eine Maschinelles Sehen-Ressource erstellen. Mit dieser Ressource wird der Zugriff auf den Azure-Dienst „Maschinelles Sehen“ verwaltet.
+Sie müssen für Ihr Azure-Konto eine Maschinelles Sehen-Ressource erstellen. Mit dieser Ressource wird der Zugriff auf den Azure-Dienst „Maschinelles Sehen“ verwaltet. 
 
-1. Melden Sie sich am [Azure-Portal](https://ms.portal.azure.com) an, und klicken Sie auf **Ressource erstellen** und dann auf **KI + Machine Learning** und **Maschinelles Sehen**.
+1. Befolgen Sie die Anweisungen in [Erstellen einer Azure Cognitive Services-Ressource](../../cognitive-services-apis-create-account.md), um eine Ressource für maschinelles Sehen zu erstellen.
 
-    ![Erstellen eines neuen Abonnements für die Maschinelles Sehen-API](../Images/new-vision-api.png)
+1. Kehren Sie dann zum Menü für Ihre Ressourcengruppe zurück, und klicken Sie auf das Abonnement der Maschinelles Sehen-API, das Sie gerade erstellt haben. Kopieren Sie die URL unter **Endpunkt** an einen Ort, an dem Sie gleich schnell darauf zugreifen können. Klicken Sie anschließend auf **Zugriffsschlüssel anzeigen**.
 
-1. Geben Sie im Dialogfenster im Feld **Name** den Namen „vision-api-key“ ein, und wählen Sie **F0** als **Tarif** aus. Wählen Sie den gleichen **Standort** wie beim Einrichten Ihres Azure Storage-Kontos aus. Wählen Sie unter **Ressourcengruppe** die Option **Vorhandene verwenden** und dann ebenfalls die gleiche Ressourcengruppe aus. Aktivieren Sie das Kontrollkästchen **Ich bestätige**, und klicken Sie dann auf **Erstellen**.
+    ![Azure-Portalseite mit Hervorhebung der Endpunkt-URL und des Links für Zugriffsschlüssel](../Images/copy-vision-endpoint.png)
+    
+    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-    ![Abonnieren der Maschinelles Sehen-API](../Images/create-vision-api.png)
-
-1. Kehren Sie zum Menü für Ihre Ressourcengruppe zurück, und klicken Sie auf das Abonnement der Maschinelles Sehen-API, das Sie gerade erstellt haben. Kopieren Sie die URL unter **Endpunkt** an einen Ort, an dem Sie gleich schnell darauf zugreifen können. Klicken Sie anschließend auf **Zugriffsschlüssel anzeigen**.
-
-    ![Anzeigen der Zugriffsschlüssel](../Images/copy-vision-endpoint.png)
 
 1. Kopieren Sie im nächsten Fenster den Wert von **SCHLÜSSEL 1** in die Zwischenablage.
 
-    ![Kopieren des Zugriffsschlüssels](../Images/copy-vision-key.png)
+    ![Dialogfeld „Schlüssel verwalten“ mit Hervorhebung der Schaltfläche „Kopieren“](../Images/copy-vision-key.png)
 
 ## <a name="add-computer-vision-credentials"></a>Hinzufügen von Anmeldeinformationen für Maschinelles Sehen
 
@@ -136,7 +133,7 @@ Speichern Sie Ihre Änderungen in Visual Studio, und drücken Sie **STRG+F5**, u
 
 Verwenden Sie zum Anzeigen aller angefügten Metadaten den Azure Storage-Explorer, um den Speichercontainer einzublenden, den Sie für Bilder nutzen. Klicken Sie mit der rechten Maustaste auf die Blobs im Container, und wählen Sie **Eigenschaften**. Im Dialogfeld wird eine Liste mit Schlüssel-Wert-Paaren angezeigt. Die per Computer generierte Bildbeschreibung wird unter dem Element „Caption“ (Beschriftung) gespeichert, und die Schlüsselwörter für die Suche unter „Tag0“, „Tag1“ usw. Klicken Sie auf **Abbrechen**, wenn Sie fertig sind, um das Dialogfeld zu schließen.
 
-![Blobmetadaten](../Images/blob-metadata.png)
+![Dialogfenster mit Image-Eigenschaften und aufgeführten Metadatentags](../Images/blob-metadata.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

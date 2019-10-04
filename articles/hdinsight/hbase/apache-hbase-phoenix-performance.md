@@ -1,7 +1,6 @@
 ---
 title: Leistung von Phoenix in Azure HDInsight
-description: Hier finden Sie bewährte Methoden zur Optimierung der Leistung von Phoenix.
-services: hdinsight
+description: Bewährte Methoden zum Optimieren der Apache Phoenix-Leistung für Azure HDInsight-Cluster
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: da227151dd056dd5e852ae8790b6f20ac3c0c790
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: b2a40802070510939332c3f5e876293445cf2df1
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653304"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810432"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Bewährte Methoden für Leistung – Apache Phoenix
 

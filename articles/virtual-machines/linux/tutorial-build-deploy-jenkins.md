@@ -6,19 +6,18 @@ manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: jenkins
 ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 42e1ede7c762fef1f33436ea4c757b0c0531a8f2
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901422"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828426"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Jenkins und Azure DevOps Services
 
@@ -55,7 +54,7 @@ für eine [Bereitstellungsgruppe](https://docs.microsoft.com/azure/devops/pipeli
 ## <a name="get-the-sample-app"></a>Abrufen der Beispiel-App
 
 Für die Bereitstellung benötigen Sie eine in einem Git-Repository gespeicherte App.
-Für dieses Tutorial empfiehlt sich [diese über GitHub verfügbare Beispiel-App](https://github.com/azooinmyluggage/fabrikam-node). Dieses Tutorial enthält ein Beispielskript, das verwendet wird, um Node.js und eine Anwendung zu installieren. Wenn Sie Ihr eigenes Repository verwenden möchten, sollten Sie ein ähnliches Beispiel konfigurieren.
+Für dieses Tutorial empfiehlt sich [diese über GitHub verfügbare Beispiel-App](https://github.com/azure-devops/fabrikam-node). Dieses Tutorial enthält ein Beispielskript, das verwendet wird, um Node.js und eine Anwendung zu installieren. Wenn Sie Ihr eigenes Repository verwenden möchten, sollten Sie ein ähnliches Beispiel konfigurieren.
 
 Erstellen Sie einen Fork dieser App, und notieren Sie den Speicherort (URL) zur Verwendung in nachfolgenden Schritten in diesem Tutorial. Weitere Informationen finden Sie unter [Fork a repo](https://help.github.com/articles/fork-a-repo/) (Forken eines Repositorys).    
 
@@ -152,7 +151,7 @@ So erstellen Sie die Releasepipeline in Azure Pipelines:
 3. Klicken Sie im Abschnitt **Artefakte** auf **+ Artefakt hinzufügen**, und wählen Sie unter **Quelltyp** die Option **Jenkins** aus. Wählen Sie Ihre Jenkins-Dienstendpunktverbindung aus. Wählen Sie dann den Jenkins-Quellauftrag aus, und klicken Sie auf **Hinzufügen**.
 4. Klicken Sie auf die Auslassungspunkte neben **Umgebung 1**. Klicken Sie auf **Bereitstellungsgruppenphase hinzufügen**.
 5. Wählen Sie Ihre Bereitstellungsgruppe aus.
-5. Klicken Sie auf **+**, um **Bereitstellungsgruppenphase** eine Aufgabe hinzuzufügen.
+5. Klicken Sie auf **+** , um **Bereitstellungsgruppenphase** eine Aufgabe hinzuzufügen.
 6. Wählen Sie die Aufgabe **Shellskript** aus, und klicken Sie anschließend auf **Hinzufügen**. Die Aufgabe **Shellskript** gibt die Konfiguration für ein Skript an, das auf jedem Server ausgeführt wird, um Node.js zu installieren und die App zu starten.
 8. Geben Sie für **Skriptpfad** Folgendes ein: **$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh**.
 9. Klicken Sie auf **Erweitert**, und aktivieren Sie dann **Arbeitsverzeichnis angeben**.

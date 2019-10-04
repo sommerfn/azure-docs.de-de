@@ -10,12 +10,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: 1a72225ce29b7a94f2fc402488f6b998cde0a0fb
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2ccac3bf9a882dc021c6c969946ad9d439a7cf5d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494544"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67069684"
 ---
 # <a name="introduction-to-azure-advisor"></a>Einführung in Azure Advisor
 
@@ -61,7 +61,9 @@ Sie können als *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements auf die
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Für welche Ressourcen bietet Advisor Empfehlungen?
 
-Der Advisor bietet Empfehlungen für virtuelle Computer, Verfügbarkeitsgruppen, Anwendungsgateways, App Services, SQL-Server und Azure Cache für Redis.
+Advisor bietet Empfehlungen für Application Gateway, App Services, Verfügbarkeitsgruppen, Azure Cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, öffentlich Azure-IP-Adressen, SQL Data Warehouse, SQL-Server, Speicherkonten, Traffic Manager-Profile und virtuelle Computer.
+
+Außerdem enthält Azure Advisor auch Ihre Empfehlungen aus dem [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations), zu denen auch Empfehlungen für weitere Ressourcentypen gehören können.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Kann ich eine Empfehlung zurückstellen oder verwerfen?
 

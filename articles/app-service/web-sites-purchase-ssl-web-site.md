@@ -10,24 +10,24 @@ ms.assetid: cdb9719a-c8eb-47e5-817f-e15eaea1f5f8
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
-ms.author: apurvajo;cephalin
+ms.author: cephalin
+ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 7c899bae6cf36e68664a3ce60939f72a4b5bd1ab
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216576"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001203"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Azure App Service
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre [App Service-App](https://docs.microsoft.com/azure/app-service/) oder [Funktions-App](https://docs.microsoft.com/azure/azure-functions/) schützen, indem Sie ein App Service-Zertifikat in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) erstellen (kaufen) und es dann an eine App Service-App binden.
+In diesem Tutorial erfahren Sie, wie Sie Ihre [App Service-App](https://docs.microsoft.com/azure/app-service/) oder [Funktions-App](https://docs.microsoft.com/azure/azure-functions/) schützen, indem Sie ein App Service-Zertifikat in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) erstellen (kaufen) und es dann an eine App Service-App binden.
 
 > [!TIP]
-> App Service-Zertifikate können für alle Dienste – ob von Azure oder nicht – verwendet werden und sind nicht auf App Services beschränkt. Hierzu müssen Sie eine lokale PFX-Kopie eines App Service-Zertifikats erstellen, sodass Sie es beliebig verwenden können. Weitere Informationen finden Sie unter [Create a local PFX copy of App Service Certificate](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/) (Erstellen einer lokalen PFX-Kopie eines App Service-Zertifikats).
+> App Service-Zertifikate können für alle Dienste – ob von Azure oder nicht – verwendet werden und sind nicht auf App Services beschränkt. Hierzu müssen Sie eine lokale PFX-Kopie eines App Service-Zertifikats erstellen, sodass Sie es beliebig verwenden können. Weitere Informationen finden Sie unter [Create a local PFX copy of App Service Certificate](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/) (Erstellen einer lokalen PFX-Kopie eines App Service-Zertifikats).
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -50,9 +50,9 @@ Die folgende Tabelle unterstützt Sie bei der Konfiguration des Zertifikats. Kli
 | Einstellung | BESCHREIBUNG |
 |-|-|
 | NAME | Ein Anzeigename für Ihr App Service-Zertifikat. |
-| Reiner Domänenhostname | Wenn Sie die Stammdomäne angeben, erhalten Sie ein Zertifikat, das *sowohl* die Stammdomäne als auch die `www`-Unterdomäne sichert. Um eine beliebige Unterdomäne zu sichern, geben Sie den vollqualifizierten Domänennamen der Unterdomäne hier an (z.B. `mysubdomain.contoso.com`). |
-| Abonnement | Das Rechenzentrum, in dem die Web-App gehostet wird. |
-| Ressourcengruppe | Die Ressourcengruppe mit dem Zertifikat. Sie können eine neue Ressourcengruppe verwenden oder z.B. die gleiche Ressourcengruppe wie die Ihrer App Service-App auswählen. |
+| Reiner Domänenhostname | Geben Sie hier die Stammdomäne an. Das ausgestellte Zertifikat sichert *sowohl* die Stamm Domäne als auch die Unterdomäne `www`. Im ausgestellten Zertifikat enthält das Feld „Allgemeiner Name“ die Stammdomäne, und das Feld „Alternativer Antragstellername“ enthält die Domäne `www`. Um eine beliebige Unterdomäne zu sichern, geben Sie den vollqualifizierten Domänennamen der Unterdomäne hier an (z.B. `mysubdomain.contoso.com`).|
+| Subscription | Das Rechenzentrum, in dem die Web-App gehostet wird. |
+| Resource group | Die Ressourcengruppe mit dem Zertifikat. Sie können eine neue Ressourcengruppe verwenden oder z.B. die gleiche Ressourcengruppe wie die Ihrer App Service-App auswählen. |
 | Zertifikat-SKU | Bestimmt den Typ des zu erstellenden Zertifikats, ganz gleich, ob es sich um ein Standardzertifikat oder ein [Platzhalterzertifikat](https://wikipedia.org/wiki/Wildcard_certificate) handelt. |
 | Rechtliche Bedingungen | Klicken Sie auf diese Option, um zu bestätigen, dass Sie mit den rechtlichen Bedingungen einverstanden sind. Die Zertifikate werden von GoDaddy abgerufen. |
 
@@ -64,15 +64,15 @@ Wählen Sie das Zertifikat auf der Seite [App Service-Zertifikate](https://porta
 
 ![Bild von Bereitschaft zum Speichern in KV einfügen](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
-[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) ist ein Azure-Dienst zum Schutz von kryptografischen Schlüsseln und Geheimnissen, die von Cloudanwendungen und -diensten verwendet werden. Dies ist der ideale Speicher für App Service-Zertifikate.
+[Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) ist ein Azure-Dienst zum Schutz von kryptografischen Schlüsseln und Geheimnissen, die von Cloudanwendungen und -diensten verwendet werden. Dies ist der ideale Speicher für App Service-Zertifikate.
 
 Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um einen neuen Tresor zu erstellen oder einen vorhandenen Tresor auszuwählen. Wenn Sie einen neuen Tresor erstellen möchten, konfigurieren Sie mithilfe der folgende Tabelle den Tresor, und klicken Sie auf „Erstellen“. So wird ein neuer Schlüsseltresors im gleichen Abonnement und in der gleichen Ressourcengruppe erstellt.
 
 | Einstellung | BESCHREIBUNG |
 |-|-|
 | NAME | Ein eindeutiger Name aus alphanumerischen Zeichen und Bindestrichen. |
-| Ressourcengruppe | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |
-| Standort | Wählen Sie denselben Speicherort wie bei Ihrer App Service-App aus. |
+| Resource group | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |
+| Location | Wählen Sie denselben Speicherort wie bei Ihrer App Service-App aus. |
 | Tarif | Weitere Informationen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Zugriffsrichtlinien| Definiert die Anwendungen und den zulässigen Zugriff auf die Tresorressourcen. Sie können dies später konfigurieren, indem Sie die Schritte unter [Erteilen von Zugriff für mehrere Anwendungen auf einen Schlüsseltresor](../key-vault/key-vault-group-permissions-for-apps.md) durchführen. |
 | Zugriff über virtuelles Netzwerk | Beschränkt den Tresorzugriff auf bestimmte virtuelle Azure-Netzwerke. Sie können dies später konfigurieren, indem Sie die Schritte unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](../key-vault/key-vault-network-security.md) durchführen. |
@@ -97,9 +97,9 @@ Klicken Sie auf **App Service-Überprüfung**. Da Sie die Domäne bereits Ihrer 
 
 ## <a name="bind-certificate-to-app"></a>Binden eines Zertifikats an eine App
 
-Klicken Sie im linken Menü des **[Azure-Portals](https://portal.azure.com/)** auf **App Services** > **\<Ihre_App>**.
+Klicken Sie im linken Menü des **[Azure-Portals](https://portal.azure.com/)** auf **App Services** >  **\<Ihre_App>** .
 
-Wählen Sie im linken Navigationsbereich Ihrer App **SSL-Einstellungen** > **Private Zertifikate (.pfx)** > **App Service-Zertifikat importieren**.
+Wählen Sie im linken Navigationsbereich Ihrer App **SSL-Einstellungen** > **Private Zertifikate (.pfx)**  > **App Service-Zertifikat importieren**.
 
 ![Bild von Zertifikatimport einfügen](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
@@ -138,7 +138,7 @@ Wenn der Vorgang zur erneuten Schlüsselerstellung abgeschlossen ist, klicken Si
 
 ## <a name="renew-certificate"></a>Verlängern des Zertifikats
 
-Um zu einem beliebigen Zeitpunkt die automatische Verlängerung Ihres Zertifikats zu aktivieren, wählen Sie das Zertifikat auf der Seite [App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und klicken Sie dann im linken Navigationsbereich auf **Einstellungen für die automatische Verlängerung**.
+Um zu einem beliebigen Zeitpunkt die automatische Verlängerung Ihres Zertifikats zu aktivieren, wählen Sie das Zertifikat auf der Seite [App Service Certificate](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) aus, und klicken Sie dann im linken Navigationsbereich auf **Einstellungen für die automatische Verlängerung**. Standardmäßig haben App Service-Zertifikate eine Gültigkeitsdauer von 1 Jahr.
 
 Klicken Sie nacheinander auf **Ein** und **Speichern**. Zertifikate können vor Ablauf automatisch um 60 Tage verlängert werden, wenn Sie die automatische Verlängerung aktiviert haben.
 
@@ -166,4 +166,4 @@ Wenn der Verlängerungsvorgang abgeschlossen ist, klicken Sie auf **Synchronisie
 * [Erzwingen von HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [Erzwingen von TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](app-service-web-ssl-cert-load.md)
-* [Häufig gestellte Fragen: App Service-Zertifikate](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
+* [Häufig gestellte Fragen: App Service-Zertifikate](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

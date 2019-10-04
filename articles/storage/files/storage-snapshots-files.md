@@ -1,19 +1,18 @@
 ---
 title: Übersicht über Freigabemomentaufnahmen für Azure Files | Microsoft-Dokumentation
 description: Eine Freigabemomentaufnahme ist eine schreibgeschützte Version einer Azure Files-Freigabe, die zu einem bestimmten Zeitpunkt erstellt wird, um die Freigabe zu sichern.
-services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/17/2018
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8d6bca12ae1df0cab7be3e1c54467d32063bacaf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: f3cbf740016a4c162c63343be4cb9cd577f85935
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195291"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699348"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Übersicht über Freigabemomentaufnahmen für Azure Files 
 Azure Files bietet die Möglichkeit, Freigabemomentaufnahmen von Dateifreigaben zu erstellen. Freigabemomentaufnahmen erfassen den Freigabestatus zum jeweiligen Zeitpunkt. In diesem Artikel erfahren Sie, welche Möglichkeiten Freigabemomentaufnahmen bieten und wie Sie in Ihrem speziellen Fall von ihnen profitieren können.
@@ -40,7 +39,7 @@ Die Freigabemomentaufnahme-Funktion wird auf der Ebene der Dateifreigabe bereitg
 
 Eine Freigabemomentaufnahme einer Dateifreigabe ist mit ihrer Basisdateifreigabe identisch. Der einzige Unterschied besteht darin, dass an den Freigabe-URI ein **DateTime**-Wert angehängt wird, der den Erstellungszeitpunkt der Freigabemomentaufnahme angibt. Wenn ein Dateifreigabe-URI http://storagesample.core.file.windows.net/myshare ist, lautet der Freigabemomentaufnahmen-URI z.B. in etwa:
 ```
-http://storagesample.file.core.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
+http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
 
 Freigabemomentaufnahmen werden beibehalten, bis sie explizit gelöscht werden. Eine Freigabemomentaufnahme kann die zugehörige Basisdateifreigabe nicht überdauern. Sie können alle einer Basisdateifreigabe zugeordneten Momentaufnahmen auflisten, um die aktuell vorhandenen Momentaufnahmen nachzuverfolgen. 

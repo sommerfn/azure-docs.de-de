@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 9112d50384aba288038343ff9a14ed55542fb722
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121348"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617307"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind
 
@@ -87,6 +87,9 @@ Wie bereits weiter oben im Abschnitt [Strategie für den Umgang mit personenbezo
 
 Sowohl für das Anzeigen als auch für das Exportieren von Datenanforderungen sollte die [Log Analytics-Abfrage-API](https://dev.loganalytics.io/) oder die [Application Insights-Abfrage-API](https://dev.applicationinsights.io/quickstart) verwendet werden. Die Logik, mit der die Daten in eine geeignete Form konvertiert werden, um sie für Ihre Benutzer bereitzustellen, muss von Ihnen selbst implementiert werden. [Azure Functions](https://azure.microsoft.com/services/functions/) eignet sich hervorragend zum Hosten einer solchen Logik.
 
+> [!IMPORTANT]
+>  Obwohl die Mehrzahl der Bereinigungsvorgänge wesentlich schneller als die SLA ausgeführt werden kann, ist – aufgrund der starken Auswirkung auf die verwendete Datenplattform – **die formelle SLA für die Ausführung von Bereinigungsvorgängen auf 30 Tage festgelegt**. Dies ist ein automatisierter Prozess; es gibt keine Möglichkeit anzufordern, dass ein Vorgang schneller verarbeitet werden soll.
+
 ### <a name="delete"></a>Löschen
 
 > [!WARNING]
@@ -96,15 +99,20 @@ Im Rahmen der Vorgehensweisen für den Datenschutz haben wir einen API-Pfad für
 
 Das Bereinigen ist ein Vorgang, der hohe Berechtigungen erfordert, und weder eine App noch ein Benutzer in Azure (einschließlich des Ressourcenbesitzers) ist zur Ausführung berechtigt, sofern nicht in Azure Resource Manager explizit eine entsprechende Rolle zugewiesen wurde. Dies ist die Rolle _Datenpurger_, die aufgrund des möglichen Datenverlusts sehr zurückhaltend vergeben werden sollte. 
 
+> [!IMPORTANT]
+> Zur Verwaltung von Systemressourcen werden Bereinigungsanforderungen auf 50 Anforderungen pro Stunde gedrosselt. Sie sollten die Ausführung von Bereinigungsanforderungen in Batches einbinden, indem Sie einen einzelnen Befehl senden, dessen Prädikat alle Benutzeridentitäten enthält, die bereinigt werden müssen. Verwenden Sie den [in-Operator](/azure/kusto/query/inoperator), um mehrere Identitäten anzugeben. Sie sollten die Abfrage ausführen, bevor Sie die Bereinigungsanforderung ausführen, um zu überprüfen, ob die Ergebnisse erwartet werden. 
+
+
+
 Nachdem die Azure Resource Manager-Rolle zugewiesen wurde, sind zwei neue API-Pfade verfügbar: 
 
 #### <a name="log-data"></a>Protokolldaten
 
 * [POST purge](https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge): Verwendet ein Objekt, das Parameter der zu löschenden Daten angibt, und gibt eine Verweis-GUID zurück. 
-* GET purge status: Der Aufruf von „POST purge“ gibt einen Header vom Typ „x-ms-status-location“ zurück, der eine URL enthält, die Sie zum Ermitteln des Status Ihrer Bereinigungs-API aufrufen können. Beispiel: 
+* GET purge status: Der Aufruf von „POST purge“ gibt einen Header vom Typ „x-ms-status-location“ zurück, der eine URL enthält, die Sie zum Ermitteln des Status Ihrer Bereinigungs-API aufrufen können. Beispiel:
 
     ```
-    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperatonalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
+    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperationalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
     ```
 
 > [!IMPORTANT]
@@ -113,7 +121,7 @@ Nachdem die Azure Resource Manager-Rolle zugewiesen wurde, sind zwei neue API-Pf
 #### <a name="application-data"></a>Anwendungsdaten
 
 * [POST purge](https://docs.microsoft.com/rest/api/application-insights/components/purge): Verwendet ein Objekt, das Parameter der zu löschenden Daten angibt, und gibt eine Verweis-GUID zurück.
-* GET purge status: Der Aufruf von „POST purge“ gibt einen Header vom Typ „x-ms-status-location“ zurück, der eine URL enthält, die Sie zum Ermitteln des Status Ihrer Bereinigungs-API aufrufen können. Beispiel: 
+* GET purge status: Der Aufruf von „POST purge“ gibt einen Header vom Typ „x-ms-status-location“ zurück, der eine URL enthält, die Sie zum Ermitteln des Status Ihrer Bereinigungs-API aufrufen können. Beispiel:
 
    ```
    x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01

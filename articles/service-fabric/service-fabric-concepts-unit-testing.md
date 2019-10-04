@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: atsenthi
-ms.openlocfilehash: ca473b9947a9b0df610a9c3dac66914b06cc9217
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 012d75ff6ad4acdc6612a197f274e2dfdb98370a
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662566"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68249265"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Ausführen von Unittests für zustandsbehaftete Dienste in Service Fabric
 
@@ -36,7 +36,7 @@ Bei Unittests für zustandsbehaftete Dienste können einige häufige Fehler aufg
 
 ## <a name="common-practices"></a>Gängige Verfahren
 
-Im folgenden Abschnitt werden die gängigsten Verfahren für Unittests für zustandsbehaftete Dienste empfohlen. Zudem wird erläutert, wie eine Simulationsebene aussehen soll, damit sie eng an die Service Fabric-Orchestrierung und die Zustandsverwaltung angelehnt ist. Es stehen verschiedene Bibliotheken zur Verfügung, die diese Funktionalität bieten. Eine dieser Bibliotheken ist [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) ab Version 3.3.0. Diese Bibliothek umfasst die empfohlenen Simulationsfunktionen und entspricht den nachfolgend beschriebenen Verfahren.
+Im folgenden Abschnitt werden die gängigsten Verfahren für Unittests für zustandsbehaftete Dienste empfohlen. Zudem wird erläutert, wie eine Simulationsebene aussehen soll, damit sie eng an die Service Fabric-Orchestrierung und die Zustandsverwaltung angelehnt ist. Eine dieser Bibliotheken ist [ServiceFabric.Mocks](https://www.nuget.org/packages/ServiceFabric.Mocks/) ab Version 3.3.0. Diese Bibliothek umfasst die empfohlenen Simulationsfunktionen und entspricht den nachfolgend beschriebenen Verfahren.
 
 ### <a name="arrangement"></a>Vorbereitung
 
@@ -51,8 +51,8 @@ Darüber hinaus wird so ermöglicht, dass bei den Tests die Rollen jeder dieser 
 Der Zustands-Manager sollte als Remoteressource behandelt und daher simuliert werden. Bei der Simulation des Zustands-Managers muss zugrunde liegender In-Memory-Speicher vorhanden sein, damit nachverfolgt werden kann, welche Daten im Zustands-Manager gespeichert werden, und damit diese Daten gelesen und überprüft werden können. Eine einfache Möglichkeit hierfür besteht darin, Pseudoinstanzen der einzelnen Typen von zuverlässigen Sammlungen zu erstellen. Verwenden Sie in diesen Simulationen einen Datentyp, der eng an die Vorgänge angelehnt ist, die für die jeweilige Sammlung durchgeführt werden. Im Folgenden sind einige empfohlene Datentypen für die einzelnen zuverlässigen Sammlungen aufgeführt.
 
 - IReliableDictionary<TKey, TValue> -> System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
-- IReliableQueue<T> -> System.Collections.Generic.Queue<T>
-- IReliableConcurrentQueue<T> -> System.Collections.Concurrent.ConcurrentQueue<T>
+- IReliableQueue\<T> -> System.Collections.Generic.Queue\<T>
+- IReliableConcurrentQueue\<T> -> System.Collections.Concurrent.ConcurrentQueue\<T>
 
 #### <a name="many-state-manager-instances-single-storage"></a>Mehrere Zustands-Manager-Instanzen, ein Speicher
 Wie zuvor erwähnt sollten der Zustands-Manager und die zuverlässigen Sammlungen als Remoteressourcen behandelt werden. Daher sollten und werden diese Ressourcen in den Komponententests simuliert. Wenn jedoch mehrere Instanzen eines zustandsbehafteten Diensts ausgeführt werden, gestaltet es sich schwierig, jeden simulierten Zustands-Manager für die unterschiedlichen zustandsbehafteten Dienstinstanzen zu synchronisieren. Wenn der zustandsbehaftete Dienst im Cluster ausgeführt wird, wird in Service Fabric sichergestellt, dass der Zustands-Manager der einzelnen sekundären Replikate mit dem des primären Replikats konsistent ist. Daher sollten sich die Tests gleich verhalten, sodass sie Rollenänderungen simulieren können.

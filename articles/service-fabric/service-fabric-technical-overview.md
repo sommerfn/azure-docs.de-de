@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/17/2018
 ms.author: masnider
-ms.openlocfilehash: 085d5e560eec090ab76c263f8f93140786f2d734
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 82672114722db843fcb5d0bdff28cf14cddb1aef
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668438"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68811921"
 ---
 # <a name="service-fabric-terminology-overview"></a>Übersicht über Service Fabric-Terminologie
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht.  Sie können [Service Fabric-Cluster überall hosten](service-fabric-deploy-anywhere.md): In Azure, in einem lokalen Datencenter oder bei einem Cloudanbieter.  Service Fabric ist der Orchestrator für [Azure Service Fabric Mesh](/azure/service-fabric-mesh). Sie können ein beliebiges Framework verwenden, um Ihre Dienste zu programmieren, und aus verschiedenen Umgebungen auszuwählen, in denen die Anwendung ausgeführt werden soll. In diesem Artikel wird die von Service Fabric verwendete Terminologie erläutert, damit Sie die in der Dokumentation verwendeten Begriffe verstehen.
@@ -142,7 +142,7 @@ Sie können auch Ihre vorhandenen Anwendungen unter Service Fabric ausführen:
 
 **Container**:  Service Fabric unterstützt die Bereitstellung von Docker-Containern in Linux- und Windows Server-Containern unter Windows Server 2016 zusammen mit der Unterstützung für den Hyper-V-Isolationsmodus. Im Service Fabric- [Anwendungsmodell](service-fabric-application-model.md)stellt ein Container einen Anwendungshost dar, in dem mehrere Dienstreplikate angeordnet werden. Service Fabric kann alle Container ausführen, und das Szenario ähnelt dem Gastanwendungsszenario, bei dem eine vorhandene Anwendung in einem Container verpackt wird. Darüber hinaus können Sie [Service Fabric-Dienste innerhalb von Containern](service-fabric-services-inside-containers.md) ausführen.
 
-**Ausführbare Gastanwendungsdateien**: Sie können jede Art von Code, z.B. Node.js, Java oder C++, in Azure Service Fabric als Dienst ausführen. In Service Fabric wird auf diese Diensttypen als ausführbare Gastanwendungsdateien verwiesen, die als zustandslose Dienste behandelt werden. Vorteile der Ausführung einer ausführbaren Gastanwendungsdatei in einem Service Fabric-Cluster sind beispielsweise Hochverfügbarkeit, Systemüberwachung, Anwendungslebenszyklusverwaltung, hohe Dichte und Ermittelbarkeit.
+**Ausführbare Gastanwendungsdateien**: Sie können jede Art von Code, z.B. Node.js, Python, Java oder C++, in Azure Service Fabric als Dienst ausführen. In Service Fabric wird auf diese Diensttypen als ausführbare Gastanwendungsdateien verwiesen, die als zustandslose Dienste behandelt werden. Vorteile der Ausführung einer ausführbaren Gastanwendungsdatei in einem Service Fabric-Cluster sind beispielsweise Hochverfügbarkeit, Systemüberwachung, Anwendungslebenszyklusverwaltung, hohe Dichte und Ermittelbarkeit.
 
 Weitere Informationen finden Sie im Artikel [Auswählen eines Frameworks für den Dienst](service-fabric-choose-framework.md) .
 

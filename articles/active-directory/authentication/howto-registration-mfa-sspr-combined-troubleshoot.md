@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba77772352d3f6f6494abeddc7faf9f12e5f80c2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262566"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60414619"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Problembehandlung für die kombinierte Registrierung von Sicherheitsinformationen (Preview)
 
@@ -35,7 +35,7 @@ Die für kombinierte Registrierungen protokollierten Ereignisse befinden sich in
 
 In der folgenden Tabelle werden alle Überwachungsereignisse aufgeführt, die mit der kombinierten Registrierung generiert werden:
 
-| Aktivität | Status | Grund | BESCHREIBUNG |
+| Aktivität | Status | `Reason` | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | User registered all required security info (Der Benutzer hat alle erforderlichen Sicherheitsinformationen registriert) | Erfolgreich | Der Benutzer hat alle erforderlichen Sicherheitsinformationen registriert. | Dieses Ereignis tritt auf, wenn ein Benutzer die Registrierung erfolgreich abgeschlossen hat.|
 | User registered all required security info (Der Benutzer hat alle erforderlichen Sicherheitsinformationen registriert) | Fehler | Der Benutzer hat die Registrierung der Sicherheitsinformationen abgebrochen. | Dieses Ereignis tritt auf, wenn ein Benutzer die Registrierung über den Interruptmodus abbricht.|
@@ -154,7 +154,7 @@ Führen Sie in einem PowerShell-Fenster den folgenden Befehl aus, und geben Sie 
 
 Um die Oberfläche der Vorschauversion für Ihre Benutzer zu deaktivieren, führen Sie die folgenden Schritte aus:
 
-1. Melden Sie sich als globaler Administrator oder Benutzeradministrator beim Azure-Portal an.
+1. Melden Sie sich als Benutzeradministrator beim Azure-Portal an.
 2. Navigieren Sie zu **Azure Active Directory** > **Benutzereinstellungen** > **Einstellungen für Zugriffspanel-Vorschaufeatures verwalten**.
 3. Legen Sie für **Benutzer können Vorschaufeatures zum Registrieren und Verwalten von Sicherheitsinformationen verwenden** die Option **Keine** fest, und wählen Sie dann **Speichern** aus.
 

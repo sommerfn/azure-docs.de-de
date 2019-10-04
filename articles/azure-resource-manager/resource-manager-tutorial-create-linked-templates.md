@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 25dda12ca33165cfc64ffd949a2068acb5150b84
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c5399f46106d94d593a15530ee0c223a3f5f3eaf
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097148"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802049"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen
 
@@ -89,7 +89,7 @@ Die verknüpfte Vorlage erstellt ein Speicherkonto. Die verknüpfte Vorlage kann
 2. Nehmen Sie die folgenden Änderungen vor:
 
     * Entfernen Sie alle Parameter außer **location**.
-    * Fügen Sie einen Parameter namens **storageAccountName** hinzu. 
+    * Fügen Sie einen Parameter namens **storageAccountName** hinzu.
         ```json
         "storageAccountName":{
           "type": "string",
@@ -99,7 +99,7 @@ Die verknüpfte Vorlage erstellt ein Speicherkonto. Die verknüpfte Vorlage kann
         },
         ```
         Der Name des Speicherkontos und der Speicherort werden aus der Hauptvorlage als Parameter an die verknüpfte Vorlage übergeben.
-        
+
     * Entfernen Sie das **variables**-Element und alle Variablendefinitionen.
     * Entfernen Sie alle Ressourcen mit Ausnahme des Speicherkontos. Sie entfernen insgesamt vier Ressourcen.
     * Aktualisieren Sie den Wert des **name**-Elements der Speicherkontoressource in Folgendes:
@@ -109,7 +109,7 @@ Die verknüpfte Vorlage erstellt ein Speicherkonto. Die verknüpfte Vorlage kann
         ```
 
     * Aktualisieren Sie das **outputs**-Element, sodass es so aussieht:
-    
+
         ```json
         "outputs": {
           "storageUri": {
@@ -227,7 +227,7 @@ echo "Linked template URI with SAS token: $templateURI"
 4. Notieren Sie sich die beiden Werte (Name der Ressourcengruppe und URI der verknüpften Vorlage) am Ende des Shell-Bereichs. Diese werden im weiteren Verlauf des Tutorials benötigt.
 5. Wählen Sie **Fokusmodus beenden** aus, um den Shell-Bereich zu schließen.
 
-In der Praxis generieren Sie bei der Bereitstellung der Hauptvorlage ein SAS-Token und legen einen kürzeren Ablaufzeitraum fest, um es sicherer zu machen. Weitere Informationen finden Sie unter [Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token und Azure PowerShell](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment).
+In der Praxis generieren Sie bei der Bereitstellung der Hauptvorlage ein SAS-Token und legen einen kürzeren Ablaufzeitraum fest, um es sicherer zu machen. Weitere Informationen finden Sie unter [Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token und Azure PowerShell](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
 ## <a name="call-the-linked-template"></a>Aufrufen der verknüpften Vorlage
 
@@ -272,7 +272,7 @@ Die Hauptvorlage hat den Namen „azuredeploy.json“.
     Berücksichtigen Sie dabei folgende Details:
 
     * Eine `Microsoft.Resources/deployments`-Ressource in der Hauptvorlage wird zum Verknüpfen mit einer anderen Vorlage verwendet.
-    * Die `deployments`-Ressource hat den Namen `linkedTemplate`. Dieser Name wird zum [Konfigurieren der Abhängigkeit](#configure-dependency) verwendet.  
+    * Die `deployments`-Ressource hat den Namen `linkedTemplate`. Dieser Name wird zum [Konfigurieren der Abhängigkeit](#configure-dependency) verwendet.
     * Beim Aufrufen verknüpfter Vorlagen können Sie nur den Bereitstellungsmodus [Inkrementell](./deployment-modes.md) verwenden.
     * `templateLink/uri` enthält den URI der verknüpften Vorlage. Ersetzen Sie den Wert durch den URI, den Sie beim Hochladen der verknüpften Vorlage (also der Vorlage mit SAS-Token) erhalten.
     * Übergeben Sie mit `parameters` Werte aus der Hauptvorlage an die verknüpfte Vorlage.
@@ -287,7 +287,7 @@ Wie unter [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängig
 
 Da das Speicherkonto nun in der verknüpften Vorlage definiert ist, müssen Sie die folgenden zwei Elemente der `Microsoft.Compute/virtualMachines`-Ressource aktualisieren.
 
-* Konfigurieren Sie das `dependOn`-Element neu. Die Definition des Speicherkontos wird in die verknüpfte Vorlage verschoben.
+* Konfigurieren Sie das `dependsOn`-Element neu. Die Definition des Speicherkontos wird in die verknüpfte Vorlage verschoben.
 * Konfigurieren Sie das `properties/diagnosticsProfile/bootDiagnostics/storageUri`-Element neu. In [Verknüpfte Vorlage erstellen](#create-the-linked-template) haben Sie einen Ausgabewert hinzugefügt:
 
     ```json
@@ -305,7 +305,7 @@ Da das Speicherkonto nun in der verknüpften Vorlage definiert ist, müssen Sie 
 
     ![Azure Resource Manager: verknüpfte Vorlagen – Abhängigkeit konfigurieren](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
 
-    *linkedTemplate* ist der Name der Ressource der Bereitstellungen.  
+    *linkedTemplate* ist der Name der Ressource der Bereitstellungen.
 3. Aktualisieren Sie **properties/diagnosticsProfile/bootDiagnostics/storageUri** wie im vorherigen Screenshot dargestellt.
 4. Speichern Sie die geänderte Vorlage.
 
@@ -327,11 +327,11 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 Nehmen Sie zur Verbesserung des Projekts die folgenden zusätzlichen Änderungen am abgeschlossenen Projekt vor:
 
 1. Ändern Sie die Hauptvorlage (azuredeploy.json), sodass Sie den URI-Wert der verknüpften Vorlage über einen Parameter akzeptiert.
-2. Generieren Sie ein SAS-Token beim Bereitstellen der Hauptvorlage und nicht beim Hochladen der verknüpften Vorlage. Weitere Informationen finden Sie unter [Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token und Azure PowerShell](./resource-manager-powershell-sas-token.md#provide-sas-token-during-deployment).
+2. Generieren Sie ein SAS-Token beim Bereitstellen der Hauptvorlage und nicht beim Hochladen der verknüpften Vorlage. Weitere Informationen finden Sie unter [Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token und Azure PowerShell](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie eine Vorlage in eine Hauptvorlage und eine verknüpfte Vorlage modularisiert. Informationen zum Ausführen von Aufgaben nach der Bereitstellung mithilfe von VM-Erweiterungen finden Sie unter
 
 > [!div class="nextstepaction"]
-> [Bereitstellen von Erweiterungen für virtuelle Computer](./deployment-manager-tutorial.md)
+> [Bereitstellen von Erweiterungen für virtuelle Computer](./resource-manager-tutorial-deploy-vm-extensions.md)

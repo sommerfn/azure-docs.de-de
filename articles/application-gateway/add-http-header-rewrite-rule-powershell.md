@@ -1,39 +1,57 @@
 ---
-title: Erneutes Generieren von HTTP-Headern in einem vorhandenen Azure Application Gateway
-description: Dieser Artikel enthält Informationen zum erneuten Generieren von HTTP-Headern in einem vorhandenen Azure Application Gateway mithilfe von Azure PowerShell.
+title: Erneutes Generieren von HTTP-Headern in Azure Application Gateway
+description: Dieser Artikel enthält Informationen zum erneuten Generieren von HTTP-Headern in Azure Application Gateway mithilfe von Azure PowerShell
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: f3bda2cf680fa1ad17b5cbb3b9ba5911c78a1e4e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 47fe6a5247622e3ad3b3720955068580e0329913
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316505"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64947190"
 ---
-# <a name="rewrite-http-headers-in-an-existing-application-gateway"></a>Erneutes Generieren von HTTP-Headern in einem vorhandenen Application Gateway
+# <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Erneutes Generieren von HTTP-Anforderungs- und Antwortheadern mit Azure Application Gateway – Azure PowerShell
 
-Sie können Azure PowerShell verwenden, um [Regeln zum erneuten Generieren von HTTP-Anforderungs- und -Antwort-Headern](rewrite-http-headers.md) in einer vorhandenen [zonenredundante Application Gateway-SKU mit automatischer Skalierung](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) zu konfigurieren.
-
-> [!IMPORTANT]
-> Die Application Gateway-SKU mit automatischer Skalierung und Zonenredundanz ist derzeit als öffentliche Vorschau verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-In diesem Tutorial lernen Sie Folgendes:
-
-> [!div class="checklist"]
->
-> * Abrufen der Konfiguration eines vorhandenen Application Gateway
-> * Angeben Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers
-> * Aktualisieren des Application Gateway mit der oben stehenden Konfiguration zum erneuten Generieren von HTTP-Headern
+In diesem Artikel erfahren Sie, wie Sie mit der Azure PowerShell eine [Application Gateway v2-SKU](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>)-Instanz konfigurieren, um die HTTP-Header in Anforderungen und Antworten erneut zu generieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Voraussetzungen
 
-Für dieses Tutorial müssen Sie Azure PowerShell lokal ausführen. Sie müssen Version 1.0.0 oder höher des Az-Moduls installiert haben. Führen Sie `Import-Module Az` und dann `Get-Module Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzAccount` aus, um eine Verbindung mit Azure zu erstellen.
+- Sie müssen Azure PowerShell lokal ausführen, um die Schritte in diesem Artikel durchzuführen. Sie müssen außerdem Version 1.0.0 oder höher des Az-Moduls installiert haben. Führen Sie `Import-Module Az` und dann `Get-Module Az` aus, um die Version zu ermitteln, die Sie installiert haben. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzAccount` aus, um eine Verbindung mit Azure zu erstellen.
+- Sie benötigen eine Application Gateway v2-SKU-Instanz. Das erneute Generieren von Headern wird in der v1-SKU nicht unterstützt. Wenn Sie nicht über die v2-SKU verfügen, erstellen Sie eine [Application Gateway v2-SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps)-Instanz, bevor Sie beginnen.
+
+## <a name="create-required-objects"></a>Erstellen der erforderlichen Objekte
+
+Um das erneute Generieren von HTTP-Headern zu konfigurieren, müssen Sie diese Schritte durchführen.
+
+1. Erstellen Sie die Objekte, die zum erneuten Generieren von HTTP-Headern erforderlich sind:
+
+   - **RequestHeaderConfiguration**: Dient dazu, die Felder für Anforderungsheader, die Sie erneut generieren möchten, und den neuen Wert für die Header anzugeben.
+
+   - **ResponseHeaderConfiguration**: Dient dazu, die Felder für Antwortheader, die Sie erneut generieren möchten, und den neuen Wert für die Header anzugeben.
+
+   - **ActionSet**: Dieses Objekt beinhaltet die Konfigurationen der Anforderungs- und Antwortheader, die zuvor bestimmt wurden.
+
+   - **Bedingung:** Eine optionale Konfiguration. Bedingungen für das erneute Generieren werten den Inhalt von HTTP(S)-Anforderungen und -Antworten aus. Die Aktion für das erneute Generieren wird ausgeführt, wenn die HTTP(S)-Anforderung oder -Antwort die Bedingung für das erneute Generieren erfüllt.
+
+     Wenn Sie der Aktion mehr als eine Bedingung zuordnen, erfolgt die Aktion nur, wenn alle Bedingungen erfüllt sind. Das heißt also, dass der Vorgang ein logischer UND-Vorgang ist.
+
+   - **RewriteRule**: Enthält mehrere Kombinationen aus Aktion und Bedingung für das erneute Generieren.
+
+   - **RuleSequence**: Eine optionale Konfiguration, die dabei hilft, die Reihenfolge zu bestimmen, in der die Regeln zum erneuten Generieren ausgeführt werden. Diese Konfiguration ist hilfreich, wenn Sie mehrere Regeln zum erneuten Generieren in einem Satz zum erneuten Generieren haben. Eine Regel zum erneuten Generieren, die eine niedrigere Regelsequenz besitzt, wird zuerst ausgeführt. Wenn Sie denselben Regelsequenzwert zwei Regeln zum erneuten Generieren zuweisen, ist die Reihenfolge der Ausführung unbestimmt.
+
+     Wenn Sie die „RuleSequence“ nicht explizit angeben, wird der Standardwert 100 festgelegt.
+
+   - **RewriteRuleSet**: Enthält mehrere Regeln zum erneuten Generieren, die einer Anforderungsroutingregel zugeordnet werden.
+
+2. Fügen Sie den „RewriteRuleSet“ an eine Routingregel an. Die Konfiguration für das erneute Generieren wird dem Quelllistener über die Routingregel angefügt. Bei Verwendung einer einfachen Routingregel wird die Konfiguration der erneuten Generierung eines Headers einem Quelllistener zugeordnet und fungiert als erneute Generierung eines globalen Headers. Wenn eine pfadbasierte Routingregel verwendet wird, wird die Konfiguration der erneuten Generierung eines Headers in der URL-Pfadzuordnung definiert. In diesem Fall gilt sie nur für den bestimmten Pfadbereich einer Site.
+
+Sie können mehrere solche Sätze für das erneute Generieren eines HTTP-Headers erstellen, und jeder dieser Sätze kann auf mehrere Listener angewendet werden. Allerdings können Sie auf einen bestimmten Listener nur einen Satz für das erneute Generieren anwenden.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -42,40 +60,34 @@ Connect-AzAccount
 Select-AzSubscription -Subscription "<sub name>"
 ```
 
-## <a name="specify-your-http-header-rewrite-rule-configuration"></a>**Angeben Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers**
+## <a name="specify-the-http-header-rewrite-rule-configuration"></a>Festlegen der Regelkonfiguration für das erneute Generieren eines HTTP-Headers
 
-Konfigurieren Sie die neuen Objekte, die benötigt werden, um die HTTP-Header neu zu generieren:
-
-- **RequestHeaderConfiguration:** Dieses Objekt wird dazu verwendet, die Anforderungsheaderfelder zu bestimmen, die Sie neu generieren möchten, sowie den neuen Wert, den die ursprünglichen Header benötigen, um neu generiert werden zu können.
-- **ResponseHeaderConfiguration:** Dieses Objekt wird dazu verwendet, die Antwortheaderfelder, die Sie neu generieren möchten, und den neuen Wert zu bestimmen, den die ursprünglichen Header benötigen, um neu generiert werden zu können.
-- **ActionSet:** Dieses Objekt beinhaltet die Konfigurationen der Anforderungs- und Antwortheader, die oben bestimmt wurden.
-- **RewriteRule:** Dieses Objekt beinhaltet alle *actionSets*, die oben bestimmt wurden.
-- **RewriteRuleSet:** Dieses Objekt beinhaltet alle *RewriteRules* und muss an die Routingregel einer Anforderung angefügt werden („Basic“ oder „pfadbasiert“).
+In diesem Beispiel werden wir eine Umleitungs-URL ändern, indem der Adressheader in der HTTP-Antwort immer dann erneut generiert wird, wenn der Adressheader einen Verweis auf „azurewebsites.net“ enthält. Hierzu fügen wir eine Bedingung hinzu, um zu prüfen, ob der Adressheader in der Antwort „azurewebsites.net“ enthält. Wir verwenden das Muster `(https?):\/\/.*azurewebsites\.net(.*)$`. Außerdem verwenden wir `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` als Headerwert. Dieser Wert ersetzt im Adressheader *azurewebsites.net* durch *contoso.com*.
 
 ```azurepowershell
-$requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"
-$responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -HeaderValue "max-age=31536000"
+$responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"
 $actionSet = New-AzApplicationGatewayRewriteRuleActionSet -RequestHeaderConfiguration $requestHeaderConfiguration -ResponseHeaderConfiguration $responseHeaderConfiguration
-$rewriteRule = New-AzApplicationGatewayRewriteRule -Name rewriteRule1 -ActionSet $actionSet
-$rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name rewriteRuleSet1 -RewriteRule $rewriteRule
+$condition = New-AzApplicationGatewayRewriteRuleCondition -Variable "http_resp_Location" -Pattern "(https?):\/\/.*azurewebsites\.net(.*)$" -IgnoreCase
+$rewriteRule = New-AzApplicationGatewayRewriteRule -Name LocationHeader -ActionSet $actionSet
+$rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name LocationHeaderRewrite -RewriteRule $rewriteRule
 ```
 
-## <a name="retrieve-configuration-of-your-existing-application-gateway"></a>Abrufen der Konfiguration Ihres vorhandenen Application Gateway
+## <a name="retrieve-the-configuration-of-your-application-gateway"></a>Abrufen der Konfiguration Ihres Application Gateway
 
 ```azurepowershell
 $appgw = Get-AzApplicationGateway -Name "AutoscalingAppGw" -ResourceGroupName "<rg name>"
 ```
 
-## <a name="retrieve-configuration-of-your-existing-request-routing-rule"></a>Abrufen der Konfiguration Ihrer vorhandenen Routingregel für Anforderungen
+## <a name="retrieve-the-configuration-of-your-request-routing-rule"></a>Abrufen der Konfiguration Ihrer Routingregel für Anforderungen
 
 ```azurepowershell
-$reqRoutingRule = Get-AzApplicationGatewayRequestRoutingRule -Name Rule1 -ApplicationGateway $appgw
+$reqRoutingRule = Get-AzApplicationGatewayRequestRoutingRule -Name rule1 -ApplicationGateway $appgw
 ```
 
 ## <a name="update-the-application-gateway-with-the-configuration-for-rewriting-http-headers"></a>Aktualisieren des Application Gateway mit der Konfiguration zum erneuten Generieren von HTTP-Headern
 
 ```azurepowershell
-Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $appgw -Name rewriteRuleSet1 -RewriteRule $rewriteRuleSet.RewriteRules
+Add-AzApplicationGatewayRewriteRuleSet -ApplicationGateway $appgw -Name LocationHeaderRewrite -RewriteRule $rewriteRuleSet.RewriteRules
 Set-AzApplicationGatewayRequestRoutingRule -ApplicationGateway $appgw -Name rule1 -RuleType $reqRoutingRule.RuleType -BackendHttpSettingsId $reqRoutingRule.BackendHttpSettings.Id -HttpListenerId $reqRoutingRule.HttpListener.Id -BackendAddressPoolId $reqRoutingRule.BackendAddressPool.Id -RewriteRuleSetId $rewriteRuleSet.Id
 Set-AzApplicationGateway -ApplicationGateway $appgw
 ```
@@ -84,7 +96,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ```azurepowershell
 $appgw = Get-AzApplicationGateway -Name "AutoscalingAppGw" -ResourceGroupName "<rg name>"
-Remove-AzApplicationGatewayRewriteRuleSet -Name "rewriteRuleSet1" -ApplicationGateway $appgw
+Remove-AzApplicationGatewayRewriteRuleSet -Name "LocationHeaderRewrite" -ApplicationGateway $appgw
 $requestroutingrule= Get-AzApplicationGatewayRequestRoutingRule -Name "rule1" -ApplicationGateway $appgw
 $requestroutingrule.RewriteRuleSet= $null
 set-AzApplicationGateway -ApplicationGateway $appgw
@@ -92,5 +104,4 @@ set-AzApplicationGateway -ApplicationGateway $appgw
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis](./tutorial-url-route-powershell.md)
+Weitere Informationen zum Einrichten einiger gängiger Anwendungsfälle finden Sie unter [Allgemeine Szenarien zum erneuten Generieren von Headern](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).

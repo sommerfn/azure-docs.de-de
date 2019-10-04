@@ -6,33 +6,34 @@ author: jeffhollan
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: ca65b6a1691a870054682b36109f2bdc10d4ad98
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 2cc6493d01508d439d8dcef2d12ca1ea40632d81
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918704"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096225"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Premium-Plan (Premium-Tarif) für Azure Functions (Vorschau)
 
 Der Premium-Plan für Azure Functions ist eine Hostingoption für Funktions-Apps. Der Premium-Plan bietet Features wie VNet-Konnektivität, keinen Kaltstart und Premium-Hardware.  Mehrere Funktions-Apps können im selben Premium-Plan bereitgestellt werden, und der Tarif ermöglicht es Ihnen, die Compute-Instanzgröße, Basisplangröße und maximale Plangröße zu konfigurieren.  Einen Vergleich des Premium-Plans und anderer Pläne und Hostingtypen finden Sie unter [Skalierung und Hosting von Azure Functions](functions-scale.md).
 
-> [!NOTE]
-> Die Vorschauversion des Premium-Plans unterstützt derzeit die Funktionen, die in .NET, Node oder Java über Windows-Infrastruktur ausgeführt werden.
-
 ## <a name="create-a-premium-plan"></a>Erstellen eines Premium-Plans
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]
 
-Sie können einen Premium-Plan auch über die Azure CLI erstellen.
+Sie können auch einen Premium-Plan erstellen. Verwenden Sie dazu [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) in der Azure-Befehlszeilenschnittstelle. Im folgenden Beispiel wird ein Plan vom Typ _Elastic Premium 1_ erstellt:
 
 ```azurecli-interactive
-az functionapp plan create -g <resource-group> -n <plan-name> -l <region> --number-of-workers 1 --sku EP1
+az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> \
+--location <REGION> --sku EP1
 ```
+
+Ersetzen Sie in diesem Beispiel `<RESOURCE_GROUP>` durch Ihre Ressourcengruppe und `<PLAN_NAME>` durch einen Namen für Ihren Plan, der in der Ressourcengruppe eindeutig ist. Geben Sie eine [unterstützte `<REGION>`](#regions) an. Wenn Sie einen Premium-Plan mit Linux-Unterstützung erstellen möchten, schließen Sie die Option `--is-linux` ein.
+
+Nach Erstellung des Plans können Sie mithilfe von [az functionapp create](/cli/azure/functionapp#az-functionapp-create) Ihre Funktions-App erstellen. Im Portal werden Plan und App gleichzeitig erstellt. 
 
 ## <a name="features"></a>Features
 
@@ -42,9 +43,9 @@ Die folgenden Features sind für Funktions-Apps verfügbar, die für einen Premi
 
 Wenn heute keine Ereignisse und Ausführungen im Verbrauchsplan ausgeführt werden, wird Ihre App möglicherweise auf null Instanzen herunterskaliert. Wenn neue Ereignisse eingehen, muss eine neue Instanz zum Ausführen Ihrer App eingerichtet werden.  Das Einrichten einer neuen Instanz kann je nach App einige Zeit dauern.  Diese zusätzliche Wartezeit beim ersten Aufruf wird häufig als App-Kaltstart bezeichnet.
 
-Im Premium-Plan können Sie Ihre App in einem „vorab aufgewärmten“ Zustand für eine angegebene Anzahl von Instanzen vorhalten.  Mit vorab aufgewärmten Instanzen können Sie eine App auch vor hoher Last vorab skalieren. Erfolgt eine Erweiterung für die App, wird die App zunächst in die vorab aufgewärmten Instanzen skaliert. In Vorbereitung auf den nächsten Skalierungsvorgang werden sofort weitere Instanzen gepuffert und aufgewärmt. Dadurch, dass es einen Puffer mit vorab aufgewärmten Instanzen gibt, können Sie Kaltstartwartezeiten effektiv vermeiden.  Vorab aufgewärmte Instanzen ist ein Feature für den Premium-Plan, und Sie müssen während der gesamten Zeit, in der der Plan aktiv ist, mindestens eine Instanz aktiv und verfügbar halten.
+Im Premium-Plan können Sie Ihre App in einem „vorab aufgewärmten“ Zustand für eine angegebene Anzahl von Instanzen vorhalten, bis zur Größe Ihres Mindestplans.  Mit vorab aufgewärmten Instanzen können Sie eine App auch vor hoher Last vorab skalieren. Erfolgt eine Erweiterung für die App, wird die App zunächst in die vorab aufgewärmten Instanzen skaliert. In Vorbereitung auf den nächsten Skalierungsvorgang werden sofort weitere Instanzen gepuffert und aufgewärmt. Dadurch, dass es einen Puffer mit vorab aufgewärmten Instanzen gibt, können Sie Kaltstartwartezeiten effektiv vermeiden.  Vorab aufgewärmte Instanzen ist ein Feature für den Premium-Plan, und Sie müssen während der gesamten Zeit, in der der Plan aktiv ist, mindestens eine Instanz aktiv und verfügbar halten.
 
-Sie können die Anzahl der vorab aufgewärmten Instanzen im Azure-Portal konfigurieren, indem Sie **Horizontal skalieren** auf der Registerkarte **Plattformfeatures** auswählen.
+Sie können die Anzahl der vorab aufgewärmten Instanzen im Azure-Portal konfigurieren, indem Sie Ihre **Funktions-App** auswählen, zur Registerkarte **Plattformfeatures** wechseln und die **Horizontal skalieren**-Optionen auswählen. Im Bearbeitungsfenster für eine Funktions-App gelten vorab aufgewärmte Instanzen speziell für diese App, aber die Mindestanzahl und die maximale Anzahl von Instanzen gelten für Ihren gesamten Plan.
 
 ![Einstellungen für elastisches Skalieren](./media/functions-premium-plan/scale-out.png)
 
@@ -56,7 +57,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="private-network-connectivity"></a>Private Netzwerkkonnektivität
 
-Für Azure Functions, bereitgestellt in einem Premium-Plan, wird die [neue VNET-Integration für Web-Apps](../app-service/web-sites-integrate-with-vnet.md#new-vnet-integration) genutzt.  Ist diese Integration konfiguriert, kann Ihre App mit Ressourcen in Ihrem VNET oder geschützt über Dienstendpunkte kommunizieren.  IP-Einschränkungen sind ebenfalls für die App verfügbar, um eingehenden Datenverkehr zu beschränken.
+Für Azure Functions, bereitgestellt in einem Premium-Plan, wird die [neue VNET-Integration für Web-Apps](../app-service/web-sites-integrate-with-vnet.md) genutzt.  Ist diese Integration konfiguriert, kann Ihre App mit Ressourcen in Ihrem VNET oder geschützt über Dienstendpunkte kommunizieren.  IP-Einschränkungen sind ebenfalls für die App verfügbar, um eingehenden Datenverkehr zu beschränken.
 
 Wenn Sie Ihrer Funktions-App in einem Premium-Plan ein Subnetz zuweisen, benötigen Sie ein Subnetz mit genügend IP-Adressen für jede mögliche-Instanz. Obwohl die maximale Anzahl von Instanzen in der Vorschauphase variieren kann, ist ein IP-Adressblock mit mindestens 100 verfügbaren Adressen erforderlich.
 
@@ -69,6 +70,8 @@ Weitere Compute-Instanzen werden automatisch für Ihre App hinzugefügt. Dazu wi
 ### <a name="unbounded-run-duration"></a>Unbegrenzte Ausführungsdauer
 
 Azure Functions in einem Verbrauchsplan sind auf 10 Minuten für eine einzelne Ausführung beschränkt.  Im Premium-Plan wird die Ausführungsdauer standardmäßig auf 30 Minuten festgelegt, um Endlosausführungen zu verhindern. Sie können jedoch [die host.json-Konfiguration ändern](./functions-host-json.md#functiontimeout), um die Ausführungsdauer für Premium-Plan-Apps auf unbegrenzt festzulegen.
+
+In der Vorschauversion wird die Dauer nicht über 12 Minuten hinaus garantiert, und es besteht die beste Chance, dass die Ausführung länger als 30 Minuten erfolgt, wenn Ihre App nicht über ihre minimale Workeranzahl hinaus skaliert ist.
 
 ## <a name="plan-and-sku-settings"></a>Plan- und SKU-Einstellungen
 
@@ -89,7 +92,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 ### <a name="available-instance-skus"></a>Verfügbare Instanz-SKUs
 
-Wenn Sie Ihren Plan erstellen oder horizontal skalieren, können Sie zwischen drei Instanzgrößen wählen.  Ihnen werden die Gesamtanzahl von Kernen und der Arbeitsspeicher in Rechnung gestellt, die pro Sekunde genutzt werden.  Ihre App kann automatisch nach Bedarf auf mehrere Instanzen hochskaliert werden.  
+Wenn Sie Ihren Plan erstellen oder skalieren, können Sie zwischen drei Instanzgrößen wählen.  Ihnen werden die Gesamtanzahl von Kernen und der Arbeitsspeicher in Rechnung gestellt, die pro Sekunde genutzt werden.  Ihre App kann automatisch nach Bedarf auf mehrere Instanzen hochskaliert werden.  
 
 |SKU|Kerne|Arbeitsspeicher|Storage|
 |--|--|--|--|
@@ -97,30 +100,32 @@ Wenn Sie Ihren Plan erstellen oder horizontal skalieren, können Sie zwischen dr
 |EP2|2|7 GB|250 GB|
 |EP3|4|14 GB|250 GB|
 
-## <a name="regions"></a>Regionen
+## <a name="regions"></a>Regions
 
-Nachstehend sind die derzeit unterstützten Regionen für die öffentliche Vorschau aufgeführt.
+Nachstehend sind die derzeit unterstützten Regionen für die Public Preview des jeweiligen Betriebssystems aufgeführt.
 
-|Region|
-|--|
-|Australien (Osten)|
-|Australien, Südosten|
-|Kanada, Mitte|
-|Indien, Mitte|
-|USA (Mitte)|
-|Asien, Osten|
-|USA (Ost) 2|
-|Frankreich, Mitte|
-|Japan, Westen|
-|Korea, Mitte|
-|Nordeuropa|
-|USA Süd Mitte|
-|Indien (Süden)|
-|Asien, Südosten|
-|UK, Westen|
-|Europa, Westen|
-|Indien, Westen|
-|USA (Westen)|
+|Region| Windows | Linux |
+|--| -- | -- |
+|Australien (Osten)| ✔ | |
+|Australien, Südosten | ✔ | ✔ |
+|Kanada, Mitte| ✔ |  |
+|USA (Mitte)| ✔ |  |
+|Asien, Osten| ✔ |  |
+|East US | | ✔ |
+|USA (Ost) 2| ✔ |  |
+|Frankreich, Mitte| ✔ |  |
+|Japan, Osten|  | ✔ |
+|Japan, Westen| ✔ | |
+|Korea, Mitte| ✔ |  |
+|USA Nord Mitte| ✔ |  |
+|Nordeuropa| ✔ | ✔ |
+|USA Süd Mitte| ✔ |  |
+|Indien (Süden) | ✔ | |
+|Asien, Südosten| ✔ | ✔ |
+|UK, Westen| ✔ |  |
+|Europa, Westen| ✔ | ✔ |
+|Indien, Westen| ✔ |  |
+|USA (Westen)| ✔ | ✔ |
 
 ## <a name="known-issues"></a>Bekannte Probleme
 

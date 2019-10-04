@@ -3,8 +3,8 @@ title: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr ei
 description: Erfahren Sie, wie Sie ein Problem mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers durch Anzeigen der effektiven Sicherheitsregeln für einen virtuellen Computer diagnostizieren.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
-ms.author: jdial
-ms.openlocfilehash: fecab4dc3a0674b0b64638676f4538af145b52ac
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: f84e8a24e8f28cdccc987afbd1449cb17422ce0c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652644"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64712670"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers
 
@@ -170,11 +170,11 @@ Unabhängig davon, ob Sie das im [Szenario](#scenario) dieses Artikels dargestel
 
 | Eigenschaft                | Wert                                                                              |
 |---------                |---------                                                                           |
-| Quelle                  | Beliebig                                                                                |
+| `Source`                  | Beliebig                                                                                |
 | Quellportbereiche      | Beliebig                                                                                |
 | Ziel             | Die IP-Adresse der VM, ein Bereich von IP-Adressen oder alle Adressen im Subnetz. |
 | Zielportbereiche | 80                                                                                 |
-| Protokoll                | TCP                                                                                |
+| Protocol                | TCP                                                                                |
 | Aktion                  | ZULASSEN                                                                              |
 | Priorität                | 100                                                                                |
 | NAME                    | Allow-HTTP-All                                                                     |

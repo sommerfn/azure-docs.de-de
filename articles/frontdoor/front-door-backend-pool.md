@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 2372f49c7280ee5c817f3d2f98cc80a196dae5f5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 543e237a4a8390a8ebf74d0eb2a1f4be41dcd911
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879198"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60193712"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Back-Ends und Back-End-Pools in Azure Front Door Service
 In diesem Artikel werden die Konzepte für die Zuordnung Ihrer App-Bereitstellung zu Azure Front Door Service beschrieben. Darüber hinaus werden die verschiedenen Begriffe erläutert, die bei der Front Door-Konfiguration rund um App-Back-Ends verwendet werden.
@@ -35,7 +35,7 @@ Front Door Service-Back-Ends verweisen auf den Hostnamen oder die öffentliche I
 
 - **Back-End-Hostheader**: Der Hostheaderwert, der für jede Anforderung an das Back-End gesendet wird. Weitere Informationen finden Sie unter [Back-End-Hostheader](#hostheader).
 
-- **Priorität**: Weisen Sie Ihren verschiedenen Back-Ends Prioritäten zu, wenn Sie ein primäres Dienst-Back-End für den gesamten Datenverkehr verwenden möchten. Stellen Sie außerdem Sicherungen bereit, wenn das primäre Back-End oder die Sicherungs-Back-Ends nicht verfügbar sind. Weitere Informationen finden Sie unter [Priorität](front-door-routing-methods.md#priority).
+- **Priorität**. Weisen Sie Ihren verschiedenen Back-Ends Prioritäten zu, wenn Sie ein primäres Dienst-Back-End für den gesamten Datenverkehr verwenden möchten. Stellen Sie außerdem Sicherungen bereit, wenn das primäre Back-End oder die Sicherungs-Back-Ends nicht verfügbar sind. Weitere Informationen finden Sie unter [Priorität](front-door-routing-methods.md#priority).
 
 - **Gewichtung**: Weisen Sie Ihren verschiedenen Back-Ends Gewichtungen zu, um den Datenverkehr entweder gleichmäßig oder anhand von Gewichtungskoeffizienten auf eine Gruppe von Back-Ends zu verteilen. Weitere Informationen finden Sie unter [Gewichtung](front-door-routing-methods.md#weighted).
 
@@ -69,9 +69,9 @@ Front Door Service sendet regelmäßige HTTP/HTTPS-Testanforderungen an jedes ko
 
 - **Pfad**: Die URL, die für Testanforderungen für alle Back-Ends im Back-End-Pool verwendet wird. Beispiel: Wenn ein Back-End auf „contoso-westus.azurewebsites.net“ und der Pfad auf „/probe/test.aspx“ festgelegt ist, gehen Front Door Service-Umgebungen davon aus, dass das Protokoll auf HTTP festgelegt ist und senden Integritätstestanforderungen an „http\://contoso-westus.azurewebsites.net/probe/test.aspx“.
 
-- **Protokoll**: Legt fest, ob die Integritätstestanforderungen von Front Door Service an Ihre Back-Ends über das HTTP-Protokoll oder das HTTPS-Protokoll gesendet werden.
+- **Protokoll**. Legt fest, ob die Integritätstestanforderungen von Front Door Service an Ihre Back-Ends über das HTTP-Protokoll oder das HTTPS-Protokoll gesendet werden.
 
-- **Intervall (Sekunden)**: Definiert die Häufigkeit der Integritätstests für Ihre Back-Ends bzw. die Intervalle, in denen die einzelnen Front Door-Umgebungen einen Test senden.
+- **Intervall (Sekunden)** : Definiert die Häufigkeit der Integritätstests für Ihre Back-Ends bzw. die Intervalle, in denen die einzelnen Front Door-Umgebungen einen Test senden.
 
     >[!NOTE]
     >Für schnellere Failover sollten Sie das Intervall auf einen niedrigeren Wert festlegen. Je niedriger der Wert, desto größer ist jedoch das Integritätstestvolumen, das Ihre Back-Ends empfangen. Wenn beispielsweise bei 90 Front Door-Umgebungen bzw. globalen POPs das Intervall auf 30 Sekunden festgelegt ist, empfängt jedes Back-End etwa 3 bis 5 Testanforderungen pro Sekunde.
@@ -83,13 +83,13 @@ Anhand der Einstellungen für den Lastenausgleich für den Back-End-Pool wird de
 
 - **Stichprobengröße**: Gibt an, wie viele Stichproben von Integritätstests bei der Auswertung der Integrität der Back-Ends zu berücksichtigen sind.
 
-- **Erfolgreiche Stichprobengröße**: Definiert die zuvor erwähnte Stichprobengröße, d.h. die Anzahl der erfolgreichen Stichproben, die erforderlich sind, um das Back-End als fehlerfrei zu bezeichnen. Angenommen, das Intervall für Front Door-Integritätstests ist auf 30 Sekunden, die Stichprobengröße auf 5 Sekunden und die erfolgreiche Stichprobengröße auf 3 Sekunden festgelegt. Jedes Mal, wenn Integritätstests für Ihr Back-End ausgewertet werden, werden die letzten fünf Stichproben innerhalb von 150 Sekunden (5 x 30) betrachtet. Mindestens drei erfolgreiche Stichproben sind erforderlich, um Ihr Back-End als fehlerfrei zu deklarieren.
+- **Erfolgreiche Stichprobengröße**: Definiert die zuvor erwähnte Stichprobengröße, d.h. die Anzahl der erfolgreichen Stichproben, die erforderlich sind, um das Back-End als fehlerfrei zu bezeichnen. Angenommen, das Intervall für Front Door-Integritätstests ist auf 30 Sekunden, die Stichprobengröße auf 5 und die erfolgreiche Stichprobengröße auf 3 festgelegt. Jedes Mal, wenn Integritätstests für Ihr Back-End ausgewertet werden, werden die letzten fünf Stichproben innerhalb von 150 Sekunden (5 x 30) betrachtet. Mindestens drei erfolgreiche Stichproben sind erforderlich, um Ihr Back-End als fehlerfrei zu deklarieren.
 
-- **Wartezeitenaktivität (zusätzliche Wartezeit)**: Definiert, ob Front Door die Anforderung an Back-Ends innerhalb des Aktivitätsbereichs der Wartezeitmessung senden oder die Anforderung an das nächstgelegene Back-End weiterleiten soll.
+- **Wartezeitenaktivität (zusätzliche Wartezeit)** : Definiert, ob Front Door die Anforderung an Back-Ends innerhalb des Aktivitätsbereichs der Wartezeitmessung senden oder die Anforderung an das nächstgelegene Back-End weiterleiten soll.
 
 Weitere Informationen finden Sie unter [Datenverkehrsrouting auf Grundlage der niedrigsten Latenzen](front-door-routing-methods.md#latency).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines Front Door-Profils](quickstart-create-front-door.md)
-- [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md)
+- [Schnellstart: Erstellen einer Front Door-Instanz](quickstart-create-front-door.md)
+- [Übersicht über die Routingarchitektur](front-door-routing-architecture.md)

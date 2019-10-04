@@ -4,14 +4,14 @@ description: In diesem Artikel werden das Preismodell für Azure Cosmos DB und d
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 08/01/2019
 ms.author: rimman
-ms.openlocfilehash: 997a80ed1a8089c5255292f23bc5dacf8a6cb0e7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 43a4b46199277da11d2820a11ec0801c0345e62b
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452625"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717613"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Preismodell in Azure Cosmos DB 
 

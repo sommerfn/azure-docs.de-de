@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Anwendungsgateways mit SSL-Beendigung – Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Beendigung hinzufügen.
+title: Erstellen eines Anwendungsgateways mit SSL-Terminierung – Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Terminierung hinzufügen.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -11,15 +11,15 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.openlocfilehash: 188c252064028ccecc0fd4fe231cda190d2b4c08
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663671"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66135141"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit SSL-Beendigung mithilfe der Azure-Befehlszeilenschnittstelle
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit SSL-Terminierung mithilfe der Azure-Befehlszeilenschnittstelle
 
-Sie können über die Azure-Befehlszeilenschnittstelle ein [Anwendungsgateway](application-gateway-introduction.md) mit einem Zertifikat für die [SSL-Beendigung](application-gateway-backend-ssl.md) erstellen, das eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) als Back-End-Server verwendet. In diesem Beispiel enthält die Skalierungsgruppe zwei VM-Instanzen, die zum standardmäßigen Back-End-Pool des Anwendungsgateways hinzugefügt werden.
+Sie können über die Azure-Befehlszeilenschnittstelle ein [Anwendungsgateway](application-gateway-introduction.md) mit einem Zertifikat für die [SSL-Terminierung](application-gateway-backend-ssl.md) erstellen, das eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) als Back-End-Server verwendet. In diesem Beispiel enthält die Skalierungsgruppe zwei VM-Instanzen, die zum standardmäßigen Back-End-Pool des Anwendungsgateways hinzugefügt werden.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

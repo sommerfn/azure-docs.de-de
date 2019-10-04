@@ -4,17 +4,16 @@ description: Weisen Sie durchsuchbaren Textfeldern in einem Index Analysen zu, u
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 08/08/2019
 ms.author: heidist
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
-ms.custom: seodec2018
-ms.openlocfilehash: e3738980206277587ca367339d75da4f3faa643a
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 387248b2dac7c10ec0e96454f26964ca7f15c56e
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651820"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69649994"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analysetools für Textverarbeitung in Azure Search
 
@@ -31,7 +30,7 @@ Linguistische Analysetools konvertieren eine Texteingabe in primitive oder Stamm
 
 ## <a name="default-analyzer"></a>Standardanalysemodul  
 
-Azure Search verwendet standardmäßig das [Standardanalysetool von Apache Lucene (Standard-Lucene)](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html). Dieses unterteilt Text gemäß den Regeln der [Unicode-Textsegmentierung](https://unicode.org/reports/tr29/) in einzelne Elemente. Darüber hinaus konvertiert das Standardanalyseprogramm alle Zeichen in Kleinbuchstaben. Während der Indizierung und der Abfrageverarbeitung durchlaufen sowohl indizierte Dokumente als auch Suchbegriffe die Analyse.  
+Azure Search verwendet standardmäßig das [Standardanalysetool von Apache Lucene (Standard-Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html). Dieses unterteilt Text gemäß den Regeln der [Unicode-Textsegmentierung](https://unicode.org/reports/tr29/) in einzelne Elemente. Darüber hinaus konvertiert das Standardanalyseprogramm alle Zeichen in Kleinbuchstaben. Während der Indizierung und der Abfrageverarbeitung durchlaufen sowohl indizierte Dokumente als auch Suchbegriffe die Analyse.  
 
 Es wird automatisch auf jedes durchsuchbare Feld verwendet. Dieser Standard kann feldspezifisch überschrieben werden. Alternative Analysetools können ein [Sprachanalysetool](index-add-language-analyzers.md), ein [benutzerdefiniertes Analysetool](index-add-custom-analyzers.md) oder ein vordefiniertes Analysetool aus der [Liste der verfügbaren Analysetools](index-add-custom-analyzers.md#AnalyzerTable) sein.
 
@@ -42,7 +41,7 @@ Die folgende Liste gibt Aufschluss darüber, welche Analysetools in Azure Search
 
 | Category (Kategorie) | BESCHREIBUNG |
 |----------|-------------|
-| [Lucene-Standardanalyse](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Standard. Muss nicht angegeben oder konfiguriert werden. Diese allgemeine Analyse eignet sich für die meisten Sprachen und Szenarien.|
+| [Lucene-Standardanalyse](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Standard. Muss nicht angegeben oder konfiguriert werden. Diese allgemeine Analyse eignet sich für die meisten Sprachen und Szenarien.|
 | Vordefinierte Analysen | Werden als fertiges Produkt angeboten und in der Regel unverändert verwendet. <br/>Es gibt spezialisierte und sprachspezifische Typen. Sie sind „vordefiniert“, da Sie ihren Namen angeben und sie nicht weiter konfigurieren oder anpassen. <br/><br/>[Spezialisierte (sprachunabhängige) Analysetools](index-add-custom-analyzers.md#AnalyzerTable) werden verwendet, wenn Texteingaben eine spezielle oder minimale Verarbeitung erfordern. Zu sprachunabhängigen vordefinierten Analysen zählen **Asciifolding**, **Keyword**, **Pattern**, **Simple**, **Stop** und **Whitespace**.<br/><br/>[Sprachanalyzer](index-add-language-analyzers.md) werden verwendet, wenn umfassende linguistische Unterstützung für einzelne Sprachen benötigt werden. Azure Search unterstützt 35 Lucene-Sprachanalysen und 50 Microsoft-Analysen für die Verarbeitung natürlicher Sprache. |
 |[Benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | Eine benutzerdefinierte Konfiguration einer Kombination vorhandener Elemente, bestehend aus einem Tokenizer (erforderlich) und optionalen Filtern („char“ oder „token“).|
 
@@ -92,10 +91,6 @@ Wenn Sie die Standardanalyse überschreiben, muss der Index neu erstellt werden.
 ### <a name="inspect-tokenized-terms"></a>Überprüfen von tokenisierten Begriffen
 
 Wenn eine Suche nicht die erwarteten Ergebnisse zurückgibt, ist das wahrscheinlichste Szenario, dass Abweichungen zwischen Begriffseingaben für die Abfrage und tokenisierten Begriffen im Index vorliegen. Wenn die Token nicht identisch sind, können Übereinstimmungen nicht materialisiert werden. Zur Überprüfung der Tokenizer-Ausgabe wird empfohlen, die [Analyse-API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) als Untersuchungstool zu verwenden. Die Antwort besteht aus Token, die von einem bestimmten Analyzer generiert wurden.
-
-### <a name="compare-english-analyzers"></a>Vergleichen von englischen Analyzern
-
-Die [Search Analyzer Demo](https://alice.unearth.ai/) ist eine Demo eines Drittanbieters, die eine Gegenüberstellung der Lucene-Standardanalyse, der Lucene-Englischanalyse und der Verarbeitung natürlicher Sprache (Englisch) von Microsoft zeigt. Der Index ist vorgegeben. Er enthält Text aus einer bekannten Geschichte. Für jede von Ihnen bereitgestellte Sucheingabe werden Ergebnisse der einzelnen Analyzer in angrenzenden Bereichen angezeigt. Dadurch erhalten Sie einen Eindruck davon, wie dieselbe Zeichenfolge von den einzelnen Analyzern verarbeitet wird. 
 
 <a name="examples"></a>
 
@@ -348,8 +343,6 @@ Erstellen Sie ein [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microso
 + Informieren Sie sich darüber, wie Sie [sprachspezifische lexikalische Analysen](index-add-language-analyzers.md) anwenden.
 
 + [Konfigurieren Sie benutzerdefinierte Analysen](index-add-custom-analyzers.md) für eine minimale oder besondere Verarbeitung einzelner Felder.
-
-+ Vergleichen Sie auf [dieser Demowebsite](https://alice.unearth.ai/) die Standard- und die Englischanalyse in einer Gegenüberstellung. 
 
 ## <a name="see-also"></a>Weitere Informationen
 

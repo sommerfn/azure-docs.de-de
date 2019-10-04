@@ -3,20 +3,20 @@ title: Unterstützte Sprachen der Bing-Spracheingabe | Microsoft-Dokumentation
 titlesuffix: Azure Cognitive Services
 description: Hier finden Sie eine Liste der Sprachen, die von der Bing-Spracheingabe unterstützt werden.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 044c0355b6ec9f064cae74ffd5259d457cb49147
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: e53980482a2d355c0fb024658f8012d65354c7a5
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672388"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965952"
 ---
 # <a name="supported-languages"></a>Unterstützte Sprachen
 
@@ -29,7 +29,7 @@ Die Microsoft-Spracherkennungs-API unterstützt in den Modi `interactive` und `d
 |Code | Sprache | Code | Sprache |
 |-----|-----|-----|-----|
 | ar-EG | Arabisch (Ägypten), modernes Hocharabisch | hi-IN | Hindi (Indien) |
-| ca-ES | Katalanisch (Spanien) | it-IT | Italienisch (Italien)  |
+| ca-ES | Katalanisch | it-IT | Italienisch (Italien)  |
 | da-DK | Dänisch (Dänemark) | ja-JP | Japanisch (Japan) |
 | de-DE | Deutsch (Deutschland) |ko-KR | Koreanisch (Korea) |
 | en-AU | Englisch (Australien) |nb-NO | Norwegisch, Bokmål (Norwegen)  |

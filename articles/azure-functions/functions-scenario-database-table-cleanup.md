@@ -7,20 +7,19 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: glenga
-ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 0388c712d6f44755e768e491944df1a9451653b7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608578"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085249"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
 
-In diesem Artikel wird erläutert, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, über den eine Verbindung mit einer Azure SQL-Datenbank-Instanz hergestellt wird. Der Funktionscode bereinigt die Zeilen in einer Tabelle in der Datenbank. Die neue C#-Funktion wird basierend auf einer vordefinierten Vorlage für einen Zeitgebertrigger in Visual Studio 2017 erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als App-Einstellung in der Funktions-App festlegen. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. 
+In diesem Artikel wird erläutert, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, über den eine Verbindung mit einer Azure SQL-Datenbank-Instanz hergestellt wird. Der Funktionscode bereinigt die Zeilen in einer Tabelle in der Datenbank. Die neue C#-Funktion wird basierend auf einer vordefinierten Vorlage für einen Zeitgebertrigger in Visual Studio 2019 erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als App-Einstellung in der Funktions-App festlegen. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. 
 
 Wenn Sie C#-Funktionen zum ersten Mal verwenden, sollten Sie die [C#-Entwicklerreferenz zu Azure Functions](functions-dotnet-class-library.md) lesen.
 
@@ -64,7 +63,7 @@ Zuvor müssen Sie Ihre App in Azure veröffentlicht haben. Wenn dies noch nicht 
 
 Sie müssen das NuGet-Paket hinzufügen, das die SqlClient-Bibliothek enthält. Diese Datenzugriffsbibliothek wird zum Herstellen einer Verbindung mit einer SQL-Datenbank benötigt.
 
-1. Öffnen Sie das lokale Funktions-App-Projekt in Visual Studio 2017.
+1. Öffnen Sie das lokale Funktions-App-Projekt in Visual Studio 2019.
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Funktions-App-Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
 
@@ -127,7 +126,7 @@ Nun können Sie den C#-Funktionscode hinzufügen, der eine Verbindung mit Ihrer 
 
     Bei der ersten Ausführung sollten 32 Datenzeilen aktualisiert werden. In nachfolgenden Ausführungen werden keine Datenzeilen aktualisiert, es sei denn, Sie nehmen Änderungen an den Daten der Tabelle „SalesOrderHeader“ vor, sodass mit der `UPDATE`-Anweisung weitere Zeilen ausgewählt werden.
 
-Wenn Sie [die Funktion veröffentlichen](functions-develop-vs.md#publish-to-azure) möchten, vergessen Sie nicht, das Attribut `TimerTrigger` in einen geeigneteren [CRON-Zeitplan](functions-bindings-timer.md#cron-expressions) als alle 15 Sekunden zu ändern.
+Wenn Sie [die Funktion veröffentlichen](functions-develop-vs.md#publish-to-azure) möchten, vergessen Sie nicht, das Attribut `TimerTrigger` in einen geeigneteren [CRON-Zeitplan](functions-bindings-timer.md#ncrontab-expressions) als alle 15 Sekunden zu ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -139,6 +138,6 @@ Als Nächstes erfahren Sie, wie Sie Functions mit Logic Apps für die Integratio
 Weitere Informationen zu Functions finden Sie in den folgenden Artikeln:
 
 + [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
-   Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
+  Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
 + [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
-   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen  
+  Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen  

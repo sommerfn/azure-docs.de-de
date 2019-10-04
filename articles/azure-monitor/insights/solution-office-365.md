@@ -6,22 +6,30 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: ''
-ms.service: operations-management-suite
+ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58794018"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061614"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
 ![Office 365-Logo](media/solution-office-365/icon.png)
+
+
+> [!NOTE]
+> Die empfohlene Methode zum Installieren und Konfigurieren der Office 365-Lösung ist das Aktivieren des [Office 365-Connectors](../../sentinel/connect-office-365.md) in [Azure Sentinel](../../sentinel/overview.md), statt die Schritte in diesem Artikel auszuführen. Dies ist eine aktualisierte Version der Office 365-Lösung mit einer verbesserten Konfigurationsumgebung. Verwenden Sie zum Herstellen einer Verbindung mit Azure AD-Protokollen entweder den [Azure AD-Connector von Azure Sentinel](../../sentinel/connect-azure-active-directory.md), oder [konfigurieren Sie Azure AD-Diagnoseeinstellungen](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), die umfangreichere Protokolldaten als Office 365-Verwaltungsprotokolle bieten. 
+>
+> Beim [Integrieren von Azure Sentinel](../../sentinel/quickstart-onboard.md) geben Sie den Log Analytics-Arbeitsbereich an, in dem die Office 365-Lösung installiert werden soll. Nachdem Sie den Connector aktiviert haben, ist die Lösung im Arbeitsbereich verfügbar und wird auf genau die gleiche Weise wie alle anderen installierten Überwachungslösungen verwendet.
+>
+> Benutzer der Azure Government-Cloud müssen Office 365 anhand der Schritte in diesem Artikel installieren, da Azure Sentinel in der Government-Cloud noch nicht verfügbar ist.
 
 Mit der Office 365-Verwaltungslösung können Sie Ihre Office 365-Umgebung in Azure Monitor überwachen.
 
@@ -30,6 +38,7 @@ Mit der Office 365-Verwaltungslösung können Sie Ihre Office 365-Umgebung in Az
 - Ermitteln und untersuchen Sie unerwünschtes Benutzerverhalten. Dies kann an die Anforderungen Ihrer Organisation angepasst werden.
 - Demonstrieren Sie Überwachung und Compliance. Beispielsweise können Sie Dateizugriffe auf vertrauliche Dateien überwachen und so den Überwachungs- und Complianceprozess unterstützen.
 - Führen Sie eine operative Problembehandlung mithilfe der [Protokollabfragen](../log-query/log-query-overview.md) in den Office 365-Aktivitätsdaten Ihrer Organisation durch.
+
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -74,45 +83,46 @@ Im ersten Schritt muss in Azure Active Directory eine Anwendung erstellt werden,
 
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com/) beim Azure-Portal an.
 1. Wählen Sie **Azure Active Directory** und dann **App-Registrierungen** aus.
-1. Klicken Sie auf **Registrierung einer neuen Anwendung**.
+1. Klicken Sie auf **Neue Registrierung**.
 
     ![Hinzufügen einer App-Registrierung](media/solution-office-365/add-app-registration.png)
-1. Geben Sie einen **Anwendungsnamen** und Ihre **Anmelde-URL** ein.  Der Name sollte aussagekräftig sein.  Verwenden Sie für die URL `http://localhost`, und behalten Sie _Web-App/API_ als **Anwendungstyp** bei.
+1. Geben Sie unter **Name** einen Anwendungsnamen ein. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis (beliebigen Azure AD-Verzeichnis – mehrinstanzenfähig)** aus.
     
     ![Erstellen einer Anwendung](media/solution-office-365/create-application.png)
-1. Klicken Sie auf **Erstellen** und überprüfen Sie die Anwendungsinformationen.
+1. Klicken Sie auf **Registrieren**, und überprüfen Sie die Anwendungsinformationen.
 
     ![Registrierte App](media/solution-office-365/registered-app.png)
 
 ### <a name="configure-application-for-office-365"></a>Konfigurieren einer Anwendung für Office 365
 
-1. Klicken Sie auf **Einstellungen**, um das Menü **Einstellungen** zu öffnen.
-1. Wählen Sie **Eigenschaften** aus. Ändern Sie **Mehrinstanzenfähig** in _Ja_.
+1. Wählen Sie **Authentifizierung** aus, und vergewissern Sie sich, dass unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis (beliebigen Azure AD-Verzeichnis – mehrinstanzenfähig)** ausgewählt ist.
 
     ![Einstellungen „Mehrinstanzenfähig“](media/solution-office-365/settings-multitenant.png)
 
-1. Wählen Sie **Erforderliche Berechtigungen** im Menü **Einstellungen**, und klicken Sie auf **Hinzufügen**.
-1. Klicken Sie auf **Eine API auswählen** und dann auf **Office 365-Verwaltungs-APIs**. Klicken Sie auf **Office 365-Verwaltungs-APIs**. Klicken Sie auf **Auswählen**.
+1. Wählen Sie **API-Berechtigungen** und dann **Berechtigung hinzufügen** aus.
+1. Klicken Sie auf **Office 365-Verwaltungs-APIs**. 
 
     ![Auswählen der API](media/solution-office-365/select-api.png)
 
-1. Wählen Sie unter **Berechtigungen auswählen** die folgenden Optionen für sowohl **Anwendungsberechtigungen** als auch **Delegierte Berechtigungen**:
+1. Wählen Sie unter **Welche Art von Berechtigungen sind für Ihre Anwendung erforderlich?** die folgenden Optionen sowohl für **Anwendungsberechtigungen** als auch **Delegierte Berechtigungen** aus:
    - Dienstintegritätsinformationen für Ihre Organisation lesen
    - Aktivitätsdaten für Ihre Organisation lesen
    - Aktivitätsberichte für Ihre Organisation lesen
 
-     ![Auswählen der API](media/solution-office-365/select-permissions.png)
+     ![Auswählen der API](media/solution-office-365/select-permissions-01.png)![Auswählen der API](media/solution-office-365/select-permissions-02.png)
 
-1. Klicken Sie auf **Auswählen** und dann auf **Fertig**.
-1. Klicken Sie auf **Berechtigungen erteilen** und dann auf **Ja**, wenn Sie um Überprüfung gebeten werden.
+1. Klicken Sie a **Berechtigungen hinzufügen**.
+1. Klicken Sie auf **Administratoreinwilligung gewähren** und dann auf **Ja**, wenn Sie um Überprüfung gebeten werden.
 
-    ![Erteilen von Berechtigungen](media/solution-office-365/grant-permissions.png)
 
-### <a name="add-a-key-for-the-application"></a>Hinzufügen eines Schlüssels für die Anwendung
+### <a name="add-a-secret-for-the-application"></a>Hinzufügen eines Geheimnisses für die Anwendung
 
-1. Wählen Sie **Schlüssel** im Menü **Einstellungen**.
+1. Wählen Sie **Zertifikate & Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus.
+
+    ![Schlüssel](media/solution-office-365/secret.png)
+ 
 1. Geben Sie eine **Beschreibung** und die **Dauer** für den neuen Schlüssel ein.
-1. Klicken Sie auf **Speichern**, und kopieren Sie dann den generierten **Wert**.
+1. Klicken Sie auf **Hinzufügen**, und kopieren Sie dann den generierten **Wert**.
 
     ![Schlüssel](media/solution-office-365/keys.png)
 
@@ -530,9 +540,9 @@ Alle im Log Analytics-Arbeitsbereich in Azure Monitor von der Office 365-Lösung
 
 Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 |:--- |:--- |
-| Type | *OfficeActivity* |
+| type | *OfficeActivity* |
 | ClientIP | Die IP-Adresse des Geräts, das verwendet wurde, als die Aktivität protokolliert wurde. Die IP-Adresse wird im IPv4- oder IPv6-Adressformat angezeigt. |
 | OfficeWorkload | Office 365-Dienst, auf den sich der Datensatz bezieht.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Vorgang | Der Name der Benutzer- oder Administratoraktivität.  |
@@ -541,7 +551,7 @@ Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
 | ResultStatus | Gibt an, ob die Aktion (angegeben in der Eigenschaft „Operation“) erfolgreich war oder nicht. Mögliche Werte sind „Succeeded“, „PartiallySucceeded“ oder „Failed“. Bei Exchange-Administratoraktivitäten ist der Wert entweder „True“ oder „False“. |
 | UserId | Der Benutzerprinzipalname (User Principal Name, UPN) des Benutzers, der die Aktion ausgeführt hat, die zum Protokollieren des Datensatzes geführt hat, beispielsweise my_name@my_domain_name. Beachten Sie, dass auch Datensätze für die von Systemkonten ausgeführten Aktivitäten (z.B. „SHAREPOINT\system“ oder „NTAUTHORITY\SYSTEM“) enthalten sind. | 
 | UserKey | Eine alternative ID für den Benutzer, der in der Eigenschaft „UserId“ identifiziert wird.  Beispiel: Diese Eigenschaft wird für Ereignisse, die von Benutzern in SharePoint, OneDrive for Business und Exchange ausgeführt werden, mit der eindeutigen Passport-ID (PUID) aufgefüllt. Diese Eigenschaft kann für Ereignisse, die in anderen Diensten und Ereignissen von Systemkonten ausgeführt werden, auch den gleichen Wert wie die Eigenschaft „UserID“ angeben.|
-| UserType | Der Typ des Benutzers, der den Vorgang ausgeführt hat.<br><br>Administrator<br>Anwendung<br>DcAdmin<br>Regulär <br>Reserved<br>ServicePrincipal<br>System |
+| UserType | Der Typ des Benutzers, der den Vorgang ausgeführt hat.<br><br>Administrator<br>Anwendung<br>DcAdmin<br>Regulär<br>Reserved<br>ServicePrincipal<br>System |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory-Basis
@@ -562,12 +572,12 @@ Diese Datensätze werden erstellt, wenn ein Active Directory-Benutzer versucht, 
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectoryAccountLogon |
-| Anwendung | Die Anwendung, die das Kontoanmeldeereignis auslöst, z.B. Office 15. |
-| Client | Details zum Clientgerät, Betriebssystem des Geräts und Gerätebrowser, das bzw. der für das Kontoanmeldeereignis verwendet wurde. |
-| LoginStatus | Diese Eigenschaft stammt direkt von „OrgIdLogon.LoginStatus“. Die Zuordnung von verschiedenen interessanten Anmeldefehlern könnte durch Warnungsalgorithmen erfolgen. |
-| UserDomain | Die Informationen zur Mandantenidentität (Tenant Identity Information, TII). | 
+| `OfficeWorkload` | AzureActiveDirectory |
+| `RecordType`     | AzureActiveDirectoryAccountLogon |
+| `Application` | Die Anwendung, die das Kontoanmeldeereignis auslöst, z.B. Office 15. |
+| `Client` | Details zum Clientgerät, Betriebssystem des Geräts und Gerätebrowser, das bzw. der für das Kontoanmeldeereignis verwendet wurde. |
+| `LoginStatus` | Diese Eigenschaft stammt direkt von „OrgIdLogon.LoginStatus“. Die Zuordnung von verschiedenen interessanten Anmeldefehlern könnte durch Warnungsalgorithmen erfolgen. |
+| `UserDomain` | Die Informationen zur Mandantenidentität (Tenant Identity Information, TII). | 
 
 
 ### <a name="azure-active-directory"></a>Azure Active Directory

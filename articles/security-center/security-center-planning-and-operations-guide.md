@@ -2,31 +2,25 @@
 title: Planungs- und Betriebshandbuch für Security Center | Microsoft Docs
 description: Dieses Dokument ist hilfreich bei der Planung der Verwendung von Azure Security Center und informiert über Aspekte des täglichen Betriebs.
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: f984e4a2-ac97-40bf-b281-2f7f473494c4
+author: memildin
+manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/11/2019
-ms.author: monhaber
-ms.openlocfilehash: 3aae2d6adfd520f103ca1e1bd5e67eeb4b542a3d
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 62387fe7ddbde75e79724c77dd7eeedd5cae64c3
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523374"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201874"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
-Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, deren Organisation Azure Security Center verwenden möchte.
+Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, die mit Azure Security Center arbeiten möchte.
 
 
 ## <a name="planning-guide"></a>Planungshandbuch
-Dieses Handbuch enthält eine Reihe von Schritten und Aufgaben, mit denen Sie die Verwendung von Security Center auf Grundlage der Sicherheitsanforderungen und des Cloudverwaltungsmodells Ihres Unternehmens optimieren können. Für eine optimale Nutzung von Security Center ist es wichtig zu verstehen, wie der Dienst von den verschiedenen Personen oder Teams in Ihrer Organisation genutzt wird, um die Anforderungen in puncto sichere Entwicklung und sicherer Betrieb, Überwachung, Governance und Reaktionen auf Vorfälle zu erfüllen. Bei der Planung zur Verwendung von Security Center sind insbesondere folgende Aspekte zu berücksichtigen:
+Dieses Handbuch enthält Vorgänge, mit denen Sie die Verwendung von Security Center auf Grundlage der Sicherheitsanforderungen und des Cloudverwaltungsmodells Ihres Unternehmens optimieren können. Für eine optimale Nutzung von Security Center ist es wichtig zu verstehen, wie der Dienst von den verschiedenen Personen oder Teams in Ihrer Organisation genutzt wird, um die Anforderungen in puncto sichere Entwicklung und sicherer Betrieb, Überwachung, Governance und Reaktionen auf Vorfälle zu erfüllen. Bei der Planung zur Verwendung von Security Center sind insbesondere folgende Aspekte zu berücksichtigen:
 
 * Sicherheitsrollen und Zugriffsteuerungen
 * Sicherheitsrichtlinien und -empfehlungen
@@ -47,7 +41,7 @@ Je nach Größe und Struktur Ihrer Organisation wird Azure Security Center unter
 
 ![Rollen](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Security Center ermöglicht es den Personen, diese unterschiedlichen Aufgaben auszuführen. Beispiel: 
+Security Center ermöglicht es den Personen, diese unterschiedlichen Aufgaben auszuführen. Beispiel:
 
 **Jeff (Workloadbesitzer)**
 
@@ -81,27 +75,27 @@ Security Center verwendet die [rollenbasierte Zugriffssteuerung](../role-based-a
 - **Sicherheitsleseberechtigter:** Benutzer, die zu dieser Rolle gehören, können nur Security Center-Konfigurationen (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
 - **Sicherheitsadministrator:** Es gelten die gleichen Berechtigungen wie bei einem Sicherheitsleseberechtigten, zusätzlich sind jedoch auch Rechte zum Ändern der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen vorhanden.
 
-Die oben beschriebenen Security Center-Rollen haben keinen Zugriff auf andere Dienstbereiche von Azure wie Storage, Web & Mobile oder Internet der Dinge (IoT).  
+Die oben beschriebenen Security Center-Rollen haben keinen Zugriff auf andere Dienstbereiche von Azure wie Storage, Web & Mobile oder Internet der Dinge (IoT).
 
 Für die Personae im obigen Diagramm wären die folgenden RBAC-Einstellungen erforderlich:
 
 **Jeff (Workloadbesitzer)**
 
-* Ressourcengruppenbesitzer/-mitarbeiter
+* Ressourcengruppenbesitzer/-mitwirkender
 
 **David (IT-Sicherheit)**
 
-* Abonnementbesitzer/-mitarbeiter oder Sicherheitsadministrator
+* Abonnementbesitzer/-mitwirkender oder Sicherheitsadministrator
 
 **Judy (Security Operations)**
 
 * Abonnementleser oder Sicherheitsleseberechtigter zum Anzeigen von Warnungen
-* Abonnementbesitzer/-mitarbeiter oder Sicherheitsadministrator zum Verwerfen von Warnungen
+* Abonnementbesitzer/-mitwirkender oder Sicherheitsadministrator zum Verwerfen von Warnungen
 
 **Sam (Security Analyst)**
 
 * Abonnementleser zum Anzeigen von Warnungen
-* Abonnementbesitzer/-mitarbeiter zum Verwerfen von Warnungen
+* Abonnementbesitzer/-mitwirkender zum Verwerfen von Warnungen
 * Möglicherweise ist ein Zugriff auf den Arbeitsbereich erforderlich.
 
 Einige weitere wichtige Informationen, die es zu berücksichtigen gilt:
@@ -188,18 +182,18 @@ Der Abschnitt **Erkennung** ist eher reaktionsorientiert. Die Warnungen beziehen
 Planen Sie den täglichen Aufruf der Option [Informationen zu Bedrohungen](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) ein. Hier können Sie sich über Sicherheitsrisiken für die Umgebung informieren und so beispielsweise ermitteln, ob ein bestimmter Computer Teil eines Botnets ist.
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>Überwachung auf neue oder geänderte Ressourcen
-Die meisten Azure-Umgebungen sind dynamisch, sodass unter anderem immer wieder neue Ressourcen hinzukommen oder wegfallen und Konfigurationen geändert werden. Security Center trägt dazu bei, dass Sie den Überblick über den Sicherheitszustand dieser neuen Ressourcen behalten.
+Die meisten Azure-Umgebungen sind dynamisch, wobei Ressourcen regelmäßig erstellt, hoch- oder heruntergefahren, neu konfiguriert und geändert werden. Security Center trägt dazu bei, dass Sie den Überblick über den Sicherheitszustand dieser neuen Ressourcen behalten.
 
 Wenn Sie Ihrer Azure-Umgebung neue Ressourcen (virtuelle Computer, SQL-Datenbanken) hinzufügen, erkennt Security Center dies automatisch und beginnt mit der Überwachung ihrer Sicherheit. Hierzu gehören auch PaaS-Webrollen und -Workerrollen. Wenn in der [Sicherheitsrichtlinie](tutorial-security-policy.md)die Datensammlung aktiviert ist, werden für Ihre virtuellen Computer automatisch zusätzliche Überwachungsfunktionen aktiviert.
 
 ![Wichtige Bereiche](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-newUI.png)
 
-1. Klicken Sie für virtuelle Computer im Abschnitt **Prävention** auf **Compute**. Probleme mit der Aktivierung der Datensammlung oder entsprechenden Empfehlungen werden auf der Registerkarte **Übersicht** und im Abschnitt **Überwachungsempfehlungen** behandelt.
+1. Klicken Sie für virtuelle Computer im Abschnitt **Ressourcensicherheit** auf **Compute und Apps**. Probleme mit der Aktivierung der Datensammlung oder entsprechenden Empfehlungen werden auf der Registerkarte **Übersicht** und im Abschnitt **Überwachungsempfehlungen** behandelt.
 2. In den **Empfehlungen** erfahren Sie, ob (und wenn ja, welche) Sicherheitsrisiken für die neue Ressource gefunden wurden.
 3. Auf virtuellen Computern, die der Umgebung neu hinzugefügt werden, ist zunächst häufig nur das Betriebssystem installiert. Der Ressourcenbesitzer benötigt unter Umständen etwas Zeit, um weitere Apps bereitzustellen, die von diesen virtuellen Computern verwendet werden.  Im Idealfall sollten Sie den endgültigen Zweck der Workload kennen. Wird der Computer als Anwendungsserver verwendet? Je nach Zweck der neuen Workload können Sie dann die passende **Sicherheitsrichtlinie** aktivieren. Dies ist der dritte Schritt in diesem Workflow.
-4. Wenn der Azure-Umgebung neue Ressourcen hinzugefügt werden, werden auf der Kachel **Sicherheitswarnungen** unter Umständen neue Warnungen angezeigt. Prüfen Sie die Kachel immer auf neue Warnungen, und setzen Sie die Empfehlungen von Security Center um.
+4. Wenn Ihrer Azure-Umgebung neue Ressourcen hinzugefügt werden, werden auf der Kachel **Sicherheitswarnungen** möglicherweise neue Warnungen angezeigt. Suchen Sie nach neuen Warnungen auf dieser Kachel, und befolgen Sie die Empfehlungen.
 
-Außerdem empfiehlt es sich, regelmäßig den Zustand vorhandener Ressourcen zu prüfen, um Konfigurationsänderungen zu identifizieren, die zu Sicherheitsrisiken geführt haben, nicht den empfohlenen Grundwerten entsprechen und Sicherheitswarnungen generiert haben. Navigieren Sie hierzu zunächst zum Security Center-Dashboard. Hier gibt es drei Hauptbereiche, die Sie regelmäßig überprüfen sollten.
+Außerdem sollten Sie die vorhandenen Ressourcen regelmäßig auf Konfigurationsänderungen prüfen, die Sicherheitsrisiken, Abweichungen von den empfohlenen Grundwerten und Sicherheitswarnungen verursacht haben könnten. Navigieren Sie hierzu zunächst zum Security Center-Dashboard. Hier gibt es drei Hauptbereiche, die Sie regelmäßig überprüfen sollten.
 
 ![Vorgänge](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
 
@@ -211,11 +205,11 @@ Außerdem empfiehlt es sich, regelmäßig den Zustand vorhandener Ressourcen zu 
 
 Im Rahmen Ihrer Sicherheitsmaßnahmen sollten Sie auch vorbeugende Maßnahmen zur Beschränkung des Zugriffs auf virtuelle Computer ergreifen und die Anwendungen überwachen, die auf virtuellen Computern ausgeführt werden. Die Sperrung des eingehenden Datenverkehrs für Ihre virtuellen Azure-Computer trägt zur Verringerung der Angriffsfläche bei und ermöglicht gleichzeitig eine komfortable bedarfsgerechte Verbindungsherstellung mit virtuellen Computern. Verwenden Sie das Feature [JIT-VM-Zugriff](https://docs.microsoft.com/azure/security-center/security-center-just-in-time), um den Zugriff auf Ihre virtuellen Computer zu härten.
 
-Mit [adaptiven Anwendungssteuerungen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) lässt sich steuern, welche Anwendungen auf Ihren virtuellen Computern in Azure ausgeführt werden können. Dadurch können Sie Ihre virtuellen Computer unter anderem besser vor Schadsoftware schützen. Security Center nutzt Machine Learning, um die auf dem virtuellen Computer ausgeführten Prozesse zu analysieren, und unterstützt Sie beim Anwenden von Whitelistregeln, die auf diesen Daten basieren.
+Sie können [adaptive Anwendungssteuerungen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) verwenden, um einzugrenzen, welche Anwendungen auf Ihren in Azure befindlichen virtuellen Computern ausgeführt werden können. Neben anderen Vorteilen verbessert dies die Möglichkeiten, ihre virtuellen Computer vor Schadsoftware zu schützen. Über Verwenden von maschinellem Lernen werden in Security Center Prozesse analysiert, die auf den virtuellen Computer ausgeführt werden. Aus den Analysen können dann Whitelistregeln erstellt werden.
 
 
 ## <a name="incident-response"></a>Reaktion auf Vorfälle
-Security Center erkennt Bedrohungen, wenn diese entstehen, und macht Sie darauf aufmerksam. Organisationen sollten eine Überwachung auf neue Sicherheitswarnungen implementieren und bei Bedarf geeignete Maßnahmen zur weiteren Untersuchung oder Abwehr des Angriffs ergreifen. Weitere Informationen zur Funktionsweise der Security Center-Bedrohungserkennung finden Sie unter [Azure Security Center-Erkennungsfunktionen](security-center-detection-capabilities.md).
+Security Center erkennt Bedrohungen, wenn diese entstehen, und macht Sie darauf aufmerksam. Organisationen sollten eine Überwachung auf neue Sicherheitswarnungen implementieren und bei Bedarf geeignete Maßnahmen zur weiteren Untersuchung oder Abwehr des Angriffs ergreifen. Weitere Informationen zur Funktionsweise der Security Center-Bedrohungserkennung finden Sie unter [Erkennen von und Reagieren auf Bedrohungen mit Azure Security Center](security-center-alerts-overview.md#detect-threats).
 
 Dieser Artikel soll Ihnen zwar nicht als Hilfe beim Erstellen eines eigenen Plans für Reaktionen auf Zwischenfälle dienen, aber wir verwenden Microsoft Azure Security Response im Cloudlebenszyklus als Grundlage für die Phasen der Reaktionen auf Zwischenfälle. Die Phasen sind in der folgenden Abbildung dargestellt:
 
@@ -246,7 +240,7 @@ Nach Ermittlung des betroffenen Systems können Sie zuvor erstellte [Sicherheits
 Das Video [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) (Nutzen von Azure Security Center und Microsoft Operations Management Suite für eine Reaktion auf Vorfälle) enthält Demos, mit denen verdeutlicht wird, wie Sie Security Center in den einzelnen Phasen nutzen können.
 
 > [!NOTE]
-> Unter [Verwenden von Azure Security Center zur Reaktion auf Vorfälle](security-center-incident-response.md) erhalten Sie weitere Informationen dazu, wie Security Center-Funktionen Sie während des Prozesses zur Reaktion auf Vorfälle unterstützen.
+> Unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) erhalten Sie weitere Informationen dazu, wie Security Center-Funktionen Sie während des Prozesses zur Reaktion auf Vorfälle unterstützen.
 >
 >
 

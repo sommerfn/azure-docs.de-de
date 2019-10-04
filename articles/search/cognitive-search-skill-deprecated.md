@@ -2,21 +2,19 @@
 title: Veraltete kognitive Qualifikationen – Azure Search
 description: Diese Seite enthält eine Liste der Qualifikationen für die kognitive Suche, die als veraltet betrachtet und in naher Zukunft nicht mehr unterstützt werden.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: e4849487c2dd9330dbf9e6b6cf0ed4d1b6b96020
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 1e78852ec8b92f1a9e37a4dbcbbcb371c0ac0f97
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958098"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265434"
 ---
 # <a name="deprecated-cognitive-search-skills"></a>Veraltete Qualifikationen für die kognitive Suche
 
@@ -43,7 +41,8 @@ Verwenden Sie stattdessen [Microsoft.Skills.Text.EntityRecognitionSkill](cogniti
 
 Um zur [Qualifikation „Entitätserkennung“ (EntityRecognitionSkill)](cognitive-search-skill-entity-recognition.md) zu migrieren, müssen Sie eine oder mehrere der folgenden Änderungen an Ihrer Qualifikationsdefinition vornehmen. Ein Update der Qualifikationsdefinition können Sie mit der [API zum Aktualisieren von Qualifikationsgruppen](https://docs.microsoft.com/rest/api/searchservice/update-skillset) vornehmen.
 
-_Hinweis_: Derzeit wird die Zuverlässigkeitsbewertung als Konzept nicht unterstützt. Die Unterstützung wird in naher Zukunft verfügbar sein. Der Parameter `minimumPrecision` ist zur zukünftigen Verwendung und zur Bereitstellung der Abwärtskompatibilität in `EntityRecognitionSkill` enthalten.
+> [!NOTE]
+> Derzeit wird die Zuverlässigkeitsbewertung als Konzept nicht unterstützt. Der Parameter `minimumPrecision` ist zur zukünftigen Verwendung und zur Bereitstellung der Abwärtskompatibilität in `EntityRecognitionSkill` enthalten.
 
 1. *(Erforderlich)* Ändern Sie `@odata.type` von `"#Microsoft.Skills.Text.NamedEntityRecognitionSkill"` in `"#Microsoft.Skills.Text.EntityRecognitionSkill"`.
 

@@ -2,7 +2,7 @@
 title: Upgrade auf Azure Search .NET SDK Version 1.1 – Azure Search
 description: Migrieren von Code zu Azure Search .NET SDK Version 1.1 von älteren API-Versionen. Hier finden Sie Informationen zu Neuheiten und erfahren, welche Änderungen am Code erforderlich sind.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: dotnet
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 82823bae76521080634d4f7ff285d94ce8495fbf
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8227e1b372af1eee43db59da2cfad165d67be9ae
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317286"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183269"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Upgrade auf Version 1.1 des Azure Search .NET SDK
 
@@ -174,7 +174,7 @@ Zum Beheben von Buildfehlern können Sie diesen Code folgendermaßen ändern:
         };
 
 ### <a name="model-class-changes"></a>Änderungen an Modellklassen
-Aufgrund der Signaturänderungen, die unter [Änderungen an der Vorgangsmethode](#OperationMethodChanges) beschrieben werden, wurden viele Klassen im `Microsoft.Azure.Search.Models`-Namespace umbenannt oder entfernt. Beispiel: 
+Aufgrund der Signaturänderungen, die unter [Änderungen an der Vorgangsmethode](#OperationMethodChanges) beschrieben werden, wurden viele Klassen im `Microsoft.Azure.Search.Models`-Namespace umbenannt oder entfernt. Beispiel:
 
 * `IndexDefinitionResponse` wurde durch `AzureOperationResponse<Index>` ersetzt.
 * `DocumentSearchResponse` wurde in `DocumentSearchResult` umbenannt.

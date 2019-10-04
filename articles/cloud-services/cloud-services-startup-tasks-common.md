@@ -3,23 +3,17 @@ title: Häufige Starttasks für Clouddienste | Microsoft-Dokumentation
 description: Enthält einige Beispiele für häufige Starttasks, die Sie vielleicht in der Web- oder Workerrolle des Clouddiensts ausführen möchten.
 services: cloud-services
 documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: a7095dad-1ee7-4141-bc6a-ef19a6e570f1
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: jeconnoc
-ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: gwallace
+ms.openlocfilehash: 2eb299ad841444a3100eac207b225d5377959f85
+ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916653"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68358957"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Allgemeine Starttasks für Clouddienste
 Dieser Artikel enthält einige Beispiele für häufiger ausgeführte Starttasks, die Sie vielleicht im Clouddienst ausführen möchten. Mit Starttasks können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Zu den Vorgängen, die Sie vielleicht ausführen möchten, gehören das Installieren von Komponenten, das Registrieren von COM-Komponenten, das Festlegen von Registrierungsschlüsseln und das Starten eines lang andauernden Prozesses. 
@@ -73,7 +67,7 @@ Die von *AppCmd.exe* zurückgegebenen errorlevel-Werte sind in der Datei „Wine
 ### <a name="example-of-managing-the-error-level"></a>Beispiel für die Verwaltung von Fehlerstufen
 In diesem Beispiel wird ein Komprimierungsabschnitt und ein Komprimierungseintrag für JSON mit Fehlerbehandlung und-Protokollierung in der Datei *Web.config* hinzugefügt.
 
-Die relevanten Abschnitte der Datei [ServiceDefinition.csdef] werden hier gezeigt, insbesondere das Festlegen des [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#Task)-Attributs auf `elevated`, um *AppCmd.exe* ausreichende Berechtigungen zum Ändern der Einstellungen in der Datei *Web.config* zu gewähren:
+Die relevanten Abschnitte der Datei [ServiceDefinition.csdef] werden hier gezeigt, insbesondere das Festlegen des [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task)-Attributs auf `elevated`, um *AppCmd.exe* ausreichende Berechtigungen zum Ändern der Einstellungen in der Datei *Web.config* zu gewähren:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -383,7 +377,7 @@ EXIT /B 0
 Hier sind einige bewährten Methoden, die Sie beim Konfigurieren eines Tasks für Ihre Web- oder Workerrolle befolgen sollten.
 
 ### <a name="always-log-startup-activities"></a>Protokollieren Sie stets alle Startaktivitäten
-Visual Studio bietet keinen Debugger zum schrittweisen Durchlaufen von Batchdateien, daher ist es ratsam, möglichst viele Daten über die Ausführung der Batchdateien zu erhalten. Beim Protokollieren der Ausgabe von Batchdateien können sowohl **stdout** als auch **stderr** wichtige Informationen beim Debuggen und Korrigieren von Batchdateien liefern. Um sowohl **stdout** als auch **stderr** in der Datei „StartupLog.txt“ in dem Verzeichnis zu protokollieren, auf das die **%TEMP%**-Umgebungsvariable verweist, fügen Sie den Text `>>  "%TEMP%\\StartupLog.txt" 2>&1` am Ende der Zeilen ein, die Sie protokollieren möchten. So führen Sie z.B. „setup.exe“ im **%PathToApp1Install%**-Verzeichnis aus:
+Visual Studio bietet keinen Debugger zum schrittweisen Durchlaufen von Batchdateien, daher ist es ratsam, möglichst viele Daten über die Ausführung der Batchdateien zu erhalten. Beim Protokollieren der Ausgabe von Batchdateien können sowohl **stdout** als auch **stderr** wichtige Informationen beim Debuggen und Korrigieren von Batchdateien liefern. Um sowohl **stdout** als auch **stderr** in der Datei „StartupLog.txt“ in dem Verzeichnis zu protokollieren, auf das die **%TEMP%** -Umgebungsvariable verweist, fügen Sie den Text `>>  "%TEMP%\\StartupLog.txt" 2>&1` am Ende der Zeilen ein, die Sie protokollieren möchten. So führen Sie z.B. „setup.exe“ im **%PathToApp1Install%** -Verzeichnis aus:
 
     "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
 

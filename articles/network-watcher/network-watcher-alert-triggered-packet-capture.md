@@ -3,8 +3,8 @@ title: Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit 
 description: In diesem Artikel wird beschrieben, wie Sie eine per Warnung ausgelöste Paketerfassung mit Azure Network Watcher erstellen.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: c7bfd36bb4e36b10487edbbaa40421f067c9ed3e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: kumud
+ms.openlocfilehash: d894fabf3cfd4c6949aba94d558751bf007356d9
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048757"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165155"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions
 
@@ -84,7 +84,7 @@ Im ersten Schritt wird eine Azure-Funktion zum Verarbeiten der Warnung und Erste
     |**Location**|USA (Mitte)| Die Region, in der Sie die Funktions-App erstellen möchten|
     |**Speicherkonto**|{automatisch generiert}| Das Speicherkonto, das von Azure Functions für allgemeine Speicherzwecke benötigt wird.|
 
-3. Wählen Sie auf dem Blatt **PacketCaptureExample** der Funktionen-App die Option **Funktionen** > **Benutzerdefinierte Funktion** >**+** aus.
+3. Wählen Sie auf dem Blatt **PacketCaptureExample** der Funktionen-App die Option **Funktionen** > **Benutzerdefinierte Funktion** > **+** aus.
 
 4. Wählen Sie **HttpTrigger Powershell** aus, und geben Sie dann die übrigen Informationen ein. Wählen Sie abschließend **Erstellen** aus, um die Funktion zu erstellen.
 
@@ -305,8 +305,7 @@ Bei dem folgenden Beispiel handelt es sich um PowerShell-Code, der in der Funkti
                 Write-Output ("Resource Type:  {0}" -f $requestBody.context.resourceType)
 
                 #Get the Network Watcher in the VM's region
-                $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
-                $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+                $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
 
                 #Get existing packetCaptures
                 $packetCaptures = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher

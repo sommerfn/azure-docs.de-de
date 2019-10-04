@@ -11,18 +11,21 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 8c1c96fdb1f4f42c7592791881b855f74d411171
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444801"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018286"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Automatisches Skalieren einer Azure API Management-Instanz  
 
 Eine Azure API Management-Dienstinstanz kann basierend auf einer Reihe von Regeln automatisch skaliert werden. Dieses Verhalten kann über Azure Monitor aktiviert und konfiguriert werden und wird nur in den Tarifen **Standard** und **Premium** des Azure API Management-Diensts unterstützt.
 
 In diesem Artikel wird der Prozess des Konfigurierens der automatischen Skalierung erläutert und die optimale Konfiguration der Regeln zur automatischen Skalierung empfohlen.
+
+> [!NOTE]
+> Der API Management-Dienst im **Verbrauchstarif** wird automatisch basierend auf dem Datenverkehr skaliert, ohne dass eine zusätzliche Konfiguration erforderlich wäre.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +36,7 @@ Damit Sie den Schritten in diesem Artikel folgen können, benötigen Sie folgend
 + Vertrautheit mit dem Konzept der [Kapazität einer Azure API Management-Instanz](api-management-capacity.md)
 + Vertrautheit mit dem [Prozess der manuellen Skalierung einer Azure API Management-Instanz](upgrade-and-scale.md), einschließlich den sich ergebenden Kosten
 
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+[!INCLUDE [premium-standard.md](../../includes/api-management-availability-premium-standard.md)]
 
 ## <a name="azure-api-management-autoscale-limitations"></a>Einschränkungen im Hinblick auf die automatische Skalierung von Azure API Management
 
@@ -105,7 +108,7 @@ Führen Sie zum Konfigurieren der automatischen Skalierung für einen Azure API 
     | Zeitaggregation      | Durchschnitt           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Metrikname           | Capacity          | Gleiche Metrik wie die für die Regel zum horizontalen Hochskalieren.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
     | Statistik zum Aggregationsintervall  | Durchschnitt           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Operator              | Kleiner als          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Operator              | Kleiner als         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Schwellenwert             | 35 %               | Ähnlich wie bei der Regel zum horizontalen Hochskalieren hängt dieser Wert stark von den Verwendungsmustern von Azure API Management ab. |
     | Dauer (in Minuten) | 30                | Gleicher Wert wie der für die Regel zum horizontalen Hochskalieren.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | *Aktion*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |

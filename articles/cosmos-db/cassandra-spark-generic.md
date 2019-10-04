@@ -7,13 +7,13 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 75d2930363b6ad1aeace22d7529df04f31deefe5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 09/01/2019
+ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037224"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241242"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Herstellen einer Verbindung mit der Azure Cosmos DB-Cassandra-API von Spark
 
@@ -29,7 +29,7 @@ Dieser Artikel stammt aus einer Reihe von Artikeln zur Integration der Cosmos DB
 
 * **Bibliothek für das Azure Cosmos DB-Hilfsprogramm für die Cassandra-API:** Neben dem Spark-Connector benötigen Sie eine weitere Bibliothek mit dem Namen [azure-cosmos-cassandra-spark-helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) von Azure Cosmos DB. Diese Bibliothek enthält benutzerdefinierte Klassen für die Verbindungsfactory und Wiederholungsrichtlinie.
 
-  Die Wiederholungsrichtlinie in Azure Cosmos DB ist für die Verarbeitung von Ausnahmen mit dem HTTP-Statuscode 429 („Anforderungsrate ist groß“) konfiguriert. Die Azure Cosmos DB-Cassandra-API übersetzt diese Ausnahmen in Überladungsfehler im nativen Cassandra-Protokoll, und Sie können mit Backoffs wiederholen. Da Azure Cosmos DB das bereitgestellte Durchsatzmodell verwendet, treten Ausnahmen in Bezug auf große Anforderungsraten auf, wenn die Rate der eingehenden/ausgehenden Daten steigt. Durch die Wiederholungsrichtlinie werden Ihre Spark-Aufträge vor Datenspitzen geschützt, die den für Ihre Sammlung zugeordneten Durchsatz vorübergehend überschreiten.
+  Die Wiederholungsrichtlinie in Azure Cosmos DB ist für die Verarbeitung von Ausnahmen mit dem HTTP-Statuscode 429 („Anforderungsrate ist groß“) konfiguriert. Die Azure Cosmos DB-Cassandra-API übersetzt diese Ausnahmen in Überladungsfehler im nativen Cassandra-Protokoll, und Sie können mit Backoffs wiederholen. Da Azure Cosmos DB das bereitgestellte Durchsatzmodell verwendet, treten Ausnahmen in Bezug auf große Anforderungsraten auf, wenn die Rate der eingehenden/ausgehenden Daten steigt. Durch die Wiederholungsrichtlinie werden Ihre Spark-Aufträge vor Datenspitzen geschützt, die den für Ihren Container zugeordneten Durchsatz vorübergehend überschreiten.
 
   > [!NOTE] 
   > Die Wiederholungsrichtlinie kann Ihre Spark-Aufträge nur vor temporären Spitzen schützen. Wenn Sie nicht genügend RUs konfiguriert haben, die zum Ausführen Ihrer Workloads erforderlich sind, ist die Wiederholungsrichtlinie nicht anwendbar, und die Richtlinienklasse löst erneut die Ausnahme aus.
@@ -46,8 +46,8 @@ Die folgende Tabelle enthält die für die Azure Cosmos DB-Cassandra-API spezifi
 | spark.cassandra.connection.connections_per_executor_max  | Keine | Maximale Anzahl von Verbindungen pro Knoten pro Executor. 10 x n entspricht 10 Verbindungen pro Knoten in einem Cassandra-Cluster mit n Knoten. Wenn Sie also 5 Verbindungen pro Knoten pro Executor für einen Cassandra-Cluster mit 5 Knoten benötigen, sollten Sie diese Konfiguration auf „25“ festlegen. Ändern Sie diesen Wert basierend auf dem Parallelitätsgrad oder der Anzahl von Executors, für die Ihre Spark-Aufträge konfiguriert sind.   |
 | spark.cassandra.output.concurrent.writes  |  100 | Definiert die Anzahl von parallelen Schreibvorgängen, die pro Executor auftreten können. Da Sie „batch.size.rows“ auf „1“ festlegen, skalieren Sie diesen Wert entsprechend hoch. Ändern Sie diesen Wert basierend auf dem Parallelitätsgrad oder dem Durchsatz, den Sie für Ihren Workload erzielen möchten. |
 | spark.cassandra.concurrent.reads |  512 | Definiert die Anzahl der parallelen Lesevorgänge, die pro Executor auftreten können. Ändern Sie diesen Wert basierend auf dem Parallelitätsgrad oder dem Durchsatz, den Sie für Ihren Workload erzielen möchten.  |
-| spark.cassandra.output.throughput_mb_per_sec  | Keine | Definiert den gesamten Schreibdurchsatz pro Executor. Dieser Parameter kann als oberer Grenzwert für den Durchsatz Ihres Spark-Auftrags verwendet werden und basiert auf dem bereitgestellten Durchsatz Ihrer Cosmos DB-Sammlung.   |
-| spark.cassandra.input.reads_per_sec| Keine   | Definiert den gesamten Lesedurchsatz pro Executor. Dieser Parameter kann als oberer Grenzwert für den Durchsatz Ihres Spark-Auftrags verwendet werden und basiert auf dem bereitgestellten Durchsatz Ihrer Cosmos DB-Sammlung.  |
+| spark.cassandra.output.throughput_mb_per_sec  | Keine | Definiert den gesamten Schreibdurchsatz pro Executor. Dieser Parameter kann als oberer Grenzwert für den Durchsatz Ihres Spark-Auftrags verwendet werden und basiert auf dem bereitgestellten Durchsatz Ihres Cosmos-Containers.   |
+| spark.cassandra.input.reads_per_sec| Keine   | Definiert den gesamten Lesedurchsatz pro Executor. Dieser Parameter kann als oberer Grenzwert für den Durchsatz Ihres Spark-Auftrags verwendet werden und basiert auf dem bereitgestellten Durchsatz Ihres Cosmos-Containers.  |
 | spark.cassandra.output.batch.grouping.buffer.size |  1000  | Definiert die Anzahl der Batches pro Spark-Task, die In-Memory gespeichert werden können, bevor diese an die Cassandra-API gesendet werden. |
 | spark.cassandra.connection.keep_alive_ms | 60000 | Definiert den Zeitraum, in dem nicht verwendete Verbindungen zur Verfügung stehen. | 
 

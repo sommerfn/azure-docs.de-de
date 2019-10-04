@@ -1,19 +1,18 @@
 ---
 title: Automatische Installation von Azure Backup Server V2
 description: Verwenden Sie ein PowerShell-Skript für die automatische Installation von Azure Backup Server v2. Diese Art der Installation wird auch als unbeaufsichtigte Installation bezeichnet.
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: raynew
-ms.openlocfilehash: 66ed5765a91b607bc5b765926c5df87d13ff6a24
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: dacurwin
+ms.openlocfilehash: 3777aecea5e25b33a7010ad90887829406e491ae
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109847"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210170"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Ausführen einer unbeaufsichtigten Installation von Azure Backup Server
 
@@ -27,7 +26,7 @@ Diese Schritte gelten nicht, wenn Sie Azure Backup Server V1 installieren.
 
 2. Fügen Sie den folgenden Code in die Datei „MABSSetup.ini“ ein. Ersetzen Sie den Text in Klammern (\< \>) durch Werte aus Ihrer Umgebung. Der folgende Text ist ein Beispiel:
 
-   ```
+   ```text
    [OPTIONS]
    UserName=administrator
    CompanyName=<Microsoft Corporation>
@@ -50,7 +49,7 @@ Diese Schritte gelten nicht, wenn Sie Azure Backup Server V1 installieren.
 
 3. Speichern Sie die Datei . Geben Sie dann an einer Eingabeaufforderung mit erhöhten Rechten auf dem Installationsserver diesen Befehl ein:
 
-   ```
+   ```cmd
    start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
    ```
 

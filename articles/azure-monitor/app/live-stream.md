@@ -10,19 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 588b8b11a02551a790145aafb013759699004267
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 4e1d83d99f6df9407e24e2ae57af70f68858092d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009964"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012753"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Überwachung und Diagnose mit einer Latenzzeit von 1 Sekunde
 
-Überprüfen Sie die Funktionsfähigkeit Ihrer Livewebanwendung in der Produktion mithilfe von Live Metrics Stream von [Application Insights](../../azure-monitor/app/app-insights-overview.md). Wählen und filtern Sie Metriken und Leistungsindikatoren für die Überwachung in Echtzeit, ohne dass der Dienst beeinträchtigt wird. Überprüfen Sie Stapelüberwachungen von fehlerhaften Anforderungen und Ausnahmen. In Kombination mit [Profiler](../../azure-monitor/app/profiler.md), [Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md) und [Leistungstests](../../azure-monitor/app/monitor-web-app-availability.md#performance-tests) bietet Live Metrics Stream ein leistungsfähiges und nicht invasives Diagnosetool für Ihre Livewebsite.
+Überprüfen Sie die Funktionsfähigkeit Ihrer Livewebanwendung in der Produktion mithilfe von Live Metrics Stream von [Application Insights](../../azure-monitor/app/app-insights-overview.md). Wählen und filtern Sie Metriken und Leistungsindikatoren für die Überwachung in Echtzeit, ohne dass der Dienst beeinträchtigt wird. Überprüfen Sie Stapelüberwachungen von fehlerhaften Anforderungen und Ausnahmen. Zusammen mit dem [Profiler](../../azure-monitor/app/profiler.md) und dem [Momentaufnahmedebugger](../../azure-monitor/app/snapshot-debugger.md) stellt Live Metrics Stream ein leistungsfähiges und nicht invasives Diagnosetool für Ihre Live-Website dar.
 
 Mit Live Metrics Stream haben Sie folgende Möglichkeiten:
 
@@ -34,7 +34,7 @@ Mit Live Metrics Stream haben Sie folgende Möglichkeiten:
 * Überwachen Sie Windows-Leistungsindikatoren live.
 * Identifizieren Sie mühelos einen Server mit Problemen, und filtern Sie nach allen KPIs/dem Livefeed nur für diesen Server.
 
-[![Live Metrics Stream video (Video zu Live Metrics Stream)](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+[![Video zu Live Metrics Stream](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
 Livemetriken werden derzeit für ASP.NET-, ASP.NET Core-, Azure Functions-, Java- und Node.js-Apps unterstützt.
 
@@ -50,22 +50,24 @@ Livemetriken werden derzeit für ASP.NET-, ASP.NET Core-, Azure Functions-, Java
 
 4. [Sichern Sie den Steuerkanal](#secure-the-control-channel), wenn Sie sensible Daten (z.B. Kundennamen) in Ihren Filtern verwenden möchten.
 
+### <a name="nodejs"></a>Node.js
+
+Um Live Metrics mit Node.js verwenden zu können, müssen Sie ein Update auf die SDK-Version 1.30 oder höher durchführen. Standardmäßig ist Live Metrics im Node.js SDK deaktiviert. Um Live Metrics zu aktivieren, fügen Sie `setSendLiveMetrics(true)` zu Ihren [Konfigurationsmethoden](https://github.com/Microsoft/ApplicationInsights-node.js#configuration) hinzu, während Sie das SDK initialisieren.
+
 ### <a name="no-data-check-your-server-firewall"></a>Sie sehen keine Daten? Überprüfen Sie die Serverfirewall
 
 Überprüfen Sie, ob die [ausgehenden Ports für Live Metrics Stream](../../azure-monitor/app/ip-addresses.md#outgoing-ports) in der Firewall Ihrer Server geöffnet sind. 
-
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>Wie unterscheidet sich Live Metrics Stream von Metrik-Explorer und Analytics?
 
 | |Live Stream | Metrik-Explorer und Analytics |
 |---|---|---|
 |Latenz|Daten werden innerhalb einer Sekunde angezeigt.|Aggregation innerhalb mehrerer Minuten|
-|Keine Beibehaltung|Daten werden beibehalten, solange sie im Diagramm angezeigt werden, und dann verworfen.|[Daten werden 90 Tage lang aufbewahrt.](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|Keine Beibehaltung|Daten werden beibehalten, solange sie im Diagramm angezeigt werden, und dann verworfen.|[Daten werden 90 Tage lang beibehalten.](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |On-Demand-Streaming|Daten werden beim Öffnen von Live Metrics gestreamt.|Daten werden gesendet, sobald das SDK installiert und aktiviert wird.|
 |Kostenlos|Keine Gebühren für Live Stream-Daten|[Gebührenpflichtig](../../azure-monitor/app/pricing.md)
 |Stichproben|Alle ausgewählten Metriken und Indikatoren werden übertragen. Für Fehler und Stapelüberwachungen werden Stichproben erstellt. Telemetrieprozessoren werden nicht angewendet.|Für Ereignisse können [Stichproben](../../azure-monitor/app/api-filtering-sampling.md) erstellt werden.|
 |Steuerkanal|Filtersteuersignale werden an das SDK gesendet. Es empfiehlt sich, diesen Kanal zu sichern.|Unidirektionale Kommunikation zum Portal|
-
 
 ## <a name="select-and-filter-your-metrics"></a>Auswählen und Filtern der Metriken
 
@@ -105,7 +107,12 @@ Wenn Sie eine bestimmte Serverrolleninstanz überwachen möchten, können Sie na
 ![Auswahl der Live-Fehler](./media/live-stream/live-stream-filter.png)
 
 ## <a name="sdk-requirements"></a>SDK-Anforderungen
+
+### <a name="net"></a>.NET
 Die benutzerdefinierte Live Metrics Stream-Instanz steht mit der Webversion 2.4.0-beta2 oder höher von [Application Insights SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) zur Verfügung. Denken Sie daran, im NuGet-Paket-Manager die Option „Vorabversion einbeziehen“ auszuwählen.
+
+### <a name="nodejs"></a>Node.js
+Die Live Metrics Stream-Instanz steht mit der Version 1.3.0 oder höher von [Application Insights SDK für Node.js](https://npmjs.com/package/applicationinsights) zur Verfügung. Denken Sie beim Konfigurieren des SDK in Ihrem Code daran, `setSendLiveMetrics(true)` zu verwenden.
 
 ## <a name="secure-the-control-channel"></a>Sichern des Steuerkanals
 Die von Ihnen angegebenen benutzerdefinierten Filterkriterien werden an die Livemetrikkomponente des Application Insights SDK zurückgesendet. Der Filter können potenziell vertrauliche Informationen wie z.B. Kunden-IDs enthalten. Zum Sichern des Kanals können Sie neben dem Instrumentierungsschlüssel auch einen geheimen API-Schlüssel verwenden.
@@ -173,13 +180,13 @@ Erstellen Sie einen API-Schlüssel in Ihrer Application Insights-Ressource, und 
 
 Fügen Sie zunächst Folgendes hinzu
 
-``` C#
+```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 ```
 
 Fügen Sie dann in der ConfigureServices-Methode Folgendes hinzu:
 
-``` C#
+```csharp
 services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
 ```
 
@@ -191,15 +198,6 @@ Wenn Sie jedoch alle verbundenen Server erkennen und ihnen vertrauen, können Si
 >Es wird dringend empfohlen, dass Sie den authentifizierten Kanal vor dem Eingeben von potenziell vertraulichen Informationen wie der Kunden-ID in den Filterkriterien einrichten.
 >
 
-## <a name="generating-a-performance-test-load"></a>Generieren einer Leistungstestauslastung
-
-Verwenden Sie das Blatt „Leistungstest“, wenn Sie die Auswirkungen einer zunehmenden Auslastung überwachen möchten. Beim Leistungstest werden Anforderungen von mehreren gleichzeitigen Benutzern simuliert. Sie können entweder „manuelle Tests“ (Ping-Tests) einer einzelnen URL oder einen [Webleistungstest mit mehreren Schritten](../../azure-monitor/app/monitor-web-app-availability.md#multi-step-web-tests) ausführen, den Sie hochladen (auf dieselbe Weise wie einen Verfügbarkeitstest).
-
-> [!TIP]
-> Öffnen Sie nach dem Erstellen des Leistungstests den Test und das Live Stream-Blatt in separaten Fenstern. So können Sie sehen, wann der Leistungstest in der Warteschlange gestartet wird, und gleichzeitig den Livestream überwachen.
->
-
-
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Sie sehen keine Daten? Wenn sich Ihre Anwendung in einem geschützten Netzwerk befindet: Live Metrics Stream verwendet andere IP-Adressen als die weiteren Application Insights-Telemetriedaten. Stellen Sie sicher, dass [diese IP-Adressen](../../azure-monitor/app/ip-addresses.md) in Ihrer Firewall geöffnet sind.
@@ -207,7 +205,7 @@ Sie sehen keine Daten? Wenn sich Ihre Anwendung in einem geschützten Netzwerk b
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verwendungsanalyse mit Application Insights](../../azure-monitor/app/usage-overview.md)
-* [Verwenden von Search in Application Insights](../../azure-monitor/app/diagnostic-search.md)
+* [Überwachen der Verwendung mit Application Insights](../../azure-monitor/app/usage-overview.md)
+* [Verwenden der Diagnosesuche](../../azure-monitor/app/diagnostic-search.md)
 * [Profiler](../../azure-monitor/app/profiler.md)
-* [Debugger für Momentaufnahmen](../../azure-monitor/app/snapshot-debugger.md)
+* [Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md)

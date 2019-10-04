@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b9f4cd78288d1b9868a823c5e0ccd0b68b324229
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400250"
 documentType: LandingData
-title: Dokumentation zu Windows Virtual Desktop (Vorschauversion)
+title: Dokumentation zu Windows Virtual Desktop
 metadata:
-  title: 'Dokumentation zu Windows Virtual Desktop (Vorschauversion): Tutorials, Schnellstartanleitungen, API-Referenz | Microsoft-Dokumentation'
-  description: Windows Virtual Desktop (Vorschauversion) für Azure ist eine in der Cloud virtualisierte Windows 10 Enterprise-Mehrbenutzerumgebung.
+  title: 'Dokumentation zu Windows Virtual Desktop: Tutorials, Schnellstartanleitungen, API-Referenz | Microsoft-Dokumentation'
+  description: "Windows Virtual Desktop für Azure ist eine in der Cloud virtualisierte Windows\_10\_Enterprise-Mehrbenutzerumgebung."
   author: Heidilohr
   manager: daveba
   ms.service: virtual-desktop
@@ -18,30 +12,30 @@ metadata:
   ms.date: 02/20/2019
   ms.author: helohr
 abstract:
-  description: Stellen Sie eine virtuelle Desktopumgebung und Remote-Apps für beliebige Geräte bereit. Kombinieren Sie Microsoft 365 und Azure, um Benutzern die einmalige Windows 10-Multisessionumgebung zu bieten – mit außergewöhnlicher Skalierung und reduzierten IT-Kosten.
+  description: 'Stellen Sie eine virtuelle Desktopumgebung und Remote-Apps für beliebige Geräte bereit. Kombinieren Sie Microsoft 365 und Azure, um Benutzern die einmalige Windows 10-Multisessionumgebung zu bieten – mit außergewöhnlicher Skalierung und reduzierten IT-Kosten.'
 sections:
-- title: Übersicht
-  items:
-  - type: paragraph
-    text: Hier finden Sie Informationen zu Windows Virtual Desktop (Vorschauversion) und zur Verwendung. In Tutorials, Leitfäden, Referenzinhalten und mehr wird veranschaulicht, wie Sie Hostpools und Mandanten einrichten und Benutzern Rollen für Ihre Windows Virtual Desktop-Umgebung zuweisen.
-  - type: list
-    style: unordered
+  - title: Übersicht
     items:
-    - html: <a href="/azure/virtual-desktop/overview">Was ist Windows Virtual Desktop (Vorschauversion)?</a>
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: Es wird beschrieben, wie Sie Windows Virtual Desktop installieren und konfigurieren und anschließend eine Verbindung mit dem Client herstellen.
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 'Enthält Informationen zu Windows Virtual Desktop und zur Verwendung. In Tutorials, Leitfäden, Referenzinhalten und mehr wird veranschaulicht, wie Sie Hostpools und Mandanten einrichten und Benutzern Rollen für Ihre Windows Virtual Desktop-Umgebung zuweisen.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/virtual-desktop/overview">Was ist Windows Virtual Desktop?</a>
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Erstellen eines Mandanten in Windows Virtual Desktop</a>
-    - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Erstellen eines Hostpools mit Azure Marketplace</a>
-    - html: <a href="/azure/virtual-desktop/manage-app-groups">Verwalten von App-Gruppen für Windows Virtual Desktop</a>
-    - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell</a>
-- title: Verweis
-  items:
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Es wird beschrieben, wie Sie Windows Virtual Desktop installieren und konfigurieren und anschließend eine Verbindung mit dem Client herstellen.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Erstellen eines Mandanten in Windows Virtual Desktop</a>
+          - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Erstellen eines Hostpools mit Azure Marketplace</a>
+          - html: <a href="/azure/virtual-desktop/manage-app-groups">Verwalten von App-Gruppen für Windows Virtual Desktop</a>
+          - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell</a>
+  - title: Verweis
     items:
-    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>

@@ -1,20 +1,19 @@
 ---
 title: Konfigurieren von Spark-Einstellungen – Azure HDInsight
-description: Es wird beschrieben, wie Sie Spark für einen Azure HDInsight-Cluster konfigurieren.
-services: hdinsight
-author: maxluk
-ms.author: maxluk
+description: Anzeigen und Konfigurieren von Apache Spark-Einstellungen für einen Azure HDInsight-Cluster
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 91f706b882c4f245dbd111b0f9cac269db6fd65f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 06/17/2019
+ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652234"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003157"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurieren von Apache Spark-Einstellungen
 
@@ -45,11 +44,11 @@ Apache Spark verfügt über drei Speicherorte für die Systemkonfiguration:
 Bei Auswahl einer bestimmten Version von Spark umfasst Ihr Cluster die entsprechenden Standardkonfigurationseinstellungen.  Sie können die Spark-Standardkonfigurationswerte durch Angabe einer benutzerdefinierten Spark-Konfigurationsdatei ändern.  Ein entsprechendes Beispiel ist nachfolgend dargestellt.
 
 ```
-    spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
-    spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
-    spark.hadoop.parquet.block.size 1099511627776
-    spark.sql.files.maxPartitionBytes 1099511627776
-    spark.sql.files.openCostInBytes 1099511627776
+spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
+spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
+spark.hadoop.parquet.block.size 1099511627776
+spark.sql.files.maxPartitionBytes 1099511627776
+spark.sql.files.openCostInBytes 1099511627776
 ```
 
 In diesem Beispiel werden mehrere Standardwerte für fünf Spark-Konfigurationsparameter überschrieben.  Dabei handelt es sich um den Komprimierungscodec, die Mindestgröße für die Teilung von Apache Hadoop MapReduce und Parquet-Blockgrößen sowie die Standardwerte für die Größe der Spark SQL-Partition und von geöffneten Dateien.  Diese Konfigurationsänderungen werden ausgewählt, da die zugeordneten Daten und Aufträge (in diesem Beispiel Genomdaten) bestimmte Merkmale aufweisen, die mit diesen benutzerdefinierten Konfigurationseinstellungen optimaler ausgeführt werden.
@@ -64,7 +63,7 @@ Die Apache Ambari-Webbenutzeroberfläche wird mit einer Dashboardansicht der wic
 
 Zum Anzeigen der Konfigurationswerte für Apache Spark wählen Sie **Config History** (Konfigurationsverlauf) und dann **Spark2** aus.  Wählen Sie die Registerkarte **Configs** (Konfigurationen) und dann in der Liste der Dienste den Link `Spark` (oder `Spark2`, abhängig von der verwendeten Version) aus.  Eine Liste der Konfigurationswerte für Ihren Cluster wird angezeigt:
 
-![Spark-Konfigurationen](./media/apache-spark-settings/spark-config.png)
+![Spark-Konfigurationen](./media/apache-spark-settings/spark-configurations.png)
 
 Zum Anzeigen und Ändern einzelner Spark-Konfigurationswerte wählen Sie einen Link mit dem Wort „spark“ im Titel aus.  Konfigurationen für Spark umfassen sowohl benutzerdefinierte als auch erweiterte Konfigurationswerte in den folgenden Kategorien:
 
@@ -83,7 +82,7 @@ Wenn Sie eine nicht standardmäßige Gruppe von Konfigurationswerten erstellen, 
 
 In der folgenden Abbildung sind wichtige Spark-Objekte dargestellt: das Treiberprogramm und der zugeordnete Spark-Kontext sowie der Cluster-Manager und die zugehörigen *n* Workerknoten.  Jeder Workerknoten enthält einen Executor, einen Cache und *n* Aufgabeninstanzen.
 
-![Clusterobjekte](./media/apache-spark-settings/spark-arch.png)
+![Clusterobjekte](./media/apache-spark-settings/hdi-spark-architecture.png)
 
 Spark-Aufträge verwenden Workerressourcen, insbesondere Arbeitsspeicher. Daher werden Spark-Konfigurationswerte für Executors von Workerknoten häufig angepasst.
 
@@ -94,7 +93,7 @@ Dabei werden die folgenden drei Schlüsselparameter zur Optimierung von Spark-Ko
 
 Die Spark-Anwendungsbenutzeroberfläche stellt eine weitere Informationsquelle zu den von den Spark-Executors verwendeten Ressourcen dar.  Wählen Sie in der Spark-Benutzeroberfläche die Registerkarte **Executors** aus, um die Zusammenfassungs- und Detailansicht der Konfiguration und der von den Executors verwendeten Ressourcen anzuzeigen.  In diesen Ansichten können Sie feststellen, ob Standardwerte für Spark-Executors für den gesamten Cluster oder einen bestimmten Satz von Auftragsausführungen geändert werden müssen.
 
-![Spark-Executors](./media/apache-spark-settings/spark-executors.png)
+![Spark-Executors](./media/apache-spark-settings/apache-spark-executors.png)
 
 Alternativ können Sie über die Ambari-REST-API die HDInsight- und Spark-Clusterkonfigurationseinstellungen programmgesteuert ändern.  Weitere Informationen stehen in der [Apache Ambari-API-Referenz auf GitHub](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md) zur Verfügung.
 
@@ -106,7 +105,7 @@ Je nach Größe Ihrer Spark-Workload stellen Sie möglicherweise fest, dass Sie 
 
 Beispiel für zwei Workerknoten mit unterschiedlichen Konfigurationswerten:
 
-![Konfigurationen mit zwei Knoten](./media/apache-spark-settings/executor-config.png)
+![Konfigurationen mit zwei Knoten](./media/apache-spark-settings/executor-configuration.png)
 
 In der folgenden Liste sind wichtige Arbeitsspeicherparameter für Spark-Executors aufgeführt.
 
@@ -117,7 +116,7 @@ In der folgenden Liste sind wichtige Arbeitsspeicherparameter für Spark-Executo
 
 YARN steuert den maximal von den Containern auf jedem Spark-Knoten verwendeten Gesamtarbeitsspeicher. In der folgenden Abbildung sind die Beziehungen pro Knoten zwischen YARN-Konfigurationsobjekten und Spark-Objekten dargestellt.
 
-![Übersicht über die YARN-Spark-Arbeitsspeicherverwaltung](./media/apache-spark-settings/yarn-spark-memory.png)
+![Übersicht über die YARN-Spark-Arbeitsspeicherverwaltung](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Ändern der Parameter für eine Anwendung, die im Jupyter Notebook ausgeführt wird
 
@@ -137,8 +136,8 @@ Für Anwendungen, die im Jupyter Notebook ausgeführt werden, können Sie mit de
 Der folgende Code zeigt, wie die Konfiguration für eine in einem Jupyter Notebook ausgeführte Anwendung geändert wird.
 
 ```
-    %%configure
-    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+%%configure
+{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 ```
 
 ## <a name="conclusion"></a>Zusammenfassung

@@ -6,14 +6,15 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 10/20/2018
-ms.author: cherylmc;ganesr
+ms.author: cherylmc
+ms.reviewer: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 16f3ad1aa037dca2e7b8c3e68ae952c27b952711
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 25821f60f47b1279e70cba2574901cd5df3d327f
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103025"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67846582"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Erstellen und Ändern einer ExpressRoute-Verbindung
 
@@ -21,6 +22,7 @@ ms.locfileid: "58103025"
 > * [Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure-Befehlszeilenschnittstelle](howto-circuit-cli.md)
+> * [Azure Resource Manager-Vorlage](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video – Azure-Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klassisch)](expressroute-howto-circuit-classic.md)
 >
@@ -84,19 +86,19 @@ Auf dieser Seite bietet der **Anbieterstatus** Informationen zum aktuellen Zusta
 Wenn Sie eine neue ExpressRoute-Verbindung erstellen, weist die Verbindung folgenden Zustand auf:
 
 Anbieterstatus: Nicht bereitgestellt<BR>
-Schaltkreisstatus: Aktiviert
+Schaltkreisstatus: Enabled
 
 ![Bereitstellung initiieren](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 Die Verbindung wechselt in den folgenden Zustand, wenn sie vom Konnektivitätsanbieter für Sie aktiviert wird:
 
 Anbieterstatus: Bereitstellung<BR>
-Schaltkreisstatus: Aktiviert
+Schaltkreisstatus: Enabled
 
 Damit Sie eine ExpressRoute-Verbindung verwenden können, muss sie sich im folgenden Zustand befinden:
 
 Anbieterstatus: Bereitgestellt<BR>
-Schaltkreisstatus: Aktiviert
+Schaltkreisstatus: Enabled
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Überprüfen Sie regelmäßig den Status und Zustand des Verbindungsschlüssels.
 
@@ -121,7 +123,7 @@ Sie können den Status einer Verbindung anzeigen, indem Sie die Verbindung ausw�
 
 ## <a name="modify"></a>Ändern einer ExpressRoute-Verbindung
 
-Sie können bestimmte Eigenschaften einer ExpressRoute-Verbindung ändern, ohne die Konnektivität zu beeinträchtigen. Sie können die Bandbreite, die SKU und das Abrechnungsmodell verändern und klassische Vorgänge auf der Seite **Konfiguration** zulassen. Informationen zu Grenzwerten und Beschränkungen finden Sie unter [ExpressRoute – FAQs](expressroute-faqs.md). 
+Sie können bestimmte Eigenschaften einer ExpressRoute-Verbindung ändern, ohne die Konnektivität zu beeinträchtigen. Sie können die Bandbreite, die SKU und das Abrechnungsmodell verändern und klassische Vorgänge auf der Seite **Konfiguration** zulassen. Informationen zu Grenzwerten und Beschränkungen finden Sie unter [ExpressRoute – FAQs](expressroute-faqs.md).
 
 Sie können folgende Aufgaben ausführen, ohne Ausfallzeiten zu verursachen:
 
@@ -139,9 +141,9 @@ Sie können folgende Aufgaben ausführen, ohne Ausfallzeiten zu verursachen:
 * Sie können die Option *Klassische Vorgänge zulassen*aktivieren und deaktivieren.
   > [!IMPORTANT]
   > Unter Umständen müssen Sie die ExpressRoute-Verbindung neu erstellen, wenn nicht ausreichend Kapazität am vorhandenen Port verfügbar ist. Die Verbindung kann nicht aktualisiert werden, wenn an dieser Stelle keine zusätzliche Kapazität verfügbar ist.
-  > 
+  >
   > Sie können zwar nahtlos die Bandbreite erhöhen, es ist jedoch nicht möglich, die Bandbreite einer ExpressRoute-Verbindung ohne Störungen zu reduzieren. Ein Downgrade der Bandbreite erfordert, dass Sie die Bereitstellung der ExpressRoute-Verbindung aufheben und dann eine neue ExpressRoute-Verbindung bereitstellen.
-  > 
+  >
   > Beim Deaktivieren von Premium-Add-On-Vorgängen kann ein Fehler auftreten, wenn Sie Ressourcen verwenden, die die zulässige Menge für die Standardverbindung überschreiten.
 
 Klicken Sie auf **Konfiguration**, um eine ExpressRoute-Verbindung zu bearbeiten.

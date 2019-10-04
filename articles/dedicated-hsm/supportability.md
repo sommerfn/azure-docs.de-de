@@ -3,7 +3,7 @@ title: Unterstützbarkeit – Azure Dedicated HSM | Microsoft-Dokumentation
 description: Unterstützungsoptionen und Zuständigkeitsbereiche für Azure Dedicated HSM in verschiedenen Szenarios
 services: dedicated-hsm
 author: johndaw
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: 3fd460409cab8dce0f5c4ce31f5323f19706d268
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.author: mbaldwin
+ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541095"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881009"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure-Dienst für dedizierte HSMs – Unterstützbarkeit
 

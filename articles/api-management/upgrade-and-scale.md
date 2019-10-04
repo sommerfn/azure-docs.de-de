@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: ac8babf3a00c73b942ae64ac4cca00c7be7cfcfa
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 64649c86dbd3c3469247308bfc4dd0ed12e06949
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319859"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018234"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Aktualisieren und Skalieren einer Azure API Management-Instanz  
 
@@ -53,8 +53,11 @@ Bei Verwendung des Tarifs **Premium** können Sie eine einzelne Azure API Manage
 
 Sie können für alle Tarife ein Upgrade oder ein Downgrade durchführen. Beim Upgrade oder Downgrade können ggf. einige Features wegfallen, z.B. VNETs oder die Bereitstellung in mehreren Regionen bei Downgrades vom Premium-Tarif auf den Standard- oder Basic-Tarif.
 
->[!NOTE]
->Es kann zwischen 15 und 45 Minuten dauern, bis der Upgrade- bzw. Skalierungsprozess abgeschlossen ist. Sie erhalten nach Abschluss des Prozesses eine Benachrichtigung.
+> [!NOTE]
+> Es kann zwischen 15 und 45 Minuten dauern, bis der Upgrade- bzw. Skalierungsprozess abgeschlossen ist. Sie werden nach Abschluss des Prozesses benachrichtigt.
+
+> [!NOTE]
+> Der API Management-Dienst im **Verbrauchstarif** wird automatisch basierend auf dem Datenverkehr skaliert.
 
 ## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Verwenden des Azure-Portals zum Durchführen von Upgrades und Skalierungen
 
@@ -66,6 +69,10 @@ Sie können für alle Tarife ein Upgrade oder ein Downgrade durchführen. Beim U
 4. Geben Sie die Anzahl von **Einheiten** an, die Sie hinzufügen möchten. Sie können entweder den Schieberegler verwenden oder die Anzahl von Einheiten eingeben.  
     Wenn Sie den Tarif **Premium** wählen, müssen Sie zuerst eine Region auswählen.
 5. Klicken Sie auf **Speichern**.
+
+## <a name="downtime-during-scaling-up-and-down"></a>Ausfallzeiten beim zentralen Hoch- und Herunterskalieren
+Wenn Sie die Skalierung von oder auf den Developer-Tarif durchführen, kommt es zu Ausfallzeiten. Andernfalls treten keine Ausfallzeiten auf. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

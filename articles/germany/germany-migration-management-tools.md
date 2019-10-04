@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: bc237d0f78c77a6fbc89db4061ca38403c3d777b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a9c3ca3a4047e69efedaa0baa93d3f1923c78c22
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968673"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272529"
 ---
 # <a name="migrate-management-tool-resources-to-global-azure"></a>Migrieren von Verwaltungstoolressourcen zu Azure weltweit
 
@@ -36,7 +36,7 @@ Sie können zusätzliche Endpunkte in der Zielumgebung definieren, indem Sie den
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Traffic Manager-Tutorials](https://docs.microsoft.com/azure/traffic-manager/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Traffic Manager-Tutorials](https://docs.microsoft.com/azure/traffic-manager) durcharbeiten.
 - Lesen Sie [Was ist Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
 - Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](../traffic-manager/traffic-manager-create-profile.md).
 - Erfahren Sie mehr über das [Blau-Grün-Szenario](https://azure.microsoft.com/blog/blue-green-deployments-using-azure-traffic-manager/).
@@ -56,16 +56,16 @@ Azure Scheduler ist veraltet. Verwenden Sie Azure Logic Apps zum Erstellen von P
 
 Weitere Informationen finden Sie unter:
 
-- Machen Sie sich mit Funktionen in Azure Logic Apps vertraut, indem Sie die [Logic Apps-Tutorials](https://docs.microsoft.com/azure/logic-apps/#step-by-step-tutorials) durcharbeiten.
+- Machen Sie sich mit Funktionen in Azure Logic Apps vertraut, indem Sie die [Logic Apps-Tutorials](https://docs.microsoft.com/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow) durcharbeiten.
 - Lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="network-watcher"></a>Network Watcher
 
-Das Migrieren einer Azure Network Watcher-Instanz von Azure Deutschland zu Azure weltweit wird zurzeit nicht unterstützt. Es empfiehlt sich, dass Sie eine neue Network Watcher-Instanz in Azure weltweit erstellen und konfigurieren. Vergleichen Sie dann die Ergebnisse zwischen der alten und der neuen Umgebung. 
+Das Migrieren einer Azure Network Watcher-Instanz von Azure Deutschland zu Azure weltweit wird derzeit nicht unterstützt. Es empfiehlt sich, dass Sie eine neue Network Watcher-Instanz in Azure weltweit erstellen und konfigurieren. Vergleichen Sie dann die Ergebnisse zwischen der alten und der neuen Umgebung. 
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Network Watcher-Tutorials](https://docs.microsoft.com/azure/network-watcher/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Network Watcher-Tutorials](https://docs.microsoft.com/azure/network-watcher) durcharbeiten.
 - Lesen Sie [Was ist Azure Network Watcher?](../network-watcher/network-watcher-monitoring-overview.md)
 - Erfahren Sie mehr über [Datenflussprotokolle für Netzwerksicherheitsgruppen](../network-watcher/network-watcher-nsg-flow-logging-portal.md).
 - Erfahren Sie mehr über[Verbindungsmonitor](../network-watcher/connection-monitor.md).

@@ -4,22 +4,21 @@ description: Zeigt, wie benutzerdefinierte Azure-Routen verwendet werden, um die
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: b121996530ea0618fc757f1ae12dfafde10ed7bb
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d554629c4a03b81ee3c04d27f6365c1a8734c952
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979376"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058196"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Fehler bei der Windows-Aktivierung in einem Szenario mit Tunnelerzwingung
 
@@ -27,7 +26,7 @@ Dieser Artikel beschreibt, wie Sie das KMS-Aktivierungsproblem beheben können, 
 
 ## <a name="symptom"></a>Symptom
 
-Sie aktivieren [Tunnelerzwingung](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) in den Subnetzen von virtuellen Azure-Netzwerken, um den gesamten in das Internet gerichteten Datenverkehr in Ihr lokales Netzwerk zurück zu leiten. In diesem Szenario können die virtuellen Azure-Computer (VMs), die Windows Server 2012 R2 (oder höhere Versionen von Windows) ausführen, Windows erfolgreich aktivieren. Jedoch können VMs, die eine frühere Version von Windows ausführen, Windows nicht aktivieren.
+Sie aktivieren [Tunnelerzwingung](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) in den Subnetzen von virtuellen Azure-Netzwerken, um den gesamten in das Internet gerichteten Datenverkehr in Ihr lokales Netzwerk zurück zu leiten. In diesem Szenario tritt auf den virtuellen Azure-Computern, auf denen Windows ausgeführt wird, beim Aktivieren von Windows ein Fehler auf.
 
 ## <a name="cause"></a>Ursache
 
@@ -51,7 +50,10 @@ Befolgen Sie diese Schritte, um die benutzerdefinierte hinzuzufügen:
 
 ### <a name="for-resource-manager-vms"></a>Für Resource Manager-VMs
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+
+> [!NOTE] 
+> Die Aktivierung verwendet öffentliche IP-Adressen und wird von einer Standard-SKU-Load Balancer-Konfiguration beeinflusst. Lesen Sie [Ausgehende Verbindungen in Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections), um mehr über die Anforderungen zu erfahren.
 
 1. Öffnen Sie Azure PowerShell, und [melden Sie sich dann bei Ihrem Azure-Abonnement an](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Führen Sie die folgenden Befehle aus:
@@ -68,6 +70,12 @@ Befolgen Sie diese Schritte, um die benutzerdefinierte hinzuzufügen:
     Add-AzRouteConfig -Name "DirectRouteToKMS" -AddressPrefix 23.102.135.246/32 -NextHopType Internet -RouteTable $RouteTable
 
     Set-AzRouteTable -RouteTable $RouteTable
+
+    # Next, attach the route table to the subnet that hosts the VMs
+
+    Set-AzVirtualNetworkSubnetConfig -Name "Subnet01" -VirtualNetwork $vnet -AddressPrefix "10.0.0.0/24" -RouteTable $RouteTable
+
+    Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
 3. Wechseln Sie zu der VM mit den Aktivierungsproblemen. Verwenden Sie [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping), um zu testen, ob sie den KMS-Server erreichen kann:
 

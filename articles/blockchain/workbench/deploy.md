@@ -1,42 +1,44 @@
 ---
-title: Bereitstellen von Azure Blockchain Workbench
-description: Bereitstellen von Azure Blockchain Workbench
+title: Bereitstellen von Azure Blockchain Workbench Preview
+description: 'Vorgehensweise: Bereitstellen von Azure Blockchain Workbench Preview'
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 5f488811e57ee20cb25db56b2d9e04202b17ffb2
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 2ea18c784c6b5cf61013c131360d20349e67b1e5
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579528"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845283"
 ---
-# <a name="deploy-azure-blockchain-workbench"></a>Bereitstellen von Azure Blockchain Workbench
+# <a name="deploy-azure-blockchain-workbench-preview"></a>Bereitstellen von Azure Blockchain Workbench Preview
 
-Azure Blockchain Workbench wird mithilfe einer Projektmappenvorlage im Azure Marketplace bereitgestellt. Die Vorlage vereinfacht die Bereitstellung von Komponenten, die für die Erstellung von Blockchainanwendungen benötigt werden. Nach der Bereitstellung bietet Blockchain Workbench Zugriff auf Client-Apps zum Erstellen und Verwalten von Benutzern und Blockchainanwendungen.
+Azure Blockchain Workbench Preview wird mithilfe einer Projektmappenvorlage im Azure Marketplace bereitgestellt. Die Vorlage vereinfacht die Bereitstellung von Komponenten, die für die Erstellung von Blockchainanwendungen benötigt werden. Nach der Bereitstellung bietet Blockchain Workbench Zugriff auf Client-Apps zum Erstellen und Verwalten von Benutzern und Blockchainanwendungen.
 
 Weitere Informationen zu den Komponenten der Blockchain Workbench finden Sie unter [Azure Blockchain Workbench-Architektur](architecture.md).
+
+[!INCLUDE [Preview note](./includes/preview.md)]
 
 ## <a name="prepare-for-deployment"></a>Vorbereiten der Bereitstellung
 
 Blockchain Workbench ermöglicht die Bereitstellung eines Blockchainledgers zusammen mit einer Gruppe relevanter Azure-Dienste, die am häufigsten für die Erstellung einer blockchainbasierten Anwendung verwendet wird. Bei der Bereitstellung von Blockchain Workbench werden die folgenden Azure-Dienste innerhalb einer Ressourcengruppe im Azure-Abonnement bereitgestellt.
 
-* 1 Event Grid-Thema
-* 1 Service Bus-Namespace
-* 1 Application Insights
-* 1 SQL-Datenbank (Standard S0)
-* 2 App Services-Dienste (Standard)
-* 2 Azure Key Vault-Instanzen
-* 2 Azure Storage-Konten (Standard LRS)
-* 2 VM-Skalierungsgruppen (für Validierungssteuerelement und Workerknoten)
-* 2 virtuelle Netzwerke (einschließlich Lastenausgleichsmodul, Netzwerksicherheitsgruppe und öffentliche IP-Adresse für jedes virtuelle Netzwerk)
-* Optional: Azure Monitor
+* App Service Plan (Standard)
+* Application Insights
+* Event Grid
+* Azure Key Vault
+* Service Bus
+* SQL-Datenbank (Standard S0) + logischer SQL-Server
+* Azure Storage-Konto (Standard LRS)
+* VM-Skalierungsgruppe mit der Kapazität 1
+* Virtual Network-Ressourcengruppe (mit Load Balancer, Netzwerksicherheitsgruppe, öffentlicher IP-Adresse, virtuellem Netzwerk)
+* Azure Blockchain Service. Wenn Sie eine vorherige Blockchain Workbench-Bereitstellung verwenden, sollten Sie die erneute Bereitstellung von Azure Blockchain Workbench erwägen, um Azure Blockchain Service zu verwenden.
 
 Im Folgenden wird eine Beispielbereitstellung gezeigt, die in der Ressourcengruppe **myblockchain** erstellt wurde.
 
@@ -44,17 +46,12 @@ Im Folgenden wird eine Beispielbereitstellung gezeigt, die in der Ressourcengrup
 
 Die Kosten für Blockchain Workbench stellen eine Aggregation der Kosten der zugrunde liegenden Azure-Dienste dar. Preise zu Azure-Dienste können mit dem [Preisrechner](https://azure.microsoft.com/pricing/calculator/) berechnet werden.
 
-> [!IMPORTANT]
-> Wenn Sie ein Abonnement mit niedrigen Dienstlimits verwenden, z.B. ein Azure-Abonnement im Free-Tarif, ist die Bereitstellung möglicherweise nicht möglich, weil das Kontingent von VM-Kernen nicht ausreicht. Überprüfen Sie vor der Bereitstellung Ihr Kontingent anhand der Anleitung aus dem Artikel [vCPU-Kontingente für virtuelle Computer](../../virtual-machines/windows/quotas.md). Für die VM-Standardauswahl sind sechs VM-Kerne erforderlich. Wenn Sie die Auswahl auf eine kleinere VM-Größe wie *Standard DS1 v2* ändern, verringert sich die Anzahl der Kerne auf vier.
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für Azure Blockchain Workbench sind Konfigurationen in Azure AD und Anwendungsregistrierungen vonnöten. Sie können die Azure AD-Konfigurationen vor einer Bereitstellung [manuell](#azure-ad-configuration) durchführen oder ein Skript nach der Bereitstellung ausführen. Wenn Sie Blockchain Workbench erneut bereitstellen, lesen Sie den Abschnitt [Azure AD-Konfiguration](#azure-ad-configuration) zur Überprüfung Ihrer Azure AD-Konfiguration.
 
 > [!IMPORTANT]
 > Workbench muss nicht in demselben Mandanten bereitgestellt werden, den Sie zum Registrieren einer Azure AD-Anwendung verwenden. Workbench muss in einem Mandanten bereitgestellt werden, in dem Sie über ausreichende Berechtigungen zum Bereitstellen von Ressourcen verfügen. Weitere Informationen über Azure AD-Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten](../../active-directory/develop/quickstart-create-new-tenant.md) und [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
-
-
 
 ## <a name="deploy-blockchain-workbench"></a>Bereitstellen von Blockchain Workbench
 
@@ -82,11 +79,11 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
     | Authentifizierungsart | Wählen Sie diese aus, wenn Sie ein Kennwort oder einen Schlüssel für die Verbindung mit VMs nutzen möchten. |
     | Kennwort | Das Kennwort wird für die Verbindung mit VMs verwendet. |
     | SSH | Verwenden Sie einen öffentlichen RSA-Schlüssel im einzeiligen Format beginnend mit **ssh-rsa**, oder verwenden Sie das mehrzeilige PEM-Format. Sie können SSH-Schlüssel mit `ssh-keygen` unter Linux und OS X oder mit PuTTYGen unter Windows erzeugen. Weitere Informationen zu SSH-Schlüsseln finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md). |
-    | Datenbankkennwort / Datenbankkennwort bestätigen | Geben Sie das Kennwort für den Zugriff auf die im Rahmen der Bereitstellung erstellte Datenbank an. |
+    | Datenbank- und Blockchain-Kennwort | Geben Sie das Kennwort für den Zugriff auf die im Rahmen der Bereitstellung erstellte Datenbank an. Das Kennwort muss drei der folgenden vier Anforderungen erfüllen: Es muss zwischen 12 und 72 Zeichen lang sein und muss einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen beinhalten (nicht zulässig: Raute (#), Prozentzeichen (%), Komma (,), Stern (*), Backquote (\`), doppelte Anführungszeichen ("), einfache Anführungszeichen ('), Bindestriche (-) oder Semikolons (;)). |
     | Bereitstellungsregion | Geben Sie an, wo die Blockchain Workbench-Ressourcen bereitgestellt werden sollen. Für optimale Verfügbarkeit sollte dies der Einstellung **Ort** entsprechen. |
-    | Abonnement | Geben Sie das Azure-Abonnement an, das Sie für Ihre Bereitstellung verwenden möchten. |
+    | Subscription | Geben Sie das Azure-Abonnement an, das Sie für Ihre Bereitstellung verwenden möchten. |
     | Ressourcengruppen | Erstellen Sie eine Ressourcengruppe, indem Sie **Neu erstellen** auswählen, und geben Sie einen eindeutigen Namen für die Ressourcengruppe ein. |
-    | Standort | Geben Sie die Region an, in der Sie das Framework bereitstellen möchten. |
+    | Location | Geben Sie die Region an, in der Sie das Framework bereitstellen möchten. |
 
 7. Wählen Sie **OK**, um die Konfiguration der Grundeinstellungen fertig zu stellen.
 
@@ -94,15 +91,15 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
 
     Für **Neues Element erstellen**:
 
-    Über die Option *Neues Element erstellen* wird ein Satz von Ethereum-PoA-Knoten innerhalb des Abonnements eines einzelnen Mitglieds erstellt. 
+    Mit der Option *Neues Element erstellen* wird ein Quorum-Ledger im Azure Blockchain-Dienst mit der Standard-SKU „Basic“ bereitgestellt.
 
     ![Erweiterte Einstellungen für ein neues Blockchainnetzwerk](media/deploy/advanced-blockchain-settings-new.png)
 
     | Einstellung | BESCHREIBUNG  |
     |---------|--------------|
-    | Überwachung | Wählen Sie, ob Sie Azure Monitor zur Überwachung Ihres Blockchainnetzwerks aktivieren möchten. |
+    | Azure Blockchain-Diensttarif | Wählen Sie für Blockchain Workbench den Azure Blockchain-Diensttarif **Basic** oder **Standard** aus. |
     | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
-    | VM-Auswahl | Wählen Sie die bevorzugte VM-Größe für Ihr Blockchainnetzwerk. Wählen Sie eine kleinere VM-Größe wie *Standard DS1 v2* aus, wenn Sie ein Abonnement mit niedrigen Dienstlimits verwenden, z.B. den Azure-Free-Tarif. |
+    | VM-Auswahl | Wählen Sie die bevorzugte Speicherleistung und VM-Größe für Ihr Blockchainnetzwerk aus. Wählen Sie eine kleinere VM-Größe wie *Standard DS1 v2* aus, wenn Sie ein Abonnement mit niedrigen Dienstlimits verwenden, z.B. den Azure-Free-Tarif. |
 
     Für **Vorhandene verwenden**:
 
@@ -121,7 +118,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
      |---------|--------------|
      | Ethereum-RPC-Endpunkt | Geben Sie den RPC-Endpunkt eines bestehenden PoA-Blockchainnetzwerks an. Der Endpunkt beginnt mit „https://“ oder „http://“ und endet mit einer Portnummer. Zum Beispiel, `http<s>://<network-url>:<port>` |
      | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
-     | VM-Auswahl | Wählen Sie die bevorzugte VM-Größe für Ihr Blockchainnetzwerk. |
+     | VM-Auswahl | Wählen Sie die bevorzugte Speicherleistung und VM-Größe für Ihr Blockchainnetzwerk aus. Wählen Sie eine kleinere VM-Größe wie *Standard DS1 v2* aus, wenn Sie ein Abonnement mit niedrigen Dienstlimits verwenden, z.B. den Azure-Free-Tarif. |
 
 9. Klicken Sie auf **OK**, um die Konfiguration der erweiterten Einstellungen abzuschließen.
 

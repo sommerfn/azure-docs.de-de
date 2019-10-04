@@ -7,27 +7,25 @@ author: ghogen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: tutorial
-ms.date: 03/01/2018
+ms.topic: conceptual
+ms.date: 07/03/2019
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 6a576f2817069d7095ea863198168be083d0c6b5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ff3ae9ec4a775e2450a552e414ec52597593dd39
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450941"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67604278"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Verwenden von verbundenen Diensten in Visual Studio zum Herstellen einer Verbindung mit der Maschinelles Sehen-API
-
-Mit Maschinelles Sehen-API von Cognitive Services können Sie umfassende Informationen extrahieren, um visuelle Daten zu kategorisieren und zu verarbeiten. Zudem können Sie die computergestützte Moderation von Bildern verwenden, um Ihre Dienste zu kuratieren.
 
 Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Features „Verbundener Visual Studio-Dienst“ für die Maschinelles Sehen-API von Cognitive Services. Die Funktion ist in Visual Studio 2017 15.7 oder höher verfügbar, wenn die Cognitive Services-Erweiterung installiert ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **Ein Azure-Abonnement**. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/)registrieren.
-- **Visual Studio 2017, Version 15.7** mit installierter Workload **Webentwicklung**. [Jetzt herunterladen](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/)registrieren.
+- Eine Installation von Visual Studio 2017 (Version 15.7 oder höher) mit der Workload für **Webentwicklung**. [Jetzt herunterladen](https://visualstudio.microsoft.com/downloads/).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -38,15 +36,15 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
 1. Wählen Sie im **Projektmappen-Explorer** die Option **Hinzufügen** > **Verbundener Dienst** aus.
    Die Seite „Verbundener Dienst“ wird mit den Diensten angezeigt, die Sie dem Projekt hinzufügen können.
 
-   ![Screenshot eines Kontextmenüs in einem Visual Studio-Projekt: Hinzufügen > Verbundener Dienst](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Kontextmenü in einem Visual Studio-Projekt: Hinzufügen > Verbundener Dienst](../media/vs-common/Connected-Service-Menu.PNG)
 
 1. Wählen Sie im Menü der verfügbaren Dienste die Option **Maschinelles Sehen-API von Cognitive Services** aus.
 
-   ![Menü „Verbundene Dienste“ mit Hervorhebung von „Analyze Images with Computer Vision“ (Analysieren von Bildern per maschinellem Sehen)](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![Menü „Verbundene Dienste“: Hervorhebung von „Analyze Images...“ (Analysieren von Bildern...)](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
    Wenn Sie sich bei Visual Studio angemeldet haben und Ihrem Konto ein Azure-Abonnement zugeordnet ist, wird eine Seite mit einer Dropdownliste mit Ihren Abonnements angezeigt.
 
-   ![Visual Studio-Fenster „Maschinelles Sehen-API“ mit Hervorhebung der Dropdownliste „Abonnement“](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
+   ![Fenster „Maschinelles Sehen-API“ mit Hervorhebung der Dropdownliste „Abonnement“](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
 1. Wählen Sie das zu verwendende Abonnement aus, und geben Sie einen Namen für die Maschinelles Sehen-API an, oder wählen Sie den Link „Bearbeiten“ aus, um den automatisch generierten Namen zu ändern. Wählen Sie dann die Ressourcengruppe und den Tarif aus.
 
@@ -98,154 +96,154 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
 
 1. Klicken Sie mit der rechten Maustaste auf die Bilddatei, und wählen Sie nacheinander „Eigenschaften“ und **Kopieren, wenn neuer** aus. 
 
-   ![Fenster mit Bildeigenschaften; „In Ausgabeverzeichnis kopieren“ ist auf „Kopieren, wenn neuer“ festgelegt](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
+   ![Fenster mit Bildeigenschaften; „In Ausgabeverzeichnis kopieren“ auf „Kopieren, wenn neuer“ festgelegt](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
 1. Ersetzen Sie die Configure-Methode durch den folgenden Code, um auf die Maschinelles Sehen-API zuzugreifen und ein Bild zu testen.
 
    ```csharp
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        // TODO: Change this to your image's path on your site. 
+        string imagePath = @"images/subway.png";
+
+        // Enable static files such as image files. 
+        app.UseStaticFiles();
+
+        string visionApiKey = this.configuration["ComputerVisionAPI_ServiceKey"];
+        string visionApiEndPoint = this.configuration["ComputerVisionAPI_ServiceEndPoint"];
+
+        HttpClient client = new HttpClient();
+
+        // Request headers.
+        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", visionApiKey);
+
+        // Request parameters. A third optional parameter is "details".
+        string requestParameters = "visualFeatures=Categories,Description,Color&language=en";
+
+        // Assemble the URI for the REST API Call.
+        string uri = visionApiEndPoint + "/analyze" + "?" + requestParameters;
+
+        HttpResponseMessage response;
+
+        // Request body. Posts an image you've added to your site's images folder. 
+        var fileInfo = env.WebRootFileProvider.GetFileInfo(imagePath);
+        byte[] byteData = GetImageAsByteArray(fileInfo.PhysicalPath);
+
+        string contentString = string.Empty;
+        using (ByteArrayContent content = new ByteArrayContent(byteData))
         {
-            // TODO: Change this to your image's path on your site. 
-            string imagePath = @"images/subway.png";
+            // This example uses content type "application/octet-stream".
+            // The other content types you can use are "application/json" and "multipart/form-data".
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
 
-            // Enable static files such as image files. 
-            app.UseStaticFiles();
+            // Execute the REST API call.
+            response = client.PostAsync(uri, content).Result;
 
-            string visionApiKey = this.configuration["ComputerVisionAPI_ServiceKey"];
-            string visionApiEndPoint = this.configuration["ComputerVisionAPI_ServiceEndPoint"];
-
-            HttpClient client = new HttpClient();
-
-            // Request headers.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", visionApiKey);
-
-            // Request parameters. A third optional parameter is "details".
-            string requestParameters = "visualFeatures=Categories,Description,Color&language=en";
-
-            // Assemble the URI for the REST API Call.
-            string uri = visionApiEndPoint + "/analyze" + "?" + requestParameters;
-
-            HttpResponseMessage response;
-
-            // Request body. Posts an image you've added to your site's images folder. 
-            var fileInfo = env.WebRootFileProvider.GetFileInfo(imagePath);
-            byte[] byteData = GetImageAsByteArray(fileInfo.PhysicalPath);
-
-            string contentString = string.Empty;
-            using (ByteArrayContent content = new ByteArrayContent(byteData))
-            {
-                // This example uses content type "application/octet-stream".
-                // The other content types you can use are "application/json" and "multipart/form-data".
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-
-                // Execute the REST API call.
-                response = client.PostAsync(uri, content).Result;
-
-                // Get the JSON response.
-                contentString = response.Content.ReadAsStringAsync().Result;
-            }
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("<h1>Cognitive Services Demo</h1>");
-                await context.Response.WriteAsync($"<p><b>Test Image:</b></p>");
-                await context.Response.WriteAsync($"<div><img src=\"" + imagePath + "\" /></div>");
-                await context.Response.WriteAsync($"<p><b>Computer Vision API results:</b></p>");
-                await context.Response.WriteAsync("<p>");
-                await context.Response.WriteAsync(JsonPrettyPrint(contentString));
-                await context.Response.WriteAsync("<p>");
-            });
+            // Get the JSON response.
+            contentString = response.Content.ReadAsStringAsync().Result;
         }
 
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+
+        app.Run(async (context) =>
+        {
+            await context.Response.WriteAsync("<h1>Cognitive Services Demo</h1>");
+            await context.Response.WriteAsync($"<p><b>Test Image:</b></p>");
+            await context.Response.WriteAsync($"<div><img src=\"" + imagePath + "\" /></div>");
+            await context.Response.WriteAsync($"<p><b>Computer Vision API results:</b></p>");
+            await context.Response.WriteAsync("<p>");
+            await context.Response.WriteAsync(JsonPrettyPrint(contentString));
+            await context.Response.WriteAsync("<p>");
+        });
+    }
    ```
+
     Dieser Code erstellt eine HTTP-Anforderung mit dem URI und dem Bild als binären Inhalt für einen Aufruf der Maschinelles Sehen-REST-API.
 
 1. Fügen Sie die Hilfsfunktionen „GetImageAsByteArray“ und „JsonPrettyPrint“ hinzu.
 
    ```csharp
-        /// <summary>
-        /// Returns the contents of the specified file as a byte array.
-        /// </summary>
-        /// <param name="imageFilePath">The image file to read.</param>
-        /// <returns>The byte array of the image data.</returns>
-        static byte[] GetImageAsByteArray(string imageFilePath)
+    /// <summary>
+    /// Returns the contents of the specified file as a byte array.
+    /// </summary>
+    /// <param name="imageFilePath">The image file to read.</param>
+    /// <returns>The byte array of the image data.</returns>
+    static byte[] GetImageAsByteArray(string imageFilePath)
+    {
+        FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
+        BinaryReader binaryReader = new BinaryReader(fileStream);
+        return binaryReader.ReadBytes((int)fileStream.Length);
+    }
+
+    /// <summary>
+    /// Formats the given JSON string by adding line breaks and indents.
+    /// </summary>
+    /// <param name="json">The raw JSON string to format.</param>
+    /// <returns>The formatted JSON string.</returns>
+    static string JsonPrettyPrint(string json)
+    {
+        if (string.IsNullOrEmpty(json))
+            return string.Empty;
+
+        json = json.Replace(Environment.NewLine, "").Replace("\t", "");
+
+        string INDENT_STRING = "    ";
+        var indent = 0;
+        var quoted = false;
+        var sb = new StringBuilder();
+        for (var i = 0; i < json.Length; i++)
         {
-            FileStream fileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
-            BinaryReader binaryReader = new BinaryReader(fileStream);
-            return binaryReader.ReadBytes((int)fileStream.Length);
-        }
-
-        /// <summary>
-        /// Formats the given JSON string by adding line breaks and indents.
-        /// </summary>
-        /// <param name="json">The raw JSON string to format.</param>
-        /// <returns>The formatted JSON string.</returns>
-        static string JsonPrettyPrint(string json)
-        {
-            if (string.IsNullOrEmpty(json))
-                return string.Empty;
-
-            json = json.Replace(Environment.NewLine, "").Replace("\t", "");
-
-            string INDENT_STRING = "    ";
-            var indent = 0;
-            var quoted = false;
-            var sb = new StringBuilder();
-            for (var i = 0; i < json.Length; i++)
+            var ch = json[i];
+            switch (ch)
             {
-                var ch = json[i];
-                switch (ch)
-                {
-                    case '{':
-                    case '[':
-                        sb.Append(ch);
-                        if (!quoted)
-                        {
-                            sb.AppendLine();
-                        }
-                        break;
-                    case '}':
-                    case ']':
-                        if (!quoted)
-                        {
-                            sb.AppendLine();
-                        }
-                        sb.Append(ch);
-                        break;
-                    case '"':
-                        sb.Append(ch);
-                        bool escaped = false;
-                        var index = i;
-                        while (index > 0 && json[--index] == '\\')
-                            escaped = !escaped;
-                        if (!escaped)
-                            quoted = !quoted;
-                        break;
-                    case ',':
-                        sb.Append(ch);
-                        if (!quoted)
-                        {
-                            sb.AppendLine();
-                        }
-                        break;
-                    case ':':
-                        sb.Append(ch);
-                        if (!quoted)
-                            sb.Append(" ");
-                        break;
-                    default:
-                        sb.Append(ch);
-                        break;
-                }
+                case '{':
+                case '[':
+                    sb.Append(ch);
+                    if (!quoted)
+                    {
+                        sb.AppendLine();
+                    }
+                    break;
+                case '}':
+                case ']':
+                    if (!quoted)
+                    {
+                        sb.AppendLine();
+                    }
+                    sb.Append(ch);
+                    break;
+                case '"':
+                    sb.Append(ch);
+                    bool escaped = false;
+                    var index = i;
+                    while (index > 0 && json[--index] == '\\')
+                        escaped = !escaped;
+                    if (!escaped)
+                        quoted = !quoted;
+                    break;
+                case ',':
+                    sb.Append(ch);
+                    if (!quoted)
+                    {
+                        sb.AppendLine();
+                    }
+                    break;
+                case ':':
+                    sb.Append(ch);
+                    if (!quoted)
+                        sb.Append(" ");
+                    break;
+                default:
+                    sb.Append(ch);
+                    break;
             }
-            return sb.ToString();
         }
+        return sb.ToString();
+    }
    ```
 
 1. Führen Sie die Webanwendung aus, und sehen Sie sich an, was die Maschinelles Sehen-API in Ihrem Bild gefunden hat.

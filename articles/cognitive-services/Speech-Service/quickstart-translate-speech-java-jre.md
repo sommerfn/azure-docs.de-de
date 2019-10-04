@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Übersetzen von Sprache, Java (Windows, Linux) – Speech-Dienste'
+title: 'Schnellstart: Übersetzen von Sprache, Java (Windows, Linux) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erstellen Sie eine einfache Java-Anwendung zum Erfassen der Benutzersprache, Übersetzen in eine andere Sprache und Ausgeben des Texts in der Befehlszeile. Dieser Leitfaden ist für Windows- und Linux-Benutzer bestimmt.
 services: cognitive-services
@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 03/13/2019
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 36eaaeabcf888aac10bcf9b8a27e3590d21079ec
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cbb86dd4b24cb325b8ea6708ebc2ffc89a697757
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897100"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68553396"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Schnellstart: Übersetzen von Sprache mit dem Speech-SDK für Java
 
-In dieser Schnellstartanleitung erstellen Sie eine einfache Java-Anwendung, mit der die Spracheingabe des Benutzers über das Mikrofon Ihres Computers erfasst, die Sprache übersetzt und der übersetzte Text in Echtzeit in der Befehlszeile transkribiert wird. Diese Anwendung ist für die Ausführung unter Windows (64 Bit) oder Ubuntu Linux 16.04/18.04 (64 Bit) ausgelegt und wird mit dem Maven-Paket für das Speech SDK und der Eclipse Java-IDE erstellt.
+Schnellstarts sind auch für [Spracherkennung](quickstart-java-jre.md) und den [virtuellen Voice-First-Assistenten](quickstart-virtual-assistant-java-jre.md) verfügbar.
+
+In dieser Schnellstartanleitung erstellen Sie eine einfache Java-Anwendung, mit der die Spracheingabe des Benutzers über das Mikrofon Ihres Computers erfasst, die Sprache übersetzt und der übersetzte Text in Echtzeit in der Befehlszeile transkribiert wird. Diese Anwendung ist für die Ausführung unter 64-Bit-Versionen von Windows oder 64-Bit-Versionen von Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) bzw. unter macOS 10.13 oder höher ausgelegt. Sie wird mit dem Maven-Paket für das Speech SDK und der Eclipse Java-IDE erstellt.
 
 Eine vollständige Liste mit den verfügbaren Sprachen für die Sprachübersetzung finden Sie auf der Seite zur [Sprachunterstützung](language-support.md).
 
@@ -27,17 +29,26 @@ Eine vollständige Liste mit den verfügbaren Sprachen für die Sprachübersetzu
 
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
-* Betriebssystem: Windows (64 Bit) oder Ubuntu Linux 16.04/18.04 (64 Bit)
+* Betriebssystem: 64-Bit-Version von Windows, 64-Bit-Version von Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) oder macOS 10.13 oder höher
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) oder [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier können Sie den Schlüssel kostenlos erhalten](get-started.md).
+* Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 
-Stellen Sie beim Ausführen von Ubuntu 16.04/18.04 sicher, dass diese Abhängigkeiten installiert sind, bevor Sie Eclipse starten.
+Stellen Sie beim Ausführen von Linux sicher, dass diese Abhängigkeiten installiert sind, bevor Sie Eclipse starten.
 
-```console
-sudo apt-get update
-sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-```
+ * Unter Ubuntu:
+
+   ```sh
+   sudo apt-get update
+   sudo apt-get install libssl1.0.0 libasound2
+   ```
+
+ * Unter Debian 9:
+
+   ```sh
+   sudo apt-get update
+   sudo apt-get install libssl1.0.2 libasound2
+   ```
 
 > [!NOTE]
 > Weitere Informationen zum SDK für sprachaktivierte Geräte und zum Roobo-Gerät finden Sie unter [SDK für sprachaktivierte Geräte](speech-devices-sdk.md).

@@ -3,34 +3,39 @@ title: 'Projekt Akustik: Unity-Integration und Bereitstellung'
 titlesuffix: Azure Cognitive Services
 description: In dieser Vorgehensweise wird die Integration des Unity-Plug-Ins von Projekt Akustik in Ihr Unity-Projekt erläutert.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
-ms.openlocfilehash: aa7c5c513d65310bf9bffab29c1d18e7e7a85b49
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.author: noelc
+ROBOTS: NOINDEX
+ms.openlocfilehash: 54bc98e0ddba0292c6a5dbb07f2bbdfce6a1cb45
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316285"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933144"
 ---
 # <a name="project-acoustics-unity-integration"></a>Projekt Akustik: Unity-Integration
 In dieser Vorgehensweise wird die Integration des Unity-Plug-Ins von Projekt Akustik in Ihr Unity-Projekt erläutert.
 
 Softwareanforderungen:
-* [Unity 2018.2 oder höher](http://unity3d.com) für Windows
+* [Unity 2018.2 oder höher](https://unity3d.com) für Windows
 * [Projekt Akustik: Unity-Paket](https://www.microsoft.com/download/details.aspx?id=57346)
 
 ## <a name="import-the-plugin"></a>Importieren des Plug-Ins
 Importieren Sie das Akustik-Unity-Paket in Ihr Projekt. 
-* Wechseln Sie in Unity zu **Assets (Medienobjekte) > Import Package (Paket importieren) > Custom Package... (Benutzerdefiniertes Paket...)**.
+* Wechseln Sie in Unity zu **Assets (Medienobjekte) > Import Package (Paket importieren) > Custom Package... (Benutzerdefiniertes Paket...)** .
 
     ![Screenshot des Menüs zum Importieren des Unity-Pakets](media/import-package.png)  
 
 * Wählen Sie **ProjectAcoustics.unitypackage** aus.
+
+* Klicken Sie auf die Schaltfläche **Importieren**, um das Unity-Paket in Ihr Projekt zu integrieren.  
+
+    ![Screenshot des Dialogfelds zum Importieren des Unity-Pakets](media/import-dialog.png)  
 
 Wenn Sie das Plug-In in ein vorhandenes Projekt importieren, ist in Ihrem Projekt möglicherweise bereits eine **mcs.rsp**-Datei im Projektstammverzeichnis vorhanden, in dem Optionen für den C#-Compiler festgelegt werden. Sie müssen diese Datei mit der Datei „mcs.rsp“, die im Plug-In Project Acoustics enthalten ist, zusammenführen.
 

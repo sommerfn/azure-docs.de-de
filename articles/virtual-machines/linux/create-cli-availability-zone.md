@@ -3,31 +3,30 @@ title: Erstellen eines virtuellen Linux-Computers in einer Zone mit der Azure CL
 description: Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit der Azure CLI
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: dlepow
-manager: jeconnoc
+author: cynthn
+manager: gwallace
 editor: ''
 tags: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/05/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: ee714cd87676c519c1bbfca2c08b62287299114e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e732693a63b3c866dc767e98bbe298474286f178
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700620"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173888"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit der Azure CLI
 
 In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Linux-Computers in einer Azure-Verfügbarkeitszone mithilfe der Azure CLI erläutert. Eine [Verfügbarkeitszone](../../availability-zones/az-overview.md) ist eine physisch separate Zone in einer Azure-Region. Verwenden Sie Verfügbarkeitszonen, um Ihre Apps und Daten vor einem unwahrscheinlichen Fehler oder Ausfall eines gesamten Rechenzentrums zu schützen.
 
-Um eine Verfügbarkeitszone verwenden zu können, muss der virtuelle Computer in einer [unterstützten Azure-Region](../../availability-zones/az-overview.md#regions-that-support-availability-zones) erstellt werden.
+Um eine Verfügbarkeitszone verwenden zu können, muss der virtuelle Computer in einer [unterstützten Azure-Region](../../availability-zones/az-overview.md#services-support-by-region) erstellt werden.
 
 Stellen Sie sicher, dass Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert haben und über [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sind.
 
@@ -102,7 +101,7 @@ Die Erstellung der VM kann einige Minuten dauern. Nach der Erstellung des virtue
 
 Bei der Bereitstellung des virtuellen Computers in einer Verfügbarkeitszone wird in der gleichen Verfügbarkeitszone ein verwalteter Datenträger bereitgestellt. Standardmäßig wird in dieser Zone ebenfalls eine öffentliche IP-Adresse erstellt. Die folgenden Beispiele rufen Informationen zu diesen Ressourcen ab.
 
-Um sicherzustellen, dass der verwaltete Datenträger des virtuellen Computers sich in der Verfügbarkeitszone befindet, verwenden Sie den Befehl [az vm show](/cli/azure/vm), um die Datenträger-ID zurückzugeben. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert, die in einem späteren Schritt verwendet wird. 
+Verwenden Sie den Befehl [az vm show](/cli/azure/vm) zum Zurückgeben der Datenträger-ID, um sicherzustellen, dass der verwaltete Datenträger der VM sich in der Verfügbarkeitszone befindet. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert, die in einem späteren Schritt verwendet wird. 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
@@ -198,7 +197,7 @@ Die Ausgabe zeigt, dass sich die IP-Adresse in derselben Verfügbarkeitszone wie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie einen virtuellen Computer in einer Verfügbarkeitszone erstellen. Weitere Informationen zu Regionen und Verfügbarkeit für virtuelle Azure-Computer finden Sie [hier](regions-and-availability.md).
+In diesem Artikel haben Sie gelernt, wie Sie einen virtuellen Computer in einer Verfügbarkeitszone erstellen. Erfahren Sie mehr über die [Verfügbarkeit](availability.md) virtueller Azure-Computer.
 
 
 

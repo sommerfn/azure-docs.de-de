@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Probleme auf einer Linux-VM beheben, indem Si
 services: virtual-machines-linux
 documentationCenter: ''
 author: genlin
-manager: jeconnoc
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -13,32 +13,33 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: dfb85b0f9f1dda611c613cb296177cf28391adc0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: faa15e9cf6288bcd4014cbc03dcf9d82a2047bde
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776885"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088370"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe der Azure CLI
 Wenn für Ihren virtuellen Linux-Computer (VM) ein Start- oder Datenträgerfehler auftritt, müssen Sie möglicherweise Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiger Eintrag in `/etc/fstab`, der den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie die Azure CLI die Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Linux-VM herstellt, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen. 
 
-
 ## <a name="recovery-process-overview"></a>Übersicht über den Wiederherstellungsprozess
 Der Problembehebungsprozess sieht wie folgt aus:
 
-1. Löschen Sie die VM, auf der Probleme auftreten, und behalten Sie die virtuellen Festplatten bei.
-2. Fügen Sie einer anderen Linux-Problembehebungs-VM die virtuelle Festplatte hinzu, und stellen Sie sie bereit.
-3. Stellen Sie eine Verbindung mit der Problembehebungs-VM her. Bearbeiten Sie Dateien, oder führen Sie ein beliebiges Tool zum Beheben von Problemen auf der ursprünglichen virtuellen Festplatte aus.
-4. Heben Sie die Bereitstellung auf, und trennen Sie die virtuelle Festplatte von der Problembehebungs-VM.
-5. Erstellen Sie eine VM mithilfe der ursprünglichen virtuellen Festplatte.
-
-Für virtuelle Computer mit verwalteten Datenträgern finden Sie weitere Informationen unter [Problembehandlung bei einem virtuellen Computer mit verwalteten Datenträgern durch Anfügen eines neuen Betriebssystemdatenträgers](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk).
+1. Beenden Sie die betroffene VM.
+1. Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers der VM.
+1. Erstellen Sie einen Datenträger aus der Momentaufnahme vom Betriebssystemdatenträger.
+1. Ordnen Sie den neuen Betriebssystemdatenträger zu einer anderen Linux-VM zu, die als Problembehebungs-VM fungieren soll, und binden Sie den neuen Datenträger in diese VM ein.
+1. Stellen Sie eine Verbindung mit der Problembehebungs-VM her. Bearbeiten Sie Dateien, oder führen Sie ein beliebiges Tool aus, um die Probleme auf dem neuen Betriebssystemdatenträger zu beheben.
+1. Heben Sie die Einbindung des neuen Betriebssystemdatenträgers in die Problembehebungs-VM auf, und trennen Sie diesen Datenträger von der Problembehebungs-VM.
+1. Ändern Sie den Betriebssystemdatenträger für die betroffene VM.
 
 Zum Ausführen dieser Schritte zur Problembehandlung muss die neueste [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mit [az login](/cli/azure/reference-index) bei einem Azure-Konto angemeldet sein.
 
-Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `mystorageaccount` und `myVM` verwendet.
+> [!Important]
+> Die Skripts in diesem Artikel gelten nur für VMs, die [verwaltete Datenträger](../linux/managed-disks-overview.md) verwenden. 
 
+Ersetzen Sie in den folgenden Beispielen die Parameternamen durch Ihre eigenen Werte, beispielsweise `myResourceGroup` und `myVM`.
 
 ## <a name="determine-boot-issues"></a>Bestimmen von Problemen beim Start
 Überprüfen Sie die serielle Ausgabe, um zu bestimmen, warum Ihre VM nicht ordnungsgemäß starten kann. Ein gängiges Beispiel ist ein ungültiger Eintrag in `/etc/fstab` oder eine zugrunde liegende virtuelle Festplatte, die gelöscht oder verschoben wird.
@@ -51,44 +52,75 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 
 Überprüfen Sie die serielle Ausgabe, um zu bestimmen, warum die VM nicht startet. Wenn die serielle Ausgabe keine Auskunft bietet, müssen Sie möglicherweise Protokolldateien in `/var/log` überprüfen, nachdem Sie die virtuelle Festplatte mit der Problembehebungs-VM verbunden haben.
 
+## <a name="stop-the-vm"></a>Beenden des virtuellen Computers
 
-## <a name="view-existing-virtual-hard-disk-details"></a>Anzeigen von Details vorhandener virtueller Festplatten
-Damit Sie Ihre virtuelle Festplatte (VHD) an einen anderen virtuellen Computer anfügen können, müssen Sie den URI des Betriebssystemdatenträgers ermitteln. 
-
-Informationen zu Ihrem virtuellen Computer können Sie mit [az vm show](/cli/azure/vm) anzeigen. Verwenden Sie das Flag `--query` zum Extrahieren des URI auf den Betriebssystemdatenträger. Im folgenden Beispiel werden Datenträgerinformationen für den virtuellen Computer `myVM` in der Ressourcengruppe `myResourceGroup` abgerufen:
+Im folgenden Beispiel wird die VM `myVM` in der Ressourcengruppe `myResourceGroup` angehalten:
 
 ```azurecli
-az vm show --resource-group myResourceGroup --name myVM \
-    --query [storageProfile.osDisk.vhd.uri] --output tsv
+az vm stop --resource-group MyResourceGroup --name MyVm
 ```
+## <a name="take-a-snapshot-from-the-os-disk-of-the-affected-vm"></a>Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers der betroffenen VM.
 
-Der URI lautet in etwa wie folgt: **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd**.
-
-## <a name="delete-existing-vm"></a>Löschen einer vorhandener VM
-Virtuelle Festplatten und VMs sind zwei unterschiedliche Ressourcen in Azure. Eine virtuelle Festplatte ist der Ort, an dem das Betriebssystem selbst, Anwendungen und Konfigurationen gespeichert werden. Die VM selbst besteht nur aus Metadaten, die die Größe oder Position definieren und auf Ressourcen verweisen, z.B. eine virtuelle Festplatte oder virtuelle Netzwerkschnittstellenkarte (NIC). Jede virtuelle Festplatte verfügt über eine zugewiesene Lease, wenn sie mit einer VM verknüpft ist. Obwohl Datenträger auch bei laufendem Betrieb der VM hinzugefügt und getrennt werden können, kann der Betriebssystemdatenträger nicht getrennt werden, es sei denn, die VM-Ressource wird gelöscht. Die Lease ordnet den Betriebssystemdatenträger weiterhin einer VM zu, selbst wenn diese VM beendet und die Zuordnung aufgehoben ist.
-
-Der erste Schritt beim Wiederherstellen Ihrer VM ist das Löschen der VM-Ressource selbst. Das Löschen der VM belässt die virtuellen Festplatten in Ihrem Speicherkonto. Nachdem die VM gelöscht wird, fügen Sie die virtuelle Festplatte zu einer anderen VM hinzu, um die Fehler zu beheben.
-
-Löschen Sie mit [az vm delete](/cli/azure/vm) den virtuellen Computer. Im folgenden Beispiel wird die VM namens `myVM` in der Ressourcengruppe namens `myResourceGroup` gelöscht:
+Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer VHD. Sie kann nicht an eine VM angefügt werden. Im nächsten Schritt erstellen Sie aus dieser Momentaufnahme einen Datenträger. Das folgende Beispiel erstellt eine Momentaufnahme namens `mySnapshot` vom Betriebssystemdatenträger der VM mit dem Namen „myVM“. 
 
 ```azurecli
-az vm delete --resource-group myResourceGroup --name myVM 
+#Get the OS disk Id 
+$osdiskid=(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+
+#creates a snapshot of the disk
+az snapshot create --resource-group myResourceGroupDisk --source "$osdiskid" --name mySnapshot
 ```
+## <a name="create-a-disk-from-the-snapshot"></a>Erstellen eines Datenträgers aus der Momentaufnahme
 
-Warten Sie, bis die VM gelöscht wurde, bevor Sie die virtuelle Festplatte einer anderen VM hinzufügen. Die Lease auf der virtuellen Festplatte, die sie zur VM zuordnet, muss freigegeben werden, bevor Sie die virtuelle Festplatte einer anderen VM hinzufügen können.
-
-
-## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>Hinzufügen einer vorhandenen virtuellen Festplatte zu einer anderen VM
-Verwenden Sie eine andere Problembehebungs-VM für die nächsten Schritte. Fügen Sie die vorhandene virtuelle Festplatte zu dieser Problembehebungs-VM hinzu, um den Inhalt des Datenträgers zu durchsuchen und zu bearbeiten. Durch diesen Prozess können Sie z.B. alle Konfigurationsfehler beheben oder zusätzliche Anwendungs- oder Systemprotokolldateien überprüfen. Wählen Sie eine andere Problembehebungs-VM aus, oder erstellen Sie eine.
-
-Fügen Sie mit [az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk) die vorhandene virtuelle Festplatte an. Wenn Sie die vorhandene virtuelle Festplatte anfügen, geben Sie den URI des Datenträgers an, der im vorherigen Befehl `az vm show` abgerufen wurde. Das folgende Beispiel fügt eine vorhandene virtuelle Festplatte zur Problembehebungs-VM namens `myVMRecovery` in der Ressourcengruppe mit dem Namen `myResourceGroup` hinzu:
+Dieses Skript erstellt einen verwalteten Datenträger mit dem Namen `myOSDisk` aus der Momentaufnahme namens `mySnapshot`.  
 
 ```azurecli
-az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecovery \
-    --vhd-uri https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd
+#Provide the name of your resource group
+$resourceGroup=myResourceGroup
+
+#Provide the name of the snapshot that will be used to create Managed Disks
+$snapshot=mySnapshot
+
+#Provide the name of the Managed Disk
+$osDisk=myNewOSDisk
+
+#Provide the size of the disks in GB. It should be greater than the VHD file size.
+$diskSize=128
+
+#Provide the storage type for Managed Disk. Premium_LRS or Standard_LRS.
+$storageType=Premium_LRS
+
+#Provide the OS type
+$osType=linux
+
+#Provide the name of the virtual machine
+$virtualMachine=myVM
+
+#Get the snapshot Id 
+$snapshotId=(az snapshot show --name $snapshot --resource-group $resourceGroup --query [id] -o tsv)
+
+# Create a new Managed Disks using the snapshot Id.
+
+az disk create --resource-group $resourceGroup --name $osDisk --sku $storageType --size-gb $diskSize --source $snapshotId
+
 ```
 
+Wenn sich die Ressourcengruppe und die Quellmomentaufnahme nicht in derselben Region befinden, wird beim Ausführen von `az disk create` der Fehler „Ressource wurde nicht gefunden“ angezeigt. In diesem Fall müssen Sie `--location <region>` angeben, um den Datenträger in derselben Region wie die Quellmomentaufnahme zu erstellen.
 
+Nun haben Sie eine Kopie des ursprünglichen Betriebssystemdatenträgers. Sie können diesen neuen Datenträger in eine andere Windows-VM zu Problembehandlungszwecken einbinden.
+
+## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>Zuordnen der neuen virtuellen Festplatte zu einer anderen VM
+Verwenden Sie eine andere Problembehebungs-VM für die nächsten Schritte. Ordnen Sie den Datenträger zu dieser Problembehebungs-VM zu, um den Inhalt des Datenträgers zu durchsuchen und zu bearbeiten. Durch diesen Prozess können Sie alle Konfigurationsfehler beheben oder zusätzliche Anwendungs- oder Systemprotokolldateien überprüfen.
+
+Mit diesem Skript wird der Datenträger `myNewOSDisk` der VM `MyTroubleshootVM` zugeordnet:
+
+```azurecli
+# Get ID of the OS disk that you just created.
+$myNewOSDiskid=(az vm show -g myResourceGroupDisk -n myNewOSDisk --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+
+# Attach the disk to the troubleshooting VM
+az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 --sku Standard_LRS --vm-name MyTroubleshootVM
+```
 ## <a name="mount-the-attached-data-disk"></a>Bereitstellen des hinzugefügten Datenträgers
 
 > [!NOTE]
@@ -128,11 +160,11 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
     > Die bewährte Methode ist das Bereitstellen von Datenträgern auf VMs in Azure mithilfe des Universally Unique Identifiers (UUID) der virtuellen Festplatte. In diesem kurzen Szenario zur Problembehebung ist das Bereitstellen der virtuellen Festplatte mithilfe von UUID nicht erforderlich. Wenn allerdings unter normalen Bedingungen `/etc/fstab` bearbeitet wird, um virtuelle Festplatten mithilfe des Gerätenamens anstatt des UUID bereitzustellen, dann wird die VM möglicherweise nicht erfolgreich starten können.
 
 
-## <a name="fix-issues-on-original-virtual-hard-disk"></a>Beheben von Problemen auf der ursprünglichen virtuellen Festplatte
+## <a name="fix-issues-on-the-new-os-disk"></a>Beheben von Problemen auf dem neuen Betriebssystemdatenträger
 Nun, da die vorhandene virtuelle Festplatte bereitgestellt ist, können Sie jetzt alle Schritte zur Wartung und Problembehebung ausführen. Fahren Sie mit den folgenden Schritte fort, nachdem Sie die Probleme behoben haben.
 
 
-## <a name="unmount-and-detach-original-virtual-hard-disk"></a>Aufheben der Bereitstellung und Trennen der ursprünglichen virtuellen Festplatte
+## <a name="unmount-and-detach-the-new-os-disk"></a>Aufheben der Einbindung (Bereitstellung) und Trennen des neuen Betriebssystemdatenträgers
 Sobald Ihre Fehler behoben sind, heben Sie die Bereitstellung auf, und trennen Sie die vorhandene virtuelle Festplatte von Ihrer Problembehebungs-VM. Sie können Ihre virtuelle Festplatte nicht mit einer anderen VM nutzen, bis die Lease freigegeben wird, die die virtuelle Festplatte zur Problembehebungs-VM hinzufügt.
 
 1. Aufheben der Bereitstellung der vorhandenen virtuellen Festplatte von der SSH-Sitzung bis zu Ihrer Problembehebungs-VM. Wechseln Sie aus dem übergeordneten Verzeichnis zu Ihrem Bereitstellungspunkt:
@@ -147,52 +179,31 @@ Sobald Ihre Fehler behoben sind, heben Sie die Bereitstellung auf, und trennen S
     sudo umount /dev/sdc1
     ```
 
-2. Trennen Sie die virtuelle Festplatte von der VM. Beenden Sie die SSH-Sitzung zu Ihrer Problembehebungs-VM. Listen Sie mit [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk) die an die Problembehandlungs-VM angefügten Datenträger auf. Im folgenden Beispiel werden die Datenträger aufgelistet, die zur VM namens `myVMRecovery` in der Ressourcengruppe namens `myResourceGroup` hinzugefügt wurden:
+2. Trennen Sie die virtuelle Festplatte von der VM. Beenden Sie die SSH-Sitzung zu Ihrer Problembehebungs-VM:
 
     ```azurecli
-    azure vm unmanaged-disk list --resource-group myResourceGroup --vm-name myVMRecovery \
-        --query '[].{Disk:vhd.uri}' --output table
+    az vm disk detach -g MyResourceGroup --vm-name MyTroubleShootVm --name myNewOSDisk
     ```
 
-    Notieren Sie den Namen Ihrer vorhandenen virtuellen Festplatte. Der Name einer Festplatte mit dem URI **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** lautet beispielsweise **myVHD**. 
+## <a name="change-the-os-disk-for-the-affected-vm"></a>Ändern des Betriebssystemdatenträgers für die betroffene VM
 
-    Trennen Sie mit [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk) den Datenträger von Ihrem virtuellen Computer. Im folgenden Beispiel wird der Datenträger mit dem Namen `myVHD` vom virtuellen Computer `myVMRecovery` in der Ressourcengruppe `myResourceGroup` getrennt:
+Sie können die Azure-Befehlszeilenschnittstelle verwenden, um die Betriebssystemdatenträger zu tauschen. Sie müssen den virtuellen Computer nicht löschen und neu erstellen.
 
-    ```azurecli
-    az vm unmanaged-disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
-        --name myVHD
-    ```
-
-
-## <a name="create-vm-from-original-hard-disk"></a>Erstellen einer VM von der ursprünglichen Festplatte
-Verwenden Sie zum Erstellen einer VM von Ihrer ursprünglichen virtuellen Festplatte [diese Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd). Die tatsächliche JSON-Vorlage ist unter dem folgenden Link verfügbar:
-
-- https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json
-
-Mit der Vorlage wird anhand des VHD-URI aus dem Befehl weiter oben ein virtueller Computer bereitgestellt. Stellen Sie mit [az group deployment create](/cli/azure/group/deployment) die Vorlage bereit. Geben Sie wie folgt den URI für Ihre ursprüngliche virtuelle Festplatte und dann den Betriebssystemtyp sowie die Größe und den Namen des virtuellen Computers an:
+Dieses Beispiel beendet die VM `myVM` und weist den Datenträger `myNewOSDisk` als neuen Betriebssystemdatenträger zu.
 
 ```azurecli
-az group deployment create --resource-group myResourceGroup --name myDeployment \
-  --parameters '{"osDiskVhdUri": {"value": "https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd"},
-    "osType": {"value": "Linux"},
-    "vmSize": {"value": "Standard_DS1_v2"},
-    "vmName": {"value": "myDeployedVM"}}' \
-    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json
+# Stop the affected VM
+az vm stop -n myVM -g myResourceGroup
+
+# Get ID of the OS disk that is repaired.
+$myNewOSDiskid=(az vm show -g myResourceGroupDisk -n myNewOSDisk --query "storageProfile.osDisk.managedDisk.id" -o tsv)
+
+# Change the OS disk of the affected VM to "myNewOSDisk"
+az vm update -g myResourceGroup -n myVM --os-disk $myNewOSDiskid
+
+# Start the VM
+az vm start -n myVM -g myResourceGroup
 ```
-
-## <a name="re-enable-boot-diagnostics"></a>Erneutes Aktivieren der Startdiagnose
-Wenn Sie Ihre VM aus der vorhandenen virtuellen Festplatte erstellen, werden Startdiagnoseeinstellungen möglicherweise nicht automatisch aktiviert. Aktivieren Sie mit [az vm boot-diagnostics enable](/cli/azure/vm/boot-diagnostics) die Startdiagnose. Im folgenden Beispiel wird die Diagnoseerweiterung in der VM namens `myDeployedVM` in der Ressourcengruppe namens `myResourceGroup` aktiviert:
-
-```azurecli
-az vm boot-diagnostics enable --resource-group myResourceGroup --name myDeployedVM
-```
-
-## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Problembehandlung bei einem virtuellen Computer mit verwalteten Datenträgern durch Anfügen eines neuen Betriebssystemdatenträgers
-1. Beenden Sie die betroffene VM.
-2. [Erstellen Sie eine Momentaufnahme](../linux/snapshot-copy-managed-disk.md) des Betriebssystemdatenträgers des virtuellen Computers mit verwalteten Datenträgern.
-3. [Erstellen Sie einen verwalteten Datenträger aus der Momentaufnahme](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
-4. [Fügen Sie den verwalteten Datenträger als Datenträger des virtuellen Computers an](../windows/attach-disk-ps.md).
-5. [Ändern Sie den Datenträger aus Schritt 4 in den Betriebssystemdatenträger](../windows/os-disk-swap.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Probleme beim Herstellen einer Verbindung mit Ihrer VM auftreten, finden Sie unter [Problembehandlung von SSH-Verbindungen mit einer Azure-VM](troubleshoot-ssh-connection.md) Hilfestellungen. Konsultieren Sie [Beheben von Anwendungskonnektivitätsproblemen auf einer Linux-VM](troubleshoot-app-connection.md) bei Problemen mit dem Zugriff auf Anwendungen, die auf Ihrer VM ausgeführt werden.

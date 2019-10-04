@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 8f55b6dfb7b5bc9eda675aca4ed80a66b8a25a7f
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 60ec2b86e0205060f907f1fe39d084dca3aac1cd
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045780"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608227"
 ---
 # <a name="handle-duplicate-data-in-azure-data-explorer"></a>Behandeln von doppelten Daten in Azure Data Explorer
 
@@ -70,7 +70,7 @@ DeviceEventsAll
 
 ### <a name="solution-3-filter-duplicates-during-the-ingestion-process"></a>Lösung 3: Filtern nach Duplikaten während der Datenerfassung
 
-Eine weitere Möglichkeit besteht darin, während der Datenerfassung nach Duplikaten zu filtern. Die doppelten Daten werden daraufhin bei der Datenerfassung in Kusto-Tabellen ignoriert. Daten werden in einer Stagingtabelle erfasst und nach dem Entfernen doppelter Zeilen in eine andere Tabelle kopiert. Vorteil: Im Vergleich zur vorherigen Lösung verbessert sich die Abfrageleistung erheblich. Nachteil: Erfassungsdauer und Datenspeicherkosten erhöhen sich.
+Eine weitere Möglichkeit besteht darin, während der Datenerfassung nach Duplikaten zu filtern. Die doppelten Daten werden daraufhin bei der Datenerfassung in Kusto-Tabellen ignoriert. Daten werden in einer Stagingtabelle erfasst und nach dem Entfernen doppelter Zeilen in eine andere Tabelle kopiert. Vorteil: Im Vergleich zur vorherigen Lösung verbessert sich die Abfrageleistung erheblich. Nachteil: Erfassungsdauer und Datenspeicherkosten erhöhen sich. Darüber hinaus funktioniert diese Lösung nur, wenn nicht gleichzeitig Duplikate erfasst werden. Wenn mehrere gleichzeitige Erfassungen durchgeführt werden, die doppelte Datensätze enthalten, können alle erfasst werden, da der Deduplizierungsprozess keine vorhandenen übereinstimmenden Datensätze in der Tabelle findet.    
 
 Diese Methode wird im folgenden Beispiel veranschaulicht:
 

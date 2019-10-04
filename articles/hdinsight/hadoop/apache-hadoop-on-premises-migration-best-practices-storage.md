@@ -1,22 +1,21 @@
 ---
-title: Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – bewährte Speichermethoden
+title: Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Speicher
 description: Erfahren Sie mehr über bewährte Speichermethoden für die Migration von lokalen Hadoop-Clustern zu Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: ae435c379a55ee2b3246cb3e757b79295c57988e
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 0acd4c2793c7c13fb687f591d01e6d8753f71bdc
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338291"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181145"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – bewährte Speichermethoden
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight
 
 Dieser Artikel enthält Empfehlungen für die Datenspeicherung in Azure HDInsight-Systemen. Er ist Teil einer Reihe von Artikeln, die bewährte Methoden für die Migration von lokalen Apache Hadoop-Systemen zu Azure HDInsight enthalten.
 
@@ -89,9 +88,9 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Erstellen von HDInsight-Clustern mit Data Lake Storage mithilfe des Azure-Portals](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Verwenden von Data Lake Storage mit Azure HDInsight-Clustern](../hdinsight-hadoop-use-data-lake-store.md)
 
-### <a name="azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage Gen2 (Vorschauversion)
+### <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 ist das neueste Speicherangebot und ist zum Zeitpunkt der Erstellung dieses Dokuments in der Vorschauversion erhältlich. Es vereint die Kernfunktionen der ersten Generation von Azure Data Lake Storage mit einem Hadoop-kompatiblen Dateisystemendpunkt, der direkt in Azure Blob Storage integriert ist. Diese Erweiterung verbindet die Vorteile eines Objektspeichers hinsichtlich Skalierbarkeit und Kosten mit der Zuverlässigkeit und Leistung, die normalerweise nur lokale Dateisysteme bieten.
+Azure Data Lake Storage Gen2 ist das neueste Speicherangebot. Es vereint die Kernfunktionen der ersten Generation von Azure Data Lake Storage mit einem Hadoop-kompatiblen Dateisystemendpunkt, der direkt in Azure Blob Storage integriert ist. Diese Erweiterung verbindet die Vorteile eines Objektspeichers hinsichtlich Skalierbarkeit und Kosten mit der Zuverlässigkeit und Leistung, die normalerweise nur lokale Dateisysteme bieten.
 
 ADLS Gen2 basiert auf  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) und ermöglicht Ihnen das Arbeiten mit Daten über das Dateisystem und den Objektspeicher. Funktionen von  [Azure Data Lake Storage Gen1](../../data-lake-store/index.md), wie z.B. Dateisystemsemantik, Sicherheit und Skalierbarkeit auf Dateiebene, werden mit den kostengünstigen, mehrstufigen Speicherlösungen, Hochverfügbarkeits- und Notfallwiederherstellungsfunktionen und einem umfassenden Ökosystem aus SDKs und Tools von  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) kombiniert. In Data Lake Storage Gen2 bleiben alle Vorzüge des Objektspeichers erhalten, während gleichzeitig die Vorteile einer für Analyseworkloads optimierten Dateisystemschnittstelle zum Tragen kommen.
 
@@ -111,11 +110,11 @@ In der Vergangenheit mussten bei cloudbasierten Analysen Kompromisse in puncto L
 
 Für den Zugriff auf Daten, die in ADLS Gen2 gespeichert sind, kann eines der folgenden Formate verwendet werden:
 - `abfs:///`: Zugriff auf die standardmäßige Data Lake Storage-Instanz für den Cluster
-- `abfs[s]://file_system@account_name.dfs.core.windows.net`: Wird bei einer Verbindung mit einer nicht standardmäßigen Data Lake Storage-Instanz verwendet.
+- `abfs://file_system@account_name.dfs.core.windows.net`: Wird bei einer Verbindung mit einer nicht standardmäßigen Data Lake Storage-Instanz verwendet.
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Einführung in Azure Data Lake Storage Gen2 Preview](../../storage/data-lake-storage/introduction.md)
+- [Einführung in Azure Data Lake Storage Gen2](../../storage/data-lake-storage/introduction.md)
 - [Der Azure-Blobdateisystemtreiber (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
 - [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
@@ -172,11 +171,11 @@ HDInsight hat standardmäßig vollen Zugriff auf Daten in Azure Storage-Konten, 
 
 5. Um den Zugriff auf einen Container mit Shared Access Signature zu beschränken, fügen Sie einen benutzerdefinierten Eintrag zur „core-site“-Konfiguration für den Cluster in der „Add“-Eigenschaft im Bereich „Custom core-site“ unter den erweiterten Einstellungen für HDFS-Konfigurationen in Ambari hinzu.
 
-6. Verwenden Sie die folgenden Werte für die Felder  **Key**  und  **Value** :
+6. Verwenden Sie für die Felder **Key** und **Value** die folgenden Werte:
 
     **Key**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **Value**: Der SAS-Schlüssel, der von der Python-Anwendung in Schritt 4 oben zurückgegeben wurde
 
-7. Klicken Sie auf die Schaltfläche  **Add** , um diesen Schlüssel und Wert zu speichern. Klicken Sie dann auf die Schaltfläche  **Save** , um die Konfigurationsänderungen zu speichern. Fügen Sie bei Aufforderung eine Beschreibung der Änderung hinzu (z.B. „Hinzufügen des SAS-Speicherzugriffs“), und klicken Sie anschließend auf  **Save**.
+7. Klicken Sie auf die Schaltfläche **Add**, um diesen Schlüssel und Wert zu speichern. Klicken Sie dann auf die Schaltfläche **Save**, um die Konfigurationsänderungen zu speichern. Fügen Sie bei Aufforderung eine Beschreibung der Änderung hinzu (z.B. „Hinzufügen des SAS-Speicherzugriffs“), und klicken Sie anschließend auf **Speichern**.
 
 8. Wählen Sie auf der Ambari-Webbenutzeroberfläche in der Liste auf der linken Seite „HDFS“ und dann in der Dropdownliste „Service Actions“ (Dienstaktionen) auf der rechten Seite  **Restart All Affected**  (Alle betroffenen Dienste neu starten) aus. Klicken Sie bei entsprechender Aufforderung auf  **Confirm Restart All** (Neustart aller Dienste bestätigen).
 

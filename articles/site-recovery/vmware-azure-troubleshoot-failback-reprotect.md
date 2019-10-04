@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 57630d1fa95c2133e592f691add8c515ca718afb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 20cb7a446befb1d31f0e069d91d0230fc4a2a901
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833430"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60565598"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Beheben von Fehlern beim Failback aus Azure auf lokale Umgebungen
 
@@ -56,7 +56,7 @@ So lösen Sie dieses Problem:
 
 So lösen Sie dieses Problem:
 
-Zum erneuten Schützen einer VM nach einem Failover muss die Azure-VM ausgeführt werden, damit der Mobilitätsdienst beim Konfigurationsserver lokal registriert wird und mit der Replikation beginnen kann, indem er mit dem Prozessserver kommuniziert. Wenn sich der Computer in einem falschen Netzwerk befindet oder nicht ausgeführt wird (also nicht reagiert oder heruntergefahren ist), kann der Konfigurationsserver den Mobilitätsdienst auf dem virtuellen Computer nicht erreichen und den Schutz nicht erneut aktivieren.
+Zum erneuten Schützen einer VM nach einem Failover muss die Azure-VM ausgeführt werden, damit der Mobilitätsdienst beim Konfigurationsserver lokal registriert wird und mit der Replikation beginnen kann, indem er mit dem Prozessserver kommuniziert. Wenn sich der Computer in einem falschen Netzwerk befindet oder nicht ausgeführt wird (also nicht reagiert oder heruntergefahren ist), kann der Konfigurationsserver Mobility Service auf dem virtuellen Computer nicht erreichen und den Schutz nicht erneut aktivieren.
 
 * Starten Sie den virtuellen Computer neu, damit er wieder mit der lokalen Umgebung kommunizieren kann.
 * Starten Sie den Auftrag für erneutes Schützen nach dem Neustart des virtuellen Azure-Computers neu.

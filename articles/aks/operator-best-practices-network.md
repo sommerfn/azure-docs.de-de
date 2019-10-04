@@ -2,17 +2,17 @@
 title: Best Practices für Operator – Netzwerkkonnektivität in Azure Kubernetes Service (AKS)
 description: Lernen Sie die Best Practices für virtuelle Netzwerkressourcen und -konnektivität in Azure Kubernetes Service (AKS) für Clusteroperator kennen.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.author: iainfou
-ms.openlocfilehash: aaa16245fada7fbccdd0865d973de2fa19970989
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: mlearned
+ms.openlocfilehash: d1bc865b38b52c8a7c3ac6ec4dab6408a1d0430c
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176581"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67614748"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Netzwerkkonnektivität und Sicherheit in Azure Kubernetes Service (AKS)
 
@@ -32,8 +32,8 @@ In diesem Artikel zu bewährten Methoden liegt der Schwerpunkt auf der Netzwerkk
 
 Virtuelle Netzwerke bieten die grundlegende Konnektivität für AKS-Knoten und Kunden für den Zugriff auf Ihre Anwendungen. Es gibt zwei verschiedene Möglichkeiten, AKS-Cluster in virtuellen Netzwerken bereitzustellen:
 
-* **kubenet-Netzwerke** – Azure verwaltet die virtuellen Netzwerkressourcen während der Bereitstellung des Clusters und verwendet das Kubernetes-Plug-In [kubenet][kubenet].
-* **Azure CNI-Netzwerke** – Führt die Bereitstellung in ein bestehendes virtuelles Netzwerk aus und verwendet das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking]. Pods erhalten einzelne IP-Adressen, die an anderen Netzwerkdienste oder lokale Ressourcen weitergeleitet werden können.
+* **kubenet-Netzwerk**: Azure verwaltet die virtuellen Netzwerkressourcen während der Bereitstellung des Clusters und verwendet das Kubernetes-Plug-In [kubenet][kubenet].
+* **Azure CNI-Netzwerk**: Führt die Bereitstellung in einem bestehenden virtuellen Netzwerk aus und verwendet das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking]. Pods erhalten einzelne IP-Adressen, die an anderen Netzwerkdienste oder lokale Ressourcen weitergeleitet werden können.
 
 Die Container Networking Interface (CNI) ist ein herstellerneutrales Protokoll, mit dem die Containerlaufzeit Anfragen an einen Netzwerkanbieter richten kann. Azure CNI weist Pods und Knoten IP-Adressen zu und stellt Features zur IP-Adressverwaltung (IPAM) bereit, wenn Sie die Verbindung zu bestehenden virtuellen Azure-Netzwerken herstellen. Jeder Knoten und jede Podressource erhält eine IP-Adresse im virtuellen Azure-Netzwerk, und es ist kein zusätzliches Routing erforderlich, um mit anderen Ressourcen oder Diensten zu kommunizieren.
 
@@ -45,11 +45,11 @@ Wenn Sie Azure CNI-Netzwerke verwenden, befindet sich die virtuelle Netzwerkress
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-Weitere Informationen zur AKS-Dienstprinzipaldelegation finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen][sp-delegation].
+Weitere Informationen zur AKS-Dienstprinzipaldelegierung finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen][sp-delegation].
 
-Da jeder Knoten und Pod seine eigene IP-Adresse erhält, planen Sie die Adressbereiche für die AKS-Subnetze. Das Subnetz muss groß genug sein, um IP-Adressen für jeden Knoten, jeden Pod und jede bereitgestellte Netzwerkressource zu bieten. Jeder AKS-Cluster muss in einem eigenen Subnetz platziert werden. Um die Konnektivität zu lokalen oder Peernetzwerken in Azure zu ermöglichen, sollten Sie keine IP-Adressbereiche verwenden, die sich mit bestehenden Netzwerkressourcen überschneiden. Es gibt Standardbegrenzungen für die Anzahl der Pods, die jeder Knoten in einem kubernet- bzw. Azure CNI-Netzwerk ausführen kann. Um Skalierungsereignisse oder Clusterupgrades behandeln zu können, benötigen Sie außerdem zusätzliche IP-Adressen, die für die Verwendung im zugewiesenen Subnetz zur Verfügung stehen.
+Da jeder Knoten und Pod seine eigene IP-Adresse erhält, planen Sie die Adressbereiche für die AKS-Subnetze. Das Subnetz muss groß genug sein, um IP-Adressen für jeden Knoten, jeden Pod und jede bereitgestellte Netzwerkressource zu bieten. Jeder AKS-Cluster muss in einem eigenen Subnetz platziert werden. Um die Konnektivität zu lokalen oder Peernetzwerken in Azure zu ermöglichen, sollten Sie keine IP-Adressbereiche verwenden, die sich mit bestehenden Netzwerkressourcen überschneiden. Es gibt Standardbegrenzungen für die Anzahl der Pods, die jeder Knoten in einem kubernet- bzw. Azure CNI-Netzwerk ausführen kann. Um Skalierungsereignisse oder Clusterupgrades behandeln zu können, benötigen Sie außerdem zusätzliche IP-Adressen, die für die Verwendung im zugewiesenen Subnetz zur Verfügung stehen. Dieser zusätzliche Adressraum ist besonders wichtig, wenn Sie Windows Server-Container (zurzeit als Vorschauversion in AKS) verwenden, da diese Knotenpools ein Upgrade erfordern, damit die neuesten Sicherheitspatches angewandt werden. Weitere Informationen zu Windows Server-Knoten finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].
 
-Informationen zum Berechnen der erforderlichen IP-Adresse finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in AKS][advanced-networking].
+Informationen zum Berechnen der erforderlichen IP-Adresse finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in AKS][advanced-networking].
 
 ### <a name="kubenet-networking"></a>Kubenet-Netzwerke
 
@@ -101,32 +101,34 @@ spec:
 
 Ein Eingangscontroller ist ein Daemon, der auf einem AKS-Knoten ausgeführt wird und diesen auf eingehende Anforderungen überwacht. Datenverkehr wird dann entsprechend den in der Eingangsressource definierten Regeln verteilt. Der am häufigsten verwendete Eingangscontroller basiert auf [NGINX]. AKS beschränkt Sie nicht auf einen bestimmten Controller, Sie können daher auch andere Controller wie [Contour][contour], [HAProxy][haproxy] oder [Traefik][traefik] verwenden.
 
+Eingangscontroller müssen auf einem Linux-Knoten geplant werden. Windows Server-Knoten (derzeit in der Vorschau in AKS) dürfen nicht auf dem Eingangscontroller ausgeführt werden. Verwenden Sie einen Knotenselektor in Ihrem YAML-Manifest oder der Bereitstellung des Helm-Charts, um anzugeben, dass die Ressource auf einem Linux-basierten Knoten ausgeführt werden soll. Weitere Informationen finden Sie unter [Verwenden von Knotenselektoren, um zu steuern, wo Pods in AKS geplant werden][concepts-node-selectors].
+
 Es gibt viele Szenarien für Eingangsdatenverkehr, einschließlich der folgenden Anleitungen:
 
-* [Erstellen eines einfachen Eingangscontrollers mit Verbindung mit einem externen Netzwerk][aks-ingress-basic]
+* [Erstellen eines einfachen Eingangscontrollers mit Konnektivität mit einem externen Netzwerk][aks-ingress-basic]
 * [Erstellen eines Eingangscontrollers, der ein internes, privates Netzwerk und eine IP-Adresse verwendet][aks-ingress-internal]
 * [Erstellen eines Eingangscontrollers, der Ihre eigenen TLS-Zertifikate verwendet][aks-ingress-own-tls]
 * Erstellen eines Eingangscontrollers, der Let's Encrypt für das automatische Generieren von TLS-Zertifikaten [mit einer dynamischen öffentlichen IP-Adresse][aks-ingress-tls] oder [mit einer statischen öffentlichen IP-Adresse][aks-ingress-static-tls] verwendet
 
 ## <a name="secure-traffic-with-a-web-application-firewall-waf"></a>Absichern des Datenverkehrs mit einer Web Application Firewall (WAF)
 
-**Best Practice-Anleitung** – Um eingehenden Datenverkehr auf mögliche Angriffe zu überprüfen, verwenden Sie eine Web Application Firewall (WAF) wie [Barracuda WAF für Azure][barracuda-waf] oder Azure Application Gateway. Diese fortschrittlicheren Netzwerkressourcen können den Datenverkehr auch über reine HTTP- und HTTPS-Verbindungen oder eine einfache SSL-Terminierung hinaus routen.
+**Best Practices-Anleitung**: Verwenden Sie eine Web Application Firewall (WAF) wie [Barracuda WAF für Azure][barracuda-waf] oder Azure Application Gateway, um eingehenden Datenverkehr auf mögliche Angriffe zu überprüfen. Diese fortschrittlicheren Netzwerkressourcen können den Datenverkehr auch über reine HTTP- und HTTPS-Verbindungen oder eine einfache SSL-Terminierung hinaus routen.
 
 Ein Eingangscontroller, der den Datenverkehr an Dienste und Anwendungen verteilt, ist normalerweise eine Kubernetes-Ressource in Ihrem AKS-Cluster. Der Controller wird als Daemon auf einem AKS-Knoten ausgeführt und verbraucht einige der Ressourcen des Knotens wie CPU, Speicher und Netzwerkbandbreite. In größeren Umgebungen möchten Sie einen Teil dieses Datenverkehrsroutings oder der TLS-Terminierung häufig auf eine Netzwerkressource außerhalb des AKS-Clusters auslagern. Zudem möchten Sie den eingehenden Datenverkehr auf mögliche Angriffe überprüfen.
 
 ![Eine Web Application Firewall (WAF) wie Azure App Gateway kann den Datenverkehr für Ihren AKS-Cluster schützen und verteilen.](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Eine Web Application Firewall (WAF) bietet eine zusätzliche Sicherheitsebene, indem sie den eingehenden Datenverkehr filtert. Das Open Web Application Security Project (OWASP) bietet eine Reihe von Regeln, um den Datenverkehr auf Angriffe wie websiteübergreifende Skripts oder Cookie-Poisoning zu überwachen. [Azure Application Gateway][app-gateway] (aktuell in AKS in der Vorschauversion) ist eine WAF, die in AKS-Cluster integriert werden kann, um diese Sicherheitsfeatures bereitzustellen, bevor der Datenverkehr Ihren AKS-Cluster und Ihre Anwendungen erreicht. Auch andere Lösungen von Drittanbietern bieten diese Funktionen, sodass Sie bestehende Investitionen in ein bestimmtes Produkt oder vorhandenes Know-how weiterhin nutzen können.
+Eine Web Application Firewall (WAF) bietet eine zusätzliche Sicherheitsebene, indem sie den eingehenden Datenverkehr filtert. Das Open Web Application Security Project (OWASP) bietet eine Reihe von Regeln, um den Datenverkehr auf Angriffe wie websiteübergreifende Skripts oder Cookie-Poisoning zu überwachen. [Azure Application Gateway][app-gateway] (aktuell in AKS in der Vorschauphase) ist eine WAF, die in AKS-Cluster integriert werden kann, um diese Sicherheitsfeatures bereitzustellen, bevor der Datenverkehr Ihren AKS-Cluster und Ihre Anwendungen erreicht. Auch andere Lösungen von Drittanbietern bieten diese Funktionen, sodass Sie bestehende Investitionen in ein bestimmtes Produkt oder vorhandenes Know-how weiterhin nutzen können.
 
-Load Balancer oder Eingangsressourcen werden in Ihrem AKS-Cluster weiterhin ausgeführt, um die Verteilung des Datenverkehrs weiter zu optimieren. App Gateway kann zentral als Eingangscontroller mit einer Ressourcendefinition verwaltet werden. Um zu beginnen, [erstellen Sie einen Application Gateway-Eingangscontroller][app-gateway-ingress].
+Load Balancer oder Eingangsressourcen werden in Ihrem AKS-Cluster weiterhin ausgeführt, um die Verteilung des Datenverkehrs weiter zu optimieren. App Gateway kann zentral als Eingangscontroller mit einer Ressourcendefinition verwaltet werden. [Erstellen Sie zunächst einen Application Gateway-Eingangscontroller.][app-gateway-ingress]
 
 ## <a name="control-traffic-flow-with-network-policies"></a>Steuern des Datenverkehrsflusses mit Netzwerkrichtlinien
 
 **Best Practice-Anleitung**: Verwenden Sie Netzwerkrichtlinien, um Datenverkehr zu den Pods zuzulassen oder zu verweigern. Standardmäßig ist der gesamte Datenverkehr zwischen den Pods in einem Cluster zulässig. Aus Sicherheitsgründen sollten Sie Regeln definieren, um die Kommunikation zwischen den Pods einzuschränken.
 
-Netzwerkrichtlinien (aktuell in AKS in der Vorschauversion) sind ein Kubernetes-Feature, mit dem Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Die Verwendung von Netzwerkrichtlinien ist eine cloudnative Möglichkeit, den Datenverkehrsfluss zu steuern. Wenn Pods in einem AKS-Cluster dynamisch erstellt werden, können automatisch die erforderlichen Netzwerkrichtlinien angewendet werden. Verwenden Sie zum Steuern der Kommunikation zwischen den Pods keine Azure-Netzwerksicherheitsgruppen, sondern Netzwerkrichtlinien.
+Netzwerkrichtlinien sind ein Kubernetes-Feature, mit dem Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Die Verwendung von Netzwerkrichtlinien ist eine cloudnative Möglichkeit, den Datenverkehrsfluss zu steuern. Wenn Pods in einem AKS-Cluster dynamisch erstellt werden, können automatisch die erforderlichen Netzwerkrichtlinien angewendet werden. Verwenden Sie zum Steuern der Kommunikation zwischen den Pods keine Azure-Netzwerksicherheitsgruppen, sondern Netzwerkrichtlinien.
 
-Um Netzwerkrichtlinien verwenden zu können, muss das Feature beim Erstellen eines AKS-Clusters aktiviert werden. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren. Planen Sie im Voraus, und stellen Sie sicher, dass Sie in den Clustern Netzwerkrichtlinien aktivieren und diese bei Bedarf verwenden können.
+Um Netzwerkrichtlinien verwenden zu können, muss das Feature beim Erstellen eines AKS-Clusters aktiviert werden. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren. Planen Sie im Voraus, und stellen Sie sicher, dass Sie in den Clustern Netzwerkrichtlinien aktivieren und diese bei Bedarf verwenden können. Netzwerkrichtlinien sollten nur für Linux-basierte Knoten und Pods in AKS verwendet werden.
 
 Eine Netzwerkrichtlinie wird mit einem YAML-Manifest als Kubernetes-Ressource erstellt. Die Richtlinien werden auf definierte Pods angewendet. Regeln für den ein- und ausgehenden Datenverkehr definieren dann, wie der Datenverkehr fließen kann. Im folgenden Beispiel wird eine Netzwerkrichtlinie auf Pods mit der zugewiesenen Bezeichnung *app: backend* angewendet. Die Eingangsregel erlaubt dann nur Datenverkehr von Pods mit der Bezeichnung *app: frontend*:
 
@@ -156,11 +158,11 @@ Die meisten Operationen in AKS können mit den Azure-Verwaltungstools oder über
 
 ![Verbinden mit AKS-Knoten über einen Bastionhost oder eine Jumpbox](media/operator-best-practices-network/connect-using-bastion-host-simplified.png)
 
-Auch das Verwaltungsnetzwerk für den Bastionhost sollte abgesichert sein. Verwenden Sie ein [Azure ExpressRoute][expressroute]- oder [VPN-Gateway][vpn-gateway], um sich mit einem lokalen Netzwerk zu verbinden und den Zugriff über Netzwerksicherheitsgruppen zu steuern.
+Auch das Verwaltungsnetzwerk für den Bastionhost sollte abgesichert sein. Verwenden Sie ein [Azure ExpressRoute][expressroute] oder [VPN-Gateway][vpn-gateway], um sich mit einem lokalen Netzwerk zu verbinden und den Zugriff über Netzwerksicherheitsgruppen zu steuern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dieser Artikel konzentriert sich auf Netzwerkkonnektivität und Sicherheit. Weitere Informationen zu Netzwerkgrundlagen in Kubernetes finden Sie unter [Netzwerkkonzepte für Anwendungen in Azure Kubernetes Service (AKS)][aks-concepts-network]
+Dieser Artikel konzentriert sich auf Netzwerkkonnektivität und Sicherheit. Weitere Informationen zu Netzwerkgrundlagen in Kubernetes finden Sie unter [Netzwerkkonzepte für Anwendungen in Azure Kubernetes Service (AKS)][aks-concepts-network].
 
 <!-- LINKS - External -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
@@ -186,3 +188,5 @@ Dieser Artikel konzentriert sich auf Netzwerkkonnektivität und Sicherheit. Weit
 [use-network-policies]: use-network-policies.md
 [advanced-networking]: configure-azure-cni.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
+[concepts-node-selectors]: concepts-clusters-workloads.md#node-selectors
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

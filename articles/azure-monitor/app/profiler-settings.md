@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 9603c45443c6339a127f977600eeff2ba57a283f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2bc32e28ffd6dd9dab2da61078684791a04709cc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58884158"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64922985"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurieren von Application Insights Profiler
 
@@ -41,7 +41,7 @@ Abhängig von der Konfiguration Ihrer Azure App Service-Umgebung ist der Aufruf 
 ## <a id="profileondemand"></a> Manuelles Auslösen von Profiler
 
 ### <a name="minimum-requirements"></a>Mindestanforderungen 
-Damit ein Benutzer eine Profilersitzung manuell auslösen kann, muss er in seiner Rolle mindestens über Schreibzugriff für die Application Insights-Komponente verfügen. In den meisten Fällen erhalten Sie diesen Zugriff automatisch, und es sind keine weiteren Arbeitsschritte erforderlich. Wenn Sie Probleme haben, müssen Sie die entsprechende Rolle für den Abonnementbereich, d.h. „Mitwirkender der Application Insights-Komponente“, hinzufügen. [Weitere Informationen zur Rollenzugriffssteuerung mithilfe der Azure-Überwachung](https://docs.microsoft.com/en-us/azure/azure-monitor/app/resources-roles-access-control).
+Damit ein Benutzer eine Profilersitzung manuell auslösen kann, muss er in seiner Rolle mindestens über Schreibzugriff für die Application Insights-Komponente verfügen. In den meisten Fällen erhalten Sie diesen Zugriff automatisch, und es sind keine weiteren Arbeitsschritte erforderlich. Wenn Sie Probleme haben, müssen Sie die entsprechende Rolle für den Abonnementbereich, d.h. „Mitwirkender der Application Insights-Komponente“, hinzufügen. [Weitere Informationen zur Rollenzugriffssteuerung mithilfe der Azure-Überwachung](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control).
 
 Sie können Profiler manuell mit einem einzigen Mausklick auslösen. Nehmen wir an, dass Sie einen Webleistungstest ausführen. Sie benötigen Ablaufverfolgungen, um besser zu verstehen, wie Ihre Web-App unter Last ausgeführt wird. Die Kontrolle über den Zeitpunkt der Erfassung von Ablaufverfolgungen ist entscheidend, da Sie wissen, wann der Auslastungstest ausgeführt wird. Bei einem zufälligen Intervall für die Stichprobenentnahme verpassen Sie diesen Zeitpunkt aber möglicherweise.
 

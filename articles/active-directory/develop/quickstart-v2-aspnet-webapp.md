@@ -8,20 +8,21 @@ manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b83f5e6735f5b2554af2f5e6c74a7c9095d23fd
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 10911e5100add2dca84475857a6909fb20d452c4
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579477"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69891543"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
 
@@ -54,8 +55,10 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET-Web-App persönliche Kont
 > 1. Wählen Sie **Neue Registrierung** aus.
 > 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen für Ihre Anwendung ein:
 >      - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `ASPNET-Quickstart`).
->      - Fügen Sie `https://localhost:44368/` unter **Umleitungs-URI** hinzu, und klicken Sie auf **Registrieren**.
-Wählen Sie das Menü **Authentifizierung** aus, und legen Sie **ID-Token** unter **Implizite Genehmigung** fest. Wählen Sie dann **Speichern** aus.
+>      - Fügen Sie `http://localhost:44368/` unter **Umleitungs-URI** hinzu, und klicken Sie auf **Registrieren**.
+>      - Wählen Sie im linken Navigationsbereich im Abschnitt „Verwalten“ die Option **Authentifizierung** aus.
+>          - Wählen Sie im Unterabschnitt **Implizite Genehmigung** die Option **ID-Token** aus.
+>          - Wählen Sie anschließend **Speichern** aus.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
@@ -68,33 +71,39 @@ Wählen Sie das Menü **Authentifizierung** aus, und legen Sie **ID-Token** unte
 
 #### <a name="step-2-download-your-project"></a>Schritt 2: Herunterladen Ihres Projekts
 
-[Visual Studio 2017-Projektmappe herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+[Herunterladen der Visual Studio 2019-Lösung](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Schritt 3: Konfigurieren des Visual Studio-Projekts
 
 1. Extrahieren Sie die ZIP-Datei in einen lokalen Ordner, der sich näher am Stammordner befindet, beispielsweise **C:\Azure-Samples**.
 1. Öffnen Sie die Projektmappe in Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln).
+1. Abhängig von der verwendeten Visual Studio-Version müssen Sie möglicherweise mit der rechten Maustaste auf das Projekt `AppModelv2-WebApp-OpenIDConnect-DotNet` und **Wiederherstellen der NuGet-Pakete** klicken.
+1. Öffnen Sie die Paket-Manager-Konsole (Anzeigen > Andere Fenster > Paket-Manager-Konsole), und führen Sie `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r` aus.
 1. Bearbeiten Sie **Web.config**, und ersetzen Sie die Parameter `ClientId` und `Tenant` durch Folgendes:
 
     ```xml
     <add key="ClientId" value="Enter_the_Application_Id_here" />
     <add key="Tenant" value="Enter_the_Tenant_Info_Here" />
     ```
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Dieser Schnellstart unterstützt Enter_the_Supported_Account_Info_Here. 
 
 > [!div renderon="docs"]
 > Hinweis:
 > - `Enter_the_Application_Id_here` ist die Anwendungs-ID für die von Ihnen registrierte Anwendung.
 > - `Enter_the_Tenant_Info_Here` ist eine der folgenden Optionen:
->   - Unterstützt Ihre Anwendung **Nur meine Organisation**, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (etwa „contoso.microsoft.com“).
+>   - Unterstützt Ihre Anwendung **Nur meine Organisation**, ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (etwa „contoso.onmicrosoft.com“).
 >   - Unterstützt Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis**, ersetzen Sie diesen Wert durch `organizations`.
 >   - Unterstützt Ihre Anwendung **Alle Microsoft-Kontobenutzer** ersetzen Sie diesen Wert durch `common`.
 >
 > > [!TIP]
-> > Die Werte für *Anwendungs-ID*, *Verzeichnis-ID (Mandant)* und *Unterstützte Kontotypen* finden Sie auf der Seite **Übersicht**.
+> > - Die Werte für *Anwendungs-ID*, *Verzeichnis-ID (Mandant)* und *Unterstützte Kontotypen* finden Sie auf der Seite **Übersicht**.
+> > - Stellen Sie sicher, dass der Wert für `redirectUri` in **Web.config** dem **Umleitungs-URI** entspricht, der für die App-Registrierung in Azure AD definiert wurde. (Ist dies nicht der Fall, navigieren Sie zum Menü **Authentifizierung** für die App-Registrierung, und aktualisieren Sie den **UMLEITUNGS-URI** entsprechend.)
 
 ## <a name="more-information"></a>Weitere Informationen
 
-Dieser Abschnitt gibt einen Überblick über den Code, der für die Anmeldung von Benutzern erforderlich ist. Dies kann hilfreich sein, um die Funktionsweise des Codes und die Hauptargumente zu verstehen und zu ermitteln, ob Sie einer vorhandenen ASP.NET-Anwendung Anmeldung hinzufügen möchten.
+Dieser Abschnitt gibt einen Überblick über den Code, der für die Anmeldung von Benutzern erforderlich ist. Diese Übersicht kann hilfreich sein, um die Funktionsweise des Codes und die Hauptargumente zu verstehen und zu ermitteln, ob Sie einer vorhandenen ASP.NET Core-Anwendung eine Anmeldung hinzufügen möchten.
 
 ### <a name="owin-middleware-nuget-packages"></a>NuGet-Pakete der OWIN-Middleware
 
@@ -103,12 +112,12 @@ Sie können die Authentifizierungspipeline mit cookiebasierter Authentifizierung
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
 Install-Package Microsoft.Owin.Security.Cookies
-Install-Package Microsoft.Owin.Host.SystemWeb
+Install-Package Microsoft.Owin.Host.SystemWeb  
 ```
 
 ### <a name="owin-startup-class"></a>OWIN-Startklasse
 
-Die OWIN-Middleware verwendet eine *Startklasse*, die bei der Initialisierung des Hostingprozesses ausgeführt wird (für diesen Schnellstart handelt es sich um die Datei *startup.cs* im Stammordner). Der folgende Code zeigt die Parameter, die von diesem Schnellstart verwendet werden:
+Die OWIN-Middleware verwendet eine *Startklasse*, die bei der Initialisierung des Hostingprozesses ausgeführt wird. In diesem Schnellstart handelt es sich um die Datei *startup.cs* im Stammordner. Der folgende Code zeigt die Parameter, die von diesem Schnellstart verwendet werden:
 
 ```csharp
 public void Configuration(IAppBuilder app)
@@ -194,3 +203,8 @@ Probieren Sie das ASP.NET-Tutorial aus, um eine vollständige Schritt-für-Schri
 > [Beim Tutorial anmelden](./tutorial-v2-asp-webapp.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+Helfen Sie uns, Microsoft Identity Platform zu verbessern. Teilen Sie uns Ihre Meinung mit, indem Sie eine kurze Umfrage mit zwei Fragen beantworten.
+
+> [!div class="nextstepaction"]
+> [Umfrage zu Microsoft Identity Platform](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

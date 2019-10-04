@@ -11,14 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c3395345093ae9a3d35deb27a08f12d331c9f3
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58861903"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268641"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
+
+In diesem Abschnitt finden Sie Antworten auf häufige Fragen zum Azure AD-Kennwortschutz.
 
 ## <a name="general-questions"></a>Allgemeine Fragen
 
@@ -26,11 +28,13 @@ ms.locfileid: "58861903"
 
 Die aktuelle Anleitung von Microsoft zu diesem Thema finden Sie unter folgendem Link:
 
-[Microsoft-Kennwortleitfaden](https://www.microsoft.com/en-us/research/publication/password-guidance)
+[Microsoft-Kennwortleitfaden](https://www.microsoft.com/research/publication/password-guidance)
 
 **F: Wird der lokale Azure AD-Kennwortschutz in nicht öffentlichen Clouds unterstützt?**
 
 Nein. Der lokale Azure AD-Kennwortschutz wird nur in der öffentlichen Cloud unterstützt. Für die Verfügbarkeit in der nicht öffentlichen Cloud wurde kein Datum angekündigt.
+
+Das Azure AD-Portal ermöglicht die Änderung der lokalen Konfiguration des „Kennwortschutzes für Windows Server Active Directory“ auch in nicht öffentlichen Clouds. Diese Änderungen werden beibehalten, werden aber andernfalls nie wirksam. Die Registrierung von lokalen Proxy-Agents oder Gesamtstrukturen wird bei Verwendung von Anmeldeinformationen nicht öffentlicher Clouds nicht unterstützt, und bei solchen Registrierungsversuchen tritt immer ein Fehler auf.
 
 **F: Wie kann ich die Vorteile des Azure AD-Kennwortschutzes auf eine Untergruppe meiner lokalen Benutzer anwenden?**
 
@@ -38,11 +42,19 @@ Nicht unterstützt. Sobald der Azure AD-Kennwortschutz bereitgestellt und aktivi
 
 **F: Worin besteht der Unterschied zwischen einer Kennwortänderung und einer Kennwortfestlegung (oder Kennwortzurücksetzung)?**
 
-Bei einer Kennwortänderung wählt ein Benutzer ein neues Kennwort aus, nachdem er nachgewiesen hat, dass er das alte Kennwort kennt. Dies ist beispielsweise der Fall, wenn ein Benutzer sich unter Windows anmeldet und dann aufgefordert wird, ein neues Kennwort auszuwählen.
+Bei einer Kennwortänderung wählt ein Benutzer ein neues Kennwort aus, nachdem er nachgewiesen hat, dass er das alte Kennwort kennt. Eine Kennwortänderung findet beispielsweise dann statt, wenn ein Benutzer sich unter Windows anmeldet und dann aufgefordert wird, ein neues Kennwort auszuwählen.
 
-Bei einer Kennwortfestlegung (manchmal als Kennwortzurücksetzung bezeichnet) ersetzt ein Administrator das Kennwort für ein Konto durch ein neues Kennwort, z. B. durch Verwendung des Active Directory-Verwaltungstools „Benutzer und Computer“. Für diesen Vorgang sind hohe Berechtigungen (normalerweise Domänenadministrator) erforderlich. Außerdem kennt die Person, die den Vorgang durchführt, in der Regel das alte Kennwort nicht. Dies erfolgt häufig in Helpdesk-Szenarien, z. B. bei der Unterstützung eines Benutzers, der sein Kennwort vergessen hat. Ein anderes Beispiel ist die erstmalige Erstellung eines neuen Benutzerkontos mit einem Kennwort.
+Bei einer Kennwortfestlegung (manchmal als Kennwortzurücksetzung bezeichnet) ersetzt ein Administrator das Kennwort für ein Konto durch ein neues Kennwort, z. B. durch Verwendung des Active Directory-Verwaltungstools „Benutzer und Computer“. Für diesen Vorgang sind hohe Berechtigungen (normalerweise Domänenadministrator) erforderlich. Außerdem kennt die Person, die den Vorgang durchführt, in der Regel das alte Kennwort nicht. Kennwortfestlegungen finden häufig in Helpdesk-Szenarien statt, z.B. bei der Unterstützung eines Benutzers, der sein Kennwort vergessen hat. Ein anderes Beispiel ist die erstmalige Erstellung eines neuen Benutzerkontos mit einem Kennwort.
 
-Die Richtlinie zur Kennwortüberprüfung ist identisch, unabhängig davon, ob eine Kennwortänderung oder eine Kennwortfestlegung durchgeführt wird. Mit dem DC-Agent-Dienst für den Azure AD-Kennwortschutz werden verschiedene Ereignisse protokolliert, um Sie darüber zu informieren, ob ein Vorgang zum Ändern oder zum Festlegen eines Kennworts durchgeführt wurde.  Siehe dazu [Überwachung und Protokollierung beim Azure AD-Kennwortschutz](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
+Die Richtlinie zur Kennwortüberprüfung ist identisch, unabhängig davon, ob eine Kennwortänderung oder eine Kennwortfestlegung durchgeführt wird. Mit dem DC-Agent-Dienst für den Azure AD-Kennwortschutz werden verschiedene Ereignisse protokolliert, um Sie darüber zu informieren, ob ein Vorgang zum Ändern oder zum Festlegen eines Kennworts durchgeführt wurde.  Siehe dazu [Überwachung und Protokollierung beim Azure AD-Kennwortschutz](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
+
+**F: Warum werden doppelte Kennwortablehnungsereignisse protokolliert bei dem Versuch, mithilfe des Snap-Ins zur Verwaltung von Active Directory-Benutzern und -Computern ein schwaches Kennwort festzulegen?**
+
+Das Snap-In zur Verwaltung von Active Directory-Benutzern und -Computern versucht zunächst, das neue Kennwort mit dem Kerberos-Protokoll festzulegen. Bei einem Fehler versucht das Snap-In erneut, das Kennwort mit einem älteren Protokoll (SAM RPC) festzulegen (die verwendeten spezifischen Protokolle sind nicht wichtig). Wenn das neue Kennwort vom Azure AD-Kennwortschutz als schwach eingestuft wird, führt dieses Snap-In-Verhalten dazu, dass zwei Sätze von Kennwortablehnungsereignissen protokolliert werden.
+
+**F: Warum werden Ereignisse zu Kennwortverletzungen vom Azure AD-Kennwortschutz mit einem leeren Benutzernamen protokolliert?**
+
+Active Directory bietet die Möglichkeit zum Testen von Kennwörtern, um zu überprüfen, ob die aktuellen Kennwortkomplexitätsanforderungen der Domäne erfüllt sind. Ein solcher Test kann beispielsweise mit der API [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) durchgeführt werden. Wenn ein Kennwort auf diese Weise überprüft wird, umfasst der Test auch eine Validierung durch Produkte, die auf Kennwortfilter-DLLs basieren – z.B. der Azure AD-Kennwortschutz –, aber die an eine solche Kennwortfilter-DLL übergebenen Benutzernamen sind leer. In diesem Szenario wird das Kennwort weiterhin mithilfe der aktuell geltenden Kennwortrichtlinie durch den Azure AD-Kennwortschutz validiert, und das Ergebnis wird in einer Ereignisprotokollmeldung erfasst, aber die Ereignisprotokollmeldung enthält leere Benutzernamensfelder.
 
 **F: Wird die Parallelinstallation des Azure AD-Kennwortschutzes mit anderen kennwortfilterbasierten Produkten unterstützt?**
 
@@ -54,7 +66,7 @@ Nicht unterstützt. Der Azure AD-Kennwortschutz ist ein Azure-Feature, das auf e
 
 **F: Wie kann ich den Inhalt der Richtlinie auf Active Directory-Ebene ändern?**
 
-Nicht unterstützt. Die Richtlinie kann nur über das Azure AD-Verwaltungsportal verwaltet werden. Siehe auch die Antwort auf die vorherige Frage.
+Nicht unterstützt. Die Richtlinie kann nur über das Azure AD-Portal verwaltet werden. Siehe auch die Antwort auf die vorherige Frage.
 
 **F: Warum ist DFSR für die sysvol-Replikation erforderlich?**
 
@@ -66,6 +78,13 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 [Das Ende ist nahe für FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
+Sollte DFSR von Ihrer Domäne noch nicht verwendet werden, muss die Domäne vor der Installation des Azure AD-Kennwortschutzes für die Verwendung von DFSR migriert werden. Weitere Informationen finden Sie unter dem folgenden Link:
+
+[Migrationshandbuch für die SYSVOL-Replikation: Replikation von FRS zu DFS](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+> [!WARNING]
+> Die DC-Agent-Software für den Azure AD-Kennwortschutz wird derzeit auf Domänencontrollern in Domänen installiert, von denen noch FRS für die SYSVOL-Replikation verwendet wird. Die Software funktioniert in dieser Umgebung allerdings NICHT ordnungsgemäß. Dies macht sich unter anderem durch nicht erfolgreich replizierte Einzeldateien sowie durch scheinbar erfolgreiche SYSVOL-Wiederherstellungsprozeduren bemerkbar, bei denen jedoch nicht alle Dateien repliziert werden. Es empfiehlt sich, die Domäne baldmöglichst für die Verwendung von DFSR zu migrieren, um von den DFSR-Vorteilen zu profitieren und die Blockierung der Bereitstellung des Azure AD-Kennwortschutzes aufzuheben. Zukünftige Versionen der Software werden automatisch deaktiviert, wenn sie in einer Domäne ausgeführt werden, die noch FRS verwendet.
+
 **F: Wie viel Datenträger-Speicherplatz benötigt das Feature auf der Systemvolumefreigabe der Domäne?**
 
 Die genaue Speicherplatznutzung variiert, da sie von verschiedenen Faktoren abhängig ist, z.B. von der Anzahl und Länge der gesperrten Token in der globalen Sperrliste von Microsoft und der kundenspezifischen Sperrliste jedes Mandanten sowie vom Verschlüsselungsoverhead. Diese Listen werden im Lauf der Zeit wahrscheinlich erweitert. Angesichts dieser Tatsache ist es eine sinnvolle Annahme, dass das Feature mindestens fünf (5) Megabytes Speicherplatz auf der Systemvolumefreigabe der Domäne benötigen wird.
@@ -76,11 +95,13 @@ Diese Anforderung wird durch das Kernverhalten von Windows verursacht.
 
 **F: Gibt es eine Möglichkeit, einen DC-Agent so zu konfigurieren, dass er einen bestimmten Proxyserver verwendet?**
 
- Nein. Da der Proxyserver zustandslos ist, spielt es keine Rolle, welcher Proxyserver genau verwendet wird.
+Nein. Da der Proxyserver zustandslos ist, spielt es keine Rolle, welcher Proxyserver genau verwendet wird.
 
 **F: Kann der Azure AD-Kennwortschutz-Proxydienst neben anderen Diensten wie Azure AD Connect bereitgestellt werden?**
 
 Ja. Der Azure AD-Kennwortschutz-Proxydienst und Azure AD Connect führen nie zu direkten Konflikten.
+
+Leider wurde eine Inkompatibilität zwischen der Version des Microsoft Azure AD Connect-Agent-Updaterdiensts, die von der Software Azure AD-Kennwortschutzproxy installiert wird, und der Version des Diensts festgestellt, die von der Software [Azure Active Directory-Anwendungsproxy ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) installiert wird. Diese Inkompatibilität kann dazu führen, dass der Agent-Updaterdienst sich mit Azure für Softwareupdates nicht in Verbindung setzen kann. Es wird nicht empfohlen, den Azure AD-Kennwortschutzproxy und den Azure Active Directory-Anwendungsproxy auf demselben Computer zu installieren.
 
 **F: In welcher Reihenfolge sollen die DC-Agents und Proxys installiert und registriert werden?**
 
@@ -96,33 +117,41 @@ Wenn Ihre aktuellen Domänencontroller allerdings bereits mit eingeschränkter L
 
 **F: Ich möchte den Azure AD-Kennwortschutz auf einigen wenigen Domänencontrollern in meiner Domäne testen. Kann ich erzwingen, dass für Kennwortänderungen durch Benutzer nur diese bestimmten Domänencontroller verwendet werden?**
 
- Nein. Das Windows-Clientbetriebssystem steuert, welcher Domänencontroller verwendet wird, wenn ein Benutzer sein Kennwort ändert. Der Domänencontroller wird anhand von Faktoren wie Active Directory-Standort und -Subnetzzuordnungen, der umgebungsspezifischen Netzwerkkonfiguration usw. ausgewählt. Der Azure AD-Kennwortschutz hat keine Kontrolle über diese Faktoren und kann nicht beeinflussen, welcher Domänencontroller für die Änderung eines Benutzerkennworts ausgewählt wird.
+Nein. Das Windows-Clientbetriebssystem steuert, welcher Domänencontroller verwendet wird, wenn ein Benutzer sein Kennwort ändert. Der Domänencontroller wird anhand von Faktoren wie Active Directory-Standort und -Subnetzzuordnungen, der umgebungsspezifischen Netzwerkkonfiguration usw. ausgewählt. Der Azure AD-Kennwortschutz hat keine Kontrolle über diese Faktoren und kann nicht beeinflussen, welcher Domänencontroller für die Änderung eines Benutzerkennworts ausgewählt wird.
 
 Eine Möglichkeit, um dieses Ziel zumindest teilweise zu erreichen, besteht darin, den Azure AD-Kennwortschutz auf allen Domänencontrollern in einem bestimmten Active Directory-Standort bereitzustellen. Dieses Vorgehen bietet eine angemessene Abdeckung für alle Windows-Clients, die diesem Standort zugewiesen sind, und damit auch für die Benutzer, die sich bei diesen Clients anmelden und ihre Kennwörter ändern.
 
 **F: Wenn ich den Domänencontroller-Agent-Dienst für den Azure AD-Kennwortschutz nur auf dem primären Domänencontroller (PDC) installiere, sind damit auch alle anderen Domänencontroller in der Domäne geschützt?**
 
- Nein. Wenn das Kennwort eines Benutzers auf einem Domänencontroller geändert wird, bei dem es sich nicht um den PDC handelt, wird das Klartextkennwort niemals an den PDC gesendet (dies ist eine weit verbreitete Fehlannahme). Sobald ein neues Kennwort auf einem bestimmten Domänencontroller akzeptiert wurde, verwendet dieser Domänencontroller das Kennwort, um die Kennworthashes für die verschiedenen Authentifizierungsprotokolle zu erstellen und speichert diese Hashes im Verzeichnis. Das Klartextkennwort wird nicht gespeichert. Die aktualisierten Hashes werden an den PDC repliziert. Benutzerkennwörter können in einigen Fällen direkt auf dem PDC geändert werden – auch dies hängt von verschiedenen Faktoren ab, wie z.B. der Netzwerktopologie und der Gestaltung des Active Directory-Standorts. (Siehe auch die Antwort auf die vorherige Frage.)
+Nein. Wenn das Kennwort eines Benutzers auf einem Domänencontroller geändert wird, bei dem es sich nicht um den PDC handelt, wird das Klartextkennwort niemals an den PDC gesendet (dies ist eine weit verbreitete Fehlannahme). Sobald ein neues Kennwort auf einem bestimmten Domänencontroller akzeptiert wurde, verwendet dieser Domänencontroller das Kennwort, um die Kennworthashes für die verschiedenen Authentifizierungsprotokolle zu erstellen und speichert diese Hashes im Verzeichnis. Das Klartextkennwort wird nicht gespeichert. Die aktualisierten Hashes werden an den PDC repliziert. Benutzerkennwörter können in einigen Fällen direkt auf dem PDC geändert werden – auch dies hängt von verschiedenen Faktoren ab, wie z.B. der Netzwerktopologie und der Gestaltung des Active Directory-Standorts. (Siehe auch die Antwort auf die vorherige Frage.)
 
 Zusammenfassend gesagt: Die Bereitstellung des Domänencontroller-Agent-Diensts für den Azure AD-Kennwortschutz auf dem PDC ist erforderlich, um eine 100-prozentige Sicherheitsabdeckung des Features in der gesamten Domäne zu erzielen. Wenn das Feature nur auf dem PDC bereitgestellt wird, können die anderen Domänencontroller in der Domäne nicht von den Sicherheitsvorteilen des Azure AD-Kennwortschutzes profitieren.
 
+**F: Warum funktioniert die benutzerdefinierte intelligente Sperre auch dann nicht, wenn die Agents in meiner lokalen Active Directory Umgebung installiert wurden?**
+
+Die benutzerdefinierte intelligente Sperre wird nur in Azure AD unterstützt. Änderungen an den Einstellungen für die benutzerdefinierte intelligente Sperre im Azure AD-Portal haben keine Auswirkungen auf die lokale Active Directory-Umgebung, auch wenn die Agents installiert sind.
+
 **F: Ist für den Azure AD-Kennwortschutz ein System Center Operations Manager-Managementpack verfügbar?**
 
- Nein.
+Nein.
 
-**F: Warum lehnt Azure schwache Kennwörter weiterhin ab, obwohl ich für die Richtlinie den Überwachungsmodus konfiguriert habe?**
+**F: Warum lehnt Azure AD unsichere (oder schwache) Kennwörter weiterhin ab, obwohl ich für die Richtlinie den Überwachungsmodus konfiguriert habe?**
 
-Der Überwachungsmodus wird nur in der lokalen Active Directory-Umgebung unterstützt. Beim Auswerten von Kennwörtern ist Azure implizit immer im Modus „Erzwingen“.
+Der Überwachungsmodus wird nur in der lokalen Active Directory-Umgebung unterstützt. Beim Auswerten von Kennwörtern ist Azure AD implizit immer im Modus „Erzwingen“.
+
+**F: Meinen Benutzern wird die herkömmliche Windows-Fehlermeldung angezeigt, wenn ein Kennwort durch den Azure AD-Kennwortschutz abgelehnt wird. Kann diese Fehlermeldung angepasst werden, damit die Benutzer wissen, was wirklich passiert ist?**
+
+Nein. Die Fehlermeldung, die Benutzern angezeigt wird, wenn ein Kennwort von einem Domänencontroller abgelehnt wird, wird nicht vom Domänencontroller gesteuert, sondern vom Clientcomputer. Dieses Verhalten tritt auf, wenn ein Kennwort aufgrund der standardmäßigen Active Directory-Kennwortrichtlinien oder durch eine kennwortfilterbasierte Lösung wie den Azure AD-Kennwortschutz abgelehnt wird.
 
 ## <a name="additional-content"></a>Zusätzliche Inhalte
 
 Die folgenden Links gehören nicht zur grundlegenden Dokumentation zum Azure AD-Kennwortschutz, sind aber eine nützliche Quelle für zusätzliche Informationen zu diesem Feature.
 
-[Der Azure AD-Kennwortschutz ist jetzt allgemein verfügbar!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
+[Der Azure AD-Kennwortschutz ist jetzt allgemein verfügbar.](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
-[Email Phishing Protection Guide – Part 15: Implement the Microsoft Azure AD Password Protection Service (for On-Premises too!) (Leitfaden zum Schutz vor E-Mail-Phishing, Teil 15: Implementieren des Microsoft Azure AD-Kennwortschutzdiensts (auch für lokale Umgebungen!))](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
+[Email Phishing Protection Guide – Part 15: Implement the Microsoft Azure AD Password Protection Service (for On-Premises too!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/) (Leitfaden zum Schutz von E-Mail-Phishing, Teil 15: Implementieren des Microsoft Azure AD-Kennwortschutzdiensts [auch für lokale Umgebungen!])
 
-[Azure AD-Kennwortschutz und intelligente Sperre jetzt in der öffentlichen Vorschau!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
+[Azure AD Password Protection and Smart Lockout are now in Public Preview!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529) (Azure AD-Kennwortschutz und intelligente Sperren jetzt in der öffentlichen Vorschau!)
 
 ## <a name="microsoft-premierunified-support-training-available"></a>Training zu Microsoft Premier und Unified Support verfügbar
 

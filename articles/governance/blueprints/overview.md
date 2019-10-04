@@ -3,16 +3,16 @@ title: 'Azure Blueprint: Übersicht'
 description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/08/2019
+ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 960b8145e5f53c6c37820604fd634ccf5fd77c6b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59259421"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146099"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Übersicht über den Azure Blueprints-Dienst
 
@@ -52,9 +52,9 @@ Eine Richtlinie kann als eines von vielen _Artefakten_ in eine Blaupausendefinit
 
 Eine Blaupause besteht aus _Artefakten_. Azure Blueprint unterstützt derzeit die folgenden Ressourcen als Artefakte:
 
-|Ressource  | Hierarchieoptionen| BESCHREIBUNG  |
+|Resource  | Hierarchieoptionen| BESCHREIBUNG  |
 |---------|---------|---------|
-|Ressourcengruppen | Abonnement | Erstellen einer neuen Ressourcengruppe zur Verwendung durch andere Artefakte innerhalb der Blaupause.  Diese Platzhalter-Ressourcengruppen ermöglichen es, Ressourcen genau auf die gewünschte Weise zu strukturieren. Sie umfassen eine Bereichsbeschränkung für enthaltene Richtlinien- und Rollenzuweisungsartefakte und Azure Resource Manager-Vorlagen. |
+|Ressourcengruppen | Subscription | Erstellen einer neuen Ressourcengruppe zur Verwendung durch andere Artefakte innerhalb der Blaupause.  Diese Platzhalter-Ressourcengruppen ermöglichen es, Ressourcen genau auf die gewünschte Weise zu strukturieren. Sie umfassen eine Bereichsbeschränkung für enthaltene Richtlinien- und Rollenzuweisungsartefakte und Azure Resource Manager-Vorlagen. |
 |Azure Resource Manager-Vorlage | Abonnement, Ressourcengruppe | Vorlagen werden verwendet, um komplexe Umgebungen zusammenzustellen. Beispielumgebungen: SharePoint-Farm, Azure Automation State Configuration oder Log Analytics-Arbeitsbereich. |
 |Richtlinienzuweisung | Abonnement, Ressourcengruppe | Ermöglicht die Zuweisung einer Richtlinie oder Initiative zum Abonnement, dem die Blaupause zugewiesen ist. Die Richtlinie oder Initiative muss innerhalb des Bereichs des Definitionsspeicherorts der Blaupause liegen. Wenn die Richtlinie oder Initiative über Parameter verfügt, werden diese bei der Erstellung der Blaupause oder bei der Blaupausenzuweisung zugewiesen. |
 |Rollenzuweisung | Abonnement, Ressourcengruppe | Fügt einer integrierten Rolle einen vorhandenen Benutzer oder eine vorhandene Gruppe zu, um sicherzustellen, dass die richtigen Personen geeigneten Zugriff auf Ihre Ressourcen haben. Rollenzuweisungen können für das gesamte Abonnement definiert oder in einer bestimmten in der Blaupause enthaltenen Ressourcengruppe geschachtelt werden. |
@@ -79,7 +79,7 @@ Wenn eine Blaupause erstellt wird, befindet sie sich im **Entwurfsmodus**. Wenn 
 
 ## <a name="blueprint-assignment"></a>Blaupausenzuweisung
 
-Jede **veröffentlichte** **Version** einer Blaupause kann einem vorhandenen Abonnement zugewiesen werden. Im Portal wird standardmäßig die **Version** der Blaupause verwendet, die zuletzt **veröffentlicht** wurde. Wenn Artefaktparameter (oder Blaupausenparameter) vorhanden sind, werden die Parameter während des Zuweisungsvorgangs definiert.
+Jede **veröffentlichte** **Version** einer Blaupause kann (mit einem maximal 90 Zeichen langen Namen) einem vorhandenen Abonnement zugewiesen werden. Im Portal wird standardmäßig die **Version** der Blaupause verwendet, die zuletzt **veröffentlicht** wurde. Wenn Artefaktparameter (oder Blaupausenparameter) vorhanden sind, werden die Parameter während des Zuweisungsvorgangs definiert.
 
 ## <a name="permissions-in-azure-blueprints"></a>Berechtigungen in Azure Blueprint
 
@@ -106,10 +106,30 @@ Zum Zuweisen oder zum Aufheben der Zuweisung einer Blaupause sind für Ihr Konto
 > [!NOTE]
 > Da Blaupausenzuweisungen in einem Abonnement erstellt werden, müssen die Berechtigungen zum Zuweisen und Aufheben der Zuweisung von Blaupausen in einem Abonnementbereich erteilt oder vererbt werden.
 
-Alle der oben genannten Berechtigungen sind in der Rolle **Besitzer** enthalten. Die Rolle **Mitwirkender** verfügt über Berechtigungen zum Erstellen und Löschen von Blaupausen, ist aber nicht zum Zuweisen von Blaupausen berechtigt. Sollten diese integrierten Rollen nicht Ihren Sicherheitsanforderungen entsprechen, können Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md) erstellen.
+Die folgenden integrierten Rollen sind verfügbar:
+
+|RBAC-Rolle | BESCHREIBUNG |
+|-|-|
+|[Besitzer](../../role-based-access-control/built-in-roles.md#owner) | Umfasst (neben anderen Berechtigungen) alle Berechtigungen im Zusammenhang mit der Azure-Blaupause. |
+|[Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) | Umfasst (neben anderen Berechtigungen) Berechtigungen zum Erstellen und Löschen von Blaupausendefinitionen, aber keine Berechtigungen zum Zuweisen von Blaupausen. |
+|[Blueprint-Mitwirkender](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Kann Blaupausendefinitionen verwalten, aber nicht zuweisen. |
+|[Blueprint-Operator](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Kann vorhandene veröffentlichte Blaupausen zuweisen, aber keine neuen Blaupausendefinitionen erstellen. Die Blaupausenzuweisung funktioniert nur, wenn die Zuweisung mit einer vom Benutzer zugewiesenen verwalteten Identität erfolgt. |
+
+Sollten diese integrierten Rollen nicht Ihren Sicherheitsanforderungen entsprechen, können Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md) erstellen.
 
 > [!NOTE]
-> Für den Dienstprinzipal für Azure Blueprint ist die Rolle **Besitzer** für das zugewiesene Abonnement erforderlich, um die Bereitstellung zu ermöglichen. Bei Verwendung des Portals wird diese Rolle für die Bereitstellung automatisch erteilt und widerrufen. Bei Verwendung der REST-API muss diese Rolle manuell erteilt werden, sie wird jedoch nach Abschluss der Bereitstellung auch automatisch widerrufen.
+> Bei Verwenden einer vom System zugewiesenen Identität ist für den Dienstprinzipal für Azure Blueprints die Rolle **Besitzer** für das zugewiesene Abonnement erforderlich, um die Bereitstellung zu ermöglichen. Bei Verwendung des Portals wird diese Rolle für die Bereitstellung automatisch erteilt und widerrufen. Bei Verwendung der REST-API muss diese Rolle manuell erteilt werden, sie wird jedoch nach Abschluss der Bereitstellung auch automatisch widerrufen. Wenn Sie eine vom Benutzer zugewiesene verwaltete Identität verwenden, benötigt nur der Benutzer, der die Azure Blueprint-Zuweisung erstellt, die Berechtigung **Besitzer**.
+
+## <a name="naming-limits"></a>Beschränkungen für Benennungen
+
+Für bestimmte Felder gelten die folgenden Einschränkungen:
+
+|Object|Feld|Zulässige Zeichen|Maximal Länge|
+|-|-|-|-|
+|Blaupause|NAME|Buchstaben, Ziffern, Bindestriche und Punkte|48|
+|Blaupause|Version|Buchstaben, Ziffern, Bindestriche und Punkte|20|
+|Blaupausenzuweisung|NAME|Buchstaben, Ziffern, Bindestriche und Punkte|90|
+|Blaupausenartefakt|NAME|Buchstaben, Ziffern, Bindestriche und Punkte|48|
 
 ## <a name="video-overview"></a>Videoübersicht
 

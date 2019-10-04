@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 92e8435e4336c68982e4becc2a95f99b2c776c0e
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58861841"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60736638"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Protokollunterstützung für HTTP-Header in Azure Front Door Service
 Dieser Artikel beschreibt das Protokoll, das Front Door Service mit Teilen des Aufrufpfads unterstützt (siehe Abbildung). Die folgenden Abschnitte enthalten weitere Informationen zu HTTP-Headern, die von Front Door Service unterstützt werden.
@@ -54,8 +54,8 @@ Vom Back-End an Front Door gesendete Header werden auch an den Client weitergele
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen einer „Front Door“](quickstart-create-front-door.md)
-- [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md)
+- [Erstellen einer Azure Front Door Service-Instanz](quickstart-create-front-door.md)
+- [Übersicht über die Routingarchitektur](front-door-routing-architecture.md)
 
 <!--Image references-->
 [1]: ./media/front-door-http-headers-protocol/front-door-protocol-summary.png

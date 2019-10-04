@@ -1,26 +1,22 @@
 ---
 title: Erstellen eines Blobs in Azure Storage mithilfe der Clientbibliothek für Java v7 | Microsoft-Dokumentation
 description: Erstellen Sie ein Speicherkonto und einen Container im Objektspeicher (Blob). Anschließend verwenden Sie die Azure Storage-Clientbibliothek für Java v7, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
-services: storage
-author: roygara
-ms.custom: mvc
-ms.service: storage
-ms.topic: conceptual
+author: mhopkins-msft
+ms.author: mhopkins
 ms.date: 02/04/2019
-ms.author: rogarana
-ms.openlocfilehash: c9aaa22a656d1164ad4e9f9c1ed7539a93dd0457
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.service: storage
+ms.subservice: blobs
+ms.topic: conceptual
+ms.openlocfilehash: 0aa3af754082d91c4a5994e42146d1f1f475f64d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999934"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390333"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Hochladen, Herunterladen und Auflisten von Blobs mit der Clientbibliothek für Java v7
 
 In dieser Anleitung erfahren Sie, wie Sie mit der Clientbibliothek für Java v7 Blockblobs in einem Container in Azure Blob Storage hochladen, herunterladen und auflisten.
-
-> [!TIP]
-> Die neueste Version der Azure Storage-Clientbibliothek für Java ist v10. Microsoft empfiehlt, nach Möglichkeit die neueste Version der Clientbibliothek zu verwenden. Informationen zum Einstieg in v10 finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Java Storage SDK v10](storage-quickstart-blobs-java-v10.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

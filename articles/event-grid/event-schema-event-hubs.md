@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475406"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60561827"
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>Azure Event Grid-Ereignisschema für Event Hubs
 
@@ -59,28 +59,28 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | string | Eindeutiger Bezeichner für das Ereignis. |
 | data | object | Event Hub-Ereignisdaten. |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| fileUrl | Zeichenfolge | Der Pfad zur Erfassungsdatei. |
-| fileType | Zeichenfolge | Der Dateityp der Erfassungsdatei. |
-| partitionId | Zeichenfolge | Die Shard-ID. |
+| fileUrl | string | Der Pfad zur Erfassungsdatei. |
+| fileType | string | Der Dateityp der Erfassungsdatei. |
+| partitionId | string | Die Shard-ID. |
 | sizeInBytes | integer | Die Dateigröße. |
 | eventCount | integer | Die Anzahl der Ereignisse in der Datei. |
 | firstSequenceNumber | integer | Die kleinste Sequenznummer aus der Warteschlange. |
 | lastSequenceNumber | integer | Die größte Sequenznummer aus der Warteschlange. |
-| firstEnqueueTime | Zeichenfolge | Die erste Zeit aus der Warteschlange. |
-| lastEnqueueTime | Zeichenfolge | Die letzte Zeit aus der Warteschlange. |
+| firstEnqueueTime | string | Die erste Zeit aus der Warteschlange. |
+| lastEnqueueTime | string | Die letzte Zeit aus der Warteschlange. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

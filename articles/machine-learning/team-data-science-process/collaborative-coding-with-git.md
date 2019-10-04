@@ -7,110 +7,114 @@ editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 08/23/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 551d0cd149c4d1555a40ccf0d7baeff97c6809c2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3b57621fcec654f11c8e9a68e4568f332dbf9ac6
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863296"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195451"
 ---
 # <a name="collaborative-coding-with-git"></a>Gemeinsames Schreiben von Code mit Git
 
-In diesem Artikel beschreiben wir die gemeinschaftliche Codeentwicklung für Data Science-Projekte mithilfe von Git als Entwicklungsframework für freigegebenen Code. Dabei wird auch behandelt, wie diese Codeentwicklungsaktivitäten mit der in [agiler Entwicklung](agile-development.md) geplanten Arbeit verknüpft werden und wie Code Reviews durchgeführt werden.
+In diesem Artikel wird beschrieben, wie Sie Git als Framework für die gemeinschaftliche Codeentwicklung für Data Science-Projekte verwenden. Der Artikel enthält Informationen dazu, wie Sie Code in Azure Repos mit Arbeitselementen der [agilen Entwicklung](agile-development.md) in Azure Boards verknüpfen, Code Reviews durchführen und Pull Requests für Änderungen erstellen und zusammenführen.
 
+## <a name='Linkaworkitemwithagitbranch-1'></a>Verknüpfen eines Arbeitselements mit einem Azure Repos-Branch 
 
-## 1. <a name='Linkaworkitemwithagitbranch-1'></a>Verknüpfen eines Arbeitselements mit einem Git-Branch 
+Mit Azure DevOps können Sie eine Azure Boards User Story oder eine Arbeitsaufgabe bequem mit einem Azure Repos-Git-Repositorybranch verbinden. Sie können Ihre User Story oder Aufgabe direkt mit dem zugeordneten Code verknüpfen. 
 
-Azure DevOps Services bietet eine einfache Möglichkeit zum Verbinden eines Arbeitselements (Story oder Aufgabe) mit einem Git-Branch. Dies ermöglicht Ihnen, Ihre Story oder Aufgabe direkt mit dem zugeordneten Code zu verknüpfen. 
-
-Um ein Arbeitselement mit einer neuen Verzweigung zu verbinden, doppelklicken Sie auf das Arbeitselement, und klicken Sie im Popupfenster auf **Neue Verzweigung erstellen** unter **+ Link hinzufügen**.  
+Wählen Sie zum Verbinden eines Arbeitselements mit einer neuen Branch unter **Aktionen** das Auslassungszeichen ( **...** ) neben dem Arbeitselement aus, und scrollen Sie im Kontextmenü zu **Neuer Branch**, und wählen Sie die Option aus.  
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-Geben Sie die Informationen für diesen neuen Branch ein, etwa den Namen des Branches, das Git-Basisrepository und den Branch. Das ausgewählte Git-Repository muss das Repository für dasselbe Projekt sein, dem das Arbeitselement angehört. Die Basisverzweigung kann die Hauptverzweigung oder eine andere vorhandene Verzweigung sein.
+Geben Sie im Dialogfeld **Branch erstellen** den Namen des neuen Branchs sowie das Azure Repos-Git-Basisrepository und den Branch ein. Das Basisrepository muss sich in demselben Azure DevOps-Projekt wie das Arbeitselement befinden. Der Basisbranch kann der Masterbranch oder eine andere vorhandene Verzweigung sein. Wählen Sie die Option **Branch erstellen** aus. 
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
-Eine bewährte Methode besteht darin, für jedes Storyarbeitselement einen Git-Branch zu erstellen. Anschließend erstellen Sie für jedes Arbeitselement eine Verzweigung anhand der Storyverzweigung. Die Verzweigungen auf diese hierarchische Weise zu organisieren, die den Beziehungen zwischen Story und Aufgabe entspricht, ist nützlich, wenn mehrere Personen an unterschiedlichen Storys im selben Projekt oder an unterschiedlichen Aufgaben in derselben Story arbeiten. Konflikte können minimiert werden, wenn jedes Teammitglied an einer anderen Verzweigung arbeitet und bei gemeinsamer Arbeit an einer Verzweigung jedes Mitglied an unterschiedlichen Codes oder anderen Artefakten arbeitet. 
+Sie können auch einen neuen Branch erstellen, indem Sie den folgenden Git Bash-Befehl in Windows oder Linux verwenden:
 
-Die folgende Abbildung zeigt die empfohlene Verzweigungsstrategie für TDSP. Möglicherweise benötigen Sie nicht so viele Verzweigungen, wie hier dargestellt sind, insbesondere, wenn nur eine oder zwei Personen am selben Projekt arbeiten oder nur eine Person alle Aufgaben einer Story bearbeitet. Das Trennen der Entwicklungsverzweigung von der Hauptverzweigung ist jedoch immer ratsam. Dies verringert das Risiko, dass die Releaseverzweigung durch Entwicklungsaktivitäten unterbrochen wird. Eine ausführlichere Beschreibung des Git-Branchmodells finden Sie unter [A Successful Git Branching Model](https://nvie.com/posts/a-successful-git-branching-model/) (Ein erfolgreiches Git-Branchmodell).
+```bash
+git checkout -b <new branch name> <base branch name>
+
+```
+Wenn Sie keinen \<Namen für den Basisbranch> angeben, basiert der neue Branch auf `master`. 
+
+Führen Sie den folgenden Befehl aus, um zu Ihrem Arbeitsbranch zu wechseln: 
+
+```bash
+git checkout <working branch name>
+```
+
+Nach dem Wechsel zum Arbeitsbranch können Sie mit dem Entwickeln von Code- oder Dokumentationsartefakten beginnen, um das Arbeitselement fertigzustellen. Wenn Sie `git checkout master` ausführen, gelangen Sie zurück zum `master`-Branch.
+
+Eine bewährte Methode besteht darin, für jedes User Story-Arbeitselement einen Git-Branch zu erstellen. Anschließend erstellen Sie für jede Arbeitsaufgabe basierend auf dem User Story-Branch einen Branch. Organisieren Sie die Branches in einer Hierarchie, die der Beziehung zwischen User Story und Aufgabe entspricht, wenn mehrere Personen an verschiedenen User Storys für dasselbe Projekt bzw. an verschiedenen Aufgaben für dieselbe User Story arbeiten. Sie können Konflikte verringern, indem jedes Teammitglied in einem anderen Branch oder bei gemeinsamer Branchnutzung an anderem Code oder anderen Artefakten arbeitet. 
+
+Das folgende Diagramm zeigt die empfohlene Verzweigungsstrategie für TDSP. Unter Umständen benötigen Sie nicht so viele Verzweigungen wie hier dargestellt. Dies gilt vor allem, wenn nur eine oder zwei Personen an demselben Projekt arbeiten oder nur eine Person alle Aufgaben einer User Story bearbeitet. Die bewährte Methode besteht aber immer darin, den Entwicklungsbranch vom Masterbranch zu trennen. So kann verhindert werden, dass der Releasebranch von Entwicklungsaktivitäten unterbrochen wird. Eine vollständige Beschreibung des Git-Branchmodells finden Sie unter [A Successful Git Branching Model](https://nvie.com/posts/a-successful-git-branching-model/) (Ein erfolgreiches Git-Branchmodell).
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
-Um in die Verzweigung zu wechseln, die Sie bearbeiten möchten, führen Sie den folgenden Shellbefehl aus (Windows oder Linux). 
-
-    git checkout <branch name>
-
-Durch das Ändern von *<branch name\>* in **master** gelangen Sie zurück zur **Hauptverzweigung**. Nach dem Wechsel in die Arbeitsverzweigung können Sie an diesem Arbeitselement arbeiten und die Code- oder Dokumentationsartefakte entwickeln, die zum Fertigstellen des Elements erforderlich sind. 
-
-Sie können auch ein Arbeitselement mit einer vorhandenen Verzweigung verknüpfen. Klicken Sie auf der Seite **Detail** eines Arbeitselements nicht auf **Neue Verzweigung erstellen**, sondern auf **+ Link hinzufügen**. Wählen Sie dann die Verzweigung aus, mit der Sie das Arbeitselement verknüpfen möchten. 
+Sie können auch ein Arbeitselement mit einer vorhandenen Verzweigung verknüpfen. Wählen Sie auf der Seite **Detail** eines Arbeitselements die Option **Link hinzufügen** aus. Wählen Sie anschließend einen vorhandenen Branch aus, mit dem das Arbeitselement verknüpft werden soll, und wählen Sie **OK** aus. 
 
 ![4](./media/collaborative-coding-with-git/4-link-to-an-existing-branch.png)
 
-Sie können auch mit Git Bash-Befehlen einen neuen Branch erstellen. Wenn <bas branch name\> fehlt, basiert <new branch name\> auf der Verzweigung _master_. 
-    
-    git checkout -b <new branch name> <base branch name>
+## <a name='WorkonaBranchandCommittheChanges-2'></a>Arbeiten am Branch und Committen von Änderungen 
 
+Nachdem Sie eine Änderung für Ihr Arbeitselement vorgenommen haben, z. B. das Hinzufügen einer R-Skriptdatei zum Branch `script` Ihres lokalen Computers, können Sie hierfür einen Commit von Ihrem lokalen Branch zum Upstream-Arbeitsbranch durchführen, indem Sie die folgenden Git Bash-Befehle verwenden:
 
-## 2. <a name='WorkonaBranchandCommittheChanges-2'></a>Arbeiten an einer Verzweigung und Committen der Änderungen 
-
-Angenommen, Sie nehmen eine Änderung an der Verzweigung *data\_ingestion* für das Arbeitselement vor, beispielsweise, indem Sie eine R-Datei in dem Zweig auf Ihrem lokalen Computer hinzufügen. Sofern Sie sich in Ihrer Git-Shell in der Verzweigung für dieses Arbeitselement befinden, können Sie die R-Datei, die Sie dieser Verzweigung hinzugefügt haben, mithilfe der folgenden Git-Befehle committen:
-
-    git status
-    git add .
-    git commit -m"added a R scripts"
-    git push origin data_ingestion
+```bash
+git status
+git add .
+git commit -m "added an R script file"
+git push origin script
+```
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## 3. <a name='CreateapullrequestonVSTS-3'></a>Erstellen eines Pull Requests für Azure DevOps Services 
+## <a name='CreateapullrequestonVSTS-3'></a>Erstellen eines Pull Requests
 
-Wenn Sie nach einigen Commits und Push-Vorgängen bereit sind, den aktuellen Branch mit ihrer Basisverzweigung zusammenzuführen, können Sie einen **Pull Request** an Azure DevOps Services senden. 
+Wenn Sie nach einem oder mehreren Commit- und Pushvorgängen zum Zusammenführen Ihres aktuellen Arbeitsbranchs mit dem Basisbranch bereit sind, können Sie in Azure Repos einen *Pull Request* erstellen und übermitteln. 
 
-Wechseln Sie zur Hauptseite Ihres Projekts, und klicken Sie auf **CODE**. Wählen Sie den Branch, der zusammengeführt werden soll, und den Namen des Git-Repositorys, mit dem der Branch zusammengeführt werden soll, aus. Klicken Sie dann auf **Pullanforderungen**, klicken Sie auf **Neue Pullanforderung**, um eine Pullanforderungsüberprüfung zu erstellen, bevor die Arbeit an der Verzweigung mit der Basisverzweigung zusammengeführt wird.
+Greifen Sie auf der Hauptseite Ihres Azure DevOps-Projekts links im Navigationsbereich auf **Repos** > **Pull Requests** zu. Wählen Sie anschließend eine der Schaltflächen vom Typ **Neuer Pull Request** oder den Link **Einen Pull Request erstellen** aus.
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-Geben Sie eine Beschreibung zu dieser Pullanforderung an, fügen Sie Prüfer hinzu, und senden Sie die Anforderung.
+Navigieren Sie auf dem Bildschirm **Neuer Pull Request** bei Bedarf zum Git-Repository und zum Branch für die Zusammenführung Ihrer Änderungen. Sie können auch andere gewünschte Informationen hinzufügen oder ändern. Fügen Sie unter **Prüfer** die Namen der Personen hinzu, die Ihre Änderungen überprüfen sollen, und wählen Sie anschließend **Erstellen**. 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
-## 4. <a name='ReviewandMerge-4'></a>Überprüfen und Zusammenführen 
+## <a name='ReviewandMerge-4'></a>Überprüfen und Zusammenführen
 
-Wenn die Pullanforderung erstellt wird, erhalten die Prüfer eine E-Mail-Benachrichtigung, um die Pullanforderungen überprüfen zu können. Die Prüfer müssen überprüfen, ob die Änderungen funktionieren, und die Änderungen mit dem Antragsteller testen, wenn möglich. Basierend auf ihrer Bewertung können die Prüfer die Pullanforderung genehmigen oder ablehnen. 
+Nachdem Sie den Pull Request erstellt haben, erhalten die Prüfer eine E-Mail-Benachrichtigung, um den Pull Request überprüfen zu können. Die Prüfer testen, ob die Änderungen funktionieren, und überprüfen die Änderungen ggf. gemeinsam mit dem Anforderer. Die Prüfer können Kommentare abgeben, Änderungen fordern und den Pull Request basierend auf der jeweiligen Bewertung genehmigen oder ablehnen. 
 
 ![8](./media/collaborative-coding-with-git/8-add_comments.png)
 
-![9](./media/collaborative-coding-with-git/9-spring-approve-pullrequest.png)
-
-Nach der Überprüfung wird die Verzweigung durch Klicken auf die Schaltfläche **Abschließen** mit der Basisverzweigung zusammengeführt. Sie können die Verzweigung löschen, nachdem sie zusammengeführt wurde. 
+Nachdem die Prüfer die Änderungen genehmigt haben, können Sie oder eine andere Person mit Zusammenführungsberechtigungen den Arbeitsbranch mit dem zugehörigen Basisbranch zusammenführen. Wählen Sie **Vollständig** und dann im Dialogfeld **Pull Request abschließen** die Option **Vollständiger Merge** aus. Sie können den Arbeitsbranch löschen, nachdem er zusammengeführt wurde. 
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 
-Bestätigen Sie in der linken oberen Ecke, dass die Anforderung als **ABGESCHLOSSEN** markiert ist. 
+Vergewissern Sie sich, dass der Pull Request als **ABGESCHLOSSEN** gekennzeichnet ist. 
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-Wenn Sie zum Repository unter **CODE** zurückkehren, erfahren Sie, dass Sie zur Hauptverzweigung weitergeleitet wurden.
+Wenn Sie im Navigationsbereich auf der linken Seite zurück zu **Repos** wechseln, sehen Sie, dass für Sie die Umstellung auf den Masterbranch durchgeführt wurde (Branch `script` wurde gelöscht).
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 
-Sie können auch mit den folgenden Git-Befehlen Ihre Arbeitsverzweigung mit ihrer Basisverzweigung zusammenführen und anschließend die Arbeitsverzweigung löschen:
+Sie können auch die folgenden Git Bash-Befehle verwenden, um Ihren Arbeitsbranch `script` mit seinem Basisbranch zusammenführen und anschließend den Arbeitsbranch löschen:
 
-    git checkout master
-    git merge data_ingestion
-    git branch -d data_ingestion
+```bash
+git checkout master
+git merge script
+git branch -d script
+```
 
 ![13](./media/collaborative-coding-with-git/13-spring-branch-deleted-commandline.png)
 
-
- 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Unter [Ausführen von Data Science-Aufgaben](execute-data-science-tasks.md) wird gezeigt, wie Sie mit Hilfsprogrammen verschiedene allgemeine Data Science-Aufgaben wie interaktive Datenerkundung, Datenanalysen, Berichterstellung und Modellerstellung ausführen.
 
-Exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Sie sind im Artikel [Exemplarische Vorgehensweisen](walkthroughs.md) aufgeführt und mit Miniaturansichtsbeschreibungen verlinkt. Sie zeigen, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
+Unter [Exemplarische Vorgehensweisen](walkthroughs.md) sind die Vorgehensweisen für bestimmte Szenarien mit Links und Miniaturansichtsbeschreibungen aufgeführt. Anhand der Verknüpfungsszenarien wird dargestellt, wie Sie Cloud- und lokale Tools und Dienste über Workflows oder Pipelines kombinieren, um intelligente Anwendungen zu erstellen. 
 

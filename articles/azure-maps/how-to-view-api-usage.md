@@ -1,19 +1,19 @@
 ---
 title: 'Gewusst wie: Anzeigen der Nutzung der Azure Maps-API | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie die Metriken für Ihr Azure Maps-API-Aufrufe im Portal anzeigen.
-author: dsk-2015
-ms.author: dkshir
+author: walsehgal
+ms.author: v-musehg
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d14088ed940ab83be29756a26f8612704bb9aebd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 716f9fbc02905a8981771c2fd9dd2be0baeb8196
+ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079877"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67460194"
 ---
 # <a name="view-azure-maps-api-usage"></a>Anzeigen der Azure Maps-API-Nutzung
 
@@ -59,6 +59,11 @@ Fahren Sie mit dem nächsten Abschnitt fort, wenn Sie diese Diagramme für Ihre 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über die Azure Maps-APIs, für die Sie die Nutzung verfolgen möchten:
+> [!div class="nextstepaction"] 
+> [Azure Maps Web SDK: Anleitung](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"] 
+> [Azure Maps Android SDK: Anleitung](how-to-use-android-map-control-library.md)
 
 > [!div class="nextstepaction"]
 > [Dokumentation zur REST API von Azure Maps](https://docs.microsoft.com/rest/api/maps)

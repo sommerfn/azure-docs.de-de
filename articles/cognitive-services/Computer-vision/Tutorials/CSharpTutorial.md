@@ -1,22 +1,22 @@
 ---
 title: 'Beispiel: Erkunden einer Bildverarbeitungs-App in C#'
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Hier lernen Sie eine einfache Windows-App kennen, die die Maschinelles Sehen-API in Microsoft Cognitive Services verwendet. Führen Sie eine optische Zeichenerkennung durch, erstellen Sie Miniaturansichten, und arbeiten Sie mit visuellen Merkmalen in einem Bild.
+titleSuffix: Azure Cognitive Services
+description: Hier lernen Sie eine einfache Windows-App kennen, die die Maschinelles Sehen-API in Azure Cognitive Services verwendet. Führen Sie eine optische Zeichenerkennung durch, erstellen Sie Miniaturansichten, und arbeiten Sie mit visuellen Merkmalen in einem Bild.
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
-ms.date: 02/08/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a23e45cb1e75305f41c81077c90282352327b72d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310942"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170039"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Beispiel: Erkunden einer Bildverarbeitungs-App mit C#
 
@@ -33,7 +33,7 @@ Lernen Sie eine einfache Windows-Anwendung kennen, die maschinelles Sehen verwen
 Bevor Sie die Beispiel-App erkunden können, müssen die folgenden Voraussetzungen erfüllt sein:
 
 * Sie benötigen [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) oder höher.
-* Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Wie Sie einen Abonnementschlüssel abrufen, erfahren Sie unter [Abrufen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
+* Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Alternativ gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten. Notieren Sie sich außerdem die Dienstendpunkt-URL.
 
 ## <a name="get-the-sample-app"></a>Abrufen der Beispiel-App
 
@@ -79,8 +79,9 @@ Sie können die Beispiel-App ausführen, um ihre Interaktion mit Ihnen und der C
 1. Wenn die Beispiel-App angezeigt wird, wählen Sie im Navigationsbereich **Abonnementschlüsselverwaltung** aus, um die Seite „Abonnementschlüsselverwaltung“ anzuzeigen.
    ![Seite „Abonnementschlüsselverwaltung“](../Images/Vision_UI_Subscription.PNG)  
 1. Geben Sie in das Feld **Abonnementschlüssel** Ihren Abonnementschlüssel ein.
-1. Geben Sie im Feld **Endpunkt** die Endpunkt-URL – ohne `/vision/v1.0` – der Ressource für maschinelles Sehen für Ihren Abonnementschlüssel ein.  
-   Wenn Sie beispielsweise den Abonnementschlüssel aus der kostenlosen Testversion für maschinelles Sehen verwenden, geben Sie die folgende Endpunkt-URL für die Azure-Region „USA, Westen-Mitte“ ein: `https://westcentralus.api.cognitive.microsoft.com`
+1. Geben Sie unter **Endpunkt** die Endpunkt-URL ein.  
+   Wenn Sie beispielsweise den Abonnementschlüssel aus der kostenlosen Testversion für maschinelles Sehen verwenden, geben Sie die folgende Endpunkt-URL ein: `https://westcentralus.api.cognitive.microsoft.com`.  
+   [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Wenn Sie den Abonnementschlüssel und die Endpunkt-URL beim nächsten Ausführen der Beispiel-App nicht eingeben möchten, wählen Sie **Einstellung speichern** aus, damit der Abonnementschlüssel und die Endpunkt-URL auf Ihrem Computer gespeichert werden. Wenn Sie Ihren zuvor gespeicherten Abonnementschlüssel und Ihre Endpunkt-URL löschen möchten, wählen Sie **Einstellung löschen** aus.
 
    > [!NOTE]

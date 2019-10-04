@@ -1,47 +1,63 @@
 ---
-title: Automatisches Skalieren einer VM-Skalierungsgruppe in Azure mit Ansible
-description: Informationen zum Verwenden von Ansible zum Skalieren einer VM-Skalierungsgruppe in Azure mit Autoskalierung
-ms.service: azure
+title: 'Tutorial: Automatisches Skalieren von VM-Skalierungsgruppen in Azure mit Ansible | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie Ansible verwenden, um VM-Skalierungsgruppen in Azure mit Autoskalierung zu skalieren.
 keywords: ansible, azure, devops, bash, playbook, skalieren, autoskalierung, virtueller computer, vm-skalierungsgruppen, vmss
+ms.topic: tutorial
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 12/10/2018
-ms.openlocfilehash: 578ad3207f62e74805be056ca11d3bd9b46513da
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 04/30/2019
+ms.openlocfilehash: 4f2cd66b7460fc6fe48cb55f45bf4bc309ae054c
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792428"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231270"
 ---
-# <a name="automatically-scale-a-virtual-machine-scale-set-in-azure-using-ansible"></a>Automatisches Skalieren einer VM-Skalierungsgruppe in Azure mit Ansible
-Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre VM-Skalierungsgruppe in Azure wie jede andere Azure-Ressource verwalten. 
+# <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>Tutorial: Automatisches Skalieren von VM-Skalierungsgruppen in Azure mit Ansible
 
-Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanzen, die Sie ausführen möchten. Wenn sich die Nachfrage nach Ihrer Anwendung ändert, können Sie die Anzahl von VM-Instanzen automatisch erhöhen oder verringern lassen. Dank der Möglichkeit zum automatischen Skalieren können Sie über den gesamten Lebenszyklus Ihrer App die Kundennachfrage decken oder auf Änderungen der Anwendungsleistung reagieren. In diesem Artikel erstellen Sie eine Einstellung für die automatische Skalierung und ordnen sie einer vorhandene VM-Skalierungsgruppe zu. In der Einstellung für die automatische Skalierung können Sie eine Regel konfigurieren, die das horizontal Herunter- und Hochskalieren ermöglicht.
+[!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
+
+[!INCLUDE [open-source-devops-intro-vmss.md](../../includes/open-source-devops-intro-vmss.md)]
+
+Das Feature zur automatischen Anpassung der Anzahl von VM-Instanzen heißt [Autoskalierung](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview). Der Vorteil der Autoskalierung besteht in der Verringerung des Verwaltungsaufwands im Zusammenhang mit der Leistungsüberwachung und -optimierung für Ihre Anwendung. Die Autoskalierung kann bedarfsbasiert oder nach einem definierten Zeitplan konfiguriert werden. Mit Ansible können Sie Autoskalierungsregeln angeben, um eine angemessene Leistung für eine positive Kundenerfahrung zu definieren.
+
+[!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
+
+> [!div class="checklist"]
+>
+> * Definieren eines Profils für die automatische Skalierung
+> * Automatisches Skalieren auf der Grundlage einer Zeitplanserie
+> * Automatisches Skalieren auf der Grundlage der App-Leistung
+> * Abrufen von Informationen zu Autoskalierungseinstellungen 
+> * Deaktivieren einer Autoskalierungseinstellung
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- **Azure-Abonnement:** Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)][!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
-- Eine vorhandene Azure-VM-Skalierungsgruppe. - Wenn Sie keine haben, [Erstellen Sie VM-Skalierungsgruppen mit Ansible in Azure](https://docs.microsoft.com/azure/ansible/ansible-create-configure-vmss).
 
-> [!Note]
-> Für die Ausführung der folgenden Beispielplaybooks in diesem Tutorial ist Ansible 2.7 erforderlich. 
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+[!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
+[!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
 
-## <a name="auto-scale-based-on-a-schedule"></a>Automatisches Skalieren basierend auf einem Zeitplan   
+## <a name="autoscale-based-on-a-schedule"></a>Automatisches Skalieren nach Zeitplan
+
 Zum Aktivieren der automatischen Skalierung für eine Skalierungsgruppe legen Sie zuerst ein Profil für die automatische Skalierung fest. Dieses Profil definiert die standardmäßige, minimale und maximale Kapazität der Skalierungsgruppe. Diese Grenzwerte sind hilfreich bei der Kostenkontrolle und sorgen nicht nur dafür, dass nicht fortlaufend VM-Instanzen erstellt werden, sondern gewährleisten auch ein ausgewogenes Verhältnis zwischen angemessener Leistung und einer minimalen Anzahl von Instanzen, die beim horizontalen Herunterskalieren erhalten bleiben. 
 
-Sie können VM-Skalierungsgruppen horizontal herunter- und hochskalieren – entweder nach einem sich wiederholenden Zeitplan oder zu einem bestimmten Datum. Dieser Abschnitt stellt ein Beispiel für ein Ansible-Playbook vor, das eine Autoskalierungseinstellung erstellt, die die Anzahl der VM-Instanzen in Ihren Skalierungsgruppen jeden Montag um 10:00 Uhr Pacific Standard Time (PST) auf drei erhöht. 
+Mit Ansible können Sie Ihre Skalierungsgruppen auf der Grundlage eines bestimmten Datums oder einer Zeitplanserie skalieren.
+
+Der Playbookcode in diesem Abschnitt erhöht die Anzahl von VM-Instanzen jeden Montag um 10:00 Uhr auf drei.
+
+Speichern Sie das folgende Playbook als `vmss-auto-scale.yml`:
 
 ```yml
 ---
 - hosts: localhost
   vars:
     resource_group: myResourceGroup
-    vmss_name: myVMSS
+    vmss_name: myScaleSet
     name: autoscalesetting
   tasks: 
-    - name: Create auto scaling
+    - name: Create autoscaling
       azure_rm_autoscale:
          resource_group: "{{ resource_group }}"
          name: "{{ name }}"
@@ -65,23 +81,31 @@ Sie können VM-Skalierungsgruppen horizontal herunter- und hochskalieren – ent
               - '10'
 ```
 
-Speichern Sie dieses Playbook als *vmss-auto-scale.yml*. Verwenden Sie den Befehl **ansible-playbook** wie folgt, um das Ansible-Playbook auszuführen:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook vmss-auto-scale.yml
 ```
 
-## <a name="auto-scale-based-on-performance-data"></a>Automatische Skalierung basierend auf Leistungsdaten
-Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last für die VM-Instanzen in Ihren Skalierungsgruppen. Falls es sich um eine dauerhafte Last und nicht nur um eine kurzzeitige höhere Nachfrage handelt, können Sie die Regeln für die automatische Skalierung konfigurieren, um die Anzahl von VM-Instanzen in der Skalierungsgruppe zu erhöhen. Nachdem diese VM-Instanzen erstellt und Ihre Anwendungen bereitgestellt wurden, beginnt die Skalierungsgruppe damit, über das Lastenausgleichsmodul Datenverkehr darauf zu verteilen. Sie steuern, welche Metriken überwacht werden, z.B. CPU oder Datenträger, wie lange die Anwendungslast einen bestimmten Schwellenwert einhalten muss und wie viele VM-Instanzen der Skalierungsgruppe hinzugefügt werden sollen.
+## <a name="autoscale-based-on-performance-data"></a>Automatisches Skalieren auf der Grundlage von Leistungsdaten
 
-Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten horizontal herunter- und hochskalieren – entweder nach einem sich wiederholenden Zeitplan oder zu einem bestimmten Datum. Dieser Abschnitt stellt ein Beispiel für ein Ansible-Playbook vor, das die Workloads in den letzten 10 Minuten jeden Montag um 18:00 Uhr, Pacific Standard Time (PST), überprüft und die Anzahl der VM-Instanzen in Ihren Skalierungsgruppen auf vier horizontal hochskaliert bzw. gemäß CPU-Prozentsatzmetrik auf eine Instanz horizontal herunterskaliert. 
+Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last für die VM-Instanzen in Ihren Skalierungsgruppen. Falls es sich um eine dauerhafte Last und nicht nur um eine kurzzeitige höhere Nachfrage handelt, können Sie die Regeln für die automatische Skalierung konfigurieren, um die Anzahl von VM-Instanzen in der Skalierungsgruppe zu erhöhen. Nachdem diese VM-Instanzen erstellt und Ihre Anwendungen bereitgestellt wurden, beginnt die Skalierungsgruppe damit, über das Lastenausgleichsmodul Datenverkehr darauf zu verteilen. Mit Ansible können Sie steuern, welche Metriken überwacht werden sollen (beispielsweise CPU-Auslastung, Datenträgerauslastung und App-Ladezeit). In Skalierungsgruppen kann basierend auf Leistungsmetrik-Schwellenwerten, auf der Grundlage einer Zeitplanserie oder an einem bestimmten Datum horizontal herunter- und hochskaliert werden. 
+
+Der Playbookcode in diesem Abschnitt überprüft jeden Montag um 18:00 Uhr die CPU-Auslastung der letzten zehn Minuten. 
+
+Auf der Grundlage der prozentualen CPU-Metriken führt das Playbook eine der folgenden Aktionen aus:
+
+- Erhöhen der Anzahl von VM-Instanzen auf vier
+- Verringern der Anzahl von VM-Instanzen auf eine
+
+Speichern Sie das folgende Playbook als `vmss-auto-scale-metrics.yml`:
 
 ```yml
 ---
 - hosts: localhost
   vars:
     resource_group: myResourceGroup
-    vmss_name: myVMSS
+    vmss_name: myScaleSet
     name: autoscalesetting
   tasks:
   - name: Get facts of the resource group
@@ -89,11 +113,11 @@ Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten 
       name: "{{ resource_group }}"
     register: rg
 
-  - name: Get VMSS resource uri
+  - name: Get scale set resource uri
     set_fact:
       vmss_id: "{{ rg.ansible_facts.azure_resourcegroups[0].id }}/providers/Microsoft.Compute/virtualMachineScaleSets/{{ vmss_name }}"
     
-  - name: Create auto scaling
+  - name: Create autoscaling
     azure_rm_autoscale:
       resource_group: "{{ resource_group }}"
       name: "{{ name }}"
@@ -151,14 +175,17 @@ Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten 
             value: '1'
 ```
 
-Speichern Sie dieses Playbook als *vmss-auto-scale-metrics.yml*. Verwenden Sie den Befehl **ansible-playbook** wie folgt, um das Ansible-Playbook auszuführen:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook vmss-auto-scale-metrics.yml
 ```
 
-## <a name="get-information-for-existing-autoscale-settings"></a>Abrufen von Informationen für die vorhandenen Autoskalierungseinstellungen
-Die Details zur Autoskalierungseinstellung können Sie über das *azure_rm_autoscale_facts*-Modul mit dem Playbook wie folgt abrufen:
+## <a name="get-autoscale-settings-information"></a>Abrufen von Informationen zu Autoskalierungseinstellungen 
+
+Der Playbookcode in diesem Abschnitt verwendet das Modul `azure_rm_autoscale_facts`, um Details zur Autoskalierungseinstellung abzurufen.
+
+Speichern Sie das folgende Playbook als `vmss-auto-scale-get-settings.yml`:
 
 ```yml
 - hosts: localhost
@@ -166,7 +193,7 @@ Die Details zur Autoskalierungseinstellung können Sie über das *azure_rm_autos
     resource_group: myResourceGroup
     name: autoscalesetting
   tasks: 
-    - name: Retrieve auto scale settings information
+    - name: Retrieve autoscale settings information
       azure_rm_autoscale_facts:
         resource_group: "{{ resource_group }}"
         name: "{{ name }}"
@@ -176,8 +203,19 @@ Die Details zur Autoskalierungseinstellung können Sie über das *azure_rm_autos
         var: autoscale_query.autoscales[0]
 ```
 
-## <a name="disable-the-autoscale-settings"></a>Deaktivieren der Autoskalierungseinstellungen
-Sie können die Autoskalierungseinstellung deaktivieren, indem Sie `enabled: true` in `enabled: false` ändern, oder die Autoskalierungseinstellungen mit dem Playbook wie folgt löschen:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
+
+```bash
+ansible-playbook vmss-auto-scale-get-settings.yml
+```
+
+## <a name="disable-autoscale-settings"></a>Deaktivieren von Autoskalierungseinstellungen
+
+Autoskalierungseinstellungen können auf zwei Arten deaktiviert werden. Eine Möglichkeit besteht darin, den Schlüssel `enabled` von `true` in `false` zu ändern. Die zweite Möglichkeit ist das Löschen der Einstellung.
+
+Der Playbookcode in diesem Abschnitt löscht die Autoskalierungseinstellung. 
+
+Speichern Sie das folgende Playbook als `vmss-auto-scale-delete-setting.yml`:
 
 ```yml
 - hosts: localhost
@@ -185,13 +223,20 @@ Sie können die Autoskalierungseinstellung deaktivieren, indem Sie `enabled: tru
     resource_group: myResourceGroup
     name: autoscalesetting
   tasks: 
-    - name: Delete auto scaling
+    - name: Delete autoscaling
       azure_rm_autoscale:
          resource_group: "{{ resource_group }}"
          name: "{{ name }}"
          state: absent
 ```
 
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
+
+```bash
+vmss-auto-scale-delete-setting.yml
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
+
 > [!div class="nextstepaction"] 
-> [Ansible-Beispiel-Playbook für die VM-Skalierungsgruppen](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Tutorial: Aktualisieren des benutzerdefinierten Images von Skalierungsgruppen für virtuelle Azure-Computer mit Ansible](./ansible-vmss-update-image.md)

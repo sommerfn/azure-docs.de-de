@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/11/2018
+ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 1bcb7f9fadc79db0db17336f07f6d58302433c1f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664028"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385006"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Tutorial: Installieren und Erstellen eines Service Fabric-Clusters
 
-Mit eigenständigen Service Fabric-Clustern können Sie Ihre eigene Umgebung wählen und einen Cluster im Rahmen des Service Fabric-Konzepts „Jedes Betriebssystem, jede Cloud“ erstellen. In dieser Tutorialreihe erstellen Sie einen eigenständigen, in AWS gehosteten Cluster und installieren darin eine Anwendung.
+Mit eigenständigen Service Fabric-Clustern können Sie Ihre eigene Umgebung wählen und einen Cluster im Rahmen des Service Fabric-Konzepts „Jedes Betriebssystem, jede Cloud“ erstellen. In dieser Tutorialreihe erstellen Sie einen eigenständigen, in AWS oder Azure gehosteten Cluster und installieren darin eine Anwendung.
 
 Dieses Tutorial ist der zweite Teil einer Reihe. Dieses Tutorial führt Sie durch die Schritte zum Erstellen eines eigenständigen Service Fabric-Clusters.
 
@@ -37,7 +37,7 @@ Im zweiten Teil der Reihe lernen Sie Folgendes:
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>Herunterladen des Service Fabric-Pakets für Windows Server
 
-Für Service Fabric steht ein Setuppaket zum Erstellen eigenständiger Service Fabric-Cluster bereit.  Laden Sie das [Setuppaket](https://go.microsoft.com/fwlink/?LinkId=730690) auf Ihren lokalen Computer herunter.  Kopieren Sie das erfolgreich heruntergeladene Paket über die RDP-Verbindung in Ihre EC2-Instanz, und fügen Sie es auf dem Desktop ein.
+Für Service Fabric steht ein Setuppaket zum Erstellen eigenständiger Service Fabric-Cluster bereit.  Laden Sie das [Setuppaket](https://go.microsoft.com/fwlink/?LinkId=730690) auf Ihren lokalen Computer herunter.  Kopieren Sie das erfolgreich heruntergeladene Paket über die RDP-Verbindung in Ihre VM, und fügen Sie es auf dem Desktop ein.
 
 Klicken Sie auf die ZIP-Datei, öffnen Sie das Kontextmenü, und klicken Sie auf **Alle extrahieren** > **Extrahieren**.  Im Zuge der Datenextraktion wird auf dem Desktop ein Ordner mit dem Namen der ZIP-Datei erstellt.
 

@@ -1,19 +1,19 @@
 ---
 title: Azure Data Lake Storage Gen2 – Einführung
 description: Bietet eine Übersicht zu Azure Data Lake Storage Gen2
-services: storage
-author: jamesbak
+author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 12/06/2018
-ms.author: jamesbak
+ms.author: normesta
+ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: b25a47e929ef540ad3a74a86d431962d37cde434
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: de2dc5068dc454925744688a43f49a855aac42f3
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009431"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991845"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Einführung in Azure Data Lake Storage Gen2
 
@@ -37,13 +37,13 @@ In der Vergangenheit mussten bei cloudbasierten Analysen Kompromisse in puncto L
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Besondere Features von Data Lake Storage Gen2
 
--   **Hadoop-kompatibler Zugriff**: Data Lake Storage Gen2 ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten sowie deren Verwaltung. Der neue [ABFS](data-lake-storage-abfs-driver.md)-Treiber ist in allen Apache Hadoop-Umgebungen verfügbar, einschließlich [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index) und [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/), um auf die in Data Lake Storage Gen2 gespeicherten Daten zuzugreifen.
+-   **Hadoop-kompatibler Zugriff**: Data Lake Storage Gen2 ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten sowie deren Verwaltung. Der neue [ABFS](data-lake-storage-abfs-driver.md)-Treiber ist in allen Apache Hadoop-Umgebungen verfügbar, einschließlich [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index) *,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index) und [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/), um auf die in Data Lake Storage Gen2 gespeicherten Daten zuzugreifen.
 
 -   **Obermenge von POSIX-Berechtigungen**: Das Sicherheitsmodell für Data Lake Gen2 unterstützt Zugriffssteuerungslisten und POSIX-Berechtigungen sowie zusätzliche Granularität speziell für Data Lake Storage Gen2. Die Einstellungen können über den Storage-Explorer oder Frameworks wie Hive und Spark konfiguriert werden.
 
 -   **Kosteneffizienz**: Data Lake Storage Gen2 bietet kostengünstige Speicherkapazität und -transaktionen. Während Daten ihren gesamten Lebenszyklus durchlaufen, ändern sich Abrechnungstarife, wodurch die Kosten durch integrierte Funktionen wie [Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md) auf ein Minimum reduziert werden.
 
--   **Optimierter Treiber**: Der ABFS-Treiber ist für Big Data-Analysen [speziell optimiert](data-lake-storage-abfs-driver.md). Die entsprechenden REST-APIs werden über den DFS-Endpunkt (dfs.core.windows.net) bereitgestellt.
+-   **Optimierter Treiber:** Der ABFS-Treiber ist speziell für Big Data-Analysen [optimiert](data-lake-storage-abfs-driver.md). Die entsprechenden REST-APIs werden über den Endpunkt `dfs.core.windows.net` bereitgestellt.
 
 ### <a name="scalability"></a>Skalierbarkeit
 
@@ -64,7 +64,7 @@ Die folgenden Begriffe stellen äquivalente Entitäten dar, wie sie durch versch
 | Konzept                                | Organisation auf oberster Ebene | Organisation auf niedriger Ebene                                            | Datencontainer |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
 | Blobs – universeller Objektspeicher | Container              | Virtuelles Verzeichnis (nur SDK, stellt keinen atomarische Bearbeitung bereit) | Blob           |
-| ADLS Gen2 – Analysespeicher          | Dateisystem             | Verzeichnis                                                           | Datei           |
+| ADLS Gen2 – Analysespeicher          | Container            | Verzeichnis                                                           | Datei           |
 
 ## <a name="supported-open-source-platforms"></a>Unterstützte Open-Source-Plattformen
 

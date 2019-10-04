@@ -1,21 +1,21 @@
 ---
 title: Übersicht über die Integration von Nachrichten in Azure Blockchain Workbench
-description: Übersicht über die Verwendung von Nachrichten in Azure Blockchain Workbench
+description: Übersicht über die Verwendung von Nachrichten in der Vorschauversion von Azure Blockchain Workbench.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 02/21/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 860c00b876427af7395e3c04e0626131c27aca67
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: f0a9e90f1208d690c2423196be7f59dce71eb78b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878080"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844064"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integration von Nachrichten in Azure Blockchain Workbench
 
@@ -116,9 +116,9 @@ Für die Anforderung sind folgende Felder erforderlich:
 | requestId            | Vom Client bereitgestellte GUID |
 | userChainIdentifier  | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum ist diese Adresse die **on chain**-Adresse des Benutzers. |
 | applicationName      | Name der Anwendung |
-| Version              | Die Version der Anwendung. Erforderlich, falls Sie mehrere Versionen der Anwendung aktiviert haben. Andernfalls ist die Version optional. Weitere Informationen zur Versionsverwaltung von Anwendungen finden Sie unter [Versionsverwaltung für die Azure Blockchain Workbench-Anwendung](version-app.md). |
+| version              | Die Version der Anwendung. Erforderlich, falls Sie mehrere Versionen der Anwendung aktiviert haben. Andernfalls ist die Version optional. Weitere Informationen zur Versionsverwaltung von Anwendungen finden Sie unter [Versionsverwaltung für die Azure Blockchain Workbench-Anwendung](version-app.md). |
 | workflowName         | Name des Workflows |
-| Parameter           | Parametereingabe für die Vertragserstellung |
+| parameters           | Parametereingabe für die Vertragserstellung |
 | connectionId         | Eindeutiger Bezeichner für die Blockchainverbindung |
 | messageSchemaVersion | Version des Messagingschemas |
 | messageName          | **CreateContractRequest** |
@@ -171,7 +171,7 @@ Beispiel für eine übermittelte Antwort auf **create contract** von Blockchain 
     "connectionId": 1,
     "messageSchemaVersion": "1.0.0",
     "messageName": "CreateContractUpdate",
-    "status": "Submitted"
+    "status": "Submitted",
     "additionalInformation": { }
 }
 ```
@@ -201,7 +201,7 @@ Wenn die Anforderung nicht erfolgreich war, werden Details zum Fehler in den zus
     "connectionId": 1,
     "messageSchemaVersion": "1.0.0",
     "messageName": "CreateContractUpdate",
-    "status": "Failure"
+    "status": "Failure",
     "additionalInformation": {
         "errorCode": 4000,
         "errorMessage": "Contract cannot be provisioned on connection."
@@ -220,9 +220,9 @@ Für die Anforderung sind folgende Felder erforderlich:
 | requestId                | Vom Client bereitgestellte GUID |
 | userChainIdentifier      | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum ist diese Adresse die **on chain**-Adresse des Benutzers. |
 | contractLedgerIdentifier | Adresse des Vertrags im Ledger |
-| Version                  | Die Version der Anwendung. Erforderlich, falls Sie mehrere Versionen der Anwendung aktiviert haben. Andernfalls ist die Version optional. Weitere Informationen zur Versionsverwaltung von Anwendungen finden Sie unter [Versionsverwaltung für die Azure Blockchain Workbench-Anwendung](version-app.md). |
+| version                  | Die Version der Anwendung. Erforderlich, falls Sie mehrere Versionen der Anwendung aktiviert haben. Andernfalls ist die Version optional. Weitere Informationen zur Versionsverwaltung von Anwendungen finden Sie unter [Versionsverwaltung für die Azure Blockchain Workbench-Anwendung](version-app.md). |
 | workflowFunctionName     | Name der Workflowfunktion |
-| Parameter               | Parametereingabe für die Vertragserstellung |
+| parameters               | Parametereingabe für die Vertragserstellung |
 | connectionId             | Eindeutiger Bezeichner für die Blockchainverbindung |
 | messageSchemaVersion     | Version des Messagingschemas |
 | messageName              | **CreateContractActionRequest** |
@@ -287,7 +287,7 @@ Beispiel für eine committete Antwort auf **create contract action** von Blockch
     "connectionId": 1,
     "messageSchemaVersion": "1.0.0",
     "messageName": "CreateContractActionUpdate",
-    "status": "Committed"
+    "status": "Committed",
     "additionalInformation": { }
 }
 ```
@@ -301,7 +301,7 @@ Wenn die Anforderung nicht erfolgreich war, werden Details zum Fehler in den zus
     "connectionId": 1,
     "messageSchemaVersion": "1.0.0",
     "messageName": "CreateContractActionUpdate",
-    "status": "Failure"
+    "status": "Failure",
     "additionalInformation": {
         "errorCode": 4000,
         "errorMessage": "Contract action cannot be provisioned on connection."
@@ -368,7 +368,7 @@ Mithilfe von Service Bus-Themen können Benutzer über Ereignisse in Blockchain 
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>Nutzen von Service Bus-Nachrichten mit Logic Apps
 
 1. Erstellen Sie im Azure-Portal eine neue **Azure Logic-App**.
-2. Beim Öffnen der Azure Logic-App im Portal werden Sie aufgefordert, einen Trigger auszuwählen. Geben Sie in das Suchfeld **Service Bus** ein, und wählen Sie den passenden Trigger für den Typ der Interaktion mit dem Service Bus. Zum Beispiel, **Service Bus – Wenn eine Nachricht in einem Themenabonnement empfangen wird (automatisch abschließen)**.
+2. Beim Öffnen der Azure Logic-App im Portal werden Sie aufgefordert, einen Trigger auszuwählen. Geben Sie in das Suchfeld **Service Bus** ein, und wählen Sie den passenden Trigger für den Typ der Interaktion mit dem Service Bus. Zum Beispiel, **Service Bus – Wenn eine Nachricht in einem Themenabonnement empfangen wird (automatisch abschließen)** .
 3. Wenn der Workflow-Designer angezeigt wird, geben Sie die Verbindungsinformationen für den Service Bus an.
 4. Wählen Sie Ihr Abonnement aus, und legen Sie das Thema **workbench-external** fest.
 5. Entwickeln Sie die Logik für Ihre Anwendung, die die Nachricht von diesem Trigger verwendet.
@@ -415,7 +415,7 @@ Beispiel für eine Blocknachricht (*BlockMessage*) aus Blockchain Workbench:
 ``` json
 {
     "block": {
-        "blockId": 123
+        "blockId": 123,
         "blockNumber": 1738312,
         "blockHash": "0x03a39411e25e25b47d0ec6433b73b488554a4a5f6b1a253e0ac8a200d13fffff",
         "previousBlockHash": null,
@@ -423,14 +423,14 @@ Beispiel für eine Blocknachricht (*BlockMessage*) aus Blockchain Workbench:
     },
     "transactions": [
         {
-            "transactionId": 234
+            "transactionId": 234,
             "transactionHash": "0xa4d9c95b581f299e41b8cc193dd742ef5a1d3a4ddf97bd11b80d123fec27ffff",
             "from": "0xd85e7262dd96f3b8a48a8aaf3dcdda90f60dffff",
             "to": null,
             "provisioningStatus": 1
         },
         {
-            "transactionId": 235
+            "transactionId": 235,
             "transactionHash": "0x5c1fddea83bf19d719e52a935ec8620437a0a6bdaa00ecb7c3d852cf92e1ffff",
             "from": "0xadd97e1e595916e29ea94fda894941574000ffff",
             "to": "0x9a8DDaCa9B7488683A4d62d0817E965E8f24ffff",
@@ -567,7 +567,7 @@ Enthält Informationen, wenn eine Vertragsfunktion aufgerufen wird. Hierzu zähl
 | contractId                  | Eindeutiger Bezeichner für den Vertrag innerhalb von Azure Blockchain Workbench. |
 | contractLedgerIdentifier    | Eindeutiger Bezeichner für den Vertrag im Ledger |
 | functionName                | Name der Funktion |
-| Parameter                  | [Parameterinformationen](#parameter-information) |
+| parameters                  | [Parameterinformationen](#parameter-information) |
 | transaction                 | Transaktionsinformationen |
 | inTransactionSequenceNumber | Die Sequenznummer der Transaktion im Block |
 | connectionId                | Eindeutiger Bezeichner für die Verbindung |
@@ -680,7 +680,7 @@ Enthält Informationen, wenn eine Anwendung in Workbench hochgeladen wird – et
 | displayName | Anzeigename des Anwendungsworkflows |
 | functions | Sammlung von [Funktionen für den Anwendungsworkflow](#workflow-function-information)|
 | states | Sammlung von [Zuständen für den Anwendungsworkflow](#workflow-state-information) |
-| Eigenschaften | [Informationen zu Workfloweigenschaften](#workflow-property-information) für die Anwendung |
+| properties | [Informationen zu Workfloweigenschaften](#workflow-property-information) für die Anwendung |
 
 ##### <a name="workflow-function-information"></a>Workflowfunktionsinformationen
 
@@ -688,7 +688,7 @@ Enthält Informationen, wenn eine Anwendung in Workbench hochgeladen wird – et
 |------|-------------|
 | id | Eindeutiger Bezeichner für die Anwendungsworkflowfunktion innerhalb von Azure Blockchain Workbench |
 | name | Funktionsname |
-| Parameter | Parameter für die Funktion |
+| parameters | Parameter für die Funktion |
 
 ##### <a name="workflow-state-information"></a>Informationen zum Workflowstatus
 
@@ -715,7 +715,7 @@ Beispiel für *EventMessage ApplicationIngestion* aus Blockchain Workbench:
     "applicationName": "AssetTransfer",
     "applicationDisplayName": "Asset Transfer",
     "applicationVersion": “1.0”,
-    "applicationDefinitionLocation": "http://url"
+    "applicationDefinitionLocation": "http://url",
     "contractCodes": [
         {
             "id": 23,
@@ -805,7 +805,7 @@ Beispiel für *EventMessage ApplicationIngestion* aus Blockchain Workbench:
                 }
             ]
         }
-    ]
+    ],
     "connectionId": [ ],
     "messageSchemaVersion": "1.0.0",
     "messageName": "EventMessage",
@@ -817,7 +817,7 @@ Beispiel für *EventMessage ApplicationIngestion* aus Blockchain Workbench:
                     "Name": "BuyerAccepted",
                     "Transitions": [
                         {
-                            "DisplayName": "Accept"
+                            "DisplayName": "Accept",
                             "AllowedRoles": [ ],
                             "AllowedInstanceRoles": [ "InstanceOwner" ],
                             "Function": "Accept",

@@ -4,23 +4,22 @@ description: Hier erfahren Sie, wie Sie eine Azure Files-Freigabe von Computekno
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 1e9d039769e7fbcb9c2b7285aa727acd7322bcdf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cd185035640bf0beaa54fa6a0f4d92a33837442b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103331"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093969"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Verwenden einer Azure-Dateifreigabe mit einem Batch-Pool
 
@@ -52,7 +51,7 @@ In Batch müssen Sie die Freigabe jedes Mal einbinden, wenn ein Task auf einem W
 Fügen Sie z.B. in die Befehlszeile für jeden Task einen `net use`-Befehl zum Einbinden der Dateifreigabe ein. Zum Einbinden der Dateifreigabe sind folgende Anmeldeinformationen erforderlich:
 
 * **Benutzername**: AZURE\\\<storageaccountname\>. Beispiel: AZURE\\*mystorageaccountname*
-* **Kennwort**: <StorageAccountKeyWhichEnds in==>. Beispiel: *XXXXXXXXXXXXXXXXXXXXX==*
+* **Kennwort**: \<StorageAccountKeyWhichEnds in==>, z. B. *XXXXXXXXXXXXXXXXXXXXX==*
 
 Der folgende Befehl bindet die Dateifreigabe *myfileshare* als Laufwerk *S:* in das Speicherkonto *mystorageaccountname* ein:
 
@@ -129,7 +128,7 @@ apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileSh
 Führen Sie dann den Befehl `mount` aus, um die Dateifreigabe einzubinden, und geben Sie die folgenden Anmeldeinformationen an:
 
 * **Benutzername**: \<storageaccountname\>. Beispiel: *mystorageaccountname*
-* **Kennwort**: <StorageAccountKeyWhichEnds in==>. Beispiel: *XXXXXXXXXXXXXXXXXXXXX==*
+* **Kennwort**: \<StorageAccountKeyWhichEnds in==>, z. B. *XXXXXXXXXXXXXXXXXXXXX==*
 
 Der folgende Befehl bindet die Dateifreigabe *myfileshare* unter */mnt/MyAzureFileShare* in das Speicherkonto *mystorageaccountname* ein: 
 
@@ -148,17 +147,18 @@ Das folgende Python-Beispiel zeigt, wie Sie einen Ubuntu-Pool so konfigurieren, 
 ```python
 pool = batch.models.PoolAddParameter(
     id=pool_id,
-    virtual_machine_configuration = batchmodels.VirtualMachineConfiguration(
-        image_reference = batchmodels.ImageReference(
+    virtual_machine_configuration=batchmodels.VirtualMachineConfiguration(
+        image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
             sku="16.04.0-LTS",
             version="latest"),
-        node_agent_sku_id = "batch.node.ubuntu 16.04"),
+        node_agent_sku_id="batch.node.ubuntu 16.04"),
     vm_size=_POOL_VM_SIZE,
     target_dedicated_nodes=_POOL_NODE_COUNT,
     start_task=batchmodels.StartTask(
-        command_line="/bin/bash -c \"apt-get update && apt-get install cifs-utils && mkdir -p {} && mount -t cifs {} {} -o vers=3.0,username={},password={},dir_mode=0777,file_mode=0777,serverino\"".format(_COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_SHARE_ENDPOINT, _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_NAME, _STORAGE_ACCOUNT_KEY),
+        command_line="/bin/bash -c \"apt-get update && apt-get install cifs-utils && mkdir -p {} && mount -t cifs {} {} -o vers=3.0,username={},password={},dir_mode=0777,file_mode=0777,serverino\"".format(
+            _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_SHARE_ENDPOINT, _COMPUTE_NODE_MOUNT_POINT, _STORAGE_ACCOUNT_NAME, _STORAGE_ACCOUNT_KEY),
         wait_for_success=True,
         user_identity=batchmodels.UserIdentity(
             auto_user=batchmodels.AutoUserSpecification(

@@ -1,22 +1,22 @@
 ---
-title: Entwickeln von Apps mit dem Speech SDK – Speech Services
+title: Entwickeln von Apps mit dem Speech SDK – Speech Service
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Apps mit dem Speech SDK erstellen.
 services: cognitive-services
-author: wolfma61
+author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/18/2018
-ms.author: wolfma
+ms.date: 07/23/2019
+ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: f3522f065d22ce276174fbd165c37df3914e32b9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 8192a2d731104fe898ca128a1d989783698567da
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56962025"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559153"
 ---
 # <a name="ship-an-application"></a>Ausliefern einer Anwendung
 
@@ -28,10 +28,10 @@ Je nach Plattform bestehen unterschiedliche Abhängigkeiten zum Ausführen Ihrer
 
 Das Cognitive Services Speech SDK wird unter Windows 10 und unter Windows Server 2016 getestet.
 
-Für das Cognitive Services Speech SDK muss [Microsoft Visual C++ Redistributable für Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) auf dem System installiert sein. Installationsprogramme für die neueste Version von `Microsoft Visual C++ Redistributable for Visual Studio 2017` können Sie hier herunterladen:
+Für das Cognitive Services Speech SDK muss [Microsoft Visual C++ Redistributable für Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) auf dem System installiert sein. Installationsprogramme für die neueste Version von `Microsoft Visual C++ Redistributable for Visual Studio 2019` können Sie hier herunterladen:
 
-- [Win32](https://aka.ms/vs/15/release/vc_redist.x86.exe)
-- [x64](https://aka.ms/vs/15/release/vc_redist.x64.exe)
+- [Win32](https://aka.ms/vs/16/release/vc_redist.x86.exe)
+- [x64](https://aka.ms/vs/16/release/vc_redist.x64.exe)
 
 Wenn Ihre Anwendung verwalteten Code verwendet, muss `.NET Framework 4.6.1` oder höher auf dem Zielcomputer installiert sein.
 
@@ -47,21 +47,31 @@ Die erforderlichen Speech SDK-Dateien können im gleichen Verzeichnis wie die An
 >[!NOTE]
 > Ab Release 1.3.0 ist die Datei `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (im Lieferumfang von früheren Releases enthalten) nicht mehr erforderlich. Die Funktion ist jetzt in das Core-SDK integriert.
 
+>[!NOTE]
+> Stellen Sie für das Windows Forms App-C#-Projekt (.NET Framework) sicher, dass die Bibliotheken in den Bereitstellungseinstellungen Ihres Projekts enthalten sind. Sie können dies unter `Properties -> Publish Section` überprüfen. Klicken Sie auf die `Application Files`-Schaltfläche, und suchen Sie die entsprechenden Bibliotheken in der nach unten gescrollten Liste. Stellen Sie sicher, dass der Wert auf `Included` festgelegt ist. Visual Studio wird die Datei enthalten, wenn das Projekt veröffentlicht/bereitgestellt wird.
+
 ## <a name="linux"></a>Linux
 
-Das Speech SDK unterstützt derzeit die Distributionen Ubuntu 16.04 und 18.04.
+Das Speech SDK unterstützt derzeit die Distributionen Ubuntu 16.04, 18.04 und Debian 9.
 Für eine native Anwendung müssen Sie die Speech SDK-Bibliothek `libMicrosoft.CognitiveServices.Speech.core.so` ausliefern.
 Stellen Sie sicher, dass Sie die der Anwendung entsprechende Version (x86, x64) auswählen. Je nach verwendeter Linux-Version müssen Sie möglicherweise auch die folgenden Abhängigkeiten einbinden:
 
 * Freigegebene Bibliotheken der GNU C-Bibliothek (einschließlich der POSIX Threads Programming-Bibliothek `libpthreads`)
-* OpenSSL-Bibliothek (`libssl.so.1.0.0`)
+* OpenSSL-Bibliothek (`libssl.so.1.0.0` oder `libssl.so.1.0.2`)
 * Freigegebene Bibliothek für ALSA-Anwendungen (`libasound.so.2`)
 
 Unter Ubuntu sollten die GNU C-Bibliotheken bereits standardmäßig installiert sein. Die letzten drei Bibliotheken können mit folgenden Befehlen installiert werden:
 
 ```sh
 sudo apt-get update
-sudo apt-get install libssl1.0.0 libasound2 wget
+sudo apt-get install libssl1.0.0 libasound2
+```
+
+Installieren Sie unter Debian 9 die folgenden Pakete:
+
+```sh
+sudo apt-get update
+sudo apt-get install libssl1.0.2 libasound2
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

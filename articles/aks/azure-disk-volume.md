@@ -2,17 +2,17 @@
 title: Erstellen eines statischen Volumes für Pods in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie manuell ein Volume mit Azure-Datenträgern für die Verwendung mit Pods in Azure Kubernetes Service (AKS) erstellen.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: iainfou
-ms.openlocfilehash: 02a863a4ddf59fb36c5f2ae7f3092896d2e1d860
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.author: mlearned
+ms.openlocfilehash: 9017c8cf721fbb9c493dc18da769b9d6e83ddf05
+ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337990"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "67616132"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -25,9 +25,9 @@ Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Speicheroptionen f
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Außerdem muss die Version 2.0.59 oder höher der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="create-an-azure-disk"></a>Erstellen eines Azure-Datenträgers
 
@@ -41,18 +41,18 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Erstellen Sie nun mit dem Befehl [az disk create][az-disk-create] einen Datenträger. Geben Sie den Knotennamen der Ressourcengruppe, den Sie mit dem vorherigen Befehl abgerufen haben, und dann einen Namen für die Datenträgerressource an, z.B. *myAKSDisk*: Das folgende Beispiel erstellt einen Datenträger mit *20* GiB und gibt die ID des Datenträgers nach der Erstellung aus:
+Erstellen Sie nun mit dem Befehl [az disk create][az-disk-create] einen Datenträger. Geben Sie den Knotennamen der Ressourcengruppe, den Sie mit dem vorherigen Befehl abgerufen haben, und dann einen Namen für die Datenträgerressource an, z.B. *myAKSDisk*: Das folgende Beispiel erstellt einen Datenträger mit *20* GiB und gibt die ID des Datenträgers nach der Erstellung aus. Wenn Sie einen Datenträger für die Verwendung mit Windows Server-Containern (zurzeit in der Vorschauphase in AKS) erstellen möchten, fügen Sie den Parameter `--os-type windows` hinzu, um den Datenträger ordnungsgemäß zu formatieren.
 
 ```azurecli-interactive
 az disk create \
   --resource-group MC_myResourceGroup_myAKSCluster_eastus \
-  --name myAKSDisk  \
+  --name myAKSDisk \
   --size-gb 20 \
   --query id --output tsv
 ```
 
 > [!NOTE]
-> Azure-Datenträger werden nach SKU für eine bestimmte Größe berechnet. Diese SKUs reichen von 32 GiB für S4- oder P4-Datenträger bis 32 TiB für S80- oder P80-Datenträger (in der Vorschau). Der Durchsatz und die IOPS-Leistung eines verwalteten Premium-Datenträgers hängen sowohl von der SKU als auch von der Instanzgröße der Knoten im AKS-Cluster ab. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise][managed-disk-pricing-performance].
+> Azure-Datenträger werden nach SKU für eine bestimmte Größe berechnet. Diese SKUs reichen von 32 GiB für S4- oder P4-Datenträger bis 32 TiB für S80- oder P80-Datenträger (in der Vorschau). Der Durchsatz und die IOPS-Leistung eines verwalteten Premium-Datenträgers hängen sowohl von der SKU als auch von der Instanzgröße der Knoten im AKS-Cluster ab. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise und Leistung][managed-disk-pricing-performance].
 
 Die ID der Datenträgerressource wird angezeigt, sobald der Befehl erfolgreich abgeschlossen wurde, wie in der folgenden Beispielausgabe gezeigt. Diese Datenträger-ID wird verwendet, um den Datenträger im nächsten Schritt bereitzustellen.
 
@@ -62,7 +62,7 @@ Die ID der Datenträgerressource wird angezeigt, sobald der Befehl erfolgreich a
 
 ## <a name="mount-disk-as-volume"></a>Einbinden des Datenträgers als Volume
 
-Um den Azure-Datenträger in Ihren Pod einzubinden, konfigurieren Sie das Volume in der Containerspezifikation. Erstellen Sie eine neue Datei namens „`azure-disk-pod.yaml`“ mit folgendem Inhalt. Aktualisieren Sie `diskName` mit dem Namen des im vorherigen Schritt erstellten Datenträgers und `diskURI` mit der in der Ausgabe des Befehls „disk create“ angezeigten Datenträger-ID. Wenn gewünscht, aktualisieren Sie auch den Wert `mountPath`. Dies ist der Pfad, unter dem der Azure-Datenträger im Pod eingebunden wird.
+Um den Azure-Datenträger in Ihren Pod einzubinden, konfigurieren Sie das Volume in der Containerspezifikation. Erstellen Sie eine neue Datei namens „`azure-disk-pod.yaml`“ mit folgendem Inhalt. Aktualisieren Sie `diskName` mit dem Namen des im vorherigen Schritt erstellten Datenträgers und `diskURI` mit der in der Ausgabe des Befehls „disk create“ angezeigten Datenträger-ID. Wenn gewünscht, aktualisieren Sie auch den Wert `mountPath`. Dies ist der Pfad, unter dem der Azure-Datenträger im Pod eingebunden wird. Geben Sie für Windows Server-Container (derzeit in der Vorschau in AKS) einen *mountPath* gemäß Windows-Pfadkonvention an, z. B. *D:* .
 
 ```yaml
 apiVersion: v1

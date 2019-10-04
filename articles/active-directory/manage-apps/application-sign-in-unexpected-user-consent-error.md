@@ -3,8 +3,8 @@ title: Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung | Micros
 description: Erläuterungen von Fehlern, die während des Vorgangs des Genehmigens einer Anwendung auftreten können, und Abhilfemöglichkeiten
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c01202e0d7d7ca0f37b89d5473f96873c52606
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210899"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65824941"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung
 
@@ -32,7 +32,7 @@ Viele Anwendungen, die in Azure Active Directory integriert sind, erfordern Bere
 Bestimmte Bedingungen müssen sein erfüllt, damit ein Benutzer die von einer Anwendung benötigten Berechtigungen genehmigt. Wenn diese Bedingungen nicht erfüllt sind, können die folgenden Fehler auftreten.
 
 ## <a name="requesting-not-authorized-permissions-error"></a>Anfordern nicht autorisierter Berechtigungen
-* **AADSTS90093:**&lt;Anzeigename_der_Client-App&gt; fordert mindestens eine Berechtigung an, für deren Erteilung Sie nicht autorisiert sind. Wenden Sie sich an einen Administrator, der diese Anwendung in Ihrem Auftrag genehmigen kann.
+* **AADSTS90093:** &lt;Anzeigename_der_Client-App&gt; fordert mindestens eine Berechtigung an, für deren Erteilung Sie nicht autorisiert sind. Wenden Sie sich an einen Administrator, der diese Anwendung in Ihrem Auftrag genehmigen kann.
 
 Dieser Fehler tritt auf, wenn ein Benutzer, der kein Unternehmensadministrator ist, versucht, eine Anwendung zu verwenden, die Berechtigungen anfordert, die nur ein Administrator erteilen kann. Dieser Fehler kann von einem Administrator behoben werden, indem der Zugriff auf die Anwendung im Auftrag der Organisation gewährt wird.
 
@@ -52,7 +52,7 @@ Dieser Fehler zeigt an, dass auf Serverseite ein vorübergehendes Dienstproblem 
 Wenden Sie sich an den Anwendungsentwickler.
 
 ##  <a name="resource-not-available-in-tenant-error"></a>Ressource im Mandanten nicht verfügbar
-* **AADSTS65005:**&lt;Anzeigename_der_Client-App&gt; fordert den Zugriff auf &lt;Anzeigename_der_Ressourcenanwendung&gt; an, die in &lt;Anzeigename_des_Mandanten&gt; Ihrer Organisation nicht verfügbar ist. 
+* **AADSTS65005:** &lt;Anzeigename_der_Client-App&gt; fordert den Zugriff auf &lt;Anzeigename_der_Ressourcenanwendung&gt; an, die in &lt;Anzeigename_des_Mandanten&gt; Ihrer Organisation nicht verfügbar ist. 
 
 Stellen Sie sicher, dass diese Ressource verfügbar ist, oder wenden Sie sich an einen Administrator von &lt;Anzeigename_des_Mandanten&gt;.
 

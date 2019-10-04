@@ -1,25 +1,18 @@
 ---
-title: Voraussetzungen für die Verwaltung von Konten im Cloud-Partnerportal – Azure Marketplace | Microsoft-Dokumentation
+title: Voraussetzungen für die Verwaltung von Konten im Cloud-Partnerportal | Azure Marketplace
 description: Voraussetzungen für die Verwaltung von Azure Marketplace-Konten im Cloud-Partnerportal.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.author: pbutlerm
-ms.openlocfilehash: c2733cd7f2460babaffdf049c5839389f61b31e9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 09bf8479921c9bd55b98e835a19ea995fa37e20b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794217"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720066"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Voraussetzungen für die Verwaltung von Konten im Cloud-Partnerportal 
 
@@ -28,14 +21,14 @@ Um das [Cloud-Partnerportal](https://cloudpartner.azure.com/) für jegliche Funk
 
 ## <a name="account-terms-and-guidelines"></a>Bestimmungen und Richtlinien für Konten
 
-Überprüfen Sie sorgfältig Ihre Rechte und Pflichten im Rahmen des [Microsoft-Servicevertrags](https://www.microsoft.com/servicesagreement) und der [Microsoft-Nutzungsbedingungen](https://www.microsoft.com/legal/intellectualproperty/copyright), bevor Sie ein Konto erstellen.  
+Überprüfen Sie sorgfältig Ihre Rechte und Pflichten im Rahmen des [Microsoft-Servicevertrags](https://www.microsoft.com/servicesagreement) und der [Microsoft-Nutzungsbedingungen](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright), bevor Sie ein Konto erstellen.  
 
-Wählen Sie den Kontonamen mit Bedacht aus.  Er stellt Ihre Organisation dar und sollte daher keine geschützten oder strittigen Wörter enthalten.  Microsoft verbietet beispielsweise die Verwendung seiner urheberrechtlich geschützten Begriffe wie z. B. „Azure“ und „Microsoft“ in Kontonamen.  Weitere Informationen finden Sie unter [Richtlinien für Azure Marketplace](../../guidelines.md).
+Wählen Sie den Kontonamen mit Bedacht aus.  Er stellt Ihre Organisation dar und sollte daher keine geschützten oder strittigen Wörter enthalten.  Microsoft verbietet beispielsweise die Verwendung seiner urheberrechtlich geschützten Begriffe wie z. B. „Azure“ und „Microsoft“ in Kontonamen.  Weitere Informationen finden Sie unter [Richtlinien für Azure Marketplace](https://docs.microsoft.com/azure/marketplace/guidelines).
 
 
 ## <a name="registration-steps"></a>Schritte für die Registrierung
 
-In der folgenden Tabelle sind die erforderlichen Schritte für die vollständige Registrierung als Microsoft Cloud-Herausgeber aufgeführt.  Vollständige Anweisungen finden Sie unter [Weg zum Cloud Marketplace-Herausgeber](../../become-publisher.md). 
+In der folgenden Tabelle sind die erforderlichen Schritte für die vollständige Registrierung als Microsoft Cloud-Herausgeber aufgeführt.  Vollständige Anweisungen finden Sie unter [Weg zum Cloud Marketplace-Herausgeber](https://docs.microsoft.com/azure/marketplace/become-publisher). 
 
 
 |                   Schritt                   |  Daraus resultierende Registrierung oder Ressource                     |

@@ -4,24 +4,23 @@ description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Open-So
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 7831e5e989835b2c9432dbd61a242584a7b6244d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 941a218dbda2c27a598e5a53f2b947184ee78085
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082941"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121217"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zu Open-Source-Technologien für Web-Apps in Azure | Microsoft-Dokumentation
 
@@ -37,7 +36,7 @@ So aktivieren Sie die PHP-Protokollierung
 2. Wählen Sie im obersten Menü **Debug Console** > **CMD** aus.
 3. Wählen Sie den Ordner **Site** aus.
 4. Wählen Sie den Ordner **wwwroot** aus.
-5. Klicken Sie auf das Symbol **+**, und wählen Sie **New File** (Neue Datei) aus.
+5. Klicken Sie auf das Symbol **+** , und wählen Sie **New File** (Neue Datei) aus.
 6. Legen Sie den Dateinamen auf **.user.ini** fest.
 7. Aktivieren Sie das Stiftsymbol neben **.user.ini**.
 8. Fügen Sie der Datei diesen Code hinzu: `log_errors=on`

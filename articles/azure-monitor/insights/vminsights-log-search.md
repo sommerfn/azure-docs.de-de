@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2019
+ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 12f8b3d9dd461dc5d09d76245aa02f0e1cefc343
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 23ce57add0d55ba5901e2f5fcf82b3279d349cdc
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188967"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66472575"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Abfragen von Protokollen aus Azure Monitor für VMs (Vorschauversion)
 Azure Monitor für VMs erfasst Leistungs- und Verbindungsmetriken, Inventurdaten von Computern und Prozessen sowie Informationen zum Integritätsstatus und leitet diese an den Log Analytics-Arbeitsbereich in Azure Monitor weiter.  Diese Daten stehen in Azure Monitor für [Abfragen](../../azure-monitor/log-query/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
@@ -43,37 +43,37 @@ Die folgenden Felder und Konventionen gelten sowohl für VMConnection als auch f
 
 - Computer: Vollqualifizierter Domänenname des berichtenden Computers 
 - AgentID: Eindeutiger Bezeichner für einen Computer mit dem Log Analytics-Agent  
-- Machine: Name der Azure Resource Manager-Ressource für den Computer, die von ServiceMap bereitgestellt wird. Das Format lautet *m-{GUID}*, wobei *GUID* der gleichen GUID wie AgentID entspricht.  
-- Prozess: Name der Azure Resource Manager-Ressource für den Prozess, die von ServiceMap bereitgestellt wird. Das Format lautet *p-{Hexadezimalzeichenfolge}*. Das Feld „Process“ ist innerhalb eines Computerbereichs eindeutig. Zum Erstellen einer eindeutigen Prozess-ID für mehrere Computer können Sie die Felder „Machine“ und „Process“ kombinieren. 
+- Machine: Name der Azure Resource Manager-Ressource für den Computer, die von ServiceMap bereitgestellt wird. Das Format lautet *m-{GUID}* , wobei *GUID* der gleichen GUID wie AgentID entspricht.  
+- Prozess: Name der Azure Resource Manager-Ressource für den Prozess, die von ServiceMap bereitgestellt wird. Das Format lautet *p-{Hexadezimalzeichenfolge}* . Das Feld „Process“ ist innerhalb eines Computerbereichs eindeutig. Zum Erstellen einer eindeutigen Prozess-ID für mehrere Computer können Sie die Felder „Machine“ und „Process“ kombinieren. 
 - ProcessName: Name der ausführbaren Datei für den Berichtsprozess
 - Alle IP-Adressen sind Zeichenfolgen im kanonischen IPv4-Format, z. B. *13.107.3.160* 
 
 Um Kosten und Komplexität im Zaum zu halten, stellen die Verbindungsdatensätze keine einzelnen physischen Netzwerkverbindungen dar. Mehrere physische Netzwerkverbindungen werden in einer logischen Verbindung gruppiert, die dann in der entsprechenden Tabelle wiedergegeben wird.  Das heißt, dass die Datensätze in der Tabelle *VMConnection* eine logische Gruppierung anstelle der beobachteten einzelnen physischen Verbindungen darstellen. Physische Netzwerkverbindungen, die während eines bestimmten einminütigen Intervalls den gleichen Wert für die folgenden Attribute aufweisen, werden in *VMConnection* zu einem einzelnen logischen Datensatz zusammengefasst. 
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 |:--|:--|
-|Richtung |Richtung der Verbindung, der Wert ist *inbound* oder *outbound* |
-|Computer |Der vollqualifizierte Domänenname des Computers |
+|Direction |Richtung der Verbindung, der Wert ist *inbound* oder *outbound* |
+|Machine |Der vollqualifizierte Domänenname des Computers |
 |Prozess |Identität des Prozesses oder Gruppe von Prozessen, die die Verbindung einleitet/akzeptiert |
 |SourceIp |IP-Adresse der Quelle |
 |DestinationIp |IP-Adresse des Ziels |
 |DestinationPort |Portnummer des Ziels |
-|Protokoll |Für die Verbindung verwendetes Protokoll.  Der Wert ist *tcp*. |
+|Protocol |Für die Verbindung verwendetes Protokoll.  Der Wert ist *tcp*. |
 
 Um dem Einfluss der Gruppierung Rechnung zu tragen, werden Informationen über die Anzahl der gruppierten physischen Verbindungen in den folgenden Eigenschaften des Datensatzes bereitgestellt:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 |:--|:--|
 |LinksEstablished |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums eingerichtet wurden |
 |LinksTerminated |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums beendet wurden |
 |LinksFailed |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums für ungültig erklärt wurden. Diese Informationen sind derzeit nur für ausgehende Verbindungen verfügbar. |
 |LinksLive |Die Anzahl der physischen Netzwerkverbindungen, die am Ende des Berichtszeitraums offen waren|
 
-#### <a name="metrics"></a>Metriken
+#### <a name="metrics"></a>metrics
 
 Über Metriken zur Verbindungsanzahl hinaus sind in den folgenden Eigenschaften des Datensatzes auch Informationen über das Volumen der gesendeten und empfangenen Daten für eine bestimmte logische Verbindung oder einen bestimmten Netzwerkport enthalten:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 |:--|:--|
 |BytesSent |Gesamtzahl der Bytes, die während des Berichtszeitraums gesendet wurden |
 |BytesReceived |Gesamtzahl der Bytes, die während des Berichtszeitraums empfangen wurden |
@@ -99,22 +99,22 @@ Der Einfachheit halber ist die IP-Adresse des Remoteendes einer Verbindung in de
 #### <a name="geolocation"></a>Geolocation
 *VMConnection* enthält außerdem in den folgenden Eigenschaften des Datensatzes Geolocationinformationen für das Remoteende jeder Verbindung: 
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 |:--|:--|
-|RemoteCountry |Der Name des Landes, in dem „RemoteIp“ gehostet ist.  Beispielsweise *USA* |
+|RemoteCountry |Der Name des Landes oder der Region, in dem bzw. der „RemoteIp“ gehostet ist.  Beispielsweise *USA* |
 |RemoteLatitude |Der Breitengrad der Geolocation. Beispielsweise *47,68* |
 |RemoteLongitude |Der Längengrad der Geolocation. Beispielsweise *-122,12* |
 
 #### <a name="malicious-ip"></a>Schädliche IP-Adressen
 Jede RemoteIp-Eigenschaft in der Tabelle *VMConnection* wird anhand einer Sammlung von IPs überprüft, die für schädliche Aktivitäten bekannt sind. Wenn die RemoteIp als bösartig identifiziert wurde, werden die folgenden Eigenschaften des Datensatzes aufgefüllt (sie sind leer, wenn die IP nicht als schädlich angesehen wird):
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 |:--|:--|
 |MaliciousIp |Die RemoteIp-Adresse |
 |IndicatorThreadType |„Bedrohungsindikator erkannt“ kann einen der folgenden Werte haben: *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Watchlist*.   |
-|BESCHREIBUNG |Beschreibung der beobachteten Bedrohung. |
+|Description |Beschreibung der beobachteten Bedrohung. |
 |TLPLevel |TLP-Stufe (Ampelprotokoll) ist einer der definierten Werte *White*, *Green*, *Amber*, *Red*. |
-|Zuverlässigkeit |Werte sind *0–100*. |
+|Confidence |Werte sind *0–100*. |
 |Severity |Werte sind *0–5*, wobei *5* am schwerwiegendsten und *0* überhaupt nicht schwerwiegend ist. Der Standardwert ist *3*.  |
 |FirstReportedDateTime |Die Uhrzeit, zu der der Anbieter den Indikator zum ersten Mal gemeldet hat. |
 |LastReportedDateTime |Die Uhrzeit, zu der der Indikator zum letzten Mal von Interflow beobachtet wurde. |
@@ -125,20 +125,18 @@ Jede RemoteIp-Eigenschaft in der Tabelle *VMConnection* wird anhand einer Sammlu
 ### <a name="ports"></a>Ports 
 Ports auf einem Computer, die aktiv eingehenden Datenverkehr akzeptieren oder Datenverkehr akzeptieren können und sich während des Berichtszeitraums im Leerlauf befinden, werden in die Tabelle „VMBoundPort“ eingetragen.  
 
-Standardmäßig werden keine Daten in diese Tabelle geschrieben. Senden Sie eine E-Mail, die Ihre Arbeitsbereich-ID und die Region Ihres Arbeitsbereichs enthält, an vminsights@microsoft.com, damit Daten in diese Tabelle geschrieben werden.   
-
 Jeder Datensatz in der Tabelle „VMBoundPort“ wird mit den folgenden Feldern definiert: 
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 |:--|:--|
 |Prozess | Die Identität eines Prozesses (oder von Gruppen von Prozessen) dem der Port zugeordnet ist|
 |IP | Die IP-Adresse des Ports (dies kann eine Platzhalter-IP-Adresse sein, z. B. *0.0.0.0*) |
 |Port |Die Portnummer |
-|Protokoll | Das Protokoll,  z. B. *TCP* oder *UDP* (derzeit wird nur *TCP* unterstützt)|
+|Protocol | Das Protokoll,  z. B. *TCP* oder *UDP* (derzeit wird nur *TCP* unterstützt)|
  
 Die Identität eines Ports ergibt aus den obigen fünf Feldern und wird in der Eigenschaft „PortId“ gespeichert. Diese Eigenschaft kann dazu verwendet werden, Datensätze für einen bestimmten Port für einen Zeitraum schnell zu finden. 
 
-#### <a name="metrics"></a>Metriken 
+#### <a name="metrics"></a>metrics 
 Portdatensätze umfassen Metriken, die die zugeordneten Verbindungen darstellen. Derzeit werden die folgenden Metriken gemeldet (die Details zu den einzelnen Metriken finden Sie im vorherigen Abschnitt): 
 
 - BytesSent und BytesReceived 
@@ -155,11 +153,11 @@ Einige wichtige Punkte sind zu beachten:
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL-Datensätze
 Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server mit dem Dependency-Agent. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 |:--|:--|
 | Type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
-| ResourceId | Der eindeutige Bezeichner für den Computer innerhalb des Arbeitsbereichs |
+| resourceId | Der eindeutige Bezeichner für den Computer innerhalb des Arbeitsbereichs |
 | ResourceName_s | Der eindeutige Bezeichner für den Computer innerhalb des Arbeitsbereichs |
 | ComputerName_s | Der vollqualifizierte Domänenname des Computers |
 | Ipv4Addresses_s | Eine Liste der IPv4-Adressen des Servers |
@@ -180,11 +178,11 @@ Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server
 ### <a name="servicemapprocesscl-type-records"></a>Datensätze des ServiceMapProcess_CL-Typs
 Datensätze des Typs *ServiceMapProcess_CL* enthalten Bestandsdaten für über TCP verbundene Prozesse auf Servern mit dem Dependency-Agent. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 |:--|:--|
 | Type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
-| ResourceId | Der eindeutige Bezeichner für den Prozess innerhalb des Arbeitsbereichs |
+| resourceId | Der eindeutige Bezeichner für den Prozess innerhalb des Arbeitsbereichs |
 | ResourceName_s | Der eindeutige Bezeichner für den Prozess auf dem Computer, auf dem er ausgeführt wird|
 | MachineResourceName_s | Der Ressourcenname des Computers |
 | ExecutableName_s | Der Name der ausführbaren Prozessdatei |
@@ -197,7 +195,7 @@ Datensätze des Typs *ServiceMapProcess_CL* enthalten Bestandsdaten für über T
 | ProductVersion_s | Die Produktversion |
 | FileVersion_s | Die Dateiversion |
 | CommandLine_s | Die Befehlszeile |
-| ExecutablePath _s | Der Pfad zur ausführbaren Datei |
+| ExecutablePath_s | Der Pfad zur ausführbaren Datei |
 | WorkingDirectory_s | Das Arbeitsverzeichnis |
 | UserName | Das Konto, unter dem der Prozess ausgeführt wird |
 | UserDomain | Die Domäne, unter der der Prozess ausgeführt wird |

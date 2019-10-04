@@ -2,74 +2,61 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/11/2018
+ms.date: 05/06/2019
 ms.author: wolfma
-ms.openlocfilehash: ef68d02f6aa23368962e08af7b35d2b81c0e80bb
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: d5a4b3a07854c2664de7ec60f3677b666798a9bd
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579801"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178381"
 ---
-### <a name="neural-voices"></a>Neuronale Stimmen
+### <a name="standard-and-neural-voices"></a>Standard- und neuronale Stimmen
 
-Neuronale Stimmen sind in diesen Regionen verfügbar:
+Verwenden Sie diese Tabelle, um die Verfügbarkeit von Standardstimmen und neuronalen Stimmen nach Region/Endpunkt zu ermitteln:
 
-| Region | Endpunkt |
-|--------|----------|
-| USA (Ost) | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Asien, Südosten | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Europa, Westen | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
-
-> [!IMPORTANT]
-> Die Sprachsynthesestimme (zh-CN, XiaoxiaoNeural) für Microsoft Server steht nur über den Endpunkt „Asien, Südosten“ zur Verfügung: https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1. Eine vollständige Liste der neuronalen Stimmen finden Sie unter [Sprachunterstützung](../articles/cognitive-services/speech-service/language-support.md).
-
-### <a name="standard-voices"></a>Standardstimmen
-
-Standardstimmen sind in diesen Regionen verfügbar:
-
-| Region | Endpunkt |
-|--------|----------|
-| Australien (Osten) | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Kanada, Mitte | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1 |
-| USA (Mitte) | https://centralus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Asien, Osten | https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| USA (Ost) | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| USA (Ost) 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Frankreich, Mitte | https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Indien, Mitte | https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Japan, Osten | https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Korea, Mitte | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1 |
-| USA Nord Mitte | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Nordeuropa | https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
-| USA (Mitte/Süden) | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Asien, Südosten | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
-| UK, Süden | https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1 |
-| Europa, Westen | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
-| USA (Westen) | https://westus.tts.speech.microsoft.com/cognitiveservices/v1 |
-| USA, Westen 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/v1 |
+| Region | Endpunkt | Standardstimmen | Neuronale Stimmen |
+|--------|----------|-----------------|---------------|
+| Australien (Osten) | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
+| Kanada, Mitte | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
+| USA (Mitte) | `https://centralus.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| Asien, Osten | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| USA (Ost) | `https://eastus.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
+| USA (Ost) 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| Frankreich, Mitte | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| Indien, Mitte | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
+| Japan, Osten | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| Korea, Mitte | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| USA Nord Mitte | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| Nordeuropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| USA Süd Mitte | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
+| Asien, Südosten | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
+| UK, Süden | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
+| Europa, Westen | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
+| USA (Westen) | `https://westus.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Nein |
+| USA, Westen 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/v1` | Ja | Ja |
 
 ### <a name="custom-voices"></a>Benutzerdefinierte Stimmen
 
-Wenn Sie einen benutzerdefinierten Voicefont erstellt haben, verwenden Sie anstelle der in diesen Listen aufgeführten Endpunkte den von Ihnen erstellten Endpunkt.
+Wenn Sie einen benutzerdefinierten Voicefont erstellt haben, verwenden Sie den von Ihnen erstellten Endpunkt. Sie können auch die unten aufgeführten Endpunkte verwenden und die `{deploymentId}` durch die Bereitstellungs-ID für Ihr Stimmmodell ersetzen.
 
 | Region | Endpunkt |
 |--------|----------|
-| Australien (Osten) | https://australiaeast.voice.speech.microsoft.com |
-| Kanada, Mitte | https://canadacentral.voice.speech.microsoft.com |
-| USA (Mitte) | https://centralus.voice.speech.microsoft.com |
-| Asien, Osten | https://eastasia.voice.speech.microsoft.com |
-| USA (Ost) | https://eastus.voice.speech.microsoft.com |
-| USA (Ost) 2 | https://eastus2.voice.speech.microsoft.com |
-| Frankreich, Mitte | https://francecentral.voice.speech.microsoft.com |
-| Indien, Mitte | https://centralindia.voice.speech.microsoft.com |
-| Japan, Osten | https://japaneast.voice.speech.microsoft.com |
-| Korea, Mitte | https://koreacentral.voice.speech.microsoft.com |
-| USA Nord Mitte | https://northcentralus.voice.speech.microsoft.com |
-| Nordeuropa | https://northeurope.voice.speech.microsoft.com |
-| USA (Mitte/Süden) | https://southcentralus.voice.speech.microsoft.com |
-| Asien, Südosten | https://southeastasia.voice.speech.microsoft.com |
-| UK, Süden | https://uksouth.voice.speech.microsoft.com |
-| Europa, Westen | https://westeurope.voice.speech.microsoft.com |
-| USA (Westen) | https://westus.voice.speech.microsoft.com |
-| USA, Westen 2 | https://westus2.voice.speech.microsoft.com |
+| Australien (Osten) | `https://australiaeast.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| Kanada, Mitte | `https://canadacentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| USA (Mitte) | `https://centralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| Asien, Osten | `https://eastasia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| USA (Ost) | `https://eastus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| USA (Ost) 2 | `https://eastus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| Frankreich, Mitte | `https://francecentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| Indien, Mitte | `https://centralindia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| Japan, Osten | `https://japaneast.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| Korea, Mitte | `https://koreacentral.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| USA Nord Mitte | `https://northcentralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| Nordeuropa | `https://northeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| USA (Mitte/Süden) | `https://southcentralus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| Asien, Südosten | `https://southeastasia.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| UK, Süden | `https://uksouth.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| Europa, Westen | `https://westeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| USA (Westen) | `https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |
+| USA, Westen 2 | `https://westus2.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId={deploymentId}` |

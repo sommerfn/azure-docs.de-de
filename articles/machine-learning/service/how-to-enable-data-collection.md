@@ -1,6 +1,6 @@
 ---
 title: Sammeln von Daten zu Ihren Produktionsmodellen
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Daten des Azure Machine Learning-Eingabemodells in einem Azure-Blobspeicher gesammelt werden.
 services: machine-learning
 ms.service: machine-learning
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 12/3/2018
+ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: a127a211157edb0b26d0495bc2ed05dd79323111
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d836b600a39b73f60c0847c5a9642f396fb70d17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842633"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002854"
 ---
 # <a name="collect-data-for-models-in-production"></a>Sammeln von Daten für Modelle in der Produktion
 
-In diesem Artikel erfahren Sie, wie Eingabemodelldaten aus den Azure Machine Learning Services gesammelt werden, die Sie im Azure Kubernetes-Cluster (AKS) in einem Azure-Blobspeicher bereitgestellt haben. 
+In diesem Artikel erfahren Sie, wie Eingabemodelldaten aus Azure Machine Learning gesammelt werden, die Sie im Azure Kubernetes-Cluster (AKS) in einem Azure-Blobspeicher bereitgestellt haben. 
 
 Nach der Aktivierung ermöglichen Ihnen diese Daten Folgendes:
-* Überwachen von Datenverschiebungen bei der Aufnahme von Produktionsdaten in das Modell
+* [Überwachen von Datenverschiebungen](how-to-monitor-data-drift.md) bei der Aufnahme von Produktionsdaten in das Modell
 
 * Entscheidungsfindung in Bezug auf das erneute Trainieren und Optimieren des Modells
 
@@ -50,9 +50,9 @@ Der Pfad zu den Ausgabedaten im Blob folgt dieser Syntax:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
-- Ein Arbeitsbereich des Azure Machine Learning Service, ein lokales Verzeichnis mit Ihren Skripts und das Azure Machine Learning SDK für Python müssen installiert sein. Informationen zum Erhalten dieser Voraussetzungen finden Sie im Dokument [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
+- Ein Azure Machine Learning-Arbeitsbereich, ein lokales Verzeichnis mit Ihren Skripts und das Azure Machine Learning SDK für Python müssen installiert sein. Informationen zum Erhalt dieser Voraussetzungen finden Sie im Dokument [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
 
 - Ein trainiertes Machine Learning-Modell, das im Azure Kubernetes Service (AKS) bereitgestellt werden soll. Wenn Sie keines besitzen, sehen Sie sich das Tutorial zum [Trainieren eines Imageklassifizierungsmodells](tutorial-train-models-with-aml.md) an.
 
@@ -61,7 +61,7 @@ Der Pfad zu den Ausgabedaten im Blob folgt dieser Syntax:
 - [Richten Sie Ihre Umgebung ein](how-to-configure-environment.md), und installieren Sie das [Überwachungs-SDK](https://aka.ms/aml-monitoring-sdk).
 
 ## <a name="enable-data-collection"></a>Aktivieren der Datensammlung
-Die Datensammlung kann ungeachtet des über den Azure Machine Learning-Dienst oder andere Tools bereitgestellten Modells aktiviert werden. 
+Die Datensammlung kann ungeachtet des über Azure Machine Learning oder andere Tools bereitgestellten Modells aktiviert werden. 
 
 Zum Aktivieren müssen Sie folgende Schritte ausführen:
 
@@ -144,6 +144,8 @@ Sie können die Datensammeln jederzeit beenden. Deaktivieren Sie die Datensammlu
 
   1. Klicken Sie auf **Aktualisieren**, um die Änderungen zu übernehmen.
 
+  Sie können auf diese Einstellungen auch über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com) zugreifen.
+
 + Option 2 – Deaktivieren der Datensammlung mithilfe von Python-Code:
 
   ```python 
@@ -172,7 +174,7 @@ Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
 
 ### <a name="analyzing-model-data-through-power-bi"></a>Analysieren von Modelldaten mit Power BI
 
-1. Laden Sie [Power BI Desktop](https://www.powerbi.com) herunter, und öffnen Sie die Anwendung.
+1. Laden Sie [Power BI Desktop](https://www.powerbi.com) herunter, und öffnen Sie diese Anwendung.
 
 1. Wählen Sie **Daten abrufen**, und klicken Sie auf [**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources).
 
@@ -218,7 +220,7 @@ Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
 
     [![Databricks-Tabelle](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
-1. Aktualisieren Sie den Speicherort Ihrer Daten. Beispiel: 
+1. Aktualisieren Sie den Speicherort Ihrer Daten. Beispiel:
 
     ```
     file_location = "wasbs://mycontainer@storageaccountname.blob.core.windows.net/modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/*/*/data.csv" 

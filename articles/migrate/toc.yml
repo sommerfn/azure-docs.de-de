@@ -1,103 +1,118 @@
-items:
 - name: Dokumentation zu Azure Migrate
   href: index.yml
 - name: Übersicht
   items:
-  - name: Informationen zu Azure Migrate
-    href: migrate-overview.md
+    - name: Informationen zu Azure Migrate
+      href: migrate-services-overview.md
+    - name: Neuigkeiten
+      href: whats-new.md
 - name: Lernprogramme
   items:
-  - name: Ermitteln und Bewerten virtueller VMware-Computer
-    href: tutorial-assessment-vmware.md
+    - name: Bewerten und Migrieren von virtuellen VMware-Computern
+      items:
+        - name: Vorbereiten von VMware auf die Bewertung und Migration
+          href: tutorial-prepare-vmware.md
+        - name: Bewerten von virtuellen VMware-Computern für die Migration
+          href: tutorial-assess-vmware.md
+        - name: Migrieren von virtuellen VMware-Computern
+          items:
+            - name: Informationen zu Migrationsoptionen für virtuelle VMware-Computer
+              href: server-migrate-overview.md
+            - name: Migrieren von virtuellen VMware-Computern ohne Agents
+              href: tutorial-migrate-vmware.md
+            - name: Migrieren von virtuellen VMware-Computern mit Agent-basierter Migration
+              href: tutorial-migrate-vmware-agent.md
+    - name: Bewerten und Migrieren von virtuellen Hyper-V-Computern
+      items:
+        - name: Vorbereiten von Hyper-V auf die Bewertung und Migration
+          href: tutorial-prepare-hyper-v.md
+        - name: Bewerten von virtuellen Hyper-V-Computern für die Migration
+          href: tutorial-assess-hyper-v.md
+        - name: Migrieren von virtuellen Hyper-V-Computern
+          href: tutorial-migrate-hyper-v.md
+    - name: Migrieren von physischen Servern und virtuellen Computern
+      href: tutorial-migrate-physical-virtual-machines.md
 - name: Konzepte
   items:
-  - name: Informationen zum Collector
-    href: concepts-collector.md
-  - name: Upgrades von Collectorversionen
-    href: concepts-collector-upgrade.md
-  - name: Bewertungsberechnungen
-    href: concepts-assessment-calculation.md
-  - name: Informationen zur Visualisierung von Abhängigkeiten
-    href: concepts-dependency-visualization.md
+    - name: Häufig gestellte Fragen
+      href: resources-faq.md
+    - name: Supportmatrizen
+      items:
+        - name: Unterstützungsmatrix für Azure Migrate
+          href: migrate-support-matrix.md
+        - name: Unterstützungsmatrix für die VMware-Bewertung und -Migration
+          href: migrate-support-matrix-vmware.md
+        - name: Unterstützungsmatrix für die Hyper-V-Bewertung und -Migration
+          href: migrate-support-matrix-hyper-v.md
+    - name: Hyper-V-Migrationsarchitektur
+      href: hyper-v-migration-architecture.md
+    - name: Agent-basierte Migrationsarchitektur
+      href: agent-based-migration-architecture.md
+    - name: Azure Migrate-Appliance
+      href: migrate-appliance.md
+    - name: Azure Migrate-Replikationsappliance
+      href: migrate-replication-appliance.md
+    - name: Bewährte Methoden für Bewertungen
+      href: best-practices-assessment.md
+    - name: Bewertungsübersicht
+      href: concepts-assessment-calculation.md
+    - name: Visualisierung von Abhängigkeiten
+      href: concepts-dependency-visualization.md
 - name: Anleitungen
   items:
-  - name: Bewährte Methoden für die Migration
-    items:
-    - name: Bewährte Methoden für Sicherheit und Verwaltung nach der Migration
-      href: migrate-best-practices-security-management.md
-    - name: Bewährte Methoden für Netzwerke nach der Migration
-      href: migrate-best-practices-networking.md
-    - name: Bewährte Methoden für Kostenermittlung und Größenanpassung nach der Migration
-      href: migrate-best-practices-costs.md
-  - name: Contoso-Migrationsserie
-    items:
-    - name: 1. Contoso – Migrationsübersicht
+    - name: Arbeiten mit einer vorherigen Version
+      href: migrate-v1.md
+    - name: Bereitstellen einer VMware-Appliance
+      href: how-to-set-up-appliance-vmware.md
+    - name: Bereitstellen einer Hyper-V-Appliance
+      href: how-to-set-up-appliance-hyper-v.md
+    - name: Erstmaliges Hinzufügen eines Tools
+      href: how-to-add-tool-first-time.md
+    - name: Hinzufügen von Bewertungstools
+      href: how-to-assess.md
+    - name: Gruppieren von Computern für die Bewertung
+      href: how-to-create-a-group.md
+    - name: Gruppieren von Computern mithilfe der Visualisierung von Abhängigkeiten
+      href: how-to-create-group-machine-dependencies.md
+    - name: Erstellen einer Bewertung
+      href: how-to-create-assessment.md
+    - name: "Bewerten einer SQL\_Server-Datenbank"
+      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json&view=sql-server-2017'
+    - name: Anpassen einer Bewertung
+      href: how-to-modify-assessment.md
+    - name: Hinzufügen von Migrationstools
+      href: how-to-migrate.md
+    - name: Skalieren der Bewertung und Migration
+      items:
+        - name: Bewerten einer großen Anzahl von virtuellen VMware-Computern
+          href: scale-vmware-assessment.md
+        - name: Bewerten einer großen Anzahl von virtuellen Hyper-V-Computern
+          href: scale-hyper-v-assessment.md
+        - name: Automatisieren der Migration zahlreicher virtueller Computer
+          href: how-to-migrate-at-scale.md
+    - name: 'Migrationsbeispiele: Contoso-Serie'
       href: contoso-migration-overview.md
-    - name: 2. Contoso – Bereitstellen einer Azure-Infrastruktur
-      href: contoso-migration-infrastructure.md
-    - name: 3. Contoso – Bewerten der lokalen Ressourcen für die Migration zu Azure
-      href: contoso-migration-assessment.md
-    - name: 4. Contoso – Rehosten einer App auf virtuellen Azure-Computern und verwalteten Azure SQL-Datenbank-Instanzen
-      href: contoso-migration-rehost-vm-sql-managed-instance.md
-    - name: 5. Contoso – Rehosten einer App auf virtuellen Azure-Computern
-      href: contoso-migration-rehost-vm.md
-    - name: 6. Contoso – Rehosten einer App auf virtuellen Azure-Computern und in Azure SQL Server-AlwaysOn-Verfügbarkeitsgruppen
-      href: contoso-migration-rehost-vm-sql-ag.md
-    - name: 7. Contoso – Rehosten einer Linux-App auf virtuellen Azure-Computern
-      href: contoso-migration-rehost-linux-vm.md
-    - name: 8. Contoso – Rehosten einer Linux-App auf virtuellen Azure-Computern und Azure MySQL
-      href: contoso-migration-rehost-linux-vm-mysql.md
-    - name: 9. Contoso – Umgestalten einer App in Azure-Web-Apps und Azure SQL-Datenbank
-      href: contoso-migration-refactor-web-app-sql.md
-    - name: 10. Contoso – Umgestalten einer Linux-App in Azure-Web-Apps und Azure MySQL
-      href: contoso-migration-refactor-linux-app-service-mysql.md
-    - name: 11. Contoso – Migrieren von TFS zu Azure DevOps Services
-      href: contoso-migration-tfs-vsts.md
-    - name: 12. Contoso – Überarbeiten einer App in Azure Containers und Azure SQL-Datenbank
-      href: contoso-migration-rearchitect-container-sql.md
-    - name: 13. Contoso – Neuerstellung einer App in Azure
-      href: contoso-migration-rebuild.md
-    - name: 14. Contoso – Skalieren einer Migration
-      href: contoso-migration-scale.md
-  - name: Erkunden und Bewerten einer großen Umgebung
-    href: how-to-scale-assessment.md
-  - name: Gruppieren von Computern
-    href: how-to-create-a-group.md
-  - name: Gruppieren von Computern mithilfe von Computerabhängigkeiten
-    href: how-to-create-group-machine-dependencies.md
-  - name: Einschränken einer Gruppe mithilfe von Gruppenabhängigkeiten
-    href: how-to-create-group-dependencies.md
-  - name: Anpassen einer Bewertung
-    href: how-to-modify-assessment.md
-  - name: Migrieren von Computern nach der Bewertung
-    href: how-to-get-migration-tool.md
-  - name: Automatisieren der Migration zahlreicher virtueller Computer
-    href: how-to-migrate-at-scale.md
-  - name: Problembehandlung für Azure Migrate
-    href: troubleshooting-general.md
+- name: Problembehandlung
+  items:
+    - name: Problembehandlung für Azure Migrate
+      href: troubleshooting-general.md
 - name: Ressourcen
   items:
-  - name: Häufig gestellte Fragen
-    href: resources-faq.md
-  - name: REST-API
-    href: https://docs.microsoft.com/rest/api/migrate/
-  - name: Resource Manager-Vorlage
-    href: /azure/templates/microsoft.migrate/allversions
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/azure-migrate/
-  - name: UserVoice
-    href: https://aka.ms/AzureMigrateUservoice
-  - name: Forum
-    href: https://aka.ms/AzureMigrateForum
-  - name: Blog
-    href: https://azure.microsoft.com/blog/tag/azure-migrate/
-  - name: Azure Migrate
-    href: https://azure.microsoft.com/migrate
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: d07d8e94f15dc6ba549d96c5950931963e5bbfc9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57837657"
+    - name: Migration im Cloud Adoption Framework
+      href: 'https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/index'
+    - name: REST-API
+      href: 'https://docs.microsoft.com/rest/api/migrate/'
+    - name: Resource Manager-Vorlage
+      href: /azure/templates/microsoft.migrate/allversions
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/azure-migrate/'
+    - name: UserVoice
+      href: 'https://aka.ms/AzureMigrateUservoice'
+    - name: Forum
+      href: 'https://aka.ms/AzureMigrateForum'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/tag/azure-migrate/'
+    - name: Azure Migrate
+      href: 'https://azure.microsoft.com/migrate'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'

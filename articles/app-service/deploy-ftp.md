@@ -10,17 +10,17 @@ ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2018
-ms.author: cephalin;dariac
+ms.date: 09/18/2019
+ms.author: cephalin
+ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6e8a6820b3cf3031f11ab04d9baf4a7888491c81
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858876"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098072"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Bereitstellen der App in Azure App Service mithilfe von FTP/S
 
@@ -55,7 +55,7 @@ Es wird empfohlen, **App-Anmeldeinformationen** für die Bereitstellung in Ihrer
 ## <a name="deploy-files-to-azure"></a>Bereitstellen von Dateien in Azure
 
 1. Verwenden Sie in Ihrem FTP-Client (z.B. [Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/) oder [WinSCP](https://winscp.net/index.php)) die gesammelten Verbindungsinformationen, um eine Verbindung mit Ihrer App herzustellen.
-2. Kopieren Sie Ihre Dateien und die entsprechende Verzeichnisstruktur in das Verzeichnis [**/site/wwwroot**](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) in Azure (bzw. für WebJobs in das Verzeichnis **/site/wwwroot/App_Data/Jobs/**).
+2. Kopieren Sie Ihre Dateien und die entsprechende Verzeichnisstruktur in das Verzeichnis [ **/site/wwwroot**](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) in Azure (bzw. für WebJobs in das Verzeichnis **/site/wwwroot/App_Data/Jobs/** ).
 3. Navigieren Sie zur URL Ihrer App, um sicherzustellen, dass die Anwendung richtig ausgeführt wird. 
 
 > [!NOTE] 
@@ -72,9 +72,9 @@ Es wird empfohlen, **App-Anmeldeinformationen** für die Bereitstellung in Ihrer
 
 Aus Sicherheitsgründen sollten Sie nur FTP über SSL zulassen. Sie können auch FTP und FTPS deaktivieren, wenn Sie keine FTP-Bereitstellung verwenden.
 
-Wählen Sie auf der Ressourcenseite Ihrer App im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich **App-Einstellungen** aus.
+Wählen Sie auf der Ressourcenseite Ihrer App im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich **Konfiguration** > **Allgemeine Einstellungen** aus.
 
-Um unverschlüsselte FTP-Verbindungen zu deaktivieren, aktivieren Sie **Nur FTPS**. Um FTP und FTPS vollständig zu deaktivieren, wählen Sie **Deaktivieren** aus. Klicken Sie abschließend auf **Speichern**. Bei Verwendung von **Nur FTPS** müssen Sie die Verwendung von TLS 1.2 oder höher erzwingen, indem Sie zum Blatt mit den **SSL-Einstellungen** Ihrer Web-App navigieren. TLS 1.0 und 1.1 werden für **Nur FTPS** nicht unterstützt.
+Um unverschlüsselte FTP-Verbindungen zu deaktivieren, aktivieren Sie **Nur FTPS** unter **FTP-Zustand**. Um FTP und FTPS vollständig zu deaktivieren, wählen Sie **Deaktiviert** aus. Klicken Sie abschließend auf **Speichern**. Bei Verwendung von **Nur FTPS** müssen Sie die Verwendung von TLS 1.2 oder höher erzwingen, indem Sie zum Blatt mit den **TLS/SSL-Einstellungen** Ihrer Web-App navigieren. TLS 1.0 und 1.1 werden für **Nur FTPS** nicht unterstützt.
 
 ![Deaktivieren von FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 

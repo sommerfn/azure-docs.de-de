@@ -4,24 +4,23 @@ description: In diesem Tutorial erfahren Sie mehr über die Funktionen im Azure 
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b4c484f3dd118a19291741b071432b09894e836c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 0ac5c95fa51ca5032f5d3e057af2064f872ea15c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593300"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081707"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Tutorial: Verwenden von Azure Security Center zum Überwachen virtueller Linux-Computer
 
@@ -72,7 +71,7 @@ So richten Sie eine Sicherheitsrichtlinie für ein gesamtes Abonnement ein:
 
 ## <a name="view-vm-configuration-health"></a>Anzeigen der Integrität der VM-Konfiguration
 
-Nachdem Sie die Datensammlung aktiviert und eine Sicherheitsrichtlinie festgelegt haben, beginnt Security Center damit, Warnungen und Empfehlungen anzuzeigen. Wenn weitere VMs bereitgestellt werden, wird auf diesen der Datensammlungs-Agent installiert. Security Center sammelt dann auch Daten für die neuen virtuellen Computer. Ausführliche Informationen zur Integrität der VM-Konfiguration finden Sie unter [Schützen von virtuellen Computern in Security Center](../../security-center/security-center-virtual-machine-recommendations.md). 
+Nachdem Sie die Datensammlung aktiviert und eine Sicherheitsrichtlinie festgelegt haben, beginnt Security Center damit, Warnungen und Empfehlungen anzuzeigen. Wenn weitere VMs bereitgestellt werden, wird auf diesen der Datensammlungs-Agent installiert. Security Center sammelt dann auch Daten für die neuen virtuellen Computer. Ausführliche Informationen zur Integrität der VM-Konfiguration finden Sie unter [Schützen von virtuellen Computern in Security Center](../../security-center/security-center-virtual-machine-protection.md). 
 
 Bei der Datensammlung wird die Ressourcenintegrität für jede VM und die zugehörige Azure-Ressource aggregiert. Die Informationen werden in einem übersichtlichen Diagramm dargestellt. 
 
@@ -104,7 +103,7 @@ Nachdem Empfehlungen umgesetzt wurden, werden sie als gelöst markiert.
 
 ## <a name="view-detected-threats"></a>Anzeigen erkannter Bedrohungen
 
-Neben den Empfehlungen zur Ressourcenkonfiguration bietet Security Center auch Warnungen zur Bedrohungserkennung. Das Sicherheitswarnfeature aggregiert die von den einzelnen VMs gesammelten Daten, Azure-Netzwerkprotokolle und verbundenen Partnerlösungen, um Sicherheitsrisiken für Azure-Ressourcen zu erkennen. Ausführliche Informationen zu Funktionen der Security Center-Bedrohungserkennung finden Sie unter [Azure Security Center-Erkennungsfunktionen](../../security-center/security-center-detection-capabilities.md).
+Neben den Empfehlungen zur Ressourcenkonfiguration bietet Security Center auch Warnungen zur Bedrohungserkennung. Das Sicherheitswarnfeature aggregiert die von den einzelnen VMs gesammelten Daten, Azure-Netzwerkprotokolle und verbundenen Partnerlösungen, um Sicherheitsrisiken für Azure-Ressourcen zu erkennen. Ausführliche Informationen zu Funktionen der Security Center-Bedrohungserkennung finden Sie unter [Sicherheitswarnungen in Azure Security Center](../../security-center/security-center-alerts-overview.md#detect-threats).
 
 Für das Sicherheitswarnfeature muss der Security Center-Tarif von *Free* auf *Standard* erhöht werden. Sie können eine **kostenlose Testversion** nutzen, wenn Sie auf diesen höheren Tarif umstellen. 
 

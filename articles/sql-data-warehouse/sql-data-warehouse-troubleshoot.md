@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 12/04/2018
+ms.date: 7/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d220922f17f6727acdbfcd5c2feabac6fc2b88d4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6a6fdf6e63bf8c063f8dd6f23ae380e9ce7b98d
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010588"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575509"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Problembehandlung bei Azure SQL Data Warehouse
 Dieser Artikel enthält allgemeine Fragen zur Problembehandlung.
@@ -23,42 +23,37 @@ Dieser Artikel enthält allgemeine Fragen zur Problembehandlung.
 ## <a name="connecting"></a>Herstellen einer Verbindung
 | Problem                                                        | Lösung                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Fehler bei der Anmeldung für den Benutzer 'NT-AUTORITÄT\ANONYME ANMELDUNG'. (Microsoft SQL Server, Fehler: 18456) | Dieser Fehler tritt auf, wenn ein AAD-Benutzer versucht, eine Verbindung mit der Masterdatenbank herzustellen, aber nicht über einen Masterdatenbank-Benutzer verfügt.  Zum Beheben dieses Problems geben Sie entweder das SQL Data Warehouse an, mit dem Sie gerade eine Verbindung herstellen möchten, oder fügen Sie den Benutzer der Masterdatenbank hinzu.  Weitere Informationen finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse][Security overview]. |
-| Der Serverprinzipal „MeinBenutzername“ kann unter dem aktuellen Sicherheitskontext nicht auf die Datenbank „Master“ zugreifen. Standardbenutzerdatenbank kann nicht geöffnet werden. Anmeldefehler. Fehler bei der Anmeldung für den Benutzer 'MeinBenutzername'. (Microsoft SQL Server, Fehler: 916) | Dieser Fehler tritt auf, wenn ein AAD-Benutzer versucht, eine Verbindung mit der Masterdatenbank herzustellen, aber nicht über einen Masterdatenbank-Benutzer verfügt.  Zum Beheben dieses Problems geben Sie entweder das SQL Data Warehouse an, mit dem Sie gerade eine Verbindung herstellen möchten, oder fügen Sie den Benutzer der Masterdatenbank hinzu.  Weitere Informationen finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse][Security overview]. |
-| CTAIP-Fehler                                                  | Dieser Fehler kann auftreten, wenn zwar eine Anmeldung für die SQL Server-Masterdatenbank erstellt wurde, dies jedoch in der SQL Data Warehouse-Datenbank unterlassen wurde.  Lesen Sie in diesem Fall den Artikel [Sichern einer Datenbank in SQL Data Warehouse][Security overview].  In diesem Artikel wird erläutert, wie Sie zunächst eine Anmeldung und einen Benutzer für die Masterdatenbank erstellen und anschließend in der SQL Data Warehouse-Datenbank einen Benutzer erstellen. |
-| Von der Firewall blockiert                                          | Azure SQL-Datenbanken sind durch Firewalls auf Server- und Datenbankebene geschützt, um sicherzustellen, dass nur bekannte IP-Adressen Zugriff auf eine Datenbank haben. Firewalls sind standardmäßig sicher. Sie müssen daher eine IP-Adresse oder einen Adressbereich explizit aktivieren, bevor Sie eine Verbindung herstellen können.  Führen Sie die Schritte aus dem Abschnitt [Erstellen einer Firewallregel auf Serverebene im Azure-Portal][Configure server firewall access for your client IP] der [Bereitstellungsanweisungen][Provisioning instructions] aus, um Ihre Firewall für den Zugriff zu konfigurieren. |
-| Verbindung mit Tool oder Treiber kann nicht hergestellt werden                           | SQL Data Warehouse empfiehlt, zum Abfragen von Daten [SSMS][SSMS], [SSDT für Visual Studio][SSDT for Visual Studio] oder [sqlcmd][sqlcmd] zu verwenden. Weitere Informationen zu Treibern und zum Herstellen einer Verbindung mit SQL Data Warehouse finden Sie in den Artikeln [Treiber für Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] und [Verbinden mit Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse]. |
+| Fehler bei der Anmeldung für den Benutzer 'NT-AUTORITÄT\ANONYME ANMELDUNG'. (Microsoft SQL Server, Fehler: 18456) | Dieser Fehler tritt auf, wenn ein AAD-Benutzer versucht, eine Verbindung mit der Masterdatenbank herzustellen, aber nicht über einen Masterdatenbank-Benutzer verfügt.  Zum Beheben dieses Problems geben Sie entweder das SQL Data Warehouse an, mit dem Sie gerade eine Verbindung herstellen möchten, oder fügen Sie den Benutzer der Masterdatenbank hinzu.  Weitere Informationen finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse][Security overview] . |
+| Der Serverprinzipal „MeinBenutzername“ kann unter dem aktuellen Sicherheitskontext nicht auf die Datenbank „Master“ zugreifen. Standardbenutzerdatenbank kann nicht geöffnet werden. Anmeldefehler. Fehler bei der Anmeldung für den Benutzer 'MeinBenutzername'. (Microsoft SQL Server, Fehler: 916) | Dieser Fehler tritt auf, wenn ein AAD-Benutzer versucht, eine Verbindung mit der Masterdatenbank herzustellen, aber nicht über einen Masterdatenbank-Benutzer verfügt.  Zum Beheben dieses Problems geben Sie entweder das SQL Data Warehouse an, mit dem Sie gerade eine Verbindung herstellen möchten, oder fügen Sie den Benutzer der Masterdatenbank hinzu.  Weitere Informationen finden Sie im Artikel [Sichern einer Datenbank in SQL Data Warehouse][Security overview] . |
+| CTAIP-Fehler                                                  | Dieser Fehler kann auftreten, wenn zwar eine Anmeldung für die SQL Server-Masterdatenbank erstellt wurde, dies jedoch in der SQL Data Warehouse-Datenbank unterlassen wurde.  Lesen Sie den [Übersichtsartikel zur Sicherheit][Security overview] , wenn dieser Fehler auftritt.  In diesem Artikel wird erläutert, wie Sie zunächst eine Anmeldung und einen Benutzer für die Masterdatenbank erstellen und anschließend in der SQL Data Warehouse-Datenbank einen Benutzer erstellen. |
+| Von der Firewall blockiert                                          | Azure SQL-Datenbanken sind durch Firewalls auf Server- und Datenbankebene geschützt, um sicherzustellen, dass nur bekannte IP-Adressen Zugriff auf eine Datenbank haben. Firewalls sind standardmäßig sicher. Sie müssen daher eine IP-Adresse oder einen Adressbereich explizit aktivieren, bevor Sie eine Verbindung herstellen können.  Um Ihre Firewall für den Zugriff zu konfigurieren, führen Sie die in den [Bereitstellungsanweisungen][Provisioning instructions] beschriebenen Schritte zum [Konfigurieren des Serverfirewallzugriffs für Ihre Client-IP][Configure server firewall access for your client IP] aus. |
+| Verbindung mit Tool oder Treiber kann nicht hergestellt werden                           | SQL Data Warehouse empfiehlt die Verwendung von [SSMS][SSMS], [SSDT für Visual Studio][SSDT for Visual Studio] oder [sqlcmd][sqlcmd] zum Abfragen von Daten. Weitere Informationen zu Treibern und zum Herstellen einer Verbindung mit SQL Data Warehouse finden Sie in den Artikeln [Treiber für Azure SQL Data Warehouse][Drivers for Azure SQL Data Warehouse] und [Verbinden mit Azure SQL Data Warehouse][Connect to Azure SQL Data Warehouse]. |
 
 ## <a name="tools"></a>Tools
 | Problem                                                        | Lösung                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| In Visual Studio-Objekt-Explorer fehlen AAD-Benutzer           | Dies ist ein bekanntes Problem.  Sie können die Benutzer in [ys.database_principals][sys.database_principals] anzeigen, um dieses Problem zu umgehen.  Weitere Informationen zur Verwendung von Azure Active Directory mit SQL Data Warehouse finden Sie unter [Authentifizierung in Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse]. |
+| In Visual Studio-Objekt-Explorer fehlen AAD-Benutzer           | Dies ist ein bekanntes Problem.  Sie können die Benutzer in [sys.database_principals][sys.database_principals] anzeigen, um dieses Problem zu umgehen.  Weitere Informationen zur Verwendung von Azure Active Directory mit SQL Data Warehouse finden Sie unter [Authentifizierung in Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] . |
 | Manuelle, über den Assistenten für die Skripterstellung erstellte Skripts oder über SSMS hergestellte Verbindungen sind langsam, reagieren nicht mehr oder erzeugen Fehler | Vergewissern Sie sich, dass Benutzer in der Masterdatenbank erstellt wurden. Stellen Sie zudem in den Skriptoptionen sicher, dass die Engine-Edition auf „Microsoft Azure SQL Data Warehouse Edition“ und der Engine-Typ auf „Microsoft Azure SQL-Datenbank“ festgelegt ist. |
-| Fehler beim Generieren von Skripts in SSMS                             | Beim Generieren von Skripts für SQL Data Warehouse tritt ein Fehler auf, wenn die Option „Generate script for dependent objects“ (Skript für abhängige Objekte generieren) auf TRUE festgelegt ist. Zum Umgehen dieses Problems müssen Benutzer manuell zu „Extras -> Optionen -> SQL Server-Objekt-Explorer -> Generate script for dependent objects (Skript für abhängige Objekte generieren)“ wechseln und diese Option auf FALSE festlegen. |
+| Fehler beim Generieren von Skripts in SSMS                               | Beim Generieren von Skripts für SQL Data Warehouse tritt ein Fehler auf, wenn die Option „Generate script for dependent objects“ (Skript für abhängige Objekte generieren) auf TRUE festgelegt ist. Zum Umgehen dieses Problems müssen Benutzer manuell zu „Extras -> Optionen -> SQL Server-Objekt-Explorer -> Generate script for dependent objects (Skript für abhängige Objekte generieren)“ wechseln und diese Option auf FALSE festlegen. |
 
 ## <a name="performance"></a>Leistung
 | Problem                                                        | Lösung                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Behandlung von Problemen mit der Abfrageleistung                            | Wenn Sie die Problembehandlung für eine bestimmte Abfrage durchführen möchten, sollten Sie sich zunächst über das [Untersuchen der Ausführung von Abfragen][Learning how to monitor your queries] informieren. |
-| Schlechte Abfrageleistung und Planung ist häufig das Ergebnis fehlender Statistiken | Die häufigste Ursache für schlechte Leistung ist das Fehlen von Statistiken für Ihre Tabellen.  Ausführliche Informationen dazu, wie Sie Statistiken erstellen und warum sie für die Leistung wichtig sind, finden Sie unter [Verwalten von Statistiken für Tabellen in SQL Data Warehouse][Statistics]. |
-| Geringe Parallelität/Abfragen in der Warteschlange                             | Das Verständnis der [Workloadverwaltung][Workload management] ist wichtig zur Abwägung von Speicherbelegung und Parallelität. |
+| Behandlung von Problemen mit der Abfrageleistung                            | Wenn Sie die Problembehandlung für eine bestimmte Abfrage durchführen möchten, sollten Sie sich zunächst über das [Untersuchen der Ausführung von Abfragen][Learning how to monitor your queries]informieren. |
+| Schlechte Abfrageleistung und Planung ist häufig das Ergebnis fehlender Statistiken | Die häufigste Ursache für schlechte Leistung ist das Fehlen von Statistiken für Ihre Tabellen.  Ausführliche Informationen dazu, wie Sie Statistiken erstellen und warum sie für die Leistung wichtig sind, finden Sie unter [Tabellenstatistik in Azure SQL Data Warehouse][Statistics]. |
+| Geringe Parallelität/Abfragen in der Warteschlange                             | Das Verständnis der [Workloadverwaltung][Workload management] ist wichtig, damit Sie wissen, wie Sie die Speicherbelegung und die Parallelität abwägen sollen. |
 | Implementieren von bewährten Methoden                              | Wenn Sie die Leistung bei Ihren Abfragen verbessern möchten, ist der Artikel [Bewährte Methoden für SQL Data Warehouse][SQL Data Warehouse best practices] ein idealer Ausgangspunkt. |
-| Verbessern der Leistung mit der Skalierung                      | Mitunter besteht der Weg zum Verbessern der Leistung einfach darin, mehr Computeleistung für Abfragen zur Verfügung zu stellen, indem Sie [SQL Data Warehouse skalieren][Scaling your SQL Data Warehouse]. |
-| Schlechte Leistung aufgrund von schlechter Indexqualität     | Es kann vorkommen, dass sich Abfragen verlangsamen, da eine [schlechte Qualität der Columnstore-Indizes][Poor columnstore index quality] vorliegt.  Weitere Informationen finden Sie unter [Neuerstellen von Indizes zur Verbesserung der Segmentqualität][Rebuild indexes to improve segment quality]. |
+| Verbessern der Leistung mit der Skalierung                      | Mitunter besteht der Weg zum Verbessern der Leistung einfach darin, den Abfragen mehr Computeleistung hinzuzufügen, indem Sie Ihr [SQL Data Warehouse skalieren][Scaling your SQL Data Warehouse]. |
+| Schlechte Leistung aufgrund von schlechter Indexqualität     | Es kann vorkommen, dass sich Abfragen aufgrund der [schlechten Qualität des Columnstore-Index][Poor columnstore index quality] verlangsamen.  Weitere Informationen finden Sie unter [Rebuild indexes to improve segment quality][Rebuild indexes to improve segment quality](Neuerstellen von Indizes zum Verbessern der Segmentqualität). |
 
 ## <a name="system-management"></a>Systemverwaltung
 | Problem                                                        | Lösung                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Msg 40847: Der Vorgang konnte nicht ausgeführt werden, da der Server das zulässige Datenbanktransaktionseinheit-Kontingent von 45.000 überschreiten würde. | Reduzieren Sie entweder die [DWU][DWU] der Datenbank, die Sie erstellen möchten, oder [fordern Sie eine Erhöhung des Kontingents an][request a quota increase]. |
-| Untersuchen der Speicherauslastung                              | Informationen zu den Grundlagen der Speicherauslastung des Systems finden Sie unter [Tabellengrößen][Table sizes]. |
-| Hilfe beim Verwalten von Tabellen                                    | Hilfe zur Verwaltung von Tabellen finden Sie in der [Übersicht über Tabellen][Overview].  Dieser Artikel enthält auch Links zu ausführlicheren Themen. Hierzu zählen beispielsweise [Tabellendatentypen][Data types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition], [Verwalten von Tabellenstatistiken][Statistics] und [Temporäre Tabellen][Temporary]. |
+| Untersuchen der Speicherauslastung                              | Informationen zu den Grundlagen der Speicherauslastung des Systems finden Sie unter [Tabellengrößen][Table sizes] . |
+| Hilfe beim Verwalten von Tabellen                                    | Hilfe zur Verwaltung von Tabellen finden Sie in der [Übersicht über Tabellen][Overview].  Dieser Artikel enthält auch Links zu ausführlicheren Themen wie [Tabellendatentypen][Data types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition], [Verwalten von Tabellenstatistiken][Statistics] und [Temporäre Tabellen][Temporary]. |
 | Die Statusanzeige für Transparent Data Encryption (TDE) wird im Azure-Portal nicht aktualisiert | Sie können den Status von TDE über [PowerShell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) überprüfen. |
 
-## <a name="polybase"></a>PolyBase
-| Problem                                           | Lösung                                                   |
-| :---------------------------------------------- | :----------------------------------------------------------- |
-| Fehler beim Laden aufgrund von umfangreichen Zeilen                | Umfangreiche Zeilen werden für PolyBase derzeit nicht unterstützt.  Dies bedeutet, dass keine externen Tabellen zum Laden der Daten verwendet werden können, wenn die Tabelle VARCHAR(MAX), NVARCHAR(MAX) oder VARBINARY(MAX) enthält.  Ladevorgänge für umfangreiche Zeilen werden derzeit nur über Azure Data Factory (mit BCP), Azure Stream Analytics, SSIS, BCP oder die SQLBulkCopy-.NET-Klasse unterstützt. Die PolyBase-Unterstützung für umfangreiche Zeilen wird in einer zukünftigen Version hinzugefügt. |
-| Fehler beim BCP-Ladevorgang einer Tabelle mit MAX-Datentyp | Es besteht das folgende bekannte Problem: VARCHAR(MAX), NVARCHAR(MAX) oder VARBINARY(MAX) müssen in manchen Szenarien am Ende der Tabelle angeordnet werden.  Versuchen Sie, die MAX-Spalten an das Ende der Tabelle zu verschieben. |
 
 ## <a name="differences-from-sql-database"></a>Unterschiede zu SQL-Datenbank
 | Problem                                 | Lösung                                                   |
@@ -68,7 +63,7 @@ Dieser Artikel enthält allgemeine Fragen zur Problembehandlung.
 | DELETE- und UPDATE-Einschränkungen         | Siehe [UPDATE-Problemumgehungen][UPDATE workarounds], [DELETE-Problemumgehungen][DELETE workarounds] und [Umgehen von nicht unterstützten Funktionen mit CTAS][Using CTAS to work around unsupported UPDATE and DELETE syntax]. |
 | MERGE-Anweisung wird nicht unterstützt      | Siehe [MERGE-Problemumgehungen][MERGE workarounds].                  |
 | Einschränkungen für gespeicherte Prozeduren          | In „Gespeicherte Prozeduren in SQL Data Warehouse“ werden unter [Einschränkungen][Stored procedure limitations] einige Einschränkungen für gespeicherte Prozeduren beschrieben. |
-| UDFs unterstützen keine SELECT-Anweisungen | Dies ist eine aktuelle Beschränkung unserer benutzerdefinierten Funktionen (User-Defined Functions, UDFs).  Informationen zur unterstützten Syntax finden Sie unter der [CREATE-FUNKTION][CREATE FUNCTION]. |
+| UDFs unterstützen keine SELECT-Anweisungen | Dies ist eine aktuelle Beschränkung unserer benutzerdefinierten Funktionen (User-Defined Functions, UDFs).  Informationen zur unterstützten Syntax finden Sie unter [CREATE FUNCTION][CREATE FUNCTION] . |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Für weitere Hilfe bei der Suche nach einer Lösung für Ihr Problem, stehen Ihnen hier weitere Ressourcen zur Verfügung.
@@ -111,7 +106,7 @@ Für weitere Hilfe bei der Suche nach einer Lösung für Ihr Problem, stehen Ihn
 [Poor columnstore index quality]: sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
 [Rebuild indexes to improve segment quality]: sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
 [Workload management]: resource-classes-for-workload-management.md
-[Using CTAS to work around unsupported UPDATE and DELETE syntax]: sql-data-warehouse-develop-ctas.md#using-ctas-to-work-around-unsupported-features
+[Using CTAS to work around unsupported UPDATE and DELETE syntax]: sql-data-warehouse-develop-ctas.md
 [UPDATE workarounds]: sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
 [DELETE workarounds]: sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements
 [MERGE workarounds]: sql-data-warehouse-develop-ctas.md#replace-merge-statements
@@ -132,3 +127,4 @@ Für weitere Hilfe bei der Suche nach einer Lösung für Ihr Problem, stehen Ihn
 [Stack Overflow-Forum]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+[Databricks]: https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse#load-data-into-azure-sql-data-warehouse

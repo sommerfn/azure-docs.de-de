@@ -4,17 +4,17 @@ description: In diesem Artikel wird beschrieben, wie Sie Ihre vorhandenen OMS-Up
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4d11dfcb66a545cbecc80b6bdad558ca6d328ed2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2cc05dc0970211b066d9e431cc7aba06cbd126eb
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999682"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478301"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Migrieren von OMS-Updatebereitstellungen zu Azure
 
@@ -57,7 +57,7 @@ Der Bereich **Neue Updatebereitstellung** wird geöffnet. Geben Sie Werte für d
 
 Wählen Sie für zu aktualisierende Computer die gespeicherte Suche aus, die von der vorhandenen OMS-Bereitstellung verwendet wird.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Description |
 | --- | --- |
 |NAME |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
 |Betriebssystem| Wählen Sie zwischen **Linux** und **Windows** aus.|

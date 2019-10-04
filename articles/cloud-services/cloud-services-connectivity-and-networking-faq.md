@@ -4,23 +4,22 @@ description: Dieser Artikel behandelt häufig gestellte Fragen zu Konnektivität
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
 ms.service: cloud-services
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 2a46879a6882e6d45e4a7ccce59e4a02feea9005
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805585"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154872"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit Konnektivität und Netzwerken in Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -72,7 +71,7 @@ Das URL-Rewrite-Modul von IIS kann zum Umleiten von Datenverkehr, der bei der St
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Wie kann ich den bei der Standard-URL des Clouddiensts eingehenden Datenverkehr blockieren/deaktivieren?
 
-Sie können verhindern, dass Datenverkehr bei der Standard-URL/Name des Clouddiensts (z.B. \*. cloudapp.net) eingeht. Legen Sie für den Hostheader in der Clouddienst-Definitionsdatei (*.csdef) unter der Websitebindungskonfiguration wie folgt einen benutzerdefinierten DNS-Namen (z.B. www.MyCloudService.com) fest:
+Sie können verhindern, dass Datenverkehr bei der Standard-URL/Name des Clouddiensts (z.B. \*. cloudapp.net) eingeht. Legen Sie für den Hostheader in der Clouddienstdefinitionsdatei (*.csdef) unter der Websitebindungskonfiguration wie folgt einen benutzerdefinierten DNS-Namen (z. B. www\.MyCloudService.com) fest:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -104,7 +103,7 @@ Damit die öffentliche IP-Adresse des Clouddiensts (auch bekannt als VIP-Adresse
 - [Reservieren der IP-Adresse eines vorhandenen Clouddiensts](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
 - [Zuordnen einer reservierten IP zu einem Clouddienst mit einer Dienstkonfigurationsdatei](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-Wenn Sie über mehrere Instanzen für Ihre Rollen verfügen, sollte die Zuordnung von RIP zu Ihrem Clouddienst keine Downtime verursachen. Alternativ können Sie den IP-Adressbereich Ihres Azure-Rechenzentrums der Whitelist hinzufügen. Sie finden alle Azure-IP-Adressbereiche im [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
+Wenn Sie über mehrere Instanzen für Ihre Rollen verfügen, dürfte die RIP-Zuordnung zu Ihrem Clouddienst keine Ausfallzeit verursachen. Alternativ können Sie den IP-Adressbereich Ihres Azure-Rechenzentrums der Zulassungsliste hinzufügen. Sie finden alle Azure-IP-Adressbereiche im [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
 
 Diese Datei enthält die IP-Adressbereiche (einschließlich Compute-, SQL- und Speicherbereiche), die in Azure-Rechenzentren verwendet werden. Eine aktualisierte Datei mit den derzeit bereitgestellten Bereichen und allen anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht. In der Datei enthaltene neue Bereiche werden frühestens nach einer Woche in den Rechenzentren verwendet. Laden Sie die neue XML-Datei jede Woche herunter, und nehmen Sie die erforderlichen Änderungen an Ihrer Website vor, um in Azure ausgeführte Dienste ordnungsgemäß zu ermitteln. Diese Datei zum Aktualisieren der BGP-Ankündigung von Azure-Bereichen wird Azure ExpressRoute-Benutzern jeweils in der ersten Woche des Monats angezeigt.
 

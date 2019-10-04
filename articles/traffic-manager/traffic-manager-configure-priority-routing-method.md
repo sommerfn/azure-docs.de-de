@@ -3,20 +3,21 @@ title: Konfigurieren der prioritätsbasierten Routingmethode für Datenverkehr m
 description: Dieser Artikel erläutert die Konfiguration der prioritätsbasierten Routingmethode für Datenverkehr in Traffic Manager.
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
+manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: kumud
-ms.openlocfilehash: 66c5bd9390d6fe0f26af66e18aed22c07a7da3e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: allensu
+ms.openlocfilehash: 259457a604727cba6e6964851ec4fcf4b13a20a6
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003112"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67048489"
 ---
 # <a name="configure-priority-traffic-routing-method-in-traffic-manager"></a>Konfigurieren der prioritätsbasierten Routingmethode für Datenverkehr in Traffic Manager
 

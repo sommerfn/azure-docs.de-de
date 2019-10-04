@@ -12,17 +12,16 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5edd3e51e83b5ab324d1e110a1882b20d935a9b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fdbd77db349eed62af2eb8cf539ef749217a187a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899127"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066685"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Problembehandlung bei HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Azure App Service
 „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ sind häufige Fehler in Ihrer App, die in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) gehostet wird. Dieser Artikel hilft Ihnen, diese Fehler zu beheben.
@@ -102,7 +101,7 @@ Weitere Informationen zu den verfügbaren Funktionen in Kudu finden Sie unter [O
 #### <a name="scale-the-app"></a>Skalieren der App
 In Azure App Service können Sie zum Steigern der Leistung und des Durchsatzes die Skalierung anpassen, mit der Sie Ihre Anwendung ausführen. Für das zentrale Hochskalieren einer App sind zwei zueinander in Beziehung stehende Schritte erforderlich: Sie müssen für den App Service-Plan ein Upgrade auf einen höheren Tarif durchführen, und Sie müssen nach dem Tarifwechsel bestimmte Einstellungen konfigurieren.
 
-Weitere Informationen zur Skalierung finden Sie unter [Skalieren einer App in Azure App Service](web-sites-scale.md).
+Weitere Informationen zur Skalierung finden Sie unter [Skalieren einer App in Azure App Service](manage-scale-up.md).
 
 Außerdem haben Sie die Möglichkeit, Ihre Anwendung auf mehreren Instanzen auszuführen. Dies erhöht nicht nur die Verarbeitungskapazität, sondern bietet auch ein gewisses Maß an Fehlertoleranz. Wenn der Prozess in einer Instanz ausfällt, kann die andere Instanz weiterhin Anfragen verarbeiten.
 

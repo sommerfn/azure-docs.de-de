@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: 9b68b9d0bbac984c29759cf4b7b026a559a9d819
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: be77704f562a1e05485e6f3704dff265635b1dc2
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569150"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68882302"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions-Entwicklung und -Konfiguration mit Azure SignalR Service
 
@@ -122,9 +122,12 @@ Beispiel:
 }
 ```
 
-#### <a name="azure"></a>Azure
+#### <a name="cloud---azure-functions-cors"></a>Cloud – Azure Functions-CORS
 
 Wenn Sie CORS für eine Azure-Funktions-App aktivieren möchten, navigieren Sie im Azure-Portal unter der Registerkarte *Plattformfeatures* Ihrer Funktions-App zum CORS-Konfigurationsbildschirm.
+
+> [!NOTE]
+> Die CORS-Konfiguration ist im Linux-Verbrauchstarif für Azure Functions noch nicht verfügbar. Verwenden Sie [Azure API Management](#cloud---azure-api-management), um CORS zu aktivieren.
 
 CORS muss mit „Access-Control-Allow-Credentials“ aktiviert werden, damit der SignalR-Client die Aushandlungsfunktion aufrufen kann. Aktivieren Sie das entsprechende Kontrollkästchen.
 
@@ -132,11 +135,37 @@ Fügen Sie im Abschnitt *Zulässige Ursprünge* einen Eintrag mit der Basis-URL 
 
 ![Konfigurieren von CORS](media/signalr-concept-serverless-development-config/cors-settings.png)
 
+#### <a name="cloud---azure-api-management"></a>Cloud – Azure API Management
+
+Azure API Management bietet ein API-Gateway, mit dem vorhandenen Back-End-Diensten Funktionen hinzugefügt werden. Sie können damit Ihrer Funktions-App CORS hinzufügen. Es bietet einen Verbrauchstarif mit aktionsbasierten Preisen und einem monatlichen kostenlosen Verbrauch.
+
+Informationen zum [Importieren einer Azure-Funktions-App](../api-management/import-function-app-as-api.md) finden Sie in der API Management-Dokumentation. Nach dem Importieren können Sie eine Richtlinie für eingehenden Datenverkehr hinzufügen, um CORS mit der Unterstützung von „Access-Control-Allow-Credentials“ zu aktivieren.
+
+```xml
+<cors allow-credentials="true">
+  <allowed-origins>
+    <origin>https://azure-samples.github.io</origin>
+  </allowed-origins>
+  <allowed-methods>
+    <method>GET</method>
+    <method>POST</method>
+  </allowed-methods>
+  <allowed-headers>
+    <header>*</header>
+  </allowed-headers>
+  <expose-headers>
+    <header>*</header>
+  </expose-headers>
+</cors>
+```
+
+Konfigurieren Sie die SignalR-Clients für die Verwendung der API Management-URL.
+
 ### <a name="using-app-service-authentication"></a>Verwenden der App Service-Authentifizierung
 
 Azure Functions verfügt über eine integrierte Authentifizierung und unterstützt gängige Anbieter wie Facebook, Twitter, Microsoft-Konto, Google und Azure Active Directory. Dieses Feature kann in die Bindung *SignalRConnectionInfo* integriert werden, um Verbindungen mit Azure SignalR Service zu erstellen, die für eine Benutzer-ID authentifiziert wurden. Ihre Anwendung kann unter Verwendung der Ausgabebindung *SignalR* Nachrichten senden, die für diese Benutzer-ID bestimmt sind.
 
-Öffnen Sie im Azure-Portal auf der Registerkarte *Plattformfeatures* Ihrer Funktions-App das Fenster mit den** Authentifizierungs-/Autorisierungseinstellungen. Gehen Sie gemäß der Dokumentation für die [App Service-Authentifizierung](../app-service/overview-authentication-authorization.md) vor, um die Authentifizierung mit einem Identitätsanbieter Ihrer Wahl zu konfigurieren.
+Öffnen Sie im Azure-Portal auf der Registerkarte *Plattformfeatures* Ihrer Funktions-App das Fenster mit den*Authentifizierungs-/Autorisierungseinstellungen*. Gehen Sie gemäß der Dokumentation für die [App Service-Authentifizierung](../app-service/overview-authentication-authorization.md) vor, um die Authentifizierung mit einem Identitätsanbieter Ihrer Wahl zu konfigurieren.
 
 Nach Abschluss der Konfiguration enthalten authentifizierte HTTP-Anforderungen Header vom Typ `x-ms-client-principal-name` und `x-ms-client-principal-id`, die wiederum den Benutzernamen bzw. die Benutzer-ID der authentifizierten Identität enthalten.
 

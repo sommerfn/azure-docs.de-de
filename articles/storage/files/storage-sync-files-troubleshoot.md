@@ -1,19 +1,18 @@
 ---
 title: Problembehandlung bei der Azure-Dateisynchronisierung | Microsoft-Dokumentation
 description: Beheben von häufigen Problemen bei der Azure-Dateisynchronisierung
-services: storage
 author: jeffpatt24
 ms.service: storage
-ms.topic: article
-ms.date: 01/31/2019
+ms.topic: conceptual
+ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 328edac78624c192ee139c40fe0ed1853423c639
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e07d154ce5dae8a461bf9db19303db685f8a4152
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051367"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103077"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -23,8 +22,6 @@ Dieser Artikel enthält Informationen zur Behebung von Fehlern und Lösung von P
 1. [Azure Storage-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)
 3. Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte **Hilfe** die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage**.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Es besteht ein Problem mit der Azure-Dateisynchronisierung auf dem Server (Synchronisierung, Cloudtiering usw.). Soll der Serverendpunkt entfernt und neu erstellt werden?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -44,13 +41,22 @@ Wenn Sie versuchen, den Synchronisierungs-Agent auf einem Active Directory-Domä
 
 Um dieses Problem zu beheben, übertragen Sie die PDC-Rolle auf einen anderen Domänencontroller unter Windows Server 2012 R2 oder höher und installieren dann den Synchronisierungsdienst.
 
-<a id="server-registration-missing"></a>**Der Server ist im Azure-Portal nicht unter „Registrierte Server“ aufgeführt.**  
-Wenn ein Server für einen Speichersynchronisierungsdienst nicht unter **Registrierte Server** aufgeführt wird:
-1. Melden Sie sich bei dem Server an, den Sie registrieren möchten.
-2. Öffnen Sie den Datei-Explorer, und wechseln Sie dann zum Installationsverzeichnis des Storage-Synchronisierungs-Agents (der Standardspeicherort ist C:\Programme\Azure\StorageSyncAgent). 
+<a id="server-registration-prerequisites"></a>**Die Serverregistrierung zeigt die folgende Meldung an: „Voraussetzungen fehlen.“**
+
+Diese Meldung wird angezeigt, wenn das Az- oder AzureRM-PowerShell-Modul in PowerShell 5.1 nicht installiert ist. 
+
+> [!Note]  
+> Die ServerRegistration.exe-Datei unterstützt PowerShell 6.x nicht. Sie können das Register-AzStorageSyncServer-Cmdlet in PowerShell 6.x verwenden, um den Server zu registrieren.
+
+Um das Az- oder AzureRM-Module in PowerShell 5.1 zu installieren, führen Sie die folgenden Schritte aus:
+
+1. Geben Sie an einer Eingabeaufforderung mit erhöhten Rechten die Zeichenfolge **powershell** ein, und drücken Sie die EINGABETASTE.
+2. Installieren Sie das neueste Az- oder AzureRM-Modul anhand der folgenden Dokumentation:
+    - [Az-Modul (erfordert .NET 4.7.2)](https://go.microsoft.com/fwlink/?linkid=2062890)
+    - [AzureRM-Modul]( https://go.microsoft.com/fwlink/?linkid=856959)
 3. Führen Sie „ServerRegistration.exe“ aus, und schließen Sie den Assistenten ab, um den Server bei einem Storage-Synchronisierungsdienst zu registrieren.
 
-<a id="server-already-registered"></a>**Bei der Serverregistrierung wird während der Installation des Azure-Dateisynchronisierungs-Agents die folgende Meldung angezeigt: „Dieser Server ist bereits registriert.“** 
+<a id="server-already-registered"></a>**Die Serverregistrierung zeigt die folgende Meldung an: „Dieser Server ist bereits registriert.“** 
 
 ![Screenshot des Dialogfelds für die Serverregistrierung mit der Fehlermeldung „Dieser Server wurde bereits registriert“](media/storage-sync-files-troubleshoot/server-registration-1.png)
 
@@ -69,9 +75,15 @@ Reset-StorageSyncServer
 <a id="web-site-not-trusted"></a>**Beim Registrieren eines Servers erhalte ich zahlreiche Antworten, dass eine Website nicht vertrauenswürdig sei. Warum?**  
 Dieses Problem tritt auf, wenn die Richtlinie **Erhöhte Internet Explorer-Sicherheit** bei der Serverregistrierung aktiviert war. Weitere Informationen zum ordnungsgemäßen Deaktivieren der Richtlinie **Erhöhte Internet Explorer-Sicherheit** finden Sie unter [Vorbereiten von Windows Server für die Verwendung mit der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync) und [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
 
+<a id="server-registration-missing"></a>**Der Server ist im Azure-Portal nicht unter „Registrierte Server“ aufgeführt.**  
+Wenn ein Server für einen Speichersynchronisierungsdienst nicht unter **Registrierte Server** aufgeführt wird:
+1. Melden Sie sich bei dem Server an, den Sie registrieren möchten.
+2. Öffnen Sie den Datei-Explorer, und wechseln Sie dann zum Installationsverzeichnis des Storage-Synchronisierungs-Agents (der Standardspeicherort ist C:\Programme\Azure\StorageSyncAgent). 
+3. Führen Sie „ServerRegistration.exe“ aus, und schließen Sie den Assistenten ab, um den Server bei einem Storage-Synchronisierungsdienst zu registrieren.
+
 ## <a name="sync-group-management"></a>Verwaltung von Synchronisierungsgruppen
 <a id="cloud-endpoint-using-share"></a>**Fehler beim Erstellen des Cloudendpunkts: „The specified Azure FileShare is already in use by a different CloudEndpoint“ (Die angegebene Azure-Dateifreigabe wird bereits von einem anderen Cloudendpunkt verwendet)**  
-Dieses Problem tritt auf, wenn die Azure-Dateifreigabe bereits von einem anderen Cloudendpunkt verwendet wird. 
+Dieser Fehler tritt auf, wenn die Azure-Dateifreigabe bereits von einem anderen Cloudendpunkt verwendet wird. 
 
 Wenn diese Nachricht erscheint und die Azure-Dateifreigabe derzeit von keinem Cloudendpunkt verwendet wird, sollten Sie die folgenden Schritte ausführen, um die Metadaten der Azure-Dateisynchronisierung auf der Azure-Dateifreigabe zu löschen:
 
@@ -83,7 +95,7 @@ Wenn diese Nachricht erscheint und die Azure-Dateifreigabe derzeit von keinem Cl
 3. Klicken Sie mit der rechten Maustaste auf **SyncService**, und wählen Sie dann **Löschen** aus.
 
 <a id="cloud-endpoint-authfailed"></a>**Fehler beim Erstellen des Cloudendpunkts: „AuthorizationFailed“**  
-Dieses Problem tritt auf, wenn Ihr Benutzerkonto nicht über die erforderlichen Rechte verfügt, um einen Cloudendpunkt zu erstellen. 
+Dieser Fehler tritt auf, wenn Ihr Benutzerkonto nicht über die erforderlichen Rechte verfügt, um einen Cloudendpunkt zu erstellen. 
 
 Für die Erstellung eines Cloudendpunkts muss Ihr Benutzerkonto über die folgenden Microsoft-Autorisierungsberechtigungen verfügen:  
 * Lesen: Abrufen der Rollendefinition
@@ -104,28 +116,45 @@ So bestimmen Sie, ob Ihr Benutzerkonto über die erforderlichen Berechtigungen v
     * **Rollenzuweisung** muss die Berechtigungen **Lesen** und **Schreiben** aufweisen.
     * **Rollendefinition** muss die Berechtigungen **Lesen** und **Schreiben** aufweisen.
 
-<a id="server-endpoint-createjobfailed"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134375898)**  
-Dieses Problem tritt auf, wenn sich der Serverendpunktpfad auf dem Systemvolume befindet und Cloudtiering aktiviert ist. Das Cloudtiering wird auf dem Systemvolume nicht unterstützt. Um einen Serverendpunkt auf dem Systemvolume zu erstellen, deaktivieren Sie Cloudtiering, wenn Sie den Serverendpunkt erstellen.
+<a id="-2134375898"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134375898 oder 0x80c80226)**  
+Dieser Fehler tritt auf, wenn sich der Serverendpunktpfad auf dem Systemvolume befindet und Cloudtiering aktiviert ist. Das Cloudtiering wird auf dem Systemvolume nicht unterstützt. Um einen Serverendpunkt auf dem Systemvolume zu erstellen, deaktivieren Sie Cloudtiering, wenn Sie den Serverendpunkt erstellen.
 
-<a id="server-endpoint-deletejobexpired"></a>**Fehler beim Löschen des Serverendpunkts: „MgmtServerJobExpired“**                
-Dieses Problem tritt auf, wenn der Server offline ist oder keine Netzwerkkonnektivität aufweist. Ist der Server nicht mehr verfügbar, heben Sie die Registrierung des Servers im Portal auf, wodurch die Serverendpunkte gelöscht werden. Um die Serverendpunkte zu löschen, führen Sie die Schritte aus, die unter [Aufheben der Registrierung eines Servers mit der Azure-Dateisynchronisierung](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service) beschrieben sind.
+<a id="-2147024894"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2147024894 oder 0x80070002)**  
+Dieser Fehler tritt auf, wenn der angegebene Pfad zum Serverendpunkt ungültig ist. Vergewissern Sie sich, dass der angegebene Serverendpunktpfad ein lokal verknüpftes NTFS-Volume ist. Beachten Sie, dass die Azure-Dateisynchronisierung keine zugeordneten Laufwerke als Serverendpunktpfad unterstützt.
+
+<a id="-2134347507"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134347507 oder 0x80c8710d)**  
+Dieser Fehler tritt auf, weil die Azure-Dateisynchronisierung keine Serverendpunkte auf Volumes mit einem komprimierten Systemvolumeinformationen-Ordner unterstützt. Dekomprimieren Sie den Ordner „Systemvolumeinformationen“, um dieses Problem zu beheben. Wenn der Ordner „Systemvolumeinformationen“ der einzige komprimierte Ordner auf dem Volume ist, führen Sie die folgenden Schritte aus:
+
+1. Laden Sie das [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec)-Tool herunter.
+2. Führen Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus, um eine Eingabeaufforderung unter dem Systemkonto zu starten: **PsExec.exe -i -s -d cmd**
+3. Geben Sie an der Eingabeaufforderung unter dem Systemkonto die folgenden Befehle ein, und drücken Sie die EINGABETASTE:   
+    **cd /d „Laufwerkbuchstabe“:\Systemvolumeinformationen“**  
+    **compact /u /s**
+
+<a id="-2134376345"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134376345 oder 0x80C80067)**  
+Dieser Fehler tritt auf, wenn das Limit für die Serverendpunkte pro Server erreicht wurde. Die Azure-Dateisynchronisierung unterstützt derzeit bis zu 30 Serverendpunkte pro Server. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für die Azure-Dateisynchronisierung](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-file-sync-scale-targets).
+
+<a id="-2134376427"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134376427 oder 0x80c80015)**  
+Dieser Fehler tritt auf, wenn der angegebene Serverendpunktpfad bereits von einem anderen Serverendpunkt synchronisiert wird. Azure-Dateisynchronisierung unterstützt nicht mehrere Serverendpunkte, die dasselbe Verzeichnis oder Volume synchronisieren.
+
+<a id="-2134347757"></a>**Fehler beim Löschen des Serverendpunkts: „MgmtServerJobExpired“ (Fehlercode: -2134347757 oder 0x80c87013)**  
+Dieser Fehler tritt auf, wenn der Server offline ist oder keine Netzwerkkonnektivität aufweist. Ist der Server nicht mehr verfügbar, heben Sie die Registrierung des Servers im Portal auf, wodurch die Serverendpunkte gelöscht werden. Um die Serverendpunkte zu löschen, führen Sie die Schritte aus, die unter [Aufheben der Registrierung eines Servers mit der Azure-Dateisynchronisierung](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service) beschrieben sind.
 
 <a id="server-endpoint-provisioningfailed"></a>**Die Seite „Eigenschaften des Serverendpunkts“ kann nicht geöffnet werden, oder die Cloudtiering-Richtlinie kann nicht aktualisiert werden.**  
 Dieses Problem kann auftreten, wenn bei einem Verwaltungsvorgang auf dem Serverendpunkt ein Fehler auftritt. Wenn die Seite „Eigenschaften des Serverendpunkts“ nicht im Azure-Portal geöffnet wird, kann ein Aktualisieren des Serverendpunkts mithilfe von PowerShell-Befehlen auf dem Server dieses Problem beheben. 
 
 ```powershell
-Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 # Get the server endpoint id based on the server endpoint DisplayName property
 Get-AzStorageSyncServerEndpoint `
-    -SubscriptionId mysubguid `
     -ResourceGroupName myrgname `
     -StorageSyncServiceName storagesvcname `
-    -SyncGroupName mysyncgroup
+    -SyncGroupName mysyncgroup | `
+Tee-Object -Variable serverEndpoint
 
 # Update the free space percent policy for the server endpoint
 Set-AzStorageSyncServerEndpoint `
-    -Id serverendpointid `
-    -CloudTiering true `
+    -InputObject $serverEndpoint
+    -CloudTiering `
     -VolumeFreeSpacePercent 60
 ```
 <a id="server-endpoint-noactivity"></a>**Serverendpunkt hat den Integritätsstatus „Keine Aktivität“ oder „Ausstehend“, und der Serverstatus auf dem Blatt mit den registrierten Servern lautet „Als offline angezeigt“**  
@@ -247,18 +276,27 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 
 | HRESULT | HRESULT (dezimal) | Fehlerzeichenfolge | Problem | Wiederherstellung |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Eine Datei- oder Verzeichnisänderung kann noch nicht synchronisiert werden, da ein abhängiger Ordner noch nicht synchronisiert ist. Dieses Element wird synchronisiert, sobald die abhängigen Änderungen synchronisiert wurden. | Keine weiteren Maßnahmen erforderlich. |
-| 0x7b | 123 | ERROR_INVALID_NAME | Der Datei- oder Verzeichnisname ist ungültig. | Benennen Sie die jeweiligen Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters). |
-| 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | Der Datei- oder Verzeichnisname ist ungültig. | Benennen Sie die jeweiligen Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters). |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Eine Datei kann nicht synchronisiert werden, da sie momentan verwendet wird. Die Datei wird synchronisiert, wenn sie nicht mehr verwendet wird. | Keine weiteren Maßnahmen erforderlich. Die Azure-Dateisynchronisierung erstellt einmal pro Tag eine temporäre VSS-Momentaufnahme auf dem Server, um Dateien mit offenen Handles zu synchronisieren. |
-| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Eine Datei wurde geändert, doch die Änderung wurde noch nicht von der Synchronisierung erkannt. Die Synchronisierung wird aktualisiert, sobald diese Änderung erkannt wurde. | Keine weiteren Maßnahmen erforderlich. |
+| 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Auf die mehrstufige Datei auf dem Server kann nicht zugegriffen werden. Dieses Problem tritt auf, wenn die mehrstufige Datei vor dem Löschen eines Serverendpunkts nicht zurückgerufen wurde. | Informationen zur Behebung dieses Problems finden Sie unter [Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
+| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Die Datei- oder Verzeichnisänderung kann noch nicht synchronisiert werden, da ein abhängiger Ordner noch nicht synchronisiert ist. Dieses Element wird synchronisiert, sobald die abhängigen Änderungen synchronisiert wurden. | Keine weiteren Maßnahmen erforderlich. |
+| 0x8007007b | -2147024773 | ERROR_INVALID_NAME | Der Datei- oder Verzeichnisname ist ungültig. | Benennen Sie die jeweiligen Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters). |
+| 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | Der Datei- oder Verzeichnisname ist ungültig. | Benennen Sie die jeweiligen Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters). |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Die Datei kann nicht synchronisiert werden, da sie momentan verwendet wird. Die Datei wird synchronisiert, wenn sie nicht mehr verwendet wird. | Keine weiteren Maßnahmen erforderlich. Die Azure-Dateisynchronisierung erstellt einmal pro Tag eine temporäre VSS-Momentaufnahme auf dem Server, um Dateien mit offenen Handles zu synchronisieren. |
+| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Die Datei wurde geändert, doch die Änderung wurde noch nicht von der Synchronisierung erkannt. Die Synchronisierung wird aktualisiert, sobald diese Änderung erkannt wurde. | Keine weiteren Maßnahmen erforderlich. |
+| 0x80070002 | -2147024894 | ERROR_FILE_NOT_FOUND | Die Datei wurde gelöscht, und die Synchronisierung erkennt die Änderung nicht. | Keine weiteren Maßnahmen erforderlich. Die Synchronisierung protokolliert diesen Fehler nicht mehr, sobald die Änderungserkennung erkennt, dass die Datei gelöscht wurde. |
+| 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | Die Datei wurde übersprungen, wird aber in der nächsten Synchronisierungssitzung synchronisiert. | Keine weiteren Maßnahmen erforderlich. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Die Datei kann nicht synchronisiert werden, da das Limit für die Azure-Dateifreigabe erreicht ist. | Um dieses Problem zu beheben, lesen Sie den Abschnitt [Sie haben das Speicherlimit für die Azure-Dateifreigabe erreicht](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) in diesem Leitfaden zur Problembehandlung. |
-| 0x80070005 | -2147024891 | E_ACCESSDENIED | Dieser Fehler kann aus den folgenden Gründen auftreten: Die Datei ist über eine nicht unterstützte Lösung (z.B. NTFS EFS) verschlüsselt, ihr Löschstatus steht aus, oder sie befindet sich in einem schreibgeschützten DFS-R-Replikationsordner. | Wenn die Datei von einer nicht unterstützten Lösung verschlüsselt wird, entschlüsseln Sie die Datei, und verwenden Sie eine unterstützte Verschlüsselungslösung. Eine Liste der unterstützten Lösungen finden Sie im Abschnitt [Verschlüsselungslösungen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) im Planungshandbuch. Wenn sich die Datei im Status „Zum Löschen ausstehend“ befindet, wird die Datei gelöscht, sobald alle offenen Dateihandles geschlossen sind. Wenn die Datei sich in einem schreibgeschützten DFS-R-Replikationsordner befindet, unterstützt Azure Files Sync keine Serverendpunkte in schreibgeschützten DFS-R-Replikationsordnern. Weitere Informationen finden Sie im [Planungshandbuch](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs).
-| 0x20 | 32 | ERROR_SHARING_VIOLATION | Eine Datei kann nicht synchronisiert werden, da sie momentan verwendet wird. Die Datei wird synchronisiert, wenn sie nicht mehr verwendet wird. | Keine weiteren Maßnahmen erforderlich. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Eine Datei wurde während der Synchronisierung geändert, deshalb muss sie erneut synchronisiert werden. | Keine weiteren Maßnahmen erforderlich. |
+| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | Die Datei ist durch eine nicht unterstützte Lösung (z.B. NTFS EFS) verschlüsselt. | Entschlüsseln Sie die Datei, und verwenden Sie eine unterstützte Verschlüsselungslösung. Eine Liste der unterstützten Lösungen finden Sie im Abschnitt [Verschlüsselungslösungen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) im Planungshandbuch. |
+| 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | Die Datei befindet sich in einem schreibgeschützten DFS-R-Replikationsordner. | Die Datei befindet sich in einem schreibgeschützten DFS-R-Replikationsordner. Die Azure-Dateisynchronisierung unterstützt keine Serverendpunkte in schreibgeschützten DFS-R-Replikationsordnern. Weitere Informationen finden Sie im [Planungshandbuch](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs). |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Die Datei weist einen ausstehenden Löschzustand auf. | Keine weiteren Maßnahmen erforderlich. Die Datei wird gelöscht, sobald alle offenen Dateihandles geschlossen sind. |
+| 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | Die Datei kann nicht synchronisiert werden, weil die Einstellungen für Firewall und virtuelles Netzwerk im Speicherkonto aktiviert sind und der Server keinen Zugriff auf das Speicherkonto hat. | Fügen Sie die Server-IP-Adresse oder das virtuelle Netzwerk hinzu, indem Sie die im Abschnitt [Konfigurieren der Einstellung für Firewall und virtuelles Netzwerk](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) des Bereitstellungsleitfadens angegebenen Schritte ausführen. |
+| 0x80c80243 | -2134375869 | ECS_E_SECURITY_DESCRIPTOR_SIZE_TOO_LARGE | Die Datei kann nicht synchronisiert werden, weil die Größe der Sicherheitsbeschreibung das Limit von 64 KiB überschreitet. | Um dieses Problem zu beheben, entfernen Sie Zugriffssteuerungseinträge (ACEs) für die Datei, um die Größe der Sicherheitsbeschreibung zu verringern. |
+| 0x8000ffff | -2147418113 | E_UNEXPECTED | Die Datei kann aufgrund eines unerwarteten Fehlers nicht synchronisiert werden. | Wenn der Fehler mehrere Tage lang besteht, erstellen Sie eine Supportanfrage. |
+| 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Die Datei kann nicht synchronisiert werden, da sie momentan verwendet wird. Die Datei wird synchronisiert, wenn sie nicht mehr verwendet wird. | Keine weiteren Maßnahmen erforderlich. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Die Datei wurde während der Synchronisierung geändert, deshalb muss sie erneut synchronisiert werden. | Keine weiteren Maßnahmen erforderlich. |
+| 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Die Datei kann nicht synchronisiert werden, da die maximale Anzahl von Konfliktdateien erreicht wurde. Die Azure-Dateisynchronisierung unterstützt 100 Konfliktdateien pro Datei. Weitere Informationen zu Dateikonflikten finden Sie unter den [Häufig gestellten Fragen (FAQ)](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution) zur Azure-Dateisynchronisierung. | Um dieses Problem zu beheben, reduzieren Sie die Anzahl der Konfliktdateien. Die Datei wird synchronisiert, sobald die Anzahl der Konfliktdateien weniger als 100 beträgt. |
 
 #### <a name="handling-unsupported-characters"></a>Behandlung von nicht unterstützten Zeichen
-Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Fehler aufgrund von nicht unterstützten Zeichen (Fehlercodes 0x7b und 0x8007007b) anzeigt, sollten Sie die jeweiligen Zeichen aus den entsprechenden Dateinamen entfernen oder ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen. Mit dem [Auswertungstool](storage-sync-files-planning.md#evaluation-tool) können Sie nicht unterstützte Zeichen identifizieren.
+Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Fehler aufgrund von nicht unterstützten Zeichen (Fehlercode 0x8007007b oder 0x80c80255) anzeigt, sollten Sie diese Zeichen aus den entsprechenden Dateinamen entfernen oder darin ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen. Mit dem [Auswertungstool](storage-sync-files-planning.md#evaluation-cmdlet) können Sie nicht unterstützte Zeichen identifizieren.
 
 Die folgende Tabelle enthält alle Unicode-Zeichen, die die Azure-Dateisynchronisierung noch nicht unterstützt.
 
@@ -278,7 +316,7 @@ Die folgende Tabelle enthält alle Unicode-Zeichen, die die Azure-Dateisynchroni
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (dezimal)** | -2147023673 | 
 | **Fehlerzeichenfolge** | ERROR_CANCELLED |
-| **Korrektur erforderlich** | Nein  |
+| **Korrektur erforderlich** | Nein |
 
 Bei Synchronisierungssitzungen kann aus verschiedenen Gründen ein Fehler auftreten, z.B. aufgrund eines Serverneustarts oder einer Serveraktualisierung oder aufgrund von VSS-Momentaufnahmen. Auch wenn dieser Fehler den Anschein erweckt, als ob eine Nachverfolgung erforderlich wäre, kann dieser ignoriert werden, es sei denn, er bleibt über einen Zeitraum von mehreren Stunden bestehen.
 
@@ -300,9 +338,31 @@ Bei Synchronisierungssitzungen kann aus verschiedenen Gründen ein Fehler auftre
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (dezimal)** | -2134376372 |
 | **Fehlerzeichenfolge** | ECS_E_USER_REQUEST_THROTTLED |
-| **Korrektur erforderlich** | Nein  |
+| **Korrektur erforderlich** | Nein |
 
-Es ist keine Aktion erforderlich. Der Server wiederholt den Vorgang. Erstellen Sie nur dann eine Supportanfrage, wenn dieser Fehler länger als ein paar Stunden anhält.
+Es ist keine Aktion erforderlich. Der Server wiederholt den Vorgang. Erstellen Sie nur dann eine Supportanfrage, wenn dieser Fehler mehrere Stunden anhält.
+
+<a id="-2134364043"></a>**Synchronisierung wird blockiert, bis die Änderungserkennung nach der Wiederherstellung abgeschlossen ist**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83075 |
+| **HRESULT (dezimal)** | -2134364043 |
+| **Fehlerzeichenfolge** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
+| **Korrektur erforderlich** | Nein |
+
+Es ist keine Aktion erforderlich. Wenn eine Datei oder Dateifreigabe (Cloudendpunkt) mithilfe von Azure Backup wiederhergestellt wird, wird die Synchronisierung so lange blockiert, bis die Änderungserkennung auf der Azure-Dateifreigabe abgeschlossen ist. Unmittelbar nach Abschluss der Wiederherstellung wird die Änderungserkennung ausgeführt, deren Dauer auf der Anzahl der Dateien in der Dateifreigabe basiert.
+
+<a id="-2147216747"></a>**Fehler bei der Synchronisierung, weil die Synchronisierungsdatenbank entladen wurde.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80041295 |
+| **HRESULT (dezimal)** | -2147216747 |
+| **Fehlerzeichenfolge** | SYNC_E_METADATA_INVALID_OPERATION |
+| **Korrektur erforderlich** | Nein |
+
+Dieser Fehler tritt normalerweise auf, wenn eine Sicherungsanwendung eine VSS-Momentaufnahme erstellt, und die Synchronisierungsdatenbank entladen wird. Wenn dieser Fehler mehrere Stunden anhält, erstellen Sie eine Supportanfrage.
 
 <a id="-2134364065"></a>**Die Synchronisierung kann nicht auf die im Cloudendpunkt angegebene Azure-Dateifreigabe zugreifen.**  
 
@@ -310,15 +370,15 @@ Es ist keine Aktion erforderlich. Der Server wiederholt den Vorgang. Erstellen S
 |-|-|
 | **HRESULT** | 0x80c8305f |
 | **HRESULT (dezimal)** | -2134364065 |
-| **Fehlerzeichenfolge** | ECS_E_CANNOT_ACCESS_EXTERNAL_STORAGE_ACCOUNT |
+| **Fehlerzeichenfolge** | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED |
 | **Korrektur erforderlich** | Ja |
 
 Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungs-Agent nicht auf die Azure-Dateifreigabe zugreifen kann. Dies ist möglicherweise darauf zurückzuführen, dass die Azure-Dateifreigabe oder das Speicherkontohosting nicht mehr vorhanden ist. Sie können diesen Fehler beheben, indem Sie die folgenden Schritte durchführen:
 
 1. [Überprüfen Sie, ob das Speicherkonto vorhanden ist.](#troubleshoot-storage-account)
-2. [Stellen Sie sicher, dass das Speicherkonto keine Netzwerkregeln enthält.](#troubleshoot-network-rules)
-3. [Stellen Sie sicher, dass die Azure-Dateifreigabe vorhanden ist.](#troubleshoot-azure-file-share)
-4. [Stellen Sie sicher, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt.](#troubleshoot-rbac)
+2. [Stellen Sie sicher, dass die Azure-Dateifreigabe vorhanden ist.](#troubleshoot-azure-file-share)
+3. [Stellen Sie sicher, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt.](#troubleshoot-rbac)
+4. [Überprüfen Sie, ob die Einstellungen für die Firewall und das virtuelle Netzwerk im Speicherkonto ordnungsgemäß konfiguriert sind (sofern aktiviert).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**Der verwendete Speicherkontoname konnte nicht aufgelöst werden.**  
 
@@ -335,7 +395,19 @@ Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungs-Agent nicht auf die
     Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 443
     ```
 2. [Überprüfen Sie, ob das Speicherkonto vorhanden ist.](#troubleshoot-storage-account)
-3. [Stellen Sie sicher, dass das Speicherkonto keine Netzwerkregeln enthält.](#troubleshoot-network-rules)
+3. [Überprüfen Sie, ob die Einstellungen für die Firewall und das virtuelle Netzwerk im Speicherkonto ordnungsgemäß konfiguriert sind (sofern aktiviert).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+<a id="-2134364022"></a><a id="storage-unknown-error"></a>**Unbekannter Fehler beim Zugriff auf das Speicherkonto aufgetreten.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8308a |
+| **HRESULT (dezimal)** | -2134364022 |
+| **Fehlerzeichenfolge** | ECS_E_STORAGE_ACCOUNT_UNKNOWN_ERROR |
+| **Korrektur erforderlich** | Ja |
+
+1. [Überprüfen Sie, ob das Speicherkonto vorhanden ist.](#troubleshoot-storage-account)
+2. [Überprüfen Sie, ob die Einstellungen für die Firewall und das virtuelle Netzwerk im Speicherkonto ordnungsgemäß konfiguriert sind (sofern aktiviert).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
 <a id="-1906441138"></a>**Fehler bei der Synchronisierung aufgrund eines Problems mit der Synchronisierungsdatenbank.**  
 
@@ -421,12 +493,7 @@ Dieser Fehler tritt auf, wenn das Azure-Abonnement ausgesetzt ist. Die Synchroni
 | **Fehlerzeichenfolge** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
 | **Korrektur erforderlich** | Ja |
 
-Dieser Fehler tritt auf, wenn aufgrund einer Firewall oder der Zugehörigkeit des Speicherkontos zu einem virtuellen Netzwerk nicht auf die Azure-Dateifreigabe zugegriffen werden kann. Die Azure-Dateisynchronisierung bietet noch keine Unterstützung für dieses Feature. Führen Sie zur Problembehandlung folgende Schritte durch:
-
-1. [Überprüfen Sie, ob das Speicherkonto vorhanden ist.](#troubleshoot-storage-account)
-2. [Stellen Sie sicher, dass das Speicherkonto keine Netzwerkregeln enthält.](#troubleshoot-network-rules)
-
-Entfernen Sie diese Regeln, um dieses Problem zu beheben. 
+Dieser Fehler tritt auf, wenn aufgrund einer Firewall oder der Zugehörigkeit des Speicherkontos zu einem virtuellen Netzwerk nicht auf die Azure-Dateifreigabe zugegriffen werden kann. Überprüfen Sie, ob die Einstellungen für die Firewall und das virtuelle Netzwerk im Speicherkonto ordnungsgemäß konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren der Einstellungen für die Firewall und das virtuelle Netzwerk](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings). 
 
 <a id="-2134375911"></a>**Fehler bei der Synchronisierung aufgrund eines Problems mit der Synchronisierungsdatenbank.**  
 
@@ -435,7 +502,7 @@ Entfernen Sie diese Regeln, um dieses Problem zu beheben.
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (dezimal)** | -2134375911 |
 | **Fehlerzeichenfolge** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
-| **Korrektur erforderlich** | Nein  |
+| **Korrektur erforderlich** | Nein |
 
 Dieser Fehler löst sich im Allgemeinen von selbst und kann folgende Ursachen haben:
 
@@ -489,25 +556,62 @@ Durch das Festlegen dieses Registrierungswerts akzeptiert der Azure-Dateisynchro
 | **Fehlerzeichenfolge** | ECS_E_SERVER_CREDENTIAL_NEEDED |
 | **Korrektur erforderlich** | Ja |
 
-Dieser Fehler kann die folgenden Ursachen haben:
+Dieser Fehler tritt normalerweise auf, weil die Serverzeit falsch ist. Wenn der Server auf einem virtuellen Computer ausgeführt wird, überprüfen Sie, ob die Uhrzeit auf dem Host richtig ist.
 
-- Die Serverzeit ist falsch.
-- Fehler beim Löschen des Serverendpunkts.
-- Das für die Authentifizierung verwendete Zertifikat ist abgelaufen. 
-    Um festzustellen, ob das Zertifikat abgelaufen ist, führen Sie die folgenden Schritte aus:  
-    1. Öffnen Sie das Zertifikat-MMC-Snap-In, wählen Sie das Computerkonto aus, und navigieren Sie zu den Zertifikaten: „(Lokaler Computer)\Benutzer\Certificates“.
-    2. Überprüfen Sie, ob das Clientauthentifizierungszertifikat abgelaufen ist.
+<a id="-2134364040"></a>**Fehler bei der Synchronisierung aufgrund eines abgelaufenen Zertifikats.**  
 
-Wenn die Serverzeit richtig ist, führen Sie die folgenden Schritte aus, um das Problem zu beheben:
+| | |
+|-|-|
+| **HRESULT** | 0x80c83078 |
+| **HRESULT (dezimal)** | -2134364040 |
+| **Fehlerzeichenfolge** | ECS_E_AUTH_SRV_CERT_EXPIRED |
+| **Korrektur erforderlich** | Ja |
+
+Dieser Fehler tritt auf, weil das für die Authentifizierung verwendete Zertifikat abgelaufen ist.
+
+Um zu überprüfen, ob das Zertifikat abgelaufen ist, führen Sie die folgenden Schritte aus:  
+1. Öffnen Sie das Zertifikat-MMC-Snap-In, wählen Sie das Computerkonto aus, und navigieren Sie zu den Zertifikaten: „(Lokaler Computer)\Benutzer\Certificates“.
+2. Überprüfen Sie, ob das Clientauthentifizierungszertifikat abgelaufen ist.
+
+Wenn das Clientauthentifizierungszertifikat abgelaufen ist, führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
 1. Überprüfen Sie, ob die Version 4.0.1.0 oder höher des Azure-Dateisynchronisierungs-Agents installiert ist.
-2. Führen Sie die folgenden PowerShell-Befehle auf dem Server aus:
+2. Führen Sie dem folgenden PowerShell-Befehl auf dem Server aus:
 
     ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
-    Login-AzStorageSync -SubscriptionID <guid> -TenantID <guid>
-    Reset-AzStorageSyncServerCertificate -SubscriptionId <guid> -ResourceGroupName <string> -StorageSyncServiceName <string>
+    Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
+
+<a id="-2134375896"></a>**Fehler bei der Synchronisierung, weil das Authentifizierungszertifikat nicht gefunden wurde.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c80228 |
+| **HRESULT (dezimal)** | -2134375896 |
+| **Fehlerzeichenfolge** | ECS_E_AUTH_SRV_CERT_NOT_FOUND |
+| **Korrektur erforderlich** | Ja |
+
+Dieser Fehler tritt auf, weil das für die Authentifizierung verwendete Zertifikat nicht gefunden wird.
+
+Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
+
+1. Überprüfen Sie, ob die Version 4.0.1.0 oder höher des Azure-Dateisynchronisierungs-Agents installiert ist.
+2. Führen Sie dem folgenden PowerShell-Befehl auf dem Server aus:
+
+    ```powershell
+    Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
+    ```
+
+<a id="-2134364039"></a>**Fehler bei der Synchronisierung, weil die Authentifizierungsidentität nicht gefunden wurde.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83079 |
+| **HRESULT (dezimal)** | -2134364039 |
+| **Fehlerzeichenfolge** | ECS_E_AUTH_IDENTITY_NOT_FOUND |
+| **Korrektur erforderlich** | Ja |
+
+Dieser Fehler tritt auf, weil das Löschen des Serverendpunkts fehlgeschlagen ist und sich der Endpunkt nun in einem teilweise gelöschten Zustand befindet. Um dieses Problem zu beheben, versuchen Sie erneut, den Serverendpunkt zu löschen.
 
 <a id="-1906441711"></a><a id="-2134375654"></a><a id="doesnt-have-enough-free-space"></a>**Das Volume, auf dem sich der Serverendpunkt befindet, weist nicht genügend Speicherplatz auf dem Datenträger auf.**  
 
@@ -532,7 +636,7 @@ Dieser Fehler tritt auf, da sich das Volume gefüllt hat. Dieser Fehler tritt h�
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (dezimal)** | -2134364145 |
 | **Fehlerzeichenfolge** | ECS_E_REPLICA_NOT_READY |
-| **Korrektur erforderlich** | Nein  |
+| **Korrektur erforderlich** | Nein |
 
 Dieser Fehler tritt auf, weil direkt Änderungen an der Azure-Dateifreigabe vorgenommen wurden und die Erkennung von Änderungen momentan ausgeführt wird. Die Synchronisierung beginnt nach Abschluss der Änderungserkennung.
 
@@ -543,7 +647,7 @@ Dieser Fehler tritt auf, weil direkt Änderungen an der Azure-Dateifreigabe vorg
 | | |
 |-|-|
 | **HRESULT** | 0x80c8023b |
-| **HRESULT (dezimal)** | -2134364145 |
+| **HRESULT (dezimal)** | –2.134.375.877 |
 | **Fehlerzeichenfolge** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
 | **Korrektur erforderlich** | Ja |
 | | |
@@ -591,9 +695,31 @@ Dieser Fehler tritt auf, da die geladene Version des Cloudtiering-Filtertreibers
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (dezimal)** | -2134376373 |
 | **Fehlerzeichenfolge** | ECS_E_SERVICE_UNAVAILABLE |
-| **Korrektur erforderlich** | Nein  |
+| **Korrektur erforderlich** | Nein |
 
 Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungsdienst nicht verfügbar ist. Dieser Fehler wird automatisch aufgelöst, wenn der Azure-Dateisynchronisierungsdienst wieder verfügbar ist.
+
+<a id="-2146233088"></a>**Fehler bei der Synchronisierung aufgrund einer Ausnahme.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80131500 |
+| **HRESULT (dezimal)** | -2146233088 |
+| **Fehlerzeichenfolge** | COR_E_EXCEPTION |
+| **Korrektur erforderlich** | Nein |
+
+Dieser Fehler tritt auf, weil die Synchronisierung aufgrund einer Ausnahme fehlgeschlagen ist. Wenn der Fehler mehrere Stunden anhält, erstellen Sie eine Supportanfrage.
+
+<a id="-2134364045"></a>**Fehler bei der Synchronisierung, weil für das Speicherkonto ein Failover in eine andere Region ausgeführt wurde.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83073 |
+| **HRESULT (dezimal)** | -2134364045 |
+| **Fehlerzeichenfolge** | ECS_E_STORAGE_ACCOUNT_FAILED_OVER |
+| **Korrektur erforderlich** | Ja |
+
+Dieser Fehler tritt auf, weil für das Speicherkonto ein Failover in eine andere Region durchgeführt wurde. Das Feature „Speicherkontofailover“ wird von der Azure-Dateisynchronisierung nicht unterstützt. Für Speicherkonten, die Azure-Dateifreigaben enthalten, die als Cloud-Endpunkte in der Azure-Dateisynchronisierung verwendet werden, sollte kein Failover durchgeführt werden. Dies würde das Funktionieren der Synchronisierung beenden und könnte außerdem bei neu einbezogenen Dateien zu unerwartetem Datenverlust führen. Um dieses Problem zu beheben, verschieben Sie das Speicherkonto in die primäre Region.
 
 <a id="-2134375922"></a>**Fehler bei der Synchronisierung aufgrund eines vorübergehenden Problems mit der Synchronisierungsdatenbank.**  
 
@@ -602,9 +728,74 @@ Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungsdienst nicht verfüg
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (dezimal)** | -2134375922 |
 | **Fehlerzeichenfolge** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
-| **Korrektur erforderlich** | Nein  |
+| **Korrektur erforderlich** | Nein |
 
-Dieser Fehler tritt aufgrund eines internen Problems mit der Synchronisierungsdatenbank auf. Dieser Fehler wird automatisch aufgelöst, wenn die Azure-Dateisynchronisierung die Synchronisierung wiederholt. Wenn dieser Fehler für einen längeren Zeitraum anhält, erstellen Sie eine Supportanfrage, und wir kontaktieren Sie, um Sie bei der Problemlösung zu unterstützen.
+Dieser Fehler tritt aufgrund eines internen Problems mit der Synchronisierungsdatenbank auf. Dieser Fehler wird automatisch aufgelöst, wenn die Synchronisierung erneut versucht wird. Wenn dieser Fehler für einen längeren Zeitraum anhält, erstellen Sie eine Supportanfrage, und wir kontaktieren Sie, um Sie bei der Problemlösung zu unterstützen.
+
+<a id="-2134364024"></a>**Fehler bei der Synchronisierung aufgrund einer Änderung im Azure Active Directory-Mandanten**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83088 |
+| **HRESULT (dezimal)** | -2134364024 | 
+| **Fehlerzeichenfolge** | ECS_E_INVALID_AAD_TENANT |
+| **Korrektur erforderlich** | Ja |
+
+Dieser Fehler tritt auf, weil die Azure-Dateisynchronisierung zurzeit das Verschieben eines Abonnements in einen anderen Azure Active Directory-Mandanten nicht unterstützt.
+ 
+Um das Problem zu lösen, führen Sie eine der folgenden Optionen aus:
+
+- **Option 1 (empfohlen)** : Verschieben Sie das Abonnement zurück in den ursprünglichen Azure Active Directory-Mandanten.
+- **Option 2**: Löschen Sie die aktuelle Synchronisierungsgruppe, und erstellen Sie sie erneut. Wenn Cloudtiering auf dem Serverendpunkt aktiviert war, löschen Sie die Synchronisierungsgruppe, und führen Sie dann die im Abschnitt [Cloudtiering]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) dokumentierten Schritte aus, um die verwaisten Tieringdateien zu entfernen, bevor Sie die Synchronisierungsgruppe erneut erstellen. 
+
+<a id="-2134364010"></a>**Fehler bei der Synchronisierung aufgrund einer nicht konfigurierten Ausnahme für Firewall und virtuelles Netzwerk**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83096 |
+| **HRESULT (dezimal)** | -2134364010 | 
+| **Fehlerzeichenfolge** | ECS_E_MGMT_STORAGEACLSBYPASSNOTSET |
+| **Korrektur erforderlich** | Ja |
+
+Dieser Fehler tritt auf, wenn die Einstellungen für Firewall und virtuelles Netzwerk im Speicherkonto aktiviert sind, aber die Ausnahme „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“ nicht aktiviert ist. Um dieses Problem zu lösen, führen Sie die im Abschnitt [Konfigurieren der Einstellung für Firewall und virtuelles Netzwerk](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) des Bereitstellungsleitfadens angegebenen Schritte aus.
+
+<a id="-2147024891"></a>**Fehler bei der Synchronisierung, weil die Berechtigungen für den Ordner „Systemvolumeinformationen“ falsch sind.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80070005 |
+| **HRESULT (dezimal)** | -2147024891 |
+| **Fehlerzeichenfolge** | ERROR_ACCESS_DENIED |
+| **Korrektur erforderlich** | Ja |
+
+Dieser Fehler kann auftreten, wenn das Konto NT AUTHORITY\SYSTEM nicht über die Berechtigungen für den Ordner „Systemvolumeinformationen“ auf dem Volume verfügt, auf dem sich der Serverendpunkt befindet. Beachten Sie Folgendes: Wenn einzelne Dateien nicht synchronisiert werden können und der Fehler ERROR_ACCESS_DENIED eintritt, führen Sie die im Abschnitt [Behandlung von Synchronisierungsfehlern nach Dateien und Verzeichnissen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshooting-per-filedirectory-sync-errors) dokumentierten Schritte aus.
+
+Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
+
+1. Laden Sie das [Psexec](https://docs.microsoft.com/sysinternals/downloads/psexec)-Tool herunter.
+2. Führen Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus, um eine Eingabeaufforderung unter Verwendung des Systemkontos zu starten: **PsExec.exe -i -s -d cmd** 
+3. Führen Sie an der Eingabeaufforderung unter dem Systemkonto den folgenden Befehl aus, um zu bestätigen, dass das Konto „NT AUTHORITY\SYSTEM“ keinen Zugriff auf den Ordner „Systemvolumeinformationen“ hat: **cacls „Laufwerkbuchstabe:\Systemvolumeinformationen“ /T /C**.
+4. Wenn das Konto „NT AUTHORITY\SYSTEM“ keinen Zugriff auf den Ordner „Systemvolumeinformationen“ hat, führen Sie den folgenden Befehl aus: **cacls „Laufwerkbuchstabe:\Systemvolumeinformationen“ /T /E /G „NT AUTHORITY\SYSTEM:F“** .
+    - Wenn Schritt 4 aufgrund von verweigertem Zugriff fehlschlägt, führen Sie den folgenden Befehl aus, um den Besitz des Ordners „Systemvolumeinformationen“ zu übernehmen: **takeown /A /R /F „Laufwerkbuchstabe:\Systemvolumeinformationen“** . Wiederholen Sie dann Schritt 4.
+
+<a id="-2134375810"></a>**Fehler bei der Synchronisierung, weil die Azure-Dateifreigabe gelöscht und neu erstellt wurde.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8027e |
+| **HRESULT (dezimal)** | -2134375810 |
+| **Fehlerzeichenfolge** | ECS_E_SYNC_REPLICA_ROOT_CHANGED |
+| **Korrektur erforderlich** | Ja |
+
+Dieser Fehler tritt auf, weil Azure-Dateisynchronisierung das Löschen und Neuerstellen einer Azure-Dateifreigabe in derselben Synchronisierungsgruppe nicht unterstützt. 
+
+Zur Behebung dieses Problems müssen Sie die Synchronisierungsgruppe löschen und neu erstellen, indem Sie die folgenden Schritte ausführen:
+
+1. Löschen Sie alle Serverendpunkte in der Synchronisierungsgruppe.
+2. Löschen Sie den Cloudendpunkt. 
+3. Löschen Sie die Synchronisierungsgruppe.
+4. Wenn das Cloudtiering auf einem Serverendpunkt aktiviert wurde, löschen Sie die verwaisten mehrstufigen Dateien auf dem Server, indem Sie die Schritte ausführen, die im Abschnitt [Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) dokumentiert sind.
+5. Erstellen Sie die Synchronisierungsgruppe neu.
 
 ### <a name="common-troubleshooting-steps"></a>Allgemeine Schritte zur Problembehandlung
 <a id="troubleshoot-storage-account"></a>**Überprüfen Sie, ob das Speicherkonto vorhanden ist.**  
@@ -618,26 +809,13 @@ Dieser Fehler tritt aufgrund eines internen Problems mit der Synchronisierungsda
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
-$agentPath = "C:\Program Files\Azure\StorageSyncAgent"
 $region = "<Az_Region>"
 $resourceGroup = "<RG_Name>"
 $syncService = "<storage-sync-service>"
 $syncGroup = "<sync-group>"
 
-# Import the Azure File Sync management cmdlets
-Import-Module "$agentPath\StorageSync.Management.PowerShell.Cmdlets.dll"
-
-# Log into the Azure account and put the returned account information
-# in a reference variable.
-$acctInfo = Connect-AzAccount
-
-# this variable stores your subscription ID 
-# get the subscription ID by logging onto the Azure portal
-$subID = $acctInfo.Context.Subscription.Id
-
-# this variable holds your Azure Active Directory tenant ID
-# use Login-AzAccount to get the ID from that context
-$tenantID = $acctInfo.Context.Tenant.Id
+# Log into the Azure account
+Connect-AzAccount
 
 # Check to ensure Azure File Sync is available in the selected Azure
 # region.
@@ -653,7 +831,7 @@ if ($regions -notcontains $region) {
         " selected Azure Region or the region is mistyped.")
 }
 
-# Check to ensure resource group exists and create it if doesn't
+# Check to ensure resource group exists
 $resourceGroups = [System.String[]]@()
 Get-AzResourceGroup | ForEach-Object { 
     $resourceGroups += $_.ResourceGroupName 
@@ -663,24 +841,15 @@ if ($resourceGroups -notcontains $resourceGroup) {
     throw [System.Exception]::new("The provided resource group $resourceGroup does not exist.")
 }
 
-# the following command creates an AFS context 
-# it enables subsequent AFS cmdlets to be executed with minimal 
-# repetition of parameters or separate authentication 
-Login-AzStorageSync `
-    –SubscriptionId $subID `
-    -ResourceGroupName $resourceGroup `
-    -TenantId $tenantID `
-    -Location $region
-
 # Check to make sure the provided Storage Sync Service
 # exists.
 $syncServices = [System.String[]]@()
 
 Get-AzStorageSyncService -ResourceGroupName $resourceGroup | ForEach-Object {
-    $syncServices += $_.DisplayName
+    $syncServices += $_.StorageSyncServiceName
 }
 
-if ($storageSyncServices -notcontains $syncService) {
+if ($syncServices -notcontains $syncService) {
     throw [System.Exception]::new("The provided Storage Sync Service $syncService does not exist.")
 }
 
@@ -688,7 +857,7 @@ if ($storageSyncServices -notcontains $syncService) {
 $syncGroups = [System.String[]]@()
 
 Get-AzStorageSyncGroup -ResourceGroupName $resourceGroup -StorageSyncServiceName $syncService | ForEach-Object {
-    $syncGroups += $_.DisplayName
+    $syncGroups += $_.SyncGroupName
 }
 
 if ($syncGroups -notcontains $syncGroup) {
@@ -698,32 +867,16 @@ if ($syncGroups -notcontains $syncGroup) {
 # Get reference to cloud endpoint
 $cloudEndpoint = Get-AzStorageSyncCloudEndpoint `
     -ResourceGroupName $resourceGroup `
-    -StorageSyncServiceName $storageSyncService `
+    -StorageSyncServiceName $syncService `
     -SyncGroupName $syncGroup
 
 # Get reference to storage account
-$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup | Where-Object { 
+$storageAccount = Get-AzStorageAccount | Where-Object { 
     $_.Id -eq $cloudEndpoint.StorageAccountResourceId
 }
 
 if ($storageAccount -eq $null) {
-    Write-Host "The storage account referenced in the cloud endpoint does not exist."
-}
-```
----
-
-<a id="troubleshoot-network-rules"></a>**Stellen Sie sicher, dass das Speicherkonto keine Netzwerkregeln enthält.**  
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-1. Wählen Sie im Speicherkonto auf der linken Seite **Firewalls und virtuelle Netzwerke** aus.
-2. Innerhalb des Speicherkontos sollte das Optionsfeld **Zugriff von allen Netzwerken zulassen** aktiviert sein.
-    ![Ein Screenshot, der die deaktivierte Firewall und Netzwerkregeln des Speicherkontos zeigt](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
-
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
-```powershell
-if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
-    [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
-    Write-Host ("The storage account referenced contains network " + `
-        "rules which are not currently supported by Azure File Sync.")
+    throw [System.Exception]::new("The storage account referenced in the cloud endpoint does not exist.")
 }
 ```
 ---
@@ -737,19 +890,19 @@ if ($storageAccount.NetworkRuleSet.DefaultAction -ne
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
-    $_.Name -eq $cloudEndpoint.StorageAccountShareName -and
+    $_.Name -eq $cloudEndpoint.AzureFileShareName -and
     $_.IsSnapshot -eq $false
 }
 
 if ($fileShare -eq $null) {
-    Write-Host "The Azure file share referenced by the cloud endpoint does not exist"
+    throw [System.Exception]::new("The Azure file share referenced by the cloud endpoint does not exist")
 }
 ```
 ---
 
 <a id="troubleshoot-rbac"></a>**Stellen Sie sicher, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt.**  
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
-1. Klicken Sie links im Inhaltsverzeichnis auf **Zugriffssteuerung (IAM)**.
+1. Klicken Sie links im Inhaltsverzeichnis auf **Zugriffssteuerung (IAM)** .
 1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Liste der Benutzer und Anwendungen (*Dienstprinzipale*) anzuzeigen, die Zugriff auf Ihr Speicherkonto besitzen.
 1. Stellen Sie sicher, dass der **hybride Dateisynchronisierungsdienst** in der Liste mit der Rolle **Lese- und Datenzugriff** angezeigt wird. 
 
@@ -763,22 +916,10 @@ if ($fileShare -eq $null) {
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
-$foundSyncPrincipal = $false
-Get-AzRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 
-    if ($_.DisplayName -eq "Hybrid File Sync Service") {
-        $foundSyncPrincipal = $true
-        if ($_.RoleDefinitionName -ne "Reader and Data Access") {
-            Write-Host ("The storage account has the Azure File Sync " + `
-                "service principal authorized to do something other than access the data " + `
-                "within the referenced Azure file share.")
-        }
+$role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Hybrid File Sync Service" }
 
-        break
-    }
-}
-
-if (!$foundSyncPrincipal) {
-    Write-Host ("The storage account does not have the Azure File Sync " + `
+if ($role -eq $null) {
+    throw [System.Exception]::new("The storage account does not have the Azure File Sync " + `
                 "service principal authorized to access the data within the " + ` 
                 "referenced Azure file share.")
 }
@@ -826,14 +967,14 @@ Es gibt zwei Hauptklassen von Fehlern, die für jeden Fehlerpfad auftreten könn
 
 In den folgenden Abschnitten wird beschrieben, wie Sie Probleme mit dem Cloudtiering behandeln und ermitteln, ob ein Problem ein Cloudspeicherproblem oder ein Serverproblem ist.
 
-<a id="monitor-tiering-activity"></a>**Gewusst wie: Überwachen der Tieringaktivität auf einem Server**  
+### <a name="how-to-monitor-tiering-activity-on-a-server"></a>Gewusst wie: Überwachen der Tieringaktivität auf einem Server  
 Um die Tieringaktivität auf einem Server zu überwachen, verwenden Sie die Ereignis-IDs 9003, 9016 und 9029 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“).
 
 - Die Ereignis-ID 9003 ermöglicht die Fehlerverteilung für einen Serverendpunkt. Beispiele: Gesamtfehlerzahl, ErrorCode usw. Beachten Sie, dass ein Ereignis pro Fehlercode protokolliert wird.
 - Die Ereignis-ID 9016 stellt Ghostingergebnisse für ein Volume bereit. Beispiele: Freier Speicherplatz in Prozent, Anzahl der Dateien in der Sitzung, für die ein Ghosting durchgeführt wurde, Anzahl von Dateien, bei denen beim Ghosting ein Fehler aufgetreten ist usw.
 - Die Ereignis-ID 9029 bietet Informationen zu Ghostingsitzungen für einen Serverendpunkt. Beispiele: Anzahl der in der Sitzung herangezogenen Dateien, Anzahl der Dateien in der Sitzung, für die ein Tiering durchgeführt wurde, Anzahl der Dateien, für die bereits ein Tiering durchgeführt ist usw.
 
-<a id="monitor-recall-activity"></a>**Gewusst wie: Überwachen der Rückrufaktivität auf einem Server**  
+### <a name="how-to-monitor-recall-activity-on-a-server"></a>Gewusst wie: Überwachen der Rückrufaktivität auf einem Server
 Um die Rückrufaktivität auf einem Server zu überwachen, verwenden Sie die Ereignis-IDs 9005, 9006, 9009 und 9059 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“).
 
 - Die Ereignis-ID 9005 bietet Zuverlässigkeit beim Rückruf für einen Serverendpunkt. Beispiele: Gesamtanzahl eindeutiger Dateien, auf die zugegriffen wird, und Gesamtanzahl eindeutiger Dateien, bei denen beim Zugriff ein Fehler aufgetreten ist.
@@ -841,7 +982,7 @@ Um die Rückrufaktivität auf einem Server zu überwachen, verwenden Sie die Ere
 - Die Ereignis-ID 9009 bietet Informationen zu Rückrufsitzungen für einen Serverendpunkt. Hierzu zählen beispielsweise DurationSeconds, CountFilesRecallSucceeded, CountFilesRecallFailed usw.
 - Die Ereignis-ID 9059 bietet Informationen zur Anwendungsrückrufverteilung für einen Serverendpunkt. Hierzu zählen beispielsweise ShareId, Anwendungsname und TotalEgressNetworkBytes.
 
-<a id="files-fail-tiering"></a>**Beheben von Problemen bei Dateien, bei denen kein Tiering möglich ist**  
+### <a name="how-to-troubleshoot-files-that-fail-to-tier"></a>So beheben Sie Probleme bei Dateien, bei denen kein Tiering möglich ist
 Wenn Tieringfehler von Dateien auf Azure Files auftreten:
 
 1. Überprüfen Sie in der Ereignisanzeige die Telemetrie-, Betriebs- und Diagnoseereignisprotokolle unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“. 
@@ -857,7 +998,7 @@ Wenn Tieringfehler von Dateien auf Azure Files auftreten:
 > [!NOTE]
 > Eine Ereignis-ID 9003 wird einmal pro Stunde im Telemetrieereignisprotokoll protokolliert, wenn beim Tiering einer Datei ein Fehler auftritt (pro Fehlercode wird ein Ereignis protokolliert). Die Betriebs- und Diagnoseereignisprotokolle sollten verwendet werden, wenn zusätzliche Informationen zum Diagnostizieren eines Problems benötigt werden.
 
-<a id="files-fail-recall"></a>**Beheben von Rückruffehlern bei Dateien**  
+### <a name="how-to-troubleshoot-files-that-fail-to-be-recalled"></a>Beheben von Rückruffehlern bei Dateien  
 Wenn bei Dateien Rückruffehler auftreten:
 1. Überprüfen Sie in der Ereignisanzeige die Telemetrie-, Betriebs- und Diagnoseereignisprotokolle unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“.
     1. Stellen Sie sicher, dass die Dateien in der Azure-Dateifreigabe vorhanden sind.
@@ -869,7 +1010,88 @@ Wenn bei Dateien Rückruffehler auftreten:
 > [!NOTE]
 > Eine Ereignis-ID 9006 wird einmal pro Stunde im Telemetrieereignisprotokoll protokolliert, wenn beim Rückruf einer Datei ein Fehler auftritt (pro Fehlercode wird ein Ereignis protokolliert). Die Betriebs- und Diagnoseereignisprotokolle sollten verwendet werden, wenn zusätzliche Informationen zum Diagnostizieren eines Problems benötigt werden.
 
-<a id="files-unexpectedly-recalled"></a>**Fehlerbehebung bei Dateien, die unerwartet auf einem Server zurückgerufen werden**  
+### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden
+Auf mehrstufige Dateien auf einem Server kann nicht mehr zugegriffen werden, wenn für die Dateien vor dem Löschen eines Serverendpunkts kein Rückruf erfolgt.
+
+Protokollierte Fehler, wenn auf mehrstufige Dateien nicht zugegriffen werden kann
+- Beim Synchronisieren einer Datei wird der Fehlercode -2147942467 (0x80070043 – ERROR_BAD_NET_NAME) im ItemResults-Ereignisprotokoll protokolliert.
+- Beim Zurückrufen einer Datei wird der Fehlercode -2134376393 (0x80c80037 – ECS_E_SYNC_SHARE_NOT_FOUND) im RecallResults-Ereignisprotokoll protokolliert.
+
+Die Wiederherstellung des Zugriffs auf Ihre mehrstufigen Dateien ist möglich, wenn die folgenden Bedingungen erfüllt sind:
+- Serverendpunkt wurde innerhalb der letzten 30 Tage gelöscht
+- Cloudendpunkt wurde nicht gelöscht 
+- Dateifreigabe wurde nicht gelöscht
+- Synchronisierungsgruppe wurde nicht gelöscht
+
+Wenn die obigen Bedingungen erfüllt sind, können Sie den Zugriff auf die Dateien auf dem Server wiederherstellen, indem Sie den Serverendpunkt auf dem Server innerhalb von 30 Tagen unter demselben Pfad in derselben Synchronisierungsgruppe neu erstellen. 
+
+Falls die obigen Bedingungen nicht erfüllt sind, ist das Wiederherstellen des Zugriffs nicht möglich. Der Grund ist, dass diese mehrstufigen Dateien auf dem Server jetzt verwaist sind. Befolgen Sie die Anleitung unten, um die verwaisten mehrstufigen Dateien zu entfernen.
+
+**Hinweise**
+- Wenn auf mehrstufige Dateien auf dem Server nicht zugegriffen werden kann, sollte die vollständige Datei weiterhin zugänglich sein, wenn Sie direkt auf die Azure-Dateifreigabe zugreifen.
+- Führen Sie beim Löschen eines Serverendpunkts die Schritte unter [Entfernen eines Serverendpunkts](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint) aus, um verwaiste mehrstufige Dateien in Zukunft zu verhindern.
+
+<a id="get-orphaned"></a>**Abrufen der Liste mit den verwaisten mehrstufigen Dateien** 
+
+1. Überprüfen Sie, ob die Version v5.1 oder höher des Azure-Dateisynchronisierungs-Agents installiert ist.
+2. Führen Sie die folgenden PowerShell-Befehle aus, um verwaiste mehrstufige Dateien aufzulisten:
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
+$orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
+```
+3. Speichern Sie die Ausgabedatei „OrphanTieredFiles.txt“, falls Dateien nach dem Löschen aus der Sicherung wiederhergestellt werden müssen.
+
+<a id="remove-orphaned"></a>**Entfernen von verwaisten mehrstufigen Dateien** 
+
+*Option 1: Löschen der verwaisten mehrstufigen Dateien*
+
+Bei dieser Option werden die verwaisten mehrstufigen Dateien auf der Windows Server-Instanz gelöscht. Es ist aber erforderlich, den Serverendpunkt zu entfernen, falls er vorhanden ist (aufgrund der Neuerstellung nach 30 Tagen oder der Verbindung mit einer anderen Synchronisierungsgruppe). Es kommt zu Dateikonflikten, wenn Dateien auf der Windows Server-Instanz oder der Azure-Dateifreigabe aktualisiert werden, bevor der Serverendpunkt neu erstellt wurde.
+
+1. Überprüfen Sie, ob Version v5.1 oder höher des Azure-Dateisynchronisierungs-Agents installiert ist.
+2. Sichern Sie die Azure-Dateifreigabe und den Serverendpunkt-Speicherort.
+3. Entfernen Sie den Serverendpunkt in der Synchronisierungsgruppe (falls vorhanden), indem Sie die Schritte unter [Entfernen eines Serverendpunkts](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint) ausführen.
+
+> [!Warning]  
+> Wenn der Serverendpunkt vor der Verwendung des Cmdlets „Remove-StorageSyncOrphanedTieredFiles“ nicht entfernt wird, wird durch das Löschen der verwaisten mehrstufigen Datei auf dem Server die gesamte Datei auf der Azure-Dateifreigabe gelöscht. 
+
+4. Führen Sie die folgenden PowerShell-Befehle aus, um verwaiste mehrstufige Dateien aufzulisten:
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
+$orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
+```
+5. Speichern Sie die Ausgabedatei „OrphanTieredFiles.txt“, falls Dateien nach dem Löschen aus der Sicherung wiederhergestellt werden müssen.
+6. Führen Sie die folgenden PowerShell-Befehle aus, um verwaiste mehrstufige Dateien zu löschen:
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFilesRemoved = Remove-StorageSyncOrphanedTieredFiles -Path <folder path containing orphaned tiered files> -Verbose
+$orphanFilesRemoved.OrphanedTieredFiles > DeletedOrphanFiles.txt
+```
+**Hinweise** 
+- Auf dem Server geänderte mehrstufige Dateien, die nicht mit der Azure-Dateifreigabe synchronisiert werden, werden gelöscht.
+- Mehrstufige Dateien, auf die zugegriffen werden kann (nicht verwaist), werden nicht gelöscht.
+- Nicht mehrstufige Dateien verbleiben auf dem Server.
+
+7. Optional: Erstellen Sie den Serverendpunkt neu, wenn er in Schritt 3 gelöscht wurde.
+
+*Option 2: Bereitstellen der Azure-Dateifreigabe und Kopieren der Dateien, die auf dem Server verwaist sind, in die lokale Umgebung*
+
+Bei dieser Option muss der Server nicht entfernt werden, aber es muss genügend freier Speicherplatz auf dem Datenträger vorhanden sein, um die gesamten Dateien in die lokale Umgebung kopieren zu können.
+
+1. Führen Sie die [Bereitstellung](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) der Azure-Dateifreigabe auf der Windows Server-Instanz durch, die über verwaiste mehrstufige Dateien verfügt.
+2. Führen Sie die folgenden PowerShell-Befehle aus, um verwaiste mehrstufige Dateien aufzulisten:
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+$orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
+$orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
+```
+3. Verwenden Sie die Ausgabedatei „OrphanTieredFiles.txt“, um verwaiste mehrstufige Dateien auf dem Server zu identifizieren.
+4. Überschreiben Sie die verwaisten mehrstufigen Dateien, indem Sie die vollständige Datei von der Azure-Dateifreigabe auf die Windows Server-Instanz kopieren.
+
+### <a name="how-to-troubleshoot-files-unexpectedly-recalled-on-a-server"></a>Durchführen der Problembehandlung für Dateien, die unerwartet auf einem Server zurückgerufen werden  
 Virenschutz, Sicherung und andere Anwendungen, die viele Dateien lesen, können zu unbeabsichtigten Rückrufen führen, wenn sie das Offline-überspringen-Attribut nicht berücksichtigen und das Lesen des Inhalts dieser Dateien nicht überspringen. Das Überspringen von Offlinedateien für Produkte, die diese Option unterstützen, hilft, unbeabsichtigte Rückrufe während Vorgängen wie Virusscans oder Sicherungsaufträgen zu verhindern.
 
 Wenden Sie sich an den Softwareanbieter, um weitere Informationen zu den erforderlichen Konfigurationsschritten zu erhalten, damit die Lösung das Lesen von Offlinedateien überspringt.
@@ -891,6 +1113,8 @@ Wenn Probleme mit der Azure-Dateisynchronisierung auf einem Server auftreten, f�
 
 Wenn das Problem nicht behoben wird, führen Sie das AFSDiag-Tool aus:
 1. Erstellen Sie eine Verzeichnis zum Speichern der Ausgabe von AFSDiag (z.B. „C:\Ausgabe“).
+    > [!NOTE]
+    >AFSDiag löscht vor der Protokollerfassung den gesamten Inhalt des Ausgabeverzeichnisses. Geben Sie einen Speicherort für die Ausgaben an, der keine Daten enthält.
 2. Öffnen Sie ein PowerShell-Fenster mit erhöhten Rechten, und führen Sie die folgenden Befehle aus (drücken Sie nach jedem Befehl die EINGABETASTE):
 
     ```powershell

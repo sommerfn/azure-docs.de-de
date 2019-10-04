@@ -1,21 +1,21 @@
 ---
-title: Query Performance Insight in Azure Database for PostgreSQL
-description: In diesem Artikel wird das Feature Query Performance Insight in Azure Database for PostgreSQL beschrieben.
+title: Query Performance Insight in Azure Database for PostgreSQL – Einzelserver
+description: In diesem Artikel wird das Feature Query Performance Insight in Azure Database for PostgreSQL (Einzelserver) beschrieben.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/28/2019
-ms.openlocfilehash: 56abdd819e78312e64209078c3966826385df7bc
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.date: 08/21/2019
+ms.openlocfilehash: 748c6f08da535013724f68b8be424e50a2d49dfd
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620732"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764428"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
-**Anwendungsbereich:** Azure Database for PostgreSQL 9.6 und 10
+**Anwendungsbereich:** Azure Database for PostgreSQL – Einzelserverversionen 9.6, 10, 11
 
 Mithilfe von Query Performance Insight können Sie schnell die Abfragen mit den längsten Ausführungszeiten identifizieren, wie sie sich im Laufe der Zeit ändern und welche Wartezeiten sie beeinflussen.
 
@@ -41,6 +41,9 @@ In der Tabelle unter dem Diagramm finden Sie weitere Informationen zu Abfragen m
 Auf der Registerkarte **Wartestatistik** werden die entsprechenden Visualisierungen zu Wartevorgängen angezeigt.
 
 ![Query Performance Insight-Wartestatistiken](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+
+## <a name="considerations"></a>Überlegungen
+* Query Performance Insight ist für [Lesereplikate](concepts-read-replicas.md) nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [Überwachung und Optimierung](concepts-monitoring.md) in Azure Database for PostgreSQL.

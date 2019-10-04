@@ -3,17 +3,18 @@ title: 'Schnellstart: Bereitstellen von Docker-Containern in Azure Container Ins
 description: In diesem Schnellstart verwenden Sie das Azure-Portal, um schnell eine containerbasierte Web-App bereitzustellen, die in einer isolierten Azure-Containerinstanz ausgeführt wird.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 04/17/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f4d232d4d6043ede3979db67e5cd35130d931bef
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: bf3bea07fa2fcb67a467d4087ea9e2ccbfd95206
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369444"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325795"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Schnellstart: Bereitstellen einer Containerinstanz in Azure mithilfe des Azure-Portals
 
@@ -35,31 +36,29 @@ Klicken Sie auf **Ressource erstellen** > **Container** > **Container Instances*
 
 ![Beginnen Sie, eine neue Containerinstanz im Azure-Portal zu erstellen][aci-portal-01]
 
-Geben Sie die folgenden Werte in die Textfelder **Containername**, **Containerimage** und **Ressourcengruppe** ein. Behalten Sie für die anderen Werte die Standardwerte bei, und klicken Sie auf **OK**.
+Geben Sie auf der Seite **Allgemeine Informationen** die folgenden Werte in die Textfelder für **Ressourcengruppe**, **Containername** und **Containerimage** ein. Behalten Sie für die anderen Werte die Standardwerte bei, und klicken Sie auf **OK**.
 
+* Ressourcengruppe: **Neue erstellen** > `myresourcegroup`
 * Containername: `mycontainer`
 * Containerimage: `mcr.microsoft.com/azuredocs/aci-helloworld`
-* Ressourcengruppe: **Neue erstellen** > `myResourceGroup`
 
 ![Konfigurieren grundlegender Einstellungen für eine neue Containerinstanz im Azure-Portal][aci-portal-03]
 
-Behalten Sie für diesen Schnellstart die Standardeinstellung **Öffentlich** bei, um das öffentliche Microsoft-Image `aci-helloworld` bereitzustellen. Dieses Image verpackt eine kleine in Node.js geschriebene Web-App, die eine statische HTML-Seite bedient.
+Verwenden Sie für diesen Schnellstart die Standardeinstellung für **Imagetyp** mit **Öffentlich** bei, um das öffentliche Microsoft-Image `aci-helloworld` bereitzustellen. Dieses Linux-Image verpackt eine kleine in Node.js geschriebene Web-App, die eine statische HTML-Seite bedient.
 
-Geben Sie unter **Konfiguration** eine **DNS-Namensbezeichnung** für Ihren Container an. Der Name muss in der Azure-Region, in der Sie die Containerinstanz erstellen, eindeutig sein. Ihr Container ist öffentlich unter `<dns-name-label>.<region>.azurecontainer.io` erreichbar. Falls die Fehlermeldung „DNS-Namensbezeichnung ist nicht verfügbar.“ angezeigt wird, sollten Sie eine andere DNS-Namensbezeichnung verwenden.
-
-Übernehmen Sie für die anderen Einstellungen unter **Konfiguration** die Standardwerte, und klicken Sie anschließend zum Überprüfen der Konfiguration auf **OK**.
+Geben Sie auf der Seite **Netzwerk** eine **DNS-Namensbezeichnung** für Ihren Container an. Der Name muss in der Azure-Region, in der Sie die Containerinstanz erstellen, eindeutig sein. Ihr Container ist öffentlich unter `<dns-name-label>.<region>.azurecontainer.io` erreichbar. Falls die Fehlermeldung „DNS-Namensbezeichnung ist nicht verfügbar.“ angezeigt wird, sollten Sie eine andere DNS-Namensbezeichnung verwenden.
 
 ![Konfigurieren einer neuen Containerinstanz im Azure-Portal][aci-portal-04]
 
-Nach Abschluss der Überprüfung wird eine Zusammenfassung der Containereinstellungen angezeigt. Wählen Sie **OK** aus, um Ihre Anforderung zur Containerbereitstellung zu übermitteln.
+Behalten Sie für die anderen Einstellungen die Standardwerte bei, und klicken Sie auf **Überprüfen + Erstellen**.
+
+Nach Abschluss der Überprüfung wird eine Zusammenfassung der Containereinstellungen angezeigt. Wählen Sie **Erstellen** aus, um Ihre Anforderung zur Containerbereitstellung zu übermitteln.
 
 ![Zusammenfassung der Einstellungen für eine neue Containerinstanz im Azure-Portal][aci-portal-05]
 
 Wenn die Bereitstellung startet, wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die Bereitstellung durchgeführt wird. Eine weitere Benachrichtigung wird angezeigt, nachdem die Containergruppe bereitgestellt wurde.
 
-![Status der Erstellung einer neuen Containerinstanz im Azure-Portal][aci-portal-08]
-
-Öffnen Sie die Übersicht für die Containergruppe, indem Sie zu **Ressourcengruppen** > **myResourceGroup** > **mycontainer** navigieren. Beachten Sie den **FQDN** (vollqualifizierter Domänenname) der Containerinstanz sowie den **Status**.
+Öffnen Sie die Übersicht für die Containergruppe, indem Sie zu **Ressourcengruppen** > **myresourcegroup** > **mycontainer** navigieren. Beachten Sie den **FQDN** (vollqualifizierter Domänenname) der Containerinstanz sowie den **Status**.
 
 ![Übersicht über die Containergruppe im Azure-Portal][aci-portal-06]
 

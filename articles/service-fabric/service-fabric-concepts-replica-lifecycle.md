@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: 7f8638365b40395a5dd82457c40e5c15209ba1a7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211387"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60882387"
 ---
 # <a name="replicas-and-instances"></a>Replikate und Instanzen 
 Dieser Artikel bietet einen Überblick über den Lebenszyklus von Replikaten zustandsbehafteter Dienste und Instanzen zustandsloser Dienste.
@@ -63,11 +63,11 @@ Ein InBuild-Replikat ist ein Replikat, das erstellt oder für das Hinzufügen zu
 
 Wenn der Anwendungshost oder der Knoten für ein InBuild-Replikat abstürzt, geht es in den Zustand „Ausgefallen“ über.
 
-   - **Primäre InBuild-Replikate:** Primäre InBuild-Replikate sind die ersten Replikate für eine Partition. Diese Replikate werden normalerweise verwendet, wenn die Partition erstellt wird. Primäre InBuild-Replikate entstehen auch, wenn alle Replikate einer Partition neu gestartet oder verworfen werden.
+   - **Primäre InBuild-Replikate**: Primäre InBuild-Replikate sind die ersten Replikate für eine Partition. Diese Replikate werden normalerweise verwendet, wenn die Partition erstellt wird. Primäre InBuild-Replikate entstehen auch, wenn alle Replikate einer Partition neu gestartet oder verworfen werden.
 
-   - **IdleSecondary-InBuild-Replikate:** Hierbei handelt es sich entweder um neue Replikate, die vom Cluster Resource Manager erstellt werden, oder um vorhandene Replikate, die ausgefallen sind und wieder der Gruppe hinzugefügt werden müssen. Diese Replikate werden vom primären Replikat mit Anfangsdaten gefüllt oder erstellt, bevor sie der Replikatgruppe als ActiveSecondary hinzugefügt werden und an der Quorumsbestätigung von Vorgängen teilnehmen können.
+   - **IdleSecondary-InBuild-Replikate**: Hierbei handelt es sich entweder um neue Replikate, die vom Cluster Resource Manager erstellt werden, oder um vorhandene Replikate, die ausgefallen sind und wieder der Gruppe hinzugefügt werden müssen. Diese Replikate werden vom primären Replikat mit Anfangsdaten gefüllt oder erstellt, bevor sie der Replikatgruppe als ActiveSecondary hinzugefügt werden und an der Quorumsbestätigung von Vorgängen teilnehmen können.
 
-   - **ActiveSecondary-InBuild-Replikate:** Dieser Zustand wird bei einigen Abfragen beobachtet. Er ist eine Optimierung, bei der die Replikatgruppe nicht geändert wird, aber ein Replikat erstellt werden muss. Das Replikat selbst folgt den normalen Zustandscomputerübergängen (wie im Abschnitt für Replikatrollen beschrieben).
+   - **ActiveSecondary-InBuild-Replikate**: Dieser Zustand ist bei einigen Abfragen zu beobachten. Er ist eine Optimierung, bei der die Replikatgruppe nicht geändert wird, aber ein Replikat erstellt werden muss. Das Replikat selbst folgt den normalen Zustandscomputerübergängen (wie im Abschnitt für Replikatrollen beschrieben).
 
 ### <a name="ready-rd"></a>Bereit (Ready, RD)
 Ein Replikat mit dem Status „Bereit“ ist ein Replikat, das an der Replikation und an Quorumsbestätigungen von Vorgängen beteiligt ist. Der Zustand „Bereit“ gilt für primäre und aktive sekundäre Replikate.
@@ -77,9 +77,9 @@ Wenn der Anwendungshost oder der Knoten für ein Replikat mit dem Status „Bere
 ### <a name="closing-cl"></a>Schließen (Closing, CL)
 Ein Replikat wechselt in den folgenden Szenarien in den Zustand „Schließen“:
 
-- **Herunterfahren des Codes für das Replikat:** Service Fabric muss möglicherweise den ausgeführten Code für ein Replikat herunterfahren. Hierfür kommen viele Gründe infrage, beispielsweise ein Anwendungs-, Fabric- oder Infrastrukturupgrade oder ein vom Replikat gemeldeter Fehler. Wenn das Replikat geschlossen ist, geht es in den Zustand „Ausgefallen“ über. Der auf dem Datenträger gespeicherte, diesem Replikat zugeordnete persistente Zustand wird nicht bereinigt.
+- **Herunterfahren des Codes für das Replikat**: Service Fabric muss möglicherweise den aktiven Code für ein Replikat herunterfahren. Hierfür kommen viele Gründe infrage, beispielsweise ein Anwendungs-, Fabric- oder Infrastrukturupgrade oder ein vom Replikat gemeldeter Fehler. Wenn das Replikat geschlossen ist, geht es in den Zustand „Ausgefallen“ über. Der auf dem Datenträger gespeicherte, diesem Replikat zugeordnete persistente Zustand wird nicht bereinigt.
 
-- **Entfernen des Replikats aus dem Cluster:** Service Fabric muss möglicherweise den persistenten Zustand entfernen und den ausgeführten Code für ein Replikat herunterfahren. Hierfür kommen viele Gründe infrage, z.B. ein Lastenausgleich.
+- **Entfernen des Replikats aus dem Cluster**: Service Fabric muss möglicherweise den persistenten Zustand entfernen und den aktiven Code für ein Replikat herunterfahren. Hierfür kommen viele Gründe infrage, z.B. ein Lastenausgleich.
 
 ### <a name="dropped-dd"></a>Verworfen (Dropped, DD)
 Im Zustand „Verworfen“ wird die Instanz nicht mehr auf dem Knoten ausgeführt. Es ist auch kein Zustand auf dem Knoten verblieben. An diesem Punkt behält Service Fabric die Metadaten über diese Instanz bei, die schließlich ebenfalls gelöscht werden.
@@ -116,25 +116,25 @@ Die Replikatrolle ist im Zustand „StandBy“ nicht relevant.
 ## <a name="replica-role"></a>Replikatrolle 
 Die Rolle des Replikats bestimmt seine Funktion in der Replikatgruppe:
 
-- **Primär (P):** Es gibt ein primäres Replikat in der Replikatgruppe, das für die Ausführung von Lese- und Schreibvorgängen verantwortlich ist. 
-- **ActiveSecondary (S):** Hierbei handelt es sich um Replikate, die Zustandsupdates vom primären Replikat empfangen, anwenden und dann Bestätigungen senden. In der Replikatgruppe sind mehrere aktive sekundäre Replikate vorhanden. Die Anzahl dieser aktiven sekundären Replikate bestimmt die Anzahl der Fehler, die der Dienst verarbeiten kann.
-- **IdleSecondary (I):** Diese Replikate werden von dem primären Replikat erstellt. Sie empfangen den Zustand vom primären Replikat, bevor sie zum aktiven sekundären Replikat heraufgestuft werden können. 
-- **Kein (N):** Diese Replikate haben in der Replikatgruppe keine Zuständigkeit.
-- **Unbekannt (U):** Dies ist die erste Rolle eines Replikats, bevor es den **ChangeRole**-API-Aufruf von Service Fabric empfängt.
+- **Primär (P)** : Es gibt ein primäres Replikat in der Replikatgruppe, das für die Ausführung von Lese- und Schreibvorgängen verantwortlich ist. 
+- **ActiveSecondary (S)** : Hierbei handelt es sich um Replikate, die Zustandsupdates vom primären Replikat empfangen, anwenden und dann Bestätigungen senden. In der Replikatgruppe sind mehrere aktive sekundäre Replikate vorhanden. Die Anzahl dieser aktiven sekundären Replikate bestimmt die Anzahl der Fehler, die der Dienst verarbeiten kann.
+- **IdleSecondary (I)** : Diese Replikate werden von dem primären Replikat erstellt. Sie empfangen den Zustand vom primären Replikat, bevor sie zum aktiven sekundären Replikat heraufgestuft werden können. 
+- **Kein (N)** : Diese Replikate haben in der Replikatgruppe keine Zuständigkeit.
+- **Unbekannt (U)** : Dies ist die Anfangsrolle eines Replikats, bevor es irgendeinen **ChangeRole**-API-Aufruf von Service Fabric empfängt.
 
 In der folgenden Abbildung sind die Replikatrollenübergänge und einige Beispielszenarien dargestellt, in denen sie auftreten können:
 
 ![Replikatrolle](./media/service-fabric-concepts-replica-lifecycle/role.png)
 
-- U -> P: Erstellen eines neuen primären Replikats
-- U -> I: Erstellen eines neuen im Leerlauf befindlichen Replikats
-- U -> N: Löschen eines StandBy-Replikats
-- I -> S: Heraufstufen des im Leerlauf befindlichen sekundären Replikats zum aktiven sekundären Replikat, sodass es die Teilnahme gegenüber dem Quorum bestätigt
-- I -> P: Heraufstufen des im Leerlauf befindlichen sekundären Replikats zum primären Replikat. Dies kann bei speziellen Neukonfigurationen vorkommen, wenn das im Leerlauf befindliche sekundäre Replikat der richtige Kandidat für das primäre Replikat ist.
-- I -> N: Löschen des im Leerlauf befindlichen sekundären Replikats
-- S -> P: Heraufstufen des aktiven sekundären Replikats zum primären Replikat. Dies kann aufgrund eines Failovers des primären Replikats oder einer durch den Cluster Resource Manager initiierten Verschiebung der Fall sein. Beispielsweise kann dies eine Reaktion auf ein Anwendungsupgrade oder einen Lastenausgleich sein.
-- S -> N: Löschen des aktiven sekundären Replikats
-- P -> S: Herabstufen des primären Replikats. Dies kann aufgrund einer durch den Cluster Resource Manager initiierten Verschiebung des primären Replikats der Fall sein. Beispielsweise kann dies eine Reaktion auf ein Anwendungsupgrade oder einen Lastenausgleich sein.
+- U -> P: Erstellen eines neuen primären Replikats.
+- U -> I: Erstellen eines neuen im Leerlauf befindlichen Replikats.
+- U -> N: Löschen eines StandBy-Replikats.
+- I -> S: Höherstufung des im Leerlauf befindlichen sekundären Replikats zum aktiven sekundären Replikat, sodass es die Teilnahme gegenüber dem Quorum bestätigt.
+- I -> P: Höherstufung des im Leerlauf befindlichen sekundären Replikats zum primären Replikat. Dies kann bei speziellen Neukonfigurationen vorkommen, wenn das im Leerlauf befindliche sekundäre Replikat der richtige Kandidat für das primäre Replikat ist.
+- I -> N: Löschen des im Leerlauf befindlichen sekundären Replikats.
+- S -> P: Höherstufung des aktiven sekundären Replikats zum primären Replikat. Dies kann aufgrund eines Failovers des primären Replikats oder einer durch den Cluster Resource Manager initiierten Verschiebung der Fall sein. Beispielsweise kann dies eine Reaktion auf ein Anwendungsupgrade oder einen Lastenausgleich sein.
+- S -> N: Löschen des aktiven sekundären Replikats.
+- P -> S: Herabstufung des primären Replikats. Dies kann aufgrund einer durch den Cluster Resource Manager initiierten Verschiebung des primären Replikats der Fall sein. Beispielsweise kann dies eine Reaktion auf ein Anwendungsupgrade oder einen Lastenausgleich sein.
 - P -> N: Löschen des primären Replikats.
 
 > [!NOTE]

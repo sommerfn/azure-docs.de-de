@@ -1,6 +1,6 @@
 ---
 title: Taxonomie von Bildkategorien – maschinelles Sehen
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Lernen Sie die 86 Kategorien der Taxonomie für die Maschinelles Sehen-API in Azure Cognitive Services kennen.
 services: cognitive-services
 author: KellyDF
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: reference
-ms.date: 03/21/2019
+ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: bb8c6814a959cb9e96a3c4565603d634c250b02a
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 42562f3e19844621cb3893cb4ce185e85cf7e0ab
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350971"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68565751"
 ---
-# <a name="86-category-taxonomy"></a>86 Kategorien der Taxonomie
+# <a name="computer-vision-86-category-taxonomy"></a>Taxonomie mit 86 Kategorien für maschinelles Sehen
 
 abstract_
 

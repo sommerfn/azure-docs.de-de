@@ -1,5 +1,5 @@
 ---
-title: Senden von Ereignissen unter Verwendung von Python – Azure Event Hubs | Microsoft-Dokumentation
+title: Senden oder Empfangen von Ereignissen mit Python und Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer Python-Anwendung, die Ereignisse an Azure Event Hubs sendet.
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -7,20 +7,20 @@ manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 11/16/2018
+ms.date: 09/16/2019
 ms.author: shvija
-ms.openlocfilehash: 2168fc89134615ffb4e0e718cc0cc27b8c1a7839
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 5162c6359c4b6e6bdd53d2778ca247704e2f16be
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262770"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059144"
 ---
-# <a name="send-events-to-event-hubs-using-python"></a>Senden von Ereignissen an Event Hubs mithilfe von Python
+# <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Senden von Ereignissen an oder Empfangen von Ereignissen aus Event Hubs mithilfe von Python
 
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
 
-Dieses Tutorial beschreibt, wie Sie Ereignisse aus einer in Python geschriebenen Anwendung an einen Event Hub senden. 
+In diesem Tutorial wird beschrieben, wie Sie Python-Anwendungen erstellen, die Ereignisse an einen Event Hub senden oder von diesem empfangen. 
 
 > [!NOTE]
 > Sie können diese Schnellstartvorlage als Beispiel aus [GitHub](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) herunterladen, die Zeichenfolgen `EventHubConnectionString` und `EventHubName` durch die Werte für Ihren Event Hub ersetzen und das Beispiel dann ausführen. Alternativ können Sie auch die Schritte in diesem Tutorial ausführen, um eine eigene Vorlage zu erstellen.
@@ -31,14 +31,7 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
 - Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 - Python 3.4 oder höher.
-
-
-## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Erstellen eines Event Hubs-Namespace und eines Event Hubs
-Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und beschaffen Sie die Verwaltungsanmeldeinformationen, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Erstellen Sie anhand der Anleitung in [diesem Artikel](event-hubs-create.md) einen Namespace und einen Event Hub.
-
-Gehen Sie wie im Artikel beschrieben vor, um den Wert des Zugriffsschlüssels für den Event Hub abzurufen: [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Sie verwenden den Zugriffsschlüssel im Code, den Sie später in diesem Tutorial schreiben. Der Standardschlüsselname lautet: **RootManageSharedAccessKey**.
-
-Fahren Sie nun mit den folgenden Schritten in diesem Tutorial fort.
+- Verwenden Sie das [Azure-Portal](https://portal.azure.com), um einen Namespace des Typs „Event Hubs“ zu erstellen, und rufen Sie die Verwaltungsanmeldeinformationen ab, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Erstellen Sie anhand der Anleitung in [diesem Artikel](event-hubs-create.md) einen Namespace und einen Event Hub. Gehen Sie anschließend wie im Artikel beschrieben vor, um den Wert des Zugriffsschlüssels für den Event Hub abzurufen: [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Sie verwenden den Zugriffsschlüssel im Code, den Sie später in diesem Tutorial schreiben. Der Standardschlüsselname lautet: **RootManageSharedAccessKey**.
 
 ## <a name="install-python-package"></a>Installieren des Python-Pakets
 
@@ -48,11 +41,16 @@ Um die Python-Pakete für Event Hubs zu installieren, öffnen Sie eine Eingabeau
 pip install azure-eventhub
 ```
 
-## <a name="create-a-python-script-to-send-events"></a>Erstellen eines Python-Skripts zum Senden von Ereignissen
+## <a name="send-events"></a>Senden von Ereignisse
+
+> [!NOTE]
+> Dieser Code in diesem Abschnitt gilt für die aktuelle stabile Version (1.3.1) von Event Hubs SDK. Wenn Sie nach dem Beispielcode suchen, der die Vorschauversion des SDK verwendet, lesen Sie [diese Seite](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples).
+
+### <a name="create-a-python-script-to-send-events"></a>Erstellen eines Python-Skripts zum Senden von Ereignissen
 
 Erstellen Sie als Nächstes eine Python-Anwendung, die Ereignisse an einen Event Hub sendet:
 
-1. Öffnen Sie Ihren bevorzugten Python-Editor, z.B. [Visual Studio Code][Visual Studio Code].
+1. Öffnen Sie Ihren bevorzugten Python-Editor, z. B. [Visual Studio Code](https://code.visualstudio.com/).
 2. Erstellen Sie ein Skript mit dem Namen **send.py**. Dieses Skript sendet 100 Ereignisse an Ihren Event Hub.
 3. Fügen Sie den folgenden Code in „send.py“ ein, und ersetzen Sie dabei die Werte von „ADDRESS“, „USER“ und „KEY“ durch die Werte, die Sie im vorherigen Abschnitt im Azure-Portal abgerufen haben: 
 
@@ -71,11 +69,11 @@ logger = logging.getLogger("azure")
 # "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
 # "amqps://<mynamespace>.servicebus.windows.net/myeventhub"
 # For example:
-ADDRESS = "amqps://mynamespace.servicebus.windows.net/myeventhub"
+ADDRESS = "amqps://<EVENTHUBS NAMESPACE NAME>.servicebus.windows.net/<EVENTHUB NAME>"
 
 # SAS policy and key are not required if they are encoded in the URL
 USER = "RootManageSharedAccessKey"
-KEY = "namespaceSASKey"
+KEY = "<SHARED ACCESS KEY FOR THE EVENT HUBS NAMESPACE>"
 
 try:
     if not ADDRESS:
@@ -89,7 +87,8 @@ try:
         start_time = time.time()
         for i in range(100):
             print("Sending message: {}".format(i))
-            sender.send(EventData(str(i)))
+            message = "Message {}".format(i)
+            sender.send(EventData(message))
     except:
         raise
     finally:
@@ -102,7 +101,7 @@ except KeyboardInterrupt:
     pass
 ```
 
-## <a name="run-application-to-send-events"></a>Ausführen der Anwendung zum Senden von Ereignissen
+### <a name="run-application-to-send-events"></a>Ausführen der Anwendung zum Senden von Ereignissen
 
 Um das Skript auszuführen, öffnen Sie eine Eingabeaufforderung, deren Pfad Python enthält, und führen Sie dann diesen Befehl aus:
 
@@ -111,11 +110,76 @@ start python send.py
 ```
 
 Glückwunsch! Sie haben jetzt Nachrichten an einen Event Hub gesendet.
+
+## <a name="receive-events"></a>Empfangen von Ereignissen
+
+### <a name="create-a-python-script-to-receive-events"></a>Erstellen eines Python-Skripts zum Empfangen von Ereignissen
+
+Erstellen Sie als Nächstes eine Python-Anwendung, die Ereignisse von einem Event Hub empfängt:
+
+1. Öffnen Sie Ihren bevorzugten Python-Editor, z. B. [Visual Studio Code](https://code.visualstudio.com/).
+2. Erstellen Sie ein Skript mit dem Namen **recv.py**.
+3. Fügen Sie den folgenden Code in „recv.py“ ein, und ersetzen Sie dabei die Werte von „ADDRESS“, „USER“ und „KEY“ durch die Werte, die Sie im vorherigen Abschnitt im Azure-Portal abgerufen haben: 
+
+```python
+import os
+import sys
+import logging
+import time
+from azure.eventhub import EventHubClient, Receiver, Offset
+
+logger = logging.getLogger("azure")
+
+# Address can be in either of these formats:
+# "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
+# "amqps://<mynamespace>.servicebus.windows.net/myeventhub"
+# For example:
+ADDRESS = "amqps://<EVENTHUBS NAMESPACE NAME>.servicebus.windows.net/<EVENTHUB NAME>"
+
+# SAS policy and key are not required if they are encoded in the URL
+USER = "RootManageSharedAccessKey"
+KEY = "<SHARED ACCESS KEY FOR THE EVENT HUBS NAMESPACE>"
+
+CONSUMER_GROUP = "$default"
+OFFSET = Offset("-1")
+PARTITION = "0"
+
+total = 0
+last_sn = -1
+last_offset = "-1"
+client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
+try:
+    receiver = client.add_receiver(
+        CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
+    client.run()
+    start_time = time.time()
+    for event_data in receiver.receive(timeout=100):
+        print("Received: {}".format(event_data.body_as_str(encoding='UTF-8')))
+        total += 1
+
+    end_time = time.time()
+    client.stop()
+    run_time = end_time - start_time
+    print("Received {} messages in {} seconds".format(total, run_time))
+
+except KeyboardInterrupt:
+    pass
+finally:
+    client.stop()
+```
+
+### <a name="receive-events"></a>Empfangen von Ereignissen
+
+Um das Skript auszuführen, öffnen Sie eine Eingabeaufforderung, deren Pfad Python enthält, und führen Sie dann diesen Befehl aus:
+
+```bash
+start python recv.py
+```
  
 ## <a name="next-steps"></a>Nächste Schritte
-In dieser Schnellstartanleitung haben Sie Nachrichten mithilfe von Python an einen Event Hub gesendet. Informationen dazu, wie Sie Nachrichten unter Verwendung von Python von einem Event Hub empfangen, erhalten Sie unter [Empfangen von Ereignissen von Event Hubs mithilfe von Python](event-hubs-python-get-started-receive.md).
+Lesen Sie die folgenden Artikel:
 
-<!-- Links -->
-[Event Hubs overview]: event-hubs-about.md
-[Visual Studio Code]: https://code.visualstudio.com/
-[free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+- [EventProcessorHost](event-hubs-event-processor-host.md)
+- [Features und Terminologie in Azure Event Hubs](event-hubs-features.md)
+- [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
+

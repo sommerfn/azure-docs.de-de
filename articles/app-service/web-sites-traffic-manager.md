@@ -11,17 +11,16 @@ ms.assetid: dabda633-e72f-4dd4-bf1c-6e945da456fd
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 11e5a654f2bfcb497eec3a4dfea81f3684f5b551
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bb63b25ee9257a402a9887bc8ed8aa83370f3ea0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599807"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066408"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Steuern des Azure App Service-Datenverkehrs mit Azure Traffic Manager
 > [!NOTE]
@@ -43,7 +42,7 @@ Azure Traffic Manager verwendet vier verschiedene Routingmethoden. Diese Methode
 Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md).
 
 ## <a name="app-service-and-traffic-manager-profiles"></a>App Service und Traffic Manager-Profile
-Für die Konfiguration zur Steuerung des App Service-App-Datenverkehrs erstellen Sie ein Profil in Azure Traffic Manager, das eine der drei zuvor beschriebenen Lastenausgleichsmethoden verwendet. Fügen Sie dann dem Profil die Endpunkte (in diesem Fall App Service) hinzu, für die Sie den Datenverkehr steuern möchten. Der App-Status (aktiv, angehalten oder gelöscht) wird regelmäßig an das Profil übermittelt, sodass Azure Traffic Manager den Datenverkehr entsprechend leiten kann.
+Für die Konfiguration zur Steuerung des App Service-App-Datenverkehrs erstellen Sie ein Profil in Azure Traffic Manager, das eine der vier zuvor beschriebenen Lastenausgleichsmethoden verwendet. Anschließend fügen Sie dem Profil die Endpunkte (in diesem Fall App Service) hinzu, für die Sie den Datenverkehr steuern möchten. Der App-Status (aktiv, angehalten oder gelöscht) wird regelmäßig an das Profil übermittelt, sodass Azure Traffic Manager den Datenverkehr entsprechend leiten kann.
 
 Beachten Sie die folgenden Aspekte, wenn Sie Azure Traffic Manager mit Azure verwenden:
 

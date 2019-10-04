@@ -3,27 +3,27 @@ title: Wie und warum Anwendungen Azure Active Directory hinzugefügt werden
 description: Was bedeutet es für eine Anwendung, Azure AD hinzugefügt zu werden, und wie gelangen Anwendungen in das Verzeichnis?
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 3321d130-f2a8-4e38-b35e-0959693f3576
 ms.service: active-directory
 ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
-ms.author: celested
+ms.date: 06/04/2019
+ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 257f7b66163b72141ceb6405768e912a263fb14b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6bb3ef2a86c523d7cda5bc7da5d83ec4ac741abf
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124217"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835389"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Wie und warum werden Anwendungen zu Azure AD hinzugefügt?
 
@@ -32,9 +32,9 @@ Es gibt zwei Darstellungen von Anwendungen in Azure AD:
 * [Dienstprinzipale](app-objects-and-service-principals.md#service-principal-object) können als eine Instanz einer Anwendung betrachtet werden. Dienstprinzipale verweisen in der Regel auf ein Anwendungsobjekt, und ein Anwendungsobjekt kann verzeichnisübergreifend von mehreren Dienstprinzipalen referenziert werden.
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Was sind Anwendungsobjekte und woher stammen sie?
-[Anwendungsobjekte](app-objects-and-service-principals.md#application-object) können im Azure-Portal über die Oberfläche [App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade) verwaltet werden. Anwendungsobjekte stellen für Azure AD eine Beschreibung der Anwendung bereit und können als die Definition der Anwendung betrachtet werden. Sie teilen dem Dienst basierend auf den Einstellungen der Anwendung mit, wie Token für die Anwendung ausgestellt werden müssen. Das Anwendungsobjekt ist nur in seinem Stammverzeichnis vorhanden. Dies gilt auch dann, wenn es sich um eine mehrinstanzenfähige Anwendung handelt, die Dienstprinzipale in anderen Verzeichnissen unterstützt. Das Anwendungsobjekt kann Folgendes enthalten (sowie zusätzliche Informationen, die hier nicht erwähnt werden):
+[Anwendungsobjekte](app-objects-and-service-principals.md#application-object) können im Azure-Portal über die Oberfläche [App-Registrierungen](https://aka.ms/appregistrations) verwaltet werden. Anwendungsobjekte stellen für Azure AD eine Beschreibung der Anwendung bereit und können als die Definition der Anwendung betrachtet werden. Sie teilen dem Dienst basierend auf den Einstellungen der Anwendung mit, wie Token für die Anwendung ausgestellt werden müssen. Das Anwendungsobjekt ist nur in seinem Stammverzeichnis vorhanden. Dies gilt auch dann, wenn es sich um eine mehrinstanzenfähige Anwendung handelt, die Dienstprinzipale in anderen Verzeichnissen unterstützt. Das Anwendungsobjekt kann Folgendes enthalten (sowie zusätzliche Informationen, die hier nicht erwähnt werden):
 * Name, Logo und Herausgeber
-* Antwort-URLs
+* Umleitungs-URIs
 * Geheimnisse (symmetrische und/oder asymmetrische Schlüssel für die Authentifizierung der Anwendung)
 * API-Abhängigkeiten (OAuth)
 * Veröffentlichte APIs/Ressourcen/Bereiche (OAuth)
@@ -59,7 +59,7 @@ Der Dienstprinzipal kann Folgendes enthalten:
 * Datensätze mit lokalen Anwendungsrollenzuweisungen für Benutzer und Gruppen
 * Datensätze mit lokalen Benutzer- und Administratorberechtigungen, die der Anwendung gewährt wurden
   * Beispiel: die Berechtigung für die Anwendung, auf die E-Mail eines bestimmten Benutzers zuzugreifen
-* Datensätze mit lokalen Richtlinien, einschließlich der Richtlinie für bedingten Zugriff
+* Datensätze mit lokalen Richtlinien einschließlich der Richtlinie für bedingten Zugriff
 * Datensätze mit alternativen lokalen Einstellungen für eine Anwendung
   * Transformationsregeln für Ansprüche
   * Attributzuordnungen (Benutzerbereitstellung)
@@ -74,13 +74,15 @@ Der Dienstprinzipal kann Folgendes enthalten:
   * Wenn Sie Office 365 abonnieren oder ein Testabonnement starten, werden im Verzeichnis ein oder mehrere Dienstprinzipale erstellt, die die verschiedenen Dienste darstellen, mit denen die Funktionen von Office 365 bereitgestellt werden.
   * Manche Office 365-Dienste wie beispielsweise SharePoint erstellen fortlaufend neue Dienstprinzipale, um eine sichere Kommunikation zwischen den Komponenten (einschließlich Workflows) zu ermöglichen.
 * Hinzufügen einer Anwendung aus dem App-Katalog durch einen Administrator (dadurch wird ebenfalls ein zugrunde liegendes Anwendungsobjekt erstellt)
-* Hinzufügen einer Anwendung zur Verwendung des [Azure AD-Anwendungsproxys](https://msdn.microsoft.com/library/azure/dn768219.aspx)
+* Hinzufügen einer Anwendung zur Verwendung des [Azure AD-Anwendungsproxys](/azure/active-directory/manage-apps/application-proxy)
 * Verbinden einer Anwendung für einmaliges Anmelden über SAML oder einmaliges Anmelden (SSO) per Kennwort
 * Programmgesteuert über die Azure AD Graph-API oder über PowerShell
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Wie werden Anwendungsobjekte und Dienstprinzipale miteinander verknüpft?
+
 Eine Anwendung besitzt ein Anwendungsobjekt in ihrem Basisverzeichnis, auf das von einem oder mehreren Dienstprinzipalen in jedem der Verzeichnisse verwiesen wird, in denen die Anwendung arbeitet (einschließlich des Basisverzeichnisses der Anwendung).
-![Diagramm, das zeigt, wie Anwendungsobjekte und Dienstprinzipale miteinander und mit Azure AD-Instanzen interagieren.][apps_service_principals_directory]
+
+![Zeigt die Beziehung zwischen App-Objekten und Dienstprinzipalen][apps_service_principals_directory]
 
 Im obigen Diagramm verwaltet Microsoft intern zwei Verzeichnisse (dargestellt auf der linken Seite) für die Veröffentlichung von Anwendungen:
 
@@ -96,15 +98,17 @@ Zu Anwendungen, die Sie selbst hinzufügen (dargestellt als **Ihre App** im Diag
 * Anwendungen, die Sie mithilfe des Azure AD-Anwendungsproxys veröffentlicht haben
 
 ### <a name="notes-and-exceptions"></a>Hinweise und Ausnahmen
+
 * Nicht alle Dienstprinzipale verweisen zurück auf ein Anwendungsobjekt. In den Anfängen von Azure AD wurden den Anwendungen eingeschränktere Dienste bereitgestellt, und der Dienstprinzipal reichte zur Einrichtung einer Anwendungsidentität aus. Der ursprüngliche Dienstprinzipal sah dem Active Directory-Dienstkonto von Windows Server noch wesentlich ähnlicher. Aus diesem Grund ist es nach wie vor möglich, Dienstprinzipale mit Azure AD PowerShell auf verschiedene Arten zu erstellen, ohne zuvor ein Anwendungsobjekt zu erstellen. Die Azure AD Graph-API setzt hingegen für die Erstellung eines Dienstprinzipals ein Anwendungsobjekt voraus.
 * Nicht alle oben beschriebenen Informationen werden derzeit programmgesteuert bereitgestellt. Die folgenden Informationen sind nur in der Benutzeroberfläche verfügbar:
   * Transformationsregeln für Ansprüche
   * Attributzuordnungen (Benutzerbereitstellung)
 * Ausführlichere Informationen zu Dienstprinzipalen und Anwendungsobjekten finden Sie in der Referenzdokumentation zur Azure AD Graph-REST-API:
-  * [Anwendung](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
-  * [Dienstprinzipal](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
+  * [Anwendung](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)
+  * [Dienstprinzipal](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Weshalb werden Anwendung in Azure AD integriert?
+
 Anwendungen werden Azure AD hinzugefügt, damit sie die von Azure AD bereitgestellten Dienste nutzen können, beispielsweise:
 
 * Anwendungsauthentifizierung und -autorisierung
@@ -116,6 +120,7 @@ Anwendungen werden Azure AD hinzugefügt, damit sie die von Azure AD bereitgeste
 * Anwendungsveröffentlichung und Proxy – Veröffentlichung einer Anwendung aus einem privaten Netzwerk im Internet
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Wer hat die Berechtigung zum Hinzufügen von Anwendungen zu meiner Azure AD-Instanz?
+
 Obwohl einige Aufgaben nur von globalen Administratoren ausgeführt werden können (beispielsweise das Hinzufügen von Anwendungen aus dem App-Katalog und Konfigurieren einer Anwendung zur Verwendung des Anwendungsproxys), besitzen standardmäßig alle Benutzer in Ihrem Verzeichnis Berechtigungen zum Registrieren von Anwendungsobjekten, die sie selbst entwickeln. Zudem können alle Benutzer standardmäßig selbst entscheiden, welche Anwendungen sie freigeben bzw. welchen Anwendungen sie mittels Zustimmung Zugriff auf ihre Unternehmensdaten gewähren. Wenn eine Person der erste Benutzer in Ihrem Verzeichnis ist, der sich bei einer Anwendung anmeldet und seine Zustimmung erteilt, wird in Ihrem Mandanten ein Dienstprinzipal erstellt. Andernfalls werden die Informationen zur Zustimmungserteilung im vorhandenen Dienstprinzipal gespeichert.
 
 Benutzern die Registrierung von Anwendungen und die Zustimmung zu deren Verwendung zu ermöglichen, mag anfangs zwar bedenklich klingen, Sie sollten aber Folgendes berücksichtigen:
@@ -132,10 +137,11 @@ Falls Sie dennoch verhindern möchten, dass Benutzer in Ihrem Verzeichnis ohne d
 
 * So verhindern Sie, dass Benutzer selbst ihre Zustimmung für Anwendungen erteilen:
   1. Navigieren Sie im Azure-Portal unter „Unternehmensanwendungen“ zum Abschnitt [Benutzereinstellungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/).
-  2. Ändern Sie die Einstellung von **Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten** in **Nein**. 
+  2. Ändern Sie die Einstellung von **Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten** in **Nein**.
      
      > [!NOTE]
-     > Wenn Sie diese Option deaktivieren, ist bei jeder neuen Anwendung, die ein Benutzer benötigt, die Zustimmung eines Administrators erforderlich.    
+     > Wenn Sie diese Option deaktivieren, ist bei jeder neuen Anwendung, die ein Benutzer benötigt, die Zustimmung eines Administrators erforderlich.
+
 * So verhindern Sie, dass Benutzer eigene Anwendungen registrieren:
   1. Navigieren Sie im Azure-Portal unter „Azure Active Directory“ zum Abschnitt [Benutzereinstellungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings).
   2. Ändern Sie die Einstellung von **Benutzer können Anwendungen registrieren** in **Nein**.
@@ -145,4 +151,3 @@ Falls Sie dennoch verhindern möchten, dass Benutzer in Ihrem Verzeichnis ohne d
 
 <!--Image references-->
 [apps_service_principals_directory]:../media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
-

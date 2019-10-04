@@ -2,22 +2,22 @@
 title: Hinzufügen oder Aktualisieren von Benutzerprofilinformationen – Azure Active Directory | Microsoft-Dokumentation
 description: Anweisungen zum Hinzufügen von Informationen zu einem Benutzerprofil in Azure Active Directory, z.B. ein Bild und Angaben zur Beschäftigung.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/05/2018
-ms.author: lizross
+ms.date: 04/11/2019
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b11c71f7f5a329a836d379a16afe66c08572ccde
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4002c14ed6340a0e1a89ee295d47c98436515775
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177987"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561777"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Hinzufügen oder Aktualisieren von Benutzerprofilinformationen mit Azure Active Directory
 Lernen Sie, wie Sie Benutzerprofilinformationen, z.B. ein Profilbild oder Angaben zur Beschäftigung, und einige Einstellungen mit Azure Active Directory (Azure AD) hinzufügen. Weitere Informationen zum Hinzufügen neuer Benutzer finden Sie unter [Hinzufügen oder Löschen von Benutzern in Azure Active Directory](add-users-azure-active-directory.md).
@@ -26,7 +26,7 @@ Lernen Sie, wie Sie Benutzerprofilinformationen, z.B. ein Profilbild oder Angabe
 Wie Sie sehen werden, lassen sich in Benutzerprofilen mehr Informationen angeben, als Sie beim Erstellen eines Benutzers hinzufügen können. Alle diese zusätzlichen Informationen sind optional und können bei Bedarf von Ihrer Organisation hinzugefügt werden.
 
 ## <a name="to-add-or-change-profile-information"></a>Hinzufügen oder Ändern von Profilinformationen
-1. Melden Sie sich als globaler Administrator oder Benutzeradministrator für das Verzeichnis im [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich als Benutzeradministrator für die Organisation beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Wählen Sie **Azure Active Directory**, **Benutzer** und dann einen Benutzer aus. Beispielsweise _Alain Charon_.
 
@@ -40,7 +40,7 @@ Wie Sie sehen werden, lassen sich in Benutzerprofilen mehr Informationen angeben
 
     - **Profilbild:** Wählen Sie ein Miniaturbild für das Benutzerkonto aus. Dieses Bild wird in Azure Active Directory und auf den persönlichen Seiten des Benutzers angezeigt, z.B. auf „myapps.microsoft.com“.
 
-    - **Identität:** Fügen Sie alle kontobezogenen Informationen hinzu, z.B. den Ehenamen oder den geänderten Benutzernamen. 
+    - **Identität:** Fügen Sie einen zusätzlichen Identitätswerts für den Benutzer hinzu, oder aktualisieren Sie diesen, z. B. einen Ehenamen. Sie können diesen Namen unabhängig von den Werten für „Vorname“ und „Nachname“ festlegen. Sie könnten diesen beispielsweise zum Einschließen von Initialen oder eines Firmennamens oder zum Ändern der Reihenfolge der angezeigten Namen verwenden. In einem weiteren Beispiel könnten Sie für zwei Benutzer mit dem Namen „Chris Green“ die Identitätszeichenfolge verwenden, um die Namen auf „Chris B. Green“ und „Chris R. Green (Contoso)“ festzulegen.
 
     - **Angaben zum Beruf:** Fügen Sie alle berufsbezogenen Informationen für einen Benutzer hinzu, z.B. seine Berufsbezeichnung, die Abteilung oder den Geschäftsführer.
 

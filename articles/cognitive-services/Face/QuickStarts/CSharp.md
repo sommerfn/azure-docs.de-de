@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 03/27/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 40c9fac27f45699d4c56e57480dcfde1b0ffb64d
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: f7e1507289d3c21d51a0ec8529598e5eeb089d37
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629916"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859011"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der Gesichtserkennungs-REST-API und C#
 
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
-1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**, und nennen Sie es **FaceDetection**. 
+1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)** , und nennen Sie es **FaceDetection**. 
 1. Sollte Ihre Projektmappe noch andere Projekte enthalten, wählen Sie dieses Projekt als das alleinige Startprojekt aus.
 
 ## <a name="add-face-detection-code"></a>Hinzufügen von Code für die Gesichtserkennung
@@ -51,8 +51,9 @@ using System.Text;
 
 ### <a name="add-essential-fields"></a>Hinzufügen wichtiger Felder
 
-Fügen Sie die **Program**-Klasse mit den folgenden Felder hinzu. Mit diesen Daten wird angegeben, wie eine Verbindung mit dem Gesichtserkennungsdienst hergestellt wird und wo die Eingabedaten abgerufen werden. Sie müssen das Feld `subscriptionKey` mit dem Wert Ihres Abonnementschlüssels aktualisieren, und ggf. müssen Sie die Zeichenfolge `uriBase` ändern, damit sie den korrekte Regionsbezeichner enthält. (Eine Liste aller Regionsendpunkte finden Sie in den [Dokumenten zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).)
+Fügen Sie die **Program**-Klasse mit den folgenden Felder hinzu. Mit diesen Daten wird angegeben, wie eine Verbindung mit dem Gesichtserkennungsdienst hergestellt wird und wo die Eingabedaten abgerufen werden. Sie müssen das Feld `subscriptionKey` mit dem Wert Ihres Abonnementschlüssels aktualisieren. Unter Umständen müssen Sie die Zeichenfolge `uriBase` ändern, sodass sie die Zeichenfolge des Ressourcenendpunkts enthält.
 
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 namespace DetectFace
@@ -62,22 +63,15 @@ namespace DetectFace
 
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
-
-        // NOTE: You must use the same region in your REST call as you used to
-        // obtain your subscription keys. For example, if you obtained your
-        // subscription keys from westus, replace "westcentralus" in the URL
-        // below with "westus".
-        //
-        // Free trial subscription keys are generated in the "westus" region.
-        // If you use a free trial subscription key, you shouldn't need to change
-        // this region.
+        
+        // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "https://<myresourcename>.cognitive.microsoft.com/face/v1.0/detect";
 ```
 
 ### <a name="receive-image-input"></a>Empfangen der Bildeingabe
 
-Fügen Sie der **Main**-Methode der **Program**-Klasse den folgenden Code hinzu. Dadurch wird der Benutzer über die Konsole aufgefordert, eine Bild-URL einzugeben. Anschließend wird eine weitere Methode (**MakeAnalysisRequest**) aufgerufen, um das Bild an diesem Speicherort zu verarbeiten.
+Fügen Sie der **Main**-Methode der **Program**-Klasse den folgenden Code hinzu. Durch diesen Code wird der Benutzer über die Konsole aufgefordert, eine Bild-URL einzugeben. Anschließend wird eine weitere Methode (**MakeAnalysisRequest**) aufgerufen, um das Bild an diesem Speicherort zu verarbeiten.
 
 ```csharp
         static void Main(string[] args)
@@ -162,7 +156,7 @@ Sie definieren die Hilfsmethoden in den folgenden Schritten.
 
 ### <a name="process-the-input-image-data"></a>Verarbeiten der Eingabebilddaten
 
-Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Dadurch wird das Bild unter der angegebenen URL in ein Bytearray konvertiert.
+Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Durch diese Methode wird das Bild unter der angegebenen URL in ein Bytearray konvertiert.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -179,7 +173,7 @@ Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Dadurch wird das B
 
 ### <a name="parse-the-json-response"></a>Analysieren der JSON-Antwort
 
-Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Dadurch wird die JSON-Antwort formatiert, sodass sie leichter lesbar ist. Ihre App schreibt diese Zeichenfolgendaten in die Konsole. Anschließend können Sie die Klasse und den Namespace schließen.
+Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Durch diese Methode wird die JSON-Antwort formatiert, damit sie besser lesbar ist. Ihre App schreibt diese Zeichenfolgendaten in die Konsole. Anschließend können Sie die Klasse und den Namespace schließen.
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.
@@ -250,7 +244,7 @@ Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Dadurch wird die J
 
 ## <a name="run-the-app"></a>Ausführen der App
 
-Eine erfolgreiche Antwort zeigt Gesichtserkennungsdaten in leicht lesbarem JSON-Format an. Beispiel: 
+Eine erfolgreiche Antwort zeigt Gesichtserkennungsdaten in leicht lesbarem JSON-Format an. Beispiel:
 
 ```json
 [

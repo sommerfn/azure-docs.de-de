@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 06/18/2019
 ms.author: sutalasi
-ms.openlocfilehash: 75a7424f6c3bb6ef13de9e44b46489ab1ef0fbcc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1779a33e4ac021c1807ce10dc224e0b8c8c53ebb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792979"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200535"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs mithilfe von PowerShell und Azure Resource Manager
 
@@ -114,6 +114,15 @@ Legen Sie den Tresorkontext wie folgt fest:
 
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
+Wenn Sie einen Hyper-V Core Server betreiben, laden Sie die Setupdatei herunter, und führen Sie diese Schritte aus:
+1. Extrahieren Sie die Dateien aus „AzureSiteRecoveryProvider.exe“ in einem lokalen Verzeichnis, indem Sie den folgenden Befehl ausführen: ```AzureSiteRecoveryProvider.exe /x:. /q```
+2. Die Ergebnisse der Ausführung von ```.\setupdr.exe /i``` werden in „%Programdata%\ASRLogs\DRASetupWizard.log“ protokolliert.
+
+3. Registrieren Sie den Server mithilfe dieses Befehls:
+
+    ```cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"```
+
+
 ## <a name="step-6-create-a-replication-policy"></a>Schritt 6: Erstellen einer Replikationsrichtlinie
 
 Bevor Sie beginnen, muss sich das angegebene Speicherkonto in der gleichen Azure-Region wie Ihr Tresor befinden, und die Georeplikation muss aktiviert sein.
@@ -134,9 +143,13 @@ Bevor Sie beginnen, muss sich das angegebene Speicherkonto in der gleichen Azure
         $protectionContainer = Get-AsrProtectionContainer
 3. Ordnen Sie den Schutzcontainers der Replikationsrichtlinie wie folgt zu:
 
-     $Policy = Get-AsrPolicy -FriendlyName $PolicyName   $associationJob  = New-AsrProtectionContainerMapping -Name $mappingName -Policy $Policy -PrimaryProtectionContainer $protectionContainer[0]
-
+        $Policy = Get-AsrPolicy -FriendlyName $PolicyName
+        $associationJob  = New-AsrProtectionContainerMapping -Name $mappingName -Policy $Policy -PrimaryProtectionContainer $protectionContainer[0]
 4. Warten Sie, bis der Zuordnungsauftrag erfolgreich abgeschlossen wurde.
+
+5. Dient zum Abrufen der Schutzcontainerzuordnung.
+
+        $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $protectionContainer
 
 ## <a name="step-7-enable-vm-protection"></a>Schritt 7: Aktivieren des Schutzes des virtuellen Computers
 
@@ -146,8 +159,8 @@ Bevor Sie beginnen, muss sich das angegebene Speicherkonto in der gleichen Azure
         $ProtectableItem = Get-AsrProtectableItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
 2. Schützen Sie den virtuellen Computer. Wenn dem geschützten virtuellen Computer mehrere Datenträger angefügt sind, geben Sie den Betriebssystemdatenträger mit dem *OSDiskName* -Parameter an.
 
-        $Ostype = "Windows"                                 # "Windows" or "Linux"
-        $DRjob = New-AsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS Windows -RecoveryResourceGroupId
+        $OSType = "Windows"                                 # "Windows" or "Linux"
+        $DRjob = New-AsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID
 
 3. Warten Sie, bis die virtuellen Computer nach der ersten Replikation einen geschützten Zustand erreicht haben. Abhängig von Faktoren wie der Menge der zu replizierenden Daten und der verfügbare Upstreambandbreite zu Azure kann dies länger dauern. Die Aufträge „State“ und „StateDescription“ werden wie folgt aktualisiert, sobald der virtuelle Computer einen geschützten Zustand erreicht:
 

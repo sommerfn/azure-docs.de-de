@@ -1,19 +1,19 @@
 ---
 title: Navigieren in Azure Digital Twins-APIs | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie gängige Muster der Abfrage der Azure Digital Twins-Verwaltungs-APIs verwenden können.
-author: dsk-2015
+author: kingdomofends
 manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 1/7/2019
-ms.author: dkshir
-ms.openlocfilehash: 9cfcdc879e36b93e21bff6f91886536d799553bb
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 08/29/2019
+ms.author: v-adgera
+ms.openlocfilehash: 8472a86800d13cedd228ca881a7c095ff748350a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200954"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172821"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Verwenden der Azure Digital Twins-Verwaltungs-APIs
 
@@ -88,6 +88,7 @@ Die folgende Liste zeigt einige Beispiele für die Navigation durch die [/device
 
 
 ## <a name="odata-support"></a>OData-Unterstützung
+
 Die meisten APIs, die Sammlungen zurückgeben, wie z.B. ein GET-Aufruf auf /spaces, unterstützen die folgende Teilmenge der generischen [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData)-Systemabfrageoptionen:  
 
 * **$filter**
@@ -95,11 +96,12 @@ Die meisten APIs, die Sammlungen zurückgeben, wie z.B. ein GET-Aufruf auf /spac
 * **$top**
 * **$skip** – Wenn Sie beabsichtigen, die gesamte Sammlung anzuzeigen, sollten Sie sie als Gesamtmenge in einem einzigen Aufruf anfordern und dann in Ihrer Anwendung ein Paging durchführen. 
 
-Beachten Sie, dass andere Abfrageoptionen, z B. „$count“, „$expand“, „$search“, nicht unterstützt werden.
+> [!NOTE]
+> Einige OData-Optionen (beispielsweise die Abfrageoptionen **$count**, **$expand** und **$search**) werden aktuell nicht unterstützt.
 
 ### <a name="examples"></a>Beispiele
 
-Die folgende Liste zeigt einige Beispiele für Abfragen mit den Systemabfrageoptionen von OData:
+Die folgende Liste enthält mehrere Abfragen mit gültiger OData-Syntax:
 
 - `YOUR_MANAGEMENT_API_URL/devices?$top=3&$orderby=Name desc`
 - `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,’space’)`
@@ -108,9 +110,10 @@ Die folgende Liste zeigt einige Beispiele für Abfragen mit den Systemabfrageopt
 - `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,’k’)&$orderby=LastName`
 - `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor’,Name)`
  
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Einige häufige API-Abfragemuster finden Sie in [Abfragen von Azure Digital Twins-APIs für gängige Aufgaben](how-to-query-common-apis.md).
+Einige häufige API-Abfragemuster finden Sie in [Abfragen von Azure Digital Twins-APIs für gängige Aufgaben](./how-to-query-common-apis.md).
 
+Weitere Informationen zu API-Endpunkten finden Sie unter [Verwenden von Digital Twins Swagger](./how-to-use-swagger.md).
 
+Informationen zur OData-Syntax sowie zu verfügbaren Vergleichsoperatoren finden Sie unter [OData-Vergleichsoperatoren in Azure Search](../search/search-query-odata-comparison-operators.md).

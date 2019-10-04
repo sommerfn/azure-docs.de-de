@@ -3,7 +3,7 @@ title: Vom geografischen Routingtyp des Azure Traffic Managers verwendete Lände
 description: Dieser Artikel listet die Länder-/Regionshierarchie auf, die vom geografischen Routingtyp des Azure Traffic Managers verwendet wird
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: kumud
-ms.openlocfilehash: b6a8393a5f47d7fb85699f6828c4d08cc7afcabc
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.author: allensu
+ms.openlocfilehash: d16529e966fb2e16d1012f4aa0aafcff204a3093
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620698"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67071167"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Vom geografischen Routingtyp für Datenverkehr des Azure Traffic Managers verwendete Länder-/Regionshierarchie
 
@@ -481,8 +481,6 @@ In diesem Artikel sind die Länder und Regionen aufgelistet, die von der **geogr
         - CD(Kongo, Demokratische Republik)
 
         - CF(Zentralafrikanische Republik)
-
-        - CG(Kongo)
 
         - CI(Côte d’Ivoire)
 

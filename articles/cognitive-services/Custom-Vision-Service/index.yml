@@ -1,101 +1,130 @@
-### YamlMime:YamlDocument
-ms.openlocfilehash: dfe42cf71c036cec8e1744e0b7983cd4417610f6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852201"
-documentType: LandingData
-title: Dokumentation zur Custom Vision-API
+### YamlMime:Landing
+title: Dokumentation zu Custom Vision
+summary: Azure Custom Vision ist ein Cognitive Services-Dienst zum Erstellen, Bereitstellen und Optimieren benutzerdefinierter Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der entsprechend den visuellen Merkmalen in einem Bild Bezeichnungen (die Klassen darstellen) auf Bilder anwendet.
 metadata:
-  title: 'Dokumentation zur Custom Vision-API: Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
-  description: Hier erfahren Sie, wie Sie mit Custom Vision benutzerdefinierte Bildklassifizierungen erstellen, bereitstellen und verbessern. In Tutorials wird gezeigt, wie Sie Apps erstellen, die die API nutzen.
+  title: Dokumentation zu Custom Vision
+  description: Azure Custom Vision ist ein Cognitive Services-Dienst zum Erstellen, Bereitstellen und Optimieren benutzerdefinierter Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der entsprechend den visuellen Merkmalen in einem Bild Bezeichnungen (die Klassen darstellen) auf Bilder anwendet.
   services: cognitive-services
-  author: nitinme
-  manager: cgronlun
   ms.service: cognitive-services
   ms.subservice: custom-vision
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 12/20/2018
-  ms.author: nitinme
-abstract:
-  description: Die cloudbasierte Custom Vision-API ermöglicht Entwicklern das Erstellen, Bereitstellen und Verbessern von benutzerdefinierten Bildklassifizierungen. Bei einer Bildklassifizierung handelt es sich um einen KI-Dienst, der Bilder anhand bestimmter Eigenschaften nach Tags sortiert.
-  aside:
-    image:
-      alt: 
-      height: 110
-      src: ../media/index/custom-vision-landing-page-video.png
-      width: 250
-    title: Train and identify unique images (Trainieren und Identifizieren eindeutiger Bilder) (26:10)
-    href: https://channel9.msdn.com/Shows/AI-Show/Azure-Custom-Vision-How-to-Train-and-Identify-Unique-Designs-or-Image-Content
-    width: 250
-sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
-    items:
-    - href: /azure/cognitive-services/Custom-Vision-Service/home
-      html: <p>Lernen Sie die Custom Vision-API kennen.</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Was ist Custom Vision?
-    - href: /azure/cognitive-services/Custom-Vision-Service/getting-started-build-a-classifier
-      html: <p>Hier erfahren Sie, wie Sie eine Klassifizierung erstellen.</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: Erstellen einer Klassifizierung
-    - href: /azure/cognitive-services/Custom-Vision-Service/export-your-model
-      html: <p>Hier erfahren Sie, wie Sie ein Modell auf ein mobiles Gerät exportieren.</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: Exportieren eines Modells auf mobile Geräte
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: Klicken Sie auf den gewünschten Pfeil, um mehr über die ersten Schritte mit Custom Vision zu erfahren. <img src="media/index/link.jpg" height="15" width="15"></img>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/logo_csharp.svg
-    - image:
-        src: media/index/logo_python.svg
-    - image:
-        src: media/index/logo_java.svg
-    rows:
-    - title: Bildklassifizierung
-      values:
-      - href: csharp-tutorial
-      - href: python-tutorial
-      - href: java-tutorial
-    - title: Objekterkennung
-      values:
-      - href: csharp-tutorial-od
-      - href: python-tutorial-od
-      - href: java-tutorial-od
-- title: Beispiele
-  items:
-  - type: paragraph
-    text: 'Abrufen von Beispielen für die Custom Vision-API:'
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="https://azure.microsoft.com/resources/samples/?sort=Relevance&service=cognitive-services&term=Custom+Vision">Codebeispiele</a>
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 09/05/2019
+  ms.openlocfilehash: 931f67bd0f5c73426781da39ded3bcfff0a8dea3
+  ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71211976"
+landingContent:
+- title: Informationen zu Custom Vision
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Custom Vision?
+      url: home.md
+  - linkListType: video
+    links:
+    - text: Trainieren und Identifizieren eindeutiger Bilder
+      url: https://channel9.msdn.com/Shows/AI-Show/Azure-Custom-Vision-How-to-Train-and-Identify-Unique-Designs-or-Image-Content
+- title: Erstellen einer Bildklassifizierung
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Verwenden des Webportals
+      url: getting-started-build-a-classifier.md
+    - text: Verwenden des .NET SDK
+      url: csharp-tutorial.md
+    - text: Verwenden des Python SDK
+      url: python-tutorial.md
+    - text: Verwenden des Java SDK
+      url: java-tutorial.md
+    - text: Verwenden des Node.js SDK
+      url: node-tutorial.md
+    - text: Verwenden des Go SDK
+      url: go-tutorial.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verwenden der Vorhersage-API
+      url: use-prediction-api.md
+- title: Erstellen einer Objekterkennung
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Verwenden des Webportals
+      url: get-started-build-detector.md
+    - text: Verwenden des .NET SDK
+      url: csharp-tutorial-od.md
+    - text: Verwenden des Python SDK
+      url: python-tutorial-od.md
+    - text: Verwenden des Java SDK
+      url: java-tutorial-od.md
+    - text: Verwenden des Node.js SDK
+      url: node-tutorial-object-detection.md
+    - text: Verwenden des Go SDK
+      url: go-tutorial-object-detection.md
+  - linkListType: tutorial
+    links:
+    - text: Logoerkennung für mobile Geräte
+      url: logo-detector-mobile.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verwenden der Vorhersage-API
+      url: use-prediction-api.md
+- title: Testen und Verbessern von Modellen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Testen des Modells
+      url: test-your-model.md
+    - text: Verbessern Ihres Modells
+      url: getting-started-improving-your-classifier.md
+    - text: Verwenden vorgeschlagener Tags
+      url: suggested-tags.md
+- title: Exportieren von Modellen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Exportieren Ihres Modells für mobile Geräte
+      url: export-your-model.md
+    - text: Verwenden des ONNX-Modells mit Windows ML
+      url: custom-vision-onnx-windows-ml.md
+    - text: Ausführen des TensorFlow-Modells in Python
+      url: export-model-python.md
+  - linkListType: tutorial
+    links:
+    - text: App für visuelle IoT-Warnungen
+      url: iot-visual-alerts-tutorial.md
+    - text: Logoerkennung für mobile Geräte
+      url: logo-detector-mobile.md
+- title: Sicherstellen der Aktualität Ihres Projekts
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verschieben Ihres Projekts aus der eingeschränkten Testversion in Azure
+      url: move-your-project-to-azure.md
+    - text: Aktualisieren Ihrer App auf die 3.0-API
+      url: update-application-to-3.0-sdk.md
 - title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: APIs
-      html: <p><a href="https://go.microsoft.com/fwlink/?linkid=865446">Schulung</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=865445">Vorhersage</a></p>
-    - title: SDK
-      html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training">Go: Training</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction">Go: Vorhersage</a></p>'
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: Befehlszeilenschnittstelle (CLI)
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure-Befehlszeilenschnittstelle</a></p>
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Trainings-API
+      url: https://go.microsoft.com/fwlink/?linkid=865446
+    - text: Vorhersage-API
+      url: https://go.microsoft.com/fwlink/?linkid=865445
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet
+    - text: Python SDK
+      url: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/?view=azure-python
+    - text: Java-SDK
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable
+    - text: Go SDK (Training)
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training
+    - text: Go SDK (Vorhersage)
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure-Befehlszeilenschnittstelle (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest

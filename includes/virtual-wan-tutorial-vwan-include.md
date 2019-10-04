@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,11 +9,11 @@ ms.date: 03/27/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b2549abd3a4f87de99efa9a916e39b99c6fc8747
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58616481"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67177994"
 ---
 1. Navigieren Sie zur Seite „Virtual WAN“. Sie können beispielsweise über **Alle Dienste** zu dieser Seite navigieren und dann nach „Virtual WAN“ suchen.
 1. Klicken Sie auf **+ Hinzufügen**, um die Seite **WAN erstellen** zu öffnen.

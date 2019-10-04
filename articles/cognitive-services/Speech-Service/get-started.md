@@ -1,22 +1,22 @@
 ---
-title: Kostenloses Testen von Speech Services
+title: Kostenloses Testen von Speech Service
 titleSuffix: Azure Cognitive Services
-description: Die ersten Schritte mit dem Speech-Dienst sind einfach und erschwinglich. Mit einer 30-tägigen kostenlosen Testversion können Sie die Funktionen des Diensts kennenlernen und feststellen, ob er sich für Ihre Anwendungen eignet.
+description: Die ersten Schritte mit Speech Service sind einfach und erschwinglich. Mit einer 30-tägigen kostenlosen Testversion können Sie die Funktionen des Diensts kennenlernen und feststellen, ob er sich für Ihre Anwendungen eignet.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 09cc38cd5343e8b01b3e704191ea40c133d724f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 41d12013ec7eaa4e2aae59e1b366cc511a41f749
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103722"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535109"
 ---
 # <a name="try-speech-services-for-free"></a>Kostenloses Testen von Speech Services
 
@@ -38,7 +38,7 @@ So registrieren Sie sich für eine 30-tägige kostenlose Testversion:
 
    ![Registerkarte „Sprachdienste“](media/index/try-speech-api-free-trial1.png)
 
-1. Wählen Sie unter **Speech Services** die Schaltfläche **API-Schlüssel anfordern** aus.
+1. Wählen Sie unter **Sprachdienste** die Schaltfläche **API-Schlüssel abrufen** aus.
 
    ![API-Schlüssel](media/index/try-speech-api-free-trial2.png)
 
@@ -48,7 +48,7 @@ So registrieren Sie sich für eine 30-tägige kostenlose Testversion:
 
 1. Melden Sie sich mit Ihrem Microsoft-, Facebook-, LinkedIn- oder GitHub-Konto an.
 
-    Sie können sich für ein kostenloses Microsoft-Konto im [Microsoft-Kontoportal](https://account.microsoft.com/account) registrieren. Klicken Sie zunächst auf **Mit Microsoft anmelden** und dann auf **Konto erstellen**, wenn Sie zur Anmeldung aufgefordert werden. Führen Sie die Schritte zum Erstellen und Überprüfen Ihres neuen Microsoft-Kontos aus.
+    Sie können sich für ein kostenloses Microsoft-Konto im [Microsoft-Kontoportal](https://account.microsoft.com/account) registrieren. Wählen Sie zunächst **Mit Microsoft anmelden** und dann **Konto erstellen** aus, wenn Sie zur Anmeldung aufgefordert werden. Führen Sie die Schritte zum Erstellen und Überprüfen Ihres neuen Microsoft-Kontos aus.
 
 Nachdem Sie sich bei „Cognitive Services ausprobieren“ angemeldet haben, beginnt Ihr kostenloser Testzeitraum. Auf der angezeigten Webseite sind alle Azure Cognitive Services-Dienste aufgeführt, für die Sie zurzeit über Testabonnements verfügen. Neben **Speech Services** werden zwei Abonnementschlüssel angezeigt. Sie können beide Schlüssel in Ihren Anwendungen verwenden.
 
@@ -59,9 +59,9 @@ Nachdem Sie sich bei „Cognitive Services ausprobieren“ angemeldet haben, beg
 
 Neue Azure-Konten erhalten ein Guthaben von 200 USD, das bis zu 30 Tage lang verfügbar ist. Sie können dieses Guthaben zum weiteren Testen der Speech Services oder zur Anwendungsentwicklung verwenden.
 
-Um sich für ein neues Azure-Konto zu registrieren, navigieren Sie zur [Azure-Registrierungsseite](https://azure.microsoft.com/free/ai/), klicken Sie auf **Kostenlos starten**, und erstellen Sie ein neues Azure-Konto mithilfe Ihres Microsoft-Kontos.
+Um sich für ein neues Azure-Konto zu registrieren, navigieren Sie zur [Azure-Registrierungsseite](https://azure.microsoft.com/free/ai/), wählen Sie **Kostenlos starten** aus, und erstellen Sie ein neues Azure-Konto mithilfe Ihres Microsoft-Kontos.
 
-Sie können sich für ein kostenloses Microsoft-Konto im [Microsoft-Kontoportal](https://account.microsoft.com/account) registrieren. Klicken Sie zunächst auf **Mit Microsoft anmelden** und dann auf **Konto erstellen**, wenn Sie zur Anmeldung aufgefordert werden. Führen Sie die Schritte zum Erstellen und Überprüfen Ihres neuen Microsoft-Kontos aus.
+Sie können sich für ein kostenloses Microsoft-Konto im [Microsoft-Kontoportal](https://account.microsoft.com/account) registrieren. Wählen Sie zunächst **Mit Microsoft anmelden** und dann **Konto erstellen** aus, wenn Sie zur Anmeldung aufgefordert werden. Führen Sie die Schritte zum Erstellen und Überprüfen Ihres neuen Microsoft-Kontos aus.
 
 Nachdem Sie das Azure-Konto erstellt haben, führen Sie die Schritte im nächsten Abschnitt aus, um ein Abonnement für die Speech Services zu erstellen.
 
@@ -89,8 +89,8 @@ So fügen Sie Ihrem (kostenlosen oder kostenpflichtigen) Azure-Konto eine Speech
 
    * Einen Namen für die neue Ressource. Über den Namen können Sie mehrere Abonnements für denselben Dienst unterscheiden.
    * Wählen Sie das Azure-Abonnement aus, dem die neue Ressource zugeordnet ist, um zu bestimmen, wie die Gebühren berechnet werden.
-   * Wählen Sie die Region aus, in der die Ressource verwendet wird. Derzeit sind die Speech Services in den Regionen „Asien, Osten“, „Europa, Norden“ und „USA, Westen“ verfügbar.
-   * Wählen Sie einen kostenlosen oder einen kostenpflichtigen Tarif aus. Klicken Sie auf **Alle Preisinformationen anzeigen**, um vollständige Informationen zu Preisen und Verwendungskontingenten für die einzelnen Tarife zu erhalten.
+   * Wählen Sie die [Region](regions.md) aus, in der die Ressource verwendet wird.
+   * Wählen Sie einen kostenlosen oder einen kostenpflichtigen Tarif aus. Wählen Sie **Alle Preisinformationen anzeigen** aus, um vollständige Informationen zu Preisen und Verwendungskontingenten für die einzelnen Tarife zu erhalten.
    * Erstellen Sie eine neue Ressourcengruppe für dieses Abonnement für den Sprachdienst, oder weisen Sie das Abonnement einer vorhandenen Ressourcengruppe zu. Anhand von Ressourcengruppen können Sie Ihre verschiedenen Azure-Abonnements organisieren.
    * Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, um zukünftig einfach auf Ihr Abonnement zugreifen zu können.
    * Klicken Sie auf **Erstellen**.

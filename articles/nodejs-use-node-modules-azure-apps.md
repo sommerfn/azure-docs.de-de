@@ -3,8 +3,8 @@ title: Arbeiten mit Node.js-Modulen
 description: Erfahren Sie, wie Sie mit Node.js-Modulen im Zusammenhang mit Azure App Service oder Cloud Services arbeiten.
 services: ''
 documentationcenter: nodejs
-author: TomArcher
-manager: routlaw
+author: rloutlaw
+manager: rloutlaw
 editor: ''
 ms.assetid: c0e6cd3d-932d-433e-b72d-e513e23b4eb6
 ms.service: multiple
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
-ms.author: tarcher
-ms.openlocfilehash: 045250f0b0f97cbefe05b36f1c8d4480244a172d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.author: routlaw
+ms.openlocfilehash: 61be6bcd957a4e81147d5ef472b8f850e5605e41
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575846"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309275"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Verwenden von Node.js-Modulen mit Azure-Anwendungen
 Dieses Dokument bietet Anweisungen zur Verwendung von Node.js-Modulen mit Anwendungen, die auf Azure gehostet werden. Sie erfahren, wie Sie sicherstellen können, dass eine Anwendung eine bestimmte Version eines Moduls sowie systemeigene Module von Azure verwendet.
@@ -87,7 +87,7 @@ Wenn die Anwendung für die Produktion bereit ist, können Sie die Versionsanfor
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie wissen, wie Sie Node.js-Module mit Azure verwenden, erfahren Sie nun, wie Sie [die Node.js-Version angeben](https://github.com/squillace/staging/blob/master/articles/nodejs-specify-node-version-azure-apps.md), [eine Node.js-Web-App erstellen und bereitstellen](app-service/app-service-web-get-started-nodejs.md) und [die Azure-Befehlszeilenschnittstelle für Mac und Linux verwenden](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
 
-Weitere Informationen finden Sie im [Node.js Developer Center](/nodejs/azure/).
+Weitere Informationen finden Sie im [Node.js Developer Center](/azure/javascript/).
 
 [specify the Node.js version]: nodejs-specify-node-version-azure-apps.md
 [How to use the Azure Command-Line Interface for Mac and Linux]:cli-install-nodejs.md

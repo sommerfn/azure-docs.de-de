@@ -2,26 +2,26 @@
 title: 'Referenz: Vertrauensframeworks in Azure Active Directory B2C | Microsoft-Dokumentation'
 description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien und zum Identity Experience Framework
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8debab073d65cd64303d2f395b73a3a04e8105b6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e96ddcb904bbda6c3123ffc9d3da50ff80823689
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166865"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68500010"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definieren von Vertrauens-Frameworks mit Azure AD B2C Identity Experience Framework
 
 Benutzerdefinierte Azure Active Directory B2C-Richtlinien (Azure AD B2C), die das Identity Experience Framework nutzen, bieten ihrem Unternehmen einen zentralisierten Dienst. Dieser Dienst reduziert die Komplexität des Identitätsverbunds in einer großen Interessengemeinschaft. Die Komplexität wird auf eine einzelne Vertrauensstellung und einen einzelnen Metadatenaustausch reduziert.
 
-Hierfür ist erforderlich, dass benutzerdefinierte Azure AD B2C-Richtlinien, für die das Identity Experience Framework genutzt wird, Ihnen die Beantwortung der folgenden Fragen ermöglichen:
+Hierfür ist erforderlich, dass benutzerdefinierte Azure AD B2C-Richtlinien, die das Identity Experience Framework verwenden, Ihnen die Beantwortung der folgenden Fragen ermöglichen:
 
 - Welche sind die Richtlinien, die sich auf rechtliche Fragen, die Sicherheit, den Datenschutz und den Schutz von Daten beziehen und eingehalten werden müssen?
 - Wer sind die Kontakte, und wie werden Benutzer zu anerkannten Teilnehmern?
@@ -54,7 +54,7 @@ Vertrauensframeworks (TFs) sind der Dreh- und Angelpunkt des OIX-Vertrauensframe
 - **Die technischen Richtlinien für die Erzeugung und Nutzung von Informationen zur digitalen Identität und somit zum Messen von LOA und LOP. Diese schriftlichen Richtlinien umfassen normalerweise die folgenden Kategorien von Richtlinien:**
     - Richtlinien zur Identitätsüberprüfung, z.B.: *Wie streng werden die Identitätsinformationen einer Person überprüft?*
     - Sicherheitsrichtlinien, z.B.: *Wie gut ist die Integrität und Vertraulichkeit der Informationen geschützt?*
-    - Datenschutzrichtlinien, z.B.: *Welches Maß an Kontrolle hat ein Benutzer über seine personenbezogenen Informationen (Personally Identifiable Information, PII)*?
+    - Datenschutzrichtlinien, z.B.: *Welches Maß an Kontrolle hat ein Benutzer über seine personenbezogenen Informationen (Personally Identifiable Information, PII)* ?
     - Richtlinien zur „Überlebensfähigkeit“ (Survivability), z.B.: *Kontinuität und Schutz von personenbezogenen Informationen, wenn ein Anbieter den Betrieb einstellt.*
 
 - **Die technischen Profile für die Erzeugung und Nutzung von Informationen zur digitalen Identität. Die Profile enthalten:**

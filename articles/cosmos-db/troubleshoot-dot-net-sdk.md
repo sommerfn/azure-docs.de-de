@@ -3,18 +3,17 @@ title: Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK f
 description: Verwenden Sie Features wie clientseitige Protokollierung und andere Tools von Drittanbietern, um bei Verwenden des .NET SDK Probleme im Zusammenhang mit Azure Cosmos DB zu erkennen, zu diagnostizieren und zu beheben.
 author: j82w
 ms.service: cosmos-db
-ms.date: 01/19/2019
+ms.date: 05/28/2019
 ms.author: jawilley
-ms.devlang: c#
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 7f969ab6059140ec32c9c5bf5045c546602a3c15
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 51b37c43b94ad59090f32af0d57bbefaa57f30fa
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411352"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932554"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB
 Dieser Artikel behandelt allgemeine Probleme, Problemumgehungen, Diagnoseschritte und Tools bei der Verwendung des [.NET SDK](sql-api-sdk-dotnet.md) mit Azure Cosmos DB-SQL-API-Konten.
@@ -49,7 +48,7 @@ Das Überprüfen der [Metriken im Portal](monitor-accounts.md) hilft festzustell
 Ein Timeout einer Anforderung tritt in der Regel bei Verwenden von Direkt-/TCP-Verbindungen auf, kann aber auch im Gatewaymodus auftreten. Es folgen die gängigen bekannten Ursachen und Vorschläge zur Behebung des Problems.
 
 * Die CPU-Auslastung ist hoch, was zu Wartezeiten und/oder Timeouts bei Anforderungen führt. Der Kunde kann den Hostcomputer zentral skalieren, um ihn mit mehr Ressourcen auszustatten, oder die Last auf mehrere Computer verteilen.
-* Die Verfügbarkeit von Sockets und Ports kann niedrig sein. Bei Verwendung der vor der Version 2.0 veröffentlichten .NET SDKs konnte es auf in Azure ausgeführten Clients zur [Azure SNAT-Portauslastung (PAT)] kommen. Dies ist ein Beispiel dafür, warum es empfehlenswert ist, immer die neueste SDK-Version zu verwenden.
+* Die Verfügbarkeit von Sockets und Ports kann niedrig sein. Bei Ausführung in Azure kann es auf Clients, die das .NET SDK verwenden, zur Azure SNAT-Portauslastung (PAT) kommen. Um die Wahrscheinlichkeit zu verringern, dass dieses Problem auftritt, verwenden Sie die neueste Version 2.x oder 3.x des .NET SDK. Dies ist ein Beispiel dafür, warum es empfehlenswert ist, immer die neueste SDK-Version zu verwenden.
 * Das Erstellen mehrerer DocumentClient-Instanzen kann zu Verbindungskonflikten und Timeoutproblemen führen. Befolgen Sie die [Leistungstipps](performance-tips.md), und verwenden Sie eine einzige „DocumentClient“-Instanz für den gesamten Prozess.
 * Benutzer beobachten mitunter erhöhte Latenzen oder Timeouts bei Anforderungen, weil ihre Sammlungen unzureichend bereitgestellt sind, das Back-End Anforderungen drosselt und der Client intern Vorgänge wiederholt, ohne dies dem Aufrufer zu melden. Überprüfen Sie die [Metriken im Portal](monitor-accounts.md).
 * Azure Cosmos DB verteilt den gesamten bereitgestellten Durchsatz gleichmäßig auf die physischen Partitionen. Überprüfen Sie die Metriken im Portal, um festzustellen, ob die Workload einen sehr aktiven [Partitionsschlüssel](partition-data.md) vorfindet. Dies führt dazu, dass der gesamte in Anspruch genommene Durchsatz (Anforderungseinheiten pro Sekunde, RU/s) anscheinend unter den bereitgestellten RU/s liegt, während der von einer einzelnen Partition genutzte Durchsatz (RU/s) den bereitgestellten Durchsatz übersteigt. 
@@ -69,7 +68,7 @@ Wenn Ihre App auf einem virtuellen Azure-Computer ohne öffentliche IP-Adresse b
 
  Azure SNAT-Ports werden nur verwendet, wenn Ihr virtueller Computer eine private IP-Adresse besitzt und ein Prozess auf dem virtuellen Computer versucht, eine Verbindung mit einer öffentlichen IP-Adresse herzustellen. Es gibt zwei Problemumgehungen, um die Einschränkung durch Azure SNAT zu vermeiden:
 
-* Fügen Sie Ihren Azure Cosmos DB-Dienstendpunkt dem Subnetz Ihres virtuellen Netzwerks von Azure Virtual Machines hinzu. Weitere Informationen finden Sie unter [Dienstendpunkte im virtuellen Netzwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
+* Fügen Sie Ihren Azure Cosmos DB-Dienstendpunkt dem Subnetz Ihres virtuellen Netzwerks von Azure Virtual Machines hinzu. Weitere Informationen finden Sie unter [Azure Virtual Network-Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
 
     Wenn der Dienstendpunkt aktiviert ist, werden die Anforderungen nicht mehr von einer öffentlichen IP-Adresse an Azure Cosmos DB gesendet. Stattdessen wird die Identität des virtuellen Netzwerks und des Subnetzes gesendet. Diese Änderung kann zu Firewallproblemen führen, wenn nur öffentliche IP-Adressen zulässig sind. Wenn Sie eine Firewall verwenden und den Dienstendpunkt aktivieren, fügen Sie der Firewall mithilfe von [VNET-ACLs](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) ein Subnetz hinzu.
 * Weisen Sie Ihrem virtuellen Azure-Computer eine öffentliche IP-Adresse zu.

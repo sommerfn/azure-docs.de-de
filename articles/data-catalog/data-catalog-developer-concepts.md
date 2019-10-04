@@ -1,19 +1,17 @@
 ---
 title: Azure Data Catalog – Entwicklerkonzepte
 description: Eine Einführung in die wichtigsten Konzepte im konzeptionellen Modell von Azure Data Catalog, die durch die Catalog-REST-API verfügbar gemacht werden.
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 42e4b545a48bcbd0ad4b7faf077ebdbfe21648b1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: 80adc98255cfc9145d583ac775bbc490d599234e
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006691"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976824"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog – Entwicklerkonzepte
 **Azure Data Catalog** von Microsoft ist ein vollständig verwalteter Clouddienst mit Funktionen für die Datenquellenermittlung und das Crowdsourcing von Datenquellenmetadaten. Entwickler können den Dienst über die REST-APIs nutzen. Eine erfolgreiche Integration von **Azure Data Catalog**setzt voraus, dass die Entwickler mit den implementierten Konzepten vertraut sind.
@@ -21,7 +19,7 @@ ms.locfileid: "60006691"
 ## <a name="key-concepts"></a>Wichtige Begriffe
 Das konzeptionelle Modell von **Azure Data Catalog** basiert auf vier zentralen Konzepten: **Katalog**, **Benutzer**, **Assets** und **Anmerkungen**.
 
-![Konzept][1]
+![Abbildung des konzeptionellen Modells von Azure Data Catalog](./media/data-catalog-developer-concepts/concept2.png)
 
 *Abbildung 1: Vereinfachte Darstellung des konzeptionellen Modells von Azure Data Catalog*
 
@@ -115,7 +113,7 @@ Anmerkungstypen stellen Typen von Metadaten dar, die anderen Typen innerhalb des
 <tr><td><b>Anmerkungstyp (geschachtelter Sichtname)</b></td><td><b>Zusätzliche Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
 
 <tr><td>Beschreibung („descriptions“)</td><td></td><td></td><td>Diese Eigenschaft enthält eine Beschreibung für ein Asset. Jeder Benutzer des Systems kann eine eigene Beschreibung hinzufügen.  Nur dieser Benutzer kann das Beschreibungsobjekt bearbeiten.  (Administratoren und Assetbesitzer können das Beschreibungsobjekt löschen, aber nicht bearbeiten.) Die Beschreibungen der Benutzer werden vom System separat verwaltet.  Es gibt also ein Array mit Beschreibungen für die einzelnen Assets (eine für jeden Benutzer, der einen Beitrag zu dem Asset geleistet hat, sowie ggf. eine weitere mit Informationen, die sich aus der Datenquelle ableiten).</td></tr>
-<tr><td></td><td>Beschreibung</td><td>Zeichenfolge</td><td>Eine kurze Beschreibung des Assets (zwei bis drei Zeilen)</td></tr>
+<tr><td></td><td>description</td><td>Zeichenfolge</td><td>Eine kurze Beschreibung des Assets (zwei bis drei Zeilen)</td></tr>
 
 <tr><td>Tag („tags“)</td><td></td><td></td><td>Diese Eigenschaft definiert ein Tag für ein Asset. Jeder Benutzer des Systems kann mehrere Tags für ein Asset hinzufügen.  Nur der Benutzer, der ein Tagobjekt erstellt hat, kann dieses bearbeiten.  (Administratoren und Assetbesitzer können das Tagobjekt löschen, aber nicht bearbeiten.) Die Tags der Benutzer werden vom System separat verwaltet.  Es gibt daher ein Array von Tagobjekten für jedes Asset.</td></tr>
 <tr><td></td><td>tag</td><td>Zeichenfolge</td><td>Ein Tag mit einer Beschreibung des Assets.</td></tr>
@@ -174,9 +172,9 @@ Allgemeine Typen können als Typen für Eigenschaften verwendet werden, sind abe
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>protocol</td><td>Zeichenfolge</td><td>Erforderlich. Beschreibt ein Protokoll für die Kommunikation mit der Datenquelle. Beispiele: „tds“ für SQL Server, „oracle“ für Oracle usw. Die Liste mit den derzeit unterstützten Protokollen finden Sie unter <a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">Spezifikation des Datenquellenverweises – DSL-Struktur</a>.</td></tr>
-<tr><td></td><td>address</td><td>Wörterbuch<string, object></td><td>Erforderlich. Bei „address“ handelt es sich um eine protokollspezifische Gruppe von Daten zur Identifizierung der Datenquelle, auf die verwiesen wird. Die für ein bestimmtes Protokoll gültigen Adressdaten, d.h. ohne Kenntnis des Protokolls bedeutungslos.</td></tr>
+<tr><td></td><td>address</td><td>Dictionary&lt;string, object&gt;</td><td>Erforderlich. Bei „address“ handelt es sich um eine protokollspezifische Gruppe von Daten zur Identifizierung der Datenquelle, auf die verwiesen wird. Die für ein bestimmtes Protokoll gültigen Adressdaten, d.h. ohne Kenntnis des Protokolls bedeutungslos.</td></tr>
 <tr><td></td><td>authentication</td><td>Zeichenfolge</td><td>Optional. Das Authentifizierungsschema, das zur Kommunikation mit der Datenquelle verwendet wird. Beispiele: windows, oauth, usw.</td></tr>
-<tr><td></td><td>connectionProperties</td><td>Wörterbuch<string, object></td><td>Optional. Weitere Informationen zum Herstellen einer Verbindung mit einer Datenquelle.</td></tr>
+<tr><td></td><td>connectionProperties</td><td>Dictionary&lt;string, object&gt;</td><td>Optional. Weitere Informationen zum Herstellen einer Verbindung mit einer Datenquelle.</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>Das Back-End führt im Rahmen der Veröffentlichung keinerlei Überprüfung der angegebenen Eigenschaften anhand von AAD durch.</td></tr>
 <tr><td></td><td>upn</td><td>Zeichenfolge</td><td>Eindeutige E-Mail-Adresse des Benutzers. Muss angegeben werden, wenn keine Objekt-ID angegeben wurde, oder im Zusammenhang mit der Eigenschaft „lastRegisteredBy“, andernfalls optional.</td></tr>
@@ -288,7 +286,7 @@ Die Objekt-ID des speziellen Sicherheitsprinzipals &lt;Everyone&gt; lautet „00
 > 
 
 **Text**
-
+```json
     {
         "roles": [
             {
@@ -301,9 +299,11 @@ Die Objekt-ID des speziellen Sicherheitsprinzipals &lt;Everyone&gt; lautet „00
             }
         ]
     }
+```
 
   **Zuweisen von Besitzern und Einschränken der Sichtbarkeit für ein vorhandenes Stammelement**: **PUT** https:\//api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
 
+```json
     {
         "roles": [
             {
@@ -345,11 +345,8 @@ Die Objekt-ID des speziellen Sicherheitsprinzipals &lt;Everyone&gt; lautet „00
             }
         ]
     }
+```
 
 > [!NOTE]
 > Bei „PUT“ muss im Text keine Elementnutzlast angegeben werden: „PUT“ kann zur reinen Aktualisierung von Rollen und/oder Berechtigungen verwendet werden.
 > 
-> 
-
-<!--Image references-->
-[1]: ./media/data-catalog-developer-concepts/concept2.png

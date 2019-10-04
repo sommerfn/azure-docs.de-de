@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 401eb660d7e5ddc68bc7422ef9f2e600295d2aea
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fa638a00e0d35e1d48bc3205ce2a77e7faf5d22e
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469731"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718378"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid-Ereignisschema für Blob Storage
 
@@ -20,23 +20,51 @@ In diesem Artikel werden die Eigenschaften und das Schema für Blob Storage-Erei
 
 Eine Liste von Beispielskripts und Tutorials finden Sie unter [Ereignisquellen in Azure Event Grid](event-sources.md#storage) im Abschnitt „Speicher“.
 
-## <a name="available-event-types"></a>Verfügbare Ereignistypen
+## <a name="list-of-events-for-blob-rest-apis"></a>Ereignisliste für Blob-REST-APIs
 
-Blob Storage gibt die folgenden Ereignistypen aus:
+Die folgenden Ereignisse werden ausgelöst, wenn ein Client durch Aufrufen von Blob-REST-APIs ein Blob erstellt, ersetzt oder löscht:
 
-| Ereignistypen | BESCHREIBUNG |
-| ---------- | ----------- |
-| Microsoft.Storage.BlobCreated | Wird ausgelöst, wenn ein Blob erstellt wird. |
-| Microsoft.Storage.BlobDeleted | Wird ausgelöst, wenn ein Blob gelöscht wird. |
+ |Ereignisname |BESCHREIBUNG|
+ |----------|-----------|
+ |**Microsoft.Storage.BlobCreated** |Wird ausgelöst, wenn ein Blob erstellt oder ersetzt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `PutBlob`, `PutBlockList` oder `CopyBlob` verwenden, die in der Blob-REST-API zur Verfügung stehen.   |
+ |**Microsoft.Storage.BlobDeleted** |Wird ausgelöst, wenn ein Blob gelöscht wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `DeleteBlob` aufrufen, der in der Blob-REST-API zur Verfügung steht. |
 
-## <a name="example-event"></a>Beispielereignis
+> [!NOTE]
+> Wenn Sie sicherstellen möchten, dass das Ereignis **Microsoft.Storage.BlobCreated** erst ausgelöst wird, nachdem ein Blockblob vollständig committet wurde, filtern Sie das Ereignis nach den REST-API-Aufrufen `CopyBlob`, `PutBlob` und `PutBlockList`. Bei diesen API-Aufrufen wird das Ereignis **Microsoft.Storage.BlobCreated** erst ausgelöst, nachdem Daten vollständig in einem Blockblob committet wurden. Informationen zum Erstellen eines Filters finden Sie unter [Filtern von Ereignissen für Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
-Das folgende Beispiel zeigt das Schema eines Blob-Erstellungsereignisses: 
+## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Ereignisliste für REST-APIs von Azure Data Lake Storage Gen2
+
+Die folgenden Ereignisse werden ausgelöst, wenn Sie einen hierarchischen Namespace für das Speicherkonto aktivieren und Clients REST-APIs von Azure Data Lake Storage Gen2 aufrufen.
+
+> [!NOTE]
+> Diese Ereignisse befinden sich in der Public Preview-Phase und stehen nur in den Regionen **USA, Westen 2** und **USA, Westen-Mitte** zur Verfügung.
+
+ |Ereignisname|BESCHREIBUNG|
+ |----------|-----------|
+ |**Microsoft.Storage.BlobCreated** | Wird ausgelöst, wenn ein Blob erstellt oder ersetzt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients die Vorgänge `CreateFile` und `FlushWithClose` verwenden, die in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung stehen. |
+ |**Microsoft.Storage.BlobDeleted** |Wird ausgelöst, wenn ein Blob gelöscht wird. <br>Dieses Ereignis wird insbesondere auch ausgelöst, wenn Clients den Vorgang `DeleteFile` aufrufen, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht. |
+ |**Microsoft.Storage.BlobRenamed**|Wird ausgelöst, wenn ein Blob umbenannt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `RenameFile` verwenden, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht.|
+ |**Microsoft.Storage.DirectoryCreated**|Wird ausgelöst, wenn ein Verzeichnis erstellt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `CreateDirectory` verwenden, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht.|
+ |**Microsoft.Storage.DirectoryRenamed**|Wird ausgelöst, wenn ein Verzeichnis umbenannt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `RenameDirectory` verwenden, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht.|
+ |**Microsoft.Storage.DirectoryDeleted**|Wird ausgelöst, wenn ein Verzeichnis gelöscht wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `DeleteDirectory` verwenden, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht.|
+
+> [!NOTE]
+> Wenn Sie sicherstellen möchten, dass das Ereignis **Microsoft.Storage.BlobCreated** erst ausgelöst wird, nachdem ein Blockblob vollständig committet wurde, filtern Sie das Ereignis nach dem REST-API-Aufruf `FlushWithClose`. Bei diesem API-Aufruf wird das Ereignis **Microsoft.Storage.BlobCreated** erst ausgelöst, nachdem Daten vollständig in einem Blockblob committet wurden. Informationen zum Erstellen eines Filters finden Sie unter [Filtern von Ereignissen für Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+
+<a id="example-event" />
+
+## <a name="the-contents-of-an-event-response"></a>Der Inhalt einer Ereignisantwort
+
+Wenn ein Ereignis ausgelöst wird, sendet der Event Grid-Dienst Daten zum Ereignis an den Endpunkt, der über ein entsprechendes Abonnement verfügt.
+
+In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für ein Blob Storage-Ereignis aussehen.
+
+### <a name="microsoftstorageblobcreated-event"></a>Ereignis „Microsoft.Storage.BlobCreated“
 
 ```json
 [{
-  "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/xstoretestaccount",
-  "subject": "/blobServices/default/containers/testcontainer/blobs/testfile.txt",
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/test-container/blobs/new-file.txt",
   "eventType": "Microsoft.Storage.BlobCreated",
   "eventTime": "2017-06-26T18:41:00.9584103Z",
   "id": "831e1650-001e-001b-66ab-eeb76e069631",
@@ -48,7 +76,7 @@ Das folgende Beispiel zeigt das Schema eines Blob-Erstellungsereignisses:
     "contentType": "text/plain",
     "contentLength": 524288,
     "blobType": "BlockBlob",
-    "url": "https://example.blob.core.windows.net/testcontainer/testfile.txt",
+    "url": "https://my-storage-account.blob.core.windows.net/testcontainer/new-file.txt",
     "sequencer": "00000000000004420000000000028963",
     "storageDiagnostics": {
       "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
@@ -59,12 +87,52 @@ Das folgende Beispiel zeigt das Schema eines Blob-Erstellungsereignisses:
 }]
 ```
 
-Das Schema für ein Blob-Löschungsereignis sieht ähnlich aus: 
+### <a name="microsoftstorageblobcreated-event-data-lake-storage-gen2"></a>Ereignis „Microsoft.Storage.BlobCreated“ (Data Lake Storage Gen2)
+
+Wenn das Blob Storage-Konto über einen hierarchischen Namespace verfügt, sehen die Daten in etwa wie im vorherigen Beispiel aus – mit Ausnahme folgender Änderungen:
+
+* Der Schlüssel `dataVersion` wird auf den Wert `2` festgelegt.
+
+* Der Schlüssel `data.api` wird auf die Zeichenfolge `CreateFile` oder `FlushWithClose` festgelegt.
+
+* Der Schlüssel `contentOffset` wird in das Dataset eingeschlossen.
+
+> [!NOTE]
+> Wenn Anwendungen den Vorgang `PutBlockList` verwenden, um ein neues Blob in das Konto hochzuladen, sind diese Änderungen nicht in den Daten enthalten.
 
 ```json
 [{
-  "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/xstoretestaccount",
-  "subject": "/blobServices/default/containers/testcontainer/blobs/testfile.txt",
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/my-file-system/blobs/new-file.txt",
+  "eventType": "Microsoft.Storage.BlobCreated",
+  "eventTime": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "api": "CreateFile",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "eTag": "0x8D4BCC2E4835CD0",
+    "contentType": "text/plain",
+    "contentLength": 0,
+    "contentOffset": 0,
+    "blobType": "BlockBlob",
+    "url": "https://my-storage-account.dfs.core.windows.net/my-file-system/new-file.txt",
+    "sequencer": "00000000000004420000000000028963",  
+    "storageDiagnostics": {
+    "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "dataVersion": "2",
+  "metadataVersion": "1"
+}]
+```
+
+### <a name="microsoftstorageblobdeleted-event"></a>Ereignis „Microsoft.Storage.BlobDeleted“
+
+```json
+[{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/testcontainer/blobs/file-to-delete.txt",
   "eventType": "Microsoft.Storage.BlobDeleted",
   "eventTime": "2017-11-07T20:09:22.5674003Z",
   "id": "4c2359fe-001e-00ba-0e04-58586806d298",
@@ -73,7 +141,7 @@ Das Schema für ein Blob-Löschungsereignis sieht ähnlich aus:
     "requestId": "4c2359fe-001e-00ba-0e04-585868000000",
     "contentType": "text/plain",
     "blobType": "BlockBlob",
-    "url": "https://example.blob.core.windows.net/testcontainer/testfile.txt",
+    "url": "https://my-storage-account.blob.core.windows.net/testcontainer/file-to-delete.txt",
     "sequencer": "0000000000000281000000000002F5CA",
     "storageDiagnostics": {
       "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
@@ -83,37 +151,177 @@ Das Schema für ein Blob-Löschungsereignis sieht ähnlich aus:
   "metadataVersion": "1"
 }]
 ```
- 
+
+### <a name="microsoftstorageblobdeleted-event-data-lake-storage-gen2"></a>Ereignis „Microsoft.Storage.BlobDeleted“ (Data Lake Storage Gen2)
+
+Wenn das Blob Storage-Konto über einen hierarchischen Namespace verfügt, sehen die Daten in etwa wie im vorherigen Beispiel aus – mit Ausnahme folgender Änderungen:
+
+* Der Schlüssel `dataVersion` wird auf den Wert `2` festgelegt.
+
+* Der Schlüssel `data.api` wird auf die Zeichenfolge `DeleteFile` festgelegt.
+
+* Die Schlüssel `url` enthält den Pfad `dfs.core.windows.net`.
+
+> [!NOTE]
+> Wenn Anwendungen den Vorgang `DeleteBlob` verwenden, um ein Blob aus dem Konto zu löschen, sind diese Änderungen nicht in den Daten enthalten.
+
+```json
+[{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/my-file-system/blobs/file-to-delete.txt",
+  "eventType": "Microsoft.Storage.BlobDeleted",
+  "eventTime": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+    "data": {
+    "api": "DeleteFile",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "contentType": "text/plain",
+    "blobType": "BlockBlob",
+    "url": "https://my-storage-account.dfs.core.windows.net/my-file-system/file-to-delete.txt",
+    "sequencer": "00000000000004420000000000028963",  
+    "storageDiagnostics": {
+    "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "dataVersion": "2",
+  "metadataVersion": "1"
+}]
+```
+
+### <a name="microsoftstorageblobrenamed-event"></a>Ereignis „Microsoft.Storage.BlobRenamed“
+
+```json
+[{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/my-file-system/blobs/my-renamed-file.txt",
+  "eventType": "Microsoft.Storage.BlobRenamed",
+  "eventTime": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "api": "RenameFile",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "destinationUrl": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-renamed-file.txt",
+    "sourceUrl": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-original-file.txt",
+    "sequencer": "00000000000004420000000000028963",  
+    "storageDiagnostics": {
+    "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+### <a name="microsoftstoragedirectorycreated-event"></a>Ereignis „Microsoft.Storage.DirectoryCreated“
+
+```json
+[{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/my-file-system/blobs/my-new-directory",
+  "eventType": "Microsoft.Storage.DirectoryCreated",
+  "eventTime": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "api": "CreateDirectory",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "url": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-new-directory",
+    "sequencer": "00000000000004420000000000028963",  
+    "storageDiagnostics": {
+    "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+### <a name="microsoftstoragedirectoryrenamed-event"></a>Ereignis „Microsoft.Storage.DirectoryRenamed“
+
+```json
+[{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/my-file-system/blobs/my-renamed-directory",
+  "eventType": "Microsoft.Storage.DirectoryRenamed",
+  "eventTime": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "api": "RenameDirectory",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "destinationUrl": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-renamed-directory",
+    "sourceUrl": "https://my-storage-account.dfs.core.windows.net/my-file-system/my-original-directory",
+    "sequencer": "00000000000004420000000000028963",  
+    "storageDiagnostics": {
+    "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+### <a name="microsoftstoragedirectorydeleted-event"></a>Ereignis „Microsoft.Storage.DirectoryDeleted“
+
+```json
+[{
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+  "subject": "/blobServices/default/containers/my-file-system/blobs/directory-to-delete",
+  "eventType": "Microsoft.Storage.DirectoryDeleted",
+  "eventTime": "2017-06-26T18:41:00.9584103Z",
+  "id": "831e1650-001e-001b-66ab-eeb76e069631",
+  "data": {
+    "api": "DeleteDirectory",
+    "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
+    "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
+    "url": "https://my-storage-account.dfs.core.windows.net/my-file-system/directory-to-delete",
+    "recursive": "true", 
+    "sequencer": "00000000000004420000000000028963",  
+    "storageDiagnostics": {
+    "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
+    }
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
 ## <a name="event-properties"></a>Ereigniseigenschaften
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | string | Eindeutiger Bezeichner für das Ereignis. |
 | data | object | Ereignisdaten für Blob Storage. |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| api | Zeichenfolge | Der Vorgang, durch den das Ereignis ausgelöst wurde. |
-| clientRequestId | Zeichenfolge | Ein vom Client generierter, nicht transparenter Wert mit einer Zeichenbeschränkung von 1 KB. Wenn Sie die Speicheranalyseprotokollierung aktiviert haben, wird er in den Analyseprotokollen aufgezeichnet. |
-| requestId | Zeichenfolge | Der eindeutige Bezeichner für die Anforderung. Verwenden Sie diesen für die Problembehandlung bei der Anforderung. |
-| eTag | Zeichenfolge | Der Wert, den Sie verwenden können, um Vorgänge bedingt auszuführen. |
-| contentType | Zeichenfolge | Der für das Blob angegebene Inhaltstyp. |
+| api | string | Der Vorgang, durch den das Ereignis ausgelöst wurde. |
+| clientRequestId | string | Vom Client bereitgestellte Anforderungs-ID für den Speicher-API-Vorgang. Diese ID kann zur Korrelation mit Azure Storage-Diagnoseprotokollen anhand des Felds „client-request-id“ in den Protokollen verwendet und in Clientanforderungen mit dem Header „x-ms-client-request-id“ bereitgestellt werden. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |
+| requestId | string | Dienstgenerierte Anforderungs-ID für den Speicher-API-Vorgang. Kann zum Korrelieren mit Azure Storage-Diagnoseprotokolle mithilfe des Felds „request-id-header“ in den Protokollen verwendet werden, und wird vom einleitenden API-Aufruf im „x-ms-request-id“-Header zurückgegeben. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |
+| eTag | string | Der Wert, den Sie verwenden können, um Vorgänge bedingt auszuführen. |
+| contentType | string | Der für das Blob angegebene Inhaltstyp. |
 | contentLength | integer | Die Größe des Blobs in Byte. |
-| blobType | Zeichenfolge | Der Blobtyp. Gültige Werte sind „BlockBlob“ oder „PageBlob“. |
-| URL | Zeichenfolge | Der Pfad des Blobs. |
-| sequencer | Zeichenfolge | Ein vom Benutzer festgelegter Wert, mit dem Sie Anforderungen nachverfolgen können. |
-| storageDiagnostics | object | Informationen zur Speicherdiagnose. |
- 
+| blobType | string | Der Blobtyp. Gültige Werte sind „BlockBlob“ oder „PageBlob“. |
+| contentOffset | number | Das Offset (in Bytes) eines Schreibvorgangs zu dem Zeitpunkt, zu dem die ereignisauslösende Anwendung das Schreiben in die Datei abgeschlossen hat. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden.|
+| destinationUrl |string | Die URL der Datei, die nach Abschluss des Vorgangs vorhanden ist. Wenn also beispielsweise eine Datei umbenannt wird, enthält die Eigenschaft `destinationUrl` die URL des neuen Dateinamens. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden.|
+| sourceUrl |string | Die URL der Datei, die vor dem Vorgang vorhanden ist. Wenn also beispielsweise eine Datei umbenannt wird, enthält `sourceUrl` die URL des ursprünglichen Dateinamens vor dem Umbenennungsvorgang. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden. |
+| url | string | Der Pfad des Blobs. <br>Wenn der Client eine Blob-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.blob.core.windows.net/\<Containername\>/\<Dateiname\>* . <br>Wenn der Client eine Data Lake Storage-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.dfs.core.windows.net/\<Dateisystemname\>/\<Dateiname\>* . |
+| recursive | string | `True`, um den Vorgang für alle untergeordneten Verzeichnisse auszuführen; andernfalls `False`. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden. |
+| sequencer | string | Ein nicht transparenter Zeichenfolgenwert, der die logische Reihenfolge von Ereignissen für einen bestimmten Blobnamen darstellt.  Benutzer können anhand des standardmäßigen Zeichenfolgenvergleichs die relative Reihenfolge von zwei Ereignissen unter dem gleichen Blobnamen verstehen. |
+| storageDiagnostics | object | Diagnosedaten, die gelegentlich vom Azure Storage-Dienst einbezogen werden. Falls vorhanden, sollten sie vom Ereignisconsumer ignoriert werden. |
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Eine Einführung zu Azure Event Grid finden Sie unter [Einführung in Azure Event Grid](overview.md).

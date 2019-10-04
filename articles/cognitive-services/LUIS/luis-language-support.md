@@ -1,5 +1,5 @@
 ---
-title: Sprachunterstützung
+title: 'Sprachunterstützung: LUIS'
 titleSuffix: Azure Cognitive Services
 description: LUIS bietet eine Reihe von Features innerhalb des Diensts. Nicht alle Funktionen besitzen die gleiche Sprachparität. Stellen Sie sicher, dass die Features, an denen Sie interessiert sind, in Ihrer gewünschten Sprache und Kultur unterstützt werden. Eine LUIS-App ist kulturspezifisch, und die Kultur kann nach dem Festlegen nicht mehr geändert werden.
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/19/2019
+ms.topic: conceptual
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 10fe5d90e7a7a59a1b543209a37b998376fdda1e
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 94f019205959d63a05ed3d90ede59fece3c05901
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757654"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316354"
 ---
 # <a name="language-and-region-support-for-luis"></a>Sprach- und Regionsunterstützung für LUIS
 
@@ -34,29 +34,30 @@ LUIS versteht Äußerungen in den folgenden Sprachen:
 |--|--|:--:|:--:|:--:|:--:|
 | Englisch (USA) |`en-US` | ✔ | ✔  |✔|✔|
 | *[Chinesisch](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Niederländisch |`nl-NL` |-|  -   |-|✔|
-| Französisch (Frankreich) |`fr-FR` |-| ✔ |✔ |✔|
+| Niederländisch |`nl-NL` |✔|  -   |-|✔|
+| Französisch (Frankreich) |`fr-FR` |✔| ✔ |✔ |✔|
 | Französisch (Kanada) |`fr-CA` |-|   -   |-|✔|
-| Deutsch |`de-DE` |-| ✔ |✔ |✔|
-| Italienisch |`it-IT` |-| ✔ |✔|✔|
-| *[Japanisch](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Nur Schlüsselausdruck|
-| Koreanisch |`ko-KR` |-|   -   |-|Nur Schlüsselausdruck|
-| Portugiesisch (Brasilien) |`pt-BR` |-| ✔ |✔ |Nicht alle Unterkulturen|
-| Spanisch (Spanien) |`es-ES` |-| ✔ |✔|✔|
+| Deutsch |`de-DE` |✔| ✔ |✔ |✔|
+| Hindi | `hi-IN`|-|-|-|-|
+| Italienisch |`it-IT` |✔| ✔ |✔|✔|
+| *[Japanisch](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Nur Schlüsselausdruck|
+| Koreanisch |`ko-KR` |✔|   -   |-|Nur Schlüsselausdruck|
+| Portugiesisch (Brasilien) |`pt-BR` |✔| ✔ |✔ |Nicht alle Unterkulturen|
+| Spanisch (Spanien) |`es-ES` |✔| ✔ |✔|✔|
 | Spanisch (Mexiko)|`es-MX` |-|  -   |✔|✔|
-| Türkisch | `tr-TR` |-|-|-|Nur Stimmung|
+| Türkisch | `tr-TR` |✔|-|-|Nur Stimmung|
 
 
 Die Sprachunterstützung variiert für [vordefinierte Entitäten](luis-reference-prebuilt-entities.md) und [vordefinierte Domänen](luis-reference-prebuilt-domains.md).
 
-### <a name="chinese-support-notes"></a>* Hinweise zur Unterstützung von Chinesisch
+### <a name="chinese-support-notes"></a>\* Hinweise zur Unterstützung von Chinesisch
 
  - In der Kultur `zh-cn` erwartet LUIS den vereinfachten chinesischen Zeichensatz anstelle des traditionellen.
  - Die Namen der Absichten, Entitäten, Features und regulären Ausdrücke können in chinesischen oder lateinischen Zeichen vorliegen.
  - Informationen zu den in der Kultur `zh-cn` unterstützten vordefinierten Domänen finden Sie in der [Referenz zu vordefinierten Domänen](luis-reference-prebuilt-domains.md).
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
-### <a name="japanese-support-notes"></a>* Hinweise zur Unterstützung von Japanisch
+### <a name="japanese-support-notes"></a>\* Hinweise zur Unterstützung von Japanisch
 
  - Da LUIS keine syntaktische Analyse bietet und den Unterschied zwischen Keigo und informellem Japanisch nicht versteht, müssen Sie die unterschiedlichen Formalitätsstufen als Trainingsbeispiele für Ihre Anwendungen integrieren.
      - でございます ist nicht dasselbe wie です.
@@ -88,6 +89,7 @@ Zum Ausführen von maschinellem Lernen unterteilt LUIS eine Äußerung basierend
 |Französisch (fr-FR)|✔||||
 |Französisch (fr-CA)|✔||||
 |Deutsch|||✔|✔|
+| Hindi |✔|-|-|-|-|
 |Italienisch|✔||||
 |Japanisch||||✔|
 |Koreanisch||✔||✔|
@@ -102,7 +104,7 @@ Die folgenden Kulturen weisen benutzerdefinierte Tokenizer-Versionen auf:
 |Kultur|Version|Zweck|
 |--|--|--|
 |Deutsch<br>`de-de`|1.0.0|Wendet die Tokenisierung auf Wörter an, indem sie mithilfe eines auf maschinellem Lernen basierenden Tokenizer getrennt werden, der versucht, zusammengesetzte Wörter in ihre einzelnen Komponenten zu zerlegen.<br>Wenn ein Benutzer `Ich fahre einen krankenwagen` als Äußerung eingibt, wird sie in `Ich fahre einen kranken wagen` geändert. Ermöglicht das unabhängige Markieren von `kranken` und `wagen` als unterschiedliche Entitäten.|
-|Deutsch<br>`de-de`|1.0.1|Wendet die Tokenisierung auf Wörter an, indem bei Leerzeichen eine Trennung erfolgt.<br> Wenn ein Benutzer `Ich fahre einen krankenwagen` als Äußerung eingibt, bleibt es ein einzelnes Token. Daher ist `krankenwagen` als eine einzelne Entität gekennzeichnet. |
+|Deutsch<br>`de-de`|1.0.2|Wendet die Tokenisierung auf Wörter an, indem bei Leerzeichen eine Trennung erfolgt.<br> Wenn ein Benutzer `Ich fahre einen krankenwagen` als Äußerung eingibt, bleibt es ein einzelnes Token. Daher ist `krankenwagen` als eine einzelne Entität gekennzeichnet. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migrieren zwischen Tokenizer-Versionen
 <!--

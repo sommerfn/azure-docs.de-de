@@ -4,23 +4,23 @@ description: Eine grundlegende Übersicht über das Authentifizierungs-/Autorisi
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: gwallace
 editor: ''
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
-ms.date: 08/24/2018
-ms.author: mahender,cephalin
+ms.date: 08/12/2019
+ms.author: cephalin
+ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d914e3ad3043b2671e154d1616c6800f34415c11
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: e308b44fffff451daa92cbf19209a1bcbfd4bff6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402744"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087983"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Authentifizierung und Autorisierung in Azure App Service
 
@@ -55,7 +55,7 @@ Das Modul wird getrennt vom Anwendungscode ausgeführt und mithilfe von App-Eins
 
 ### <a name="user-claims"></a>Benutzeransprüche
 
-App Service stellt Ihrem Code für alle Sprachenframeworks die Ansprüche des Benutzers zur Verfügung, indem sie in die Anforderungsheader eingefügt werden. Für ASP.NET 4.6-Apps füllt App Service die [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current)-Eigenschaft mit Ansprüchen des authentifizierten Benutzers, sodass Sie dem standardmäßigen .NET Codemuster einschließlich des `[Authorize]`-Attributs folgen können. Auf ähnliche Weise füllt App Service die `_SERVER['REMOTE_USER']`-Variable für PHP-Apps.
+App Service stellt Ihrem Code für alle Sprachenframeworks die Ansprüche des Benutzers zur Verfügung, indem sie in die Anforderungsheader eingefügt werden. Für ASP.NET 4.6-Apps füllt App Service die [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current)-Eigenschaft mit Ansprüchen des authentifizierten Benutzers, sodass Sie dem standardmäßigen .NET Codemuster einschließlich des `[Authorize]`-Attributs folgen können. Auf ähnliche Weise füllt App Service die `_SERVER['REMOTE_USER']`-Variable für PHP-Apps. Für Java-Apps sind die Ansprüche [über das Tomcat-Servlet zugänglich](containers/configure-language-java.md#authenticate-users-easy-auth).
 
 Für [Azure Functions](../azure-functions/functions-overview.md) wird `ClaimsPrincipal.Current` nicht für .NET Code extrahiert, Sie können die Benutzeransprüche jedoch in den Anforderungsheadern finden.
 
@@ -118,17 +118,17 @@ Für Clientbrowser kann App Service alle nicht authentifizierten Benutzer automa
 
 ## <a name="authorization-behavior"></a>Autorisierungsverhalten
 
-Im [Azure-Portal](https://portal.azure.com) können Sie die App Service-Autorisierung mit einer Reihe von Verhaltensweisen konfigurieren.
+Im [Azure-Portal](https://portal.azure.com) können Sie die App Service-Autorisierung mit einer Reihe von Verhaltensweisen konfigurieren, wenn eine eingehende Anforderung nicht authentifiziert ist.
 
 ![](media/app-service-authentication-overview/authorization-flow.png)
 
 Die folgenden Überschriften beschreiben die Optionen.
 
-### <a name="allow-all-requests-default"></a>Alle Anforderungen zulassen (Standard)
+### <a name="allow-anonymous-requests-no-action"></a>Anonyme Anforderungen zulassen (keine Aktion)
 
-Authentifizierung und Autorisierung werden nicht von App Service (deaktiviert) verwaltet. 
+Diese Option verweist die Autorisierung von nicht authentifiziertem Datenverkehr an Ihren Anwendungscode. Für authentifizierte Anforderungen übergibt App Service auch Authentifizierungsinformationen in den HTTP-Headern. 
 
-Wählen Sie diese Option, wenn Sie keine Authentifizierung und Autorisierung benötigen, oder wenn Sie einen eigenen Authentifizierungs- und Autorisierungscode schreiben möchten.
+Diese Option bietet mehr Flexibilität bei der Verarbeitung anonymer Anforderungen. Beispielsweise können Sie für Ihre Benutzer [mehrere Anmeldungsanbieter bereitstellen](app-service-authentication-how-to.md#use-multiple-sign-in-providers). Sie müssen jedoch Code schreiben. 
 
 ### <a name="allow-only-authenticated-requests"></a>Nur authentifizierte Anforderungen zulassen
 
@@ -136,11 +136,8 @@ Die Option lautet **Mit \<Anbieter> anmelden**. App Service leitet alle anonymen
 
 Mit dieser Option müssen Sie in Ihrer App keinen Authentifizierungscode schreiben. Eine genauere Autorisierung, z.B. rollenspezifische Autorisierung, kann durch das Untersuchen der Ansprüche des Benutzers durchgeführt werden (siehe [Zugriff auf Benutzeransprüche](app-service-authentication-how-to.md#access-user-claims)).
 
-### <a name="allow-all-requests-but-validate-authenticated-requests"></a>Alle Anforderungen zulassen, aber authentifizierte Anforderungen überprüfen
-
-Die Option lautet **Anonyme Anforderungen zulassen**. Diese Option aktiviert die Authentifizierung und Autorisierung in App Service, überlässt Autorisierungsentscheidungen jedoch Ihrem Anwendungscode. Für authentifizierte Anforderungen übergibt App Service auch Authentifizierungsinformationen in den HTTP-Headern. 
-
-Diese Option bietet mehr Flexibilität bei der Verarbeitung anonymer Anforderungen. Beispielsweise können Sie für Ihre Benutzer [mehrere Anmeldungsanbieter bereitstellen](app-service-authentication-how-to.md#use-multiple-sign-in-providers). Sie müssen jedoch Code schreiben. 
+> [!CAUTION]
+> Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite wünschen, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen.
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 

@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9ae8620b803fa9a911f44840a5fff5d190a316a1
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820024"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086530"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Deaktivieren der Firewall des Gastbetriebssystems eines virtuellen Azure-Computers
 
@@ -104,11 +104,11 @@ Gehen Sie zur Verwendung der [Remoteregistrierung](https://support.microsoft.com
 
 4.  Öffnen Sie eine Instanz von  **Services.msc**.
 
-5.  Klicken Sie auf **Dienste (lokal)**.
+5.  Klicken Sie auf **Dienste (lokal)** .
 
 6.  Wählen Sie **Verbindung mit einem anderen Computer herstellen** aus.
 
-7.  Geben Sie die **Private IP-Adresse (DIP)** des virtuellen Computers ein, auf dem das Problem auftritt.
+7.  Geben Sie die **Private IP-Adresse (DIP)**  des virtuellen Computers ein, auf dem das Problem auftritt.
 
 8.  Starten Sie die lokale Firewallrichtlinie neu.
 

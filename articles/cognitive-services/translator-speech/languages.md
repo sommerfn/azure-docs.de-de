@@ -3,20 +3,20 @@ title: Unterstützte Sprachen – Sprachübersetzungs-API
 titlesuffix: Azure Cognitive Services
 description: Zeigen Sie die von der Sprachübersetzungs-API unterstützten Sprachen an.
 services: cognitive-services
-author: Jann-Skotdal
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
-ms.author: v-jansko
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 63592a0afc7e5da0a37c25c226b92b587aa5f886
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2f5b48f2dbc2d109c03613676c6a119fd971603b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673698"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965441"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>Von der Sprachübersetzungs-API unterstützte Sprachen
 
@@ -27,13 +27,13 @@ Die Sprachübersetzung wird für folgende Sprachen unterstützt. Wenn beide Spra
 | Sprache    |
 |:----------- |
 | Arabisch (modernes Hocharabisch)      |
+| Portugiesisch (Brasilien)     |
 | Chinesisch (Mandarin)      |
 | Englisch      |
 | Französisch      |
 | Deutsch      |
 | Italienisch      |
 | Japanisch      |
-| Portugiesisch (Brasilien)     |
 | Russisch      |
 | Spanisch      |
 

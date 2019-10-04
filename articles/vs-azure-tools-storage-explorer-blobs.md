@@ -12,27 +12,31 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 05/21/2019
 ms.author: cawa
-ms.openlocfilehash: f46467871a5ae0147b5dc60881bda4175eabac56
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858166"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442977"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Verwalten von Azure Blob Storage-Ressourcen mit dem Storage-Explorer
+
 ## <a name="overview"></a>Übersicht
+
 [Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) ist ein Dienst zur Speicherung großer Mengen unstrukturierter Daten, beispielsweise Text- oder Binärdaten, auf die von überall auf der Welt über HTTP oder HTTPS zugegriffen werden kann.
 Sie können Blob Storage verwenden, um Daten öffentlich auf der ganzen Welt zur Verfügung zu stellen oder um Anwendungsdaten privat zu speichern. In diesem Artikel wird beschrieben, wie Sie den Storage-Explorer für Blobcontainer und Blobs verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 * [Herunterladen und Installieren des Storage-Explorers](https://www.storageexplorer.com)
 * [Herstellen der Verbindung mit einem Azure Storage-Konto oder -Dienst](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Erstellen eines Blobcontainers
+
 Alle Blobs müssen sich in einem Blobcontainer befinden. Ein Blobcontainer ist einfach eine logische Gruppierung von Blobs. Ein Konto kann eine unbegrenzte Anzahl von Containern enthalten, und in jedem Container kann eine unbegrenzte Anzahl von Blobs gespeichert werden.
 
 Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer im Storage-Explorer erstellen.
@@ -42,7 +46,7 @@ Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer im Storage-
 3. Klicken Sie mit der rechten Maustaste auf **Blobcontainer**, und wählen Sie im Kontextmenü die Option **Blobcontainer erstellen** aus.
 
    ![Kontextmenü „Blobcontainer erstellen“][0]
-4. Unter dem Ordner **Blobcontainer** wird ein Textfeld angezeigt. Geben Sie den Namen für den Blobcontainer ein. Informationen zu Regeln und Einschränkungen für die Benennung von Blobcontainern finden Sie unter [Erstellen des Containers und Festlegen von Berechtigungen](storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions).
+4. Unter dem Ordner **Blobcontainer** wird ein Textfeld angezeigt. Geben Sie den Namen für den Blobcontainer ein. Informationen zu Regeln und Einschränkungen für die Benennung von Blobcontainern finden Sie unter [Erstellen eines Containers](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container).
 
    ![Textfeld „Blobcontainer erstellen“][1]
 5. Drücken Sie die **EINGABETASTE**, wenn Sie mit dem Erstellen des Blobcontainers fertig sind, oder drücken Sie **ESC**, um den Vorgang abzubrechen. Nach der erfolgreichen Erstellung des Blobcontainers wird er im Ordner **Blobcontainer** für das ausgewählte Speicherkonto angezeigt.
@@ -50,6 +54,7 @@ Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer im Storage-
    ![Blobcontainer wurde erstellt][2]
 
 ## <a name="view-a-blob-containers-contents"></a>Anzeigen des Inhalts eines Blobcontainers
+
 Blobcontainer enthalten Blobs und Ordner (die ebenfalls Blobs enthalten können).
 
 Die folgenden Schritte veranschaulichen, wie Sie den Inhalt eines Blobcontainers im Storage-Explorer erstellen:
@@ -66,6 +71,7 @@ Die folgenden Schritte veranschaulichen, wie Sie den Inhalt eines Blobcontainers
    ![Blobcontainer-Editor][3]
 
 ## <a name="delete-a-blob-container"></a>Löschen eines Blobcontainers
+
 Blobcontainer können nach Bedarf einfach erstellt und gelöscht werden. (Informationen zum Löschen einzelner Blobs finden Sie im Abschnitt [Verwalten von Blobs in einem Blobcontainer](#managing-blobs-in-a-blob-container).)
 
 Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer im Storage-Explorer löschen.
@@ -82,6 +88,7 @@ Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer im Storage-
    ![Bestätigung „Delete blob Container“ (Blobcontainer löschen)][5]
 
 ## <a name="copy-a-blob-container"></a>Kopieren eines Blobcontainers
+
 Mit dem Storage-Explorer können Sie einen Blobcontainer in die Zwischenablage kopieren und diesen Blobcontainer dann in ein anderes Speicherkonto einfügen. (Informationen zum Kopieren einzelner Blobs finden Sie im Abschnitt [Verwalten von Blobs in einem Blobcontainer](#managing-blobs-in-a-blob-container).)
 
 Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer aus einem Speicherkonto in ein anderes kopieren.
@@ -97,6 +104,7 @@ Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer aus einem S
    ![Kontextmenü „Blobcontainer einfügen“][7]
 
 ## <a name="get-the-sas-for-a-blob-container"></a>Abrufen der SAS für einen Blobcontainer
+
 [Shared Access Signatures (SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md) ermöglichen den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto.
 Sie haben die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen, ohne Ihre Konto-Zugriffsschlüssel weitergeben zu müssen.
 
@@ -119,6 +127,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine SAS für einen Blobcontain
 8. Wählen Sie abschließend die Option **Schließen**.
 
 ## <a name="manage-access-policies-for-a-blob-container"></a>Verwalten von Zugriffsrichtlinien für einen Blobcontainer
+
 Die folgenden Schritte veranschaulichen, wie Sie Zugriffsrichtlinien für einen Blobcontainer verwalten (hinzufügen und entfernen):
 
 1. Öffnen Sie den Storage-Explorer.
@@ -129,7 +138,7 @@ Die folgenden Schritte veranschaulichen, wie Sie Zugriffsrichtlinien für einen 
    ![Kontextmenü „Manage Access Policies“ (Zugriffsrichtlinien verwalten)][11]
 5. Im Dialogfeld **Zugriffsrichtlinien** werden alle Zugriffsrichtlinien aufgeführt, die für den ausgewählten Blobcontainer bereits erstellt wurden.
 
-   ![Zugriffsrichtlinie – Optionen][12]        
+   ![Zugriffsrichtlinie – Optionen][12]
 6. Führen Sie diese Schritte je nach der Verwaltungsaufgabe der Zugriffsrichtlinie aus:
 
    * **Hinzufügen einer neuen Zugriffsrichtlinie:** Wählen Sie die Option **Hinzufügen** aus. Nach der Erstellung wird die neu hinzugefügte Zugriffsrichtlinie (mit Standardeinstellungen) im Dialogfeld **Zugriffsrichtlinien** angezeigt.
@@ -137,6 +146,7 @@ Die folgenden Schritte veranschaulichen, wie Sie Zugriffsrichtlinien für einen 
    * **Entfernen einer Zugriffsrichtlinie:** Wählen Sie neben der Zugriffsrichtlinie, die Sie entfernen möchten, die Option **Entfernen** aus.
 
 ## <a name="set-the-public-access-level-for-a-blob-container"></a>Festlegen der öffentlichen Zugriffsebene für einen Blobcontainer
+
 Standardmäßig wird für jeden Blobcontainer „Kein öffentlicher Zugriff“ festgelegt.
 
 Die folgenden Schritte veranschaulichen, wie Sie eine öffentliche Zugriffsebene für einen Blobcontainer angeben.
@@ -153,6 +163,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine öffentliche Zugriffsebene
 6. Wählen Sie **Übernehmen**.
 
 ## <a name="managing-blobs-in-a-blob-container"></a>Verwalten von Blobs in einem Blobcontainer
+
 Nach dem Erstellen eines Blobcontainers können Sie ein Blob in den Blobcontainer hochladen, ein Blob auf den lokalen Computer herunterladen, ein Blob auf dem lokalen Computer öffnen und vieles mehr.
 
 Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem Blobcontainer verwalten.
@@ -172,10 +183,10 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
      1. Wählen Sie auf der Symbolleiste des Hauptbereichs die Option **Hochladen** und dann im Dropdownmenü die Option **Dateien hochladen** aus.
 
         ![Menü „Dateien hochladen“][15]
-     2. Wählen Sie im Dialogfeld **Dateien hochladen** rechts neben dem Feld **Dateien** die Schaltfläche mit den Auslassungspunkten (**…**) aus, um die hochzuladenden Dateien auszuwählen.
+     2. Wählen Sie im Dialogfeld **Dateien hochladen** rechts neben dem Feld **Dateien** die Schaltfläche mit den Auslassungspunkten ( **…** ) aus, um die hochzuladenden Dateien auszuwählen.
 
         ![Dateien hochladen – Optionen][16]
-     3. Geben Sie als Typ **Blob-Typ**an. Weitere Informationen finden Sie unter [Erstellen des Containers und Festlegen von Berechtigungen](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container).
+     3. Geben Sie als Typ **Blob-Typ**an. Weitere Informationen finden Sie unter [Erstellen eines Containers](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container).
      4. Optional können Sie einen Zielordner angeben, in den die ausgewählten Dateien hochgeladen werden. Falls der Zielordner noch nicht vorhanden ist, wird er erstellt.
      5. Wählen Sie die Option **Hochladen**.
    * **Hochladen eines Ordners in einen Blobcontainer**
@@ -183,10 +194,10 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
      1. Wählen Sie auf der Symbolleiste des Hauptbereichs die Option **Hochladen** und dann im Dropdownmenü die Option **Uploadordner** aus.
 
         ![Menü „Upload folder“ (Ordner hochladen)][17]
-     2. Klicken Sie im Dialogfeld **Uploadordner** rechts vom Textfeld **Ordner** auf die Schaltfläche mit den Auslassungszeichen (**…**), um den Ordner auszuwählen, dessen Inhalt Sie hochladen möchten.
+     2. Klicken Sie im Dialogfeld **Uploadordner** rechts vom Textfeld **Ordner** auf die Schaltfläche mit den Auslassungszeichen ( **…** ), um den Ordner auszuwählen, dessen Inhalt Sie hochladen möchten.
 
         ![Upload folder (Ordner hochladen) – Optionen][18]
-     3. Geben Sie als Typ **Blob-Typ**an. Weitere Informationen finden Sie unter [Erstellen des Containers und Festlegen von Berechtigungen](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container).
+     3. Geben Sie als Typ **Blob-Typ**an. Weitere Informationen finden Sie unter [Erstellen eines Containers](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container).
      4. Optional können Sie einen Zielordner angeben, in den der Inhalt des ausgewählten Ordners hochgeladen wird. Falls der Zielordner noch nicht vorhanden ist, wird er erstellt.
      5. Wählen Sie die Option **Hochladen**.
    * **Herunterladen eines Blobs auf den lokalen Computer**
@@ -213,6 +224,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
      3. Wählen Sie im Bestätigungsdialogfeld die Option **Ja**.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Sehen Sie sich die [neuesten Versionsanmerkungen und Videos zum Storage-Explorer](https://www.storageexplorer.com) an.
 * Informieren Sie sich, wie Sie [Anwendungen mit Azure-Blobs, -Tabellen, -Warteschlangen und -Dateien erstellen](https://azure.microsoft.com/documentation/services/storage/).
 

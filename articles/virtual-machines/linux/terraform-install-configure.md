@@ -1,28 +1,27 @@
 ---
-title: Installieren und Konfigurieren von Terraform zur Verwendung mit Azure | Microsoft-Dokumentation
+title: Installieren und Konfigurieren von Terraform, um Azure-Ressourcen bereitzustellen | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Terraform zum Erstellen von Azure-Ressourcen installieren und konfigurieren
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: echuvyrov
-manager: jeconnoc
+author: tomarchermsft
+manager: gwallace
 editor: na
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/19/2018
-ms.author: echuvyrov
-ms.openlocfilehash: 71cf07b227a75e53119f2f35e79ccd7926b551e7
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 09/20/2019
+ms.author: tarcher
+ms.openlocfilehash: cd3c8d7d862788f626356b4cfcdccccca36227b3
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200699"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168739"
 ---
-# <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure
+# <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Installieren und Konfigurieren von Terraform, um Azure-Ressourcen bereitzustellen
  
 Terraform bietet eine einfache Möglichkeit, Cloudinfrastruktur mit der [einfachen Vorlagensprache](https://www.terraform.io/docs/configuration/syntax.html) zu definieren, eine Vorschau anzuzeigen und bereitzustellen. In diesem Artikel werden die notwendigen Schritte zum Bereitstellen von Ressourcen in Azure mithilfe von Terraform beschrieben.
 
@@ -38,7 +37,7 @@ Terraform wird standardmäßig in [Cloud Shell](/azure/terraform/terraform-cloud
 
 Überprüfen Sie Ihre Pfadkonfiguration mit dem Befehl `terraform`. Es wird eine Liste der verfügbaren Terraform-Optionen angezeigt, wie in der folgenden Beispielausgabe veranschaulicht:
 
-```bash
+```console
 azureuser@Azure:~$ terraform
 Usage: terraform [--version] [--help] <command> [args]
 ```
@@ -47,10 +46,10 @@ Usage: terraform [--version] [--help] <command> [args]
 
 Erstellen Sie einen [Azure AD-Dienstprinzipal](/cli/azure/create-an-azure-service-principal-azure-cli), damit Terraform Ressourcen in Azure bereitstellen kann. Der Dienstprinzipal gewährt Ihren Terraform-Skripts Die Berechtigung, in Ihrem Azure-Abonnement Ressourcen bereitstellen zu können.
 
-Wenn Sie über mehrere Azure-Abonnements verfügen, fragen Sie zuerst mit [az account show](/cli/azure/account#az-account-show) Ihr Konto ab, um eine Liste der Abonnement-ID- und Mandanten-ID-Werte zu erhalten:
+Wenn Sie über mehrere Azure-Abonnements verfügen, fragen Sie zuerst Ihr Konto mit [az account list](/cli/azure/account#az-account-list) ab, um eine Liste der Abonnement-ID- und Mandanten-ID-Werte zu erhalten:
 
 ```azurecli-interactive
-az account show --query "{subscriptionId:id, tenantId:tenantId}"
+az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 ```
 
 Um ein ausgewähltes Abonnement zu verwenden, legen Sie das Abonnement für diese Sitzung mit [az account set](/cli/azure/account#az-account-set) fest. Legen Sie die `SUBSCRIPTION_ID`-Umgebungsvariable so fest, dass sie den Wert des zurückgegebenen `id`-Felds für das gewünschte Abonnement enthält:
@@ -95,7 +94,7 @@ export ARM_ENVIRONMENT=public
 
 Erstellen Sie die Datei `test.tf` in einem leeren Verzeichnis, und fügen Sie das folgende Skript ein.
 
-```tf
+```hcl
 provider "azurerm" {
 }
 resource "azurerm_resource_group" "rg" {
@@ -112,7 +111,7 @@ terraform init
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```bash
+```console
 * provider.azurerm: version = "~> 0.3"
 
 Terraform has been successfully initialized!
@@ -126,7 +125,7 @@ terraform apply
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```bash
+```console
 An execution plan has been generated and is shown below.
 Resource actions are indicated with the following symbols:
   + create

@@ -2,20 +2,20 @@
 title: Verbinden mit Azure SQL Data Warehouse mithilfe von sqlcmd | Microsoft-Dokumentation
 description: Verwenden Sie das Befehlszeilenprogramm sqlcmd, um eine Verbindung mit einer Azure SQL Data Warehouse-Instanz herzustellen und diese abzufragen.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: XiaoyuMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
+ms.subservice: development
 ms.date: 04/17/2018
-ms.author: kavithaj
+ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e0e423ef0503bc4d23fddf4e1b9ff985636d2ec2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f3b93660fb9f8f3b0bfdddc37105b9e998ed9eee
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463513"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68479502"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Verbinden mit SQL Data Warehouse per sqlcmd
 > [!div class="op_single_selector"]
@@ -27,10 +27,10 @@ ms.locfileid: "55463513"
 > 
 > 
 
-Verwenden Sie das Befehlszeilenprogramm [sqlcmd][sqlcmd], um eine Verbindung mit einer Azure SQL Data Warehouse-Instanz herzustellen und diese abzufragen.  
+Verwenden Sie das Befehlszeilenprogramm [sqlcmd][sqlcmd], um eine Verbindung mit einer Azure SQL Data Warehouse-Instanz herzustellen und sie abzufragen.  
 
 ## <a name="1-connect"></a>1. Verbinden
-Öffnen Sie zur Verwendung von [sqlcmd][sqlcmd] die Eingabeaufforderung, und geben Sie **sqlcmd** sowie die Verbindungszeichenfolge für Ihre SQL Data Warehouse-Datenbank ein. Die Verbindungszeichenfolge muss die folgenden Parameter enthalten:
+Öffnen Sie zur Nutzung von [sqlcmd][sqlcmd]zuerst die Befehlseingabeaufforderung, und geben Sie **sqlcmd** gefolgt von der Verbindungszeichenfolge für Ihre SQL Data Warehouse-Datenbank ein. Die Verbindungszeichenfolge muss die folgenden Parameter enthalten:
 
 * **Server (-S):** Server in Form von `<`Servername`>`.database.windows.net
 * **Datenbank (-d):** Datenbankname.

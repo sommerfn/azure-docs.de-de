@@ -1,20 +1,21 @@
 ---
 title: Best Practices bei der Verwendung der Anomalieerkennungs-API
+titleSuffix: Azure Cognitive Services
 description: Informationen zu Best Practices bei der Anomalieerkennung mit der Anomalieerkennungs-API.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 467ac4e475a1c23e25b62c76cfbc959e7ed49465
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
+ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484032"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67721627"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Best Practices bei der Verwendung der Anomalieerkennungs-API
 
@@ -26,9 +27,32 @@ Die Anomalieerkennungs-API ist ein zustandsloser Dienst zur Erkennung von Anomal
 
 Lernen Sie in diesem Artikel Best Practices für die Verwendung der API kennen, um optimale Ergebnisse für Ihre Daten zu erzielen. 
 
+## <a name="when-to-use-batch-entire-or-latest-last-point-anomaly-detection"></a>Zeitpunkt zum Verwenden der Anomalieerkennung über die Batcherkennung (gesamt) oder Erkennung des aktuellsten (letzten) Punkts
+
+Mit dem Endpunkt der Batcherkennung der Anomalieerkennungs-API können Sie Anomalien in Ihren gesamten Zeitreihendaten erkennen. In diesem Erkennungsmodus wird ein einzelnes statistisches Modell erstellt und auf jeden Punkt im Dataset angewendet. Wenn Ihre Zeitreihe die folgenden Merkmale aufweist, wird empfohlen, die Batcherkennung zu verwenden, um Ihre Daten in einem einzelnen API-Aufruf vorab anzuzeigen.
+
+* Eine saisonale Zeitreihe mit gelegentlichen Anomalien.
+* Eine flache Trendzeitreihe mit gelegentlichen Spitzen/Abfällen. 
+
+Es wird nicht empfohlen, die Batchanomalieerkennung für die Datenüberwachung in Echtzeit oder sie für Zeitreihendaten zu verwenden, die nicht über die oben genannten Merkmale verfügen. 
+
+* Die Batcherkennung erstellt nur ein Modell und wendet es an. Die Erkennung für die einzelnen Punkte erfolgt im Kontext der gesamten Zeitreihe. Wenn die Zeitreihendaten ohne Saisonalität einen Auf- oder Abwärtstrend zeigen, werden einige Änderungspunkte (Abfälle und Spitzen in den Daten) vom Modell möglicherweise übersehen. Ebenso können einige Änderungspunkte, die weniger signifikant sind als diejenigen, die an einer späteren Position im Dataset folgen, nicht als ausreichend signifikant eingestuft werden, um in das Modell integriert zu werden.
+
+* Die Batcherkennung ist aufgrund der Anzahl der zu analysierenden Punkte langsamer als das Erkennen des Anomaliestatus des letzten Punkts bei der Datenüberwachung in Echtzeit.
+
+Für die Datenüberwachung in Echtzeit wird empfohlen, nur den Anomaliestatus Ihres neuesten Datenpunkts zu ermitteln. Durch die fortlaufende Anwendung der Erkennung des aktuellsten Punkts kann die Überwachung von Streamingdaten effizienter und genauer durchgeführt werden.
+
+Im folgenden Beispiel wird beschrieben, welche Auswirkungen diese Erkennungsmodi auf die Leistung haben können. Das erste Bild zeigt das Ergebnis der fortlaufenden Erkennung des Anomaliestatus des aktuellsten Punkts entlang von 28 zuvor angezeigten Datenpunkten. Die roten Punkte sind Anomalien.
+
+![Ein Bild, das die Erkennung von Anomalien unter Verwendung des aktuellsten Punkts veranschaulicht](../media/last.png)
+
+Nachfolgend ist dasselbe Dataset unter Verwendung der Batchanomalieerkennung aufgeführt. Das für den Vorgang erstellte Modell hat mehrere Anomalien ignoriert, die durch Rechtecke gekennzeichnet sind.
+
+![Ein Bild, das die Erkennung von Anomalien unter Verwendung der Batchmethode veranschaulicht](../media/entire.png)
+
 ## <a name="data-preparation"></a>Vorbereitung der Daten
 
-Die Anomalieerkennungs-API akzeptiert als JSON-Anforderungsobjekt formatierte Zeitreihendaten. Eine Zeitreihe kann aus beliebigen numerischen Daten bestehen, die über die Zeit sequenziell erfasst werden. Sie können Fenster Ihrer Zeitreihendaten an den Anomalieerkennungs-API-Endpunkt senden, um die Leistung der API zu verbessern. Dabei können zwischen 12 (Minimum) und 8640 (Maximum) Datenpunkten gesendet werden. 
+Die Anomalieerkennungs-API akzeptiert als JSON-Anforderungsobjekt formatierte Zeitreihendaten. Eine Zeitreihe kann aus beliebigen numerischen Daten bestehen, die über die Zeit sequenziell erfasst werden. Sie können Fenster Ihrer Zeitreihendaten an den Anomalieerkennungs-API-Endpunkt senden, um die Leistung der API zu verbessern. Dabei können zwischen 12 (Minimum) und 8640 (Maximum) Datenpunkten gesendet werden. [Granularität](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) wird als die Rate definiert, mit der Ihre Daten erfasst werden. 
 
 Datenpunkte, die an die Anomalieerkennungs-API gesendet werden, müssen einen gültigen Zeitstempel der koordinierten Weltzeit (UTC) und einen numerischen Wert aufweisen. 
 
@@ -48,9 +72,18 @@ Datenpunkte, die an die Anomalieerkennungs-API gesendet werden, müssen einen g�
 }
 ```
 
+Wenn Ihre Daten mit einem nicht standardmäßigen Intervall erfasst werden, können Sie dies über das Hinzufügen des `customInterval`-Attributs in Ihrer Anforderung spezifizieren. Wenn Ihre Reihe zum Beispiel alle 5 Minuten erfasst wird, dann können Sie die folgende JSON-Anforderung hinzufügen:
+
+```json
+{
+    "granularity" : "minutely", 
+    "customInterval" : 5
+}
+```
+
 ### <a name="missing-data-points"></a>Fehlende Datenpunkte
 
-Fehlende Datenpunkte kommen häufig bei gleichmäßig verteilten Zeitreihendatensätzen vor, insbesondere bei solchen mit einer feinen Granularität (d. h. einem kurzen Samplingintervall, bei dem alle paar Minuten Daten erfasst werden). Wenn weniger als 10 % der erwarteten Anzahl von Punkten in Ihren Daten fehlen, dürfte dies keine negativen Auswirkungen auf Ihre Erkennungsergebnisse haben. Sie können Lücken in Ihren Daten anhand ihrer Eigenschaften schließen, indem Sie beispielsweise Datenpunkte aus einer früheren Periode als Ersatz einfügen, oder eine lineare Interpolation bzw. einen gleitenden Durchschnitt verwenden.
+Fehlende Datenpunkte kommen häufig bei gleichmäßig verteilten Zeitreihendatensätzen vor, insbesondere bei solchen mit einer feinen Granularität (d. h. einem kurzen Samplingintervall. Beispielsweise Daten, die alle paar Minuten erfasst werden). Wenn weniger als 10 % der erwarteten Anzahl von Punkten in Ihren Daten fehlen, dürfte dies keine negativen Auswirkungen auf Ihre Erkennungsergebnisse haben. Sie können Lücken in Ihren Daten anhand ihrer Eigenschaften schließen, indem Sie beispielsweise Datenpunkte aus einer früheren Periode als Ersatz einfügen, oder eine lineare Interpolation bzw. einen gleitenden Durchschnitt verwenden.
 
 ### <a name="aggregate-distributed-data"></a>Aggregieren verteilter Daten
 
@@ -70,5 +103,5 @@ Wenn Ihre Streamingdaten in einem kurzen Intervall (wie Sekunden oder Minuten) e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [What is the Anomaly Detector API? (Was ist die Anomalieerkennungs-API?)](../overview.md)
-* [Schnellstart: Detect anomalies in your time series data using the Anomaly Detector REST API (Erkennen von Anomalien in Ihren Zeitreihendaten mit der Anomaly Detector REST-API)](../quickstarts/detect-data-anomalies-csharp.md)
+* [Was ist die Anomalieerkennungs-API?](../overview.md)
+* [Schnellstart: Erkennen von Anomalien in Ihren Zeitreihendaten mit der Anomalieerkennungs-REST-API](../quickstarts/detect-data-anomalies-csharp.md)

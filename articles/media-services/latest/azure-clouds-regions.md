@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 4f8851248c395a1f03c46490c8eb5e71221dd133
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549900"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65409284"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Clouds und Regionen, in denen Azure Media Services v3 verfügbar ist
 
@@ -35,10 +35,7 @@ Azure Media Services v3 ist über ein Azure Resource Manager-Manifest im globale
 
 ## <a name="regionsgeographieslocations"></a>Regionen/Geografien/Standorte
 
-* [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/)
-* [Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/)
-* [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/)
-* [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/)
+[Regionen, in denen der Azure Media Services-Dienst bereitgestellt wird](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
 ### <a name="region-code-name"></a>Name des Regionscodes 
 
@@ -98,6 +95,12 @@ Die folgenden Endpunkte sind wichtig für Verbindungen mit Media Services-Konten
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | Authentication | `https://login.chinacloudapi.cn/` |
 | Zielgruppe |  `https://management.core.chinacloudapi.cn/` |
+
+## <a name="see-also"></a>Weitere Informationen
+
+* [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/)
+* [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/)
+* [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

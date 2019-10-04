@@ -4,25 +4,24 @@ description: Hochverfügbarkeit von SAP ASCS/SCS-Instanzen mit Multi-SID-Konfigu
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 00c38c5c8140bffe0767ebe69470285bb15f5fc6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540141"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098720"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -241,7 +240,7 @@ Das Ziel besteht darin, mehrere SAP Advanced Business Application Programming- (
 
 _**Abbildung 2:** SAP-Multi-SID-Konfiguration in zwei Clustern_
 
-Die Vorgehensweise für die Installation eines zusätzlichen **SAP-\<SID2>**-Systems entspricht der für ein einzelnes \<SID>-System. Für ASCS/SCS-Cluster sowie im SOFS-Dateifreigabecluster sind zwei zusätzliche Vorbereitungsschritte erforderlich.
+Die Vorgehensweise für die Installation eines zusätzlichen **SAP-\<SID2>** -Systems entspricht der für ein einzelnes \<SID>-System. Für ASCS/SCS-Cluster sowie im SOFS-Dateifreigabecluster sind zwei zusätzliche Vorbereitungsschritte erforderlich.
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Vorbereiten der Infrastruktur für ein SAP-Multi-SID-Szenario
 
@@ -268,7 +267,7 @@ Sie können den vorhandenen \<globalen SAP-Host> und Volume1 des ersten SAP-\<SI
 _**Abbildung 3:** Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Hosts_
 
 > [!IMPORTANT]
->Für das zweite **SAP-\<SID2>**-System werden ebenfalls Volume1 und derselbe Netzwerkname des **\<globalen SAP-Hosts>** verwendet.
+>Für das zweite **SAP-\<SID2>** -System werden ebenfalls Volume1 und derselbe Netzwerkname des **\<globalen SAP-Hosts>** verwendet.
 >Da Sie **SAPMNT** bereits als der Freigabenamen für verschiedene SAP-Systeme festgelegt haben, müssen Sie zum Wiederverwenden des Netzwerknamens des **\<globalen SAP-Hosts>** dasselbe **Volume1** verwenden.
 >
 >Der Dateipfad für den globalen \<SID2>-Host lautet „C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\\.“.
@@ -327,7 +326,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>Vorbereiten der Infrastruktur im SOFS-Cluster unter Verwendung eines anderen globalen SAP-Hosts
 
-Sie können den zweiten SOFS-Cluster konfigurieren (z.B. für die zweite SOFS-Clusterrolle mit **\<SAPGlobalHost2>** und einem anderen **Volume2** für die zweite **\<SID2>**).
+Sie können den zweiten SOFS-Cluster konfigurieren (z.B. für die zweite SOFS-Clusterrolle mit **\<SAPGlobalHost2>** und einem anderen **Volume2** für die zweite **\<SID2>** ).
 
 ![Abbildung 4: Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Hosts 2][sap-ha-guide-figure-8015]
 
@@ -463,8 +462,8 @@ Installieren Sie DBMS und SAP-Anwendungsserver nach der oben beschriebenen Vorge
 
 * [Installieren einer ASCS/SCS-Instanz in einem Failovercluster ohne freigegebene Datenträger][sap-official-ha-file-share-document]: offizielle SAP-Richtlinien für eine Dateifreigabe mit Hochverfügbarkeit
 
-* [Direkte Speicherplätze in Windows Server 2016][s2d-in-win-2016]
+* [Direkte Speicherplätze in Windows Server 2016][s2d-in-win-2016]
 
 * [Übersicht über Dateiserver mit horizontaler Skalierung für Anwendungsdaten][sofs-overview]
 
-* [Neuerungen beim Speicher in Windows Server 2016][new-in-win-2016-storage]
+* [Neuerungen beim Speicher in Windows Server 2016][new-in-win-2016-storage]

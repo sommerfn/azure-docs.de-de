@@ -1,25 +1,19 @@
 ---
-title: LCS-Abonnement | Microsoft-Dokumentation
+title: LCS-Abonnement
 description: Einführung in ein Tutorial zum Erstellen eines Abonnements
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 9ea04a4df55bfe26f292305a75696d423db52328
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: pabutler
+ms.openlocfilehash: 43d27f832d5eb456de60e86257e2be8575f94bf9
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792796"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64935201"
 ---
 # <a name="lcs-subscription"></a>LCS-Abonnement
 

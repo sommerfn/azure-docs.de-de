@@ -1,31 +1,29 @@
 ---
-title: Vergleich zwischen dem Microsoft Identity Platform-Endpunkt (v2.0) und dem Azure AD v1.0-Endpunkt | Microsoft-Dokumentation
-description: Enthält eine Beschreibung der Unterschiede zwischen dem Microsoft Identity Platform-Endpunkt (v2.0) und dem Azure AD v1.0-Endpunkt (Azure Active Directory).
+title: Gründe für eine Aktualisierung auf die Microsoft Identity Platform (v2.0) | Azure
+description: Lernen Sie die Unterschiede zwischen Endpunkten der Microsoft Identity Platform (v2.0) und von Azure Active Directory (Azure AD) (v1.0) und die Vorteile einer Aktualisierung auf v2.0 kennen.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
-editor: ''
-ms.assetid: 5060da46-b091-4e25-9fa8-af4ae4359b6c
+author: rwike77
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/05/2019
-ms.author: celested
-ms.reviewer: hirsin, andret, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, dadobali, negoe
+ms.date: 08/01/2019
+ms.author: ryanwi
+ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dd443c95e8cf6dbddd66e5531b182469a118e4c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 815ff980abdde7ab91861d8550030476312fb6d3
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260730"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68835160"
 ---
-# <a name="comparing-the-microsoft-identity-platform-endpoint-and-azure-ad-v10-endpoint"></a>Vergleich zwischen dem Microsoft Identity Platform-Endpunkt und dem Azure AD v1.0-Endpunkt
+# <a name="why-update-to-microsoft-identity-platform-v20"></a>Gründe für eine Aktualisierung auf die Microsoft Identity Platform (v2.0)
 
 Beim Entwickeln einer neuen Anwendung ist es wichtig, dass Sie die Unterschiede zwischen Endpunkten der Microsoft Identity Platform (v2.0) und von Azure Active Directory (v1.0) kennen. In diesem Artikel werden die wichtigsten Unterschiede zwischen den Endpunkten und einige bestehende Einschränkungen für die Microsoft Identity Platform beschrieben.
 
@@ -48,7 +46,7 @@ Für den Microsoft Identity Platform-Endpunkt können Sie die Microsoft Authenti
 
 Für Apps, für die der Azure AD v1.0-Endpunkt verwendet wird, müssen vorher die erforderlichen OAuth 2.0-Berechtigungen angegeben werden, z.B.:
 
-![Benutzeroberfläche für die Registrierung von Berechtigungen](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
+![Beispiel der Registrierungsbenutzeroberfläche für Berechtigungen](./media/azure-ad-endpoint-comparison/app_reg_permissions.png)
 
 Die Berechtigungen, die direkt in der Anwendungsregistrierung festgelegt werden, sind **statisch**. Statische Berechtigungen der Anwendung werden im Azure-Portal definiert und sorgen dafür, dass der Code klar und einfach ist, aber für Entwickler kann dies ggf. zu Problemen führen:
 
@@ -56,7 +54,7 @@ Die Berechtigungen, die direkt in der Anwendungsregistrierung festgelegt werden,
 
 * Die Anwendung muss frühzeitig alle Ressourcen kennen, auf die sie jemals zugreifen muss. Es war schwierig, Apps zu erstellen, die auf eine beliebige Anzahl von Ressourcen zugreifen konnten.
 
-Mit dem Microsoft Identity Platform-Endpunkt können Sie die in den App-Registrierungsinformationen im Azure-Portal definierten statischen Berechtigungen ignorieren und stattdessen Berechtigungen schrittweise anfordern. Dies bedeutet, dass Sie im Voraus nach einem absoluten Minimum an Berechtigungen fragen müssen und im Laufe der Zeit mehr anfallen, da der Kunde zusätzliche Anwendungsfunktionen verwendet. Hierzu können Sie die Bereiche angeben, die für Ihre Anwendung zu beliebigen Zeitpunkten benötigt werden, indem Sie die neuen Bereiche in den Parameter `scope` einfügen, wenn Sie ein Zugriffstoken anfordern. Es ist nicht erforderlich, sie in den Informationen der Anwendungsregistrierung vorab zu definieren. Wenn der Benutzer noch nicht seine Zustimmung zu den neuen Bereichen gegeben hat, die der Anforderung hinzugefügt wurden, wird er aufgefordert, seine Zustimmung nur für die neuen Berechtigungen zu erteilen. Weitere Informationen dazu finden Sie unter [Berechtigungen, Zustimmung und Bereiche](v2-permissions-and-consent.md).
+Mit dem Microsoft Identity Platform-Endpunkt können Sie die in den App-Registrierungsinformationen im Azure-Portal definierten statischen Berechtigungen ignorieren und stattdessen Berechtigungen schrittweise anfordern. Dies bedeutet, dass Sie zunächst nach einem absoluten Minimum an Berechtigungen fragen und im Laufe der Zeit mehr anfallen, da der Kunde zusätzliche Anwendungsfunktionen verwendet. Hierzu können Sie die Bereiche angeben, die für Ihre Anwendung zu beliebigen Zeitpunkten benötigt werden, indem Sie die neuen Bereiche in den Parameter `scope` einfügen, wenn Sie ein Zugriffstoken anfordern. Es ist nicht erforderlich, sie in den Informationen der Anwendungsregistrierung vorab zu definieren. Wenn der Benutzer noch nicht seine Zustimmung zu den neuen Bereichen gegeben hat, die der Anforderung hinzugefügt wurden, wird er aufgefordert, seine Zustimmung nur für die neuen Berechtigungen zu erteilen. Weitere Informationen dazu finden Sie unter [Berechtigungen, Zustimmung und Bereiche](v2-permissions-and-consent.md).
 
 Wenn es für eine App zugelassen wird, Berechtigungen dynamisch über den `scope`-Parameter anzufordern, erhalten Entwickler die vollständige Kontrolle über die Erfahrung des Benutzers. Sie können die Zustimmungserfahrung auch vorziehen und alle Berechtigungen in einer anfänglichen Autorisierungsanforderung erfragen. Wenn Ihre Anwendung eine große Anzahl von Berechtigungen erfordert, können Sie die Berechtigungen des Benutzers inkrementell erfassen, während er über die Zeit bestimmte Features der Anwendung verwendet.
 
@@ -69,7 +67,7 @@ Für Apps mit dem v1.0-Endpunkt kann sich eine App wie eine **Ressource** oder e
 * Ressourcenbezeichner oder `AppID URI`: `https://graph.windows.net/`
 * Bereiche oder `oAuth2Permissions`: `Directory.Read`, `Directory.Write` usw.
 
-Dies gilt für den Microsoft Identity Platform-Endpunkt. Eine Anwendung kann sich immer noch als Ressource verhalten, Bereiche definieren und durch einen URI identifiziert werden. Clientanwendungen können immer noch den Zugriff auf diese Bereiche anfordern. Allerdings hat sich die Art und Weise geändert, auf die ein Client solche Berechtigungen anfordert.
+Dies gilt für den Microsoft Identity Platform-Endpunkt. Eine Anwendung kann sich immer noch als Ressource verhalten, Bereiche definieren und durch einen URI identifiziert werden. Clientanwendungen können immer noch den Zugriff auf diese Bereiche anfordern. Allerdings hat sich die Art und Weise geändert, wie ein Client solche Berechtigungen anfordert.
 
 Für den v1.0-Endpunkt kann eine an Azure AD gesendete OAuth 2.0-Autorisierungsanforderung beispielsweise wie folgt ausgesehen haben:
 
@@ -91,7 +89,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-Hierbei wird mit dem Parameter **scope** angegeben, für welche Ressourcen und Berechtigungen die Anwendung eine Autorisierung anfordert. Die gewünschte Ressource ist noch in der Anforderung vorhanden – sie ist von den einzelnen Werten des Bereichsparameters umgeben. Wenn der Bereichsparameter auf diese Weise verwendet wird, entspricht der Microsoft Identity Platform-Endpunkt eher der OAuth 2.0-Spezifikation und richtet sich mehr nach den gängigen Methoden der Branche. Damit können Anwendungen auch [inkrementelle Zustimmung](#incremental-and-dynamic-consent) ausführen – d.h. nur dann, wenn die Anwendung sie benötigt, und nicht im Voraus.
+Hierbei wird mit dem Parameter **scope** angegeben, für welche Ressourcen und Berechtigungen die Anwendung eine Autorisierung anfordert. Die gewünschte Ressource ist noch in der Anforderung vorhanden – sie ist von den einzelnen Werten des Bereichsparameters umgeben. Wenn der Bereichsparameter auf diese Weise verwendet wird, entspricht der Microsoft Identity Platform-Endpunkt eher der OAuth 2.0-Spezifikation und richtet sich mehr nach den gängigen Methoden der Branche. Damit können Anwendungen auch eine [inkrementelle Zustimmung](#incremental-and-dynamic-consent) ausführen – d. h. nur dann, wenn die Anwendung sie benötigt, und nicht im Voraus.
 
 ## <a name="well-known-scopes"></a>Bekannte Bereiche
 
@@ -99,7 +97,7 @@ Hierbei wird mit dem Parameter **scope** angegeben, für welche Ressourcen und B
 
 Für Apps, die den Microsoft Identity Platform-Endpunkt verwenden, muss unter Umständen eine neue bekannte Berechtigung für Apps verwendet werden: der Bereich `offline_access`. Alle Apps müssen diese Berechtigung anfordern, wenn sie im Auftrag eines Benutzers für einen längeren Zeitraum auf Ressourcen zugreifen wollen, selbst, wenn der Benutzer die App nicht aktiv verwendet. Der `offline_access`-Bereich wird dem Benutzer in den Zustimmungsdialogfeldern als **Jederzeit auf Ihre Daten zugreifen** angezeigt, wofür der Benutzer seine Zustimmung gewähren muss. Durch das Anfordern der `offline_access`-Berechtigung kann Ihre Web-App OAuth 2.0-Aktualisierungstoken vom Microsoft Identity Platform-Endpunkt erhalten. Aktualisierungstoken sind langlebig und können durch neue OAuth 2.0-Zugriffstoken für längere Zugriffszeiten ausgetauscht werden.
 
-Wenn die Anwendung den `offline_access`-Bereich nicht anfordert, werden auch keine Aktualisierungstoken empfangen. Dies bedeutet, dass Sie beim Einlösen eines Autorisierungscodes im OAuth 2.0-Autorisierungscodefluss nur ein Zugriffstoken vom `/token`-Endpunkt erhalten. Dieses Zugriffstoken bleibt für einen kurzen Zeitraum (in der Regel eine Stunde) gültig, läuft aber anschließend ab. Zu diesem Zeitpunkt muss Ihre App den Benutzer zurück an den `/authorize`-Endpunkt leiten, um einen neuen Autorisierungscode abzurufen. Während dieser Umleitung muss der Benutzer möglicherweise seine Anmeldeinformationen erneut eingeben oder den Berechtigungen erneut zustimmen, je nach Anwendungstyp.
+Wenn die App den `offline_access`-Bereich nicht anfordert, werden auch keine Aktualisierungstoken empfangen. Dies bedeutet, dass Sie beim Einlösen eines Autorisierungscodes im OAuth 2.0-Autorisierungscodefluss nur ein Zugriffstoken vom `/token`-Endpunkt erhalten. Dieses Zugriffstoken bleibt für einen kurzen Zeitraum (in der Regel eine Stunde) gültig, läuft aber anschließend ab. Zu diesem Zeitpunkt muss Ihre App den Benutzer zurück an den `/authorize`-Endpunkt leiten, um einen neuen Autorisierungscode abzurufen. Während dieser Umleitung muss der Benutzer möglicherweise seine Anmeldeinformationen erneut eingeben oder den Berechtigungen erneut zustimmen, je nach Anwendungstyp.
 
 Weitere Informationen zu OAuth 2.0, `refresh_tokens` und `access_tokens` finden Sie in der [Microsoft Identity Platform-Protokollreferenz](active-directory-v2-protocols.md).
 
@@ -109,8 +107,8 @@ Bislang wurden im grundlegenden OpenID Connect-Anmeldefluss mit Microsoft Identi
 
 Die Informationen, auf die der Bereich `openid` Ihrer App Zugriff gewährt, sind nun beschränkt. Der Bereich `openid` erlaubt Ihrer App nur das Anmelden des Benutzers und das Empfangen eines App-spezifischen Bezeichners für den Benutzer. Falls Sie personenbezogene Daten über den Benutzer in Ihrer Anwendung erhalten möchten, müssen Sie über Ihre App zusätzliche Berechtigungen vom Benutzer einholen. Über zwei neue Bereiche `email` und `profile` können Sie weitere Berechtigungen anfordern.
 
-* Der Bereich `email` gewährt Ihrer Anwendung mithilfe des Anspruchs `email` im „id_token“ Zugriff auf die primäre E-Mail-Adresse des Benutzers, vorausgesetzt, der Benutzer hat eine adressierbare E-Mail-Adresse. 
-* Der Bereich `profile` ermöglicht Ihrer App den Zugriff auf alle anderen grundlegenden Informationen zum Benutzer: Name, bevorzugter Benutzername, Objekt-ID usw auf dem „id_token“.
+* Der Bereich `email` gewährt Ihrer Anwendung mithilfe des Anspruchs `email` im „id_token“ Zugriff auf die primäre E-Mail-Adresse des Benutzers, vorausgesetzt, der Benutzer hat eine adressierbare E-Mail-Adresse.
+* Der Bereich `profile` ermöglicht Ihrer App den Zugriff auf alle anderen grundlegenden Informationen zum Benutzer: Name, bevorzugter Benutzername, Objekt-ID usw. auf dem „id_token“.
 
 Diese Bereiche können Sie für Ihre Anwendung den Weg der minimalen Offenlegung einschlagen. Sie können Benutzer nur um die Daten bitten, die für die Funktionsweise der Anwendung erforderlich sind. Weitere Informationen zu diesen Bereichen finden Sie in der [Referenz zu den Bereichen der Microsoft Identity Platform](v2-permissions-and-consent.md).
 
@@ -118,13 +116,16 @@ Diese Bereiche können Sie für Ihre Anwendung den Weg der minimalen Offenlegung
 
 Der Microsoft Identity Platform-Endpunkt gibt standardmäßig einen kleineren Satz mit Ansprüchen in seinen Token aus, um die Nutzlasten klein zu halten. Wenn Sie Anwendungen und Dienste haben, die von einem bestimmten Anspruch in einem v1.0-Token abhängig sind, der über ein Microsoft Identity Platform-Token nicht mehr standardmäßig bereitgestellt wird, sollten Sie die Funktion [optionale Ansprüche](active-directory-optional-claims.md) verwenden, um diesen Anspruch einzuschließen.
 
+> [!IMPORTANT]
+> v1.0- und v2.0-Token können über die v1.0- und v2.0-Endpunkte ausgestellt werden. ID-Token entsprechen *immer* dem Endpunkt, über den sie angefordert werden. Zugriffstoken entsprechen *immer* dem Format, das in der Web-API erwartet wird, die der Client mit diesem Token aufruft.  Wenn in der App der v2.0-Endpunkt verwendet wird, um ein Token zum Aufrufen von Microsoft Graph abzurufen, bei dem Zugriffstoken im v1.0-Format erwartet werden, erhält die App ein Token im v1.0-Format.  
+
 ## <a name="limitations"></a>Einschränkungen
 
 Es gelten einige Einschränkungen, mit denen Sie bei Verwendung der Microsoft Identity Platform vertraut sein sollten.
 
 Beim Erstellen von Anwendungen, die in die Microsoft Identity Platform integriert werden, müssen Sie entscheiden, ob der Microsoft Identity Platform-Endpunkt und die Authentifizierungsprotokolle Ihren Anforderungen entsprechen. Der v1.0-Endpunkt und die zugehörige Plattform werden weiterhin vollständig unterstützt und umfassen in gewisser Hinsicht mehr Funktionen als die Microsoft Identity Platform. Mit der Microsoft Identity Platform ergeben sich aber [erhebliche Vorteile](azure-ad-endpoint-comparison.md) für Entwickler.
 
-Folgendes wird Entwicklern derzeit empfohlen (vereinfacht dargestellt):
+Hier ist nun eine vereinfachte Empfehlung für Entwickler:
 
 * Verwenden Sie die Microsoft Identity Platform, wenn Sie persönliche Microsoft-Konten in Ihrer Anwendung unterstützen möchten bzw. müssen oder wenn Sie eine neue Anwendung schreiben. Zuvor sollten Sie sich jedoch mit den in diesem Artikel behandelten Einschränkungen vertraut machen.
 * Falls Sie eine Anwendung migrieren oder aktualisieren, die auf SAML basiert, können Sie die Microsoft Identity Platform nicht verwenden. Verwenden Sie stattdessen den [Leitfaden zu Azure AD v1.0](v1-overview.md).
@@ -133,7 +134,7 @@ Der Microsoft Identity Platform-Endpunkt wird weiterentwickelt, um die hier aufg
 
 ### <a name="restrictions-on-app-registrations"></a>Einschränkungen für App-Registrierungen
 
-Für jede App, die Sie in den Microsoft Identity Platform-Endpunkt integrieren möchten, können Sie im Azure-Portal auf der neuen [Benutzeroberfläche für **App-Registrierungen**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) eine App-Registrierung erstellen. Vorhandene Microsoft-Konto-Apps sind nicht mit dem Vorschauportal kompatibel, aber alle Azure AD-Apps. Dies gilt unabhängig davon, wo und wann diese registriert wurden.
+Für jede App, die Sie in den Microsoft Identity Platform-Endpunkt integrieren möchten, können Sie im Azure-Portal auf der neuen [Benutzeroberfläche für **App-Registrierungen**](https://aka.ms/appregistrations) eine App-Registrierung erstellen. Vorhandene Microsoft-Konto-Apps sind nicht mit dem Portal kompatibel, aber alle Azure AD-Apps. Dies gilt unabhängig davon, wo und wann diese registriert wurden.
 
 App-Registrierungen, die Geschäfts-, Schul- und Unikonten und persönliche Konten unterstützen, haben die folgenden Einschränkungen:
 
@@ -168,9 +169,9 @@ Wenn Sie eine Anwendung verwenden möchten, für die `login-east.contoso.com` un
 `https://login-east.contoso.com`  
 `https://login-west.contoso.com`  
 
-Die beiden letztgenannten URLs können hinzugefügt werden, da es sich hierbei um Unterdomänen der ersten Umleitungs-URL „contoso.com“ handelt. Diese Einschränkung wird in einer zukünftigen Version aufgehoben.
+Die beiden letztgenannten URLs können hinzugefügt werden, da es sich hierbei um Unterdomänen der ersten Umleitungs-URL „contoso.com“ handelt.
 
-Beachten Sie auch, dass Sie nur 20 Antwort-URLs für eine bestimmte Anwendung haben können – diese Begrenzung gilt für alle Anwendungstypen, die die Registrierung unterstützt (SPA, nativer Client, Web-App und Dienst).  
+Sie können nur 20 Antwort-URLs für eine bestimmte Anwendung haben – diese Begrenzung gilt für alle Anwendungstypen, die die Registrierung unterstützt (SPA, nativer Client, Web-App und Dienst).  
 
 Informationen dazu, wie Sie eine App für die Nutzung mit der Microsoft Identity Platform registrieren, finden Sie unter [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](quickstart-register-app.md).
 
@@ -179,7 +180,7 @@ Informationen dazu, wie Sie eine App für die Nutzung mit der Microsoft Identity
 Derzeit ist die Bibliotheksunterstützung für den Microsoft Identity Platform-Endpunkt eingeschränkt. Wenn Sie den Microsoft Identity Platform-Endpunkt in einer Produktionsanwendung verwenden möchten, haben Sie folgende Möglichkeiten:
 
 * Wenn Sie eine Webanwendung erstellen, können Sie die allgemein verfügbare serverseitige Middleware bedenkenlos für die Anmeldung und die Tokenüberprüfung einsetzen. Dazu gehören die OWIN Open ID Connect-Middleware für ASP.NET und das NodeJS Passport-Plug-In. Codebeispiele, für die Microsoft-Middleware verwendet wird, finden Sie im Abschnitt zu den [ersten Schritten mit der Microsoft Identity Platform](v2-overview.md#getting-started).
-* Wenn Sie eine Anwendung für Desktop- oder Mobilgeräte entwickeln, können Sie eine der Microsoft Authentication Libraries verwenden (MSAL, derzeit in der Vorschauphase). Diese Bibliotheken gibt es in der für die Produktion unterstützten Vorschauversion, die Sie gefahrlos in Produktionsanwendungen einsetzen können. In der [Referenz zu Authentifizierungsbibliotheken](reference-v2-libraries.md) erfahren Sie mehr zu den Nutzungsbedingungen der Vorschauversion und verfügbaren Bibliotheken.
+* Wenn Sie eine Anwendung für Desktop- oder Mobilgeräte entwickeln, können Sie eine der Microsoft Authentication Libraries (MSAL) verwenden. Diese Bibliotheken sind allgemein verfügbar, oder es gibt sie in einer für die Produktion unterstützten Vorschauversion, die Sie gefahrlos in Produktionsanwendungen einsetzen können. In der [Referenz zu Authentifizierungsbibliotheken](reference-v2-libraries.md) erfahren Sie mehr zu den Nutzungsbedingungen der Vorschauversion und verfügbaren Bibliotheken.
 * Für Plattformen, die nicht von den Microsoft-Bibliotheken abgedeckt sind, können Sie die Integration mit dem Microsoft Identity Platform-Endpunkt auch erreichen, indem Sie Protokollnachrichten direkt in Ihrem Anwendungscode senden und empfangen. Die Protokolle OpenID Connect und OAuth [wurden explizit dokumentiert](active-directory-v2-protocols.md), um Sie bei einer Integration dieser Art zu unterstützen.
 * Zudem können Sie die Open ID Connect- und OAuth-Open Source-Bibliotheken für die Integration in den Microsoft Identity Platform-Endpunkt verwenden. Der Microsoft Identity Platform-Endpunkt sollte ohne Änderungen mit vielen Open Source-Protokollbibliotheken kompatibel sein. Die Verfügbarkeit dieser Bibliotheksarten variiert je nach Sprache und Plattform. Die [Open ID Connect](https://openid.net/connect/)- und die [OAuth 2.0](https://oauth.net/2/)-Websites enthalten eine Liste gängiger Implementierungen. Weitere Informationen finden Sie im Artikel zur [Microsoft Identity Platform und den Authentifizierungsbibliotheken](reference-v2-libraries.md). Er enthält auch die Liste mit den Open Source-Clientbibliotheken und den Beispielen, die für den Microsoft Identity Platform-Endpunkt getestet wurden.
 * Hilfreiche Information: Der `.well-known`-Endpunkt für den allgemeinen Microsoft Identity Platform-Endpunkt ist `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`. Ersetzen Sie `common` durch Ihre Mandanten-ID, um mandantenspezifische Daten abzurufen.  
@@ -196,4 +197,4 @@ Informationen zum Umfang der vom Microsoft Identity Platform-Endpunkt unterstüt
 
 #### <a name="saml-restrictions"></a>SAML-Einschränkungen
 
-Wenn Sie die Active Directory Authentication Library (ADAL) in Windows-Anwendungen verwendet haben, haben Sie möglicherweise die integrierte Windows-Authentifizierung genutzt, die mit der SAML-Assertionsgewährung (Security Assertion Markup Language) arbeitet. Diese Gewährung erlaubt Benutzern von Azure AD-Partnermandanten, sich im Hintergrund bei ihrer lokalen Active Directory-Instanz zu authentifizieren, ohne ihre Anmeldeinformationen eingeben zu müssen. Die SAML-Assertionsgewährung wird auf dem Microsoft Identity Platform-Endpunkt nicht unterstützt.
+Wenn Sie die Active Directory-Authentifizierungsbibliothek (ADAL) in Windows-Anwendungen verwendet haben, haben Sie möglicherweise die integrierte Windows-Authentifizierung genutzt, die mit der SAML-Assertionsgewährung (Security Assertion Markup Language) arbeitet. Diese Gewährung erlaubt Benutzern von Azure AD-Partnermandanten, sich im Hintergrund bei ihrer lokalen Active Directory-Instanz zu authentifizieren, ohne ihre Anmeldeinformationen eingeben zu müssen. Die SAML-Assertionsgewährung wird auf dem Microsoft Identity Platform-Endpunkt nicht unterstützt.

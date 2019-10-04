@@ -4,16 +4,16 @@ description: Hier erhalten Sie detaillierte Informationen dazu, wie Sie mit Azur
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/24/2019
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 163edd544a2d93e380b8906df3e0055711321c95
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 7bc4a2251fa07f201d35e385806d2eb49cd8851e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918857"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562527"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>Erstellen von und Suchen nach Ankern mit Azure Spatial Anchors in Java
 
@@ -39,7 +39,7 @@ Damit Sie dieses Anleitungen ausführen können, stellen Sie sicher, dass die fo
 - Sie haben die Informationen unter [Azure Spatial Anchors-Übersicht](../overview.md) gelesen.
 - Sie haben eine der [fünfminütigen Schnellstartanleitungen](../index.yml) absolviert.
 - Sie verfügen über Grundkenntnisse zu Java.
-- Sie verfügen über Grundkenntnisse zu <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.5.
+- Sie verfügen über Grundkenntnisse in <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a>.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 

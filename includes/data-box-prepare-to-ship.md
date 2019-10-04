@@ -2,21 +2,21 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 01/07/2019
+ms.date: 04/25/2019
 ms.author: alkohli
-ms.openlocfilehash: c7e5231650ec1afb97a72ec0cf26cb8f80088b63
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 1d52117440028c75b249f469f2b3576c2ab1c5c5
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440434"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "67178755"
 ---
 Der letzte Schritt ist die Vorbereitung des Geräts für den Versands. In diesem Schritt werden alle Gerätefreigaben offline geschaltet. Sobald Sie mit diesem Prozess begonnen haben, können Sie nicht mehr auf die Freigaben zugreifen.
 
 > [!IMPORTANT]
 > Im Rahmen der erforderlichen Versandvorbereitung werden Daten markiert, die nicht den Namenskonventionen von Azure entsprechen. Wenn Sie diesen Schritt überspringen, treten beim Hochladen möglicherweise Fehler aufgrund von nicht konformen Daten auf.
 
-1. Wechseln Sie zu **Versandvorbereitung**, und klicken Sie auf **Vorbereitung starten**. Prüfsummen werden standardmäßig inline während der Vorbereitung für den Versand berechnet. Die Berechnung der Prüfsumme kann je nach Größe Ihrer Daten mehrere Stunden oder Tage dauern. 
+1. Wechseln Sie zu **Versandvorbereitung**, und klicken Sie auf **Vorbereitung starten**. Prüfsummen werden standardmäßig beim Kopieren von Daten berechnet. Bei der Versandvorbereitung wird die Prüfsummenberechnung abgeschlossen und die Liste der Dateien ( *-BOM-Dateien*) erstellt. Die Berechnung der Prüfsumme kann je nach Größe Ihrer Daten mehrere Stunden oder Tage dauern. 
    
     ![Versandvorbereitung 1](media/data-box-prepare-to-ship/prepare-to-ship1.png)
 
@@ -36,7 +36,7 @@ Der letzte Schritt ist die Vorbereitung des Geräts für den Versands. In diesem
 
     Sollten bei diesem Schritt Fehler auftreten, müssen Sie das Fehlerprotokoll herunterladen und die Fehler beheben. Führen Sie nach Abschluss der Fehlerbehebung **Für Versand vorbereiten** aus.
 
-4. Laden Sie im Anschluss an die (fehlerfreie) Versandvorbereitung das Manifest (Liste mit den Dateien, die im Rahmen dieses Prozesses kopiert wurden) herunter. Sie können diese Liste später verwenden, um die in Azure hochgeladenen Dateien zu überprüfen.
+4. Laden Sie im Anschluss an die (fehlerfreie) Versandvorbereitung das Manifest (Liste mit den Dateien, die im Rahmen dieses Prozesses kopiert wurden) herunter. Sie können diese Liste später verwenden, um die in Azure hochgeladenen Dateien zu überprüfen. Weitere Informationen finden Sie unter [Inspect BOM files during Prepare to ship](../articles/databox/data-box-logs.md#inspect-bom-during-prepare-to-ship) (Überprüfen von BOM-Dateien während der Versandvorbereitung).
         
     ![Versandvorbereitung 1](media/data-box-prepare-to-ship/prepare-to-ship4.png)
 

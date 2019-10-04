@@ -1,5 +1,5 @@
 ---
-title: 'Swagger-Dokumentation: Spracherkennungsdienste'
+title: 'Swagger-Dokumentation: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Die Swagger-Dokumentation kann zum automatischen Generieren von SDKs für verschiedene Programmiersprachen verwendet werden. Alle Vorgänge unseres Diensts werden von Swagger unterstützt.
 services: cognitive-services
@@ -7,19 +7,19 @@ author: PanosPeriorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: overview
-ms.date: 04/12/2019
+ms.topic: reference
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 29fcbd058651c428b488f5ce1c767105cb7921a6
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 232435a424d2461bce4598356a986473cb1d3644
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59580987"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68552573"
 ---
 # <a name="swagger-documentation"></a>Swagger-Dokumentation
 
-Die Spracherkennungsdienste verfügen über eine Swagger-Spezifikation zum Interagieren mit einigen REST-APIs, die zum Importieren von Daten, Erstellen von Modellen, Testen der Modellgenauigkeit, Erstellen von benutzerdefinierten Endpunkten, Einreihen von Batch-Transkriptionen in die Warteschlange und Verwalten von Abonnements verwendet werden. Die meisten Vorgänge, die über das Custom Speech-Portal verfügbar sind, können mit diesen APIs programmgesteuert durchgeführt werden. 
+Die Spracherkennungsdienste verfügen über eine Swagger-Spezifikation zum Interagieren mit einigen REST-APIs, die zum Importieren von Daten, Erstellen von Modellen, Testen der Modellgenauigkeit, Erstellen von benutzerdefinierten Endpunkten, Einreihen von Batch-Transkriptionen in die Warteschlange und Verwalten von Abonnements verwendet werden. Die meisten Vorgänge, die über das Custom Speech-Portal verfügbar sind, können mit diesen APIs programmgesteuert durchgeführt werden.
 
 > [!NOTE]
 > Sowohl Spracherkennungs- als auch Sprachsynthesevorgänge werden unterstützt, und es sind REST-APIs vorhanden, die in der Swagger-Spezifikation dokumentiert sind.

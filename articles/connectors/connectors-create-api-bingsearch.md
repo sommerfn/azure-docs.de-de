@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 7146e59eabf9e30fa263f957f1c546414ad0fe26
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 61004ed75a1935ada21b5c620a909fb5289aebb8
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313548"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051003"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Suchen von Nachrichten mit der Bing-Suche und Azure Logic Apps
 
@@ -23,8 +24,8 @@ In diesem Artikel wird gezeigt, wie Sie mit dem Bing-Suche-Connector innerhalb e
 
 Sie können z.B. Nachrichtenelemente basierend auf Suchkriterien finden und diese Elemente in Twitter in Ihrem Twitter-Feed als Tweets bereitstellen.
 
-Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-Connectorspezifische technische Informationen finden Sie in der <a href="https://docs.microsoft.com/connectors/bingsearch/" target="blank">Referenz zum Bing-Suche-Connector</a>.
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Connectorspezifische technische Informationen finden Sie in der [Referenz zum Bing-Suche-Connector](https://docs.microsoft.com/connectors/bingsearch/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -55,14 +56,14 @@ Falls die Verbindung bereits besteht, können Sie die erforderlichen Information
 
    | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
-   | Search Query | Ja | <*Suchbegriffe*> | Geben Sie Suchbegriffe ein, die Sie verwenden möchten. |
-   | Market | Ja | <*Gebietsschema*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. |
-   | Safe Search | Ja | <*Suchebene*> | Die Filterebene zum Ausschließen nicht jugendfreier Inhalte. Die Standardeinstellung ist „Mittel“, aber Sie können eine andere Ebene auswählen. |
-   | Count | Nein  | <*Ergebnisanzahl*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. |
-   | Offset | Nein  | <*Versatzwert*> | Die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden |
+   | Search Query | Ja | <*search-words*> | Geben Sie Suchbegriffe ein, die Sie verwenden möchten. |
+   | Market | Ja | <*locale*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. |
+   | Safe Search | Ja | <*search-level*> | Die Filterebene zum Ausschließen nicht jugendfreier Inhalte. Die Standardeinstellung ist „Mittel“, aber Sie können eine andere Ebene auswählen. |
+   | Count | Nein | <*results-count*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. |
+   | Offset | Nein | <*skip-value*> | Die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden |
    |||||
 
-   Beispiel: 
+   Beispiel:
 
    ![Einrichten von Trigger](./media/connectors-create-api-bing-search/bing-search-trigger.png)
 
@@ -89,7 +90,7 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
    ![Hinzufügen einer Aktion](./media/connectors-create-api-bing-search/add-action.png)
 
    Um eine Aktion zwischen vorhandenen Schritten hinzuzufügen, bewegen Sie den Mauszeiger über den Verbindungspfeil. 
-   Wählen Sie das daraufhin angezeigte Pluszeichen (**+**) aus, und wählen Sie dann **Aktion hinzufügen** aus.
+   Wählen Sie das angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
 
 3. Geben Sie im Suchfeld den Begriff „Bing-Suche“ als Filter ein.
 Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
@@ -107,22 +108,22 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
    | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | Search Query | Ja | <*Suchausdruck*> | Geben Sie einen Ausdruck für die Abfrage der Triggerergebnisse ein. Sie können aus den Feldern der Liste mit dynamischen Inhalten wählen oder mit dem Ausdrucks-Generator einen Ausdruck erstellen. |
-   | Market | Ja | <*Gebietsschema*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. |
-   | Safe Search | Ja | <*Suchebene*> | Die Filterebene zum Ausschließen nicht jugendfreier Inhalte. Die Standardeinstellung ist „Mittel“, aber Sie können eine andere Ebene auswählen. |
-   | Count | Nein  | <*Ergebnisanzahl*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. |
-   | Offset | Nein  | <*Versatzwert*> | Die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden |
+   | Market | Ja | <*locale*> | Das Gebietsschema für die Suche. Die Standardeinstellung ist „en-US“, aber Sie können einen anderen Wert auswählen. |
+   | Safe Search | Ja | <*search-level*> | Die Filterebene zum Ausschließen nicht jugendfreier Inhalte. Die Standardeinstellung ist „Mittel“, aber Sie können eine andere Ebene auswählen. |
+   | Count | Nein | <*results-count*> | Hiermit wird die angegebene Anzahl von Ergebnissen zurückgegeben. Der Standardwert ist 20, aber Sie können einen anderen Wert angeben. Die tatsächliche Anzahl zurückgegebener Ergebnisse ist möglicherweise kleiner als die angegebene Anzahl. |
+   | Offset | Nein | <*skip-value*> | Die Anzahl von Ergebnissen, die übersprungen werden sollen, bevor Ergebnisse zurückgegeben werden |
    |||||
 
    Nehmen Sie beispielsweise an, dass Sie Ergebnisse benötigen, deren Kategoriename die Zeichenfolge „Tech“ enthält.
 
    1. Klicken Sie in das Feld **Suchabfrage**, damit die dynamische Inhaltsliste angezeigt wird. 
-   Wählen Sie aus dieser Liste die Option **Ausdruck**, um den Ausdrucks-Generator anzuzeigen. 
+   Wählen Sie aus dieser Liste die Option **Ausdruck** aus, um den Ausdrucks-Generator anzuzeigen. 
 
       ![Bing-Suche-Trigger](./media/connectors-create-api-bing-search/bing-search-action.png)
 
       Jetzt können Sie mit dem Erstellen des Ausdrucks beginnen.
 
-   2. Wählen Sie in der Liste der Funktionen die Funktion **contains()**. Diese wird im Ausdrucksfeld angezeigt. Klicken Sie auf **Dynamische Inhalte**, um die Feldliste erneut anzuzeigen. Stellen Sie jedoch sicher, dass der Cursor innerhalb der Klammern bleibt.
+   2. Wählen Sie in der Liste der Funktionen die Funktion **contains()** . Diese wird im Ausdrucksfeld angezeigt. Klicken Sie auf **Dynamische Inhalte**, um die Feldliste erneut anzuzeigen. Stellen Sie jedoch sicher, dass der Cursor innerhalb der Klammern bleibt.
 
       ![Auswählen einer Funktion](./media/connectors-create-api-bing-search/expression-select-function.png)
 
@@ -131,7 +132,7 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
       ![Auswählen eines Felds](./media/connectors-create-api-bing-search/expression-select-field.png)
 
-   4. Wählen Sie **OK** aus, wenn Sie fertig sind.
+   4. Wenn Sie fertig sind, wählen Sie **OK**.
 
       Der Ausdruck wird jetzt im Feld **Suchabfrage** im folgenden Format angezeigt:
 
@@ -153,25 +154,20 @@ Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
    | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
-   | Verbindungsname | Ja | <*verbindungsname*> | Der Name, der für Ihre Verbindung erstellt werden soll |
+   | Verbindungsname | Ja | <*connection-name*> | Der Name, der für Ihre Verbindung erstellt werden soll |
    | API-Version | Ja | <*API-Version*> | Standardmäßig wird die Version der Bing-Suche-API auf die aktuelle Version festgelegt. Sie können nach Bedarf eine frühere Version auswählen. |
    | API-Schlüssel | Ja | <*API-Schlüssel*> | Der Schlüssel der Bing-Suche-API, den Sie zuvor erhalten haben. Wenn Sie keinen Schlüssel besitzen, können Sie Ihren [API-Schlüssel jetzt abrufen](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
-   Beispiel: 
+   Beispiel:
 
    ![Erstellen der Verbindung](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
-2. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.
+2. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
 Technische Details wie Trigger, Aktionen und Limits, wie sie in der OpenAPI-Datei (ehemals Swagger) des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/bingsearch/).
-
-## <a name="get-support"></a>Support
-
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

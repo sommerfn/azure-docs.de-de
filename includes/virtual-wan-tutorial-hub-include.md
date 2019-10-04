@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,11 +9,11 @@ ms.date: 02/27/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0a81d8c97b916fd15e7be5fde05e9ea25ba1151d
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352422"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67177993"
 ---
 Ein Hub enthält das Gateway. Nachdem der Hub erstellt wurde, werden Ihnen für den Hub auch dann Kosten berechnet, wenn Sie keine Websites zuordnen. Das Erstellen von Hub und Gateway dauert 30 Minuten.
 
@@ -21,7 +21,7 @@ Ein Hub enthält das Gateway. Nachdem der Hub erstellt wurde, werden Ihnen für 
 2. Klicken Sie auf der Seite „Hubs“ auf **+ Neuer Hub**, um die Seite **Virtuellen Hub erstellen** zu öffnen.
 3. Füllen Sie auf der Seite **Virtuellen Hub erstellen** die folgenden Felder aus:
 
-   * Standort
+   * Location
    * NAME
    * Privater Adressraum des Hubs
 

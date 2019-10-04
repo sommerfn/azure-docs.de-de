@@ -4,23 +4,22 @@ description: Automatisieren Sie Konfigurationsaufgaben für virtuelle Linux-Comp
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e5ef1bde9420104b596c22837048b054f918b3cc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882428"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092624"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Verwenden von Version 1 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 
@@ -122,22 +121,22 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 | NAME | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| Herausgeber | Microsoft.OSTCExtensions | Zeichenfolge |
-| type | CustomScriptForLinux | Zeichenfolge |
+| publisher | Microsoft.OSTCExtensions | string |
+| type | CustomScriptForLinux | string |
 | typeHandlerVersion | 1.5 | int |
-| fileUris (Beispiel) | https://github.com/MyProject/Archive/MyPythonScript.py | Array |
-| commandToExecute (Beispiel) | python MyPythonScript.py \<my-param1\> | Zeichenfolge |
+| fileUris (Beispiel) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
+| commandToExecute (Beispiel) | python MyPythonScript.py \<my-param1\> | string |
 | enableInternalDNSCheck | true | boolean |
-| storageAccountName (Beispiel) | examplestorageacct | Zeichenfolge |
-| storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Zeichenfolge |
+| storageAccountName (Beispiel) | examplestorageacct | string |
+| storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
 ### <a name="property-value-details"></a>Details zu Eigenschaftswerten
 
-* `fileUris`(optional, Zeichenfolgenarray): Die URI-Liste der Skripts.
-* `enableInternalDNSCheck`(optional, boolescher Wert): Der Standardwert lautet „true“. Durch Festlegen auf „false“ wird die DNS-Prüfung deaktiviert.
-* `commandToExecute`(optional; Zeichenfolge): Das auszuführende Einstiegspunktskript.
-* `storageAccountName`(optional, Zeichenfolge): der Name des Speicherkontos.
-* `storageAccountKey`(optional, Zeichenfolge): der Zugriffsschlüssel des Speicherkontos.
+* `fileUris` (optional, Zeichenfolgenarray): Die URI-Liste der Skripts.
+* `enableInternalDNSCheck` (optional, boolescher Wert): Der Standardwert lautet „true“. Durch Festlegen auf „false“ wird die DNS-Prüfung deaktiviert.
+* `commandToExecute` (optional; Zeichenfolge): Das auszuführende Einstiegspunktskript.
+* `storageAccountName` (optional; Zeichenfolge): Der Name des Speicherkontos.
+* `storageAccountKey` (optional; Zeichenfolge): Der Zugriffsschlüssel des Speicherkontos.
 
 Die folgenden Werte können in öffentlichen oder geschützten Einstellungen festgelegt werden, aber nicht in beidem.
 
@@ -296,7 +295,7 @@ Hinweise:
 
 1. „Enable“ gibt den Beginn der Befehlsausführung an.
 1. „Download“ bezieht sich auf das Herunterladen des CustomScript-Erweiterungspakets von Azure (nicht auf die in „fileUris“ angegebenen Skriptdateien).
-1. Darüber hinaus sehen Sie, in welche Protokolldatei geschrieben wird `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
+1. Darüber hinaus sehen Sie, welche Protokolldatei in `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log` geschrieben wird.
 
 Überprüfen Sie als Nächstes die Protokolldatei. Das Format sieht wie folgt aus:
 

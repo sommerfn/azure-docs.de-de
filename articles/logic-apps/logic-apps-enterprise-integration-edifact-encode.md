@@ -4,18 +4,18 @@ description: Überprüfen von EDI und Generieren von XML-Code mit dem EDIFACT-Na
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
 ms.topic: article
 ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
 ms.date: 01/27/2017
-ms.openlocfilehash: e1c990030a9fa9ad25950ccb24b36b82a8c69f5c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 7396aee56acdf2476ed1bb3cc5a9909349662dc7
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122352"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64705547"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Codieren von EDIFACT-Nachrichten für Azure Logic Apps mit Enterprise Integration Pack
 
@@ -33,7 +33,7 @@ Sie benötigen Folgendes:
 
 ## <a name="encode-edifact-messages"></a>Codierung von EDIFACT-Nachrichten
 
-1. [Erstellen Sie eine Logik-App](quickstart-create-first-logic-app-workflow.md).
+1. [Erstellen einer Logik-App](quickstart-create-first-logic-app-workflow.md)
 
 2. Da der Connector „EDIFACT-Nachricht codieren“ über keine Trigger verfügt, müssen Sie einen Trigger zum Starten Ihrer Logik-App hinzufügen (beispielsweise einen Anforderungstrigger). Fügen Sie im Logik-App-Designer einen Trigger hinzu, und fügen Sie anschließend Ihrer Logik-App eine Aktion hinzu.
 

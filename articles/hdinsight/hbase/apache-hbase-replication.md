@@ -1,7 +1,6 @@
 ---
 title: Einrichten der HBase-Clusterreplikation in virtuellen Azure-Netzwerken – Azure HDInsight
 description: Erfahren Sie, wie Sie die HBase-Replikation zwischen HDInsight-Versionen für Lastenausgleich, Hochverfügbarkeit, Migration und Updates ohne Ausfallzeit und Notfallwiederherstellung einrichten.
-services: hdinsight,virtual-network
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: d50c3f4452dd00b5656b6cde5e671caebcb4bb7c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 34b9993482d1036570805af7caba29361b231426
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112533"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077178"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der Apache HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
@@ -22,7 +21,7 @@ Hier erfahren Sie, wie Sie die [Apache HBase](https://hbase.apache.org/)-Replika
 
 Clusterreplikation verwendet eine Source-Push-Methodologie. Ein HBase-Cluster kann Quelle oder Ziel sein oder beide Rollen gleichzeitig erfüllen. Die Replikation ist asynchron. Das Ziel der Replikation ist die endgültige Konsistenz. Die Bearbeitung einer Spaltenfamilie in der Quelle bei aktivierter Replikation wird an alle Zielcluster weitergegeben. Wenn Daten von einem Cluster auf einen anderen repliziert werden, werden der Quellcluster und alle Cluster, die bereits Daten genutzt haben, nachverfolgt, um Replikationsschleifen zu verhindern.
 
-In diesem Tutorial richten Sie eine Quell-/Ziel-Replikation ein. Andere Clustertopologien finden Sie im [Apache HBase-Referenzhandbuch](https://hbase.apache.org/book.html#_cluster_replication).
+In diesem Artikel richten Sie eine Quell-/Zielreplikation ein. Andere Clustertopologien finden Sie im [Apache HBase-Referenzhandbuch](https://hbase.apache.org/book.html#_cluster_replication).
 
 Anwendungsfälle für die HBase-Replikation für ein einzelnes virtuelles Netzwerk sind:
 
@@ -40,7 +39,7 @@ Anwendungsfälle für die HBase-Replikation für zwei virtuelle Netzwerks sind:
 Sie können Cluster mit [Skriptaktionen](../hdinsight-hadoop-customize-cluster-linux.md)-Skripts aus [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) replizieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Für dieses Tutorial wird ein Azure-Abonnement benötigt. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (So erhalten Sie eine kostenlose Azure-Testversion zum Testen von Hadoop in HDInsight).
+Für diesen Artikel benötigen Sie ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/) (So erhalten Sie eine kostenlose Azure-Testversion zum Testen von Hadoop in HDInsight).
 
 ## <a name="set-up-the-environments"></a>Einrichten der Umgebungen
 
@@ -61,7 +60,7 @@ Um Ihnen die Einrichtung der Umgebungen zu erleichtern, haben wir einige [Azure 
 
 Um eine Vorlage zu verwenden, die zwei virtuelle Netzwerke in zwei verschiedenen Regionen und die VPN-Verbindung zwischen den VNets zu erstellen, wählen Sie die folgende Schaltfläche **In Azure bereitstellen** aus. Die Vorlagendefinition befindet sich in einem [öffentlichen Blob-Speicher](https://hditutorialdata.blob.core.windows.net/hbaseha/azuredeploy.json).
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-replication/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
@@ -69,7 +68,7 @@ Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
 | Eigenschaft | Wert |
 |----------|-------|
-| Standort | USA (Westen) |
+| Location | USA (Westen) |
 | VNet-Name | &lt;ClusterNamePrevix>-vnet1 |
 | Adressraumpräfix | 10.1.0.0/16 |
 | Subnetzname | Subnetz 1 |
@@ -86,7 +85,7 @@ Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
 | Eigenschaft | Wert |
 |----------|-------|
-| Standort | USA (Ost) |
+| Location | East US |
 | VNet-Name | &lt;ClusterNamePrevix>-vnet2 |
 | Adressraumpräfix | 10.2.0.0/16 |
 | Subnetzname | Subnetz 1 |
@@ -391,13 +390,13 @@ Der Abschnitt `print_usage()` des [Skripts](https://raw.githubusercontent.com/Az
 
         --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 
-- **Deaktivieren der Replikation in angegebenen Tabellen („table1“, „table2“ und „table3“)**:
+- **Deaktivieren der Replikation in angegebenen Tabellen („table1“, „table2“ und „table3“)** :
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie die Apache HBase-Replikation innerhalb eines virtuellen Netzwerks oder zwischen zwei virtuellen Netzwerken einrichten. Weitere Informationen zu HDInsight und Apache HBase finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie erfahren, wie Sie die Apache HBase-Replikation innerhalb eines virtuellen Netzwerks oder zwischen zwei virtuellen Netzwerken einrichten. Weitere Informationen zu HDInsight und Apache HBase finden Sie in den folgenden Artikeln:
 
 * [Get started with Apache HBase in HDInsight (Erste Schritte mit Apache HBase in HDInsight)](./apache-hbase-tutorial-get-started-linux.md)
 * [Überblick über Apache HBase in HDInsight: Eine NoSQL-Datenbank, die BigTable-ähnliche Funktionen für Hadoop bereitstellt](./apache-hbase-overview.md)

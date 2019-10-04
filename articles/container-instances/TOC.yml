@@ -29,6 +29,10 @@
           href: container-instances-multi-container-yaml.md
         - name: 'Bereitstellen einer Containergruppe: Resource Manager'
           href: container-instances-multi-container-group.md
+    - name: Integration in Azure-Dienste
+      items:
+        - name: Auslösen mit Azure Functions
+          href: container-instances-tutorial-azure-function-trigger.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -45,6 +49,8 @@
       href: container-instances-region-availability.md
     - name: Beziehung zu Orchestratoren
       href: container-instances-orchestrator-relationship.md
+    - name: Sicherheitshinweise
+      href: container-instances-image-security.md
 - name: Anleitungen
   items:
     - name: Bereitstellen
@@ -59,7 +65,7 @@
           href: container-instances-restart-policy.md
         - name: Festlegen von Umgebungsvariablen (env)
           href: container-instances-environment-variables.md
-        - name: Überschreiben des Containereinstiegspunkts
+        - name: Festlegen eines Containerstartbefehls (entrypoint)
           href: container-instances-start-command.md
         - name: Ausführen eines Befehls (exec)
           href: container-instances-exec.md
@@ -69,11 +75,13 @@
           href: container-instances-managed-identity.md
         - name: Verwenden von GPU-Ressourcen (Vorschauversion)
           href: container-instances-gpu.md
+        - name: Aktivieren eines SSL-Endpunkts
+          href: container-instances-container-group-ssl.md
     - name: Einbinden von Datenvolumes
       items:
         - name: Azure-Dateifreigabe
           href: container-instances-volume-azure-files.md
-        - name: Geheimer Schlüssel
+        - name: '`Secret`'
           href: container-instances-volume-secret.md
         - name: Leeres Verzeichnis
           href: container-instances-volume-emptydir.md
@@ -93,7 +101,7 @@
           href: container-instances-monitor.md
         - name: Abrufen von Containerprotokollen und -ereignissen
           href: container-instances-get-logs.md
-        - name: Protokollierung mit Azure Log Analytics
+        - name: Protokollierung mit Azure Monitor-Protokollen
           href: container-instances-log-analytics.md
     - name: Problembehandlung
       items:
@@ -117,6 +125,10 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: YAML
+      href: container-instances-reference-yaml.md
+    - name: Connector
+      href: /connectors/aci
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
@@ -133,3 +145,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: Videos
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
+    - name: Häufig gestellte Fragen
+      href: container-instances-faq.md

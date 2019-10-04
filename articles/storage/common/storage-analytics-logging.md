@@ -1,19 +1,19 @@
 ---
 title: Azure Storage Analytics-Protokollierung
 description: Erfahren Sie, wie Sie Details zu Anforderungen für Azure Storage protokollieren.
-services: storage
-author: fhryo-msft
+author: normesta
 ms.service: storage
-ms.topic: article
-ms.date: 03/11/2019
-ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 09a5a6d823240b724e6ec88de38df068a58982d9
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.topic: conceptual
+ms.date: 03/11/2019
+ms.author: normesta
+ms.reviewer: fryu
+ms.openlocfilehash: 36c6c914c96048825c82a8d1f590a7e805373c08
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652058"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854604"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
@@ -25,6 +25,8 @@ Storage Analytics protokolliert ausführliche Informationen zu erfolgreichen und
 
 > [!NOTE]
 >  Die Storage Analytics-Protokollierung ist derzeit nur für Blob-, Warteschlangen- und Tabellenspeicherdienste verfügbar. Ein Premium-Speicherkonto wird nicht unterstützt.
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="requests-logged-in-logging"></a>Erfasste Anforderungen bei der Protokollierung
 ### <a name="logging-authenticated-requests"></a>Protokollierung authentifizierter Anforderungen
@@ -76,7 +78,7 @@ Mit den meisten Tools zum Durchsuchen des Speichers können Sie die Metadaten vo
  }  
  ```  
 
-Informationen zum programmgesteuerten Auflisten von Blobs finden Sie unter [Auflisten von Blobressourcen](http://msdn.microsoft.com/library/azure/hh452233.aspx) und [Festlegen und Abrufen von Eigenschaften und Metadaten für Blobressourcen](http://msdn.microsoft.com/library/azure/dd179404.aspx).  
+Informationen zum programmgesteuerten Auflisten von Blobs finden Sie unter [Auflisten von Blobressourcen](https://msdn.microsoft.com/library/azure/hh452233.aspx) und [Festlegen und Abrufen von Eigenschaften und Metadaten für Blobressourcen](https://msdn.microsoft.com/library/azure/dd179404.aspx).  
 
 ### <a name="log-naming-conventions"></a>Benennungskonventionen für Protokolle
 
@@ -130,7 +132,7 @@ Sie können die Speicherprotokollierung im Azure-Portal, über PowerShell und mi
 
 ### <a name="enable-storage-logging-using-the-azure-portal"></a>Aktivieren der Speicherprotokollierung im Azure-Portal  
 
-Verwenden Sie im Azure-Portal zum Steuern der Speicherprotokollierung das Blatt **Diagnoseeinstellungen (klassisch)**, auf das im Abschnitt **Überwachung (klassisch)** des **Menüblatts** eines Speicherkontos zugegriffen werden kann.
+Verwenden Sie im Azure-Portal zum Steuern der Speicherprotokollierung das Blatt **Diagnoseeinstellungen (klassisch)** , auf das im Abschnitt **Überwachung (klassisch)** des **Menüblatts** eines Speicherkontos zugegriffen werden kann.
 
 Sie können die zu protokollierenden Speicherdienste und den Aufbewahrungszeitraum (in Tagen) für die protokollierten Daten angeben.  
 

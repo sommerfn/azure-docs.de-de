@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen einer HoloLens-Unity-App mit Azure Spatial Anchors | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen einer Unity HoloLens-App mit Azure Spatial Anchors | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie eine HoloLens-App mit Unity erstellen, indem Sie Spatial Anchors verwenden.
 author: craigktreasure
 manager: aliemami
@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 56b164d9612fd1bef8caf9ae0de679f65595bc39
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 56f9901a1468207a295f8223e990f7a926b2d76e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629479"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561444"
 ---
-# <a name="quickstart-create-a-hololens-unity-app-that-uses-azure-spatial-anchors"></a>Schnellstart: Erstellen einer HoloLens-Unity-App, die Azure Spatial Anchors verwendet
+# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Schnellstart: Erstellen einer Unity HoloLens-App, die Azure Spatial Anchors verwendet
 
-In dieser Schnellstartanleitung erstellen Sie eine HoloLens-Unity-App, die [Azure Spatial Anchors](../overview.md) verwendet. Spatial Anchors ist ein plattformübergreifender Entwicklerdienst, mit dem Sie Mixed Reality-Umgebungen mit Objekten erstellen können, die ihre Position im Zeitverlauf geräteübergreifend beibehalten. Nach Abschluss des Vorgangs verfügen Sie über eine mit Unity erstellte HoloLens-App, mit der ein räumlicher Anker gespeichert und abgerufen werden kann.
+In dieser Schnellstartanleitung erstellen Sie eine Unity HoloLens-App, die [Azure Spatial Anchors](../overview.md) verwendet. Spatial Anchors ist ein plattformübergreifender Entwicklerdienst, mit dem Sie Mixed Reality-Umgebungen mit Objekten erstellen können, die ihre Position im Zeitverlauf geräteübergreifend beibehalten. Nach Abschluss des Vorgangs verfügen Sie über eine mit Unity erstellte HoloLens-App, mit der ein räumlicher Anker gespeichert und abgerufen werden kann.
 
 Sie lernen Folgendes:
 
@@ -33,19 +33,18 @@ Sie lernen Folgendes:
 
 So führen Sie diesen Schnellstart durch:
 
-
-- Sie benötigen einen Windows-Computer, auf dem <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> oder höher und <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> oder höher installiert sind. Ihre Visual Studio-Installation muss die Workload **Entwicklung für die universelle Windows-Plattform** enthalten. Sie müssen auch <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a> installieren.
+- Sie benötigen einen Windows-Computer, auf dem <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1</a> oder höher und <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> oder höher installiert sind. Ihre Visual Studio-Installation muss die Workload **Entwicklung für die universelle Windows-Plattform** und die Komponente **Windows 10 SDK (10.0.18362.0 oder höher)** enthalten. Sie müssen auch <a href="https://git-scm.com/download/win" target="_blank">Git für Windows</a> installieren.
 - Sie benötigen ein HoloLens-Gerät, auf dem der [Entwicklermodus](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) aktiviert ist. Das [Windows 10 October 2018 Update](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (auch als RS5 bekannt) muss auf dem Gerät installiert sein. Öffnen Sie zum Aktualisieren auf das neueste HoloLens-Release die App **Einstellungen**, navigieren Sie zu **Update und Sicherheit**, und wählen Sie dann **Nach Updates suchen** aus.
 - Sie müssen in der App die Funktion **SpatialPerception** aktivieren. Diese Einstellung befindet sich unter **Buildeinstellungen** > **Playereinstellungen** > **Veröffentlichungseinstellungen** > **Funktionen**.
 - In der App müssen Sie **Virtual Reality unterstützt** mit **Windows Mixed Reality SDK** aktivieren. Diese Einstellung befindet sich unter **Buildeinstellungen** > **Playereinstellungen** > **XR-Einstellungen**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
-## <a name="open-the-sample-project-in-unity"></a>Öffnen des Beispielprojekts in Unity
+## <a name="download-and-open-the-unity-sample-project"></a>Herunterladen und Öffnen des Unity-Beispielprojekts
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Öffnen Sie in Unity das Projekt im Ordner „Unity“.
+[!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
 Wählen Sie **Datei** > **Buildeinstellungen** aus, um **Buildeinstellungen** zu öffnen.
 
@@ -53,13 +52,13 @@ Wählen Sie im Abschnitt **Plattform** die Option **Universelle Windows-Plattfor
 
 Wählen Sie **Plattform wechseln**, um die Plattform in **Universelle Windows-Plattform** zu ändern. Unity fordert Sie möglicherweise zur Installation fehlender unterstützender UWP-Komponenten auf.
 
-   ![Fenster für Unity-Buildeinstellungen](./media/get-started-unity-hololens/unity-build-settings.png)
+![Fenster für Unity-Buildeinstellungen](./media/get-started-unity-hololens/unity-build-settings.png)
 
 Schließen Sie das Fenster **Buildeinstellungen**.
 
 ## <a name="configure-the-account-identifier-and-key"></a>Konfigurieren des Kontobezeichners und -schlüssels
 
-Navigieren Sie im Bereich **Projekt** zu `Assets/AzureSpatialAnchorsPlugin/Examples`, und öffnen Sie die Szenendatei `AzureSpatialAnchorsBasicDemo.unity`.
+Navigieren Sie im Bereich **Projekt** zu `Assets/AzureSpatialAnchors.Examples/Scenes`, und öffnen Sie die Szenendatei `AzureSpatialAnchorsBasicDemo.unity`.
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
@@ -78,6 +77,8 @@ Nach Abschluss des Exports wird ein Ordner angezeigt, der das exportierte HoloLe
 Doppelklicken Sie im Ordner auf **HelloAR U3D.sln**, um das Projekt in Visual Studio zu öffnen.
 
 Ändern Sie die **Projektmappenkonfiguration** zu **Release** und die **Projektmappenplattform** zu **x86**, und wählen Sie für das Bereitstellungsziel die Option **Gerät** aus.
+
+Verwenden Sie bei Einsatz von HoloLens 2 **ARM** als **Projektmappenplattform** anstelle von **x86**.
 
    ![Visual Studio-Konfiguration](./media/get-started-unity-hololens/visual-studio-configuration.png)
 

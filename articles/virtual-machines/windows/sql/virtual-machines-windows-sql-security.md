@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: d710c296-e490-43e7-8ca9-8932586b71da
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 69b6bd07699d179fc87ac6c5364a7a34b23d14eb
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6b2f9853c2699b69a0c9be13e6925a4b30f358f7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731715"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102029"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Sicherheitsüberlegungen für SQL Server in Azure Virtual Machines
 
@@ -42,7 +41,7 @@ Die folgenden Abschnitte enthalten Vorschläge dazu, wie Sie diese Punkte planen
 
 ## <a name="secure-connections"></a>Sichere Verbindungen
 
-Wenn Sie einen virtuellen SQL Server-Computer mit einem Katalogimage erstellen, können Sie bei der Option **SQL Server Connectivity** zwischen **Lokal (nur innerhalb der VM)**, **Privat (innerhalb des virtuellen Netzwerks)** und **Öffentlich (Internet)** wählen.
+Wenn Sie einen virtuellen SQL Server-Computer mit einem Katalogimage erstellen, können Sie bei der Option **SQL Server Connectivity** zwischen **Lokal (nur innerhalb der VM)** , **Privat (innerhalb des virtuellen Netzwerks)** und **Öffentlich (Internet)** wählen.
 
 ![SQL Server Connectivity](./media/virtual-machines-windows-sql-security/sql-vm-connectivity-option.png)
 
@@ -62,9 +61,11 @@ Erwägen Sie schließlich die Aktivierung von verschlüsselten Verbindungen für
 
 Standardmäßig lauscht SQL Server über den bekannten Port 1433. Konfigurieren Sie für SQL Server das Lauschen über einen Port, der nicht dem Standard entspricht, z.B. 1401, um die Sicherheit zu erhöhen. Wenn Sie ein SQL Server-Katalogimage im Azure-Portal bereitstellen, können Sie diesen Port auf dem Blatt **SQL Server-Einstellungen** angeben.
 
+[!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
+
 Sie haben zwei Möglichkeiten, dies nach der Bereitstellung zu konfigurieren:
 
-- Für Resource Manager-VMs können Sie auf dem Übersichtsblatt der VM die Option **SQL Server-Konfiguration** wählen. Sie finden dort eine Option zum Ändern des Ports.
+- Wählen Sie für Resource Manager-VMs **Sicherheit** in der [SQL-VM-Ressource](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) aus. Sie finden dort eine Option zum Ändern des Ports.
 
   ![Änderung des TCP-Ports im Portal](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 

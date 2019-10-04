@@ -1,19 +1,18 @@
 ---
 title: Verwalten von Azure Recovery Services-Tresoren und -Servern
 description: Verwalten von Aufträgen und Warnungen in einem Azure Recovery Services-Tresor.
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/21/2018
-ms.author: raynew
-ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.date: 07/08/2019
+ms.author: dacurwin
+ms.openlocfilehash: 7e7312f942103125217c1f61ae8fe8007a49529b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268871"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954760"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Überwachen und Verwalten von Recovery Services-Tresoren
 
@@ -30,7 +29,7 @@ Die Voraussetzungen für diesen Artikel sind: ein Azure-Abonnement, ein Recovery
 
 Öffnen Sie den Tresor, um Warnungen zu überwachen oder Verwaltungsdaten zu einem Recovery Services-Tresor anzuzeigen.
 
-1. Melden Sie sich mit Ihrem Azure-Abonnement am [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich unter Verwendung Ihres Azure-Abonnements beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Klicken Sie im Portal auf **Alle Dienste**.
 
@@ -100,7 +99,7 @@ Standardmäßig werden alle Details, im Bericht angezeigt, mit Ausnahme von **Ze
 * Warnung
 * Sicherungselement
 * Geschützter Server
-* Severity
+* severity
 * Duration
 * Erstellungszeit
 * Status
@@ -146,7 +145,7 @@ Konfigurieren Sie Benachrichtigungen, um E-Mails zu generieren, wenn eine Warnme
 
    ![Warnungen filtern](./media/backup-azure-manage-windows-server/configure-notification.png)
 
-E-Mail-Benachrichtigungen sind standardmäßig aktiviert. Klicken Sie auf **Aus**, um die E-Mail-Benachrichtigungen zu beenden.
+E-Mail-Benachrichtigungen sind standardmäßig **aktiviert**. Klicken Sie auf **Aus**, um die E-Mail-Benachrichtigungen zu beenden.
 
 Wählen Sie im Steuerelement **Benachrichtigen** die Option **Pro Warnung** aus, wenn keine Gruppierung erfolgen soll, oder wenn Sie nur über wenige Elemente verfügen, die Warnungen generieren können. Jede Warnung führt zu einer Benachrichtigung (Standardeinstellung), und es wird sofort eine Lösungs-E-Mail gesendet.
 
@@ -156,7 +155,7 @@ Wählen Sie den Schweregrad der Warnung aus (kritische Warnung oder allgemeine W
 
 ## <a name="manage-backup-items"></a>Verwalten von Sicherungselementen
 
-In einem Recovery Services-Tresor werden viele Arten von Sicherungsdaten gespeichert. Eine vollständige Liste der Sicherungstypen finden Sie unter [Welche Anwendungen und Workloads können gesichert werden?](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) Um die verschiedenen Server, Computer, Datenbanken und Workloads zu verwalten, klicken Sie auf die Kachel **Sicherungselemente**, um den Inhalt des Tresors anzuzeigen.
+In einem Recovery Services-Tresor werden viele Arten von Sicherungsdaten gespeichert. [Erfahren Sie mehr](backup-overview.md#what-can-i-back-up) über die Elemente, die Sie sichern können. Um die verschiedenen Server, Computer, Datenbanken und Workloads zu verwalten, klicken Sie auf die Kachel **Sicherungselemente**, um den Inhalt des Tresors anzuzeigen.
 
 ![Kachel „Sicherungselemente“](./media/backup-azure-manage-windows-server/backup-items.png)
 
@@ -221,7 +220,7 @@ Der Elementtyp ist der Sicherungsverwaltungstyp der geschützten Instanz. Es gib
 Sie können einen Vorgang oder alle Vorgänge anzeigen. Sie können nicht zwei oder drei Vorgänge auswählen. Die verfügbaren Vorgänge sind:
 
 * Alle Vorgänge
-* Register 
+* Register
 * Konfigurieren der Sicherung
 * Backup
 * Restore
@@ -260,21 +259,6 @@ Auf der Kachel „Sicherungsspeicher“ im Dashboard wird der in Azure genutzte 
 * Cloud-LRS-Speicherverwendung des Tresors
 * Cloud-GRS-Speicherverwendung des Tresors
 
-
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Wie lange dauert es, bis der Auftragsstatus des Azure Backup-Agents im Portal angezeigt wird?
-Es kann bis zu 15 Minuten dauern, bis der Status des Azure Backup-Agent-Auftrags im Azure-Portal angezeigt wird.
-
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Wie lange dauert es, bis eine Warnung ausgelöst wird, wenn ein Sicherungsauftrag nicht erfolgreich ist?
-Innerhalb von 20 Minuten nach dem Azure-Sicherungsfehler wird eine Warnung ausgelöst.
-
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Kann es vorkommen, dass eine E-Mail nicht gesendet wird, wenn Benachrichtigungen konfiguriert sind?
-Ja. In den folgenden Situationen werden keine Benachrichtigungen gesendet.
-
-* Stündliche Benachrichtigungen wurden konfiguriert, und eine Warnung wird ausgelöst und innerhalb dieser Stunde gelöst.
-* Ein Auftrag wurde abgebrochen.
-* Bei einem zweiten Sicherungsauftrag tritt ein Fehler auf, weil der ursprüngliche Sicherungsauftrag noch ausgeführt wird.
 
 ## <a name="troubleshooting-monitoring-issues"></a>Problembehandlung bei der Überwachung
 

@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
-ms.author: cenkd;juliako
-ms.openlocfilehash: 229f89a8803f089c24981f56e00e36efe96de3aa
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.author: juliako
+ms.openlocfilehash: 1234263fa800a17d0a5c235df54ca2751e3094bb
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316592"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "69015847"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filter und dynamische Manifeste
 
-> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Media Services-Version aus:"]
 > * [Version 2](media-services-dynamic-manifest-overview.md)
 > * [Version 3](../latest/filters-dynamic-manifest-overview.md)
 
@@ -73,14 +73,14 @@ Hier ein Beispiel für eine Manifestdatei:
     </SmoothStreamingMedia>
 
 ### <a name="dynamic-manifests"></a>Dynamische Manifeste
-Es gibt bestimmte [Szenarios](media-services-dynamic-manifest-overview.md#scenarios) , für die Ihre Kunden eine größere Flexibilität benötigen, als dies in den Einstellungen der Standardmanifestdatei des Medienobjekts beschrieben ist. Beispiel: 
+Es gibt bestimmte [Szenarios](media-services-dynamic-manifest-overview.md#scenarios) , für die Ihre Kunden eine größere Flexibilität benötigen, als dies in den Einstellungen der Standardmanifestdatei des Medienobjekts beschrieben ist. Beispiel:
 
 * Gerätespezifisch: Übermitteln nur der angegebenen Wiedergaben und/oder Sprachen, die von dem Gerät unterstützt werden, das für die Wiedergabe der Inhalte verwendet wird („Filtern der Wiedergabe“). 
 * Reduzieren des Manifests, um einen Subclip eines Liveereignisses anzuzeigen ("Filtern von Subclips").
 * Kürzen des Starts eines Videos ("Kürzen eines Videos").
 * Anpassen des Präsentationsfensters (DVR), um eine begrenzte Größe des DVR-Fensters im Player anzugeben („Anpassen des Präsentationsfensters“).
 
-Um diese Flexibilität zu erreichen, umfasst Media Services **dynamische Manifeste** , die auf vordefinierten [Filtern](media-services-dynamic-manifest-overview.md#filters)basieren.  Nachdem Sie die Filter definiert haben, können Ihre Kunden sie zum Streamen einer spezifischen Wiedergabe oder bestimmter Subclips Ihres Videos verwenden. Dazu geben sie die Filter in der Streaming-URL an. Die Filter können auf die mit der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) unterstützten Streamingprotokolle mit adaptiver Bitrate angewandt werden: HLS, MPEG-DASH und Smooth Streaming. Beispiel: 
+Um diese Flexibilität zu erreichen, umfasst Media Services **dynamische Manifeste** , die auf vordefinierten [Filtern](media-services-dynamic-manifest-overview.md#filters)basieren.  Nachdem Sie die Filter definiert haben, können Ihre Kunden sie zum Streamen einer spezifischen Wiedergabe oder bestimmter Subclips Ihres Videos verwenden. Dazu geben sie die Filter in der Streaming-URL an. Die Filter können auf die mit der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) unterstützten Streamingprotokolle mit adaptiver Bitrate angewandt werden: HLS, MPEG-DASH und Smooth Streaming. Beispiel:
 
 MPEG-DASH-URL mit Filter
 

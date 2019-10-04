@@ -7,21 +7,18 @@ manager: cfowler
 editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 08/15/2019
 ms.author: mahender
-ms.openlocfilehash: 0942d5ba7b31ddb2c0dec5fe979f1331d1bf3bfd
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.reviewer: yevbronsh
+ms.openlocfilehash: 1774fcf0af287bba03c2c5c79e14883e3594ef0c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336030"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260139"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Verwenden verwalteter Identitäten für App Service und Azure Functions
-
-> [!NOTE] 
-> Die Unterstützung für verwaltete Identitäten für App Service unter Linux und Web-App für Container befindet sich zurzeit in der Vorschau.
 
 > [!Important] 
 > Verwaltete Identitäten für App Service und Azure Functions verhalten sich nicht wie erwartet, wenn Ihre App abonnement- bzw. mandantenübergreifend migriert wird. Die App muss eine neue Identität abrufen. Zu diesem Zweck kann die Funktion deaktiviert und dann erneut aktiviert werden. Weitere Informationen finden Sie im Abschnitt [Entfernen einer Identität](#remove) weiter unten. Für nachgeschaltete Ressourcen müssen außerdem die Zugriffsrichtlinien für die Verwendung der neuen Identität aktualisiert werden.
@@ -29,8 +26,8 @@ ms.locfileid: "58336030"
 In diesem Thema erfahren Sie, wie eine verwaltete Identität für App Service- und Azure Functions-Anwendungen erstellt und für den Zugriff auf andere Ressourcen verwendet wird. Durch eine verwaltete Entität aus Azure Active Directory kann Ihre App mühelos auf andere durch AAD geschützte Ressourcen wie Azure Key Vault zugreifen. Da die Identität von der Azure-Plattform verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zu verwalteten Identitäten in AAD finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md).
 
 Ihrer Anwendung können zwei Arten von Identitäten zugewiesen werden: 
-- Eine **systemseitig zugewiesene Identität** ist an Ihre Anwendung gebunden und wird gelöscht, wenn Ihre App gelöscht wird. Eine App kann nur über eine systemseitig zugewiesene Identität verfügen. Die Unterstützung systemseitig zugewiesener Identitäten ist für Windows-Apps allgemein verfügbar. 
-- Eine **benutzerseitig zugewiesene Identität** ist eine eigenständige Azure-Ressource, die Ihrer App zugewiesen werden kann. Eine App kann über mehrere benutzerseitig zugewiesene Identitäten verfügen. Die Unterstützung für benutzerseitig zugewiesene Identitäten befindet sich für alle App-Typen in der Vorschau.
+- Eine **systemseitig zugewiesene Identität** ist an Ihre Anwendung gebunden und wird gelöscht, wenn Ihre App gelöscht wird. Eine App kann nur über eine systemseitig zugewiesene Identität verfügen.
+- Eine **benutzerseitig zugewiesene Identität** ist eine eigenständige Azure-Ressource, die Ihrer App zugewiesen werden kann. Eine App kann über mehrere benutzerseitig zugewiesene Identitäten verfügen.
 
 ## <a name="adding-a-system-assigned-identity"></a>Hinzufügen einer systemseitig zugewiesenen Identität
 
@@ -157,17 +154,11 @@ Wenn die Website erstellt wurde, weist sie folgende zusätzliche Eigenschaften a
 Hierbei werden `<TENANTID>` und `<PRINCIPALID>` durch GUIDs ersetzt. Die Eigenschaft „tenantId“ kennzeichnet, zu welchem AAD-Mandanten die Identität gehört. Die Eigenschaft „principalId“ ist ein eindeutiger Bezeichner für die neue Identität der Anwendung. In AAD weist der Dienstprinzipal denselben Namen auf, den Sie für Ihre App Service- oder Azure Functions-Instanz vergeben haben.
 
 
-## <a name="adding-a-user-assigned-identity-preview"></a>Erstellen einer benutzerseitig zugewiesenen Identität (Vorschau)
-
-> [!NOTE] 
-> Benutzerseitig zugewiesene Identitäten befinden sich zurzeit in der Vorschau. Sovereign Clouds werden noch nicht unterstützt.
+## <a name="adding-a-user-assigned-identity"></a>Hinzufügen einer benutzerseitig zugewiesenen Identität
 
 Für das Erstellen einer App mit einer benutzerseitig zugewiesenen Identität müssen Sie die Identität erstellen und dann den Ressourcenbezeichner der Identität zu Ihrer App-Konfiguration hinzufügen.
 
 ### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
-
-> [!NOTE] 
-> Diese Portalbenutzeroberfläche wird zurzeit bereitgestellt und ist möglicherweise nicht in allen Regionen verfügbar.
 
 Zunächst müssen Sie eine Ressource für eine benutzerseitig zugewiesene Identität erstellen.
 
@@ -179,7 +170,7 @@ Zunächst müssen Sie eine Ressource für eine benutzerseitig zugewiesene Identi
 
 4. Wählen Sie **Verwaltete Identität** aus.
 
-5. Klicken Sie auf der Registerkarte **Benutzerseitig (Vorschau)** auf **Hinzufügen**.
+5. Klicken Sie auf der Registerkarte **Benutzerseitig zugewiesen** auf **Hinzufügen**.
 
 6. Suchen Sie nach der zuvor erstellten Identität, und wählen Sie sie aus. Klicken Sie auf **Hinzufügen**.
 
@@ -276,6 +267,34 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServi
 
 Weitere Informationen zu Microsoft.Azure.Services.AppAuthentication und den zugehörigen Vorgängen finden Sie in der [Microsoft.Azure.Services.AppAuthentication-Referenz] und im [Beispiel zu App Service und KeyVault mit MSI .NET](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
+
+### <a name="using-the-azure-sdk-for-java"></a>Verwenden des Azure SDK für Java
+
+Für Java-Anwendungen und -Funktionen besteht die einfachste Methode für die Arbeit mit einer verwalteten Identität in der Verwendung des [Azure SDK für Java](https://github.com/Azure/azure-sdk-for-java). In diesem Abschnitt werden die ersten Schritte mit der Bibliothek in Ihrem Code erläutert.
+
+1. Fügen Sie einen Verweis zur [Azure SDK-Bibliothek](https://mvnrepository.com/artifact/com.microsoft.azure/azure) hinzu. Bei Maven-Projekten können Sie den folgenden Codeausschnitt zum `dependencies`-Abschnitt der POM-Datei des Projekts hinzufügen:
+
+```xml
+<dependency>
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>azure</artifactId>
+    <version>1.23.0</version>
+</dependency>
+```
+
+2. Verwenden Sie das `AppServiceMSICredentials`-Objekt für die Authentifizierung. In diesem Beispiel wird gezeigt, wie dieser Mechanismus mit Azure Key Vault verwendet werden kann:
+
+```java
+import com.microsoft.azure.AzureEnvironment;
+import com.microsoft.azure.management.Azure;
+import com.microsoft.azure.management.keyvault.Vault
+//...
+Azure azure = Azure.authenticate(new AppServiceMSICredentials(AzureEnvironment.AZURE))
+        .withSubscription(subscriptionId);
+Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName);
+
+```
+
 ### <a name="using-the-rest-protocol"></a>Verwenden des REST-Protokolls
 
 Für eine App mit einer verwalteten Identität sind zwei Umgebungsvariablen definiert:
@@ -290,7 +309,10 @@ Bei der Variable **MSI_ENDPOINT** handelt es sich um eine lokale URL, über die 
 > |resource|Abfragen|Der AAD-Ressourcen-URI der Ressource, für die ein Token abgerufen werden soll. Dies kann einer der [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), oder ein anderer Ressourcen-URI sein.|
 > |api-version|Abfragen|Die Version der zu verwendenden Token-API. Die einzige derzeit unterstützte Version lautet „2017-09-01“.|
 > |secret|Header|Der Wert der Umgebungsvariable „MSI_SECRET“. Dieser Header wird als Maßnahme gegen SSRF-Angriffe (Server-Side Request Forgery) verwendet.|
-> |clientid|Abfragen|(Optional) Die ID der benutzerseitig zugewiesenen Identität, die verwendet werden soll. Sofern nicht angegeben, wird die systemseitig zugewiesene Identität verwendet.|
+> |clientid|Abfragen|(Optional, sofern nicht benutzerseitig zugewiesene Identität) Die ID der benutzerseitig zugewiesenen Identität, die verwendet werden soll. Sofern nicht angegeben, wird die systemseitig zugewiesene Identität verwendet.|
+
+> [!IMPORTANT]
+> Wenn Sie Token für vom benutzerseitig zugewiesene Identitäten abrufen möchten, müssen Sie die `clientid`-Eigenschaft einbinden. Andernfalls versucht der Tokendienst, ein Token für eine vom System zugewiesene Identität abzurufen, die möglicherweise nicht vorhanden ist.
 
 Eine erfolgreiche 200 OK-Antwort enthält einen JSON-Text mit folgenden Eigenschaften:
 
@@ -359,6 +381,25 @@ const getToken = function(resource, apiver, cb) {
     rp(options)
         .then(cb);
 }
+```
+
+<a name="token-python"></a>In Python:
+
+```python
+import os
+import requests
+
+msi_endpoint = os.environ["MSI_ENDPOINT"]
+msi_secret = os.environ["MSI_SECRET"]
+
+def get_bearer_token(resource_uri, token_api_version):
+    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version={token_api_version}"
+    head_msi = {'Secret':msi_secret}
+
+    resp = requests.get(token_auth_uri, headers=head_msi)
+    access_token = resp.json()['access_token']
+
+    return access_token
 ```
 
 <a name="token-powershell"></a>Gehen Sie in PowerShell folgendermaßen vor:

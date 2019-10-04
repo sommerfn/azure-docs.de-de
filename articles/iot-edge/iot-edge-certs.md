@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 91cde6965f3635d6d2acfaf581f570779020f8ff
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 0aa70e591c7aac977fe13ed638f8ee56b88e4bd1
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232225"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982911"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Details zur Verwendung von Azure IoT Edge-Zertifikaten
 
@@ -93,14 +93,14 @@ New-CACertsCertChain rsa
 Diese Befehle generieren ebenso das „Zertifikat der Gerätezertifizierungsstelle“.
 
 ```bash
-./certGen.sh create_edge_device_certificate "<gateway device name>"
+./certGen.sh create_edge_device_ca_certificate "<gateway device name>"
 ```
 
 ```Powershell
-New-CACertsEdgeDevice "<gateway device name>"
+New-CACertsEdgeDeviceCA "<gateway device name>"
 ```
 
-* Der diesen Skripts übergebene **\<Gatewaygerätename\>** **darf nicht** mit dem Parameter „hostname“ in „config.yaml“ identisch sein. Mit den Skripts vermeiden Sie durch Anhängen der Zeichenfolge „.ca“ an den **\<Gatewaygerätenamen\>** Probleme durch Namenskonflikte, falls ein Benutzer IoT Edge an beiden Orten mit dem gleichen Namen einrichtet. Die Verwendung des gleichen Namens sollte jedoch grundsätzlich vermieden werden.
+* Der diesen Skripts übergebene **\<Gatewaygerätename\>** sollte mit dem Parameter „hostname“ in „config.yaml“ nicht identisch sein. Mit den Skripts vermeiden Sie durch Anhängen der Zeichenfolge „.ca“ an den **\<Gatewaygerätenamen\>** Probleme durch Namenskonflikte, falls ein Benutzer IoT Edge an beiden Orten mit dem gleichen Namen einrichtet. Die Verwendung des gleichen Namens sollte jedoch grundsätzlich vermieden werden.
 
 >[!Tip]
 > Um Verbindungen Ihrer Geräte-IoT-„Blattgeräte“ und Anwendungen herzustellen, die unser IoT-Geräte-SDK über IoT Edge verwenden, müssen Sie den optionalen GatewayHostName-Parameter dem Ende der Verbindungszeichenfolge des Geräts hinzufügen. Wenn das Edge Hub-Serverzertifikat generiert wird, basiert es auf einer Kleinbuchstabenversion des Hostnamens aus „config.yaml“ – damit die Namen übereinstimmen und die Überprüfung der TLS-Zertifikats erfolgreich ausgeführt werden kann, sollten Sie darum den GatewayHostName-Parameter in Kleinbuchstaben eingeben.

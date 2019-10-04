@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ac88bc95ac9ffe4c2f32307b0bee427829242add
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1bf60014b20f4cec29d661db4deb029fea4ab1d5
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234678"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60796324"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Auswählen des richtigen Tarifs in Azure Maps
 
@@ -29,7 +29,7 @@ Mit den Tarifen S0 und S1 werden unterschiedliche Volumen an Datendurchsatz vera
 
 | Funktion                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
-| Suchen,                                  |        ✓           |     ✓    |
+| Suche (fwd/Rev geocodierung, POIs)  |        ✓           |     ✓    |
 | Batchgeocodierung (Preview)              |                   |     ✓    |
 | Polygone aus Suche          |                   |     ✓    |
 | Routing                                 |        ✓           |     ✓    |

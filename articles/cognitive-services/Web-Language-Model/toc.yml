@@ -1,22 +1,15 @@
-items:
 - name: Dokumentation zur Websprachmodell-API
 - name: Übersicht
   items:
-  - name: Worum handelt es sich bei der Websprachmodell-API?
-    href: Home.md
+    - name: Worum handelt es sich bei der Websprachmodell-API?
+      href: Home.md
 - name: Verweis
   items:
-  - name: Websprachmodell-API
-    href: https://westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51
-  - name: Windows SDK
-    href: https://github.com/Microsoft/Cognitive-WebLM-Windows
+    - name: Websprachmodell-API
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51'
+    - name: Windows SDK
+      href: 'https://github.com/Microsoft/Cognitive-WebLM-Windows'
 - name: Ressourcen
   items:
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/555943-web-language-model-api
-ms.openlocfilehash: 1997a597d89be77e62b3c3d51b809ba992d396b6
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35416199"
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555943-web-language-model-api'

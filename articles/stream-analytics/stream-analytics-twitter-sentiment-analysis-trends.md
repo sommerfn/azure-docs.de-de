@@ -2,25 +2,24 @@
 title: Twitter-Standpunktanalyse in Echtzeit mit Azure Stream Analytics
 description: In diesem Artikel erfahren Sie, wie Sie Stream Analytics für Twitter-Standpunktanalysen in Echtzeit verwenden. Schrittweise Anleitung von der Ereignisgenerierung bis hin zu Daten im Live-Dashboard.
 services: stream-analytics
-author: jseb225
-ms.author: jeanb
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: jasonh
-manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/29/2017
-ms.openlocfilehash: b5ad1a790f79b11b978c32c5751a6b9333f24c85
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 07/09/2019
+ms.openlocfilehash: 8561789d53c3c1b00ac1477909bcbe356fe6a85d
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994924"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173117"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Twitter-Standpunktanalyse in Echtzeit in Azure Stream Analytics
 
-Erfahren Sie, wie Sie eine Lösung für Standpunktanalysen zur Analyse sozialer Medien durch die Einbindung von Twitter-Echtzeitereignissen in Azure Event Hubs erstellen können. Sie können dann eine Azure Stream Analytics-Abfrage schreiben, um die Daten zu analysieren, und die Ergebnisse zur späteren Durchsicht speichern oder ein Dashboard und [Power BI](https://powerbi.com/) verwenden, um Einblicke in Echtzeit zu ermöglichen.
+Erfahren Sie, wie Sie eine Lösung für Standpunktanalysen zur Analyse sozialer Medien durch die Einbindung von Twitter-Echtzeitereignissen in Azure Event Hubs erstellen können. Schreiben Sie dann eine Azure Stream Analytics-Abfrage, um die Daten zu analysieren, und speichern Sie die Ergebnisse zur späteren Verwendung, oder erstellen Sie ein [Power BI](https://powerbi.com/)-Dashboard, um Einblicke in Echtzeit zu ermöglichen.
 
-Analysetools für soziale Medien können Unternehmen helfen, Trendthemen zu verstehen. Bei Trendthemen handelt es sich um Themen und Einstellungen mit einer hohen Anzahl von Beiträgen in sozialen Medien. Für die Standpunktanalyse – auch als *Opinion Mining* bezeichnet – werden Analysetools für soziale Medien verwendet, um Einstellungen zu einem Produkt, Meinungen usw. zu bestimmen. 
+Analysetools für soziale Medien können Unternehmen helfen, Trendthemen zu verstehen. Bei beliebten Themen handelt es sich um Themen und Einstellungen mit einer hohen Anzahl von Beiträgen in sozialen Medien. Für die Standpunktanalyse – auch als *Opinion Mining* bezeichnet – werden Analysetools für soziale Medien verwendet, um Einstellungen zu einem Produkt, einer Idee usw. zu bestimmen. 
 
 Die Twitter-Trendanalyse in Echtzeit ist ein gutes Beispiel für ein Analysetool, da das Hashtag-Abonnementmodell es Ihnen ermöglicht, bestimmte Schlüsselwörter (Hashtags) zu berücksichtigen und eine Standpunktanalyse für den Feed zu entwickeln.
 
@@ -28,23 +27,21 @@ Die Twitter-Trendanalyse in Echtzeit ist ein gutes Beispiel für ein Analysetool
 
 Ein Unternehmen, das über eine Nachrichtenwebsite verfügt, ist daran interessiert, sich durch Seiteninhalte mit direkter Relevanz für die Leser gegenüber der Konkurrenz einen Vorteil zu verschaffen. Das Unternehmen verwendet eine Analyse sozialer Medien für Themen mit Relevanz für Leser und führt dazu Standpunktanalysen von Twitter-Daten in Echtzeit durch.
 
-Das Unternehmen benötigt Echtzeitanalysen des Tweet-Umfangs und der Stimmung im Hinblick auf wichtige Themen, um zu erkennen, welche Themen sich auf Twitter in Echtzeit zu Trendthemen entwickeln. Anders ausgedrückt: Es wird also eine Analyse-Engine für Standpunktanalysen basierend auf diesem Feed in sozialen Medien benötigt.
+Das Unternehmen benötigt Echtzeitanalysen des Tweet-Umfangs und der Stimmung im Hinblick auf wichtige Themen, um zu erkennen, welche Themen sich auf Twitter in Echtzeit zu Trendthemen entwickeln.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Tutorial verwenden Sie eine Clientanwendung, die eine Verbindung mit Twitter herstellt und nach Tweets mit bestimmten Hashtags sucht (die Sie festlegen können). Um die Anwendung auszuführen und die Tweets mit Azure Stream Analytics zu analysieren, benötigen Sie Folgendes:
+In dieser Schrittanleitung verwenden Sie eine Clientanwendung, die eine Verbindung mit Twitter herstellt und nach Tweets mit bestimmten Hashtags sucht (die Sie festlegen können). Um die Anwendung auszuführen und die Tweets mit Azure Stream Analytics zu analysieren, benötigen Sie Folgendes:
 
-* Ein Azure-Abonnement
-* Ein Twitter-Konto 
-* Eine Twitter-Anwendung und das [OAuth-Zugriffstoken](https://dev.twitter.com/oauth/overview/application-owner-access-tokens) für die jeweilige Anwendung. Allgemeine Anweisungen zum Erstellen einer Twitter-Anwendung werden im weiteren Verlauf bereitgestellt.
+* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.
+* Ein [Twitter-Konto](https://twitter.com)
 * Die Anwendung TwitterWPFClient, die den Twitter-Feed liest. Um diese Anwendung zu beziehen, laden Sie über GitHub die Datei [TwitterWPFClient.zip](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/TwitterClient/TwitterWPFClient.zip) herunter, und entzippen Sie das Paket in einem Ordner auf Ihrem Computer. Wenn Sie den Quellcode prüfen und die Anwendung in einem Debugger ausführen möchten, können Sie den Quellcode über [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TwitterClient) beziehen. 
 
 ## <a name="create-an-event-hub-for-streaming-analytics-input"></a>Erstellen eines Event Hubs für die Stream Analytics-Eingabe
 
 Die Beispielanwendung generiert Ereignisse und überträgt sie mithilfe von Push an einen Azure Event Hub. Azure Event Hubs sind die bevorzugte Methode zur Ereigniserfassung für Stream Analytics. Weitere Informationen finden Sie in der [Dokumentation zu Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md).
 
-
 ### <a name="create-an-event-hub-namespace-and-event-hub"></a>Erstellen eines Event Hub-Namespace und eines Event Hubs
-In diesem Verfahren erstellen Sie zuerst einen Event Hub-Namespace und fügen diesem Namespace dann einen Event Hub hinzu. Event Hub-Namespaces werden verwendet, um verwandte Ereignisbusinstanzen logisch zu gruppieren. 
+Erstellen Sie einen Event Hub-Namespace, und fügen Sie diesem Namespace dann einen Event Hub hinzu. Event Hub-Namespaces werden verwendet, um verwandte Ereignisbusinstanzen logisch zu gruppieren. 
 
 1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Ressource erstellen** > **Internet der Dinge** > **Event Hub**. 
 
@@ -110,27 +107,26 @@ Damit ein Prozess Daten an einen Event Hub senden kann, muss der Event Hub mit e
 Die Clientanwendung ruft Tweet-Ereignisse direkt über Twitter ab. Zu diesem Zweck benötigt die Anwendung die Berechtigung zum Aufrufen der Streaming-APIs von Twitter. Um diese Berechtigung zu konfigurieren, erstellen Sie eine Anwendung in Twitter, die eindeutige Anmeldeinformationen (z.B. ein OAuth-Token) generiert. Sie können die Clientanwendung dann so konfigurieren, dass diese Anmeldeinformationen bei API-Aufrufen verwendet werden. 
 
 ### <a name="create-a-twitter-application"></a>Erstellen einer Twitter-Anwendung
-Wenn Sie noch keine Twitter-Anwendung besitzen, die Sie für dieses Tutorial verwenden können, können Sie eine erstellen. Sie müssen bereits über ein Twitter-Konto verfügen.
+Wenn Sie noch keine Twitter-Anwendung besitzen, die Sie für diese Schrittanleitung verwenden können, können Sie eine erstellen. Sie müssen bereits über ein Twitter-Konto verfügen.
 
 > [!NOTE]
 > Der genaue Vorgang in Twitter zum Erstellen einer Anwendung und zum Abrufen der Schlüssel, Geheimnisse und des Tokens kann variieren. Wenn diese Anweisungen nicht der Twitter-Website entsprechen, lesen Sie die Twitter-Entwicklerdokumentation.
 
-1. Navigieren Sie zur [Verwaltungsseite der Twitter-Anwendung](https://apps.twitter.com/). 
+1. Wechseln Sie in einem Webbrowser zu [Twitter For Developers](https://developer.twitter.com/en/apps), und wählen Sie **App erstellen** aus. Möglicherweise wird eine Meldung angezeigt, dass Sie ein Twitter-Entwicklerkonto beantragen müssen. Zögern Sie nicht, diese Anfrage zu übermitteln, und nachdem sie genehmigt wurde, sollten Sie eine Bestätigungs-E-Mail erhalten. Es kann mehrere Tage dauern, bis die Genehmigung für ein Entwicklerkonto erfolgt ist.
 
-2. Erstellen Sie eine neue Anwendung. 
+   ![Bestätigung für Twitter-Entwicklerkonto](./media/stream-analytics-twitter-sentiment-analysis-trends/twitter-dev-confirmation.png "Bestätigung für Twitter-Entwicklerkonto")
 
-   * Geben Sie für die Website-URL eine gültige URL ein. Es muss keine Livewebsite sein. (Es darf nicht nur `localhost` angegeben werden.)
-   * Lassen Sie das Rückruffeld leer. Für die Clientanwendung, die Sie für dieses Tutorial verwenden, sind keine Rückrufe erforderlich.
+   ![Twitter-Anwendungsdetails](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Twitter-Anwendungsdetails")
 
-     ![Erstellen einer Anwendung in Twitter](./media/stream-analytics-twitter-sentiment-analysis-trends/create-twitter-application.png)
+2. Geben Sie auf der Seite **Create an application** (Anwendung erstellen) die Details für die neue App an, und klicken Sie anschließend auf **Create your Twitter application** (Twitter-Anwendung erstellen).
 
-3. Optional können Sie die Berechtigungen der Anwendung in die Leseberechtigung ändern.
+   ![Twitter-Anwendungsdetails](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details-create.png "Twitter-Anwendungsdetails")
 
-4. Wenn die Anwendung erstellt wurde, navigieren Sie zur Seite **Schlüssel und Zugriffstokens**.
+3. Klicken Sie auf der Anwendungsseite auf die Registerkarte **Keys and Tokens** (Schlüssel und Token), und kopieren Sie die Werte für **Consumer API Key** (Consumer-API-Schlüssel) und **Consumer API Secret** (Consumer-API-Geheimnis). Wählen Sie außerdem **Erstellen** unter **Access Token und Access Token Secret** (Zugriffstoken und Zugriffstokengeheimnis) aus, um die Zugriffstoken zu generieren. Kopieren Sie die Werte für **Access Token** (Zugriffstoken) und **Access Token Secret** (Zugriffstokengeheimnis).
 
-5. Klicken Sie auf die Schaltfläche, um einen Zugriffstoken und ein Geheimnis für das Zugriffstoken zu generieren.
+    ![Twitter-Anwendungsdetails](./media/stream-analytics-twitter-sentiment-analysis-trends/twitter-app-key-secret.png "Twitter-Anwendungsdetails")
 
-Halten Sie diese Informationen griffbereit, da Sie diese im nächsten Verfahren benötigen.
+Speichern Sie die Werte, die Sie für die Twitter-Anwendung abgerufen haben. Diese Werte werden im weiteren Verlauf der Schrittanleitung benötigt.
 
 >[!NOTE]
 >Die Schlüssel und Geheimnisse für die Twitter-Anwendung ermöglichen Zugriff auf Ihr Twitter-Konto. Behandeln Sie diese Informationen vertraulich, so wie Sie es auch bei Ihrem Twitter-Kennwort tun. Betten Sie diese Informationen beispielsweise nicht in eine Anwendung ein, die Sie anderen Benutzern zur Verfügung stellen. 
@@ -229,9 +225,9 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen von Twitter in Echtzeit haben
 
 ## <a name="specify-the-job-query"></a>Festlegen der Auftragsabfrage
 
-Stream Analytics unterstützt ein einfaches, deklaratives Abfragemodell, das Transformationen beschreibt. Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfragesprachreferenz](https://msdn.microsoft.com/library/azure/dn834998.aspx).  Dieses Tutorial hilft Ihnen beim Erstellen und Testen mehrerer Abfragen über Twitter-Daten.
+Stream Analytics unterstützt ein einfaches, deklaratives Abfragemodell, das Transformationen beschreibt. Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfragesprachreferenz](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).  Diese Schrittanleitung hilft Ihnen beim Erstellen und Testen mehrerer Abfragen über Twitter-Daten.
 
-Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, können Sie mithilfe eines [rollierenden Fensters](https://msdn.microsoft.com/library/azure/dn835055.aspx) alle fünf Sekunden die Anzahl der Erwähnungen jedes Themas abrufen.
+Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, können Sie mithilfe eines [rollierenden Fensters](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) alle fünf Sekunden die Anzahl der Erwähnungen jedes Themas abrufen.
 
 1. Schließen Sie das Blatt **Eingaben**, sofern Sie dies noch nicht getan haben.
 
@@ -263,7 +259,7 @@ Um die Anzahl der Erwähnungen verschiedener Themen zu vergleichen, können Sie 
 
     Wenn Sie nicht `TwitterStream` als Alias für die Eingabe verwendet haben, ersetzen Sie `TwitterStream` in der Abfrage durch Ihren Alias.  
 
-    Diese Abfrage gibt mit dem Schlüsselwort **TIMESTAMP BY** ein Zeitstempelfeld für die Nutzlast an, das für die zeitliche Berechnung verwendet wird. Wird dieses Feld nicht angegeben, verwendet der Vorgang die Zeit, zu der jedes Ereignis beim Event Hub eingeht. Weitere Informationen erhalten Sie im Abschnitt „Arrival Time vs Application Time“ („Eingangszeit im Vgl. zu Anwendungszeit“) in der [Stream Analytics Query Reference (Stream Analytics-Abfragereferenz)](https://msdn.microsoft.com/library/azure/dn834998.aspx).
+    Diese Abfrage gibt mit dem Schlüsselwort **TIMESTAMP BY** ein Zeitstempelfeld für die Nutzlast an, das für die zeitliche Berechnung verwendet wird. Wird dieses Feld nicht angegeben, verwendet der Vorgang die Zeit, zu der jedes Ereignis beim Event Hub eingeht. Weitere Informationen erhalten Sie im Abschnitt „Arrival Time vs Application Time“ („Eingangszeit im Vgl. zu Anwendungszeit“) in der [Stream Analytics Query Reference (Stream Analytics-Abfragereferenz)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
     Diese Abfrage greift zudem mithilfe der Eigenschaft **System.Timestamp** jeweils auf einen Zeitstempel für das Ende der einzelnen Fenster zu.
 
@@ -289,7 +285,7 @@ Die folgende Tabelle enthält die Felder, die in den JSON-Streamingdaten enthalt
 
 Sie haben nun einen Ereignisdatenstrom, eine Event Hub-Eingabe zum Erfassen von Ereignissen und eine Abfrage zur Durchführung einer Transformation über den Datenstrom definiert. Der letzte Schritt besteht darin, eine Ausgabesenke für den Auftrag zu definieren.  
 
-In diesem Tutorial schreiben Sie die aggregierten Tweet-Ereignisse aus der Auftragsabfrage im Azure Blob Storage.  Sie können die Ergebnisse je nach den Anforderungen der Anwendung auch mithilfe von Push an Azure SQL-Datenbank, Azure Table Storage, Event Hubs oder Power BI übertragen.
+In dieser Schrittanleitung schreiben Sie die aggregierten Tweet-Ereignisse aus der Auftragsabfrage in Azure Blob Storage.  Sie können die Ergebnisse je nach den Anforderungen der Anwendung auch mithilfe von Push an Azure SQL-Datenbank, Azure Table Storage, Event Hubs oder Power BI übertragen.
 
 ## <a name="specify-the-job-output"></a>Festlegen der Auftragsausgabe
 
@@ -345,9 +341,9 @@ Sie können ein Tool wie den [Azure Storage-Explorer](https://storageexplorer.co
 
 ## <a name="create-another-query-to-identify-trending-topics"></a>Erstellen einer weiteren Abfrage zum Identifizieren von Trendthemen
 
-Eine andere Abfrage, die Ihnen vermittelt, worum es bei Twitter-Stimmungen geht, basiert auf einem [gleitenden Fenster](https://msdn.microsoft.com/library/azure/dn835051.aspx). Zum Identifizieren von Trendthemen suchen Sie nach Themen, die einen Schwellenwert für Erwähnungen in einem angegebenen Zeitraum überschreiten.
+Eine andere Abfrage, die Ihnen vermittelt, worum es bei Twitter-Stimmungen geht, basiert auf einem [gleitenden Fenster](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics). Zum Identifizieren von Trendthemen suchen Sie nach Themen, die einen Schwellenwert für Erwähnungen in einem angegebenen Zeitraum überschreiten.
 
-Für die Zwecke dieses Tutorials suchen Sie nach Themen, die in den letzten fünf Sekunden mehr als 20-mal erwähnt werden.
+Für die Zwecke dieser Schrittanleitung suchen Sie nach Themen, die in den letzten fünf Sekunden mehr als 20-mal erwähnt werden.
 
 1. Klicken Sie auf dem Blatt „Auftrag“ auf **Beenden**, um den Auftrag zu beenden. 
 
@@ -376,5 +372,5 @@ Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://so
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)

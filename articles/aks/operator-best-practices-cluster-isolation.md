@@ -2,17 +2,17 @@
 title: Best Practices für Operator – Clusterisolierung in Azure Kubernetes Service (AKS)
 description: Lernen Sie die Best Practices für die Isolierung in Azure Kubernetes Service (AKS) für Clusteroperator kennen.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: iainfou
-ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.author: mlearned
+ms.openlocfilehash: 8150e184f0c7533d5a6e7e4847bf126206f5e6c6
+ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495002"
+ms.lasthandoff: 07/07/2019
+ms.locfileid: "67614932"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Best Practices für Clusterisolierung in Azure Kubernetes Service (AKS)
 
@@ -28,10 +28,10 @@ Dieser Best Practices-Artikel konzentriert sich auf die Isolierung für Clustero
 
 Kubernetes bietet Features, mit denen Sie Teams und Workloads im selben Cluster logisch isolieren können. Das Ziel sollte sein, die geringste Anzahl von Berechtigungen bereitzustellen, beschränkt auf die Ressourcen, die jedes Team benötigt. Ein [Namespace][k8s-namespaces] in Kubernetes erstellt eine logische Isolationsgrenze. Zusätzliche Kubernetes-Funktionen und Überlegungen zu Isolierung und Mehrinstanzenfähigkeit umfassen die folgenden Bereiche:
 
-* **Planung** umfasst die Verwendung der grundlegenden Funktionen, wie z.B. Ressourcenkontingente und Podunterbrechungsbudgets. Weitere Informationen zu diesen Funktionen finden Sie unter [Best Practices für grundlegende Planerfeatures in AKS][aks-best-practices-scheduler].
-  * Erweiterte Planerfeatures sind Makel und Toleranzen, Selektoren auf Knoten sowie Affinität zwischen Knoten und Pod bzw. Antiaffinität. Weitere Informationen zu diesen Funktionen finden Sie unter [Best Practices für erweiterte Planerfeatures in AKS][aks-best-practices-advanced-scheduler].
+* **Planung** umfasst die Verwendung der grundlegenden Funktionen, wie z.B. Ressourcenkontingente und Podunterbrechungsbudgets. Weitere Informationen zu diesen Features finden Sie unter [Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)][aks-best-practices-scheduler].
+  * Erweiterte Planerfeatures sind Makel und Toleranzen, Selektoren auf Knoten sowie Affinität zwischen Knoten und Pod bzw. Antiaffinität. Weitere Informationen zu diesen Features finden Sie unter [Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)][aks-best-practices-advanced-scheduler].
 * **Netzwerk** umfasst die Verwendung von Netzwerkrichtlinien, um den ein- und ausgehenden Fluss des Datenverkehrs des Pods zu steuern.
-* **Authentifizierung und Autorisierung** umfasst die Nutzung der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und Azure Active Directory-Integration (AD), Podidentitäten und Geheimnisse in Azure Key Vault. Weitere Informationen zu diesen Funktionen finden Sie unter [Best Practices für Authentifizierung und Autorisierung in AKS][aks-best-practices-identity].
+* **Authentifizierung und Autorisierung** umfasst die Nutzung der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und Azure Active Directory-Integration (AD), Podidentitäten und Geheimnisse in Azure Key Vault. Weitere Informationen zu diesen Features finden Sie unter [Best Practices für die Authentifizierung und Autorisierung in Azure Kubernetes Service (AKS)][aks-best-practices-identity].
 * **Container** umfasst Podsicherheitsrichtlinien, Podsicherheitskontexte, Scannen von Images und Runtimes für Sicherheitsrisiken. Hierunter fällt auch App Armor oder Seccomp (Secure Computing, sicheres Computing) zum Einschränken des Zugriffs auf den Container auf den zugrunde liegenden Knoten.
 
 ## <a name="logically-isolate-clusters"></a>Logisches Isolieren von Clustern
@@ -60,8 +60,8 @@ Physisch separate Cluster verfügen in der Regel über eine geringe Poddichte. D
 
 Dieser Artikel konzentriert sich auf Clusterisolierung. Weitere Informationen zu Clustervorgängen in AKS finden Sie in den folgenden Best Practices:
 
-* [Grundlegende Funktionen des Kubernetes-Schedulers][aks-best-practices-scheduler]
-* [Erweiterte Funktionen des Kubernetes-Schedulers][aks-best-practices-advanced-scheduler]
+* [Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)][aks-best-practices-scheduler]
+* [Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)][aks-best-practices-advanced-scheduler]
 * [Authentifizierung und Autorisierung][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->

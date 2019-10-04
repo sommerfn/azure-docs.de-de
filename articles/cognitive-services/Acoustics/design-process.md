@@ -3,19 +3,20 @@ title: Entwurfskonzepte mit Akustiksimulation
 titlesuffix: Azure Cognitive Services
 description: Dieser konzeptionelle Überblick erläutert, wie Projekt Akustik die akustische Simulation in den Soundentwurfsprozess integriert.
 services: cognitive-services
-author: kegodin
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kegodin
-ms.openlocfilehash: 4a1a0b15da091a1c020eb132f6b14b9ee14d334c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.author: noelc
+ROBOTS: NOINDEX
+ms.openlocfilehash: 11e1e3f45b5198ddedb6c31fcd354185adef445d
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316067"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854305"
 ---
 # <a name="project-acoustics-design-process-concepts"></a>Entwurfskonzepte in Projekt Akustik
 

@@ -2,25 +2,22 @@
 title: Ausführen von Hintergrundaufgaben mit WebJobs – Azure App Service
 description: Erfahren Sie, wie mithilfe von WebJobs Hintergrundaufgaben in Web-Apps, API-Apps oder mobilen Apps von Azure App Service ausgeführt werden.
 services: app-service
-documentationcenter: ''
 author: ggailey777
 manager: jeconnoc
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
-ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
+ms.author: glenga
+ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 66c1b62dc94fc071d3b04fc0d4e89220df74d1f8
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749918"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945802"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Ausführen von Hintergrundaufgaben mit WebJobs in Azure App Service
 
@@ -164,7 +161,7 @@ when making changes in one don't forget the other two.
    | **Dateiupload** | ConsoleApp.zip | Eine *ZIP*-Datei, die die ausführbare Datei oder Skriptdatei sowie für die Ausführung des Programms oder Skripts erforderliche Hilfsdateien enthält. Die unterstützten Typen von ausführbarer Datei oder Skriptdatei werden im Abschnitt [Unterstützte Dateitypen](#acceptablefiles) aufgeführt. |
    | **Typ** | Ausgelöst | Die [WebJob-Typen](#webjob-types) werden weiter oben in diesem Artikel beschrieben. |
    | **Trigger** | Geplant | Damit die Planung zuverlässig funktioniert, aktivieren Sie das Feature „Always On“. Dieses Feature steht nur in den Tarifen „Basic“, „Standard“ und „Premium“ zur Verfügung.|
-   | **CRON-Ausdruck** | 0 0/20 * * * * | [CRON-Ausdrücke](#cron-expressions) werden im folgenden Abschnitt beschrieben. |
+   | **CRON-Ausdruck** | 0 0/20 * * * * | [CRON-Ausdrücke](#ncrontab-expressions) werden im folgenden Abschnitt beschrieben. |
 
 4. Klicken Sie auf **OK**.
 
@@ -172,9 +169,9 @@ when making changes in one don't forget the other two.
 
    ![Liste von WebJobs](./media/web-sites-create-web-jobs/listallwebjobs.png)
 
-## <a name="cron-expressions"></a>CRON-Ausdrücke
+## <a name="ncrontab-expressions"></a>NCRONTAB-Ausdrücke
 
-Sie können einen [CRON-Ausdruck](../azure-functions/functions-bindings-timer.md#cron-expressions) im Portal eingeben oder eine `settings.job`-Datei im Stammverzeichnis Ihrer WebJob-*ZIP*-Datei einschließen, wie im folgenden Beispiel gezeigt wird:
+Sie können einen [NCRONTAB-Ausdruck](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) im Portal eingeben oder eine `settings.job`-Datei dem Stammverzeichnis Ihrer WebJob-*ZIP*-Datei hinzufügen, wie im folgenden Beispiel gezeigt:
 
 ```json
 {

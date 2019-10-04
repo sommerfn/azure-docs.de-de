@@ -9,19 +9,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 1d0f3bfa03eb4bafdd10222e28782c318848b7f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 62232283fb0b2f499601615702fef3292bb88317
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995178"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100734"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines
 
@@ -43,13 +42,13 @@ Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Kont
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie auf **+**, um ein neues Objekt im Portal zu erstellen.
+2. Klicken Sie auf **+** , um ein neues Objekt im Portal zu erstellen.
 
    ![Neues Objekt](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
 
 3. Geben Sie **Ressourcengruppe** in das **Marketplace**-Suchfenster ein.
 
-   ![Ressourcengruppe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
+   ![Resource group](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. Klicken Sie auf **Ressourcengruppe**.
 5. Klicken Sie auf **Create**.
 6. Geben Sie unter **Ressourcengruppenname** einen Namen für die Ressourcengruppe ein. Geben Sie beispielsweise **sql-ha-rg** ein.
@@ -57,7 +56,7 @@ Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Kont
 8. Wählen Sie einen Standort aus. Der Standort ist die Azure-Region, in der die Verfügbarkeitsgruppe erstellt werden soll. In diesem Artikel werden alle Ressourcen an einem Azure-Standort erstellt.
 9. Vergewissern Sie sich, dass **An Dashboard anheften** aktiviert ist. Diese optionale Einstellung platziert eine Verknüpfung mit der Ressourcengruppe auf dem Dashboard des Azure-Portals.
 
-   ![Ressourcengruppe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
+   ![Resource group](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroup.png)
 
 10. Klicken Sie auf **Erstellen** , um die Ressourcengruppe zu erstellen.
 
@@ -190,7 +189,7 @@ Die folgende Tabelle enthält die Einstellungen für die beiden Computer:
 | **Öffentliche IP-Adresse** |*Gleicher Name wie der VM* |
 | **Netzwerksicherheitsgruppe** |*Gleicher Name wie der VM* |
 | **Verfügbarkeitsgruppe** |adavailabilityset </br>**Fehlerdomänen**: 2 </br>**Updatedomänen**: 2|
-| **Diagnose** |Aktiviert |
+| **Diagnose** |Enabled |
 | **Diagnosespeicherkonto** |*Automatisch erstellt* |
 
    >[!IMPORTANT]
@@ -206,7 +205,7 @@ In den folgenden Schritten konfigurieren Sie den Computer **ad-primary-dc** als 
 1. Öffnen Sie im Portal die Ressourcengruppe **SQL-HA-RG**, und wählen Sie den Computer **ad-primary-dc** aus. Klicken Sie unter **ad-primary-dc** auf **Verbinden**, um eine RDP-Datei für den Remotedesktopzugriff zu öffnen.
 
     ![Herstellen einer Verbindung mit einem virtuellen Computer](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/20-connectrdp.png)
-2. Melden Sie sich mit Ihrem konfigurierten Administratorkonto (**\DomainAdmin**) und Kennwort (**Contoso!0000**) an.
+2. Melden Sie sich mit Ihrem konfigurierten Administratorkonto ( **\DomainAdmin**) und Kennwort (**Contoso!0000**) an.
 3. Standardmäßig sollte das Dashboard **Server-Manager** angezeigt werden.
 4. Klicken Sie im Dashboard auf den Link **Rollen und Features hinzufügen** .
 

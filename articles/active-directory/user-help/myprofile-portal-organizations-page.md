@@ -12,14 +12,15 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 6a0ff4190a1712b91bf58fafd80a03fc2737e7a4
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339741"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68383006"
 ---
 # <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>Verwalten von Organisationen im Portal „Mein Profil“ (Vorschauversion)
+
 Sie können Ihre Organisationen im Portal **Mein Profil** auf der Seite **Organisationen** verwalten.
 
 Auf der Seite **Organisationen** werden zwei Arten von Organisationen angezeigt:
@@ -31,6 +32,7 @@ Auf der Seite **Organisationen** werden zwei Arten von Organisationen angezeigt:
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-myprofile.md)]
 
 ## <a name="view-your-organizations"></a>Anzeigen Ihrer Organisationen
+
 1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
 
 2. Wählen Sie im linken Navigationsbereich **Organisationen** aus, oder wählen Sie im Block **Organisationen** den Link **Organisationen verwalten** aus.
@@ -41,9 +43,10 @@ Auf der Seite **Organisationen** werden zwei Arten von Organisationen angezeigt:
 
     ![Seite „Organisationen“](media/myprofile-portal/myprofile-portal-organization-page.png)
 
-3. Überprüfen Sie alle zugeordneten Organisationen, und stellen Sie sicher, dass Sie alle mit Ihrem Konto verbunden Organisationen erkennen.
+4. Überprüfen Sie alle zugeordneten Organisationen, und stellen Sie sicher, dass Sie alle mit Ihrem Konto verbunden Organisationen erkennen.
 
 ## <a name="leave-an-organization"></a>Verlassen einer Organisation
+
 Mit Ausnahme Ihrer eigenen Organisation können Sie jederzeit alle Organisationen verlassen.
 
 >[!Important]

@@ -1,21 +1,20 @@
 ---
 title: Azure Backup-Architektur
 description: Übersicht über die Architektur, die Komponenten und die Prozesse des Azure Backup-Diensts.
-services: backup
-author: rayne-wiselman
+author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: raynew
-ms.openlocfilehash: 98ffe145103b4be04014627ed04d04dcf7542015
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.author: dacurwin
+ms.openlocfilehash: 9e67e063ed37c706ba172703f0a5483d8d4f68ca
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368951"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68881870"
 ---
-# <a name="azure-backup-architecture"></a>Azure Backup-Architektur
+# <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 
 Sie können den [Azure Backup-Dienst](backup-overview.md) verwenden, um Daten auf der Microsoft Azure-Cloudplattform zu sichern. In diesem Artikel werden die Architektur, die Komponenten und die Prozesse von Azure Backup zusammengefasst. 
 
@@ -50,7 +49,7 @@ Recovery Services-Tresore bieten die folgenden Vorteile:
 - Der Zugriff auf den Tresor kann mithilfe der [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (Role-Based Access Control, RBAC) von Azure verwaltet werden.
 - Sie können angeben, wie die Daten im Tresor repliziert werden sollen, um für Redundanz zu sorgen:
     - **Lokal redundanter Speicher (LRS):** Sie können LRS zum Schutz vor Ausfällen in einem Datencenter verwenden. LRS repliziert Daten in einer Speicherskalierungseinheit. [Weitere Informationen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
-    - **Georedundanter Speicher (Geo-Redundant Storage, GRS)**: Sie können GRS zum Schutz vor regionsweiten Ausfällen verwenden. GRS repliziert Ihre Daten in einer sekundären Region. [Weitere Informationen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) 
+    - **Georedundanter Speicher (Geo-Redundant Storage, GRS)** : Sie können GRS zum Schutz vor regionsweiten Ausfällen verwenden. GRS repliziert Ihre Daten in einer sekundären Region. [Weitere Informationen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) 
     - Recovery Services-Tresore verwenden standardmäßig GRS. 
 
 ## <a name="backup-agents"></a>Sicherungs-Agents
@@ -121,7 +120,7 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
     - Es werden nur Datenblöcke kopiert, die seit der letzten Sicherung geändert wurden.
     - Die Daten werden nicht verschlüsselt. Azure Backup kann virtuelle Azure-Computer sichern, die mit Azure Disk Encryption verschlüsselt wurden.
     - Momentaufnahmedaten werden möglicherweise nicht sofort in den Tresor kopiert. Zu Spitzenzeiten kann die Sicherung mehrere Stunden dauern. Bei täglichen Sicherungsrichtlinien beträgt die Gesamtdauer der Sicherung eines virtuellen Computers weniger als 24 Stunden.
-1. Nachdem die Daten an den Tresor gesendet wurden, wird die Momentaufnahme entfernt, und es wird ein Wiederherstellungspunkt erstellt.
+1. Nachdem die Daten an den Tresor gesendet wurden, wird ein Wiederherstellungspunkt erstellt. Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt, bevor sie gelöscht werden. Mit diesem Feature kann die Wiederherstellung über diese Momentaufnahmen mit reduzierten Wiederherstellungszeiten durchgeführt werden. Es reduziert die erforderliche Zeit zum Transformieren und Zurückkopieren von Daten aus dem Tresor. Lesen Sie die Informationen unter [Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability).
 
 Zum Ausführen von Steuerungsbefehlen benötigen Azure-VMs einen Internetzugang. Wenn Sie Workloads auf dem virtuellen Computer sichern (z. B. SQL Server-Datenbanksicherungen), benötigen die Back-End-Daten auch einen Internetzugang. 
 
@@ -178,7 +177,7 @@ Weitere Informationen zu Datenträgerspeicher und den verfügbaren Datenträgert
 
 Sie können virtuelle Azure-Computer mithilfe von Storage Premium mit Azure Backup sichern:
 
-- Während des Vorgangs zum Sichern virtueller Computer mit Storage Premium erstellt der Backup-Dienst im Speicherkonto einen temporären Stagingspeicherort mit dem Namen *AzureBackup-*. Die Größe des Stagingspeicherorts entspricht der Größe der Momentaufnahme des Wiederherstellungspunkts.
+- Während des Vorgangs zum Sichern virtueller Computer mit Storage Premium erstellt der Backup-Dienst im Speicherkonto einen temporären Stagingspeicherort mit dem Namen *AzureBackup-* . Die Größe des Stagingspeicherorts entspricht der Größe der Momentaufnahme des Wiederherstellungspunkts.
 - Stellen Sie sicher, dass das Premium-Speicherkonto über genügend freien Speicherplatz für den temporären Stagingspeicherort verfügt. [Weitere Informationen](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits) Ändern Sie den Stagingspeicherort nicht.
 - Nach Abschluss des Sicherungsauftrags wird der Stagingspeicherort gelöscht.
 - Die Kosten für den Speicher, der für den Stagingspeicherort genutzt wird, entsprechen den [Preisen für Storage Premium](../virtual-machines/windows/disks-types.md#billing).

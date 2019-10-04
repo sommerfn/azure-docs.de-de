@@ -1,7 +1,6 @@
 ---
 title: SCP.NET-Programmierleitfaden für Storm in Azure HDInsight
 description: Erfahren Sie, wie Sie mit SCP.NET .NET-basierte Storm-Topologien für die Verwendung mit Storm zur Ausführung in Azure HDInsight erstellen.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,14 +8,15 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 1ad9661d85c7ec91f361cdc4d126e0a91e376b66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b7bb26cd35daf67a3337907aded18e3302b19d81
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853289"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813869"
 ---
-# <a name="scp-programming-guide"></a>SCP-Programmierleitfaden
+# <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>SCP-Programmierleitfaden für Apache Storm in Azure HDInsight
+
 SCP ist eine Plattform zur Erstellung zuverlässiger, konsistenter und leistungsfähiger Anwendungen für die Datenverarbeitung in Echtzeit. Sie basiert auf [Apache Storm](https://storm.incubator.apache.org/) , einem von den OSS-Communitys entwickelten Datenstrom-Verarbeitungssystem. Storm wurde von Nathan Marz entwickelt, und der Quellcode wurde von Twitter freigegeben. Für Storm wird [Apache ZooKeeper](https://zookeeper.apache.org/)verwendet, ein weiteres Apache-Projekt für hochzuverlässige verteilte Koordinierung und Zustandsverwaltung. 
 
 Das SCP-Projekt hat nicht nur Storm für Windows portiert, sondern auch Erweiterungen und Anpassungen für das Windows-Ökosystem hinzugefügt. Die Erweiterungen beinhalten Verbesserungen und Bibliotheken für .NET-Entwickler, und die Anpassungen umfassen die Windows-basierte Bereitstellung. 
@@ -150,7 +150,7 @@ Context stellt eine Ausführungsumgebung für die Anwendung bereit. Jede ISCPPlu
     public Dictionary<string, Object> stormConf { get; set; }  
     public Dictionary<string, Object> pluginConf { get; set; }  
 
-`stormConf` enthält die von Storm definierten Parameter, und `pluginConf` enthält die von SCP definierten Parameter. Beispiel: 
+`stormConf` enthält die von Storm definierten Parameter, und `pluginConf` enthält die von SCP definierten Parameter. Beispiel:
 
     public class Constants
     {
@@ -164,7 +164,7 @@ Context stellt eine Ausführungsumgebung für die Anwendung bereit. Jede ISCPPlu
         public static readonly String STORM_ZOOKEEPER_PORT = "storm.zookeeper.port";                 
     }
 
-`TopologyContext` wird bereitgestellt, um den Topologie-Kontext abzurufen, und eignet sich hauptsächlich für Komponenten mit Mehrfach-Parallelität. Beispiel: 
+`TopologyContext` wird bereitgestellt, um den Topologie-Kontext abzurufen, und eignet sich hauptsächlich für Komponenten mit Mehrfach-Parallelität. Beispiel:
 
     //demo how to get TopologyContext info
     if (Context.pluginType != SCPPluginType.SCP_NET_LOCAL)                      
@@ -359,8 +359,8 @@ In SCP.NET wurden die folgenden Funktionen zum Definieren transaktionaler Topolo
 | **scp-tx-batch-bolt** |Exec-Name<br />args<br />fields |Definiert einen transaktionalen Stapel-Bolt. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Felder sind die Ausgabe-Felder für den Bolt |
 | **scp-tx-commit-bolt** |Exec-Name<br />args<br />fields |Definiert einen transaktionalen Commit-Bolt. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Der Eingabeparameter ***Felder*** sind die Ausgabefelder für den Bolt |
 | **nontx-topolopy** |topology-name<br />spout-map<br />bolt-map |Definiert eine nicht transaktionale Topologie mit dem angegebenen Namen,&nbsp;der Spouts-Definitions-Map und der Bolts-Definitions-Map. |
-| **scp-spout** |Exec-Name<br />args<br />fields<br />Parameter |Definiert einen nichttransaktionalen Spout. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Der Eingabeparameter ***Felder*** sind die Ausgabe-Felder für den Spout<br /><br />Der Parameter ***parameters*** ist optional und kann zum Angeben von Parametern wie „nontransactional.ack.enabled“ verwendet werden. |
-| **scp-bolt** |Exec-Name<br />args<br />fields<br />Parameter |Definiert einen nichttransaktionalen Bolt. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Der Eingabeparameter ***Felder*** sind die Ausgabefelder für den Bolt<br /><br />Der Parameter ***parameters*** ist optional und kann zum Angeben von Parametern wie „nontransactional.ack.enabled“ verwendet werden. |
+| **scp-spout** |Exec-Name<br />args<br />fields<br />parameters |Definiert einen nichttransaktionalen Spout. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Der Eingabeparameter ***Felder*** sind die Ausgabe-Felder für den Spout<br /><br />Der Parameter ***parameters*** ist optional und kann zum Angeben von Parametern wie „nontransactional.ack.enabled“ verwendet werden. |
+| **scp-bolt** |Exec-Name<br />args<br />fields<br />parameters |Definiert einen nichttransaktionalen Bolt. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Der Eingabeparameter ***Felder*** sind die Ausgabefelder für den Bolt<br /><br />Der Parameter ***parameters*** ist optional und kann zum Angeben von Parametern wie „nontransactional.ack.enabled“ verwendet werden. |
 
 In SCP.NET sind die folgenden Schlüsselwörter definiert:
 
@@ -462,7 +462,7 @@ Die native Storm-Version wurde in Java geschrieben. Sie wurde durch SCP.NET erwe
 Hier ist `microsoft.scp.example.HybridTopology.Generator` der Klassenname des Java-Spouts.
 
 ### <a name="specify-java-classpath-in-runspec-command"></a>Angeben des Java-Classpath im runSpec-Befehl
-Wenn Sie eine Topologie mit Java-Spouts oder -Bolts übermitteln möchten, müssen Sie die Java-Spouts bzw. -Bolts zunächst kompilieren und die Jar-Dateien erstellen. Anschließend geben Sie den Java-Classpath mit den Jar-Dateien an, wenn Sie die Topologie übermitteln. Beispiel: 
+Wenn Sie eine Topologie mit Java-Spouts oder -Bolts übermitteln möchten, müssen Sie die Java-Spouts bzw. -Bolts zunächst kompilieren und die Jar-Dateien erstellen. Anschließend geben Sie den Java-Classpath mit den Jar-Dateien an, wenn Sie die Topologie übermitteln. Beispiel:
 
     bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\HybridTopology\net\Target -cp examples\HybridTopology\java\target\*
 

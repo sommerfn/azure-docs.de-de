@@ -5,16 +5,16 @@ author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 08/11/2018
+ms.date: 04/18/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 2e59699b667215d4b09e4d87c1776431631348e8
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 7117e7287f601b306893cb02dc5d7599d7c6224d
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754250"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60453835"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Überwachen der Nutzung und geschätzten Kosten in Azure Monitor
 
@@ -68,7 +68,7 @@ Die Seite zeigt auch andere Anzeigen, die für das neue Preismodell verwendet we
 
 Das neue Preismodell enthält keine knotenbasierten Datenzuordnungen. Daher werden diese Anzeigen für die Datenerfassung zu einer neuen gemeinsamen Anzeige für die Datenerfassung namens **Shared Services\Datenerfassung** zusammengefasst. 
 
-Es gibt eine weitere Änderung der in Log Analytics oder Application Insights erfassten Daten in Regionen mit höheren Kosten. Daten für diese hochpreisigeren Regionen werden mit den neuen regionalen Verbrauchseinheiten angezeigt. Ein Beispiel ist **Datenerfassung (USA, Westen-Mitte)**.
+Es gibt eine weitere Änderung der in Log Analytics oder Application Insights erfassten Daten in Regionen mit höheren Kosten. Daten für diese hochpreisigeren Regionen werden mit den neuen regionalen Verbrauchseinheiten angezeigt. Ein Beispiel ist **Datenerfassung (USA, Westen-Mitte)** .
 
 > [!NOTE]
 > Die Kontoebenenberechtigungen pro Knoten für das OMS-Abonnement (Operations Management Suite) werden nicht in die geschätzten Kosten pro Abonnement einbezogen. Wenden Sie sich in diesem Fall an Ihren Kontobeauftragten, um ausführlichere Informationen zum neuen Preismodell zu erhalten.
@@ -102,155 +102,14 @@ Die Kostenschätzung zeigt die Auswirkungen dieser Änderungen.
 
 ## <a name="moving-to-the-new-pricing-model"></a>Durchführen der Umstellung auf das neue Preismodell
 
-Wenn Sie sich entschieden haben, für ein Abonnement die Umstellung auf das neue Preismodell durchzuführen, können Sie oben auf der Seite **Nutzung und geschätzte Kosten** die Option **Preismodellauswahl** auswählen:
+Wenn Sie entschieden haben, das neue Preismodell für ein bestimmtes Abonnement zu übernehmen, navigieren Sie zu jeder Application Insights-Ressource, öffnen Sie **Nutzung und geschätzte Kosten**, stellen Sie sicher, dass der Basic-Tarif gewählt ist, und navigieren Sie dann zu jedem Log Analytics-Arbeitsbereich, öffnen Sie die **Tarif**-Seite, und ändern Sie den Tarif in **Pro GB (2018)** . 
 
-![Screenshot: Überwachen der Nutzung und der geschätzten Kosten im neuen Preismodell](./media/usage-estimated-costs/006.png)
-
-Die Seite **Preismodellauswahl** wird geöffnet. Sie zeigt eine Liste aller Abonnements, die Sie auf der vorherigen Seite angezeigt haben:
-
-![Screenshot: Preismodellauswahl](./media/usage-estimated-costs/007.png)
-
-Aktivieren Sie einfach das jeweilige Kontrollkästchen, und wählen Sie **Speichern**, um ein Abonnement auf das neue Preismodell umzustellen. Auf die gleiche Weise können Sie auch wieder zurück zum alten Preismodell wechseln. Beachten Sie hierbei, dass die Berechtigung „Besitzer“ oder „Mitwirkender“ für das Abonnement erforderlich ist, um das Preismodell zu ändern.
+> [!NOTE]
+> Die Anforderung, dass alle Application Insights-Ressourcen und Log Analytics-Arbeitsbereiche innerhalb eines bestimmten Abonnements das neueste Preismodell übernehmen, wurde jetzt aufgehoben, um die Flexibilität zu steigern und die Konfiguration zu vereinfachen. 
 
 ## <a name="automate-moving-to-the-new-pricing-model"></a>Automatisieren der Umstellung auf das neue Preismodell
 
-Für die unten angegebenen Skripts ist das Azure PowerShell-Modul erforderlich. Um zu überprüfen, ob Sie über die neueste Version verfügen, lesen Sie [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
+Wie bereits erwähnt, ist es nicht mehr notwendig, alle Überwachungsressourcen in einem Abonnement zur gleichen Zeit in das neue Preismodell zu verschieben, und damit hat die ``migratetonewpricingmodel``-Aktion keine Auswirkung mehr. Jetzt können Sie Application Insights-Ressourcen und Log Analytics-Arbeitsbereiche getrennt in die neuesten Tarife verschieben.  
 
-Sobald Sie über die neueste Version von Azure PowerShell verfügen, müssen Sie zunächst ``Connect-AzAccount`` ausführen.
+Die Automatisierung dieser Änderung ist für Application Insights unter Verwendung von [Set-AzureRmApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightspricingplan) mit ``-PricingPlan "Basic"`` und für Log Analytics unter Verwendung von [Set-AzureRmOperationalInsightsWorkspace](https://docs.microsoft.com/powershell/module/AzureRM.OperationalInsights/Set-AzureRmOperationalInsightsWorkspace) mit ``-sku "PerGB2018"`` dokumentiert. 
 
-``` PowerShell
-# To check if your subscription is eligible to adjust pricing models.
-$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action listmigrationdate `
- -Force
-```
-
-Ein Ergebnis von TRUE unter isGrandFatherableSubscription zeigt an, dass das Preismodell dieses Abonnements auf ein anders Preismodell umgestellt werden kann. Das Fehlen eines Werts unter optedInDate bedeutet, dass dieses Abonnement zurzeit auf das alte Preismodell festgelegt ist.
-
-```
-isGrandFatherableSubscription optedInDate
------------------------------ -----------
-                         True            
-```
-
-Führen Sie zum Migrieren dieses Abonnements zum neuen Preismodell Folgendes aus:
-
-```powershell
-$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action migratetonewpricingmodel `
- -Force
-```
-
-Führen Sie Folgendes erneut aus, um zu überprüfen, ob die Änderung erfolgreich war:
-
-```powershell
-$ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action listmigrationdate `
- -Force
-```
-
-Wenn die Migration erfolgreich war, sollte das Ergebnis wie folgt aussehen:
-
-```
-isGrandFatherableSubscription optedInDate                      
------------------------------ -----------                      
-                         True 2018-05-31T13:52:43.3592081+00:00
-```
-
-optInDate enthält nun einen Zeitstempel, der angibt, wann dieses Abonnement das neue Preismodell abonniert hat.
-
-Wenn Sie das alte Preismodell wiederherstellen müssen, führen Sie Folgendes aus:
-
-```powershell
- $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action rollbacktolegacypricingmodel `
- -Force
-```
-
-Wenn Sie dann das vorherige Skript, das ``-Action listmigrationdate`` enthält, erneut ausführen, sollten Sie nun einen leeren optedInDate Wert sehen, der angibt, dass Ihr Abonnement auf das alte Preismodell zurückgesetzt wurde.
-
-Wenn Sie über mehrere Abonnements verfügen, die Sie migrieren möchten und die unter demselben Mandanten gehostet werden, können Sie Ihre eigene Variante mit Hilfe von Teilen der folgenden Skripts erstellen:
-
-```powershell
-#Query tenant and create an array comprised of all of your tenants subscription IDs
-$TenantId = <Your-tenant-id>
-$Tenant =Get-AzSubscription -TenantId $TenantId
-$Subscriptions = $Tenant.Id
-```
-
-Um zu überprüfen, ob alle Abonnements in Ihrem Mandanten für das neue Preismodell berechtigt sind, können Sie Folgendes ausführen:
-
-```powershell
-Foreach ($id in $Subscriptions)
-{
-$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action listmigrationdate `
- -Force
-}
-```
-
-Das Skript kann weiter durch Erstellen eines Skripts verfeinert werden, das drei Arrays generiert. Ein Array besteht aus allen Abonnement-IDs, für die ```isGrandFatherableSubscription``` auf TRUE festgelegt ist und optedInDate zurzeit keinen Wert aufweist. Ein zweites Array besteht aus allen Abonnements, für die zurzeit das neue Preismodell verwendet wird. Ein drittes Array wird nur mit Abonnement-IDs in Ihrem Mandanten aufgefüllt, die für das neue Preismodell nicht geeignet sind:
-
-```powershell
-[System.Collections.ArrayList]$Eligible= @{}
-[System.Collections.ArrayList]$NewPricingEnabled = @{}
-[System.Collections.ArrayList]$NotEligible = @{}
-
-Foreach ($id in $Subscriptions)
-{
-$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-$Result= Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action listmigrationdate `
- -Force
-
-     if ($Result.isGrandFatherableSubscription -eq $True -and [bool]$Result.optedInDate -eq $False)
-     {
-     $Eligible.Add($id)
-     }
-
-     elseif ($Result.isGrandFatherableSubscription -eq $True -and [bool]$Result.optedInDate -eq $True)
-     {
-     $NewPricingEnabled.Add($id)
-     }
-
-     elseif ($Result.isGrandFatherableSubscription -eq $False)
-     {
-     $NotEligible.add($id)
-     }
-}
-```
-
-> [!NOTE]
-> Abhängig von der Anzahl der Abonnements kann die Ausführung des oben aufgeführten Skripts einige Zeit in Anspruch nehmen. Aufgrund der Verwendung der .add()-Methode zeigt das PowerShell-Fenster das Inkrementieren von Werten an, wenn jedem Array Elemente hinzugefügt werden.
-
-Da Sie Ihre Abonnements nun auf die drei Arrays aufgeteilt haben, sollten Sie die Ergebnisse sorgfältig überprüfen. Möglicherweise möchten Sie eine Sicherungskopie der Inhalte des Arrays erstellen, damit Sie die Änderungen auf einfache Weise rückgängig machen können, wenn dies in der Zukunft erforderlich sein sollte. Wenn Sie sich entschieden haben, dass Sie alle geeigneten Abonnements, die zurzeit das alte Preismodell verwenden, in das neue Preismodell konvertieren möchten, können Sie die diese Aufgabe nun folgendermaßen erledigen:
-
-```powershell
-Foreach ($id in $Eligible)
-{
-$ResourceID ="/subscriptions/$id/providers/microsoft.insights"
-Invoke-AzResourceAction `
- -ResourceId $ResourceID `
- -ApiVersion "2017-10-01" `
- -Action migratetonewpricingmodel `
- -Force
-}
-
-```

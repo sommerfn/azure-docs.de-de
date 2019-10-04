@@ -19,8 +19,10 @@
 - name: Konzepte
   expanded: false
   items:
-    - name: Baselineschutz
-      href: baseline-protection.md
+    - name: Allgemeine Richtlinien für bedingten Zugriff
+      href: concept-conditional-access-policy-common.md
+    - name: Komponenten der Richtlinie für bedingten Zugriff
+      href: concept-conditional-access-policies.md
     - name: Bedingungen
       href: conditions.md
     - name: Standortbedingungen
@@ -31,6 +33,8 @@
       href: service-dependencies.md
     - name: Was-wäre-wenn-Tool
       href: what-if-tool.md
+    - name: Baselineschutzrichtlinien
+      href: concept-baseline-protection.md
 - name: Anleitungen
   expanded: true
   items:
@@ -38,12 +42,26 @@
       href: plan-conditional-access.md
     - name: Bewährte Methoden
       href: best-practices.md
+    - name: Allgemeine Richtlinien für bedingten Zugriff
+      items:
+        - name: Vorschreiben der MFA für Administratoren
+          href: howto-conditional-access-policy-admin-mfa.md
+        - name: Vorschreiben der MFA für die Azure-Verwaltung
+          href: howto-conditional-access-policy-azure-management.md
+        - name: Blockieren älterer Authentifizierungsmethoden
+          href: howto-conditional-access-policy-block-legacy.md
+        - name: Risikobasierter bedingter Zugriff
+          href: howto-conditional-access-policy-risk.md
+        - name: Vorschreiben eines vertrauenswürdigen Standorts für die MFA-Registrierung
+          href: howto-conditional-access-policy-registration.md
+        - name: Blockieren des Zugriffs nach Standort
+          href: howto-conditional-access-policy-location.md
+        - name: Anfordern von kompatiblen Geräten
+          href: howto-conditional-access-policy-compliant-device.md
     - name: Blockieren älterer Authentifizierungsmethoden
       href: block-legacy-authentication.md
-    - name: Steuern des Zugriffs auf Exchange Online und SharePoint Online
-      href: conditional-access-for-exo-and-spo.md
-    - name: Migrieren von klassischen Richtlinien
-      href: policy-migration.md
+    - name: Bedingter Zugriff für MFA-Registrierung
+      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Vorschreiben der Verwendung genehmigter Client-Apps
       href: app-based-conditional-access.md
     - name: App-Schutzrichtlinie erforderlich
@@ -54,6 +72,26 @@
       href: untrusted-networks.md
     - name: Vorschreiben der Verwendung von Nutzungsbedingungen
       href: terms-of-use.md
+    - name: Steuerelemente für Anmeldehäufigkeit und Browserpersistenz
+      href: howto-conditional-access-session-lifetime.md
+    - name: Migrieren von klassischen Richtlinien
+      href: policy-migration.md
+    - name: Basisrichtlinien
+      items:
+        - name: Anfordern von MFA für Administratoren
+          href: howto-baseline-protect-administrators.md
+        - name: Endbenutzerschutz
+          href: howto-baseline-protect-end-users.md
+        - name: Blockieren älterer Authentifizierungsmethoden
+          href: howto-baseline-protect-legacy-auth.md
+        - name: Anfordern von MFA für die Dienstverwaltung
+          href: howto-baseline-protect-azure.md
+    - name: Einführen von bedingtem Zugriff
+      href: howto-conditional-access-adoption-kit.md
+    - name: Problembehandlung
+      items:
+        - name: Troubleshooting mithilfe des What If-Tools
+          href: troubleshoot-conditional-access-what-if.md
 - name: Verweis
   items:
     - name: Technische Referenz

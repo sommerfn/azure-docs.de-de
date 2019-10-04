@@ -1,20 +1,19 @@
 ---
-title: Verwenden des erweiterten Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Spark-Anwendungen – Azure HDInsight
+title: Erweiterter Spark-Verlaufsservers zum Debuggen von Spark-Anwendungen – Azure HDInsight
 description: Verwenden des erweiterten Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Spark-Anwendungen – Azure HDInsight
-services: hdinsight
 ms.service: hdinsight
-author: jejiang
-ms.author: jejiang
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 96c2f1c021e27a8f5a0f4d2af2b34970b9d44e80
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.date: 09/04/2019
+ms.openlocfilehash: fad2c83138f211e83e9462182d33f6169cbdb833
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524173"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968146"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Verwenden des erweiterten Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Apache Spark-Anwendungen
 
@@ -48,23 +47,23 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Daten**, um 
 
 + Überprüfen Sie die **Eingaben**, **Ausgaben** und **Tabellenvorgänge**, indem Sie die Registerkarten getrennt auswählen.
 
-    ![Registerkarten unter „Daten“](./media/apache-azure-spark-history-server/sparkui-data-tabs.png)
+    ![Registerkarten unter „Daten“](./media/apache-azure-spark-history-server/apache-spark-data-tabs.png)
 
 + Kopieren Sie alle Zeilen, indem Sie auf die Schaltfläche **Kopieren** klicken.
 
-    ![Daten kopieren](./media/apache-azure-spark-history-server/sparkui-data-copy.png)
+    ![Daten kopieren](./media/apache-azure-spark-history-server/apache-spark-data-copy.png)
 
 + Speichern Sie alle Daten als CSV-Datei, indem Sie auf die Schaltfläche **CSV** klicken.
 
-    ![Daten speichern](./media/apache-azure-spark-history-server/sparkui-data-save.png)
+    ![Daten speichern](./media/apache-azure-spark-history-server/apache-spark-data-save.png)
 
 + Suchen Sie durch Eingeben von Schlüsselwörtern in das Feld **Suche**. Das Suchergebnis wird sofort angezeigt.
 
-    ![Daten suchen](./media/apache-azure-spark-history-server/sparkui-data-search.png)
+    ![Daten suchen](./media/apache-azure-spark-history-server/apache-spark-data-search.png)
 
 + Klicken Sie auf die Spaltenüberschrift, um die Tabelle zu sortieren. Klicken Sie auf das Pluszeichen, um eine Zeile zu erweitern und weitere Details anzuzeigen, oder klicken Sie auf das Minuszeichen, um eine Zeile zu reduzieren.
 
-    ![Datentabelle](./media/apache-azure-spark-history-server/sparkui-data-table.png)
+    ![Datentabelle](./media/apache-azure-spark-history-server/apache-spark-data-table.png)
 
 + Laden Sie eine einzelne Datei herunter, indem Sie rechts auf Schaltfläche **Unvollständiger Download** klicken. Die ausgewählte Datei wird dann lokal heruntergeladen. Wenn die Datei nicht mehr vorhanden ist, wird eine neue Registerkarte geöffnet, um die Fehlermeldungen anzuzeigen.
 
@@ -76,7 +75,7 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Daten**, um 
 
 + Klicken Sie auf die Zahl unter der Tabelle, um durch Seiten zu navigieren, wenn zu viele Zeilen für die Anzeige auf einer Seite vorhanden sind. 
 
-    ![Datenseite](./media/apache-azure-spark-history-server/sparkui-data-page.png)
+    ![Datenseite](./media/apache-azure-spark-history-server/apache-spark-data-page.png)
 
 + Zeigen Sie auf das Fragezeichen neben den Daten, um die QuickInfo anzuzeigen, oder klicken Sie auf das Fragezeichen, um weitere Informationen zu erhalten.
 
@@ -94,7 +93,7 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagramm**, 
 
 + Standardmäßig werden alle Aufträge angezeigt. Die Ansicht kann nach **Auftrags-ID** gefiltert werden.
 
-    ![Diagramm der Auftrags-IDs](./media/apache-azure-spark-history-server/sparkui-graph-jobid.png)
+    ![Diagramm der Auftrags-IDs](./media/apache-azure-spark-history-server/apache-spark-graph-jobid.png)
 
 + Standardmäßig ist **Fortschritt** ausgewählt. Der Benutzer kann den Datenfluss überprüfen, indem er **Gelesen/Geschrieben** in der Dropdownliste **Anzeigen** auswählt.
 
@@ -212,15 +211,15 @@ Um die Communityversion wiederherzustellen, führen Sie die folgenden Schritte a
 5. Die Eigenschaft ist jetzt auf **false** festgelegt.
 6. Klicken Sie zum Speichern der Konfiguration auf **Speichern**.
 
-    ![Feature wird deaktiviert](./media/apache-azure-spark-history-server/sparkui-turn-off.png)
+    ![Feature wird deaktiviert](./media/apache-azure-spark-history-server/apache-spark-turn-off.png)
 
 7. Klicken Sie auf **Spark2** im linken Bereich, und klicken Sie auf der Registerkarte **Summary** auf **Spark2 History Server**.
 
-    ![Server neu starten (1)](./media/apache-azure-spark-history-server/sparkui-restart-1.png) 
+    ![Server neu starten (1)](./media/apache-azure-spark-history-server/apache-spark-restart1.png) 
 
 8. Starten Sie den Verlaufsserver neu, indem Sie für **Spark2 History Server** auf **Restart** klicken.
 
-    ![Server neu starten (2)](./media/apache-azure-spark-history-server/sparkui-restart-2.png)  
+    ![Server neu starten (2)](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 
 9. Durch Aktualisieren der Webbenutzeroberfläche des Spark-Verlaufsservers wird die Communityversion wiederhergestellt.
 
@@ -237,7 +236,7 @@ Führen Sie bei einem Verlaufsserverfehler die Schritte zum Angeben des Ereignis
 
 3. Geben Sie den Titel und eine Beschreibung des Fehlers an, ziehen Sie die ZIP-Datei in das Bearbeitungsfeld, und klicken Sie dann auf **Neues Problem melden**.
 
-    ![Problem melden](./media/apache-azure-spark-history-server/sparkui-file-issue.png)
+    ![Problem melden](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
 
 ### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3. Aktualisieren der JAR-Datei für das Hotfixszenario
@@ -315,12 +314,12 @@ Wenn Sie mit einem Hotfix eine Aktualisierung durchführen möchten, verwenden S
    + Aktivieren Sie **Hauptknoten** und **Worker**.
    + **Parameter**: Legen Sie die Parameter nach Bash-Verwendung fest.
 
-     ![Protokoll hochladen oder Hotfix-Aktualisierung](./media/apache-azure-spark-history-server/sparkui-upload2.png)
+     ![Protokoll hochladen oder Hotfix-Aktualisierung](./media/apache-azure-spark-history-server/apache-spark-upload1.png)
 
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-1.  Gegenwärtig können nur Spark 2.3-Cluster verwendet werden.
+1.  Gegenwärtig können nur Spark 2.3- und 2.4-Cluster verwendet werden.
 
 2.  Ein-/Ausgabedaten über RDD werden auf der Registerkarte „Daten“ nicht angezeigt.
 

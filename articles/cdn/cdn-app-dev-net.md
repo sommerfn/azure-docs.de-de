@@ -7,19 +7,19 @@ author: zhangmanling
 manager: erikre
 editor: ''
 ms.assetid: 63cf4101-92e7-49dd-a155-a90e54a792ca
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 838c76e6a383b61ff465f3ed7506af34c8cd01d4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7e3ad3a5928b36c221bb83b1c4012c3c9e14f35d
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916613"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67594176"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Erste Schritte mit der Azure CDN-Entwicklung
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Für dieses Tutorial benötigen Sie Visual Studio 2015.  [Visual Studio Communit
 ## <a name="create-your-project-and-add-nuget-packages"></a>Erstellen des Projekts und Hinzufügen von NuGet-Paketen
 Nachdem Sie nun eine Ressourcengruppe für Ihre CDN-Profile erstellt und der Azure AD-Anwendung die Berechtigung zum Verwalten von CDN-Profilen und -Endpunkten innerhalb dieser Gruppe erteilt haben, können Sie damit beginnen, Ihre Anwendung zu erstellen.
 
-Klicken Sie in Visual Studio 2015 auf **Datei**, **Neu**, **Projekt...**, um das Dialogfeld „Neues Projekt“ zu öffnen.  Erweitern Sie **Visual C#**, und wählen Sie im linken Bereich **Windows** aus.  Klicken Sie im mittleren Bereich auf **Konsolenanwendung** .  Benennen Sie Ihr Projekt, und klicken Sie auf **OK**.  
+Klicken Sie in Visual Studio 2015 auf **Datei**, **Neu**, **Projekt...** , um das Dialogfeld „Neues Projekt“ zu öffnen.  Erweitern Sie **Visual C#** , und wählen Sie im linken Bereich **Windows** aus.  Klicken Sie im mittleren Bereich auf **Konsolenanwendung** .  Benennen Sie Ihr Projekt, und klicken Sie auf **OK**.  
 
 ![Neues Projekt](./media/cdn-app-dev-net/cdn-new-project.png)
 

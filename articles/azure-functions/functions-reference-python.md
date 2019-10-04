@@ -13,34 +13,24 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 28f2b395c7f9be1b194b500ef20456be8ff405b0
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 7922f07cfe08d0bd58827b59337b86387c624778
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438696"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844686"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
-Dieser Artikel ist eine Einführung in die Entwicklung von Azure Functions mithilfe von Python. Der folgende Inhalt geht davon aus, dass Sie das [Azure Functions: Entwicklerhandbuch](functions-reference.md) bereits gelesen haben.
+Dieser Artikel ist eine Einführung in die Entwicklung von Azure Functions mithilfe von Python. Der folgende Inhalt geht davon aus, dass Sie das [Azure Functions: Entwicklerhandbuch](functions-reference.md) bereits gelesen haben. 
 
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
+Informationen zu eigenständigen Functions-Beispielprojekten in Python finden Sie in den [Functions-Beispielen für Python](/samples/browse/?products=azure-functions&languages=python). 
 
 ## <a name="programming-model"></a>Programmiermodell
 
-Eine Azure-Funktion sollte eine zustandslose Methode in Ihrem Python-Skript sein, die Eingaben verarbeitet und Ausgaben erzeugt. Standardmäßig erwartet die Runtime, dass dies als globale Methode namens `main()` in der `__init__.py`-Datei implementiert ist.
+Azure Functions geht davon aus, dass eine Funktion eine zustandslose Methode in Ihrem Python-Skript ist, die Eingaben verarbeitet und Ausgaben erzeugt. Standardmäßig erwartet die Runtime, dass die Methode als globale Methode namens `main()` in der `__init__.py`-Datei implementiert ist. Sie können auch [einen alternativen Einstiegspunkt angeben](#alternate-entry-point).
 
-Sie können die Standardkonfiguration ändern, indem Sie die Eigenschaften `scriptFile` und `entryPoint` in der `function.json`-Datei angeben. Beispielsweise weist die unten stehende _function.json_ die Runtime an, die Methode _customentry()_ in der _main.py_-Datei als Einstiegspunkt für Ihre Azure-Funktion zu verwenden.
-
-```json
-{
-  "scriptFile": "main.py",
-  "entryPoint": "customentry",
-  ...
-}
-```
-
-Daten von Triggern und Bindungen werden an die Funktion mittels Methodenattributen gebunden, die die in der `function.json`-Konfigurationsdatei definierte Eigenschaft `name` verwenden. Beispielsweise beschreibt die unten stehende _function.json_ eine einfache Funktion, die von einer HTTP-Anforderung namens `req` ausgelöst wird:
+Daten von Triggern und Bindungen werden mittels Methodenattributen an die Funktion gebunden, die die in der Konfigurationsdatei *function.json* definierte Eigenschaft `name` verwenden. Beispielsweise beschreibt die unten stehende _function.json_ eine einfache Funktion, die von einer HTTP-Anforderung namens `req` ausgelöst wird:
 
 ```json
 {
@@ -68,27 +58,43 @@ def main(req):
     return f'Hello, {user}!'
 ```
 
-Optional können Sie die Parametertypen und den Rückgabetyp auch in der Funktion mithilfe von Python-Typanmerkungen deklarieren. Beispielsweise kann dieselbe Funktion unter Verwendung von Anmerkungen wie folgt geschrieben werden:
+Sie können auch Python-Typanmerkungen verwenden, um die Attributtypen und den Rückgabetyp in der Funktion explizit zu deklarieren. Auf diese Weise können Sie die IntelliSense-und AutoVervollständigen-Funktionen nutzen, die von vielen Python-Code-Editoren bereitgestellt werden.
 
 ```python
 import azure.functions
 
+
 def main(req: azure.functions.HttpRequest) -> str:
     user = req.params.get('user')
     return f'Hello, {user}!'
-```  
+```
 
-Verwenden Sie die Python-Anmerkungen im Paket [azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python), um Eingaben und Ausgaben an Ihre Methoden zu binden. 
+Verwenden Sie die Python-Anmerkungen im Paket [azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python), um Eingaben und Ausgaben an Ihre Methoden zu binden.
+
+## <a name="alternate-entry-point"></a>Alternativer Einstiegspunkt
+
+Sie können das Standardverhalten einer Funktion ändern, indem Sie die Eigenschaften `scriptFile` und `entryPoint` in der *function.json*-Datei angeben. Beispielsweise weist die unten stehende _function.json_ die Runtime an, die Methode `customentry()` in der _main.py_-Datei als Einstiegspunkt für Ihre Azure-Funktion zu verwenden.
+
+```json
+{
+  "scriptFile": "main.py",
+  "entryPoint": "customentry",
+  "bindings": [
+      ...
+  ]
+}
+```
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 
-Die Ordnerstruktur für ein Python Functions-Projekt sieht wie folgt aus:
+Die Ordnerstruktur für ein Python Functions-Projekt sieht wie im folgenden Beispiel aus:
 
 ```
  FunctionApp
  | - MyFirstFunction
  | | - __init__.py
  | | - function.json
+ | | - example.py
  | - MySecondFunction
  | | - __init__.py
  | | - function.json
@@ -97,8 +103,6 @@ Die Ordnerstruktur für ein Python Functions-Projekt sieht wie folgt aus:
  | | - mySecondHelperFunction.py
  | - host.json
  | - requirements.txt
- | - extensions.csproj
- | - bin
 ```
 
 Sie können die freigegebene Datei [host.json](functions-host-json.md) zum Konfigurieren der Funktions-App verwenden. Jede Funktion verfügt über eine eigene Codedatei sowie über eine eigene Bindungskonfigurationsdatei (function.json). 
@@ -106,18 +110,25 @@ Sie können die freigegebene Datei [host.json](functions-host-json.md) zum Konfi
 Freigegebener Code sollte in einem separaten Ordner gespeichert werden. Um auf Module im Ordner „SharedCode“ zu verweisen, können Sie die folgende Syntax verwenden:
 
 ```
-from ..SharedCode import myFirstHelperFunction
+from __app__.SharedCode import myFirstHelperFunction
 ```
 
-Die von der Functions-Runtime verwendeten Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, wobei sich die eigentlichen Bibliotheksdateien im Ordner `bin` befinden. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](./functions-bindings-register.md#local-development-azure-functions-core-tools), indem Sie Azure Functions Core Tools verwenden. 
+Um auf Module zu verweisen, die lokal für eine Funktion sind, können Sie die relative Importsyntax wie folgt verwenden:
 
-Wenn Sie ein Functions-Projekt in Ihrer Funktions-App in Azure bereitstellen, sollte der gesamte Inhalt des Ordners „FunctionApp“ in das Paket aufgenommen werden, aber nicht der Ordner selbst.
+```
+from . import example
+```
 
-## <a name="inputs"></a>Eingaben
+Wenn Sie ein Functions-Projekt in Ihrer Funktions-App in Azure bereitstellen, sollte der gesamte Inhalt des Ordners *FunctionApp* in das Paket aufgenommen werden, jedoch nicht der Ordner selbst.
 
-Eingaben werden in Azure Functions in zwei Kategorien unterteilt: Triggereingaben und zusätzliche Eingaben. Obwohl sie sich in `function.json` unterscheiden, ist ihre Verwendung im Python-Code identisch. Der folgende Codeausschnitt soll als Beispiel dienen:
+## <a name="triggers-and-inputs"></a>Trigger und Eingaben
+
+Eingaben werden in Azure Functions in zwei Kategorien unterteilt: Triggereingaben und zusätzliche Eingaben. Obwohl sie sich in der Datei `function.json` unterscheiden, ist ihre Verwendung im Python-Code identisch.  Verbindungszeichenfolgen oder Geheimnisse für Trigger- und Eingabequellen werden bei lokaler Ausführung Werten in der Datei `local.settings.json` und bei der Ausführung in Azure den Anwendungseinstellungen zugeordnet. 
+
+Im folgenden Code wird beispielsweise der Unterschied zwischen beiden dargestellt:
 
 ```json
+// function.json
 {
   "scriptFile": "__init__.py",
   "bindings": [
@@ -139,9 +150,22 @@ Eingaben werden in Azure Functions in zwei Kategorien unterteilt: Triggereingabe
 }
 ```
 
+```json
+// local.settings.json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "<azure-storage-connection-string>"
+  }
+}
+```
+
 ```python
+# __init__.py
 import azure.functions as func
 import logging
+
 
 def main(req: func.HttpRequest,
          obj: func.InputStream):
@@ -149,7 +173,8 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Bei Aufruf der Funktion wird die HTTP-Anforderung als `req` an die Funktion übergeben. Es wird ein Eintrag, der auf der _id_ in der Routen-URL basiert, aus Azure Blob Storage abgerufen und als `obj` im Funktionstext verfügbar gemacht.
+Bei Aufruf der Funktion wird die HTTP-Anforderung als `req` an die Funktion übergeben. Es wird ein Eintrag, der auf der _ID_ in der Routen-URL basiert, aus Azure Blob Storage abgerufen und als `obj` im Funktionstext verfügbar gemacht.  Hier ist das angegebene Speicherkonto die Verbindungszeichenfolge, die sich in `AzureWebJobsStorage` befindet, wobei es sich um dasselbe Speicherkonto handelt, das von der Funktions-App verwendet wird.
+
 
 ## <a name="outputs"></a>Ausgaben
 
@@ -157,7 +182,7 @@ Ausgaben können sowohl im Rückgabewert als auch in Ausgabeparametern angegeben
 
 Um den Rückgabewert einer Funktion als Wert für eine Ausgabebindung zu verwenden, sollte die `name`-Eigenschaft der Bindung in `function.json` auf `$return` festgelegt werden.
 
-Um mehrere Ausgaben zu erzeugen, verwenden Sie die `set()`-Methode, die von der `azure.functions.Out`-Schnittstelle bereitgestellt wird, um der Bindung einen Wert zuzuweisen. Die folgende Funktion kann z. B. mithilfe von Push eine Nachricht an eine Warteschlange übertragen und auch eine HTTP-Antwort zurückgeben.
+Um mehrere Ausgaben zu erzeugen, verwenden Sie die `set()`-Methode, die von der [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python)-Schnittstelle bereitgestellt wird, um der Bindung einen Wert zuzuweisen. Die folgende Funktion kann z. B. mithilfe von Push eine Nachricht an eine Warteschlange übertragen und auch eine HTTP-Antwort zurückgeben.
 
 ```json
 {
@@ -188,6 +213,7 @@ Um mehrere Ausgaben zu erzeugen, verwenden Sie die `set()`-Methode, die von der 
 ```python
 import azure.functions as func
 
+
 def main(req: func.HttpRequest,
          msg: func.Out[func.QueueMessage]) -> str:
 
@@ -205,6 +231,7 @@ Im folgenden Beispiel wird eine Informationsmeldung protokolliert, wenn die Funk
 ```python
 import logging
 
+
 def main(req):
     logging.info('Python HTTP trigger function processed a request.')
 ```
@@ -213,57 +240,86 @@ Es sind zusätzliche Protokollierungsmethoden verfügbar, mit denen Sie auf ande
 
 | Methode                 | BESCHREIBUNG                                |
 | ---------------------- | ------------------------------------------ |
-| logging.**critical(_message_)**   | Schreibt eine Meldung mit der Stufe KRITISCH in die Stammprotokollierung.  |
-| logging.**error(_message_)**   | Schreibt eine Meldung mit der Stufe ERROR in die Stammprotokollierung.    |
-| logging.**warning(_message_)**    | Schreibt eine Meldung mit der Stufe WARNUNG in die Stammprotokollierung.  |
-| logging.**info(_message_)**    | Schreibt eine Meldung mit der Stufe INFO in die Stammprotokollierung.  |
-| logging.**debug(_message_)** | Schreibt eine Meldung mit der Stufe DEBUG in die Stammprotokollierung.  |
+| **`critical(_message_)`**   | Schreibt eine Meldung mit der Stufe KRITISCH in die Stammprotokollierung.  |
+| **`error(_message_)`**   | Schreibt eine Meldung mit der Stufe ERROR in die Stammprotokollierung.    |
+| **`warning(_message_)`**    | Schreibt eine Meldung mit der Stufe WARNUNG in die Stammprotokollierung.  |
+| **`info(_message_)`**    | Schreibt eine Meldung mit der Stufe INFO in die Stammprotokollierung.  |
+| **`debug(_message_)`** | Schreibt eine Meldung mit der Stufe DEBUG in die Stammprotokollierung.  |
 
-## <a name="importing-shared-code-into-a-function-module"></a>Importieren von freigegebenem Code in ein Funktionsmodul
+Weitere Informationen über Protokollierung finden Sie unter [Überwachen von Azure Functions](functions-monitoring.md).
 
-Python-Module, die zusammen mit Funktionsmodulen veröffentlicht werden, müssen mithilfe der relativen Importsyntax importiert werden:
+## <a name="http-trigger-and-bindings"></a>HTTP-Trigger und -Bindungen
+
+Der HTTP-Trigger ist in der Datei „function.jon“ definiert. Der `name` der Bindung muss mit dem benannten Parameter in der Funktion identisch sein. In den vorherigen Beispielen wird der Bindungsname `req` verwendet. Dieser Parameter ist ein [HttpRequest]-Objekt, und es wird ein [HttpResponse]-Objekt zurückgegeben.
+
+Aus dem [HttpRequest]-Objekt können Sie Anforderungsheader, Abfrageparameter, Routenparameter und den Nachrichtentext extrahieren. 
+
+Das folgende Beispiel stammt aus der [HTTP-Trigger-Vorlage für Python](https://github.com/Azure/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-Python). 
 
 ```python
-from . import helpers  # Use more dots to navigate up the folder structure.
-def main(req: func.HttpRequest):
-    helpers.process_http_request(req)
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    headers = {"my-http-header": "some-value"}
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+            
+    if name:
+        return func.HttpResponse(f"Hello {name}!", headers=headers)
+    else:
+        return func.HttpResponse(
+             "Please pass a name on the query string or in the request body",
+             headers=headers, status_code=400
+        )
 ```
 
-Nehmen Sie alternativ freigegebenen Code in ein eigenständiges Paket auf, veröffentlichen Sie es für eine öffentliche oder private PyPI-Instanz, und geben Sie es als normale Abhängigkeit an.
+In dieser Funktion wird der Wert des `name`-Abfrageparameters aus dem `params`-Parameter des [HttpRequest]-Objekts ermittelt. Der JSON-codierte Nachrichtentext wird mit der `get_json`-Methode gelesen. 
 
+Außerdem können Sie `status_code` und `headers` für die Antwortnachricht im zurückgegebenen [HttpResponse]-Objekt festlegen.
+                                                              
 ## <a name="async"></a>Async
 
-Da nur ein einzelner Python-Prozess pro Funktions-App vorhanden sein kann, wird empfohlen, Ihre Azure-Funktion als asynchrone Coroutine mithilfe der `async def`-Anweisung zu implementieren.
+Es wird empfohlen, Ihre Azure-Funktion als asynchrone Coroutine mithilfe der Anweisung `async def` zu schreiben.
 
 ```python
 # Will be run with asyncio directly
+
+
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Wenn die main()-Funktion synchron ist (ohne `async`-Qualifizierer), führen wir sie automatisch in einem `asyncio`-Threadpool aus.
+Wenn die main()-Funktion synchron ist (ohne Qualifizierer), wird die Funktion automatisch in einem `asyncio`-Threadpool ausgeführt.
 
 ```python
 # Would be run in an asyncio thread-pool
+
+
 def main():
     some_blocking_socket_io()
 ```
 
 ## <a name="context"></a>Kontext
 
-Um den Aufrufkontext einer Funktion während der Ausführung abzurufen, nehmen Sie das `context`-Argument in ihre Signatur auf. 
+Um den Aufrufkontext einer Funktion während der Ausführung abzurufen, nehmen Sie das [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python)-Argument in ihre Signatur auf. 
 
-Beispiel: 
+Beispiel:
 
 ```python
 import azure.functions
 
+
 def main(req: azure.functions.HttpRequest,
-            context: azure.functions.Context) -> str:
+         context: azure.functions.Context) -> str:
     return f'{context.invocation_id}'
 ```
 
-Die **Context**-Klasse enthält die folgenden Methoden:
+Die [**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python)-Klasse enthält die folgenden Methoden:
 
 `function_directory`  
 Das Verzeichnis, in dem die Funktion ausgeführt wird.
@@ -274,6 +330,42 @@ Name der Funktion.
 `invocation_id`  
 ID des aktuellen Funktionsaufrufs.
 
+## <a name="global-variables"></a>Globale Variablen
+
+Es besteht keine Garantie, dass der Status Ihrer App für zukünftige Ausführungen beibehalten wird. Jedoch verwendet die Azure Functions-Runtime oft wieder den gleichen Prozess für mehrere Ausführungen derselben App. Zum Zwischenspeichern der Ergebnisse einer teuren Berechnung deklarieren Sie diese als globale Variable. 
+
+```python
+CACHED_DATA = None
+
+
+def main(req):
+    global CACHED_DATA
+    if CACHED_DATA is None:
+        CACHED_DATA = load_json()
+
+    # ... use CACHED_DATA in code
+```
+
+## <a name="environment-variables"></a>Umgebungsvariablen
+
+In Functions werden [Anwendungseinstellung](functions-app-settings.md), z.B. Dienstverbindungszeichenfolgen, während der Ausführung als Umgebungsvariablen verfügbar gemacht. Sie können auf diese Einstellungen zugreifen, indem Sie `import os` deklarieren und dann `setting = os.environ["setting-name"]` verwenden.
+
+Im folgenden Beispiel wird die [Anwendungseinstellung](functions-how-to-use-azure-function-app-settings.md#settings) mit dem Schlüssel `myAppSetting` ermittelt:
+
+```python
+import logging
+import os
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    # Get the setting named 'myAppSetting'
+    my_app_setting_value = os.environ["myAppSetting"]
+    logging.info(f'My app setting value:{my_app_setting_value}')
+```
+
+Für die lokale Entwicklung werden Anwendungseinstellungen [in der Datei „local.settings.json“ verwaltet](functions-run-local.md#local-settings-file).  
+
 ## <a name="python-version-and-package-management"></a>Python-Version und Paketverwaltung
 
 Zurzeit unterstützt Azure Functions nur Python 3.6.x (offizielle CPython-Verteilung).
@@ -281,10 +373,6 @@ Zurzeit unterstützt Azure Functions nur Python 3.6.x (offizielle CPython-Vertei
 Bei der lokalen Entwicklung mithilfe der Azure Functions Core Tools oder von Visual Studio Code fügen Sie die Namen und Versionen der erforderlichen Pakete in der `requirements.txt`-Datei hinzu, und installieren Sie sie mithilfe von `pip`.
 
 Beispielsweise können die folgende Datei mit Anforderungen und der pip-Befehl verwendet werden, um das `requests`-Paket aus PyPI zu installieren.
-
-```bash
-pip install requests
-```
 
 ```txt
 requests==2.19.1
@@ -294,27 +382,26 @@ requests==2.19.1
 pip install -r requirements.txt
 ```
 
-Wenn Sie zur Veröffentlichung bereit sind, stellen Sie sicher, dass alle Ihre Abhängigkeiten in der `requirements.txt`-Datei aufgeführt sind, die sich im Stamm Ihres Projektverzeichnisses befindet. Um Ihre Azure Functions erfolgreich auszuführen, sollte die Datei mit den Anforderungen mindestens die folgenden Pakete enthalten:
-
-```txt
-azure-functions
-azure-functions-worker
-grpcio==1.14.1
-grpcio-tools==1.14.1
-protobuf==3.6.1
-six==1.11.0
-```
-
 ## <a name="publishing-to-azure"></a>Veröffentlichen in Azure
 
-Wenn Sie ein Paket verwenden, das einen Compiler erfordert und nicht die Installation von manylinux-kompatiblen Wheels aus PyPI unterstützt, schlägt die Veröffentlichung in Azure mit folgendem Fehler fehl: 
+Wenn Sie zur Veröffentlichung bereit sind, stellen Sie sicher, dass alle Ihre Abhängigkeiten in der Datei *requirements.txt* aufgeführt sind, die sich im Stamm Ihres Projektverzeichnisses befindet. Azure Functions kann diese Abhängigkeiten [remote erstellen](functions-deployment-technologies.md#remote-build).
+
+Projektdateien und -ordner, die von der Veröffentlichung ausgeschlossen sind, einschließlich des Ordners der virtuellen Umgebung, werden in der .funcignore-Datei aufgelistet.  
+
+Für die Bereitstellung in Azure und zur Ausführung einer Remoteerstellung verwenden Sie den folgenden Befehl:
+
+```bash
+func azure functionapp publish <app name> --build remote
+```
+
+Wenn Sie keine Remoteerstellung verwenden und ein Paket verwenden, das einen Compiler erfordert und nicht die Installation von manylinux-kompatiblen Wheels aus PyPI unterstützt, schlägt die Veröffentlichung in Azure ohne lokale Erstellung mit folgendem Fehler fehl:
 
 ```
 There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
 The terminal process terminated with exit code: 1
 ```
 
-Um die erforderlichen Binärdateien automatisch zu erstellen und zu konfigurieren, [installieren Sie Docker](https://docs.docker.com/install/) auf Ihrem lokalen Computer, und führen Sie den folgenden Befehl aus, um mithilfe der [Azure Functions Core Tools](functions-run-local.md#v2) (func) zu veröffentlichen. Denken Sie daran, `<app name>` durch den Namen Ihrer Funktions-App in Azure zu ersetzen. 
+Um die erforderlichen Binärdateien lokal zu erstellen und diese zu konfigurieren, [installieren Sie Docker](https://docs.docker.com/install/) auf Ihrem lokalen Computer, und führen Sie den folgenden Befehl aus, um mithilfe der [Azure Functions Core Tools](functions-run-local.md#v2) (func) zu veröffentlichen. Denken Sie daran, `<app name>` durch den Namen Ihrer Funktions-App in Azure zu ersetzen. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps
@@ -322,82 +409,175 @@ func azure functionapp publish <app name> --build-native-deps
 
 Im Hintergrund verwenden die Core Tools Docker, um das [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/)-Image als Container auf Ihrem lokalen Computer auszuführen. Unter Verwendung diese Umgebung werden dann die erforderlichen Module aus der Quellverteilung erstellt und installiert, bevor sie zur endgültigen Bereitstellung in Azure gepackt werden.
 
-> [!NOTE]
-> Die Core Tools (func) verwenden das PyInstaller-Programm, um den Code und die Abhängigkeiten des Benutzers in einer einzelnen, eigenständigen ausführbaren Datei zur Ausführung in Azure zu fixieren. Diese Funktion befindet sich zurzeit in der Vorschauphase (Preview) und ist möglicherweise nicht für alle Typen von Python-Paketen verfügbar. Wenn Sie Ihre Module nicht importieren können, versuchen Sie eine erneute Veröffentlichung mithilfe der Option `--no-bundler`. 
-> ```
-> func azure functionapp publish <app_name> --build-native-deps --no-bundler
-> ```
-> Wenn weiterhin Probleme auftreten, informieren Sie uns darüber, indem Sie [ein Problem öffnen](https://github.com/Azure/azure-functions-core-tools/issues/new) und eine Beschreibung des Problems einschließen. 
+[Verwenden Sie Azure-Pipelines](functions-how-to-azure-devops.md), um Ihre Abhängigkeiten zu erstellen und mithilfe eines Continuous Delivery-Systems zu veröffentlichen. 
 
+## <a name="unit-testing"></a>Komponententests
 
-Um Ihre Abhängigkeiten zu erstellen und mithilfe eines Continuous Integration (CI)- und Continuous Delivery (CD)-Systems zu veröffentlichen, können Sie eine [Azure Pipeline](https://docs.microsoft.com/azure/devops/pipelines/get-started-yaml?view=vsts) oder ein [benutzerdefiniertes Travis CI-Skript](https://docs.travis-ci.com/user/deployment/script/) verwenden. 
+In Python geschriebene Funktionen können wie anderer Python-Code mithilfe von Standardtestframeworks getestet werden. Bei den meisten Bindungen können Sie ein Pseudoeingabeobjekt erstellen, indem Sie eine Instanz einer geeigneten Klasse aus dem `azure.functions`-Paket erstellen. Da das [`azure.functions`](https://pypi.org/project/azure-functions/)-Paket nicht sofort verfügbar ist, müssen Sie es über Ihre Datei `requirements.txt` installieren. Die Vorgehensweise wird oben im Abschnitt [Python-Version und Paketverwaltung](#python-version-and-package-management) beschrieben.
 
-Im Folgenden finden Sie ein `azure-pipelines.yml`-Beispielskript für den Erstellungs- und Veröffentlichungsprozess.
-```yml
-pool:
-  vmImage: 'Ubuntu 16.04'
+Beim Folgenden handelt es sich beispielsweise um einen Pseudotest einer durch HTTP ausgelösten Funktion:
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '8.x'
-
-- script: |
-    set -e
-    echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
-    curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-    sudo apt-get install -y apt-transport-https
-    echo "install Azure CLI..."
-    sudo apt-get update && sudo apt-get install -y azure-cli
-    npm i -g azure-functions-core-tools --unsafe-perm true
-    echo "installing dotnet core"
-    curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --channel 2.0
-- script: |
-    set -e
-    az login --service-principal --username "$(APP_ID)" --password "$(PASSWORD)" --tenant "$(TENANT_ID)" 
-    func settings add FUNCTIONS_WORKER_RUNTIME python
-    func extensions install
-    func azure functionapp publish $(APP_NAME) --build-native-deps
+```json
+{
+  "scriptFile": "httpfunc.py",
+  "entryPoint": "my_function",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
 ```
 
-Im Folgenden finden Sie ein `.travis.yaml`-Beispielskript für den Erstellungs- und Veröffentlichungsprozess.
+```python
+# myapp/httpfunc.py
+import azure.functions as func
+import logging
 
-```yml
-sudo: required
+def my_function(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
 
-language: node_js
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
 
-node_js:
-  - "8"
+    if name:
+        return func.HttpResponse(f"Hello {name}")
+    else:
+        return func.HttpResponse(
+             "Please pass a name on the query string or in the request body",
+             status_code=400
+        )
+```
 
-services:
-  - docker
+```python
+# myapp/test_httpfunc.py
+import unittest
 
-before_install:
-  - echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | sudo tee /etc/apt/sources.list.d/azure-cli.list
-  - curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-  - sudo apt-get install -y apt-transport-https
-  - sudo apt-get update && sudo apt-get install -y azure-cli
-  - npm i -g azure-functions-core-tools --unsafe-perm true
+import azure.functions as func
+from httpfunc import my_function
 
 
-script:
-  - az login --service-principal --username "$APP_ID" --password "$PASSWORD" --tenant "$TENANT_ID"
-  - az account get-access-token --query "accessToken" | func azure functionapp publish $APP_NAME --build-native-deps
+class TestFunction(unittest.TestCase):
+    def test_my_function(self):
+        # Construct a mock HTTP request.
+        req = func.HttpRequest(
+            method='GET',
+            body=None,
+            url='/api/HttpTrigger',
+            params={'name': 'Test'})
 
+        # Call the function.
+        resp = my_function(req)
+
+        # Check the output.
+        self.assertEqual(
+            resp.get_body(),
+            b'Hello Test',
+        )
+```
+
+Im Folgenden finden Sie ein weiteres Beispiel mit einer durch eine Warteschlange ausgelösten Funktion:
+
+```python
+# myapp/__init__.py
+import azure.functions as func
+
+
+def my_function(msg: func.QueueMessage) -> str:
+    return f'msg body: {msg.get_body().decode()}'
+```
+
+```python
+# myapp/test_func.py
+import unittest
+
+import azure.functions as func
+from . import my_function
+
+
+class TestFunction(unittest.TestCase):
+    def test_my_function(self):
+        # Construct a mock Queue message.
+        req = func.QueueMessage(
+            body=b'test')
+
+        # Call the function.
+        resp = my_function(req)
+
+        # Check the output.
+        self.assertEqual(
+            resp,
+            'msg body: test',
+        )
 ```
 
 ## <a name="known-issues-and-faq"></a>Bekannte Probleme und FAQ
 
 Alle bekannten Probleme und Funktionsanfragen werden mithilfe der [GitHub-Probleme](https://github.com/Azure/azure-functions-python-worker/issues)liste nachverfolgt. Wenn Sie auf ein Problem stoßen, das in GitHub nicht zu finden ist, öffnen Sie ein neues Problem mit einer ausführlichen Problembeschreibung.
 
+### <a name="cross-origin-resource-sharing"></a>Cross-Origin Resource Sharing
+
+Azure Functions unterstützt jetzt die Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS). CORS wird [im Portal](functions-how-to-use-azure-function-app-settings.md#cors) und über die [Azure-Befehlszeilenschnittstelle](/cli/azure/functionapp/cors) konfiguriert. Die CORS-Liste der zulässigen Ursprünge gilt auf Funktions-App-Ebene. Wenn CORS aktiviert ist, enthalten Antworten den `Access-Control-Allow-Origin`-Header. Weitere Informationen finden Sie unter [Cross-Origin Resource Sharing (CORS)](functions-how-to-use-azure-function-app-settings.md#cors).
+
+Die Liste der zulässigen Ursprünge wird für Python-Funktions-Apps [derzeit nicht unterstützt](https://github.com/Azure/azure-functions-python-worker/issues/444). Wegen dieser Einschränkung müssen Sie den `Access-Control-Allow-Origin`-Header in Ihren HTTP-Funktionen explizit festlegen, wie dies im folgenden Beispiel gezeigt ist:
+
+```python
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    # Define the allow origin headers.
+    headers = {"Access-Control-Allow-Origin": "https://contoso.com"}
+
+    # Set the headers in the response.
+    return func.HttpResponse(
+            f"Allowed origin '{headers}'.",
+            headers=headers, status_code=200
+    )
+``` 
+
+Sie dürfen nicht vergessen, Ihre „function.json“-Datei so zu aktualisieren, dass sie die HTTP-Methode OPTIONS unterstützt:
+
+```json
+    ...
+      "methods": [
+        "get",
+        "post",
+        "options"
+      ]
+    ...
+```
+
+Diese Methode wird vom Chrome-Browser verwendet, um die Liste der zulässigen Ursprünge auszuhandeln. 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
+* [Dokumentation zur Azure Functions-Paket-API](/python/api/azure-functions/azure.functions?view=azure-python)
 * [Bewährte Methoden für Azure Functions](functions-best-practices.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 * [Blobspeicherbindungen](functions-bindings-storage-blob.md)
 * [HTTP- und Webhook-Bindungen](functions-bindings-http-webhook.md)
 * [Warteschlangenspeicherbindungen](functions-bindings-storage-queue.md)
 * [Trigger mit Timer](functions-bindings-timer.md)
+
+
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python

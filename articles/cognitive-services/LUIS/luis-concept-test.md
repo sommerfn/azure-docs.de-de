@@ -1,6 +1,6 @@
 ---
 title: Testen Ihrer LUIS-App
-titleSuffix: Language Understanding - Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Beim Testen stellen Sie LUIS Beispieläußerungen bereit und erhalten eine Antwort von Absichten und Entitäten, die LUIS erkannt hat.
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: c9f1cf80cd3a781e878daca2048f7c5dc9095a7c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 775b50c4735115dde8ae936c4d06b087d58683b1
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789536"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619778"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Testen von Beispieläußerungen in LUIS
 
@@ -46,7 +46,7 @@ Alle Endpunkttests werden auf Ihr Nutzungskontingent angerechnet.
 Wenn Sie Tests an einem Endpunkt durchführen und nicht möchten, dass die Äußerung protokolliert wird, müssen Sie die Konfiguration `logging=false` für Abfragezeichenfolgen verwenden.
 
 ## <a name="where-to-find-utterances"></a>Speicherort von Äußerungen
-LUIS speichert alle protokollierten Äußerungen im Abfrageprotokoll, das auf der [LUIS](luis-reference-regions.md)-Website auf der Seite mit der **Apps**-Liste sowie über die [Erstellungs-APIs](https://aka.ms/luis-authoring-apis) für LUIS zum Download bereitsteht. 
+LUIS speichert alle protokollierten Äußerungen im Abfrageprotokoll, das auf der [LUIS](luis-reference-regions.md)-Website auf der Seite mit der **Apps**-Liste sowie über die [Erstellungs-APIs](https://go.microsoft.com/fwlink/?linkid=2092087) für LUIS zum Download bereitsteht. 
 
 Alle Äußerungen, bei denen LUIS unsicher ist, werden auf der Seite **[Überprüfen von Endpunktäußerungen](luis-how-to-review-endpoint-utterances.md)** der [LUIS](luis-reference-regions.md)-Website aufgeführt. 
 

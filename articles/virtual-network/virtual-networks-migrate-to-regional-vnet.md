@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie ein (klassisches) virtuelles Netzwerk aus ein
 services: virtual-network
 documentationcenter: na
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: 84febcb9-bb8b-4e79-ab91-865ad9de41cb
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 1fca7f6165998b95254f841638cf8bcbc1fb352d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d33d9ec4eadeaa3a082103f1ad699e2fc3010e3b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792153"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058397"
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>Migrieren eines (klassischen) virtuellen Netzwerks aus einer Affinitätsgruppe in eine Region
 
 > [!IMPORTANT]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Resource Manager-Bereitstellungsmodells.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Resource Manager-Bereitstellungsmodells.
 
 Mit einer Affinitätsgruppe können Sie sicherstellen, dass Ressourcen, die innerhalb der gleichen Affinitätsgruppe erstellt werden, physisch von Servern gehostet werden, die sich in geringem Abstand zueinander befinden. Auf diese Weise können die Ressourcen schneller miteinander kommunizieren. In der Vergangenheit waren Affinitätsgruppen eine Voraussetzung für die Erstellung (klassischer) virtueller Netzwerke. Damals konnte der Netzwerk-Manager-Dienst, der die (klassischen) virtuellen Netzwerke verwaltete, nur innerhalb einer Gruppe physischer Server oder innerhalb einer Skalierungseinheit verwendet werden. Aufgrund von Verbesserungen bei der Architektur konnte die Netzwerkverwaltung inzwischen jedoch auf eine Region ausgeweitet werden.
 
@@ -50,9 +50,9 @@ Es wird grundsätzlich von der Verwendung von Affinitätsgruppen abgeraten. Abge
    
     Bearbeiten Sie die folgenden Zeilen Ihrer Netzwerkkonfigurationsdatei, und ersetzen Sie dabei die Werte durch Ihre eigenen Werte: 
    
-    **Alter Wert:**\<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\> 
+    **Alter Wert:** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\> 
    
-    **Neuer Wert:**\<VirtualNetworkSitename="VNetUSWest" Location="West US"\>
+    **Neuer Wert:** \<VirtualNetworkSitename="VNetUSWest" Location="West US"\>
 3. Speichern Sie die Änderungen, und [importieren](virtual-networks-using-network-configuration-file.md#import) Sie die Netzwerkkonfiguration in Azure.
 
 > [!NOTE]

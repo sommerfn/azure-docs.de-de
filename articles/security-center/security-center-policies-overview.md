@@ -3,23 +3,22 @@ title: Azure Security Center-Einstellungen | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie die Azure Security Center-Einstellungen konfigurieren.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: f24b1e4a-cc36-4542-b21e-041453cdfcd8
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: ec674641991a1b5a1e0ca92c133be235dd91dfae
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 09/03/2018
+ms.author: memildin
+ms.openlocfilehash: 4a7254d4ac67ee7d1bf203baf5741638dbc8f3dd
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666493"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201609"
 ---
 # <a name="security-center-settings"></a>Security Center-Einstellungen
 Dieser Artikel enthält eine Übersicht über die Einstellungen in Security Center.
@@ -39,8 +38,8 @@ Unter „Sicherheitsrichtlinie“ stehen folgende Einstellungen zur Verfügung:
 ## <a name="who-can-edit-security-policies"></a>Wer kann Sicherheitsrichtlinien bearbeiten?
 Security Center verwendet die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC). Dabei werden integrierte Rollen bereitgestellt, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können. In Security Center werden den Benutzern nur Informationen zu den Ressourcen angezeigt, auf die sie Zugriff haben. Das bedeutet, dass Benutzern die Rolle *Besitzer*, *Mitwirkender* oder *Leser* für das Abonnement zugewiesen wird, zu dem die Ressource gehört. Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
 
-- **Benutzer mit Leseberechtigung für Sicherheitsfunktionen**: Kann Informationen in Security Center (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
-- **Sicherheitsadministrator**: Verfügt über dieselben Anzeigeberechtigungen wie ein *Benutzer mit Leseberechtigung für Sicherheitsfunktionen*, ist zusätzlich aber auch zum Aktualisieren der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen berechtigt.
+- **Sicherheitsleseberechtigter**: Kann Informationen in Security Center (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
+- **Sicherheitsadministrator**: Verfügt über dieselben Anzeigeberechtigungen wie ein *Sicherheitsleseberechtigter*, ist zusätzlich aber auch zum Aktualisieren der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen berechtigt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

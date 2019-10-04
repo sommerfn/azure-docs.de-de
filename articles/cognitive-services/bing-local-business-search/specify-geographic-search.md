@@ -1,20 +1,21 @@
 ---
-title: Filtern von Ergebnissen aus der API für die Bing-Suche nach ortsansässigen Unternehmen mit geografischen Begrenzungen | Microsoft-Dokumentation
+title: Filtern von Ergebnissen aus der API für die Bing-Suche nach ortsansässigen Unternehmen mit geografischen Begrenzungen
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erfahren Sie, wie Sie Suchergebnisse aus der API für die Bing-Suche nach ortsansässigen Unternehmen filtern.
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
+ms.subservice: bing-local-business
+ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 193d0b25276b90f6047943ded83f2000dd4d3436
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: rosh
+ms.openlocfilehash: 213457bc583494bbe039269b96b25990f7d0a961
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775712"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906245"
 ---
 # <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>Filtern von Ergebnissen aus der API für die Bing-Suche nach ortsansässigen Unternehmen mit geografischen Begrenzungen
 

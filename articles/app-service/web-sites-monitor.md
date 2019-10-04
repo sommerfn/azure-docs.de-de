@@ -10,17 +10,16 @@ ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: a5d4d13d8e60cd7f273363a9bc385098e15cbb71
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: b9e910f24503f6bbf86e8ed8cdcb6f422d2490d9
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913157"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073994"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Überwachen von Apps in Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) bietet integrierte Überwachungsfunktionen für Web-Apps, mobile Back-Ends und API-Apps im [Azure-Portal](https://portal.azure.com).
@@ -39,7 +38,7 @@ Wenn die App in einem Plan vom Typ *Basic*, *Standard* oder *Premium* gehostet w
 
 Im Folgenden sind die Kontingente für Free- oder Shared-Apps aufgelistet:
 
-| Kontingent | Beschreibung |
+| Kontingent | BESCHREIBUNG |
 | --- | --- |
 | **CPU (Short)** (CPU (kurz)) | Die zulässige CPU-Menge für diese App in einem Fünf-Minuten-Intervall. Dieses Kontingent wird alle fünf Minuten zurückgesetzt. |
 | **CPU (Day)** (CPU (Tag)) | Die zulässige CPU-Gesamtmenge für diese App für einen Tag. Dieses Kontingent wird alle 24 Stunden um Mitternacht (UTC) zurückgesetzt. |
@@ -69,7 +68,7 @@ Metriken liefern Informationen zur App oder zum Verhalten des App Service-Plans.
 
 Für eine App sind folgende Metriken verfügbar:
 
-| Metrik | Beschreibung |
+| Metrik | BESCHREIBUNG |
 | --- | --- |
 | **Durchschnittliche Antwortzeit** | Die durchschnittliche Zeit in Millisekunden, die die App zum Verarbeiten von Anforderungen benötigt. |
 | **Durchschnittlicher Arbeitssatz für Arbeitsspeicher** | Die durchschnittliche Menge an Arbeitsspeicher, die von der App verwendet wird, in Megabytes (MiB). |
@@ -111,7 +110,7 @@ Für einen App Service-Plan sind folgende Metriken verfügbar:
 > Metriken für App Service-Pläne sind nur für Pläne in den Tarifen *Basic*, *Standard* und *Premium* verfügbar.
 > 
 
-| Metrik | Beschreibung |
+| Metrik | BESCHREIBUNG |
 | --- | --- |
 | **CPU-Prozentsatz** | Die durchschnittliche CPU-Nutzung über alle Instanzen des Plans hinweg. |
 | **Arbeitsspeicherprozentsatz** | Die durchschnittliche Arbeitsspeichernutzung über alle Instanzen des Plans hinweg. |

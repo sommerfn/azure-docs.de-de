@@ -2,7 +2,8 @@
 title: 'Schnellstart: Erstellen eines Traffic Manager-Profils für Hochverfügbarkeit von Anwendungen mithilfe des Azure-Portals'
 description: In diesem Schnellstartartikel wird beschrieben, wie Sie ein Traffic Manager-Profil erstellen, um hoch verfügbare Webanwendungen zu entwickeln.
 services: traffic-manager
-author: KumudD
+author: asudbring
+manager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
-ms.author: kumud
-ms.openlocfilehash: 2cd8830f4b2b7c972ba8972e686be984bb96fd04
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: allensu
+ms.openlocfilehash: 1f7fd3398c24eb82b1a2308f3b52df382c0aab7e
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760663"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68224666"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Schnellstart: Erstellen eines Traffic Manager-Profils im Azure-Portal
 
@@ -35,42 +36,25 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 Für diese Schnellstartanleitung benötigen Sie zwei Instanzen einer Webanwendung, die in zwei unterschiedlichen Azure-Regionen bereitgestellt werden (*USA, Osten* und *Europa, Westen*). Jede dient jeweils als primärer bzw. Failoverendpunkt für Traffic Manager.
 
 1. Wählen Sie oben links auf dem Bildschirm die Option **Ressource erstellen** > **Web** > **Web-App**.
-2. Geben Sie unter **Web-App** die folgenden Einstellungen ein (bzw. wählen Sie sie aus):
 
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | App-Name | Geben Sie einen eindeutigen Namen für Ihre Web-App ein.  |
-    | Abonnement | Wählen Sie das Abonnement aus, auf das die Web-App angewendet werden soll. |
-    | Ressourcengruppe | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroupTM1* ein. |
-    | Betriebssystem | Wählen Sie **Windows** als Betriebssystem aus. |
-    | Veröffentlichen | Wählen Sie **Code** als Format für die Veröffentlichung aus. |
+1. Geben Sie unter **Web-App erstellen** auf der Registerkarte **Grundlagen** die folgenden Werte ein (bzw. wählen Sie sie aus):
 
-3. Wählen Sie **App Service-Plan/Standort**.
-4. Wählen Sie unter **App Service-Plan** die Option **Neu erstellen**.
-5. Geben Sie unter **Neuer App Service-Plan** die folgenden Einstellungen ein (bzw. wählen Sie sie aus):
+   - **Abonnement** > **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie **myResourceGroupTM1** ein.
+   - **Instanzendetails** > **Name**: Geben Sie *myWebAppEastUS* ein.
+   - **Instanzdetails** > **Veröffentlichen**: Wählen Sie **Code** aus.
+   - **Instanzdetails** > **Laufzeitstapel**: Wählen Sie **ASP.NET V4.7** aus.
+   - **Instanzdetails** > **Betriebssystem**: Wählen Sie **Windows** aus.
+   - **Instanzendetails** > **Region**:  Wählen Sie **USA, Osten** aus.
+   - **App Service-Plan** > **Windows-Plan (USA, Osten)** : Wählen Sie **Neu erstellen** aus, und geben Sie dann **myAppServicePlanEastUS** ein.
+   - **App Service-Plan** > **SKU und Größe**: Wählen Sie **Standard (S1)** aus.
+   
+3. Wählen Sie die Registerkarte **Überwachung** aus, oder wählen Sie **Next:Monitoring** aus.  Legen Sie unter **Überwachung** **Application Insights** > **Application Insights aktivieren** auf **Nein** fest.
 
-    | Einstellung | Wert |
-    | ------- | ----- |
-    | App Service-Plan | Geben Sie *myAppServicePlanEastUS* ein. |
-    | Standort | USA (Ost) |
-    | Tarif | S1 Standard |
+4. Wählen Sie **Überprüfen und erstellen** aus.
 
-6. Klicken Sie auf **OK**.
+5. Überprüfen Sie die Einstellungen, und klicken Sie dann auf **Erstellen**.  Wenn die Bereitstellung der Web-App erfolgreich war, wird eine Standardwebsite erstellt.
 
-7. Wählen Sie unter **Web-App** die Option **Erstellen**. Wenn die Bereitstellung der Web-App erfolgreich war, wird eine Standardwebsite erstellt.
-
-8. Wiederholen Sie die Schritte 1 bis 7 mit diesen Einstellungen, um eine zweite Website in einer anderen Azure-Region zu erstellen:
-
-    | Einstellung | Wert |
-    | --------| ----- |
-    | NAME | Geben Sie einen eindeutigen Namen für Ihre Web-App ein. |
-    | Abonnement | Wählen Sie das Abonnement aus, auf das die Web-App angewendet werden soll. |
-    | Ressourcengruppe | Wählen Sie **Neu erstellen**, und geben Sie *myResourceGroupTM2* ein. |
-    | Betriebssystem | Wählen Sie **Windows** als Betriebssystem aus. |
-    | Veröffentlichen | Wählen Sie **Code** als Format für die Veröffentlichung aus. |
-    | App Service-Plan/Standort | Geben Sie *myAppServicePlanWestEurope* ein. |
-    | Standort | Europa, Westen |
-    | Tarif | S1 Standard |
+6. Führen Sie die Schritte zum Erstellen einer zweiten Web-App mit dem Namen *myWebAppWestEurope* aus. Geben Sie der **Ressourcengruppe** den Namen *myResourceGroupTM2*, und verwenden Sie als **Region** die Option *Europa, Westen* und als Name des **App Service-Plans** **myAppServicePlanWestEurope**. Legen Sie bei allen anderen Einstellungen die gleichen Optionen fest wie für *myWebAppEastUS*.
 
 ## <a name="create-a-traffic-manager-profile"></a>Erstellen eines Traffic Manager-Profils
 
@@ -83,9 +67,9 @@ Erstellen Sie ein Traffic Manager-Profil, das Benutzerdatenverkehr basierend auf
     | --------| ----- |
     | NAME | Geben Sie einen eindeutigen Namen für Ihr Traffic Manager-Profil ein.|
     | Routingmethode | Wählen Sie **Priorität**.|
-    | Abonnement | Wählen Sie das Abonnement aus, auf das das Traffic Manager-Profil angewendet werden soll. |
-    | Ressourcengruppe | Wählen Sie *myResourceGroupTM1* aus.|
-    | Standort |Diese Einstellung bezieht sich auf den Standort der Ressourcengruppe. Sie wirkt sich nicht auf das Traffic Manager-Profil aus, das global bereitgestellt wird.|
+    | Subscription | Wählen Sie das Abonnement aus, auf das das Traffic Manager-Profil angewendet werden soll. |
+    | Resource group | Wählen Sie *myResourceGroupTM1* aus.|
+    | Location |Diese Einstellung bezieht sich auf den Standort der Ressourcengruppe. Sie wirkt sich nicht auf das Traffic Manager-Profil aus, das global bereitgestellt wird.|
 
 3. Klicken Sie auf **Erstellen**.
 
@@ -100,7 +84,7 @@ Fügen Sie die Website in der Region *USA, Osten* als primären Endpunkt für da
 
     | Einstellung | Wert |
     | ------- | ------|
-    | Type | Wählen Sie **Azure-Endpunkt**. |
+    | type | Wählen Sie **Azure-Endpunkt**. |
     | NAME | Geben Sie *myPrimaryEndpoint* ein. |
     | Zielressourcentyp | Wählen Sie **App Service**. |
     | Zielressource | Wählen Sie **App Service auswählen** > **USA, Osten**. |
@@ -113,7 +97,7 @@ Fügen Sie die Website in der Region *USA, Osten* als primären Endpunkt für da
 
     | Einstellung | Wert |
     | ------- | ------|
-    | Type | Wählen Sie **Azure-Endpunkt**. |
+    | type | Wählen Sie **Azure-Endpunkt**. |
     | NAME | Geben Sie *myFailoverEndpoint* ein. |
     | Zielressourcentyp | Wählen Sie **App Service**. |
     | Zielressource | Wählen Sie **App Service auswählen** > **Europa, Westen**. |

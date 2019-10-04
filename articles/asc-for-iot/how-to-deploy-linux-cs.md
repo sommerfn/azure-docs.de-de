@@ -1,33 +1,31 @@
 ---
-title: Leitfaden zum Installieren und Bereitstellen des C#-basierten Linux-Agents von Azure Security Center für IoT (Vorschauversion) | Microsoft-Dokumentation
+title: Anleitung zum Installieren und Bereitstellen des C#-basierten Linux-Agents von Azure Security Center für IoT | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Azure Security Center für IoT-Agent unter Linux (32 Bit und 64 Bit) installieren.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: b0982203-c3c8-4a0b-8717-5b5ac4038d8c
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 4a53bcf77696d3aa53a4a404bfacd6f6d468885b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0d77a1be2a3469282dabb646b02c43e350313ce5
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862099"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68596300"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Bereitstellen des C#-basierten Sicherheits-Agents von Azure Security Center für IoT unter Linux
 
-> [!IMPORTANT]
-> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-In diesem Leitfaden erfahren Sie, wie Sie den C#-basierten Sicherheits-Agent von Azure Security Center für IoT unter Linux installieren und bereitstellen.
+In dieser Anleitung erfahren Sie, wie Sie den C#-basierten Sicherheits-Agent von Azure Security Center für IoT unter Linux installieren und bereitstellen.
 
 In diesem Artikel lernen Sie Folgendes: 
 > [!div class="checklist"]
@@ -54,21 +52,21 @@ Gehen Sie zum Bereitstellen des Sicherheits-Agents wie folgt vor:
 
 1. Führen Sie `chmod +x InstallSecurityAgent.sh` aus, um dem Skript **InstallSecurityAgent** Ausführungsberechtigungen hinzuzufügen. 
 
-1. Führen Sie als Nächstes Folgendes aus: 
+1. Führen Sie anschließend Folgendes aus: 
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
    ```
    
-   Weitere Informationen zu Authentifizierungsparametern finden Sie unter [Security agent authentication methods](concept-security-agent-authentication-methods.md) (Authentifizierungsmethoden des Sicherheits-Agents).
+   Weitere Informationen zu Authentifizierungsparametern finden Sie unter [Konfigurieren der Authentifizierung](concept-security-agent-authentication-methods.md).
 
-Das Skript bewirkt Folgendes:
+Dieses Skript führt folgende Aktionen aus:
 
 - Installieren der erforderlichen Komponenten
 
 - Hinzufügen eines Dienstbenutzers (mit deaktivierter interaktiver Anmeldung)
 
-- Installieren des Agents als **Daemon** (wobei vorausgesetzt wird, dass das Gerät **systemd** für die Dienstverwaltung verwendet)
+- Installieren des Agents als **Daemon** (wobei vorausgesetzt wird, dass das Gerät **systemd** für das klassische Bereitstellungsmodell verwendet)
 
 - Konfigurieren von **sudoers**, damit der Agent bestimmte Aufgaben als Root ausführen kann
 
@@ -110,7 +108,7 @@ Wenn Sie den Agent deinstallieren möchten, führen Sie das Skript mit dem Param
        Der Wert **logFilePath** ist konfigurierbar. 
 
        > [!NOTE]
-       > Es empfiehlt sich, die Protokollierung nach Abschluss der Problembehandlung zu **deaktivieren**. Bei aktivierter**** Protokollierung erhöhen sich Protokolldateigröße und Datennutzung.
+       > Es empfiehlt sich, die Protokollierung nach Abschluss der Problembehandlung zu **deaktivieren**. Bei **aktivierter** Protokollierung erhöhen sich Protokolldateigröße und Datennutzung.
 
    1. Führen Sie Folgendes aus, um den Agent neu zu starten:
 
@@ -124,8 +122,8 @@ Wenn Sie den Agent deinstallieren möchten, führen Sie das Skript mit dem Param
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie die [Übersicht](overview.md) über ASC für IoT.
-- Informieren Sie sich ausführlicher über die [Architektur](architecture.md) von ASC für IoT.
+- Lesen Sie die [Übersicht](overview.md) über den Dienst „Azure Security Center für IoT“.
+- Machen Sie sich mit der [Architektur](architecture.md) von Azure Security Center für IoT vertraut.
 - Aktivieren Sie den [Dienst](quickstart-onboard-iot-hub.md).
 - Lesen Sie die [häufig gestellten Fragen](resources-frequently-asked-questions.md).
 - Machen Sie sich mit [Warnungen](concept-security-alerts.md) vertraut.

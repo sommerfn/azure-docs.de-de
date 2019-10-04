@@ -3,7 +3,7 @@ title: Überwachen von Batch mit Azure Application Insights | Microsoft-Dokument
 description: Erfahren Sie, wie Sie eine Azure Batch-.NET-Anwendung mithilfe der Azure Application Insights-Bibliothek instrumentieren.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: .NET
@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: lahugh
-ms.openlocfilehash: 42ea8398fa1a8b1fbc42108d1165dc17da2c34d7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8d896785a2f000a22f68611d5b3b1162c2021236
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473461"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322566"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Überwachen und Debuggen einer Azure Batch-.NET-Anwendung mit Application Insights
 
@@ -31,7 +31,7 @@ Für diesen Artikel ist auf [GitHub](https://github.com/Azure/azure-batch-sample
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* [Visual Studio 2017](https://www.visualstudio.com/vs)
+* [Visual Studio 2017 oder höher](https://www.visualstudio.com/vs)
 
 * [Ein Batch-Konto und ein verknüpftes Speicherkonto](batch-account-create-portal.md)
 

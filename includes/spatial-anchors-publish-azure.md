@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
 ms.openlocfilehash: 0dab71b6d169e26a3d7dc208dd09efe1143fbe13
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305127"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67177780"
 ---
 ### <a name="open-the-publish-wizard"></a>Öffnen des Veröffentlichungs-Assistenten
 
@@ -44,8 +44,8 @@ Verwenden Sie im Dialogfeld **Hostingplan konfigurieren** die folgenden Einstell
 | Einstellung | Empfohlener Wert | BESCHREIBUNG |
 |-|-|-|
 |App Service-Plan| MySharingServicePlan | Name des App Service-Plans. |
-| Standort | USA (Westen) | Das Rechenzentrum, in dem die Web-App gehostet wird. |
-| Größe | Kostenlos | Der [Tarif](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), der die Hostingfunktionen festlegt. |
+| Location | USA (Westen) | Das Rechenzentrum, in dem die Web-App gehostet wird. |
+| Size | Kostenlos | Der [Tarif](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), der die Hostingfunktionen festlegt. |
 
 Klicken Sie auf **OK**.
 

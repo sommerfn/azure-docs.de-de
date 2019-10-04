@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: bd65b1479ace1a51087836eb8032f16fd10dc119
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: eabb7d194a3ef65282befab1ae59e85ba56f2f5b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648901"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65472157"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Erneutes Schützen von virtuellen Azure-Computern, für die ein Failover zur primären Region durchgeführt wurde
 
@@ -68,7 +68,7 @@ Wenn Sie einen Auftrag zum erneuten Schützen auslösen und der virtuelle Zielco
 1. Falls der virtuelle Computer auf der Zielseite ausgeführt wird, wird er ausgeschaltet.
 2. Falls der virtuelle Computer verwaltete Datenträger verwendet, wird eine Kopie der ursprünglichen Datenträger mit dem Suffix „-ASRReplica“ erstellt. Die ursprünglichen Datenträger werden gelöscht. Die Kopien mit dem Suffix „-ASRReplica“ werden für die Replikation verwendet.
 3. Wenn der virtuelle Computer nicht verwaltete Datenträger verwendet, werden die Datenträger des virtuellen Zielcomputers getrennt und für die Replikation verwendet. Eine Kopie des Betriebssystemdatenträgers wird erstellt und an den virtuellen Computer angefügt. Der ursprüngliche Betriebssystemdatenträger wird getrennt und für die Replikation verwendet.
-4. Nur Unterschiede zwischen dem Quelldatenträger und dem Zieldatenträger werden synchronisiert. Die Unterschiede werden durch einen Vergleich der beiden Datenträger ermittelt und dann übertragen. Dieser Vorgang kann einige Stunden dauern.
+4. Nur Unterschiede zwischen dem Quelldatenträger und dem Zieldatenträger werden synchronisiert. Die Unterschiede werden durch einen Vergleich der beiden Datenträger ermittelt und dann übertragen. Angaben zur geschätzten Zeit finden Sie unten.
 5. Nach Abschluss der Synchronisierung beginnt die Deltareplikation und erstellt gemäß der Replikationsrichtlinie einen Wiederherstellungspunkt.
 
 Wenn Sie einen Auftrag zum erneuten Schützen auslösen und der virtuelle Zielcomputer und die Datenträger nicht vorhanden sind, geschieht Folgendes:
@@ -76,6 +76,21 @@ Wenn Sie einen Auftrag zum erneuten Schützen auslösen und der virtuelle Zielco
 2. Falls der virtuelle Computer nicht verwaltete Datenträger verwendet, werden Replikatdatenträger im Zielspeicherkonto erstellt.
 3. Die gesamten Datenträger werden von der Region, für die ein Failover ausgeführt wurde, in die neue Zielregion kopiert.
 4. Nach Abschluss der Synchronisierung beginnt die Deltareplikation und erstellt gemäß der Replikationsrichtlinie einen Wiederherstellungspunkt.
+
+#### <a name="estimated-time--to-do-the-reprotection"></a>Geschätzte Zeit für das Einrichten des erneuten Schutzes 
+
+In den meisten Fällen repliziert Azure Site Recovery nicht die vollständigen Daten in die Quellregion. Nachfolgend sind die Bedingungen aufgeführt, die bestimmen, in welchem Umfang Daten repliziert werden:
+
+1.  Wenn die Daten der Quell-VM aus irgendeinem Grund (z.B. Änderung/Löschung der Ressourcengruppe) gelöscht oder beschädigt werden oder nicht mehr zugänglich sind, erfolgt während des erneuten Schutzes eine vollständige IR, da für die Quellregion keine Daten verfügbar sind, die verwendet werden können.
+2.  Wenn auf die Daten der Quell-VM zugegriffen werden kann, werden nur die Unterschiede durch einen Vergleich der beiden Datenträger ermittelt und dann übertragen. Geschätzte Zeitangaben finden Sie in der folgenden Tabelle. 
+
+|**Beispielsituation** | **Benötigte Zeit zum erneuten Schützen** |
+|--- | --- |
+|Quellregion verwendet 1 VM mit Standarddatenträger mit 1 TB Kapazität<br/>– Nur 127 GB werden für Daten verwendet, der Rest des Datenträgers ist leer<br/>– Datenträgertyp ist Standard-60 MiB/s Durchsatz<br/>– Keine Datenänderung nach dem Failover| Ungefähre Zeit: 45 Minuten bis 1,5 Stunden<br/> – Während des erneuten Schützens füllt Site Recovery die Prüfsumme der gesamten Daten auf (127 GB/45 Mbit/s, ungefähr 45 Minuten)<br/>– Zeitlicher Mehraufwand ist erforderlich, damit Site Recovery die automatische Skalierung ausführen kann (20 bis 30 Minuten)<br/>– Keine Gebühren für ausgehenden Datenverkehr |
+|Quellregion verwendet 1 VM mit Standarddatenträger mit 1 TB Kapazität<br/>– Nur 127 GB werden für Daten verwendet, der Rest des Datenträgers ist leer<br/>– Datenträgertyp ist Standard-60 MiB/s Durchsatz<br/>– 45 GB Datenänderung nach dem Failover| Ungefähre Dauer 1 bis 2 Stunden<br/>– Während des erneuten Schützens füllt Site Recovery die Prüfsumme der gesamten Daten auf (127 GB/45 Mbit/s, ungefähr 45 Minuten)<br/>– Übertragungszeit zum Anwenden von Änderungen von 45 GB (45 GB/45 Mbit/s, ungefähr 17 Minuten)<br/>– Gebühren für ausgehenden Datenverkehr fallen nur für 45 GB Daten nicht für die Prüfsumme an|
+ 
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

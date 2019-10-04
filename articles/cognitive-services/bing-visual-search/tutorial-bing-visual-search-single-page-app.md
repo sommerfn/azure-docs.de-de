@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: aahi
-ms.openlocfilehash: 084aad5540a2bd56d98e343639a45c16f786e599
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: e0370be1c10bc0f5813bec833be78ad31a3d61a7
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496555"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68880644"
 ---
 # <a name="create-a-visual-search-single-page-web-app"></a>Erstellen einer Single-Page-Web-App für die visuelle Suche
 
@@ -123,4 +123,4 @@ Mit dem neuen JavaScript-Code und den HTML-Elementen werden Suchergebnisse mit e
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Zuschneiden eines Bilds mithilfe des Bing Visual Search SDK für C#](tutorial-visual-search-crop-area-results.md)
+> [Tutorial: Crop an image with the Bing Visual Search SDK for C# (Zuschneiden eines Bilds mithilfe des SDK für die Visuelle Bing-Suche für C#)](tutorial-visual-search-crop-area-results.md)

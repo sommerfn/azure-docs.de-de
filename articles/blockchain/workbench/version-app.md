@@ -1,25 +1,25 @@
 ---
-title: Versionsverwaltung für die Blockchainanwendung in Azure Blockchain Workbench
-description: Erfahren Sie, wie Sie Anwendungsversionen in Azure Blockchain Workbench verwenden.
+title: Versionsverwaltung für die Blockchainanwendung in Azure Blockchain Workbench (Vorschauversion)
+description: Erfahren Sie, wie Sie Anwendungsversionen in Azure Blockchain Workbench (Vorschauversion) verwenden.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 63f18e3ee316b9791bb62bfcd20c07a30cbebb5e
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 33ecb6dea48117edd876b90eda54768785f25c20
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579210"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843881"
 ---
-# <a name="azure-blockchain-workbench-application-versioning"></a>Versionsverwaltung für die Azure Blockchain Workbench-Anwendung
+# <a name="azure-blockchain-workbench-preview-application-versioning"></a>Versionsverwaltung für die Azure Blockchain Workbench-Anwendung (Vorschauversion)
 
-Sie können mehrere Versionen einer Azure Blockchain Workbench-App erstellen und verwenden. Wenn mehrere Versionen derselben Anwendung hochgeladen werden, ist ein Versionsverlauf verfügbar, und Benutzer können wählen, welche Version sie verwenden möchten.
+Sie können mehrere Versionen einer Azure Blockchain Workbench-App (Vorschauversion) erstellen und verwenden. Wenn mehrere Versionen derselben Anwendung hochgeladen werden, ist ein Versionsverlauf verfügbar, und Benutzer können wählen, welche Version sie verwenden möchten.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

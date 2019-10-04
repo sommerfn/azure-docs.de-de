@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: 04163bea8f4c1247f42b65c35c2b82910e623bc9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 7bb9b1c545d30f66a09817ba977f12666a9f41c9
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661376"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60394298"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Erstellen Ihrer ersten Azure Service Fabric-Anwendung
 > [!div class="op_single_selector"]
@@ -108,7 +108,7 @@ Actor-Projekte führen keine eigenständigen Aktionen durch. Sie benötigen eine
 
 1. Führen Sie das Skript mithilfe des watch-Hilfsprogramms aus, um die Ausgabe des Actor-Diensts zu erhalten.
 
-   Im Falle von MAC OS X müssen Sie zusätzlich folgende Befehle ausführen, um den Ordner „myactorsvcTestClient“ an einen Speicherort innerhalb des Containers zu kopieren.
+   Im Fall von MAC OS X müssen Sie zusätzlich folgende Befehle ausführen, um den Ordner „myactorsvcTestClient“ an denselben Speicherort innerhalb des Containers zu kopieren.
     
     ```bash
     docker cp  [first-four-digits-of-container-ID]:/home

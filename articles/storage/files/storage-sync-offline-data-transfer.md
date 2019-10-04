@@ -1,19 +1,18 @@
 ---
 title: Migrieren von Daten in die Azure-Dateisynchronisierung mithilfe von Azure Data Box und anderen Methoden
 description: Informationen zum Migrieren von Massendaten auf mit der Azure-Dateisynchronisierung kompatible Weise.
-services: storage
-author: fauhse
+author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/12/2019
-ms.author: fauhse
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3b286bbe2c246345bf6acd84a4fc0c400451c706
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9264aa6d24256b991abefe35b41045caa2e76d67
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445346"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997780"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Migrieren von Massendaten in die Azure-Dateisynchronisierung
 Zum Migrieren von Massendaten in die Azure-Dateisynchronisierung gibt es zwei Möglichkeiten:
@@ -23,9 +22,10 @@ Zum Migrieren von Massendaten in die Azure-Dateisynchronisierung gibt es zwei M�
 
 In diesem Artikel wird erklärt, wie Sie Dateien offline auf eine Weise migrieren können, die mit der Azure-Dateisynchronisierung kompatibel ist. Befolgen Sie diese Anweisungen, um Dateikonflikte zu vermeiden und Ihre Zugriffssteuerlisten (ACLs) für Dateien und Ordner und Zeitstempel nach Aktivierung der Synchronisierung beizubehalten.
 
-## <a name="online-migration-tools"></a>Onlinemigrationstools
-Der Prozess, den wir in diesem Artikel beschreiben, funktioniert nicht nur für Data Box, sondern auch für andere Offlinemigrationstools. Er funktioniert auch für Onlinetools wie AzCopy, Robocopy bzw. Tools und Dienste von Partnern. Unabhängig davon, wie Sie die anfängliche Problematik beim Hochladen in den Griff bekommen, befolgen Sie die Schritte in diesem Artikel, um diese Tools in einer Weise zu verwenden, die mit der Azure-Dateisynchronisierung kompatibel ist.
+## <a name="migration-tools"></a>Migrationstools
+Der Prozess, den wir in diesem Artikel beschreiben, funktioniert nicht nur für Data Box, sondern auch für andere Offlinemigrationstools. Er funktioniert auch für Tools wie AzCopy oder Robocopy oder Partnertools und -dienste, die direkt über das Internet funktionieren. Um die anfängliche Herausforderung für das Hochladen zu meistern, befolgen Sie die Schritte in diesem Artikel, um diese Tools in einer Weise zu verwenden, die mit der Azure-Dateisynchronisierung kompatibel ist.
 
+In einigen Fällen müssen Sie von einem Windows-Server zu einem anderen Windows-Server wechseln, bevor Sie Azure-Dateisynchronisierung übernehmen. Der [Speichermigrationsdienst](https://aka.ms/storagemigrationservice) (Storage Migration Service, SMS) kann dabei helfen. Egal, ob Sie zu einer Serverbetriebssystemversion migrieren müssen, die von Azure-Dateisynchronisierung unterstützt wird (Windows Server 2012R2 und höher), oder einfach migrieren müssen, weil Sie ein neues System für Azure-Dateisynchronisierung kaufen, SMS bietet zahlreiche Features und Vorteile, die Ihnen helfen, die jeweilige Migration reibungslos zu erledigen.
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>Vorteile der Verwendung eines Tools zur Offlineübertragung von Daten
 Es folgen die wesentlichen Vorteile der Verwendung eines Übertragungstools wie Data Box für die Offlinemigration:
@@ -36,13 +36,13 @@ Es folgen die wesentlichen Vorteile der Verwendung eines Übertragungstools wie 
 - Bei Verwendung von Azure Data Box und Azure-Dateisynchronisierung treten keine Ausfallzeiten auf. Wenn Sie Data Box zum Übertragen von Daten in Azure verwenden, nutzen Sie die Netzwerkbandbreite effizient und bewahren die Dateitreue. Sie halten Ihren Namespace außerdem auf dem neuesten Stand, indem Sie nur die Dateien hochladen, die sich ändern, nachdem Sie die Daten in Azure verschoben haben.
 
 ## <a name="prerequisites-for-the-offline-data-transfer"></a>Voraussetzungen für die Offlinedatenübertragung
-Führen Sie vor Beginn der Offlinedatenübertragung diese Schritte aus:
+Sie sollten die Synchronisierung auf dem zu migrierenden Server nicht aktivieren, bevor Sie die Offlinedatenübertragung abschließen. Weitere Aspekte, die Sie zuerst berücksichtigen sollten:
 
-- Migrieren Sie Ihre Daten in einem Massenvorgang in eine oder mehrere Azure-Dateifreigaben, ehe Sie die Synchronisierung mithilfe der Azure-Dateisynchronisierung aktivieren.
-- Wenn Sie Data Box für die Massenmigration verwenden möchten, gehen Sie die [Bereitstellungsvoraussetzungen für Data Box](../../databox/data-box-deploy-ordered.md#prerequisites) durch.
-- Planen Sie Ihre endgültigen Topologie für die Azure-Dateisynchronisierung. Weitere Informationen finden Sie unter [Planung einer Bereitstellung der Azure-Dateisynchronisierung](storage-sync-files-planning.md).
-- Wählen Sie Azure Storage-Konten aus, die die Dateifreigaben enthalten sollen, mit denen Sie die Synchronisierung erfolgen soll. Migrieren Sie Ihre Massendaten auf temporäre Stagingfreigaben, die sich in denselben Speicherkonten befinden. Sie können nur eine endgültige Freigabe und Stagingfreigabe verwenden, die sich im gleichen Speicherkonto befinden.
-- Richten Sie eine neue Synchronisierungsbeziehung mit einem Serverstandort ein. Sie können eine bestehende Synchronisierungsbeziehung nicht für die Migration von Massendaten verwenden.
+- Wenn Sie Data Box für die Massenmigration verwenden möchten: Machen Sie sich mit den [Voraussetzungen für die Bereitstellung von Data Box](../../databox/data-box-deploy-ordered.md#prerequisites) vertraut.
+- Planen Sie Ihre endgültige Topologie für die Azure-Dateisynchronisierung: [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)
+- Wählen Sie Azure Storage-Konten aus, die die Dateifreigaben enthalten sollen, mit denen Sie die Synchronisierung durchführen möchten. Stellen Sie sicher, dass die Massenmigration zu temporären Stagingdateifreigaben im gleichen Speicherkonto stattfindet. Massenmigration kann nur mithilfe einer endgültigen und einer Stagingfreigabe aktiviert werden, die sich im gleichen Speicherkonto befinden.
+- Eine Massenmigration kann nur beim Erstellen einer neuen Synchronisierungsbeziehung mit einem Server genutzt werden. Sie können keine Massenmigration mit einer vorhandenen Synchronisierungsbeziehung aktivieren.
+
 
 ## <a name="process-for-offline-data-transfer"></a>Prozess für die Offlinedatenübertragung
 Im Folgenden erfahren Sie, wie Sie die Azure-Dateisynchronisierung so einrichten, dass sie mit Massenmigrationstools wie Azure Data Box kompatibel ist:
@@ -51,7 +51,7 @@ Im Folgenden erfahren Sie, wie Sie die Azure-Dateisynchronisierung so einrichten
 
 | Schritt | Detail |
 |---|---------------------------------------------------------------------------------------|
-| ![Schritt 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Bestellen Sie Ihre Data Box-Datenträger.](../../databox/data-box-deploy-ordered.md) Die Data Box-Familie bietet zur Erfüllung Ihrer Anforderungen [mehrere Produkte](https://azure.microsoft.com/services/storage/databox/data). Wenn Sie Ihre Data Box erhalten, befolgen Sie die zugehörige [Dokumentation zum Kopieren Ihrer Daten in diesen UNC-Pfad auf der Data Box](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box): *\\<DeviceIPAddres>\<Speicherkontoname_AzFile>\<Freigabename>*. *Freigabename* ist hier der Name der Stagingfreigabe. Senden Sie die Data Box zurück an Azure. |
+| ![Schritt 1](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Bestellen Sie Ihre Data Box-Datenträger.](../../databox/data-box-deploy-ordered.md) Die Data Box-Familie bietet zur Erfüllung Ihrer Anforderungen [mehrere Produkte](https://azure.microsoft.com/services/storage/databox/data). Wenn Sie Ihre Data Box erhalten, befolgen Sie die zugehörige [Dokumentation zum Kopieren Ihrer Daten](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) in diesen UNC-Pfad auf der Data Box: *\\<Geräte-IP-Adresse\>\<Speicherkontoname_AzFile\>\<Freigabename\>* . *Freigabename* ist hier der Name der Stagingfreigabe. Senden Sie die Data Box zurück an Azure. |
 | ![Schritt 2](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Warten Sie, bis die Dateien in den Azure-Dateifreigaben angezeigt werden, die Sie als temporäre Stagingfreigaben gewählt haben. *Aktivieren Sie nicht die Synchronisierung mit diesen Freigaben.* |
 | ![Schritt 3](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Erstellen Sie eine neue leere Freigabe für jede Dateifreigabe, die Data Box für Sie erstellt hat. Diese neue Freigabe muss sich im gleichen Speicherkonto wie die Data Box-Freigabe befinden. [Erstellen einer Dateifreigabe in Azure Files](storage-how-to-create-file-share.md). |
 | ![Schritt 4](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Erstellen Sie eine Synchronisierungsgruppe](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) in einem Speichersynchronisierungsdienst. Verweisen Sie auf die leere Freigabe als Cloudendpunkt. Wiederholen Sie diesen Schritt für jede Data Box-Dateifreigabe. [Richten Sie die Azure-Dateisynchronisierung ein](storage-sync-files-deployment-guide.md). |

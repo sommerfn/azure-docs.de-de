@@ -2,18 +2,18 @@
 title: 'Routinganforderungen – ExpressRoute: Azure | Microsoft-Dokumentation'
 description: Diese Seite enthält ausführliche Anforderungen für das Konfigurieren und Verwalten des Routings für ExpressRoute-Verbindungen.
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/11/2019
-ms.author: ganesr
+ms.date: 09/19/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: d3d4bbb0b9007ef61c96f980b9f3c3ee19dd11b5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9bc0d1b31ebeaecce8b4be8699cf87811047b6f9
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539121"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123261"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:
@@ -84,7 +84,7 @@ Sie müssen eigene öffentliche IP-Adressen zum Einrichten der BGP-Sitzungen ver
 Sie können für das private Peering öffentliche oder private IPv4-Adressen verwenden. Wir stellen eine End-to-End-Isolation für Ihren Datenverkehr bereit, sodass beim privaten Peering keine Überlappungen von Adressen mit anderen Kunden möglich sind. Diese Adressen werden nicht im Internet angekündigt. 
 
 ### <a name="microsoft-peering"></a>Microsoft-Peering
-Über den Microsoft-Peeringpfad können Sie eine Verbindung mit Microsoft-Clouddiensten herstellen. Die Liste der Dienste umfasst Office 365-Dienste wie z.B. Exchange Online, SharePoint Online, Skype for Business und Dynamics 365. Microsoft unterstützt die bidirektionale Konnektivität für das Microsoft-Peering. Für Datenverkehr, der für Microsoft-Clouddienste bestimmt ist, müssen vor dem Eintritt in das Microsoft-Netzwerk gültige, öffentliche IPv4-Adressen verwendet werden.
+Über den Microsoft-Peeringpfad können Sie eine Verbindung mit Microsoft-Clouddiensten herstellen. Die Liste der Dienste umfasst Office 365-Dienste wie z.B. Exchange Online, SharePoint Online, Skype for Business und Microsoft Teams. Microsoft unterstützt die bidirektionale Konnektivität für das Microsoft-Peering. Für Datenverkehr, der für Microsoft-Clouddienste bestimmt ist, müssen vor dem Eintritt in das Microsoft-Netzwerk gültige, öffentliche IPv4-Adressen verwendet werden.
 
 Stellen Sie sicher, dass Ihre IP-Adresse und die AS-Nummer für Sie in einer der folgenden Registrierungen registriert sind:
 
@@ -154,47 +154,53 @@ Die Seite [ExpressRoute-Partner und Peeringstandorte](expressroute-locations.md)
 
 Sie können mehr als eine ExpressRoute-Verbindung pro geopolitischer Region erwerben. Wenn Sie über mehrere Verbindungen verfügen, ergeben sich für Sie aufgrund der Georedundanz daraus erhebliche Vorteile in Bezug auf Hochverfügbarkeit. Bei Verwendung mehrerer ExpressRoute-Verbindungen erhalten Sie die gleiche Gruppe von Präfixen, die von Microsoft für das Microsoft-Peering und die öffentlichen Peeringpfade bekannt gegeben werden. Dies bedeutet, dass Sie dann mehrere Pfade aus dem Netzwerk zu Microsoft nutzen können. Dies kann unter Umständen dazu führen, dass in Ihrem Netzwerk suboptimale Routingentscheidungen getroffen werden. Dies kann die Konnektivität für verschiedene Dienste beeinträchtigen. Sie können die Communitywerte nutzen, um die richtigen Routingentscheidungen zu treffen und [optimales Routing für Benutzer](expressroute-optimize-routing.md) zu bieten.
 
-| **Microsoft Azure-Region** | **BGP-Communitywert** |
-| --- | --- |
+| **Microsoft Azure-Region** | **Regionale BGP-Community** | **Speicher-BGP-Community** | **SQL BGP-Community** | **Cosmos DB-BGP-Community** |
+| --- | --- | --- | --- | --- |
 | **Nordamerika** | |
-| USA (Ost) | 12076:51004 |
-| USA (Ost) 2 | 12076:51005 |
-| USA (Westen) | 12076:51006 |
-| USA, Westen 2 | 12076:51026 |
-| USA, Westen-Mitte | 12076:51027 |
-| USA Nord Mitte | 12076:51007 |
-| USA Süd Mitte | 12076:51008 |
-| USA (Mitte) | 12076:51009 |
-| Kanada, Mitte | 12076:51020 |
-| Kanada, Osten | 12076:51021 |
+| East US | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
+| USA (Ost) 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
+| USA (Westen) | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
+| USA, Westen 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
+| USA, Westen-Mitte | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
+| USA Nord Mitte | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
+| USA Süd Mitte | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
+| USA (Mitte) | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
+| Kanada, Mitte | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
+| Kanada, Osten | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
 | **Südamerika** | |
-| Brasilien Süd | 12076:51014 |
+| Brasilien Süd | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 |
 | **Europa** | |
-| Nordeuropa | 12076:51003 |
-| Europa, Westen | 12076:51002 |
-| UK, Süden | 12076:51024 |
-| UK, Westen | 12076:51025 |
-| Frankreich, Mitte | 12076:51030 |
-| Frankreich, Süden | 12076:51031 |
+| Nordeuropa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 |
+| Europa, Westen | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 |
+| UK, Süden | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 |
+| UK, Westen | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
+| Frankreich, Mitte | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 |
+| Frankreich, Süden | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
 | **Asien-Pazifik** | |
-| Asien, Osten | 12076:51010 |
-| Asien, Südosten | 12076:51011 |
+| Asien, Osten | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
+| Asien, Südosten | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
 | **Japan** | |
-| Japan, Osten | 12076:51012 |
-| Japan, Westen | 12076:51013 |
+| Japan, Osten | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 |
+| Japan, Westen | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 |
 | **Australien** | |
-| Australien (Osten) | 12076:51015 |
-| Australien, Südosten | 12076:51016 |
+| Australien (Osten) | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 |
+| Australien, Südosten | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 |
 | **Australische Behörden** | |
-| Australien, Mitte | 12076:51032 |
-| Australien, Mitte 2 | 12076:51033 |
+| Australien, Mitte | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 |
+| Australien, Mitte 2 | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 |
 | **Indien** | |
-| Indien, Süden | 12076:51019 |
-| Indien, Westen | 12076:51018 |
-| Indien, Mitte | 12076:51017 |
+| Indien, Süden | 12076:51019 | 12076:52019 | 12076:53019 | 12076:54019 |
+| Indien, Westen | 12076:51018 | 12076:52018 | 12076:53018 | 12076:54018 |
+| Indien, Mitte | 12076:51017 | 12076:52017 | 12076:53017 | 12076:54017 |
 | **Korea** | |
-| Korea, Süden | 12076:51028 |
-| Korea, Mitte | 12076:51029 |
+| Korea, Süden | 12076:51028 | 12076:52028 | 12076:53028 | 12076:54028 |
+| Korea, Mitte | 12076:51029 | 12076:52029 | 12076:53029 | 12076:54029 |
+| **Südafrika**| |
+| Südafrika, Norden | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
+| Südafrika, Westen | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
+| **Vereinigte Arabische Emirate**| |
+| Vereinigte Arabische Emirate, Norden | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
+| VAE, Mitte | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
 
 
 Alle Routen, die von Microsoft angekündigt werden, werden mit dem entsprechenden Communitywert gekennzeichnet. 
@@ -204,14 +210,14 @@ Alle Routen, die von Microsoft angekündigt werden, werden mit dem entsprechende
 > 
 > 
 
-Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basierend auf dem zugehörigen Dienst mit einer Kennzeichnung. Dies gilt nur für das Microsoft-Peering. Die Tabelle unten enthält die Zuordnung des Diensts zum BGP-Communitywert.
+### <a name="service-to-bgp-community-value"></a>Dienst zu BGP-Communitywert
+Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basierend auf dem zugehörigen Dienst mit einer Kennzeichnung. Dies gilt nur für das Microsoft-Peering. Die Tabelle unten enthält die Zuordnung des Diensts zum BGP-Communitywert. Sie können das Cmdlet „Get-AzBgpServiceCommunity“ ausführen, um eine vollständige Liste der neuesten Werte abzurufen.
 
 | **Service** | **BGP-Communitywert** |
 | --- | --- |
 | Exchange Online | 12076:5010 |
 | SharePoint Online | 12076:5020 |
 | Skype for Business Online | 12076:5030 |
-| Dynamics 365 | 12076:5040 |
 | Azure Global Services* | 12076:5050 |
 | Andere Office 365 Online-Dienste | 12076:5100 |
 
@@ -242,7 +248,6 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype for Business Online |12076:5130 |
-| Dynamics 365 |12076:5140 |
 | Andere Office 365 Online-Dienste |12076:5200 |
 
 ## <a name="next-steps"></a>Nächste Schritte

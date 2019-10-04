@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: a49d30d3058a6cf3ce82d56076f348861ad631ff
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4ea5d6c734659d36822f62237a42a8fbe332c996
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438609"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68567105"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Manuelle Optimierung der Abfrageleistung in Azure SQL-Datenbank
 
@@ -34,7 +33,7 @@ Beim herkömmlichen lokalen Einsatz von SQL Server ist die anfängliche Kapazit�
 
 ### <a name="application-characteristics"></a>Anwendungsmerkmale
 
-Azure SQL-Datenbank-Diensttarife sind zwar für die Verbesserung der Leistungsstabilität und Vorhersagbarkeit für eine Anwendung ausgelegt, aber es gibt einige bewährte Methoden, mit denen Sie Ihre Anwendung so optimieren können, dass die Ressourcen einer Computegröße besser genutzt werden. Bei vielen Anwendungen können Sie zwar erhebliche Leistungsgewinne erzielen, indem Sie einfach auf eine höhere Computegröße oder einen höheren Diensttarif umstellen. Für einige Anwendungen ist jedoch eine weitere Optimierung erforderlich, um von einer höheren Dienstebene zu profitieren. Sie können zur Steigerung der Leistung eine zusätzliche Optimierung von Anwendungen erwägen, die über die folgenden Merkmale verfügen:
+Azure SQL-Datenbank-Dienstebenen sind zwar für die Verbesserung der Leistungsstabilität und Vorhersagbarkeit für eine Anwendung ausgelegt, aber es gibt einige bewährte Methoden, mit denen Sie Ihre Anwendung so optimieren können, dass die Ressourcen einer Computegröße besser genutzt werden. Bei vielen Anwendungen können Sie zwar erhebliche Leistungsgewinne erzielen, indem Sie einfach auf eine höhere Computegröße oder einen höheren Diensttarif umstellen. Für einige Anwendungen ist jedoch eine weitere Optimierung erforderlich, um von einer höheren Dienstebene zu profitieren. Sie können zur Steigerung der Leistung eine zusätzliche Optimierung von Anwendungen erwägen, die über die folgenden Merkmale verfügen:
 
 - **Anwendungen mit langsamer Leistung aufgrund von vielen Einzelaufrufen**
 
@@ -121,7 +120,7 @@ Nach der Erstellung wählt dieselbe SELECT-Anweisung einen anderen Plan, bei der
 
 ![Abfrageplan mit korrigierten Indizes](./media/sql-database-performance-guidance/query_plan_corrected_indexes.png)
 
-Die wichtigste Erkenntnis besteht darin, dass die E/A-Kapazität eines freigegebenen Warensystems mit mehr Einschränkungen als ein dedizierter Servercomputer versehen ist. Es ist wichtig, unnötige E/A-Vorgänge zu reduzieren, um das System innerhalb des DTU-Werts der einzelnen Computegrößen der Azure SQL-Datenbank-Diensttarife bestmöglich zu nutzen. Die Wahl des richtigen Designs der physischen Datenbank kann die Latenz für einzelne Abfragen und den Durchsatz gleichzeitiger Anforderungen pro Skalierungseinheit erheblich verbessern und die erforderlichen Kosten zur Erfüllung der Abfrage reduzieren. Weitere Informationen zu den fehlenden Index-DMVs finden Sie unter [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+Die wichtigste Erkenntnis besteht darin, dass die E/A-Kapazität eines freigegebenen Warensystems mit mehr Einschränkungen als ein dedizierter Servercomputer versehen ist. Es ist wichtig, unnötige E/A-Vorgänge zu reduzieren, um das System innerhalb des DTU-Werts der einzelnen Computegrößen der Azure SQL-Datenbank-Dienstebenen bestmöglich zu nutzen. Die Wahl des richtigen Designs der physischen Datenbank kann die Latenz für einzelne Abfragen und den Durchsatz gleichzeitiger Anforderungen pro Skalierungseinheit erheblich verbessern und die erforderlichen Kosten zur Erfüllung der Abfrage reduzieren. Weitere Informationen zu den fehlenden Index-DMVs finden Sie unter [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
 
 ### <a name="query-tuning-and-hinting"></a>Abfrageoptimierung/Abfragehinweise
 
@@ -262,7 +261,7 @@ Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von L
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu den DTU-basierten Diensttarifen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md).
-- Weitere Informationen zu den V-Kern-basierten Dienstebenen finden Sie unter [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
+- Weitere Informationen zu den DTU-basierten Dienstebenen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md).
+- Weitere Informationen zu den V-Kern-basierten Dienstebenen finden Sie unter [vCore-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
 - Weitere Informationen zu Pools für elastische Datenbanken finden Sie unter [Was ist ein Pool für elastische Azure-Datenbanken?](sql-database-elastic-pool.md).
 - Informationen zur Leistung und zu Pools für elastische Datenbanken finden Sie unter [Wann ein Pool für elastische Datenbanken in Frage kommt](sql-database-elastic-pool-guidance.md).

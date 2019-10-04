@@ -3,18 +3,18 @@ title: Clustering von Punktdaten in Azure Maps | Microsoft-Dokumentation
 description: Gruppieren von Punktdaten im Web-SDK
 author: rbrundritt
 ms.author: richbrun
-ms.date: 03/27/2019
+ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: d4dc6f0c8fd2dff74a1997c9dca5a31abc70c03a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5f51c1166364a3470a1cc943e66d429c32cdc49b
+ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580895"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68839478"
 ---
 # <a name="clustering-point-data"></a>Clustering von Punktdaten
 
@@ -33,9 +33,9 @@ var datasource = new atlas.source.DataSource(null, {
     //The radius in pixels to cluster points together.
     clusterRadius: 45,
 
-    //The maximium zoom level in which clustering occurs.
+    //The maximum zoom level in which clustering occurs.
     //If you zoom in more than this, all points are rendered as symbols.
-    clusterMaxZoom: 15 
+    clusterMaxZoom: 15
 });
 ```
 
@@ -46,9 +46,9 @@ Die Klasse `DataSource` verfügt im Hinblick auf das Clustering auch über die f
 
 | Methode | Rückgabetyp | BESCHREIBUNG |
 |--------|-------------|-------------|
-| getClusterChildren(clusterId: number) | Promise&lt;Feature&lt;Geometry, any&gt; \| Shape&gt; | Ruft die untergeordneten Elemente des angegebenen Clusters für den nächsten Zoomfaktor ab. Diese untergeordneten Elemente können eine Kombination aus Formen und untergeordneten Clustern sein. Die untergeordneten Cluster sind Features mit Eigenschaften, die „ClusteredProperties“ entsprechen. |
+| getClusterChildren(clusterId: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | Ruft die untergeordneten Elemente des angegebenen Clusters für den nächsten Zoomfaktor ab. Diese untergeordneten Elemente können eine Kombination aus Formen und untergeordneten Clustern sein. Die untergeordneten Cluster sind Features mit Eigenschaften, die „ClusteredProperties“ entsprechen. |
 | getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | Berechnet einen Zoomfaktor, bei dem der Cluster mit der Erweiterung oder Unterteilung beginnt. |
-| getClusterLeaves(clusterId: number, limit: number, offset: number) | Promise&lt;Feature&lt;Geometry, any&gt; \| Shape&gt; | Ruft alle Punkte in einem Cluster ab. Legen Sie `limit` fest, um eine Teilmenge der Punkte zurückzugeben, und verwenden Sie `offset`, um die Punkte zu durchlaufen. |
+| getClusterLeaves(clusterId: number, limit: number, offset: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | Ruft alle Punkte in einem Cluster ab. Legen Sie `limit` fest, um eine Teilmenge der Punkte zurückzugeben, und verwenden Sie `offset`, um die Punkte zu durchlaufen. |
 
 ## <a name="display-clusters-using-a-bubble-layer"></a>Anzeigen von Clustern mithilfe einer Blasenebene
 
@@ -84,12 +84,12 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 Wenn Mausereignisse auf einer Ebene auftreten, die gruppierte Datenpunkte enthalten, wird der gruppierte Datenpunkt als GeoJSON-Punktfeatureobjekt an das Ereignis zurückgegeben. Dieses Punktfeature weist die folgenden Eigenschaften auf:
 
-| Eigenschaftenname | Type | BESCHREIBUNG |
+| Eigenschaftenname | type | BESCHREIBUNG |
 |---------------|------|-------------|
 | cluster | boolean | Gibt an, ob das Feature einen Cluster darstellt. |
 | cluster_id | Zeichenfolge | Eine eindeutige ID für den Cluster, die mit den DataSource-Methoden `getClusterExpansionZoom`, `getClusterChildren` und `getClusterLeaves` verwendet werden kann. |
 | point_count | number | Die Anzahl der Punkte, die der Cluster enthält. |
-| point_count_abbreviated | Zeichenfolge | Eine Zeichenfolge, die lange point_count-Werte kürzt. (Beispiel: 4.000 wird zu 4K) |
+| point_count_abbreviated | Zeichenfolge | Eine Zeichenfolge, die den `point_count`-Wert kürzt, falls zu lang. (Beispiel: 4.000 wird zu 4K) |
 
 Dieses Beispiel nimmt eine Blasenebene, die Clusterpunkte rendert, und fügt ein Click-Ereignis hinzu, das beim Auslösen den nächsten Zoomfaktor berechnet und die Karte entsprechend zoomt, bei dem der Cluster mithilfe der `getClusterExpansionZoom`-Methode der Klasse `DataSource` und der `cluster_id`-Eigenschaft des angeklickten gruppierten Datenpunkts unterteilt wird. 
 
@@ -107,6 +107,16 @@ Die Punktdaten, die ein Cluster darstellt, sind über einen Bereich verteilt. We
 
  <iframe height="500" style="width: 100%;" scrolling="no" title="Konvexe Hülle des Clusterbereichs" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>Cluster area convex hull (Konvexe Hülle des Clusterbereichs)</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+## <a name="aggregating-data-in-clusters"></a>Aggregieren von Daten in Clustern
+
+Cluster werden oft mithilfe eines Symbols mit der Anzahl der Punkte innerhalb des Clusters dargestellt. Manchmal ist es jedoch wünschenswert, den Clusterstil auf der Grundlage einer Metrik weiter anzupassen, wie z.B. dem Gesamtumsatz aller Punkte innerhalb eines Clusters. Mit Clusteraggregaten können benutzerdefinierte Eigenschaften erstellt und dann mithilfe einer Berechnung vom Typ [Aggregatausdruck](data-driven-style-expressions-web-sdk.md#aggregate-expression) aufgefüllt werden.  Clusteraggregate können in der Option `clusterProperties` von `DataSource` definiert werden.
+
+Im folgenden Beispiel wird ein Aggregatausdruck verwendet, um eine Anzahl basierend auf der Eigenschaft „Entitätstyp“ der einzelnen Datenpunkte in einem Cluster zu berechnen.
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Clusteraggregate" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>Cluster aggregates</a> (Clusteraggregate) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>Code Pen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Nächste Schritte

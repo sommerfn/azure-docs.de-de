@@ -3,36 +3,32 @@ title: Einrichten einer Gerätevorlage in einer Azure IoT Central-Anwendung | Mi
 description: Informationen zum Einrichten einer Gerätevorlage mit Messungen, Einstellungen, Eigenschaften, Regeln und Dashboard.
 author: viv-liu
 ms.author: viviali
-ms.date: 01/30/2019
+ms.date: 06/19/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: db8c8de7a8047f7aa6a81f6a3b372d161408f1be
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 63c0a04a6d18d6af850b1492d2efa9df9aa65219
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679345"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877375"
 ---
 # <a name="set-up-a-device-template"></a>Einrichten einer Gerätevorlage
 
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+
 Eine Gerätevorlage ist eine Blaupause, die die Merkmale und das Verhalten eines Gerätetyps definiert, der eine Verbindung mit einer Azure IoT Central-Anwendung herstellt.
 
-Beispielsweise kann ein Hersteller eine Gerätevorlage für einen mit IoT verbundenen Lüfter mit folgenden Merkmalen erstellen:
+Beispielsweise kann ein Hersteller eine Gerätevorlage für einen verbundenen Lüfter mit folgenden Merkmalen erstellen:
 
 - Messung der Temperaturtelemetrie
-
+- Messung des Standorts
 - Messung von Lüftermotor-Fehlerereignissen
-
 - Messung des Lüfterbetriebszustands
-
 - Einstellung der Lüfterdrehzahl
-
-- Standorteigenschaft
-
 - Regeln zum Senden von Warnungen
-
 - Dashboard mit einer allgemeinen Übersicht über das Gerät
 
 Anhand dieser Gerätevorlage kann ein Operator reale Lüftergeräte mit Namen wie z.B. **Lüfter 1** und **Lüfter 2** erstellen und verbinden. All diese Lüfter weisen Messungen, Einstellungen, Eigenschaften, Regeln und ein Dashboard auf, die von Benutzern Ihrer Anwendung überwacht und verwaltet werden können.
@@ -61,6 +57,7 @@ Messungen sind die Daten, die von Ihrem Gerät stammen. Sie können Ihrer Gerät
 - **Telemetriemessungen** sind die numerischen Datenpunkte, die im Lauf der Zeit von Ihrem Gerät erfasst werden. Diese werden als kontinuierlicher Datenstrom dargestellt. Ein Beispiel ist Temperatur.
 - **Ereignismessungen** sind zeitpunktbezogene Daten, die ein bedeutsames Ereignis auf dem Gerät darstellen. Ein Schweregrad stellt die Bedeutung eines Ereignisses dar. Ein Beispiel ist ein Lüftermotorfehler.
 - **Zustandsmessungen** bilden den Zustand des Geräts oder der zugehörigen Komponenten über einen Zeitraum ab. Beispielsweise können für den Lüftermodus **In Betrieb** und **Angehalten** als die beiden möglichen Zustandsangaben definiert werden.
+- Bei der Messung des **Standorts** handelt es sich um die Längen- und Breitengrade des Geräts über einen Zeitraum hinweg. Ein Lüfter kann zum Beispiel von einem Standort zu einem anderen gebracht werden.
 
 ### <a name="create-a-telemetry-measurement"></a>Erstellen einer Telemetriemessung
 
@@ -79,7 +76,7 @@ Beispielsweise können Sie eine neue Temperaturtelemetriemessung hinzufügen:
 
 Nachdem Sie auf **Speichern** geklickt haben, wird die Messung **Temperatur** in der Liste der Messungen angezeigt. In Kürze sehen Sie die Visualisierung der Temperaturdaten des simulierten Geräts.
 
-Beim Anzeigen von Telemetriedaten können Sie zwischen den folgenden Aggregationsoptionen auswählen: Mittelwert, Minimum, Maximum, Summe und Anzahl. **Mittelwert** ist als Standardaggregation im Diagramm ausgewählt. 
+Beim Anzeigen von Telemetriedaten können Sie zwischen den folgenden Aggregationsoptionen auswählen: Mittelwert, Minimum, Maximum, Summe und Anzahl. **Mittelwert** ist als Standardaggregation im Diagramm ausgewählt.
 
 > [!NOTE]
 > Die Telemetriemessung gibt Daten als Gleitkommazahl aus.
@@ -115,7 +112,7 @@ Geben Sie in diesem Formular den **Anzeigenamen**, **Feldnamen** und **Werte** f
 
 Sie können z.B. den neuen Zustand **Lüftermodus** hinzufügen, der zwei mögliche Werte hat, die vom Gerät gesendet werden können: **In Betrieb** und **Angehalten**.
 
-| Anzeigename | Feldname    |  Wert 1   | Anzeigename | Wert 2    |Anzeigename  | 
+| Anzeigename | Feldname    |  Wert 1   | Anzeigename | Wert 2    |Anzeigename  |
 | -------------| ------------- |----------- | -------------| -----------| -------------|
 | Fan Mode     | fanmode       |  1         | Operating    |     0      | Beendet      |
 
@@ -128,9 +125,37 @@ Wenn das Gerät in einer kleinen Zeitspanne zu viele Datenpunkte sendet, wird di
 > [!NOTE]
 > Die Statusmessung gibt Daten vom Typ „string“ aus.
 
+### <a name="create-a-location-measurement"></a>Erstellen Sie eine Messung des Standorts
+
+Um eine neue Standortmessung hinzuzufügen, wählen Sie **+ Neue Messung** aus, wählen Sie den Messungstyp **Standort** aus, und geben Sie die Details im Formular **„Messung erstellen“** ein.
+
+Beispielsweise können Sie eine neue Standorttelemetriemessung hinzufügen:
+
+| Anzeigename        | Feldname    |
+| --------------------| ------------- |
+| Asset-Standorts      |  assetloc     |
+
+![Formular „Standort erstellen“ mit Details zum Standort](./media/howto-set-up-template/locationmeasurementsform.png)
+
+Nachdem Sie auf **Speichern** geklickt haben, wird die Messung **Standort** in der Liste der Messungen angezeigt. In Kürze sehen Sie die Visualisierung der Standortdaten des simulierten Geräts.
+
+Wenn ein Standort angezeigt wird, können Sie eine der folgenden Optionen wählen: letzter Standort und Standortverlauf. Der **Standortverlauf** wird nur über den ausgewählten Zeitraum angezeigt.
+
+Der Datentyp der Standortmessung ist ein Objekt, das Längengrad, Breitengrad und optional auch die Höhe enthält. Der folgende Ausschnitt zeigt die JavaScript-Struktur:
+
+```javascript
+assetloc: {
+  lon: floating point number,
+  lat: floating point number,
+  alt?: floating point number
+}
+```
+
+Wenn das echte Gerät verbunden wird, wird der als Messung hinzugefügte Standort mit dem vom Gerät gesendeten Wert aktualisiert. Nachdem Sie Ihre Standortmessung konfiguriert haben, können Sie [eine Karte hinzufügen, um den Standort auf dem Gerätedashboard zu visualisieren](#add-a-location-measurement-in-the-dashboard).
+
 ## <a name="settings"></a>Einstellungen
 
-Ein Gerät wird durch Einstellungen gesteuert. Diese ermöglichen den Bedienern die Angabe von Eingaben für das Gerät. Sie können Ihrer Gerätevorlage mehrere Einstellungen hinzufügen, die auf der Registerkarte **Einstellungen** als Kacheln angezeigt und von Operatoren verwendet werden können. Sie können verschiedene Arten von Einstellungen hinzufügen: Drehzahl, Text, Datum, Ein-/Ausschalten, Auswahlliste und Abschnittsbezeichnung.
+Ein Gerät wird durch Einstellungen gesteuert. Diese ermöglichen den Bedienern die Angabe von Eingaben für das Gerät. Sie können Ihrer Gerätevorlage mehrere Einstellungen hinzufügen, die auf der Registerkarte **Einstellungen** als Kacheln angezeigt und von Operatoren verwendet werden können. Sie können verschiedene Arten von Einstellungen hinzufügen: Drehzahl, Text, Datum, Ein-/Ausschalten und Abschnittsbezeichnung.
 
 Einstellungen können einen von drei Zuständen aufweisen. Das Gerät meldet diese Zustände.
 
@@ -150,14 +175,14 @@ Sie können zum Beispiel eine neue Einstellung für die Lüfterdrehzahl hinzufü
 
 Nach der Auswahl von **Speichern** wird die Einstellung **Lüfterdrehzahl** als Kachel angezeigt. Ein Bediener kann mit der Einstellung auf der Seite **Device Explorer** die Lüfterdrehzahl des Geräts ändern.
 
-## <a name="properties"></a>Eigenschaften
+## <a name="properties"></a>Properties
 
-Eigenschaften sind die dem Gerät zugeordneten Gerätemetadaten, z.B. Gerätestandort und Seriennummer. Fügen Sie Ihrer Gerätevorlage mehrere Eigenschaften hinzu, die auf der Registerkarte **Eigenschaften** als Kacheln angezeigt werden. Eine Eigenschaft kann einen Typ wie z.B. Anzahl, Text, Datum, Ein-/Ausschalten, Geräteeigenschaft, Bezeichnung oder Standort haben. Ein Bediener kann die Werte für Eigenschaften beim Erstellen eines neuen Geräts angeben und sie anschließend jederzeit bearbeiten. Geräteeigenschaften sind schreibgeschützt und werden vom Gerät an die Anwendung gesendet. Ein Bediener kann Eigenschaften des Geräts nicht ändern. Wenn ein echtes Gerät eine Verbindung herstellt, wird die Geräteeigenschaftenkachel in der Anwendung aktualisiert.
+Eigenschaften sind die dem Gerät zugeordneten Gerätemetadaten, z. B. einen festen Gerätestandort und Seriennummer. Fügen Sie Ihrer Gerätevorlage mehrere Eigenschaften hinzu, die auf der Registerkarte **Eigenschaften** als Kacheln angezeigt werden. Eine Eigenschaft kann einen Typ wie z. B. Anzahl, Text, Datum, Ein-/Ausschalten, Geräteeigenschaft, Bezeichnung oder einen festen Standort haben. Ein Bediener kann die Werte für Eigenschaften beim Erstellen eines neuen Geräts angeben und sie anschließend jederzeit bearbeiten. Geräteeigenschaften sind schreibgeschützt und werden vom Gerät an die Anwendung gesendet. Ein Bediener kann Eigenschaften des Geräts nicht ändern. Wenn ein echtes Gerät eine Verbindung herstellt, wird die Geräteeigenschaftenkachel in der Anwendung aktualisiert.
 
 Es gibt zwei Kategorien von Eigenschaften:
 
 - _Geräteeigenschaften_ werden vom Gerät an die IoT Central-Anwendung gemeldet. Geräteeigenschaften sind schreibgeschützte Werte, die vom Gerät gemeldet und in der Anwendung aktualisiert werden, wenn das echte Gerät verbunden wird.
-- _Anwendungseigenschaften_ werden in der Anwendung gespeichert und können vom Bediener bearbeitet werden. Das Gerät erkennt keine Anwendungseigenschaften.
+- _Anwendungseigenschaften_ werden in der Anwendung gespeichert und können vom Bediener bearbeitet werden. Anwendungseigenschaften werden nur in der Anwendung gespeichert und erreichen nie das Gerät.
 
 Sie können z.B. das Datum der letzten Wartung für das Gerät als neue Eigenschaft **Datum** (eine Anwendungseigenschaft) auf der Registerkarte **Eigenschaften** hinzufügen:
 
@@ -171,14 +196,17 @@ Nach der Auswahl von **Speichern** wird das Datum der letzten Wartung für das G
 
 Nach Erstellung der Kachel können Sie den Wert der Anwendungseigenschaft im **Device Explorer** ändern.
 
-### <a name="create-a-location-property-through-azure-maps"></a>Erstellen einer Standorteigenschaft über Azure Maps
+### <a name="create-a-location-property"></a>Erstellen einer Standorteigenschaft
 
-Sie können Ihre Standortdaten mit geografischem Kontext in Azure IoT Central versehen und Breiten- und Längengradkoordinaten einer Anschrift zuordnen. Alternativ können Sie Breiten- und Längengradkoordinaten zuordnen. Azure Maps unterstützt diese Funktion in IoT Central.
+Sie können Ihre Standortdaten mit geografischem Kontext in Azure IoT Central versehen und Breiten- und Längengradkoordinaten oder einer Anschrift zuordnen. Azure Maps unterstützt diese Funktion in IoT Central.
 
 Sie können zwei Arten von Standorteigenschaften hinzufügen:
 
-- **Standort als eine Anwendungseigenschaft**, die in der Anwendung gespeichert wird. Das Gerät erkennt keine Anwendungseigenschaften.
-- **Standort als eine Geräteeigenschaft**, die vom Gerät an die Anwendung gemeldet wird.
+- **Standort als eine Anwendungseigenschaft**, die in der Anwendung gespeichert wird. Anwendungseigenschaften werden nur in der Anwendung gespeichert und erreichen nie das Gerät.
+- **Standort als eine Geräteeigenschaft**, die vom Gerät an die Anwendung gemeldet wird. Diese Art von Eigenschaft eignet sich am besten für einen statischen Standort.
+
+> [!NOTE]
+> Standort als Eigenschaft zeichnet keinen Verlauf auf. Wenn Sie einen Verlauf benötigen, verwenden Sie stattdessen die Standortmessung.
 
 #### <a name="add-location-as-an-application-property"></a>Hinzufügen eines Standorts als eine Anwendungseigenschaft
 
@@ -191,7 +219,7 @@ Sie können mithilfe von Azure Maps in Ihrer Azure IoT Central-Anwendung eine St
 3. Konfigurieren Sie den **Anzeigenamen**, **Feldnamen** und (optional) den **Anfangswert** des Standorts.
 
     | Anzeigename  | Feldname | Anfangswert |
-    | --------------| -----------|---------| 
+    | --------------| -----------|---------|
     | Installationsadresse | installAddress | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
 
    ![Formular „Standort konfigurieren“ mit Details zum Standort](./media/howto-set-up-template/locationcloudproperty2.png)
@@ -221,7 +249,7 @@ Sie können eine Standorteigenschaft als eine Geräteeigenschaft erstellen, die 
 
    ![Formular „Geräteeigenschaften konfigurieren“ mit Details zum Standort](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-Wenn das echte Gerät verbunden wird, wird der als Geräteeigenschaft hinzugefügte Standort mit dem vom Gerät gesendeten Wert aktualisiert. Nachdem Sie nun Ihre Standorteigenschaft konfiguriert haben, können Sie [eine Karte hinzufügen, um den Standort auf dem Gerätedashboard zu visualisieren](#add-an-azure-maps-location-in-the-dashboard).
+Wenn das echte Gerät verbunden wird, wird der als Geräteeigenschaft hinzugefügte Standort mit dem vom Gerät gesendeten Wert aktualisiert. Nachdem Sie nun Ihre Standorteigenschaft konfiguriert haben, können Sie [eine Karte hinzufügen, um den Standort auf dem Gerätedashboard zu visualisieren](#add-a-location-property-in-the-dashboard).
 
 ## <a name="commands"></a>Befehle
 
@@ -229,9 +257,9 @@ Befehle werden verwendet, um ein Gerät remote zu verwalten. Sie ermöglichen Op
 
 Wie unterscheidet sich ein Befehl von einer Einstellung?
 
-* **Einstellung**: Eine Einstellung ist eine Konfiguration, die Sie auf ein Gerät anwenden möchten. Sie möchten, dass das Gerät die Konfiguration beibehält, bis Sie sie ändern. Angenommen, Sie möchten die Temperatur Ihres Gefrierschranks einstellen, und Sie wünschen diese Einstellung auch dann, wenn der Gefrierschrank neu gestartet wird.
+- **Einstellung**: Eine Einstellung ist eine Konfiguration, die Sie auf ein Gerät anwenden möchten. Sie möchten, dass das Gerät die Konfiguration beibehält, bis Sie sie ändern. Angenommen, Sie möchten die Temperatur Ihres Gefrierschranks einstellen, und Sie wünschen diese Einstellung auch dann, wenn der Gefrierschrank neu gestartet wird.
 
-* **Befehl**: Sie verwenden Befehle, um einen Befehl von IoT Central aus auf dem Gerät sofort remote auszuführen. Wenn ein Gerät nicht angeschlossen ist, wird der Befehl mit einem Fehler abgebrochen. Angenommen, Sie möchten ein Gerät neu starten.
+- **Befehl**: Sie verwenden Befehle, um einen Befehl von IoT Central aus auf dem Gerät sofort remote auszuführen. Wenn ein Gerät nicht angeschlossen ist, wird der Befehl mit einem Fehler abgebrochen. Angenommen, Sie möchten ein Gerät neu starten.
 
 Sie können z. B. einen neuen **Echo**-Befehl hinzufügen, indem Sie die Registerkarte **Befehle** auswählen, **+ Neuer Befehl** auswählen und die neuen Befehlsdetails eingeben:
 
@@ -239,9 +267,11 @@ Sie können z. B. einen neuen **Echo**-Befehl hinzufügen, indem Sie die Regist
 | --------------| -----------|---------------- | --------- |
 | Echo-Befehl  | Echo       |  30             | text      |
 
-![Formular „Befehl konfigurieren“ mit Details zu „Echo“](./media/howto-set-up-template/commandsecho.png)
+![Formular „Befehl konfigurieren“ mit Details zu „Echo“](./media/howto-set-up-template/commandsecho1.png)
 
 Nach der Auswahl von **Speichern** wird der Befehl **Echo** als Kachel angezeigt und kann vom **Device Explorer** verwendet werden, sobald Ihr echtes Gerät verbunden ist. Die Feldnamen Ihres Befehls müssen mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, damit die Befehle erfolgreich ausgeführt werden können.
+
+[Dies ist ein Link zum Beispielcode für C-Geräte.](https://github.com/Azure/iot-central-firmware/blob/ad40358906aeb8f2040a822ba5292df866692c16/MXCHIP/mxchip_advanced/src/AzureIOTClient.cpp#L34)
 
 ## <a name="rules"></a>Regeln
 
@@ -251,35 +281,52 @@ Anhand von Regeln können Operatoren Geräte nahezu in Echtzeit überwachen. Reg
 
 ## <a name="dashboard"></a>Dashboard
 
-Im Dashboard findet ein Operator Informationen zu einem Gerät. Als Hersteller können Sie dieser Seite Kacheln hinzufügen, mit deren Hilfe Bediener das Verhalten des Geräts nachvollziehen können. Sie können Ihrer Gerätevorlage mehrere Dashboardkacheln hinzufügen. Sie können verschiedene Arten von Dashboardkacheln hinzufügen. Hierzu zählen unter anderem Bild, Liniendiagramm, Balkendiagramm, Key Performance Indicator (KPI), Einstellungen und Eigenschaften sowie Bezeichnung.
+Im Dashboard findet ein Operator Informationen zu einem Gerät. Als Hersteller können Sie dieser Seite Kacheln hinzufügen, mit deren Hilfe Bediener das Verhalten des Geräts nachvollziehen können. Sie können verschiedene Arten von Dashboardkacheln hinzufügen. Hierzu zählen unter anderem Bild, Liniendiagramm, Balkendiagramm, Key Performance Indicator (KPI), Einstellungen und Eigenschaften sowie Bezeichnung.
 
 Beispielsweise können Sie eine Kachel **Einstellungen und Eigenschaften** hinzufügen, um eine Auswahl der aktuellen Werte für Einstellungen und Eigenschaften anzuzeigen, indem Sie die Registerkarte **Dashboard** und die Kachel aus der Bibliothek auswählen:
 
-![Formular „Gerätedetails konfigurieren“ mit Details zu Einstellungen und Eigenschaften](./media/howto-set-up-template/dashboardsettingsandpropertiesform.png)
+![Formular „Gerätedetails konfigurieren“ mit Details zu Einstellungen und Eigenschaften](./media/howto-set-up-template/dashboardsettingsandpropertiesform1.png)
 
 Wenn jetzt Bediener das Dashboard im **Device Explorer** anzeigen, können sie die Kachel sehen.
 
-### <a name="add-an-azure-maps-location-in-the-dashboard"></a>Hinzufügen eines Azure Maps-Standorts im Dashboard
+### <a name="add-a-location-measurement-in-the-dashboard"></a>Hinzufügen einer Standortmessung im Dashboard
 
-Wenn Sie eine Standorteigenschaft konfiguriert haben, können Sie den Standort mithilfe einer Karte im Dashboard Ihres Geräts visualisieren.
+Wenn Sie eine Standortmessung konfiguriert haben, können Sie den Standort mithilfe einer Karte im Dashboard Ihres Geräts visualisieren. Bei Standortmessungen haben Sie die Möglichkeit, den Standortverlauf darzustellen.
 
 1. Navigieren Sie zur **Dashboard**-Registerkarte.
 
 1. Wählen Sie auf dem Gerätedashboard in der Bibliothek **Karte** aus.
 
-1. Geben Sie der Karte einen Titel. Das folgende Beispiel hat den Titel **Installationsstandort**. Wählen Sie dann die Standorteigenschaft aus, die Sie zuvor auf der Registerkarte **Eigenschaften** konfiguriert haben. Im folgenden Beispiel wird **Installationsadresse** ausgewählt.
+1. Geben Sie der Karte einen Titel. Das folgende Beispiel hat den Titel **„Aktueller Gerätestandort“** . Wählen Sie dann die Standortmessung aus, die Sie zuvor auf der Registerkarte **„Messungen“** konfiguriert haben. Im folgenden Beispiel währen Sie die Messung **„Asset-Standort“** aus:
 
    ![Formular „Karte konfigurieren“ mit Details zu Titel und Eigenschaften](./media/howto-set-up-template/locationcloudproperty5map.png)
 
-4. Wählen Sie **Speichern** aus. Die Kartenkachel zeigt jetzt den Standort an, den Sie ausgewählt haben.
+1. Wählen Sie **Speichern** aus. Die Kartenkachel zeigt jetzt den Standort an, den Sie ausgewählt haben.
 
-Sie können die Karte in die gewünschte Größe ändern. Wenn ein Bediener nun das Dashboard im **Device Explorer** anzeigt, kann dieser alle von Ihnen konfigurierten Dashboardkacheln einsehen, einschließlich einer Standortkarte.
+Sie können die Größe der Kartenkachel ändern. Wenn ein Bediener nun das Dashboard im **Device Explorer** anzeigt, kann dieser alle von Ihnen konfigurierten Dashboardkacheln einsehen, einschließlich einer Standortkarte.
+
+### <a name="add-a-location-property-in-the-dashboard"></a>Hinzufügen einer Standorteigenschaft im Dashboard
+
+Wenn Sie eine Standorteigenschaft konfiguriert haben, können Sie den Standort mit einer Karte im Dashboard Ihres Geräts visualisieren.
+
+1. Navigieren Sie zur **Dashboard**-Registerkarte.
+
+1. Wählen Sie auf dem Gerätedashboard in der Bibliothek **Karte** aus.
+
+1. Geben Sie der Karte einen Titel. Das folgende Beispiel hat den Titel **„Aktueller Gerätestandort“** . Wählen Sie dann die Standorteigenschaft aus, die Sie zuvor auf der Registerkarte **Eigenschaften** konfiguriert haben. Im folgenden Beispiel wurde die Messung **Gerätestandort** ausgewählt:
+
+   ![Formular „Karte konfigurieren“ mit Details zu Titel und Eigenschaften](./media/howto-set-up-template/locationcloudproperty6map.png)
+
+1. Wählen Sie **Speichern** aus. Die Kartenkachel zeigt jetzt den Standort an, den Sie ausgewählt haben.
+
+Sie können die Größe der Kartenkachel ändern. Wenn ein Bediener nun das Dashboard im **Device Explorer** anzeigt, kann dieser alle von Ihnen konfigurierten Dashboardkacheln einsehen, einschließlich einer Standortkarte.
+
+Mehr über die Verwendung von Kacheln in Azure IoT Central erfahren Sie unter [„Verwenden von Dashboardkacheln“](howto-use-tiles.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie erfahren haben, wie eine Gerätevorlage in Ihrer Azure IoT Central-Anwendung eingerichtet wird, wird als Nächstes Folgendes empfohlen:
 
-> [!div class="nextstepaction"]
-> [Erstellen einer neuen Gerätevorlagenversion](howto-version-devicetemplate.md)
-> [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](howto-connect-devkit.md)
-> [Verbinden einer generischen Clientanwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)](howto-connect-nodejs.md)
+- [Erstellen einer neuen Gerätevorlagenversion](howto-version-device-template.md)
+- [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](howto-connect-devkit.md)
+- [Verbinden einer generischen Clientanwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)](howto-connect-nodejs.md)

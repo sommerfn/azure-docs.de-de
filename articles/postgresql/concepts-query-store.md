@@ -1,21 +1,21 @@
 ---
-title: Abfragespeicher in Azure Database for PostgreSQL
-description: In diesem Artikel wird das Abfragespeicherfeature in Azure Database for PostgreSQL beschrieben.
+title: Abfragespeicher in Azure Database for PostgreSQL (Einzelserver)
+description: In diesem Artikel wird das Abfragespeicherfeature in Azure Database for PostgreSQL (Einzelserver) beschrieben.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.openlocfilehash: c904b6e6cd7a4dc0f9d5a442e20738e43595b369
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 08/21/2019
+ms.openlocfilehash: deab527d44713bffed1f430ec283592d0e4232ee
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485916"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764413"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Überwachen der Leistung mit dem Abfragespeicher
 
-**Anwendungsbereich:** Azure Database for PostgreSQL 9.6 und 10
+**Anwendungsbereich:** Azure Database for PostgreSQL – Einzelserverversionen 9.6, 10, 11
 
 Das Abfragespeicherfeature in Azure Database for PostgreSQL bietet eine Möglichkeit, um die Abfrageleistung im Zeitverlauf nachzuverfolgen. Der Abfragespeicher vereinfacht das Beheben von Leistungsproblemen, da er es Ihnen ermöglicht, die am längsten ausgeführten und ressourcenintensivsten Abfragen schnell zu ermitteln. Der Abfragespeicher erfasst automatisch einen Verlauf der Abfragen und Laufzeitstatistiken und bewahrt diese auf, damit Sie sie überprüfen können. Er unterteilt die Daten nach Zeitfenstern, damit Sie Verwendungsmuster für Datenbanken erkennen können. Die Daten für alle Benutzer, Datenbanken und Abfragen werden in einer Datenbank namens **azure_sys** in der Azure Database for PostgreSQL-Instanz gespeichert.
 
@@ -109,7 +109,7 @@ Mithilfe der folgenden Ansichten und Funktionen können Sie den Abfragespeicher 
 
 Abfragen werden normalisiert, indem ihre Struktur nach dem Entfernen von Literalen und Konstanten untersucht wird. Wenn zwei Abfragen mit Ausnahme von Literalwerten identisch sind, haben sie denselben Hash.
 
-### <a name="querystoreqsview"></a>query_store.qs_view
+### <a name="query_storeqs_view"></a>query_store.qs_view
 In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt eine Zeile für jede einzelne Datenbank-ID, Benutzer-ID und Abfrage-ID. 
 
 |**Name**   |**Typ** | **Referenzen**  | **Beschreibung**|
@@ -142,7 +142,7 @@ In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt e
 |blk_read_time  |double precision    || Gesamtzeit in Millisekunden, die die Anweisung zum Lesen von Blöcken benötigt hat (wenn track_io_timing aktiviert ist, andernfalls Null)|
 |blk_write_time |double precision    || Gesamtzeit in Millisekunden, die die Anweisung zum Schreiben von Blöcken benötigt hat (wenn track_io_timing aktiviert ist, andernfalls Null)|
     
-### <a name="querystorequerytextsview"></a>query_store.query_texts_view
+### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 Diese Ansicht gibt alle Abfragetextdaten im Abfragespeicher zurück. Für jeden einzelnen query_text gibt es eine Zeile.
 
 |**Name**|  **Typ**|   **Beschreibung**|
@@ -150,7 +150,7 @@ Diese Ansicht gibt alle Abfragetextdaten im Abfragespeicher zurück. Für jeden 
 |query_text_id  |bigint     |ID der Tabelle query_texts|
 |query_sql_text |Varchar(10000)     |Der Text einer repräsentativen Anweisung. Unterschiedliche Abfragen mit der gleichen Struktur werden gruppiert; dieser Text ist der Text für die erste Abfrage im Cluster.|
 
-### <a name="querystorepgmswaitsamplingview"></a>query_store.pgms_wait_sampling_view
+### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Zeile für jede einzelne Datenbank-ID, Benutzer-ID und jedes Ereignis.
 
 |**Name**|  **Typ**|   **Referenzen**| **Beschreibung**|
@@ -160,7 +160,7 @@ Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Z
 |query_id   |bigint     ||Interner Hash, der von der Analysestruktur der Anweisung berechnet wurde|
 |event_type |text       ||Der Typ des Ereignisses, auf das das Back-End wartet|
 |event  |text       ||Der Warteereignisname, wenn das Back-End derzeit wartet|
-|calls  |Ganze Zahl         ||Nummer des gleichen erfassten Ereignisses|
+|calls  |Integer        ||Nummer des gleichen erfassten Ereignisses|
 
 
 ### <a name="functions"></a>Functions
@@ -175,6 +175,7 @@ Query_store.staging_data_reset() gibt „void“ zurück
 ## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
 - Wenn ein PostgreSQL-Server über den Parameter „default_transaction_read_only“ verfügt, kann der Abfragespeicher keine Daten erfassen.
 - Die Abfragespeicherfunktionalität kann unterbrochen werden, wenn lange Unicodeabfragen (mindestens 6000 Bytes) festgestellt werden.
+- [Lesereplikate](concepts-read-replicas.md) replizieren Abfragespeicherdaten des Masterservers. Das bedeutet, dass der Abfragespeicher eines Lesereplikats keine Statistikdaten zu Abfragen bereitstellt, die für das Lesereplikat ausgeführt werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

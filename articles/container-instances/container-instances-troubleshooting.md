@@ -3,32 +3,34 @@ title: Problembehandlung für Azure Container Instances
 description: Es wird beschrieben, wie Sie Probleme mit Azure Container Instances beheben.
 services: container-instances
 author: dlepow
-manager: jeconnoc
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: bf783c988c0163fe562669a8331c332dbf8d535e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 7c4812a63137dc2efc5eab2cb3b9e136a5465e78
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371875"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300462"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Beheben von häufigen Problemen in Azure Container Instances
 
-In diesem Artikel wird veranschaulicht, wie Sie häufige Probleme beim Verwalten oder Bereitstellen von Containern in Azure Container Instances behandeln.
+In diesem Artikel wird veranschaulicht, wie Sie häufige Probleme beim Verwalten oder Bereitstellen von Containern in Azure Container Instances behandeln. Weitere Informationen finden Sie in den [häufig gestellten Fragen](container-instances-faq.md). 
+
+Weitere Unterstützung finden Sie in den verfügbaren Optionen für **Hilfe und Support** im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="naming-conventions"></a>Benennungskonventionen
 
 Wenn Sie Ihre Containerspezifikation definieren, erfordern bestimmte Parameter die Einhaltung von Benennungseinschränkungen. Nachfolgend sehen Sie eine Tabelle mit bestimmten Anforderungen für Containergruppeneigenschaften. Weitere Informationen zu Benennungskonventionen für Azure finden Sie unter [Benennungskonventionen][azure-name-restrictions] Im Azure Architecture Center.
 
-| Bereich | Länge | Schreibweise | Gültige Zeichen | Vorgeschlagenes Muster | Beispiel |
+| `Scope` | Länge | Schreibweise | Gültige Zeichen | Vorgeschlagenes Muster | Beispiel |
 | --- | --- | --- | --- | --- | --- |
 | Containergruppenname | 1-64 |Groß-/Kleinschreibung nicht beachten |Alphanumerisch und Bindestrich (beliebig), außer das erste oder letzte Zeichen |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Containername | 1-64 |Groß-/Kleinschreibung nicht beachten |Alphanumerisch und Bindestrich (beliebig), außer das erste oder letzte Zeichen |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Containerports | Zwischen 1 und 65535 |Ganze Zahl  |Eine ganze Zahl zwischen 1 und 65535 |`<port-number>` |`443` |
+| Containerports | Zwischen 1 und 65535 |Integer |Eine ganze Zahl zwischen 1 und 65535 |`<port-number>` |`443` |
 | DNS-Namensbezeichnung | 5–63 |Groß-/Kleinschreibung nicht beachten |Alphanumerisch und Bindestrich (beliebig), außer das erste oder letzte Zeichen |`<name>` |`frontend-site1` |
 | Umgebungsvariable | 1 - 63 |Groß-/Kleinschreibung nicht beachten |Alphanumerisch und Unterstrich (beliebig), außer das erste oder letzte Zeichen |`<name>` |`MY_VARIABLE` |
 | Volumename | 5–63 |Groß-/Kleinschreibung nicht beachten |Kleinbuchstaben, Zahlen und Bindestriche (beliebig), außer das erste oder letzte Zeichen. Zwei aufeinanderfolgende Bindestriche sind nicht erlaubt. |`<name>` |`batch-output-volume` |
@@ -46,11 +48,7 @@ Wenn Sie ein Image angeben, das von Azure Container Instances nicht unterstützt
 }
 ```
 
-Dieser Fehler tritt am häufigsten bei der Bereitstellung von Windows-Images auf, die auf einem SAC-Release (Semi-Annual Channel, halbjährlicher Kanal) basieren. Zum Beispiel sind die Windows-Versionen 1709 und 1803 SAC-Releases und generieren diesen Fehler bei der Bereitstellung.
-
-Azure Container Instances unterstützt derzeit Windows-Images, die ausschließlich auf dem **LTSC-Release (Long-Term Servicing Channel, langfristiger Wartungskanal) von Windows Server 2016**  basieren. Um dieses Problem bei der Bereitstellung von Windows-Containern zu beheben, sollten Sie immer Windows Server 2016 (LTSC)-basierte Images einsetzen. Auf Windows Server 2019 (LTSC) basierende Images werden nicht unterstützt.
-
-Weitere Informationen zu den LTSC- und SAC-Versionen von Windows finden Sie unter [Übersicht: Windows Server, Semi-Annual Channel][windows-sac-overview].
+Dieser Fehler tritt am häufigsten bei der Bereitstellung von Windows-Images auf, die auf dem SAC-Release (Semi-Annual Channel, halbjährlicher Kanal) 1709 oder 1803 basieren. Informationen zu unterstützten Windows-Images in Azure Container Instances finden Sie in den [häufig gestellten Fragen](container-instances-faq.md#what-windows-base-os-images-are-supported).
 
 ## <a name="unable-to-pull-image"></a>Pullvorgang für Image nicht möglich
 
@@ -58,7 +56,7 @@ Wenn Azure Container Instances den anfänglichen Pullvorgang für Ihr Image nich
 
 Um dieses Problem zu beheben, löschen Sie die Containerinstanz, und wiederholen Sie die Bereitstellung. Stellen Sie sicher, dass das Bild in der Registrierung vorhanden ist und Sie den Imagenamen richtig eingegeben haben.
 
-Wenn das Image nicht abgerufen werden kann, werden in der Ausgabe von [az container show][az-container-show] beispielsweise folgende Ereignisse angezeigt:
+Kann das Image nicht gepullt werden, werden in der Ausgabe von [az container show][az-container-show] Ereignisse wie die folgenden angezeigt:
 
 ```bash
 "events": [
@@ -102,11 +100,11 @@ az container create -g MyResourceGroup --name myapp --image ubuntu --command-lin
 
 ```azurecli-interactive 
 ## Deploying a Windows container
-az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2016
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image mcr.microsoft.com/windows/servercore:ltsc2019
  --command-line "ping -t localhost"
 ```
 
-Die Container Instances-API und das Azure-Portal enthalten eine `restartCount`-Eigenschaft. Die Anzahl von Neustarts für einen Container können Sie mit dem Befehl [az container show][az-container-show] in der Azure CLI überprüfen. In der folgenden (gekürzten) Beispielausgabe können Sie die `restartCount`-Eigenschaft am Ende der Ausgabe sehen.
+Die Container Instances-API und das Azure-Portal enthalten eine `restartCount`-Eigenschaft. Die Anzahl von Neustarts für einen Container kann über die Azure-Befehlszeilenschnittstelle mithilfe des Befehls [az container show][az-container-show] überprüft werden. In der folgenden (gekürzten) Beispielausgabe können Sie die `restartCount`-Eigenschaft am Ende der Ausgabe sehen.
 
 ```json
 ...
@@ -156,7 +154,7 @@ Die folgenden beiden Hauptfaktoren tragen zur Dauer des Containerstartvorgangs i
 * [Imagegröße](#image-size)
 * [Imagespeicherort](#image-location)
 
-Für Windows-Images gelten noch [weitere Aspekte](#cached-windows-images).
+Für Windows-Images gelten noch [weitere Aspekte](#cached-images).
 
 ### <a name="image-size"></a>Imagegröße
 
@@ -176,14 +174,12 @@ Sie können die Imagegrößen klein halten, indem Sie sicherstellen, dass Ihr en
 
 Eine weitere Möglichkeit, die Auswirkungen des Pullvorgangs für das Image auf die Startdauer Ihres Containers zu reduzieren, ist das Hosten des Containerimages in [Azure Container Registry](/azure/container-registry/) in derselben Region, in der Sie Containerinstanzen bereitstellen möchten. Auf diese Weise wird der Netzwerkpfad verkürzt, den das Containerimage zurücklegen muss, sodass sich die Downloadzeit erheblich reduziert.
 
-### <a name="cached-windows-images"></a>Zwischengespeicherte Windows-Images
+### <a name="cached-images"></a>Zwischengespeicherte Images
 
-Azure Container Instances verwenden einen Mechanismus für die Zwischenspeicherung, um die Dauer des Containerstartvorgangs für Images basierend auf allgemeinen Windows- und Linux-Images zu verkürzen. Um eine detaillierte Liste der zwischengespeicherten Images und Tags zu erhalten, verwenden Sie die API [List Cached Images][list-cached-images].
+Azure Container Instances verwendet einen Mechanismus für die Zwischenspeicherung, um die Dauer des Containerstartvorgangs für Images basierend auf allgemeinen [Windows-Basisimages](container-instances-faq.md#what-windows-base-os-images-are-supported) (u. a. `nanoserver:1809`, `servercore:ltsc2019` und `servercore:1809`) zu verkürzen. Häufig verwendete Linux-Images wie `ubuntu:1604` und `alpine:3.6` werden auch zwischengespeichert. Verwenden Sie die API [List Cached Images][list-cached-images] (Zwischengespeicherte Images auflisten), um eine aktuelle Liste der zwischengespeicherten Images und Tags zu erhalten.
 
-Verwenden Sie zum Sicherstellen eines möglichst kurzen Windows-Containerstartvorgangs eine der **drei zuletzt erstellten** Versionen der folgenden **beiden Images** als Basisimage:
-
-* [Windows Server Core 2016][docker-hub-windows-core] (nur LTSC)
-* [Windows Server 2016 Nano Server][docker-hub-windows-nano]
+> [!NOTE]
+> Die Verwendung von auf Windows Server 2019 basierenden Images in Azure Container Instances befindet sich im Vorschaustadium.
 
 ### <a name="windows-containers-slow-network-readiness"></a>Windows-Container verlangsamen die Netzwerkbereitschaft
 
@@ -206,9 +202,28 @@ Dieser Fehler gibt an, dass aufgrund starker Auslastung in der Region, in der di
 
 Azure Container Instances bietet keinen direkten Zugriff auf die zugrundeliegende Infrastruktur, die Containergruppen hostet. Dazu gehört der Zugriff auf die Docker-API, die auf dem Containerhost läuft, und die Ausführung von privilegierten Containern. Wenn Sie Docker-Interaktion benötigen, lesen Sie die [REST-Referenzdokumentation](https://aka.ms/aci/rest), um zu sehen, was die ACI-API unterstützt. Wenn Sie etwas nicht finden, senden Sie eine Anforderung an die [ACI-Feedbackforen](https://aka.ms/aci/feedback).
 
-## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>Auf IP-Adressen kann aufgrund von Portkonflikten nicht zugegriffen werden
+## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Auf die IP-Adresse der Containergruppe kann aufgrund von Portkonflikten nicht zugegriffen werden
 
-Azure Container Instances unterstützt derzeit keine Portzuordnung wie bei der regulären Docker-Konfiguration. Eine entsprechende Korrektur ist jedoch bereits geplant. Sollten IP-Adressen unerwartet nicht erreichbar sein, vergewissern Sie sich, dass Sie Ihr Containerimage so konfiguriert haben, dass es an den Ports lauscht, die Sie in Ihrer Containergruppe mithilfe der Eigenschaft `ports` verfügbar gemacht haben.
+Azure Container Instances unterstützt noch nicht die Portzuordnung wie bei der regulären Docker-Konfiguration. Wenn die IP-Adresse einer Containergruppe unerwartet nicht erreichbar ist, vergewissern Sie sich, dass Sie das Containerimage so konfiguriert haben, dass es an den Ports lauscht, die Sie in der Containergruppe mithilfe der Eigenschaft `ports` verfügbar gemacht haben.
+
+Wenn Sie überprüfen möchten, ob Azure Container Instances an dem Port lauschen kann, den Sie im Containerimage konfiguriert haben, testen Sie eine Bereitstellung des Images `aci-helloworld`, das den Port verfügbar macht. Führen Sie außerdem die App `aci-helloworld` aus, sodass sie an dem Port lauscht. `aci-helloworld` akzeptiert die optionale Umgebungsvariable `PORT`, um den Standardport 80 zu überschreiben, an dem gelauscht wird. Gehen Sie beispielsweise zum Testen von Port 9000 wie folgt vor:
+
+1. Richten Sie die Containergruppe so ein, dass Port 9000 verfügbar gemacht wird, und übergeben Sie die Portnummer als Wert der Umgebungsvariable:
+    ```azurecli
+    az container create --resource-group myResourceGroup \
+    --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \
+    --ip-address Public --ports 9000 \
+    --environment-variables 'PORT'='9000'
+    ```
+1. Suchen Sie die IP-Adresse der Containergruppe in der Befehlsausgabe von `az container create`. Suchen Sie den Wert von **ip**. 
+1. Nachdem der Container erfolgreich bereitgestellt wurde, navigieren Sie im Browser zu der IP-Adresse und dem Port der Container-App, z. B. `192.0.2.0:9000`. 
+
+    In der Web-App sollte die Meldung „Willkommen bei Azure Container Instances“ angezeigt werden.
+1. Wenn Sie den Container nicht mehr benötigen, entfernen Sie ihn mithilfe des Befehls `az container delete`:
+
+    ```azurecli
+    az container delete --resource-group myResourceGroup --name mycontainer
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

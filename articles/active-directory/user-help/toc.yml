@@ -1,11 +1,19 @@
 - name: Hilfedokumentation für Benutzer
-  href: index.md
+  href: index.yml
 - name: Hilfe zur zweistufigen Überprüfung
   items:
     - name: Übersicht
       href: user-help-two-step-verification-overview.md
-    - name: Einrichten meines Kontos
-      href: multi-factor-authentication-end-user-first-time.md
+    - name: Einrichten der Methoden für die zweistufige Überprüfung
+      items:
+        - name: Übersicht
+          href: multi-factor-authentication-end-user-first-time.md
+        - name: Einrichten einer Authentifikator-App
+          href: multi-factor-authentication-setup-auth-app.md
+        - name: Einrichten eines mobilen Geräts
+          href: multi-factor-authentication-setup-phone-number.md
+        - name: Einrichten einer geschäftlichen Telefonnummer
+          href: multi-factor-authentication-setup-office-phone.md
     - name: Verwalten der Einstellungen
       href: multi-factor-authentication-end-user-manage-settings.md
     - name: Hier erhalten Sie Hilfe
@@ -28,9 +36,10 @@
       href: user-help-auth-app-overview.md
     - name: Herunterladen und Installieren der App
       href: user-help-auth-app-download-install.md
-    - name: Übersicht über das Hinzufügen von Konten
-      href: user-help-auth-app-add-account-overview.md
+    - name: Hinzufügen von Konten
       items:
+        - name: Übersicht
+          href: user-help-auth-app-add-account-overview.md
         - name: 'Hinzufügen eines Geschäfts-, Schul- oder Unikontos'
           href: user-help-auth-app-add-work-school-account.md
         - name: Hinzufügen eines persönlichen Microsoft-Kontos
@@ -63,15 +72,18 @@
       href: user-help-security-info-overview.md
     - name: Hinzufügen von Sicherheitsinformationen während der Anmeldung
       href: security-info-setup-signin.md
-    - name: 'Übersicht: Hinzufügen oder Aktualisieren von Verfahren für Sicherheitsinformationen'
-      href: security-info-add-update-methods-overview.md
+    - name: Hinzufügen oder Aktualisieren von Verfahren für Sicherheitsinformationen
       items:
+        - name: Übersicht
+          href: security-info-add-update-methods-overview.md
         - name: Einrichten einer Authentifikator-App
           href: security-info-setup-auth-app.md
         - name: Einrichten von SMS
           href: security-info-setup-text-msg.md
         - name: Einrichten von Telefonanrufen
           href: security-info-setup-phone-number.md
+        - name: Einrichten eines Sicherheitsschlüssels
+          href: security-info-setup-security-key.md
         - name: Einrichten einer E-Mail-Adresse
           href: security-info-setup-email.md
         - name: Einrichten von Sicherheitsfragen

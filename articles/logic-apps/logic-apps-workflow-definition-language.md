@@ -1,113 +1,173 @@
 ---
-title: Schemareferenz zur Definitionssprache für Workflows – Azure Logic Apps | Microsoft-Dokumentation
-description: Schreiben benutzerdefinierter Workflowdefinitionen für Azure Logic Apps mit der Definitionssprache für Workflows
+title: Schemareferenz zur Definitionssprache für Workflows – Azure Logic Apps
+description: Referenzhandbuch zum Schema der Definitionssprache für Workflows in Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: reference
-ms.date: 04/30/2018
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d2de2a25d67da230d539156c851cca34335a01c2
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.topic: reference
+ms.date: 05/13/2019
+ms.openlocfilehash: c84791cb30622350b3e6d6356abd4580636c4ddf
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620835"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68385347"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Schemareferenz zur Definitionssprache für Workflows in Azure Logic Apps
 
-Beim Erstellen eines Logic-App-Workflows mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) beschreibt die Ihrem Workflow zugrunde liegende Definition die eigentliche Logik, die für Ihre Logik-App ausgeführt wird. Diese Beschreibung folgt einer Struktur, die vom Schema der Definitionssprache für Workflows definiert und überprüft wird und [JavaScript Object Notation (JSON)](https://www.json.org/) verwendet.
+Beim Erstellen einer Logik-App in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) verfügt Ihre Logik-App über eine zugrunde liegende Workflowdefinition, die die eigentliche Logik beschreibt, die in Ihrer Logik-App ausgeführt wird. Diese Workflowdefinition verwendet [JSON](https://www.json.org/) und folgt einer Struktur, die vom WDL-Schema (Workflow Definition Language, Workflowdefinitionssprache) validiert wird. Diese Referenz enthält eine Übersicht über diese Struktur und wie das Schema Attribute in Ihrer Workflowdefinition definiert.
 
 ## <a name="workflow-definition-structure"></a>Struktur der Workflowdefinition
 
-Eine Workflowdefinition verfügt über mindestens einen Trigger, der Ihre Logik-App instanziiert, sowie über mindestens eine Aktion, die Ihre Logik-App ausführt.
+Eine Workflowdefinition enthält immer einen Trigger zum Instanziieren Ihrer Logik-App sowie mindestens eine weitere Aktion, die nach der Auslösung des Triggers ausgeführt wird.
 
 So sieht die allgemeine Struktur einer Workflowdefinition aus:
 
 ```json
 "definition": {
   "$schema": "<workflow-definition-language-schema-version>",
-  "contentVersion": "<workflow-definition-version-number>",
-  "parameters": { "<workflow-parameter-definitions>" },
-  "triggers": { "<workflow-trigger-definitions>" },
   "actions": { "<workflow-action-definitions>" },
-  "outputs": { "<workflow-output-definitions>" }
+  "contentVersion": "<workflow-definition-version-number>",
+  "outputs": { "<workflow-output-definitions>" },
+  "parameters": { "<workflow-parameter-definitions>" },
+  "staticResults": { "<static-results-definitions>" },
+  "triggers": { "<workflow-trigger-definitions>" }
 }
 ```
 
-| Element | Erforderlich | BESCHREIBUNG |
-|---------|----------|-------------|
-| Definition | Ja | Das Startelement für Ihre Workflowdefinition |
-| $schema | Nur bei externem Verweis auf eine Workflowdefinition | Der Speicherort der JSON-Schemadatei, welche die Version der Workflowdefinitionssprache beschreibt. Der Speicherort lautet wie folgt: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
-| contentVersion | Nein  | Die Versionsnummer für Ihre Workflowdefinition, die standardmäßig „1.0.0.0“ lautet. Geben Sie einen zu verwendenden Wert an, um bei der Bereitstellung eines Workflows die richtige Definition besser ermitteln und bestätigen zu können. |
-| Parameter | Nein  | Die Definitionen für mindestens einen Parameter, der Daten an Ihren Workflow übergibt <p><p>Maximale Anzahl von Parametern: 50 |
-| Trigger | Nein  | Die Definitionen für mindestens einen Trigger, der Ihren Workflow instanziiert. Sie können mehrere Trigger definieren, jedoch nur mit der Definitionssprache für Workflows, nicht visuell mit dem Designer für Logik-Apps. <p><p>Maximale Anzahl von Triggern: 10 |
-| Aktionen | Nein  | Die Definitionen für mindestens eine Aktion, die zur Workflowlaufzeit ausgeführt werden soll <p><p>Maximale Anzahl von Aktionen: 250 |
-| outputs | Nein  | Die Definitionen für die Ausgaben, die von einer Workflowausführung zurückgegeben werden <p><p>Maximale Anzahl von Ausgaben: 10 |
+| Attribut | Erforderlich | BESCHREIBUNG |
+|-----------|----------|-------------|
+| `definition` | Ja | Das Startelement für Ihre Workflowdefinition |
+| `$schema` | Nur bei externem Verweis auf eine Workflowdefinition | Der Speicherort der JSON-Schemadatei, welche die Version der Workflowdefinitionssprache beschreibt. Der Speicherort lautet wie folgt: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
+| `actions` | Nein | Die Definitionen für mindestens eine Aktion, die zur Workflowlaufzeit ausgeführt werden soll. Weitere Informationen finden Sie unter [Trigger und Aktionen](#triggers-actions). <p><p>Maximale Anzahl von Aktionen: 250 |
+| `contentVersion` | Nein | Die Versionsnummer für Ihre Workflowdefinition, die standardmäßig „1.0.0.0“ lautet. Geben Sie einen zu verwendenden Wert an, um bei der Bereitstellung eines Workflows die richtige Definition besser ermitteln und bestätigen zu können. |
+| `outputs` | Nein | Die Definitionen für die Ausgaben, die von einer Workflowausführung zurückgegeben werden. Weitere Informationen finden Sie unter [Ausgaben](#outputs). <p><p>Maximale Anzahl von Ausgaben: 10 |
+| `parameters` | Nein | Die Definitionen für einen oder mehrere Parameter, die die Werte übergeben, die zur Runtime ihrer Logik-App verwendet werden sollen. Weitere Informationen finden Sie unter [Parameter](#parameters). <p><p>Maximale Anzahl von Parametern: 50 |
+| `staticResults` | Nein | Die Definitionen für mindestens ein statisches Ergebnis, das von Aktionen als Modellausgabe zurückgegeben wird, wenn statische Ergebnisse für diese Aktionen aktiviert wurden. In jeder Aktionsdefinition verweist das `runtimeConfiguration.staticResult.name`-Attribut auf die entsprechende Definition innerhalb von `staticResults`. Weitere Informationen finden Sie unter [Statische Ergebnisse](#static-results). |
+| `triggers` | Nein | Die Definitionen für mindestens einen Trigger, der Ihren Workflow instanziiert. Sie können mehrere Trigger definieren, jedoch nur mit der Definitionssprache für Workflows, nicht visuell mit dem Designer für Logik-Apps. Weitere Informationen finden Sie unter [Trigger und Aktionen](#triggers-actions). <p><p>Maximale Anzahl von Triggern: 10 |
 ||||
 
-## <a name="parameters"></a>Parameter
-
-Im Abschnitt `parameters` werden alle Workflowparameter definiert, die Ihre Logik-App bei der Bereitstellung zur Annahme von Eingaben verwendet. Bei der Bereitstellung sind sowohl Parameterdeklarationen als auch Parameterwerte erforderlich. Bevor Sie diese Parameter in anderen Workflowabschnitten verwenden können, müssen Sie sicherstellen, dass Sie alle Parameter in diesen Abschnitten deklarieren. 
-
-So sieht die allgemeine Struktur einer Parameterdefinition aus:
-
-```json
-"parameters": {
-  "<parameter-name>": {
-    "type": "<parameter-type>",
-    "defaultValue": "<default-parameter-value>",
-    "allowedValues": [ <array-with-permitted-parameter-values> ],
-    "metadata": {
-      "key": {
-        "name": "<key-value>"
-      }
-    }
-  }
-},
-```
-
-| Element | Erforderlich | Typ | BESCHREIBUNG |
-|---------|----------|------|-------------|
-| type | Ja | int, float, string, securestring, bool, array, JSON-Objekt, secureobject <p><p>**Hinweis**: Verwenden Sie für sämtliche Kennwörter, Schlüssel und geheimen Schlüssel die Typen `securestring` und `secureobject`, da diese Typen beim `GET`-Vorgang nicht zurückgegeben werden. Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern Ihrer Logik-App](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Der Typ des Parameters |
-| defaultValue | Ja | Identisch mit `type` | Der Standardparameterwert, wenn bei der Instanziierung des Workflows kein Wert angegeben wird |
-| allowedValues | Nein  | Identisch mit `type` | Ein Array mit Werten, die vom Parameter akzeptiert werden können |
-| metadata | Nein  | JSON-Objekt | Alle anderen von Visual Studio oder anderen Tools verwendeten Parameterdetails, wie z.B. der Name, eine lesbare Beschreibung Ihrer Logik-App oder Entwurfszeitdaten |
-||||
+<a name="triggers-actions"></a>
 
 ## <a name="triggers-and-actions"></a>Trigger und Aktionen
 
 In einer Workflowdefinition werden in den Abschnitten `triggers` und `actions` sämtliche Aufrufe definiert, die während der Ausführung Ihres Workflows auftreten. Informationen zur Syntax sowie weitere Informationen zu diesen Abschnitten finden Sie unter [Workflowtrigger und -aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md).
 
-## <a name="outputs"></a>Ausgaben
+<a name="parameters"></a>
 
-Definieren Sie im Abschnitt `outputs` die Daten, die Ihr Workflow nach Abschluss der Ausführung zurückgeben kann. Wenn Sie beispielsweise einen bestimmten Status oder Wert aus den einzelnen Ausführungen nachverfolgen möchten, müssen Sie angeben, dass diese Daten bei der Workflowausgabe zurückgegeben werden.
+## <a name="parameters"></a>Parameter
 
-> [!NOTE]
-> Verwenden Sie nicht `outputs`, wenn Sie über die REST-API eines Diensts auf eingehende Anforderungen reagieren. Verwenden Sie stattdessen den Aktionstyp `Response`. Weitere Informationen finden Sie unter [Workflowtrigger und -aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md).
+Der Bereitstellungslebenszyklus umfasst in der Regel verschiedene Umgebungen zur Entwicklung, zum Testen, Staging und für die Produktion. Wenn Sie Logik-Apps in verschiedenen Umgebungen bereitstellen, möchten Sie wahrscheinlich basierend auf Ihren Bereitstellungsanforderungen verschiedene Werte verwenden, z.B. Verbindungszeichenfolgen. Möglicherweise gibt es auch Werte, die Sie in ihrer Logik-APP wiederverwenden möchten, ohne sie hartcodieren oder häufig ändern zu müssen. Im `parameters`-Abschnitt Ihrer Workflowdefinition können Sie Parameter für die Werte, die von ihrer Logik-App zur Runtime verwendet werden, definieren oder bearbeiten. Sie müssen diese Parameter zuerst definieren, bevor Sie an anderer Stelle in der Workflowdefinition auf diese Parameter verweisen können.
 
-So sieht die allgemeine Struktur einer Ausgabedefinition aus:
+So sieht die allgemeine Struktur einer Parameterdefinition aus:
 
 ```json
-"outputs": {
-  "<key-name>": {
-    "type": "<key-type>",
-    "value": "<key-value>"
-  }
+"parameters": {
+   "<parameter-name>": {
+      "type": "<parameter-type>",
+      "defaultValue": <default-parameter-value>,
+      "allowedValues": [ <array-with-permitted-parameter-values> ],
+      "metadata": {
+         "description": "<parameter-description>"
+      }
+   }
+},
+```
+
+| Attribut | Erforderlich | Typ | BESCHREIBUNG |
+|-----------|----------|------|-------------|
+| <*parameter-name*> | Ja | String | Der Name des Parameters, den Sie definieren möchten |
+| <*parameter-type*> | Ja | int, float, string, bool, array, object, securestring, secureobject <p><p>**Hinweis**: Verwenden Sie für sämtliche Kennwörter, Schlüssel und Geheimnisse die Typen `securestring` oder `secureobject`, da diese Typen beim `GET`-Vorgang nicht zurückgegeben werden. Weitere Informationen zum Sichern von Parametern finden Sie unter [Zugriff auf Parametereingaben](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Der Typ des Parameters |
+| <*default-parameter-value*> | Ja | Identisch mit `type` | Der Standardparameterwert, wenn bei der Instanziierung des Workflows kein Wert angegeben wird. Das `defaultValue`-Attribut ist erforderlich, damit der Logik-App-Designer den Parameter korrekt anzeigen kann, Sie können jedoch einen leeren Wert angeben. |
+| <*array-with-permitted-parameter-values*> | Nein | Array | Ein Array mit Werten, die vom Parameter akzeptiert werden können |
+| <*parameter-description*> | Nein | JSON-Objekt | Alle anderen Parameterdetails, z.B. eine Beschreibung des Parameters |
+||||
+
+Erstellen Sie als nächstes eine [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-overview.md) für die Workflowdefinition, definieren Sie Vorlagenparameter, die die bei der Bereitstellung gewünschten Werte akzeptieren, ersetzen Sie hartcodierte Werte nach Bedarf durch Verweise auf Vorlagen- oder Workflowdefinitionsparameter, und speichern Sie die Werte, die bei der Bereitstellung verwendet werden sollen, in einer separaten [Parameterdatei](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Auf diese Weise können Sie diese Werte einfacher über die Parameterdatei ändern, ohne Ihre Logik-App aktualisieren und erneut bereitstellen zu müssen. Für Informationen, die vertraulich sind oder geschützt werden müssen, etwa Benutzernamen, Kennwörter und Geheimnisse, können Sie diese Werte in Azure Key Vault speichern und aus Ihrem Schlüsseltresor in die Parameterdatei abrufen. Weitere Informationen und Beispiele zum Definieren von Parametern auf Vorlagen- und Workflowdefinitionsebene finden Sie unter [Übersicht: Automatisieren der Bereitstellung für Logik-Apps mit Azure Resource Manager-Vorlagen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
+
+<a name="static-results"></a>
+
+## <a name="static-results"></a>Statische Ergebnisse
+
+Definieren Sie im `staticResults`-Attribut die Attribute `outputs` und `status` des Modells der Aktion. Die Aktion gibt diese Attribute zurück, wenn die Einstellung für statische Ergebnisse für die Aktion aktiviert ist. In der Definition der Aktion verweist das `runtimeConfiguration.staticResult.name`-Attribut auf den Namen der Definition des statischen Ergebnisses innerhalb von `staticResults`. Hier erhalten Sie Informationen zum [Testen von Logik-Apps mit Simulationsdaten durch die Einrichtung von statischen Ergebnissen](../logic-apps/test-logic-apps-mock-data-static-results.md).
+
+```json
+"definition": {
+   "$schema": "<...>",
+   "actions": { "<...>" },
+   "contentVersion": "<...>",
+   "outputs": { "<...>" },
+   "parameters": { "<...>" },
+   "staticResults": {
+      "<static-result-definition-name>": {
+         "outputs": {
+            <output-attributes-and-values-returned>,
+            "headers": { <header-values> },
+            "statusCode": "<status-code-returned>"
+         },
+         "status": "<action-status>"
+      }
+   },
+   "triggers": { "<...>" }
 }
 ```
 
-| Element | Erforderlich | Typ | BESCHREIBUNG |
-|---------|----------|------|-------------|
-| <*key-name*> | Ja | Zeichenfolge | Der Schlüsselname des Rückgabewerts der Ausgabe |
-| type | Ja | int, float, string, securestring, bool, array, JSON-Objekt | Der Typ des Rückgabewerts der Ausgabe |
-| value | Ja | Identisch mit `type` | Der Rückgabewert der Ausgabe |
+| Attribut | Erforderlich | Typ | BESCHREIBUNG |
+|-----------|----------|------|-------------|
+| <*static-result-definition-name*> | Ja | String | Der Name der Definition eines statischen Ergebnisses, auf die eine Aktionsdefinition über ein `runtimeConfiguration.staticResult`-Objekt verweisen kann. Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfiguration](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Sie können jedoch auch einen beliebigen anderen eindeutigen Namen verwenden. Standardmäßig wird an diesen eindeutigen Namen eine Zahl angehängt, die nach Bedarf inkrementiert wird. |
+| <*output-attributes-and-values-returned*> | Ja | Varies | Die Anforderungen an diese Attribute variieren auf Grundlage verschiedener Bedingungen. Wenn z. B. für das Attribut `status` `Succeeded` gilt, schließt das `outputs`-Attribut Attribute und Werte ein, die von der Aktion als Modellausgaben zurückgegeben werden. Wenn für das Attribut `status` `Failed` gilt, schließt das `outputs`-Attribut das `errors`-Attribut ein. Dabei handelt es sich um ein Array mit mindestens einem `message`-Objekt, in dem Fehlerinformationen enthalten sind. |
+| <*header-values*> | Nein | JSON | Alle Headerwerte, die von der Aktion zurückgegeben werden. |
+| <*status-code-returned*> | Ja | String | Der von der Aktion zurückgegebene Statuscode. |
+| <*action-status*> | Ja | String | Der Status der Aktion, z. B. `Succeeded` oder `Failed`. |
 |||||
 
-Zum Abrufen der Ausgabe aus einer Workflowausführung müssen Sie im Azure-Portal den Ausführungsverlauf der Logik-App sowie Details überprüfen oder die [REST-API des Workflows](https://docs.microsoft.com/rest/api/logic/workflows) verwenden. Sie können die Ausgabe auch an externe Systeme übergeben, z.B. Power BI, um Dashboards erstellen zu können.
+In dieser HTTP-Aktionsdefinition verweist beispielsweise das `runtimeConfiguration.staticResult.name`-Attribut auf `HTTP0` innerhalb des `staticResults`-Attributs, wo die Modellausgaben für die Aktion definiert werden. Das `runtimeConfiguration.staticResult.staticResultOptions`-Attribut gibt an, dass die Einstellung für statische Ergebnisse für die HTTP-Aktion `Enabled` ist.
+
+```json
+"actions": {
+   "HTTP": {
+      "inputs": {
+         "method": "GET",
+         "uri": "https://www.microsoft.com"
+      },
+      "runAfter": {},
+      "runtimeConfiguration": {
+         "staticResult": {
+            "name": "HTTP0",
+            "staticResultOptions": "Enabled"
+         }
+      },
+      "type": "Http"
+   }
+},
+```
+
+Die HTTP-Aktion gibt die Ausgaben in der `HTTP0`-Definition innerhalb von `staticResults` zurück. In diesem Beispiel ist die Modellausgabe für den Statuscode `OK`. Für Headerwerte ist die Modellausgabe `"Content-Type": "application/JSON"`. Für den Status der Aktion ist die Modellausgabe `Succeeded`.
+
+```json
+"definition": {
+   "$schema": "<...>",
+   "actions": { "<...>" },
+   "contentVersion": "<...>",
+   "outputs": { "<...>" },
+   "parameters": { "<...>" },
+   "staticResults": {
+      "HTTP0": {
+         "outputs": {
+            "headers": {
+               "Content-Type": "application/JSON"
+            },
+            "statusCode": "OK"
+         },
+         "status": "Succeeded"
+      }
+   },
+   "triggers": { "<...>" }
+},
+```
 
 <a name="expressions"></a>
 
@@ -198,6 +258,35 @@ Wenn Sie fertig sind, wird der Ausdruck für die entsprechende Eigenschaft in Ih
 },
 ```
 
+<a name="outputs"></a>
+
+## <a name="outputs"></a>Ausgaben
+
+Definieren Sie im Abschnitt `outputs` die Daten, die Ihr Workflow nach Abschluss der Ausführung zurückgeben kann. Wenn Sie beispielsweise einen bestimmten Status oder Wert aus den einzelnen Ausführungen nachverfolgen möchten, müssen Sie angeben, dass diese Daten bei der Workflowausgabe zurückgegeben werden.
+
+> [!NOTE]
+> Verwenden Sie nicht `outputs`, wenn Sie über die REST-API eines Diensts auf eingehende Anforderungen reagieren. Verwenden Sie stattdessen den Aktionstyp `Response`. Weitere Informationen finden Sie unter [Workflowtrigger und -aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md).
+
+So sieht die allgemeine Struktur einer Ausgabedefinition aus:
+
+```json
+"outputs": {
+  "<key-name>": {
+    "type": "<key-type>",
+    "value": "<key-value>"
+  }
+}
+```
+
+| Attribut | Erforderlich | Typ | BESCHREIBUNG |
+|-----------|----------|------|-------------|
+| <*key-name*> | Ja | String | Der Schlüsselname des Rückgabewerts der Ausgabe |
+| <*key-type*> | Ja | int, float, string, securestring, bool, array, JSON-Objekt | Der Typ des Rückgabewerts der Ausgabe |
+| <*key-value*> | Ja | Entspricht <*key-type*> | Der Rückgabewert der Ausgabe |
+|||||
+
+Zum Abrufen der Ausgabe aus einer Workflowausführung müssen Sie im Azure-Portal den Ausführungsverlauf Ihrer Logik-App sowie Details überprüfen oder die [REST-API des Workflows](https://docs.microsoft.com/rest/api/logic/workflows) verwenden. Sie können die Ausgabe auch an externe Systeme übergeben, z.B. Power BI, um Dashboards erstellen zu können.
+
 <a name="operators"></a>
 
 ## <a name="operators"></a>Operatoren
@@ -206,7 +295,7 @@ In [Ausdrücken](#expressions) und [Funktionen](#functions) führen Operatoren b
 
 | Operator | Aufgabe |
 |----------|------|
-| ' | Wenn Sie ein Zeichenfolgenliteral als Eingabe oder in Ausdrücken und Funktionen verwenden möchten, umschließen Sie die Zeichenfolge nur mit einfachen Anführungszeichen. Beispiel: `'<myString>'`. Verwenden Sie keine doppelten Anführungszeichen (""). Dies könnte zu einem Konflikt mit der JSON-Formatierung eines ganzen Ausdrucks führen. Beispiel:  <p>**Ja**: length('Hello') </br>**Nein**: length("Hello") <p>Wenn Sie Arrays oder Zahlen übergeben, sind keine umschließenden Satzzeichen erforderlich. Beispiel:  <p>**Ja**: length([1, 2, 3]) </br>**Nein**: length("[1, 2, 3]") |
+| ' | Wenn Sie ein Zeichenfolgenliteral als Eingabe oder in Ausdrücken und Funktionen verwenden möchten, umschließen Sie die Zeichenfolge nur mit einfachen Anführungszeichen. Beispiel: `'<myString>'`. Verwenden Sie keine doppelten Anführungszeichen (""). Dies könnte zu einem Konflikt mit der JSON-Formatierung eines ganzen Ausdrucks führen. Beispiel: <p>**Ja**: length('Hello') </br>**Nein**: length("Hello") <p>Wenn Sie Arrays oder Zahlen übergeben, sind keine umschließenden Satzzeichen erforderlich. Beispiel: <p>**Ja**: length([1, 2, 3]) </br>**Nein**: length("[1, 2, 3]") |
 | [] | Verwenden Sie eckige Klammern, um auf einen Wert an einer bestimmten Position (Index) in einem Array zu verweisen. So können Sie z.B. das zweite Element in einem Array abrufen: <p>`myArray[1]` |
 | . | Verwenden Sie den Punktoperator, um auf eine Eigenschaft in einem Objekt zu verweisen. So können Sie z.B. die Eigenschaft `name` für das JSON-Objekt `customer` abrufen: <p>`"@parameters('customer').name"` |
 | ? | Mit dem Fragezeichenoperator können Sie ohne Laufzeitfehler auf NULL-Eigenschaften in einem Objekt verweisen. Mithilfe des folgenden Ausdrucks können Sie beispielsweise NULL-Ausgaben eines Triggers verarbeiten: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
@@ -216,7 +305,7 @@ In [Ausdrücken](#expressions) und [Funktionen](#functions) führen Operatoren b
 
 ## <a name="functions"></a>Functions
 
-Einige Ausdrücke erhalten ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung einer Logik-App möglicherweise noch nicht vorhanden sind. Sie können mithilfe von [*Funktionen*](../logic-apps/workflow-definition-language-functions-reference.md), die von der Definitionssprache für Workflows bereitgestellt werden, auf diese Werte in Ausdrücken verweisen oder mit diesen Werten arbeiten.
+Einige Ausdrücke erhalten ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung Ihrer Workflowdefinition möglicherweise noch nicht vorhanden sind. Sie können mithilfe von [*Funktionen*](../logic-apps/workflow-definition-language-functions-reference.md), die von der Definitionssprache für Workflows bereitgestellt werden, auf diese Werte in Ausdrücken verweisen oder mit diesen Werten arbeiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

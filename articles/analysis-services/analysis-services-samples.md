@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f8bbbe00cc47cb947b65e50b96628c40b5cea5f6
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: d34da4e1b3d9c3131db1d9edd94f67a132dc564f
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521236"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932365"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services – Beispiele
 
@@ -44,5 +44,5 @@ Wenn Sie über einen Analysis Services-Server im Azure-Portal verfügen, können
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Adventure Works-Tutorial](tutorials/aas-adventure-works-tutorial.md)   
+[Adventure Works-Tutorial](https://docs.microsoft.com/analysis-services/tutorial-tabular-1400/as-adventure-works-tutorial)   
 [Herstellen einer Verbindung mit lokalen Datenquellen mit dem lokalen Azure-Datengateway](analysis-services-gateway.md)  

@@ -14,14 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-ms.openlocfilehash: db03b3cd668bf8e35913872ac4225de6d4d3edd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
+ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110568"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68965016"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Unterstützte Hardware für 10-GbE-Netzwerkschnittstellen auf Ihrem StorSimple-Gerät
+
+[!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
+
 ## <a name="overview"></a>Übersicht
 Dieser Artikel enthält Informationen zu zusätzlicher Hardware, die mit dem Microsoft Azure StorSimple-Gerät verwendet werden kann.
 
@@ -34,7 +37,7 @@ Microsoft hat die folgenden SFP (Small Form-factor Pluggable)-Transceiver, Kabel
 | Cisco |SFP-10G-SR |
 
 ### <a name="cables"></a>Kabel
-| S. Nein. | Make | Modell |
+| S. Nein. | Stellen | Modell |
 | --- | --- | --- |
 | 1. |Cisco |SFP-H10GB-CU1M |
 | 2. |Cisco |SFP-H10GB-CU2M |
@@ -42,7 +45,7 @@ Microsoft hat die folgenden SFP (Small Form-factor Pluggable)-Transceiver, Kabel
 | 4. |Tripp Lite |N820-05M (OM3) |
 
 ### <a name="switches"></a>Switches
-| S. Nein. | Make | Modell |
+| S. Nein. | Stellen | Modell |
 | --- | --- | --- |
 | 1. |Cisco |N3K-C3172PQ-10GE |
 | 2. |Cisco |N3K-C3048-ZM-F |
@@ -58,9 +61,9 @@ Dieser Abschnitt enthält eine Liste der Geräte, die von StorSimple-Kunden erfo
 | Switch-Betriebssystemversion |JunOS 12.3R9.4 |
 | Blade-Modell |Integrierte Ports (PIC 0) |
 | Transceiver-Fabrikat |Juniper |
-| Transceiver-Modell |Teilenummer 740-021308  <br></br> Teilenummer 740-030658 |
+| Transceiver-Modell |Teilenummer 740-021308 <br></br> Teilenummer 740-030658 |
 | Transceiver-Firmwareversion |Rev 01 Version 0.0 (gemeldet) |
-| Kabelmodell |Duplex-Jumper LC/LC 50/125µ, OM3, LSZH |
+| Kabelmodell |Duplex Jumper LC/LC 50/125µ,   OM3, LSZH |
 | StorSimple-Modell |8600 |
 | StorSimple-Softwareversion |6.3.9600.17491 |
 
@@ -70,7 +73,7 @@ Mellanox hat die folgenden SFP (Small Form-factor Pluggable)-Transceiver, Kabel 
 ### <a name="cables-and-modules-supported-by-mellanox"></a>Von Mellanox unterstützte Kabel und Module
 Die folgende Tabelle enthält die Kabel und Module, die von Mellanox unterstützt werden. Diese wurden nicht von Microsoft getestet, funktionieren aber wahrscheinlich mit dem StorSimple-Gerät.
 
-| S. Nein. | Geschwindigkeit | Modell | Beschreibung | Stellen |
+| S. Nein. | Geschwindigkeit | Modell | BESCHREIBUNG | Stellen |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |Passives Kupferkabel, SFP+, 10 GBit/s (1 m) |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2M |Passives Kupferkabel, SFP+, 10 GBit/s (2 m) |Arista |
@@ -111,7 +114,7 @@ Die folgende Tabelle enthält die Kabel und Module, die von Mellanox unterstütz
 ### <a name="switches-supported-by-mellanox"></a>Liste der von Mellanox unterstützten Switches
 Die folgende Tabelle enthält die Switches, die von Mellanox unterstützt werden. Diese wurden nicht von Microsoft getestet, funktionieren aber wahrscheinlich mit dem StorSimple-Gerät.
 
-| S. Nein. | Geschwindigkeit | Modell | Beschreibung | Stellen |
+| S. Nein. | Geschwindigkeit | Modell | BESCHREIBUNG | Stellen |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |516733-B21 |HP ProCurve 6120XG Ethernet Blade Switch (10 GbE) |HP |
 | 2. |10 GbE |538113-B21 |HP 10-GbE-Pass-Through-Modul (PTM) |HP |

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c9e6e289fbda3188449ecc71cbc90bed546512e1
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 6b57ffbd3cb2b31da3fc2882e941f9788d83fea8
+ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471527"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67341669"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Behandeln von Problemen mit dem Aktivieren oder Anzeigen von Application Insights Profiler
 
@@ -83,16 +83,16 @@ Damit Profiler ordnungsgemäß funktioniert, müssen die folgenden Voraussetzung
    
       ![profiler-webjob]   
    
-   1. Wählen Sie zum Anzeigen der Details des Webauftrags einschließlich des Protokolls den Link **ApplicationInsightsProfiler2**.  
+   1. Klicken Sie zum Anzeigen der WebJob-Details einschließlich des Protokolls auf den Link **ApplicationInsightsProfiler3**.  
      Der Bereich **Continuous WebJob Details** (Details des fortlaufenden WebJobs) wird geöffnet.
 
       ![profiler-webjob-log]
 
-Wenn Sie nicht feststellen können, warum Profiler nicht funktioniert, haben Sie die Möglichkeit, das Protokoll herunterzuladen und an unser Team zu senden, um Unterstützung zu erhalten. 
+Wenn Sie nicht feststellen können, warum Profiler nicht funktioniert, haben Sie die Möglichkeit, das Protokoll herunterzuladen und an unser Team zu senden, um Unterstützung zu erhalten (serviceprofilerhelp@microsoft.com). 
     
 ### <a name="manual-installation"></a>Manuelle Installation
 
-Wenn Sie Profiler konfigurieren, werden an den Einstellungen der Web-App Aktualisierungen vorgenommen. Sie können die Updates manuell anwenden, wenn dies für Ihre Umgebung erforderlich ist. Beispiel: Ihre Anwendung wird in einer Web-Apps-Umgebung für PowerApps ausgeführt. Führen Sie die folgenden Schritte aus, um Updates manuell anzuwenden:
+Wenn Sie Profiler konfigurieren, werden an den Einstellungen der Web-App Aktualisierungen vorgenommen. Sie können die Updates manuell anwenden, wenn dies für Ihre Umgebung erforderlich ist. Beispiel: Ihre Anwendung wird in einer Web-Apps-Umgebung für PowerApps ausgeführt. So wenden Sie Updates manuell an:
 
 1. Öffnen Sie im **Steuerungsbereich der Web-App** die Option **Einstellungen**.
 
@@ -115,7 +115,7 @@ Zurzeit können Sie Profiler für maximal vier Azure Web-Apps und Bereitstellung
 
 Wenn Sie Ihre Web-App erneut für eine Web-Apps-Ressource bereitstellen und Profiler aktiviert ist, wird möglicherweise eine Meldung wie die folgende angezeigt:
 
-*Verzeichnis nicht leer 'D:\\home\\site\\wwwroot\\App_Data\\jobs'*
+*Verzeichnis nicht leer „D:\\home\\site\\wwwroot\\App_Data\\jobs“*
 
 Dieser Fehler tritt auf, wenn Sie Web Deploy über Skripts oder die Azure DevOps-Bereitstellungspipeline ausführen. Als Lösung fügen Sie die folgenden zusätzlichen Bereitstellungsparameter zum Web Deploy-Task hinzu:
 
@@ -131,7 +131,7 @@ Profiler wird als fortlaufender Webauftrag in der Web-App ausgeführt. Sie könn
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Behandeln von Problemen mit Profiler und der Azure-Diagnose
 
->**Der Fehler im Profiler, der mit WAD für Cloud Services geliefert wird, wurde behoben.** Die neueste Version von WAD (1.12.2.0) für Cloud Services funktioniert mit allen neueren Versionen des App Insights SDK. Cloud Service-Hosts führen ein automatisches Upgrade für WAD durch, doch erfolgt dies nicht unmittelbar. Um ein Upgrade zu erzwingen, können Sie den Dienst erneut bereitstellen oder den Knoten neu starten.
+>**Der Fehler im Profiler, der in WAD für Cloud Services enthalten ist, wurde behoben.** Die neueste Version von WAD (1.12.2.0) für Cloud Services funktioniert mit allen neueren Versionen des App Insights-SDK. Cloud Service-Hosts führen ein automatisches Upgrade für WAD durch, doch erfolgt dies nicht unmittelbar. Um ein Upgrade zu erzwingen, können Sie den Dienst erneut bereitstellen oder den Knoten neu starten.
 
 Führen Sie die folgenden drei Schritte aus, um festzustellen, ob Profiler von der Azure-Diagnose richtig konfiguriert ist: 
 1. Erstens: Überprüfen Sie, ob die bereitgestellten Inhalte der Azure-Diagnosekonfiguration Ihren Erwartungen entsprechen. 

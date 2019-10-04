@@ -3,21 +3,23 @@ title: Erstellen und Verwalten von Ereignisregeln in Ihre Azure IoT Central-Anwe
 description: Azure IoT Central-Ereignisregeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen, wie das Senden einer E-Mail, durch Auslösen der Regel automatisch aufzurufen.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 02/20/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c98136e2f45965834fa1c538a5929eee14b24466
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: c931cfbcff750d96828641669c4aaa15e7932970
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521583"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69877409"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Erstellen einer Ereignisregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
 
 *Dieser Artikel gilt für Betreiber, Ersteller und Administratoren.*
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 Mithilfe von Azure IoT Central können Sie Ihre verbundenen Geräte remote überwachen. Azure IoT Central-Regeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und automatisch Aktionen aufzurufen, z. B. das Senden einer E-Mail oder das Auslösen von Microsoft Flow. Mit nur wenigen Mausklicks können Sie die Bedingung definieren, um Ihre Gerätedaten zu überwachen, und die entsprechende Aktion konfigurieren. In diesem Artikel wird erläutert, wie Regeln zum Überwachen von Ereignissen erstellt werden, die vom Gerät gesendet werden.
 
@@ -31,19 +33,19 @@ Um eine Ereignisregel zu erstellen, muss für die Gerätevorlage mindestens eine
 
 1. Wenn Sie noch keine Regeln erstellt haben, gelangen Sie auf folgenden Bildschirm:
 
-    ![Noch keine Regeln](media/howto-create-event-rules/Rules_Landing_Page.png)
+    ![Noch keine Regeln](media/howto-create-event-rules/rules_landing_page1.png)
 
 1. Wählen Sie auf der Registerkarte **Regeln** die Option **+ Neue Regel** aus, um die Regeltypen anzuzeigen, die Sie erstellen können.
 
 1. Wählen Sie die Kachel **Ereignis** aus, um eine Ereignisüberwachungsregel zu erstellen.
 
-    ![Regeltypen](media/howto-create-event-rules/Rule_Types.png)
+    ![Regeltypen](media/howto-create-event-rules/rule_types1.png)
 
 1. Geben Sie einen aussagekräftigen Namen ein, damit Sie die Regel in dieser Gerätevorlage einfach identifizieren können.
 
 1. Um die Regel sofort für alle Geräte zu aktivieren, die mit dieser Vorlage erstellt wurden, aktivieren Sie die Option **Regel für alle Geräte dieser Vorlage aktivieren**.
 
-    ![Regeldetails](media/howto-create-event-rules/Rule_Detail.png)
+    ![Regeldetails](media/howto-create-event-rules/rule_detail1.png)
 
     Die Regel gilt automatisch für alle Geräte unter der Gerätevorlage.
 
@@ -55,7 +57,7 @@ Die Bedingung definiert die Kriterien, die von der Regel überwacht werden.
 
 1. Wählen Sie in der Dropdownliste „Messung“ das Ereignis aus, das Sie überwachen möchten. In diesem Beispiel wurde das Ereignis **Fan Motor Error** (Lüftermotorfehler) ausgewählt.
 
-   ![Bedingung](media/howto-create-event-rules/Condition_Filled_Out.png)
+   ![Bedingung](media/howto-create-event-rules/condition_filled_out1.png)
 
 1. Optional können Sie auch **Anzahl** als **Aggregation** festlegen und den entsprechenden Schwellenwert angeben.
 
@@ -64,7 +66,7 @@ Die Bedingung definiert die Kriterien, die von der Regel überwacht werden.
 
      Wenn Sie z.B. bei mehr als drei Geräteereignissen innerhalb von 5 Minuten warnen möchten, wählen Sie das Ereignis aus und legen die Aggregatfunktion als „Anzahl“, den Operator als „größer als“ und den „Schwellenwert“ als 3 fest. Legen Sie „Aggregationszeitraum“ auf „5 Minuten“ fest. Die Regel wird ausgelöst, wenn mehr als drei Ereignisse innerhalb von 5 Minuten vom Gerät gesendet werden. Die Regelauswertungshäufigkeit ist identisch mit dem **Aggregationszeitfenster**. Dies bedeutet in diesem Beispiel, dass die Regel ein Mal alle 5 Minuten ausgewertet wird.
 
-     ![Hinzufügen einer Ereignisbedingung](media/howto-create-event-rules/Aggregate_Condition_Filled_Out.png)
+     ![Hinzufügen einer Ereignisbedingung](media/howto-create-event-rules/aggregate_condition_filled_out1.png)
 
      >[!NOTE]
      >Weitere Ereignismessungen können unter **Bedingung** hinzugefügt werden. Wenn mehrere Bedingungen angegeben werden, müssen alle Bedingungen erfüllt sein, damit die Regel ausgelöst wird. Jede Bedingung wird implizit durch eine „UND“-Klausel verknüpft. Wenn Sie die Aggregatfunktion verwenden, müssen alle Messungen aggregiert werden.
@@ -75,14 +77,14 @@ In diesem Abschnitt erfahren Sie, wie Aktionen eingerichtet werden, die ausgefü
 
 1. Wählen Sie **+** neben der Option **Aktionen**. Hier sehen Sie die Liste der verfügbaren Aktionen.
 
-    ![Hinzufügen einer Aktion](media/howto-create-event-rules/Add_Action.png)
+    ![Hinzufügen einer Aktion](media/howto-create-event-rules/add_action1.png)
 
 1. Wählen Sie die Aktion **E-Mail**, geben Sie eine gültige E-Mail-Adresse in das Feld **An** ein, und geben Sie eine Notiz ein, die im Text der E-Mail erscheint, wenn die Regel ausgelöst wird.
 
     > [!NOTE]
     > E-Mails werden nur an die Benutzer gesendet, die der Anwendung hinzugefügt wurden und sich mindestens einmal angemeldet haben. Erfahren Sie mehr über die [Benutzerverwaltung](howto-administer.md) in Azure IoT Central.
 
-   ![Konfigurieren einer Aktion](media/howto-create-event-rules/Configure_Action.png)
+   ![Konfigurieren einer Aktion](media/howto-create-event-rules/configure_action1.png)
 
 1. Um die neue Regel zu speichern, wählen Sie **Speichern** aus. Die Regel geht innerhalb weniger Minuten live und beginnt mit der Überwachung der Ereignisse, die an Ihre Anwendung gesendet werden. Wenn die in der Regel festgelegte Bedingung erfüllt ist, löst die Regel die konfigurierte E-Mail-Aktion aus.
 
@@ -93,7 +95,7 @@ Sie können der Regel auch andere Aktionen wie Microsoft Flow und Webhooks hinzu
 
 ## <a name="parameterize-the-rule"></a>Parametrisieren der Regel
 
-Aktionen können auch über **Geräteeigenschaft** als Parameter konfiguriert werden. Wenn eine E-Mail-Adresse als Geräteeigenschaft gespeichert ist, kann sie bei der Definition der Empfängeradresse verwendet werden.
+Aktionen können auch über **Geräteeigenschaft** als Parameter konfiguriert werden. Wenn eine E-Mail-Adresse als Geräteeigenschaft gespeichert ist, kann sie bei der Definition der Empfängeradresse **verwendet** werden.
 
 ## <a name="delete-a-rule"></a>Löschen einer Regel
 

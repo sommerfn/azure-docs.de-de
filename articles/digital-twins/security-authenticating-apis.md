@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.author: lyrana
-ms.openlocfilehash: 4ea4479d77e06940bed50859341952ffbcbbda46
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 07/29/2019
+ms.author: lyhughes
+ms.openlocfilehash: c0b4b6a13143f613bec64c8507f1726e2450be44
+ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711054"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68815550"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>Durchführen der Verbindungsherstellung und Authentifizierung für APIs
 

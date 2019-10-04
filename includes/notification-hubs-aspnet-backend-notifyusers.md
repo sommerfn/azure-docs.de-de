@@ -1,19 +1,19 @@
 ---
-title: Includedatei
+title: include file
 description: Includedatei, die Code zum Erstellen eines Back-End-ASP .NET-WebAPI-Projekts enthält.
 services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 03/22/2019
+ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407781"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934097"
 ---
 ## <a name="create-the-webapi-project"></a>Erstellen des WebAPI-Projekts
 
@@ -40,7 +40,7 @@ Gehen Sie zum Erstellen des neuen ASP.NET-WebAPI-Back-Ends wie folgt vor:
 2. Wählen Sie **Server-Explorer** aus, und melden Sie sich bei Ihrem Azure-Konto an. Zur Erstellung der Websiteressourcen für Ihr Konto müssen Sie angemeldet sein.
 
 3. Klicken Sie in Visual Studio mit der rechten Maustaste auf die Visual Studio-Projektmappe, zeigen Sie auf **Hinzufügen**, und klicken Sie auf **Neues Projekt**.
-4. Erweitern Sie **Visual C#**, wählen Sie **Web** aus, und klicken Sie auf **ASP.NET-Webanwendung**.
+4. Erweitern Sie **Visual C#** , wählen Sie **Web** aus, und klicken Sie auf **ASP.NET-Webanwendung**.
 
 5. Geben Sie im Feld **Name** die Zeichenfolge **AppBackend** ein, und wählen Sie dann **OK** aus.
 
@@ -158,7 +158,7 @@ In diesem Abschnitt wird dem WebAPI-Back-End ein neuer Controller hinzugefügt, 
 
 3. Wählen Sie in der Ergebnisliste die Option **Microsoft Azure Notification Hubs** und anschließend **Installieren** aus. Schließen Sie die Installation ab, und schließen Sie dann das Fenster des NuGet-Paket-Managers.
 
-    Dadurch wird mithilfe des [Microsoft.Azure.NotificationHubs-NuGet-Pakets](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) ein Verweis auf das Azure Notification Hubs-SDK hinzugefügt.
+    Dadurch wird mithilfe des [Microsoft.Azure.NotificationHubs-NuGet-Pakets](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) ein Verweis auf das Azure Notification Hubs-SDK hinzugefügt.
 
 4. Erstellen Sie eine neue Klassendatei, die die Verbindung mit dem Notification Hub darstellt, der zum Senden von Benachrichtigungen verwendet wird. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner **Modelle**, und wählen Sie dann **Hinzufügen** und anschließend **Klasse** aus. Nennen Sie die neue Klasse **Notifications.cs**, und wählen Sie dann **Hinzufügen** aus, um die Klasse zu generieren.
 
@@ -170,7 +170,7 @@ In diesem Abschnitt wird dem WebAPI-Back-End ein neuer Controller hinzugefügt, 
     using Microsoft.Azure.NotificationHubs;
     ```
 
-6. Ersetzen Sie die Definition der Klasse `Notifications` durch den folgenden Code und die beiden Platzhalter durch die Verbindungszeichenfolge (mit Vollzugriff) für Ihren Notification Hub bzw. durch den Namen des Hubs (verfügbar im [Azure-Portal](http://portal.azure.com)):
+6. Ersetzen Sie die Definition der Klasse `Notifications` durch den folgenden Code und die beiden Platzhalter durch die Verbindungszeichenfolge (mit Vollzugriff) für Ihren Notification Hub bzw. durch den Namen des Hubs (verfügbar im [Azure-Portal](https://portal.azure.com)):
 
     ```csharp
     public class Notifications
@@ -185,6 +185,9 @@ In diesem Abschnitt wird dem WebAPI-Back-End ein neuer Controller hinzugefügt, 
         }
     }
     ```
+    > [!IMPORTANT]
+    > Geben Sie für den Hub den **Namen** und einen Wert für **DefaultFullSharedAccessSignature** ein, bevor Sie fortfahren. 
+    
 7. Erstellen Sie als Nächstes einen neuen Controller namens **RegisterController**. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner **Controller**, und wählen Sie dann **Hinzufügen** und **Controller** aus.
 
 8. Wählen Sie **Web-API-2-Controller – Leer** und anschließend **Hinzufügen** aus.

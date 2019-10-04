@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: ralfwi
-ms.openlocfilehash: 2a2a9242642c8bc661859e3c847467fd724e461a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fc3eaa92e2373384b59c65aae3d9d2d622a89e6f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489785"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67080840"
 ---
 # <a name="azure-germany-storage-services"></a>Speicherdienste von Azure Deutschland
 ## <a name="storage"></a>Storage
@@ -64,7 +64,7 @@ Die URLs für Speicherkonten in Azure Deutschland unterscheiden sich von denen i
 >
 >
 
-Weitere Informationen zu APIs finden Sie unter [CloudStorageAccount-Konstruktor](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.-ctor#Microsoft_WindowsAzure_Storage_CloudStorageAccount__ctor_Microsoft_WindowsAzure_Storage_Auth_StorageCredentials_System_String_System_String_System_Boolean_).
+Weitere Informationen zu APIs finden Sie unter [CloudStorageAccount-Konstruktor](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.-ctor).
 
 Das zu verwendende Endpunktsuffix für diese Überladungen lautet *core.cloudapi.de*.
 

@@ -5,19 +5,19 @@ author: rimman
 ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e21058d47f554ca4a057ab90433895800fb17dd9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: f50f1b3e2ee7f98d14d29f1e2205a97d76eaacc8
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886722"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219889"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Änderungsfeed in Azure Cosmos DB – Übersicht
 
-Zur Unterstützung des Änderungsfeeds in Azure Cosmos DB wird gelauscht, ob in einem Azure Cosmos DB-Container Änderungen auftreten. Anschließend wird die sortierte Liste von geänderten Dokumenten in der Reihenfolge ausgegeben, in der sie geändert wurden. Die Änderungen bleiben erhalten und können asynchron und inkrementell verarbeitet werden, und die Ausgabe kann über einen oder mehrere Consumer für eine parallele Verarbeitung verteilt werden. 
+Zur Unterstützung des Änderungsfeeds in Azure Cosmos DB wird gelauscht, ob in einem Azure Cosmos-Container Änderungen auftreten. Anschließend wird die sortierte Liste von geänderten Dokumenten in der Reihenfolge ausgegeben, in der sie geändert wurden. Die Änderungen bleiben erhalten und können asynchron und inkrementell verarbeitet werden, und die Ausgabe kann über einen oder mehrere Consumer für eine parallele Verarbeitung verteilt werden. 
 
 Azure Cosmos DB eignet sich besonders gut für IoT-, Spiele-, Verkaufs- und Vorgangsprotokollierungsanwendungen. Ein allgemeines Entwurfsmuster in diesen Anwendungen ist die Verwendung von Datenänderungen, um weitere Aktionen auszulösen. Beispiele für weitere Aktionen sind:
 
@@ -35,14 +35,14 @@ Dieses Feature wird derzeit von den folgenden Azure Cosmos DB-APIs und Client-SD
 
 | **Clienttreiber** | **Azure-Befehlszeilenschnittstelle** | **SQL-API** | **Cassandra-API** | **MongoDB-API von Azure Cosmos DB** | **Gremlin-API**|**Tabellen-API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Nicht verfügbar | Ja | Nein  | Nein  | Ja | Nein  |
-|Java|Nicht verfügbar|Ja|Nein |Nein |Ja|Nein |
-|Python|Nicht verfügbar|Ja|Nein |Nein |Ja|Nein |
-|Node/JS|Nicht verfügbar|Ja|Nein |Nein |Ja|Nein |
+| .NET | Nicht verfügbar | Ja | Nein | Nein | Ja | Nein |
+|Java|Nicht verfügbar|Ja|Nein|Nein|Ja|Nein|
+|Python|Nicht verfügbar|Ja|Nein|Nein|Ja|Nein|
+|Node/JS|Nicht verfügbar|Ja|Nein|Nein|Ja|Nein|
 
 ## <a name="change-feed-and-different-operations"></a>Änderungsfeed und verschiedene Vorgänge
 
-Derzeit werden im Änderungsfeed alle Vorgänge angezeigt. Die Funktionalität, mit der Sie den Änderungsfeed für bestimmte Vorgänge steuern können, z.B. nur in Aktualisierungen und nicht in Einfügungen, steht noch nicht zur Verfügung. Sie können für das Element eine schwache Markierung für Aktualisierungen hinzufügen und dies bei der Verarbeitung von Elementen im Änderungsfeed entsprechend filtern. Aktuell protokollieren Änderungsfeeds keine Löschvorgänge. Ähnlich wie beim vorherigen Beispiel können Sie eine schwache Markierung für die Elemente hinzufügen, die gelöscht werden. Beispielweise können Sie im Element das Attribut „deleted“ hinzufügen und auf „true“ festlegen und eine Gültigkeitsdauer für das Element angeben, sodass es automatisch gelöscht werden kann. Sie können den Änderungsfeed nach früheren Elementen durchsuchen, z.B. nach Elementen, die vor fünf Jahren hinzugefügt wurden. Sofern Elemente nicht gelöscht wurden, können Sie den Änderungsfeed bis zurück zum Ursprung des Containers lesen.
+Derzeit werden im Änderungsfeed alle Vorgänge angezeigt. Die Funktionalität, mit der Sie den Änderungsfeed für bestimmte Vorgänge steuern können, z.B. nur in Aktualisierungen und nicht in Einfügungen, steht noch nicht zur Verfügung. Sie können für das Element eine schwache Markierung für Aktualisierungen hinzufügen und dies bei der Verarbeitung von Elementen im Änderungsfeed entsprechend filtern. Aktuell protokollieren Änderungsfeeds keine Löschvorgänge. Ähnlich wie beim vorherigen Beispiel können Sie eine schwache Markierung für die Elemente hinzufügen, die gelöscht werden. Beispielweise können Sie im Element das Attribut „deleted“ hinzufügen und auf „true“ festlegen und eine Gültigkeitsdauer für das Element angeben, sodass es automatisch gelöscht werden kann. Sie können den Änderungsfeed nach früheren Elementen durchsuchen (der letzten Änderung, die dem Element entspricht; zwischenzeitliche Änderungen sind nicht enthalten), z.B. nach Elementen, die vor fünf Jahren hinzugefügt wurden. Sofern Elemente nicht gelöscht wurden, können Sie den Änderungsfeed bis zurück zum Ursprung des Containers lesen.
 
 ### <a name="sort-order-of-items-in-change-feed"></a>Sortierreihenfolge der Elemente im Änderungsfeed
 
@@ -56,9 +56,9 @@ Wenn in einem Azure Cosmos-Konto mit mehreren Regionen ein Failover einer Schrei
 
 Wenn eine TTL-Eigenschaft (Time to Live, Gültigkeitsdauer) für ein Element auf „-1“ festgelegt ist, bleibt der Änderungsfeed dauerhaft erhalten. Wenn die Daten nicht gelöscht werden, verbleiben sie im Änderungsfeed.  
 
-### <a name="change-feed-and-etag-lsn-or-ts"></a>Änderungsfeed und „_etag“, „_lsn“ oder „_ts“
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Änderungsfeed und „_etag“, „_lsn“ oder „_ts“
 
-Das _etag-Format ist intern, und Sie sollten nicht darauf aufbauen, da es jederzeit geändert werden kann. „_ts“ ist ein Änderungs- oder Erstellungszeitstempel. Sie können „_ts“ für chronologische Vergleiche verwenden. „_lsn“ ist eine Batch-ID, die nur für den Änderungsfeed hinzugefügt wird, sie stellt die Transaktions-ID dar. Viele Elemente können die gleiche „_lsn“ aufweisen. „ETag“ in der FeedResponse unterscheidet sich von dem „_etag“, das für das Element angezeigt wird. „_etag“ ist ein interner Bezeichner und wird zur Gleichzeitigkeitssteuerung verwendet, er gibt die Version des Elements an. „ETag“ wird dagegen für die Sequenzierung des Feeds verwendet.
+Das _etag-Format ist intern, und Sie sollten nicht darauf aufbauen, da es jederzeit geändert werden kann. „_ts“ ist ein Änderungs- oder Erstellungszeitstempel. Sie können „_ts“ für chronologische Vergleiche verwenden. „_lsn“ ist eine Batch-ID, die nur für den Änderungsfeed hinzugefügt wird. Sie stellt die Transaktions-ID dar. Viele Elemente können die gleiche „_lsn“ aufweisen. „ETag“ in der FeedResponse unterscheidet sich von dem „_etag“, das für das Element angezeigt wird. „_etag“ ist ein interner Bezeichner und wird zur Gleichzeitigkeitssteuerung verwendet, er gibt die Version des Elements an. „ETag“ wird dagegen für die Sequenzierung des Feeds verwendet.
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>Anwendungsfälle und Szenarien für den Änderungsfeed
 
@@ -84,7 +84,7 @@ Mit einem Änderungsfeed können Sie beispielsweise die folgenden Aufgaben effiz
 
 Im Folgenden sind einige Szenarien aufgeführt, die Sie mit einem Änderungsfeed ganz einfach implementieren können:
 
-* In Ihren [serverlosen](https://azure.microsoft.com/en-us/solutions/serverless/) Web- oder mobilen Apps können Sie Ereignisse wie z.B. alle Änderungen am Profil, an den Voreinstellungen oder am Standort des Kunden nachverfolgen, um bestimmte Aktionen auszulösen, z.B. das Senden von Pushbenachrichtigungen an die Geräte des Kunden mit [Azure Functions](change-feed-functions.md).
+* In Ihren [serverlosen](https://azure.microsoft.com/solutions/serverless/) Web- oder mobilen Apps können Sie Ereignisse wie z.B. alle Änderungen am Profil, an den Voreinstellungen oder am Standort des Kunden nachverfolgen, um bestimmte Aktionen auszulösen, z.B. das Senden von Pushbenachrichtigungen an die Geräte des Kunden mit [Azure Functions](change-feed-functions.md).
 
 * Wenn Sie Azure Cosmos DB zum Erstellen eines Spiels verwenden, können Sie den Änderungsfeed beispielsweise verwenden, um in Echtzeit Bestenlisten anhand der Ergebnisse von abgeschlossenen Spiele zu implementieren.
 
@@ -94,7 +94,7 @@ Im Folgenden sind einige Szenarien aufgeführt, die Sie mit einem Änderungsfeed
 Sie können den Änderungsfeed mit den folgenden Optionen verwenden:
 
 * [Verwenden des Änderungsfeeds in Azure Functions](change-feed-functions.md)
-* [Verwenden des Änderungsfeeds mit der Change Feed Processor-Bibliothek](change-feed-processor.md) 
+* [Verwenden des Änderungsfeeds mit dem Änderungsfeedprozessor](change-feed-processor.md) 
 
 Der Änderungsfeed ist für jeden logischen Partitionsschlüssel innerhalb des Containers verfügbar. Er kann für eine parallele Verarbeitung über mehrere Consumer verteilt werden, wie in der folgenden Abbildung gezeigt.
 
@@ -108,7 +108,7 @@ Der Änderungsfeed ist für jeden logischen Partitionsschlüssel innerhalb des C
 
 * Der Änderungsfeed enthält Einfüge- und Aktualisierungsvorgänge, die für Elemente im Container durchgeführt wurden. Sie können Löschvorgänge durch ein Kennzeichen für „vorläufiges Löschen“ erfassen, das den gelöschten Text in den Elementen (z.B. in Dokumenten) ersetzt. Alternativ können Sie über die [TTL-Funktion](time-to-live.md) einen begrenzten Ablaufzeitraum für die Elemente festlegen, z.B. 24 Stunden, und den Wert dieser Eigenschaft verwenden, um Löschvorgänge zu erfassen. Mit dieser Lösung müssen Sie die Änderungen in einem kürzeren Zeitraum als dem TTL-Ablaufzeitraum verarbeiten. 
 
-* Jede Änderung an einem Element wird im Änderungsfeed genau einmal angezeigt, und die Clients müssen ihre Prüfpunktausführungs-Logik verwalten. Wenn Sie die Komplexität der Verwaltung von Prüfpunkten umgehen möchten, bietet die Änderungsfeed-Prozessorbibliothek automatische Prüfpunktausführung und „Mindestens einmal“-Semantik. Siehe [Verwenden des Änderungsfeeds mit der Change Feed Processor-Bibliothek](change-feed-processor.md).
+* Jede Änderung an einem Element wird im Änderungsfeed genau einmal angezeigt, und die Clients müssen ihre Prüfpunktausführungs-Logik verwalten. Wenn Sie die Komplexität der Verwaltung von Prüfpunkten umgehen möchten, bietet der Änderungsfeedprozessor automatische Prüfpunktausführung und „Mindestens einmal“-Semantik. Weitere Informationen finden Sie unter [Verwenden des Änderungsfeeds mit dem Änderungsfeedprozessor](change-feed-processor.md).
 
 * Nur die letzte Änderung für ein bestimmtes Element ist im Änderungsprotokoll enthalten. Zwischenzeitliche Änderungen sind möglicherweise nicht verfügbar.
 
@@ -126,4 +126,4 @@ In den folgenden Artikeln erfahren Sie mehr über Änderungsfeeds:
 
 * [Möglichkeiten zum Lesen von Änderungsfeeds](read-change-feed.md)
 * [Verwenden des Änderungsfeeds in Azure Functions](change-feed-functions.md)
-* [Verwenden der Änderungsfeed-Verarbeitungsbibliothek](change-feed-processor.md)
+* [Verwenden des Änderungsfeedprozessors](change-feed-processor.md)

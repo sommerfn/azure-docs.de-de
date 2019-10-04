@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 9b9a691cb2bce2357d184420912ab340aee534e8
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412738"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067942"
 ---
 # <a name="mock-api-responses"></a>Simulieren von API-Antworten
 
@@ -42,7 +41,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 + Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
 + Machen Sie sich mit dem [Konzept von Richtlinien in Azure API Management](api-management-howto-policies.md) vertraut.
-+ Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
++ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 
 ## <a name="create-a-test-api"></a>Erstellen einer Test-API 
 
@@ -79,7 +78,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine leere API ohne Back-End erstellen
 5. Wählen Sie **200 OK** in der Liste aus.
 6. Wählen Sie unter der Überschrift **Darstellungen** auf der rechten Seite **+ Darstellung hinzufügen** aus.
 7. Geben Sie „*application/json*“ in das Suchfeld ein, und wählen Sie den Inhaltstyp **application/json** aus.
-8. Geben Sie im Testfeld **Beispiel** `{ 'sampleField' : 'test' }` ein.
+8. Geben Sie im Testfeld **Beispiel** `{ "sampleField" : "test" }` ein.
 9. Klicken Sie auf **Erstellen**.
 
 ## <a name="enable-response-mocking"></a>Aktivieren der Antwortsimulation

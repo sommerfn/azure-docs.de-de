@@ -4,13 +4,13 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.service: azure-powershell
 ms.author: sttramer
-ms.openlocfilehash: f04a4ca8c0b160dc2bcc762cc1c570737dc945d5
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 5cfb93c51ae1f3aff9250601410e4808ed865a32
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505730"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059040"
 ---
-Für dieses Beispiel ist Azure PowerShell erforderlich. Ermitteln Sie durch die Ausführung von `Get-Module -ListAvailable Az`, ob PowerShell installiert ist. Wenn Sie die Installation ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. 
+Für dieses Beispiel ist mindestens Azure PowerShell Az 1.0 erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierten Versionen zu ermitteln. Wenn Sie die Installation ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. 
 
-Führen Sie zum Starten `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen. 
+Führen Sie zum Anmelden bei Azure [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) aus.

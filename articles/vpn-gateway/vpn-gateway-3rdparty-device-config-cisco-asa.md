@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
 ms.openlocfilehash: e575fac61a1c5d9351391d39d200b87e34ff26cd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817239"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60648744"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Konfigurationsbeispiel: Cisco ASA-Gerät (IKEv2/kein BGP)
 Dieser Artikel enthält Beispielkonfigurationen für das Verbinden von Cisco ASA-Geräten (Adaptive Security Appliance) mit Azure-VPN-Gateways. Das Beispiel gilt für Cisco ASA-Geräte, auf denen IKEv2 ohne Border Gateway Protocol (BGP) ausgeführt wird. 
@@ -27,7 +27,7 @@ Dieser Artikel enthält Beispielkonfigurationen für das Verbinden von Cisco ASA
 | Getestetes Modell           | ASA 5505                          |
 | Getestete Version         | 9.2                               |
 | IKE-Version            | IKEv2                             |
-| BGP                    | Nein                                 |
+| BGP                    | Nein                                |
 | Typ des Azure VPN-Gateways | Routenbasiertes VPN-Gateway           |
 |                        |                                   |
 
@@ -78,7 +78,7 @@ In der folgenden Tabelle werden die im Beispiel verwendeten IPsec/IKE-Algorithme
 | * IPsec-Verschlüsselung | AES256                               |
 | * IPsec-Integrität  | SHA1                                 |
 | PFS-Gruppe        | PFS24                                |
-| QM-SA-Gültigkeitsdauer   | 7.200 Sekunden                         |
+| QM-SA-Gültigkeitsdauer   | 7\.200 Sekunden                         |
 | Datenverkehrsselektor | UsePolicyBasedTrafficSelectors $True |
 | Vorab ausgetauschter Schlüssel   | PreSharedKey                         |
 |                  |                                      |
@@ -115,7 +115,7 @@ Das Skript enthält ein Beispiel, das auf der Konfiguration und den Parametern b
   - **Azure_Gateway_Public_IP**
   - **OnPrem_Device_Public_IP**
   - IKE: **Pre_Shared_Key**
-  - VNET- und lokale Netzwerkgatewaynamen:  **VNetName** und **LNGName**
+  - Namen der VNET- und lokalen Netzwerkgateways: **VNetName** und **LNGName**
   - VNET- und lokale Netzwerkadresspräfixe: **prefixes**
   - Ordnungsgemäße Netzmasken: **netmasks**
 

@@ -1,19 +1,17 @@
 ---
 title: Registrieren von Datenquellen in Azure Data Catalog
 description: Dieser Artikel bietet Informationen zum Registrieren von Datenquellen bei Azure Data Catalog, einschließlich der während der Registrierung extrahierten Metadatenfelder.
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: bab89906-186f-4d35-9ffd-61b1d903905d
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 57b9a040b875c584b126e2062e4938b37875a31b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: 0c5fdac7df41fec3a6206dbd78af74b7f1b58c7f
+ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002985"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68736325"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Registrieren von Datenquellen in Azure Data Catalog
 ## <a name="introduction"></a>Einführung

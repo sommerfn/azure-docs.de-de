@@ -2,23 +2,21 @@
 title: Geografische Verfügbarkeit und Unterstützung von Währungen | Azure
 description: Geografische Verfügbarkeit in Azure Marketplace und AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 96ec1f3ecdca6437e1d25eca433d385573f6c659
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 344479a270119137a256620304d88f139d0b0322
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220778"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619970"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Geografische Verfügbarkeit und Unterstützung von Währungen
 
-Azure Marketplace-Angebote können in 141 geografischen Regionen gemäß der Rechnungsadresse des Kunden erworben werden, und Transaktionen können in 17 Währungen abgeschlossen werden. Die folgende Tabelle listet jeden unterstützten geografischen Standort auf, seinen [zweistelligen Alpha Code nach ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), und die zugewiesene Währung.
+Azure Marketplace- und AppSource-Angebote können in 141 geografischen Regionen gemäß der Rechnungsadresse des Kunden erworben werden, und Transaktionen können in 17 Währungen abgeschlossen werden. Die folgende Tabelle listet jeden unterstützten geografischen Standort auf, seinen [zweistelligen Alpha Code nach ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), und die zugewiesene Währung.
 
 |   Name des Landes/der Region               |   ISO-2   |   Currency   |
 |-------------------------------------|-----------|--------------|
@@ -42,7 +40,7 @@ Azure Marketplace-Angebote können in 141 geografischen Regionen gemäß der Rec
 | Bolivien                             | BO        | USD          |
 | Bosnien und Herzegowina              | BA        | USD          |
 | Botsuana                            | BW        | USD          |
-| Brasilien                              | BR        | BRL          |
+| Brasilien                              | BR        | BRL\*        |
 | Brunei                              | BN        | USD          |
 | Bulgarien                            | BG        | EUR          |
 | Kamerun                            | CM        | USD          |
@@ -78,7 +76,7 @@ Azure Marketplace-Angebote können in 141 geografischen Regionen gemäß der Rec
 | Ungarn                             | HU        | EUR          |
 | Island                             | IS        | EUR          |
 | Indien                               | IN        | INR          |
-| Indonesien                           | ID        | USD          |
+| Indonesien                           | id        | USD          |
 | Irak                                | IQ        | USD          |
 | Irland                             | IE        | EUR          |
 | Israel                              | IL        | USD          |
@@ -98,7 +96,7 @@ Azure Marketplace-Angebote können in 141 geografischen Regionen gemäß der Rec
 | Litauen                           | LT        | EUR          |
 | Luxemburg                          | LU        | EUR          |
 | Macau (SAR)                           | MO        | USD          |
-| Mazedonien (ehem. jugoslawische Republik Mazedonien)                      | MK        | USD          |
+| Nordmazedonien                     | MK        | USD          |
 | Malaysia                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
 | Mauritius                           | MU        | USD          |
@@ -117,7 +115,7 @@ Azure Marketplace-Angebote können in 141 geografischen Regionen gemäß der Rec
 | Norwegen                              | NO        | NOK          |
 | Oman                                | OM        | USD          |
 | Pakistan                            | PK        | USD          |
-| Palästina                           | PS        | USD          |
+| Palästinensische Autonomiegebiete               | PS        | USD          |
 | Panama                              | PA        | USD          |
 | Paraguay                            | PY        | USD          |
 | Peru                                | PE        | USD          |
@@ -164,3 +162,5 @@ Azure Marketplace-Angebote können in 141 geografischen Regionen gemäß der Rec
 | Sambia                              | ZM        | USD          |
 | Simbabwe                            | ZW        | USD          |
 |   |   |   |
+
+\* Für Kunden in Brasilien wird im Marketplace über Cloud Solution Provider (CSP) die Währung USD verwendet.

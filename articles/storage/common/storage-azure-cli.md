@@ -2,19 +2,20 @@
 title: Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher | Microsoft Docs
 description: Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle (Azure-CLI) mit Azure Storage verwenden, um Speicherkonten zu erstellen und zu verwalten sowie mit Azure-Blobs und -Dateien zu arbeiten.
 services: storage
-author: roygara
+author: tamram
 ms.service: storage
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
-ms.author: rogarana
+ms.author: tamram
+ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f485f38d4c580937b027bb76d0c34c98f699ed93
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 46ae70bf4f1c2fe0276a3327ff37650dd57341d0
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816848"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259386"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher
 
@@ -23,6 +24,8 @@ Die plattformübergreifende Azure CLI auf Open-Source-Basis bietet eine Reihe vo
 In dieser Anleitung erfahren Sie, wie Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) nutzen, um für Ressourcen in Ihrem Azure Storage-Konto verschiedene Aufgaben auszuführen. Sie sollten die neueste Version der CLI herunterladen und installieren bzw. ein Upgrade durchführen, bevor Sie dieser Anleitung folgen.
 
 In den Beispielen in der Anleitung wird von der Verwendung der Bash-Shell unter Ubuntu ausgegangen. Doch das Verhalten sollte auf anderen Plattformen ähnlich sein. 
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
@@ -133,7 +136,7 @@ echo "Done"
 
 2. Aktualisieren Sie als Nächstes die Skriptvariablen entsprechend Ihren Konfigurationseinstellungen. Ersetzen Sie die folgenden Werte wie angegeben:
 
-   * **\<storage_account_name\>**: Der Name Ihres Speicherkontos.
+   * **\<storage_account_name\>** : Der Name Ihres Speicherkontos.
    * **\<storage_account_key\>** Der primäre oder sekundäre Zugriffsschlüssel für Ihr Speicherkonto.
    * **\<container_name\>** Ein Name für den zu erstellenden Container wie z.B. „azure-cli-beispielcontainer“.
    * **\<blob_name\>** Ein Name für das Zielblob im Container.
@@ -146,7 +149,7 @@ echo "Done"
 
 5. Führen Sie das Skript aus. Beispielsweise in Bash:`./my_storage_sample.sh`
 
-Eine Ausgabe wie die folgende sollte angezeigt werden. Die **\<destination_file\>**, die Sie im Skript angegeben haben, sollte auf Ihrem lokalen Computer angezeigt werden.
+Eine Ausgabe wie die folgende sollte angezeigt werden. Die **\<destination_file\>** , die Sie im Skript angegeben haben, sollte auf Ihrem lokalen Computer angezeigt werden.
 
 ```
 Creating the container...
@@ -192,6 +195,8 @@ az storage account create \
   * `Standard_LRS`
   * `Standard_RAGRS`
   * `Standard_ZRS`
+  * `Standard_GZRS` (Vorschau)
+  * `Standard_RAGZRS` (Vorschau)
 
 ### <a name="set-default-azure-storage-account-environment-variables"></a>Festlegen eines Azure-Standardspeicherkontos in Umgebungsvariablen
 
@@ -322,6 +327,17 @@ Verwenden Sie zum Löschen eines Blobs den Befehl `blob delete`:
 
 ```azurecli
 az storage blob delete --container-name <container_name> --name <blob_name>
+```
+
+### <a name="set-the-content-type"></a>Festlegen des Inhaltstyps
+
+Der Inhaltstyp, auch als MIME-Typ bezeichnet, identifiziert das Format der Daten im Blob. Browser und andere Software bestimmen anhand des Inhaltstyps, wie die Daten verarbeitet werden müssen. Der Inhaltstyp für PNG-Bilder lautet beispielsweise `image/png`. Verwenden Sie den Befehl `blob update`, um den Inhaltstyp festzulegen:
+
+```azurecli
+az storage blob update
+    --container-name <container_name> 
+    --name <blob_name>
+    --content-type <content_type>
 ```
 
 ## <a name="create-and-manage-file-shares"></a>Erstellen und Verwalten von Dateifreigaben

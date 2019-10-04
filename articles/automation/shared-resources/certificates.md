@@ -4,17 +4,17 @@ description: Zertifikate werden in Azure Automation sicher gespeichert, sodass s
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d230fa97d009f0ee2a3bc86a0b6b7c8d40687a46
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: da116dd8c84e4aa96cc3254218f1ab5d14a8bd6b
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010278"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478193"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Zertifikatobjekte in Azure Automation
 
@@ -35,11 +35,11 @@ Die Cmdlets in der folgenden Tabelle werden für AzureRM zum Erstellen und Verwa
 |[Set-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/set-azurermautomationcertificate)|Legt die Eigenschaften für ein vorhandenes Zertifikat fest, lädt die Zertifikatdatei hoch und legt das Kennwort für eine PFX-Datei fest.|
 |[Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate)|Lädt ein Dienstzertifikat für den angegebenen Clouddienst hoch.|
 
-## <a name="activities"></a>Aktivitäten
+## <a name="activities"></a>activities
 
 Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Zertifikate in einem Runbook oder DSC-Konfigurationen verwendet.
 
-| Aktivitäten | BESCHREIBUNG |
+| activities | BESCHREIBUNG |
 |:---|:---|
 |Get-AutomationCertificate|Ruft ein Zertifikat zur Verwendung in einem Runbook oder einer DSC-Konfiguration ab. Gibt ein [System.Security.Cryptography.X509Certificates.X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2)-Objekt zurück.|
 

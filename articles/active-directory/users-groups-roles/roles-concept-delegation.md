@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0cb6e2b1df062c3d056bd9a5aa0c1ff89f6636a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6fa3c6bf39dbef601fe64e125999f519f725f2e2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201464"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67083770"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Delegieren der Administration in Azure Active Directory (Azure AD)
 
@@ -105,7 +105,7 @@ Wenn Angreifer den Zugriff auf privilegierte Konten erlangen können, können di
 * Globaler Administrator
 * SharePoint-Administrator
 * Exchange-Administrator
-* Administrator für bedingten Zugriff
+* Administrator für den bedingten Zugriff
 * Sicherheitsadministrator
 
 ## <a name="elevate-privilege-temporarily"></a>Temporäres Erhöhen von Berechtigungen

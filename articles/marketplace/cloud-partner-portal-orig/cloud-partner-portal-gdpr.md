@@ -1,30 +1,23 @@
 ---
-title: Einhaltung der DSGVO | Microsoft-Dokumentation
+title: Einhaltung der DSGVO | Azure Marketplace
 description: Cloud-Partnerportal und DSGVO.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: dan-wesley
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 4e6f5095081f0549bc127b9b6949908a64214aee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 91db369f9a2a0439bdbaf8600d1b329f0da00aa0
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857809"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786466"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Einhaltung der DSGVO im Cloud-Partnerportal
 ====================================
 
-Die [Datenschutz-Grundverordnung (DSGVO)](https://ec.europa.eu/justice/data-protection/reform/index_en.htm) ist ein Datenschutzgesetz der Europäischen Union (EU). Die DSGVO enthält Vorschriften für Unternehmen, Regierungsbehörden, gemeinnützige Organisationen und andere Organisationen, die Menschen in der EU Waren und Dienstleistungen anbieten oder Daten in Bezug auf EU-Bürger sammeln und analysieren.
+Die [Datenschutz-Grundverordnung (DSGVO)](https://ec.europa.eu/info/law/law-topic/data-protection/reform_en/) ist ein Datenschutzgesetz der Europäischen Union (EU). Die DSGVO enthält Vorschriften für Unternehmen, Regierungsbehörden, gemeinnützige Organisationen und andere Organisationen, die Menschen in der EU Waren und Dienstleistungen anbieten oder Daten in Bezug auf EU-Bürger sammeln und analysieren.
 
 Cloud-Partnerportal stellt detaillierte Informationen über die Verarbeitung von Kundendaten und die Sicherheitsmaßnahmen bereit, mit denen diese Daten geschützt werden. Auf diese Informationen über die produktbegleitenden Erfahrungen im Portal zugegriffen werden.
 

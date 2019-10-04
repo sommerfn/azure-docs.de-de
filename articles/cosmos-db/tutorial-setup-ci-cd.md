@@ -4,15 +4,15 @@ description: Tutorial zum Einrichten des Build- und Releaseworkflows in Azure De
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/02/2018
+ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: d6250b778cdaec47ccbe2f45d35adea0b676a20a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dad99a7e3d0463263e912aa05b5312edbcb89c0b
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882009"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597674"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Einrichten einer CI/CD-Pipeline mit dem Buildtask des Azure Cosmos DB-Emulators in Azure DevOps
 
@@ -31,7 +31,7 @@ Damit der Buildtask verwendet werden kann, muss er zunächst in der Azure DevOps
 Wählen Sie anschließend die Organisation aus, in der die Erweiterung installiert werden soll. 
 
 > [!NOTE]
-> Sie müssen Kontobesitzer oder Projektsammlungsadministrator sein, um eine Erweiterung in einer Azure DevOps-Organisation installieren zu können. Falls Sie keine Berechtigungen haben, aber Kontomitglied sind, können Sie stattdessen Erweiterungen anfordern. [Weitere Informationen.](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
+> Sie müssen Kontobesitzer oder Projektsammlungsadministrator sein, um eine Erweiterung in einer Azure DevOps-Organisation installieren zu können. Falls Sie keine Berechtigungen haben, aber Kontomitglied sind, können Sie stattdessen Erweiterungen anfordern. [Weitere Informationen.](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
 
 ![Auswählen einer Azure DevOps-Organisation für die Installation einer Erweiterung](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
@@ -39,7 +39,7 @@ Wählen Sie anschließend die Organisation aus, in der die Erweiterung installie
 
 Nachdem die Erweiterung installiert ist, melden Sie sich bei Ihrem Azure DevOps-Konto an, und suchen Sie Ihr Projekt auf dem Projektdashboard. Sie können Ihrem Projekt eine [Buildpipeline](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) hinzufügen oder eine bereits vorhandenen Buildpipeline ändern. Wenn Sie bereits über eine Buildpipeline verfügen, können Sie mit [Hinzufügen des Emulator-Buildtasks zur Builddefinition](#addEmulatorBuildTaskToBuildDefinition) fortfahren.
 
-1. Navigieren Sie zum Erstellen einer neuen Builddefinition in Azure DevOps zur Registerkarte **Builds**. Klicken Sie auf **+Neu.**  \> **Neue Buildpipeline**
+1. Navigieren Sie zum Erstellen einer neuen Builddefinition in Azure DevOps zur Registerkarte **Builds**. Klicken Sie auf **+Neu.** \> **Neue Buildpipeline**
 
    ![Erstellen einer neuen Buildpipeline](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
@@ -48,6 +48,9 @@ Nachdem die Erweiterung installiert ist, melden Sie sich bei Ihrem Azure DevOps-
    ![Auswählen von Teamprojekt, Repository und Branch für die Buildpipeline](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
 3. Wählen Sie abschließend die gewünschte Vorlage für die Buildpipeline aus. In diesem Tutorial wird die Vorlage **ASP.NET** ausgewählt. 
+
+> [!NOTE]
+> Im Agent-Pool, der für diese CI ausgewählt werden soll, muss Docker für Windows installiert sein, es sei denn, die Installation erfolgt manuell in einer vorherigen Aufgabe als Teil der CI. Im Artikel [Von Microsoft gehostete Agents](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) finden Sie eine Auswahl von Agent-Pools. Wir empfehlen, mit `Hosted VS2017` oder `Hosted VS2019` zu beginnen. 
 
 Sie verfügen nun über eine Buildpipeline, die Sie für die Verwendung des Azure Cosmos DB-Emulator-Buildtasks einrichten können. 
 

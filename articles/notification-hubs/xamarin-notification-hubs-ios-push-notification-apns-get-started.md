@@ -4,9 +4,9 @@ description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notific
 services: notification-hubs
 keywords: iOS-Pushbenachrichtigungen,Pushnachrichten,Pushbenachrichtigungen,Pushnachricht
 documentationcenter: xamarin
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 4d4dfd42-c5a5-4360-9d70-7812f96924d2
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,14 +14,16 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 94268d47eaf23e1bac54bb9791ec149bb5cccacb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/23/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 05/23/2019
+ms.openlocfilehash: 7427421719b44839e766234194640817ea686e3c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855655"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213581"
 ---
 # <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an Xamarin.iOS-Apps mit Azure Notification Hubs
 
@@ -31,7 +33,7 @@ ms.locfileid: "57855655"
 
 In diesem Lernprogramm erfahren Sie, wie Sie mithilfe von Azure Notification Hubs Pushbenachrichtigungen an eine iOS-App senden. Sie erstellen eine leere Xamarin.iOS-App, die Pushbenachrichtigungen mithilfe des [Apple-Pushbenachrichtigungsdiensts (Apple Push Notification Service, APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html) empfängt.
 
-Sobald Sie dieses Tutorial abgeschlossen haben, können Sie über Ihren Notification Hub Pushbenachrichtigungen an alle Geräte senden, die Ihre App ausführen. Der komplette Code ist in der [NotificationHubs-Beispiel-App][GitHub] verfügbar.
+Sobald Sie dieses Tutorial abgeschlossen haben, können Sie über Ihren Notification Hub Pushbenachrichtigungen an alle Geräte senden, die Ihre App ausführen. Der fertige Code steht in der [NotificationHubs-Beispiel-App][GitHub] zur Verfügung.
 
 In diesem Tutorial erstellen/aktualisieren Sie Code, um die folgenden Aufgaben auszuführen:
 
@@ -56,25 +58,6 @@ In diesem Tutorial erstellen/aktualisieren Sie Code, um die folgenden Aufgaben a
 Die Absolvierung dieses Tutorials ist eine Voraussetzung für alle anderen Notification Hubs-Tutorials für Xamarin.iOS-Apps.
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
-
-## <a name="configure-your-notification-hub-for-ios-push-notifications"></a>Konfigurieren Ihres Notification Hubs für iOS-Pushbenachrichtigungen
-
-Dieser Abschnitt führt Sie durch die Schritte zum Erstellen eines neuen Notification Hubs sowie zum Konfigurieren der Authentifizierung mit APNs unter Verwendung des zuvor erstellten Pushzertifikats vom Typ **.p12**. Wenn Sie einen bereits erstellten Notification Hub verwenden möchten, können Sie zu Schritt 5 springen.
-
-[!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
-
-### <a name="configure-ios-settings-for-the-notification-hub"></a>Konfigurieren von iOS-Einstellungen für den Notification Hub
-
-1. Wählen Sie **Apple (APNS)** in der Gruppe **BENACHRICHTIGUNGSEINSTELLUNGEN** aus.
-2. Wählen Sie **Zertifikat** aus, klicken Sie auf das **Dateisymbol**, und wählen Sie die **P12**-Datei aus, die Sie zuvor exportiert haben.
-3. Geben Sie das **Kennwort** für das Zertifikat ein.
-4. Wählen Sie den Modus **Sandbox** aus. Verwenden Sie den Modus **Produktion** nur dann, wenn Sie Pushbenachrichtigungen an Benutzer senden möchten, die Ihre App im Store erworben haben.
-
-    ![Konfigurieren von APNs im Azure-Portal][6]
-
-    ![Konfigurieren der APNs-Zertifizierung im Azure-Portal][7]
-
-Ihr Notification Hub ist jetzt für die Verwendung mit APNs konfiguriert, und Sie verfügen über die Verbindungszeichenfolge, um die App zu registrieren und Pushbenachrichtigungen zu senden.
 
 ## <a name="connect-your-app-to-the-notification-hub"></a>Verbinden Ihrer App mit dem Notification Hub
 
@@ -108,6 +91,7 @@ Ihr Notification Hub ist jetzt für die Verwendung mit APNs konfiguriert, und Si
 
     ```csharp
     using WindowsAzure.Messaging;
+    using UserNotifications
     ```
 
 8. Deklarieren Sie eine Instanz von `SBNotificationHub`:
@@ -123,7 +107,7 @@ Ihr Notification Hub ist jetzt für die Verwendung mit APNs konfiguriert, und Si
     {
         if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
         {
-            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Sound | UNAuthorizationOptions.Sound,
+            UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound,
                                                                     (granted, error) =>
             {
                 if (granted)

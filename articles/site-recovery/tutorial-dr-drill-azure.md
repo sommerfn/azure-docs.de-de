@@ -6,15 +6,15 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b93fb92c9170f3e0fb7bd6ee754dde5df729e299
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 14ef3bf8420acf03f5c8329c6c78834dbc16ae40
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358188"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814281"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Durchführen eines Notfallwiederherstellungsverfahrens in Azure
 
@@ -88,6 +88,6 @@ Wenn Sie nach einem Failover eine RDP-/SSH-Verbindung mit virtuellen Azure-Compu
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Durchführen von Failover und Failback für VMware-VMs](vmware-azure-tutorial-failover-failback.md)
-> [Durchführen von Failover und Failback für Hyper-V-VMs](hyper-v-azure-failover-failback-tutorial.md)
-> [Durchführen von Failover und Failback für physische Computer](physical-to-azure-failover-failback.md)
+> [Ausführen eines Failovers und eines Failbacks für virtuelle VMware-Computer](vmware-azure-tutorial-failover-failback.md)
+> [Ausführen eines Failovers und eines Failbacks für virtuelle Hyper-V-Computer](hyper-v-azure-failover-failback-tutorial.md)
+> [Ausführen eines Failovers und eines Failbacks für physische Computer](physical-to-azure-failover-failback.md)

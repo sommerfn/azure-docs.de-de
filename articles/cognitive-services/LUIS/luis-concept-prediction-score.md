@@ -1,6 +1,6 @@
 ---
-title: Vorhersageergebnisse
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Vorhersageergebnisse – LUIS
+titleSuffix: Azure Cognitive Services
 description: Ein Vorhersageergebnis gibt den Grad der Zuverlässigkeit an, den der LUIS-API-Dienst den Ergebnissen von Vorhersagen basierend auf einer Benutzeräußerung zuordnet.
 services: cognitive-services
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 383ce4c4248f7e21f745f503c74a29cb613983e2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 34ec5588a510574f4ea9f01bd23c6f6487e288da
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121756"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638356"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Vorhersageergebnisse geben die Vorhersagegenauigkeit für Absichten und Entitäten an
 
@@ -24,7 +24,7 @@ Ein Vorhersageergebnis gibt den Grad der Zuverlässigkeit an, den LUIS den Ergeb
 
 Ein Vorhersageergebnis liegt zwischen 0 (null) und 1 (eins). Ein Beispiel für eine hohe Zuverlässigkeitsbewertung von LUIS ist der Wert 0,99. Ein Beispiel für eine Bewertung mit niedriger Zuverlässigkeit ist 0,01. 
 
-|Ergebniswert|Zuverlässigkeit|
+|Ergebniswert|Confidence|
 |--|--|
 |1|definitive Übereinstimmung|
 |0,99|hohe Zuverlässigkeit|
@@ -69,7 +69,7 @@ Vorhersagebewertungen können exponentiell angegeben werden, um außerhalb des I
 
 ## <a name="punctuation"></a>Interpunktion
 
-Interpunktion ist ein separates Token in LUIS. Eine Äußerung mit einem Punkt am Ende und eine Äußerung, in der dies nicht der Fall ist, sind zwei separate Äußerungen und erhalten möglicherweise zwei unterschiedliche Vorhersagen. Stellen Sie sicher, dass das Modell die Interpunktion entweder in den [Beispieläußerungen](luis-concept-utterance.md) (mit und ohne Interpunktion) oder in den [Mustern](luis-concept-patterns.md) behandelt, wo es mit der speziellen Syntax einfacher ist, die Interpunktion zu ignorieren: `I am applying for the {Job} position[.]`
+[Erfahren Sie mehr](luis-concept-utterance.md#punctuation-marks) über das Verwenden oder Ignorieren von Satzzeichen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

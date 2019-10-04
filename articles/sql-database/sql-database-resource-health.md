@@ -10,20 +10,19 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: c3b9fecd3ad404385732e55a9cf3aa65a6e388b8
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 1c2720d61c7b4ea918a3d0c1ff7f41984ea42c69
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889374"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566903"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Behandeln von Konnektivitätsproblemen für Azure SQL-Datenbank mithilfe von Resource Health
 
 ## <a name="overview"></a>Übersicht
 
-[Resource Health](../service-health/resource-health-overview.md#getting-started) für SQL-Datenbank unterstützt Sie bei der Diagnose und bei Supportanfragen, wenn sich ein Azure-bezogenes Problem auf Ihre SQL-Ressourcen auswirkt. Der Dienst informiert Sie über die aktuelle und frühere Integrität Ihrer Ressourcen und unterstützt Sie beim Beheben von Problemen. Resource Health bietet technischen Support, wenn Sie Unterstützung bei Azure-Dienstproblemen benötigen.
+[Resource Health](../service-health/resource-health-overview.md#get-started) für SQL-Datenbank unterstützt Sie bei der Diagnose und bei Supportanfragen, wenn sich ein Azure-bezogenes Problem auf Ihre SQL-Ressourcen auswirkt. Der Dienst informiert Sie über die aktuelle und frühere Integrität Ihrer Ressourcen und unterstützt Sie beim Beheben von Problemen. Resource Health bietet technischen Support, wenn Sie Unterstützung bei Azure-Dienstproblemen benötigen.
 
 ![Übersicht](./media/sql-database-resource-health/sql-resource-health-overview.jpg)
 

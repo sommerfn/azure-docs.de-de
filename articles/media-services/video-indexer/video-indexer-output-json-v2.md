@@ -1,20 +1,21 @@
 ---
-title: Untersuchen der von der v2-API erstellten Video Indexer-Ausgabe
+title: Untersuchen der von der v2-API erstellten Video Indexer-Ausgabe von Azure Media Services
 titlesuffix: Azure Media Services
 description: In diesem Thema wird die Video Indexer-Ausgabe untersucht, die von der v2-API erstellt wird.
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
+ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 552c3fa81a213d0be32c5498cde5a50fb44291d0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 205dc7d9e69788ea29a48ff342844a4b74e143bd
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892574"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65799083"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Untersuchen der von der API erstellten Video Indexer-Ausgabe
 
@@ -37,7 +38,7 @@ In diesem Artikel wird der JSON-Inhalt untersucht, der von der API zum Abrufen d
 |accountId|Die VI-Konto-ID der Wiedergabeliste.|
 |id|Die ID der Wiedergabeliste.|
 |name|Der Name der Wiedergabeliste.|
-|Beschreibung|Die Beschreibung der Wiedergabeliste.|
+|description|Die Beschreibung der Wiedergabeliste.|
 |userName|Der Name des Benutzers, der die Wiedergabeliste erstellt hat.|
 |created|Die Erstellungszeit der Wiedergabeliste.|
 |privacyMode|Der Datenschutzmodus der Wiedergabeliste (privat/öffentlich).|
@@ -79,7 +80,7 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |privacyMode|Für Ihre Aufschlüsselung kann einer der folgenden Modi verwendet werden: **Private** oder **Public**. **Public**: Das Video ist für alle Benutzer Ihres Kontos und alle Personen sichtbar, die über einen Link zum Video verfügen. **Private**: Das Video ist für alle Benutzer Ihres Kontos sichtbar.|
 |duration|Enthält eine Dauer, mit der der Zeitbereich beschrieben wird, in dem eine Erkenntnis gewonnen wurde. Die Dauer wird in Sekunden angegeben.|
 |thumbnailVideoId|Die ID des Videos, aus dem die Miniaturansicht entnommen wurde.
-|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie „Get-Thumbnail“ (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail)) auf, und übergeben Sie „thumbnailVideoId“ und „thumbnailId.To“, um die eigentliche Miniaturansicht zu erhalten.|
+|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) auf, und übergeben Sie „thumbnailVideoId“ und „thumbnailId“, um die eigentliche Miniaturansicht zu erhalten.|
 |faces|Kann null oder mehr Gesichter enthalten. Ausführlichere Informationen finden Sie unter [faces](#faces).|
 |keywords|Kann null oder mehr Schlüsselwörter enthalten. Ausführlichere Informationen finden Sie unter [keywords](#keywords).|
 |sentiments|Kann null oder mehr Stimmungen enthalten. Ausführlichere Informationen finden Sie unter [sentiments](#sentiments).|
@@ -106,12 +107,12 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |metadata|Die externen Metadaten des Videos (falls vom Benutzer angegeben).|
 |isAdult|Gibt an, ob das Video manuell geprüft und als nur für Erwachsene geeignetes Video eingestuft wurde.|
 |insights|Das insights-Objekt. Weitere Informationen finden Sie unter [insights](#insights).|
-|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie „Get-Thumbnail“ (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail)) auf, und übergeben Sie die Video-ID und „thumbnailId“, um die eigentliche Miniaturansicht zu erhalten.|
+|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) auf, und übergeben Sie die Video-ID und „thumbnailId“, um die eigentliche Miniaturansicht zu erhalten.|
 |publishedUrl|Eine URL zum Streamen des Videos.|
 |publishedUrlProxy|Eine URL, über die das Video gestreamt werden kann (für Apple-Geräte).|
 |viewToken|Ein kurzlebiges Anzeigetoken für das Streamen des Videos.|
 |sourceLanguage|Die Quellsprache des Videos.|
-|Language|Die tatsächliche Sprache des Videos (Übersetzung).|
+|language|Die tatsächliche Sprache des Videos (Übersetzung).|
 |indexingPreset|Die Voreinstellung, die zum Indizieren des Videos verwendet wird.|
 |streamingPreset|Die Voreinstellung, die zum Veröffentlichen des Videos verwendet wird.|
 |linguisticModelId|Das CRIS-Modell, das zum Transkribieren des Videos verwendet wird.|
@@ -151,7 +152,7 @@ Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten un
 |Version|Codeversion|
 |---|---|
 |sourceLanguage|Die Quellsprache des Videos (Annahme: eine Hauptsprache). Diese Angabe hat die Form einer [BCP-47](https://tools.ietf.org/html/bcp47)-Zeichenfolge.|
-|Language|Die Sprache der Erkenntnisse (Übersetzung aus der Quellsprache). Diese Angabe hat die Form einer [BCP-47](https://tools.ietf.org/html/bcp47)-Zeichenfolge.|
+|language|Die Sprache der Erkenntnisse (Übersetzung aus der Quellsprache). Diese Angabe hat die Form einer [BCP-47](https://tools.ietf.org/html/bcp47)-Zeichenfolge.|
 |Transkript|Die Dimension [transcript](#transcript).|
 |ocr|Die Dimension [OCR](#ocr).|
 |keywords|Die Dimension [keywords](#keywords).|
@@ -201,7 +202,7 @@ instances|Eine Liste mit Zeitbereichen dieses Blocks.|
 |---|---|
 |id|Die Zeilen-ID.|
 |text|Das Transkript selbst.|
-|Language|Die Sprache des Transkripts. Vorgesehen zur Unterstützung von Transkripts, bei denen jede Zeile eine andere Sprache enthalten kann.|
+|language|Die Sprache des Transkripts. Vorgesehen zur Unterstützung von Transkripts, bei denen jede Zeile eine andere Sprache enthalten kann.|
 |instances|Eine Liste der Zeitbereiche, in denen diese Zeile angezeigt wurde. Wenn die Instanz „transcript“ lautet, ist nur eine Instanz vorhanden.|
 
 Beispiel:
@@ -240,7 +241,7 @@ Beispiel:
 |id|Die OCR-Zeilen-ID.|
 |text|Der OCR-Text.|
 |confidence|Die Zuverlässigkeit der Erkennung.|
-|Language|Die OCR-Sprache.|
+|language|Die OCR-Sprache.|
 |instances|Eine Liste der Zeitbereiche, in denen diese OCR angezeigt wurde (die gleiche OCR kann mehrfach vorkommen).|
 |height|Die Höhe des OCR-Rechtecks.|
 |top|Die oberste Position in „px“.|
@@ -275,44 +276,28 @@ Beispiel:
 |id|Die Stichwort-ID.|
 |text|Der Stichworttext.|
 |confidence|Die Zuverlässigkeit der Erkennung des Stichworts.|
-|Language|Die Sprache des Stichworts (sofern übersetzt).|
+|language|Die Sprache des Stichworts (sofern übersetzt).|
 |instances|Eine Liste der Zeitbereiche, in denen dieses Stichwort angezeigt wurde (ein Stichwort kann mehrfach vorkommen).|
 
 ```json
-"keywords": [
 {
-    "id": 0,
-    "text": "office",
-    "confidence": 1.6666666666666667,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
+    id: 0,
+    text: "technology",
+    confidence: 1,
+    language: "en-US",
+    instances: [{
+            adjustedStart: "0:05:15.782",
+            adjustedEnd: "0:05:16.249",
+            start: "0:05:15.782",
+            end: "0:05:16.249"
     },
     {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    }
-    ]
-},
-{
-    "id": 1,
-    "text": "icons",
-    "confidence": 1.4,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    },
-    {
-        "start": "00:00:13.9900000",
-        "end": "00:00:15.6100000"
-    }
-    ]
+            adjustedStart: "0:04:54.761",
+            adjustedEnd: "0:04:55.228",
+            start: "0:04:54.761",
+            end: "0:04:55.228"
+    }]
 }
-] 
 ```
 
 #### <a name="faces"></a>faces
@@ -322,7 +307,7 @@ Beispiel:
 |id|Die Gesichts-ID.|
 |name|Der Name des Gesichts. Möglich sind „Unknown #0“, ein identifizierter Prominenter oder eine vom Kunden trainierte Person.|
 |confidence|Die Zuverlässigkeit der Gesichtsidentifikation.|
-|Beschreibung|Eine Beschreibung des Prominenten. |
+|description|Eine Beschreibung des Prominenten. |
 |thumbnailId|Die ID der Miniaturansicht dieses Gesichts.|
 |knownPersonId|Bei einer bekannten Person die interne ID.|
 |referenceId|Bei einem Bing-Prominenten die Bing-ID.|
@@ -366,7 +351,7 @@ Beispiel:
 |---|---|
 |id|Die Bezeichnungs-ID.|
 |name|Der Bezeichnungsname (z. B. „Computer“, „TV“).|
-|Language|Die Sprache des Bezeichnungsnamens (sofern übersetzt). BCP-47|
+|language|Die Sprache des Bezeichnungsnamens (sofern übersetzt). BCP-47|
 |instances|Eine Liste der Zeitbereiche, in denen diese Bezeichnung angezeigt wurde (eine Bezeichnung kann mehrfach vorkommen). Jedes Vorkommen weist ein Zuverlässigkeitsfeld auf. |
 
 
@@ -510,7 +495,7 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 |name|Der Name der Marke.|
 |referenceId | Das Suffix der Wikipedia-URL für die Marke. Beispielsweise ist „Target_Corporation“ das Suffix von [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | Die Wikipedia-URL der Marke, falls vorhanden. Beispiel: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)
-|Beschreibung|Die Beschreibung der Marke.|
+|description|Die Beschreibung der Marke.|
 |tags|Eine Liste mit vordefinierten Tags, die dieser Marke zugeordnet wurden.|
 |confidence|Der Zuverlässigkeitswert der Video Indexer-Markenerkennung (0 - 1).|
 |instances|Eine Liste mit Zeitbereichen dieser Marke. Jede Instanz verfügt über ein brandType-Element, mit dem angegeben wird, ob diese Marke im Transkript oder in den OCR-Daten angezeigt wird.|
@@ -783,7 +768,7 @@ Video Indexer zieht in den Transkripten einen Rückschluss auf Hauptthemen. Fall
 |name|Der Name des Themas, z.B.: „Pharmazeutika“.|
 |referenceId|Brotkrümel, die die Hierarchie der Themen reflektieren. Beispiel:  „Gesundheit und Wohlbefinden/Medizin und Gesundheitswesen/Pharmazeutika“.|
 |confidence|Die Zuverlässigkeitsbewertung im Bereich [0,1]. Je höher, desto zuverlässiger.|
-|Language|Die im Thema verwendete Sprache.|
+|language|Die im Thema verwendete Sprache.|
 |iptcName|Falls erkannt, der Codename von IPTC-Medien.|
 |instances |Derzeit indiziert Video Indexer ein Thema nicht in Zeitintervallen, weshalb das gesamte Video als Intervall verwendet wird.|
 

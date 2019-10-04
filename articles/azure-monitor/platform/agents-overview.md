@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 8b10cb0d66103410159a09ca156be3ea180c068b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 12eea032c37c8d737ae004d622b72536195c4444
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371926"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65977585"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Übersicht über die Azure-Überwachungs-Agents 
 Microsoft Azure bietet mehrere Möglichkeiten zum Erfassen unterschiedlicher Datentypen von virtuellen Computern unter Microsoft Windows und Linux, die in Azure, in Ihrem Rechenzentrum oder von anderen Cloudanbietern gehostet werden. Folgende drei Agent-Typen stehen zum Überwachen eines virtuellen Computers zur Verfügung:
@@ -66,11 +66,11 @@ Zuvor wurden mehrere Azure-Dienste in der *Operations Management Suite* zusammen
 
 * [Azure Automation-Updateverwaltung](../../automation/automation-update-management.md) von Betriebssystemupdates.
 * [Azure Automation Desired State Configuration](../../automation/automation-dsc-overview.md) zur Beibehaltung eines konsistenten Konfigurationsstatus.
-* Nachverfolgen von Konfigurationsänderungen mit [Azure Automation-Änderungsnachverfolgung und Bestand](../../automation/automation-change-tracking.md).
+* Nachverfolgen von Konfigurationsänderungen mit [Azure Automation-Änderungsnachverfolgung und Bestand](../../automation/change-tracking.md).
 * Azure-Dienste, z.B. [Application Insights](https://docs.microsoft.com/azure/application-insights/) und [Azure Security Center](https://docs.microsoft.com/azure/security-center/), die ihre Daten nativ direkt in Log Analytics speichern.  
 
 ## <a name="dependency-agent"></a>Abhängigkeits-Agent
-Der Dependency-Agent wurde als Teil der Dienstzuordnungslösung entwickelt, die ursprünglich extern von Microsoft entwickelt wurde. Für [Dienstzuordnung](../insights/service-map.md) und [Azure Monitor für VMs](../insights/vminsights-overview.md) ist ein Dependency-Agent unter Windows- und Linux-VMs erforderlich, der in den Log Analytics-Agent integriert wird, um ermittelte Daten zu Prozessen zu sammeln, die auf dem virtuellen Computer und externen Prozessabhängigkeiten ausgeführt werden. Diese Daten werden in einem Log Analytics-Arbeitsbereich gespeichert, und die ermittelten verbundenen Komponenten werden visualisiert.
+Der Dependency-Agent wurde als Teil der Dienstzuordnungslösung entwickelt, die ursprünglich nicht von Microsoft entwickelt wurde. Für die [Dienstzuordnung](../insights/service-map.md) und [Azure Monitor für VMs](../insights/vminsights-overview.md) ist ein Dependency-Agent unter Windows- und Linux-VMs erforderlich, der in den Log Analytics-Agent integriert wird, um ermittelte Daten zu Prozessen zu sammeln, die auf dem virtuellen Computer und externen Prozessabhängigkeiten ausgeführt werden. Diese Daten werden in einem Log Analytics-Arbeitsbereich gespeichert, und die ermittelten verbundenen Komponenten werden visualisiert.
 
 Möglicherweise brauchen Sie eine Kombination aus diesen Agents, um Ihren virtuellen Computer zu überwachen. Die Agents können als Azure-Erweiterungen nebeneinander installiert werden, unter Linux *muss* der Log Analytics-Agent jedoch zuerst installiert werden, da ansonsten ein Installationsfehler auftritt. 
 

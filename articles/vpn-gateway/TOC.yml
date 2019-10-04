@@ -42,6 +42,8 @@
           href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
         - name: Analyse der Datenebene
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+    - name: Integrierte Sicherheitskontrollen
+      href: vpn-gateway-security-controls.md
 - name: Anleitungen
   items:
     - name: Erstellen und Verwalten eines VPN-Gateways
@@ -136,8 +138,10 @@
               href: vpn-gateway-howto-openvpn.md
             - name: Konfigurieren von OpenVPN-Clients
               href: vpn-gateway-howto-openvpn-clients.md
-        - name: Übergang von einem Gatewayzertifikat einer öffentlichen Zertifizierungsstelle für P2S
-          href: vpn-gateway-point-to-site-gateway-public-ca.md
+        - name: Konfigurieren eines Always On-VPN-Gerätetunnels
+          href: vpn-gateway-howto-always-on-device-tunnel.md
+        - name: Ankündigen von benutzerdefinierten Routen zu P2S-Clients
+          href: vpn-gateway-p2s-advertise-custom-routes.md
     - name: Erstellen eines zonenredundanten VNET-Gateways in Azure-Verfügbarkeitszonen
       href: create-zone-redundant-vnet-gateway.md
     - name: Konfigurieren von IPsec-/IKE-Richtlinien für Verbindungen
@@ -176,6 +180,12 @@
           href: vpn-gateway-download-vpndevicescript.md
         - name: 'Beispiel: Cisco ASA-Gerät (IKEv2/kein BGP)'
           href: vpn-gateway-3rdparty-device-config-cisco-asa.md
+    - name: Überwachung und Warnungen
+      items:
+        - name: Einrichten von Warnungen auf der Grundlage von Metriken
+          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
+        - name: Einrichten von Benachrichtigungen auf der Grundlage von Diagnoseprotokollen
+          href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: Problembehandlung
       href: vpn-gateway-troubleshoot.md
       items:

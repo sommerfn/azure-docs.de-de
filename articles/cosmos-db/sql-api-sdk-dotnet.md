@@ -8,16 +8,17 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 83a866b20d2802b7d49363b7c6451356e938eac1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8017f02e694f5c9e2cd677c7b1f28c5de973d077
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838917"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932572"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
+> * [.NET](sql-api-sdk-dotnet-standard.md)
 > * [.NET-Änderungsfeed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
@@ -27,26 +28,50 @@ ms.locfileid: "57838917"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [BulkExecutor: .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor: Java](sql-api-sdk-bulk-executor-java.md)
+> * [Bulk Executor – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
 |**SDK-Download**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
 |**API-Dokumentation**|[.NET API-Referenzdokumentation](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**Beispiele**|[.NET-Codebeispiele](sql-api-dotnet-samples.md)|
+|**Beispiele**|[.NET-Codebeispiele](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
 |**Erste Schritte**|[Erste Schritte mit dem Azure Cosmos DB .NET SDK](sql-api-get-started.md)|
 |**Web-App-Tutorial**|[Entwicklung von Webanwendungen mit Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Aktuelles unterstütztes Framework**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>Versionshinweise
 
-### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-preview
-* Preview 1 von [Version 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) des .NET SDK als Public Preview.
-* Ziel: .NET Standard, unterstützt .NET Framework 4.6.1 und höher sowie .NET Core 2.0 und höher
-* Neues Objektmodell, bei dem CosmosClient und Methoden der obersten Ebene auf die entsprechenden Cosmos-Datenbanken, -Container und -Elementklassen aufgeteilt werden. 
-* Unterstützung von Streams. 
-* Aktualisierter CosmosResponseMessage-Statuscode für die Antwort vom Server. Eine Ausnahme wird nur ausgelöst, wenn keine Antwort zurückgegeben wird. 
+> [!NOTE]
+> Wenn Sie .NET Framework verwenden, sehen Sie sich die neueste Version 3.x des [.NET SDK](sql-api-sdk-dotnet-standard.md) an, das .NET Standard als Ziel verwendet. 
+
+### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
+
+* „PortReusePolicy“ zu „ConnectionPolicy“ hinzugefügt
+* TypeLoadException-Problem vom Typ „ntdll!RtlGetVersion“ bei Verwendung des SDK in einer UWP-App wurde behoben
+
+### <a name="a-name251251"></a><a name="2.5.1"/>2.5.1
+
+* Die System.Net.Http-Version des SDK entspricht jetzt der Definition aus dem NuGet-Paket.
+* Schreibanforderungen können auf eine andere Region zurückgesetzt werden, wenn die ursprüngliche ausfällt.
+* Sitzungswiederholungsrichtlinie für Schreibanforderungen wurde hinzugefügt.
+
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
+
+* Behebt Probleme bei der Ablaufverfolgung von Racebedingungen für Abfragen, die leere Seiten zur Folge hatten
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+
+* Höhere Dezimalgenauigkeit für LINQ-Abfragen
+* Neu hinzugefügte Klassen: CompositePath, CompositePathSortOrder, SpatialSpec, SpatialType, PartitionKeyDefinitionVersion
+* „TimeToLivePropertyPath“ zu „DocumentCollection“ hinzugefügt
+* „CompositeIndexes“ und „SpatialIndexes“ zu „IndexPolicy“ hinzugefügt
+* „Version“ zu „PartitionKeyDefinition“ hinzugefügt
+* „None“ zu „PartitionKey“ hinzugefügt
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+
+ * „IdleTcpConnectionTimeout“, „OpenTcpConnectionTimeout“, „MaxRequestsPerTcpConnection“ und „MaxTcpConnectionsPerEndpoint“ zu „ConnectionPolicy“ hinzugefügt
 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 
@@ -208,7 +233,7 @@ ms.locfileid: "57838917"
 * Behebung eines Problems, bei dem die partitionsübergreifende Fortsetzung einer order-by-Abfrage nicht funktionierte, wenn ein Zeichenfolgenfeld sortiert wurde.
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt. Siehe [Aggregationsunterstützung](how-to-sql-query.md#Aggregates).
+* Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt. Siehe [Aggregationsunterstützung](sql-query-aggregates.md).
 * Minimaler Durchsatz für partitionierte Sammlungen wurde von 10.100 RU/s auf 2.500 RU/s gesenkt.
 
 ### <a name="a-name11141114"></a><a name="1.11.4"/>1.11.4
@@ -304,7 +329,7 @@ ms.locfileid: "57838917"
 * LINQ-Anbieterunterstützung für bedingte, „Coalesce“- und „CompareTo“-Methoden für Zeichenfolgen
 * **[Korrigiert]** LINQ-Anbieter--&gt; „Contains“-Methode in „List“ implementiert, um für „IEnumerable“ und „Array“ dieselbe SQL zu generieren.
 * **[Korrigiert]** „BackoffRetryUtility“ verwendet die gleiche „HttpRequestMessage“ erneut, anstatt bei einer Wiederholung eine neue zu erstellen.
-* **[Veraltet]**„UriFactory.CreateCollection“ --&gt; „UriFactory.CreateDocumentCollection“ sollte stattdessen verwendet werden.
+* **[Veraltet]** „UriFactory.CreateCollection“ --&gt; „UriFactory.CreateDocumentCollection“ sollte stattdessen verwendet werden.
 
 ### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
 * **[Korrigiert]** Lokalisierungsprobleme bei Verwenden nicht englischer Kulturinformationen wie beispielsweise nl-NL usw. 
@@ -323,7 +348,7 @@ ms.locfileid: "57838917"
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 * Unterstützung für das Ändern der Indizierungsrichtlinie hinzugefügt.
   * Neue „ReplaceDocumentCollectionAsync“-Methode in „DocumentClient“
-  * Neue „IndexTransformationProgress“-Eigenschaft in „ResourceResponse“<T> zum Nachverfolgen des prozentualen Fortschritts von Indexrichtlinienänderungen
+  * Neue IndexTransformationProgress-Eigenschaft in ResourceResponse\<T> zum Nachverfolgen des prozentualen Fortschritts von Indexrichtlinienänderungen
   * „DocumentCollection.IndexingPolicy“ jetzt änderbar.
 * Unterstützung für die räumliche Indizierung und Abfrage hinzugefügt.
   * Neuer „Microsoft.Azure.Documents.Spatial“-Namespace für die Serialisierung/Deserialisierung räumlicher Typen wie Punkt und Polygon.
@@ -357,65 +382,74 @@ Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzuge
 
 Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
 
+> [!WARNING]
+> Alle Versionen vom Typ **1.x** des .NET SDK für die SQL-API werden am **30. August 2020** eingestellt.
+> 
+>
 <br/>
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.6.0](#2.6.0) |30. August 2019 |--- |
+| [2.5.1](#2.5.1) |02. Juli 2019 |--- |
+| [2.4.1](#2.4.1) |20. Juni 2019 |--- |
+| [2.4.0](#2.4.0) |5\. Mai 2019 |--- |
+| [2.3.0](#2.3.0) |4\. April 2019 |--- |
 | [2.2.3](#2.2.3) |11. Februar 2019 |--- |
-| [2.2.2](#2.2.2) |6. Februar 2019 |--- |
+| [2.2.2](#2.2.2) |6\. Februar 2019 |--- |
 | [2.2.1](#2.2.1) |24. Dezember 2018 |--- |
 | [2.2.0](#2.2.0) |07. Dezember 2018 |--- |
 | [2.1.3](#2.1.3) |15. Oktober 2018 |--- |
-| [2.1.2](#2.1.2) |4. Oktober 2018 |--- |
+| [2.1.2](#2.1.2) |4\. Oktober 2018 |--- |
 | [2.1.1](#2.1.1) |27. September 2018 |--- |
 | [2.1.0](#2.1.0) |21. September 2018 |--- |
 | [2.0.0](#2.0.0) |07. September 2018 |--- |
-| [1.22.0](#1.22.0) |19. April 2018 |--- |
-| [1.21.1](#1.20.1) |09. März 2018 |--- |
-| [1.20.2](#1.20.1) |21. Februar 2018 |--- |
-| [1.20.1](#1.20.1) |05. Februar 2018 |--- |
-| [1.19.1](#1.19.1) |16. November 2017 |--- |
-| [1.19.0](#1.19.0) |10. November 2017 |--- |
-| [1.18.1](#1.18.1) |07. November 2017 |--- |
-| [1.18.0](#1.18.0) |17. Oktober 2017 |--- |
-| [1.17.0](#1.17.0) |10. August 2017 |--- |
-| [1.16.1](#1.16.1) |07. August 2017 |--- |
-| [1.16.0](#1.16.0) |02. August 2017 |--- |
-| [1.15.0](#1.15.0) |30. Juni 2017 |--- |
-| [1.14.1](#1.14.1) |23. Mai 2017 |--- |
-| [1.14.0](#1.14.0) |10. Mai 2017 |--- |
-| [1.13.4](#1.13.4) |09. Mai 2017 |--- |
-| [1.13.3](#1.13.3) |06. Mai 2017 |--- |
-| [1.13.2](#1.13.2) |19. April 2017 |--- |
-| [1.13.1](#1.13.1) |29. März 2017 |--- |
-| [1.13.0](#1.13.0) |24. März 2017 |--- |
-| [1.12.2](#1.12.2) |20. März 2017 |--- |
-| [1.12.1](#1.12.1) |14. März 2017 |--- |
-| [1.12.0](#1.12.0) |15. Februar 2017 |--- |
-| [1.11.4](#1.11.4) |6. Februar 2017 |--- |
-| [1.11.3](#1.11.3) |26. Januar 2017 |--- |
-| [1.11.1](#1.11.1) |21. Dezember 2016 |--- |
-| [1.11.0](#1.11.0) |8. Dezember 2016 |--- |
-| [1.10.0](#1.10.0) |27. September 2016 |--- |
-| [1.9.5](#1.9.5) |1. September 2016 |--- |
-| [1.9.4](#1.9.4) |24. August 2016 |--- |
-| [1.9.3](#1.9.3) |15. August 2016 |--- |
-| [1.9.2](#1.9.2) |23. Juli 2016 |--- |
-| [1.8.0](#1.8.0) |14. Juni 2016 |--- |
-| [1.7.1](#1.7.1) |6. Mai 2016 |--- |
-| [1.7.0](#1.7.0) |26. April 2016 |--- |
-| [1.6.3](#1.6.3) |8. April 2016 |--- |
-| [1.6.2](#1.6.2) |29. März 2016 |--- |
-| [1.5.3](#1.5.3) |19. Februar 2016 |--- |
-| [1.5.2](#1.5.2) |14. Dezember 2015 |--- |
-| [1.5.1](#1.5.1) |23. November 2015 |--- |
-| [1.5.0](#1.5.0) |5 Oktober 2015 |--- |
-| [1.4.1](#1.4.1) |25. August 2015 |--- |
-| [1.4.0](#1.4.0) |13. August 2015 |--- |
-| [1.3.0](#1.3.0) |5. August 2015 |--- |
-| [1.2.0](#1.2.0) |6. Juli 2015 |--- |
-| [1.1.0](#1.1.0) |30. April 2015 |--- |
-| [1.0.0](#1.0.0) |8. April 2015 |--- |
+| [1.22.0](#1.22.0) |19. April 2018 | 30. August 2020 |
+| [1.21.1](#1.20.1) |09. März 2018 |30. August 2020 |
+| [1.20.2](#1.20.1) |21. Februar 2018 |30. August 2020 |
+| [1.20.1](#1.20.1) |05. Februar 2018 |30. August 2020 |
+| [1.19.1](#1.19.1) |16. November 2017 |30. August 2020 |
+| [1.19.0](#1.19.0) |10. November 2017 |30. August 2020 |
+| [1.18.1](#1.18.1) |07. November 2017 |30. August 2020 |
+| [1.18.0](#1.18.0) |17. Oktober 2017 |30. August 2020 |
+| [1.17.0](#1.17.0) |10. August 2017 |30. August 2020 |
+| [1.16.1](#1.16.1) |07. August 2017 |30. August 2020 |
+| [1.16.0](#1.16.0) |02. August 2017 |30. August 2020 |
+| [1.15.0](#1.15.0) |30. Juni 2017 |30. August 2020 |
+| [1.14.1](#1.14.1) |23. Mai 2017 |30. August 2020 |
+| [1.14.0](#1.14.0) |10. Mai 2017 |30. August 2020 |
+| [1.13.4](#1.13.4) |09. Mai 2017 |30. August 2020 |
+| [1.13.3](#1.13.3) |06. Mai 2017 |30. August 2020 |
+| [1.13.2](#1.13.2) |19. April 2017 |30. August 2020 |
+| [1.13.1](#1.13.1) |29. März 2017 |30. August 2020 |
+| [1.13.0](#1.13.0) |24. März 2017 |30. August 2020 |
+| [1.12.2](#1.12.2) |20. März 2017 |30. August 2020 |
+| [1.12.1](#1.12.1) |14. März 2017 |30. August 2020 |
+| [1.12.0](#1.12.0) |15. Februar 2017 |30. August 2020 |
+| [1.11.4](#1.11.4) |6\. Februar 2017 |30. August 2020 |
+| [1.11.3](#1.11.3) |26. Januar 2017 |30. August 2020 |
+| [1.11.1](#1.11.1) |21. Dezember 2016 |30. August 2020 |
+| [1.11.0](#1.11.0) |8\. Dezember 2016 |30. August 2020 |
+| [1.10.0](#1.10.0) |27. September 2016 |30. August 2020 |
+| [1.9.5](#1.9.5) |1\. September 2016 |30. August 2020 |
+| [1.9.4](#1.9.4) |24. August 2016 |30. August 2020 |
+| [1.9.3](#1.9.3) |15. August 2016 |30. August 2020 |
+| [1.9.2](#1.9.2) |23. Juli 2016 |30. August 2020 |
+| [1.8.0](#1.8.0) |14. Juni 2016 |30. August 2020 |
+| [1.7.1](#1.7.1) |6\. Mai 2016 |30. August 2020 |
+| [1.7.0](#1.7.0) |26. April 2016 |30. August 2020 |
+| [1.6.3](#1.6.3) |8\. April 2016 |30. August 2020 |
+| [1.6.2](#1.6.2) |29. März 2016 |30. August 2020 |
+| [1.5.3](#1.5.3) |19. Februar 2016 |30. August 2020 |
+| [1.5.2](#1.5.2) |14. Dezember 2015 |30. August 2020 |
+| [1.5.1](#1.5.1) |23. November 2015 |30. August 2020 |
+| [1.5.0](#1.5.0) |5\. Oktober 2015 |30. August 2020 |
+| [1.4.1](#1.4.1) |25. August 2015 |30. August 2020 |
+| [1.4.0](#1.4.0) |13. August 2015 |30. August 2020 |
+| [1.3.0](#1.3.0) |5\. August 2015 |30. August 2020 |
+| [1.2.0](#1.2.0) |6\. Juli 2015 |30. August 2020 |
+| [1.1.0](#1.1.0) |30. April 2015 |30. August 2020 |
+| [1.0.0](#1.0.0) |8\. April 2015 | 30. August 2020 |
 
 
 ## <a name="faq"></a>Häufig gestellte Fragen

@@ -4,23 +4,22 @@ description: Geplante Ereignisse mit dem Azure-Metadatendienst für Ihre virtuel
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
 author: ericrad
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: ''
 ms.assetid: 28d8e1f2-8e61-4fbe-bfe8-80a68443baba
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 2ed92486b55aa4fd7dce32f54f0b6567c7bb3cf2
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 087f27b3857363c0b5f244ecd52ebd64105626b5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486732"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102403"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Instance Metadata Service: Scheduled Events für Windows-VMs
 
@@ -45,10 +44,10 @@ Viele Anwendungen können von der Vorbereitungszeit auf die Wartung virtueller C
 Mit Geplante Ereignisse kann Ihre Anwendung erkennen, wann eine Wartung erfolgt, und so Aufgaben auslösen, um die Auswirkungen zu beschränken. Mit geplanten Ereignissen erhält Ihr virtueller Computer ein Mindestmaß an Zeit, bevor die Wartungsaktivität ausgeführt wird. Details dazu finden Sie weiter unten im Abschnitt „Ereigniszeitplanung“.
 
 Geplante Ereignisse umfasst Ereignisse in den folgenden Anwendungsfällen:
-- Plattforminitiierte Wartung (z.B. Update des Hostbetriebssystems)
+- [Von der Plattform ausgelöste Wartung](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates) (z. B. Neustart des virtuellen Computers, Livemigration oder Updates für den Host mit Speicherbeibehaltung)
 - Heruntergestufte Hardware
 - Benutzerinitiierte Wartung (z.B. Neustart oder erneute Bereitstellung eines virtuellen Computers durch den Benutzer)
-- [Entfernung von VMs mit niedriger Priorität](https://azure.microsoft.com/en-us/blog/low-priority-scale-sets) in Skalierungsgruppen
+- [Entfernung von VMs mit niedriger Priorität](https://azure.microsoft.com/blog/low-priority-scale-sets) in Skalierungsgruppen
 
 ## <a name="the-basics"></a>Die Grundlagen  
 
@@ -64,7 +63,7 @@ Wenn der virtuelle Computer nicht innerhalb eines virtuellen Netzwerks erstellt 
 ### <a name="version-and-region-availability"></a>Version und regionale Verfügbarkeit
 Der Dienst Geplante Ereignisse ist versionsspezifisch. Versionen sind obligatorisch, und die aktuelle Version ist `2017-11-01`.
 
-| Version | Releasetyp | Regionen | Versionsinformationen | 
+| Version | Releasetyp | Regions | Versionsinformationen | 
 | - | - | - | - |
 | 2017-11-01 | Allgemeine Verfügbarkeit | Alle | <li> Unterstützung für die Entfernung von VMs mit niedriger Priorität hinzugefügt (EventType 'Preempt')<br> | 
 | 2017-08-01 | Allgemeine Verfügbarkeit | Alle | <li> Ein vorangestellter Unterstrich wurde aus Ressourcennamen virtueller Iaas-Computer entfernt.<br><li>Der Metadatenheader wird als Voraussetzung für alle Anforderungen erzwungen. | 
@@ -119,7 +118,7 @@ DocumentIncarnation ist ein ETag und bietet eine einfache Möglichkeit, um zu un
 |Eigenschaft  |  BESCHREIBUNG |
 | - | - |
 | EventId | Global eindeutiger Bezeichner für dieses Ereignis <br><br> Beispiel: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
-| EventType | Auswirkungen dieses Ereignisses <br><br> Werte: <br><ul><li> `Freeze`: Das Anhalten der VM für einige Sekunden ist geplant. Der Prozessor wird angehalten, aber es gibt keine Auswirkungen auf Arbeitsspeicher, geöffnete Dateien oder Netzwerkverbindungen. <li>`Reboot`: Der Neustart der VM ist geplant (der flüchtige Arbeitsspeicher geht verloren). <li>`Redeploy`: Das Verschieben der VM auf einen anderen Knoten ist geplant (kurzlebige Datenträger gehen verloren). <li>`Preempt`: Virtueller Computer mit niedriger Priorität wird gelöscht (kurzlebige Datenträger gehen verloren).|
+| EventType | Auswirkungen dieses Ereignisses <br><br> Werte: <br><ul><li> `Freeze`: Das Anhalten des virtuellen Computers für einige Sekunden ist geplant. Der Prozessor und die Netzwerkverbindung werden möglicherweise angehalten, es gibt jedoch keine Auswirkungen auf den Arbeitsspeicher oder geöffnete Dateien. <li>`Reboot`: Der Neustart der VM ist geplant (der flüchtige Arbeitsspeicher geht verloren). <li>`Redeploy`: Das Verschieben der VM auf einen anderen Knoten ist geplant (kurzlebige Datenträger gehen verloren). <li>`Preempt`: Virtueller Computer mit niedriger Priorität wird gelöscht (kurzlebige Datenträger gehen verloren).|
 | ResourceType | Typ der Ressource, auf die sich dieses Ereignis auswirkt <br><br> Werte: <ul><li>`VirtualMachine`|
 | Ressourcen| Liste von Ressourcen, auf die sich dieses Ereignis auswirkt. Diese Liste enthält garantiert Computer aus maximal einer [Updatedomäne](manage-availability.md), muss jedoch nicht alle Computer in dieser Domäne enthalten. <br><br> Beispiel: <br><ul><li> [„FrontEnd_IN_0“, „BackEnd_IN_0“] |
 | Ereignisstatus | Status dieses Ereignisses <br><br> Werte: <ul><li>`Scheduled`: Dieses Ereignis erfolgt nach dem in der `NotBefore`-Eigenschaft angegebenen Zeitpunkt.<li>`Started`: Dieses Ereignis wurde gestartet.</ul> `Completed` oder ähnliche Statusangaben werden niemals bereitgestellt. Das Ereignis wird nicht mehr zurückgegeben, nachdem es abgeschlossen ist.
@@ -136,7 +135,8 @@ Jedes Ereignis erfolgt dem Zeitplan nach, basierend auf dem Ereignistyp, eine Mi
 | Preempt | 30 Sekunden |
 
 ### <a name="event-scope"></a>Ereignisbereich     
-Geplante Ereignisse werden übermittelt an:        
+Geplante Ereignisse werden übermittelt an:
+ - Eigenständige virtuelle Computer
  - Alle virtuellen Computer in einem Clouddienst      
  - Alle virtuellen Computer in einer Verfügbarkeitsgruppe      
  - Alle virtuellen Computer in einer Skalierungsgruppen-Platzierungsgruppe         

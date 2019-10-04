@@ -13,15 +13,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/18/2018
+ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7139906ac22f8d0dbf6cd6e2d69289c4b910b2b0
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: bbb064c358eba2dd64ba9ae86540a30cb56adb66
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486086"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595032"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -48,7 +48,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
   Um beispielsweise DNS-Einträge für `contoso.com` und `www.contoso.com` hinzuzufügen, müssen Sie die DNS-Einstellungen für die Stammdomäne `contoso.com` konfigurieren können.
 
   > [!NOTE]
-  > Falls Sie nicht über einen vorhandenen Domänennamen verfügen, können Sie erwägen, [über das Azure-Portal einen Domänennamen zu erwerben](manage-custom-dns-buy-domain.md). 
+  > Falls Sie nicht über einen vorhandenen Domänennamen verfügen, können Sie erwägen, [über das Azure-Portal einen Domänennamen zu erwerben](manage-custom-dns-buy-domain.md).
 
 ## <a name="prepare-the-app"></a>Vorbereiten der App
 
@@ -68,11 +68,11 @@ Wählen Sie im linken Menü **App Services** und anschließend den Namen der App
 
 Die Verwaltungsseite der App Service-App wird angezeigt.  
 
-<a name="checkpricing"></a>
+<a name="checkpricing" aria-hidden="true"></a>
 
 ### <a name="check-the-pricing-tier"></a>Überprüfen des Tarifs
 
-Scrollen Sie im linken Navigationsbereich der App-Seite zum Abschnitt **Einstellungen**, und wählen Sie **Zentral hochskalieren (App Service-Plan)**.
+Scrollen Sie im linken Navigationsbereich der App-Seite zum Abschnitt **Einstellungen**, und wählen Sie **Zentral hochskalieren (App Service-Plan)** .
 
 ![Menü „Zentral hochskalieren“](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
@@ -82,7 +82,7 @@ Der aktuelle Tarif der App wird durch einen blauen Rahmen hervorgehoben. Vergewi
 
 Wenn sich der App Service-Plan nicht im Tarif **F1** befindet, schließen Sie die Seite **Zentral hochskalieren**, und fahren Sie mit [Zuordnen eines CNAME-Eintrags](#cname) fort.
 
-<a name="scaleup"></a>
+<a name="scaleup" aria-hidden="true"></a>
 
 ### <a name="scale-up-the-app-service-plan"></a>Zentrales Hochskalieren des App Service-Plans
 
@@ -96,7 +96,7 @@ Wenn die unten angegebene Benachrichtigung angezeigt wird, ist der Skalierungsvo
 
 ![Bestätigung des Skalierungsvorgangs](./media/app-service-web-tutorial-custom-domain/scale-notification.png)
 
-<a name="cname"></a>
+<a name="cname" aria-hidden="true"></a>
 
 ## <a name="map-your-domain"></a>Zuordnen Ihrer Domäne
 
@@ -119,7 +119,7 @@ Im Tutorialbeispiel fügen Sie einen CNAME-Eintrag für die Unterdomäne `www` (
 
 #### <a name="create-the-cname-record"></a>Erstellen des CNAME-Eintrags
 
-Fügen Sie einen CNAME-Eintrag hinzu, um dem Standardhostnamen der App (`<app_name>.azurewebsites.net`, wobei `<app_name>` der Name Ihrer App ist) eine Unterdomäne zuzuordnen.
+Fügen Sie einen CNAME-Eintrag hinzu, um dem Standarddomänennamen der App (`<app_name>.azurewebsites.net`, wobei `<app_name>` der Name Ihrer App ist) eine Unterdomäne zuzuordnen.
 
 Fügen Sie für das Domänenbeispiel `www.contoso.com` einen CNAME-Eintrag hinzu, mit dem der Name `www` dem Element `<app_name>.azurewebsites.net` zugeordnet wird.
 
@@ -129,44 +129,44 @@ Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen w
 
 #### <a name="enable-the-cname-record-mapping-in-azure"></a>Aktivieren der Zuordnung von CNAME-Einträgen in Azure
 
-Wählen Sie im linken Navigationsbereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen**. 
+Wählen Sie im linken Navigationsbereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen**.
 
 ![Menü „Benutzerdefinierte Domänen“](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 Fügen Sie auf der Seite **Benutzerdefinierte Domänen** der App der Liste den vollqualifizierten benutzerdefinierten DNS-Namen (`www.contoso.com`) hinzu.
 
-Wählen Sie das **+**-Symbol neben der Option **Hostnamen hinzufügen**.
+Wählen Sie das Symbol **+** neben der Option **Benutzerdefinierte Domäne hinzufügen** aus.
 
 ![Hinzufügen des Hostnamens](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Geben Sie den vollqualifizierten Domänennamen ein, für den Sie einen CNAME-Eintrag hinzugefügt haben, z.B. `www.contoso.com`. 
+Geben Sie den vollqualifizierten Domänennamen ein, für den Sie einen CNAME-Eintrag hinzugefügt haben, z.B. `www.contoso.com`.
 
 Wählen Sie **Überprüfen**.
 
-Die Seite **Hostnamen hinzufügen** wird angezeigt. 
+Die Seite **Benutzerdefinierte Domäne hinzufügen** wird angezeigt.
 
 Stellen Sie sicher, dass der **Typ des Hostnamenseintrags** auf **CNAME (www\.beispiel.com oder eine beliebige Unterdomäne)** festgelegt ist.
 
-Wählen Sie **Hostnamen hinzufügen**.
+Wählen Sie **Benutzerdefinierte Domäne hinzufügen**.
 
 ![Hinzufügen des DNS-Namens zur App](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Unter Umständen dauert es eine Weile, bis der neue Hostname auf der Seite **Benutzerdefinierte Domänen** der App angezeigt wird. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
+Unter Umständen dauert es eine Weile, bis die neue benutzerdefinierte Domäne auf der Seite **Benutzerdefinierte Domänen** der App angezeigt wird. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
 
 ![Hinzugefügter CNAME-Eintrag](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> Weitere Informationen zum Hinzuzufügen einer SSL-Bindung finden Sie unter [Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md).
+> Die Bezeichnung **Nicht sicher** für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein SSL-Zertifikat gebunden ist und dass für alle HTTPS-Anforderungen von einem Browser an Ihre benutzerdefinierte Domäne abhängig vom Browser eine Warnung oder ein Fehler angezeigt wird. Weitere Informationen zum Hinzuzufügen einer SSL-Bindung finden Sie unter [Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md).
 
 Wenn Sie einen Schritt ausgelassen haben oder Ihnen zu einem früheren Zeitpunkt ein Tippfehler unterlaufen ist, wird am unteren Rand der Seite ein Überprüfungsfehler angezeigt.
 
 ![Überprüfungsfehler](./media/app-service-web-tutorial-custom-domain/verification-error-cname.png)
 
-<a name="a"></a>
+<a name="a" aria-hidden="true"></a>
 
 ### <a name="map-an-a-record"></a>Zuordnen eines A-Eintrags
 
-Im Beispiel dieses Tutorials fügen Sie einen A-Eintrag für die Stammdomäne (z.B. `contoso.com`) hinzu. 
+Im Beispiel dieses Tutorials fügen Sie einen A-Eintrag für die Stammdomäne (z.B. `contoso.com`) hinzu.
 
 <a name="info"></a>
 
@@ -174,7 +174,7 @@ Im Beispiel dieses Tutorials fügen Sie einen A-Eintrag für die Stammdomäne (z
 
 Für die Zuordnung eines A-Eintrags benötigen Sie die externe IP-Adresse der App. Sie finden diese IP-Adresse im Azure-Portal auf der Seite **Benutzerdefinierte Domänen** der App.
 
-Wählen Sie im linken Navigationsbereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen**. 
+Wählen Sie im linken Navigationsbereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen**.
 
 ![Menü „Benutzerdefinierte Domänen“](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
@@ -191,9 +191,9 @@ Kopieren Sie auf der Seite **Benutzerdefinierte Domänen** die IP-Adresse der Ap
 Um einer App einen A-Eintrag zuzuordnen, sind für App Service **zwei** DNS-Einträge erforderlich:
 
 - Ein **A**-Eintrag, um die IP-Adresse der App zuzuordnen.
-- Ein **TXT**-Eintrag, um den Standardhostnamen der App `<app_name>.azurewebsites.net` zuzuordnen. App Service nutzt diesen Eintrag nur zur Konfigurationszeit, um zu bestätigen, dass sich die benutzerdefinierte Domäne in Ihrem Besitz befindet. Nachdem Ihre benutzerdefinierte Domäne überprüft und in App Service konfiguriert wurde, können Sie diesen TXT-Eintrag löschen. 
+- Ein **TXT**-Eintrag, um den Standarddomänennamen der App `<app_name>.azurewebsites.net` zuzuordnen. App Service nutzt diesen Eintrag nur zur Konfigurationszeit, um zu bestätigen, dass sich die benutzerdefinierte Domäne in Ihrem Besitz befindet. Nachdem Ihre benutzerdefinierte Domäne überprüft und in App Service konfiguriert wurde, können Sie diesen TXT-Eintrag löschen.
 
-Erstellen Sie für das Beispiel der Domäne `contoso.com` anhand der folgenden Tabelle die A- und TXT-Einträge (`@` stellt in der Regel die Stammdomäne dar). 
+Erstellen Sie für das Beispiel der Domäne `contoso.com` anhand der folgenden Tabelle die A- und TXT-Einträge (`@` stellt in der Regel die Stammdomäne dar).
 
 | Eintragstyp | Host | Wert |
 | - | - | - |
@@ -213,44 +213,44 @@ Wenn die Einträge hinzugefügt werden, sieht die Seite mit den DNS-Einträgen w
 
 ![Seite der DNS-Einträge](./media/app-service-web-tutorial-custom-domain/a-record.png)
 
-<a name="enable-a"></a>
+<a name="enable-a" aria-hidden="true"></a>
 
 #### <a name="enable-the-a-record-mapping-in-the-app"></a>Aktivieren der Zuordnung von A-Einträgen in der App
 
 Fügen Sie auf der Seite **Benutzerdefinierte Domänen** der App im Azure-Portal den vollqualifizierten benutzerdefinierten DNS-Namen (z.B. `contoso.com`) der Liste hinzu.
 
-Wählen Sie das **+**-Symbol neben der Option **Hostnamen hinzufügen**.
+Wählen Sie das Symbol **+** neben der Option **Benutzerdefinierte Domäne hinzufügen** aus.
 
-![Hinzufügen des Hostnamens](./media/app-service-web-tutorial-custom-domain/add-host-name.png)
+![Hinzufügen des Hostnamens](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 Geben Sie den vollqualifizierten Domänennamen ein, für den Sie den A-Eintrag konfiguriert haben, z.B. `contoso.com`.
 
 Wählen Sie **Überprüfen**.
 
-Die Seite **Hostnamen hinzufügen** wird angezeigt. 
+Die Seite **Benutzerdefinierte Domäne hinzufügen** wird angezeigt.
 
 Stellen Sie sicher, dass die Option **Typ des Hostnamenseintrags** auf **A-Datensatz (beispiel.com)** festgelegt ist.
 
-Wählen Sie **Hostnamen hinzufügen**.
+Wählen Sie **Benutzerdefinierte Domäne hinzufügen**.
 
 ![Hinzufügen des DNS-Namens zur App](./media/app-service-web-tutorial-custom-domain/validate-domain-name.png)
 
-Unter Umständen dauert es eine Weile, bis der neue Hostname auf der Seite **Benutzerdefinierte Domänen** der App angezeigt wird. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
+Unter Umständen dauert es eine Weile, bis die neue benutzerdefinierte Domäne auf der Seite **Benutzerdefinierte Domänen** der App angezeigt wird. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
 
 ![Hinzugefügter A-Eintrag](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> Weitere Informationen zum Hinzuzufügen einer SSL-Bindung finden Sie unter [Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md).
+> Die Bezeichnung **Nicht sicher** für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein SSL-Zertifikat gebunden ist und dass für alle HTTPS-Anforderungen von einem Browser an Ihre benutzerdefinierte Domäne abhängig vom Browser eine Warnung oder ein Fehler angezeigt wird. Weitere Informationen zum Hinzuzufügen einer SSL-Bindung finden Sie unter [Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md).
 
 Wenn Sie einen Schritt ausgelassen haben oder Ihnen zu einem früheren Zeitpunkt ein Tippfehler unterlaufen ist, wird am unteren Rand der Seite ein Überprüfungsfehler angezeigt.
 
 ![Überprüfungsfehler](./media/app-service-web-tutorial-custom-domain/verification-error.png)
 
-<a name="wildcard"></a>
+<a name="wildcard" aria-hidden="true"></a>
 
 ### <a name="map-a-wildcard-domain"></a>Zuordnen einer Platzhalterdomäne
 
-Im Beispiel des Tutorials ordnen Sie der App Service-App einen [DNS-Platzhalternamen](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (z.B. `*.contoso.com`) zu, indem Sie einen CNAME-Eintrag hinzufügen. 
+Im Beispiel des Tutorials ordnen Sie der App Service-App einen [DNS-Platzhalternamen](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (z.B. `*.contoso.com`) zu, indem Sie einen CNAME-Eintrag hinzufügen.
 
 #### <a name="access-dns-records-with-domain-provider"></a>Zugreifen auf DNS-Einträge mit Domänenanbieter
 
@@ -258,7 +258,7 @@ Im Beispiel des Tutorials ordnen Sie der App Service-App einen [DNS-Platzhaltern
 
 #### <a name="create-the-cname-record"></a>Erstellen des CNAME-Eintrags
 
-Fügen Sie einen CNAME-Eintrag hinzu, um dem Standardhostnamen der App (`<app_name>.azurewebsites.net`) einen Platzhalternamen zuzuordnen.
+Fügen Sie einen CNAME-Eintrag hinzu, um dem Standarddomänennamen der App (`<app_name>.azurewebsites.net`) einen Platzhalternamen zuzuordnen.
 
 Im Domänenbeispiel `*.contoso.com` ordnet der CNAME-Eintrag `<app_name>.azurewebsites.net` den Namen `*` zu.
 
@@ -268,34 +268,34 @@ Wenn der CNAME-Eintrag hinzugefügt wird, sieht die Seite mit den DNS-Einträgen
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>Aktivieren der Zuordnung von CNAME-Einträgen in der App
 
-Sie können jetzt eine beliebige Unterdomäne hinzufügen, mit der der Platzhaltername der App zugeordnet wird (z.B. `sub1.contoso.com` und `sub2.contoso.com` zu `*.contoso.com`). 
+Sie können jetzt eine beliebige Unterdomäne hinzufügen, mit der der Platzhaltername der App zugeordnet wird (z.B. `sub1.contoso.com` und `sub2.contoso.com` zu `*.contoso.com`).
 
-Wählen Sie im linken Navigationsbereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen**. 
+Wählen Sie im linken Navigationsbereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen**.
 
 ![Menü „Benutzerdefinierte Domänen“](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Wählen Sie das **+**-Symbol neben der Option **Hostnamen hinzufügen**.
+Wählen Sie das Symbol **+** neben der Option **Benutzerdefinierte Domäne hinzufügen** aus.
 
 ![Hinzufügen des Hostnamens](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
 Geben Sie einen vollqualifizierten Domänennamen ein, der zur Platzhalterdomäne passt (z.B. `sub1.contoso.com`), und wählen Sie anschließend **Überprüfen**.
 
-Die Schaltfläche **Hostnamen hinzufügen** wird aktiviert. 
+Die Schaltfläche **Benutzerdefinierte Domäne hinzufügen** ist aktiviert.
 
 Stellen Sie sicher, dass der **Typ des Hostnamenseintrags** auf **CNAME-Eintrag (www\.beispiel.com oder eine beliebige Unterdomäne)** festgelegt ist.
 
-Wählen Sie **Hostnamen hinzufügen**.
+Wählen Sie **Benutzerdefinierte Domäne hinzufügen**.
 
 ![Hinzufügen des DNS-Namens zur App](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname-wildcard.png)
 
-Unter Umständen dauert es eine Weile, bis der neue Hostname auf der Seite **Benutzerdefinierte Domänen** der App angezeigt wird. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
+Unter Umständen dauert es eine Weile, bis die neue benutzerdefinierte Domäne auf der Seite **Benutzerdefinierte Domänen** der App angezeigt wird. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
 
-Wählen Sie das **+**-Symbol, um einen anderen Hostnamen hinzuzufügen, der der Platzhalterdomäne entspricht. Fügen Sie beispielsweise `sub2.contoso.com` hinzu.
+Wählen Sie das Symbol **+** erneut aus, um eine andere benutzerdefinierte Domäne hinzuzufügen, die der Platzhalterdomäne entspricht. Fügen Sie beispielsweise `sub2.contoso.com` hinzu.
 
 ![Hinzugefügter CNAME-Eintrag](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> Weitere Informationen zum Hinzuzufügen einer SSL-Bindung finden Sie unter [Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md).
+> Die Bezeichnung **Nicht sicher** für Ihre benutzerdefinierte Domäne bedeutet, dass diese noch nicht an ein SSL-Zertifikat gebunden ist und dass für alle HTTPS-Anforderungen von einem Browser an Ihre benutzerdefinierte Domäne abhängig vom Browser eine Warnung oder ein Fehler angezeigt wird. Weitere Informationen zum Hinzuzufügen einer SSL-Bindung finden Sie unter [Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md).
 
 ## <a name="test-in-browser"></a>Testen im Browser
 
@@ -310,7 +310,7 @@ Falls Sie zu der URL Ihrer benutzerdefinierten Domäne navigieren und dabei eine
 - Der konfigurierten benutzerdefinierten Domäne fehlt ein A-Eintrag und/oder ein CNAME-Eintrag.
 - Im Browserclient ist die alte IP-Adresse Ihrer Domäne zwischengespeichert. Leeren Sie den Cache, und testen Sie die DNS-Auflösung erneut. Auf einem Windows-Computer können Sie den Cache mithilfe von `ipconfig /flushdns` leeren.
 
-<a name="virtualdir"></a>
+<a name="virtualdir" aria-hidden="true"></a>
 
 ## <a name="migrate-an-active-domain"></a>Migrieren einer aktiven Domäne
 
@@ -322,7 +322,7 @@ App Service leitet Webanforderungen standardmäßig an das Stammverzeichnis des 
 
 Klicken Sie hierzu im linken Navigationsbereich Ihrer Web-App-Seite auf **Anwendungseinstellungen**. 
 
-Das virtuelle Stammverzeichnis `/` am unteren Seitenrand verweist standardmäßig auf `site\wwwroot` (also auf das Stammverzeichnis Ihres App-Codes). Ändern Sie die Angabe, um stattdessen beispielsweise auf `site\wwwroot\public` zu verweisen, und speichern Sie die Änderung. 
+Das virtuelle Stammverzeichnis `/` am unteren Seitenrand verweist standardmäßig auf `site\wwwroot` (also auf das Stammverzeichnis Ihres App-Codes). Ändern Sie die Angabe, um stattdessen beispielsweise auf `site\wwwroot\public` zu verweisen, und speichern Sie die Änderung.
 
 ![Anpassen des virtuellen Verzeichnisses](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
 
@@ -339,23 +339,23 @@ Mit dem folgenden Befehl wird ein konfigurierter benutzerdefinierter DNS-Name zu
 ```bash 
 az webapp config hostname add \
     --webapp-name <app_name> \
-    --resource-group <resource_group_name> \ 
-    --hostname <fully_qualified_domain_name> 
+    --resource-group <resource_group_name> \
+    --hostname <fully_qualified_domain_name>
 ``` 
 
-Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](scripts/cli-configure-custom-domain.md). 
+Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](scripts/cli-configure-custom-domain.md).
 
 ### <a name="azure-powershell"></a>Azure PowerShell 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Mit dem folgenden Befehl wird ein konfigurierter benutzerdefinierter DNS-Name zu einer App Service-App hinzugefügt. 
+Mit dem folgenden Befehl wird ein konfigurierter benutzerdefinierter DNS-Name zu einer App Service-App hinzugefügt.
 
 ```powershell  
 Set-AzWebApp `
     -Name <app_name> `
     -ResourceGroupName <resource_group_name> ` 
-    -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net") 
+    -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net")
 ```
 
 Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](scripts/powershell-configure-custom-domain.md).

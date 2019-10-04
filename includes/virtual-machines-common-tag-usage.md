@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 17778b3edf1845d85302a0bcdf72a1ebc3919cea
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226472"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67178029"
 ---
 ## <a name="viewing-your-tags-in-the-usage-details"></a>Anzeigen der Tags in den Nutzungsdetails
 Tags, die im Resource Manager-Bereitstellungsmodell in Compute-, Netzwerk- und Speicherressourcen platziert werden, finden Sie in Ihren Nutzungsdetails im [Abrechnungsportal](https://account.windowsazure.com/)wieder.

@@ -1,5 +1,5 @@
 ---
-title: Beispiele und allgemeine Szenarien – Azure Logic Apps | Microsoft-Dokumentation
+title: Beispiele und allgemeine Szenarien – Azure Logic Apps
 description: Beispiele, Szenarien, Tutorials und exemplarische Vorgehensweisen für Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
@@ -9,19 +9,19 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
-ms.date: 01/31/2018
-ms.openlocfilehash: 89e0294db3178cedd3b14aada0b505787b17c75e
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.date: 07/31/2019
+ms.openlocfilehash: 000de22105615c3f6aa015b07e13bf8a47955b52
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671793"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706798"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gängige Szenarien, Beispiele, Tutorials und exemplarische Vorgehensweisen für Azure Logic Apps
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) unterstützt Sie bei der Orchestrierung und Integration verschiedener Dienste durch die Bereitstellung von [mehr als 100 einsatzbereiten Connectors](../connectors/apis-list.md), die von lokalem SQL Server über SAP bis hin zu Microsoft Cognitive Services reichen. Der Logic Apps-Dienst arbeitet „serverlos“. Daher müssen Sie sich über Skalierung oder Instanzen keine Gedanken machen. Sie brauchen lediglich den Workflow mit einem Trigger und Aktionen definieren, die im Workflow ausgeführt werden. Die zugrundeliegende Plattform kümmert sich um Skalierung, Verfügbarkeit und Leistung. Logic Apps ist besonders nützlich für Anwendungsfälle und Szenarien, in denen Sie mehrere Aktionen auf verschiedenen Systemen koordinieren müssen.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) unterstützt Sie bei der Orchestrierung und Integration verschiedener Dienste durch die Bereitstellung von [Hunderten einsatzbereiten Connectors](../connectors/apis-list.md) – von der lokalen SQL Server-Instanz über SAP bis hin zu Azure Cognitive Services. Der Logic Apps-Dienst arbeitet „serverlos“. Daher müssen Sie sich über Skalierung oder Instanzen keine Gedanken machen. Sie brauchen lediglich den Workflow mit einem Trigger und Aktionen definieren, die im Workflow ausgeführt werden. Die zugrundeliegende Plattform kümmert sich um Skalierung, Verfügbarkeit und Leistung. Logic Apps ist besonders nützlich für Anwendungsfälle und Szenarien, in denen Sie mehrere Aktionen auf verschiedenen Systemen koordinieren müssen.
 
-Um mehr über die vielen Muster und Funktionen zu erfahren, die von [Azure Logic Apps](../logic-apps/logic-apps-overview.md) unterstützt werden, finden Sie hier einige gängige Beispiele und Szenarien.
+Um mehr über die vielen Muster und Funktionen zu erfahren, die von Azure Logic Apps unterstützt werden, finden Sie hier einige gängige Beispiele und Szenarien.
 
 ## <a name="popular-starting-points-for-logic-app-workflows"></a>Beliebte Ausgangspunkte für Logik-App-Workflows
 
@@ -33,23 +33,31 @@ Jede Logik-App beginnt mit nur einem [*Trigger*](../logic-apps/logic-apps-overvi
 
 Hier nur einige Beispiele beliebter Trigger:
 
-* Abruf: 
+* Abruf:
 
-  * Der Trigger[**Zeitplan: Wiederholung**](../connectors/connectors-native-recurrence.md) ermöglicht Ihnen das Festlegen von Startdatum und -uhrzeit sowie der Wiederholung zum Auslösen Ihrer Logik-App. 
-  Beispielsweise können Sie die Wochentage und Tageszeiten auswählen, um Ihre Logik-App auszulösen.
+  * Der [Trigger **Wiederholung**](../connectors/connectors-native-recurrence.md) ermöglicht Ihnen das Festlegen von Startdatum und -uhrzeit sowie der Wiederholung zum Auslösen Ihrer Logik-App. Beispielsweise können Sie die Wochentage und Tageszeiten auswählen, um Ihre Logik-App auszulösen. Weitere Informationen finden Sie in den folgenden Themen:
 
-  * Mit dem Trigger "Wenn eine E-Mail empfangen wird" können Sie Ihre Logik-App von jedem E-Mail-Anbieter, der von Logic Apps unterstützt wird, z.B. [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](https://docs.microsoft.com/connectors/gmail/), [Outlook.com](https://docs.microsoft.com/connectors/outlook/) usw., auf neue E-Mails überprüfen.
+    * [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md)
+    * [Tutorial: Überprüfen der Verkehrslage gemäß eines Zeitplans mit Azure Logic Apps](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)
+
+  * Mit dem Trigger "Wenn eine E-Mail empfangen wird" können Sie Ihre Logik-App von jedem E-Mail-Anbieter, der von Logic Apps unterstützt wird, z.B. [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md), [Gmail](https://docs.microsoft.com/connectors/gmail/), [Outlook.com](https://docs.microsoft.com/connectors/outlook/) usw., auf neue E-Mails überprüfen. Weitere Informationen finden Sie in den folgenden Themen: 
+
+    * [Tutorial: Verwalten von Adressenlistenanforderungen mit Azure Logic Apps](../logic-apps/tutorial-process-mailing-list-subscriptions-workflow.md)
+    * [Tutorial: Automatisieren der Verarbeitung von E-Mails und Anlagen mit Azure Logic Apps](../logic-apps/tutorial-process-email-attachments-workflow.md)
 
   * Der [**HTTP**-Trigger](../connectors/connectors-native-http.md) lässt Ihre Logik-App einen angegebenen Dienstendpunkt überprüfen, indem über HTTP kommuniziert wird.
   
 * Push:
 
-  * Der Trigger [**Anforderung/Antwort: Anforderung**](../connectors/connectors-native-reqres.md) ermöglicht Ihrer Logik-App, HTTP-Anforderungen zu empfangen und in Echtzeit auf Ereignisse zu reagieren.
+  * Der [Trigger **Anforderung**](../connectors/connectors-native-reqres.md) ermöglicht Ihrer Logik-App, HTTP-Anforderungen zu empfangen und in Echtzeit auf Ereignisse zu reagieren.
 
-  * Der Trigger [**HTTP-Webhook**](../connectors/connectors-native-webhook.md) abonniert einen Dienstendpunkt durch Registrieren einer *Rückruf-URL* beim jeweiligen Dienst. 
-  Auf diese Weise kann der Dienst den Trigger einfach benachrichtigen, wenn das angegebene Ereignis eintritt, sodass der Trigger den Dienst nicht mehr abfragen muss.
+  * Der Trigger [**HTTP-Webhook**](../connectors/connectors-native-webhook.md) abonniert einen Dienstendpunkt durch Registrieren einer *Rückruf-URL* beim jeweiligen Dienst. Auf diese Weise kann der Dienst den Trigger einfach benachrichtigen, wenn das angegebene Ereignis eintritt, sodass der Trigger den Dienst nicht mehr abfragen muss.
 
-Nach Empfangen einer Benachrichtigung über neue Daten oder ein Ereignis wird der Trigger ausgelöst. Er erzeugt eine neue Logik-App-Workflowinstanz und führt die Aktionen im Workflow aus. Sie können im gesamten Workflow auf beliebige Daten im Trigger zugreifen. Der Trigger "Bei einem neuen Tweet" übergibt z.B. den Tweetinhalt an die Ausführung der Logik-App. 
+Nach Empfangen einer Benachrichtigung über neue Daten oder ein Ereignis wird der Trigger ausgelöst. Er erzeugt eine neue Logik-App-Workflowinstanz und führt die Aktionen im Workflow aus. Sie können im gesamten Workflow auf beliebige Daten im Trigger zugreifen. Der Trigger "Bei einem neuen Tweet" übergibt z.B. den Tweetinhalt an die Ausführung der Logik-App. Probieren Sie für den Einstieg in Azure Logic Apps die folgenden Schnellstartthemen aus:
+
+* [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps im Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* [Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps und Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+* [Schnellstart: Erstellen und Verwalten automatisierter Logik-App-Workflows mit Visual Studio Code](../logic-apps/quickstart-create-logic-apps-visual-studio-code.md)
 
 ## <a name="respond-to-triggers-and-extend-actions"></a>Reagieren auf Trigger und Erweitern von Aktionen
 
@@ -70,7 +78,7 @@ Logic Apps enthalten umfangreiche Funktionen für die erweiterte Ablaufsteuerung
 * [Wiederholen von Schritten oder Verarbeiten von Elementen in Arrays und Sammlungen mit Schleifen](../logic-apps/logic-apps-control-flow-loops.md)
 * [Gruppieren von Aktionen im Zusammenhang mit Bereichen](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [Erstellen von Fehler- und Ausnahmebehandlung in einem Workflow](../logic-apps/logic-apps-exception-handling.md)
-* [Anwendungsfall:  Wie ein Unternehmen im Gesundheitswesen Logic Apps-Ausnahmebehandlung für HL7 FHIR-Workflows einsetzt](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
+* [Anwendungsfall: Wie ein Unternehmen im Gesundheitswesen Logic Apps-Ausnahmebehandlung für HL7 FHIR-Workflows einsetzt](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [Monitor and get insights about logic app runs with Operations Management Suite (OMS) and Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md) (Überwachen und Gewinnen von Erkenntnissen zu Logik-App-Ausführungen mit Operations Management Suite (OMS) und Log Analytics)
 
@@ -80,7 +88,11 @@ Sie können Logik-Apps mithilfe von Visual Studio, Azure DevOps oder beliebigen 
 
 * [Erstellen und Bereitstellen von Logik-Apps mit Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [Erstellen einer Vorlage zur automatisierten Bereitstellung](../logic-apps/logic-apps-create-deploy-template.md)
+* [Automatisieren der Logik-App-Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)
+* [Beispiel: Herstellen einer Verbindung mit Azure Service Bus-Warteschlangen aus Azure Logic Apps und Bereitstellen mit Azure Pipelines in Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Beispiel: Herstellen einer Verbindung mit Azure-Speicherkonten aus Azure Logic Apps und Bereitstellen mit Azure Pipelines in Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Beispiel: Einrichten einer Funktions-App-Aktion für Azure Logic Apps und Bereitstellen mit Azure Pipelines in Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Beispiel: Herstellen einer Verbindung mit einem Integrationskonto aus Azure Logic Apps und Bereitstellen mit Azure Pipelines in Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ## <a name="content-types-conversions-and-transformations-within-a-run"></a>Inhaltstypen, Konvertierungen und Transformationen während der Ausführung
 
@@ -112,6 +124,5 @@ Erfahren Sie, wie Azure Logic Apps sowie andere Azure-Dienste und Microsoft-Prod
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen von Workflowdefinitionen für Logik-Apps per JSON-Code](../logic-apps/logic-apps-author-definitions.md)
-* [Behandeln von Fehlern und Ausnahmen in Logic Apps](../logic-apps/logic-apps-exception-handling.md)
-* [Senden Sie Ihre Kommentare, Fragen, Feedback und Vorschläge zur Verbesserung von Azure Logic Apps ein](https://feedback.azure.com/forums/287593-logic-apps)
+* Erfahren Sie mehr über [Connectors für Logic Apps](../connectors/apis-list.md).
+* Erfahren Sie mehr über [Szenarien für die B2B-Unternehmensintegration mit Azure Logic Apps](../logic-apps/logic-apps-enterprise-integration-overview.md).

@@ -2,35 +2,29 @@
 title: Azure Active Directory Identity Protection – FAQ| Microsoft-Dokumentation
 description: Häufig gestellte Fragen zu Azure AD Identity Protection
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: daveba
-ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bea455371938ccc4d512bdb7ffddd72eb9508da
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e30f8264870272fc12dcb7e15b37e5fd30688bcb
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522229"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126528"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection – FAQ
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active Directory (Azure AD) Identity Protection. Weitere Informationen finden Sie unter [Azure Active Directory Identity Protection](../active-directory-identityprotection.md). 
 
+## <a name="why-do-some-risk-detections-have-closed-system-status"></a>Warum weisen einige Risikoerkennungen den Status „Geschlossen (System)“ auf?
 
-## <a name="why-do-some-risk-events-have-closed-system-status"></a>Warum weisen einige Risikoereignisse den Status „Geschlossen (System)“ auf?
-
-**A:** Diese Risikoereignisse wurden von Identity Protection erkannt und später geschlossen, da sie nicht mehr als riskant angesehen wurden. Diese Ereignisse werden hinsichtlich der Risikostufe des Benutzers nicht berücksichtigt. 
+**A:** Diese Risikoerkennungen wurden in Identity Protection erkannt und später geschlossen, da sie nicht mehr als riskant angesehen wurden. Diese Ereignisse werden hinsichtlich der Risikostufe des Benutzers nicht berücksichtigt. 
 
 ---
 

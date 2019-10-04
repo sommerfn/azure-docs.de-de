@@ -5,18 +5,15 @@ services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: cb1eb5ac27c53f4c0d48fe3644febc62f848486d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: bc3c1a05c64edea260bd177dd7eaefc003db5310
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484694"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67296286"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Verwalten von Azure Resource Manager-Gruppen mithilfe des Azure-Portals
 
@@ -108,72 +105,7 @@ Sie können Ressourcengruppen und Ressourcen Tags zuordnen, um sie logisch zu or
 
 ## <a name="export-resource-groups-to-templates"></a>Exportieren von Ressourcengruppen in Vorlagen
 
-Nach dem erfolgreichen Einrichten der Ressourcengruppe sollten Sie die Resource Manager-Vorlage für die Ressourcengruppe anzeigen lassen. Das Exportieren der Vorlage hat zwei Vorteile:
-
-- Automatisieren zukünftiger Bereitstellungen der Lösung, da die Vorlage die gesamte Infrastruktur enthält.
-- Überblick über Vorlagensyntax, indem Sie sich die JavaScript Object Notation (JSON) zu Ihrer Lösung ansehen.
-
-Eine Vorlage kann auf zwei Arten exportiert werden:
-
-- Sie können die für die Bereitstellung verwendete Vorlage exportieren. Die exportierte Vorlage enthält alle Parameter und Variablen so, wie sie in der Originalvorlage angezeigt wurden. Diese Methode empfiehlt sich, wenn Sie Ressourcen über das Portal bereitgestellt haben und sich die Vorlage für die Erstellung dieser Ressourcen ansehen möchten. Diese Vorlage kann direkt verwendet werden. 
-- Sie können eine generierte Vorlage exportieren, die den aktuellen Zustand der Ressourcengruppe darstellt. Die exportierte Vorlage basiert nicht auf einer Vorlage, die Sie für die Bereitstellung verwendet haben. Stattdessen wird eine Vorlage erstellt, bei der es sich um eine „Momentaufnahme“ oder „Sicherung“ der Ressourcengruppe handelt. Die exportierte Vorlage verfügt über viele hartcodierte Werte und vermutlich nicht über so viele Parameter, wie Sie sonst definieren. Verwenden Sie diese Option, um Ressourcen in der gleichen Ressourcengruppe erneut bereitzustellen. Um diese Vorlage für eine andere Ressourcengruppe zu verwenden, müssen Sie sie möglicherweise erheblich ändern.
-
-### <a name="export-templates-from-deployment-history"></a>Exportieren von Vorlagen aus dem Bereitstellungsverlauf
-
-Diese Methode exportiert die Vorlagen für bestimmte Bereitstellungen. Wenn Sie die Ressourcen über das Portal geändert haben, oder in mehreren Bereitstellungen Ressourcen hinzugefügt oder entfernt haben, finden Sie unter [Export templates from resource groups (Exportieren von Vorlagen aus Ressourcengruppen)](#export-templates-from-resource-groups) weitere Informationen.
-
-1. Öffnen Sie die Ressourcengruppe, die Sie exportieren möchten.  Weitere Informationen finden Sie unter [Ressourcengruppen öffnen](#open-resource-groups).
-2. Wählen Sie im linken Bereich **Bereitstellungen** aus, oder klicken Sie auf den Link unter **Bereitstellungen**.  Auf dem folgenden Screenshot wird **4 Succeeded** (4 erfolgreich) angezeigt, da es vier eigenständige Bereitstellungen mit vier unterschiedlichen Bereitstellungsnamen gab. Sie sehen möglicherweise **1 Succeeded** (1 erfolgreich).
-
-    ![Screenshot: Exportierte Vorlagen aus Azure-Ressourcengruppen](./media/manage-resource-groups-portal/manage-resource-groups-export-templates-deployment-history.png)
-
-3. Wählen Sie in der Liste eine der Bereitstellungen aus.
-4. Wählen Sie im linken Bereich die Option **Vorlage** aus. Resource Manager ruft die folgenden sechs Dateien ab:
-
-   - **Vorlage** : Die Vorlage, mit der die Infrastruktur für Ihre Lösung definiert wird. Wenn Sie das Speicherkonto über das Portal erstellt haben, hat Resource Manager eine Vorlage für die Bereitstellung verwendet und die Vorlage zur späteren Verwendung gespeichert.
-   - **Parameter**: Eine Parameterdatei, die Sie zum Übergeben von Werten während der Bereitstellung verwenden können. Sie enthält die Werte, die Sie im Rahmen der ersten Bereitstellung angegeben haben. Diese Werte können Sie ändern, wenn Sie die Vorlage erneut bereitstellen.
-   - **CLI**: Eine Azure CLI-Skriptdatei, die Sie zum Bereitstellen der Vorlage verwenden können.
-   - **PowerShell** : Eine Azure PowerShell-Skriptdatei, die Sie zum Bereitstellen der Vorlage verwenden können.
-   - **.NET** : Eine .NET-Klasse, die Sie zum Bereitstellen der Vorlage verwenden können.
-   - **Ruby** : Eine Ruby-Klasse, die Sie zum Bereitstellen der Vorlage verwenden können.
-
-     Standardmäßig wird die Vorlage im Portal angezeigt.
-
-5. Klicken Sie auf **Herunterladen**, um eine Vorlage auf Ihren lokalen Computer zu exportieren.
-
-    ![Screenshot: Exportierte Vorlagen aus Azure-Ressourcengruppen](./media/manage-resource-groups-portal/manage-resource-groups-export-templates-deployment-history-download.png)
-
-<a name="export-templates-from-resource-groups"></a>
-### <a name="export-templates-from-resource-groups"></a>Exportieren von Vorlagen aus Ressourcengruppen
-
-Falls Sie Ihre Ressourcen über das Portal geändert oder Ressourcen in mehreren Bereitstellungen hinzugefügt oder entfernt haben, spiegelt eine aus dem Bereitstellungsverlauf abgerufene Vorlage nicht den aktuellen Zustand der Ressourcengruppe wider. In diesem Abschnitt erfahren Sie, wie Sie eine Vorlage exportieren, die den aktuellen Zustand der Ressourcengruppe widerspiegelt. Sie dient als eine Momentaufnahme der Ressourcengruppe, die Sie verwenden können, um die erneute Bereitstellung in der gleichen Ressourcengruppe auszuführen. Um die exportierte Vorlage für andere Lösungen verwenden zu können, müssen Sie sie erheblich ändern.
-
-1. Öffnen Sie die Ressourcengruppe, die Sie exportieren möchten.  Weitere Informationen finden Sie unter [Ressourcengruppen öffnen](#open-resource-groups).
-2. Wählen Sie im linken Bereich die Option **Vorlage exportieren** aus. Resource Manager ruft die folgenden sechs Dateien ab:
-
-   - **Vorlage** : Die Vorlage, mit der die Infrastruktur für Ihre Lösung definiert wird. Wenn Sie das Speicherkonto über das Portal erstellt haben, hat Resource Manager eine Vorlage für die Bereitstellung verwendet und die Vorlage zur späteren Verwendung gespeichert.
-   - **Parameter**: Eine Parameterdatei, die Sie zum Übergeben von Werten während der Bereitstellung verwenden können. Sie enthält die Werte, die Sie im Rahmen der ersten Bereitstellung angegeben haben. Diese Werte können Sie ändern, wenn Sie die Vorlage erneut bereitstellen.
-   - **CLI**: Eine Azure CLI-Skriptdatei, die Sie zum Bereitstellen der Vorlage verwenden können.
-   - **PowerShell** : Eine Azure PowerShell-Skriptdatei, die Sie zum Bereitstellen der Vorlage verwenden können.
-   - **.NET** : Eine .NET-Klasse, die Sie zum Bereitstellen der Vorlage verwenden können.
-   - **Ruby** : Eine Ruby-Klasse, die Sie zum Bereitstellen der Vorlage verwenden können.
-
-     Standardmäßig wird die Vorlage im Portal angezeigt.
-3. Klicken Sie auf **Herunterladen**, um eine Vorlage auf Ihren lokalen Computer zu exportieren.
-
-Einige exportierte Vorlagen müssen zuerst bearbeitet werden, bevor sie verwendet werden können. Informationen zum Entwickeln von Vorlagen finden Sie in den [Schritt-für-Schritt-Tutorials](/azure/azure-resource-manager/).
-
-### <a name="export-template-before-deploying"></a>Exportieren einer Vorlage vor der Bereitstellung
-
-Sie können das Portal verwenden, um eine Ressource zu definieren.  Sie können sich eine Vorlage vor der Bereitstellung der Ressource ansehen und sie exportieren. Anweisungen dazu finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](./resource-manager-quickstart-create-templates-use-the-portal.md).
-
-### <a name="fix-export-issues"></a>Beheben von Exportproblemen
-
-Nicht alle Ressourcentypen unterstützen die Funktion zum Exportieren von Vorlagen. Exportprobleme treten nur dann auf, wenn Sie aus einer Ressourcengruppe exportieren anstatt aus Ihrem Bereitstellungsverlauf. Falls die letzte Bereitstellung genau den aktuellen Status der Ressourcengruppe widerspiegelt, sollten Sie die Vorlage nicht aus der Ressourcengruppe, sondern aus dem Bereitstellungsverlauf exportieren. Führen Sie den Export aus einer Ressourcengruppe nur dann durch, wenn Sie Änderungen an der Ressourcengruppe vorgenommen haben, die in nicht einer einzelnen Vorlage definiert sind.
-
-Beheben Sie Exportprobleme, indem Sie der Vorlage die fehlenden Ressourcen manuell hinzufügen. Die Fehlermeldung enthält die Ressourcentypen, die nicht exportiert werden konnten. Suchen Sie den entsprechenden Ressourcentyp in der [Vorlagenreferenz](/azure/templates/). Informationen zum manuellen Hinzufügen eines virtuellen Netzwerkgateways finden Sie beispielsweise unter [Microsoft.Network/virtualNetworkGateways template reference](/azure/templates/microsoft.network/virtualnetworkgateways) (Microsoft.Network/virtualNetworkGateways – Vorlagenreferenz). Der Vorlagenverweis liefert den JSON-Code, um die Ressource zu Ihrer Vorlage hinzuzufügen.
-
-Nachdem Sie das JSON-Format für die Ressource abgerufen haben, müssen Sie die Ressourcenwerte abrufen. Verwenden Sie zum Anzeigen der Werte für die Ressource den GET-Vorgang in der REST-API für den Ressourcentyp. Informationen zum Abrufen der Werte für Ihr Gateway für virtuelle Netzwerke finden Sie beispielsweise unter [Virtual Network Gateways - Get](/rest/api/network-gateway/virtualnetworkgateways/get) (Gateways für virtuelle Netzwerke – Abrufen).
+Informationen zum Exportieren von Vorlagen finden Sie unter [Exportieren von einzelnen und mehreren Ressourcen in eine Vorlage – Portal](export-template-portal.md).
 
 ## <a name="manage-access-to-resource-groups"></a>Verwalten des Zugriffs auf Ressourcengruppen
 

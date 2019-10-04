@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.openlocfilehash: 70ead36e20861026e08e864f438071948c526844
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.date: 07/23/2019
+ms.openlocfilehash: 4f17fc7df5aef449c3b0f6dd8d02ae58df959070
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294415"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384888"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globale Datenverteilung mit Azure Cosmos DB: Übersicht
 
@@ -51,6 +51,11 @@ In den folgenden Artikeln erfahren Sie mehr über die globale Verteilung:
 
 * [Globale Verteilung: Hintergrundinformationen](global-dist-under-the-hood.md)
 * [Konfigurieren von Multimaster in Ihren Anwendungen](how-to-multi-master.md)
-* [Konfigurieren von Clients für Multihoming](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Konfigurieren von Clients für Multihoming](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Hinzufügen/Entfernen von Regionen in Ihrem Azure Cosmos DB-Konto](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Erstellen einer benutzerdefinierten Konfliktlösungsrichtlinie für SQL-API-Konten](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
+* [Konsistenzebenen in Azure Cosmos DB](consistency-levels.md)
+* [Auswählen der richtigen Konsistenzebene für Ihre Anwendung](consistency-levels-choosing.md)
+* [Konsistenzebenen und Azure Cosmos DB-APIs](consistency-levels-across-apis.md)
+* [Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen](consistency-levels-tradeoffs.md)
+* [Implementieren der benutzerdefinierten Synchronisierung zur Optimierung der Verfügbarkeit und Leistung](how-to-custom-synchronization.md)

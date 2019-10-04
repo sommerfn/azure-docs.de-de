@@ -1,13 +1,14 @@
 ---
-title: Ermittlungsfunktionen mit Notebooks in Azure Sentinel Preview | Microsoft-Dokumentation
+title: Ermittlungsfunktionen mit Notebooks in Azure Sentinel | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Notebooks mit den Ermittlungsfunktionen von Azure Sentinel verwendet werden.
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
@@ -15,53 +16,84 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 63ce2be847017ed7e80fe5e573d5553311f6af2f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5b90ecc1db686b698668b07bd839304b425445ca
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107677"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240524"
 ---
-# <a name="use-notebooks-to-hunt-for-anomalies"></a>Verwenden von Notebooks zur Ermittlung von Anomalien
+# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Aufspüren von Sicherheitsrisiken mit Jupyter Notebooks
 
-> [!IMPORTANT]
-> Azure Sentinel befindet sich momentan in der Public Preview.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Grundlage für Azure Sentinel ist der Datenspeicher; dieser zeichnet sich durch Hochleistungsabfragen, ein dynamisches Schema und die Skalierung auf große Datenvolumen aus. Das Azure Sentinel-Portal und alle Azure Sentinel-Tools greifen über eine gemeinsame API auf diesen Datenspeicher zu. Die gleiche API ist auch für externe Tools wie [Jupyter Notebooks](https://jupyter.org/) und Python verfügbar. Viele gängige Aufgaben können im Portal durchgeführt werden, Jupyter erweitert jedoch den Rahmen der Verarbeitung dieser Daten. Jupyter bietet sowohl umfassende Programmierbarkeit als auch eine große Sammlung von Bibliotheken für Machine Learning, Visualisierung und Datenanalyse. Dies macht Jupyter zu einem überzeugenden Tool für Sicherheitsuntersuchungen und Aufspüren von Sicherheitsrisiken.
 
-Azure Sentinel nutzt die Leistungsfähigkeit der interaktiven Jupyter-Notebooks, um Erkenntnisse und Aktionen zum Untersuchen oder Ermitteln von Anomalien in Ihrer Umgebung bereitzustellen. Azure Sentinel enthält vorab geladene Notebooks, die von den Sicherheitsanalysten von Microsoft entwickelt wurden. Jedes Notebook ist mit einem eigenständigen Workflow für einen bestimmten Anwendungsfall entworfen. In jedem Notebook sind Visualisierungen enthalten, um die Untersuchung von Daten und die Ermittlung von Bedrohungen zu beschleunigen. Sie können die integrierten Notebooks gemäß Ihrer Anforderungen anpassen, neue Notebooks von Grund auf neu erstellen oder Notebooks der Azure Sentinel-GitHub-Community importieren. Jupyter-Notebooks werden als Projekt in die Azure Notebooks-Seite importiert, wodurch Benutzer an einem Ort auf all ihre Azure Sentinel-Notebooks zugreifen können. Notebooks können mit einem Klick ausgeführt oder von Benutzern ihrer Umgebung entsprechend konfiguriert werden.
+![Beispielnotebook](./media/notebooks/sentinel-notebooks-map.png)
 
-Durch die vollständig integrierte Funktion können Notebooks per Cloud Computing und in Cloudspeichern ausgeführt werden, ohne zugrunde liegenden Wartungsaufwand zu erzeugen. Aufgrund der Möglichkeit, das vorhandene Jupyter Notebooks-Ökosystem zu nutzen, können Sie Modelle beschaffen, ohne Kundendaten preiszugeben. 
+Wir haben die Jupyter-Benutzeroberfläche in das Azure Sentinel-Portal integriert, sodass Sie Notebooks auf einfache Weise erstellen und mit diesen Notebooks Daten analysieren können. Mit der *Kqlmagic*-Bibliothek als verbindende Komponente können Sie Abfragen von Azure Sentinel annehmen und diese direkt in einem Notebook ausführen. Für Abfragen wird die Abfragesprache [Kusto](https://kusto.azurewebsites.net/docs/query/index.html) verwendet. Verschiedene von Microsoft-Sicherheitsanalysten entwickelte Notebooks werden mit Azure Sentinel verpackt. Einige diese Notebooks wurden auf ein bestimmtes Szenario ausgelegt, und sie sind ohne weitere Änderungen sofort verwendungsfähig. Andere sollen beispielhaft Techniken und Funktionen veranschaulichen, die Sie kopieren oder für die Verwendung in Ihren eigenen Notebooks anpassen können. Andere Notebooks wiederum können auch aus der Azure Sentinel-Community GitHub importiert werden.
 
+Diese integrierte Jupyter-Benutzererfahrung verwendet [Azure Notebooks](https://notebooks.azure.com/) zum Speichern, Freigeben und Ausführen von Notebooks. Sie können diese Notebooks auch lokal (wenn Sie über eine Python-Umgebung verfügen und Jupyter auf Ihrem Computer installiert ist) oder in anderen JupyterHub-Umgebungen wie Azure Databricks ausführen.
 
-Alle Notebooks werden in Azure Notebooks (derzeit als Preview verfügbar) gehostet. Dabei handelt es sich um eine interaktive Entwicklungsumgebung in der Azure-Cloud. Notebooks sind auf der ganzen Welt immer über jeden beliebigen Browser abrufbar.  Die integrierten Notebooks von Azure Sentinel für die Untersuchung und Ermittlung werden in ein Projekt geklont, das Ihnen gehört und an Ihre Umgebung angepasst werden kann. Die folgenden integrierten Notebooks gehören zu den beliebtesten:
+Notebooks verfügen über zwei Komponenten:
 
-- **Alert investigation and hunting** (Untersuchung und Ermittlung von Warnungen): Dieses interaktive Notebook ermöglicht die schnelle Selektierung verschiedener Warnungen, indem verwandte Aktivitäten abgerufen und die Warnungen um zugehörige Aktivitäten und Daten erweitert werden, aus denen die Warnungen generiert wurden.
+- die browserbasierte Benutzeroberfläche, in der Sie Abfragen und Code eingeben und ausführen und in der die Ergebnisse der Ausführung angezeigt werden.
+- einen *Kernel*, der für das Analysieren und Ausführen des Codes selbst zuständig ist. 
 
-- **Endpoint host guided hunting** (Endpunkthost-orientierte Ermittlung): Dieses Notebook ermöglicht Ihnen die Ermittlung von Anzeichen einer Sicherheitsverletzung durch Ausführen von Drilldowns in sicherheitsbezogene Aktivitäten, die mit einem Endpunkthost verknüpft sind.  
+In Azure Notebooks wird dieser Kernel standardmäßig unter Azure *Free Cloud Compute and Storage* ausgeführt. Wenn Ihre Notebooks komplexe Machine Learning-Modelle oder Visualisierungen einschließen, empfiehlt es sich, leistungsfähigere, dedizierte Computeressourcen wie [Data Science Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) (DSVM) zu verwenden. Die Vertraulichkeit der Notebooks in Ihrem Konto bleibt gewahrt, sofern Sie sie nicht freigeben.
 
-- **Office sign in guided hunting** (Office-Anmeldedaten-orientierte Ermittlung): Dieses Notebook ermöglicht die Ermittlung verdächtiger Anmeldedaten durch Visualisieren der geografischen Standorte von verdächtigen Protokollen und Anzeigen von ungewöhnlichen Anmeldedatenmustern, die aus Office 365-Daten abgeleitet werden.
+Die Azure Sentinel-Notebooks nutzen viele beliebte Python-Bibliotheken wie pandas, matplotlib, bokeh und andere. Zahlreiche weitere Python-Pakete stehen zur Auswahl, die u.a. die folgenden Bereiche abdecken:
+
+- Visualisierungen und Grafiken
+- Datenverarbeitung und -analyse
+- Statistiken und numerisches Computing
+- Machine Learning und Deep Learning
+
+Im Paket [msticpy](https://github.com/Microsoft/msticpy/) haben wir zudem einige Open Source-Jupyter-Sicherheitstools veröffentlicht. Dieses Paket wird in vielen der enthaltenen Notebooks verwendet. Msticpy-Tools sollen Sie insbesondere beim Erstellen von Notebooks zum Aufspüren und Untersuchen von Sicherheitsrisiken unterstützen, und wir arbeiten aktiv an neuen Features und Verbesserungen.
+
+Derzeit sind u. a. folgende Notebooks enthalten:
+
+- **Guided investigation - Process Alerts** (Geführte Untersuchung – Warnungen verarbeiten): Hiermit können Sie Warnungen durch Analysieren der Aktivität auf den betroffenen Hosts schnell selektieren.
+- **Guided hunting - Windows host explorer** (Geführte Suche – Windows-Host-Explorer): Hiermit können Sie Kontoaktivitäten, Prozessausführungen, Netzwerkaktivitäten und andere Ereignisse auf einem Host untersuchen.  
+- **Guided hunting - Office365-Exploring** (Geführte Suche – Office365-Untersuchung): Hiermit können Sie nach verdächtigen Aktivitäten in Office 365 in mehreren Office 365-Datasets suchen.
+
+Im [GitHub-Repository der Azure Sentinel-Community](https://github.com/Azure/Azure-Sentinel) finden sich alle künftig von Microsoft erstellten oder von der Community beigesteuerten Azure Sentinel-Notebooks.
 
 ## <a name="run-a-notebook"></a>Ausführen eines Notebooks
-Im folgenden Beispiel wird das integrierte Notebook für die Suche nach ausführlichen Informationen zu Standortanomalien, um zu ermitteln, ob jemand von einem unerwarteten Standort aus auf Ihr Netzwerk zugreift.
 
-1. Klicken Sie im Azure Sentinel-Portal auf **Notebooks**, und wählen Sie dann eines der integrierten Notebooks aus.
+Im folgenden Beispiel wird ein Azure Notebooks-Projekt im Azure Sentinel-Portal erstellt, und das Projekt wird mit Notebooks gefüllt. Vor dem Verwenden dieser Notebooks empfiehlt es sich, eine Kopie des Notebooks zu erstellen und mit dieser Kopie zu arbeiten. Durch das Arbeiten mit Kopien können Sie problemlos auf künftige Versionen von Notebooks aktualisieren, ohne dass Ihre Daten überschrieben werden.
+
+1. Klicken Sie im Azure Sentinel-Portal im Navigationsmenü auf **Notebooks**. Klicken Sie zum Erstellen eines neuen Azure Notebooks-Projekts auf **Clone Azure Sentinel Notebooks** (Azure Sentinel Notebooks klonen); wenn Sie ein vorhandenes Notebooks-Projekt öffnen möchten, klicken Sie auf **Go to your Notebooks** (Zu eigenen Notebooks wechseln).
   
-   ![Notebook auswählen](./media/notebooks/select-notebook.png)
+   ![Notebooks auswählen](./media/notebooks/sentinel-azure-notebooks-home.png)
 
-3. Klicken Sie auf **Importieren**, um das GitHub-Repository in Ihr Azure Notebooks-Projekt zu klonen.
-   ![Notebook importieren](./media/notebooks/import1.png)
-4. Jedes Notebook führt Sie durch die einzelnen Schritte zum Durchführen einer Ermittlung oder Untersuchung. Modelle, Bibliotheken sowie andere Abhängigkeiten und Konfigurationen für die Konnektivität mit Azure Sentinel werden automatisch importiert, um die Ausführung mit nur einem Klick zu ermöglichen. Jeglicher Code und alle Bibliotheken, die zum Ausführen eines Notebooks erforderlich sind, werden vorab geladen. Sie können sofort damit beginnen, ein Notebook für Ihren Log Analytics-Arbeitsbereich auszuführen, ohne Konfigurationen vornehmen zu müssen.
+2. Wenn Sie im vorherigen Schritt **Clone Azure Sentinel Notebooks** (Azure Sentinel Notebooks klonen) ausgewählt haben, wird das folgende Dialogfeld angezeigt. Klicken Sie auf **Importieren**, um das GitHub-Repository in Ihr Azure Notebooks-Projekt zu klonen. Wenn Sie über kein vorhandenes Azure Notebooks-Konto verfügen, werden Sie aufgefordert, eines zu erstellen und sich anzumelden.
 
-   ![Repository importieren](./media/notebooks/import2.png)
+   ![Notebook importieren](./media/notebooks/sentinel-notebooks-clone.png)
 
-5. Sie können alle bereitgestellten Beispielnotebooks untersuchen, anpassen und ausführen. Sie können sie als Bausteine für viele verschiedene Szenarios verwenden.
+3. Beim Erstellen eines neuen Projekts müssen Sie das Projekt benennen. Übernehmen Sie den Standardnamen, oder geben Sie einen neuen Namen ein. Aktivieren Sie nicht die Option **Clone Recursively** (Rekursiv klonen), denn diese Option bezieht sich auf verknüpfte GitHub-Repositorys. Wenn Sie auf **Importieren** klicken, werden die GitHub-Inhalte geklont; dieser Vorgang kann einige Minuten dauern.
 
-   ![Notebook auswählen](./media/notebooks/import3.png)
+   ![Notebook importieren](./media/notebooks/sentinel-create-project.png)
 
+4. Öffnen Sie den Ordner **Notebooks**, um die Notebooks anzuzeigen. In jedem Notebook werden Sie durch die einzelnen Schritte zum Durchführen einer Suche oder Untersuchung geführt. Bibliotheken und andere benötigte Abhängigkeiten des Notebooks können über das Notebook selbst oder über eine einfache Konfigurationsprozedur installiert werden. Die Konfiguration, die Ihr Notebook-Projekt mir Ihrem Azure Sentinel-Abonnement verknüpft, wurde automatisch in den vorherigen Schritten festgelegt. Ihre Notebooks können nun im Azure Sentinel-Log Analytics-Arbeitsbereich ausgeführt werden.
 
+   ![Repository importieren](./media/notebooks/sentinel-open-notebook1.png)
+
+5. Öffnen Sie ein Notebook. Für die Ausführung der Notebooks ist standardmäßig „Free Compute“ ausgewählt (hervorgehoben). Wenn Sie eine zu verwendende DSVM konfiguriert haben (siehe oben), wählen Sie die DSVM aus, und führen Sie vor dem Öffnen des ersten Notebooks die Authentifizierung aus. Klicken Sie auf ein Notebook, um es zu öffnen.
+
+   ![Notebook auswählen](./media/notebooks/sentinel-open-notebook2.png)
+
+6. Wählen Sie die Python-Version aus. Beim erstmaligen Öffnen eines Notebooks werden Sie u.U. aufgefordert, eine Kernelversion auszuwählen. Wählen Sie andernfalls den zu verwendenden Kernel wie beschrieben aus. Als Kernel sollte Python 3.6 oder höher ausgewählt sein (obere rechte Ecke des Notebook-Fensters).
+
+   ![Notebook auswählen](./media/notebooks/sentinel-select-kernel.png)
+
+Eine kurze Einführung zum Abfragen von Daten in Azure Sentinel, finden Sie im Notebook [GetStarted](https://github.com/Azure/Azure-Sentinel/blob/master/Notebooks/Get%20Started.ipynb) im Hauptordner „Notebooks“. Weitere Beispiel-Notebooks finden sich im Unterordner **Sample-Notebooks**. Die Beispiel-Notebooks wurden mit Daten gespeichert, sodass die gewünschte Ausgabe leichter überprüft werden kann (wir empfehlen für die Anzeige den [nbviewer](https://nbviewer.jupyter.org/)). Der Ordner **HowTos** enthält Beschreibungen zu Notebooks, u.a. zum Festlegen der Python-Standardversion, zum Konfigurieren einer DSVM, zum Erstellen von Azure Sentinel-Lesezeichen in einem Notebook sowie zu anderen Themen.
+
+Diese Notebooks fungieren einerseits als hilfreiche Tools, Sie dienen andererseits aber auch zur Veranschaulichung mit Codebeispielen, die Sie in der Umgebung Ihrer eigenen Notebooks verwenden können.
+
+Wir freuen uns über Feedback, egal ob es sich um Vorschläge, Empfehlungen für Funktionen, eigene Beiträge von Notebooks, Fehlerberichte oder Verbesserungen und Ergänzungen zur vorhandenen Notebooks handelt. Besuchen Sie die [Azure Sentinel-Community GitHub](https://github.com/Azure/Azure-Sentinel), um ein Problem zu melden oder eine Verzweigung anzulegen oder um einen Beitrag hochzuladen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie gelernt, wie Sie eine Ermittlungsuntersuchung mithilfe von Notebooks in Azure Sentinel ausführen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+
+In diesem Artikel wurden die ersten Schritte beim Verwenden von Jupyter-Notebooks in Azure Sentinel erläutert. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 
 - [Proactively hunt for threats (Proaktive Ermittlung von Bedrohungen)](hunting.md)
 - [Use bookmarks to save interesting information while hunting (Verwenden von Lesezeichen zum Speichern interessanter Informationen bei der Ermittlung)](bookmarks.md)

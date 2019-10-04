@@ -13,28 +13,60 @@
       href: quickstart.md
 - name: Lernprogramme
   items:
-    - name: Filtern von Daten mit Azure Functions
-      href: tutorial-deploy-function.md
-    - name: Ermitteln von Mittelwerten mit ASA
-      href: tutorial-deploy-stream-analytics.md
-    - name: Bewerten von Daten mit Azure Machine Learning Service
-      href: tutorial-deploy-machine-learning.md
-    - name: Klassifizieren von Bildern mit Custom Vision
-      href: tutorial-deploy-custom-vision.md
-    - name: Lokales Speichern von Daten mit SQL
-      href: tutorial-store-data-sql-server.md
-    - name: Entwickeln von benutzerdefinierten Codemodulen
+    - name: 1. Einrichten der Entwicklungsumgebung
       items:
+        - name: Entwickeln für Linux-Geräte
+          href: tutorial-develop-for-linux.md
+        - name: Entwickeln für Windows-Geräte
+          href: tutorial-develop-for-windows.md
+    - name: 2. Entwickeln von benutzerdefinierten Codemodulen
+      items:
+        - name: C
+          items:
+            - name: C-Module für Linux-Geräte
+              href: tutorial-c-module.md
+            - name: C-Module für Windows-Geräte
+              href: tutorial-c-module-windows.md
         - name: 'C#'
-          href: tutorial-csharp-module.md
-        - name: Python
-          href: tutorial-python-module.md
-        - name: Node.js
-          href: tutorial-node-module.md
+          items:
+            - name: 'C#-Module für Linux-Geräte'
+              href: tutorial-csharp-module.md
+            - name: 'C#-Module für Windows-Geräte'
+              href: tutorial-csharp-module-windows.md
         - name: Java
           href: tutorial-java-module.md
-        - name: C
-          href: tutorial-c-module.md
+        - name: Node.js
+          href: tutorial-node-module.md
+        - name: Python
+          href: tutorial-python-module.md
+    - name: 3. Bereitstellen von Azure-Diensten als Module
+      items:
+        - name: Filtern von Daten mit Azure Functions
+          href: tutorial-deploy-function.md
+        - name: Ermitteln von Durchschnittswerten mit Azure Stream Analytics
+          href: tutorial-deploy-stream-analytics.md
+        - name: Bewerten von Daten mit Azure Machine Learning Service
+          href: tutorial-deploy-machine-learning.md
+        - name: Klassifizieren von Bildern mit Custom Vision
+          href: tutorial-deploy-custom-vision.md
+        - name: Lokales Speichern von Daten mit SQL
+          href: tutorial-store-data-sql-server.md
+    - name: 4. End-to-End-Beispiel für maschinelles Lernen im Edge-Bereich
+      items:
+        - name: Einführung
+          href: tutorial-machine-learning-edge-01-intro.md
+        - name: Einrichten des Entwicklungscomputers und der Azure-Dienste
+          href: tutorial-machine-learning-edge-02-prepare-environment.md
+        - name: Generieren simulierter Gerätedaten
+          href: tutorial-machine-learning-edge-03-generate-data.md
+        - name: Trainieren und Bereitstellen eines Azure Machine Learning-Modells
+          href: tutorial-machine-learning-edge-04-train-model.md
+        - name: Konfigurieren eines transparenten Gateways
+          href: tutorial-machine-learning-edge-05-configure-edge-device.md
+        - name: Erstellen und Bereitstellen von IoT Edge-Modulen
+          href: tutorial-machine-learning-edge-06-custom-modules.md
+        - name: Senden von Daten an IoT Hub über ein transparentes Gateway
+          href: tutorial-machine-learning-edge-07-send-data-to-hub.md
 - name: Konzepte
   items:
     - name: IoT Edge-Laufzeit
@@ -43,7 +75,7 @@
       items:
         - name: Grundlegendes zu Azure IoT Edge-Modulen
           href: iot-edge-modules.md
-        - name: Edge-Agent und Hubeigenschaften
+        - name: IoT Edge-Agent und Hubeigenschaften
           href: module-edgeagent-edgehub.md
     - name: Entwicklung
       items:
@@ -77,7 +109,7 @@
       href: iot-edge-glossary.md
 - name: Anleitungen
   items:
-    - name: Registrieren eines Edge-Geräts
+    - name: Registrieren eines IoT Edge-Geräts
       items:
         - name: Azure-Portal
           href: how-to-register-device-portal.md
@@ -87,25 +119,33 @@
           href: how-to-register-device-vscode.md
     - name: Installieren und Verwalten von IoT Edge
       items:
-        - name: Linux X64
+        - name: Linux
           href: how-to-install-iot-edge-linux.md
-        - name: Linux ARM32
-          href: how-to-install-iot-edge-linux-arm.md
-        - name: Windows X64
+        - name: Windows
           href: how-to-install-iot-edge-windows.md
+        - name: Linux-Container unter Windows
+          href: how-to-install-iot-edge-windows-with-linux.md
+        - name: Virtueller Windows Server-Computer
+          href: how-to-install-iot-edge-windows-server-vm.md
         - name: Virtueller Ubuntu-Computer
           href: how-to-install-iot-edge-ubuntuvm.md
+        - name: kubernetes
+          href: how-to-install-iot-edge-kubernetes.md
         - name: Aktualisieren der Runtimeversion
           href: how-to-update-iot-edge.md
     - name: Automatische Bereitstellung mit DPS
       items:
-        - name: Linux
-          href: how-to-auto-provision-simulated-device-linux.md
-        - name: Windows
-          href: how-to-auto-provision-simulated-device-windows.md
+        - name: TPM-Nachweis
+          items:
+            - name: Linux
+              href: how-to-auto-provision-simulated-device-linux.md
+            - name: Windows
+              href: how-to-auto-provision-simulated-device-windows.md
+        - name: Nachweis des symmetrischen Schlüssels
+          href: how-to-auto-provision-symmetric-keys.md
     - name: Entwickeln und Debuggen von benutzerdefinierten Modulen
       items:
-        - name: Visual Studio 2017
+        - name: "Visual Studio\_2019"
           href: how-to-visual-studio-develop-module.md
         - name: Visual Studio Code
           href: how-to-vs-code-develop-module.md
@@ -123,10 +163,12 @@
           href: how-to-deploy-monitor.md
         - name: Azure-Befehlszeilenschnittstelle
           href: how-to-deploy-monitor-cli.md
-    - name: Verwenden von Edge-Geräten als Gateways
+    - name: Verwenden von IoT Edge-Geräten als Gateways
       items:
         - name: Konfigurieren eines transparenten Gateways
           href: how-to-create-transparent-gateway.md
+        - name: Authentifizieren eines nachgeschalteten Geräts
+          href: how-to-authenticate-downstream-device.md
         - name: Verbinden eines nachgeschalteten Geräts
           href: how-to-connect-downstream-device.md
         - name: ModBus-Protokollgateway
@@ -137,6 +179,8 @@
       items:
         - name: Azure Blob Storage auf IoT Edge
           href: how-to-store-data-blob.md
+        - name: "Bereitstellen von Blob\_Storage-Modulen"
+          href: how-to-deploy-blob.md
     - name: Verwalten mit DevOps-Tools
       items:
         - name: Azure DevOps Projects
@@ -151,25 +195,27 @@
   items:
     - name: Lösungen
       items:
-        - name: IoT Solution Accelerators
-          href: /azure/iot-suite
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
+        - name: IoT Solution Accelerators
+          href: /azure/iot-accelerators
     - name: Plattformdienste
       items:
         - name: IoT Hub
           href: /azure/iot-hub
+        - name: "IoT\_Plug\_&\_Play"
+          href: /azure/iot-pnp
         - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
+        - name: IoT-Dienst-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Karten
           href: /azure/azure-maps
-        - name: Dienst-SDKs
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: Microsoft Edge
+    - name: IoT Edge
       items:
-        - name: IoT Edge
+        - name: Azure IoT Edge
           href: /azure/iot-edge
         - name: IoT-Geräte-SDKs
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

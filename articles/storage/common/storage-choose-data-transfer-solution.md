@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 4e2a182493b1e9de3d2ba9d586a9560e42fe0ecb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 838d65da90ec0daef69375e5a75bcb497a0c3512
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773434"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900406"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Auswählen einer Azure-Lösung für die Datenübertragung
 
@@ -63,6 +63,11 @@ Beantworten Sie die folgenden Fragen, um die Auswahl einer Datenübertragungslö
 - Suchen Sie nach kontinuierlicher, fortlaufender Datenübertragung?
 
     In diesem Fall verwenden Sie die Optionen in [Szenario 4: Periodische Datenübertragungen](storage-solution-periodic-data-transfer.md).
+ 
+
+## <a name="data-transfer-feature-in-azure-portal"></a>Datenübertragungsfunktion im Azure-Portal
+
+Sie können auch zu Ihrem Azure Storage-Konto im Azure-Portal wechseln und die Funktion **Datenübertragung** auswählen. Geben Sie die Netzwerkbandbreite in Ihrer Umgebung, die Größe der zu übertragenden Daten und die Häufigkeit der Datenübertragung an. Es werden Ihnen die optimalen Datenübertragungslösungen angezeigt, die den von Ihnen bereitgestellten Informationen entsprechen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -78,4 +83,4 @@ Beantworten Sie die folgenden Fragen, um die Auswahl einer Datenübertragungslö
 - Verwenden der REST-APIs zum Übertragen von Daten
 
     - [In .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)
+    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage)

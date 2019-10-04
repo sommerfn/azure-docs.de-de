@@ -4,38 +4,37 @@ description: Steigern Sie durch Filtern von Abfragen die Leistung beim Anfordern
 services: batch
 documentationcenter: .net
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: ff3e95a603b8f9a188c7839578cd12287935de90
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 37d34267220cbb7ceabfc823f6facd651969fbd4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918534"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095159"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Erstellen von Abfragen zum effizienten Auflisten von Batch-Ressourcen
 
-Hier erfahren Sie, wie Sie die Leistung Ihrer Azure Batch-Anwendung steigern, indem Sie die Datenmenge verringern, die vom Dienst zurückgegeben wird, wenn Sie Aufträge, Tasks, Computeknoten und andere Ressourcen mit der [Batch .NET][api_net]-Bibliothek abfragen.
+Hier erfahren Sie, wie Sie die Leistung Ihrer Azure Batch-Anwendung steigern, indem Sie die Datenmenge verringern, die vom Dienst zurückgegeben wird, wenn Sie Aufträge, Aufgaben, Computeknoten und andere Ressourcen mit der [Batch-Bibliothek für .NET][api_net] abfragen.
 
 Nahezu alle Batch-Anwendungen führen eine Überwachung oder eine andere Art von Vorgang aus, die den Batch-Dienst (häufig in regelmäßigen Abständen) abfragt. Wenn Sie etwa bestimmen möchten, ob bei einem Auftrag noch Aufgaben in der Warteschlange vorhanden sind, müssen Daten zu allen Aufgaben des Auftrags abgerufen werden. Wenn Sie den Status von Knoten im Pool ermitteln möchten, müssen Daten zu jedem Knoten im Pool abgerufen werden. In diesem Artikel wird erläutert, wie diese Abfragen auf möglichst effiziente Weise ausgeführt werden.
 
 > [!NOTE]
-> Der Batch-Dienst bietet spezielle API-Unterstützung für allgemeine Szenarios, in denen Tasks in einem Auftrag und Compute-Knoten in einem Batch-Pool gezählt werden. Statt dafür eine Listenabfrage zu verwenden, können Sie den Vorgänge [Get Task Counts][rest_get_task_counts] (Taskanzahl abrufen) und [List Pool Node Counts][rest_get_node_counts] (Poolknotenanzahl auflisten) aufrufen. Diese Vorgänge sind effizienter als eine Listenabfrage, geben jedoch eingeschränkte Informationen zurück. Weitere Informationen finden Sie unter [Monitor Batch solutions by counting tasks and nodes by state (Überwachen von Batch-Lösungen durch das Zählen von Tasks und Knoten nach Bundesstaat)](batch-get-resource-counts.md). 
+> Der Batch-Dienst bietet spezielle API-Unterstützung für allgemeine Szenarios, in denen Tasks in einem Auftrag und Compute-Knoten in einem Batch-Pool gezählt werden. Statt dafür eine Listenabfrage zu verwenden, können Sie die Vorgänge [Get Task Counts][rest_get_task_counts] (Aufgabenanzahl abrufen) und [List Pool Node Counts][rest_get_node_counts] (Poolknotenanzahl auflisten) aufrufen. Diese Vorgänge sind effizienter als eine Listenabfrage, geben jedoch eingeschränkte Informationen zurück. Weitere Informationen finden Sie unter [Monitor Batch solutions by counting tasks and nodes by state (Überwachen von Batch-Lösungen durch das Zählen von Tasks und Knoten nach Bundesstaat)](batch-get-resource-counts.md). 
 
 
 ## <a name="meet-the-detaillevel"></a>DetailLevel
 In einer Batch-Produktionsanwendung kann die Anzahl von Entitäten wie Aufträgen, Aufgaben und Computeknoten leicht in die Tausende gehen. Beim Anfordern von Informationen zu diesen Ressourcen muss häufig für jede Abfrage eine größere Menge von Daten den Weg vom Batch-Dienst zu Ihrer Anwendung zurücklegen. Durch Einschränken der Anzahl von Elementen und der Art der zurückgegebenen Informationen können Sie die Geschwindigkeit Ihrer Abfragen und damit die Leistung der Anwendung steigern.
 
-Der folgende [Batch .NET][api_net]-API-Codeausschnitt listet *alle* Aufgaben im Zusammenhang mit einem Auftrag sowie *alle* Eigenschaften der einzelnen Aufgaben auf:
+Der folgende [Batch .NET][api_net]-API-Codeausschnitt listet *jede* Aufgabe im Zusammenhang mit einem Auftrag sowie *alle* Eigenschaften der einzelnen Aufgaben auf:
 
 ```csharp
 // Get a collection of all of the tasks and all of their properties for job-001
@@ -65,7 +64,7 @@ Wenn der Auftrag wie in diesem Beispielszenario Tausende von Aufgaben umfasst, w
 > 
 
 ## <a name="filter-select-and-expand"></a>Filtern, Auswählen und Erweitern
-Die [Batch .NET][api_net]- und [Batch REST][api_rest]-APIs bieten die Möglichkeit, sowohl die Anzahl von Elementen, die in einer Liste zurückgegeben werden, als auch die Menge von Informationen für jedes Element zu reduzieren. Dazu geben Sie beim Ausführen von Listenabfragen Zeichenfolgen zum **Filtern**, **Auswählen** und **Erweitern** an.
+Die [Batch .NET][api_net]- und [Batch REST][api_rest]-APIs bieten die Möglichkeit, sowohl die Anzahl von Elementen, die in einer Liste zurückgegeben werden, als auch die Menge der für jedes Element zurückgegebenen Informationen zu reduzieren. Dazu geben Sie beim Ausführen von Listenabfragen Zeichenfolgen zum **Filtern**, **Auswählen** und **Erweitern** an.
 
 ### <a name="filter"></a>Filter
 Die Filterzeichenfolge ist ein Ausdruck, der die Anzahl der zurückgegebenen Elemente reduziert. Sie können beispielsweise die derzeit ausgeführten Aufgaben für einen Auftrag oder nur Computeknoten auflisten, die zum Ausführen von Aufgaben bereit sind.
@@ -89,7 +88,7 @@ Die Erweiterungszeichenfolge verringert die Anzahl der API-Aufrufe, die zum Abru
 * Das folgende Beispiel für eine Erweiterungszeichenfolge gibt an, dass für jedes Element in der Liste Statistikinformationen zurückgegeben werden sollen: `stats`.
 
 > [!NOTE]
-> Beim Erstellen dieser drei Typen von Abfragezeichenfolgen (Filtern, Auswählen, Erweitern) müssen Sie sicherstellen, dass die Namen und die Groß-/Kleinschreibung der Eigenschaften mit den entsprechenden REST-API-Elementen übereinstimmen. Wenn Sie beispielsweise mit der .NET-Klasse [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask) arbeiten, müssen Sie **state** anstelle von **State** angeben, obwohl die .NET-Eigenschaft [CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask.state) lautet. In den folgenden Tabellen finden Sie Eigenschaftszuordnungen zwischen der .NET- und der REST-API.
+> Beim Erstellen dieser drei Typen von Abfragezeichenfolgen (Filtern, Auswählen, Erweitern) müssen Sie sicherstellen, dass die Namen und die Groß-/Kleinschreibung der Eigenschaften mit den entsprechenden REST-API-Elementen übereinstimmen. Wenn Sie beispielsweise mit der .NET-Klasse [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) arbeiten, müssen Sie **state** anstelle von **State** angeben, obwohl die .NET-Eigenschaft [CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State) lautet. In den folgenden Tabellen finden Sie Eigenschaftszuordnungen zwischen der .NET- und der REST-API.
 > 
 > 
 
@@ -104,13 +103,13 @@ Die Erweiterungszeichenfolge verringert die Anzahl der API-Aufrufe, die zum Abru
 * Bei Angabe einer ungültigen Eigenschaft oder eines ungültigen Operators tritt der Fehler `400 (Bad Request)` auf.
 
 ## <a name="efficient-querying-in-batch-net"></a>Effizientes Abfragen in Batch .NET
-Innerhalb der [Batch .NET][api_net]-API wird die [ODATADetailLevel][odata]-Klasse zum Angeben von Filter-, Auswähl- und Erweiterungszeichenfolgen für Listenvorgänge verwendet. Die „ODataDetailLevel“-Klasse verfügt über drei öffentliche Zeichenfolgeneigenschaften, die im Konstruktor angegeben oder direkt für das Objekt festgelegt werden können. Das ODataDetailLevel-Objekt wird dann als Parameter an die verschiedenen Listenvorgänge wie [ListPools][net_list_pools], [ListJobs][net_list_jobs] oder [ListTasks][net_list_tasks] übergeben.
+Innerhalb der [Batch .NET][api_net]-API wird die [ODATADetailLevel][odata]-Klasse zum Angeben von Filter-, Auswähl- und Erweiterungszeichenfolgen für Listenvorgänge verwendet. Die „ODataDetailLevel“-Klasse verfügt über drei öffentliche Zeichenfolgeneigenschaften, die im Konstruktor angegeben oder direkt für das Objekt festgelegt werden können. Das „ODataDetailLevel“-Objekt wird dann als Parameter an die verschiedenen Listenvorgänge wie [ListPools][net_list_pools], [ListJobs][net_list_jobs] oder [ListTasks][net_list_tasks] übergeben.
 
 * [ODATADetailLevel][odata].[FilterClause][odata_filter]: Begrenzt die Anzahl der zurückgegebenen Elemente.
 * [ODATADetailLevel][odata].[SelectClause][odata_select]: Gibt an, welche Eigenschaftswerte mit jedem Element zurückgegeben werden sollen.
 * [ODATADetailLevel][odata].[ExpandClause][odata_expand]: Ruft Daten für alle Elemente in einem einzigen API-Aufruf statt mit separaten Aufrufen für jedes Element ab.
 
-Im folgenden Codeausschnitt wird die Batch .NET-API verwendet, um den Batch-Dienst effizient auf die Statistik zu einer bestimmten Gruppe von Pools abzufragen. In diesem Szenario verfügt der Batch-Benutzer über Test- und Produktionspools. Den Testpool-IDs ist das Präfix „test“ vorangestellt, und den Produktionspool-IDs ist das Präfix „prod“ vorangestellt. Im Codeausschnitt ist *myBatchClient* eine ordnungsgemäß initialisierte Instanz der [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient#microsoft_azure_batch_batchclient) -Klasse.
+Im folgenden Codeausschnitt wird die Batch .NET-API verwendet, um den Batch-Dienst effizient auf die Statistik zu einer bestimmten Gruppe von Pools abzufragen. In diesem Szenario verfügt der Batch-Benutzer über Test- und Produktionspools. Den Testpool-IDs ist das Präfix „test“ vorangestellt, und den Produktionspool-IDs ist das Präfix „prod“ vorangestellt. Im Codeausschnitt ist *myBatchClient* eine ordnungsgemäß initialisierte Instanz der [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) -Klasse.
 
 ```csharp
 // First we need an ODATADetailLevel instance on which to set the filter, select,
@@ -139,7 +138,7 @@ List<CloudPool> testPools =
 ```
 
 > [!TIP]
-> Eine mit Select- und Expand-Klauseln konfigurierte Instanz von [ODATADetailLevel][odata] kann auch an geeignete Get-Methoden (etwa [PoolOperations.GetPool](/dotnet/api/microsoft.azure.batch.pooloperations#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__)) übergeben werden, um die Menge der zurückgegebenen Daten einzuschränken.
+> Eine Instanz von [ODATADetailLevel][odata], die mit „Select“- und „Expand“-Klauseln konfiguriert wurde, kann auch an entsprechende „Get“-Methoden, z.B. [PoolOperations.GetPool](/dotnet/api/microsoft.azure.batch.pooloperations.getpool#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__) übergeben werden, um die Menge der zurückgegebenen Daten zu begrenzen.
 > 
 > 
 
@@ -147,14 +146,14 @@ List<CloudPool> testPools =
 Eigenschaftsnamen in Filter-, Auswähl- und Erweiterungszeichenfolgen *müssen* ihren Gegenstücken in der REST-API hinsichtlich Name und Groß-/Kleinschreibung entsprechen. Die folgenden Tabellen enthalten die Zuordnungen zwischen den .NET-APIs und ihren REST-API-Entsprechungen.
 
 ### <a name="mappings-for-filter-strings"></a>Zuordnungen für Filterzeichenfolgen
-* **.NET-Listenmethoden**: Jede der .NET-API-Methoden in dieser Spalte akzeptiert ein [ODATADetailLevel][odata]-Objekt als Parameter.
-* **REST-Listenanforderungen**: Jede mit dieser Spalte verknüpfte REST-API-Seite enthält eine Tabelle mit den Eigenschaften und Vorgängen, die in *Filterzeichenfolgen* zulässig sind. Diese Eigenschaftsnamen und Vorgänge werden verwendet, wenn Sie eine [ODATADetailLevel.FilterClause][odata_filter]-Zeichenfolge erstellen.
+* **.NET-Listenmethoden**: Jede der .NET API-Methoden in dieser Spalte akzeptiert ein [ODATADetailLevel][odata]-Objekt als Parameter.
+* **REST-Listenanforderungen**: Jede mit dieser Spalte verknüpfte REST-API-Seite enthält eine Tabelle mit den Eigenschaften und Vorgängen, die in *Filterzeichenfolgen* zulässig sind. Sie verwenden diese Eigenschaftsnamen und Vorgänge beim Erstellen einer [ODATADetailLevel.FilterClause][odata_filter]-Zeichenfolge.
 
 | .NET-Listenmethoden | REST-Listenanforderungen |
 | --- | --- |
 | [CertificateOperations.ListCertificates][net_list_certs] |[Auflisten der Zertifikate in einem Konto][rest_list_certs] |
 | [CloudTask.ListNodeFiles][net_list_task_files] |[Auflisten der einer Aufgabe zugeordneten Dateien][rest_list_task_files] |
-| [JobOperations.ListJobPreparationAndReleaseTaskStatus][net_list_jobprep_status] |[Auflisten des Status der Aufgaben zur Auftragsvorbereitung und -freigabe für einen Auftrag][rest_list_jobprep_status] |
+| [JobOperations.ListJobPreparationAndReleaseTaskStatus][net_list_jobprep_status] |[Auflisten des Status der Aufgaben zur Auftragsvorbereitung und Auftragsfreigabe für einen Auftrag][rest_list_jobprep_status] |
 | [JobOperations.ListJobs][net_list_jobs] |[Auflisten der Aufträge in einem Konto][rest_list_jobs] |
 | [JobOperations.ListNodeFiles][net_list_nodefiles] |[Auflisten der Dateien auf einem Knoten][rest_list_nodefiles] |
 | [JobOperations.ListTasks][net_list_tasks] |[Auflisten der einem Auftrag zugeordneten Aufgaben][rest_list_tasks] |
@@ -165,7 +164,7 @@ Eigenschaftsnamen in Filter-, Auswähl- und Erweiterungszeichenfolgen *müssen* 
 
 ### <a name="mappings-for-select-strings"></a>Zuordnungen für Auswählzeichenfolgen
 * **Batch .NET-Typen**: Batch .NET-API-Typen.
-* **REST-API-Entitäten**: Jede Seite in dieser Spalte enthält mindestens eine Tabelle mit den Namen der REST-API-Eigenschaften für den Typ. Diese Eigenschaftsnamen werden beim Erstellen von *Auswählzeichenfolgen* verwendet. Die gleichen Eigenschaftsnamen werden verwendet, wenn Sie eine [ODATADetailLevel.SelectClause][odata_select]-Zeichenfolge erstellen.
+* **REST-API-Entitäten**: Jede Seite in dieser Spalte enthält mindestens eine Tabelle mit den Namen der REST-API-Eigenschaften für den Typ. Diese Eigenschaftsnamen werden beim Erstellen von *Auswählzeichenfolgen* verwendet. Sie verwenden dieselben Eigenschaftsnamen, wenn Sie eine [ODATADetailLevel.SelectClause][odata_select]-Zeichenfolge erstellen.
 
 | Batch .NET-Typen | REST-API-Entitäten |
 | --- | --- |
@@ -177,9 +176,9 @@ Eigenschaftsnamen in Filter-, Auswähl- und Erweiterungszeichenfolgen *müssen* 
 | [CloudTask][net_task] |[Abrufen von Informationen zu einer Aufgabe][rest_get_task] |
 
 ## <a name="example-construct-a-filter-string"></a>Beispiel: Erstellen einer Filterzeichenfolge
-Ermitteln Sie beim Erstellen einer Filterzeichenfolge für [ODATADetailLevel.FilterClause][odata_filter] in der obigen Tabelle unter „Zuordnungen für Filterzeichenfolgen“ die passende REST-API-Dokumentationsseite für den gewünschten Listenvorgang. Sie finden die filterbaren Eigenschaften und die jeweils unterstützten Operatoren in der ersten mehrzeiligen Tabelle auf der entsprechenden Seite. Wenn Sie beispielsweise alle Aufgaben abrufen möchten, deren Exitcode ungleich Null war, gibt die Zeile zu [Auflisten der einem Auftrag zugeordneten Aufgaben][rest_list_tasks] die entsprechende Eigenschaftszeichenfolge und zulässigen Operatoren an:
+Ermitteln Sie beim Erstellen einer Filterzeichenfolge für [ODATADetailLevel.FilterClause][odata_filter] in der vorstehenden Tabelle unter „Zuordnungen für Filterzeichenfolgen“ die passende REST-API-Dokumentationsseite für den gewünschten Listenvorgang. Sie finden die filterbaren Eigenschaften und die jeweils unterstützten Operatoren in der ersten mehrzeiligen Tabelle auf der entsprechenden Seite. Wenn Sie beispielsweise alle Aufgaben abrufen möchten, deren Exitcode ungleich Null war, gibt die Zeile zu [Auflisten der einem Auftrag zugeordneten Aufgaben][rest_list_tasks] die entsprechende Eigenschaftszeichenfolge und zulässigen Operatoren an:
 
-| Eigenschaft | Zulässige Vorgänge | Type |
+| Eigenschaft | Zulässige Vorgänge | type |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
@@ -188,9 +187,9 @@ Daher lautet die Filterzeichenfolge zum Auflisten aller Aufgaben mit einem Exitc
 `(executionInfo/exitCode lt 0) or (executionInfo/exitCode gt 0)`
 
 ## <a name="example-construct-a-select-string"></a>Beispiel: Erstellen einer Auswählzeichenfolge
-Ziehen Sie beim Erstellen von [ODATADetailLevel.SelectClause][odata_select] die obige Tabelle unter „Zuordnungen für Auswählzeichenfolgen“ heran, und navigieren Sie zu der REST-API-Seite, die der Art der aufzulistenden Entität entspricht. Sie finden die auswählbaren Eigenschaften und die jeweils unterstützten Operatoren in der ersten mehrzeiligen Tabelle auf der entsprechenden Seite. Wenn Sie z.B. nur die ID und Befehlszeile für jede Aufgabe in einer Liste abrufen möchten, finden Sie diese Zeilen in der entsprechenden Tabelle unter [Abrufen von Informationen zu einer Aufgabe][rest_get_task]:
+Ziehen Sie beim Erstellen von [ODATADetailLevel.SelectClause][odata_select] die vorstehende Tabelle unter „Zuordnungen für Auswählzeichenfolgen“ heran, und navigieren Sie zu der REST-API-Seite, die der Art der aufzulistenden Entität entspricht. Sie finden die auswählbaren Eigenschaften und die jeweils unterstützten Operatoren in der ersten mehrzeiligen Tabelle auf der entsprechenden Seite. Wenn Sie z.B. nur die ID und Befehlszeile für jede Aufgabe in einer Liste abrufen möchten, finden Sie diese Zeilen in der entsprechenden Tabelle unter [Abrufen von Informationen zu einer Aufgabe][rest_get_task]:
 
-| Eigenschaft | Type | Notizen |
+| Eigenschaft | type | Notizen |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |
@@ -220,9 +219,9 @@ Sample complete, hit ENTER to continue...
 Wie anhand der verstrichenen Zeit zu sehen, können Sie durch eine Begrenzung der Eigenschaften und der Anzahl von zurückgegebenen Elementen die Antwortzeiten für Abfragen erheblich verkürzen. Sie finden dieses Beispielprojekt und weitere Beispielprojekte im [azure-batch-samples][github_samples]-Repository auf GitHub.
 
 ### <a name="batchmetrics-library-and-code-sample"></a>BatchMetrics-Bibliothek und Codebeispiel
-Zusätzlich zum obigen EfficientListQueries-Codebeispiel steht im GitHub-Repository [azure-batch-samples][github_samples] das Projekt [BatchMetrics][batch_metrics] zur Verfügung. Das BatchMetrics-Beispielprojekt veranschaulicht die effiziente Überwachung des Azure Batch-Auftragsstatus mithilfe der Batch-API.
+Zusätzlich zum vorstehenden „EfficientListQueries“-Codebeispiel steht im GitHub-Repository [azure-batch-samples][batch_metrics] das Projekt [BatchMetrics][github_samples] zur Verfügung. Das BatchMetrics-Beispielprojekt veranschaulicht die effiziente Überwachung des Azure Batch-Auftragsstatus mithilfe der Batch-API.
 
-Das [BatchMetrics][batch_metrics]-Beispiel enthält ein .NET-Klassenbibliotheksprojekt, das Sie in Ihre eigenen Projekte integrieren können, sowie ein einfaches Befehlszeilenprogramm zum Testen und Veranschaulichen der Verwendung der Bibliothek.
+Das [BatchMetrics][batch_metrics]-Beispiel enthält ein .NET-Klassenbibliotheksprojekt, das Sie in Ihre eigenen Projekte integrieren können, sowie ein einfaches Befehlszeilenprogramm zum Testen und Veranschaulichen der Bibliotheksverwendung.
 
 Die Beispielanwendung innerhalb des Projekts veranschaulicht folgende Vorgänge:
 

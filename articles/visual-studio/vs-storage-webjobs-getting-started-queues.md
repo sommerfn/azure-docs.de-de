@@ -3,7 +3,7 @@ title: Erste Schritte mit Queue Storage und verbundenen Visual Studio-Diensten (
 description: Erste Schritte mit Azure-Warteschlangenspeicher in einem WebJob-Projekt nach dem Herstellen einer Verbindung mit einem Speicherkonto mithilfe von verbundenen Visual Studio-Diensten.
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: 5c3ef267-2a67-44e9-ab4a-1edd7015034f
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0afed158f5a19f3d82a3953f828f2b5566a6d5ff
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999540"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69510791"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten (WebJob-Projekte)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -44,7 +44,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 Neben **string** kann der Parameter Folgendes sein: ein Bytearray, ein **CloudQueueMessage**-Objekt oder ein POCO-Objekt, das Sie definieren.
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
 Im folgenden Beispiel enthält die Warteschlangenmeldung JSON-Code für ein **BlobInformation**-Objekt, das eine Eigenschaft **BlobName** enthält. Das SDK deserialisiert das Objekt automatisch.
 
 ```csharp
@@ -190,7 +190,7 @@ Weitere Informationen finden Sie unter [Ordnungsgemäßes Herunterfahren von Web
 Um eine Funktion zu schreiben, die eine neue Warteschlangennachricht erstellt, verwenden Sie das **Queue** -Attribut. Wie bei **QueueTrigger**auch, übergeben Sie den Warteschlangennamen als Zeichenfolge, oder Sie können den [Namen der Warteschlange dynamisch festlegen](#how-to-set-configuration-options).
 
 ### <a name="string-queue-messages"></a>Zeichenfolgen-Warteschlangennachrichten
-Im folgenden nicht asynchronen Beispiel wird eine neue Warteschlangennachricht in der Warteschlange mit dem Namen "outputqueue" mit dem gleichen Inhalt wie die Warteschlangennachricht erstellt, die in der Warteschlange mit dem Namen "inputqueue" empfangen wird. (Verwenden Sie für asynchrone Funktionen **IAsyncCollector<T>** , wie weiter unten in diesem Abschnitt gezeigt.)
+Im folgenden nicht asynchronen Beispiel wird eine neue Warteschlangennachricht in der Warteschlange mit dem Namen "outputqueue" mit dem gleichen Inhalt wie die Warteschlangennachricht erstellt, die in der Warteschlange mit dem Namen "inputqueue" empfangen wird. (Verwenden Sie für asynchrone Funktionen **IAsyncCollector\<T>** , wie weiter unten in diesem Abschnitt gezeigt.)
 
 ```csharp
 public static void CreateQueueMessage(
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
 Zum Erstellen einer Warteschlangennachricht, die ein POCO-Objekt anstelle einer Zeichenfolge enthält, übergeben Sie den POCO-Typ als Ausgabeparameter an den **Queue** -Attributkonstruktor.
 
 ```csharp
@@ -216,7 +216,7 @@ public static void CreateQueueMessage(
 Das SDK serialisiert das Objekt automatisch an JSON. Es wird immer eine Warteschlangennachricht erstellt, selbst wenn das Objekt Null ist.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Erstellen mehrerer Nachrichten oder in asynchronen Funktionen
-Um mehrere Nachrichten zu erstellen, legen Sie den Parametertyp für die Ausgabewarteschlange auf **ICollector<T>** oder **IAsyncCollector<T>** fest, wie im folgenden Beispiel gezeigt.
+Um mehrere Nachrichten zu erstellen, legen Sie den Parametertyp für die Ausgabewarteschlange auf **ICollector\<T>** oder **IAsyncCollector\<T>** fest, wie im folgenden Beispiel gezeigt.
 
 ```csharp
 public static void CreateQueueMessages(
@@ -296,7 +296,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
 Für ein POCO-Objekt, das als JSON-Code in der Warteschlangenmeldung gespeichert wird, können Sie Platzhalter verwenden, mit denen Eigenschaften des Parameters **blobPath** des **Queue**-Attributs benannt werden. Sie können auch Metadateneigenschaftennamen der Warteschlange als Platzhalter verwenden. Siehe [Abrufen der Warteschlange oder von Metadaten der Warteschlangennachricht](#get-queue-or-queue-message-metadata).
 
 Das folgende Beispiel kopiert ein Blob in ein neues Blob mit einer anderen Erweiterung. Die Warteschlangennachricht ist ein **BlobInformation**-Objekt, das die Eigenschaften **BlobName** und **BlobNameWithoutExtension** enthält. Die Eigenschaftsnamen dienen als Platzhalter im Blobpfad für die **Blob** -Attribute.
@@ -342,7 +342,7 @@ Nachrichten, deren Inhalt bewirkt, dass bei einer Funktion ein Fehler auftritt, 
 ### <a name="automatic-poison-message-handling"></a>Automatische Behandlung von nicht verarbeitbaren Nachrichten
 Das SDK ruft eine Funktion bis zu fünfmal auf, um eine Warteschlangennachricht zu verarbeiten. Wenn der fünfte Versuch fehlschlägt, wird die Nachricht in eine Warteschlange für nicht verarbeitete Nachrichten verschoben. Hinweise zum Konfigurieren der maximalen Anzahl von erneuten Versuchen finden Sie unter [Gewusst wie: Festlegen von Konfigurationsoptionen](#how-to-set-configuration-options).
 
-Die Warteschlange für nicht verarbeitete Nachrichten weist den Namen " *{UrsprünglicherWarteschlangenname}*-poison" auf. Sie können eine Funktion schreiben, um Nachrichten aus der Warteschlange für nicht verarbeitete Nachrichten zu verarbeiten, indem Sie diese protokollieren oder eine Benachrichtigung senden, dass ein manueller Eingriff erforderlich ist.
+Die Warteschlange für nicht verarbeitete Nachrichten weist den Namen " *{UrsprünglicherWarteschlangenname}* -poison" auf. Sie können eine Funktion schreiben, um Nachrichten aus der Warteschlange für nicht verarbeitete Nachrichten zu verarbeiten, indem Sie diese protokollieren oder eine Benachrichtigung senden, dass ein manueller Eingriff erforderlich ist.
 
 Im folgenden Beispiel schlägt die **CopyBlob** -Funktion fehl, wenn eine Warteschlangennachricht den Namen eines Blobs enthält, der nicht vorhanden ist. In diesem Fall wird die Nachricht aus der Warteschlange "copyblobqueue" in die Warteschlange "copyblobqueue-poison" verschoben. **ProcessPoisonMessage** protokolliert dann die beschädigte Nachricht.
 
@@ -544,7 +544,7 @@ Im Dashboard des WebJobs SDK werden die letzten 100 Zeilen der Konsolenausgabe a
 
 ![Toggle Output](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-In einem fortlaufenden WebJob werden Anwendungsprotokolle in „/data/jobs/continuous/*{Webjobname}*/job_log.txt“ im Dateisystem der Web-App angezeigt.
+In einem fortlaufenden WebJob werden Anwendungsprotokolle in „/data/jobs/continuous/ *{Webjobname}* /job_log.txt“ im Dateisystem der Web-App angezeigt.
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

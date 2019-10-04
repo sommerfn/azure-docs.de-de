@@ -1,21 +1,21 @@
 ---
-title: 'Zusammenarbeit an der Wissensdatenbank: Qna Maker'
+title: 'Zusammenarbeit an der Wissensdatenbank: QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: QnA Maker ermöglicht mehreren Personen, an einer Wissensdatenbank zusammenzuarbeiten. Dieses Feature wird im Rahmen der rollenbasierten Zugriffssteuerung in Azure bereitgestellt.
 services: cognitive-services
-author: tulasim88
+author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 01/14/2019
-ms.author: tulasim
-ms.openlocfilehash: ca754f197a46fc41b6f1b432611a2177ec0afafa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.topic: conceptual
+ms.date: 08/20/2019
+ms.author: diberry
+ms.openlocfilehash: d9c91d54fb357807682cd57f46b04454e4e2cfec
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857038"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876668"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>Zusammenarbeiten an einer Wissensdatenbank
 
@@ -23,27 +23,27 @@ QnA Maker ermöglicht mehreren Personen, an einer Wissensdatenbank zusammenzuarb
 
 Führen Sie die folgenden Schritte aus, um Ihren QnA Maker-Dienst für andere freizugeben:
 
-1. Melden Sie sich im Azure-Portal an, und gehen Sie zu Ihrer QnA Maker-Ressource.
+1. Melden Sie sich am Azure-Portal an, und navigieren Sie zu Ihrer QnA Maker-Ressource.
 
     ![QnA Maker-Ressourcenliste](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
 
-2. Öffnen Sie die Registerkarte **Zugriffssteuerung (IAM)**.
+1. Öffnen Sie die Registerkarte **Zugriffssteuerung (IAM)** .
 
     ![IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
 
-3. Wählen Sie **Hinzufügen**.
+1. Wählen Sie **Hinzufügen**.
 
     ![Hinzufügen von IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
 
-4. Wählen Sie die Rolle **Besitzer** oder **Mitwirkender** aus. Durch die rollenbasierte Zugriffssteuerung können Sie keinen schreibgeschützten Zugriff gewähren. Die Rollen „Besitzer“ und „Mitwirkender“ haben Lese-/Schreibzugriffsrechte auf den QnA Maker-Dienst.
+1. Wählen Sie die Rolle **Besitzer** oder **Mitwirkender** aus. Durch die rollenbasierte Zugriffssteuerung können Sie keinen schreibgeschützten Zugriff gewähren. Die Rollen „Besitzer“ und „Mitwirkender“ haben Lese-/Schreibberechtigungen für den QnA Maker-Dienst.
 
     ![Hinzufügen einer IAM-Rolle in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 
-5. Geben Sie die E-Mail-Adresse der Person ein, für die Sie den Dienst freigeben möchten, und klicken Sie auf „Speichern“.
+1. Geben Sie die E-Mail-Adresse des Benutzers ein, und klicken Sie auf **Speichern**.
 
     ![Hinzufügen einer E-Mail-Adresse für IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
 
-Wenn sich eine Person, für die Sie Ihren QnA Maker-Dienst freigegeben haben, im [QnA Maker-Portal](https://qnamaker.ai) anmeldet, sieht sie nun alle Wissensdatenbanken in diesem Dienst.
+Wenn sich die Person, für die Sie Ihren QnA Maker-Dienst freigegeben haben, beim [QnA Maker-Portal](https://qnamaker.ai) anmeldet, sieht sie alle Wissensdatenbanken in diesem Dienst.
 
 Es ist nicht möglich, eine bestimmte Wissensdatenbank in einem QnA Maker-Dienst freizugeben. Wenn Sie eine differenzierte Zugriffssteuerung wünschen, verteilen Sie Ihre Wissensdatenbanken auf verschiedene QnA Maker-Dienste.
 

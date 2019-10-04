@@ -1,7 +1,6 @@
 ---
 title: Azure Storage-Lösungen für ML Services in HDInsight – Azure
 description: Lernen Sie die verschiedenen Speicheroptionen kennen, die mit ML Services in HDInsight zur Verfügung stehen.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 888cc9d894861c7d7b808500cd60bbed9faa05d7
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 8c1624ba6780fc45e3e663cadc032e253ce9545f
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309116"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67448873"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-Lösungen für ML Services in Azure HDInsight
 
@@ -95,7 +94,7 @@ Legen Sie den Namensknotenverweis im R-Code auf das Speicherkonto **storage2** f
 
 Alle Verzeichnis- und Dateiverweise zeigen jetzt auf das Speicherkonto `wasb://container2@storage2.blob.core.windows.net`. Dies ist der **Namensknoten**, den Sie angegeben haben.
 
-Sie müssen das Verzeichnis „/user/RevoShare/<SSH username>“ unter **storage2** wie folgt konfigurieren:
+Sie müssen das Verzeichnis `/user/RevoShare/<SSH username>` unter **storage2** wie folgt konfigurieren:
 
 
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user
@@ -170,6 +169,5 @@ Ein großer Vorteil von Azure Files besteht darin, dass die Dateifreigaben von a
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Übersicht über ML Services-Cluster in HDInsight](r-server-overview.md)
-* [Erste Schritte mit ML Services-Clustern in Apache Hadoop](r-server-get-started.md)
 * [Compute context options for ML Services on HDInsight](r-server-compute-contexts.md) (Computekontextoptionen für ML Services in HDInsight)
 * [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

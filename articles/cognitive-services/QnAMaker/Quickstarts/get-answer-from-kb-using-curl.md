@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 04/05/2019
+ms.topic: quickstart
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: ce2d39f3941030059cef329aa60e804a44d73a98
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b698b40546ee1655ebbef3980692ede6b51fc7f1
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263093"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803023"
 ---
 # <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>Schnellstart: Abrufen einer Antwort aus einer Wissensdatenbank mit cURL
 
@@ -34,7 +34,7 @@ Wenn Sie bereit sind, eine Antwort auf eine Frage aus Ihrer Wissensdatenbank zu 
 
 Wenn Ihre Wissensdatenbank veröffentlicht wird, werden auf der Seite **Veröffentlichen** die HTTP-Anforderungseinstellungen zum Generieren einer Antwort angezeigt. Die Registerkarte **CURL** zeigt die Einstellungen, die zum Generieren einer Antwort über das Befehlszeilentool [cURL](https://www.getpostman.com) erforderlich sind.
 
-[![Publish results (Ergebnisse veröffentlichen)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
+[![Veröffentlichen der Ergebnisse](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
 
 Um eine Antwort mit cURL zu generieren, führen Sie die folgenden Schritte aus:
 
@@ -52,7 +52,7 @@ Um eine Antwort mit cURL zu generieren, führen Sie die folgenden Schritte aus:
           "questions": [
             "How do I programmatically update my Knowledge Base?"
           ],
-          "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600",
+          "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update",
           "score": 100.0,
           "id": 18,
           "source": "Custom Editorial",
@@ -69,13 +69,15 @@ Um eine Antwort mit cURL zu generieren, führen Sie die folgenden Schritte aus:
 
 ## <a name="use-staging-endpoint-with-curl"></a>Verwenden des Stagingendpunkts mit cURL
 
-Wenn Sie eine Antwort vom Stagingendpunkt erhalten möchten, verwenden Sie den booleschen Abfragezeichenfolgen-Parameter `isTest` mit dem Wert `true`.
+Wenn Sie eine Antwort vom Stagingendpunkt erhalten möchten, verwenden Sie die `isTest`-Texteigenschaft.
 
-`isTest=true`
+```json
+isTest:true
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Die Veröffentlichungsseite enthält auch Informationen zum [Generieren einer Antwort](get-answer-from-kb-using-postman.md) mit Postman. 
 
 > [!div class="nextstepaction"]
-> [Abrufen einer wissensbasierten Antwort mit der GenerateAnswer-API und Metadaten](../How-to/metadata-generateanswer-usage.md)
+> [Verwenden von Metadaten beim Generieren einer Antwort](../How-to/metadata-generateanswer-usage.md)

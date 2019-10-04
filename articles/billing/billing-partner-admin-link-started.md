@@ -5,22 +5,22 @@ services: billing
 author: dhirajgandhi
 manager: dhgandhi
 ms.author: banders
-ms.date: 03/12/2018
+ms.date: 10/01/2019
 ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: ecbdf182fe2da7413e6d27ef5775dbaa7ad60806
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 00b44b62e5ce666a8cd6d4b02270e6d9de6897e8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270182"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719827"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
-Als Partner können Sie die Auswirkungen Ihrer Kundenbindungen nachverfolgen. Sie können Ihre Partner-ID mit den Konten verknüpfen, die zum Verwalten der Ressourcen eines Kunden verwendet werden.
+Microsoft-Partner stellen Dienste bereit, die Kunden beim Erreichen ihrer Geschäftsziele und der Ziele beim Einsatz von Microsoft-Produkten unterstützen. Wenn die Partner Azure-Dienste im Auftrag des Kunden verwalten, konfigurieren und unterstützen, benötigen sie als Benutzer Zugriff auf die Umgebung des Kunden. Mit dem Partnerzuordnungstyp „Partner Admin Link“ können Partner Ihre Partnernetzwerk-ID mit den für die Bereitstellung von Diensten verwendeten Anmeldeinformationen verknüpfen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -54,32 +54,32 @@ Wenn Sie Zugriff auf die Ressourcen des Kunden haben, können Sie Ihre Microsoft
 
 ### <a name="use-powershell-to-link-to-a-new-partner-id"></a>Verknüpfen einer neuen Partner-ID mit PowerShell
 
-1. Installieren Sie das PowerShell-Modul [AzureRM.ManagementPartner](https://www.powershellgallery.com/packages/AzureRM.ManagementPartner).
+1. Installieren Sie das PowerShell-Modul [Az.ManagementPartner](https://www.powershellgallery.com/packages/Az.ManagementPartner/).
 
 2. Melden Sie sich entweder mit dem Benutzerkonto oder mit dem Dienstprinzipal beim Mandanten des Kunden an. Weitere Informationen finden Sie unter [Anmelden mit PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
- 
+
    ```azurepowershell-interactive
-    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
+    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
 3. Verknüpfen Sie die neue Partner-ID. Die Partner-ID ist die [Microsoft Partner Network](https://partner.microsoft.com/)-ID Ihrer Organisation.
 
     ```azurepowershell-interactive
-    C:\> new-AzureRmManagementPartner -PartnerId 12345 
+    C:\> new-AzManagementPartner -PartnerId 12345
     ```
 
 #### <a name="get-the-linked-partner-id"></a>Abrufen der verknüpften Partner-ID
 ```azurepowershell-interactive
-C:\> get-AzureRmManagementPartner 
+C:\> get-AzManagementPartner
 ```
 
 #### <a name="update-the-linked-partner-id"></a>Aktualisieren der verknüpften Partner-ID
 ```azurepowershell-interactive
-C:\> Update-AzureRmManagementPartner -PartnerId 12345 
+C:\> Update-AzManagementPartner -PartnerId 12345
 ```
 #### <a name="delete-the-linked-partner-id"></a>Löschen der verknüpften Partner-ID
 ```azurepowershell-interactive
-C:\> remove-AzureRmManagementPartner -PartnerId 12345 
+C:\> remove-AzManagementPartner -PartnerId 12345
 ```
 
 ### <a name="use-the-azure-cli-to-link-to-a-new-partner-id"></a>Verknüpfen einer neuen Partner-ID mit der Azure-Befehlszeilenschnittstelle
@@ -87,13 +87,13 @@ C:\> remove-AzureRmManagementPartner -PartnerId 12345
 
     ```azurecli-interactive
     C:\ az extension add --name managementpartner
-    ``` 
+    ```
 
 2. Melden Sie sich entweder mit dem Benutzerkonto oder mit dem Dienstprinzipal beim Mandanten des Kunden an. Weitere Informationen finden Sie unter [Anmelden mit der Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
     ```azurecli-interactive
     C:\ az login --tenant <tenant>
-    ``` 
+    ```
 
 3. Verknüpfen Sie die neue Partner-ID. Die Partner-ID ist die [Microsoft Partner Network](https://partner.microsoft.com/)-ID Ihrer Organisation.
 
@@ -104,17 +104,17 @@ C:\> remove-AzureRmManagementPartner -PartnerId 12345
 #### <a name="get-the-linked-partner-id"></a>Abrufen der verknüpften Partner-ID
 ```azurecli-interactive
 C:\ az managementpartner show
-``` 
+```
 
 #### <a name="update-the-linked-partner-id"></a>Aktualisieren der verknüpften Partner-ID
 ```azurecli-interactive
 C:\ az managementpartner update --partner-id 12345
-``` 
+```
 
 #### <a name="delete-the-linked-partner-id"></a>Löschen der verknüpften Partner-ID
 ```azurecli-interactive
 C:\ az managementpartner delete --partner-id 12345
-``` 
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -136,16 +136,16 @@ Die Verknüpfung zwischen der Partner-ID und dem Konto erfolgt für jeden Kunden
 
 **Können andere Partner oder Kunden die Verknüpfung mit der Partner-ID bearbeiten oder entfernen?**
 
-Die Verknüpfung wird auf Benutzerkontoebene zugeordnet. Nur Sie können die Verknüpfung mit der Partner-ID bearbeiten oder entfernen. Weder der Kunde noch andere Partner können die Verknüpfung mit der Partner-ID ändern. 
+Die Verknüpfung wird auf Benutzerkontoebene zugeordnet. Nur Sie können die Verknüpfung mit der Partner-ID bearbeiten oder entfernen. Weder der Kunde noch andere Partner können die Verknüpfung mit der Partner-ID ändern.
 
 
 **Welche MPN-ID muss ich verwenden, wenn mein Unternehmen über mehrere MPN-IDs verfügt?**
 
-Sie können jede gültige MPN-ID außer der MPN-ID der virtuellen Organisation (MPN V-Org ID) verwenden. Die meisten Partner verwenden die MPN-ID für die geografische Region, in der sich der Kunde befindet oder die Dienste bereitgestellt werden.
+Standortbezogene Partnerkonten und die zugehörigen MPN-IDs sollten zum Verknüpfen der Partner-ID verwendet werden.  Unter [Partnerkonten](https://docs.microsoft.com/partner-center/account-structure) finden Sie weitere Informationen hierzu.
 
 **Wo finde ich die beeinflusste Umsatzberichterstattung für die verknüpfte Partner-ID?**
 
-Sie finden die beeinflusste Umsatzberichterstattung unter [Dashboard „My Insights“](https://partner.microsoft.com/membership/reports/myinsights). Sie müssen „Partner Admin Link“ als Partnerzuordnungstyp auswählen.
+Berichte zur Cloudproduktleistung stehen für Partner im Partner Center unter [Dashboard „My Insights“](https://partner.microsoft.com/membership/reports/myinsights) zur Verfügung. Sie müssen „Partner Admin Link“ als Partnerzuordnungstyp auswählen.
 
 **Warum wird mein Kunde in den Berichten nicht angezeigt?**
 
@@ -158,4 +158,3 @@ Der Kunde wird aus folgenden Gründen in den Berichten nicht angezeigt:
 **Funktioniert das Verknüpfen der Partner-ID mit Azure Stack?**
 
 Ja, Sie können Ihre Partner-ID mit Azure Stack verknüpfen.
-

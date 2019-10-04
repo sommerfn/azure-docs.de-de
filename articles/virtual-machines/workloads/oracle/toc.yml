@@ -1,35 +1,38 @@
-items:
 - name: Übersicht
   items:
-  - name: Überlegungen zu virtuellen Oracle-Computern
-    href: oracle-considerations.md
+    - name: Übersicht über Oracle-Lösungen
+      href: oracle-overview.md
+    - name: Lösungen auf virtuellen Azure-Computern
+      href: oracle-vm-solutions.md
+    - name: 'Lösungen mit OCI: Vorschauversion'
+      href: oracle-oci-overview.md
 - name: Schnellstarts
   items:
-  - name: Erstellen einer Oracle Database
-    href: oracle-database-quick-create.md
+    - name: Erstellen einer Oracle Database
+      href: oracle-database-quick-create.md
 - name: Lernprogramme
   items:
-  - name: Konfigurieren von Oracle ASM
-    href: configure-oracle-asm.md
-  - name: Konfigurieren von Oracle DataGuard
-    href: configure-oracle-dataguard.md
-  - name: Konfigurieren von Oracle GoldenGate
-    href: configure-oracle-golden-gate.md
+    - name: Konfigurieren von Oracle ASM
+      href: configure-oracle-asm.md
+    - name: Konfigurieren von Oracle Data Guard
+      href: configure-oracle-dataguard.md
+    - name: Konfigurieren von Oracle GoldenGate
+      href: configure-oracle-golden-gate.md
 - name: Konzepte
   items:
-  - name: Zusammenstellen einer Oracle Database
-    href: oracle-design.md
-  - name: Sicherungsstrategie für Oracle Database
-    href: oracle-backup-recovery.md
-  - name: Notfallwiederherstellungsoptionen für Oracle
-    href: oracle-disaster-recovery.md
+    - name: Architekturen von Oracle-Anwendungen
+      href: oracle-oci-applications.md
+    - name: Zusammenstellen einer Oracle Database
+      href: oracle-design.md
+    - name: Sicherungsstrategie für Oracle Database
+      href: oracle-backup-recovery.md
+    - name: Notfallwiederherstellungsoptionen für Oracle
+      href: oracle-disaster-recovery.md
+- name: Anleitungen
+  items:
+    - name: 'Verbinden von Azure und OCI: Vorschau'
+      href: configure-azure-oci-networking.md
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 9c8aba887e728904aed51d3db2db5bb02c03d7b8
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340607"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'

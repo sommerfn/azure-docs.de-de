@@ -4,22 +4,22 @@ description: Enthält eine Übersicht über die Speicherung von Konfigurationsda
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
-manager: balans
+manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.devlang: na
 ms.topic: overview
 ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 352bc20bb4082dd14b810a6afe85653cfd67e7e1
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: c7a7e7994ef5e16640f59efdc672f6793bc4f18d
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224468"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67706469"
 ---
-# <a name="key-value-store"></a>Schlüssel-Wert-Speicherung
+# <a name="keys-and-values"></a>Schlüssel und Werte
 
 Azure App Configuration speichert Konfigurationsdaten als Schlüssel-Wert-Paare. Schlüssel-Wert-Paare sind eine einfache und flexible Methode zur Darstellung verschiedener Arten von Anwendungseinstellungen, mit denen Entwickler vertraut sind.
 
@@ -27,7 +27,7 @@ Azure App Configuration speichert Konfigurationsdaten als Schlüssel-Wert-Paare.
 
 Schlüssel dienen als Name für Schlüssel-Wert-Paare und werden zum Speichern und Abrufen von entsprechenden Werten verwendet. Es ist eine häufige Vorgehensweise, Schlüssel mit einem Trennzeichen (z. B. `/` oder `:`) in einem hierarchischen Namespace zu organisieren. Verwenden Sie hierbei eine Konvention, die für Ihre Anwendung am besten geeignet ist. Bei App Configuration werden Schlüssel als Ganzes behandelt. Sie werden nicht analysiert, um zu ermitteln, wie ihre Namen strukturiert sind, und es werden auch keine Regeln dafür erzwungen.
 
-Bei der Verwendung des Konfigurationsspeichers in Anwendungsframeworks werden unter Umständen bestimmte Benennungsschemas für Schlüssel-Wert-Paare vorgegeben. Für das Spring Cloud-Framework von Java werden beispielsweise `Environment`-Ressourcen definiert, die Einstellungen für eine Spring-Anwendung für die Parametrisierung durch Variablen, z. B. *application name* und *profile* bereitstellen. Schlüssel für Spring Cloud-bezogene Konfigurationsdaten beginnen normalerweise mit diesen beiden Elementen, die durch ein Trennzeichen getrennt sind.
+Bei Verwendung von Konfigurationsdaten in Anwendungsframeworks sind möglicherweise bestimmte Benennungsschemas für Schlüssel-Wert-Paare vorgegeben. Für das Spring Cloud-Framework von Java werden beispielsweise `Environment`-Ressourcen definiert, die Einstellungen für eine Spring-Anwendung für die Parametrisierung durch Variablen, z. B. *application name* und *profile* bereitstellen. Schlüssel für Spring Cloud-bezogene Konfigurationsdaten beginnen normalerweise mit diesen beiden Elementen, die durch ein Trennzeichen getrennt sind.
 
 Für in App Configuration gespeicherte Schlüssel wird die Groß-/Kleinschreibung beachtet, und es handelt sich um Unicode-basierte Zeichenfolgen. *app1* und *App1* sind in einem App-Konfigurationsspeicher zwei einzelne Schlüssel. Beachten Sie dies, wenn Sie in einer Anwendung Konfigurationseinstellungen verwenden, da für Konfigurationsschlüssel in einigen Frameworks die Groß-/Kleinschreibung nicht beachtet wird. Vom ASP.NET Core-Konfigurationssystem werden Schlüssel beispielsweise als Zeichenfolgen ohne Berücksichtigung der Groß-/Kleinschreibung behandelt. Um beim Abfragen von App Configuration in einer ASP.NET Core-Anwendung unvorhersehbares Verhalten zu vermeiden, verwenden Sie keine Schlüssel, die sich nur anhand der Groß-/Kleinschreibung unterscheiden.
 
@@ -45,29 +45,27 @@ Sie können Schlüssel in App Configuration auf viele verschiedene Arten hierarc
 
 Hier sind einige Beispiele dafür angegeben, wie Sie Ihre Schlüsselnamen in einer Hierarchie strukturieren können:
 
-* Basierend auf Umgebungen
-
-        AppName:Test:DB:Endpoint
-        AppName:Staging:DB:Endpoint
-        AppName:Production:DB:Endpoint
-
 * Basierend auf Komponentendiensten
 
-        AppName:Service1:Test:DB:Endpoint
-        AppName:Service1:Staging:DB:Endpoint
-        AppName:Service1:Production:DB:Endpoint
-        AppName:Service2:Test:DB:Endpoint
-        AppName:Service2:Staging:DB:Endpoint
-        AppName:Service2:Production:DB:Endpoint
+        AppName:Service1:ApiEndpoint
+        AppName:Service2:ApiEndpoint
 
 * Basierend auf Bereitstellungsregionen
 
-        AppName:Production:Region1:DB:Endpoint
-        AppName:Production:Region2:DB:Endpoint
+        AppName:Region1:DbEndpoint
+        AppName:Region2:DbEndpoint
+
+### <a name="label-keys"></a>Bezeichnen von Schlüsseln
+
+Schlüsselwerte in App Configuration können optional über das Attribut „label“ (Bezeichnung) verfügen. Bezeichnungen werden genutzt, um zwischen Schlüsselwerten mit demselben Schlüssel zu unterscheiden. Ein Schlüssel *app1* mit den Bezeichnungen *A* und *B* steht in einem App-Konfigurationsspeicher für zwei separate Schlüssel. Standardmäßig ist die Bezeichnung für einen Schlüsselwert leer oder `null`.
+
+Eine Bezeichnung ist praktisch zum Erstellen von Varianten eines Schlüssels. Mit Bezeichnungen werden häufig mehrere Umgebungen für den gleichen Schlüssel angegeben:
+
+    Key = AppName:DbEndpoint & Label = Test
+    Key = AppName:DbEndpoint & Label = Staging
+    Key = AppName:DbEndpoint & Label = Production
 
 ### <a name="version-key-values"></a>Versionsverwaltung von Schlüsselwerten
-
-Schlüsselwerte in App Configuration können optional über das Attribut „label“ (Bezeichnung) verfügen. Bezeichnungen werden genutzt, um zwischen Schlüsselwerten mit demselben Schlüssel zu unterscheiden. Ein Schlüssel *app1* mit den Bezeichnungen *v1* und *v2* steht in einem App-Konfigurationsspeicher für zwei separate Schlüsselwerte. Standardmäßig ist die Bezeichnung für einen Schlüsselwert leer oder `null`.
 
 App Configuration versieht Schlüsselwerte nicht automatisch mit Versionsangaben, wenn sie geändert werden. Verwenden Sie Bezeichnungen als Möglichkeit zum Erstellen von mehreren Versionen eines Schlüsselwerts. Beispielsweise können Sie eine Zahl einer Anwendungsversion oder eine Git-Commit-ID in Bezeichnungen eingeben, um Schlüsselwerte zu identifizieren, die einem bestimmten Softwarebuild zugeordnet sind.
 
@@ -96,7 +94,7 @@ Sie können auch die folgenden Bezeichnungsmuster verwenden:
 | `label=1.0.*` | Übereinstimmung mit Bezeichnungen, die mit **1.0.** beginnen |
 | `label=*.0.0` | Übereinstimmung mit Bezeichnungen, die auf **.0.0** enden |
 | `label=*.0.*` | Übereinstimmung mit Bezeichnungen, die **.0.** enthalten |
-| `label=%00,1.0.0` | Übereinstimmung mit den Bezeichnungen `null` oder **1.0.1**, auf fünf CSVs beschränkt |
+| `label=%00,1.0.0` | Übereinstimmung mit den Bezeichnungen `null` oder **1.0.0**, auf fünf CSVs beschränkt |
 
 ## <a name="values"></a>Werte
 
@@ -106,4 +104,5 @@ In einem App-Konfigurationsspeicher gespeicherte Konfigurationsdaten, was alle S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Konzept: Point-in-Time-Momentaufnahme](concept-point-time-snapshot.md)  
+* [Point-in-Time-Momentaufnahme](./concept-point-time-snapshot.md)  
+* [Funktionsverwaltung](./concept-feature-management.md)  

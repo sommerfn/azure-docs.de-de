@@ -1,0 +1,108 @@
+---
+title: Was ist ein Arbeitsbereich?
+titleSuffix: Azure Machine Learning
+description: Der Arbeitsbereich ist die Ressource der obersten Ebene für Azure Machine Learning. Der Verlauf aller Trainingsläufe wird gespeichert, z. B. Protokolle, Metriken, Ausgabe und eine Momentaufnahme Ihrer Skripts. Anhand dieser Informationen ermitteln Sie, welcher Trainingslauf das beste Modell ergibt.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: core
+ms.topic: conceptual
+ms.author: sgilley
+author: sdgilley
+ms.date: 08/06/2019
+ms.openlocfilehash: de215502f1ecb55bc331f29057a4f7c3f30b0132
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720164"
+---
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
+
+Der Arbeitsbereich ist die Ressource der obersten Ebene für Azure Machine Learning und ein zentraler Ort für die Arbeit mit allen Artefakten, die Sie während der Nutzung von Azure Machine Learning erstellen.  Im Arbeitsbereich wird der Verlauf aller Trainingsläufe gespeichert, einschließlich Protokollen, Metriken, Ausgabe und einer Momentaufnahme Ihrer Skripts. Anhand dieser Informationen ermitteln Sie, welcher Trainingslauf das beste Modell ergibt.  
+
+Sobald Sie ein fertiges Modell haben, registrieren Sie es im Arbeitsbereich. Anschließend verwenden Sie das registrierte Modell und die Bewertungsskripts, um das Modell in Azure Container Instances, in Azure Kubernetes Service oder in einem FPGA (Field Programmable Gate Array) als REST-basierten HTTP-Endpunkt bereitzustellen. Sie können das Modell auch als Modul auf einem Azure IoT Edge-Gerät bereitstellen.
+
+## <a name="taxonomy"></a>Taxonomie 
+
+Das folgende Diagramm enthält eine Taxonomie des Arbeitsbereichs:
+
+[![Taxonomie des Arbeitsbereichs](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+
+In dem Diagramm sind die folgenden Komponenten eines Arbeitsbereichs dargestellt:
+
++ Ein Arbeitsbereich kann [Notebook VMs](tutorial-1st-experiment-sdk-setup.md) enthalten. Diese sind Cloudressourcen, die mit der Python-Umgebung konfiguriert sind, die zum Ausführen von Azure Machine Learning erforderlich ist.
++ [Benutzerrollen](how-to-assign-roles.md) ermöglichen es Ihnen, Ihren Arbeitsbereich für andere Benutzer, Teams oder Projekte freizugeben.
++ [Computeziele](concept-azure-machine-learning-architecture.md#compute-targets) werden verwendet, um Ihre Experimente auszuführen.
++ Wenn Sie den Arbeitsbereich erstellen, werden auch [zugeordnete Ressourcen](#resources) für Sie erstellt.
++ [Experimente](concept-azure-machine-learning-architecture.md#experiments) sind Trainingsläufe (Trainingsausführungen), mit denen Sie Ihre Modelle erstellen.  Experimente können Sie erstellen und ausführen über
+    + Das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
+    + Der Abschnitt zu [automatisierten Machine Learning-Experimenten (Vorschauversion)](how-to-create-portal-experiments.md) im Azure-Portal oder der Landing Page Ihres Arbeitsbereichs (Vorschauversion).
+    + Die [grafische Benutzeroberfläche (Vorschau)](ui-concept-visual-interface.md).
++ [Pipelines](concept-azure-machine-learning-architecture.md#ml-pipelines) sind wiederverwendbare Workflows zum Trainieren und erneuten Trainieren Ihres Modells.
++ [Datasets](concept-azure-machine-learning-architecture.md#datasets-and-datastores) vereinfachen die Verwaltung der Daten, die Sie zum Modelltraining und zur die Pipelineerstellung verwenden.
++ Nachdem Sie über ein Modell verfügen, das Sie bereitstellen möchten, können Sie ein registriertes Modell erstellen.
++ Verwenden Sie das registrierte Modell und ein Bewertungsskript, um eine [Bereitstellung](concept-azure-machine-learning-architecture.md#deployment) zu erstellen.
+
+## <a name="tools-for-workspace-interaction"></a>Tools zum Arbeiten mit Ihrem Arbeitsbereich
+
+Sie können auf folgende Arten mit Ihrem Arbeitsbereich arbeiten:
+
++ Im Web:
+    + Das [Azure-Portal](https://portal.azure.com)
+    + Die [Landing Page des Arbeitsbereichs (Vorschauversion)](https://ml.azure.com)
+    + Die [grafische Benutzeroberfläche (Vorschau)](ui-concept-visual-interface.md)
++ In Python über das Azure Machine Learning [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
++ Über die Befehlszeile mit der [CLI-Erweiterung](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli) für Azure Machine Learning
+
+## <a name="machine-learning-with-a-workspace"></a>Maschinelles Lernen mit einem Arbeitsbereich
+
+Für Aufgaben für maschinelles Lernen werden Artefakte aus Ihrem Arbeitsbereich gelesen oder in diesen geschrieben. 
+
++ Ausführen eines Experiments, um ein Modell zu trainieren: Die Ergebnisse der Experimentausführung werden in den Arbeitsbereich geschrieben.
++ Verwenden von automatisiertem ML, um ein Modell zu trainieren: Die Trainingsergebnisse werden in den Arbeitsbereich geschrieben.
++ Registrieren eines Modells im Arbeitsbereich.
++ Bereitstellen eines Modells: Das registrierte Modell wird verwendet, um eine Bereitstellung zu erstellen.
++ Erstellen und Ausführen von wiederverwendbaren Workflows.
++ Anzeigen von Machine Learning-Artefakten, z. B. Experimente, Pipelines, Modelle, Bereitstellungen.
++ Nachverfolgen und Überwachen von Modellen.
+
+## <a name="workspace-management"></a>Arbeitsbereichsverwaltung
+
+Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
+
+| Arbeitsbereichsverwaltungsaufgabe   | Portal              | SDK        | Befehlszeilenschnittstelle (CLI)        |
+|---------------------------|------------------|------------|------------|
+| Erstellen eines Arbeitsbereichs        | **&check;**     | **&check;** | **&check;** |
+| Erstellen und Verwalten von Computeressourcen    | **&check;**   | **&check;** |  **&check;**   |
+| Verwalten des Arbeitsbereichszugriffs    | **&check;**   | |  **&check;**    |
+| Erstellen einer Notebook-VM | **&check;**   | |     |
+
+## <a name='create-workspace'></a> Erstellen eines Arbeitsbereichs
+
+Es gibt mehrere Möglichkeiten zum Erstellen eines Arbeitsbereichs.
+
+* Im [Azure-Portal](how-to-manage-workspace.md) steht eine Point-and-Click-Benutzeroberfläche zur Verfügung, über die Sie die einzelnen Schritte ausführen können.
+* Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace), um ohne weitere Vorbereitung einen Arbeitsbereich auf der Grundlage von Python-Skripts oder Jupiter Notebooks zu erstellen.
+* Nutzen Sie eine [Azure Resource Manager-Vorlage](how-to-create-workspace-template.md) oder die [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md), wenn Sie die Erstellung automatisieren oder mit Unternehmenssicherheitsstandards anpassen müssen.
+* Verwenden Sie die [VS Code-Erweiterung](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code), wenn Sie mit Visual Studio Code arbeiten.
+
+## <a name="resources"></a> Zugeordnete Ressourcen
+
+Wenn Sie einen neuen Arbeitsbereich erstellen, werden darin automatisch mehrere Azure-Ressourcen erstellt, die vom Arbeitsbereich verwendet werden:
+
++ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Registriert die Docker-Container, die Sie während des Trainings und bei der Modellbereitstellung verwenden. Um Kosten zu minimieren, wird ACR **verzögert geladen**, bis Bereitstellungsimages erstellt sind.
++ [Azure Storage-Konto](https://azure.microsoft.com/services/storage/): Wird als Standarddatenspeicher für den Arbeitsbereich verwendet.  Hier werden auch Jupyter-Notebooks gespeichert, die mit Ihren Notebook-VMs verwendet werden.
++ [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): Speichert Überwachungsinformationen zu Ihren Modellen.
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): Speichert Geheimnisse, die von Computezielen verwendet werden, sowie andere vertrauliche Informationen, die vom Arbeitsbereich benötigt werden.
+
+> [!NOTE]
+> Neben dem Erstellen neuer Versionen können Sie auch vorhandene Azure-Dienste verwenden.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Informationen zu den ersten Schritten mit Azure Machine Learning finden Sie unter:
+
++ [Azure Machine Learning – Übersicht](overview-what-is-azure-ml.md)
++ [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md)
++ [Verwalten eines Arbeitsbereichs](how-to-manage-workspace.md)
++ [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning-Dienst](tutorial-train-models-with-aml.md)

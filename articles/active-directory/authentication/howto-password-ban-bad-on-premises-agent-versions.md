@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60ce66b079942944176540826c7f3e7a91b070d2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c024954053588537ac3363703876f716a38f41d9
+ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58861861"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67702948"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Versionsverlauf des Azure AD-Kennwortschutz-Agents
 
@@ -38,7 +38,7 @@ Veröffentlichungsdatum: 13.3.2019
   * Die Daten zur Softwareversion und zum Azure-Mandanten sind nur für DC-Agents und Proxys verfügbar, die mit Version 1.2.116.0 oder höher ausgeführt werden.
   * Die Daten des Azure-Mandanten können erst angezeigt werden, nachdem eine erneute Registrierung (oder Erneuerung) des Proxys oder der Gesamtstruktur erfolgt ist.
 * Für den Proxydienst ist nun die Installation von .NET 4.7 erforderlich.
-  * .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Wenn dies nicht der Fall ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
+  * .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Wenn dies nicht der Fall ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
   * Auf Server Core-Systemen muss möglicherweise das Flag „/q“ an das .NET 4.7-Installationsprogramm übergeben werden, damit dieses erfolgreich ausgeführt werden kann.
 * Der Proxydienst unterstützt jetzt das automatische Upgrade. Für das automatische Upgrade wird der Microsoft Azure AD Connect Agent Updater-Dienst verwendet, der zusammen mit dem Proxydienst installiert wird. Das automatische Upgrade ist standardmäßig aktiviert.
 * Das automatische Upgrade kann mithilfe des Cmdlets „Set-AzureADPasswordProtectionProxyConfiguration“ aktiviert und deaktiviert werden. Die aktuelle Einstellung kann mithilfe des Cmdlets „Get-AzureADPasswordProtectionProxyConfiguration“ abgefragt werden.

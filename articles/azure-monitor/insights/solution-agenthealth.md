@@ -7,18 +7,18 @@ author: MGoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
-ms.service: operations-management-suite
+ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e9e27e224e42bf3f65fadcac22210fda314445fa
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426221"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67665998"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Lösung für die Agent-Integritätsdiagnose in Azure Monitor
 Die Agent-Integritätsdiagnose-Lösung in Azure bietet Ihnen für alle direkt an den Log Analytics-Arbeitsbereich in Azure Monitor oder eine mit Azure Monitor verbundene System Center Operations Manager-Verwaltungsgruppe berichtende Agents, die nicht reagieren und Betriebsdaten übermitteln, Einblicke in die Ursachen.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
@@ -63,7 +63,7 @@ Klicken Sie auf die Kachel **Agent-Integrität**, um das Dashboard **Agent-Integ
 | Verteilung der Agents nach Version | Eine Partition mit den unterschiedlichen Agent-Versionen, die in Ihrer Umgebung installiert sind, und der jeweiligen Anzahl.|
 | Verteilung der Agents nach Agent-Kategorie | Eine Partition mit den unterschiedlichen Agent-Kategorien, die Heartbeat-Ereignisse senden: direkte Agents, OpsMgr-Agents oder der OpsMgr Management Server.|
 | Verteilung nach Verwaltungsgruppe | Eine Partition mit den unterschiedlichen Operations Manager-Verwaltungsgruppen in Ihrer Umgebung.|
-| Geografischer Standort der Agents | Eine Partition mit den unterschiedlichen Ländern, in denen Sie über Agents verfügen, und die Gesamtzahl von Agents, die in einem Land jeweils installiert sind.|
+| Geografischer Standort der Agents | Eine Partition mit den unterschiedlichen Ländern/Regionen, in denen Sie über Agents verfügen, und die Gesamtzahl von Agents, die in einem Land bzw. einer Region jeweils installiert sind.|
 | Anzahl installierter Gateways | Die Anzahl von Servern, auf denen das Log Analytics-Gateway installiert ist, und eine Liste mit diesen Servern.|
 
 ![Beispiel: Dashboard für die Lösung zur Agent-Integritätsdiagnose](./media/solution-agenthealth/agenthealth-solution-dashboard.png)  

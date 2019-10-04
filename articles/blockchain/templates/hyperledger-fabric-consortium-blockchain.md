@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/23/2019
+ms.date: 05/09/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: ce1afbd5499e798888e77f52d7b652e7e1f548fc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 80de4e1479fac7296889e45289a5f20e586e3f57
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005819"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65510748"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric-Konsortiumsnetzwerk
 
@@ -100,7 +100,7 @@ Nehmen Sie in **Netzwerkeinstellungen** die Eingaben für das Erstellen eines Ko
 **Network Configuration** |Sie können ein neues Netzwerk erstellen oder einem vorhandenen beitreten. Wenn Sie *Vorhandenem beitreten* auswählen, müssen Sie zusätzliche Werte angeben. |Neues Netzwerk <br/> Vorhandenem beitreten |
 **HLF CA-Kennwort** |Ein Kennwort, das für die Zertifikate verwendet wird, die von den Zertifizierungsstellen generiert werden, die als Teil der Bereitstellung erstellt werden. Das Kennwort muss Zeichen aus drei der folgenden Zeichentypen enthalten: 1 Großbuchstaben, 1 Kleinbuchstaben, 1 Ziffer und 1 Sonderzeichen.<br /><br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|1–25 Zeichen |
 **Organisationssetup** |Sie können Namen und Zertifikat Ihres Unternehmens anpassen oder Standardwerte verwenden.|Standard <br/> Erweitert |
-**VPN-Netzwerkeinstellungen** | Bereitstellen eines VPN-Tunnelgateways für den Zugriff auf die virtuellen Computer | Ja <br/> Nein  |
+**VPN-Netzwerkeinstellungen** | Bereitstellen eines VPN-Tunnelgateways für den Zugriff auf die virtuellen Computer | Ja <br/> Nein |
 
 Klicken Sie auf **OK**.
 

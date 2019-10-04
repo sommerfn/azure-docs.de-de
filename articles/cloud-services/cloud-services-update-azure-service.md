@@ -2,24 +2,17 @@
 title: Aktualisieren eines Clouddiensts | Microsoft Docs
 description: Hier erfahren Sie, wie Sie Clouddienste in Azure aktualisieren. Erfahren Sie, wie die Aktualisierung eines Clouddiensts ausgeführt wird, damit die Verfügbarkeit sichergestellt ist.
 services: cloud-services
-documentationcenter: ''
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: c6a8b5e6-5c99-454c-9911-5c7ae8d1af63
+author: georgewallace
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: jeconnoc
-ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: gwallace
+ms.openlocfilehash: ae9d124391a1b17187ca98964874f681352498da
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917225"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945354"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Aktualisieren eines Clouddiensts
 
@@ -28,7 +21,7 @@ Das Aktualisieren eines Clouddiensts einschließlich Rollen und Gastbetriebssyst
 ## <a name="update-an-azure-service"></a>Aktualisieren eines Azure-Diensts
 Azure organisiert Ihre Rolleninstanzen in logischen Gruppen, die als Upgradedomänen (UD) bezeichnet werden. Upgradedomänen (UD) sind logische Sätze von Rolleninstanzen, die als Gruppe aktualisiert werden.  Azure aktualisiert einen Clouddienst mit je einer UD. Dadurch können Instanzen in anderen UDs den Datenverkehr weiter bearbeiten.
 
-Die Standardanzahl von Upgradedomänen ist 5. Sie können eine andere Anzahl von Upgradedomänen festlegen, indem Sie das Attribut „upgradeDomainCount“ in die Dienstdefinitionsdatei (.CSDEF) einschließen. Weitere Informationen über das Attribut „upgradeDomainCount“ finden Sie unter [WebRole-Schema](/previous-versions/azure/reference/gg557553(v=azure.100)) oder [WorkerRole-Schema](/previous-versions/azure/reference/gg557552(v=azure.100)).
+Die Standardanzahl von Upgradedomänen ist 5. Sie können eine andere Anzahl von Upgradedomänen festlegen, indem Sie das Attribut „upgradeDomainCount“ in die Dienstdefinitionsdatei (.CSDEF) einschließen. Weitere Informationen zum Attribut upgradeDomainCount finden Sie unter [Azure Cloud Services-Definitionsschema (.CSDEF-Datei)](https://docs.microsoft.com/azure/cloud-services/schema-csdef-file).
 
 Wenn Sie eine direkte Aktualisierung einer oder mehrerer Rollen in Ihrem Dienst durchführen, aktualisiert Azur Sätze von Rolleninstanz je nach der Upgradedomäne, der sie angehören. Azure aktualisiert alle Instanzen in einer bestimmten Upgradedomäne (beendet sie, aktualisiert sie und schaltet sie wieder online) und fährt dann mit der nächsten Domäne fort. Dadurch, dass nur die Instanzen beendet werden, die in der aktuellen Upgradedomäne ausgeführt werden, stellt Azure sicher, dass sich die Aktualisierung so wenig wie möglich auf den ausgeführten Dienst auswirkt. Weitere Informationen finden Sie unter [Vorgehensweise bei der Aktualisierung](#howanupgradeproceeds) weiter unten in diesem Artikel.
 
@@ -60,7 +53,7 @@ Die folgende Tabelle zeigt die zulässigen Änderungen an einen Dienst während 
 | Einstellungen für den lokalen Speicher |Nur Erhöhen <sup>2</sup> |Ja |Ja |
 | Rollen in einem Dienst hinzufügen oder entfernen |Ja |Ja |Ja |
 | Anzahl der Instanzen einer bestimmten Rolle |Ja |Ja |Ja |
-| Anzahl oder Typ der Endpunkte für einen Dienst |Ja<sup>2</sup> |Nein  |Ja |
+| Anzahl oder Typ der Endpunkte für einen Dienst |Ja<sup>2</sup> |Nein |Ja |
 | Namen und Werte von Konfigurationseinstellungen |Ja |Ja |Ja |
 | Werte (aber keine Namen) von Konfigurationseinstellungen |Ja |Ja |Ja |
 | Neue Zertifikate hinzufügen |Ja |Ja |Ja |
@@ -114,7 +107,7 @@ Beim Aktualisieren eines Diensts aus einer einzelnen Instanz auf mehrere Instanz
 |Direktes Upgrade|Wird beibehalten|Wird beibehalten|Wird zerstört|
 |Knotenmigration|Wird zerstört|Wird zerstört|Wird zerstört|
 
-Bitte beachten Sie, dass das Laufwerk E: in der Liste oben das Stammlaufwerk der Rolle darstellt und nicht hartcodiert werden sollte. Verwenden Sie stattdessen die Umgebungsvariable **% RoleRoot%**, um das Laufwerk darzustellen.
+Bitte beachten Sie, dass das Laufwerk E: in der Liste oben das Stammlaufwerk der Rolle darstellt und nicht hartcodiert werden sollte. Verwenden Sie stattdessen die Umgebungsvariable **% RoleRoot%** , um das Laufwerk darzustellen.
 
 Stellen Sie einen neuen Dienst mit mehreren Instanzen auf dem Staging-Server bereit, und führen Sie einen VIP-Austausch aus, um die Ausfallzeit bei der Aktualisierung eines Einzelinstanzdiensts zu minimieren.
 

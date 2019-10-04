@@ -1,19 +1,18 @@
 ---
 title: Bereitstellen von Azure Files | Microsoft-Dokumentation
 description: Informationen über sämtliche Schritte zum Bereitstellen von Azure Files.
-services: storage
-author: wmgries
+author: roygara
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f0b6ed366f35368c70f3d2224f430f400ee9656c
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 802b4deb91f1df784ac0aed2952d3f915b54ce73
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481177"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68699719"
 ---
 # <a name="how-to-deploy-azure-files"></a>Bereitstellen von Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. In diesem Artikel erfahren Sie, wie Sie Azure Files praktisch in Ihrer Organisation bereitstellen.
@@ -108,7 +107,7 @@ Robocopy ist ein bekanntes Kopiertool, das in Windows und Windows Server enthalt
 ### <a name="azcopy"></a>AzCopy
 AzCopy ist ein Befehlszeilenprogramm, das zum Kopieren von Daten in und aus Azure Files sowie Azure Blob Storage entwickelt wurde, wobei durch einfache Befehle eine optimale Leistung erzielt wird. Die Verwendung von AzCopy ist ganz einfach:
 
-1. Laden Sie die [neueste Version von AzCopy für Windows](https://aka.ms/downloadazcopy) oder [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy) herunter.
+1. Laden Sie die [neueste Version von AzCopy für Windows](https://aka.ms/downloadazcopy) oder [Linux](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux#download-and-install-azcopy) herunter.
 2. Verwenden Sie `azcopy` in der Befehlszeile, um Daten in die Azure-Dateifreigabe zu verschieben. Die Syntax für Windows lautet wie folgt: 
 
     ```

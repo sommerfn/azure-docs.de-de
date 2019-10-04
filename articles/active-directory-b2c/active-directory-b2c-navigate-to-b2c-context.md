@@ -2,20 +2,20 @@
 title: Wechseln zu einem B2C-Mandanten in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Wechseln zum Kontext des Active Directory B2C-Mandanten
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 4/13/2017
-ms.author: davidmu
+ms.date: 04/13/2017
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9315b3a5e1641098daf2c7dadf9fa4f09d0cb2a7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cbf0e928ae05e723902d41a340aebf4f5781fde5
+ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438499"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67654122"
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Wechseln zum Azure AD B2C-Mandanten
 
@@ -36,7 +36,7 @@ Das Azure-Portal wird aktualisiert.  Nun sind Sie beim Azure-Portal im Kontext I
 1. Klicken Sie im linken Navigationsbereich auf **Durchsuchen**.
 1. Klicken Sie im linken Navigationsbereich auf **Alle Dienste**, und suchen Sie nach `Azure AD B2C`.  (Klicken Sie zum Anheften an das linke Startmenü auf das Sternchen links neben Azure AD B2C).
 1. Klicken Sie auf **Azure AD B2C**, um auf den Bereich „B2C-Funktionen“ zuzugreifen.
-   
+
     ![Screenshot der Navigation zum Bereich „B2C-Funktionen“](./media/active-directory-b2c-get-started/b2c-browse.png)
 
 > [!IMPORTANT]

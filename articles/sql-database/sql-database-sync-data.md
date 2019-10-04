@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
-manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: a887c79a51c7a239e7057171e51e67a53af2f84b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 08/20/2019
+ms.openlocfilehash: 7ff7712130372dcfd277750e881cccce23b36465
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483556"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648357"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
 
@@ -32,7 +31,7 @@ Die Datensynchronisierung ist nützlich, wenn Daten über mehrere Azure SQL-Date
 
 - **Hybriddatensynchronisierung:** Mit der Datensynchronisierung können Sie Daten zwischen Ihren lokalen Datenbanken und Azure SQL-Datenbanken synchron halten, um Hybridanwendungen zu ermöglichen. Diese Funktion ist unter Umständen gut für Kunden geeignet, die eine Umstellung auf die Cloud erwägen und einen Teil ihrer Anwendung in Azure anordnen möchten.
 - **Verteilte Anwendungen:** In vielen Fällen ist es vorteilhaft, unterschiedliche Workloads auf verschiedene Datenbanken aufzuteilen. Wenn Sie beispielsweise über eine große Produktionsdatenbank verfügen, aber gleichzeitig die Berichterstellung oder Analyse für diese Daten durchführen müssen, ist für diese zusätzliche Workload die Verwendung einer zweiten Datenbank hilfreich. Bei diesem Ansatz werden die Auswirkungen auf die Leistung Ihrer Produktionsworkload reduziert. Sie können die Datensynchronisierung nutzen, um diese beiden Datenbanken synchron zu halten.
-- **Global verteilte Anwendungen:** Viele Unternehmen sind in mehreren Regionen oder Ländern ansässig. Es ist ratsam, die Daten jeweils in einer Region in der Nähe vorzuhalten, um die Netzwerklatenz zu verringern. Mit der Datensynchronisierung können Sie Datenbanken in den Regionen weltweit synchron halten.
+- **Global verteilte Anwendungen:** Viele Unternehmen sind in mehreren Regionen und sogar mehreren Ländern/Regionen ansässig. Es ist ratsam, die Daten jeweils in einer Region in der Nähe vorzuhalten, um die Netzwerklatenz zu verringern. Mit der Datensynchronisierung können Sie Datenbanken in den Regionen weltweit synchron halten.
 
 Die Datensynchronisierung ist für folgende Szenarien nicht die beste Lösung:
 
@@ -79,7 +78,7 @@ Eine Synchronisierungsgruppe hat die folgenden Eigenschaften:
 | | Datensynchronisierung | Transaktionsreplikation |
 |---|---|---|
 | Vorteile | – Aktiv/Aktiv-Unterstützung<br/>– Bidirektional zwischen lokaler und Azure SQL-Datenbank | – Niedrigere Latenzzeiten<br/>– Transaktionskonsistenz<br/>– Wiederverwendung vorhandener Topologie nach der Migration |
-| Nachteile | – Latenzzeiten von 5 Minuten und mehr<br/>– Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung über eine Azure SQL-Datenbank-Einzeldatenbank oder im Pool zusammengefasste Datenbanken<br/>– Hohe Wartungskosten |
+| Nachteile | – Latenzzeiten von 5 Minuten und mehr<br/>– Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung über eine Einzel- oder Pooldatenbank in Azure SQL-Datenbank<br/>– Hohe Wartungskosten |
 | | | |
 
 ## <a name="get-started-with-sql-data-sync"></a>Erste Schritte mit der SQL-Datensynchronisierung
@@ -110,7 +109,7 @@ Die Transaktionskonsistenz ist nicht garantiert, da die Datensynchronisierung au
 
 #### <a name="performance-impact"></a>Auswirkungen auf die Leistung
 
-Für die Datensynchronisierung werden Auslöser für Einfügen, Aktualisieren und Löschen verwendet, um Änderungen nachzuverfolgen. In der Benutzerdatenbank werden Nebentabellen für die Änderungsnachverfolgung erstellt. Diese Aktivitäten zur Änderungsnachverfolgung haben Auswirkungen auf Ihre Datenbankworkload. Bewerten Sie Ihren Tarif, und aktualisieren Sie ihn bei Bedarf.
+Für die Datensynchronisierung werden Auslöser für Einfügen, Aktualisieren und Löschen verwendet, um Änderungen nachzuverfolgen. In der Benutzerdatenbank werden Nebentabellen für die Änderungsnachverfolgung erstellt. Diese Aktivitäten zur Änderungsnachverfolgung haben Auswirkungen auf Ihre Datenbankworkload. Bewerten Sie Ihre Dienstebene, und aktualisieren Sie sie bei Bedarf.
 
 Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktualisierung oder Löschung von Synchronisierungsgruppen kann sich ebenfalls nachteilig auf die Datenbankleistung auswirken. 
 
@@ -119,6 +118,12 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
 - Jede Tabelle muss über einen Primärschlüssel verfügen. Ändern Sie nicht den Wert des Primärschlüssels in einer Zeile. Wenn Sie einen Primärschlüsselwert ändern müssen, können Sie die Zeile löschen und mit dem neuen Wert des Primärschlüssels neu erstellen. 
+
+> [!IMPORTANT]
+> Wenn Sie den Wert eines vorhandenen Primärschlüssels ändern, führt dies zu folgendem fehlerhaften Verhalten:   
+>   - Daten zwischen Hub und Mitglied können verloren gehen, auch wenn bei der Synchronisierung kein Problem gemeldet wird.
+> - Bei der Synchronisierung kann ein Fehler auftreten, weil die Nachverfolgungstabelle aufgrund der Primärschlüsseländerung über eine nicht vorhandene Zeile aus der Quelle verfügt.
+
 - Die Momentaufnahmeisolation muss aktiviert sein. Weitere Informationen finden Sie unter [Momentaufnahmeisolation in SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Allgemeine Einschränkungen
@@ -129,6 +134,7 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 - Die Namen von Objekten (Datenbanken, Tabellen und Spalten) dürfen nicht die druckbaren Zeichen Punkt (.), linke eckige Klammer ([) oder rechte eckige Klammer (]) enthalten.
 - Die Azure Active Directory-Authentifizierung wird nicht unterstützt.
 - Tabellen mit demselben Namen, aber unterschiedlichem Schema (z.B. „dbo.customers“ und „sales.customers“) werden nicht unterstützt.
+- Spalten mit benutzerdefinierten Datentypen werden nicht unterstützt.
 
 #### <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
 
@@ -139,7 +145,7 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 
 #### <a name="unsupported-column-types"></a>Nicht unterstützte Spaltentypen
 
-Mit der Datensynchronisierung können keine schreibgeschützten oder vom System generierten Spalten synchronisiert werden. Beispiel: 
+Mit der Datensynchronisierung können keine schreibgeschützten oder vom System generierten Spalten synchronisiert werden. Beispiel:
 
 - Berechnete Spalten
 - Vom System generierte Spalten für temporale Tabellen

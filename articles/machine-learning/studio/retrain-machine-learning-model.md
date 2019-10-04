@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 903f2700ad127c9bcc69e69ee125ba62fccf52e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a3f441a0dd7f7b9f402390e853bd1c28f282f653
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051630"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66245090"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Erneutes Trainieren und Bereitstellen eines Machine Learning-Modells
 
@@ -48,7 +48,7 @@ Stellen Sie mit folgenden Schritten einen Webdienst zum erneuten Trainieren bere
 
     Stellen Sie als Nächstes das Trainingsexperiment als Webdienst zum erneuten Trainieren bereit, der ein trainiertes Modell und Modellauswertungsergebnisse ausgibt.
 
-1. Klicken Sie am unteren Rand des Experimentbereichs auf **Set Up Web Service (Webdienst einrichten)**.
+1. Klicken Sie am unteren Rand des Experimentbereichs auf **Set Up Web Service (Webdienst einrichten)** .
 1. Wählen Sie **Deploy Web Service [New] (Webdienst bereitstellen [Neu])** aus. Das Azure Machine Learning-Webdienstportal wird mit der Seite **Webdienst bereitstellen** geöffnet.
 1. Geben Sie einen Namen für Ihren Webdienst ein, und wählen Sie einen Zahlungsplan aus.
 1. Klicken Sie auf **Bereitstellen**.
@@ -59,7 +59,7 @@ In diesem Beispiel dient C# zum Erstellen der Anwendung für erneutes Trainieren
 
 Rufen Sie mit den folgenden Schritten die APIs zum erneuten Trainieren auf:
 
-1. Erstellen Sie in Visual Studio eine C#-Konsolenanwendung: **Neu** > **Projekt** > **Visual C#**  > **Klassischer Windows-Desktop** >  **Konsolen-App (.NET Framework)**.
+1. Erstellen Sie in Visual Studio eine C#-Konsolenanwendung: **Neu** > **Projekt** > **Visual C#**  > **Klassischer Windows-Desktop** >  **Konsolen-App (.NET Framework)** .
 1. Melden Sie sich beim Machine Learning-Webdienstportal an.
 1. Klicken Sie auf den verwendeten Webdienst.
 1. Klicken Sie auf **Consume**.
@@ -89,7 +89,7 @@ Der BES-Beispielcode lädt eine Datei von einem lokalen Laufwerk (z.B. „C:\tem
 1. Wählen Sie in der Speicherkontenliste ein Speicherkonto zum Speichern des neu trainierten Modells aus.
 1. Klicken Sie in der linken Navigationsspalte auf **Zugriffsschlüssel**.
 1. Kopieren und speichern Sie den Wert für **Primärer Zugriffsschlüssel**.
-1. Klicken Sie in der linken Navigationsspalte auf **Container**.
+1. Klicken Sie im linken Navigationsbereich auf **Blobs**.
 1. Wählen Sie einen vorhandenen Container aus, oder erstellen Sie einen neuen, und speichern Sie den Namen.
 
 Suchen Sie die Deklarationen *StorageAccountName*, *StorageAccountKey* und *StorageContainerName*, und aktualisieren Sie die Werte mit den gespeicherten Werten aus dem Portal.
@@ -132,7 +132,7 @@ Speichern Sie die Werte für *BaseLocation*, *RelativeLocation* und *SasBlobToke
 
 ### <a name="sign-in-to-azure-resource-manager"></a>Anmelden bei Azure Resource Manager
 
-Melden Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) bei Ihrem Azure-Konto an.
+Melden Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) bei Ihrem Azure-Konto an.
 
 ### <a name="get-the-web-service-definition-object"></a>Abrufen des Webdienstdefinition-Objekts
 

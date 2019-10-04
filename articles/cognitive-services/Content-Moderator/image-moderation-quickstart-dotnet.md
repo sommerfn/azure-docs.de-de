@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Analysieren von Bildern auf unzulässige Inhalte in C# – Content Moderator'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie Bilder unter Verwendung des Content Moderator SDK für .NET auf verschiedene anstößige Inhalte analysieren.
 services: cognitive-services
 author: sanjeev3
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 03/20/2019
+ms.date: 08/08/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9cc18ce1fde5de354e3da5e384c08ada1927d097
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 2a4726357e35fa123355d9ba450f7c6d8624fe78
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757228"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946233"
 ---
 # <a name="quickstart-analyze-images-for-objectionable-content-in-c"></a>Schnellstart: Analysieren von Bildern auf unzulässige Inhalte in C#
 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
-1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**, und nennen Sie es **ImageModeration**. 
+1. Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)** , und nennen Sie es **ImageModeration**. 
 1. Sollte Ihre Projektmappe noch andere Projekte enthalten, wählen Sie dieses Projekt als das alleinige Startprojekt aus.
 1. Rufen Sie die erforderlichen NuGet-Pakete ab. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, wählen Sie **NuGet-Pakete verwalten** aus, suchen Sie nach den folgenden Paketen, und installieren Sie sie:
     - Microsoft.Azure.CognitiveServices.ContentModerator
@@ -49,22 +49,22 @@ Kopieren Sie als nächstes den Code aus dieser Anleitung, und fügen Sie ihn in 
 
 Fügen Sie am Anfang der Datei *Program.cs* die folgenden `using`-Anweisungen hinzu:
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-8)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-7)]
 
 ### <a name="create-the-content-moderator-client"></a>Erstellen des Content Moderator-Clients
 
 Fügen Sie der Datei *Program.cs* den folgenden Code hinzu, um einen Content Moderator-Clientanbieter für Ihr Abonnement zu erstellen. Fügen Sie den Code parallel zur Klasse **Program** im gleichen Namespace hinzu. Aktualisieren Sie die Felder **AzureRegion** und **CMSubscriptionKey** mit den Werten Ihres Regionsbezeichners und des Abonnementschlüssels.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=84-107)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=83-106)]
 
 
 ### <a name="set-up-input-and-output-targets"></a>Einrichten von Ein- und Ausgabezielen
 
-Fügen Sie der Klasse **Program** in _Program.cs_ die folgenden statischen Felder hinzu. Diese geben die Dateien für die Eingabe (Bildinhalte) und die Ausgabe (JSON-Inhalte) an.
+Fügen Sie der Klasse **Program** in _Program.cs_ die folgenden statischen Felder hinzu. Diese Felder dienen zum Angeben der Dateien für die Eingabe (Bildinhalte) und die Ausgabe (JSON-Inhalte).
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=48-52)]
 
-Sie müssen die Eingabedatei *_ImageFiles.txt* erstellen und ihren Pfad entsprechend aktualisieren. (Relative Pfade sind relativ zum Ausführungsverzeichnis.) Öffnen Sie _ImageFiles.txt_, und fügen Sie die URLs von zu moderierenden Bildern hinzu. In dieser Schnellstartanleitung werden als Beispieleingabe die folgenden URLs verwendet:
+Sie müssen die Eingabedatei *ImageFiles.txt* erstellen und ihren Pfad entsprechend aktualisieren. (Relative Pfade sind relativ zum Ausführungsverzeichnis.) Öffnen Sie _ImageFiles.txt_, und fügen Sie die URLs von zu moderierenden Bildern hinzu. In dieser Schnellstartanleitung werden als Beispieleingabe die folgenden URLs verwendet:
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
@@ -75,24 +75,24 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Fügen Sie *Program.cs* den folgenden Code parallel zur Klasse **Program** im gleichen Namespace hinzu. Sie verwenden eine Instanz dieser Klasse, um die Moderationsergebnisse für jedes der überprüften Bilder zu erfassen.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=109-124)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=108-123)]
 
 
 ### <a name="define-the-image-evaluation-method"></a>Definieren der Bildauswertungsmethode
 
 Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Diese Methode wertet ein einzelnes Bild auf drei Arten aus und gibt die Auswertungsergebnisse zurück. Weitere Informationen zur Funktionsweise der einzelnen Vorgänge finden Sie unter dem Link im Abschnitt [Nächste Schritte](#next-steps).
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=55-81)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=54-80)]
 
 ### <a name="load-the-input-images"></a>Laden der Eingabebilder
 
-Fügen Sie der Methode **Main** in der Klasse **Program** den folgenden Code hinzu. Dadurch wird das Programm für den Abruf von Auswertungsdaten für jede Bild-URL in der Eingabedatei eingerichtet. Die Daten werden anschließend in eine einzelne Ausgabedatei geschrieben.
+Fügen Sie der Methode **Main** in der Klasse **Program** den folgenden Code hinzu. Durch diesen Code wird das Programm für den Abruf von Auswertungsdaten für jede Bild-URL in der Eingabedatei eingerichtet. Die Daten werden anschließend in eine einzelne Ausgabedatei geschrieben.
 
-[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=17-46)]
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=16-45)]
 
 ## <a name="run-the-program"></a>Ausführen des Programms
 
-Das Programm schreibt JSON-Zeichenfolgendaten in die Datei _ModerationOutput.json_. Die in dieser Schnellstartanleitung verwendeten Beispielbilder führen zu folgender Ausgabe. Beachten Sie, dass jedes Bild über unterschiedliche Abschnitte für `ImageModeration`, `FaceDetection` und `TextDetection` verfügt. Diese entsprechen den drei API-Aufrufen aus der Methode **EvaluateImage**.
+Das Programm schreibt JSON-Zeichenfolgendaten in die Datei _ModerationOutput.json_. Die in dieser Schnellstartanleitung verwendeten Beispielbilder führen zu folgender Ausgabe. Jedes Bild verfügt über unterschiedliche Abschnitte für `ImageModeration`, `FaceDetection` und `TextDetection`. Diese entsprechen den drei API-Aufrufen aus der Methode **EvaluateImage**.
 
 ```json
 [{

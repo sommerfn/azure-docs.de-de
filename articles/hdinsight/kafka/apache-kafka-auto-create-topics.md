@@ -1,19 +1,19 @@
 ---
 title: Aktivieren der automatischen Themenerstellung in Apache Kafka – Azure HDInsight
 description: Erfahren Sie, wie Sie Apache Kafka in HDInsight für die automatische Erstellung von Themen konfigurieren. Sie können Kafka konfigurieren, indem Sie „auto.create.topics.enable“ über Ambari oder während der Clustererstellung über PowerShell oder Resource Manager-Vorlagen auf „true“ festlegen.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: b9f17ad0ccfd5e58d5b93bde91e6f9c537a15fa6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 5d990a1c39495090fed1c78f1ddf5e879490e6c4
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606893"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960648"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Konfigurieren von Apache Kafka in HDInsight für die automatische Erstellung von Themen
 
@@ -35,15 +35,15 @@ Um die automatische Themenerstellung in einem vorhandenen Cluster über die Amba
 
 3. Wählen Sie auf der linken Seite aus der Liste den Kafka-Dienst aus.
 
-    ![Liste der Dienste](./media/apache-kafka-auto-create-topics/service-list.png)
+    ![Liste der Dienste](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
 4. Klicken Sie in der Mitte der Seite auf „Konfigurationen“.
 
-    ![Registerkarte zur Dienstkonfiguration](./media/apache-kafka-auto-create-topics/service-config.png)
+    ![Registerkarte zur Dienstkonfiguration](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
 5. Geben Sie in das Feld „Filter“ den Wert `auto.create` ein. 
 
-    ![Abbildung: Filter-Dialogfeld](./media/apache-kafka-auto-create-topics/filter.png)
+    ![Abbildung: Filter-Dialogfeld](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
     Dies filtert die Liste der Eigenschaften und zeigt die Einstellung `auto.create.topics.enable`.
 

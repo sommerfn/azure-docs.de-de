@@ -2,22 +2,26 @@
 title: 'Aktualisieren auf Version 2 des Azure Search-.NET Management SDK: Azure Search'
 description: Aktualisieren Sie von Vorgängerversionen auf Version 2 des Azure Search-.NET Management SDK. Hier finden Sie Informationen zu den Neuheiten und erfahren Sie, welche Änderungen am Code erforderlich sind.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 ms.author: brjohnst
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 01/15/2018
-ms.custom: seodec2018
-ms.openlocfilehash: 369e5283d7350729e0d8cc44f94f1f2e71b133c3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.date: 05/02/2019
+ms.openlocfilehash: 2a59cff7f5313b0ac5a060d698950a4c82160f67
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316868"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182253"
 ---
-# <a name="upgrading-to-the-azure-search-net-management-sdk-version-2"></a>Upgrade auf Version 2 des Azure Search-.NET Management SDK
+# <a name="upgrading-to-the-azure-search-net-management-sdk-version"></a>Upgrade der Azure Search-.NET Management SDK-Version 
+
+> [!Important]
+> Dieser Inhalt ist noch in Bearbeitung. Version 3.0 des Azure Search-.NET Management SDK ist unter NuGet verfügbar. Wir arbeiten an der Ergänzung dieser Migrationsanleitung um eine Erläuterung, wie das Upgrade auf die neue Version durchgeführt wird. 
+>
+
 Wenn Sie die Version 1.0.2 oder eine frühere Version des [Azure Search-.NET Management SDK](https://aka.ms/search-mgmt-sdk) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 2.
 
 Version 2 des Azure Search-.NET Management SDK enthält einige Änderungen gegenüber früheren Versionen. Dabei handelt es sich hauptsächlich um kleinere Änderungen, sodass zum Ändern Ihres Codes nur ein geringer Aufwand erforderlich sein sollte. Anweisungen zum Ändern Ihres Codes, um die neue SDK-Version zu verwenden, finden Sie unter [Schritte zum Upgrade](#UpgradeSteps) .

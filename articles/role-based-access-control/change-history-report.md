@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b808654baded5bbe721866441a8d1115eff7bcaa
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: e5758f480c9216cf71e47509682053b39f0b15bf
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997902"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172415"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen an Azure-Ressourcen
 
@@ -121,9 +121,9 @@ Folgende Schritte sind für den Einstieg grundlegend:
 
 1. [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md)
 
-1. [Konfigurieren der Lösung für die Aktivitätsprotokollanalyse](../azure-monitor/platform/collect-activity-logs.md#configuration) für Ihren Arbeitsbereich.
+1. [Konfigurieren der Lösung für die Aktivitätsprotokollanalyse](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution) für Ihren Arbeitsbereich.
 
-1. [Anzeigen der Aktivitätsprotokolle](../azure-monitor/platform/collect-activity-logs.md#using-the-solution) Sie können schnell zur Übersichtsseite für die Lösung zur Aktivitätsprotokollanalyse navigieren, indem Sie auf die Option **Log Analytics** klicken.
+1. [Anzeigen der Aktivitätsprotokolle](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution) Sie können schnell zur Übersichtsseite für die Lösung zur Aktivitätsprotokollanalyse navigieren, indem Sie auf die Option **Log Analytics** klicken.
 
    ![Option „Azure Monitor-Protokolle“ im Portal](./media/change-history-report/azure-log-analytics-option.png)
 
@@ -133,7 +133,7 @@ Im Folgenden finden Sie eine Abfrage, die neue Rollenzuweisungen zurückgibt, di
 
 ```
 AzureActivity
-| where TimeGenerated > ago(60d) and OperationName startswith "Microsoft.Authorization/roleAssignments/write" and ActivityStatus == "Succeeded"
+| where TimeGenerated > ago(60d) and OperationNameValue startswith "Microsoft.Authorization/roleAssignments/write" and ActivityStatus == "Succeeded"
 | parse ResourceId with * "/providers/" TargetResourceAuthProvider "/" *
 | summarize count(), makeset(Caller) by TargetResourceAuthProvider
 ```
@@ -142,8 +142,8 @@ Im Folgenden finden Sie eine Abfrage, die Änderungen an der Rollenzuweisung zur
 
 ```
 AzureActivity
-| where TimeGenerated > ago(60d) and OperationName startswith "Microsoft.Authorization/roleAssignments"
-| summarize count() by bin(TimeGenerated, 1d), OperationName
+| where TimeGenerated > ago(60d) and OperationNameValue startswith "Microsoft.Authorization/roleAssignments"
+| summarize count() by bin(TimeGenerated, 1d), OperationNameValue
 | render timechart
 ```
 

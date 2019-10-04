@@ -4,27 +4,24 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 8a596293a5c1572b30ea6101dad16328c8db2634
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 935a6201e24e97deaa0a1a65e499310f74a49e2d
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164621"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059038"
 ---
 ## <a name="what-is-queue-storage"></a>Was ist der Warteschlangenspeicher?
-Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer Anzahlen von Nachrichten, auf die von überall auf der Welt mit authentifizierten Anrufen über HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 KB groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt.
 
-Warteschlangenspeicherungen werden hauptsächlich für folgende Zwecke verwendet:
-
-* Erstellung eines Arbeits-Backlogs zur asynchronen Verarbeitung
-* Weiterleitung von Nachrichten von einer Azure-Webrolle an eine Azure-Workerrolle
+Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer Anzahlen von Nachrichten, auf die von überall auf der Welt mit authentifizierten Anrufen über HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 KB groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt. Warteschlangenspeicher wird häufig verwendet, um ein Arbeits-Backlog zur asynchronen Verarbeitung zu erstellen.
 
 ## <a name="queue-service-concepts"></a>Konzepte des Warteschlangendiensts
-Der Warteschlangendienst umfasst die folgenden Komponenten:
+
+Der Azure-Warteschlangendienst umfasst die folgenden Komponenten:
 
 ![Queue1](./media/storage-queue-concepts-include/queue1.png)
 
-* **URL-Format**: Warteschlangen sind über das folgende URL-Format adressierbar:   
+* **URL-Format:** Warteschlangen können über das folgende URL-Format aufgerufen werden:   
     http://`<storage account>`.queue.core.windows.net/`<queue>` 
   
     Mit der folgenden URL kann eine der Warteschlangen im Diagramm adressiert werden:  

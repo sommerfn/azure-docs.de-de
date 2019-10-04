@@ -3,8 +3,8 @@ title: Durchführen der Erkennung von Netzwerkangriffen mit Azure Network Watche
 description: In diesem Artikel wird beschrieben, wie Sie Azure Network Watcher und Open Source-Tools zum Durchführen der Erkennung von Netzwerkangriffen verwenden.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 41b039c6598334d49b9ddb0608d7ad2ae045b223
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: b5dc885611c6654c1dc1d236e41ed75ef2717cc1
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901269"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65605706"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Durchführen der Erkennung von Netzwerkangriffen mit Network Watcher und Open Source-Tools
 
@@ -255,7 +255,7 @@ Sie können auch eigene Visualisierungen und Dashboards erstellen, die auf die f
 
 Das Beispieldashboard enthält mehrere Visualisierungen der Suricata-Warnungsprotokolle:
 
-1. Alerts by GeoIP (Warnungen nach GeoIP): Karte zur Verteilung von Warnungen nach Ursprungsland basierend auf dem geografischen Standort (anhand der IP-Adresse).
+1. Alerts by GeoIP (Warnungen nach GeoIP): Karte zur Verteilung von Warnungen nach Ursprungsland/Ursprungsregion basierend auf dem geografischen Standort (anhand der IP-Adresse).
 
     ![GeoIP][3]
 

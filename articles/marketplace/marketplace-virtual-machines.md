@@ -2,24 +2,17 @@
 title: Leitfaden für die Veröffentlichung von VM-Angeboten für Azure Marketplace
 description: Dieser Artikel beschreibt die Anforderungen zum Veröffentlichen einer VM und einer kostenlosen Softwaretestversion, die auf dem Marketplace bereitgestellt werden.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
-manager: nunoc
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: eb49d0fe610a78b8d1a407644a206fddaba0a67a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ccb6fc9c522e8d05d0184fc5e248d070efb9921d
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116214"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64937735"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Leitfaden für die Veröffentlichung von VM-Angeboten
 

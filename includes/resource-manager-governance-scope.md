@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/21/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 4f5dbbd1da8a221fb5f8b9641e016829987db538
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: dc4281c17b92e1720625764a52a34a94d6f296ab
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38740582"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178022"
 ---
 Im Folgenden finden Sie vor dem Erstellen von Elementen Informationen über das Konzept von Bereichen. Azure bietet vier Verwaltungsebenen: Verwaltungsgruppen, Abonnement, Ressourcengruppe und Ressource. [Verwaltungsgruppen](../articles/billing/billing-enterprise-mgmt-group-overview.md) befinden sich in der Vorschauversion. Die folgende Abbildung zeigt ein Beispiel dieser Ebenen.
 
-![Umfang](./media/resource-manager-governance-scope/scope-levels.png)
+![`Scope`](./media/resource-manager-governance-scope/scope-levels.png)
 
 Sie wenden die Verwaltungseinstellungen auf einer dieser Bereichsebenen an. Die von Ihnen ausgewählte Ebene bestimmt, wie umfassend die Einstellung angewendet wird. Niedrigere Ebenen erben die Einstellungen von höheren Ebenen. Wenn Sie eine Einstellung auf das Abonnement anwenden, gilt diese Einstellung für alle Ressourcengruppen und Ressourcen in Ihrem Abonnement. Wenn Sie eine Einstellung auf die Ressourcengruppe anwenden, gilt diese Einstellung für die Ressourcengruppe und alle zugehörigen Ressourcen. Für eine andere Ressourcengruppe gilt die Einstellung jedoch nicht.
 

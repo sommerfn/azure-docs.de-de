@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7534313a5862ececf4757be807e59b6df39f6430
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357977"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873366"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrieren von lokalen Computern zu Azure
 
@@ -46,7 +46,7 @@ Beachten Sie, das von paravirtualisierten Treibern exportierte Geräte nicht unt
 2. Bereiten Sie lokale [VMware](vmware-azure-tutorial-prepare-on-premises.md)- oder [Hyper-V](hyper-v-prepare-on-premises-tutorial.md)-Server vor. Bei der Migration von physischen Computern müssen Sie keine Vorbereitungen treffen. Überprüfen Sie lediglich die [Supportmatrix](vmware-physical-azure-support-matrix.md).
 
 
-## <a name="select-a-replication-goal"></a>Auswählen eines Replikationsziels
+## <a name="select-a-protection-goal"></a>Wählen eines Schutzziels
 
 Wählen Sie aus, was Sie replizieren möchten und wohin die Daten repliziert werden sollen.
 1. Klicken Sie auf **Recovery Services-Tresore** > „Tresor“.
@@ -118,7 +118,7 @@ Führen Sie ein Failover für die zu migrierenden Computer aus.
 > [!WARNING]
 > **Brechen Sie ein aktuell ausgeführtes Failover nicht ab**: Die VM-Replikation wird beendet, bevor das Failover gestartet wird. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
 
-In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, die etwa 8 bis 10 Minuten dauern können. Bei physischen Servern, VMware-Linux-Computern, VMware-VMs ohne aktivierten DHCP-Dienst und VMware-VMs mit den folgenden Starttreibern kann das Testfailover länger dauern: storvsc, vmbus, storflt, intelide, atapi.
+In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, die etwa 8 bis 10 Minuten dauern können. Bei physischen Servern, VMware-Linux-Computern, VMware-VMs ohne aktivierten DHCP-Dienst und VMware-VMs ohne die folgenden Starttreiber kann das Testfailover länger dauern: storvsc, vmbus, storflt, intelide, atapi.
 
 ## <a name="after-migration"></a>Nach der Migration
 

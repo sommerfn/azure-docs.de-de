@@ -4,17 +4,17 @@ description: Dieser Artikel enthält Informationen zur Behandlung von Problemen 
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2a6610b5cb3f01fc70b1737fc4492e09d9a7637b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: beb0b89bdbf143c89a83c0813313a8bbda7235d4
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507333"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68564859"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>Problembehandlung bei Änderungsnachverfolgung und Inventur
 
@@ -51,7 +51,7 @@ Wenn diese Lösungen das Problem nicht beheben und Sie sich an den Support wende
 Navigieren Sie auf dem Agent-Computer zu `C:\Program Files\Microsoft Monitoring Agent\Agent\Tools`, und führen Sie die folgenden Befehle aus:
 
 ```cmd
-set stop healthservice
+net stop healthservice
 StopTracing.cmd
 StartTracing.cmd VER
 net start healthservice

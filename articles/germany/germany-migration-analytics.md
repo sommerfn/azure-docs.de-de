@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 590d790939f2986570019122817444238a41bb7d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 37baf361a34df1629d3e05f5e40b2d2f8912ce27
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821551"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272530"
 ---
 # <a name="migrate-analytics-resources-to-global-azure"></a>Migrieren von Analyseressourcen zu Azure weltweit
 
@@ -42,7 +42,7 @@ Die folgenden Metadatenelemente werden neu erstellt werden, wenn Sie eine Event 
 Weitere Informationen finden Sie unter:
 
 - Lesen Sie die [Übersicht über Event Hubs](../event-hubs/event-hubs-about.md).
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Event Hubs](https://docs.microsoft.com/azure/event-hubs/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Event Hubs](https://docs.microsoft.com/azure/event-hubs) durcharbeiten.
 - Überprüfen Sie die Migrationsschritte für [Azure Service Bus](./germany-migration-integration.md#service-bus).
 - Machen Sie sich damit vertraut, wie Sie [Azure Resource Manager-Vorlagen exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
@@ -59,7 +59,7 @@ Für spezialisiertere Cluster mit langer Ausführungszeit (Kafka, Spark-Streamin
 Weitere Informationen finden Sie unter:
 
 - Lesen Sie die [Azure HDInsight-Dokumentation](https://docs.microsoft.com/azure/hdinsight/).
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu HDInsight](https://docs.microsoft.com/azure/hdinsight/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu HDInsight](https://docs.microsoft.com/azure/hdinsight) durcharbeiten.
 - Informationen zum [Skalieren von HDInsight-Clustern](../hdinsight/hdinsight-administer-use-powershell.md#scale-clusters) finden Sie unter [Verwalten von Apache Hadoop-Clustern in HDInsight mit Azure PowerShell](../hdinsight/hdinsight-administer-use-powershell.md).
 - Erfahren Sie, wie [AzCopy](../storage/common/storage-use-azcopy.md) verwendet wird.
 
@@ -69,7 +69,7 @@ Um Azure Stream Analytics-Dienste von Azure Deutschland zu Azure weltweit zu mig
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job) durcharbeiten.
 - Lesen Sie die [Übersicht über Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
 - Erfahren Sie, wie Sie [einen Stream Analytics-Auftrag über PowerShell erstellen](../stream-analytics/stream-analytics-quick-create-powershell.md).
 

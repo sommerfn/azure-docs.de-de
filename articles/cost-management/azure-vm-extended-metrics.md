@@ -6,16 +6,16 @@ keywords: ''
 author: bandersmsft
 manager: vitavor
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 05/21/2019
 ms.topic: conceptual
 ms.service: cost-management
 ms.custom: seodec18
-ms.openlocfilehash: 2d45ce524ff9f544605867ff6596d82f090a8f1e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6a4f7f5671562679a245d97ad8491764657cbb34
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000786"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "66242461"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Hinzufügen erweiterter Metriken für virtuelle Azure-Computer
 
@@ -28,7 +28,7 @@ Das Aktivieren der Metrikerfassung ermöglicht Folgendes:
 - Steuern Ihrer Kosten durch eine Dimensionierung gemäß Nutzung
 - Erhalten von Optimierungsempfehlungen für eine kosteneffiziente Größenanpassung von Cloudyn.
 
-Angenommen, Sie möchten die CPU-Auslastung in % und die Arbeitsspeicherauslastung in % für Ihre Azure-VMs überwachen. Die entsprechenden Azure-VM-Metriken lauten _[Host] CPU in Prozent_ und _[Gast] Arbeitsspeicherprozentsatz_.
+Angenommen, Sie möchten die CPU-Auslastung in % und die Arbeitsspeicherauslastung in % für Ihre Azure-VMs überwachen. Die entsprechenden Azure-VM-Metriken lauten _CPU in Prozent_ und _\Memory\Zugesicherte verwendete Bytes (\%)_ .
 
 > [!NOTE]
 > Das Sammeln von erweiterten Metriken wird nur zusammen mit Azure-Überwachung auf Gastebene unterstützt. Cloudyn ist nicht mit der VM-Erweiterung für Azure Monitor-Protokolle kompatibel.
@@ -44,7 +44,7 @@ Im vorangehenden Beispiel steht ein eingeschränkter Satz mit Standardmetriken f
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>Aktivieren erweiterter Metriken im Azure-Portal
 
-Die Standardmetriken sind Metriken zum Hostcomputer. Ein Beispiel ist die Metrik _[Host] CPU in Prozent_. Darüber hinaus stehen grundlegende Metriken für Gast-VMs zur Verfügung, diese werden auch als erweiterte Metriken bezeichnet. Beispiele für erweiterte Metriken sind _[Gast] Arbeitsspeicherprozentsatz_ und _[Gast] Verfügbarer Arbeitsspeicher_.
+Die Standardmetriken sind Metriken zum Hostcomputer. Ein Beispiel ist die Metrik _CPU in Prozent_. Darüber hinaus stehen grundlegende Metriken für Gast-VMs zur Verfügung, diese werden auch als erweiterte Metriken bezeichnet. Beispiele für erweiterte Metriken: _\Memory\Zugesicherte verwendete Bytes (\%)_ und _\Memory\Verfügbare Bytes_.
 
 Das Aktivieren der erweiterten Metriken ist einfach. Aktivieren Sie für jede VM die Überwachung auf Gastebene. Wenn Sie die Überwachung auf Gastebene aktivieren, wird der Azure-Diagnose-Agent auf der VM installiert. Standardmäßig wird ein grundlegender Satz von erweiterten Metriken hinzugefügt. Das folgende Verfahren ist für klassische und reguläre VMs sowie für Windows- und Linux-VMs identisch.
 

@@ -3,23 +3,22 @@ title: Chef-Erweiterung für Azure-VMs | Microsoft-Dokumentation
 description: Stellen Sie den Chef-Client auf einem virtuellen Computer mithilfe der Chef-VM-Erweiterung bereit.
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
-manager: jeconnoc
+author: axayjo
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
-ms.author: roiyz
-ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: akjosh
+ms.openlocfilehash: e82a5fefcc7f582df65d945735d9840fc3e49829
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089164"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169144"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef-VM-Erweiterung für Linux und Windows
 
@@ -69,25 +68,25 @@ Der folgende JSON-Code zeigt das Schema für die Chef-VM-Erweiterung. Die Erweit
 ### <a name="core-property-values"></a>Kerneigenschaftswerte
 
 | NAME | Wert/Beispiel | Datentyp
-| ---- | ---- | ---- 
-| apiVersion | `2017-12-01` | Zeichenfolge (Datum) |
-| Herausgeber | `Chef.Bootstrap.WindowsAzure` | Zeichenfolge |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | Zeichenfolge |
-| typeHandlerVersion | `1210.12` | Zeichenfolge (Double) |
+| ---- | ---- | ----
+| apiVersion | `2017-12-01` | string (date) |
+| publisher | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
+| typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Einstellungen
 
 | NAME | Wert/Beispiel | Datentyp | Erforderlich?
 | ---- | ---- | ---- | ----
-| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | Zeichenfolge (URL) | J |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | Zeichenfolge | J |
-| settings/runlist | `recipe[mycookbook::default]` | Zeichenfolge | J |
+| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | J |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | J |
+| settings/runlist | `recipe[mycookbook::default]` | string | J |
 
 ### <a name="protected-settings"></a>Geschützte Einstellungen
 
 | NAME | Beispiel | Datentyp | Erforderlich?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | Zeichenfolge | J |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | J |
 
 <!--
 ### Linux-specific settings
@@ -105,7 +104,7 @@ Der folgende JSON-Code zeigt das Schema für die Chef-VM-Erweiterung. Die Erweit
 
 Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen können verwendet werden, um einen oder mehrere virtuelle Computer bereitzustellen, den Chef-Client zu installieren, eine Verbindung mit dem Chef-Server herzustellen und die anfängliche Konfiguration auf dem Server gemäß der Definition in der [Run-list](https://docs.chef.io/run_lists.html) auszuführen.
 
-Eine Resource Manager-Beispielvorlage mit der Chef--VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
+Eine Resource Manager-Beispielvorlage mit der Chef-VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
 
 Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/resource-manager-template-child-resource.md) (Festlegen von Name und Typ für untergeordnete Ressourcen).
 

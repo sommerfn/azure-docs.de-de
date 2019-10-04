@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
-ms.author: hkanna
-ms.openlocfilehash: 17428405a0be45854a2eaaef831864f529ed145a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: matd
+ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994478"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "67876204"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple als Sicherungsziel mit NetBackup
 

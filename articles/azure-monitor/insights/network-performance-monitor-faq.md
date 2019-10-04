@@ -1,6 +1,6 @@
 ---
 title: 'Netzwerkleistungsmonitor-Lösung in Azure: häufig gestellte Fragen | Microsoft-Dokumentation'
-description: Dieser Artikel umfasst die häufig gestellten Fragen zum Netzwerkleistungsmonitor in Azure. Mit dem Netzwerkleistungsmonitor (NPM) können Sie die Leistung Ihrer Netzwerke nahezu in Echtzeit überwachen, um Leistungsengpässe im Netzwerk zu erkennen und zu lokalisieren.
+description: Dieser Artikel umfasst die häufig gestellten Fragen zum Netzwerkleistungsmonitor in Azure. Mit dem Netzwerkleistungsmonitor (NPM) können Sie die Leistung Ihrer Netzwerke nahezu in Echtzeit überwachen und Leistungsengpässe im Netzwerk erkennen und lokalisieren.
 services: log-analytics
 documentationcenter: ''
 author: vinynigam
@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
-ms.author: vinynigam
-ms.openlocfilehash: 5186c11259a03717f83db675cbfe7c90f3ecb7cc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.author: vinigam
+ms.openlocfilehash: b3274c214aa60c930e62e651af960d5f01cbdd20
+ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734554"
+ms.lasthandoff: 08/05/2019
+ms.locfileid: "68782110"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
@@ -25,7 +25,7 @@ ms.locfileid: "55734554"
 
 Dieser Artikel umfasst die häufig gestellten Fragen (FAQs) zum Netzwerkleistungsmonitor (NPM) in Azure.
 
-Der [Netzwerkleistungsmonitor](/azure/networking/network-monitoring-overview) ist eine cloudbasierte [hybride Netzwerküberwachungslösung](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md), mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Zudem können Sie die Netzwerkkonnektivität mit [Dienst- und Anwendungsendpunkten](../../azure-monitor/insights/network-performance-monitor-service-endpoint.md) und [die Leistung von Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md) überwachen. 
+Der [Netzwerkleistungsmonitor](/azure/networking/network-monitoring-overview) ist eine cloudbasierte [hybride Netzwerküberwachungslösung](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md), mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Zudem können Sie die Netzwerkkonnektivität mit [Dienst- und Anwendungsendpunkten](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) und [die Leistung von Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md) überwachen. 
 
 Der Netzwerkleistungsmonitor erkennt Netzwerkprobleme wie ins Nichts führenden Datenverkehr (Blackholing), Routingfehler und Probleme, die mit herkömmlichen Netzwerküberwachungsmethoden nicht erkannt werden können. Die Lösung generiert Warnungen und benachrichtigt Sie, sobald ein Schwellenwert für eine Netzwerkverbindung überschritten wird. Sie gewährleistet außerdem das rechtzeitige Erkennen von Leistungsproblemen im Netzwerk und ordnet die Ursache des Problems einem bestimmten Netzwerksegment oder Gerät zu. 
 
@@ -36,14 +36,14 @@ Weitere Informationen zu den verschiedenen vom [Netzwerkleistungsmonitor](https:
 ### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>Welche Plattformanforderungen gelten für die vom Netzwerkleistungsmonitor zur Überwachung verwendeten Knoten?
 Nachfolgend sind die Plattformanforderungen für die verschiedenen Funktionen des Netzwerkleistungsmonitors aufgeführt:
 
-- Die Funktionen „Systemmonitor“ und „Dienstkonnektivitätsmonitor“ des Netzwerkleistungsmonitors unterstützen Windows Server (2008 SP1 oder höher) sowie Windows-Desktop- und Windows-Clientbetriebssysteme (Windows 10, Windows 8.1, Windows 8 und Windows 7). 
+- Die Funktionen „Systemmonitor“ und „Dienstkonnektivitätsmonitor“ des Netzwerkleistungsmonitors unterstützen Windows Server sowie Windows-Desktop- und Windows-Clientbetriebssysteme. Windows Server-Betriebssystemversionen werden ab 2008 SP1 unterstützt. Die unterstützten Desktop- und Clientversionen von Windows sind Windows 10, Windows 8.1, Windows 8 und Windows 7. 
 - Die Funktion „ExpressRoute-Monitor“ des Netzwerkleistungsmonitors unterstützt nur das Windows Server-Betriebssystem (2008 SP1 oder höher).
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Kann ich Linux-Computer als Überwachungsknoten im Netzwerkleistungsmonitor verwenden?
-Die Funktion zum Überwachen von Netzwerken mithilfe von Linux-basierten Knoten befindet sich derzeit in der privaten Vorschau. Wenden Sie sich an Ihren Account Manager, um mehr zu erfahren. Nachdem Sie die Arbeitsbereichs-ID angegeben haben, aktivieren wir die Funktion. Linux-Agents bieten die Überwachungsfunktion nur für die Funktion „Systemmonitor“ des Netzwerkleistungsmonitors und sind für die Funktionen „Dienstkonnektivitätsmonitor“ und „ExpressRoute-Monitor“ nicht verfügbar.
+Die Funktion zum Überwachen von Netzwerken mithilfe von Linux-basierten Knoten befindet sich derzeit in der Vorschau. Wenden Sie sich an Ihren Account Manager, um mehr zu erfahren. Linux-Agents bieten die Überwachungsfunktion nur für die Funktion „Systemmonitor“ des Netzwerkleistungsmonitors und sind für die Funktionen „Dienstkonnektivitätsmonitor“ und „ExpressRoute-Monitor“ nicht verfügbar.
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Welche Größenanforderungen gelten für die vom Netzwerkleistungsmonitor zur Überwachung verwendeten Knoten?
-Zur Ausführung der Netzwerkleistungsmonitor-Lösung auf virtuellen Knotencomputern zum Überwachen von Netzwerken müssen die Knoten mindestens einen Speicher von 500 MB und einen Kern aufweisen. Zum Ausführen des Netzwerkleistungsmonitors müssen Sie keine separaten Knoten verwenden. Die Lösung kann auf Knoten ausgeführt werden, auf denen andere Workloads ausgeführt werden. Die Lösung bietet die Möglichkeit, den Überwachungsprozess zu beenden, falls mehr als 5 % der CPU-Ressourcen genutzt werden.
+Zur Ausführung der Netzwerkleistungsmonitor-Lösung auf virtuellen Knotencomputern zum Überwachen von Netzwerken müssen die Knoten mindestens einen Speicher von 500 MB und einen Kern aufweisen. Zum Ausführen des Netzwerkleistungsmonitors müssen Sie keine separaten Knoten verwenden. Die Lösung kann auf Knoten ausgeführt werden, auf denen andere Workloads ausgeführt werden. Die Lösung bietet die Möglichkeit, den Überwachungsprozess zu beenden, falls er mehr als 5% der CPU-Ressourcen nutzt.
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>Soll ich zur Verwendung des Netzwerkleistungsmonitors die Knoten als Direkt-Agent oder über System Center Operations Manager verbinden?
 Die beiden Funktionen „Systemmonitor“ und „Dienstkonnektivitätsmonitor“ unterstützen Knoten, die [als Direkt-Agent](../../azure-monitor/platform/agent-windows.md) sowie [über Operations Manager](../../azure-monitor/platform/om-agents.md) verbunden werden.
@@ -51,7 +51,7 @@ Die beiden Funktionen „Systemmonitor“ und „Dienstkonnektivitätsmonitor“
 Für die Funktion „ExpressRoute-Monitor“ sollten die Azure-Knoten nur als Direkt-Agents verbunden werden. Azure-Knoten, die über Operations Manager verbunden werden, werden nicht unterstützt. Lokale Knoten werden zur Überwachung einer ExpressRoute-Leitung unterstützt, wenn sie als Direkt-Agents und über Operations Manager verbunden sind.
 
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>Welches Protokoll, TCP oder ICMP, sollte für die Überwachung ausgewählt werden?
-Wenn Sie Ihr Netzwerk mithilfe Windows Server-basierter Knoten überwachen, wird empfohlen, TCP als Überwachungsprotokoll zu verwenden, da es eine höhere Genauigkeit bietet. 
+Wenn Sie Ihr Netzwerk mithilfe Windows Server-basierter Knoten überwachen, sollten Sie TCP als Überwachungsprotokoll verwenden, da es eine höhere Genauigkeit bietet. 
 
 ICMP wird für Windows-Knoten mit Desktop-/Clientbetriebssystemen empfohlen. Auf dieser Plattform können keine TCP-Daten über RAW-Sockets gesendet werden, die NPM zum Ermitteln der Netzwerktopologie verwendet.
 
@@ -71,7 +71,7 @@ Das Skript konfiguriert nur die lokale Windows-Firewall. Wenn Sie Netzwerkfirewa
 ### <a name="how-many-agents-should-i-use"></a>Wie viele Agents sollte ich verwenden?
 Sie sollten mindestens einen Agent für jedes Subnetz verwenden, das Sie überwachen möchten.
 
-### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--you-have-reached-your-configuration-limit"></a>Was ist die maximale Anzahl von Agents, die ich verwenden kann, bevor der Fehler „...Sie haben Ihr Konfigurationslimit erreicht“ angezeigt wird?
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Was ist die maximale Anzahl von Agents, die ich verwenden kann, bevor der Fehler „...Sie haben Ihr Konfigurationslimit erreicht“ angezeigt wird?
 NPM beschränkt die Anzahl von IPs auf 5.000 IPs pro Arbeitsbereich. Wenn ein Knoten sowohl IPv4- als auch IPv6-Adressen besitzt, wird dies als 2 IPs für diesen Knoten gezählt. Daher würde dieser Grenzwert von 5.000 IPs die Obergrenze für die Anzahl der Agents bestimmen. Sie können die inaktiven Agents von der Registerkarte „Knoten“ in „NPM“ >> „Konfigurieren“ löschen. NPM pflegt außerdem einen Verlauf aller IPs, die jemals der VM zugwiesen wurden, die den Agent hostet, und diese werden auch als separate IPs gezählt, die zu dieser Obergrenze von 5.000 IPs beitragen. Um IPs für Ihren Arbeitsbereich freizugeben, können Sie die Seite „Knoten“ verwenden, um die IPs zu löschen, die nicht verwendet werden.
 
 ## <a name="monitoring"></a>Überwachung
@@ -146,6 +146,26 @@ Ein Hop reagiert in einem der folgenden Szenarien möglicherweise nicht auf eine
 * Die Router wurden so konfiguriert, dass ihre Identität nicht angezeigt wird.
 * Die Netzwerkgeräte lassen keinen ICMP_TTL_EXCEEDED-Datenverkehr zu.
 * Die ICMP_TTL_EXCEEDED-Antwort vom Netzwerkgerät wird durch eine Firewall blockiert.
+
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy-"></a>Ich erhalte Warnungen für fehlerhafte Tests, aber die hohen Werte werden im NPM-Diagramm zu Verlust und Latenz nicht angezeigt. Wie prüfe ich, was fehlerhaft ist?
+NPM löst eine Warnung aus, wenn die End-to-End-Latenz zwischen Quelle und Ziel den Schwellenwert für einen beliebigen Pfad dazwischen überschreitet. Einige Netzwerke verfügen über mehr als einen Pfad, der dieselbe Quelle und dasselbe Ziel verbindet. NPM löst eine Warnung aus, wenn ein beliebiger Pfad fehlerhaft ist. Die in den Diagrammen gezeigte Darstellung von Verlust und Latenz ist der Durchschnittswert für alle Pfade und gibt daher möglicherweise nicht den genauen Wert eines einzelnen Pfads an. Suchen Sie in der Warnung nach der Spalte „SubType“, um zu verstehen, wo der Schwellenwert überschritten wurde. Wenn das Problem durch einen Pfad verursacht wird, lautet der SubType-Wert „NetworkPath“ (für Leistungsüberwachungstests), „EndpointPath“ (für Dienstkonnektivitätsmonitor-Tests) und „ExpressRoutePath“ (für ExpressRoute-Monitortests). 
+
+Beispielabfrage zur Feststellung, ob der Pfad fehlerhaft ist:
+
+    NetworkMonitoring 
+    | where ( SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and          CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
+    | project SubType, LossHealthState, LatencyHealthState, MedianLatency 
+
+### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>Warum wird mein Test als fehlerhaft angezeigt, aber die Topologie nicht? 
+NPM überwacht End-to-End-Verlust, Latenz und Topologie mit unterschiedlichen Intervallen. Verlust und Latenz werden einmal alle 5 Sekunden gemessen und alle drei Minuten aggregiert (für Systemmonitor und ExpressRoute-Monitor), während die Topologie alle 10 Minuten mit Traceroute berechnet wird. Die Topologie wird z.B. zwischen 3:44 Uhr und 4:04 Uhr drei Mal aktualisiert (3:44 Uhr, 3:54 Uhr, 4:04 Uhr), aber Verlust und Latenz sieben Mal (3:44 Uhr, 3:47 Uhr, 3:50 Uhr, 3:53 Uhr, 3:56 Uhr, 3:59 Uhr, 4:02 Uhr). Die um 3:54 Uhr generierte Topologie wird für Verlust und Latenz gerendert, die um 3:56 Uhr, 3:59 Uhr und 4:02 Uhr berechnet wird. Nehmen wir an, Sie erhalten eine Warnung, dass Ihre Expressroute-Verbindung um 3:59 Uhr fehlerhaft war. Sie melden sich beim NPM an und versuchen, die Topologiezeit auf 3:59 Uhr festzulegen. NPM rendert die um 3:54 Uhr generierte Topologie. Um die letzte bekannte Topologie Ihres Netzwerks zu verstehen, vergleichen Sie die Felder TimeProcessed (Zeit, zu der Verlust und Latenz berechnet wurden) und TracerouteCompletedTime (Zeit, zu der die Topologie berechnet wurde). 
+
+### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>Was ist der Unterschied zwischen den Feldern E2EMedianLatency und AvgHopLatencyList in der Tabelle NetworkMonitoring?
+E2EMedianLatency ist die Latenz, die alle drei Minuten nach Aggregieren der Ergebnisse der TCP-Ping-Tests aktualisiert wird, während AvgHopLatencyList alle 10 Minuten auf Basis von Traceroute aktualisiert wird. Um die genaue Zeit zu kennen, zu der E2EMedianLatency berechnet wurde, verwenden Sie das Feld TimeProcessed. Um die genaue Zeit zu kennen, zu der Traceroute AvgHopLatencyList abgeschlossen und aktualisiert hat, verwenden Sie das Feld TracerouteCompletedTime.
+
+### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>Warum unterscheiden sich Hop-by-Hop-Latenzzahlen von HopLatencyValues? 
+HopLatencyValues sind die Quelle für den Endpunkt.
+Beispiel: Hops – A, B, C. AvgHopLatency – 10, 15, 20. Dies bedeutet: Quelle zu A Latenz = 10, Quelle zu B Latenz = 15 und Quelle zu C Latenz = 20. Die Benutzeroberfläche berechnet die A-B-Hop-Latenz in der Topologie als 5.
 
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>Die Lösung zeigt einen Verlust von 100 % an, obwohl eine Verbindung zwischen der Quelle und dem Ziel besteht.
 Das kann der Fall sein, wenn die Hostfirewall oder die zwischengeschaltete Firewall (Netzwerkfirewall oder Azure-NSG) die Kommunikation zwischen dem Quell-Agent und dem Ziel über den Port blockiert, der vom Netzwerkleistungsmonitor zur Überwachung verwendet wird (standardmäßig handelt es sich um Port 8084, es sei denn, der Kunde hat dies geändert).

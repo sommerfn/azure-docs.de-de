@@ -7,16 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/11/2019
 ms.author: absha
-ms.openlocfilehash: 4dae04c14f9132c54dcc0575ccb2841a4742a626
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dee4859c57172a703517848510a31b70ff1f24cd
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176207"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "68370427"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Konfigurieren von App Service mit Application Gateway
 
-Mit Application Gateway können Sie eine Azure App Service-App oder andere mehrinstanzenfähigen Dienste als Back-End-Poolmitglied einrichten. 
+Da es sich bei App Service nicht um eine dedizierte Bereitstellung, sondern um einen mehrinstanzenfähigen Dienst handelt, wird der Hostheader in der eingehenden Anforderung verwendet, um die Anforderung für den richtigen App Service-Endpunkt aufzulösen. In der Regel unterscheidet sich der DNS-Name der Anwendung – der wiederum dem DNS-Namen entspricht, der dem Anwendungsgateway für den App Service zugeordnet ist – vom Domänennamen des Back-End-Diensts. Deshalb ist der Hostheader, der in der vom Anwendungsgateway empfangenen ursprünglichen Anforderung enthalten ist, ein anderer als der Hostname des Back-End-Diensts. Wenn der Hostheader in der Anforderung vom Anwendungsgateway also nicht in den Hostnamen des Back-End-Diensts geändert wird, können mehrinstanzenfähige Back-Ends die Anforderung nicht zum richtigen Endpunkt auflösen.
+
+Application Gateway verfügt über den Switch `Pick host name from backend address`, bei dem der Hostheader der Anforderung durch den Hostnamen des Back-Ends überschrieben wird, wenn die Anforderung vom Application Gateway an das Back-End geleitet wird. So werden mehrinstanzenfähige Back-Ends unterstützt, z. B. Azure App Service und API Management. 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -43,6 +45,9 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 5. Direkt unterhalb des **Ziele**-Dropdown wird ein weiteres Dropdown angezeigt, in dem eine Liste Ihrer App-Dienste enthalten ist. Wählen Sie in dieser Dropdownliste den App-Dienst aus, den Sie als Back-End-Poolmitglied hinzufügen möchten, und klicken Sie auf „Hinzufügen“.
 
    ![Screenshot: App-Dienst-Backend](./media/configure-web-app-portal/backendpool.png)
+   
+   > [!NOTE]
+   > In der Dropdownliste sind nur die App Services enthalten, die sich unter demselben Abonnement wie Ihr Application Gateway befinden. Wenn Sie einen App Service verwenden möchten, der sich unter einem anderen Abonnement als dem Abonnement des Application Gateway befindet, sollten Sie anstelle von **App Services** in der Dropdownliste **Ziele** die Option **IP-Adresse oder Hostname** wählen und den Hostnamen des App Service eingeben (z. B. „azurewebsites.net“).
 
 ## <a name="create-http-settings-for-app-service"></a>Erstellen von HTTP-Einstellungen für App-Dienste
 
@@ -52,13 +57,22 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 3. Wählen Sie je nach Anwendungsfall als Protokoll entweder HTTP oder HTTPS aus. 
 
-4. Klicken Sie auf das Kästchen neben **Für App Service verwenden**. Dadurch werden die Optionen **Test mit „Hostnamen aus Back-End-Adresse auswählen“ erstellen** und **Hostnamen aus Back-End-Adresse auswählen** aktiviert. Durch diese Option wird außerdem automatisch mit aktiviertem Parameter ein Test erstellt, der dann dieser HTTP-Einstellung zugeordnet wird.
+   > [!NOTE]
+   > Bei Auswahl von HTTPS müssen Sie kein Authentifizierungszertifikat oder vertrauenswürdiges Stammzertifikat hochladen, um das App Service-Back-End auf die Whitelist zu setzen, da es sich bei App Service um einen vertrauenswürdigen Azure-Dienst handelt.
+
+4. Aktivieren Sie das Kontrollkästchen **Für App Service verwenden**. Beachten Sie, dass die Switches `Create a probe with pick host name from backend address` und `Pick host name from backend address` automatisch aktiviert werden. Bei `Pick host name from backend address` wird der Hostheader in der Anforderung durch den Hostnamen des Back-Ends überschrieben, wenn die Anforderung vom Application Gateway an das Back-End geleitet wird.  
+
+   Bei `Create a probe with pick host name from backend address` wird automatisch ein Integritätstest erstellt und dieser HTTP-Einstellung zugeordnet. Sie müssen für diese HTTP-Einstellung keinen anderen Integritätstest erstellen. Sie können überprüfen, ob ein neuer Test mit dem Namen <HTTP Setting name><Unique GUID> der Liste mit den Integritätstests hinzugefügt wurde und bereits über den Switch `Pick host name from backend http settings enabled` verfügt.
+
+   Falls Sie bereits über eine oder mehrere HTTP-Einstellungen verfügen, die für App Service verwendet werden, und wenn für diese HTTP-Einstellungen das gleiche Protokoll wie für Ihre Erstellung genutzt wird, erhalten Sie anstelle des Switch `Create a probe with pick host name from backend address` eine Dropdownliste zum Auswählen eines benutzerdefinierten Tests. Der Grund ist, dass bereits eine HTTP-Einstellung mit App Service vorhanden ist – und daher auch ein Integritätstest mit dem Switch `Pick host name from backend http settings enabled`. Wählen Sie in der Dropdownliste diesen benutzerdefinierten Test aus.
 
 5. Klicken Sie auf **OK**, um die HTTP-Einstellung zu erstellen.
 
    ![Screenshot: HTTP-Einstellung 1](./media/configure-web-app-portal/http-setting1.png)
 
    ![Screenshot: HTTP-Einstellung 2](./media/configure-web-app-portal/http-setting2.png)
+
+
 
 ## <a name="create-rule-to-tie-the-listener-backend-pool-and-http-setting"></a>Erstellen einer Regel zum Binden des Listeners, des Back-End-Pools und der HTTP-Einstellung
 
@@ -74,6 +88,12 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
    ![Regel](./media/configure-web-app-portal/rule.png)
 
+## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>Zusätzliche Konfiguration bei einer Umleitung an den relativen App Service-Pfad
+
+Wenn der App Service eine Umleitungsantwort an den Client sendet, um eine Umleitung zum relativen Pfad durchzuführen (z. B. eine Umleitung von „contoso.azurewebsites.net/path1“ zu „contoso.azurewebsites.net/path2“), wird im Adressheader der Antwort der gleiche Hostname wie in der Anforderung verwendet, die vom Anwendungsgateway gesendet wurde. So sendet der Client die Anforderung direkt an „contoso.azurewebsites.net/path2“ und durchläuft nicht das Anwendungsgateway („contoso.com/path2“). Das Umgehen des Anwendungsgateways ist nicht wünschenswert.
+
+Wenn in Ihrem Fall Szenarien vorhanden sind, in denen der App Service eine Umleitungsantwort an den Client senden muss, sollten Sie die [zusätzlichen Schritte zum erneuten Generieren des Adressheaders](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url#sample-configuration) ausführen.
+
 ## <a name="restrict-access"></a>Beschränken des Zugriffs
 
 Die in diesen Beispielen bereitgestellten Web-Apps verwenden öffentliche IP-Adressen, auf die aus dem Internet direkt zugegriffen werden kann. Dies hilft bei der Problembehandlung, wenn Sie von einem neuen Feature erfahren und neue Sachen ausprobieren. Wenn Sie jedoch ein Feature in einer Produktionsumgebung bereitstellen möchten, ist es sinnvoll, stärkere Einschränkungen vorzusehen.
@@ -83,5 +103,3 @@ Eine Möglichkeit, wie Sie den Zugriff auf Ihre Web-Apps einschränken können, 
 ## <a name="next-steps"></a>Nächste Schritte
 
 [In diesem Artikel](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview) finden Sie weitere Informationen zu App Service und anderen Möglichkeiten der Application Gateway-Unterstützung für mehrinstanzenfähige Back-Ends.
-
-Falls Sie von der Antwort Ihres App-Diensts zur URL des App-Diensts weitergeleitet werden, finden Sie unter [Troubleshoot Application Gateway with App Service – Redirection to App Service’s URL (Troubleshooting in Application Gateway mit App Service – Weiterleitung zur URL eines App-Diensts)](https://docs.microsoft.com/azure/application-gateway/troubleshoot-app-service-redirection-app-service-url) weitere Informationen.

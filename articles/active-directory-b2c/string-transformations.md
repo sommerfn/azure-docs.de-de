@@ -2,28 +2,28 @@
 title: Beispiele für die Transformation von Zeichenfolgen-Ansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C | Microsoft-Dokumentation
 description: Beispiele für die Transformation von Zeichenfolgen-Ansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 32acee78b1aadbe5a461de6ea4475cf28503c325
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 83379cc194f23ebff977babc7124a7bc90f4bc60
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113026"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063455"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-In diesem Artikel werden Beispiele für die Verwendung von Transformationen von Zeichenfolgen-Ansprüchen für das Schema des Frameworks für die Identitätsfunktion in Azure Active Directory B2C veranschaulicht. Weitere Informationen finden Sie unter [ClaimsTransformations](claimstransformations.md).
+Dieser Artikel enthält Beispiele für die Verwendung von Transformationen von Zeichenfolgenansprüchen des Identity Experience Framework-Schemas in Azure Active Directory B2C (Azure AD B2C). Weitere Informationen finden Sie unter [ClaimsTransformations](claimstransformations.md).
 
-## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual 
+## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual
 
 Zwei Ansprüche werden miteinander verglichen, und es wird eine Ausnahme ausgelöst, wenn diese gemäß dem angegebenen Vergleich inputClaim1, inputClaim2 und stringComparison nicht gleich sind.
 
@@ -37,7 +37,7 @@ Die Anspruchstransformation **AssertStringClaimsAreEqual** wird immer über ein 
 
 ![Ausführung von AssertStringClaimsAreEqual](./media/string-transformations/assert-execution.png)
 
-Mithilfe dieser Anspruchstransformation können Sie sicherstellen, dass zwei Anspruchstypen den gleichen Wert aufweisen. Ist dies nicht der Fall, wird eine Fehlermeldung ausgelöst. Im folgenden Beispiel wird überprüft, ob der Anspruchstyp **StrongAuthenticationEmailAddress** gleich dem Anspruchstyp **email** ist. Andernfalls wird eine Fehlermeldung ausgelöst. 
+Mithilfe dieser Anspruchstransformation können Sie sicherstellen, dass zwei Anspruchstypen den gleichen Wert aufweisen. Ist dies nicht der Fall, wird eine Fehlermeldung ausgelöst. Im folgenden Beispiel wird überprüft, ob der Anspruchstyp **StrongAuthenticationEmailAddress** gleich dem Anspruchstyp **email** ist. Andernfalls wird eine Fehlermeldung ausgelöst.
 
 ```XML
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
@@ -84,7 +84,7 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
   - **stringComparison**:  ordinalIgnoreCase
 - Ergebnis: Fehler wird ausgelöst.
 
-## <a name="changecase"></a>ChangeCase 
+## <a name="changecase"></a>ChangeCase
 
 Ändert die Groß-/Kleinschreibung des bereitgestellten Anspruchs je nach Operator in Groß- oder Kleinbuchstaben.
 
@@ -94,7 +94,7 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
 | InputParameter | toCase | Zeichenfolge | Einer der folgenden Werte: `LOWER` oder `UPPER`. |
 | OutputClaim | outputClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
-Mithilfe dieses Anspruchstyps können Sie jeden Zeichenfolgen-Anspruchstyp in Groß- oder Kleinbuchstaben ändern.  
+Mithilfe dieses Anspruchstyps können Sie jeden Zeichenfolgen-Anspruchstyp in Groß- oder Kleinbuchstaben ändern.
 
 ```XML
 <ClaimsTransformation Id="ChangeToLower" TransformationMethod="ChangeCase">
@@ -119,7 +119,7 @@ Mithilfe dieses Anspruchstyps können Sie jeden Zeichenfolgen-Anspruchstyp in Gr
 - Ausgabeansprüche:
   - **email**: someone@contoso.com
 
-## <a name="createstringclaim"></a>CreateStringClaim 
+## <a name="createstringclaim"></a>CreateStringClaim
 
 Erstellt einen Zeichenfolgen-Anspruch aus dem angegebenen Eingabeparameter in der Richtlinie.
 
@@ -224,7 +224,7 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
     - **inputClaim1**: v1
 - Eingabeparameter:
     - **compareTo:** V1
-    - **operator:** EQUAL 
+    - **operator:** EQUAL
     - **ignoreCase**:  true
 - Ausgabeansprüche:
     - **outputClaim**: true
@@ -258,7 +258,7 @@ Im folgenden Beispiel wird eine globale eindeutige ID generiert. Mithilfe dieser
 
 - Eingabeparameter:
     - **randomGeneratorType:** GUID
-- Ausgabeansprüche: 
+- Ausgabeansprüche:
     - **outputClaim**: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
 Im folgenden Beispiel wird ein ganzzahliger Zufallswert zwischen 0 und 1.000 generiert. Der Wert ist wie folgt formatiert: OTP_{random value}.
@@ -284,7 +284,7 @@ Im folgenden Beispiel wird ein ganzzahliger Zufallswert zwischen 0 und 1.000 gen
     - **maximumNumber:** 1000
     - **stringFormat:** OTP_{0}
     - **base64**: false
-- Ausgabeansprüche: 
+- Ausgabeansprüche:
     - **outputClaim:** OTP_853
 
 
@@ -298,7 +298,7 @@ Formatiert einen Anspruch anhand der angegebenen Formatzeichenfolge. Bei dieser 
 | InputParameter | stringFormat | Zeichenfolge | Das Zeichenfolgenformat, einschließlich des Parameters {0}. |
 | OutputClaim | outputClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
-Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge mit dem Parameter {0} formatieren. Im folgenden Beispiel wird ein **userPrincipalName** erstellt. Sämtliche technische Profile sozialer Identitätsanbieter, wie z.B. `Facebook-OAUTH`, rufen den **CreateUserPrincipalName** zum Generieren eines **userPrincipalName** auf.   
+Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge mit dem Parameter {0} formatieren. Im folgenden Beispiel wird ein **userPrincipalName** erstellt. Sämtliche technische Profile sozialer Identitätsanbieter, wie z.B. `Facebook-OAUTH`, rufen den **CreateUserPrincipalName** zum Generieren eines **userPrincipalName** auf.
 
 ```XML
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
@@ -392,7 +392,7 @@ Bei der Anspruchstransformation wird nach dem Text des Elements gesucht und der 
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
   </InputClaims>
   <OutputClaims>
-    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />         
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />        
   </OutputClaims>
 </ClaimsTransformation>
 ```
@@ -431,7 +431,7 @@ Im folgenden Beispiel wird in einer der Sammlungen von inputParameter nach dem D
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
   </OutputClaims>
-</ClaimsTransformation> 
+</ClaimsTransformation>
 ```
 
 ### <a name="example"></a>Beispiel
@@ -513,7 +513,7 @@ Mithilfe dieser Anspruchstransformation können Sie den Domänennamen hinter dem
 | OutputClaim | outputClaim2 | Zeichenfolge | Wenn Zeichenfolgen gleich sind, enthält dieser Ausgabeanspruch den Wert des Eingabeparameters `stringMatchMsgCode`. |
 | OutputClaim | stringCompareResultClaim | boolean | Der Ausgabeanspruchstyp „CompareResult“, der basierend auf dem Ergebnis des Vergleichs auf `true` oder `false` festgelegt werden muss. |
 
-Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruch gleich einem von Ihnen angegebenen Wert ist. Bei der folgenden Anspruchstransformation wird beispielsweise überprüft, ob der Wert des Anspruchs **termsOfUseConsentVersion** gleich `v1` ist. Ist dies der Fall, ändern Sie den Wert in `v2`. 
+Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruch gleich einem von Ihnen angegebenen Wert ist. Bei der folgenden Anspruchstransformation wird beispielsweise überprüft, ob der Wert des Anspruchs **termsOfUseConsentVersion** gleich `v1` ist. Ist dies der Fall, ändern Sie den Wert in `v2`.
 
 ```XML
 <ClaimsTransformation Id="CheckTheTOS" TransformationMethod="SetClaimsIfStringsAreEqual">
@@ -539,7 +539,7 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
     - **inputClaim**: v1
 - Eingabeparameter:
     - **matchTo:** V1
-    - **stringComparison**: ordinalIgnoreCase 
+    - **stringComparison**: ordinalIgnoreCase
     - **stringMatchMsg:**  B2C_V1_90005
     - **stringMatchMsgCode:**  Die TOS wurden auf v2 aktualisiert.
 - Ausgabeansprüche:
@@ -560,7 +560,7 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
 | OutputClaim | outputClaim | Zeichenfolge | Wenn Zeichenfolgen gleich sind, enthält dieser Ausgabeanspruch den Wert des Eingabeparameters `outputClaimIfMatched`. Oder NULL, wenn die Zeichenfolgen nicht übereinstimmen. |
 | OutputClaim | stringCompareResultClaim | boolean | Der Ausgabeanspruchstyp „CompareResult“, der basierend auf dem Ergebnis des Vergleichs auf `true` oder `false` festgelegt werden muss. |
 
-Bei der folgenden Anspruchstransformation wird beispielsweise überprüft, ob der Wert des Anspruchs **ageGroup** gleich `Minor` ist. Ist dies der Fall, wird der Wert `B2C_V1_90001` zurückgegeben. 
+Bei der folgenden Anspruchstransformation wird beispielsweise überprüft, ob der Wert des Anspruchs **ageGroup** gleich `Minor` ist. Ist dies der Fall, wird der Wert `B2C_V1_90001` zurückgegeben.
 
 ```XML
 <ClaimsTransformation Id="SetIsMinor" TransformationMethod="SetClaimsIfStringsMatch">
@@ -585,7 +585,7 @@ Bei der folgenden Anspruchstransformation wird beispielsweise überprüft, ob de
     - **claimToMatch:** Nebenversion
 - Eingabeparameter:
     - **matchTo:** Nebenversion
-    - **stringComparison**: ordinalIgnoreCase 
+    - **stringComparison**: ordinalIgnoreCase
     - **outputClaimIfMatched:**  B2C_V1_90001
 - Ausgabeansprüche:
     - **isMinorResponseCode:** B2C_V1_90001

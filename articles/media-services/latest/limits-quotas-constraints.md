@@ -9,22 +9,22 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 05/16/2019
 ms.author: juliako
-ms.openlocfilehash: d5fc14adab956fae23aad24fa7bc488c8c2041e3
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 709ed293dbb0550dc1bb43bf1e1e1cc50906cc31
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621684"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293443"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kontingente und Einschränkungen für Azure Media Services (v3)
 
 In diesem Artikel werden die Kontingente und Einschränkungen für Azure Media Services v3 beschrieben.
 
-| Ressource | Standardlimit | 
+| Resource | Standardlimit | 
 | --- | --- | 
-| Medienobjekte pro Azure Media Services-Konto | 1.000.000|
+| Medienobjekte pro Azure Media Services-Konto | 1\.000.000|
 | Dynamische Manifestfilter|100|
 | „JobInputs“ pro Auftrag | 50  (feststehend)|
 | „JobOutputs“ pro Auftrag | 20 (feststehend) |
@@ -36,26 +36,37 @@ In diesem Artikel werden die Kontingente und Einschränkungen für Azure Media S
 | Auflisten von Aufträgen|Paginieren Sie die Antwort mit 500 Transformationen pro Seite|
 | Liveereignisse pro Media Services-Konto |5|
 | Media Services-Konten in einem einzelnen Abonnement | 25 (feststehend) |
-| Liveausgaben im ausgeführten Zustand pro Liveereignis |3|
+| Live-Ausgaben pro Liveereignis |3 <sup>(3)</sup> |
 | Max. Dauer für Liveausgabe | 25 Stunden |
 | Speicherkonten | 100<sup>(4)</sup> (feststehend) |
 | Streamingendpunkte (angehalten oder ausgeführt) pro Media Services-Konto|2 (feststehend)|
-| Streamingrichtlinien | 100 <sup>(3)</sup> |
+| Streamingrichtlinien | 100 <sup>(5)</sup> |
 | Transformationen pro Media Services-Konto | 100  (feststehend)|
-| Eindeutige Streaminglocator, die einem Medienobjekt gleichzeitig zugeordnet sind | 100<sup>(5)</sup> (fest) |
-| Richtlinie für Inhaltsschlüssel |30 | 
+| Eindeutige Streaminglocator, die einem Medienobjekt gleichzeitig zugeordnet sind | 100<sup>(6)</sup> (feststehend) |
+| Optionen pro Richtlinie für den Inhaltsschlüssel |30 | 
+| Lizenzen pro Monat für jeden der DRM-Typen für den Media Services-Schlüsselbereitstellungsdienst pro Konto|1\.000.000|
 
-<sup>1</sup> In Azure Blob Storage werden derzeit als Größe für ein einzelnes Blob bis zu 5 TB unterstützt. Allerdings gelten basierend auf den vom Dienst verwendeten VM-Größen zusätzliche Grenzwerte in Azure Media Services. Wenn Ihre Quelldatei größer als 260 GB ist, wird Ihr Auftrag wahrscheinlich nicht erfolgreich sein. Bei 4K-Inhalten, die den Grenzwert von 260 GB überschreiten, kontaktieren Sie uns unter amshelp@microsoft.com, um Informationen zu möglichen Lösungen zur Unterstützung Ihres Szenarios zu erhalten.
+<sup>1</sup> In Azure Blob Storage werden derzeit als Größe für ein einzelnes Blob bis zu 5 TB unterstützt. In Media Services gelten abhängig von den vom Dienst verwendeten VM-Größen weitere Grenzwerte. Die Größenbeschränkung gilt sowohl für die von Ihnen hochgeladenen Dateien als auch für Dateien, die in Folge der Verarbeitung durch Media Services (Codierung oder Analyse) generiert werden. Wenn Ihre Quelldatei größer als 260 GB ist, wird Ihr Auftrag wahrscheinlich nicht erfolgreich sein. 
+
+Die folgende Tabelle enthält die Grenzwerte für die reservierten Einheiten für Medien (S1, S2 und S3). Übersteigt die Größe Ihrer Quelldatei die in der Tabelle definierten Grenzwerte, ist Ihr Codierungsauftrag nicht erfolgreich. Beim Codieren von Quellen mit 4K-Auflösung und langer Dauer müssen Sie reservierte Einheiten für Medien vom Typ „S3“ verwenden, um die erforderliche Leistung zu erhalten. Sollten Sie über 4K-Inhalte verfügen, die den Grenzwert von 260 GB für reservierte Einheiten für Medien vom Typ „S3“ übersteigen, setzen Sie sich amshelp@microsoft.com mit uns in Verbindung, um Informationen zu möglichen Lösungen für Ihr Szenario zu erhalten.
+
+|Reservierte Einheiten für Medien (Typ)   |Maximale Eingabegröße (GB)|
+|---|---|
+|S1 |   26|
+|S2 | 60|
+|S3 |260|
 
 <sup>2</sup> Diese Zahl umfasst fertig gestellte, aktive und abgebrochene Aufträge sowie Aufträge in der Warteschlange. Gelöschte Aufträge sind nicht enthalten. 
 
 Alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, werden automatisch gelöscht, selbst wenn die Gesamtanzahl von Datensätzen unterhalb des maximalen Kontingents liegt. 
 
-<sup>3</sup> Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Sammlung solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocator wiederverwenden, wenn dieselben Verschlüsselungsoptionen und Protokolle benötigt werden. Sie sollten nicht für jeden Streaminglocator eine neue Streamingrichtlinie erstellen.
+<sup>3</sup> Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet.
 
 <sup>4</sup> Die Speicherkonten müssen aus demselben Azure-Abonnement stammen.
 
-<sup>5</sup> Streaminglocator sind nicht für die Verwaltung der benutzerbezogenen Zugriffssteuerung konzipiert. Um einzelnen Benutzern verschiedene Zugriffsrechte zu erteilen, verwenden Sie Lösungen zur Verwaltung digitaler Rechte (Digital Rights Management, DRM).
+<sup>5</sup> Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Sammlung solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und Protokolle benötigt werden. Sie sollten nicht für jeden Streaminglocator eine neue Streamingrichtlinie erstellen.
+
+<sup>6</sup> Streaminglocators sind nicht für die Verwaltung der benutzerbezogenen Zugriffssteuerung konzipiert. Um einzelnen Benutzern verschiedene Zugriffsrechte zu erteilen, verwenden Sie Lösungen zur Verwaltung digitaler Rechte (Digital Rights Management, DRM).
 
 ## <a name="support-ticket"></a>Supportticket
 

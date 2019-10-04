@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/27/2017
+ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4917720af2396b68ccd36cc0410c9acbbba2d9b2
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 5fa3100cae9b1a2c9ca320776cc357f3720b3473
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448584"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309993"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe mit PowerShell
 
@@ -61,8 +61,7 @@ So erstellen Sie eine VM-Skalierungsgruppe samt aktivierter vom System zugewiese
     ```powershell
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
     ```
-> [!NOTE]
-> Sie können optional die verwalteten Identitäten für die VM-Skalierungsgruppe von Azure-Ressourcen bereitstellen, die jedoch bald veraltet sein werden. Es wird empfohlen, den Azure Instance Metadata-Identitätsendpunkt für die Authentifizierung zu verwenden. Weitere Informationen finden Sie unter [Beenden der Verwendung der VM-Erweiterung und Starten der Verwendung des Azure IMDS-Endpunkts für die Authentifizierung](howto-migrate-vm-extension.md).
+
 
 
 ## <a name="enable-system-assigned-managed-identity-on-an-existing-azure-virtual-machine-scale-set"></a>Aktivieren einer vom System zugewiesenen verwalteten Identität in einer vorhandenen Azure-VM-Skalierungsgruppe
@@ -81,8 +80,7 @@ Wenn Sie eine vom System zugewiesene verwaltete Identität in einer vorhandenen 
    Update-AzVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
    ```
 
-> [!NOTE]
-> Sie können optional die verwalteten Identitäten für die VM-Skalierungsgruppe von Azure-Ressourcen bereitstellen, die jedoch bald veraltet sein werden. Es wird empfohlen, den Azure Instance Metadata-Identitätsendpunkt für die Authentifizierung zu verwenden. Weitere Informationen finden Sie unter [Migrieren von der VM-Erweiterung zum Azure IMDS-Endpunkt für die Authentifizierung](howto-migrate-vm-extension.md).
+
 
 ### <a name="disable-the-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Deaktivieren der vom System zugewiesenen verwalteten Identität in einer Azure-VM-Skalierungsgruppe
 

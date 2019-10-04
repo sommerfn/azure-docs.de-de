@@ -1,19 +1,19 @@
 ---
-title: Erstellen von Spark Streaming-Aufträgen mit Ereignisverarbeitung vom Typ „Exactly-Once“ – Azure HDInsight
-description: Anleitung zum Einrichten von Spark Streaming zur ausschließlich einmaligen Verarbeitung eines Ereignisses.
-services: hdinsight
+title: Spark Streaming-Aufträge mit Ereignisverarbeitung vom Typ „Exactly-Once“ – Azure HDInsight
+description: Einrichten von Apache Spark Streaming zur ausschließlich einmaligen Verarbeitung eines Ereignisses.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 194e6091180fa1dd0eaaf999e970c0248ea99db9
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 908c49a46fe7993bc20bcb63a3c15758e2de5343
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651774"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091021"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Erstellen von Apache Spark-Streamingaufträgen mit Ereignisverarbeitung vom Typ „Exactly-Once“
 

@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 4fea787e7fe20d60de91761811e1b69bebf3a010
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: dc78f87d9b47745119da91b8ed1f8f6c8572968c
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896689"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65190442"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Verschieben von Mainframespeicher zu Azure
 
@@ -96,7 +96,7 @@ SSDs bietet auf Azure die höchste Speicherleistung. Die folgenden Optionen sind
 
 | Type         | Größe           | IOPS                  |
 |--------------|----------------|-----------------------|
-| SSD Ultra    | 4 GB bis 64 TB  | 1.200 bis 160.000 IOPS |
+| SSD Ultra    | 4 GB bis 64 TB  | 1\.200 bis 160.000 IOPS |
 | SSD Premium  | 32 GB bis 32 TB | 12 bis 15.000 IOPS     |
 | SSD Standard | 32 GB bis 32 TB | 12 bis 2.000 IOPS      |
 
@@ -106,26 +106,26 @@ Blob-Speicher bietet das größte Speichervolumen auf Azure. Neben der Speicherg
 
 - [Mainframemigration](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [Mainframerehosting auf virtuellen Azure-Computern](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
-- [Verschieben von Mainframe-Computing zu Azure](mainframe-compute-Azure.md)
-- [Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
-- [Verwaltete SSD-Standarddatenträger für Azure VM-Workloads](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
+- [Move mainframe compute to Azure (Migrieren von Mainframecomputeressourcen zu Azure)](mainframe-compute-Azure.md)
+- [Deciding when to use Azure Blobs, Azure Files, or Azure Disks (Kriterien für den Einsatz von Azure-Blobs, Azure-Dateifreigaben und verwalteten Azure-Datenträgern)](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
+- [Verwaltete SSD Standard-Datenträger für Azure-VM-Workloads](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM-Ressourcen
 
-- [Parallel Sysplex on IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS and the Coupling Facility: Beyond the Basics](http://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
-- [Creating required users for a Db2 pureScale Feature installation](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
-- [Db2icrt - Create instance command](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
-- [Db2 pureScale Clustered Database Solution](http://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+- [Parallel Sysplex on IBM Z (Parallel Sysplex auf IBM Z)](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
+- [IBM CICS and the Coupling Facility: Beyond the Basics (IBM CICS und die Coupling Facility: Fortgeschrittene Themen)](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [Erstellen der erforderlichen Benutzer für eine Installation von Db2 pureScale Feature](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
+- [db2icrt-Instanz erstellen (Befehl)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
+- [Db2 pureScale Clustered Database Solution (Clusterdatenbank-Lösung mit Db2 pureScale)](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 - [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
 ### <a name="azure-government"></a>Azure Government
 
-- [Microsoft Azure Government-Cloud für Mainframeanwendungen](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+- [Microsoft Azure Government cloud for mainframe applications (Microsoft Azure Government-Cloud für Mainframeanwendungen)](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
 - [Microsoft und FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
 
 ### <a name="more-migration-resources"></a>Weitere Migrationsressourcen
 
-- [Platform Modernization Alliance: IBM DB2 unter Azure](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
-- [Virtuelles Azure-Rechenzentrum: Lift-and-Shift-Leitfaden](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
+- [Platform Modernization Alliance: IBM Db2 on Azure (Platform Modernization Alliance: IBM Db2 unter Azure)](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
+- [Virtuelles Azure-Rechenzentrum: Lift and Shift-Leitfaden](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
 - [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

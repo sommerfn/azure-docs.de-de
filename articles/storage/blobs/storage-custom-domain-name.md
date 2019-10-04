@@ -1,19 +1,19 @@
 ---
 title: Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure-Speicherkonto | Microsoft-Dokumentation
 description: Verwenden Sie das Azure-Portal, um dem Blob Storage- oder Webendpunkt in einem Azure-Speicherkonto Ihren eigenen kanonischen Namen (CNAME) zuzuordnen.
-services: storage
-author: tamram
+author: normesta
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2018
-ms.author: tamram
+ms.author: normesta
+ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: e40b6fe115d6b6dea38ead9f0b2550d96bd04c7a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2359befc05bff867a8f8b17943ed67d906ff4971
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112635"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534344"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure-Speicherkonto
 
@@ -27,16 +27,16 @@ Sie können eine benutzerdefinierte Domäne für den Zugriff auf Blob-Daten in I
 > Von Speicherkonten wird derzeit nur ein einzelner benutzerdefinierter Domänenname pro Konto unterstützt. Ein benutzerdefinierter Domänenname kann nicht dem Webdienstendpunkt und zugleich dem Blobdienstendpunkt zugeordnet werden.
 > 
 > [!NOTE]
-> Die Zuordnung funktioniert nur für Unterdomänen (z.B. www\.contoso.com). Wenn Ihr Webendpunkt in der Stammdomäne (z.B. contoso.com) verfügbar sein soll, müssen Sie [das Azure CDN mit benutzerdefinierten Domänen](storage-https-custom-domain-cdn.md) verwenden.
+> Die Zuordnung funktioniert nur für Unterdomänen (z.B. www\.contoso.com). Wenn Ihr Webendpunkt in der Stammdomäne (z.B. contoso.com) verfügbar sein soll, müssen Sie [eine benutzerdefinierte Domäne zum Azure CDN-Endpunkt hinzufügen](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
 
 Die folgende Tabelle enthält einige Beispiel-URLs für Blobdaten, die sich in einem Speicherkonto namens *mystorageaccount* befinden. Die für das Speicherkonto registrierte benutzerdefinierte Unterdomäne ist *www\.contoso.com*:
 
 | Ressourcentyp | Standard-URL | Benutzerdefinierte Domänen-URL |
 | --- | --- | --- |
-| Speicherkonto | http://mystorageaccount.blob.core.windows.net | http://www.contoso.com |
-| Blob |http://mystorageaccount.blob.core.windows.net/mycontainer/myblob | http://www.contoso.com/mycontainer/myblob |
-| Stammcontainer | http://mystorageaccount.blob.core.windows.net/myblob oder http://mystorageaccount.blob.core.windows.net/$root/myblob| http://www.contoso.com/myblob oder http://www.contoso.com/$root/myblob |
-| Web |  http://mystorageaccount.[zone].web.core.windows.net/$web/[indexdoc] oder http://mystorageaccount.[zone].web.core.windows.net/[indexdoc] oder http://mystorageaccount.[zone].web.core.windows.net/$web oder http://mystorageaccount.[zone].web.core.windows.net/ | http://www.contoso.com/$web oder http://www.contoso.com/ oder http://www.contoso.com/$web/[indexdoc] oder http://www.contoso.com/[indexdoc] |
+| Speicherkonto | http:\//mystorageaccount.blob.core.windows.net | http:\//www.contoso.com |
+| Blob |http:\//mystorageaccount.blob.core.windows.net/mycontainer/myblob | http:\//www.contoso.com/mycontainer/myblob |
+| Stammcontainer | http:\//mystorageaccount.blob.core.windows.net/myblob oder http:\//mystorageaccount.blob.core.windows.net/$root/myblob | http:\//www.contoso.com/myblob oder http:\//www.contoso.com/$root/myblob |
+| Web |  http:\//mystorageaccount.[zone].web.core.windows.net/$web/[indexdoc] oder http:\//mystorageaccount.[zone].web.core.windows.net/[indexdoc] oder http:\//mystorageaccount.[zone].web.core.windows.net/$web oder http:\//mystorageaccount.[zone].web.core.windows.net/ | http:\//www.contoso.com/$web or http:\//www.contoso.com/ oder http:\//www.contoso.com/$web/[indexdoc] oder  http:\//www.contoso.com/[indexdoc] |
 
 > [!NOTE]  
 > Wie in den folgenden Abschnitten gezeigt gelten alle Beispiele für den Blobdienstendpunkt auch für den Webdienstendpunkt.

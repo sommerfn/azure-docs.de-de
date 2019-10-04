@@ -1,7 +1,6 @@
 ---
 title: Apache Storm-Topologien mit Visual Studio und C# – Azure HDInsight
 description: Lernen Sie, wie Sie Storm-Topologien in C# erstellen. Erstellen Sie mit den Hadoop-Tools für Visual Studio eine einfache Wortanzahl-Topologie in Visual Studio.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1bcb50829dca59f8a467c2c1d2381b5463ef9471
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 828ec2b925535df3f925093466556447e703cd76
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437393"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003809"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Entwickeln von C#-Topologien für Apache Storm mithilfe von Data Lake-Tools für Visual Studio
 
@@ -136,7 +135,7 @@ Ein Topologiebeispiel, die diese Komponente verwendet und mit Storm auf HDInsigh
 
 2. Erweitern Sie auf dem Fenster **Neues Projekt** die Option **Installiert** > **Vorlagen**, und wählen Sie anschließend **Azure Data Lake** aus. Wählen Sie in der Liste der Vorlagen die Option **Storm-Anwendung**aus. Geben Sie unten im Bildschirm **WordCount** als Namen der Anwendung ein.
 
-    ![Screenshot des Fensters Neues Projekt](./media/apache-storm-develop-csharp-visual-studio-topology/new-project.png)
+    ![Screenshot des Fensters Neues Projekt](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
 3. Nachdem Sie das Projekt erstellt haben, sollten die folgenden Dateien vorliegen:
 
@@ -339,7 +338,7 @@ Ein Topologiebeispiel, die diese Komponente verwendet und mit Storm auf HDInsigh
 
 Spouts und Bolts werden in einem Diagramm angeordnet, das definiert, wie die Daten zwischen den Komponenten verlaufen. Bei dieser Topologie sieht das Diagramm folgendermaßen aus:
 
-![Diagramm der Anordnung von Komponenten](./media/apache-storm-develop-csharp-visual-studio-topology/wordcount-topology.png)
+![Diagramm der Anordnung von Komponenten](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
 
 Sätze werden vom Spout ausgegeben und an Instanzen des Splitter-Bolts verteilt. Das Splitter-Bolt unterteilt Sätze in Wörter, die an das Counter-Bolt verteilt werden.
 
@@ -462,7 +461,6 @@ Erstellen Sie für ein Beispiel einer hybriden Topologie ein Projekt, und wähle
   > [!NOTE]  
   > Diese Version veranschaulicht zudem, wie Sie Clojure-Code aus einer Textdatei als Java-Komponente verwenden.
 
-
 Um die Topologie zu wechseln, die beim Übermitteln des Projekts verwendet wird, verschieben Sie vor der Übermittlung an den Cluster die Anweisung `[Active(true)]` in die Topologie, die Sie verwenden möchten.
 
 > [!NOTE]  
@@ -560,27 +558,27 @@ Stellen Sie bei Linux-basierten HDInsight-Clustern sicher, dass das Projekt für
 
 ### <a name="test-a-topology-locally"></a>Lokales Testen einer Topologie
 
-Obwohl es relativ einfach ist, eine Topologie in einem Cluster bereitzustellen, müssen Sie eine Topologie möglicherweise auch lokal testen. Gehen Sie wie folgt vor, um die Beispieltopologie in diesem Lernprogramm lokal in Ihrer Entwicklungsumgebung auszuführen und zu testen.
+Obwohl es relativ einfach ist, eine Topologie in einem Cluster bereitzustellen, müssen Sie eine Topologie möglicherweise auch lokal testen. Gehen Sie wie folgt vor, um die Beispieltopologie in diesem Tutorial lokal in Ihrer Entwicklungsumgebung auszuführen und zu testen.
 
 > [!WARNING]  
 > Lokale Tests funktionieren nur für einfache C#-Topologien. Sie können keine lokalen Tests für hybride Topologien verwenden oder für Topologien, in denen mehrere Streams verwendet werden.
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Eigenschaften** aus. Wählen Sie in den Projekteigenschaften für **Ausgabetyp** die Option **Konsolenanwendung** aus.
 
-    ![Bildschirmabbildung von Projekteigenschaften mit hervorgehobenem Ausgabetyp](./media/apache-storm-develop-csharp-visual-studio-topology/outputtype.png)
+    ![Bildschirmabbildung von Projekteigenschaften mit hervorgehobenem Ausgabetyp](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
 
    > [!NOTE]
    > Denken Sie daran, für den **Ausgabetyp** später wieder **Klassenbibliothek** festzulegen, bevor die Topologie in einem Cluster bereitgestellt wird.
 
-2. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie dann **Hinzufügen** > **Neues Element** aus. Wählen Sie **Klasse** aus, und geben Sie **LocalTest.cs** als Klassennamen ein. Klicken Sie abschließend auf **Hinzufügen**.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie dann **Hinzufügen** > **Neues Element** aus. Wählen Sie **Klasse** aus, und geben Sie **LocalTest.cs** als Klassennamen ein. Klicken Sie abschließend auf **Hinzufügen**.
 
-3. Öffnen Sie die Datei **LocalTest.cs**, und fügen Sie die folgende **using**-Anweisung am Anfang hinzu:
+1. Öffnen Sie die Datei **LocalTest.cs**, und fügen Sie die folgende **using**-Anweisung am Anfang hinzu:
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-4. Fügen Sie den folgenden Code als Inhalt in die **LocalTest**-Klasse ein:
+1. Fügen Sie den folgenden Code als Inhalt in die **LocalTest**-Klasse ein:
 
     ```csharp
     // Drives the topology components
@@ -682,9 +680,9 @@ Obwohl es relativ einfach ist, eine Topologie in einem Cluster bereitzustellen, 
     Console.ReadKey();
     ```
 
-2. Speichern Sie die Änderungen, und klicken Sie dann auf **F5** oder wählen Sie **Debuggen** > **Debugging starten** aus, um das Projekt zu starten. Daraufhin sollte ein Konsolenfenster angezeigt und mit fortschreitendem Test der Status protokolliert werden. Nachdem **Tests abgeschlossen** angezeigt wurde, drücken Sie eine beliebige Taste, um das Fenster zu schließen.
+1. Speichern Sie die Änderungen, und klicken Sie dann auf **F5** oder wählen Sie **Debuggen** > **Debugging starten** aus, um das Projekt zu starten. Daraufhin sollte ein Konsolenfenster angezeigt und mit fortschreitendem Test der Status protokolliert werden. Nachdem **Tests abgeschlossen** angezeigt wurde, drücken Sie eine beliebige Taste, um das Fenster zu schließen.
 
-3. Verwenden Sie **Windows Explorer**, um das Verzeichnis zu suchen, welches das Projekt enthält. Beispiel:  **C:\Benutzer\<Ihr_Benutzername>\Dokumente\Visual Studio 2013\Projects\WordCount\WordCount**. Öffnen Sie in diesem Verzeichnis das Unterverzeichnis **Bin**, und klicken Sie dann auf **Debug**. Es sollten die beim Ausführen der Tests erstellten Textdateien vorhanden sein: "sentences.txt", "counter.txt" und "splitter.txt". Öffnen Sie die einzelnen Textdateien, und überprüfen Sie die Daten.
+1. Verwenden Sie **Windows Explorer**, um das Verzeichnis zu suchen, welches das Projekt enthält. Beispiel:  **C:\Benutzer\<Ihr_Benutzername>\Dokumente\Visual Studio 2013\Projects\WordCount\WordCount**. Öffnen Sie in diesem Verzeichnis das Unterverzeichnis **Bin**, und klicken Sie dann auf **Debug**. Es sollten die beim Ausführen der Tests erstellten Textdateien vorhanden sein: "sentences.txt", "counter.txt" und "splitter.txt". Öffnen Sie die einzelnen Textdateien, und überprüfen Sie die Daten.
 
    > [!NOTE]  
    > Zeichenfolgendaten bleiben in diesen Dateien als Array von Dezimalwerten erhalten. Beispiel: \[[97,103,111]] in der Datei **splitter.txt** entspricht dem Wort *and*.

@@ -1,20 +1,19 @@
 ---
-title: Konfigurieren von Azure Service Health-Warnungen in OpsGenie | Microsoft-Dokumentation
+title: Senden von Azure Service Health-Warnungen mit OpsGenie mit Webhooks
 description: Erhalten Sie personalisierte Benachrichtigungen zu Service Health-Ereignissen an Ihre OpsGenie-Instanz.
 author: stephbaron
 ms.author: stbaron
 ms.topic: article
 ms.service: service-health
-ms.workload: Supportability
-ms.date: 11/14/2017
-ms.openlocfilehash: 79a77fff206831c0f9b3bb73ad33f951d99e2c81
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 06/10/2019
+ms.openlocfilehash: fab99b7093ac3f18f6313273d21905e0a3ed7e5b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858827"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67067162"
 ---
-# <a name="configure-service-health-alerts-with-opsgenie"></a>Konfigurieren von Service Health-Warnungen mit OpsGenie
+# <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Senden von Azure Service Health-Warnungen mit OpsGenie mit Webhooks
 
 In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webhook in OpsGenie einrichten. Mithilfe der Azure Service Health-Integration von [OpsGenie](https://www.opsgenie.com/) können Sie Azure Service Health-Warnungen an OpsGenie weiterleiten. OpsGenie kann die zuständigen Personen basierend auf Bereitschaftszeitplänen bestimmen und mithilfe von E-Mails, Textnachrichten (SMS), Telefonanrufen, iOS- und Android-Pushbenachrichtigungen benachrichtigen sowie Warnungen eskalieren, bis diese bestätigt oder geschlossen werden.
 

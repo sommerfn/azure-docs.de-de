@@ -1,62 +1,80 @@
 ---
-title: Sammeln von Azure Information Protection-Daten in Azure Sentinel Preview | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure Information Protection-Daten in Azure Sentinel sammeln.
+title: Verknüpfen von Azure Information Protection-Daten mit Azure Sentinel | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure Information Protection-Daten mit Azure Sentinel verknüpfen.
 services: sentinel
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: cabailey
+manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
-ms.service: sentinel
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
-ms.author: rkarlin
-ms.openlocfilehash: 7c5866d3096823f91a70b28c7c5dd1790e1b3bf8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 09/24/2019
+ms.author: cabailey
+ms.openlocfilehash: a2760b53dbb9776501cb5e58c681045743471166
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537166"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261815"
 ---
-# <a name="collect-data-from-azure-information-protection"></a>Sammeln von Daten aus Azure Information Protection
+# <a name="connect-data-from-azure-information-protection"></a>Verknüpfen von Daten aus Azure Information Protection
 
 > [!IMPORTANT]
-> Azure Sentinel ist aktuell als Public Preview verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Der Azure Information Protection-Datenconnector in Azure Sentinel ist derzeit als Public Preview verfügbar.
+> Diese Funktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Sie können Protokolle aus [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) mit einem einzigen Klick nach Azure Sentinel streamen. Azure Information Protection schützt Ihre Daten, unabhängig davon, ob sie in der Cloud oder in lokalen Infrastrukturen gespeichert sind, und kontrolliert und schützt E-Mails, Dokumente und sensible Daten, die Sie außerhalb Ihres Unternehmens teilen. Von der einfachen Klassifizierung bis hin zu eingebetteten Bezeichnungen und Berechtigungen: Sie können den Schutz der Daten jederzeit mit Azure Information Protection erweitern. Wenn Sie Azure Information Protection mit Azure Sentinel verbinden, streamen Sie alle Warnungen von Azure Information Protection an Azure Sentinel.
+Sie können Protokollierungsinformationen aus [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) in Azure Sentinel streamen, indem Sie den Datenconnector „Azure Information Protection“ konfigurieren. Azure Information Protection unterstützt Sie bei der Kontrolle und Absicherung Ihrer sensiblen Daten, und zwar unabhängig davon, ob sie in der Cloud oder lokal gespeichert sind.
 
+Wenn die [zentrale Berichterstellung für Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) bereits so konfiguriert ist, dass Protokollierungsinformationen von diesem Dienst im gleichen Log Analytics-Arbeitsbereich gespeichert werden, den Sie derzeit für Azure Sentinel ausgewählt haben, können Sie die Konfiguration dieses Datenconnectors überspringen. Die Protokollierungsinformationen aus Azure Information Protection stehen Azure Sentinel bereits zur Verfügung.
+
+Wenn die Protokollierung von Informationen aus Azure Information Protection jedoch in einen anderen Log Analytics-Arbeitsbereich erfolgt als in denjenigen, den Sie derzeit für Azure Sentinel ausgewählt haben, führen Sie einen der folgenden Schritte aus:
+
+- Ändern Sie den in Azure Sentinel ausgewählten Arbeitsbereich.
+
+- Ändern Sie den Arbeitsbereich für Azure Information Protection, indem Sie diesen Datenconnector konfigurieren.
+    
+    Wenn Sie den Arbeitsbereich ändern, werden neue Berichtsdaten für Azure Information Protection jetzt in dem Arbeitsbereich gespeichert, den Sie für Azure Sentinel verwenden, und Verlaufsdaten stehen Azure Sentinel nicht zur Verfügung. Wenn der vorherige Arbeitsbereich für benutzerdefinierte Abfragen, Warnungen oder REST-APIs konfiguriert ist, müssen diese für den Azure Sentinel-Arbeitsbereich neu konfiguriert werden, falls Sie sie weiterhin für Azure Information Protection verwenden möchten. Für Clients und Dienste, die Azure Information Protection verwenden, ist keine Neukonfiguration erforderlich.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Benutzer mit Berechtigungen als globaler Administrator oder Sicherheitsadministrator oder mit Information Protection-Berechtigungen
+- Eine der folgenden Azure AD-Administratorrollen für Ihren Mandanten: 
+    - Azure Information Protection-Administrator
+    - Sicherheitsadministrator
+    - Complianceadministrator
+    - Compliancedatenadministrator
+    - Globaler Administrator
+    
+    > [!NOTE]
+    > Die Rolle „Azure Information Protection-Administrator“ kann nicht verwendet werden, wenn sich Ihr Mandant auf der [Plattform für einheitliche Bezeichnungen](/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform) befindet.
+    
+    Diese Administratorrollen werden nur für die Konfiguration des Azure Information Protection-Connectors benötigt und sind nicht erforderlich, wenn Azure Sentinel mit Azure Information Protection verknüpft ist.
 
+- Lese- und Schreibberechtigungen für den Log Analytics-Arbeitsbereich, den Sie für Azure Sentinel und Azure Information Protection verwenden.
+
+- Azure Information Protection wurde dem Azure-Portal hinzugefügt. Wenn Sie bei diesem Schritt Hilfe benötigen, siehe [Hinzufügen von Azure Information Protection zum Azure-Portal](https://docs.microsoft.com/azure/information-protection/quickstart-viewpolicy#add-azure-information-protection-to-the-azure-portal).
 
 ## <a name="connect-to-azure-information-protection"></a>Herstellen einer Verbindung mit Azure Information Protection
 
-Wenn Sie Azure Information Protection bereits haben, vergewissern Sie sich, dass es [in Ihrem Netzwerk aktiviert ist](https://docs.microsoft.com/azure/information-protection/activate-service).
-Wenn Azure Information Protection bereitgestellt ist und Daten erhält, können die Warnungsdaten problemlos an Azure Sentinel gestreamt werden.
+Befolgen Sie die folgenden Anweisungen, wenn Sie keinen Log Analytics-Arbeitsbereich für Azure Information Protection konfiguriert haben oder Sie den Arbeitsbereich ändern müssen, in dem die Protokollierungsinformationen von Azure Information Protection gespeichert sind.
 
+1. Wählen Sie in Azure Sentinel die Option **Datenconnectors** und dann **Azure Information Protection (Vorschau)** aus.
 
-1. Wählen Sie in Azure Sentinel die Option **Datenerfassung** aus, und klicken Sie dann auf die Kachel **Azure Information Protection**.
+2. Wählen Sie **Connectorseite öffnen** aus.
 
-2. Navigieren Sie zum [Azure Information Protection-Portal](https://portal.azure.com/?ScannerConfiguration=true&EndpointDiscovery=true#blade/Microsoft_Azure_InformationProtection/DataClassGroupEditBlade/quickstartBlade). 
+3. Wählen Sie auf dem Blatt **Analyse konfigurieren (Vorschauversion)** den Arbeitsbereich aus, den Sie derzeit für Azure Sentinel verwenden. Wenn Sie einen anderen Arbeitsbereich auswählen, stehen die Berichtsdaten von Azure Information Protection für Azure Sentinel nicht zur Verfügung.
 
-3. Richten Sie unter **Verbindung** das Streamen von Protokollen von Azure Information Protection an Azure Sentinel ein, indem Sie auf [Analyse konfigurieren](https://portal.azure.com/#blade/Microsoft_Azure_InformationProtection/DataClassGroupEditBlade/analyticsOnboardBlade) klicken.
+4. Wenn Sie einen Arbeitsbereich ausgewählt haben, klicken Sie auf **OK**. Der **STATUS** des Connectors sollte sich in **Verbunden** ändern.
 
-4. Wählen Sie den Arbeitsbereich aus, in dem Sie Azure Sentinel bereitgestellt haben. 
-
-5. Klicken Sie auf **OK**.
-
-6. Um in der Protokollanalyse (Log Analytics) das relevante Schema für die Azure Information Protection-Warnungen zu verwenden, suchen Sie nach **InformationProtectionLogs_CL**.
-
-
-
+5. Die Berichtsdaten aus Azure Information Protection werden im ausgewählten Arbeitsbereich in der Tabelle **InformationProtectionLogs_CL** gespeichert. 
+    
+    Um das relevante Schema in Azure Monitor für diese Berichtsdaten zu verwenden, suchen Sie nach **InformationProtectionEvents**. Weitere Informationen zu diesen Ereignisfunktionen finden Sie in der Azure Information Protection-Dokumentation im Abschnitt [Benutzerfreundliche Schemareferenz für Ereignisfunktionen](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Dokument haben Sie erfahren, wie Sie Azure Information Protection mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [ Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).

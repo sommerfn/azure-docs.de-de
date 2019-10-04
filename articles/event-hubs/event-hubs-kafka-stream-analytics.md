@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: b6bba4ed45530ba66a1adde274022a80091cd199
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0c4beede2508104fc9af934d3f9a2bbcce791292
+ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539156"
+ms.lasthandoff: 07/08/2019
+ms.locfileid: "67626189"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Verarbeiten von Apache Kafka für Event Hubs-Ereignisse mithilfe von Stream Analytics 
 Dieser Artikel zeigt, wie Daten in Kafka-fähige Event Hubs gestreamt und mit Azure Stream Analytics verarbeitet werden können. Die folgenden Schritte werden behandelt: 
@@ -163,7 +163,7 @@ Die Abfrage im Stream Analytics-Auftrag durchläuft die Daten, ohne eine Analyse
  
 
 ### <a name="define-a-query"></a>Definieren einer Abfrage
-Nachdem Sie einen Stream Analytics-Auftrag eingerichtet haben, um einen eingehenden Datenstrom zu lesen, ist der nächste Schritt die Erstellung einer Transformation, bei der Daten in Echtzeit analysiert werden. Sie definieren die Transformationsabfrage mit der [Stream Analytics-Abfragesprache](https://msdn.microsoft.com/library/dn834998.aspx). In dieser exemplarischen Vorgehensweise definieren Sie eine Abfrage, die die Daten ohne jegliche Transformation durchläuft.
+Nachdem Sie einen Stream Analytics-Auftrag eingerichtet haben, um einen eingehenden Datenstrom zu lesen, ist der nächste Schritt die Erstellung einer Transformation, bei der Daten in Echtzeit analysiert werden. Sie definieren die Transformationsabfrage mit der [Stream Analytics-Abfragesprache](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). In dieser exemplarischen Vorgehensweise definieren Sie eine Abfrage, die die Daten ohne jegliche Transformation durchläuft.
 
 1. Wählen Sie **Abfrage**.
 2. Ersetzen Sie im Abfragefenster `[YourOutputAlias]` durch den Ausgabealias, den Sie zuvor erstellt haben.

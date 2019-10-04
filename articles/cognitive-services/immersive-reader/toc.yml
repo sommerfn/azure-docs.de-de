@@ -1,0 +1,39 @@
+- name: Dokumentation zum plastischen Reader
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Worum handelt es sich beim plastischen Reader?
+      href: Overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: 'Verwenden von C#'
+      href: Quickstart.md
+    - name: Verwenden von Swift (iOS)
+      href: ios-quickstart.md
+- name: Lernprogramme
+  items:
+    - name: Starten des plastischen Readers (Node.js)
+      href: tutorial-nodejs.md
+    - name: Starten des plastischen Readers (Python)
+      href: tutorial-python.md
+    - name: Bild im plastischen Reader (Swift)
+      href: tutorial-ios-picture-immersive-reader.md
+- name: Vorgehensweise
+  items:
+    - name: Authentifizierung über Azure Active Directory
+      href: azure-active-directory-authentication.md
+- name: Verweis
+  items:
+    - name: SDK-Verweis
+      href: reference.md
+    - name: iOS SDK-Referenz
+      href: ios-reference.md
+- name: Ressourcen
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+    - name: Sprachunterstützung
+      href: 'https://aka.ms/ltlangsupport'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=cognitive-services'

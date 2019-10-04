@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/19/2018
+ms.date: 8/12/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5e93bb3b206fbef6beb09b7aca6df0742a80ccf1
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: a5e452bf3dc9f35c345a5f27af829904b4839ece
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662141"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68977128"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric-Anwendungs- und -Dienstmanifeste
 In diesem Artikel wird beschrieben, wie Service Fabric-Anwendungen und -Dienste mit den Dateien „ApplicationManifest.xml“ und „ServiceManifest.xml“ definiert und mit Versionsangaben versehen werden.  Ausführlichere Beispiele finden Sie unter [Beispiele für Anwendungs- und Dienstmanifeste](service-fabric-manifest-examples.md).  Eine Dokumentation des XML-Schemas für diese Manifestdateien finden Sie unter [ServiceFabricServiceModel.xsd – Schemadokumentation](service-fabric-service-model-schema.md).
@@ -74,7 +74,7 @@ Das Dienstmanifest definiert deklarativ der Diensttyp und die Version. Es legt D
 
 Die durch **EntryPoint** angegebene ausführbare Datei ist üblicherweise der Diensthost mit langer Ausführungsdauer. **SetupEntryPoint** ist ein privilegierter Einstiegspunkt, der mit den gleichen Anmeldeinformationen wie Service Fabric (i.d.R. dem *LocalSystem*-Konto) vor jedem anderen Einstiegspunkt ausgeführt wird.  Das Vorhandensein eines separaten Setupeinstiegspunkts vermeidet, dass der Diensthost über längere Zeiträume mit hohen Berechtigungen ausgeführt werden muss. Die von **EntryPoint** angegebene ausführbare Datei wird ausgeführt, nachdem **SetupEntryPoint** erfolgreich beendet wurde. Wenn der Prozess beendet wird oder abstürzt, wird der resultierende Prozess überwacht und neu gestartet (er beginnt wieder mit **SetupEntryPoint**).  
 
-Gängige Szenarios für die Verwendung von **SetupEntryPoint** sind die Ausführung einer ausführbaren Datei vor dem Starten des Diensts sowie die Ausführung eines Vorgangs mit erhöhten Rechten. Beispiel: 
+Gängige Szenarios für die Verwendung von **SetupEntryPoint** sind die Ausführung einer ausführbaren Datei vor dem Starten des Diensts sowie die Ausführung eines Vorgangs mit erhöhten Rechten. Beispiel:
 
 * Einrichten und Initialisieren von Umgebungsvariablen, die die ausführbare Datei des Diensts benötigt. Dies ist nicht auf Dateien beschränkt, die mit den Service Fabric-Programmiermodellen geschrieben wurden. „npm.exe“ benötigt beispielsweise einige Umgebungsvariablen, die zum Bereitstellen einer node.js-Anwendung konfiguriert wurden.
 * Einrichten einer Zugriffssteuerung durch Installieren von Sicherheitszertifikaten.
@@ -96,8 +96,12 @@ Weitere Informationen zum Konfigurieren von SetupEntryPoint finden Sie unter [Ko
 </Settings>
 ```
 
-Ein Service Fabric-**Dienstendpunkt** ist ein Beispiel für eine Service Fabric-Ressource. Eine Service Fabric-Ressource kann ohne Änderung des kompilierten Codes deklariert/geändert werden. Der Zugriff auf die im Dienstmanifest angegebenen Service Fabric-Ressourcen kann über das **SecurityGroup**-Element im Anwendungsmanifest gesteuert werden. Wenn eine Endpunktressource im Dienstmanifest definiert wird, weist Service Fabric Ports aus dem Bereich der reservierten Anwendungsports zu, sofern nicht explizit ein Port angegeben wird. Erfahren Sie mehr über das [Angeben oder Überschreiben von Endpunktressourcen](service-fabric-service-manifest-resources.md).
+Ein Service Fabric-Dienst**endpunkt** ist ein Beispiel für eine Service Fabric-Ressource. Eine Service Fabric-Ressource kann deklariert/geändert werden, ohne dass der kompilierte Code geändert wird. Der Zugriff auf die im Dienstmanifest angegebenen Service Fabric-Ressourcen kann über das **SecurityGroup**-Element im Anwendungsmanifest gesteuert werden. Wenn eine Endpunktressource im Dienstmanifest definiert wird, weist Service Fabric Ports aus dem Bereich der reservierten Anwendungsports zu, sofern nicht explizit ein Port angegeben wird. Erfahren Sie mehr über das [Angeben oder Überschreiben von Endpunktressourcen](service-fabric-service-manifest-resources.md).
 
+ 
+> [!WARNING]
+> Statische Ports sollten sich nicht mit dem im ClusterManifest angegebenen Anwendungsportbereich überschneiden. Wenn Sie einen statischen Port angeben, weisen Sie ihn außerhalb des Anwendungsportbereichs zu, andernfalls führt dies zu Portkonflikten. Mit Release 6.5CU2 werden wir eine **Integritätswarnung** ausgeben, wenn wir einen solchen Konflikt erkennen, aber die Bereitstellung in Übereinstimmung mit dem ausgelieferten 6.5-Verhalten fortsetzen. Es ist jedoch möglich, dass wir die Anwendungsbereitstellung ab den nächsten Hauptversionen unterbinden.
+>
 
 <!--
 For more information about other features supported by service manifests, refer to the following articles:
@@ -147,6 +151,7 @@ Somit beschreibt ein Anwendungsmanifest Elemente auf Anwendungsebene, verweist a
     <Service Name="VotingWeb" ServicePackageActivationMode="ExclusiveProcess">
       <StatelessService ServiceTypeName="VotingWebType" InstanceCount="[VotingWeb_InstanceCount]">
         <SingletonPartition />
+         <PlacementConstraints>(NodeType==NodeType0)</PlacementConstraints
       </StatelessService>
     </Service>
   </DefaultServices>
@@ -163,7 +168,13 @@ Wie bei Dienstmanifesten sind **Version** -Attribute unstrukturierte Zeichenfolg
 
 **Zertifikate** (im vorhergehenden Beispiel nicht festgelegt) deklariert die zum [Einrichten von HTTPS-Endpunkten](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) oder zum [Verschlüsseln der geheimen Schlüssel im Anwendungsmanifest](service-fabric-application-secret-management.md) verwendeten Zertifikate.
 
-**Richtlinien** (im vorhergehenden Beispiel nicht festgelegt) beschreibt die Richtlinien für die Protokollsammlung, das [standardmäßige Ausführungskonto](service-fabric-application-runas-security.md), die [Integrität](service-fabric-health-introduction.md#health-policies) und den [Sicherheitszugriff](service-fabric-application-runas-security.md), die auf Anwendungsebene festgelegt werden.
+**Platzierungseinschränkungen** sind Anweisungen, mit denen Sie definieren, an welcher Stelle Dienste ausgeführt werden sollen. Diese Anweisungen werden an einzelne Dienste angefügt, die Sie für mindestens eine Knoteneigenschaft auswählen. Weitere Informationen finden Sie unter [Syntax von Platzierungseinschränkungen und Knoteneigenschaften](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax).
+
+**Richtlinien** (im vorherigen Beispiel nicht festgelegt) beschreibt die Richtlinien für die Protokollsammlung, das [standardmäßige Ausführungskonto](service-fabric-application-runas-security.md), die [Integrität](service-fabric-health-introduction.md#health-policies) und den [Sicherheitszugriff](service-fabric-application-runas-security.md), die auf Anwendungsebene festzulegen sind. Dazu gehört auch, ob die Dienste Zugriff auf die Service Fabric-Runtime haben.
+
+> [!NOTE] 
+> Standardmäßig haben Service Fabric-Anwendungen Zugriff auf die Service Fabric-Runtime in Form eines Endpunkts, der anwendungsspezifische Anforderungen akzeptiert, und in Form von Umgebungsvariablen, die auf Dateipfade auf dem Host verweisen, die Fabric- und anwendungsspezifische Dateien enthalten. Sie sollten erwägen, diesen Zugriff zu deaktivieren, wenn die Anwendung nicht vertrauenswürdigen Code hostet (d. h. Code, dessen Herkunft unbekannt ist oder von dem der Anwendungsbesitzer weiß, dass bei seiner Ausführung die Sicherheit gefährdet ist). Weitere Informationen finden Sie unter [Bewährte Methoden für die Sicherheit in Service Fabric](service-fabric-best-practices-security.md#platform-isolation). 
+>
 
 **Prinzipale** (im vorhergehenden Beispiel nicht festgelegt) beschreiben die Sicherheitsprinzipale (Benutzer oder Gruppen), die zum [Ausführen von Diensten und sicheren Dienstressourcen](service-fabric-application-runas-security.md) benötigt werden.  Auf Prinzipale wird in den Abschnitten über **Richtlinien** verwiesen.
 

@@ -3,19 +3,19 @@ title: Azure-Schnellstart – Ausführen eines Batch-Auftrags – .NET
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag und Aufgaben mit der Batch .NET-Clientbibliothek ausführen.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: c13a01b392b9bbc93fff2e997cb6d168a441ad07
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 37cd6fdd2f82af581e27f9341292c484b1cc601e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679918"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322327"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Schnellstart: Ausführen Ihres ersten Azure Batch-Auftrags mit der .NET-API
 
@@ -27,7 +27,7 @@ In dieser Schnellstartanleitung wird ein Azure Batch-Auftrag über eine C#-Anwen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Visual Studio 2017](https://www.visualstudio.com/vs) oder [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) für Linux, macOS oder Windows. 
+* [Visual Studio 2017 oder höher](https://www.visualstudio.com/vs) bzw. [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1) für Linux, macOS oder Windows. 
 
 * Ein Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md). 
 
@@ -47,7 +47,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-quickstart.git
 
 Navigieren Sie zu dem Verzeichnis, in dem die Visual Studio-Projektmappendatei `BatchDotNetQuickstart.sln` enthalten ist.
 
-Öffnen Sie die Projektmappendatei in Visual Studio, und aktualisieren Sie die Zeichenfolgen mit den Anmeldeinformationen in `Program.cs` mit den Werten für Ihre Konten. Beispiel: 
+Öffnen Sie die Projektmappendatei in Visual Studio, und aktualisieren Sie die Zeichenfolgen mit den Anmeldeinformationen in `Program.cs` mit den Werten für Ihre Konten. Beispiel:
 
 ```csharp
 // Batch account credentials
@@ -113,7 +113,7 @@ Ausführliche Informationen finden Sie in der Datei `Program.cs` und in den folg
 
 ### <a name="preliminaries"></a>Vorbereitende Maßnahmen
 
-Zum Interagieren mit einem Speicherkonto verwendet die App die Azure Storage-Clientbibliothek für .NET. Sie erstellt einen Verweis auf das Konto mit [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) und auf dieser Grundlage ein [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient)-Element.
+Zum Interagieren mit einem Speicherkonto verwendet die App die Azure Storage-Clientbibliothek für .NET. Sie erstellt einen Verweis auf das Konto mit [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) und auf dieser Grundlage ein [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)-Element.
 
 ```csharp
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();

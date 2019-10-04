@@ -4,24 +4,23 @@ description: Laden Sie eine generalisierte virtuelle Festplatte (VHD) in ein Azu
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cd81eb3d62332bba67f0056a6f7b49279bc50c4f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ac1572a75a3310afb9d0e0a34c6751ed12d839f9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788811"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102436"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Hochladen einer generalisierten VHD in Azure und Erstellen einer neuen VM
 
@@ -31,7 +30,7 @@ Informationen darüber, wie Sie einen virtuellen Computer aus einer speziellen V
 
 In diesem Thema wird die Verwendung von Speicherkonten erläutert, es wird jedoch empfohlen, für das Verschieben stattdessen Managed Disks zu verwenden. Eine vollständige exemplarische Vorgehensweise zum Vorbereiten, Hochladen und Erstellen eines neuen virtuellen Computers mithilfe von Managed Disks finden Sie unter [Erstellen virtueller Computer aus einer generalisierten VHD, die mit Managed Disks in Azure hochgeladen wurde](upload-generalized-managed.md).
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="prepare-the-vm"></a>Vorbereiten des virtuellen Computers
 

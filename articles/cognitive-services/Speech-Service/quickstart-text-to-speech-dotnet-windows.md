@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Synthetisieren von Sprache, .NET Framework (Windows): Speech-Dienste'
+title: 'Schnellstart: Synthetisieren von Sprache, .NET Framework (Windows): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In dieser Anleitung erfahren Sie, wie Sie mit .NET Framework für Windows und dem Speech SDK eine Konsolenanwendung für die Sprachsynthese erstellen. Anschließend können Sie Sprache aus Text synthetisieren und in Echtzeit über Ihren Lautsprecher ausgeben.
 services: cognitive-services
@@ -8,16 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 4/03/2019
+ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: a013189e45b1c1c8eeb88d62a718d495c0c415a2
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 65db847c5df1a05671e3b1c0ac4541f00506c8fd
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59012380"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68854699"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Schnellstart: Synthetisieren von Sprache mit dem Speech SDK für .NET Framework (Windows)
+
+Schnellstarts sind auch für [Spracherkennung](quickstart-csharp-dotnet-windows.md) und [Sprachübersetzung](quickstart-translate-speech-dotnetframework-windows.md) verfügbar.
 
 In dieser Anleitung erfahren Sie, wie Sie mit .NET Framework für Windows und dem Speech SDK eine Konsolenanwendung für die Sprachsynthese erstellen. Anschließend können Sie Sprache aus Text synthetisieren und in Echtzeit über Ihren Lautsprecher ausgeben.
 
@@ -29,7 +31,7 @@ Laden Sie die neuesten [Beispiele für das Cognitive Services Speech SDK](https
 
 Für dieses Projekt benötigen Sie Folgendes:
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 * Ein Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 * Einen Lautsprecher oder ein Headset.
 

@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443486"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231474"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Einrichten der Notfallwiederherstellung für eine SharePoint-Anwendung mit mehreren Ebenen mithilfe von Azure Site Recovery
 
@@ -56,7 +56,7 @@ SharePoint kann auf einem oder mehreren Servern mit mehrstufigen Topologien und 
 
 ## <a name="site-recovery-support"></a>Site Recovery-Unterstützung
 
-Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Windows Server 2012 R2 Enterprise verwendet. SharePoint 2013 Enterprise Edition sowie SQL Server 2014 Enterprise Edition wurden verwendet. Da die Site Recovery-Replikation anwendungsunabhängig ist, gelten die hier aufgezeigten Empfehlungen voraussichtlich auch für die folgenden Szenarios:
+Site Recovery ist anwendungsunabhängig und sollte mit allen Versionen von SharePoint funktionieren, die auf einem unterstützten Computer ausgeführt werden. Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Windows Server 2012 R2 Enterprise verwendet. SharePoint 2013 Enterprise Edition sowie SQL Server 2014 Enterprise Edition wurden verwendet.
 
 ### <a name="source-and-target"></a>Quelle und Ziel
 
@@ -67,13 +67,6 @@ Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Windows
 **Physischer Server** | Ja | Ja
 **Azure** | Nicht verfügbar | Ja
 
-### <a name="sharepoint-versions"></a>SharePoint-Versionen
-Die folgenden SharePoint-Server-Versionen werden unterstützt:
-
-* SharePoint-Server 2013 Standard
-* SharePoint-Server 2013 Enterprise
-* SharePoint-Server 2016 Standard
-* SharePoint-Server 2016 Enterprise
 
 ### <a name="things-to-keep-in-mind"></a>Bitte beachten
 
@@ -196,7 +189,7 @@ Befolgen Sie [diese Anleitung](site-recovery-test-failover-to-azure.md), um ein 
 
 Eine Anleitung zum Ausführen des Testfailovers für AD und DNS finden Sie im Dokument [Test failover considerations for AD and DNS](site-recovery-active-directory.md#test-failover-considerations) (Überlegungen zum Testfailover für AD und DNS).
 
-Eine Anleitung zum Ausführen des Testfailovers für SQL Always ON-Verfügbarkeitsgruppen finden Sie im Dokument [Doing Test failover for SQL Server Always On](site-recovery-sql.md#steps-to-do-a-test-failover) (Durchführen des Testfailovers für SQL Server Always On).
+Eine Anleitung zum Ausführen des Testfailovers für SQL Always ON-Verfügbarkeitsgruppen finden Sie im Dokument [Performing Application DR with Azure Site Recovery and doing Test failover](site-recovery-sql.md#disaster-recovery-of-an-application) (Durchführen einer Anwendungs-DR mit Azure Site Recovery und Testfailover).
 
 ## <a name="doing-a-failover"></a>Durchführen eines Failovers
 Befolgen Sie [diese Anleitung](site-recovery-failover.md), um ein Failover durchzuführen.

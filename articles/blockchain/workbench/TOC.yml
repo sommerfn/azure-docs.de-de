@@ -1,80 +1,73 @@
-items:
 - name: Azure Blockchain Workbench (Public Preview)
   href: index.yml
 - name: Übersicht
-  items:
-  - name: Info zu Azure Blockchain Workbench
-    href: overview.md
   expanded: true
+  items:
+    - name: Info zu Azure Blockchain Workbench
+      href: overview.md
 - name: Lernprogramme
-  items:
-  - name: Erstellen einer Blockchain-App
-    href: create-app.md
-  - name: Verwenden einer Blockchain-App
-    href: use.md
   expanded: true
+  items:
+    - name: Erstellen einer Blockchain-App
+      href: create-app.md
+    - name: Verwenden einer Blockchain-App
+      href: use.md
 - name: Konzepte
   items:
-  - name: Architecture
-    href: architecture.md
-  - name: Integrationsmuster
-    href: integration-patterns.md
+    - name: Architecture
+      href: architecture.md
+    - name: Integrationsmuster
+      href: integration-patterns.md
 - name: Anleitungen
-  items:
-  - name: Bereitstellen von Workbench
-    href: deploy.md
-  - name: Verwalten von Workbench-Benutzern
-    href: manage-users.md
-  - name: Versionsverwaltung für Apps
-    href: version-app.md
-  - name: Verwenden der Workbench-API
-    href: use-api.md
-  - name: Problembehandlung von Apps
-    href: troubleshooting.md
-  - name: Verwenden von Workbench-Daten
-    items:
-    - name: Konfigurieren der DB-Firewall
-      href: database-firewall.md
-    - name: Abrufen der DB-Details
-      href: getdb-details.md
-    - name: Verwenden von Daten in Excel
-      href: data-excel.md
-    - name: Verwenden von Daten in Power BI
-      href: data-powerbi.md
-    - name: Verwenden von Daten in SQL Management Studio
-      href: data-sql-management-studio.md
   expanded: true
+  items:
+    - name: Bereitstellen von Workbench
+      href: deploy.md
+    - name: Verwalten von Workbench-Benutzern
+      href: manage-users.md
+    - name: Versionsverwaltung für Apps
+      href: version-app.md
+    - name: Verwenden der Workbench-API
+      href: use-api.md
+    - name: Problembehandlung von Apps
+      href: troubleshooting.md
+    - name: Verwenden von Workbench-Daten
+      items:
+        - name: Konfigurieren der DB-Firewall
+          href: database-firewall.md
+        - name: Abrufen der DB-Details
+          href: getdb-details.md
+        - name: Verwenden von Daten in Excel
+          href: data-excel.md
+        - name: Verwenden von Daten in Power BI
+          href: data-powerbi.md
+        - name: Verwenden von Daten in SQL Management Studio
+          href: data-sql-management-studio.md
 - name: Verweis
   items:
-  - name: Konfiguration
-    href: configuration.md
-  - name: Datenbanksichten
-    href: database-views.md
-  - name: Messaging-API
-    href: messages-overview.md
-  - name: REST-API
-    href: https://docs.microsoft.com/rest/api/azure-blockchain-workbench
+    - name: Konfiguration
+      href: configuration.md
+    - name: Datenbanksichten
+      href: database-views.md
+    - name: Messaging-API
+      href: messages-overview.md
+    - name: REST-API
+      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: Ressourcen
   items:
-  - name: Blog
-    href: https://azure.microsoft.com/blog/topics/blockchain/
-  - name: Codebeispiele
-    href: https://github.com/Azure-Samples/blockchain
-  - name: Community
-    href: https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain
-  - name: Forum
-    href: https://aka.ms/workbenchforum
-  - name: Produktfeedback
-    href: https://aka.ms/blockchainuservoice
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: Codebeispiele
+      href: 'https://github.com/Azure-Samples/blockchain'
+    - name: Community
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Supportforum
+      href: 'https://aka.ms/workbenchforum'
+    - name: Produktfeedback
+      href: 'https://aka.ms/blockchainuservoice'
 - name: Lösungsvorlagen
   items:
-  - name: Ethereum-PoA-Konsortium
-    href: ../templates/ethereum-poa-deployment.md
-  - name: Hyperledger – Fabric-Konsortium
-    href: ../templates/hyperledger-fabric-consortium-blockchain.md
-ms.openlocfilehash: b0426cc5dfbac62657ad172f5fa73586e6214601
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001926"
+    - name: Ethereum-PoA-Konsortium
+      href: ../templates/ethereum-poa-deployment.md
+    - name: Hyperledger – Fabric-Konsortium
+      href: ../templates/hyperledger-fabric-consortium-blockchain.md

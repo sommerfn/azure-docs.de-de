@@ -3,8 +3,8 @@ title: Verwenden von Zugriffsüberprüfungen zum Verwalten von Benutzern, die au
 description: Erfahren Sie, wie Sie mit Azure Active Directory-Zugriffsüberprüfungen (Azure AD-Zugriffsüberprüfungen) Benutzer verwalten, die aus Richtlinien für den bedingten Zugriff ausgeschlossen wurden.
 services: active-directory
 documentationcenter: ''
-author: rolyon
-manager: mtillman
+author: msaburnley
+manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 09/25/2018
-ms.author: rolyon
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7675441316e42c7f0a220abe77bc8c62158ef918
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 246503fec6436bf49dcd5fb89c2dc0ed345a43ca
+ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577130"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68499910"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Verwenden von Azure AD-Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen sind
 
@@ -36,9 +36,9 @@ Als IT-Administrator nutzen Sie ggf. den [bedingten Azure AD-Zugriff](../conditi
 
 Ein weiteres Beispiel: Unter Umständen nutzen Sie im Rahmen des bedingten Zugriffs [benannte Orte](../conditional-access/location-condition.md), um eine Reihe von Ländern und Regionen zu konfigurieren, für die Sie verhindern möchten, dass Benutzer auf ihren Mandanten zugreifen.
 
-![Benannte Orte](./media/conditional-access-exclusion/named-locations.png)
+![Benannte Standorte beim bedingten Zugriff](./media/conditional-access-exclusion/named-locations.png)
 
-In einigen Fällen kann es aber sein, dass Benutzer einen guten Grund für die Anmeldung aus diesen blockierten Ländern haben. Beispielsweise können Benutzer aus geschäftlichen oder persönlichen Gründen unterwegs sein. In diesem Beispiel kann die Richtlinie für bedingten Zugriff, mit der diese Länder blockiert werden, über eine dedizierte Cloudsicherheitsgruppe für die Benutzer verfügen, die aus der Richtlinie ausgeschlossen sind. Benutzer, die unterwegs Zugriff benötigen, können sich der Gruppe durch das [Einrichten von Azure Active Directory für die Self-Service-Gruppenverwaltung](../users-groups-roles/groups-self-service-management.md) selbst hinzufügen.
+In einigen Fällen kann es aber sein, dass Benutzer einen guten Grund für die Anmeldung aus diesen blockierten Ländern/Regionen haben. Beispielsweise können Benutzer aus geschäftlichen oder persönlichen Gründen unterwegs sein. In diesem Beispiel kann die Richtlinie für bedingten Zugriff, mit der diese Länder/Regionen blockiert werden, über eine dedizierte Cloudsicherheitsgruppe für die Benutzer verfügen, die aus der Richtlinie ausgeschlossen sind. Benutzer, die unterwegs Zugriff benötigen, können sich der Gruppe durch das [Einrichten von Azure Active Directory für die Self-Service-Gruppenverwaltung](../users-groups-roles/groups-self-service-management.md) selbst hinzufügen.
 
 In einem weiteren Beispiel wird ggf. eine Richtlinie für bedingten Zugriff verwendet, mit der die [Legacyauthentifizierung für den Großteil Ihrer Benutzer blockiert wird](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/). Microsoft empfiehlt dringend, dass Sie die Nutzung von Legacyprotokollen in Ihrem Mandanten blockieren, um Ihren Sicherheitsstatus zu verbessern. Es kann auch sein, dass Sie über einige Benutzer verfügen, die die Methoden der Legacyauthentifizierung unbedingt benötigen, um über Office 2010 oder IMAP/SMTP/POP-basierte Clients auf Ihre Ressourcen zuzugreifen. In diesem Fall können Sie diese Benutzer aus der Richtlinie ausschließen, mit der die Methoden der Legacyauthentifizierung blockiert werden.
 
@@ -68,11 +68,11 @@ Führen Sie diese Schritte aus, um eine neue Azure AD-Gruppe und eine Richtlinie
 
 1. Wählen Sie die Benutzer aus, die Teil dieser Ausschlussgruppe sein sollen, und klicken Sie anschließend auf **Erstellen**.
 
-    ![Bereich „Neue Gruppe“](./media/conditional-access-exclusion/new-group.png)
+    ![Neuer Gruppenbereich in Azure Active Directory](./media/conditional-access-exclusion/new-group.png)
 
-### <a name="create-a-conditional-access-policy-that-excludes-the-group"></a>Erstellen einer Richtlinie für bedingten Zugriff, für die die Gruppe ausgeschlossen ist
+### <a name="create-a-conditional-access-policy-that-excludes-the-group"></a>Erstellen einer Richtlinie für bedingten Zugriff, die die Gruppe ausschließt
 
-Sie können jetzt eine Richtlinie für bedingten Zugriff erstellen, für die diese Ausschlussgruppe verwendet wird.
+Sie können jetzt eine Richtlinie für bedingten Zugriff erstellen, die diese Ausschlussgruppe verwendet.
 
 1. Klicken Sie im linken Navigationsbereich auf **Azure Active Directory** und dann auf **Bedingter Zugriff**, um das Blatt **Richtlinien** zu öffnen.
 
@@ -93,13 +93,13 @@ Sie können jetzt eine Richtlinie für bedingten Zugriff erstellen, für die die
 
 1. Fahren Sie mit dem Einrichten der Richtlinie für bedingten Zugriff basierend auf den Anforderungen Ihrer Organisation fort.
 
-    ![Auswählen von ausgeschlossenen Benutzern](./media/conditional-access-exclusion/select-excluded-users.png)
+    ![Auswählen des Bereichs ausgeschlossener Benutzer im bedingten Zugriff](./media/conditional-access-exclusion/select-excluded-users.png)
 
 Im Folgenden werden zwei Beispiele beschrieben, in denen Sie Zugriffsüberprüfungen nutzen können, um Ausschlüsse in Richtlinien für bedingten Zugriff zu verwalten.
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>Beispiel 1: Zugriffsüberprüfung für Benutzer, die aus blockierten Ländern zugreifen
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Beispiel 1: Zugriffsüberprüfung für Benutzer, die aus blockierten Ländern/Regionen zugreifen
 
-Angenommen, Sie verfügen über eine Richtlinie für bedingten Zugriff, mit der der Zugriff auf bestimmte Länder blockiert wird. Sie enthält eine Gruppe, die von der Richtlinie ausgeschlossen ist. Hier ist eine empfohlene Zugriffsüberprüfung angegeben, mit der die Mitglieder der Gruppe überprüft werden.
+Angenommen, Sie verfügen über eine Richtlinie für bedingten Zugriff, die den Zugriff aus bestimmten Ländern/Regionen blockiert. Sie enthält eine Gruppe, die von der Richtlinie ausgeschlossen ist. Hier ist eine empfohlene Zugriffsüberprüfung angegeben, mit der die Mitglieder der Gruppe überprüft werden.
 
 > [!NOTE]
 > Für die Erstellung von Zugriffsüberprüfungen ist die Rolle „Globaler Administrator“ oder „Benutzeradministrator“ erforderlich.
@@ -110,13 +110,13 @@ Angenommen, Sie verfügen über eine Richtlinie für bedingten Zugriff, mit der 
 
 3. Alle Mitglieder dieser Gruppe werden in die Überprüfung einbezogen.
 
-4. Jeder Benutzer muss selbst nachweisen, dass er weiterhin Zugriff aus diesen blockierten Ländern benötigt und deshalb Mitglied der Gruppe sein muss.
+4. Jeder Benutzer muss selbst nachweisen, dass er weiterhin Zugriff aus diesen blockierten Ländern/Regionen benötigt und deshalb ein Mitglied der Gruppe bleiben muss.
 
-5. Falls der Benutzer nicht auf die geforderte Überprüfung reagiert, wird er automatisch aus der Gruppe entfernt und kann nicht mehr auf den Mandanten zugreifen, wenn er in diesen Ländern unterwegs ist.
+5. Wenn der Benutzer nicht auf die Überprüfungsanforderung reagiert, wird er automatisch aus der Gruppe entfernt und kann nicht mehr auf den Mandanten zugreifen, wenn er in diesen Ländern/Regionen unterwegs ist.
 
 6. Aktivieren Sie E-Mail-Benachrichtigungen, damit die Benutzer über den Beginn und den Abschluss der Zugriffsüberprüfung informiert sind.
 
-    ![Erstellen einer Zugriffsüberprüfung](./media/conditional-access-exclusion/create-access-review-1.png)
+    ![Erstellen eines Zugriffsüberprüfungsbereichs für Beispiel 1](./media/conditional-access-exclusion/create-access-review-1.png)
 
 ## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Beispiel 2: Zugriffsüberprüfung für Benutzer, die per Legacyauthentifizierung zugreifen
 
@@ -134,7 +134,7 @@ Angenommen, Sie verfügen über eine Richtlinie für bedingten Zugriff, mit der 
 
 6. Aktivieren Sie E-Mail-Benachrichtigungen, damit die Benutzer über den Beginn und den Abschluss der Zugriffsüberprüfung informiert sind.
 
-    ![Erstellen einer Zugriffsüberprüfung](./media/conditional-access-exclusion/create-access-review-2.png)
+    ![Erstellen eines Zugriffsüberprüfungsbereichs für Beispiel 2](./media/conditional-access-exclusion/create-access-review-2.png)
 
 **Profi-Tipp**: Wenn Sie über viele Ausschlussgruppen verfügen und deshalb mehrere Zugriffsüberprüfungen erstellen müssen, können Sie am Microsoft Graph Beta-Endpunkt jetzt eine API nutzen, um die Erstellung und Verwaltung programmgesteuert durchzuführen. Informationen zu den ersten Schritten finden Sie unter [Azure AD access reviews API reference](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) (Azure AD-Zugriffsüberprüfungen – API-Referenz) und [Example of retrieving Azure AD access reviews via Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096) (Beispiel für das Abrufen von Azure AD-Zugriffsüberprüfungen mit Microsoft Graph).
 
@@ -148,15 +148,15 @@ Nachdem Sie nun alles eingerichtet haben (Gruppe, Richtlinie für bedingten Zugr
 
 1. Klicken Sie auf **Ergebnisse**, um anzuzeigen, für wen der Verbleib auf der Liste genehmigt und wer entfernt wurde.
 
-    ![Ergebnisse der Zugriffsüberprüfungen](./media/conditional-access-exclusion/access-reviews-results.png)
+    ![Ergebnisse der Zugriffsüberprüfungen zeigen, wer genehmigt wurde](./media/conditional-access-exclusion/access-reviews-results.png)
 
 1. Klicken Sie anschließend auf **Überwachungsprotokolle**, um die Aktionen anzuzeigen, die während der Überprüfung durchgeführt wurden.
 
-    ![Überwachungsprotokolle von Zugriffsüberprüfungen](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
+    ![Überwachungsprotokolle von Zugriffsüberprüfungen, die Aktionen auflisten](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
 
 Als IT-Administrator wissen Sie, dass sich die Verwaltung von Ausschlussgruppen für Ihre Richtlinien manchmal nicht verhindern lässt. Mit Azure AD-Zugriffsüberprüfungen können die Wartung dieser Gruppen, die regelmäßigen Überprüfungen durch den Besitzer der Geschäftseinheit oder die Benutzer selbst und die Überprüfung dieser Änderungen aber deutlich vereinfacht werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md)
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

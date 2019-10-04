@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 35f970e81d27511bd35610bc2988a5ea4832906b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7b61aef13b113d9b2502c24e3001da25fa186c76
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898634"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559566"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrieren von der Sprachübersetzungs-API zum Spracherkennungsdienst
 
@@ -67,4 +67,4 @@ Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsu
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Worum handelt es sich beim Speech-Dienst?](overview.md)
-* [Dokumentation zum Spracherkennungsdienst und zum Spracherkennungsdienst-SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)
+* [Dokumentation zu Sprachdiensten und zum Spracherkennungsdienst-SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)

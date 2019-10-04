@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 985f1f73fbfc8c75df8393615fca32f5d1c08b9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6c48aaf404803c45122ed3fad0d6af1345406f7b
+ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078311"
+ms.lasthandoff: 05/27/2019
+ms.locfileid: "66239665"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Tutorial: Bereitstellen von Azure Machine Learning als IoT Edge-Modul (Vorschauversion)
+
+Verwenden Sie Azure Notebooks, um ein Modul für maschinelles Lernen zu entwickeln und es auf einem Linux-Gerät bereitzustellen, das Azure IoT Edge ausführt. 
 
 Mithilfe von IoT Edge-Modulen können Sie Code bereitstellen, mit dem Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert wird. In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie ein Azure Machine Learning-Modul bereitstellen, das anhand der Temperaturdaten eines simulierten Computers den Ausfall eines Geräts vorhersagt. Weitere Informationen zu Azure Machine Learning Service in IoT Edge finden Sie in der [Azure Machine Learning-Dokumentation](../machine-learning/service/how-to-deploy-to-iot.md).
 
@@ -50,52 +52,6 @@ Cloudressourcen:
 * Ein Azure Machine Learning-Arbeitsbereich. Befolgen Sie die Anweisungen unter [Verwenden des Azure-Portals zum Ausführen der ersten Schritte mit Azure Machine Learning](../machine-learning/service/quickstart-get-started.md), um einen zu erstellen und zu erfahren, wie Sie ihn verwenden.
    * Notieren Sie sich den Arbeitsbereichsnamen, die Ressourcengruppe und die Abonnement-ID. Diese Werte sind in der Übersicht über den Arbeitsbereich im Azure-Portal verfügbar. Diese Werte verwenden Sie später im Tutorial zum Verbinden eines Azure-Notebooks mit Ihren Arbeitsbereichsressourcen. 
 
-
-### <a name="disable-process-identification"></a>Deaktivieren der Prozessidentifizierung
-
->[!NOTE]
->
-> Während der Vorschauphase unterstützt Azure Machine Learning das Sicherheitsfeature der Prozessidentifizierung nicht, das standardmäßig für IoT Edge aktiviert ist.
-> Das Feature kann mithilfe folgender Schritte deaktiviert werden. Dies ist jedoch für Produktionsumgebungen nicht geeignet. Diese Schritte sind nur bei Linux-Geräten erforderlich. 
-
-Um die Prozessidentifizierung auf Ihrem IoT Edge-Gerät zu deaktivieren, müssen Sie die IP-Adresse und den Port für **workload_uri** und **management_uri** im Abschnitt **connect** der IoT Edge-Daemonkonfiguration angeben.
-
-Ermitteln Sie zunächst die IP-Adresse. Geben Sie `ifconfig` in Ihre Befehlszeile ein, und kopieren Sie die IP-Adresse der Schnittstelle **docker0**.
-
-Bearbeiten Sie die Konfigurationsdatei für den IoT Edge-Daemon:
-
-```cmd/sh
-sudo nano /etc/iotedge/config.yaml
-```
-
-Aktualisieren Sie den Abschnitt **connect** der Konfiguration mit Ihrer IP-Adresse. Beispiel:
-```yaml
-connect:
-  management_uri: "http://172.17.0.1:15580"
-  workload_uri: "http://172.17.0.1:15581"
-```
-
-Geben Sie die gleichen Adressen in den Konfigurationsabschnitt **listen** ein. Beispiel: 
-
-```yaml
-listen:
-  management_uri: "http://172.17.0.1:15580"
-  workload_uri: "http://172.17.0.1:15581"
-```
-
-Speichern und schließen Sie die Konfigurationsdatei.
-
-Erstellen Sie eine Umgebungsvariable vom Typ „IOTEDGE_HOST“ mit der Adresse für „management_uri“. (Wenn Sie sie dauerhaft festlegen möchten, fügen Sie sie `/etc/environment` hinzu.) Beispiel: 
-
-```cmd/sh
-export IOTEDGE_HOST="http://172.17.0.1:15580"
-```
-
-Starten Sie den IoT Edge-Dienst neu, damit die Änderungen wirksam werden.
-
-```cmd/sh
-sudo systemctl restart iotedge
-```
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Erstellen und Bereitstellen eines Azure Machine Learning-Moduls
 
@@ -151,7 +107,7 @@ Nach Abschluss aller Schritte im Notebook haben Sie ein Modell zur Anomalieerken
 
    Diese Anmeldeinformationen können im Bereitstellungsmanifest eingefügt werden, sodass das IoT Edge-Gerät Zugriff zum Abrufen von Containerimages aus der Registrierung erhält. 
 
-Damit wissen Sie, wo das Machine Learning-Containerimage gespeichert ist. Im nächsten Abschnitt wird ausführlich erläutert, wie Sie die Leistung des Containerimages als bereitgestelltes Modul auf dem IoT Edge-Gerät überprüfen können. 
+Damit wissen Sie, wo das Machine Learning-Containerimage gespeichert ist. Der nächste Abschnitt führt Sie schrittweise durch das Anzeigen des als Modul auf Ihrem IoT Edge-Gerät ausgeführten Containers. 
 
 ## <a name="view-generated-data"></a>Anzeigen generierter Daten
 
@@ -189,7 +145,7 @@ Die folgenden Schritte zeigen, wie Sie Visual Studio Code einrichten, um Gerät-
 
 3. Geben Sie in das Textfeld, das sich oben auf der Seite öffnet, die Verbindungszeichenfolge „iothubowner“ für Ihren IoT Hub ein. Ihr IoT Edge-Gerät sollte in der Liste der IoT Hub-Geräte angezeigt werden.
 
-4. Wähle Sie **...** erneut aus, und wählen Sie anschließend **Start monitoring D2C message** (Überwachung von D2C-Nachricht starten).
+4. Wählen Sie erneut die Ellipse ( **...** ) und anschließend die Option **Start Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts starten) aus.
 
 5. Beobachten Sie die ankommenden Nachrichten von tempSensor alle fünf Sekunden. Der Nachrichtentext enthält die **anomaly**-Eigenschaft, die vom Machine Learning-Modul den Wert TRUE oder FALSE erhält. Die **AzureMLResponse**-Eigenschaft enthält den Wert „OK“, wenn das Modell erfolgreich ausgeführt wurde.
 

@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232442"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60683135"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Erstellen von switch-Anweisungen, die Workflowaktionen auf der Grundlage bestimmter Werte in Azure Logic Apps ausführen
 
@@ -45,9 +45,9 @@ Angenommen, Sie möchten, dass eine Logik-App verschiedene Schritte basierend au
 
 1. Fügen Sie für dieses Beispiel am Ende Ihres Beispielworkflows eine switch-Anweisung hinzu. Wählen Sie nach dem letzten Schritt **Neuer Schritt** aus.
 
-   Wenn Sie eine switch-Anweisung zwischen Schritten hinzufügen möchten, bewegen Sie den Zeiger auf den Pfeil an der Stelle, an der Sie die switch-Anweisung hinzufügen möchten. Wählen Sie das daraufhin angezeigte **Pluszeichen** (**+**) aus, und wählen Sie dann **Aktion hinzufügen** aus.
+   Wenn Sie eine switch-Anweisung zwischen Schritten hinzufügen möchten, bewegen Sie den Zeiger auf den Pfeil an der Stelle, an der Sie die switch-Anweisung hinzufügen möchten. Wählen Sie das daraufhin angezeigte **Pluszeichen** ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
 
-1. Geben Sie im Suchfeld den Begriff „switch“ als Filter ein. Wählen Sie diese Aktion aus: **Switch – steuern**
+1. Geben Sie im Suchfeld den Begriff „switch“ als Filter ein. Wählen Sie diese Aktion aus: **Switch – steuern**.
 
    ![switch hinzufügen](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 

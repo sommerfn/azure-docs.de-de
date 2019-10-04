@@ -3,16 +3,17 @@ title: Speichern von Images in Azure Container Registry
 description: Details darüber, wie Ihre Docker-Containerimages in Azure Container Registry gespeichert werden, sowie über Sicherheit, Redundanz und Kapazität.
 services: container-registry
 author: dlepow
+manager: gwallace
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: danlep
-ms.openlocfilehash: 55c84907ab41f6da9d7a0989c68a1c1f90c5e424
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4517cc21ca0087358e750cd480288d4ec3718791
+ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551023"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68310533"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Speichern von Containerimages in Azure Container Registry
 
@@ -34,19 +35,19 @@ Für Szenarien, die eine noch zuverlässigere Hochverfügbarkeit erfordern, soll
 
 Die folgende Tabelle beschreibt das Containerimage und die Speichergrenzen für Azure-Containerregistrierungen.
 
-| Ressource | Begrenzung |
+| Resource | Begrenzung |
 | -------- | :---- |
 | Repositorys | Keine Begrenzung |
 | Bilder | Keine Begrenzung |
 | Ebenen | Keine Begrenzung |
-| Tags | Keine Begrenzung|
+| `Tags` | Keine Begrenzung|
 | Storage | 5 TB |
 
 Eine hohe Anzahl von Repositorys und Tags können die Leistung Ihrer Registrierung beeinträchtigen. Löschen Sie regelmäßig unbenutzte Repositorys, Tags und Images als Teil der Wartungsroutine für Ihre Registrierung. Gelöschte Registrierungsressourcen wie Repositorys, Images und Tags können nach dem Löschen *nicht* wiederhergestellt werden. Weitere Informationen zum Löschen von Registrierungsressourcen finden Sie unter [Löschen von Containerimages in Azure Container Registry](container-registry-delete.md).
 
 ## <a name="storage-cost"></a>Speicherkosten
 
-Ausführliche Informationen zu den Preisen finden Sie unter [Containerregistrierung – Preise][pricing].
+Ausführliche Informationen zu den Preisen finden Sie unter [Containerregistrierung – Preise][pricing].
 
 ## <a name="next-steps"></a>Nächste Schritte
 

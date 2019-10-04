@@ -1,38 +1,53 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 05/25/2018
+ms.date: 06/20/2019
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: d53d3ad077d07fd63063429018306be7d40dc024
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 72a69359d412a7560472fbb73ec525ab5d4a4fce
+ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34664004"
+ms.lasthandoff: 06/21/2019
+ms.locfileid: "67325794"
 ---
-1. Melden Sie sich auf dem [Azure-Portal]an.
+1. Melden Sie sich beim [Azure-Portal] an.
 
 2. Klicken Sie auf **Ressource erstellen**.
 
-3. Geben Sie im Suchfeld den Suchbegriff **Mobile Apps** ein.
+3. Geben Sie in das Suchfeld **Web-App**ein.
+    
+4. Klicken Sie in der Ergebnisliste über den Marketplace auf **Web-App**.
 
-    [![Azure-Portal mit hervorgehobenem Mobile Apps-Schnellstart][quickstart]](./media/app-service-mobile-dotnet-backend-create-new-service/search-mobile-apps-quickstart-zoom.png#lightbox)
+5. Wählen Sie Ihr **Abonnement** und Ihre **Ressourcengruppe** aus. Dabei können Sie entweder eine bereits vorhandene Ressourcengruppe auswählen _oder_ eine neue erstellen und dabei den gleichen Namen wie für die App verwenden.
 
-4. Wählen Sie in der Ergebnisliste **Mobile Apps-Schnellstart** und anschließend **Erstellen** aus.
+6. Geben Sie einen eindeutigen **Namen** für Ihre Web-App ein.
 
-5. Wählen Sie unter **App-Name** einen eindeutigen App-Namen. Dieser wird in den Domänennamen für Ihre App Service-Instanz integriert.
+7. Wählen Sie als Standardoption zum **Veröffentlichen** **Code** aus.
 
-6. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, _oder_ erstellen Sie eine neue. (Verwenden Sie dabei den gleichen Namen wie für die App.)
+8. Im **Laufzeitstapel** müssen Sie unter **ASP.NET** oder **Node** eine Version auswählen. Wenn Sie an einem .NET-Backend arbeiten, wählen Sie eine ASP.NET-Version aus. Wenn Sie aber an einer Node-basierten Anwendung arbeiten, wählen Sie eine Node-Version aus.
 
-7. Klicken Sie auf **Create**. Warten Sie ein paar Minuten, bis der Dienst bereitgestellt wurde, bevor Sie fortfahren. Das Benachrichtigungssymbol (Glocke) in der Portalüberschrift informiert Sie über Statusupdates.
+9. Wählen Sie ein **Betriebssystem** aus (entweder Linux oder Windows). 
 
-<!-- Images. -->
-[quickstart]: ./media/app-service-mobile-dotnet-backend-create-new-service/search-mobile-apps-quickstart.png
+10. Wählen Sie die **Region** aus, für die diese App bereitgestellt werden soll. 
+
+11. Wählen Sie einen passenden **App Service-Plan** aus, und klicken Sie auf **Überprüfen und erstellen**. 
+
+12. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, _oder_ erstellen Sie eine neue. (Verwenden Sie dabei den gleichen Namen wie für die App.)
+
+13. Klicken Sie auf **Create**. Warten Sie ein paar Minuten, bis der Dienst bereitgestellt wurde, bevor Sie fortfahren. Das Benachrichtigungssymbol (Glocke) in der Portalüberschrift informiert Sie über Statusupdates.
+
+14. Sobald die Bereitstellung abgeschlossen ist, klicken Sie erst auf den Abschnitt **Bereitstellungsdetails** und dann auf die Ressource vom Typ **Microsoft.Web/sites**. Dann werden Sie zu der App Service-Web-App geleitet, die Sie gerade erstellt haben. 
+
+15. Klicken Sie unter **Einstellungen** auf das Blatt **Konfiguration** und unter **Anwendungseinstellungen** auf die Schaltfläche **Neue Anwendungseinstellung**.
+
+16. Geben Sie auf der Seite **Anwendungseinstellung hinzufügen/bearbeiten** den **Namen** **MobileAppsManagement_EXTENSION_VERSION** und den Wert **Latest** (Aktuell) ein. Drücken Sie anschließend auf „OK“.
+
+Nun können Sie diese neu erstellte App Service-Web-App als mobile App verwenden.
 
 <!-- URLs. -->
 [Azure-Portal]: https://portal.azure.com/

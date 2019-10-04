@@ -6,23 +6,46 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 02/26/2019
+ms.date: 09/03/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: a01da3218b07307faa8e94acab1473c82bd86c41
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b07adc955b7904c6e6a3278480cec5a2be91ec35
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546924"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70232912"
 ---
+::: zone target="docs"
+
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>Schnellstart: Bereitstellen von Azure Data Box Disk über das Azure-Portal
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="get-started-with-azure-data-box-disk"></a>Erste Schritte mit Azure Data Box Disk 
+
+::: zone-end
+
+::: zone target="docs"
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie den Azure Data Box-Datenträger über das Azure-Portal bereitstellen. In den Schritten erfahren Sie, wie Sie schnell einen Auftrag erstellen, Datenträger erhalten, diese auspacken und anschließen und Daten auf die Datenträger kopieren, damit diese in Azure hochgeladen werden können.
 
 Eine ausführliche Anleitung zur Schritt-für-Schritt-Bereitstellung und zur Nachverfolgung finden Sie unter [Tutorial: Bestellen von Azure Data Box Disk](data-box-disk-deploy-ordered.md). 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
+
+::: zone-end
+
+::: zone target="chromeless"
+
+In diesem Leitfaden wird die Verwendung von Azure Data Box Disk im Azure-Portal erläutert. Dieser Leitfaden beantwortet die folgenden Fragen:
+
+::: zone-end
+
+::: zone target="docs"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,6 +56,23 @@ Vorbereitungen
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter [https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredataboxfromdiskdocs) beim Azure-Portal an.
+
+::: zone-end
+
+::: zone target="chromeless"
+
+> [!div class="checklist"]
+>
+> - **Überprüfen der Voraussetzungen:** Überprüfen Sie die Anzahl von Datenträgern und Kabeln, das Betriebssystem und andere Softwarekomponenten.
+> - **Anschließen und Entsperren:** Verbinden Sie das Gerät, und entsperren Sie den Datenträger, um die Daten zu kopieren.
+> - **Kopieren von Daten auf den Datenträger und Durchführen der Überprüfung:** Kopieren Sie Daten in die vorab erstellten Ordner auf den Datenträgern.
+> - **Zurücksenden der Datenträger:** Schicken Sie die Datenträger zurück ans Azure-Datencenter. Dort werden die Daten in Ihr Speicherkonto hochgeladen.
+> - **Überprüfen der Daten in Azure:** Vergewissern Sie sich, dass Ihre Daten in Ihr Speicherkonto hochgeladen wurden, bevor Sie sie vom Quelldatenserver löschen.
+
+::: zone-end
+
+
+::: zone target="docs"
 
 ## <a name="order"></a>Reihenfolge
 
@@ -123,3 +163,5 @@ In dieser Schnellstartanleitung haben Sie einen Azure Data Box-Datenträger bere
 
 > [!div class="nextstepaction"]
 > [Use the Azure portal to administer Data Box Disk](data-box-portal-ui-admin.md) (Verwenden des Azure-Portals zum Verwalten des Data Box-Datenträgers)
+
+::: zone-end

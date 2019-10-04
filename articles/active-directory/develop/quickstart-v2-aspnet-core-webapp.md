@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev
+ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1150e68167ad4e932acce744cdd5eba88e49a8c4
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 7779d01fd59446cf10aabf9fd6fdcce05e76899b
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579460"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68852998"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
 
@@ -73,18 +73,22 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET Core-Web-App persönliche
 
 #### <a name="step-2-download-your-aspnet-core-project"></a>Schritt 2: Herunterladen des ASP.NET Core-Projekts
 
-- [Visual Studio 2017-Projektmappe herunterladen](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+- [Herunterladen der Visual Studio 2019-Projektmappe](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Schritt 3: Konfigurieren des Visual Studio-Projekts
 
 1. Extrahieren Sie die ZIP-Datei in einem lokalen Ordner im Stammordner, etwa **C:\Azure-Samples**.
-1. Wenn Sie Visual Studio 2017 verwenden, öffnen Sie die Projektmappe in Visual Studio (optional).
-1. Bearbeiten Sie die Datei **appsettings.json**. Suchen Sie nach `ClientId`, und aktualisieren Sie den Wert von `ClientId` mit dem Wert für **Anwendungs-ID (Client)** der soeben registrierten Anwendung. 
+1. Wenn Sie Visual Studio-2019 verwenden, öffnen Sie die Projektmappe in Visual Studio (optional).
+1. Bearbeiten Sie die Datei **appsettings.json**. Suchen Sie nach `ClientId`, und aktualisieren Sie den Wert von `ClientId` mit dem Wert der **Anwendungs-ID (Client)** der soeben registrierten Anwendung. 
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"
     "TenantId": "Enter_the_Tenant_Info_Here"
     ```
+
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Dieser Schnellstart unterstützt Enter_the_Supported_Account_Info_Here.
 
 > [!div renderon="docs"]
 > Hinweis:
@@ -95,11 +99,11 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET Core-Web-App persönliche
 >   - Unterstützt Ihre Anwendung **Alle Microsoft-Kontobenutzer** ersetzen Sie diesen Wert durch `common`.
 >
 > > [!TIP]
-> > Die Werte für **Anwendungs-ID (Client)**, **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
+> > Die Werte für **Anwendungs-ID (Client)** , **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
 
 ## <a name="more-information"></a>Weitere Informationen
 
-Dieser Abschnitt gibt einen Überblick über den Code, der für die Anmeldung von Benutzern erforderlich ist. Dies kann hilfreich sein, um die Funktionsweise des Codes und die Hauptargumente zu verstehen und zu ermitteln, ob Sie einer vorhandenen ASP.NET Core-Anwendung Anmeldung hinzufügen möchten.
+In diesem Abschnitt erhalten Sie eine Übersicht über den erforderlichen Code für die Benutzeranmeldung. Diese Übersicht kann hilfreich sein, um die Funktionsweise des Codes und die Hauptargumente zu verstehen und zu ermitteln, ob Sie einer vorhandenen ASP.NET Core-Anwendung eine Anmeldung hinzufügen möchten.
 
 ### <a name="startup-class"></a>Startklasse
 
@@ -136,9 +140,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Die Methode `AddAuthentication` konfiguriert den Dienst zum Hinzufügen von cookiebasierter Authentifizierung, die in Browserszenarien zum Einsatz kommt, sowie zum Festlegen der Aufforderung an OpenID Connect. 
+Die Methode `AddAuthentication` konfiguriert den Dienst zum Hinzufügen der cookiebasierten Authentifizierung, die in Browserszenarien sowie zum Festlegen der Aufforderung auf OpenID Connect verwendet wird. 
 
-Die Zeile, die `.AddAzureAd` enthält, fügt Ihrer Anwendung die Microsoft Identity Platform-Authentifizierung hinzu. Anschließend wird sie für die Anmeldung über den Endpunkt der Microsoft Identity Platform konfiguriert.
+Die Zeile, die `.AddAzureAd` enthält, fügt Ihrer Anwendung die Microsoft Identity Platform-Authentifizierung hinzu. Die Anmeldung erfolgt dann über den Microsoft Identity Platform-Endpunkt.
 
 > |Hierbei gilt:  |  |
 > |---------|---------|
@@ -159,7 +163,12 @@ Sie können einen Controller oder Controllermethoden mithilfe des `[Authorize]`-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie im GitHub-Repository für dieses ASP.NET Core-Tutorial, einschließlich Anweisungen zum Hinzufügen der Authentifizierung zu einer ganz neuen ASP.NET Core Web-Anwendung, zum Aufrufen von Microsoft Graph und anderen Microsoft-APIs, zum Aufrufen eigener APIs, zum Hinzufügen von Berechtigungen, zum Anmelden von Benutzern in nationalen Clouds oder mit sozialen Identitäten und mehr:
+Weitere Informationen finden Sie im GitHub-Repository für dieses ASP.NET Core-Tutorial, einschließlich Anweisungen zum Hinzufügen der Authentifizierung zu einer neuen ASP.NET Core Web-Anwendung, zum Aufrufen von Microsoft Graph und anderen Microsoft-APIs, zum Aufrufen eigener APIs, zum Hinzufügen von Berechtigungen, zum Anmelden von Benutzern bei nationalen Clouds oder mit Identitäten in sozialen Netzwerken und mehr:
 
 > [!div class="nextstepaction"]
 > [Tutorial: ASP.NET Core-Web-App](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+
+Helfen Sie uns, Microsoft Identity Platform zu verbessern. Teilen Sie uns Ihre Meinung mit, indem Sie eine kurze Umfrage mit zwei Fragen beantworten.
+
+> [!div class="nextstepaction"]
+> [Umfrage zu Microsoft Identity Platform](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

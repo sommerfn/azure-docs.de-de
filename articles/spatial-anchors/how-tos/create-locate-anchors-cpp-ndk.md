@@ -4,16 +4,16 @@ description: Hier erhalten Sie detaillierte Informationen dazu, wie Sie mit Azur
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
-ms.author: ramonarguelles
+ms.author: rgarcia
 ms.date: 02/24/2019
-ms.topic: how-to
+ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 09809270d6b42a5491d322628f1d98c580f65206
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 2578202c2464248c1c765368d308ca669d918057
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58915925"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562535"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>Erstellen von und Suchen nach Ankern mit Azure Spatial Anchors in C++/NDK
 
@@ -39,7 +39,7 @@ Damit Sie dieses Anleitungen ausführen können, stellen Sie sicher, dass die fo
 - Sie haben die Informationen unter [Azure Spatial Anchors-Übersicht](../overview.md) gelesen.
 - Sie haben eine der [fünfminütigen Schnellstartanleitungen](../index.yml) absolviert.
 - Sie verfügen über grundlegende Kenntnisse zu C++ und dem <a href="https://developer.android.com/ndk/" target="_blank">Android Native Development Kit</a>.
-- Sie verfügen über Grundkenntnisse zu <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.5.
+- Sie verfügen über Grundkenntnisse in <a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a>.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
@@ -168,7 +168,7 @@ Erfahren Sie mehr über die [CloudSpatialAnchor](https://docs.microsoft.com/cpp/
     }
     ArHitResult* ar_hit = nullptr;
     ArHitResult_create(ar_session_, &ar_hit);
-    // The hitTest method sorts the resulting list by distance from the camera, increasing
+    // The hitTest method sorts the resulting list by increasing distance from the camera
     // The first hit result will usually be the most relevant when responding to user input
     ArHitResultList_getItem(ar_session_, hit_result_list, 0, ar_hit);
     if (ArHitResult_acquireNewAnchor(ar_session_, ar_hit, &localAnchor) != AR_SUCCESS) return;

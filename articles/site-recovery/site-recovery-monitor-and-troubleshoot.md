@@ -5,35 +5,46 @@ author: raynew
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.author: rayne-wiselman
-ms.openlocfilehash: 605421196c2ec7f62826e2f6c823d50262af8144
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.date: 07/30/2019
+ms.author: raynew
+ms.openlocfilehash: aa9d776df50306ab1705426c923413b5a5d545a5
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316642"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717349"
 ---
 # <a name="monitor-site-recovery"></a>Überwachen von Azure Site Recovery
 
-In diesem Artikel erfahren Sie, wie Sie die integrierten Überwachungsfunktionen von Azure Site Recovery für Überwachung und Problembehandlung nutzen. 
+In diesem Artikel erfahren Sie, wie Sie Azure [Site Recovery](site-recovery-overview.md) mithilfe der integrierten Site Recovery-Überwachung überwachen.  Folgendes kann überwacht werden:
 
-## <a name="use-the-dashboard"></a>Verwenden des Dashboards
+- Integrität und Status der durch Site Recovery replizierten Computer
+- Testfailoverstatus von Computern
+- Probleme und Fehler mit Auswirkungen auf die Konfiguration und Replikation
+- Infrastrukturkomponenten (beispielsweise lokale Server)
 
-1. Klicken Sie im Tresor auf **Übersicht**, um das Site Recovery-Dashboard zu öffnen. Es gibt Dashboardseiten für Site Recovery und Backup, und Sie können zwischen diesen Seiten wechseln.
+
+## <a name="before-you-start"></a>Vorbereitung
+
+Machen Sie sich ggf. zunächst mit [allgemeinen Fragen zur Überwachung](monitoring-common-questions.md) vertraut.
+
+## <a name="monitor-in-the-dashboard"></a>Überwachen mithilfe des Dashboards
+
+1. Klicken Sie im Tresor auf **Übersicht**. Auf dem Recovery Services-Dashboard werden alle Überwachungsinformationen für den Tresor an einem zentralen Ort zusammengefasst. Sie können zwischen Seiten für Site Recovery und den Azure Backup-Dienst wechseln.
 
     ![Site Recovery-Dashboard](./media/site-recovery-monitor-and-troubleshoot/dashboard.png)
 
-2.  Im Dashboard werden alle Überwachungsinformationen für den Tresor an einem zentralen Ort zusammengefasst. Über das Dashboard können Sie Detailinformationen für verschiedene Bereiche anzeigen. 
+2. Zeigen Sie über das Dashboard Detailinformationen zu verschiedenen Bereichen an. 
 
     ![Site Recovery-Dashboard](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png).
 
 3. Klicken Sie unter **Replizierte Elemente** auf **Alle anzeigen**, um alle Server im Tresor anzuzeigen.
-4. Zeigen Sie Detailinformationen an, indem Sie in jedem Abschnitt auf die Statusdetails klicken. Unter **Infrastrukturansicht** können Sie die Überwachungsinformationen nach dem Typ der replizierten Computer sortieren.
+4. Klicken Sie in den einzelnen Abschnitten auf die Statusdetails, um Detailinformationen anzuzeigen.
+5. Sortieren Sie in der **Infrastrukturansicht** die Überwachungsinformationen nach der Art der replizierten Computer.
 
 ## <a name="monitor-replicated-items"></a>Überwachen replizierter Elemente
 
-Im Abschnitt „Replizierte Elemente“ wird die Integrität aller Computer angezeigt, für die die Replikation im Tresor aktiviert ist.
+Überwachen Sie im Abschnitt **Replizierte Elemente** die Integrität aller Computer im Tresor, für die die Replikation aktiviert ist.
 
 **State** | **Details**
 --- | ---
@@ -44,7 +55,7 @@ Nicht zutreffend | Server, für die derzeit keine Replikation erwartet wird. Daz
 
 ## <a name="monitor-test-failovers"></a>Überwachen der Testfailover
 
-Sie können den Status des Testfailovers für Computer im Tresor anzeigen.
+Überwachen Sie unter **Failovertest erfolgreich** den Failoverstatus für Computer im Tresor.
 
 - Es wird empfohlen, mindestens einmal alle sechs Monate ein Testfailover für replizierte Computer auszuführen. So können Sie ohne Unterbrechungen in der Produktionsumgebung überprüfen, ob das Failover wie erwartet funktioniert. 
 - Ein Testfailover wird erst als erfolgreich betrachtet, nachdem das Failover und die Bereinigung nach dem Failover erfolgreich abgeschlossen wurden.
@@ -57,10 +68,10 @@ Nicht zutreffend | Computer, die derzeit nicht zu einem Testfailover berechtigt 
 
 ## <a name="monitor-configuration-issues"></a>Überwachen von Konfigurationsproblemen
 
-Im Abschnitt **Konfigurationsprobleme** wird eine Liste der Probleme angezeigt, die Ihre Fähigkeit, ein erfolgreiches Failover auszuführen, beeinträchtigen können.
+Überwachen Sie unter **Konfigurationsprobleme** alle Probleme, die unter Umständen das Failover beeinträchtigen.
 
 - Konfigurationsprobleme (mit Ausnahme der Verfügbarkeit von Softwareupdates) werden durch einen periodischen Validierungssteuerelement-Vorgang erkannt, der standardmäßig alle zwölf Stunden ausgeführt wird. Sie können erzwingen, dass der Validierungssteuerelementvorgang sofort ausgeführt wird, indem Sie auf das Aktualisierungssymbol neben der Abschnittsüberschrift **Konfigurationsprobleme** klicken.
-- Klicken Sie auf die Links, um weitere Details zu erhalten. Klicken Sie bei Problemen, die Auswirkungen auf bestimmte Computer haben, in der Spalte **Target configurations** (Zielkonfigurationen) auf **Eingreifen erforderlich**. In den Details sind Empfehlungen zur Behebung angegeben.
+- Klicken Sie auf die Links, um weitere Details zu erhalten. Klicken Sie bei Problemen, die Auswirkungen auf bestimmte Computer haben, in der Spalte **Zielkonfigurationen** auf **Eingreifen erforderlich**. In den Details sind Empfehlungen zur Behebung angegeben.
 
 **State** | **Details**
 --- | ---
@@ -70,18 +81,19 @@ Abonnementkontingent |  Die verfügbare Abonnementressourcenkontingent-Bilanz wi
 Softwareupdates | Die Verfügbarkeit neuer Softwareupdates sowie Informationen zu ablaufenden Softwareversionen
 
 
-## <a name="monitoring-errors"></a>Nachverfolgen von Fehlern 
-Im Abschnitt **Fehlerzusammenfassung** werden die derzeit aktiven Fehlersymptome, die die Replikation von Servern im Tresor beeinträchtigen könnten, sowie die Anzahl der betroffenen Computer angezeigt.
+## <a name="monitor-errors"></a>Überwachen von Fehlern
 
-- Am Anfang des Abschnitts sind Fehler aufgeführt, die Auswirkungen auf lokale Infrastrukturkomponenten haben. Hierzu zählt beispielsweise das Nichtempfangen eines Heartbeats von dem Azure Site Recovery-Anbieter, der auf dem lokalen Konfigurationsserver, VMM-Server oder Hyper-V-Host ausgeführt wird.
+Überwachen Sie unter **Fehlerzusammenfassung** die derzeit aktiven Fehlersymptome, die ggf. die Replikation von Servern im Tresor beeinträchtigen, sowie die Anzahl betroffener Computer.
+
+- Fehler, die Auswirkungen auf lokale Infrastrukturkomponenten haben, werden am Anfang des Abschnitts angezeigt. Hierzu zählt beispielsweise das Ausbleiben der Übermittlung eines Heartbeats vom Azure Site Recovery-Anbieter auf dem lokalen Konfigurationsserver oder Hyper-V-Host.
 - Danach sind Replikationsfehlersymptome aufgeführt, die Auswirkungen auf replizierte Server haben.
 - Die Tabelleneinträge werden in absteigender Reihenfolge nach dem Schweregrad des Fehlers und dann in absteigender Reihenfolge nach der Anzahl der betroffenen Computer sortiert.
-- Die Anzahl der betroffenen Server ist eine gute Möglichkeit, zu verstehen, ob ein einzelnes zugrunde liegendes Problem unter Umständen mehrere Computer beeinträchtigt. Beispielsweise kann sich eine Netzwerkstörung potenziell auf alle Computer auswirken, die in Azure repliziert werden. 
+- Die Anzahl betroffener Server gibt Aufschluss darüber, ob sich ein einzelnes zugrunde liegendes Problem unter Umständen auf mehrere Computer auswirkt. Eine Netzwerkstörung kann sich beispielsweise potenziell auf alle Computer auswirken, die in Azure repliziert werden. 
 - Auf einem einzelnen Server können mehrere Replikationsfehler auftreten. In diesem Fall wird in der Liste der betroffenen Server jedes Fehlersymptom dieses Servers einzeln gezählt. Nach der Behebung des Problems verbessern sich die Replikationsparameter, und der Fehler wird vom Computer gelöscht.
 
 ## <a name="monitor-the-infrastructure"></a>Überwachen der Infrastruktur
 
-Die **Infrastrukturansicht** enthält die an der Replikation beteiligten Infrastrukturkomponenten und die Integrität der Konnektivität zwischen Servern und Azure-Diensten.
+Überwachen Sie in der **Infrastrukturansicht** die an der Replikation beteiligten Infrastrukturkomponenten und die Konnektivität zwischen Servern und Azure-Diensten.
 
 - Eine grüne Linie gibt an, dass die Verbindung fehlerfrei ist.
 - Eine rote Linie mit dem überlagerten Fehlersymbol weist auf mindestens ein Fehlersymptom hin, das Auswirkungen auf die Konnektivität hat.
@@ -89,7 +101,7 @@ Die **Infrastrukturansicht** enthält die an der Replikation beteiligten Infrast
 
     ![Site Recovery-Infrastrukturansicht (Tresor)](./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)
 
-## <a name="tips-for-monitoring-the-infrastructure"></a>Tipps zum Überwachen der Infrastruktur
+### <a name="tips-for-monitoring-the-infrastructure"></a>Tipps zum Überwachen der Infrastruktur
 
 - Stellen Sie sicher, dass auf den lokalen Infrastrukturkomponenten (Konfigurationsserver, Prozessserver, VMM-Server, Hyper-V-Hosts, VMware-Computer) die neueste Version des Site Recovery-Anbieters und/oder der Agents ausgeführt wird.
 - Um alle Funktionen in der Infrastrukturansicht zu verwenden, müssen Sie [Updaterollup 22](https://support.microsoft.com/help/4072852) für diese Komponenten verwenden.
@@ -97,34 +109,25 @@ Die **Infrastrukturansicht** enthält die an der Replikation beteiligten Infrast
 
     **Szenario** | **State**  | **Ansicht verfügbar?**
     --- |--- | ---
-    **Replikation zwischen lokalen Standorten** | Alle Status | Nein  
+    **Replikation zwischen lokalen Standorten** | Alle Status | Nein 
     **Azure-VM-Replikation zwischen Azure-Regionen**  | Replikation aktiviert/derzeitige Ausführung der ersten Replikation | Ja
-    **Azure-VM-Replikation zwischen Azure-Regionen** | Failover ausgeführt/Failback | Nein    
+    **Azure-VM-Replikation zwischen Azure-Regionen** | Failover ausgeführt/Failback | Nein   
     **VMware-Replikation in Azure** | Replikation aktiviert/derzeitige Ausführung der ersten Replikation | Ja     
-    **VMware-Replikation in Azure** | Failover/Failback ausgeführt | Nein       
-    **Hyper-V-Replikation in Azure** | Failover/Failback ausgeführt | Nein 
+    **VMware-Replikation in Azure** | Failover/Failback ausgeführt | Nein      
+    **Hyper-V-Replikation in Azure** | Failover/Failback ausgeführt | Nein
 
 - Wenn Sie die Infrastrukturansicht für einen einzelnen replizierenden Computer anzeigen möchten, klicken Sie im Menü des Tresors auf **Replizierte Elemente**, und wählen Sie einen Server aus.  
 
-### <a name="common-questions"></a>Häufig gestellte Fragen
 
-
-**Warum unterscheidet sich die Anzahl der virtuellen Computer in der Tresorinfrastrukturansicht von der Gesamtzahl, die in den replizierten Elementen angezeigt wird?**
-
-Die Tresorinfrastrukturansicht ist nach Replikationsszenarien begrenzt. Nur Computer im aktuell ausgewählten Replikationsszenario werden in die Anzahl für die Ansicht einbezogen. Darüber hinaus werden nur virtuelle Computer gezählt, die für die Replikation in Azure konfiguriert sind. Computer, für die ein Failover ausgeführt wurde, oder Computer, die zurück am lokalen Standort repliziert werden, werden nicht in die Ansicht aufgenommen.
-
-**Warum unterscheidet sich die Anzahl der replizierten Elemente im Zusammenfassungsfach von der Gesamtzahl der auf dem Dashboard angezeigten replizierten Elemente?**
-
-Nur die Computer, für die die erste Replikation abgeschlossen wurde, sind in der im Zusammenfassungsfach angezeigten Anzahl enthalten. Die replizierten Elemente enthalten insgesamt alle Computer im Tresor, einschließlich der Computer, für die die erste Replikation gerade ausgeführt wird.
 
 
 ## <a name="monitor-recovery-plans"></a>Überwachen von Wiederherstellungsplänen
 
-Im Abschnitt **Wiederherstellungspläne** können Sie die Anzahl von Plänen überprüfen, neue Pläne erstellen und vorhandene Pläne ändern.  
+Überwachen Sie unter **Wiederherstellungspläne** die Anzahl von Plänen, erstellen Sie neue Pläne, und ändern Sie bereits vorhandene Pläne.  
 
 ## <a name="monitor-jobs"></a>Überwachen von Aufträgen
 
-Der Abschnitt **Aufträge** enthält den Status der Site Recovery-Vorgänge.
+Überwachen Sie unter **Aufträge** den Status der Site Recovery-Vorgänge.
 
 - Die meisten Vorgänge in Azure Site Recovery werden asynchron ausgeführt, wobei ein Nachverfolgungsauftrag erstellt wird, der den Fortschritt des Vorgangs verfolgt. 
 - Das Auftragsobjekt verfügt über alle Informationen, die Sie zum Nachverfolgen von Status und Fortschritt des Vorgangs benötigen. 
@@ -142,13 +145,10 @@ Aufträge werden wie folgt überwacht:
 
 ## <a name="monitor-virtual-machines"></a>Überwachen virtueller Maschinen
 
-Darüber hinaus können Sie Computer auf der Seite „Virtuelle Computer“ überwachen. 
-
-1. Klicken Sie im Tresor auf **Replizierte Elemente**, um eine Liste der replizierten Computer abzurufen.  Alternativ können Sie durch Klicken auf die bereichsbezogenen Verknüpfungen auf der Dashboardseite eine gefilterte Liste der geschützten Elemente abrufen.
-
+Unter **Replizierte Elemente** erhalten Sie eine Liste der replizierten Computer. 
     ![Listenansicht der replizierten Elemente in Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-list-view.png)
 
-2. Auf der Seite **Replizierte Elemente** können Sie Informationen anzeigen und filtern. Über das Aktionsmenü im oberen Bereich können Sie Aktionen für einen bestimmten Computer ausführen und u.a. ein Testfailover ausführen oder bestimmte Fehler anzeigen.
+2. Sie können Informationen betrachten und filtern. Über das Aktionsmenü im oberen Bereich können Sie Aktionen für einen bestimmten Computer ausführen und u.a. ein Testfailover ausführen oder bestimmte Fehler anzeigen.
 3. Klicken Sie auf **Spalten**, um zusätzliche Spalten einzublenden und beispielsweise RPO, Zielkonfigurationsprobleme und Replikationsfehler anzuzeigen.
 4. Klicken Sie auf **Filter**, um Informationen basierend auf bestimmten Parametern wie Replikationsintegrität oder basierend auf einer bestimmten Replikationsrichtlinie anzuzeigen.
 5. Klicken Sie mit der rechten Maustaste auf einen Computer, um für ihn Vorgänge wie Testfailover zu initiieren oder bestimmte Fehlerdetails anzuzeigen.
@@ -163,23 +163,6 @@ Darüber hinaus können Sie Computer auf der Seite „Virtuelle Computer“ übe
 
      ![Details/Übersicht der replizierten Elemente in Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 
-
-### <a name="common-questions"></a>Häufig gestellte Fragen
-
-**Wie unterscheidet sich die RPO vom letzten verfügbaren Wiederherstellungspunkt?**
-
-
-- Site Recovery verwendet einen mehrstufigen asynchronen Prozess zum Replizieren von Computern in Azure.
-- Im vorletzten Schritt der Replikation werden aktuelle Änderungen auf dem Computer sowie Metadaten in ein Protokoll-/Cachespeicherkonto kopiert.
-- Diese Änderungen werden zusammen mit dem Tag zum Identifizieren eines wiederherstellbaren Punkts in das Speicherkonto in der Zielregion geschrieben.
--  Site Recovery kann nun einen wiederherstellbaren Punkt für den virtuellen Computer generieren.
-- An diesem Punkt ist die RPO für die Änderungen erfüllt, die bisher in das Speicherkonto hochgeladen wurden. Mit anderen Worten: Die RPO für den Computer entspricht an diesem Punkt der Zeitspanne, die seit dem Zeitstempel verstrichen ist, der dem wiederherstellbaren Punkt entspricht.
-- Site Recovery wählt nun die hochgeladenen Daten im Speicherkonto aus und wendet sie auf die Replikatdatenträger an, die für den Computer erstellt wurden.
-- Site Recovery generiert dann einen Wiederherstellungspunkt und macht diesen Punkt beim Failover für eine Wiederherstellung verfügbar. Daher gibt der letzte verfügbare Wiederherstellungspunkt den Zeitstempel an, der dem letzten Wiederherstellungspunkt entspricht, der bereits verarbeitet und auf die Replikatdatenträger angewendet wurde.
-
-> [!NOTE]
-> Eine falsche Systemzeit auf dem replizierenden Quellcomputer oder auf den lokalen Infrastrukturservern verfälscht den berechneten RPO-Wert. Um sicherzustellen, dass die RPO-Werte genau berichtet werden, achten Sie darauf, dass die Systemuhr auf allen Servern und Computern korrekt eingestellt ist. 
-
 ## <a name="subscribe-to-email-notifications"></a>Abonnieren von E-Mail-Benachrichtigungen
 
 Sie können E-Mail-Benachrichtigungen für die folgenden kritischen Ereignisse abonnieren:
@@ -190,8 +173,12 @@ Sie können E-Mail-Benachrichtigungen für die folgenden kritischen Ereignisse a
 
 Benachrichtigungen werden wie folgt abonniert:
 
-Klicken Sie im Tresor im Abschnitt **Überwachung und Berichte** auf **Site Recovery-Ereignisse**.
+Klicken Sie im Tresor im Abschnitt **Überwachung** auf **Site Recovery-Ereignisse**.
 1. Klicken Sie auf **E-Mail-Benachrichtigungen**.
 1. Aktivieren Sie unter **E-Mail-Benachrichtigung** die Benachrichtigungen, und geben Sie an, an wen sie gesendet werden sollen. Sie können festlegen, dass Benachrichtigungen an alle Abonnementadministratoren gesendet werden sollen, und optional bestimmte E-Mail-Adressen angeben.
 
     ![E-Mail-Benachrichtigungen](./media/site-recovery-monitor-and-troubleshoot/email.png)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Machen Sie sich mit der [Überwachen von Site Recovery mit Azure Monitor-Protokollen](monitor-log-analytics.md) vertraut.

@@ -2,24 +2,18 @@
 title: Azure IoT Edge-Module
 description: Das Angebot für IoT Edge-Module im Azure Marketplace für Herausgeber von Apps und Diensten.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, IoT Edge module offer
-documentationcenter: ''
 author: qianw211
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 09/22/2018
-ms.author: qianw211
-ms.openlocfilehash: f13d3f780e24d71babb1bda48a9b85d1208e3c4c
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.author: pabutler
+ms.openlocfilehash: 3010b63c7c4c575d915789c19b60710194c79196
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074596"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67874668"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-Module
 
@@ -90,7 +84,7 @@ Falls Sie dies noch nicht getan haben,
 
 - Registrieren Sie sich beim [Microsoft Partner Network](https://partner.microsoft.com/membership).
 - Erstellen Sie ein [Microsoft-Konto](https://account.microsoft.com/account/) (für Azure Marketplace-Transaktionsangebote erforderlich; für andere Benutzer empfohlen).
-- Übermitteln Sie das [Marketplace-Registrierungsformular](https://azuremarketplace.microsoft.com/sell/signup).
+- Übermitteln Sie das [Marketplace-Registrierungsformular](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv). Weitere Informationen finden Sie unter [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
 
 Wenn Sie registriert sind und ein neues Angebot erstellen oder an einem vorhandenen arbeiten,
 

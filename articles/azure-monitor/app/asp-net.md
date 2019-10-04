@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 719cbe1ec8962b320aa2850053d44cdef7f56a8c
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 73f62ff8c95fae694a43df48aa99b696fb05d131
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437815"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916275"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Einrichten von Application Insights für Ihre ASP.NET-Website
 
@@ -28,8 +28,8 @@ Die Einrichtung ist mit wenigen Mausklicks in Visual Studio erledigt. Das Volume
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie benötigen Folgendes, um Application Insights Ihrer ASP.NET-Website hinzuzufügen:
 
-- Installieren Sie [Visual Studio 2017 für Windows](https://www.visualstudio.com/downloads/) mit folgenden Workloads:
-    - ASP.NET und Webentwicklung
+- Installieren Sie [Visual Studio 2019 für Windows](https://www.visualstudio.com/downloads/) mit folgenden Workloads:
+    - ASP.NET und Webentwicklung (Deaktivieren Sie nicht die optionalen Komponenten.)
     - Azure-Entwicklung
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="ide"></a> Schritt 1: Hinzufügen des Application Insights SDK
 
 > [!IMPORTANT]
-> Die Screenshots in diesem Beispiel basieren auf Visual Studio 2017, Version 15.9.9. Die Art und Weise, mit der Application Insights hinzugefügt wird, variiert je nach Visual Studio 2017-Version sowie je nach ASP.NET-Vorlagentyp. Ältere Version weisen möglicherweise Alternativtext wie „Application Insights konfigurieren“ auf.
+> Die Screenshots in diesem Beispiel basieren auf Visual Studio 2017, Version 15.9.9 und höher. Die Art und Weise, mit der Application Insights hinzugefügt wird, variiert je nach Visual Studio-Version sowie je nach ASP.NET-Vorlagentyp. Ältere Version weisen möglicherweise Alternativtext wie „Application Insights konfigurieren“ auf.
 
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Namen Ihrer Web-App, und wählen Sie **Hinzufügen** > **Application Insights-Telemetrie** aus.
 
@@ -58,6 +58,8 @@ Wenn Sie die Ressourcengruppe oder den Speicherort Ihrer Daten festlegen möchte
  Wählen Sie **Registrieren**.
 
 ![Screenshot der Seite „App bei Application Insights registrieren“](./media/asp-net/00005-register-ed.png)
+
+ Wählen Sie **Projekt** > **NuGet-Pakete verwalten** > **Paketquelle: nuget.org** aus, und vergewissern Sie sich, dass Sie über die neueste stabile Version des Application Insights SDK verfügen.
 
  Die Telemetriedaten werden an das [Azure-Portal](https://portal.azure.com) gesendet – sowohl während des Debuggens als auch nach dem Veröffentlichen Ihrer App.
 > [!NOTE]
@@ -99,12 +101,10 @@ Das Portal wird mit einer Ansicht der Telemetriedaten Ihrer App geöffnet.
 
 Klicken Sie im Portal auf eine beliebige Kachel oder auf ein beliebiges Diagramm, um weitere Details anzuzeigen.
 
-[Erfahren Sie mehr über die Verwendung von Application Insights im Azure-Portal](../../azure-monitor/app/app-insights-dashboards.md).
-
 ## <a name="step-4-publish-your-app"></a>Schritt 4: Veröffentlichen der App
 Veröffentlichen Sie Ihre App auf Ihrem IIS-Server oder in Azure. Sehen Sie sich [Live Metrics Stream](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) an, um sicherzustellen, dass alles reibungslos funktioniert.
 
-Sie können dann verfolgen, wie Ihre Telemetriedaten im Application Insights-Portal erstellt werden. Darin können Sie Metriken überwachen, die Telemetriedaten durchsuchen und [Dashboards](../../azure-monitor/app/app-insights-dashboards.md) einrichten. Außerdem können Sie die leistungsfähige [Abfragesprache Kusto](/azure/kusto/query/) verwenden, um die Nutzung und Leistung zu analysieren oder nach bestimmten Ereignissen zu suchen.
+Sie können dann verfolgen, wie Ihre Telemetriedaten im Application Insights-Portal erstellt werden. Darin können Sie Metriken überwachen und die Telemetriedaten durchsuchen. Außerdem können Sie die leistungsfähige [Abfragesprache Kusto](/azure/kusto/query/) verwenden, um die Nutzung und Leistung zu analysieren oder nach bestimmten Ereignissen zu suchen.
 
 Sie können Ihre Telemetriedaten auch in [Visual Studio](../../azure-monitor/app/visual-studio.md) mit Tools wie der Diagnosesuche und [Trends](../../azure-monitor/app/visual-studio-trends.md) weiter analysieren.
 
@@ -138,16 +138,15 @@ Es gibt noch weitere Themen, die für Sie unter Umständen von Interesse sind:
 
 ### <a name="more-telemetry"></a>Mehr Telemetrie
 
-* **[Browser- und Seitenladedaten](../../azure-monitor/app/javascript.md)**: Fügen Sie einen Codeausschnitt in Ihre Webseiten ein.
-* **[Ausführlichere Abhängigkeits- und Ausnahmenüberwachung](../../azure-monitor/app/monitor-performance-live-website-now.md)**: Installieren Sie den Statusmonitor auf Ihrem Server.
-* **[Programmieren benutzerdefinierter Ereignisse](../../azure-monitor/app/api-custom-events-metrics.md)**, um Benutzeraktionen zu zählen, zeitlich abzustimmen oder zu messen.
-* **[Abrufen von Protokolldaten](../../azure-monitor/app/asp-net-trace-logs.md)**: Korrelieren Sie Protokolldaten mit Ihren Telemetriedaten.
+* **[Browser- und Seitenladedaten](../../azure-monitor/app/javascript.md)** : Fügen Sie einen Codeausschnitt in Ihre Webseiten ein.
+* **[Ausführlichere Abhängigkeits- und Ausnahmenüberwachung](../../azure-monitor/app/monitor-performance-live-website-now.md)** : Installieren Sie den Statusmonitor auf Ihrem Server.
+* **[Programmieren benutzerdefinierter Ereignisse](../../azure-monitor/app/api-custom-events-metrics.md)** , um Benutzeraktionen zu zählen, zeitlich abzustimmen oder zu messen.
+* **[Abrufen von Protokolldaten](../../azure-monitor/app/asp-net-trace-logs.md)** : Korrelieren Sie Protokolldaten mit Ihren Telemetriedaten.
 
 ### <a name="analysis"></a>Analyse
 
 * **[Arbeiten mit Application Insights in Visual Studio](../../azure-monitor/app/visual-studio.md)**<br/>Enthält Informationen zum Debuggen per Telemetrie, zur Diagnosesuche und zum Drillthrough für Code.
-* **[Navigation und Dashboards im Application Insights-Portal](../../azure-monitor/app/app-insights-dashboards.md)**<br/> Enthält Informationen zu Dashboards, leistungsstarken Diagnose- und Analysetools, Warnungen und zum Export von Telemetriedaten sowie eine Livekarte der Abhängigkeiten Ihrer Anwendung.
-* **[Analytics](../../azure-monitor/log-query/get-started-portal.md)**: Die leistungsfähige Abfragesprache.
+* **[Analytics](../../azure-monitor/log-query/get-started-portal.md)** : Die leistungsfähige Abfragesprache.
 
 ### <a name="alerts"></a>Alerts
 

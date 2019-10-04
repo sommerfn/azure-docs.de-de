@@ -1,120 +1,133 @@
-items:
 - name: 'Azure Data Box-Dokumentation: Onlineübertragung'
   href: /azure/databox-online/
   expanded: true
 - name: Data Box Gateway
   items:
-  - name: Übersicht
-    items:
-    - name: Was ist Data Box Gateway?
-      href: data-box-gateway-overview.md
-  - name: Lernprogramme
-    items:
-    - name: 1 – Vorbereiten
-      href: data-box-gateway-deploy-prep.md
-    - name: 2A – Bereitstellen in Hyper-V
-      href: data-box-gateway-deploy-provision-hyperv.md
-    - name: 2B – Bereitstellen in VMware
-      href: data-box-gateway-deploy-provision-vmware.md
-    - name: 3 – Herstellen der Verbindung, Einrichten, Aktivieren
-      href: data-box-gateway-deploy-connect-setup-activate.md
-    - name: 4 – Hinzufügen, Herstellen der Verbindung zum Freigeben
-      href: data-box-gateway-deploy-add-shares.md
-  - name: Konzepte
-    items:
-    - name: Überprüfen der Anforderungen
-      href: data-box-gateway-system-requirements.md
-    - name: Grundlegendes zu den Beschränkungen
-      href: data-box-gateway-limits.md
-    - name: Sicherheitsübersicht
-      href: data-box-gateway-security.md
-    - name: Anzeigen von Anwendungsfällen
-      href: data-box-gateway-use-cases.md
-  - name: Anleitung
-    items:
-    - name: Verwalten
+    - name: Übersicht
       items:
-      - name: Freigaben
-        href: data-box-gateway-manage-shares.md
-      - name: Benutzer
-        href: data-box-gateway-manage-users.md
-      - name: Bandbreitenzeitpläne
-        href: data-box-gateway-manage-bandwidth-schedules.md
-      - name: Zugriff, Stromversorgung, Konnektivität
-        href: data-box-gateway-manage-access-power-connectivity-mode.md
-      - name: Über PowerShell
-        href: data-box-gateway-connect-powershell-interface.md
-    - name: Überwachen
-      href: data-box-gateway-monitor.md
-    - name: Problembehandlung
-      href: data-box-gateway-troubleshoot.md
-  - name: Versionshinweise
-    items:
-    - name: Allgemeine Verfügbarkeit
-      href: data-box-gateway-release-notes.md
+        - name: Was ist Data Box Gateway?
+          href: data-box-gateway-overview.md
+    - name: Lernprogramme
+      items:
+        - name: 1 – Vorbereiten
+          href: data-box-gateway-deploy-prep.md
+        - name: 2A – Bereitstellen in Hyper-V
+          href: data-box-gateway-deploy-provision-hyperv.md
+        - name: 2B – Bereitstellen in VMware
+          href: data-box-gateway-deploy-provision-vmware.md
+        - name: '3 – Herstellen der Verbindung, Einrichten, Aktivieren'
+          href: data-box-gateway-deploy-connect-setup-activate.md
+        - name: '4 – Hinzufügen, Herstellen der Verbindung zum Freigeben'
+          href: data-box-gateway-deploy-add-shares.md
+    - name: Konzepte
+      items:
+        - name: Überprüfen der Anforderungen
+          href: data-box-gateway-system-requirements.md
+        - name: Grundlegendes zu den Beschränkungen
+          href: data-box-gateway-limits.md
+        - name: Sicherheitsübersicht
+          href: data-box-gateway-security.md
+        - name: Anzeigen von Anwendungsfällen
+          href: data-box-gateway-use-cases.md
+    - name: Anleitung
+      items:
+        - name: Verwalten
+          items:
+            - name: Freigaben
+              href: data-box-gateway-manage-shares.md
+            - name: Benutzer
+              href: data-box-gateway-manage-users.md
+            - name: Bandbreitenzeitpläne
+              href: data-box-gateway-manage-bandwidth-schedules.md
+            - name: 'Zugriff, Stromversorgung, Konnektivität'
+              href: data-box-gateway-manage-access-power-connectivity-mode.md
+            - name: Über PowerShell
+              href: data-box-gateway-connect-powershell-interface.md
+        - name: Überwachen
+          href: data-box-gateway-monitor.md
+        - name: Problembehandlung
+          href: data-box-gateway-troubleshoot.md
+        - name: Microsoft-Support kontaktieren
+          href: data-box-edge-contact-microsoft-support.md
+    - name: Versionshinweise
+      items:
+        - name: 1906 – Aktuell
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: 'Allgemeine Verfügbarkeit (General Availability, GA)'
+          href: data-box-gateway-release-notes.md
 - name: Data Box Edge
   items:
-  - name: Übersicht
-    items:
-    - name: Was ist Azure Data Box Edge?
-      href: data-box-edge-overview.md
-  - name: Lernprogramme
-    items:
-    - name: 1 – Vorbereiten
-      href: data-box-edge-deploy-prep.md
-    - name: '2: Installieren'
-      href: data-box-edge-deploy-install.md
-    - name: 3 – Herstellen der Verbindung, Einrichten, Aktivieren
-      href: data-box-edge-deploy-connect-setup-activate.md
-    - name: 4 – Hinzufügen, Herstellen der Verbindung zum Freigeben
-      href: data-box-edge-deploy-add-shares.md
-    - name: '5: Konfigurieren der Computeumgebung'
-      href: data-box-edge-deploy-configure-compute.md
-  - name: Konzepte
-    items:
-    - name: Überprüfen der Anforderungen
-      href: data-box-edge-system-requirements.md
-    - name: Grundlegendes zu den Beschränkungen
-      href: data-box-edge-limits.md
-    - name: Sicherheitsübersicht
-      href: data-box-edge-security.md
-    - name: Spezifikationen für die Überprüfung
-      href: data-box-edge-technical-specifications-compliance.md
-  - name: Anleitung
-    items:
-    - name: Verwalten von Compute
-      href: data-box-edge-manage-compute.md
-    - name: Entwickeln eines C#-Moduls
-      href: data-box-edge-create-iot-edge-module.md
-    - name: Verwalten von Freigaben
-      href: data-box-edge-manage-shares.md
-    - name: Verwalten von Benutzern
-      href: data-box-edge-manage-users.md
-    - name: Verwalten von Bandbreitenzeitplänen
-      href: data-box-edge-manage-bandwidth-schedules.md
-    - name: Verwalten von Stromversorgung, Zugriff und Konnektivität
-      href: data-box-edge-manage-access-power-connectivity-mode.md
-    - name: Verwalten über PowerShell
-      href: data-box-edge-connect-powershell-interface.md
-    - name: Problembehandlung
-      href: data-box-edge-troubleshoot.md
-    - name: Überwachen
-      href: data-box-edge-monitor.md
-  - name: Versionshinweise
-    items:
-    - name: Allgemeine Verfügbarkeit
-      href: data-box-gateway-release-notes.md
+    - name: Übersicht
+      items:
+        - name: Was ist Azure Data Box Edge?
+          href: data-box-edge-overview.md
+    - name: Lernprogramme
+      items:
+        - name: 1 – Vorbereiten
+          href: data-box-edge-deploy-prep.md
+        - name: '2: Installieren'
+          href: data-box-edge-deploy-install.md
+        - name: '3 – Herstellen der Verbindung, Einrichten, Aktivieren'
+          href: data-box-edge-deploy-connect-setup-activate.md
+        - name: '4 – Hinzufügen, Herstellen der Verbindung zum Freigeben'
+          href: data-box-edge-deploy-add-shares.md
+        - name: '5a: Konfigurieren der Computeumgebung (einfach)'
+          href: data-box-edge-deploy-configure-compute.md
+        - name: '5b: Konfigurieren der Computeumgebung (erweitert)'
+          href: data-box-edge-deploy-configure-compute-advanced.md
+    - name: Konzepte
+      items:
+        - name: Überprüfen der Anforderungen
+          href: data-box-edge-system-requirements.md
+        - name: Grundlegendes zu den Beschränkungen
+          href: data-box-edge-limits.md
+        - name: Sicherheitsübersicht
+          href: data-box-edge-security.md
+        - name: Spezifikationen für die Überprüfung
+          href: data-box-edge-technical-specifications-compliance.md
+    - name: Anleitung
+      items:
+        - name: 'Entwickeln eines C#-Moduls'
+          href: data-box-edge-create-iot-edge-module.md
+        - name: Verwalten
+          items:
+            - name: Edgecomputing
+              href: data-box-edge-manage-compute.md
+            - name: Edgecomputingnetzwerk
+              href: data-box-edge-extend-compute-access-modules.md
+            - name: Freigaben
+              href: data-box-edge-manage-shares.md
+            - name: Benutzer
+              href: data-box-edge-manage-users.md
+            - name: Bandbreitenzeitpläne
+              href: data-box-edge-manage-bandwidth-schedules.md
+            - name: 'Stromversorgung, Zugriff, Konnektivität'
+              href: data-box-edge-manage-access-power-connectivity-mode.md
+            - name: Über PowerShell
+              href: data-box-edge-connect-powershell-interface.md
+        - name: Problembehandlung
+          href: data-box-edge-troubleshoot.md
+        - name: Microsoft-Support kontaktieren
+          href: data-box-edge-contact-microsoft-support.md
+        - name: Überwachen
+          href: data-box-edge-monitor.md
+        - name: Zurückgeben oder Ersetzen eines Geräts
+          href: data-box-edge-return-device.md
+    - name: Versionshinweise
+      items:
+        - name: 1906 – Aktuell
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: 'Allgemeine Verfügbarkeit (General Availability, GA)'
+          href: data-box-gateway-release-notes.md
 - name: Ressourcen
   items:
-  - name: Beispiele für ein Data Box Edge-C#-Modul (.NET)
-    href: https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/
-  - name: Data Box Edge-/Gateway-Produkt
-    href: https://azure.microsoft.com/services/storage/databox/edge/
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/storage/databox/edge/
-ms.openlocfilehash: f601de8c731354c6d01cfdc6de60115904a37d07
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679617"
+    - name: 'Beispiele für ein Data Box Edge-C#-Modul (.NET)'
+      href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'
+    - name: Data Box Edge-/Gateway-Produkt
+      href: 'https://azure.microsoft.com/services/storage/databox/edge/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/storage/databox/edge/'

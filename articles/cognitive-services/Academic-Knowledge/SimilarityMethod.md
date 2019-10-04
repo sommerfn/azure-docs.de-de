@@ -10,12 +10,13 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 44930ad0f941ea174d95658f220db7aa95012133
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX
+ms.openlocfilehash: 855d29d2c55b841bbbe4e9eadce8c29ad85fad90
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868683"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68704852"
 ---
 # <a name="similarity-method"></a>similarity-Methode
 
@@ -28,26 +29,34 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ```
 
 ## <a name="request-parameters"></a>Anforderungsparameter
+
 Parameter        |Datentyp      |Erforderlich | BESCHREIBUNG
 ----------|----------|----------|------------
 **s1**        |Zeichenfolge   |Ja  |Zu vergleichende Zeichenfolge*
 **s2**        |Zeichenfolge   |Ja  |Zu vergleichende Zeichenfolge*
+
 <sub> *Zu vergleichende Zeichenfolgen haben eine maximale Länge von 1 MB. </sub>
 <br>
+
 ## <a name="response"></a>response
+
 NAME | BESCHREIBUNG
 --------|---------
 **SimilarityScore**        |Ein Gleitkommawert, der die Kosinusähnlichkeit von s1 und s2 darstellt, wobei Werte, die näher an 1,0 liegen, ähnlicher sind und Werte, die näher an -1,0 liegen, weniger bedeuten.
+
 <br>
 
 ## <a name="successerror-conditions"></a>Erfolgs-/Fehlerbedingungen
-HTTP-Status | Grund | response
+
+HTTP-Status | `Reason` | response
 -----------|----------|--------
 **200**         |Erfolgreich | Gleitkommazahl
 **400**         | Unzulässige Anforderung oder Anforderung ungültig | Fehlermeldung      
 **500**         |Interner Serverfehler | Fehlermeldung
 **Zeitüberschreitung**     | Timeout bei der Anforderung.  | Fehlermeldung
+
 <br>
+
 ## <a name="example-calculate-similarity-of-two-partial-abstracts"></a>Beispiel: Berechnen der Ähnlichkeit von zwei partiellen Abstrakten
 #### <a name="request"></a>Anforderung:
 ```

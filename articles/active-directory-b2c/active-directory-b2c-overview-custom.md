@@ -2,26 +2,26 @@
 title: Azure Active Directory B2C – Benutzerdefinierte Richtlinien | Microsoft-Dokumentation
 description: Erfahren Sie mehr über benutzerdefinierte Azure Active Directory B2C-Richtlinien.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
+author: mmacy
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: davidmu
+ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7921454cc9269278db58fcc50bc63ca49b41b1e0
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 335b6c1a12f3786d7c0f1083f5b052aaac4beccb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417932"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065776"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten Ihres Azure Active Directory (Azure AD) B2C-Mandanten definieren. Im Azure AD B2C-Portal sind Benutzerflows für die häufigsten Identitätsaufgaben vordefiniert. Benutzerdefinierte Richtlinien können von einem Identitätsentwickler vollständig bearbeitet werden, um viele verschiedene Aufgaben auszuführen.
+Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten Ihres Azure Active Directory B2C-Mandanten (Azure AD B2C-Mandanten) definieren. Im Azure AD B2C-Portal sind Benutzerflows für die häufigsten Identitätsaufgaben vordefiniert. Benutzerdefinierte Richtlinien können von einem Identitätsentwickler vollständig bearbeitet werden, um viele verschiedene Aufgaben auszuführen.
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>Vergleichen von Benutzerflows mit benutzerdefinierten Richtlinien
 
@@ -41,7 +41,7 @@ Es werden die folgenden drei Typen von Richtliniendateien verwendet:
 
 - **Basisdatei**: Sie enthält die meisten Definitionen. Es empfiehlt sich, eine minimale Anzahl von Änderungen an dieser Datei vorzunehmen, um die Problembehandlung und eine langfristige Verwaltung Ihrer Richtlinien zu unterstützen.
 - **Erweiterungsdatei**: Sie enthält die eindeutigen Konfigurationsänderungen für Ihren Mandanten.
-- **Datei der vertrauenden Seite (Relying Party, RP)**: Dabei handelt es sich um die einzige aufgabenorientierte Datei, die direkt von der Anwendung oder dem Dienst (auch als „vertrauende Seite“ bezeichnet) aufgerufen wird. Jede eindeutige Aufgabe erfordert eine eigene RP, und die Anzahl kann abhängig von den Branding-Anforderungen die „Gesamtzahl von Anwendungen multipliziert mit der Gesamtzahl von Anwendungsfällen“ betragen.
+- **Datei der vertrauenden Seite (Relying Party, RP)** : Dabei handelt es sich um die einzige aufgabenorientierte Datei, die direkt von der Anwendung oder dem Dienst (auch als „vertrauende Seite“ bezeichnet) aufgerufen wird. Jede eindeutige Aufgabe erfordert eine eigene RP, und die Anzahl kann abhängig von den Branding-Anforderungen die „Gesamtzahl von Anwendungen multipliziert mit der Gesamtzahl von Anwendungsfällen“ betragen.
 
 Benutzerflows in Azure AD B2C folgen dem oben dargestellten 3-Dateien-Muster, aber der Entwickler sieht nur die Datei der vertrauenden Seite, während das Azure-Portal Änderungen an der Erweiterungsdatei im Hintergrund vornimmt.
 
@@ -50,12 +50,12 @@ Benutzerflows in Azure AD B2C folgen dem oben dargestellten 3-Dateien-Muster, ab
 Der Kundenidentitäts- und Zugriffsverwaltungsdienst (Customer Identity and Access Management, CIAM) in Azure umfasst Folgendes:
 
 - Ein Benutzerverzeichnis, auf das über Microsoft Graph zugegriffen werden kann und das Benutzerdaten für lokale und Verbundkonten enthält.
-- Zugriff auf das **Identity Experience Framework**, mit dem die Vertrauensstellung zwischen Benutzern und Entitäten koordiniert wird und Ansprüche zur Durchführung von Identitäts- oder Zugriffsverwaltungsaufgaben dazwischen ausgetauscht werden. 
+- Zugriff auf das **Identity Experience Framework**, mit dem die Vertrauensstellung zwischen Benutzern und Entitäten koordiniert wird und Ansprüche zur Durchführung von Identitäts- oder Zugriffsverwaltungsaufgaben dazwischen ausgetauscht werden.
 - Ein Sicherheitstokendienst (Security Token Service, STS), der ID-Token ausstellt, Token aktualisiert, auf Token (und entsprechende SAML-Assertionen) zugreift und diese zum Schutz von Ressourcen überprüft.
 
 Azure AD B2C interagiert der Reihe nach mit Identitätsanbietern, Benutzern, anderen Systemen und dem lokalen Benutzerverzeichnis, um eine Identitätsaufgabe auszuführen. Beispiel: Anmelden eines Benutzers, Registrieren eines neuen Benutzers oder Zurücksetzen eines Kennworts. Das Identity Experience Framework und eine Richtlinie (auch als „User Journey“ oder „Vertrauensframeworkrichtlinie“ bezeichnet) stellen die Vertrauensstellung zwischen mehreren Seiten her und definieren explizit die Akteure, Aktionen, Protokolle und die Abfolge der auszuführenden Schritte.
 
-Das Identity Experience Framework ist eine vollständig konfigurierbare, richtliniengesteuerte und cloudbasierte Azure-Plattform, die Vertrauensstellungen zwischen Entitäten in Standardprotokollformaten wie OpenID Connect, OAuth, SAML, WSFed sowie einigen nicht standardmäßigen Formaten (z. B. REST-API-basierter Austausch von Systemansprüchen) koordiniert. Das Framework erstellt benutzerfreundliche White-Label-Oberflächen, die HTML und CSS unterstützen.
+Das Identity Experience Framework ist eine vollständig konfigurierbare, richtliniengesteuerte und cloudbasierte Azure-Plattform, die Vertrauensstellungen zwischen Entitäten in Standardprotokollformaten wie OpenID Connect, OAuth, SAML sowie einigen nicht standardmäßigen Formaten (z. B. REST-API-basierter Austausch von Systemansprüchen) koordiniert. Das Framework erstellt benutzerfreundliche White-Label-Oberflächen, die HTML und CSS unterstützen.
 
 Eine benutzerdefinierte Richtlinie wird als eine oder mehrere XML-formatierte Dateien dargestellt, die aufeinander in einer hierarchischen Kette verweisen. Die XML-Elemente definieren u.a. das Anspruchsschema, Anspruchstransformationen, Inhaltsdefinitionen, Anspruchsanbieter, technische Profile und Schritte zur Orchestrierung von User Journeys. Eine benutzerdefinierte Richtlinie kann als eine oder mehrere XML-Dateien aufgerufen werden, die vom Identity Experience Framework beim Aufrufen durch eine vertrauende Seite ausgeführt wird/werden. Entwickler, die benutzerdefinierte Richtlinien konfigurieren, müssen die vertrauenswürdigen Beziehungen im Detail definieren, um Metadatenendpunkte und genaue Anspruchsaustauschdefinitionen einzuschließen und bei Bedarf zudem Geheimnisse, Schlüssel und Zertifikate durch die einzelnen Identitätsanbieter zu konfigurieren.
 

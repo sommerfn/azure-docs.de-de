@@ -1,32 +1,32 @@
 ---
-title: Glossar
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: LUIS-Glossar
+titleSuffix: Azure Cognitive Services
 description: In diesem Glossar werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit der LUIS-API stoßen.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 01/23/2019
+ms.topic: reference
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: ced83b83c2d64ba5c4816f378c66dae9f4210391
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0bf7fe649a5a604c610307b9be0717dce01cb238
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874480"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638297"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit der LUIS-API stoßen.
 
 ## <a name="active-version"></a>Aktive Version
 
-Die aktive LUIS-Version ist die Version, in der alle Änderungen am Modell vorgenommen werden. Wenn Sie auf der [LUIS](luis-reference-regions.md)-Website Änderungen an einer Version vornehmen möchten, die nicht die aktive Version ist, müssen Sie diese Version zunächst als aktive Version festlegen.
+Die aktive LUIS-Version ist die Version, in der alle Änderungen am Modell vorgenommen werden. Wenn Sie im [LUIS](luis-reference-regions.md)-Portal Änderungen an einer Version vornehmen möchten, bei der es sich nicht um die aktive Version handelt, müssen Sie diese Version zunächst als aktive Version festlegen.
 
 ## <a name="authoring"></a>Erstellung
 
-Die Erstellung ist die Fähigkeit zum Erstellen, Verwalten und Bereitstellen einer [LUIS-App](#luis-app) – entweder über die [LUIS](luis-reference-regions.md)-Website oder die [Erstellungs-APIs](https://aka.ms/luis-authoring-api).
+Bei der Erstellung handelt es sich um die Fähigkeit zum Erstellen, Verwalten und Bereitstellen einer [LUIS-App](#luis-app) – entweder über das [LUIS](luis-reference-regions.md)-Portal oder über die [Erstellungs-APIs](https://go.microsoft.com/fwlink/?linkid=2092087).
 
 ## <a name="authoring-key"></a>Erstellungsschlüssel
 
@@ -34,30 +34,12 @@ Früherer Name: „Programmierschlüssel“. Er wird zum Erstellen der App verwe
 
 ## <a name="batch-test-json-file"></a>Batch-JSON-Textdatei
 
-Die Batchdatei ist ein JSON-Array. Jedes Element im Array verfügt über drei Eigenschaften: `text`, `intent` und `entities`. Die `entities`-Eigenschaft ist ein Array. Das Array darf leer sein. Wenn das `entities`-Array nicht leer ist, muss es die Entitäten präzise identifizieren.
+Batchtests ermöglichen die Überprüfung des Modells einer aktuellen LUIS-App mit einem konsistenten und bekannten Testsatz von Benutzeräußerungen. Der Batchtest ist in einer [Datei im JSON-Format](luis-concept-batch-test.md#batch-file-format) definiert.
 
-```JSON
-[
-    {
-        "text": "drive me home",
-        "intent": "None",
-        "entities": []
-    },
-    {
-        "text": "book a flight to orlando on the 25th",
-        "intent": "BookFlight",
-        "entities": [
-            {
-                "entity": "orlando",
-                "type": "Location",
-                "startIndex": 18,
-                "endIndex": 25
-            }
-        ]
-    }
-]
-
-```
+Weitere Informationen: 
+* [Konzepte](luis-concept-batch-test.md)
+* [Anleitung](luis-how-to-batch-test.md)
+* [Tutorial]luis-tutorial-batch-testing.md)
 
 
 ## <a name="collaborator"></a>Projektmitarbeiter
@@ -74,13 +56,13 @@ Im LUIS-Kontext ist eine **Domäne** ein Themenbereich. Die Domäne bezieht sich
 
 ## <a name="endpoint"></a>Endpunkt
 
-In der [LUIS-Endpunkt](https://aka.ms/luis-endpoint-apis)-URL übermitteln Sie LUIS Abfragen, nachdem die [LUIS-App](#luis-app) erstellt und veröffentlicht wurde. Die Endpunkt-URL enthält die Region der veröffentlichten App und die App-ID. Sie finden den Endpunkt auf der Seite **[Schlüssel und Endpunkte](luis-how-to-azure-subscription.md)** Ihrer App, oder Sie können die Endpunkt-URL bei der [Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37)-API abrufen.
+In der [LUIS-Endpunkt](https://go.microsoft.com/fwlink/?linkid=2092356)-URL übermitteln Sie LUIS Abfragen, nachdem die [LUIS-App](#luis-app) erstellt und veröffentlicht wurde. Die Endpunkt-URL enthält die Region der veröffentlichten App und die App-ID. Sie finden den Endpunkt auf der Seite **[Schlüssel und Endpunkte](luis-how-to-azure-subscription.md)** Ihrer App, oder Sie können die Endpunkt-URL bei der [Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37)-API abrufen.
 
 Ein Beispiel für einen Endpunkt:
 
 `https://<region>.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscriptionID>&verbose=true&timezoneOffset=0&q=<utterance>`
 
-|QueryString-Parameter|Beschreibung|
+|QueryString-Parameter|description|
 |--|--|
 |region| [veröffentlichte Region](luis-reference-regions.md#publishing-regions) |
 |appID | LUIS-App-ID |
@@ -114,7 +96,7 @@ Eine [Absicht](luis-concept-intent.md) stellt eine Aufgabe oder Aktion dar, die 
 
 ## <a name="labeling"></a>Bezeichnung
 
-Beim Bezeichnen wird ein Wort oder Ausdruck in der [Äußerung](#utterance) einer Absicht einer [Entität](#entity) (Datentyp) zugeordnet.
+Beim Bezeichnen (oder Markieren) wird ein Wort oder Ausdruck in der [Äußerung](#utterance) einer Absicht einer [Entität](#entity) (Datentyp) zugeordnet.
 
 ## <a name="luis-app"></a>LUIS-App
 

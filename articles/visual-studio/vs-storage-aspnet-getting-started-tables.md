@@ -3,7 +3,7 @@ title: Erste Schritte mit Azure Table Storage und verbundenen Visual Studio-Dien
 description: Erfahren Sie mehr über die ersten Schritte mit Azure Table Storage in einem ASP.NET-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben.
 services: storage
 author: ghogen
-manager: douge
+manager: jillfra
 ms.assetid: af81a326-18f4-4449-bc0d-e96fba27c1f8
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: ea50506df53bfd586656d0030be4536d9d3b907d
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 6f0858d3c2e3f79dda58710031c105e83418058e
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010140"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69511170"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure Table Storage und verbundenen Visual Studio-Diensten (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -711,4 +711,4 @@ Dieser Abschnitt zeigt das Löschen einer Entität aus einer Tabelle.
 Weitere Informationen zu zusätzlichen Optionen für das Speichern von Daten in Azure finden Sie in den anderen Featureleitfäden.
 
   * [Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
-  * [Erste Schritte mit Azure Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET)](../storage/vs-storage-aspnet-getting-started-queues.md)
+  * [Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten](../storage/vs-storage-aspnet-getting-started-queues.md)

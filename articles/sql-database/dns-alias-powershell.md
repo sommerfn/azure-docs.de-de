@@ -1,42 +1,39 @@
 ---
 title: PowerShell für den DNS-Alias für Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Mit PowerShell-Cmdlets wie New-AzSqlServerDNSAlias können Sie neue Clientverbindungen mit einem anderen Azure SQL-Datenbankserver umleiten, ohne Clientkonfigurationen vornehmen zu müssen.
+description: Mit PowerShell-Cmdlets wie „New-AzSqlServerDNSAlias“ können Sie neue Clientverbindungen an einen anderen Azure SQL-Datenbank-Server umleiten, ohne Clientkonfigurationen vornehmen zu müssen.
 keywords: dns sql database
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
 ms.devlang: PowerShell
 ms.topic: conceptual
-author: oslake
-ms.author: moslake
-ms.reviewer: genemi,amagarwa,maboja, jrasnick
-manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 17b712afff293dba8c353767fc326761bcb53ba3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+author: rohitnayakmsft
+ms.author: rohitna
+ms.reviewer: genemi, amagarwa, maboja, jrasnick, vanto
+ms.date: 05/14/2019
+ms.openlocfilehash: 47afd905b1fa28ce65163203b9d43781f434233d
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860736"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058544"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell für den DNS-Alias für Azure SQL-Datenbank
 
 Dieser Artikel bietet ein PowerShell-Skript, das veranschaulicht, wie Sie einen DNS-Alias für Azure SQL-Datenbank verwalten können. Das Skript führt die folgenden Cmdlets mit folgenden Aktionen aus:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 Die im Codebeispiel verwendeten Cmdlets lauten wie folgt:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Erstellt einen neuen DNS-Alias im Dienstsystem von Azure SQL-Datenbank. Der Alias verweist auf Azure SQL-Datenbankserver 1.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Erstellt einen neuen DNS-Alias im Dienstsystem von Azure SQL-Datenbank. Der Alias verweist auf Azure SQL-Datenbank-Server 1.
 - [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Ruft alle DNS-Aliase auf, die Server 1 von SQL-Datenbank zugewiesen sind, und listet diese auf.
 - [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Ändert den Servernamen, für dessen Referenzierung der Alias konfiguriert ist, aus Server 1 in SQL-Datenbankserver 2.
 - [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Entfernt den DNS-Alias aus SQL-Datenbankserver 2 anhand des Aliasnamens.
 
 ## <a name="dns-alias-in-connection-string"></a>DNS-Alias in der Verbindungszeichenfolge
 
-Um eine Verbindung mit einem bestimmten Azure SQL-Datenbankserver herzustellen, kann ein Client wie SQL Server Management Studio (SSMS) anstelle des echten Servernamens den DNS-Aliasnamen angeben. In der folgenden Beispielserverzeichenfolge ersetzt der Alias *any-unique-alias-name* den ersten durch Punkte getrennten Knoten in der Serverzeichenfolge mit vier Knoten:
+Um eine Verbindung mit einem bestimmten Azure SQL-Datenbank-Server herzustellen, kann ein Client wie SQL Server Management Studio (SSMS) anstelle des echten Servernamens den DNS-Aliasnamen angeben. In der folgenden Beispielserverzeichenfolge ersetzt der Alias *any-unique-alias-name* den ersten durch Punkte getrennten Knoten in der Serverzeichenfolge mit vier Knoten:
 
 - Beispielserverzeichenfolge: `any-unique-alias-name.database.windows.net`.
 
@@ -46,9 +43,9 @@ Wenn Sie das in diesem Artikel angegebene PowerShell-Demoskript ausführen möch
 
 - Ein Azure-Abonnement und -Konto. Eine kostenlose Testversion erhalten Sie unter [https://azure.microsoft.com/free/][https://azure.microsoft.com/free/].
 - Azure PowerShell-Modul mit dem Cmdlet **New-AzSqlServerDNSAlias**.
-  - Informationen zum Installieren oder Durchführen eines Upgrades finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][install-Az-ps-84p].
+  - Informationen zum Installieren oder Upgraden finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][install-Az-ps-84p].
   - Führen Sie `Get-Module -ListAvailable Az;` in der Datei „powershell\_ise.exe“ aus, um die entsprechende Version zu ermitteln.
-- Zwei Azure SQL-Datenbankserver
+- Zwei Azure SQL-Datenbank-Server
 
 ## <a name="code-example"></a>Codebeispiel
 

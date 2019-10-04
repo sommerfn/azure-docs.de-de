@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3a1497211cc42c702537cbbdfea32ff71a400c7c
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541926"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67836686"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Verschieben von Daten mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-amazon-redshift-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-amazon-redshift.md)
 
@@ -44,7 +44,7 @@ Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithil
 
 Am einfachsten erstellen Sie eine Pipeline mit dem Kopier-Assistenten von Azure Data Factory. Eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Kopier-Assistenten finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
 
-Sie können auch das Azure-Portal, Visual Studio, Azure PowerShell oder andere Tools verwenden, um eine Pipeline zu erstellen. Azure Resource Manager-Vorlagen, die .NET API oder die REST-API können ebenfalls zur Erstellung der Pipeline verwendet werden. Eine ausführliche Anleitung zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Sie können auch Visual Studio, Azure PowerShell oder andere Tools verwenden, um eine Pipeline zu erstellen. Azure Resource Manager-Vorlagen, die .NET API oder die REST-API können ebenfalls zur Erstellung der Pipeline verwendet werden. Eine ausführliche Anleitung zum Erstellen einer Pipeline mit einer Kopieraktivität finden Sie im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
@@ -88,7 +88,7 @@ Wenn bei einer Kopieraktivität die Quelle den Typ **AmazonRedshiftSource** aufw
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | **query** | Verwendet die benutzerdefinierte Abfrage zum Lesen der Daten. |Nein (wenn die **tableName**-Eigenschaft eines DataSets angegeben wurde) |
-| **redshiftUnloadSettings** | Enthält bei Verwendung des Redshift-Befehls **UNLOAD** die Eigenschaftsgruppe. | Nein  |
+| **redshiftUnloadSettings** | Enthält bei Verwendung des Redshift-Befehls **UNLOAD** die Eigenschaftsgruppe. | Nein |
 | **s3LinkedServiceName** | Der Amazon S3-Speicher, der als vorläufiger Speicher verwendet werden soll. Der verknüpfte Dienst wird mithilfe eines Azure Data Factory-Namens des Typs **AwsAccessKey** angegeben. | Erforderlich, wenn Sie die **redshiftUnloadSettings**-Eigenschaft verwenden. |
 | **bucketName** | Gibt den zu verwendenden Amazon S3-Bucket zum Speichern der vorläufigen Daten an. Bei fehlender Angabe dieser Eigenschaft generiert die Kopieraktivität automatisch einen Bucket. | Erforderlich, wenn Sie die **RedshiftUnloadSettings**-Eigenschaft verwenden |
 
@@ -336,12 +336,12 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | DECIMAL |Decimal |
 | REAL |Single |
 | DOUBLE PRECISION |Double |
-| BOOLEAN |Zeichenfolge |
-| CHAR |Zeichenfolge |
-| VARCHAR |Zeichenfolge |
+| Boolean |String |
+| CHAR |string |
+| VARCHAR |string |
 | DATE |DateTime |
 | TIMESTAMP |DateTime |
-| TEXT |Zeichenfolge |
+| TEXT |string |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quell-DataSet zu Spalten im Senken-DataSet finden Sie unter [Zuordnen von DataSet-Spalten in Azure Data Factory](data-factory-map-columns.md).

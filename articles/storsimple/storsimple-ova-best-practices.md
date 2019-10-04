@@ -12,17 +12,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/08/2018
+ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: a8aed646f03b777722518152354cfe80cea043a0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300913"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002800"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array – Bewährte Methoden
+
 ## <a name="overview"></a>Übersicht
+
+[!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
+
 Bei Microsoft Azure StorSimple Virtual Array handelt es sich um eine integrierte Speicherlösung, mit der Speicheraufgaben zwischen einem lokalen virtuellen Gerät, das in einem Hypervisor ausgeführt wird, und dem Microsoft Azure-Cloudspeicher verwaltet werden. Das StorSimple Virtual Array ist eine effiziente und kostengünstige Alternative zum physischen Array der 8000er Serie. Das virtuelle Array kann unter Ihrer vorhandenen Hypervisor-Infrastruktur ausgeführt werden, unterstützt sowohl das iSCSI- als auch das SMB-Protokoll und ist gut für Szenarien mit weit entfernten Büros oder Büros in Zweigniederlassungen geeignet. Weitere Informationen zu StorSimple-Lösungen finden Sie unter [Microsoft Azure StorSimple Overview](https://www.microsoft.com/en-us/server-cloud/products/storsimple/overview.aspx)(Übersicht über Microsoft Azure StorSimple).
 
 In diesem Artikel werden die bewährten Methoden beschrieben, die während der Ersteinrichtung, Bereitstellung und Verwaltung des StorSimple Virtual Array implementiert werden. Diese bewährten Methoden umfassen überprüfte Richtlinien für die Einrichtung und Verwaltung Ihres virtuellen Arrays. Dieser Artikel richtet sich an IT-Administratoren, die die virtuellen Arrays in den Datencentern bereitstellen und verwalten.
@@ -195,7 +199,7 @@ Nutzen Sie die folgenden bewährten Methoden, wenn Sie ACRs für StorSimple-Volu
 ### <a name="data-security-and-encryption"></a>Datensicherheit und -verschlüsselung
 Das StorSimple Virtual Array verfügt über Sicherheits- und Verschlüsselungsfeatures, mit denen die Vertraulichkeit und Integrität Ihrer Daten sichergestellt wird. Für die Verwendung dieser Features empfehlen wir Ihnen die Befolgung der folgenden bewährten Methoden: 
 
-* Definieren Sie einen Cloudspeicher-Verschlüsselungsschlüssel zum Generieren einer AES-256-Verschlüsselung, bevor die Daten aus Ihrem virtuellen Array in die Cloud gesendet werden. Dieser Schlüssel ist nicht erforderlich, wenn die Daten bereits verschlüsselt sind. Der Schlüssel kann mit einem Schlüsselverwaltungssystem, z. B. [Azure Key Vault](../key-vault/key-vault-whatis.md), generiert und sicher aufbewahrt werden.
+* Definieren Sie einen Cloudspeicher-Verschlüsselungsschlüssel zum Generieren einer AES-256-Verschlüsselung, bevor die Daten aus Ihrem virtuellen Array in die Cloud gesendet werden. Dieser Schlüssel ist nicht erforderlich, wenn die Daten bereits verschlüsselt sind. Der Schlüssel kann mit einem Schlüsselverwaltungssystem, z. B. [Azure Key Vault](../key-vault/key-vault-overview.md), generiert und sicher aufbewahrt werden.
 * Stellen Sie beim Konfigurieren des Speicherkontos über den StorSimple Manager-Dienst sicher, dass Sie den SSL-Modus aktivieren, um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem StorSimple-Gerät und der Cloud zu erstellen.
 * Generieren Sie die Schlüssel für Ihre Speicherkonten in regelmäßigen Abständen neu (per Zugriff auf den Azure Storage-Dienst), um basierend auf der geänderten Administratorliste alle Zugriffsänderungen abzudecken.
 * Die Daten in Ihrem virtuellen Array werden komprimiert und dedupliziert, bevor sie an Azure gesendet werden. Es ist nicht zu empfehlen, den Rollendienst für die Datendeduplizierung auf dem Windows Server-Host zu verwenden.

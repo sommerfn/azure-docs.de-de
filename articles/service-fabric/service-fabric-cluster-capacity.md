@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2018
+ms.date: 07/09/2019
 ms.author: chackdan
-ms.openlocfilehash: bd76658c939496f27bf3751060c18d17968acd15
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 2d13364093776028f96b75c5bfef252e2fdfc790
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667343"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68679401"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstellung. Nachfolgend sind einige Aspekte aufgeführt, die Sie dabei berücksichtigen müssen.
@@ -77,8 +77,8 @@ Cluster mit mehreren Knotentypen verfügen über einen primären Knotentyp. Die 
 | Dauerhaftigkeitsstufe  | Erforderliche Mindestanzahl von VMs | Unterstützte VM-SKUs                                                                  | Aktualisierungen, die Sie an Ihrer VM-Skalierungsgruppe vornehmen                               | Updates und Wartung, initiiert von Azure                                                              | 
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Gold             | 5                              | Vollknoten-SKUs speziell für einen einzelnen Kunden (z.B. L32s, GS5, G5, DS15_v2, D15_v2) | Kann bis zur Genehmigung durch den Service Fabric-Cluster verzögert werden | Kann für 2 Stunden pro UD angehalten werden, damit zusätzliche Zeit für die Wiederherstellung von Replikaten nach früheren Fehlern verfügbar ist |
-| Silber           | 5                              | VMs mit einem Kern oder mehr                                                        | Kann bis zur Genehmigung durch den Service Fabric-Cluster verzögert werden | Kann nicht für eine längere Zeit verzögert werden                                                    |
-| Bronze           | 1                              | Alle                                                                                | Wird nicht durch den Service Fabric-Cluster verzögert           | Kann nicht für eine längere Zeit verzögert werden                                                    |
+| Silber           | 5                              | Virtuelle Computer mit einem Kern oder höher mit mindestens 50 GB lokalem SSD-Speicher                      | Kann bis zur Genehmigung durch den Service Fabric-Cluster verzögert werden | Kann nicht für eine längere Zeit verzögert werden                                                    |
+| Bronze           | 1                              | Virtuelle Computer mit mindestens 50 GB lokaler SSD-Kapazität                                              | Wird nicht durch den Service Fabric-Cluster verzögert           | Kann nicht für eine längere Zeit verzögert werden                                                    |
 
 > [!WARNING]
 > Knotentypen, die mit der Dauerhaftigkeitsstufe „Bronze“ ausgeführt werden, erhalten _keine Berechtigungen_. Das bedeutet, dass die Infrastrukturaufträge, die sich auf die zustandslosen Workloads auswirken, nicht angehalten oder verzögert werden. Dies kann sich auf Ihre Workloads auswirken. Verwenden Sie „Bronze“ nur für Knotentypen, die ausschließlich zustandslose Workloads ausführen. Für Produktionsworkloads wird die Ausführung unter „Silber“ oder höher empfohlen. 
@@ -108,10 +108,10 @@ Verwenden Sie die Silber- oder Gold-Dauerhaftigkeit für alle Knotentypen, die z
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Betriebsempfehlungen für den Knotentyp, dessen Dauerhaftigkeitsstufe Sie auf „Silber“ oder „Gold“ festgelegt haben.
 
 - Halten Sie Ihren Cluster und Anwendungen jederzeit fehlerfrei, und stellen Sie sicher, dass Anwendungen rechtzeitig auf alle [Lebenszyklus-Dienstereignisse für Replikate](service-fabric-reliable-services-lifecycle.md) (z.B. Unterbrechung der Replikaterstellung) reagieren.
-- Führen Sie sicherere Methoden für VM-SKU-Änderungen (Horizontales Hoch-/Herunterskalieren nach) ein: Das Ändern der VM-SKU einer VM-Skalierungsgruppe ist grundsätzlich ein unsicherer Vorgang und sollte daher vermieden werden. Mit dieser Vorgehensweise vermeiden Sie gängige Probleme.
+- Führen Sie sicherere Methoden für VM-SKU-Änderungen (Horizontales Hoch-/Herunterskalieren nach) ein: Für Ändern der VM-SKU einer VM-Skalierungsgruppe sind mehrere Schritte und diverse Überlegungen erforderlich. Mit dieser Vorgehensweise vermeiden Sie gängige Probleme.
     - **Für nicht primäre Knotentypen:** Es wird empfohlen, eine neue VM-Skalierungsgruppe zu erstellen, die Dienstplatzierungseinschränkungen so zu ändern, dass die neue VM-Skalierungsgruppe bzw. der neue Knotentyp enthalten ist, und dann die Instanzenanzahl der alten VM-Skalierungsgruppe auf null zu reduzieren (nacheinander für alle Knoten, um sicherzustellen, dass das Entfernen der Knoten die Zuverlässigkeit des Clusters nicht beeinträchtigt).
-    - **Für den primären Knotentyp:** Eine Änderung der VM-SKU des primären Knotentyps wird nicht empfohlen. Das Ändern der SKU des primären Knotentyps wird nicht unterstützt. Ist Kapazität der Grund für die neue SKU, wird empfohlen, weitere Instanzen hinzuzufügen. Wenn dies nicht möglich ist, erstellen Sie einen neuen Cluster und führen eine [Wiederherstellung des Anwendungszustands](service-fabric-reliable-services-backup-restore.md) (falls zutreffend) vom alten Cluster durch. Sie müssen keine Systemdienstzustände wiederherstellen, denn diese werden neu erstellt, wenn Sie Ihre Anwendungen im neuen Cluster bereitstellen. Wenn Sie in Ihrem Cluster zustandslose Anwendungen ausführen, stellen Sie Ihre Anwendungen im neuen Cluster bereit.  Sie müssen nichts wiederherstellen. Wenn Sie einen nicht unterstützten Weg einschlagen und die VM-SKU ändern möchten, können Sie das Modell der VM-Skalierungsgruppe an die neue SKU anpassen. Wenn der Cluster nur einen Knotentyp enthält, sollten Sie sicherstellen, dass Ihre gesamten zustandsbehafteten Anwendungen rechtzeitig auf alle [Lebenszyklus-Dienstereignisse für Replikate](service-fabric-reliable-services-lifecycle.md) (z.B. Unterbrechung der Replikaterstellung) reagieren und dass die Dauer für die Neuerstellung des Dienstreplikats weniger als fünf Minuten beträgt (für die Dauerhaftigkeitsstufe „Silber“). 
-    
+    - **Für den primären Knotentyp:** Wenn die von Ihnen ausgewählte VM-SKU die Kapazitätsgrenze erreicht und Sie zu einer größeren VM-SKU wechseln möchten, beachten Sie unsere Hinweise zur [vertikalen Skalierung für einen primären Knotentyp](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type). 
+
 - Verwalten Sie mindestens fünf Knoten für alle VM-Skalierungsgruppen, für die die Dauerhaftigkeitsstufen „Gold“ oder „Silber“ aktiviert wurden.
 - Jede VM-Skalierungsgruppe mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ muss einem eigenen Knotentyp im Service Fabric-Cluster zugeordnet werden. Das Zuordnen mehrerer VM-Skalierungsgruppen zu einem einzelnen Knotentyp verhindert die ordnungsgemäße Koordinierung zwischen dem Service Fabric-Cluster und der Azure-Infrastruktur.
 - Löschen Sie keine zufälligen VM-Instanzen, sondern verwenden Sie immer die Funktion zum zentralen Herunterskalieren für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann zu Ungleichheiten in der auf UD und FD verteilten VM-Instanz führen. Eine solche Ungleichheit kann die Fähigkeit des Systems zum ordnungsgemäßen Lastenausgleich zwischen den Dienstinstanzen/Dienstreplikaten beeinträchtigen.
@@ -160,11 +160,11 @@ Da die Kapazitätsanforderungen eines Clusters von der Workload abhängig sind, 
 Für Produktionsworkloads: 
 
 - Es wird empfohlen, den primären NodeType exklusiv für Systemdienste zu reservieren und Platzierungseinschränkungen zu verwenden, um Ihre Anwendung auf den sekundären NodeTypes bereitzustellen.
-- Die empfohlene VM-SKU ist D3 Standard oder D3_V2 Standard oder eine entsprechende SKU mit einer lokalen SSD-Kapazität von mindestens 14 GB.
-- Die minimal unterstützte VM-SKU ist D1 Standard oder D1_V2 Standard oder eine entsprechende SKU mit einer lokalen SSD-Kapazität von mindestens 14 GB. 
-- Ein lokaler SSD-Datenträger mit mindestens 14 GB ist erforderlich. Empfohlen werden mindestens 50 GB. Für Ihre Workloads, insbesondere bei der Ausführung von Windows-Containern, werden größere Datenträger benötigt. 
+- Die empfohlene VM-SKU ist D2_V2 oder eine entsprechende SKU mit einer lokalen SSD-Kapazität von mindestens 50 GB.
+- Die minimal unterstützte VM-SKU ist Standard_D2_V3 oder Standard_D1_V2 oder eine entsprechende SKU mit einer lokalen SSD-Kapazität von mindestens 50 GB. 
+- Empfohlen werden mindestens 50 GB. Für Ihre Workloads, insbesondere bei der Ausführung von Windows-Containern, werden größere Datenträger benötigt. 
 - VM-SKUs mit partiellem Kern wie A0 Standard werden für Produktionsworkloads nicht unterstützt.
-- A1 Standard-SKUs werden aus Leistungsgründen für Produktionsworkloads nicht unterstützt.
+- VM-SKUs der A-Serie werden aus Leistungsgründen für Produktionsworkloads nicht unterstützt.
 - Virtuelle Computer mit niedriger Priorität werden nicht unterstützt.
 
 > [!WARNING]
@@ -182,10 +182,10 @@ Für Produktionsworkloads wird die Mindestgröße 5 für den primären Knotentyp
 
 Für Produktionsworkloads 
 
-- Die empfohlene VM-SKU ist D3 Standard oder D3_V2 Standard oder eine entsprechende SKU mit einer lokalen SSD-Kapazität von mindestens 14 GB.
-- Die minimal unterstützte VM-SKU ist D1 Standard oder D1_V2 Standard oder eine entsprechende SKU mit einer lokalen SSD-Kapazität von mindestens 14 GB. 
+- Die empfohlene VM-SKU ist D2_V2 oder eine entsprechende SKU mit einer lokalen SSD-Kapazität von mindestens 50 GB.
+- Die minimal unterstützte VM-SKU ist Standard_D2_V3 oder Standard_D1_V2 oder eine entsprechende SKU mit einer lokalen SSD-Kapazität von mindestens 50 GB. 
 - VM-SKUs mit partiellem Kern wie A0 Standard werden für Produktionsworkloads nicht unterstützt.
-- A1 Standard-SKUs werden aus Leistungsgründen für Produktionsworkloads nicht unterstützt.
+- VM-SKUs der A-Serie werden aus Leistungsgründen für Produktionsworkloads nicht unterstützt.
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateless-workloads"></a>Nicht primärer Knotentyp: Kapazitätsleitfaden für zustandslose Workloads
 
@@ -197,10 +197,10 @@ Diese Anleitung gilt für zustandslose Workloads, die Sie auf dem nicht primäre
 
 Für Produktionsworkloads 
 
-- Die empfohlene VM-SKU ist D3 Standard oder D3_V2 Standard oder eine entsprechende SKU. 
+- Die empfohlene VM-SKU ist Standard D2_V2 oder eine entsprechende SKU. 
 - Die minimal unterstützte VM-SKU ist D1 Standard oder D1_V2 Standard oder eine entsprechende SKU. 
 - VM-SKUs mit partiellem Kern wie A0 Standard werden für Produktionsworkloads nicht unterstützt.
-- A1 Standard-SKUs werden aus Leistungsgründen für Produktionsworkloads nicht unterstützt.
+- VM-SKUs der A-Serie werden aus Leistungsgründen für Produktionsworkloads nicht unterstützt.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 

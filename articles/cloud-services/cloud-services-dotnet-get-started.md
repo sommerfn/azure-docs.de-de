@@ -3,23 +3,19 @@ title: Erste Schritte mit Azure-Clouddiensten und ASP.NET | Microsoft Docs
 description: Hier erfahren Sie, wie Sie mit ASP.NET MVC und Azure eine Anwendung mit mehreren Ebenen erstellen. Die Anwendung wird in einem Clouddienst mit Webrolle und Workerrolle ausgeführt. Sie verwendet Entity Framework, SQL-Datenbank und Azure Storage-Warteschlangen und -Blobs.
 services: cloud-services, storage
 documentationcenter: .net
-author: jpconnock
-manager: timlt
-editor: ''
-ms.assetid: d7aa440d-af4a-4f80-b804-cc46178df4f9
+author: georgewallace
+manager: carmonm
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: jeconnoc
-ms.openlocfilehash: a2eff2ca2e72ad263e3e23d0827e7603bca3fdcb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: gwallace
+ms.openlocfilehash: 3f2c60be29d679d0b0d30b6bf471f083c66ba93f
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917475"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68827660"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Erste Schritte mit Azure-Clouddiensten und ASP.NET
 
@@ -36,7 +32,7 @@ Bei dieser Anwendung handelt es sich um ein Bulletin Board für Werbung. Benutze
 Die Anwendung verwendet das [warteschlangenorientierte Arbeitsmuster](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) , um die CPU-intensive Last der Erstellung von Miniaturbildern an einen Back-End-Prozess auszulagern.
 
 ## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternative Architektur: App Service und WebJobs
-In diesem Tutorial erfahren Sie, wie Sie Front-End und Back-End in einem Azure-Clouddienst ausführen können. Alternativ können Sie das Front-End in [Azure App Service](/azure/app-service/) ausführen und die [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226)-Funktion für das Back-End verwenden. Ein Lernprogramm zu WebJobs finden Sie unter [Erste Schritte mit dem Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki). Informationen zur Auswahl der optimalen Dienste für Ihr Szenario finden Sie unter [Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich](../app-service/overview-compare.md).
+In diesem Tutorial erfahren Sie, wie Sie Front-End und Back-End in einem Azure-Clouddienst ausführen können. Alternativ können Sie das Front-End in [Azure App Service](/azure/app-service/) ausführen und die [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226)-Funktion für das Back-End verwenden. Ein Lernprogramm zu WebJobs finden Sie unter [Erste Schritte mit dem Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki). Informationen zur Auswahl der optimalen Dienste für Ihr Szenario finden Sie unter [Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="what-youll-learn"></a>Sie lernen Folgendes
 * Ermöglichen der Azure-Entwicklung auf Ihrem Computer durch Installieren des Azure SDK
@@ -51,11 +47,12 @@ Dieses Tutorial setzt voraus, dass Sie mit den [Grundkonzepten von Azure-Clouddi
 
 Sie können die Anwendung ohne Azure-Abonnement lokal ausführen, aber für die Bereitstellung der Anwendung in der Cloud benötigen Sie ein Abonnement. Wenn Sie kein Konto haben, können Sie [Ihre MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668) oder [sich für eine kostenlose Testversion registrieren](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668).
 
-Die Anweisungen im Tutorial funktionieren mit den folgenden beiden Produkten:
+Die Anweisungen im Tutorial funktionieren mit allen der folgenden Produkte:
 
 * Visual Studio 2013
 * Visual Studio 2015
 * Visual Studio 2017
+* Visual Studio 2019
 
 Falls Sie keines dieser Produkte besitzen, wird Visual Studio möglicherweise zusammen mit dem Azure SDK installiert.
 
@@ -117,7 +114,7 @@ Führen Sie folgende Schritte aus, um die Anwendung in der Cloud auszuführen:
 Ein Azure-Clouddienst ist die Umgebung, in der die Anwendung ausgeführt wird.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) in Ihrem Browser.
-2. Klicken Sie auf **„Ressource erstellen“ > „Compute“ > „Clouddienst“**.
+2. Klicken Sie auf **„Ressource erstellen“ > „Compute“ > „Clouddienst“** .
 
 3. Geben Sie im Eingabefeld für den DNS-Namen ein URL-Präfix für den Clouddienst ein.
 
@@ -136,7 +133,7 @@ Ein Azure-Clouddienst ist die Umgebung, in der die Anwendung ausgeführt wird.
 ### <a name="create-an-azure-sql-database"></a>Erstellen einer Azure SQL-Datenbank
 Wenn die Anwendung in der Cloud ausgeführt wird, verwendet sie eine cloudbasierte Datenbank.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **„Ressource erstellen“ > „Datenbanken“ > „SQL-Datenbank“**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **„Ressource erstellen“ > „Datenbanken“ > „SQL-Datenbank“** .
 2. Geben Sie unter **Datenbankname** den Wert *contosoads*ein.
 3. Klicken Sie in der **Ressourcengruppe** auf **Vorhandene verwenden**, und wählen Sie die Ressourcengruppe aus, die für den Clouddienst verwendet wird.
 4. Klicken Sie in der folgenden Abbildung auf **Server – Erforderliche Einstellungen konfigurieren** und dann auf **Neuen Server erstellen**.
@@ -155,7 +152,7 @@ Wenn die Anwendung in der Cloud ausgeführt wird, verwendet sie eine cloudbasier
 8. Aktivieren Sie die Option **Azure-Diensten Zugriff auf den Server erlauben**.
 9. Klicken Sie für den neuen Server auf **Auswählen**.
 
-    ![Neuer SQL-Datenbankserver](./media/cloud-services-dotnet-get-started/newdbserver.png)
+    ![Neuer SQL-Datenbank-Server](./media/cloud-services-dotnet-get-started/newdbserver.png)
 10. Klicken Sie auf **Create**.
 
 ### <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
@@ -163,7 +160,7 @@ Azure-Speicherkonten bieten Ressourcen zum Speichern von Warteschlangen- und Blo
 
 In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für Anwendungsdaten und Protokolldaten sowie für Test- und Produktionsdaten erstellen. In diesem Tutorial verwenden wir nur ein einzelnes Konto.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **„Ressource erstellen“ > „Storage“ > „Speicherkonto – Blob, Datei, Tabelle, Warteschlange“**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **„Ressource erstellen“ > „Storage“ > „Speicherkonto – Blob, Datei, Tabelle, Warteschlange“** .
 2. Geben Sie im Feld **Name** ein URL-Präfix ein.
 
     Dieses Präfix zusammen mit dem Text unterhalb des Eingabefelds ergibt die eindeutige URL Ihres Speicherkontos. Falls das eingegebene Präfix bereits von einer anderen Person verwendet wird, müssen Sie ein anderes Präfix auswählen.
@@ -235,7 +232,7 @@ Die Verbindungszeichenfolgen für das Azure-Speicherkonto für das Web- und Work
 2. Klicken Sie auf die Registerkarte **Settings** . Wählen Sie in der Dropdownliste **Dienstkonfiguration** den Wert **Cloud** aus.
 
     ![Cloudkonfiguration](./media/cloud-services-dotnet-get-started/sccloud.png)
-3. Wenn Sie den Eintrag **StorageConnectionString** auswählen, sehen Sie am Ende der Zeile eine Schaltfläche mit Auslassungspunkten (**...**). Klicken Sie auf die elliptische Schaltfläche, um das Dialogfeld **Verbindungszeichenfolge für Speicherkonto erstellen** zu öffnen.
+3. Wenn Sie den Eintrag **StorageConnectionString** auswählen, sehen Sie am Ende der Zeile eine Schaltfläche mit Auslassungspunkten ( **...** ). Klicken Sie auf die elliptische Schaltfläche, um das Dialogfeld **Verbindungszeichenfolge für Speicherkonto erstellen** zu öffnen.
 
     ![Erstellungsdialog für Verbindungszeichenfolge](./media/cloud-services-dotnet-get-started/opencscreate.png)
 4. Klicken Sie im Dialogfeld **Verbindungszeichenfolge für Speicherkonto** auf **Ihr Abonnement**, wählen Sie das zuvor erstellte Speicherkonto aus, und klicken Sie auf **OK**. Falls Sie noch nicht angemeldet sind, werden Sie zur Eingabe Ihrer Azure-Anmeldeinformationen aufgefordert.
@@ -325,7 +322,7 @@ Nach der Erstellung der Lösung werden Sie den Code prüfen, der speziell für C
 
 ### <a name="create-a-cloud-service-visual-studio-solution"></a>Erstellen einer Clouddienst-Lösung in Visual Studio
 1. Klicken Sie in Visual Studio im Menü **Neues Projekt** from the **Neues Projekt** .
-2. Erweitern Sie im linken Bereich des Dialogfelds **Neues Projekt** den Eintrag **Visual C#**, wählen Sie den Vorlagentyp **Cloud** aus, und klicken Sie auf die Vorlage **Azure Cloud Service**.
+2. Erweitern Sie im linken Bereich des Dialogfelds **Neues Projekt** den Eintrag **Visual C#** , wählen Sie den Vorlagentyp **Cloud** aus, und klicken Sie auf die Vorlage **Azure Cloud Service**.
 3. Geben Sie den Namen ContosoAdsCloudService für Projekt und Lösung ein, und klicken Sie auf **OK**.
 
     ![Neues Projekt](./media/cloud-services-dotnet-get-started/newproject.png)
@@ -517,7 +514,7 @@ var imagesQueue = queueClient.GetQueueReference("images");
 imagesQueue.CreateIfNotExists();
 ```
 
-### <a name="contosoadsweb---layoutcshtml"></a>ContosoAdsWeb – \_Layout.cshtml
+### <a name="contosoadsweb---_layoutcshtml"></a>ContosoAdsWeb – \_Layout.cshtml
 Die Datei *_Layout.cshtml* legt den App-Namen in der Kopf- und Fußzeile fest und erstellt den Menüeintrag „Ads“.
 
 ### <a name="contosoadsweb---viewshomeindexcshtml"></a>ContosoAdsWeb - Views\Home\Index.cshtml

@@ -1,19 +1,19 @@
 ---
 title: Wiederherstellen von Daten in Azure auf einem Windows Server- oder Windows-Computer
 description: Erfahren Sie, wie Sie in Azure gespeicherte Daten auf einem Windows-Server oder einem Windows-Computer wiederherstellen.
-services: backup
-author: saurabhsensharma
-manager: shivamg
+ms.reviewer: saurse
+author: dcurwin
+manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 9/7/2018
-ms.author: saurse
-ms.openlocfilehash: d58b51f06c21c787e4aa720c803ab6533544d55c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/07/2018
+ms.author: dacurwin
+ms.openlocfilehash: 4c0686fc72bfcafdfee650822aece15b8f3fb766
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110816"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210338"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Wiederherstellen von Dateien in Windows mit dem Azure Resource Manager-Bereitstellungsmodell
 
@@ -44,7 +44,7 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
 
     ![Screenshot von Azure Backup mit hervorgehobener Option „Daten wiederherstellen“](./media/backup-azure-restore-windows-server/recover.png)
 
-3. Wählen Sie im Bereich **Erste Schritte** die Option **Dieser Server (`<server name>`)** > **Weiter** aus, um die Daten auf demselben Server oder Computer wiederherzustellen.
+3. Wählen Sie im Bereich **Erste Schritte** die Option **Dieser Server (`<server name>`)**  > **Weiter** aus, um die Daten auf demselben Server oder Computer wiederherzustellen.
 
     ![Screenshot der Seite „Erste Schritte“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
@@ -97,7 +97,7 @@ Bei diesen Schritte wird die folgende Terminologie verwendet:
 * *Beispieltresor:* der Recovery Services-Tresor, bei dem der Quellcomputer und der Zielcomputer registriert sind. <br/>
 
 > [!NOTE]
-> Sicherungen können nicht auf einem Zielcomputer wiederhergestellt werden, auf dem eine ältere Version des Betriebssystems ausgeführt wird. Beispielsweise kann eine Sicherung, die von einem Windows 7-Computer erstellt wurde, auf einem Windows 8-Computer (oder höher) wiederhergestellt werden. Es ist aber nicht möglich, eine Sicherung, die von einem Windows 8-Computer erstellt wurde, auf einem Windows 7-Computer wiederherzustellen.
+> Sicherungen können nicht auf einem Zielcomputer wiederhergestellt werden, auf dem eine ältere Version des Betriebssystems ausgeführt wird. Beispielsweise kann eine Sicherung, die von einem Windows 7-Computer erstellt wurde, auf einem Windows 7-Computer (oder höher) wiederhergestellt werden. Es ist aber nicht möglich, eine Sicherung, die von einem Windows 8-Computer erstellt wurde, auf einem Windows 7-Computer wiederherzustellen.
 >
 >
 
@@ -122,7 +122,7 @@ Bei diesen Schritte wird die folgende Terminologie verwendet:
 
     ![Screenshot der Seite „Sicherungsserver auswählen“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. Wählen Sie auf der Seite **Wiederherstellungsmodus auswählen** die Option **Individual Files and Folders (Einzelne Dateien und Ordner)** > **Weiter** aus.
+7. Wählen Sie auf der Seite **Wiederherstellungsmodus auswählen** die Option **Individual Files and Folders (Einzelne Dateien und Ordner)**  > **Weiter** aus.
 
     ![Screenshot der Seite „Wiederherstellungsmodus auswählen“ des Assistenten zum Wiederherstellen von Daten](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 

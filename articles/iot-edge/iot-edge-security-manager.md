@@ -6,24 +6,24 @@ keywords: Sicherheit, sicheres Element, Enclave, TEE, IoT Edge
 author: eustacea
 manager: philmea
 ms.author: eustacea
-ms.date: 07/30/2018
+ms.date: 08/30/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: bc441e2bbd36c8d078eb67aff48e58684a026289
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: f137070cb8a62f2c11f9e2688b5c7db47c1b866f
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232174"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208216"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge-Sicherheits-Manager
 
-Der Azure IoT Edge-Sicherheits-Manager wird ein streng abgegrenzter Sicherheitskern für den Schutz der IoT Edge-Geräte und aller zugehörigen Komponenten durch das Abstrahieren der sicheren Hardware. Er fungiert als zentraler Punkt zur Erhöhung der Sicherheit und stellt den Integrationspunkt für Technologie durch Gerätehersteller (OEM) dar.
+Der Azure IoT Edge-Sicherheits-Manager wird ein streng abgegrenzter Sicherheitskern für den Schutz der IoT Edge-Geräte und aller zugehörigen Komponenten durch das Abstrahieren der sicheren Hardware. Er fungiert als zentraler Punkt zur Erhöhung der Sicherheit und stellt den Integrationspunkt für Technologie durch Gerätehersteller (Original Equipment Manufacturer, OEM) dar.
 
 ![Azure IoT Edge-Sicherheits-Manager](media/edge-security-manager/iot-edge-security-manager.png)
 
-Der IoT Edge-Sicherheits-Manager soll die Integrität des IoT Edge-Geräts und aller inhärenten Softwarevorgänge schützen.  Dazu wird die Vertrauensstellung vom Hardware-Vertrauensanker (sofern vorhanden) übertragen, um ein sicheres Bootstrapping der IoT Edge-Runtime durchzuführen und die Integrität ihrer Vorgänge weiter zu überwachen.  Der IoT Edge-Sicherheits-Manager ist eine Software, die mit sicherer Hardware (sofern verfügbar und aktiviert) zusammenarbeitet, um die höchstmögliche Sicherheit zu bieten.  
+Der IoT Edge-Sicherheits-Manager soll die Integrität des IoT Edge-Geräts und aller inhärenten Softwarevorgänge schützen. Der Sicherheits-Manager überträgt die Vertrauensstellung von der zugrunde liegenden Hardware des Hardware-Vertrauensankers (falls verfügbar), um das Bootstrapping der IoT Edge-Runtime auszuführen und laufende Vorgänge zu überwachen.  Der IoT Edge-Sicherheits-Manager ist eine Software, die mit sicherer Hardware (sofern verfügbar und aktiviert) zusammenarbeitet, um die höchstmögliche Sicherheit zu bieten.  
 
 Zu den Aufgaben des IoT Edge-Sicherheits-Managers gehören unter anderem:
 
@@ -42,7 +42,7 @@ Der IoT Edge-Sicherheits-Manager besteht aus drei Hauptkomponenten:
 
 ## <a name="the-iot-edge-security-daemon"></a>Der IoT Edge-Sicherheits-Daemon
 
-Der IoT Edge-Security-Daemon ist die Software, die für die logischen Vorgänge des IoT Edge-Sicherheits-Managers verantwortlich ist. Er stellt einen großen Teil der vertrauenswürdigen Rechenbasis des IoT Edge-Geräts dar. 
+Der IoT Edge-Sicherheits-Daemon ist für die logischen Vorgänge des IoT Edge-Sicherheits-Managers verantwortlich. Er stellt einen großen Teil der vertrauenswürdigen Rechenbasis des IoT Edge-Geräts dar. 
 
 ### <a name="design-principles"></a>Entwurfsprinzipien
 
@@ -57,44 +57,44 @@ Der physische Zugriff ist bei IoT-Geräten immer eine Bedrohung. Der Hardware-Ve
 * Secure Elements für den Schutz vertraulicher Informationen wie Geheimnissen und kryptografischen Schlüsseln
 * Secure Enclaves für den Schutz von Geheimnissen wie Schlüsseln und sensibler Workloads wie Messung und Abrechnung
 
-Es gibt zwei Arten von Ausführungsumgebungen, die Hardware-Vertrauensanker nutzen:
+Es gibt zwei Arten von Ausführungsumgebungen, die Hardware-Vertrauensanker verwenden:
 
-* Die Standardumgebung – oder Rich Execution Environment (REE) – basiert auf der Verwendung von Secure Elements zum Schutz vertraulicher Informationen.
-* Die vertrauenswürdige Ausführungsumgebung – oder Trusted Execution Environment (TEE) – basiert auf der Verwendung der Secure-Enclave-Technologie zum Schutz vertraulicher Informationen und für die Ausführung von Software.
+* Die Standardumgebung oder Rich Execution Environment (REE) basiert auf der Verwendung von Secure Elements zum Schutz vertraulicher Informationen.
+* Die vertrauenswürdige Ausführungsumgebung (Trusted Execution Environment, TEE) basiert auf der Verwendung der Secure Enclave-Technologie zum Schutz vertraulicher Informationen und der Ausführung von Software.
 
-Bei Geräten, die Secure Enclaves als Hardware-Vertrauensanker verwenden, wird davon ausgegangen, dass sich vertrauliche Logik im IoT Edge-Sicherheits-Daemon innerhalb der Enclave befindet.  Nicht sensible Bereiche des Sicherheits-Daemons können sich auch außerhalb der TEE befinden.  In jedem Fall wird erwartet, dass ODMs (Original Design Manufacturer) und OEMs (Original Equipment Manufacturer) die Vertrauensstellung von ihrem HSM erweitern und die Integrität des IoT Edge-Sicherheits-Daemons beim Start und zur Laufzeit überwachen und schützen.
+Bei Geräten, die Secure Enclaves als Hardware-Vertrauensanker verwenden, sollte sich sensible Logik im IoT Edge-Sicherheits-Daemon innerhalb der Enclave befinden.  Nicht sensible Bereiche des Sicherheits-Daemons können sich auch außerhalb der TEE befinden.  In jedem Fall sollten ODMs (Original Design Manufacturer) und OEMs (Original Equipment Manufacturer) die Vertrauensstellung aus ihrem HSM erweitern sowie die Integrität des IoT Edge-Sicherheits-Daemons beim Start und zur Laufzeit überwachen und schützen.
 
 #### <a name="minimize-bloat-and-churn"></a>Minimale Überfrachtung und Änderung
 
-Eine weiteres Kernprinzip der IoT Edge-Sicherheits-Daemons ist die Minimierung von Änderungen.  Für die höchste Vertrauensstufe kann der IoT Edge-Sicherheits-Daemon eng mit dem Hardware-Vertrauensanker des Geräts verknüpft und als nativer Code ausgeführt werden.  Es ist üblich für diese Arten von Umsetzungen, die Daemon-Software über die sicheren Updatepfade des Hardware-Vertrauensankers (und nicht über die vom Betriebssystem bereitgestellten Aktualisierungsmechanismen) zu aktualisieren. Dieses Vorgehen kann abhängig von bestimmten Hardware- und Bereitstellungsszenarien eine Herausforderung darstellen.  Auch wenn die Sicherheitsaktualisierung für IoT-Geräte dringend empfohlen wird, sollten Sie berücksichtigen, dass übermäßige Updateanforderungen oder große Updatepayloads die Angriffsfläche auf vielfältige Weise vergrößern können.  Beispiele hierfür sind das Überspringen von Updates zur Maximierung der operativen Verfügbarkeit oder ein zu strikter Hardware-Vertrauensanker für die Verarbeitung großer Updatepayloads.  Daher ist das Design des IoT Edge-Sicherheits-Daemons darauf ausgelegt, den Aufwand und damit die vertrauenswürdige Rechenbasis klein zu halten und die Updateanforderungen auf diese Weise zu minimieren.
+Eine weiteres Kernprinzip der IoT Edge-Sicherheits-Daemons ist die Minimierung von Änderungen.  Für die höchste Vertrauensstufe kann der IoT Edge-Sicherheits-Daemon eng mit dem Hardware-Vertrauensanker des Geräts verknüpft und als nativer Code ausgeführt werden.  Es ist üblich für diese Arten von Umsetzungen, die Daemon-Software über die sicheren Updatepfade des Hardware-Vertrauensankers (und nicht über die vom Betriebssystem bereitgestellten Aktualisierungsmechanismen) zu aktualisieren. Dieses Vorgehen kann in einigen Szenarien eine Herausforderung darstellen.  Auch wenn die Sicherheitsaktualisierung für IoT-Geräte empfohlen wird, können übermäßige Updateanforderungen oder große Updatepayloads die Angriffsfläche auf vielfältige Weise vergrößern.  Beispiele hierfür sind das Überspringen von Updates zur Maximierung der operativen Verfügbarkeit oder ein zu strikter Hardware-Vertrauensanker für die Verarbeitung großer Updatepayloads.  Daher ist das Design des IoT Edge-Sicherheits-Daemons darauf ausgelegt, den Speicherbedarf und die vertrauenswürdige Rechenbasis klein zu halten und die Updateanforderungen auf diese Weise zu minimieren.
 
 ### <a name="architecture-of-iot-edge-security-daemon"></a>Architektur des IoT Edge-Sicherheits-Daemons
 
 ![Azure IoT Edge-Sicherheits-Daemon](media/edge-security-manager/iot-edge-security-daemon.png)
 
-Die Architektur des IoT Edge-Sicherheits-Daemons wurde so entworfen, dass die gesamte verfügbare Technologie der Hardware-Vertrauensanker für die Erhöhung der Sicherheit genutzt werden kann.  Sie ermöglicht auch den Betrieb in unterschiedlichen Umgebungen mit einer Standardausführungsumgebung (bzw. Rich Execution Environment, REE) und einer vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE), wenn Hardwaretechnologien TEEs bieten. Rollenspezifische Schnittstellen ermöglichen das Zusammenspiel der Hauptkomponenten von IoT Edge, um die Integrität des IoT Edge-Geräts und seiner Vorgänge zu gewährleisten.
+Der IoT Edge-Sicherheits-Daemon nutzt die gesamte verfügbare Technologie der Hardware-Vertrauensanker für die Erhöhung der Sicherheit.  Sie ermöglicht auch den Betrieb in unterschiedlichen Umgebungen mit einer Standardausführungsumgebung (bzw. Rich Execution Environment, REE) und einer vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE), wenn Hardwaretechnologien TEEs bieten. Rollenspezifische Schnittstellen ermöglichen es den Hauptkomponenten von IoT Edge, die Integrität des IoT Edge-Geräts und seiner Vorgänge zu gewährleisten.
 
 #### <a name="cloud-interface"></a>Cloudschnittstelle
 
-Die Cloudschnittstelle ermöglicht dem IoT Edge-Sicherheits-Daemon den Zugriff auf Clouddienste wie Cloudergänzungen zur Gerätesicherheit, etwa Sicherheitserneuerungen.  Der IoT Edge-Sicherheits-Daemon verwendet diese Schnittstelle zurzeit z.B. für den Zugriff auf den [Device Provisioning Service (DPS)](https://docs.microsoft.com/azure/iot-dps/) von Azure IoT Hub für das Identity Lifecycle Management des Geräts.  
+Die Cloudschnittstelle ermöglicht dem IoT Edge-Sicherheits-Daemon den Zugriff auf Clouddienste, z.B Cloudergänzungen zur Gerätesicherheit wie Sicherheitserneuerungen.  Der IoT Edge-Sicherheits-Daemon verwendet diese Schnittstelle zurzeit z.B. für den Zugriff auf den [Device Provisioning Service (DPS)](https://docs.microsoft.com/azure/iot-dps/) von Azure IoT Hub für das Identity Lifecycle Management des Geräts.  
 
 #### <a name="management-api"></a>Verwaltungs-API
 
-Der IoT Edge-Sicherheits-Daemon bietet eine Verwaltungs-API, die vom IoT Edge-Agent beim Erstellen, Starten, Beenden und Entfernen von Edgemodulen aufgerufen wird. Der IoT Edge-Sicherheits-Daemon speichert „Registrierungen“ für alle aktiven Module. Diese Registrierungen ordnen die Modulidentität einigen Eigenschaften des Moduls zu. Einige Beispiele für diese Eigenschaften sind die Prozess-ID (pid) des Prozesses, der im Container ausgeführt wird, oder der Hash des Inhalts im Docker-Container.
+Der IoT Edge-Sicherheits-Daemon bietet eine Verwaltungs-API, die vom IoT Edge-Agent beim Erstellen, Starten, Beenden und Entfernen eines IoT Edge-Moduls aufgerufen wird. Der Sicherheits-Daemon speichert „Registrierungen“ für alle aktiven Module. Diese Registrierungen ordnen die Modulidentität einigen Eigenschaften des Moduls zu. Einige Beispiele für diese Eigenschaften sind die Prozess-ID (pid) des Prozesses, der im Container ausgeführt wird, oder der Hash des Inhalts im Docker-Container.
 
-Diese Eigenschaften werden von der Workload-API (siehe unten) verwendet, um zu bestätigen, dass der Aufrufer zum Ausführen einer Aktion autorisiert ist.
+Diese Eigenschaften werden von der Workload-API (siehe unten) verwendet, um zu überprüfen, ob der Aufrufer zum Ausführen einer Aktion autorisiert ist.
 
-Die Verwaltungs-API ist eine privilegierte API, die nur vom IoT Edge-Agent aufgerufen werden kann.  Da der IoT Edge-Sicherheits-Daemon das Bootstrapping für den IoT Edge-Agent ausführt und diesen startet, kann er eine implizite Registrierung für den IoT Edge-Agent erstellen, nachdem er bestätigt hat, dass der IoT Edge-Agent nicht manipuliert wurde. Derselbe Nachweisprozess, den die Workload-API verwendet, wird auch verwendet, um den Zugriff auf die Verwaltungs-API auf ausschließlich den IoT Edge-Agent zu beschränken.
+Die Verwaltungs-API ist eine privilegierte API, die nur vom IoT Edge-Agent aufgerufen werden kann.  Da der IoT Edge-Sicherheits-Daemon das Bootstrapping für den IoT Edge-Agent ausführt und diesen startet, kann er eine implizite Registrierung für den IoT Edge-Agent erstellen, nachdem er bestätigt hat, dass der IoT Edge-Agent nicht manipuliert wurde. Derselbe Nachweisprozess, den die Workload-API verwendet, beschränkt auch den Zugriff auf die Verwaltungs-API auf ausschließlich den IoT Edge-Agent.
 
 #### <a name="container-api"></a>Container-API
 
-Der IoT Edge-Sicherheits-Daemon bietet eine Containerschnittstelle für die Interaktion mit dem verwendeten Containersystem (z.B. Moby oder Docker) bei der Modulinstanziierung.
+Die Container-API interagiert mit dem Containersystem, das für die Modulverwaltung verwendet wird, wie z.B. Moby oder Docker.
 
 #### <a name="workload-api"></a>Workload-API
 
-Die Workload-API ist eine IoT Edge-Sicherheits-Daemon-API, auf die alle Module Zugriff haben – auch der IoT Edge-Agent. Sie ermöglicht einen Identitätsnachweis – ein vom HSM signiertes Token oder ein X.509-Zertifikat – und die zugehörige Vertrauenssammlung für ein Modul. Die Vertrauenssammlung enthält ZS-Zertifikate für alle anderen Server, denen die Module vertrauen sollen.
+Die Workload-API ist für alle Module zugänglich. Sie ermöglicht einen Identitätsnachweis – entweder als vom HSM signiertes Token oder ein X.509-Zertifikat – und die zugehörige Vertrauenssammlung für ein Modul. Die Vertrauenssammlung enthält ZS-Zertifikate für alle anderen Server, denen die Module vertrauen sollen.
 
-Der IoT Edge-Sicherheits-Daemon verwendet einen Nachweisprozess, um diese API zu schützen. Wenn ein Modul diese API aufruft, versucht der IoT Edge-Sicherheits-Daemon, eine Registrierung für die Identität zu finden. Ist er erfolgreich, verwendet er die Eigenschaften der Registrierung, um das Modul zu bewerten. Wenn das Ergebnis der Überprüfung mit der Registrierung übereinstimmt, wird ein neues vom HSM signiertes Token oder X.509-Zertifikat generiert. Die zugehörigen ZS-Zertifikate (Vertrauenssammlung) werden an das Modul zurückgegeben.  Das Modul verwendet dieses Zertifikat zum Verbinden mit IoT Hub oder anderen Modulen oder zum Starten eines Servers. Wenn das signierte Token oder das Zertifikat demnächst abläuft, muss das Modul ein neues Zertifikat anfordern. 
+Der IoT Edge-Sicherheits-Daemon verwendet einen Nachweisprozess zum Schutz dieser API. Wenn ein Modul diese API aufruft, versucht der Sicherheits-Daemon, eine Registrierung für die Identität zu finden. Ist er erfolgreich, verwendet er die Eigenschaften der Registrierung, um das Modul zu bewerten. Wenn das Ergebnis des Messprozesses mit der Registrierung übereinstimmt, wird ein neuer Identitätsnachweis generiert. Die zugehörigen ZS-Zertifikate (Vertrauenssammlung) werden an das Modul zurückgegeben.  Das Modul verwendet dieses Zertifikat zum Verbinden mit IoT Hub oder anderen Modulen oder zum Starten eines Servers. Wenn das signierte Token oder das Zertifikat demnächst abläuft, muss das Modul ein neues Zertifikat anfordern. 
 
 ### <a name="integration-and-maintenance"></a>Integration und Wartung
 
@@ -102,7 +102,7 @@ Microsoft verwaltet die Hauptcodebasis für den [IoT Edge-Sicherheits-Daemon auf
 
 #### <a name="installation-and-updates"></a>Installation und Updates
 
-Installation und Updates des IoT Edge-Sicherheits-Daemons werden über das Paketverwaltungssystem des Betriebssystems verwaltet. IoT Edge-Geräte mit einem Hardware-Vertrauensanker sollten zusätzliche Sicherheitsmaßnahmen für die Integrität des Daemons bereitstellen, indem sie den Lebenszyklus über sichere Start- und Updateverwaltungssysteme verwalten.  Es liegt in der Verantwortung der Geräteentwickler, diese Vorgänge in Übereinstimmung mit den jeweiligen Gerätefunktionen zu untersuchen.
+Installation und Updates des IoT Edge-Sicherheits-Daemons werden über das Paketverwaltungssystem des Betriebssystems verwaltet. IoT Edge-Geräte mit einem Hardware-Vertrauensanker sollten zusätzliche Sicherheitsmaßnahmen für die Integrität des Daemons bereitstellen, indem sie den Lebenszyklus über sichere Start- und Updateverwaltungssysteme verwalten. Geräteersteller sollten diese Möglichkeiten basierend auf den jeweiligen Gerätefunktionen durchsuchen.
 
 #### <a name="versioning"></a>Versionsverwaltung
 
@@ -110,11 +110,11 @@ Die IoT Edge-Runtime verfolgt und meldet die Version des IoT Edge-Sicherheits-Da
 
 ### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>HSM-PAL (Hardware Security Module Platform Abstraction Layer)
 
-Die HSM-PAL abstrahiert alle Hardware-Vertrauensanker, damit Entwickler oder Benutzer von IoT Edge sich nicht mit deren Komplexität beschäftigen müssen.  Sie umfasst eine Kombination aus Anwendungsprogrammierschnittstelle (API) und domänenübergreifenden Kommunikationsverfahren (beispielsweise die Kommunikation zwischen einer Standardausführungsumgebung und einer Secure Enclave-Instanz).  Die eigentliche Implementierung der HSM-PAL hängt von der verwendeten Sicherheitshardware ab. Ihr Vorhandensein ermöglicht die Verwendung praktisch jeder Sicherheitshardware.
+Die HSM-PAL abstrahiert alle Hardware-Vertrauensanker, damit Entwickler oder Benutzer von IoT Edge sich nicht mit deren Komplexität beschäftigen müssen.  Sie enthält eine Kombination aus Anwendungsprogrammierschnittstelle (API) und domänenübergreifenden Kommunikationsverfahren (beispielsweise die Kommunikation zwischen einer Standardausführungsumgebung und einer Secure Enclave-Instanz).  Die eigentliche Implementierung der HSM-PAL hängt von der verwendeten Sicherheitshardware ab. Ihr Vorhandensein ermöglicht die Verwendung praktisch jeder Sicherheitshardware.
 
 ## <a name="secure-silicon-root-of-trust-hardware"></a>Sicherer Hardware-Vertrauensanker
 
-Sichere Hardware ist erforderlich, um innerhalb der IoT Edge-Geräthardware einen Vertrauensanker zu schaffen.  Es gibt verschiedene Arten von Sicherheitshardware, z.B. Trusted Platform Module (TPM), eingebettete Secure Elements (eSE), ARM TrustZone, Intel SGX oder benutzerdefinierte sichere Hardwaretechnologien.  Die Verwendung von sicherer Vertrauensanker in Geräten wird aufgrund der Bedrohungen durch den physischen Zugriff auf IoT-Geräte dringend empfohlen.
+Sichere Hardware ist erforderlich, um innerhalb der IoT Edge-Geräthardware einen Vertrauensanker zu schaffen.  Es gibt verschiedene Arten von Sicherheitshardware, z.B. Trusted Platform Module (TPM), eingebettete Secure Elements (eSE), ARM TrustZone, Intel SGX oder benutzerdefinierte sichere Hardwaretechnologien.  Die Verwendung eines sicheren Vertrauensankers in Geräten wird aufgrund der Bedrohungen durch den physischen Zugriff auf IoT-Geräte empfohlen.
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IoT Edge-Sicherheits-Manager – Integration und Wartung
 

@@ -3,7 +3,7 @@ title: Häufig gestellte Fragen – Azure Dedicated HSM | Microsoft-Dokumentatio
 description: Häufig gestellte Fragen zu verschiedenen Themen in Azure Dedicated HSM
 services: dedicated-hsm
 author: johncdawson
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.custom: mvc
 ms.service: key-vault
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 3/27/2019
-ms.author: barclayn
-ms.openlocfilehash: 19e2fb7736457884d29a142e997338e3c7ef72e7
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.date: 5/8/2019
+ms.author: mbaldwin
+ms.openlocfilehash: b79ed7ea3113f097f767ad7ff8bdc47b4e4916eb
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540821"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883571"
 ---
 # <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 
@@ -66,7 +66,7 @@ Der Azure Dedicated HSM-Dienst verwendet SafeNet Luna Network HSM 7-Geräte (Mod
 
 Seit Ende März 2019 ist Dedicated HSM in den 14 unten aufgeführten Regionen verfügbar. Weitere Regionen sind geplant und können über Ihren zuständigen Microsoft-Kontobeauftragten besprochen werden.
 
-* USA (Ost)
+* East US
 * USA (Ost) 2
 * USA (Westen)
 * USA Süd Mitte
@@ -155,6 +155,10 @@ Ja. Jede HSM-Appliance ist vollständig auf einen einzelnen Kunden ausgerichtet,
 
 Microsoft hat keine administrative oder kryptografische Kontrolle über das HSM. Microsoft besitzt über eine serielle Schnittstellenverbindung Zugriff auf die Überwachungsebene, um grundlegende Telemetriedaten wie Temperatur und Komponentenintegrität abzurufen. Dies ermöglicht Microsoft das Bereitstellen von proaktiven Benachrichtigungen bei Problemen mit der Ressourcenintegrität. Wenn erforderlich, kann der Kunde dieses Konto deaktivieren.
 
+### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>F: Was ist das Konto „tenantadmin“, das von Microsoft verwendet wird? Ich bin daran gewöhnt, dass der Administratorbenutzer bei SafeNet HSMs „Administrator“ ist.
+
+Im Lieferumfang des HSM-Geräts ist ein Standardbenutzer „Administrator“ mit dem üblichen Standardkennwort enthalten. Microsoft wollte nicht, dass Standardkennwörter verwendet werden, während ein Gerät in einem Pool darauf wartet, von Kunden bereitgestellt zu werden. Dies entspräche nicht unseren strengen Sicherheitsanforderungen. Aus diesem Grund legen wir ein sicheres Kennwort fest, das zur Bereitstellungszeit verworfen wird. Außerdem erstellen wird zur Bereitstellungszeit einen neuen Benutzer in der Administratorrolle namens „tenantadmin“. Dieser Benutzer besitzt das Standardkennwort, das die Kunden als erste Aktion bei der ersten Anmeldung bei dem neu bereitgestellten Gerät ändern. Dieser Prozess gewährleistet einen hohen Grad an Sicherheit und erfüllt unser Versprechen der alleinigen administrativen Kontrolle durch unsere Kunden. Anzumerken ist, dass der Benutzer „tenantadmin“ verwendet werden kann, um das Kennwort des Administratorbenutzers zurückzusetzen, wenn ein Kunde die Verwendung dieses Kontos bevorzugt. 
+
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>F: Kann Microsoft oder ein Mitarbeiter von Microsoft auf Schlüssel in meinem Dedicated HSM zugreifen?
 
 Nein. Microsoft besitzt keinerlei Zugriff auf die im dem Kunden zugeordneten Dedicated HSM gespeicherten Schlüssel.
@@ -181,7 +185,7 @@ Ja. Sie können Protokolle von der HSM-Appliance an einen Syslog-Server senden.
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 
-### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>F: Ist es möglich, Hochverfügbarkeit in der gleichen Region oder über mehrere Regionen hinweg zu konfigurieren?
+### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>F: Ist es möglich, Hochverfügbarkeit in derselben Region oder über mehrere Regionen hinweg zu konfigurieren?
 
 Ja. Die Konfiguration und Einrichtung der Hochverfügbarkeit erfolgt in der von Gemalto bereitgestellten HSM-Clientsoftware. HSMs aus demselben VNET oder aus anderen VNETs in derselben Region oder über Regionen hinweg bzw. lokale HSMs, die mit einem VNET per Site-to-Site- oder Point-to-Point-VPN verbunden sind, können derselben Hochverfügbarkeitskonfiguration hinzugefügt werden. Es sollte beachtet werden, dass hiermit nur wichtiges Material synchronisiert wird, und keine spezifischen Konfigurationselemente, z. B. Rollen.
 
@@ -229,7 +233,7 @@ Microsoft hat nicht die Möglichkeit, eine Verbindung mit HSMs herzustellen, die
 
 ### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>F: Was passiert, wenn ich mein HSM neu starten muss?
 
- Das HSM verfügt über eine Befehlszeilenoption für einen Neustart, und es sollte beachtet werden, dass die Option „Harter Neustart“ verwendet werden muss. Falls dies aus irgendeinem Grund fehlschlägt, können Sie eine Supportanfrage für Microsoft erstellen, um das Gerät physisch neu zu starten. 
+Das HSM verfügt über eine Befehlszeilenoption für den Neustart. Es kommt jedoch zeitweilig zu Problemen beim Neustart, der dann hängt. Aus diesem Grund wird als sicherste Neustartmethode empfohlen, dass Sie eine Supportanfrage bei Microsoft stellen, damit das Gerät physisch neu gestartet wird. 
 
 ## <a name="cryptography-and-standards"></a>Kryptografie und Standards
 

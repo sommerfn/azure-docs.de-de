@@ -1,10 +1,10 @@
 ---
-title: Konfigurieren der automatischen Anmeldebeschleunigung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung | Microsoft Docs
+title: Konfigurieren der automatischen Anmeldebeschleunigung mit einer Richtlinie für die Startbereichsermittlung | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Richtlinie für die Startbereichsermittlung für die Azure Active Directory-Authentifizierung für Verbundbenutzer konfigurieren, einschließlich automatischer Beschleunigung und Domänenhinweisen.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: celested
+ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d82ccf7c2983051597ff634117be81311c4c78a9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8f8f51fcd69a7115879aad97bbf696833e87877b
+ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791214"
+ms.lasthandoff: 07/24/2019
+ms.locfileid: "68477204"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
@@ -209,7 +209,13 @@ Um die Richtlinie zur Startbereichsermittlung nach ihrer Erstellung anzuwenden, 
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Schritt 2: Ermitteln des Dienstprinzipals, dem die Richtlinie zugewiesen werden soll  
 Sie benötigen die **ObjectID** der Dienstprinzipale, denen Sie die Richtlinie zuweisen möchten. Es gibt mehrere Möglichkeiten, die **ObjectID** von Dienstprinzipalen zu ermitteln.    
 
-Sie können das Portal verwenden, oder Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen. Sie können auch zum [Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) navigieren und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Da Sie PowerShell verwenden, können Sie das Cmdlet Get-AzureADServicePrincipal, verwenden, um die Dienstprinzipale sowie deren IDs aufzulisten.
+Sie können das Portal verwenden, oder Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen. Sie können auch zum [Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) navigieren und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. 
+
+Da Sie PowerShell verwenden, können Sie das folgende Cmdlet verwenden, um die Dienstprinzipale sowie deren IDs aufzulisten.
+
+``` powershell
+Get-AzureADServicePrincipal
+```
 
 #### <a name="step-3-assign-the-policy-to-your-service-principal"></a>Schritt 3: Zuweisen der Richtlinie zu Ihrem Dienstprinzipal  
 Nachdem Sie über die **ObjectID** des Dienstprinzipals der Anwendung verfügen, für die Sie automatische Beschleunigung konfigurieren möchten, führen Sie den folgenden Befehl aus. Dieser Befehl ordnet die Richtlinie zur Startbereichsermittlung, die Sie in Schritt 1 erstellt haben, dem Dienstprinzipal zu, den Sie in Schritt 2 ermittelt haben.
@@ -226,7 +232,7 @@ Falls einer Anwendung bereits eine HomeRealmDiscovery-Richtlinie zugewiesen wurd
 Um zu überprüfen, welche Anwendungen über eine konfigurierte Richtlinie zur Startbereichsermittlung verfügen, verwenden Sie das Cmdlet **Get-AzureADPolicyAppliedObject**. Übergeben Sie ihm die **ObjectID** der Richtlinie, die Sie überprüfen möchten.
 
 ``` powershell
-Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
+Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 #### <a name="step-5-youre-done"></a>Schritt 5: Sie haben es geschafft!
 Testen Sie die Anwendung, um zu überprüfen, ob die neue Richtlinie funktioniert.
@@ -244,7 +250,7 @@ Notieren Sie sich die **ObjectID** der Richtlinie, für die Sie Zuordnungen aufl
 #### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>Schritt 2: Auflisten der Dienstprinzipale, denen die Richtlinie zugewiesen ist  
 
 ``` powershell
-Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
+Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
 ### <a name="example-remove-an-hrd-policy-for-an-application"></a>Beispiel: Entfernen einer Richtlinie zur Startbereichsermittlung für eine Anwendung
@@ -254,15 +260,15 @@ Verwenden Sie das vorherige Beispiel, um die **ObjectID** der Richtlinie und die
 #### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>Schritt 2: Entfernen der Richtlinienzuordnung vom Anwendungsdienstprinzipal  
 
 ``` powershell
-Remove-AzureADApplicationPolicy -ObjectId <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
+Remove-AzureADApplicationPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
 #### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>Schritt 3: Überprüfen der Entfernung durch Auflisten der Dienstprinzipale, denen die Richtlinie zugewiesen ist 
 
 ``` powershell
-Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
+Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zur Funktionsweise der Authentifizierung in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD](../develop/authentication-scenarios.md).
-- Weitere Informationen zum einmaligen Anmelden von Benutzern finden Sie unter [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](configure-single-sign-on-portal.md).
+- Weitere Informationen zum einmaligen Anmelden von Benutzern finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](what-is-single-sign-on.md).
 - Im [Active Directory-Entwicklerhandbuch](../develop/v1-overview.md) finden Sie eine Übersicht über alle für Entwickler relevanten Inhalte.

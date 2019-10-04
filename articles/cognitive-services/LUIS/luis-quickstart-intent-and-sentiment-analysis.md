@@ -1,5 +1,5 @@
 ---
-title: Stimmungsanalyse
+title: 'Tutorial: Stimmungsanalyse: LUIS'
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie positive, negative und neutrale Emotionen aus Äußerungen abrufen. Die Stimmung wird anhand der gesamten Äußerung bestimmt.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 0e61f6a914c33842f4f42b2e1e4206b370a11dd4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ed403e3d761b32c6837eb8e72edef3f3e6380217
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099034"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307572"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>Tutorial:  Abrufen der Stimmung einer Äußerung
 
@@ -54,6 +54,7 @@ Da es sich um eine Veröffentlichungseinstellung handelt, wird diese nicht auf d
 
 ## <a name="add-personname-prebuilt-entity"></a>Hinzufügen der vordefinierten PersonName-Entität 
 
+1. Wählen Sie im Navigationsmenü **Build** aus.
 
 1. Wählen Sie im linken Navigationsmenü die Option **Entities** (Entitäten) aus.
 
@@ -69,11 +70,11 @@ Da es sich um eine Veröffentlichungseinstellung handelt, wird diese nicht auf d
 
 Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback hinzu. 
 
-1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. Klicken Sie im linken Bereich auf **Intents** (Absichten).
 
-2. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus.
+1. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus.
 
-3. Nennen Sie die neue Absicht `EmployeeFeedback`.
+1. Nennen Sie die neue Absicht `EmployeeFeedback`.
 
     ![Dialogfeld zum Erstellen einer neuen Absicht namens „EmployeeFeedback“](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent-ddl.png)
 
@@ -90,6 +91,8 @@ Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback
     |Mark Mathews hat die Verkaufspräsentation für Harvard exzellent gemeistert.|
     |Walter Williams hat bei der Präsentation für Stanford gute Arbeit geleistet.|
 
+    Wählen Sie **Ansichtsoptionen** und dann **Entitätswerte anzeigen** aus, um die Namen anzuzeigen.
+
     [![Screenshot: LUIS-App mit Beispieläußerungen in der Absicht „EmployeeFeedback“](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Hinzufügen von Beispieläußerungen zur Absicht „None“ 
@@ -104,7 +107,7 @@ Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback
 
 1. Klicken Sie im Navigationsbereich oben rechts auf **Verwalten**, und wählen Sie dann im linken Menü die Option **Veröffentlichungseinstellungen** aus.
 
-1. Wählen Sie **Standpunktanalyse** aus, um diese Einstellung zu aktivieren. 
+1. Wählen Sie **Use sentiment analysis to determine if a user's utterance is positive, negative, or neutral** (Mithilfe der Stimmungsanalyse ermitteln, ob die Äußerung eines Benutzers positiv, negativ oder neutral ist) aus, um diese Einstellung zu aktivieren. 
 
     ![Aktivieren der Standpunktanalyse als Veröffentlichungseinstellung](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
@@ -116,7 +119,11 @@ Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-1. Geben Sie in der Adressleiste am Ende der URL `Jill Jones work with the media team on the public portal was amazing` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `EmployeeFeedback` mit der extrahierten Stimmungsanalyse zurückgeben.
+1. Geben Sie in der Adressleiste am Ende der URL die folgende Äußerung ein:
+
+    `Jill Jones work with the media team on the public portal was amazing` 
+
+    Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `EmployeeFeedback` mit der extrahierten Stimmungsanalyse zurückgeben.
     
     ```json
     {
@@ -151,6 +158,8 @@ Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback
     ```
 
     Die Standpunktanalyse ist positiv (Wert: 86 %). 
+
+    Probieren Sie eine andere Äußerung aus, indem Sie den Wert für `q` in der Adressleiste des Browsers entfernen: `William Jones did a terrible job presenting his ideas.` Der Stimmungswert gibt durch Rückgabe einer niedrigen Bewertung (`0.18597582`) eine negative Stimmung an.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

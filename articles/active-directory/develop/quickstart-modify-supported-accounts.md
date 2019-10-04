@@ -1,10 +1,10 @@
 ---
-title: Ändern der Konten, die von einer bei der Microsoft Identity Platform registrierten Anwendung unterstützt werden | Azure
+title: Ändern von Microsoft Identity Platform-App-Konten | Azure
 description: Konfigurieren Sie eine bei der Microsoft Identity Platform registrierte Anwendung, um zu ändern, welche Benutzer oder Konten auf die Anwendung zugreifen können.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
-ms.author: celested
+ms.date: 05/08/2019
+ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a2c68d607e7afc2e3eac675511734c8d054c427
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: be62dabc01e00465fa5227c5531fa18a16cf10a9
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174196"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68380782"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application-preview"></a>Schnellstart: Ändern der von einer Anwendung unterstützten Konten (Vorschau)
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Schnellstart: Ändern der von einer Anwendung unterstützten Konten
 
 Wenn Sie eine Anwendung bei der Microsoft Identity Platform registrieren, können Sie beispielsweise festlegen, dass nur Benutzer aus Ihrer Organisation auf Ihre Anwendung zugreifen dürfen. Alternativ können Sie auch festlegen, dass Ihre App für Benutzer aus externen Organisationen (oder für Benutzer aus externen Organisationen und für Benutzer mit persönlichen Konten, die möglicherweise keiner Organisation angehören) zugänglich sein soll.
 
@@ -37,7 +37,6 @@ Stellen Sie zunächst sicher, dass die folgenden Voraussetzungen erfüllt sind:
 * Sie sind über die Unterstützung von [Berechtigungen und Zustimmung](v2-permissions-and-consent.md) informiert. Hiermit sollten Sie vertraut sein, wenn Sie Anwendungen erstellen, die von anderen Benutzern oder Anwendungen verwendet werden müssen.
 * Sie verfügen über einen Mandanten, unter dem Anwendungen registriert wurden.
   * Wenn Sie keine Apps registriert haben, sollten Sie sich darüber informieren, [wie Sie Anwendungen bei der Microsoft Identity Platform registrieren](quickstart-register-app.md).
-* Aktivieren Sie die Vorschauoberfläche für App-Registrierungen im Azure-Portal. Die Schritte in dieser Schnellstartanleitung gelten für die neue Benutzeroberfläche und funktionieren nur, wenn Sie sich für die Nutzung der Vorschauoberfläche entschieden haben.
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Anmelden beim Azure-Portal und Auswählen der App
 
@@ -45,7 +44,7 @@ Sie müssen die folgenden Schritte ausführen, bevor Sie die App konfigurieren k
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen (Vorschau)** aus.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen** aus.
 1. Wählen Sie die Anwendung aus, die Sie konfigurieren möchten. Nachdem Sie die App ausgewählt haben, wird die anwendungsspezifische Seite **Übersicht** oder die Hauptseite für die Registrierung angezeigt.
 1. Führen Sie die Schritte unter [Unterstützen anderer Konten durch Ändern der Anwendungsregistrierung](#change-the-application-registration-to-support-different-accounts) aus.
 1. Bei Verwendung einer Single-Page-Webanwendung müssen Sie [die implizite OAuth 2.0-Genehmigung aktivieren](#enable-oauth-20-implicit-grant-for-single-page-applications).

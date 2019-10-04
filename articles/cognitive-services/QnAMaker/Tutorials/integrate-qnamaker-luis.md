@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 06/11/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: fa79f519c8f3eb8baeaab04870f22a1cfefa59ab
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6605aa268a7ee7fe75254df5dbe96e9dfbc71d79
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884323"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272412"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Verwenden des Bots mit QnA Maker und LUIS zum Verteilen Ihrer Wissensdatenbank
 Wenn Ihre QnA Maker-Wissensdatenbank eine bestimmte Größe erreicht, wird es schwierig, sie als einzelnen monolithischen Satz zu warten, und es zeigt sich die Notwendigkeit, die Wissensdatenbank in kleinere logische Abschnitte aufzuteilen.
@@ -27,7 +27,7 @@ In diesem Artikel wird das Bot Framework v3 SDK verwendet. Wenn Sie sich für di
 
 ## <a name="architecture"></a>Architecture
 
-![LUIS-Architektur von QnA Maker](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![QnA Maker mit Language Understanding-Architektur](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
 Im Szenario oben ruft QnA Maker zuerst die Absicht der eingehenden Frage bei einem LUIS-Modell ab und verwendet diese anschließend, um die Frage an die richtige QnA Maker-Wissensdatenbank weiterzuleiten.
 
@@ -51,7 +51,7 @@ Im Szenario oben ruft QnA Maker zuerst die Absicht der eingehenden Frage bei ein
 
 ## <a name="web-app-bot"></a>Web-App-Bot
 
-1. [Erstellen Sie einen Web-App-Bot](https://docs.microsoft.com/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample) mit der LUIS-Vorlage. Wählen Sie das SDK 3.x und die Programmiersprache C# aus.
+1. [Erstellen Sie einen „einfachen“ Web-App-Bot](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0), der automatisch eine LUIS-App enthält. Wählen Sie die Programmiersprache C# aus.
 
 1. Nachdem der Web-App-Bot erstellt wurde, wählen Sie im Azure-Portal den Web-App-Bot aus.
 1. Wählen Sie **Anwendungseinstellungen** in der Dienstnavigation des Web-App-Bots, und scrollen Sie dann nach unten zum Abschnitt **Anwendungseinstellungen** der verfügbaren Einstellungen.

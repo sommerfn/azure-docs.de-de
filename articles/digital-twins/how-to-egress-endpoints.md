@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/31/2018
+ms.date: 08/12/2019
 ms.author: alinast
-ms.openlocfilehash: e93811a56f934a95dde45633c4fb64312b3696df
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
+ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994819"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69013937"
 ---
 # <a name="egress-and-endpoints"></a>Ausgang und Endpunkte
 
@@ -23,7 +23,7 @@ Ereignisse werden entsprechend den vordefinierten Routingeinstellungen an Endpun
 
 Weitere Informationen zu Ereignissen, Routing und Ereignistypen finden Sie unter [Routing events and messages in Azure Digital Twins (Weiterleiten von Ereignissen und Nachrichten)](./concepts-events-routing.md).
 
-## <a name="events"></a>Ereignisse
+## <a name="events"></a>Events
 
 Ereignisse werden von IoT-Objekten wie Geräte und Sensoren zur Verarbeitung durch Azure-Nachrichtenbroker und -Ereignisbroker gesendet. Ereignisse werden durch das folgende [Azure Event Grid-Ereignisschema](../event-grid/event-schema.md) definiert.
 
@@ -47,16 +47,16 @@ Ereignisse werden von IoT-Objekten wie Geräte und Sensoren zur Verarbeitung dur
 }
 ```
 
-| Attribut | Typ | BESCHREIBUNG |
+| Attribut | type | BESCHREIBUNG |
 | --- | --- | --- |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
-| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| id | string | Eindeutiger Bezeichner für das Ereignis. |
+| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | data | object | Die für den Ressourcenanbieter spezifischen Ereignisdaten. |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
-| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Weitere Informationen zum Event Grid-Ereignisschema:
 
@@ -246,7 +246,7 @@ Die folgenden Beispiele veranschaulichen, wie die unterstützten Endpunkte konfi
 >[!IMPORTANT]
 > Achten Sie auf das Attribut **eventTypes**. Es definiert die Ereignistypen, die vom Endpunkt bearbeitet werden, und bestimmt sein Routing.
 
-Eine authentifizierte HTTP POST-Anforderung mit
+Eine authentifizierte HTTP POST-Anforderung mit:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/endpoints

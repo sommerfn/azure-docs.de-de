@@ -2,29 +2,26 @@
 title: Die Qualifikation „OCR“ der kognitiven Suche – Azure Search
 description: Extrahieren Sie Text aus Bilddateien mithilfe der optischen Zeichenerkennung (OCR) in einer Azure Search-Anreicherungspipeline.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.date: 01/17/2019
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: fb7fe0689ce54031880565c0c6409afeab2ff523
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: da1ca218f7a3d33e6ceb08b3f8d0f632b8b752b7
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777890"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265329"
 ---
 # <a name="ocr-cognitive-skill"></a>Der Skill „OCR“
 
 Mit der Qualifikation für die optische Zeichenerkennung (OCR) wird gedruckter und handschriftlicher Text in Bilddateien erkannt. Diese Qualifikation verwendet die durch [Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) in Cognitive Services bereitgestellten Machine Learning-Modelle. Die Qualifikation **OCR** ist den folgenden Funktionen zugeordnet:
 
-+ Wenn „textExtractionAlgorithmus“ auf „handwritten“ festgelegt ist, wird die Funktion [„RecognizeText“](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) verwendet.
-+ Wenn „textExtractionAlgorithmus“ auf „printed“ festgelegt ist, wird die Funktion [„OCR“](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) für andere Sprachen als Englisch verwendet. Für Englisch wird die neue Funktion [„Texterkennung“](../cognitive-services/computer-vision/concept-recognizing-text.md) für gedruckten Text verwendet.
++ Die API [OCR](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) wird für nicht englische Sprachen verwendet. 
++ Für Englisch wird die neue API [Read](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) verwendet.
 
 Der Skill **OCR** extrahiert Text aus Bilddateien. Folgende Dateiformate werden unterstützt:
 
@@ -36,9 +33,10 @@ Der Skill **OCR** extrahiert Text aus Bilddateien. Folgende Dateiformate werden 
 + .TIFF
 
 > [!NOTE]
-> Seit dem 21. Dezember 2018 können Sie an eine Azure Search-Qualifikationsgruppe eine [Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) anfügen. Dies ermöglicht es uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Ab diesem Datum haben wir außerdem damit begonnen, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
+> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung [integrierter kognitiver Qualifikationen](cognitive-search-predefined-skills.md) wird nach dem [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services) berechnet, und zwar zu demselben Tarif wie beim direkten Ausführen der Aufgabe. Für die Extraktion von Bildern fällt eine Azure Search-Gebühr an, die derzeit Vorschaupreisen entspricht. Ausführlichere Informationen finden Sie auf der [Seite „Azure Search – Preise“](https://go.microsoft.com/fwlink/?linkid=2042400) oder unter [Funktionsweise der Abrechnung](search-sku-tier.md#how-billing-works).
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
+
 
 ## <a name="skill-parameters"></a>Skillparameter
 
@@ -48,7 +46,9 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 |--------------------|-------------|
 | detectOrientation | Aktiviert die automatische Erkennung der Bildausrichtung. <br/> Gültige Werte: „true“ und „false“|
 |defaultLanguageCode | <p>  Sprachcode des Eingabetexts. Unterstützte Sprachen: <br/> zh-Hans (Vereinfachtes Chinesisch) <br/> zh-Hant (Traditionelles Chinesisch) <br/>cs (Tschechisch) <br/>da (Dänisch) <br/>nl (Niederländisch) <br/>en (Englisch) <br/>fi (Finnisch)  <br/>fr (Französisch) <br/>  de (Deutsch) <br/>el (Griechisch) <br/> hu (Ungarisch) <br/> it (Italienisch) <br/>  ja (Japanisch) <br/> ko (Koreanisch) <br/> nb (Norwegisch) <br/>   pl (Polnisch) <br/> pt (Portugiesisch) <br/>  ru (Russisch) <br/>  es (Spanisch) <br/>  sv (Schwedisch) <br/>  tr (Türkisch) <br/> ar (Arabisch) <br/> ro (Rumänisch) <br/> sr-Cyrl (Serbisch, kyrillisch) <br/> sr-Latn (Serbisch, lateinisch) <br/>  sk (Slowakisch) <br/>  unk (Unbekannt) <br/><br/> Wenn der Sprachcode nicht angegeben oder Null ist, wird als Sprache automatisch Englisch festgelegt. Wenn die Sprache explizit auf „unk“ festgelegt ist, wird die Sprache automatisch erkannt. </p> |
-| textExtractionAlgorithm | „printed“ (gedruckt) oder „handwritten“ (handgeschrieben) Der OCR-Algorithmus für die Erkennung von „handgeschriebenem“ Text befindet sich derzeit in der Vorschau und ist nur in englischer Sprache verfügbar. |
+|lineEnding | Der Wert, der zwischen jeder erkannten Zeile verwendet werden soll. Mögliche Werte: 'Space','CarriageReturn','LineFeed'.  Der Standardwert ist 'Space'. |
+
+Bislang konnte mithilfe des Parameters „textExtractionAlgorithm“ angegeben werden, ob der Skill gedruckten Text (printed) oder handschriftlichen Text (handwritten) extrahieren soll.  Dieser Parameter ist inzwischen veraltet und nicht mehr erforderlich, da der neueste Algorithmus der Read-API beide Arten von Text gleichzeitig extrahieren kann.  Falls Ihr Skill diesen Parameter bereits enthält, müssen Sie ihn nicht entfernen. Er wird jedoch nicht mehr verwendet, und es werden beide Arten von Text extrahiert – unabhängig davon, auf welchen Wert der Parameter festgelegt ist.
 
 ## <a name="skill-inputs"></a>Skilleingaben
 

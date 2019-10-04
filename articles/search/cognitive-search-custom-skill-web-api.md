@@ -2,21 +2,19 @@
 title: Die Qualifikation „Benutzerdefiniert“ der kognitiven Suche – Azure Search
 description: Erweitern der Funktionen der Qualifikationsgruppen für die kognitive Suche durch Aufruf von Web-APIs
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seojan2018
-ms.openlocfilehash: 1fcb12fc2cfae98376210e1924a670cce444f4f2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 89539d42e9ac9456c7ee971f6ea607b6b2c6befa
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757319"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266326"
 ---
 # <a name="custom-web-api-skill"></a>Qualifikation „Benutzerdefinierte Web-API“
 
@@ -26,6 +24,7 @@ Die Struktur der JSON-Nutzlasten wird weiter unten in diesem Dokument beschriebe
 
 > [!NOTE]
 > Der Indexer versucht zweimal, bestimmte Standard-HTTP-Statuscodes, die von der Web-API zurückgegeben werden, erneut zu ermitteln. Diese HTTP-Statuscodes lauten: 
+> * `502 Bad Gateway`
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
@@ -38,10 +37,10 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| uri | Der URI der Web-API, an die die _JSON_ Nutzlast gesendet wird. Es ist nur ein **HTTPS**-URI-Schema zulässig. |
+| uri | Der URI der Web-API, an die die _JSON_-Nutzlast gesendet wird. Es ist nur ein **HTTPS**-URI-Schema zulässig. |
 | httpMethod | Diese Methode wird zum Senden der Nutzlast verwendet: Zulässige Methoden sind `PUT` oder `POST`. |
 | httpHeaders | Eine Sammlung von Schlüssel-Wert-Paaren, bei denen die Schlüssel Headernamen und -Werte Headerwerte darstellen, die zusammen mit der Nutzlast an Ihre Web-API gesendet werden. Die folgenden Header dürfen nicht in der Sammlung enthalten sein: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
-| timeout | (Optional) Wenn angegeben, wird damit das Zeitlimit für den HTTP-Client angegeben, der den API-Aufruf durchführt. Es muss als XSD-Wert „dayTimeDuration“ formatiert sein (eine eingeschränkte Teilmenge eines [ISO 8601-Zeitwerts](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)). Zum Beispiel `PT60S` für 60 Sekunden. Wenn kein Wert festgelegt ist, wird ein Standardwert von 30 Sekunden ausgewählt. Das Zeitlimit kann auf maximal 90 Sekunden und mindestens 1 Sekunde eingestellt werden. |
+| timeout | (Optional) Wenn angegeben, wird damit das Zeitlimit für den HTTP-Client angegeben, der den API-Aufruf durchführt. Es muss als XSD-Wert „dayTimeDuration“ formatiert sein (eine eingeschränkte Teilmenge eines [ISO 8601-Zeitwerts](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)). Zum Beispiel `PT60S` für 60 Sekunden. Wenn kein Wert festgelegt ist, wird ein Standardwert von 30 Sekunden ausgewählt. Das Zeitlimit kann auf maximal 230 Sekunden und mindestens 1 Sekunde festgelegt werden. |
 | batchSize | (Optional) Gibt an, wie viele „Datensätze“ (siehe _JSON_ Nutzlaststruktur unten) pro API-Aufruf gesendet werden. Wenn kein Wert festgelegt ist, wird der Standardwert 1000 ausgewählt. Wir empfehlen Ihnen, diesen Parameter zu verwenden, um einen angemessenen Kompromiss zwischen Indexierungsdurchsatz und Auslastung Ihrer API zu erreichen. |
 
 ## <a name="skill-inputs"></a>Skilleingaben
@@ -139,7 +138,7 @@ Es gelten immer diese Einschränkungen:
 
 ## <a name="sample-output-json-structure"></a>Beispiel für eine Ausgabe-JSON-Struktur
 
-Die „Ausgabe“ entspricht der Antwort Ihrer Web-API. Die Web-API sollte nur eine _JSON_ Nutzlast zurückgeben (verifiziert durch Prüfung des `Content-Type`-Antwortheaders) und die folgenden Einschränkungen erfüllen:
+Die „Ausgabe“ entspricht der Antwort, die von Ihrer Web-API zurückgegebenen wird. Die Web-API sollte nur eine _JSON_-Nutzlast zurückgeben (verifiziert durch Prüfung des `Content-Type`-Antwortheaders) und die folgenden Einschränkungen erfüllen:
 
 * Es muss eine Entität der höchsten Ebene mit der Bezeichnung `values`, die ein Array von Objekten ist.
 * Die Anzahl der Objekte im Array sollte gleich der Anzahl der an die Web-API gesendeten Objekte sein.
@@ -205,4 +204,4 @@ In Fällen, in denen die Web-API nicht verfügbar ist oder einen HTTP-Fehler zur
 
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Hinzufügen der Qualifikation „Benutzerdefiniert“ zur kognitiven Suche](cognitive-search-custom-skill-interface.md)
-+ [Erstellen einer Qualifikation „Benutzerdefiniert“ mithilfe der Textübersetzungs-API](cognitive-search-create-custom-skill-example.md)
++ [Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API](cognitive-search-create-custom-skill-example.md)

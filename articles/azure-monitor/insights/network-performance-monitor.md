@@ -3,7 +3,7 @@ title: Netzwerkleistungsmonitor-Lösung in Azure | Microsoft-Dokumentation
 description: Mit dem Netzwerkleistungsmonitor in Azure können Sie die Leistung Ihrer Netzwerke nahezu in Echtzeit überwachen, um Leistungsengpässe im Netzwerk zu erkennen und zu lokalisieren.
 services: log-analytics
 documentationcenter: ''
-author: abshamsft
+author: vinynigam
 manager: carmonm
 editor: ''
 ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
-ms.author: abshamsft
-ms.openlocfilehash: 1c80395880c556138313ebfd9af1610ace946c8a
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.author: vinigam
+ms.openlocfilehash: 80bca606a2b06d85afc8a2115133f44d738f7e0a
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006768"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035252"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -33,7 +33,7 @@ Der Netzwerkleistungsmonitor bietet drei allgemeine Funktionen:
 
 * [Systemmonitor](network-performance-monitor-performance-monitor.md): Sie können die Netzwerkkonnektivität für Cloudbereitstellungen und lokale Standorte, für mehrere Rechenzentren und Zweigstellen sowie für unternehmenswichtige Microservices/Anwendungen mit mehreren Ebenen überwachen. Mithilfe des Systemmonitors können Sie Netzwerkprobleme erkennen, bevor sie Ihre Benutzer beinträchtigen.
 
-* [Dienstkonnektivitätsmonitor](network-performance-monitor-service-endpoint.md): Sie können die Benutzerkonnektivität mit Diensten überwachen, die für Sie interessant sind, die Infrastruktur bestimmen, durch die der Pfad führt, und Netzwerkengpässe lokalisieren. Sie wissen noch vor Ihren Benutzern über Ausfälle Bescheid und können genau sehen, wo in Ihrem Netzwerkpfad Probleme vorliegen. 
+* [Dienstkonnektivitätsmonitor](network-performance-monitor-service-connectivity.md): Sie können die Benutzerkonnektivität mit Diensten überwachen, die für Sie interessant sind, die Infrastruktur bestimmen, durch die der Pfad führt, und Netzwerkengpässe lokalisieren. Sie wissen noch vor Ihren Benutzern über Ausfälle Bescheid und können genau sehen, wo in Ihrem Netzwerkpfad Probleme vorliegen. 
 
     Mit dieser Funktion können Sie Tests auf Basis von HTTP, HTTPS, TCP und ICMP ausführen, um die Verfügbarkeit und Antwortzeit Ihres Diensts in nahezu Echtzeit oder historisch zu überwachen. Sie können auch den Beitrag des Netzwerks bei Paketverlusten und Latenz überwachen. Mit einer Netzwerktopologiekarte können Sie Geschwindigkeitsverluste des Netzwerks eingrenzen. Sie können Problemstellen, die entlang des Netzwerkpfads vom Knoten zum Dienst auftreten, mit Latenzdaten für jeden Hop identifizieren. Mithilfe integrierter Tests können Sie ganz ohne Vorkonfiguration die Konnektivität mit Office 365 und Dynamics CRM überwachen. Mit dieser Funktion können Sie die Netzwerkkonnektivität mit einem beliebigen TCP-fähigen Endpunkt überwachen (z.B. Websites, SaaS-Anwendungen, PaaS-Anwendungen und SQL-Datenbanken).
 
@@ -45,12 +45,14 @@ Weitere Informationen zu den verschiedenen vom [Netzwerkleistungsmonitor](https:
 NPM kann die Konnektivität zwischen Netzwerken und Anwendungen in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der folgenden Regionen gehostet wird:
 * Europa, Westen
 * USA, Westen-Mitte
-* USA (Ost)
+* East US
 * Japan, Osten
 * Südostasien
 * Australien, Südosten
 * Vereinigtes Königreich, Süden
+* Indien, Mitte
 * US-Regierung Virginia
+
 
 Die Liste der unterstützten Regionen für ExpressRoute-Monitor ist in der [Dokumentation](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117) verfügbar.
 
@@ -69,7 +71,7 @@ Verwenden Sie zum Installieren von Agents die grundlegenden Prozesse, die unter 
 
 * **Dienstkonnektivitätsmonitor**: Installieren Sie einen Log Analytics-Agent auf jedem Knoten, von dem aus Sie die Netzwerkkonnektivität mit dem Dienstendpunkt überwachen möchten. Sie möchten beispielsweise die Netzwerkkonnektivität mit Office 365 von Ihren Bürostandorten mit den Bezeichnungen O1, O2 und O3 überwachen. Installieren Sie den Log Analytics-Agent auf jeweils mindestens einem Knoten in O1, O2 und O3. 
 
-* **ExpressRoute-Monitor**: Installieren Sie mindestens einen Log Analytics-Agent in Ihrem virtuellen Azure-Netzwerk. Installieren Sie außerdem mindestens einen Agent in Ihrem lokalen-Subnetzwerk, das über privates ExpressRoute-Peering verbunden ist.  
+* **ExpressRoute-Monitor**: Installieren Sie mindestens einen Log Analytics-Agent in Ihrem virtuellen Azure-Netzwerk. Installieren Sie außerdem mindestens einen Agent in Ihrem lokalen-Subnetzwerk, das über privates ExpressRoute-Peering verbunden ist.  
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Konfigurieren von Log Analytics-Agents für die Überwachung 
 
@@ -83,7 +85,7 @@ Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwe
     > Das Skript konfiguriert nur die lokale Windows-Firewall. Bei Verwendung einer Netzwerkfirewall müssen Sie sicherstellen, dass diese den Datenverkehr zum TCP-Port erlaubt, der vom Netzwerkleistungsmonitor verwendet wird.
 
     >[!NOTE]
-    > Für den Dienstendpunktmonitor muss das PowerShell-Skript [EnableRules.ps1](https://aka.ms/npmpowershellscript ) nicht ausgeführt werden.
+    > Für den Dienstkonnektivitätsmonitor muss das PowerShell-Skript [EnableRules.ps1](https://aka.ms/npmpowershellscript ) nicht ausgeführt werden.
 
     
 
@@ -103,7 +105,7 @@ Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwe
 
 1. Fügen Sie die Netzwerkleistungsmonitor-Lösung Ihrem Arbeitsbereich aus [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) hinzu. Sie können auch den unter [Überwachungslösungen in Azure Monitor](../../azure-monitor/insights/solutions.md) beschriebenen Prozess verwenden. 
 2. Öffnen Sie Ihren Log Analytics-Arbeitsbereich, und wählen Sie die Kachel **Übersicht** aus. 
-3. Wählen Sie die Kachel **Netzwerkleistungsmonitor** mit der Meldung  *Für die Lösung ist eine weitere Konfiguration erforderlich* aus.
+3. Wählen Sie die Kachel **Netzwerkleistungsmonitor** mit der Meldung *Für die Lösung ist eine weitere Konfiguration erforderlich* aus.
 
    ![Kachel des Netzwerkleistungsmonitors](media/network-performance-monitor/npm-config.png)
 
@@ -115,7 +117,7 @@ Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwe
     
    **Dienstkonnektivitätsmonitor**: Diese Funktion bietet integrierte, vorkonfigurierte Tests zur Überwachung der Netzwerkkonnektivität mit Office 365 und Dynamics 365 über Ihre Agents. Wählen Sie die Office 365- und Dynamics 365-Dienste aus, die Sie überwachen möchten, indem Sie die Kontrollkästchen neben ihnen aktivieren. Wählen Sie **Agents hinzufügen** aus, um die gewünschten Agents für die Überwachung auszuwählen. Wenn Sie diese Funktion nicht verwenden oder später einrichten möchten, nehmen Sie keine Auswahl vor, und wählen Sie dann **Speichern und fortfahren** aus.
 
-   ![Ansicht „Dienstendpunktmonitor“](media/network-performance-monitor/npm-service-endpoint-monitor.png)
+   ![Ansicht „Dienstkonnektivitätsmonitor“](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
    **ExpressRoute-Monitor**: Wählen Sie **Jetzt ermitteln** aus, um alle privaten ExpressRoute-Peerings zu ermitteln, die mit den virtuellen Netzwerken in dem mit diesem Log Analytics-Arbeitsbereich verknüpften Azure-Abonnement verbunden sind. 
 
@@ -131,7 +133,7 @@ Nach Abschluss der Einrichtung dauert es zwischen 30 Minuten und einer Stunde, b
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>Bearbeiten von Überwachungseinstellungen für Subnetze und Knoten 
 
-Alle Subnetze mit mindestens einem installierten Agent werden auf der Registerkarte  **Subnetzwerke** der Konfigurationsseite aufgeführt. 
+Alle Subnetze mit mindestens einem installierten Agent werden auf der Registerkarte **Subnetzwerke** der Konfigurationsseite aufgeführt. 
 
 
 So aktivieren bzw. deaktivieren Sie die Überwachung bestimmter Subnetzwerke:
@@ -152,7 +154,7 @@ Alle Knoten, auf denen ein Agent installiert ist, werden auf der Registerkarte *
 Konfigurieren Sie die gewünschten Funktionen:
 
 - [Systemmonitor](network-performance-monitor-performance-monitor.md#configuration)
-- [Dienstendpunktmonitor](network-performance-monitor-performance-monitor.md#configuration)
+- [Dienstkonnektivitätsmonitor](network-performance-monitor-performance-monitor.md#configuration)
 - [ExpressRoute-Monitor](network-performance-monitor-expressroute.md#configuration)
 
  
@@ -201,9 +203,9 @@ Nach dem Aktivieren der Netzwerkleistungsmonitor-Lösung wird auf der Kachel der
 
 ### <a name="drill-down-for-depth"></a>Drilldown für mehr Tiefe 
 
-Sie können auf dem Lösungsdashboard verschiedene Verbindungen auswählen, um zu den für Sie relevanten Bereichen einen Drilldown auszuführen. Wenn beispielsweise auf dem Dashboard eine Warnung oder eine fehlerhafte Netzwerkverbindung angezeigt wird, können Sie diese auswählen, um diesen Umstand näher zu untersuchen. Eine Seite führt alle Subnetzwerkverbindungen für die betreffende Netzwerkverbindung auf. Sie können den Datenverlust, die Latenz und den Integritätsstatus jeder Subnetzwerkverbindung anzeigen. Sie können schnell herausfinden, welche Subnetzwerkverbindung Probleme verursacht. Wählen Sie **Knotenverbindungen anzeigen** aus, um alle Knotenverbindungen für die fehlerhafte Subnetzverbindung anzuzeigen. Nun sehen Sie die einzelnen Knoten-zu-Knoten-Verbindungen und können die fehlerhaften Knotenverbindungen ausfindig machen. 
+Sie können auf dem Lösungsdashboard verschiedene Verbindungen auswählen, um zu den für Sie relevanten Bereichen einen Drilldown auszuführen. Wenn beispielsweise auf dem Dashboard eine Warnung oder eine fehlerhafte Netzwerkverbindung angezeigt wird, können Sie diese auswählen, um diesen Umstand näher zu untersuchen. Eine Seite führt alle Subnetzwerkverbindungen für die betreffende Netzwerkverbindung auf. Sie können den Datenverlust, die Latenz und den Integritätsstatus jeder Subnetzwerkverbindung anzeigen. Sie können schnell herausfinden, welche Subnetzwerkverbindung Probleme verursacht. Wählen Sie **Knotenverbindungen anzeigen** aus, um alle Knotenverbindungen für die fehlerhafte Subnetzverbindung anzuzeigen. Nun sehen Sie die einzelnen Knoten-zu-Knoten-Verbindungen und können die fehlerhaften Knotenverbindungen ausfindig machen. 
 
-Wählen Sie  **Topologie anzeigen** aus, um die Hop-by-Hop-Topologie der Routen zwischen den Quell- und den Zielknoten anzuzeigen. Die fehlerhaften Routen werden rot dargestellt. Sie können die Latenz anzeigen, die durch jeden Hop verursacht wird, sodass Sie das Problem schnell einem bestimmten Teil des Netzwerks zuordnen können.
+Wählen Sie **Topologie anzeigen** aus, um die Hop-by-Hop-Topologie der Routen zwischen den Quell- und den Zielknoten anzuzeigen. Die fehlerhaften Routen werden rot dargestellt. Sie können die Latenz anzeigen, die durch jeden Hop verursacht wird, sodass Sie das Problem schnell einem bestimmten Teil des Netzwerks zuordnen können.
 
  
 
@@ -243,15 +245,15 @@ Bei der in der Karte gezeigten Topologie handelt es sich um eine Layer 3-Topolog
 
 ## <a name="log-queries-in-azure-monitor"></a>Protokollabfragen in Azure Monitor
 
-Alle im Dashboard des Netzwerkleistungsmonitors und auf den Drilldownseiten grafisch dargestellten Daten sind auch nativ über [Protokollabfragen](../log-query/log-query-overview.md) verfügbar. Sie können eine interaktive Analyse von Daten im Repository ausführen und Daten aus verschiedenen Quellen korrelieren. Sie können auch benutzerdefinierte Warnungen und Ansichten erstellen und die Daten nach Excel, Power BI oder in einen freigegebenen Link exportieren. Der Bereich  **Allgemeine Abfragen** im Dashboard enthält einige praktische Abfragen, die Sie als Ausgangspunkt für die Erstellung eigener Abfragen und Berichte verwenden können. 
+Alle im Dashboard des Netzwerkleistungsmonitors und auf den Drilldownseiten grafisch dargestellten Daten sind auch nativ über [Protokollabfragen](../log-query/log-query-overview.md) verfügbar. Sie können eine interaktive Analyse von Daten im Repository ausführen und Daten aus verschiedenen Quellen korrelieren. Sie können auch benutzerdefinierte Warnungen und Ansichten erstellen und die Daten nach Excel, Power BI oder in einen freigegebenen Link exportieren. Der Bereich **Allgemeine Abfragen** im Dashboard enthält einige praktische Abfragen, die Sie als Ausgangspunkt für die Erstellung eigener Abfragen und Berichte verwenden können. 
 
 ## <a name="alerts"></a>Alerts
 
 Der Netzwerkleistungsmonitor verwendet die Warnfunktionen von [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
 
-Das bedeutet, dass alle Benachrichtigungen mithilfe von [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview) verwaltet werden.  
+Das bedeutet, dass alle Benachrichtigungen mithilfe von [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) verwaltet werden.  
 
-Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über Azure Monitor zu erstellen: 
+Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über Log Analytics zu erstellen: 
 1. Es wird ein Link angezeigt, der Sie zum Azure-Portal umleitet. Klicken Sie darauf, um das Portal aufzurufen.
 2. Klicken Sie auf die Kachel für die Netzwerkleistungsmonitor-Lösung. 
 3. Navigieren Sie zu „Konfigurieren“.  
@@ -263,8 +265,8 @@ Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über das Azure-Portal
 3. Wenn Sie sich für Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. [Hier](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) erfahren Sie, wie Sie eine Aktionsgruppe erstellen. 
 4. Nachdem die Warnung erfolgreich erstellt wurde, können Sie über den Link „Warnungen verwalten“ Ihre Warnungen verwalten. 
 
-Wenn Sie eine Warnung erstellen, erstellt NPM eine abfragebasierte Warnungsregel in Azure Monitor. Diese Abfrage wird standardmäßig alle 5 Minuten ausgelöst. Die ersten 250 Protokollwarnungsregeln von Azure Monitor sind kostenlos. Jede weitere Protokollwarnungsregel wird gemäß den [Warnungspreisen auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/en-us/pricing/details/monitor/) abgerechnet.
-Benachrichtigungen werden separat abgerechnet (siehe [Benachrichtigungspreise auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/en-us/pricing/details/monitor/)).
+Wenn Sie eine Warnung erstellen, erstellt NPM eine abfragebasierte Warnungsregel in Azure Monitor. Diese Abfrage wird standardmäßig alle 5 Minuten ausgelöst. Die ersten 250 Protokollwarnungsregeln von Azure Monitor sind kostenlos. Jede weitere Protokollwarnungsregel wird gemäß den [Warnungspreisen auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/pricing/details/monitor/) abgerechnet.
+Benachrichtigungen werden separat abgerechnet (siehe [Benachrichtigungspreise auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/pricing/details/monitor/)).
 
 
 ## <a name="pricing"></a>Preise
@@ -275,7 +277,7 @@ Informationen zu Preisen sind [online](network-performance-monitor-pricing-faq.m
 
 * **UserVoice:** Sie können Ihre Ideen zu Features des Netzwerkleistungsmonitors veröffentlichen, an denen wir arbeiten sollen. Besuchen Sie die [UserVoice-Seite](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
 
-* **Treten Sie unserer Gruppe bei:** Wir freuen uns über neue Kunden, die unserer Gruppe beitreten möchten. Als Teil der Gruppe erhalten Sie vorab Zugriff auf neue Funktionen und können uns dabei helfen, den Netzwerkleistungsmonitor zu verbessern. Wenn Sie beitreten möchten, füllen Sie bitte diesen  [kurzen Fragebogen](https://aka.ms/npmcohort) aus. 
+* **Treten Sie unserer Gruppe bei:** Wir freuen uns über neue Kunden, die unserer Gruppe beitreten möchten. Als Teil der Gruppe erhalten Sie vorab Zugriff auf neue Funktionen und können uns dabei helfen, den Netzwerkleistungsmonitor zu verbessern. Wenn Sie beitreten möchten, füllen Sie diesen [kurzen Fragebogen](https://aka.ms/npmcohort) aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte 
 Informieren Sie sich ausführlicher über [Systemmonitor](network-performance-monitor-performance-monitor.md), [Dienstkonnektivitätsmonitor](network-performance-monitor-performance-monitor.md) und [ExpressRoute-Monitor](network-performance-monitor-expressroute.md). 

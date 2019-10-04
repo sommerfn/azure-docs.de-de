@@ -6,20 +6,19 @@ author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4657bd136592c66b5dab9a712f5f1d6df898876c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ee5b18ddc734335ddac2a7d3352de0e4388f445d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043956"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933258"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funktionsverkettung in Durable Functions – „Hello Sequence“-Beispiel
 
-Bei der Funktionsverkettung geht es um das Muster für die Ausführung einer Funktionssequenz in einer bestimmten Reihenfolge. Häufig muss die Ausgabe einer Funktion auf die Eingabe einer anderen Funktion angewendet werden. Dieser Artikel beschreibt die Verkettungssequenz, die Sie durch Abschließen des Durable Functions-Schnellstarts ([C#](durable-functions-create-first-csharp.md) oder [JavaScript](quickstart-js-vscode.md)) erstellen. Weitere Informationen zu Durable Functions finden Sie im Artikel zu [Mustern und technischen Konzepten von Durable Functions](durable-functions-concepts.md).
+Bei der Funktionsverkettung geht es um das Muster für die Ausführung einer Funktionssequenz in einer bestimmten Reihenfolge. Häufig muss die Ausgabe einer Funktion auf die Eingabe einer anderen Funktion angewendet werden. Dieser Artikel beschreibt die Verkettungssequenz, die Sie durch Abschließen des Durable Functions-Schnellstarts ([C#](durable-functions-create-first-csharp.md) oder [JavaScript](quickstart-js-vscode.md)) erstellen. Weitere Informationen zu Durable Functions finden Sie unter [Übersicht zu Durable Functions](durable-functions-overview.md).
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -35,7 +34,7 @@ In den folgenden Abschnitten werden die Konfiguration und der Code beschrieben, 
 > [!NOTE]
 > JavaScript Durable Functions sind nur für die Functions 2.x-Runtime verfügbar.
 
-## <a name="e1hellosequence"></a>E1_HelloSequence
+## <a name="e1_hellosequence"></a>E1_HelloSequence
 
 ### <a name="functionjson-file"></a>Datei „function.json“
 
@@ -72,7 +71,7 @@ Alle JavaScript-Orchestrierungsfunktionen müssen das [Modul `durable-functions`
 
 Das `context`-Objekt enthält ein `df`-Objekt, mit dem Sie andere *Aktivitätsfunktionen* aufrufen und Eingabeparameter mit der zugehörigen `callActivity`-Methode übergeben können. Im Code wird `E1_SayHello` dreimal nacheinander mit unterschiedlichen Parameterwerten aufgerufen. Dabei wird `yield` verwendet, um anzugeben, dass für die Ausführung auf die Rückgabe der asynchronen Aufrufe der Aktivitätsfunktion gewartet werden muss. Der Rückgabewert jedes Aufrufs wird der Liste `outputs` hinzugefügt, die am Ende der Funktion zurückgegeben wird.
 
-## <a name="e1sayhello"></a>E1_SayHello
+## <a name="e1_sayhello"></a>E1_SayHello
 
 ### <a name="functionjson-file"></a>Datei „function.json“
 
@@ -142,7 +141,7 @@ Sie sehen, dass das `runtimeStatus`-Element der Instanz *Completed* lautet und d
 > [!NOTE]
 > Der HTTP POST-Endpunkt, von dem die Orchestratorfunktion gestartet wurde, wird in der Beispiel-App als HTTP-Triggerfunktion mit dem Namen „HttpStart“ implementiert. Sie können eine ähnliche Startlogik auch für andere Triggertypen wie `queueTrigger`, `eventHubTrigger` oder `timerTrigger` implementieren.
 
-Sehen Sie sich die Protokolle zur Funktionsausführung an. Die Funktion `E1_HelloSequence` wurde mehrmals gestartet und abgeschlossen. Dies liegt am Wiedergabeverhalten, das in der [Übersicht](durable-functions-concepts.md) beschrieben ist. Andererseits ist es nur zu drei Ausführungen von `E1_SayHello` gekommen, da diese Funktionsausführungen nicht wiedergegeben werden.
+Sehen Sie sich die Protokolle zur Funktionsausführung an. Die Funktion `E1_HelloSequence` wurde mehrmals gestartet und abgeschlossen. Dies liegt am Wiedergabeverhalten, das im Thema [Orchestrierungszuverlässigkeit](durable-functions-orchestrations.md#reliability) beschrieben wird. Andererseits ist es nur zu drei Ausführungen von `E1_SayHello` gekommen, da diese Funktionsausführungen nicht wiedergegeben werden.
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio-Beispielcode
 

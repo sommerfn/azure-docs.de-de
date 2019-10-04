@@ -4,21 +4,20 @@ description: Dieser Leitfaden erläutert die Überprüfung und Problembehandlung
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermannd
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 299fba8a082f19f17ab581a6ac2bfac9fd3f8cf1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520580"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099662"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Überprüfen und Problembehandlung beim Setup der SAP HANA-Hochverfügbarkeitskonfiguration zur horizontalen Skalierung unter SLES 12 SP3 
 
@@ -94,7 +93,7 @@ Gemäß den Empfehlungen für SAP HANA-Netzwerke wurden drei Subnetze in einem v
 
 Informationen zur SAP HANA-Konfiguration im Zusammenhang mit der Verwendung mehrerer Netzwerke finden Sie im Abschnitt [SAP HANA-Datei „global.ini“](#sap-hana-globalini).
 
-Jede VM im Cluster weist drei virtuelle Netzwerkkarten auf – entsprechend der Anzahl von Subnetzen. Der Artikel [Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten][azure-linux-multiple-nics] beschreibt potenzielles Routingproblem in Azure beim Bereitstellen eines virtuellen Linux-Computers. Dieser spezielle Artikel zum Thema Routing gilt nur bei Verwendung von mehreren virtuellen Netzwerkkarten. Das Problem wurde standardmäßig in SLES 12 SP3 von SUSE gelöst. Weitere Informationen finden Sie unter [Multi-NIC with cloud-netconfig in EC2 and Azure][suse-cloud-netconfig] (Multi-NIC mit cloud-netconfig in EC2 und Azure).
+Jede VM im Cluster weist drei virtuelle Netzwerkkarten auf – entsprechend der Anzahl von Subnetzen. Der Artikel [Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten][azure-linux-multiple-nics] beschreibt ein potenzielles Routingproblem in Azure beim Bereitstellen eines virtuellen Linux-Computers. Dieser spezielle Artikel zum Thema Routing gilt nur bei Verwendung von mehreren virtuellen Netzwerkkarten. Das Problem wurde standardmäßig in SLES 12 SP3 von SUSE gelöst. Weitere Informationen finden Sie unter [Mehrere NICs mit cloud-netconfig in EC2 und Azure][suse-cloud-netconfig].
 
 
 Um sicherzustellen, dass SAP HANA ordnungsgemäß für die Verwendung mehrerer Netzwerke konfiguriert ist, führen Sie die folgenden Befehle aus. Stellen Sie zunächst sicher, dass auf Betriebssystemebene alle drei internen IP-Adressen für alle drei Subnetze aktiv sind. Falls Sie die Subnetze mit verschiedenen IP-Adressbereichen definiert haben, müssen Sie die Befehle anpassen:
@@ -126,7 +125,7 @@ Die richtigen Portnummern finden Sie z.B. in HANA Studio unter **Konfiguration**
 select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
 </code></pre>
 
-Um jeden Port zu finden, der im SAP-Softwarestapel einschließlich SAP HANA verwendet wird, sehen Sie unter [TCP/IP ports of all SAP products][sap-list-port-numbers] (TCP/IP-Ports aller SAP-Produkte) nach.
+Um jeden Port zu finden, der im SAP-Softwarestapel einschließlich SAP HANA verwendet wird, lesen Sie unter [TCP/IP ports of all SAP products][sap-list-port-numbers] (TCP/IP-Ports aller SAP-Produkte) nach.
 
 Basierend auf der Instanznummer **00** im SAP HANA 2.0-Testsystem, lautet die Portnummer für den Namenserver **30001**. Die Portnummer für die HSR-Metadatenkommunikation lautet **40002**. Eine Möglichkeit ist, sich mit einem Workerknoten anzumelden und anschließend die Masterknotendienste zu überprüfen. Für diesen Artikel haben wir Workerknoten 2 an Standort 2 überprüft und versucht, eine Verbindung mit dem Masterknoten an Standort 2 herzustellen.
 
@@ -726,7 +725,7 @@ Transition Summary:
 ## <a name="planned-maintenance"></a>Geplante Wartung 
 
 Es gibt verschiedene Anwendungsfälle in Bezug auf die geplante Wartung. Eine Frage ist z.B., ob es sich lediglich um eine Infrastrukturwartung wie Änderungen auf Betriebssystemebene und Datenträgerkonfiguration oder ein HANA-Upgrade handelt.
-Sie finden weitere Informationen in Dokumenten von SUSE, beispielsweise [Towards Zero Downtime][sles-zero-downtime-paper] (Vermeiden von Downtime) oder [SAP HANA SR Performance Optimized Scenario][sles-12-for-sap] (SAP HANA SR – Leistungsoptimiertes Szenario). Diese Dokumentation umfasst zudem Beispiele dazu, wie eine manuelle Migration für einen primären Masterknoten durchgeführt werden kann.
+Sie finden weitere Informationen in Dokumenten von SUSE, beispielsweise [Towards Zero Downtime][sles-zero-downtime-paper] (Vermeiden von Downtime) oder [SAP HANA SR Performance Optimized Scenario][sles-12-for-sap] (SAP HANA SR – leistungsoptimiertes Szenario). Diese Dokumentation umfasst zudem Beispiele dazu, wie eine manuelle Migration für einen primären Masterknoten durchgeführt werden kann.
 
 Es wurden umfassende interne Tests durchgeführt, um den Anwendungsfall der Infrastrukturwartung zu überprüfen. Um Probleme im Zusammenhang mit der Migration eines primären Masterknotens zu vermeiden, haben wir entschieden, stets einen primären Masterknoten zu migrieren, bevor ein Cluster in den Wartungsmodus versetzt wird. So muss der Cluster nicht dahingehend konfiguriert werden, dass er die vorherige Situation ignoriert (d.h. welche Seite primär und welche Seite sekundär war).
 
@@ -802,7 +801,7 @@ Die Befehle **SAPHanaSR-showAttr** und **crm status** machen keine Angaben zu de
 crm configure show
 </code></pre>
 
-In der Clusterkonfiguration finden Sie eine neue Speicherorteinschränkung, die durch die frühere manuelle Ressourcenmigration verursacht wurde. Dieser Beispieleintrag beginnt mit **location cli-**:
+In der Clusterkonfiguration finden Sie eine neue Speicherorteinschränkung, die durch die frühere manuelle Ressourcenmigration verursacht wurde. Dieser Beispieleintrag beginnt mit **location cli-** :
 
 <pre><code>
 location cli-ban-msl_SAPHanaCon_HSO_HDB00-on-hso-hana-vm-s1-0 msl_SAPHanaCon_HSO_HDB00 role=Started -inf: hso-hana-vm-s1-0
@@ -821,7 +820,7 @@ Am Ende der Wartungsarbeiten beenden Sie den Clusterwartungsmodus, wie unter [Pa
 
 
 
-## <a name="hbreport-to-collect-log-files"></a>„hb_report“ zum Sammeln von Protokolldateien
+## <a name="hb_report-to-collect-log-files"></a>„hb_report“ zum Sammeln von Protokolldateien
 
 Um Pacemaker-Clusterprobleme analysieren zu können, ist es hilfreich und wird auch vom SUSE-Support gefordert, das Hilfsprogramm **hb_report** auszuführen. Es erfasst alle wichtigen Protokolldateien, die Sie zur Analyse der Ereignisse benötigen. Dieser Beispielaufruf verwendet eine Start- und Endzeit, zu der ein bestimmter Vorfall aufgetreten ist. Lesen Sie auch die [wichtigen Hinweise](#important-notes):
 

@@ -2,18 +2,18 @@
 title: Sicherheit auf Zeilenebene mit Power BI-Arbeitsbereichssammlungen
 description: Informationen zur Sicherheit auf Zeilenebene mit Power BI-Arbeitsbereichssammlungen
 services: power-bi-workspace-collections
-ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+ms.service: power-bi-embedded
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: ae9819cd5b27d794f26227f342cb0fdf1b0ab644
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 2a26cc7573abb970dc58c6f7c327dfbc659cb646
+ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518387"
+ms.lasthandoff: 07/09/2019
+ms.locfileid: "67672481"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Sicherheit auf Zeilenebene mit Power BI-Arbeitsbereichssammlungen
 

@@ -1,5 +1,5 @@
 ---
-title: Erkennen von gedrucktem und handschriftlichem Text – maschinelles Sehen
+title: Erkennung von gedrucktem/handschriftlichem Text – maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: Konzepte zur Erkennung von gedrucktem und handschriftlichem Text in Bildern mithilfe der Maschinelles Sehen-API.
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9bb574fcb9782aad41ea0fd276b8addee19caf01
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: e37b4c02692575f76582e8f62c3aff00b57424ed
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588974"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68946301"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Erkennen von gedrucktem und handschriftlichem Text
 
@@ -24,19 +24,19 @@ Maschinelles Sehen bietet einige Dienste, die auf Bildern erscheinenden gedruckt
 
 ## <a name="read-api"></a>Lese-API
 
-Die Lese-API erkennt mithilfe unserer neuesten Erkennungsmodelle Textinhalt auf einem Bild und konvertiert den erkannten Text in eine computerlesbare Zeichendatenfolge. Sie wurde für textlastige Bilder (wie digital eingescannte Dokumente) und für Bilder mit starkem Bildrauschen optimiert. Sie wird asynchron ausgeführt, da es bei größeren Dokumenten mehrere Minuten dauern kann, bis ein Ergebnis zurückgegeben wird.
+Die Lese-API erkennt mithilfe unserer neuesten Erkennungsmodelle Textinhalt auf einem Bild und konvertiert den erkannten Text in eine computerlesbare Zeichendatenfolge. Sie wurde für textlastige Bilder (wie digital eingescannte Dokumente) und für Bilder mit starkem Bildrauschen optimiert. Sie bestimmt, welches Erkennungsmodell für die einzelnen Textzeilen verwendet werden soll und unterstützt Bilder mit gedrucktem und handschriftlichem Text. Die Lese-API wird asynchron ausgeführt, da es bei größeren Dokumenten mehrere Minuten dauern kann, bis ein Ergebnis zurückgegeben wird.
 
 Beim Lesevorgang werden die ursprünglichen Zeilengruppierungen der erkannten Wörter in der Ausgabe beibehalten. Zu jeder Zeile werden die Koordinaten des umgebenden Felds übertragen, und jedes Wort innerhalb der Zeile verfügt über seine eigenen Koordinaten. Wenn ein Wort mit geringer Zuverlässigkeit erkannt wurde, wird diese Information ebenfalls vermittelt. Weitere Informationen finden Sie in der [Referenzdokumentation zur Lese-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb).
 
 > [!NOTE]
-> Dieses Feature befindet sich derzeit in der Vorschauversion und ist nur für englischsprachigen Text verfügbar.
+> Dieses Feature steht nur für englischsprachigen Text zur Verfügung.
 
 ### <a name="image-requirements"></a>Anforderungen an Images
 
 Die Lese-API kann Bilder analysieren, die folgende Anforderungen erfüllen:
 
 - Das Bild muss im JPEG-, PNG-, BMP-, PDF- oder TIFF-Format vorliegen.
-- Die Größe des Bilds muss zwischen 50 x 50 und 4200 x 4200 Pixel liegen. PDF-Seiten dürfen höchstens 17 x 17 Zoll groß sein.
+- Die Größe des Bilds muss zwischen 50 x 50 und 10.000 x 10.000 Pixel liegen. PDF-Seiten dürfen höchstens 17 x 17 Zoll groß sein.
 - Die Bilddatei darf höchstens 20 MB groß sein.
 
 ### <a name="limitations"></a>Einschränkungen
@@ -45,13 +45,11 @@ Wenn Sie ein kostenloses Abonnement nutzen, verarbeitet die Lese-API nur die ers
 
 ## <a name="ocr-optical-character-recognition-api"></a>OCR-API (Optical Character Recognition, optische Zeichenerkennung)
 
-Die OCR-API (optische Zeichenerkennung) von Maschinelles Sehen ähnelt der Lese-API, wird allerdings synchron ausgeführt und wurde nicht für große Dokumente optimiert. Sie verwendet ein früheres Erkennungsmodell, funktioniert jedoch mit mehreren Sprachen.
-
-OCR unterstützt 25 Sprachen: Arabisch, Chinesisch (traditionell), Chinesisch (vereinfacht), Dänisch, Deutsch, Englisch, Finnisch, Französisch, Griechisch, Italienisch, Japanisch, Koreanisch, Niederländisch, Norwegisch, Polnisch, Portugiesisch, Rumänisch, Russisch, Schwedisch, Serbisch (kyrillisch und lateinisch), Slowakisch, Spanisch, Tschechisch, Türkisch und Ungarisch. Die Sprache des Texts wird von OCR automatisch erkannt.
+Die OCR-API (optische Zeichenerkennung) von Maschinelles Sehen ähnelt der Lese-API, wird allerdings synchron ausgeführt und wurde nicht für große Dokumente optimiert. Sie verwendet ein früheres Erkennungsmodell, funktioniert aber mit mehr Sprachen; unter [Sprachunterstützung](language-support.md#text-recognition) finden Sie eine vollständige Liste der unterstützten Sprachen.
 
 Bei Bedarf korrigiert die OCR die Drehung des erkannten Textes, indem sie den Drehversatz in Grad um die horizontale Bildachse dreht. OCR stellt außerdem, wie in der folgenden Abbildung gezeigt, die Framekoordinaten jedes Worts bereit.
 
-![Diagramm, das zeigt, wie ein Bild gedreht und der darauf befindliche Text gelesen und eingegrenzt wird](./Images/vision-overview-ocr.png)
+![Ein Bild wird gedreht und der darauf befindliche Text gelesen und beschrieben](./Images/vision-overview-ocr.png)
 
 Weitere Informationen finden Sie in der [OCR-Referenzdokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc).
 
@@ -82,7 +80,7 @@ Die Texterkennungs-API kann Bilder analysieren, die folgende Anforderungen erfü
 - Die Größe des Bilds muss zwischen 50 x 50 und 4200 x 4200 Pixel liegen.
 - Die Bilddatei darf höchstens 4 MB groß sein.
 
-## <a name="improve-results"></a>Verbessern der Ergebnisse
+## <a name="limitations"></a>Einschränkungen
 
 Die Genauigkeit der Texterkennungsvorgänge hängt von der Qualität der Bilder ab. Die folgenden Faktoren können zu einem ungenauen Lesevorgang führen:
 

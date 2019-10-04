@@ -4,22 +4,21 @@ description: Konfigurieren Sie die benötigte Verbindungsinfrastruktur, um SAP H
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
-ms.author: rclaus
+ms.date: 07/12/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d8bbe2fc218004116177c4c9d95777d9ec57503
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 4fa0fe072fe98d565ad9d6f947540b7e1b039732
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426055"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101156"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>Bereitstellung von SAP HANA (große Instanzen) 
 
@@ -37,6 +36,7 @@ Microsoft benötigt zum Bereitstellen der Einheiten vom Typ „HANA (große Inst
 - Für jede Azure-Bereitstellungsregion:
     - Ein /29-IP-Adressbereich für ER-P2P-Verbindungen, über die virtuelle Azure-Netzwerke mit HANA (große Instanzen) verbunden werden.
     - Ein /24-CIDR-Block, der für den HANA (große Instanzen)-Server-IP-Pool verwendet wird.
+    - Bei der Verwendung von [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) zum Aktivieren des direkten Umleitens lokaler Einheiten an Einheiten großer HANA-Instanzen oder zum Umleiten zwischen Einheiten großer HANA-Instanzen in verschiedenen Azure-Regionen müssen Sie einen weiteren /29-IP-Adressbereich reservieren. Dieser Bereich darf sich mit keinem der anderen IP-Adressbereiche überschneiden, die Sie zuvor definiert haben.
 - Die IP-Adressbereichswerte, die im Attribut für den „Adressraum des virtuellen Netzwerks“ jedes virtuellen Azure-Netzwerks verwendet werden, für das Verbindungen mit HANA (große Instanzen) hergestellt werden.
 - Daten für jedes System vom Typ „HANA (große Instanzen)“:
   - Der gewünschte Hostname – idealerweise mit vollqualifiziertem Domänennamen.

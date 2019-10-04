@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 04/01/2019
+ms.date: 06/26/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: a43ad92181415593b309b9fafb20f9934a997924
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1edb83fcbe03fd113c59986bdbb6afcf2a0970bb
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58805345"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916100"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Starten der Überwachung Ihrer ASP.NET-Webanwendung
 
@@ -26,7 +26,7 @@ Diese Schnellstartanleitung zeigt, wie Sie Application Insights zu einer vorhand
 ## <a name="prerequisites"></a>Voraussetzungen
 So führen Sie diesen Schnellstart durch:
 
-- Installieren Sie [Visual Studio 2017](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
+- Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
     - ASP.NET und Webentwicklung
     - Azure-Entwicklung
 
@@ -35,7 +35,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="enable-application-insights"></a>Aktivieren von Application Insights
 
-1. Öffnen Sie Ihr Projekt in Visual Studio 2017.
+1. Öffnen Sie Ihr Projekt in Visual Studio 2019.
 2. Wählen Sie aus dem Menü „Projekt“ die Option **Application Insights konfigurieren**. Visual Studio fügt Ihrer Anwendung das Application Insights SDK hinzu.
 
     > [!IMPORTANT]
@@ -47,7 +47,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 4. Wählen Sie Ihr Abonnement aus, und klicken Sie auf das **Registrieren**.
 
-5. Führen Sie Ihre Anwendung aus, indem Sie entweder aus dem Menü **Debuggen** die Option **Debuggen starten** auswählen oder die Taste F5 drücken.
+5. Wählen Sie **Projekt** > **NuGet-Pakete verwalten** > **Paketquelle: nuget.org** >  **,** und aktualisieren Sie die Application Insights SDK-Pakete auf die neueste stabile Version.
+
+6. Führen Sie Ihre Anwendung aus, indem Sie entweder aus dem Menü **Debuggen** die Option **Debuggen starten** auswählen oder die Taste F5 drücken.
 
 ## <a name="confirm-app-configuration"></a>Bestätigen der App-Konfiguration
 
@@ -63,13 +65,13 @@ Sie können jetzt Application Insights im Azure-Portal öffnen, um verschiedene 
 
 1. Erweitern Sie im Projektmappen-Explorer den Ordner **Verbundene Dienste** (Wolkensymbol mit Stecker), klicken Sie mit der rechten Maustaste auf den Ordner **Application Insights**, und klicken Sie anschließend auf **Application Insights-Portal öffnen**.  Sie sehen einige Informationen zu Ihrer Anwendung sowie verschiedene Optionen.
 
-    ![Anwendungszuordnung](media/quick-monitor-portal/4overview.png)
+    ![Anwendungszuordnung](media/quick-monitor-portal/04-overview.png)
 
 2. Klicken Sie auf **Anwendungsübersicht**, um ein visuelles Layout der Abhängigkeitsbeziehungen zwischen den Komponenten Ihrer Anwendung zu erhalten.  Jede Komponente zeigt KPIs wie z.B. Last, Leistung, Fehler und Warnungen an.
 
-    ![Anwendungszuordnung](media/quick-monitor-portal/5appmap.png)
+    ![Anwendungszuordnung](media/quick-monitor-portal/05-appmap.png)
 
-3. Klicken Sie für eine der Anwendungskomponenten auf das Symbol für die **App-Analyse**: ![Anwendungszuordnung](media/quick-monitor-portal/app-analytics-icon.png) **In Analytics anzeigen**. Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden.  In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
+3. Klicken Sie für eine der Anwendungskomponenten auf das Symbol für die **App-Analyse**: ![Anwendungszuordnung](media/quick-monitor-portal/app-viewinlogs-icon.png) **In Protokollen anzeigen (Analytics)** . Dadurch wird **Protokolle (Analytics)** geöffnet. Hier steht eine erweiterte Abfragesprache zum Analysieren aller Daten zur Verfügung, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
 
     ![Analytics](media/quick-monitor-portal/6viewanalytics.png)
 

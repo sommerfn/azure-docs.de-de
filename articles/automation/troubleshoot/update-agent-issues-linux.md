@@ -2,19 +2,19 @@
 title: Grundlegende Informationen zu den Linux-Agent-Überprüfungsergebnissen in der Azure-Updateverwaltung
 description: Erfahren Sie, wie Sie Fehler mit dem Updateverwaltungs-Agent beheben können.
 services: automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 12/14/2018
+author: bobbytreed
+ms.author: robreed
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: aafed492e83066be20b4728a2617527351291a5b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c37d8be8862e75a6520ccefe4b9df93dd993b2a8
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813108"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67477111"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Grundlegende Informationen zu den Linux-Agent-Überprüfungsergebnissen in der Updateverwaltung
 
@@ -25,6 +25,9 @@ In der folgende Liste finden Sie die drei Bereitschaftszustände, in denen sich 
 * **Bereit**: Der Update-Agent ist bereitgestellt und wurde vor weniger als 1 Stunde zuletzt angezeigt.
 * **Getrennt**: Der Update-Agent ist bereitgestellt und wurde vor mehr als 1 Stunde zuletzt angezeigt.
 * **Nicht konfiguriert**: Der Update-Agent wurde nicht gefunden oder hat das Onboarding noch nicht abgeschlossen.
+
+> [!NOTE]
+> Möglicherweise gibt es eine kleine Verzögerung zwischen der Anzeige des Azure-Portals und dem aktuellen Zustand des Computers.
 
 ## <a name="start-the-troubleshooter"></a>Starten der Problembehandlung
 

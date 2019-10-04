@@ -1,21 +1,21 @@
 ---
-title: Verwenden von Ansible mit Azure
+title: Verwenden von Ansible mit Azure | Microsoft-Dokumentation
 description: Enthält eine Einführung in die Verwendung von Ansible zum Automatisieren von Cloudbereitstellung, Konfigurationsverwaltung und Anwendungsbereitstellungen.
-ms.service: azure
 keywords: Ansible, Azure, DevOps, Übersicht, Cloudbereitstellung, Konfigurationsverwaltung, Anwendungsbereitstellung, Ansible-Module, Ansible-Playbooks
+ms.topic: overview
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 09/02/2018
-ms.topic: overview
-ms.openlocfilehash: d7fc86f9968ede37623ea9c89a666a35cba7eee8
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 04/30/2019
+ms.openlocfilehash: 4d7e9f8a0527587106985d8a6f0a95e19e640245
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791595"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65230125"
 ---
-# <a name="ansible-with-azure"></a>Ansible mit Azure
+# <a name="using-ansible-with-azure"></a>Verwenden von Ansible mit Azure
 
 [Ansible](https://www.ansible.com) ist ein Open-Source-Produkt, mit dem die Cloudbereitstellung, Konfigurationsverwaltung und Anwendungsbereitstellungen automatisiert werden können. Mit Ansible können Sie virtuelle Computer, Container und Netzwerkumgebungen sowie auch vollständige Cloudinfrastrukturen bereitstellen. Ansible ermöglicht außerdem die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung.
 
@@ -23,32 +23,42 @@ Dieser Artikel enthält eine allgemeine Übersicht über die Vorteile der Verwen
 
 ## <a name="ansible-playbooks"></a>Ansible-Playbooks
 
-[Ansible-Playbooks](https://docs.ansible.com/ansible/latest/playbooks.html) stellen für Ansible die Konfigurations-, Bereitstellungs- und Orchestrierungssprache dar. Sie können zum Beschreiben einer Richtlinie, die Sie für Ihre Remotesysteme erzwingen möchten, oder eine Reihe von Schritten eines allgemeinen IT-Prozesses verwendet werden. Wenn Sie ein Playbook erstellen, nutzen Sie YAML, um ein Modell für eine Konfiguration oder einen Prozess zu definieren.
+Mit [Ansible-Playbooks](https://docs.ansible.com/ansible/latest/playbooks.html) können Sie Ansible anweisen, Ihre Umgebung zu konfigurieren. Playbooks werden mit YAML codiert, damit sie für Menschen lesbar sind. Der Abschnitt „Tutorials“ enthält viele Beispiele für die Verwendung von Playbooks zum Installieren und Konfigurieren von Azure-Ressourcen. 
 
 ## <a name="ansible-modules"></a>Ansible-Module
 
-Ansible umfasst eine Sammlung von [Ansible-Modulen](https://docs.ansible.com/ansible/latest/modules_by_category.html), die direkt auf Remotehosts oder über [Playbooks](https://docs.ansible.com/ansible/latest/playbooks.html) ausgeführt werden können. Benutzer können auch ihre eigenen Module erstellen. Module können verwendet werden, um Systemressourcen zu steuern, z.B. Dienste, Pakete oder Dateien, oder Systembefehle auszuführen.
+Ansible umfasst eine Sammlung von [Ansible-Modulen](https://docs.ansible.com/ansible/latest/modules_by_category.html), die direkt auf Remotehosts oder über [Playbooks](https://docs.ansible.com/ansible/latest/playbooks.html) ausgeführt werden. Benutzer können ihre eigenen Module erstellen. Module werden verwendet, um Systemressourcen zu steuern, z. B. Dienste, Pakete oder Dateien, oder um Systembefehle auszuführen.
 
-Für die Interaktion mit Azure-Diensten enthält Ansible eine Sammlung mit [Ansible-Cloudmodulen](https://docs.ansible.com/ansible/list_of_cloud_modules.html#azure), über die die Tools zum einfachen Erstellen und Orchestrieren Ihrer Infrastruktur in Azure bereitgestellt werden. 
+Für die Interaktion mit Azure-Diensten enthält Ansible eine Sammlung von [Ansible-Cloudmodulen](https://docs.ansible.com/ansible/list_of_cloud_modules.html#azure). Mit diesen Modulen können Sie Ihre Infrastruktur in Azure erstellen und orchestrieren. 
 
 ## <a name="migrate-existing-workload-to-azure"></a>Migrieren einer vorhandenen Workload zu Azure
 
-Nachdem Sie Ansible zum Definieren Ihrer Infrastruktur verwendet haben, können Sie das Playbook Ihrer Anwendung anwenden, damit Ihre Umgebung je nach Bedarf automatisch von Azure skaliert werden kann. 
+Wenn Sie Ansible zum Definieren Ihrer Infrastruktur verwenden, können Sie das Playbook Ihrer Anwendung anwenden, damit Ihre Umgebung je nach Bedarf automatisch von Azure skaliert werden kann. 
 
 ## <a name="automate-cloud-native-application-in-azure"></a>Automatisieren einer nativen Cloudanwendung in Azure
 
 Mit Ansible können Sie native Cloudanwendungen in Azure automatisieren, indem Sie Azure-Microservices wie [Azure Functions](https://azure.microsoft.com//services/functions/) und [Kubernetes in Azure](https://azure.microsoft.com/services/container-service/kubernetes/) verwenden.  
 
 ## <a name="manage-deployments-with-dynamic-inventory"></a>Verwalten von Bereitstellungen mit dynamischem Bestand
+
 Mithilfe des Features [Dynamic Inventory](https://docs.ansible.com/ansible/intro_dynamic_inventory.html) (Dynamischer Bestand) können mit Ansible Bestandsdaten per Pullvorgang von Azure-Ressourcen abgerufen werden. Sie können Ihre vorhandenen Azure-Bereitstellungen dann mit Tags versehen und diese gekennzeichneten Bereitstellungen mit Ansible verwalten.
 
 ## <a name="additional-azure-marketplace-options"></a>Zusätzliche Azure Marketplace-Optionen
-Das Azure Marketplace-Image [Ansible Tower](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.ansible-tower) von Red Hat hilft Organisationen beim Skalieren der IT-Automatisierung und beim Verwalten komplexer Bereitstellungen in physischen, virtuellen und Cloudinfrastrukturen. Ansible Tower enthält Funktionen, die zusätzliche Ebenen der Sichtbarkeit, Steuerung, Sicherheit und Effizienz für moderne Unternehmen bieten. Mit Ansible Tower werden Anmeldeinformationen verschlüsselt, z.B. Azure- und SSH-Schlüssel, damit Sie Aufträge an weniger erfahrene Mitarbeiter delegieren können, ohne die Offenlegung Ihrer Anmeldeinformationen zu riskieren.
+
+[Ansible Tower](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.ansible-tower) ist ein Azure Marketplace-Image von Red Hat. 
+
+Bei Ansible Tower handelt es sich um eine webbasierte Benutzeroberfläche und ein Dashboard für Ansible mit den folgenden Features:
+
+* Ermöglicht das Definieren der rollenbasierten Zugriffssteuerung, Auftragsplanung und grafischen Bestandsverwaltung. 
+* Umfasst eine REST-API und CLI, damit Sie Tower in vorhandene Tools und Prozesse einfügen können. 
+* Unterstützt die Echtzeitausgabe von Playbookausführungen. 
+* Verschlüsselt Anmeldeinformationen, z. B. Azure- und SSH-Schlüssel, damit Sie Aufgaben delegieren können, ohne Anmeldeinformationen verfügbar zu machen.
 
 ## <a name="ansible-module-and-version-matrix-for-azure"></a>Matrix der Ansible-Module und -Versionen für Azure
-Zum Lieferumfang von Ansible gehören verschiedene Module, die direkt auf Remotehosts oder über Playbooks ausgeführt werden können.
-In der [Matrix der Ansible-Module und -Versionen](./ansible-matrix.md) werden die Ansible-Module für Azure aufgelistet, die Azure-Cloudressourcen wie z.B. virtuelle Computer sowie Netzwerk- und Containerdienste bereitstellen können. 
+
+Ansible umfasst eine Suite von Modulen für die Verwendung bei der Bereitstellung und Konfiguration von Azure-Ressourcen. Diese Ressourcen umfassen virtuelle Computer, Skalierungsgruppen, Netzwerkdienste und Containerdienste. In der [Ansible-Matrix](./ansible-matrix.md) sind die Ansible-Module für Azure und die Ansible-Versionen aufgeführt, zu deren Lieferumfang sie gehören.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Konfigurieren von Ansible](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
-- [Erstellen eines virtuellen Linux-Computers](/azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+
+- [Schnellstart: Bereitstellen der Ansible-Lösungsvorlage für Azure in CentOS](./ansible-deploy-solution-template.md)
+- [Schnellstart: Erstellen eines virtuellen Linux-Computers in Azure mithilfe von Ansible](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fazure%2Fansible%2Ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json)

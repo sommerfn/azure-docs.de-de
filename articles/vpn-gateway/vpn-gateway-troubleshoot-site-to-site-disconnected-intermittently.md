@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das Problem beheben, wenn die Standort-zu-Sta
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: vpn-gateway
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 2fdd82c2f0c96b3bd20231911bb88cf54c172931
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 394062257f09bb0b8cfa6875795b88d35404f87c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958013"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058834"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Problembehandlung: Unterbrechungen der Azure-Site-to-Site-VPN-Verbindung
 
-Möglicherweise tritt bei Ihnen das Problem auf, dass eine neue oder bereits vorhandene Microsoft Azure-Site-to-Site-VPN-Verbindung nicht stabil ist oder regelmäßig getrennt wird. Dieser Artikel enthält Schritte, mit denen Sie die Ursache ausfindig machen und das Problem beheben können. 
+Möglicherweise tritt bei Ihnen das Problem auf, dass eine neue oder bereits vorhandene Microsoft Azure Standort-zu-Standort-VPN-Verbindung nicht stabil ist oder regelmäßig getrennt wird. Dieser Artikel enthält Schritte, mit denen Sie die Ursache ausfindig machen und das Problem beheben können. 
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -73,5 +73,5 @@ Die Funktion **Perfect Forward Secrecy** kann zu den Problemen mit der Trennung 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen einer Site-to-Site-Verbindung im Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [Konfigurieren einer IPsec/IKE-Richtlinie für Site-to-Site-VPN-Verbindungen](vpn-gateway-ipsecikepolicy-rm-powershell.md)
+- [Konfigurieren einer IPsec/IKE-Richtlinie für Standort-zu-Standort-VPN-Verbindungen](vpn-gateway-ipsecikepolicy-rm-powershell.md)
 

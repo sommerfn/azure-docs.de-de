@@ -1,18 +1,18 @@
 ---
 title: Azure IoT-Geräte-SDKs – Plattformunterstützung | Microsoft-Dokumentation
 description: 'Konzepte: Liste mit den von den Azure IoT-Geräte-SDKs unterstützten Plattformen'
-author: yzhong94
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: yizhon
-ms.openlocfilehash: 7bcc1bf6b734abe202c5fec5d515604f4bf8e4a7
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.author: robinsh
+ms.openlocfilehash: 9a64c6e476910ab4fe983fa949680f05fdded3ae
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669362"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70161865"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Azure IoT-SDKs – Plattformunterstützung
 
@@ -38,7 +38,7 @@ Es werden verschiedene Plattformen unterstützt.
 
 ### <a name="c-sdk"></a>C-SDK
 
-| Betriebssystem                  | Arch | Compiler             | TLS-Bibliothek       |
+| OS                  | Arch | Compiler             | TLS-Bibliothek       |
 |---------------------|------|----------------------|-------------------|
 | Ubuntu 16.04 LTS    | X64  | gcc-5.4.0            | openssl – 1.0.2g |
 | Ubuntu 18.04 LTS    | X64  | gcc-7.3              | WolfSSL – 1.13    |
@@ -50,7 +50,7 @@ Es werden verschiedene Plattformen unterstützt.
 
 ### <a name="python-sdk"></a>Python SDK
 
-| Betriebssystem                  | Arch | Compiler   | TLS-Bibliothek |
+| OS                  | Arch | Compiler   | TLS-Bibliothek |
 |---------------------|------|------------|-------------|
 | Windows Server 2016 | x86  | Python 2,7 | openssl     |
 | Windows Server 2016 | x64  | Python 2,7 | openssl     |
@@ -62,7 +62,7 @@ Es werden verschiedene Plattformen unterstützt.
 
 ### <a name="net-sdk"></a>.NET SDK
 
-| Betriebssystem                  | Arch | Framework            | Standard          |
+| OS                  | Arch | Framework            | Standard          |
 |---------------------|------|----------------------|-------------------|
 | Ubuntu 16.04 LTS    | X64  | .NET Core 2.1        | .NET Standard 2.0 |
 | Windows Server 2016 | X64  | .NET Core 2.1        | .NET Standard 2.0 |
@@ -71,14 +71,14 @@ Es werden verschiedene Plattformen unterstützt.
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
-| Betriebssystem                                           | Arch | Node-Version |
-|----------------------------------------------|------|--------------|
-| Ubuntu 16.04 LTS (mit Node 6 Docker-Image) | X64  | Node 6       |
-| Windows Server 2016                          | X64  | Node 6       |
+| OS                                           | Arch | Node-Version    |
+|----------------------------------------------|------|-----------------|
+| Ubuntu 16.04 LTS (mit Node 6 Docker-Image) | X64  | LTS und aktuell |
+| Windows Server 2016                          | X64  | LTS und aktuell |
 
 ### <a name="java-sdk"></a>Java-SDK
 
-| Betriebssystem                  | Arch | Java-Version |
+| OS                  | Arch | Java-Version |
 |---------------------|------|--------------|
 | Ubuntu 16.04 LTS    | X64  | Java 8       |
 | Windows Server 2016 | X64  | Java 8       |
@@ -94,7 +94,7 @@ Kunden können unsere Plattformunterstützung erweitern, indem sie das Azure IoT
 | Espressif           | ESP32 <br/> ESP8266                              | [Esp-azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT Modem     | [Qualcomm LTE für IoT-SDK](https://developer.qualcomm.com/software/lte-iot-sdk) | [Forum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
 | ST Microelectronics | STM32L4-Serie <br/> STM32F4-Serie <br/>  STM32F7-Serie <br/>  STM32L4 Discovery Kit für IoT-Knoten    | [X-CUBE-CLOUD](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html) <br/> [X-CUBE-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html) <br/> [P-NUCLEO-AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Unterstützung](https://www.st.com/content/st_com/en/support/support-home.html)
-| Texas Instruments   | CC3220SF Launchpad <br/> CC3220S Launchpad <br/> MSP432E4 Launchpad      | [Azure IoT-Plug-In für SimpleLink](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2- Forum](https://e2e.ti.com) <br/> [TI E2E-Forum für CC3220](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [TI E2E-Forum für MSP432E4](https://e2e.ti.com/support/microcontrollers/msp430/) |
+| Texas Instruments   | CC3220SF LaunchPad </br> CC3220S LaunchPad </br> CC3235SF LaunchPad </br> CC3235S LaunchPad </br> MSP432E4 LaunchPad | [Azure IoT-Plug-In für SimpleLink](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2- Forum](https://e2e.ti.com) <br/> [TI E2E-Forum für CC3220](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [TI E2E-Forum für MSP432E4](https://e2e.ti.com/support/microcontrollers/msp430/) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

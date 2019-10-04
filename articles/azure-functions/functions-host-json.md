@@ -6,20 +6,19 @@ author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: e24c5b2be1df41d84fa4461250f51cb009f77529
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 5a4bc05e0a0b0b6a2c1b859caea2aadc12b8e0e0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331216"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096403"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>host.json-Referenz für Azure Functions 2.x  
 
-> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version der Azure Functions-Runtime aus: "]
 > * [Version 1](functions-host-json-v1.md)
 > * [Version 2](functions-host-json.md)
 
@@ -35,7 +34,6 @@ Einige Einstellungen in host.json werden nur bei lokaler Ausführung in der [loc
 ## <a name="sample-hostjson-file"></a>host.json-Beispieldatei
 
 Für die folgenden *host.json*-Beispieldateien sind alle möglichen Optionen angegeben.
-
 
 ```json
 {
@@ -82,7 +80,10 @@ Für die folgenden *host.json*-Beispieldateien sind alle möglichen Optionen ang
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 
@@ -145,7 +146,10 @@ Eine Liste der Funktionen, die vom Auftragshost ausgeführt werden. Ein leeres A
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Gibt die Timeoutdauer für alle Funktionen an. Bei einem serverlosen Verbrauchsplan liegt der gültige Bereich zwischen 1 Sekunde und 10 Minuten, wobei der Standardwert bei 5 Minuten liegt. Bei einem App Service-Plan gibt es keine allgemeine Beschränkung, und der Standardwert hängt von der Version der Runtime ab. In Version 2.x ist der Standardwert für einen App Service-Plan 30 Minuten. In Version 1.x ist er *null*, was keinen Timeout angibt.
+Gibt die Timeoutdauer für alle Funktionen an. Die Angabe erfolgt im TimeSpan-Zeichenfolgenformat. Bei einem serverlosen Verbrauchsplan liegt der gültige Bereich zwischen 1 Sekunde und 10 Minuten, wobei der Standardwert bei 5 Minuten liegt.  
+Bei einem App Service-Plan vom Typ „Dedicated“ gibt es keine allgemeine Beschränkung, und der Standardwert hängt von der Version der Runtime ab: 
++ Version 1.x: Der Standardwert ist *null*, was bedeutet, dass kein Timeout erfolgt.   
++ Version 2.x: Der Standardwert lautet 30 Minuten. Der Wert `-1` gibt eine unbegrenzte Ausführung an.
 
 ```json
 {
@@ -171,11 +175,11 @@ Konfigurationseinstellungen für [Host Health Monitor](https://github.com/Azure/
 
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
-|Aktiviert|true|Gibt an, ob die Funktion aktiviert ist. | 
+|enabled|true|Gibt an, ob die Funktion aktiviert ist. | 
 |healthCheckInterval|10 Sekunden|Das Zeitintervall zwischen den regelmäßigen Integritätsüberprüfungen im Hintergrund. | 
 |healthCheckWindow|2 Minuten|Ein variables Zeitfenster, das in Zusammenhang mit der `healthCheckThreshold`-Einstellung verwendet wird.| 
 |healthCheckThreshold|6|Maximale Anzahl von fehlerhaften Integritätsüberprüfungen, bevor ein Neustart des Hosts initiiert wird.| 
-|counterThreshold|0,80|Der Schwellenwert, an dem ein Leistungsindikator als fehlerhaft betrachtet wird.| 
+|counterThreshold|0.80|Der Schwellenwert, an dem ein Leistungsindikator als fehlerhaft betrachtet wird.| 
 
 ## <a name="http"></a>http
 
@@ -193,6 +197,9 @@ Steuert das Protokollierungsverhalten der Funktions-App, einschließlich Applica
     "logLevel": {
       "Function.MyFunction": "Information",
       "default": "None"
+    },
+    "console": {
+        ...
     },
     "applicationInsights": {
         ...
@@ -263,7 +270,7 @@ Konfigurationseinstellungen für das Singleton-Sperrverhalten. Weitere Informati
 |lockAcquisitionTimeout|00:01:00|Die maximale Zeitspanne, in der die Laufzeit versucht, eine Sperre abzurufen.| 
 |lockAcquisitionPollingInterval|–|Das Intervall zwischen den Versuchen, eine Sperre abzurufen.| 
 
-## <a name="version"></a>Version
+## <a name="version"></a>version
 
 Die Versionszeichenfolge `"version": "2.0"` ist für Funktions-App mit der v2-Runtime als Ziel erforderlich.
 
@@ -274,6 +281,18 @@ Eine Reihe von [Verzeichnissen mit freigegebenem Code](functions-reference-cshar
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="manageddependency"></a>managedDependency
+
+Verwaltete Abhängigkeit ist eine Previewfunktion (Vorschaufeature), die derzeit nur mit PowerShell-basierten Funktionen unterstützt wird. Sie ermöglicht, dass Abhängigkeiten automatisch vom Dienst verwaltet werden können. Ist die enabled-Eigenschaft auf „true“ festgelegt, wird die Datei [requirements.psd1](functions-reference-powershell.md#dependency-management) verarbeitet. Abhängigkeiten werden aktualisiert, wenn irgendwelche Nebenversionen veröffentlicht werden.
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
 }
 ```
 

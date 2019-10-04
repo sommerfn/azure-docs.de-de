@@ -2,19 +2,19 @@
 title: Erstellen der Indexdefinition und Konzepte – Azure Search
 description: Einführung in Indexbegriffe und Konzepte in Azure Search, einschließlich Komponenten und physischer Struktur.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 645f3177913b903e8262c1fec08c452130e2a671
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337866"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647368"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Erstellen eines grundlegenden Index in Azure Search
 
@@ -36,7 +36,7 @@ Der richtige Indexentwurf wird in der Regel über mehrere Iterationen erreicht. 
   
    Beim Klicken auf **Erstellen** werden alle physischen Strukturen, die Ihren Index unterstützen, in Ihrem Suchdienst erstellt.
 
-3. Laden Sie das Indexschema mit [Index-REST-API abrufen](https://docs.microsoft.com/rest/api/searchservice/get-index) und einem Webtesttool wie [Postman](search-fiddler.md) herunter. Sie haben nun eine JSON-Darstellung des Indexes, den Sie im Portal erstellt haben. 
+3. Laden Sie das Indexschema mit [Index-REST-API abrufen](https://docs.microsoft.com/rest/api/searchservice/get-index) und einem Webtesttool wie [Postman](search-get-started-postman.md) herunter. Sie haben nun eine JSON-Darstellung des Indexes, den Sie im Portal erstellt haben. 
 
    Sie wechseln an diesem Punkt zu einem codebasierten Ansatz. Das Portal eignet sich nun ideal für die Iteration, da Sie keinen Index bearbeiten können, der bereits erstellt wurde. Sie können aber Postman und REST für die verbleibenden Aufgaben verwenden.
 
@@ -48,13 +48,13 @@ Der richtige Indexentwurf wird in der Regel über mehrere Iterationen erreicht. 
 
 Da physische Strukturen im Dienst erstellt werden, ist das [Löschen und Neuerstellen von Indizes](search-howto-reindex.md) erforderlich, wenn Sie wesentliche Änderungen an einer vorhandenen Felddefinition vornehmen. Dies bedeutet, dass Sie während der Entwicklung häufige Neuerstellungen einplanen sollten. Sie sollten erwägen, mit einer Teilmenge Ihrer Daten zu arbeiten, damit Neuerstellungen schneller gehen. 
 
-Code eignet sich eher als ein Portalansatz für den iterativen Entwurf. Wenn Sie sich für die Indexdefinition auf das Portal verlassen, müssen Sie bei jeder Neuerstellung die Indexdefinition ausfüllen. Als Alternative sind Tools wie [Postman und die REST-API](search-fiddler.md) hilfreich zum Proof of Concept-Testen, wenn Entwicklungsprojekte sich noch in frühen Phasen befinden. Sie können inkrementelle Änderungen an einer Indexdefinition im Anforderungstext vornehmen und dann die Anforderung an Ihren Dienst senden, um einen Index mit einem aktualisierten Schema neu zu erstellen.
+Code eignet sich eher als ein Portalansatz für den iterativen Entwurf. Wenn Sie sich für die Indexdefinition auf das Portal verlassen, müssen Sie bei jeder Neuerstellung die Indexdefinition ausfüllen. Als Alternative sind Tools wie [Postman und die REST-API](search-get-started-postman.md) hilfreich zum Proof of Concept-Testen, wenn Entwicklungsprojekte sich noch in frühen Phasen befinden. Sie können inkrementelle Änderungen an einer Indexdefinition im Anforderungstext vornehmen und dann die Anforderung an Ihren Dienst senden, um einen Index mit einem aktualisierten Schema neu zu erstellen.
 
 ## <a name="components-of-an-index"></a>Komponenten eines Index
 
 Schematisch besteht ein Azure Search-Index aus den folgenden Elementen. 
 
-Die [*Feldsammlung*](#fields-collection) ist typischerweise der größte Teil eines Index, wobei jedes Feld benannt, typisiert und mit zulässigen Verhaltensweisen versehen wird, die bestimmen, wie es verwendet wird. Weitere Elemente sind [Vorschlagsfunktionen](#suggesters), [Bewertungsprofile](#scoring-profiles), [Analysetools](#analyzers) mit Komponenten zur Unterstützung der Anpassung sowie [CORS](#cors)-Optionen.
+Die [*Feldsammlung*](#fields-collection) ist typischerweise der größte Teil eines Index, wobei jedes Feld benannt, typisiert und mit zulässigen Verhaltensweisen versehen wird, die bestimmen, wie es verwendet wird. Weitere Elemente sind [Vorschlagsfunktionen](#suggesters), [Bewertungsprofile](#scoring-profiles), [Analysetools](#analyzers) mit Komponenten zur Unterstützung der Anpassung sowie Optionen für [CORS](#cors) und [Verschlüsselungsschlüssel](#encryption-key).
 
 ```json
 {
@@ -126,6 +126,15 @@ Die [*Feldsammlung*](#fields-collection) ist typischerweise der größte Teil ei
   "corsOptions": (optional) {
     "allowedOrigins": ["*"] | ["origin_1", "origin_2", ...],
     "maxAgeInSeconds": (optional) max_age_in_seconds (non-negative integer)
+  },
+  "encryptionKey":(optional){
+    "keyVaultUri": "azure_key_vault_uri",
+    "keyVaultKeyName": "name_of_azure_key_vault_key",
+    "keyVaultKeyVersion": "version_of_azure_key_vault_key",
+    "accessCredentials":(optional){
+      "applicationId": "azure_active_directory_application_id",
+      "applicationSecret": "azure_active_directory_application_authentication_key"
+    }
   }
 }
 ```
@@ -137,7 +146,7 @@ Die [*Feldsammlung*](#fields-collection) ist typischerweise der größte Teil ei
 Wenn Sie Ihr Schema definieren, müssen Sie den Namen, den Typ und die Attribute jedes Felds in Ihrem Index festlegen. Der Feldtyp klassifiziert die Daten, die in dem Feld gespeichert sind. Attribute werden für einzelne Felder festlegen, um anzugeben, wie das Feld verwendet wird. Die folgende Tabelle listet die Typen und Attribute auf, die Sie angeben können.
 
 ### <a name="data-types"></a>Datentypen
-| Type | BESCHREIBUNG |
+| type | BESCHREIBUNG |
 | --- | --- |
 | *Edm.String* |Text, der optional für die Volltextsuche (Worttrennung, Wortstammerkennung usw.) mit einem Token versehen werden kann. |
 | *Collection(Edm.String)* |Eine Liste von Zeichenfolgen, die für die Volltextsuche mit einem Token versehen werden können. Für die Anzahl der Elemente in einer Sammlung gibt es keine Obergrenze, allerdings gilt die Obergrenze für die Größe der Nutzlast von 16 MB auch für Sammlungen. |
@@ -151,26 +160,32 @@ Wenn Sie Ihr Schema definieren, müssen Sie den Namen, den Typ und die Attribute
 Ausführlichere Informationen zu den von Azure Search unterstützten Datentypen finden Sie [hier](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
 
 ### <a name="index-attributes"></a>Indexattribute
+
+Genau ein Feld Ihres Index muss als **key**-Feld festgelegt sein, mit dem jedes Dokument eindeutig identifiziert werden kann.
+
+Mit anderen Attributen wird bestimmt, wie ein Feld in einer Anwendung verwendet wird. So wird beispielsweise jedem Feld, das in eine Volltextsuche einbezogen werden soll, das Attribut **searchable** zugewiesen. 
+
+Die APIs, die Sie zum Erstellen eines Index verwenden, verfügen über unterschiedliches Standardverhalten. Für die [REST-APIs](https://docs.microsoft.com/rest/api/searchservice/Create-Index) sind die meisten Attribute standardmäßig aktiviert (z. B. sind **searchable** und **retrievable** für Zeichenfolgenfelder auf „true“ festgelegt). Sie müssen sie häufig nur festlegen, wenn Sie sie deaktivieren möchten. Für das .NET SDK gilt das Gegenteil. Für jede Eigenschaft, die Sie nicht explizit festlegen, wird das entsprechende Suchverhalten standardmäßig deaktiviert, sofern Sie es nicht ausdrücklich aktivieren.
+
 | Attribut | BESCHREIBUNG |
 | --- | --- |
-| *Schlüssel* |Eine Zeichenfolge, die die eindeutige ID der einzelnen Dokumente darstellt und für die Dokumentsuche verwendet wird. Jeder Index muss über einen Schlüssel verfügen. Als Schlüssel kann immer nur ein einzelnes Feld fungieren, und sein Typ muss auf „Edm.String“ festgelegt sein. |
-| *Abrufbar* |Gibt an, ob ein Feld in einem Suchergebnis zurückgegeben werden kann. |
-| *Filterbar* |Ermöglicht die Verwendung des Felds in Filterabfragen. |
-| *Sortierbar* |Ermöglicht einer Abfrage das Sortieren von Suchergebnissen mithilfe dieses Felds. |
-| *Facettierbar* |Ermöglicht die Verwendung eines Felds in einer [Facettennavigationsstruktur](search-faceted-navigation.md) für benutzerdefiniertes Filtern. Repetitive Werte, mit denen sich mehrere Dokumente zu einer Gruppe zusammenfassen lassen (etwa mehrere Dokumente der gleichen Marken- oder Dienstleistungskategorie), sind in der Regel am besten für die Verwendung als Facetten geeignet. |
-| *Durchsuchbar* |Markiert das Feld als in die Volltextsuche einbeziehbar. |
+| `key` |Eine Zeichenfolge, die die eindeutige ID der einzelnen Dokumente darstellt und für die Dokumentsuche verwendet wird. Jeder Index muss über einen Schlüssel verfügen. Als Schlüssel kann immer nur ein einzelnes Feld fungieren, und sein Typ muss auf „Edm.String“ festgelegt sein. |
+| `retrievable` |Gibt an, ob ein Feld in einem Suchergebnis zurückgegeben werden kann. |
+| `filterable` |Ermöglicht die Verwendung des Felds in Filterabfragen. |
+| `Sortable` |Ermöglicht einer Abfrage das Sortieren von Suchergebnissen mithilfe dieses Felds. |
+| `facetable` |Ermöglicht die Verwendung eines Felds in einer [Facettennavigationsstruktur](search-faceted-navigation.md) für benutzerdefiniertes Filtern. Repetitive Werte, mit denen sich mehrere Dokumente zu einer Gruppe zusammenfassen lassen (etwa mehrere Dokumente der gleichen Marken- oder Dienstleistungskategorie), sind in der Regel am besten für die Verwendung als Facetten geeignet. |
+| `searchable` |Markiert das Feld als in die Volltextsuche einbeziehbar. |
 
-Ausführlichere Informationen zu den Indexattributen von Azure Search finden Sie [hier](https://docs.microsoft.com/rest/api/searchservice/Create-Index).
 
 ## <a name="storage-implications"></a>Hinweise zum Speicher
 
 Die Attribute, die Sie auswählen, haben Auswirkungen auf den Speicher. Der folgende Screenshot veranschaulicht die Indexspeichermuster aus verschiedenen Kombinationen von Attributen.
 
-Der Index basiert auf der Datenquelle des [integrierten realestate-Beispiels](search-get-started-portal.md), die Sie indizieren und im Portal abfragen können. Obwohl die Indexschemas nicht angezeigt werden, können Sie die auf dem Indexnamen basierenden Attribute ableiten. Beispielsweise ist für den *realestate-searchable*-Index das **searchable**-Attribut ausgewählt und sonst nichts, für den *realestate-retrievable*-Index ist das **retrievable**-Attribut ausgewählt und nichts anderes usw.
+Der Index basiert auf der Datenquelle des [integrierten „realestate“-Beispiels](search-get-started-portal.md), die Sie indizieren und im Portal abfragen können. Obwohl die Indexschemas nicht angezeigt werden, können Sie die auf dem Indexnamen basierenden Attribute ableiten. Beispielsweise ist für den *realestate-searchable*-Index das **searchable**-Attribut ausgewählt und sonst nichts, für den *realestate-retrievable*-Index ist das **retrievable**-Attribut ausgewählt und nichts anderes usw.
 
 ![Indexgröße basierend auf der Attributauswahl](./media/search-what-is-an-index/realestate-index-size.png "Indexgröße basierend auf der Attributauswahl")
 
-Obwohl diese Indexvarianten künstlich sind, können wir sie für umfassende Vergleiche des Einflusses von Attributen auf Speicher nutzen. Setzt die Einstellung **retrievable** die Indexgröße hinauf?  Nein. Setzt das Hinzufügen von Feldern zu einer **Vorschlagsfunktion** die Indexgröße herauf? Ja.
+Obwohl diese Indexvarianten künstlich sind, können wir sie für umfassende Vergleiche des Einflusses von Attributen auf Speicher nutzen. Setzt die Einstellung **retrievable** die Indexgröße hinauf? Nein. Setzt das Hinzufügen von Feldern zu einer **Vorschlagsfunktion** die Indexgröße herauf? Ja.
 
 Indizes, die Filtern und Sortieren unterstützen, sind proportional größer als Indizes, die nur die Volltextsuche unterstützen. Der Grund ist, dass Filtern und Sortieren genaue Übereinstimmungen abfragen, sodass Dokumente als Ganzes gespeichert werden. Im Gegensatz dazu verwenden durchsuchbare Felder, die Volltext- als auch Fuzzysuche unterstützen, invertierte Indizes, die mit tokenisierten Begriffen aufgefüllt werden, die weniger Speicherplatz als ganze Dokumente benötigen.
 
@@ -203,6 +218,10 @@ Die folgenden Optionen können für CORS festgelegt werden:
   Wenn Sie den Zugriff auf alle Ursprünge zulassen möchten, beziehen Sie `*` als ein einzelnes Element in das Array **allowedOrigins** ein. *Dies ist keine empfohlene Vorgehensweise für Produktionssuchdienste*, ist für Entwicklung und Debugging jedoch oft nützlich.
 
 + **maxAgeInSeconds** (optional): Von Browsern wird dieser Wert verwendet, um die Dauer (in Sekunden) des Zwischenspeicherns von CORS-Preflight-Antworten zu ermitteln. Dies muss eine positive ganze Zahl sein. Mit dem Wert steigt auch die Leistung, aber es dauert auch länger, bis CORS-Richtlinienänderungen in Kraft treten. Wenn diese Einstellung nicht festgelegt ist, gilt die Standarddauer von 5 Minuten.
+
+## <a name="encryption-key"></a>Verschlüsselungsschlüssel
+
+Alle Azure Search-Indizes werden standardmäßig mit von Microsoft verwalteten Schlüsseln verschlüsselt. Die Indizes können jedoch auch so konfiguriert werden, dass sie mit **von Kunden verwalteten Schlüsseln** in Key Vault verschlüsselt werden. Weitere Informationen finden Sie unter [Verwalten von Verschlüsselungsschlüsseln in Azure Search](search-security-manage-encryption-keys.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

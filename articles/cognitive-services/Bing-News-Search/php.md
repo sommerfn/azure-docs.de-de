@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Durchführen einer Neuigkeitensuche mit PHP – REST-API der Bing-News-Suche'
-titlesuffix: Azure Cognitive Services
+title: 'Schnellstart: Durchführen einer Neuigkeitensuche mit PHP und der REST-API der Bing-News-Suche'
+titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung zum Senden einer Anforderung an die REST-API der Bing-News-Suche mit PHP, und Sie erhalten eine JSON-Antwort.
 services: cognitive-services
 author: aahill
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 1/10/2019
+ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e77c7ea6036e92c33c975f8180053a8880db55a0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b905993c88bd4425215dd83962980d8e46a7b943
+ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090524"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68423708"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit PHP und der REST-API der Bing-News-Suche
 
@@ -34,7 +34,7 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Die [Bing-News-Suche-API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) gibt Newsergebnisse der Bing-Suche-Engine zurück.
+Die [Bing-News-Suche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) gibt Newsergebnisse der Bing-Suche-Engine zurück.
 
 1. Achten Sie darauf, dass die Unterstützung des sicheren Hypertext Transfer-Protokolls (HTTP) in Ihrer `php.ini`-Datei aktiviert ist wie im Codekommentar beschrieben.
 2. Erstellen Sie in Ihrer bevorzugten IDE ein neues PHP-Projekt.

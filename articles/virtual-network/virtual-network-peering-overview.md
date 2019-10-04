@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: e6c5a9aa3e4e173ecfc79f4072d091493677afed
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 100bbb6e0ed8e2ea5b35e30e7759a3b11c169b60
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489980"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67077621"
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
@@ -63,8 +63,7 @@ Wenn virtuelle Netzwerke mittels Peering verknüpft sind, können Sie auch das G
 
 ![VNET-Peering – Transit](./media/virtual-networks-peering-overview/figure04.png)
 
-Gatewaytransit wird für sowohl für VNet-Peering als auch für globales VNet-Peering (Vorschau) unterstützt. In der Vorschauversion können Sie Remotegateways verwenden oder Gatewaytransit in virtuellen Netzwerken mit globalem Peering zulassen. Die Vorschauversion ist in allen Azure-Regionen, China-Cloud-Regionen und Government-Cloud-Regionen verfügbar. Es sind keine Whitelists erforderlich. Sie können in der Vorschau über CLI, PowerShell, Vorlagen oder API testen. Das Portal wird in der Vorschau nicht unterstützt.
-Der Gatewaytransit zwischen virtuellen Netzwerken, die mittels verschiedener Bereitstellungsmodelle (Ressourcen-Manager und klassisch) erstellt wurden, wird nur unterstützt, wenn sich das Gateway im virtuellen Netzwerk befindet (Ressourcen-Manager). Weitere Informationen zur Verwendung eines Gateways für den Transit finden Sie unter [Konfigurieren eines VPN-Gateways für den Transit in einem Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Übertragungen über das Gateway werden für sowohl für VNET-Peering als auch für globales VNET-Peering unterstützt. Der Gatewaytransit zwischen virtuellen Netzwerken, die mittels verschiedener Bereitstellungsmodelle (Ressourcen-Manager und klassisch) erstellt wurden, wird nur unterstützt, wenn sich das Gateway im virtuellen Netzwerk befindet (Ressourcen-Manager). Weitere Informationen zur Verwendung eines Gateways für den Transit finden Sie unter [Konfigurieren eines VPN-Gateways für den Transit in einem Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Wenn die virtuellen Netzwerke, die gemeinsam eine einzelne ExpressRoute-Verbindung nutzen, mittels Peering verknüpft sind, fließt der Datenverkehr zwischen ihnen über die Peeringbeziehung (also über das Azure-Backbonenetzwerk). Sie können in den einzelnen virtuellen Netzwerken weiterhin lokale Gateways verwenden, um eine Verbindung mit der lokalen Umgebung herzustellen. Alternativ können Sie ein gemeinsam genutztes Gateway verwenden und den Transit für lokale Konnektivität konfigurieren.
 
@@ -79,7 +78,7 @@ Sie können auch die [Anleitung zum Beheben von Problemen beim Peering in virtue
 ## <a name="requirements-and-constraints"></a>Anforderungen und Einschränkungen
 
 Die folgenden Einschränkungen gelten nur, wenn virtuelle Netzwerke über globales Peering verbunden werden:
-- Ressourcen in einem virtuellen Netzwerk können nicht mit der Front-End-IP-Adresse eines Load Balancers Standard in einem per globalem Peering verbundenen virtuellen Netzwerk kommunizieren. Unterstützung für Load Balancer Standard besteht nur innerhalb der gleichen Region. Unterstützung für Load Balancer Standard besteht für globales VNet-Peering.
+- Ressourcen in einem virtuellen Netzwerk können nicht mit der Front-End-IP-Adresse eines Load Balancers Standard in einem per globalem Peering verbundenen virtuellen Netzwerk kommunizieren. Unterstützung für Load Balancer Standard besteht nur innerhalb der gleichen Region. Unterstützung für Load Balancer Standard besteht für beide – VNet-Peering und globales VNet-Peering. Dienste, die einen Load Balancer im Tarif „Basic“ verwenden, die nicht über das globale VNET-Peering funktionieren, sind [hier](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) dokumentiert.
 
 Informationen zu Anforderungen und Einschränkungen finden Sie unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#requirements-and-constraints). Informationen zu den Grenzwerten für die Anzahl von Peerings, die für ein virtuelles Netzwerk erstellt werden können, finden Sie unter [Netzwerkgrenzwerte – Azure Resource Manager](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 
 
@@ -91,7 +90,7 @@ Informationen zu erforderlichen Berechtigungen für die Erstellung eines Peering
 
 Für ein- und ausgehenden Datenverkehr, der eine VNET-Peeringverbindung verwendet, fällt eine Gebühr an. Weitere Informationen zu den Preisen für VNET-Peering und globales VNET-Peering finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Gatewaytransit ist eine Peeringeigenschaft, die es einem virtuellen Netzwerk ermöglicht, ein VPN-Gateway im virtuellen Netzwerk mit Peeringbeziehung für standortübergreifende oder VNET-zu-VNET-Konnektivität zu nutzen. In diesem Szenario fallen für Datenverkehr über ein Remotegateway [Gebühren für das VPN-Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/), aber keine [Gebühren für VNET-Peering](https://azure.microsoft.com/pricing/details/virtual-network) an. Beispiel: Wenn VNetA ein VPN-Gateway für lokale Verbindungen nutzt und VNetB über Peering mit VNetA verbunden ist und die entsprechenden Eigenschaften konfiguriert sind, wird nur ausgehender Datenverkehr von VNetB an lokale Ressourcen gemäß den Preisen für VPN-Gateways in Rechnung gestellt. Es fallen keine Gebühren für VNET-Peering an. Lesen Sie mehr über das [Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Gatewaytransit ist eine Peeringeigenschaft, die einem virtuellen Netzwerk ermöglicht, ein VPN/ExpressRoute-Gateway im virtuellen Netzwerk mit Peeringbeziehung für standortübergreifende oder VNET-zu-VNET-Konnektivität zu nutzen. In diesem Szenario fallen für Datenverkehr über ein Remotegateway [Gebühren für das VPN-Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/) oder ExpressRoute-Gatewaygebühren, aber keine [Gebühren für VNET-Peering](https://azure.microsoft.com/pricing/details/virtual-network) an. Beispiel: Wenn VNETA ein VPN-Gateway für lokale Verbindungen nutzt und VNETB über Peering mit VNETA verbunden ist und die entsprechenden Eigenschaften konfiguriert sind, wird nur ausgehender Datenverkehr von VNETB an lokale Ressourcen gemäß den Preisen für VPN-Gateways oder ExpressRoute in Rechnung gestellt. Es fallen keine Gebühren für VNET-Peering an. Lesen Sie mehr über das [Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -99,9 +98,9 @@ Gatewaytransit ist eine Peeringeigenschaft, die es einem virtuellen Netzwerk erm
 
     |Azure-Bereitstellungsmodell             | Abonnement  |
     |---------                          |---------|
-    |Beide mit Resource Manager              |[identisch](tutorial-connect-virtual-networks-portal.md)|
+    |Beide mit Resource Manager              |[Gleich](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[Unterschiedlich](create-peering-different-subscriptions.md)|
-    |Einmal Resource Manager, einmal klassisch  |[identisch](create-peering-different-deployment-models.md)|
+    |Einmal Resource Manager, einmal klassisch  |[Gleich](create-peering-different-deployment-models.md)|
     |                                   |[Unterschiedlich](create-peering-different-deployment-models-subscriptions.md)|
 
 * Informieren Sie sich über das Erstellen einer [Hub-Spoke-Netzwerktopologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).

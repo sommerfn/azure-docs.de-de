@@ -4,23 +4,22 @@ description: Ein Notfallwiederherstellungsszenario für eine Oracle Database 12c
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 9f525e68502e32a3f9c7e7cebe6d45627f9077c3
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: f6f678f91e74ea9b0b68127c1786fee745508b99
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495026"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101464"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in einer Azure-Umgebung
 
@@ -78,7 +77,7 @@ Hier ein Überblick über den Aufbau von Azure:
 
 ![Screenshot der DR-Topologieseite](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
-### <a name="approach-2-site-to-site-vpn"></a>Ansatz 2: Site-to-Site-VPN
+### <a name="approach-2-site-to-site-vpn"></a>Ansatz 2: Standort-zu-Standort-VPN-Verbindung
 Das Site-to-Site-VPN ist ein besserer Ansatz. Weitere Informationen zum Einrichten eines VPN finden Sie unter [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung per CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli).
 
 #### <a name="topology"></a>Topologie
@@ -106,5 +105,5 @@ Hier ein Überblick über den Aufbau von Azure:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Erstellen eines hoch verfügbaren virtuellen Computers](../../linux/create-cli-complete.md)
-- [Erkunden der Azure-CLI-Beispiele für die Bereitstellung virtueller Computer](../../linux/cli-samples.md)
+- [Tutorial: Erstellen von hoch verfügbaren virtuellen Computern](../../linux/create-cli-complete.md)
+- [Erkunden der Azure CLI-Beispiele für die Bereitstellung virtueller Computer](../../linux/cli-samples.md)

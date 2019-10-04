@@ -7,16 +7,18 @@ ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 729e9fe749212942c6dc18fc7d6301934e7dd184
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d04f46dbc60a7242e44d76915e15281cc6248d20
+ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788237"
+ms.lasthandoff: 07/10/2019
+ms.locfileid: "67786533"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 
 Azure Resource Graph ist für das Arbeiten mit Informationen zu Ressourcen in Ihrer Azure-Umgebung und das Abrufen von diesen konzipiert. Mit Resource Graph erhalten Sie diese Daten schnell, selbst beim Abfragen von Tausenden von Datensätzen. Resource Graph umfasst mehrere Optionen für das Arbeiten mit diesen großen Datasets.
+
+Anleitungen zum Arbeiten mit sehr häufigen Abfragen finden Sie im [Leitfaden für gedrosselte Anforderungen](./guidance-for-throttled-requests.md).
 
 ## <a name="data-set-result-size"></a>Ergebnisgröße von Datasets
 
@@ -67,13 +69,23 @@ Wenn es erforderlich ist, ein Resultset in kleinere Datensatzgruppen zu untertei
 
 Wenn **resultTruncated** auf **true** festgelegt ist, wird in der Antwort die Eigenschaft **$skipToken** festgelegt. Dieser Wert wird mit den gleichen Werten für die Abfrage und das Abonnement verwendet, um die nächste Datensatzgruppe abzurufen, die mit der Abfrage übereinstimmt.
 
-> [!IMPORTANT]
-> Die Abfrage muss das Feld **id** **projizieren**, damit die Paginierung funktioniert. Wenn das Feld in der Abfrage nicht vorhanden ist, enthält die Antwort der REST-API nicht die Eigenschaft **$skipToken**.
+Die folgenden Beispiele zeigen, wie Sie mit Azure CLI und Azure PowerShell die ersten 3000 Datensätze **überspringen** und die **ersten** 1000 Datensätze nach den übersprungenen Datensätzen zurückgeben:
 
-Ein Beispiel finden Sie unter [Next page query](/rest/api/azureresourcegraph/resources/resources#next_page_query) (Abfrage der nächsten Seite) in der REST-API-Dokumentation.
+```azurecli-interactive
+az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 3000
+```
+
+> [!IMPORTANT]
+> Die Abfrage muss das Feld **id** **projizieren**, damit die Paginierung funktioniert. Wenn das Feld in der Abfrage nicht vorhanden ist, enthält die Antwort nicht die Eigenschaft **$skipToken**.
+
+Ein Beispiel finden Sie unter [Next page query](/rest/api/azureresourcegraph/resources/resources#next-page-query) (Abfrage der nächsten Seite) in der REST-API-Dokumentation.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zur verwendeten Sprache finden Sie unter [Einfache Abfragen](../samples/starter.md).
 - Informationen zur anspruchsvolleren Nutzung finden Sie unter [Erweiterte Abfragen](../samples/advanced.md).
-- Lernen Sie, [Ressourcen zu untersuchen](explore-resources.md)
+- Erfahren Sie, wie Sie [Ressourcen untersuchen](explore-resources.md).

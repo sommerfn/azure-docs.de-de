@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 64e85527-d5c8-40d9-bbe2-13045d25fc68
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: bddc83d55c8909412f7f935a4324a6f316a82cd7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a06ea59af0776fe3decb0b56a3ef886f08b2dfda
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238164"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100709"
 ---
-# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatisches Konfigurieren einer AlwaysOn-Verfügbarkeitsgruppe in Azure Virtual Machines: Resource Manager
+# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatisches Konfigurieren von Always On-Verfügbarkeitsgruppen in Azure Virtual Machines: Ressourcen-Manager
 
 Dieses Tutorial zeigt Ihnen, wie Sie eine SQL Server-Verfügbarkeitsgruppe erstellen, die Azure Resource Manager-VMs nutzt. Das Tutorial verwendet Azure-Blätter zum Konfigurieren einer Vorlage. Während Sie dieses Tutorial absolvieren, können Sie die Standardeinstellungen überprüfen, erforderliche Einstellungen eingeben und die Blätter im Portal aktualisieren.
 
@@ -44,10 +43,10 @@ Bevor Sie dieses Tutorial beginnen, prüfen Sie Folgendes:
 
 * Sie besitzen bereits ein Azure-Abonnement. Falls Sie noch keines besitzen, können Sie sich für ein [Testkonto registrieren](https://azure.microsoft.com/pricing/free-trial/).
 * Sie wissen bereits, wie ein virtueller SQL Server-Computer mithilfe der GUI aus dem Katalog virtueller Computer bereitgestellt wird. Weitere Informationen finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](virtual-machines-windows-portal-sql-server-provision.md).
-* Sie verfügen bereits über solide Kenntnisse über Verfügbarkeitsgruppen. Weitere Informationen finden Sie unter [AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
+* Sie verfügen bereits über solide Kenntnisse über Verfügbarkeitsgruppen. Weitere Informationen finden Sie unter [AlwaysOn-Verfügbarkeitsgruppen (SQL Server)](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server).
 
 > [!NOTE]
-> Wenn Sie an der Verwendung von Verfügbarkeitsgruppen mit SharePoint interessiert sind, finden Sie Informationen hierzu unter [Konfigurieren von SQL Server 2012 AlwaysOn-Verfügbarkeitsgruppen für SharePoint 2013](https://technet.microsoft.com/library/jj715261.aspx).
+> Wenn Sie an der Verwendung von Verfügbarkeitsgruppen mit SharePoint interessiert sind, finden Sie Informationen hierzu unter [Konfigurieren von SQL Server 2012 AlwaysOn-Verfügbarkeitsgruppen für SharePoint 2013](/SharePoint/administration/configure-an-alwayson-availability-group).
 >
 >
 

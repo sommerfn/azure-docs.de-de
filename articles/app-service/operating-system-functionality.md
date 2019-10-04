@@ -10,17 +10,16 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: b108814caaace83cd417dc8858e27ed01d54c39e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901784"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066764"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Betriebssystemfunktionen für Azure App Service
 In diesem Artikel werden allgemeine, grundlegende Betriebssystemfunktionen beschrieben, die für alle Windows-Apps zur Verfügung stehen, die in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) ausgeführt werden. Diese Funktionen umfassen Zugriff auf Dateien, Netzwerke und Registrierung sowie Diagnoseprotokolle und Ereignisse. 
@@ -61,11 +60,11 @@ Im Grunde ist App Service ein Dienst, der auf der Azure-PaaS-Infrastruktur (Plat
 - Ein Anwendungslaufwerk mit den CSPKG-Dateien des Azure-Pakets, das ausschließlich von App Service verwendet wird (und auf das Kunden keinen Zugriff haben)
 - Ein „Benutzer-Laufwerk“ (Laufwerk C:\), dessen Größe von der Größe des virtuellen Computer abhängt. 
 
-Die Überwachung der Datenträgerauslastung ist wichtig, wenn Ihre Anwendung wächst. Wenn das Datenträgerkontingent erreicht ist, kann sich das negativ auf Ihre Anwendung auswirken. Beispiel:  
+Die Überwachung der Datenträgerauslastung ist wichtig, wenn Ihre Anwendung wächst. Wenn das Datenträgerkontingent erreicht ist, kann sich das negativ auf Ihre Anwendung auswirken. Beispiel: 
 
 - Die App gibt möglicherweise eine Fehlermeldung zurück, dass nicht genug Speicherplatz auf dem Datenträger vorhanden ist.
 - Wenn Sie die Kudu-Konsole durchsuchen, werden Ihnen möglicherweise Datenträgerfehler angezeigt.
-- Die Bereitstellung über VSTS oder Visual Studio funktioniert möglicherweise mit `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)` nicht.
+- Die Bereitstellung über Azure DevOps oder Visual Studio funktioniert möglicherweise mit `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)` nicht.
 - Ihrer App wird möglicherweise langsam ausgeführt.
 
 <a id="NetworkDrives"></a>
@@ -96,7 +95,7 @@ Das Basisverzeichnis enthält den Inhalt einer App, und ein Anwendungscode kann 
 <a id="NetworkAccess"></a>
 
 ## <a name="network-access"></a>Netzwerkzugriff
-Anwendungscode kann TCP/IP- und UDP-basierte Protokolle verwenden, um ausgehende Verbindungen zu zugänglichen Endpunkten im Internet herzustellen, die externe Dienste bereitstellen. Apps können die gleichen Protokolle verwenden, um eine Verbindung mit Diensten innerhalb von Azure, z. B. HTTPS-Verbindungen zu SQL Database, herzustellen.
+Anwendungscode kann TCP/IP- und UDP-basierte Protokolle verwenden, um ausgehende Verbindungen zu zugänglichen Endpunkten im Internet herzustellen, die externe Dienste bereitstellen. Apps können die gleichen Protokolle für eine Verbindung mit Diensten innerhalb von Azure verwenden, z.B. durch Herstellen von HTTPS-Verbindungen mit SQL-Datenbank.
 
 Es ist außerdem eine eingeschränkte Funktion für Apps zur Erstellung einer lokalen Loopbackverbindung vorhanden, deren lokaler Loopbacksocket von Apps überwachtwerden kann. Diese Funktion dient vor allem dazu, Apps zu ermöglichen, als Teil ihrer Funktionalität lokale Loopbacksockets zu überwachen. Jede App sieht eine „private“ Loopbackverbindung. Die App „A“ kann nicht an einem lokalen Loopbacksocket lauschen, der durch die App „B“ eingerichtet wurde.
 

@@ -1,26 +1,29 @@
 ---
 title: Visuelles Überwachen von Azure Data Factory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure Data Factory visuell überwachen.
+description: Erfahren Sie, wie Sie Azure Data Factorys visuell überwachen.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: shlo
-ms.openlocfilehash: df684860cd3d1b6a002a300682ca4c6398461ba6
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 99ae0139d7b12c0bfb87030d2b749b12834a4f96
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54409961"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141097"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Visuelles Überwachen von Azure Data Factory
-Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können.
+Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst. Mit diesem Dienst können Sie in der Cloud datengesteuerte Workflows zur Orchestrierung und Automatisierung der Datenverschiebung und Datentransformation erstellen. Durch Verwendung von Azure Data Factory haben Sie folgende Möglichkeiten:
+
+- Erstellen und Planen von datengesteuerten Workflows (so genannte Pipelines), die Daten aus unterschiedlichen Datenspeichern erfassen können
+- Verarbeiten oder Transformieren der Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning
+- Veröffentlichen von Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse für die Nutzung durch BI-Anwendungen (Business Intelligence)
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie Data Factory-Pipelines visuell überwachen, ohne eine einzige zu Codezeile schreiben.
 
@@ -28,97 +31,97 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="monitor-data-factory-pipelines"></a>Überwachen von Data Factory-Pipelines
 
-Überwachen Sie die Pipeline und Aktivitätsausführungen in einer einfachen Benutzeroberfläche mit Listenansicht. Alle Ausführungen werden in der Zeitzone des lokalen Browsers angezeigt. Sie können die Zeitzone ändern. Dadurch werden alle Datums- und Zeitfelder auf die ausgewählte Zeitzone ausgerichtet.  
+Überwachen Sie Pipeline- und Aktivitätsausführungen in einer einfachen Benutzeroberfläche mit Listenansicht. Alle Ausführungen werden in der lokalen Zeitzone des Browsers angezeigt. Wenn Sie die Zeitzone ändern, werden alle Datums- und Zeitfelder auf die ausgewählte Zeitzone ausgerichtet.  
 
-1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
+1. Starten Sie Microsoft Edge oder Google Chrome. Derzeit wird die Data Factory-Benutzeroberfläche nur in diesen beiden Webbrowsern unterstützt.
 2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-3. Navigieren Sie zum erstellten Data Factory-Blatt im Azure-Portal, und klicken Sie auf die Kachel „Überwachung und Verwaltung“, um die visuelle Überwachung von Data Factory zu starten.
+3. Wechseln Sie zum Blatt für die erstellte Data Factory im Azure-Portal. Wählen Sie die Kachel **Überwachung und Verwaltung** aus, um die visuelle Überwachung von Data Factory zu starten.
 
 ## <a name="monitor-pipeline-runs"></a>Überwachen der Pipelineausführungen
-Die Listenansicht zeigt jede Pipelineausführung für Ihre Data Factory V2-Pipelines an. Enthaltene Spalten:
+In der Listenansicht wird jede Pipelineausführung für Ihre Data Factory-Pipelines angezeigt. Sie enthält folgende Spalten:
 
 | **Spaltenname** | **Beschreibung** |
 | --- | --- |
-| Pipeline Name | Name der Pipeline. |
-| Aktionen | Einzelne Aktionen sind verfügbar, um Aktivitätsausführungen anzuzeigen. |
-| Run Start | Startdatum und -uhrzeit der Pipelineausführung (MM-TT-JJJJ, hh:mm:ss) |
+| Pipeline Name | Name der Pipeline |
+| Aktionen | Verfügbare einzelne Aktionen zum Anzeigen von Aktivitätsausführungen |
+| Run Start | Startdatum und -uhrzeit der Pipelineausführung (MM/TT/JJJJ, HH:MM:SS AM/PM) |
 | Duration | Dauer der Ausführung (hh:mm:ss) |
-| Triggered By | Manueller Trigger, Zeitplantrigger |
-| Status | Fehlerhaft, Erfolgreich, In Bearbeitung |
-| Parameter | Parameter der Pipelineausführung (Name-Wert-Paare) |
+| Triggered By | Manueller Trigger oder geplanter Trigger |
+| Status | **Fehlerhaft**, **Erfolgreich** oder **In Bearbeitung** |
+| Parameter | Parameter für die Pipelineausführung (Name-Wert-Paare) |
 | Error | Fehler bei der Pipelineausführung (falls vorhanden) |
 | Run ID | ID der Pipelineausführung |
 
-![Überwachen der Pipelineausführungen](media/monitor-visually/pipeline-runs.png)
+![Listenansicht zum Überwachen von Pipelineausführungen](media/monitor-visually/pipeline-runs.png)
 
 ## <a name="monitor-activity-runs"></a>Überwachung der Aktivitätsausführungen
-Die Listenansicht zeigt die Aktivitätsausführungen an, die der jeweiligen Pipelineausführung entsprechen. Klicken Sie auf das Symbol **Aktivitätsausführungen** unter der Spalte **Aktionen**, um die Aktivitätsausführungen für jede Pipelineausführung anzuzeigen. Enthaltene Spalten:
+In der Listenansicht werden die Aktivitätsausführungen angezeigt, die den einzelnen Pipelineausführungen entsprechen. Wählen Sie das Symbol **Aktivitätsausführungen** unter der Spalte **Aktionen** aus, um die Aktivitätsausführungen für jede Pipelineausführung anzuzeigen. Die Listenansicht enthält folgende Spalten:
 
 | **Spaltenname** | **Beschreibung** |
 | --- | --- |
 | Activity Name | Name der Aktivität innerhalb der Pipeline |
-| Activity Type | Art der Aktivität, z.B. Kopieren, HDInsightSpark, HDInsightSpark usw. |
-| Run Start | Startdatum und -uhrzeit der Aktivitätsausführung (MM-TT-JJJJ, hh:mm:ss) |
+| Activity Type | Art der Aktivität, z. B. **Kopieren**, **HDInsightSpark** oder **HDInsightHive** |
+| Run Start | Startdatum und -uhrzeit der Aktivitätsausführung (MM/TT/JJJJ, HH:MM:SS AM/PM) |
 | Duration | Dauer der Ausführung (hh:mm:ss) |
-| Status | Fehlerhaft, Erfolgreich, In Bearbeitung |
-| Eingabe | Ein JSON-Array, das die Aktivitätseingaben beschreibt. |
-| Output | Ein JSON-Array, das die Aktivitätsausgaben beschreibt. |
+| Status | **Fehlerhaft**, **Erfolgreich** oder **In Bearbeitung** |
+| Eingabe | JSON-Array, das die Aktivitätseingaben beschreibt |
+| Output | JSON-Array, das die Aktivitätsausgaben beschreibt |
 | Error | Fehler bei der Aktivitätsausführung (falls vorhanden) |
 
-![Überwachung der Aktivitätsausführungen](media/monitor-visually/activity-runs.png)
+![Listenansicht zum Überwachen von Aktivitätsausführungen](media/monitor-visually/activity-runs.png)
 
 > [!IMPORTANT]
-> Sie müssen im oberen Bereich auf das Symbol **Aktualisieren** klicken, um die Liste der Pipelines und Aktivitätsausführungen zu aktualisieren. Ein automatisches Update wird derzeit nicht unterstützt.
+> Sie müssen die Schaltfläche **Aktualisieren** im oberen Bereich auswählen, um die Liste der Pipeline- und Aktivitätsausführungen zu aktualisieren. Ein automatisches Update wird derzeit nicht unterstützt.
 
-![Aktualisieren](media/monitor-visually/refresh.png)
+![Schaltfläche „Aktualisieren“](media/monitor-visually/refresh.png)
 
 ## <a name="select-a-data-factory-to-monitor"></a>Auswählen einer zu überwachenden Data Factory
-Zeigen Sie auf das Symbol **Data Factory** im oberen linken Bereich. Klicken Sie auf das Pfeilsymbol, um eine Liste der Azure-Abonnements und Data Factorys anzuzeigen, die Sie überwachen können.
+Zeigen Sie auf das Symbol **Data Factory** im linken oberen Bereich. Wählen Sie das Pfeilsymbol aus, um die Liste der Azure-Abonnements und Data Factorys anzuzeigen, die Sie überwachen können.
 
-![Data Factory auswählen](media/monitor-visually/select-datafactory.png)
+![Auswählen der Data Factory](media/monitor-visually/select-datafactory.png)
 
 ## <a name="configure-the-list-view"></a>Konfigurieren der Listenansicht
 
 ### <a name="apply-rich-ordering-and-filtering"></a>Umfangreiches Sortieren und Filtern
 
-Sortieren Sie Pipelineausführungen auf- oder absteigend nach Start der Ausführung, und filtern Sie Pipelineausführungen nach folgenden Spalten:
+Sie können die Pipelineausführungen nach der Startzeit in auf- oder absteigender Reihenfolge sortieren. Sie können die Pipelineausführungen nach den folgenden Spalten filtern:
 
 | **Spaltenname** | **Beschreibung** |
 | --- | --- |
-| Pipeline Name | Name der Pipeline. Die Optionen enthalten Schnellfilter für „Letzte 24 Stunden“, „Letzte Woche“, „Letzte 30 Tage“ oder einen benutzerdefinierten Zeitraum. |
+| Pipeline Name | Name der Pipeline. Die Optionen umfassen Schnellfilter für **Letzte 24 Stunden**, **Letzte Woche** und **Letzte 30 Tage**. Sie können auch ein benutzerdefiniertes Datum und eine Uhrzeit auswählen. |
 | Run Start | Startdatum und -uhrzeit der Pipelineausführung |
-| Run Status | Filtern von Ausführungen nach Status, z.B. Erfolgreich, Fehlgeschlagen, In Bearbeitung |
+| Run Status | Filtern der Ausführungen nach Status: **Erfolgreich**, **Fehlerhaft** oder **In Bearbeitung** |
 
-![Filter](media/monitor-visually/filter.png)
+![Optionen zum Filtern](media/monitor-visually/filter.png)
 
 ### <a name="add-or-remove-columns"></a>Hinzufügen oder Entfernen von Spalten
 Klicken Sie mit der rechten Maustaste auf den Header der Listenansicht, und wählen Sie die Spalten aus, die in der Listenansicht angezeigt werden sollen.
 
-![Spalten](media/monitor-visually/columns.png)
+![Optionen für Spalten](media/monitor-visually/columns.png)
 
 ### <a name="adjust-column-widths"></a>Anpassen der Spaltenbreite
 Erhöhen oder verringern Sie die Spaltenbreiten in der Listenansicht, indem Sie mit der Maus auf die Spaltenüberschrift zeigen.
 
 ## <a name="promote-user-properties-to-monitor"></a>Heraufstufen von Benutzereigenschaften für die Überwachung
 
-Sie können jede Pipelineaktivitätseigenschaft als Benutzereigenschaft heraufstufen, sodass sie zu einer Entität wird, die Sie überwachen können. Sie können z.B. die Eigenschaften **Quelle** und **Ziel** der Kopieraktivität in der Pipeline als Benutzereigenschaften heraufstufen. Sie können auch **Automatisch generieren** zum Generieren der Benutzereigenschaften **Quelle** und **Ziel** für eine Kopieraktivität auswählen.
+Sie können jede Pipelineaktivitätseigenschaft als Benutzereigenschaft heraufstufen, sodass sie zu einer Entität wird, die Sie überwachen können. Sie können z. B. die Eigenschaften **Quelle** und **Ziel** der Kopieraktivität in der Pipeline als Benutzereigenschaften höher stufen. Sie können auch **Automatisch generieren** auswählen, um die Benutzereigenschaften **Quelle** und **Ziel** für eine Kopieraktivität zu generieren.
 
 ![Erstellen von Benutzereigenschaften](media/monitor-visually/monitor-user-properties-image1.png)
 
 > [!NOTE]
-> Sie können nur bis zu 5 Pipelineaktivitätseigenschaften zu Benutzereigenschaften heraufstufen.
+> Sie können nur bis zu fünf Pipelineaktivitätseigenschaften als Benutzereigenschaften höher stufen.
 
-Nachdem Sie die Benutzereigenschaften erstellt haben, können Sie sie in den Überwachungslistenansichten überwachen. Ist die Quelle für die Kopieraktivität ein Tabellenname, können Sie den Namen der Quelltabelle als Spalte in der Listenansicht der Aktivitätsausführungen überwachen.
+Nachdem Sie die Benutzereigenschaften erstellt haben, können Sie sie in den Überwachungslistenansichten überwachen. Wenn ein Tabellenname als Quelle für die Kopieraktivität dient, können Sie den Namen der Quelltabelle als Spalte in der Listenansicht für Aktivitätsausführungen überwachen.
 
 ![Aktivitätsausführungenliste ohne Benutzereigenschaften](media/monitor-visually/monitor-user-properties-image2.png)
 
-![Hinzufügen von Spalten für Benutzereigenschaften zur Aktivitätsausführungenliste](media/monitor-visually/monitor-user-properties-image3.png)
+![Hinzufügen von Spalten für Benutzereigenschaften zur Liste der Aktivitätsausführungen](media/monitor-visually/monitor-user-properties-image3.png)
 
 ![Aktivitätsausführungenliste mit Spalten für Benutzereigenschaften](media/monitor-visually/monitor-user-properties-image4.png)
 
 ## <a name="rerun-activities-inside-a-pipeline"></a>Erneutes Ausführen von Aktivitäten innerhalb einer Pipeline
 
-Aktivitäten innerhalb einer Pipeline können nun erneut ausgeführt werden. Klicken Sie auf **View Activity Runs** (Aktivitätsausführungen anzeigen), und wählen Sie die Aktivität in Ihrer Pipeline aus, ab der die Pipeline erneut ausgeführt werden soll.
+Aktivitäten innerhalb einer Pipeline können nun erneut ausgeführt werden. Wählen Sie **View Activity Runs** (Aktivitätsausführungen anzeigen) und dann die Aktivität in Ihrer Pipeline aus, ab der die Pipeline erneut ausgeführt werden soll.
 
 ![Anzeigen der Aktivitätsausführungen](media/monitor-visually/rerun-activities-image1.png)
 
@@ -134,21 +137,33 @@ Sie können aber auch den Verlauf für erneute Ausführungen für eine bestimmte
 
 ![Anzeigen des Verlaufs für eine Pipelineausführung](media/monitor-visually/rerun-history-image2.png)
 
+## <a name="gantt-views"></a>Gantt-Ansichten
+
+Mit Gantt-Ansichten können Sie schnell Ihre Pipelines und Aktivitätsausführungen anzeigen. Die Gantt-Ansicht kann pro Pipeline oder nach Gruppen über von Ihnen erstellte Anmerkungen und Tags für Ihre Pipelines angezeigt werden.
+
+![Beispiel für ein Gantt-Diagramm](media/monitor-visually/gantt1.png)
+
+![Gantt-Diagrammanmerkungen](media/monitor-visually/gantt2.png)
+
+Die Länge des Balkens informiert über die Dauer der Pipeline. Sie können auch den Balken auswählen, um weitere Details anzuzeigen.
+
+![Gantt-Diagramm zur Dauer](media/monitor-visually/gantt3.png)
+
 ## <a name="guided-tours"></a>Führungen
-Klicken Sie auf das Symbol „Informationen“ im unteren linken Bereich und dann auf „Führungen“, um eine ausführliche Anleitung zum Überwachen Ihrer Pipeline und Aktivitätsausführungen zu erhalten.
+Wählen Sie links unten das **Informationssymbol** aus. Wählen Sie dann **Guided Tours** (Führungen) aus, um eine ausführliche Anleitung zum Überwachen der Pipeline- und Aktivitätsausführungen zu erhalten.
 
 ![Führungen](media/monitor-visually/guided-tours.png)
 
 ## <a name="feedback"></a>Feedback
-Klicken Sie auf das Symbol „Feedback“, um uns Ihr Feedback zu den verschiedenen Features oder zu möglichen Problemen zu übermitteln.
+Wählen Sie das Symbol **Feedback** aus, um uns Ihr Feedback zu den verschiedenen Funktionen oder zu möglichen Problemen zu übermitteln.
 
 ![Feedback](media/monitor-visually/feedback.png)
 
 ## <a name="alerts"></a>Alerts
 
-Sie können Warnungen auf der Grundlage unterstützter Metriken in Data Factory auslösen. Wählen Sie auf der Überwachungsseite von Data Factory **Überwachen > Warnungen und Metriken** aus, um zu beginnen.
+Sie können Warnungen auf der Grundlage unterstützter Metriken in Data Factory auslösen. Wählen Sie dazu auf der Überwachungsseite von Data Factory die Option **Überwachen** > **Warnungen und Metriken** aus.
 
-![](media/monitor-visually/alerts01.png)
+![Data Factory-Überwachungsseite](media/monitor-visually/alerts01.png)
 
 Das folgende Video enthält eine siebenminütige Einführung und Demonstration dieses Features:
 
@@ -156,34 +171,34 @@ Das folgende Video enthält eine siebenminütige Einführung und Demonstration d
 
 ### <a name="create-alerts"></a>Erstellen von Warnungen
 
-1.  Klicken Sie auf **Neue Warnungsregel** , um eine neue Warnung zu erstellen.
+1.  Wählen Sie **Neue Warnungsregel** aus, um eine neue Warnung zu erstellen.
 
-    ![](media/monitor-visually/alerts02.png)
+    ![Schaltfläche „Neue Warnungsregel“](media/monitor-visually/alerts02.png)
 
-1.  Geben Sie den Regelnamen an, und wählen Sie den **Schweregrad** für die Warnung ein.
+1.  Geben Sie den Namen der Warnungsregel an, und wählen Sie den Schweregrad der Warnung aus.
 
-    ![](media/monitor-visually/alerts03.png)
+    ![Felder für Regelname und Schweregrad](media/monitor-visually/alerts03.png)
 
 1.  Wählen Sie die Warnungskriterien aus.
 
-    ![](media/monitor-visually/alerts04.png)
+    ![Feld für Zielkriterien](media/monitor-visually/alerts04.png)
 
-    ![](media/monitor-visually/alerts05.png)
+    ![Liste der Kriterien](media/monitor-visually/alerts05.png)
 
-1.  Konfigurieren Sie die Warnungslogik. Sie können eine Warnung für die ausgewählte Metrik für alle Pipelines und entsprechenden Aktivitäten erstellen. Sie können auch einen bestimmten Aktivitätstyp, Aktivitätsnamen, Pipelinenamen oder einen Fehlertyp auswählen.
+1.  Konfigurieren Sie die Warnungslogik. Sie können eine Warnung für die ausgewählte Metrik für alle Pipelines und entsprechenden Aktivitäten erstellen. Sie können außerdem einen bestimmten Aktivitätstyp, Aktivitätsnamen, Pipelinenamen oder Fehlertyp auswählen.
 
-    ![](media/monitor-visually/alerts06.png)
+    ![Optionen zum Konfigurieren der Warnungslogik](media/monitor-visually/alerts06.png)
 
-1.  Konfigurieren Sie Benachrichtigungen des Typs **E-Mail/SMS/Push/Sprachanruf** für die Warnung. Erstellen Sie eine **Aktionsgruppe** für die Warnungsbenachrichtigungen, oder wählen Sie eine vorhandene Gruppe aus.
+1.  Konfigurieren Sie E-Mail-, SMS-, Push- und Sprachbenachrichtigungen für die Warnung. Erstellen Sie eine Aktionsgruppe für die Warnungsbenachrichtigungen, oder wählen Sie eine vorhandene Aktionsgruppe aus.
 
-    ![](media/monitor-visually/alerts07.png)
+    ![Optionen zum Konfigurieren von Benachrichtigungen](media/monitor-visually/alerts07.png)
 
-    ![](media/monitor-visually/alerts08.png)
+    ![Optionen zum Hinzufügen einer Benachrichtigung](media/monitor-visually/alerts08.png)
 
 1.  Erstellen Sie die Warnungsregel.
 
-    ![](media/monitor-visually/alerts09.png)
+    ![Optionen zum Erstellen einer Warnungsregel](media/monitor-visually/alerts09.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im Artikel [Programmgesteuertes Überwachen und Verwalten von Pipelines](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) erfahren Sie mehr zum Überwachen und Verwalten von Pipelines.
+Im Artikel [Programmgesteuertes Überwachen und Verwalten von Pipelines](https://docs.microsoft.com/azure/data-factory/monitor-programmatically) erfahren Sie mehr über das Überwachen und Verwalten von Pipelines.

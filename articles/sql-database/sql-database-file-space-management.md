@@ -1,6 +1,6 @@
 ---
-title: Speicherplatzverwaltung bei Azure SQL-Datenbank-Dateien von Singletons/Datenbanken in Pools | Microsoft-Dokumentation
-description: Diese Seite beschreibt, wie Sie in Azure SQL-Datenbank Dateispeicherplatz bei Singletons und Datenbanken in Pools verwalten. Sie enthält Codebeispiele, mit denen Sie ermitteln können, ob ein Singleton oder eine Datenbank in einem Pool verkleinert werden muss. Außerdem erhalten Sie hierin die entsprechenden Anweisungen zum Verkleinern der Datenbank.
+title: Speicherplatzverwaltung bei Azure SQL-Datenbank-Dateien von Einzel-/Pooldatenbanken | Microsoft-Dokumentation
+description: Diese Seite beschreibt, wie Sie in Azure SQL-Datenbank Dateispeicherplatz bei Einzel- und Pooldatenbanken verwalten. Sie enthält Codebeispiele, mit denen Sie ermitteln können, ob eine Einzel- oder Pooldatenbank verkleinert werden muss. Außerdem erhalten Sie hierin die entsprechenden Anweisungen zum Verkleinern der Datenbank.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -10,18 +10,17 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 043ceb6c46155ed169c080d08f37688b47e3e4b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c92ffb6aa6db9c77a859661115d54ff63ea02401
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881162"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568192"
 ---
-# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz für Singletons und in einem Pool zusammengefasste Datenbanken in Azure SQL-Datenbank
+# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz für Einzel- und Pooldatenbanken in Azure SQL-Datenbank
 
-Dieser Artikel beschreibt verschiedene Arten von Speicherplatz für Singletons und in Pools zusammengefassten Datenbanken in Azure SQL-Datenbank und Schritte für die direkte Verwaltung des für Datenbanken und Pools für elastische Datenbanken zugewiesenen Speicherplatzes.
+Dieser Artikel beschreibt verschiedene Arten von Speicherplatz für Einzel- und Pooldatenbanken in Azure SQL-Datenbank und Schritte für die direkte Verwaltung des für Datenbanken und Pools für elastische Datenbanken zugewiesenen Speicherplatzes.
 
 > [!NOTE]
 > Dieser Artikel gilt nicht für die Bereitstellungsoption „Verwaltete Instanz“ in Azure SQL-Datenbank.
@@ -32,13 +31,13 @@ Dieser Artikel beschreibt verschiedene Arten von Speicherplatz für Singletons u
 > [!IMPORTANT]
 > Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
 
-In Azure SQL-Datenbank gibt es für Singletons und in Pools zusammengefassten Datenbanken Workloadmuster, bei denen die Zuordnung von zugrunde liegenden Datendateien für Datenbanken größer als die Menge der verwendeten Datenseiten werden kann. Dieser Fall kann eintreten, wenn der Platzbedarf zunimmt und Daten daraufhin gelöscht werden. Der Grund dafür ist, dass der zugeordnete Dateispeicherplatz nicht automatisch wieder freigegeben wird, wenn Daten gelöscht werden.
+In Azure SQL-Datenbank gibt es für Einzel- und Pooldatenbanken Workloadmuster, bei denen die Zuordnung von zugrunde liegenden Datendateien für Datenbanken größer als die Menge der verwendeten Datenseiten werden kann. Dieser Fall kann eintreten, wenn der Platzbedarf zunimmt und Daten daraufhin gelöscht werden. Der Grund dafür ist, dass der zugeordnete Dateispeicherplatz nicht automatisch wieder freigegeben wird, wenn Daten gelöscht werden.
 
 Die Überwachung der Dateispeicherplatzverwendung und die Verkleinerung von Datendateien können in folgenden Szenarien erforderlich sein:
 
 - Ermöglichen von Datenwachstum in einem Pool für elastische Datenbanken, wenn der den Datenbanken zugeordnete Dateispeicherplatz die maximale Poolgröße erreicht
 - Ermöglichen der Verringerung der maximalen Größe einer einzelnen Datenbank oder eines Pools für elastische Datenbanken
-- Ermöglichen der Änderung einer einzelnen Datenbank oder eines Pools für elastische Datenbanken, um einen anderen Diensttarif oder eine andere Leistungsstufe mit einer geringeren maximalen Größe zu verwenden
+- Ermöglichen der Änderung einer einzelnen Datenbank oder eines Pools für elastische Datenbanken, um eine andere Dienstebene oder Leistungsstufe mit einer geringeren maximalen Größe zu verwenden
 
 ### <a name="monitoring-file-space-usage"></a>Überwachen der Dateispeicherplatzverwendung
 
@@ -217,6 +216,9 @@ ORDER BY end_time DESC
 
 ## <a name="reclaim-unused-allocated-space"></a>Freigeben von ungenutztem zugewiesenem Speicherplatz
 
+> [!NOTE]
+> Dieser Befehl kann die Datenbankleistung beeinträchtigen, während er ausgeführt wird, und sollte daher nur zu Zeiten mit geringer Auslastung ausgeführt werden.
+
 ### <a name="dbcc-shrink"></a>DBCC-Verkleinerung
 
 Nachdem die Datenbanken für das Freigeben von ungenutztem zugeordnetem Speicherplatz ermittelt wurden, können Sie den Namen der Datenbank im folgenden Befehl ändern, um die Datendateien für die einzelnen Datenbanken zu verkleinern.
@@ -250,9 +252,9 @@ Nach dem Verkleinern von Datenbankdateien sind Indizes möglicherweise fragmenti
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zur maximalen Datenbankgröße finden Sie unter:
-  - [Limits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank](sql-database-vcore-resource-limits-single-databases.md)
-  - [Ressourcenlimits für Einzeldatenbanken, die das Kaufmodell auf DTU-Basis verwenden](sql-database-dtu-resource-limits-single-databases.md)
-  - [Limits des V-Kern-basierten Kaufmodells für Pools für elastische Datenbanken in Azure SQL-Datenbank](sql-database-vcore-resource-limits-elastic-pools.md)
-  - [Grenzwerte für Ressourcen für elastische Pools, die das Kaufmodell auf DTU-Basis verwenden](sql-database-dtu-resource-limits-elastic-pools.md)
+  - [Limits des vCore-basierten Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank](sql-database-vcore-resource-limits-single-databases.md)
+  - [Ressourcenlimits für Einzeldatenbanken, die DTU-basierte Kaufmodell verwenden](sql-database-dtu-resource-limits-single-databases.md)
+  - [Limits des vCore-basierten Kaufmodells für Pools für elastische Datenbanken in Azure SQL-Datenbank](sql-database-vcore-resource-limits-elastic-pools.md)
+  - [Grenzwerte für Ressourcen für Pools für elastische Datenbanken, die das DTU-basierte Kaufmodell verwenden](sql-database-dtu-resource-limits-elastic-pools.md)
 - Weitere Informationen zum `SHRINKDATABASE`-Befehl finden Sie unter [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
 - Weitere Informationen zum Fragmentieren und Neuerstellen von Indizes finden Sie unter [Neuorganisieren und Neuerstellen von Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).

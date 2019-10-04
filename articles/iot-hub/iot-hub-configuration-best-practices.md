@@ -3,16 +3,16 @@ title: Bewährte Methoden der Gerätekonfiguration für Azure IoT Hub | Microsof
 description: Enthält eine Beschreibung der bewährten Methoden zum bedarfsabhängigen Konfigurieren von IoT-Geräten
 author: chrisgre
 ms.author: chrisgre
-ms.date: 06/24/2018
+ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: c97395981ea3af90c7b0c590cb049fccc7392304
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 33e77d63b958df292ee9b4ac8ded41f3693cb6bc
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797191"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485813"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung
 
@@ -64,9 +64,11 @@ Hier sind die bewährten Methoden für IoT-Lösungsentwickler angegeben, die in 
 
 * **Organisieren von Geräten mithilfe von Gerätezwillingstags:** Die Lösung sollte es dem Operator ermöglichen, Qualitätsringe oder andere Gerätegruppen basierend auf verschiedenen Bereitstellungsstrategien, z. B. Canary, zu definieren. Die Geräteorganisation kann in Ihrer Lösung mit Gerätezwillingstags und [Abfragen](iot-hub-devguide-query-language.md) implementiert werden. Die Geräteorganisation ist erforderlich, damit Rollouts für Konfigurationen sicher und präzise durchgeführt werden können.
 
-* **Implementieren von [automatischen Gerätekonfigurationen](iot-hub-auto-device-config.md):** Bei automatischen Gerätekonfigurationen werden Konfigurationsänderungen für große Gruppen von IoT-Geräten über Gerätezwillinge bereitgestellt und überwacht. Automatische Gerätekonfigurationen werden über die **Zielbedingung** auf Gruppen von Gerätezwillingen ausgerichtet. Die Zielbedingung ist eine Abfrage für Gerätezwillingstags oder gemeldete Eigenschaften. Der **Zielinhalt** umfasst eine Gruppe von gewünschten Eigenschaften, die auf den jeweiligen Gerätezwillingen festgelegt werden. Der Zielinhalt sollte an der Gerätezwillingsstruktur ausgerichtet sein, die vom IoT-Hardwarehersteller/-integrator definiert wird.
+* **Implementieren von [automatischen Gerätekonfigurationen](iot-hub-auto-device-config.md):** Bei automatischen Gerätekonfigurationen werden Konfigurationsänderungen für große Gruppen von IoT-Geräten über Gerätezwillinge bereitgestellt und überwacht.
 
-   Die **Metriken** sind Abfragen der gemeldeten Eigenschaften von Gerätezwillingen und sollten ebenfalls an der vom IoT-Hardwarehersteller/-integrator definierten Gerätezwillingsstruktur ausgerichtet sein. Automatische Gerätekonfigurationen haben außerdem den Vorteil, dass IoT Hub Gerätezwillingsvorgänge immer mit einer Rate durchführt, die niemals die [Drosselungsgrenzwerte](iot-hub-devguide-quotas-throttling.md) für Lesevorgänge und Updates von Gerätezwillingen überschreitet.
+   Automatische Gerätekonfigurationen werden über die **Zielbedingung** auf Gruppen von Gerätezwillingen ausgerichtet. Die Zielbedingung ist eine Abfrage für Gerätezwillingstags oder gemeldete Eigenschaften. Der **Zielinhalt** umfasst eine Gruppe von gewünschten Eigenschaften, die auf den jeweiligen Gerätezwillingen festgelegt werden. Der Zielinhalt sollte an der Gerätezwillingsstruktur ausgerichtet sein, die vom IoT-Hardwarehersteller/-integrator definiert wird. Die **Metriken** sind Abfragen der gemeldeten Eigenschaften von Gerätezwillingen und sollten ebenfalls an der vom IoT-Hardwarehersteller/-integrator definierten Gerätezwillingsstruktur ausgerichtet sein.
+
+   Die automatischen Gerätekonfigurationen werden zum ersten Mal kurz nach Erstellung der Konfiguration ausgeführt, und danach in Intervallen von fünf Minuten. Sie haben außerdem den Vorteil, dass IoT Hub Gerätezwillingsvorgänge immer mit einer Rate durchführt, die niemals die [Drosselungsgrenzwerte](iot-hub-devguide-quotas-throttling.md) für Lesevorgänge und Updates von Gerätezwillingen überschreitet.
 
 * **Verwenden des [Device Provisioning-Diensts](../iot-dps/how-to-manage-enrollments.md):** Lösungsentwickler sollten den Device Provisioning-Dienst verwenden, um neuen Geräten Gerätezwillingstags zuzuweisen. Diese werden dann über **automatische Gerätekonfigurationen**, die auf Zwillinge mit diesem Tag ausgerichtet sind, automatisch konfiguriert. 
 

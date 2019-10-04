@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 04/02/2019
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: celested
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98f81edcfa2a9daf5162ff1c7e23025b405092b8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 523f1adc94870f79d198366059f33ad52f5dad68
+ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260390"
+ms.lasthandoff: 06/20/2019
+ms.locfileid: "67293069"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -42,7 +42,7 @@ Ja. Gastbenutzer können ihre Multi-Factor Authentication-Methode auf dieselbe W
 Die einladende Organisation führt Multi-Factor Authentication durch. Die einladende Organisation muss sicherstellen, dass die Organisation genügend Lizenzen für B2B-Benutzer besitzt, die Multi-Factor Authentication verwenden.
 
 ### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>Was geschieht, wenn eine Partnerorganisation bereits Multi-Factor Authentication eingerichtet hat? Können wir ihrer Multi-Factor Authentication vertrauen und auf die Verwendung unserer eigenen Multi-Factor Authentication verzichten?
-Dieses Feature ist für ein zukünftiges Release geplant. Sie können dann bestimmte Partner auswählen, die Sie als einladende Organisation von Ihrer mehrstufigen Authentifizierung ausschließen möchten.
+Diese Funktion wird derzeit nicht unterstützt. Wenn für den Zugriff auf die Ressourcen Ihrer Organisation eine mehrstufige Authentifizierung erforderlich ist, muss sich die Partnerorganisation in Ihrer (der einladenden) Organisation für die mehrstufige Authentifizierung registrieren.
 
 ### <a name="how-can-i-use-delayed-invitations"></a>Wie kann ich verzögerte Einladungen senden?
 Es kann vorkommen, dass eine Organisation Benutzer der B2B-Zusammenarbeit hinzufügen, diese bei Bedarf für Anwendungen bereitstellen und erst dann die Einladungen senden möchte. Sie können die Einladungs-API für die B2B-Zusammenarbeit verwenden, um den Onboardingworkflow benutzerdefiniert anzupassen.
@@ -54,16 +54,16 @@ Ja. Gastobjekte sind in der globalen Adressliste (GAL) Ihrer Organisation standa
 Absolut. Weitere Informationen finden Sie unter [Zuweisen einer Rolle für Gastbenutzer](add-guest-to-role.md).
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Erlaubt die Azure AD B2B-Zusammenarbeit B2B-Benutzern den Zugriff auf das Azure-Portal?
-B2B-Zusammenarbeitsbenutzer benötigen keinen Zugriff auf das Azure-Portal, sofern ihnen nicht eine Administratorrolle mit eingeschränkten Berechtigungen oder eine globale Administratorrolle zugewiesen wurde. Allerdings können B2B-Zusammenarbeitsbenutzer, denen eine Administratorrolle mit eingeschränkten Berechtigungen oder eine globale Administratorrolle zugewiesen ist, auf das Portal zugreifen. Auch wenn ein Gastbenutzer, dem keine dieser Administratorrollen zugewiesen ist, auf das Portal zugreift, kann der Benutzer möglicherweise auf bestimmte Funktionen zugreifen. Die Rolle des Gastbenutzers ist mit einigen Berechtigungen im Verzeichnis versehen.
+B2B Collaboration-Benutzer benötigen keinen Zugriff auf das Azure-Portal, falls ihnen nicht die Rolle eines eingeschränkten Administrators zugewiesen ist. Wenn ihnen diese Rolle jedoch zugewiesen ist, können sie auf das Portal zugreifen. Auch wenn ein Gastbenutzer, dem keine dieser Administratorrollen zugewiesen ist, auf das Portal zugreift, kann der Benutzer möglicherweise auf bestimmte Funktionen zugreifen. Die Rolle des Gastbenutzers ist mit einigen Berechtigungen im Verzeichnis versehen.
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Kann ich den Zugriff auf das Azure-Portal für Gastbenutzer sperren?
- Ja. Gehen Sie beim Konfigurieren dieser Richtlinie umsichtig vor, um zu vermeiden, dass versehentlich der Zugriff für Mitglieder und Administratoren gesperrt wird.
-Um den Zugriff eines Gastbenutzers auf das [Azure-Portal](https://portal.azure.com) zu blockieren, verwenden Sie eine Richtlinie für bedingten Zugriff in der API für das klassische Microsoft Azure-Bereitstellungsmodell:
+Ja. Gehen Sie beim Konfigurieren dieser Richtlinie umsichtig vor, um zu vermeiden, dass versehentlich der Zugriff für Mitglieder und Administratoren gesperrt wird.
+Verwenden Sie eine Richtlinie für bedingten Zugriff in der API für das klassische Microsoft Azure-Bereitstellungsmodell, um den Zugriff eines Gastbenutzers auf das [Azure-Portal](https://portal.azure.com) zu blockieren:
 1. Ändern Sie die Gruppe **Alle Benutzer**, sodass sie nur Mitglieder enthält.
    ![Screenshot der Gruppe „Alle Benutzer“, deren „UserType“ nicht gleich „Gast“ ist](media/faq/modify-all-users-group.png)
 2. Erstellen Sie eine dynamische Gruppe mit Gastbenutzern.
-   ![Screenshot einer neuen Gruppe „Alle Gastbenutzer“](media/faq/group-with-guest-users.png)
-3. Richten Sie eine Richtlinie für bedingten Zugriff ein, um den Zugriff auf das Portal durch Gastbenutzer zu blockieren, wie im folgenden Video gezeigt wird:
+   ![Screenshot mit einer neuen Gruppe „Alle Gastbenutzer“](media/faq/group-with-guest-users.png)
+3. Richten Sie wie im folgenden Video veranschaulicht eine Richtlinie für bedingten Zugriff ein, um den Zugriff auf das Portal durch Gastbenutzer zu blockieren:
   
    > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
 
@@ -111,7 +111,7 @@ Wir heben die Unterschiede zwischen der B2B- und B2C-Zusammenarbeit (Business-to
 Alle in Azure AD integrierten Anwendungen unterstützen Azure B2B-Gastbenutzer, aber sie müssen einen als Mandant eingerichteten Endpunkt verwenden, um Gastbenutzer zu authentifizieren. Sie müssen möglicherweise auch [die Ansprüche im SAML-Token anpassen](claims-mapping.md), das ausgegeben wird, wenn sich ein Gastbenutzer bei der App authentifiziert. 
 
 ### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>Kann Multi-Factor Authentication für B2B-Gastbenutzer erzwungen werden, wenn unsere Partner nicht über Multi-Factor Authentication verfügen?
-Ja. Weitere Informationen finden Sie unter [Bedingter Zugriff für Benutzer der B2B-Zusammenarbeit](conditional-access.md).
+Ja. Weitere Informationen finden Sie unter [Conditional Access for B2B collaboration users (Bedingter Zugriff für Benutzer der B2B-Zusammenarbeit)](conditional-access.md).
 
 ### <a name="in-sharepoint-you-can-define-an-allow-or-deny-list-for-external-users-can-we-do-this-in-azure"></a>In SharePoint können Listen für das Zulassen und Ablehnen des Zugriffs durch externe Benutzer definiert werden. Ist dies in Azure möglich?
 Ja. Die Azure AD B2B-Zusammenarbeit unterstützt Zulassungs- und Verweigerungslisten. 
@@ -121,5 +121,5 @@ Informationen darüber, welche Lizenzen Ihre Organisation für die Verwendung vo
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
+- [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
 

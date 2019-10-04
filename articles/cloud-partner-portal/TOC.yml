@@ -1,76 +1,69 @@
-items:
 - name: Übersicht
   items:
-  - name: Informationen zum Cloudpartnerportal
-    href: ./cloud-partner-portal-what-is-the-cloud-partner-portal.md
+    - name: Informationen zum Cloudpartnerportal
+      href: ./cloud-partner-portal-what-is-the-cloud-partner-portal.md
 - name: Erste Schritte
   items:
-  - name: Erste Schritte mit dem Cloudpartnerportal
-    href: ./cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
-  - name: Unterstützte Produkte
-    href: ./Cloud-partner-portal-products-that-can-get-published-via-portal.md
+    - name: Erste Schritte mit dem Cloudpartnerportal
+      href: ./cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
+    - name: Unterstützte Produkte
+      href: ./Cloud-partner-portal-products-that-can-get-published-via-portal.md
 - name: Anleitungen
   items:
-  - name: Verwalten virtueller Computer
-    items:
-    - name: Erstellen eines Angebots für virtuelle Computer
-      href: ./cloud-partner-portal-publish-virtual-machine.md
+    - name: Verwalten virtueller Computer
       items:
-      - name: Voraussetzungen
-        href: ./cloud-partner-portal-publish-virtual-machine.md#what-are-pre-requisites-for-publishing-a-vm
-      - name: Registrieren eines Microsoft-Entwicklerkontos
-        href: ./cloud-partner-portal-dev-center-accounts-registration.md
-      - name: Erstellen eines neuen Angebots für virtuelle Computer
-        href: ./cloud-partner-portal-publish-virtual-machine.md#how-to-create-a-new-vm-offer
-      - name: Formular für Angebotseinstellungen
-        href: ./cloud-partner-portal-publish-virtual-machine.md#how-to-fill-out-the-offer-settings-form
-      - name: Formular für SKUs
-        href: ./cloud-partner-portal-publish-virtual-machine.md#how-to-create-skus
-        items:
-        - name: Preise
-          href: ./cloud-partner-portal-publish-virtual-machine.md#pricing
-        - name: VM-Images
-          href: cloud-partner-portal-publish-virtual-machine.md#vm-images
-      - name: Marketplace-Formular
-        href: ./cloud-partner-portal-publish-virtual-machine.md#marketplace-form
-      - name: Supportformular
-        href: cloud-partner-portal-publish-virtual-machine.md#support-form
-    - name: Veröffentlichen eines Angebots für virtuelle Computer
-      href: ./Cloud-partner-portal-make-offer-live-on-Azure-Marketplace.md
-    - name: Aktualisieren eines vorhandenen Angebots
-      href: ./cloud-partner-portal-update-existing-offer.md
-    - name: Löschen eines VM-Angebots oder einer SKU
-      href: ./cloud-partner-portal-delete-an-offer.md
-    - name: Migrieren zum Cloudpartnerportal
-      href: ./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md
-  - name: Azure Marketplace-Verkäuferhandbuch
-    href: ./cloud-partner-portal-seller-guide.md
-  - name: Generieren von Kundenleads
-    href: ./cloud-partner-portal-get-customer-leads.md
-    items:
-    - name: Azure-Tabelle
-      href: ./cloud-partner-portal-lead-management-instructions-azure-table.md
-    - name: Dynamics CRM Online
-      href: ./cloud-partner-portal-lead-management-instructions-dynamics.md
-    - name: Salesforce
-      href: ./cloud-partner-portal-lead-management-instructions-salesforce.md
-    - name: Marketo
-      href: ./cloud-partner-portal-lead-management-instructions-marketo.md
-  - name: Verwalten von Herausgeberprofilen
-    href: ./cloud-partner-portal-manage-publisher-profile.md
-  - name: Verwalten von Benutzern
-    href: ./cloud-partner-portal-manage-users.md
-  - name: Support
-    href: ./cloud-partner-portal-support-for-cloud-partner-portal.md
+        - name: Erstellen eines Angebots für virtuelle Computer
+          href: ./cloud-partner-portal-publish-virtual-machine.md
+          items:
+            - name: Voraussetzungen
+              href: './cloud-partner-portal-publish-virtual-machine.md#what-are-pre-requisites-for-publishing-a-vm'
+            - name: Registrieren eines Microsoft-Entwicklerkontos
+              href: ./cloud-partner-portal-dev-center-accounts-registration.md
+            - name: Erstellen eines neuen Angebots für virtuelle Computer
+              href: './cloud-partner-portal-publish-virtual-machine.md#how-to-create-a-new-vm-offer'
+            - name: Formular für Angebotseinstellungen
+              href: './cloud-partner-portal-publish-virtual-machine.md#how-to-fill-out-the-offer-settings-form'
+            - name: Formular für SKUs
+              href: './cloud-partner-portal-publish-virtual-machine.md#how-to-create-skus'
+              items:
+                - name: Preise
+                  href: './cloud-partner-portal-publish-virtual-machine.md#pricing'
+                - name: VM-Images
+                  href: 'cloud-partner-portal-publish-virtual-machine.md#vm-images'
+            - name: Marketplace-Formular
+              href: './cloud-partner-portal-publish-virtual-machine.md#marketplace-form'
+            - name: Supportformular
+              href: 'cloud-partner-portal-publish-virtual-machine.md#support-form'
+        - name: Veröffentlichen eines Angebots für virtuelle Computer
+          href: ./Cloud-partner-portal-make-offer-live-on-Azure-Marketplace.md
+        - name: Aktualisieren eines vorhandenen Angebots
+          href: ./cloud-partner-portal-update-existing-offer.md
+        - name: Löschen eines VM-Angebots oder einer SKU
+          href: ./cloud-partner-portal-delete-an-offer.md
+        - name: Migrieren zum Cloudpartnerportal
+          href: ./cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md
+    - name: Azure Marketplace-Verkäuferhandbuch
+      href: ./cloud-partner-portal-seller-guide.md
+    - name: Generieren von Kundenleads
+      href: ./cloud-partner-portal-get-customer-leads.md
+      items:
+        - name: Azure-Tabelle
+          href: ./cloud-partner-portal-lead-management-instructions-azure-table.md
+        - name: Dynamics CRM Online
+          href: ./cloud-partner-portal-lead-management-instructions-dynamics.md
+        - name: Salesforce
+          href: ./cloud-partner-portal-lead-management-instructions-salesforce.md
+        - name: Marketo
+          href: ./cloud-partner-portal-lead-management-instructions-marketo.md
+    - name: Verwalten von Herausgeberprofilen
+      href: ./cloud-partner-portal-manage-publisher-profile.md
+    - name: Verwalten von Benutzern
+      href: ./cloud-partner-portal-manage-users.md
+    - name: Support
+      href: ./cloud-partner-portal-support-for-cloud-partner-portal.md
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-  - name: Preisrechner
-    href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: 1edb304ce457eac6db66b31b126309c4427f2c9e
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340794"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'

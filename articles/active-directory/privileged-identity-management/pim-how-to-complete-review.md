@@ -1,9 +1,9 @@
 ---
-title: Abschließen einer Zugriffsüberprüfung für Azure AD-Rollen in PIM – Azure Active Directory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung für Azure AD-Rollen in Azure AD Privileged Identity Management (PIM) abschließen und die Ergebnisse anzeigen.
+title: Abschließen einer Zugriffsüberprüfung von Azure AD-Rollen in PIM – Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung von Azure AD-Rollen in Azure AD Privileged Identity Management (PIM) abschließen und die Ergebnisse anzeigen
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 06/06/2017
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed53c8bb3cb735822fc40aab86ca40bef7b9607a
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: e50ccc208219896e89bcc80f40c846f69c759f9b
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619181"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804402"
 ---
-# <a name="complete-an-access-review-for-azure-ad-roles-in-pim"></a>Abschließen einer Zugriffsüberprüfung für Azure AD-Rollen in PIM
+# <a name="complete-an-access-review-of-azure-ad-roles-in-pim"></a>Abschließen einer Zugriffsüberprüfung von Azure AD-Rollen in PIM
 Nachdem eine [Zugriffsüberprüfung gestartet wurde](pim-how-to-start-security-review.md), können Administratoren für privilegierte Rollen den privilegierten Zugriff überprüfen. Azure Active Directory (Azure AD) Privileged Identity Management (PIM) sendet automatisch eine E-Mail, in der die Benutzer aufgefordert werden, ihren Zugriff zu überprüfen. Benutzern, die diese E-Mail nicht erhalten, können Sie die Anweisungen unter [Ausführen einer Zugriffsüberprüfung](pim-how-to-perform-security-review.md) senden.
 
 Wenn der Zeitraum für die Zugriffsüberprüfung abgelaufen ist oder alle Benutzer die Selbstüberprüfung abgeschlossen haben, führen Sie die Schritte in diesem Artikel aus, um die Überprüfung zu verwalten und die Ergebnisse anzuzeigen.
@@ -33,7 +33,7 @@ Wenn der Zeitraum für die Zugriffsüberprüfung abgelaufen ist oder alle Benutz
 
 Auf dem Detailblatt der Zugriffsüberprüfung stehen eine Reihe von Optionen zum Verwalten dieser Überprüfung zur Verfügung.
 
-![Schaltflächen der PIM-Zugriffsüberprüfung – Screenshot](./media/pim-how-to-complete-review/PIM_review_buttons.png)
+![Schaltflächen der PIM-Zugriffsüberprüfung – Screenshot](./media/pim-how-to-complete-review/review-buttons.png)
 
 ### <a name="remind"></a>Erinnerung
 Wenn eine Zugriffsüberprüfung so eingerichtet ist, dass die Benutzer sich selbst überprüfen, wird über die Schaltfläche **Erinnerung** eine Benachrichtigung gesendet. 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: a13d3b24cd7845de144183d9f2ea825e0e24219f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 19c9448b6a743302eb81bb208444336d6435f114
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883716"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68947042"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugsermittlung in Echtzeit
 
@@ -30,7 +30,7 @@ In diesem Tutorial werden als Beispiel Telefonanrufdaten im Rahmen einer Betrugs
 
 ## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>Szenario: Telekommunikation und SIM-Betrugserkennung in Echtzeit
 
-Ein Telekommunikationsunternehmen hat eine große Datenmenge durch eingehende Anrufe. Das Unternehmen möchte betrügerische Anrufe in Echtzeit erkennen, um Kunden hierüber benachrichtigen zu können oder den Dienst einer bestimmten Nummer zu sperren. Eine Form von SIM-Kartenbetrug sind mehrmalige Anrufe von derselben Identität, die ungefähr zur selben Zeit, jedoch von geografisch unterschiedlichen Standorten aus getätigt werden. Zur Erkennung dieser Art von Betrug muss das Unternehmen die Datensätze eingehender Anrufe überprüfen und nach bestimmten Mustern suchen – in diesem Fall nach Anrufen, die ungefähr zur selben Zeit von verschiedenen Ländern aus getätigt werden. Telefondatensätze, die in diese Kategorie fallen, werden zur anschließenden Analyse in den Speicher geschrieben.
+Ein Telekommunikationsunternehmen hat eine große Datenmenge durch eingehende Anrufe. Das Unternehmen möchte betrügerische Anrufe in Echtzeit erkennen, um Kunden hierüber benachrichtigen zu können oder den Dienst einer bestimmten Nummer zu sperren. Eine Form von SIM-Kartenbetrug sind mehrmalige Anrufe von derselben Identität, die ungefähr zur selben Zeit, jedoch von geografisch unterschiedlichen Standorten aus getätigt werden. Zur Erkennung dieser Art von Betrug muss das Unternehmen die Datensätze eingehender Anrufe überprüfen und nach bestimmten Mustern suchen – in diesem Fall nach Anrufen, die ungefähr zur selben Zeit von verschiedenen Ländern/Regionen aus getätigt werden. Telefondatensätze, die in diese Kategorie fallen, werden zur anschließenden Analyse in den Speicher geschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -131,26 +131,27 @@ Bevor Sie die TelcoGenerator-App starten, müssen Sie sie so konfigurieren, dass
 
 ### <a name="start-the-app"></a>Starten der App
 1.  Öffnen Sie ein Befehlsfenster, und wechseln Sie zum Ordner, in dem sich die entzippte TelcoGenerator-App befindet.
+
 2.  Geben Sie den folgenden Befehl ein:
 
-        ```cmd
-        telcodatagen.exe 1000 0.2 2
-        ```
+   ```cmd
+   telcodatagen.exe 1000 0.2 2
+   ```
 
-    Die Parameter lauten wie folgt: 
+   Die Parameter lauten wie folgt: 
 
-    * Anzahl der KDS pro Stunde 
-    * Wahrscheinlichkeit eines SIM-Kartenbetrugs: Die Häufigkeit als Prozentsatz aller Anrufe, mit der die App einen betrügerischen Anruf simulieren soll. Der Wert „0.2“ bedeutet, dass etwa 20 Prozent der Anrufdatensätze betrügerische Anrufe simulieren.
-    * Dauer in Stunden: Die Anzahl der Stunden, in denen die App ausgeführt werden soll. Sie können die App auch jederzeit beenden, indem Sie in der Befehlszeile Strg+C drücken.
+   * Anzahl der KDS pro Stunde 
+   * Wahrscheinlichkeit eines SIM-Kartenbetrugs: Die Häufigkeit als Prozentsatz aller Anrufe, mit der die App einen betrügerischen Anruf simulieren soll. Der Wert „0.2“ bedeutet, dass etwa 20 Prozent der Anrufdatensätze betrügerische Anrufe simulieren.
+   * Dauer in Stunden: Die Anzahl der Stunden, in denen die App ausgeführt werden soll. Sie können die App auch jederzeit beenden, indem Sie in der Befehlszeile Strg+C drücken.
 
-    Nach wenigen Sekunden werden auf dem Bildschirm in der App die Telefonanrufdatensätze angezeigt, während diese an den Event Hub gesendet werden.
+   Nach wenigen Sekunden werden auf dem Bildschirm in der App die Telefonanrufdatensätze angezeigt, während diese an den Event Hub gesendet werden.
 
 Zu einigen wichtigen Feldern dieser Anwendung zur Betrugserkennung in Echtzeit zählen Folgende:
 
 |**Datensatz**|**Definition**|
 |----------|--------------|
 |`CallrecTime`|Der Zeitstempel für die Startzeit des Anrufs. |
-|`SwitchNum`|Die für die Anrufverbindung verwendete Vermittlungsstelle. In diesem Beispiel werden die Vermittlungen durch Zeichenfolgen ausgedrückt, die das Ursprungsland (USA, China, Großbritannien, Deutschland oder Australien) darstellen. |
+|`SwitchNum`|Die für die Anrufverbindung verwendete Vermittlungsstelle. In diesem Beispiel werden die Vermittlungen durch Zeichenfolgen ausgedrückt, die das Ursprungsland/die Ursprungsregion (USA, China, Großbritannien, Deutschland oder Australien) darstellen. |
 |`CallingNum`|Die Telefonnummer des Anrufers. |
 |`CallingIMSI`|Die IMSI (International Mobile Subscriber Identity). Dies ist die eindeutige ID des Anrufers. |
 |`CalledNum`|Die Telefonnummer des Angerufenen. |
@@ -187,7 +188,7 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Eingabealias  |  CallStream   |  Geben Sie einen Namen zur Identifizierung der Auftragseingabe ein.   |
-   |Abonnement   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement aus, in dem sich der erstellte Event Hub befindet.   |
+   |Subscription   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement aus, in dem sich der erstellte Event Hub befindet.   |
    |Event Hub-Namespace  |  asa-eh-ns-demo |  Geben Sie den Namen des Event Hub-Namespace ein.   |
    |Event Hub-Name  | asa-eh-frauddetection-demo | Wählen Sie den Namen Ihres Event Hubs aus.   |
    |Event Hub-Richtlinienname  | asa-policy-manage-demo | Wählen Sie die Zugriffsrichtlinie aus, die Sie zuvor erstellt haben.   |
@@ -206,7 +207,7 @@ Eine einfache Abfrage kann alle eingehenden Daten möglicherweise nur lesen. All
 
 Die Abfragen, die Sie hier erstellen, zeigen nur die transformierten Daten auf dem Bildschirm an. In einem Abschnitt weiter unten konfigurieren Sie eine Ausgabesenke und eine Abfrage, die die transformierten Daten in diese Senke schreibt.
 
-Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfragesprachreferenz](https://msdn.microsoft.com/library/dn834998.aspx).
+Weitere Informationen zur Sprache finden Sie in der [Azure Stream Analytics-Abfragesprachreferenz](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference).
 
 ### <a name="get-sample-data-for-testing-queries"></a>Abrufen von Beispieldaten zum Testen von Abfragen
 
@@ -276,7 +277,7 @@ In vielen Fällen sind bei Ihrer Analyse nicht alle Spalten der Datenstromeingab
 
 Nehmen wir an, Sie möchten die Anzahl der eingehenden Anrufe pro Region zählen. Wenn Sie bei Streamingdaten Aggregatfunktionen wie eine Zählung durchführen möchten, müssen Sie den Datenstrom in temporale Einheiten segmentieren (da der Datenstrom selbst faktisch endlos ist). Hierzu müssen Sie eine Stream Analytics-[Fensterfunktion](stream-analytics-window-functions.md) verwenden. Sie können dann mühelos in diesem Fenster mit den Daten arbeiten.
 
-Für diese Transformation sollte eine Sequenz von temporalen Fenstern erzeugt werden, die sich nicht überlappen – jedes Fenster weist einen separaten Satz von Daten auf, den Sie gruppieren und aggregieren können. Diese Art von Fenster wird als *rollierendes Fenster* bezeichnet. In einem rollierenden Fenster können Sie die Anzahl eingehender Anrufe gruppiert nach `SwitchNum` abrufen, die für das Land steht, aus dem der Anruf stammt. 
+Für diese Transformation sollte eine Sequenz von temporalen Fenstern erzeugt werden, die sich nicht überlappen – jedes Fenster weist einen separaten Satz von Daten auf, den Sie gruppieren und aggregieren können. Diese Art von Fenster wird als *rollierendes Fenster* bezeichnet. In einem rollierenden Fenster können Sie die Anzahl eingehender Anrufe gruppiert nach `SwitchNum` abrufen, die für das Land bzw. die Region steht, aus dem bzw. der der Anruf stammt. 
 
 1. Ändern Sie die Abfrage im Code-Editor wie folgt:
 
@@ -288,11 +289,11 @@ Für diese Transformation sollte eine Sequenz von temporalen Fenstern erzeugt we
         GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
         ```
 
-    Diese Abfrage verwendet das Schlüsselwort `Timestamp By` in der Klausel `FROM`, um anzugeben, welches Zeitstempelfeld in der Datenstromeingabe für die Definition des rollierenden Fensters verwendet werden soll. In diesem Fall werden die Daten im Fenster in Segmente unterteilt, und zwar anhand des Felds `CallRecTime` in jedem Datensatz. (Wird kein Feld angegeben, verwendet der Windowingvorgang die Zeit, zu der jedes Ereignis beim Event Hub eingeht.) Weitere Informationen finden Sie unter „Ankunftszeit vs. Anwendungszeit“ in der [Referenz zur Stream Analytics-Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998.aspx). 
+    Diese Abfrage verwendet das Schlüsselwort `Timestamp By` in der Klausel `FROM`, um anzugeben, welches Zeitstempelfeld in der Datenstromeingabe für die Definition des rollierenden Fensters verwendet werden soll. In diesem Fall werden die Daten im Fenster in Segmente unterteilt, und zwar anhand des Felds `CallRecTime` in jedem Datensatz. (Wird kein Feld angegeben, verwendet der Windowingvorgang die Zeit, zu der jedes Ereignis beim Event Hub eingeht.) Weitere Informationen finden Sie unter „Ankunftszeit vs. Anwendungszeit“ in der [Referenz zur Stream Analytics-Abfragesprache](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). 
 
     Die Projektion enthält `System.Timestamp`, die einen Zeitstempel für das Ende jedes Fensters zurückgibt. 
 
-    Um anzugeben, dass Sie ein rollierendes Fenster verwenden möchten, verwenden Sie die Funktion [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) in der Klausel `GROUP BY`. In der Funktion geben Sie eine Zeiteinheit (von einer Mikrosekunde bis zu einem Tag) und eine Fenstergröße (Anzahl der Einheiten) an. In diesem Beispiel besteht das rollierende Fenster aus 5-Sekunden-Intervallen, sodass Sie alle 5 Sekunden der Anrufe eine Zählung pro Land erhalten.
+    Um anzugeben, dass Sie ein rollierendes Fenster verwenden möchten, verwenden Sie die Funktion [TUMBLINGWINDOW](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics) in der Klausel `GROUP BY`. In der Funktion geben Sie eine Zeiteinheit (von einer Mikrosekunde bis zu einem Tag) und eine Fenstergröße (Anzahl der Einheiten) an. In diesem Beispiel besteht das rollierende Fenster aus 5-Sekunden-Intervallen, sodass Sie alle 5 Sekunden der Anrufe eine Zählung pro Land/Region erhalten.
 
 2. Klicken Sie erneut auf **Test**. Beachten Sie, dass die Zeitstempel in den Ergebnissen unter **WindowEnd** in 5-Sekunden-Schritten angegeben werden.
 
@@ -302,7 +303,7 @@ Für diese Transformation sollte eine Sequenz von temporalen Fenstern erzeugt we
 
 In diesem Beispiel kann eine betrügerische Verwendung als Anrufe definiert werden, die vom selben Benutzer stammen, jedoch innerhalb von 5 Sekunden von verschiedenen Standorten aus getätigt werden. Beispielsweise kann derselbe Benutzer nicht gleichzeitig einen legitimen Anruf aus den USA und aus Australien tätigen. 
 
-In diesen Fällen können Sie den Datenstrom durch eine Selbstverknüpfung der Streamingdaten basierend auf dem Wert `CallRecTime` mit sich selbst verknüpfen. Sie können dann nach Anrufdatensätzen suchen, bei denen der Wert `CallingIMSI` (die ursprüngliche Anzahl) identisch ist, jedoch nicht der Wert `SwitchNum` (Ursprungsland).
+In diesen Fällen können Sie den Datenstrom durch eine Selbstverknüpfung der Streamingdaten basierend auf dem Wert `CallRecTime` mit sich selbst verknüpfen. Sie können dann nach Anrufdatensätzen suchen, bei denen der Wert `CallingIMSI` (die ursprüngliche Anzahl) identisch ist, jedoch nicht der Wert `SwitchNum` (Ursprungsland/-region).
 
 Wenn Sie eine Verknüpfung mit Streamingdaten durchführen, müssen bei der Verknüpfung einige Beschränkungen dazu festgelegt werden, wie stark die übereinstimmenden Zeilen zeitlich getrennt werden können. (Wie bereits erwähnt wurde, sind Streamingdaten faktisch endlos.) Die Zeitgrenzen für die Beziehung werden in der `ON`-Klausel der Verknüpfung mit der `DATEDIFF`-Funktion angegeben. In diesem Fall basiert die Verknüpfung auf Anrufdaten mit einem Intervall von 5 Sekunden.
 
@@ -357,7 +358,7 @@ Wenn ein Blob Storage-Konto vorhanden ist, können Sie dieses verwenden. In dies
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Ausgabealias  |  CallStream-FraudulentCalls   |  Geben Sie einen Namen zur Identifizierung der Auftragsausgabe ein.   |
-   |Abonnement   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
+   |Subscription   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
    |Speicherkonto  |  asaehstorage |  Geben Sie den Namen des von Ihnen erstellten Speicherkontos ein. |
    |Container  | asa-fraudulentcalls-demo | Wählen Sie „Neu erstellen“ aus, und geben Sie einen Containernamen ein. |
 
@@ -417,5 +418,5 @@ Weitere Informationen zu Stream Analytics allgemein finden Sie auch in diesen Ar
 
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)

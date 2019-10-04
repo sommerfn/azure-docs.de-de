@@ -4,21 +4,21 @@ description: In diesem Artikel wird beschrieben, wie Sie Ihr Automation-Konto in
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 59d433bfb888eaa41cc8f66bdf3ad28c16efbe5c
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 8187e4c6f2c7dc721c178bad50b6c3ada2a65367
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225959"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717241"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Verschieben Ihres Azure Automation-Kontos in ein anderes Abonnement
 
-In Azure können Sie einige Ressourcen in eine neue Ressourcengruppe oder ein Abonnement verschieben. Sie können Ressourcen mit dem Azure-Portal, PowerShell, der Azure CLI oder der REST-API verschieben. Weitere Informationen zum Prozess finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/resource-group-move-resources.md). 
+In Azure können Sie einige Ressourcen in eine neue Ressourcengruppe oder ein Abonnement verschieben. Sie können Ressourcen mit dem Azure-Portal, PowerShell, der Azure CLI oder der REST-API verschieben. Weitere Informationen zum Prozess finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/resource-group-move-resources.md).
 
 Azure Automation-Konten sind ein Beispiel für Ressourcen, die verschoben werden können. In diesem Artikel werden die Schritte zum Verschieben von Automation-Konten in eine andere Ressource oder ein anderes Abonnement beschrieben.
 
@@ -34,8 +34,8 @@ Die groben Schritte zum Verschieben Ihres Automation-Kontos sind:
 
 Um die Verknüpfung Ihres Arbeitsbereichs mit Ihrem Automation-Konto aufzuheben, müssen diese Lösungen aus Ihrem Arbeitsbereich entfernt werden:
 - **Änderungsnachverfolgung und Bestand**
-- **Updateverwaltung** 
-- **VMs außerhalb der Geschäftszeiten starten/beenden** 
+- **Updateverwaltung**
+- **VMs außerhalb der Geschäftszeiten starten/beenden**
 
 Suchen Sie in Ihrer Ressourcengruppe nach den einzelnen Lösungen, und wählen Sie **Löschen**. Vergewissern Sie sich auf der Seite **Ressourcen löschen**, dass die richtigen zu löschenden Ressourcen ausgewählt sind, und wählen Sie **Löschen**.
 
@@ -127,7 +127,7 @@ Computer, für die mit Ihren Lösungen das Onboarding durchgeführt wird, sind s
 
 Um die Lösung **VMs außerhalb der Geschäftszeiten starten/beenden** zu aktivieren, müssen Sie die Lösung erneut bereitstellen. Wählen Sie unter **Zugehörige Ressourcen** die Optionen **VMs starten/beenden** > **Weitere Informationen anzeigen und Lösung aktivieren** > **Erstellen**, um die Bereitstellung zu starten.
 
-Wählen Sie auf der Seite **Lösung hinzufügen** Ihren Log Analytics-Arbeitsbereich und das Automation-Konto aus.  
+Wählen Sie auf der Seite **Lösung hinzufügen** Ihren Log Analytics-Arbeitsbereich und das Automation-Konto aus.
 
 ![Menü „Lösung hinzufügen“](../media/move-account/add-solution-vm.png)
 
@@ -140,9 +140,10 @@ Ausführliche Anweisungen zum Konfigurieren der Lösung finden Sie unter [Lösun
 |Funktion|Tests|Link für Problembehandlung|
 |---|---|---|
 |Runbooks|Ein Runbook kann erfolgreich ausgeführt werden und eine Verbindung mit Azure-Ressourcen herstellen.|[Beheben von Fehlern bei Runbooks](../troubleshoot/runbooks.md)
-| Quellcodeverwaltung|Sie können eine manuelle Synchronisierung für Ihr Repository für die Quellcodeverwaltung durchführen.|[Integration der Quellcodeverwaltung](../source-control-integration.md)|
+|Quellcodeverwaltung|Sie können eine manuelle Synchronisierung für Ihr Repository für die Quellcodeverwaltung durchführen.|[Integration der Quellcodeverwaltung](../source-control-integration.md)|
 |Änderungsnachverfolgung und Bestand|Stellen Sie sicher, dass die aktuellen Bestandsdaten Ihrer Computer angezeigt werden.|[Problembehandlung bei Änderungsnachverfolgung und Inventur](../troubleshoot/change-tracking.md)|
 |Updateverwaltung|Stellen Sie sicher, dass Ihre Computer angezeigt werden und fehlerfrei sind.</br>Führen Sie die Bereitstellung eines Updates der Testsoftware durch.|[Behandeln von Problemen mit Updateverwaltung](../troubleshoot/update-management.md)|
+|Gemeinsame Ressourcen|Vergewissern Sie sich, dass alle freigegebenen Ressourcen angezeigt werden, z.B. [Anmeldeinformationen](../shared-resources/credentials.md), [Variablen](../shared-resources/variables.md) usw.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

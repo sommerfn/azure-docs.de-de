@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 256435dfd016ebbd86dbbe49f4abbb346fb1cd19
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 37ec8a611f94b869c8277c135f8e6dc5d2108392
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407735"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67442901"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Häufig gestellte Fragen zu Azure Front Door Service
 
@@ -75,29 +75,38 @@ Azure Front Door Service hat dieselbe Liste von POP-Standorten (Point of Presenc
 
 ### <a name="is-azure-front-door-service-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Ist Azure Front Door Service eine dedizierte Bereitstellung für meine Anwendung, oder wird es zur gemeinsamen Nutzung für Kunden freigegeben?
 
-Azure Front Door Service ist ein global verteilter, mehrinstanzenfähiger Dienst. Die Infrastruktur für Front Door wird somit von allen Kunden gemeinsam genutzt. Durch die Erstellung einer Front Door-Instanz definieren Sie jedoch die für Ihre Anwendung erforderliche spezifische Konfiguration und 
+Azure Front Door Service ist ein global verteilter, mehrinstanzenfähiger Dienst. Die Infrastruktur für Front Door wird somit von allen Kunden gemeinsam genutzt. Wenn Sie jedoch ein Front Door-Profil erstellen, definieren Sie die für Ihre Anwendung erforderliche spezifische Konfiguration, und Änderungen an Ihrer Front Door-Ressource wirken sich nicht auf andere Front Door-Konfigurationen aus.
 
 ### <a name="is-http-https-redirection-supported"></a>Wird die Umleitung von HTTP zu HTTPS unterstützt?
 
-Front Door unterstützt derzeit keine URL-Umleitung.
+Ja. Tatsächlich unterstützt Azure Front Door Service Host-, Pfad- und Abfragezeichenfolgenumleitung sowie einen Teil der URL-Umleitung. Weitere Informationen zur [URL-Umleitung](front-door-url-redirect.md). 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>In welcher Reihenfolge werden Routingregeln verarbeitet?
 
 Die Routen für Front Door sind nicht sortiert und eine bestimmte Route wird anhand der besten Übereinstimmung ausgewählt. Weitere Informationen zu [Abgleich von Anforderungen mit Routingregeln durch Front Door](front-door-route-matching.md).
 
-### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-service"></a>Wie kann ich den Zugang zu meinem Back-End nur für Azure Front Door Service sperren?
+### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Wie kann ich den Zugriff auf mein Back-End nur auf Azure Front Door beschränken?
 
-Sie können die IP-Zugriffssteuerungslisten so konfigurieren, dass Ihre Back-Ends nur den Datenverkehr von Azure Front Door Service akzeptieren. Sie können Ihre Anwendung darauf beschränken, eingehende Verbindungen nur aus dem IP-Bereich des Back-Ends von Azure Front Door Service zu akzeptieren. Wir arbeiten an der Integration mit [Azure-IP-Adressbereichen und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519), aber im Moment können Sie auf die IP-Bereiche wie folgt verweisen:
+Um Ihre Anwendung so zu sperren, dass sie nur Datenverkehr von Ihrer spezifischen Front Door-Ressource akzeptiert, müssen Sie IP-ACLs für Ihr Back-End einrichten und dann den Satz der akzeptierten Werte auf den Header „X-Forwarded-Host“ einschränken, der von Azure Front Door gesendet wird. Diese Schritte werden wie folgt beschrieben:
+
+- Konfigurieren Sie IP-ACLs für Ihre Back-Ends so, dass sie nur Datenverkehr aus dem Back-End-IP-Adressraum von Azure Front Door und den Infrastrukturdiensten von Azure akzeptieren. Wir arbeiten an der Integration in [Azure-IP-Adressbereiche und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519), aber im Moment können Sie auf die IP-Bereiche wie folgt verweisen:
  
-- **IPv4** - `147.243.0.0/16`
-- **IPv6** - `2a01:111:2050::/44`
+    - **IPv4**-Back-End-IP-Adressraum von Front Door: `147.243.0.0/16`
+    - **IPv6**-Back-End-IP-Adressraum von Front Door: `2a01:111:2050::/44`
+    - [Grundlegenden Infrastrukturdienste](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) von Azure über virtualisierte IP-Hostadressen: `168.63.129.16` und `169.254.169.254`
 
-> [!WARNING]
-> Unser Back-End-IP-Adressbereich kann später geändert werden, aber wir werden sicherstellen, dass vorher eine Integration mit [Azure-IP-Adressbereichen und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) erfolgt ist. Es wird empfohlen, dass Sie [Azure-IP-Adressbereiche und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) für alle Änderungen oder Updates abonnieren. 
+    > [!WARNING]
+    > Der Back-End-IP-Adressbereich von Front Door kann später geändert werden, aber wir werden sicherstellen, dass zuvor eine Integration in [Azure-IP-Adressbereiche und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) erfolgt ist. Es wird empfohlen, dass Sie [Azure-IP-Adressbereiche und Diensttags](https://www.microsoft.com/download/details.aspx?id=56519) für alle Änderungen oder Updates abonnieren.
+
+-   Filtern Sie auf die Werte für den eingehenden Header „**X-Forwarded-Host**“, der von Front Door gesendet wird. Die einzigen zulässigen Werte für den Header sollten alle Front-End-Hosts sein, die in Ihrer Front Door-Konfiguration definiert werden. Noch spezifischer: nur die Hostnamen, von denen Sie Datenverkehr für dieses spezielle Back-End akzeptieren möchten.
+    - Beispiel: Nehmen wir an, dass Ihre Front Door-Konfiguration die folgenden Front-End-Hosts _`contoso.azurefd.net`_ (A), _`www.contoso.com`_ (B), _ (C) und _`notifications.contoso.com`_ (D) aufweist. Es werden zwei Back-Ends X und Y verwendet. 
+    - Back-End X soll nur Datenverkehr von den Hostnamen A und B annehmen. Back-End Y kann Datenverkehr von A, C und D akzeptieren.
+    - Daher sollten Sie auf Back-End X nur Datenverkehr akzeptieren, bei dem der Header „**X-Forwarded-Host**“ auf _`contoso.azurefd.net`_ oder auf _`www.contoso.com`_ festgelegt ist. In allen anderen Fällen sollte Back-End X den Datenverkehr ablehnen.
+    - Analog dazu sollten Sie auf Back-End Y nur Datenverkehr akzeptieren, bei dem der Header „**X-Forwarded-Host**“ auf _`contoso.azurefd.net`_ , auf _`api.contoso.com`_ oder auf _`notifications.contoso.com`_ festgelegt ist. In allen anderen Fällen sollte Back-End Y den Datenverkehr ablehnen.
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Kann sich die Anycast-IP-Adresse während der Lebensdauer meiner Front Door-Instanz ändern?
 
-Die Front-End-Anycast-IP-Adresse für Ihre Front Door-Instanz sollte sich in der Regel nicht ändern und kann während der Front Door-Lebensdauer statisch bleiben. Es gibt hierfür jedoch **keine Garantien**. Es wird empfohlen, keine direkten Abhängigkeiten von der IP-Adresse herzustellen.  
+Die Front-End-Anycast-IP-Adresse für Ihre Front Door-Instanz sollte sich in der Regel nicht ändern und kann während der Front Door-Lebensdauer statisch bleiben. Es gibt hierfür jedoch **keine Garantien**. Es wird empfohlen, keine direkten Abhängigkeiten von der IP-Adresse herzustellen.
 
 ### <a name="does-azure-front-door-service-support-static-or-dedicated-ips"></a>Unterstützt Azure Front Door Service statische oder dedizierte IP-Adressen?
 
@@ -142,6 +151,11 @@ Front Door unterstützt die TLS-Versionen 1.0, 1.1 und 1.2. TLS 1.3 wird noch ni
 Um das HTTPS-Protokoll für die sichere Bereitstellung von Inhalten in einer benutzerdefinierten Front Door-Domäne zu aktivieren, können Sie ein von Azure Front Door Service verwaltetes oder Ihr eigenes Zertifikat verwenden.
 Die von Front Door verwaltete Option stellt ein SSL-Standardzertifikat über Digicert zur Verfügung und wird im Schlüsseltresor von Front Door gespeichert. Wenn Sie Ihr eigenes Zertifikat verwenden, können Sie ein Zertifikat einer unterstützten Zertifizierungsstelle integrieren, bei dem es sich um ein Standard-SSL-, erweitertes Validierungs- oder sogar um ein Platzhalterzertifikat handeln kann. Selbstsignierte Zertifikate werden nicht unterstützt. Weitere Informationen zu [Aktivieren von HTTPS für eine benutzerdefinierte Domäne](https://aka.ms/FrontDoorCustomDomainHTTPS).
 
+### <a name="does-front-door-support-autorotation-of-certificates"></a>Unterstützt Front Door die automatische Rotation von Zertifikaten?
+
+Bei der Option für verwaltete Zertifikate von Front Door werden die Zertifikate von Front Door automatisch rotiert. Wenn Sie ein verwaltetes Zertifikat von Front Door verwenden und feststellen, dass das Ablaufdatum des Zertifikats weniger als 60 Tage entfernt ist, erstellen Sie ein Supportticket.
+</br>Für Ihr eigenes benutzerdefiniertes SSL-Zertifikat wird automatische Rotation nicht unterstützt. Ähnlich wie bei der erstmaligen Einrichtung für eine bestimmte benutzerdefinierte Domäne müssen Sie Front Door auf die richtige Zertifikatversion in Ihrem Key Vault verweisen und sicherstellen, dass der Dienstprinzipal für Front Door noch Zugriff auf den Key Vault besitzt. Dieser aktualisierte Zertifikatrolloutvorgang von Front Door ist atomisch und verursacht keine Produktionsauswirkungen, sofern sich der Antragstellername oder der alternative Antragstellername (SAN) für das Zertifikat nicht ändert.
+
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door-service"></a>Welche Verschlüsselungssammlungen werden derzeit von Azure Front Door Service unterstützt?
 
 Die folgenden Verschlüsselungssammlungen werden derzeit von Azure Front Door Service unterstützt:
@@ -171,7 +185,7 @@ Ja. Azure Front Door Service unterstützt SSL-Abladung sowie End-to-End-SSL, das
 
 ### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Kann ich die SSL-Richtlinie für die Steuerung von SSL-Protokollversionen konfigurieren?
 
-Nein. Derzeit unterstützt Front Door weder die Ablehnung bestimmter TLS-Versionen noch können Sie die minimalen TLS-Versionen festlegen. 
+Nein. Zurzeit unterstützt Front Door weder die Ablehnung bestimmter TLS-Versionen noch können Sie die TLS-Mindestversion festlegen. 
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Kann ich Front Door so konfigurieren, dass nur bestimmte Verschlüsselungssammlungen unterstützt werden?
 

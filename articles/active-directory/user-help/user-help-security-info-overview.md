@@ -1,6 +1,6 @@
 ---
 title: Übersicht über die Sicherheitsinformation (Vorschau) – Azure Active Directory | Microsoft-Dokumentation
-description: Allgemeine Übersicht über den Bereich „Sicherheitsinformation“ mit Links zu anderen Artikeln über das Feature.
+description: Eine Liste mit Links zu Artikeln über die Seite „Sicherheitsinformationen“ und das entsprechende Feature.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,34 +9,37 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/11/2019
+ms.date: 05/08/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 234c7244f438926f43ddf31234a38c9034a6ca52
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d981ad0f02e9cef31a01a9d407de22cf63352c01
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453227"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68382210"
 ---
 # <a name="security-info-preview-overview"></a>Übersicht über die Sicherheitsinformation (Vorschau)
-Auf der Seite **Sicherheitsinformationen** können Sie Ihre Sicherheitsinformationen für die zweistufige Überprüfung und Kennwortzurücksetzung einrichten. Darüber hinaus können Sie auf dieser Seite Ihre Sicherheitsinformationen bearbeiten und Ihre Standardmethode ändern.
+
+Auf der Seite **Sicherheitsinformationen** können Sie Ihre Methoden für die zweistufige Überprüfung sowie Ihre Informationen für die Kennwortzurücksetzung einrichten. Darüber hinaus können Sie dort Ihre persönlichen Sicherheitsinformationen und Ihre Standardmethode für die Überprüfung aktualisieren.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Important]
 >Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
 
-## <a name="in-this-section"></a>Inhalt dieses Abschnitts
-Weitere Informationen zum Hinzufügen, Aktualisieren und Löschen Ihrer Sicherheitsinformationen finden Sie in den folgenden Artikeln – abhängig davon, welche Methode Sie verwenden möchten:
+## <a name="security-info-related-articles"></a>Artikel zur Sicherheitsinformation
 
-|Artikel |Beschreibung |
-|------|------------|
-|[Einrichten Ihrer Sicherheitsinformationen (Vorschauversion) über die Aufforderung auf der Anmeldeseite](security-info-setup-signin.md)|Beschreibt, wie Sie Ihre Sicherheitsinformationen einrichten, wenn Sie von der Anmeldeseite dazu aufgefordert werden.|
-|[Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App (Vorschau)](security-info-setup-auth-app.md)|Beschreibt, wie Sie Ihre Sicherheitsinformationen für die Verwendung einer Microsoft Authenticator-App als Methode einrichten.|
-|[Einrichten der Sicherheitsinformationen zur Verwendung von SMS (Vorschau)](security-info-setup-text-msg.md)|Beschreibt, wie Sie Ihre Sicherheitsinformationen für die Verwendung von SMS als Methode einrichten.|
-|[Einrichten der Sicherheitsinformation zur Verwendung von Telefonanrufen](security-info-setup-phone-number.md)| Beschreibt, wie Sie Ihre Telefonnummer als Ihre Methode einrichten.|
-|[Einrichten der Sicherheitsinformation zur Verwendung einer E-Mail-Adresse](security-info-setup-email.md)|Beschreibt, wie Sie Ihre E-Mail-Adresse zum Zurücksetzen Ihres Kennworts einrichten.|
-|[Einrichten der Sicherheitsinformation zur Verwendung von Sicherheitsfragen](security-info-setup-questions.md)|Beschreibt, wie Sie Ihre Sicherheitsfragen zum Zurücksetzen Ihres Kennworts einrichten.|
-|[Verwalten von App-Kennwörtern](security-info-app-passwords.md)|Beschreibt, wie Sie App-Kennwörter mithilfe der Sicherheitsinformation einrichten.|
-|[Anmeldung](user-help-sign-in.md)|Beschreibt, wie Sie sich mithilfe der festgelegten Methode anmelden.|
+Ausführliche Informationen und Anleitungen zum Hinzufügen, Aktualisieren und Löschen Ihrer Sicherheitsinformationen finden Sie in den folgenden Artikeln (abhängig davon, welche Methode Sie verwenden möchten):
+
+| Artikel | BESCHREIBUNG |
+| ------ | ------------ |
+| [Einrichten Ihrer Sicherheitsinformationen (Vorschauversion) über die Aufforderung auf der Anmeldeseite](security-info-setup-signin.md) | Anleitung zum Einrichten Ihrer Sicherheitsinformationen, wenn Sie auf der Anmeldeseite dazu aufgefordert werden. Diese Aufforderung wird nur angezeigt, wenn Sie die von Ihrer Organisation geforderten Sicherheitsinformationen noch nicht eingerichtet haben. Sollte die Aufforderung nicht angezeigt werden, können Sie stattdessen einen der anderen Artikel in dieser Tabelle verwenden, um Überprüfungsmethoden zu ändern und hinzuzufügen. |
+| [Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung einer Authentifikator-App](security-info-setup-auth-app.md) | Anleitung zum Einrichten der Microsoft Authenticator-App als Überprüfungsmethode. |
+| [Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung von SMS-Nachrichten](security-info-setup-text-msg.md) | Anleitung zum Einrichten von SMS-Nachrichten als Überprüfungsmethode. |
+| [Einrichten der Sicherheitsinformation (Vorschauversion) zur Verwendung von Telefonanrufen](security-info-setup-phone-number.md) | Anleitung zum Einrichten Ihrer Telefonnummer als Überprüfungsmethode. |
+| [Hinzufügen eines Sicherheitsschlüssels als Überprüfungsmethode](security-info-setup-security-key.md) | Anweisungen zum Registrieren eines Microsoft-kompatiblen Sicherheitsschlüssels als Überprüfungsmethode. |
+| [Einrichten der Sicherheitsinformationen (Vorschau) zum Verwenden von E-Mail-Adressen](security-info-setup-email.md) | Anleitung zum Hinzufügen Ihrer E-Mail-Adresse, damit Sie Ihr eigenes Kennwort zurücksetzen können. |
+| [Einrichten der Sicherheitsinformation (Vorschauversion) zur Verwendung von Sicherheitsfragen](security-info-setup-questions.md) | Anleitung zum Hinzufügen vordefinierter Sicherheitsfragen, damit Sie Ihr eigenes Kennwort zurücksetzen können. |
+| [Verwalten von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)](security-info-app-passwords.md) | Anleitung zum Erstellen von App-Kennwörtern für Apps, die keine zweistufige Überprüfung unterstützen, aber in einer Organisation verwendet werden, die die zweistufige Überprüfung verwendet. |
+| [Anmeldung](user-help-sign-in.md) |Beschreibt, wie Sie sich mithilfe der festgelegten Überprüfungsmethode anmelden. |

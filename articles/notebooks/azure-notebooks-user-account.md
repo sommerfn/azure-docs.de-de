@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: b8e5c5b14ecdbc63daf200b7d11e755822cd063b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 311f4d612c9deab23e7537b0c53ff3932c312cd4
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257007"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60632056"
 ---
 # <a name="your-user-account-for-azure-notebooks"></a>Ihr Benutzerkonto für Azure Notebooks
 
@@ -41,6 +41,9 @@ Microsoft-Konten werden zur Anmeldung bei einer beliebigen Anzahl von Microsoft-
 Wenn Sie sich nicht sicher sind, wählen Sie an der Kontoaufforderung den Befehl **Konto erstellen** aus. Sie können ein neues Microsoft-Konto mithilfe einer beliebigen E-Mail-Adresse eines beliebigen Anbieters erstellen.
 
 ![Befehl zum Erstellen eines neuen Microsoft-Kontos](media/accounts/create-new-microsoft-account.png)
+
+> [!Note]
+> Wenn Sie versuchen, ein neues Konto mit einer E-Mail-Adresse zu erstellen, der bereits ein Konto zugeordnet ist, wird möglicherweise die Meldung „Sie können sich hier nicht mit einer Geschäfts-, Schul- oder Uni-E-Mail-Adresse anmelden. Verwenden Sie eine persönliche E-Mail-Adresse wie Gmail oder Yahoo!, oder besorgen Sie sich eine neue Outlook-E-Mail.“ angezeigt. Versuchen Sie in diesem Fall, sich mit der Geschäfts-E-Mail-Adresse anzumelden, ohne ein neues Konto zu erstellen.
 
 Für Konten von Kindern ist der Zugriff auf Azure Notebooks standardmäßig gesperrt. Bei einem Anmeldeversuch mit dem Konto eines Kindes wird der unten dargestellte Fehler angezeigt:
 

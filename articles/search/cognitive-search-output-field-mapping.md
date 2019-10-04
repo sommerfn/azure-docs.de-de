@@ -1,21 +1,19 @@
 ---
 title: Zuordnen von mit der kognitiven Suche angereicherten Eingabefeldern zu Ausgabefeldern – Azure Search
 description: Extrahieren Sie Quelldatenfelder und reichern Sie diese mit Daten an, um sie Ausgabefeldern in einem Azure Search-Index zuzuordnen.
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
-ms.devlang: NA
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 05/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: dd62119b01465392a92c7e68231fed8027b04da2
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 4ceb8e6290e3e7f4fb552db13c97558db1c8c97e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750530"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265509"
 ---
 # <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>Zuordnen angereicherter Felder zu einem durchsuchbaren Index
 
@@ -26,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie angereicherte Eingabefelder Ausgabefelde
 Um Felder zuzuordnen, fügen Sie `outputFieldMappings` zu Ihrer Indexerdefinition hinzu, wie unten gezeigt:
 
 ```http
-PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
 api-key: [admin key]
 Content-Type: application/json
 ```

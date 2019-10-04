@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 693da06ce14a4854d5db49f588fa29d791060166
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fbb5f92258ff31dd7077bb1ade7fa7e5644c8bac
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108102"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65466935"
 ---
 # <a name="add-an-email-action"></a>Hinzufügen einer E-Mail-Aktion
 
@@ -102,11 +102,11 @@ In den folgenden Schritten wird gezeigt, wie Sie die E-Mail-Aktionen manuell ein
 
 1. Klicken Sie auf **office365-connector**:
 
-    ![APIConnection](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector.png)
+    ![APIConnection](./media/iot-accelerators-remote-monitoring-email-actions/apiconnector1.png)
 
 1. Klicken Sie auf das Banner, um die Autorisierung zu starten:
 
-    ![Autorisieren](./media/iot-accelerators-remote-monitoring-email-actions/connector.png)
+    ![Autorisieren](./media/iot-accelerators-remote-monitoring-email-actions/connector1.png)
 
 1. Klicken Sie auf **Autorisieren**. Sie werden zur Anmeldung aufgefordert. Bei dem für die Anmeldung verwendeten Konto muss es sich um die E-Mail-Adresse handeln, die von der Anwendung zum Senden von E-Mail-Benachrichtigungen verwendet wird:
 
@@ -116,7 +116,7 @@ In den folgenden Schritten wird gezeigt, wie Sie die E-Mail-Aktionen manuell ein
 
 1. Wenn Sie die E-Mail-Adresse ändern möchten, von der die Benachrichtigungen gesendet werden, klicken Sie auf **API-Verbindung bearbeiten**.
 
-    ![Ändern der E-Mail-Adresse](./media/iot-accelerators-remote-monitoring-email-actions/editemail.png)
+    ![Ändern der E-Mail-Adresse](./media/iot-accelerators-remote-monitoring-email-actions/editemail1.png)
 
 ### <a name="owner-role-outlook-setup"></a>Outlook-Einrichtung für die Rolle „Besitzer“
 
@@ -142,7 +142,7 @@ Mit den folgenden Schritten können Sie sich anmelden und E-Mail-Aktionen einric
 
 Der vorkonfigurierte Solution Accelerator für die Remoteüberwachung stellt eine einfache HTML-Vorlage für Aktions-E-Mails bereit. In der E-Mail-Vorlage werden Werte aus den Einstellungen der E-Mail-Aktionen verwendet. Hier sehen Sie eine Beispiel-E-Mail:
 
-![E-Mail-Beispiel](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate.png)
+![E-Mail-Beispiel](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate1.png)
 
 In den folgenden Schritte wird gezeigt, wie Sie die HTML-E-Mail-Vorlage bearbeiten. Sie können beispielsweise weitere Informationen aufnehmen oder benutzerdefinierte Bilder hinzufügen:
 

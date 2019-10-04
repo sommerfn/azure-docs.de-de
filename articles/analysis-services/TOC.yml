@@ -1,168 +1,130 @@
-items:
-- name: Dokumentation zu Analysis Services
-  href: index.md
+- name: Dokumentation zu Azure Analysis Services
+  href: index.yml
 - name: Übersicht
   items:
-  - name: Was ist Analysis Services?
-    href: analysis-services-overview.md
+    - name: Was ist Azure Analysis Services?
+      href: analysis-services-overview.md
 - name: Schnellstarts
   items:
-  - name: Erstellen eines Servers – Portal
-    href: analysis-services-create-server.md
-  - name: Erstellen eines Servers – PowerShell
-    href: analysis-services-create-powershell.md
-  - name: Konfigurieren der Serverfirewall – Portal
-    href: analysis-services-qs-firewall.md
+    - name: Erstellen eines Servers – Portal
+      href: analysis-services-create-server.md
+    - name: Erstellen eines Servers – PowerShell
+      href: analysis-services-create-powershell.md
+    - name: Konfigurieren der Serverfirewall – Portal
+      href: analysis-services-qs-firewall.md
 - name: Lernprogramme
   items:
-  - name: 1. Hinzufügen eines Beispielmodells aus dem Portal
-    href: analysis-services-create-sample-model.md
-  - name: 2. Konfigurieren von Serveradministrator- und Benutzerrollen
-    href: tutorials/analysis-services-tutorial-roles.md
-  - name: 3. Herstellen einer Verbindung mit Power BI Desktop
-    href: tutorials/analysis-services-tutorial-pbid.md
+    - name: 1. Hinzufügen eines Beispielmodells aus dem Portal
+      href: analysis-services-create-sample-model.md
+    - name: 2. Konfigurieren von Serveradministrator- und Benutzerrollen
+      href: tutorials/analysis-services-tutorial-roles.md
+    - name: 3. Herstellen einer Verbindung mit Power BI Desktop
+      href: tutorials/analysis-services-tutorial-pbid.md
 - name: Konzepte
   items:
-  - name: Authentifizierung und Benutzerberechtigungen
-    href: analysis-services-manage-users.md
-  - name: Automatisierung mit Dienstprinzipalen
-    href: analysis-services-service-principal.md
-  - name: Clientbibliotheken
-    href: analysis-services-data-providers.md
-  - name: Kompatibilitätsgrad
-    href: analysis-services-compat-level.md
-  - name: Herstellen einer Verbindung mit lokalen Datenquellen
-    href: analysis-services-gateway.md
-  - name: Herstellen einer Verbindung mit Servern
-    href: analysis-services-connect.md
-  - name: Hochverfügbarkeit
-    href: analysis-services-bcdr.md
-  - name: Unterstützte Datenquellen
-    href: analysis-services-datasource.md
+    - name: Authentifizierung und Benutzerberechtigungen
+      href: analysis-services-manage-users.md
+    - name: Automatisierung mit Dienstprinzipalen
+      href: analysis-services-service-principal.md
+    - name: Clientbibliotheken
+      href: analysis-services-data-providers.md
+    - name: Kompatibilitätsgrad
+      href: 'https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services'
+    - name: Herstellen einer Verbindung mit lokalen Datenquellen
+      href: analysis-services-gateway.md
+    - name: Herstellen einer Verbindung mit Servern
+      href: analysis-services-connect.md
+    - name: Hochverfügbarkeit
+      href: analysis-services-bcdr.md
+    - name: Unterstützte Datenquellen
+      href: analysis-services-datasource.md
 - name: Vorgehensweise
   items:
-  - name: Server
-    items:
-    - name: Sichern und Wiederherstellen
-      href: analysis-services-backup.md
-    - name: Konfigurieren eines Alias für den Servernamen
-      href: analysis-services-server-alias.md
-    - name: Konfigurieren des horizontalen Hochskalierens
-      href: analysis-services-scale-out.md
-    - name: Installieren und Konfigurieren eines lokalen Datengateways
-      href: analysis-services-gateway-install.md
-    - name: Verwenden eines Gateways für Datenquellen in einer Azure Virtual Network-Instanz
-      href: analysis-services-vnet-gateway.md
-    - name: Verwalten eines Servers
-      href: analysis-services-manage.md
-    - name: Überwachen von Servermetriken
-      href: analysis-services-monitor.md
-    - name: Einrichten der Diagnoseprotokollierung
-      href: analysis-services-logging.md
-    - name: Erstellen eines Dienstprinzipals – Azure-Portal
-      href: ../active-directory/develop/howto-create-service-principal-portal.md
-    - name: Erstellen eines Dienstprinzipals – PowerShell
-      href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
-    - name: Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle
-      href: analysis-services-addservprinc-admins.md
-  - name: Modell
-    items:
-    - name: Bereitstellen über Visual Studio (SSDT)
-      href: analysis-services-deploy.md
-    - name: Aktualisieren mit REST-API
-      href: analysis-services-async-refresh.md
-    - name: Datenmodellierung in Visual Studio – Tutorial zu Adventure Works (1400)
-      href: tutorials/aas-adventure-works-tutorial.md
+    - name: Server
       items:
-      - name: 1. Erstellen eines tabellarischen Modellprojekts
-        href: tutorials/aas-lesson-1-create-a-new-tabular-model-project.md
-      - name: 2. Abrufen von Daten
-        href: tutorials/aas-lesson-2-get-data.md
-      - name: 3. Markieren als Datumstabelle
-        href: tutorials/aas-lesson-3-mark-as-date-table.md
-      - name: 4. Erstellen von Beziehungen
-        href: tutorials/aas-lesson-4-create-relationships.md
-      - name: 5. Erstellen berechneter Spalten
-        href: tutorials/aas-lesson-5-create-calculated-columns.md
-      - name: 6. Erstellen von Measures
-        href: tutorials/aas-lesson-6-create-measures.md
-      - name: 7. Erstellen von Key Performance Indicators
-        href: tutorials/aas-lesson-7-create-key-performance-indicators.md
-      - name: 8. Erstellen von Perspektiven
-        href: tutorials/aas-lesson-8-create-perspectives.md
-      - name: 9. Erstellen von Hierarchien
-        href: tutorials/aas-lesson-9-create-hierarchies.md
-      - name: 10. Erstellen von Partitionen
-        href: tutorials/aas-lesson-10-create-partitions.md
-      - name: 11. Erstellen von Rollen
-        href: tutorials/aas-lesson-11-create-roles.md
-      - name: 12. Analysieren in Excel
-        href: tutorials/aas-lesson-12-analyze-in-excel.md
-      - name: 13. Bereitstellen
-        href: tutorials/aas-lesson-13-deploy.md
-      - name: Ergänzende Lektion – Detailzeilen
-        href: tutorials/aas-supplemental-lesson-detail-rows.md
-      - name: Ergänzende Lektion – Dynamische Sicherheit
-        href: tutorials/aas-supplemental-lesson-dynamic-security.md
-      - name: Ergänzende Lektion – Unregelmäßige Hierarchien
-        href: tutorials/aas-supplemental-lesson-ragged-hierarchies.md
-  - name: Sicherheit
-    items:
-    - name: Verwalten von Datenbankbenutzern
-      href: analysis-services-database-users.md
-    - name: Verwalten von Serveradministratoren
-      href: analysis-services-server-admins.md
-  - name: Verbinden
-    items:
-    - name: Herstellen einer Verbindung mit Excel
-      href: analysis-services-connect-excel.md
-    - name: Herstellen einer Verbindung mit Power BI
-      href: analysis-services-connect-pbi.md
-    - name: Erstellen einer ODC-Datei
-      href: analysis-services-odc.md
+        - name: Sichern und Wiederherstellen
+          href: analysis-services-backup.md
+        - name: Konfigurieren eines Alias für den Servernamen
+          href: analysis-services-server-alias.md
+        - name: Konfigurieren des horizontalen Hochskalierens
+          href: analysis-services-scale-out.md
+        - name: Installieren und Konfigurieren eines lokalen Datengateways
+          href: analysis-services-gateway-install.md
+        - name: Verwenden eines Gateways für Datenquellen in einer Azure Virtual Network-Instanz
+          href: analysis-services-vnet-gateway.md
+        - name: Verwalten eines Servers
+          href: analysis-services-manage.md
+        - name: Überwachen von Servermetriken
+          href: analysis-services-monitor.md
+        - name: Einrichten der Diagnoseprotokollierung
+          href: analysis-services-logging.md
+        - name: Erstellen eines Dienstprinzipals – Azure-Portal
+          href: ../active-directory/develop/howto-create-service-principal-portal.md
+        - name: Erstellen eines Dienstprinzipals – PowerShell
+          href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
+        - name: Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle
+          href: analysis-services-addservprinc-admins.md
+    - name: Modell
+      items:
+        - name: Bereitstellen über Visual Studio (SSDT)
+          href: analysis-services-deploy.md
+        - name: Aktualisieren mit REST-API
+          href: analysis-services-async-refresh.md
+        - name: Aktualisieren mit Logic Apps
+          href: analysis-services-refresh-logic-app.md
+        - name: Aktualisieren mit Azure Automation
+          href: analysis-services-refresh-azure-automation.md
+    - name: Sicherheit
+      items:
+        - name: Verwalten von Datenbankbenutzern
+          href: analysis-services-database-users.md
+        - name: Verwalten von Serveradministratoren
+          href: analysis-services-server-admins.md
+    - name: Verbinden
+      items:
+        - name: Herstellen einer Verbindung mit Excel
+          href: analysis-services-connect-excel.md
+        - name: Herstellen einer Verbindung mit Power BI
+          href: analysis-services-connect-pbi.md
+        - name: Erstellen einer ODC-Datei
+          href: analysis-services-odc.md
 - name: Verweis
   items:
-  - name: PowerShell
-    href: analysis-services-powershell.md
-  - name: REST
-    href: /rest/api/analysisservices
-  - name: Resource Manager-Vorlage
-    href: /azure/templates/microsoft.analysisservices/servers
-  - name: DAX
-    href: https://msdn.microsoft.com/library/gg413422.aspx
-  - name: Power Query M
-    href: https://msdn.microsoft.com/library/mt211003.aspx
-  - name: TMSL-Referenz (Tabular Model Scripting Language)
-    href: https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference
-  - name: Tabellenobjektmodell (TOM)
-    href: https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo
-  - name: Grenzwerte für Ressourcen und Objekte
-    href: analysis-services-capacity-limits.md
+    - name: PowerShell
+      href: analysis-services-powershell.md
+    - name: REST
+      href: /rest/api/analysisservices
+    - name: Resource Manager-Vorlage
+      href: /azure/templates/microsoft.analysisservices/servers
+    - name: DAX
+      href: 'https://docs.microsoft.com/dax/data-analysis-expressions-dax-reference'
+    - name: Power Query M
+      href: 'https://docs.microsoft.com/powerquery-m/power-query-m-reference'
+    - name: TMSL-Referenz (Tabular Model Scripting Language)
+      href: 'https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference'
+    - name: Tabellenobjektmodell (TOM)
+      href: 'https://docs.microsoft.com/bi-reference/tom/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo'
+    - name: Grenzwerte für Ressourcen und Objekte
+      href: analysis-services-capacity-limits.md
 - name: Ressourcen
   items:
-  - name: Beispiele
-    href: analysis-services-samples.md
-  - name: Teamblog zu Analysis Services
-    href: https://blogs.msdn.microsoft.com/analysisservices/
-  - name: Azure Analysis Services-Forum
-    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
-  - name: Azure-Status
-    href: https://azure.microsoft.com/status/
-  - name: Feedback
-    href: https://feedback.azure.com/forums/556165-azure-analysis-services
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/analysis-services/
-  - name: Preisrechner
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-analysis-services
-  - name: Videos
-    href: https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest
-ms.openlocfilehash: 4d3a592d4d0d9bd0a75dcd1cc76deb2a273bdf09
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525261"
+    - name: Beispiele
+      href: analysis-services-samples.md
+    - name: Teamblog zu Analysis Services
+      href: 'https://blogs.msdn.microsoft.com/analysisservices/'
+    - name: Azure Analysis Services-Forum
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+    - name: Azure-Status
+      href: 'https://azure.microsoft.com/status/'
+    - name: Feedback
+      href: 'https://feedback.azure.com/forums/556165-azure-analysis-services'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/analysis-services/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-analysis-services'
+    - name: Videos
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest'

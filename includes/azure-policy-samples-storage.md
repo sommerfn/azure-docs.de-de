@@ -1,19 +1,19 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 08/21/2019
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: fe6c6d461fd6b99ce2ce57ebdd61a3f3e961489c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 42e965b188db2b84579ab322fbe19781000dff7e
+ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318237"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69894139"
 ---
 ## <a name="storage"></a>Storage
 
@@ -24,4 +24,3 @@ ms.locfileid: "53318237"
 | [Verweigern des kalten Zugriffstierings für Speicherkonten](../articles/governance/policy/samples/deny-cool-access-tiering.md) | Untersagt die Verwendung des kalten Zugriffstierings für Blob-Speicherkonten.  |
 | [Gewährleisten eines HTTPS-Datenverkehrs ausschließlich für Speicherkonten](../articles/governance/policy/samples/ensure-https-storage-account.md) | Erfordert, dass Speicherkonten HTTPS-Datenverkehr verwenden.  |
 | [Gewährleisten der Verschlüsselung von Speicherdateien](../articles/governance/policy/samples/ensure-storage-file-encryption.md) | Erfordert, dass die Dateiverschlüsselung für Speicherkonten aktiviert ist.  |
-| [Verlangen der Speicherkontenverschlüsselung](../articles/governance/policy/samples/require-storage-account-encryption.md) | Erfordert das Verwenden der Blobverschlüsselung für das Speicherkonto.  |

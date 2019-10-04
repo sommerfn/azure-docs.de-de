@@ -5,15 +5,15 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 51754021f5029a751be90bfc4194ac6347c1e278
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 780db0cc5a99adfd2e7f8cd5be20a191bba009e8
+ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005210"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68708134"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Schützen eines Dateiservers mit Azure Site Recovery 
 
@@ -56,7 +56,7 @@ Das folgende Diagramm hilft Ihnen beim Festlegen der Strategie für Ihre Dateise
 
 |Environment  |Empfehlung  |Zu berücksichtigende Punkte |
 |---------|---------|---------|
-|Dateiserverumgebung mit oder ohne DFSR|   [Verwenden von Site Recovery für die Replikation](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery unterstützt weder freigegebene Datenträgercluster noch Network Attached Storage (NAS). Falls diese Konfigurationen in Ihrer Umgebung genutzt werden, können Sie einen der anderen Ansätze verwenden. <br> Site Recovery unterstützt SMB 3.0 nicht. Die replizierte VM enthält die an Dateien vorgenommenen Änderungen nur, wenn diese am ursprünglichen Speicherort der Dateien aktualisiert werden.
+|Dateiserverumgebung mit oder ohne DFSR|   [Verwenden von Site Recovery für die Replikation](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery unterstützt weder freigegebene Datenträgercluster noch Network Attached Storage (NAS). Falls diese Konfigurationen in Ihrer Umgebung genutzt werden, können Sie einen der anderen Ansätze verwenden. <br> Site Recovery unterstützt SMB 3.0 nicht. Die replizierte VM enthält die an Dateien vorgenommenen Änderungen nur, wenn diese am ursprünglichen Speicherort der Dateien aktualisiert werden.<br>  Site Recovery bietet einen fast synchronen Datenreplikationsprozess. Daher kann es bei einem ungeplanten Failoverszenario zu einem möglichen Datenverlust zu Problemen durch nicht übereinstimmende Updatesequenznummern kommen.
 |Dateiserverumgebung mit DFSR     |  [Erweitern von DFSR auf eine Azure-IaaS-VM](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      DFSR funktioniert gut in Umgebungen mit begrenzter Bandbreite. Dieser Ansatz erfordert eine Azure-VM, die immer ausgeführt wird. Sie müssen die Kosten für die VM in Ihrer Planung berücksichtigen.         |
 |Azure-IaaS-VM     |     Dateisynchronisierung    |     Wenn Sie die Dateisynchronisierung in einem Notfallwiederherstellungsszenario verwenden, sind während eines Failovers manuelle Aktionen erforderlich, um sicherzustellen, dass die Dateifreigaben auf transparente Weise für die Clientcomputer zugänglich sind. Die Dateisynchronisierung erfordert, dass Port 445 für den Clientcomputer geöffnet ist.     |
 
@@ -64,7 +64,7 @@ Das folgende Diagramm hilft Ihnen beim Festlegen der Strategie für Ihre Dateise
 ### <a name="site-recovery-support"></a>Site Recovery-Unterstützung
 Da die Site Recovery-Replikation anwendungsunabhängig ist, gelten diese Empfehlungen voraussichtlich auch für die folgenden Szenarien.
 
-| Quelle    |Sekundärer Standort    |Azure
+| `Source`    |Sekundärer Standort    |Azure
 |---------|---------|---------|
 |Azure| -|Ja|
 |Hyper-V|   Ja |Ja
@@ -74,6 +74,8 @@ Da die Site Recovery-Replikation anwendungsunabhängig ist, gelten diese Empfehl
 
 > [!IMPORTANT]
 > Bevor Sie mit einem der folgenden drei Ansätze fortfahren, sollten Sie sicherstellen, dass die folgenden Abhängigkeiten geregelt sind.
+
+
 
 **Site-to-Site-Konnektivität**: Es muss eine direkte Verbindung zwischen dem lokalen Standort und dem Azure-Netzwerk hergestellt werden, um die Kommunikation zwischen Servern zu ermöglichen. Verwenden Sie eine sichere Site-to-Site-VPN-Verbindung mit einem virtuellen Azure-Netzwerk, das als Notfallwiederherstellungsstandort dient. Weitere Informationen finden Sie im Artikel zum [Herstellen einer Site-to-Site-VPN-Verbindung zwischen einem lokalen Standort und einem virtuellen Azure-Netzwerk](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal).
 

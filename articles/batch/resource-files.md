@@ -3,17 +3,17 @@ title: Erstellen und Verwenden von Ressourcendateien – Azure Batch | Microsoft
 description: Erfahren Sie, wie Sie Azure Batch-Ressourcendateien aus verschiedenen Eingabequellen erstellen.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 679a1c60e44694bde86cafba21d7f1d2c6fb94d9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 9c55b22d1cb85fb645087cf48b54f9d5ac12d58f
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995624"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68322182"
 ---
 # <a name="creating-and-using-resource-files"></a>Erstellen und Verwenden von Ressourcendateien
 
@@ -38,7 +38,7 @@ Optionen für die Erstellung einer Ressourcendatei:
 
 ### <a name="storage-container-url"></a>Speichercontainer-URL
 
-Die Verwendung einer Speichercontainer-URL bedeutet, dass Sie auf Dateien in jedem Speichercontainer in Azure zugreifen können. Dafür sind die richtigen Berechtigungen erforderlich.
+Die Verwendung einer Speichercontainer-URL bedeutet, dass Sie mit den richtigen Berechtigungen auf Dateien in jedem Speichercontainer in Azure zugreifen können.
 
 In diesem C#-Beispiel wurden die Dateien bereits als Blobspeicher in einen Azure-Speichercontainer hochgeladen. Um auf die Daten zuzugreifen, die für die Erstellung einer Ressourcendatei benötigt werden, müssen wir zunächst Zugriff auf den Speichercontainer erhalten.
 

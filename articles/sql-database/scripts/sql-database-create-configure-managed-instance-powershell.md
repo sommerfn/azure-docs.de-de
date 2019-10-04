@@ -10,14 +10,13 @@ ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: c85b967615e866635cb4dd93be5ddeb78a8c7129
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 32b3c3b45c627d8dfdb42642228a7f9d9786111e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357007"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569975"
 ---
 # <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>Erstellen einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von PowerShell
 
@@ -26,7 +25,7 @@ In diesem PowerShell-Beispiel wird eine verwaltete Azure SQL-Datenbank-Instanz 
 > [!IMPORTANT]
 > Informationen zu Einschränkungen finden Sie unter [unterstützte Regionen](../sql-database-managed-instance-resource-limits.md#supported-regions) und [unterstützte Abonnementtypen](../sql-database-managed-instance-resource-limits.md#supported-subscription-types).
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 1.4.0 von Azure PowerShell verwenden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 

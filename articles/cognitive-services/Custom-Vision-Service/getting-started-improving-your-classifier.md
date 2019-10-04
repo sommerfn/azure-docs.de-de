@@ -1,6 +1,6 @@
 ---
 title: Verbessern der Klassifizierung – Custom Vision Service
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Hier wird beschrieben, wie Sie die Qualität Ihrer Klassifizierung verbessern.
 services: cognitive-services
 author: PatrickFarley
@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 35f83832b0ceb7507b39095e9cc974d82a480c69
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d71c750185589fd488df70b63fd48e9e674ee3dc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883072"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561047"
 ---
 # <a name="how-to-improve-your-classifier"></a>Verbessern der Klassifizierung
 
@@ -100,7 +100,7 @@ Wenn Sie die Bildklassifizierung durch Senden von Bildern an den Endpunkt der Vo
 
 ## <a name="visually-inspect-predictions"></a>Visuelle Überprüfung von Vorhersagen
 
-Um Bildvorhersagen zu überprüfen, wechseln Sie zur Registerkarte __Training Images (Trainingsbilder)__, wählen Sie Ihre vorherige Trainingsiteration im Dropdownmenü **Iteration** aus, und überprüfen Sie eines oder mehrere Tags im Abschnitt **Tags**. In der Ansicht sollten nun die Bilder rot umrahmt sein, für die das Modell das angegebene Tag nicht ordnungsgemäß vorhergesagt hat.
+Um Bildvorhersagen zu überprüfen, wechseln Sie zur Registerkarte __Training Images (Trainingsbilder)__ , wählen Sie Ihre vorherige Trainingsiteration im Dropdownmenü **Iteration** aus, und überprüfen Sie eines oder mehrere Tags im Abschnitt **Tags**. In der Ansicht sollten nun die Bilder rot umrahmt sein, für die das Modell das angegebene Tag nicht ordnungsgemäß vorhergesagt hat.
 
 ![Abbildung des Iterationsverlaufs](./media/getting-started-improving-your-classifier/iteration.png)
 

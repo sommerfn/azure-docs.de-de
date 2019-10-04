@@ -4,23 +4,22 @@ description: Hier erfahren Sie, wie Sie die Sicherheitserweiterung Symantec Endp
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-service-management
 ms.assetid: 19dcebc7-da6b-4510-907b-d64088e81fa2
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: roiyz
-ms.openlocfilehash: 65b52c88741e618e8048451370918b06db73a651
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: akjosh
+ms.openlocfilehash: 315cb5f22a3667db93c2421b924ac0d988e56164
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014423"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168846"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer
 > [!IMPORTANT] 
@@ -68,7 +67,7 @@ So überprüfen Sie, ob die Symantec-Sicherheitserweiterung installiert wurde un
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird][Logon]
 
-[Azure-VM-Erweiterungen und -Features][Ext]
+[Azure-VM-Erweiterungen und Features][Ext]
 
 <!--Link references-->
 [Symantec]: https://www.symantec.com/connect/blogs/symantec-endpoint-protection-now-microsoft-azure

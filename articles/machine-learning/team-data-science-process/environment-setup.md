@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2c66da6717018237aebaf5fdaf803a8ac98f82be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 028f289092a0183072ab0ba0be29f9d1f79781bc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459090"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534323"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>Einrichten von Data Science-Umgebungen für die Verwendung im Team Data Science-Prozess
 Der Team Data Science-Prozess verwendet verschiedene Data Science-Umgebungen für die Speicherung, Verarbeitung und Analyse von Daten. Dazu zählen Azure Blob Storage, verschiedene Typen von virtuellen Azure-Computern, HDInsight (Hadoop)-Cluster und Azure Machine Learning-Arbeitsbereiche. Die Entscheidung, welche Art von Umgebung Sie verwenden, hängt von der Art und der Menge der Daten ab, die modelliert werden sollen, sowie vom Ziel für die Daten in der Cloud. 
@@ -37,4 +37,3 @@ Informieren Sie sich darüber, wie Sie Folgendes erstellen:
 - [DSVM unter Windows](../data-science-virtual-machine/provision-vm.md)
 - [DSVM unter Ubuntu](../data-science-virtual-machine/dsvm-ubuntu-intro.md)
 - [DSVM unter CentOS](../data-science-virtual-machine/linux-dsvm-intro.md)
-- [Virtueller Deep Learning-Computer](../data-science-virtual-machine/provision-deep-learning-dsvm.md)

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 4d4bc69f00f86bc81c353ef0cc40f37f000ba6c4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 7078a1a5edc310c799690f0f7236dd0947e3290b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670437"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67059184"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric 
 > [!div class="op_single_selector"]
@@ -55,12 +55,34 @@ Service Fabric stellt einen Satz von APIs für die folgende Funktionalität im Z
 - Verwalten der Aufbewahrung von Sicherungen (demnächst)
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Service Fabric-Cluster mit Fabric-Version 6.2 und höher. Der Cluster muss unter Windows Server eingerichtet werden. Schritte zum Erstellen eines Service Fabric-Clusters mit der Azure-Ressourcevorlage finden Sie in diesem [Artikel](service-fabric-cluster-creation-via-arm.md).
+* Service Fabric-Cluster mit Fabric-Version 6.4 oder höher. Schritte zum Erstellen eines Service Fabric-Clusters mit der Azure-Ressourcevorlage finden Sie in diesem [Artikel](service-fabric-cluster-creation-via-arm.md).
 * X.509-Zertifikat für die Verschlüsselung der Geheimnisse, die für die Verbindung mit dem Speicher zum Speichern von Sicherungen benötigt werden. Informationen zum Abrufen oder Erstellen eines X.509-Zertifikats finden Sie in diesem [Artikel](service-fabric-cluster-creation-via-arm.md).
 * Service Fabric-Anwendung für statusbehaftete zuverlässige Dienste, die mit dem Service Fabric SDK, Version 3.0 oder höher, erstellt wurde. Für Anwendungen für .NET Core 2.0 muss die Anwendung mit dem Service Fabric SDK, Version 3.1 oder höher, erstellt werden.
 * Erstellen Sie ein Azure Storage-Konto zum Speichern von Anwendungssicherungen.
+* Installieren Sie das Microsoft.ServiceFabric.Powershell.Http-Modul [Vorschau], um Konfigurationsaufrufe vorzunehmen.
+
+```powershell
+    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+```
+
+* Stellen Sie mit dem Befehl `Connect-SFCluster` sicher, dass der Cluster verbunden ist, bevor Sie Konfigurationsanforderungen mit dem Microsoft.ServiceFabric.Powershell.Http-Modul vornehmen.
+
+```powershell
+
+    Connect-SFCluster -ConnectionEndpoint 'https://mysfcluster.southcentralus.cloudapp.azure.com:19080'   -X509Credential -FindType FindByThumbprint -FindValue '1b7ebe2174649c45474a4819dafae956712c31d3' -StoreLocation 'CurrentUser' -StoreName 'My' -ServerCertThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'  
+
+```
 
 ## <a name="enabling-backup-and-restore-service"></a>Aktivieren des Diensts für Sicherungen und Wiederherstellungen
+
+### <a name="using-azure-portal"></a>Verwenden des Azure-Portals
+
+Aktivieren Sie das Kontrollkästchen `Include backup restore service` unter `+ Show optional settings` auf der Registerkarte `Cluster Configuration`.
+
+![Aktivieren des Sicherungswiederherstellungsdiensts mit dem Portal][1]
+
+
+### <a name="using-azure-resource-manager-template"></a>Verwenden von Azure Resource Manager-Vorlagen
 Zuerst müssen Sie den _Dienst für Sicherungen und Wiederherstellungen_ in Ihrem Cluster aktivieren. Rufen Sie die Vorlage für den Cluster ab, den Sie bereitstellen möchten. Sie können entweder die [Beispielvorlagen](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) verwenden oder eine Resource Manager-Vorlage erstellen. Aktivieren Sie den _Dienst für Sicherungen und Wiederherstellungen_ mit den folgenden Schritten:
 
 1. Überprüfen Sie, ob `apiversion` für die `Microsoft.ServiceFabric/clusters`-Ressource auf **`2018-02-01`** festgelegt ist. Wenn nicht, aktualisieren Sie sie wie im folgenden Codeausschnitt:
@@ -117,6 +139,18 @@ Der erste Schritt ist das Erstellen der Sicherungsrichtlinie, die den Sicherungs
 
 Verwenden Sie für den Sicherungsspeicher das oben erstellte Azure Storage-Konto. Container `backup-container` ist zum Speichern von Sicherungen konfiguriert. Ein Container mit diesem Namen wird während des Sicherungsuploads erstellt, wenn er nicht bereits vorhanden ist. Füllen Sie `ConnectionString` mit einer gültigen Verbindungszeichenfolge für das Azure Storage-Konto auf, und ersetzen Sie dabei `account-name` durch den Namen Ihres Speicherkontos und `account-key` durch Ihren Speicherkontoschlüssel.
 
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell mit dem Microsoft.ServiceFabric.Powershell.Http-Modul
+
+Führen Sie die folgenden PowerShell-Cmdlets zum Erstellen einer neuen Sicherungsrichtlinie aus. Ersetzen Sie `account-name` durch den Namen Ihres Speicherkontos und `account-key` durch Ihren Speicherkontoschlüssel.
+
+```powershell
+
+New-SFBackupPolicy -Name 'BackupPolicy1' -AutoRestoreOnDataLoss $true -MaxIncrementalBackups 20 -FrequencyBased -Interval 00:15:00 -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container' -Basic -RetentionDuration '10.00:00:00'
+
+```
+
+#### <a name="rest-call-using-powershell"></a>Rest-Aufruf mithilfe von PowerShell
+
 Führen Sie das folgende PowerShell-Skript zum Aufrufen der erforderlichen REST-API aus, um die neue Richtlinie zu erstellen. Ersetzen Sie `account-name` durch den Namen Ihres Speicherkontos und `account-key` durch Ihren Speicherkontoschlüssel.
 
 ```powershell
@@ -148,13 +182,20 @@ $body = (ConvertTo-Json $BackupPolicy)
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/BackupRestore/BackupPolicies/$/Create?api-version=6.4"
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
-```
 
-> [!IMPORTANT]
-> Aufgrund eines Problems in der Runtime müssen Sie sicherstellen, dass die Beibehaltungsdauer in der Aufbewahrungsrichtlinie auf weniger als 24 Tage festgelegt ist. Andernfalls kommt es für den Sicherungs-/Wiederherstellungsdienst nach dem Replikatfailover zu einem Quorumsverlust.
+```
 
 ### <a name="enable-periodic-backup"></a>Aktivieren der regelmäßigen Sicherung
 Nach dem Definieren der Sicherungsrichtlinie zum Erfüllen der Datenschutzanforderungen der Anwendung muss die Sicherungsrichtlinie mit der Anwendung verknüpft werden. Je nach Anforderungen kann die Sicherungsrichtlinie einer Anwendung, einem Dienst oder einer Partition zugeordnet werden.
+
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell mit dem Microsoft.ServiceFabric.Powershell.Http-Modul
+
+```powershell
+
+Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupPolicy1'
+
+```
+#### <a name="rest-call-using-powershell"></a>Rest-Aufruf mithilfe von PowerShell
 
 Führen Sie das folgende PowerShell-Skript zum Aufrufen der erforderlichen REST-API aus, um die Sicherungsrichtlinie mit dem Namen `BackupPolicy1`, die im obigen Schritt erstellt wurde, der Anwendung `SampleApp` zuzuordnen.
 
@@ -179,6 +220,15 @@ Nach der Aktivierung der Sicherung auf Anwendungsebene werden alle Partitionen, 
 
 Sicherungen, die mit allen Partitionen verknüpft sind, die zu zuverlässigen statusbehafteten Diensten und Reliable Actors der Anwendung gehören, können mithilfe der _GetBackups_-API aufgelistet werden. Sicherungen können für eine Anwendung, einen Dienst oder eine Partition aufgelistet werden.
 
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell mit dem Microsoft.ServiceFabric.Powershell.Http-Modul
+
+```powershell
+    
+Get-SFApplicationBackupList -ApplicationId WordCount
+```
+
+#### <a name="rest-call-using-powershell"></a>Rest-Aufruf mithilfe von PowerShell
+
 Führen Sie das folgende PowerShell-Skript zum Aufrufen der HTTP-API aus, um die für alle Partitionen in der Anwendung `SampleApp` erstellten Sicherungen aufzulisten.
 
 ```powershell
@@ -189,6 +239,7 @@ $response = Invoke-WebRequest -Uri $url -Method Get -CertificateThumbprint '1b7e
 $BackupPoints = (ConvertFrom-Json $response.Content)
 $BackupPoints.Items
 ```
+
 Beispielausgabe für die oben genannte Ausführung:
 
 ```
@@ -230,15 +281,13 @@ FailureError            :
 ```
 
 ## <a name="limitation-caveats"></a>Einschränkungen/ Vorbehalte
-- Keine in Service Fabric integrierten PowerShell-Cmdlets.
+- Service Fabric PowerShell-Cmdlets befinden sich im Vorschaumodus.
 - Keine Unterstützung für Service Fabric-Cluster unter Linux.
-
-## <a name="known-issues"></a>Bekannte Probleme
-- Stellen Sie sicher, dass die Beibehaltungsdauer auf weniger als 24 Tage konfiguriert ist. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Grundlegendes zur Konfiguration der regelmäßigen Sicherung](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [REST-API-Referenz zu Sicherung/Wiederherstellung](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent_Azure.png
+[1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png
 

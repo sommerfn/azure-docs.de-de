@@ -4,14 +4,14 @@ description: Es wird beschrieben, wie Sie den Azure Cosmos DB-ODBC-Treiber zum E
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: a4cf3a9c19497057d7799be3bec78ad0de97e71a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b859d01a39f906f518a82d468c3c9267545b9a07
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58851059"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616895"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
 
@@ -23,9 +23,9 @@ Der Azure Cosmos DB-ODBC-Treiber ist ODBC 3.8-konform und unterstützt die ANSI 
 > Das Herstellen einer Verbindung mit Azure Cosmos DB mit dem ODBC-Treiber wird derzeit nur für Azure Cosmos DB-SQL-API-Konten unterstützt.
 
 ## <a name="why-do-i-need-to-normalize-my-data"></a>Warum muss ich meine Daten normalisieren?
-Azure Cosmos DB ist eine schemalose Datenbank, die eine schnelle Anwendungsentwicklung und das Durchlaufen von Datenmodellen ermöglicht, ohne auf ein striktes Schema beschränkt zu sein. Eine einzelne Azure Cosmos DB-Datenbank kann JSON-Dokumente mit unterschiedlichen Strukturen enthalten. Dies ist eine gute Voraussetzung für die schnelle Anwendungsentwicklung. Aber wenn Sie Daten analysieren und mit Datenanalyse- und BI-Tools Berichte dazu erstellen möchten, müssen die Daten häufig vereinfacht und an ein bestimmtes Schema angepasst werden.
+Azure Cosmos DB ist eine schemalose Datenbank, die eine schnelle Anwendungsentwicklung und das Durchlaufen von Datenmodellen ermöglicht, ohne auf ein striktes Schema beschränkt zu sein. Eine einzelne Azure Cosmos-Datenbank kann JSON-Dokumente mit unterschiedlichen Strukturen enthalten. Dies ist eine gute Voraussetzung für die schnelle Anwendungsentwicklung. Aber wenn Sie Daten analysieren und mit Datenanalyse- und BI-Tools Berichte dazu erstellen möchten, müssen die Daten häufig vereinfacht und an ein bestimmtes Schema angepasst werden.
 
-An dieser Stelle kommt der ODBC-Treiber ins Spiel. Mit dem ODBC-Treiber können Sie Daten in Azure Cosmos DB jetzt in Tabellen und Ansichten renormalisieren, die Ihre Anforderungen an die Datenanalyse und Berichterstellung erfüllen. Die renormalisierten Schemas haben keinerlei Auswirkung auf die zugrunde liegenden Daten, und die Entwickler sind nicht auf ihre Nutzung beschränkt. Vielmehr ermöglichen Sie Ihnen die Nutzung ODBC-konformer Tools zum Zugreifen auf die Daten. Ihre Azure Cosmos DB-Datenbank ist dann nicht mehr nur das Lieblingstool Ihres Entwicklungsteams, sondern auch die Datenanalysten werden sie zu schätzen wissen.
+An dieser Stelle kommt der ODBC-Treiber ins Spiel. Mit dem ODBC-Treiber können Sie Daten in Azure Cosmos DB jetzt in Tabellen und Ansichten renormalisieren, die Ihre Anforderungen an die Datenanalyse und Berichterstellung erfüllen. Die renormalisierten Schemas haben keinerlei Auswirkung auf die zugrunde liegenden Daten, und die Entwickler sind nicht auf ihre Nutzung beschränkt. Vielmehr ermöglichen Sie Ihnen die Nutzung ODBC-konformer Tools zum Zugreifen auf die Daten. Ihre Azure Cosmos-Datenbank ist dann nicht mehr nur das Lieblingstool Ihres Entwicklungsteams, sondern auch die Datenanalysten werden sie zu schätzen wissen.
 
 Wenden wir uns nun dem ODBC-Treiber zu.
 
@@ -48,7 +48,7 @@ Wenden wir uns nun dem ODBC-Treiber zu.
 
     ![ODBC-Datenquellenadministrator für Azure Cosmos DB](./media/odbc-driver/odbc-driver.png)
 
-## <a id="connect"></a>Schritt 2: Herstellen einer Verbindung mit Ihrer Azure Cosmos DB-Datenbank
+## <a id="connect"></a>Schritt 2: Herstellen einer Verbindung mit Ihrer Azure Cosmos-Datenbank
 
 1. Klicken Sie nach dem [Installieren des Azure Cosmos DB ODBC-Treibers](#install) im Fenster **ODBC-Datenquellenadministrator** auf **Hinzufügen**. Sie können einen Benutzer- oder System-DSN erstellen. In diesem Beispiel erstellen Sie einen Benutzer-DSN.
 
@@ -82,7 +82,7 @@ Wenden wir uns nun dem ODBC-Treiber zu.
 
 Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Sammlungszuordnung** und **Tabellentrennzeichen**. In einer Samplingsitzung können beide Samplingmethoden verwendet werden, aber für eine Sammlung ist jeweils nur eine bestimmte Samplingmethode zulässig. Mit den Schritten unten wird ein Schema für die Daten in einer oder mehreren Sammlungen mithilfe der Methode „Sammlungszuordnung“ erstellt. Mit dieser Samplingmethode werden die Daten auf der Seite einer Sammlung abgerufen, um die Struktur der Daten zu ermitteln. Hierbei wird eine Sammlung in eine Tabelle auf ODBC-Seite transponiert. Diese Samplingmethode ist effizient und schnell, wenn die Daten einer Sammlung homogen sind. Falls eine Sammlung heterogene Daten enthält, empfehlen wir Ihnen die Verwendung der [Tabellentrennzeichen-Zuordnungsmethode](#table-mapping) (table-delimiters). Dies ist eine robustere Samplingmethode zum Ermitteln der Datenstrukturen einer Sammlung. 
 
-1. Klicken Sie nach Abschluss der Schritte 1 bis 4 unter [Herstellen der Verbindung mit Ihrer Azure Cosmos DB-Datenbank](#connect) im Fenster **Azure Cosmos DB ODBC Driver DSN Setup** (Azure Cosmos DB ODBC-Treiber – DSN-Setup) auf **Schema-Editor**.
+1. Klicken Sie nach Abschluss der Schritte 1 bis 4 unter [Herstellen einer Verbindung mit Ihrer Azure Cosmos-Datenbank](#connect) im Fenster **Azure Cosmos DB ODBC Driver DSN Setup** (Azure Cosmos DB ODBC-Treiber – DSN-Setup) auf **Schema-Editor**.
 
     ![Schaltfläche „Schema-Editor“ im Fenster „Azure Cosmos DB ODBC Driver DSN Setup“ (Azure Cosmos DB ODBC-Treiber – DSN-Setup)](./media/odbc-driver/odbc-driver-schema-editor.png)
 1. Klicken Sie im Fenster **Schema-Editor** auf **Neu erstellen**.
@@ -105,7 +105,7 @@ Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Sammlungsz
 
 Mit den folgenden Schritten wird ein Schema für die Daten in einer oder mehreren Sammlungen erstellt, indem die Zuordnungsmethode **Tabellentrennzeichen** verwendet wird. Wir empfehlen Ihnen die Verwendung dieser Samplingmethode, wenn Ihre Sammlungen heterogene Daten enthalten. Sie können diese Methode verwenden, um das Sampling an eine Gruppe von Attributen und die dazugehörigen Werte anzupassen. Wenn ein Dokument beispielsweise eine Type-Eigenschaft enthält, können Sie das Sampling auf die Werte dieser Eigenschaft beschränken. Das Endergebnis des Samplings ist eine Gruppe von Tabellen für jeden einzelnen Wert, den Sie für „Type“ angegeben haben. Mit „Type = Car“ wird beispielsweise eine Tabelle mit PKW erzeugt, während mit „Type = Plane“ eine Tabelle mit Flugzeugen erzeugt wird.
 
-1. Klicken Sie nach Abschluss der Schritte 1 bis 4 unter [Herstellen der Verbindung mit Ihrer Azure Cosmos DB-Datenbank](#connect) im Fenster „Azure Cosmos DB ODBC Driver DSN Setup“ (Azure Cosmos DB ODBC-Treiber – DSN-Setup) auf **Schema-Editor**.
+1. Klicken Sie nach Abschluss der Schritte 1 bis 4 unter [Herstellen einer Verbindung mit Ihrer Azure Cosmos-Datenbank](#connect) im Fenster „Azure Cosmos DB ODBC Driver DSN Setup“ (Azure Cosmos DB ODBC-Treiber – DSN-Setup) auf **Schema-Editor**.
 
 1. Klicken Sie im Fenster **Schema-Editor** auf **Neu erstellen**.
     Im Fenster **Generate Schema** (Schema generieren) werden alle Sammlungen des Azure Cosmos DB-Kontos angezeigt. 
@@ -209,7 +209,7 @@ Sie können Ihren neuen DSN verwenden, um Azure Cosmos DB mit beliebigen ODBC-ko
 
     ![Daten in Power BI Desktop abrufen](./media/odbc-driver/odbc-driver-power-bi-get-data.png)
 
-1. Klicken Sie im Fenster **Get Data** (Daten abrufen) auf **Other (Andere)** | **ODBC** | **Verbinden**.
+1. Klicken Sie im Fenster **Get Data** (Daten abrufen) auf **Other (Andere)**  | **ODBC** | **Verbinden**.
 
     ![ODBC-Datenquelle im Power BI-Fenster „Daten abrufen“ auswählen](./media/odbc-driver/odbc-driver-power-bi-get-data-2.png)
 

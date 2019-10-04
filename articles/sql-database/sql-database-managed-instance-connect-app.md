@@ -9,15 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
-manager: craigg
+ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: ed9fbdd3e999cfd262ecbcf05a843c19cc969ed1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 133110d015ac7a26f18f14f6ff957729a4f079b5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360421"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060660"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -45,7 +44,7 @@ Es gibt zwei Optionen zum Herstellen einer Verbindung mit VNETs:
 Dabei ist die Option des Peerings vorzuziehen, da beim Peering das Microsoft-Backbonenetzwerk verwendet wird, sodass es im Hinblick auf die Konnektivität keinen erkennbaren Unterschied der Latenz zwischen virtuellen Computern im Peering-VNET und im selben VNET gibt. VNET-Peering ist auf die Netzwerke in der gleichen Region beschränkt.  
 
 > [!IMPORTANT]
-> Das VNET-Peering-Szenario für die verwaltete Instanz ist aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in der gleichen Region beschränkt.
+> Das VNET-Peering-Szenario für die verwaltete Instanz ist aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in der gleichen Region beschränkt. Ausführliche Informationen finden Sie im entsprechenden Abschnitt des Artikels [Azure Virtual Network – häufig gestellte Fragen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). 
 
 ## <a name="connect-an-on-premises-application"></a>Herstellen einer Verbindung mit einer lokalen Anwendung
 
@@ -56,7 +55,7 @@ Es gibt zwei Optionen für die lokale Verbindung mit dem Azure-VNET:
 - Site-to-Site-VPN-Verbindung ([Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
 - [ExpressRoute](../expressroute/expressroute-introduction.md)-Verbindung  
 
-Wenn Sie eine lokale Verbindung mit Azure hergestellt haben und keine Verbindung mit der verwalteten Instanz herstellen können, sollten Sie überprüfen, ob für die Firewall eine geöffnete ausgehende Verbindung am SQL-Port 1433 und ein geöffneter Portbereich 11000-12000 für die Umleitung festgelegt sind.
+Wenn Sie eine lokale Verbindung mit Azure hergestellt haben und keine Verbindung mit der verwalteten Instanz herstellen können, sollten Sie überprüfen, ob für die Firewall eine geöffnete ausgehende Verbindung am SQL-Port 1433 und ein geöffneter Portbereich 11000-11999 für die Umleitung festgelegt sind.
 
 ## <a name="connect-an-application-on-the-developers-box"></a>Herstellen einer Verbindung mit einer Anwendung in der Entwicklerbox
 
@@ -96,7 +95,7 @@ Dieses Szenario ist in der folgenden Abbildung dargestellt:
 
 Prüfen Sie zur Behandlung von Konnektivitätsproblemen Folgendes:
 
-- Wenn Sie im gleichen VNET keine Verbindung zwischen einem virtuellen Azure-Computer und einer verwalteten Instanz herstellen können, überprüfen Sie, ob eine Netzwerksicherheitsgruppe im VM-Subnetz festgelegt ist, das den Zugriff möglicherweise blockiert. Beachten Sie außerdem, dass Sie ausgehende Verbindungen an SQL-Port 1433 sowie Ports im Bereich von 11000-12000 öffnen müssen, da diese zum Herstellen einer Verbindung per Umleitung innerhalb von Azure benötigt werden.
+- Wenn Sie im gleichen VNET keine Verbindung zwischen einem virtuellen Azure-Computer und einer verwalteten Instanz herstellen können, überprüfen Sie, ob eine Netzwerksicherheitsgruppe im VM-Subnetz festgelegt ist, das den Zugriff möglicherweise blockiert. Beachten Sie außerdem, dass Sie ausgehende Verbindungen an SQL-Port 1433 sowie Ports im Bereich von 11000-11999 öffnen müssen, da diese zum Herstellen einer Verbindung per Umleitung innerhalb von Azure benötigt werden.
 - Stellen Sie sicher, dass die BGP-Weitergabe für die Routingtabelle, die dem VNET zugeordnet ist, auf **Aktiviert** festgelegt ist.
 - Wenn Sie ein P2S-VPN verwenden, überprüfen Sie, ob in der Konfiguration im Azure-Portal Zahlen zu **Eingehend/ausgehend** angezeigt werden. Zahlen ungleich 0 geben an, dass Datenverkehr von Azure in bzw. aus lokalen Umgebungen weitergeleitet wird.
 
@@ -146,7 +145,8 @@ Die folgenden Mindestversionen der Tools und Treiber werden empfohlen, wenn Sie 
 |JDBC-Treiber| 6.4.0 |
 |Node.js-Treiber| 2.1.1 |
 |OLEDB-Treiber| 18.0.2.0 |
-|SSMS| 17.8.1 oder [höher](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
+|SSMS| 18.0 oder [höher](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
+|[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) oder höher |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

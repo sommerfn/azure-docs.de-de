@@ -3,23 +3,22 @@ title: Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherhe
 description: " Erfahren Sie, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Azure Security Center Sicherheitsangriffe abgewehrt werden können. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
-ms.author: monhaber
-ms.openlocfilehash: 82a46ae9523c4c2778f86c445e35d0bec961307f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.date: 08/22/2019
+ms.author: memildin
+ms.openlocfilehash: 69fa9d24d24c26a7d945c27e86739475f9883b27
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517690"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200704"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherheit
 Sie können die Wahrscheinlichkeit eines Sicherheitsvorfalls verringern, indem Sie eine Sicherheitsrichtlinie und die Azure Security Center-Empfehlungen umsetzen. In diesem Artikel wird erläutert, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center Sicherheitsangriffe abgewehrt werden können. 
@@ -41,7 +40,7 @@ David, Mitarbeiter der IT-Sicherheit von Contoso, hat sich bereits für ein Onbo
 
 Das Security Center analysiert automatisch den Sicherheitszustand der Azure-Ressourcen von Contoso und wendet Standardsicherheitsrichtlinien an. Wenn Security Center potenzielle Sicherheitsrisiken ermittelt, werden basierend auf den in der Sicherheitsrichtlinie festgelegten Elementen **Empfehlungen** erstellt. 
 
-David führt den Azure Security-Standardtarif für alle seine Abonnements aus, um den vollen Umfang an verfügbaren Empfehlungen und Sicherheitsfunktionen zu erhalten. Jeff nimmt ebenfalls ein Onboarding all seiner vorhandenen lokalen Server vor, die noch nicht zur Cloud migriert wurden, sodass er die Hybridunterstützung des Security Centers auf allen [Windows](quick-onboard-windows-computer.md)- und [Linux](quick-onboard-linux-computer.md)-Servern ausnutzen kann.
+David führt den Azure Security-Standardtarif für alle seine Abonnements aus, um den vollen Umfang an verfügbaren Empfehlungen und Sicherheitsfunktionen zu erhalten. Jeff nimmt ebenfalls ein Onboarding all seiner vorhandenen lokalen Server vor, die noch nicht zur Cloud migriert wurden, sodass er auf allen [Windows](quick-onboard-windows-computer.md)- und [Linux](quick-onboard-linux-computer.md)-Servern von der Hybridunterstützung von Security Center profitieren kann.
 
 Jeff ist Besitzer einer Cloudworkload. Jeff ist verantwortlich für die Anwendung von Sicherheitskontrollen gemäß den Sicherheitsrichtlinien von Contoso. 
 
@@ -52,9 +51,9 @@ Jeff führt die folgenden Aufgaben aus:
 - Umsetzen von Sicherheitsempfehlungen
 
 ### <a name="remediate-threats-using-recommendations"></a>Beseitigen von Bedrohungen mittels Empfehlungen
-Im Rahmen seiner täglichen Überwachungsaktivitäten meldet sich Jeff bei Azure an und öffnet das Security Center. 
+Im Rahmen seiner täglichen Überwachungsaktivitäten meldet sich Jeff bei Azure an und öffnet Security Center. 
 
-1. Jeff wählt die Abonnements seiner Workload aus.
+1. Jeff wählt die Abonnements der Workload aus.
 
 2. Jeff überprüft seine **Sicherheitsbewertung**, um einen Gesamteindruck davon zu bekommen, wie sicher die Abonnements sind, und er sieht, dass seine Bewertung 548 ist.
 
@@ -75,6 +74,6 @@ Die Überwachungsempfehlungen im Security Center helfen Ihnen dabei, Sicherheits
 ## <a name="next-steps"></a>Nächste Schritte
 Stellen Sie sicher, dass Sie einen Überwachungsprozess eingerichtet haben, in dessen Rahmen Sie regelmäßig die Empfehlungen im Security Center überprüfen, damit Sie sicherstellen können, dass Ihre Ressourcen im Laufe der Zeit geschützt bleiben.
 
-In diesem Szenario wurde veranschaulicht, wie Sicherheitsangriffe mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center abgewehrt werden können. Im [Szenario für eine Reaktion auf Vorfälle](security-center-incident-response.md) erfahren Sie, wie Sie einen Plan zur Reaktion auf Vorfälle bereitstellen, bevor es zu einem Angriff kommt.
+In diesem Szenario wurde veranschaulicht, wie Sicherheitsangriffe mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center abgewehrt werden können.
 
-Informationen, wie Sie auf Bedrohungen mittels [Reaktion auf Vorfälle](security-center-incident-response.md) reagieren.
+Unter [Verwalten von und Reagieren auf Sicherheitswarnungen](security-center-managing-and-responding-alerts.md) erfahren Sie, wie Sie auf Bedrohungen reagieren.

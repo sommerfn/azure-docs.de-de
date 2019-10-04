@@ -2,20 +2,20 @@
 title: Verbinden mit Azure SQL Data Warehouse –VSTS | Microsoft Docs
 description: Es wird beschrieben, wie Sie SQL Data Warehouse mit Visual Studio abfragen.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: consume
-ms.date: 04/17/2018
-ms.author: kavithaj
+ms.subservice: development
+ms.date: 08/15/2019
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 564a30767f650e4ead025acb22e518eb0da55bd4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e6c3de1714d363eb1481bcea5f470d04125b96b9
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463581"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575317"
 ---
 # <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Herstellen einer Verbindung mit SQL Data Warehouse über Visual Studio und SSDT
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "55463581"
 > 
 > 
 
-Mit Visual Studio können Sie Azure SQL Data Warehouse innerhalb weniger Minuten abfragen. Bei dieser Methode wird die SSDT-Erweiterung (SQL Server Data Tools) in Visual Studio verwendet. 
+Mit Visual Studio können Sie Azure SQL Data Warehouse innerhalb weniger Minuten abfragen. Bei dieser Methode wird die SSDT-Erweiterung (SQL Server Data Tools) in Visual Studio 2019 verwendet. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Tutorial benötigen Sie Folgendes:
@@ -37,7 +37,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Den vollqualifizierten SQL-Servernamen. Informationen zur Ermittlung finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse][Connect to SQL Data Warehouse].
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Herstellen einer Verbindung mit SQL Data Warehouse
-1. Öffnen Sie Visual Studio 2013 oder 2015.
+1. Öffnen Sie Visual Studio 2019.
 2. Öffnen Sie den SQL Server-Objekt-Explorer. Wählen Sie zu diesem Zweck **Ansicht** > **SQL Server-Objekt-Explorer** aus.
    
     ![SQL Server-Objekt-Explorer][1]
@@ -76,7 +76,7 @@ Nachdem jetzt eine Verbindung mit Ihrer Datenbank hergestellt wurde, schreiben w
     ![Abfrageergebnisse][7]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versuchen Sie, [die Daten mit Power BI zu visualisieren][visualizing the data with PowerBI].
+Nachdem Sie eine Verbindung hergestellt haben und Abfragen senden können, versuchen Sie, [die Daten mit Power BI zu visualisieren][visualizing the data with PowerBI].
 
 Informationen zum Konfigurieren der Umgebung für die Azure Active Directory-Authentifizierung finden Sie unter [Authentifizieren für SQL Data Warehouse][Authenticate to SQL Data Warehouse].
 

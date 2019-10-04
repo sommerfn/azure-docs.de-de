@@ -1,21 +1,19 @@
 ---
 title: 'Azure-Schnellstart: Erstellen eines Blobs im Objektspeicher unter Verwendung von JavaScript und HTML im Browser'
 description: Hier erfahren Sie, wie Sie eine Instanz von BlobService verwenden, um Blobs unter Verwendung von JavaScript im Rahmen einer HTML-Seite hochzuladen, aufzulisten und zu löschen.
-services: storage
 keywords: Speicher, JavaScript, HTML
-author: tamram
-ms.custom: mvc
+author: mhopkins-msft
+ms.author: mhopkins
+ms.date: 08/29/2019
 ms.service: storage
-ms.author: tamram
-ms.date: 11/14/2018
-ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: a5433284d9722ce907b962be7ba437ef32ad819c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.topic: quickstart
+ms.openlocfilehash: 3dbd78f9c233515c675cd511924b3d4600b72fbd
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245372"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173087"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -52,7 +50,7 @@ Erstellen Sie als Nächstes mithilfe von Azure Cloud Shell ein Sicherheitstoken.
 [!INCLUDE [Open the Azure cloud shell](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-shared-access-signature"></a>Erstellen einer SAS (Shared Access Signature)
-Die SAS (Shared Access Signature) wird von dem im Browser ausgeführten Code verwendet, um Anforderungen an Blob Storage zu autorisieren. Mithilfe der SAS kann der Client den Zugriff auf Speicherressourcen ohne Kontozugriffsschlüssel oder Verbindungszeichenfolge autorisieren. Weitere Informationen zur SAS finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md).
+Die SAS (Shared Access Signature) wird von dem im Browser ausgeführten Code verwendet, um Anforderungen an Blob Storage zu autorisieren. Mithilfe der SAS kann der Client den Zugriff auf Speicherressourcen ohne Kontozugriffsschlüssel oder Verbindungszeichenfolge autorisieren. Weitere Informationen zur SAS finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../common/storage-sas-overview.md).
 
 Sie können eine SAS mithilfe der Azure-Befehlszeilenschnittstelle über Azure Cloud Shell oder den Azure Storage-Explorer erstellen. In der folgenden Tabelle werden die Parameter beschrieben, für die Sie Werte angeben müssen, um eine SAS mit der CLI zu generieren:
 

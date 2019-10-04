@@ -2,7 +2,6 @@
 title: Überwachen der Clusterverfügbarkeit mit Ambari und Azure Monitor-Protokollen
 description: Erfahren Sie, wie Sie mit Ambari und Azure Monitor-Protokollen die Integrität und Verfügbarkeit des Clusters überwachen können.
 keywords: Überwachung, Ambari, Überwachen, Protokollanalyse, Warnung, Verfügbarkeit, Integrität
-services: hdinsight
 ms.reviewer: jasonh
 author: tylerfox
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
-ms.openlocfilehash: 9bf0c0f45007f81312ac08230d571b727220bcd9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 153c28dc8a06968dc9dd3cfda021496672a094d5
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671631"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076552"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Überwachen der Clusterverfügbarkeit mit Ambari und Azure Monitor-Protokollen
 
@@ -29,29 +28,29 @@ Dieses Dokument zeigt, wie Sie diese Tools verwenden können, um Ihren Cluster z
 
 Auf das Ambari-Dashboard kann zugegriffen werden, indem Sie im Azure-Portal auf dem Blatt „Übersicht“ im Abschnitt **Clusterdashboards** auf den Link zur **Ambari-Homepage**  klicken. Alternativ ist der Zugriff möglich, indem in einem Browser die folgende URL eingegeben wird: [https://\<Clustername\>.azurehdinsight.net](https://clustername.azurehdinsight.net/)
 
-![Ansicht des HDInsight-Ressourcenportals](media/hdinsight-cluster-availability/portal-overview.png)
+![Ansicht des HDInsight-Ressourcenportals](media/hdinsight-cluster-availability/portal-oms-overview1.png)
 
 Sie werden aufgefordert, einen Anmeldebenutzernamen und ein Kennwort für den Cluster einzugeben. Geben Sie die Anmeldeinformationen ein, die Sie beim Erstellen des Clusters festgelegt haben.
 
 Sie werden dann zum Ambari-Dashboard weitergeleitet, das Widgets mit einer Reihe von Metriken enthält, die Ihnen einen schnellen Überblick über die Integrität Ihres HDInsight-Clusters geben. Diese Widgets zeigen Metriken wie z.B. die Anzahl der aktiven DataNodes (Workerknoten) und JournalNodes (Zookeeper-Knoten), Betriebszeit von NameNodes (Hauptknoten) sowie Metriken, die spezifisch für bestimmte Clustertypen sind, wie die Betriebszeit von YARN ResourceManager für Spark- und Hadoop-Cluster.
 
-![Ambari-Dashboard](media/hdinsight-cluster-availability/ambari-dashboard.png)
+![Apache Ambari – Verwenden der Dashboardanzeige](media/hdinsight-cluster-availability/apache-ambari-dashboard.png)
 
 ### <a name="hosts--view-individual-node-status"></a>Hosts – Anzeigen des Status einzelner Knoten
 
 Sie können auch Statusinformationen für einzelne Knoten anzeigen. Klicken Sie auf die Registerkarte **Hosts**, um eine Liste aller Knoten in Ihrem Cluster und grundlegende Informationen zu jedem Knoten anzuzeigen. Das grüne Häkchen links neben einem Knotennamen gibt an, dass alle Komponenten auf dem Knoten betriebsbereit sind. Wenn eine Komponente auf einem Knoten ausgefallen ist, wird ein rotes Warndreieck anstelle des grünen Häkchens angezeigt.
 
-![Anzeigen der Ambari-Hosts](media/hdinsight-cluster-availability/ambari-hosts.png)
+![HDInsight Apache Ambari – Hostansicht](media/hdinsight-cluster-availability/apache-ambari-hosts1.png)
 
 Sie können dann auf den **Namen** eines Knotens klicken, um detailliertere Hostmetriken für diesen bestimmten Knoten anzuzeigen. Diese Ansicht zeigt den Status bzw. die Verfügbarkeit jeder einzelnen Komponente.
 
-![Ambari-Hosts: Ansicht für einzelnen Knoten](media/hdinsight-cluster-availability/ambari-hosts-node.png)
+![Apache Ambari – Einzelknotenansicht für Hosts](media/hdinsight-cluster-availability/apache-ambari-hosts-node.png)
 
 ### <a name="ambari-alerts"></a>Ambari-Warnungen
 
 Ambari bietet außerdem mehrere konfigurierbare Warnungen, die Benutzer bei bestimmten Ereignissen benachrichtigen. Wenn Warnungen ausgelöst werden, werden sie in der linken oberen Ecke von Ambari in einem roten Badge mit der Anzahl der Warnungen angezeigt. Bei Klicken auf diesen Badge wird eine Liste der aktuellen Warnungen angezeigt.
 
-![Anzahl der Ambari-Warnungen](media/hdinsight-cluster-availability/ambari-alerts.png)
+![Apache Ambari – Aktuelle Anzahl von Warnungen](media/hdinsight-cluster-availability/apache-ambari-alerts.png)
 
 Um eine Liste der Warnungsdefinitionen und deren Status anzuzeigen, klicken Sie auf die Registerkarte **Alerts (Warnungen)** (siehe unten).
 
@@ -70,7 +69,7 @@ Eine vollständige Liste der Ambari-Warnungen, die helfen, die Verfügbarkeit ei
 
 Um Details zu einer Warnung anzuzeigen oder Kriterien zu ändern, klicken Sie auf den **Namen** der Warnung. Nehmen Sie **DataNode Health Summary** (DataNode-Integritätszusammenfassung) als Beispiel. Sie sehen eine Beschreibung der Warnung sowie die spezifischen Kriterien, die eine „Warnung“ oder „kritische“ Warnung auslösen, und das Überprüfungsintervall für die Kriterien. Um die Konfiguration zu bearbeiten, klicken Sie rechts oben im Konfigurationsfeld auf die Schaltfläche **Edit** (Bearbeiten).
 
-![Konfiguration von Ambari-Warnungen](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
+![Apache Ambari – Warnungskonfiguration](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
 
 Hier können Sie die Beschreibung und vor allem das Überprüfungsintervall und die Schwellenwerte für Warnungen bzw. kritische Warnungen bearbeiten.
 
@@ -84,7 +83,7 @@ Sie können optional auch E-Mail-Benachrichtigungen für Ambari-Warnungen konfig
 
 ![Ambari: Verwalten der Benachrichtigungsaktion](media/hdinsight-cluster-availability/ambari-manage-notifications.png)
 
-Ein Dialogfeld für die Verwaltung von Benachrichtigungen zu Warnungen wird geöffnet. Klicken Sie unten im Dialogfeld auf **+**, und füllen Sie die Pflichtfelder aus, um Ambari die Details des E-Mail-Servers anzugeben, von dem E-Mails gesendet werden sollen.
+Ein Dialogfeld für die Verwaltung von Benachrichtigungen zu Warnungen wird geöffnet. Klicken Sie unten im Dialogfeld auf **+** , und füllen Sie die Pflichtfelder aus, um Ambari die Details des E-Mail-Servers anzugeben, von dem E-Mails gesendet werden sollen.
 
 > [!TIP]
 > Die Einrichtung von Ambari-E-Mail-Benachrichtigungen kann eine gute Möglichkeit sein, bei Verwaltung vieler HDInsight-Cluster Benachrichtigungen zentral zu erhalten.
@@ -99,13 +98,13 @@ Als Voraussetzung benötigen Sie einen Log Analytics-Arbeitsbereich, um die gesa
 
 Klicken Sie im Portal auf der Seite mit den Ressourcen des HDInsight-Clusters auf das Blatt **Operations Management Suite**. Klicken Sie dann auf **Aktivieren**, und wählen Sie Ihren Log Analytics-Arbeitsbereich in der Dropdownliste aus.
 
-![HDInsight-Blatt „Operations Management Suite“](media/hdinsight-cluster-availability/portal-enable-oms.png)
+![HDInsight-Blatt „Operations Management Suite“](media/hdinsight-cluster-availability/hdi-portal-oms-enable.png)
 
 ### <a name="query-metrics-and-logs-tables-in-the-logs-blade"></a>Abfragemetriken und Protokolltabellen auf dem Blatt „Protokolle“
 
 Sobald die Azure Monitor-Protokollintegration aktiviert ist (was einige Minuten dauern kann), navigieren Sie zu Ihrer Ressource **Log Analytics-Arbeitsbereich** und klicken auf der Blatt **Protokolle**.
 
-![Blatt „Protokolle“ im Log Analytics-Arbeitsbereich](media/hdinsight-cluster-availability/portal-logs.png)
+![Blatt „Protokolle“ im Log Analytics-Arbeitsbereich](media/hdinsight-cluster-availability/hdinsight-portal-logs.png)
 
 Auf dem Blatt **Protokolle** ist eine Reihe von Beispielabfragen aufgeführt, wie z.B.:
 
@@ -124,7 +123,7 @@ Führen Sie beispielsweise die Beispielabfrage **Availability rate** aus, indem 
 > [!NOTE] 
 > Die Verfügbarkeitsrate wird über einen Zeitraum von 24 Stunden gemessen, sodass Ihr Cluster mindestens 24 Stunden ausgeführt werden muss, bevor Sie genaue Verfügbarkeitsraten sehen.
 
-Sie können diese Tabelle an ein freigegebenes Dashboard anheften, indem Sie rechts oben auf **Anheften** klicken. Wenn Sie über kein beschreibbares freigegebenes Dashboard verfügen, finden Sie Informationen zu dessen Erstellung hier: [Erstellen und Freigeben von Dashboards im Azure-Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-a-dashboard-and-manage-access-control).
+Sie können diese Tabelle an ein freigegebenes Dashboard anheften, indem Sie rechts oben auf **Anheften** klicken. Wenn Sie über kein beschreibbares freigegebenes Dashboard verfügen, finden Sie Informationen zu dessen Erstellung hier: [Erstellen und Freigeben von Dashboards im Azure-Portal](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards#publish-and-share-a-dashboard).
 
 ### <a name="azure-monitor-alerts"></a>Azure Monitor-Warnungen
 
@@ -132,7 +131,7 @@ Sie können auch Azure Monitor-Warnungen einrichten, die ausgelöst werden, wenn
 
 Führen Sie auf dem Blatt **Logs** (Protokolle) die Beispielabfrage **Unavailable computers** (Nicht verfügbare Computer) aus, indem Sie auf **Run** (Ausführen) für diese Abfrage klicken, wie im Screenshot oben gezeigt.
 
-![Blatt „Protokolle“ im Log Analytics-Arbeitsbereich mit Beispielabfrage zu nicht verfügbaren Computern](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
+![Blatt „Protokolle“ im Log Analytics-Arbeitsbereich mit Beispiel zu nicht verfügbaren Computern](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
 
 Wenn alle Knoten verfügbar sind, sollte diese Abfrage vorerst 0 Ergebnisse zurückgeben. Klicken Sie auf **Neue Warnungsregel**, um mit der Konfiguration Ihrer Warnung für diese Abfrage zu beginnen.
 
@@ -142,7 +141,7 @@ Eine Warnung besteht aus drei Komponenten: der *Ressource*, für die die Regel e
 
 Klicken Sie auf den **Titel der Bedingung**, wie unten gezeigt, um die Konfiguration der Signallogik abzuschließen.
 
-![Warnungsregelbedingung](media/hdinsight-cluster-availability/portal-condition-title.png)
+![Portalwarnung – Erstellen einer Regelbedingung](media/hdinsight-cluster-availability/portal-condition-title.png)
 
 Das Blatt **Signallogik konfigurieren** wird geöffnet.
 
@@ -162,7 +161,7 @@ Klicken Sie auf **Fertig**, wenn Sie mit dem Konfigurieren der Signallogik ferti
 
 Wenn Sie noch keine Aktionsgruppe haben, klicken Sie im Abschnitt **Aktionsgruppen** auf **Neu erstellen**.
 
-![Neue Aktionsgruppe für Warnungsregel](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
+![Erstellen einer Warnungsregel – Neue Aktionsgruppe](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
 
 Dadurch wird das Blatt **Aktionsgruppe hinzufügen** geöffnet. Wählen Sie einen **Aktionsgruppennamen**, **Kurznamen**, ein **Abonnement** und eine **Ressourcengruppe**. Wählen Sie im Abschnitt **Aktionen** einen **Aktionsnamen** und **E-Mail/SMS/Push/Sprachanruf** als **Aktionstyp** aus.
 
@@ -171,27 +170,27 @@ Dadurch wird das Blatt **Aktionsgruppe hinzufügen** geöffnet. Wählen Sie eine
 
 Das Blatt **E-Mail/SMS/Push/Sprachanruf** wird geöffnet. Wählen Sie einen **Namen** für den Empfänger, **aktivieren** Sie das Feld **E-Mail**, und geben Sie eine E-Mail-Adresse ein, an die die Warnung gesendet werden soll. Klicken Sie auf dem Blatt **E-Mail/SMS/Push/Sprachanruf** und dann auf dem Blatt **Aktionsgruppe hinzufügen** auf **OK**, um die Konfiguration Ihrer Aktionsgruppe abzuschließen.
 
-![Hinzufügen einer Aktionsgruppe zur Warnungsregel](media/hdinsight-cluster-availability/portal-add-action-group.png)
+![Erstellen einer Warnungsregel – Hinzufügen einer Aktionsgruppe](media/hdinsight-cluster-availability/portal-add-action-group.png)
 
 Nachdem diese Blätter geschlossen wurden, sollte Ihre Aktionsgruppe unter dem Abschnitt **Aktionsgruppen** aufgeführt sein. Geben Sie abschließend im Abschnitt **Warnungsdetails** den **Namen der Warnungsregel** und eine **Beschreibung** ein, und wählen Sie einen **Schweregrad**.
 Klicken Sie im letzten Schritt auf **Warnungsregel erstellen**.
 
-![Fertigstellung der Warnungsregel](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
+![Portalerstellung – Fertigstellung der Warnungsregel](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
 
 > [!TIP]
 > Die Möglichkeit, einen **Schweregrad** anzugeben, ist ein leistungsstarkes Instrument, das bei der Erstellung mehrerer Benachrichtigungen verwendet werden kann. Sie können beispielsweise eine Warnung mit Schweregrad 1 auszulösen, wenn ein einzelner Hauptknoten ausfällt, und eine weitere kritische Warnung mit Schweregrad 0 für den unwahrscheinlichen Fall erstellen, dass beide Hauptknoten ausfallen.
 
 Wenn die Bedingung für diese Warnung erfüllt ist, wird die Warnung ausgelöst, und Sie erhalten eine E-Mail mit den entsprechenden Details:
 
-![Azure Monitor-Warnungs-E-Mail](media/hdinsight-cluster-availability/alert-email.png)
+![Beispiel für eine Azure Monitor-Warnungs-E-Mail](media/hdinsight-cluster-availability/portal-oms-alert-email.png)
 
 Sie können auch alle ausgelösten Warnungen gruppiert nach Schweregrad anzeigen, indem Sie in Ihrem **Log Analytics-Arbeitsbereich** zum Blatt **Warnungen** wechseln.
 
-![Warnungen im Log Analytics-Arbeitsbereich](media/hdinsight-cluster-availability/portal-alerts.png)
+![Warnungen im Log Analytics-Arbeitsbereich](media/hdinsight-cluster-availability/hdi-portal-oms-alerts.png)
 
 Wenn Sie auf eine Schweregradgruppierung klicken (z.B. **Sev 1**, wie oben hervorgehoben), werden Datensätze für alle Warnungen dieses Schweregrads angezeigt, die ausgelöst wurden (siehe unten):
 
-![Log Analytics-Arbeitsbereich mit Warnungen des Schweregrads 1](media/hdinsight-cluster-availability/portal-alerts-sev-1.png)
+![Log Analytics-Arbeitsbereich mit Warnungen des Schweregrads 1](media/hdinsight-cluster-availability/portal-oms-alerts-sev1.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight](hdinsight-high-availability-linux.md)

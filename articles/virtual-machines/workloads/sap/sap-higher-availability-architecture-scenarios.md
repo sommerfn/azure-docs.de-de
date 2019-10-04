@@ -4,29 +4,28 @@ description: Verwenden der Neustartfunktion des virtuellen Computers der Azure-I
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: f0b2f8f0-e798-4176-8217-017afe147917
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cda0b1c0774ed33bf550e0edf329cc22a2807be3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 64db278807b40f8b142513ac06247e916be74f4b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009361"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078041"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Verwenden der Neustartfunktion des virtuellen Computers der Azure-Infrastruktur für eine „höhere Verfügbarkeit“ eines SAP-Systems
 
-[1909114]:https://launchpad.support.sap.com/#/notes/1909114
+[1909114]: https://launchpad.support.sap.com/#/notes/1909114
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
@@ -245,7 +244,7 @@ Für wichtige SAP-Komponenten haben Sie bisher Folgendes erreicht:
 
     Infolge von potenziellen geplanten oder ungeplanten Ausfällen einer Fehler- oder Upgradedomäne fällt eine begrenzte Anzahl von virtuellen Computern mit ihren SAP-Anwendungsserverinstanzen aus.
 
-    Jede SAP-Anwendungsserverinstanz befindet sich in einem eigenen Azure-Speicherkonto. Die potenzielle Nichtverfügbarkeit eines Azure-Speicherkontos führt dazu, dass nur ein virtueller Computer mit seiner SAP-Anwendungsserverinstanz nicht verfügbar ist. Zu berücksichtigen ist jedoch, dass in einem Azure-Abonnement nur eine begrenzte Anzahl von Azure-Speicherkonten verfügbar ist. Um nach dem Neustart des virtuellen Computers den automatischen Start der ASCS-/SCS-Instanz zu gewährleisten, legen Sie den im Abschnitt [Verwenden von Autostart für SAP-Instanzen][planning-guide-11.5] beschriebenen Parameter für automatischen Start im Startprofil der ASCS-/SCS-Instanz fest.
+    Jede SAP-Anwendungsserverinstanz befindet sich in einem eigenen Azure-Speicherkonto. Die potenzielle Nichtverfügbarkeit eines Azure-Speicherkontos führt dazu, dass nur ein virtueller Computer mit seiner SAP-Anwendungsserverinstanz nicht verfügbar ist. Zu berücksichtigen ist jedoch, dass in einem Azure-Abonnement nur eine begrenzte Anzahl von Azure-Speicherkonten verfügbar ist. Um nach dem Neustart des virtuellen Computers den automatischen Start der ASCS-/SCS-Instanz sicherzustellen, legen Sie den im Abschnitt [Verwenden von Autostart für SAP-Instanzen][planning-guide-11.5] beschriebenen Parameter für automatischen Start im Startprofil der ASCS-/SCS-Instanz fest.
   
     Weitere Informationen finden Sie unter [Hochverfügbarkeit für SAP-Anwendungsserver][planning-guide-11.4.1].
 
@@ -255,7 +254,7 @@ Für wichtige SAP-Komponenten haben Sie bisher Folgendes erreicht:
 
     Verwenden Sie in diesem Szenario die Neustartfunktion für virtuelle Azure-Computer, um den virtuellen Computer mit der installierten SAP ASCS-/SCS-Instanz zu schützen. Bei geplanten oder ungeplanten Ausfallzeiten von Azure-Servern werden die virtuellen Computer auf einem anderen verfügbaren Server neu gestartet. Wie bereits erwähnt, schützt die Neustartfunktion für virtuelle Azure-Computer in erster Linie virtuelle Computer und *nicht* Anwendungen, in diesem Fall die ASCS-/SCS-Instanz. Durch den Neustart des virtuellen Computers erreichen Sie indirekt eine „höhere Verfügbarkeit“ der SAP-ASCS-/SCS-Instanz. 
 
-    Um nach dem Neustart des virtuellen Computers den automatischen Start der ASCS-/SCS-Instanz zu gewährleisten, legen Sie den im Abschnitt [Verwenden von Autostart für SAP-Instanzen][planning-guide-11.5] beschriebenen Parameter für automatischen Start im Startprofil der ASCS-/SCS-Instanz fest. Diese Einstellung bedeutet, dass die ASCS-/SCS-Instanz als einzelne Fehlerquelle (Single Point of Failure, SPOF), die auf einem einzelnen virtuellen Computer ausgeführt wird, die Verfügbarkeit des gesamten SAP-Szenarios bestimmt.
+    Um nach dem Neustart des virtuellen Computers den automatischen Start der ASCS-/SCS-Instanz sicherzustellen, legen Sie den im Abschnitt [Verwenden von Autostart für SAP-Instanzen][planning-guide-11.5] beschriebenen Parameter für automatischen Start im Startprofil der ASCS-/SCS-Instanz fest. Diese Einstellung bedeutet, dass die ASCS-/SCS-Instanz als einzelne Fehlerquelle (Single Point of Failure, SPOF), die auf einem einzelnen virtuellen Computer ausgeführt wird, die Verfügbarkeit des gesamten SAP-Szenarios bestimmt.
 
 * *Höhere Verfügbarkeit* des DBMS-Servers
 
@@ -280,8 +279,7 @@ Bei Annahme eines typischen Azure-Szenarios mit einer Anwendungsserverinstanz in
 
   * [Start or Stop SAP along with your Unix Server Start/Stop (Starten oder Beenden von SAP zusammen mit dem Starten/Beenden Ihres Unix-Servers)](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
   * [Starting and Stopping SAP NetWeaver Management Agents (Starten und Beenden von SAP NetWeaver-Verwaltungs-Agents)](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
-  * [How to enable auto Start of HANA Database (Aktivieren des automatischen Starts der HANA-Datenbank)](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Hochverfügbarkeit einer vollständigen SAP NetWeaver-Anwendung finden Sie unter [SAP Application High Availability on Azure IaaS (Hochverfügbarkeit von SAP-Anwendungen für Azure IaaS)][sap-high-availability-architecture-scenarios-sap-app-ha].
+Informationen zur Hochverfügbarkeit einer vollständigen SAP NetWeaver-Anwendung finden Sie unter [SAP Application High Availability on Azure IaaS][sap-high-availability-architecture-scenarios-sap-app-ha] (Hochverfügbarkeit von SAP-Anwendungen für Azure IaaS).

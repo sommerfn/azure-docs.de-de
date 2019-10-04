@@ -1,9 +1,9 @@
 ---
-title: Durchführen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM – Azure Active Directory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung für Ihre Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) durchführen.
+title: Überprüfen des Zugriffs auf Azure-Ressourcenrollen in PIM – Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) überprüfen.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 03/30/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc503e5c11f8e3a00fe9c258ad2a7cad5b6ade7e
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 22c0ce1a5eee4b8d4cc40c47dadd4bcdc74d03ba
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575078"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804105"
 ---
-# <a name="perform-an-access-review-of-my-azure-resource-roles-in-pim"></a>Durchführen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM
+# <a name="review-access-to-azure-resource-roles-in-pim"></a>Überprüfen des Zugriffs auf Azure-Ressourcen-Rollen in PIM
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) vereinfacht die Art und Weise, in der Unternehmen den privilegierten Zugriff auf Ressourcen in Azure verwalten. 
 
 Wenn Ihnen eine Administratorrolle zugewiesen wurde, werden Sie vom Administrator für privilegierte Rollen Ihrer Organisation möglicherweise gebeten, regelmäßig zu bestätigen, dass Sie diese Rolle für Ihre Aufgaben benötigen. Sie erhalten möglicherweise eine E-Mail mit einem Link, oder Sie können direkt zum [Azure-Portal](https://portal.azure.com)wechseln. Führen Sie die Schritte in diesem Artikel aus, um die Ihnen zugewiesenen Rollen selbst zu überprüfen.
@@ -45,12 +45,12 @@ Gehen Sie wie folgt vor, um die Zugriffsüberprüfung zu finden und abzuschließ
 1. Navigieren Sie zur Azure AD PIM-Anwendung.
 2. Wählen Sie das Blatt **Zugriff überprüfen** aus.
 
-   ![Screenshot der PIM-Anwendung mit ausgewähltem Blatt „Zugriff überprüfen“](media/azure-pim-resource-rbac/rbac-access-review-complete.png)
+   ![Screenshot der PIM-Anwendung mit ausgewähltem Blatt „Zugriff überprüfen“](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)
 
 3. Wählen Sie die Überprüfung aus, die Sie abschließen möchten. 
 4. Wählen Sie entweder **Genehmigen** oder **Verweigern** aus. Möglicherweise müssen Sie im Feld **Grund angeben** einen Grund für Ihre Entscheidung eingeben.
 
-   ![Screenshot der Seite „Details überprüfen“](media/azure-pim-resource-rbac/rbac-access-review-choice.png)
+   ![Screenshot der Seite „Details überprüfen“](media/pim-resource-roles-perform-access-review/rbac-access-review-choice.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,33 +5,130 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: aafc6c5a240a1dd3e3c75dd33da26bde918b2288
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 27b180d8d95d7dad967b8ac2495a795ed70836b9
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403208"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147219"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
 Die Kubernetes-Community veröffentlicht etwa alle drei Monate Nebenversionen. Diese Releases enthalten neue Features und Verbesserungen. Patchreleases kommen häufiger vor (manchmal wöchentlich) und sind nur für wichtige Fehlerbehebungen in einer Nebenversion gedacht. Diese Patchreleases beinhalten Behebungen von Sicherheitsrisiken oder größerer Fehler, die viele Kunden und Produkte betreffen, die in einer auf Kubernetes basierenden Produktionsumgebung ausgeführt werden.
 
-Eine neue Nebenversion von Kubernetes wird am ersten Tag in der [aks-engine][aks-engine] zur Verfügung gestellt. Das AKS-Servicelevelziel (Service Level Objective, SLO) ist darauf ausgerichtet, die Nebenversion für AKS-Cluster innerhalb von 30 Tagen zu veröffentlichen, vorbehaltlich der Stabilität des Releases.
+AKS zielt darauf ab, neue Kubernetes-Versionen je nach Stabilität des Upstreamrelease innerhalb von 30 Tagen zu zertifizieren und zu veröffentlichen.
+
+## <a name="kubernetes-versions"></a>Kubernetes-Versionen
+
+Kubernetes verwendet als Standardversionierungsschema die [semantische Versionierung](https://semver.org/). Für jede Kubernetes-Version wird daher das folgende Nummerierungsschema verwendet:
+
+```
+[major].[minor].[patch]
+
+Example:
+  1.12.14
+  1.12.15
+```
+
+Für jede Zahl in der Version gilt, dass allgemeine Kompatibilität mit der vorherigen Version besteht:
+
+* Die Hauptversionen ändern sich, wenn nicht kompatible API-Änderungen vorgenommen werden oder möglicherweise keine Abwärtskompatibilität mehr gewährleistet wird.
+* Nebenversionen ändern sich, wenn Änderungen an der Funktionalität vorgenommen werden, die zu den anderen Nebenreleases abwärtskompatibel sind.
+* Patchversionen ändern sich, wenn abwärtskompatible Fehlerbehebungen vorgenommen werden.
+
+Benutzer sollten nach Möglichkeit immer das neueste Patchrelease der aktuell verwendeten Nebenversion nutzen. Wenn Ihr Produktionscluster beispielsweise die Version *1.12.14* verwendet und *1.12.15* die neueste verfügbare Patchversion für die Nebenversion *1.12* ist, sollten Sie ein Upgrade auf die Version *1.12.15* durchführen, sobald Sie sicher sind, dass Ihr Cluster vollständig gepatcht und unterstützt wird.
 
 ## <a name="kubernetes-version-support-policy"></a>Richtlinie zur Unterstützung der Kubernetes-Version
 
 AKS unterstützt vier Nebenversionen von Kubernetes:
 
-- Die aktuelle Nebenversion, die upstream veröffentlicht wird (n).
-- Die drei vorherigen Nebenversionen. Jede unterstützte Nebenversion unterstützt ebenfalls zwei stabile Patches.
+* Die aktuelle Nebenversion, die in AKS veröffentlicht wird (N).
+* Die drei vorherigen Nebenversionen. Jede unterstützte Nebenversion unterstützt ebenfalls zwei stabile Patches.
 
-Wenn AKS zum Beispiel heute *1.12.x* einführt, werden auch *1.11.a* + *1.11.b*, *1.10.c* + *1.10d* und *1.9.e* + *1.9f* unterstützt (wobei die Buchstaben der Patchreleases für die beiden letzten stabilen Builds stehen).
+Diese Richtlinie wird auch als „N-3“ bezeichnet, wobei „N“ für das neueste Release und die Zahl 3 für die Anzahl der Nebenversionen steht.
 
-Wenn eine neue Nebenversion eingeführt wird, werden die älteste Nebenversion und die unterstützten Patchreleases deaktiviert. 15 Tage vor der Veröffentlichung der neuen Nebenversion und der bevorstehenden Außerbetriebnahme der Version gibt es eine Ankündigung über die [Azure-Updatekanäle][azure-update-channel]. Im Beispiel oben wird *1.12.x* veröffentlicht, und die Versionen *1.8.g* + *1.8.h* werden deaktiviert.
+Wenn AKS beispielsweise die Version *1.13.a* einführt, werden die folgenden Versionen unterstützt:
 
-Wenn Sie einen AKS-Cluster im Portal oder mit der Azure CLI bereitstellen, wird der Cluster immer auf die Nebenversion n-1 und den neuesten Patch festgelegt. Wenn AKS zum Beispiel *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c* + *1.10d* und *1.9.e* + *1.9f* unterstützt, ist die Standardversion des neuen Clusters *1.11.b*.
+Neue Nebenversion    |    Liste mit unterstützten Versionen
+-----------------    |    ----------------------
+1.13.a               |    1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
+
+Hierbei stehen „.a“ und „.b“ für repräsentative Patchversionen. „a“ aus 1.13.a kann sich von 1.12.a unterscheiden. Beispiel: 1.13.9 und 1.12.8.
+
+Informationen zu Benachrichtigungen, die Versionsänderungen und damit verbundene Auswirkungen betreffen, finden Sie im Abschnitt „Benachrichtigungen“ weiter unten.
+
+Wenn eine neue Nebenversion eingeführt wird, werden die älteste Nebenversion und die unterstützten Patchreleases nicht mehr unterstützt und entfernt. Angenommen, die aktuelle Liste mit den unterstützten Versionen sieht wie folgt aus:
+
+```
+1.12.a
+1.12.b
+1.11.a
+1.11.b
+1.10.a
+1.10.b
+1.9.a
+1.9.b
+```
+
+AKS veröffentlicht 1.13. *. Dies bedeutet, dass Version 1.9.* (alle 1.9-Versionen) entfernt wird und aus dem Support herausfällt.
+
+> [!NOTE]
+> Wenn Kunden eine nicht unterstützte Kubernetes-Version verwenden, werden sie aufgefordert, ein Upgrade vorzunehmen, sobald sie Support für den Cluster anfordern. Die [AKS-Supportrichtlinien](https://docs.microsoft.com/azure/aks/support-policies) gelten nicht für Cluster, auf denen nicht unterstützte Kubernetes-Releases ausgeführt werden.
+
+
+Zusätzlich zur Unterstützung der oben genannten Nebenversionen unterstützt AKS auch die beiden neuesten *Patchreleases** für eine bestimmte Nebenversion. Angenommen, folgende Versionen werden unterstützt:
+
+```
+Current Supported Version List
+------------------------------
+1.12.1, 1.12.2, 1.11.4, 1.11.5
+```
+
+Wenn Upstream-Kubernetes die Patchversionen 1.12.3 und 1.11.6 veröffentlicht und AKS diese ebenfalls veröffentlicht, werden die ältesten Patchversionen nicht mehr unterstützt und entfernt. Die Liste mit den unterstützten Versionen ändert sich dann wie folgt:
+
+```
+New Supported Version List
+----------------------
+1.12.*2*, 1.12.*3*, 1.11.*5*, 1.11.*6*
+```
+
+> [!NOTE]
+> Kunden sollten die Erstellung eines Clusters, CI oder andere automatisierte Aufträge nicht von bestimmten Patchreleases abhängig machen. 
+
+### <a name="communications"></a>Benachrichtigungen
+
+* Bei neuen **Nebenversionen** von Kubernetes:
+  * Alle Benutzer werden öffentlich über die neue Version benachrichtigt. Außerdem wird mitgeteilt, welche Version entfernt wird.
+  * Wenn eine neue Patchversion veröffentlicht wird, wird gleichzeitig die älteste Patchversion entfernt.
+  * Kunden haben ab dem Datum der öffentlichen Benachrichtigung **60 Tage** Zeit, ein Upgrade auf ein unterstütztes Release der Nebenversion durchzuführen.
+* Bei neuen **Patchversionen** von Kubernetes:
+  * Alle Benutzer werden über die neue Patchversion benachrichtigt. Außerdem werden sie aufgefordert, ein Upgrade auf das neueste Patchrelease vorzunehmen.
+  * Benutzer haben **30 Tage** Zeit, ein Upgrade auf ein neueres, unterstütztes Patchrelease durchzuführen, bevor das älteste Patchrelease entfernt wird.
+
+In AKS wird „Veröffentlichung“ (Release) als allgemeine Verfügbarkeit definiert, die in allen Quality of Service-Messungen und Messungen von Servicelevelzielen (SLOs) sowie in allen Regionen verfügbar ist.
+
+> [!NOTE]
+> Kunden werden benachrichtigt, wenn Kubernetes-Versionen veröffentlicht oder nicht mehr unterstützt werden. Wenn eine Nebenversion nicht mehr unterstützt und entfernt wird, haben Benutzer 60 Tage Zeit, ein Upgrade auf ein unterstütztes Release vorzunehmen. Im Fall von Patchreleases haben Kunden 30 Tage Zeit, ein Upgrade auf ein unterstütztes Release vorzunehmen.
+
+Benachrichtigungen werden an den folgenden Stellen veröffentlicht:
+
+* in den [AKS-Versionshinweisen](https://aka.ms/aks/releasenotes)
+* im Azure-Portal
+* im [Azure-Updatekanal][azure-update-channel]
+
+### <a name="policy-exceptions"></a>Richtlinienausnahmen
+
+AKS behält sich das Recht vor, ohne Vorankündigung neue oder bestehende Versionen hinzuzufügen oder zu entfernen, wenn in diesen kritische, die Produktion einschränkende Fehler oder Sicherheitsprobleme gefunden werden.
+
+Bestimmte Patchreleases können übersprungen oder Rollouts je nach Schweregrad des Fehlers oder Sicherheitsproblems beschleunigt werden.
+
+### <a name="azure-portal-and-cli-default-versions"></a>Standardversionen für das Azure-Portal und die Azure-CLI
+
+Wenn Sie einen AKS-Cluster im Portal oder mit der Azure CLI bereitstellen, wird der Cluster immer auf die Nebenversion N-1 und den neuesten Patch festgelegt. Wenn AKS beispielsweise die Versionen *1.13.a*, *1.12.a* + *1.12.b*, *1.11.a* + *1.11.b* und *1.10.a* + *1.10b* unterstützt, ist die Standardversion für neue Cluster *1.12.b*.
+
+AKS verwendet standardmäßig die Version N-1 (Nebenversion mit aktuellem Patch, beispielsweise 1.12.b), um Kunden eine bekannte, stabile und gepatchte Version bereitstellen zu können.
 
 ## <a name="list-currently-supported-versions"></a>Auflisten der derzeit unterstützten Versionen
 
@@ -41,31 +138,37 @@ Um herauszufinden, welche Versionen für Ihr Abonnement und Ihre Region derzeit 
 az aks get-versions --location eastus --output table
 ```
 
-Die Ausgabe sieht ungefähr wie im folgenden Beispiel aus, in dem die Kubernetes-Version *1.12.5* als aktuelle verfügbare Version angezeigt wird:
+Die Ausgabe sieht ungefähr wie im folgenden Beispiel aus, in dem Kubernetes-Version *1.14.6* als aktuelle verfügbare Version angezeigt wird:
 
 ```
 KubernetesVersion    Upgrades
--------------------  -----------------------
-1.12.5               None available
-1.12.4               1.12.5
-1.11.7               1.12.4, 1.12.5
-1.11.6               1.11.7, 1.12.4, 1.12.5
-1.10.12              1.11.6, 1.11.7
-1.10.9               1.10.12, 1.11.6, 1.11.7
-1.9.11               1.10.9, 1.10.12
-1.9.10               1.9.11, 1.10.9, 1.10.12
+-------------------  ------------------------
+1.14.6               None available
+1.14.5               1.14.6
+1.13.10              1.14.5, 1.14.6
+1.13.9               1.13.10, 1.14.5, 1.14.6
+1.12.8               1.13.9, 1.13.10
+1.12.7               1.12.8, 1.13.9, 1.13.10
+1.11.10              1.12.7, 1.12.8
+1.11.9               1.11.10, 1.12.7, 1.12.8
+1.10.13              1.11.9, 1.11.10
+1.10.12              1.10.13, 1.11.9, 1.11.10
 ```
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 **Was geschieht, wenn ein Kunde ein Upgrade eines Kubernetes-Clusters mit einer Nebenversion durchführt, die nicht unterstützt wird?**
 
-Wenn Sie die Version *n-4* verwenden, befinden Sie sich außerhalb des SLO. Wenn Ihr Upgrade von Version n-4 auf n-3 erfolgreich ist, befinden Sie sich wieder innerhalb des SLO. Beispiel: 
+Wenn Sie die Version *N-4* verwenden, wird diese nicht unterstützt, und Sie werden zu einem Upgrade aufgefordert. Wenn das Upgrade von der Version N-4 auf N-3 erfolgreich ist, können Sie den Support entsprechend der Supportrichtlinien wieder nutzen. Beispiel:
 
-- Wenn die AKS-Versionen *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c* + *1.10d* und *1.9.e* + *1.9f* unterstützt werden und Sie *1.8.g* oder *1.8.h* verwenden, befinden Sie sich außerhalb des Servicelevelziels (SLO).
-- Wenn das Upgrade von *1.8.g* oder *1.8.h* auf *1.9.e* oder *1.9.f* erfolgreich ist, befinden Sie sich wieder innerhalb des Servicelevelziels (SLO).
+- Wenn die unterstützten AKS-Versionen *1.13.a*, *1.12.b* + *1.12.c*, *1.11.d* + *1.11.e* und *1.10.f* + *1.10.g* lauten und Sie *1.9.h* oder *1.9.i* verwenden, sind Sie aus dem Support herausgefallen.
+- Falls das Upgrade von *1.9.h* oder *1.9.i* auf *1.10.f* oder *1.10.g* erfolgreich ist, befinden Sie sich wieder im Rahmen unserer Supportrichtlinien.
 
 Upgrades auf ältere Versionen als *n-4* werden nicht unterstützt. In solchen Fällen wird empfohlen, dass die Kunden neue AKS-Cluster erstellen und ihre Workloads erneut bereitstellen.
+
+**Was bedeutet „nicht unterstützt“?**
+
+„Nicht unterstützt“ bedeutet, dass die verwendete Version nicht in der Liste mit den unterstützten Versionen enthalten ist und Sie aufgefordert werden, für den Cluster ein Upgrade auf eine unterstützte Version vorzunehmen, sobald Sie Support anfordern. Des Weiteren stellt AKS für Cluster, die nicht in der Liste der unterstützten Versionen aufgeführt sind, weder Laufzeitgarantien noch sonstige Garantien bereit.
 
 **Was geschieht, wenn ein Kunde einen Kubernetes-Cluster mit einer Nebenversion skaliert, die nicht unterstützt wird?**
 
@@ -73,7 +176,7 @@ Bei Nebenversionen, die von AKS nicht unterstützt werden, funktioniert das Heru
 
 **Kann ein Kunde für immer eine Kubernetes-Version verwenden?**
 
-Ja. Wenn der Cluster jedoch keine der von AKS unterstützten Versionen verwendet, befindet sich der Cluster außerhalb des AKS SLO. Azure führt kein automatisches Upgrade Ihres Clusters durch und löscht ihn nicht.
+Ja. Wenn der Cluster jedoch keine der von AKS unterstützten Versionen verwendet, gelten die AKS-Supportrichtlinien nicht für den Cluster. Azure führt kein automatisches Upgrade Ihres Clusters durch und löscht ihn nicht.
 
 **Welche Version wird vom Master unterstützt, wenn der Agent-Cluster keine der unterstützten AKS-Versionen verwendet?**
 

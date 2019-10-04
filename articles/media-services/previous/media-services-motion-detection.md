@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/19/2019
-ms.author: milanga;juliako;
-ms.openlocfilehash: e0b083cba575f4d1c0eb19afb76fca29431ae75e
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.author: juliako
+ms.reviewer: milanga
+ms.openlocfilehash: c053e4dfc38fc0f055ec91a6622ef7f767c13a86
+ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259096"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "69015321"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Erkennen von Bewegungen mit Azure Media Analytics
 ## <a name="overview"></a>Übersicht
@@ -41,9 +42,9 @@ Sie können die folgenden Parameter verwenden:
 
 | NAME | Optionen | BESCHREIBUNG | Standard |
 | --- | --- | --- | --- |
-| sensitivityLevel |Zeichenfolge: „low“, „medium“, „high“ |Legt die Vertraulichkeitsstufe fest, mit der Bewegungen gemeldet werden. Passen Sie diese Einstellung an, um die Anzahl falsch positiver Ergebnisse zu steuern. |„medium“ |
+| sensitivityLevel |String: „low“, „medium“, „high“ |Legt die Vertraulichkeitsstufe fest, mit der Bewegungen gemeldet werden. Passen Sie diese Einstellung an, um die Anzahl falsch positiver Ergebnisse zu steuern. |„medium“ |
 | frameSamplingValue |Positive ganze Zahl |Legt fest, wie häufig der Algorithmus ausgeführt wird. 1 steht für jedes Bild, 2 steht für jedes zweite Bild usw. |1 |
-| detectLightChange |Boolescher Wert: „true“, „false“ |Legt fest, ob kleinere Änderungen in den Ergebnissen gemeldet werden. |„false“ |
+| detectLightChange |Boolean: „true“, „false“ |Legt fest, ob kleinere Änderungen in den Ergebnissen gemeldet werden. |„false“ |
 | mergeTimeThreshold |Xs-time: hh:mm:ss<br/>Beispiel: 00:00:03 |Gibt das Zeitfenster zwischen Bewegungsereignissen an, wenn zwei Ereignisse kombiniert und als ein Ereignis gemeldet werden. |00:00:00 |
 | detectionZones |Ein Array mit Erkennungszonen:<br/>- Eine Erkennungszone ist ein Array aus mindestens drei Punkten.<br/>– Ein Punkt ist eine x- und y-Koordinate zwischen 0 und 1. |Beschreibt die Liste mit den zu verwendenden polygonalen Erkennungszonen.<br/>Die Ergebnisse werden mit den Zonen als ID gemeldet, und die erste ID lautet 'id':0. |Einzelne Zone, die den gesamten Rahmen abdeckt. |
 
@@ -94,19 +95,19 @@ In der folgenden Tabelle werden die Elemente der Ausgabe-JSON-Datei beschrieben.
 
 | Element | BESCHREIBUNG |
 | --- | --- |
-| Version |Dies bezieht sich auf die Version der Video-API. Die aktuelle Version ist 2. |
-| Zeitskala |„Ticks“ pro Sekunde des Videos. |
-| Offset |Dies ist der Zeitoffset für Zeitstempel in „Ticks“. In Version 1.0 von Video-APIs wird dies immer 0 sein. In zukünftigen Szenarien, die wir unterstützen, kann sich dieser Wert ändern. |
-| Framerate |Frames des Videos pro Sekunde. |
-| Width, Height |Bezieht sich auf die Breite und Höhe des Videos in Pixeln. |
-| Start |Der Zeitstempel für den Start in „Ticks“. |
-| Duration |Die Länge des Ereignisses in „Ticks“. |
-| Intervall |Das Intervall für jeden Eintrag im Ereignis in „Ticks“. |
-| Ereignisse |Jedes Ereignisfragment enthält die innerhalb dieser Zeitspanne erkannte Bewegung. |
-| Type |Dies ist in der aktuellen Version immer ‘2’ für generische Bewegung. Diese Bezeichnung gibt Video-APIs die Flexibilität zum Kategorisieren der Bewegung in zukünftigen Versionen. |
-| RegionID |Wie bereits dargelegt, wird dies in dieser Version immer 0 sein. Diese Bezeichnung gibt Video-APIs die Flexibilität, in zukünftigen Versionen Bewegung in verschiedenen Regionen zu suchen. |
-| Regionen |Bezieht sich auf den Bereich in Ihrem Video, in dem Bewegung Sie interessiert. <br/><br/>- „id“ repräsentiert den Regionsbereich. In dieser Version ist nur ein Bereich vorhanden, ID 0. <br/>- „type“ repräsentiert die Form der Region, in der die Bewegung von Interesse ist. Derzeit werden „rectangle“ (Rechteck) und „polygon“ (Polygon) unterstützt.<br/> Wenn Sie „rectangle“ angegeben haben, verfügt die Region über die Dimensionen „X“, „Y“, „Width“ (Breite) und „Height“ (Höhe). Die X- und Y-Koordinaten stellen die linken oberen XY-Koordinaten der Region in einem normalisierten Maßstab von 0,0 bis 1,0 dar. Die Breite und Höhe stellen die Größe der Region in einem normalisierten Maßstab von 0,0 bis 1,0 dar. In der aktuellen Version sind X, Y, Breite und Höhe stets auf „0, 0“ und „1, 1“ festgelegt. <br/>Wenn Sie „polygon“ angegeben haben, sind die Dimensionen der Region Punkte. <br/> |
-| Fragments |Die Metadaten werden in verschiedene, als Fragmente bezeichnete Segmente aufgeteilt. Jedes Fragment enthält Startzeitpunkt, Dauer, Intervallnummer und Ereignis(se). Ein Fragment ohne Ereignisse bedeutet, dass zu diesem Startzeitpunkt und während dieser Dauer keine Bewegung erkannt wurde. |
+| version |Dies bezieht sich auf die Version der Video-API. Die aktuelle Version ist 2. |
+| timescale |„Ticks“ pro Sekunde des Videos. |
+| offset |Dies ist der Zeitoffset für Zeitstempel in „Ticks“. In Version 1.0 von Video-APIs wird dies immer 0 sein. In zukünftigen Szenarien, die wir unterstützen, kann sich dieser Wert ändern. |
+| framerate |Frames des Videos pro Sekunde. |
+| width, height |Bezieht sich auf die Breite und Höhe des Videos in Pixeln. |
+| start |Der Zeitstempel für den Start in „Ticks“. |
+| duration |Die Länge des Ereignisses in „Ticks“. |
+| interval |Das Intervall für jeden Eintrag im Ereignis in „Ticks“. |
+| events |Jedes Ereignisfragment enthält die innerhalb dieser Zeitspanne erkannte Bewegung. |
+| type |Dies ist in der aktuellen Version immer ‘2’ für generische Bewegung. Diese Bezeichnung gibt Video-APIs die Flexibilität zum Kategorisieren der Bewegung in zukünftigen Versionen. |
+| regionId |Wie bereits dargelegt, wird dies in dieser Version immer 0 sein. Diese Bezeichnung gibt Video-APIs die Flexibilität, in zukünftigen Versionen Bewegung in verschiedenen Regionen zu suchen. |
+| regions |Bezieht sich auf den Bereich in Ihrem Video, in dem Bewegung Sie interessiert. <br/><br/>\- „id“ repräsentiert den Regionsbereich. In dieser Version ist nur ein Bereich vorhanden, ID 0. <br/>\- „type“ repräsentiert die Form der Region, in der die Bewegung von Interesse ist. Derzeit werden „rectangle“ (Rechteck) und „polygon“ (Polygon) unterstützt.<br/> Wenn Sie „rectangle“ angegeben haben, verfügt die Region über die Dimensionen „X“, „Y“, „Width“ (Breite) und „Height“ (Höhe). Die X- und Y-Koordinaten stellen die linken oberen XY-Koordinaten der Region in einem normalisierten Maßstab von 0,0 bis 1,0 dar. Die Breite und Höhe stellen die Größe der Region in einem normalisierten Maßstab von 0,0 bis 1,0 dar. In der aktuellen Version sind X, Y, Breite und Höhe stets auf „0, 0“ und „1, 1“ festgelegt. <br/>Wenn Sie „polygon“ angegeben haben, sind die Dimensionen der Region Punkte. <br/> |
+| fragments |Die Metadaten werden in verschiedene, als Fragmente bezeichnete Segmente aufgeteilt. Jedes Fragment enthält Startzeitpunkt, Dauer, Intervallnummer und Ereignis(se). Ein Fragment ohne Ereignisse bedeutet, dass zu diesem Startzeitpunkt und während dieser Dauer keine Bewegung erkannt wurde. |
 | Eckige Klammern ( [] ) |Jede Klammer stellt ein Intervall im Ereignis dar. Leere Klammern für ein Intervall bedeuten, dass keine Bewegung erkannt wurde. |
 | locations |Mit diesem neuen Eintrag wird unter den Ereignissen die Position aufgeführt, an der die Bewegung stattgefunden hat. Dies ist eine genauere Angabe als bei Erkennungszonen. |
 

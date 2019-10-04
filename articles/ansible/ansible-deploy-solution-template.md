@@ -1,21 +1,22 @@
 ---
-title: Bereitstellen der Ansible-Lösungsvorlage für Azure in CentOS
-description: Hier erfahren Sie, wie Sie die Ansible-Lösungsvorlage zusammen mit Tools, die für die Arbeit mit Azure konfiguriert sind, auf einem in Azure gehosteten virtuellen CentOS-Computer bereitstellen.
-ms.service: azure
+title: 'Schnellstart: Bereitstellen der Ansible-Lösungsvorlage für Azure in CentOS | Microsoft-Dokumentation'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Ansible-Lösungsvorlage zusammen mit Tools, die für die Arbeit mit Azure konfiguriert sind, auf einem in Azure gehosteten virtuellen CentOS-Computer bereitstellen.
 keywords: Ansible, Azure, DevOps, Lösungsvorlage, virtueller Computer, verwaltete Identitäten für Azure-Ressourcen, CentOS, Red Hat
+ms.topic: quickstart
+ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
-ms.topic: tutorial
-ms.date: 01/28/2019
-ms.openlocfilehash: 78fe5211f135b4a4c7d0fd21c66340025ad2d05d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/30/2019
+ms.openlocfilehash: 58f28d5cf7d31a3fbddc8e1ca18be4dbcf617f61
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104215"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231005"
 ---
-# <a name="deploy-the-ansible-solution-template-for-azure-to-centos"></a>Bereitstellen der Ansible-Lösungsvorlage für Azure in CentOS
+# <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Schnellstart: Bereitstellen der Ansible-Lösungsvorlage für Azure in CentOS
+
 Die Ansible-Lösungsvorlage für Azure dient dazu, eine Ansible-Instanz auf einem virtuellen CentOS-Computer zu konfigurieren – zusammen mit Ansible und einer Reihe von Tools, die für die Arbeit mit Azure konfiguriert sind. Zu diesen Tools zählen:
 
 - **Ansible-Module für Azure:** Bei den [Ansible-Modulen für Azure](./ansible-matrix.md) handelt es sich um eine Sammlung von Modulen, mit denen Sie Ihre Infrastruktur in Azure erstellen und verwalten können. Standardmäßig wird die neueste Version dieser Module bereitgestellt. Im Rahmen des Bereitstellungsprozesses für die Lösungsvorlage kann jedoch auch eine für Ihre Umgebung geeignete Versionsnummer angegeben werden.
@@ -23,9 +24,10 @@ Die Ansible-Lösungsvorlage für Azure dient dazu, eine Ansible-Instanz auf eine
 - **Verwaltete Identitäten für Azure-Ressourcen:** Die [verwalteten Identitäten für Azure-Ressourcen](/azure/active-directory/managed-identities-azure-resources/overview) dienen zum Schutz der Anmeldeinformationen für Cloudanwendungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- **Azure-Abonnement:** Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 
-## <a name="deploy-the-ansible-solution-template-from-the-azure-marketplace"></a>Bereitstellen der Ansible-Lösungsvorlage über den Azure Marketplace
+[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+
+## <a name="deploy-the-ansible-solution-template"></a>Bereitstellen der Ansible-Lösungsvorlage
 
 1. Navigieren Sie zur [Ansible-Lösungsvorlage im Azure Marketplace](https://azuremarketplace.microsoft.com/en-%20%20us/marketplace/apps/azure-oss.ansible?tab=Overview).
 
@@ -46,7 +48,7 @@ Die Ansible-Lösungsvorlage für Azure dient dazu, eine Ansible-Instanz auf eine
    - **Ressourcengruppe**: Wählen Sie in der Dropdownliste eine vorhandene Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe an. Zu Demonstrationszwecken wird eine neue Ressourcengruppe namens `ansiblerg` verwendet.
    - **Standort**: Wählen Sie in der Dropdownliste einen für Ihr Szenario geeigneten Standort aus.
 
-     ![Registerkarte mit Ansible-Grundeinstellungen im Azure-Portal](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-1.png)
+     ![Registerkarte mit Ansible-Grundeinstellungen im Azure-Portal](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-1.png)
 
 1. Klicken Sie auf **OK**.
 
@@ -60,19 +62,19 @@ Die Ansible-Lösungsvorlage für Azure dient dazu, eine Ansible-Instanz auf eine
    - **Domänennamenbezeichnung**: Geben Sie den öffentlichen Domänennamen des virtuellen Computers ein. Der Name muss eindeutig sein und die Benennungsanforderungen erfüllen. Weitere Informationen zum Angeben eines Namens für den virtuellen Computer finden Sie unter [Namenskonventionen für Azure-Ressourcen](/azure/architecture/best-practices/naming-conventions).
    - **Ansible-Version**: Geben Sie entweder eine Versionsnummer oder den Wert `latest` an, um die neueste Version bereitzustellen. Wählen Sie das Informationssymbol neben **Ansible-Version** aus, um weitere Informationen zu verfügbaren Versionen zu erhalten.
 
-     ![Registerkarte mit zusätzlichen Ansible-Einstellungen im Azure-Portal](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-2.png)
+     ![Registerkarte mit zusätzlichen Ansible-Einstellungen im Azure-Portal](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-2.png)
 
 1. Klicken Sie auf **OK**.
 
 1. Geben Sie auf der Registerkarte mit den **Integrationseinstellungen für Ansible**den Authentifizierungstyp an. Weitere Informationen zum Schutz von Azure-Ressourcen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](/azure/active-directory/managed-identities-azure-resources/overview).
 
-    ![Registerkarte mit Ansible-Integrationseinstellungen im Azure-Portal](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-3.png)
+    ![Registerkarte mit Ansible-Integrationseinstellungen im Azure-Portal](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-3.png)
 
 1. Klicken Sie auf **OK**.
 
 1. Daraufhin wird die Seite **Zusammenfassung** angezeigt. Diese enthält den Überprüfungsprozess und eine Liste mit den angegebenen Kriterien für die Ansible-Bereitstellung. Über den Link am unteren Rand der Registerkarte können Sie**die Vorlage und die Parameter für die Verwendung** mit unterstützten Azure-Sprachen und -Plattformen herunterladen. 
 
-     ![Registerkarte mit der Ansible-Zusammenfassung im Azure-Portal](./media/ansible-deploy-solution-template/portal-ansible-setup-tab-4.png)
+     ![Registerkarte mit der Ansible-Zusammenfassung im Azure-Portal](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-4.png)
 
 1. Klicken Sie auf **OK**.
 
@@ -80,10 +82,11 @@ Die Ansible-Lösungsvorlage für Azure dient dazu, eine Ansible-Instanz auf eine
 
 1. Wählen Sie am oberen Rand der Portalseite das **Benachrichtigungssymbol**aus, um die Ansible-Bereitstellung nachzuverfolgen. Wählen Sie nach Abschluss der Bereitstellung **Zu Ressourcengruppe wechseln** aus. 
 
-     ![Registerkarte mit der Ansible-Zusammenfassung im Azure-Portal](./media/ansible-deploy-solution-template/portal-ansible-setup-complete.png)
+     ![Registerkarte mit der Ansible-Zusammenfassung im Azure-Portal](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-complete.png)
 
 1. Verwenden Sie die auf der Ressourcengruppenseite angegebene IP-Adresse Ihres Ansible-Hosts, um sich anzumelden und Ihre Azure-Ressourcen mit Ansible zu verwalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 > [!div class="nextstepaction"] 
-> [Erstellen eines virtuellen Linux-Computers in Azure mithilfe von Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Schnellstart: Konfigurieren eines virtuellen Linux-Computers in Azure mithilfe von Ansible](/azure/virtual-machines/linux/ansible-create-vm)

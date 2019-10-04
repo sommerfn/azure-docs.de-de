@@ -3,20 +3,20 @@ title: Microsoft Bing-Spracheingabe-Dienst | Microsoft-Dokumentation
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Sprach-API von Microsoft, um Ihre Apps mit sprachbasierten Aktionen zu versehen – einschließlich Echtzeitinteraktion mit Benutzern.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d2c7211831658a18e65e04aa753607f4eb22dac8
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ff9de2557583eecd5ddb2acd97b445a93abc5fb6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673187"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966648"
 ---
 # <a name="what-is-bing-speech"></a>Was ist die Bing-Spracheingabe?
 
@@ -37,9 +37,9 @@ Die Spracherkennungs-API von Microsoft *überträgt* Audiodatenströme in Text, 
 | Anwendungsfälle | [REST-APIs](GetStarted/GetStartedREST.md) | [Clientbibliotheken](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
 | Konvertieren von kurzem gesprochenem Audio mit einer Länge von weniger als 15 Sekunden (beispielsweise Befehle) ohne Zwischenergebnisse | Ja | Ja |
-| Konvertieren von langem Audio (länger als 15 Sekunden) | Nein  | Ja |
-| Streamen von Audio mit Zwischenergebnissen | Nein  | Ja |
-| Verstehen des aus Audio konvertierten Texts mithilfe von LUIS | Nein  | Ja |
+| Konvertieren von langem Audio (länger als 15 Sekunden) | Nein | Ja |
+| Streamen von Audio mit Zwischenergebnissen | Nein | Ja |
+| Verstehen des aus Audio konvertierten Texts mithilfe von LUIS | Nein | Ja |
 
 Unabhängig vom gewählten Ansatz (REST-APIs oder Clientbibliotheken) unterstützt der Speech-Dienst von Microsoft Folgendes:
 

@@ -3,22 +3,23 @@ title: Problembehandlung bei Azure Data Factory
 description: Erfahren Sie, wie Sie Probleme mithilfe von Azure Data Factory beheben.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: douglasl
+author: djpmsft
+ms.author: daperlov
+ms.reviewer: maghan
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 5b9e0a30658e1cb8fe0f83d55c04f120637babaf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d729fd11f355650b1476e6864a6d70219bf37e12
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549203"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135131"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Problembehandlung bei Data Factory
 > [!NOTE]
@@ -118,14 +119,14 @@ Die ausführlichen Schritte finden Sie unter [Debuggen einer Pipeline mit benutz
 
 ## <a name="use-azure-portal-to-troubleshoot"></a>Verwenden des Azure-Portals zur Problembehandlung
 ### <a name="using-portal-blades"></a>Verwenden von Portalblättern
-Entsprechende Schritte finden Sie unter [Überwachen der Pipeline](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline) .
+Entsprechende Schritte finden Sie unter [Überwachen der Pipeline](data-factory-monitor-manage-pipelines.md) .
 
 ### <a name="using-monitor-and-manage-app"></a>Verwenden der App „Überwachung und Verwaltung“
 Ausführliche Informationen finden Sie unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md) .
 
 ## <a name="use-azure-powershell-to-troubleshoot"></a>Verwenden von Azure PowerShell zur Problembehandlung
 ### <a name="use-azure-powershell-to-troubleshoot-an-error"></a>Verwenden von Azure PowerShell zur Behandlung eines Fehlers
-Ausführliche Informationen finden Sie unter [Überwachen von Data Factory-Pipelines mithilfe von Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md#monitor-pipeline) .
+Ausführliche Informationen finden Sie unter [Überwachen von Data Factory-Pipelines mithilfe von Azure PowerShell](data-factory-monitor-manage-pipelines.md) .
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md

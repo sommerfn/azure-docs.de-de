@@ -1,46 +1,30 @@
 ---
 title: Verwalten von Apache Hadoop-Clustern in HDInsight mit PowerShell – Azure
 description: Hier erfahren Sie, wie Sie administrative Aufgaben für Apache Hadoop-Cluster in HDInsight mit Azure PowerShell ausführen.
-services: hdinsight
-ms.reviewer: tyfox
+ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: tylerfox
-ms.openlocfilehash: 09574647aae8725a614dd20fd0247b0f8cf8b68a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.date: 04/17/2019
+ms.author: tyfox
+ms.openlocfilehash: 751f064df271aeb0899a00aea8b1ff09e8b8bdf4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446985"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077042"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit Azure PowerShell
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell kann zum Steuern und Automatisieren der Bereitstellung und Verwaltung Ihrer Workloads in Azure verwendet werden. In diesem Artikel erfahren Sie, wie Sie [Apache Hadoop](https://hadoop.apache.org/)-Cluster in Azure HDInsight mithilfe von Azure PowerShell verwalten. Eine Liste der HDInsight PowerShell-Cmdlets finden Sie unter [HDInsight-Cmdlet-Referenz](https://msdn.microsoft.com/library/azure/dn479228.aspx).
+Azure PowerShell kann zum Steuern und Automatisieren der Bereitstellung und Verwaltung Ihrer Workloads in Azure verwendet werden. In diesem Artikel erfahren Sie, wie Sie [Apache Hadoop](https://hadoop.apache.org/)-Cluster in Azure HDInsight mithilfe des Azure PowerShell-Az-Moduls verwalten. Eine Liste der HDInsight PowerShell-Cmdlets finden Sie unter [Az.HDInsight-Referenz](https://docs.microsoft.com/powershell/module/az.hdinsight).
 
-**Voraussetzungen**
+## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
-
-* **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-
-## <a name="install-azure-powershell"></a>Installieren von Azure Powershell
-[!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
-
-Wenn Sie Azure PowerShell Version 0.9x installiert haben, müssen Sie sie deaktivieren, bevor Sie eine neue Version installieren können.
-
-So überprüfen Sie die Version der installierten PowerShell:
-
-```powershell
-Get-Module *Az*
-```
-
-Um die ältere Version zu deinstallieren, rufen Sie „Programme und Features“ in der Systemsteuerung auf.
+* Das PowerShell-[Az-Modul](https://docs.microsoft.com/powershell/azure/overview) ist installiert.
 
 ## <a name="create-clusters"></a>Erstellen von Clustern
 Siehe [Erstellen von Linux-basierten Clustern in HDInsight mit Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -75,9 +59,6 @@ Remove-AzResourceGroup -Name <Resource Group Name>
 ## <a name="scale-clusters"></a>Skalieren von Clustern
 Mithilfe der Clusterskalierung können Sie die Anzahl der von einem in Azure HDInsight ausgeführten Cluster verwendeten Workerknoten ändern, ohne den Cluster neu erstellen zu müssen.
 
-> [!NOTE]  
-> Es werden nur Cluster mit HDInsight-Versionen ab 3.1.3 unterstützt. Überprüfen Sie ggf. auf der Seite „Eigenschaften“ die Version Ihres Clusters.  Informationen hierzu finden Sie unter [Auflisten und Anzeigen von Clustern](hdinsight-administer-use-portal-linux.md#showClusters).
-
 Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unterstützten Clustertypen:
 
 * Apache Hadoop
@@ -90,9 +71,9 @@ Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unt
     Sie können Knoten reibungslos Ihrem HBase-Cluster hinzufügen oder aus diesem entfernen, während er aktiv ist. Regionale Server werden innerhalb weniger Minuten nach Abschluss des Skalierungsvorgangs automatisch ausgeglichen. Allerdings können Sie die regionalen Server auch manuell ausgleichen, indem Sie sich am Hauptknoten des Clusters anmelden und in einem Eingabeaufforderungsfenster die folgenden Befehle ausführen:
 
     ```bash
-    >pushd %HBASE_HOME%\bin
-    >hbase shell
-    >balancer
+    pushd %HBASE_HOME%\bin
+    hbase shell
+    balancer
     ```
 
 * Apache Storm
@@ -108,7 +89,7 @@ Auswirkungen der Änderung der Anzahl von Datenknoten für die von HDInsight unt
 
     Die Storm-Webbenutzeroberfläche ist für den HDInsight-Cluster verfügbar:
 
-    ![HDInsight Storm-Skalierung ausgleichen](./media/hdinsight-administer-use-powershell/hdinsight.portal.scale.cluster.png)
+    ![HDInsight Storm-Skalierung ausgleichen](./media/hdinsight-administer-use-powershell/portal-scale-cluster.png)
 
     Es folgt ein Beispiel, wie die Storm-Topologie mithilfe des CLI-Befehls neu ausgeglichen werden kann:
 
@@ -213,10 +194,6 @@ Weitere Informationen finden Sie unter [Ausführen von MapReduce-Beispielen in H
 
 Weitere Informationen finden Sie unter [Ausführen von Apache Hive-Abfragen mit PowerShell](hadoop/apache-hadoop-use-hive-powershell.md).
 
-**So übermitteln Sie Apache Pig-Aufträge**
-
-Weitere Informationen finden Sie unter [Ausführen von Apache Pig-Aufträgen mit PowerShell](hadoop/apache-hadoop-use-pig-powershell.md).
-
 **So übermitteln Sie Apache Sqoop-Aufträge**
 
 Weitere Informationen finden Sie unter [Verwenden von Apache Hadoop mit HDInsight](hadoop/hdinsight-use-sqoop.md).
@@ -226,34 +203,14 @@ Weitere Informationen finden Sie unter [Verwenden von Apache Hadoop mit HDInsigh
 Weitere Informationen finden Sie unter [Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in HDInsight](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Hochladen von Daten in Azure Blob Storage
-Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
+
+Siehe [Hochladen von Daten in HDInsight](hdinsight-upload-data.md).
 
 ## <a name="see-also"></a>Siehe auch
+
 * [Referenzdokumentation zum HDInsight-Cmdlet](https://msdn.microsoft.com/library/azure/dn479228.aspx)
 * [Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal](hdinsight-administer-use-portal-linux.md)
-* [Verwalten von HDInsight über eine Befehlszeilenschnittstelle][hdinsight-admin-cli]
-* [Erstellen von HDInsight-Clustern][hdinsight-provision]
-* [Hochladen von Daten in HDInsight][hdinsight-upload-data]
-* [Programmgesteuertes Übermitteln von Apache Hadoop-Aufträgen][hdinsight-submit-jobs]
-* [Erste Schritte mit Azure HDInsight][hdinsight-get-started]
-
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-provision-custom-options]: hdinsight-hadoop-provision-linux-clusters.md#configuration
-[hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
-
-[hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
-[hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
-[hdinsight-use-mapreduce]:hadoop/hdinsight-use-mapreduce.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-
-[hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
-
-[powershell-install-configure]: /powershell/azureps-cmdlets-docs
-
-[image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
+* [Verwalten von HDInsight über eine Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md)
+* [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
+* [Programmgesteuertes Übermitteln von Apache Hadoop-Aufträgen](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [Erste Schritte mit Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)

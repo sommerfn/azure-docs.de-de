@@ -1,21 +1,19 @@
 ---
-title: 'Tutorial: Indizieren von Daten aus Azure SQL-Datenbanken in einem C#-Beispielcode – Azure Search'
+title: 'C#-Tutorial: Indizieren von Daten aus Azure SQL-Datenbanken: Azure Search'
 description: Dieses C#-Codebeispiel veranschaulicht, wie Sie eine Verbindung mit Azure SQL-Datenbank herstellen, durchsuchbare Daten extrahieren und diese in einen Azure Search-Index laden.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/09/2019
+ms.date: 05/02/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 8550e220a2c87823fc337154ea33dd3c4ec81ed0
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: d0f0abade5d1eea952c5abde293ae90745ee9b04
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528049"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640653"
 ---
 # <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#-Tutorial: Auffüllung einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
 
@@ -58,7 +56,7 @@ Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anfor
 
 1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-fiddler/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
+![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
@@ -99,7 +97,7 @@ In der folgenden Übung wird davon ausgegangen, dass weder ein Server noch eine 
 
    ![SQL-Datenbankseite](./media/search-indexer-tutorial/hotels-db.png)
 
-4. Klicken Sie im Navigationsbereich auf **Abfrage-Editor (Vorschau)**.
+4. Klicken Sie im Navigationsbereich auf **Abfrage-Editor (Vorschau)** .
 
 5. Klicken Sie auf **Anmelden**, und geben Sie den Benutzernamen und das Kennwort des Serveradministrators ein.
 
@@ -267,7 +265,7 @@ Die schnellste Möglichkeit, das System nach einem Tutorial zu bereinigen, beste
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können KI-basierte Algorithmen an eine Indexer-Pipeline anfügen. Als Nächstes fahren Sie mit dem folgenden Tutorial fort.
+Sie können KI-Anreicherungsalgorithmen an eine Indexerpipeline anfügen. Als Nächstes fahren Sie mit dem folgenden Tutorial fort.
 
 > [!div class="nextstepaction"]
 > [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md)

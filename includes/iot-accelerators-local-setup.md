@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: iot-accelerators
 author: avneet723
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
-ms.openlocfilehash: ec382217bfa32da19c0b98e656f3782739b26cc6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125178"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178524"
 ---
 ## <a name="download-the-source-code"></a>Herunterladen des Quellcodes
 
@@ -59,7 +59,7 @@ Wenn Sie die erforderlichen Azure-Ressourcen noch nicht erstellt haben, führen 
 
      Das Skript erstellt die Ressourcengruppe in Azure mit dem Namen Ihrer Projektmappe. Diese Ressourcengruppe enthält die Azure-Ressourcen, die der Solution Accelerator verwendet. Sie können diese Ressourcengruppe löschen, wenn Sie die entsprechenden Ressourcen nicht mehr benötigen.
 
-     Mit dem Skript werden auf dem lokalen Computer zudem mehrere Umgebungsvariablen mit dem Präfix **PCS** hinzugefügt. Wenn Sie die Docker-Container oder Microserviceprojekte lokal starten, werden die zugehörigen Konfigurationswerte aus diesen Umgebungsvariablen gelesen.
+     Mit dem Skript werden auf dem lokalen Computer zudem mehrere Umgebungsvariablen mit dem Präfix **PCS** hinzugefügt. Diese Umgebungsvariablen stellen die Details für die Remoteüberwachung bereit, damit sie aus einer Azure Key Vault-Ressource gelesen werden können. Diese Key Vault-Ressource ist die Quelle, aus der die Remoteüberwachung ihre Konfigurationswerte lesen wird.
 
      > [!TIP]
      > Nach Abschluss des Skripts werden außerdem die Umgebungsvariablen in der Datei **\<Ihr Stammordner\>\\.pcs\\\<Lösungsname\>.env** gespeichert. Sie können sie für zukünftige Bereitstellungen des Solution Accelerators verwenden. Beachten Sie, dass alle auf dem lokalen Computer festgelegten Umgebungsvariablen die Werte in der Datei **services\\scripts\\local\\.env** überschreiben, wenn Sie **docker-compose** ausführen.
@@ -68,4 +68,12 @@ Wenn Sie die erforderlichen Azure-Ressourcen noch nicht erstellt haben, führen 
 
 ### <a name="use-existing-azure-resources"></a>Verwenden vorhandener Azure-Ressourcen
 
-Wenn Sie die erforderlichen Azure-Ressourcen bereits erstellt haben, erstellen Sie die entsprechenden Umgebungsvariablen auf dem lokalen Computer. Möglicherweise sind diese in der Datei **\<Ihr Stammordner\>\\.pcs\\\<Lösungsname\>.env** aus der Bereitstellung gespeichert. Beachten Sie, dass die auf dem lokalen Computer festgelegten Umgebungsvariablen die Werte in der Datei **services\\scripts\\local\\.env** überschreiben, wenn Sie **docker-compose** ausführen.
+Wenn Sie die erforderlichen Azure-Ressourcen bereits erstellt haben, erstellen Sie die entsprechenden Umgebungsvariablen auf dem lokalen Computer.
+Legen Sie die Umgebungsvariablen für Folgendes fest:
+* **PCS_KEYVAULT_NAME** – Der Name der Azure Key Vault-Ressource
+* **PCS_AAD_APPID** – Die AAD-Anwendungs-ID
+* **PCS_AAD_APPSECRET** – Das AAD-Anwendungsgeheimnis
+
+Konfigurationswerte werden aus dieser Azure Key Vault-Ressource gelesen. Diese Umgebungsvariablen sind möglicherweise in der Datei **\<Ihr Stammordner\>\\.pcs\\\<Lösungsname\>.env** aus der Bereitstellung gespeichert. Beachten Sie, dass die auf dem lokalen Computer festgelegten Umgebungsvariablen die Werte in der Datei **services\\scripts\\local\\.env** überschreiben, wenn Sie **docker-compose** ausführen.
+
+Ein Teil der vom Microservice benötigten Konfiguration wird in einer **Key Vault**-Instanz gespeichert, die bei der ersten Bereitstellung erstellt wurde. Die entsprechenden Variablen in Key Vault sollten nach Bedarf geändert werden.

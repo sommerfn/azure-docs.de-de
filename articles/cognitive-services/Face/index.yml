@@ -1,104 +1,96 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0d2f7ad1f4c3603a831268d2ef7d6b881896fb2f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731258"
 documentType: LandingData
 title: Dokumentation zur Gesichtserkennungs-API
 metadata:
   title: 'Dokumentation zur Gesichtserkennungs-API: Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
-  description: Hier erfahren Sie, wie Sie mithilfe der Gesichtserkennungs-API Gesichter in Bildern erkennen und identifizieren und Informationen zu Gesichtern zurückgeben. In Tutorials wird gezeigt, wie Sie Apps erstellen, die die API nutzen.
+  description: 'Hier erfahren Sie, wie Sie mithilfe der Gesichtserkennungs-API Gesichter in Bildern erkennen und identifizieren und Informationen zu Gesichtern zurückgeben. In Tutorials wird gezeigt, wie Sie Apps erstellen, die die API nutzen.'
   services: cognitive-services
   author: PatrickFarley
-  manager: cgronlun
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: face-api
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 12/20/2018
   ms.author: nitinme
 abstract:
-  description: Die cloudbasierte Gesichtserkennungs-API stellt Entwicklern erweiterte Algorithmen für die Gesichtserkennung zur Verfügung. Gesichtserkennungsalgorithmen von Microsoft ermöglichen die Ermittlung von Gesichtsmerkmalen sowie die Gesichtserkennung. In unseren Schnellstartanleitungen, Tutorials und Beispielen erfahren Sie, wie Sie Inhalte auf unterschiedliche Weise analysieren.
+  description: 'Die cloudbasierte Gesichtserkennungs-API stellt Entwicklern erweiterte Algorithmen für die Gesichtserkennung zur Verfügung. Gesichtserkennungsalgorithmen von Microsoft ermöglichen die Ermittlung von Gesichtsmerkmalen sowie die Gesichtserkennung. In unseren Schnellstartanleitungen, Tutorials und Beispielen erfahren Sie, wie Sie Inhalte auf unterschiedliche Weise analysieren.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/face/overview
+            html: <p>Informieren Sie sich über die Gesichtserkennungs-API.</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Worum handelt es sich bei der Gesichtserkennungs-API?
+          - href: /azure/cognitive-services/face/face-api-how-to-topics/howtodetectfacesinimage
+            html: <p>Informieren Sie sich über die Gesichtserkennung in Bildern.</p>
+            image:
+              src: ../media/index/i_tasks.svg
+            title: Gesichtserkennung in Bildern
+          - href: /azure/cognitive-services/face/face-how-to-install-containers
+            html: '<p>Hier erfahren Sie, wie Sie die Gesichtserkennungs-API in Containern verwenden.</p>'
+            image:
+              src: ../media/index/i_tasks.svg
+            title: Verwenden der Gesichtserkennungs-API in Containern
+  - title: Fünfminütige Schnellstarts
     items:
-    - href: /azure/cognitive-services/face/overview
-      html: <p>Informieren Sie sich über die Gesichtserkennungs-API.</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Worum handelt es sich bei der Gesichtserkennungs-API?
-    - href: /azure/cognitive-services/face/face-api-how-to-topics/howtodetectfacesinimage
-      html: <p>Informieren Sie sich über die Gesichtserkennung in Bildern.</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: Gesichtserkennung in Bildern
-    - href: /azure/cognitive-services/face/face-how-to-install-containers
-      html: <p>Hier erfahren Sie, wie Sie die Gesichtserkennungs-API in Containern verwenden.</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: Verwenden der Gesichtserkennungs-API in Containern
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: 'Verwenden Sie Folgendes, um Bilder zu analysieren, Miniaturansichten zu generieren und Text aus Bildern zu extrahieren:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Verwenden Sie Folgendes, um Bilder zu analysieren, Miniaturansichten zu generieren und Text aus Bildern zu extrahieren:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_Csharp.svg
+            text: 'C&#35;'
+            href: QuickStarts/CSharp
+          - image:
+              src: media/index/logo_java.svg
+            text: Java
+            href: QuickStarts/Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js
+            href: QuickStarts/node
+          - image:
+              src: media/index/logo_python.svg
+            text: Python
+            href: QuickStarts/Python
+          - image:
+              src: media/index/logo_go.svg
+            text: Go
+            href: QuickStarts/Go
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - image:
-        src: media/index/logo_Csharp.svg
-      text: C&#35;
-      href: QuickStarts/CSharp
-    - image:
-        src: media/index/logo_java.svg
-      text: Java
-      href: QuickStarts/Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node.js
-      href: QuickStarts/node
-    - image:
-        src: media/index/logo_python.svg
-      text: Python
-      href: QuickStarts/Python
-    - image:
-        src: media/index/logo_go.svg
-      text: Go
-      href: QuickStarts/Go
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: 'Erfahren Sie, wie Anwendungen unter Verwendung der Gesichtserkennungs-API entwickelt werden:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Erfahren Sie, wie Anwendungen unter Verwendung der Gesichtserkennungs-API entwickelt werden:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial">Erkennen und Umranden von Gesichtern in einem Bild unter Windows</a></li>
+          - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinJavaForAndroidTutorial">Erkennen und Umranden von Gesichtern in einem Bild unter Android</a></li>
+  - title: Beispiele
     items:
-    - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial">Erkennen und Umranden von Gesichtern in einem Bild unter Windows</a></li>
-    - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinJavaForAndroidTutorial">Erkennen und Umranden von Gesichtern in einem Bild unter Android</a></li>
-- title: Beispiele
-  items:
-  - type: paragraph
-    text: 'Abrufen von Beispielen für die Gesichtserkennungs-API:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Abrufen von Beispielen für die Gesichtserkennungs-API:'
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=Relevance">Codebeispiele</a>'
+  - title: Verweis
     items:
-    - html: <a href="https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=Relevance">Codebeispiele</a>
-- title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: APIs
-      html: <p><a href="APIReference">Gesichtserkennungs-API</a></p>
-    - title: SDKs
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest">Node</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-iOS">iOS</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: Befehlszeilenschnittstelle (CLI)
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure-Befehlszeilenschnittstelle</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: APIs
+            html: <p><a href="APIReference">Gesichtserkennungs-API</a></p>
+          - title: SDKs
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest">Node</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-iOS">iOS</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Befehlszeilenschnittstelle (CLI)
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure-Befehlszeilenschnittstelle</a></p>'

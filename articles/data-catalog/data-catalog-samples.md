@@ -1,36 +1,51 @@
 ---
 title: Azure Data Catalog – Entwicklerbeispiele
 description: Dieser Artikel bietet eine Übersicht über die verfügbaren Entwicklerbeispiele für die REST-API für Data Catalog.
-services: data-catalog
+ms.service: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 0dc23edd-04d8-49fc-841e-d132fb109ce7
-ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 1f62a5583b7beef2dc535065a6c0d3bcb34fe7b4
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: 7d0e27802745dda62f87e412053650907e9b812c
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009632"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950156"
 ---
-# <a name="data-catalog-developer-samples"></a>Data Catalog – Entwicklerbeispiele
-Erste Schritte bei der Entwicklung von Data Catalog-Apps mittels der Data Catalog-REST-API. Die Data Catalog-REST-API ist eine REST-basierte API, die einen programmgesteuerten Zugriff auf Data Catalog-Ressourcen ermöglicht, um diese Datenressourcen programmgesteuert zu registrieren, zu kommentieren und zu durchsuchen.
+# <a name="azure-data-catalog-developer-samples"></a>Azure Data Catalog – Entwicklerbeispiele
 
-Hier sind die Beispiele, die auf GitHub zu finden sind:
+Hier finden Sie Informationen zu den ersten Schritten bei der Entwicklung von Azure Data Catalog-Apps unter Verwendung der Data Catalog-REST-API. Die Data Catalog-REST-API ist eine REST-basierte API, die einen programmgesteuerten Zugriff auf Data Catalog-Ressourcen ermöglicht, um diese Datenressourcen programmgesteuert zu registrieren, zu kommentieren und zu durchsuchen.
 
-* [Erste Schritte mit Azure Data Catalog](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-get-started/)
+## <a name="samples-available-on-githubcom"></a>Auf GitHub.com verfügbare Beispiele
+
+* [Erste Schritte mit Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-get-started/)
   
-  Das Beispiel veranschaulicht, wie die Authentifizierung mit Azure AD erfolgt, um Datenassets mithilfe der Data Catalog-REST-API zu registrieren, zu durchsuchen und zu löschen.
-* [Massenregistrierung und -kommentierung](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-excel-register-data-assets/)
+   Das Beispiel mit den ersten Schritten veranschaulicht die Authentifizierung mit Azure AD, um Datenassets mithilfe der Data Catalog-REST-API zu registrieren, zu durchsuchen und zu löschen.
+   
+* [Erste Schritte mit Azure Data Catalog unter Verwendung eines Dienstprinzipals](https://github.com/Azure-Samples/data-catalog-dotnet-service-principal-get-started/)
+
+   Dieses Beispiel veranschaulicht die Vorgehensweise zum Registrieren, Suchen und Löschen von Datenassets unter Verwendung der Data Catalog-REST-API. In diesem Beispiel wird die Dienstprinzipalauthentifizierung verwendet.
+
+* [Import/Export-Tool für Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-import-export/)
+
+   Dieses Beispiel zeigt, wie Sie mithilfe der Data Catalog-REST-API Assets aus Azure Data Catalog abrufen und in einer Datei serialisieren. Zusätzlich veranschaulicht es, wie Sie JSON-serialisierte Assets in den Katalog schieben können. Es unterstützt das Exportieren einer Teilmenge des Katalogs mithilfe einer Suchabfrage.
+
+* [Massenregistrierung und -kommentierung in Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-excel-register-data-assets/)
   
-  Dieses Beispiel zeigt, wie Sie die Massenregistrierung von Datenassets aus einer Excel-Arbeitsmappe mithilfe von Data Catalog-REST-API und Open XML durchführen.
-* [Import-/Exporttool](https://azure.microsoft.com/resources/samples/data-catalog-dotnet-import-export/)
+   Dieses Beispiel zeigt, wie Sie mithilfe von Data Catalog-REST-API und Open XML eine Massenregistrierung von Datenassets aus einer Excel-Arbeitsmappe durchführen.
   
-  Dieses Beispiel zeigt, wie Sie mithilfe der Data Catalog-REST-API Assets aus dem Azure Data Catalog abrufen und in einer Datei serialisieren. Zusätzlich veranschaulicht es, wie Sie JSON-serialisierte Assets in den Katalog schieben können. Es unterstützt das Exportieren einer Teilmenge des Katalogs mithilfe einer Suchabfrage.
+* [Massenimport von Glossarbegriffen in Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-bulk-import-glossary/)
 
-* [Bulk import glossary terms (Massenimport von Glossarbegriffen)](https://azure.microsoft.com/resources/samples/data-catalog-bulk-import-glossary/)
+   In diesem Beispiel wird gezeigt, wie Sie Glossarbegriffe aus CSV-Dateien in ein ADC-Glossar importieren.
 
-    In diesem Beispiel wird gezeigt, wie Sie Glossarbegriffe aus CSV-Dateien in ein ADC-Glossar importieren.
+* [Massenimport von Beziehungen in Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-bulk-import-relationship/)
 
+   Dieses Beispiel zeigt das programmgesteuerte Importieren von Beziehungsinformationen aus einer CSV-Datei in einen Datenkatalog.
+
+* [Veröffentlichen von Beziehungen in Azure Data Catalog](https://github.com/Azure-Samples/data-catalog-dotnet-publish-relationships/)
+
+   Dieses Beispiel zeigt das programmgesteuerte Veröffentlichen von Beziehungsinformationen in einem Datenkatalog.
+   
+## <a name="next-steps"></a>Nächste Schritte
+[Referenz für die Azure Data Catalog-REST-API](/rest/api/datacatalog/)

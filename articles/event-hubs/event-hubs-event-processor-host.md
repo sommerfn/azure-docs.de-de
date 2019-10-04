@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 07/16/2019
 ms.author: shvija
-ms.openlocfilehash: 26f0abb48ba268f79167ed5d00e4f96d8b5e5998
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 312800482405530d57ce7b0b1e77b91c2ad069ce
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498170"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772156"
 ---
-# <a name="receive-events-from-azure-event-hubs-using-event-processor-host"></a>Empfangen von Ereignissen von Azure Event Hubs mithilfe von Event Processor Host
+# <a name="event-processor-host"></a>Ereignisprozessorhost
 
 Azure Event Hubs ist ein leistungsfähiger Dienst zur Erfassung von Telemetriedaten, der zum Streamen von Millionen von Ereignissen zu geringen Kosten verwendet werden kann. In diesem Artikel wird beschrieben, wie erfasste Ereignisse mithilfe des *Ereignisprozessorhosts* (Event Processor Host, EPH) genutzt und verarbeitet werden. Dabei handelt es sich um einen intelligenten Consumer-Agent, der die Verwaltung von Prüfpunkten, Leasing und parallelen Ereignislesern vereinfacht.  
 
@@ -184,6 +184,10 @@ Es wird nicht empfohlen, einen Empfänger mit epoch-Wert zu erstellen und dann i
 - Wenn bereits ein Empfänger mit einem epoch-Wert von e1 erstellt wurde, der aktiv Ereignisse empfängt, und ein neuer Empfänger ohne epoch-Wert erstellt wird, schlägt die Erstellung des neuen Empfängers fehl. Empfänger mit epoch-Wert haben im System immer Vorrang.
 - Wenn bereits ein Empfänger mit einem epoch-Wert von e1 erstellt wurde, der getrennt wurde, und ein neuer Empfänger ohne epoch-Wert in einer neuen MessagingFactory-Instanz erstellt wird, ist die Erstellung des neuen Empfängers erfolgreich. Hier besteht allerdings der Nachteil, dass das System die Trennung des Empfängers erst nach etwa 10 Minuten erkennt.
 - Wenn mindestens ein Empfänger ohne epoch-Wert erstellt wird und ein neuer Empfänger mit einem epoch-Wert von e1 erstellt wird, werden alle älteren Empfänger getrennt.
+
+
+> [!NOTE]
+> Sie sollten für Anwendungen, die Epochen und für solche, die keine Epochen verwenden, verschiedene Consumergruppen einsetzen, um Fehler zu vermeiden. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

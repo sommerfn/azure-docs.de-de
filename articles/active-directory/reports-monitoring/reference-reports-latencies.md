@@ -3,7 +3,7 @@ title: Latenzen bei Azure Active Directory-Berichten | Microsoft-Dokumentation
 description: Erfahren Sie etwas über den erforderliche Zeitraum, bis Ereignisse in Ihrem Azure-Portal angezeigt werden.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: markvi
+ms.date: 05/13/2019
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64bd2247a3437a2cc960da1820d9be417eedff8e
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: ce62a5059304fe83d933a46ae69f4b8e0c276ba7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438648"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127030"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latenzen bei Azure Active Directory-Berichten
 
@@ -41,10 +41,10 @@ Die folgende Tabelle enthält Latenzzeitinformationen für Aktivitätsberichte.
 > **Latenz (95. Perzentil)** bezieht sich auf die Zeit, bis zu der 95 % der Protokolle gemeldet werden, und **Latenz (99. Perzentil)** bezieht sich auf die Zeit, bis zu der 99 % der Protokolle gemeldet werden. 
 >
 
-| Bericht | Latenz (95. Perzentil) |Latenz (99. Perzentil)|Zeitraum, in dem Protokolle gemeldet werden.|
-| :-- | --- | --- | --- |
-| Überwachungsprotokolle | 2 Min.  | 5 Min.  | 2-60 Min. |
-| Anmeldungen | 2 Min.  | 5 Min. | 2-120 Min. |
+| Bericht | Latenz (95. Perzentil) |Latenz (99. Perzentil)|
+| :-- | --- | --- |
+| Überwachungsprotokolle | 2 Min.  | 5 Min.  |
+| Anmeldungen | 2 Min.  | 5 Min. |
 
 ### <a name="how-soon-can-i-see-activities-data-after-getting-a-premium-license"></a>Wie schnell werden nach Erwerb einer Premium-Lizenz Daten zu Aktivitäten angezeigt?
 
@@ -64,11 +64,11 @@ Die folgende Tabelle enthält Latenzzeitinformationen für Sicherheitsberichte.
 | Gefährdete Benutzer          | 5 Minuten   | 15 Minuten  | 2 Stunden  |
 | Riskante Anmeldungen         | 5 Minuten   | 15 Minuten  | 2 Stunden  |
 
-## <a name="risk-events"></a>Risikoereignisse
+## <a name="risk-detections"></a>Risikoerkennungen
 
-Azure AD verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um verdächtige Aktivitäten im Zusammenhang mit Ihren Benutzerkonten zu erkennen. Jede erkannte verdächtige Aktion wird in einem Datensatz gespeichert, der als **Risikoereignis** bezeichnet wird.
+Azure AD verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um verdächtige Aktivitäten im Zusammenhang mit Ihren Benutzerkonten zu erkennen. Jede erkannte verdächtige Aktion wird in einem Datensatz gespeichert, der als **Risikoerkennung** bezeichnet wird.
 
-Die folgende Tabelle enthält Latenzzeitinformationen für Risikoereignisse.
+Die folgende Tabelle enthält Latenzzeitinformationen für Risikoerkennungen.
 
 | Bericht | Minimum | Durchschnitt | Maximum |
 | :-- | --- | --- | --- |
@@ -84,4 +84,4 @@ Die folgende Tabelle enthält Latenzzeitinformationen für Risikoereignisse.
 
 * [Übersicht über Azure AD-Berichte](overview-reports.md)
 * [Programmgesteuerter Zugriff auf Azure AD-Berichte](concept-reporting-api.md)
-* [Azure Active Directory-Risikoereignisse](concept-risk-events.md)
+* [Azure Active Directory-Risikoerkennungen](concept-risk-events.md)

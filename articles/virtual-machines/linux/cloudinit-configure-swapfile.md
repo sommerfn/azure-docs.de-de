@@ -1,10 +1,10 @@
 ---
-title: Verwenden von „cloud-init“ zum Konfigurieren einer Auslagerungsdatei auf einer Linux-VM | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie „cloud-init“ zum Konfigurieren einer Auslagerungsdatei auf einer Linux-VM während der Erstellung mithilfe der Azure CLI verwenden.
+title: Verwenden von „cloud-init“ zum Konfigurieren einer Swap-Partition auf einer Linux-VM | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie „cloud-init“ zum Konfigurieren einer Swap-Partition auf einer Linux-VM während der Erstellung mit der Azure CLI verwenden.
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -14,22 +14,22 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 626fd4739daf2506854c42f16ac986a361ebab38
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d8ce12b931b6a30fa375588b73a1140ed4697c2f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769911"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640768"
 ---
-# <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>Verwenden von „cloud-init“ zum Konfigurieren einer Auslagerungsdatei auf einer Linux-VM
-Dieser Artikel zeigt, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren der Auslagerungsdatei auf verschiedenen Linux-Distributionen verwenden. Die Auslagerungsdatei wurde traditionell vom Linux-Agent (WALA) konfiguriert – abhängig davon, für welche Distributionen eine Auslagerungsdatei benötigt wurde.  In diesem Dokument wird das Vorgehen für die bedarfsgesteuerte Erstellung der Auslagerungsdatei zur Bereitstellungszeit unter Verwendung von „cloud-init“ beschrieben.  Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).
+# <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Verwenden von „cloud-init“ zum Konfigurieren einer Swap-Partition auf einer Linux-VM
+In diesem Artikel wird veranschaulicht, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren der Swap-Partition auf verschiedenen Linux-Distributionen verwenden. Die Swap-Partition wurde traditionell vom Linux-Agent (WALA) konfiguriert – abhängig davon, für welche Distributionen eine Auslagerungsdatei benötigt wurde.  In diesem Dokument wird das Vorgehen für die bedarfsgesteuerte Erstellung der Swap-Partition zur Bereitstellungszeit unter Verwendung von „cloud-init“ beschrieben.  Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).
 
-## <a name="create-swapfile-for-ubuntu-based-images"></a>Erstellen einer Auslagerungsdatei für Ubuntu-basierte Images
-In Azure werden für Ubuntu-Katalogimages standardmäßig keine Auslagerungsdateien erstellt. Informationen zum Aktivieren der Konfiguration einer Auslagerungsdatei während der VM-Bereitstellung mit „cloud-init“ finden Sie im Ubuntu-Wiki im [AzureSwapPartitions-Dokument](https://wiki.ubuntu.com/AzureSwapPartitions).
+## <a name="create-swap-partition-for-ubuntu-based-images"></a>Erstellen einer Swap-Partition für Ubuntu-basierte Images
+In Azure werden für Ubuntu-Katalogimages standardmäßig keine Swap-Partitionen erstellt. Informationen zum Aktivieren der Konfiguration einer Swap-Partition während der VM-Bereitstellung mit „cloud-init“ finden Sie im Ubuntu-Wiki im [AzureSwapPartitions-Dokument](https://wiki.ubuntu.com/AzureSwapPartitions).
 
-## <a name="create-swapfile-for-red-hat-and-centos-based-images"></a>Erstellen einer Auslagerungsdatei für Red Hat- und CentOS-basierte Images
+## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>Erstellen einer Swap-Partition für Red Hat- und CentOS-basierte Images
 
-Erstellen Sie in der aktuellen Shell eine Datei namens *cloud_init_swapfile.txt*, und fügen Sie die folgende Konfiguration ein. Erstellen Sie für dieses Beispiel die Datei in der Cloud Shell, nicht auf dem lokalen Computer. Dazu können Sie einen beliebigen Editor verwenden. Geben Sie `sensible-editor cloud_init_swapfile.txt` ein, um die Datei zu erstellen und eine Liste der verfügbaren Editoren anzuzeigen. Wählen Sie #1 aus, um den Editor **nano** zu verwenden. Stellen Sie sicher, dass die gesamte cloud-init-Datei ordnungsgemäß kopiert wird, insbesondere die erste Zeile.  
+Erstellen Sie in der aktuellen Shell eine Datei mit dem Namen *cloud_init_swappart.txt*, und fügen Sie die folgende Konfiguration ein. Erstellen Sie für dieses Beispiel die Datei in der Cloud Shell, nicht auf dem lokalen Computer. Dazu können Sie einen beliebigen Editor verwenden. Geben Sie `sensible-editor cloud_init_swappart.txt` ein, um die Datei zu erstellen und eine Liste der verfügbaren Editoren anzuzeigen. Wählen Sie #1 aus, um den Editor **nano** zu verwenden. Stellen Sie sicher, dass die gesamte cloud-init-Datei ordnungsgemäß kopiert wird, insbesondere die erste Zeile.  
 
 ```yaml
 #cloud-config
@@ -54,25 +54,25 @@ Vor der Bereitstellung dieses Images müssen Sie mit dem Befehl [az group create
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie nun mit dem Befehl [az vm create](/cli/azure/vm) eine VM, und geben Sie mit `--custom-data cloud_init_swapfile.txt` die cloud-init-Datei an, wie im Folgenden gezeigt wird:
+Erstellen Sie nun mit dem Befehl [az vm create](/cli/azure/vm) eine VM, und geben Sie mit `--custom-data cloud_init_swappart.txt` die cloud-init-Datei an, wie im Folgenden gezeigt wird:
 
 ```azurecli-interactive 
 az vm create \
   --resource-group myResourceGroup \
   --name centos74 \
   --image OpenLogic:CentOS:7-CI:latest \
-  --custom-data cloud_init_swapfile.txt \
+  --custom-data cloud_init_swappart.txt \
   --generate-ssh-keys 
 ```
 
-## <a name="verify-swapfile-was-created"></a>Überprüfen, ob die Auslagerungsdatei erstellt wurde
+## <a name="verify-swap-partition-was-created"></a>Überprüfen der Erstellung einer Swap-Partition
 Stellen Sie eine SSH-Verbindung mit der öffentlichen IP-Adresse Ihrer VM her, die in der Ausgabe über den vorherigen Befehl gezeigt wird. Geben Sie Ihre eigene **publicIpAddress** wie folgt ein:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Nachdem Sie eine SSH-Verbindung mit der VM hergestellt haben, überprüfen Sie, ob die Auslagerungsdatei erstellt wurde.
+Nachdem Sie eine SSH-Verbindung mit der VM hergestellt haben, können Sie überprüfen, ob die Swap-Partition erstellt wurde.
 
 ```bash
 swapon -s
@@ -86,7 +86,7 @@ Filename                Type        Size    Used    Priority
 ```
 
 > [!NOTE] 
-> Wenn für Ihr vorhandenes Azure-Image eine Auslagerungsdatei konfiguriert wurde und Sie die Konfiguration der Auslagerungsdatei für neue Images ändern möchten, müssen Sie die vorhandene Auslagerungsdatei entfernen. Weitere Informationen finden Sie im Dokument „Anpassen von Images für die Bereitstellung mit cloud-init“.
+> Wenn für Ihr vorhandenes Azure-Image eine Swap-Partition konfiguriert wurde und Sie die Konfiguration der Swap-Partition für neue Images ändern möchten, müssen Sie die vorhandene Swap-Partition entfernen. Weitere Informationen finden Sie im Dokument „Anpassen von Images für die Bereitstellung mit cloud-init“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere cloud-init-Beispiele für Änderungen an der Konfiguration finden Sie in den folgenden Themen:

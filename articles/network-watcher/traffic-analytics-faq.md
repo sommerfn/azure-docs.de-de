@@ -3,8 +3,8 @@ title: Häufig gestellte Fragen zu Azure-Datenverkehrsanalysen | Microsoft-Dokum
 description: Hier finden Sie Antworten auf einige der am häufigsten gestellten Fragen zu Datenverkehrsanalysen.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,17 +12,20 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
-ms.author: jdial
-ms.openlocfilehash: 41b80e3914c93a4baeb39f35c7281f8fe81ff37c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: 45200e7620326dedcee92c579843e61bb07ff68e
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835315"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68610252"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
 
 In diesem Artikel werden an zentraler Stelle viele der am häufigsten gestellten Fragen zu Traffic Analytics in Azure Network Watcher beantwortet.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-are-the-prerequisites-to-use-traffic-analytics"></a>Welche Voraussetzungen gelten für die Verwendung von Traffic Analytics?
 
@@ -51,11 +54,11 @@ Ihr Konto muss eine der folgenden Voraussetzungen erfüllen, um Traffic Analytic
         
 So überprüfen Sie die einem Benutzer für ein Abonnement zugewiesenen Rollen
 
-1. Melden Sie sich mit **Login-AzureRmAccount** bei Azure an. 
+1. Melden Sie sich mit **Login-AzAccount** bei Azure an. 
 
-2. Wählen Sie mit **Select-AzureRmSubscription** das gewünschte Abonnement aus. 
+2. Wählen Sie mit **Select-AzSubscription** das gewünschte Abonnement aus. 
 
-3. Listen Sie mit **Get-AzureRmRoleAssignment -SignInName [E-Mail-Adresse des Benutzers] -IncludeClassicAdministrators** alle Rollen auf, die einem bestimmten Benutzer zugewiesen sind. 
+3. Listen Sie mit **Get-AzRoleAssignment -SignInName [E-Mail-Adresse des Benutzers] -IncludeClassicAdministrators** alle Rollen auf, die einem bestimmten Benutzer zugewiesen sind. 
 
 Falls keine Ausgabe erfolgt, wenden Sie sich an den zuständigen Abonnementadministrator, um den zur Ausführung der Befehle erforderlichen Zugriff zu erhalten. Weitere Informationen finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
@@ -65,13 +68,14 @@ Falls keine Ausgabe erfolgt, wenden Sie sich an den zuständigen Abonnementadmin
 Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Regionen unterstützt:
 - Kanada, Mitte
 - USA, Westen-Mitte
-- USA (Ost)
+- East US
 - USA (Ost) 2
 - USA Nord Mitte
 - USA Süd Mitte
 - USA (Mitte)
 - USA (Westen)
 - USA, Westen 2
+- Frankreich, Mitte
 - Europa, Westen
 - Nordeuropa
 - Brasilien Süd
@@ -79,20 +83,33 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
 - UK, Süden
 - Australien (Osten)
 - Australien, Südosten 
+- Asien, Osten
 - Asien, Südosten
+- Korea, Mitte
 - Indien, Mitte
 - Indien (Süden)
 - Japan, Osten
+- Japan, Westen
 - US Government, Virginia
 
 Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 - Kanada, Mitte
 - USA, Westen-Mitte
-- USA (Ost)
+- USA (Westen)
+- USA, Westen 2
+- USA Süd Mitte
+- USA (Mitte)
+- East US
+- USA (Ost) 2
+- Frankreich, Mitte
 - Europa, Westen
+- Nordeuropa
 - UK, Süden
+- Australien (Osten)
 - Australien, Südosten
+- Asien, Osten
 - Asien, Südosten 
+- Korea, Mitte
 - Indien, Mitte
 - Japan, Osten
 - US Government, Virginia
@@ -115,25 +132,19 @@ Ja, Ihr Azure Storage-Konto kann zu einem Abonnement und Ihr Log Analytics-Arbei
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>Kann ich unformatierte Protokolle in einem anderen Abonnement speichern?
 
- Nein. Sie können unformatierte Protokolle in jedem Speicherkonto speichern, in dem eine NSG für Datenflussprotokolle aktiviert ist. Allerdings müssen sich sowohl das Speicherkonto als auch die unformatierten Protokolle im selben Abonnement und in derselben Region befinden.
+Nein. Sie können unformatierte Protokolle in jedem Speicherkonto speichern, in dem eine NSG für Datenflussprotokolle aktiviert ist. Allerdings müssen sich sowohl das Speicherkonto als auch die unformatierten Protokolle im selben Abonnement und in derselben Region befinden.
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>Was ist, wenn ich eine NSG aufgrund der Fehlermeldung „Nicht gefunden“ nicht für Traffic Analytics konfigurieren kann?
 
 Wählen Sie eine unterstützte Region aus. Wenn Sie eine nicht unterstützte Region auswählen, erhalten Sie die Fehlermeldung „Nicht gefunden“. Die unterstützten Regionen sind weiter oben in diesem Artikel aufgeführt.
-
-## <a name="why-am-i-getting-the-error-failed-to-update-flow-logs-settings-for--internalservererror-when-enabling-nsgs-in-us-gov-virginia"></a>Warum erhalten ich den Fehler „Fehler beim Aktualisieren von Flowprotokolleinstellungen für ... InternalServerError...“ beim Aktivieren von NSGs in US Gov Virginia?
-
-Dies hat die Ursache in einem Programmfehler, bei dem der Ressourcenanbieter ‚Microsoft.Network‘ für ein Abonnement in US Gov Virginia nicht erneut registriert wird. Das Team arbeitet an einer Lösung für dieses Problem. Als Problemumgehung müssen Sie den [Ressourcenanbieter ‚Microsoft.Network‘ manuell erneut registrieren](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-register-provider-errors). 
-
-Wenden Sie sich an den Support, wenn das Problem weiterhin besteht. 
 
 ## <a name="what-if-i-am-getting-the-status-failed-to-load-under-the-nsg-flow-logs-page"></a>Was ist, wenn ich den Status „Fehler beim Laden“ unter der Seite mit den NSG-Datenflussprotokollen erhalte?
 
 Der Anbieter „Microsoft.Insights“ muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Wenn Sie sich nicht sicher sind, ob der Anbieter „Microsoft.Insights“ für Ihr Abonnement registriert ist, ersetzen Sie *xxxxx-xxxxx-xxxxxx-xxxx* im folgenden Befehl, und führen Sie dann die folgenden Befehle über PowerShell aus:
 
 ```powershell-interactive
-**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Ich habe die Lösung konfiguriert. Warum sehe ich davon nichts im Dashboard?
@@ -163,7 +174,7 @@ Sie sehen die Ressourceninformationen im Dashboard, aber es gibt keine datenflus
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Kann ich Traffic Analytics mithilfe von PowerShell oder einer Azure Resource Manager-Vorlage bzw. einem ARM-Client konfigurieren?
 
-Sie können Traffic Analytics mithilfe von Windows PowerShell ab Version 6.2.1 konfigurieren. Informationen zum Konfigurieren der Datenflussprotokollierung und von Traffic Analytics für eine bestimmte Netzwerksicherheitsgruppe (NSG) mithilfe des Cmdlets „Set“ finden Sie unter [Set-AzureRmNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.3.0). Informationen zum Abrufen des Status der Datenflussprotokollierung und von Traffic Analytics für eine bestimmte NSG finden Sie unter [Get-AzureRmNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcherflowlogstatus?view=azurermps-6.3.0).
+Sie können Traffic Analytics mithilfe von Windows PowerShell ab Version 6.2.1 konfigurieren. Informationen zum Konfigurieren der Datenflussprotokollierung und von Traffic Analytics für eine bestimmte Netzwerksicherheitsgruppe (Network Security Group, NSG) mithilfe des Cmdlets „Set“ finden Sie unter [Set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). Informationen zum Abrufen des Status der Datenflussprotokollierung und von Traffic Analytics für eine bestimmte NSG finden Sie unter [Get-AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
 
 Derzeit können Sie keine Azure Resource Manager-Vorlage verwenden, um Traffic Analytics zu konfigurieren.
 
@@ -229,19 +240,34 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 ```
 
 
-
 ## <a name="how-is-traffic-analytics-priced"></a>Was kostet Traffic Analytics?
 
 Traffic Analytics ist getaktet. Die Taktung basiert auf der Verarbeitung von Flussprotokolldaten durch den Dienst und der Speicherung der resultierenden verbesserten Protokolle in einem Log Analytics-Arbeitsbereich. 
 
 Beispiel für den [Tarif](https://azure.microsoft.com/pricing/details/network-watcher/) und die Region „USA, Westen-Mitte“: Wenn in einem von Traffic Analytics verarbeiteten Speicherkonto gespeicherte Datenfluss-Protokolldaten 10 GB und im Log Analytics-Arbeitsbereich erfasste erweiterte Protokolle 1 GB umfassen, fallen als Gebühren an: 10 x 2.3$ + 1 x 2.76$ = 25.76$
 
+## <a name="how-frequently-does-traffic-analytics-process-data"></a>Wie oft werden Daten von Traffic Analytics verarbeitet?
+
+Informationen hierzu finden Sie im [Abschnitt zur Datenaggregation](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation) im Dokument „Schema und Datenaggregation in Traffic Analytics“.
+
+## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Wie entscheidet Traffic Analytics, ob eine IP-Adresse schädlich ist? 
+
+Traffic Analytics nutzt interne Microsoft-Threat Intelligence-Systeme, um eine IP-Adresse als schädlich einzustufen. Diese Systeme nutzen verschiedenste Telemetriequellen, beispielsweise Microsoft-Produkte und -Dienste, Microsoft Digital Crimes Unit (DCU) und Microsoft Security Response Center (MSRC) sowie externe Feeds, und generieren umfassende Informationen, die weit über diese Quellen hinausgehen. Einige dieser Daten sind interne Microsoft-Daten. Falls eine bekannte IP-Adresse als „schädlich“ gekennzeichnet wird, erstellen Sie ein Supportticket, um uns die Details mitzuteilen.
+
+## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>Wie kann ich Benachrichtigungen für Traffic Analytics-Daten festlegen?
+
+Traffic Analytics bietet keine integrierte Unterstützung für Benachrichtigungen. Da Traffic Analytics-Daten in Protokollanalyseprotokollen gespeichert werden, können Sie für diese Daten jedoch benutzerdefinierte Abfragen schreiben und Benachrichtigungen festlegen. Schritte:
+- Sie können den Kurzlink für Log Analytics in Traffic Analytics verwenden. 
+- Verwenden Sie das [hier dokumentierte Schema](traffic-analytics-schema.md) zum Schreiben Ihrer Abfragen. 
+- Klicken Sie auf „Neue Warnungsregel“, um die Benachrichtigung zu erstellen.
+- Informationen zum Erstellen der Benachrichtigung finden Sie in der [Dokumentation zu Protokollwarnungen ](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log).
+
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Wie kann ich mit der Tastatur in der geografischen Kartenansicht navigieren?
 
 Die Seite mit der geografischen Karte enthält zwei Hauptbereiche:
     
-- **Banner:** Das Banner am oberen Rand der geografischen Karte enthält Schaltflächen zur Auswahl von Verteilungsfiltern für Datenverkehr (z.B. Bereitstellung, Datenverkehr aus Ländern und schädliche Daten). Wenn Sie auf eine Schaltfläche klicken, wird der entsprechende Filter auf die Karte angewendet. Wenn Sie beispielsweise auf die Schaltfläche „Aktiv“ klicken, werden die aktiven Rechenzentren in Ihrer Bereitstellung auf der Karte hervorgehoben.
-- **Karte:** Im Kartenbereich unter dem Banner wird die Verteilung des Datenverkehrs für Azure-Rechenzentren und Länder gezeigt.
+- **Banner:** Das Banner am oberen Rand der geografischen Karte enthält Schaltflächen zur Auswahl von Verteilungsfiltern für Datenverkehr (z. B. Bereitstellung, Datenverkehr aus Ländern/Regionen und schädliche Daten). Wenn Sie auf eine Schaltfläche klicken, wird der entsprechende Filter auf die Karte angewendet. Wenn Sie beispielsweise auf die Schaltfläche „Aktiv“ klicken, werden die aktiven Rechenzentren in Ihrer Bereitstellung auf der Karte hervorgehoben.
+- **Karte:** Im Kartenbereich unter dem Banner wird die Verteilung des Datenverkehrs für Azure-Rechenzentren und Länder/Regionen gezeigt.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Tastaturnavigation im Banner
     

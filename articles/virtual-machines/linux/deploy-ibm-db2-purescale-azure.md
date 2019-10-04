@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
-ms.author: njray
-ms.openlocfilehash: fba6b5308b380b374611c09747302dbf8305dd9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: edprice
+ms.openlocfilehash: 8eb8075454dc3a49e9525d566c34c64bab8be5a0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014974"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083447"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Bereitstellen von IBM DB2 pureScale in Azure
 
@@ -118,7 +117,7 @@ Das GitHub-Repository enthält „DB2server.rsp“, eine Antwortdatei (RSP), mit
 
 - Die Setupskripts verwenden Aliase für die iSCSI-Datenträger, sodass die tatsächlichen Namen leicht gefunden werden können.
 
-- Wenn das Setupskript auf d0 ausgeführt wird, können die Werte für **„/dev/dm-\***“ auf d1, cf0 und cf1 unterschiedlich sein. Der Unterschied bei den Werten hat keine Auswirkung auf das DB2 pureScale-Setup.
+- Wenn das Setupskript auf d0 ausgeführt wird, können die Werte für **„/dev/dm-\*** “ auf d1, cf0 und cf1 unterschiedlich sein. Der Unterschied bei den Werten hat keine Auswirkung auf das DB2 pureScale-Setup.
 
 ## <a name="troubleshooting-and-known-issues"></a>Problembehandlung und bekannte Probleme
 

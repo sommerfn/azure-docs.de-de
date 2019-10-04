@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 01b9f7f74077737ea95a56bbe81f440db425bf0c
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274789"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698456"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum-PoA-Konsortium
 
@@ -220,7 +220,7 @@ Abonnement|Das Abonnement, für das das Konsortiumsnetzwerk bereitgestellt wird.
 Ressourcengruppe|Die Ressourcengruppe, für die das Konsortiumsnetzwerk bereitgestellt wird.||Nicht verfügbar
 Standort|Die Azure-Region für die Ressourcengruppe.||Nicht verfügbar
 
-Nachfolgend finden Sie ein Beispiel für eine Bereitstellung: ![Blatt mit Grundlagen](./media/ethereum-poa-deployment/basic-blade.png)
+Unten ist ein Beispiel für eine Bereitstellung angegeben: ![Blatt mit Grundlagen](./media/ethereum-poa-deployment/basic-blade.png)
 
 #### <a name="deployment-regions"></a>Bereitstellungsregionen
 
@@ -237,7 +237,7 @@ Hier ist eine ausführliche Beschreibung der einzelnen Parameter angegeben:
   Vierte Region|Die vierte Region, in der das Konsortiumsnetzwerk bereitgestellt wird (wird nur angezeigt, wenn für die Anzahl der Regionen „4“ ausgewählt wurde).|Alle zulässigen Azure-Regionen|Nicht verfügbar
   Fünfte Region|Die fünfte Region, in der das Konsortiumsnetzwerk bereitgestellt wird (wird nur angezeigt, wenn für die Anzahl der Regionen „5“ ausgewählt wurde).|Alle zulässigen Azure-Regionen|Nicht verfügbar
 
-Nachfolgend finden Sie ein Beispiel für eine Bereitstellung: ![Bereitstellungsregionen](./media/ethereum-poa-deployment/deployment-regions.png)
+Hier ist ein Beispiel für eine Bereitstellung angegeben: ![Bereitstellungsregionen](./media/ethereum-poa-deployment/deployment-regions.png)
 
 #### <a name="network-size-and-performance"></a>Netzwerkgröße und -leistung
 
@@ -264,7 +264,7 @@ Virtuelle Computer und die Speicherebene haben Auswirkungen auf die Netzwerkleis
   D2_v3|SSD Standard|mittel|mittel|mittel
   F16s|SSD Premium|high|high|niedrig
 
-Nachfolgend finden Sie ein Beispiel für eine Bereitstellung: ![Netzwerkgröße und-leistung](./media/ethereum-poa-deployment/network-size-and-performance.png)
+Hier ist ein Beispiel für eine Bereitstellung angegeben: ![Netzwerkgröße und-leistung](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
 #### <a name="ethereum-settings"></a>Ethereum-Einstellungen
 
@@ -283,7 +283,7 @@ Block Gas Limit (Erweiterte Optionen = Aktivieren)|Das anfängliche block gas-Li
 Zeitraum für erneute Blockversiegelung (Sek.)|Die Häufigkeit, mit der leere Blöcke erstellt werden, wenn im Netzwerk keine Transaktionen vorhanden sind. Eine höhere Häufigkeit führt zu einer schnelleren Finalität, jedoch auch zu erhöhten Speicherkosten.|Beliebiger numerischer Wert|15
 Vertrag zu Transaktionsberechtigungen (Erweiterte Optionen = Aktivieren)|Bytecode für den Vertrag zur Berechtigungsvergabe für Transaktionen. Beschränkt die Smart Contract-Bereitstellung und -Ausführung auf eine berechtigungsbasierte Liste mit Ethereum-Konten.|Bytecode für Vertrag|Nicht verfügbar
 
-Nachfolgend finden Sie ein Beispiel für eine Bereitstellung: ![Ethereum-Einstellungen](./media/ethereum-poa-deployment/ethereum-settings.png)
+Hier ist ein Beispiel für eine Bereitstellung angegeben: ![Ethereum-Einstellungen](./media/ethereum-poa-deployment/ethereum-settings.png)
 
 #### <a name="monitoring"></a>Überwachung
 
@@ -300,7 +300,7 @@ Existing log analytics workspace ID (Connect to existing Azure Monitor logs = Jo
 Existing log analytics primary key (Connect to existing Azure Monitor logs = Join Existing) (Vorhandener Log Analytics-Primärschlüssel (Mit vorhandener Azure Monitor-Protokollinstanz verbinden = Vorhandener beitreten))|Der Primärschlüssel, der zum Herstellen einer Verbindung mit der vorhandenen Azure Monitor-Protokollinstanz verwendet wird.||Nicht verfügbar
 
 
-Nachfolgend finden Sie ein Beispiel für eine Bereitstellung: ![Azure Monitor](./media/ethereum-poa-deployment/azure-monitor.png)
+Unten ist ein Beispiel für eine Bereitstellung angegeben: ![Azure Monitor](./media/ethereum-poa-deployment/azure-monitor.png)
 
 #### <a name="summary"></a>Zusammenfassung
 
@@ -764,7 +764,7 @@ Die WebAssembly-Unterstützung ist für neu bereitgestellte PoA-Netzwerke bereit
 
 #### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>Mir sind im Netzwerk einige Transaktionen aufgefallen, die ich nicht gesendet habe. Woher kommen diese Transaktionen?
 
-Es ist unsicher, die [persönliche API](https://web3js.readthedocs.io/en/1.0/web3-eth-personal.html) zu entsperren. Bots lauschen auf nicht gesperrte Ethereum-Konten und versuchen, das Guthaben abzuschöpfen. Der Bot nimmt an, dass diese Konten echtes Ether-Guthaben enthalten, und versucht, als Erster an das Guthaben zu gelangen. Sie sollten die persönliche API im Netzwerk nicht aktivieren. Signieren Sie die Transaktionen stattdessen vorab, indem Sie entweder manuell vorgehen und ein Wallet wie MetaMask verwenden, oder die programmgesteuerte Vorgehensweise wählen. Dies wird im Abschnitt [Programmgesteuertes Interagieren mit einem Smart Contract](#programmatically-interacting-with-a-smart-contract) beschrieben.
+Es ist unsicher, die [persönliche API](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-personal.html) zu entsperren. Bots lauschen auf nicht gesperrte Ethereum-Konten und versuchen, das Guthaben abzuschöpfen. Der Bot nimmt an, dass diese Konten echtes Ether-Guthaben enthalten, und versucht, als Erster an das Guthaben zu gelangen. Sie sollten die persönliche API im Netzwerk nicht aktivieren. Signieren Sie die Transaktionen stattdessen vorab, indem Sie entweder manuell vorgehen und ein Wallet wie MetaMask verwenden, oder die programmgesteuerte Vorgehensweise wählen. Dies wird im Abschnitt [Programmgesteuertes Interagieren mit einem Smart Contract](#programmatically-interacting-with-a-smart-contract) beschrieben.
 
 #### <a name="how-to-ssh-onto-a-vm"></a>Wie stelle ich eine SSH-Verbindung mit einem virtuellen Computer her?
 

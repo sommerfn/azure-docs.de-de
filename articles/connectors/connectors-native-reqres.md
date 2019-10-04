@@ -1,115 +1,240 @@
 ---
-title: Verwenden von Anforderungs- und Antwortaktionen | Microsoft Docs
-description: Übersicht über den Anforderungs- und Antworttrigger und die Anforderungs- und Antwortaktion in einer Azure-Logik-App
-services: ''
-documentationcenter: ''
-author: jeffhollan
-manager: erikre
-editor: ''
-tags: connectors
-ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
+title: Empfangen von und Antworten auf HTTPS-Aufrufe – Azure Logic Apps
+description: Behandeln von HTTPS-Anforderungen und -Ereignissen in Echtzeit mittels Azure Logic Apps
+services: logic-apps
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewers: klam, LADocs
+manager: carmonm
+ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/18/2016
-ms.author: jehollan
-ms.openlocfilehash: 0f6ee8729cbed9cb8baf3668f7b1a332bc5eddc1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 09/06/2019
+tags: connectors
+ms.openlocfilehash: 668e815f1dc1ead0ad38264bdc71fc3c315b751c
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892823"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122714"
 ---
-# <a name="get-started-with-the-request-and-response-components"></a>Erste Schritte mit den Anforderungs- und Antwortkomponenten
-Mit den Anforderungs- und Antwortkomponenten in einer Logik-App können Sie in Echtzeit auf Ereignisse reagieren.
+# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Empfangen von und Antworten auf HTTPS-Aufrufe mittels Azure Logic Apps
 
-Sie haben beispielsweise folgende Möglichkeiten:
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten Anforderungstrigger oder der Antwortaktion können Sie automatisierte Tasks und Workflows erstellen, die eingehende HTTPS-Anforderungen empfangen und beantworten. Beispielsweise können Sie mit Ihrer Logik-App Folgendes durchführen:
 
-* Reagieren Sie auf eine HTTP-Anforderung mit Daten aus einer lokalen Datenbank über eine Logik-App.
-* Lösen Sie eine Logik-App über ein externes Webhook-Ereignis aus.
-* Rufen Sie innerhalb einer Logik-App eine andere Logik-App mit einer Anforderungs- und Antwortaktion auf.
+* Empfangen von und Antworten auf eine HTTPS-Anforderung von Daten in einer lokalen Datenbank.
+* Auslösen eines Workflows, wenn ein externes Webhookereignis auftritt
+* Empfangen von und Antworten auf HTTPS-Aufrufe aus einer anderen Logik-App.
 
-Wenn Sie Anforderungs- und Antwortaktionen in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Der Anforderungstrigger unterstützt *nur* HTTPS. Um stattdessen ausgehende HTTP- oder HTTPS-Aufrufe durchzuführen, verwenden Sie den integrierten [HTTP-Trigger oder die HTTP-Aktion](../connectors/connectors-native-http.md).
 
-## <a name="use-the-http-request-trigger"></a>Verwenden des HTTP-Anforderungstriggers
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. 
-Weitere Informationen zu Triggern finden Sie [hier](../connectors/apis-list.md).
+## <a name="prerequisites"></a>Voraussetzungen
 
-Im Anschluss finden Sie eine Beispielsequenz für die Einrichtung einer HTTP-Anforderung im Logik-App-Designer.
+* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-1. Fügen Sie in Ihrer Logik-App den Trigger **Request - When an HTTP request is received** (Anforderung – wenn eine HTTP-Anforderung empfangen wird) hinzu. Geben Sie ggf. (mit einem Tool wie [JSONSchema.net](https://jsonschema.net)) ein JSON-Schema für den Anforderungstext an. Dadurch kann der Designer Token für Eigenschaften in der HTTP-Anforderung generieren.
-2. Fügen Sie eine weitere Aktion hinzu, um die Logik-App speichern zu können.
-3. Nach dem Speichern der Logik-App können Sie die URL der HTTP-Anforderung über die Anforderungskarte ermitteln.
-4. Ein (mit einem Tool wie [Postman](https://www.getpostman.com/)) an die URL gerichteter HTTP-POST-Vorgang löst die Logik-App aus.
+* Grundlegende Kenntnisse zu [Logik-Apps](../logic-apps/logic-apps-overview.md). Falls Sie noch nicht mit Logik-Apps gearbeitet haben, sollten Sie zunächst die Schnellstartanleitung zum [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) lesen.
 
-> [!NOTE]
-> Wenn Sie keine Antwortaktion definieren, wird umgehend eine `202 ACCEPTED` -Antwort an den Aufrufer zurückgegeben. Mithilfe der Antwortaktion können Sie die Antwort anpassen.
-> 
-> 
+<a name="add-request"></a>
 
-![Antworttrigger](./media/connectors-native-reqres/using-trigger.png)
+## <a name="add-request-trigger"></a>Anforderungstrigger hinzufügen
 
-## <a name="use-the-http-response-action"></a>Verwenden der HTTP-Antwortaktion
-Die HTTP-Antwortaktion ist nur gültig, wenn sie in einem durch eine HTTP-Anforderung ausgelösten Workflow verwendet wird. Wenn Sie keine Antwortaktion definieren, wird umgehend eine `202 ACCEPTED` -Antwort an den Aufrufer zurückgegeben.  Sie können in jedem Schritt innerhalb des Workflows eine Antwortaktion hinzufügen. Die Logik-App wartet bei der eingehenden Anforderung nur eine Minute auf eine Antwort.  Falls nach einer Minute noch keine Antwort vom Workflow gesendet wurde (und die Definition eine Antwortaktion enthält), wird `504 GATEWAY TIMEOUT` an den Aufrufer zurückgegeben.
+Dieser integrierte Trigger erstellt einen manuell aufrufbaren HTTPS-Endpunkt, der *nur* eingehende HTTPS-Anforderung empfangen kann. Wenn dieses Ereignis eintritt, wird der Trigger ausgelöst und führt die Logik-App aus. Weitere Informationen zur zugrunde liegenden JSON-Definition des Triggers und zum Aufzurufen dieses Triggers finden Sie beim [Anforderungstriggertyp](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) und unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
-Gehen Sie zum Hinzufügen einer HTTP-Antwortaktion wie folgt vor:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen einer leeren Logik-App
 
-1. Wählen Sie die Schaltfläche **Neuer Schritt** aus.
-2. Wählen Sie **Aktion hinzufügen**aus.
-3. Geben Sie im Aktionssuchfeld die Zeichenfolge **response** ein, um die Antwortaktion anzuzeigen.
-   
-    ![Auswählen der Antwortaktion](./media/connectors-native-reqres/using-action-1.png)
-4. Geben Sie alle Parameter an, die Sie ggf. für die HTTP-Antwortnachricht benötigen.
-   
-    ![Ausführen der Antwortaktion](./media/connectors-native-reqres/using-action-2.png)
-5. Klicken Sie zum Speichern links oben auf die Symbolleiste. Dadurch wird Ihre Logik-App gespeichert und veröffentlicht (aktiviert).
+1. Wenn der Logik-App-Designer angezeigt wird, geben Sie im Suchfeld „HTTP-Anforderung“ als Filter ein. Wählen Sie in der Triggerliste den Trigger **Beim Empfang einer HTTP-Anforderung** aus. Dies ist der erste Schritt in Ihrem Logik-App-Workflow.
 
-## <a name="request-trigger"></a>Anforderungstrigger
-Hier finden Sie Details zu dem Trigger, den dieser Connector unterstützt. Ein einzelner Anforderungstrigger steht zur Verfügung.
+   ![Anforderungstrigger auswählen](./media/connectors-native-reqres/select-request-trigger.png)
 
-| Trigger | BESCHREIBUNG |
-| --- | --- |
-| Anforderung |Wird ausgeführt, wenn eine HTTP-Anforderung empfangen wird. |
+   Der Anforderungstrigger zeigt diese Eigenschaften an:
 
-## <a name="response-action"></a>Antwortaktion
-Hier finden Sie Details zu der Aktion, die dieser Connector unterstützt. Eine einzelne Antwortaktion steht zur Verfügung, und sie muss mit einem Anforderungstrigger kombiniert werden.
+   ![Anforderungstrigger](./media/connectors-native-reqres/request-trigger.png)
 
-| Aktion | BESCHREIBUNG |
-| --- | --- |
-| response |Gibt eine Antwort an die korrelierte HTTP-Anforderung zurück. |
+   | Eigenschaftenname | JSON-Eigenschaftenname | Erforderlich | BESCHREIBUNG |
+   |---------------|--------------------|----------|-------------|
+   | **HTTP-POST-URL** | {keine} | Ja | Die Endpunkt-URL, die nach dem Speichern der Logik-App generiert wird und zum Aufrufen ihrer Logik-App verwendet wird |
+   | **JSON-Schema für Anforderungstext** | `schema` | Nein | Das JSON-Schema, das die Eigenschaften und Werte im Text der eingehenden Anforderung beschreibt |
+   |||||
 
-### <a name="trigger-and-action-details"></a>Trigger- und Aktionsdetails
-Die folgenden Tabellen beschreiben die Eingabefelder für die Trigger und Aktionen sowie die entsprechenden Ausgabedetails.
+1. Geben Sie im Feld **JSON-Schema für Anforderungstext** optional ein JSON-Schema ein, das den Text in der eingehenden Anforderung beschreibt. Beispiel:
 
-#### <a name="request-trigger"></a>Anforderungstrigger
-Das Folgende ist ein Eingabefeld für den Trigger aus einer eingehenden HTTP-Anforderung.
+   ![Beispiel für das JSON-Schema](./media/connectors-native-reqres/provide-json-schema.png)
 
-| Anzeigename | Eigenschaftenname | BESCHREIBUNG |
-| --- | --- | --- |
-| JSON-Schema |schema |Das JSON-Schema für den HTTP-Anforderungstext. |
+   Der Designer verwendet dieses Schema zum Generieren von Token für die Eigenschaften in der Anforderung. Auf diese Weise kann Ihre Logik-App Daten aus der Anforderung über den Trigger analysieren, nutzen und an den Workflow übergeben.
 
-<br>
+   Hier sehen Sie das Beispielschema:
 
-**Ausgabedetails**
+   ```json
+   {
+      "type": "object",
+      "properties": {
+         "account": {
+            "type": "object",
+            "properties": {
+               "name": {
+                  "type": "string"
+               },
+               "ID": {
+                  "type": "string"
+               },
+               "address": {
+                  "type": "object",
+                  "properties": {
+                     "number": {
+                        "type": "string"
+                     },
+                     "street": {
+                        "type": "string"
+                     },
+                     "city": {
+                        "type": "string"
+                     },
+                     "state": {
+                        "type": "string"
+                     },
+                     "country": {
+                        "type": "string"
+                     },
+                     "postalCode": {
+                        "type": "string"
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+   ```
 
-Im Folgenden werden die Ausgabedetails für die Anforderung angegeben.
+   Wenn Sie ein JSON-Schema eingeben, zeigt der Designer eine Erinnerung an, dass der `Content-Type`-Header in die Anforderung eingeschlossen und der Headerwert auf `application/json` festgelegt werden muss. Weitere Informationen finden Sie unter [Behandeln von Inhaltstypen](../logic-apps/logic-apps-content-type.md).
 
-| Eigenschaftenname | Datentyp | BESCHREIBUNG |
-| --- | --- | --- |
-| headers |object |Anforderungsheader |
-| Body |object |Anforderungsobjekt |
+   ![Erinnerung zum Einschließen des Headers „Content-Type“](./media/connectors-native-reqres/include-content-type.png)
 
-#### <a name="response-action"></a>Antwortaktion
-Im Folgenden werden die Eingabefelder für die HTTP-Antwortaktion angegeben. Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
+   Dieser Header sieht im JSON-Format wie folgt aus:
 
-| Anzeigename | Eigenschaftenname | BESCHREIBUNG |
-| --- | --- | --- |
-| Statuscode* |statusCode |Der HTTP-Statuscode. |
-| Header |headers |Ein JSON-Objekt für alle einzubeziehenden Antwortheader. |
-| Body |body |Der Antworttext. |
+   ```json
+   {
+      "Content-Type": "application/json"
+   }
+   ```
+
+   Zum Generieren eines JSON-Schemas, das auf der erwarteten Nutzlast (Daten) basiert, können Sie ein Tool wie z. B. [JSONSchema.net](https://jsonschema.net) verwenden oder die folgenden Schritte ausführen:
+
+   1. Wählen Sie im Anforderungstrigger **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.
+
+      ![Generieren des Schemas aus Nutzlast](./media/connectors-native-reqres/generate-from-sample-payload.png)
+
+   1. Geben Sie die Beispielnutzlast ein, und wählen Sie dann **Fertig** aus.
+
+      ![Generieren des Schemas aus Nutzlast](./media/connectors-native-reqres/enter-payload.png)
+
+      Hier sehen Sie die Beispielnutzlast:
+
+      ```json
+      {
+         "account": {
+            "name": "Contoso",
+            "ID": "12345",
+            "address": { 
+               "number": "1234",
+               "street": "Anywhere Street",
+               "city": "AnyTown",
+               "state": "AnyState",
+               "country": "USA",
+               "postalCode": "11111"
+            }
+         }
+      }
+      ```
+
+1. Öffnen Sie zum Hinzufügen weiterer Eigenschaften die Liste **Neuen Parameter hinzufügen**, und wählen Sie die Parameter aus, die hinzugefügt werden sollen.
+
+   | Eigenschaftenname | JSON-Eigenschaftenname | Erforderlich | BESCHREIBUNG |
+   |---------------|--------------------|----------|-------------|
+   | **Methode** | `method` | Nein | Die Methode, die die eingehende Anforderung zum Aufrufen der Logik-App verwenden muss |
+   | **Relativer Pfad** | `relativePath` | Nein | Der relative Pfad für den Parameter, der von der Endpunkt-URL der Logik-App akzeptiert werden kann |
+   |||||
+
+   In diesem Beispiel wird die Eigenschaft **Methode** hinzugefügt:
+
+   ![Hinzufügen des Methodenparameters](./media/connectors-native-reqres/add-parameters.png)
+
+   Die Eigenschaft **Methode** wird im Trigger angezeigt, sodass Sie eine Methode aus der Liste auswählen können.
+
+   ![Wählen Sie die Methode aus.](./media/connectors-native-reqres/select-method.png)
+
+1. Fügen Sie nun eine weitere Aktion als nächsten Schritt in Ihrem Workflow hinzu. Wählen Sie unter dem Trigger die Option **Nächster Schritt** aus, um die Aktion zu finden, die Sie hinzufügen möchten.
+
+   Beispielsweise können Sie auf die Anforderung reagieren, indem Sie eine [Antwortaktion hinzufügen](#add-response), um damit eine benutzerdefinierte Antwort zurückzugeben. Dies wird weiter unten in diesem Thema beschrieben.
+
+   Ihre Logik-App hält die eingehenden Anforderung nur für eine Minute geöffnet. Falls der Logik-App-Workflow eine Antwortaktion enthält, gibt Ihre Logik-App ein `504 GATEWAY TIMEOUT` an den Aufrufer zurück, wenn die Logik-App nach diesem Zeitraum nicht geantwortet hat. Falls Ihre Logik-App keine Antwortaktion enthält, gibt Ihre Logik-App sofort eine `202 ACCEPTED`-Antwort an den Aufrufer zurück.
+
+1. Wenn Sie fertig sind, speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus. 
+
+   Dieser Schritt generiert die URL, die zum Senden der Anforderung verwendet werden soll, durch die die Logik-App ausgelöst wird. Um diese URL zu kopieren, wählen Sie das Kopiersymbol neben der URL aus.
+
+   ![URL zum Auslösen Ihrer Logik-App](./media/connectors-native-reqres/generated-url.png)
+
+1. Zum Starten Ihrer Logik-App senden Sie eine HTTP POST-Methode an die generierte URL. Beispielsweise können Sie dazu ein Tool wie [Postman](https://www.getpostman.com/) verwenden.
+
+### <a name="trigger-outputs"></a>Triggerausgaben
+
+Im Folgenden finden Sie weitere Informationen zu den Ausgaben des Anforderungstriggers:
+
+| JSON-Eigenschaftenname | Datentyp | BESCHREIBUNG |
+|--------------------|-----------|-------------|
+| `headers` | Object | Ein JSON-Objekt, das die Header aus der Anforderung beschreibt |
+| `body` | Object | Ein JSON-Objekt, das den Textinhalt aus der Anforderung beschreibt |
+||||
+
+<a name="add-response"></a>
+
+## <a name="add-a-response-action"></a>Hinzufügen einer Antwortaktion
+
+Mithilfe der Antwortaktion können Sie mit einer Nutzlast (Daten) auf eine eingehende HTTPS-Anforderung antworten. Dies gilt allerdings nur für eine Logik-App, die durch eine HTTPS-Anforderung ausgelöst wird. Sie können die Antwortaktion an einer beliebigen Stelle im Workflow hinzufügen. Weitere Informationen zur zugrunde liegenden JSON-Definition für diesen Trigger finden Sie beim [Antwortaktionstyp](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action).
+
+Ihre Logik-App hält die eingehenden Anforderung nur für eine Minute geöffnet. Falls der Logik-App-Workflow eine Antwortaktion enthält, gibt Ihre Logik-App ein `504 GATEWAY TIMEOUT` an den Aufrufer zurück, wenn die Logik-App nach diesem Zeitraum nicht geantwortet hat. Falls Ihre Logik-App keine Antwortaktion enthält, gibt Ihre Logik-App sofort eine `202 ACCEPTED`-Antwort an den Aufrufer zurück.
+
+1. Wählen Sie im Logik-App-Designer unter dem Schritt, dem Sie eine Antwortaktion hinzufügen möchten, die Option **Neuer Schritt** aus.
+
+   Verwenden Sie beispielsweise den zuvor beschriebenen Anforderungstrigger:
+
+   ![Neuen Schritt hinzufügen](./media/connectors-native-reqres/add-response.png)
+
+   Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen diesen Schritten. Wählen Sie das angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
+
+1. Geben Sie unter **Aktion auswählen** im Suchfeld den Text „Antwort“ als Filter ein, und wählen Sie die Aktion **Antwort** aus.
+
+   ![Auswählen der Aktion „Antwort“](./media/connectors-native-reqres/select-response-action.png)
+
+   Der Anforderungstrigger ist in diesem Beispiel der Einfachheit halber zugeklappt.
+
+1. Fügen Sie alle Werte hinzu, die für die Antwortnachricht erforderlich sind. 
+
+   Bei einigen Feldern wird durch Klicken die Liste mit dynamischen Inhalten geöffnet. Anschließend können Sie Token auswählen, die die verfügbaren Ausgaben aus vorherigen Schritten des Workflows darstellen. Eigenschaften aus dem Schema, das im vorherigen Beispiel angegeben wurde, werden jetzt in der Liste mit dynamischen Inhalten angezeigt.
+
+   Schließen Sie beispielsweise im Feld **Header** den Eintrag `Content-Type` als Schlüsselnamen ein, und legen Sie den Schlüsselwert auf `application/json` fest, wie weiter oben in diesem Thema beschrieben. Für das Feld **Text** können Sie die Ausgabe des Triggertexts aus der Liste mit dynamischen Inhalten auswählen.
+
+   ![Details der Antwortaktion](./media/connectors-native-reqres/response-details.png)
+
+   Um die Header im JSON-Format anzuzeigen, wählen Sie **Zur Textansicht wechseln** aus.
+
+   ![Header: Zur Textansicht wechseln](./media/connectors-native-reqres/switch-to-text-view.png)
+
+   Hier finden Sie weitere Informationen zu den Eigenschaften, die Sie in der Antwortaktion festlegen können. 
+
+   | Eigenschaftenname | JSON-Eigenschaftenname | Erforderlich | BESCHREIBUNG |
+   |---------------|--------------------|----------|-------------|
+   | **Statuscode** | `statusCode` | Ja | Der in der Antwort zurückzugebende Statuscode |
+   | **Header** | `headers` | Nein | Ein JSON-Objekt, das einen oder mehrere Header beschreibt, die in die Antwort eingeschlossen werden sollen |
+   | **Text** | `body` | Nein | Der Antworttext. |
+   |||||
+
+1. Um weitere Eigenschaften hinzuzufügen, z. B. das JSON-Schema für den Antworttext, öffnen Sie die Liste **Neuen Parameter hinzufügen**, und wählen Sie die Parameter aus, die hinzugefügt werden sollen.
+
+1. Wenn Sie fertig sind, speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.
 
+* [Connectors für Logic Apps](../connectors/apis-list.md)

@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 37e2dcc13ed41911c8117dc1841a389c14e5867f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: f5ce8a237bc2ba7fe15acfcd6afa0edcda7ef713
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848571"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60589661"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
 
@@ -84,7 +84,7 @@ Durch die clientseitige Batchverarbeitung kann ein Warteschlangen- oder Themencl
 
 Ein Client verwendet standardmäßig ein Batchintervall von 20 ms. Sie können das Batchintervall ändern, indem Sie die [BatchFlushInterval][BatchFlushInterval]-Eigenschaft vor dem Erstellen der Messagingfactory festlegen. Diese Einstellung wirkt sich auf alle Clients aus, die von dieser Factory erstellt werden.
 
-Legen Sie zum Deaktivieren der Batchverarbeitung die [BatchFlushInterval][BatchFlushInterval]-Eigenschaft auf **TimeSpan.Zero** fest. Beispiel: 
+Legen Sie zum Deaktivieren der Batchverarbeitung die [BatchFlushInterval][BatchFlushInterval]-Eigenschaft auf **TimeSpan.Zero** fest. Beispiel:
 
 ```csharp
 MessagingFactorySettings mfs = new MessagingFactorySettings();
@@ -95,6 +95,15 @@ MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 
 Die Batchverarbeitung wirkt sich nicht auf die Anzahl der abrechenbaren Messagingvorgänge aus und ist nur für das Service Bus-Clientprotokoll unter Verwendung der [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)-Bibliothek verfügbar. Das HTTP-Protokoll unterstützt keine Batchverarbeitung.
 
+> [!NOTE]
+> Durch das Festlegen von „BatchFlushInterval“ wird sichergestellt, dass die Batchverarbeitung aus der Perspektive der Anwendung implizit erfolgt. Dies bedeutet, dass die Anwendung „SendAsync()“ und „CompleteAsync()“ aufruft und keine spezifischen Batchaufrufe durchführt.
+>
+> Die explizite clientseitige Batchverarbeitung kann mithilfe des folgenden Methodenaufrufs implementiert werden: 
+> ```csharp
+> Task SendBatchAsync (IEnumerable<BrokeredMessage> messages);
+> ```
+> Hier muss die kombinierte Größe der Nachrichten kleiner sein als die maximale Größe, die vom Tarif unterstützt wird.
+
 ## <a name="batching-store-access"></a>Batchverarbeitung des Speicherzugriffs
 
 Um den Durchsatz einer Warteschlange, eines Themas oder eines Abonnements zu erhöhen, verarbeitet Service Bus beim Schreiben in den internen Speicher mehrere Nachrichten als Batch. Ist diese Funktion für eine Warteschlange oder ein Thema aktiviert, erfolgt das Schreiben von Nachrichten in den Speicher als Batch. Ist diese Funktion für eine Warteschlange oder ein Abonnement aktiviert, erfolgt das Löschen von Nachrichten aus dem Speicher als Batch. Wenn für eine Entität Speicherzugriff als Batch aktiviert ist, verzögert Service Bus einen Schreibvorgang in den Speicher für diese Entität für bis zu 20 ms. 
@@ -104,7 +113,7 @@ Um den Durchsatz einer Warteschlange, eines Themas oder eines Abonnements zu erh
 
 Weitere Speichervorgänge, die während dieses Intervalls auftreten, werden dem Batch hinzugefügt. Speicherzugriff als Batch wirkt sich nur auf Vorgänge zum **Senden** und **Abschließen** aus, Empfangsvorgänge sind nicht betroffen. Speicherzugriff als Batch ist eine Eigenschaft einer Entität. Die Batchverarbeitung erfolgt für alle Entitäten, die Speicherzugriff als Batch ermöglichen.
 
-Beim Erstellen neuer Warteschlangen, Themen oder Abonnements ist der Speicherzugriff als Batch standardmäßig aktiviert. Um den Speicherzugriff als Batch zu deaktivieren, legen Sie vor dem Erstellen der Entität die [EnableBatchedOperations][EnableBatchedOperations]-Eigenschaft auf **FALSE** fest. Beispiel: 
+Beim Erstellen neuer Warteschlangen, Themen oder Abonnements ist der Speicherzugriff als Batch standardmäßig aktiviert. Um den Speicherzugriff als Batch zu deaktivieren, legen Sie vor dem Erstellen der Entität die [EnableBatchedOperations][EnableBatchedOperations]-Eigenschaft auf **FALSE** fest. Beispiel:
 
 ```csharp
 QueueDescription qd = new QueueDescription();
@@ -127,6 +136,19 @@ Der Vorabruf von Nachrichten vergrößert den Gesamtdurchsatz für eine Wartesch
 Die Eigenschaft für die Gültigkeitsdauer (Time-to-Live, TTL) einer Nachricht wird vom Server zu dem Zeitpunkt überprüft, wenn der Server die Nachricht an den Client sendet. Der Client überprüft die TTL-Eigenschaft der Nachricht nicht, wenn die Nachricht empfangen wird. Stattdessen kann die Nachricht empfangen werden, auch wenn die Gültigkeitsdauer der Nachricht abgelaufen ist, während sich die Nachricht im Cache des Clients befand.
 
 Der Vorabruf wirkt sich nicht auf die Anzahl der abrechenbaren Messagingvorgänge aus und ist nur für das Service Bus-Clientprotokoll verfügbar. Das HTTP-Protokoll unterstützt keinen Vorabruf. Vorabrufe sind für synchrone und asynchrone Empfangsvorgänge verfügbar.
+
+## <a name="prefetching-and-receivebatch"></a>Vorabruf und „ReceiveBatch“
+
+Die beim gemeinsamen Vorabrufen mehrerer Nachrichten angewendeten Konzepte ähneln hinsichtlich der Semantik der Nachrichtenverarbeitung in einem Batch (ReceiveBatch). Es gibt jedoch einige geringfügige Unterschiede, die Sie beachten müssen, wenn Sie diese beiden Optionen gemeinsam nutzen.
+
+Der Vorabruf ist eine Konfiguration (bzw. ein Modus) auf dem Client („QueueClient“ und „SubscriptionClient“), und „ReceiveBatch“ ist ein Vorgang (mit Anforderung/Antwort-Semantik).
+
+Bedenken Sie bei der gemeinsamen Verwendung dieser beiden Optionen Folgendes:
+
+* Die Vorabrufanzahl muss größer oder gleich der Anzahl von Nachrichten sein, die Sie voraussichtlich mit „ReceiveBatch“ empfangen.
+* Die Vorabrufanzahl kann bis zu n-/dreimal so groß sein wie die Anzahl von verarbeiteten Nachrichten pro Sekunde, wobei „n“ die Standardsperrdauer ist.
+
+Ein „gieriger“ Ansatz (d. h. das Aufrechterhalten einer sehr hohen Vorabrufanzahl) bringt einige Probleme mit sich, da er voraussetzt, dass die Nachricht auf einen bestimmten Empfänger beschränkt ist. Es wird empfohlen, Vorabrufwerte zwischen den oben genannten Schwellenwerte auszuprobieren und empirisch zu ermitteln, welcher Wert geeignet ist.
 
 ## <a name="multiple-queues"></a>Mehrere Warteschlangen
 

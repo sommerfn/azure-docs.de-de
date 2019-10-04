@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: 0f50ecb086b45cffb4ff27135a26f962c92926bf
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: a9d8bc172eb5f5e0e119a0bde56fb167f7a0c2b2
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434460"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64699152"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS-Metriken und -Warnungen
 Azure DNS ist ein Hostingdienst für DNS-Domänen, der die Namensauflösung mithilfe der Microsoft Azure-Infrastruktur ausführt. Dieser Artikel beschreibt die Metriken und Warnungen für den Azure DNS-Dienst.
 
 ## <a name="azure-dns-metrics"></a>Azure DNS-Metriken
 
-Azure DNS bietet Metriken für Kunden, damit sie spezifische Aspekte Ihrer DNS-Domänen überwachen können, die im Dienst gehostet werden. Darüber hinaus können Sie mit Azure DNS-Metriken Warnungen basierend auf Bedingungen, die von Interesse sind, konfigurieren und empfangen. Die Metriken werden über den [Azure Monitor-Dienst](../azure-monitor/index.yml) bereitgestellt. Azure DNS stellt die folgenden Metriken über Azure Monitor für Ihre DNS-Zonen bereit:
+Azure DNS stellt Metriken bereit, mit denen Kunden spezifische Aspekte ihrer DNS-Zonen überwachen können, die im Dienst gehostet werden. Darüber hinaus können Sie mit Azure DNS-Metriken Warnungen basierend auf Bedingungen, die von Interesse sind, konfigurieren und empfangen. Die Metriken werden über den [Azure Monitor-Dienst](../azure-monitor/index.yml) bereitgestellt. Azure DNS stellt die folgenden Metriken über Azure Monitor für Ihre DNS-Zonen bereit:
 
 -   QueryVolume
 -   RecordSetCount
@@ -36,11 +36,13 @@ Sie können auch die [Definition dieser Metriken](../azure-monitor/platform/metr
 >[!NOTE]
 > Zurzeit sind diese Metriken nur für öffentliche DNS-Zonen verfügbar, die in Azure DNS gehostet werden. Wenn Sie private Zonen verwenden, die in Azure DNS gehostet werden, stellen diese Metriken keine Daten für diese Zonen bereit. Die Metriken und das Warnungsfeature werden darüber hinaus nur in der Azure Public Cloud unterstützt. Unterstützung für unabhängige Clouds wird zu einem späteren Zeitpunkt bereitgestellt. 
 
-Die genaue Ebene der Dimension für diese Metriken ist die DNS-Zone.
+Das detaillierteste Element, für das Metriken angezeigt werden können, ist eine DNS-Zone. Derzeit können keine Metriken für einzelne Ressourcendatensätze innerhalb einer Zone angezeigt werden.
 
 ### <a name="query-volume"></a>Abfragevolumen
 
-Die Metrik *Abfragevolumen* in Azure DNS zeigt das Volumen der DNS-Abfragen (Abfragedatenverkehr) an, das von Azure DNS für Ihre DNS-Zone empfangen wird. Die Maßeinheit ist „Anzahl“ und die Aggregation ist der Summe aller Abfragen, die über einen Zeitraum empfangen wurden. Wählen Sie zum Anzeigen dieser Metrik „Metriken (Vorschau)“ in der Explorer-Benutzeroberfläche auf der Registerkarte „Überwachen“ im Azure-Portal aus. Wählen Sie Ihre DNS-Zone aus der Dropdownliste „Ressource“ aus, wählen Sie die Metrik „Abfragevolumen“ aus, und wählen Sie dann „Summe“ als „Aggregation“ aus. Der Screenshot unten zeigt ein Beispiel.  Weitere Informationen zur Benutzeroberfläche des Metrik-Explorers und zur Diagrammerstellung finden Sie unter [Metrik-Explorer von Azure Monitor](../azure-monitor/platform/metrics-charts.md).
+Die Metrik *Abfragevolumen* in Azure DNS zeigt das Volumen der DNS-Abfragen (Abfragedatenverkehr) an, das von Azure DNS für Ihre DNS-Zone empfangen wird. Die Maßeinheit ist „Anzahl“ und die Aggregation ist der Summe aller Abfragen, die über einen Zeitraum empfangen wurden. 
+
+Wählen Sie zum Anzeigen dieser Metrik „Metriken (Vorschau)“ in der Explorer-Benutzeroberfläche auf der Registerkarte „Überwachen“ im Azure-Portal aus. Wählen Sie Ihre DNS-Zone aus der Dropdownliste „Ressource“ aus, wählen Sie die Metrik „Abfragevolumen“ aus, und wählen Sie dann „Summe“ als „Aggregation“ aus. Der Screenshot unten zeigt ein Beispiel.  Weitere Informationen zur Benutzeroberfläche des Metrik-Explorers und zur Diagrammerstellung finden Sie unter [Metrik-Explorer von Azure Monitor](../azure-monitor/platform/metrics-charts.md).
 
 ![Abfragevolumen](./media/dns-alerts-metrics/dns-metrics-query-volume.png)
 

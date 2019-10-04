@@ -4,23 +4,22 @@ description: Wählen aus den verfügbaren VM-Größen für Computeknoten in Azur
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
 ms.workload: ''
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 09/12/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 43094839c9da9b00c97d1dffd53f98a3acd119d5
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: e3d96ad7783c43dba6b69f6b11acccf790d0d6c9
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417141"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983750"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool
 
@@ -28,60 +27,56 @@ Wenn Sie eine Knotengröße für einen Azure Batch-Pool wählen, können Sie aus
 
 Bei der Auswahl einer VM-Größe gelten einige Ausnahmen und Einschränkungen:
 
-* Einige VM-Familien oder -Größen werden in Batch nicht unterstützt. 
+* Einige VM-Serien oder VM-Größen werden in Batch nicht unterstützt.
 * Einige VM-Größen sind eingeschränkt und müssen explizit aktiviert werden, damit sie zugeordnet werden können.
 
-## <a name="supported-vm-families-and-sizes"></a>Unterstützte VM-Familien und -Größen
+## <a name="supported-vm-series-and-sizes"></a>Unterstützte VM-Serien und -Größen
 
 ### <a name="pools-in-virtual-machine-configuration"></a>Pools in der Konfiguration des virtuellen Computers
 
-Batch-Pools in der Konfiguration des virtuellen Computers unterstützen alle VM-Größen ([Linux](../virtual-machines/linux/sizes.md), [Windows](../virtual-machines/windows/sizes.md)) *außer* den folgenden:
+Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu alle VM-Größen ([Linux](../virtual-machines/linux/sizes.md), [Windows](../virtual-machines/windows/sizes.md)). In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Größen und Einschränkungen.
 
-| Familie  | Nicht unterstützte Größen  |
-|---------|---------|
-| Serie „Basic A“ | Basic_A0 (A0) |
-| A-Serie | Standard_A0 |
-| B-Serie | Alle |
-| DC-Serie | Alle |
-| In hohem Maß arbeitsspeicheroptimiert | Alle |
-| HB-Serie<sup>1,2</sup> | Alle |
-| HC-Serie<sup>1,2</sup> | Alle |
-| Lsv2-Reihe | Alle |
-| NDv2-Serie<sup>1,2</sup> | Alle |
-| NVv2-Serie<sup>1</sup> | Alle |
-| SAP HANA | Alle |
+Für alle nicht aufgeführten Vorschauversionen von VM-Größen oder VM-Größen aus Werbeangeboten kann die Unterstützung nicht gewährleistet werden.
 
+| VM-Serie  | Unterstützte Größen | Poolzuordnungsmodus des Batch-Kontos<sup>1</sup> |
+|------------|---------|-----------------|
+| Serie „Basic A“ | Alle Größen *außer* Basic_A0 (A0) | Any |
+| A-Serie | Alle Größen *außer* Standard_A0 | Any |
+| Av2-Serie | Alle Größen | Any |
+| B-Serie | Keine | Nicht verfügbar |
+| DC-Serie | Keine | Nicht verfügbar |
+| Dv2/DSv2-Serie | Alle Größen | Any |
+| Dv3/DSv3-Serie | Alle Größen | Any |
+| Ev3/ESv3-Serie | Alle Größen | Any |
+| Fsv2-Serie | Alle Größen | Any |
+| H-Reihe | Alle Größen | Any |
+| HB-Serie<sup>2</sup> | Alle Größen | Any |
+| HC-Serie<sup>2</sup> | Alle Größen | Any |
+| Ls-Serie | Alle Größen | Any |
+| Lsv2-Reihe | Keine | Nicht verfügbar |
+| M-Serie | Standard_M64ms (nur mit niedriger Priorität), Standard_M128s (nur mit niedriger Priorität) | Any |
+| Mv2-Serie | Keine | Nicht verfügbar |
+| NC-Serie | Alle Größen | Any |
+| NCv2-Serie<sup>2</sup> | Alle Größen | Any |
+| NCv3-Serie<sup>2</sup> | Alle Größen | Any |
+| ND-Serie<sup>2</sup> | Alle Größen | Any |
+| NDv2-Serie | Alle Größen | Modus „Benutzerabonnement“ |
+| NV-Serie | Alle Größen | Any |
+| NVv3-Serie | Keine | Nicht verfügbar |
+| SAP HANA | Keine | Nicht verfügbar |
 
-<sup>1</sup> Unterstützung geplant.  
-<sup>2</sup> Kann von Batch-Konten im Benutzerabonnementmodus verwendet werden; für das Batch-Konto im Benutzerabonnementmodus muss das Kernkontingent festgelegt sein. Weitere Informationen finden Sie unter [Konfiguration für den Benutzerabonnementmodus](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
+<sup>1</sup> Einige neuere VM-Serien werden anfänglich nur teilweise unterstützt. Diese VM-Serien können von Batch-Konten zugeordnet werden, bei denen der **Poolzuordnungsmodus** auf **Benutzerabonnement** festgelegt ist. Weitere Informationen zur Konfiguration von Batch-Konten finden Sie unter [Verwalten von Batch-Konten](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode). Unter [Kontingente und Grenzwerte](batch-quota-limit.md) erfahren Sie, wie Sie Kontingente für diese teilweise unterstützten VM-Serien für Batch-Konten mit Poolzuordnungsmodus **Benutzerabonnement** anfordern.  
 
-Die folgenden VM-Größen werden nur für Knoten mit niedriger Priorität unterstützt:
-
-| Familie  | Unterstützte Größen  |
-|---------|---------|
-| M-Serie | Standard_M64ms |
-| M-Serie | Standard_M128s |
-
-Andere VM-Größen der M-Serie werden derzeit nicht unterstützt.
+<sup>2</sup> Diese VM-Größen können bei der Konfiguration des virtuellen Computers in Batch-Pools zugewiesen werden. Sie müssen jedoch eine bestimmte [Kontingenterhöhung](batch-quota-limit.md#increase-a-quota) anfordern.
 
 ### <a name="pools-in-cloud-service-configuration"></a>Pools in der Clouddienstkonfiguration
 
-Batch-Pools in der Clouddienstkonfiguration unterstützen alle [VM-Größen für Cloud Services](../cloud-services/cloud-services-sizes-specs.md) *außer* den folgenden:
+Batch-Pools in der Clouddienstkonfiguration unterstützen alle [VM-Größen für Cloud Services](../cloud-services/cloud-services-sizes-specs.md) **außer** den folgenden:
 
-| Familie  | Nicht unterstützte Größen  |
-|---------|---------|
-| A-Serie | Sehr klein |
+| VM-Serie  | Nicht unterstützte Größen |
+|------------|-------------------|
+| A-Serie   | Sehr klein       |
 | Av2-Serie | Standard_A1_v2, Standard_A2_v2, Standard_A2m_v2 |
-
-## <a name="restricted-vm-families"></a>Eingeschränkte VM-Familien
-
-Die folgenden VM-Familien können in Batch-Pools zugewiesen werden, Sie müssen jedoch eine bestimmte Kontingenterhöhung anfordern (siehe [dieser Artikel](batch-quota-limit.md#increase-a-quota)):
-
-* NCv2-Serie
-* NCv3-Serie
-* ND-Serie
-
-Diese Größen können nur in Pools in der Konfiguration des virtuellen Computers verwendet werden.
 
 ## <a name="size-considerations"></a>Überlegungen zu Größen
 
@@ -89,9 +84,9 @@ Diese Größen können nur in Pools in der Konfiguration des virtuellen Computer
 
 * **Aufgaben pro Knoten**: Die Knotengröße wird normalerweise unter der Annahme ausgewählt, dass jeweils nur eine Aufgabe auf einem Knoten ausgeführt wird. Es kann jedoch von Vorteil sein, mehrere Aufgaben (und somit mehrere Anwendungsinstanzen) während der Auftragsausführung auf Computeknoten [parallel zu nutzen](batch-parallel-node-tasks.md). In diesem Fall wird häufig eine Knotengröße mit mehreren Kernen gewählt, um den höheren Bedarf an parallelen Aufgabenausführungen decken zu können.
 
-* **Auslastungsgrade für verschiedene Aufgaben**: Alle Knoten in einem Pool haben die gleiche Größe. Wenn Sie Anwendungen mit unterschiedlichen Systemanforderungen bzw. Auslastungsgraden ausführen möchten, empfehlen wir Ihnen die Verwendung von separaten Pools. 
+* **Auslastungsgrade für verschiedene Aufgaben**: Alle Knoten in einem Pool haben die gleiche Größe. Wenn Sie Anwendungen mit unterschiedlichen Systemanforderungen bzw. Auslastungsgraden ausführen möchten, empfehlen wir Ihnen die Verwendung von separaten Pools.
 
-* **Regionale Verfügbarkeit**: Eine VM-Familie oder -Größe ist in den Regionen, in denen Sie die Batch-Konten erstellen, möglicherweise nicht verfügbar. Informationen dazu, welche Größen verfügbar sind, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
+* **Regionale Verfügbarkeit**: Eine VM-Serie oder -Größe ist in den Regionen, in denen Sie die Batch-Konten erstellen, möglicherweise nicht verfügbar. Informationen dazu, welche Größen verfügbar sind, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
 
 * **Kontingente**: Die [Kernkontingente](batch-quota-limit.md#resource-quotas) in Ihrem Batch-Konto können die Anzahl der Knoten einer bestimmten Größe beschränken, die Sie einem Batch-Pool hinzufügen können. Informationen zum Anfordern einer Kontingenterhöhung finden Sie in [diesem Artikel](batch-quota-limit.md#increase-a-quota). 
 

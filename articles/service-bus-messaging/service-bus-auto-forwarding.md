@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 85ab5e3bb963ee692e5b70af3eb90cc68cec361f
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 1d7b76a58a427b687d0dc36d13cfc00f32196853
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593385"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390132"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Verketten von Service Bus-Entitäten mit automatischer Weiterleitung
 
@@ -47,6 +47,12 @@ Sie können die automatische Weiterleitung auch verwenden, um Nachrichtenabsende
 
 Wenn Alice im Urlaub ist, wird ihre persönliche Warteschlange gefüllt, nicht das ERP-Thema. Da in diesem Szenario kein Vertriebsmitarbeiter Nachrichten empfangen hat, erreicht keines der ERP-Themen je das Kontingent.
 
+> [!NOTE]
+> Wenn automatische Weiterleitung eingerichtet ist, wird der Wert für AutoDeleteOnIdle für **die Quelle und das Ziel** automatisch auf den Maximalwert des Datentyps festgelegt.
+> 
+>   - Auf der Quellseite fungiert die automatische Weiterleitung als Empfangsvorgang. Die Quelle, die für automatische Weiterleitung eingerichtet ist, befindet sich also niemals wirklich „im Leerlauf“.
+>   - Auf der Zielseite erfolgt dies, um sicherzustellen, dass immer ein Ziel vorhanden ist, an das die Nachricht weitergeleitet werden kann.
+
 ## <a name="autoforwarding-considerations"></a>Überlegungen bei der automatischen Weiterleitung
 
 Wenn die Zielentität zu viele Nachrichten gesammelt hat und das Kontingent überschreitet oder wenn die Zielentität deaktiviert ist, fügt die Quellentität die Nachrichten zur eigenen [Warteschlange für unzustellbare Nachrichten](service-bus-dead-letter-queues.md) hinzu, bis Speicherplatz im Ziel vorhanden ist (oder die Entität wieder aktiviert wird). Diese Nachrichten sind weiterhin in der Warteschlange für unzustellbare Nachrichten aktiv, daher müssen Sie sie explizit aus der Warteschlange für unzustellbare Nachrichten empfangen und verarbeiten.
@@ -68,7 +74,7 @@ Detaillierte Informationen über die automatische Weiterleitung finden Sie in de
 Weitere Informationen zu Service Bus-Leistungssteigerungen finden Sie unter 
 
 * [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging](service-bus-performance-improvements.md)
-* [Partitionierte Messagingentitäten][Partitioned messaging entities]
+* [Partitionierte Messagingentitäten][Partitioned messaging entities].
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
 [SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo

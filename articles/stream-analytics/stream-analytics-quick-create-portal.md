@@ -4,20 +4,20 @@ description: In dieser Schnellstartanleitung werden die ersten Schritte zum Erst
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 11/21/2018
+ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 7762a48fd34973872fe4d0b00906a03a18d52867
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e05d293760b88cd02fdffae60e762f040a4d1311
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311924"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67449229"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals
 
-Dieser Schnellstart veranschaulicht die ersten Schritte beim Erstellen eines Stream Analytics-Auftrags. In dieser Schnellstartanleitung definieren Sie einen Stream Analytics-Auftrag, der Echtzeit-Streamingdaten liest und Nachrichten filtert, bei denen die Temperatur über 27 liegt. Ihr Stream Analytics-Auftrag liest Daten von einem IoT Hub-Gerät, transformiert die Daten und schreibt sie zurück in einen Container im Blobspeicher. Die in dieser Schnellstartanleitung verwendeten Eingabedaten werden von einem Raspberry Pi-Onlinesimulator generiert. 
+Dieser Schnellstart veranschaulicht die ersten Schritte beim Erstellen eines Stream Analytics-Auftrags. In dieser Schnellstartanleitung definieren Sie einen Stream Analytics-Auftrag, der Echtzeit-Streamingdaten liest und Nachrichten filtert, bei denen die Temperatur über 27 liegt. Ihr Stream Analytics-Auftrag liest Daten von IoT Hub, transformiert die Daten und schreibt sie zurück in einen Container im Blobspeicher. Die in dieser Schnellstartanleitung verwendeten Eingabedaten werden von einem Raspberry Pi-Onlinesimulator generiert. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -27,11 +27,11 @@ Dieser Schnellstart veranschaulicht die ersten Schritte beim Erstellen eines Str
 
 ## <a name="prepare-the-input-data"></a>Vorbereiten der Eingabedaten
 
-Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereiten, die später als Auftragseingabe konfiguriert werden. Führen Sie die folgenden Schritte aus, um die für den Auftrag erforderlichen Eingabedaten vorzubereiten:
+Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Eingabedaten vorbereiten. Die Echtzeit-Sensordaten werden an IoT-Hub übertragen; IoT-Hub wird später als Auftragseingabe konfiguriert. Führen Sie die folgenden Schritte aus, um die für den Auftrag erforderlichen Eingabedaten vorzubereiten:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Wählen Sie **Ressource erstellen** > **Internet der Dinge (IoT)** > **IoT Hub** aus.
+2. Wählen Sie **Ressource erstellen** > **Internet der Dinge (IoT)**  > **IoT Hub** aus.
 
 3. Geben Sie im Bereich **IoT Hub** die folgenden Informationen ein:
    
@@ -44,7 +44,7 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 
    ![Erstellen eines IoT Hubs](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
 
-4. Wählen Sie **Next: Set size and scale** (Nächster Schritt: Größe und Skalierung festlegen) aus.
+4. Klicken Sie auf **Weiter: Set size and scale** (Größe und Skalierung festlegen).
 
 5. Wählen Sie eine Option für **Tarif und Skalierung** aus. Legen Sie für diese Schnellstartanleitung den Tarif **F1 – Free** fest, wenn er für Ihr Abonnement noch verfügbar ist. Weitere Informationen finden Sie unter [IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -82,7 +82,7 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 
 2. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.  
 
-3. Klicken Sie in der Ergebnisliste auf **Daten + Analysen** > **Stream Analytics-Auftrag**.  
+3. Klicken Sie in der Ergebnisliste auf **Analytics** > **Stream Analytics-Auftrag**.  
 
 4. Geben Sie auf der Seite für den Stream Analytics-Auftrag die folgenden Informationen ein:
 
@@ -91,9 +91,9 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
    |Auftragsname   |  MyASAJob   |   Geben Sie einen Namen zur Identifizierung des Stream Analytics-Auftrags ein. Der Stream Analytics-Auftragsname darf nur alphanumerische Zeichen, Bindestriche und Unterstriche enthalten und muss zwischen 3 und 63 Zeichen lang sein. |
    |Abonnement  | \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement aus, das Sie für diesen Auftrag verwenden möchten. |
    |Ressourcengruppe   |   asaquickstart-resourcegroup  |   Wählen Sie die gleiche Ressourcengruppe für Ihre IoT Hub-Instanz aus. |
-   |Standort  |  \<Die Region, die Ihren Benutzern am nächsten liegt\> | Wählen Sie den geografischen Standort aus, in dem Sie Ihren Stream Analytics-Auftrag hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten liegt, um die Leistung zu steigern und die Datenübertragungskosten zu senken. |
+   |Location  |  \<Die Region, die Ihren Benutzern am nächsten liegt\> | Wählen Sie den geografischen Standort aus, in dem Sie Ihren Stream Analytics-Auftrag hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten liegt, um die Leistung zu steigern und die Datenübertragungskosten zu senken. |
    |Streamingeinheiten  | 1  |   Streamingeinheiten sind die Computingressourcen, die für die Ausführung eines Auftrags erforderlich sind. Standardmäßig ist dieser Wert auf 1 festgelegt. Informationen zum Skalieren von Streamingeinheiten finden Sie im Artikel [Überblick über Streamingeinheiten und Informationen zu Anpassungen](stream-analytics-streaming-unit-consumption.md).   |
-   |Hosting-Umgebung  |  Cloud  |   Für Stream Analytics-Aufträge ist eine Cloud- oder Edge-Bereitstellung möglich. Die Aufträge können mit der Option „Cloud“ in Azure Cloud und mit der Option „Edge“ auf einem IoT Edge-Gerät bereitgestellt werden. |
+   |Hosting-Umgebung  |  Cloud  |   Für Stream Analytics-Aufträge ist eine Cloud- oder Edge-Bereitstellung möglich. Mit der Option „Cloud“ können die Aufträge in Azure Cloud und mit der Option „Edge“ auf einem IoT Edge-Gerät bereitgestellt werden. |
 
    ![Erstellen eines Auftrags](./media/stream-analytics-quick-create-portal/create-asa-job.png)
 
@@ -153,7 +153,7 @@ In diesem Abschnitt konfigurieren Sie eine IoT Hub-Geräteeingabe für den Strea
    HAVING Temperature > 27
    ```
 
-3. In diesem Beispiel liest die Abfrage die Daten aus IoT Hub und kopiert sie in eine neue Datei im Blob. Wählen Sie **Speichern**aus.  
+3. In diesem Beispiel liest die Abfrage die Daten aus IoT Hub und kopiert sie in eine neue Datei im Blob. Wählen Sie **Speichern** aus.  
 
    ![Konfigurieren der Auftragstransformation](./media/stream-analytics-quick-create-portal/add-asa-query.png)
 
@@ -179,7 +179,7 @@ In diesem Abschnitt konfigurieren Sie eine IoT Hub-Geräteeingabe für den Strea
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, den Streamingauftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen. Führen Sie dazu folgende Schritte aus:
+Löschen Sie die Ressourcengruppe, den Stream Analytics-Auftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen. Führen Sie dazu folgende Schritte aus:
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** und dann auf den Namen der erstellten Ressource.  
 
@@ -187,7 +187,7 @@ Löschen Sie die Ressourcengruppe, den Streamingauftrag und alle dazugehörigen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen einfachen Stream Analytics-Auftrag mit dem Azure-Portal bereitgestellt. Stream Analytics-Aufträge können auch mit [PowerShell](stream-analytics-quick-create-powershell.md) und [Visual Studio](stream-analytics-quick-create-vs.md) bereitgestellt werden.
+In dieser Schnellstartanleitung haben Sie einen einfachen Stream Analytics-Auftrag mit dem Azure-Portal bereitgestellt. Stream Analytics-Aufträge können auch mit [PowerShell](stream-analytics-quick-create-powershell.md), [Visual Studio](stream-analytics-quick-create-vs.md) und [Visual Studio Code](quick-create-vs-code.md) bereitgestellt werden.
 
 Wenn Sie Informationen zum Konfigurieren anderer Eingabequellen sowie zum Ausführen der Echtzeiterkennung benötigen, lesen Sie den folgenden Artikel:
 

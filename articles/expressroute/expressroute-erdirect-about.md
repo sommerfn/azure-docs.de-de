@@ -5,19 +5,19 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 08/12/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: fb9dc5116ba23d57c7f2fe543e734759e8bbcc7b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 916175401cd993392094b2bb16f8fc8746a4d2a8
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881599"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123398"
 ---
 # <a name="about-expressroute-direct"></a>Informationen zu ExpressRoute Direct
 
-ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. ExpressRoute Direct bietet duale Konnektivität mit 100 GBit/s, die eine Aktiv/Aktiv-Konnektivität nach Maß unterstützt.
+ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. ExpressRoute Direct bietet duale Konnektivität mit 100 oder 10GBit/s, die eine Aktiv/Aktiv-Konnektivität nach Maß unterstützt.
 
 ExpressRoute Direct bietet u.a. folgende Leistungsmerkmale:
 
@@ -38,14 +38,14 @@ Bevor Sie ExpressRoute Direct nutzen können, müssen Sie zunächst Ihr Abonneme
 
 | **ExpressRoute mit Dienstanbieter** | **ExpressRoute Direct** | 
 | --- | --- |
-| Verwendung von Dienstanbietern, um schnelles Onboarding und schnelle Konnektivität mit der vorhandenen Infrastruktur zu ermöglichen | Erfordert eine Infrastruktur mit 100 GBit/s und die vollständige Verwaltung aller Ebenen
+| Verwendung von Dienstanbietern, um schnelles Onboarding und schnelle Konnektivität mit der vorhandenen Infrastruktur zu ermöglichen | Erfordert eine Infrastruktur mit 100GBit/s bzw. 10GBit/s und die vollständige Verwaltung aller Ebenen
 | Integration mit Hunderten von Dienstanbietern, einschließlich Ethernet und MPLS | Direkte/Dedizierte Kapazität für regulierte Branchen und Erfassung sehr umfangreicher Datenmengen |
-| Leitungs-SKUs zwischen 50 MBit/s und 10 GBit/s | Kunden können eine Kombination der folgenden Verbindungs-SKUs auswählen: 5 Gbit/s, 10 Gbit/s, 40 Gbit/s, 100 Gbit/s – beschränkt auf maximal 200 Gbit/s
-| Für Einzelmandanten optimiert | Für Einzelmandanten/Cloud-Dienstanbieter /mehrere Unternehmensbereiche optimiert
+| Leitungs-SKUs zwischen 50 MBit/s und 10 GBit/s | Kunden können eine Kombination der folgenden Leitungs-SKUs auf 100-GBit/s-ExpressRoute Direct auswählen: <ul><li>5 GBit/s</li><li>10 GBit/s</li><li>40 GBit/s</li><li>100GBit/s</li></ul> Kunden können eine Kombination der folgenden Leitungs-SKUs auf 10-GBit/s-ExpressRoute Direct auswählen:<ul><li>1 GBit/s</li><li>2 GBit/s</li><li>5 GBit/s</li><li>10 GBit/s</li></ul>
+| Für Einzelmandanten optimiert | Optimiert für einen einzelnen Mandanten mit mehreren Geschäftseinheiten und mehreren Arbeitsumgebungen
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute Direct-Leitungen
 
-Mit Microsoft Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern. Mit ExpressRoute können Sie Verbindungen zu Microsoft-Clouddiensten herstellen, z.B. Microsoft Azure, Office 365 und Dynamics 365.  
+Mit Microsoft Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern. Mit ExpressRoute können Sie Verbindungen zu Microsoft-Clouddiensten herstellen, z.B. Microsoft Azure und Office 365.
 
 Jeder Peeringstandort hat Zugriff auf das globale Netzwerk von Microsoft und kann standardmäßig auf jede Region in einer geopolitischen Zone sowie über eine Premium-Leitung auf alle globalen Regionen zugreifen.  
 
@@ -53,7 +53,28 @@ Die Funktionalität ist in den meisten Szenarien vergleichbar mit der von Leitun
 
 ## <a name="circuit-skus"></a>Leitungs-SKUs
 
-ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmengen in Azure Storage und anderen Big Data-Diensten. ExpressRoute-Leitungen für ExpressRoute Direct unterstützen nun auch die Leitungs-SKUs **40 GBit/s** und **100 GBit/s**. Die physischen Portpaare sind nur **100 GBit/s** und können mehrere virtuelle Verbindungen mit Bandbreiten von 5 GBit/s, 10 GBit/s, 40 GBit/s, 100 Gbps aufweisen (bis zu 200 GBit/s in beliebiger Kombination). 
+ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmengen in Azure Storage und anderen Big Data-Diensten. ExpressRoute-Leitungen auf 100-GBit/s-ExpressRoute Direct unterstützen nun auch die Leitungs-SKUs **40GBit/s** und **100GBit/s**. Die physischen Portpaare unterstützen nur **100 oder 10Gbit/s** und können über mehrere virtuelle Leitungen verfügen. Leitungsgrößen:
+
+| **100-GBit/s-ExpressRoute Direct** | **10-GBit/s-ExpressRoute Direct** | 
+| --- | --- |
+| **Abonnierte Bandbreite**: 200GBit/s | **Abonnierte Bandbreite**: 20GBit/s |
+| <ul><li>5 GBit/s</li><li>10 GBit/s</li><li>40 GBit/s</li><li>100GBit/s</li></ul> | <ul><li>1 GBit/s</li><li>2 GBit/s</li><li>5 GBit/s</li><li>10 GBit/s</li></ul>
+
+## <a name="technical-requirements"></a>Technische Anforderungen
+
+* Microsoft Enterprise Edge Router (MSEE)-Schnittstellen:
+    * Dual 10- oder 100 Gigabit-Ethernet-Ports nur über das Routerpaar
+    * LR-Fiber-Konnektivität im Einzelmodus
+    * IPv4 und IPv6
+    * IP MTU 1500 Bytes
+
+* Switch/Router-Ebene 2/Layer 3-Konnektivität:
+    * Muss Tagkapselung mit 1 802.1Q (Dot1Q)-Tag oder zwei Tags 802.1Q (QinQ) unterstützen.
+    * Ethernettyp = 0x8100
+    * Muss das äußere VLAN-Tag (STAG), basierend auf der von Microsoft angegebenen VLAN-ID, hinzufügen – *gilt nur für QinQ*.
+    * Muss mehrere BGP-Sitzungen (VLANs) pro Port und Gerät unterstützen.
+    * IPv4- und IPv6-Konnektivität. *Für IPv6 wird keine zusätzliche Unterschnittstelle erstellt. Eine IPv6-Adresse wird der vorhandenen Unterschnittstelle hinzugefügt*. 
+    * Optional: Unterstützung der [bidirektionalen Weiterleitungserkennung (Bidirectional Forwarding Detection, BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd), die für alle privaten Peerings in ExpressRoute-Leitungen standardmäßig konfiguriert ist
 
 ## <a name="vlan-tagging"></a>VLAN-Kennzeichnung
 

@@ -1,6 +1,6 @@
 ---
-title: Verbinden, Konfigurieren und Aktivieren eines Azure Data Box Edge-Geräts im Azure-Portal | Microsoft-Dokumentation
-description: Im dritten Tutorial zur Bereitstellung von Data Box Edge erfahren Sie, wie Sie Ihr physisches Gerät verbinden, einrichten und aktivieren können.
+title: Tutorial zum Verbinden, Konfigurieren, Aktivieren eines Azure Data Box Edge-Geräts im Azure-Portal | Microsoft-Dokumentation
+description: Im Tutorial zur Bereitstellung von Data Box Edge erfahren Sie, wie Sie Ihr physisches Gerät verbinden, einrichten und aktivieren können.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: b97334ae60715f021cce387f9d73b5ea69eea7fc
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: cf2aa9bc1234f8bc92829b107d1a788b75d56a6b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998106"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67075082"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Tutorial: Verbinden, Einrichten und Aktivieren von Azure Data Box Edge 
 
@@ -44,7 +44,7 @@ In diesem Tutorial lernen Sie Folgendes:
     ![Rückseite eines verkabelten Geräts](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
 
-3. Öffnen Sie ein Browserfenster, und greifen Sie unter https://192.168.100.10 auf die lokale Webbenutzeroberfläche des Geräts zu.  
+3. Öffnen Sie ein Browserfenster, und greifen Sie unter `https://192.168.100.10` auf die lokale Webbenutzeroberfläche des Geräts zu.  
     Diese Aktion dauert einige Minuten, nachdem Sie das Gerät aktiviert haben. 
 
     Es wird eine Fehlermeldung oder eine Warnung mit dem Hinweis angezeigt, dass ein Problem mit dem Sicherheitszertifikat der Website vorliegt. 

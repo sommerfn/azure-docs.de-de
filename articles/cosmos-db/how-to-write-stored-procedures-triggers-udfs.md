@@ -3,15 +3,15 @@ title: Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten 
 description: Erfahren Sie, wie Sie gespeicherte Prozeduren, Triggern und benutzerdefinierte Funktionen in Azure Cosmos DB definieren.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 12/11/2018
+ms.topic: conceptual
+ms.date: 05/21/2019
 ms.author: mjbrown
-ms.openlocfilehash: c94509fb39d1c5ebb9aec1acfe1cbacc9cd6fd4a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bec28874bbd67ece4b29f6975e8c7fdcea457bd5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268409"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092838"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
 
@@ -48,11 +48,11 @@ Nachdem eine gespeicherte Prozedur geschrieben wurde, muss sie bei einer Auflist
 
 ### <a id="create-an-item"></a>Erstellen eines Elements mithilfe einer gespeicherten Prozedur
 
-Wenn Sie ein Element mithilfe einer gespeicherten Prozedur erstellen, wird dieses Element in den Azure Cosmos DB-Container eingefügt, und es wird eine ID für das neu erstellte Element zurückgegeben. Das Erstellen eines Elements ist ein asynchroner Vorgang und hängt von den JavaScript-Rückruffunktionen ab. Die Rückruffunktion verfügt über zwei Parameter: einen für das Fehlerobjekt für den Fall eines Fehlers im Vorgang und einen anderen für einen Rückgabewert, in diesem Fall für das erstellte Objekt. Innerhalb des Rückrufs können Sie entweder die Ausnahme behandeln oder einen Fehler auslösen. Für den Fall, dass kein Rückruf bereitgestellt wird und ein Fehler auftritt, löst die Azure Cosmos DB-Laufzeitumgebung einen Fehler aus. 
+Wenn Sie ein Element mithilfe einer gespeicherten Prozedur erstellen, wird dieses Element in den Azure Cosmos-Container eingefügt, und es wird eine ID für das neu erstellte Element zurückgegeben. Das Erstellen eines Elements ist ein asynchroner Vorgang und hängt von den JavaScript-Rückruffunktionen ab. Die Rückruffunktion verfügt über zwei Parameter: einen für das Fehlerobjekt für den Fall eines Fehlers im Vorgang und einen anderen für einen Rückgabewert, in diesem Fall für das erstellte Objekt. Innerhalb des Rückrufs können Sie entweder die Ausnahme behandeln oder einen Fehler auslösen. Für den Fall, dass kein Rückruf bereitgestellt wird und ein Fehler auftritt, löst die Azure Cosmos DB-Laufzeitumgebung einen Fehler aus. 
 
 Die gespeicherte Prozedur enthält auch einen Parameter zum Festlegen der Beschreibung. Hierbei handelt es sich um einen booleschen Wert. Wenn der Parameter auf TRUE festgelegt wird und die Beschreibung fehlt, löst die gespeicherte Prozedur eine Ausnahme aus. Andernfalls wird der Rest der gespeicherten Prozedur weiter ausgeführt.
 
-Die folgende gespeicherte Beispielprozedur akzeptiert ein neues Azure Cosmos DB-Element als Eingabe, fügt es in den Azure Cosmos DB-Container ein und gibt die ID für das neu erstellte Element zurück. In diesem Beispiel nutzen wir das To-Do-Listen-Beispiel aus der [Schnellstartanleitung: Erstellen einer .NET-Web-App mit Azure Cosmos DB unter Verwendung der SQL-API und des Azure-Portals](create-sql-api-dotnet.md).
+Die folgende gespeicherte Beispielprozedur akzeptiert ein neues Azure Cosmos-Element als Eingabe, fügt es in den Azure Cosmos-Container ein und gibt die ID für das neu erstellte Element zurück. In diesem Beispiel nutzen wir das To-Do-Listen-Beispiel aus der [Schnellstartanleitung: Erstellen einer .NET-Web-App mit Azure Cosmos DB unter Verwendung der SQL-API und des Azure-Portals](create-sql-api-dotnet.md).
 
 ```javascript
 function createToDoItem(itemToCreate) {
@@ -87,7 +87,7 @@ function sample(arr) {
 
 ### <a id="transactions"></a>Transaktionen in gespeicherten Prozeduren
 
-Sie können Transaktionen mithilfe einer gespeicherten Prozedur in Elementen innerhalb eines Containers implementieren. Das folgende Beispiel verwendet Transaktionen in einer Football-Spiele-App, um Spieler in einem einzigen Vorgang zwischen zwei Mannschaften zu transferieren. Die gespeicherte Prozedur versucht, die beiden Azure Cosmos DB-Elemente zu lesen, die jeweils den als Argument übergebenen Spieler-IDs entsprechen. Wenn beide Spieler gefunden werden, aktualisiert die gespeicherte Prozedur die Elemente, indem die Mannschaften getauscht werden. Wenn im Verlauf des Vorgangs Fehler auftreten, löst die gespeicherte Prozedur eine JavaScript-Ausnahme aus, die die Transaktion implizit abbricht.
+Sie können Transaktionen mithilfe einer gespeicherten Prozedur in Elementen innerhalb eines Containers implementieren. Das folgende Beispiel verwendet Transaktionen in einer Football-Spiele-App, um Spieler in einem einzigen Vorgang zwischen zwei Mannschaften zu transferieren. Die gespeicherte Prozedur versucht, die beiden Azure Cosmos-Elemente zu lesen, die jeweils den als Argument übergebenen Spieler-IDs entsprechen. Wenn beide Spieler gefunden werden, aktualisiert die gespeicherte Prozedur die Elemente, indem die Mannschaften getauscht werden. Wenn im Verlauf des Vorgangs Fehler auftreten, löst die gespeicherte Prozedur eine JavaScript-Ausnahme aus, die die Transaktion implizit abbricht.
 
 ```javascript
 // JavaScript source code
@@ -214,7 +214,7 @@ Azure Cosmos DB unterstützt vorangestellte und nachgestellte Trigger. Vorangest
 
 ### <a id="pre-triggers"></a>Vorangestellte Trigger
 
-Das folgende Beispiel zeigt, wie ein vorangestellter Trigger zum Überprüfen der Eigenschaften eines Azure Cosmos DB-Elements verwendet werden kann, das erstellt wird. In diesem Beispiel nutzen wir das To-Do-Listen-Beispiel aus der [Schnellstartanleitung: Erstellen einer .NET-Web-App mit Azure Cosmos DB unter Verwendung der SQL-API und des Azure-Portals](create-sql-api-dotnet.md), um eine Timestamp-Eigenschaft zu einem neu hinzugefügten Element hinzuzufügen, falls dieses keine solche Eigenschaft enthält.
+Das folgende Beispiel zeigt, wie ein vorangestellter Trigger zum Überprüfen der Eigenschaften eines Azure Cosmos-Elements verwendet werden kann, das erstellt wird. In diesem Beispiel nutzen wir das To-Do-Listen-Beispiel aus der [Schnellstartanleitung: Erstellen einer .NET-Web-App mit Azure Cosmos DB unter Verwendung der SQL-API und des Azure-Portals](create-sql-api-dotnet.md), um eine Timestamp-Eigenschaft zu einem neu hinzugefügten Element hinzuzufügen, falls dieses keine solche Eigenschaft enthält.
 
 ```javascript
 function validateToDoItemTimestamp() {
@@ -235,7 +235,7 @@ function validateToDoItemTimestamp() {
 }
 ```
 
-Vorangestellte Trigger können keine Eingabeparameter übernehmen. Das Anforderungsobjekt im Trigger kann verwendet werden, um die Anforderungsnachricht zu verändern, die dem Vorgang zugeordnet ist. Im vorherigen Beispiel wird der vorangestellte Trigger ausgeführt, wenn ein Azure Cosmos DB-Element erstellt wird, und der Text der Anforderungsnachricht enthält das zu erstellende Element im JSON-Format.
+Vorangestellte Trigger können keine Eingabeparameter übernehmen. Das Anforderungsobjekt im Trigger kann verwendet werden, um die Anforderungsnachricht zu verändern, die dem Vorgang zugeordnet ist. Im vorherigen Beispiel wird der vorangestellte Trigger ausgeführt, wenn ein Azure Cosmos-Element erstellt wird, und der Text der Anforderungsnachricht enthält das zu erstellende Element im JSON-Format.
 
 Wenn Trigger registriert werden, können Sie die Vorgänge angeben, mit denen sie ausgeführt werden können. Dieser Trigger wurde mit `TriggerOperation.Create` als `TriggerOperation`-Wert erstellt, d.h., die Verwendung des Triggers in einem Ersetzungsvorgang – wie im folgenden Code gezeigt – ist nicht zulässig.
 

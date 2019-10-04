@@ -9,21 +9,18 @@ ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c332b20650bef2e341a935dacae835403dc56c9b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: cabefcc53106a53459975fc26513dc59ae7d3372
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630664"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073209"
 ---
 # <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung #
-
-## <a name="overview"></a>Übersicht ##
 
 Die Azure App Service-Umgebung ist eine Bereitstellung des Azure App Service in einem Subnetz im virtuellen Azure-Netzwerk eines Kunden. Sie besteht aus:
 
@@ -62,17 +59,14 @@ So erstellen Sie eine App in einer ASE
 
 1. Wählen Sie Ihr Betriebssystem aus. 
 
-    * Das Hosten einer Linux-App in einer ASE ist ein neues Feature in der Vorschau, daher wird empfohlen, einer ASE, in der derzeit eine Produktionsworkload ausgeführt wird, keine Apps für Linux hinzuzufügen. 
-    * Durch das Hinzufügen einer Linux-App zu einer ASE befindet sich die ASE auch im Vorschaumodus. 
-
 1. Wählen Sie einen in Ihrer ASE vorhandenen App Service-Plan aus, oder erstellen Sie mit den folgenden Schritten einen neuen:
 
     a. Wählen Sie **Neu erstellen**.
 
     b. Geben Sie einen Namen für Ihren App Service-Plan ein.
 
-    c. Wählen Sie Ihre ASE in der Dropdownliste **Speicherort** aus. Das Hosten einer Linux-App in einer ASE ist derzeit nur in 6 Regionen aktiviert: **„USA, Westen“, „USA, Osten“, „Europa, Westen“, „Europa, Norden“, „Australien, Osten“, „Asien, Südosten“**. 
-
+    c. Wählen Sie Ihre ASE in der Dropdownliste **Speicherort** aus. 
+    
     d. Wählen Sie einen **Isolierten** Tarif. Wählen Sie **Auswählen**.
 
     e. Klicken Sie auf **OK**.
@@ -137,7 +131,7 @@ Mit einer externen ASE weisen alle diese Veröffentlichungsoptionen das gleiche 
 
 Der wesentliche Unterschied bei der Veröffentlichung betrifft die ILB-ASE. In einer ILB-ASE sind die Veröffentlichungsendpunkte nur über die ILB verfügbar. Die ILB liegt in einer privaten IP-Adresse im ASE-Subnetz im virtuellen Netzwerk. Wenn Sie keinen Netzwerkzugriff auf die ILB haben, können Sie in der betreffenden ASE keine Apps veröffentlichen. Wie in [Erstellen und Verwenden einer ILB-ASE][MakeILBASE] erwähnt, müssen Sie für die Apps im System ein DNS konfigurieren. Dazu gehört der SCM-Endpunkt. Wenn sie nicht ordnungsgemäß definiert sind, ist keine Veröffentlichung möglich. Darüber hinaus müssen Ihre IDEs über Netzwerkzugriff auf den ILB verfügen, um direkt an ihn veröffentlichen zu können.
 
-Internetbasierte CI-Systeme wie GitHub oder Azure DevOps können nicht mit einer ILB-ASE verwendet werden, da der Veröffentlichungsendpunkt nicht über das Internet erreichbar ist. Stattdessen müssen Sie ein CI-System wie Dropbox verwenden, das ein Pull-Modell verwendet.
+Internetbasierte CI-Systeme wie GitHub oder Azure DevOps können nicht standardmäßig mit einer ILB-ASE verwendet werden, da der Veröffentlichungsendpunkt nicht über das Internet erreichbar ist. Für Azure DevOps können Sie dieses Problem durch Installation eines selbst gehosteten Release-Agent in Ihrem internen Netzwerk umgehen, wo Zugriff auf den internen Lastenausgleich möglich ist. Alternativ können Sie auch ein CI-System wie Dropbox verwenden, das ein Pullmodell verwendet.
 
 Die Veröffentlichungsendpunkte für die Apps in einer ILB-ASE verwenden die Domäne, mit der die ILB-ASE erstellt wurde. Dies wird im Veröffentlichungsprofil und auf dem Portalblatt der App angezeigt (in **Übersicht** > **Zusammenfassung** sowie in den **Eigenschaften**). 
 

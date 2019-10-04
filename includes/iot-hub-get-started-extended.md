@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: iot-hub
 author: dominicbetts
 ms.service: iot-hub
@@ -9,11 +9,11 @@ ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 8da233088389797271541b1aae55ec2e842f252d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53381488"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178201"
 ---
 ## <a name="extended-iot-scenarios"></a>Erweiterte IoT-Szenarien
 
@@ -26,7 +26,7 @@ Verwenden Sie andere Azure-Dienste und -Tools. Wenn Sie Ihr Gerät mit IoT Hub v
 | [Verwalten von IoT-Geräten](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | Azure IoT Hub-Toolkiterweiterung für VS Code|
 | [Speichern von IoT Hub-Nachrichten in Azure Storage](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Azure Table Storage                |
 | [Visualisieren von Sensordaten](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)                      | Microsoft Power BI                 |
-| [Visualisieren von Sensordaten](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure-Web-Apps                      |
+| [Visualisieren von Sensordaten](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure-Web-Apps                     |
 | [Vorhersagen des Wetters mit Sensordaten](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)      | Azure Machine Learning             |
 | [Automatische Anomalie-Erkennung und Reaktion](../articles/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md) | Azure Logic Apps                   |
 

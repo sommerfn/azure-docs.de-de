@@ -7,7 +7,7 @@ ms.service: search
 ms.topic: conceptual
 author: Yahnoosh
 ms.author: jlembicz
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 39fbe30ccf4429003dc0c9f11165c5dd057a89cd
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: e54fa449e0ed7f3208d9924b69946c6598a00444
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549151"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648806"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Hinzufügen von Sprachanalysetools zu einem Azure Search-Index
 
@@ -45,9 +45,6 @@ Standardmäßig wird das Lucene-Standardanalysetool verwendet, das für Englisch
 + Das Analysetool für Englisch von Lucene ist beispielsweise eine Erweiterung des Standardanalysetools. Es entfernt Possessivformen (nachgestelltes -s) bei Wörtern, wendet gemäß dem Wortstammerkennungsalgorithmus von Porter die Wortstammerkennung an und entfernt englische Stoppwörter.  
 
 + Das Analysetool für Englisch von Microsoft führt die Lemmatisierung anstelle der Wortstammerkennung durch. Dadurch können gebeugte und unregelmäßige Wortformen viel besser verarbeitet werden, was zu relevanteren Suchergebnissen führt. 
-
-  > [!Tip]
-  > Die [Search Analyzer Demo](https://alice.unearth.ai/) bietet eine Gegenüberstellung der Ergebnisse des Lucene-Standardanalysetools, des Analysetools für Englisch von Lucene und des Tools zur Verarbeitung natürlicher Sprache (Englisch) von Microsoft. Die Ergebnisse für Ihre Sucheingaben werden für die einzelnen Analysen nebeneinander angezeigt.
 
 ## <a name="configuring-analyzers"></a>Konfigurieren von Analysetools
 
@@ -121,7 +118,7 @@ Weitere Informationen zu Indexeigenschaften finden Sie unter [Erstellen eines In
 |Urdu|ur.microsoft||  
 |Vietnamesisch|vi.microsoft||  
 
- Alle Analysetools mit **Lucene** im Namen werden von den [Sprachanalysetools von Apache Lucene](https://lucene.apache.org/core/4_9_0/core/overview-summary.html ) unterstützt.
+ Alle Analysetools mit **Lucene** im Namen werden von den [Sprachanalysetools von Apache Lucene](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ) unterstützt.
 
 ## <a name="see-also"></a>Weitere Informationen  
  [Erstellen eines Index &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

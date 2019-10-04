@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 09/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 374ffc3a9d181d0596b5a4af1cd8082023e227fe
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498518"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993385"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -25,16 +25,16 @@ Im Assistenten zum Abrufen oder Importieren von Daten in Visual Studio werden Da
 |---------|---------|---------|
 |Azure SQL-Datenbank<sup>[2](#azsqlmanaged)</sup>     |   Ja      |    Ja      |
 |Azure SQL Data Warehouse     |   Ja      |   Ja       |
-|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Ja       |    Nein       |
-|Azure-Tabellenspeicher<sup>[1](#tab1400a)</sup>    |   Ja       |    Nein       |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Ja        |  Nein         |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Ja       |    Nein       |
-|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     Ja     |   Nein        |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Ja       |   Nein        |
+|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Ja       |    Nein      |
+|Azure-Tabellenspeicher<sup>[1](#tab1400a)</sup>    |   Ja       |    Nein      |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Ja        |  Nein        |
+|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Ja       |    Nein      |
+|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     Ja     |   Nein       |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Ja       |   Nein       |
 ||||
 
 <a name="tab1400a">1</a>: Nur für tabellarische Modelle 1400 und höhere.   
-<a name="azsqlmanaged">2</a>: Verwaltete Azure SQL-Datenbank-Instanz wird unterstützt. Da eine verwaltete Instanz im Azure-VNet mit einer privaten IP-Adresse ausgeführt wird, ist ein lokales Datengateway erforderlich.   
+<a name="azsqlmanaged">2</a>: Verwaltete Azure SQL-Datenbank-Instanz wird unterstützt. Da eine verwaltete Instanz innerhalb von Azure VNet mit einer privaten IP-Adresse ausgeführt wird, muss der öffentliche Endpunkt für die Instanz aktiviert sein. Ist das nicht der Fall, ist ein lokales Datengateway erforderlich.    
 <a name="databricks">3</a>: Azure Databricks unter Verwendung des Spark-Connectors wird derzeit nicht unterstützt.   
 <a name="gen2">4</a>: ADLS Gen2 wird aktuell nicht unterstützt.
 
@@ -42,7 +42,7 @@ Im Assistenten zum Abrufen oder Importieren von Daten in Visual Studio werden Da
 **Anbieter**   
 In-Memory- und DirectQuery-Modelle, die eine Verbindung mit Azure-Datenquellen herstellen, verwenden den .NET Framework-Datenanbieter für SQL Server.
 
-## <a name="on-premises-data-sources"></a>Lokale Datenquellen
+## <a name="other-data-sources"></a>Weitere Datenquellen
 
 Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure AS-Server ist ein lokales Gateway erforderlich. Wenn Sie ein Gateway verwenden, sind 64-Bit-Anbieter erforderlich.
 
@@ -52,7 +52,7 @@ Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure AS-S
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11.0, Microsoft OLE DB-Anbieter für SQL Server, .NET Framework-Datenanbieter für SQL Server | .NET Framework-Datenanbieter für SQL Server |
 | SQL Server Data Warehouse |SQL Server Native Client 11.0, Microsoft OLE DB-Anbieter für SQL Server, .NET Framework-Datenanbieter für SQL Server | .NET Framework-Datenanbieter für SQL Server |
-| Oracle |Microsoft OLE DB-Anbieter für Oracle, Oracle-Datenanbieter für .NET |Oracle-Datenanbieter für .NET |
+| Oracle | OLE DB-Anbieter für Oracle, Oracle-Datenanbieter für .NET |Oracle-Datenanbieter für .NET |
 | Teradata |OLE DB-Anbieter für Teradata, Teradata-Datenanbieter für .NET |Teradata-Datenanbieter für .NET |
 | | | |
 
@@ -76,22 +76,23 @@ Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure AS-S
 |OData-Feed<sup>[1](#tab1400b)</sup>     |  
 |ODBC-Abfrage     | 
 |OLE DB     |   
-|Postgre SQL-Datenbank<sup>[1](#tab1400b)</sup>    | 
+|PostgreSQL-Datenbank<sup>[1](#tab1400b)</sup>    | 
 |Salesforce-Objekte<sup>[1](#tab1400b)</sup> |  
 |Salesforce-Berichte<sup>[1](#tab1400b)</sup> |
 |SAP HANA<sup>[1](#tab1400b)</sup>    |  
 |SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
-|SharePoint<sup>[1](#tab1400b)</sup>     |   
+|SharePoint-Liste<sup>[1](#tab1400b)</sup>, <sup>[2](#filesSP)</sup>     |   
 |Sybase-Datenbank     |  
 |TXT-Datei  |
 |XML-Tabellen<sup>[1](#tab1400b)</sup>    |  
 ||
  
-<a name="tab1400b">1</a> Nur für tabellarische Modelle 1400 und höhere.
+<a name="tab1400b">1</a>: Nur für tabellarische Modelle 1400 und höhere.   
+<a name="filesSP">2:</a> Dateien in lokaler SharePoint-Instanz werden nicht unterstützt.
 
 ## <a name="specifying-a-different-provider"></a>Angeben eines anderen Herstellers
 
-Datenmodelle in Azure Analysis Services erfordern möglicherweise verschiedene Datenanbieter beim Verbinden mit bestimmten Datenquellen. Gelegentlich kann es vorkommen, dass tabellarische Modelle beim Herstellen einer Verbindung mit Datenquellen mithilfe von nativen Anbietern wie SQL Server Native Client (SQLNCLI11) einen Fehler zurückgeben. Wenn Sie andere native Anbieter als SQLOLEDB verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **Der Anbieter „SQLNCLI11.1“ ist nicht registriert**. Wenn ein DirectQuery-Modell eine Verbindung mit lokalen Datenquellen herstellt und Sie native Anbieter verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **Fehler beim Erstellen des OLE DB-Rowsets. Incorrect syntax near „LIMIT“. (Fehler beim Erstellen eines OLE DB-Rowsets. Falsche Syntax bei „LIMIT“)**.
+Datenmodelle in Azure Analysis Services erfordern möglicherweise verschiedene Datenanbieter beim Verbinden mit bestimmten Datenquellen. Gelegentlich kann es vorkommen, dass tabellarische Modelle beim Herstellen einer Verbindung mit Datenquellen mithilfe von nativen Anbietern wie SQL Server Native Client (SQLNCLI11) einen Fehler zurückgeben. Wenn Sie andere native Anbieter als SQLOLEDB verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **Der Anbieter „SQLNCLI11.1“ ist nicht registriert**. Wenn ein DirectQuery-Modell eine Verbindung mit lokalen Datenquellen herstellt und Sie native Anbieter verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **Fehler beim Erstellen des OLE DB-Rowsets. Incorrect syntax near „LIMIT“. (Fehler beim Erstellen eines OLE DB-Rowsets. Falsche Syntax bei „LIMIT“)** .
 
 Bei der Migration eines lokalen SQL Server Analysis Services-Tabellenmodells zu Azure Analysis Services muss möglicherweise der Anbieter gewechselt werden.
 
@@ -112,6 +113,10 @@ Für lokale Datenquellen:
 Für Clouddatenquellen:
 
 * Wenn Sie die SQL-Authentifizierung verwenden, sollte das Identitätswechselkonto ein Dienstkonto sein.
+
+## <a name="oauth-credentials"></a>OAuth-Anmeldeinformationen
+
+Für tabellarische Modelle mit dem Kompatibilitätsgrad 1400 und höher bieten Azure SQL-Datenbank, Azure SQL Data Warehouse, Dynamics 365 und SharePoint-Liste Unterstützung für OAuth-Anmeldeinformationen. Azure Analysis Services verwaltet die Tokenaktualisierung für OAuth-Datenquellen, um Timeouts für Aktualisierungsvorgänge mit langer Laufzeit zu vermeiden. Legen Sie Anmeldeinformationen mithilfe von SSMS fest, um gültige Token zu generieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Lokales Gateway](analysis-services-gateway.md)   

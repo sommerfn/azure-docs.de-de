@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Enthält Informationen zu öffentlichen und privaten IP-Adressen in Azure.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: jdial
-ms.openlocfilehash: 929c8808721140d5275cba4bcf3fbaa567f961e0
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.author: kumud
+ms.openlocfilehash: 73b185eabc77d293328b1251a4af1aafffc5f319
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652024"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65236354"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -79,6 +80,9 @@ Für öffentliche IP-Adressen vom Typ „Standard-SKU“ gilt Folgendes:
 > [!NOTE]
 > Die eingehende Kommunikation mit einer SKU-Standardressource ist erst erfolgreich, wenn Sie eine [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) erstellen und zuordnen und den gewünschten eingehenden Datenverkehr explizit zulassen.
 
+> [!NOTE]
+> Nur öffentliche IP-Adressen mit SKU-Typ „Basic“ stehen zur Verfügung, wenn der [Instance Metadata Service IMDS](../virtual-machines/windows/instance-metadata-service.md) verwendet wird. Die SKU vom Typ „Standard“ wird nicht unterstützt.
+
 ### <a name="allocation-method"></a>Zuordnungsmethode
 
 Öffentliche IP-Adressen der SKU-Typen „Basic“ und „Standard“ unterstützen die *statische* Zuordnungsmethode.  Der Ressource wird beim Anlegen eine IP-Adresse zugewiesen. Beim Löschen der Ressource wird die IP-Adresse freigegeben.
@@ -101,11 +105,14 @@ Statische öffentliche IP-Adressen werden häufig in den folgenden Szenarien ver
 >
 
 ### <a name="dns-hostname-resolution"></a>DNS-Hostnamenauflösung
-Sie können eine DNS-Domänennamensbezeichnung für eine öffentliche IP-Ressource angeben. Dadurch erstellen Sie für „*Domänennamensbezeichnung*.*Standort*.cloudapp.azure.com“ eine Zuordnung zur öffentlichen IP-Adresse auf den von Azure verwalteten DNS-Servern. Wenn Sie beispielsweise eine öffentliche IP-Ressource mit **contoso** als *Domänennamensbezeichnung* am Azure-*Standort* **USA, Westen** erstellen, wird der vollqualifizierte Domänenname (FQDN) **contoso.westus.cloudapp.azure.com** in die öffentliche IP-Adresse der Ressource aufgelöst. Mit dem FQDN können Sie einen benutzerdefinierten CNAME-Domäneneintrag mit Verweis auf die öffentliche IP-Adresse in Azure erstellen. Sie können anstelle der oder zusätzlich zur DNS-Namensbezeichnung mit dem Standardsuffix den Azure DNS-Dienst verwenden, um einen DNS-Namen mit einem benutzerdefinierten Suffix zu konfigurieren, das in die öffentliche IP-Adresse aufgelöst wird. Weitere Informationen finden Sie unter [Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).
+Sie können eine DNS-Domänennamensbezeichnung für eine öffentliche IP-Ressource angeben. Dadurch erstellen Sie für „*Domänennamensbezeichnung*.*Standort*.cloudapp.azure.com“ eine Zuordnung zur öffentlichen IP-Adresse auf den von Azure verwalteten DNS-Servern. Wenn Sie beispielsweise eine öffentliche IP-Ressource mit **contoso** als *Domänennamensbezeichnung* am Azure-*Standort* **USA, Westen** erstellen, wird der vollqualifizierte Domänenname (FQDN) **contoso.westus.cloudapp.azure.com** in die öffentliche IP-Adresse der Ressource aufgelöst.
 
 > [!IMPORTANT]
 > Jede erstellte Domänennamensbezeichnung muss innerhalb des Azure-Standorts eindeutig sein.  
 >
+
+### <a name="dns-best-practices"></a>DNS – bewährte Methoden
+Wenn Sie zu einer anderen Region migrieren müssen, können Sie den FQDN Ihrer öffentlichen IP-Adresse nicht migrieren. Als bewährte Methode können Sie mit dem FQDN einen benutzerdefinierten CNAME-Domäneneintrag mit Verweis auf die öffentliche IP-Adresse in Azure erstellen. Wenn Sie zu einer anderen öffentlichen IP-Adresse wechseln müssen, ist eine Aktualisierung des CNAME-Eintrags statt der manuellen Aktualisierung des FQDN mit der neuen Adresse erforderlich. Sie können [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) oder einen externen DNS-Anbieter für Ihren DNS-Eintrag verwenden. 
 
 ### <a name="virtual-machines"></a>Virtuelle Computer
 
@@ -130,7 +137,7 @@ In der Tabelle unten sind die spezifischen Eigenschaften, über die eine öffent
 | --- | --- | --- | --- |
 | Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
 | Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |Ja |Ja |
-| VPN-Gateway |Gateway-IP-Konfiguration |Ja |Ja |
+| VPN-Gateway |Gateway-IP-Konfiguration |Ja |Nein |
 | Anwendungsgateway |Front-End-Konfiguration |Ja (nur V1) |Ja (nur V2) |
 
 ## <a name="private-ip-addresses"></a>Private IP-Adressen

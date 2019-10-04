@@ -1,10 +1,10 @@
 ---
-title: Probleme beim Anmelden bei einer lokalen Anwendung über den Azure AD-Anwendungsproxy | Microsoft-Dokumentation
+title: Problem beim Anmelden bei einer lokalen App über den Azure AD-Anwendungsproxy | Microsoft-Dokumentation
 description: Beheben von verbreiteten Problemen, wenn Sie sich nicht über den Azure AD-Anwendungsproxy bei einer in Azure AD integrierten lokalen Anwendung anmelden können
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: celested
+ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ee322dd3ff6ccd68b09645fb46b1488b17819bb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4483dc75d116e75521cb348b56dac418b3e012a8
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871688"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381320"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Probleme beim Anmelden bei einer lokalen Anwendung über den Azure AD-Anwendungsproxy
 

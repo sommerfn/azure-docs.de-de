@@ -13,22 +13,22 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/29/2019
+ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c65c797612e179a9f3c02696d827131f5c830b3c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a752d7759386828e916f68e5903115220812f3e0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755899"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123039"
 ---
-# <a name="what-is-azure-media-services-v3"></a>Was ist Azure Media Services v3?
+# <a name="azure-media-services-v3-overview"></a>Azure Media Services v3: Übersicht
 
 Azure Media Services ist eine cloudbasierte Plattform für die Erstellung von Lösungen, die Videostreaming in Broadcastqualität ermöglichen, Barrierefreiheit und Verteilung optimieren, Inhalte analysieren und vieles mehr. Ganz gleich, ob Sie ein Anwendungsentwickler sind oder in einem Callcenter, bei einer Regierungsbehörde oder in einem Unterhaltungsunternehmen arbeiten, Media Services unterstützt Sie bei der Erstellung von Anwendungen, die Medienerlebnisse von herausragender Qualität für ein breites Publikum auf den beliebtesten mobilen Geräten und Browsern von heute bieten. 
 
 > [!NOTE]
-> Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-ref), die [Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](developers-guide.md).
+> Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-ref), die [Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
 ## <a name="what-can-i-do-with-media-services"></a>Wie kann ich Media Services nutzen?
 
@@ -48,7 +48,8 @@ Media Services ermöglicht es Ihnen, eine Vielzahl von Medienworkflows in der Cl
 
 Hier erfahren Sie, wie Sie mit Media Services Videos v3 Inhalte codieren und packen sowie Videos on Demand streamen, live übertragen und analysieren. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Video- oder Audiostreams (bedarfsgesteuert oder live) sicher und mit Skalierung für Millionen von Benutzern übermitteln.
 
-Machen Sie sich zunächst mit den [grundlegenden Konzepten](concepts-overview.md) vertraut, bevor Sie mit der Entwicklung beginnen.<br/>
+> [!TIP]
+> Machen Sie sich zunächst mit Folgendem vertraut, bevor Sie mit der Entwicklung beginnen:<br/>* [Grundlegende Konzepte](concepts-overview.md) (beinhaltet wichtige Konzepte wie Verpacken, Codierung, Schutz usw.)<br/>* [Entwickeln mit Media Services v3-APIs](media-services-apis-overview.md) (Informationen zum Zugreifen auf APIs, Namenskonventionen usw.)
 
 ### <a name="quickstarts"></a>Schnellstarts  
 
@@ -68,23 +69,26 @@ Die Tutorials enthalten szenariobasierte Verfahren für einige der wichtigsten M
 * [Analysieren Ihres Videos: .NET](analyze-videos-tutorial-with-api.md)
 * [Dynamische AES-128-Verschlüsselung: .NET](protect-with-aes128.md)
     
+### <a name="samples"></a>Beispiele
+
+Verwenden Sie diesen [Beispielbrowser](https://docs.microsoft.com/samples/browse/?products=azure-media-services), um Azure Media Services-Codebeispiele zu durchsuchen.
+
 ### <a name="how-to-guides"></a>Anleitungen
 
 Die Artikel enthalten Codebeispiele, um die Ausführung einer Aufgabe zu veranschaulichen. In diesem Abschnitt finden Sie zahlreiche Beispiele. Hier nur eine kleine Auswahl:
 
 * [Erstellen eines Azure Media Services-Kontos](create-account-cli-how-to.md)
 * [Zugriff auf Azure Media Services-API mit Azure CLI](access-api-cli-how-to.md)
-* [Einstieg in die Entwicklung mit SDKs](developers-guide.md)
 * [Codieren mit HTTPS als Auftragseingabe: .NET](job-input-from-http-how-to.md)  
 * [Überwachen von Ereignissen: Portal](monitor-events-portal-how-to.md)
 * [Dynamische Verschlüsselung mit Multi-DRM: .NET](protect-with-drm.md) 
 * [Codieren mit einer benutzerdefinierten Transformation: CLI](custom-preset-cli-howto.md)
 
+## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
+
+Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wie kann ich erste Schritte mit v3 ausführen? 
-
-> [!div class="nextstepaction"]
-> [Kenntnisse grundlegender Konzepte](concepts-overview.md)<br/>
-> [Entwickeln mit der Media Services v3-API und SDKs](developers-guide.md) 
+[Kenntnisse grundlegender Konzepte](concepts-overview.md)
 

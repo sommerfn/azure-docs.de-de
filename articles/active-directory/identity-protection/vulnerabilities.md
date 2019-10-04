@@ -4,19 +4,19 @@ description: Übersicht über die von Azure Active Directory Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80faf1899da0f16d25b9b7c68cb0edcbc1276632
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 446e2ef33b714afe06f24f3dbfc46bc6a42790b8
+ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59488232"
+ms.lasthandoff: 07/19/2019
+ms.locfileid: "68335150"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Von Azure Active Directory Identity Protection erkannte Sicherheitsrisiken
 
@@ -30,8 +30,6 @@ Die folgenden Abschnitte bieten Ihnen eine Übersicht der Sicherheitsrisiken, di
 
 Anhand dieses Sicherheitsrisikos können Sie die Bereitstellung von Azure Multi-Factor Authentication in Ihrer Organisation besser bewerten.
 
-Um die Anzahl der Benutzer anzuzeigen, die nicht für MFA registriert sind, klicken Sie auf das Sicherheitsrisiko. Sie werden dann zu den Statistiken in Identity Secure Score umgeleitet.
-
 Azure Multi-Factor Authentication dient als zweite Sicherheitsebene für die Benutzerauthentifizierung. Sie hilft beim Schutz des Zugriffs auf Daten und Anwendungen und erfüllt gleichzeitig die Anforderungen von Benutzern an ein einfaches Anmeldeverfahren. Azure Multi-Factor Authentication umfasst folgende benutzerfreundliche Überprüfungsoptionen:
 
 * Telefonanruf
@@ -39,7 +37,7 @@ Azure Multi-Factor Authentication dient als zweite Sicherheitsebene für die Ben
 * Benachrichtigung über eine mobile App
 * OTP-Prüfcode
 
-Es wird empfohlen, dass Sie die Azure Multi-Factor Authentication für Anmeldungen von Benutzern obligatorisch machen. Die mehrstufige Authentifizierung spielt eine wichtige Rolle in Bezug auf risikobasierte Richtlinien für bedingten Zugriff, die unter Identity Protection verfügbar sind.
+Es wird empfohlen, dass Sie die Azure Multi-Factor Authentication für Anmeldungen von Benutzern obligatorisch machen. Die mehrstufige Authentifizierung spielt eine wichtige Rolle in Bezug auf risikobasierte Richtlinien für bedingten Zugriff, die über Identity Protection verfügbar sind.
 
 Weitere Informationen finden Sie unter [Was ist Azure Multi-Factor Authentication?](../authentication/multi-factor-authentication.md).
 

@@ -11,24 +11,21 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-manager: craigg
-ms.date: 04/04/2019
-ms.openlocfilehash: dfa5d4cb2d782f1466329300157a64fd17765460
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 06/25/2019
+ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797692"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744468"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 
-**Geschäftskontinuität** in Azure SQL-Datenbank bezieht sich auf die Mechanismen, Richtlinien und Verfahren, die es Ihrem Unternehmen ermöglichen, angesichts von Störungen, insbesondere in der Computerinfrastruktur, weiter zu arbeiten. In den meisten Fällen behandelt Azure SQL-Datenbank die Störungen, die in der Cloudumgebung auftreten können, und hält Ihre Anwendungen und Geschäftsprozesse am Laufen. Es gibt jedoch einige Störungen, die von SQL-Datenbank nicht behandelt werden können, wie z. B.:
+**Geschäftskontinuität** in Azure SQL-Datenbank bezieht sich auf die Mechanismen, Richtlinien und Verfahren, die es Ihrem Unternehmen ermöglichen, angesichts von Störungen, insbesondere in der Computerinfrastruktur, weiter zu arbeiten. In den meisten Fällen behandelt Azure SQL-Datenbank die Störungen, die in der Cloudumgebung auftreten können, und hält Ihre Anwendungen und Geschäftsprozesse am Laufen. Es gibt jedoch einige Störungen, die von SQL-Datenbank nicht automatisch behandelt werden können, wie z. B.:
 
 - Ein Benutzer hat versehentlich eine Zeile in einer Tabelle gelöscht oder aktualisiert.
 - Ein bösartiger Angreifer konnte erfolgreich Daten oder eine Datenbank löschen.
 - Ein Erdbeben hat einen Stromausfall verursacht und das Datencenter vorübergehend deaktiviert.
-
-Diese Fälle lassen sich nicht mit Azure SQL-Datenbank kontrollieren, und Sie müssten die Geschäftskontinuitätsfunktionen in SQL-Datenbank verwenden, um Ihre Daten wiederherzustellen und Ihre Anwendungen am Laufen zu halten.
 
 Diese Übersicht beschreibt die Funktionen, die Azure SQL-Datenbank für Geschäftskontinuität und Notfallwiederherstellung bereitstellt. Erfahren Sie etwas über Optionen, Empfehlungen und Tutorials für die Wiederherstellung nach Störungen, die Datenverluste nach sich ziehen oder dazu führen können, dass Ihre Datenbank und Ihre Anwendungen nicht mehr verfügbar sind. Erfahren Sie, was zu tun ist, wenn ein Benutzer- oder Anwendungsfehler die Datenintegrität gefährdet, eine Azure-Region ausfällt oder Wartungsaufgaben für Ihre Anwendung ausgeführt werden müssen.
 
@@ -37,63 +34,67 @@ Diese Übersicht beschreibt die Funktionen, die Azure SQL-Datenbank für Geschä
 Aus Datenbankperspektive gibt es vier große potenzielle Störungsszenarien:
 
 - Lokale Hardware- oder Softwarefehler, die Auswirkung auf den Datenbankknoten haben, z.B. Festplattenfehler.
-- Beschädigte oder gelöschte Daten – in der Regel durch einen Anwendungs- oder Benutzerfehler verursacht. Solche Fehler sind an sich anwendungsspezifisch und können in der Regel nicht automatisch von der Infrastruktur erkannt oder gemildert werden.
+- Beschädigte oder gelöschte Daten – in der Regel durch einen Anwendungs- oder Benutzerfehler verursacht. Derartige Fehler sind anwendungsspezifisch und werden normalerweise nicht vom Datenbankdienst erkannt.
 - Ausfall des Rechenzentrums, möglicherweise durch eine Naturkatastrophe verursacht. Dieses Szenario erfordert gewisse Georedundanz mit Anwendungsfailover in ein alternatives Datencenter.
-- Upgrade- oder Wartungsfehler – unerwartete Probleme, die während geplanter Upgrades oder Wartungsarbeiten für eine Anwendung oder Datenbank auftreten, können ein schnelles Rollback zu einem früheren Datenbankzustand erfordern.
+- Upgrade- oder Wartungsfehler – unerwartete Probleme, die während geplanter Upgrades oder Wartungsarbeiten an der Infrastruktur auftreten, können ein schnelles Rollback zu einem früheren Datenbankzustand erfordern.
 
-SQL-Datenbank bietet verschiedene Funktionen für die Sicherstellung der Geschäftskontinuität, einschließlich automatisierter Sicherungen und optionaler Datenbankreplikation, die Auswirkungen dieser Probleme minimieren können. Zunächst müssen Sie verstehen, wie die [Hochverfügbarkeitsarchitektur](sql-database-high-availability.md) von SQL-Datenbank bei bestimmten Störungen, die Ihre Geschäftsprozesse beeinträchtigen können, eine Verfügbarkeit und Ausfallsicherheit von 99,99 % gewährleisten kann.
-Anschließend erfahren Sie mehr über die zusätzlichen Mechanismen zur Wiederherstellung nach Störungen, die von der Hochverfügbarkeitsarchitektur von SQL-Datenbank nicht bearbeitet werden, wie z. B.:
+Um das Risiko lokaler Hardware- und Softwarefehler zu mindern, bietet SQL-Datenbank eine [Hochverfügbarkeitsarchitektur](sql-database-high-availability.md), die nach diesen Fehlern eine automatische Wiederherstellung mit einer SLA von bis zu 99,995 Prozent Verfügbarkeit gewährleistet.  
+
+Um Ihr Unternehmen vor Datenverlusten zu schützen, werden von SQL-Datenbank automatisch wöchentliche vollständige Datenbanksicherungen, alle 12 Stunden differenzielle Datenbanksicherungen und alle 5–10 Minuten Transaktionsprotokollsicherungen durchgeführt. Die Sicherungen werden für alle Dienstebenen mindestens 7 Tage im RA-GRS-Speicher vorgehalten. Alle Dienstebenen außer „Basic“ unterstützen konfigurierbare Aufbewahrungszeiträume von bis zu 35 Tagen für die Point-in-Time-Wiederherstellung. 
+
+SQL-Datenbank bietet außerdem mehrere Funktionen für Geschäftskontinuität, mit denen sich verschiedene ungeplante Szenarien reduzieren lassen. 
 
 - [Temporäre Tabellen](sql-database-temporal-tables.md) ermöglichen es Ihnen, Zeilenversionen eines beliebigen Zeitpunkts wiederherzustellen.
-- [Integrierte, automatisierte Sicherungen](sql-database-automated-backups.md) und die [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) ermöglichen es Ihnen, die vollständige Datenbank zu einem Zeitpunkt innerhalb der letzten 35 Tage wiederherzustellen.
-- Sie können [eine gelöschte Datenbank auf den Punkt wiederherstellen](sql-database-recovery-using-backups.md#deleted-database-restore), an dem sie gelöscht wurde, sofern der **SQL-Datenbankserver noch vorhanden ist**.
+- [Integrierte, automatisierte Sicherungen](sql-database-automated-backups.md) und die [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) ermöglichen es Ihnen, die vollständige Datenbank zu einem Zeitpunkt innerhalb des konfigurierten Aufbewahrungszeitraums von bis zu 35 Tagen wiederherzustellen.
+- Sie können [eine gelöschte Datenbank auf den Punkt wiederherstellen](sql-database-recovery-using-backups.md#deleted-database-restore), an dem sie gelöscht wurde, sofern der **SQL-Datenbank-Server noch vorhanden ist**.
 - [Langfristige Sicherungsaufbewahrung](sql-database-long-term-retention.md) ermöglicht es Ihnen, die Sicherungen bis zu 10 Jahre aufzubewahren.
 - [Aktive Georeplikation](sql-database-active-geo-replication.md) ermöglicht es Ihnen, lesbare Replikate zu erstellen und bei Ausfall eines Rechenzentrums oder einem Anwendungsupgrade ein manuelles Failover auf ein beliebiges Replikat durchzuführen.
 - [Autofailover-Gruppe](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) ermöglicht der Anwendung im Falle eines Rechenzentrumsausfalls eine automatische Wiederherstellung.
 
-Jede Funktion weist unterschiedliche Eigenschaften für die geschätzte Wiederherstellungszeit (Estimated Recovery Time, ERT) sowie für mögliche Datenverluste bei kürzlich durchgeführten Transaktionen auf. Wenn Sie diese Optionen kennen, können Sie die richtigen Optionen auswählen und in den meisten Szenarien auch miteinander kombinieren. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als RTO (Recovery Time Objective) bezeichnet. Sie müssen auch herausfinden, über welchen Zeitraum kürzlich durchgeführter Datenupdates (in einem bestimmten Zeitraum) maximal verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird. Der Zeitraum der Updates, der verloren gehen darf, wird als RPO (Recovery Point Objective) bezeichnet.
+## <a name="recover-a-database-within-the-same-azure-region"></a>Wiederherstellen einer Datenbank innerhalb derselben Azure-Region
 
-Die folgende Tabelle vergleicht ERT und RPO für die einzelnen Dienstebenen bei den häufigsten Szenarien.
+Mit automatischen Datenbanksicherungen können Sie eine Datenbank auf einen Zeitpunkt in der Vergangenheit zurücksetzen. Auf diese Weise können Sie Datenbeschädigungen aufgrund von menschlichem Versagen wiederherstellen. Mit der Point-in-Time-Wiederherstellung können Sie auf demselben Server eine neue Datenbank erstellen, die dem Zustand der Daten vor der Beschädigung entspricht. Bei den meisten Datenbanken dauern die Wiederherstellungsvorgänge weniger als 12 Stunden. Das Wiederherstellen einer sehr großen oder sehr aktiven Datenbank kann länger dauern. Weitere Informationen zur Wiederherstellungszeit finden Sie unter [Wiederherstellungszeit für Datenbanken](sql-database-recovery-using-backups.md#recovery-time). 
 
-| Funktion | Basic | Standard | Premium | Allgemeiner Zweck | Unternehmenskritisch
-| --- | --- | --- | --- |--- |--- |
-| Point-in-Time-Wiederherstellung von Sicherung |Jeder Wiederherstellungspunkt innerhalb von 7 Tagen |Jeder Wiederherstellungspunkt innerhalb von 35 Tagen |Jeder Wiederherstellungspunkt innerhalb von 35 Tagen |Jeder Wiederherstellungspunkt innerhalb des konfigurierten Zeitraums (bis zu 35 Tage)|Jeder Wiederherstellungspunkt innerhalb des konfigurierten Zeitraums (bis zu 35 Tage)|
-| Geowiederherstellung von georeplizierten Sicherungen |ERT < 12 Stunden<br> RPO < 1 Stunde |ERT < 12 Stunden<br>RPO < 1 Stunde |ERT < 12 Stunden<br>RPO < 1 Stunde |ERT < 12 Stunden<br>RPO < 1 Stunde|ERT < 12 Stunden<br>RPO < 1 Stunde|
-| Autofailover-Gruppen |RTO = 1 Stunde<br>RPO < 5 Sekunden |RTO = 1 Stunde<br>RPO < 5 Sekunden |RTO = 1 Stunde<br>RPO < 5 Sekunden |RTO = 1 Stunde<br>RPO < 5 Sekunden|RTO = 1 Stunde<br>RPO < 5 Sekunden|
-| Manuelles Datenbank-Failover |ERT = 30 s<br>RPO < 5 Sekunden |ERT = 30 s<br>RPO < 5 Sekunden |ERT = 30 s<br>RPO < 5 Sekunden |ERT = 30 s<br>RPO < 5 Sekunden|ERT = 30 s<br>RPO < 5 Sekunden|
+Wenn der maximal unterstützte Aufbewahrungszeitraum für die Point-in-Time-Wiederherstellung für Ihre Anwendung nicht ausreicht, können Sie ihn verlängern, indem Sie eine Richtlinie für die Langzeitaufbewahrung für die Datenbanken konfigurieren. Weitere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
 
-> [!NOTE]
-> *Manuelles Datenbank-Failover* bezieht sich auf das Failover einer einzelnen Datenbank mithilfe des [ungeplanten Modus](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) auf seine georeplizierte sekundäre Datenbank.
+## <a name="compare-geo-replication-with-failover-groups"></a>Vergleichen der Georeplikation mit Failovergruppen
+
+[Autofailover-Gruppen](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) vereinfachen die Bereitstellung und die Verwendung von [Georeplikation](sql-database-active-geo-replication.md) und fügen die zusätzlichen Funktionen wie in der folgenden Tabelle beschrieben hinzu:
+
+|                                              | Georeplikation | Failovergruppen  |
+|:---------------------------------------------| :-------------- | :----------------|
+| Automatisches Failover                           |     Nein          |      Ja         |
+| Gleichzeitiges Failover für mehrere Datenbanken  |     Nein          |      Ja         |
+| Aktualisieren der Verbindungszeichenfolge nach einem Failover      |     Ja         |      Nein          |
+| Unterstützung verwalteter Instanzen                   |     Nein          |      Ja         |
+| Kann sich in der selben Region wie die primäre Instanz befinden             |     Ja         |      Nein          |
+| Mehrere Replikate                            |     Ja         |      Nein          |
+| Unterstützung der Leseskalierung                          |     Ja         |      Ja         |
+| &nbsp; | &nbsp; | &nbsp; |
+
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Wiederherstellen einer Datenbank auf dem vorhandenen Server
-
-SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, differenziellen Datenbanksicherungen alle 12 Stunden sowie Transaktionsprotokollsicherungen im Abstand von 5-10 Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Die Sicherungen werden für alle Dienstebenen 35 Tage lang in RA-GRS-Speicher gespeichert, mit Ausnahme der Dienstebene „Basic DTU“, bei der die Sicherungen 7 Tage lang gespeichert werden. Weitere Informationen finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md). Sie können eine vorhandene Datenbank mit dem Azure-Portal, PowerShell oder der REST-API aus den automatischen Sicherungen zu einem früheren Zeitpunkt als eine neue Datenbank auf demselben SQL-Datenbankserver wiederherstellen. Weitere Informationen finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
-
-Wenn die maximal unterstützte PITR-Aufbewahrungsdauer (Point-in-Time-Wiederherstellung) für Ihre Anwendung nicht ausreicht, können Sie sie verlängern, indem Sie eine Richtlinie für die langfristige Aufbewahrung (LTR) für die Datenbanken konfigurieren. Weitere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
-
-Sie können diese automatischen Datenbanksicherungen verwenden, um eine Datenbank nach verschiedenen Störungen und Unterbrechungen wiederherzustellen, sowohl innerhalb Ihres eigenen Rechenzentrums als auch in einem anderen Rechenzentrum. Die Wiederherstellungszeit beträgt für gewöhnlich weniger als 12 Stunden. Das Wiederherstellen einer sehr großen oder aktiven Datenbank kann länger dauern. Bei automatischen Datenbanksicherungen hängt die geschätzte Wiederherstellungszeit von verschiedenen Faktoren ab, beispielsweise von der Gesamtzahl von Datenbanken, die gleichzeitig in der gleichen Region wiederhergestellt werden müssen, von der Größe der Datenbank und der Transaktionsprotokolle sowie von der Netzwerkbandbreite. Weitere Informationen zur Wiederherstellungszeit finden Sie unter [Wiederherstellungszeit für Datenbanken](sql-database-recovery-using-backups.md#recovery-time). Bei der Wiederherstellung in eine andere Datenregion ist der potenzielle Datenverlust bei Verwendung der georedundanten Speicherung auf eine Stunde begrenzt.
-
-Verwenden Sie automatisierte Sicherungen und die [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) als Mechanismus für Geschäftskontinuität und Wiederherstellung, wenn Folgendes auf Ihre Anwendung zutrifft:
-
-- Es handelt sich nicht um eine geschäftskritische Anwendung.
-- Es ist keine bindende SLA vorhanden – eine Ausfallzeit von 24 Stunden oder länger zieht keine finanziellen Verpflichtungen nach sich.
-- Daten ändern sich langsam (nur wenige Transaktionen pro Stunde), und der Verlust aller innerhalb einer Stunde erfolgten Datenänderungen ist akzeptabel.
-- Die Kosten spielen eine große Rolle.
-
-Wenn Sie eine schnellere Wiederherstellung benötigen, verwenden Sie die [aktive Georeplikation](sql-database-active-geo-replication.md) oder [Autofailover-Gruppen](sql-database-auto-failover-group.md). Wenn Sie Daten, die älter sind als 35 Tage, wiederherstellen müssen, verwenden Sie die [langfristige Aufbewahrung](sql-database-long-term-retention.md).
-
-## <a name="recover-a-database-to-another-region"></a>Wiederherstellen einer Datenbank in einer anderen Region
 
 Es kommt zwar sehr selten vor, aber es ist möglich, dass ein Azure-Rechenzentrum ausfällt. Ein solcher Ausfall kann den Geschäftsbetrieb einige wenige Minuten oder mehrere Stunden unterbrechen.
 
 - Eine Möglichkeit ist, einfach zu warten, bis die Datenbank wieder online ist, wenn der Rechenzentrumsausfall behoben wurde. Dies funktioniert bei Anwendungen, bei denen die Datenbank nicht notwendigerweise online sein muss. Beispiele hierfür sind Entwicklungsprojekte oder kostenlose Testversionen, mit denen Sie nicht ständig arbeiten müssen. Wenn ein Rechenzentrum ausfällt, wissen Sie nicht, wie lange der Ausfall dauern kann, daher ist diese Option nur dann in Erwägung zu ziehen, wenn Sie Ihre Datenbank eine Zeit lang nicht benötigen.
 - Eine andere Möglichkeit besteht im Wiederherstellen einer Datenbank auf einem beliebigen Server in einer beliebigen Azure-Region mit [georedundanten Datenbanksicherungen](sql-database-recovery-using-backups.md#geo-restore) (Geowiederherstellung). Die Geowiederherstellung verwendet eine georedundante Sicherung als Quelle und kann selbst dann zum Wiederherstellen einer Datenbank verwendet werden, wenn die Datenbank oder das Rechenzentrum aufgrund eines Ausfalls nicht mehr verfügbar ist.
-- Sie können eine schnelle Wiederherstellung nach einem Ausfall durchführen, wenn Sie entweder eine sekundäre Geodatenbank mithilfe der [aktiven Georeplikation](sql-database-active-geo-replication.md) oder eine [Autofailover-Gruppe](sql-database-auto-failover-group.md) für Ihre Datenbank oder Datenbanken konfiguriert haben. Je nach gewählter Technologie können Sie entweder manuelles oder automatisches Failover verwenden. Während das eigentliche Failover nur wenige Sekunden dauert, benötigt der Dienst mindestens 1 Stunde, um es zu aktivieren. Diese Zeit ist erforderlich, um sicherzustellen, dass das Failover durch das Ausmaß des Ausfalls gerechtfertigt ist. Darüber hinaus kann das Failover aufgrund der asynchronen Replikation zu einem geringfügigen Datenverlust führen. Ausführliche Informationen zu RTO und RPO für das automatische Failover finden Sie in der Tabelle weiter oben in diesem Artikel.
+- Sie können eine schnelle Wiederherstellung nach einem Ausfall durchführen, wenn Sie entweder eine sekundäre Geodatenbank mithilfe der [aktiven Georeplikation](sql-database-active-geo-replication.md) oder eine [Autofailover-Gruppe](sql-database-auto-failover-group.md) für Ihre Datenbank oder Datenbanken konfiguriert haben. Je nach gewählter Technologie können Sie entweder manuelles oder automatisches Failover verwenden. Während das eigentliche Failover nur wenige Sekunden dauert, benötigt der Dienst mindestens 1 Stunde, um es zu aktivieren. Diese Zeit ist erforderlich, um sicherzustellen, dass das Failover durch das Ausmaß des Ausfalls gerechtfertigt ist. Darüber hinaus kann das Failover aufgrund der asynchronen Replikation zu einem geringfügigen Datenverlust führen. 
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
->
-> [!IMPORTANT]
-> Um die aktive Georeplikation und automatische Failovergruppen verwenden zu können, müssen Sie entweder der Besitzer des Abonnements sein oder über Administratorberechtigungen in SQL Server verfügen. Zum Konfigurieren und Durchführen des Failovers können Sie das Azure-Portal, PowerShell oder die REST-API mit den Berechtigungen des Azure-Abonnements oder Transact-SQL mit SQL Server-Berechtigungen verwenden.
+Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als RTO (Recovery Time Objective) bezeichnet. Sie müssen auch herausfinden, über welchen Zeitraum kürzlich durchgeführter Datenupdates (in einem bestimmten Zeitraum) maximal verloren gehen dürfen, wenn die Anwendung nach einer unvorhergesehenen Störung wiederhergestellt wird. Der potenzielle Datenverlust wird als RPO (Recovery Point Objective) bezeichnet.
+
+Andere Wiederherstellungsmethoden bieten andere RPO- und RTO-Ebenen. Sie können eine bestimmte Wiederherstellungsmethode auswählen oder verschiedene Methoden kombinieren, um Anwendungen vollständig wiederherzustellen. In der folgenden Tabelle werden die RPO- und RTO-Werte der einzelnen Wiederherstellungsoptionen verglichen. Gruppen für automatisches Failover vereinfachen die Bereitstellung und die Verwendung von Georeplikation und fügen die zusätzlichen Funktionen hinzu, wie in der folgenden Tabelle beschrieben.
+
+| Wiederherstellungsmethode | RTO | RPO |
+| --- | --- | --- | 
+| Geowiederherstellung von georeplizierten Sicherungen | 12 Stunden | 1 Stunde |
+| Autofailover-Gruppen | 1 Stunde | 5 s |
+| Manuelles Datenbank-Failover | 30 s | 5 s |
+
+> [!NOTE]
+> *Manuelles Datenbank-Failover* bezieht sich auf das Failover einer einzelnen Datenbank mithilfe des [ungeplanten Modus](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) auf seine georeplizierte sekundäre Datenbank.
+Ausführliche Informationen zu RTO und RPO für das automatische Failover finden Sie in der Tabelle weiter oben in diesem Artikel.
+
 
 Verwenden Sie Autofailover-Gruppen, wenn Ihre Anwendung einen Teil der folgenden Kriterien erfüllt:
 
@@ -103,8 +104,10 @@ Verwenden Sie Autofailover-Gruppen, wenn Ihre Anwendung einen Teil der folgenden
 - Daten ändern sich sehr schnell, und ein Datenverlust über eine Stunde ist nicht akzeptabel.
 - Die zusätzlichen Kosten für die Georeplikation sind niedriger als die potenziellen Kosten aufgrund der finanziellen Haftung und die damit einhergehenden Geschäftsverluste.
 
-Die Dauer einer Wiederherstellung und die Menge an verlorenen Daten richten sich danach, wie Sie diese Features für die Geschäftskontinuität in Ihrer Anwendung einsetzen. Sie könnten z.B. je nach Anforderungen Ihrer Anwendung eine Kombination aus Datenbanksicherungen und aktiver Georeplikation verwenden. Überlegungen zum Anwendungsentwurf für Einzeldatenbanken und zum Einsatz von Pools für elastische Datenbanken mit diesen Funktionen für die Geschäftskontinuität finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md) und [Strategien für die Notfallwiederherstellung mit Pools für elastische Datenbanken](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
+>
 
+Sie könnten z. B. je nach den Anforderungen Ihrer Anwendung eine Kombination aus Datenbanksicherungen und aktiver Georeplikation verwenden. Überlegungen zum Entwurf eigenständiger Datenbanken und zum Einsatz von Pools für elastische Datenbanken mit diesen Funktionen für Geschäftskontinuität finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md) und [Strategien für die Notfallwiederherstellung mit Pools für elastische Datenbanken](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
 Die nachstehenden Abschnitte bieten eine Übersicht über die Schritte, die zur Wiederherstellung mithilfe von Datenbanksicherungen oder der aktiven Georeplikation erforderlich sind. Weitere Schritte einschließlich der Planungsanforderungen und Schritte nach der Wiederherstellung sowie Informationen zum Simulieren eines Ausfalls, um eine Strategie für die Notfallwiederherstellung zu entwickeln, finden Sie unter [Notfallwiederherstellung für SQL-Datenbank](sql-database-disaster-recovery.md).
 
@@ -137,7 +140,7 @@ Wenn Sie die automatischen Sicherungen mit georedundanter Speicherung (standardm
 Nach einer Wiederherstellung müssen Sie unabhängig vom Wiederherstellungsmechanismus folgende zusätzliche Aufgaben ausführen, damit Ihre Anwendungen wieder vollständig einsatzfähig sind und von Ihren Benutzern wieder in vollem Umfang verwendet werden können:
 
 - Umleiten von Clients und Clientanwendungen an den neuen Server
-- Sicherstellen, dass geeignete IP-Firewallregeln auf Serverebene vorhanden sind, damit Benutzer eine Verbindung herstellen können (oder Verwenden von [Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal), um entsprechende Regeln zu aktivieren).
+- Sicherstellen, dass geeignete IP-Firewallregeln auf Serverebene vorhanden sind, damit Benutzer eine Verbindung herstellen können (oder Verwenden von [Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules), um entsprechende Regeln zu aktivieren).
 - Sicherstellen, dass die geeigneten Anmeldeinformationen und Berechtigungen auf Ebene der Masterdatenbank vorhanden sind (oder Verwenden von [eigenständigen Benutzern](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
 - Konfigurieren der erforderlichen Überwachung
 - Konfigurieren der erforderlichen Warnungen

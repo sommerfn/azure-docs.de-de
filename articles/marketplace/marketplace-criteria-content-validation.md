@@ -1,25 +1,19 @@
 ---
-title: Kriterien für die Überprüfung von Marketplace-Inhalten – Azure | Microsoft-Dokumentation
+title: Kriterien für die Überprüfung von Marketplace-Inhalten | Azure Marketplace
 description: Dieser Artikel beschreibt, wie Sie Herausgeber im Marketplace werden.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: yijenj
 manager: nunoc
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
-ms.author: yijenj
-ms.openlocfilehash: e72b115420e49a50f18ae9a27c6243394427ea4a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pabutler
+ms.openlocfilehash: 0aa7cec4dcdb480555cd0ecb7dee8d00a5a9ec2c
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000403"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67870839"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Richtlinien für die Azure Marketplace-Auflistung
 
@@ -45,14 +39,14 @@ Alle Angebote müssen die unter [Anforderungen für alle Auflistungen](https://d
 | 11 | Support und Hilfe für die Lösung | Für mindestens eine der folgenden Support-/Hilfemethoden muss ein Link enthalten sein: <br>o Telefonnummern <br>o E-Mail-Support <br>o Chat-Agents <br>o Communityforen |<br>• Alle Supportmethoden sind aufgeführt: Telefon- und E-Mail-Support. <br>• Während des Testzeitraums (kostenlos oder kostenpflichtig) wird ein kostenpflichtiger Support angeboten. | 
 | 12 | Rechtliche Hinweise | Richtlinien oder Bestimmungen sind über eine öffentliche URL verfügbar. |  | 
 
-----
+---
 ## <a name="trial-offer-requirements"></a>Anforderungen für Testversionsangebote
 
 |  | Auflistungselement | Anforderungen – einfach | Anforderungen – optimal | 
 |:--- |:--- |:--- |:--- |
 |  | Listenstatus | Ein Link zur kundengeführten Testbenutzeroberfläche muss enthalten sein. | Andere Handlungsaufrufe (z. B. „Jetzt kaufen“) sind ebenfalls verfügbar. | 
 
-----
+---
 ## <a name="saas-apps-requirements"></a>Anforderungen für SaaS-Apps
 
 |  | Auflistungselement | Anforderungen – einfach | Anforderungen – optimal | 
@@ -69,7 +63,7 @@ Alle Angebote müssen die unter [Anforderungen für alle Auflistungen](https://d
 | 10 | Kontakte: Support und Hilfe für die Lösung | <br>• Name der Kontaktperson für technische Fragen: Geben Sie den Namen der Kontaktperson für technische Fragen für Ihre App an. Diese Kontaktperson erhält technische Mitteilungen von Microsoft.<br>• E-Mail-Adresse der Kontaktperson für technische Fragen:  Geben Sie die E-Mail-Adresse der Kontaktperson für technische Fragen an.<br>• Telefonnummer der Kontaktperson für technische Fragen: Geben Sie die Telefonnummer der Kontaktperson für technische Fragen an. Telefonnummern im ISO-Format werden unterstützt. Weitere Informationen finden Sie unter https://en.wikipedia.org/wiki/E.123.<br>• Name des Supportkontakts: Geben Sie den Namen der Kontaktperson für den Support für Ihre App an. Diese Kontaktperson erhält Mitteilungen im Zusammenhang mit dem Support von Microsoft.<br>• E-Mail-Adresse des Supportkontakts: Geben Sie die E-Mail-Adresse der Kontaktperson für den Support für Ihre App an. <br>• Telefonnummer des Supportkontakts: Geben Sie die Telefonnummer der Kontaktperson für den Support an. Telefonnummern im ISO-Format werden unterstützt. Weitere Informationen finden Sie unter https://en.wikipedia.org/wiki/E.123. <br>• Support-URL: Geben Sie die URL Ihrer Supportseite an. | <br>• Alle Supportmethoden sind aufgeführt: Telefon- und E-Mail-Support. <br>• Während des Testzeitraums (kostenlos oder kostenpflichtig) wird ein kostenpflichtiger Support angeboten. |
 | 11 | Rechtliche Hinweise |<br>• Datenschutzrichtlinien-URL: Geben Sie die URL zur Datenschutzrichtlinie Ihrer App im Cloudpartnerportal im Feld für die Datenschutzrichtlinien-URL an. <br>• Nutzungsbedingungen: Geben Sie die Nutzungsbedingungen Ihrer App ein. Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihre App testen können. |  Richtlinien oder Bestimmungen sind auf einer Website mit einer öffentlichen URL verfügbar. |
 
-----
+---
 
 ## <a name="container-offer-requirements"></a>Anforderungen für Containerangebote
 
@@ -80,7 +74,7 @@ Alle Angebote müssen die unter [Anforderungen für alle Auflistungen](https://d
 | 3 | Marketplace-Artefakte | Logos werden korrekt angezeigt. |<br>• Das Logo enthält das „Herobild“ (das großformatige Bild im Azure-Portal). <br>• Logos: klein (48×48) und groß (216×216) sind erforderlich. <br>• Anforderungen für das Herobild: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>• Screenshots (max. fünf):  Das Cloudpartnerportal erfordert ein PNG-Bild mit einer Auflösung von 1280×720.|
 | 4 | Leadverwaltung |<br>• Leadverwaltung: Wählen Sie das System aus, in dem Ihre Leads gespeichert werden. <br>• [Hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) erfahren Sie, wie Sie Ihr CRM-System verbinden. | |
 
-----
+---
 
 ## <a name="consulting-offer-requirements"></a>Anforderungen für Beratungsangebote
 
@@ -103,6 +97,3 @@ Alle Angebote müssen die unter [Anforderungen für alle Auflistungen](https://d
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über verschiedene Angebotstypen im Marketplace. <br>[SaaS-Apps](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Container](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[Beratungsdienste](https://docs.microsoft.com/azure/marketplace/consulting-services)
 *   [Bestimmen des Listingtyps für Ihre Lösung](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
-
- 
----

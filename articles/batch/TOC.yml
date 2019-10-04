@@ -1,234 +1,235 @@
-items:
 - name: Batchdokumentation
   href: index.yml
 - name: Übersicht
   items:
-  - name: Was ist Azure Batch?
-    href: batch-technical-overview.md
+    - name: Was ist Azure Batch?
+      href: batch-technical-overview.md
 - name: Schnellstarts
-  items:
-  - name: Ausführen eines Batch-Auftrags – CLI
-    href: quick-create-cli.md
-  - name: Ausführen eines Batch-Auftrags – Portal
-    href: quick-create-portal.md
-  - name: Ausführen eines Batch-Auftrags – .NET
-    href: quick-run-dotnet.md
-  - name: Ausführen eines Batch-Auftrags – Python
-    href: quick-run-python.md
   expanded: true
+  items:
+    - name: Ausführen eines Batch-Auftrags – CLI
+      href: quick-create-cli.md
+    - name: Ausführen eines Batch-Auftrags – Portal
+      href: quick-create-portal.md
+    - name: Ausführen eines Batch-Auftrags – .NET
+      href: quick-run-dotnet.md
+    - name: Ausführen eines Batch-Auftrags – Python
+      href: quick-run-python.md
 - name: Lernprogramme
   items:
-  - name: Parallele Dateiverarbeitung – .NET
-    href: tutorial-parallel-dotnet.md
-  - name: Parallele Dateiverarbeitung – Python
-    href: tutorial-parallel-python.md
-  - name: Szenenrendering mit Arnold
-    href: tutorial-rendering-cli.md
-  - name: Rendern einer Blender-Szene mithilfe von Batch Explorer
-    href: tutorial-rendering-batchexplorer-blender.md
-  - name: Parallele R-Simulation
-    href: tutorial-r-doazureparallel.md
+    - name: Parallele Dateiverarbeitung – .NET
+      href: tutorial-parallel-dotnet.md
+    - name: Parallele Dateiverarbeitung – Python
+      href: tutorial-parallel-python.md
+    - name: Szenenrendering mit Arnold
+      href: tutorial-rendering-cli.md
+    - name: Rendern einer Blender-Szene mithilfe von Batch Explorer
+      href: tutorial-rendering-batchexplorer-blender.md
+    - name: Parallele R-Simulation
+      href: tutorial-r-doazureparallel.md
+    - name: OCR mit Batch und Functions
+      href: tutorial-batch-functions.md
 - name: Beispiele
   items:
-  - name: Codebeispiele
-    items:
-    - name: Azure-Codebeispiele
-      href: https://azure.microsoft.com/resources/samples/?service=batch
-    - name: Repository für Batch-Beispiele
-      href: https://github.com/Azure/azure-batch-samples
-  - name: Azure-Befehlszeilenschnittstelle
-    href: cli-samples.md
+    - name: Codebeispiele
+      items:
+        - name: Azure-Codebeispiele
+          href: 'https://azure.microsoft.com/resources/samples/?service=batch'
+        - name: Repository für Batch-Beispiele
+          href: 'https://github.com/Azure/azure-batch-samples'
+    - name: Azure-Befehlszeilenschnittstelle
+      href: cli-samples.md
 - name: Konzepte
   items:
-  - name: Entwicklerfunktionen
-    href: batch-api-basics.md
-  - name: APIs und Tools
-    href: batch-apis-tools.md
-  - name: Kontingente und Grenzwerte
-    href: batch-quota-limit.md
-  - name: Unterstützte VM-Größen
-    href: batch-pool-vm-sizes.md
-  - name: Hochverfügbarkeit und Notfallwiederherstellung
-    href: high-availability-disaster-recovery.md
+    - name: Entwicklerfunktionen
+      href: batch-api-basics.md
+    - name: APIs und Tools
+      href: batch-apis-tools.md
+    - name: Kontingente und Grenzwerte
+      href: batch-quota-limit.md
+    - name: Unterstützte VM-Größen
+      href: batch-pool-vm-sizes.md
+    - name: Hochverfügbarkeit und Notfallwiederherstellung
+      href: high-availability-disaster-recovery.md
+    - name: Umgebungsvariablen der Aufgabenlaufzeit
+      href: batch-compute-node-environment-variables.md
 - name: Anleitungen
   items:
-  - name: Verwalten von Batch-Konten
-    items:
-    - name: Verwalten von Batch-Konten mit dem Portal
-      href: batch-account-create-portal.md
-    - name: Verwalten von Batch-Konten mit Batch Management .NET
-      href: batch-management-dotnet.md
-  - name: Authentifizierung über Azure AD
-    items:
-    - name: Azure AD mit Batch-Dienst
-      href: batch-aad-auth.md
-    - name: Azure AD mit Batch Management
-      href: batch-aad-auth-management.md
-  - name: Erstellen von Anwendungspaketen
-    href: batch-application-packages.md
-  - name: Erstellen und Verwalten von Pools
-    items:
-    - name: Automatisches Skalieren von Computeknoten
-      href: batch-automatic-scaling.md
-    - name: Auswählen einer VM-Größe für Computeknoten
-      href: batch-pool-vm-sizes.md
-    - name: Konfigurieren des Zugriffs auf Computeknoten
-      href: pool-endpoint-configuration.md
-    - name: Erstellen eines Pools mit einem benutzerdefinierten Image
-      href: batch-custom-images.md
-    - name: Erstellen eines Pools in einem virtuellen Netzwerk
-      href: batch-virtual-network.md
-    - name: Bereitstellen einer Azure-Dateifreigabe
-      href: pool-file-shares.md
-    - name: Verwenden von RDMA oder GPU-Instanzen
-      href: batch-pool-compute-intensive-sizes.md
-    - name: Verwenden von Linux-Computeknoten
-      href: batch-linux-nodes.md
-    - name: Verwenden von virtuellen Computern mit niedriger Priorität
-      href: batch-low-pri-vms.md
-    - name: Suchen nach Pool- und Knotenfehlern
-      href: batch-pool-node-error-checking.md
-  - name: Erstellen einer CI/CD-Pipeline für Batch
-    href: batch-ci-cd.md
-  - name: Verwalten von Aufträgen und Aufgaben
-    items:
-    - name: Vorbereitung und Abschluss von Aufträgen
-      href: batch-job-prep-release.md
-    - name: Gleichzeitige Knotenaufgaben
-      href: batch-parallel-node-tasks.md
-    - name: Abhängigkeiten von Aufgaben
-      href: batch-task-dependencies.md
-    - name: Benutzerkonten zum Ausführen von Aufgaben
-      href: batch-user-accounts.md
-    - name: Senden einer großen Anzahl von Aufgaben
-      href: large-number-tasks.md
-  - name: Erstellen von Ressourcendateien
-    href: resource-files.md
-  - name: Persistente Aufträge und Aufgabenausgabe
-    href: batch-task-output.md
-    items:
-    - name: Beibehalten der Ausgabe mit Batch-API
-      href: batch-task-output-files.md
-    - name: Beibehalten der Ausgabe mit der Dateikonventionenbibliothek
-      href: batch-task-output-file-conventions.md
-  - name: Überwachen von Batch-Lösungen
-    href: monitoring-overview.md
-    items:
-    - name: Verwenden von Metriken und Diagnoseprotokollen
-      href: batch-diagnostics.md
-    - name: Überwachen mit Application Insights
-      href: monitor-application-insights.md
-    - name: Anzahl von Ressourcen nach Zustand
-      href: batch-get-resource-counts.md
-    - name: Effizientes Abfragen von Ressourcen
-      href: batch-efficient-list-queries.md
-  - name: Verwenden von Skripterstellungstools
-    items:
-    - name: Mithilfe von Azure PowerShell
-      href: batch-powershell-cmdlets-get-started.md
-    - name: Mithilfe der Azure-Befehlszeilenschnittstelle
-      href: batch-cli-get-started.md
+    - name: Verwalten von Batch-Konten
       items:
-      - name: Verwenden von Batch-CLI-Vorlagen
-        href: batch-cli-templates.md
-  - name: Verwenden des Batch Node.js-SDK
-    href: batch-nodejs-get-started.md
+        - name: Verwalten von Batch-Konten mit dem Portal
+          href: batch-account-create-portal.md
+        - name: Verwalten von Batch-Konten mit Batch Management .NET
+          href: batch-management-dotnet.md
+        - name: Kostenanalyse und Budgets
+          href: budget.md
+    - name: Authentifizierung über Azure AD
+      items:
+        - name: Azure AD mit Batch-Dienst
+          href: batch-aad-auth.md
+        - name: Azure AD mit Batch Management
+          href: batch-aad-auth-management.md
+    - name: Verwenden von Anwendungspaketen
+      href: batch-application-packages.md
+    - name: Erstellen und Verwalten von Pools
+      items:
+        - name: Automatisches Skalieren von Computeknoten
+          href: batch-automatic-scaling.md
+        - name: Auswählen einer VM-Größe für Computeknoten
+          href: batch-pool-vm-sizes.md
+        - name: Konfigurieren des Zugriffs auf Computeknoten
+          href: pool-endpoint-configuration.md
+        - name: Erstellen eines Pools mit Shared Image Gallery
+          href: batch-sig-images.md
+        - name: Erstellen eines Pools mit einer verwalteten Imageressource
+          href: batch-custom-images.md
+        - name: Erstellen eines Pools in einem virtuellen Netzwerk
+          href: batch-virtual-network.md
+        - name: Einbinden eines virtuellen Dateisystems
+          href: virtual-file-mount.md
+        - name: Bereitstellen einer Azure-Dateifreigabe
+          href: pool-file-shares.md
+        - name: Verwenden von RDMA oder GPU-Instanzen
+          href: batch-pool-compute-intensive-sizes.md
+        - name: Verwenden von Linux-Computeknoten
+          href: batch-linux-nodes.md
+        - name: Verwenden von virtuellen Computern mit niedriger Priorität
+          href: batch-low-pri-vms.md
+        - name: Suchen nach Pool- und Knotenfehlern
+          href: batch-pool-node-error-checking.md
+    - name: Erstellen einer CI/CD-Pipeline für Batch
+      href: batch-ci-cd.md
+    - name: Verwalten von Aufträgen und Aufgaben
+      items:
+        - name: Vorbereitung und Abschluss von Aufträgen
+          href: batch-job-prep-release.md
+        - name: Gleichzeitige Knotenaufgaben
+          href: batch-parallel-node-tasks.md
+        - name: Abhängigkeiten von Aufgaben
+          href: batch-task-dependencies.md
+        - name: Benutzerkonten zum Ausführen von Aufgaben
+          href: batch-user-accounts.md
+        - name: Senden einer großen Anzahl von Aufgaben
+          href: large-number-tasks.md
+    - name: Erstellen von Ressourcendateien
+      href: resource-files.md
+    - name: Persistente Aufträge und Aufgabenausgabe
+      href: batch-task-output.md
+      items:
+        - name: Beibehalten der Ausgabe mit Batch-API
+          href: batch-task-output-files.md
+        - name: Beibehalten der Ausgabe mit der Dateikonventionenbibliothek
+          href: batch-task-output-file-conventions.md
+    - name: Überwachen von Batch-Lösungen
+      href: monitoring-overview.md
+      items:
+        - name: Verwenden von Metriken und Diagnoseprotokollen
+          href: batch-diagnostics.md
+        - name: Überwachen mit Application Insights
+          href: monitor-application-insights.md
+        - name: Anzahl von Ressourcen nach Zustand
+          href: batch-get-resource-counts.md
+        - name: Effizientes Abfragen von Ressourcen
+          href: batch-efficient-list-queries.md
+    - name: Verwenden von Skripterstellungstools
+      items:
+        - name: Mithilfe von Azure PowerShell
+          href: batch-powershell-cmdlets-get-started.md
+        - name: Mithilfe der Azure-Befehlszeilenschnittstelle
+          href: batch-cli-get-started.md
+          items:
+            - name: Verwenden von Batch-CLI-Vorlagen
+              href: batch-cli-templates.md
+    - name: Verwenden des Batch Node.js-SDK
+      href: batch-nodejs-get-started.md
 - name: Ausführen von Workloads
   items:
-  - name: MPI-Aufträge
-    href: batch-mpi.md
-  - name: Containerworkloads
-    href: batch-docker-container-workloads.md
-  - name: Darstellung
-    items:
-    - name: Rendern mit Azure
-      href: batch-rendering-service.md
-    - name: Rendern von VM-Images
-      href: batch-rendering-applications.md
-    - name: Batch-Renderingfunktionen
-      href: batch-rendering-functionality.md
-    - name: Verwenden von Batch-Rendering
-      href: batch-rendering-using.md
-    - name: Verwenden von Render-Managern
-      href: batch-rendering-render-managers.md
-    - name: Rendering-Anwendungsverweis
-      href: batch-rendering-application-reference.md
-    - name: Speicher und Datenverschiebung
-      href: batch-rendering-storage-data-movement.md
-    - name: Rendering-Architekturen
-      href: batch-rendering-architectures.md
-  - name: Datenverarbeitung mit Batch und Data Factory
-    href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
+    - name: MPI-Aufträge
+      href: batch-mpi.md
+    - name: Containerworkloads
+      href: batch-docker-container-workloads.md
+    - name: Darstellung
+      items:
+        - name: Rendern mit Azure
+          href: batch-rendering-service.md
+        - name: Rendern von VM-Images
+          href: batch-rendering-applications.md
+        - name: Batch-Renderingfunktionen
+          href: batch-rendering-functionality.md
+        - name: Verwenden von Batch-Rendering
+          href: batch-rendering-using.md
+        - name: Verwenden von Render-Managern
+          href: batch-rendering-render-managers.md
+        - name: Rendering-Anwendungsverweis
+          href: batch-rendering-application-reference.md
+        - name: Speicher und Datenverschiebung
+          href: batch-rendering-storage-data-movement.md
+        - name: Rendering-Architekturen
+          href: batch-rendering-architectures.md
+    - name: Datenverarbeitung mit Batch und Data Factory
+      href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Verweis
   items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: /cli/azure/batch
-  - name: Azure PowerShell
-    href: /powershell/module/az.batch
-  - name: .NET
-    href: /dotnet/api/overview/azure/batch
-  - name: Java
-    href: /java/api/overview/azure/batch
-  - name: Node.js
-    href: /javascript/api/overview/azure/batch
-  - name: Python
-    href: /python/api/overview/azure/batch
-  - name: REST
-    items:
-    - name: Batch-Dienst
-      href: /rest/api/batchservice
-    - name: Batch Management
-      href: /rest/api/batchmanagement/
-  - name: Resource Manager-Vorlage
-    href: /azure/templates/microsoft.batch/allversions
-  - name: Batch-Analysen
-    href: batch-analytics.md
-    items:
-    - name: Poolerstellungsereignis
-      href: batch-pool-create-event.md
-    - name: Ereignis zum Starten des Löschvorgangs von Pools
-      href: batch-pool-delete-start-event.md
-    - name: Ereignis zum Abschluss des Löschvorgangs von Pools
-      href: batch-pool-delete-complete-event.md
-    - name: 'Ereignis zum Starten der Größenänderung von Pools: Azure'
-      href: batch-pool-resize-start-event.md
-    - name: Ereignis zum Abschluss der Größenänderung von Pools
-      href: batch-pool-resize-complete-event.md
-    - name: Taskstartereignis
-      href: batch-task-start-event.md
-    - name: Ereignis zum Abschluss eines Tasks
-      href: batch-task-complete-event.md
-    - name: Taskfehlerereignis
-      href: batch-task-fail-event.md
-  - name: Umgebungsvariablen für Batch-Computeknoten
-    href: batch-compute-node-environment-variables.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/batch
+    - name: Azure PowerShell
+      href: /powershell/module/az.batch
+    - name: .NET
+      href: /dotnet/api/overview/azure/batch
+    - name: Java
+      href: /java/api/overview/azure/batch
+    - name: Node.js
+      href: /javascript/api/overview/azure/batch
+    - name: Python
+      href: /python/api/overview/azure/batch
+    - name: REST
+      items:
+        - name: Batch-Dienst
+          href: /rest/api/batchservice
+        - name: Batch Management
+          href: /rest/api/batchmanagement/
+    - name: Resource Manager-Vorlage
+      href: /azure/templates/microsoft.batch/allversions
+    - name: Batch-Analysen
+      href: batch-analytics.md
+      items:
+        - name: Poolerstellungsereignis
+          href: batch-pool-create-event.md
+        - name: Ereignis zum Starten des Löschvorgangs von Pools
+          href: batch-pool-delete-start-event.md
+        - name: Ereignis zum Abschluss des Löschvorgangs von Pools
+          href: batch-pool-delete-complete-event.md
+        - name: 'Ereignis zum Starten der Größenänderung von Pools: Azure'
+          href: batch-pool-resize-start-event.md
+        - name: Ereignis zum Abschluss der Größenänderung von Pools
+          href: batch-pool-resize-complete-event.md
+        - name: Taskstartereignis
+          href: batch-task-start-event.md
+        - name: Ereignis zum Abschluss eines Tasks
+          href: batch-task-complete-event.md
+        - name: Taskfehlerereignis
+          href: batch-task-fail-event.md
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-  - name: Batch-Community
-    href: https://github.com/Azure/Batch
-  - name: Batch Shipyard
-    href: https://github.com/Azure/batch-shipyard
-  - name: Blog
-    href: https://blogs.technet.microsoft.com/windowshpc/
-  - name: HPC unter Azure
-    href: https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/batch/
-  - name: Preisrechner
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Resource Manager-Vorlage
-    href: /azure/templates/microsoft.batch/batchaccounts
-  - name: Dienstupdates
-    href: https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-batch
-  - name: Videos
-    href: https://azure.microsoft.com/documentation/videos/index/?services=batch
-ms.openlocfilehash: ccf0c1683f8c567aaceee1f38a020aa5bd2cab6c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790942"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Batch-Community
+      href: 'https://github.com/Azure/Batch'
+    - name: Batch Shipyard
+      href: 'https://github.com/Azure/batch-shipyard'
+    - name: Blog
+      href: 'https://blogs.technet.microsoft.com/windowshpc/'
+    - name: HPC unter Azure
+      href: 'https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/batch/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Resource Manager-Vorlage
+      href: /azure/templates/microsoft.batch/batchaccounts
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=batch&updatetype=&platform='
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-batch'
+    - name: Videos
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=batch'

@@ -4,17 +4,17 @@ description: In diesem Artikel wird die Integration der Quellcodeverwaltung mit 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/01/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c95af40c3fa3f9dad2bfb5ea4a1b9f585c636928
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2567536cd81eb2339622868a731948b1380614ad
+ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58807317"
+ms.lasthandoff: 06/29/2019
+ms.locfileid: "67478444"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integration der Quellcodeverwaltung in Azure Automation: Legacy
 
@@ -43,7 +43,7 @@ Wenn Sie bereits ein GitHub-Konto und ein Repository besitzen, das Sie mit Azure
    | **Parameter** | **Beschreibung** |
    |:--- |:--- |
    | Quelle auswählen |Wählen Sie die Quelle aus. Derzeit wird nur **GitHub** unterstützt. |
-   | Autorisierung |Klicken Sie auf die Schaltfläche **Autorisieren** , um Azure Automation Zugriff auf Ihr GitHub-Repository zu gewähren. Wenn Sie bereits in einem anderen Fenster bei Ihrem GitHub-Konto angemeldet sind, werden die Anmeldeinformationen dieses Kontos verwendet. Nach erfolgreicher Autorisierung zeigt die Seite unter **Authorization Property** (Autorisierungseigenschaft) Ihren GitHub-Benutzernamen an. |
+   | Authorization |Klicken Sie auf die Schaltfläche **Autorisieren** , um Azure Automation Zugriff auf Ihr GitHub-Repository zu gewähren. Wenn Sie bereits in einem anderen Fenster bei Ihrem GitHub-Konto angemeldet sind, werden die Anmeldeinformationen dieses Kontos verwendet. Nach erfolgreicher Autorisierung zeigt die Seite unter **Authorization Property** (Autorisierungseigenschaft) Ihren GitHub-Benutzernamen an. |
    | Repository auswählen |Wählen Sie ein GitHub-Repository aus der Liste der verfügbaren Repositorys aus. |
    | Verzweigung auswählen |Wählen Sie eine Verzweigung aus der Liste der verfügbaren Verzweigungen aus. Wenn Sie keine Verzweigungen erstellt haben, wird nur die **master** -Verzweigung angezeigt. |
    | Runbook-Ordnerpfad |Der Runbook-Ordnerpfad gibt den Pfad im GitHub-Repository zum Abrufen und Verschieben Ihres Codes an. Er muss im Format **/Ordnername/Unterordnername**eingegeben werden. Nur Runbooks im Runbook-Ordnerpfad werden mit Ihrem Automation-Konto synchronisiert. Runbooks in den Unterordnern des Runbook-Ordnerpfads werden **NICHT** synchronisiert. Mit **/** synchronisieren Sie alle Runbooks im Repository. |
@@ -65,7 +65,7 @@ Wenn Sie bereits ein GitHub-Konto und ein Repository besitzen, das Sie mit Azure
      | **Parameter** | **Wert** |
      |:--- |:--- |
      | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
-     | `Type`  |Zeichenfolge |
+     | `Type`  |string |
      | `Value` |{„Verzweigung“:\<*Name Ihrer Verzweigung*>, „Runbook-Ordnertyp“:\<*Runbook-Ordnerpfad*>, „Anbietertyp“:\<*hat einen Wert 1 für GitHub*>, „Verzeichnis“:\<*Name Ihres Repositorys*>, „Benutzername“:\<*Ihr GitHub-Benutzername*>} |
 
    * Die Variable **Microsoft.Azure.Automation.SourceControl.OauthToken**enthält den sicher verschlüsselten Wert Ihres OAuth-Tokens.  

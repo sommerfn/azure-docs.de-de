@@ -1,5 +1,5 @@
 ---
-title: Verwenden von AMQP 1.0 mit der Java JMS Service Bus-API | Microsoft Docs
+title: Verwenden von AMQP 1.0 mit der Java Message Service-API und Azure Service Bus
 description: Erfahren Sie, wie Sie den Java Message Service (JMS) mit Azure Service Bus und Advanced Message Queuing Protocol (AMQP) 1.0 verwenden.
 services: service-bus-messaging
 documentationcenter: java
@@ -14,19 +14,20 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: a7e4282a176794fe885049173ba56ce2461cd6fa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 9dff2cc11b71f314de81fd99ed3b72c6337d977f
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885552"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967976"
 ---
-# <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Verwenden der JMS (Java Message Service)-API mit Service Bus und AMQP 1.0
+# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Verwenden von Java Message Service (JMS) mit Azure Service Bus und AMQP 1.0
+In diesem Artikel wird beschrieben, wie die Messagingfunktionen von Azure Service Bus (Warteschlange und Veröffentlichen/Abonnieren von Themen) aus Java-Anwendungen mit dem beliebten API-Standard Java Message Service (JMS) verwendet werden. In einer [separaten Anleitung](service-bus-amqp-dotnet.md) wird erklärt, wie Sie dieselbe Aufgabe mithilfe der .NET-API für Azure Service Bus durchführen. Sie können diese beiden Anleitungen verwenden, um weitere Informationen zur plattformübergreifenden Nachrichtenübermittlung unter Verwendung von AMQP 1.0 zu erhalten.
+
 AMQP (Advanced Message Queuing Protocol) 1.0 ist ein effizientes, zuverlässiges Messagingprotokoll auf Wire-Ebene, mit dem Sie robuste und plattformübergreifende Messaginganwendungen erstellen können.
 
-Unterstützung für AMQP 1.0 im Service Bus bedeutet, dass Sie die gebrokerten Messagingfunktionen für Warteschlangen und Veröffentlichen/Abonnieren mithilfe eines effizienten binären Protokolls auf unterschiedlichen Plattformen nutzen können. Zudem können Sie Anwendungen erstellen, deren Komponenten mit einer Mischung aus Sprachen, Frameworks und Betriebssystemen erstellt wurden.
-
-In diesem Artikel wird beschrieben, wie die Messagingfunktionen von Service Bus (Warteschlange und Veröffentlichen/Abonnieren von Themen) in Java-Anwendungen mit dem beliebten API-Standard Java Message Service (JMS) verwendet werden. In einer [separaten Anleitung](service-bus-amqp-dotnet.md) wird erklärt, wie Sie dieselbe Aufgabe mithilfe der .NET-API für Service Bus durchführen. Sie können diese beiden Anleitungen verwenden, um weitere Informationen zur plattformübergreifenden Nachrichtenübermittlung unter Verwendung von AMQP 1.0 zu erhalten.
+Unterstützung für AMQP 1.0 in Azure Service Bus bedeutet, dass Sie die gebrokerten Messagingfunktionen für Warteschlangen und Veröffentlichen/Abonnieren mithilfe eines effizienten binären Protokolls auf unterschiedlichen Plattformen nutzen können. Zudem können Sie Anwendungen erstellen, deren Komponenten mit einer Mischung aus Sprachen, Frameworks und Betriebssystemen erstellt wurden.
 
 ## <a name="get-started-with-service-bus"></a>Erste Schritte mit Service Bus
 In diesem Leitfaden wird davon ausgegangen, dass Sie bereits über einen Service Bus-Namespace verfügen, der eine Warteschlange mit dem Namen **basicqueue** enthält. Falls nicht, können Sie [den Namespace und die Warteschlange](service-bus-create-namespace-portal.md) im [Azure-Portal](https://portal.azure.com) erstellen. Weitere Informationen zum Erstellen von Namespaces und Warteschlangen für Service Bus finden Sie unter [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md).
@@ -51,7 +52,7 @@ Folgende vier JAR-Dateien müssen aus dem Apache Qpid JMS AMQP 1.0-Verteilungsar
 ### <a name="java-naming-and-directory-interface-jndi"></a>JNDI (Java Naming and Directory Interface; Java Benennungs- und Verzeichnisschnittstelle)
 JMS verwendet die Java Naming and Directory Interface (JNDI), um eine Trennung zwischen logischen und physischen Namen umzusetzen. Mit JNDI werden zwei Arten von JMS-Objekten aufgelöst: „ConnectionFactory“ und „Destination“. JNDI verwendet ein Anbietermodell, das Sie mit verschiedenen Verzeichnisdiensten verbinden können, um Namensauflösungsfunktionen zu implementieren. Die Apache Qpid JMS AMQP 1.0-Bibliothek enthält einen einfachen JNDI-Anbieter, der mithilfe von properties-Dateien im folgenden Format konfiguriert wird:
 
-```
+```TEXT
 # servicebus.properties - sample JNDI configuration
 
 # Register a ConnectionFactory in JNDI using the form:
@@ -301,7 +302,7 @@ public class JmsQueueQuickstart {
 Übergeben Sie die **Verbindungszeichenfolge** aus den freigegebenen Zugriffsrichtlinien, um die Anwendung auszuführen.
 Hier sehen Sie die Ausgabe des Formulars:
 
-```
+```Output
 > mvn clean package
 >java -jar ./target/jmsqueuequickstart-1.0.0-jar-with-dependencies.jar -c "<CONNECTION_STRING>"
 
@@ -333,7 +334,7 @@ Closing queue client.
 ## <a name="amqp-disposition-and-service-bus-operation-mapping"></a>AMQP-Disposition und Service Bus-Vorgangszuordnung
 Hier sehen Sie die Umwandlung einer AMQP-Disposition in einen Service Bus-Vorgang:
 
-```
+```Output
 ACCEPTED = 1; -> Complete()
 REJECTED = 2; -> DeadLetter()
 RELEASED = 3; (just unlock the message in service bus, will then get redelivered)
@@ -374,6 +375,7 @@ Darüber hinaus trennt Azure Service Bus die Steuerungsebene von der Datenebene 
 | createBrowser               | Nicht unterstützt. Verwenden Sie die Peek()-Funktion der Service Bus-API.                         |
 | createQueue                 | Erstellen Sie eine Warteschlange per Verwaltungs-API/-tools/-portal.                                           | 
 | createTemporaryQueue        | Erstellen Sie per Verwaltungs-API/-tools/-portal eine Warteschlange, bei der *AutoDeleteOnIdle* auf einen Ablaufzeitraum festgelegt ist. |
+| receiveNoWait               | Verwenden Sie die vom Service Bus SDK bereitgestellte Methode „receive()“, und legen Sie das Timeout auf einen niedrigen Wert (oder auf Null) fest. |
 
 ## <a name="summary"></a>Zusammenfassung
 In diesem Leitfaden wurde gezeigt, wie die gebrokerten Messagingfunktionen von Service Bus (Warteschlange und Themen veröffentlichen/abonnieren) aus Java-Anwendungen mit der beliebten Standard-Programmierschnittstelle JMS und AMQP 1.0 verwendet werden.

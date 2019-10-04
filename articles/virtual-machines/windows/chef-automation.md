@@ -4,26 +4,24 @@ description: Hier erfahren Sie, wie Sie Chef zur automatisierten Bereitstellung 
 services: virtual-machines-windows
 documentationcenter: ''
 author: diegoviso
-manager: jeconnoc
+manager: gwallace
 tags: azure-service-management,azure-resource-manager
 editor: ''
 ms.assetid: 0b82ca70-89ed-496d-bb49-c04ae59b4523
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2017
+ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: a973d8dbab18e9ea66afb5ffff83f47c3ad98f93
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5cbf53da5a0af0a511350b9f30153e2fefe72dcf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012345"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080083"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef ist ein hervorragendes Tool zur Automatisierung und für Konfigurationen mit gewünschten Zuständen.
 
@@ -55,9 +53,24 @@ Chef verwendet auch die Konzepte von „Cookbooks“ und „Recipes“, die im G
 
 Bereiten Sie zunächst Ihre Arbeitsstation vor, indem Sie ein Verzeichnis zum Speichern von Chef-Konfigurationsdateien und Rezeptbüchern (Cookbooks) erstellen.
 
-Erstellen Sie ein Verzeichnis namens „C:\chef“.
+Erstellen Sie ein Verzeichnis namens „C:\Chef“.
 
-Laden Sie Ihre Azure PowerShell-[Veröffentlichungseinstellungen](https://docs.microsoft.com/dynamics-nav/how-to--download-and-import-publish-settings-and-subscription-information) herunter.
+Laden Sie die neueste Version der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) herunter, und installieren Sie sie auf Ihrer Arbeitsstation.
+
+## <a name="configure-azure-service-principal"></a>Konfigurieren eines Azure-Dienstprinzipals
+
+Einfach ausgedrückt ist ein Azure-Dienstprinzipal ein Dienstkonto.   Sie verwenden einen Dienstprinzipal, um Azure-Ressourcen auf der Arbeitsstation „Chef“ zu erstellen.  Um den entsprechenden Dienstprinzipal mit den erforderlichen Berechtigungen zu erstellen, führen Sie die folgenden Befehle in PowerShell aus:
+ 
+```powershell
+Login-AzureRmAccount
+Get-AzureRmSubscription
+Select-AzureRmSubscription -SubscriptionName "<yourSubscriptionName>"
+$myApplication = New-AzureRmADApplication -DisplayName "automation-app" -HomePage "https://chef-automation-test.com" -IdentifierUris "https://chef-automation-test.com" -Password "#1234p$wdchef19"
+New-AzureRmADServicePrincipal -ApplicationId $myApplication.ApplicationId
+New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $myApplication.ApplicationId
+```
+
+Notieren Sie Ihre Abonnement-ID, Ihre Mandanten-ID, Ihre Client-ID und Ihren geheimen Clientschlüssel (das oben festgelegte Kennwort) – Sie benötigen diese Informationen später. 
 
 ## <a name="setup-chef-server"></a>Einrichten des Chef-Servers
 
@@ -86,7 +99,7 @@ Sobald Ihre Organisation erstellt wurde, laden Sie das Starterkit herunter.
 
 Die ZIP-Datei dieses Starterkits enthält die Konfigurationsdateien und den Benutzerschlüssel für Ihre Organisation im Verzeichnis `.chef`.
 
-Die Datei `organization-validator.pem` muss separat heruntergeladen werden, da es sich dabei um einen privaten Schlüssel handelt und private Schlüssel nicht auf dem Chef-Server gespeichert werden dürfen. Wählen Sie unter [Chef Manage](https://manage.chef.io/) die Option „Reset Validation Key“ (Validierungsschlüssel zurücksetzen) aus. Damit wird eine separat herunterladbare Datei bereitgestellt. Speichern Sie die Datei unter „C:\chef“.
+Die Datei `organization-validator.pem` muss separat heruntergeladen werden, da es sich dabei um einen privaten Schlüssel handelt und private Schlüssel nicht auf dem Chef-Server gespeichert werden dürfen. Wählen Sie unter [Chef Manage](https://manage.chef.io/) im Verwaltungsbereich die Option „Reset Validation Key“ (Validierungsschlüssel zurücksetzen) aus. Damit wird eine separat herunterladbare Datei bereitgestellt. Speichern Sie die Datei unter „C:\chef“.
 
 ### <a name="configuring-your-chef-workstation"></a>Konfigurieren der Chef-Arbeitsstation
 
@@ -134,21 +147,24 @@ cookbook_path       ["#{current_dir}/cookbooks"]
 
 Fügen Sie der Datei „knife.rb“ die folgenden Informationen:
 
-validation_client_name   "myorg-validator" validation_key           ""#{current_dir}/myorg.pem"
+validation_client_name   "myorg-validator"
 
-Fügen Sie zudem die folgende Zeile hinzu, die den Namen Ihrer Azure-Datei für die Veröffentlichungseinstellungen widerspiegelt.
+validation_key           "#{current_dir}/myorg.pem"
 
-    knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
+knife[:azure_tenant_id] =         "0000000-1111-aaaa-bbbb-222222222222"
 
-Ändern Sie „cookbook_path“, indem Sie „/../“ aus dem Pfad entfernen, damit dieser wie folgt aussieht:
+knife[:azure_subscription_id] =   "11111111-bbbbb-cccc-1111-222222222222"
 
-    cookbook_path  ["#{current_dir}/cookbooks"]
+knife[:azure_client_id] =         "11111111-bbbbb-cccc-1111-2222222222222"
 
-Diese Zeilen stellen sicher, dass Knife auf „C:\chef\cookbooks“ verweist und bei Azure-Vorgängen unsere Azure-Datei mit den Veröffentlichungseinstellungen verwendet.
+knife[:azure_client_secret] =     "#1234p$wdchef19"
+
+
+Diese Zeilen stellen sicher, dass Knife auf „C:\chef\cookbooks“ verweist und bei Azure-Vorgängen den von Ihnen erstellten Azure-Dienstprinzipal verwendet.
 
 Die Datei „knife.rb“ sollte in etwa wie im folgenden Beispiel aussehen:
 
-![][6]
+![][14]
 
 <!--- Giant problem with this section: Chef 12 uses a config.rb instead of knife.rb
 // However, the starter kit hasn't been updated
@@ -157,17 +173,19 @@ Die Datei „knife.rb“ sollte in etwa wie im folgenden Beispiel aussehen:
 <!--- update image [6] knife.rb -->
 
 ```rb
-knife.rb
 current_dir = File.dirname(__FILE__)
 log_level                :info
 log_location             STDOUT
-node_name                "mynode"
-client_key               "#{current_dir}/user.pem"
-chef_server_url          "https://api.chef.io/organizations/myorg"
+node_name                "myorg"
+client_key               "#{current_dir}/myorg.pem"
 validation_client_name   "myorg-validator"
-validation_key           ""#{current_dir}/myorg.pem"
-cookbook_path            ["#{current_dir}/cookbooks"]
-knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
+validation_key           "#{current_dir}/myorg-validator.pem"
+chef_server_url          "https://api.chef.io/organizations/myorg"
+cookbook_path            ["#{current_dir}/../cookbooks"]
+knife[:azure_tenant_id] = "0000000-1111-aaaa-bbbb-222222222222"
+knife[:azure_subscription_id] = "11111111-bbbbb-cccc-1111-222222222222"
+knife[:azure_client_id] = "11111111-bbbbb-cccc-1111-2222222222222"
+knife[:azure_client_secret] = "#1234p$wdchef19"
 ```
 
 ## <a name="install-chef-workstation"></a>Installieren der Chef-Arbeitsstation
@@ -180,17 +198,17 @@ Auf dem Desktop wird „CW PowerShell“ angezeigt. Dabei handelt es sich um ein
 `chef --version` sollte etwa Folgendes zurückgeben:
 
 ```
-Chef Workstation: 0.2.29
-  chef-run: 0.2.2
-  Chef Client: 14.6.47x
-  delivery-cli: master (6862f27aba89109a9630f0b6c6798efec56b4efe)
-  berks: 7.0.6
-  test-kitchen: 1.23.2
-  inspec: 3.0.12
+Chef Workstation: 0.4.2
+  chef-run: 0.3.0
+  chef-client: 15.0.300
+  delivery-cli: 0.0.52 (9d07501a3b347cc687c902319d23dc32dd5fa621)
+  berks: 7.0.8
+  test-kitchen: 2.2.5
+  inspec: 4.3.2
 ```
 
 > [!NOTE]
-> Die Reihenfolge der Pfade ist wichtig!  Wenn die "opscode"-Pfade nicht in der richtigen Reihenfolge angegeben sind, können Probleme auftreten.
+> Die Reihenfolge der Pfade ist wichtig! Wenn die "opscode"-Pfade nicht in der richtigen Reihenfolge angegeben sind, können Probleme auftreten.
 >
 
 Starten Sie die Arbeitsstation neu, bevor Sie fortfahren.
@@ -216,7 +234,7 @@ Voraussichtlich werden gleichzeitig auch eine Reihe von Abhängigkeiten installi
 
 Führen Sie den folgenden Befehl aus, um sich zu vergewissern, dass alles korrekt konfiguriert ist:
 
-    knife azure image list
+    knife azurerm server list
 
 Wenn alles richtig konfiguriert ist, wird eine Liste der verfügbaren Azure-Images angezeigt.
 
@@ -271,32 +289,50 @@ In diesem Schritt erstellen Sie eine Kopie des Cookbooks, das Sie auf dem lokale
 ## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Bereitstellen eines virtuellen Computers mit Knife Azure
 Stellen Sie einen virtuellen Azure-Computer bereit, und wenden Sie das Cookbook „Webserver“ an, das den IIS-Webdienst und die Standardwebseite installiert.
 
-Verwenden Sie hierzu den Befehl **knife azure server create** .
+Verwenden Sie hierzu den Befehl **knife azurerm server create**.
 
 Im Anschluss sehen Sie ein Beispiel für den Befehl.
 
-    knife azure server create --azure-dns-name 'diegotest01' --azure-vm-name 'testserver01' --azure-vm-size 'Small' --azure-storage-account 'portalvhdsxxxx' --bootstrap-protocol 'cloud-api' --azure-source-image 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201411.01-en.us-127GB.vhd' --azure-service-location 'Southeast Asia' --winrm-user azureuser --winrm-password 'myPassword123' --tcp-endpoints 80,3389 --r 'recipe[webserver]'
+    knife azurerm server create `
+    --azure-resource-group-name rg-chefdeployment `
+    --azure-storage-account store `
+    --azure-vm-name chefvm `
+    --azure-vm-size 'Standard_DS2_v2' `
+    --azure-service-location 'westus' `
+    --azure-image-reference-offer 'WindowsServer' `
+    --azure-image-reference-publisher 'MicrosoftWindowsServer' `
+    --azure-image-reference-sku '2016-Datacenter' `
+    --azure-image-reference-version 'latest' `
+    -x myuser -P myPassword123 `
+    --tcp-endpoints '80,3389' `
+    --chef-daemon-interval 1 `
+    -r "recipe[webserver]"
 
-Die Parameter sind selbsterklärend. Ersetzen Sie Ihre bestimmten Variablen, und führen Sie den Befehl dann aus.
+
+Das obige Beispiel erstellt einen virtuellen Computer vom Typ „Standard_DS2_v2“ mit Windows Server 2016 in der Region „USA, Westen“. Ersetzen Sie Ihre bestimmten Variablen, und führen Sie den Befehl dann aus.
 
 > [!NOTE]
-> Über die Befehlszeile automatisiere ich mithilfe des Parameters „–tcp-endpoints“ auch die Filterregeln für mein Endpunktnetzwerk. Ich habe die Ports 80 und 3389 geöffnet, um den Zugriff auf meine Webseite und die RDP-Sitzung zu gestatten.
+> Über die Befehlszeile automatisiere ich mithilfe des Parameters „–tcp-endpoints“ auch die Filterregeln für mein Endpunktnetzwerk. Ich habe die Ports 80 und 3389 geöffnet, um Zugriff auf die Webseite und die RDP-Sitzung zu ermöglichen.
 >
 >
 
 Nachdem Sie den Befehl ausgeführt haben, wechseln Sie zum Azure-Portal, wo Sie die Bereitstellung des virtuellen Computers verfolgen können.
 
-![][13]
+![][15]
 
 Anschließend erscheint die Eingabeaufforderung.
 
-![][10]
+![][16]
 
-Nach Abschluss der Bereitstellung sollten Sie über Port 80 eine Verbindung mit dem Webdienst herstellen können, da Sie den Port beim Bereitstellen des virtuellen Computers mit dem Knife Azure-Befehl geöffnet haben. Da dieser virtuelle Computer der einzige in diesem Clouddienst ist, verknüpfen Sie ihn mit der URL des Clouddiensts.
+Nach Abschluss der Bereitstellung wird die öffentliche IP-Adresse des neuen virtuellen Computers angezeigt. Sie können diese kopieren und in einen Webbrowser einfügen, um die Website anzuzeigen, die Sie bereitgestellt haben. Nach dem Bereitstellen des virtuellen Computers haben wir Port 80 geöffnet, sodass er auch extern verfügbar sein sollte.   
 
 ![][11]
 
 In diesem Beispiel wird kreativer HTML-Code verwendet.
+
+Sie können den Zustand des Knotens auch unter [Chef Manage](https://manage.chef.io/) anzeigen. 
+
+![][17]
 
 Denken Sie daran, dass Sie die Verbindung auch im Azure-Portal per RDP-Sitzung über den Port 3389 herstellen können.
 
@@ -314,6 +350,10 @@ Vielen Dank! Starten Sie noch heute mit Azure, um Ihre Infrastruktur als Code um
 [10]: media/chef-automation/10.png
 [11]: media/chef-automation/11.png
 [13]: media/chef-automation/13.png
+[14]: media/chef-automation/14.png
+[15]: media/chef-automation/15.png
+[16]: media/chef-automation/16.png
+[17]: media/chef-automation/17.png
 
 
 <!--Link references-->

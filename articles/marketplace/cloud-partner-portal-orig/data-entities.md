@@ -1,25 +1,19 @@
 ---
-title: Datenentitäten | Microsoft-Dokumentation
+title: Datenentitäten
 description: Eine Übersicht über Datenentitäten.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: pbutlerm
 manager: Ricardo.Villalobos
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: 579856ab87aaf8d051f2e3c161bb2d0e2f693ed5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.author: pabutler
+ms.openlocfilehash: a382f9b3ce08bba266311c2cc1d5f868f1bc3143
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446577"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64934927"
 ---
 # <a name="data-entities"></a>Datenentitäten
 

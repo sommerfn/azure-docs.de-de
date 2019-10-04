@@ -2,19 +2,19 @@
 title: Migrieren des Microsoft Translator-Hub-Arbeitsbereichs und der Projekte? – Custom Translator
 titleSuffix: Azure Cognitive Services
 description: Migrieren Sie den Hub-Arbeitsbereich und die Projekte zu Custom Translator.
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 3b2c5f3e02241f8c4e8a9ae87bd7436863243978
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cd821ad8fce813d269ace8fb4945cb796c2ae758
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901524"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595736"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrieren des Hub-Arbeitsbereichs und der Projekte zu Custom Translator
 
@@ -119,6 +119,7 @@ Auf der Seite „Migrationsverlauf“ werden die folgenden Informationen als Zus
 Wenn Sie einen detaillierteren Migrationsbericht über Ihre Projekte, Trainings und Dokumente wünschen, haben Sie die Möglichkeit, Details als CSV zu exportieren.
 
 ## <a name="implementation-notes"></a>Hinweise zur Implementierung
+* Systeme mit Sprachpaaren, die im Benutzerdefinierten Translator noch NICHT verfügbar sind, sind nur für den Datenzugriff oder das Aufheben der Bereitstellung durch den Benutzerdefinierten Translator verfügbar. Diese Projekte werden auf der Seite „Projekte“ als „Nicht verfügbar“ markiert. Sobald wir neue Sprachpaare mit dem Benutzerdefinierten Translator aktivieren, sind die Projekte aktiv zum Trainieren und Bereitstellen. 
 * Das Migrieren eines Projekts von Hub zu Benutzerdefinierter Translator hat keinen Einfluss auf Ihre Hubtrainings oder -projekte. Wir löschen während einer Migration keine Projekte oder Dokumente in Hub, und wir heben keine Bereitstellungen von Modellen auf.
 * Es ist nur eine Migration pro Projekt zulässig. Wenn Sie eine Migration für ein Projekt wiederholen müssen, kontaktieren Sie uns.
 * Custom Translator unterstützt NMT-Sprachpaare aus der und in die englische Sprache. [Sehen Sie sich die vollständige Liste der unterstützten Sprachen an](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Hub erfordert keine Baselinemodelle und unterstützt daher mehrere Tausend Sprachen. Sie können zwar ein nicht unterstütztes Sprachpaar migrieren, dabei werden aber nur die Dokumente und Projektdefinitionen migriert. Sie können das neue Modell nicht trainieren. Darüber hinaus werden diese Dokumente und Projekte als inaktiv angezeigt, um anzugeben, dass sie zu diesem Zeitpunkt nicht verwendbar sind. Wenn eine Unterstützung für diese Projekte und/oder Dokumente hinzugefügt wird, werden sie aktiviert und sind damit trainierbar.
@@ -133,9 +134,9 @@ In der folgenden Tabelle werden die Features von Microsoft Translator Hub und Cu
 |:-----|:----:|:----:|
 |Status des Anpassungsfeatures   | Allgemeine Verfügbarkeit  | Allgemeine Verfügbarkeit |
 | Version der Text-API  | V2    | V3  |
-| SMT-Anpassung | Ja   | Nein  |
-| NMT-Anpassung | Nein     | Ja |
-| Neue einheitliche Anpassung der Sprachdienste | Nein     | Ja |
+| SMT-Anpassung | Ja   | Nein |
+| NMT-Anpassung | Nein    | Ja |
+| Neue einheitliche Anpassung der Sprachdienste | Nein    | Ja |
 | Keine Ablaufverfolgung | Ja | Ja |
 
 ## <a name="new-languages"></a>Neue Sprachen

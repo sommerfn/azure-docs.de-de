@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL-Datenbank: Verwalten von einzelnen und in einem Pool zusammengefassten Datenbanken nach der Migration | Microsoft-Dokumentation'
+title: 'Azure SQL-Datenbank: Verwalten von Einzel- und Pooldatenbanken nach der Migration | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Ihre Datenbank nach der Migration zu Azure SQL-Datenbank verwalten.
 services: sql-database
 ms.service: sql-database
@@ -10,25 +10,25 @@ ms.topic: conceptual
 author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
-manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358414"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845602"
 ---
-# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Neuer DBA in der Cloud: Verwalten Ihrer einzelnen und in einem Pool zusammengefassten Datenbanken in Azure SQL-Datenbank
+# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Neuer DBA in der Cloud: Verwalten Ihrer Einzel- und Pooldatenbanken in Azure SQL-Datenbank
 
-Der Umstieg von der herkömmlichen, selbstverwalteten, automatisch gesteuerten Umgebung auf eine PaaS-Umgebung kann anfangs eine Herausforderung darstellen. Als App-Entwickler oder DBA möchten Sie wissen, welche Plattformfunktionen in erster Linie dafür sorgen, dass Ihre Anwendung verfügbar, leistungsfähig, sicher und zuverlässig ist – und zwar zu jeder Zeit. Dieser Artikel soll Aufklärung leisten. Hier werden die Ressourcen kurz zusammengefasst, und Sie erhalten hilfreiche Informationen zur optimalen Verwendung der wichtigsten Funktionen von SQL-Datenbank mit einzelnen und in einem Pool zusammengefassten Datenbanken. So können Sie Ihre Anwendung effizient verwalten und ausführen, um optimale Ergebnisse in der Cloud zu erzielen. Die typische Zielgruppe für diesen Artikel sind Nutzer, die
+Der Umstieg von der herkömmlichen, selbstverwalteten, automatisch gesteuerten Umgebung auf eine PaaS-Umgebung kann anfangs eine Herausforderung darstellen. Als App-Entwickler oder DBA möchten Sie wissen, welche Plattformfunktionen in erster Linie dafür sorgen, dass Ihre Anwendung verfügbar, leistungsfähig, sicher und zuverlässig ist – und zwar zu jeder Zeit. Dieser Artikel soll Aufklärung leisten. Hier werden die Ressourcen kurz zusammengefasst, und Sie erhalten hilfreiche Informationen zur optimalen Verwendung der wichtigsten Funktionen von SQL-Datenbank mit Einzel- und Pooldatenbanken. So können Sie Ihre Anwendung effizient verwalten und ausführen, um optimale Ergebnisse in der Cloud zu erzielen. Die typische Zielgruppe für diesen Artikel sind Nutzer, die
 
 - die Migration ihrer Anwendung(en) zu Azure SQL-Datenbank evaluieren – Modernisierung der Anwendung(en)
 - ihre Anwendung(en) gerade migrieren – Szenario für laufende Migration
 - die Migration zu Azure SQL DB gerade abgeschlossen haben – Neuer DBA in der Cloud
 
-Dieser Artikel behandelt einige der Hauptmerkmale von Azure SQL-Datenbank als Plattform, die bei der Arbeit mit einzelnen und in Pools für elastische Datenbanken zusammengefasste Datenbanken optimale Unterstützung bietet. darunter:
+Dieser Artikel behandelt einige der Hauptmerkmale von Azure SQL-Datenbank als Plattform, die bei der Arbeit mit Einzel- und Pooldatenbanken in Pools für elastische Datenbanken optimale Unterstützung bietet. darunter:
 
+- Überwachen von Datenbanken über das Azure-Portal
 - Geschäftskontinuität und Notfallwiederherstellung (Business Continuity Disaster Recovery, BCDR)
 - Sicherheit und Compliance
 - Intelligente Datenbanküberwachung und -wartung
@@ -36,6 +36,25 @@ Dieser Artikel behandelt einige der Hauptmerkmale von Azure SQL-Datenbank als Pl
 
 > [!NOTE]
 > Dieser Artikel gilt für die folgenden Bereitstellungsoptionen in Azure SQL-Datenbank: einzelne Datenbanken und Pools für elastische Datenbanken. Er gilt nicht für die Bereitstellungsoption „Verwaltete Instanz“ in SQL-Datenbank.
+
+## <a name="monitor-databases-using-the-azure-portal"></a>Überwachen von Datenbanken über das Azure-Portal
+
+Im [Azure-Portal](https://portal.azure.com/) können Sie die Nutzung einer einzelnen Datenbank überwachen, indem Sie die Datenbank auswählen und auf das Diagramm **Überwachung** klicken. Dadurch wird das Fenster **Metrik** geöffnet, in dem Sie durch Klicken auf die Schaltfläche **Diagramm bearbeiten** Änderungen vornehmen können. Fügen Sie die folgenden Metriken hinzu:
+
+- CPU-Prozentsatz
+- DTU-Prozentsatz
+- E/A-Prozentsatz für Daten
+- Datenbankgröße als Prozentsatz
+
+Nachdem Sie diese Metriken hinzugefügt haben, können Sie sie im Diagramm **Überwachung** mit weiteren Informationen im Fenster **Metrik** anzeigen. Alle vier Metriken geben die durchschnittliche prozentuale Nutzung relativ zur **DTU** der Datenbank an. In den Artikeln [DTU-basiertes Kaufmodell für Azure SQL-Datenbank](sql-database-service-tiers-dtu.md) und [vCore-basiertes Kaufmodell](sql-database-service-tiers-vcore.md) finden Sie weitere Informationen zu Dienstebenen.  
+
+![Tarifbezogenes Überwachen der Datenbankleistung.](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
+
+Sie können zudem Benachrichtigungen für die Leistungsmetriken konfigurieren. Klicken Sie im Fenster **Metrik** auf die Schaltfläche **Warnung hinzufügen**. Befolgen Sie die Anweisungen des Assistenten, um die Benachrichtigung zu konfigurieren. Sie haben die Möglichkeit, Benachrichtigungen für den Fall zu konfigurieren, dass Metriken einen Schwellenwert überschreiten oder unterschreiten.
+
+Wenn Sie beispielsweise einen Anstieg der Workload Ihrer Datenbank erwarten, können Sie eine E-Mail-Benachrichtigung konfigurieren, die immer dann gesendet wird, wenn eine der Leistungsmetriken der Datenbank 80 % erreicht. Sie können dies als Frühwarnung verwenden, um zu ermitteln, wann Sie eventuell zur nächsthöheren Computegröße wechseln müssen.
+
+Anhand der Leistungsmetriken können Sie auch ermitteln, ob Sie möglicherweise eine Herabstufung auf eine niedrigere Computegröße vornehmen können. Angenommen, Sie verwenden eine Datenbank der Dienstebene "Standard S2", und alle Leistungsmetriken zeigen, dass die Datenbank zu jedem Zeitpunkt durchschnittlich nicht mehr als 10 % nutzt. Hier ist es wahrscheinlich, dass sich die Datenbank auch mit der Dienstebene "Standard S1" verwenden lässt. Bevor Sie sich für einen Wechsel zu einer niedrigeren Computegröße entscheiden, müssen Sie aber auch Workloads berücksichtigen, die Spitzen oder Schwankungen aufweisen können.
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Geschäftskontinuität und Notfallwiederherstellung (Business Continuity Disaster Recovery, BCDR)
 
@@ -86,7 +105,7 @@ SQL-Datenbank bietet [zwei Authentifizierungsmethoden](sql-database-control-acce
 - [Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md)
 - SQL-Authentifizierung
 
-Die herkömmliche Windows-Authentifizierung wird nicht unterstützt. Azure Active Directory (AD) ist ein Dienst für die zentrale Identitäts- und Zugriffsverwaltung. Er ermöglicht sämtlichen Mitarbeitern Ihrer Organisation den bequemen Zugriff per einmaliger Anmeldung (SSO, Single Sign-On). Dies vereinfacht die Authentifizierung, da die Anmeldeinformationen für alle Azure-Dienste gemeinsam genutzt werden. AAD unterstützt [MFA (Multi-Factor Authentication)](sql-database-ssms-mfa-authentication.md) und lässt sich mit [wenigen Klicks](../active-directory/hybrid/how-to-connect-install-express.md) in Windows Server Active Directory integrieren. Die SQL-Authentifizierung funktioniert genau so, wie Sie es aus der Vergangenheit gewohnt sind. Benutzer können sich mit ihrem Benutzernamen und Kennwort bei beliebigen Datenbanken auf einem bestimmten SQL-Datenbankserver authentifizieren. Dadurch können SQL-Datenbank und SQL Data Warehouse außerdem eine mehrstufige Authentifizierung und Benutzerkonten für Gäste innerhalb einer Azure AD-Domäne anbieten. Wenn Sie bereits über eine lokale Active Directory verfügen, können Sie dieses Verzeichnis mit Azure Active Directory verbinden und es auf Azure erweitern.
+Die herkömmliche Windows-Authentifizierung wird nicht unterstützt. Azure Active Directory (AD) ist ein Dienst für die zentrale Identitäts- und Zugriffsverwaltung. Er ermöglicht sämtlichen Mitarbeitern Ihrer Organisation den bequemen Zugriff per einmaliger Anmeldung (SSO, Single Sign-On). Dies vereinfacht die Authentifizierung, da die Anmeldeinformationen für alle Azure-Dienste gemeinsam genutzt werden. AAD unterstützt [MFA (Multi-Factor Authentication)](sql-database-ssms-mfa-authentication.md) und lässt sich mit [wenigen Klicks](../active-directory/hybrid/how-to-connect-install-express.md) in Windows Server Active Directory integrieren. Die SQL-Authentifizierung funktioniert genau so, wie Sie es aus der Vergangenheit gewohnt sind. Benutzer können sich mit ihrem Benutzernamen und Kennwort bei beliebigen Datenbanken auf einem bestimmten SQL-Datenbank-Server authentifizieren. Dadurch können SQL-Datenbank und SQL Data Warehouse außerdem eine mehrstufige Authentifizierung und Benutzerkonten für Gäste innerhalb einer Azure AD-Domäne anbieten. Wenn Sie bereits über eine lokale Active Directory verfügen, können Sie dieses Verzeichnis mit Azure Active Directory verbinden und es auf Azure erweitern.
 
 |**Wenn Sie...**|**SQL-Datenbank/SQL Data Warehouse**|
 |---|---|
@@ -109,7 +128,7 @@ Es gibt mehrere Methoden, um Verbindungszugriffe für Ihre Anwendung optimal zu 
 
 #### <a name="firewall"></a>Firewall
 
-Eine Firewall verhindert externe Zugriffe auf Ihren Server, indem nur bestimmten Entitäten Zugang zu Ihrem SQL-Datenbankserver gewährt wird. Standardmäßig sind alle Verbindungen mit dem SQL-Datenbankserver und darauf enthaltenen Datenbanken unzulässig – es sei denn, es handelt sich um Verbindungen von anderen Azure-Diensten. Mit einer Firewallregel können Sie den Serverzugriff auf bestimmte Entitäten beschränken (z. B. auf einen Entwicklercomputer), indem Sie zulassen, dass der Computer mit der jeweiligen IP-Adresse die Firewall passieren darf. Zudem können Sie einen Bereich von IP-Adressen angeben, über die Sie den Zugriff auf den SQL-Datenbankserver gewähren möchten. Beispielsweise können Sie die IP-Adressen aller Entwicklercomputer in Ihrer Organisation in einem Schritt hinzufügen, indem Sie auf der Seite für Firewalleinstellungen einen Bereich angeben.
+Eine Firewall verhindert externe Zugriffe auf Ihren Server, indem nur bestimmten Entitäten Zugang zu Ihrem SQL-Datenbank-Server gewährt wird. Standardmäßig sind alle Verbindungen mit dem SQL-Datenbank-Server und darauf enthaltenen Datenbanken unzulässig – es sei denn, es handelt sich um Verbindungen von anderen Azure-Diensten. Mit einer Firewallregel können Sie den Serverzugriff auf bestimmte Entitäten beschränken (z. B. auf einen Entwicklercomputer), indem Sie zulassen, dass der Computer mit der jeweiligen IP-Adresse die Firewall passieren darf. Zudem können Sie einen Bereich von IP-Adressen angeben, über die Sie den Zugriff auf den SQL-Datenbank-Server gewähren möchten. Beispielsweise können Sie die IP-Adressen aller Entwicklercomputer in Ihrer Organisation in einem Schritt hinzufügen, indem Sie auf der Seite für Firewalleinstellungen einen Bereich angeben.
 
 Firewallregeln können auf Server- oder auf Datenbankebene erstellt werden. IP-Firewallregeln auf Serverebene können mithilfe des Azure-Portals oder mit SSMS erstellt werden. Weitere Informationen zum Festlegen von Firewallregeln auf Server- und Datenbankebene finden Sie unter: [Erstellen von IP-Firewallregeln in SQL-Datenbank](sql-database-security-tutorial.md#create-firewall-rules).
 
@@ -123,11 +142,11 @@ Mit Dienstendpunkten können Sie wichtige Azure-Ressourcen ausschließlich für 
 
 #### <a name="reserved-ips"></a>Reservierte IP-Adressen
 
-Sie können auch [reservierte IP-Adressen](../virtual-network/virtual-networks-reserved-public-ip.md) für Ihre virtuellen Computer bereitstellen, und die IP-Adressen für spezifische virtuelle Computer in den Firewalleinstellungen des Servers in die Whitelist eintragen. Das Zuweisen von reservierten IP-Adressen erspart Ihnen das Aktualisieren von Firewallregeln, wenn sich die IP-Adressen ändern.
+Sie können auch [reservierte IP-Adressen](../virtual-network/virtual-networks-reserved-public-ip.md) für Ihre virtuellen Computer bereitstellen und diese IP-Adressen für spezifische virtuelle Computer den Firewalleinstellungen des Servers hinzufügen. Das Zuweisen von reservierten IP-Adressen erspart Ihnen das Aktualisieren von Firewallregeln, wenn sich die IP-Adressen ändern.
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>Über welchen Port werden Verbindungen mit SQL-Datenbank hergestellt?
 
-Über Port 1433. SQL-Datenbank kommuniziert über diesen Port. Um Verbindungen aus einem Unternehmensnetzwerk herzustellen, müssen Sie in den Firewalleinstellungen Ihrer Organisation eine ausgehende Regel hinzufügen. Port 1433 sollte grundsätzlich nicht außerhalb von Azure verfügbar gemacht werden. SSMS kann in Azure mithilfe der [Azure RemoteApp](https://www.microsoft.com/cloud-platform/azure-remoteapp-client-apps) ausgeführt werden. Dafür müssen Sie keine ausgehenden Verbindungen mit Port 1433 öffnen. Die IP-Adresse ist statisch, sodass die Datenbank nur für die RemoteApp geöffnet sein kann. Außerdem unterstützt sie die mehrstufige Authentifizierung (Multi Factor Authentication, MFA).
+Über Port 1433. SQL-Datenbank kommuniziert über diesen Port. Um Verbindungen aus einem Unternehmensnetzwerk herzustellen, müssen Sie in den Firewalleinstellungen Ihrer Organisation eine ausgehende Regel hinzufügen. Port 1433 sollte grundsätzlich nicht außerhalb von Azure verfügbar gemacht werden.
 
 ### <a name="how-can-i-monitor-and-regulate-activity-on-my-server-and-database-in-sql-database"></a>Wie werden Aktivitäten auf dem Server und in der Datenbank in SQL-Datenbank überwacht und geregelt?
 
@@ -152,7 +171,7 @@ Zum Schutz sensibler Daten, die aktiv oder ruhend sein können, bietet SQL-Daten
 |**Merkmale**|**Always Encrypted**|**Transparente Datenverschlüsselung (TDE)**|
 |---|---|---|
 |**Umfang der Verschlüsselung**|Komplettlösung|Ruhende Daten|
-|**Datenbankserver kann auf sensible Daten zuzugreifen.**|Nein |Ja, da die Verschlüsselung ruhende Daten betrifft.|
+|**Datenbankserver kann auf sensible Daten zuzugreifen.**|Nein|Ja, da die Verschlüsselung ruhende Daten betrifft.|
 |**Zulässige T-SQL-Vorgänge**|Übereinstimmungsvergleich|Die gesamte T-SQL-Oberfläche ist verfügbar.|
 |**Sind zur Verwendung der Funktion Änderungen an Apps erforderlich?**|Wenig|Sehr wenig|
 |**Granularität der Verschlüsselung**|Spaltenebene|Datenbankebene|
@@ -160,7 +179,7 @@ Zum Schutz sensibler Daten, die aktiv oder ruhend sein können, bietet SQL-Daten
 
 ### <a name="how-can-i-limit-access-to-sensitive-data-in-my-database"></a>Wie wird der Zugriff auf sensible Daten in der Datenbank beschränkt?
 
-Jede Anwendung verfügt zu einem gewissen Grad über sensible Daten in der Datenbank, die vor unbefugtem Zugriff geschützt werden müssen. Bestimmte Mitarbeiter innerhalb der Organisation benötigen Zugang zu diesen Daten, während sie anderen verborgen bleiben sollten. Ein Beispiel sind Mitarbeitergehälter. Ein Vorgesetzter muss auf die Gehaltsinformationen seiner Mitarbeiter zugreifen können, einzelne Teammitglieder dürfen allerdings keinen Zugang zu den Gehaltsinformationen ihrer Kollegen haben. In einem weiteren Szenario könnten Datenentwickler in der Entwicklungs- oder Testphase mit sensiblen Daten interagieren, z. B. mit Sozialversicherungsnummern von Kunden. Auch diese Informationen müssen dem Entwickler nicht verfügbar gemacht werden. In diesen Fällen müssen Ihre sensiblen Daten entweder maskiert oder überhaupt nicht bereitgestellt werden. SQL-Datenbank bietet zwei Methoden, um nicht autorisierten Benutzern den Zugang zu sensiblen Daten zu verweigern:
+Jede Anwendung verfügt zu einem gewissen Grad über sensible Daten in der Datenbank, die vor unbefugtem Zugriff geschützt werden müssen. Bestimmte Mitarbeiter innerhalb der Organisation benötigen Zugang zu diesen Daten, während sie anderen verborgen bleiben sollten. Ein Beispiel sind Mitarbeitergehälter. Ein Vorgesetzter muss auf die Gehaltsinformationen seiner Mitarbeiter zugreifen können; einzelne Teammitglieder dürfen allerdings keinen Zugang zu den Gehaltsinformationen ihrer Kollegen haben. In einem weiteren Szenario könnten Datenentwickler in der Entwicklungs- oder Testphase mit sensiblen Daten interagieren, z. B. mit Sozialversicherungsnummern von Kunden. Auch diese Informationen müssen dem Entwickler nicht verfügbar gemacht werden. In diesen Fällen müssen Ihre sensiblen Daten entweder maskiert oder überhaupt nicht bereitgestellt werden. SQL-Datenbank bietet zwei Methoden, um nicht autorisierten Benutzern den Zugang zu sensiblen Daten zu verweigern:
 
 Die [dynamische Datenmaskierung](sql-database-dynamic-data-masking-get-started.md) ist eine Funktion zum Maskieren von Daten, mit der Sie die Offenlegung sensibler Daten beschränken können. So werden die Daten auf der Anwendungsschicht für nicht berechtigte Benutzer maskiert. Sie definieren eine Maskierungsregel, die ein Maskierungsmuster erstellen (z.B. zum Anzeigen nur der letzten vier Ziffern einer nationalen ID-SSN in der Form: XXX-XX-0000 und Markieren des größten Teils als „X“) und ermitteln kann, welche Benutzer von der Maskierungsregel ausgeschlossen werden sollen. Die Daten werden dynamisch maskiert. Für die verschiedenen Datenkategorien stehen mehrere Maskierungsfunktionen zur Verfügung. Dank der dynamischen Datenmaskierung können sensible Daten in Ihrer Datenbank automatisch erkannt und maskiert werden.
 
@@ -313,7 +332,7 @@ SQL-Datenbank nutzt intelligente Technologien, mit denen bestimmte Datenbeschäd
 Hier gibt mehrere Möglichkeiten:
 
 - **[Datensynchronisierung](sql-database-sync-data.md)** – Diese Funktion unterstützt Sie bei der bidirektionalen Synchronisierung von Daten zwischen mehreren lokalen SQL Server-Datenbanken und SQL-Datenbank. Um Daten mit lokalen SQL Server-Datenbanken zu synchronisieren, müssen Sie den Synchronisierungs-Agent auf einem lokalen Computer installieren und konfigurieren und den ausgehenden TCP-Port 1433 öffnen.
-- **[Transaktionsreplikation](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**: Mit der Transaktionsreplikation können Sie Ihre lokalen Daten mit Azure SQL DB synchronisieren. Dabei stellt die lokale Umgebung den Verleger und Azure SQL DB den Abonnenten dar. Zurzeit wird nur dieses Szenario unterstützt. Weitere Informationen dazu, wie Sie Daten mit minimaler Ausfallzeit aus der lokalen Infrastruktur zu Azure SQL migrieren, finden Sie unter: [Verwenden der Transaktionsreplikation](sql-database-single-database-migrate.md#method-2-use-transactional-replication).
+- **[Transaktionsreplikation](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** : Mit der Transaktionsreplikation können Sie Ihre lokalen Daten mit Azure SQL DB synchronisieren. Dabei stellt die lokale Umgebung den Verleger und Azure SQL DB den Abonnenten dar. Zurzeit wird nur dieses Szenario unterstützt. Weitere Informationen dazu, wie Sie Daten mit minimaler Ausfallzeit aus der lokalen Infrastruktur zu Azure SQL migrieren, finden Sie unter: [Verwenden der Transaktionsreplikation](sql-database-single-database-migrate.md#method-2-use-transactional-replication).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

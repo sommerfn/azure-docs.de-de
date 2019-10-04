@@ -3,20 +3,20 @@ title: Erste Schritte mit der Bing-Spracheingabe-API unter Verwendung von REST |
 titlesuffix: Azure Cognitive Services
 description: Greifen Sie mithilfe von REST auf die Spracherkennungs-API in Microsoft Cognitive Services zu, um Sprache in Text umzuwandeln.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ead4026ecec4878c69bc21a9ebc989eaf3d69a13
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: e962a12c6c27737f95e78e80036e51bac41147d5
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259940"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965785"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Schnellstart: Verwenden der REST-API der Bing-Spracheingabe-API
 

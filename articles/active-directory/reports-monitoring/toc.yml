@@ -1,16 +1,14 @@
-items:
 - name: Dokumentation zu Berichten und Überwachung
   href: index.yml
 - name: Übersicht
   items:
-  - name: Was sind Azure AD-Berichte?
-    href: overview-reports.md
-  - name: Was ist die Azure AD-Überwachung?
-    href: overview-monitoring.md
+    - name: Was sind Azure AD-Berichte?
+      href: overview-reports.md
+    - name: Was ist die Azure AD-Überwachung?
+      href: overview-monitoring.md
 - name: Schnellstarts
+  expanded: true
   items:
-  - name: Berichte
-    items:
     - name: Herunterladen eines Anmeldeberichts
       href: quickstart-download-sign-in-report.md
     - name: Herunterladen eines Überwachungsberichts
@@ -19,88 +17,86 @@ items:
       href: quickstart-configure-named-locations.md
     - name: Installieren des Power BI-Inhaltspakets
       href: quickstart-install-power-bi-content-pack.md
-  - name: Überwachung
-    items:
     - name: Senden von Protokollen an ein Speicherkonto
       href: quickstart-azure-monitor-route-logs-to-storage-account.md
-  expanded: true
 - name: Lernprogramme
   items:
-  - name: Berichte
-    items:
     - name: Zugreifen auf die Berichterstellungs-API mit Zertifikaten
       href: tutorial-access-api-with-certificates.md
-  - name: Überwachung
-    items:
     - name: Streamen von Protokollen an einen Event Hub
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
-    - name: Integrieren von Aktivitätsprotokollen mit Splunk
-      href: tutorial-integrate-activity-logs-with-splunk.md
 - name: Konzepte
   items:
-  - name: Berichte
-    items:
+    - name: Planen einer Bereitstellung für Berichterstellung und Überwachung
+      href: plan-monitoring-and-reporting.md
     - name: Überwachungsprotokolle
       href: concept-audit-logs.md
     - name: Anmeldeprotokolle
       href: concept-sign-ins.md
+    - name: Nutzungs- und Insights-Bericht
+      href: concept-usage-insights-report.md
     - name: Riskante Anmeldungen
       href: concept-risky-sign-ins.md
-    - name: Risikoereignisse
+    - name: Risikoerkennungen
       href: concept-risk-events.md
     - name: Gefährdete Benutzer
       href: concept-user-at-risk.md
+    - name: Bereitstellungsprotokolle
+      href: concept-provisioning-logs.md
     - name: Berichterstellungs-APIs
       href: concept-reporting-api.md
-  - name: Überwachung
-    items:
     - name: Azure AD-Protokolle in Azure Monitor
       href: concept-activity-logs-azure-monitor.md
 - name: Anleitungen
-  items:
-  - name: Berichte
-    items:
-    - name: Suchen nach Aktivitätsberichten
-      href: howto-find-activity-reports.md
-    - name: Beheben von Anmeldefehlern für einen Benutzer
-      href: howto-troubleshoot-sign-in-errors.md
-    - name: Bereinigen von Benutzern mit Risikomarkierung
-      href: howto-remediate-users-flagged-for-risk.md
-    - name: Verwenden des Power BI-Inhaltspakets für Azure AD-Berichte
-      href: howto-power-bi-content-pack.md
-    - name: Konfigurieren der Voraussetzungen für die Berichterstellungs-API
-      href: howto-configure-prerequisites-for-reporting-api.md
-  - name: Überwachung
-    items:
-    - name: Integrieren von Aktivitätsprotokollen in Azure Monitor-Protokolle
-      href: howto-integrate-activity-logs-with-log-analytics.md
-    - name: Analysieren von Aktivitätsprotokollen in Azure Monitor-Protokollen
-      href: howto-analyze-activity-logs-log-analytics.md
-    - name: Installieren und Verwenden der Log Analytics-Ansichten für Azure AD
-      href: howto-install-use-log-analytics-views.md
-    - name: Integrieren von Aktivitätsprotokollen mit SumoLogic
-      href: howto-integrate-activity-logs-with-sumologic.md
-    - name: Integrieren von Aktivitätsprotokollen mit ArcSight
-      href: howto-integrate-activity-logs-with-arcsight.md
-  - name: Problembehandlung
-    items:
-    - name: Fehlende Überwachungsdaten
-      href: troubleshoot-missing-audit-data.md
-    - name: Fehlende Daten in den Downloads
-      href: troubleshoot-missing-data-download.md
-    - name: Kein Zugriff auf Graph-APIs für die Berichterstellung
-      href: troubleshoot-graph-api.md
-    - name: Fehler im Power BI-Inhaltspaket
-      href: troubleshoot-content-pack.md
   expanded: true
-- name: Verweis
   items:
-  - name: Berichte
-    items:
+    - name: Berichte
+      items:
+        - name: Suchen nach Aktivitätsberichten
+          href: howto-find-activity-reports.md
+        - name: Beheben von Anmeldefehlern für einen Benutzer
+          href: howto-troubleshoot-sign-in-errors.md
+        - name: Bereinigen von Benutzern mit Risikomarkierung
+          href: howto-remediate-users-flagged-for-risk.md
+        - name: Verwenden des Power BI-Inhaltspakets für Azure AD-Berichte
+          href: howto-power-bi-content-pack.md
+        - name: Konfigurieren der Voraussetzungen für die Berichterstellungs-API
+          href: howto-configure-prerequisites-for-reporting-api.md
+        - name: Verwenden von Azure AD-Arbeitsmappen
+          href: howto-use-azure-monitor-workbooks.md
+    - name: Überwachung
+      items:
+        - name: Analysieren von Aktivitätsprotokollen in Azure Monitor-Protokollen
+          href: howto-analyze-activity-logs-log-analytics.md
+        - name: Installieren und Verwenden der Log Analytics-Ansichten für Azure AD
+          href: howto-install-use-log-analytics-views.md
+        - name: Integrieren von Aktivitätsprotokollen in Azure Monitor-Protokolle
+          href: howto-integrate-activity-logs-with-log-analytics.md
+        - name: Integrieren von Aktivitätsprotokollen mit ArcSight
+          href: howto-integrate-activity-logs-with-arcsight.md
+        - name: Integrieren von Aktivitätsprotokollen mit Splunk
+          href: howto-integrate-activity-logs-with-splunk.md
+        - name: Integrieren von Aktivitätsprotokollen mit SumoLogic
+          href: howto-integrate-activity-logs-with-sumologic.md
+    - name: Problembehandlung
+      items:
+        - name: Fehlende Überwachungsdaten
+          href: troubleshoot-missing-audit-data.md
+        - name: Fehlende Daten in den Downloads
+          href: troubleshoot-missing-data-download.md
+        - name: Kein Zugriff auf Graph-APIs für die Berichterstellung
+          href: troubleshoot-graph-api.md
+        - name: Fehler im Power BI-Inhaltspaket
+          href: troubleshoot-content-pack.md
+- name: Verweis
+  expanded: true
+  items:
+    - name: Azure AD PowerShell-Cmdlets für die Berichterstellung
+      href: reference-powershell-reporting.md
     - name: API-Referenz zu Überwachungsprotokollen
-      href: https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit
+      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
     - name: API-Referenz zu Anmeldeprotokollen
-      href: https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin
+      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin'
     - name: Überwachungsaktivitäten
       href: reference-audit-activities.md
     - name: Datenaufbewahrungsrichtlinien
@@ -111,16 +107,7 @@ items:
       href: reference-sign-ins-error-codes.md
     - name: Häufig gestellte Fragen
       href: reports-faq.md
-  - name: Überwachung
-    items:
     - name: Überwachungsprotokollschema
       href: reference-azure-monitor-audit-log-schema.md
     - name: Anmeldeprotokollschema
       href: reference-azure-monitor-sign-ins-log-schema.md
-  expanded: true
-ms.openlocfilehash: 746e3834189b9c0c478f7bbcd8b72e6760c288f6
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293769"

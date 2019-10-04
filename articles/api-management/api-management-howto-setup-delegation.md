@@ -10,16 +10,15 @@ ms.assetid: 8b7ad5ee-a873-4966-a400-7e508bbbe158
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 796bea3c64ef7fc03367707461d13e0ea2514b8b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 63ff91c6b4db351e5ec72973874466cff74432b5
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051755"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073445"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegieren von Benutzerregistrierung und Produktabonnierung
 
@@ -38,7 +37,7 @@ Der komplette Workflow sieht wie folgt aus:
 3. Der Delegierungsendpunkt wiederum leitet den Benutzer um oder zeigt eine Benutzeroberfläche für die Anmeldung oder Registrierung an.
 4. Im Erfolgsfall wird der Benutzer anschließend wieder auf die Seite im API Management-Entwicklerportal umgeleitet, von der er ursprünglich gekommen ist.
 
-Richten Sie zunächst in API Management die Weiterleitung von Anfragen über Ihren Delegierungsendpunkt ein. Klicken Sie im API Management-Herausgeberportal auf **Sicherheit** und dann auf die Registerkarte **Delegierung**. Klicken Sie auf das Kontrollkästchen zum Aktivieren von „Anmeldung und Abmeldung delegieren“.
+Richten Sie zunächst in API Management die Weiterleitung von Anfragen über Ihren Delegierungsendpunkt ein. Suchen Sie im Azure-Portal in Ihrer API Management-Ressource nach **Sicherheit**, und klicken Sie auf das Element **Delegierung**. Klicken Sie auf das Kontrollkästchen zum Aktivieren von „Anmeldung und Abmeldung delegieren“.
 
 ![Delegierungsseite][api-management-delegation-signin-up]
 
@@ -130,7 +129,7 @@ Stellen Sie anschließend sicher, dass der Delegierungsendpunkt die folgenden Ak
      > 
    * Vergleichen Sie den generierten Hash mit dem Wert des **sig**-Abfrageparameters. Fahren Sie mit dem nächsten Schritt fort, wenn die Hashes übereinstimmen. Lehnen Sie die Anfrage andernfalls ab.
 3. Verarbeiten Sie das Produktabonnement basierend auf dem im Parameter **operation** angeforderten Vorgang, z. B. Abrechnung, weitere Fragen usw.
-4. Nachdem der Benutzer das Produkt auf Ihrer Seite erfolgreich abonniert hat, abonnieren Sie das Produkt in API Management für den Benutzer, indem Sie die [REST-API für die Produktabonnierung]aufrufen.
+4. Nachdem der Benutzer das Produkt auf Ihrer Seite erfolgreich abonniert hat, abonnieren Sie das Produkt in API Management für den Benutzer, indem Sie die [Aufrufen der REST-API für Abonnements] aufrufen.
 
 ## <a name="delegate-example-code"></a> Beispielcode
 
@@ -141,7 +140,7 @@ Die Codebeispiele zeigen Folgendes:
 
 Der gleiche Code funktioniert mit geringfügigen Änderungen auch für "productId" und "userID".
 
-**C#-Code zum Generieren des Hashwerts von returnUrl**
+**C#-Code zum Generieren des Hash von "returnUrl"**
 
 ```csharp
 using System.Security.Cryptography;
@@ -158,7 +157,7 @@ using (var encoder = new HMACSHA512(Convert.FromBase64String(key)))
 }
 ```
 
-**NodeJS-Code zum Generieren des Hashwerts von returnUrl**
+**NodeJS-Code zum Generieren des Hash von "returnUrl"**
 
 ```
 var crypto = require('crypto');
@@ -184,10 +183,10 @@ Weitere Informationen zum Delegieren finden Sie im folgenden Video:
 
 [Delegating developer sign in and sign up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[Anfordern eines Tokens für einmalige Anmeldung (SSO)]: https://docs.microsoft.com/rest/api/apimanagement/User/GenerateSsoUrl
-[Erstellen eines Benutzers]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
-[Aufrufen der REST-API für die Produktabonnierung]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
+[Fordern Sie ein Token für die einmalige Anmeldung an (SSO)]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/User/GenerateSsoUrl
+[Erstellen Sie einen Benutzer]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user/createorupdate
+[Aufrufen der REST-API für Abonnements]: https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate
 [Next steps]: #next-steps
-[Beispielcode weiter unten]: #delegate-example-code
+[Beispielcode finden Sie unter]: #delegate-example-code
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 

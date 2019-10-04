@@ -2,20 +2,18 @@
 title: Behandeln von häufigen Problemen mit Suchindexern – Azure Search
 description: Beheben Sie Fehler und häufige Problemen mit Indexern in Azure Search, einschließlich Datenquellenverbindung, Firewall und fehlende Dokumente.
 author: mgottein
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 ms.author: magottei
-ms.custom: seodec2018
-ms.openlocfilehash: b527b759eb9c76ab6289e909001c5f7820f34ef4
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 4692be287e9b38cf116107d2e7c1043f23a6b34b
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652415"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69640593"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Behandeln von häufigen Problemen mit Indexern in Azure Search
 
@@ -35,20 +33,17 @@ Azure Storage stellt eine konfigurierbare Firewall bereit. Die Firewall ist stan
 
 Sie erhalten keine spezifische Fehlermeldung, wenn die Firewall aktiviert ist. Firewallfehler sehen in der Regel so aus: `The remote server returned an error: (403) Forbidden`.
 
-Sie können im [Portal](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal) überprüfen, ob die Firewall aktiviert ist. Wenn die Firewall aktiviert ist, haben Sie zwei Möglichkeiten, das Problem zu umgehen:
+Sie können im [Portal](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal) überprüfen, ob die Firewall aktiviert ist. Die einzige unterstützte Problemumgehung ist, die Firewall zu deaktivieren, indem Sie festlegen, dass [Alle Netzwerke](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal) zugreifen dürfen.
 
-1. Deaktivieren Sie die Firewall, indem Sie festlegen, dass [Alle Netzwerke](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal) zugreifen dürfen.
-1. [Fügen Sie eine Ausnahme](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) für die IP-Adresse Ihres Suchdiensts hinzu. Um diese IP-Adresse zu finden, verwenden Sie den folgenden Befehl:
+Wenn Ihrem Indexer kein Skillset angehängt ist, _können_ Sie versuchen, [eine Ausnahme](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) für die IP-Adressen Ihres Suchdiensts hinzuzufügen. Allerdings wird dieses Szenario nicht unterstützt und es ist nicht garantiert, dass es funktioniert.
 
-`nslookup <service name>.search.windows.net`
-
-Ausnahmen können nicht in der [kognitiven Suche](cognitive-search-concept-intro.md) verwendet werden. Da kann das Problem nur umgangen werden, indem die Firewall deaktiviert wird.
+Sie können die IP-Adresse Ihres Suchdiensts herausfinden, indem Sie seinen vollqualifizierten Domänennamen pingen (`<your-search-service-name>.search.windows.net`).
 
 ### <a name="cosmos-db"></a>Cosmos DB
 
 #### <a name="indexing-isnt-enabled"></a>Nicht aktivierte Indizierung
 
-Azure Search steht in impliziter Abhängigkeit zur Indizierung von Cosmos DB. Wenn Sie die automatische Indizierung in Cosmos DB deaktivieren, gibt Azure Search einen erfolgreichen Status zurück, kann jedoch keine Containerinhalte indizieren. Anweisungen zum Überprüfen der Einstellungen und zum Aktivieren der Indizierung finden Sie unter [Verwalten der Indizierung in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#manage-indexing-using-azure-portal).
+Azure Search steht in impliziter Abhängigkeit zur Indizierung von Cosmos DB. Wenn Sie die automatische Indizierung in Cosmos DB deaktivieren, gibt Azure Search einen erfolgreichen Status zurück, kann jedoch keine Containerinhalte indizieren. Anweisungen zum Überprüfen der Einstellungen und zum Aktivieren der Indizierung finden Sie unter [Verwalten der Indizierung in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
 
 ## <a name="document-processing-errors"></a>Fehler bei der Dokumentverarbeitung
 
@@ -57,7 +52,7 @@ Azure Search steht in impliziter Abhängigkeit zur Indizierung von Cosmos DB. We
 Der Blobindexer [ dokumentiert, welche Dokumentformate explizit unterstützt werden](search-howto-indexing-azure-blob-storage.md#supported-document-formats). Gelegentlich enthält ein Blobspeichercontainer nicht unterstützte Dokumente. Manchmal sind die Dokumente fehlerhaft. Sie können verhindern, dass Ihr Indexer für diese Dokumente beendet wird, indem Sie die [Konfigurationsoptionen](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) ändern:
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
 Content-Type: application/json
 api-key: [admin key]
 
@@ -75,7 +70,7 @@ Der Blobindexer [ findet und extrahiert Text aus Blobs in einem Container](searc
 * Der Blobindexer ist so konfiguriert, dass er nur Metadaten indiziert. Zum Extrahieren von Inhalten muss der Blobindexer so konfiguriert sein, dass er [sowohl Inhalte als auch Metadaten extrahiert](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed):
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
 Content-Type: application/json
 api-key: [admin key]
 

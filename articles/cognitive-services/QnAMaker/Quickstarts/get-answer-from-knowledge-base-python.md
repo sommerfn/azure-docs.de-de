@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Abrufen von Antworten aus einer Wissensdatenbank – REST, Python – QnA Maker'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: In diesem Python-REST-basierten Schnellstart wird Schritt für Schritt erläutert, wie Sie programmgesteuert eine Antwort auf eine Frage aus einer Wissensdatenbank abrufen.
 services: cognitive-services
 author: diberry
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: f74d43d90a288a145887878305a95e1052ab8c05
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f7bf73561cadab866c08ae279d18bc1bd4655983
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880014"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802972"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit Python
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Schnellstart: Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit Python
 
 In diesem Schnellstart wird Schritt für Schritt erläutert, wie Sie programmgesteuert eine Antwort auf eine Frage aus einer veröffentlichten QnA Maker-Wissensdatenbank abrufen. Die Wissensdatenbank enthält Fragen und Antworten aus [Datenquellen](../Concepts/data-sources-supported.md) (beispielsweise häufig gestellte Fragen). Die [Frage](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) wird an den QnA Maker-Dienst gesendet. Die [Antwort](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) enthält die Antwort mit der bestbewerteten Vorhersage. 
 
@@ -43,6 +43,8 @@ Der Code für diesen Schnellstart ist im Repository unter [https://github.com/Az
 Fügen Sie dem Projekt am Anfang der Datei `get-answer-3x.py` die erforderlichen Abhängigkeiten hinzu:
 
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=1-2 "Add the required dependencies")]
+
+<!--TBD - reword this following paragraph -->
 
 Der Host und die Route unterscheiden sich von der Anzeige auf der Seite **Veröffentlichen**. Dies liegt daran, dass die Python-Bibliothek kein Routing auf dem Host zulässt. Das Routing, das auf der Seite **Veröffentlichen** als Teil des Hosts angezeigt wird, wurde in die Route verschoben.
 
@@ -79,4 +81,4 @@ Informieren Sie sich ausführlicher über [Anforderung](../how-to/metadata-gener
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [REST-API-Referenz für QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [REST-API-Referenz für QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)

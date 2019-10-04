@@ -1,16 +1,9 @@
-items:
 - name: Befehlszeilenschnittstelle (CLI)
   href: index.yml
   items:
-  - name: Azure PowerShell
-    href: /powershell/azure/overview
-  - name: Azure-Befehlszeilenschnittstelle (CLI)
-    href: /cli/azure
-  - name: PowerShell-Tools für Visual Studio 2015
-    href: https://adamdriscoll.gitbooks.io/powershell-tools-documentation/content/
-ms.openlocfilehash: 28b40a6eea164eab0e6e3f611a12f29a49d8d2ac
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206040"
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: Azure-Befehlszeilenschnittstelle (CLI)
+      href: /cli/azure
+    - name: PowerShell-Tools für Visual Studio 2015
+      href: 'https://adamdriscoll.gitbooks.io/powershell-tools-documentation/content/'

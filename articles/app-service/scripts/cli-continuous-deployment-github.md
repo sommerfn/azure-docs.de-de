@@ -13,21 +13,21 @@ ms.workload: web
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 12/11/2017
+ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 43c070513f23564bd4679531e20b411f178920ac
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 02853186a1f28d8c6db6b5421c6ebba0640461cb
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629100"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "71057893"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>Erstellen einer App Service-App mit Continuous Deployment über GitHub mithilfe der CLI
 
 Dieses Beispielskript erstellt eine App in App Service mit den zugehörigen Ressourcen und richtet dann Continuous Deployment über ein GitHub-Repository ein. Informationen zur GitHub-Bereitstellung ohne Continuous Deployment finden Sie unter [Create an App Service app with deployment from GitHub using Azure CLI](cli-deploy-github.md) (Erstellen einer App Service-App mit Bereitstellung über GitHub mithilfe der Azure CLI). Für dieses Beispiel benötigen Sie Folgendes:
 
-* Ein GitHub-Repository mit Anwendungscode, für das Sie über Administratorberechtigungen verfügen.
+* Ein GitHub-Repository mit Anwendungscode, für das Sie über Administratorberechtigungen verfügen. Strukturieren Sie Ihr Repository entsprechend der Tabelle unter [Vorbereiten Ihres Repositorys](../deploy-continuous-deployment.md#prepare-your-repository), um automatische Builds zu erhalten.
 * Ein [persönliches Zugriffstoken (PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use) für Ihr GitHub-Konto.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

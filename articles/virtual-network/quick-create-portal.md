@@ -1,29 +1,30 @@
 ---
 title: 'Erstellen eines virtuellen Netzwerks: Schnellstart – Azure-Portal'
 titlesuffix: Azure Virtual Network
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal ein virtuelles Netzwerk erstellen. In einem virtuellen Netzwerk können Azure-Ressourcen wie virtuelle Computer privat miteinander und mit dem Internet kommunizieren.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal ein virtuelles Netzwerk erstellen. In einem virtuellen Netzwerk können Azure-Ressourcen wie virtuelle Computer sicher miteinander und mit dem Internet kommunizieren.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
+author: KumudD
 tags: azure-resource-manager
-Customer intent: I want to create a virtual network so that virtual machines can communicate with privately with each other and with the internet.
+Customer intent: I want to create a virtual network so that virtual machines can securely communicate with each other and with the internet.
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 11/30/2018
-ms.author: jdial
-ms.openlocfilehash: 346299dff8354bfca56a1f348c8f66e90da89632
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.date: 07/08/2019
+ms.author: kumud
+ms.openlocfilehash: bbc40ae358a6ac7f58e01de997728db21c7eb3bc
+ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020828"
+ms.lasthandoff: 07/11/2019
+ms.locfileid: "67839710"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Netzwerks im Azure-Portal
 
-In einem virtuellen Netzwerk können Azure-Ressourcen wie virtuelle Computer (VMs) privat miteinander und mit dem Internet kommunizieren. In dieser Schnellstartanleitung erfahren Sie, wie Sie ein virtuelles Netzwerk erstellen. Nach dem Erstellen eines virtuellen Netzwerks stellen Sie zwei virtuelle Computer im virtuellen Netzwerk bereit. Anschließend stellen Sie über das Internet eine Verbindung mit den VMs her und kommunizieren privat zwischen den beiden virtuellen Computern.
+Ein virtuelles Netzwerk ist der grundlegende Baustein für Ihr privates Netzwerk in Azure. Es ermöglicht Azure-Ressourcen, z. B. virtuellen Computern (Virtual Machines, VMs), die sichere Kommunikation miteinander und mit dem Internet. In dieser Schnellstartanleitung erfahren Sie, wie Sie im Azure-Portal ein virtuelles Netzwerk erstellen. Dann können Sie zwei VMs im virtuellen Netzwerk bereitstellen, eine sichere Kommunikation zwischen den beiden VMs ermöglichen und über das Internet eine Verbindung mit den VMs herstellen.
+
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie jetzt ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
@@ -41,9 +42,9 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     | ------- | ----- |
     | NAME | Geben Sie *myVirtualNetwork* ein. |
     | Adressraum | Geben Sie *10.1.0.0/16* ein. |
-    | Abonnement | Wählen Sie Ihr Abonnement aus.|
-    | Ressourcengruppe | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie **OK** aus. |
-    | Standort | Wählen Sie **USA, Osten** aus.|
+    | Subscription | Wählen Sie Ihr Abonnement aus.|
+    | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie **OK** aus. |
+    | Location | Wählen Sie **USA, Osten** aus.|
     | Subnetz – Name | Geben Sie *myVirtualSubnet* ein. |
     | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |
 
@@ -55,23 +56,23 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
 
 ### <a name="create-the-first-vm"></a>Erstellen des ersten virtuellen Computers
 
-1. Wählen Sie oben links auf dem Bildschirm die Option **Ressource erstellen** > **Compute** > **Windows Server 2016 Datacenter** aus.
+1. Wählen Sie oben links auf dem Bildschirm die Option **Ressource erstellen** > **Compute** > **Windows Server 2019 Datacenter** aus.
 
 1. Geben Sie in **Virtuellen Computer erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
     | **PROJEKTDETAILS** | |
-    | Abonnement | Wählen Sie Ihr Abonnement aus. |
-    | Ressourcengruppe | Wählen Sie **MyResourceGroup** aus. Sie haben Sie im vorherigen Abschnitt erstellt. |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
+    | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt. |
     | **INSTANZDETAILS** |  |
     | Name des virtuellen Computers | Geben Sie *myVm1* ein. |
     | Region | Wählen Sie **USA, Osten** aus. |
     | Verfügbarkeitsoptionen | Übernehmen Sie den Standardwert **Keine Infrastrukturredundanz erforderlich**. |
-    | Image | Übernehmen Sie den Standardwert **Microsoft Windows Server 2016 Datacenter**. |
-    | Größe | Übernehmen Sie den Standardwert **Standard DS1 v2**. |
+    | Image | Übernehmen Sie die Standardeinstellung **Windows Server 2019 Datacenter**. |
+    | Size | Übernehmen Sie den Standardwert **Standard DS1 v2**. |
     | **ADMINISTRATORKONTO** |  |
-    | Username | Geben Sie den gewünschten Benutzernamen ein. |
+    | Username | Geben Sie einen Benutzernamen Ihrer Wahl ein. |
     | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     | Kennwort bestätigen | Geben Sie das Kennwort erneut ein. |
     | **REGELN FÜR EINGEHENDE PORTS** |  |
@@ -88,9 +89,9 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
     | Einstellung | Wert |
     | ------- | ----- |
     | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **myVirtualNetwork**. |
-    | Subnetz | Übernehmen Sie den Standardwert **myVirtualSubnet (10.1.0.0/24)**. |
+    | Subnet | Übernehmen Sie den Standardwert **myVirtualSubnet (10.1.0.0/24)** . |
     | Öffentliche IP-Adresse | Übernehmen Sie den Standardwert **(neu) myVm-ip**. |
-    | Netzwerksicherheitsports | Wählen Sie **Ausgewählte Ports zulassen** aus. |
+    | Öffentliche Eingangsports | Wählen Sie **Ausgewählte Ports zulassen** aus. |
     | Eingangsports auswählen | Wählen Sie **HTTP** und **RDP** aus.
 
 1. Wählen Sie **Weiter: Verwaltung** aus.
@@ -101,16 +102,16 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
 
     | Einstellung | Wert |
     | ------- | ----- |
-    | NAME | Geben Sie *myvmstorageaccount* ein. |
-    | Kontoart | Übernehmen Sie den Standardwert **Storage (universell, Version 1)**. |
+    | NAME | Geben Sie *myvmstorageaccount* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen.|
+    | Kontoart | Übernehmen Sie den Standardwert **Storage (universell, Version 1)** . |
     | Leistung | Übernehmen Sie den Standardwert **Standard**. |
-    | Replikation | Übernehmen Sie den Standardwert **Lokal redundanter Speicher (LRS)**. |
+    | Replikation | Übernehmen Sie den Standardwert **Lokal redundanter Speicher (LRS)** . |
 
 1. Klicken Sie auf **OK**.
 
-1. Klicken Sie auf **Überprüfen + erstellen**. Sie gelangen auf die Seite **Bewerten + erstellen**, und Azure überprüft Ihre Konfiguration.
+1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
 
-1. Wenn **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
+1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
 
 ### <a name="create-the-second-vm"></a>Erstellen des zweiten virtuellen Computers
 
@@ -123,11 +124,11 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
 
 1. Klicken Sie auf **Überprüfen + erstellen**. Sie gelangen auf die Seite **Bewerten + erstellen**, und Azure überprüft Ihre Konfiguration.
 
-1. Wenn **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
+1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Herstellen einer Verbindung mit einem virtuellen Computer über das Internet
 
-Nachdem Sie *myVm1* erstellt haben, stellen Sie über das Internet eine Verbindung mit diesem virtuellen Computer her.
+Nachdem Sie *myVm1* erstellt haben, stellen Sie eine Verbindung mit dem Internet her.
 
 1. Geben Sie in der Suchleiste des Portals *myVm1* ein.
 
@@ -143,7 +144,7 @@ Nachdem Sie *myVm1* erstellt haben, stellen Sie über das Internet eine Verbindu
 
     1. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
 
-    1. Geben Sie den Benutzernamen und das Kennwort ein, die Sie beim Erstellen des virtuellen Computers festgelegt haben.
+    1. Geben Sie den Benutzernamen und das Kennwort ein, den/das Sie beim Erstellen des virtuellen Computers angegeben haben.
 
         > [!NOTE]
         > Unter Umständen müssen Sie **Weitere Optionen** > **Anderes Konto verwenden** auswählen, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.
@@ -160,7 +161,7 @@ Nachdem Sie *myVm1* erstellt haben, stellen Sie über das Internet eine Verbindu
 
 1. Geben Sie `ping myVm2` ein.
 
-    Es wird etwa diese Meldung angezeigt:
+    Sie erhalten eine Meldung wie die folgende:
 
     ```powershell
     Pinging myVm2.0v0zze1s0uiedpvtxz5z0r0cxg.bx.internal.clouda
@@ -181,7 +182,7 @@ Nachdem Sie *myVm1* erstellt haben, stellen Sie über das Internet eine Verbindu
     New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
     ```
 
-    Dieser Befehl ermöglicht den eingehenden ICMP-Datenverkehr durch die Windows-Firewall:
+    Dieser Befehl lässt eingehenden ICMP-Datenverkehr durch die Windows-Firewall zu:
 
 1. Schließen Sie die Remotedesktopverbindung mit *myVm1*.
 
@@ -204,17 +205,15 @@ Nachdem Sie *myVm1* erstellt haben, stellen Sie über das Internet eine Verbindu
         Minimum = 0ms, Maximum = 1ms, Average = 0ms
     ```
 
-    Sie erhalten Antworten von *myVm1*, da Sie in einem vorherigen Schritt das ICMP über die Windows-Firewall auf dem virtuellen Computer *myVm1* zugelassen haben.
+    Sie erhalten Antworten von *myVm1*, weil Sie in Schritt 3 ICMP-Datenverkehr durch die Windows-Firewall auf dem virtuellen Computer *myVm1* zugelassen haben.
 
 1. Schließen Sie die Remotedesktopverbindung mit *myVm2*.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Bearbeitung des virtuellen Netzwerks und der virtuellen Computer abgeschlossen haben, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen:
+Wenn Sie Ihre Arbeit mit dem virtuellen Netzwerk und den virtuellen Computern abgeschlossen haben, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen:
 
-1. Geben Sie im oben im Portal im Feld *Suche* die Zeichenfolge **myResourceGroup** ein.
-
-1. Wenn **myResourceGroup** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
+1. Geben Sie oben im Portal im Feld **Suchen** die Zeichenfolge *myResourceGroup* ein, und wählen Sie in den Suchergebnissen den Eintrag **myResourceGroup** aus.
 
 1. Wählen Sie die Option **Ressourcengruppe löschen**.
 
@@ -222,6 +221,6 @@ Wenn Sie die Bearbeitung des virtuellen Netzwerks und der virtuellen Computer ab
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie ein virtuelles Standardnetzwerk und zwei virtuelle Computer erstellt. Sie haben über das Internet eine Verbindung mit einem der virtuellen Computer hergestellt und privat zwischen den beiden virtuellen Computern kommuniziert. Weitere Informationen zu den Einstellungen des virtuellen Netzwerks finden Sie unter [Create, change, or delete a virtual network](manage-virtual-network.md) (Erstellen, Ändern oder Löschen eines virtuellen Netzwerks).
+In dieser Schnellstartanleitung haben Sie ein virtuelles Standardnetzwerk und zwei virtuelle Computer erstellt. Sie haben über das Internet eine Verbindung mit einem der virtuellen Computer hergestellt und sicher zwischen den beiden virtuellen Computern kommuniziert. Weitere Informationen zu den Einstellungen des virtuellen Netzwerks finden Sie unter [Create, change, or delete a virtual network](manage-virtual-network.md) (Erstellen, Ändern oder Löschen eines virtuellen Netzwerks).
 
-Standardmäßig erlaubt Azure uneingeschränkte private Kommunikation zwischen virtuellen Computern. Im Gegensatz dazu sind nur eingehende Remotedesktopverbindungen mit Windows-VMs über das Internet möglich. Weitere Informationen zum Konfigurieren der verschiedenen Typen der VM-Netzwerkkommunikation finden Sie im Tutorial [Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal](tutorial-filter-network-traffic.md).
+Azure lässt standardmäßig eine uneingeschränkte sichere Kommunikation zwischen virtuellen Computern zu. Im Gegensatz dazu sind nur eingehende Remotedesktopverbindungen mit Windows-VMs über das Internet möglich. Weitere Informationen zum Konfigurieren der verschiedenen Typen der VM-Netzwerkkommunikation finden Sie im Tutorial [Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal](tutorial-filter-network-traffic.md).

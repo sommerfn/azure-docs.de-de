@@ -3,7 +3,7 @@ title: Erstellen eines Service Fabric-Clusters mit Windows in Azure | Microsoft-
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von PowerShell einen Service Fabric-Windows-Cluster in einem virtuellen Azure-Netzwerk und einer Netzwerksicherheitsgruppe bereitstellen.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/13/2019
-ms.author: aljo
+ms.date: 07/22/2019
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: dabbefa8ca2073e30948f1c70782f730bceae030
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 12e886c107249c338dc27aefcd2e1a32eba13d3e
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050005"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68598874"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Tutorial: Bereitstellen eines Service Fabric-Clusters mit Windows in einem virtuellen Azure-Netzwerk
 
@@ -72,7 +72,7 @@ Laden Sie die folgenden Azure Resource Manager-Vorlagendateien herunter:
 * [azuredeploy.json][template]
 * [azuredeploy.parameters.json][parameters]
 
-Diese Vorlage stellt einen sicheren Cluster mit sieben virtuellen Computern und drei Knotentypen in einem virtuellen Netzwerk und einer Netzwerksicherheitsgruppe bereit.  Weitere Beispielvorlagen finden Sie auf [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). [azuredeploy.json][template] stellt verschiedene Ressourcen bereit, einschließlich der folgenden.
+Diese Vorlage stellt einen sicheren Cluster mit sieben virtuellen Computern und drei Knotentypen in einem virtuellen Netzwerk und einer Netzwerksicherheitsgruppe bereit.  Weitere Beispielvorlagen finden Sie auf [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). [azuredeploy.json][template] stellt eine Reihe von Ressourcen bereit, darunter die folgenden.
 
 ### <a name="service-fabric-cluster"></a>Service Fabric-Cluster
 
@@ -183,7 +183,7 @@ Wir haben eine Reihe von Windows PowerShell-Skripts erstellt, um Schritte der Ko
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Erstellen von Azure AD-Anwendungen und Zuweisen von Benutzern zu Rollen
 Erstellen Sie zwei Azure AD-Anwendungen, um den Zugriff auf den Cluster zu steuern: eine Webanwendung und eine native Anwendung. Nachdem Sie die Anwendungen für Ihren Cluster erstellt haben, müssen Ihre Benutzer den [von Service Fabric unterstützten Rollen](service-fabric-cluster-security-roles.md) zugewiesen werden: „read-only“ (schreibgeschützt) und „admin“ (Administrator).
 
-Führen Sie `SetupApplications.ps1` aus, und geben Sie die Mandanten-ID, den Clusternamen und die Antwort-URL der Webanwendung als Parameter an. Geben Sie Benutzernamen und Kennwörter für die Benutzer an. Beispiel: 
+Führen Sie `SetupApplications.ps1` aus, und geben Sie die Mandanten-ID, den Clusternamen und die Antwort-URL der Webanwendung als Parameter an. Geben Sie Benutzernamen und Kennwörter für die Benutzer an. Beispiel:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -218,7 +218,7 @@ Das Skript gibt den für die Resource Manager-Vorlage erforderlichen JSON-Code a
 ```
 
 ### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Hinzufügen der Azure AD-Konfiguration zum Verwenden von Azure AD für den Clientzugriff
-Konfigurieren Sie Azure AD in der Datei [azuredeploy.json][template] im Abschnitt **Microsoft.ServiceFabric/clusters**. Fügen Sie Parameter für die Mandanten-ID, die Clusteranwendungs-ID und die Clientanwendungs-ID hinzu.  
+Konfigurieren Sie Azure AD in der Datei [azuredeploy.json][template] im Abschnitt **Microsoft.ServiceFabric/clusters**. Fügen Sie Parameter für die Mandanten-ID, die Clusteranwendungs-ID und die Clientanwendungs-ID hinzu.  
 
 ```json
 {
@@ -260,7 +260,7 @@ Konfigurieren Sie Azure AD in der Datei [azuredeploy.json][template] im Abschni
 }
 ```
 
-Fügen Sie die Parameterwerte in der Parameterdatei [azuredeploy.parameters.json][parameters] hinzu. Beispiel: 
+Fügen Sie die Parameterwerte in der Parameterdatei [azuredeploy.parameters.json][parameters] hinzu. Beispiel:
 
 ```json
 "aadTenantId": {

@@ -3,19 +3,20 @@ title: Erstellen eines Unterhaltungslernmodells mithilfe von Node.js – Microso
 titleSuffix: Azure
 description: Erfahren Sie, wie Sie ein Unterhaltungslernmodell mithilfe von Node.js erstellen.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 743b4d4888738579a023e879dc7b6e95cd23ccc7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7ab32fb421a2c0db72652d1bbf12d312bffd5d1e
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994370"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68706532"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Erstellen eines Unterhaltungslernmodells mithilfe von Node.js
 

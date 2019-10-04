@@ -1,25 +1,18 @@
 ---
-title: Seller Insights – Definitionen | Microsoft-Dokumentation
+title: Seller Insights – Definitionen
 description: Enthält Definitionen für viele der in Seller Insights verwendeten Begriffe
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pbutlerm
-ms.openlocfilehash: cc90ee0506203433a61fe68d97055ea32f061f11
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.author: pabutler
+ms.openlocfilehash: 8b3447b8094eb95bd2f61baed7371bf718fdf730
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240642"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65606899"
 ---
 <a name="seller-insights-definitions"></a>Seller Insights – Definitionen
 =======================
@@ -44,7 +37,7 @@ Die folgende Tabelle enthält Definitionen für viele der in Seller Insights ver
 | **Kundenort**  | Der Name des vom Kunden angegebenen Orts. Dieser kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden.  |
 | **Kommunikationssprache des Kunden**        | Die vom Kunden für die Kommunikation bevorzugte Sprache.                                  |
 | **Firmenname des Kunden**                  | Der vom Kunden angegebene Firmenname. Dieser kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden.                                  |
-| **Land des Kunden**                       | Der vom Kunden angegebene Ländername.  Dieser kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land unterscheiden.                               |
+| **Land des Kunden**                       | Der vom Kunden angegebene Name für das Land bzw. die Region.  Dieser kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land bzw. der angegebenen Region unterscheiden.                               |
 | **Währung des Kunden (CC)**                 | Die vom Kunden für Preise und Abrechnungen bevorzugte Währung.                            |
 | **E-Mail-Adresse des Kunden**                         | Die vom Endkunden angegebene E-Mail-Adresse.  Diese kann sich von der im Azure-Abonnement eines Kunden angegebenen E-Mail-Adresse unterscheiden.                   |
 | **Vorname des Kunden**                              | Der vom Kunden angegebene Vorname.  Dieser kann sich von dem im Azure-Abonnement eines Kunden angegebenen Namen unterscheiden.                    |
@@ -104,7 +97,7 @@ Die folgende Tabelle enthält Definitionen für viele der in Seller Insights ver
 | **Nutzungsdatum**                                       | Das Datum, an dem die Nutzung durch den Kunden erfolgt ist.                                                                                                             |
 | **Verwendungsmenge**                                       | Die protokollierte Nutzung der SKU durch den Kunden. Bei VM-Images stellen Nutzungseinträge die Nutzung für den protokollierten Zeitraum für die jeweilige VM-Größe und SKU dar.                                               |
 | **Nutzungsreferenz**                                       | Der Bezeichner für einen oder mehrere Tage der Nutzung einer bestimmten SKU durch den Kunden, der einem Eintrag im Auszahlungsbericht zugeordnet ist.                                               |
-| **Nutzungstyp**                                       | Eine Beschreibung der gemessenen Nutzung. (Normalisierter Verbrauch oder Rohnutzung)                                                              |
+| **Verwendungstyp**                                       | Eine Beschreibung der gemessenen Nutzung. (Normalisierter Verbrauch oder Rohnutzung)                                                              |
 | **Nutzungstyp: Normalisierter Verbrauch**                | Die normalisierte Nutzungsdauer in Stunden zur Berücksichtigung bei der Anzahl der verwendeten VM-Kerne: [Anzahl der VM-Kerne] · [Stunden der Rohnutzung]. Für als „SHAREDCORE“ festgelegte virtuelle Computer wird der Multiplikator 1/6 (oder 0,1666) für [Anzahl der VM-Kerne] verwendet.                                        |
 | **Nutzungstyp: Rohnutzung**                        | Die Nutzungsdauer in Stunden für Ihr Marketplace-Angebot.  Sie wird in Form von „Kalenderstunden“ dargestellt.  Es handelt sich um die Zeitspanne, in der die virtuellen Computer ausgeführt wurden.                           |
 | **Verbrauchseinheiten**                                   | Die Maßeinheit für die angegebene Nutzung. Virtuelle Computer werden immer in stündlichen Maßeinheiten gemessen.                               |

@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 42627649145b568b2b25411d182e5a36cdb025b0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: d78d8a689b860162a742e85c155205f072a3667c
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881187"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67446791"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Verbessern der Verfügbarkeit Ihrer Anwendung mit Azure Advisor
 
@@ -65,6 +65,37 @@ Aktivieren Sie [vorläufiges Löschen](https://docs.microsoft.com/azure/storage/
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurieren des VPN-Gateway zu aktiv-aktiv für Verbindungsresilienz
 
 In der Aktiv-Aktiv-Konfiguration richten beide Instanzen eines VPN-Gateways S2S-VPN-Tunnel zu Ihrem lokalen VPN-Gerät ein. Wenn ein geplantes Wartungsereignis oder ein ungeplantes Ereignis mit einer Gateway-Instanz eintritt, wird der Datenverkehr automatisch auf den anderen aktiven IPsec-Tunnel umgeschaltet. Azure Advisor identifiziert VPN-Gateways, die nicht als aktiv-aktiv konfiguriert sind, und schlägt vor, dass Sie sie für Hochverfügbarkeit konfigurieren.
+
+## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Verwenden Sie zum Ausführen Ihrer Produktionsworkloads Produktions-VPN-Gateways.
+
+Azure Advisor überprüft alle VPN-Gateways, die eine Basic-SKU sind, und empfiehlt, stattdessen eine Produktions-SKU zu verwenden. Die Basic-SKU kann zu Entwicklungs- und Testzwecken eingesetzt werden. Produktions-SKUs bieten eine höhere Anzahl von Tunneln, BGP-Unterstützung, Aktiv-Aktiv-Konfigurationsoptionen, kundenspezifische Ipsec-/IKE-Richtlinien sowie höhere Stabilität und Verfügbarkeit.
+
+## <a name="repair-invalid-log-alert-rules"></a>Reparieren ungültiger Protokollwarnungsregeln
+
+Azure Advisor erkennt Warnungsregeln mit ungültigen Abfragen im Bedingungsabschnitt. Protokollwarnungsregeln werden in Azure Monitor erstellt und verwendet, um in regelmäßigen Abständen Analytics-Abfragen durchzuführen. Anhand der Ergebnisse der Abfrage wird ermittelt, ob eine Warnung ausgelöst werden muss. Es kann vorkommen, dass Analytics-Abfragen aufgrund von Änderungen an referenzierten Ressourcen, Tabellen oder Befehlen im Laufe der Zeit ungültig werden. Von Advisor wird empfohlen, die Abfrage in der Warnungsregel zu korrigieren, um eine automatische Deaktivierung zu verhindern und die Überwachung Ihrer Ressourcen in Azure sicherzustellen. Weitere Informationen zur Behandlung von Problemen mit Warnungsregeln finden Sie [hier](https://aka.ms/aa_logalerts_queryrepair).
+
+## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>Konfigurieren eines konsistenten Indizierungsmodus für Ihre Cosmos DB-Sammlung
+
+Azure Cosmos DB-Container, die mit dem Indizierungsmodus „Verzögert“ konfiguriert sind, beeinträchtigen unter Umständen die Aktualität der Abfrageergebnisse. Advisor erkennt Container mit dieser Konfiguration und empfiehlt, den Modus in „Konsistent“ zu ändern. Weitere Informationen zu Indizierungsrichtlinien in Cosmos DB finden Sie [hier](https://aka.ms/cosmosdb/how-to-manage-indexing-policy).
+
+## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>Konfigurieren Ihres Azure Cosmos DB-Containers mit einem Partitionsschlüssel
+
+Azure Advisor erkennt nicht partitionierte Azure Cosmos DB-Sammlungen, deren bereitgestelltes Speicherkontingent nahezu erschöpft ist. Es wird empfohlen, diese Sammlungen zu neuen Sammlungen mit einer Partitionsschlüsseldefinition zu migrieren, um die automatische Erweiterung durch den Dienst zu ermöglichen. Weitere Informationen zur Wahl eines Partitionsschlüssels finden Sie [hier](https://aka.ms/cosmosdb/choose-partitionkey).
+
+## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>Upgraden Ihres Azure Cosmos DB .NET SDK auf die aktuelle Version über NuGet
+
+Azure Advisor erkennt Azure Cosmos DB-Konten mit alten Versionen des .NET SDK und empfiehlt, über NuGet ein Upgrade auf die aktuelle Version auszuführen, um die neuesten Korrekturen, Leistungsverbesserungen und Features zu erhalten. Weitere Informationen zum Cosmos DB .NET SDK finden Sie [hier](https://aka.ms/cosmosdb/sql-api-sdk-dotnet).
+
+## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Upgraden Ihres Azure Cosmos DB Java SDK auf die aktuelle Version über Maven
+
+Azure Advisor erkennt Azure Cosmos DB-Konten mit alten Versionen des Java SDK und empfiehlt, über Maven ein Upgrade auf die aktuelle Version auszuführen, um die neuesten Korrekturen, Leistungsverbesserungen und Features zu erhalten. Weitere Informationen zum Cosmos DB Java SDK finden Sie [hier](https://aka.ms/cosmosdb/sql-api-sdk-dotnet).
+
+## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Upgraden Ihres Azure Cosmos DB-Spark-Connectors auf die aktuelle Version über Maven
+
+Azure Advisor erkennt Azure Cosmos DB-Konten mit alten Versionen des Cosmos DB-Spark-Connectors und empfiehlt, über Maven ein Upgrade auf die aktuelle Version auszuführen, um die neuesten Korrekturen, Leistungsverbesserungen und Features zu erhalten. Weitere Informationen zum Cosmos DB-Spark-Connector finden Sie [hier](https://aka.ms/cosmosdb/spark-connector).
+
+## <a name="enable-virtual-machine-replication"></a>Aktivieren der Replikation der virtuellen Computer
+Virtuelle Computer, für die die Replikation in eine andere Region nicht aktiviert ist, sind gegenüber regionalen Ausfällen nicht resilient. Durch eine Replikation der VMs werden negative Auswirkungen auf das Geschäft während des Ausfalls einer Azure-Region reduziert. Advisor erkennt VMs, für die die Replikation nicht aktiviert ist, und empfiehlt die Aktivierung der Replikation, sodass Sie im Falle eines Ausfalls Ihre VMs schnell in einer entfernten Azure-Region aufrufen können. [Einrichten der Notfallwiederherstellung in einer sekundären Azure-Region für einen virtuellen Azure-Computer](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zu Hochverfügbarkeit
 

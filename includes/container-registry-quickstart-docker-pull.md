@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: container-registry
 author: dlepow
 ms.service: container-registry
@@ -9,11 +9,11 @@ ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: cd97c61e7493249785293ae331713ba1a98efee3
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985430"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "67178646"
 ---
 ## <a name="run-image-from-registry"></a>Ausführen des Images aus der Registrierung
 

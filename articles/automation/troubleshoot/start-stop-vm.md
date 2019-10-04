@@ -4,17 +4,17 @@ description: Dieser Artikel bietet Informationen zur Problembehandlung beim Star
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 03bad12b7fcba5a247e05884aa0eb0493163a5c4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fe4317c193e8aa6c6723556ef36d6111df6f51cd
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785957"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240842"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problembehandlung beim Starten/Beenden von VMs außerhalb der Geschäftszeiten
 
@@ -44,6 +44,14 @@ The subscription is not registered to use namespace 'Microsoft.Insights'.
 The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView' cannot perform write operation because following scope(s) are locked: '/subscriptions/000000000000-0000-0000-0000-00000000/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView'. Please remove the lock and try again
 ```
 
+```error
+A parameter cannot be found that matches parameter name 'TagName'
+```
+
+```error
+Start-AzureRmVm : Run Login-AzureRmAccount to login
+```
+
 ### <a name="cause"></a>Ursache
 
 Fehler bei Bereitstellungen können aus einem der folgenden Gründe auftreten:
@@ -52,6 +60,7 @@ Fehler bei Bereitstellungen können aus einem der folgenden Gründe auftreten:
 2. Es ist eine Richtlinie vorhanden, die die Bereitstellung der Lösung zum Starten/Beenden von VMs nicht zulässt.
 3. Die `Microsoft.OperationsManagement`-, `Microsoft.Insights`- oder `Microsoft.Automation`-Ressourcentypen sind nicht registriert.
 4. Ihr Log Analytics-Arbeitsbereich ist mit einer Sperre versehen.
+5. Sie verfügen über eine veraltete Version der AzureRM-Module oder der Lösung zum Starten/Beenden.
 
 ### <a name="resolution"></a>Lösung
 
@@ -66,6 +75,7 @@ Fehler bei Bereitstellungen können aus einem der folgenden Gründe auftreten:
 
    Weitere Informationen zu Fehlern beim Registrieren von Anbietern finden Sie unter [Beheben von Fehlern bei der Ressourcenanbieterregistrierung](../../azure-resource-manager/resource-manager-register-provider-errors.md).
 4. Wenn eine Sperre für Ihren Log Analytics-Arbeitsbereich vorhanden ist, navigieren Sie im Azure-Portal zu Ihrem Arbeitsbereich, und entfernen Sie alle Sperren für die Ressource.
+5. Wenn die oben genannten Lösungen Ihr Problem nicht beheben, befolgen Sie die Anleitungen unter [Aktualisieren der Lösung](../automation-solution-vm-management.md#update-the-solution), um die Lösung zum Starten/Beenden erneut bereitzustellen.
 
 ## <a name="all-vms-fail-to-startstop"></a>Szenario: Alle virtuellen Computer können nicht gestartet/beendet werden
 
@@ -179,7 +189,7 @@ Stellen Sie mit den folgenden Schritten sicher, dass die Lösung ordnungsgemäß
 
 Ausführliche und zusätzliche Anleitungen zum Verwenden der Lösung zum Starten und Beenden von VMs in einer Sequenz finden Sie unter [Szenario 2: Starten/Beenden von VMs der Reihe nach mithilfe von Tags](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags).
 
-## <a name="403"></a>Szenario: Beim Starten/Beenden des VM-Auftrags tritt ein Fehler mit dem „403 Verboten“-Status auf 
+## <a name="403"></a>Szenario: Beim Starten/Beenden des VM-Auftrags tritt ein Fehler mit dem „403 Verboten“-Status auf
 
 ### <a name="issue"></a>Problem
 
@@ -208,6 +218,9 @@ Ihr Problem oder unerwartetes Ergebnis bei Verwendung der Lösung zum Starten/Be
 ### <a name="cause"></a>Ursache
 
 Oft können Fehler durch Verwendung einer alten und veralteten Version der Lösung verursacht werden.
+
+> [!NOTE]
+> Die Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ wurde mit den Azure-Modulen getestet, die bei der Bereitstellung der Lösung in Ihr Azure Automation-Konto importiert werden. Die Lösung funktioniert derzeit nicht mit neueren Versionen des Azure-Moduls. Dies betrifft nur das Azure Automation-Konto, mit dem Sie die Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ ausführen. Sie können in Ihren anderen Azure Automation-Konten weiterhin neuere Versionen des Azure-Moduls verwenden, wie in [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) beschrieben.
 
 ### <a name="resolution"></a>Lösung
 

@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6d92273298c0448d7377acab6f3b8ea1cc1ed908
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 340974201d62f97669db442f4a95439a6ac90a5e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762921"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960624"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Virtuelle Netzwerkarchitektur mit Azure HDInsight
 
@@ -22,10 +22,10 @@ In diesem Artikel werden die Ressourcen erläutert, die beim Bereitstellen eines
 
 In Azure HDInsight-Clustern gibt es unterschiedliche Typen virtueller Computer bzw. Knoten. Jeder Knotentyp spielt eine Rolle beim Betrieb des Systems. In der folgenden Tabelle sind diese Knotentypen und ihre Rollen im Cluster zusammengefasst.
 
-| Type | BESCHREIBUNG |
+| type | BESCHREIBUNG |
 | --- | --- |
 | Hauptknoten |  Bei allen Clustertypen, mit Ausnahme von Apache Storm, hosten die Hauptknoten die Prozesse, welche die Ausführung der verteilten Anwendung verwalten. Der Hauptknoten ist auch der Knoten, zu dem Sie eine SSH-Verbindung herstellen und mit dem Sie Anwendungen ausführen können, die dann für die Ausführung mit den Clusterressourcen koordiniert werden. Die Anzahl der Hauptknoten ist bei allen Clustertypen auf zwei (2) festgelegt. |
-| ZooKeeper-Knoten | Zookeeper koordiniert Aufgaben zwischen den Knoten, welche die Datenverarbeitung ausführen. Er nimmt auch die Auswahl des führenden Hauptknotens vor, und verfolgt, welcher Hauptknoten einen bestimmten Master-Dienst ausführt. Die Anzahl der ZooKeeper-Knoten ist auf zwei (2) festgelegt. |
+| ZooKeeper-Knoten | Zookeeper koordiniert Aufgaben zwischen den Knoten, welche die Datenverarbeitung ausführen. Er nimmt auch die Auswahl des führenden Hauptknotens vor, und verfolgt, welcher Hauptknoten einen bestimmten Master-Dienst ausführt. Die Anzahl der ZooKeeper-Knoten ist auf drei festgelegt. |
 | Workerknoten | Dies sind die Knoten, welche die Datenverarbeitungsfunktionen unterstützen. Workerknoten können dem Cluster hinzugefügt oder aus dem Cluster entfernt werden, um die Computingleistung zu skalieren und die Kosten zu verwalten. |
 | R Server-Edgeknoten | Der R Server-Edgeknoten ist der Knoten, zu dem Sie eine SSH-Verbindung herstellen und mit dem Sie Anwendungen ausführen können, die dann für die Ausführung mit den Clusterressourcen koordiniert werden. Ein Edgeknoten ist nicht an der Datenanalyse innerhalb des Clusters beteiligt. Dieser Knoten hostet außerdem den R Studio-Server, sodass Sie zum Ausführen von R-Anwendungen einen Browser verwenden können. |
 | Regionsknoten | Beim HBase-Clustertyp führt der Regionsknoten (auch als Datenknoten bezeichnet) den Regionsserver aus. Regionsserver stellen einen Teil der von HBase verwalteten Daten bereit und verwalten diese. Regionsknoten können dem Cluster hinzugefügt oder aus dem Cluster entfernt werden, um die Computingleistung zu skalieren und die Kosten zu verwalten.|
@@ -36,7 +36,7 @@ In Azure HDInsight-Clustern gibt es unterschiedliche Typen virtueller Computer b
 
 Das folgende Diagramm zeigt die Platzierung von HDInsight-Knoten und Netzwerkressourcen in Azure.
 
-![Diagramm der HDInsight-Entitäten, erstellt in einem benutzerdefinierten virtuellen Azure-Netzwerk](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
+![Diagramm der HDInsight-Entitäten, erstellt in einem benutzerdefinierten virtuellen Azure-Netzwerk](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
 Zu den Standardressourcen, die beim Bereitstellen von HDInsight in einem virtuellen Azure-Netzwerk vorhanden sind, zählen die in der obigen Tabelle aufgeführten Clusterknotentypen sowie Netzwerkgeräte, welche die Kommunikation zwischen dem virtuellen Netzwerk und externen Netzwerken unterstützen.
 

@@ -5,21 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 06/25/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d61f233b2eb901bcf1e6b5b4ff147893f918e8f
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 735c3db14963c1f3cfe700a97dee9fedb70e29f5
+ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293310"
+ms.lasthandoff: 06/28/2019
+ms.locfileid: "67441122"
 ---
-# <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer
+# <a name="add-google-as-an-identity-provider-for-b2b-guest-users-preview"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer (Vorschau)
+
+|     |
+| --- |
+| Der Google-Verbund ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+|     |
 
 Durch die Einrichtung eines Verbunds mit Google können Sie eingeladenen Benutzern ermöglichen, sich bei Ihren freigegebenen Apps und Ressourcen mit ihren eigenen Google-Konten anzumelden, ohne dass sie Microsoft Accounts- (MSAs) oder Azure AD-Konten erstellen müssen.  
 > [!NOTE]
@@ -101,7 +106,7 @@ Sie können Ihre Google-Verbundeinrichtung löschen. Wenn Sie dies tun, können 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Wählen Sie im linken Bereich **Azure Active Directory** aus. 
 2. Wählen Sie **Organisationsbeziehungen** aus.
 3. Wählen Sie **Identitätsanbieter** aus.
-4. Wählen Sie in der Zeile **Google** das Kontextmenü (**...**) aus, und wählen Sie dann **Löschen** aus. 
+4. Wählen Sie in der Zeile **Google** das Kontextmenü ( **...** ) aus, und wählen Sie dann **Löschen** aus. 
    
    ![Screenshot der Option „Löschen“ für den Identitätsanbieter für soziale Netzwerke](media/google-federation/google-social-identity-providers.png)
 

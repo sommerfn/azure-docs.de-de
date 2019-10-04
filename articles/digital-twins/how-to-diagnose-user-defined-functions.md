@@ -1,45 +1,43 @@
 ---
 title: 'Gewusst wie: Debuggen von UDFs in Azure Digital Twins | Microsoft-Dokumentation'
 description: Richtlinie zum Debuggen von UDFs in Azure Digital Twins.
-author: stefanmsft
-manager: deshner
+author: kingdomofends
+manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/27/2018
-ms.author: stefanmsft
+ms.date: 08/12/2019
+ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 6122cd4507ed0883d1b78ca519269c25098e55ff
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961413"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260854"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Debuggen von benutzerdefinierten Funktionen in Azure Digital Twins
 
-Dieser Artikel beschreibt, wie Sie benutzerdefinierte Funktionen diagnostizieren und debuggen. Danach werden einige der häufigsten Szenarien vorgestellt, die beim Debuggen dieser Funktionen anzutreffen sind.
+In diesem Artikel erfahren Sie, wie Sie benutzerdefinierte Funktionen in Azure Digital Twins diagnostizieren und debuggen. Danach werden einige der häufigsten Szenarien vorgestellt, die beim Debuggen dieser Funktionen anzutreffen sind.
 
 >[!TIP]
 > Lesen Sie [Vorgehensweise: Konfigurieren von Überwachung und Protokollierung](./how-to-configure-monitoring.md), um Informationen zum Einrichten der Debuggingtools in Azure Digital Twins mithilfe von Aktivitätsprotokollen, Diagnoseprotokollen und Azure Monitor zu erhalten.
 
 ## <a name="debug-issues"></a>Debuggen von Problemen
 
-Wenn Sie wissen, wie Probleme in Ihrer Azure Digital Twins-Instanz diagnostiziert werden, können Sie auf effiziente Weise das Problem und seine Ursache ermitteln und eine Lösung finden.
+Wenn Sie wissen, wie Sie Probleme mit Azure Digital Twins diagnostizieren, können Sie effektiv Probleme analysieren, Problemursachen ermitteln und geeignete Maßnahmen ergreifen.
 
-### <a name="enable-log-analytics-for-your-instance"></a>Aktivieren der Protokollanalyse für Ihre Instanz
+Hierzu stehen verschiedene Protokollierungs-, Analyse- und Diagnosetools zur Verfügung.
 
-Protokolle und Metriken für Ihre Azure Digital Twins-Instanz werden in Azure Monitor angezeigt. Bei dieser Dokumentation wird davon ausgegangen, dass Sie einen [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md)-Arbeitsbereich über das [Azure-Portal](../azure-monitor/learn/quick-create-workspace.md), die [Azure-Befehlszeilenschnittstelle](../azure-monitor/learn/quick-create-workspace-cli.md) oder [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) erstellt haben.
+### <a name="enable-logging-for-your-instance"></a>Aktivieren der Protokollierung für Ihre Instanz
 
-> [!NOTE]
-> Wenn Sie zum ersten Mal Ereignisse an Azure Monitor-Protokolle senden, tritt unter Umständen eine Verzögerung von 5 Minuten auf.
+Azure Digital Twins bietet eine zuverlässige Protokollierung, Überwachung und Analyse. Lösungsentwickler können Azure Monitor-Protokolle, Diagnoseprotokolle, Aktivitätsprotokolle und andere Dienste nutzen, um den komplexen Überwachungsanforderungen einer IoT-App gerecht zu werden. Protokollierungsoptionen können kombiniert werden, um Datensätze aus mehreren Diensten abzufragen oder anzuzeigen und eine maßgeschneiderte Protokollierung für eine Vielzahl von Diensten zur Verfügung zu stellen.
 
-Informationen zum Konfigurieren von Überwachung und Protokollierung für Azure Digital Twins-Ressourcen finden Sie unter [Vorgehensweise: Konfigurieren von Überwachung und Protokollierung](./how-to-configure-monitoring.md).
+* Informationen zur spezifischen Protokollierungskonfiguration für Azure Digital Twins finden Sie unter [Gewusst wie: Konfigurieren der Überwachung in Azure Digital Twins](./how-to-configure-monitoring.md).
+* In der [Übersicht über Azure Monitor](../azure-monitor/overview.md) finden Sie Informationen zu praktischen Protokolleinsteinstellungen, die durch Azure Monitor ermöglicht werden.
+* Im Artikel [Übersicht über Azure-Diagnoseprotokolle](../azure-monitor/platform/resource-logs-overview.md) erfahren Sie, wie Sie Diagnoseprotokolleinstellungen in Azure Digital Twins über das Azure-Portal, mithilfe der Azure-Befehlszeilenschnittstelle oder per PowerShell konfigurieren.
 
-Informationen zum Konfigurieren von Diagnoseprotokolleinstellungen in Azure Digital Twins über das Portal, die Azure-Befehlszeilenschnittstelle oder PowerShell finden Sie im Artikel [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/diagnostic-logs-overview.md).
-
->[!IMPORTANT]
-> Wählen Sie alle Protokollkategorien, Metriken und Ihren Azure Log Analytics-Arbeitsbereich aus.
+Nach Abschluss der Konfiguration können Sie alle Protokollkategorien sowie Metriken auswählen und beim Debuggen auf leistungsstarke Azure Monitor-Arbeitsbereiche für die Protokollanalyse zurückgreifen.
 
 ### <a name="trace-sensor-telemetry"></a>Nachverfolgen von Sensortelemetriedaten
 
@@ -47,7 +45,7 @@ Vergewissern Sie sich beim Verfolgen von Sensortelemetriedaten, dass die Diagnos
 
 Um eine Sensortelemetriemeldung den entsprechenden Protokollen zuzuordnen, können Sie eine Korrelations-ID für die Ereignisdaten angeben, die gesendet werden. Legen Sie dazu die `x-ms-client-request-id`-Eigenschaft auf eine GUID fest.
 
-Öffnen Sie nach dem Senden von Telemetriedaten die Protokollanalyse, um Protokolle mithilfe der Korrelations-ID abzufragen:
+Öffnen Sie nach dem Senden von Telemetriedaten Azure Monitor Log Analytics, um Protokolle mithilfe der Korrelations-ID abzufragen:
 
 ```Kusto
 AzureDiagnostics
@@ -209,4 +207,6 @@ Wenn Sie Diagnoseeinstellungen aktivieren, können die folgenden allgemeinen Aus
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie [die Überwachung und Protokolle in Azure Digital Twins aktiviert werden](../azure-monitor/platform/activity-logs-overview.md).
+- Erfahren Sie, wie [die Überwachung und Protokolle in Azure Digital Twins aktiviert werden](./how-to-configure-monitoring.md).
+
+- Informieren Sie sich im Artikel [Übersicht über das Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md) über weitere Azure-Protokollierungsoptionen.

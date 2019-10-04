@@ -1,89 +1,82 @@
-items:
 - name: Dokumentation zu Power BI Embedded
   href: index.md
 - name: Übersicht
   items:
-  - name: Was ist Power BI Embedded?
-    href: https://docs.microsoft.com/power-bi/developer/azure-pbie-what-is-power-bi-embedded
+    - name: Was ist Power BI Embedded?
+      href: 'https://docs.microsoft.com/power-bi/developer/azure-pbie-what-is-power-bi-embedded'
 - name: Lernprogramme
   items:
-  - name: Einbetten von Inhalt für Kundenbeispiel
-    href: https://docs.microsoft.com/power-bi/developer/embed-sample-for-customers
+    - name: Einbetten von Inhalt für Kundenbeispiel
+      href: 'https://docs.microsoft.com/power-bi/developer/embed-sample-for-customers'
 - name: Konzepte
   items:
-  - name: Sicherheit auf Zeilenebene
-    href: https://docs.microsoft.com/power-bi/developer/embedded-row-level-security
-  - name: Häufig gestellte Fragen
-    href: https://docs.microsoft.com/power-bi/developer/embedded-faq
-  - name: Power BI-Berechtigungen
-    href: https://docs.microsoft.com/power-bi/developer/power-bi-permissions
+    - name: Sicherheit auf Zeilenebene
+      href: 'https://docs.microsoft.com/power-bi/developer/embedded-row-level-security'
+    - name: Häufig gestellte Fragen
+      href: 'https://docs.microsoft.com/power-bi/developer/embedded-faq'
+    - name: Power BI-Berechtigungen
+      href: 'https://docs.microsoft.com/power-bi/developer/power-bi-permissions'
 - name: Anleitung
   items:
-  - name: Registrieren einer Anwendung
-    href: https://docs.microsoft.com/power-bi/developer/register-app
-  - name: Authentifizieren beim Power BI-Dienst
-    href: https://docs.microsoft.com/power-bi/developer/get-azuread-access-token
-  - name: Einbetten von Q&A
-    href: https://docs.microsoft.com/power-bi/developer/qanda
-  - name: Problembehandlung für Ihre eingebettete Anwendung
-    href: https://docs.microsoft.com/power-bi/developer/embedded-troubleshoot
-  - name: Verwalten von Kapazitäten in Azure
-    items:
-    - name: Erstellen einer Kapazität in Azure
-      href: https://docs.microsoft.com/power-bi/developer/azure-pbie-create-capacity
-    - name: Skalieren einer Kapazität in Azure
-      href: https://docs.microsoft.com/power-bi/developer/azure-pbie-scale-capacity
-    - name: Anhalten und Starten einer Kapazität in Azure
-      href: https://docs.microsoft.com/power-bi/developer/azure-pbie-pause-start
-  - name: Migrieren von Arbeitsbereichssammlungen
-    items:
-    - name: Migrieren von Power BI-Arbeitsbereichssammlungen
-      href: https://docs.microsoft.com/power-bi/developer/migrate-from-powerbi-embedded
-    - name: Migrationstool
-      href: https://docs.microsoft.com/power-bi/developer/migrate-tool
-    - name: Migrationscodeausschnitte
-      href: https://docs.microsoft.com/power-bi/developer/migrate-code-snippetsd
+    - name: Registrieren einer Anwendung
+      href: 'https://docs.microsoft.com/power-bi/developer/register-app'
+    - name: Authentifizieren beim Power BI-Dienst
+      href: 'https://docs.microsoft.com/power-bi/developer/get-azuread-access-token'
+    - name: Einbetten von Q&A
+      href: 'https://docs.microsoft.com/power-bi/developer/qanda'
+    - name: Problembehandlung für Ihre eingebettete Anwendung
+      href: 'https://docs.microsoft.com/power-bi/developer/embedded-troubleshoot'
+    - name: Verwalten von Kapazitäten in Azure
+      items:
+        - name: Erstellen einer Kapazität in Azure
+          href: 'https://docs.microsoft.com/power-bi/developer/azure-pbie-create-capacity'
+        - name: Skalieren einer Kapazität in Azure
+          href: 'https://docs.microsoft.com/power-bi/developer/azure-pbie-scale-capacity'
+        - name: Anhalten und Starten einer Kapazität in Azure
+          href: 'https://docs.microsoft.com/power-bi/developer/azure-pbie-pause-start'
+    - name: Migrieren von Arbeitsbereichssammlungen
+      items:
+        - name: Migrieren von Power BI-Arbeitsbereichssammlungen
+          href: 'https://docs.microsoft.com/power-bi/developer/migrate-from-powerbi-embedded'
+        - name: Migrationstool
+          href: 'https://docs.microsoft.com/power-bi/developer/migrate-tool'
+        - name: Migrationscodeausschnitte
+          href: 'https://docs.microsoft.com/power-bi/developer/migrate-code-snippetsd'
 - name: Verweis
   items:
-  - name: APIs
-    items:
-    - name: REST-APIs für Azure-Ressourcenverwaltung
-      href: https://docs.microsoft.com/rest/api/power-bi-embedded/
-    - name: Power BI-REST-APIs
-      href: https://msdn.microsoft.com/library/mt147898.aspx
+    - name: APIs
+      items:
+        - name: REST-APIs für Azure-Ressourcenverwaltung
+          href: 'https://docs.microsoft.com/rest/api/power-bi-embedded/'
+        - name: Power BI-REST-APIs
+          href: 'https://msdn.microsoft.com/library/mt147898.aspx'
 - name: Ressourcen
   items:
-  - name: Dev Center
-    href: https://powerbi.microsoft.com/developers/
-  - name: Onboardingtool für die Einbettung
-    href: https://aka.ms/embedsetup
-  - name: Codebeispiele
-    href: https://github.com/Microsoft/PowerBI-Developer-Samples
-  - name: .NET SDK-Download
-    href: https://www.nuget.org/packages/Microsoft.PowerBI.Api/
-  - name: JavaScript SDK-Download
-    href: https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/
-  - name: .NET für Power BI
-    href: https://github.com/Microsoft/PowerBI-CSharp
-  - name: JavaScript für Power BI
-    href: https://github.com/Microsoft/PowerBI-JavaScript
-  - name: JavaScript-Playground-Beispiel
-    href: https://go.microsoft.com/fwlink/?linkid=848279
-  - name: Wiki für Power BI JavaScript
-    href: https://github.com/Microsoft/powerbi-javascript/wiki
-  - name: JavaScript-Git-Repository
-    href: https://go.microsoft.com/fwlink/?linkid=848276
-  - name: Git-Repository für Power BI (C#)
-    href: https://go.microsoft.com/fwlink/?linkid=848273
-  - name: Preisrechner
-    href: https://azure.microsoft.com/pricing/calculator/#power-bi-embedded88e5eed8-6a98-4891-a739-15b602b4fb34
-  - name: Power BI-Community
-    href: https://community.powerbi.com/t5/Developer/bd-p/Developer
-  - name: Stack Overflow
-    href: https://go.microsoft.com/fwlink/?linkid=848281
-ms.openlocfilehash: 40d190de6a417a72488619f4d55c825466bc026f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876832"
+    - name: Dev Center
+      href: 'https://powerbi.microsoft.com/developers/'
+    - name: Onboardingtool für die Einbettung
+      href: 'https://aka.ms/embedsetup'
+    - name: Codebeispiele
+      href: 'https://github.com/Microsoft/PowerBI-Developer-Samples'
+    - name: .NET SDK-Download
+      href: 'https://www.nuget.org/packages/Microsoft.PowerBI.Api/'
+    - name: JavaScript SDK-Download
+      href: 'https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/'
+    - name: .NET für Power BI
+      href: 'https://github.com/Microsoft/PowerBI-CSharp'
+    - name: JavaScript für Power BI
+      href: 'https://github.com/Microsoft/PowerBI-JavaScript'
+    - name: JavaScript-Playground-Beispiel
+      href: 'https://go.microsoft.com/fwlink/?linkid=848279'
+    - name: Wiki für Power BI JavaScript
+      href: 'https://github.com/Microsoft/powerbi-javascript/wiki'
+    - name: JavaScript-Git-Repository
+      href: 'https://go.microsoft.com/fwlink/?linkid=848276'
+    - name: 'Git-Repository für Power BI (C#)'
+      href: 'https://go.microsoft.com/fwlink/?linkid=848273'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/#power-bi-embedded88e5eed8-6a98-4891-a739-15b602b4fb34'
+    - name: Power BI-Community
+      href: 'https://community.powerbi.com/t5/Developer/bd-p/Developer'
+    - name: Stack Overflow
+      href: 'https://go.microsoft.com/fwlink/?linkid=848281'

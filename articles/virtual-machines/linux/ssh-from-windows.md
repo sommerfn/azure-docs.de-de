@@ -4,23 +4,22 @@ description: Erfahren Sie, wie Sie SSH-Schlüssel auf einem Windows-Computer ers
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2cacda3b-7949-4036-bd5d-837e8b09a9c8
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ac62a99f5735647f67917d441645e30444b3818
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e8e63f2c916153b5d43267869d7bc5be8fa646c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005683"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081977"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Verwenden von SSH-Schlüsseln mit Windows in Azure
 
@@ -48,7 +47,7 @@ Sie können auch die SSH-Hilfsprogramme verwenden, die in der [Azure Cloud Shell
 * Greifen Sie aus VS Code heraus auf Cloud Shell als Terminal zu, indem Sie die [Erweiterung „Azure Account“](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) installieren.
 
 ## <a name="create-an-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
-In den folgenden Abschnitten werden zwei Optionen zum Erstellen eines SSH-Schlüsselpaars unter Windows beschrieben. Sie können einen Shell-Befehl (`ssh-keygen`) oder ein GUI-Tool (PuTTYgen) verwenden.
+In den folgenden Abschnitten werden zwei Optionen zum Erstellen eines SSH-Schlüsselpaars unter Windows beschrieben. Sie können einen Shell-Befehl (`ssh-keygen`) oder ein GUI-Tool (PuTTYgen) verwenden. Wenn Sie PowerShell verwenden, um einen Schlüssel zu erstellen, müssen Sie den öffentlichen Schlüssel im „ssh.com“-Format (SECSH) hochladen. Wenn Sie die Befehlszeilenschnittstelle verwenden, konvertieren Sie den Schlüssel vor dem Hochladen in das OpenSSH-Format. 
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>Erstellen von SSH-Schlüsseln mit „ssh-keygen“
 
@@ -68,7 +67,7 @@ So erstellen Sie ein SSH-RSA-Schlüsselpaar mit PuTTYgen:
 
 1. Starten Sie PuTTYgen.
 
-2. Klicken Sie auf **Generate (Generieren)**. PuTTYgen generiert standardmäßig einen 2048-Bit-SSH-2-RSA-Schlüssel.
+2. Klicken Sie auf **Generate (Generieren)** . PuTTYgen generiert standardmäßig einen 2048-Bit-SSH-2-RSA-Schlüssel.
 
 4. Bewegen Sie die Maus über den leeren Bereich, um Zufälligkeit für den Schlüssel zu erzeugen.
 
@@ -122,7 +121,7 @@ Wenn Sie das [PuTTY-Downloadpaket](https://www.chiark.greenend.org.uk/~sgtatham/
 
     ![Auswählen Ihrer PuTTY-Datei für private Schlüssel für die Authentifizierung](./media/ssh-from-windows/putty-auth-dialog.png)
 
-4. Klicken Sie auf **Open (Öffnen)**, um die Verbindung mit Ihrer VM herzustellen.
+4. Klicken Sie auf **Open (Öffnen)** , um die Verbindung mit Ihrer VM herzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

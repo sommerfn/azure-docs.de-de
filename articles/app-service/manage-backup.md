@@ -10,20 +10,19 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 18fc86e8d9b9622f11faad0f11dc57a83124a857
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 8784a06306f59015b95293d90ff5509dcfcae045
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417506"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057933"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
-Das Feature zum Sichern und Wiederherstellen in [Azure App Service](overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen. 
+Das Feature zum Sichern und Wiederherstellen in [Azure App Service](overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen.  Sicherungen können so konfiguriert werden, dass Sie bis zu einem unbestimmten Zeitraum aufbewahrt werden. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen.
 
 Informationen zum Wiederherstellen einer App aus einer Sicherung finden Sie unter [Wiederherstellen einer App in Azure](web-sites-restore.md).
 
@@ -40,7 +39,7 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
    - [SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)
    - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
    - [Azure-Datenbank für PostgreSQL](https://azure.microsoft.com/services/postgresql)
-   - [MySQL In-App](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
+   - [MySQL In-App](https://azure.microsoft.com/en-us/blog/mysql-in-app-preview-app-service/)
  
 
 > [!NOTE]
@@ -50,7 +49,7 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>Anforderungen und Einschränkungen
-* Das Feature zum Sichern und Wiederherstellen erfordert einen App Service-Plan im Tarif **Standard** oder **Premium**. Weitere Informationen zum Skalieren des App Service-Plans zur Verwendung eines höheren Tarifs finden Sie unter [Skalieren einer App in Azure](web-sites-scale.md).  
+* Das Feature zum Sichern und Wiederherstellen erfordert einen App Service-Plan im Tarif **Standard** oder **Premium**. Weitere Informationen zum Skalieren des App Service-Plans zur Verwendung eines höheren Tarifs finden Sie unter [Skalieren einer App in Azure](manage-scale-up.md).  
   Im Tarif **Premium** ist eine größere Anzahl täglicher Sicherungen zulässig als im Tarif **Standard**.
 * Sie benötigen ein Azure-Speicherkonto und einen Container im selben Abonnement wie die App, die Sie sichern möchten. Weitere Informationen zu Azure-Speicherkonten finden Sie unter [Azure Storage-Konto – Übersicht](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 * Sicherungen können bis zu 10GB an App- und Datenbankinhalten umfassen. Wenn die Sicherungsgröße diesen Grenzwert überschreitet, erhalten Sie eine Fehlermeldung.
@@ -69,7 +68,7 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
    
    > [!NOTE]
    > Wenn die folgende Meldung angezeigt wird, klicken Sie darauf, um Ihren App Service-Plan zu aktualisieren, damit Sie mit Sicherungen fortfahren können.
-   > Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](web-sites-scale.md).  
+   > Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](manage-scale-up.md).  
    > ![Speicherkonto auswählen](./media/web-sites-backup/01UpgradePlan1.png)
    > 
    > 
@@ -121,6 +120,9 @@ Mitunter möchten Sie nicht alles in Ihrer App sichern. Hier sind einige Beispie
 * Sie möchten die Protokolldateien nicht sichern.
 
 Bei Teilsicherungen können Sie genau auswählen, welche Dateien gesichert werden sollen.
+
+> [!NOTE]
+> Einzelne Datenbanken in der Sicherung können maximal 4 GB groß sein, die maximale Gesamtgröße der Sicherung beträgt aber 10 GB.
 
 ### <a name="exclude-files-from-your-backup"></a>Ausschließen von Dateien aus der Sicherung
 Angenommen, Sie verfügen über eine App mit Protokolldateien und statischen Images, die einmal gesichert wurden und sich nicht ändern werden. In solchen Fällen können Sie diese Ordner und Dateien von der Speicherung in zukünftigen Sicherungen ausschließen. Um Dateien und Ordner von Ihren Sicherungen auszuschließen, erstellen Sie eine `_backup.filter`-Datei im `D:\home\site\wwwroot`-Ordner Ihrer App. Geben Sie die Liste von Dateien und Ordnern an, die Sie in dieser Datei ausschließen möchten. 

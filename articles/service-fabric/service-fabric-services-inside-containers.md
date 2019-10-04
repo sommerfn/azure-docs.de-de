@@ -3,7 +3,7 @@ title: Packen Ihrer Azure Service Fabric-Dienste in Container unter Windows
 description: Erfahren Sie, wie Sie Ihre Reliable Services und Reliable Actors von Service Fabric unter Windows in Container packen.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: anmolah
 editor: roroutra
 ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
-ms.author: aljo, anmola
-ms.openlocfilehash: 147607bbea65199ff97459711ad6301a4ae93aa4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: anmola
+ms.openlocfilehash: 0cb48a2272ce854005f9f3db5b6a9abf62cc7015
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079825"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599202"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Packen Ihrer Reliable Services und Reliable Actors von Service Fabric in Container unter Windows
 
@@ -119,6 +119,16 @@ Dieses Dokument enthält Anweisungen für die Schritte zum Ausführen Ihrer Dien
    </ContainerHostPolicies>
    </Policies>
    ```
+
+> [!NOTE] 
+> Standardmäßig erhalten Service Fabric-Anwendungen Zugriff auf die Service Fabric-Runtime über einen Endpunkt, der anwendungsspezifische Anforderungen akzeptiert. Sie sollten das Deaktivieren dieses Zugriffs in Erwägung ziehen, wenn die Anwendung nicht vertrauenswürdigen Code hostet. Weitere Informationen finden Sie unter [Bewährte Methoden für die Sicherheit in Service Fabric](service-fabric-best-practices-security.md#platform-isolation). Um den Zugriff auf die Service Fabric-Runtime zu deaktivieren, fügen Sie die folgende Einstellung im Abschnitt „Policies“ des Anwendungsmanifests für das importierte Dienstmanifest hinzu:
+>
+```xml
+  <Policies>
+      <ServiceFabricRuntimeAccessPolicy RemoveServiceFabricRuntimeAccess="true"/>
+  </Policies>
+```
+>
 
 10. Zum Testen der Anwendung muss sie in einem Cluster bereitgestellt werden, der mindestens über die Version 5.7 verfügt. Bei Runtimes unter Version 6.1 müssen Sie die Clustereinstellungen bearbeiten und aktualisieren, um diese Previewfunktion zu aktivieren. Führen Sie die Schritte in [diesem Artikel](service-fabric-cluster-fabric-settings.md) aus, um die folgende Einstellung hinzuzufügen:
     ```

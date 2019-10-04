@@ -1,20 +1,19 @@
 ---
 title: Synchronisieren von Azure Active Directory-Benutzern in einen Cluster – Azure HDInsight
-description: Synchronisieren Sie authentifizierte Benutzer von Azure Active Directory in einen Cluster.
-services: hdinsight
+description: Synchronisieren Sie authentifizierte Benutzer von Azure Active Directory in einen HDInsight-Cluster.
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ebb1e3614309f92fc21442100a13c53291b3acbb
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 9767bccc754d5ccf8c0e7cbb66c8e9c3d5eaf7d0
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407286"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105365"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronisieren von Azure Active Directory-Benutzern in einen HDInsight-Cluster
 
@@ -32,11 +31,11 @@ Um Ihre Hosts anzuzeigen, öffnen Sie die Ambari-Webbenutzeroberfläche. Jeder K
 
 2. Wählen Sie im linken Menü den Eintrag **Alle Benutzer** aus, und wählen Sie dann **Neuer Benutzer** aus.
 
-    ![Bereich „Alle Benutzer“](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
+    ![Azure-Portal – Benutzer und Gruppen – Alle](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
 3. Füllen Sie das Formular für neue Benutzer aus. Wählen Sie Gruppen aus, die Sie zum Zuweisen von clusterbasierten Berechtigungen erstellt haben. In diesem Beispiel erstellen Sie eine Gruppe namens „HiveUsers“, der Sie neue Benutzer zuweisen können. Die [Beispielanweisungen](hdinsight-domain-joined-configure.md) zum Erstellen eines ESP-Clusters umfassen das Hinzufügen von zwei Gruppen: `HiveUsers` und `AAD DC Administrators`.
 
-    ![Bereich „Neuer Benutzer“](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
+    ![Azure-Portal – Benutzerbereich – Gruppen auswählen](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
 4. Klicken Sie auf **Erstellen**.
 
@@ -46,9 +45,9 @@ Benutzergruppen, die während des Clustererstellungsprozesses angegeben werden, 
 
 Die folgende Methode verwendet POST mit der Ambari-REST-API. Weitere Informationen finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-1. [Stellen Sie über SSH eine Verbindung mit Ihrem Cluster her](hdinsight-hadoop-linux-use-ssh-unix.md). Klicken Sie im Azure-Portal im Übersichtsbereich für Ihren Cluster auf die Schaltfläche **Secure Shell (SSH)**.
+1. [Stellen Sie über SSH eine Verbindung mit Ihrem Cluster her](hdinsight-hadoop-linux-use-ssh-unix.md). Klicken Sie im Azure-Portal im Übersichtsbereich für Ihren Cluster auf die Schaltfläche **Secure Shell (SSH)** .
 
-    ![Secure Shell (SSH)](./media/hdinsight-sync-aad-users-to-cluster/ssh.png)
+    ![HDInsight – SSH-Symbol (Secure Shell)](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-secure-shell.png)
 
 2. Kopieren Sie den angezeigten `ssh`-Befehl, und fügen Sie ihn in Ihrem SSH-Client ein. Geben Sie bei Aufforderung das SSH-Benutzerkennwort ein.
 
@@ -132,15 +131,15 @@ Die folgende Methode verwendet POST mit der Ambari-REST-API. Weitere Information
 
 1. Wählen Sie im Ambari-Dashboard im Menü **Administrator** die Option **Ambari verwalten** aus.
 
-    ![Ambari verwalten](./media/hdinsight-sync-aad-users-to-cluster/manage-ambari.png)
+    ![Apache Ambari-Dashboard – Ambari verwalten](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
 2. Wählen Sie in der Menügruppe **Benutzer- und Gruppenverwaltung** auf der linken Seite die Option **Benutzer** aus.
 
-    ![Menüelement „Benutzer“](./media/hdinsight-sync-aad-users-to-cluster/users-link.png)
+    ![HDInsight – Benutzer und Gruppen – Menü](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
 3. Der neue Benutzer sollte in der Tabelle „Benutzer“ aufgeführt werden. Der Typ sollte auf `LDAP` festgelegt sein, nicht auf `Local`.
 
-    ![Seite „Benutzer“](./media/hdinsight-sync-aad-users-to-cluster/users.png)
+    ![HDInsight – Seite „AAD-Benutzer“ – Übersicht](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Anmelden bei Ambari als neuer Benutzer
 

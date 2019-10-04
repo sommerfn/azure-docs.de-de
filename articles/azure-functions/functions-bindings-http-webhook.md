@@ -4,19 +4,18 @@ description: Hier wird erläutert, wie HTTP-Trigger und -Bindungen in Azure Func
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Computing, serverlose Architektur, HTTP, API, REST
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: a1d66cf4506e3b8f58572576db908812f4e2be07
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 983cf250f3a7188741c41386aac256bfdb28749b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59490409"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097343"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>HTTP-Trigger und -Bindungen in Azure Functions
 
@@ -307,6 +306,7 @@ Dies ist der Python-Code:
 ```python
 import logging
 import azure.functions as func
+
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
@@ -666,7 +666,7 @@ Wenn Ihre Funktions-App [App Service-Authentifizierung/-Autorisierung](../app-se
 
 Sie können diese Informationen auch aus Datenbindungen auslesen. Diese Funktion ist nur für die Functions-Runtime 2.x verfügbar. Sie ist derzeit auch nur für .NET-Sprachen verfügbar.
 
-Bei .NET-Sprachen sind diese Informationen als [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0) verfügbar. „ClaimsPrincipal“ ist als Teil des Anforderungskontextes verfügbar, wie im folgenden Beispiel gezeigt:
+Bei .NET-Sprachen sind diese Informationen als [ClaimsPrincipal](https://docs.microsoft.com/dotnet/api/system.security.claims.claimsprincipal) verfügbar. „ClaimsPrincipal“ ist als Teil des Anforderungskontextes verfügbar, wie im folgenden Beispiel gezeigt:
 
 ```csharp
 using System.Net;
@@ -727,7 +727,7 @@ Schlüssel werden als Teil Ihrer Funktionen-App in Azure gespeichert und sind im
 
 ![Verwalten Sie Funktionsschlüssel im Portal.](./media/functions-bindings-http-webhook/manage-function-keys.png)
 
-Zum programmgesteuerten Abrufen von Funktionsschlüsseln gibt es keine unterstützte API.
+Funktionsschlüssel können mithilfe der [Schlüsselverwaltungs-API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) programmgesteuert abgerufen werden.
 
 ### <a name="api-key-authorization"></a>Autorisierung per API-Schlüssel
 
@@ -756,7 +756,7 @@ Wenn Sie Ihre Funktionsendpunkte in einer Produktionsumgebung umfassend schütze
 
 Wenn Sie eine dieser Sicherheitsmethoden auf Funktions-App-Ebene verwenden, sollten Sie die Authentifizierungsebene der über HTTP ausgelösten Funktion auf `anonymous` festlegen.
 
-### <a name="webhooks"></a>Webhooks
+### <a name="webhooks"></a>webhooks
 
 > [!NOTE]
 > Der Webhookmodus ist nur für die Version 1.x der Functions-Laufzeit verfügbar. Diese Änderung wurde vorgenommen, um die Leistung von HTTP-Triggern in Version 2.x zu verbessern.
@@ -784,7 +784,7 @@ Die Webhookautorisierung wird von der Empfangskomponente für Webhooks verarbeit
 
 Die Länge der HTTP-Anforderung ist auf 100 MB (104.857.600 Bytes) und die URL-Länge auf 4 KB (4.096 Bytes) beschränkt. Diese Grenzwerte werden durch das `httpRuntime`-Element der Datei [Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config) der Runtime angegeben.
 
-Wenn eine Funktion, die den HTTP-Trigger verwendet, nicht innerhalb von etwa 2,5 Minuten abgeschlossen ist, tritt auf dem Gateway ein Timeout auf, und es wird ein HTTP 502-Fehler zurückgegeben. Die Funktion wird weiterhin ausgeführt, kann aber keine HTTP-Antwort zurückgeben. Bei Funktionen mit langer Ausführungsdauer empfiehlt es sich, asynchrone Muster zu befolgen und einen Speicherort zurückzugeben, von dem aus Sie den Status der Anforderung pingen können. Informationen dazu, wie lang eine Funktion ausgeführt werden kann, finden Sie unter [Skalierung und Hosting – Verbrauchsplan](functions-scale.md#consumption-plan).
+Wenn eine Funktion, die den HTTP-Trigger verwendet, nicht innerhalb von etwa 2,5 Minuten abgeschlossen ist, tritt auf dem Gateway ein Timeout auf, und es wird ein HTTP 502-Fehler zurückgegeben. Die Funktion wird weiterhin ausgeführt, kann aber keine HTTP-Antwort zurückgeben. Bei Funktionen mit langer Ausführungsdauer empfiehlt es sich, asynchrone Muster zu befolgen und einen Speicherort zurückzugeben, von dem aus Sie den Status der Anforderung pingen können. Informationen dazu, wie lang eine Funktion ausgeführt werden kann, finden Sie unter [Skalierung und Hosting – Verbrauchsplan](functions-scale.md#timeout).
 
 ## <a name="trigger---hostjson-properties"></a>Trigger: Eigenschaften von „host.json“
 

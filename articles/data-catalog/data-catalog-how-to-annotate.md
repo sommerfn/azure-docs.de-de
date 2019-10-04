@@ -1,22 +1,22 @@
 ---
 title: Kommentieren von Datenquellen in Azure Data Catalog
 description: Anleitungsartikel zum Hinzufügen von Anmerkungen zu Datenressourcen in Azure Data Catalog, einschließlich Anzeigenamen, Tags, Beschreibungen und Experten.
-services: data-catalog
 author: JasonWHowell
 ms.author: jasonh
-ms.assetid: 5a7e6bb2-863c-4eca-b614-1c814920d9ed
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 3a66c8c5963972828723dd74ffe560a0e2240165
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011134"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950260"
 ---
-# <a name="how-to-annotate-data-sources"></a>Hinzufügen von Anmerkungen zu Datenquellen
+# <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Kommentieren von Datenquellen in Azure Data Catalog
+
 ## <a name="introduction"></a>Einführung
+
 **Microsoft Azure Data Catalog** ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenquellen von Unternehmen dient. Data Catalog unterstützt Benutzer also beim Ermitteln, Nachvollziehen und Verwenden von Datenquellen und Unternehmen dabei, mehr Nutzen aus ihren vorhandenen Daten zu ziehen. Wenn eine Datenquelle in Data Catalog registriert wird, werden ihre Metadaten vom Dienst kopiert und indiziert. Das ist aber noch nicht alles. Data Catalog bietet Benutzern die Möglichkeit, die aus der Datenquelle extrahierten Metadaten durch eigene beschreibende Metadaten (beispielsweise Beschreibungen und Tags) zu ergänzen, um die Datenquelle für andere Benutzer verständlicher zu machen.
 
 ## <a name="annotation-and-crowdsourcing"></a>Anmerkung und Crowdsourcing

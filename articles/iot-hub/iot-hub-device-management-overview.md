@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: briz
 ms.openlocfilehash: bdc55af23568b5785a831e81f352400c728c902e
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043577"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60400919"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Übersicht über die Geräteverwaltung mit IoT Hub
 
@@ -70,7 +70,7 @@ In jeder dieser fünf Phasen müssen mehrere Anforderungen von Gerätebedienern 
     * [Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung](iot-hub-configuration-best-practices.md)
     * [Azure IoT Hub Device Provisioning-Dienst](https://azure.microsoft.com/documentation/services/iot-dps)
 
-* **Konfiguration:** Massenvorgänge zum Ändern der Konfiguration und Firmwareupdates für Geräte können ohne Beeinträchtigung der Integrität und der Sicherheit durchgeführt werden. Verwenden Sie die gewünschten Eigenschaften, um diese Geräteverwaltungsvorgänge als Massenvorgang durchzuführen, oder verwenden Sie direkte Methoden und Broadcastaufträge.
+* **Konfigurieren**: Massenvorgänge zum Ändern der Konfiguration und Firmwareupdates für Geräte können ohne Beeinträchtigung der Integrität und der Sicherheit durchgeführt werden. Verwenden Sie die gewünschten Eigenschaften, um diese Geräteverwaltungsvorgänge als Massenvorgang durchzuführen, oder verwenden Sie direkte Methoden und Broadcastaufträge.
   
     *Weitere nützliche Informationen*:
     * [Verwenden der Eigenschaften von Gerätezwillingen](tutorial-device-twins.md)
@@ -85,7 +85,7 @@ In jeder dieser fünf Phasen müssen mehrere Anforderungen von Gerätebedienern 
     * [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten](iot-hub-auto-device-config.md)
     * [Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung](iot-hub-configuration-best-practices.md)
 
-* **Ausmusterung**: Geräte werden nach einem Fehler oder Upgradezyklus oder am Ende der Lebensdauer ausgetauscht oder außer Betrieb gesetzt.  Verwenden Sie zur Verwaltung von Geräteinformationen den Gerätezwilling, falls das physische Gerät ausgetauscht wird (oder das Archiv, falls das Gerät ausgemustert wird). Verwenden Sie die IoT Hub-Identitätsregistrierung zum sicheren Sperren von Geräteidentitäten und Anmeldeinformationen.
+* **Ausmusterung:** Geräte werden nach einem Fehler oder Upgradezyklus oder am Ende der Lebensdauer ausgetauscht oder außer Betrieb gesetzt.  Verwenden Sie zur Verwaltung von Geräteinformationen den Gerätezwilling, falls das physische Gerät ausgetauscht wird (oder das Archiv, falls das Gerät ausgemustert wird). Verwenden Sie die IoT Hub-Identitätsregistrierung zum sicheren Sperren von Geräteidentitäten und Anmeldeinformationen.
   
     *Weitere nützliche Informationen*: 
     * [Verwenden der Eigenschaften von Gerätezwillingen](tutorial-device-twins.md)
@@ -99,11 +99,11 @@ IoT Hub ermöglicht die folgenden Geräteverwaltungsmuster. In den [Tutorials zu
   
     ![Neustartmuster der Geräteverwaltung – Grafik](./media/iot-hub-device-management-overview/reboot-pattern.png)
 
-* **Zurücksetzung auf Werkseinstellungen**: Die Back-End-App informiert das Gerät mithilfe einer direkten Methode darüber, dass sie eine Zurücksetzung auf die Werkseinstellungen initiiert hat. Das Gerät nutzt die vom Gerätezwilling gemeldeten Eigenschaften zum Aktualisieren des Status der Zurücksetzung auf Werkseinstellung des Geräts.
+* **Zurücksetzung auf Werkseinstellungen:** Die Back-End-App informiert das Gerät mithilfe einer direkten Methode darüber, dass sie eine Zurücksetzung auf die Werkseinstellungen initiiert hat. Das Gerät nutzt die vom Gerätezwilling gemeldeten Eigenschaften zum Aktualisieren des Status der Zurücksetzung auf Werkseinstellung des Geräts.
   
     ![Muster für die Zurücksetzung auf Werkseinstellungen der Geräteverwaltung – Grafik](./media/iot-hub-device-management-overview/facreset-pattern.png)
 
-* **Konfiguration**: Die Back-End-App verwendet die gewünschten Eigenschaften zum Konfigurieren der auf dem Gerät ausgeführten Software. Das Gerät nutzt die gemeldeten Eigenschaften zum Aktualisieren des Konfigurationsstatus des Geräts.
+* **Konfiguration:** Die Back-End-App verwendet die gewünschten Eigenschaften zum Konfigurieren der auf dem Gerät ausgeführten Software. Das Gerät nutzt die gemeldeten Eigenschaften zum Aktualisieren des Konfigurationsstatus des Geräts.
   
     ![Konfigurationsmuster der Geräteverwaltung – Grafik](./media/iot-hub-device-management-overview/configuration-pattern.png)
 
@@ -111,7 +111,7 @@ IoT Hub ermöglicht die folgenden Geräteverwaltungsmuster. In den [Tutorials zu
   
     ![Firmwareupdate-Muster der Geräteverwaltung – Grafik](media/iot-hub-device-management-overview/fwupdate-pattern.png)
 
-* **Meldung von Fortschritt und Status**: Das Lösungs-Back-End führt Gerätezwillingsabfragen für eine Gruppe von Geräten durch, um den Status und Fortschritt von Aktionen zu melden, die auf dem Gerät ausgeführt werden.
+* **Meldung von Fortschritt und Status:** Das Lösungs-Back-End führt Gerätezwillingsabfragen für eine Gruppe von Geräten durch, um den Status und Fortschritt von Aktionen zu melden, die auf dem Gerät ausgeführt werden.
   
     ![Muster für Fortschritts- und Statusmeldungen der Geräteverwaltung – Grafik](./media/iot-hub-device-management-overview/report-progress-pattern.png)
 

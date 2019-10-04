@@ -7,7 +7,7 @@ author: senthuransivananthan
 manager: danielgi
 editor: ''
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
-ms.service: cdn
+ms.service: azure-cdn
 ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 5c393916bc977f4e0bc51913bdb2dfbbd6677c97
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: cbde4c7fd568e6d9ff9a0d90332da96926e08077
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727613"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67593132"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts mithilfe von Resource Manager-Vorlagen
 
@@ -51,7 +51,7 @@ az group create --name cdn --location eastus
 
 In diesem Schritt erstellen Sie eine Vorlagendatei, mit der die Ressourcen bereitgestellt werden.
 
-In diesem Beispiel wird ein Szenario zur allgemeinen Beschleunigung der Website beschrieben, es können jedoch viele weitere Einstellungen konfiguriert werden. Diese Einstellungen stehen in der Referenz zu Azure Resource Manager-Vorlagen zur Verfügung. Entsprechende Informationen finden Sie in den Referenzen zum [CDN-Profil](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles) und [CDN-Profilendpunkt](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
+In diesem Beispiel wird ein Szenario zur allgemeinen Beschleunigung der Website beschrieben, es können jedoch viele weitere Einstellungen konfiguriert werden. Diese Einstellungen stehen in der Referenz zu Azure Resource Manager-Vorlagen zur Verfügung. Entsprechende Informationen finden Sie in den Referenzen zum [CDN-Profil](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) und [CDN-Profilendpunkt](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
 
 Beachten Sie, dass die Liste der Inhaltstypen in Microsoft CDN nicht geändert werden kann.
 
@@ -224,8 +224,8 @@ az group delete --name cdn
 
 ## <a name="references"></a>Referenzen
 
-* CDN-Profil: [Referenz zu Azure Resource Manager-Vorlagen](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles)
-* CDN-Endpunkt: [Referenzdokumentation zu Azure Resource Manager-Vorlagen](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
+* CDN-Profil: [Referenz zu Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
+* CDN-Endpunkt: [Referenzdokumentation zu Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

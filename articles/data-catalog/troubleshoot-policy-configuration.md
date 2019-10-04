@@ -1,23 +1,35 @@
 ---
-title: Konfigurieren der Azure Active Directory-Richtlinie für Azure Data Catalog
-description: Es kann vorkommen, dass Sie sich beim Azure Data Catalog-Portal anmelden können, jedoch eine Fehlermeldung erhalten, wenn Sie versuchen, sich beim Tool zum Registrieren von Datenquellen anzumelden.
-author: markingmyname
-ms.author: maghan
+title: Problembehandlung von Azure Data Catalog
+description: Dieser Artikel beschreibt allgemeine Problembehandlungsüberlegungen für Azure Data Catalog-Ressourcen.
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
-ms.date: 04/06/2019
-ms.openlocfilehash: 558f8845f5469bf157188e20f1ec65a07ff8355f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.topic: troubleshooting
+ms.date: 08/01/2019
+ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59362881"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879555"
 ---
-# <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory-Richtlinienkonfiguration
+# <a name="troubleshooting-azure-data-catalog"></a>Problembehandlung von Azure Data Catalog
+
+Dieser Artikel beschreibt allgemeine Problembehandlungsüberlegungen für Azure Data Catalog-Ressourcen. 
+
+## <a name="functionality-limitations"></a>Funktionseinschränkungen
+
+Wenn Sie Azure Data Catalog verwenden, sind die folgenden Funktionen eingeschränkt:
+
+- Konten mit dem Typ **Gastrolle** werden nicht unterstützt. Sie können keine Gastkonten als Benutzer von Azure Data Catalog hinzufügen, und Gastbenutzer können nicht das Portal unter [https://www.azuredatacatalog.com](https://www.azuredatacatalog.com) verwenden.
+
+- Das Erstellen von Azure Data Catalog-Ressourcen mithilfe von Azure Resource Manager-Vorlagen oder über Azure PowerShell-Befehle wird nicht unterstützt.
+
+- Die Azure Data Catalog-Ressource kann nicht zwischen Azure-Mandanten verschoben werden.
+
+## <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory-Richtlinienkonfiguration
 
 Es kann vorkommen, dass Sie sich beim Azure Data Catalog-Portal anmelden können, jedoch eine Fehlermeldung erhalten, wenn Sie versuchen, sich beim Tool zum Registrieren von Datenquellen anzumelden. Dieser Fehler kann auftreten, wenn Sie sich im Unternehmensnetzwerk befinden oder von außerhalb des Unternehmensnetzwerks eine Verbindung herstellen.
-
-## <a name="registration-tool"></a>Registrierungstool
 
 Das Registrierungstool verwendet die *Formularauthentifizierung* , um Benutzeranmeldungen mit Azure Active Directory zu überprüfen. Um die Anmeldung zu ermöglichen, muss der Azure Active Directory-Administrator die Formularauthentifizierung in der *globalen Authentifizierungsrichtlinie*aktivieren.
 

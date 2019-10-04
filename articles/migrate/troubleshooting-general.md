@@ -1,336 +1,389 @@
 ---
 title: Behandeln von Problemen bei Azure Migrate | Microsoft-Dokumentation
-description: Bietet eine Übersicht über bekannte Probleme im Azure Migrate-Dienst und Problembehandlungstipps für häufige Fehler.
+description: Bietet eine Übersicht über bekannte Probleme im Azure Migrate-Dienst sowie Problembehandlungstipps für häufige Fehler.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: dff3c96cf3ac8eea7c1160ee1834cc70390c0333
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 49c43d393ef0722424088e0073942b56787f1bc7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652636"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067805"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problembehandlung für Azure Migrate
 
-## <a name="troubleshoot-common-errors"></a>Problembehandlung für häufige Fehler
+[Azure Migrate](migrate-services-overview.md) stellt einen Hub mit Tools für die Bewertung und Migration sowie unabhängige Drittanbietertools bereit. Dieser Artikel hilft Ihnen bei der Behandlung von Problemen mit Azure Migrate sowie bei der Azure Migrate-Serverbewertung und Azure Migrate-Servermigration.
 
-[Azure Migrate](migrate-overview.md) bewertet lokale Workloads für die Migration zu Azure. Verwenden Sie diesen Artikel zur Problembehandlung bei der Bereitstellung und Verwendung von Azure Migrate.
 
-### <a name="i-am-using-the-ova-that-continuously-discovers-my-on-premises-environment-but-the-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>Ich verwende die OVA, die kontinuierlich meine lokale Umgebung ermittelt, aber die VMs, die in meiner lokalen Umgebung gelöscht wurden, werden immer noch im Portal angezeigt.
+## <a name="find-a-project"></a>Suchen eines Projekts
 
-Die Appliance für die kontinuierliche Ermittlung sammelt nur kontinuierlich Leistungsdaten. Sie erkennt keine Konfigurationsänderungen in der lokalen Umgebung (etwa das Hinzufügen von VMs, Löschvorgänge, hinzugefügte Datenträger und Ähnliches). Wenn sich die Konfiguration in der lokalen Umgebung ändert, können Sie wie folgt vorgehen, damit die Änderungen im Portal berücksichtigt werden:
+Es sind [zwei Versionen](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) von Azure Migrate verfügbar.
 
-- Hinzugefügte Elemente (virtuelle Computer, Datenträger, Kerne usw.): Damit diese Änderungen im Azure-Portal berücksichtigt werden, können Sie die Ermittlung über die Appliance beenden und anschließend wieder starten. Dadurch wird sichergestellt, dass die Änderungen im Azure Migrate-Projekt aktualisiert werden.
 
-   ![Beenden der Ermittlung](./media/troubleshooting-general/stop-discovery.png)
+Wenn Sie das Azure Migrate-Projekt in der aktuellen Version von Azure Migrate erstellt haben, gehen Sie wie folgt vor:
 
-- Gelöschte virtuelle Computer: Das Löschen von virtuellen Computern wird aufgrund des Entwurfs der Appliance auch dann nicht berücksichtigt, wenn Sie die Ermittlung beenden und wieder starten. Das liegt daran, dass Daten nachfolgender Ermittlungen älteren Ermittlungen angefügt und nicht überschrieben werden. In diesem Fall können Sie die VM im Portal einfach ignorieren, indem Sie sie aus Ihrer Gruppe entfernen und die Bewertung neu berechnen.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure Migrate**.
+2. Rufen Sie im Dashboard von Azure Migrate **Server** auf, und wählen Sie oben rechts in der Ecke **Ändern** aus.
 
-### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Löschen von Azure Migrate-Projekten und zugehörigen Log Analytics-Arbeitsbereichen
+    ![Wechseln zu einem vorhandenen Azure Migrate-Projekt](./media/troubleshooting-general/switch-project.png)
 
-Wenn Sie ein Azure Migrate-Projekt löschen, wird das Migrationsprojekt zusammen mit allen Gruppen und Bewertungen gelöscht. Wenn Sie dem Projekt jedoch einen Log Analytics-Arbeitsbereich angefügt hatten, wird dieser nicht automatisch gelöscht. Dies liegt daran, dass derselbe Log Analytics-Arbeitsbereich für mehrere Anwendungsfälle verwendet werden kann. Wenn Sie den Log Analytics-Arbeitsbereich ebenfalls löschen möchten, müssen Sie dies manuell tun.
+3. Wählen Sie das entsprechende Abonnement und das Azure Migrate-Projekt aus.
 
-1. Navigieren Sie zu dem Log Analytics-Arbeitsbereich, der dem Projekt angefügt ist.
-   a. Wenn Sie das Migrationsprojekt noch nicht gelöscht haben, finden den Link zum Arbeitsbereich auf der Übersichtsseite des Projekts im Abschnitt "Essentials".
 
-   ![LA-Arbeitsbereich](./media/troubleshooting-general/LA-workspace.png)
+Wenn Sie das Projekt in der vorherigen Version von Azure Migrate erstellt haben, gehen Sie wie folgt vor:
 
-   b. Wenn Sie das Migrationsprojekt bereits gelöscht haben, klicken Sie im Azure-Portal im linken Bereich auf **Ressourcengruppen**, und wechseln Sie zu der Ressourcengruppe, in der der Arbeitsbereich erstellt wurde, und navigieren Sie dann zu diesem.
-2. Befolgen Sie die Anweisungen [in diesem Artikel](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace), um den Arbeitsbereich zu löschen.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure Migrate**.
+2. Wenn Sie ein Projekt in der vorherigen Version erstellt haben, wird im Dashboard von Azure Migrate ein Banner mit einem Verweis auf ältere Projekte angezeigt. Wählen Sie das Banner aus.
 
-### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>Erstellen des Migrationsprojekts mit dem Fehler *Anforderungen müssen Benutzeridentitätsheader enthalten*
+    ![Zugreifen auf vorhandene Projekte](./media/troubleshooting-general/access-existing-projects.png)
 
-Dieses Problem kann für Benutzer auftreten, die nicht über Zugriff auf den Azure Active Directory (Azure AD)-Mandanten der Organisation verfügen. Wenn ein Benutzer zum ersten Mal zu einem Azure AD-Mandanten hinzugefügt wird, erhält er eine E-Mail-Einladung, dem Mandanten beizutreten. Benutzer müssen die E-Mail aufrufen und die Einladung annehmen, um erfolgreich zum Mandanten hinzugefügt zu werden. Wenn Sie die E-Mail nicht sehen können, wenden Sie sich an einen Benutzer, der bereits auf den Mandanten zugreifen kann, und bitten Sie ihn, die Einladung anhand der [hier](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users) angegebenen Schritte erneut zu senden.
+3. Überprüfen Sie die Liste der alten Projekte.
 
-Wenn Sie die Einladung per E-Mail erhalten haben, öffnen Sie die diese und klicken Sie auf den darin angegebenen Link, um die Einladung anzunehmen. Sobald dies geschehen ist, müssen Sie sich beim Azure-Portal ab- und erneut anmelden. Das Aktualisieren des Browsers allein funktioniert nicht. Sie können dann versuchen, das Migrationsprojekt zu erstellen.
 
-### <a name="i-am-unable-to-export-the-assessment-report"></a>Ich kann den Bewertungsbericht nicht exportieren
+## <a name="create-additional-projects"></a>Erstellen zusätzlicher Projekte
 
-Wenn Sie den Bewertungsbericht nicht aus dem Portal exportieren können, versuchen Sie es mit der folgenden REST-API, um eine Download-URL für den Bewertungsbericht abzurufen.
+Erstellen Sie wie folgt ein neues Azure Migrate-Projekt:
 
-1. Installieren Sie *armclient* auf Ihrem Computer (sofern nicht bereits geschehen):
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure Migrate**.
+2. Rufen Sie im Dashboard von Azure Migrate **Server** auf, und wählen Sie oben rechts in der Ecke **Ändern** aus.
 
-   a. Führen Sie in einem Eingabeaufforderungsfenster mit Administratorrechten den folgenden Befehl aus: ```@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"```
+   ![Ändern des Azure Migrate-Projekts](./media/troubleshooting-general/switch-project.png)
 
-   b. Führen Sie in einem Windows PowerShell-Fenster mit Administratorrechten den folgenden Befehl aus: ```choco install armclient```
+3. Wählen Sie zum Erstellen eines neuen Projekts **Hier klicken** aus.
 
-2. Abrufen der Download-URL für den Bewertungsbericht mithilfe der Azure Migrate REST-API
+   ![Erstellen eines zweiten Azure Migrate-Projekts](./media/troubleshooting-general/create-new-project.png)
 
-   a.    Führen Sie in einem Windows PowerShell-Fenster mit Administratorrechten den folgenden Befehl aus: ```armclient login```
+## <a name="review-supported-geographies"></a>Überprüfen unterstützter geografischer Regionen
 
-        This opens the Azure login pop-up where you need to sign in to Azure.
+Überprüfen Sie die unterstützten geografischen Regionen für [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#azure-migrate-projects) und [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#azure-migrate-projects).
 
-   b.    Führen Sie im selben PowerShell-Fenster den folgenden Befehl aus, um die Download-URL für den Bewertungsbericht abzurufen (ersetzen Sie die URI-Parameter durch die entsprechenden Werten; API-Beispielanforderung weiter unter).
+## <a name="delete-projectsworkspaces"></a>Löschen von Projekten/Arbeitsbereichen
 
-       ```armclient POST https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/projects/{projectName}/groups/{groupName}/assessments/{assessmentName}/downloadUrl?api-version=2018-02-02```
+Beim Löschen von Azure Migrate-Projekten und Log Analytics-Arbeitsbereichen ist Folgendes zu beachten:
 
-      Beispielanforderung und -ausgabe:
+- Wenn Sie ein Azure Migrate-Projekt löschen, werden das Projekt *und* die Metadaten zu den ermittelten Computern gelöscht.
+- Wenn Sie dem Serverbewertungstool einen Log Analytics-Arbeitsbereich angefügt hatten, wird dieser nicht automatisch gelöscht.
+- Derselbe Log Analytics-Arbeitsbereich kann für mehrere Szenarien verwendet werden.
+- Wenn Sie den Log Analytics-Arbeitsbereich löschen möchten, müssen Sie dies manuell tun.
 
-      ```PS C:\WINDOWS\system32> armclient POST https://management.azure.com/subscriptions/8c3c936a-c09b-4de3-830b-3f5f244d72e9/r
-   esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/contosopayroll/assessments/assessment_11_16_2
-   018_12_16_21/downloadUrl?api-version=2018-02-02
-   {
-   "assessmentReportUrl": "https://migsvcstoragewcus.blob.core.windows.net/4f7dddac-f33b-4368-8e6a-45afcbd9d4df/contosopayrollassessment_11_16_2018_12_16_21?sv=2016-05-31&sr=b&sig=litQmHuwi88WV%2FR%2BDZX0%2BIttlmPMzfVMS7r7dULK7Oc%3D&st=2018-11-20T16%3A09%3A30Z&se=2018-11-20T16%3A19%3A30Z&sp=r",
-   "expirationTime": "2018-11-20T22:09:30.5681954+05:30"```
 
-3. Kopieren Sie die URL aus der Antwort, und öffnen Sie sie in einem Browser um den Bewertungsbericht herunterzuladen.
+### <a name="delete-a-project"></a>Löschen eines Projekts
 
-4. Sobald der Bericht heruntergeladen wurde, verwenden Sie Excel, um zu dem heruntergeladenen Ordner zu wechseln, und öffnen Sie die Datei in Excel, um sie anzuzeigen.
+So löschen Sie ein Projekt in der aktuellen Version von Azure Migrate
 
-### <a name="performance-data-for-cpu-memory-and-disks-is-showing-up-as-zeroes"></a>Leistungsdaten für CPU, Arbeitsspeicher und Datenträger werden als Nullen angezeigt.
+1. Öffnen Sie die Azure-Ressourcengruppe, in der das Projekt erstellt wurde.
+2. Wählen Sie auf der Seite für die Ressourcengruppe **Ausgeblendete Typen anzeigen** aus.
+3. Wählen Sie das zu löschende Migrationsprojekt aus. Der Ressourcentyp ist „Microsoft.Migrate/migrateprojects“, er löscht das Projekt.
 
-Azure Migrate erstellt fortlaufend Profile der lokalen Umgebung, um Leistungsdaten der lokalen virtuellen Computer zu sammeln. Wenn Sie die Ermittlung in Ihrer Umgebung gerade erst gestartet haben, müssen Sie mindestens einen Tag warten, damit zunächst Leistungsdaten gesammelt werden können. Wenn eine Bewertung erstellt wird, ohne einen Tag zu warten, werden die Leistungsmetriken mit Nullwerten angezeigt. Nachdem Sie einen Tag gewartet haben, können Sie eine neue Bewertung erstellen oder die vorhandene Bewertung über die Option „Neue Bewertung“ im Bewertungsbericht aktualisieren.
+So löschen Sie ein Projekt in der vorherigen Version von Azure Migrate
 
-### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>Ich habe beim Erstellen eines Migrationsprojekts eine Azure-Geografie angegeben. Wie ermittle ich die exakte Azure-Region, in der die erkannten Metadaten gespeichert werden?
+1. Öffnen Sie die Azure-Ressourcengruppe, in der das Projekt erstellt wurde.
+2. Wählen Sie das zu löschende Migrationsprojekt aus. Der Ressourcentyp ist „Migration project“, er löscht das Projekt.
 
-Sie können zum Abschnitt **Grundlagen** auf der Seite **Übersicht** des Projekts navigieren, um den exakten Speicherort der Metadaten zu ermitteln. Der Speicherort wird von Azure Migrate zufällig innerhalb der Geografie ausgewählt und kann nicht geändert werden. Wenn Sie ein Projekt nur in einer bestimmten Region erstellen möchten, können Sie das Migrationsprojekt mit den REST-APIs erstellen und die gewünschte Region übergeben.
 
-   ![Projektspeicherort](./media/troubleshooting-general/geography-location.png)
+### <a name="delete-a-workspace"></a>Löschen eines Arbeitsbereichs
 
-## <a name="collector-issues"></a>Collector-Probleme
+Navigieren Sie zu dem Log Analytics-Arbeitsbereich, der dem Projekt angefügt ist.
+* Wenn Sie das Azure Migrate-Projekt nicht gelöscht haben, finden Sie den Link zum Arbeitsbereich unter **Essentials** > **Serverbewertung**.
+       ![LA-Arbeitsbereich](./media/troubleshooting-general/loganalytics-workspace.png)
 
-### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Die Bereitstellung von Azure Migrate-Collector schlägt mit folgendem Fehler fehl: Die angegebene Manifestdatei ist ungültig: Ungültiger OVF-Manifesteintrag.
+     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
-1. Überprüfen Sie, ob die OVA-Datei für Azure Migrate-Collector ordnungsgemäß heruntergeladen wird, indem Sie deren Hashwert überprüfen. Informationen zum Überprüfen des Hashwerts finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance). Wenn der Hashwert nicht übereinstimmt, laden Sie die OVA-Datei erneut herunter, und wiederholen Sie die Bereitstellung.
-2. Wenn der Fehler weiterhin auftritt und Sie zum Bereitstellen der OVF-Datei VMware vSphere-Client verwenden, führen Sie die Bereitstellung über den vSphere-Webclient aus. Wenn der Fehler weiterhin auftritt, versuchen Sie es mit einem anderen Webbrowser.
-3. Wenn Sie den vSphere-Webclient und die Bereitstellung auf vCenter Server 6.5 oder 6.7 ausführen möchten, stellen Sie die OVA-Datei mit den folgenden Schritten direkt auf dem ESXi-Host bereit:
-   - Stellen Sie mithilfe des Webclients (https://<*Host-IP-Adresse*>/ui) eine direkte Verbindung mit dem ESXi-Host her (anstelle von vCenter Server).
-   - Wechseln Sie zu „Startseite > Inventar“.
-   - Klicken Sie auf „Datei“ > „Deploy OVF template“ (OVF-Vorlage bereitstellen). Navigieren Sie zur OVA-Datei, und stellen Sie die Bereitstellung fertig.
+
+## <a name="error-requests-must-contain-user-identity-headers"></a>Fehler „Anforderungen müssen Benutzeridentitätsheader enthalten“
+
+Beim Erstellen eines Projekts kann dieser Fehler darauf hinweisen, dass Sie keinen Zugriff auf den Azure AD-Mandanten (Azure Active Directory) des Unternehmens haben.
+
+- Wenn Sie erstmalig zu einem Azure AD-Mandanten hinzugefügt werden, erhalten Sie eine E-Mail-Einladung, dem Mandanten beizutreten.
+- Nehmen Sie die Einladung an, um erfolgreich dem Mandanten hinzugefügt zu werden.
+    - Wenn die E-Mail nicht angezeigt wird, wenden Sie sich an einen Benutzer mit Zugriff auf den Mandanten, und bitten Sie ihn, [die Einladung erneut zu senden](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator#resend-invitations-to-guest-users).
+    - Nachdem Sie die Einladungs-E-Mail erhalten haben, öffnen Sie die E-Mail, und wählen Sie den Link aus, um die Einladung anzunehmen. Melden Sie sich dann beim Azure-Portal ab und wieder an. (Das Aktualisieren des Browsers funktioniert hierbei nicht.) Sie können dann mit dem Erstellen des Migrationsprojekts beginnen.
+
+
+## <a name="error-invalid-ovf-manifest-entry"></a>Fehler „Ungültiger OVF-Manifesteintrag“
+
+Wenn Sie den Fehler „Die angegebene Manifestdatei ist ungültig: Ungültiger OVF-Manifesteintrag“ erhalten, gehen Sie wie folgt vor:
+
+1. Überprüfen Sie, ob die OVA-Datei für die Azure Migrate-Appliance ordnungsgemäß heruntergeladen wird, indem Sie deren Hashwert überprüfen. [Weitere Informationen](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware) Wenn der Hashwert nicht übereinstimmt, laden Sie die OVA-Datei erneut herunter, und wiederholen Sie die Bereitstellung.
+2. Wenn immer noch Fehler bei der Bereitstellung auftreten und Sie den VMware vSphere-Client zum Bereitstellen der OVF-Datei verwenden, versuchen Sie, die Bereitstellung über den vSphere-Webclient vorzunehmen. Wenn die Bereitstellung weiterhin fehlschlägt, versuchen Sie es mit einem anderen Webbrowser.
+3. Wenn Sie den vSphere-Webclient verwenden und die Bereitstellung auf vCenter Server 6.5 oder 6.7 ausführen möchten, versuchen Sie, die OVA-Datei direkt auf dem ESXi-Host bereitzustellen:
+   - Stellen Sie mit dem Webclient (https://<*Host-IP-Adresse*>/ui) eine direkte Verbindung mit dem ESXi-Host her (anstelle von vCenter Server).
+   - Wählen Sie unter **Startseite** > **Bestand** die Optionen **Datei** > **OVF-Vorlage bereitstellen** aus. Navigieren Sie zur OVA-Datei, und schließen Sie die Bereitstellung ab.
 4. Wenn weiterhin ein Fehler bei der Bereitstellung auftritt, wenden Sie sich an den Azure Migrate-Support.
 
-### <a name="unable-to-select-the-azure-cloud-in-the-appliance-fails-with-error-azure-cloud-selection-failed"></a>Die Azure Cloud kann in der Appliance nicht ausgewählt werden, der Fehler „Fehler beim Auswählen der Azure-Cloud“ tritt auf.
+## <a name="appliance-cant-connect-to-the-internet"></a>Die Appliance kann keine Verbindung mit dem Internet herstellen
 
-Dies ist ein bekanntes Problem und eine Lösung für das Problem ist verfügbar. Laden Sie die [neuesten Upgrade-Teile](https://docs.microsoft.com/azure/migrate/concepts-collector-upgrade#continuous-discovery-upgrade-versions) für die Appliance herunter, und aktualisieren Sie die Appliance, um die Korrektur anzuwenden.
+Dies kann der Fall sein, wenn sich der Appliancecomputer hinter einem Proxy befindet.
 
-### <a name="collector-is-not-able-to-connect-to-the-internet"></a>Collector kann keine Verbindung mit dem Internet herstellen
+- Stellen Sie sicher, dass Sie die Anmeldeinformationen für die Autorisierung angeben, wenn der Proxy diese benötigt.
+- Wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Verbindungen verwenden, fügen Sie die folgenden URLs einer Zulassungsliste hinzu:
 
-Dies kann passieren, wenn sich der Computer, den Sie verwenden, hinter einem Proxy befindet. Stellen Sie sicher, dass Sie die Anmeldeinformationen für die Autorisierung angeben, wenn der Proxy diese benötigt.
-Wenn Sie URL-basierte Firewallproxys zur Steuerung ausgehender Verbindungen verwenden, stellen Sie sicher, dass die folgenden erforderlichen Dienst-URLs zur Whitelist hinzugefügt werden:
+    - [URLs für VMware-Bewertung](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-url-access-requirements)
+    - [URLs für Hyper-V-Bewertung](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#assessment-appliance-url-access)
+    - [URLs für VMware-Migration ohne Agent](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-url-access-requirements)
+    - [URLs für VMware-Migration mit Agent](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#replication-appliance-url-access)
+    - [URLs für Hyper-V-Migration](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#migration-hyper-v-host-url-access)
 
-**URL** | **Zweck**  
---- | ---
-*.portal.azure.com | Erforderlich, um die Konnektivität mit dem Azure-Dienst zu überprüfen und Probleme mit der Zeitsynchronisation zu überprüfen.
-*.oneget.org | Erforderlich, um das auf PowerShell basierende vCenter PowerCLI-Modul herunterzuladen.
+- Wenn Sie für die Internetverbindung einen abfangenden Proxy verwenden, importieren Sie das Proxyzertifikat [mit diesen Schritten](https://docs.microsoft.com/azure/migrate/concepts-collector) in die Appliance-VM.
 
-**Der Collector kann aufgrund von Fehlern bei der Zertifikatüberprüfung keine Internetverbindung herstellen.**
+## <a name="errordatetime-synchronization"></a>Fehler: Datums-/Zeitsynchronisierung
 
-Dieses Problem kann auftreten, wenn Sie einen abfangenden Proxy verwenden, um eine Internetverbindung herzustellen, und auf dem virtuellen Collectorcomputer das Proxyzertifikat nicht importiert haben. Eine Anleitung zum Importieren des Proxyzertifikats finden Sie [hier](https://docs.microsoft.com/azure/migrate/concepts-collector).
-
-**Der Collector kann mit der Projekt-ID und dem Schlüssel, die ich aus dem Portal kopiert habe, keine Verbindung mit dem Projekt herstellen.**
-
-Stellen Sie sicher, dass Sie die richtigen Informationen kopiert und eingefügt haben. Installieren Sie zur Problembehandlung Microsoft Monitoring Agent (MMA), und vergewissern Sie sich, dass MMA eine Verbindung mit dem Projekt herstellen kann. Gehen Sie dazu wie folgt vor:
-
-1. Laden Sie [MMA](https://go.microsoft.com/fwlink/?LinkId=828603) auf den virtuellen Collector-Computer herunter.
-2. Doppelklicken Sie auf die heruntergeladenen Datei, um die Installation zu starten.
-3. Klicken Sie im Setup auf der Seite **Willkommen** auf **Weiter**. Klicken Sie auf der Seite **Lizenzbedingungen** auf **Ich stimme zu**, um die Lizenzbedingungen zu akzeptieren.
-4. Behalten Sie unter **Zielordner** den Standardinstallationsordner bei, oder ändern Sie ihn, und klicken Sie anschließend auf **Weiter**.
-5. Wählen Sie unter **Agent-Setupoptionen** die Optionen **Azure Log Analytics** > **Weiter**.
-6. Klicken Sie auf **Hinzufügen**, um einen neuen Log Analytics-Arbeitsbereich hinzuzufügen. Fügen Sie die Projekt-ID und den Schlüssel ein, die Sie kopiert haben. Klicken Sie auf **Weiter**.
-7. Stellen Sie sicher, dass der Agent eine Verbindung mit dem Projekt herstellen kann. Ist dies nicht der Fall, überprüfen Sie die Einstellungen. Wenn der Agent eine Verbindung herstellen kann, der Collector jedoch nicht, wenden Sie sich an den Support.
-
-
-### <a name="error-802-date-and-time-synchronization-error"></a>Fehler 802: Fehler bei der Datums- und Zeitsynchronisierung
-
-Möglicherweise weicht die Serveruhr um mehr als fünf Minuten von der aktuellen Uhrzeit ab. Passen Sie die Uhrzeit auf dem virtuellen Collector-Computer folgendermaßen an die aktuelle Uhrzeit an:
+Ein Fehler bei der Datums- und Zeitsynchronisierung (Fehler 802) weist darauf hin, dass die Serveruhr möglicherweise um mehr als fünf Minuten von der aktuellen Uhrzeit abweicht. Passen Sie die Uhrzeit auf dem virtuellen Collector-Computer an die aktuelle Uhrzeit an:
 
 1. Öffnen Sie auf dem virtuellen Computer eine Administratoreingabeaufforderung.
-2. Führen Sie „w32tm /tz“ aus, um die Zeitzone zu überprüfen.
-3. Führen Sie „w32tm /resync“ aus, um die Zeit zu synchronisieren.
+2. Führen Sie **w32tm /tz** aus, um die Zeitzone zu überprüfen.
+3. Führen Sie **w32tm /resync** aus, um die Zeit zu synchronisieren.
 
-### <a name="vmware-powercli-installation-failed"></a>VMware PowerCLI-Installation fehlgeschlagen
 
-Azure Migrate-Collector lädt PowerCLI herunter und installiert sie auf der Appliance. Ein Fehler bei der PowerCLI-Installation kann durch nicht erreichbare Endpunkte für das PowerCLI-Repository verursacht werden. Um das Problem zu beheben, versuchen Sie, PowerCLI anhand der folgenden Schritte manuell auf der Collector-VM zu installieren:
+## <a name="error-unabletoconnecttoserver"></a>Fehler UnableToConnectToServer
 
-1. Öffnen Sie Windows PowerShell im Administratormodus.
-2. Wechseln Sie zum Verzeichnis „C:\Programme\ProfilerService\VMWare\Scripts\“.
-3. Führen Sie das Skript „InstallPowerCLI.ps1“ aus.
+Wenn dieser Verbindungsfehler angezeigt wird, können Sie möglicherweise keine Verbindung mit vCenter Server „*Servername*.com:9443“ herstellen. Die Fehlerdetails weisen darauf hin, dass unter „https://*Servername*.com:9443/sdk“ kein Endpunkt lauscht, der die Nachricht akzeptieren kann.
 
-### <a name="error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception"></a>Fehler: interner UnhandledException-Fehler: System.IO.FileNotFoundException
+- Überprüfen Sie, ob Sie die neueste Version der Appliance ausführen. Ist dies nicht der Fall, führen Sie ein Upgrade der Appliance auf die [neueste Version](https://docs.microsoft.com/azure/migrate/concepts-collector) durch.
+- Wenn das Problem bei der neuesten Version weiterhin auftritt, ist die Appliance möglicherweise nicht in der Lage, den angegebenen vCenter Server-Namen aufzulösen, oder der angegebene Port ist eventuell falsch. Wenn der Port nicht angegeben ist, versucht Collector standardmäßig, eine Verbindung mit Port 443 herzustellen.
 
-Dieses Problem kann aufgrund eines Problems mit der VMware PowerCLI-Installation auftreten. Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
+    1. Versuchen Sie, „*Servername*.com“ von der Appliance aus per Ping zu erreichen.
+    2. Wenn Schritt 1 nicht erfolgreich ist, können Sie versuchen, eine Verbindung mit vCenter Server über die IP-Adresse herzustellen.
+    3. Ermitteln Sie die richtige Portnummer für die Verbindung mit vCenter Server.
+    4. Überprüfen Sie, ob vCenter Server ausgeführt wird und betriebsbereit ist.
 
-1. Falls Sie nicht die aktuelle Version der Collectorappliance verwenden, aktualisieren Sie Ihren Collector auf die [aktuelle Version](https://aka.ms/migrate/col/checkforupdates), und überprüfen Sie, ob das Problem dadurch behoben wurde.
-2. Wenn Sie bereits über die aktuelle Collectorversion verfügen, führen Sie die folgenden Schritte aus, um eine Neuinstallation von PowerCLI vorzunehmen:
 
-   a. Schließen Sie den Webbrowser in der Appliance.
+## <a name="error-appliance-might-not-be-registered"></a>Fehler Die Appliance ist möglicherweise nicht registriert
 
-   b. Beenden Sie den Dienst „Azure Migrate-Collector“ in Windows Service Manager (öffnen Sie „Ausführen“, und geben Sie „services.msc“ ein, um Windows Service Manager zu öffnen). Klicken Sie mit der rechten Maustaste auf den Dienst „Azure Migrate-Collector“, und klicken Sie auf „Beenden“.
+- Der Fehler 60052 „Möglicherweise wurde die Appliance nicht erfolgreich beim Azure Migrate-Projekt registriert“ tritt auf, wenn das zum Registrieren der Appliance verwendete Azure-Konto nicht über ausreichende Berechtigungen verfügt.
+    - Stellen Sie sicher, dass das für die Registrierung der Appliance verwendete Azure-Benutzerkonto mindestens über „Mitwirkender“-Berechtigungen für das Abonnement verfügt.
+    - Weitere Informationen zu den erforderlichen Azure-Rollen und -Berechtigungen finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements).
+- Der Fehler 60039 „Möglicherweise wurde die Appliance nicht erfolgreich beim Azure Migrate-Projekt registriert" kann auftreten, wenn die Registrierung fehlschlägt, da das zum Registrieren der Appliance verwendete Azure Migrate Projekt nicht gefunden werden kann.
+    - Überprüfen Sie im Azure-Portal, ob das Projekt in der Ressourcengruppe vorhanden ist.
+    - Sollte das Projekt nicht vorhanden sein, erstellen Sie in Ihrer Ressourcengruppe ein neues Azure Migrate-Projekt, und registrieren Sie die Appliance erneut. Informationen zum Erstellen eines neuen Projekts finden Sie [hier](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool).
 
-   c. Löschen Sie an den folgenden Speicherorten alle Ordner, die mit „VMware“ beginnen: C:\Programme\WindowsPowerShell\Modules  
-        C:\Programme (x86)\WindowsPowerShell\Modules
+## <a name="error-key-vault-management-operation-failed"></a>Fehler Ein Key Vault-Verwaltungsvorgang war nicht erfolgreich
 
-   d. Starten Sie den Dienst „Azure Migrate-Collector“ in Windows Service Manager neu (öffnen Sie „Ausführen“, und geben Sie „services.msc“ ein, um Windows Service Manager zu öffnen). Klicken Sie mit der rechten Maustaste auf den Dienst „Azure Migrate-Collector“, und klicken Sie auf „Starten“.
+Wenn der Fehler 60030 oder 60031 „Ein Azure Key Vault-Verwaltungsvorgang war nicht erfolgreich“ auftritt, gehen Sie wie folgt vor:
+- Stellen Sie sicher, dass das für die Registrierung der Appliance verwendete Azure-Benutzerkonto mindestens über „Mitwirkender“-Berechtigungen für das Abonnement verfügt.
+- Vergewissern Sie sich, dass das Konto Zugriff auf den in der Fehlermeldung angegebenen Key Vault hat, und wiederholen Sie dann den Vorgang.
+- Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.
+- Weitere Informationen zu den erforderlichen Azure-Rollen und -Berechtigungen finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements).
 
-   e. Doppelklicken Sie auf die Desktopverknüpfung „Collector ausführen“, um die Collectoranwendung zu starten. Die Collectoranwendung sollte die erforderliche Version von PowerCLI automatisch herunterladen und installieren.
+## <a name="fix-discovery-couldnt-be-initiated"></a>Behebung: Die Ermittlung konnte nicht initiiert werden
 
-3. Wenn das Problem durch die oben genannten Schritte nicht behoben wird, führen Sie die Schritte a bis c oben aus, und installieren Sie PowerCLI anschließend manuell auf der Appliance, indem Sie die folgenden Schritte ausführen:
+Fehler 60028: „Die Ermittlung konnte aufgrund eines Fehlers nicht initiiert werden. Der Vorgang war für die angegebene Liste von Hosts oder Clustern nicht erfolgreich“. Dieser Fehler weist darauf hin, dass die Ermittlung aufgrund eines Problems beim Zugreifen auf oder Abrufen von VM-Informationen auf den in der Fehlermeldung aufgelisteten Hosts nicht gestartet werden konnte. Die übrigen Hosts wurden erfolgreich hinzugefügt.
 
-   a. Bereinigen Sie alle unvollständigen Installationsdateien von PowerCLI, indem Sie die Schritte a bis c oben in Schritt 2 ausführen.
+- Fügen Sie die in der Fehlermeldung angegebenen Hosts mithilfe der Option **Host hinzufügen** erneut hinzu.
+- Gehen Sie im Falle eines Überprüfungsfehlers gemäß der Korrekturanleitung vor, um den Fehler zu beheben, und verwenden Sie dann erneut die Option **Speichern und Ermittlung starten**.
 
-   b. Navigieren Sie zu „Start“ > „Ausführen“ > „Windows PowerShell als Administrator öffnen“.
+## <a name="fix-azure-ad-operation-failed-60025"></a>Behebung: Fehler bei einem Azure AD-Vorgang (60025)
 
-   c. Führen Sie den folgenden Befehl aus:  Install-Module "VMWare.VimAutomation.Core" -RequiredVersion "6.5.2.6234650" (Geben Sie „A“ ein, wenn Sie zur Bestätigung aufgefordert werden.)
+Fehler 60025: „Fehler bei einem Azure AD-Vorgang. Der Fehler trat beim Erstellen oder Aktualisieren der Azure AD-Anwendung auf“. Dieser Fehler tritt auf, wenn zum Initiieren der Ermittlung ein anderes Azure-Benutzerkonto als für die Registrierung der Appliance verwendet wird. Führen Sie einen der folgenden Schritte aus:
 
-   d. Starten Sie den Dienst „Azure Migrate-Collector“ in Windows Service Manager neu (öffnen Sie „Ausführen“, und geben Sie „services.msc“ ein, um Windows Service Manager zu öffnen). Klicken Sie mit der rechten Maustaste auf den Dienst „Azure Migrate-Collector“, und klicken Sie auf „Starten“.
+- Stellen Sie sicher, dass zum Initiieren der Ermittlung dasselbe Benutzerkonto verwendet wird wie zum Registrieren der Appliance.
+- Weisen Sie dem Benutzerkonto, bei dem der Ermittlungsvorgang fehlgeschlagen ist, Zugriffsberechtigungen für die Azure Active Directory-Anwendung zu.
+- Löschen Sie die Ressourcengruppe, die zuvor für das Azure Migrate-Projekt erstellt wurde. Erstellen Sie eine andere Ressourcengruppe, um neu zu beginnen.
+- Weitere Informationen zu den Azure Active Directory-Anwendungsberechtigungen finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements).
 
-   e. Doppelklicken Sie auf die Desktopverknüpfung „Collector ausführen“, um die Collectoranwendung zu starten. Die Collectoranwendung sollte die erforderliche Version von PowerCLI automatisch herunterladen und installieren.
 
-4. Wenn Sie dieses Modul aufgrund von Firewallproblemen nicht auf die Appliance herunterladen können, führen Sie Download und Installation auf einem Computer mit Internetzugriff aus, und befolgen Sie dabei die folgenden Schritte:
+## <a name="discovered-vms-not-in-portal"></a>Im Portal befinden sich keine ermittelten virtuellen Computer
 
-    a. Bereinigen Sie alle unvollständigen Installationsdateien von PowerCLI, indem Sie die Schritte a bis c oben in Schritt 2 ausführen.
+Wenn Sie die Ermittlung starten und bei **Serverbewertung** und **Servermigration** zwar den Status **Ermittlung wird ausgeführt**, nicht aber die virtuellen Computer im Portal sehen können, beachten Sie Folgendes:
 
-    b. Navigieren Sie zu „Start“ > „Ausführen“ > „Windows PowerShell als Administrator öffnen“.
+- Nach dem Start der Ermittlung von der Appliance dauert eine VMware-VM-Ermittlung ungefähr 15 Minuten und die Hyper-V-VM-Ermittlung für jeden hinzugefügten Host etwa zwei Minuten.
+- Wenn nach dieser Wartezeit immer noch **Ermittlung wird ausgeführt** angezeigt wird, wählen Sie **Aktualisieren** auf der Registerkarte **Server** aus. Dadurch sollte bei **Serverbewertung** und **Servermigration** die Anzahl der ermittelten Server angezeigt werden.
 
-    c. Führen Sie den folgenden Befehl aus:  Install-Module "VMWare.VimAutomation.Core" -RequiredVersion "6.5.2.6234650" (Geben Sie „A“ ein, wenn Sie zur Bestätigung aufgefordert werden.)
 
-    d. Kopieren Sie alle Module, die mit „VMware“ beginnen, aus „C:\Programme (x86) \WindowsPowerShell\Modules“ an den gleichen Speicherort auf der Collector-VM.
+## <a name="deleted-vms-in-the-portal"></a>Im Portal befinden sich gelöschte virtuelle Computer
 
-    e. Starten Sie den Dienst „Azure Migrate-Collector“ in Windows Service Manager neu (öffnen Sie „Ausführen“, und geben Sie „services.msc“ ein, um Windows Service Manager zu öffnen). Klicken Sie mit der rechten Maustaste auf den Dienst „Azure Migrate-Collector“, und klicken Sie auf „Starten“.
+Wenn Sie eine Appliance bereitgestellt haben, die fortlaufend die lokale Umgebung ermittelt, gelöschte virtuelle Computer jedoch weiterhin im Portal angezeigt werden, beachten Sie Folgendes:  
 
-    f. Doppelklicken Sie auf die Desktopverknüpfung „Collector ausführen“, um die Collectoranwendung zu starten. Die Collectoranwendung sollte die erforderliche Version von PowerCLI automatisch herunterladen und installieren.
+- Es kann bis zu 30 Minuten dauern, bis die von der Appliance gesammelten Ermittlungsdaten im Portal erscheinen.
+- Wenn nach 30 Minuten keine aktuellen Informationen angezeigt werden, aktualisieren Sie die Daten mit den folgenden Schritten:
 
-### <a name="error-unabletoconnecttoserver"></a>Fehler: UnableToConnectToServer
+    1. Wechseln Sie zu **Server** > **Azure Migrate-Serverbewertung**, und wählen Sie **Übersicht** aus.
+    2. Wählen Sie unter **Verwalten** die Option **Agent-Integrität** aus.
+    3. Wählen Sie **Agent aktualisieren** aus.
+    1. Warten Sie, bis der Aktualisierungsvorgang abgeschlossen wurde. Sie sollten nun aktuelle Informationen sehen.
 
-Wegen folgendem Fehler kann keine Verbindung mit vCenter Server „Servername.com:9443“ hergestellt werden: Unter https://Servername.com:9443/sdk hat kein Endpunkt gelauscht, der die Nachricht akzeptieren konnte.
+## <a name="vm-information-isnt-in-the-portal"></a>Im Portal befinden sich keine VM-Informationen
 
-Überprüfen Sie, ob die neueste Version der Collectorappliance ausgeführt wird. Wenn das nicht der Fall ist, aktualisieren Sie auf die [neueste Version](https://docs.microsoft.com/azure/migrate/concepts-collector).
+- Es kann bis zu 30 Minuten dauern, bis die von der Appliance gesammelten Ermittlungsdaten im Portal erscheinen.
+- Wenn nach 30 Minuten keine aktuellen Informationen angezeigt werden, aktualisieren Sie die Daten mit den folgenden Schritten:
 
-Wenn das Problem auch bei der neuesten Version auftritt, kann der Collectorcomputer den angegebenen vCenter Server-Namen möglicherweise nicht auflösen oder der angegebene Port ist falsch. Wenn der Port nicht angegeben ist, versucht Collector standardmäßig, eine Verbindung mit Port 443 herzustellen.
+    1. Wechseln Sie zu **Server** > **Azure Migrate-Serverbewertung**, und wählen Sie **Übersicht** aus.
+    2. Wählen Sie unter **Verwalten** die Option **Agent-Integrität** aus.
+    3. Wählen Sie **Agent aktualisieren** aus.
+    1. Warten Sie, bis der Aktualisierungsvorgang abgeschlossen wurde. Sie sollten nun aktuelle Informationen sehen.
 
-1. Versuchen Sie, „Servername.com“ vom Collectorcomputer aus per Ping zu erreichen.
-2. Wenn Schritt 1 nicht erfolgreich ist, können Sie versuchen, über die IP-Adresse eine Verbindung mit vCenter Server herzustellen.
-3. Ermitteln Sie die richtige Portnummer für die Verbindungsherstellung mit vCenter.
-4. Überprüfen Sie abschließend, ob vCenter Server ausgeführt wird und betriebsbereit ist.
 
-### <a name="antivirus-exclusions"></a>Antivirenausschlüsse
+## <a name="fix-cant-connect-to-host-or-cluster"></a>Behebung: Verbindung mit Host oder Cluster nicht möglich
 
-Um die Azure Migrate Appliance zu härten, müssen Sie die folgenden Ordner in der Appliance von Antivirenscans ausschließen:
+Fehler 50004: „Es ist keine Verbindung mit einem Host oder Cluster möglich, da der Servername nicht aufgelöst werden kann. WinRM-Fehlercode: 0x803381B9“. Dieser Fehler tritt auf, wenn der Azure DNS-Dienst für die Appliance den von Ihnen angegebenen Cluster- oder Hostnamen nicht auflösen kann.
 
-- Ordner mit den Binärdateien für den Azure Migrate-Dienst. Schließen Sie alle Unterordner aus.
-  %ProgramFiles%\ProfilerService  
-- Azure Migrate-Webanwendung. Schließen Sie alle Unterordner aus.
-  %SystemDrive%\inetpub\wwwroot
-- Lokaler Cache für Datenbank- und Protokolldateien. Der Azure Migrate-Dienst benötigt Lese-/Schreibzugriff auf diesen Ordner.
-  %SystemDrive%\Profiler
+- Wenn Sie diesen Fehler auf dem Cluster sehen, versuchen Sie, den vollqualifizierten Domänennamen (FQDN) des Clusters anzugeben.
+- Sie sehen diesen Fehler eventuell auch für Hosts in einem Cluster. In diesem Fall kann die Appliance zwar eine Verbindung mit dem Cluster herstellen, doch gibt der Cluster Hostnamen zurück, bei denen es sich nicht um FQDNs handelt. Um diesen Fehler zu beheben, aktualisieren Sie die „hosts“-Datei auf der Appliance und fügen Sie ein Mapping von IP-Adresse und Hostnamen hinzu:
+    1. Öffnen Sie Notepad als Administrator.
+    2. Öffnen Sie die Datei „C:\Windows\System32\Drivers\etc\hosts“.
+    3. Fügen Sie die IP-Adresse und den Hostnamen in einer Zeile hinzu. Wiederholen Sie dies für jeden Host oder Cluster, bei dem dieser Fehler angezeigt wird.
+    4. Speichern und schließen Sie die Datei „hosts“.
+    5. Überprüfen Sie mithilfe der Applianceverwaltungs-App, ob die Appliance eine Verbindung mit den Hosts herstellen kann. Nach 30 Minuten sollten die neuesten Informationen für diese Hosts im Azure-Portal angezeigt werden.
 
-## <a name="dependency-visualization-issues"></a>Probleme bei der Visualisierung von Abhängigkeiten
 
-### <a name="i-am-unable-to-find-the-dependency-visualization-functionality-for-azure-government-projects"></a>Ich kann die Funktion zur Visualisierung von Abhängigkeiten für Azure Government-Projekte nicht finden.
 
-Azure Migrate hängt hinsichtlich der Visualisierungsfunktion von der Dienstzuordnung ab, und da die Dienstzuordnung in Azure Government zurzeit nicht verfügbar ist, ist diese Funktionalität auch nicht in Azure Government verfügbar.
+## <a name="fix-assessment-readiness"></a>Behebung: Bewertungsbereitschaft
 
-### <a name="i-installed-the-microsoft-monitoring-agent-mma-and-the-dependency-agent-on-my-on-premises-vms-but-the-dependencies-are-now-showing-up-in-the-azure-migrate-portal"></a>Ich habe Microsoft Monitoring Agent (MMA) und den Dependency-Agent auf meinen lokalen virtuellen Computern installiert. Jetzt werden die Abhängigkeiten jedoch im Azure Migrate-Portal angezeigt.
-
-Nachdem Sie die Agents installiert haben, benötigt Azure Migrate üblicherweise 15 bis 30 Minuten, um die Abhängigkeiten im Portal anzuzeigen. Wenn Sie bereits länger als 30 Minuten warten, stellen Sie sicher, dass MMA mit dem OMS-Arbeitsbereich kommunizieren kann. Gehen Sie hierzu wie folgt vor:
-
-Bei einer virtuellen Windows-VM:
-1. Wechseln Sie zur **Systemsteuerung**, und starten Sie **Microsoft Monitoring Agent**
-2. Rufen Sie im Popup zu den MMA-Eigenschaften die Registerkarte **Azure Log Analytics (OMS)** auf.
-3. Stellen Sie sicher, dass der **Status** für den Arbeitsbereich grün angezeigt wird.
-4. Wenn der Status nicht grün angezeigt wird, entfernen Sie den Arbeitsbereich, und fügen Sie ihn zu MMA neu hinzu.
-        ![MMA-Status](./media/troubleshooting-general/mma-status.png)
-
-Überprüfen Sie bei einer Linux-VM, ob die Installationsbefehle für MMA und den Dependency-Agent erfolgreich ausgeführt wurden.
-
-### <a name="what-are-the-operating-systems-supported-by-mma"></a>Welche Betriebssysteme werden von MMA unterstützt?
-
-Die Liste der von MMA unterstützten Windows-Betriebssysteme finden Sie [hier](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems).
-Die Liste der von MMA unterstützten Linux-Betriebssysteme finden Sie [hier](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems).
-
-### <a name="what-are-the-operating-systems-supported-by-dependency-agent"></a>Welche Betriebssysteme werden vom Dependency-Agent unterstützt?
-
-Die Liste der vom Dependency-Agent unterstützten Windows-Betriebssysteme finden Sie [hier](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems).
-Die Liste der vom Dependency-Agent unterstützten Linux-Betriebssysteme finden Sie [hier](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
-
-### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Ich kann Abhängigkeiten in Azure Migrate nicht länger als eine Stunde visualisieren.
-Azure Migrate ermöglicht Ihnen das Visualisieren von Abhängigkeiten für einen Zeitraum von bis zu einer Stunde. Mit Azure Migrate können Sie zwar um bis zu einen Monat zu einem bestimmten Datum im Verlauf zurückgehen. Die Abhängigkeiten können Sie jedoch nur für einen Zeitraum von maximal einer Stunde visualisieren. So können Sie beispielsweise mithilfe der Zeitraumfunktionalität im Abhängigkeitsdiagramm Abhängigkeiten für gestern, jedoch nur für ein Zeitfenster von einer Stunde anzeigen. Sie können jedoch zum [Abfragen der Abhängigkeitsdaten](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) über einen längeren Zeitraum Azure Monitor-Protokolle verwenden.
-
-### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Für Gruppen mit mehr als 10 virtuellen Computern kann ich keine Abhängigkeiten visualisieren.
-Sie können [Abhängigkeiten für Gruppen visualisieren](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies), die aus bis zu zehn VMs bestehen. Falls eine Gruppe aus mehr als zehn VMs besteht, sollten Sie die Gruppe in kleinere Gruppen aufteilen und die Abhängigkeiten anschließend visualisieren.
-
-### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>Ich habe Agents installiert und die Visualisierung von Abhängigkeiten verwendet, um Gruppen zu erstellen. Jetzt zeigen die Computer nach dem Failover die Aktion „Agent installieren“ anstelle von „Abhängigkeiten anzeigen“ an.
-* Nach einem geplanten oder ungeplanten Failover werden lokale Computer abgeschaltet, und entsprechende Computer in Azure werden hochgefahren. Diese Computer beziehen eine andere MAC-Adresse. Je nachdem, ob der Benutzer die lokale IP-Adresse beibehalten möchte oder nicht, beziehen sie möglicherweise auch eine andere IP-Adresse. Wenn sich sowohl MAC- als auch IP-Adressen unterscheiden, ordnet Azure Migrate die lokalen Computern keinen Dienstzuordnungs-Abhängigkeitsdaten zu und fordert den Benutzer auf, Agents zu installieren, anstatt Abhängigkeiten anzuzeigen.
-* Nach dem Testfailover bleiben die lokalen Computer erwartungsgemäß eingeschaltet. Entsprechende Computer, die in Azure hochgefahren wurden, erhalten andere MAC-Adressen und u.U. auch andere IP-Adressen. Sofern der Benutzer ausgehenden Datenverkehr von Azure Monitor-Protokolle von diesen Computern nicht sperrt, ordnet Azure Migrate die lokalen Computer keinen Dienstzuordnungs-Abhängigkeitsdaten zu und fordert den Benutzer auf, Agents zu installieren, anstatt Abhängigkeiten anzuzeigen.
-
-## <a name="troubleshoot-azure-readiness-issues"></a>Behandeln von Problemen bei der Azure-Bereitschaft
+Beheben Sie Probleme mit der Bewertungsbereitschaft wie folgt:
 
 **Problem** | **Behebung**
 --- | ---
-Nicht unterstützter Starttyp | Azure unterstützt keine virtuellen Computer mit dem Starttyp „EFI“. Vor einer Migration muss der Starttyp in „BIOS“ konvertiert werden. <br/><br/>Die entsprechenden virtuellen Computer können mit [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/tutorial-migrate-on-premises-to-azure) migriert werden, da Azure Site Recovery den Starttyp des virtuellen Computers im Rahmen der Migration in „BIOS“ konvertiert.
-Bedingt unterstütztes Windows-Betriebssystem | Der Unterstützungszeitraum für das Betriebssystem ist abgelaufen. Für die [Unterstützung in Azure](https://aka.ms/WSosstatement) wird eine benutzerdefinierte Supportvereinbarung (Custom Support Agreement, CSA) benötigt. Führen Sie vor der Migration ggf. ein Upgrade des Betriebssystems durch.
-Nicht unterstütztes Windows-Betriebssystem | Azure unterstützt nur [bestimmte Windows-Betriebssystemversionen](https://aka.ms/WSosstatement). Führen Sie vor der Migration zu Azure ggf. ein Upgrade des Betriebssystems durch.
-Bedingt unterstütztes Linux-Betriebssystem | Azure unterstützt nur [bestimmte Linux-Betriebssystemversionen](../virtual-machines/linux/endorsed-distros.md). Führen Sie vor der Migration zu Azure ggf. ein Upgrade des Betriebssystems durch.
-Nicht unterstütztes Linux-Betriebssystem | Der Computer startet zwar unter Umständen in Azure, das Betriebssystem wird von Azure jedoch nicht unterstützt. Führen Sie vor der Migration zu Azure ggf. ein Upgrade auf eine [unterstützte Linux-Version](../virtual-machines/linux/endorsed-distros.md) durch.
-Unbekanntes Betriebssystem | Das Betriebssystem des virtuellen Computers wurde in vCenter Server als „Anderes“ angegeben, und Azure Migrate kann deshalb nicht beurteilen, ob der virtuelle Computer für Azure bereit ist. Vergewissern Sie sich, dass das Betriebssystem auf dem Computer von Azure [unterstützt](https://aka.ms/azureoslist) wird, bevor Sie den Computer migrieren.
-Nicht unterstützte Bitanzahl für das Betriebssystem | Virtuelle Computer mit 32-Bit-Betriebssystem starten zwar unter Umständen in Azure, es empfiehlt sich jedoch, vor der Migration zu Azure ein Betriebssystemupgrade auf die 64-Bit-Version durchzuführen.
-Erfordert Visual Studio-Abonnement. | Auf dem Computer wird ein Windows-Clientbetriebssystem ausgeführt. Dies wird nur in Visual Studio-Abonnements unterstützt.
-Kein virtueller Computer für erforderliche Speicherleistung gefunden. | Die erforderliche Speicherleistung (IOPS/Durchsatz) für den Computer überschreitet die von virtuellen Azure-Computern unterstützte Leistung. Reduzieren Sie vor der Migration die Speicheranforderungen für den Computer.
+Nicht unterstützter Starttyp | Azure unterstützt keine virtuellen Computer mit dem Starttyp „EFI“. Wir empfehlen, dass Sie vor einer Migration den Starttyp in „BIOS“ ändern. <br/><br/>Sie können die Azure Migrate-Servermigration verwenden, um die Migration solcher virtuellen Computer zu verarbeiten. Sie ändert den Starttyp des virtuellen Computers im Rahmen der Migration in „BIOS“.
+Bedingt unterstütztes Windows-Betriebssystem | Der Unterstützungszeitraum für das Betriebssystem ist abgelaufen. Für die [Unterstützung in Azure](https://aka.ms/WSosstatement) wird eine benutzerdefinierte Supportvereinbarung (Custom Support Agreement, CSA) benötigt. Ziehen Sie vor der Migration zu Azure ein Upgrade in Erwägung.
+Nicht unterstütztes Windows-Betriebssystem | Azure unterstützt nur [ausgewählte Windows-Betriebssystemversionen](https://aka.ms/WSosstatement). Ziehen Sie vor der Migration zu Azure ein Upgrade des Computers in Erwägung.
+Bedingt unterstütztes Linux-Betriebssystem | Azure unterstützt nur [ausgewählte Linux-Betriebssystemversionen](../virtual-machines/linux/endorsed-distros.md). Ziehen Sie vor der Migration zu Azure ein Upgrade des Computers in Erwägung.
+Nicht unterstütztes Linux-Betriebssystem | Der Computer startet möglicherweise in Azure, aber Azure stellt keine Betriebssystemunterstützung bereit. Ziehen Sie vor der Migration zu Azure ein Upgrade auf eine [unterstützte Linux-Version](../virtual-machines/linux/endorsed-distros.md) in Erwägung.
+Unbekanntes Betriebssystem | Das Betriebssystem der VM wurde in vCenter Server als „Sonstige“ angegeben. Dieses Verhalten hindert Azure Migrate daran, die Azure-Bereitschaft der VM zu überprüfen. Stellen Sie sicher, dass das Betriebssystem von Azure [unterstützt](https://aka.ms/azureoslist) wird, bevor Sie den Computer migrieren.
+Nicht unterstützte Bitversion | Virtuelle Computer mit einem 32-Bit-Betriebssystem starten zwar unter Umständen in Azure, es empfiehlt sich jedoch, vor der Migration zu Azure ein Upgrade auf 64-Bit durchzuführen.
+Erfordert ein Microsoft Visual Studio-Abonnement. | Auf dem Computer wird ein Windows-Clientbetriebssystem ausgeführt, das nur mit einem Visual Studio-Abonnement unterstützt wird.
+Kein virtueller Computer für erforderliche Speicherleistung gefunden. | Die erforderliche Speicherleistung (Eingabe/Ausgabe-Vorgänge pro Sekunde (IOPS) und Durchsatz) für den Computer überschreitet die von virtuellen Azure-Computern unterstützte Leistung. Reduzieren Sie vor der Migration die Speicheranforderungen für den Computer.
 Kein virtueller Computer für erforderliche Netzwerkleistung gefunden. | Die erforderliche Netzwerkleistung (ein-/ausgehend) für den Computer überschreitet die von virtuellen Azure-Computern unterstützte Leistung. Reduzieren Sie die Netzwerkanforderungen für den Computer.
 Kein virtueller Computer am angegebenen Speicherort gefunden. | Geben Sie vor der Migration einen anderen Zielort an.
-Mindestens ein Datenträger ist ungeeignet. | Mindestens ein mit der VM verbundener Datenträger erfüllt nicht die Azure-Anforderungen. Stellen Sie für jeden mit der VM verbundenen Datenträger sicher, dass die Größe des Datenträgers kleiner als 4 TB ist. Anderenfalls verkleinern Sie die Datenträgergröße, bevor Sie zu Azure migrieren. Stellen Sie sicher, dass die von jedem Datenträger benötigte Leistung (IOPS/Durchsatz) von [Azure-Datenträgern verwalteter virtueller Computer](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits) unterstützt wird.   
+Mindestens ein Datenträger ist ungeeignet. | Mindestens ein an den virtuellen Computer angeschlossener Datenträger erfüllt die Azure-Anforderungen nicht.<br/><br/> Von der Azure Die Serverbewertung unterstützt derzeit keine SSD Ultra-Datenträger und bewertet die Datenträger anhand der Datenträgergrenzwerte für verwaltete Premium-Datenträger (32 TB).<br/><br/> Stellen Sie für jeden an den virtuellen Computer angeschlossenen Datenträger sicher, dass die Größe des Datenträgers kleiner als 64 TB (von SSD Ultra-Datenträgern unterstützt) ist.<br/><br/> Wenn dies nicht der Fall ist, reduzieren Sie die Datenträgergröße vor der Migration zu Azure, oder verwenden Sie in Azure mehrere Datenträger, und [kombinieren Sie sie in Stripesets](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping), um höhere Speichergrenzwerte zu erzielen. Stellen Sie sicher, dass die von jedem Datenträger benötigte Leistung (IOPS und Durchsatz) von [verwalteten Azure-Datenträgern virtueller Computer](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits) unterstützt wird.
 Mindestens ein Netzwerkadapter ist ungeeignet. | Entfernen Sie nicht verwendete Netzwerkadapter vor der Migration vom Computer.
 Anzahl der Datenträger überschreitet den Grenzwert | Entfernen Sie nicht verwendete Datenträger vor der Migration vom Computer.
-Datenträgergröße überschreitet den Grenzwert | Azure unterstützt Datenträger mit einer Größe von bis zu 4 TB. Verkleinern Sie Datenträger vor der Migration auf weniger als 4 TB.
+Datenträgergröße überschreitet den Grenzwert | Von der Azure Die Serverbewertung unterstützt derzeit keine SSD Ultra-Datenträger und bewertet die Datenträger anhand der Grenzwerte für Premium-Datenträger (32 TB).<br/><br/> Azure unterstützt jedoch Datenträger mit einer Größe von bis zu 64 TB (von SSD Ultra-Datenträgern unterstützt). Reduzieren Sie die Datenträgergröße vor der Migration auf weniger als 64 TB, oder verwenden Sie mehrere Datenträger in Azure, und [kombinieren Sie sie in Stripesets](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping), um höhere Speichergrenzwerte zu erzielen.
 Datenträger am angegebenen Speicherort nicht verfügbar | Stellen Sie vor der Migration sicher, dass sich der Datenträger am Zielspeicherort befindet.
 Datenträger für die angegebene Redundanz nicht verfügbar | Der Datenträger muss den in den Bewertungseinstellungen definierten Redundanzspeichertyp verwenden (standardmäßig LRS).
-Datenträgereignung konnte aufgrund eines internen Fehlers nicht ermittelt werden | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
+Datenträgereignung konnte aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
 Kein virtueller Computer gefunden, der die Kern- und Arbeitsspeicheranforderungen erfüllt | Azure konnte keinen geeigneten VM-Typ finden. Reduzieren Sie vor der Migration den Arbeitsspeicher und die Anzahl der Kerne auf dem lokalen Computer.
 Eignung des virtuellen Computers konnte aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
 Eignung konnte für mindestens einen Datenträger aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
 Eignung konnte für mindestens einen Netzwerkadapter aufgrund eines internen Fehlers nicht ermittelt werden. | Versuchen Sie, eine neue Bewertung für die Gruppe zu erstellen.
 
+## <a name="linux-vms-are-conditionally-ready"></a>Virtuelle Linux-Computer sind „bedingt bereit“
 
-## <a name="collect-logs"></a>Erfassen von Protokollen
+Bei der Serverbewertung werden virtuelle Linux-Computer aufgrund einer bekannten Lücke in der Serverbewertung als „bedingt bereit“ gekennzeichnet.
 
-**Wie erfasse ich Protokolle auf dem virtuellen Collector-Computer?**
+- Die Lücke verhindert die Erkennung der Nebenversion des Linux-Betriebssystems, das auf den lokalen virtuellen Computern installiert ist.
+- Beispielsweise erkennt die Serverbewertung bei RHEL 6.10 derzeit nur RHEL 6 als Betriebssystemversion.
+-  Da Azure nur bestimmte Versionen von Linux unterstützt, werden die virtuellen Linux-Computer in der Serverbewertung derzeit als „bedingt bereit“ markiert.
+- Sie können ermitteln, ob das Linux-Betriebssystem des lokalen virtuellen Computers für Azure geeignet ist. Informationen hierzu finden Sie unter [Linux-Unterstützung von Azure](https://aka.ms/migrate/selfhost/azureendorseddistros).
+-  Nachdem Sie die unterstützte Distribution überprüft haben, können Sie diese Warnung ignorieren.
 
-Die Protokollierung ist standardmäßig aktiviert. Die Protokolle befinden sich an folgenden Speicherorten:
+## <a name="azure-skus-exceed-on-premises-sizing"></a>Azure-SKUs überschreiten lokale Dimensionierung
 
-- C:\Profiler\ProfilerEngineDB.sqlite
-- C:\Profiler\Service.log
-- C:\Profiler\WebApp.log
+Je nach Art der Bewertung empfiehlt die Azure Migrate-Serverbewertung möglicherweise Azure-VM-SKUs mit mehr Kernen und Arbeitsspeicher als bei der aktuellen lokalen Zuordnung:
 
-Führen Sie folgende Schritte aus, um die Ereignisablaufverfolgung für Windows zu erfassen:
 
-1. Öffnen Sie auf dem virtuellen Collector-Computer ein PowerShell-Befehlsfenster.
-2. Führen Sie **Get-EventLog -LogName Application | export-csv eventlog.csv** aus.
+- Die Empfehlung für VM-SKUs richtet sich nach den Bewertungseigenschaften.
+- Dies hängt von der Art der Bewertung ab, die Sie in der Serverbewertung ausführen: *Leistungsbasiert* oder *Wie lokal*.
+- Bei leistungsbasierten Bewertungen berücksichtigt die Serverbewertung die Nutzungsdaten der lokalen virtuellen Computer (CPU-, Speicher-, Datenträger- und Netzwerkauslastung), um die richtige Ziel-VM-SKU für Ihre lokalen virtuellen Computer zu bestimmen. Außerdem wird bei der Bestimmung der effektiven Auslastung ein Komfortfaktor hinzugefügt.
+- Bei der lokalen Dimensionierung werden Leistungsdaten nicht berücksichtigt, und die Ziel-SKU wird auf der Grundlage der lokalen Zuordnung empfohlen.
 
-**Wie erfasse ich im Portal Protokolle des Netzwerkdatenverkehrs?**
+Um zu veranschaulichen, wie sich dies auf Empfehlungen auswirken kann, sehen wir uns ein Beispiel an:
 
-1. Öffnen Sie den Browser, navigieren Sie zum [Portal](https://portal.azure.com), und melden Sie sich an.
+Wir haben einen lokalen virtuellen Computer mit vier Kernen und 8 GB Arbeitsspeicher, mit einer CPU- und Speicherauslastung von jeweils 50 % und einem angegebenen Komfortfaktor von 1,3.
+
+-  Beim Bewertungstyp **Wie lokal** wird eine Azure-VM-SKU mit 4 Kernen und 8 GB Arbeitsspeicher empfohlen.
+- Bei der leistungsbasierten Bewertung würde auf Basis der effektiven CPU- und Speicherauslastung (50 % von 4 Kernen * 1,3 = 2,6 Kerne und 50 % von 8 GB Arbeitsspeicher * 1,3 = 5,3 GB Arbeitsspeicher) die günstigste VM-SKU mit vier Kernen (nächste unterstützte Kernanzahl) und 8 GB Arbeitsspeichergröße (nächste unterstützte Arbeitsspeichergröße) empfohlen.
+- Weitere Informationen zur Dimensionierung bei Bewertungen finden Sie [hier](concepts-assessment-calculation.md#sizing).
+
+## <a name="azure-disk-skus-bigger-than-on-premises"></a>Azure-Datenträger-SKUs größer als lokal
+
+Die Azure Migrate-Serverbewertung empfiehlt möglicherweise je nach Art der Bewertung einen größeren Datenträger.
+- Die Datenträgerdimensionierung in der Serverbewertung hängt von zwei Bewertungseigenschaften ab: dem Dimensionierungskriterium und dem Speichertyp.
+- Wenn das Dimensionierungskriterium **Leistungsbasiert** ist und der Speichertyp **Automatisch** lautet, werden bei der Ermittlung des Zieldatenträgertyps (HDD Standard, SSD Standard oder Premium) die IOPS- und Durchsatzwerte des Datenträgers berücksichtigt. Eine Datenträger-SKU dieses Datenträgertyps wird dann unter Berücksichtigung der Größenanforderungen des lokalen Datenträgers empfohlen.
+- Wenn das Dimensionierungskriterium **Leistungsbasiert** ist und der Speichertyp **Premium** lautet, wird eine Premium-Datenträger-SKU in Azure basierend auf den IOPS, dem Durchsatz und den Größenanforderungen des lokalen Datenträgers empfohlen. Die gleiche Logik wird verwendet, um die Datenträgerdimensionierung durchzuführen, wenn das Dimensionierungskriterium **Wie lokal** verwendet wird und der Speichertyp **HDD Standard**, **SSD Standard** oder **Premium** lautet.
+
+Wenn Sie beispielsweise einen lokalen Datenträger mit 32 GB Speicher haben, die aggregierten Lese- und Schreib-IOPS für den Datenträger aber 800 IOPS sind, empfiehlt die Serverbewertung einen Premium-Datenträger (aufgrund der höheren IOPS-Anforderungen) und dann eine Datenträger-SKU, welche die erforderlichen IOPS und die Größe unterstützen kann. Die nächstliegende Übereinstimmung in diesem Beispiel wäre P15 (256 GB, 1100 IOPS). Für den lokalen Datenträger ist also nur eine Größe von 32 GB erforderlich, von der Serverbewertung wurde jedoch aufgrund der hohen IOPS-Anforderungen des lokalen Datenträgers ein größerer Datenträger empfohlen.
+
+## <a name="fix-percentage-of-utilized-core-or-memory-missing"></a>Behebung: Prozentsatz des ausgelasteten Kerns oder Speichers fehlt
+
+Die Serverbewertung gibt die Meldung „PercentageOfCoresUtilizedMissing“ oder „PercentageOfMemoryUtilizedMissing“ aus, wenn die Azure Migrate-Appliance keine Leistungsdaten für den relevanten lokalen virtuellen Computer sammeln kann.
+
+- Dies kann vorkommen, wenn die virtuellen Computer während der Bewertung ausgeschaltet sind. Die Appliance kann keine Leistungsdaten für eine VM erfassen, wenn sie ausgeschaltet ist.
+- Falls nur Arbeitsspeicher-Leistungsindikatoren fehlen und Sie versuchen, virtuelle Hyper-V-Computer zu bewerten, überprüfen Sie, ob auf diesen virtuellen Computern dynamischer Arbeitsspeicher aktiviert ist. Aufgrund eines bekannten Problems, das nur bei virtuellen Hyper-V-Computern auftritt, kann die Azure Migrate-Appliance keine Arbeitsspeichernutzungsdaten für virtuelle Computer sammeln, für die kein dynamischer Arbeitsspeicher aktiviert ist.
+- Wenn einer der Leistungsindikatoren fehlt, greift die Azure Migrate-Serverbewertung auf die zugewiesenen Kerne und den Arbeitsspeicher zurück und empfiehlt eine entsprechende VM-Größe.
+
+## <a name="is-the-vm-os-license-cost-included-in-cost-assessment"></a>Sind die Lizenzkosten für das VM-Betriebssystem in der Kostenbewertung enthalten?
+
+Die Azure Migrate-Serverbewertung berücksichtigt zurzeit die Kosten einer Betriebssystemlizenz nur für Windows-Computer. Die Lizenzkosten für Linux-Computer werden derzeit nicht berücksichtigt.
+
+## <a name="performance-history-and-percentile-use"></a>Leistungsverlauf und Perzentilverwendung
+
+Diese Eigenschaften gelten bei der Azure Migrate-Serverbewertung nur für die leistungsbasierte Dimensionierung.
+
+Die Serverbewertung sammelt fortlaufend Leistungsdaten von lokalen Computern und nutzt diese Daten, um die VM-SKU und die Datenträger-SKU in Azure zu empfehlen. Diese Leistungsdaten werden wie folgt von der Serverbewertung erfasst:
+- Die Azure Migrate-Appliance erstellt kontinuierlich Profile der lokalen Umgebung, um alle 20 Sekunden Echtzeit-Nutzungsdaten für virtuelle VMware-Computer und alle 30 Sekunden für virtuelle Hyper-V-Computer zu erfassen.
+- Die Appliance führt für die 20- bzw. 30-Sekunden-Stichproben einen Rollup aus, um alle 10 Minuten einen Datenpunkt zu erstellen. Zum Erstellen jedes Datenpunkts wählt die Appliance den Spitzenwert aus allen 20-Sekunden- und 30-Sekunden-Stichproben aus und sendet diesen dann an Azure.
+- Beim Erstellen einer Bewertung in der Serverbewertung, die auf der Leistungsdauer und dem Quantilwert des Leistungsverlaufs basiert, wird der repräsentative Nutzungswert ermittelt. Wenn der Leistungsverlauf beispielsweise eine Woche beträgt und die Quantilauslastung 95. ist, sortiert Azure Migrate alle 10-minütigen Stichprobenpunkte für die letzte Woche in aufsteigender Reihenfolge und wählt dann das 95. Perzentil als repräsentativen Wert aus.
+- Mit dem Wert des 95. Quantils wird sichergestellt, dass Ausreißer ignoriert werden. Diese können enthalten sein, wenn Sie das 99. Quantil wählen.
+- Falls Sie die Spitzenauslastung für den Zeitraum wählen möchten und keine Ausreißer verpassen möchten, sollten Sie das 99. Quantil als Quantilauslastung wählen.
+
+
+
+## <a name="i-cant-find-dependency-visualization-for-azure-government"></a>Ich kann die Abhängigkeitsvisualisierung für Azure Government nicht finden
+
+Azure Migrate ist bei der Funktion zur Visualisierung von Abhängigkeiten von Service Map abhängig. Da Service Map in Azure Government zurzeit nicht verfügbar ist, ist diese Funktionalität auch nicht in Azure Government verfügbar.
+
+## <a name="dependencies-dont-show-after-installing-agents"></a>Abhängigkeiten werden nach der Installation von Agents nicht angezeigt
+
+
+Nachdem Sie die Agents für die Abhängigkeitsvisualisierung auf lokalen virtuellen Computern installiert haben, benötigt Azure Migrate üblicherweise 15 bis 30 Minuten, um die Abhängigkeiten im Portal anzuzeigen. Stellen Sie nach einer Wartezeit von mehr als 30 Minuten sicher, dass Microsoft Monitoring Agent (MMA) eine Verbindung zum Log Analytics-Arbeitsbereich herstellen kann.
+
+Für virtuelle Windows-Computer:
+1. Starten Sie MMA in der Systemsteuerung.
+2. Stellen Sie unter **Microsoft Monitoring Agent-Eigenschaften** > **Azure Log Analytics (OMS)** sicher, dass der **Status** für den Arbeitsbereich grün angezeigt wird.
+3. Wenn der Status nicht grün angezeigt wird, entfernen Sie den Arbeitsbereich, und fügen Sie ihn erneut zu MMA hinzu.
+
+      ![Dialogfeld „MMA-Eigenschaften“](./media/troubleshooting-general/mma-status.png)
+
+Stellen Sie bei virtuellen Linux-Computern sicher, dass die Installationsbefehle für MMA und den Abhängigkeits-Agent erfolgreich ausgeführt wurden.
+
+## <a name="supported-mma-os"></a>Unterstütztes Betriebssystem für MMA
+
+ Überprüfen Sie die unterstützten [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)- und [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)-Betriebssysteme.
+
+## <a name="supported-dependency-agent-os"></a>Unterstütztes Betriebssystem für Abhängigkeits-Agent
+
+Überprüfen Sie die unterstützten [Windows- und Linux-](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)Betriebssysteme.
+
+## <a name="dependencies-for-more-than-an-hour"></a>Abhängigkeiten für mehr als eine Stunde
+
+Mit Azure Migrate können Sie zwar um bis zu einen Monat zu einem bestimmten Datum zurückgehen. Die Abhängigkeiten können Sie jedoch nur für einen Zeitraum von maximal einer Stunde visualisieren.
+
+So können Sie beispielsweise mithilfe der Zeitraumfunktionalität im Abhängigkeitsdiagramm Abhängigkeiten für den gestrigen Tag, jedoch nur für einen Zeitraum von einer Stunde, anzeigen.
+
+Sie können jedoch zum [Abfragen der Abhängigkeitsdaten](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) über einen längeren Zeitraum Azure Monitor-Protokolle verwenden.
+
+## <a name="i-cant-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Für Gruppen mit mehr als 10 virtuellen Computern kann ich keine Abhängigkeiten visualisieren
+
+Bei der Azure Migrate-Serverbewertung können Sie [Abhängigkeiten für Gruppen](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) mit bis zu 10 virtuellen Computern visualisieren. Bei größeren Gruppen empfiehlt es sich für die visuelle Darstellung von Abhängigkeiten, die virtuellen Computer in kleinere Gruppen aufzuteilen.
+
+## <a name="machines-show-install-agent-not-view-dependencies"></a>Computer zeigen „Agent installieren“ und nicht „Abhängigkeiten anzeigen“ an
+
+Nach dem Migrieren von Computern mit aktivierter Abhängigkeitsvisualisierung zu Azure zeigen Computer möglicherweise aufgrund des folgenden Verhaltens die Aktion „Agent installieren“ anstelle von „Abhängigkeiten anzeigen“ an:
+
+
+- Nach der Migration zu Azure werden die lokalen Computer ausgeschaltet, und die entsprechenden virtuellen Computer werden in Azure hochgefahren. Diese Computer beziehen eine andere MAC-Adresse.
+- Je nachdem, ob Sie die lokale IP-Adresse beibehalten haben oder nicht, haben Computer möglicherweise auch eine andere IP-Adresse.
+- Wenn sich sowohl Mac- als auch IP-Adressen von den lokalen Adressen unterscheiden, verknüpft Azure Migrate die lokalen Computer nicht mit Service Map-Abhängigkeitsdaten. In diesem Fall wird die Option zum Installieren des Agents anstatt die Option zum Anzeigen von Abhängigkeiten angezeigt.
+- Nach einer Testmigration zu Azure bleiben die lokalen Computer erwartungsgemäß eingeschaltet. Entsprechende Computer, die in Azure hochgefahren wurden, erhalten andere MAC-Adressen und u. U. auch andere IP-Adressen. Sofern Sie ausgehenden Datenverkehr von Azure Monitor-Protokollen von diesen Computern nicht sperren, ordnet Azure Migrate den lokalen Computern keine Service Map-Abhängigkeitsdaten zu und zeigt daher die Option zum Installieren von Agents statt der Option zum Anzeigen von Abhängigkeiten an.
+
+
+## <a name="collect-network-traffic-logs-in-portal"></a>Sammeln von Protokollen zum Netzwerkdatenverkehr im Portal
+
+Sammeln Sie Protokolle wie folgt:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Drücken Sie F12, um die Entwicklertools zu starten. Deaktivieren Sie ggf. die Einstellung **Einträge beim Navigieren löschen**.
-3. Klicken Sie auf die Registerkarte **Netzwerk**, und starten Sie die Erfassung von Netzwerkdatenverkehr:
-   - Wählen Sie in Chrome die Option **Protokoll speichern**. Die Aufzeichnung sollte automatisch gestartet werden. Ein roter Kreis gibt an, dass der Datenverkehr erfasst wird. Wenn er nicht angezeigt wird, klicken Sie zum Starten auf den schwarzen Kreis.
-   - In Microsoft Edge/IE sollte die Aufzeichnung automatisch gestartet werden. Ist dies nicht der Fall, klicken Sie auf die grüne Wiedergabeschaltfläche.
+3. Wählen Sie die Registerkarte **Netzwerk** aus, und starten Sie die Erfassung von Netzwerkdatenverkehr:
+   - Wählen Sie in Chrome die Option **Protokoll speichern**. Die Aufzeichnung sollte automatisch gestartet werden. Ein roter Kreis gibt an, dass der Datenverkehr erfasst wird. Wenn der rote Kreis nicht angezeigt wird, wählen Sie zum Starten den schwarzen Kreis aus.
+   - In Microsoft Edge und Internet Explorer sollte die Aufzeichnung automatisch gestartet werden. Ist dies nicht der Fall, wählen Sie die grüne Wiedergabeschaltfläche aus.
 4. Versuchen Sie, den Fehler zu reproduzieren.
 5. Nachdem der Fehler während der Aufzeichnung aufgetreten ist, beenden Sie die Aufzeichnung, und speichern Sie eine Kopie der aufgezeichneten Aktivität:
-   - Klicken Sie in Chrome mit der rechten Maustaste, und klicken Sie dann auf **Als HAR mit Inhalt speichern**. Daraufhin werden die Protokolle komprimiert und als HAR-Datei exportiert.
-   - Klicken Sie in Microsoft Edge/IE auf das Symbol **Aufgezeichneten Datenverkehr exportieren**. Daraufhin werden die Protokolle komprimiert und exportiert.
-6. Navigieren Sie zur Registerkarte **Konsole**, um sie auf Warnungen oder Fehler zu prüfen. So speichern Sie das Konsolenprotokoll:
-   - Klicken Sie in Chrome mit der rechten Maustaste auf eine beliebige Stelle im Konsolenprotokoll. Wählen Sie **Speichern als**, um das Protokoll zu exportieren und zu komprimieren.
-   - Klicken Sie in Microsoft Edge/IE mit der rechten Maustaste auf die Fehler, und wählen Sie **Alle kopieren** aus.
+   - Klicken Sie in Chrome mit der rechten Maustaste, und wählen Sie **Als HAR mit Inhalt speichern** aus. Durch diese Aktion werden die Protokolle komprimiert und als HAR-Datei exportiert.
+   - Wählen Sie in Microsoft Edge oder Internet Explorer das Symbol **Aufgezeichneten Datenverkehr exportieren** aus. Durch diese Aktion werden die Protokolle komprimiert und exportiert.
+6. Wählen Sie die Registerkarte **Konsole** aus, um sie auf Warnungen oder Fehler zu überprüfen. So speichern Sie das Konsolenprotokoll:
+   - Klicken Sie in Chrome mit der rechten Maustaste auf eine beliebige Stelle im Konsolenprotokoll. Wählen Sie **Speichern unter** aus, um das Protokoll zu exportieren und zu komprimieren.
+   - Klicken Sie in Microsoft Edge oder Internet Explorer mit der rechten Maustaste auf die Fehler, und wählen Sie **Alle kopieren** aus.
 7. Schließen Sie die Entwicklertools.
-
-## <a name="collector-error-codes-and-recommended-actions"></a>Fehlercodes des Collectors und empfohlene Aktionen
-
-| Fehlercode | Fehlerbezeichnung   | Message   | Mögliche Ursachen | Empfohlene Maßnahme  |
-| --- | --- | --- | --- | --- |
-| 601       | CollectorExpired               | Der Collector ist abgelaufen.                                                        | Collector abgelaufen.                                                                                    | Laden Sie eine neue Version des Collectors herunter, und wiederholen Sie den Vorgang.                                                                                      |
-| 751       | UnableToConnectToServer        | Fehler bei der Verbindungsherstellung mit vCenter Server-Instanz „%Name;“. Fehler: %ErrorMessage;     | Weitere Informationen finden Sie in der Fehlermeldung.                                                             | Beheben Sie das Problem, und wiederholen Sie den Vorgang.                                                                                                           |
-| 752       | InvalidvCenterEndpoint         | Der Server „%Name;“ ist keine vCenter Server-Instanz.                                  | Geben Sie vCenter Server-Details an.                                                                       | Wiederholen Sie den Vorgang mit den richtigen vCenter Server-Details.                                                                                   |
-| 753       | InvalidLoginCredentials        | Fehler bei der Verbindungsherstellung mit vCenter Server-Instanz „%Name;“. Fehler: %ErrorMessage; | Fehler bei der Verbindung mit der vCenter Server-Instanz aufgrund von ungültigen Anmeldeinformationen.                             | Stellen Sie sicher, dass die angegebenen Anmeldeinformationen richtig sind.                                                                                    |
-| 754       | NoPerfDataAvailable           | Keine Leistungsdaten verfügbar.                                               | Überprüfen Sie die Statistikstufe in vCenter Server. Sie muss auf „3“ gesetzt sein, damit Leistungsdaten verfügbar sind. | Ändern Sie die Statistikstufe auf „3“ (für eine Dauer von 5 Minuten, 30 Minuten und 2 Stunden), und versuchen Sie es erneut, nachdem Sie mindestens einen Tag gewartet haben.                   |
-| 756       | NullInstanceUUID               | Einen Computer mit InstanceUUID „NULL“ gefunden.                                  | Ein Objekt in der vCenter Server-Instanz ist möglicherweise nicht geeignet.                                                      | Beheben Sie das Problem, und wiederholen Sie den Vorgang.                                                                                                           |
-| 757       | VMNotFound                     | Virtueller Computer wurde nicht gefunden.                                                  | Virtueller Computer wurde möglicherweise gelöscht: %VMID;                                                                | Stellen Sie sicher, dass die virtuellen Computer, die beim Scannen des vCenter-Bestands ausgewählt wurden, während der Ermittlung vorhanden sind.                                      |
-| 758       | GetPerfDataTimeout             | Timeout bei vCenter-Anforderung. Meldung: %Message;                                  | Die vCenter Server-Anmeldeinformationen sind falsch.                                                              | Überprüfen Sie die vCenter Server-Anmeldeinformationen, und stellen Sie sicher, dass vCenter Server erreichbar ist. Wiederholen Sie den Vorgang. Wenden Sie sich an den Support, wenn das Problem weiterhin besteht. |
-| 759       | VmwareDllNotFound              | VMWare.Vim-DLL wurde nicht gefunden.                                                     | PowerCLI wurde nicht ordnungsgemäß installiert.                                                                   | Überprüfen Sie, ob PowerCLI korrekt installiert ist. Wiederholen Sie den Vorgang. Wenden Sie sich an den Support, wenn das Problem weiterhin besteht.                               |
-| 800       | ServiceError                   | Der Dienst „Azure Migrate-Collector“ wird nicht ausgeführt.                               | Der Dienst „Azure Migrate-Collector“ wird nicht ausgeführt.                                                       | Verwenden Sie „Services.msc“, um den Dienst zu starten, und wiederholen den Vorgang.                                                                             |
-| 801       | PowerCLIError                  | Fehler bei der VMware PowerCLI-Installation.                                          | Fehler bei der VMware PowerCLI-Installation.                                                                  | Wiederholen Sie den Vorgang. Wenn das Problem weiterhin besteht, führen Sie die Installation manuell aus und wiederholen den Vorgang.                                                   |
-| 802       | TimeSyncError                  | Die Uhrzeit ist nicht mit dem Internetzeitserver synchronisiert.                            | Die Uhrzeit ist nicht mit dem Internetzeitserver synchronisiert.                                                    | Stellen Sie sicher, dass die Uhrzeit auf dem Computer genau auf die Zeitzone des Computers eingestellt ist, und wiederholen Sie den Vorgang.                                 |
-| 702       | OMSInvalidProjectKey           | Ungültiger Projektschlüssel angegeben.                                                | Ungültiger Projektschlüssel angegeben.                                                                        | Wiederholen Sie den Vorgang mit dem richtigen Projektschlüssel.                                                                                              |
-| 703       | OMSHttpRequestException        | Fehler beim Senden der Anforderung. Meldung: %Message;                                | Überprüfen Sie die Projekt-ID und den Projektschlüssel, und stellen Sie sicher, dass der Endpunkt erreichbar ist.                                       | Wiederholen Sie den Vorgang. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht.                                                                     |
-| 704       | OMSHttpRequestTimeoutException | Timeout der HTTP-Anforderung. Meldung: %Message;                                     | Überprüfen Sie die Projekt-ID und den Projektschlüssel, und stellen Sie sicher, dass der Endpunkt erreichbar ist.                                       | Wiederholen Sie den Vorgang. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht.                                                                     |

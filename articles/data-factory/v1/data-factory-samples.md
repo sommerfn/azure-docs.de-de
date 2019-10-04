@@ -3,22 +3,20 @@ title: Azure Data Factory Editor – Beispiele
 description: Bietet Informationen zu Beispielen, die zum Funktionsumfang des Azure Data Factory-Diensts gehören.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: c0538b90-2695-4c4c-a6c8-82f59111f4ab
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 03127dc777588f669ef07af52c8f73d986bfe0ea
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020811"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139260"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory Editor – Beispiele
 > [!NOTE]
@@ -30,20 +28,20 @@ Das [Azure-DataFactory-Repository auf GitHub](https://github.com/azure/azure-dat
 
 | Beispiel | BESCHREIBUNG |
 |:--- |:--- |
-| [ADF: Exemplarische Vorgehensweise](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |Dieses Beispiel bietet eine umfassende exemplarische Vorgehensweise zur Verarbeitung von Protokolldateien mithilfe von Azure Data Factory, um sinnvolle Erkenntnisse aus den Protokolldateien zu gewinnen. <br/><br/>Bei dieser Vorgehensweise sammelt die Data Factory-Pipeline Beispielprotokolle, verarbeitet und ergänzt die Daten aus Protokollen durch Verweisdaten und transformiert die Daten zur Bewertung der Effektivität einer vor Kurzem gestarteten Marketingkampagne. |
-| [JSON-Beispiele](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) |Dieses Beispiel enthält JSON-Beispiele für häufige Szenarien. |
-| [Beispiel für ein Downloadprogramm für HTTP-Daten](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample) |Dieses Beispiel demonstriert das Herunterladen von Daten von einem HTTP-Endpunkt nach Azure Blob Storage mithilfe einer benutzerdefinierten .NET-Aktivität. |
-| [Beispiel für eine anwendungsdomänenübergreifende .NET-Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Dieses Beispiel ermöglicht Ihnen das Erstellen einer .NET-Aktivität, die nicht auf die vom Azure Data Factory-Startprogramm verwendeten Assemblyversionen (z.B. WindowsAzure.Storage v4.3.0, Newtonsoft.Json v6.0.x usw.) beschränkt ist. |
-| [R-Skript ausführen](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) |Dieses Beispiel enthält die benutzerdefinierte Data Factory-Aktivität, die verwendet werden kann, um „RScript.exe“ aufzurufen. Dieses Beispiel funktioniert nur mit Ihrem eigenen (nicht bedarfsgesteuerten) HDInsight-Cluster, auf dem R bereits installiert ist. |
-| [Aufrufen von Spark-Aufträgen im HDInsight Hadoop-Cluster](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/Spark) |Dieses Beispiel zeigt, wie Sie die MapReduce-Aktivität verwenden, um ein Spark-Programm aufzurufen. Das Spark-Programm kopiert ganz einfach Daten von einem Azure-Blobcontainer in einen anderen. |
-| [Twitter-Analyse mithilfe der Azure Machine Learning-Batch-Bewertungsaktivität](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Dieses Beispiel zeigt, wie Sie AzureMLBatchScoringActivity verwenden, um ein Azure Machine Learning-Modell aufzurufen, das Twitter-Stimmungsanalysen, -Bewertungen, -Vorhersagen usw. durchführt. |
-| [Twitter-Analyse mithilfe der benutzerdefinierten Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Dieses Beispiel zeigt, wie Sie eine benutzerdefinierte .NET-Aktivität verwenden, um ein Azure Machine Learning-Modell aufzurufen, das Twitter-Stimmungsanalysen, -Bewertungen, -Vorhersagen usw. durchführt. |
-| [Parametrisierte Pipelines für Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ParameterizedPipelinesForAzureML/) |Das Beispiel bietet einen End-to-End-C#-Code zum Bereitstellen von N-Pipelines, um jede durch einen anderen Regionsparameter zu bewerten und erneut zu trainieren. Die Liste der Regionen stammt dabei aus der Datei „parameters.txt“, die in diesem Beispiel enthalten ist. |
-| [Aktualisierung von Verweisdaten für Azure Stream Analytics-Aufträge](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs) |Dieses Beispiel zeigt, wie Sie Azure Data Factory und Azure Stream Analytics zusammen verwenden, um Abfragen mit Verweisdaten auszuführen und die Aktualisierung von Verweisdaten nach einem Zeitplan einzurichten. |
-| [Hybride Pipeline mit lokalem Hortonworks Hadoop](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HybridPipelineWithOnPremisesHortonworksHadoop) |Das Beispiel verwendet einen lokalen Hadoop-Cluster als Computeziel für Aufträge, die in Data Factory ausgeführt werden, genauso als ob Sie andere Computeziele wie einen HDInsight-basierten Hadoop-Cluster in der Cloud hinzufügen würden. |
-| [JSON-Konvertierungstool](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSONConversionTool) |Mit diesem Tool können Sie JSONs aus Versionen, die älter sind als die 2015-07-01-preview bis zur neuesten oder der 2015-07-01-preview (Standard) konvertieren. |
-| [U-SQL-Beispieleingabedatei](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/U-SQL%20Sample%20Input%20File) |Diese Datei ist eine Beispieldatei, die von einer U-SQL-Aktivität verwendet wird. |
-| [Löschen einer Blobdatei](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity) | Dieses Beispiel zeigt eine C#-Datei, die im Rahmen der benutzerdefinierten .net-Aktivität von ADF verwendet werden kann, um Dateien aus dem Quellspeicherort in Azure Blob Storage zu löschen, nachdem die Dateien kopiert wurden.|
+| [ADF: Exemplarische Vorgehensweise](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Dieses Beispiel bietet eine umfassende exemplarische Vorgehensweise zur Verarbeitung von Protokolldateien mithilfe von Azure Data Factory, um sinnvolle Erkenntnisse aus den Protokolldateien zu gewinnen. <br/><br/>Bei dieser Vorgehensweise sammelt die Data Factory-Pipeline Beispielprotokolle, verarbeitet und ergänzt die Daten aus Protokollen durch Verweisdaten und transformiert die Daten zur Bewertung der Effektivität einer vor Kurzem gestarteten Marketingkampagne. |
+| [JSON-Beispiele](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Dieses Beispiel enthält JSON-Beispiele für häufige Szenarien. |
+| [Beispiel für ein Downloadprogramm für HTTP-Daten](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Dieses Beispiel demonstriert das Herunterladen von Daten von einem HTTP-Endpunkt nach Azure Blob Storage mithilfe einer benutzerdefinierten .NET-Aktivität. |
+| [Beispiel für eine anwendungsdomänenübergreifende .NET-Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Dieses Beispiel ermöglicht Ihnen das Erstellen einer .NET-Aktivität, die nicht auf die vom Azure Data Factory-Startprogramm verwendeten Assemblyversionen (z.B. WindowsAzure.Storage v4.3.0, Newtonsoft.Json v6.0.x usw.) beschränkt ist. |
+| [R-Skript ausführen](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Dieses Beispiel enthält die benutzerdefinierte Data Factory-Aktivität, die verwendet werden kann, um „RScript.exe“ aufzurufen. Dieses Beispiel funktioniert nur mit Ihrem eigenen (nicht bedarfsgesteuerten) HDInsight-Cluster, auf dem R bereits installiert ist. |
+| [Aufrufen von Spark-Aufträgen im HDInsight Hadoop-Cluster](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Dieses Beispiel zeigt, wie Sie die MapReduce-Aktivität verwenden, um ein Spark-Programm aufzurufen. Das Spark-Programm kopiert ganz einfach Daten von einem Azure-Blobcontainer in einen anderen. |
+| [Twitter-Analyse mithilfe der Azure Machine Learning-Batch-Bewertungsaktivität](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Dieses Beispiel zeigt, wie Sie AzureMLBatchScoringActivity verwenden, um ein Azure Machine Learning-Modell aufzurufen, das Twitter-Stimmungsanalysen, -Bewertungen, -Vorhersagen usw. durchführt. |
+| [Twitter-Analyse mithilfe der benutzerdefinierten Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Dieses Beispiel zeigt, wie Sie eine benutzerdefinierte .NET-Aktivität verwenden, um ein Azure Machine Learning-Modell aufzurufen, das Twitter-Stimmungsanalysen, -Bewertungen, -Vorhersagen usw. durchführt. |
+| [Parametrisierte Pipelines für Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Das Beispiel bietet einen End-to-End-C#-Code zum Bereitstellen von N-Pipelines, um jede durch einen anderen Regionsparameter zu bewerten und erneut zu trainieren. Die Liste der Regionen stammt dabei aus der Datei „parameters.txt“, die in diesem Beispiel enthalten ist. |
+| [Aktualisierung von Verweisdaten für Azure Stream Analytics-Aufträge](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Dieses Beispiel zeigt, wie Sie Azure Data Factory und Azure Stream Analytics zusammen verwenden, um Abfragen mit Verweisdaten auszuführen und die Aktualisierung von Verweisdaten nach einem Zeitplan einzurichten. |
+| [Hybride Pipeline mit lokalem Hortonworks Hadoop](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |Das Beispiel verwendet einen lokalen Hadoop-Cluster als Computeziel für Aufträge, die in Data Factory ausgeführt werden, genauso als ob Sie andere Computeziele wie einen HDInsight-basierten Hadoop-Cluster in der Cloud hinzufügen würden. |
+| [JSON-Konvertierungstool](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |Mit diesem Tool können Sie JSONs aus Versionen, die älter sind als die 2015-07-01-preview bis zur neuesten oder der 2015-07-01-preview (Standard) konvertieren. |
+| [U-SQL-Beispieleingabedatei](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/U-SQL%20Sample%20Input%20File) |Diese Datei ist eine Beispieldatei, die von einer U-SQL-Aktivität verwendet wird. |
+| [Löschen einer Blobdatei](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity) | Dieses Beispiel zeigt eine C#-Datei, die im Rahmen der benutzerdefinierten .net-Aktivität von ADF verwendet werden kann, um Dateien aus dem Quellspeicherort in Azure Blob Storage zu löschen, nachdem die Dateien kopiert wurden.|
 
 ## <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 Auf GitHub finden Sie die folgenden Azure Resource Manager-Vorlagen für Data Factory.

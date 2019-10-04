@@ -1,20 +1,19 @@
 ---
 title: Installieren von Drittanbieteranwendungen in Azure HDInsight
-description: Es wird beschrieben, wie Sie Hadoop-Anwendungen von Drittanbietern in Azure HDInsight installieren.
-services: hdinsight
+description: Es wird beschrieben, wie Sie Apache Hadoop-Anwendungen von Drittanbietern in Azure HDInsight installieren.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 810f9bb81d367cfe70e59d62d81a9e129cf80e6b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 68bbe22a4a6f7697c2bfab291412aae85efc32e9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225979"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916997"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Installieren von Apache Hadoop-Anwendungen von Drittanbietern in Azure HDInsight
 
@@ -26,22 +25,21 @@ Die folgende Liste zeigt die veröffentlichten Anwendungen:
 
 |Anwendung |Clustertyp(en) | BESCHREIBUNG |
 |---|---|---|
-|AtScale Intelligence Platform |Hadoop |AtScale wandelt Ihren HDInsight-Cluster in einen OLAP-Server mit horizontaler Skalierung um, wodurch Sie vertraute Business Intelligence-Tools (von Microsoft Excel, Power BI und Tableau Software bis hin zu Qlikview), die Sie bereits besitzen und zu schätzen wissen, interaktiv zum Abfragen von Milliarden von Zeilen von Daten verwenden können. |
-|CDAP 4.2, 4.3 for HDInsight |hbase |CDAP ist die erste einheitliche Integrationsplattform für Big Data, die die Amortisationszeit für Hadoop beschleunigt und Informatikern ermöglicht, Self-Service-Daten bereitzustellen. CDAP ist Open Source und erweiterbar, wodurch Hürden für die Innovation entfernt werden. Anforderungen: 4 Regionsknoten und eine D3 v2-Instanz (mindestens). |
-|Datameer |Hadoop |Die skalierbare Self-Service-Plattform von Datameer zum Vorbereiten, Untersuchen und Steuern Ihrer Daten für die Analyse, mit der Sie komplexe Daten aus mehreren Quellen schneller in wertvolle unternehmensrelevante Informationen verwandeln und schnell hilfreiche Erkenntnisse für das gesamte Unternehmen gewinnen können. |
-|Dataiku DSS on HDInsight |Hadoop, Spark |Dataiku DSS ist eine Data Science-Plattform für Unternehmen, mit der Data Scientists und Data Analysts zusammenarbeiten können, um neue Datenprodukte und Dienste effizienter zu entwerfen und auszuführen, wodurch Rohdaten in aussagekräftig Vorhersagen konvertiert werden. |
-|WANdisco Fusion HDI App (2.12.3, 2.12.1, 2.11.2) |Hadoop, Spark, HBase, Storm, Kafka |Die Beibehaltung der Datenkonsistenz in einer verteilten Umgebung ist eine große Herausforderung für Datenvorgänge. WANdisco Fusion ist eine professionelle Softwareplattform, die dieses Problem löst, indem unstrukturierte Datenkonsistenz zwischen beliebigen Umgebungen ermöglicht wird. |
-|H2O Sparkling Water for HDInsight |Spark |H2O Sparkling Water unterstützt die folgenden verteilten Algorithmen: GLM, Naïve Bayes, Distributed Random Forest, Gradient Boosting Machine, Deep Neural Networks, Deep learning, K-means, PCA, Generalized Low Rank Models, Anomalieerkennung und Autoencoders. |
-|Striim for Real-Time Data Integration to HDInsight |Hadoop, HBase, Storm, Spark, Kafka |Striim (Aussprache: Stream) ist eine End-to-End-Integrations- und Intelligence-Plattform für Streamingdaten, die eine kontinuierliche Erfassung, Verarbeitung und Analyse unterschiedlicher Datenströme ermöglicht. |
-|Jumbune for HDInsight |Hadoop, Spark |Jumbune unterstützt Unternehmen im Allgemeinen wie folgt: 1. Beschleunigt die Workloadleistung von Tez, MapReduce & Spark-basiertes Hive, Java, und Scala. 2. Überwacht Hadoop-Cluster proaktiv. 3. Richtet Datenqualitätsverwaltung für verteilte Dateisysteme ein. |
-|Kyligence Enterprise |Hadoop, HBase, Spark |Unterstützt von Apache Kylin ermöglicht Kyligence Enterprise Business Intelligence für Big Data. Kyligence Enterprise ist eine professionelle OLAP-Engine für Hadoop, mit der Business Analysten Business Intelligence für Hadoop mit Data Warehouse- und BI-Methoden entwerfen können, die dem Industriestandard entsprechen. |
-|Spark Job Server for KNIME Spark Executor |Spark |Spark Job Server for KNIME Spark Executor wird zum Verbinden der KNIME Analytics-Plattform mit HDInsight-Clustern verwendet. |
-|Starburst Presto on Azure HDInsight, Starburst Presto (v0.213-e) |Hadoop |Presto ist eine schnelle und skalierbare verteilte SQL-Abfrage-Engine. Dank der architekturbedingten Trennung der Speicher- und Computekomponenten eignet sich Presto perfekt zum Abfragen von Daten in Azure Data Lake Storage, Azure Blob Storage, SQL- und NoSQL-Datenbanken sowie in anderen Datenquellen. |
-|StreamSets Data Collector for HDInsight Cloud |Hadoop, HBase, Spark, Kafka |StreamSets Data Collector ist eine einfache, leistungsstarke Engine, die Daten in Echtzeit übermittelt. Mit Data Collector können Sie Daten in Ihren Datenströmen weiterleiten und verarbeiten. Eine kostenlose 30-tägige Testlizenz steht zur Verfügung. |
-|[Trifacta Wrangler Enterprise](https://www.trifacta.com/) |Hadoop, Spark, HBase |Trifacta Wrangler Enterprise für HDInsight unterstützt unternehmensweites Data Wrangling für Daten bei jeder Skalierung. Beim Ausführen von Trifacta in Azure entstehen die Kosten aus den Kosten für das Trifacta-Abonnement und den Kosten Azure-Infrastrukturkosten für die virtuellen Computer. |
-|Unifi Data Platform 3.1 |Hadoop, HBase, Storm, Spark |Unifi Data Platform ist eine nahtlos integrierte Sammlung von Self-Service-Datentools, mit der Unternehmensbenutzer datenbezogene Herausforderungen bewältigen können, um höhere Umsätze zu erzielen, Kosten zu senken oder die Komplexität des Betriebs zu verringern. |
-|Unraveldata APM |Spark |Unravel Data-App für HDInsight Spark-Cluster. |
-|Waterline Data Catalog |Spark |Waterline katalogisiert, strukturiert und steuert Daten und nutzt künstliche Intelligenz, um Daten automatisch mit geschäftlichen Begriffen zu markieren. Der Geschäftsdatenkatalog von Waterline in eine wichtige Erfolgskomponente für Self-Service-Analysen, Compliance und Governance sowie für IT-Verwaltungsinitiativen. |
+|[AtScale Intelligence-Plattform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/atscale.atscale) |Hadoop |AtScale wandelt Ihren HDInsight-Cluster in einen OLAP-Server mit horizontaler Skalierung um, wodurch Sie vertraute Business Intelligence-Tools (von Microsoft Excel, Power BI und Tableau Software bis hin zu Qlikview), die Sie bereits besitzen und zu schätzen wissen, interaktiv zum Abfragen von Milliarden von Zeilen von Daten verwenden können. |
+|[CDAP für HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cask.cdap-for-hdinsight) |hbase |CDAP ist die erste einheitliche Integrationsplattform für Big Data, die die Amortisationszeit für Hadoop beschleunigt und Informatikern ermöglicht, Self-Service-Daten bereitzustellen. CDAP ist Open Source und erweiterbar, wodurch Hürden für die Innovation entfernt werden. Anforderungen: 4 Regionsknoten und eine D3 v2-Instanz (mindestens). |
+|[Datameer](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/datameer.datameer) |Hadoop |Die skalierbare Self-Service-Plattform von Datameer zum Vorbereiten, Untersuchen und Steuern Ihrer Daten für die Analyse, mit der Sie komplexe Daten aus mehreren Quellen schneller in wertvolle unternehmensrelevante Informationen verwandeln und schnell hilfreiche Erkenntnisse für das gesamte Unternehmen gewinnen können. |
+|[Dataiku DSS in HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/dataiku.dss-on-hdi) |Hadoop, Spark |Dataiku DSS ist eine Data Science-Plattform für Unternehmen, mit der Data Scientists und Data Analysts zusammenarbeiten können, um neue Datenprodukte und Dienste effizienter zu entwerfen und auszuführen, wodurch Rohdaten in aussagekräftig Vorhersagen konvertiert werden. |
+|[WANdisco Fusion HDI App](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/wandisco.fusion-hdi-app) |Hadoop, Spark, HBase, Storm, Kafka |Die Beibehaltung der Datenkonsistenz in einer verteilten Umgebung ist eine große Herausforderung für Datenvorgänge. WANdisco Fusion ist eine professionelle Softwareplattform, die dieses Problem löst, indem unstrukturierte Datenkonsistenz zwischen beliebigen Umgebungen ermöglicht wird. |
+|[H2O SparklingWater für HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/h2o-ai.h2o-sparklingwater) |Spark |H2O Sparkling Water unterstützt die folgenden verteilten Algorithmen: GLM, Naïve Bayes, Distributed Random Forest, Gradient Boosting Machine, Deep Neural Networks, Deep learning, K-means, PCA, Generalized Low Rank Models, Anomalieerkennung und Autoencoders. |
+|[Striim für Echtzeitdatenintegration in HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/striim.hdinsightintegration) |Hadoop, HBase, Storm, Spark, Kafka |Striim (Aussprache: Stream) ist eine End-to-End-Integrations- und Intelligence-Plattform für Streamingdaten, die eine kontinuierliche Erfassung, Verarbeitung und Analyse unterschiedlicher Datenströme ermöglicht. |
+|[Jumbune – BigData-Analyse für Unternehmensbeschleunigung](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/impetus-infotech-india-pvt-ltd.impetus_jumbune) |Hadoop, Spark |Jumbune unterstützt Unternehmen im Allgemeinen wie folgt: 1\. Beschleunigt die Workloadleistung von Tez, MapReduce & Spark-basiertes Hive, Java, und Scala. 2. Überwacht Hadoop-Cluster proaktiv. 3\. Richtet Datenqualitätsverwaltung für verteilte Dateisysteme ein. |
+|[Kyligence Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kyligence.kyligence) |Hadoop, HBase, Spark |Unterstützt von Apache Kylin ermöglicht Kyligence Enterprise Business Intelligence für Big Data. Kyligence Enterprise ist eine professionelle OLAP-Engine für Hadoop, mit der Business Analysten Business Intelligence für Hadoop mit Data Warehouse- und BI-Methoden entwerfen können, die dem Industriestandard entsprechen. |
+|[Starburst Presto für Azure HDInsight](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/starburst.starburst-presto) |Hadoop |Presto ist eine schnelle und skalierbare verteilte SQL-Abfrage-Engine. Dank der architekturbedingten Trennung der Speicher- und Computekomponenten eignet sich Presto perfekt zum Abfragen von Daten in Azure Data Lake Storage, Azure Blob Storage, SQL- und NoSQL-Datenbanken sowie in anderen Datenquellen. |
+|[StreamSets Data Collector für HDInsight Cloud](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop, HBase, Spark, Kafka |StreamSets Data Collector ist eine einfache, leistungsstarke Engine, die Daten in Echtzeit übermittelt. Mit Data Collector können Sie Daten in Ihren Datenströmen weiterleiten und verarbeiten. Eine kostenlose 30-tägige Testlizenz steht zur Verfügung. |
+|[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/trifacta.tr01) |Hadoop, Spark, HBase |Trifacta Wrangler Enterprise für HDInsight unterstützt unternehmensweites Data Wrangling für Daten bei jeder Skalierung. Beim Ausführen von Trifacta in Azure entstehen die Kosten aus den Kosten für das Trifacta-Abonnement und den Kosten Azure-Infrastrukturkosten für die virtuellen Computer. |
+|[Unifi Data Platform](https://unifisoftware.com/platform/) |Hadoop, HBase, Storm, Spark |Unifi Data Platform ist eine nahtlos integrierte Sammlung von Self-Service-Datentools, mit der Unternehmensbenutzer datenbezogene Herausforderungen bewältigen können, um höhere Umsätze zu erzielen, Kosten zu senken oder die Komplexität des Betriebs zu verringern. |
+|[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |Unravel Data-App für HDInsight Spark-Cluster. |
+|[Waterline – KI-gesteuerter Datenkatalog](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/waterline_data.waterline_data) |Spark |Waterline katalogisiert, strukturiert und steuert Daten und nutzt KI, um Daten automatisch mit geschäftlichen Begriffen zu markieren. Der Geschäftsdatenkatalog von Waterline in eine wichtige Erfolgskomponente für Self-Service-Analysen, Compliance und Governance sowie für IT-Verwaltungsinitiativen. |
 
 Für die Anleitungen in diesem Artikel wird das Azure-Portal verwendet. Sie können die Azure Resource Manager-Vorlage auch aus dem Portal exportieren oder eine Kopie der Resource Manager-Vorlage von Anbietern erhalten und Azure PowerShell und die klassische Azure-Befehlszeilenschnittstelle zum Bereitstellen der Vorlage verwenden.  Weitere Informationen finden Sie unter [Erstellen von Apache Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
@@ -61,7 +59,7 @@ Das folgende Verfahren veranschaulicht, wie Sie HDInsight-Anwendungen für einen
     ![HDInsight-Anwendungen – Portal-Menü](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. Klicken Sie im Menü auf **+ Hinzufügen**. Ihnen wird eine Liste der verfügbaren Anwendungen angezeigt.  Wenn **+ Hinzufügen** ausgegraut ist, sind keine Anwendungen für diese Version des HDInsight-Clusters verfügbar.
    
-    ![HDInsight-Anwendungen – Verfügbare Anwendungen](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
+    ![HDInsight-Anwendungen – Verfügbare Anwendungen](./media/hdinsight-apps-install-applications/hdinsight-apps-list1.png)
 6. Klicken Sie auf eine der verfügbaren Anwendungen, und folgen Sie dann den Anweisungen zum Akzeptieren der rechtlichen Bedingungen.
 
 Sie können den Status der Installation über die Portalbenachrichtigungen verfolgen. (Klicken Sie hierzu oben im Portal auf das Glockensymbol). (Klicken Sie oben im Portal auf das Glockensymbol.) Nach der Installation wird die Anwendung in der Liste „Installierte Apps“ angezeigt.

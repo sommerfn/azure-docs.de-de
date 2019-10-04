@@ -1,4 +1,3 @@
-items:
 - name: 'Gewusst wie: Erstellen einer Azure-Supportanfrage'
   href: how-to-create-azure-support-request.md
 - name: Hochladen von Dateien für eine Supportanfrage
@@ -6,24 +5,30 @@ items:
 - name: Zugriffsrechte für das Erstellen und Verwalten von Supportanfragen
   href: create-manage-support-requests-using-access-control.md
 - name: Anfordern einer Kontingenterhöhung
-  href: resource-manager-core-quotas-request.md
+  items:
+    - name: Erhöhung des vCPU-Grenzwerts für Compute
+      items:
+        - name: Resource Manager-Bereitstellungsmodell
+          items:
+            - name: Erhöhung des vCPU-Grenzwerts für die VM-Serie
+              href: per-vm-quota-requests.md
+            - name: Erhöhung des Grenzwerts der gesamten regionalen vCPUs
+              href: regional-quota-requests.md
+        - name: Klassisches Bereitstellungsmodell
+          href: classic-deployment-model-quota-increase-requests.md
+    - name: Erhöhung des Grenzwerts für Netzwerke
+      href: networking-quota-requests.md
 - name: Beheben von Abonnementproblemen im Zusammenhang mit Region oder SKU
   href: sku-series-unavailable.md
 - name: Verweis
   items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: /cli/azure
-  - name: Azure PowerShell
-    href: /powershell/azure
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure
+    - name: Azure PowerShell
+      href: /powershell/azure
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=monitoring-management
-  - name: Preisrechner
-    href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: 31120ea857d0e080bc9629d781ac2cdd73d31bc0
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340913"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'

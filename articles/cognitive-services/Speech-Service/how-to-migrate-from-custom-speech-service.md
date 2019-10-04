@@ -1,7 +1,7 @@
 ---
-title: Migrieren vom Custom Speech Service zu Speech Services
-titlesuffix: Azure Cognitive Services
-description: Der Custom Speech Service ist nun Teil der Sprachdienste. Wechseln Sie zu den Sprachdiensten, um von den neuesten Updates zu Qualität und Features zu profitieren.
+title: Migrieren vom Custom Speech Service zum Speech-Dienst
+titleSuffix: Azure Cognitive Services
+description: Der Custom Speech Service ist nun Teil des Speech-Diensts. Wechseln Sie zum Speech-Dienst, um von den neuesten Updates zu Qualität und Features zu profitieren.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 8a2c149faa0ec9d135713a123a33d7c220522496
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 01b853c59723a8ed79cb32b0ee9c245c9c3ffb3f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496002"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562758"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrieren vom Custom Speech Service zum Speech-Dienst
 

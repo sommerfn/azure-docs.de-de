@@ -1,90 +1,67 @@
 ---
-title: Azure-Speicherdienstverschlüsselung für ruhende Daten | Microsoft-Dokumentation
-description: Mit Azure-Speicherdienstverschlüsselung können Sie Azure Managed Disks, Azure Blob Storage, Azure Files, Azure Queue Storage und Azure-Tabellenspeicher auf Dienstseite beim Speichern von Daten verschlüsseln und wieder entschlüsseln, wenn Daten abgerufen werden.
+title: Azure Storage-Verschlüsselung für ruhende Daten | Microsoft-Dokumentation
+description: Azure Storage schützt Ihre Daten, indem der Dienst diese automatisch verschlüsselt, bevor diese in der Cloud gespeichert werden. Alle Daten in Azure Storage werden auf transparente Weise mit AES-256-Verschlüsselung ver- und entschlüsselt und sind mit dem FIPS 140-2-Standard konform.
 services: storage
-author: lakasa
+author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 08/01/2018
-ms.author: lakasa
+ms.topic: conceptual
+ms.date: 05/15/2019
+ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 059091315c378ab6e2bb857e580c02df968b5092
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2abaa994bf507c3ffb65199af9ac609ece138ea4
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457172"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673049"
 ---
-# <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure-Speicherdienstverschlüsselung für ruhende Daten
-Azure-Speicherdienstverschlüsselung für ruhende Daten unterstützt Sie dabei, Ihre Daten zu schützen, um die Sicherheits- und Complianceanforderungen Ihrer Organisation zu erfüllen. Mit dieser Funktion werden Ihre Daten auf der Azure Storage-Plattform automatisch vor dem Ablegen in Azure Managed Disks, Azure Blob Storage, Azure Queue Storage, Azure Table Storage oder Azure Files verschlüsselt und vor dem Abrufen entschlüsselt. Die Verarbeitung der Ver- und Entschlüsselung, der Verschlüsselung ruhender Daten und der Schlüsselverwaltung in Storage Service Encryption ist für Benutzer transparent. Sämtliche in die Azure-Speicherplattform geschriebene Daten werden mittels 256-Bit-[AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) verschlüsselt, einem der sichersten verfügbaren Blockchiffreverfahren.
+# <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-Verschlüsselung für ruhende Daten
 
-Storage Service Encryption wird für alle neuen und vorhandenen Speicherkonten aktiviert und kann nicht deaktiviert werden. Da Ihre Daten standardmäßig geschützt werden, müssen Sie weder Code noch Anwendungen ändern, um Storage Service Encryption nutzen zu können.
+Azure Storage verschlüsselt Ihre Daten beim Speichern in der Cloud automatisch. Die Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Daten in Azure Storage werden auf transparente Weise mit der [AES-256-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) ver- und entschlüsselt, einer der stärksten verfügbaren Blockchiffren, und sind mit dem FIPS 140-2-Standard konform. Die Azure Storage-Verschlüsselung ähnelt der BitLocker-Verschlüsselung unter Windows.
 
-Die Funktion verschlüsselt automatisch Daten in:
+Die Azure Storage-Verschlüsselung wird für alle neuen und vorhandenen Speicherkonten aktiviert und kann nicht deaktiviert werden. Da Ihre Daten standardmäßig geschützt werden, müssen Sie weder Code noch Anwendungen ändern, um die Azure Storage-Verschlüsselung nutzen zu können. 
 
-- Azure-Speicherdienste:
-    - Azure Managed Disks
-    - Azure Blob Storage
-    - Azure Files
-    - Azure Queue Storage
-    - Azure Table Storage.  
-- beiden Leistungsstufen (Standard und Premium).
-- beiden Bereitstellungsmodellen (Azure Resource Manager und klassisch).
+Speicherkonten werden unabhängig von ihrer Leistungsstufe (Standard oder Premium) und ihrem Bereitstellungsmodell (Azure Resource Manager oder klassisch) verschlüsselt. Alle Redundanzoptionen in Azure Storage unterstützten die Verschlüsselung, und alle Kopien eines Speicherkontos werden verschlüsselt. Alle Azure Storage-Ressourcen werden verschlüsselt, z. B. Blobs, Datenträger, Dateien, Warteschlangen und Tabellen. Objektmetadaten werden ebenfalls verschlüsselt.
 
-Die Speicherdienstverschlüsselung hat keine Auswirkungen auf die Leistung der Azure-Speicherdienste.
+Die Verschlüsselung hat keine Auswirkungen auf die Leistung von Azure Storage. Es fallen keine zusätzlichen Kosten für die Azure Storage-Verschlüsselung an.
 
-Mit Storage Service Encryption können von Microsoft verwaltete oder eigene Verschlüsselungsschlüssel verwendet werden. Weitere Informationen zur Verwendung eigener Schlüssel finden Sie unter [Speicherdienstverschlüsselung mit vom Kunden verwalteten Schlüsseln in Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
+Weitere Informationen zu den kryptografischen Modulen, die der Azure Storage-Verschlüsselung zugrunde liegen, finden Sie unter [Kryptografie-API: Die nächste Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal).
 
-## <a name="view-encryption-settings-in-the-azure-portal"></a>Anzeigen von Verschlüsselungseinstellungen im Azure-Portal
-Melden Sie sich zum Anzeigen der Einstellungen von Storage Service Encryption beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie ein Speicherkonto aus. Wählen Sie im Bereich **EINSTELLUNGEN** die Einstellung **Verschlüsselung** aus.
+## <a name="key-management"></a>Schlüsselverwaltung
 
-![Portal-Screenshot mit der Verschlüsselungsoption](./media/storage-service-encryption/image1.png)
+Sie können von Microsoft verwaltete Schlüssel für die Verschlüsselung Ihres Speicherkontos nutzen, oder Sie können die Verschlüsselung mit Ihren eigenen Schlüsseln mithilfe vom Azure Key Vault durchführen.
 
-## <a name="faq-for-storage-service-encryption"></a>Häufig gestellte Fragen zu Azure Storage Service Encryption
-**Wie verschlüssle ich die Daten in einem Resource Manager-Speicherkonto?**  
-Die Speicherdienstverschlüsselung ist für alle vorhandenen Speicherkonten aktiviert (klassisch und Resource Manager). Alle bereits im Speicherkonto vorhandenen Dateien, die vor der Aktivierung der Verschlüsselung erstellt wurden, werden nachträglich durch einen im Hintergrund ausgeführten Verschlüsselungsprozess verschlüsselt.
+### <a name="microsoft-managed-keys"></a>Von Microsoft verwaltete Schlüssel
 
-**Ist die Speicherdienstverschlüsselung beim Erstellen eines Speicherkontos standardmäßig aktiviert?**  
-Ja, die Speicherdienstverschlüsselung ist für alle Speicherkonten und alle Azure-Speicherdienste aktiviert.
+Standardmäßig verwendet Ihr Speicherkonto von Microsoft verwaltete Verschlüsselungsschlüssel. Im Bereich **Verschlüsselung** im [Azure-Portal](https://portal.azure.com) können Sie sich wie auf dem folgenden Screenshot gezeigt die Verschlüsselungseinstellungen für Ihr Speicherkonto ansehen:
 
-**Ich besitze ein Resource Manager-Speicherkonto. Kann ich Storage Service Encryption dafür aktivieren?**  
-Die Speicherdienstverschlüsselung ist standardmäßig für alle vorhandenen Resource Manager-Speicherkonten aktiviert. Die Funktion wird für Azure Blob Storage, Azure Files, Azure Queue Storage und Azure Table Storage unterstützt. 
+![Konto, das mit von Microsoft verwalteten Schlüsseln verschlüsselt wird](media/storage-service-encryption/encryption-microsoft-managed-keys.png)
 
-**Kann ich die Verschlüsselung für mein Speicherkonto deaktivieren?**  
-Die Verschlüsselung ist standardmäßig aktiviert. Es gibt keine Möglichkeit, die Verschlüsselung für Ihr Speicherkonto zu deaktivieren. 
+### <a name="customer-managed-keys"></a>Vom Kunden verwaltete Schlüssel
 
-**Wie hoch sind die Mehrkosten für Azure Storage, wenn die Speicherdienstverschlüsselung aktiviert ist?**  
-Es fallen keine zusätzlichen Kosten an.
+Sie können die Azure Storage-Verschlüsselung auch mit von Kunden verwalteten Schlüsseln verwalten. Mit von Kunden verwalteten Schlüsseln können Sie Zugriffssteuerungen flexibler erstellen, rotieren, deaktivieren und widerrufen. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen. 
 
-**Kann ich meine eigenen Verschlüsselungsschlüssel verwenden?**  
-Für Azure Blob Storage und Azure Files können Sie Ihre eigenen Verschlüsselungsschlüssel verwenden. Vom Kunden verwaltete Schlüssel werden derzeit nicht von Azure Managed Disks unterstützt. Weitere Informationen finden Sie unter [Azure Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault](storage-service-encryption-customer-managed-keys.md).
+Verwenden Sie den Azure Key Vault, um Ihre Schlüssel zu verwalten und die Schlüsselnutzung zu überwachen. Sie können entweder Ihre eigenen Schlüssel erstellen und in einem Schlüsseltresor speichern oder mit den Azure Key Vault-APIs Schlüssel generieren. Das Speicherkonto und der Schlüsseltresor müssen sich in derselben Region befinden, dürfen aber zu verschiedenen Abonnements gehören. Weitere Informationen zum Azure Key Vault finden Sie unter [What is Azure Key Vault? (Was ist der Azure Key Vault?)](../../key-vault/key-vault-overview.md).
 
-**Kann ich den Zugriff auf die Verschlüsselungsschlüssel widerrufen?**  
-Ja, vorausgesetzt, Sie [verwenden Ihre eigenen Verschlüsselungsschlüssel](storage-service-encryption-customer-managed-keys.md) in Azure Key Vault.
+Informationen zum Widerrufen von Kunden verwalteter Schlüsseln finden Sie in den Artikeln zu [Azure Key Vault-PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) und zur [Azure Key Vault-CLI](https://docs.microsoft.com/cli/azure/keyvault). Durch das Widerrufen des Zugriffs wird der Zugriff auf alle Daten im Speicherkonto blockiert, da Azure Storage keinen Zugriff mehr auf den Verschlüsselungsschlüssel hat.
 
-**Wie unterscheidet sich die Speicherdienstverschlüsselung von Azure Disk Encryption?**  
-Azure Disk Encryption bietet eine Integration zwischen betriebssystembasierten Lösungen, z. B. BitLocker und DM-Crypt, und Azure Key Vault. Die Speicherdienstverschlüsselung ermöglicht die systemeigene Verschlüsselung auf der Azure-Speicherplattform, unter der VM.
+In den folgenden Artikeln erhalten Sie Informationen zum Verwenden von Kunden verwalteter Schlüsseln mit Azure Storage:
 
-**Ich besitze ein klassisches Speicherkonto. Kann ich Storage Service Encryption dafür aktivieren?**  
-Die Speicherdienstverschlüsselung ist für alle Speicherkonten (klassisch und Resource Manager) aktiviert.
+- [Configure customer-managed keys for Azure Storage encryption from the Azure portal (Konfigurieren von Kunden verwalteter Schlüssel für die Azure Storage-Verschlüsselung mithilfe des Azure-Portals)](storage-encryption-keys-portal.md)
+- [Configure customer-managed keys for Azure Storage encryption from PowerShell (Konfigurieren von Kunden verwalteter Schlüssel für die Azure Storage-Verschlüsselung mithilfe von Azure PowerShell)](storage-encryption-keys-powershell.md)
+- [Use customer-managed keys with Azure Storage encryption from Azure CLI (Verwenden von Kunden verwalteter Schlüssel mit der Azure Storage-Verschlüsselung mithilfe der Azure CLI)](storage-encryption-keys-cli.md)
 
-**Wie kann ich Daten in meinem klassischen Speicherkonto verschlüsseln?**  
-Aufgrund der standardmäßigen Aktivierung werden in den Azure-Speicherdiensten gespeicherte Daten automatisch verschlüsselt. 
+> [!IMPORTANT]
+> Von Kunden verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure Active Directory (Azure AD). Wenn Sie ein Abonnement aus einem Azure AD-Verzeichnis in ein anderes übertragen, werden verwaltete Identitäten nicht aktualisiert, und von Kunden verwaltete Schlüssel funktionieren möglicherweise nicht mehr. Weitere Informationen finden Sie in [Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories) unter **Übertragen eines Abonnements zwischen Azure AD-Verzeichnissen**.  
 
-**Kann ich mit Azure PowerShell und der Azure CLI Speicherkonten mit aktivierter Speicherdienstverschlüsselung erstellen?**  
-Die Speicherdienstverschlüsselung ist beim Erstellen von Speicherkonten (klassisch und Resource Manager) standardmäßig aktiviert. Sie können Kontoeigenschaften mit Azure PowerShell und der Azure-Befehlszeilenschnittstelle überprüfen.
+> [!NOTE]  
+> Von Kunden verwaltete Schlüssel werden nicht für [verwaltete Azure-Datenträger](../../virtual-machines/windows/managed-disks-overview.md) unterstützt.
 
-**Mein Speicherkonto ist so eingerichtet, dass es georedundant repliziert wird. Werden mit Storage Service Encryption auch meine redundanten Kopien verschlüsselt?**  
-Ja, alle Kopien des Speicherkontos werden verschlüsselt. Alle Redundanzoptionen werden unterstützt: lokal redundanter Speicher, zonenredundanter Speicher, georedundanter Speicher und georedundanter Speicher mit Lesezugriff.
+## <a name="azure-storage-encryption-versus-disk-encryption"></a>Vergleich: Azure Storage-Verschlüsselung und Datenträgerverschlüsselung
 
-**Ist die Speicherdienstverschlüsselung nur in bestimmten Regionen zugelassen?**  
-Die Speicherdienstverschlüsselung ist in allen Regionen verfügbar.
-
-**Ist die Speicherdienstverschlüsselung mit FIPS 140-2 konform?**  
-Ja, die Speicherdienstverschlüsselung ist mit FIPS 140-2 konform. Weitere Informationen z den kryptografischen Modulen, die der Speicherdienstverschlüsselung zugrunde liegen, finden Sie unter [Kryptografie-API: Die nächste Generation](https://docs.microsoft.com/windows/desktop/seccng/cng-portal).
-
-**An wen wende ich mich, wenn Probleme auftreten, oder wenn ich Feedback geben möchte?**  
-Wenden Sie sich bei Problemen oder Feedback in Bezug auf die Speicherdienstverschlüsselung an [ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com).
+Mit der Azure Storage-Verschlüsselung werden alle Azure-Speicherkonten und darin enthaltene Ressourcen verschlüsselt, z. B. Seitenblobs, auf denen Datenträger auf Azure-VMs basieren. Darüber hinaus können Datenträger von Azure-VMs mit [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md) verschlüsselt werden. Für Azure Disk Encryption wird die branchenübliche [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)-Verschlüsselung unter Windows und [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) unter Linux verwendet, um betriebssystembasierte Verschlüsselungslösungen bereitzustellen, die mit dem Azure Key Vault integriert werden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Azure Storage bietet umfassende Sicherheitsfunktionen, die Entwicklern das Erstellen sicherer Anwendungen ermöglichen. Weitere Informationen finden Sie im [Azure Storage-Sicherheitsleitfaden](../storage-security-guide.md).
+
+- [Was ist der Azure-Schlüsseltresor?](../../key-vault/key-vault-overview.md)

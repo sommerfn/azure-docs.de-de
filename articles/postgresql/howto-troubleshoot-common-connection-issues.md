@@ -1,20 +1,20 @@
 ---
-title: Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL
-description: Erfahren Sie, wie Sie Verbindungsprobleme mit Azure Database for PostgreSQL beheben.
+title: Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL – Einzelserver
+description: Erfahren Sie, wie Sie Verbindungsprobleme mit einem Azure Database for PostgreSQL-Einzelserver beheben.
 keywords: PostgreSQL-Verbindung, Verbindungszeichenfolge, Verbindungsprobleme, vorübergehender Fehler, Verbindungsfehler
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: a78167e9b143a4c8d424947b489043dd45dfe2db
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 5/6/2019
+ms.openlocfilehash: 8a0fe87703c9fb471174c761a6e8296e6e7a37ec
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886421"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65952110"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql"></a>Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL
+# <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL – Einzelserver
 
 Verbindungsprobleme können verschiedene Ursachen haben:
 
@@ -53,7 +53,7 @@ Wenn die Anwendung dauerhaft keine Verbindung mit Azure Database for PostgreSQL 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Schritte zum Beheben dauerhafter Verbindungsprobleme
 
 1. Richten Sie [Firewallregeln](howto-manage-firewall-using-portal.md) so ein, dass die IP-Adresse des Clients zugelassen wird. Richten Sie nur zu Testzwecken vorübergehend eine Firewallregel mit 0.0.0.0 als erster IP-Adresse und 255.255.255.255 als letzter IP-Adresse fest. Dadurch wird der Server für alle IP-Adressen geöffnet. Wird Ihr Konnektivitätsproblem dadurch behoben, entfernen Sie die Regel, und erstellen Sie eine Firewallregel für eine entsprechend eingeschränkte IP-Adresse bzw. einen entsprechend eingeschränkten IP-Adressbereich.
-2. Stellen Sie für alle Firewalls zwischen Client und Internet sicher, dass Port 3306 für ausgehende Verbindungen geöffnet ist.
+2. Stellen Sie für alle Firewalls zwischen Client und Internet sicher, dass Port 5432 für ausgehende Verbindungen geöffnet ist.
 3. Überprüfen Sie die Verbindungszeichenfolge und andere Verbindungseinstellungen.
 4. Überprüfen Sie im Dashboard den Dienststatus. Wenn Sie denken, dass es sich um einen regionalen Ausfall handelt, finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL](concepts-business-continuity.md) Schritte zur Wiederherstellung in einer neuen Region.
 

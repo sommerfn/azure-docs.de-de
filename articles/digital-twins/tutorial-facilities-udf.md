@@ -2,22 +2,22 @@
 title: 'Tutorial: Überwachen eines Gebäudebereichs mit Azure Digital Twins | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Digital Twins Ihre räumlichen Ressourcen bereitstellen und die Arbeitsbedingungen überwachen.
 services: digital-twins
-author: dsk-2015
+author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 12/27/2018
-ms.author: dkshir
-ms.openlocfilehash: ad6c2625dc56dc3a3155183a04b712122a3b10f1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 09/20/2019
+ms.author: alinast
+ms.openlocfilehash: bdf37225e815d3848a87b88737daf4b5a5d2560c
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535381"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300047"
 ---
-# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Tutorial: Bereitstellen des Gebäudes und Überwachen der Arbeitsbedingungen mit Azure Digital Twins
+# <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Tutorial: Bereitstellen des Gebäudes und Überwachen der Arbeitsbedingungen mit Azure Digital Twins (Vorschauversion)
 
-In diesem Tutorial wird veranschaulicht, wie Sie Ihre Gebäudebereiche mit Azure Digital Twins auf die gewünschten Temperaturbedingungen und weitere Komfortwerte überwachen. Nach dem [Konfigurieren des Beispielgebäudes](tutorial-facilities-setup.md) können Sie wie hier beschrieben das Gebäude bereitstellen und benutzerdefinierte Funktionen für Ihre Sensordaten ausführen.
+In diesem Tutorial wird veranschaulicht, wie Sie Ihre Gebäudebereiche mit Azure Digital Twins (Vorschauversion) auf die gewünschten Temperaturbedingungen und weitere Komfortwerte überwachen. Nach dem [Konfigurieren des Beispielgebäudes](tutorial-facilities-setup.md) können Sie wie hier beschrieben das Gebäude bereitstellen und benutzerdefinierte Funktionen für Ihre Sensordaten ausführen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -37,38 +37,39 @@ In diesem Tutorial wird vorausgesetzt, dass Sie das [Azure Digital Twins-Setup a
 - [.NET Core SDK Version 2.1.403 oder höher](https://www.microsoft.com/net/download) auf dem Entwicklungscomputer zum Erstellen und Ausführen des Beispiels. Führen Sie `dotnet --version` aus, um zu überprüfen, ob die richtige Version installiert ist. 
 - [Visual Studio Code](https://code.visualstudio.com/) zum Untersuchen des Beispielcodes. 
 
+> [!TIP]
+> Verwenden Sie bei der Bereitstellung einer neuen Instanz einen eindeutigen Namen für die Digital Twins-Instanz.
+
 ## <a name="define-conditions-to-monitor"></a>Definieren der zu überwachenden Bedingungen
 
 Sie können eine Reihe spezifischer Bedingungen definieren, die Sie in den Geräte- oder Sensordaten überwachen möchten. Diese Bedingungen werden als *Abgleicher* (Matcher) bezeichnet. Anschließend können Sie Funktionen definieren, die als *benutzerdefinierte Funktionen* bezeichnet werden. Diese Funktionen führen benutzerdefinierte Logik für Daten von Ihren Gebäudebereichen und Geräten aus, wenn die mit den Abgleichern festgelegten Bedingungen auftreten. Weitere Informationen finden Sie unter [Datenverarbeitung und benutzerdefinierte Funktionen](concepts-user-defined-functions.md). 
 
 Öffnen Sie die Datei **src\actions\provisionSample.yaml** aus dem Beispielprojekt **occupancy-quickstart** in Visual Studio Code. Beachten Sie den Abschnitt, der mit dem Typ **matchers** beginnt. Jeder Eintrag unter diesem Typ erstellt einen Abgleicher mit dem angegebenen **Namen**. Der Abgleicher überwacht einen Sensor vom Typ **dataTypeValue**. Beachten Sie die Beziehung zum Gebäudebereich namens *Focus Room A1*, der einen Knoten **devices** mit einigen Sensoren enthält. Stellen Sie zum Bereitstellen eines Abgleichers, der einen dieser Sensoren nachverfolgt, sicher, dass dessen **dataTypeValue**-Wert mit dem **dataType**-Wert des Sensors übereinstimmt. 
 
-Fügen Sie den folgenden Abgleicher unterhalb der vorhandenen Abgleicher hinzu. Stellen Sie sicher, dass die Schlüssel korrekt angepasst sind und Leerzeichen nicht durch Tabstopps ersetzt werden.
+Fügen Sie den folgenden Abgleicher unterhalb der vorhandenen Abgleicher hinzu. Stellen Sie sicher, dass die Schlüssel korrekt angepasst sind und Leerzeichen nicht durch Tabstopps ersetzt werden. Diese Zeilen sind auch in der Datei *provisionSample.yaml* als auskommentierte Zeilen vorhanden. Sie können ihre Kommentierung aufheben, indem Sie jeweils das Zeichen `#` am Zeilenanfang entfernen.
 
 ```yaml
       - name: Matcher Temperature
         dataTypeValue: Temperature
 ```
 
-Dieser Abgleicher überwacht den Sensor SAMPLE_SENSOR_TEMPERATURE, den Sie im [ersten Tutorial](tutorial-facilities-setup.md) hinzugefügt haben. Diese Zeilen sind auch in der Datei *provisionSample.yaml* als auskommentierte Zeilen vorhanden. Sie können ihre Kommentierung aufheben, indem Sie jeweils das Zeichen `#` am Zeilenanfang entfernen.
-
-<a id="udf"></a>
+Dieser Abgleicher überwacht den Sensor `SAMPLE_SENSOR_TEMPERATURE`, den Sie im [ersten Tutorial](tutorial-facilities-setup.md) hinzugefügt haben. 
 
 ## <a name="create-a-user-defined-function"></a>Erstellen einer benutzerdefinierten Funktion
 
 Mithilfe von benutzerdefinierten Funktionen können Sie die Verarbeitung Ihrer Sensordaten anpassen. Bei diesen Funktionen handelt es sich um benutzerdefinierten JavaScript-Code, der in Ihrer Azure Digital Twins-Instanz ausgeführt werden kann, wenn bestimmte von den Abgleichern definierte Bedingungen erfüllt sind. Sie können Abgleicher und benutzerdefinierte Funktionen für jeden Sensor erstellen, den Sie überwachen möchten. Weitere Informationen finden Sie unter [Datenverarbeitung und benutzerdefinierte Funktionen](concepts-user-defined-functions.md). 
 
-Suchen Sie in der Beispieldatei „provisionSample.yaml“ nach einem Abschnitt, der mit dem Typ **userdefinedfunctions** beginnt. Dieser Abschnitt stellt eine benutzerdefinierte Funktion mit einem bestimmten **Namen** bereit. Diese UDF wird für die Liste der Abgleicher unter **matcherNames** ausgeführt. Sie können auch Ihre eigene JavaScript-Datei für die benutzerdefinierte Funktion als **Skript** bereitstellen.
+Suchen Sie in der Beispieldatei *provisionSample.yaml* nach einem Abschnitt, der mit dem Typ **userdefinedfunctions** beginnt. Dieser Abschnitt stellt eine benutzerdefinierte Funktion mit einem bestimmten **Namen** bereit. Diese UDF wird für die Liste der Abgleicher unter **matcherNames** ausgeführt. Sie können auch Ihre eigene JavaScript-Datei für die benutzerdefinierte Funktion als **Skript** bereitstellen.
 
 Beachten Sie auch den Abschnitt mit dem Namen **roleassignments**. In diesem Abschnitt wird der benutzerdefinierten Funktion die Rolle des Raumadministrators zugewiesen. Diese Rolle ermöglicht den Zugriff auf die Ereignisse von allen bereitgestellten Gebäudebereichen. 
 
-1. Konfigurieren Sie die benutzerdefinierte Funktion zum Einschließen des Temperaturabgleichers, indem Sie im Knoten `matcherNames` der Datei „provisionSample.yaml“ die folgende Zeile hinzufügen oder ihre Auskommentierung aufheben:
+1. Konfigurieren Sie die benutzerdefinierte Funktion zum Einschließen des Temperaturabgleichers, indem Sie im Knoten `matcherNames` der Datei *provisionSample.yaml* die folgende Zeile hinzufügen oder ihre Auskommentierung aufheben:
 
     ```yaml
             - Matcher Temperature
     ```
 
-1. Öffnen Sie die Datei **src\actions\userDefinedFunctions\availability.js** im Editor. Auf diese Datei wird im **script**-Element der Datei „provisionSample.yaml“ verwiesen. Die benutzerdefinierte Funktion in dieser Datei sucht nach zwei Bedingungen: keine Bewegung im Raum und Kohlendioxidwerte unter 1.000 ppm. 
+1. Öffnen Sie die Datei **src\actions\userDefinedFunctions\availability.js** im Editor. Auf diese Datei wird im **script**-Element der Datei *provisionSample.yaml* verwiesen. Die benutzerdefinierte Funktion in dieser Datei sucht nach zwei Bedingungen: keine Bewegung im Raum und Kohlendioxidwerte unter 1.000 ppm. 
 
    Ändern Sie die JavaScript-Datei, um die Temperatur und andere Bedingungen zu überwachen. Fügen Sie die folgenden Codezeilen hinzu, um nach folgenden Bedingungen zu suchen: keine Bewegung im Raum, Kohlendioxidwerte unter 1.000 ppm und Temperaturen unter 78 Grad Fahrenheit.
 
@@ -135,15 +136,12 @@ Beachten Sie auch den Abschnitt mit dem Namen **roleassignments**. In diesem Abs
         if(carbonDioxideValue < carbonDioxideThreshold && !presence) {
             log(`${availableFresh}. Carbon Dioxide: ${carbonDioxideValue}. Presence: ${presence}.`);
             setSpaceValue(parentSpace.Id, spaceAvailFresh, availableFresh);
-
-            // Set up custom notification for air quality
-            parentSpace.Notify(JSON.stringify(availableFresh));
         }
         else {
             log(`${noAvailableOrFresh}. Carbon Dioxide: ${carbonDioxideValue}. Presence: ${presence}.`);
             setSpaceValue(parentSpace.Id, spaceAvailFresh, noAvailableOrFresh);
 
-            // Set up custom notification for air quality
+            // Set up custom notification for poor air quality
             parentSpace.Notify(JSON.stringify(noAvailableOrFresh));
         }
     ```
@@ -182,16 +180,14 @@ Beachten Sie auch den Abschnitt mit dem Namen **roleassignments**. In diesem Abs
    > [!IMPORTANT]
    > Um nicht autorisierten Zugriff auf die Digital Twins-Verwaltungs-API zu verhindern, erfordert die Anwendung **occupancy-quickstart**, dass Sie sich mit Ihren Azure-Anmeldeinformationen anmelden. Die Anwendung speichert Ihre Anmeldeinformationen für einen kurzen Zeitraum, damit Sie sich nicht jedes Mal anmelden müssen, wenn Sie sie ausführen. Bei der erstmaligen Ausführung des Programms und beim Ablauf der gespeicherten Anmeldeinformationen werden Sie von der Anwendung zu einer Anmeldeseite geleitet, und Sie erhalten einen sitzungsspezifischen Code, den Sie auf dieser Seite eingeben müssen. Folgen Sie den Aufforderungen auf dem Bildschirm, um sich mit Ihrem Azure-Konto anzumelden.
 
-1. Sobald Ihr Konto authentifiziert wurde, beginnt die Anwendung, einen Beispielraumgraphen entsprechend der Konfiguration in der Datei „provisionSample.yaml“ zu erstellen. Warten Sie, bis die Bereitstellung abgeschlossen ist. Dieser Vorgang dauert einige Minuten. Sehen Sie sich anschließend die Meldungen im Befehlsfenster an, und beobachten Sie, wie der Raumgraph erstellt wird. Beachten Sie, dass die Anwendung im Stammknoten oder in `Venue` einen IoT-Hub erstellt.
+1. Sobald Ihr Konto authentifiziert wurde, beginnt die Anwendung, einen Beispielraumgraphen entsprechend der Konfiguration in der Datei *provisionSample.yaml* zu erstellen. Warten Sie, bis die Bereitstellung abgeschlossen ist. Dieser Vorgang dauert einige Minuten. Sehen Sie sich anschließend die Meldungen im Befehlsfenster an, und beobachten Sie, wie der Raumgraph erstellt wird. Beachten Sie, dass die Anwendung im Stammknoten oder in `Venue` einen IoT-Hub erstellt.
 
 1. Kopieren Sie in der Ausgabe im Befehlsfenster den Wert von `ConnectionString` unter dem Abschnitt `Devices` in die Zwischenablage. Sie benötigen diesen Wert im nächsten Abschnitt, um die Verbindung mit dem Gerät zu simulieren.
 
-    ![Bereitstellen des Beispiels](./media/tutorial-facilities-udf/run-provision-sample.png)
+    [![Bereitstellen des Beispiels](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 > [!TIP]
 > Falls während der Bereitstellung eine Fehlermeldung mit dem Hinweis angezeigt wird, dass der E/A-Vorgang aufgrund einer Threadbeendigung oder Anwendungsanforderung abgebrochen wurde, führen Sie den Befehl noch einmal aus. Dies kann passieren, wenn wegen eines Netzwerkproblems ein Timeout des HTTP-Clients auftritt.
-
-<a id="simulate"></a>
 
 ## <a name="simulate-sensor-data"></a>Simulieren von Sensordaten
 
@@ -209,9 +205,9 @@ In diesem Abschnitt verwenden Sie das Projekt namens *device-connectivity* im Be
 
    a. **DeviceConnectionString**: Weisen Sie den `ConnectionString`-Wert zu, der im vorherigen Abschnitt im Ausgabefenster angezeigt wurde. Kopieren Sie die vollständige Zeichenfolge innerhalb der Anführungszeichen, damit der Simulator ordnungsgemäß eine Verbindung mit dem IoT-Hub herstellen kann.
 
-   b. **HardwareId** innerhalb des **Sensors**-Arrays: Da Sie Ereignisse von Sensoren simulieren, die in Ihrer Azure Digital Twins-Instanz bereitgestellt wurden, müssen die Hardware-ID und die Namen der Sensoren in dieser Datei den Angaben im Knoten `sensors` in der Datei „provisionSample.yaml“ entsprechen.
+   b. **HardwareId** innerhalb des **Sensors**-Arrays: Da Sie Ereignisse von Sensoren simulieren, die in Ihrer Azure Digital Twins-Instanz bereitgestellt wurden, müssen die Hardware-ID und die Namen der Sensoren in dieser Datei den Angaben im Knoten `sensors` in der Datei *provisionSample.yaml* entsprechen.
 
-      Fügen Sie einen neuen Eintrag für den Temperatursensor hinzu. Der Knoten **Sensors** in „appsettings.json“ sollte wie folgt aussehen:
+      Fügen Sie einen neuen Eintrag für den Temperatursensor hinzu. Der Knoten **Sensors** in *appsettings.json* sollte wie folgt aussehen:
 
       ```JSON
       "Sensors": [{
@@ -249,9 +245,9 @@ Die benutzerdefinierte Funktion wird jedes Mal ausgeführt, wenn Ihre Instanz Ge
 
 Das Ausgabefenster zeigt die Ausführung der benutzerdefinierten Funktion und fängt Ereignisse der Gerätesimulation ab. 
 
-   ![Ausgabe für die benutzerdefinierte Funktion](./media/tutorial-facilities-udf/udf-running.png)
+   [![Ausgabe für die benutzerdefinierte Funktion](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
 
-Ist die überwachte Bedingung erfüllt, legt die benutzerdefinierte Funktion den Wert des Gebäudebereichs mit der relevanten Meldung fest, wie [zuvor](#udf) gezeigt. Die Funktion `GetAvailableAndFreshSpaces` gibt die Meldung in der Konsole aus.
+Ist die überwachte Bedingung erfüllt, legt die benutzerdefinierte Funktion den Wert des Gebäudebereichs mit der relevanten Meldung fest, wie [zuvor](#create-a-user-defined-function) gezeigt. Die Funktion `GetAvailableAndFreshSpaces` gibt die Meldung in der Konsole aus.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

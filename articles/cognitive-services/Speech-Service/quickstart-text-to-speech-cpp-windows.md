@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Synthetisieren von Sprache, C++ (Windows): Speech-Dienste'
+title: 'Schnellstart: Synthetisieren von Sprache, C++ (Windows): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mit dem Speech SDK Sprache in C++ unter Windows Desktop synthetisieren.
 services: cognitive-services
@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 4/03/2019
+ms.date: 08/24/2019
 ms.author: yinhew
-ms.openlocfilehash: 732816ce10836d5828e7f325a3eb3fe31627d4f4
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 686b21d3e02266af77687778c32f0d1ca6d55154
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59012372"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383077"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Schnellstart: Synthetisieren von Sprache in C++ unter Windows mit dem Speech SDK
 
-In diesem Artikel erstellen Sie eine C++-Konsolenanwendung für Windows. Mit dem [Speech SDK](speech-sdk.md) von Cognitive Services können Sie Text in Echtzeit in Sprache synthetisieren und das Ergebnis über den Lautsprecher Ihres PCs ausgeben. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017 (beliebige Edition).
+Schnellstarts sind auch für [Spracherkennung](quickstart-cpp-windows.md) und [Sprachübersetzung](quickstart-translate-speech-cpp-windows.md) verfügbar.
 
-Das in diesem Artikel beschriebene Feature steht ab dem [Speech SDK 1.4.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.4.0) zur Verfügung.
+In diesem Artikel erstellen Sie eine C++-Konsolenanwendung für Windows. Mit dem [Speech SDK](speech-sdk.md) von Cognitive Services können Sie Text in Echtzeit in Sprache synthetisieren und das Ergebnis über den Lautsprecher Ihres PCs ausgeben. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2019 (beliebige Edition).
 
 Eine vollständige Liste mit den verfügbaren Sprachen/Stimmen für die Sprachsynthese finden Sie auf der Seite zur [Sprachunterstützung](language-support.md#text-to-speech).
 
@@ -31,11 +31,13 @@ Für diese Schnellstartanleitung benötigen Sie einen Abonnementschlüssel für 
 
 ## <a name="create-a-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
+[!INCLUDE [Quickstart C++ project](../../../includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 
 ## <a name="add-sample-code"></a>Hinzufügen von Beispielcode
 
-1. Öffnen Sie die Quelldatei *helloworld.cpp*. Ersetzen Sie den gesamten Code unter der ersten include-Anweisung (`#include "stdafx.h"` oder `#include "pch.h"`) durch Folgendes:
+1. Öffnen Sie die Quelldatei **helloworld.cpp**.
+
+1. Ersetzen Sie den gesamten Code durch den folgenden Codeausschnitt:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/cpp-windows/helloworld/helloworld.cpp#code)]
 
@@ -43,21 +45,17 @@ Für diese Schnellstartanleitung benötigen Sie einen Abonnementschlüssel für 
 
 1. Ersetzen Sie die Zeichenfolge `YourServiceRegion` durch die [Region](regions.md), die mit Ihrem Abonnement verknüpft ist (z. B. `westus` für das kostenlose Testabonnement).
 
-1. Speichern Sie die Änderungen am Projekt.
+1. Wählen Sie auf der Menüleiste **Datei** > **Alle speichern** aus.
 
-## <a name="build-and-run-the-app"></a>Erstellen und Ausführen der App
+## <a name="build-and-run-the-application"></a>Erstellen und Ausführen der Anwendung
 
-1. Erstellen Sie die Anwendung. Wählen Sie in der Menüleiste **Erstellen** > **Projektmappe erstellen** aus. Der Code sollte ohne Fehler kompiliert werden.
+1. Wählen Sie auf der Menüleiste **Erstellen** > **Projektmappe erstellen** aus, um die Anwendung zu erstellen. Der Code sollte nun ohne Fehler kompiliert werden.
 
-   ![Screenshot der Visual Studio-Anwendung mit hervorgehobener Option „Projektmappe erstellen“](media/sdk/qs-cpp-windows-06-build.png)
+1. Wählen Sie **Debuggen** > **Debuggen starten** aus (oder drücken Sie**F5**), um die Anwendung **helloworld** zu starten.
 
-1. Starten Sie die Anwendung. Wählen Sie in der Menüleiste **Debuggen** > **Debuggen starten** aus, oder drücken Sie **F5**.
+1. Geben Sie einen englischen Ausdruck oder Satz ein. Die Anwendung überträgt Ihren Text an die Speech-Dienste, die die synthetisierte Sprache zur Wiedergabe über den Lautspreche an die Anwendung sendet.
 
-   ![Screenshot der Visual Studio-Anwendung mit hervorgehobener Option „Debuggen starten“](media/sdk/qs-cpp-windows-07-start-debugging.png)
-
-1. Ein Konsolenfenster mit einer Eingabeaufforderung wird angezeigt. Geben Sie einige Wörter oder einen Satz ein. Der eingegebene Text wird an die Speech-Dienste übermittelt und in Sprache synthetisiert, die dann über Ihren Lautsprecher ausgegeben wird.
-
-   ![Screenshot: Konsolenausgabe nach erfolgreicher Synthese](media/sdk/qs-tts-cpp-windows-console-output.png)
+   ![Konsolenausgabe nach erfolgreicher Sprachsynthese](media/sdk/qs-tts-cpp-windows-console-output.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -68,5 +66,5 @@ Weitere Beispiele (etwa zum Speichern von Sprache aus einer Audiodatei), sind au
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Anpassen von Voicefonts](how-to-customize-voice-font.md)
-- [Aufnehmen von Sprachbeispielen](record-custom-voice-samples.md)
+- [Create a Custom Voice](how-to-custom-voice-create-voice.md) (Erstellen einer benutzerdefinierten Stimme)
+- [Aufzeichnen benutzerdefinierter Stimmbeispiele](record-custom-voice-samples.md)

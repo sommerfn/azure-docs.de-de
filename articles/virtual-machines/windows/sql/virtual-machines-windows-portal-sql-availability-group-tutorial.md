@@ -9,19 +9,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6485b7c102977f4fb6963418084f4da050c68558
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003456"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036523"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Tutorial: Manuelles Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
 
@@ -83,6 +82,9 @@ Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Serv
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Festlegen der IP-Adresse des Windows Server-Failoverclusters
 
+  > [!NOTE]
+  > Unter Windows Server 2019 wird für den Cluster ein **Name des verteilten Servers** anstelle des **Clusternetzwerknamens** erstellt. Wenn Sie mit Windows Server 2019 arbeiten, überspringen Sie alle Schritte, in denen in diesem Tutorial auf den Clusterhauptnamen verwiesen wird. Sie können einen Clusternetzwerknamen mit [PowerShell](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019) erstellen. Lesen Sie den Blog [Failover Cluster: Cluster Network Object](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97), um weitere Informationen zu erhalten. 
+
 1. Scrollen Sie im **Failovercluster-Manager** nach unten bis zu **Hauptressourcen des Clusters**, und erweitern Sie die Clusterdetails. Die Ressource **Name** und **IP-Adresse** befinden sich im Zustand **Fehler**. Die IP-Adressressource kann nicht online geschaltet werden, da dem Cluster die gleiche IP-Adresse zugewiesen ist wie dem Computer selbst. Es liegt also eine doppelte Adresse vor.
 
 2. Klicken Sie mit der rechten Maustaste auf die fehlerhafte Ressource **IP-Adresse**, und klicken Sie dann auf **Eigenschaften**.
@@ -130,7 +132,7 @@ In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein
 
 1. Klicken Sie auf **Freigegebene Ordner**.
 
-1. Klicken Sie mit der rechten Maustaste auf **Freigaben**, und klicken Sie anschließend auf **Neue Freigabe...**.
+1. Klicken Sie mit der rechten Maustaste auf **Freigaben**, und klicken Sie anschließend auf **Neue Freigabe...** .
 
    ![Neue Freigabe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
@@ -140,9 +142,9 @@ In diesem Beispiel erstellt der Windows-Cluster mithilfe einer Dateifreigabe ein
 
 1. Überprüfen Sie unter **Name, Beschreibung und Einstellungen** den Freigabenamen und den Pfad. Klicken Sie auf **Weiter**.
 
-1. Legen Sie unter **Berechtigungen für freigegebene Ordner** die Option **Berechtigungen anpassen** fest. Klicken Sie auf **Benutzerdefiniert...**.
+1. Legen Sie unter **Berechtigungen für freigegebene Ordner** die Option **Berechtigungen anpassen** fest. Klicken Sie auf **Benutzerdefiniert...** .
 
-1. Klicken Sie unter **Berechtigungen anpassen** auf **Hinzufügen...**.
+1. Klicken Sie unter **Berechtigungen anpassen** auf **Hinzufügen...** .
 
 1. Achten Sie darauf, dass das für die Clustererstellung verwendete Konto über Vollzugriff verfügt.
 
@@ -160,7 +162,7 @@ Legen Sie als Nächstes das Clusterquorum fest.
 
 1. Stellen Sie eine Remotedesktopverbindung mit dem ersten Clusterknoten her.
 
-1. Klicken Sie im **Failovercluster-Manager** mit der rechten Maustaste auf den Cluster, zeigen Sie auf **More Actions** (Weitere Aktionen), und klicken Sie auf **Clusterquorumeinstellungen konfigurieren...**.
+1. Klicken Sie im **Failovercluster-Manager** mit der rechten Maustaste auf den Cluster, zeigen Sie auf **More Actions** (Weitere Aktionen), und klicken Sie auf **Clusterquorumeinstellungen konfigurieren...** .
 
    ![Neue Freigabe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/52-configurequorum.png)
 
@@ -186,7 +188,7 @@ Die Hauptressourcen des Clusters werden mit einem Dateifreigabenzeugen konfiguri
 Aktivieren Sie als Nächstes das Feature **Verfügbarkeitsgruppen**. Führen Sie diese Schritte für beide SQL Server durch.
 
 1. Starten Sie über den **Startbildschirm** den **SQL Server-Konfigurations-Manager**.
-2. Klicken Sie in der Browserstruktur auf **SQL Server-Dienste**, klicken Sie dann mit der rechten Maustaste auf den Dienst **SQL Server (MSSQLSERVER)**, und klicken Sie auf **Eigenschaften**.
+2. Klicken Sie in der Browserstruktur auf **SQL Server-Dienste**, klicken Sie dann mit der rechten Maustaste auf den Dienst **SQL Server (MSSQLSERVER)** , und klicken Sie auf **Eigenschaften**.
 3. Klicken Sie auf die Registerkarte **Hochverfügbarkeit mit AlwaysOn**, und wählen Sie **AlwaysOn-Verfügbarkeitsgruppen aktivieren** aus:
 
     ![Aktivieren von AlwaysOn-Verfügbarkeitsgruppen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/54-enableAlwaysOn.png)
@@ -232,7 +234,7 @@ Repeat these steps on the second SQL Server.
 
 1. Klicken Sie auf **Freigegebene Ordner**.
 
-1. Klicken Sie mit der rechten Maustaste auf **Freigaben**, und klicken Sie anschließend auf **Neue Freigabe...**.
+1. Klicken Sie mit der rechten Maustaste auf **Freigaben**, und klicken Sie anschließend auf **Neue Freigabe...** .
 
    ![Neue Freigabe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/48-newshare.png)
 
@@ -242,9 +244,9 @@ Repeat these steps on the second SQL Server.
 
 1. Überprüfen Sie unter **Name, Beschreibung und Einstellungen** den Freigabenamen und den Pfad. Klicken Sie auf **Weiter**.
 
-1. Legen Sie unter **Berechtigungen für freigegebene Ordner** die Option **Berechtigungen anpassen** fest. Klicken Sie auf **Benutzerdefiniert...**.
+1. Legen Sie unter **Berechtigungen für freigegebene Ordner** die Option **Berechtigungen anpassen** fest. Klicken Sie auf **Benutzerdefiniert...** .
 
-1. Klicken Sie unter **Berechtigungen anpassen** auf **Hinzufügen...**.
+1. Klicken Sie unter **Berechtigungen anpassen** auf **Hinzufügen...** .
 
 1. Vergewissern Sie sich, dass das SQL Server-Dienstkonto und das SQL Server-Agent-Dienstkonto für beide Server über Vollzugriff verfügen.
 
@@ -258,7 +260,7 @@ Repeat these steps on the second SQL Server.
 
 Die neue Datenbank muss gesichert werden, um die Protokollkette zu initiieren. Wenn Sie die neue Datenbank nicht sichern, kann sie keiner Verfügbarkeitsgruppe hinzugefügt werden.
 
-1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Datenbank, zeigen Sie auf **Aufgaben...**, und klicken Sie anschließend auf **Back Up** (Sichern).
+1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Datenbank, zeigen Sie auf **Aufgaben...** , und klicken Sie anschließend auf **Back Up** (Sichern).
 
 1. Klicken Sie auf **OK**, um eine vollständige Sicherung am Standardspeicherort für Sicherungen zu erstellen.
 
@@ -299,7 +301,7 @@ Nun können Sie eine Verfügbarkeitsgruppe konfigurieren. Gehen Sie dazu wie fol
 
     ![Assistent für neue Verfügbarkeitsgruppen, anfängliche Datensynchronisierung auswählen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel: **\\\\\<Erste SQL Server-Instanz\>\Backup\\\**. Klicken Sie auf **Weiter**.
+8. Wählen Sie auf der Seite **Anfängliche Datensynchronisierung auswählen** die Option **Vollständig** aus, und geben Sie einen freigegebenen Netzwerkpfad an. Verwenden Sie für den Speicherort die [zuvor erstellte Sicherungsfreigabe](#backupshare). In diesem Beispiel: **\\\\\<Erste SQL Server-Instanz\>\Backup\\** . Klicken Sie auf **Weiter**.
 
    >[!NOTE]
    >Zur vollständigen Synchronisierung wird die Datenbank der ersten SQL Server-Instanz vollständig gesichert und in der zweiten Instanz wiederhergestellt. Bei umfangreichen Datenbanken wird von einer vollständigen Synchronisierung abgeraten, da sie sehr lange dauern kann. Sie können den Vorgang beschleunigen, indem Sie die Datenbank manuell sichern und mit `NO RECOVERY` wiederherstellen. Falls die Datenbank bereits vor dem Konfigurieren der Verfügbarkeitsgruppe mit `NO RECOVERY` in der zweiten SQL Server-Instanz wiederhergestellt wurde, wählen Sie **Nur verknüpfen** aus. Wenn Sie die Sicherung erst nach dem Konfigurieren der Verfügbarkeitsgruppe erstellen möchten, wählen Sie **Anfängliche Datensynchronisierung überspringen** aus.
@@ -354,7 +356,7 @@ Bei Azure Load Balancer kann es sich entweder um Load Balancer Standard oder Loa
    ![Verfügbarkeitsgruppe im Failovercluster-Manager](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
 1. Klicken Sie auf **Create**.
-1. Konfigurieren Sie den Load Balancer mit folgenden Parametern: 
+1. Konfigurieren Sie den Load Balancer mit folgenden Parametern:
 
    | Einstellung | Field |
    | --- | --- |
@@ -426,7 +428,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
    | **Test** |Der Name, den Sie für den Test angegeben haben. | SQLAlwaysOnEndPointProbe |
    | **Session Persistence** (Sitzungspersistenz) | Dropdownliste | **Keine** |
    | **Leerlauftimeout** | Gibt an, wie viele Minuten eine TCP-Verbindung geöffnet bleiben soll. | 4 |
-   | **Floating IP (Direct Server Return)** | |Aktiviert |
+   | **Floating IP (Direct Server Return)** | |Enabled |
 
    > [!WARNING]
    > Direct Server Return wird bei der Erstellung festgelegt. Diese Einstellung kann nicht geändert werden.
@@ -467,7 +469,7 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
    | **Test** |Der Name, den Sie für den Test angegeben haben. | WSFCEndPointProbe |
    | **Session Persistence** (Sitzungspersistenz) | Dropdownliste | **Keine** |
    | **Leerlauftimeout** | Gibt an, wie viele Minuten eine TCP-Verbindung geöffnet bleiben soll. | 4 |
-   | **Floating IP (Direct Server Return)** | |Aktiviert |
+   | **Floating IP (Direct Server Return)** | |Enabled |
 
    > [!WARNING]
    > Direct Server Return wird bei der Erstellung festgelegt. Diese Einstellung kann nicht geändert werden.

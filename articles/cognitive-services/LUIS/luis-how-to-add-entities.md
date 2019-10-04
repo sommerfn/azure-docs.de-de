@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen von Entitäten
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: 'Hinzufügen von Entitäten: LUIS'
+titleSuffix: Azure Cognitive Services
 description: Erstellen Sie Entitäten, um die Schlüsseldaten aus Benutzeräußerungen in Language Understanding-Apps (LUIS) zu extrahieren.
 services: cognitive-services
 author: diberry
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 03/11/2019
+ms.topic: conceptual
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 784fe19d1ae40a7cdff3cc853726d4c62265e0f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 80e1052cb7acbdcec2dcb94f1667cae3c554d18e
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106932"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68932918"
 ---
 # <a name="create-entities-without-utterances"></a>Erstellen von Entitäten ohne Äußerungen
 
@@ -66,29 +66,6 @@ Eine Entität des Typs „Regulärer Ausdruck“ dient zum Abrufen von Daten aus
 
     Dieser reguläre Ausdruck stimmt mit dem Literal `hrf-` überein und enthält dann sechs Ziffern, um eine Formularnummer für ein Formular aus dem Personalwesen darzustellen.
 
-## <a name="add-hierarchical-entities"></a>Hinzufügen hierarchischer Entitäten
-
-Eine hierarchische Entität ist eine Kategorie von im Kontext erlernten und konzeptionell verwandten Entitäten. Die Entität im folgenden Beispiel enthält Abflug- und Zielorte. 
-
-In der Äußerung `Move John Smith from Seattle to Cairo` ist Seattle der Abflug- und Kairo der Zielort. Die Orte unterscheiden sich durch den Kontext und werden aufgrund der Wortstellung und Wortwahl in der Äußerung erlernt.
-
-Um hierarchische Entitäten hinzuzufügen, führen Sie die folgenden Schritte aus: 
-
-1. Wählen Sie in Ihrer App im linken Navigationsbereich **Entitäten** und dann **Neue Entität erstellen** aus.
-
-1. Geben Sie im Popupdialogfeld `Location` in das Feld **Entitätsname** ein, und wählen Sie dann **Hierarchisch** in der Liste **Entitätstyp** aus.
-
-    ![Hinzufügen einer Entität vom Typ „Hierarchisch“](./media/add-entities/hier-location-entity-creation.png)
-
-1. Wählen Sie **Untergeordnetes Element hinzufügen**, und geben Sie im ersten Feld **Untergeordnete Entität** dann `Origin` ein. 
-
-1. Wählen Sie **Untergeordnetes Element hinzufügen**, und geben Sie im zweiten Feld **Untergeordnete Entität** dann `Destination` ein. Wählen Sie **Fertig**aus.
-
-    >[!CAUTION]
-    >Die Namen untergeordneter Entitäten müssen für alle Entitäten einer einzelnen App eindeutig sein. Zwei unterschiedliche hierarchische Entitäten dürfen keine untergeordneten Elemente mit dem gleichen Namen enthalten. 
-
-    Navigieren Sie nach dem Erstellen dieser Entität zu allen Absichten mit Beispieläußerungen, die die Entität enthalten. Wählen Sie den Text in der Beispieläußerung aus, und kennzeichnen Sie ihn als Entität. 
-
 <a name="add-composite-entities"></a>
 
 ## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>Hinzufügen von zusammengesetzten Entitäten zum Gruppieren in einer Beziehung von über- und untergeordneten Elementen
@@ -135,17 +112,15 @@ In der Äußerung `Where is Request relocation from employee new to the company 
 
 ## <a name="add-a-role-to-distinguish-different-contexts"></a>Hinzufügen einer Rolle zum Unterscheiden verschiedener Kontexte
 
-Eine Rolle ist ein benannter Untertyp einer Entität, basierend auf dem Kontext. Dies ist vergleichbar mit einer [hierarchischen](#add-hierarchical-entities) Entität, aber Rollen werden nur in [Mustern](luis-how-to-model-intent-pattern.md) verwendet. 
+Eine Rolle ist ein benannter Untertyp, der auf Kontext basiert. Er ist in allen Entitäten verfügbar, einschließlich vorkonfigurierter und nicht durch maschinelles Lernen erworbener Entitäten. 
 
-Wenn dasselbe Beispiel wie bei der hierarchischen Entität mit Ausgangs- und Zielorten verwendet wird, besteht der Unterschied darin, dass eine Rolle als Ausgangsort (origin) und nicht als hierarchisches untergeordnetes Element bezeichnet wird. 
-
-Die Syntax für eine Rolle ist **{Entitätsname:Rollenname}**, wobei auf den Entitätsnamen ein Doppelpunkt und dann der Rollenname folgt. Beispiel: `Move {personName} from {LocationUsingRoles:Origin} to {LocationUsingRoles:Destination}`.
+Die Syntax für eine Rolle ist **`{Entityname:Rolename}`** , wobei auf den Entitätsnamen ein Doppelpunkt und dann der Rollenname folgt. Beispiel: `Move {personName} from {Location:Origin} to {Location:Destination}`.
 
 1. Wählen Sie im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten**.
 
-1. Wählen Sie **Neue Entität erstellen** aus. Geben Sie den Namen `LocationUsingRoles` ein. Wählen Sie den Typ **Einfach** und dann **Fertig** aus. 
+1. Wählen Sie **Neue Entität erstellen** aus. Geben Sie den Namen `Location` ein. Wählen Sie den Typ **Einfach** und dann **Fertig** aus. 
 
-1. Wählen Sie im linken Bereich die Option **Entitäten** und dann die neue Entität **LocationUsingRoles** aus, die im vorherigen Schritt erstellt wurde.
+1. Wählen Sie im linken Bereich die Option **Entitäten** und dann die neue Entität **Location** aus, die im vorherigen Schritt erstellt wurde.
 
 1. Geben Sie im Textfeld **Rollenname** den Namen der Rolle `Origin` ein, und drücken Sie die EINGABETASTE. Fügen Sie eine zweite Rolle namens `Destination` hinzu. 
 

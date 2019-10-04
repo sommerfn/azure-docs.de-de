@@ -3,19 +3,20 @@ title: Verwalten von Benutzerdaten mit dem Unterhaltungslernmodul – Microsoft 
 titleSuffix: Azure
 description: Erfahren Sie, wie Sie Benutzerdaten mit dem Unterhaltungslernmodul verwalten.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 83c7e808e48733487e84d668236cdb327c21c44c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 857e899764d284e2d78f1172fa8eeac04c57d618
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249077"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705200"
 ---
 # <a name="managing-user-data"></a>Verwalten von Benutzerdaten
 

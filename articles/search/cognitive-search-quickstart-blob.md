@@ -1,22 +1,21 @@
 ---
-title: 'Schnellstart: Erstellen eines KI-basierten Index im Azure-Portal: Azure Search'
+title: 'Schnellstart: Informationen zur KI-Anreicherung der kognitiven Suche im Azure-Portal – Azure Search'
 description: Qualifikationen für Datenextrahierung, natürliche Sprache und Bildverarbeitung in einem Azure Search-Indizierungsportal unter Verwendung von Azure-Portal und Beispieldaten.
-manager: cgronlun
+manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 04/08/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 161d3ff3e00f7e9e979527533f6b8ac365c41490
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 11c58a891a730c57aae3500911741623dde5d51b
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265014"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265899"
 ---
-# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-and-sample-data"></a>Schnellstart: Erstellen einer KI-basierten Indizierungspipeline unter Verwendung kognitiver Qualifikationen und Beispieldaten
+# <a name="quickstart-create-an-ai-enrichment-pipeline-using-cognitive-skills-in-azure-search"></a>Schnellstart: Erstellen einer KI-Anreicherungspipeline unter Verwendung kognitiver Qualifikationen in Azure Search
 
 Azure Search wird in [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) integriert, um einer Azure Search-Indizierungspipeline Qualifikationen zur Extrahierung von Daten, zur Verarbeitung von natürlicher Sprache (Natural Language Processing, NLP) und zur Bildverarbeitung hinzuzufügen und nicht durchsuchbare oder unstrukturierte Inhalte dadurch besser durchsuchbar zu machen. 
 
@@ -30,12 +29,12 @@ In dieser Schnellstartanleitung erstellen Sie Ihre erste Anreicherungspipeline i
 > * Führen Sie den Assistenten aus (eine Entitäts-Qualifikation erkennt Personen, Orte und Organisationen)
 > * Verwenden Sie den [**Suchexplorer**](search-explorer.md), um die angereicherten Daten abzufragen
 
-In dieser Schnellstartanleitung wird der kostenlose Dienst verwendet. Die Anzahl kostenloser Transaktionen ist allerdings auf 20 Dokumente pro Tag beschränkt. Falls Sie diese Schnellstartanleitung mehrmals am gleichen Tag ausführen möchten, verwenden Sie einen kleineren Dateisatz, um mehr Ausführungen zu ermöglichen.
+In dieser Schnellstartanleitung wird der kostenlose Dienst verwendet. Die Anzahl kostenloser Transaktionen ist allerdings auf 20 Dokumente pro Tag beschränkt. Falls Sie diesen Schnellstart mehrmals pro Tag ausführen möchten, verwenden Sie einen kleineren Dateisatz, um mehr Ausführungen zu ermöglichen.
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie eine kostenpflichtige Cognitive Services-Ressource verwenden. Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion entsprechen den Vorschaupreisen, wie auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben. [Weitere Informationen](cognitive-search-attach-cognitive-services.md).
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -45,7 +44,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) stellt die KI bereit. In dieser Schnellstartanleitung wird erläutert, wie Sie diese Ressourcen beim Angeben der Pipeline inline hinzufügen. Es müssen keine Konten vorab eingerichtet werden.
 
-Azure-Dienste sind erforderlich, um die Eingaben für die Indizierungspipeline bereitzustellen. Sie können eine beliebige, von [Azure Search-Indexern](search-indexer-overview.md) unterstützte Datenquelle verwenden. Einzige Ausnahme ist Azure Table Storage, da diese Lösung nicht für die KI-basierte Indizierung unterstützt wird. In dieser Schnellstartanleitung wird [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) als Container für Quelldatendateien verwendet. 
+Azure-Dienste sind erforderlich, um die Eingaben für die Indizierungspipeline bereitzustellen. Sie können alle von [Azure Search-Indexern](search-indexer-overview.md) unterstützten Datenquellen verwenden. In dieser Schnellstartanleitung wird [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) als Container für Quelldatendateien verwendet. 
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Einrichten des Azure Blob-Diensts und Laden von Beispieldaten
 
@@ -166,11 +165,13 @@ Ein anderes wichtiges Konzept ist, dass Qualifikationen auf Eingabefeldern arbei
 
 Schließlich haben Sie gelernt, dass das Anzeigen von Ergebnissen durch Abfragen des Index erreicht wird. Was Azure Search bereitstellt, ist ein durchsuchbarer Index, den Sie entweder mit der [einfachen](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) oder mit der [vollständig erweiterten Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) abfragen können. Ein Index, der angereicherte Felder enthält, ist wie jeder andere. Wenn Sie Standard- oder [benutzerdefinierte Analysetools](search-analyzers.md), [Bewertungsprofile](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [Synonyme](search-synonyms.md), [facettierte Filter](search-filters-facets.md), geografische Suche oder andere Funktionen von Azure Search einbeziehen möchten, stehen Ihnen alle Wege offen.
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+## <a name="clean-up"></a>Bereinigen
 
-Wenn Sie Ihre Erkundung abgeschlossen haben, besteht die schnellste Möglichkeit, das System aufzuräumen, im Löschen der Ressourcengruppe, die den Azure Search-Dienst und den Azure Blob-Dienst enthält.  
+Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
-Unter der Annahme, dass Sie beide Dienste in der gleichen Gruppe platziert haben, löschen Sie nun einfach die Ressourcengruppe, um endgültig ihren gesamten Inhalt zu löschen, einschließlich der Dienste und aller gespeicherten Inhalte, die Sie für diese Übung erstellt haben. Im Portal finden Sie den Namen der Ressourcengruppe auf der Seite „Übersicht“ der einzelnen Dienste.
+Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
+
+Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf maximal drei Indizes, Indexer und Datenquellen. Sie können einzelne Elemente über das Portal löschen, um unter dem Limit zu bleiben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

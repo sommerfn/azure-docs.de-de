@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 7aadac72aa1c8c7e7085cccba1d8c83ffb3ebc7b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 49b5b03356790bd45b2ad29897a57b746af1abe1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58792432"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140680"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage nach Azure SQL-Datenbank mithilfe von Azure Data Factory
 
@@ -27,8 +26,8 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory.
-> * Erstellen verknüpfter Azure Storage- und Azure SQL-Datenbankdienste.
-> * Erstellen von Azure Blob- und Azure SQL-Datenbankdatasets.
+> * Erstellen verknüpfter Azure Storage- und Azure SQL-Datenbank-Dienste.
+> * Erstellen von Azure Blob- und Azure SQL-Datenbank-Datasets.
 > * Erstellen einer Pipeline mit einer Kopieraktivität.
 > * Starten einer Pipelineausführung.
 > * Überwachen der Pipeline- und Aktivitätsausführungen.
@@ -89,7 +88,7 @@ Erstellen Sie mithilfe von Visual Studio 2015/2017 eine C# .NET-Konsolenanwendun
 
 1. Starten Sie **Visual Studio**.
 2. Klicken Sie auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**.
-3. Wählen Sie in der Liste der Projekttypen auf der rechten Seite **Visual C#** -> **Konsolen-App (.NET Framework)** aus. .NET-Version 4.5.2 oder höher ist erforderlich.
+3. Wählen Sie in der Liste der Projekttypen auf der rechten Seite **Visual C#**  -> **Konsolen-App (.NET Framework)** aus. .NET-Version 4.5.2 oder höher ist erforderlich.
 4. Geben Sie **ADFv2Tutorial** als Namen ein.
 5. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
@@ -205,9 +204,9 @@ client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLink
 Console.WriteLine(SafeJsonConvert.SerializeObject(storageLinkedService, client.SerializationSettings));
 ```
 
-### <a name="create-an-azure-sql-database-linked-service"></a>Erstellen eines verknüpften Azure SQL-Datenbankdiensts
+### <a name="create-an-azure-sql-database-linked-service"></a>Erstellen eines verknüpften Azure SQL-Datenbank-Diensts
 
-Fügen Sie der **Main**-Methode den folgenden Code hinzu, der einen **verknüpften Azure SQL-Datenbankdienst** erstellt. Unter [Eigenschaften von verknüpften Azure SQL-Datenbankdiensten](connector-azure-sql-database.md#linked-service-properties) erfahren Sie mehr über unterstützte Eigenschaften und Details.
+Fügen Sie der **Main**-Methode den folgenden Code hinzu, der einen **verknüpften Azure SQL-Datenbank-Dienst** erstellt. Unter [Eigenschaften von verknüpften Azure SQL-Datenbank-Diensten](connector-azure-sql-database.md#linked-service-properties) erfahren Sie mehr über unterstützte Eigenschaften und Details.
 
 ```csharp
 // Create an Azure SQL Database linked service
@@ -271,9 +270,9 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(blobDataset, client.Serializat
 
 ### <a name="create-a-dataset-for-sink-azure-sql-database"></a>Erstellen eines Datasets für eine Azure SQL-Senkendatenbank
 
-Fügen Sie der **Main**-Methode den folgenden Code hinzu, der ein **Azure SQL-Datenbankdataset** erstellt. Unter [Eigenschaften von Azure SQL-Datenbankdatasets](connector-azure-sql-database.md#dataset-properties) erfahren Sie mehr über unterstützte Eigenschaften und Details.
+Fügen Sie der **Main**-Methode den folgenden Code hinzu, der ein **Azure SQL-Datenbank-Dataset** erstellt. Unter [Eigenschaften von Azure SQL-Datenbank-Datasets](connector-azure-sql-database.md#dataset-properties) erfahren Sie mehr über unterstützte Eigenschaften und Details.
 
-Sie definieren ein Dataset, das die Senkendaten in Azure SQL-Datenbank darstellt. Dieses Dataset verweist auf den verknüpften Azure SQL-Datenbankdienst, den Sie im vorherigen Schritt erstellt haben. Es gibt auch die SQL-Tabelle an, die die kopierten Daten enthält. 
+Sie definieren ein Dataset, das die Senkendaten in Azure SQL-Datenbank darstellt. Dieses Dataset verweist auf den verknüpften Azure SQL-Datenbank-Dienst, den Sie im vorherigen Schritt erstellt haben. Es gibt auch die SQL-Tabelle an, die die kopierten Daten enthält. 
 
 ```csharp
 // Create an Azure SQL Database dataset
@@ -383,7 +382,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 Erstellen und starten Sie die Anwendung, und überprüfen Sie dann die Pipelineausführung.
 
-Die Konsole gibt den Status der Erstellung der Data Factory, des verknüpften Diensts, der Datasets, der Pipeline und der Pipelineausführung aus. Danach wird der Status der Pipelineausführung überprüft. Warten Sie, bis Sie die Ausführungsdetails der Kopieraktivität mit der Größe der gelesenen/geschriebenen Daten sehen. Verwenden Sie dann Tools wie z.B. SSMS (SQL Server Management Studio) oder Visual Studio, um eine Verbindung mit Ihrer Azure SQL-Zieldatenbank herzustellen und zu überprüfen, ob die Daten in die von Ihnen angegebene Tabelle kopiert werden.
+Die Konsole gibt den Status der Erstellung der Data Factory, des verknüpften Diensts, der Datasets, der Pipeline und der Pipelineausführung aus. Danach wird der Status der Pipelineausführung überprüft. Warten Sie, bis Sie die Ausführungsdetails der Kopieraktivität mit der Größe der gelesenen/geschriebenen Daten sehen. Verwenden Sie dann Tools wie z. B. SSMS (SQL Server Management Studio) oder Visual Studio, um eine Verbindung mit Ihrer Azure SQL-Zieldatenbank herzustellen und zu überprüfen, ob die Daten in die von Ihnen angegebene Tabelle kopiert werden.
 
 ### <a name="sample-output"></a>Beispielausgabe
 
@@ -520,8 +519,8 @@ Die Pipeline in diesem Beispiel kopiert Daten in einem Azure Blob Storage von ei
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory.
-> * Erstellen verknüpfter Azure Storage- und Azure SQL-Datenbankdienste.
-> * Erstellen von Azure Blob- und Azure SQL-Datenbankdatasets.
+> * Erstellen verknüpfter Azure Storage- und Azure SQL-Datenbank-Dienste.
+> * Erstellen von Azure Blob- und Azure SQL-Datenbank-Datasets.
 > * Erstellen einer Pipeline mit einer Kopieraktivität.
 > * Starten einer Pipelineausführung.
 > * Überwachen der Pipeline- und Aktivitätsausführungen.

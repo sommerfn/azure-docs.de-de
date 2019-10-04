@@ -3,20 +3,22 @@ title: Definieren eines neuen Gerätetyps in Azure IoT Central | Microsoft-Dokum
 description: In diesem Tutorial für Ersteller erfahren Sie, wie Sie in Ihrer Azure IoT Central-Anwendung einen neuen Gerätetyp definieren. Sie definieren die Telemetriedaten, den Zustand, die Eigenschaften und die Einstellungen für den Typ.
 author: dominicbetts
 ms.author: dobett
-ms.date: 01/28/2019
+ms.date: 06/07/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 884381cc3b9aaeec29f5697485cd90c28b2bd97e
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: db9f7e75af01ed83c39ef3a37ab2612426ef6ea4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681249"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099608"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Tutorial: Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung
+
+[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
 In diesem Tutorial für Ersteller erfahren Sie, wie Sie in Ihrer Microsoft Azure IoT Central-Anwendung mithilfe einer Gerätevorlage eine neue Art von Gerät definieren. Eine Gerätevorlage definiert die Telemetriedaten, den Zustand, die Eigenschaften und die Einstellungen für Ihren Gerätetyp.
 
@@ -47,7 +49,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie eine Azure IoT Central-Anwendung. Wenn Sie die Schritte der Schnellstartanleitung [Create an Azure IoT Central application](quick-deploy-iot-central.md) (Erstellen einer Azure IoT Central-Anwendung) ausgeführt haben, können Sie die so erstellte Anwendung verwenden. Führen Sie andernfalls die folgenden Schritte aus, um eine leere Azure IoT Central-Anwendung zu erstellen:
 
-1. Navigieren Sie zur Azure IoT Central-Seite [Application Manager](https://aka.ms/iotcentral) (Anwendungs-Manager).
+1. Navigieren Sie zur Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral).
 
 2. Geben Sie die E-Mail-Adresse und das Kennwort für den Zugriff auf Ihr Azure-Abonnement ein:
 
@@ -55,7 +57,7 @@ Für dieses Tutorial benötigen Sie eine Azure IoT Central-Anwendung. Wenn Sie d
 
 3. Wählen Sie **Neue Anwendung** aus, um mit der Erstellung einer neuen Azure IoT Central-Anwendung zu beginnen:
 
-    ![Azure IoT Central-Seite „Application Manager“ (Anwendungs-Manager)](./media/tutorial-define-device-type/iotcentralhome.png)
+    ![Seite des Azure IoT Central-Anwendungs-Managers](./media/tutorial-define-device-type/iotcentralhome.png)
 
 4. So erstellen Sie eine neue Azure IoT Central-Anwendung:
     
@@ -176,7 +178,7 @@ Mithilfe von Ereignissen können Sie Zeitpunktdaten definieren, die vom Gerät g
      | -------------------- | -----------       |
      | Anzeigename         | Fan Motor Error   |
      | Feldname           | fanmotorerr       |
-     | Severity             | Error             |
+     | severity             | Error             |
 
      Wählen Sie **Speichern** aus, um die Ereignisdefinition zu speichern:
 
@@ -287,7 +289,7 @@ Einstellungen Eigenschaften und Befehle sind unterschiedliche Werte, die in eine
 
     | Feld                | Wert                |
     | -------------------- | -------------------- |
-    | Anzeigename         | Standort             |
+    | Anzeigename         | Location             |
     | Feldname           | location             |
     | Anfangswert        | Seattle, WA          |
     | BESCHREIBUNG          | Gerätestandort      |
@@ -306,7 +308,7 @@ Einstellungen Eigenschaften und Befehle sind unterschiedliche Werte, die in eine
     | -------------------- | ----------------------- |
     | Anzeigename         | Datum der letzten Wartung       |
     | Feldname           | serviceDate             |
-    | Anfangswert        | 1.1.2019                |
+    | Anfangswert        | 1\.1.2019                |
     | BESCHREIBUNG          | Datum der letzten Wartung           |
 
     ![Konfigurieren der Geräteeigenschaften](./media/tutorial-define-device-type/configureproperties2.png)

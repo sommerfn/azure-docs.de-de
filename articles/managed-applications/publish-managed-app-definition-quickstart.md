@@ -4,17 +4,15 @@ description: Erfahren Sie, wie Sie eine verwaltete Azure-Anwendung erstellen, di
 services: managed-applications
 author: tfitzmac
 ms.service: managed-applications
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.date: 10/04/2018
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1f80d7e63d994f0e3eb3733b99afaa1b056f4686
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: b8c5a99a74446fcd126606b34135bba315ca1473
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804907"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995411"
 ---
 # <a name="publish-an-azure-managed-application-definition"></a>Veröffentlichen einer Definition für eine verwaltete Azure-Anwendung
 
@@ -41,7 +39,7 @@ Beim Definieren der verwalteten Anwendung wählen Sie einen Benutzer, eine Grupp
 Geben Sie im folgenden Befehl Ihren Benutzerprinzipalnamen an, um die Objekt-ID Ihrer Identität zu erhalten:
 
 ```azurecli-interactive
-userid=$(az ad user show --upn-or-object-id example@contoso.org --query objectId --output tsv)
+userid=$(az ad user show --id example@contoso.org --query objectId --output tsv)
 ```
 
 Als Nächstes benötigen Sie die Rollendefinitions-ID der integrierten RBAC-Rolle, der Sie Zugriff auf den Benutzer gewähren möchten. Der folgende Befehl zeigt, wie die Rollendefinitions-ID für die Rolle „Besitzer“ abgerufen wird:
@@ -61,14 +59,14 @@ az managedapp definition create \
   --display-name "Managed Storage Account" \
   --description "Managed Azure Storage Account" \
   --authorizations "$userid:$roleid" \
-  --package-file-uri "https://raw.githubusercontent.com/Azure/azure-managedapp-samples/master/samples/201-managed-storage-account/managedstorage.zip"
+  --package-file-uri "https://github.com/Azure/azure-managedapp-samples/raw/master/Managed%20Application%20Sample%20Packages/201-managed-storage-account/managedstorage.zip"
 ```
 
 Nachdem die Ausführung des Befehls abgeschlossen ist, verfügen Sie in Ihrer Ressourcengruppe über eine Definition für die verwaltete Anwendung. 
 
 Im vorigen Beispiel werden u.a. folgende Parameter verwendet:
 
-* **resource-group:** Der Name der Ressourcengruppe, in der die Definition für die verwaltete Anwendung erstellt wird.
+* **resource-group**: Der Name der Ressourcengruppe, in der die Definition für die verwaltete Anwendung erstellt wird.
 * **lock-level**: Der Typ der Sperre, der auf die verwaltete Ressourcengruppe angewendet wird. Er verhindert, dass der Kunde unerwünschte Vorgänge für diese Ressourcengruppe durchführt. Derzeit ist „ReadOnly“ die einzige unterstützte Sperrebene. Wenn „ReadOnly“ festgelegt wird, sind die in der verwalteten Ressourcengruppe vorhandenen Ressourcen für den Kunden schreibgeschützt. Dies gilt nicht für Herausgeberidentitäten, denen Zugriff auf die verwaltete Ressourcengruppe gewährt wird.
 * **authorizations**: Beschreibt die Prinzipal-ID und die Rollendefinitions-ID, die zum Erteilen von Berechtigungen für die verwaltete Ressourcengruppe verwendet werden. Diese ist im Format `<principalId>:<roleDefinitionId>` angegeben. Wenn mehr als ein Wert erforderlich ist, können Sie diese in der Form `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>` angeben. Die Werte werden hierbei durch ein Leerzeichen voneinander getrennt.
 * **package-file-uri**: Der Speicherort eines ZIP-Pakets, das die erforderlichen Dateien enthält. Das Paket muss die Dateien **mainTemplate.json** und **createUiDefinition.json** enthalten. Die Datei **mainTemplate.json** definiert die Azure-Ressourcen, die als Teil der verwalteten Anwendung erstellt werden. Die Vorlage unterscheidet sich nicht von anderen regulären Resource Manager-Vorlagen. Die Datei **createUiDefinition.json** generiert die Benutzeroberfläche für Benutzer, die die verwaltete Anwendung über das Portal erstellen.

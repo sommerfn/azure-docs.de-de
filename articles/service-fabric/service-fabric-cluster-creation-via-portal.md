@@ -3,7 +3,7 @@ title: Erstellen eines Service Fabric-Clusters im Azure-Portal | Microsoft Docs
 description: Erfahren Sie, wie Sie über das Azure-Portal und mithilfe von Azure Key Vault einen sicheren Service Fabric-Cluster in Azure erstellen.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: vturecek
 ms.assetid: 426c3d13-127a-49eb-a54c-6bde7c87a83b
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2018
-ms.author: aljo
-ms.openlocfilehash: 02312a19c687908b0e1c0e6417dc6b0a9df23912
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: atsenthi
+ms.openlocfilehash: 123795730e8468591bb02fa7c756ad48222dff82
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669468"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68600019"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Diese schrittweise Anleitung führt Sie durch die Einrichtung eines Service Fabr
 * Authentifizieren von Administratoren mithilfe von Zertifikaten.
 
 > [!NOTE]
-> Um erweiterte Sicherheitsoptionen zu nutzen, wie z.B. Benutzerauthentifizierung mit Azure Active Directory und Zertifikate für die Anwendungssicherheit, [erstellen Sie Ihren Cluster mithilfe von Azure Resource Manager][create-cluster-arm].
+> Wenn Sie erweiterte Sicherheitsoptionen wie die Benutzerauthentifizierung mit Azure Active Directory und das Einrichten von Zertifikaten für die Anwendungssicherheit nutzen möchten, [erstellen Sie Ihren Cluster mithilfe von Azure Resource Manager][create-cluster-arm].
 > 
 > 
 
@@ -61,7 +61,7 @@ Zusätzliche Clientzertifikate authentifizieren Administratoren für Clusterverw
 Zur Verwendung von Service Fabric müssen keine Clientauthentifizierungszertifikate in Key Vault hochgeladen werden. Diese Zertifikate müssen nur für Benutzer bereitgestellt werden, die zur Clusterverwaltung autorisiert sind. 
 
 > [!NOTE]
-> Zur Authentifizierung von Clients für Clusterverwaltungsvorgänge wird Azure Active Directory empfohlen. Um Azure Active Directory verwenden zu können, müssen Sie [den Cluster mithilfe von Azure Resource Manager erstellen][create-cluster-arm].
+> Zur Authentifizierung von Clients für Clusterverwaltungsvorgänge wird Azure Active Directory empfohlen. Um Azure Active Directory verwenden zu können, müssen Sie einen [Cluster mithilfe von Azure Resource Manager erstellen][create-cluster-arm].
 > 
 > 
 
@@ -71,11 +71,11 @@ Zum Zweck der Anwendungssicherheit kann eine beliebige Anzahl zusätzlicher Zert
 * Verschlüsselung und Entschlüsselung von Anwendungskonfigurationswerten
 * Knotenübergreifende Verschlüsselung von Daten während der Replikation 
 
-Anwendungszertifikate können nicht konfiguriert werden, wenn Sie [einen Cluster über das Azure-Portal erstellen](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/service-fabric/service-fabric-cluster-creation-via-portal.md). Um Anwendungszertifikate während der Einrichtung eines Clusters zu konfigurieren, müssen Sie [den Cluster mithilfe von Azure Resource Manager erstellen][create-cluster-arm]. Sie können dem Cluster nach der Erstellung auch Anwendungszertifikate hinzufügen.
+Anwendungszertifikate können nicht konfiguriert werden, wenn Sie [einen Cluster über das Azure-Portal erstellen](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/service-fabric/service-fabric-cluster-creation-via-portal.md). Um Anwendungszertifikate beim Einrichten des Clusters konfigurieren zu können, müssen Sie den [Cluster mithilfe von Azure Resource Manager erstellen][create-cluster-arm]. Sie können dem Cluster nach der Erstellung auch Anwendungszertifikate hinzufügen.
 
 ## <a name="create-cluster-in-the-azure-portal"></a>Erstellen eines Clusters im Azure-Portal
 
-Das Erstellen eines Produktionsclusters für Ihre Anwendungsanforderungen erfordert eine gewisse Planung. Um Sie dabei zu unterstützen, wird dringend empfohlen, das Sie das Dokument [Planungserwägungen für Service Fabric-Cluster][service-fabric-cluster-capacity] lesen und verstehen. 
+Das Erstellen eines Produktionsclusters zur Erfüllung Ihrer Anwendungsanforderungen erfordert eine gewisse Planung. Um diese Aufgabe zu erleichtern, empfehlen wir Ihnen dringend, das Dokument [Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster][service-fabric-cluster-capacity] zu lesen und zu verstehen. 
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Suchen nach der Service Fabric-Clusterressource
 
@@ -116,10 +116,10 @@ Konfigurieren Sie die Clusterknoten. Knotentypen definieren die Größe, die Anz
 
 1. Wählen Sie einen Namen für Ihren Knotentyp aus (ein bis zwölf Zeichen, nur Buchstaben und Zahlen).
 2. Die **Mindestgröße** von virtuellen Computern für den primären Knotentyp hängt von der **Dauerhaftigkeitsstufe** ab, die Sie für den Cluster auswählen. Der Standardwert für die Dauerhaftigkeitsstufe ist „Bronze“. Weitere Informationen zur Dauerhaftigkeit finden Sie unter [Auswählen der Dauerhaftigkeitsmerkmale für Service Fabric-Cluster][service-fabric-cluster-durability].
-3. Wählen Sie die **Größe des virtuellen Computers** aus. VMs der D-Serie verfügen über SSDs (Solid-State Drives) und werden für zustandsbehaftete Anwendungen sehr empfohlen. Verwenden Sie keine SKU für virtuelle Computer, die über Teilkerne oder über weniger als 10 GB verfügbaren Speicherplatz auf dem Datenträger verfügt. Lesen Sie das [Dokument zu Planungserwägungen für Service Fabric-Cluster][service-fabric-cluster-capacity], um Hilfe bei der Auswahl der Größe des virtuellen Computers zu erhalten.
+3. Wählen Sie die **Größe des virtuellen Computers** aus. VMs der D-Serie verfügen über SSDs (Solid-State Drives) und werden für zustandsbehaftete Anwendungen sehr empfohlen. Verwenden Sie keine SKU für virtuelle Computer, die über Teilkerne oder über weniger als 10 GB verfügbaren Speicherplatz auf dem Datenträger verfügt. Lesen Sie das Dokument [Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster][service-fabric-cluster-capacity], um Hilfe bei der Auswahl der Größe des virtuellen Computers zu erhalten.
 4.  **Cluster mit einem Knoten und Cluster mit drei Knoten** sind nur für Testzwecke vorgesehen. Sie werden für ausgeführte Produktionsworkloads nicht unterstützt.
 5. Wählen Sie die **Anfängliche Kapazität der VM-Skalierungsgruppe** für den Knotentyp aus. Sie können die Anzahl von VMs in einem Knotentyp später zentral hoch- oder herunterskalieren, für den primären Knotentyp beträgt die Mindestanzahl jedoch fünf für Produktionsworkloads. Andere Knotentypen können über mindestens einen virtuellen Computer verfügen. Die **Mindestanzahl** von virtuellen Computern für den primären Knotentyp steuert die **Zuverlässigkeit** des Clusters.  
-6. Konfigurieren Sie **benutzerdefinierte Endpunkte**. In diesem Feld können Sie eine durch Trennzeichen getrennte Liste der Ports eingeben, die Sie über den Azure Load Balancer verfügbar machen möchten, damit Ihre Anwendungen auf das öffentliche Internet zugreifen können. Wenn Sie z.B. die Bereitstellung einer Webanwendung in Ihrem Cluster planen, geben Sie hier „80“ ein, um Datenverkehr in Ihren Cluster über Port 80 zuzulassen. Weitere Informationen zu Endpunkten finden Sie unter [Kommunikation mit Anwendungen][service-fabric-connect-and-communicate-with-services].
+6. Konfigurieren Sie **benutzerdefinierte Endpunkte**. In diesem Feld können Sie eine durch Trennzeichen getrennte Liste der Ports eingeben, die Sie über den Azure Load Balancer verfügbar machen möchten, damit Ihre Anwendungen auf das öffentliche Internet zugreifen können. Wenn Sie z.B. die Bereitstellung einer Webanwendung in Ihrem Cluster planen, geben Sie hier „80“ ein, um Datenverkehr in Ihren Cluster über Port 80 zuzulassen. Weitere Informationen zu Endpunkten finden Sie unter [Herstellung einer Verbindung mit Diensten in Service Fabric und die Kommunikation mit diesen Diensten][service-fabric-connect-and-communicate-with-services].
 7. **Aktivieren Sie den Reverseproxy**.  Der [Service Fabric-Reverseproxy](service-fabric-reverseproxy.md) unterstützt die in einem Service Fabric-Cluster ausgeführten Microservices beim Ermitteln von und Kommunizieren mit anderen Diensten mit HTTP-Endpunkten.
 8. Konfigurieren Sie zurück auf dem Blatt **Clusterkonfiguration** unter **+ Optionale Einstellungen anzeigen** die **Diagnose** für den Cluster. Die Diagnose ist standardmäßig in Ihrem Cluster aktiviert, um die Behebung von Problemen in Ihrem Cluster zu vereinfachen. Zum Deaktivieren der Diagnose ändern Sie den **Status** in **Aus**. Das Ausschalten der Diagnose wird **nicht** empfohlen. Wenn Sie bereits ein Application Insights-Projekt erstellt haben, geben Sie seinen Schlüssel an, damit die Anwendungsablaufverfolgungen an dieses Projekt weitergeleitet werden.
 9. **Schließen Sie den DNS-Dienst ein**.  Der [DNS-Dienst](service-fabric-dnsservice.md) ist ein optionaler Dienst, der es Ihnen ermöglicht, andere Dienste zu finden, die das DNS-Protokoll verwenden.
@@ -202,7 +202,7 @@ Sobald der Cluster erstellt wurde, können Sie Ihren Cluster im Portal überprü
 Der Abschnitt **Knotenmonitor** auf dem Dashboardblatt des Clusters gibt die Anzahl von virtuellen Computern an, die fehlerfrei bzw. fehlerhaft sind. Weitere Informationen zur Clusterintegrität finden Sie unter [Einführung in das Service Fabric-Integritätsmodell][service-fabric-health-introduction].
 
 > [!NOTE]
-> Um die Verfügbarkeit zu gewährleisten und den Zustand beizubehalten, muss eine bestimmte Anzahl von Knoten in einem Service Fabric-Cluster stets in Betrieb sein. Dies wird auch als „Aufrechterhalten eines Quorums“ bezeichnet. Aus Sicherheitsgründen empfiehlt es sich in der Regel nicht, alle Computer innerhalb des Clusters herunterzufahren, sofern Sie zuvor keine [vollständige Sicherung des Zustands][service-fabric-reliable-services-backup-restore] durchgeführt haben.
+> Um die Verfügbarkeit zu gewährleisten und den Zustand beizubehalten, muss eine bestimmte Anzahl von Knoten in einem Service Fabric-Cluster stets in Betrieb sein. Dies wird auch als „Aufrechterhalten eines Quorums“ bezeichnet. Aus Sicherheitsgründen sollten daher in der Regel alle Computer im Cluster nur heruntergefahren werden, wenn Sie zuvor eine [vollständige Sicherung des Zustands][service-fabric-reliable-services-backup-restore] ausgeführt haben.
 > 
 > 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 9f738ab5022d1378925d920818e3f89fc2a1ee6d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 6916eea26f03d7b9cd0b3792fa65354619f97f74
+ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670522"
+ms.lasthandoff: 08/06/2019
+ms.locfileid: "68828510"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
@@ -87,8 +87,7 @@ Um das SDK und das dazugehörige Runtimepaket über das Befehlszeilenprogramm �
 4. Fügen Sie Ihrem APT-Schlüsselbund den neuen GnuPG- bzw. GPG-Schlüssel (Gnu Privacy Guard) hinzu.
 
     ```bash
-    sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+    curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
 5. Fügen Sie Ihrem APT-Schlüsselbund den offiziellen Docker-GPG-Schlüssel hinzu.
@@ -107,7 +106,7 @@ Um das SDK und das dazugehörige Runtimepaket über das Befehlszeilenprogramm �
 7. Fügen Sie Ihrem APT-Schlüsselbund den Azul JDK-Schlüssel hinzu, und richten Sie sein Repository ein.
 
     ```bash
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x219BD9C9
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
@@ -179,8 +178,8 @@ Die Service Fabric-Runtime aus der SDK-Installation enthält die Pakete in der f
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8 | Implizit von npm | neueste |
-RHEL | - | OpenJDK 1.8 | Implizit von npm | neueste |
+Ubuntu | 2.0.0 | AzulJDK 1.8 | Implizit von npm | latest |
+RHEL | - | OpenJDK 1.8 | Implizit von npm | latest |
 
 ## <a name="set-up-a-local-cluster"></a>Einrichten eines lokalen Clusters
 Starten Sie nach Abschluss der Installation einen lokalen Cluster.
@@ -216,19 +215,20 @@ Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen von Serv
 1. Installieren Sie Node.js und npm auf dem Computer.
 
     ```bash
-    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-    nvm install node
+    sudo add-apt-repository "deb https://deb.nodesource.com/node_8.x $(lsb_release -s -c) main"
+    sudo apt-get update
+    sudo apt-get install nodejs
     ```
 2. Installieren Sie den [Yeoman](https://yeoman.io/)-Vorlagengenerator über npm auf dem Computer:
 
     ```bash
-    npm install -g yo
+    sudo npm install -g yo
     ```
 3. Installieren Sie den Service Fabric-Yeo-Containergenerator und den Generator für die ausführbare Gastdatei über npm:
 
     ```bash
-    npm install -g generator-azuresfcontainer  # for Service Fabric container application
-    npm install -g generator-azuresfguest      # for Service Fabric guest executable application
+    sudo npm install -g generator-azuresfcontainer  # for Service Fabric container application
+    sudo npm install -g generator-azuresfguest      # for Service Fabric guest executable application
     ```
 
 Erstellen Sie nach der Installation der Generatoren ausführbare Gastdateien oder Containerdienste, indem Sie `yo azuresfguest` bzw. `yo azuresfcontainer` ausführen.
@@ -276,7 +276,7 @@ Das Eclipse-Plug-In für Service Fabric können Sie über die Eclipse-IDE für J
 
 2. Wählen Sie zum Installieren des Service Fabric-Plug-Ins **Hilfe** > **Neue Software installieren...** aus.
 
-3. Geben Sie im Feld **Work with** (Arbeiten mit) Folgendes ein: **https://dl.microsoft.com/eclipse**.
+3. Geben Sie im Feld **Work with** (Arbeiten mit) Folgendes ein: **https://dl.microsoft.com/eclipse** .
 
 4. Wählen Sie **Hinzufügen**.
 
@@ -333,7 +333,6 @@ Führen Sie die folgenden Befehle aus, um die Service Fabric SDKs zu entfernen:
 * [Vorbereiten einer Linux-Entwicklungsumgebung unter Windows](service-fabric-local-linux-cluster-windows.md)
 * [Verwalten Ihrer Anwendungen mithilfe der Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 * [Unterschiede zwischen Service Fabric unter Linux und Windows](service-fabric-linux-windows-differences.md)
-* [Automatisieren von Betriebssystempatches im Linux-Cluster](service-fabric-patch-orchestration-application-linux.md)
 * [Erste Schritte mit der Service Fabric CLI](service-fabric-cli.md)
 
 <!-- Links -->

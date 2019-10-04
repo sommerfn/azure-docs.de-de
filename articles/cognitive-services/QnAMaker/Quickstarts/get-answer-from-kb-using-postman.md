@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Abrufen von Antworten aus einer Wissensdatenbank mit Postman – QnA Maker'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart wird Schritt für Schritt erläutert, wie Sie mit Postman eine Antwort aus einer Wissensdatenbank abrufen.
 services: cognitive-services
 author: diberry
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 04/05/2019
+ms.date: 01/01/2019
 ms.author: diberry
-ms.openlocfilehash: d12051821faa60940bf2acc569c6552561b4b3ee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3df2703ba24091d0d21f06ae55aca389837e93d9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267939"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803046"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base-using-postman"></a>Schnellstart: Abrufen einer Antwort aus einer Wissensdatenbank mit Postman
 
@@ -36,44 +36,42 @@ Wenn Ihre Wissensdatenbank veröffentlicht wird, werden auf der Seite **Veröffe
 
 Die gelben Zahlen in der folgenden Abbildung kennzeichnen, welche Name/Wert-Paare in den folgenden Schritten verwendet werden sollen.
 
-[![PErgebnisse veröffentlichen](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
+[![Veröffentlichen der Ergebnisse](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png)](../media/qnamaker-quickstart-get-answer-with-postman/publish-settings.png#lightbox)
 
 Um eine Antwort mit Postman zu generieren, führen Sie die folgenden Schritte aus:
 
 1. Öffnen Sie Postman. Wenn Sie aufgefordert werden, einen Baustein auszuwählen, wählen Sie den Baustein **Basic Request** aus. Legen Sie für den **Request name (Anforderungsnamen)** `Generate QnA Maker answer`und für die **Collection (Sammlung)** `Generate QnA Maker answers` fest. Wenn Sie nicht in einer Sammlung speichern möchten, wählen Sie die Schaltfläche **Abbrechen** aus.
 1. Wählen Sie im Arbeitsbereich die HTTP-Methode von **POST** aus.
 
-    [![IIn Postman die POST-Methode festlegen](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
+    [![In Postman die POST-Methode festlegen](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png)](../media/qnamaker-quickstart-get-answer-with-postman/postman-select-post-method.png#lightbox)
 
 1. Verketten Sie für die URL den Host-Wert (Nr. 2 in der Abbildung) und den POST-Wert (Nr. 1 in der Abbildung), um die vollständige URL zu erstellen. Eine vollständige Beispiel-URL sieht so aus: 
 
     `https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/e1115f8c-d01b-4698-a2ed-85b0dbf3348c/generateAnswer`
 
-    [![IDie vollständige URL in Postman festlegen](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
+    [![Die vollständige URL in Postman festlegen](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-method-and-url.png#lightbox)
 
 1. Wählen Sie die Registerkarte **Headers (Kopfzeilen)** unter der URL und dann **Bulk Edit (Massenbearbeitung)** aus. 
 
 1. Kopieren Sie die Header (Nr. 3 und Nr. 4 aus der Abbildung) in den Textbereich.
 
-    [![IFestlegen der Kopfzeilen in Postman](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
+    [![Festlegen der Kopfzeilen in Postman](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-headers.png#lightbox)
 
 1. Wählen Sie die Registerkarte **Body (Hauptteil)** aus.
 1. Wählen Sie das Format **raw (unformatiert)** aus, und geben Sie den JSON-Code (Nr. 5 aus der Abbildung) ein, der die Frage darstellt.
 
     `{"question":"How do I programmatically update my Knowledge Base?"}`
 
-    [![IFestlegen des JSON-Werts für den Hauptteil in Postman](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
+    [![Festlegen des JSON-Werts für den Hauptteil in Postman](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png)](../media/qnamaker-quickstart-get-answer-with-postman/set-postman-body-json-value.png#lightbox)
 
 1. Wählen Sie die Schaltfläche **Send (Senden)** aus.
 1. Die Rückgabe enthält neben der Antwort andere Informationen, die für die Clientanwendung wichtig sein können. 
 
-    [![IFestlegen des JSON-Werts für den Hauptteil in Postman](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
+    [![Festlegen des JSON-Werts für den Hauptteil in Postman](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png)](../media/qnamaker-quickstart-get-answer-with-postman/receive-postman-response.png#lightbox)
 
 ## <a name="use-staging-endpoint"></a>Verwenden des Stagingendpunkts
 
-Wenn Sie eine Antwort vom Stagingendpunkt erhalten möchten, fügen Sie den booleschen Abfragezeichenfolgen-Parameter `isTest` mit dem Wert `true` an die URL an.
-
-`?isTest=true`
+Wenn Sie eine Antwort vom Stagingendpunkt erhalten möchten, fügen Sie die `isTest`-Texteigenschaft an die URL an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

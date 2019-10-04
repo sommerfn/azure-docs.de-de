@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: 083d59a2d8720a08abc7ea8998c1fbe048db3f28
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553637"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "67178449"
 ---
-| Ressource | Standardlimit | Maximales Limit |
+| Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | [Virtuelle Computer](../articles/virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) pro Clouddienst<sup>1</sup> |50 |50 |
 | Eingabeendpunkte pro Clouddienst<sup>2</sup> |150 |150 |

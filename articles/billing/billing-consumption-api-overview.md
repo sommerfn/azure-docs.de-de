@@ -3,7 +3,7 @@ title: 'Azure-Nutzungs-API: Übersicht | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Azure-Nutzungs-APIs Ihnen einen programmgesteuerten Zugriff auf Kosten- und Nutzungsdaten zu Ihren Azure-Ressourcen ermöglichen.
 services: billing
 documentationcenter: ''
-author: Erikre
+author: bandersmsft
 manager: dougeby
 editor: ''
 tags: billing
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 6/07/2018
-ms.author: erikre
-ms.openlocfilehash: 88b7909e78f8bd36ce456eee60587acbbb94b6cd
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.date: 10/01/2019
+ms.author: banders
+ms.openlocfilehash: f867cc954bcdf8cb2fc7ebf37ff19e52db485376
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286747"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719755"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure-Nutzungs-API: Übersicht 
 
@@ -109,7 +109,7 @@ Die API umfasst:
 
 -   **Rollenbasierte Zugriffssteuerung für Azure**: Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder von [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten. 
 -   **Filterung**: Passen Sie Ihre Empfehlungsergebnisse mit den folgenden Filtern an:
-    - Bereich
+    - `Scope`
     - Rückblickperiode
 -   **Reservierungsinformationen für verschiedene Angebotstypen**: Reservierungsinformationen sind zurzeit für Enterprise Agreement- und Web Direct-Kunden verfügbar.
 

@@ -4,248 +4,180 @@ description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Ac
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 1d75560a-55b3-42e9-bda1-92b01c572d8e
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/23/2018
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4091b20e97ca76629260a7420beecb77412b0d39
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c88457653d73931600c37f5e332cc4327dc7957a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453013"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102881"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Tutorial: Azure Active Directory-Integration mit Shmoop For Schools
+# <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>Tutorial: Integrieren von Shmoop For Schools mit Azure Active Directory
 
-In diesem Tutorial erfahren Sie, wie Sie Shmoop For Schools in Azure Active Directory (Azure AD) integrieren.
+In diesem Tutorial erfahren Sie, wie Sie Shmoop For Schools in Azure Active Directory (Azure AD) integrieren. Die Integration von Shmoop For Schools in Azure AD ermöglicht Folgendes:
 
-Die Integration von Shmoop For Schools in Azure AD hat folgende Vorteile:
+* Steuern Sie in Azure AD, wer Zugriff auf Shmoop For Schools hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Shmoop For Schools anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-- Sie können in Azure AD steuern, wer Zugriff auf Shmoop For Schools haben soll.
-- Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Shmoop For Schools anzumelden.
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Konfigurieren der Azure AD-Integration mit Shmoop For Schools benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein SSO-fähiges Shmoop For Schools-Abonnement
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie wie folgt vorgehen:
-
-- Verwenden Sie Ihre Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Fordern Sie eine [kostenlose einmonatige Testversion an](https://azure.microsoft.com/pricing/free-trial/), wenn Sie noch keine Azure AD-Testumgebung haben.
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Shmoop For Schools-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Hinzufügen von Shmoop For Schools über den Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-## <a name="add-shmoop-for-schools-from-the-gallery"></a>Hinzufügen von Shmoop For Schools über den Katalog
+* Shmoop For Schools unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Shmoop For Schools unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+
+## <a name="adding-shmoop-for-schools-from-the-gallery"></a>Hinzufügen von Shmoop For Schools über den Katalog
+
 Zum Konfigurieren der Integration von Shmoop For Schools in Azure AD müssen Sie Shmoop For Schools aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Shmoop For Schools über den Katalog hinzuzufügen:**
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Shmoop For Schools** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Shmoop For Schools** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf das Symbol **Azure Active Directory**. 
 
-    ![Schaltfläche „Azure Active Directory“][1]
+## <a name="configure-and-test-azure-ad-single-sign-on-for-shmoop-for-schools"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Shmoop For Schools
 
-2. Navigieren Sie zu **Unternehmensanwendungen ausführen**. Wechseln Sie dann zu **Alle Anwendungen**.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Shmoop For Schools mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Shmoop For Schools eingerichtet werden.
 
-    ![Blatt „Unternehmensanwendungen“][2]
-    
-3. Wählen Sie oben im Dialogfeld die Schaltfläche **Neue Anwendung** aus, um eine neue Anwendung hinzuzufügen.
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Shmoop For Schools zu konfigurieren und zu testen:
 
-    ![Schaltfläche „Neue Anwendung“][3]
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für Shmoop For Schools](#configure-shmoop-for-schools-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Shmoop For Schools-Testbenutzers](#create-shmoop-for-schools-test-user)** , um eine Entsprechung von B. Simon in Shmoop For Schools zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+3. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
-4. Geben Sie in das Suchfeld **Shmoop For Schools** ein. Wählen Sie in den Ergebnissen **Shmoop For Schools** aus, und wählen Sie dann die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-    ![Shmoop For Schools in der Ergebnisliste](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_addfromgallery.png)
+Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Shmoop For Schools** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Shmoop For Schools mithilfe einer Testbenutzerin namens Britta Simon.
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Shmoop For Schools als Pendant für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Sie müssen zwischen einem Azure AD-Benutzer und dem dazugehörigen Benutzer in Shmoop For Schools eine Verknüpfung einrichten.
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD bei Shmoop For Schools zu konfigurieren und zu testen:
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`.
 
-1. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on), um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden mit Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. [Erstellen eines Shmoop For Schools-Testbenutzers](#create-a-shmoop-for-schools-test-user), um in Shmoop For Schools eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. [Testen des einmaligen Anmeldens](#test-single-sign-on), um sicherzustellen, dass die Konfiguration funktioniert.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren es in Ihrer Shmoop For Schools-Anwendung.
-
-**Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Shmoop For Schools zu konfigurieren:**
-
-1. Wählen Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Shmoop For Schools** die Option **Einmaliges Anmelden**.
-
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
-
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** im Dropdownmenü unter **SSO-Modus** die Option **SAML-basierte Anmeldung** aus.
- 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_samlbase.png)
-
-3. Führen Sie im Abschnitt **Domäne und URLs für Shmoop For Schools** die folgenden Schritte aus:
-
-    ![Einmaliges Anmelden konfigurieren](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_url.png)
-
-    a. Geben Sie im Feld **URL für Anmeldung** eine URL im folgenden Format ein: `https://schools.shmoop.com/public-api/saml2/start/<uniqueid>`.
-
-    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `https://schools.shmoop.com/<uniqueid>`
-
-    > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Die Werte erhalten Sie vom [Supportteam für den Shmoop For Schools-Client](mailto:support@shmoop.com). 
- 
-4. Die Shmoop For Schools-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt, wie die Assertionen konfiguriert werden:
-
-    ![Einmaliges Anmelden konfigurieren](./media/shmoopforschools-tutorial/tutorial_attribute.png)
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://schools.shmoop.com/<uniqueid>`.
 
     > [!NOTE]
-    > Shmoop For Schools unterstützt zwei Rollen für Benutzer: **Lehrer** und **Kursteilnehmer**. Richten Sie diese Rollen in Azure AD ein, damit Benutzern die passenden Rollen zugewiesen werden können. Informationen zum Konfigurieren von Rollen in Azure AD finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
-    
-5. Konfigurieren Sie das SAML-Tokenattribut im Bereich **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der obigen Abbildung dargestellt.  Führen Sie dann die folgenden Schritte aus:
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Die Werte erhalten Sie vom [Supportteam für den Shmoop For Schools-Client](mailto:support@shmoop.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-    | Attributname | Attributwert |
-    | -------------- | --------------- |
-    | role           | user.assignedroles |
+5. Die Shmoop For Schools-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-    a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Attribut hinzufügen** zu öffnen.
-    
-    ![Einmaliges Anmelden konfigurieren](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
-    
-    ![Einmaliges Anmelden konfigurieren](./media/shmoopforschools-tutorial/tutorial_attribute_05.png)
-    
-    b. Geben Sie im Feld **Name** den für die Zeile angezeigten Attributnamen ein.
-    
-    c. Wählen Sie in der Liste **Wert** den für diese Zeile angezeigten Attributwert aus.
+    ![image](common/edit-attribute.png)
 
-    d. Lassen Sie das Feld **Namespace** leer.
-    
-    e. Klicken Sie auf **OK**.
+    > [!NOTE]
+    > Shmoop For Schools unterstützt zwei Rollen für Benutzer: **Lehrer** und **Kursteilnehmer**. Richten Sie diese Rollen in Azure AD ein, damit Benutzern die passenden Rollen zugewiesen werden können. Informationen zum Konfigurieren von Rollen in Azure AD finden Sie [hier](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
-6. Wählen Sie die Schaltfläche **Speichern** aus.
+6. Darüber hinaus wird von der Shmoop For Schools-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die folgenden Schritte aus, um das SAML-Tokenattribut wie in der folgenden Tabelle gezeigt hinzuzufügen: 
 
-    ![Einmaliges Anmelden konfigurieren](./media/shmoopforschools-tutorial/tutorial_general_400.png)
+    | NAME |  Quellattribut|
+    | --------- | --------------- |
+    | role      | user.assignedroles |
 
-7. Klicken Sie im Abschnitt  **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+    a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    ![Downloadlink für das Zertifikat](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
+    ![image](common/new-save-attribute.png)
 
-8. Zum Konfigurieren des einmaligen Anmeldens bei **Shmoop For Schools** müssen Sie die **App-Verbundmetadaten-URL** an das [Shmoop For Schools-Supportteam](mailto:support@shmoop.com) senden.
+    ![image](common/new-attribute-details.png)
+
+    b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
+
+    c. Lassen Sie den **Namespace** leer.
+
+    d. Wählen Sie „Source“ als **Attribut** aus.
+
+    e. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
+
+    f. Klicken Sie auf **OK**.
+
+    g. Klicken Sie auf **Speichern**.
+
+4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
+
+    ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-In diesem Abschnitt wird über das Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
-
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
-
-1. Wählen Sie im linken Bereich des Azure-Portals die Schaltfläche **Azure Active Directory**.
-
-    ![Schaltfläche „Azure Active Directory“](./media/shmoopforschools-tutorial/create_aaduser_01.png)
-
-2. Um die Liste der Benutzer anzuzeigen, wechseln Sie zu **Benutzer und Gruppen**. Wählen Sie dann **Alle Benutzer** aus.
-
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/shmoopforschools-tutorial/create_aaduser_02.png)
-
-3. Klicken Sie im oberen Bereich des Dialogfelds **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
-
-    ![Schaltfläche „Hinzufügen“](./media/shmoopforschools-tutorial/create_aaduser_03.png)
-
-4. Führen Sie im Dialogfeld **Benutzer** die folgenden Schritte aus:
-
-    ![Dialogfeld „Benutzer“](./media/shmoopforschools-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
-
-    d. Klicken Sie auf **Erstellen**.
- 
-### <a name="create-a-shmoop-for-schools-test-user"></a>Erstellen eines Shmoop For Schools-Testbenutzers
-
-In diesem Abschnitt wird in Shmoop For Schools ein Benutzer namens Britta Simon erstellt. Shmoop For Schools unterstützt die (standardmäßig aktivierte) Just-In-Time-Bereitstellung. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein neuer Benutzer vorhanden ist, wird er beim Zugreifen auf Shmoop For Schools erstellt.
-
->[!NOTE]
->Setzen Sie sich mit dem [Shmoop For Schools-Supportteam](mailto:support@shmoop.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+    1. Klicken Sie auf **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Shmoop For Schools gewähren.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Shmoop For Schools gewähren.
 
-![Zuweisen der Benutzerrolle][200] 
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Anwendungsliste den Eintrag **Shmoop For Schools** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
-**Führen Sie die folgenden Schritte aus, um die Zuweisung von Britta Simon zu Shmoop For Schools durchzuführen:**
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht. Wechseln Sie dann in der Verzeichnisansicht zu **Unternehmensanwendungen**.  Wählen Sie anschließend **Alle Anwendungen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Benutzer zuweisen][201] 
+    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-2. Wählen Sie in der Anwendungsliste den Eintrag **Shmoop For Schools** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-    ![Der Link „Shmoop For Schools“ in der Anwendungsliste](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_app.png)  
+## <a name="configure-shmoop-for-schools-sso"></a>Konfigurieren des einmaligen Anmeldens für Shmoop For Schools
 
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+Zum Konfigurieren des einmaligen Anmeldens bei **Shmoop For Schools** müssen Sie die **App-Verbundmetadaten-URL** an das [Shmoop For Schools-Supportteam](mailto:support@shmoop.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
-    ![Link „Benutzer und Gruppen“][202]
+### <a name="create-shmoop-for-schools-test-user"></a>Erstellen eines Shmoop For Schools-Testbenutzers
 
-4. Wählen Sie die Schaltfläche **Hinzufügen** aus. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+In diesem Abschnitt wird ein Benutzer mit dem Namen B. Simon in Shmoop For Schools erstellt. Shmoop For Schools unterstützt die (standardmäßig aktivierte) Just-In-Time-Benutzerbereitstellung. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Shmoop For Schools vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-    ![Bereich „Zuweisung hinzufügen“][203]
+> [!NOTE]
+> Setzen Sie sich mit dem [Shmoop For Schools-Supportteam](mailto:support@shmoop.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
-
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**. 
-
-7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Schaltfläche **Zuweisen**.
-    
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich die Kachel **Shmoop For Schools** wählen, sollten Sie automatisch bei Ihrer Shmoop For Schools-Anwendung angemeldet werden.
+Wenn Sie im Zugriffsbereich auf die Kachel „Shmoop For Schools“ klicken, sollten Sie automatisch bei der Shmoop For Schools-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-* [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-<!--Image references-->
-
-[1]: ./media/shmoopforschools-tutorial/tutorial_general_01.png
-[2]: ./media/shmoopforschools-tutorial/tutorial_general_02.png
-[3]: ./media/shmoopforschools-tutorial/tutorial_general_03.png
-[4]: ./media/shmoopforschools-tutorial/tutorial_general_04.png
-
-[100]: ./media/shmoopforschools-tutorial/tutorial_general_100.png
-
-[200]: ./media/shmoopforschools-tutorial/tutorial_general_200.png
-[201]: ./media/shmoopforschools-tutorial/tutorial_general_201.png
-[202]: ./media/shmoopforschools-tutorial/tutorial_general_202.png
-[203]: ./media/shmoopforschools-tutorial/tutorial_general_203.png
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

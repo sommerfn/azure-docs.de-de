@@ -3,21 +3,20 @@ title: 'Azure Batch: Ereignis zum Abschluss des Löschvorgangs von Pools | Micro
 description: Referenz zum Batch-Ereignis zum Abschluss des Löschvorgangs von Pools.
 services: batch
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: e715ccd0f5e79f9c640a3c060b0252b798748b4d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9bf50bd19ca3f4316c4c2ddbcdd3333745ebefd7
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474547"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258561"
 ---
 # <a name="pool-delete-complete-event"></a>Ereignis zum Abschluss des Löschvorgangs von Pools
 
@@ -35,9 +34,9 @@ ms.locfileid: "55474547"
 
 |Element|Typ|Notizen|
 |-------------|----------|-----------|
-|id|Zeichenfolge|Die ID des Pools.|
-|startTime|DateTime|Die Startzeit des Löschvorgangs des Pools.|
-|endTime|DateTime|Die Endzeit des Löschvorgangs des Pools.|
+|`id`|Zeichenfolge|Die ID des Pools.|
+|`startTime`|Datetime|Die Startzeit des Löschvorgangs des Pools.|
+|`endTime`|Datetime|Die Endzeit des Löschvorgangs des Pools.|
 
 ## <a name="remarks"></a>Anmerkungen
 Weitere Informationen zu Status und Fehlercodes für den Löschvorgang des Pools finden Sie unter [Löschen eines Pools aus einem Konto](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).

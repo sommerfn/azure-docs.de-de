@@ -1,5 +1,5 @@
 ---
-title: Schreiben einer benutzerdefinierten C#-Funktion für einen Azure Stream Analytics-Edge-Auftrag in Visual Studio (Vorschauversion)
+title: Schreiben benutzerdefinierter C#-Funktionen für Azure Stream Analytics-Edge-Aufträge in Visual Studio (Vorschauversion)
 description: Es wird beschrieben, wie Sie benutzerdefinierte C#-Funktionen für Stream Analytics-Edge-Aufträge in Visual Studio schreiben.
 services: stream-analytics
 author: mamccrea
@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5597109a65a8af88bf286977d039656635565ed9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cadc603a94d5d17ad2df419f8507c37f9e3272f8
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086901"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173309"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Tutorial: Schreiben einer benutzerdefinierten C#-Funktion für einen Azure Stream Analytics-Edgeauftrag (Vorschauversion)
 
@@ -62,8 +62,8 @@ Der von Ihnen erstellte Container wird verwendet, um das kompilierte C#-Paket zu
     |**Einstellung**  |**Empfohlener Wert**  |
     |---------|---------|
     |Assemblyquelle  |  Lokaler Projektverweis oder CodeBehind   |
-    |Ressource  |  Wählen Sie Daten aus dem aktuellen Konto aus.   |
-    |Abonnement  |  Wählen Sie Ihr Abonnement aus.   |
+    |Resource  |  Wählen Sie Daten aus dem aktuellen Konto aus.   |
+    |Subscription  |  Wählen Sie Ihr Abonnement aus.   |
     |Speicherkonto  |  Wählen Sie Ihr Speicherkonto aus.   |
     |Container  |  Wählen Sie den Container aus, den Sie in Ihrem Speicherkonto erstellt haben.   |
 

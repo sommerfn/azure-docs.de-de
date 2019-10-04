@@ -73,10 +73,14 @@
           href: service-fabric-tutorial-upgrade-cluster.md
         - name: 5. Löschen eines Clusters
           href: service-fabric-tutorial-delete-cluster.md
-    - name: Erstellen eines eigenständigen Clusters in AWS
+    - name: Erstellen eines eigenständigen Clusters
       items:
-        - name: 1. Erstellen der Infrastruktur in AWS
-          href: service-fabric-tutorial-standalone-create-infrastructure.md
+        - name: 1. Erstellen der Infrastruktur
+          items:
+            - name: Verwenden von AWS
+              href: service-fabric-tutorial-standalone-create-infrastructure.md
+            - name: Verwenden von Azure
+              href: service-fabric-tutorial-standalone-azure-create-infrastructure.md
         - name: 2. Einrichten von Service Fabric
           href: service-fabric-tutorial-standalone-create-service-fabric-cluster.md
         - name: 3. Bereitstellen einer Anwendung im Cluster
@@ -97,12 +101,14 @@
       href: service-fabric-best-practices-infrastructure-as-code.md
     - name: Überwachung und Diagnose
       href: service-fabric-best-practices-monitoring.md
+    - name: Anwendungsentwurf
+      href: service-fabric-best-practices-applications.md
     - name: Prüfliste für die Produktionsbereitschaft
       href: service-fabric-production-readiness-checklist.md
 - name: Beispiele
   items:
     - name: Codebeispiele
-      href: 'https://azure.microsoft.com/resources/samples/?service=service-fabric'
+      href: 'https://docs.microsoft.com/samples/browse/'
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric-Befehlszeilenschnittstelle
@@ -125,8 +131,8 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric-Clustersicherheit
           href: service-fabric-cluster-security.md
-        - name: Allgemeine Azure-Sicherheitsattribute
-          href: service-fabric-security-attributes.md
+        - name: Integrierte Sicherheitskontrollen
+          href: service-fabric-security-controls.md
     - name: Begriff
       href: service-fabric-technical-overview.md
     - name: Erstellen von Anwendungen
@@ -191,6 +197,8 @@
       items:
         - name: Anwendungsmodell
           href: service-fabric-application-model.md
+        - name: Erstellen von Anwendungsmodellvorlagen
+          href: service-fabric-concept-resource-model.md
         - name: Anwendungs- und Dienstmanifeste
           href: service-fabric-application-and-service-manifests.md
         - name: Beispiele für Anwendungs- und Dienstmanifeste
@@ -268,7 +276,7 @@
           items:
             - name: Übersicht über Azure-Cluster
               href: service-fabric-azure-clusters-overview.md
-            - name: Knotentypen und VM Scale Sets
+            - name: Knotentypen und VM-Skalierungsgruppen
               href: service-fabric-cluster-nodetypes.md
             - name: Aktualisieren von Clustern in Azure
               href: service-fabric-cluster-upgrade.md
@@ -344,6 +352,12 @@
           href: service-fabric-diagnostics-partners.md
     - name: Integration in API Management
       href: service-fabric-api-management-overview.md
+    - name: App-Ressourcenmodell
+      href: service-fabric-concept-resource-model.md
+    - name: Verwaltete Identität (Vorschau)
+      href: concepts-managed-identity.md
+    - name: Konfigurieren der Anmeldeinformationen des Containerrepositorys
+      href: configure-container-repository-credentials.md
 - name: Anleitungen
   items:
     - name: Einrichten der Entwicklungsumgebung
@@ -515,6 +529,8 @@
               href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md
             - name: Einrichten eines Linux-Clusters unter Windows
               href: service-fabric-local-linux-cluster-windows.md
+            - name: Bereitstellen einer .NET Core-App in einem Linux-Remotecluster über VS
+              href: service-fabric-how-to-publish-linux-app-vs.md
         - name: Arbeiten in einer Linux-/Eclipse-Entwicklungsumgebung
           items:
             - name: Erste Schritte mit dem Eclipse-Plug-In für die Entwicklung mit Java
@@ -539,8 +555,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: Empfohlene Vorgehensweisen
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
-        - name: Umgestalten einer migrierten App
-          href: /azure/architecture/service-fabric/refactor-migrated-app
+        - name: Modernisieren Ihrer Anwendung
+          href: /azure/architecture/service-fabric/modernize-app-azure-service-fabric
     - name: Verwalten des Anwendungslebenszyklus
       items:
         - name: Packen einer Anwendung
@@ -609,6 +625,8 @@
                   href: service-fabric-cluster-azure-deployment-preparation.md
                 - name: Im Azure-Portal erstellen
                   href: service-fabric-cluster-creation-via-portal.md
+                - name: Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
+                  href: service-fabric-cross-availability-zones.md
                 - name: Einrichten der Azure Active Directory-Authentifizierung
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: Erstellen einer benutzerdefinierten Clustervorlage
@@ -639,8 +657,6 @@
                   href: service-fabric-cluster-config-upgrade-azure.md
                 - name: Patchen von Clusterknoten (Windows)
                   href: service-fabric-patch-orchestration-application.md
-                - name: Patchen von Clusterknoten (Linux)
-                  href: service-fabric-patch-orchestration-application-linux.md
                 - name: Aktivieren der Datenträgerverschlüsselung (Windows)
                   href: service-fabric-enable-azure-disk-encryption-windows.md
                 - name: Aktivieren der Datenträgerverschlüsselung (Linux)
@@ -691,6 +707,8 @@
       items:
         - name: Diagnostizieren von allgemeinen Szenarien
           href: service-fabric-diagnostics-common-scenarios.md
+        - name: Diagnostizieren von Codepaketfehlern
+          href: service-fabric-diagnostics-code-package-errors.md
         - name: Überwachen von Anwendungen
           items:
             - name: Hinzufügen von Protokollierung zu Ihrer Anwendung
@@ -731,6 +749,26 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: Behandeln von Problemen mit dem lokalen Cluster
           href: service-fabric-troubleshoot-local-cluster-setup.md
+    - name: Verwenden einer verwalteten Identität für Service Fabric-Apps (Vorschau)
+      items:
+        - name: Clustereinrichtung
+          items:
+            - name: Konfigurieren eines vorhandenen Clusters mit verwalteter Identität
+              href: configure-existing-cluster-enable-managed-identity-token-service.md
+            - name: Konfigurieren eines neuen Azure Service Fabric-Clusters mit verwalteter Identität
+              href: configure-new-azure-service-fabric-enable-managed-identity.md
+        - name: Anwendungseinrichtung
+          items:
+            - name: Bereitstellen einer Anwendung mit verwalteter Identität
+              items:
+                - name: Bereitstellen einer Anwendung mit einer systemseitig zugewiesenen verwalteten Identität
+                  href: how-to-deploy-service-fabric-application-system-assigned-managed-identity.md
+                - name: Bereitstellen einer Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität
+                  href: how-to-deploy-service-fabric-application-user-assigned-managed-identity.md
+        - name: Verwenden von MITS mit Service Fabric-Anwendungscode
+          href: how-to-managed-identity-service-fabric-app-code.md
+        - name: Gewähren des Zugriffs auf andere Azure-Ressourcen
+          href: how-to-grant-access-other-resources.md
 - name: Verweis
   items:
     - name: Azure PowerShell
@@ -840,8 +878,8 @@
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Leitfäden zur Problembehandlung
-      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
+    - name: Versionshinweise
+      href: release-notes.md
     - name: Beispielcode
       href: 'https://aka.ms/servicefabricsamples'
     - name: Supportoptionen
@@ -850,5 +888,7 @@
       href: service-fabric-versions.md
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=service-fabric'
+    - name: Leitfäden zur Problembehandlung
+      href: 'https://github.com/Azure/Service-Fabric-Troubleshooting-Guides'
     - name: Videos
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'

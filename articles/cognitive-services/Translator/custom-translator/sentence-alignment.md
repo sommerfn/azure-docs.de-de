@@ -2,19 +2,19 @@
 title: 'Satzpaarbildung und -zuordnung: Custom Translator'
 titleSuffix: Azure Cognitive Services
 description: Während der Ausführung des Trainings werden aus den Sätzen in parallelen Dokumenten Paare gebildet, bzw. die Sätze werden einander zugeordnet. Custom Translator lernt Übersetzungen Satz für Satz durch Lesen eines Satzes und der zugehörigen Übersetzung. Anschließend werden Wörter und Ausdrücke in diesen beiden Sätzen einander zugeordnet.
-author: rajdeep-in
-manager: christw
+author: swmachan
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
-ms.author: v-rada
+ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 8d2933f6a3bbab792acb708f2a59cad4eb2cabf7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e9bc5c876da6bd2be1b22b389b819e51330b2e50
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777157"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68595459"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Satzpaarbildung und -zuordnung in parallelen Dokumenten
 
@@ -36,9 +36,9 @@ In der folgenden Tabelle ist die für ein erfolgreiches Training erforderliche M
 
 | Dataset   | Empfohlene Mindestanzahl von extrahierten Sätzen | Empfohlene Mindestanzahl von zugeordneten Sätzen | Höchstanzahl von zugeordneten Sätzen |
 |------------|--------------------------------------------|------------------------------------------|--------------------------------|
-| Training   | 10.000                                     | 2.000                                    | Keine Obergrenze                 |
-| Optimierung     | 2.000                                      | 500                                      | 2.500                          |
-| Testen    | 2.000                                      | 500                                      | 2.500                          |
+| Training   | 10.000                                     | 2\.000                                    | Keine Obergrenze                 |
+| Optimierung     | 2\.000                                      | 500                                      | 2\.500                          |
+| Testen    | 2\.000                                      | 500                                      | 2\.500                          |
 | Wörterbuch | 0                                          | 0                                        | Keine Obergrenze                 |
 
 ## <a name="next-steps"></a>Nächste Schritte

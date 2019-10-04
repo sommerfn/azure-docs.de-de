@@ -2,24 +2,17 @@
 title: Technischer Leitfaden für die Veröffentlichung von Azure Marketplace-SaaS-Anwendungen
 description: Schrittanleitung und Prüflisten für die Veröffentlichung von SaaS-Anwendungen im Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-documentationcenter: ''
 author: keithcharlie
-manager: nunoc
-editor: keithcharlie
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
-ms.author: keithcharlie
-ms.openlocfilehash: b653b0276cedea1e3b45adf7a9dc390b24f0d03f
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.author: kevidal
+ms.openlocfilehash: f9ff6e19a0f0091cb5b831279eee90727bbb89fd
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213618"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742256"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten
 
@@ -32,14 +25,14 @@ SaaS-Anwendungen stehen in beiden Azure-Storefronts zur Verfügung. In der folge
 | Storefront-Option | Auflisten | Trial/Transact (Testversion/Transaktion) |  
 | --- | --- | --- |  
 | AppSource | Ja (Kontaktaufnahme) | Ja (Power BI/Dynamics) |
-| Azure Marketplace | Nein  | Ja (SaaS-Apps) |   
+| Azure Marketplace | Nein | Ja (SaaS-Apps) |   
 
 **Liste**:  Diese Veröffentlichungsoption besteht aus dem Angebotstyp „Kontakt mit mir aufnehmen“ und wird verwendet, wenn eine Teilnahme auf Testversions- oder Transaktionsebene nicht möglich ist. Dieser Ansatz hat den Vorteil, dass Herausgeber, die eine Lösung auf dem Markt anbieten, sofort Leads gewinnen können, die zu Abschlüssen führen und zum Wachstum Ihres Geschäfts beitragen.  
 **Testversion/Transaktion**:  Der Kunde hat die Möglichkeit, Ihre Lösung direkt zu kaufen oder eine Testversion für Ihre Lösung anzufordern. Die Bereitstellung einer Testversion führt zu einer stärkeren Einbindung von Kunden und ermöglicht es ihnen, Ihre Lösung vor dem Kauf in Augenschein zu nehmen. Eine Testversion steigert Ihre Verkaufschancen in den Storefronts, und die Interaktion mit den Kunden führt in der Regel zu weiteren und lukrativeren Leads. Testversionen müssen mindestens für die Dauer des Testzeitraums kostenlosen Support enthalten.  
 
 | SaaS-Apps-Angebot | Geschäftliche Anforderungen | Technische Anforderungen |  
 | --- | --- | --- |  
-| **Kontaktaufnahme** | Ja | Nein  |  
+| **Kontaktaufnahme** | Ja | Nein |  
 | **Power BI/Dynamics** | Ja | Ja (Azure AD-Integration) |  
 | **SaaS-Apps**| Ja | Ja (Azure AD-Integration) |     
 
@@ -111,7 +104,7 @@ Die Verwendung der durch Azure AD ermöglichten Ein-Klick-Authentifizierung bei 
 
 ## <a name="certifying-your-azure-ad-integration-for-marketplace"></a>Zertifizieren Ihrer Azure AD-Integration für Marketplace  
 
-Die Zertifizierung der Azure AD-Integration ist auf mehrere Arten möglich – je nachdem, ob es sich um eine Anwendung mit nur einem Mandanten oder um eine mehrinstanzenfähige Anwendung handelt und ob Sie bereits die einmalige Verbundanmeldung von Azure AD unterstützen.  
+Führen Sie die Zertifizierung der Azure AD-Integration auf verschiedene Arten durch – je nachdem, ob es sich um eine Anwendung mit nur einem Mandanten oder um eine mehrinstanzenfähige Anwendung handelt und ob Sie bereits die einmalige Verbundanmeldung von Azure AD unterstützen.  
 
 **Vorgehensweise für mehrinstanzenfähige Anwendungen:**  
 
@@ -133,13 +126,13 @@ Wenn die einmalige Azure AD-Verbundanmeldung für Sie neu ist, gehen Sie wie fol
 ## <a name="saas-subscriptions"></a>SaaS-Abonnements
 
 Verwenden Sie SaaS-App-Angebotstypen, um Ihren Kunden die Möglichkeit zu geben, Ihre SaaS-basierte, technische Lösung als Abonnement zu kaufen. Für Ihre SaaS-App müssen die folgenden Anforderungen erfüllt werden:
-- Preis und Abrechnung des Diensts als monatliche Pauschale.
+- Preis und Abrechnung des Diensts zu einem Festpreis (monatlich oder jährlich) oder mit einer benutzerbasierten Rate.
 - Bereitstellung einer Upgrademethode oder Stornierung des Dienst zu einem beliebigen Zeitpunkt.
-Microsoft hostet die Commerce-Transaktion. Microsoft stellt Ihrem Kunden Rechnungen in Ihrem Namen. Wenn Sie die SaaS-App als Abonnement verwenden möchten, müssen Sie Ihre eigene Abonnementverwaltungsdienst-API aktivieren. Ihre Abonnementverwaltungsdienst-API muss direkt mit den Azure Resource Manager-APIs kommunizieren. Ihre Abonnementverwaltungsdienst-API muss die Bereitstellung, Aktualisierung und Stornierung des Diensts unterstützen.
+Microsoft hostet die Commerce-Transaktion. Microsoft stellt Ihrem Kunden Rechnungen in Ihrem Namen. Wenn Sie eine SaaS-App als Abonnement anbieten möchten, müssen Sie diese in die SaaS-Fulfillment-APIs integrieren.  Ihr Dienst muss die Bereitstellung, das Upgrade und das Stornieren unterstützen.
 
 | Anforderung | Details |  
 |:--- |:--- |  
-|Abrechnung und Messung | Ihr Angebot wird über eine monatliche Flatrate abgerechnet. Derzeit werden nutzungsbasierte Preise und nutzungsbasierte Anpassungsfunktionen nicht unterstützt. |  
+|Abrechnung und Messung | Der Preis für Ihr Angebot basiert auf dem Preismodell, das Sie vor der Veröffentlichung ausgewählt haben (Pauschale oder benutzerbasiert).  Wenn Sie ein Modell mit Festpreis nutzen, können Sie auch optionale Dimensionen ergänzen, die dem Kunden für die Nutzung von Diensten berechnet werden, die nicht in der Flatrate enthalten sind. |  
 |Abbruch | Ihr Angebot kann jederzeit vom Kunden storniert werden. |  
 |Transaktionszielseite | Sie hosten eine Transaktion-Landing Page mit Azure-Co-Branding, auf der Benutzer ihr SaaS-Dienstkonto erstellen und verwalten können. |   
 | Abonnement-API | Sie machen einen Dienst verfügbar, der mit dem SaaS-Abonnement interagiert, um Benutzerkonten und Servicepläne erstellen, aktualisieren und löschen zu können. Wichtige API-Änderungen müssen innerhalb von 24 Stunden unterstützt werden. Weniger wichtige API-Änderungen werden regelmäßig veröffentlicht. |  
@@ -155,4 +148,4 @@ Falls Sie dies noch nicht getan haben,
 Wenn Sie registriert sind und ein neues Angebot erstellen oder an einem vorhandenen arbeiten,
 
 - [melden Sie sich beim Cloud-Partnerportal an](https://cloudpartner.azure.com), um Ihr Angebot zu erstellen oder zu vervollständigen.
-- Unter [Azure-SaaS-Anwendungsangebot](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/saas-app/cpp-saas-offer) finden Sie weitere Informationen.
+- Unter [Azure-SaaS-Anwendungsangebot](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) finden Sie weitere Informationen.

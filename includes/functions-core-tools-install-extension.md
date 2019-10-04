@@ -1,21 +1,38 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: functions
 author: ggailey777
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
-ms.date: 09/21/2018
+ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: f1b53c53b1e5fb089eb9b8a9b816b11a1eea126d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ffd9e54c0f39b4256dbc83a336328797a8b53c45
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47044508"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67608192"
 ---
-Wenn Sie Funktionen lokal entwickeln, können Sie die erforderlichen Erweiterungen mithilfe der Azure Functions Core Tools über das Terminal oder über eine Eingabeaufforderung installieren.
+## <a name="register-extensions"></a>Registrieren von Erweiterungen
+
+Mit Ausnahme von HTTP- und Zeitauslösern werden Functions-Bindungen in der Laufzeitversion 2.x als Erweiterungspakete implementiert. In Version 2.x der Azure Functions Runtime müssen Sie die in Ihren Funktionen für die Bindungstypen verwendeten Erweiterungen explizit registrieren. Die Ausnahmen hierbei sind HTTP-Bindungen und Zeitauslöser, die keine Erweiterungen erfordern.
+
+Sie können auch Bindungserweiterungen einzeln installieren, oder Sie können einen Erweiterungsbündelverweis in der Datei „host.json“ hinzufügen. Erweiterungsbündel wirken eventuellen Kompatibilitätsproblemen bei Paketen entgegen, wenn mehrere Bindungstypen verwendet werden. Es handelt sich hierbei um den empfohlenen Ansatz zum Registrieren von Bindungserweiterungen. Erweiterungsbündel beseitigen außerdem die Notwendigkeit der Installation des .NET Core 2.x SDK. 
+
+### <a name="extension-bundles"></a>Erweiterungsbündel
+
+[!INCLUDE [Register extensions](functions-extension-bundles.md)]
+
+Weitere Informationen finden Sie unter [Registrieren von Bindungserweiterungen von Azure Functions](../articles/azure-functions/functions-bindings-register.md#extension-bundles). Sie sollten Erweiterungsbündel in de Datei „host.json“ hinzufügen, bevor Sie der Datei „functions.json“ Bindungen hinzufügen.
+
+### <a name="register-individual-extensions"></a>Registrieren einzelner Erweiterungen
+
+Wenn Sie Erweiterungen installieren müssen, die nicht in einem Bündel enthalten sind, können Sie einzelne Erweiterungspakete für bestimmte Bindungen manuell registrieren. 
+
+> [!NOTE]
+> Um Erweiterungen mithilfe von `func extensions install` manuell zu registrieren, müssen Sie das .NET Core 2.x SDK installiert haben.
 
 Nachdem Sie Ihre Datei *function.json* aktualisiert haben, sodass sie alle von der Funktion benötigten Bindungen einschließt, führen Sie den folgenden Befehl im Projektordner aus.
 
@@ -24,11 +41,3 @@ func extensions install
 ```
 
 Der Befehl liest die Datei *function.json*, um zu ermitteln, welche Pakete Sie benötigen, installiert diese und erzeugt das Erweiterungenprojekt neu. Er fügt alle neuen Bindungen an die aktuelle Version hinzu, aktualisiert aber keine vorhandenen Bindungen. Verwenden Sie die Option `--force`, um vorhandene Bindungen beim Installieren neuer auf die neueste Version zu aktualisieren.
-
-Wenn Sie eine bestimmte Version eines Pakets installieren möchten oder wenn Sie Pakete installieren möchten, bevor Sie die Datei *function.json* bearbeiten, verwenden Sie den Befehl `func extensions install` mit dem Namen des Pakets, wie im folgenden Beispiel gezeigt:
-
-```bash
-func extensions install --package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
-```
-
-Ersetzen Sie `<target_version>` durch eine bestimmte Version des Pakets, z.B. `3.0.0-beta5`. Gültige Versionen sind auf den Seiten der einzelnen Pakete auf [NuGet.org](https://nuget.org) aufgeführt.

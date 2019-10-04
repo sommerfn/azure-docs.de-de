@@ -1,6 +1,6 @@
 ---
-title: 'Vereinbarungen für B2B-Kommunikation: Azure Logic Apps | Microsoft-Dokumentation'
-description: Erstellen von Vereinbarungen für die Kommunikation zwischen B2B-Parteien mit Azure Logic Apps und Enterprise Integration Pack
+title: Erstellen und Verwalten von Handelspartnerverträgen – Azure Logic Apps
+description: Erstellen und Verwalten von Vereinbarungen zwischen Handelspartnern mithilfe von Azure Logic Apps und Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,68 +8,102 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
-ms.date: 06/29/2016
-ms.openlocfilehash: 09bee10649e2bc0d745e42b8aa13ae9c21df35aa
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.date: 06/22/2019
+ms.openlocfilehash: 4bfee4ec442c9e7b0351b0fd0c6a2b8e163a2541
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128826"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67330304"
 ---
-# <a name="partner-agreements-for-b2b-communication-with-azure-logic-apps-and-enterprise-integration-pack"></a>Partnervereinbarungen für die B2B-Kommunikation mit Azure Logic Apps und Enterprise Integration Pack
+# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Erstellen und Verwalten von Handelspartnerverträgen in Azure Logic Apps
 
-Vereinbarungen sind die Eckpfeiler der B2B-Kommunikation (Business-to-Business, Kommunikation zwischen Unternehmen) und ermöglichen Geschäftsentitäten eine reibungslose Kommunikation über Protokolle gemäß Industriestandard. Bei Aktivierung von B2B-Szenarien für Logik-Apps mit dem Enterprise Integration Pack ist eine Vereinbarung eine Kommunikationsabsprache zwischen B2B-Handelspartnern. Diese Vereinbarung basiert auf der Kommunikation, die beide Partner einrichten möchten, und ist protokoll- oder transportspezifisch.
+Ein [Handelspartner](../logic-apps/logic-apps-enterprise-integration-partners.md) 
+ *Vereinbarung* hilft Organisationen und Unternehmen, die nahtlos miteinander kommunizieren können, definieren Sie das spezifische Branche zum Standard-Protokoll verwenden, beim Austausch von Nachrichten für die Business-to-Business (B2B). Vereinbarungen bieten allgemeine Vorteile. Beispiel:
 
-Für die Unternehmensintegration werden diese Protokoll- bzw. Transportstandards unterstützt:
+* Sie ermöglichen Organisationen den Austausch von Informationen über ein bekanntes Format.
+* Sie erhöhen die Effizienz beim Durchführen von B2B-Transaktionen.
+* Sie können einfach erstellt, verwaltet und zum Erstellen von Unternehmensintegrationslösungen verwendet werden.
 
-* [AS2](logic-apps-enterprise-integration-as2.md)
-* [X12](logic-apps-enterprise-integration-x12.md)
-* [EDIFACT](logic-apps-enterprise-integration-edifact.md)
+In diesem Artikel wird gezeigt, wie Sie eine AS2-, EDIFACT- oder X12-Vereinbarung erstellen, die Sie beim Erstellen von Unternehmensintegrationslösungen für B2B-Szenarien mithilfe von [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) und [Azure Logic Apps](../logic-apps/logic-apps-overview.md) verwenden können. Nachdem Sie eine Vereinbarung erstellt haben, können Sie dann die AS2-, EDIFACT- oder X12-Connectors für den Austausch von B2B-Nachrichten verwenden.
 
-## <a name="why-use-agreements"></a>Gründe für Vereinbarungen
+Weitere Informationen zum Austauschen von RosettaNet-Nachrichten finden Sie unter [Exchange RosettaNet messages (Austauschen von RosettaNet-Nachrichten)](../logic-apps/logic-apps-enterprise-integration-rosettanet.md).
 
-Es folgen einige der allgemeinen Vorteile der Verwendung von Vereinbarungen:
+## <a name="prerequisites"></a>Voraussetzungen
 
-* Ermöglichen, dass Organisationen und Unternehmen Informationen in einem bekannten Format austauschen
-* Verbessern der Effizienz von B2B-Transaktionen
-* Einfache Erstellung, Verwaltung und Nutzung beim Erstellen von Apps für die Unternehmensintegration
+* Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, [melden Sie sich für ein kostenloses Azure-Konto an](https://azure.microsoft.com/free/).
 
-## <a name="how-to-create-agreements"></a>Erstellen von Vereinbarungen
+* Ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) zur Speicherung Ihrer Vereinbarung und anderer B2B-Artefakte. Dieses Integrationskonto muss mit Ihrem Azure-Abonnement verknüpft sein.
 
-* [Erstellen einer AS2-Vereinbarung](logic-apps-enterprise-integration-as2.md)
-* [Erstellen einer X12-Vereinbarung](logic-apps-enterprise-integration-x12.md)
-* [Erstellen einer EDIFACT-Vereinbarung](logic-apps-enterprise-integration-edifact.md)
+* Mindestens zwei [Handelspartner](../logic-apps/logic-apps-enterprise-integration-partners.md), die Sie bereits in Ihrem Integrationskonto erstellt haben. Eine Vereinbarung erfordert sowohl einen Host- als auch einen Gastpartner. Beide Partner müssen denselben Qualifizierer für die „Geschäftsidentität“ verwenden wie die zu erstellende Vereinbarung, z. B. AS2, X12 oder EDIFACT.
 
-## <a name="how-to-use-an-agreement"></a>Verwenden einer Vereinbarung
+* Optional: Die Logik-App, in der Sie Ihre Vereinbarung verwenden möchten, und ein Trigger, der den Workflow Ihrer Logik-App startet. Sie benötigen keine Logik-App, wenn Sie nur Ihr Integrationskonto und B2B-Artefakte erstellen möchten. Bevor Ihre Logik-App die B2B-Artefakte in Ihrem Integrationskonto verwenden kann, müssen Sie jedoch Ihr Integrationskonto mit Ihrer Logik-App verknüpfen. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-Sie können [Logik-Apps](logic-apps-overview.md "Informationen zu Logik-Apps") mit B2B-Funktionen mithilfe einer von Ihnen definierten Vereinbarung erstellen.
+## <a name="create-agreements"></a>Erstellen von Vereinbarungen
 
-## <a name="how-to-edit-an-agreement"></a>Bearbeiten einer Vereinbarung
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Suchfeld den Begriff „integration“ als Filter ein. Wählen Sie in den Ergebnissen diese Ressource aus: **Integrationskonten**
 
-Sie können eine Vereinbarung bearbeiten, indem Sie folgende Schritte ausführen:
+   ![Suchen Ihres Integrationskontos](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
 
-1. Wählen Sie das Integrationskonto aus, das die Vereinbarung enthält, die Sie ändern möchten.
+1. Wählen Sie unter **Integrationskonten** das Integrationskonto aus, in dem Sie die Vereinbarung erstellen möchten.
 
-2. Wählen Sie die Kachel **Vereinbarungen** aus.
+   ![Integrationskonto für die Erstellung der Vereinbarung auswählen](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
 
-3. Wählen Sie auf dem Blatt **Vereinbarungen** die Vereinbarung aus.
+1. Wählen Sie im rechten Bereich unter **Komponenten** die Kachel **Vereinbarungen** aus.
 
-4. Wählen Sie **Bearbeiten** aus. Nehmen Sie Ihre Änderungen vor.
+   ![Wählen Sie „Vereinbarungen“ aus.](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
-5. Klicken Sie zum Speichern der Änderungen auf **OK**.
+1. Wählen Sie unter **Vereinbarungen** die Option **Hinzufügen** aus. Geben Sie im Bereich **Hinzufügen** Informationen zu Ihrer Vereinbarung an. Beispiel:
 
-## <a name="how-to-delete-an-agreement"></a>Löschen einer Vereinbarung
+   ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-Sie können Vereinbarungen löschen, indem Sie folgende Schritte ausführen:
+   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   |----------|----------|-------|-------------|
+   | **Name** | Ja | <*agreement-name*> | Der Name für Ihre Vereinbarung. |
+   | **Vereinbarungstyp** | Ja | **AS2**, **X12** oder **EDIFACT** | Der Protokolltyp für Ihre Vereinbarung. Wenn Sie Ihre Vereinbarungsdatei erstellen, muss der Inhalt dieser Datei mit dem Vereinbarungstyp übereinstimmen. | |  
+   | **Hostpartner** | Ja | <*host-partner-name*> | Der Hostpartner stellt die Organisation dar, die die Vereinbarung angibt. |
+   | **Hostidentität** | Ja | <*host-partner-identifier*> | Der Bezeichner des Hostpartners. |
+   | **Gastpartner** | Ja | <*guest-partner-name*> | Der Gastpartner stellt die Organisation dar, die Geschäfte mit dem Hostpartner tätigt. |
+   | **Gastidentität** | Ja | <*guest-partner-identifier*> | Der Bezeichner des Gastpartners. |
+   | **Empfangseinstellungen** | Varies | Varies | Diese Eigenschaften legen fest, wie der Hostpartner alle Nachrichten vom in der Vereinbarung angegebenen Gastpartner empfängt. Weitere Informationen finden Sie unter dem jeweiligen Vereinbarungstyp: <p>- [AS2-Nachrichteneinstellungen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact.md) <br>- [X12-Nachrichteneinstellungen](logic-apps-enterprise-integration-x12.md) |
+   | **Sendeeinstellungen** | Varies | Varies | Die Eigenschaften legen fest, wie der Hostpartner alle Nachrichten an den in der Vereinbarung angegebenen Gastpartner sendet. Weitere Informationen finden Sie unter dem jeweiligen Vereinbarungstyp: <p>- [AS2-Nachrichteneinstellungen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-Nachrichteneinstellungen](logic-apps-enterprise-integration-edifact.md) <br>- [X12-Nachrichteneinstellungen](logic-apps-enterprise-integration-x12.md) |
+   |||||
 
-1. Wählen Sie das Integrationskonto aus, das die Vereinbarung enthält, die Sie löschen möchten.
-2. Wählen Sie die Kachel **Vereinbarungen** aus.
-3. Wählen Sie auf dem Blatt **Vereinbarungen** die Vereinbarung aus.
-4. Wählen Sie **Löschen** aus.
-5. Bestätigen Sie, dass Sie die ausgewählte Vereinbarung löschen möchten.
+1. Wenn Sie die Erstellung Ihrer Vereinbarung abgeschlossen haben, wählen Sie auf der Seite **Hinzufügen** die Option **OK** aus, und kehren Sie zu Ihrem Integrationskonto zurück.
 
-    Die gelöschte Vereinbarung wird nicht mehr auf dem Blatt „Vereinbarungen“ angezeigt.
+   Die Liste **Vereinbarungen** zeigt jetzt Ihre neue Vereinbarung an.
+
+## <a name="edit-agreements"></a>Bearbeiten von Vereinbarungen
+
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im Azure-Hauptmenü **Alle Dienste** aus.
+
+1. Geben Sie im Suchfeld den Begriff „integration“ als Filter ein. Wählen Sie in den Ergebnissen diese Ressource aus: **Integrationskonten**
+
+1. Wählen Sie unter **Integrationskonten** das Integrationskonto aus, das die Vereinbarung enthält, die Sie bearbeiten möchten.
+
+1. Wählen Sie im rechten Bereich unter **Komponenten** die Kachel **Vereinbarungen** aus.
+
+1. Wählen Sie unter **Vereinbarungen** Ihre Vereinbarung und dann die Option **Bearbeiten** aus.
+
+1. Nehmen Sie Ihre Änderungen vor und speichern Sie sie anschließend.
+
+## <a name="delete-agreements"></a>Löschen von Vereinbarungen
+
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im Azure-Hauptmenü **Alle Dienste** aus.
+
+1. Geben Sie im Suchfeld den Begriff „integration“ als Filter ein. Wählen Sie in den Ergebnissen diese Ressource aus: **Integrationskonten**
+
+1. Wählen Sie unter **Integrationskonten** das Integrationskonto aus, das die zu löschende Vereinbarung enthält.
+
+1. Wählen Sie im rechten Bereich unter **Komponenten** die Kachel **Vereinbarungen** aus.
+
+1. Wählen Sie unter **Vereinbarungen** Ihre Vereinbarung und anschließend **Löschen** aus.
+
+1. Bestätigen Sie, dass Sie die ausgewählte Vereinbarung löschen möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen einer AS2-Vereinbarung](logic-apps-enterprise-integration-as2.md)
+
+* [Austauschen von AS2-Nachrichten](logic-apps-enterprise-integration-as2.md)
+* [Austauschen von EDIFACT-Nachrichten](logic-apps-enterprise-integration-edifact.md)
+* [Austauschen von X12-Nachrichten](logic-apps-enterprise-integration-x12.md)

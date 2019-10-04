@@ -6,14 +6,14 @@ manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/13/2018
+ms.date: 06/28/2019
 ms.author: chrisgre
-ms.openlocfilehash: 598bf82e375f472b2f723c3462ba7ba7b4d25fbe
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: ff4e236569cc728b7011ffa26554277f281397fd
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59011555"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67485842"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-portal"></a>Automatische bedarfsgerechte IoT-Geräteverwaltung über das Azure-Portal
 
@@ -29,7 +29,9 @@ Bei der automatischen Geräteverwaltung wird ein Satz von Gerätezwillingen mit 
 
 * Der **Zielinhalt** definiert die gewünschten Eigenschaften, die in den Zielgerätezwillingen hinzugefügt oder aktualisiert werden sollen. Der Inhalt umfasst einen Pfad zu dem Abschnitt der gewünschten Eigenschaften, die geändert werden sollen.
 
-* Die **Metriken** definieren die zusammenfassenden Angaben zu verschiedenen Konfigurationszuständen wie z.B. **Erfolgreich**, **In Bearbeitung** und **Fehler**. Benutzerdefinierte Metriken werden als Abfragen für gemeldete Gerätezwillingseigenschaften angegeben.  Systemmetriken sind die Standardmetriken, die den Zwillingsaktualisierungsstatus messen, z. B. die Anzahl von Zielgerätezwillingen und die Anzahl von Zwillingen, die erfolgreich aktualisiert wurden. 
+* Die **Metriken** definieren die zusammenfassenden Angaben zu verschiedenen Konfigurationszuständen wie z.B. **Erfolgreich**, **In Bearbeitung** und **Fehler**. Benutzerdefinierte Metriken werden als Abfragen für gemeldete Gerätezwillingseigenschaften angegeben.  Systemmetriken sind die Standardmetriken, die den Zwillingsaktualisierungsstatus messen, z.B. die Anzahl von Zielgerätezwillingen und die Anzahl von Zwillingen, die erfolgreich aktualisiert wurden.
+
+Die automatischen Gerätekonfigurationen werden zum ersten Mal kurz nach Erstellung der Konfiguration ausgeführt, und danach in Intervallen von fünf Minuten. Metrikabfragen werden jedes Mal, wenn die automatische Gerätekonfiguration läuft, ausgeführt.
 
 ## <a name="implement-device-twins-to-configure-devices"></a>Implementieren von Gerätezwillingen für die Gerätekonfiguration
 
@@ -88,7 +90,7 @@ Metriken bieten zusammenfassende Angaben zu den verschiedenen Zuständen, die ei
 
 2. Geben Sie eine Abfrage unter **Metrikkriterien** ein.  Diese Abfrage beruht auf den gemeldeten Gerätezwillingseigenschaften.  Die Metrik stellt die Anzahl der von der Abfrage zurückgegebenen Zeilen dar.
 
-Beispiel: 
+Beispiel:
 
 ```sql
 SELECT deviceId FROM devices 
@@ -178,7 +180,7 @@ Gehen Sie wie folgt vor, um Änderungen an einer Konfiguration vorzunehmen:
    * Zielbedingung 
    * Bezeichnungen 
    * Priorität 
-   * Metriken
+   * metrics
 
 4. Wählen Sie **Speichern** aus.
 
@@ -208,8 +210,8 @@ In diesem Artikel haben Sie erfahren, wie IoT-Geräte bedarfsgerecht konfigurier
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Entwicklerhandbuch für IoT Hub](iot-hub-devguide.md)
-* [Bereitstellen von KI auf Edgegeräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
+* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
 
 Informationen, die Sie beim Erforschen der Verwendung des IoT Hub Device Provisioning-Diensts für die Just-in-Time-Bereitstellung ohne Benutzereingriff unterstützen, finden Sie in: 
 

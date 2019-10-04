@@ -1,21 +1,18 @@
 ---
 title: Überprüfen von Durchsatz- und Latenzmetriken für ein Speicherkonto im Azure-Portal | Microsoft Docs
 description: Hier erfahren Sie, wie Sie Durchsatz- und Latenzmetriken für ein Speicherkonto im Portal überprüfen.
-services: storage
 author: roygara
 ms.service: storage
-ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
-ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 2fde9b2b88b4c758065ba4b38da48724bfbfcd75
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: dc0f8171e18598e4f805a03a4bc6d17de220fbe1
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250094"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68698987"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Überprüfen von Durchsatz- und Latenzmetriken für ein Speicherkonto
 
@@ -31,7 +28,7 @@ Im vierten Teil der Serie lernen Sie Folgendes:
 
 ## <a name="configure-metrics"></a>Konfigurieren von Metriken
 
-Navigieren Sie in Ihrem Speicherkonto unter **EINSTELLUNGEN** zu **Metriken (Vorschau)**.
+Navigieren Sie in Ihrem Speicherkonto unter **EINSTELLUNGEN** zu **Metriken (Vorschau)** .
 
 Wählen Sie in der Dropdownliste **SUBDIENST** den Eintrag „Blob“ aus.
 

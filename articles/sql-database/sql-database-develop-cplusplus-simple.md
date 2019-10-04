@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 12/12/2018
-ms.openlocfilehash: 00a3904bd78f3bb76266c726af28582770b23921
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c06a16071b1e22e7aa788ff5f15ce8afbf17da04
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316488"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568937"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Herstellen einer Verbindung mit SQL-Datenbank mit C und C++
 
@@ -51,7 +50,7 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer ODBC-Verbin
 
 ![ODBCConnectionStringProps](./media/sql-database-develop-cplusplus-simple/dbconnection.png)
 
-Kopieren Sie den Inhalt der Zeichenfolge **ODBC (Includes Node.js) [SQL authentication]**. Wir verwenden diese Zeichenfolge später, um die Verbindung vom C++-ODBC-Befehlszeileninterpreter herzustellen. Diese Zeichenfolge enthält Details wie Treiber, Server und andere Parameter für die Datenbankverbindung.
+Kopieren Sie den Inhalt der Zeichenfolge **ODBC (Includes Node.js) [SQL authentication]** . Wir verwenden diese Zeichenfolge später, um die Verbindung vom C++-ODBC-Befehlszeileninterpreter herzustellen. Diese Zeichenfolge enthält Details wie Treiber, Server und andere Parameter für die Datenbankverbindung.
 
 ## <a id="Firewall"></a>Schritt 3:  Hinzufügen Ihrer IP zur Firewall
 Navigieren Sie zum Firewallabschnitt für Ihren Datenbankserver, und [fügen Sie die Client-IP der Firewall mit diesen Schritten hinzu](sql-database-configure-firewall-settings.md), um sicherzustellen, dass die Verbindung erfolgreich hergestellt werden kann:

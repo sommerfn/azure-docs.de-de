@@ -1,7 +1,6 @@
 ---
 title: Erstellen von hoch verfügbaren Spark Streaming-Aufträgen in YARN – Azure HDInsight
-description: Einrichten von Spark Streaming für ein Szenario mit Hochverfügbarkeit.
-services: hdinsight
+description: Einrichten von Apache Spark Streaming für ein Szenario mit Hochverfügbarkeit in Azure HDInsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 1d9a7caa7ab70ef1f0da41e1ec3f30780f93536a
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e4414a64b2ee34ec16fde56dd750f2faa26b2e09
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53649720"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002977"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Erstellen von hoch verfügbaren Apache Spark-Streamingaufträgen mit YARN
 
@@ -22,7 +21,7 @@ Mit [Apache Spark-Streamings](https://spark.apache.org/) können Sie skalierbare
 
 Spark Streaming erstellt Aufträge mit langer Ausführungszeit, bei denen Transformationen auf die Daten angewendet und die Ergebnisse dann auf Dateisysteme, Datenbanken, Dashboards und die Konsole übertragen werden können. Spark Streaming verarbeitet Mikrobatches von Daten. Dabei wird zunächst ein Batch von Ereignissen in einem definierten Zeitintervall gesammelt. Dann wird dieser Batch zur Verarbeitung und Ausgabe gesendet. Batchzeitintervalle werden normalerweise in Sekundenbruchteilen definiert.
 
-![Spark Streaming](./media/apache-spark-streaming-high-availability/spark-streaming.png)
+![Spark Streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
 
 ## <a name="dstreams"></a>DStreams
 
@@ -30,7 +29,7 @@ Spark Streaming stellt einen kontinuierlichen Datenstrom mithilfe eines *diskret
 
 Der Spark-Kern verwendet *Resilient Distributed Datasets* (RDDs). RDDs verteilen Daten über mehrere Knoten im Cluster, wobei jeder Knoten in der Regel zur Leistungsoptimierung die zugehörigen Daten vollständig im internen Arbeitsspeicher verwaltet. Jedes RDD stellt Ereignisse dar, die in einem Batchintervall gesammelt wurden. Nach Ablauf des Batchintervalls generiert Spark Streaming ein neues RDD, das alle Daten in dem Intervall enthält. Dieser kontinuierliche Satz von RDDs wird in einem DStream gesammelt. Eine Spark Streaming-Anwendung verarbeitet die im RDD jedes Batchs gespeicherten Daten.
 
-![Spark DStream](./media/apache-spark-streaming-high-availability/DStream.png)
+![Spark DStream](./media/apache-spark-streaming-high-availability/apache-spark-dstream.png)
 
 ## <a name="spark-structured-streaming-jobs"></a>Spark Structured Streaming-Aufträge
 
@@ -58,7 +57,7 @@ Zum Erstellen einer Anwendung, die jedes Ereignis einmal (und nur einmal) verarb
 
 In HDInsight wird die Verwendung von Clustern über *Yet Another Resource Negotiator* (YARN) koordiniert. Das Entwerfen einer Architektur für Hochverfügbarkeit für Spark Streaming umfasst Techniken für Spark Streaming sowie für YARN-Komponenten.  Eine Beispielkonfiguration unter Verwendung von YARN ist nachfolgend dargestellt. 
 
-![YARN-Architektur](./media/apache-spark-streaming-high-availability/yarn-arch.png)
+![YARN-Architektur](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
 
 In den folgenden Abschnitten werden Überlegungen zum Entwurf für diese Konfiguration beschrieben.
 

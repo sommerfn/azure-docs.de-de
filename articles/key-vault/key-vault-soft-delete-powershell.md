@@ -1,18 +1,19 @@
 ---
 title: 'Azure Key Vault: Verwenden des vorläufigen Löschens mit PowerShell'
 description: Beispiele für Anwendungsfälle für vorläufiges Löschen mit PowerShell-Codeausschnitten
+services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
-ms.topic: conceptual
-ms.date: 03/19/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ecc87e03a80ce10bedbe26b3ebb452ec704eefcb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 6a24f2dd52c3ac3c51df54bf5c01c7b31ca16147
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368680"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68985753"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Verwenden des vorläufigen Löschens in Key Vault mit PowerShell
 
@@ -40,7 +41,7 @@ Key Vault-Vorgänge werden wie folgt separat über RBAC-Berechtigungen (Role-Bas
 
 | Vorgang | BESCHREIBUNG | Benutzerberechtigung |
 |:--|:--|:--|
-|Auflisten|Listet gelöschte Schlüsseltresore auf.|Microsoft.KeyVault/deletedVaults/read|
+|List|Listet gelöschte Schlüsseltresore auf.|Microsoft.KeyVault/deletedVaults/read|
 |Wiederherstellen|Stellt einen gelöschten Schlüsseltresor wieder her.|Microsoft.KeyVault/vaults/write|
 |Bereinigen|Entfernt einen gelöschten Schlüsseltresor und seine Inhalte endgültig.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
@@ -49,6 +50,9 @@ Weitere Informationen zu Berechtigungen und Zugriffssteuerung finden Sie unter [
 ## <a name="enabling-soft-delete"></a>Aktivieren des vorläufigen Löschens
 
 Sie können das vorläufige Löschen aktivieren, im die Wiederherstellung eines gelöschten Schlüsseltresors oder eines in einem Schlüsseltresor gespeicherten Objekts zu ermöglichen.
+
+> [!IMPORTANT]
+> Das Aktivieren des vorläufigen Löschens für einen Schlüsseltresor kann nicht rückgängig. Sobald die Eigenschaft für vorläufiges Löschen auf „true“ gesetzt wurde, kann sie nicht mehr geändert oder entfernt werden.  
 
 ### <a name="existing-key-vault"></a>Vorhandener Schlüsseltresor
 

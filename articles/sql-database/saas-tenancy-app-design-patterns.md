@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6332555c1a176a06004ddfeee513844ad5875c30
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 8cbf0e45ac368f0d2dd1678984bd14392452e63a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260543"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68570194"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
 
@@ -33,8 +32,8 @@ Als Gegenleistung für die Leihgebühr erhält jeder Mandant Zugriff auf Ihre Sa
 
 Der Begriff *Mandantenmodell* bezieht sich auf die Art und Weise, in der die gespeicherten Daten des Mandanten organisiert sind:
 
-- *Einzelinstanzenfähigkeit:*&nbsp; Jede Datenbank speichert Daten eines einzelnen Mandanten.
-- *Mehrinstanzenfähigkeit:*&nbsp; Jede Datenbank speichert Daten mehrerer Mandanten (mit Mechanismen zum Datenschutz).
+- *Einzelinstanzenfähigkeit:* &nbsp; Jede Datenbank speichert Daten eines einzelnen Mandanten.
+- *Mehrinstanzenfähigkeit:* &nbsp; Jede Datenbank speichert Daten mehrerer Mandanten (mit Mechanismen zum Datenschutz).
 - Hybride Mandantenmodelle sind ebenfalls verfügbar.
 
 ## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B: Vorgehensweise zum Auswählen des geeigneten Mandantenmodells
@@ -47,9 +46,9 @@ Das Mandantenmodell wirkt sich in der Regel nicht auf die Funktionsweise einer A
     - Aggregierter Speicher
     - Workload
 
-- **Mandantenisolation:**&nbsp; Datenisolation und Leistung (Auswirkungen der Workload eines Mandanten auf andere Workloads)
+- **Mandantenisolation:** &nbsp; Datenisolation und Leistung (Auswirkungen der Workload eines Mandanten auf andere Workloads)
 
-- **Kosten pro Mandant:**&nbsp; Kosten für Datenbank
+- **Kosten pro Mandant:** &nbsp; Kosten für Datenbank
 
 - **Komplexität der Entwicklung:**
     - Änderungen am Schema
@@ -61,7 +60,7 @@ Das Mandantenmodell wirkt sich in der Regel nicht auf die Funktionsweise einer A
     - Wiederherstellen eines Mandanten
     - Notfallwiederherstellung
 
-- **Anpassbarkeit:**&nbsp; Einfache Durchführung von speziell für Mandanten oder Mandantenklassen geltenden Schemaanpassungen
+- **Anpassbarkeit:** &nbsp; Einfache Durchführung von speziell für Mandanten oder Mandantenklassen geltenden Schemaanpassungen
 
 Die Informationen zu Mandanten beziehen sich hauptsächlich auf die *Datenschicht*.  Im Folgenden sollten wir jedoch einen kurzen Blick auf die *Anwendungsschicht* werfen.  Die Anwendungsschicht ist als monolithische Einheit zu betrachten.  Wenn Sie die Anwendung in viele kleine Komponenten unterteilen, kann dies die Wahl Ihres Mandantenmodells ändern.  Einige Komponenten können je nach Mandant sowie verwendeter Speichertechnologie oder Plattform unterschiedlich behandelt werden.
 
@@ -71,7 +70,7 @@ Die Informationen zu Mandanten beziehen sich hauptsächlich auf die *Datenschich
 
 In diesem Modell wird die gesamte Anwendung mehrmals installiert, nämlich einmal pro Mandant.  Da jede Instanz der App eine eigenständige Instanz darstellt, interagiert sie nie mit einer anderen eigenständigen Instanz.  Jede App-Instanz umfasst nur einen Mandanten und erfordert daher nur eine Datenbank.  Die gesamte Datenbank ist somit ausschließlich für den jeweiligen Mandanten bestimmt.
 
-![Entwurf einer eigenständigen App mit einer Datenbank mit nur einem Mandanten.][image-standalone-app-st-db-111a]
+![Entwurf einer eigenständigen App mit einer Einzelinstanzdatenbank][image-standalone-app-st-db-111a]
 
 Jede App-Instanz wird in einer separaten Azure-Ressourcengruppe installiert.  Die Ressourcengruppe kann einem Abonnement zugeordnet sein, das dem Softwarehersteller oder Mandanten gehört.  In beiden Fällen kann der Hersteller die Software für den Mandanten verwalten.  Jede Anwendungsinstanz ist so konfiguriert, dass sie eine Verbindung mit der entsprechenden Datenbank herstellt.
 
@@ -95,7 +94,7 @@ Bei einer Datenbank pro Mandant lässt sich das Schema für einen oder mehrere e
 
 #### <a name="elastic-pools"></a>Pools für elastische Datenbanken
 
-Wenn Datenbanken in derselben Ressourcengruppe bereitgestellt werden, können sie in Pools für elastische Datenbanken gruppiert werden.  Die Pools bieten eine kosteneffiziente Methode, um Ressourcen auf eine Vielzahl von Datenbanken aufzuteilen.  Eine solche Pooloption ist günstiger, als die einzelnen Datenbanken so groß anzulegen, dass auftretende Verbrauchsspitzen verarbeitet werden können.  Auch wenn Datenbanken mit Pools gemeinsam auf Ressourcen zugreifen, können sie dennoch einen hohen Grad an Leistungsisolation erzielen.
+Wenn Datenbanken in derselben Ressourcengruppe bereitgestellt werden, können sie in Pools für elastische Datenbanken gruppiert werden.  Die Pools bieten eine kosteneffiziente Methode, um Ressourcen auf eine Vielzahl von Datenbanken aufzuteilen.  Eine solche Pooloption ist günstiger, als die einzelnen Datenbanken so groß anzulegen, dass auftretende Verbrauchsspitzen verarbeitet werden können.  Auch wenn Pooldatenbanken gemeinsam auf Ressourcen zugreifen, können sie dennoch einen hohen Grad an Leistungsisolation erzielen.
 
 ![Entwurf einer mehrinstanzenfähigen App mit einer Datenbank pro Mandant unter Verwendung eines Pools für elastische Datenbanken][image-mt-app-db-per-tenant-pool-153p]
 
@@ -105,7 +104,7 @@ Azure SQL-Datenbank stellt die Tools zur Verfügung, die erforderlich sind, um d
 
 Die Azure SQL-Datenbank-Plattform verfügt über viele Verwaltungsfeatures, die für die Verwaltung einer großen Anzahl von Datenbanken ausgelegt sind (z.B. weit über 100.000 Datenbanken).  Aufgrund dieser Eigenschaften erweist sich das Muster mit einer Datenbank pro Mandant als sinnvolle Option.
 
-Nehmen wir beispielsweise an, dass ein System ausschließlich auf einer Datenbank mit 1000 Mandanten basiert.  Die Datenbank kann 20 Indizes enthalten.  Wenn das System nun auf 1000 Einzelinstanzdatenbanken umgestellt wird, steigt die Zahl der Indizes folglich auf 20.000.  Standardmäßig sind die automatischen Indizierungsfunktionen in der SQL-Datenbank im Rahmen der [automatischen Optimierung][docu-sql-db-automatic-tuning-771a] aktiviert.  Bei der automatischen Indizierung werden alle 20.000 Indizes sowie die entsprechenden laufenden Optimierungen im Hinblick auf Erstellungs- und Reduzierungsvorgänge für Sie verwaltet.  Diese automatisierten Aktionen finden in einer einzelnen Datenbank statt und werden nicht durch ähnliche Aktionen in anderen Datenbanken koordiniert oder eingeschränkt.  Die automatische Indizierung behandelt Indizes in einer ausgelasteten Datenbank anders als in einer weniger stark ausgelasteten Datenbank.  Diese Art der Indexverwaltungsanpassung wäre bei manueller Ausführung einer derart umfangreichen Verwaltungsaufgabe im Hinblick auf eine Datenbank pro Mandant nicht praktikabel.
+Nehmen wir beispielsweise an, dass ein System ausschließlich auf einer Datenbank mit 1000 Mandanten basiert.  Die Datenbank kann 20 Indizes enthalten.  Wenn das System nun auf 1000 Einzelinstanzdatenbanken umgestellt wird, steigt die Zahl der Indizes folglich auf 20.000.  Standardmäßig sind die automatischen Indizierungsfunktionen in SQL-Datenbank im Rahmen der [automatischen Optimierung][docu-sql-db-automatic-tuning-771a] aktiviert.  Bei der automatischen Indizierung werden alle 20.000 Indizes sowie die entsprechenden laufenden Optimierungen im Hinblick auf Erstellungs- und Reduzierungsvorgänge für Sie verwaltet.  Diese automatisierten Aktionen finden in einer einzelnen Datenbank statt und werden nicht durch ähnliche Aktionen in anderen Datenbanken koordiniert oder eingeschränkt.  Die automatische Indizierung behandelt Indizes in einer ausgelasteten Datenbank anders als in einer weniger stark ausgelasteten Datenbank.  Diese Art der Indexverwaltungsanpassung wäre bei manueller Ausführung einer derart umfangreichen Verwaltungsaufgabe im Hinblick auf eine Datenbank pro Mandant nicht praktikabel.
 
 Zu anderen Verwaltungsfunktionen, die sich gute skalieren lassen, zählen Folgende:
 
@@ -126,9 +125,9 @@ Ein weiteres verfügbares Muster besteht darin, viele Mandanten in einer mehrins
 
 #### <a name="tenant-isolation-is-sacrificed"></a>Eingeschränkte Mandantenisolation
 
-*Daten:*&nbsp; Eine mehrinstanzenfähige Datenbank schränkt zwangsläufig die Mandantenisolation ein.  Die Daten mehrerer Mandanten werden zusammen in einer Datenbank gespeichert.  Achten Sie bei der Entwicklung darauf, dass bei Abfragen niemals Daten von mehr als einem Mandanten offengelegt werden.  Die SQL-Datenbank unterstützt die [Sicherheit auf Zeilenebene][docu-sql-svr-db-row-level-security-947w], wodurch erzwungen werden kann, dass die von einer Abfrage zurückgegebenen Daten auf einen einzelnen Mandanten beschränkt werden.
+*Daten:* &nbsp; Eine mehrinstanzenfähige Datenbank schränkt zwangsläufig die Mandantenisolation ein.  Die Daten mehrerer Mandanten werden zusammen in einer Datenbank gespeichert.  Achten Sie bei der Entwicklung darauf, dass bei Abfragen niemals Daten von mehr als einem Mandanten offengelegt werden.  SQL-Datenbank unterstützt die [Sicherheit auf Zeilenebene][docu-sql-svr-db-row-level-security-947w], wodurch erzwungen werden kann, dass die von einer Abfrage zurückgegebenen Daten auf einen einzelnen Mandanten beschränkt werden.
 
-*Verarbeitung:*&nbsp; Eine mehrinstanzenfähige Datenbank teilt Compute- und Speicherressourcen auf alle seine Mandanten auf.  Um einen ordnungsgemäßen Betrieb sicherzustellen, kann die gesamte Datenbank überwacht werden.  Allerdings weist das Azure-System keine integrierte Option auf, um die Nutzung dieser Ressourcen durch einen einzelnen Mandanten zu überwachen oder zu verwalten.  Daher besteht bei einer mehrinstanzenfähigen Datenbank ein höheres Risiko eines sogenannten „Noisy Neighbor“-Effekts, bei dem die Workload eines übermäßig aktiven Mandanten die Leistung anderer Mandanten in derselben Datenbank beeinträchtigt.  Durch zusätzliche Überwachung auf Anwendungsebene kann die Leistung auf Mandantenebene überwacht werden.
+*Verarbeitung:* &nbsp; Eine mehrinstanzenfähige Datenbank teilt Compute- und Speicherressourcen auf alle seine Mandanten auf.  Um einen ordnungsgemäßen Betrieb sicherzustellen, kann die gesamte Datenbank überwacht werden.  Allerdings weist das Azure-System keine integrierte Option auf, um die Nutzung dieser Ressourcen durch einen einzelnen Mandanten zu überwachen oder zu verwalten.  Daher besteht bei einer mehrinstanzenfähigen Datenbank ein höheres Risiko eines sogenannten „Noisy Neighbor“-Effekts, bei dem die Workload eines übermäßig aktiven Mandanten die Leistung anderer Mandanten in derselben Datenbank beeinträchtigt.  Durch zusätzliche Überwachung auf Anwendungsebene kann die Leistung auf Mandantenebene überwacht werden.
 
 #### <a name="lower-cost"></a>Kostensenkung
 
@@ -146,7 +145,7 @@ Bei mehrinstanzenfähigen Datenbanken ist die Implementierung von Verwaltungsvor
 
 Die meisten SaaS-Anwendungen greifen auf die Daten von jeweils nur einem Mandanten zu.  Bei diesem Zugriffsmuster können Mandantendaten auf mehrere Datenbanken oder Shards aufgeteilt werden, wobei alle Daten eines beliebigen Mandanten in einem Shard enthalten sind.  In Kombination mit einem Muster einer mehrinstanzenfähigen Datenbank ermöglicht ein Modell in Shards eine nahezu unbegrenzte Skalierbarkeit.
 
-![Entwurf einer mehrinstanzenfähigen App mit mehrinstanzenfähigen Sharddatenbanken][image-mt-app-sharded-mt-db-174s]
+![Entwurf einer mehrinstanzenfähigen App mit mehrinstanzenfähigen Datenbanken mit Sharding][image-mt-app-sharded-mt-db-174s]
 
 #### <a name="manage-shards"></a>Verwalten von Shards
 
@@ -174,7 +173,7 @@ Im hybriden Modell enthalten alle Datenbanken im Schema die Mandanten-ID.  Alle 
 
 Sie können einen bestimmten Mandanten jederzeit in eine eigene mehrinstanzenfähige Datenbank verschieben.  Sie können dies jederzeit rückgängig machen und den Mandanten wieder zu einer Datenbank mit mehreren Mandanten wechseln.  Sie können einem Mandanten bei der Bereitstellung einer neuen Datenbank auch eine neue Einzelinstanzdatenbank zuordnen.
 
-Das hybride Modell erweist sich vor allem dann als hilfreich, wenn große Unterschiede zwischen den Ressourcenanforderungen der identifizierbarer Mandantengruppen herrschen.  Nehmen wir zum Beispiel an, dass Mandanten mit einer kostenlosen Testversion nicht dieselbe hohe Leistungsebene garantiert wird wie Mandanten mit einem Abonnement.  Die Richtlinie könnte vorschreiben, dass Mandanten im kostenlosen Testzeitraum in einer mehrinstanzenfähigen Datenbank, die von allen Mandanten mit der kostenlosen Testversion gemeinsam genutzt wird, gespeichert werden sollen.  Wenn ein Mandant mit der kostenlosen Testversion ein Abonnement für den Standarddiensttarif erwirbt, kann der Mandant in eine andere mehrinstanzenfähige Datenbank verschoben werden, die möglicherweise weniger Mandanten aufweist.  Ein Abonnent, der für den Premiumdiensttarif bezahlt, kann in seine eigene neue Datenbank mit nur einem Mandanten verschoben werden.
+Das hybride Modell erweist sich vor allem dann als hilfreich, wenn große Unterschiede zwischen den Ressourcenanforderungen der identifizierbarer Mandantengruppen herrschen.  Nehmen wir zum Beispiel an, dass Mandanten mit einer kostenlosen Testversion nicht dieselbe hohe Leistungsebene garantiert wird wie Mandanten mit einem Abonnement.  Die Richtlinie könnte vorschreiben, dass Mandanten im kostenlosen Testzeitraum in einer mehrinstanzenfähigen Datenbank, die von allen Mandanten mit der kostenlosen Testversion gemeinsam genutzt wird, gespeichert werden sollen.  Wenn ein Mandant mit der kostenlosen Testversion ein Abonnement für die Dienstebene „Basic“ erwirbt, kann der Mandant in eine andere mehrinstanzenfähige Datenbank verschoben werden, die möglicherweise weniger Mandanten aufweist.  Ein Abonnent, der für die Dienstebene „Premium“ bezahlt, kann in seine eigene neue Datenbank mit nur einem Mandanten verschoben werden.
 
 #### <a name="pools"></a>Pools
 

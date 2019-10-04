@@ -4,22 +4,21 @@ description: Speicherarchitektur für die Bereitstellung von SAP HANA in Azure (
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/05/2019
-ms.author: rclaus
+ms.date: 07/04/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 02272ee16cf3303890a8ba6d35d38676e98c788c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 256aaf94175394fd737e53c6281f2d8b45e8af41
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006114"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099643"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA-Speicherarchitektur (große Instanzen)
 
@@ -31,21 +30,21 @@ Informationen zur Speicherzuordnung finden Sie in der folgenden Tabelle. Die Tab
 
 | HANA-SKU (große Instanzen) | hana/data | hana/log | hana/shared | hana/logbackups |
 | --- | --- | --- | --- | --- |
-| S72 | 1.280 GB | 512 GB | 768 GB | 512 GB |
-| S72m | 3.328 GB | 768 GB |1.280 GB | 768 GB |
-| S96 | 1.280 GB | 512 GB | 768 GB | 512 GB |
-| S192 | 4.608 GB | 1.024 GB | 1.536 GB | 1.024 GB |
-| S192m | 11.520 GB | 1.536 GB | 1.792 GB | 1.536 GB |
-| S192xm |  11.520 GB |  1.536 GB |  1.792 GB |  1.536 GB |
-| S384 | 11.520 GB | 1.536 GB | 1.792 GB | 1.536 GB |
-| S384m | 12.000 GB | 2.050 GB | 2.050 GB | 2.040 GB |
-| S384xm | 16.000 GB | 2.050 GB | 2.050 GB | 2.040 GB |
-| S384xxm |  20.000 GB | 3.100 GB | 2.050 GB | 3.100 GB |
-| S576m | 20.000 GB | 3.100 GB | 2.050 GB | 3.100 GB |
+| S72 | 1\.280 GB | 512 GB | 768 GB | 512 GB |
+| S72m | 3\.328 GB | 768 GB |1\.280 GB | 768 GB |
+| S96 | 1\.280 GB | 512 GB | 768 GB | 512 GB |
+| S192 | 4\.608 GB | 1\.024 GB | 1\.536 GB | 1\.024 GB |
+| S192m | 11.520 GB | 1\.536 GB | 1\.792 GB | 1\.536 GB |
+| S192xm |  11.520 GB |  1\.536 GB |  1\.792 GB |  1\.536 GB |
+| S384 | 11.520 GB | 1\.536 GB | 1\.792 GB | 1\.536 GB |
+| S384m | 12.000 GB | 2\.050 GB | 2\.050 GB | 2\.040 GB |
+| S384xm | 16.000 GB | 2\.050 GB | 2\.050 GB | 2\.040 GB |
+| S384xxm |  20.000 GB | 3\.100 GB | 2\.050 GB | 3\.100 GB |
+| S576m | 20.000 GB | 3\.100 GB | 2\.050 GB | 3\.100 GB |
 | S576xm | 31744 GB | 4096 GB | 2048 GB | 4096 GB |
-| S768m | 28.000 GB | 3.100 GB | 2.050 GB | 3.100 GB |
+| S768m | 28.000 GB | 3\.100 GB | 2\.050 GB | 3\.100 GB |
 | S768xm | 40960 GB | 6144 GB | 4096 GB | 6144 GB |
-| S960m | 36.000 GB | 4.100 GB | 2.050 GB | 4.100 GB |
+| S960m | 36.000 GB | 4\.100 GB | 2\.050 GB | 4\.100 GB |
 
 
 Die tatsächlich bereitgestellten Volumes können je nach Bereitstellung und Tool, das zum Anzeigen der Volumegrößen verwendet wird, variieren.
@@ -56,9 +55,9 @@ Wenn Sie eine SKU von HANA (große Instanz) unterteilen, könnten die Unterteilu
 | --- | --- | --- | --- | --- |
 | 256 | 400 GB | 160 GB | 304 GB | 160 GB |
 | 512 | 768 GB | 384 GB | 512 GB | 384 GB |
-| 768 | 1.280 GB | 512 GB | 768 GB | 512 GB |
-| 1024 | 1.792 GB | 640 GB | 1.024 GB | 640 GB |
-| 1.536 | 3.328 GB | 768 GB | 1.280 GB | 768 GB |
+| 768 | 1\.280 GB | 512 GB | 768 GB | 512 GB |
+| 1024 | 1\.792 GB | 640 GB | 1\.024 GB | 640 GB |
+| 1\.536 | 3\.328 GB | 768 GB | 1\.280 GB | 768 GB |
 
 
 Diese Größen sind ungefähre Zahlen, die je nach Bereitstellung und den zum Anzeigen der Volumes verwendeten Tools geringfügig variieren können. Es sind auch weitere Partitionsgrößen wie 2,5 TB verfügbar. Diese Speichergrößen werden mit einer Formel berechnet, die der für die vorherigen Partitionen verwendeten Formel ähnelt. Der Begriff „Partitionen“ bedeutet nicht, dass das Betriebssystem, der Arbeitsspeicher oder die CPU-Ressourcen in irgendeiner Weise partitioniert werden. Er verweist nur auf Speicherpartitionen für die verschiedenen HANA-Instanzen, die Sie auf einer einzelnen Einheit von HANA (große Instanz) bereitstellen können. 
@@ -90,9 +89,9 @@ Einige Beispiele für die Ausführung mehrerer SAP HANA-Instanzen können etwa w
 Andere Variationen sind ebenfalls möglich. 
 
 ## <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
-Der für HANA (große Instanz) genutzte Speicher ermöglicht eine transparente Verschlüsselung der Daten, die auf den Datenträgern gespeichert werden. Sie können diese Verschlüsselung beim Bereitstellen einer Einheit von HANA (große Instanz) aktivieren. Die Verschlüsselung von Volumes kann auch nach der Bereitstellung aktiviert werden. Der Wechsel von unverschlüsselten zu verschlüsselten Volumes erfolgt transparent und erfordert keine Downtime. 
+Der für HANA (große Instanz) genutzte Speicher verwendet seit Ende 2018 eine transparente Verschlüsselung für die Daten, die auf den Datenträgern gespeichert werden. In früheren Bereitstellungen konnten Sie entscheiden, ob die Volumes verschlüsselt werden sollten. Wenn Sie sich dagegen entschieden haben, konnten Sie die Verschlüsselung der Volumes online anfordern. Der Wechsel von unverschlüsselten zu verschlüsselten Volumes erfolgt transparent und erfordert keine Downtime. 
 
-Bei SKUs der Typ-I-Klasse wird das Volume, auf dem die Start-LUN gespeichert ist, verschlüsselt. Bei der Typ-II-Klasse der SKUs von HANA (große Instanz) müssen Sie die Start-LUN mit Methoden des Betriebssystems verschlüsseln. Für weitere Informationen wenden Sie sich an das Microsoft Service Management-Team.
+Bei SKUs der Typ-I-Klasse wird das Volume, auf dem die Start-LUN gespeichert ist, verschlüsselt. In Stempeln der Revision 3 großer HANA-Instanzen müssen Sie die Boot-LUN bei Verwendung von SKUs von großen HANA-Instanzen der Typ II-Klasse mithilfe von Methoden des Betriebssystems verschlüsseln. In Stempeln der Revision 4 großer HANA-Instanzen wird die Boot-LUN bei Verwendung von Typ II-Einheiten standardmäßig auch im Ruhezustand verschlüsselt. 
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>Erforderliche Einstellungen für größere HANA-Instanzen in HANA (große Instanzen)
 Der in HANA (große Instanzen) genutzte Speicher weist eine Dateigrößenbeschränkung auf. Die [Größenbeschränkung beträgt 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) pro Datei. Anders als bei den Einschränkungen der Dateigröße in EXT3-Dateisystemen wird die durch HANA (große Instanzen) erzwungene Speichereinschränkung in HANA nicht implizit behandelt. Daher erstellt HANA nicht automatisch eine neue Datendatei, wenn die maximale Dateigröße von 16 TB erreicht wird. Während HANA versucht, die Datei über 16 TB hinaus zu vergrößern, werden Fehler gemeldet, und der Indexserver stürzt am Ende ab.
@@ -101,7 +100,7 @@ Der in HANA (große Instanzen) genutzte Speicher weist eine Dateigrößenbeschr�
 > Um zu verhindern, dass HANA versucht, Datendateien über die Dateigrößenbeschränkung von 16 TB für den Speicher in HANA (große Instanzen) hinaus zu vergrößern, müssen Sie in der Konfigurationsdatei „Global.ini“ von HANA die folgenden Parameter festlegen
 > 
 > - datavolume_striping=true
-> - datavolume_striping_size_gb=15000
+> - datavolume_striping_size_gb = 15000
 > - Siehe auch SAP-Hinweis [2400005](https://launchpad.support.sap.com/#/notes/2400005).
 > - Achten Sie auf SAP-Hinweis [2631285](https://launchpad.support.sap.com/#/notes/2631285).
 

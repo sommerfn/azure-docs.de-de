@@ -1,29 +1,29 @@
 ---
 title: 'Azure Backup: Verwalten von Sicherungsaufträgen mit der REST-API'
 description: Verwalten von Sicherungs- und Wiederherstellungsaufträgen von Azure Backup mit der REST-API
-services: backup
-author: pvrk
-manager: shivamg
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 keywords: REST-API; Azure-VM-Sicherung; Azure-VM-Wiederherstellung;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: eb8b7dc77d180eb56c2585e93e60a36742f6c84c
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: b10283c2946d01101b941d53b6bf03be3a12e99e
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289427"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954912"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Nachverfolgen von Sicherungs- und Wiederherstellungsaufträgen mit der REST-API
 
-Der Azure Backup-Dienst löst Aufträge aus, die in unterschiedlichen Szenarien ausgeführt werden, z.B. Auslösen von Sicherungen, Durchführen von Wiederherstellungsvorgängen und Deaktivieren der Sicherung. Diese Aufträge können anhand ihrer IDs nachverfolgt werden.
+Der Azure Backup-Dienst löst Aufträge aus, die in unterschiedlichen Szenarien im Hintergrund ausgeführt werden, z. B. Auslösen von Sicherungen, Durchführen von Wiederherstellungsvorgängen und Deaktivieren der Sicherung. Diese Aufträge können anhand ihrer IDs nachverfolgt werden.
 
 ## <a name="fetch-job-information-from-operations"></a>Abrufen von Auftragsinformationen aus Vorgängen
 
-Für einen Vorgang, z.B. das Auslösen einer Sicherung, wird immer eine jobID zurückgegeben. Die letzte Antwort eines [REST-API-Vorgangs zum Auslösen einer Sicherung](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) lautet beispielsweise wie folgt:
+Für einen Vorgang, z.B. das Auslösen einer Sicherung, wird immer eine jobID zurückgegeben. Beispiel:  Die letzte Antwort eines [REST-API-Vorgangs zum Auslösen einer Sicherung](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) lautet beispielsweise wie folgt:
 
 ```http
 {
@@ -51,7 +51,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="response"></a>response
 
-|NAME  |Typ  |BESCHREIBUNG  |
+|NAME  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 

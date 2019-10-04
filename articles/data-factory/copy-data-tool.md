@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: 107687c785433f81870449d1445136b5148a4d2c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 144a991eb911fa6a337b6711515bd5760456fc10
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101753"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996384"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Tool zum Kopieren von Daten in Azure Data Factory
 Das Tool zum Kopieren von Daten in Azure Data Factory vereinfacht und optimiert die Verarbeitung der Sammelerfassung von Daten in einem Data Lake. Dies ist normalerweise ein erster Schritt in einem End-to-End-Szenario für die Datenintegration.  Sie sparen Zeit, insbesondere bei Verwendung von Azure Data Factory für die erstmalige Sammelerfassung von Daten aus einer Datenquelle. Die Verwendung dieses Tools ist z.B. mit den folgenden Vorteilen verbunden:
@@ -78,7 +78,7 @@ Der folgende Screenshot zeigt eine SQL-Abfrage zum Filtern der Daten.
 ![Filtern von Daten in einer Datenbank](./media/copy-data-tool/filter-data-in-database.png)
 
 ### <a name="filter-data-in-an-azure-blob-folder"></a>Filtern von Daten in einem Azure-Blobordner
-Sie können Variablen im Ordnerpfad verwenden, um Daten aus einem Ordner zu kopieren. Folgende Variablen werden unterstützt: **{year}**, **{month}**, **{day}**, **{hour}** und **{minute}**. Beispiel: Eingabeordner/{year}/{month}/{day}. 
+Sie können Variablen im Ordnerpfad verwenden, um Daten aus einem Ordner zu kopieren. Folgende Variablen werden unterstützt: **{year}** , **{month}** , **{day}** , **{hour}** und **{minute}** . Beispiel: Eingabeordner/{year}/{month}/{day}. 
 
 Angenommen, Sie haben Eingabeordner im folgenden Format: 
 
@@ -91,11 +91,11 @@ Angenommen, Sie haben Eingabeordner im folgenden Format:
 
 Klicken Sie auf die Schaltfläche **Durchsuchen** für **Datei oder Ordner**, navigieren Sie zu einem der Ordner (z.B. 2016->03->01->02), und klicken Sie auf **Auswählen**. Das Textfeld sollte jetzt „2016/03/01/02“ enthalten. 
 
-Ersetzen Sie nun **2016** durch **{year}**, **03** durch **{month}**, **01** durch **{day}**, **02** durch **{hour}**, und drücken Sie dann die **TAB**-TASTE. Daraufhin werden Dropdownlisten zum Auswählen des Formats für diese vier Variablen angezeigt:
+Ersetzen Sie nun **2016** durch **{year}** , **03** durch **{month}** , **01** durch **{day}** , **02** durch **{hour}** , und drücken Sie dann die **TAB**-TASTE. Daraufhin werden Dropdownlisten zum Auswählen des Formats für diese vier Variablen angezeigt:
 
 ![Filtern von Dateien oder Ordnern](./media/copy-data-tool/filter-file-or-folder.png)
 
-Die Tool zum Kopieren von Daten generiert Parameter mit Ausdrücken, Funktionen und Systemvariablen, die verwendet werden können, um {year}, {month}, {day}, {hour} und {minute} beim Erstellen der Pipeline darzustellen. Weitere Informationen finden Sie im Artikel [Lesen oder Schreiben partitionierter Daten](how-to-read-write-partitioned-data.md).
+Die Tool zum Kopieren von Daten generiert Parameter mit Ausdrücken, Funktionen und Systemvariablen, die verwendet werden können, um {year}, {month}, {day}, {hour} und {minute} beim Erstellen der Pipeline darzustellen.
 
 ## <a name="scheduling-options"></a>Planungsoptionen
 Sie können den Kopiervorgang einmal oder nach einem Zeitplan (stündlich, täglich usw.) ausführen. Diese Optionen können für die Connectors in verschiedenen Umgebungen verwendet werden, z.B. in lokalen Umgebungen, in der Cloud und auf dem lokalen Desktop. 

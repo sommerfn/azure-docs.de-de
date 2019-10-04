@@ -1,0 +1,61 @@
+- name: Dokumentation zur Formularerkennung
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Was ist die Formularerkennung?
+      href: overview.md
+- name: Schnellstarts
+  expaned: true
+  items:
+    - name: Verwenden der REST-API
+      items:
+        - name: Trainieren eines benutzerdefinierten Modells und Extrahieren von Daten
+          items:
+            - name: cURL
+              href: quickstarts/curl-train-extract.md
+            - name: Python
+              href: quickstarts/python-train-extract.md
+        - name: Verwenden eines vordefinierten Belegmodells
+          items:
+            - name: cURL
+              href: quickstarts/curl-receipts.md
+            - name: Python
+              href: quickstarts/python-receipts.md
+    - name: Verwenden des .NET SDK
+      href: quickstarts/dotnet-sdk.md
+- name: Anleitungen
+  items:
+    - name: Erstellen eines Trainingsdatasets
+      href: build-training-data-set.md
+    - name: Verwenden von Containern
+      items:
+        - name: Installieren und Ausführen von Containern
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+          href: form-recognizer-container-howto.md
+        - name: Konfigurieren von Containern
+          href: form-recognizer-container-configuration.md
+          displayName: 'docker, container, run, billing, apikey, logging'
+        - name: Verwenden von Containerinstanzen
+          href: deploy-form-recognizer-on-container-instances.md
+- name: Verweis
+  items:
+    - name: Formularerkennungs-API
+      href: 'https://aka.ms/form-recognizer/api'
+    - name: SDKs
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview'
+- name: Ressourcen
+  items:
+    - name: Preise und Einschränkungen
+      href: 'https://go.microsoft.com/fwlink/?linkid=2087258'
+    - name: UserVoice
+      href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
+    - name: Stack Overflow
+      href: 'https://go.microsoft.com/fwlink/?linkid=2087186'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Regionale Verfügbarkeit
+      href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+    - name: Compliance
+      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

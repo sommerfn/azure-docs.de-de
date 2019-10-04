@@ -3,17 +3,17 @@ title: Verwalten Ihrer Anwendungseinstellungen unter IoT Central | Microsoft-Dok
 description: Verwalten Ihrer Anwendungs- und persönlichen Einstellungen unter IoT Central
 author: lmasieri
 ms.author: lmasieri
-ms.date: 02/20/2019
+ms.date: 07/10/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dd6148d2d817b1f2465b6beaba5fd488b16ead21
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c5c0dbcb1c1f483bd7499de08c9f1949adff415b
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315961"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67850149"
 ---
 # <a name="manage-your-application-preferences"></a>Verwalten Ihrer Anwendungseinstellungen
 
@@ -23,7 +23,7 @@ Mit IoT Central können Sie Ihre Anwendungen flexibel anpassen, damit Ihre Anfor
 
 ## <a name="changing-language"></a>Ändern der Sprache
 
-IoT Central wird in mehreren Sprachen unterstützt. Sie können Ihre bevorzugte Sprache auswählen, indem Sie die **Sprachenauswahl** im Einstellungensymbol in der oberen Navigationsleiste verwenden. Nachdem Sie die Sprache geändert haben, speichert IoT Central Ihre Auswahl und wendet sie auf Ihre gesamten Anwendungen an. Beachten Sie, dass Anpassungen innerhalb der Anwendung, z.B. Dashboardbilder, nicht lokalisiert werden.
+IoT Central wird in mehreren Sprachen unterstützt. Sie können Ihre bevorzugte Sprache auswählen, indem Sie die **Sprachenauswahl** im Einstellungensymbol in der oberen Navigationsleiste verwenden. Nachdem Sie die Sprache geändert haben, speichert IoT Central Ihre Auswahl und wendet sie auf Ihre gesamten Anwendungen an. Anpassungen innerhalb der Anwendung, z.B. Dashboardbilder, werden nicht lokalisiert.
 
 ## <a name="changing-theme"></a>Ändern des Designs
 
@@ -31,9 +31,12 @@ Es wird ein dunkles und ein helles Design unterstützt. Das helle Design ist zwa
 
 ![Designauswahl für IoT Central](media/howto-manage-preferences/settings.png)
 
+> [!NOTE]
+> Die Option zum Wählen zwischen hellen und dunklen Designs ist nicht verfügbar, wenn Ihr Administrator ein benutzerdefiniertes Design für die Anwendung konfiguriert hat.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie nun erfahren haben, wie Sie Ihr Profil in Azure IoT Central verwalten, empfehlen wir Ihnen als nächsten Schritt Folgendes:
 
 > [!div class="nextstepaction"]
-> [Konfigurieren Ihres Anwendungsdashboards](howto-configure-homepage.md)
+> [Livechat ein-/ausschalten](howto-show-hide-chat.md)

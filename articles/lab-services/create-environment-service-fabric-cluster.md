@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: enewman
-ms.openlocfilehash: 9848f197800c391285c4065685b910685f0ac64b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1e192a2b27c9d617e43a56766431a0f40e87a752
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57319065"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325256"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Erstellen einer Umgebung mit einem eigenständigen Service Fabric-Cluster in Azure DevTest Labs
 Dieser Artikel enthält Informationen zum Erstellen einer Umgebung mit einem eigenständigen Service Fabric-Cluster in Azure DevTest Labs. 
@@ -87,7 +87,7 @@ Diese Seite bietet eine weitere Möglichkeit zum Starten oder Beenden des Cluste
     ![Befehle zum Starten oder Beenden auf der Seite „Service Fabric-Cluster“](./media/create-environment-service-fabric-cluster/start-stop-on-cluster-page.png)
 
 ## <a name="configure-auto-startup-and-auto-shutdown-schedule"></a>Konfigurieren eines Zeitplans zum automatischen Starten und Herunterfahren
-Service Fabric-Cluster können auch nach einem Zeitplan gestartet oder beendet werden. Diese Benutzeroberfläche ähnelt der für virtuelle Computer in einer Lab-Umgebung. Aus Sparsamkeitsgründen wird standardmäßig jeder in einem Lab erstellte Cluster automatisch zu dem Zeitpunkt heruntergefahren, der in den [Richtlinien zum automatischen Herunterfahren](devtest-lab-get-started-with-lab-policies.md#set-auto-shutdown) für das Lab definiert wurde. Sie können die Standardeinstellung überschreiben, indem Sie angeben, ob und zu welchem Zeitpunkt der Cluster heruntergefahren werden soll. 
+Service Fabric-Cluster können auch nach einem Zeitplan gestartet oder beendet werden. Diese Benutzeroberfläche ähnelt der für virtuelle Computer in einer Lab-Umgebung. Aus Sparsamkeitsgründen wird standardmäßig jeder in einem Lab erstellte Cluster automatisch zu dem Zeitpunkt heruntergefahren, der in den [Richtlinien zum automatischen Herunterfahren](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy) für das Lab definiert wurde. Sie können die Standardeinstellung überschreiben, indem Sie angeben, ob und zu welchem Zeitpunkt der Cluster heruntergefahren werden soll. 
 
 ![Vorhandene Zeitpläne zum automatischen Starten und Herunterfahren](./media/create-environment-service-fabric-cluster/existing-schedules.png)
 

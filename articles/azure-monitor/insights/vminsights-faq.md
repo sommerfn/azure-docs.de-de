@@ -10,39 +10,39 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 32f2833b4c1ba77564d5388bc080a7cb32d90201
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 420ba9d74532095c2d028fef8f549d532e5dfa05
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243772"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65522209"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für VMs (Vorschauversion)
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor für VMs. Wenn Sie weitere Fragen zur Lösung haben, besuchen Sie das [Diskussionsforum](https://feedback.azure.com/forums/34192--general-feedback), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
 
 ## <a name="can-i-onboard-to-an-existing-workspace"></a>Kann ich ein Onboarding zu einem vorhandenen Arbeitsbereich ausführen?
-Wenn Ihre virtuellen Computer bereits mit einem Log Analytics-Arbeitsbereich verbunden sind, können Sie diesen Arbeitsbereich nach dem Onboarding von Azure Monitor for VMs weiterhin verwenden, vorausgesetzt, er befindet sich in einer der unterstützten Regionen, die [hier](vminsights-onboard.md#prerequisites) aufgeführt sind.
+Wenn Ihre virtuellen Computer bereits mit einem Log Analytics-Arbeitsbereich verbunden sind, können Sie diesen Arbeitsbereich nach dem Onboarding von Azure Monitor for VMs weiterhin verwenden, vorausgesetzt, er befindet sich in einer der unterstützten Regionen, die [hier](vminsights-enable-overview.md#prerequisites) aufgeführt sind.
 
 Beim Onboarding konfigurieren wir Leistungsindikatoren für den Arbeitsbereich, was dazu führt, dass alle VMs, die Daten an den Arbeitsbereich melden, mit dem Sammeln dieser Daten für die Anzeige und Analyse in Azure Monitor for VMs beginnen.  Im Ergebnis sehen Sie Leistungsdaten von allen mit dem ausgewählten Arbeitsbereich verbundenen VMs.  Das Integritäts- und das Zuordnungsfeature werden nur für die VMs aktiviert, für die Sie Onboarding angegeben haben.
 
-Weitere Informationen zu den aktivierten Leistungsindikatoren finden Sie in unserem Artikel zum [Onboarding](vminsights-onboard.md).
+Weitere Informationen zu den aktivierten Leistungsindikatoren finden Sie in unserem Übersichtsartikel zum [Aktivieren](vminsights-enable-overview.md#performance-counters-enabled).
 
 ## <a name="can-i-onboard-to-a-new-workspace"></a>Kann ich ein Onboarding zu einem neuen Arbeitsbereich ausführen? 
-Wenn Ihre VMs derzeit nicht mit einem vorhandenen Log Analytics-Arbeitsbereich verbunden sind, müssen Sie einen neuen Arbeitsbereich zum Speichern Ihrer Daten erstellen.  Die Erstellung eines neuen Standardarbeitsbereichs erfolgt automatisch, wenn Sie eine einzelne Azure-VM im Azure-Portal für Azure Monitor for VMs konfigurieren.
+Wenn Ihre VMs derzeit nicht mit einem vorhandenen Log Analytics-Arbeitsbereich verbunden sind, müssen Sie einen neuen Arbeitsbereich zum Speichern Ihrer Daten erstellen. Die Erstellung eines neuen Standardarbeitsbereichs erfolgt automatisch, wenn Sie eine einzelne Azure-VM im Azure-Portal für Azure Monitor for VMs konfigurieren.
 
-Diese Schritte werden für die skriptbasierte Methode im [Onboarding](vminsights-onboard.md)-Artikel beschrieben. 
+Wenn Sie die skriptbasierte Methode verwenden möchten, finden Sie die entsprechenden Schritte im Artikel [Aktivieren von Azure Monitor für VMs (Preview) mit Azure PowerShell oder einer Resource Manager-Vorlage](vminsights-enable-at-scale-powershell.md). 
 
 ## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Wie gehe ich vor, wenn meine VM bereits an einen vorhandenen Arbeitsbereich berichtet?
 Wenn Sie bereits Daten von Ihren VMs sammeln, haben Sie sie möglicherweise schon für das Melden von Daten an einen vorhandenen Log Analytics-Arbeitsbereich konfiguriert.  Sofern sich dieser Arbeitsbereich in einer der von uns unterstützten Regionen befindet, können Sie Azure Monitor for VMs für diesen bereits vorhandenen Arbeitsbereich aktivieren.  Wenn sich der von Ihnen bereits verwendete Arbeitsbereich nicht in einer der von uns unterstützten Regionen befindet, können Sie derzeit kein Onboarding von Azure Monitor for VMs ausführen.  Wir arbeiten aktiv daran, weitere Regionen zu unterstützen.
 
 >[!NOTE]
->Wir konfigurieren Leistungsindikatoren für den Arbeitsbereich, die alle VMs betreffen, die an den Arbeitsbereich berichten, unabhängig davon, ob Sie sich entschieden haben, für diese ein Onboarding für Azure Monitor for VMs auszuführen. Weitere Informationen über die Konfiguration von Leistungsindikatoren für den Arbeitsbereich finden Sie in unserer [Dokumentation](../../azure-monitor/platform/data-sources-performance-counters.md). Informationen zu den für Azure Monitor for VMs konfigurierten Leistungsindikatoren finden Sie in unserer [Onboardingdokumentation](vminsights-onboard.md#performance-counters-enabled).  
+>Wir konfigurieren Leistungsindikatoren für den Arbeitsbereich, die alle VMs betreffen, die an den Arbeitsbereich berichten, unabhängig davon, ob Sie sich entschieden haben, für diese ein Onboarding für Azure Monitor for VMs auszuführen. Weitere Informationen über die Konfiguration von Leistungsindikatoren für den Arbeitsbereich finden Sie in unserer [Dokumentation](../../azure-monitor/platform/data-sources-performance-counters.md). Informationen zu den für Azure Monitor für VMs konfigurierten Leistungsindikatoren finden Sie im Artikel [Aktivieren von Azure Monitor für VMs](vminsights-enable-overview.md#performance-counters-enabled).  
 
 ## <a name="why-did-my-vm-fail-to-onboard"></a>Warum ist das Onboarding meiner VM nicht gelungen?
 Beim Onboarding einer Azure-VM im Azure-Portal werden die folgenden Schritte ausgeführt:
 
 * Es wird ein Log Analytics-Standardarbeitsbereich erstellt, wenn diese Option ausgewählt war.
-* Die Leistungsindikatoren werden für den ausgewählten Arbeitsbereich konfiguriert. Wenn bei diesem Schritt Fehler auftreten, werden Sie bemerken, dass einige Leistungsdiagramme und Tabellen für die VM, für die Sie das Onboarding ausgeführt haben, keine Daten anzeigen. Sie können dies korrigieren, indem Sie das [hier](vminsights-onboard.md#enable-with-powershell) dokumentierte PowerShell-Skript ausführen.
+* Die Leistungsindikatoren werden für den ausgewählten Arbeitsbereich konfiguriert. Wenn bei diesem Schritt Fehler auftreten, werden Sie bemerken, dass einige Leistungsdiagramme und Tabellen für die VM, für die Sie das Onboarding ausgeführt haben, keine Daten anzeigen. Sie können dies korrigieren, indem Sie das [hier](vminsights-enable-at-scale-powershell.md#enable-performance-counters) dokumentierte PowerShell-Skript ausführen.
 * Der Log Analytics-Agent wird auf Azure-VMs mithilfe einer VM-Erweiterung installiert, wenn festgestellt wird, dass er erforderlich ist.  
 * Der Dependency-Agent der Azure Monitor for VM-Zuordnung wird auf Azure-VMs mithilfe einer Erweiterung installiert, wenn festgestellt wird, dass er erforderlich ist.  
 * Ggf. werden Azure Monitor-Komponenten zur Unterstützung des Integritätsfeatures konfiguriert, und die VM wird für das Melden von Integritätsdaten konfiguriert.
@@ -89,7 +89,7 @@ Die Schwellenwerte für die folgenden Linux-Integritätskriterien sind nicht ver
 Die für jedes Integritätskriterium definierten Warnregeln werden im Azure-Portal nicht angezeigt. Sie können eine Integritätswarnregel nur über die [Workloadüberwachungs-API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) aktivieren oder zu deaktivieren. Die Zuweisung einer [Azure Monitor-Aktionsgruppe](../../azure-monitor/platform/action-groups.md) für Integritätswarnungen ist außerdem nicht vom Azure-Portal aus möglich. Sie können die API nur für die Benachrichtigungseinstellungs-API verwenden, um eine Aktionsgruppe zu konfigurieren, die bei jeder Auslösung einer Integritätswarnung ausgelöst wird. Derzeit können Aktionsgruppen einer VM zugewiesen werden, sodass alle *Integritätswarnungen*, die für die VM ausgelöst wurden, die gleichen Aktionsgruppen auslösen. Anders als bei herkömmlichen Azure-Warnungen gibt es kein Konzept einer separaten Aktionsgruppe für jede Integritätswarnregel. Darüber hinaus werden nur Aktionsgruppen unterstützt, die so konfiguriert sind, dass Sie durch Senden einer E-Mail oder SMS benachrichtigt werden, wenn Integritätswarnungen ausgelöst werden. 
 
 ## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>In den Leistungsdiagrammen für meine VM werden einige oder alle Daten nicht angezeigt
-Wenn Sie in der Datenträgertabelle oder in einigen der Leistungsdiagramme keine Leistungsdaten sehen, wurden Ihre Leistungsindikatoren im Arbeitsbereich möglicherweise nicht konfiguriert. Führen Sie das folgende [PowerShell-Skript](vminsights-onboard.md#enable-with-powershell) aus, um das Problem zu beheben.
+Wenn Sie in der Datenträgertabelle oder in einigen der Leistungsdiagramme keine Leistungsdaten sehen, wurden Ihre Leistungsindikatoren im Arbeitsbereich möglicherweise nicht konfiguriert. Führen Sie das folgende [PowerShell-Skript](vminsights-enable-at-scale-powershell.md#enable-with-powershell) aus, um das Problem zu beheben.
 
 ## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Wie unterscheidet sich das Zuordnungsfeature von Azure Monitor for VMs von der Dienstzuordnung?
 Das Zuordnungsfeature von Azure Monitor for VMs basiert auf der Dienstzuordnung, weist aber die folgenden Unterschiede auf:
@@ -100,7 +100,7 @@ Das Zuordnungsfeature von Azure Monitor for VMs basiert auf der Dienstzuordnung,
 * Überwachte VMs sind jetzt im Clientgruppenknoten enthalten, und das Ringdiagramm zeigt den Anteil der überwachten und nicht überwachten VMs in der Gruppe an.  Sie können außerdem bei ausgeklappter Gruppe zum Filtern der Liste der Computer verwendet werden.
 * Überwachte VMs sind jetzt in den Serverport-Gruppenknoten enthalten, und das Ringdiagramm zeigt den Anteil der überwachten und nicht überwachten Computer in der Gruppe an.  Sie können außerdem bei ausgeklappter Gruppe zum Filtern der Liste der Computer verwendet werden.
 * Das Format der Zuordnung wurde aktualisiert, um eine bessere Konsistenz mit der App-Übersicht aus Application Insights zu erreichen.
-* Die Seitenleisten wurden aktualisiert, weisen aber noch nicht den gesamten Integrationssatz auf, der in der Dienstzuordnung unterstützt wurde – Updateverwaltung, Änderungsnachverfolgung, Sicherheit und Service Desk. 
+* Die Seitenleisten wurden aktualisiert und weisen nicht den gesamten Integrationssatz auf, der in der Dienstzuordnung unterstützt wurde – Updateverwaltung, Änderungsnachverfolgung, Sicherheit und Service Desk. 
 * Die Option zum Auswählen von Gruppen und Computern für die Zuordnung wurde aktualisiert und unterstützt jetzt Abonnements, Ressourcengruppen Skalierungsgruppen von Azure-VMs und Clouddienste.
 * Sie können im Zuordnungsfeature von Azure Monitor for VMs keine neuen Computergruppen der Dienstzuordnung erstellen.  
 
@@ -126,10 +126,16 @@ Zwar haben wir Verbesserungen an der Zuordnung bei der Behandlung großer und ko
 
 Die Übersichtsseite für eine Azure-VM zeigt Diagramme auf der Grundlage der vom Host gemessenen Aktivität in der Gast-VM an.  Für das Netzwerkdiagramm in der Azure-VM-Übersicht wird nur Netzwerkdatenverkehr angezeigt, der in Rechnung gestellt wird.  Dies schließt Datenverkehr zwischen Vnets nicht ein.  Die für Azure Monitor for VMs angezeigten Daten und Diagramme basieren auf Daten aus der Gast-VM, und das Netzwerkdiagramm zeigt den gesamten eingehenden und ausgehenden TCP/IP-Verkehr für die VM an, einschließlich des Datenverkehrs zwischen Vnets.
 
+## <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Wie wird die Antwortzeit für Daten gemessen, die in VMConnection gespeichert und im Verbindungsbereich und in den Arbeitsmappen angezeigt werden?
+
+Die Antwortzeit ist eine Schätzung. Da wir den Code der Anwendung nicht instrumentieren, wissen wir nicht genau, wann eine Anforderung beginnt und wann die Antwort empfangen wird. Stattdessen beobachten wir Daten, die über eine Verbindung gesendet werden und dann Daten, die über diese Verbindung zurückkommen. Unser Agent verfolgt diese Sende- und Empfangsvorgänge und versucht, sie zu koppeln: eine Folge von Sendevorgängen, gefolgt von einer Folge von Empfangsvorgängen, wird als Anforderung/Antwort-Paar interpretiert. Die Zeit zwischen diesen Vorgängen ist die Antwortzeit. Sie umfasst die Netzwerklatenz und die Serververarbeitungszeit.
+
+Diese Schätzung funktioniert gut für Protokolle, die auf Anforderung/Antwort basieren: Eine einzelne Anforderung wird über die Verbindung gesendet, und eine einzelne Antwort wird empfangen. Dies ist der Fall bei HTTP(S) (ohne Pipelining), wird aber bei anderen Protokollen nicht erfüllt.
+
 ## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Gibt es im Free-Tarif von Log Analytics Einschränkungen?
 Wenn Sie Azure Monitor über den *Free*-Tarif mit einem Log Analytics-Arbeitsbereich konfiguriert haben, unterstützt das Azure Monitor for VMs-Zuordnungsfeature nur fünf Computer, die mit dem Arbeitsbereich verbunden sind. Wenn fünf VMs mit einem kostenlosen Arbeitsbereich verbunden sind und Sie eine der VMs trennen und später mit einer neuen VM verbinden, wird die neue VM nicht überwacht oder auf der Seite „Zuordnen“ angezeigt.  
 
 Unter dieser Bedingung werden Sie zur Aktion **Jetzt testen** aufgefordert, wenn Sie die VM aufrufen und im linken Bereich auf **Insights (Vorschau)** klicken, auch wenn dieser Dienst bereits auf der VM installiert wurde.  Sie werden jedoch nicht zu Optionen aufgefordert, die normalerweise angezeigt werden würden, wenn diese VM nicht in Azure Monitor für VMs integriert wurde. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zu den Anforderungen und Methoden für die Aktivierung Ihrer virtuellen Computer finden Sie unter [Führen Sie das Onboarding von Azure Monitor for VMs durch](vminsights-onboard.md).
+Informationen zu den Anforderungen und Methoden für die Aktivierung Ihrer virtuellen Computer finden Sie unter [Aktivieren von Azure Monitor für VMs](vminsights-enable-overview.md).

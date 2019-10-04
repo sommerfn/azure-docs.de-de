@@ -3,8 +3,8 @@ title: Brandingrichtlinien für Anwendungen | Microsoft-Dokumentation
 description: Eine umfassende Anleitung zu entwicklerorientierten Ressourcen für Azure Active Directory
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2e62d24ea56e00b49c32c00136db858ecd0f778
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 92770acb19bf95d6a19507184bd8bea10806d5b7
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173774"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67483028"
 ---
 # <a name="branding-guidelines-for-applications"></a>Brandingrichtlinien für Anwendungen
 
@@ -41,7 +41,7 @@ In diesem Artikel werden die folgenden Themen behandelt:
 Microsoft verwaltet zwei Arten von Benutzerkonten:
 
 - **Persönliche Konten** (ehemals Windows Live ID). Diese Konten stellen die Beziehung zwischen *einzelnen* Benutzern und Microsoft dar und werden für den Zugriff auf Verbrauchergeräte und -dienste von Microsoft verwendet. Konten dieser Art sind für den persönlichen Gebrauch vorgesehen.
-- **Geschäfts- oder Schulkonten.**  Diese Konten werden von Microsoft für Unternehmen verwaltet, die Azure Active Directory verwenden. Konten dieser Art dienen zur Anmeldung bei Office 365 und anderen Unternehmensdiensten von Microsoft.
+- **Geschäfts- oder Schulkonten.** Diese Konten werden von Microsoft für Unternehmen verwaltet, die Azure Active Directory verwenden. Konten dieser Art dienen zur Anmeldung bei Office 365 und anderen Unternehmensdiensten von Microsoft.
 
 Geschäfts- oder Schulkonten von Microsoft werden den Endbenutzern (Angestellten, Schülern/Studenten, Behördenmitarbeitern) üblicherweise von der jeweiligen Organisation (Unternehmen, Bildungseinrichtung, Behörde) zugewiesen. Diese Konten werden direkt in der Cloud (über die Azure AD-Plattform) verwaltet oder über ein lokales Verzeichnis wie z.B. Windows Server Active Directory mit Azure AD synchronisiert. Microsoft fungiert als *Verwaltungsberechtigter* des Geschäfts- oder Schulkontos, die Konten gehören aber der Organisation und werden auch von dieser gesteuert.
 
@@ -60,7 +60,7 @@ In einer früheren Version dieser Richtlinien haben wir die Verwendung eines bla
 
 Ihre Anwendung verwendet möglicherweise separate Vorgehensweisen für Registrierung und Anmeldung. Dies wird in den folgenden Abschnitten berücksichtigt.
 
-**Ihre App unterstützt die Registrierung von Endbenutzern (etwa bei einer kostenlosen Testversion oder bei einem Freemium-Modell)**: Sie können eine **Registrierungsschaltfläche** anzeigen, mit deren Hilfe Benutzer über ihr Geschäftskonto oder persönliches Konto auf Ihre App zugreifen können. Beim ersten Zugriff auf Ihre App zeigt Azure AD eine Zustimmungsaufforderung an.
+**Ihre App unterstützt die Registrierung von Endbenutzern (etwa bei einer kostenlosen Testversion oder bei einem Freemium-Modell)** : Sie können eine **Registrierungsschaltfläche** anzeigen, mit deren Hilfe Benutzer über ihr Geschäftskonto oder persönliches Konto auf Ihre App zugreifen können. Beim ersten Zugriff auf Ihre App zeigt Azure AD eine Zustimmungsaufforderung an.
 
 **Ihre App benötigt Berechtigungen, die die Einwilligung eines Administrators voraussetzen, oder Ihre App muss von der Organisation lizenziert werden**: Trennen Sie Administratoreinwilligung und Benutzeranmeldung voneinander. Die **Schaltfläche zum Abrufen der App** leitet Administratoren zur Anmeldung weiter und fordert sie auf, im Namen von Benutzern in der Organisation ihre Zustimmung zu erteilen. Dies hat den zusätzlichen Vorteil, dass Benutzeraufforderungen zur Zustimmung zu Ihrer App unterdrückt werden.
 
@@ -70,9 +70,9 @@ Ihre Anwendung verwendet möglicherweise separate Vorgehensweisen für Registrie
 
 Nach der Zustimmung des Administrators kann dieser entscheiden, ob Ihre App dem App-Startfeld von Office 365 hinzugefügt werden soll (zugänglich über das Waffel-Menü und [https://portal.office.com/myapps](https://portal.office.com/myapps)). Wenn Sie auf diese Funktion hinweisen möchten, können Sie beispielsweise eine Formulierung wie „App zur Organisation hinzufügen“ verwenden und eine Schaltfläche wie im folgenden Beispiel anzeigen:
 
-![Anwendungstypen und -szenarien](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
+![Schaltfläche mit dem Microsoft-Logo und dem Text „Zu meiner Organisation hinzufügen“.](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Es empfiehlt sich jedoch, eine Erläuterung in Textform zu verwenden, anstatt nur auf Schaltflächen zu setzen. Beispiel: 
+Es empfiehlt sich jedoch, eine Erläuterung in Textform zu verwenden, anstatt nur auf Schaltflächen zu setzen. Beispiel:
 
 > *Wenn Sie bereits Office 365 oder andere Unternehmensdienste von Microsoft verwenden, können Sie <Name_Ihrer_App> einfach Zugriff auf die Daten Ihrer Organisation gewähren. Dadurch können Benutzer mit ihren bereits vorhandenen Arbeitskonten auf <Name_Ihrer_App> zugreifen.*
 
@@ -80,7 +80,7 @@ Um das offizielle Microsoft-Logo zur Verwendung in Ihrer App herunterzuladen, kl
 
 | Asset                                | PNG-Format | SVG-Format |
 | ------------------------------------ | ---------- | ---------- |
-| Microsoft-Logo  | ![Microsoft-Logo als PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Microsoft-Logo als SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
+| Microsoft-Logo  | ![Herunterladbares Microsoft-Logo im PNG-Format](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Herunterladbares Microsoft-Logo im SVG-Format](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
 
 ## <a name="visual-guidance-for-sign-in"></a>Darstellungsleitfaden für die Anmeldung
 
@@ -92,16 +92,16 @@ Durch die Kombination aus Microsoft-Logo und dem Text „Bei Microsoft anmelden�
 
 Das folgende Diagramm zeigt die von Microsoft empfohlenen Redlines bei der Verwendung der Assets in Ihrer App. Die Redlines gelten für „Mit Microsoft anmelden“ oder die kürzere Version „Anmelden“.
 
-![Redlines für „Mit Microsoft anmelden“](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
+![Zeigt die Redlines für „Mit Microsoft anmelden“](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
 
 Um die offiziellen Bilddateien zur Verwendung in Ihrer App herunterzuladen, klicken Sie mit der rechten Maustaste auf das gewünschte Logo, und speichern Sie es auf Ihrem Computer.
 
 | Asset                                | PNG-Format | SVG-Format |
 | ------------------------------------ | ---------- | ---------- |
-| Mit Microsoft anmelden (dunkles Design)  | ![Schaltfläche „Anmelden“, dunkles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![Schaltfläche „Mit Microsoft anmelden“, dunkles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
-| Mit Microsoft anmelden (helles Design) | ![Schaltfläche „Anmelden“, helles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Schaltfläche „Mit Microsoft anmelden“, helles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
-| Anmelden (dunkles Design)                 | ![Schaltfläche „Anmelden“, dunkles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Schaltfläche „Anmelden“, dunkles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
-| Anmelden (helles Design)                | ![Schaltfläche „Anmelden“, helles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Schaltfläche „Anmelden“, helles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
+| Mit Microsoft anmelden (dunkles Design)  | ![Herunterladbare Schaltfläche „Mit Microsoft anmelden“, dunkles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![Herunterladbare Schaltfläche „Mit Microsoft anmelden“, dunkles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
+| Mit Microsoft anmelden (helles Design) | ![Herunterladbare Schaltfläche „Mit Microsoft anmelden“, helles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Herunterladbare Schaltfläche „Mit Microsoft anmelden“, helles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
+| Anmelden (dunkles Design)                 | ![Herunterladbare Kurzschaltfläche „Anmelden“, dunkles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Herunterladbare Kurzschaltfläche „Anmelden“, dunkles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
+| Anmelden (helles Design)                | ![Herunterladbare Kurzschaltfläche „Anmelden“, helles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Herunterladbare Kurzschaltfläche „Anmelden“, helles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
 
 ## <a name="branding-dos-and-donts"></a>Brandingempfehlungen
 

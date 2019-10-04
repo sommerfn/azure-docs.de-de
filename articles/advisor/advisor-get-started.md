@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: a7e82fffdd9c865de6040c05ec28bc8bd2dced61
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f91e48a532a278c95d50775e135ac6379e8d8070
+ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111394"
+ms.lasthandoff: 06/22/2019
+ms.locfileid: "67332058"
 ---
 # <a name="get-started-with-azure-advisor"></a>Erste Schritte mit Azure Advisor
 
@@ -94,9 +94,9 @@ Für manche Ressourcengruppen oder Abonnements möchten Sie möglicherweise kein
 
 In diesem Verfahren wird die Regel für die durchschnittliche CPU-Auslastung für die Empfehlung für virtuelle Computer mit geringer Auslastung konfiguriert.
 
-Der Advisor überwacht die Verwendung Ihrer virtuellen Computer 14 Tage lang und ermittelt virtuelle Computer mit geringer Auslastung. Virtuelle Computer, deren durchschnittliche CPU-Auslastung mindestens vier Tage lang höchstens 5 Prozent und deren durchschnittliche Netzwerkauslastung höchstens 7 MB beträgt, gelten als virtuelle Computer mit geringer Auslastung.
+Der Advisor überwacht 7 Tage die Verwendung Ihrer virtuellen Computer und ermittelt virtuelle Computer mit geringer Auslastung. Virtuelle Computer gelten als gering ausgelastet, wenn ihre CPU-Auslastung höchstens 5% beträgt und ihre Netzwerkauslastung unter 2% liegt oder die aktuelle Workload von einer kleineren VM-Größe bewältigt werden kann.
 
-Wenn Sie konsequenter virtuelle Computer mit geringer Auslastung ermitteln möchten, können Sie die Regel für durchschnittliche CPU-Auslastung auf Abonnementbasis anpassen.  Die Regel für durchschnittliche CPU-Auslastung kann auf 5 %, 10 %, 15 % oder 20 % festgelegt werden.
+Wenn Sie konsequenter virtuelle Computer mit geringer Auslastung ermitteln möchten, können Sie die Regel für durchschnittliche CPU-Auslastung auf Abonnementbasis anpassen.  Die Regel für die CPU-Auslastung kann auf 5 %, 10 %, 15 % oder 20 % festgelegt werden.
 
 > [!NOTE]
 > Um die Regel für durchschnittliche CPU-Auslastung zum Identifizieren von VMs mit geringer Auslastung anzupassen, müssen Sie *Besitzer* eines Abonnements sein.  Wenn Sie nicht über die erforderlichen Berechtigungen für ein Abonnement oder eine Ressourcengruppe verfügen, ist die Option zum Einbeziehen bzw. Ausschließen in der Benutzeroberfläche deaktiviert. 

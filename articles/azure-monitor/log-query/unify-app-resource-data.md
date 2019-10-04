@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d441b72b34da6146eba523563a09c2908cdcbbf4
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429515"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650137"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Vereinigen mehrerer Azure Monitor-Application Insights-Ressourcen 
-Dieser Artikel beschreibt das Abfragen und Anzeigen aller Daten in Ihren Application Insights-Anwendungsprotokollen an einem Ort, selbst wenn sie aus unterschiedlichen Azure-Abonnements stammen. Damit soll der veraltete Application Insights-Connector ersetzt werden. Die Anzahl der Application Insights-Ressourcen, die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt.  
+In diesem Artikel wird beschrieben, wie Sie all Ihre Application Insights-Protokolldaten an einem zentralen Ort abfragen und anzeigen, selbst wenn sie aus unterschiedlichen Azure-Abonnements stammen. Damit soll der veraltete Application Insights-Connector ersetzt werden. Die Anzahl der Application Insights-Ressourcen, die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt.
 
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>Empfohlener Ansatz zum Abfragen mehrerer Application Insights-Ressourcen 
 Das Auflisten mehrerer Application Insights-Ressourcen in einer Abfrage kann aufwendig und schwierig zu verwalten sein. Sie können aber stattdessen eine Funktion zum Trennen der Abfragelogik vom Gültigkeitsbereich einer Anwendung nutzen.  
@@ -32,7 +32,14 @@ ApplicationInsights
 | summarize by ApplicationName
 ```
 
-Erstellen Sie mithilfe des union-Operators eine Funktion mit der Liste der Anwendungen, und speichern Sie die Abfrage in Ihrem Arbeitsbereich als Funktion mit dem Alias *applicationsScoping*.  
+Erstellen Sie mithilfe des union-Operators eine Funktion mit der Liste der Anwendungen, und speichern Sie die Abfrage in Ihrem Arbeitsbereich als Funktion mit dem Alias *applicationsScoping*. 
+
+Sie können die aufgelisteten Anwendungen jederzeit im Portal ändern. Navigieren Sie dazu zum Abfrage-Explorer in Ihrem Arbeitsbereich, und bearbeiten und speichern Sie dann die Funktion, oder verwenden Sie das PowerShell-Cmdlet `SavedSearch`. 
+
+>[!NOTE]
+>Diese Methode kann bei Protokollwarnungen nicht verwendet werden, weil die Zugriffsüberprüfung der Warnungsregelressourcen, einschließlich Arbeitsbereichen und Anwendungen, zum Zeitpunkt der Erstellung der Warnung ausgeführt wird. Das Hinzufügen neuer Ressourcen zur Funktion nach dem Erstellen der Warnung wird nicht unterstützt. Wenn Sie eine Funktion zur Ressourcenbereichsdefinition in Protokollwarnungen verwenden möchten, müssen Sie die Warnungsregel im Portal bearbeiten oder eine Resource Manager-Vorlage verwenden, um die bereichsbezogenen Ressourcen zu aktualisieren. Alternativ dazu können Sie die Liste der Ressourcen in die Abfrage der Protokollwarnung einbeziehen.
+
+Der Befehl `withsource= SourceApp` fügt den Ergebnissen eine Spalte hinzu, die die Anwendung angibt, von der das Protokoll gesendet wurde. Der parse-Operator in diesem Beispiel ist optional und wird zum Extrahieren des Anwendungsnamens aus der SourceApp-Eigenschaft verwendet. 
 
 ```
 union withsource=SourceApp 
@@ -43,13 +50,6 @@ app('Contoso-app4').requests,
 app('Contoso-app5').requests 
 | parse SourceApp with * "('" applicationName "')" *  
 ```
-
->[!NOTE]
->Sie können die aufgelisteten Anwendungen jederzeit im Portal ändern. Navigieren Sie dazu zum Abfrage-Explorer in Ihrem Arbeitsbereich, und bearbeiten und speichern Sie dann die Funktion, oder verwenden Sie das PowerShell-Cmdlet `SavedSearch`. Der Befehl `withsource= SourceApp` fügt den Ergebnissen eine Spalte hinzu, die die Anwendung angibt, von der das Protokoll gesendet wurde. 
->
->Die Abfrage verwendet das Application Insights-Schema, obwohl sie im Arbeitsbereich ausgeführt wird, da die applicationsScoping-Funktion die Application Insights-Datenstruktur zurückgibt. 
->
->Die parse-Operator in diesem Beispiel ist optional. Er extrahiert den Namen der Anwendung aus der SourceApp-Eigenschaft. 
 
 Sie können nun die applicationsScoping-Funktion in der ressourcenübergreifenden Abfrage verwenden.  
 
@@ -62,7 +62,7 @@ applicationsScoping
 | render timechart
 ```
 
-Der Funktionsalias gibt die Vereinigungsmenge der Anforderungen aller definierten Anwendungen zurück. Die Abfrage filtert dann fehlgeschlagene Anforderungen heraus und visualisiert die Trends nach Anwendung sortiert.
+Die Abfrage verwendet das Application Insights-Schema, obwohl sie im Arbeitsbereich ausgeführt wird, da die applicationsScoping-Funktion die Application Insights-Datenstruktur zurückgibt. Der Funktionsalias gibt die Vereinigungsmenge der Anforderungen aller definierten Anwendungen zurück. Die Abfrage filtert dann fehlgeschlagene Anforderungen heraus und visualisiert die Trends nach Anwendung sortiert.
 
 ![Beispiel für abfrageübergreifende Ergebnisse](media/unify-app-resource-data/app-insights-query-results.png)
 
@@ -104,12 +104,12 @@ Die folgende Tabelle zeigt die Schemaunterschiede zwischen Log Analytics und App
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | itemCount |
 | AvailabilityDuration | duration |
-| AvailabilityMessage | Message: |
+| AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
 | AvailabilityTimestamp | timestamp |
-| "Browser" | client_browser |
+| Browser | client_browser |
 | City | client_city |
 | ClientIP | client_IP |
 | Computer | cloud_RoleInstance | 
@@ -121,11 +121,11 @@ Die folgende Tabelle zeigt die Schemaunterschiede zwischen Log Analytics und App
 | DeviceType | client_Type | 
 | ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
-| ExceptionMessage | Message: | 
+| ExceptionMessage | message | 
 | ExceptionType | type |
 | OperationID | operation_id |
-| NameVorgang | operation_Name | 
-| Betriebssystem | client_OS | 
+| OperationName | operation_Name | 
+| OS | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
 | PageViewName | name | 
@@ -134,14 +134,14 @@ Die folgende Tabelle zeigt die Schemaunterschiede zwischen Log Analytics und App
 | RequestDuration | duration | 
 | RequestID | id | 
 | RequestName | name | 
-| RequestSuccess | Erfolg | 
+| RequestSuccess | success | 
 | ResponseCode | resultCode | 
-| Rolle | cloud_RoleName |
+| Role | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
-| TelemetryType | type |
-| URL | _url |
+| TelemetryTYpe | type |
+| URL | url |
 | UserAccountId | user_AccountId |
 
 ## <a name="next-steps"></a>Nächste Schritte

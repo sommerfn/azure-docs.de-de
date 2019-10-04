@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
-ms.openlocfilehash: dc8d3c2d400204f53b05bb5536af95679541f3f6
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 32f4545a45eda8acddd7c93cc4917dbadca9ad4d
+ms.sourcegitcommit: 778e7376853b69bbd5455ad260d2dc17109d05c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305276"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "67135048"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Erstellen einer Spatial Anchors-Ressource
 
@@ -25,7 +25,7 @@ Wählen Sie **Spatial Anchors** aus. Wählen Sie im Dialogfeld die Option **Erst
 
 Gehen Sie im Dialogfeld **Spatial Anchors-Konto** wie folgt vor:
 
-- Geben Sie einen eindeutigen Ressourcennamen ein.
+- Geben Sie einen eindeutigen Ressourcennamen in regulären alphanumerischen Zeichen ein.
 - Wählen Sie das Abonnement aus, an das die Ressource angefügt werden soll.
 - Erstellen Sie eine Ressourcengruppe durch Auswählen von **Neu erstellen**. Nennen Sie sie **myResourceGroup**, und wählen Sie **OK** aus.
       [!INCLUDE [resource group intro text](resource-group.md)]
@@ -34,7 +34,11 @@ Gehen Sie im Dialogfeld **Spatial Anchors-Konto** wie folgt vor:
 
    ![Erstellen einer Ressource](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-Nach dem Erstellen der Ressource können Sie die Ressourceneigenschaften anzeigen. Kopieren Sie den Wert für **Konto-ID** der Ressource in einen Text-Editor, da Sie ihn später benötigen.
+Nachdem die Ressource erstellt wurde, zeigt das Azure-Portal an, dass die Bereitstellung abgeschlossen ist. Klicken Sie auf **Zu Ressource wechseln**.
+
+![Bereitstellung abgeschlossen](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
+
+Anschließend können Sie die Ressourceneigenschaften anzeigen. Kopieren Sie den Wert für **Konto-ID** der Ressource in einen Text-Editor, da Sie ihn später benötigen.
 
    ![Ressourceneigenschaften](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
 

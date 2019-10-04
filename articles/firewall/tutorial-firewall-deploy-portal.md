@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 4/9/2019
+ms.date: 08/29/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 0892bde09891d2edbd7f8cc8715ccc0d2f047ed4
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59492310"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113470"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -40,7 +40,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Einrichten einer Netzwerkumgebung zu Testzwecken
 > * Bereitstellen einer Firewall
 > * Erstellen einer Standardroute
-> * Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf „www.google.com“
+> * Konfigurieren einer Anwendungsregel zum Zulassen des Zugriffs auf www.google.com
 > * Konfigurieren einer Netzwerkregel, um den Zugriff auf externe DNS-Server zuzulassen
 > * Testen der Firewall
 
@@ -67,6 +67,9 @@ Die Ressourcengruppe enthält alle Ressourcen für das Tutorial.
 
 Dieses VNET soll drei Subnetze enthalten.
 
+> [!NOTE]
+> Die Größe des Subnetzes „AzureFirewallSubnet“ beträgt /26. Weitere Informationen zur Subnetzgröße finden Sie unter [Azure Firewall – Häufig gestellte Fragen](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+
 1. Wählen Sie auf der Startseite des Azure-Portals **Ressource erstellen** aus.
 2. Wählen Sie unter **Netzwerk** die Option **Virtuelles Netzwerk** aus.
 4. Geben Sie unter **Name** die Zeichenfolge **Test-FW-VN** ein.
@@ -75,11 +78,8 @@ Dieses VNET soll drei Subnetze enthalten.
 7. Wählen Sie für **Ressourcengruppe** die Gruppe **Test-FW-RG** aus.
 8. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
 9. Geben Sie unter **Subnetz** als **Name** die Zeichenfolge **AzureFirewallSubnet** ein. Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
-10. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/24** ein.
+10. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/26** ein.
 11. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie dann **Erstellen** aus.
-
-> [!NOTE]
-> Die Mindestgröße des Subnetzes „AzureFirewallSubnet“ beträgt /26.
 
 ### <a name="create-additional-subnets"></a>Erstellen zusätzlicher Subnetze
 
@@ -87,7 +87,7 @@ Erstellen Sie als Nächstes Subnetze für den Sprungserver sowie ein Subnetz fü
 
 1. Wählen Sie auf der Startseite des Azure-Portals **Ressourcengruppen** > **Test-FW-RG** aus.
 2. Wählen Sie das virtuelle Netzwerk **Test-FW-VN** aus.
-3. Wählen Sie **Subnetze** > **+ Subnetz** aus.
+3. Wählen Sie **Subnetze** >  **+ Subnetz** aus.
 4. Geben Sie unter **Name** die Zeichenfolge **Workload-SN** ein.
 5. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.2.0/24** ein.
 6. Klicken Sie auf **OK**.
@@ -104,7 +104,7 @@ Erstellen Sie nun die virtuellen Sprung- und Workloadcomputer, und platzieren Si
 
    |Einstellung  |Wert  |
    |---------|---------|
-   |Ressourcengruppe     |**Test-FW-RG**|
+   |Resource group     |**Test-FW-RG**|
    |Name des virtuellen Computers     |**Srv-Jump**|
    |Region     |Wie zuvor|
    |Benutzername des Administrators     |**azureuser**|
@@ -125,7 +125,7 @@ Konfigurieren Sie anhand der Angaben in der folgenden Tabelle eine weitere VM mi
 
 |Einstellung  |Wert  |
 |---------|---------|
-|Subnetz|**Workload-SN**|
+|Subnet|**Workload-SN**|
 |Öffentliche IP-Adresse|**Keine**|
 |Öffentliche Eingangsports|**Keine**|
 
@@ -140,10 +140,10 @@ Stellen Sie die Firewall im VNET bereit.
 
    |Einstellung  |Wert  |
    |---------|---------|
-   |Abonnement     |\<Ihr Abonnement\>|
-   |Ressourcengruppe     |**Test-FW-RG** |
+   |Subscription     |\<Ihr Abonnement\>|
+   |Resource group     |**Test-FW-RG** |
    |NAME     |**Test-FW01**|
-   |Standort     |Wählen Sie den gleichen Standort aus wie zuvor.|
+   |Location     |Wählen Sie den gleichen Standort aus wie zuvor.|
    |Virtuelles Netzwerk auswählen     |**Vorhandene verwenden**: **Test-FW-VN**|
    |Öffentliche IP-Adresse     |**Neu erstellen**. Die öffentliche IP-Adresse muss vom Standard-SKU-Typ sein.|
 
@@ -183,7 +183,7 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 
 ## <a name="configure-an-application-rule"></a>Konfigurieren einer Anwendungsregel
 
-Hierbei handelt es sich um die Anwendungsregel, die ausgehenden Zugriff auf „www.google.com“ zulässt.
+Hierbei handelt es sich um die Anwendungsregel, die ausgehenden Zugriff auf [www.google.com](www.google.com) zulässt.
 
 1. Öffnen Sie **Test-FW-RG**, und wählen Sie die Firewall **Test-FW01** aus.
 2. Wählen Sie auf der Seite **Test-FW01** unter **Einstellungen** die Option **Regeln** aus.
@@ -236,12 +236,12 @@ Testen Sie nun die Firewall, um sicherzustellen, dass sie wie erwartet funktioni
 1. Überprüfen Sie im Azure-Portal die Netzwerkeinstellungen für den virtuellen Computer **Srv-Work**, und notieren Sie sich die private IP-Adresse.
 2. Verbinden Sie einen Remotedesktop mit der VM **Srv-Jump**, und melden Sie sich an. Öffnen Sie auf der VM eine Remotedesktopverbindung mit der privaten IP-Adresse von **Srv-Work**.
 
-3. Navigieren Sie in Internet Explorer zu http://www.google.com.
+3. Navigieren Sie in Internet Explorer zu https://www.google.com.
 4. Klicken Sie in den Sicherheitswarnungen von Internet Explorer auf **OK** > **Schließen**.
 
    Die Google-Startseite sollte nun angezeigt werden.
 
-5. Navigieren Sie zu http://www.microsoft.com.
+5. Navigieren Sie zu https://www.microsoft.com.
 
    Sie sollten durch die Firewall blockiert werden.
 
@@ -257,4 +257,4 @@ Sie können die Firewallressourcen für das nächste Tutorial behalten oder die 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Überwachen von Azure Firewall-Protokollen](./tutorial-diagnostics.md)
+> [Tutorial: Überwachen von Azure Firewall-Protokollen](./tutorial-diagnostics.md)

@@ -4,15 +4,15 @@ description: In diesem Artikel werden die regionale Verfügbarkeit von Azure Cos
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 07/23/2019
 ms.author: rimman
 ms.custom: seodec18
-ms.openlocfilehash: 851da72a308b164b9a01b7ccfa3d541fc06810ba
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 775ca8c57a9a444df2f7d0a4df4224b7eba9d677
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762190"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68384047"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Regionale Präsenz von Azure Cosmos DB
 

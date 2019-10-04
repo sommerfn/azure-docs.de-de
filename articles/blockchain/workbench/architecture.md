@@ -1,25 +1,25 @@
 ---
-title: Azure Blockchain Workbench-Architektur
-description: Übersicht über die Azure Blockchain Workbench-Architektur und die zugehörigen Komponenten
+title: Architektur von Azure Blockchain Workbench (Vorschau)
+description: Übersicht über die Architektur von Azure Blockchain Workbench (Vorschau) und die zugehörigen Komponenten.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/14/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 83c5e1405c402a1c6c98f9dbcaaf74891eb75e6d
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: d50ee0fa06f34167cd4be9e787f6e351d3ef7e3b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330635"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845213"
 ---
-# <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench-Architektur
+# <a name="azure-blockchain-workbench-preview-architecture"></a>Architektur von Azure Blockchain Workbench (Vorschau)
 
-Azure Blockchain Workbench vereinfacht die Entwicklung von Blockchainanwendungen, indem eine Lösung bereitgestellt wird, die mehrere Azure-Komponenten nutzt. Azure Blockchain Workbench wird mithilfe einer Lösungsvorlage im Azure Marketplace bereitgestellt. Über die Vorlage können Sie die Module und Komponenten auswählen, die bereitgestellt werden sollen, wie z.B. Blockchainstapel, Typ der Clientanwendung und Unterstützung für die IoT-Integration. Nach der Bereitstellung bietet Blockchain Workbench Zugriff auf eine Webanwendung, eine iOS-Anwendung und eine Android-Anwendung.
+Azure Blockchain Workbench (Vorschau) vereinfacht die Entwicklung von Blockchainanwendungen, indem eine Lösung bereitgestellt wird, die mehrere Azure-Komponenten nutzt. Azure Blockchain Workbench wird mithilfe einer Lösungsvorlage im Azure Marketplace bereitgestellt. Über die Vorlage können Sie die Module und Komponenten auswählen, die bereitgestellt werden sollen, wie z.B. Blockchainstapel, Typ der Clientanwendung und Unterstützung für die IoT-Integration. Nach der Bereitstellung bietet Blockchain Workbench Zugriff auf eine Webanwendung, eine iOS-Anwendung und eine Android-Anwendung.
 
 ![Blockchain Workbench-Architektur](./media/architecture/architecture.png)
 
@@ -45,7 +45,7 @@ In der Webanwendung haben autorisierte Benutzer die Möglichkeit, auf die Admini
 * Hochladen und Bereitstellen eigener intelligenter Verträge.
 * Zuordnen eines Benutzerzugriffs zu dem intelligenten Vertrag im Rahmen einer bestimmten Rolle.
 
-Weitere Informationen finden Sie im Artikel über [Azure Blockchain Workbench-Beispielclientanwendungen auf GitHub](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-development-kit/connect/mobile/blockchain-workbench/workbench-client).
+Weitere Informationen finden Sie im Artikel über [Azure Blockchain Workbench-Beispielclientanwendungen auf GitHub](https://github.com/Azure-Samples/blockchain-devkit/tree/master/connect/mobile).
 
 ## <a name="gateway-service-api"></a>Gatewaydienst-API
 

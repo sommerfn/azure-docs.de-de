@@ -3,19 +3,20 @@ title: Bekannte Probleme mit dem Project Acoustics-Plug-In
 titlesuffix: Azure Cognitive Services
 description: Bei Verwendung der Designervorschau für Project Acoustics können die folgenden bekannten Probleme auftreten.
 services: cognitive-services
-author: kylestorck
+author: NoelCross
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: resources
+ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: kylestorck
-ms.openlocfilehash: 50de4d983ed24440d655cf5b9ba3fb5e33d8d7cd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.author: noelc
+ROBOTS: NOINDEX
+ms.openlocfilehash: 37084480423de90f50beced187eda202b39f8bf1
+ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309944"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68933062"
 ---
 # <a name="project-acoustics-known-issues"></a>Bekannte Probleme mit Projekt Akustik
 Bei Verwendung der Designervorschau für Project Acoustics können die folgenden bekannten Probleme auftreten.
@@ -23,10 +24,6 @@ Bei Verwendung der Designervorschau für Project Acoustics können die folgenden
 ## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>Beim Umbenennen einer Szene gehen akustische Parameter verloren
 
 Wenn Sie eine Szene umbenennen, werden nicht alle zu dieser Szene gehörenden akustischen Parameter automatisch an die neue Szene übertragen. Sie bleiben jedoch in der alten ASSET-Datei erhalten. Suchen Sie nach der Datei **Szenenname_Akustikparameter.asset** im Verzeichnis **Editor** neben Ihrer Szenendatei. Benennen Sie Ihre Datei entsprechend dem neuen Szenennamen um.
-
-## <a name="unity-crashes-when-closing-project"></a>Unity stürzt beim Schließen des Projekts ab
-
-Die neuesten Versionen von Unity (2018.2 und höher) haben den bekannten Fehler, dass Unity abstürzt, wenn Sie Ihr Projekt schließen. Dieses Problem wird mit [diesem Unity-Problem](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project) nachverfolgt.
 
 ## <a name="deploying-to-android-from-some-unity-versions"></a>Bereitstellen auf Android von einigen Unity-Versionen aus
 

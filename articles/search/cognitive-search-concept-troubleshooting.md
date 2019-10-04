@@ -2,21 +2,19 @@
 title: Tipps zur Problembehandlung bei der kognitiven Suche – Azure Search
 description: Tipps und Problembehandlung für die Einrichtung von kognitiven Suchpipelines in Azure Search.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: luisca
-ms.custom: seodec2018
-ms.openlocfilehash: ebc0ca718ab8edf5ef644993c71b0353861265b8
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: ee54d560ae1a294467e4520063153566d2c3b0a2
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961846"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265843"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Tipps zur Problembehandlung bei der kognitiven Suche
 
@@ -84,7 +82,7 @@ Fügen Sie ein Feld ```enriched``` als Teil Ihrer Indexdefinition zu Debuzwecken
 
 Fehlender Inhalt könnte das Ergebnis von Dokumenten sein, die während der Indizierung verworfen werden. Für die Preisstufen Free und Basic gibt es niedrige Grenzwerte für die Dokumentgröße. Jede Datei, die den Grenzwert überschreitet, wird während der Indizierung verworfen. Sie können im Azure-Portal nach verworfenen Dokumenten suchen. Doppelklicken Sie im Dashboard des Suchdiensts auf die Kachel des Indexers. Überprüfen Sie das Verhältnis der erfolgreichen indizierten Dokumente. Wenn es nicht 100% ist, können Sie auf darauf klicken, um mehr Details zu erhalten. 
 
-Wenn das Problem mit der Dateigröße zusammenhängt, wird möglicherweise ein Fehler wie dieser angezeigt: „Das Blob <Dateiname> ist <Dateigröße> Bytes groß und überschreitet daher das Größenlimit für die Dokumentenextrahierung für Ihren aktuellen Diensttarif.“ Weitere Informationen zu Indexergrenzwerten finden Sie unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md).
+Wenn das Problem mit der Dateigröße zusammenhängt, wird möglicherweise ein Fehler wie dieser angezeigt: „Das Blob "\<Dateiname>" ist \<Dateigröße> Bytes groß und überschreitet daher das Größenlimit für die Dokumentenextrahierung für Ihre aktuelle Dienstebene.“ Weitere Informationen zu Indexergrenzwerten finden Sie unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md).
 
 Ein zweiter Grund dafür, dass Inhalte nicht angezeigt werden, können Zuordnungsfehler bei der Eingabe/Ausgabe sein, die zusammenhängen. Ein Beispiel hierfür wäre, wenn ein Ausgabezielname „Personen“ lautet, aber der Indexfeldname kleingeschrieben ist („personen“). Das System könnte 201 Erfolgsmeldungen für die gesamte Pipeline zurückgeben, sodass der Eindruck entsteht, dass die Indizierung erfolgreich war, obwohl tatsächlich ein Feld leer ist. 
 
@@ -94,7 +92,10 @@ Die Bildanalyse ist selbst für einfache Fälle rechenintensiv, sodass die Verar
 
 Die maximale Laufzeit variiert je nach Tarif: mehrere Minuten beim Free-Tarif, 24-Stunden-Indizierung bei abrechenbaren Tarifen. Wenn die Verarbeitung nicht innerhalb eines 24-Stunden-Zeitraums für die bedarfsgesteuerte Verarbeitung abgeschlossen werden kann, wechseln Sie zu einem Zeitplan, damit der Indexer die Verarbeitung dort fortsetzt, wo sie unterbrochen wurde. 
 
-Bei geplanten Indexern wird die Indizierung beim letzten erfolgreich verarbeiteten Dokument planmäßig fortgesetzt. Durch die Verwendung eines wiederkehrenden Zeitplans kann sich der Indexer über eine Reihe von Stunden oder Tagen durch den Rückstand der Bilder arbeiten, bis schließlich alle Bilder verarbeitet sind. Weitere Informationen zur Zeitplansyntax finden Sie unter [Schritt 3: Erstellen eines Indexers](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer).
+Bei geplanten Indexern wird die Indizierung beim letzten erfolgreich verarbeiteten Dokument planmäßig fortgesetzt. Durch die Verwendung eines wiederkehrenden Zeitplans kann sich der Indexer über eine Reihe von Stunden oder Tagen durch den Rückstand der Bilder arbeiten, bis schließlich alle Bilder verarbeitet sind. Weitere Informationen zur Zeitplansyntax finden Sie unter [Schritt 3: Erstellen eines Indexers](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) oder [How to schedule indexers for Azure Search (Festlegen eines Zeitplans für Indexer in Azure Search)](search-howto-schedule-indexers.md).
+
+> [!NOTE]
+> Wenn ein Indexer auf einen bestimmten Zeitplan festgelegt ist, im gleichen Dokument bei erneuter Ausführung aber immer wieder ein Fehler auftritt, wird der Indexer in selteneren Intervallen ausgeführt (bis hin zum Maximum von mindestens einmal in 24 Stunden), bis die Ausführung fehlerfrei verläuft.  Wenn Sie der Meinung sind, dass Sie das Problem behoben haben, das dafür gesorgt hat, dass der Indexer an einem bestimmten Punkt hängengeblieben ist, können Sie eine bedarfsgesteuerte Ausführung des Indexers veranlassen. Wenn diese Ausführung erfolgreich verläuft, wird der Indexer wieder im festgelegten Zeitplanintervall ausgeführt.
 
 Bei der portalbasierten Indizierung (wie im Schnellstart beschrieben) wird durch die Indexeroption „Einmal ausführen“ die Verarbeitung auf eine Stunde (`"maxRunTime": "PT1H"`) eingeschränkt. Sie können das Verarbeitungsfenster auch erweitern.
 

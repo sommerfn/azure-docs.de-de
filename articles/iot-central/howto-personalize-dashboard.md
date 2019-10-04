@@ -3,17 +3,17 @@ title: Erstellen persönlicher Dashboards für Azure IoT Central | Microsoft-Dok
 description: Erfahren Sie, wie Sie als Benutzer Ihre persönlichen Dashboards erstellen und verwalten.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/13/2019
+ms.date: 06/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: fb74669dcaa802ad06a9c4dff3ffdf25726f518c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c048ae8c0daba0e467a9243f4dd83f8d95921e10
+ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316055"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67502651"
 ---
 # <a name="create-and-manage-personal-dashboards"></a>Erstellen und Verwalten persönlicher Dashboards
 
@@ -38,6 +38,8 @@ Wenn Sie jetzt Ihr persönliches Dashboard öffnen, wird Sie die neue Kachel mit
 ![Registerkarte „Dashboard“ mit Anzeige der Einstellungen und Eigenschaften für die Kachel](media/howto-personalize-dashboard/personaldashboard.png)
 
 Sie können andere Kacheltypen in der Bibliothek ausprobieren, um herauszufinden, wie Sie Ihre persönlichen Dashboards weiter anpassen können.
+
+Mehr über die Verwendung von Kacheln in Azure IoT Central erfahren Sie unter [Verwenden von Dashboardkacheln](howto-use-tiles.md).
 
 ## <a name="manage-dashboards"></a>Dashboards verwalten
 

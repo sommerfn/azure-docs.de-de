@@ -4,18 +4,17 @@ description: Informationen zum Konfigurieren von Azure Functions-Bindungen
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 6d5f9b171a4efc5e52d281655de143ac9d40d437
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: d1959792823e04cf34d65ab775ae8c51e741e293
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56740250"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097468"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Trigger- und Bindungsbeispiel für Azure Functions
 
@@ -135,7 +134,7 @@ public class Person
 }
 ```
 
-Sie haben nun eine funktionierende Funktion, die von Azure Table Storage ausgelöst wird und Daten in eine Warteschlange ausgibt.
+Sie haben nun eine funktionierende Funktion, die von einer Azure-Warteschlange ausgelöst wird und Daten in Azure Table Storage ausgibt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

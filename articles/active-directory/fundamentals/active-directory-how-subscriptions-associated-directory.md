@@ -2,23 +2,23 @@
 title: Hinzufügen eines vorhandenen Azure-Abonnements zu Ihrem Mandanten – Azure Active Directory | Microsoft-Dokumentation
 description: Anleitungen zum Hinzufügen eines vorhandenen Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten.
 services: active-directory
-author: eross-msft
+author: msaburnley
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: lizross
+ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b141de4c22ba1ba1325982d8e027fa46e0909fbb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: fb4fa92d8b3c174cdf9b3695f8564cc11c1ad291
+ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009853"
+ms.lasthandoff: 08/08/2019
+ms.locfileid: "68851748"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten
 
@@ -31,7 +31,7 @@ Alle Ihre Benutzer verfügen über ein einzelnes *Basisverzeichnis* für die Aut
 > [!Important]
 > Wenn Sie ein Abonnement einem anderen Verzeichnis zuordnen, verlieren Benutzer, denen Rollen mit der [rollenbasierten Zugriffssteuerung (RBAC)](../../role-based-access-control/role-assignments-portal.md) zugewiesen wurden, ihren Zugriff. Klassische Abonnementadministratoren (Dienstadministrator und Co-Admin) verlieren ebenfalls ihren Zugriff.
 > 
-> Darüber hinaus führt das Verschieben Ihres Azure Kubernetes Service-Clusters (AKS-Clusters) in ein anderes Abonnement oder das Verschieben des Abonnements, das den Cluster besitzt, in einen neuen Mandanten dazu, dass der Cluster seine Funktionalität aufgrund des Verlusts von Rollenzuweisungen und Dienstprinzipalrechten verliert. Weitere Informationen zu AKS finden Sie unter [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).
+> Darüber hinaus führt das Verschieben Ihres Azure Kubernetes Service-Clusters (AKS-Clusters) in ein anderes Abonnement oder das Verschieben des Abonnements, das den Cluster besitzt, in einen neuen Mandanten dazu, dass der Cluster seine Funktionalität aufgrund des Verlusts von Rollenzuweisungen und Dienstprinzipalrechten verliert. Weitere Informationen zu AKS finden Sie unter [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -42,6 +42,7 @@ Bevor Sie Ihr Abonnement zuweisen oder hinzufügen können, müssen Sie die folg
     - Benutzer, deren Rollen mithilfe von RBAC zugewiesen wurden, verlieren den Zugriff.
     - Dienstadministrator und Co-Admins verlieren den Zugriff.
     - Wenn Sie über Schlüsseltresore verfügen, kann darauf nicht mehr zugegriffen werden, und Sie müssen sie nach der Zuweisung korrigieren.
+    - Wenn Sie über verwaltete Identitäten für Ressourcen wie Virtual Machines oder Logic Apps verfügen, müssen Sie diese nach der Zuordnung erneut aktivieren oder erstellen.
     - Wenn Sie eine Azure Stack-Instanz konfiguriert haben, müssen Sie diese nach der Zuweisung erneut registrieren.
 
 1. Melden Sie sich mit einem Konto an, das:
@@ -64,8 +65,8 @@ Bevor Sie Ihr Abonnement zuweisen oder hinzufügen können, müssen Sie die folg
 
     Das Verzeichnis wird für das Abonnement geändert, und eine Erfolgsmeldung wird angezeigt.
 
-    ![Nachricht über die erfolgreiche Änderung des Verzeichnisses](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)    
-4. Rufen Sie mithilfe des **Verzeichnisumschalters** Ihr neues Verzeichnis auf. Es kann bis zu zehn Minuten dauern, bis alles richtig angezeigt wird.
+    ![Nachricht über die erfolgreiche Änderung des Verzeichnisses](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
+4. Rufen Sie mithilfe des **Verzeichnisumschalters** Ihr neues Verzeichnis auf. Es kann mehrere Stunden dauern, bis alles ordnungsgemäß angezeigt wird. Wenn es anscheinend zu lange dauert, stellen Sie sicher, dass der **globale Abonnementfilter** für das verschobene Abonnement nicht ausgeblendet ist. Möglicherweise müssen Sie sich beim Azure-Portal abmelden und wieder anmelden, damit das neue Verzeichnis angezeigt wird. 
 
     ![Seite mit dem Verzeichnisumschalter mit Beispielinformationen](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
@@ -76,7 +77,9 @@ Nachdem Sie ein Abonnement einem anderen Verzeichnis zugeordnet haben, sind even
 
 1. Wenn Sie über Schlüsseltresore verfügen, müssen Sie die Mandanten-ID des Schlüsseltresors ändern. Weitere Informationen finden Sie unter [Ändern der Mandanten-ID des Schlüsseltresors nach einer Abonnementverschiebung](../../key-vault/key-vault-subscription-move-fix.md).
 
-2. Wenn Sie mit diesem Abonnement eine Azure Stack-Instanz registriert haben, müssen Sie diese erneut registrieren. Weitere Informationen finden Sie unter [Registrieren von Azure Stack in Azure](/azure-stack/operator/azure-stack-registration).
+2. Wenn Sie vom System zugewiesene verwaltete Identitäten für Ressourcen verwendet haben, müssen Sie diese erneut aktivieren. Wenn Sie vom Benutzer zugewiesene verwaltete Identitäten verwendet haben, müssen Sie diese erneut erstellen. Nach dem erneuten Aktivieren oder Erstellen der verwalteten Identitäten müssen Sie die Berechtigungen, die diesen Identitäten zugewiesen sind, erneut einrichten. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../managed-identities-azure-resources/overview.md).
+
+3. Wenn Sie mit diesem Abonnement eine Azure Stack-Instanz registriert haben, müssen Sie diese erneut registrieren. Weitere Informationen finden Sie unter [Registrieren von Azure Stack in Azure](/azure-stack/operator/azure-stack-registration).
 
 
 

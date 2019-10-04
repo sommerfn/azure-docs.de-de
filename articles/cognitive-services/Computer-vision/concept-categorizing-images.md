@@ -1,5 +1,5 @@
 ---
-title: Kategorisieren von Bildern – Maschinelles Sehen
+title: Bildkategorisierung – maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: Machen Sie sich mit Konzepten des Bildkategorisierungsfeatures der Maschinelles Sehen-API vertraut.
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 07fdaa22532f48cc39b6c524d85fdfe625f8b80c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 2b9b8da550d80b027da919ba0834e43e2c83d4b4
+ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337130"
+ms.lasthandoff: 08/10/2019
+ms.locfileid: "68945309"
 ---
-# <a name="categorize-images"></a>Kategorisieren von Bildern
+# <a name="categorize-images-by-subject-matter"></a>Kategorisieren von Bildern nach Schlüsselinhalt
 
 Zusätzlich zu Tags und Beschreibungen gibt maschinelles Sehen auf der Taxonomie basierende Kategorien zurück, die in einem Bild erkannt wurden. Im Gegensatz zu Tags sind Kategorien in einer Vererbungshierarchie mit über- und untergeordneten Elementen organisiert. Außerdem gibt es weniger davon (86, im Gegensatz zu Tausenden von Tags). Alle Kategorienamen sind in Englisch. Die Kategorisierung kann eigenständig oder parallel zum neueren Tagmodell erfolgen.
 

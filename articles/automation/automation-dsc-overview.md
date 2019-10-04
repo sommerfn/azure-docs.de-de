@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: da746d80e3ae1fa5cc02683a8bb0ff0402722b8e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524938"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061390"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Übersicht über Azure Automation State Configuration
 
@@ -58,18 +58,15 @@ Für Knoten, auf denen Windows ausgeführt wird, werden folgende Versionen unter
 - Windows 8.1
 - Windows 7
 
+Die eigenständige Produkt-SKU von [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) enthält keine Implementierung der Konfiguration des gewünschten Zustands (Desired State Configuraion, DCS), weshalb sie nicht von PowerShell DSC oder Azure Automation DSC verwaltet werden kann.
+
 Für Knoten, auf denen Linux ausgeführt wird, werden folgende Distributionen/Versionen unterstützt:
 
-Die DSC Linux-Erweiterung unterstützt alle [von Azure unterstützte Distributionen von Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros), außer:
-
-Distribution | Version
--|-
-Debian  | Alle Versionen
-Ubuntu  | 18,04
+Die DSC Linux-Erweiterung unterstützt alle unter [Unterstützte Linux-Distributionen](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions) aufgeführten Linux-Distributionen.
 
 ### <a name="dsc-requirements"></a>DSC-Anforderungen
 
-Für alle Windows-Knoten, die in Azure ausgeführt werden, wird während des Onboardings [WMF 5.1](https://docs.microsoft.com/powershell/wmf/5.1/install-configure) installiert.  Für Knoten, die unter Windows Server 2012 und Windows 7 ausgeführt werden, [wird WinRM aktiviert](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency).
+Für alle Windows-Knoten, die in Azure ausgeführt werden, wird während des Onboardings [WMF 5.1](https://docs.microsoft.com/powershell/wmf/setup/install-configure) installiert.  Für Knoten, die unter Windows Server 2012 und Windows 7 ausgeführt werden, [wird WinRM aktiviert](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency).
 
 Für alle Linux-Knoten, die in Azure ausgeführt werden, wird während des Onboardings [PowerShell DSC für Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) installiert.
 
@@ -82,6 +79,20 @@ Wenn sich Ihre Knoten in einem privaten Netzwerk befinden, sind nachfolgend der 
 * Globale URL von „US Gov Virginia“: *.azure-automation.us
 * Agent-Dienst: https://\<Arbeitsbereichs-ID\>.agentsvc.azure-automation.net
 
+Dadurch wird die Netzwerkkonnektivität für die Kommunikation des verwalteten Knotens mit Azure Automation bereitgestellt.
+Wenn Sie DSC-Ressourcen verwenden, die zwischen Knoten kommunizieren, z. B. [WaitFor*-Ressourcen](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource), müssen Sie auch den Datenverkehr zwischen Knoten zulassen.
+Informationen zu diesen Netzwerkanforderungen finden Sie in der Dokumentation für die einzelnen DSC-Ressourcen.
+
+#### <a name="proxy-support"></a>Proxyunterstützung
+
+Proxyunterstützung für den DSC-Agent ist in Windows, Version 1809 und höher, verfügbar.
+Um diese Option zu konfigurieren, legen Sie den Wert für **ProxyURL** und **ProxyCredential** im [Metakonfigurationsskript](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) fest, das zum Registrieren von Knoten verwendet wird.
+Proxy ist in DSC für frühere Versionen von Windows nicht verfügbar.
+
+Für Linux-Knoten unterstützt der DSC-Agent Proxy und nutzt die Variable „http_proxy“, um die URL zu bestimmen.
+
+#### <a name="azure-state-configuration-network-ranges-and-namespace"></a>Azure State Configuration-Netzwerkbereiche und Namespace
+
 Es wird empfohlen, beim Definieren von Ausnahmen die aufgeführten Adressen zu verwenden. Für IP-Adressen können Sie die [IP-Bereiche des Microsoft Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) herunterladen. Diese Datei mit den jeweils aktuellen bereitgestellten Bereichen und allen anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht.
 
 Wenn eines Ihrer Automation-Konten für eine bestimmte Region definiert ist, können Sie die Kommunikation mit diesem regionalen Rechenzentrum einschränken. Die folgende Tabelle enthält den DNS-Eintrag für jede Region:
@@ -90,6 +101,7 @@ Wenn eines Ihrer Automation-Konten für eine bestimmte Region definiert ist, kö
 | --- | --- |
 | USA, Westen-Mitte | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | USA Süd Mitte |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| East US   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
 | USA (Ost) 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Kanada, Mitte |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Europa, Westen |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
@@ -109,15 +121,6 @@ Wenn Sie eine Liste mit IP-Adressen der Regionen anstelle ihrer Namen benötigen
 >Eine aktualisierte Datei wird wöchentlich veröffentlicht. Die Datei enthält die derzeit bereitgestellten Bereichen und alle anstehenden Änderungen an den IP-Adressbereichen. In der Datei enthaltene neue Bereiche werden frühestens nach einer Woche in den Rechenzentren verwendet.
 >
 > Sie sollten die neue XML-Datei jede Woche herunterladen. Führen Sie damit dann eine Aktualisierung an Ihrem Standort durch, um in Azure ausgeführte Dienste ordnungsgemäß zu identifizieren. Benutzer von Azure ExpressRoute sollten beachten, dass diese Datei zum Aktualisieren der BGP-Ankündigung (Border Gateway Protocol) von Azure-Bereichen jeweils in der ersten Woche des Monats verwendet wird.
-
-## <a name="introduction-video"></a>Einführungsvideo
-
-Möchten Sie sich lieber ein Video ansehen? Sehen Sie sich das folgende Video vom Mai 2015 an, als Azure Automation State Configuration erstmals angekündigt wurde.
-
-> [!NOTE]
-> Die Konzepte und der Lebenszyklus, die in diesem Video erläutert werden, sind noch zutreffend, jedoch wurde Azure Automation State Configuration seit der Aufzeichnung des Videos beträchtlich weiterentwickelt. Es ist jetzt allgemeine verfügbar, besitzt eine umfangreichere Benutzeroberfläche im Azure-Portal und unterstützt viele zusätzliche Funktionen.
-
-> [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

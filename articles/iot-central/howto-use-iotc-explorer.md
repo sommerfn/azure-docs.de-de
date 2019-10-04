@@ -3,17 +3,17 @@ title: Überwachen der Gerätekonnektivität mit dem Azure IoT Central-Explorer
 description: Überwachen Sie Gerätemeldungen, und beobachten Sie Änderungen bei Gerätezwillingen über die Befehlszeilenschnittstelle des IoT Central-Explorers.
 author: viv-liu
 ms.author: viviali
-ms.date: 02/20/2019
+ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 16cb27ab330118d1bb59cf4f3d782bf55fa28d43
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 38cbe43e9038a47c4e222fd4744f0b844f9ddb4e
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779741"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845683"
 ---
 # <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Überwachen der Gerätekonnektivität mit dem Azure IoT Central-Explorer
 
@@ -91,7 +91,7 @@ iotc-explorer monitor-messages <your-device-id>
 
 Sie können auch ein computerfreundlicheres Format ausgeben, indem Sie dem Befehl die `--raw`-Option hinzufügen:
 
-```
+```cmd/sh
 iotc-explorer monitor-messages --raw
 ```
 

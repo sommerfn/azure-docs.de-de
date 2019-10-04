@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: joseidz
 ms.author: craigg
 ms.reviewer: ''
-manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: e1cd0d8462c31c8b843f7962f923accc6b63ae00
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8711d8f7ebc00b2d0fa51ff9f420293e96766d1c
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103399"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68569355"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Verbinden von Excel mit einem Singleton in Azure SQL-Datenbank und Erstellen eines Berichts
 
@@ -37,9 +36,9 @@ Sie benötigen auch eine Kopie von Excel. In diesem Artikel wird [Microsoft Exce
    ![Auswählen einer Datenquelle: Verbinden von Excel mit SQL-Datenbank](./media/sql-database-connect-excel/excel_data_source.png)
 
    Der Datenverbindungs-Assistent wird geöffnet.
-3. Geben Sie im Dialogfeld **Zum Datenbankserver verbinden** den **Servernamen** der SQL-Datenbank, mit der Sie die Verbindung herstellen möchten, im Format <*Servername*>**.database.windows.net** ein. Beispiel: **msftestserver.database.windows.net**. Geben Sie optional den Namen der Datenbank ein. Wählen Sie **OK** aus, um das Fenster der Anmeldeinformationen zu öffnen. 
+3. Geben Sie im Dialogfeld **Zum Datenbankserver verbinden** den **Servernamen** der SQL-Datenbank, mit der Sie die Verbindung herstellen möchten, im Format <*Servername*> **.database.windows.net** ein. Beispiel: **msftestserver.database.windows.net**. Geben Sie optional den Namen der Datenbank ein. Wählen Sie **OK** aus, um das Fenster der Anmeldeinformationen zu öffnen. 
 
-   ![server-name.png](media/sql-database-connect-excel/server-name.png)
+   ![Dialogfeld „Zum Datenbankserver verbinden“](media/sql-database-connect-excel/server-name.png)
 
 4. Wählen Sie im Dialogfeld **SQL Server-Datenbank** auf der linken Seite **Datenbank** aus, und geben Sie dann Ihren **Benutzernamen** und das **Kennwort** für den SQL-Datenbank-Server ein, mit dem Sie eine Verbindung herstellen möchten. Wählen Sie **Verbinden** aus, um den **Navigator** zu öffnen. 
 
@@ -68,7 +67,7 @@ Nachdem Sie die Verbindung hergestellt haben, stehen mehrere unterschiedliche Op
 
 > [!TIP]
 > Wenn Sie andere Excel-Arbeitsmappen und -Arbeitsblätter mit der Datenbank verbinden möchten, wählen Sie die Registerkarte **Daten** und dann **Zuletzt verwendete Quellen** aus, um das Dialogfeld **Zuletzt verwendete Quellen** zu öffnen. Wählen Sie dort in der Liste die Verbindung aus, die Sie erstellt haben, und klicken Sie dann auf **Öffnen**.
-> ![Letzte Verbindungen](media/sql-database-connect-excel/recent-connections.png)
+> ![Dialogfeld „Zuletzt verwendete Quellen“](media/sql-database-connect-excel/recent-connections.png)
 
 ## <a name="create-a-permanent-connection-using-odc-file"></a>Erstellen einer permanenten Verbindung mithilfe einer ODC-Datei
 
@@ -78,7 +77,7 @@ Wenn Sie die Verbindungsdetails dauerhaft speichern möchten, können Sie eine O
    1. Wählen Sie **Browse for more** (Suche fortsetzen) aus, um das Dialogfeld **Datenquelle auswählen** zu öffnen.   
    2. Wählen Sie die Datei **+NewSqlServerConnection.odc** und dann **Öffnen** aus, um den **Datenverbindungs-Assistenten** zu öffnen.
 
-      ![Neue Verbindung](media/sql-database-connect-excel/new-connection.png)
+      ![Dialogfeld „Neue Verbindung“](media/sql-database-connect-excel/new-connection.png)
 
 2. Geben Sie im **Datenverbindungs-Assistenten** den Servernamen und die Anmeldeinformationen für SQL-Datenbank ein. Klicken Sie auf **Weiter**. 
    1. Wählen Sie in der Dropdownliste die Datenbank aus, die die Daten enthält. 

@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 3d5c0ac068a6644f3499da6c3b642a4a04408370
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790323"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60736495"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Lastenausgleich mit der Azure-Suite für die Anwendungsbereitstellung
 
@@ -45,7 +45,7 @@ Der Client stellt eine direkte Verbindung mit diesem Back-End her. Azure Traffic
 Azure Front Door Service beendet HTTP-Anforderungen im Edgebereich des Microsoft-Netzwerks und führt aktiv Tests durch, um Änderungen der Anwendungs- und Infrastrukturintegrität oder der Wartezeit zu erkennen.  Anschließend leitet Azure Front Door Service den Datenverkehr immer zum schnellsten und verfügbaren (fehlerfreien) Back-End. Weitere Informationen zu diesem Dienst finden Sie in den Artikeln zur [Routingarchitektur](front-door-routing-architecture.md) und zu den [Routingmethoden für Datenverkehr](front-door-routing-methods.md).
 
 ## <a name="regional-load-balancing"></a>Regionaler Lastenausgleich
-Application Gateway stellt einen ADC (Application Delivery Controller) als Dienst bereit und bietet damit verschiedene Layer-7-Lastenausgleichsfunktionen für Ihre Anwendung. So wird Kunden die Optimierung der Webfarmproduktivität ermöglicht, indem die CPU-intensive SSL-Beendigung zum Application Gateway verlagert wird. Andere Routingfunktionen für Ebene 7 umfassen Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, und Möglichkeit zum Hosten von mehreren Websites hinter einem einzelnen Application Gateway. Application Gateway kann als Gateway mit Internetanbindung, rein internes Gateway oder als Kombination dieser beiden Optionen konfiguriert werden. Application Gateway wird vollständig über Azure verwaltet und ist skalierbar und hoch verfügbar. Die Anwendung umfasst viele Diagnose- und Protokollierungsfunktionen zur Verbesserung der Verwaltbarkeit.
+Application Gateway stellt einen ADC (Application Delivery Controller) als Dienst bereit und bietet damit verschiedene Layer-7-Lastenausgleichsfunktionen für Ihre Anwendung. So wird Kunden die Optimierung der Webfarmproduktivität ermöglicht, indem die CPU-intensive SSL-Terminierung zum Application Gateway verlagert wird. Andere Routingfunktionen für Ebene 7 umfassen Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis, und Möglichkeit zum Hosten von mehreren Websites hinter einem einzelnen Application Gateway. Application Gateway kann als Gateway mit Internetanbindung, rein internes Gateway oder als Kombination dieser beiden Optionen konfiguriert werden. Application Gateway wird vollständig über Azure verwaltet und ist skalierbar und hoch verfügbar. Die Anwendung umfasst viele Diagnose- und Protokollierungsfunktionen zur Verbesserung der Verwaltbarkeit.
 Load Balancer ist ein integraler Bestandteil des Azure SDN-Stapels und bietet leistungsfähige Layer-4-Lastenausgleichsdienste mit geringer Wartezeit für alle UDP- und TCP-Protokolle. Der Dienst verwaltet eingehende und ausgehende Verbindungen. Sie können öffentliche und interne Lastenausgleichs-Endpunkte konfigurieren und Regeln definieren, um eingehende Verbindungen zu Back-End-Pool-Zielen mit TCP und HTTP Integritätstest-Optionen zuzuordnen, damit die Dienstverfügbarkeit verwaltet werden kann.
 
 

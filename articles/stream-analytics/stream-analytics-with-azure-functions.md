@@ -7,17 +7,17 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.workload: data-services
-ms.date: 04/09/2018
+ms.date: 06/05/2019
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 80977c13aa9851ea5df9a15f5b9580dd1a931259
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 5aa2616bfbfd4b31d3e5e5aeee71da8fd511faed
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569194"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67066719"
 ---
-# <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen 
+# <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Tutorial: Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen 
 
 Sie können Azure Functions in Azure Stream Analytics ausführen, indem Sie Functions als eine der Ausgabesenken für den Stream Analytics-Auftrag konfigurieren. Functions ist eine ereignisgesteuerte On-Demand-Computeumgebung, mit der Sie Code implementieren können, der durch in Azure- oder Drittanbieterdiensten auftretende Ereignisse ausgelöst wird. Aufgrund der Möglichkeit, auf Trigger zu antworten, ist Functions die ideale Ausgabe für Stream Analytics-Aufträge.
 
@@ -26,9 +26,10 @@ Stream Analytics ruft Functions über HTTP-Trigger auf. Der Functions-Ausgabeada
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines Stream Analytics-Auftrags
-> * Erstellen einer Azure-Funktion
-> * Konfigurieren einer Azure-Funktion als Ausgabe für Ihren Auftrag
+> * Erstellen und Ausführen eines Stream Analytics-Auftrags
+> * Erstellen einer Azure Cache for Redis-Instanz
+> * Erstellen einer Azure Function
+> * Überprüfen der Ergebnisse in Azure Cache for Redis
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -38,16 +39,9 @@ Dieser Abschnitt veranschaulicht das Konfigurieren eines Stream Analytics-Auftra
 
 ![Diagramm der Beziehungen zwischen den Azure-Diensten](./media/stream-analytics-with-azure-functions/image1.png)
 
-Die folgenden Schritte sind für diese Aufgabe erforderlich:
-* [Erstellen eines Stream Analytics-Auftrags mit Event Hubs als Eingabe](#create-a-stream-analytics-job-with-event-hubs-as-input)  
-* Erstellen einer Azure Cache for Redis-Instanz  
-* Erstellen einer Funktion in Azure Functions, die Daten in Azure Cache for Redis schreiben kann    
-* [Aktualisieren des Stream Analytics-Auftrags mit der Funktion als Ausgabe](#update-the-stream-analytics-job-with-the-function-as-output)  
-* Überprüfen der Ergebnisse in Azure Cache for Redis  
-
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>Erstellen eines Stream Analytics-Auftrags mit Event Hubs als Eingabe
 
-Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-real-time-fraud-detection.md) aus, um einen Event Hub zu erstellen, die Ereignisgenerator-Anwendung zu starten und einen Stream Analytics-Auftrag zu erstellen. (Überspringen Sie die Schritte zum Erstellen der Abfrage und der Ausgabe. Sehen Sie sich stattdessen die folgenden Abschnitte zum Einrichten der Functions-Ausgabe an.)
+Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-real-time-fraud-detection.md) aus, um einen Event Hub zu erstellen, die Ereignisgenerator-Anwendung zu starten und einen Stream Analytics-Auftrag zu erstellen. Überspringen Sie die Schritte zum Erstellen der Abfrage und Ausgabe. Sehen Sie sich stattdessen die folgenden Abschnitte zum Einrichten einer Azure Functions-Ausgabe an.
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>Erstellen einer Azure Cache for Redis-Instanz
 
@@ -61,7 +55,7 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
 
 1. Lesen Sie den Abschnitt [Erstellen einer Funktions-App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) in der Dokumentation zu Functions. Dort finden Sie die Schritte zum Erstellen einer Funktions-App und einer [Funktion in Azure Functions mit Auslösung per HTTP](../azure-functions/functions-create-first-azure-function.md#create-function) mithilfe der Sprache C#.  
 
-2. Navigieren Sie zu der Funktion **run.csx**. Aktualisieren Sie sie mit dem folgenden Code. (Ersetzen Sie unbedingt „\<your Azure Cache for Redis connection string goes here\>“ durch die primäre Verbindungszeichenfolge von Azure Cache for Redis, die Sie im vorherigen Abschnitt abgerufen haben.)  
+2. Navigieren Sie zu der Funktion **run.csx**. Aktualisieren Sie sie mit dem folgenden Code. Ersetzen Sie **"\<your Azure Cache for Redis connection string goes here\>"** durch die primäre Verbindungszeichenfolge von Azure Cache for Redis, die Sie im vorherigen Abschnitt abgerufen haben. 
 
     ```csharp
     using System;
@@ -112,7 +106,7 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
 
    ```
 
-   Wenn Stream Analytics die Ausnahme „HTTP-Anforderungseinheit zu groß“ von der Funktion empfängt, verringert der Dienst die Größe der an Functions gesendeten Batches. Verwenden Sie in Ihrer Funktion den folgenden Code, um zu überprüfen, ob Stream Analytics zu große Batches sendet. Stellen Sie sicher, dass die Werte für die maximal zulässige Batchanzahl und -größe in der Funktion mit den Werten übereinstimmen, die im Stream Analytics-Portal eingegeben wurden.
+   Wenn Stream Analytics die Ausnahme „HTTP-Anforderungseinheit zu groß“ von der Funktion empfängt, verringert der Dienst die Größe der an Functions gesendeten Batches. Der folgende Code stellt sicher, dass Stream Analytics keine zu großen Batches sendet. Stellen Sie sicher, dass die Werte für die maximal zulässige Batchanzahl und -größe in der Funktion mit den Werten übereinstimmen, die im Stream Analytics-Portal eingegeben wurden.
 
     ```csharp
     if (dataArray.ToString().Length > 262144)
@@ -121,7 +115,7 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
         }
    ```
 
-3. Erstellen Sie in einem Text-Editor Ihrer Wahl die JSON-Datei **project.json**. Verwenden Sie den folgenden Code, und speichern Sie sie auf Ihrem lokalen Computer. Diese Datei enthält die für die C#-Funktion erforderlichen NuGet-Paketabhängigkeiten.  
+3. Erstellen Sie in einem Text-Editor Ihrer Wahl die JSON-Datei **project.json**. Fügen Sie den folgenden Code ein, und speichern Sie ihn auf Ihrem lokalen Computer. Diese Datei enthält die für die C#-Funktion erforderlichen NuGet-Paketabhängigkeiten.  
    
     ```json
     {
@@ -145,8 +139,6 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
 
    ![Screenshot des App Service-Editors](./media/stream-analytics-with-azure-functions/image4.png)
 
- 
-
 ## <a name="update-the-stream-analytics-job-with-the-function-as-output"></a>Aktualisieren des Stream Analytics-Auftrags mit der Funktion als Ausgabe
 
 1. Öffnen Sie den Stream Analytics-Auftrag im Azure-Portal.  
@@ -163,9 +155,9 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
    |Max Batch Count|Gibt die maximale Anzahl von Ereignissen in jedem Batch an, die an die Funktion gesendet wird. Der Standardwert ist 100. Diese Eigenschaft ist optional.|
    |Schlüssel|Ermöglicht die Verwendung einer Funktion aus einem anderen Abonnement. Geben Sie den Schlüsselwert für den Zugriff auf die Funktion an. Diese Eigenschaft ist optional.|
 
-3. Geben Sie einen Namen für den Ausgabealias an. In diesem Tutorial nennen wir ihn **saop1** (Sie können einen beliebigen Namen verwenden). Geben Sie weitere Details an.  
+3. Geben Sie einen Namen für den Ausgabealias an. In diesem Tutorial lautet er **saop1**, aber Sie können einen beliebigen Namen Ihrer Wahl verwenden. Geben Sie weitere Details an.
 
-4. Öffnen Sie den Stream Analytics-Auftrag, und aktualisieren Sie die Abfrage wie folgt. (Ersetzen Sie den Text „saop1“, wenn Sie die Ausgabesenke anders benannt haben.)  
+4. Öffnen Sie den Stream Analytics-Auftrag, und aktualisieren Sie die Abfrage wie folgt. Wenn Sie Ihre Ausgabesenke **saop1** nicht benannt haben, denken Sie daran, sie in der Abfrage zu ändern.  
 
    ```sql
     SELECT
@@ -178,9 +170,11 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
         WHERE CS1.SwitchNum != CS2.SwitchNum
    ```
 
-5. Starten Sie die Anwendung „telcodatagen.exe“, indem Sie den folgenden Befehl an der Befehlszeile ausführen (verwenden Sie das Format `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]`):  
+5. Starten Sie die Anwendung „telcodatagen.exe“, indem Sie in der Befehlszeile den folgenden Befehl ausführen. Der Befehl hat das Format `telcodatagen.exe [#NumCDRsPerHour] [SIM Card Fraud Probability] [#DurationHours]`.  
    
-   **telcodatagen.exe 1000 .2 2**
+   ```cmd
+   telcodatagen.exe 1000 0.2 2
+   ```
     
 6.  Starten des Stream Analytics-Auftrags
 
@@ -188,7 +182,7 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
 
 1. Browsen Sie zum Azure-Portal, und suchen Sie Ihre Azure Cache for Redis-Instanz. Wählen Sie **Konsole** aus.  
 
-2. Überprüfen Sie mit [Azure Cache for Redis-Befehlen](https://redis.io/commands), ob Ihre Daten sich in Azure Cache for Redis befinden. (Der Befehl weist das Format „Get {Schlüssel}“ auf.) Beispiel: 
+2. Überprüfen Sie mit [Azure Cache for Redis-Befehlen](https://redis.io/commands), ob Ihre Daten sich in Azure Cache for Redis befinden. (Der Befehl weist das Format „Get {Schlüssel}“ auf.) Beispiel:
 
    **Get "12/19/2017 21:32:24 - 123414732"**
 

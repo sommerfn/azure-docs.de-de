@@ -2,20 +2,19 @@
 title: Diagnose in Durable Functions – Azure
 description: Es wird beschrieben, wie Sie mit der Erweiterung „Durable Functions“ für Azure Functions Probleme diagnostizieren.
 services: functions
-author: ggailey777
+author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 167f697d4928d88114a30739a1d39a576c87ac84
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: d2badee3eaa5a9af48e89adc1b59beacc1571792
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608485"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933501"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnose in Durable Functions in Azure
 
@@ -33,7 +32,7 @@ Jedes Lebenszyklusereignis einer Orchestrierungsinstanz bewirkt, dass in Applica
 
 * **hubName**: Der Name des Aufgabenhubs, unter dem Ihre Orchestrierungen ausgeführt werden.
 * **appName**: Der Name der Funktions-App Dies ist nützlich, wenn mehrere Funktionen-Apps dieselbe Application Insights-Instanz gemeinsam nutzen.
-* **slotName**: Der [Bereitstellungsslot](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/), in dem die aktuelle Funktions-App ausgeführt wird. Dies ist nützlich, wenn Sie Bereitstellungsslots nutzen, um Ihre Orchestrierungen mit einer Version zu versehen.
+* **slotName**: Der [Bereitstellungsslot](../functions-deployment-slots.md), in dem die aktuelle Funktions-App ausgeführt wird. Dies ist nützlich, wenn Sie Bereitstellungsslots nutzen, um Ihre Orchestrierungen mit einer Version zu versehen.
 * **functionName**: Der Name der Orchestrator- oder Aktivitätsfunktion.
 * **functionType**: Der Typ der Funktion, z. B. **Orchestrator** oder **Activity**.
 * **instanceId**: Die eindeutige ID der Orchestrierungsinstanz.
@@ -159,9 +158,26 @@ Das Ergebnis ist eine Liste mit Instanz-IDs und dem aktuellen Laufzeitstatus.
 
 Es ist wichtig, das Wiedergabeverhalten von Orchestratoren zu beachten, wenn Protokolle direkt über eine Orchestratorfunktion geschrieben werden. Sehen Sie sich beispielsweise die folgende Orchestratorfunktion an:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>Vorkompilierter C#-Code
 
-```cs
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
+### <a name="c-script"></a>C#-Skript
+
+```csharp
 public static async Task Run(
     DurableOrchestrationContext context,
     ILogger log)
@@ -212,6 +228,23 @@ Done!
 
 Wenn Sie nur die Anmeldung für die Ausführung ohne Wiedergabe durchführen möchten, können Sie einen bedingten Ausdruck schreiben, damit die Anwendung nur erfolgt, sofern `IsReplaying` auf `false` festgelegt ist. Hier ist das obige Beispiel angegeben, aber es enthält jetzt Wiedergabeprüfungen.
 
+#### <a name="precompiled-c"></a>Vorkompilierter C#-Code
+
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    if (!context.IsReplaying) log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    if (!context.IsReplaying) log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    if (!context.IsReplaying) log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
 #### <a name="c"></a>C#
 
 ```cs
@@ -258,7 +291,7 @@ Done!
 
 Mit dem benutzerdefinierten Orchestrierungsstatus können Sie einen benutzerdefinierten Statuswert für Ihre Orchestratorfunktion festlegen. Dieser Status wird über die HTTP-Statusabfrage-API oder die `DurableOrchestrationClient.GetStatusAsync`-API angegeben. Der benutzerdefinierte Orchestrierungsstatus ermöglicht eine umfassendere Überwachung für Orchestratorfunktionen. Der Orchestratorfunktionscode kann z.B. `DurableOrchestrationContext.SetCustomStatus`-Aufrufe zum Aktualisieren des Status für einen Vorgang mit langer Ausführungsdauer enthalten. Ein Client, z.B. eine Webseite oder ein anderes externes System, kann dann für die HTTP-Statusabfrage-APIs in regelmäßigen Abständen eine Abfrage nach umfangreicheren Statusinformationen durchführen. Nachfolgend ist ein Beispiel unter Verwendung von `DurableOrchestrationContext.SetCustomStatus` aufgeführt:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>Vorkompilierter C#-Code
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)
@@ -316,12 +349,13 @@ Clients erhalten folgende Antwort:
 
 Azure Functions unterstützt das direkte Debuggen des Funktionscodes, und diese Unterstützung gilt auch für Durable Functions – unabhängig davon, ob die Ausführung in Azure oder lokal erfolgt. Beim Debuggen sollten aber einige Verhaltensweisen beachtet werden:
 
-* **Wiedergabe**: Orchestratorfunktionen werden regelmäßig wiederholt, wenn neue Eingaben empfangen werden. Dies bedeutet Folgendes: Eine einzelne *logische* Ausführung einer Orchestratorfunktion kann dazu führen, dass derselbe Breakpoint mehrfach erreicht wird. Dies gilt vor allem, wenn er sich im Anfangsbereich des Funktionscodes befindet.
-* **Await**: Bei jedem `await`-Ausdruck wird die Steuerung an den Durable Task Framework-Verteiler zurückgegeben. Wenn dies das erste Mal ist, dass ein bestimmtes `await`-Element auftritt, wird die zugeordnete Aufgabe *nie* fortgesetzt. Aus diesem Grund ist das *Überspringen* des Wartezustands (F10 in Visual Studio) nicht möglich. Das Überspringen funktioniert nur, wenn eine Aufgabe wiedergegeben wird.
-* **Messagingtimeouts**: In Durable Functions werden intern Warteschlangennachrichten für die Ausführung von Orchestrator- und Aktivitätsfunktionen verwendet. In einer Umgebung mit mehreren VMs kann das Unterbrechen des Debuggens über längere Zeiträume dazu führen, dass eine andere VM die Nachricht aufnimmt. Das Ergebnis wäre dann eine doppelte Ausführung. Dieses Verhalten tritt auch für reguläre Warteschlangentriggerfunktionen auf, aber es ist wichtig, dies in diesem Zusammenhang zu erwähnen, da es sich bei den Warteschlangen um ein Implementierungsdetail handelt.
+* **Replay**: Für Orchestratorfunktionen wird regelmäßig ein [Replay](durable-functions-orchestrations.md#reliability) ausgeführt, wenn neue Eingaben empfangen werden. Dies bedeutet Folgendes: Eine einzelne *logische* Ausführung einer Orchestratorfunktion kann dazu führen, dass derselbe Breakpoint mehrfach erreicht wird. Dies gilt vor allem, wenn er sich im Anfangsbereich des Funktionscodes befindet.
+* **Await**: Bei jedem `await`-Ausdruck in einer Orchestratorfunktion wird die Steuerung an den Durable Task Framework-Verteiler zurückgegeben. Wenn dies das erste Mal ist, dass ein bestimmtes `await`-Element auftritt, wird die zugeordnete Aufgabe *nie* fortgesetzt. Aus diesem Grund ist das *Überspringen* des Wartezustands (F10 in Visual Studio) nicht möglich. Das Überspringen funktioniert nur, wenn eine Aufgabe wiedergegeben wird.
+* **Messagingtimeouts**: In Durable Functions werden intern Warteschlangennachrichten für die Ausführung von Orchestrator-, Aktivitäts- und Entitätsfunktionen verwendet. In einer Umgebung mit mehreren VMs kann das Unterbrechen des Debuggens über längere Zeiträume dazu führen, dass eine andere VM die Nachricht aufnimmt. Das Ergebnis wäre dann eine doppelte Ausführung. Dieses Verhalten tritt auch für reguläre Warteschlangentriggerfunktionen auf, aber es ist wichtig, dies in diesem Zusammenhang zu erwähnen, da es sich bei den Warteschlangen um ein Implementierungsdetail handelt.
+* **Beenden und Starten**: Nachrichten in Durable Functions werden zwischen Debugsitzungen persistent gespeichert. Wenn Sie das Debuggen beenden und den lokalen Hostprozess beenden, während eine permanente Funktion ausgeführt wird, kann diese Funktion in einer zukünftigen Debugsitzung automatisch erneut ausgeführt werden. Dies kann verwirrend sein, wenn es nicht erwartet wird. Das Löschen aller Nachrichten [aus den internen Speicherwarteschlangen](durable-functions-perf-and-scale.md#internal-queue-triggers) zwischen Debugsitzungen ist eine Technik, um dieses Verhalten zu vermeiden.
 
 > [!TIP]
-> Gehen Sie wie folgt vor, wenn Sie beim Festlegen von Breakpoints erreichen möchten, dass nur bei Nichtwiedergabeausführungen unterbrochen wird: Legen Sie einen bedingten Breakpoint fest, bei dem nur eine Unterbrechung auftritt, wenn `IsReplaying` den Wert `false` hat.
+> Gehen Sie wie folgt vor, wenn Sie beim Festlegen von Breakpoints in Orchestratorfunktionen erreichen möchten, dass nur bei Nichtwiedergabeausführungen eine Unterbrechung erfolgt: Legen Sie einen bedingten Breakpoint fest, bei dem nur eine Unterbrechung auftritt, wenn `IsReplaying` den Wert `false` aufweist.
 
 ## <a name="storage"></a>Storage
 
@@ -337,4 +371,4 @@ Dies ist hilfreich beim Debuggen, da Sie genau sehen, in welchem Zustand sich ei
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Informationen zur Verwendung von langlebigen Timern](durable-functions-timers.md)
+> [Weitere Informationen zur Überwachung in Azure Functions](../functions-monitoring.md)

@@ -2,18 +2,18 @@
 title: Verwenden von Azure PowerShell mit Azure Storage | Microsoft Docs
 description: Erfahren Sie, wie Sie Azure PowerShell-Cmdlets für Azure Storage verwenden.
 services: storage
-author: roygara
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 08/16/2018
-ms.author: rogarana
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 78eeb986be5380d9e34a42872cbbdeee37654cc0
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: ac210a03f8b1a0a5f7fff07cbc68b4cd6bc98632
+ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317001"
+ms.lasthandoff: 08/14/2019
+ms.locfileid: "69016347"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Verwenden von Azure PowerShell mit Azure Storage
 
@@ -131,7 +131,7 @@ Verwenden Sie [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorage
 
 * Die **Tags**, die dem Speicherkonto zugeordnet sind. Tags werden häufig zu Abrechnungszwecken zum Kategorisieren von Ressourcen verwendet.
 
-* Die **SKU** ist eine Replikationseinstellung für das Speicherkonto, z. B. LRS für „lokal redundanter Speicher“. Sie können z. B. von „Standard\_LRS“ zu „Standard\_GRS“ oder „Standard\_RAGRS“ wechseln. Beachten Sie, dass Sie „Standard\_ZRS“ oder „Premium\_LRS“ nicht in eine andere SKU ändern können (oder andere SKUs in diese beiden SKUs).
+* Die **SKU** ist eine Replikationseinstellung für das Speicherkonto, z. B. LRS für „lokal redundanter Speicher“. Sie können z. B. von „Standard\_LRS“ zu „Standard\_GRS“ oder „Standard\_RAGRS“ wechseln. Beachten Sie, dass Sie „Standard\_ZRS“, „Standard\_GZRS“, „Standard\_RAGZRS“ oder „Premium\_LRS“ nicht in eine andere SKU ändern können (oder andere SKUs in diese SKUs).
 
 * Die **Zugriffsebene** für Blob-Speicherkonten. Der Wert für die Zugriffsebene wird auf **heiß** oder **kalt** festgelegt. Dadurch können Sie Ihre Kosten minimieren, indem Sie die Zugriffsebene auf die Art und Weise ausrichten, wie Sie das Speicherkonto verwenden. Weitere Informationen finden Sie unter [Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 

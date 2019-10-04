@@ -6,18 +6,23 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/08/2019
+ms.date: 6/27/2019
 ms.author: raynew
-ms.openlocfilehash: 824782e54f2cd989f9ab13857d9b894b215fc550
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: a9c7aa2be945e4fbaa65bdd2a145d576422c5539
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361359"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67491766"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Site Recovery
-Dieser Artikel fasst häufig gestellte Fragen zur Azure Site Recovery zusammen. 
+Dieser Artikel fasst häufig gestellte Fragen zur Azure Site Recovery zusammen.</br>
+Informationen zu bestimmten Abfragen in verschiedenen ASR-Szenarien finden Sie in den häufig gestellten Fragen zu bestimmten Szenarien.<br>
 
+- [Notfallwiederherstellung von virtuellen Azure-Computern in Azure](azure-to-azure-common-questions.md)
+- [Notfallwiederherstellung von virtuellen VMware-Computern in Azure](vmware-azure-common-questions.md)
+- [Allgemeine Fragen: Hyper-V-Notfallwiederherstellung in Azure](hyper-v-azure-common-questions.md)
+ 
 ## <a name="general"></a>Allgemein
 
 ### <a name="what-does-site-recovery-do"></a>Welche Funktion hat Site Recovery?
@@ -145,7 +150,7 @@ Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein A
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Warum kann ich nicht über VPN replizieren?
 
-Wenn Sie nach Azure replizieren, erreicht der Replikationsdatenverkehr die öffentlichen Endpunkte einer Azure Storage-Instanz. Daher kann die Replikation über das öffentliche Internet nur mit ExpressRoute (öffentliches Peering) erfolgen und VPN funktioniert nicht.
+Wenn Sie nach Azure replizieren, erreicht der Replikationsdatenverkehr die öffentlichen Endpunkte einer Azure Storage-Instanz. Daher kann die Replikation über das öffentliche Internet nur mit ExpressRoute (Microsoft-Peering oder öffentliches Peering) erfolgen und VPN funktioniert nicht.
 
 ### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Kann ich Riverbed SteelHeads für die Replikation verwenden?
 
@@ -154,12 +159,11 @@ Unser Partner Riverbed bietet eine detaillierte Anleitung zum Arbeiten mit Azure
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Kann ich virtuelle Computer mithilfe von ExpressRoute zu Azure replizieren?
 Ja, [ExpressRoute kann zum Replizieren virtueller Computer zu Azure verwendet werden](concepts-expressroute-with-site-recovery.md).
 
-- Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Wenn Sie ExpressRoute für die Site Recovery-Replikation verwenden möchten, müssen Sie [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) oder [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) einrichten.
+- Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Wenn Sie ExpressRoute für die Site Recovery-Replikation verwenden möchten, müssen Sie [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) oder ein vorhandenes [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) (für neue Verbindungen veraltet) einrichten.
 - Microsoft-Peering ist die empfohlene Routingdomäne für die Replikation.
-- Nachdem für die virtuellen Computer ein Failover auf ein virtuelles Azure-Netzwerk ausgeführt wurde, können Sie mithilfe der Einrichtung des [privaten Peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) für das virtuelle Azure-Netzwerk darauf zugreifen.
 - Replikation über privates Peering wird nicht unterstützt.
-- Stellen Sie beim Schützen von VMware-Computern oder physischen Computern sicher, dass der Konfigurationsserver die [Netzwerkanforderungen](vmware-azure-configuration-server-requirements.md#network-requirements) für die Replikation erfüllt. 
-
+- Falls Sie VMware-Computer oder physische Computer schützen, stellen Sie sicher, dass die [Netzwerkanforderungen](vmware-azure-configuration-server-requirements.md#network-requirements) auch für den Konfigurationsserver erfüllt sind. Der Konfigurationsserver muss für die Orchestrierung der Site Recovery-Replikation eine Verbindung mit bestimmten URLs aufnehmen. Für diese Verbindung können Sie ExpressRoute nicht nutzen.
+- Nachdem für die virtuellen Computer ein Failover auf ein virtuelles Azure-Netzwerk ausgeführt wurde, können Sie mithilfe der Einrichtung des [privaten Peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) für das virtuelle Azure-Netzwerk darauf zugreifen.
 
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-or-managed-disk-do-i-need"></a>Wenn ich in Azure repliziere, welche Art von Speicherkonto oder verwaltetem Datenträger benötige ich?
@@ -223,7 +227,7 @@ Ja, Sie können über die Wiederherstellung an einem alternativen Speicherort ei
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>Kann ich Site Recovery-Szenarien mit einem SDK automatisieren?
 Ja. Sie können Site Recovery-Workflows mithilfe der REST-API, PowerShell oder Azure SDK automatisieren. Derzeit unterstützte Szenarien für die Bereitstellung von Site Recovery mit PowerShell:
 
-* [Replizieren von Hyper-V-VMs in VMM-Clouds in Azure PowerShell Resource Manager](hyper-v-vmm-powershell-resource-manager.md)
+* [Replizieren von Hyper-V-VMs in VMM-Clouds im Azure PowerShell Resource Manager](hyper-v-vmm-powershell-resource-manager.md)
 * [Replizieren von Hyper-V-VMs ohne VMM in Azure PowerShell Resource Manager](hyper-v-azure-powershell-resource-manager.md)
 * [Replizieren von VMware in Azure mit PowerShell Resource Manager](vmware-azure-disaster-recovery-powershell.md)
 

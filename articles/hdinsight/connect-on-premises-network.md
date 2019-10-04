@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 52fe8c05101f9647549acec276f0bdb9fa52d1c7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ad43af0f6f9bd8d5d78cef78b26345436169c0fd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256803"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034132"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Verbinden von HDInsight mit Ihrem lokalen Netzwerk
 
@@ -40,7 +40,7 @@ Diese Konfiguration ermöglicht das folgende Verhalten:
 
 Im folgenden Diagramm werden Anforderungen für Ressourcen, die auf das DNS-Suffix des virtuellen Netzwerks enden, als grüne Linien dargestellt. Die blauen Linien stehen für Anforderungen von Ressourcen im lokalen Netzwerk oder dem öffentlichen Internet.
 
-![Diagramm zur Veranschaulichung der Auflösung von DNS-Anforderungen für die in diesem Dokument verwendete Konfiguration](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+![Diagramm zur Veranschaulichung der Auflösung von DNS-Anforderungen in der Konfiguration](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -67,14 +67,14 @@ Die aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Com
   
 2. Navigieren Sie im Menü auf der linken Seite zu **+ Ressource erstellen** > **Compute** > **Ubuntu Server 18.04 LTS**.
 
-    ![Erstellen eines virtuellen Ubuntu-Computers](./media/connect-on-premises-network/create-ubuntu-vm.png)
+    ![Erstellen eines virtuellen Ubuntu-Computers](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
 
 3. Geben Sie auf der Registerkarte __Grundeinstellungen__ die folgenden Informationen ein:  
   
     | Feld | Wert |
     | --- | --- |
-    |Abonnement |Wählen Sie Ihr entsprechendes Abonnement aus.|
-    |Ressourcengruppe |Wählen Sie die Ressourcengruppe aus, die das zuvor erstellte virtuelle Netzwerk enthält.|
+    |Subscription |Wählen Sie Ihr entsprechendes Abonnement aus.|
+    |Resource group |Wählen Sie die Ressourcengruppe aus, die das zuvor erstellte virtuelle Netzwerk enthält.|
     |Name des virtuellen Computers | Geben Sie einen Anzeigename ein, über den dieser virtuelle Computer identifiziert wird. In diesem Beispiel wird **DNSProxy** verwendet.|
     |Region | Wählen Sie dieselbe Region wie für das virtuelle Netzwerk aus, das zuvor erstellt wurde.  Es sind nicht alle VM-Größen in allen Regionen verfügbar.  |
     |Verfügbarkeitsoptionen |  Wählen Sie die gewünschte Verfügbarkeitsstufe aus.  Azure bietet mehrere Optionen zum Verwalten der Verfügbarkeit und Resilienz für Ihre Anwendungen.  Entwerfen Sie Ihre Projektmappe, um replizierte virtuelle Computer in Verfügbarkeitszonen und Verfügbarkeitsgruppen zu verwenden, um so Ihre Apps und Daten vor Rechenzentrumsausfällen und bei Wartungsereignissen zu schützen. Bei diesem Beispiel wird der Wert **Keine Infrastrukturredundanz erforderlich** verwendet. |
@@ -84,7 +84,7 @@ Die aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Com
     |Kennwort oder öffentlicher SSH-Schlüssel | Das verfügbare Feld wird durch Ihre Auswahl des **Authentifizierungstyps** bestimmt.  Geben Sie den entsprechenden Wert ein.|
     |Öffentliche Eingangsports|Wählen Sie **Ausgewählte Ports zulassen** aus. Wählen Sie dann **SSH (22)** aus der Dropdownliste **Eingehende Ports auswählen** aus.|
 
-    ![Grundlegende Konfiguration des virtuellen Computers](./media/connect-on-premises-network/vm-basics.png)
+    ![Grundlegende Konfiguration des virtuellen Computers](./media/connect-on-premises-network/virtual-machine-basics.png)
 
     Übernehmen Sie für alle weitere Einträge die Standardwerte, und klicken Sie dann auf die Registerkarte **Netzwerk**.
 
@@ -93,10 +93,10 @@ Die aufgeführten Schritte gelten für die Erstellung eines virtuellen Azure-Com
     | Feld | Wert |
     | --- | --- |
     |Virtuelles Netzwerk | Wählen Sie das zuvor erstellte virtuelle Netzwerk aus.|
-    |Subnetz | Wählen Sie das Standardsubnetz für das zuvor erstellte virtuelle Netzwerk aus. Wählen Sie __nicht__ das Subnetz aus, das vom VPN-Gateway verwendet wird.|
+    |Subnet | Wählen Sie das Standardsubnetz für das zuvor erstellte virtuelle Netzwerk aus. Wählen Sie __nicht__ das Subnetz aus, das vom VPN-Gateway verwendet wird.|
     |Öffentliche IP-Adresse | Verwenden Sie den automatisch ausgefüllten Wert.  |
 
-    ![Einstellungen für das virtuelle Netzwerk](./media/connect-on-premises-network/virtual-network-settings.png)
+    ![Einstellungen für virtuelles HDInsight-Netzwerk](./media/connect-on-premises-network/virtual-network-settings.png)
 
     Übernehmen Sie für alle weitere Einstellungen die Standardwerte, und klicken Sie dann auf **Bewerten + erstellen**.
 
@@ -109,7 +109,7 @@ Nachdem der virtuelle Computer erstellt wurde, erhalten Sie eine Benachrichtigun
 
 2. Notieren Sie sich die Werte für **ÖFFENTLICHE IP-ADRESSE/DNS-NAMENSBEZEICHNUNG** und **PRIVATE IP-ADRESSE** für den späteren Gebrauch.
 
-   ![Öffentliche und private IP-Adressen](./media/connect-on-premises-network/vm-ip-addresses.png)
+   ![Öffentliche und private IP-Adressen](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>Installieren und Konfigurieren von Bind (DNS-Software)
 
@@ -275,14 +275,14 @@ Sie können Netzwerksicherheitsgruppen (NSGs) oder benutzerdefinierte Routen daz
 > [!WARNING]  
 > HDInsight erfordert eingehenden Zugriff auf bestimmte IP-Adressen in der Azure-Cloud sowie unbeschränkten ausgehenden Zugriff. Wenn Sie NSGs oder benutzerdefinierte Routen zum Steuern des Datenverkehrs verwenden, müssen Sie die folgenden Schritte ausführen:
 
-1. Ermitteln Sie die IP-Adressen für den Standort, der Ihr lokales Netzwerk enthält. Eine Liste der benötigten IPs nach Standort finden Sie unter [Erforderliche IP-Adressen](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip).
+1. Ermitteln Sie die IP-Adressen für den Standort, der Ihr lokales Netzwerk enthält. Eine Liste der benötigten IPs nach Standort finden Sie unter [Erforderliche IP-Adressen](./hdinsight-management-ip-addresses.md).
 
 2. Lassen Sie für die in Schritt 1 identifizierten IP-Adressen eingehenden Datenverkehr von diesen IP-Adressen zu.
 
    * Bei Verwendung von __NSG__: Lassen Sie __eingehenden__ Datenverkehr an Port __443__ für die IP-Adressen zu.
    * Bei Verwendung von __UDR__: Legen Sie den Typ des __nächsten Hops__ der Route für die IP-Adressen auf __Internet__ fest.
 
-Ein Beispiel zur Verwendung von Azure PowerShell oder der Azure CLI zum Erstellen von NSGs finden Sie im Dokument [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg).
+Ein Beispiel zur Verwendung von Azure PowerShell oder der Azure CLI zum Erstellen von NSGs finden Sie im Dokument [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](hdinsight-create-virtual-network.md#hdinsight-nsg).
 
 ## <a name="create-the-hdinsight-cluster"></a>Erstellen des HDInsight-Clusters
 
@@ -334,7 +334,7 @@ Zur direkten Verbindung mit HDInsight über das virtuelle Netzwerk führen Sie d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Verwendung von HDInsight in einem virtuellen Netzwerk finden Sie unter [Erweitern der HDInsight-Funktionen mit Azure Virtual Network](./hdinsight-extend-hadoop-virtual-network.md).
+* Weitere Informationen zur Verwendung von HDInsight in einem virtuellen Netzwerk finden Sie im Dokument [Plan a virtual network for Azure HDInsight](./hdinsight-plan-virtual-network-deployment.md) (Planen eines virtuellen Netzwerks für Azure HDInsight).
 
 * Weitere Informationen zu virtuellen Azure-Netzwerken finden Sie in der [Übersicht zu virtuellen Azure-Netzwerken](../virtual-network/virtual-networks-overview.md).
 

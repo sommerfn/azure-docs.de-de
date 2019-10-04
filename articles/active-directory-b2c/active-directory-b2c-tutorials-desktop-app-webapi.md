@@ -2,24 +2,24 @@
 title: 'Tutorial: Gewähren des Zugriffs auf eine Node.js-Web-API über eine Desktop-App – Azure Active Directory B2C | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie mit Active Directory B2C eine Node.js-Web-API schützen und sie über eine .NET-Desktop-App aufrufen.
 services: active-directory-b2c
-author: davidmu1
-manager: daveba
-ms.author: davidmu
+author: mmacy
+manager: celestedg
+ms.author: marsma
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 90a6a88ff0dc5aab1163e471b24cd1d00e548a1b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 75469d4522cea2914e0f69d5aa1850e468cb0d50
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755117"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064838"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine Node.js-Web-API über eine Desktop-App unter Verwendung von Azure Active Directory B2C
 
-In diesem Tutorial erfahren Sie, wie Sie eine durch Azure Active Directory (Azure AD) B2C geschützte Node.js-Web-API-Ressource über eine WPF-Desktop-App (Windows Presentation Foundation) aufrufen.
+In diesem Tutorial erfahren Sie, wie Sie eine durch Azure Active Directory B2C (Azure AD B2C) geschützte Node.js-Web-API-Ressource über eine WPF-Desktop-App (Windows Presentation Foundation) aufrufen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -37,7 +37,7 @@ Führen Sie die erforderlichen Schritte unter [Tutorial: Aktivieren der Authenti
 
 ## <a name="add-a-web-api-application"></a>Hinzufügen einer Web-API-Anwendung
 
-Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie geschützte Ressourcenanforderungen von Clientanwendungen, die ein Zugriffstoken bereitstellen, akzeptieren und darauf reagieren können. 
+Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie geschützte Ressourcenanforderungen von Clientanwendungen, die ein Zugriffstoken bereitstellen, akzeptieren und darauf reagieren können.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
@@ -68,7 +68,7 @@ Wenn Sie über eine Anwendung eine geschützte Web-API aufrufen möchten, müsse
 
 1. Wählen Sie **Anwendungen** und dann *nativeapp1* aus.
 2. Wählen Sie **API-Zugriff** und dann **Hinzufügen** aus.
-3. Wählen Sie in der Dropdownliste **API auswählen** und dann *webapi1* aus.
+3. Wählen Sie in der Dropdownliste **API auswählen** die Web-API *webapi1* aus.
 4. Wählen Sie in der Dropdownliste **Bereiche auswählen** die Bereiche **Hello.Read** und **Hello.Write** aus, die Sie zuvor festgelegt haben.
 5. Klicken Sie auf **OK**.
 
@@ -76,14 +76,14 @@ Ein Benutzer authentifiziert sich mit Azure AD B2C, um die WPF-Desktopanwendung 
 
 ## <a name="configure-the-sample"></a>Das Beispiel konfigurieren
 
-Nach dem Registrieren der Web-API und dem Definieren von Bereichen konfigurieren Sie den Web-API-Code für die Verwendung Ihres Azure AD B2C-Mandanten. In diesem Tutorial konfigurieren Sie ein Beispiel für eine Node.js-Webanwendung, die Sie von GitHub herunterladen können. 
+Nach dem Registrieren der Web-API und dem Definieren von Bereichen konfigurieren Sie den Web-API-Code für die Verwendung Ihres Azure AD B2C-Mandanten. In diesem Tutorial konfigurieren Sie ein Beispiel für eine Node.js-Webanwendung, die Sie von GitHub herunterladen können.
 
 [Laden Sie eine ZIP-Datei herunter](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip), oder klonen Sie die Beispiel-Web-App aus GitHub.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
 ```
-Das Node.js-Web-API-Beispiel verwendet die Bibliothek „Passport.js“, um Azure AD B2C zum Schützen von API-Aufrufen zu aktivieren. 
+Das Node.js-Web-API-Beispiel verwendet die Bibliothek „Passport.js“, um Azure AD B2C zum Schützen von API-Aufrufen zu aktivieren.
 
 1. Öffnen Sie die Datei `index.js` .
 2. Konfigurieren Sie das Beispiel mit den Registrierungsinformationen für den Azure AD B2C-Mandanten. Ändern Sie die folgenden Codezeilen:
@@ -111,7 +111,7 @@ Das Node.js-Web-API-Beispiel verwendet die Bibliothek „Passport.js“, um Azur
 1. Öffnen Sie die Projektmappe **active-directory-b2c-wpf** in Visual Studio.
 2. Drücken Sie **F5**, um die Desktop-App auszuführen.
 3. Melden Sie sich mit der E-Mail-Adresse und dem Kennwort an, die Sie im Tutorial [Aktivieren der Authentifizierung von Desktop-Apps mit Konten unter Verwendung von Azure Active Directory B2C](active-directory-b2c-tutorials-desktop-app.md) verwendet haben.
-4. Klicken Sie auf die Schaltfläche **API aufrufen**. 
+4. Klicken Sie auf die Schaltfläche **API aufrufen**.
 
 Die Desktopanwendung sendet eine Anforderung an die Web-API und erhält eine Antwort mit dem Anzeigenamen des angemeldeten Benutzers. Ihre geschützte Desktopanwendung ruft die geschützte Web-API in Ihrem Azure AD B2C-Mandanten auf.
 

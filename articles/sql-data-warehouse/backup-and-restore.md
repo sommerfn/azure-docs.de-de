@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/01/2019
+ms.date: 04/30/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ebe45bf8f562b5be9ae2afda9d5940296396f155
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 90544e182eb25f53232cee9a4dd0c05bd25508a3
+ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787631"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68988469"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Sicherung und Wiederherstellung in Azure SQL Data Warehouse
 
@@ -83,7 +83,7 @@ Die Gesamtkosten für Ihr primäres Data Warehouse und die Speicherung von Momen
 
 Bei Verwendung von georedundantem Speicher wird Ihnen dieser separat in Rechnung gestellt. Der georedundante Speicher wird zum Standardsatz für georedundanten Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS) berechnet.
 
-Weitere Informationen zu den Preisen für SQL Data Warehouse finden Sie unter [SQL Data Warehouse – Preise ](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) und [Preisübersicht Bandbreite ](https://azure.microsoft.com/pricing/details/bandwidth/) (bei regionsübergreifender Wiederherstellung).
+Weitere Informationen zu den Preisen von SQL Data Warehouse finden Sie unter [SQL Data Warehouse – Preise]. Bei der Wiederherstellung überregionaler Daten werden Ihnen keine Kosten für ausgehenden Datenverkehr in Rechnung gestellt.
 
 ## <a name="restoring-from-restore-points"></a>Wiederherstellen anhand von Wiederherstellungspunkten
 
@@ -101,7 +101,7 @@ Wenn Sie eine direkte Wiederherstellung über ein Abonnement hinweg durchführen
 
 ## <a name="geo-redundant-restore"></a>Georedundante Wiederherstellung
 
-Sie können [Ihr Data Warehouse in einer beliebigen Region wiederherstellen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region), die SQL Data Warehouse auf der gewählten Leistungsebene unterstützt.
+Sie können [Ihr Data Warehouse in einer beliebigen Region wiederherstellen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-from-geo-backup#restore-from-an-azure-geographical-region-through-powershell), die SQL Data Warehouse auf der gewählten Leistungsebene unterstützt.
 
 > [!NOTE]
 > Zum Ausführen einer georedundanten Wiederherstellung müssen Sie dieses Feature nicht deaktiviert haben.

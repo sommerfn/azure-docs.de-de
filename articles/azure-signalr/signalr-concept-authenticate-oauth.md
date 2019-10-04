@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 7660e1405598676599cab30467d22ac979438deb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003683"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66128305"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR Service-Authentifizierung
 
@@ -54,7 +54,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 1. Öffnen Sie einen Webbrowser, navigieren Sie zu `https://github.com`, und melden Sie sich bei Ihrem Konto an.
 
-2. Wechseln Sie für Ihr Konto zu **Settings (Einstellungen)** > **Developer settings** (Entwicklereinstellungen), und klicken Sie unter **OAuth Apps** (OAuth-Apps) auf **Register a new application** (Neue Anwendung registieren) oder auf *New OAuth App* (Neue OAuth-App).
+2. Wechseln Sie für Ihr Konto zu **Settings (Einstellungen)**  > **Developer settings** (Entwicklereinstellungen), und klicken Sie unter **OAuth Apps** (OAuth-Apps) auf **Register a new application** (Neue Anwendung registieren) oder auf *New OAuth App* (Neue OAuth-App).
 
 3. Verwenden Sie die folgenden Einstellungen für die neue OAuth-App, und klicken Sie dann auf **Register application** (Anwendung registrieren):
 

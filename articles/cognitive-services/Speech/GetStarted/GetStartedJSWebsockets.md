@@ -3,20 +3,20 @@ title: Erste Schritte mit der Bing-Spracheingabe-API von Microsoft in JavaScript
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Bing-Spracheingabe-API in Cognitive Services, um Anwendungen zu entwickeln, die gesprochene Audiosignale fortlaufend in Text konvertieren.
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 17901ad40a48e9ee8d1a8b872b04ad52b75b3a52
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: eef1a4885b77ae94f11d3d5bda5ded9b70ed63a4
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672405"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965814"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>Erste Schritte mit der Spracherkennungs-API in JavaScript
 
@@ -42,7 +42,7 @@ In diesem Abschnitt erfahren Sie Schritt für Schritt, wie Sie eine HTML-Beispie
 
 ### <a name="open-the-sample-directly"></a>Direktes Öffnen des Beispiels
 
-Beziehen Sie wie weiter oben beschrieben einen Abonnementschlüssel. Öffnen Sie dann den [Link zum Beispiel](https://htmlpreview.github.io/? https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Daraufhin wird die Seite in Ihrem Standardbrowser geladen und unter Verwendung von [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) gerendert.
+Beziehen Sie wie weiter oben beschrieben einen Abonnementschlüssel. Öffnen Sie dann den [Link zum Beispiel](https://htmlpreview.github.io/?https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Daraufhin wird die Seite in Ihrem Standardbrowser geladen und unter Verwendung von [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) gerendert.
 
 ### <a name="open-the-sample-from-a-local-copy"></a>Öffnen des Beispiels über eine lokale Kopie
 

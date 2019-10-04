@@ -1,11 +1,10 @@
 ---
 title: Arbeiten mit Sicherheitsrichtlinien | Microsoft-Dokumentation
-description: In diesem Artikel ist beschrieben, wie Sie mit Sicherheitsrichtlinien i Azure Security Center arbeiten.
+description: In diesem Artikel ist beschrieben, wie Sie mit Sicherheitsrichtlinien in Azure Security Center arbeiten.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
@@ -13,14 +12,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/28/2019
-ms.author: monhaber
-ms.openlocfilehash: 1931026869e930caef2ff2f92fb85dade15a9c8c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.date: 07/18/2019
+ms.author: memildin
+ms.openlocfilehash: 488210e4f2c5d3a8a978079d0c7293ce091d998b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578440"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338772"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
@@ -32,7 +31,7 @@ Anweisungen dazu, wie Richtlinien über PowerShell festgelegt werden, finden Sie
 > Die Integration von Security Center in Azure Policy hat begonnen. Bestandskunden werden automatisch zur neuen integrierten Initiative in Azure Policy anstelle der vorherigen Sicherheitsrichtlinien in Security Center migriert. Diese Änderung wirkt sich nicht auf Ihre Ressourcen oder Umgebung aus, mit der Ausnahme, dass die neue Initiative in Azure Policy vorhanden ist.
 
 ## <a name="what-are-security-policies"></a>Was sind Sicherheitsrichtlinien?
-Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloads und trägt zur Erfüllung unternehmensbezogener oder gesetzlicher Sicherheitsanforderungen bei. In Azure Policy können Sie Richtlinien für Ihre Azure-Abonnements definieren und auf die Art der Workload oder auf die Vertraulichkeit der Daten abstimmen. So kann etwa für Anwendungen mit regulierten Daten (beispielsweise personenbezogene Informationen) eine höhere Sicherheitsstufe erforderlich sein als für andere Workloads. Um eine Richtlinie mehreren Abonnements oder Verwaltungsgruppen zuzuweisen, legen Sie diese in [Azure Policy](../governance/policy/overview.md) fest.
+Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloads und trägt zur Erfüllung unternehmensbezogener oder gesetzlicher Sicherheitsanforderungen bei. In Azure Policy können Sie Richtlinien für Ihre Azure-Abonnements definieren und auf die Art der Workload oder auf die Vertraulichkeit der Daten abstimmen. So kann etwa für Anwendungen mit regulierten Daten, wie personenbezogene Informationen oder Kundendaten, eine höhere Sicherheitsstufe erforderlich sein als für andere Workloads. Um eine Richtlinie mehreren Abonnements oder Verwaltungsgruppen zuzuweisen, legen Sie diese in [Azure Policy](../governance/policy/overview.md) fest.
 
 Ihre Sicherheitsrichtlinien sind die Grundlage der Sicherheitsempfehlungen, die Sie in Azure Security Center erhalten. Sie können ihre Einhaltung überwachen, damit Sie potenzielle Sicherheitsrisiken identifizieren und Bedrohungen eindämmen können. Weitere Informationen zur Ermittlung der Option, die für Sie geeignet ist, finden Sie in der Liste mit den [integrierten Sicherheitsrichtlinien](security-center-policy-definitions.md).
 
@@ -43,7 +42,7 @@ Wenn Sie Security Center aktivieren, wird die in Security Center integrierte Sic
 Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglicherweise eine Möglichkeit zur effizienten Verwaltung von Zugriff, Richtlinien und Konformität für diese Abonnements. Azure-Verwaltungsgruppen stellen einen abonnementübergreifenden Bereich dar. Sie organisieren Abonnements in Containern, die als „Verwaltungsgruppen“ bezeichnet werden, und wenden Ihre Governancerichtlinien auf die Verwaltungsgruppen an. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Richtlinien. Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, die als Stammverwaltungsgruppe (Root) bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Stammverwaltungsgruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene. Befolgen Sie die Anleitung unter [Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center](security-center-management-groups.md), um Verwaltungsgruppen für die Verwendung mit Azure Security Center einzurichten.
 
 > [!NOTE]
-> Es ist wichtig, dass Sie die Hierarchie von Verwaltungsgruppen und Abonnements verstehen. Weitere Informationen zu Verwaltungsgruppen, zur Stammveraltung und zum Zugriff auf Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/index.md#root-management-group-for-each-directory).
+> Es ist wichtig, dass Sie die Hierarchie von Verwaltungsgruppen und Abonnements verstehen. Weitere Informationen zu Verwaltungsgruppen, zur Stammveraltung und zum Zugriff auf Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/overview.md#root-management-group-for-each-directory).
 >
 
 ## <a name="how-security-policies-work"></a>Funktionsweise von Sicherheitsrichtlinien
@@ -71,15 +70,8 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
    Auf dem Bildschirm **Richtlinienverwaltung** können Sie die Anzahl von Verwaltungsgruppen, Abonnements und Arbeitsbereichen sowie Ihre Verwaltungsgruppenstruktur anzeigen.
 
    > [!NOTE]
-   > - Im Security Center-Dashboard wird unter **Abonnementabdeckung** ggf. eine höhere Anzahl von Abonnements als unter **Richtlinienverwaltung** angezeigt. Unter der „Abonnementabdeckung“ wird die Anzahl von Abonnements vom Typ „Standard“, „Free“ und „Nicht abgedeckt“ angezeigt. Für Abonnements vom Typ „Nicht abgedeckt“ ist Security Center nicht aktiviert, und sie werden unter **Richtlinienverwaltung** nicht angezeigt.
+   > Im Security Center-Dashboard wird unter **Abonnementabdeckung** ggf. eine höhere Anzahl von Abonnements als unter **Richtlinienverwaltung** angezeigt. Unter der „Abonnementabdeckung“ wird die Anzahl von Abonnements vom Typ „Standard“, „Free“ und „Nicht abgedeckt“ angezeigt. Für Abonnements vom Typ „Nicht abgedeckt“ ist Security Center nicht aktiviert, und sie werden unter **Richtlinienverwaltung** nicht angezeigt.
    >
-
-   In den Spalten der Tabelle wird Folgendes angezeigt:
-
-   - **Zuweisung der Richtlinieninitiative**: [Integrierte Richtlinien](security-center-policy-definitions.md) und Initiativen von Security Center, die einem Abonnement oder einer Verwaltungsgruppe zugewiesen sind.
-   - **Abdeckung**: Identifiziert den Tarif („Free“ oder „Standard“), unter dem die Verwaltungsgruppe, das Abonnement oder der Arbeitsbereich ausgeführt werden.  Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
-   - **Einstellungen**: Abonnements verfügen über den Link **Einstellungen bearbeiten**. Indem Sie **Einstellungen bearbeiten** wählen, können Sie Ihre [Security Center-Einstellungen](security-center-policies-overview.md) für jedes Abonnement bzw. jede Verwaltungsgruppe aktualisieren.
-   - **Sicherheitsbewertung**: Die [Sicherheitsbewertung](security-center-secure-score.md) informiert Sie über den Sicherheitszustand Ihrer Workload und hilft Ihnen, Verbesserungsempfehlungen Priorität einzuräumen.
 
 2. Wählen Sie das Abonnement oder die Verwaltungsgruppe aus, zu dem bzw. der Sie die Richtlinien anzeigen möchten.
 
@@ -91,10 +83,10 @@ Zeigen Sie Ihre Sicherheitsrichtlinien in Security Center wie folgt an:
    ![Bildschirm mit Richtlinien](./media/security-center-policies/policy-screen.png)
 
 > [!NOTE]
-> - Beim Anzeigen von zugewiesenen Richtlinien können Sie mehrere Zuweisungen sehen und die jeweilige Konfiguration der Zuweisungen auch einzeln prüfen.
+> Beim Anzeigen von zugewiesenen Richtlinien können Sie mehrere Zuweisungen sehen und die jeweilige Konfiguration der Zuweisungen auch einzeln prüfen.
 
 ## <a name="edit-security-policies"></a>Bearbeiten von Sicherheitsrichtlinien
-Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements und jede Verwaltungsgruppe in [Azure Policy](../governance/policy/tutorials/create-and-manage.md) bearbeiten. Eine Sicherheitsrichtlinie kann nur von einem Besitzer, Mitwirkenden oder Systemadministrator des Abonnements oder der enthaltenden Verwaltungsgruppe geändert werden.
+Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements und jede Verwaltungsgruppe in [Azure Policy](../governance/policy/tutorials/create-and-manage.md) bearbeiten. Eine Sicherheitsrichtlinie kann nur von einem Besitzer oder Sicherheitsadministrator des Abonnements oder der enthaltenden Verwaltungsgruppe geändert werden.
 
 Eine Anleitung zur Bearbeitung einer Sicherheitsrichtlinie in Azure Policy finden Sie unter [Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md).
 
@@ -110,6 +102,9 @@ Weitere Informationen zu Empfehlungen finden Sie unter [Verwalten von Sicherheit
    ![Richtlinienverwaltung](./media/tutorial-security-policy/policy-management.png)
 
 2. Klicken Sie auf das Abonnement, für das Sie die Empfehlung deaktivieren möchten.
+
+   > [!Note]
+   > Denken Sie daran, dass eine Verwaltungsgruppe ihre Richtlinien auf ihre Abonnements anwendet. Aus diesem Grund erhalten Sie weiterhin Richtlinienempfehlungen, wenn Sie eine Abonnementrichtlinie deaktivieren und das Abonnement zu einer Verwaltungsgruppe gehört, die immer noch dieselbe Richtlinie verwendet. Die Richtlinie wird immer noch von der Verwaltungsebene aus angewandt, und die Empfehlungen werden immer noch generiert.
 
 1. Klicken Sie auf die zugewiesene Richtlinie.
 
@@ -129,13 +124,13 @@ Als Teil der nativen Integration in Azure Policy ermöglicht Ihnen Azure Securit
 
 Wichtige Konzepte in Azure Policy: 
 
-- Eine **Richtliniendefinition** ist eine Regel. 
+- Eine **Richtliniendefinition** ist eine Regel. 
 
-- Eine **Initiative** ist eine Sammlung von Richtliniendefinitionen (Regeln). 
+- Eine **Initiative** ist eine Sammlung von Richtliniendefinitionen (Regeln). 
 
-- Eine **Zuweisung** ist eine Anwendung einer Initiative oder Richtlinie für einen bestimmten Bereich (Verwaltungsgruppe, Abonnement usw.). 
+- Eine **Zuweisung** ist eine Anwendung einer Initiative oder Richtlinie für einen bestimmten Bereich (Verwaltungsgruppe, Abonnement usw.). 
 
-Security Center hat eine integrierte Initiative, die alle seiner Sicherheitsrichtlinien enthält. Um die Richtlinien von Security Center für Ihre Azure-Ressourcen zu bewerten, sollten Sie eine Zuweisung zur Verwaltungsgruppe oder zum Abonnement erstellen, die oder das Sie bewerten möchten.  
+Security Center hat eine integrierte Initiative, die alle seiner Sicherheitsrichtlinien enthält. Um die Richtlinien von Security Center für Ihre Azure-Ressourcen zu bewerten, sollten Sie eine Zuweisung zur Verwaltungsgruppe oder zum Abonnement erstellen, die oder das Sie bewerten möchten.
 
 In der integrierten Initiative sind alle Richtlinien von Security Center standardmäßig aktiviert. Sie können bestimmte Richtlinien in der integrierten Initiative deaktivieren, z. B. können Sie alle Security Center-Richtlinien außer **Webanwendungsfirewall** anwenden, indem Sie den Wert des Effect-Parameters der Richtlinie in **Disabled** ändern. 
 
@@ -149,6 +144,7 @@ Ersetzen Sie diese Variablen in den folgenden Beispielen:
 
 In diesem Beispiel wird gezeigt, wie Sie die integrierte Security Center-Initiative einem Abonnement oder einer Verwaltungsgruppe zuweisen:
  
+ ```
     PUT  
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
 
@@ -173,6 +169,7 @@ In diesem Beispiel wird gezeigt, wie Sie die integrierte Security Center-Initiat
     } 
 
     } 
+ ```
 
 In diesem Beispiel wird gezeigt, wie Sie die integrierte Security Center-Initiative einem Abonnement zuweisen, wobei die folgenden Richtlinien deaktiviert sind: 
 
@@ -182,7 +179,7 @@ In diesem Beispiel wird gezeigt, wie Sie die integrierte Security Center-Initiat
 
 - Endpunktschutz (Endpoint Protection) („endpointProtectionMonitoringEffect“) 
 
-
+ ```
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
     
     Request Body (JSON) 
@@ -214,12 +211,12 @@ In diesem Beispiel wird gezeigt, wie Sie die integrierte Security Center-Initiat
      } 
     
     } 
-
+ ```
 In diesem Beispiel wird gezeigt, wie Sie eine Zuweisung entfernt wird:
-
+ ```
     DELETE   
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
-
+ ```
 
 ### Referenz der Richtliniennamen <a name="policy-names"></a>
 
@@ -243,8 +240,8 @@ In diesem Beispiel wird gezeigt, wie Sie eine Zuweisung entfernt wird:
 ### <a name="who-can-edit-security-policies"></a>Wer kann Sicherheitsrichtlinien bearbeiten?
 Security Center verwendet die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC). Dabei werden integrierte Rollen bereitgestellt, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können. In Security Center werden den Benutzern nur Informationen zu den Ressourcen angezeigt, auf die sie Zugriff haben. Das bedeutet, dass Benutzern die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ für das Abonnement oder die Ressourcengruppe einer Ressource zugewiesen wird. Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
 
-- Benutzer mit Leseberechtigung für Sicherheitsfunktionen: Kann Informationen in Security Center (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
-- Sicherheitsadministrator: Verfügt über dieselben Anzeigeberechtigungen wie ein Benutzer mit Leseberechtigung für Sicherheitsfunktionen, ist zusätzlich aber auch zum Aktualisieren der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen berechtigt.
+- Sicherheitsleseberechtigter: Kann Informationen in Security Center (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
+- Sicherheitsadministrator: Verfügt über dieselben Anzeigeberechtigungen wie ein Sicherheitsleseberechtigter, ist zusätzlich aber auch zum Aktualisieren der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen berechtigt.
 
 
 

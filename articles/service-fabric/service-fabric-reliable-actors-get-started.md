@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/16/2018
+ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: b6ca4810d86bb3c8413f0a740ac4483a848b8e10
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d870690416f96a2e1c24e6de16bdc8faa060f6bd
+ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661087"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "68225171"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Erste Schritte mit Reliable Actors
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Bevor Sie beginnen, vergewissern Sie sich, dass sich das Setup der Entwicklungsu
 
 ## <a name="create-a-new-project-in-visual-studio"></a>Erstellen eines neuen Projekts in Visual Studio
 
-Starten Sie Visual Studio 2015 oder höher als Administrator, und erstellen Sie ein neues Projekt mit einer **Service Fabric-Anwendung**:
+Starten Sie Visual Studio 2019 oder höher als Administrator, und erstellen Sie ein neues Projekt mit einer **Service Fabric-Anwendung**:
 
 ![Service Fabric-Tools für Visual Studio – Neues Projekt][1]
 
@@ -50,11 +50,11 @@ Das erstellte Projekt weist die folgende Struktur auf:
 
 Die Lösung enthält drei Projekte:
 
-* **Das Anwendungsprojekt (MyApplication)**. Dieses Projekt fasst alle Dienste für die Bereitstellung zusammen. Es enthält die Datei *ApplicationManifest.xml* und PowerShell-Skripts zum Verwalten der Anwendung.
+* **Das Anwendungsprojekt (MyApplication)** . Dieses Projekt fasst alle Dienste für die Bereitstellung zusammen. Es enthält die Datei *ApplicationManifest.xml* und PowerShell-Skripts zum Verwalten der Anwendung.
 
-* **Das Schnittstellenprojekt (HelloWorld.Interfaces)**. Diese Projekt enthält die Schnittstellendefinition für den Actor. Actorschnittstellen können in jedem Projekt mit einem beliebigen Namen definiert werden.  Die Schnittstelle definiert den Actorvertrag. Dieser wird von der Actorimplementierung und den Clients, die den Actor aufrufen, gemeinsam genutzt.  Da Clientprojekte davon abhängig sein können, ist es in der Regel sinnvoll, ihn in einer Assembly zu definieren, die von der Actorimplementierung getrennt ist.
+* **Das Schnittstellenprojekt (HelloWorld.Interfaces)** . Diese Projekt enthält die Schnittstellendefinition für den Actor. Actorschnittstellen können in jedem Projekt mit einem beliebigen Namen definiert werden.  Die Schnittstelle definiert den Actorvertrag. Dieser wird von der Actorimplementierung und den Clients, die den Actor aufrufen, gemeinsam genutzt.  Da Clientprojekte davon abhängig sein können, ist es in der Regel sinnvoll, ihn in einer Assembly zu definieren, die von der Actorimplementierung getrennt ist.
 
-* **Das Actordienst-Projekt (HelloWorld)**. Dieses Projekt definiert den Service Fabric-Dienst zum Hosten des Actors. Es enthält die Implementierung des Akteurs, *HelloWorld.cs*. Eine Actorimplementierung ist eine Klasse, die vom Basistyp `Actor` abstammt und die im Projekt *MyActor.Interfaces* definierten Schnittstellen implementiert. Eine Actor-Klasse muss auch einen Konstruktor implementieren, der eine `ActorService`-Instanz und eine `ActorId` akzeptiert und diese an die `Actor`-Basisklasse übergibt.
+* **Das Actordienst-Projekt (HelloWorld)** . Dieses Projekt definiert den Service Fabric-Dienst zum Hosten des Actors. Es enthält die Implementierung des Akteurs, *HelloWorld.cs*. Eine Actorimplementierung ist eine Klasse, die vom Basistyp `Actor` abstammt und die im Projekt *MyActor.Interfaces* definierten Schnittstellen implementiert. Eine Actor-Klasse muss auch einen Konstruktor implementieren, der eine `ActorService`-Instanz und eine `ActorId` akzeptiert und diese an die `Actor`-Basisklasse übergibt.
     
     Dieses Projekt enthält außerdem die Datei *Program.cs*, mit der Actor-Klassen mit der Service Fabric-Laufzeit mithilfe von `ActorRuntime.RegisterActorAsync<T>()` registriert werden. Die `HelloWorld`-Klasse ist bereits registriert. Alle zusätzlichen Actorimplementierungen, die dem Projekt hinzugefügt werden, müssen auch in der `Main()`-Methode registriert werden.
 
@@ -116,7 +116,7 @@ Erstellen Sie eine einfache Konsolenanwendung zum Aufrufen des Actordiensts.
 
     Das NuGet-Paket und alle abhängigen Elemente werden im Projekt „ActorClient“ installiert.
 
-5. Das Clientprojekt erfordert auch einen Verweis auf das Schnittstellenprojekt.  Klicken Sie im Projekt „ActorClient“ mit der rechten Maustaste auf **Abhängigkeiten**, und klicken Sie dann auf **Verweis hinzufügen...**.  Wählen Sie **Projekte > Projektmappe** aus (sofern nicht bereits ausgewählt), und aktivieren Sie dann das Kontrollkästchen neben **HelloWorld.Interfaces**.  Klicken Sie auf **OK**.
+5. Das Clientprojekt erfordert auch einen Verweis auf das Schnittstellenprojekt.  Klicken Sie im Projekt „ActorClient“ mit der rechten Maustaste auf **Abhängigkeiten**, und klicken Sie dann auf **Verweis hinzufügen...** .  Wählen Sie **Projekte > Projektmappe** aus (sofern nicht bereits ausgewählt), und aktivieren Sie dann das Kontrollkästchen neben **HelloWorld.Interfaces**.  Klicken Sie auf **OK**.
     
     ![Dialogfeld „Verweis hinzufügen“][7]
 

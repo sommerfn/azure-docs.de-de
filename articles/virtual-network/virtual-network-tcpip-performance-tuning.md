@@ -3,14 +3,7 @@ title: Optimierung der TCP/IP-Leistung für Azure-VMs | Microsoft-Dokumentation
 description: Lernen Sie verschiedene allgemeine Techniken zur TCP/IP-Leistungsoptimierung und ihre Beziehung zu Azure-VMs kennen.
 services: virtual-network
 documentationcenter: na
-author:
-- rimayber
-- dgoddard
-- stegag
-- steveesp
-- minale
-- btalb
-- prachank
+author: rimayber
 manager: paragk
 editor: ''
 ms.assetid: ''
@@ -20,20 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2019
-ms.author:
-- rimayber
-- dgoddard
-- stegag
-- steveesp
-- minale
-- btalb
-- prachank
-ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.author: rimayber
+ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
+ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
+ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426442"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68297781"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Optimierung der TCP/IP-Leistung für Azure-VMs
 
@@ -79,7 +66,7 @@ Eine Vergrößerung der MTU (Maximum Transmission Unit, maximale Übertragungsei
 
 #### <a name="azure-and-vm-mtu"></a>Azure und VM-MTU
 
-Die Standard-MTU für Azure-VMs ist 1.500 Bytes. Der Azure Virtual Network-Stapel versucht, ein Paket auf 1.400 Bytes zu fragmentieren. Aber der Virtual Network-Stapel erlaubt Pakete bis zu 2.006 Bytes, wenn das „Don‘t Fragment“-Bit im IP-Header festgelegt ist.
+Die Standard-MTU für Azure-VMs ist 1.500 Bytes. Der Azure Virtual Network-Stapel versucht, ein Paket auf 1.400 Bytes zu fragmentieren.
 
 Beachten Sie, dass der Virtual Network-Stapel nicht von sich aus ineffizient ist, weil er Pakete bei 1.400 Bytes fragmentiert, obwohl virtuelle Computer eine MTU von 1.500 haben. Ein großer Prozentsatz der Netzwerkpakete ist wesentlich kleiner ist als 1.400 oder 1.500 Bytes.
 
@@ -140,9 +127,9 @@ Die Netzwerklatenz wird durch die Lichtgeschwindigkeit über ein Glasfasernetz b
 
 | | | | |
 |-|-|-|-|
-|**Weiterleiten**|**Distance**|**Unidirektionale Zeit**|**RTT**|
-|New York nach San Francisco|4.148 km|21 ms|42 ms|
-|New York nach London|5.585 km|28 ms|56 ms|
+|**Route**|**Entfernung**|**Zeit (unidirektional)**|**RTT**|
+|New York nach San Francisco|4\.148 km|21 ms|42 ms|
+|New York nach London|5\.585 km|28 ms|56 ms|
 |New York nach Sydney|15.993 km|80 ms|160 ms|
 
 Diese Tabelle zeigt die Luftlinie zwischen zwei Orten. In Netzwerken ist der Abstand in der Regel länger als die Luftlinie. Dies ist eine einfache Formel zur Berechnung der minimalen RTT, die von der Lichtgeschwindigkeit bestimmt wird:
@@ -177,7 +164,7 @@ In dieser Tabelle ist der maximale Durchsatz einer einzelnen TCP-Verbindung in M
 
 | | | | |
 |-|-|-|-|
-|**TCP Window Size (Bytes)**|**RTT-Latenz (ms)**|**Maximaler Durchsatz in MB/s**|**Maximaler Durchsatz in MBit/s**|
+|**TCP-Fenstergröße (Bytes)**|**RTT-Latenz (ms)**|**Maximaler Durchsatz in MB/s**|**Maximaler Durchsatz in MBit/s**|
 |65.535|1|65,54|524,29|
 |65.535|30|2,18|17,48|
 |65.535|60|1,09|8,74|
@@ -194,7 +181,7 @@ In der folgenden Tabelle sind diese Beziehungen veranschaulicht:
 
 | | | | |
 |-|-|-|-|
-|**TCP Window Size (Bytes)**|**RTT-Latenz (ms)**|**Maximaler Durchsatz in MB/s**|**Maximaler Durchsatz in MBit/s**|
+|**TCP-Fenstergröße (Bytes)**|**RTT-Latenz (ms)**|**Maximaler Durchsatz in MB/s**|**Maximaler Durchsatz in MBit/s**|
 |65.535|30|2,18|17,48|
 |131.070|30|4.37|34,95|
 |262.140|30|8,74|69,91|
@@ -236,7 +223,7 @@ Dies sind die wirksamen TCP-Einstellungen für `AutoTuningLevel`:
 
 | | | | |
 |-|-|-|-|
-|**AutoTuningLevel**|**Skalierungsfaktor**|**Skalierungsmultiplikator**|**Formel zum<br/>Berechnen der maximalen Fenstergröße**|
+|**AutoTuningLevel**|**Skalierungsfaktor**|**Skalierungsmultiplikator**|**Formel zur <br/>Berechnung der maximalen Fenstergröße**|
 |Deaktiviert|Keine|Keine|Fenstergröße|
 |Eingeschränkt|4|2^4|Fenstergröße * (2^4)|
 |Stark eingeschränkt|2|2^2|Fenstergröße * (2^2)|
@@ -264,7 +251,7 @@ Der beschleunigte Netzwerkbetrieb bietet eine durchgängig extrem niedrige Netzw
 
 Der beschleunigte Netzwerkbetrieb verbessert die Leistung, indem er es der Gast-VM ermöglicht, den Host zu umgehen und einen Datenpfad direkt mit dem SmartNIC eines Hosts einzurichten. Dies sind einige der Vorteile des beschleunigten Netzwerkbetriebs:
 
-- **Niedrigere Latenz/mehr Pakete pro Sekunde (pps)**: Durch das Entfernen des virtuellen Switch aus dem Datenpfad wird die Zeit gespart, die Pakete auf dem Host auf die Verarbeitung von Richtlinien warten müssen, und wird die Anzahl von Paketen erhöht, die im virtuellen Computer (VM) verarbeitet werden können.
+- **Niedrigere Latenz/mehr Pakete pro Sekunde (pps)** : Durch das Entfernen des virtuellen Switch aus dem Datenpfad wird die Zeit gespart, die Pakete auf dem Host auf die Verarbeitung von Richtlinien warten müssen, und wird die Anzahl von Paketen erhöht, die im virtuellen Computer (VM) verarbeitet werden können.
 
 - **Reduzierte Jitter**: Die Verarbeitung im virtuellen Switch hängt vom Umfang der anzuwendenden Richtlinien und von der Workload der CPU ab, die die Verarbeitung durchführt. Das Auslagern der Richtlinienerzwingung auf die Hardware entfernt diesen Umweg, indem die Pakete direkt an den virtuellen Computer gesendet werden. Dadurch entfallen die Host-zu-VM-Kommunikation und alle Softwareinterrupts und Kontextwechsel.
 
@@ -276,7 +263,7 @@ Um beschleunigten Netzwerkbetrieb verwenden zu können, müssen Sie diesen expli
 
 Die empfangsseitige Skalierung ist eine Netzwerktreibertechnologie, die den Empfang von Netzwerkverkehr effizienter verteilt, indem sie die Empfangsverarbeitung auf mehrere CPUs in einem Multiprozessorsystem verteilt. Einfach ausgedrückt ermöglicht empfangsseitige Skalierung es einem System, mehr empfangenen Datenverkehr zu verarbeiten, da es alle verfügbaren CPUs anstelle von nur einer verwendet. Eine technischere Beschreibung der empfangsseitigen Skalierung finden Sie unter [Introduction to Receive Side Scaling](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling) (Einführung in die empfangsseitige Skalierung).
 
-Um die beste Leistung zu erzielen, wenn der beschleunigte Netzwerkbetrieb auf einem virtuellen Computer aktiviert ist, müssen Sie die empfangsseitige Skalierung aktivieren. Die empfangsseitige Skalierung kann auch zu Vorteilen auf virtuellen Computern führen, auf denen der beschleunigte Netzwerkbetrieb nicht verwendet wird. Eine Übersicht darüber, wie Sie feststellen können, ob die empfangsseitige Skalierung aktiviert ist, und wie diese aktiviert wird, finden Sie unter [Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer](http://aka.ms/FastVM).
+Um die beste Leistung zu erzielen, wenn der beschleunigte Netzwerkbetrieb auf einem virtuellen Computer aktiviert ist, müssen Sie die empfangsseitige Skalierung aktivieren. Die empfangsseitige Skalierung kann auch zu Vorteilen auf virtuellen Computern führen, auf denen der beschleunigte Netzwerkbetrieb nicht verwendet wird. Eine Übersicht darüber, wie Sie feststellen können, ob die empfangsseitige Skalierung aktiviert ist, und wie diese aktiviert wird, finden Sie unter [Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer](https://aka.ms/FastVM).
 
 ### <a name="tcp-timewait-and-timewait-assassination"></a>TCP TIME_WAIT und TIME_WAIT Assassination
 
@@ -304,7 +291,7 @@ Der beschleunigte Netzwerkbetrieb ist dazu ausgelegt, die Netzwerkleistung, eins
 
 Jedem virtuellen Azure-Computer ist mindestens eine Netzwerkschnittstelle zugeordnet. Es können aber auch mehrere zugeordnet sein. Die einem virtuellen Computer zugeordnete Bandbreite ist die Summe des gesamten ausgehenden Datenverkehrs über alle Netzwerkschnittstellen, die dem Computer zugeordnet sind. Mit anderen Worten, die Bandbreite wird pro virtuellem Computer zugeordnet, unabhängig davon, wie viele Netzwerkschnittstellen dem Computer zugeordnet sind.
 
-Der erwartete ausgehende Durchsatz und die Anzahl der Netzwerkschnittstellen, die von der jeweiligen Größe eines virtuellen Computers unterstützt werden, sind unter [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) ausführlich beschrieben. Um den maximalen Durchsatz zu sehen, wählen Sie einen Typ aus, etwa **Allgemeiner Zweck**, und suchen Sie dann auf der angezeigten Seite nach dem Abschnitt über die Größenserie (z. B. „Dv2-Serie“). Für jede Serie gibt es eine Tabelle, in der in der letzten Spalte, die mit „Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s)“ überschrieben ist, Netzwerkspezifikationen enthalten sind.
+Der erwartete ausgehende Durchsatz und die Anzahl der Netzwerkschnittstellen, die von der jeweiligen Größe eines virtuellen Computers unterstützt werden, sind unter [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) ausführlich beschrieben. Um den maximalen Durchsatz zu sehen, wählen Sie einen Typ aus, etwa **Allgemeiner Zweck**, und suchen Sie dann auf der angezeigten Seite nach dem Abschnitt über die Größenserie (z. B. „Dv2-Serie“). Für jede Serie gibt es eine Tabelle, in der in der letzten Spalte, die mit „Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s)“ überschrieben ist, Netzwerkspezifikationen enthalten sind.
 
 Die Durchsatzbegrenzung gilt für den virtuellen Computer. Die folgenden Faktoren wirken sich nicht auf den Durchsatz aus:
 
@@ -316,7 +303,7 @@ Die Durchsatzbegrenzung gilt für den virtuellen Computer. Die folgenden Faktore
 
 - **Protokoll:** Der gesamte ausgehende Datenverkehr über alle Protokolle wird auf den Grenzwert angerechnet.
 
-Weitere Informationen finden Sie unter [Netzwerkdurchsatz virtueller Computer](http://aka.ms/AzureBandwidth).
+Weitere Informationen finden Sie unter [Netzwerkdurchsatz virtueller Computer](https://aka.ms/AzureBandwidth).
 
 ### <a name="internet-performance-considerations"></a>Überlegungen zur Internetleistung
 
@@ -364,7 +351,7 @@ Die TCP-Leistung hängt stark von RTT und Paketverlust ab. Das in Windows und Li
 
 NTttcp ist ein Tool zum Testen der TCP-Leistung einer Linux- oder Windows-VM. Sie können verschiedene TCP-Einstellungen ändern und dann die Vorteile testen, indem Sie NTttcp verwenden. Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-- [Testen der Bandbreite/des Durchsatzes (NTTTCP)](https://aka.ms/TestNetworkThroughput)
+- [Testen der Bandbreite/des Durchsatzes (NTttcp)](https://aka.ms/TestNetworkThroughput)
 
 - [NTttcp-Hilfsprogramm](https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769)
 
@@ -388,4 +375,4 @@ Trotzdem sind diese Pakettypen weiterhin Hinweise darauf, dass der TCP-Durchsatz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie sich die TCP/IP-Leistung für virtuelle Azure-Computer optimieren lässt, möchten Sie wahrscheinlich mehr über andere Aspekte des [Planens von virtuellen Netzwerken](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-vnet-plan-design-arm) oder [über Verbinden und Konfigurieren von virtuellen Netzwerken](https://docs.microsoft.com/en-us/azure/virtual-network/) erfahren.
+Nachdem Sie nun erfahren haben, wie sich die TCP/IP-Leistung für virtuelle Azure-Computer optimieren lässt, möchten Sie wahrscheinlich mehr über andere Aspekte des [Planens von virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) oder [über Verbinden und Konfigurieren von virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/) erfahren.

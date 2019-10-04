@@ -1,251 +1,302 @@
-items:
 - name: Azure-Datenbank für PostgreSQL – Dokumentation
   href: index.yml
 - name: Übersicht
   items:
-  - name: Worum handelt es sich bei Azure DB for PostgreSQL?
-    href: overview.md
+    - name: Worum handelt es sich bei Azure DB for PostgreSQL?
+      href: overview.md
 - name: Schnellstarts
-  items:
-  - name: Erstellen einer Datenbank – Portal
-    href: quickstart-create-server-database-portal.md
-  - name: Erstellen einer Datenbank – Azure-CLI
-    href: quickstart-create-server-database-azure-cli.md
-  - name: Erstellen einer Datenbank – up-Befehl in Azure CLI
-    href: quickstart-create-server-up-azure-cli.md
-  - name: Verbinden und abfragen
-    items:
-    - name: Python
-      href: connect-python.md
-    - name: Node.js
-      href: connect-nodejs.md
-    - name: Java
-      href: connect-java.md
-    - name: Ruby
-      href: connect-ruby.md
-    - name: PHP
-      href: connect-php.md
-    - name: .NET
-      href: connect-csharp.md
-    - name: Go
-      href: connect-go.md
   expanded: true
+  items:
+    - name: Einzelserver
+      items:
+        - name: Erstellen einer Datenbank – Portal
+          href: quickstart-create-server-database-portal.md
+        - name: Erstellen einer Datenbank – Azure-CLI
+          href: quickstart-create-server-database-azure-cli.md
+        - name: Erstellen einer Datenbank – up-Befehl in Azure CLI
+          href: quickstart-create-server-up-azure-cli.md
+        - name: Verbinden und abfragen
+          items:
+            - name: Python
+              href: connect-python.md
+            - name: Node.js
+              href: connect-nodejs.md
+            - name: Java
+              href: connect-java.md
+            - name: Ruby
+              href: connect-ruby.md
+            - name: PHP
+              href: connect-php.md
+            - name: .NET
+              href: connect-csharp.md
+            - name: Go
+              href: connect-go.md
+    - name: Hyperscale (Citus)
+      items:
+        - name: Erstellen einer Datenbank – Portal
+          href: quickstart-create-hyperscale-portal.md
 - name: Lernprogramme
   items:
-  - name: '1: Erstellen einer Datenbank'
-    items:
-    - name: Azure-Portal
-      href: tutorial-design-database-using-azure-portal.md
-    - name: Azure-Befehlszeilenschnittstelle
-      href: tutorial-design-database-using-azure-cli.md
-  - name: '2: Erstellen einer Web-App – Python'
-    href: ../app-service/containers/tutorial-python-postgresql-app.md
-    maintainContext: true
-  - name: '3: Überwachen und Optimieren'
-    href: tutorial-monitor-and-tune.md
+    - name: Einzelserver
+      items:
+        - name: '1: Erstellen einer Datenbank'
+          items:
+            - name: Azure-Portal
+              href: tutorial-design-database-using-azure-portal.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: tutorial-design-database-using-azure-cli.md
+        - name: '2: Erstellen einer Web-App – Python'
+          href: ../app-service/containers/tutorial-python-postgresql-app.md
+          maintainContext: true
+        - name: '3: Überwachen und Optimieren'
+          href: tutorial-monitor-and-tune.md
+    - name: Hyperscale (Citus)
+      items:
+        - name: Entwerfen einer mehrinstanzenfähigen Datenbank
+          href: tutorial-design-database-hyperscale-multi-tenant.md
+        - name: Entwerfen eines Echtzeitdashboards
+          href: tutorial-design-database-hyperscale-realtime.md
 - name: Beispiele
   items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: sample-scripts-azure-cli.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: sample-scripts-azure-cli.md
 - name: Konzepte
   items:
-  - name: Datenbank und Server
-    items:
-    - name: Server
-      href: concepts-servers.md
-    - name: Unterstützte Versionen
-      href: concepts-supported-versions.md
-    - name: PostgreSQL-Erweiterungen
-      href: concepts-extensions.md
-    - name: Hochverfügbarkeit
-      href: concepts-high-availability.md
-  - name: Ressourcen
-    items:
-    - name: Tarife
-      href: concepts-pricing-tiers.md
-    - name: Einschränkungen
-      href: concepts-limits.md
-  - name: Datenzugriff und Sicherheit
-    items:
-    - name: Firewallregeln
-      href: concepts-firewall-rules.md
-    - name: Konfigurieren von SSL
-      href: concepts-ssl-connection-security.md
-    - name: Erweiterter Schutz vor Bedrohungen
-      href: concepts-data-access-and-security-threat-protection.md
-    - name: VNet
-      href: concepts-data-access-and-security-vnet.md
-  - name: Geschäftskontinuität
-    items:
-    - name: Übersicht
-      href: concepts-business-continuity.md
-    - name: Sichern und Wiederherstellen
-      href: concepts-backup.md
-  - name: Überwachen und Optimieren
-    items:
-    - name: Überwachen und Optimieren
-      href: concepts-monitoring.md
-    - name: Serverprotokolle
-      href: concepts-server-logs.md
-    - name: Abfragespeicher
+    - name: Einzelserver
       items:
-      - name: Abfragespeicher
-        href: concepts-query-store.md
-      - name: Verwendungsszenarien für den Abfragespeicher
-        href: concepts-query-store-scenarios.md
-      - name: Bewährte Methoden für den Abfragespeicher
-        href: concepts-query-store-best-practices.md
-    - name: Query Performance Insight
-      href: concepts-query-performance-insight.md
-    - name: Leistungsempfehlungen
-      href: concepts-performance-recommendations.md
-  - name: Entwicklung
-    items:
-    - name: Verbindungsbibliotheken
-      href: concepts-connection-libraries.md
-    - name: Verbindungsstabilität
-      href: concepts-connectivity.md
-    - name: Entwickeln mit Azure Kubernetes Service (AKS)
-      href: concepts-aks.md
-    - name: Java
+        - name: Datenbanken und Server
+          items:
+            - name: Server
+              href: concepts-servers.md
+            - name: Unterstützte Versionen
+              href: concepts-supported-versions.md
+            - name: PostgreSQL-Erweiterungen
+              href: concepts-extensions.md
+            - name: Hochverfügbarkeit
+              href: concepts-high-availability.md
+        - name: Ressourcen
+          items:
+            - name: Tarife
+              href: concepts-pricing-tiers.md
+            - name: Einschränkungen
+              href: concepts-limits.md
+        - name: Datenzugriff und -sicherheit
+          items:
+            - name: Firewallregeln
+              href: concepts-firewall-rules.md
+            - name: Konfigurieren von SSL
+              href: concepts-ssl-connection-security.md
+            - name: Erweiterter Schutz vor Bedrohungen
+              href: concepts-data-access-and-security-threat-protection.md
+            - name: Virtuelles Netzwerk
+              href: concepts-data-access-and-security-vnet.md
+            - name: Verbindungsarchitektur
+              href: concepts-connectivity-architecture.md
+        - name: Geschäftskontinuität
+          items:
+            - name: Übersicht
+              href: concepts-business-continuity.md
+            - name: Sichern und Wiederherstellen
+              href: concepts-backup.md
+        - name: Überwachen und Optimieren
+          items:
+            - name: Überwachen und Optimieren
+              href: concepts-monitoring.md
+            - name: Serverprotokolle
+              href: concepts-server-logs.md
+            - name: Überwachungsprotokolle
+              href: concepts-audit.md
+            - name: Abfragespeicher
+              items:
+                - name: Abfragespeicher
+                  href: concepts-query-store.md
+                - name: Verwendungsszenarien für den Abfragespeicher
+                  href: concepts-query-store-scenarios.md
+                - name: Bewährte Methoden für den Abfragespeicher
+                  href: concepts-query-store-best-practices.md
+            - name: Query Performance Insight
+              href: concepts-query-performance-insight.md
+            - name: Empfehlungen zur Leistung
+              href: concepts-performance-recommendations.md
+        - name: Entwicklung
+          items:
+            - name: Verbindungsbibliotheken
+              href: concepts-connection-libraries.md
+            - name: Verbindungsstabilität
+              href: concepts-connectivity.md
+            - name: Entwickeln mit Azure Kubernetes Service (AKS)
+              href: concepts-aks.md
+            - name: Java
+              items:
+                - name: Konfigurieren von Spring Data-JDBC
+                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
+                - name: Konfigurieren von Spring Data-JPA
+                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
+        - name: Replikation
+          items:
+            - name: Lesereplikate
+              href: concepts-read-replicas.md
+    - name: Hyperscale (Citus)
       items:
-      - name: Konfigurieren von Spring Data-JDBC
-        href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-postgresql
-      - name: Konfigurieren von Spring Data-JPA
-        href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-postgresql
-  - name: Replikation
-    items:
-    - name: Lesereplikate
-      href: concepts-read-replicas.md
+        - name: Nodes
+          href: concepts-hyperscale-nodes.md
+        - name: Verteilte Daten
+          href: concepts-hyperscale-distributed-data.md
+        - name: Auswählen einer Verteilungsspalte
+          href: concepts-hyperscale-choose-distribution-column.md
+        - name: Tabellenzusammenstellung
+          href: concepts-hyperscale-colocation.md
+        - name: Datenzugriff und -sicherheit
+          items:
+            - name: Firewallregeln
+              href: concepts-hyperscale-firewall-rules.md
+            - name: Konfigurieren von SSL
+              href: concepts-hyperscale-ssl-connection-security.md
+        - name: PostgreSQL-Erweiterungen
+          href: concepts-hyperscale-extensions.md
+        - name: Ressourcen
+          items:
+            - name: Konfigurationsoptionen
+              href: concepts-hyperscale-configuration-options.md
 - name: Anleitungen
   items:
-  - name: Erstellen von Benutzern
-    href: howto-create-users.md
-  - name: Optimierung
-    items:
-    - name: Masseneinfügungen
-      href: howto-optimize-bulk-inserts.md
-    - name: Autovacuum
-      href: howto-optimize-autovacuum.md
-    - name: Sammlung mit Abfragestatistiken
-      href: howto-optimize-query-stats-collection.md
-    - name: Strategie für TOAST-Tabellen
-      href: howto-optimize-query-time-with-toast-table-storage-strategy.md
-  - name: Verwalten der Firewall
-    items:
-    - name: Azure-Portal
-      href: howto-manage-firewall-using-portal.md
-    - name: Azure-Befehlszeilenschnittstelle
-      href: howto-manage-firewall-using-cli.md
-  - name: Wiederherstellen eines Servers
-    items:
-    - name: Azure-Portal
-      href: howto-restore-server-portal.md
-    - name: Azure-Befehlszeilenschnittstelle
-      href: howto-restore-server-cli.md
-  - name: Migrieren einer Datenbank
-    items:
-    - name: Sicherung und Wiederherstellung
-      href: howto-migrate-using-dump-and-restore.md
-    - name: Importieren und Exportieren
-      href: howto-migrate-using-export-and-import.md
-    - name: Migration mit minimaler Downtime
-      href: howto-migrate-online.md
-  - name: Konfigurieren von Serverparametern
-    items:
-    - name: Azure-Portal
-      href: howto-configure-server-parameters-using-portal.md
-    - name: Azure-Befehlszeilenschnittstelle
-      href: howto-configure-server-parameters-using-cli.md
-  - name: Zugreifen auf Serverprotokolle
-    items:
-    - name: Azure-Portal
-      href: howto-configure-server-logs-in-portal.md
-    - name: Azure-Befehlszeilenschnittstelle
-      href: howto-configure-server-logs-using-cli.md
-  - name: Überwachen
-    items:
-    - name: Erstellen von Warnungen zu Metriken
-      href: howto-alert-on-metric.md
-  - name: Problembehandlung
-    items:
-    - name: Beheben von Verbindungsproblemen
-      href: howto-troubleshoot-common-connection-issues.md
-  - name: Erweiterter Schutz vor Bedrohungen
-    items:
-    - name: Azure-Portal
-      href: howto-database-threat-protection-portal.md
-  - name: Virtual Network
-    items:
-    - name: Azure-Portal
-      href: howto-manage-vnet-using-portal.md
-    - name: Azure-Befehlszeilenschnittstelle
-      href: howto-manage-vnet-using-cli.md
-  - name: Neustarten des Servers
-    items:
-    - name: Azure-Portal
-      href: howto-restart-server-portal.md
-    - name: Azure-Befehlszeilenschnittstelle
-      href: howto-restart-server-cli.md
-  - name: Replikation
-    items:
-    - name: Verwalten von Lesereplikaten im Azure-Portal
-      href: howto-read-replicas-portal.md
-    - name: Verwalten von Lesereplikaten mit der Azure CLI
-      href: howto-read-replicas-cli.md
+    - name: Einzelserver
+      items:
+        - name: Erstellen von Benutzern
+          href: howto-create-users.md
+        - name: Optimierung
+          items:
+            - name: Masseneinfügungen
+              href: howto-optimize-bulk-inserts.md
+            - name: Autovacuum
+              href: howto-optimize-autovacuum.md
+            - name: Sammlung mit Abfragestatistiken
+              href: howto-optimize-query-stats-collection.md
+            - name: Strategie für TOAST-Tabellen
+              href: howto-optimize-query-time-with-toast-table-storage-strategy.md
+        - name: Verwalten der Firewall
+          items:
+            - name: Azure-Portal
+              href: howto-manage-firewall-using-portal.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: howto-manage-firewall-using-cli.md
+        - name: Wiederherstellen eines Servers
+          items:
+            - name: Azure-Portal
+              href: howto-restore-server-portal.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: howto-restore-server-cli.md
+        - name: Migrieren einer Datenbank
+          items:
+            - name: Sicherung und Wiederherstellung
+              href: howto-migrate-using-dump-and-restore.md
+            - name: Importieren und Exportieren
+              href: howto-migrate-using-export-and-import.md
+            - name: Migration mit minimaler Downtime
+              href: howto-migrate-online.md
+        - name: Konfigurieren von Serverparametern
+          items:
+            - name: Azure-Portal
+              href: howto-configure-server-parameters-using-portal.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: howto-configure-server-parameters-using-cli.md
+        - name: Automatische Speichervergrößerung
+          items:
+            - name: Azure-Portal
+              href: howto-auto-grow-storage-portal.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: howto-auto-grow-storage-cli.md
+        - name: Zugreifen auf Serverprotokolle
+          items:
+            - name: Azure-Portal
+              href: howto-configure-server-logs-in-portal.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: howto-configure-server-logs-using-cli.md
+        - name: Überwachen
+          items:
+            - name: Erstellen von Warnungen zu Metriken
+              href: howto-alert-on-metric.md
+        - name: Problembehandlung
+          items:
+            - name: Beheben von Verbindungsproblemen
+              href: howto-troubleshoot-common-connection-issues.md
+        - name: Erweiterter Schutz vor Bedrohungen
+          items:
+            - name: Azure-Portal
+              href: howto-database-threat-protection-portal.md
+        - name: Virtual Network
+          items:
+            - name: Azure-Portal
+              href: howto-manage-vnet-using-portal.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: howto-manage-vnet-using-cli.md
+        - name: Neustarten des Servers
+          items:
+            - name: Azure-Portal
+              href: howto-restart-server-portal.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: howto-restart-server-cli.md
+        - name: Replikation
+          items:
+            - name: Verwalten von Lesereplikaten im Azure-Portal
+              href: howto-read-replicas-portal.md
+            - name: 'Verwalten von Lesereplikaten mit der Azure CLI, REST-API'
+              href: howto-read-replicas-cli.md
+    - name: Hyperscale (Citus)
+      items:
+        - name: Skalieren
+          href: howto-hyperscale-scaling.md
+        - name: Verwalten der Firewall
+          items:
+            - name: Azure-Portal
+              href: howto-hyperscale-manage-firewall-using-portal.md
 - name: Verweis
   items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: /cli/azure/postgres
-  - name: REST-API
-    href: /rest/api/postgresql
-  - name: Resource Manager-Vorlage
-    href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/postgres
+    - name: REST-API
+      href: /rest/api/postgresql
+    - name: Resource Manager-Vorlage
+      href: /azure/templates/microsoft.dbforpostgresql/allversions
 - name: Ressourcen
   items:
-  - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-    href: /learn/browse/
-  - name: Bereitstellungsvorlagen
-    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=databases
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/postgresql/
-  - name: MSDN-Forum
-    href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-database-postgresql
-  - name: Videos
-    items:
-    - name: Produktvideos
-      href: videos.md
-    - name: Videoserie mit Anleitungen
+    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+      href: /learn/browse/
+    - name: Bereitstellungsvorlagen
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/postgresql/'
+    - name: MSDN-Forum
+      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-database-postgresql'
+    - name: Videos
       items:
-      - name: Informationen zu Produktfeatures und -vorteilen
-        href: https://aka.ms/postg-intro-vid
-      - name: Migrieren Ihrer PostgreSQL-App zu Azure
-        href: https://aka.ms/postg-migrate-vid
-      - name: Erstellen intelligenter Apps mit Cognitive Services
-        href: https://aka.ms/postg-cogsvs-vid
-      - name: Herstellen einer Verbindung mit Containern mithilfe von OSBA
-        href: https://aka.ms/postg-osba-vid
-      - name: Verknüpfen der App-Daten mit Power BI
-        href: https://aka.ms/postg-powerbi-vid
-  - name: Feedbackforum
-    href: https://feedback.azure.com/forums/597976-azure-database-for-postgresql
-  - name: Regionale Verfügbarkeit
-    href: https://azure.microsoft.com/regions/services/
-  - name: Supportoptionen
-    href: https://azure.microsoft.com/support/options/
-  - name: Kundenstimmen
-    href: https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"
-  - name: Partner
-    href: partners-migration-postgresql.md
-  - name: Leitfaden zur Datenbankmigration
-    href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 5958953a879a84a3a0b78b91ca276ad4bf48fc00
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629192"
+        - name: Produktvideos
+          href: videos.md
+        - name: Videoserie mit Anleitungen
+          items:
+            - name: Informationen zu Produktfeatures und -vorteilen
+              href: 'https://aka.ms/postg-intro-vid'
+            - name: Migrieren Ihrer PostgreSQL-App zu Azure
+              href: 'https://aka.ms/postg-migrate-vid'
+            - name: Erstellen intelligenter Apps mit Cognitive Services
+              href: 'https://aka.ms/postg-cogsvs-vid'
+            - name: Herstellen einer Verbindung mit Containern mithilfe von OSBA
+              href: 'https://aka.ms/postg-osba-vid'
+            - name: Verknüpfen der App-Daten mit Power BI
+              href: 'https://aka.ms/postg-powerbi-vid'
+    - name: Feedbackforum
+      href: 'https://feedback.azure.com/forums/597976-azure-database-for-postgresql'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Supportoptionen
+      href: 'https://azure.microsoft.com/support/options/'
+    - name: Kundenstimmen
+      href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"'
+    - name: Partner
+      href: partners-migration-postgresql.md
+    - name: Leitfaden zur Datenbankmigration
+      href: 'https://datamigration.microsoft.com/'

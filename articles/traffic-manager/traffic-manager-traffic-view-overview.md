@@ -3,21 +3,21 @@ title: Datenverkehrsansicht im Azure Traffic Manager
 description: Einführung in die Traffic Manager-Datenverkehrsansicht
 services: traffic-manager
 documentationcenter: traffic-manager
-author: KumudD
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/16/2018
-ms.author: kumud
+ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 70ac4319e2ea0081f7805c2fb936af1310d57d8f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5b451378fcc14106cb8731a89bcf6ccf415d0a92
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534939"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035461"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager-Datenverkehrsansicht
 
@@ -45,6 +45,8 @@ Die Häufigkeit der Datenaktualisierung in der Datenverkehrsanzeige hängt von m
 
 Wenn Sie zum Abschnitt **Datenverkehrsansicht** auf Ihrer Traffic Manager-Seite navigieren, sehen Sie eine geografische Karte, die mit Erkenntnissen der Datenverkehrsansicht überlagert ist. Die Karte bietet Informationen zur Benutzergruppe und den Endpunkten für Ihr Traffic Manager-Profil.
 
+![Traffic Manager-Datenverkehrsansicht, Geografische Ansicht][1]
+
 ### <a name="user-base-information"></a>Benutzergruppeninformationen
 
 Für die lokalen DNS-Resolver, für die Standortinformationen verfügbar sind, werden diese auf der Karte angezeigt. Die Farbe des DNS-Resolvers kennzeichnet die durchschnittliche Wartezeit für Endbenutzer, die diesen DNS-Resolver für ihre Traffic Manager-Abfragen verwendet haben.
@@ -68,6 +70,25 @@ Sie können die Daten der Datenverkehrsansicht in einem tabellarischen Format im
 
 Wenn Sie die Datenverkehrsansicht verwenden, erfolgt die Abrechnung anhand der Anzahl der Datenpunkte, die zur Erstellung der gezeigten Erkenntnisse verwendet wurden. Der derzeit einzige verwendete Datenpunkt sind die Abfragen, die vom Traffic Manager-Profil empfangen werden. Weitere Informationen zu den Preisen finden Sie auf der [Traffic Manager-Seite mit Preisdetails](https://azure.microsoft.com/pricing/details/traffic-manager/).
 
+## <a name="faqs"></a>Häufig gestellte Fragen
+
+* [Wozu dient die Datenverkehrsansicht?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
+
+* [Welche Vorteile ergeben sich für mich durch die Verwendung der Datenverkehrsansicht?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
+
+* [Inwiefern unterscheidet sich die Datenverkehrsansicht von den Traffic Manager-Metriken, die über Azure Monitor verfügbar sind?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
+
+* [Werden für die Datenverkehrsansicht EDNS-Clientsubnetzinformationen verwendet?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
+
+* [Wie viele Tage mit Daten werden von der Datenverkehrsansicht genutzt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
+
+* [Wie werden externe Endpunkte von der Datenverkehrsansicht behandelt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-handle-external-endpoints)
+
+* [Muss ich die Datenverkehrsansicht für jedes Profil meines Abonnements aktivieren?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
+
+* [Wie kann ich die Datenverkehrsansicht deaktivieren?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
+
+* [Wie funktioniert die Abrechnung für die Datenverkehrsansicht?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -75,3 +96,5 @@ Wenn Sie die Datenverkehrsansicht verwenden, erfolgt die Abrechnung anhand der A
 - Informieren Sie sich über die von Traffic Manager unterstützten [Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md) .
 - Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](traffic-manager-create-profile.md)
 
+<!--Image references-->
+[1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

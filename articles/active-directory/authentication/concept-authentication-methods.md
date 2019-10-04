@@ -1,22 +1,22 @@
 ---
 title: Authentifizierungsmethoden – -Azure Active Directory
-description: Übersicht über die verfügbaren Authentifizierungsmethoden in Azure AD für die Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung
+description: Verfügbare Authentifizierungsmethoden in Azure AD für die Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0c9af1a9ad8b816809f661d368133997f55329d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360653"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051449"
 ---
 # <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
 
@@ -31,7 +31,7 @@ Administratoren wird empfohlen, Benutzern mehr als die erforderliche Mindestanza
 | Kennwort | MFA und SSPR |
 | Sicherheitsfragen | Nur SSPR |
 | E-Mail-Adresse | Nur SSPR |
-| Microsoft Authenticator-App | MFA und Public Preview für SSPR |
+| Microsoft Authenticator-App | MFA und SSPR |
 | OATH-Hardwaretoken | Public Preview für MFA und SSPR |
 | sms | MFA und SSPR |
 | Anruf | MFA und SSPR |
@@ -41,7 +41,7 @@ Administratoren wird empfohlen, Benutzern mehr als die erforderliche Mindestanza
 
 |     |
 | --- |
-| OATH-Hardwaretoken für MFA und SSPR sowie das Empfangen einer Benachrichtigung in der mobilen App und das Erhalten eines Codes in der mobilen App sind Methoden für die Self-Service-Kennwortzurücksetzung in Azure AD und als öffentliche Previewfunktion von Azure Active Directory verfügbar. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| OATH-Hardwaretoken für MFA und SSPR sind öffentliche Previewfunktionen von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 ## <a name="password"></a>Kennwort
@@ -156,7 +156,7 @@ Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH-Hardwaretoken (Öffentliche Vorschau)
 
-OATH ist ein offener Standard, der angibt, wie Einmalkennwortcodes (OTP) generiert werden. Azure AD unterstützt die Verwendung von OATH-TOTP SHA-1-Token der Varianten 30 Sekunden oder 60 Sekunden. Kunden können sich diese Token vom Hersteller ihrer Wahl beschaffen. Geheime Schlüssel sind auf 128 Zeichen beschränkt, was möglicherweise nicht mit allen Token kompatibel ist.
+OATH ist ein offener Standard, der angibt, wie Einmalkennwortcodes (OTP) generiert werden. Azure AD unterstützt die Verwendung von OATH-TOTP SHA-1-Token der Varianten 30 Sekunden oder 60 Sekunden. Kunden können sich diese Token vom Hersteller ihrer Wahl beschaffen. Geheime Schlüssel sind auf 128 Zeichen beschränkt, was möglicherweise nicht mit allen Token kompatibel ist. Die geheimen Schlüssel müssen in Base32 codiert werden.
 
 ![Hochladen von OATH-Token in das OATH-Token-Blatt des MFA-Servers](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 
@@ -165,7 +165,7 @@ OATH-Hardware-Token werden als Teil der öffentlichen Vorschau unterstützt. Wei
 Sobald Sie Token erworben haben, müssen Sie sie in einem Format mit kommagetrennten Werten (CSV) einschließlich UPN, Seriennummer, geheimer Schlüssel, Zeitintervall, Hersteller und Modell hochladen, wie das folgende Beispiel zeigt.
 
 ```csv
-upn,serial number,secret key,timeinterval,manufacturer,model
+upn,serial number,secret key,time interval,manufacturer,model
 Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
 ```
 
@@ -180,7 +180,9 @@ Sobald alle Fehler behoben sind, kann der Administrator jeden Schlüssel aktivie
 
 Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-Hardwaretoken oder Authenticator-Anwendungen wie die Microsoft Authenticator-App, die für die jederzeitige Verwendung konfiguriert sind.
 
-## <a name="mobile-phone"></a>Mobiltelefon
+## <a name="phone-options"></a>Telefonoptionen
+
+### <a name="mobile-phone"></a>Mobiltelefon
 
 Mobiltelefonbenutzern stehen zwei Optionen zur Verfügung.
 
@@ -193,18 +195,20 @@ Für ein ordnungsgemäßes Funktionieren müssen Telefonnummern im Format *+Land
 >
 > Für die Kennwortzurücksetzung werden Nebenstellen nicht unterstützt. Selbst bei der Angabe im Format +1 4255551234X12345 werden Nebenstellen vor dem Anruf entfernt.
 
-### <a name="text-message"></a>Textnachricht
+Microsoft kann keine Bereitstellung konsistenter SMS- oder Sprachaufforderungen für Multi-Factor Authentication an dieselbe Nummer garantieren. Im Interesse unserer Benutzer kann Microsoft jederzeit Kurzcodes hinzuzufügen oder entfernen, wenn wir Streckenanpassungen zur Verbesserung der SMS-Bereitstellung vornehmen. Microsoft unterstützt keine Kurzcodes für Länder/Regionen außerhalb der USA und Kanadas.
+
+#### <a name="text-message"></a>Textnachricht
 
 Eine SMS mit einem Prüfcode wird an die Mobiltelefonnummer gesendet. Geben Sie den dort angezeigten Prüfcode ein, um den Vorgang fortzusetzen.
 
-### <a name="phone-call"></a>Telefonanruf
+#### <a name="phone-call"></a>Telefonanruf
 
 Sie erhalten einen automatisierten Anruf unter der von Ihnen angegebenen Telefonnummer. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren.
 
 > [!IMPORTANT]
 > Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversion von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
 
-## <a name="office-phone"></a>Bürotelefon
+### <a name="office-phone"></a>Bürotelefon
 
 Sie erhalten einen automatisierten Anruf unter der von Ihnen angegebenen Telefonnummer. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren.
 
@@ -219,6 +223,25 @@ Das Attribut „Bürotelefon“ wird von Ihrem Administrator verwaltet.
 > Zwischen Landesvorwahl und Telefonnummer muss sich ein Leerzeichen befinden.
 >
 > Für die Kennwortzurücksetzung werden Nebenstellen nicht unterstützt. Selbst bei der Angabe im Format +1 4255551234X12345 werden Nebenstellen vor dem Anruf entfernt.
+
+### <a name="troubleshooting-phone-options"></a>Problembehandlung bei Telefonoptionen
+
+Häufige Probleme im Zusammenhang mit Authentifizierungsmethoden, die eine Telefonnummer verwenden:
+
+* Gesperrte Anrufer-ID auf einem einzelnen Gerät
+   * Beheben von Geräteproblemen
+* Falsche Telefonnummer, falscher Ländercode, private Telefonnummer und geschäftliche Telefonnummer
+   * Behandeln Sie das Problem in Bezug auf das Benutzerobjekt und konfigurierte Authentifizierungsmethoden. Stellen Sie sicher, dass die richtigen Telefonnummern registriert sind.
+* Falsche PIN eingegeben
+   * Vergewissern Sie sich, dass der Benutzer die richtige PIN verwendet hat, die im Azure MFA-Server registriert ist.
+* Anruf an Voicemail weitergeleitet
+   * Stellen Sie sicher, dass der Benutzer das Telefon eingeschaltet hat und dieser Dienst in seiner Region verfügbar ist, oder verwenden Sie die alternative Methode.
+* Benutzer ist gesperrt
+   * Veranlassen Sie, dass der Administrator den Benutzer im Azure-Portal freigibt.
+* SMS ist auf dem Gerät nicht abonniert
+   * Lassen Sie den Benutzer die Methoden ändern oder SMS auf dem Gerät aktivieren.
+* Fehlerhafter Telekommunikationsanbieter (keine Telefoneingabe erkannt, fehlende DTMF-Töne, gesperrte Anrufer-ID auf mehreren Geräten oder SMS auf mehreren Geräten gesperrt)
+   * Microsoft verwendet mehrere Telekommunikationsanbieter, um Telefonanrufe und SMS-Nachrichten für die Authentifizierung weiterzuleiten. Wenn Sie eines der oben genannten Probleme sehen, lassen Sie den Benutzer versuchen, die Methode innerhalb von 5 Minuten mindestens 5 Mal zu verwenden, und halten Sie die Informationen dieses Benutzers verfügbar, wenn Sie sich an den Microsoft-Support wenden.
 
 ## <a name="app-passwords"></a>App-Kennwörter
 

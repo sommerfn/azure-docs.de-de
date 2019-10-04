@@ -1,18 +1,18 @@
 ---
-title: Architektur der Hyper-V-zu-Azure-Notfallwiederherstellung in Azure Site Recovery | Microsoft-Dokumentation
+title: Architektur der Hyper-V-zu-Azure-Notfallwiederherstellung in Azure Site Recovery
 description: Dieser Artikel bietet einen Überblick über die Komponenten und Architektur, die beim Bereitstellen von Notfallwiederherstellung für lokale virtuelle Hyper-V-Computer (ohne VMM) in Azure mit dem Azure Site Recovery-Dienst verwendet werden.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: f77069592fb34caf409b387f5c8452159f55e296
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 4035746772b44d7267d6a9cd90c7bdc02c804a8a
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311508"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147077"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Hyper-V zu Azure
 

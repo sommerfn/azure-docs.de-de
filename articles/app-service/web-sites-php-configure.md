@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ad5a4981869f992ab6823a13afc2cad0e5252d08
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 38e0983830c540082a915332aa4158d2af84567b
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105432"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65408884"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Konfigurieren von PHP in Azure App Service
 
@@ -35,15 +35,11 @@ PHP 7.0 und PHP 7.2 sind ebenfalls verfügbar, aber nicht standardmäßig aktivi
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer App, und klicken Sie auf die Schaltfläche **Einstellungen**.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer App, und scrollen Sie zur Seite **Konfiguration**.
 
-    ![App-Einstellungen][settings-button]
-2. Wählen Sie auf dem Blatt **Einstellungen** die Option **Anwendungseinstellungen** und dann die neue PHP-Version aus.
+2. Wählen Sie auf der Seite **Einstellungen** die Option **Allgemeine Einstellungen** und dann die neue PHP-Version aus.
 
-    ![Anwendungseinstellungen][application-settings]
-3. Klicken Sie im oberen Bereich des Blatts **Anwendungseinstellungen** auf die Schaltfläche **Speichern**.
-
-    ![Speichern Sie die Konfigurationseinstellungen][save-button]
+3. Klicken Sie im oberen Bereich des Blatts **Allgemeine Einstellungen** auf die Schaltfläche **Speichern**.
 
 ### <a name="azure-powershell-windows"></a>Azure PowerShell (Windows)
 
@@ -130,18 +126,12 @@ Wie im vorherigen Anschnitt angegeben ist die Standardkonfiguration die beste M�
 ### <a name="configure-via-app-setting"></a>Konfigurieren über App-Einstellungen
 
 1. Fügen Sie dem Stammverzeichnis das Verzeichnis `bin` hinzu.
-1. Legen Sie Dateien mit der Erweiterung `.dll` im Verzeichnis `bin` ab (zum Beispiel `php_xdebug.dll`). Stellen Sie sicher, dass die Erweiterungen mit der Standardversion von PHP und mit VC9 kompatibel sowie nicht threadsicher (non-thread-safe, nts) sind.
-2. Stellen Sie Ihre App bereit.
-3. Navigieren Sie im Azure-Portal zu Ihrer App, und klicken Sie auf die Schaltfläche **Einstellungen**.
-
-    ![App-Einstellungen][settings-button]
-4. Wählen Sie auf dem Blatt **Einstellungen** die Option **Anwendungseinstellungen** aus, und scrollen Sie zum Bereich **App-Einstellungen**.
-5. Erstellen Sie im Bereich **App-Einstellungen** den Schlüssel **PHP_EXTENSIONS**. Der Wert für diesen Schlüssel ist ein Pfad relativ zum Stammverzeichnis der Website: **bin\your-ext-file**.
-
-    ![Aktivieren Sie die Erweiterung in den App-Einstellungen][php-extensions]
-6. Klicken Sie im oberen Bereich des Blatts **Anwendungseinstellungen** auf die Schaltfläche **Speichern**.
-
-    ![Speichern Sie die Konfigurationseinstellungen][save-button]
+2. Legen Sie Dateien mit der Erweiterung `.dll` im Verzeichnis `bin` ab (zum Beispiel `php_xdebug.dll`). Stellen Sie sicher, dass die Erweiterungen mit der Standardversion von PHP und mit VC9 kompatibel sowie nicht threadsicher (non-thread-safe, nts) sind.
+3. Stellen Sie Ihre App bereit.
+4. Navigieren Sie im Azure-Portal zu Ihrer App, und klicken Sie auf die Schaltfläche **Konfiguration**, die sich unterhalb des Abschnitt **Einstellungen** befindet.
+5. Wählen Sie auf dem Blatt **Konfiguration** die Option **Anwendungseinstellungen** aus.
+6. Klicken Sie im Abschnitt **Anwendungseinstellungen** auf **+ Neue Anwendungseinstellung**, und erstellen Sie einen Schlüssel **PHP_EXTENSIONS**. Der Wert für diesen Schlüssel ist ein Pfad relativ zum Stammverzeichnis der Website: **bin\your-ext-file**.
+7. Klicken Sie ganz unten auf die Schaltfläche **Update**, und klicken Sie dann auf **Speichern** oberhalb der Registerkarte **Anwendungseinstellungen**.
 
 Zend-Erweiterungen werden bei Verwendung des Schlüssels **PHP_ZENDEXTENSIONS** ebenfalls unterstützt. Um mehrere Erweiterungen zu aktivieren, fügen Sie eine durch Trennzeichen getrennte Liste von `.dll` -Dateien für den Wert der App-Einstellung hinzu.
 
@@ -154,15 +144,11 @@ Anstelle der PHP-Standardlaufzeit kann App Service auch eine PHP-Laufzeit verwen
 3. Optional können Sie Ihrer PHP-Laufzeit auch Erweiterungen hinzufügen und in der Datei `php.ini` aktivieren.
 4. Fügen Sie dem Stammverzeichnis das Verzeichnis `bin` hinzu, und legen Sie das Verzeichnis, das die PHP-Laufzeit enthält, darin ab (zum Beispiel `bin\php`).
 5. Stellen Sie Ihre App bereit.
-6. Navigieren Sie im Azure-Portal zu Ihrer App, und klicken Sie auf die Schaltfläche **Einstellungen**.
-
-    ![App-Einstellungen][settings-button]
-7. Wählen Sie auf dem Blatt **Einstellungen** die Option **Anwendungseinstellungen**, und scrollen Sie zum Bereich **Handlerzuordnungen**. Geben Sie im Feld "Erweiterung" `*.php` ein, und fügen Sie der ausführbaren Datei `php-cgi.exe` den Pfad hinzu. Wenn Sie die PHP-Laufzeit in Verzeichnis `bin` des Stammverzeichnisses Ihrer Anwendung abgelegt haben, lautet der Pfad `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
-
-    ![Festlegen eines Handlers in den Handlerzuordnungen][handler-mappings]
-8. Klicken Sie im oberen Bereich des Blatts **Anwendungseinstellungen** auf die Schaltfläche **Speichern**.
-
-    ![Speichern Sie die Konfigurationseinstellungen][save-button]
+6. Navigieren Sie im Azure-Portal zu Ihrer App, und klicken Sie auf das Blatt **Konfiguration**.
+8. Wählen Sie auf dem Blatt **Konfiguration** die Option **Pfadzuordnungen** aus. 
+9. Klicken Sie auf **+Neuer Handler**, fügen Sie im Feld „Erweiterung“ `*.php` hinzu, und fügen Sie den Pfad zu der ausführbaren Datei `php-cgi.exe` im **Skriptprozessor** hinzu. Wenn Sie die PHP-Laufzeit in Verzeichnis `bin` des Stammverzeichnisses Ihrer Anwendung abgelegt haben, lautet der Pfad `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
+10. Klicken Sie ganz unten auf **Update**, um das Hinzufügen der Handlerzuordnung fertig zu stellen.
+11. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
 
 <a name="composer" />
 
@@ -195,9 +181,9 @@ Weitere Informationen finden Sie im [PHP Developer Center](https://azure.microso
 [kostenlose Testversion]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: https://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
-[Liste der php.ini-Direktiven]: http://www.php.net/manual/en/ini.list.php
-[.user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
-[ini_set()]: http://www.php.net/manual/en/function.ini-set.php
+[Liste der php.ini-Direktiven]: https://www.php.net/manual/en/ini.list.php
+[.user.ini]: https://www.php.net/manual/en/configuration.file.per-user.php
+[ini_set()]: https://www.php.net/manual/en/function.ini-set.php
 [application-settings]: ./media/web-sites-php-configure/application-settings.png
 [settings-button]: ./media/web-sites-php-configure/settings-button.png
 [save-button]: ./media/web-sites-php-configure/save-button.png

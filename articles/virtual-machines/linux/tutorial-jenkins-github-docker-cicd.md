@@ -4,24 +4,23 @@ description: Tutorial – In diesem Tutorial erfahren Sie, wie Sie in Azure eine
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6c6510113710ea19128fcd27adbf8671a8f083bc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d0b67227c8e80f23f111ec889f8cb1541b15f94
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996509"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100763"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Tutorial: Erstellen einer Entwicklungsinfrastruktur auf einem virtuellen Linux-Computer in Azure mit Jenkins, GitHub und Docker
 
@@ -165,7 +164,7 @@ Erstellen Sie einen Jenkins-Auftrag, damit Jenkins auf ein Ereignis in GitHub, w
 Klicken Sie auf Ihrer Jenkins-Website auf der Startseite auf **Create new jobs** (Neue Aufträge erstellen):
 
 - Geben Sie *HelloWorld* als den Namen des Auftrags ein. Wählen Sie **Freestyle Project** und anschließend **OK** aus.
-- Wählen Sie im Abschnitt **Allgemein** die Option für **GitHub-Projekt** aus, und geben Sie die URL Ihres verzweigten Repositorys ein (beispielsweise *https://github.com/cynthn/nodejs-docs-hello-world*).
+- Wählen Sie im Abschnitt **Allgemein** die Option für **GitHub-Projekt** aus, und geben Sie die URL Ihres verzweigten Repositorys ein (beispielsweise *https://github.com/cynthn/nodejs-docs-hello-world* ).
 - Wählen Sie im Bereich **Quellcodeverwaltung** die Option **Git** aus, und geben Sie die URL vom Typ *.git* Ihres verzweigten Repositorys ein. Beispiel: *https://github.com/cynthn/nodejs-docs-hello-world.git*
 - Wählen Sie im Bereich **Build Triggers** (Trigger erstellen) die Option **GitHub hook trigger for GITScm polling** (GitHub-Hooktrigger für GITScm-Abruf) aus.
 - Wählen Sie im Abschnitt **Build** die Option **Buildschritt hinzufügen** aus. Wählen Sie **Execute shell** (Shell ausführen) aus, und geben Sie dann `echo "Test"` im Befehlsfenster ein.

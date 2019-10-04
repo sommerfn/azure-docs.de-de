@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Verwenden eines ONNX-Modells mit Windows ML – Custom Vision Service'
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie eine Windows-UWP-App erstellen, die ein aus Azure Cognitive Services exportiertes ONNX-Modell verwendet.
 services: cognitive-services
 author: larryfr
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 07/03/2019
 ms.author: larryfr
-ms.openlocfilehash: af1b96b4ab47053a6737893832b484372ed37e99
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 65956ab9fa182794b4cb9ac1fc1800198f2dcdaa
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351863"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561118"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Tutorial: Verwenden eines ONNX-Modells von Custom Vision mit Windows ML (Vorschauversion)
 
@@ -85,4 +85,4 @@ Weitere Möglichkeiten zum Exportieren und Verwenden eines Custom Vision-Modells
 * [Use exported CoreML model in a Swift iOS application](https://go.microsoft.com/fwlink/?linkid=857726) (Verwenden des exportierten CoreML-Modells in einer Swift iOS-Anwendung)
 * [Use exported CoreML model in an iOS application with Xamarin](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel) (Verwenden des exportierten CoreML-Modells in einer iOS-Anwendung mit Xamarin)
 
-Weitere Informationen zur Verwendung von ONNX-Modellen mit Windows ML finden Sie im Dokument [Integrieren eines Modells in Ihre App mit Windows ML](https://docs.microsoft.com/windows/uwp/machine-learning/integrate-model).
+Weitere Informationen zur Verwendung von ONNX-Modellen mit Windows ML finden Sie im Dokument [Integrieren eines Modells in Ihre App mit Windows ML](/windows/ai/windows-ml/integrate-model).

@@ -1,6 +1,6 @@
 ---
-title: Beibehalten von Dateien für Bash in Azure Cloud Shell | Microsoft-Dokumentation
-description: Exemplarische Vorgehensweise für Bash zum Beibehalten von Dateien in Azure Cloud Shell.
+title: Beibehalten von Dateien in Azure Cloud Shell | Microsoft-Dokumentation
+description: Exemplarische Vorgehensweise für das Beibehalten von Dateien in Azure Cloud Shell.
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
-ms.openlocfilehash: 0aa00af543a3d21db9b8ad0ed808a8bff0b534e1
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b2823c935d11ae99ab1d87ae708945721820ad8c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246269"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306736"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -31,18 +31,35 @@ Cloud Shell nutzt die beiden folgenden Methoden zum Beibehalten von Dateien:
 > [!NOTE]
 > Alle Dateien in Ihrem Verzeichnis `$Home`, z.B. SSH-Schlüssel, werden dauerhaft in Ihrem Benutzerdatenträgerimage beibehalten, das in der eingebundenen Dateifreigabe gespeichert ist. Nutzen Sie beim dauerhaften Speichern von Informationen in Ihrem Verzeichnis `$Home` und auf der eingebundenen Dateifreigabe die bewährten Methoden.
 
-## <a name="bash-specific-commands"></a>Bash-spezifische Befehle
+## <a name="clouddrive-commands"></a>clouddrive-Befehle
 
 ### <a name="use-the-clouddrive-command"></a>Verwenden des Befehls `clouddrive`
-Mit Bash in Cloud Shell können Sie den Befehl `clouddrive` ausführen, mit dem Sie die in Cloud Shell bereitgestellte Dateifreigabe manuell aktivieren können.
+Mit Cloud Shell können Sie den Befehl `clouddrive` ausführen, mit dem Sie die in Cloud Shell eingebundene Dateifreigabe manuell aktivieren können.
 ![Ausführen des Befehls „clouddrive“](media/persisting-shell-storage/clouddrive-h.png)
+
+### <a name="list-clouddrive"></a>Auflisten von `clouddrive`
+Führen Sie den `df`-Befehl aus, um zu ermitteln, welche Dateifreigabe als `clouddrive` bereitgestellt wird. 
+
+Der Dateipfad zu „clouddrive“ zeigt den Namen Ihres Speicherkontos und die Dateifreigabe in der URL. Zum Beispiel, `//storageaccountname.file.core.windows.net/filesharename`
+
+```
+justin@Azure:~$ df
+Filesystem                                          1K-blocks   Used  Available Use% Mounted on
+overlay                                             29711408 5577940   24117084  19% /
+tmpfs                                                 986716       0     986716   0% /dev
+tmpfs                                                 986716       0     986716   0% /sys/fs/cgroup
+/dev/sda1                                           29711408 5577940   24117084  19% /etc/hosts
+shm                                                    65536       0      65536   0% /dev/shm
+//mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
+justin@Azure:~$
+```
 
 ### <a name="mount-a-new-clouddrive"></a>Einbinden eines neuen clouddrive-Verzeichnisses
 
 #### <a name="prerequisites-for-manual-mounting"></a>Voraussetzungen für die manuelle Bereitstellung
 Sie können die Dateifreigabe aktualisieren, die Cloud Shell zugeordnet ist, indem Sie den Befehl `clouddrive mount` verwenden.
 
-Wenn Sie eine vorhandene Dateifreigabe einbinden, müssen sich die Speicherkonten in der ausgewählten Cloud Shell-Region befinden. Sie rufen den Standort durch Ausführen von `env` in Bash und Überprüfen der `ACC_LOCATION` ab.
+Wenn Sie eine vorhandene Dateifreigabe einbinden, müssen sich die Speicherkonten in der ausgewählten Cloud Shell-Region befinden. Sie rufen den Standort durch Ausführen von `env` und Überprüfen der `ACC_LOCATION` ab.
 
 #### <a name="the-clouddrive-mount-command"></a>Befehl `clouddrive mount`
 
@@ -71,23 +88,6 @@ Ihre Dateifreigabe ist weiterhin vorhanden, sofern Sie sie nicht manuell lösche
 
 > [!WARNING]
 > Durch Ausführung dieses Befehls werden keine Ressourcen gelöscht. Wenn Sie aber eine Ressourcengruppe, ein Speicherkonto oder eine Dateifreigabe mit Zuordnung zu Cloud Shell manuell löschen, werden dadurch sowohl Ihr Datenträgerimage im Verzeichnis `$Home` als auch alle Dateien in Ihrer Dateifreigabe gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.
-
-### <a name="list-clouddrive"></a>Auflisten von `clouddrive`
-Führen Sie den `df`-Befehl aus, um zu ermitteln, welche Dateifreigabe als `clouddrive` bereitgestellt wird. 
-
-Der Dateipfad zu „clouddrive“ zeigt den Namen Ihres Speicherkontos und die Dateifreigabe in der URL. Zum Beispiel, `//storageaccountname.file.core.windows.net/filesharename`
-
-```
-justin@Azure:~$ df
-Filesystem                                          1K-blocks   Used  Available Use% Mounted on
-overlay                                             29711408 5577940   24117084  19% /
-tmpfs                                                 986716       0     986716   0% /dev
-tmpfs                                                 986716       0     986716   0% /sys/fs/cgroup
-/dev/sda1                                           29711408 5577940   24117084  19% /etc/hosts
-shm                                                    65536       0      65536   0% /dev/shm
-//mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
-justin@Azure:~$
-```
 ## <a name="powershell-specific-commands"></a>PowerShell-spezifische Befehle
 
 ### <a name="list-clouddrive-azure-file-shares"></a>Auflisten von `clouddrive`-Azure-Dateifreigaben
@@ -105,7 +105,6 @@ Das Cmdlet `Dismount-CloudDrive` hebt die Einbindung einer Azure-Dateifreigabe f
 Hinweis: Wenn Sie eine Funktion in einer Datei definieren und diese über die PowerShell-Cmdlets aufrufen müssen, muss der Punktoperator enthalten sein. Beispiel: . .\MeineFunktionen.ps1
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Bash in Cloud Shell – Schnellstart](quickstart.md) <br>
-[Schnellstart für PowerShell in Cloud Shell](quickstart-powershell.md) <br>
+[Cloud Shell-Schnellstart](quickstart.md) <br>
 [Einführung in Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
 [Weitere Informationen zu Speichertags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

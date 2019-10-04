@@ -4,29 +4,28 @@ description: Machen Sie Oracle Golden Gate in Ihrer Azure-Umgebung schnell einsa
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 1d0905900b81a0c7775011774b55565217d13b71
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 31137bba8c9b6b88c6a8b9569c02ae887e73e8d0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011540"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309602"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementieren von Oracle Golden Gate in Azure-Linux-VMs 
 
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Anleitung wird die Bereitstellung einer Oracle 12c-Datenbank mithilfe des Azure Marketplace-Katalogimages und der Azure CLI beschrieben. 
 
-Dieses Dokument veranschaulicht schrittweise das Erstellen, Installieren und Konfigurieren von Oracle Golden Gate in einer Azure-VM.
+Dieses Dokument veranschaulicht schrittweise das Erstellen, Installieren und Konfigurieren von Oracle Golden Gate in einer Azure-VM. In diesem Tutorial werden zwei virtuelle Computer in einer Verfügbarkeitsgruppe in einer einzelnen Region eingerichtet. Über dasselbe Tutorial kann Oracle GoldenGate für VMs in verschiedenen Verfügbarkeitszonen in einer einzelnen Azure-Region oder für VMs in zwei verschiedenen Regionen einrichtet werden.
 
 Bevor Sie beginnen, stellen Sie sicher, dass die Azure CLI installiert wurde. Weitere Informationen finden Sie im [Azure CLI-Installationshandbuch](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -261,7 +260,6 @@ export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 
 ### <a name="start-oracle-listener"></a>Starten des Oracle-Listeners
 ```bash
-$ sudo su - oracle
 $ lsnrctl start
 ```
 

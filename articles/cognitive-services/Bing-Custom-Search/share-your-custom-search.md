@@ -1,6 +1,6 @@
 ---
 title: Freigeben der benutzerdefinierten Suche – Benutzerdefinierte Bing-Suche
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Es wird beschrieben, wie Sie eine Instanz für die benutzerdefinierte Suche freigeben.
 services: cognitive-services
 author: aahill
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: dc4ab9237929df3610d4dd53786bb98903fa5593
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: d016fbed07fa31ac92ac804d6b4d63692834b42c
+ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342393"
+ms.lasthandoff: 07/23/2019
+ms.locfileid: "68404971"
 ---
 # <a name="share-your-custom-search-instance"></a>Freigeben der Instanz für die benutzerdefinierte Suche
 

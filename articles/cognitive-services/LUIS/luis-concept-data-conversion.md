@@ -1,6 +1,6 @@
 ---
-title: Datenkonvertierung
-titleSuffix: Language Understanding - Azure Cognitive Services
+title: Datenkonvertierung – LUIS
+titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Äußerungen vor der Vorhersage in Language Understanding (LUIS) geändert werden können.
 services: cognitive-services
 author: diberry
@@ -9,19 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/16/2019
+ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: bdf2d87e558726937fa4221a0d95179216c66051
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: aeb9094db83b14af988f70485788934a7854200c
+ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859199"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68619803"
 ---
 # <a name="convert-data-format-of-utterances"></a>Konvertieren des Datenformats von Äußerungen
-LUIS verwendet den Cognitive Services-Sprachdienst zum Konvertieren von Äußerungen aus gesprochenen Äußerungen in Textäußerungen vor der Vorhersage. 
+LUIS bietet die folgenden Konvertierungen einer Benutzeräußerung vor der Vorhersage:
 
-## <a name="speech-to-intent-conversion-concepts"></a>Konzepte zur Sprache-Absichts-Umsetzung
+* Spracherkennung mit [Cognitive Services – Speech Service](../Speech-Service/overview.md) 
+
+## <a name="speech-to-text"></a>Spracherkennung
+
+Die Spracherkennung wird als Integration mit LUIS bereitgestellt. 
+
+### <a name="intent-conversion-concepts"></a>Konzepte zur Absichtsumsetzung
 Die Sprache-Absichts-Umsetzung in LUIS ermöglicht es Ihnen, gesprochene Äußerungen an einen Endpunkt zu senden und als Antwort eine LUIS-Vorhersage zu erhalten. Dieser Vorgang stellt eine Integration des [Sprachverständnis](https://docs.microsoft.com/azure/cognitive-services/Speech)-Diensts in LUIS dar. Erfahren Sie mehr über die Sprache-Absichts-Umsetzung in einem [Tutorial](../speech-service/how-to-recognize-intents-from-speech-csharp.md).
 
 ### <a name="key-requirements"></a>Schlüsselanfoderungen
@@ -36,5 +42,5 @@ Informationen finden Sie unter [Schlüsselgrenzwerte](luis-boundaries.md#key-lim
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Verwenden der Spracherkennung](luis-tutorial-speech-to-intent.md)
+> [Extrahieren von Daten](luis-concept-data-extraction.md)
 

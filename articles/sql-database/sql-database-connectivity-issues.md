@@ -9,16 +9,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
+manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
-manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 7d07b0a098aad472b1b4f0b9810e5b63ac3c48a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/14/2019
+ms.openlocfilehash: eb34395e0a9ec881c2f5e303383555fa6544369d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007466"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090901"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Arbeiten mit Verbindungsproblemen und vorübergehenden Fehlern bei SQL-Datenbank
 
@@ -77,8 +77,8 @@ Darüber hinaus kann es sinnvoll sein, eine maximale Anzahl von Wiederholungsver
 
 Codebeispiele mit Wiederholungslogik finden Sie unter:
 
-- [Herstellen robuster Verbindungen mit SQL mit ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-- [Herstellen robuster Verbindungen mit SQL mit PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
+- [Connect resiliently to SQL with ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [Connect resiliently to SQL with PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
@@ -93,7 +93,7 @@ Eine Möglichkeit, um Ihre Wiederholungslogik zu testen, besteht darin, Ihren Cl
 - **SqlException.Number** = 11001
 - Meldung: „Es ist kein solcher Host bekannt.“
 
-Beim ersten Wiederholungsversuch kann Ihr Programm den Namen korrigieren und erneut versuchen, eine Verbindung herzustellen.
+Im Rahmen des ersten Wiederholungsversuchs können Sie Ihren Clientcomputer wieder mit dem Netzwerk verbinden und dann versuchen, eine Verbindung herzustellen.
 
 Um diesen Test in der Praxis umzusetzen, trennen Sie Ihren Computer vom Netzwerk, bevor Sie das Programm starten. Als Folge erkennt Ihr Programm einen Laufzeitparameter, der folgende Auswirkungen hat:
 
@@ -134,7 +134,7 @@ Wenn Ihr Clientprogramm mithilfe der .NET Framework-Klasse **System.Data.SqlClie
 Beim Erstellen der [Verbindungszeichenfolge](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) für Ihr **SqlConnection**-Objekt sollten Sie die Werte der folgenden Parameter abstimmen:
 
 - **ConnectRetryCount**:&nbsp;&nbsp;Standardwert 1 im Bereich von 0 bis 255
-- **ConnectRetryInterval**:&nbsp;&nbsp;Standardwert 1 Sekunde im Bereich von 1 bis 60
+- **ConnectRetryInterval**:&nbsp;&nbsp;Standardwert 10 Sekunden im Bereich von 1 bis 60
 - **Verbindungstimeout**:&nbsp;&nbsp;Standardwert 15 Sekunden im Bereich von 0 bis 2147483647
 
 Insbesondere sollte für Ihre ausgewählten Werte die folgende Gleichung gelten: Verbindungstimeout = ConnectRetryCount * ConnectionRetryInterval
@@ -154,7 +154,7 @@ Es gibt eine Besonderheit. Wenn ein vorübergehender Fehler auftritt, während I
 
 ### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>Sollte „ConnectRetryCount“ mit der Wiederholungslogik der Anwendung kombiniert werden?
 
-Angenommen, Ihre Anwendung verfügt über eine zuverlässige benutzerdefinierte Wiederholungslogik. Sie könnte den Verbindungsversuch viermal wiederholen. Wenn Sie **ConnectRetryInterval** und **ConnectRetryCount** = 3 zur Verbindungszeichenfolge hinzufügen, erhöhen Sie die Anzahl der Wiederholungsversuche auf 4 x 3 = 12 Wiederholungen. Möglicherweise ist eine so hohe Anzahl von Wiederholungsversuchen nicht erwünscht.
+Angenommen, Ihre Anwendung verfügt über eine zuverlässige benutzerdefinierte Wiederholungslogik. Sie könnte den Verbindungsversuch viermal wiederholen. Wenn Sie **ConnectRetryInterval** und **ConnectRetryCount** = 3 zur Verbindungszeichenfolge hinzufügen, erhöhen Sie die Anzahl der Wiederholungsversuche auf 4 * 3 = 12 Wiederholungen. Möglicherweise ist eine so hohe Anzahl von Wiederholungsversuchen nicht erwünscht.
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
 
@@ -172,7 +172,7 @@ Die Zeichenfolge für Verbindungen mit SQL-Datenbank unterscheidet sich etwas vo
 
 ### <a name="connection-ip-address"></a>Verbindung: IP-Adresse
 
-Der SQL-Datenbankserver muss so konfiguriert werden, dass er Verbindungen von der IP-Adresse des Computers akzeptiert, auf dem Ihr Clientprogramm gehostet wird. Um diese Konfiguration vorzunehmen, bearbeiten Sie die Firewalleinstellungen über das [Azure-Portal](https://portal.azure.com/).
+Der SQL-Datenbank-Server muss so konfiguriert werden, dass er Verbindungen von der IP-Adresse des Computers akzeptiert, auf dem Ihr Clientprogramm gehostet wird. Um diese Konfiguration vorzunehmen, bearbeiten Sie die Firewalleinstellungen über das [Azure-Portal](https://portal.azure.com/).
 
 Wenn Sie die IP-Adresse nicht konfigurieren, tritt bei Ihrem Programm ein Fehler auf, und in einer Fehlermeldung wird die erforderliche IP-Adresse angezeigt.
 
@@ -241,7 +241,7 @@ Unter Linux können die folgenden Hilfsprogramme nützlich sein:
 - `netstat -nap`
 - `nmap -sS -O 127.0.0.1`: Ändern Sie den Beispielwert in Ihre IP-Adresse.
 
-Unter Windows kann das Hilfsprogramm [PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) nützliche Informationen liefern. Nachfolgend eine Beispielabfrage für die Portinformationen eines SQL-Datenbankservers, die auf einem Laptop ausgeführt wurde:
+Unter Windows kann das Hilfsprogramm [PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) nützliche Informationen liefern. Nachfolgend eine Beispielabfrage für die Portinformationen eines SQL-Datenbank-Servers, die auf einem Laptop ausgeführt wurde:
 
 ```cmd
 [C:\Users\johndoe\]
@@ -311,7 +311,7 @@ ORDER BY
 ;
 ```
 
-#### <a name="a-few-returned-rows-from-sysfnxetelemetryblobtargetreadfile"></a>Zurückgegebene Zeilen aus „sys.fn_xe_telemetry_blob_target_read_file“
+#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Zurückgegebene Zeilen aus „sys.fn_xe_telemetry_blob_target_read_file“
 
 Das folgende Beispiel zeigt, wie eine zurückgegebene Zeile aussehen könnte. Die gezeigten Nullwerte sind in anderen Zeilen häufig keine Nullwerte.
 
@@ -355,7 +355,7 @@ Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Test
 Unter folgenden Links finden Sie weitere Informationen zu EntLib60:
 
 - Kostenloses E-Book: [Developer's Guide to Microsoft Enterprise Library, 2nd Edition](https://www.microsoft.com/download/details.aspx?id=41145).
-- Bewährte Methoden: [Allgemeiner Leitfaden zum Wiederholen von Vorgängen](../best-practices-retry-general.md) bietet eine detaillierte Erläuterung wichtiger Aspekte im Zusammenhang mit Wiederholungslogik.
+- Bewährten Methoden: [Allgemeiner Leitfaden zum Wiederholen von Vorgängen](../best-practices-retry-general.md) bietet eine detaillierte Erläuterung wichtiger Aspekte im Zusammenhang mit Wiederholungslogik.
 - NuGet-Download: [Enterprise Library – Transient Fault Handling Application Block 6.0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>

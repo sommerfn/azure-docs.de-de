@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: 9ef7dd7603b93f6b15988cc4cca089f0486eb3b0
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 62115dd519336c728b679e4e698182a50660a464
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010115"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "68949882"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -52,7 +52,7 @@ FunctionsProject
 
 Im Stammverzeichnis des Projekts befindet sich eine freigegebene Datei [host.json](functions-host-json.md), die zum Konfigurieren der Funktions-App verwendet werden kann. Jede Funktion verfügt über einen Ordner mit einer eigenen Codedatei (JS-Datei) und Bindungskonfigurationsdatei („function.json“). Der Name des übergeordneten Verzeichnisses von `function.json` ist immer der Name Ihrer Funktion.
 
-Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](./functions-bindings-register.md#local-development-azure-functions-core-tools). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
+Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](./functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
 
 ## <a name="exporting-a-function"></a>Exportieren einer Funktion
 
@@ -60,7 +60,7 @@ JavaScript-Funktionen müssen über [`module.exports`](https://nodejs.org/api/mo
 
 Standardmäßig sucht die Functions-Runtime in `index.js` nach Ihrer Funktion, wobei sich `index.js` im gleichen übergeordneten Verzeichnis befindet wie die entsprechende Datei `function.json`. Im Standardfall sollte Ihre exportierte Funktion der einzige Export aus der zugehörigen Datei oder der Export mit dem Namen `run` oder `index` sein. Um den Dateispeicherort zu konfigurieren und den Namen Ihrer Funktion zu exportieren, lesen Sie weiter unten die Beschreibung zum [Konfigurieren des Einstiegspunkts Ihrer Funktion](functions-reference-node.md#configure-function-entry-point).
 
-An die exportierte Funktion wird bei der Ausführung eine Reihe von Argumenten übergeben. Das erste angenommene Argument ist immer ein `context`-Objekt. Wenn Ihre Funktion synchron ist (d.h. keine Zusage zurückgibt), muss das `context`-Objekt übergeben werden, da der Aufruf von `context.done` zur korrekten Verwendung erforderlich ist.
+An die exportierte Funktion wird bei der Ausführung eine Reihe von Argumenten übergeben. Das erste angenommene Argument ist immer ein `context`-Objekt. Wenn Ihre Funktion synchron ist (also keine Zusage zurückgibt), muss das `context`-Objekt übergeben werden, da der Aufruf von `context.done` zur korrekten Verwendung erforderlich ist.
 
 ```javascript
 // You should include context, other arguments are optional
@@ -204,7 +204,9 @@ module.exports = function(ctx) {
 context.bindings
 ```
 
-Gibt ein benanntes Objekt zurück, das alle Eingabe- und Ausgabedaten enthält. Mit den folgenden Bindungsdefinitionen in der Datei „function.json“ können Sie beispielsweise auf den Inhalt einer Warteschlange von `context.bindings.myInput` zugreifen und Ausgaben mit `context.bindings.myOutput` einer Warteschlange zuweisen.
+Gibt ein benanntes Objekt zurück, das zum Lesen oder Zuweisen von Bindungsdaten verwendet wird. Auf Eingabe- und Triggerbindungsdaten kann durch Lesen der Eigenschaften in `context.bindings` zugegriffen werden. Auf Ausgabebindungsdaten kann durch Hinzufügen von Daten zu `context.bindings` zugegriffen werden.
+
+Mit den folgenden Bindungsdefinitionen in der Datei „function.json“ können Sie beispielsweise auf den Inhalt einer Warteschlange von `context.bindings.myInput` zugreifen und Ausgaben mit `context.bindings.myOutput` einer Warteschlange zuweisen.
 
 ```json
 {
@@ -273,10 +275,10 @@ Ermöglicht das Schreiben in die Streamingfunktionsprotokolle auf Standard-Ablau
 
 | Methode                 | BESCHREIBUNG                                |
 | ---------------------- | ------------------------------------------ |
-| **error(_Meldung_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
-| **warn(_Meldung_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
-| **info(_Meldung_)**    | Schreibt in Protokollierung auf Informationsebene oder niedriger.    |
-| **verbose(_Meldung_)** | Schreibt in Protokollierung auf ausführlicher Ebene.           |
+| **error(_message_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
+| **warn(_message_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
+| **info(_message_)**    | Schreibt in Protokollierung auf Informationsebene oder niedriger.    |
+| **verbose(_message_)** | Schreibt in Protokollierung auf ausführlicher Ebene.           |
 
 Das folgende Beispiel schreibt auf Warnungs-Ablaufverfolgungsebene ein Protokoll:
 
@@ -290,7 +292,7 @@ Lesen Sie [Überwachen von Azure Functions](functions-monitoring.md), um weitere
 
 ## <a name="writing-trace-output-to-the-console"></a>Schreiben der Ablaufverfolgungsausgabe in die Konsole 
 
-In Functions verwenden Sie die `context.log`-Methoden, um die Ablaufverfolgungsausgabe in die Konsole zu schreiben. In Functions v2.x werden Ablaufverfolgungsausgaben über `console.log` auf der Ebene der Funktionen-App erfasst. Dies bedeutet, dass Ausgaben von `console.log` nicht an einen bestimmten Funktionsaufruf gebunden sind und daher nicht in den Protokollen einer bestimmten Funktion angezeigt werden. Sie werden jedoch an Application Insights weitergegeben. In Functions v1.x können Sie `console.log` nicht verwenden, um in die Konsole zu schreiben.
+In Functions verwenden Sie die `context.log`-Methoden, um die Ablaufverfolgungsausgabe in die Konsole zu schreiben. In Functions v2.x werden Ablaufverfolgungsausgaben über `console.log` auf der Ebene der Funktionen-App erfasst. Dies bedeutet, dass Ausgaben von `console.log` nicht an einen bestimmten Funktionsaufruf gebunden sind und nicht in den Protokollen einer bestimmten Funktion angezeigt werden. Sie werden jedoch an Application Insights weitergegeben. In Functions v1.x können Sie `console.log` nicht verwenden, um in die Konsole zu schreiben.
 
 Beim Aufruf von `context.log()` wird Ihre Meldung auf der Standard-Ablaufverfolgungsebene, also der _info_-Ablaufverfolgungsebene, in die Konsole geschrieben. Das folgende Beispiel schreibt auf der „info“-Ablaufverfolgungsebene in die Konsole:
 
@@ -395,9 +397,9 @@ Beim Arbeiten mit HTTP-Triggern bestehen verschiedene Möglichkeiten, auf die HT
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Nur Antwort]_  Durch Aufrufen von `context.res.send(body?: any)`.** Eine HTTP-Antwort wird mit der Eingabe `body` als Antworttext erstellt. `context.done()` wird implizit aufgerufen.
++ **_[Nur Antwort]_ Durch Aufrufen von `context.res.send(body?: any)`.** Eine HTTP-Antwort wird mit der Eingabe `body` als Antworttext erstellt. `context.done()` wird implizit aufgerufen.
 
-+ **_[Nur Antwort]_  Durch Aufrufen von `context.done()`.** Eine besondere Art der HTTP-Bindung gibt die Antwort zurück, die der `context.done()`-Methode übergeben wird. Die folgende HTTP-Ausgabebindung definiert einen `$return`-Ausgabeparameter:
++ **_[Nur Antwort]_ Durch Aufrufen von `context.done()`.** Mit einer besonderen Art von HTTP-Bindung wird die Antwort zurückgegeben, die an die `context.done()`-Methode übergeben wird. Die folgende HTTP-Ausgabebindung definiert einen `$return`-Ausgabeparameter:
 
     ```json
     {
@@ -419,7 +421,7 @@ Die folgende Tabelle zeigt die jeweilige von den Hauptversionen von Functions Ru
 | Functions-Version | Node.js-Version | 
 |---|---|
 | 1.x | 6.11.2 (durch die Laufzeit gesperrt) |
-| 2.x  | Node.js.-Version _Active LTS_ und geradzahlige Node.js-Version _Current_ (8.11.1 und 10.14.1 empfohlen). Legen Sie die Version mithilfe der [App-Einstellung](functions-how-to-use-azure-function-app-settings.md#settings) „WEBSITE_NODE_DEFAULT_VERSION“ fest.|
+| 2.x  | _Active LTS_- und _Maintenance LTS_-Node.js-Versionen (8.11.1 und 10.14.1 empfohlen). Legen Sie die Version mithilfe der [App-Einstellung](functions-how-to-use-azure-function-app-settings.md#settings) „WEBSITE_NODE_DEFAULT_VERSION“ fest.|
 
 Sie können die aktuelle Version anzeigen, die die Laufzeit verwendet, indem Sie die oben gezeigte App-Einstellung überprüfen oder `process.version` aus einer beliebigen Funktion ausgeben.
 
@@ -463,23 +465,16 @@ Es gibt zwei Möglichkeiten zum Installieren von Paketen für Ihre Funktions-App
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 
-In Functions werden [App-Einstellungen](functions-app-settings.md), z.B. Dienstverbindungszeichenfolgen, während der Ausführung als Umgebungsvariablen verfügbar gemacht. Auf diese Einstellungen können Sie über `process.env` zugreifen, wie dies hier in der `GetEnvironmentVariable`-Funktion gezeigt wird:
+In Functions werden [App-Einstellungen](functions-app-settings.md), z.B. Dienstverbindungszeichenfolgen, während der Ausführung als Umgebungsvariablen verfügbar gemacht. Sie können über `process.env` auf diese Einstellungen zugreifen, wie hier in den zweiten und dritten Aufrufen von `context.log()` gezeigt, in denen die Umgebungsvariablen `AzureWebJobsStorage` und `WEBSITE_SITE_NAME` protokolliert werden:
 
 ```javascript
-module.exports = function (context, myTimer) {
+module.exports = async function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
     context.log('Node.js timer trigger function ran!', timeStamp);
-    context.log(GetEnvironmentVariable("AzureWebJobsStorage"));
-    context.log(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
-
-    context.done();
+    context.log("AzureWebJobsStorage: " + process.env["AzureWebJobsStorage"]);
+    context.log("WEBSITE_SITE_NAME: " + process.env["WEBSITE_SITE_NAME"]);
 };
-
-function GetEnvironmentVariable(name)
-{
-    return name + ": " + process.env[name];
-}
 ```
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
@@ -502,7 +497,7 @@ FunctionApp
  | - myNodeFunction
  | | - function.json
  | - lib
- | | - nodeFunction.js
+ | | - sayHello.js
  | - node_modules
  | | - ... packages ...
  | - package.json
@@ -512,7 +507,7 @@ Die Datei `function.json` für `myNodeFunction` sollte eine `scriptFile`-Eigensc
 
 ```json
 {
-  "scriptFile": "../lib/nodeFunction.js",
+  "scriptFile": "../lib/sayHello.js",
   "bindings": [
     ...
   ]
@@ -542,7 +537,7 @@ class MyObj {
         this.foo = 1;
     };
 
-    function logFoo(context) { 
+    logFoo(context) { 
         context.log("Foo is " + this.foo); 
         context.done(); 
     }
@@ -581,7 +576,7 @@ Die Art der lokalen Entwicklung und Bereitstellung aus einem TypeScript-Projekt 
 
 Mit der [Azure Functions-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) können Sie Ihre Funktionen mit TypeScript entwickeln. Für die Azure Functions-Erweiterung sind die Azure Functions Core Tools erforderlich.
 
-Wählen Sie einfach `TypeScript` aus, wenn Sie eine Funktions-App erstellen und die Sprache festlegen, um eine TypeScript-Funktions-App in Visual Studio Code zu erstellen.
+Wählen Sie beim Erstellen einer Funktions-App `TypeScript` als Sprache, um in Visual Studio Code eine TypeScript-Funktions-App zu erstellen.
 
 Wenn Sie auf **F5** drücken, um die App lokal auszuführen, wird die Transpilierung durchgeführt, bevor der Host („func.exe“) initialisiert wird. 
 
@@ -589,20 +584,44 @@ Wenn Sie Ihre Funktions-App mit **Deploy to function app...** (In Funktions-App 
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Wenn Sie ein TypeScript-Funktions-App-Projekt mit den Core Tools erstellen möchten, müssen Sie die Sprache auf TypeScript festlegen, wenn Sie die Funktions-App erstellen. Wählen Sie dazu eine der folgenden Methoden:
+Bei der Verwendung der Core Tools unterscheidet sich ein TypeScript-Projekt auf vielfältige Weise von einem JavaScript-Projekt.
+
+#### <a name="create-project"></a>Projekt erstellen
+
+Wenn Sie ein TypeScript-Funktions-App-Projekt mit den Core Tools erstellen möchten, müssen Sie bei der Erstellung der Funktions-App die Sprache auf „TypeScript“ festlegen. Wählen Sie dazu eine der folgenden Methoden:
 
 - Führen Sie den Befehl `func init` aus, wählen Sie `node` als Sprachstapel, und wählen Sie dann `typescript`.
 
 - Führen Sie den Befehl `func init --worker-runtime typescript` aus.
 
-Wenn Sie den Code Ihrer Funktions-App lokal mit den Core Tools ausführen möchten, verwenden Sie den Befehl `npm start` statt `func host start`. Der Befehl `npm start` entspricht den folgenden Befehlen:
+#### <a name="run-local"></a>Lokale Ausführung
+
+Wenn Sie den Code Ihrer Funktions-App lokal mit den Core Tools ausführen möchten, verwenden Sie statt `func host start` die folgenden Befehle: 
+
+```command
+npm install
+npm start
+```
+
+Der Befehl `npm start` entspricht den folgenden Befehlen:
 
 - `npm run build`
 - `func extensions install`
 - `tsc`
 - `func start`
 
-Bevor Sie den Befehl [`func azure functionapp publish`] für die Bereitstellung in Azure verwenden, müssen Sie zunächst den Befehl `npm run build:production` ausführen. Dieser Befehl erstellt aus den TypeScript-Quelldateien einen produktionsbereiten Build aus JavaScript-Dateien, der mit [`func azure functionapp publish`] bereitgestellt werden kann.
+#### <a name="publish-to-azure"></a>Veröffentlichen in Azure
+
+Bevor Sie den Befehl [`func azure functionapp publish`] zur Bereitstellung in Azure verwenden, erstellen Sie aus den TypeScript-Quelldateien einen produktionsbereiten Build aus JavaScript-Dateien. 
+
+Mit den folgenden Befehlen können Sie Ihr TypeScript-Projekt mithilfe der Core Tools vorbereiten und veröffentlichen: 
+
+```command
+npm run build:production 
+func azure functionapp publish <APP_NAME>
+```
+
+Ersetzen Sie in diesem Befehl `<APP_NAME>` durch den Namen Ihrer Funktions-App.
 
 ## <a name="considerations-for-javascript-functions"></a>Überlegungen zu JavaScript-Funktionen
 
@@ -620,6 +639,55 @@ Bei der Entwicklung von Azure Functions im serverlosen Hostingmodell sind Kaltst
 
 Wenn Sie einen dienstabhängigen Client in einer Azure Functions-Anwendung verwenden, erstellen Sie nicht bei jedem Funktionsaufruf einen neuen Client. Erstellen Sie stattdessen einen einzelnen, statischen Client im globalen Bereich. Weitere Informationen finden Sie unter [Verwalten von Verbindungen in Azure Functions](manage-connections.md).
 
+### <a name="use-async-and-await"></a>Verwenden von `async` und `await`
+
+Beim Schreiben von Azure Functions in JavaScript sollten Sie Code schreiben, indem Sie die Schlüsselwörter `async` und `await` verwenden. Wenn Sie zum Schreiben von Code `async` und `await` anstelle von Rückrufen oder `.then` und `.catch` mit Zusagen verwenden, können Sie zwei häufige Probleme vermeiden:
+ - Das Auslösen von nicht abgefangenen Ausnahmen, die zu einem [Absturz des Node.js-Prozesses](https://nodejs.org/api/process.html#process_warning_using_uncaughtexception_correctly) führen und sich unter Umständen auf die Ausführung anderer Funktionen auswirken.
+ - Unerwartetes Verhalten, z. B. fehlende Protokolle aus „context.log“, die durch nicht korrekt erwartete asynchrone Aufrufe verursacht werden.
+
+Im Beispiel unten wird die asynchrone `fs.readFile`-Methode mit einer Error-First-Rückruffunktion als zweitem Parameter aufgerufen. Durch diesen Code werden die beiden oben erwähnten Probleme verursacht. Eine Ausnahme, die nicht explizit im richtigen Bereich abgefangen wird, hat zum Absturz des gesamten Prozesses geführt (erstes Problem). Das Aufrufen von `context.done()` außerhalb des Bereichs der Rückruffunktion bedeutet, dass der Funktionsaufruf ggf. endet, bevor die Datei gelesen wird (zweites Problem). Bei diesem Beispiel führt ein zu frühes Aufrufen von `context.done()` zu fehlenden Protokolleinträgen, die mit `Data from file:` beginnen.
+
+```javascript
+// NOT RECOMMENDED PATTERN
+const fs = require('fs');
+
+module.exports = function (context) {
+    fs.readFile('./hello.txt', (err, data) => {
+        if (err) {
+            context.log.error('ERROR', err);
+            // BUG #1: This will result in an uncaught exception that crashes the entire process
+            throw err;
+        }
+        context.log(`Data from file: ${data}`);
+        // context.done() should be called here
+    });
+    // BUG #2: Data is not guaranteed to be read before the Azure Function's invocation ends
+    context.done();
+}
+```
+
+Beide Fehler können vermieden werden, indem die Schlüsselwörter `async` und `await` verwendet werden. Sie sollten die Node.js-Hilfsfunktion [`util.promisify`](https://nodejs.org/api/util.html#util_util_promisify_original) verwenden, um Error-First-Funktionen im Rückrufstil in „Awaitable“-Funktionen zu verwandeln.
+
+Im folgenden Beispiel führen alle Ausnahmefehler, die während der Funktionsausführung ausgelöst werden, nur zu einem Fehler für den individuellen Aufruf, der eine Ausnahme ausgelöst hat. Das Schlüsselwort `await` bedeutet, dass Schritte, die auf `readFileAsync` folgen, erst nach Abschluss von `readFile` ausgeführt werden. Bei Verwendung von `async` und `await` ist es auch nicht erforderlich, den Rückruf `context.done()` aufzurufen.
+
+```javascript
+// Recommended pattern
+const fs = require('fs');
+const util = require('util');
+const readFileAsync = util.promisify(fs.readFile);
+
+module.exports = async function (context) {
+    try {
+        const data = await readFileAsync('./hello.txt');
+    } catch (err) {
+        context.log.error('ERROR', err);
+        // This rethrown exception will be handled by the Functions Runtime and will only fail the individual invocation
+        throw err;
+    }
+    context.log(`Data from file: ${data}`);
+}
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:
@@ -628,4 +696,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 + [Entwicklerreferenz zu Azure Functions](functions-reference.md)
 + [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 
-[`func azure functionapp publish`]: functions-run-local.md#project-file-deployment
+[Arbeiten mit Azure Functions Core Tools]: functions-run-local.md#project-file-deployment

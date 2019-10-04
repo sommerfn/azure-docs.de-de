@@ -5,18 +5,18 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 8883c1e7f2874e1e2e61b8eca122f2ec294c7849
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 48357adccea201aaeb99863b39e9c8cabce915ce
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790925"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262064"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor-Datenplattform
 
@@ -33,7 +33,7 @@ Metriken, Protokolle und verteilte Ablaufverfolgungen werden allgemein als die d
 Azure-Ressourcen generieren eine erhebliche Menge an Überwachungsdaten. Azure Monitor konsolidiert diese Daten zusammen mit Überwachungsdaten aus anderen Quellen entweder auf einer Metrik- oder einer Protokollplattform. Diese sind jeweils für bestimmte Überwachungsszenarien optimiert und unterstützen verschiedene Funktionen in Azure Monitor. Für die Nutzung von Funktionen wie Datenanalysen, Visualisierungen oder Warnungen müssen Sie die Unterschiede kennen, damit Sie das erforderliche Szenario auf die effizienteste und kostengünstigste Weise implementieren können. Dienste zum Gewinnen von Erkenntnissen in Azure Monitor, z.B. [Application Insights](../app/app-insights-overview.md) oder [Azure Monitor für VMs](../insights/vminsights-overview.md) bieten Analysetools, mit denen Sie sich auf das jeweilige Überwachungsszenario konzentrieren können, ohne die Unterschiede zwischen den beiden Datentypen verstehen zu müssen. 
 
 
-### <a name="metrics"></a>Metriken
+### <a name="metrics"></a>metrics
 [Metriken](data-platform-metrics.md) sind numerische Werte, die einen Aspekt eines Systems zu einem bestimmten Zeitpunkt beschreiben. Sie werden in regelmäßigen Abständen gesammelt und durch einen Zeitstempel, einen Namen, einen Wert und eine oder mehrere definierende Bezeichnungen identifiziert. Metriken können mithilfe einer Vielzahl von Algorithmen aggregiert, mit anderen Metriken verglichen und in Bezug auf Trends im zeitlichen Verlauf analysiert werden. 
 
 Metriken in Azure Monitor werden in einer Zeitreihendatenbank gespeichert, die für das Analysieren von Daten mit Zeitstempel optimiert ist. Dadurch sind Metriken besonders für Warnungen und das schnelle Erkennen von Problemen geeignet. Sie bieten Informationen über die Leistung Ihres Systems, müssen aber in der Regel mit Protokollen kombiniert werden, um die zugrunde liegende Ursache von Problemen zu identifizieren.
@@ -48,7 +48,7 @@ Weitere Informationen zu Azure Monitor-Metriken, einschließlich ihrer Datenquel
 Protokolle in Azure Monitor werden in einem Log Analytics-Arbeitsbereich basierend auf [Azure Data Explorer](/azure/data-explorer/) gespeichert, der eine leistungsstarke Analyse-Engine und eine [umfangreiche Abfragesprache](/azure/kusto/query/) bereitstellt. Protokolle bieten in der Regel ausreichende Informationen zum Bereitstellen des vollständigen Kontexts des zu identifizierenden Problems und sind beim Ermitteln der zugrunde liegenden Ursache von Problemen hilfreich.
 
 > [!NOTE]
-> Es ist wichtig, zwischen Azure Monitor-Protokollen und Quellen von Protokolldaten in Azure zu unterscheiden. Beispielsweise werden Ereignisse auf Abonnementebene in Azure in ein [Aktivitätsprotokoll](activity-logs-overview.md) geschrieben, das Sie über das Azure Monitor-Menü anzeigen können. Die meisten Ressourcen schreiben Betriebsinformationen in ein [Diagnoseprotokoll](diagnostic-logs-overview.md), das Sie an verschiedene Speicherorte weiterleiten können. Azure Monitor-Protokolle ist eine Protokolldatenplattform, die Aktivitätsprotokolle und Diagnoseprotokolle zusammen mit anderen Überwachungsdaten erfasst, um umfassende Analysen für die gesamte Gruppe von Ressourcen zu ermöglichen.
+> Es ist wichtig, zwischen Azure Monitor-Protokollen und Quellen von Protokolldaten in Azure zu unterscheiden. Beispielsweise werden Ereignisse auf Abonnementebene in Azure in ein [Aktivitätsprotokoll](activity-logs-overview.md) geschrieben, das Sie über das Azure Monitor-Menü anzeigen können. Die meisten Ressourcen schreiben Betriebsinformationen in ein [Diagnoseprotokoll](resource-logs-overview.md), das Sie an verschiedene Speicherorte weiterleiten können. Azure Monitor-Protokolle ist eine Protokolldatenplattform, die Aktivitätsprotokolle und Diagnoseprotokolle zusammen mit anderen Überwachungsdaten erfasst, um umfassende Analysen für die gesamte Gruppe von Ressourcen zu ermöglichen.
 
 
  Sie können mit [Log Analytics](../log-query/portals.md) im Azure-Portal interaktiv mit [Protokollabfragen](../log-query/log-query-overview.md) arbeiten oder die Ergebnisse einem [Azure-Dashboard](../learn/tutorial-app-dashboards.md) zur Visualisierung in Kombination mit anderen Daten hinzufügen. Sie können auch [Protokollwarnungen](alerts-log.md) erstellen, die eine Warnung basierend auf den Ergebnissen einer geplanten Abfrage auslösen.
@@ -67,12 +67,12 @@ Weitere Informationen zur verteilten Ablaufverfolgung finden Sie unter [Was ist 
 
 Die folgende Tabelle enthält einen Vergleich zwischen Metriken und Protokollen in Azure Monitor.
 
-| Attribut  | Metriken | Protokolle |
+| Attribut  | metrics | Protokolle |
 |:---|:---|:---|
 | Vorteile | Einfach strukturiert und für Szenarien nahezu in Echtzeit geeignet, z.B. Warnungen. Ideal für das schnelle Erkennen von Problemen. | Mit umfangreicher Abfragesprache analysiert. Ideal für tiefgehende Analysen und Identifizierung der zugrunde liegenden Ursache. |
-| Daten | Nur numerische Werte | Text oder numerische Daten |
+| Data | Nur numerische Werte | Text oder numerische Daten |
 | Strukturdefinition | Standardsatz von Eigenschaften, z.B. Stichprobenzeit, überwachte Ressource, ein numerischer Wert. Einige Metriken umfassen mehrere Dimensionen für die weitere Definition. | Eindeutiger Satz von Eigenschaften je nach Protokolltyp. |
-| Sammlung | Werden in regelmäßigen Abständen gesammelt. | Werden möglicherweise sporadisch gesammelt, wenn Ereignisse das Erstellen eines Datensatzes auslösen. |
+| Collection | Werden in regelmäßigen Abständen gesammelt. | Werden möglicherweise sporadisch gesammelt, wenn Ereignisse das Erstellen eines Datensatzes auslösen. |
 | Ansicht im Azure-Portal | Metrik-Explorer | Log Analytics |
 | Enthaltene Datenquellen | Von Azure-Ressourcen gesammelte Plattformmetriken<br>Von Application Insights überwachte Anwendungen<br>Benutzerdefiniert nach Anwendung oder API | Anwendungs- und Diagnoseprotokolle<br>Überwachungslösungen<br>Agents und VM-Erweiterungen<br>Anwendungsanforderungen und -ausnahmen<br>Azure Security Center<br>Datensammler-API |
 

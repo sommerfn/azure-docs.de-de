@@ -1,6 +1,6 @@
 ---
 title: Videomoderation mit Überprüfung durch Personen – Content Moderator
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Verwenden Sie die computergestützte Videomoderation und Tools für die Überprüfung durch Personen, um unangemessene Inhalte zu moderieren.
 services: cognitive-services
 author: sanjeev3
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/20/2018
+ms.date: 04/30/2019
 ms.author: sajagtap
-ms.openlocfilehash: 43a43ddcbfc656a3eb5a274e1bb63a473b7c89a2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 69075f6b36a0be7cd4d0dd4453ea9cdfc08d77dc
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867714"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561170"
 ---
 # <a name="video-moderation-with-human-review"></a>Videomoderation mit Überprüfung durch Personen
 
-Verwenden Sie die in Content Moderator integrierten computergestützten Tools für die [Videomoderation](video-moderation-api.md) und [Überprüfungen durch Personen](Review-Tool-User-Guide/human-in-the-loop.md), um Videos und Transkripte für Inhalte für Erwachsene (explizite) und freizügige Inhalte (Anzüglichkeiten) zu moderieren, um die besten Ergebnisse für Ihr Unternehmen zu erzielen.
+Nutzen Sie die computergestützte [Videomoderation](video-moderation-api.md) von Content Moderator und [Tools zur Überprüfung durch Personen](Review-Tool-User-Guide/human-in-the-loop.md) zum Moderieren von Videos und Transkripts auf anstößige und zweideutige Inhalte, um optimale Ergebnisse für Ihr Unternehmen zu erhalten.
 
 ## <a name="video-trained-classifier-preview"></a>Durch Videos trainierte Klassifizierung (Preview)
 
@@ -28,52 +28,53 @@ Die computergestützte Videoklassifizierung erfolgt entweder mit durch Bilder od
 ## <a name="shot-detection"></a>Szenenwechselerkennung
 
 Bei der Ausgabe der Klassifizierungsdetails ermöglicht zusätzliche Videointelligenz die flexiblere Analyse von Videos. Anstatt nur die Frames auszugeben, bietet der Video Moderation Service von Microsoft auch Informationen auf Szenenebene. Sie haben nun die Möglichkeit, Ihre Videos auf der Ebene der Szenen und der Frames zu analysieren.
- 
+
 ## <a name="key-frame-detection"></a>Keyframeerkennung
 
 Anstatt in regelmäßigen Abständen Frames auszugeben, identifiziert der Video Moderation Service nur potenziell vollständige (gute) Frames und gibt nur diese aus. Diese Funktion ermöglicht eine effiziente Frame-Generierung für Analyse von Inhalten für Erwachsene und von freizügigen Inhalten auf Frameebene.
 
 Der folgende Auszug zeigt eine Teilantwort mit potentiellen Aufnahmen, Keyframes, sowie Bewertungen von Inhalten für Erwachsene und von freizügigen Inhalten:
 
-    "fragments": [
-    {
-      "start": 0,
-      "duration": 18000
-    },
-    {
-      "start": 18000,
-      "duration": 3600,
-      "interval": 3600,
-      "events": [
-        [
-          {
-            "reviewRecommended": false,
-            "adultScore": 0.00001,
-            "racyScore": 0.03077,
-            "index": 5,
-            "timestamp": 18000,
-            "shotIndex": 0
-          }
-        ]
+```json
+"fragments":[  
+  {  
+    "start":0,
+    "duration":18000
+  },
+  {  
+    "start":18000,
+    "duration":3600,
+    "interval":3600,
+    "events":[  
+      [  
+        {  
+          "reviewRecommended":false,
+          "adultScore":0.00001,
+          "racyScore":0.03077,
+          "index":5,
+          "timestamp":18000,
+          "shotIndex":0
+        }
       ]
-    },
-    {
-      "start": 18386372,
-      "duration": 119149,
-      "interval": 119149,
-      "events": [
-        [
-          {
-            "reviewRecommended": true,
-            "adultScore": 0.00000,
-            "racyScore": 0.91902,
-            "index": 5085,
-            "timestamp": 18386372,
-            "shotIndex": 62
-          }
-        ]
+    ]
+  },
+  {  
+    "start":18386372,
+    "duration":119149,
+    "interval":119149,
+    "events":[  
+      [  
+        {  
+          "reviewRecommended":true,
+          "adultScore":0.00000,
+          "racyScore":0.91902,
+          "index":5085,
+          "timestamp":18386372,
+          "shotIndex":62
+        }
       ]
-
+    ]
+```
 
 ## <a name="visualization-for-human-reviews"></a>Visualisierung für Überprüfungen durch Personen
 
@@ -101,10 +102,7 @@ Videos haben in der Regel einen Begleitkommentar, der ebenfalls hinsichtlich ans
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Beginnen Sie mit dem [Schnellstart für die Videomoderation](video-moderation-api.md). 
-
-Erfahren Sie mehr über das Generieren von [Videoüberprüfungen](video-reviews-quickstart-dotnet.md) für Ihre menschlichen Prüfer aus Ihrer moderierten Ausgabe.
-
-Fügen Sie [Überprüfungen von Videotranskripten](video-transcript-reviews-quickstart-dotnet.md) zu Ihren Videoüberprüfungen hinzu.
-
-Sehen Sie sich das ausführliche Tutorial zur Entwicklung einer [vollständigen Lösung für die Videomoderation an](video-transcript-moderation-review-tutorial-dotnet.md). 
+- Beginnen Sie mit dem [Schnellstart für die Videomoderation](video-moderation-api.md).
+- Erfahren Sie mehr über das Generieren von [Videoüberprüfungen](video-reviews-quickstart-dotnet.md) für Ihre menschlichen Prüfer aus Ihrer moderierten Ausgabe.
+- Fügen Sie [Überprüfungen von Videotranskripten](video-transcript-reviews-quickstart-dotnet.md) zu Ihren Videoüberprüfungen hinzu.
+- Sehen Sie sich das ausführliche Tutorial zur Entwicklung einer [vollständigen Lösung für die Videomoderation an](video-transcript-moderation-review-tutorial-dotnet.md).

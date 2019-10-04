@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/18/2019
+ms.date: 05/20/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 484b39de52cef4e4772745eed38e8461a5594601
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f056515e87d01d0a30fec7f792fcb6e5e91c0c89
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182522"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65969043"
 ---
 # <a name="reports-available-in-the-cloudyn-portal"></a>Im Cloudyn-Portal verfügbare Berichte
 
@@ -440,7 +440,7 @@ Mit dem Bericht über alle Größenempfehlungen können Sie Folgendes erreichen:
 - Anzeigen einer Liste aller Instanzen, die Kandidaten für eine Verkleinerung sind.
 - Exportieren einer Berichtsliste mit den Instanznamen und -IDs.
 
-Klicken Sie zum Anzeigen von Details zur Empfehlung für eine bestimmte Instanz auf **+**. Der Abschnitt „Recommendation Details“ (Details zur Empfehlung) bietet eine Übersicht über die Empfehlung.
+Klicken Sie zum Anzeigen von Details zur Empfehlung für eine bestimmte Instanz auf **+** . Der Abschnitt „Recommendation Details“ (Details zur Empfehlung) bietet eine Übersicht über die Empfehlung.
 
 Der Abschnitt **Tags** enthält eine Liste der Tagschlüssel und -werte für die ausgewählte Instanz. Verwenden Sie „Tags“ im linken Bereich, um den Abschnitt zu filtern.
 
@@ -481,7 +481,7 @@ So zeigen Sie die cloudübergreifende Leistung pro Instanz an
 
 So zeigen Sie Metriken für eine bestimmte Instanz im Lauf der Zeit an
 
-- Wechseln Sie zum Metrik-Explorer-Bericht pro Instanz, und klicken Sie auf **+**, um Details anzuzeigen.
+- Wechseln Sie zum Metrik-Explorer-Bericht pro Instanz, und klicken Sie auf **+** , um Details anzuzeigen.
 
 ### <a name="rds-sizing-recommendations-report"></a>Bericht über RDS-Größenempfehlungen
 

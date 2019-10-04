@@ -1,69 +1,72 @@
 ---
-title: Zuordnungsdatenfluss in Azure Data Factory – Schemaabweichung
+title: Schemaabweichung im Zuordnungsdatenfluss | Azure Data Factory
 description: Erstellen robuster Datenflüsse in Azure Data Factory mit Schemaabweichung
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: 42fde2804c04b2449068d649e1c660d02e72edb1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.date: 09/12/2019
+ms.openlocfilehash: 68c0da5a7fe2b02c6115a8c1bbc24feb95e12adb
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729354"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003709"
 ---
-# <a name="mapping-data-flow-schema-drift"></a>Zuordnungsdatenfluss – Schemaabweichung
+# <a name="schema-drift-in-mapping-data-flow"></a>Schemaabweichung im Zuordnungsdatenfluss
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Das Konzept der Schemaabweichung ist der Fall, wenn Ihre Quellen häufig Metadaten ändern. Felder, Spalten, Typen usw. können schnell hinzugefügt, entfernt oder geändert werden. Ohne Behandlung der Schemaabweichung wird Ihr Datenfluss anfällig für Änderungen in Upstream-Datenquellen. Wenn sich Eingangsspalten und -felder ändern, treten bei typischen ETL-Mustern Fehler auf, da sie dazu neigen, an diesen Quellennamen gebunden zu werden.
+Eine Schemaabweichung liegt vor, wenn Ihre Quellen Metadaten häufig ändern. Felder, Spalten und Typen können bei laufendem Betrieb hinzugefügt, entfernt oder geändert werden. Ohne Vorkehrungen bei Schemaabweichungen wird Ihr Datenfluss anfällig für Änderungen an vorgelagerten Datenquellen. Wenn sich eingehende Spalten und Felder ändern, treten bei typischen ETL-Mustern Fehler auf, da sie dazu neigen, an diesen Quellennamen gebunden zu sein.
 
-Zum Schutz gegen Schemaabweichung müssen in einem Datenfluss-Tool Funktionen enthalten sein, die Ihnen als Data Engineer Folgendes ermöglichen:
+Zum Schutz gegen Schemaabweichung muss ein Datenflusstool Funktionen bieten, die Ihnen als Datentechniker Folgendes ermöglichen:
 
 * Definieren von Quellen mit änderbaren Feldnamen, Datentypen, Werte und Größen
 * Definieren von Transformationsparametern, die anstelle von hartcodierten Feldern und Werten mit Datenmustern arbeiten können
 * Definieren von Ausdrücken, die Muster verstehen, um sie mit Eingangsfeldern abzugleichen, anstatt benannte Felder zu verwenden
 
-Im Datenfluss von Azure Data Factory werden diese Funktionen über diesen Workflow ausgeführt:
+Flexible und sich von Ausführung zu Ausführung ändernde Schemas werden von Azure Data Factory nativ unterstützt, sodass Sie eine generische Datentransformationslogik erstellen können, ohne die Datenflüsse erneut kompilieren zu müssen.
 
-* Wählen Sie „Allow Schema Drift (Schemaabweichung zulassen)“ in Ihrer Quellentransformation aus.
+Sie müssen eine architektonische Entscheidung in Ihrem Datenfluss treffen, um die Schemaabweichung in Ihrem Fluss zu akzeptieren. Wenn Sie dies tun, können Sie Schutz gegen Schemaänderungen aus den Quellen bieten. Allerdings verlieren Sie die frühe Bindung Ihrer Spalten und Typen im gesamten Datenfluss. Azure Data Factory behandelt Schemaabweichungsflüsse als Flüsse mit später Bindung, sodass die abweichenden Spaltennamen bei der Erstellung Ihrer Transformationen Ihnen nicht im gesamten Fluss in den Schemaansichten zur Verfügung stehen.
 
-<img src="media/data-flow/schemadrift001.png" width="400">
+## <a name="schema-drift-in-source"></a>Schemaabweichung in der Quelle
 
-* Wenn Sie diese Option ausgewählt haben, werden alle Eingangsfelder bei jeder Datenflussausführung aus der Quelle gelesen und über den gesamten Fluss der Senke übergeben.
+Bei einer Quelltransformation ist die Schemaabweichung definiert als das Lesen von Spalten, die nicht in Ihrem Datasetschema definiert sind. Um Schemaabweichung zu ermöglichen, wählen Sie in Ihrer Quellentransformation **Allow Schema Drift** (Schemaabweichung zulassen) aus.
 
-* Stellen Sie sicher, dass Sie „Auto-Map (Automatische Zuordnung)“ verwenden, um alle neuen Felder in der Senkentransformation zuzuordnen, sodass alle neuen Felder abgerufen werden und in Ihr Ziel gelangen:
+![Schemaabweichung in der Quelle](media/data-flow/schemadrift001.png "Schemaabweichung in der Quelle")
 
-<img src="media/data-flow/automap.png" width="400">
+Bei aktivierter Schemaabweichung werden während der Ausführung alle eingehenden Felder aus Ihrer Quelle gelesen und durch den gesamten Datenfluss zur Senke geleitet. Alle neu erkannten Spalten (*abweichende Spalten* genannt) werden standardmäßig mit dem Datentyp „String“ empfangen. Wenn Sie möchten, dass der Datenfluss automatisch Datentypen abweichender Spalten ableiten kann, aktivieren Sie in Ihren Quelleinstellungen die Option **Infer drifted column types** (Abweichende Spaltentypen ableiten).
 
-* Alles funktioniert, wenn neue Felder in diesem Szenario mit einer einfachen Zuordnung von Quelle -> Senke (auch bekannt als „Kopieren“) eingeführt werden.
+## <a name="schema-drift-in-sink"></a>Schemaabweichung in Senke
 
-* Um in diesem Workflow Transformationen hinzuzufügen, die die Schemaabweichung behandeln, können Sie den Musterabgleich zum Abgleich mit Spalten nach Name, Typ und Wert durchführen.
+Bei einer Senkentransformation erfolgt eine Schemabweichung, wenn Sie zusätzliche Spalten zusätzlich zu dem schreiben, was im Datenschema der Senke definiert ist. Um die Schemaabweichung zu ermöglichen, wählen Sie in Ihrer Senkentransformation **Allow Schema Drift** (Schemaabweichung zulassen) aus.
 
-* Klicken Sie in der „Derived Column (Abgeleitete Spalte)“ oder der Transformation „Aggregate (Aggregieren)“ auf „Add Column Pattern (Spaltenmuster hinzufügen)“, wenn Sie eine Transformation erstellen möchten, die „Schema Drift (Schemaabweichung)“ versteht.
+![Schemaabweichung in Senke](media/data-flow/schemadrift002.png "Schemaabweichung in Senke")
 
-<img src="media/data-flow/columnpattern.png" width="400">
+Wenn die Schemaabweichung aktiviert ist, stellen Sie sicher, dass auf der Registerkarte „Mapping“ (Zuordnung) der Schieberegler **Auto-Mapping** (Automatische Zuordnung) aktiviert ist. Wenn dieser Schieberegler eingeschaltet ist, werden alle eingehenden Spalten in Ihr Ziel geschrieben. Andernfalls müssen Sie die regelbasierte Zuordnung verwenden, um abweichende Spalten zu schreiben.
 
-> [!NOTE]
-> Sie müssen eine architektonische Entscheidung in Ihrem Datenfluss treffen, um die Schemaabweichung in Ihrem Fluss zu akzeptieren. Wenn Sie dies tun, können Sie Schutz gegen Schemaänderungen aus den Quellen bieten. Allerdings verlieren Sie die frühe Bindung Ihrer Spalten und Typen im gesamten Datenfluss. Azure Data Factory behandelt Schemaabweichungsflüsse als Flüsse mit später Bindung, sodass die Spaltennamen bei der Erstellung Ihrer Transformationen Ihnen nicht im gesamten Fluss in den Schemaansichten zur Verfügung stehen werden.
+![Automatische Zuordnung in der Senke](media/data-flow/automap.png "Automatische Zuordnung in der Senke")
 
-<img src="media/data-flow/taxidrift1.png" width="400">
+## <a name="transforming-drifted-columns"></a>Transformieren abweichender Spalten
 
-Im Beispieldatenfluss des Taxi Demos ist eine Beispielschemaabweichung im unteren Datenfluss mit der TripFare-Quelle enthalten. Beachten Sie bei der Transformation „Aggregate (Aggregieren)“, dass wir den „Spaltenmuster“-Entwurf für die Aggregationsfelder verwenden. Anstatt bestimmte Spalten zu benennen oder anhand der Position nach Spalten zu suchen, gehen wir davon aus, dass die Daten sich ändern können und möglicherweise zwischen den Ausführungen nicht in der gleichen Reihenfolge angezeigt werden.
+Wenn Ihr Datenfluss abweichende Spalten aufweist, können Sie in Ihren Transformationen mit den folgenden Methoden auf diese zugreifen:
 
-In diesem Beispiel der Behandlung der Schemaabweichung des Azure Data Factory-Datenflusses haben wir eine Aggregation erstellt, die nach Spalten vom Typ „double“ sucht, wissend, dass die Datendomäne Preise für jede Fahrt enthält. Wir können dann eine alle double-Felder in der Quelle umfassende aggregierte mathematische Berechnung ausführen, unabhängig davon, wo die Spalte landet, und unabhängig von ihrer Benennung.
+* Verwenden der Ausdrücke `byPosition` und `byName`, um auf eine Spalte explizit über Name oder Positionsnummer zu verweisen
+* Hinzufügen eines Spaltenmusters in einer Transformation des Typs „Abgeleitete Spalte“ oder „Aggregat“, um es mit einer beliebigen Kombination aus Name, Datenstrom, Position oder Typ abzugleichen
+* Hinzufügen einer regelbasierten Zuordnung in einer Auswahl- oder Senkentransformation, um abweichende Spalten über ein Muster mit Spaltenaliasen abzugleichen
 
-Die Datenflusssyntax von Azure Data Factory stellt mit „$$“ die einzelnen mit Ihrem Abgleichsmuster übereinstimmenden Spalten dar. Sie können auch mit komplexen Funktionen für Zeichenfolgensuche und reguläre Ausdrücke einen Abgleich auf Spaltennamen durchführen. In diesem Fall erstellen wir einen neuen aggregierten Feldnamen basierend auf jeder Übereinstimmung eines „double“-Typs einer Spalte und fügen den Text ```_total``` jedem dieser übereinstimmenden Namen an: 
+Weitere Informationen zum Implementieren von Spaltenmustern finden Sie unter [Spaltenmuster im Zuordnungsdatenfluss](concepts-data-flow-column-pattern.md).
 
-```concat($$, '_total')```
+### <a name="map-drifted-columns-quick-action"></a>Schnellaktion zum Zuordnen abweichender Spalten
 
-Dann runden und summieren wir die Werte für jede dieser übereinstimmenden Spalten:
+Um explizit auf abweichende Spalten zu verweisen, können Sie in kürzester Zeit Zuordnungen für diese Spalten über eine Schnellaktion zur Datenvorschau erzeugen. Nach Aktivierung des [Debugmodus](concepts-data-flow-debug-mode.md) wechseln Sie zur Registerkarte „Datenvorschau“ und klicken auf **Aktualisieren**, um eine Datenvorschau abzurufen. Wenn Data Factory feststellt, dass abweichende Spalten vorhanden sind, können Sie auf **Map Drifted** (Abweichende zuordnen) klicken und eine abgeleitete Spalte erzeugen, mit der Sie in nachgelagerten Schemaansichten auf alle abweichenden Spalten verweisen können.
 
-```round(sum ($$))```
+![Abweichende zuordnen](media/data-flow/mapdrifted1.png "Abweichende zuordnen")
 
-Sie können dies mit dem Azure Data Factory-Datenflussbeispiel „Taxi Demo“ testen. Schalten Sie die Debug-Sitzung mithilfe des Debug-Schalters am oberen Rand der Datenfluss-Entwurfsoberfläche ein, sodass Sie interaktiv die Ergebnisse sehen können:
+In der generierten Transformation des Typs „Abgeleitete Spalten“ werden alle abweichenden Spalten dem erkannten Namen und Datentyp zugeordnet. In der obigen Datenvorschau wird die Spalte „movieId“ als ganze Zahl erkannt. Nach Klicken auf **Map Drifted** (Abweichende zuordnen) wird movieId in der abgeleiteten Spalte als `toInteger(byName('movieId'))` definiert und bei nachgelagerten Transformationen in Schemaansichten berücksichtigt.
 
-<img src="media/data-flow/taxidrift2.png" width="800">
+![Abweichende zuordnen](media/data-flow/mapdrifted2.png "Abweichende zuordnen")
 
+## <a name="next-steps"></a>Nächste Schritte
+In der [Datenfluss-Ausdruckssprache](data-flow-expression-functions.md) finden Sie zusätzliche Funktionen für Spaltenmuster und Schemaabweichung einschließlich byName und byPosition.

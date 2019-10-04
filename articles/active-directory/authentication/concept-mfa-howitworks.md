@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 06/03/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7328fb958774b5e17511d046e914cc5612e8a96d
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 57b441803a066b794d17b46afec4d930b94ebdea
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310930"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125131"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>So funktioniert's: Azure Multi-Factor Authentication
 
@@ -36,10 +36,10 @@ Azure Multi-Factor Authentication (MFA) trägt zum Schutz des Zugriffs auf Daten
 
 Multi-Factor Authentication ist Teil der folgenden Angebote:
 
-* **Azure Active Directory Premium-Lizenzen**: Umfassende Verwendung von Azure Multi-Factor Authentication-Dienst (Cloud) oder Azure Multi-Factor Authentication-Server (lokal).
-   * **Azure MFA-Dienst (Cloud)** - **: Diese Option ist der empfohlene Weg für neue Bereitstellungen**. Azure MFA in der Cloud erfordert keine lokale Infrastruktur und kann mit Partner- oder reinen Cloudbenutzern verwendet werden.
-   * **Azure MFA-Server**: Wenn Ihre Organisation die dazugehörigen Infrastrukturelemente verwalten möchte und AD FS in Ihrer lokalen Umgebung bereitgestellt hat, ist dies möglicherweise eine Option.
-* **Multi-Factor Authentication für Office 365**: Eine Teilmenge der Funktionen der Multi-Factor Authentication von Azure ist im Rahmen Ihres Abonnements verfügbar. Weitere Informationen zu MFA für Office 365 finden Sie im Artikel [Planen der mehrstufigen Authentifizierung für Office 365-Bereitstellungen](https://support.office.com/article/plan-for-multi-factor-authentication-for-office-365-deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba).
+* **Azure Active Directory Premium** oder **Microsoft 365 Business** – Nutzung der Azure Multi-Factor Authentication in vollem Umfang, einschließlich Richtlinien für bedingten Zugriff, die die Multi-Factor Authentication erforderlich machen.
+
+* **Azure AD Free**- oder eigenständige **Office 365**-Lizenzen – Nutzung vorab erstellter [Richtlinien für bedingten Zugriff für den Baselineschutz](../conditional-access/concept-baseline-protection.md), die die Multi-Factor Authentication für Benutzer und Administratoren erforderlich machen
+
 * **Azure Active Directory – Globale Administratoren**: Eine Teilmenge der Azure Multi-Factor Authentication-Funktionen ist als Mittel zum Schutz globaler Administratorkonten verfügbar.
 
 > [!NOTE]
@@ -51,16 +51,9 @@ Die meisten Benutzer sind daran gewöhnt, für die Authentifizierung lediglich K
 
 * Schulen Sie Ihre Supportmitarbeiter für Szenarien, in denen Benutzer sich nicht anmelden können, da sie keinen Zugriff auf ihre Authentifizierungsmethoden haben, oder diese nicht ordnungsgemäß funktionieren.
    * Mit Richtlinien für bedingten Zugriff für den Azure MFA-Dienst können Ihre Supportmitarbeiter einen Benutzer einer Gruppe hinzufügen, die von einer MFA erfordernden Richtlinie ausgeschlossen ist.
-   * Supportmitarbeiter können für Benutzer von Azure MFA-Server eine temporäre Einmalumgehung aktivieren, um einem Benutzer die Authentifizierung ohne zweistufige Überprüfung zu ermöglichen. Die Umgehung ist vorübergehend und läuft nach einer angegebenen Anzahl von Sekunden ab.   
-* Erwägen Sie die Verwendung von vertrauenswürdigen IP-Adressen oder benannten Orten als Möglichkeit, die Aufforderungen zur zweistufigen Überprüfung zu minimieren. Mit diesem Feature können Administratoren eines verwalteten oder Verbundmandanten die zweistufige Überprüfung für Benutzer umgehen, die sich über einen vertrauenswürdigen Netzwerkstandort wie das Intranet ihrer Organisation anmelden.
-* Stellen Sie [Azure AD Identity Protection](../active-directory-identityprotection.md) bereit, und lösen Sie die zweistufige Überprüfung auf Risikoereignissen basierend aus.
+* Sie können benannte Standorte für den bedingten Zugriff verwenden, um Aufforderungen zur zweistufigen Überprüfung zu minimieren. Mithilfe dieser Funktion können Administratoren die zweistufige Überprüfung für Benutzer umgehen, die sich über ein sicheres vertrauenswürdiges Netzwerk anmelden, z. B. ein Netzwerksegment, das für das Onboarding neuer Benutzer verwendet wird.
+* Stellen Sie [Azure AD Identity Protection](../active-directory-identityprotection.md) bereit, und lösen Sie die zweistufige Überprüfung basierend auf Risikoerkennungen aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Rufen Sie einen [Plan](https://aka.ms/MFADeploymentPlan) für die schrittweise MFA-Bereitstellung ab.
-
-- Erfahren Sie Details über die [Lizenzierung Ihrer Benutzer](concept-mfa-licensing.md).
-
-- Erfahren Sie Details darüber, [welche Version Sie bereitstellen sollten](concept-mfa-whichversion.md).
-
-- Finden Sie Antworten auf [häufig gestellte Fragen](multi-factor-authentication-faq.md).
+- [Schrittweise Bereitstellung der Azure Multi-Factor Authentication](howto-mfa-getstarted.md)

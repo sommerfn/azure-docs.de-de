@@ -1,25 +1,18 @@
 ---
-title: Erste Schritte mit Verkäufer-Insights | Microsoft-Dokumentation
+title: Erste Schritte mit Verkäufer-Insights
 description: Einführung in das Feature für Verkäufer-Insights des Cloud-Partnerportals.
 services: Azure, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pbutlerm
-ms.openlocfilehash: f9bcc05fb02d2324d0546f2ed8286b27e5f8e296
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: pabutler
+ms.openlocfilehash: 6c903c87bc153864381a3f1763afaeeb7796090a
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806326"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64943056"
 ---
 <a name="getting-started-with-seller-insights"></a>Erste Schritte mit Verkäufer-Insights
 ====================================
@@ -66,5 +59,5 @@ Nur Benutzer mit *Besitzer*-Berechtigungen können die Module **Auszahlung** und
 
 - [Verkäufer-Insights – Definitionen](./si-insights-definitions-v4.md): Hier finden Sie Definitionen für Metriken und Daten.
 
-- [Erste Schritte mit Verkäufer-Insights](./si-getting-started.md): Einführung in das Feature „Verkäufer-Insights“.
+- [Erste Schritte mit Seller Insights](./si-getting-started.md): Einführung in das Feature „Seller Insights“.
 

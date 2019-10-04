@@ -11,12 +11,12 @@ ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 22b75b2d2b47dbd496eda06c09b418ae66f6403a
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230657"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050690"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Überwachen und Verwalten von Twitter mithilfe von Azure Logic Apps
 
@@ -29,7 +29,7 @@ Sie können Trigger verwenden, die Antworten von Ihrem Twitter-Konto erhalten un
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
 
 * Ihr Twitter-Konto und Benutzeranmeldeinformationen
 
@@ -59,7 +59,7 @@ Sie können Trigger verwenden, die Antworten von Ihrem Twitter-Konto erhalten un
        Oder
 
      * Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. 
-     Wählen Sie das daraufhin angezeigte Pluszeichen (**+**) und dann **Aktion hinzufügen** aus.
+     Wählen Sie das daraufhin angezeigte Pluszeichen ( **+** ) und dann **Aktion hinzufügen** aus.
      
        Geben Sie im Suchfeld den Begriff „twitter“ als Filter ein. 
        Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
@@ -70,7 +70,7 @@ Sie können Trigger verwenden, die Antworten von Ihrem Twitter-Konto erhalten un
 
 ## <a name="examples"></a>Beispiele
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter-Trigger: Wenn ein neuer Tweet veröffentlicht wird
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Twitter-Trigger: Wenn ein neuer Tweet gepostet wird
 
 Dieser Trigger startet den Workflow der Logik-App, wenn der Trigger einen neuen Tweet, z.B. mit dem Hashtag #Seattle, erkennt. Wenn diese Tweets dann gefunden werden, können Sie eine Datei mit dem Inhalt der Tweets zum Speicher hinzufügen, z.B. ein Dropbox-Konto, indem Sie den Dropbox-Connector verwenden. 
 
@@ -78,7 +78,7 @@ Optional können Sie eine Bedingung einfügen, dass berechtigte Tweets von Benut
 
 **Beispiel für Unternehmen**: Mit diesem Trigger können Sie Tweets über Ihr Unternehmen überwachen und den Inhalt der Tweets in eine SQL-Datenbank hochladen.
 
-### <a name="twitter-action-post-a-tweet"></a>Twitter-Aktion: Veröffentlichen eines Tweets
+### <a name="twitter-action-post-a-tweet"></a>Twitter-Aktion: Tweet posten
 
 Diese Aktion veröffentlicht einen Tweet, aber Sie können die Aktion so einrichten, dass der Tweet den Inhalt von Tweets enthält, die vom zuvor beschriebenen Trigger gefunden wurden. 
 

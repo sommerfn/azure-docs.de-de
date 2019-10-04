@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: f101a8885d9bf67e8bd589d7cf932b0d35cdfe32
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994013"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744502"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Kontinuierliche Überwachung mit Azure Monitor
 
@@ -34,7 +34,7 @@ Um die Transparenz in Ihrer gesamten Umgebung sicherzustellen, müssen Sie die �
 - [Azure DevOps Projects](../devops-project/overview.md) bietet eine vereinfachte Umgebung mit Ihrem vorhandenen Code und dem Git-Repository, oder wählen Sie eine der Beispielanwendungen aus, um eine Continuous Integration- und Continuous Delivery-Pipeline (CI/CD) für Azure zu erstellen.
 - Die [kontinuierliche Überwachung in Ihrer DevOps-Releasepipeline](../azure-monitor/app/continuous-monitoring.md) ermöglicht es Ihnen, Ihre Bereitstellung auf der Grundlage von Überwachungsdaten zu steuern oder zurückzusetzen.
 - Der [Statusmonitor](../azure-monitor/app/monitor-performance-live-website-now.md) ermöglicht es Ihnen, eine .NET-Live-App unter Windows mit Azure Application Insights zu instrumentieren, ohne Ihren Code ändern oder neu bereitstellen zu müssen.
-- Wenn Sie Zugriff auf den Code für Ihre Anwendung haben, aktivieren Sie die vollständige Überwachung mit [Application Insights](../azure-monitor/app/app-insights-overview.md), indem Sie das Azure Monitor Application Insights-SDK für [.NET](../azure-monitor/learn/quick-monitor-portal.md), [Java](../azure-monitor/learn/java-quick-start.md), [Node.js](../azure-monitor/learn/nodejs-quick-start.md) oder [alle anderen Programmiersprachen](../azure-monitor/app/platforms.md) installieren. Auf diese Weise können Sie benutzerdefinierte Ereignisse, Metriken oder Seitenansichten festlegen, die für Ihre Anwendung und Ihr Unternehmen relevant sind.
+- Wenn Sie Zugriff auf den Code für Ihre Anwendung haben, aktivieren Sie die vollständige Überwachung mit [Application Insights](../azure-monitor/app/app-insights-overview.md), indem Sie das Azure Monitor Application Insights-SDK für [.NET](../azure-monitor/learn/quick-monitor-portal.md), [Java](../azure-monitor/app/java-get-started.md), [Node.js](../azure-monitor/learn/nodejs-quick-start.md) oder [alle anderen Programmiersprachen](../azure-monitor/app/platforms.md) installieren. Auf diese Weise können Sie benutzerdefinierte Ereignisse, Metriken oder Seitenansichten festlegen, die für Ihre Anwendung und Ihr Unternehmen relevant sind.
 
 
 

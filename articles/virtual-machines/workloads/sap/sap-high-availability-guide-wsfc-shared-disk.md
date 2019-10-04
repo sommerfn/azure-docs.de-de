@@ -4,25 +4,24 @@ description: Erhalten Sie Informationen zum Clustering von SAP ASCS/SCS-Instanze
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: f6fb85f8-c77a-4af1-bde8-1de7e4425d2e
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 608965160f4abb57ccdfe8b8256fef971754b4d6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 848b15cef43efa62fdff6715bfcfef9819f4e100
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000313"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078273"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -220,15 +219,15 @@ In Windows enthält eine SAP ASCS/SCS-Instanz SAP Central Services, SAP Message 
 Eine SAP ASCS/SCS-Instanz verfügt über die folgenden Komponenten:
 
 * SAP Central Services:
-    * Zwei Prozesse, Nachrichtenserver und Server zum Einreihen in die Warteschlange sowie <virtueller ASCS/SCS-Hostname> für den Zugriff auf diese beiden Prozesse.
+    * Zwei Prozesse, Nachrichtenserver und Server zum Einreihen in die Warteschlange sowie ein \<virtueller ASCS/SCS-Hostname> für den Zugriff auf diese beiden Prozesse.
     * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<Instanzanzahl\>
 
 
 * Globaler SAP-Hostname:
-  * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\SYS\...
+  * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\SYS\..
   * Die sapmnt-Dateifreigabe, die den Zugriff auf dieses globalen „S:\usr\sap\\&lt;SID&gt;\SYS\...“-Dateien mithilfe des folgenden UNC-Pfads ermöglicht:
 
-    \\\\&lt;Name des virtuellen ASCS/SCS-Hosts&gt;\sapmnt\\&lt;SID&gt;\SYS\..
+    \\\\<Name des virtuellen ASCS/SCS-Hosts\>\sapmnt\\&lt;SID&gt;\SYS\..
 
 
 ![Abbildung 2: Prozesse, Dateistruktur und sapmnt-Dateifreigabe des globalen Hosts einer SAP ASCS/SCS-Instanz][sap-ha-guide-figure-8001]
@@ -243,7 +242,7 @@ _**Abbildung 3:** SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger_
 
 > [!IMPORTANT]
 > Diese beiden Komponenten werden unter der gleichen SAP ASCS/SCS-Instanz ausgeführt:
->* Es wird derselbe <virtuelle ASCS/SCS-Hostname> für den Zugriff auf Prozesse des SAP Message Servers und des Servers zum Einreihen in die Warteschlange sowie auf Dateien des globalen SAP-Hosts über die sapmnt-Dateifreigabe verwendet.
+>* Es wird derselbe \<virtuelle ASCS/SCS-Hostname> für den Zugriff auf Prozesse des SAP Message Servers und des Servers zum Einreihen in die Warteschlange sowie auf Dateien des globalen SAP-Hosts über die sapmnt-Dateifreigabe verwendet.
 >* Es wird derselbe freigegebene Clusterdatenträger (Laufwerk S:) gemeinsam genutzt.
 >
 
@@ -264,7 +263,7 @@ So erstellen Sie eine freigegebene Datenträgerressource für einen Cluster
 2. Führen Sie SIOS DataKeeper Cluster Edition auf beiden virtuellen Computerknoten aus.
 3. Konfigurieren Sie SIOS DataKeeper Cluster Edition so, dass synchron der Inhalt des zusätzlich angefügten Datenträgervolumes vom virtuellen Quellcomputer im zusätzlich angefügten Datenträgervolume des virtuellen Zielcomputers gespiegelt wird. SIOS DataKeeper abstrahiert die lokalen Quell- und Zielvolumes und präsentiert diese beim Windows Server-Failoverclustering als einen freigegebenen Datenträger.
 
-Weitere Informationen zu [SIOS DataKeeper](http://us.sios.com/products/datakeeper-cluster/).
+Weitere Informationen zu [SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/).
 
 ![Abbildung 5: Konfiguration des Windows Server-Failoverclusterings in Azure mit SIOS DataKeeper][sap-ha-guide-figure-1002]
 
@@ -278,4 +277,4 @@ _**Abbildung 5:** Konfiguration des Windows-Failoverclusterings in Azure mit SIO
 
 * [Vorbereiten der Azure-Infrastruktur für SAP HA mit einem Windows-Failovercluster und einem freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* [SAP NetWeaver-HA-Installation auf einem Windows-Failovercluster und freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz][sap-high-availability-installation-wsfc-shared-disk]
+* [SAP NetWeaver HA-Installation auf einem Windows-Failovercluster und freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz][sap-high-availability-installation-wsfc-shared-disk]

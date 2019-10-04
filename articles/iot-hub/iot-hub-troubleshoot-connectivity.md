@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: a107689796c58b17c445e7a9cf7c6f0402ef6005
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.openlocfilehash: 3904c6390cfe8de197bae470c4ae32d22605ae6a
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571051"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801433"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Erkennen und Behandeln von Problemen bei der Trennung von Geräteverbindungen mit Azure IoT Hub
 
@@ -43,9 +43,9 @@ Aktivieren Sie Diagnosen für IoT Hub, um Geräteverbindungsereignisse und -fehl
 
 Weitere Informationen finden Sie unter [Schnelle Überwachung der Integrität von Azure IoT Hub und Diagnose von Problemen](iot-hub-monitor-resource-health.md).
 
-### <a name="set-up-alerts-for-the-connected-devices-count-metric"></a>Einrichten von Warnungen für die Metrik _Verbundene Geräte_
+### <a name="set-up-alerts-for-the-_connected-devices_-count-metric"></a>Einrichten von Warnungen für die Metrik _Verbundene Geräte_
 
-Um Warnungen zu erhalten, wenn die Verbindung von Geräten getrennt wird, konfigurieren Sie Warnungen in der Metrik **Verbundene Geräte (Vorschau)**.
+Um Warnungen zu erhalten, wenn die Verbindung von Geräten getrennt wird, konfigurieren Sie Warnungen in der Metrik **Verbundene Geräte (Vorschau)** .
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -71,7 +71,7 @@ Wenn Sie Diagnoseprotokolle und Warnungen für verbundene Geräte aktivieren, er
 
 3. Um Verbindungsfehlerprotokolle für IoT Hub zu isolieren, geben Sie die folgende Abfrage ein, und wählen Sie dann **Ausführen** aus:
 
-    ```
+    ```kusto
     search *
     | where ( Type == "AzureDiagnostics" and ResourceType == "IOTHUBS")
     | where ( Category == "Connections" and Level == "Error")

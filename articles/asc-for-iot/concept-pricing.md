@@ -1,37 +1,34 @@
 ---
-title: Grundlegendes zu den Kosten für Azure Security Center für IoT (Vorschauversion) | Microsoft-Dokumentation
-description: Informationen zu den für Azure Security Center für IoT anfallenden Kosten und dazu, wie sie gesteuert werden können.
+title: Grundlegendes zu den Kosten für Azure Security Center für IoT | Microsoft-Dokumentation
+description: Informationen zu den für Azure Security Center für IoT anfallenden Kosten und dazu, wie sie gesteuert werden.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: ef839708-4574-4a40-bc45-07005f8e9daf
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 41b2d012ef2f6dd1ca5f57e04da43eb1a06dafde
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862708"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933801"
 ---
 # <a name="pricing-and-associated-costs"></a>Preise und anfallende Kosten
 
-> [!IMPORTANT]
-> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-In diesem Artikel wird das Preismodell für Azure Security Center (ASC) für IoT erläutert. Außerdem werden alle anfallenden Kosten zusammenfasst, und es wird erläutert, wie diese verwaltet werden.
+In diesem Artikel wird das Preismodell für Azure Security Center für IoT erläutert. Außerdem werden alle anfallenden Kosten zusammenfasst, und es wird erläutert, wie sie verwaltet werden.
 
 ## <a name="pricing"></a>Preise
 
-Das Preismodell von ASC für IoT besteht aus zwei Teilen. Die Abrechnung erfolgt, sobald ein IoT Hub in ASC für IoT [aktiviert](quickstart-onboard-iot-hub.md) wird:
+Das Preismodell für Azure Security Center für IoT besteht aus zwei Teilen und wird in Rechnung gestellt, sobald eine IoT Hub-Instanz in Azure Security Center für IoT [aktiviert](quickstart-onboard-iot-hub.md) wurde:
 
 - Kosten nach Gerät: integrierte Sicherheitsfunktionen basierend auf der Analyse von IoT Hub-Protokollen
 
@@ -40,11 +37,11 @@ Das Preismodell von ASC für IoT besteht aus zwei Teilen. Die Abrechnung erfolgt
   >[!Note]
   > Für Sicherheitsmeldungen fällt außerdem die Kontingentnutzung in IoT Hub an.
 
-Weitere Informationen finden Sie unter [Security Center – Preise](https://azure.microsoft.com/en-us/pricing/details/security-center/).
+Weitere Informationen finden Sie unter [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>Anfallende Kosten
 
-Für ASC für IoT fallen zwei Arten von Kosten an, die nicht Teil der direkten Preise sind:
+Für Azure Security Center für IoT fallen zwei Arten von Kosten an, die nicht Teil der direkten Preise sind:
 
 - Nutzung des IoT Hub-Kontingents
 
@@ -65,21 +62,23 @@ Die folgende Tabelle enthält eine Zusammenfassung der anfallenden Kosten und Au
 |     | Verwendung | Comment |
 | --- | --- | --- |
 | **Nutzung des IoT Hub-Kontingents** |  |
-| Auftrag zum [Exportieren von Geräten](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) (Export von Gerätezwillingen) | einmal täglich | Deaktivieren von _Twin metadata collection_ (Sammlung mit Gerätezwilling-Metadaten) |
+| Auftrag zum [Exportieren von Geräten](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) (Export von Gerätezwillingen) | einmal täglich | Deaktivieren von _Twin metadata collection_ (Sammlung mit Gerätezwilling-Metadaten) |
 | **Log Analytics-Speicher** |  |
 | Geräteempfehlungen und -warnungen| Vom Dienst generierte Sicherheitsempfehlungen und -warnungen | Nicht optional |
 | Sicherheitsrohdaten| Sicherheitsrohdaten von IoT-Geräten, erfasst von Sicherheits-Agents | Deaktivieren von _Store raw device security events_ (Sicherheitsrohereignisse für Geräte speichern) |
+|
 
 >[!Important]
-> Die Deaktivierung hat schwerwiegende Auswirkungen auf die verfügbaren Sicherheitsfunktionen.
+> Die Deaktivierung hat schwerwiegende Auswirkungen auf die Verfügbarkeit von Azure Security Center für IoT-Sicherheitsfunktionen. 
   
 | Deaktivierung | Auswirkungen |
 | --- | --- |
-| _Twin metadata collection (Sammlung mit Gerätezwilling-Metadaten)_ | [Benutzerdefinierte Benachrichtigungen](quickstart-create-custom-alerts.md) sind deaktiviert |
+| _Twin metadata collection (Sammlung von Gerätezwillingsmetadaten)_ | [Benutzerdefinierte Benachrichtigungen](quickstart-create-custom-alerts.md) sind deaktiviert |
 | | Empfehlungen zum IoT Edge-Manifest sind deaktiviert |
 | | Empfehlungen und Warnungen basierend auf Geräteidentität sind deaktiviert |
 | _Store raw device security events (Sicherheitsrohereignisse für Geräte speichern)_ | Details zu grundlegenden Empfehlungen zum Gerätebetriebssystem sind nicht verfügbar |
 | | Details zu Untersuchungen von [Warnungen](concept-security-alerts.md) und [Empfehlungen](concept-recommendations.md) sind nicht verfügbar |
+|
 
 
 ## <a name="see-also"></a>Weitere Informationen

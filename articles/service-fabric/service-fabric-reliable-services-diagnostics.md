@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 96fc58ca8456e9a2e539e432f0ed85f6edc1a54f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f49176f944aa2abfa1d355ce0bd207d1b544c275
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664114"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60772957"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnosefunktionen für zustandsbehaftete Reliable Services
 Die StatefulServiceBase-Klasse der zustandsbehafteten zuverlässigen Dienste in Azure Service Fabric gibt [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx)-Ereignisse aus. Diese können verwendet werden, um den Dienst zu debuggen, Einblicke in den Laufzeitbetrieb zu erhalten und Fehler zu beheben.
@@ -29,8 +29,8 @@ Der Name des EventSource-Ereignisses für die Klasse „StatefulServiceBase“ d
 
 Beispiele für Tools und Technologien, mit deren Hilfe EventSource-Ereignisse erfasst bzw. angezeigt werden können, sind [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) und [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-## <a name="events"></a>Ereignisse
-| Ereignisname | Ereignis-ID | Ebene | Ereignisbeschreibung |
+## <a name="events"></a>Events
+| Ereignisname | Ereignis-ID | Level | Ereignisbeschreibung |
 | --- | --- | --- | --- |
 | StatefulRunAsyncInvocation |1 |Information |Wird beim Start der RunAsync-Dienstaufgabe ausgegeben |
 | StatefulRunAsyncCancellation |2 |Information |Wird beim Abbruch der RunAsync-Dienstaufgabe ausgegeben |
@@ -106,7 +106,7 @@ Die Reliable Services-Runtime gibt die folgenden Ereignisse unter der `Service F
 | --- | --- |
 | Gestartete Transaktionsvorgänge/Sek | Die Anzahl der neuen Schreibtransaktionen, die pro Sekunde erstellt werden.|
 | Transaktionsvorgänge/Sek | Die Anzahl der pro Sekunde für zuverlässige Sammlungen durchgeführten Hinzufügungs-/Aktualisierungs-/Löschvorgänge.|
-| Durchschn. Wartezeit beim Leeren (ms) | Die Anzahl von Bytes, die pro Sekunde vom Transaktionsreplikator auf den Datenträger geleert werden |
+| Protokollleerung in Bytes/Sek | Die Anzahl von Bytes, die pro Sekunde vom Transaktionsreplikator auf den Datenträger geleert werden |
 | Gedrosselte Vorgänge/Sek | Die Anzahl der Vorgänge, die pro Sekunde vom Transaktionsreplikator aufgrund von Drosselung abgelehnt werden. |
 | Durchschn. Transaktionsdauer in ms/Commit | Durchschnittliche Commitlatenz pro Transaktion in Millisekunden |
 | Durchschn. Wartezeit beim Leeren (ms) | Durchschnittliche Dauer der Vorgänge des Leerens auf die Festplatte, die vom Transaktionsreplikator gestartet werden, in Millisekunden |

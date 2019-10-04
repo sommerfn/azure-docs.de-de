@@ -1,27 +1,20 @@
-items:
 - name: Dokumentation zur Sprechererkennung
 - name: Übersicht
   items:
-  - name: Informationen zur Sprechererkennung
-    href: Home.md
+    - name: Informationen zur Sprechererkennung
+      href: Home.md
 - name: Verweis
   items:
-  - name: API-Referenz
-    href: https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797
-    items:
-    - name: SDKs
+    - name: API-Referenz
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797'
       items:
-      - name: Android
-        href: https://github.com/Microsoft/Cognitive-SpeakerRecognition-Android
-      - name: Windows
-        href: https://github.com/Microsoft/Cognitive-SpeakerRecognition-Windows
+        - name: SDKs
+          items:
+            - name: Android
+              href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Android'
+            - name: Windows
+              href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Windows'
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 2d203646f9fd68db583bfa37ea1602cb5fc03632
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35416352"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'

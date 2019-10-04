@@ -46,6 +46,8 @@
       href: front-door-routing-methods.md
     - name: URL Rewrite
       href: front-door-url-rewrite.md
+    - name: URL Redirect
+      href: front-door-url-redirect.md
     - name: WAF
       items:
         - name: Übersicht
@@ -58,6 +60,14 @@
           href: waf-front-door-monitor.md
 - name: Anleitungen
   items:
+    - name: Umleiten von Datenverkehr
+      items:
+        - name: "Konfigurieren einer Front\_Door-Instanz mit Umleitung von HTTP zu HTTPS"
+          href: front-door-how-to-redirect-https.md
+    - name: Durchführen des Onboardings für benutzerdefinierte Domänen
+      items:
+        - name: Durchführen des Onboardings für eine Stamm- oder Apex-Domäne
+          href: front-door-how-to-onboard-apex-domain.md
     - name: Problembehandlung
       items:
         - name: Problembehandlung für Routingfehler
@@ -70,9 +80,13 @@
           href: waf-front-door-create-portal.md
         - name: 'Konfigurieren einer WAF-Richtlinie: Azure PowerShell'
           href: waf-front-door-custom-rules-powershell.md
+        - name: Konfigurieren des Bot-Schutzes
+          href: waf-front-door-policy-configure-bot-protection.md
         - name: Konfigurieren von benutzerdefiniertem Antwortcode
           href: waf-front-door-configure-custom-response-code.md
-        - name: 'Konfigurieren eines WAF-Ratenlimits: Azure PowerShell'
+        - name: Konfigurieren von IP-Einschränkungen
+          href: waf-front-door-configure-ip-restriction.md
+        - name: 'Konfigurieren eines Ratenlimits: Azure PowerShell'
           href: waf-front-door-rate-limit-powershell.md
 - name: Häufig gestellte Fragen
   items:

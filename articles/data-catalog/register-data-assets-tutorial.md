@@ -1,17 +1,17 @@
 ---
 title: Registrieren von Datenressourcen in Azure Data Catalog
-description: 'Gewusst wie: Registrieren von Datenassets in Ihrer Azure Data Catalog-Instanz'
+description: In diesem Tutorial wird beschrieben, wie Sie Datenassets in Ihrer Azure Data Catalog-Instanz registrieren.
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
-ms.date: 04/08/2019
-ms.openlocfilehash: 91f7967915fd19ae47ca207913f979aa56fcd27f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 08/01/2019
+ms.openlocfilehash: 4bd2b7093100ff24b21b67ea84613ac9b2ec8299
+ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011706"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68950248"
 ---
 # <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Tutorial: Registrieren von Datenressourcen in Azure Data Catalog
 
@@ -71,7 +71,7 @@ Sie können Datenassets jetzt aus dem Azure SQL-Datenbank-Beispiel registrieren,
 
     2. Wählen Sie bei gedrückter STRG-Taste nacheinander die Optionen **Product**, **ProductCategory**, **ProductDescription** und **ProductModel** aus.
 
-    3. Wählen Sie den **Pfeil zum Verschieben der ausgewählten Elemente** (**>**). Mit dieser Aktion werden alle ausgewählten Objekte in die Liste **Zu registrierende Objekte** verschoben.
+    3. Wählen Sie den **Pfeil zum Verschieben der ausgewählten Elemente** ( **>** ). Mit dieser Aktion werden alle ausgewählten Objekte in die Liste **Zu registrierende Objekte** verschoben.
 
           ![Azure Data Catalog-Tutorial – Objekte durchsuchen und auswählen](media/register-data-assets-tutorial/data-catalog-server-hierarchy.png)
 

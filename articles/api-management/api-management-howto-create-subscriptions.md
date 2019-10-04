@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 1393e548c46c23f6b50c1b18a274febb74914ae8
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f8b2238eb0fab9aeeb42d11b4176c0d681b5f8e5
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054501"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073539"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>Erstellen von Abonnements in Azure API Management
 
@@ -38,7 +37,8 @@ Zum Ausführen der Schritte in diesem Artikel ist Folgendes erforderlich:
 1. Wählen Sie im Menü links die Option **Abonnements** aus.
 2. Wählen Sie **Abonnement hinzufügen** aus.
 3. Geben Sie einen Namen für das Abonnement an, und wählen Sie den Bereich aus.
-4. Wählen Sie **Speichern** aus.
+4. Wählen Sie optional aus, ob das Abonnement einem Benutzer zugeordnet werden soll.
+5. Wählen Sie **Speichern** aus.
 
 ![Flexible Abonnements](./media/api-management-subscriptions/flexible-subscription.png)
 

@@ -2,73 +2,55 @@
 title: Mehrsprachige Indizierung für nicht-englische Suchabfragen – Azure Search
 description: Azure Search unterstützt 56 Sprachen und nutzt Sprachanalysen mit Lucene- und Natural Language Processing-Technologie von Microsoft.
 author: yahnoosh
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 08/08/2019
 ms.author: jlembicz
-ms.custom: seodec2018
-ms.openlocfilehash: a198fa7fe5e1ed81e30987990359f9ecedbe225b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 9d2e6418eb925f0d113b7e9a91463951ca52031a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631548"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186563"
 ---
-# <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Erstellen eines Index für Dokumente in mehreren Sprachen in Azure Search
-> [!div class="op_single_selector"]
->
-> * [Portal](search-language-support.md)
-> * [REST](https://msdn.microsoft.com/library/azure/dn879793.aspx)
-> * [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.analyzername.aspx)
->
->
+# <a name="how-to-create-an-index-for-multiple-languages-in-azure-search"></a>Erstellen eines Index für mehrere Sprachen in Azure Search
 
-Sie können die Vorteile von Sprachanalysen einfach nutzen, indem Sie eine Eigenschaft für ein durchsuchbares Feld in der Indexdefinition festlegen. Diesen Schritt können Sie jetzt im Portal ausführen.
+Indizes können Felder mit Inhalt aus mehreren Sprachen enthalten, z. B. beim Erstellen einzelner Felder für sprachspezifische Zeichenfolgen. Um optimale Ergebnisse bei Indizierung und Abfragen zu erzielen, weisen Sie eine Sprachanalyse zu, die die entsprechenden linguistischen Regeln bereitstellt. 
 
-Nachfolgend finden Sie Screenshots der Azure-Portalblätter für Azure Search, über die Benutzer ein Indexschema definieren können. Auf diesem Blatt können Benutzer alle Felder erstellen und die Analyseeigenschaften für die einzelnen Felder festlegen.
+Azure Search bietet eine große Auswahl an Sprachanalysen von Lucene und Microsoft, die mithilfe der Analyzer-Eigenschaft einzelnen Feldern zugewiesen werden können. Sie können auch eine Sprachanalyse im Portal angeben, wie in diesem Artikel beschrieben.
 
-> [!IMPORTANT]
-> Eine Sprachanalyse kann nur während der Felddefinition festgelegt werden, also nur beim Erstellen eines neuen Index und beim Hinzufügen eines neuen Felds zu einem vorhandenen Index. Stellen Sie sicher, dass Sie beim Erstellen des Felds alle Attribute, einschließlich der Analyse, vollständig angeben. Sie können die Attribute nicht mehr bearbeiten und den Analysetyp nicht mehr ändern, nachdem Ihre Änderungen gespeichert wurden.
->
->
+## <a name="add-analyzers-to-fields"></a>Hinzufügen von Analysen zu Feldern
 
-## <a name="define-a-new-field-definition"></a>Definieren einer neuen Felddefinition
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie das Dienstblatt für Ihren Suchdienst.
-2. Klicken Sie oben im Dienstdashboard auf der Befehlsleiste auf **Index hinzufügen** , um einen neuen Index zu beginnen, oder öffnen Sie einen vorhandenen Index, um eine Analyse für neue Felder festzulegen, die Sie einem vorhandenen Index hinzufügen.
-3. Das Blatt „Felder“ mit Optionen zum Festlegen des Indexschemas wird angezeigt. Hier sehen Sie auch die Registerkarte für die Analyse, über die Sie eine Sprachanalyse auswählen.
-4. Beginnen Sie unter „Felder“ mit einer Felddefinition, indem Sie einen Namen angeben, den Datentyp auswählen und Attribute festlegen. Mit diesen Attributen geben Sie u. a. an, dass das Feld für die Volltextsuche verwendet, in Suchergebnissen abgerufen, in Facettennavigationsstrukturen verwendet und sortiert werden kann.
-5. Bevor Sie mit dem nächsten Feld fortfahren, öffnen Sie die Registerkarte **Analyse** .
+Beim Erstellen eines Felds wird eine Sprachanalyse angegeben. Zum Hinzufügen einer Analyse zu einer vorhandenen Felddefinition muss der Index überschrieben (und erneut geladen) werden, oder es muss ein neues Feld erstellt werden, das mit dem ursprünglichen identisch ist, jedoch mit einer Analysezuweisung. Sie können dann das nicht verwendete Feld ggf. löschen.
 
-![][1]
-*Klicken Sie zum Auswählen einer Analyse auf dem Blatt „Felder“ auf die Registerkarte „Analyse“*.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und suchen Sie den Suchdienst.
+1. Klicken Sie oben im Dienstdashboard auf der Befehlsleiste auf **Index hinzufügen** , um einen neuen Index zu beginnen, oder öffnen Sie einen vorhandenen Index, um eine Analyse für neue Felder festzulegen, die Sie einem vorhandenen Index hinzufügen.
+1. Starten Sie eine Felddefinition, indem Sie einen Namen angeben.
+1. Wählen Sie den Datentyp „Edm.String“ aus. Die Volltextsuche wird nur für Zeichenfolgenfelder unterstützt.
+1. Legen Sie das **Searchable**-Attribut fest, um die Analyzer-Eigenschaft zu aktivieren. Felder müssen textbasiert sein, damit eine Sprachanalyse verwendet werden kann.
+1. Wählen Sie eine der verfügbaren Analysen aus. 
 
-## <a name="choose-an-analyzer"></a>Auswählen einer Analyse
-1. Führen Sie einen Bildlauf zu dem Feld durch, das Sie definieren.
-2. Wenn Sie das Feld noch nicht als durchsuchbar gekennzeichnet haben, aktivieren Sie jetzt das Kontrollkästchen, um es als **durchsuchbar**zu kennzeichnen.
-3. Klicken Sie auf den Bereich „Analyse“, um die Liste der verfügbaren Analysen anzuzeigen.
-4. Wählen Sie die zu verwendende Analyse aus.
+![Zuweisen von Sprachanalysen während der Felddefinition](media/search-language-support/select-analyzer.png "Zuweisen von Sprachanalysen während der Felddefinition")
 
-![][2]
-*Wählen Sie für jedes Feld eine der unterstützten Analysen aus*.
+Standardmäßig verwenden alle durchsuchbaren Felder die sprachunabhängige [Lucene-Standardanalyse](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html). Die vollständige Liste der unterstützten Analysen finden Sie unter [Hinzufügen von Sprachanalysetools zu einem Azure Search-Index](index-add-language-analyzers.md).
 
-Standardmäßig verwenden alle durchsuchbaren Felder die sprachunabhängige [Lucene-Standardanalyse](https://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) . Die vollständige Liste der unterstützten Analysen finden Sie unter [Sprachunterstützung in Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
+Die im Portal verfügbaren Analysen sind für die Verwendung in der vorliegenden Form vorgesehen. Wenn Sie Anpassungen oder eine bestimmte Konfiguration von Filtern und Tokenizern benötigen, sollten Sie [eine benutzerdefinierte Analyse](index-add-custom-analyzers.md) im Code erstellen. Das Portal bietet keine Unterstützung für die Auswahl oder Konfiguration benutzerdefinierter Analysen.
 
-Sobald die Sprachanalyse für ein Feld ausgewählt wurde, wird sie für jede Indizierungs- und Suchanfrage für dieses Feld verwendet. Wenn eine Abfrage mithilfe verschiedener Analysen für mehrere Felder ausgegeben wird, wird sie von der richtigen Analyse unabhängig für das jeweilige Feld verarbeitet.
+## <a name="query-language-specific-fields"></a>Abfragen sprachspezifischer Felder
 
-Viele webbasierte und mobile Anwendungen werden von Benutzern auf der ganzen Welt in unterschiedlichen Sprachen genutzt. Es ist möglich, einen Index für ein derartiges Szenario festzulegen. Hierzu muss ein Feld für jede unterstützte Sprache erstellt werden.
-
-![][3]
-*Indexdefinition mit einem Beschreibungsfeld für jede unterstützte Sprache*
+Sobald die Sprachanalyse für ein Feld ausgewählt wurde, wird sie für jede Indizierungs- und Suchanfrage für dieses Feld verwendet. Wenn eine Abfrage mithilfe verschiedener Analysen für mehrere Felder ausgegeben wird, wird sie von der zugewiesenen Analyse unabhängig für das jeweilige Feld verarbeitet.
 
 Wenn die Sprache des Agents, der eine Abfrage ausgibt, bekannt ist, kann eine Suchabfrage mit dem **SearchFields** -Abfrageparameter auf ein bestimmtes Feld beschränkt werden. Die folgende Abfrage wird nur für die Beschreibung in polnischer Sprache ausgegeben:
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2017-11-11`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2019-05-06`
 
-Sie können im Portal im **Suchexplorer** Ihren Index abfragen, um eine Abfrage einzufügen, die der oben gezeigten ähnlich ist. Der Suchexplorer ist auf dem Blatt des Diensts auf der Befehlsleiste verfügbar. Ausführliche Informationen finden Sie unter [Abfragen des Azure Search-Indexes im Portal](search-explorer.md) .
+Sie können im Portal im [**Suchexplorer**](search-explorer.md) den Index abfragen, um eine Abfrage einzufügen, die der oben gezeigten ähnlich ist.
 
-Manchmal ist die Sprache des Agents, der eine Abfrage ausgibt, nicht bekannt. In diesem Fall kann die Abfrage für alle Felder gleichzeitig ausgegeben werden. Bei Bedarf kann die Ausgabe der Ergebnisse in einer bestimmten Sprache mithilfe von [Bewertungsprofilen](https://msdn.microsoft.com/library/azure/dn798928.aspx) festgelegt werden. Im folgenden Beispiel erhalten in der Beschreibung in englischer Sprache gefundene Übereinstimmungen eine höhere Bewertung als Übereinstimmungen in polnischer und französischer Sprache:
+## <a name="boost-language-specific-fields"></a>Optimieren sprachspezifischer Felder
+
+Manchmal ist die Sprache des Agents, der eine Abfrage ausgibt, nicht bekannt. In diesem Fall kann die Abfrage für alle Felder gleichzeitig ausgegeben werden. Bei Bedarf kann die Ausgabe der Ergebnisse in einer bestimmten Sprache mithilfe von [Bewertungsprofilen](index-add-scoring-profiles.md) festgelegt werden. Im folgenden Beispiel erhalten in der Beschreibung in englischer Sprache gefundene Übereinstimmungen eine höhere Bewertung als Übereinstimmungen in polnischer und französischer Sprache:
 
     "scoringProfiles": [
       {
@@ -79,11 +61,8 @@ Manchmal ist die Sprache des Agents, der eine Abfrage ausgibt, nicht bekannt. In
       }
     ]
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
 
-Wenn Sie .NET-Entwickler sind, können Sie Sprachanalysen mit dem [Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search)konfigurieren. Die neueste Version unterstützt auch die Microsoft-Sprachanalysen.
+## <a name="next-steps"></a>Nächste Schritte
 
-<!-- Image References -->
-[1]: ./media/search-language-support/AnalyzerTab.png
-[2]: ./media/search-language-support/SelectAnalyzer.png
-[3]: ./media/search-language-support/IndexDefinition.png
+Wenn Sie .NET-Entwickler sind, können Sie Sprachanalysen mit dem [Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) und der [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)-Eigenschaft konfigurieren. 

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/27/2019
+ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26f3fe9c2483dda3b9350c110b2e8adf60dcd21e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0b210868c87b06a6b7caf55aece74cba956b406a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58803152"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290778"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -43,12 +43,82 @@ Download | [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?Lin
 Während dieses Prozesses enthält die Versionsnummer des Releases ein „X“ an der Position der Nebenversion (z.B. 1.3.X.0). Dies bedeutet, dass die Versionshinweise in diesem Dokument für alle Versionen gültig sind, die mit „1.3“ beginnen. Sobald wir den Veröffentlichungsprozess beendet haben, wird die Versionsnummer auf die aktuell veröffentliche Version und der Releasestatus auf „Für den Download und für automatisches Upgrade veröffentlicht“ aktualisiert.
 Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur Verfügung gestellt. Aus dem Releasestatus geht hervor, ob für ein Release das automatische Upgrade oder nur der Download verfügbar gemacht wird. Wenn das automatische Upgrade auf Ihrem Azure AD Connect-Server aktiviert ist, wird dieser Server automatisch auf die neueste Version von Azure AD Connect aktualisiert, die für das automatische Upgrade veröffentlicht wird. Beachten Sie, dass nicht alle Azure AD Connect-Konfigurationen für ein automatisches Upgrade berechtigt sind. Unter dem Link [Automatisches Upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) erhalten Sie weitere Informationen zu diesem Thema.
 
-## <a name="13x0"></a>1.3.X.0 
+## <a name="14x0"></a>1.4.X.0
+
+>[!IMPORTANT]
+>Windows-Computer, die mit Azure AD Hybrid Join registriert wurden, werden in Azure AD als Geräteobjekte dargestellt. Diese Geräteobjekte können für den bedingten Zugriff verwendet werden. Windows 10-Computer werden über Azure AD Connect mit der Cloud synchronisiert. Kompatible Windows-Computer werden direkt entweder mithilfe von AD FS oder durch nahtloses einmaliges Anmelden registriert.
+>
+>Nur Windows 10-Computer mit einem spezifischen in Azure AD Hybrid Join konfigurierten Wert für das userCertificate-Attribut sollten über Azure AD Connect mit der Cloud synchronisiert werden.  In früheren Versionen von Azure AD Connect wurde diese Anforderung nicht strikt erzwungen, was zu unnötigen Geräteobjekten in Azure AD geführt hat. Solche Geräte haben in Azure AD dauerhaft den Status „Ausstehend“, da diese Computer nicht für die Registrierung bei Azure AD konzipiert waren.
+>
+>In dieser Version von Azure AD Connect werden nur Windows 10-Computer synchronisiert, die ordnungsgemäß für Azure AD Hybrid Join konfiguriert sind. In Azure AD Connect sollten niemals [Windows-Geräte mit früheren Versionen](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices) synchronisiert werden.  Alle Geräte in Azure AD, die zuvor falsch synchronisiert wurden, werden nun aus Azure AD gelöscht.  Durch diese Änderung werden jedoch keine Windows-Geräte gelöscht, die ordnungsgemäß bei Azure AD für Azure AD Hybrid Join registriert wurden. 
+>
+>Einige Kunden stellen vielleicht fest, dass einige oder alle ihre Windows-Geräte in Azure AD nicht mehr angezeigt werden. Dies ist kein Grund zur Besorgnis, da diese Geräteidentitäten bei der Autorisierung mit bedingtem Zugriff in Azure AD nicht verwendet werden. Einige Kunden sollten sich möglicherweise unter [Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](../../active-directory/devices/hybrid-azuread-join-plan.md) erneut informieren und ihre Windows-Computer ordnungsgemäß registrieren, um sicherzustellen, dass der gerätebasierte bedingte Zugriff auf diesen Geräten in vollem Umfang genutzt werden kann. Wenn in Azure AD Connect versucht wird, [Windows-Geräte mit früheren Versionen](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices) zu löschen, entspricht ein solches Gerät nicht mehr dem Gerät, das über den [MSI-Installer für Microsoft Workplace Join für Nicht-Windows 10-Computer](https://www.microsoft.com/download/details.aspx?id=53554) erstellt wurde, sodass auf dem Gerät keine anderen Azure AD-Funktionen verwendet werden können.  Wenn die Löschvorgänge von Computern/Geräteobjekten in Azure AD den Schwellenwert für den Löschvorgang beim Export überschreiten, wird dem Kunden empfohlen, diese Löschvorgänge zuzulassen.
+
+### <a name="release-status"></a>Releasestatus
+09.10.2019: Nur für automatisches Upgrade veröffentlicht
+
+### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
+- Neue Tools zur Problembehandlung helfen bei der Behandlung folgender Szenarien: „Benutzer wird nicht synchronisiert“, „Gruppe wird nicht synchronisiert“ oder „Gruppenmitglied wird nicht synchronisiert“.
+- Zusätzliche Unterstützung für nationale Clouds im AAD Connect-Skript für die Problembehandlung 
+- Kunden sollten darüber informiert werden, dass die veralteten WMI-Endpunkte für MIIS_Service jetzt entfernt wurden. Alle WMI-Vorgänge sollten jetzt über PS-Cmdlets erfolgen.
+- Sicherheitsverbesserung durch Zurücksetzen der eingeschränkten Delegierung für AZUREADSSOACC-Objekt
+- Werden beim Hinzufügen/Bearbeiten einer Synchronisierungsregel in der Regel Attribute verwendet, die sich zwar im Connector-Schema befinden, dem Connector aber nicht hinzugefügt wurden, werden die Attribute automatisch dem Connector hinzugefügt. Dies gilt auch für den Objekttyp, auf den sich die Regel auswirkt. Wird dem Connector etwas hinzugefügt, wird der Connector markiert, damit beim nächsten Synchronisierungszyklus ein vollständiger Import erfolgt.
+- Die Verwendung eines Unternehmens- oder Domänenadministrators als Connectorkonto wird in neuen AAD Connect-Bereitstellungen nicht mehr unterstützt. Aktuelle AAD Connect-Bereitstellungen, bei denen ein Unternehmens- oder Domänenadministrator als Connectorkonto verwendet wird, sind von diesem Release nicht betroffen.
+- Im Synchronisierungs-Manager wird beim Erstellen/Bearbeiten/Löschen von Regeln eine vollständige Synchronisierung ausgeführt. Bei jeder Regeländerung wird der Benutzer in einem Popup-Fenster darüber informiert, wenn ein vollständiger Import oder eine vollständige Synchronisierung ausgeführt wird.
+- Zusätzliche Schritte für die Problembehandlung bei Kennwortfehlern auf der Seite „Connectors > Eigenschaften > Konnektivität“
+- Auf der Seite „Connectoreigenschaften“ wurde eine Warnung zur Einstellung für den Synchronisierungsdienst-Manager hinzugefügt. Diese Warnung informiert den Benutzer, dass über den AADC-Assistenten Änderungen vorgenommen werden sollten.
+- Es wurde ein neuer Fehler bei Problemen mit der Kennwortrichtlinie eines Benutzers hinzugefügt.
+- Verhindern von Fehlkonfigurationen beim Filtern von Gruppen nach Domänen und Organisationseinheiten. Bei der Gruppenfilterung wird ein Fehler angezeigt, wenn die Domäne/Organisationseinheit der eingegebenen Gruppe bereits herausgefiltert wurde. Der Benutzer kann den Vorgang erst fortsetzen, wenn das Problem behoben wurde.
+- Benutzer können auf der alten Benutzeroberfläche keinen Connector für Active Directory Domain Services oder Windows Azure Active Directory erstellen.
+- Die Barrierefreiheit für die benutzerdefinierten UI-Steuerelemente im Synchronisierungsdienst-Manager wurde korrigiert
+- In Azure AD Connect wurden sechs Verbundverwaltungsaufgaben für alle Anmeldemethoden aktiviert.  (Bisher war nur die Aufgabe „AD FS-SSL-Zertifikat aktualisieren“ für alle Anmeldungen verfügbar.)
+- Es wurde eine Warnung hinzugefügt, dass beim Ändern der Anmeldemethode von Verbund zu PHS oder PTA alle Azure AD-Domänen und -Benutzer zur verwalteten Authentifizierung konvertiert werden.
+- Tokensignaturzertifikate wurden aus der Aufgabe „Azure AD- und AD FS-Vertrauensstellung zurücksetzen“ entfernt, und eine separate Unteraufgabe zum Aktualisieren dieser Zertifikate wurde hinzugefügt.
+- Der Verbundverwaltung wurde eine neue Aufgabe namens „Zertifikate verwalten" hinzugefügt, die Unteraufgaben zum Aktualisieren der SSL- oder Tokensignaturzertifikate für die AD FS-Farm enthält.
+- Der Verbundverwaltung wurde eine neue Unteraufgabe namens „Primären Server angeben" hinzugefügt, mit dem Administratoren einen neuen primären Server für die AD FS-Farm angeben können.
+- Der Verbundverwaltung wurde eine neue Aufgabe namens „Server verwalten“ hinzugefügt, die Unteraufgaben zum Bereitstellen eines AD FS-Servers, zum Bereitstellen eines Webanwendungsproxy-Servers und zum Angeben des primären Servers enthält.
+- Der Verbundverwaltung wurde eine neue Aufgabe namens „Verbundkonfiguration anzeigen“ hinzugefügt, mit der die aktuellen AD FS-Einstellungen angezeigt werden.  (Aufgrund dieser hinzugefügten Aufgabe wurden die AD FS-Einstellungen von der Seite „Lösung prüfen“ entfernt.)
+
+### <a name="fixed-issues"></a>Behobene Probleme
+- Das Synchronisierungsproblem, das auftrat, wenn ein Benutzerobjekt, das das zugehörige Kontaktobjekt übernimmt, auf sich selbst verweist (Benutzer ist beispielsweise sein eigener Manager) wurde behoben.
+- Beim Tastaturfokus werden jetzt Popus mit Hilfe angezeigt.
+- Wenn beim automatischen Upgrade eine in Konflikt stehende App über 6 Stunden ausgeführt wird, beenden Sie sie, und fahren Sie mit dem Upgrade fort.
+- Begrenzen Sie die Anzahl der Attribute, die ein Kunde bei der Auswahl von Verzeichniserweiterungen auswählen kann, auf 100 pro Objekt. Dadurch wird verhindert, dass beim Export ein Fehler auftritt, da Azure maximal 100 Erweiterungsattribute pro Objekt aufweist.
+- Es wurde ein Fehler behoben, um das AD Connectivity-Skript robuster zu machen
+- Es wurde ein Fehler behoben, um die AADConnect-Installation auf einem Computer mithilfe eines vorhandenen WCF-Diensts mit Named Pipes zuverlässiger zu machen.
+- Verbesserte Diagnose und Problembehandlung im Zusammenhang mit Gruppenrichtlinien, die ein Starten des ADSync-Diensts bei der Erstinstallation nicht zulassen.
+- Ein Fehler bei der Schreibweise des Anzeigenamens für einen Windows-Computer wurde behoben.
+- Ein Fehler bei der Schreibweise des Betriebssystemtyps für einen Windows-Computer wurde behoben.
+- Es wurde ein Fehler behoben, bei dem Computer, die nicht unter Windows 10 ausgeführt werden, unerwartet synchronisiert wurden. Hinweis: Aufgrund dieser Änderung werden Computer, die nicht unter Windows 10 ausgeführt werden (und die zuvor synchronisiert wurden), jetzt gelöscht. Dies hat keine Auswirkungen auf Features, da die Synchronisierung von Windows-Computern nur für die Hybrid-Azure AD-Domäneneinbindung verwendet wird, die nur bei Geräten mit Windows 10 funktioniert. 
+- Ein Fehler bei der Schreibweise des Anzeigenamens für einen Windows-Computer wurde behoben.
+- Ein Fehler bei der Schreibweise des Betriebssystemtyps für einen Windows-Computer wurde behoben.
+- Es wurden mehrere neue (interne) Cmdlets zum ADSync-PowerShell-Modul hinzugefügt.
+
+
+## <a name="13210"></a>1.3.21.0
+>[!IMPORTANT]
+>Es gibt ein bekanntes Problem beim Upgrade von Azure AD Connect aus einer früheren Version auf 1.3.21.0, bei dem im Office 365-Portal nicht die aktualisierte Version angezeigt wird, obwohl das Upgrade von Azure AD Connect erfolgreich durchgeführt wurde.
+>
+> Um dies zu beheben, müssen Sie das **AdSync**-Modul importieren und anschließend das Powershell-Cmdlet `Set-ADSyncDirSyncConfiguration` auf dem Azure AD Connect-Server ausführen.  Sie können sich nach den folgenden Schritten richten:
+>
+>1. Öffnen Sie Powershell im Administratormodus
+>2. Führen Sie `Import-Module "ADSync"` aus.
+>3. Führen Sie `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` aus.
+ 
+### <a name="release-status"></a>Releasestatus 
+
+14.05.2019: Für den Download veröffentlicht
+
+### <a name="fixed-issues"></a>Behobene Probleme 
+
+- Ein Sicherheitsrisiko in Verbindung mit der Rechteerweiterung in Microsoft Azure Active Directory Connect, Build 1.3.20.0, wurde behoben.  Dieses Sicherheitsrisiko ermöglicht es einem Angreifer unter bestimmten Bedingungen, zwei Powershell-Cmdlets im Kontext eines privilegierten Kontos sowie privilegierte Aktionen auszuführen.  Das Problem wird durch das Sicherheitsupdate behoben, indem diese Cmdlets deaktiviert werden. Weitere Informationen finden Sie unter [Sicherheitsupdate](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1000).
+
+## <a name="13200"></a>1.3.20.0 
 
 ### <a name="release-status"></a>Releasestatus 
 
-25.3.2019: Ausstehend
- 
+24.04.2019: Für den Download veröffentlicht
+
 ### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen 
 
 - Die Unterstützung der Domänenaktualisierung wurde hinzugefügt. 
@@ -64,7 +134,7 @@ Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur 
 - Es wurde ein Upgrade auf ADAL 3.19.8 durchgeführt, um eine WS-Trust-Lösung für Ping-Signale auszuwählen und Unterstützung für neue Azure-Instanzen hinzuzufügen. 
 - Die Gruppensynchronisierungsregeln wurden geändert, um „SamAccountName“, „DomainNetbios“ und „DomainFQDN“ an die Cloud zu übergeben – erforderlich für Ansprüche 
 - Die Standardbehandlung von Synchronisierungsregeln wurde geändert. [Hier](how-to-connect-fix-default-rules.md) erfahren Sie mehr.
-- Ein neuer Agent wurde hinzugefügt, der als Windows-Dienst ausgeführt wird. Dieser Agent namens „Admin-Agent“ ermöglicht eine umfassendere Remotediagnose des Azure AD Connect-Servers, um Microsoft-Techniker bei der Problembehandlung zu unterstützen, wenn Sie eine Supportanfrage öffnen. [Hier](whatis-aadc-admin-agent.md) erfahren Sie mehr über den Admin-Agent. 
+- Ein neuer Agent wurde hinzugefügt, der als Windows-Dienst ausgeführt wird. Dieser Agent namens „Admin-Agent“ ermöglicht eine umfassendere Remotediagnose des Azure AD Connect-Servers, um Microsoft-Techniker bei der Problembehandlung zu unterstützen, wenn Sie eine Supportanfrage öffnen. Dieser Agent ist standardmäßig nicht installiert und aktiviert.  Weitere Informationen zum Installieren und Aktivieren des Agents finden Sie unter [Was ist der Azure AD Connect-Administrator-Agent?](whatis-aadc-admin-agent.md) 
 - Die Software-Lizenzbedingungen wurden aktualisiert. 
 - Die automatische Upgrade-Unterstützung für Bereitstellungen, die AD FS als Anmeldetyp verwenden, wurde hinzugefügt.  Dadurch entfällt auch die Notwendigkeit, im Rahmen des Upgradeprozesses die Azure AD-Vertrauensstellung der Active Directory Federation Services (AD FS) zu aktualisieren. 
 - Eine Verwaltungsaufgabe für Azure AD-Vertrauensstellung wurde hinzugefügt, die zwei Optionen bereitstellt: Vertrauensstellung analysieren/aktualisieren und Vertrauensstellung zurücksetzen. 
@@ -73,7 +143,6 @@ Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur 
 - Die Installation des neuen AD FS-Farmworkflows wurde so aktualisiert, dass nur die Bereitstellung von einem (1) AD FS- und einem (1) WAP-Server zulässig ist.  Alle weiteren Server folgen nach der Erstinstallation. 
 
 ### <a name="fixed-issues"></a>Behobene Probleme 
-
 
 - Die Probleme bei der SQL-Logik für die erneute Verbindungsherstellung für den ADSync-Dienst wurden behoben. 
 - Der Fehler bei Neuinstallationen mit einer leeren SQL AOA-DB wurde behoben. 
@@ -170,7 +239,7 @@ Dieser Hotfixbuild behebt eine Regression im vorherigen Build, bei der das Kennw
  
 ## <a name="118820"></a>1.1.882.0  
 
-7.9.2018: als Download veröffentlicht; kein Release für automatisches Upgrade 
+7\.9.2018: als Download veröffentlicht; kein Release für automatisches Upgrade 
 
 ### <a name="fixed-issues"></a>Behobene Probleme  
 
@@ -387,7 +456,7 @@ Sie sperren den Zugriff auf das AD DS-Konto durch die Implementierung der folgen
 *   Entfernen aller ACEs für das angegebene Objekt, mit Ausnahme von ACEs für SELF Wir möchten die Standardberechtigungen für SELF beibehalten.
 *   Weisen Sie diese speziellen Berechtigungen zu:
 
-Type     | NAME                          | Access               | Gilt für
+type     | NAME                          | Access               | Gilt für
 ---------|-------------------------------|----------------------|--------------|
 ZULASSEN    | SYSTEM                        | Vollzugriff         | Dieses Objekt  |
 ZULASSEN    | Organisationsadministratoren             | Vollzugriff         | Dieses Objekt  |
@@ -487,7 +556,7 @@ Status: 19. Oktober 2017
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect-Synchronisierung
 > [!NOTE]
-> Hinweis: Der Synchronisierungsdienst verfügt über eine WMI-Schnittstelle, über die Sie Ihren eigenen benutzerdefinierten Scheduler entwickeln können. Diese Schnittstelle ist inzwischen veraltet und wird in zukünftigen Versionen von Azure AD Connect, die nach dem 30. Juni 2018 ausgeliefert werden, entfernt. Kunden, die den Zeitplan für die Synchronisierung anpassen möchten, sollten den integrierten Scheduler (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) verwenden.
+> Hinweis: Der Synchronisierungsdienst verfügt über eine WMI-Schnittstelle, über die Sie Ihren eigenen benutzerdefinierten Scheduler entwickeln können. Diese Schnittstelle ist inzwischen veraltet und wird in zukünftigen Versionen von Azure AD Connect, die nach dem 30. Juni 2018 ausgeliefert werden, entfernt. Kunden, die den Zeitplan für die Synchronisierung anpassen möchten, sollten den [integrierten Scheduler](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) verwenden.
 
 #### <a name="fixed-issues"></a>Behobene Probleme
 * Wenn der Azure AD Connect-Assistent das erforderliche AD Connector-Konto zum Synchronisieren von Änderungen aus dem lokalen Active Directory erstellt, wird dem Konto die zum Lesen von PublicFolder-Objekten erforderliche Berechtigung nicht ordnungsgemäß zugewiesen. Dieses Problem betrifft die Expressinstallation und die benutzerdefinierte Installation. Das Problem wird mit dieser Änderung behoben.
@@ -552,7 +621,7 @@ Status: 05. September 2017
 
 ### <a name="seamless-single-sign-on"></a>Nahtloses einmaliges Anmelden
 #### <a name="fixed-issues"></a>Behobene Probleme
-* Ein Problem wurde behoben, aufgrund dessen der Azure AD Connect-Assistent zu einem Fehler zurückkehrte, wenn Sie versuchten, das [Nahtlose einmalige Anmelden](how-to-connect-sso.md) zu aktivieren. Die Fehlermeldung lautet *„Fehler bei Konfiguration des Microsoft Azure AD Connect-Authentifizierungs-Agent“*. Dieses Problem betrifft bestehende Kunden, die manuell die Vorschauversion der Authentifizierung-Agents für [Passthrough-Authentifizierung](how-to-connect-sso.md) anhand der in diesem [Artikel](how-to-connect-pta-upgrade-preview-authentication-agents.md) beschriebenen Schritte aktualisiert hatten.
+* Ein Problem wurde behoben, aufgrund dessen der Azure AD Connect-Assistent zu einem Fehler zurückkehrte, wenn Sie versuchten, das [Nahtlose einmalige Anmelden](how-to-connect-sso.md) zu aktivieren. Die Fehlermeldung lautet *„Fehler bei Konfiguration des Microsoft Azure AD Connect-Authentifizierungs-Agent“* . Dieses Problem betrifft bestehende Kunden, die manuell die Vorschauversion der Authentifizierung-Agents für [Passthrough-Authentifizierung](how-to-connect-sso.md) anhand der in diesem [Artikel](how-to-connect-pta-upgrade-preview-authentication-agents.md) beschriebenen Schritte aktualisiert hatten.
 
 
 ## <a name="115610"></a>1.1.561.0
@@ -788,12 +857,12 @@ Azure AD Connect-Synchronisierung
 * Bei Build 443 ist ein Problem aufgetreten, bei dem das direkte Upgrade von DirSync zwar erfolgreich ausgeführt wurde, jedoch die erforderlichen Ausführungsprofile für die Verzeichnissynchronisierung nicht erstellt wurden. Dieser Build von Azure AD Connect enthält eine Logik zur Systemreparatur. Wenn Kunden ein Upgrade auf diesen Build durchführen, erkennt und erstellt Azure AD Connect fehlende Ausführungsprofile.
 * Das Problem, dass der Vorgang zur Kennwortsynchronisierung aufgrund der Ereignis-ID 6900 und der Fehlermeldung *„Ein Element mit demselben Schlüssel wurde bereits hinzugefügt“* nicht gestartet werden kann, wurde behoben. Dieses Problem tritt auf, wenn Sie beim Aktualisieren der Konfiguration der OE-Filterung die AD-Konfigurationspartition einschließen. Zur Behebung dieses Problems werden beim Vorgang zur Kennwortsynchronisierung nur noch Kennwortänderungen bei AD-Domänenpartitionen synchronisiert. Partitionen, die nicht zu Domänen gehören (z.B. Konfigurationspartitionen), werden übersprungen.
 * Während der Express-Installation erstellt Azure AD Connect ein lokales AD DS-Konto, das vom AD-Connector zur Kommunikation mit dem lokalen AD verwendet werden soll. Vorher wurde das Konto mit dem für das Benutzerkontosteuerungs-Attribut festgelegte Flag „PASSWD_NOTREQD“ erstellt, und ein zufälliges Kennwort wurde für das Konto festgelegt. Nun entfernt Azure AD Connect explizit das Flag „PASSWD_NOTREQD“, nachdem das Kennwort im Konto festgelegt wurde.
-* Das Problem, dass das Upgrade von DirSync mit der Fehlermeldung *„Deadlock beim Versuch, eine Anwendungssperre abzurufen“*, wenn das Attribut „mailNickname“ im lokalen AD-Schema gefunden, aber nicht an die Objektklasse „AD-Benutzer“ gebunden wird, wurde behoben.
+* Das Problem, dass das Upgrade von DirSync mit der Fehlermeldung *„Deadlock beim Versuch, eine Anwendungssperre abzurufen“* , wenn das Attribut „mailNickname“ im lokalen AD-Schema gefunden, aber nicht an die Objektklasse „AD-Benutzer“ gebunden wird, wurde behoben.
 * Das Problem, dass die Funktion zum Geräterückschreiben automatisch deaktiviert wird, wenn ein Administrator die Konfiguration der Azure AD Connect-Synchronisierung mithilfe des Azure AD Connect-Assistenten aktualisiert, wurde behoben. Dieses Problem tritt auf, wenn der Assistent die Voraussetzungen für die vorhandene Konfiguration des Geräterückschreibens im lokalen AD durchführt und die Überprüfung fehlschlägt. Das Problem lässt sich beheben, indem die Überprüfung übersprungen wird, wenn das Geräterückschreiben vorher bereits aktiviert wurde.
 * Um die OE-Filterung zu konfigurieren, können Sie entweder den Azure AD Connect-Assistenten oder den Synchronization Service Manager verwenden. Wenn Sie vorher die OE-Filterung mithilfe des Azure AD Connect-Assistenten konfiguriert haben, wurden neue erstellte Organisationseinheiten (OEs) zur Verzeichnissynchronisierung im Anschluss eingeschlossen. Wenn neue Organisationseinheiten nicht eingeschlossen werden sollten, musste die OE-Filterung mithilfe des Synchronization Service Manager konfiguriert werden. Nun können Sie dasselbe Verhalten mit dem Azure AD Connect-Assistenten erzielen.
 * Das Problem, dass gespeicherte, von Azure AD Connect erforderliche Verfahren anstelle des dbo-Schemas unter dem Schema des Administrators, der die Installation durchführt, erstellt werden, wurde behoben.
 * Das Problem, dass das von Azure AD zurückgegebene Attribut „TrackingId“ in den AAD Connect-Serverereignisprotokollen ausgelassen wird, wurde behoben. Das Problem tritt auf, wenn Azure AD Connect eine Umleitungsmeldung von Azure AD erhält und keine Verbindung zum bereitgestellten Endpunkt herstellen kann. Das Attribut „TrackingId“ wird von Supporttechnikern zur Korrelation mit serverseitigen Protokollen bei der Problembehandlung verwendet.
-* Wenn von Azure AD der Fehler „LargeObject“ an Azure AD Connect ausgegeben wird, generiert Azure AD Connect ein Ereignis mit der EventID 6941 und der Meldung *„Das bereitgestellte Objekt ist zu groß. Verringern Sie die Anzahl der Attributwerte für dieses Objekt.“*. Gleichzeitig generiert Azure AD Connect auch ein irreführendes Ereignis mit der Ereignis-ID 6900 und der Meldung *„Microsoft.Online.Coexistence.ProvisionRetryException: Kommunikation mit dem Microsoft Azure Active Directory-Dienst nicht möglich.“* Um Verwirrungen zu vermeiden, generiert Azure AD Connect nicht mehr das letztere Ereignis, wenn die Fehlermeldung „LargeObject“ empfangen wird.
+* Wenn von Azure AD der Fehler „LargeObject“ an Azure AD Connect ausgegeben wird, generiert Azure AD Connect ein Ereignis mit der EventID 6941 und der Meldung *„Das bereitgestellte Objekt ist zu groß. Verringern Sie die Anzahl der Attributwerte für dieses Objekt.“* . Gleichzeitig generiert Azure AD Connect auch ein irreführendes Ereignis mit der Ereignis-ID 6900 und der Meldung *„Microsoft.Online.Coexistence.ProvisionRetryException: Kommunikation mit dem Microsoft Azure Active Directory-Dienst nicht möglich.“* Um Verwirrungen zu vermeiden, generiert Azure AD Connect nicht mehr das letztere Ereignis, wenn die Fehlermeldung „LargeObject“ empfangen wird.
 * Das Problem, dass der Synchronization Service Manager bei dem Versuch, die Konfiguration des generischen LDAP-Connectors zu aktualisieren, nicht mehr reagiert, wurde behoben.
 
 **Neue Features/Verbesserungen:**
@@ -868,7 +937,7 @@ Azure AD Connect-Synchronisierung
 * Eine Dienstkonfiguration im Azure AD-Mandanten gibt an, ob die Kennwortsynchronisierung für den Mandanten aktiviert ist. Früher konnte es leicht zu einer falschen Dienstkonfiguration durch Azure AD Connect kommen, wenn ein aktiver Server und ein Stagingserver vorhanden waren. Jetzt versucht Azure AD Connect, die Dienstkonfiguration nur entsprechend dem aktiven Azure AD Connect-Server vorzunehmen.
 * Der Azure AD Connect-Assistent erkennt jetzt, wenn im lokalen AD der AD-Papierkorb nicht aktiviert ist, und gibt eine entsprechende Warnung aus.
 * Früher trat beim Export nach Azure AD eine Zeitüberschreitung auf, und der Export schlug fehl, wenn die Gesamtgröße der Objekte im Batch einen bestimmten Schwellenwert überschritt. Jetzt versucht der Synchronisierungsdienst, die Objekte in einzelnen kleineren Batches erneut zu senden, wenn das Problem auftritt.
-* Die Anwendung Synchronization Service Key Management wurde aus dem Windows-Startmenü entfernt. Die Verwaltung der Verschlüsselungsschlüssel wird weiterhin über die Befehlszeilenschnittstelle mithilfe von „miiskmu.exe“ unterstützt. Informationen zum Verwalten von Verschlüsselungsschlüsseln finden Sie im Artikel [Abandoning the Azure AD Connect Sync encryption key](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-azure-ad-connect-sync-encryption-key) (Verwerfen des Verschlüsselungsschlüssels der Azure AD Connect-Synchronisierung) (in englischer Sprache).
+* Die Anwendung Synchronization Service Key Management wurde aus dem Windows-Startmenü entfernt. Die Verwaltung der Verschlüsselungsschlüssel wird weiterhin über die Befehlszeilenschnittstelle mithilfe von „miiskmu.exe“ unterstützt. Informationen zum Verwalten von Verschlüsselungsschlüsseln finden Sie im Artikel [Abandoning the Azure AD Connect Sync encryption key](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-change-serviceacct-pass#abandoning-the-adsync-service-account-encryption-key) (Verwerfen des Verschlüsselungsschlüssels der Azure AD Connect-Synchronisierung) (in englischer Sprache).
 * Wenn Sie früher das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung geändert heben, konnte der Synchronisierungsdienst nicht ordnungsgemäß gestartet werden, bis der Verschlüsselungsschlüssel verworfen und das Kennwort für das Dienstkonto der Azure AD Connect-Synchronisierung erneut initialisiert wurde. Jetzt ist dieser Prozess nicht mehr erforderlich.
 
 Desktop-SSO
@@ -1007,7 +1076,7 @@ Veröffentlichung: Mai 2016
 
 * Warnungen und Unterstützung beim Überprüfen von Domänen, wenn Sie in Azure AD Connect noch keine Überprüfung durchgeführt haben.
 * Unterstützung für [Microsoft Cloud Deutschland](reference-connect-instances.md#microsoft-cloud-germany)wurde hinzugefügt.
-* Unterstützung für die neueste Infrastruktur der [Microsoft Azure Government-Cloud](reference-connect-instances.md#microsoft-azure-government-cloud) mit neuen URL-Anforderungen wurde hinzugefügt.
+* Unterstützung für die neueste Infrastruktur der [Microsoft Azure Government-Cloud](reference-connect-instances.md#microsoft-azure-government) mit neuen URL-Anforderungen wurde hinzugefügt.
 
 **Behobene Probleme und Verbesserungen:**
 
@@ -1209,7 +1278,7 @@ Veröffentlichung: Dezember 2014
 **Neue Features:**
 
 * Die Synchronisierung von Kennwörtern mit attributbasierter Filterung wird jetzt unterstützt. Weitere Informationen finden Sie unter [Synchronisierung von Kennwörtern mit Filterung](how-to-connect-sync-configure-filtering.md).
-* Das Attribut „ms-DS-ExternalDirectoryObjectID“ wird in Active Directory zurückgeschrieben. Dieses Feature fügt Unterstützung für Office 365-Anwendungen hinzu. Es verwendet „Oauth2“, um auf Online- und lokale Postfächer in einer hybriden Exchange-Bereitstellung zuzugreifen.
+* Das Attribut „ms-DS-ExternalDirectoryObjectID“ wird in Active Directory zurückgeschrieben. Dieses Feature fügt Unterstützung für Office 365-Anwendungen hinzu. Es verwendet OAuth2, um auf Online- und lokale Postfächer in einer hybriden Exchange-Bereitstellung zuzugreifen.
 
 **Behobene Upgrade-Probleme:**
 

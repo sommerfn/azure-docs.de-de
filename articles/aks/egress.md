@@ -2,17 +2,17 @@
 title: Statische IP-Adresse für ausgehenden Datenverkehr in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie eine statische öffentliche IP-Adresse für ausgehenden Datenverkehr in einem AKS-Cluster erstellen und verwenden
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: iainfou
-ms.openlocfilehash: 6612d801804cdd1e092b50977230f24b378e64ba
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.author: mlearned
+ms.openlocfilehash: 67471d688e64244067a7537bc87c379da4a69c03
+ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407135"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68696361"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Verwenden einer statischen öffentlichen IP-Adresse für ausgehenden Datenverkehr in Azure Kubernetes Service (AKS)
 
@@ -22,19 +22,19 @@ In diesem Artikel wird Ihnen gezeigt, wie Sie eine statische öffentliche IP-Adr
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
+Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Außerdem muss die Version 2.0.59 oder höher der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="egress-traffic-overview"></a>Übersicht über ausgehenden Datenverkehr
 
-Der ausgehende Datenverkehr aus einem AKS-Cluster unterliegt den [Azure Load Balancer-Konventionen][outbound-connections]. Bevor der erste Kubernetes-Dienst des Typs `LoadBalancer` erstellt wird, gehören die Agent-Knoten in einem AKS-Cluster nicht zum Azure Load Balancer-Pool. In dieser Konfiguration verfügen die Knoten über keine öffentliche IP-Adresse auf Instanzebene. Azure verschiebt den ausgehenden Datenfluss zu einer öffentlichen Quell-IP-Adresse, die nicht konfigurierbar oder deterministisch ist.
+Der ausgehende Datenverkehr aus einem AKS-Cluster unterliegt den [Azure Load Balancer-Konventionen][outbound-connections]. Bevor der erste Kubernetes-Dienst des Typs `LoadBalancer` erstellt wird, gehören die Agent-Knoten in einem AKS-Cluster nicht zum Azure Load Balancer-Pool. In dieser Konfiguration verfügen die Knoten über keine öffentliche IP-Adresse auf Instanzebene. Azure verschiebt den ausgehenden Datenfluss zu einer öffentlichen Quell-IP-Adresse, die nicht konfigurierbar oder deterministisch ist.
 
 Wenn ein Kubernetes-Dienst des Typs `LoadBalancer` erstellt wurde, werden Knoten des Agent einem Azure Load Balancer-Pool hinzugefügt. Azure verschiebt den ausgehenden Datenfluss zu der ersten öffentlichen IP-Adresse, die vom Load Balancer konfiguriert wurde. Diese öffentliche IP-Adresse gilt nur für die Lebensdauer dieser Ressource. Wenn Sie den Kubernetes-Lastenausgleichsdienst löschen, werden auch der zugehörige Lastenausgleich und die zugehörige IP-Adresse gelöscht. Wenn Sie eine bestimmte IP-Adresse für einen Kubernetes-Dienst zuweisen oder beibehalten möchten, können Sie eine statische öffentliche IP-Adresse erstellen und verwenden.
 
 ## <a name="create-a-static-public-ip"></a>Erstellen einer statischen öffentlichen IP-Adresse
 
-Wenn Sie eine statische öffentliche IP-Adresse zur Verwendung mit AKS erstellen, muss die Ressource der IP-Adresse im **Knoten** „Ressourcengruppe“ erstellt werden. Rufen Sie den Namen der Ressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab, und fügen Sie den Abfrageparameter `--query nodeResourceGroup` hinzu. Im folgenden Beispiel wird der Knoten „Ressourcengruppe“ für den AKS-Clusternamen *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen:
+Rufen Sie den Namen der Ressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab, und fügen Sie den Abfrageparameter `--query nodeResourceGroup` hinzu. Im folgenden Beispiel wird der Knoten „Ressourcengruppe“ für den AKS-Clusternamen *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen:
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -123,7 +123,7 @@ $ curl -s checkip.dyndns.org
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um der Verwaltung mehrerer öffentlicher IP-Adressen in Azure Load Balancer zu entgehen, können Sie stattdessen einen Eingangscontroller verwenden. Eingangscontroller bieten zusätzliche Vorteile wie SSL-/TLS-Terminierung, Unterstützung der URI-Neugenerierung und Upstream der SSL-/TLS-Verschlüsselung. Weitere Informationen finden Sie unter [Create a basic ingress controller in AKS (Erstellen eines einfachen Eingangscontrollers in AKS)][ingress-aks-cluster].
+Um der Verwaltung mehrerer öffentlicher IP-Adressen in Azure Load Balancer zu entgehen, können Sie stattdessen einen Eingangscontroller verwenden. Eingangscontroller bieten zusätzliche Vorteile wie SSL-/TLS-Terminierung, Unterstützung der URI-Neugenerierung und Upstream der SSL-/TLS-Verschlüsselung. Weitere Informationen finden Sie unter [Erstellen eines einfachen Eingangscontrollers in AKS][ingress-aks-cluster].
 
 <!-- LINKS - internal -->
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create

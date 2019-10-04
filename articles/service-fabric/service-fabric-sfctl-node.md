@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 08ea0081c84ea31b2b71d03679b1b527cf94c075
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 9d41f978dd6a87287d8743e321acf35ff4909544
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662889"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69034983"
 ---
 # <a name="sfctl-node"></a>sfctl node
 Ermöglicht es, Knoten zu verwalten, die einen Cluster bilden.
@@ -180,6 +179,8 @@ Ruft die Informationen zum Laden eines Service Fabric-Knotens für alle Metriken
 Benachrichtigt Service Fabric, dass der persistente Zustand auf einem Knoten dauerhaft entfernt wurde oder verloren gegangen ist.
 
 Dies bedeutet, dass es nicht möglich, den persistenten Zustand dieses Knotens wiederherzustellen. Dies geschieht in der Regel, wenn eine Festplatte zurückgesetzt wurde oder eine Festplatte abstürzt. Der Knoten muss ausgeschaltet sein, damit dieser Vorgang erfolgreich durchgeführt wird. Durch diesen Vorgang wird Service Fabric darauf hingewiesen, dass die Replikate auf diesem Knoten nicht mehr vorhanden sind, und dass Service Fabric nicht auf die Wiederherstellung dieser Replikate warten soll. Führen Sie dieses Cmdlet nicht aus, wenn der Zustand auf dem Knoten nicht entfernt wurde und der Knoten nicht wieder mit korrektem Zustand wiederhergestellt werden kann.
+
+Damit Sie dieses Cmdlet für Startknoten verwenden können, ändern Sie ab Service Fabric 6.5 die Startknoten in normale (Nicht-Start-) Knoten, und rufen Sie dann dieses Cmdlet auf, um den Knotenzustand zu entfernen. Wenn der Cluster unter Azure ausgeführt wird, versucht Service Fabric, nachdem der Startknoten heruntergefahren ist, ihn automatisch in einen Nicht-Startknoten zu ändern. Stellen Sie dazu sicher, dass die Anzahl der Nicht-Startknoten im primären Knotentyp nicht kleiner ist als die Anzahl der Down-Startknoten. Fügen Sie zu diesem Zweck bei Bedarf weitere Knoten zum primären Knotentyp hinzu. Wenn für einen eigenständigen Cluster nicht erwartet wird, dass der Down-Startknoten mit intaktem Zustand zurückkehrt, entfernen Sie den Knoten aus dem Cluster. Weitere Informationen finden Sie unter [Entfernen von Knoten aus einem eigenständigen Service Fabric-Cluster](/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes). 
 
 ### <a name="arguments"></a>Argumente
 

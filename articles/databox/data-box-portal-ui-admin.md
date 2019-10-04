@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 5d1c3e4bb1c4b3545c8f051432016348112f16b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a7681ba815533296deae2b585e377a733074b6c9
+ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58903645"
+ms.lasthandoff: 06/14/2019
+ms.locfileid: "67147912"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Verwalten von Data Box Disk über das Azure-Portal
 
@@ -129,7 +129,7 @@ Führen Sie die folgenden Schritte aus, um die Benachrichtigungsdetails zu bearb
 |Empfangen     | Ihre Datenträger sind im Azure-Datencenter eingegangen. Der Datenkopiervorgang beginnt in Kürze.        |
 |Daten kopiert     |Die Daten werden gerade kopiert.<br> Warten Sie, bis der Datenkopiervorgang abgeschlossen ist.         |
 |Abgeschlossen       |Der Auftrag wurde erfolgreich abgeschlossen.<br> Vergewissern Sie sich, dass sich Ihre Daten in Azure befinden, bevor Sie die lokalen Daten von Servern löschen.         |
-|Mit Fehlern abgeschlossen| Die Daten wurden kopiert, es sind jedoch Fehler aufgetreten. <br> Sehen Sie sich die Kopierprotokolle unter dem Pfad aus der **Übersicht** an. Weitere Informationen finden Sie unter [Herunterladen von Diagnoseprotokollen](data-box-disk-troubleshoot.md#download-diagnostic-logs).   |
+|Mit Fehlern abgeschlossen| Die Daten wurden kopiert, es sind jedoch Fehler aufgetreten. <br> Sehen Sie sich die Fehlerprotokolle für das Hochladen unter dem Pfad aus der **Übersicht** an. Weitere Informationen finden Sie unter [Herunterladen von Uploadprotokollen](data-box-disk-troubleshoot-upload.md#download-logs).   |
 |Canceled            |Der Auftrag wurde abgebrochen. <br> Entweder haben Sie den Auftrag abgebrochen, oder es ist ein Fehler aufgetreten, und der Auftrag wurde durch den Dienst abgebrochen.     |
 
 

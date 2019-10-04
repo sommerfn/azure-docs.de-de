@@ -1,22 +1,22 @@
 ---
 title: Verwaltung von Benutzern und Geräten durch Administratoren – Azure MFA – Azure Active Directory
-description: Hier wird das Ändern von Benutzereinstellungen beschrieben, z. B. wie Benutzer dazu gebracht werden, den Nachweis-Prozess noch einmal durchzuführen.
+description: Beschreibt, wie Administratoren Benutzereinstellungen ändern und beispielsweise Benutzer dazu zwingen können, den Nachweisprozess noch einmal zu durchlaufen.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c78d6d901c050f6d1df8b53b34f0088d3ad8b0f8
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 190d697dca56fa51d92987f32db0146aa79881aa
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368475"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162396"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Verwalten von Benutzereinstellungen mit Azure Multi-Factor Authentication (MFA) in der Cloud
 
@@ -25,6 +25,19 @@ Als Administrator können Sie die folgenden Einstellungen für Benutzer und Ger�
 * Benutzer auffordern, Kontaktmethoden erneut bereitzustellen
 * App-Kennwörter löschen
 * MFA auf allen vertrauenswürdigen Geräten erfordern
+
+## <a name="manage-authentication-methods"></a>Verwalten von Authentifizierungsmethoden
+
+Als Administrator, dem die Rolle „Authentifizierungsadministrator“ zugewiesen wurde, können Sie festlegen, dass Benutzer ihr Kennwort zurücksetzen, sich für die mehrstufige Authentifizierung erneut registrieren oder vorhandene MFA-Sitzungen von ihrem Benutzerobjekt widerrufen müssen.
+
+![Verwalten von Authentifizierungsmethoden im Azure-Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie auf der linken Seite **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie den Benutzer aus, für den Sie eine Aktion ausführen möchten, und wählen Sie anschließend **Authentifizierungsmethoden** aus.
+   - **Kennwort zurücksetzen**: Das Kennwort des Benutzers wird zurückgesetzt, und ein temporäres Kennwort wird zugewiesen, das bei der nächsten Anmeldung geändert werden muss.
+   - **Erneute MFA-Registrierung erforderlich**: Sorgt dafür, dass der Benutzer bei der nächsten Anmeldung zur Einrichtung einer neuen MFA-Authentifizierungsmethode aufgefordert wird.
+   - **MFA-Sitzungen widerrufen**: Löscht die gespeicherten MFA-Sitzungen des Benutzers. Wenn auf dem Gerät gemäß Richtlinie das nächste Mal eine MFA erforderlich ist, muss der Benutzer diese durchführen.
 
 ## <a name="require-users-to-provide-contact-methods-again"></a>Benutzer auffordern, Kontaktmethoden erneut bereitzustellen
 
@@ -41,6 +54,14 @@ Durch diese Einstellung wird der Benutzer gezwungen, den Registrierungsprozess e
    ![Benutzer auffordern, Kontaktmethoden erneut bereitzustellen](./media/howto-mfa-userdevicesettings/reproofup.png)
 7. Klicken Sie auf **Speichern**.
 8. Klicken Sie auf **Schließen**.
+
+Organisationen können diese Schritte mit PowerShell ausführen und dabei den folgenden Code als Leitfaden zum Löschen des `StrongAuthenticationMethods` Attributs verwenden:
+
+```PowerShell
+$Upn = "theuser@domain.com"
+$noMfaConfig = @()
+Set-MsolUser -UserPrincipalName $Upn -StrongAuthenticationMethods $noMfaConfig
+```
 
 ## <a name="delete-users-existing-app-passwords"></a>Löschen vorhandener App-Kennwörter eines Benutzers
 
@@ -64,7 +85,7 @@ Eines der konfigurierbaren Features von Azure Multi-Factor Authentication besteh
 
 Benutzer können die zweistufige Überprüfung für eine konfigurierbare Anzahl von Tagen auf ihren regulären Geräten deaktivieren. Wenn ein Konto kompromittiert wird oder ein vertrauenswürdiges Gerät verloren geht, müssen Sie in der Lage sein, den Status „Vertrauenswürdig“ aufzuheben und die zweistufige Überprüfung wieder anzufordern.
 
-Die Einstellung **Mehrstufige Authentifizierung für alle gespeicherten Geräte wiederherstellen** bewirkt, dass der Benutzer bei der nächsten Anmeldung die zweistufige Überprüfung durchführen muss, unabhängig davon, ob das Gerät als vertrauenswürdig markiert wurde.
+Wenn **Wiederherstellen der mehrstufigen Authentifizierung für alle gespeicherten Geräte** aktiviert ist, müssen die Benutzer bei der nächsten Anmeldung die zweistufige Überprüfung ausführen, auch wenn ihr Gerät als vertrauenswürdig gekennzeichnet wurde.
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>MFA auf allen ausgesetzten Geräten für einen Benutzer wiederherstellen
 

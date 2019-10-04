@@ -3,7 +3,7 @@ title: Reliable Collection-Objektserialisierung in Azure Service Fabric | Micros
 description: Reliable Collection-Objektserialisierung in Azure Service Fabric
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: masnider,rajak
 ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
-ms.author: aljo
-ms.openlocfilehash: 48f7153dcee45a6271919ac756ad794186faaed4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: atsenthi
+ms.openlocfilehash: d5e7dfb84f6e8a8fbd029ccc0b15c17f68216c33
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668437"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599306"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Reliable Collection-Objektserialisierung in Azure Service Fabric
 Reliable Collection repliziert und speichert seine Elemente, um sicherzustellen, dass sie über Computer- und Stromausfälle hinaus erhalten bleiben.
@@ -43,7 +43,7 @@ Reliable State Manager verfügt über integrierte Serialisierungsprogramme für 
 - Zeichenfolge
 - decimal
 - double
-- Gleitkommawert
+- float
 - int
 - uint
 - lang
@@ -55,7 +55,7 @@ Reliable State Manager verfügt über integrierte Serialisierungsprogramme für 
 
 Benutzerdefinierte Serialisierungsprogramme werden häufig zum Steigern der Leistung oder zum Verschlüsseln der Daten über das Netzwerk und auf dem Datenträger verwendet. Neben anderen Gründen sind benutzerdefinierte Serialisierungsprogramme häufig effizienter als generische Serialisierungsprogramme, da sie Informationen über den Typ nicht serialisieren müssen. 
 
-[IReliableStateManager.TryAddStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) wird zum Registrieren eines benutzerdefinierten Serialisierungsprogramms für den angegebenen Typ T verwendet. Diese Registrierung sollte bei der Erstellung der StatefulServiceBase erfolgen, um sicherzustellen, dass vor Beginn der Wiederherstellung alle Reliable Collections über Zugriff auf die relevanten Serialisierungsprogramme zum Lesen ihrer persistenten Daten verfügen.
+[IReliableStateManager.TryAddStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) wird zum Registrieren eines benutzerdefinierten Serialisierungsprogramms für den angegebenen Typ T verwendet. Diese Registrierung sollte bei der Erstellung der StatefulServiceBase erfolgen, um sicherzustellen, dass vor Beginn der Wiederherstellung alle Reliable Collections über Zugriff auf die relevanten Serialisierungsprogramme zum Lesen ihrer persistenten Daten verfügen.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,10 +73,10 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>Implementieren eines benutzerdefinierten Serialisierungsprogramms
 
-Ein benutzerdefiniertes Serialisierungsprogramm muss die [IStateSerializer<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1)-Schnittstelle implementieren.
+Ein benutzerdefiniertes Serialisierungsprogramm muss die [IStateSerializer\<T>](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1)-Schnittstelle implementieren.
 
 > [!NOTE]
-> IStateSerializer<T> umfasst Schreib- und Leseüberladungen, die einen zusätzlichen T-Wert verwenden, den Basiswert. Diese API ist für die differenzielle Serialisierung bestimmt. Aktuell ist das Feature der differenziellen Serialisierung nicht verfügbar. Daher werden diese beiden Überladungen nicht aufgerufen, solange die differenzielle Serialisierung nicht verfügbar gemacht und aktiviert wurde.
+> IStateSerializer\<T> umfasst Schreib- und Leseüberladungen, die einen zusätzlichen T-Wert verwenden – den Basiswert. Diese API ist für die differenzielle Serialisierung bestimmt. Aktuell ist das Feature der differenziellen Serialisierung nicht verfügbar. Daher werden diese beiden Überladungen nicht aufgerufen, solange die differenzielle Serialisierung nicht verfügbar gemacht und aktiviert wurde.
 
 Es folgt ein Beispiel für einen benutzerdefinierten Typ „OrderKey“, der vier Eigenschaften enthält.
 
@@ -96,7 +96,7 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-Im Folgenden finden Sie ein Beispiel für das Implementieren von IStateSerializer<OrderKey>.
+Im Folgenden finden Sie ein Beispiel für das Implementieren von IStateSerializer\<OrderKey>.
 Beachten Sie, dass die Lese-/Schreibüberladungen, die den BaseValue erfassen, zur Aufwärtskompatibilität die entsprechende Überladung aufrufen.
 
 ```csharp

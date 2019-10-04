@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51fc93f9508bada40885e41b39e8a87cf4e0bf3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ba5455680647b90b113d31c55816a2e0b0131b33
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101005"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "60243667"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
 
@@ -111,7 +111,15 @@ Wenn Sie die Bereitstellung der Passthrough-Authentifizierung in einer Produktio
 >[!IMPORTANT]
 >Für Produktionsumgebungen wird empfohlen, dass Sie mindestens drei Authentifizierungs-Agents auf Ihrem Mandanten ausführen. In einem System können maximal 40 Authentifizierungs-Agents pro Mandant installiert werden. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
-Befolgen Sie diese Anweisungen zum Herunterladen der Authentifizierungs-Agent-Software:
+Durch die Installation von mehreren Passthrough-Authentifizierungs-Agents wird zwar Hochverfügbarkeit, jedoch kein deterministischer Lastenausgleich zwischen den Authentifizierungs-Agents sichergestellt. Berücksichtigen Sie beim Ermitteln der Anzahl der für Ihren Mandanten erforderlichen Authentifizierungs-Agents die Spitzenlast und die durchschnittliche Last in Bezug auf die Anmeldeanforderungen, die Sie für Ihren Mandanten erwarten. Als Richtwert gilt, dass ein einzelner Authentifizierungs-Agent auf einem Standardserver mit einer CPU mit vier Kernen und 16 GB RAM pro Sekunde 300 bis 400 Authentifizierungen verarbeiten kann.
+
+Um den Netzwerkverkehr abzuschätzen, verwenden Sie die folgende Anleitung zur Skalierung:
+- Jede Anforderung hat eine Nutzlastgröße von (0,5 K + 1 K * anz_agents) Bytes, d. h. Daten von Azure AD zum Authentifizierungs-Agent. Hier gibt „anz_agents“ die Anzahl der für Ihren Mandanten registrierten Authentifizierung-Agents an.
+- Jede Antwort hat eine Nutzlastgröße von 1 K Bytes, d. h. Daten vom Authentifizierungs-Agent zu Azure AD.
+
+Bei den meisten Kunden reichen insgesamt drei Authentifizierungs-Agents aus, um Hochverfügbarkeit und genügend Kapazität bereitzustellen. Es wird empfohlen, die Authentifizierungs-Agents in der Nähe Ihres Domänencontrollers zu installieren, um die Anmeldungslatenz zu verbessern.
+
+Befolgen Sie zunächst die folgenden Anweisungen zum Herunterladen der Authentifizierungs-Agent-Software:
 
 1. Zum Herunterladen der neuesten Version des Authentifizierungs-Agents (Version 1.5.193.0 oder höher) melden Sie sich mit den Anmeldeinformationen des globalen Administrators für Ihren Mandanten beim [Azure Active Directory-Admin Center](https://aad.portal.azure.com) an.
 2. Wählen Sie im linken Bereich die Option **Azure Active Directory** aus.
@@ -141,6 +149,13 @@ Zweitens können Sie auch ein unbeaufsichtigtes Bereitstellungsskript erstellen 
 3. Wechseln Sie zu **C:\Programme\Microsoft Azure AD Connect Authentication Agent**, und führen Sie das folgende Skript unter Verwendung des zuvor erstellten Objekts `$cred` aus:
 
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+
+>[!IMPORTANT]
+>Wenn ein Authentifizierungs-Agent auf einem virtuellen Computer installiert ist, können Sie den virtuellen Computer nicht klonen, um einen weiteren Authentifizierungs-Agent einzurichten. Diese Methode wird **nicht unterstützt**.
+
+## <a name="step-5-configure-smart-lockout-capability"></a>Schritt 5: Konfigurieren der Smart Lockout-Funktion
+
+Smart Lockout unterstützt Sie beim Sperren von Angreifern, die versuchen, Benutzerkennwörter zu erraten oder mithilfe von Brute-Force-Methoden in Ihr System einzudringen. Durch Konfigurieren der Smart Lockout-Einstellungen in Azure AD und/oder entsprechender Sperrungseinstellungen in einer lokalen Active Directory-Instanz können Angriffe herausgefiltert werden, bevor sie Active Directory erreichen. Lesen Sie [diesen Artikel](../authentication/howto-password-smart-lockout.md), um mehr darüber zu erfahren, wie Sie die Smart Lockout-Einstellungen für Ihren Mandanten zum Schutz Ihrer Benutzerkonten konfigurieren können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Migrieren von AD FS zur Passthrough-Authentifizierung](https://aka.ms/adfstoptadp): Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung

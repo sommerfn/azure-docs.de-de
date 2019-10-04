@@ -3,7 +3,7 @@ title: Was sind Azure Active Directory-Berichte? | Microsoft-Dokumentation
 description: Dieser Artikel bietet eine allgemeine Übersicht über Azure Active Directory-Berichte.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: cawrites
 manager: daveba
 editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: markvi
+ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66ccf8014938e813676e9338e9bfc4eaa18f63f9
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: cd3907231ce3963d43fa8279039a736b63fc2043
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436947"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127271"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Was sind Azure Active Directory-Berichte?
 
@@ -54,9 +54,9 @@ Alle Editionen von Azure AD verfügen über die Sicherheitsberichte „Benutzer 
 
 - In den **Free- und Basic-Editionen von Azure Active Directory** erhalten Sie die Listen „Benutzer mit Risikomarkierung“ und „Riskante Anmeldungen“. 
 
-- Mit der Edition **Azure Active Directory Premium 1** wird dieses Modell erweitert, indem Sie zusätzlich jeweils einige zugrunde liegende Risikoereignisse untersuchen können, die für einen Bericht erkannt wurden. 
+- Mit der Edition **Azure Active Directory Premium 1** wird dieses Modell erweitert, indem Sie zusätzlich jeweils einige zugrunde liegende Risikoerkennungen untersuchen können, die für einen Bericht erkannt wurden. 
 
-- In der Edition **Azure Active Directory Premium 2** erhalten Sie die ausführlichsten Informationen zu den zugrunde liegenden Risikoereignissen, und Sie können Sicherheitsrichtlinien konfigurieren, mit denen automatisch auf konfigurierte Risikostufen reagiert wird.
+- In der Edition **Azure Active Directory Premium 2** erhalten Sie die ausführlichsten Informationen zu den zugrunde liegenden Risikoerkennungen, und Sie können Sicherheitsrichtlinien konfigurieren, mit denen automatisch auf konfigurierte Risikostufen reagiert wird.
 
 
 ## <a name="activity-reports"></a>Aktivitätsberichte

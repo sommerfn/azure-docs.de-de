@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 03/30/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ce8496596f25b85719b8a6dff849ebf0fc3e5dc3
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: f0ff729084d194ff2e05e89eadc45782f775b1c5
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58405600"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178336"
 ---
 In diesem Abschnitt senden Sie Neuigkeiten als Vorlagenbenachrichtigungen mit Tags über eine .NET-Konsolen-App. 
 
 1. Erstellen Sie in Visual Studio eine neue Visual C#-Konsolenanwendung: a. Wählen Sie im Menü die Optionen **Datei** > **Neu** > **Projekt** aus.
-    b. Erweitern Sie **Visual C#**, und wählen Sie **Windows-Desktop** aus. 
+    b. Erweitern Sie **Visual C#** , und wählen Sie **Windows-Desktop** aus. 
     c. Wählen Sie in der Liste der Vorlagen **Konsolen-App (.NET Framework)** aus. 
     d. Geben Sie einen **Namen** für die App ein. 
     e. Wählen Sie einen **Ordner** für die App aus.
@@ -81,7 +81,7 @@ In diesem Abschnitt senden Sie Neuigkeiten als Vorlagenbenachrichtigungen mit Ta
 
 <!-- URLs. -->
 [Get started with Notification Hubs]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
+[Notification Hubs REST interface]: https://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 [Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
 [How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
 [Microsoft.Azure.NotificationHubs-NuGet-Pakets]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/

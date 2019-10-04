@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/26/2018
-ms.author: adgera
+ms.date: 08/09/2019
+ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 23759a6c3d920e2b791a10ddd5ac5c5285ed1889
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: d0f5f9a1d488b6be8ca91fdd057880e351ae0b3f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959866"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261042"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Gewusst wie: Konfigurieren der Überwachung in Azure Digital Twins
 
@@ -40,24 +40,24 @@ Die Aktivitätsprotokollierung für Azure Digital Twins ist standardmäßig akti
 1. Wählen Sie Ihre Azure Digital Twins-Instanz aus.
 1. Klicken Sie auf **Aktivitätsprotokoll**, um den Anzeigebereich zu öffnen:
 
-    ![Aktivitätsprotokoll][1]
+    [![Aktivitätsprotokoll](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
 
 Für die erweiterte Aktivitätsprotokollierung:
 
 1. Klicken Sie auf die Option **Protokolle**, um die **Übersicht über die Log Analytics-Aktivität** anzuzeigen:
 
-    ![Auswahl][2]
+    [![Auswahl](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
 
 1. In der **Übersicht über die Log Analytics-Aktivität** werden wichtige Aktivitätsprotokolldaten zusammengefasst:
 
-    ![Übersicht über die Log Analytics-Aktivität][3]
+    [![Übersicht über die Aktivitätsprotokollanalyse]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
 
 >[!TIP]
 >Gewinnen Sie anhand von **Aktivitätsprotokollen** einen schnellen Einblick in Ereignisse auf Abonnementebene.
 
 ## <a name="enable-customer-diagnostic-logs"></a>Aktivieren von Kundendiagnoseprotokollen
 
-Für jede Azure-Instanz können Azure-[Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-logs-overview.md) als Ergänzung zur Aktivitätsprotokollierung festgelegt werden. Aktivitätsprotokolle beziehen sich auf Ereignisse auf Abonnementebene, während die Diagnoseprotokollierung Einblicke in den Verwendungsverlauf der Ressourcen selbst bietet.
+Für jede Azure-Instanz können Azure-[Diagnoseeinstellungen](../azure-monitor/platform/resource-logs-overview.md) als Ergänzung zur Aktivitätsprotokollierung festgelegt werden. Aktivitätsprotokolle beziehen sich auf Ereignisse auf Abonnementebene, während die Diagnoseprotokollierung Einblicke in den Verwendungsverlauf der Ressourcen selbst bietet.
 
 Die Diagnoseprotokollierung umfasst z.B. folgende Angaben:
 
@@ -68,14 +68,14 @@ Die Diagnoseprotokollierung umfasst z.B. folgende Angaben:
 Führen Sie folgende Schritte aus, um Diagnoseprotokolle für eine Instanz zu aktivieren:
 
 1. Öffnen Sie die Ressource im Azure-Portal.
-1. Klicken Sie auf **Diagnoseeinstellungen**.
+1. Wählen Sie **Diagnoseeinstellungen** aus:
 
-    ![Diagnoseeinstellungen 1][4]
+    [![Diagnoseeinstellungen 1](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
-1. Klicken Sie auf **Diagnose aktivieren**, um Daten zu sammeln (sofern noch nicht aktiviert).
+1. Wählen Sie **Diagnose aktivieren** aus, um Daten zu sammeln (sofern noch nicht aktiviert).
 1. Füllen Sie die angeforderten Felder aus, und wählen Sie aus, wie und wo Daten gespeichert werden:
 
-    ![Diagnoseeinstellungen 2][5]
+    [![Diagnoseeinstellungen 2](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
     Diagnoseprotokolle werden häufig mit [Azure File Storage](../storage/files/storage-files-deployment-guide.md) gespeichert und für [Azure Monitor-Protokolle](../azure-monitor/log-query/get-started-portal.md) freigegeben. Beide Optionen können ausgewählt werden.
 
@@ -99,47 +99,36 @@ Eine vollständige Protokollabfrage wird über [Azure Monitor-Protokolle](../azu
 1. Suchen Sie im Azure-Portal nach **Log Analytics**.
 1. Ihre verfügbaren **Log Analytics-Arbeitsbereich**-Instanzen werden angezeigt. Wählen Sie eine aus, und klicken Sie zur Abfrage auf **Protokolle**:
 
-    ![Log Analytics][6]
+    [![Log Analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
-1. Wenn Sie noch keine **Log Analytics-Arbeitsbereich**-Instanz besitzen, können Sie einen Arbeitsbereich erstellen, indem Sie auf die Schaltfläche **Hinzufügen** klicken:
+1. Wenn Sie noch keine **Log Analytics-Arbeitsbereich**-Instanz besitzen, können Sie einen Arbeitsbereich erstellen, indem Sie die Schaltfläche **Hinzufügen** auswählen:
 
-    ![Erstellen eines OMS-Arbeitsbereichs][7]
+    [![Erstellen von OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
 Sobald Ihre **Log Analytics-Arbeitsbereich**-Instanz bereitgestellt ist, können Sie leistungsstarke Abfragen erstellen, um nach Einträgen in verschiedenen Protokollen zu suchen oder Suchen mittels spezifischer Kriterien über die **Protokollverwaltung** durchzuführen:
 
-   ![Protokollverwaltung][8]
+   [![Protokollverwaltung](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
 Weitere Informationen zu leistungsstarken Abfragevorgängen finden Sie unter [Erste Schritte mit Abfragen in Log Analytics](../azure-monitor/log-query/get-started-queries.md).
 
 > [!NOTE]
 > Wenn Sie zum ersten Mal Ereignisse an den **Log Analytics-Arbeitsbereich** senden, tritt unter Umständen eine Verzögerung von 5 Minuten auf.
 
-Azure Monitor-Protokolle bieten außerdem leistungsstarke Benachrichtigungsdienste für Fehler und Warnungen, die durch Klicken auf **Diagnose und Problembehandlung** angezeigt werden können:
+Azure Monitor-Protokolle bieten außerdem leistungsstarke Benachrichtigungsdienste für Fehler und Warnungen, die durch Auswahl von **Diagnose und Problembehandlung** angezeigt werden können:
 
-   ![Benachrichtigungen für Warnungen und Fehler][9]
+   [![Benachrichtigungen für Warnungen und Fehler](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
 >[!TIP]
 >Mit dem **Log Analytics-Arbeitsbereich** können Sie Protokollverläufe für verschiedene App-Funktionen, Abonnements und Dienste abfragen.
 
 ## <a name="other-options"></a>Weitere Optionen
 
-Azure Digital Twins unterstützt zudem eine anwendungsspezifische Protokollierung und Sicherheitsüberwachung. Einen umfassenden Überblick über alle Azure-Protokollierungsoptionen, die für Ihre Azure Digital Twins-Instanz verfügbar sind, finden Sie im Artikel [Protokollierung und Überwachung in Azure](../security/azure-log-audit.md).
+Azure Digital Twins unterstützt zudem eine anwendungsspezifische Protokollierung und Sicherheitsüberwachung. Einen umfassenden Überblick über alle Azure-Protokollierungsoptionen, die für Ihre Azure Digital Twins-Instanz verfügbar sind, finden Sie im Artikel [Protokollierung und Überwachung in Azure](../security/fundamentals/log-audit.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über [Azure-Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md).
 
-- Setzen Sie sich ausführlicher mit Azure-Diagnoseeinstellungen auseinander (siehe [Sammeln und Verwenden von Protokolldaten von Ihren Azure-Ressourcen](../azure-monitor/platform/diagnostic-logs-overview.md)).
+- Setzen Sie sich ausführlicher mit Azure-Diagnoseeinstellungen auseinander (siehe [Sammeln und Verwenden von Protokolldaten von Ihren Azure-Ressourcen](../azure-monitor/platform/resource-logs-overview.md)).
 
 - Weitere Informationen finden Sie unter [Azure Monitor-Protokolle](../azure-monitor/log-query/get-started-portal.md).
-
-<!-- Images -->
-[1]: media/how-to-configure-monitoring/activity-log.png
-[2]: media/how-to-configure-monitoring/activity-log-select.png
-[3]: media/how-to-configure-monitoring/log-analytics-overview.png
-[4]: media/how-to-configure-monitoring/diagnostic-settings-one.png
-[5]: media/how-to-configure-monitoring/diagnostic-settings-two.png
-[6]: media/how-to-configure-monitoring/log-analytics.png
-[7]: media/how-to-configure-monitoring/log-analytics-oms.png
-[8]: media/how-to-configure-monitoring/log-analytics-management.png
-[9]: media/how-to-configure-monitoring/log-analytics-notifications.png

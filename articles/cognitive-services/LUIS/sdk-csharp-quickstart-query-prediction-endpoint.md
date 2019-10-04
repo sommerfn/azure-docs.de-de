@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Abfragen eines Vorhersageendpunkts mit dem C# SDK'
+title: 'Schnellstart: Abfragen eines Vorhersageendpunkts mit dem C# SDK: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie das C# SDK, um eine Benutzeräußerung an LUIS zu senden und eine Vorhersage zu empfangen.
 author: diberry
@@ -8,14 +8,14 @@ ms.service: cognitive-services
 services: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 086f55094474d4c06e52001d77630932cd04213c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c0b534848232d60929722e2036f69f4b6e670a4a
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404092"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68563158"
 ---
 # <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>Schnellstart: Abfragen eines Vorhersageendpunkts mit dem C# .NET SDK
 

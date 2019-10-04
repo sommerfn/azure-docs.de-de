@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/16/2019
+ms.date: 05/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcf2ef10cbc8f6f54a65e596ea003a98f410a7b
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 07069d22d57540c6a16472bc7278821e14f1f18e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313293"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68561290"
 ---
 # <a name="what-is-password-writeback"></a>Was ist Kennwortrückschreiben?
 
@@ -42,9 +42,8 @@ Kennwortrückschreiben bietet:
 * **Unterstützung für Kennwortrückschreiben, wenn die Kennwörter im Azure-Portal von einem Administrator zurückgesetzt werden**: Wenn ein Administrator das Kennwort eines Benutzers im [Azure-Portal](https://portal.azure.com) zurücksetzt und der Benutzer ein Verbundkonto oder ein Konto mit Kennworthashsynchronisierung verwendet, wird das Kennwort lokal zurückgeschrieben. Diese Funktionalität wird im Office-Verwaltungsportal derzeit nicht unterstützt.
 * **Keine Notwendigkeit zur Festlegung von eingehenden Firewallregeln**: Kennwortrückschreiben verwendet ein Azure Service Bus Relay als zugrunde liegenden Kommunikationskanal. Die gesamte Kommunikation geht über Port 443.
 
-> [!Note]
-> Benutzerkonten in geschützten Gruppen im lokalen Active Directory können nicht zum Kennwortrückschreiben verwendet werden. Administratorkonten in geschützten Gruppen im lokalen Active Directory können zum Kennwortrückschreiben verwendet werden. Weitere Informationen zu geschützten Gruppen finden Sie unter [Geschützte Konten und Gruppen in Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
->
+> [!NOTE]
+> Administratorkonten in geschützten Gruppen im lokalen Active Directory können zum Kennwortrückschreiben verwendet werden. Administratoren können ihr Kennwort in der Cloud ändern, aber nicht die Kennwortzurücksetzung zum Zurücksetzen eines vergessenen Kennworts verwenden. Weitere Informationen zu geschützten Gruppen finden Sie unter [Geschützte Konten und Gruppen in Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Lizenzierungsanforderungen für das Kennwortrückschreiben
 
@@ -63,7 +62,6 @@ Damit Kennwortrückschreiben verwendet werden kann, muss in Ihrem Mandanten eine
 
 > [!WARNING]
 > Eigenständige Office 365-Lizenzierungspläne *bieten keine Unterstützung für Self-Service-Kennwortzurücksetzung/-änderung/-entsperrung mit lokalem Rückschreiben* und erfordern, dass Sie einen der obigen Pläne haben, damit diese Funktion verwendbar ist.
->
 
 ## <a name="how-password-writeback-works"></a>Funktionsweise der Kennwortrückschreibung
 
@@ -86,14 +84,10 @@ Wenn Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung versuchen, i
    
    Sobald der Aufruf aus der Cloud eingetroffen ist, verwendet das Synchronisierungsmodul das **cloudAnchor**-Attribut, um das Azure Active Directory-Connectorbereichsobjekt nachzuschlagen. Es folgt dann dem Link zurück zum MV-Objekt und folgt anschließend dem Link zurück zum Active Directory-Objekt. Da mehrere Active Directory-Objekte (Multi-Gesamtstruktur) für denselben Benutzer vorliegen können, verwendet das Synchronisierungsmodul die `Microsoft.InfromADUserAccountEnabled.xxx`-Verbindung, um das richtige Objekt auszuwählen.
 
-   > [!Note]
-   > Als Ergebnis dieser Logik muss Azure AD Connect mit dem PDC-Emulator (primärer Domänencontroller) kommunizieren können, damit das Kennwortrückschreiben funktioniert. Wenn Sie dies manuell aktivieren müssen, können Sie Azure AD Connect mit dem PDC-Emulator verbinden. Klicken Sie mit der rechten Maustaste auf die Eigenschaften (**properties**) des Active Directory-Synchronisierungsconnectors, und wählen Sie dann **configure directory partitions** aus. Suchen Sie nun nach dem Abschnitt **domain controller connection settings**, und aktivieren Sie das Kontrollkästchen **only use preferred domain controllers**. Auch wenn der bevorzugte Domänencontroller kein PDC-Emulator ist, versucht Azure AD Connect für das Kennwortrückschreiben eine Verbindung mit dem PDC herzustellen.
-
 1. Nachdem das Benutzerkonto ermittelt ist, wird versucht, das Kennwort direkt in der geeigneten Active Directory-Gesamtstruktur zurückzusetzen.
 1. Wenn dieser Vorgang erfolgreich war, wird der Benutzer darüber informiert, dass das Kennwort geändert wurde.
    > [!NOTE]
    > Wenn das Kennworthash des Benutzers mithilfe der Kennworthashsynchronisierung mit Azure AD synchronisiert wird, kann es vorkommen, dass die lokale Kennwortrichtlinie schwächer ist als die Kennwortrichtlinie der Cloud. In diesem Fall wird die lokale Kennwortrichtlinie erzwungen. Diese Richtlinie stellt das Erzwingen Ihrer lokalen Richtlinie in der Cloud sicher, unabhängig davon, ob Sie für die Bereitstellung von einmaligem Anmelden Kennworthashsynchronisierung oder Verbund verwenden.
-   >
 
 1. Wenn bei diesem Vorgang ein Fehler auftritt, wird der Benutzer per Fehlermeldung dazu aufgefordert, es erneut zu versuchen. Der Vorgang kann aus folgenden Gründen fehlschlagen:
     * Der Dienst war nicht verfügbar.
@@ -166,8 +160,11 @@ Kennwörter werden in folgenden Situationen *nicht* zurückgeschrieben:
 * **Nicht unterstützte Vorgänge für Endbenutzer**
    * Jegliches Zurücksetzen des eigenen Kennworts durch einen Endbenutzer über PowerShell Version 1, Version 2 oder die Azure AD-Graph-API
 * **Nicht unterstützte Vorgänge für Administratoren**
-   * Jegliche durch einen Administrator initiierte Endbenutzer-Kennwortzurücksetzung über das [Office-Verwaltungsportal](https://portal.office.com)
    * Jegliche durch einen Administrator initiierte Endbenutzer-Kennwortzurücksetzung mithilfe von PowerShell Version 1, Version 2 oder der Azure AD-Graph-API
+   * Jegliche durch einen Administrator initiierte Endbenutzer-Kennwortzurücksetzung über das [Microsoft 365 Admin Center](https://admin.microsoft.com)
+
+> [!WARNING]
+> Die Verwendung des Kontrollkästchens „Benutzer muss Kennwort bei der nächsten Anmeldung ändern“ in lokalen Active Directory-Verwaltungstools wie „Active Directory-Benutzer und -Computer“ oder dem Active Directory-Verwaltungscenter wird nicht unterstützt. Beim Ändern eines Kennworts in der lokalen Umgebung darf diese Option nicht aktiviert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

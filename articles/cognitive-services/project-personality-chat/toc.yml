@@ -1,18 +1,11 @@
-items:
 - name: 'Dokumentation zu „Projekt: Chat mit Profil“'
 - name: Übersicht
-  items:
-  - name: 'Was ist „Projekt: Chat mit Profil“?'
-    href: overview.md
   expanded: true
+  items:
+    - name: 'Was ist „Projekt: Chat mit Profil“?'
+      href: overview.md
 - name: Ressourcen
-  items:
-  - name: Häufig gestellte Fragen
-    href: faq.md
   expanded: true
-ms.openlocfilehash: 89e620578f0c64959ed00fbf3fb2f6136ab0d02a
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35415451"
+  items:
+    - name: Häufig gestellte Fragen
+      href: faq.md

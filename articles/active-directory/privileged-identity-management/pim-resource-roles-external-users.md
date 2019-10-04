@@ -3,7 +3,7 @@ title: Einladen von Gastbenutzern und Zuweisen von Azure-Ressourcenrollen in PIM
 description: Erfahren Sie, wie Sie in Azure AD Privileged Identity Management (PIM) externe Gastbenutzer einladen und Azure-Ressourcenrollen zuweisen.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5846d2bd85a382b8e2aee539af405518e9fb221
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f3e01b58a2a2fc6f93ae5ccc15e200a0cea69a0c
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493092"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804215"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>Einladen von Gastbenutzern und Zuweisen von Azure-Ressourcenrollen in PIM
 
@@ -47,7 +47,7 @@ Einige Beispielszenarios, in denen Sie möglicherweise Gäste in Ihre Organisati
 
 Wenn Sie B2B Collaboration verwenden, können Sie einen externen Benutzer als Gast in Ihre Organisation einladen. Der Gast scheint in Ihrer Organisation vorhanden zu sein, ihm sind jedoch keine Anmeldeinformationen zugeordnet. Wenn ein Gast authentifiziert werden soll, muss er in seiner eigenen Organisation und nicht in Ihrer Organisation authentifiziert werden. Dies bedeutet, dass ein Gast, der keinen Zugriff mehr auf seine eigene Organisation hat, auch den Zugriff auf Ihre Organisation verlieren wird. Wenn der Gast beispielsweise seine Organisation verlässt, verliert er automatisch den Zugriff auf alle Ressourcen, die Sie in Azure AD für ihn freigegeben haben, ohne dass Sie etwas tun müssen. Weitere Informationen zu B2B finden Sie unter [Was ist der Gastzugriff in Azure Active Directory-B2B?](../b2b/what-is-b2b.md)
 
-![B2B und Gast](./media/pim-resource-roles-external-users/b2b-external-user.png)
+![Diagramm, das zeigt, wie ein Gastbenutzer in Ihrem Verzeichnis angezeigt, aber in seinem Heimatverzeichnis authentifiziert wird](./media/pim-resource-roles-external-users/b2b-external-user.png)
 
 ## <a name="check-guest-collaboration-settings"></a>Überprüfen von Einstellungen für die Kollaboration mit Gästen
 
@@ -59,7 +59,7 @@ Sie sollten Ihre Einstellungen für die Kollaboration mit Gästen überprüfen, 
 
 1. Klicken Sie auf **Externe Einstellungen zur Kollaboration verwalten**.
 
-    ![Einstellungen für externe Kollaboration](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
+    ![Seite „Einstellungen für externe Zusammenarbeit“ mit Einstellungen für Berechtigungen, Einladungen und Einschränkungen der Zusammenarbeit](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
 
 1. Stellen Sie sicher, dass der Schalter **Administratoren und Benutzer mit der Rolle „Gasteinladender“ können einladen** auf **Ja** festgelegt ist.
 
@@ -81,21 +81,21 @@ Mithilfe von PIM können Sie einen Gast einladen und ihn genau wie einen Mitglie
 
 1. Klicken Sie unter „Verwalten“ auf **Rollen**, um die Liste der Rollen für Azure-Ressourcen anzuzeigen.
 
-    ![Azure-Ressourcenrollen](./media/pim-resource-roles-external-users/resources-roles.png)
+    ![Liste der Azure-Ressourcenrollen mit Anzahl der aktiven und berechtigten Benutzer](./media/pim-resource-roles-external-users/resources-roles.png)
 
 1. Klicken Sie auf die minimale Rolle, die der Benutzer benötigt.
 
-    ![Ausgewählte Rolle](./media/pim-resource-roles-external-users/selected-role.png)
+    ![Ausgewählte Rollenseite mit Auflistung der aktuellen Mitglieder dieser Rolle](./media/pim-resource-roles-external-users/selected-role.png)
 
 1. Klicken Sie auf der Seite der Rolle auf **Mitglied hinzufügen**, um den Bereich „Neue Zuweisung“ zu öffnen.
 
 1. Klicken Sie auf **Mitglied oder Gruppe auswählen**.
 
-    ![Mitglied oder Gruppe auswählen](./media/pim-resource-roles-external-users/select-member-group.png)
+    ![Neue Zuweisung: Auswählen eines Mitglieder- oder Gruppenbereichs mit Auflistung von Benutzern und Gruppen zusammen mit einer Einladungsoption](./media/pim-resource-roles-external-users/select-member-group.png)
 
 1. Klicken Sie auf **Einladen**, um einen Gast einzuladen.
 
-    ![Gast einladen](./media/pim-resource-roles-external-users/invite-guest.png)
+    ![Seite zum Einladen eines Gasts mit Feldern zur Eingabe einer E-Mail-Adresse und einer persönlichen Nachricht](./media/pim-resource-roles-external-users/invite-guest.png)
 
 1. Nachdem Sie einen Gast ausgewählt haben, klicken Sie auf **Einladen**.
 
@@ -105,13 +105,13 @@ Mithilfe von PIM können Sie einen Gast einladen und ihn genau wie einen Mitglie
 
 1. Wählen Sie im Bereich **Mitgliedschaftseinstellungen** den Zuweisungstyp und die Dauer aus.
 
-    ![Mitgliedschaftseinstellungen](./media/pim-resource-roles-external-users/membership-settings.png)
+    ![Neue Zuweisung: Seite für Mitgliedschaftseinstellungen mit Optionen zur Angabe von Zuweisungstyp, Startdatum und Enddatum](./media/pim-resource-roles-external-users/membership-settings.png)
 
 1. Klicken Sie zum Abschließen der Zuweisung auf **Fertig** und dann auf **Hinzufügen**.
 
     Die Rollenzuweisung für den Gast wird in der Rollenliste angezeigt.
 
-    ![Rollenzuweisung für Gast](./media/pim-resource-roles-external-users/role-assignment.png)
+    ![Rollenseite, auf der der Gast als berechtigt aufgelistet ist](./media/pim-resource-roles-external-users/role-assignment.png)
 
 ## <a name="activate-role-as-a-guest"></a>Aktivieren der Rolle als Gast
 
@@ -119,13 +119,13 @@ Als externer Benutzer müssen Sie zunächst die Einladung in Ihre Azure AD-Organ
 
 1. Öffnen Sie die E-Mail mit Ihrer Einladung. Die E-Mail sieht etwa wie folgt aus.
 
-    ![E-Mail-Einladung](./media/pim-resource-roles-external-users/email-invite.png)
+    ![E-Mail-Einladung mit Verzeichnisname, persönlicher Nachricht und einem „Erste-Schritte“-Link](./media/pim-resource-roles-external-users/email-invite.png)
 
 1. Klicken Sie auf den Link **Get Started** (Start) in der E-Mail.
 
 1. Überprüfen Sie die Berechtigungen, und klicken Sie dann auf **Annehmen**.
 
-    ![Berechtigungen überprüfen](./media/pim-resource-roles-external-users/invite-accept.png)
+    ![Überprüfen der Berechtigungenseite in einem Browser mit einer Liste von Berechtigungen, die die Organisation überprüfen möchte](./media/pim-resource-roles-external-users/invite-accept.png)
 
 1. Möglicherweise werden Sie aufgefordert, den Nutzungsbedingungen zuzustimmen und anzugeben, ob Sie angemeldet bleiben möchten.
 
@@ -133,11 +133,11 @@ Als externer Benutzer müssen Sie zunächst die Einladung in Ihre Azure AD-Organ
 
 1. Um Ihre Rolle zu aktivieren, öffnen Sie die E-Mail mit dem Link „Rolle aktivieren“. Die E-Mail sieht etwa wie folgt aus.
 
-    ![E-Mail-Einladung](./media/pim-resource-roles-external-users/email-role-assignment.png)
+    ![E-Mail-Nachricht von PIM, die angibt, dass Sie zu einer Rolle mit einer Rollenaktivierungsverknüpfung berechtigt sind](./media/pim-resource-roles-external-users/email-role-assignment.png)
 
 1. Klicken Sie auf **Rolle aktivieren**, um Ihre berechtigten Rollen in PIM zu öffnen.
 
-    ![Meine Rollen – Berechtigt](./media/pim-resource-roles-external-users/my-roles-eligible.png)
+    ![Seite „Meine Rollen“ in PIM mit Auflistung Ihrer berechtigten Rollen](./media/pim-resource-roles-external-users/my-roles-eligible.png)
 
 1. Klicken Sie unter „Aktion“ auf den Link **Aktivieren**.
 
@@ -145,7 +145,7 @@ Als externer Benutzer müssen Sie zunächst die Einladung in Ihre Azure AD-Organ
 
 1. Nachdem Sie die Einstellungen für die Rolle angegeben haben, klicken Sie auf **Aktivieren**, um die Rolle zu aktivieren.
 
-    ![Rolle aktivieren](./media/pim-resource-roles-external-users/activate-role.png)
+    ![Aktivierungsseite mit Auflistung des Bereichs und Optionen zur Angabe von Startzeit, Dauer und Grund](./media/pim-resource-roles-external-users/activate-role.png)
 
     Sofern der Administrator Ihre Anforderung nicht genehmigen muss, sollten Sie nun Zugriff auf die angegebenen Ressourcen haben.
 
@@ -157,13 +157,13 @@ Genau wie ein Mitgliedsbenutzer können Sie Überwachungsprotokolle anzeigen, um
 
 1. Klicken Sie auf **Ressourcenüberwachung**, um die Aktivität für diese Ressource anzuzeigen. Im folgenden Beispiel wird die Aktivität für eine Ressourcengruppe angezeigt.
 
-    ![Ressourcenüberwachung](./media/pim-resource-roles-external-users/audit-resource.png)
+    ![Azure-Ressourcen: Ressourcenüberwachungsseite mit Auflistung von Zeit, Anforderer und Aktion](./media/pim-resource-roles-external-users/audit-resource.png)
 
 1. Klicken Sie zum Anzeigen der Aktivität für den Gast auf **Azure Active Directory** > **Benutzer** > Gastname.
 
 1. Klicken Sie auf **Überwachungsprotokolle**, um die Überwachungsprotokolle für die Organisation anzuzeigen. Bei Bedarf können Sie Filter angeben.
 
-    ![Organisationsüberwachung](./media/pim-resource-roles-external-users/audit-directory.png)
+    ![Verzeichnisüberwachungsprotokolle mit Angaben zu Datum, Ziel, „Initiiert von (Akteur)“ und Aktivität](./media/pim-resource-roles-external-users/audit-directory.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

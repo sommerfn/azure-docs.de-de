@@ -3,8 +3,8 @@ title: Azure Active Directory-Authentifizierungs- und -Autorisierungsfehlercodes
 description: Erfahren Sie mehr über die AADSTS-Fehlercodes, die vom Azure AD-Sicherheitstokendienst (STS) zurückgegeben werden.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/13/2019
-ms.author: celested
-ms.reviewer: hirsin, justhu
+ms.date: 08/30/2019
+ms.author: ryanwi
+ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69440fb99439231cdc046ef48bddfa852c17924c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271797"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193168"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Authentifizierungs- und Autorisierungsfehlercodes
 
@@ -31,7 +31,12 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 > [!NOTE]
 > Diese Informationen sind vorläufig und können sich ändern. Haben Sie eine Frage, oder können Sie nicht finden, was Sie suchen? Erstellen Sie ein GitHub-Problem, oder lesen Sie [Support- und Hilfeoptionen für Entwickler](active-directory-develop-help-support.md), um mehr über andere Möglichkeiten zu erfahren, wie Sie Hilfe und Unterstützung erhalten können.
 >
-> Diese Dokumentation dient als Leitfaden für Entwickler und Administratoren, sollte aber niemals vom Kunden selbst verwendet werden. Fehlercodes können jederzeit geändert werden, um detailliertere Fehlermeldungen zu erhalten, die den Entwickler bei der Erstellung seiner Anwendung unterstützen sollen. Apps, die von Text- oder Fehlercodenummern abhängig sind, funktionieren im Lauf der Zeit nicht mehr.  
+> Diese Dokumentation dient als Leitfaden für Entwickler und Administratoren, sollte aber niemals vom Kunden selbst verwendet werden. Fehlercodes können jederzeit geändert werden, um detailliertere Fehlermeldungen zu erhalten, die den Entwickler bei der Erstellung seiner Anwendung unterstützen sollen. Apps, die von Text- oder Fehlercodenummern abhängig sind, funktionieren im Lauf der Zeit nicht mehr.
+
+## <a name="lookup-current-error-code-information"></a>Nachschlagen aktueller Fehlercodeinformationen
+Fehlercodes und Meldungen unterliegen Änderungen.  Die aktuellen Informationen finden Sie auf der Seite [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error). Sie enthält AADSTS-Fehlerbeschreibungen, Fehlerbehebungen und einige Vorschläge für Problemumgehungen.  
+
+Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie beispielsweise den Fehlercode „AADSTS16000“ erhalten haben, sollten Sie unter [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) nach „16000“ suchen.  Sie können auch einen direkten Link zu einem bestimmten Fehler einrichten, indem Sie die Nummer des Fehlercodes der URL hinzufügen: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
 
 ## <a name="aadsts-error-codes"></a>AADSTS-Fehlercodes
 
@@ -105,7 +110,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS50127 | BrokerAppNotInstalled: Der Benutzer muss für den Zugriff auf diesen Inhalt eine Broker-App installieren. |
 | AADSTS50128 | Ungültiger Domänenname: Es wurden keine Informationen zur Identifizierung des Mandanten in der Anforderung gefunden bzw. nicht über angegebene Anmeldeinformationen impliziert. |
 | AADSTS50129 | DeviceIsNotWorkplaceJoined: Um das Gerät zu registrieren, ist ein Workplace Join erforderlich. |
-| AADSTS50131 | ConditionalAccessFailed: Gibt verschiedene bedingte Zugriffsfehler an, z.B. schlechten Windows-Gerätezustand, aufgrund verdächtiger Aktivitäten blockierte Anforderung, Zugriffsrichtlinie oder Sicherheitsrichtlinienentscheidungen. |
+| AADSTS50131 | ConditionalAccessFailed: Gibt verschiedene bedingte Zugriffsfehler an, z. B. schlechten Windows-Gerätezustand, aufgrund verdächtiger Aktivitäten blockierte Anforderung, Zugriffsrichtlinie oder Sicherheitsrichtlinienentscheidungen. |
 | AADSTS50132 | SsoArtifactInvalidOrExpired: Die Sitzung ist aufgrund von Kennwortablauf oder aktueller Kennwortänderung ungültig. |
 | AADSTS50133 | SsoArtifactRevoked: Die Sitzung ist aufgrund von Kennwortablauf oder aktueller Kennwortänderung ungültig. |
 | AADSTS50134 | DeviceFlowAuthorizeWrongDatacenter: Falsches Rechenzentrum. Um eine Anforderung zu autorisieren, die von einer App im OAuth 2.0-Geräteflow eingeleitet wurde, muss die autorisierende Seite sich im selben Rechenzentrum befinden wie demjenigen, aus dem die ursprüngliche Anforderung stammt. |
@@ -194,6 +199,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS90019 | MissingTenantRealm: Azure AD konnte die Mandanten-ID nicht aus der Anforderung ermitteln. |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat: Das Format des Benutzerprinzipalnamens ist ungültig oder entspricht nicht dem erwarteten `name[/host][@realm]`-Format. Der Prinzipalname ist erforderlich, Host und Bereich sind optional und können auf NULL festgelegt werden. |
 | AADSTS90023 | InvalidRequest: Die Authentifizierungsdienstanforderung ist ungültig. |
+| AADSTS9002313 | InvalidRequest: Anforderung ist falsch formatiert oder ungültig. - Der Grund für dieses Problem ist, dass für die Anforderung an einen bestimmten Endpunkt ein Fehler aufgetreten ist. Die empfohlene Vorgehensweise für dieses Problem besteht darin, eine Fiddler-Ablaufverfolgung zum Auftreten des Fehlers zu erhalten und zu ermitteln, ob die Anforderung richtig formatiert ist. |
 | AADSTS90024 | RequestBudgetExceededError: Es wurde ein vorübergehender Fehler festgestellt. Versuchen Sie es erneut. |
 | AADSTS90033 | MsodsServiceUnavailable: Der Microsoft Online Directory Service (MSODS) ist nicht verfügbar. |
 | AADSTS90036 | MsodsServiceUnretryableFailure: Unerwarteter, nicht wiederholbarer Fehler vom WCF-Dienst, der vom MSODS gehostet wird. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md), um weitere Details zum Fehler zu erhalten. |
@@ -215,6 +221,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS90093 | GraphUserUnauthorized: Es wurde ein Graph mit einem unzulässigen Fehlercode für die Anforderung zurückgegeben. |
 | AADSTS90094 | AdminConsentRequired: Die Zustimmung des Administrators ist erforderlich. |
 | AADSTS90100 | InvalidRequestParameter: Der Parameter ist leer oder ungültig. |
+| AADSTS901002 | AADSTS901002: Der Anforderungsparameter „resource“ wird nicht unterstützt. |
 | AADSTS90101 | InvalidEmailAddress: Es wurde keine gültige E-Mail-Adresse angegeben. Die E-Mail-Adresse muss dieses Format aufweisen: `someone@example.com`. |
 | AADSTS90102 | InvalidUriParameter: Der Wert muss ein absoluter URI sein. |
 | AADSTS90107 | InvalidXml: Die Anforderung ist nicht gültig. Stellen Sie sicher, dass Ihre Daten keine ungültigen Zeichen enthalten.|
@@ -264,6 +271,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS700023 | InvalidResourcelessScope: Der angegebene Wert für den Eingabeparameterbereich ist beim Anfordern eines Zugriffstokens nicht gültig. |
 | AADSTS1000000 | UserNotBoundError: Die Bindungs-API erfordert, dass sich der Azure AD-Benutzer auch bei einem externen Identitätsanbieter authentifiziert, was noch nicht geschehen ist. |
 | AADSTS1000002 | BindCompleteInterruptError: Die Bindung wurde erfolgreich abgeschlossen, aber der Benutzer muss informiert werden. |
+| AADSTS7000112 | UnauthorizedClientApplicationDisabled: Die Anwendung ist deaktiviert. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

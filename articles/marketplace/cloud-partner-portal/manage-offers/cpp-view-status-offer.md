@@ -1,25 +1,18 @@
 ---
-title: Anzeigen des Status von Marketplace-Angeboten – Azure Marketplace | Microsoft-Dokumentation
+title: Anzeigen des Status von Marketplace-Angeboten | Azure Marketplace
 description: Anzeigen des Angebotsstatus in Azure Marketplace und AppSource über das Cloud-Partnerportal
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: pbutlerm
-ms.openlocfilehash: bdec2d699e8448c8e2303dfbabcb4d176a9ca389
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: pabutler
+ms.openlocfilehash: fff89dd8a17aaf6d45462edeaa22f1d2efc8d02b
+ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430380"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "67064317"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>Anzeigen des Veröffentlichungsstatus von Azure Marketplace- und AppSource-Angeboten
 
@@ -46,7 +39,7 @@ Im nächsten Beispiel sehen Sie die Registerkarte **Status** für einen Beratung
 
 ![Registerkarte „Status“ für Beratungsdienst, die einen Fehler anzeigt](./media/consulting-service-error.png)
 
-Das letzte Statusbeispiel einer Azure-Anwendung zeigt ein kritisches Microsoft-Prüfungsproblem.  Es enthält einen Hotlink zum VSTS-Element mit detaillierten Informationen zu diesem Prüfungsproblem.  Informationen hierzu finden Sie unter [Veröffentlichen eines Azure-Anwendungsangebots](cpp-publish-offer.md).
+Das letzte Statusbeispiel einer Azure-Anwendung zeigt ein kritisches Microsoft-Prüfungsproblem.  Es enthält einen Hotlink zu dem Azure DevOps-Element, das detaillierte Informationen zu diesem Prüfungsproblem enthält.  Informationen hierzu finden Sie unter [Veröffentlichen eines Azure-Anwendungsangebots](cpp-publish-offer.md).
 
 ![Registerkarte „Status“ für Azure-App mit Prüfungsproblem](../azure-applications/media/status-tab-ms-review.png)
 

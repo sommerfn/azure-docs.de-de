@@ -4,15 +4,15 @@ description: Dieser Artikel enthält technische Details in Bezug auf die globale
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 07/23/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 84ce13ae3bb0a4b66b8167e61b720fe6cecbe95c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ce943fbed0774667100f6de4c60f91c0b02de6c3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762411"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615351"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globale Datenverteilung mit Azure Cosmos DB: Hintergrundinformationen
 
@@ -34,7 +34,7 @@ Wie in der folgenden Abbildung gezeigt wird, sind die Daten in einem Container �
 
 Eine physische Partition wird durch eine Gruppe von Replikaten implementiert, die als *Replikatgruppe* bezeichnet wird. Jeder Computer hostet Hunderte von Replikaten für verschiedene physische Partitionen innerhalb eines festen Satzes von Prozessen, wie in der Abbildung oben gezeigt. Die zu den physischen Partitionen gehörenden Replikate werden dynamisch und mit Lastenausgleich auf die Computer in einem Cluster sowie die Rechenzentren in einer Region verteilt.  
 
-Ein Replikat gehört eindeutig zu einem Azure Cosmos DB-Mandanten. Jedes Replikat hostet eine Instanz der [Datenbank-Engine](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) von Cosmos DB, die die Ressourcen und die zugehörigen Indizes verwaltet. Die Datenbank-Engine von Cosmos DB arbeitet nach einem ARS-basierten (Atom Record Sequence) Typsystem. Die Engine ist unabhängig von jeglichem Schema und verwischt damit die Grenzen zwischen der Struktur und den Instanzwerten von Datensätzen. Vollständige Schemaunabhängigkeit erreicht Cosmos DB durch die automatische und effiziente Indizierung aller Elemente schon bei der Erfassung. Damit können Benutzer ihre global verteilten Daten abfragen, ohne sich um das Schema oder die Indexverwaltung kümmern zu müssen.
+Ein Replikat gehört eindeutig zu einem Azure Cosmos DB-Mandanten. Jedes Replikat hostet eine Instanz der [Datenbank-Engine](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) von Cosmos DB, die die Ressourcen und die zugehörigen Indizes verwaltet. Die Cosmos-Datenbank-Engine arbeitet nach einem ARS-basierten (Atom Record Sequence) Typsystem. Die Engine ist unabhängig von jeglichem Schema und verwischt damit die Grenzen zwischen der Struktur und den Instanzwerten von Datensätzen. Vollständige Schemaunabhängigkeit erreicht Cosmos DB durch die automatische und effiziente Indizierung aller Elemente schon bei der Erfassung. Damit können Benutzer ihre global verteilten Daten abfragen, ohne sich um das Schema oder die Indexverwaltung kümmern zu müssen.
 
 Die Cosmos-Datenbank-Engine besteht aus Komponenten. Dazu gehören die Implementierung verschiedener Koordinationselemente, Language Runtimes, der Abfrageprozessor und die Untersysteme, die für die transaktionale Speicherung und Indizierung der Daten verantwortlich sind. Zu Gewährleistung von Dauerhaftigkeit und Hochverfügbarkeit speichert die Datenbank-Engine ihre Daten und ihren Index auf SSD-Datenträgern und repliziert sie mit anderen Instanzen der Datenbank-Engine innerhalb der Replikatgruppen. Größere Mandanten benötigen mehr Durchsatz und Speicherplatz und verfügen daher über größere und/oder mehr Replikate. Jede Komponente des Systems ist vollständig asynchron: Kein Thread wird jemals gesperrt, und jeder Thread verrichtet kurzfristige Aufgaben, die keine unnötigen Threadwechsel erfordern. Ratenlimits und Rückstaus werden auf den gesamten Stapel von der Erfassungssteuerung bis zu allen E/A-Pfaden aufgeteilt. Die Cosmos-Datenbank-Engine ist darauf ausgelegt, Parallelität präzise zu steuern und für einen hohen Durchsatz zu sorgen und dabei minimale Systemressourcen zu verbrauchen.
 
@@ -84,5 +84,5 @@ Die Semantik der fünf Konsistenzmodelle in Cosmos DB wird [hier](consistency-le
 Als nächstes erfahren Sie, wie Sie die globale Verteilung konfigurieren, indem Sie die folgenden Artikel verwenden:
 
 * [Hinzufügen/Entfernen von Regionen für Ihr Datenbankkonto](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [Konfigurieren von Clients für Multihoming](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Konfigurieren von Clients für Multihoming](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Erstellen einer benutzerdefinierten Konfliktlösungsrichtlinie](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

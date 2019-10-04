@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 09/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 3be1da54b16a24ce3c4431dfe26eb778cea5c83d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: cf1bd223c852db930835ea1b56a93a381e8312c5
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545262"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161425"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Tutorial: Zugreifen auf ein Classroom-Lab in Azure Lab Services
 In diesem Tutorial stellen Sie als Kursteilnehmer eine Verbindung mit einem virtuellen Computer in einem Classroom-Lab her. 
@@ -27,21 +27,40 @@ In diesem Tutorial stellen Sie als Kursteilnehmer eine Verbindung mit einem virt
 In diesem Tutorial führen Sie die folgenden Aktionen aus:
 
 > [!div class="checklist"]
-> * Verwenden des Registrierungslinks 
-> * Herstellen einer Verbindung mit dem virtuellen Computer
+> * Registrieren beim Lab
+> * Starten der VM
+> * Herstellen der Verbindung zur VM
 
-## <a name="use-the-registration-link"></a>Verwenden des Registrierungslinks
+## <a name="register-to-the-lab"></a>Registrieren beim Lab
 
-1. Navigieren Sie zur **Registrierungs-URL**, die Sie von der Lehrkraft erhalten haben. Die Registrierungs-URL muss nach Abschluss der Registrierung nicht mehr verwendet werden. Verwenden Sie stattdessen die folgende URL: [https://labs.azure.com](https://labs.azure.com). Beachten Sie den Hinweis, dass Internet Explorer 11 noch nicht unterstützt wird. 
+1. Navigieren Sie zur **Registrierungs-URL**, die Sie von der Lehrkraft erhalten haben. Die Registrierungs-URL muss nach Abschluss der Registrierung nicht mehr verwendet werden. Verwenden Sie stattdessen die folgende URL: [https://labs.azure.com](https://labs.azure.com). Internet Explorer 11 wird noch nicht unterstützt. 
 1. Melden Sie sich mit Ihrem Geschäfts-, Schul- oder Unikonto beim Dienst an, um die Registrierung abzuschließen. 
-2. Vergewissern Sie sich nach der Registrierung, dass Sie den virtuellen Computer für das Lab sehen, auf das Sie Zugriff haben. 
-3. Warten Sie, bis der virtuelle Computer bereit ist, und **starten** Sie dann den virtuellen Computer. Dieser Prozess nimmt einige Zeit in Anspruch.  
+
+    > [!NOTE]
+    > Für die Verwendung von Azure Lab Services ist ein Microsoft-Konto erforderlich. Wenn Sie ein nicht von Microsoft stammendes Konto (beispielsweise ein Yahoo- oder Google-Konto) für die Anmeldung beim Portal verwenden möchten, befolgen Sie die Anweisungen zum Erstellen eines Microsoft-Kontos, das mit Ihrem Nicht-Microsoft-Konto verknüpft wird. Führen Sie anschließend die Schritte zum Abschließen des Registrierungsprozesses aus. 
+1. Vergewissern Sie sich nach der Registrierung, dass Sie den virtuellen Computer für das Lab sehen, auf das Sie Zugriff haben. 
+1. Warten Sie, bis der virtuelle Computer bereit ist. Beachten Sie auf der VM-Kachel die folgenden Felder:
+    1. Im oberen Kachelbereich wird der **Name des Labs** angezeigt.
+    1. Auf der rechten Seite wird das Symbol angezeigt, das für das **Betriebssystem** des virtuellen Computers steht. In diesem Beispiel ist es das Windows-Betriebssystem. 
+    1. Die Statusanzeige auf der Kachel gibt Aufschluss darüber, wie viele Stunden der Ihnen zugewiesenen [Kontingentstunden](how-to-configure-student-usage.md#set-quotas-for-users) bereits verwendet wurden. Diese Zeit wurde Ihnen zusätzlich zu der geplanten Zeit für das Lab zugewiesen. 
+    1. Im unteren Kachelbereich befinden sich Symbole und Schaltflächen, über die Sie den virtuellen Computer starten und beenden sowie eine Verbindung mit dem virtuellen Computer herstellen können. 
+    1. Rechts von den Schaltflächen wird der Status des virtuellen Computers angezeigt. Vergewissern Sie sich, dass der Status des virtuellen Computers **Beendet** lautet. 
+
+        ![Virtueller Computer im Status „Beendet“](../media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
+
+## <a name="start-the-vm"></a>Starten der VM
+1. **Starten** Sie den virtuellen Computer, indem Sie die erste Schaltfläche auswählen, wie in der folgenden Abbildung gezeigt. Dieser Prozess nimmt einige Zeit in Anspruch.  
 
     ![Starten der VM](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
+4. Vergewissern Sie sich, dass der Status des virtuellen Computers **Wird ausgeführt** lautet. 
 
-## <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
+    ![Ausgeführter virtueller Computer](../media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
 
-1. Klicken Sie auf der Kachel für die VM des Labs, auf das Sie zugreifen möchten, auf **Verbinden**. 
+    Beachten Sie, dass das Symbol der ersten Schaltfläche so geändert wurde, dass es nun einen Vorgang zum **Beenden** darstellt. Sie können diese Schaltfläche auswählen, um den virtuellen Computer zu beenden. 
+
+## <a name="connect-to-the-vm"></a>Herstellen der Verbindung zur VM
+
+1. Wählen Sie die zweite Schaltfläche aus wie in der folgenden Abbildung gezeigt, um eine **Verbindung** mit dem virtuellen Computer des Labs herzustellen. 
 
     ![Herstellen einer Verbindung mit dem virtuellen Computer](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. Führen Sie einen der folgenden Schritte aus: 

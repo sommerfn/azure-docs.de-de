@@ -9,16 +9,18 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: a4a412330a1cfab9e4091ff775a25a062033bb7e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 3de61bb1ed7044ef3c2eb8005500712e36fd3b67
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448224"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272532"
 ---
 # <a name="migrate-network-resources-to-global-azure"></a>Migrieren von Netzwerkressourcen zu Azure weltweit
 
 Die meisten Netzwerkdienste unterstützen keine Migration von Azure Deutschland zu Azure weltweit. Allerdings können Sie Ihre Netzwerke in beiden Cloudumgebungen über ein Site-to-Site-VPN verbinden. 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Die Schritte zum Einrichten eines Site-to-Site-VPNs zwischen Clouds sind mit den Schritten vergleichbar, die Sie zum Bereitstellen eines Site-to-Site-VPN zwischen Ihrem lokalen Netzwerk und Azure ausführen. Definieren Sie ein Gateway in beiden Clouds, und geben Sie dann an, wie die VPNs miteinander kommunizieren sollen. Im Artikel [Erstellen einer Site-to-Site-Verbindung im Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) werden die Schritte beschrieben, die Sie zum Bereitstellen eines Site-to-Site-VPNs ausführen müssen. Zusammenfassung der Schritte:
 
@@ -48,7 +50,7 @@ Die Migration virtueller Netzwerke von Azure Deutschland zu Azure weltweit wird 
 
 Weitere Informationen finden Sie unter:
 
-- Aktualisieren Sie Ihre Kenntnisse, indem Sie die [Tutorials zu Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/#step-by-step-tutorials) durcharbeiten.
+- Aktualisieren Sie Ihre Kenntnisse, indem Sie die [Tutorials zu Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network) durcharbeiten.
 - Im Artikel [Übersicht über virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md) finden Sie weitere Informationen zu diesem Thema.
 - Lesen Sie den Artikel [Planen virtueller Netzwerke](../virtual-network/virtual-network-vnet-plan-design-arm.md).
 
@@ -59,8 +61,8 @@ Die Migration von Netzwerksicherheitsgruppen von Azure Deutschland zu Azure welt
 Die aktuelle Konfiguration einer beliebigen Netzwerksicherheitsgruppe können Sie über das Portal oder mit den folgenden PowerShell-Befehlen abrufen:
 
 ```powershell
-$nsg=Get-AzureRmNetworkSecurityGroup -ResourceName <nsg-name> -ResourceGroupName <resourcegroupname>
-Get-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
+$nsg=Get-AzNetworkSecurityGroup -ResourceName <nsg-name> -ResourceGroupName <resourcegroupname>
+Get-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
 ```
 
 Weitere Informationen finden Sie unter:
@@ -75,7 +77,7 @@ Das Migrieren einer Azure ExpressRoute-Instanz von Azure Deutschland zu Azure we
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu ExpressRoute](https://docs.microsoft.com/azure/expressroute/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu ExpressRoute](https://docs.microsoft.com/azure/expressroute) durcharbeiten.
 - Im Artikel [Erstellen eines neuen ExpressRoute-Gateways](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) finden Sie weitere Informationen zu diesem Thema.
 - Lesen Sie den Artikel [ExpressRoute-Standorte und -Dienstanbieter](../expressroute/expressroute-locations.md).
 - Lesen Sie auch den Artikel [Gateways für virtuelle Netzwerke für ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md).
@@ -84,28 +86,28 @@ Weitere Informationen finden Sie unter:
 
 Das Migrieren einer Azure VPN Gateway-Instanz von Azure Deutschland zu Azure weltweit wird derzeit nicht unterstützt. Es wird empfohlen, in Azure weltweit eine neue VPN Gateway-Instanz zu erstellen und zu konfigurieren.
 
-Informationen zu Ihrer aktuellen VPN Gateway-Konfiguration können Sie über das Portal oder mit PowerShell abrufen. Verwenden Sie in PowerShell einen Satz von Cmdlets, die mit `Get-AzureRmVirtualNetworkGateway*` beginnen.
+Informationen zu Ihrer aktuellen VPN Gateway-Konfiguration können Sie über das Portal oder mit PowerShell abrufen. Verwenden Sie in PowerShell einen Satz von Cmdlets, die mit `Get-AzVirtualNetworkGateway*` beginnen.
 
 Stellen Sie sicher, dass Sie Ihre lokale Konfiguration aktualisieren. Löschen Sie auch alle vorhandenen Regeln für die alten IP-Adressbereiche, nachdem Sie Ihre Azure-Netzwerkumgebung aktualisiert haben.
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway) durcharbeiten.
 - Im Artikel [Herstellen einer Site-to-Site-Verbindung](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) finden Sie weitere Informationen zu diesem Thema.
-- Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/get-azurermvirtualnetworkgateway).
+- Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzVirtualNetworkGateway](/powershell/module/az.network/get-azvirtualnetworkgateway).
 - Lesen Sie den Blogbeitrag [Herstellen einer Site-to-Site-Verbindung](https://blogs.technet.microsoft.com/ralfwi/2017/02/02/connecting-clouds/).
  
 ## <a name="application-gateway"></a>Application Gateway
 
 Das Migrieren einer Azure Application Gateway-Instanz von Azure Deutschland zu Azure weltweit wird derzeit nicht unterstützt. Es wird empfohlen, in Azure weltweit ein neues Gateway zu erstellen und zu konfigurieren.
 
-Informationen zu Ihrer aktuellen Gatewaykonfiguration können Sie über das Portal oder mit PowerShell abrufen. Verwenden Sie in PowerShell einen Satz von Cmdlets, die mit `Get-AzureRmApplicationGateway*` beginnen.
+Informationen zu Ihrer aktuellen Gatewaykonfiguration können Sie über das Portal oder mit PowerShell abrufen. Verwenden Sie in PowerShell einen Satz von Cmdlets, die mit `Get-AzApplicationGateway*` beginnen.
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Application Gateway](https://docs.microsoft.com/azure/application-gateway/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal) durcharbeiten.
 - Im Artikel [Erstellen eines Application Gateways](../application-gateway/quick-create-portal.md) finden Sie weitere Informationen zu diesem Thema.
-- Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzureRmApplicationGateway](/powershell/module/azurerm.network/get-azurermapplicationgateway).
+- Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzApplicationGateway](/powershell/module/az.network/get-azapplicationgateway).
 
 ## <a name="dns"></a>DNS
 
@@ -147,7 +149,7 @@ az network dns record-set ns list -g <resource group> -z --output json
 
 Weitere Informationen finden Sie unter:
 
-- Aktualisieren Sie Ihre Kenntnisse, indem Sie die [Tutorials zu Azure DNS](https://docs.microsoft.com/azure/dns/#step-by-step-tutorials) durcharbeiten.
+- Aktualisieren Sie Ihre Kenntnisse, indem Sie die [Tutorials zu Azure DNS](https://docs.microsoft.com/azure/dns) durcharbeiten.
 - Im Artikel [Übersicht über Azure DNS](../dns/dns-overview.md) finden Sie weitere Informationen zu diesem Thema.
 - Erfahren Sie mehr über [Azure DNS-Import und -Export](../dns/dns-import-export.md).
 
@@ -157,7 +159,7 @@ Das Migrieren einer Azure Network Watcher-Instanz von Azure Deutschland zu Azure
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Network Watcher-Tutorials](https://docs.microsoft.com/azure/network-watcher/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Network Watcher-Tutorials](https://docs.microsoft.com/azure/network-watcher) durcharbeiten.
 - Im Artikel [Übersicht über Azure Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) finden Sie weitere Informationen zu diesem Thema.
 - Erfahren Sie mehr über [Datenflussprotokolle für Netzwerksicherheitsgruppen](../network-watcher/network-watcher-nsg-flow-logging-portal.md).
 - Erfahren Sie mehr über [Verbindungsmonitor](../network-watcher/connection-monitor.md).
@@ -178,7 +180,7 @@ Sie können zusätzliche Endpunkte in der Zielumgebung definieren, indem Sie den
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Traffic Manager-Tutorials](https://docs.microsoft.com/azure/traffic-manager/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Traffic Manager-Tutorials](https://docs.microsoft.com/azure/traffic-manager) durcharbeiten.
 - Lesen Sie [Was ist Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
 - Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](../traffic-manager/traffic-manager-create-profile.md).
 
@@ -188,7 +190,7 @@ Das Migrieren einer Azure Load Balancer-Instanz von Azure Deutschland zu Azure w
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Load Balancer](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Load Balancer](https://docs.microsoft.com/azure/load-balancer) durcharbeiten.
 - Lesen Sie auch den Artikel [Übersicht über Azure Load Balancer](../load-balancer/load-balancer-overview.md).
 - Im Artikel [Erstellen eines neuen Load Balancers](../load-balancer/quickstart-load-balancer-standard-public-portal.md) finden Sie weitere Informationen zu diesem Thema.
 

@@ -7,24 +7,31 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen eines AKS-Clusters – CLI
-      href: kubernetes-walkthrough.md
-    - name: Erstellen eines AKS-Clusters – Portal
-      href: kubernetes-walkthrough-portal.md
+    - name: Erstellen eines AKS-Clusters
+      expanded: true
+      items:
+        - name: Verwenden der Azure-CLI
+          href: kubernetes-walkthrough.md
+        - name: Verwenden des Azure-Portals
+          href: kubernetes-walkthrough-portal.md
+        - name: Verwenden einer Resource Manager-Vorlage
+          href: kubernetes-walkthrough-rm-template.md
     - name: Entwickeln von Anwendungen
       expanded: true
       items:
-        - name: Verwenden von Java (VS Code und CLI)
-          href: ../dev-spaces/quickstart-java.md
-          maintainContext: true
-        - name: Verwenden von .NET Core (VS Code und CLI)
+        - name: Verwenden von Draft
+          href: kubernetes-draft.md
+        - name: Verwenden von Visual Studio Code und Azure Dev Spaces
           href: ../dev-spaces/quickstart-netcore.md
           maintainContext: true
-        - name: Verwenden von .NET Core (Visual Studio 2017)
+        - name: Verwenden von Visual Studio und Azure Dev Spaces
           href: ../dev-spaces/quickstart-netcore-visualstudio.md
           maintainContext: true
-        - name: Verwenden von Node.js (VS Code und CLI)
-          href: ../dev-spaces/quickstart-nodejs.md
+        - name: Verwenden von CLI und Azure Dev Spaces
+          href: ../dev-spaces/quickstart-cli.md
+          maintainContext: true
+        - name: Verwenden von Azure Dev Spaces für die Teamentwicklung
+          href: ../dev-spaces/quickstart-team-development.md
           maintainContext: true
 - name: Lernprogramme
   items:
@@ -58,8 +65,9 @@
     - name: Skalieren
       href: concepts-scale.md
     - name: Bewährte Methoden
-      href: best-practices.md
       items:
+        - name: Übersicht
+          href: best-practices.md
         - name: Für Clusterbetreiber
           items:
             - name: Mehrinstanzenfähigkeit und Clusterisolation
@@ -87,11 +95,13 @@
             - name: Podsicherheit
               href: developer-best-practices-pod-security.md
     - name: Kontingente und regionale Grenzwerte
-      href: container-service-quotas.md
+      href: quotas-skus-regions.md
     - name: Migrieren von ACS zu AKS
       href: acs-aks-migration.md
     - name: Unterstützte Kubernetes-Version
       href: supported-kubernetes-versions.md
+    - name: Sicherheitshärtung im Hostbetriebssystem
+      href: security-hardened-vm-host-image.md
 - name: Anleitungen
   items:
     - name: Clustervorgänge
@@ -108,21 +118,27 @@
         - name: Löschen eines AKS-Clusters
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: Azure AD-fähige AKS-Instanz
-          href: aad-integration.md
-        - name: Erstellen virtueller Knoten (Vorschauversion)
+        - name: Integrieren eines ACR mit einem AKS-Cluster
+          href: cluster-container-registry-integration.md
+        - name: Erstellen von virtuellen Knoten
           items:
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Verwenden der Azure-CLI
               href: virtual-nodes-cli.md
-            - name: Azure-Portal
+            - name: Verwenden des Azure-Portals
               href: virtual-nodes-portal.md
         - name: Verwenden von Virtual Kubelet
           href: virtual-kubelet.md
         - name: Verwenden der automatischen Skalierungsfunktion für Cluster (Vorschauversion)
           href: cluster-autoscaler.md
+        - name: Verwenden von Verfügbarkeitszonen (Vorschauversion)
+          href: availability-zones.md
+        - name: Verwenden mehrerer Knotenpools (Vorschauversion)
+          href: use-multiple-node-pools.md
         - name: Bereitstellen von AKS mit Terraform
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: Verwenden des Kubernetes-Dashboards
+          href: kubernetes-dashboard.md
     - name: Konfigurieren von Datenvolumes
       items:
         - name: 'Azure Disk: Dynamisch'
@@ -133,6 +149,10 @@
           href: azure-files-dynamic-pv.md
         - name: 'Azure Files: Statisch'
           href: azure-files-volume.md
+        - name: 'NFS-Server: statisch'
+          href: azure-nfs-volume.md
+        - name: Azure NetApp Files
+          href: azure-netapp-files.md
     - name: Konfigurieren der Netzwerkeinstellungen
       items:
         - name: Erstellen oder Verwenden eines vorhandenen virtuellen Netzwerks
@@ -143,7 +163,9 @@
               href: configure-azure-cni.md
         - name: Erstellen eines internen Load Balancers
           href: internal-lb.md
-        - name: Verwenden von statischen IP-Adressen
+        - name: Verwenden einer Load Balancer Standard-Instanz
+          href: load-balancer-standard.md
+        - name: Verwenden einer statischen IP-Adresse
           href: static-ip.md
         - name: Eingehende Daten
           items:
@@ -156,8 +178,9 @@
             - name: Verwenden von TLS mit eigenen Zertifikaten
               href: ingress-own-tls.md
             - name: Verwenden von TLS mit Let's Encrypt
-              href: ingress-tls.md
               items:
+                - name: Verwenden einer dynamischen öffentlichen IP-Adresse
+                  href: ingress-tls.md
                 - name: Verwenden einer statischen öffentlichen IP-Adresse
                   href: ingress-static-ip.md
         - name: Ausgehender Datenverkehr
@@ -170,10 +193,26 @@
           href: kubernetes-service-principal.md
         - name: Beschränken des Zugriffs auf die Clusterkonfigurationsdatei
           href: control-kubeconfig-access.md
-        - name: Schützen des Datenverkehrs zwischen Pods mit Netzwerkrichtlinien (Vorschauversion)
+        - name: Schützen des Datenverkehrs zwischen Pods mit Netzwerkrichtlinien
           href: use-network-policies.md
+        - name: Verwenden von Podsicherheitsrichtlinien (Vorschauversion)
+          href: use-pod-security-policies.md
+        - name: Definieren der vom API-Server autorisierten IP-Bereiche (Vorschauversion)
+          href: api-server-authorized-ip-ranges.md
+        - name: Steuern von Bereitstellungen mit Azure Policy (Vorschauversion)
+          href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
         - name: Aktualisieren der Anmeldeinformationen für den Clusterdienstprinzipal
           href: update-credentials.md
+        - name: Beschränken und Steuern des ausgehenden Clusterdatenverkehrs
+          href: limit-egress-traffic.md
+        - name: Aktivieren der Azure Active Directory-Integration
+          items:
+            - name: Verwenden der Azure-CLI
+              href: azure-ad-integration-cli.md
+            - name: Verwenden des Azure-Portals
+              href: azure-ad-integration.md
+        - name: Verwenden der rollenbasierten Zugriffssteuerung von Kubernetes mit Azure AD-Integration
+          href: azure-ad-rbac.md
         - name: Authentifizieren mit ACR
           href: ../container-registry/container-registry-auth-aks.md
           maintainContext: true
@@ -189,6 +228,20 @@
         - name: Anzeigen von Containerprotokollen in Echtzeit (Vorschau)
           href: ../azure-monitor/insights/container-insights-live-logs.md
           maintainContext: true
+    - name: Verwenden von Windows Server-Containern (Vorschauversion)
+      items:
+        - name: Erstellen eines AKS-Clusters
+          href: windows-container-cli.md
+        - name: Herstellen einer Remoteverbindung
+          href: rdp.md
+        - name: Bekannte Einschränkungen
+          href: windows-node-limitations.md
+        - name: Verwenden des Kubernetes-Dashboards
+          href: kubernetes-dashboard.md
+        - name: Erstellen von Dockerfiles für Windows Server-Container
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+        - name: Optimieren von Dockerfiles für Windows Server-Container
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
     - name: Entwickeln und Ausführen von Anwendungen
       items:
         - name: Entwickeln mit Dev Spaces
@@ -241,8 +294,6 @@
                   maintainContext: true
         - name: Ausführen von Anwendungen mit Helm
           href: kubernetes-helm.md
-        - name: Entwickeln von Anwendungen mit Entwurf
-          href: kubernetes-draft.md
         - name: Verwenden von Open Service Broker für Azure
           href: integrate-azure.md
         - name: Verwenden der Cosmos DB-API für MongoDB mit OSBA
@@ -259,6 +310,10 @@
               href: istio-install.md
             - name: Intelligentes Routing und Canary-Releases
               href: istio-scenario-routing.md
+        - name: Verwenden von Hashicorp Consul Connect
+          items:
+            - name: Installieren und konfigurieren
+              href: consul-install.md
         - name: Verwenden von Azure Database for PostgreSQL
           href: ../postgresql/concepts-aks.md
           maintainContext: true
@@ -272,10 +327,8 @@
         - name: Azure DevOps-Projekt
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
-    - name: Kubernetes-Grundlagen
-      items:
-        - name: Verwenden des Kubernetes-Dashboards
-          href: kubernetes-dashboard.md
+        - name: Startprogramm für Bereitstellungscenter
+          href: deployment-center-launcher.md
     - name: Problembehandlung
       items:
         - name: Häufige Probleme

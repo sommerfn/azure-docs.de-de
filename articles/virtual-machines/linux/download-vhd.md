@@ -4,23 +4,22 @@ description: Laden Sie eine Linux-VHD mithilfe der Azure-Befehlszeilenschnittste
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: f72d49a3ab204ce64eb89d0f05630b640c138e0a
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: ed79df03a42c1558b975cd1c21c79716d50d4616
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329250"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083490"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Herunterladen einer Linux-VHD von Azure
 
@@ -58,9 +57,9 @@ Um die VHD als Image zum Erstellen von anderen VMs zu verwenden, führen Sie die
 Um die VHD-Datei als Datenträger für eine neue Instanz eines vorhandenen virtuellen Computers oder Datenträgers für Daten zu verwenden, führen Sie folgende Schritte aus:
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2.  Klicken Sie im Menü „Hub“ auf **Virtuelle Computer**.
+2.  Wählen Sie im linken Menü **Virtual Machines** aus.
 3.  Wählen Sie die VM aus der Liste aus.
-4.  Klicken Sie auf dem Blatt für die VM auf **Beenden**.
+4.  Wählen Sie auf der Seite für den virtuellen Computer die Option **Beenden** aus.
 
     ![Beenden der VM](./media/download-vhd/export-stop.png)
 
@@ -68,21 +67,21 @@ Um die VHD-Datei als Datenträger für eine neue Instanz eines vorhandenen virtu
 
 Um die VHD-Datei herunterzuladen, müssen Sie eine [SAS-URL (Shared Access Signature)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) generieren. Wenn die URL generiert wird, wird der URL eine Ablaufzeit zugewiesen.
 
-1.  Klicken Sie auf im Menü des Blatts für die VM auf **Datenträger**.
-2.  Wählen Sie den Betriebssystem-Datenträger für die VM aus, und klicken Sie dann auf **Exportieren**.
-3.  Klicken Sie auf **URL generieren**.
+1.  Wählen Sie im Menü auf der Seite des virtuellen Computers die Option **Datenträger** aus.
+2.  Wählen Sie den Betriebssystem-Datenträger für den virtuellen Computer und anschließend **Datenträgerexport** aus.
+3.  Wählen Sie **URL generieren** aus.
 
     ![Generieren der URL](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>Herunterladen der VHD
 
-1.  Klicken Sie unter der URL, die generiert wurde, auf „VHD-Datei herunterladen“.
-
+1.  Wählen Sie unter der generierten URL die Option **VHD-Datei herunterladen** aus.
+**
     ![Herunterladen der VHD](./media/download-vhd/export-download.png)
 
-2.  Möglicherweise müssen Sie im Browser auf **Speichern** klicken, um den Download zu starten. Der Standardname für die VHD-Datei lautet *abcd*.
+2.  Gegebenenfalls muss im Browser die Option **Speichern** ausgewählt werden, um den Download zu starten. Der Standardname für die VHD-Datei lautet *abcd*.
 
-    ![Klicken Sie im Browser auf „Speichern“](./media/download-vhd/export-save.png)
+    ![Auswählen von „Speichern“ im Browser](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

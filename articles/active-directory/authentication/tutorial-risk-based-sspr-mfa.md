@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35039dc05103ac6528f668fd76e1372ed7cc0708
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 9289bfe9e90186896a753e5853d81d2f06669917
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370551"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125175"
 ---
-# <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>Tutorial: Verwenden von Risikoereignissen zum Auslösen von mehrstufiger Authentifizierung und Kennwortänderungen
+# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Tutorial: Verwenden von Risikoerkennungen zum Auslösen von mehrstufiger Authentifizierung und Kennwortänderungen
 
 In diesem Tutorial aktivieren Sie Features für Azure Active Directory (Azure AD) Identity Protection, ein Azure AD Premium P2-Feature, bei dem es sich um mehr als ein einfaches Tool für die Überwachung und Berichterstellung handelt. Zum Schützen der Identitäten Ihrer Organisation können Sie risikobasierte Richtlinien konfigurieren, mit denen automatisch auf riskantes Verhalten reagiert wird. Mit diesen Richtlinien können entweder automatisch Blockaden erstellt oder Lösungen initiiert werden, z.B. das Erzwingen von Kennwortänderungen und Multi-Factor Authentication.
 
 Azure AD Identity Protection-Richtlinien können neben den Richtlinien für bedingten Zugriff als zusätzliche Schutzschicht genutzt werden. Unter Umständen lösen Ihre Benutzer niemals ein riskantes Verhalten aus, für das eine dieser Richtlinien erforderlich ist, aber als Administrator wissen Sie, dass die Benutzer geschützt sind.
 
-Beispiele für Vorkommnisse, die ein Risikoereignis auslösen können, sind:
+Beispiele für Vorkommnisse, die eine Risikoerkennung auslösen können, sind:
 
 * Benutzer mit kompromittierten Anmeldeinformationen
 * Anmeldungen von anonymen IP-Adressen

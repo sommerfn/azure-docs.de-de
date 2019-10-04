@@ -1,20 +1,19 @@
 ---
-title: Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Best Practices für Infrastruktur
+title: Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Infrastruktur
 description: Erfahren Sie mehr zu Best Practices für die Infrastruktur bei der Migration von lokalen Hadoop-Clustern zu Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4fe47feff6ac3a58ba4db8c700a3e34b2cdc0df9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: e35917a7eb7b2e38fcc2689f6fe838ec6529428a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274688"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087448"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Best Practices für Infrastruktur
 
@@ -37,7 +36,7 @@ In [Standardknotenkonfiguration und Standardgrößen von virtuellen Computern f�
 
 ## <a name="check-hadoop-components-availability-in-hdinsight"></a>Überprüfen der Verfügbarkeit von Hadoop-Komponenten in HDInsight
 
-Jede HDInsight-Version ist eine Cloud-Distribution von Hortonworks Data Platform (HDP) und besteht aus einem Satz an Hadoop-Ökosystemkomponenten. Unter [HDInsight-Komponentenversionen](../hdinsight-component-versioning.md) finden Sie Einzelheiten zu allen HDInsight-Komponenten und deren aktuelle Versionen.
+Jede HDInsight-Version ist eine Clouddistribution einer Reihe von Komponenten des Hadoop-Ökosystems. Unter [HDInsight-Komponentenversionen](../hdinsight-component-versioning.md) finden Sie Einzelheiten zu allen HDInsight-Komponenten und deren aktuelle Versionen.
 
 Sie können auch die Benutzeroberfläche von Apache Ambari oder die Ambari-REST-API verwenden, um die Hadoop-Komponenten und -Versionen in HDInsight zu überprüfen.
 
@@ -161,15 +160,15 @@ Die Nutzung eines Azure Virtual Network mit HDInsight ermöglicht die folgenden 
 - Herstellen einer Verbindung für HDInsight mit Datenspeichern in einem Azure Virtual Network
 - Direktes Zugreifen auf Hadoop-Dienste, die nicht öffentlich über das Internet verfügbar sind (Beispiele: Kafka-APIs oder die HBase-Java-API)
 
-HDInsight kann entweder zu einem neuen oder vorhandenen Azure Virtual Network hinzugefügt werden. Wenn HDInsight zu einem bestehenden Virtual Network hinzugefügt wird, müssen die bestehenden Netzwerksicherheitsgruppen und benutzerdefinierten Routen aktualisiert werden, um uneingeschränkten Zugriff auf [mehrere IP-Adressen](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) im Azure-Rechenzentrum zu ermöglichen. Stellen Sie außerdem sicher, dass Sie den Datenverkehr zu den [Ports](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports), die von HDInsight-Diensten verwendet werden, nicht blockieren.
+HDInsight kann entweder zu einem neuen oder vorhandenen Azure Virtual Network hinzugefügt werden. Wenn HDInsight zu einem bestehenden Virtual Network hinzugefügt wird, müssen die bestehenden Netzwerksicherheitsgruppen und benutzerdefinierten Routen aktualisiert werden, um uneingeschränkten Zugriff auf [mehrere IP-Adressen](../hdinsight-management-ip-addresses.md) im Azure-Rechenzentrum zu ermöglichen. Stellen Sie außerdem sicher, dass Sie den Datenverkehr zu den [Ports](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports), die von HDInsight-Diensten verwendet werden, nicht blockieren.
 
 > [!Note]  
 > Die Tunnelerzwingung wird derzeit von HDInsight nicht unterstützt. Die Tunnelerzwingung ist eine Subnetzeinstellung, bei der für ausgehenden Internetdatenverkehr der Umweg über ein Gerät zur Untersuchung und Protokollierung erzwungen wird. Entfernen Sie entweder die Tunnelerzwingung, bevor Sie HDInsight in einem Subnetz installieren, oder erstellen Sie ein neues Subnetz für HDInsight. HDInsight unterstützt auch keine Beschränkung der ausgehenden Netzwerkverbindung.
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Was ist Azure Virtual Network?](../../virtual-network/virtual-networks-overview.md)
-- [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md)
+- [Azure Virtual Networks – Übersicht](../../virtual-network/virtual-networks-overview.md)
+- [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md)
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Herstellen einer sicheren Verbindung mit Azure-Diensten unter Verwendung von Azure Virtual Network-Dienstendpunkten
 
@@ -177,8 +176,8 @@ HDInsight unterstützt [Virtual Network-Dienstendpunkte](../../virtual-network/v
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Dienstendpunkte im virtuellen Netzwerk](../../virtual-network/virtual-network-service-endpoints-overview.md)
-- [Enhance HDInsight security with service endpoints (Erhöhen der Sicherheit von HDInsight mit Dienstendpunkten)](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
+- [VNET-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md)
+- [Erhöhen der Sicherheit von HDInsight mit Dienstendpunkten](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
 
 ## <a name="connect-hdinsight-to-the-on-premises-network"></a>Verbinden von HDInsight mit einem lokalen Netzwerk
 

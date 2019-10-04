@@ -3,19 +3,20 @@ title: Bereitstellen eines Unterhaltungslernmodul-Bots – Microsoft Cognitive S
 titleSuffix: Azure
 description: Erfahren Sie, wie Sie einen Unterhaltungslernmodul-Bot bereitstellen.
 services: cognitive-services
-author: v-jaswel
+author: nitinme
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-jaswel
-ms.openlocfilehash: ae984cc2e0f43b81b8aa2f08b3944886733c9054
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: nitinme
+ROBOTS: NOINDEX
+ms.openlocfilehash: 05fd83506aac26df33f18bec83dcadac8dee2d90
+ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994644"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68705282"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Bereitstellen eines Unterhaltungslernmodul-Bots
 

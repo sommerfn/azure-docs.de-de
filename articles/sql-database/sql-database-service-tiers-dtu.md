@@ -1,6 +1,6 @@
 ---
-title: Azure SQL-Datenbank-Diensttarife – DTU-basiertes Kaufmodell | Microsoft-Dokumentation
-description: Erfahren Sie etwas über die Diensttarife für Singletons und für in einem Pool zusammengefasste Datenbanken im DTU-basierten Kaufmodell, um verschiedene Compute- und Speichergrößen bereitzustellen.
+title: Azure SQL-Datenbank-Dienstebenen – DTU-basiertes Kaufmodell | Microsoft-Dokumentation
+description: Erfahren Sie etwas über die Dienstebenen für Einzel- und Pooldatenbanken im DTU-basierten Kaufmodell, um verschiedene Compute- und Speichergrößen bereitzustellen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,25 +10,24 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-manager: craigg
-ms.date: 02/25/2019
-ms.openlocfilehash: 57a20ac29ec3a15db26e0ab2c0b61b57ab3a5882
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 09/06/2019
+ms.openlocfilehash: 03f16987941f79f9161ccbc172bb2ca1a7139384
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004005"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773205"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 
-Diensttarife beim DTU-basierten Kaufmodell unterscheiden sich durch eine Reihe von Computegrößen mit einer festen Menge an integriertem Speicher, einem festen Aufbewahrungszeitraum für Sicherungen und einem festen Preis. Alle Diensttarife im DTU-basierten Kaufmodell ermöglichen das flexible Wechseln von Computegrößen ohne Ausfallzeiten. Einzeldatenbanken und Pools für elastische Datenbanken werden nach Diensttarif und Computegröße auf Stundenbasis abgerechnet.
+Dienstebenen beim DTU-basierten Kaufmodell unterscheiden sich durch eine Reihe von Computegrößen mit einer festen Menge an integriertem Speicher, einem festen Aufbewahrungszeitraum für Sicherungen und einem festen Preis. Alle Dienstebenen im DTU-basierten Kaufmodell bieten die Flexibilität, Computegrößen bei minimaler [Downtime](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/) zu ändern. Allerdings wird die Datenbankverbindung aufgrund einer Umschaltzeit kurzzeitig unterbrochen, was sich durch eine Wiederholungslogik reduzieren lässt. Einzeldatenbanken und Pools für elastische Datenbanken werden nach Dienstebene und Computegröße auf Stundenbasis abgerechnet.
 
 > [!IMPORTANT]
 > Für die verwaltete SQL-Datenbank-Instanz wird das DTU-basierte Kaufmodell nicht unterstützt. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md).
 > [!NOTE]
-> Weitere Informationen zu den V-Kern-basierten Diensttarifen finden Sie unter [Auswählen eines V-Kern-Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen](sql-database-service-tiers-vcore.md). Weitere Informationen zu den Unterschieden zwischen DTU-basierten Diensttarifen und V-Kern-basierten Diensttarifen finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
+> Weitere Informationen zu den V-Kern-basierten Dienstebenen finden Sie unter [Auswählen einer V-Kern-Dienstebene und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen](sql-database-service-tiers-vcore.md). Weitere Informationen zu den Unterschieden zwischen DTU-basierten Dienstebenen und V-Kern-basierten Dienstebenen finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
 
-## <a name="compare-the-dtu-based-service-tiers"></a>Vergleich der DTU-basierten Diensttarife
+## <a name="compare-the-dtu-based-service-tiers"></a>Vergleich der DTU-basierten Dienstebenen
 
 Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Geschäftskontinuität, Speicher und Leistung ab.
 
@@ -38,7 +37,7 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 |Betriebszeit-SLA|99,99 %|99,99 %|99,99 %|
 |Sicherungsaufbewahrung|7 Tage|35 Tage|35 Tage|
 |CPU|Niedrig|Niedrig, Mittel, Hoch|Mittel, Hoch|
-|E/A-Durchsatz (ungefähr) |2,5 IOPS pro DTU| 2,5 IOPS pro DTU | 48 IOPS pro DTU|
+|E/A-Durchsatz (ungefähr) |1–5 IOPS pro DTU| 1–5 IOPS pro DTU | 25 IOPS pro DTU|
 |E/A-Wartezeit (ungefähr)|5 ms (Lesen), 10 ms (Schreiben)|5 ms (Lesen), 10 ms (Schreiben)|2 ms (Lesen/Schreiben)|
 |Columnstore-Indizierung |–|S3 und höher|Unterstützt|
 |In-Memory-OLTP|–|–|Unterstützt|
@@ -60,7 +59,7 @@ Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Begrenzungen für eDTUs in Pools für elastische Datenbanken, Speicher und in einem Pool zusammengefasste Datenbanken
+## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Begrenzungen für eDTUs in Pools für elastische Datenbanken, Speicher und Pooldatenbanken
 
 | | **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
@@ -156,7 +155,7 @@ Beim Skalierungsfaktor 500 (SF=500) hat die Datenbank 100 Benutzer und kann ei
 
 Ein gültiger Vergleichstestlauf erfordert eine stabile Messdauer von mindestens einer Stunde.
 
-### <a name="metrics"></a>Metriken
+### <a name="metrics"></a>metrics
 
 Die Hauptmetriken im Vergleichstest sind Durchsatz und Antwortzeit.
 

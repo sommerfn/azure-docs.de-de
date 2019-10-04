@@ -11,12 +11,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: de99d1a58cac12c80748b34ef4a1b07c9fb2a78e
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: d13e0b95d57e3063292319961d5e1138f994076e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576853"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812277"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Transformieren von Daten in der Cloud mithilfe einer Spark-Aktivität in Azure Data Factory
 In diesem Tutorial verwenden Sie das Azure-Portal, um eine Azure Data Factory-Pipeline zu erstellen. In dieser Pipeline werden Daten transformiert, indem eine Spark-Aktivität und ein bedarfsabhängiger verknüpfter Azure HDInsight-Dienst verwendet wird. 
@@ -147,13 +147,13 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste:
    
    b. Vergewissern Sie sich, dass unter **Typ** die Option **On-demand HDInsight** (HDInsight (bedarfsgesteuert)) ausgewählt ist.
    
-   c. Wählen Sie unter **Azure Storage Linked Service** (Mit Azure Storage verknüpfter Dienst) die Option **AzureStorage1** aus. Diesen verknüpften Dienst haben Sie in einem früheren Schritt erstellt. Sollten Sie einen anderen Namen verwendet haben, geben Sie hier stattdessen diesen Namen ein. 
+   c. Wählen Sie unter **Mit Azure Storage verknüpfter Dienst** die Option **AzureBlobStorage1** aus. Diesen verknüpften Dienst haben Sie in einem früheren Schritt erstellt. Sollten Sie einen anderen Namen verwendet haben, geben Sie hier stattdessen diesen Namen ein. 
    
    d. Wählen Sie unter **Clustertyp** die Option **spark**.
    
    e. Geben Sie unter **Dienstprinzipal-ID** die ID des Dienstprinzipals ein, der zum Erstellen eines HDInsight-Clusters berechtigt ist. 
    
-      Dieser Dienstprinzipal muss Mitglied der Rolle „Mitwirkender“ in dem Abonnement oder der Ressourcengruppe sein, in dem bzw. der der Cluster erstellt wird. Weitere Informationen finden Sie unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../active-directory/develop/howto-create-service-principal-portal.md).
+      Dieser Dienstprinzipal muss Mitglied der Rolle „Mitwirkender“ in dem Abonnement oder der Ressourcengruppe sein, in dem bzw. der der Cluster erstellt wird. Weitere Informationen finden Sie unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../active-directory/develop/howto-create-service-principal-portal.md). Die **Dienstprinzipal-ID** entspricht der *Anwendungs-ID* und ein **Dienstprinzipalschlüssel** dem Wert für ein *Clientgeheimnis*.
    
    f. Geben Sie unter **Dienstprinzipalschlüssel** den Schlüssel ein. 
    
@@ -189,7 +189,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste:
    ![Angeben des verknüpften HDInsight-Diensts](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 1. Wechseln Sie zur Registerkarte **Script/Jar** (Skript/JAR), und führen Sie die folgenden Schritte aus: 
 
-   a. Wählen Sie unter **Job Linked Service** (Mit Auftrag verknüpfter Dienst) die Option **AzureStorage1**.
+   a. Wählen Sie unter **Mit Auftrag verknüpfter Dienst** die Option **AzureBlobStorage1** aus.
    
    b. Wählen Sie **Speicher durchsuchen**.
 
@@ -206,7 +206,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste:
 
 
 ## <a name="trigger-a-pipeline-run"></a>Auslösen einer Pipelineausführung
-Wählen Sie in der Symbolleiste die Option **Trigger** und dann **Trigger Now** (Jetzt auslösen). 
+Wählen Sie in der Symbolleiste die Option **Trigger hinzufügen** und dann **Jetzt auslösen**. 
 
 ![Schaltflächen „Trigger“ und „Trigger Now“ (Jetzt auslösen)](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
 
@@ -222,7 +222,7 @@ Wählen Sie in der Symbolleiste die Option **Trigger** und dann **Trigger Now** 
 
    ![Status der Pipelineausführung](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 
-   Durch Wählen des Links **Pipelines** im oberen Bereich können Sie zur Ansicht mit den Pipelineausführungen zurückkehren.
+   Durch Wählen des Links **Alle Pipelineausführungen** im oberen Bereich können Sie zur Ansicht mit den Pipelineausführungen zurückkehren.
 
    ![Ansicht „Aktivitätsausführungen“](./media/tutorial-transform-data-spark-portal/activity-runs.png)
 
@@ -231,7 +231,7 @@ Vergewissern Sie sich, dass die Ausgabedatei im Ordner „spark/outputfiles/word
 
 ![Speicherort der Ausgabedatei](./media/tutorial-transform-data-spark-portal/verity-output.png)
 
-Die Datei sollte für jedes Wort aus der Eingabetextdatei angeben, wie oft es in der Datei vorkommt. Beispiel:  
+Die Datei sollte für jedes Wort aus der Eingabetextdatei angeben, wie oft es in der Datei vorkommt. Beispiel: 
 
 ```
 (u'This', 1)

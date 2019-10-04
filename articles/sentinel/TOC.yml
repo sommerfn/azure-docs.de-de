@@ -1,4 +1,4 @@
-- name: Dokumentation zur Vorschauversion von Azure Sentinel
+- name: Dokumentation zu Azure Sentinel
   href: index.yml
 - name: Übersicht
   href: overview.md
@@ -11,12 +11,22 @@
       href: quickstart-get-visibility.md
 - name: Lernprogramme
   items:
-    - name: Erkennen von verdächtigen Bedrohungen
-      href: tutorial-detect-threats.md
-    - name: Untersuchen von Fällen
+    - name: Erkennen von Bedrohungen mithilfe integrierter Analysen
+      href: tutorial-detect-threats-built-in.md
+    - name: Erstellen benutzerdefinierter Regeln zum Erkennen von Bedrohungen
+      href: tutorial-detect-threats-custom.md
+    - name: Überwachen Ihrer Daten
+      href: tutorial-monitor-your-data.md
+    - name: Untersuchen von Vorfällen
       href: tutorial-investigate-cases.md
     - name: Reagieren auf Bedrohungen
       href: tutorial-respond-threats-playbook.md
+- name: Konzepte
+  items:
+    - name: Zuweisen von Berechtigungen mithilfe von Rollen
+      href: roles.md
+    - name: Erweiterte mehrstufige Angriffserkennung
+      href: fusion.md
 - name: Anleitungen
   items:
     - name: Herstellen einer Verbindung mit Datenquellen
@@ -40,6 +50,8 @@
               href: connect-azure-atp.md
             - name: Herstellen einer Verbindung mit Azure Security Center
               href: connect-azure-security-center.md
+            - name: Verbinden eines Domänennamenservers
+              href: connect-dns.md
             - name: Herstellen einer Verbindung mit Microsoft Web Application Firewall
               href: connect-microsoft-waf.md
             - name: Herstellen einer Verbindung mit der Windows-Firewall
@@ -50,6 +62,8 @@
           items:
             - name: Herstellen einer Verbindung mit CEF (generisch)
               href: connect-common-event-format.md
+            - name: Herstellen einer Verbindung mit AWS
+              href: connect-aws.md
             - name: Herstellen einer Verbindung mit Barracuda
               href: connect-barracuda.md
             - name: Herstellen einer Verbindung mit Check Point
@@ -68,6 +82,12 @@
               href: connect-cisco.md
         - name: Herstellen einer Verbindung mit Threat Intelligence
           href: connect-threat-intelligence.md
+        - name: Herstellen einer Verbindung mit virtuellen Azure Stack-Computern
+          href: connect-azure-stack.md
+    - name: Mehrere Mandanten (MSSP)
+      href: multiple-tenants-service-providers.md
+    - name: Erstellen von Incidents auf der Grundlage von Warnungen
+      href: create-incidents-from-alerts.md
     - name: Suche
       href: hunting.md
       items:
@@ -75,8 +95,8 @@
           href: notebooks.md
         - name: Suchen mithilfe von Textmarken
           href: bookmarks.md
-    - name: Aktivieren von Fusion
-      href: connect-fusion.md
+    - name: Entfernen von Azure Sentinel
+      href: offboard.md
 - name: Ressourcen
   items:
     - name: Nützliche Ressourcen

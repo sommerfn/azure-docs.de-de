@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/23/2019
 ms.author: glenga
-ms.openlocfilehash: e330f5ecbfc240b048d887289224c164a91215bd
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 17e298d88f83716063472ce7947ba95f24dba1d1
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904708"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67177874"
 ---
 Sie haben Ihre erste Funktion erstellt. Fügen Sie ihr nun eine Ausgabebindung hinzu, die eine Meldung in eine Warteschlange schreibt.
 

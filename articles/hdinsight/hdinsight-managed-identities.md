@@ -1,19 +1,19 @@
 ---
 title: Verwaltete Identitäten in Azure HDInsight
 description: Bietet eine Übersicht über die Implementierung von verwalteten Identitäten in Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 9386bcb8e455bff5ceed1fccdf55874caf7b6507
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 02ea164a1fa29b494801623d418be73fc47d069c
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176146"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077084"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Verwaltete Identitäten in Azure HDInsight
 
@@ -42,7 +42,7 @@ Die verbleibenden Schritte zum Konfigurieren der verwalteten Identität hängen 
 
 Verwaltete Identitäten werden in Azure HDInsight in verschiedenen Szenarien verwendet. In den verwandten Dokumenten finden Sie ausführliche Anweisungen zur Einrichtung und Konfiguration:
 
-* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-managed-identity)
+* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [Enterprise-Sicherheitspaket](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Kafka – Bring Your Own Key (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
 

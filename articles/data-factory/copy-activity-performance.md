@@ -1,5 +1,5 @@
 ---
-title: Handbuch zur Leistung und Optimierung der Kopieraktivität in Azure Data Factory | Microsoft-Dokumentation
+title: Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität in Azure Data Factory | Microsoft-Dokumentation
 description: Hier erfahren Sie, welche Faktoren sich entscheidend auf die Leistung auswirken, wenn Sie Daten in Azure Data Factory mithilfe der Kopieraktivität verschieben.
 services: data-factory
 documentationcenter: ''
@@ -10,91 +10,145 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 47b9ede2d529f78b14c21f53c6cd18ed691a3df3
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: f760917ae8f4ab11902799e36973ae896c4a2b43
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445826"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232352"
 ---
-# <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+# <a name="copy-activity-performance-and-scalability-guide"></a>Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version von Azure Data Factory aus:"]
 > * [Version 1](v1/data-factory-copy-activity-performance.md)
 > * [Aktuelle Version](copy-activity-performance.md)
 
+Unabhängig davon, ob Sie eine umfangreiche Datenmigration aus Data Lake oder einem Data Warehouse auf Unternehmensniveau zu Azure durchführen möchten oder ob Sie umfassende Datenmengen aus verschiedenen Datenquellen für die Big Data-Analyse in Azure erfassen möchten, es ist unerlässlich, für die optimale Leistung und Skalierbarkeit zu sorgen.  Azure Data Factory bietet einen leistungsfähigen, robusten und kostengünstigen Mechanismus für die Erfassung von Daten im gewünschten Umfang. Dadurch ist es ideal geeignet für Datentechniker, die leistungsstarke und skalierbare Pipelines für die Datenerfassung erstellen möchten.
 
-Die Azure Data Factory-Kopieraktivität bietet eine erstklassige, sichere und zuverlässige Lösung zum Laden von Daten mit hoher Leistung. Sie können Dutzende von Terabytes an Daten täglich zwischen einer großen Vielzahl von Cloud- und lokalen Datenspeichern kopieren. Blitzschnelles Datenladen ist wesentlich, um sicherzustellen, dass Sie sich auf das „Big Data“-Kernproblem konzentrieren können: Erstellen erweiterter Analyselösungen und tiefe Einblicke in all diese Daten.
+Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
-Azure bietet eine Reihe von Datenspeicher- und Data Warehouse-Lösungen der Unternehmensklasse, und mit der Kopieraktivität führen Sie ein hochgradig optimiertes und benutzerfreundliches Datenladen durch, das Sie mühelos konfigurieren und einrichten können. Mit einer einzelnen Kopieraktivität können Sie Folgendes erreichen:
+- Welche Leistung und Skalierbarkeit kann ich mit ADF-Kopieraktivität für Datenmigrations- und Datenerfassungsszenarien erzielen?
 
-* Laden von Daten in **Azure SQL Data Warehouse** mit **1,2 GBit/s**.
-* Laden von Daten in **Azure Blob Storage** mit **1,0 GBit/s**
-* Laden von Daten in **Azure Data Lake Store** mit **1,0 GBit/s**
-
-Dieser Artikel beschreibt Folgendes:
-
-* [Leistungsreferenznummern](#performance-reference) für unterstützte Quellen- und Senkendatenspeicher, die Ihnen bei der Projektplanung helfen;
-* Features, die den Kopierdurchsatz in verschiedenen Szenarien verbessern können, einschließlich [Datenintegrationseinheiten](#data-integration-units), [paralleler Kopien](#parallel-copy) und [gestaffeltem Kopieren](#staged-copy);
-* [Leitfaden zur Leistungsoptimierung](#performance-tuning-steps) zum Optimieren der Leistung und der Schlüsselfaktoren, die die Kopierleistung beeinflussen können.
+- Welche Schritte sind durchzuführen, um die Leistung der ADF-Kopieraktivität zu optimieren?
+- Welche Steuerelemente für die ADF-Leistungsoptimierung kann ich verwenden, um die Leistung für eine einzelne Kopieraktivitätsausführung zu optimieren?
+- Welche anderen Faktoren außerhalb von ADF sind bei der Optimierung der Kopierleistung zu berücksichtigen?
 
 > [!NOTE]
-> Falls Sie mit dem grundlegenden Konzept der Kopieraktivität noch nicht vertraut sind, finden Sie weitere Informationen unter [Kopieraktivität – Übersicht](copy-activity-overview.md), bevor Sie sich mit diesem Artikel beschäftigen.
->
+> Falls Sie mit dem grundlegenden Konzept der Kopieraktivität nicht vertraut sind, finden Sie weitere Informationen unter [Kopieraktivität – Übersicht](copy-activity-overview.md), bevor Sie sich mit diesem Artikel beschäftigen.
 
-## <a name="performance-reference"></a>Leistungsreferenz
+## <a name="copy-performance-and-scalability-achievable-using-adf"></a>Durch ADF erreichbare Kopierleistung und -skalierbarkeit
 
-Als Referenz ist in der nachfolgenden Tabelle der Durchsatzwert beim Kopieren **in MBit/s** für die angegebenen Paare aus Quelle und Senke **in einer einzelnen Kopieraktivitätsausführung** basierend auf internen Tests aufgeführt. Zu Vergleichszwecken wird zudem veranschaulicht, wie unterschiedliche Einstellungen der [Datenintegrationseinheiten](#data-integration-units) oder der [Skalierbarkeit der selbstgehosteten Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime) (mehrere Knoten) zu einer verbesserten Kopierleistung beitragen können.
+ADF verfügt über eine serverlose Architektur, die Parallelität auf unterschiedlichen Ebenen ermöglicht. Entwickler können dann Pipelines erstellen, um Ihre Netzwerkbandbreite vollständig zu nutzen – sowie IOPS und Bandbreite des Speichers, um den Durchsatz für die Datenverschiebung Ihrer Umgebung zu maximieren.  Das heißt, dass Sie den erzielbaren Durchsatz schätzen können, indem Sie den Mindestdurchsatz des Quelldatenspeichers und des Zieldatenspeichers sowie die Netzwerkbandbreite zwischen Quelle und Ziel messen.  In der folgenden Tabelle wird die Kopierdauer anhand der Datenmenge und des Bandbreitenlimits für Ihre Umgebung berechnet. 
 
-![Leistungsmatrix](./media/copy-activity-performance/CopyPerfRef.png)
+| Datengröße/ <br/> bandwidth | 50 MBit/s    | 100 MBit/s  | 500 MBit/s  | 1 GBit/s   | 5 GBit/s   | 10 GBit/s  | 50 GBit/s   |
+| --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
+| **1 GB**                    | 2,7 min    | 1,4 min   | 0,3 min   | 0,1 min  | 0,03 min | 0,01 min | 0,0 min   |
+| **10 GB**                   | 27,3 min   | 13,7 min  | 2,7 min   | 1,3 min  | 0,3 min  | 0,1 min  | 0,03 min  |
+| **100 GB**                  | 4,6 h    | 2,3 h   | 0,5 h   | 0,2 h  | 0,05 h | 0,02 h | 0,0 h   |
+| **1 TB**                    | 46,6 h   | 23,3 h  | 4,7 h   | 2,3 h  | 0,5 h  | 0,2 h  | 0,05 h  |
+| **10 TB**                   | 19,4 Tage  | 9,7 Tage  | 1,9 Tage  | 0,9 Tage | 0,2 Tage | 0,1 Tage | 0,02 Tage |
+| **100 TB**                  | 194,2 Tage | 97,1 Tage | 19,4 Tage | 9,7 Tage | 1,9 Tage | 1 Tag   | 0,2 Tage  |
+| **1 PB**                    | 64,7 Monate    | 32,4 Monate   | 6,5 Monate    | 3,2 Monate   | 0,6 Monate   | 0,3 Monate   | 0,06 Monate   |
+| **10 PB**                   | 647,3 Monate   | 323,6 Monate  | 64,7 Monate   | 31,6 Monate  | 6,5 Monate   | 3,2 Monate   | 0,6 Monate    |
 
-> [!IMPORTANT]
-> Wenn die Kopieraktivität in einer Azure Integration Runtime ausgeführt wird, sind mindestens zwei Datenintegrationseinheiten (früher als Einheiten der Clouddatenverschiebungen bezeichnet) erforderlich. Wenn keine Angabe erfolgt, finden Sie unter [Datenintegrationseinheiten](#data-integration-units) Informationen zu den Standard-Datenintegrationseinheiten.
+Die ADF-Kopieraktivität kann auf verschiedenen Ebenen skaliert werden:
 
-Beachten Sie Folgendes:
+![Skalierung der ADF-Kopieraktivität](media/copy-activity-performance/adf-copy-scalability.png)
 
-* Der Durchsatz wird mithilfe der folgenden Formel berechnet: [Größe der aus der Quelle gelesenen Daten]/[Ausführungsdauer der Kopieraktivität]
-* Die Leistungsreferenzwerte in der Tabelle wurden mit dem [TPC-H](http://www.tpc.org/tpch/)-Dataset in einer einzelnen Kopieraktivitätsausführung gemessen. Testdateien für dateibasierte Speicher sind mehrere Dateien mit einer Größe von 10 GB.
-* In Azure-Datenspeichern befinden sich Quelle und Senke in der gleichen Azure-Region.
-* Bei hybriden Kopieraktivitäten zwischen lokalen und Clouddatenspeichern wurde jeder selbstgehostete Integration Runtime-Knoten auf einem Computer ausgeführt, bei dem es sich nicht um den Datenspeicher mit der folgenden Spezifikation gehandelt hat. Bei Ausführung einer einzelnen Aktivität wurde vom Kopiervorgang nur ein kleiner Teil der CPU, des Arbeitsspeichers und der Netzwerkbandbreite des Testcomputers in Anspruch genommen.
-    <table>
-    <tr>
-        <td>CPU</td>
-        <td>Intel Xeon E5-2660 v2 (32 Kerne, 2,20 GHz)</td>
-    </tr>
-    <tr>
-        <td>Arbeitsspeicher</td>
-        <td>128 GB</td>
-    </tr>
-    <tr>
-        <td>Netzwerk</td>
-        <td>Internetschnittstelle: 10 Gbit/s; Intranetschnittstelle: 40 GBit/s</td>
-    </tr>
-    </table>
+- Mit der ADF-Ablaufsteuerung können mehrere Kopieraktivitäten parallel gestartet werden, z. B. per [foreach-Schleife](control-flow-for-each-activity.md).
+- Für eine Kopieraktivität können skalierbare Computeressourcen genutzt werden: Bei Verwendung der Azure Integration Runtime können Sie [bis zu 256 Datenintegrationseinheiten (DIUs)](#data-integration-units) serverlos für jede Kopieraktivität angeben. Wenn Sie die selbstgehostete Integration Runtime nutzen, können Sie den Computer manuell zentral hochskalieren oder das horizontale Hochskalieren auf mehrere Computer durchführen ([bis zu vier Knoten](create-self-hosted-integration-runtime.md#high-availability-and-scalability)). Bei einer einzelnen Kopieraktivität wird die Dateigruppe dann auf alle Knoten verteilt.
+- Für eine einzelne Kopieraktivität werden mehrere Threads [parallel](#parallel-copy) genutzt, um für den Datenspeicher Lese- und Schreibvorgänge durchzuführen.
 
+## <a name="performance-tuning-steps"></a>Schritte zur Optimierung der Leistung
 
-> [!TIP]
-> Mit weiteren Datenintegrationseinheiten (DIU) können Sie einen höheren Durchsatz erzielen. Beispielsweise können Sie mit 100 DIUs Daten mit einer Rate von **1,0 GB/s** aus Azure Blob Storage nach Azure Data Lake Store kopieren. Informationen zu diesem Feature und dem unterstützten Szenario finden Sie im Abschnitt [Datenintegrationseinheiten](#data-integration-units). 
+Führen Sie diese Schritte aus, um die Leistung des Azure Data Factory-Diensts mit der Kopieraktivität zu verbessern.
 
-## <a name="data-integration-units"></a>Datenintegrationseinheiten
+1. **Wählen Sie ein Testdataset aus, und legen Sie eine Baseline fest.** Testen Sie Ihre Pipeline mit der Kopieraktivität in der Entwicklungsphase mit repräsentativen Beispieldaten. Das ausgewählte Dataset sollte die üblichen Datenmuster widerspiegeln (Ordnerstruktur, Dateimuster, Datenschema usw.) und groß genug sein, um die Kopierleistung bewerten zu können (also ob eine Kopieraktivität 10 Minuten oder länger dauert). Sammeln Sie Ausführungsdetails und Leistungsmerkmale, und folgen Sie dabei der [Überwachung der Kopieraktivität](copy-activity-overview.md#monitoring).
 
-Eine **Datenintegrationseinheit** (Data Integration Unit, DIU – früher als Cloud Data Movement Unit, DMU, Einheit für Clouddatenverschiebungen bezeichnet) ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Data Factory. **Die DIU gilt nur für die [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)**, aber nicht für [selbstgehostete Integration Runtimes](concepts-integration-runtime.md#self-hosted-integration-runtime).
+2. **So maximieren Sie die Leistung einer einzelnen Kopieraktivität**:
 
-**Es sind mindestens zwei Datenintegrationseinheiten für die Kopieraktivität erforderlich.** Wenn keine Angabe erfolgt, finden Sie in der folgenden Tabelle die Standard-DIUs, die in verschiedenen Kopierszenarien verwendet werden:
+   Für den Anfang empfehlen wir, dass Sie zunächst die Leistung mit einer einzelnen Kopieraktivität maximieren.
+
+   **Bei Ausführung der Kopieraktivität in einer Azure Integration Runtime:**
+
+   Beginnen Sie mit den Standardwerten für [Datenintegrationseinheiten (DIU)](#data-integration-units) und [Paralleles Kopieren](#parallel-copy).  Führen Sie einen Leistungstestlauf aus, und notieren Sie sowohl die erzielte Leistung als auch die tatsächlichen Werte für DIUs und parallele Kopiervorgänge.  Einzelheiten zum Erfassen von Testlaufergebnissen und zu verwendeten Leistungseinstellungen finden Sie unter [Überwachen der Kopieraktivität](copy-activity-overview.md#monitoring).
+
+   Führen Sie nun weitere Leistungstestdurchläufe durch, und verdoppeln Sie dabei jedes Mal den Wert für die DIU-Einstellung.  Wenn Sie der Ansicht sind, dass die mit der Standardeinstellung erzielte Leistung weit unter Ihren Erwartungen liegt, können Sie die DIU-Einstellung im darauffolgenden Testlauf auch stärker erhöhen.
+
+   Die Kopieraktivität sollte beim Erhöhen des Werts der DIU-Einstellung nahezu vollkommen linear skaliert werden.  Wenn Sie durch die Verdoppelung des Wertes der DIU-Einstellung nicht den doppelten Durchsatz erhalten, kann dies zwei Ursachen haben:
+
+   - Das ausgeführte spezifische Kopiermuster profitiert nicht vom Hinzufügen weiterer DIUs.  Trotz der Angabe eines größeren DIU-Werts blieben die tatsächlich genutzten DIUs unverändert, und daher erhalten Sie denselben Durchsatz wie zuvor.  In diesem Fall maximieren Sie den aggregierten Durchsatz durch paralleles Ausführen mehrerer Kopiervorgänge (siehe Schritt 3).
+   - Durch das Hinzufügen weiterer DIUs (mehr Leistung), was eine höhere Geschwindigkeit beim Extrahieren, Übertragen und Laden von Daten bewirkt, wurde ein Engpass des Quelldatenspeichers, des Zieldatenspeichers oder des dazwischen liegenden Netzwerks Engpass erreicht und möglicherweise fand eine Drosselung statt.  Wenn dies der Fall ist, wenden Sie sich an Ihren Datenspeicheradministrator oder Netzwerkadministrator, um die Obergrenze heraufzusetzen, oder verringern Sie den Wert der DIU-Einstellung, bis keine Drosselung mehr auftritt.
+
+   **Bei Ausführung der Kopieraktivität in einer selbstgehosteten Integration Runtime:**
+
+   Wir empfehlen, dass Sie zum Hosten der Integration Runtime einen dedizierten Computer und nicht den Server verwenden, der den Datenspeicher hostet.
+
+   Beginnen Sie mit den Standardwerten für [Paralleles Kopieren](#parallel-copy), und verwenden Sie einen einzelnen Knoten für die selbstgehostete Integration Runtime.  Führen Sie einen Leistungstestlauf aus, und notieren Sie die erzielte Leistung.
+
+   Wenn Sie einen höheren Durchsatz erreichen möchten, können Sie die selbstgehostete Integration Runtime zentral hochskalieren oder horizontal hochskalieren:
+
+   - Wenn die CPU und der verfügbare Arbeitsspeicher auf dem Knoten der selbstgehosteten Integration Runtime nicht vollständig genutzt werden, bei der Ausführung paralleler Aufträge jedoch das Limit erreicht wird, führen Sie eine zentrale Hochskalierung aus, indem Sie die Anzahl der parallelen Aufträge vergrößern, die auf einem Knoten ausgeführt werden können.  Anweisungen dazu finden Sie [hier](create-self-hosted-integration-runtime.md#scale-up).
+   - Ist jedoch die CPU-Auslastung auf dem Knoten der selbstgehosteten IR hoch und der verfügbare Arbeitsspeicher gering, können Sie einen neuen Knoten hinzufügen, um die Last über mehrere Knoten horizontal zu skalieren.  Anweisungen dazu finden Sie [hier](create-self-hosted-integration-runtime.md#high-availability-and-scalability).
+
+   Wenn Sie die Kapazität der selbstgehosteten Integration Runtime zentral oder horizontal hochskalieren, wiederholen Sie den Leistungstestlauf, um festzustellen, ob Sie einen zunehmend besseren Durchsatz erzielen.  Wenn sich der Durchsatz nicht mehr verbessert, hat höchstwahrscheinlich der Quelldatenspeicher, der Zieldatenspeicher oder das dazwischenliegende Netzwerk einen Engpass erreicht, und eine Drosselung setzt ein. Wenn dies der Fall ist, wenden Sie sich an Ihren Datenspeicheradministrator oder Netzwerkadministrator, um die Obergrenze heraufzusetzen. Alternativ können Sie auch zur vorherigen Skalierungseinstellung für die selbstgehostete Integration Runtime zurückkehren. 
+
+3. **So maximieren Sie den aggregierten Durchsatz durch paralleles Ausführen mehrerer Kopiervorgänge:**
+
+   Nun haben Sie die Leistung einer einzelnen Kopieraktivität maximiert. Wenn Sie die Durchsatzobergrenzen Ihrer Umgebung (Netzwerk, Quelldatenspeicher und Zieldatenspeicher) noch nicht erreicht haben, können Sie mit ADF-Flusssteuerungskonstrukten wie [Für jede Schleife](control-flow-for-each-activity.md) mehrere Kopieraktivitäten parallel ausführen.
+
+4. **Tipps zur Leistungsoptimierung und Optimierungsfeatures.** In einigen Fällen wird bei der Ausführung einer Kopieraktivität in Azure Data Factory oben auf der [Seite zur Überwachung der Kopieraktivität](copy-activity-overview.md#monitor-visually) die Meldung „Tipps zur Leistungsoptimierung“ angezeigt, wie im folgenden Beispiel gezeigt. Die Meldung informiert Sie über den Engpass, der für die jeweilige Kopierausführung identifiziert wurde. Zudem enthält sie Ratschläge, was Sie ändern können, um die Kopierdurchsatz zu steigern. Die Tipps zur Leistungsoptimierung bieten derzeit Vorschläge wie:
+
+   - Verwenden Sie PolyBase, wenn Sie Daten in Azure SQL Data Warehouse kopieren.
+   - Erhöhen Sie die Azure Cosmos DB-Anforderungseinheiten oder Azure SQL-Datenbank-DTUs (Datenbankdurchsatzeinheiten), wenn die Ressource auf der Datenspeicherseite der Engpass ist.
+   - Entfernen Sie das unnötige gestaffelte Kopieren.
+
+   Die Regeln für die Leistungsoptimierung werden auch schrittweise ergänzt werden.
+
+   **Beispiel: Kopieren in Azure SQL-Datenbank mit Tipps für die Leistungsoptimierung**
+
+   In diesem Beispiel stellt Azure Data Factory während eines Kopiervorgangs fest, dass die Azure SQL-Senkendatenbank eine hohe DTU-Auslastung erreicht, was die Schreibvorgänge verlangsamt. Der Vorschlag ist, die Azure SQL-Datenbankebene mit mehr DTUs zu erweitern. 
+
+   ![Überwachung des Kopiervorgangs mit Tipps für die Leistungsoptimierung](media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+   Beachten Sie außerdem die folgenden Features für die Leistungsoptimierung:
+
+   - [Parallele Kopie](#parallel-copy)
+   - [Datenintegrationseinheiten](#data-integration-units)
+   - [Gestaffeltes Kopieren](#staged-copy)
+   - [Skalierbarkeit der selbstgehosteten Integration Runtime-Infrastruktur](concepts-integration-runtime.md#self-hosted-integration-runtime)
+
+5. **Erweitern der Konfiguration auf das gesamte Dataset.** Wenn Sie mit den Ausführungsergebnissen und mit der Leistung zufrieden sind, können Sie die Definition und die Pipeline auf Ihr gesamtes Dataset erweitern.
+
+## <a name="copy-performance-optimization-features"></a>Features für die Leistungsoptimierung von Kopiervorgängen
+
+Azure Data Factory bietet die folgenden Funktionen zur Leistungsoptimierung:
+
+- [Parallele Kopie](#parallel-copy)
+- [Datenintegrationseinheiten](#data-integration-units)
+- [Gestaffeltes Kopieren](#staged-copy)
+
+### <a name="data-integration-units"></a>Datenintegrationseinheiten
+
+Eine Datenintegrationseinheit ist eine Messgröße für die Leistungsfähigkeit (Kombination aus zugeteilten CPU-, Speicher- und Netzwerkressourcen) einer einzelnen Einheit in Azure Data Factory. Die Datenintegrationseinheit gilt nur für die [Azure-Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime), aber nicht für [selbstgehostete Integration Runtimes](concepts-integration-runtime.md#self-hosted-integration-runtime).
+
+Ihnen wird die **Anzahl der verwendeten DIUs \* Kopierdauer \* Einheitenpreis/DIU-Stunde** in Rechnung gestellt. Sehen Sie sich [hier](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) die aktuellen Preise an. Je nach Abonnementtyp können lokale Währungen und separate Rabatte gelten.
+
+Die zulässige Anzahl von DIUs für die Ausführung einer Kopieraktivität liegt zwischen **2 und 256**. Wenn diese Option nicht angegeben ist oder Sie „Auto“ in der Benutzeroberfläche auswählen, wendet die Data Factory die optimale DIU-Einstellung dynamisch auf Grundlage des Quell-/Senkenpaars und des Datenmusters an. In der folgenden Tabelle werden die Standard-DIUs aufgelistet, die in verschiedenen Kopierszenarien verwendet werden:
 
 | Kopierszenario | Vom Dienst bestimmte Standard-DIUs |
 |:--- |:--- |
-| Kopieren von Daten zwischen dateibasierten Speichern | Zwischen 4 und 32, abhängig von der Anzahl und Größe der Dateien. |
-| Alle anderen Kopierszenarios | 4 |
+| Kopieren von Daten zwischen dateibasierten Speichern | Zwischen 4 und 32, je nach Anzahl und Größe der Dateien |
+| Kopieren von Daten nach Azure SQL-Datenbank oder Azure Cosmos DB |Zwischen 4 und 16, abhängig von der Dienstebene der Azure SQL-Senkendatenbank oder Cosmos DB (Anzahl von DTUs/RUs) |
+| Alle anderen Kopierszenarien | 4 |
 
-Sie können diese Standardeinstellung überschreiben, indem Sie wie folgt einen Wert für die **dataIntegrationUnits**-Eigenschaft angeben. Als **zulässige Werte** für die **dataIntegrationUnits**-Eigenschaft können Werte **bis 256** angegeben werden. Die **tatsächliche Anzahl von DIUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster. Informationen zum Umfang des möglichen Leistungsgewinns durch Konfigurieren weiterer Einheiten für eine bestimmte Kopierquelle und -senke finden Sie in der [Leistungsreferenz](#performance-reference).
+Sie können diese Standardeinstellung überschreiben, indem Sie wie folgt einen Wert für die **dataIntegrationUnits**-Eigenschaft angeben. Die *tatsächliche Anzahl von DIUs*, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster.
 
-Sie können die tatsächlich verwendeten Datenintegrationseinheiten für jede Kopierausführung in der Kopieraktivitätsausgabe anzeigen, wenn Sie eine Aktivitätsausführung überwachen. Weitere Informationen finden Sie unter [Copy activity monitoring (Überwachung der Kopieraktivität)](copy-activity-overview.md#monitoring).
+Sie können die für die einzelnen Kopierausführungen verwendeten DIUs in der Ausgabe der Kopieraktivität sehen, wenn Sie eine Aktivitätsausführung überwachen. Weitere Informationen finden Sie unter [Überwachung der Kopieraktivität](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Der Wert **4 und höher** für DIUs kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien aus Blob Storage/Data Lake Store/Amazon S3/Cloud-FTP/Cloud-SFTP in einen beliebigen anderen Clouddatenspeicher** kopieren.
->
+> Ein höherer Wert als vier für DIUs gilt derzeit nur, wenn Sie mehrere Dateien aus Azure Storage, Azure Data Lake Storage, Amazon S3, Google Cloud Storage, Cloud-FTP oder Cloud-SFTP in einen beliebigen anderen Clouddatenspeicher kopieren.
 
 **Beispiel:**
 
@@ -118,26 +172,32 @@ Sie können die tatsächlich verwendeten Datenintegrationseinheiten für jede Ko
 ]
 ```
 
-### <a name="data-integration-units-billing-impact"></a>Auswirkungen von Datenintegrationseinheiten auf die Abrechnung
-
-**Wichtig:** Die Berechnung der Gebühren basiert auf der Gesamtdauer des Kopiervorgangs. Die Gesamtdauer, die Ihnen für die Datenverschiebungen in Rechnung gestellt wird, ist die Summe der DIU-übergreifenden Dauer. Wenn ein Kopierauftrag mit zwei Cloudeinheiten bislang eine Stunde gedauert hat und nun mit acht Cloudeinheiten 15 Minuten dauert, fällt die Gesamtrechnung in etwa gleich hoch aus.
-
-## <a name="parallel-copy"></a>Parallele Kopie
+### <a name="parallel-copy"></a>Parallele Kopie
 
 Mithilfe der **parallelCopies** -Eigenschaft können Sie die gewünschte Parallelität für die Kopieraktivität angeben. Diese Eigenschaft können Sie sich als die maximale Anzahl von Threads in einer Kopieraktivität vorstellen, die parallel aus Quelldatenspeichern lesen oder in Senkendatenspeicher schreiben können.
 
-Für jede Kopieraktivitätsausführung ermittelt Data Factory die Anzahl paralleler Kopien, die zum Kopieren von Daten aus dem Quelldatenspeicher sowie zum Kopieren von Daten in den Zieldatenspeicher verwendet werden. Die verwendete Standardanzahl paralleler Kopien hängt von der Art der verwendeten Quelle und Senke ab:
+Für jede Kopieraktivitätsausführung ermittelt Azure Data Factory die Anzahl paralleler Kopien, die zum Kopieren von Daten aus dem Quelldatenspeicher sowie zum Kopieren von Daten in den Zieldatenspeicher verwendet werden. Die verwendete Standardanzahl paralleler Kopien hängt von der Art der verwendeten Quelle und Senke ab.
 
 | Kopierszenario | Standardanzahl der vom Dienst ermittelten parallelen Kopien |
 | --- | --- |
-| Kopieren von Daten zwischen dateibasierten Speichern |Dies ist abhängig von der Größe der Dateien und der Anzahl von Datenintegrationseinheiten (DIUs), die zum Kopieren von Daten zwischen zwei Clouddatenspeichern verwendet werden, oder von der physischen Konfiguration des Computers der selbstgehosteten Integration Runtime-Infrastruktur. |
-| Kopieren von Daten aus einem beliebigen Quelldatenspeicher im Azure-Tabellenspeicher |4 |
+| Kopieren von Daten zwischen dateibasierten Speichern |Dies ist abhängig von der Größe der Dateien und der Anzahl DIUs, die zum Kopieren von Daten zwischen zwei Clouddatenspeichern verwendet werden, oder von der physischen Konfiguration des Computers der selbstgehosteten Integration Runtime-Infrastruktur. |
+| Kopieren aus dem relationalen Datenspeicher mit aktivierter Partitionsoption (einschließlich [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP Table](connector-sap-table.md#sap-table-as-source) und [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
+| Kopieren von Daten aus einem beliebigen Quellspeicher im Azure-Tabellenspeicher |4 |
 | Alle anderen Kopierszenarios |1 |
 
 > [!TIP]
-> Beim Kopieren von Daten zwischen dateibasierten Speichern bietet das Standardverhalten (automatische Bestimmung) in der Regel den bestmöglichen Durchsatz. 
+> Beim Kopieren von Daten zwischen dateibasierten Speichern bietet das Standardverhalten in der Regel den bestmöglichen Durchsatz. Das Standardverhalten wird automatisch basierend auf dem Muster Ihrer Quelldatei festgelegt.
 
 Sie können den Standardwert jedoch überschreiben und einen Wert für die Eigenschaft **parallelCopies** angeben, um die Last für die Computer zu steuern, auf denen Ihre Datenspeicher gehostet werden, oder um die Kopierleistung zu optimieren. Der Wert muss eine ganze Zahl größer als oder gleich 1 sein. Zur Laufzeit verwendet die Kopieraktivität maximal den von Ihnen festgelegten Wert, um eine optimale Leistung zu erzielen.
+
+**Beachten Sie Folgendes:**
+
+- Beim Kopieren von Daten zwischen dateibasierten Speichern bestimmt **parallelCopies** die Parallelität auf Dateiebene. Die Segmentierung innerhalb einer einzelnen Datei erfolgt darunter automatisch und transparent. Dadurch wird die am besten geeignete Segmentgröße für einen angegebenen Quelldatenspeichertyp verwendet, um Daten parallel und orthogonal in **parallelCopies** zu laden. Die tatsächliche Anzahl paralleler Kopien, die der Datenverschiebungsdienst zur Laufzeit für den Kopiervorgang verwendet, entspricht maximal der Anzahl vorhandener Dateien. Bei Verwendung des Kopierverhaltens **mergeFile** kann die Kopieraktivität keine Parallelität auf Dateiebene nutzen.
+- Beim Kopieren von Daten aus nicht dateibasierten Speichern (außer den Connectors für [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP Table](connector-sap-table.md#sap-table-as-source) und [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) als Quelle mit aktivierter Datenpartitionierung) in dateibasierte Speicher ignoriert der Datenverschiebungsdienst die **parallelCopies**-Eigenschaft. Die Parallelität wird in diesem Fall also nicht angewendet, auch wenn sie angegeben wurde.
+- Die **parallelCopies**-Eigenschaft ist orthogonal zu **dataIntegrationUnits**. Die erste Eigenschaft wird für alle Datenintegrationseinheiten gezählt.
+- Berücksichtigen Sie beim Angeben eines Werts für die **parallelCopies**-Eigenschaft die höhere Auslastung Ihrer Quell- und Senkendatenspeicher. Berücksichtigen Sie auch den Lastanstieg zur selbstgehosteten Integration Runtime, wenn die Kopieraktivität davon abhängt, z. B. bei Hybridkopiervorgängen. Dieser Lastanstieg tritt insbesondere auf, wenn Sie über mehrere Aktivitäten oder gleichzeitige Ausführungen der gleichen Aktivitäten verfügen, die für den gleichen Datenspeicher ausgeführt werden. Sollten Sie eine Überlastung des Datenspeichers oder der selbstgehosteten Integration Runtime-Infrastruktur feststellen, verringern Sie den Wert **parallelCopies**, um die Last zu reduzieren.
+
+**Beispiel:**
 
 ```json
 "activities":[
@@ -159,41 +219,34 @@ Sie können den Standardwert jedoch überschreiben und einen Wert für die Eigen
 ]
 ```
 
-Beachten Sie Folgendes:
-
-* Beim Kopieren von Daten zwischen dateibasierten Speichern bestimmt **parallelCopies** die Parallelität auf Dateiebene. Die Segmentierung innerhalb einer einzelnen Datei erfolgt automatisch und transparent. Dadurch wird die am besten geeignete Segmentgröße für einen angegebenen Quelldatenspeichertyp verwendet, um Daten parallel und orthogonal in parallelCopies zu laden. Die tatsächliche Anzahl paralleler Kopien, die der Datenverschiebungsdienst zur Laufzeit für den Kopiervorgang verwendet, entspricht maximal der Anzahl vorhandener Dateien. Bei Verwendung des Kopierverhaltens **mergeFile** kann die Kopieraktivität keine Parallelität auf Dateiebene nutzen.
-* Wenn Sie einen Wert für die Eigenschaft **parallelCopies** angeben, bedenken Sie den Anstieg der Auslastung in Ihren Quell- und Senkendatenspeichern und für die selbstgehostete Integration Runtime-Infrastruktur, wenn die Kopieraktivität z.B. für Hybridkopien durch sie unterstützt wird. Dies gilt insbesondere, wenn Sie über mehrere Aktivitäten oder gleichzeitige Ausführungen der gleichen Aktivitäten verfügen, die für den gleichen Datenspeicher ausgeführt werden. Sollten Sie eine Überlastung des Datenspeichers oder der selbstgehosteten Integration Runtime-Infrastruktur feststellen, verringern Sie den Wert **parallelCopies**, um die Last zu reduzieren.
-* Beim Kopieren von Daten aus nicht dateibasierten Speichern in dateibasierte Speicher ignoriert der Datenverschiebungsdienst die **parallelCopies** -Eigenschaft. Die Parallelität wird in diesem Fall also nicht angewendet, auch wenn sie angegeben wurde.
-* **parallelCopies** ist orthogonal zu **dataIntegrationUnits**. Die erste Eigenschaft wird für alle Datenintegrationseinheiten gezählt.
-
-## <a name="staged-copy"></a>gestaffeltem Kopieren
+### <a name="staged-copy"></a>gestaffeltem Kopieren
 
 Beim Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher können Sie ggf. Blob Storage als Stagingzwischenspeicher verwenden. Staging ist besonders in folgenden Fällen hilfreich:
 
-- **Sie möchten Daten aus verschiedenen Datenspeichern über PolyBase in SQL Data Warehouse erfassen**. SQL Data Warehouse nutzt PolyBase als Mechanismus mit hohem Durchsatz, um große Datenmengen in SQL Data Warehouse zu laden. Die Quelldaten müssen sich jedoch in Blob Storage oder in Azure Data Lake Store befinden und einige andere Kriterien erfüllen. Wenn Sie Daten aus einem Blob Storage- oder Azure Data Lake Store-fremden Datenspeicher laden, können Sie das Kopieren von Daten über einen Staging-Blob-Zwischenspeicher aktivieren. In diesem Fall führt Data Factory die erforderlichen Datentransformationen durch, um die Anforderungen von PolyBase zu erfüllen. Anschließend werden die Daten mithilfe von PolyBase auf effiziente Art und Weise in SQL Data Warehouse geladen. Weitere Informationen finden Sie unter [Use PolyBase to load data into Azure SQL Data Warehouse (Verwenden von PolyBase zum Laden von Daten in Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
-- **Hybriddatenverschiebungen (also das Kopieren aus einem lokalen Datenspeicher in einen Clouddatenspeicher) können bei einer langsamen Netzwerkverbindung eine Weile dauern**. Zur Verbesserung der Leistung können Sie das gestaffelte Kopieren verwenden, um die Daten lokal zu komprimieren. Dadurch wird weniger Zeit benötigt, um die Daten in den Stagingdatenspeicher in der Cloud zu verschieben, als das Dekomprimieren der Daten im Stagingspeicher, bevor sie in den Zieldatenspeicher geladen werden.
-- **Aufgrund der IT-Richtlinien des Unternehmens möchten Sie mit Ausnahme der Ports 80 und 443 keine weiteren Ports in der Firewall öffnen**. Ein Beispiel: Beim Kopieren von Daten aus einem lokalen Datenspeicher an eine Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Senke muss die ausgehende TCP-Kommunikation über den Port 1433 sowohl für die Windows-Firewall als auch für die Unternehmensfirewall ermöglicht werden. In diesem Szenario kann das gestaffelte Kopieren die Vorteile von der selbstgehosteten Integration Runtime-Infrastruktur nutzen, um zunächst Daten per HTTP oder HTTPS über den Port 443 an eine Blob-Speicherstaginginstanz zu kopieren. Anschließend können die Daten aus dem Blob-Stagingspeicher in SQL-Datenbank oder in SQL Data Warehouse geladen werden. Dadurch muss der Port 1433 nicht geöffnet werden.
+- **Sie möchten Daten aus verschiedenen Datenspeichern über PolyBase in SQL Data Warehouse erfassen.** SQL Data Warehouse nutzt PolyBase als Mechanismus mit hohem Durchsatz, um große Datenmengen in SQL Data Warehouse zu laden. Die Quelldaten müssen sich in Blob Storage oder in Azure Data Lake Store befinden und einige andere Kriterien erfüllen. Wenn Sie Daten aus einem Blob Storage- oder Azure Data Lake Store-fremden Datenspeicher laden, können Sie das Kopieren von Daten über einen Staging-Blob-Zwischenspeicher aktivieren. In diesem Fall führt Azure Data Factory die erforderlichen Datentransformationen durch, um die Anforderungen von PolyBase zu erfüllen. Anschließend werden die Daten mithilfe von PolyBase auf effiziente Art und Weise in SQL Data Warehouse geladen. Weitere Informationen finden Sie unter [Use PolyBase to load data into Azure SQL Data Warehouse (Verwenden von PolyBase zum Laden von Daten in Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
+- **Hybriddatenverschiebungen (also das Kopieren aus einem lokalen Datenspeicher in einen Clouddatenspeicher) können bei einer langsamen Netzwerkverbindung eine Weile dauern.** Zur Verbesserung der Leistung können Sie gestaffeltes Kopieren verwenden, um die Daten lokal zu komprimieren und dadurch die Verschiebung in den Stagingdatenspeicher in der Cloud zu beschleunigen. Anschließend können Sie die Daten im Stagingspeicher wieder dekomprimieren, bevor Sie sie in den Zieldatenspeicher laden.
+- **Aufgrund der IT-Richtlinien des Unternehmens sollten Sie mit Ausnahme der Ports 80 und 443 keine weiteren Ports in der Firewall öffnen.** Ein Beispiel: Beim Kopieren von Daten aus einem lokalen Datenspeicher an eine Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Senke muss die ausgehende TCP-Kommunikation über den Port 1433 sowohl für die Windows-Firewall als auch für die Unternehmensfirewall ermöglicht werden. In diesem Szenario kann das gestaffelte Kopieren die selbstgehostete Integration Runtime nutzen, um zunächst Daten per HTTP oder HTTPS über den Port 443 an eine Blob Storage-Staginginstanz kopieren. Anschließend können die Daten aus dem Blob Storage-Stagingspeicher in SQL-Datenbank oder in SQL Data Warehouse geladen werden. Dadurch muss der Port 1433 nicht geöffnet werden.
 
-### <a name="how-staged-copy-works"></a>Funktionsweise des gestaffelten Kopierens
+#### <a name="how-staged-copy-works"></a>Funktionsweise des gestaffelten Kopierens
 
-Bei aktivierter Stagingfunktion werden die Daten zunächst aus dem Quelldatenspeicher in den (von Ihnen bereitgestellten) Blob-Stagingspeicher kopiert. Anschließend werden die Daten dann aus dem Stagingdatenspeicher in den Senkendatenspeicher kopiert. Dieser zweistufige Prozess wird automatisch von Data Factory verwaltet. Nach Abschluss der Datenverschiebung bereinigt Data Factory außerdem temporäre Daten im Stagingspeicher.
+Bei aktivierter Stagingfunktion werden die Daten zunächst aus dem Quelldatenspeicher in den (von Ihnen bereitgestellten) Blob-Stagingspeicher kopiert. Anschließend werden die Daten dann aus dem Stagingdatenspeicher in den Senkendatenspeicher kopiert. Dieser zweistufige Prozess wird automatisch von Azure Data Factory verwaltet. Nach Abschluss der Datenverschiebung bereinigt Azure Data Factory außerdem temporäre Daten im Stagingspeicher.
 
 ![gestaffeltem Kopieren](media/copy-activity-performance/staged-copy.png)
 
 Wenn Sie die Datenverschiebung unter Verwendung des Stagingspeichers aktivieren, können Sie angeben, ob die Daten vor dem Verschieben aus dem Quelldatenspeicher in einen Zwischen- oder Stagingdatenspeicher komprimiert und vor dem Verschieben der Daten aus einem Zwischen- oder Stagingdatenspeicher in den Senkendatenspeicher wieder dekomprimiert werden sollen.
 
-Derzeit ist es nicht möglich, Daten unter Verwendung eines Stagingspeichers zwischen zwei lokalen Datenspeichern zu kopieren.
+Derzeit können Sie keine Daten zwischen zwei Datenspeichern kopieren, die über verschiedene selbstgehostete IRs verbunden sind, weder mit noch ohne gestaffeltes Kopieren. Für ein solches Szenario können Sie zwei explizit verkettete Kopiervorgänge konfigurieren, um von der Quelle zum Stagingspeicher und aus dem Stagingspeicher zur Senke zu kopieren.
 
-### <a name="configuration"></a>Konfiguration
+#### <a name="configuration"></a>Konfiguration
 
 Konfigurieren Sie für die Kopieraktivität die Einstellung **enableStaging**, um anzugeben, ob die Daten vor dem Laden in einen Zielspeicher in Blobspeicher bereitgestellt werden sollen. Wenn Sie **enableStaging** auf `TRUE` festlegen, müssen Sie zusätzliche Eigenschaften angeben. Diese sind in der folgenden Tabelle aufgeführt. Außerdem müssen Sie für das Staging einen verknüpften Azure Storage- oder Storage-SAS-Dienst erstellen, falls noch nicht vorhanden.
 
 | Eigenschaft | Beschreibung | Standardwert | Erforderlich |
 | --- | --- | --- | --- |
-| **enableStaging** |Geben Sie an, ob Sie Daten über einen Stagingzwischenspeicher kopieren möchten. |False |Nein |
-| **linkedServiceName** |Geben Sie den Namen eines verknüpften Diensts vom Typ [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) an, der auf die Storage-Instanz verweist, die Sie als Stagingzwischenspeicher verwenden. <br/><br/> Storage kann nicht mit einer Shared Access Signature (SAS) verwendet werden, um Daten über PolyBase in SQL Data Warehouse zu laden. In allen anderen Szenarien ist dies hingegen problemlos möglich. |– |Ja, wenn **enableStaging** auf „TRUE“ festgelegt ist. |
-| **path** |Geben Sie den gewünschten Blob Storage-Pfad für die bereitgestellten Daten an. Wenn Sie keinen Pfad angeben, erstellt der Dienst einen Container zum Speichern der temporären Daten. <br/><br/> Geben Sie nur dann einen Pfad an, wenn Sie Storage mit einer Shared Access Signature verwenden oder sich die temporären Daten an einem bestimmten Speicherort befinden müssen. |– |Nein |
-| **enableCompression** |Gibt an, ob die Daten komprimiert werden sollen, bevor sie an das Ziel kopiert werden. Durch diese Einstellung wird die Menge der übertragenen Daten reduziert. |False |Nein  |
+| enableStaging |Geben Sie an, ob Sie Daten über einen Stagingzwischenspeicher kopieren möchten. |False |Nein |
+| linkedServiceName |Geben Sie den Namen eines verknüpften Diensts vom Typ [AzureStorage](connector-azure-blob-storage.md#linked-service-properties) an, der auf die Storage-Instanz verweist, die Sie als Stagingzwischenspeicher verwenden. <br/><br/> Storage kann nicht mit einer Shared Access Signature (SAS) verwendet werden, um Daten über PolyBase in SQL Data Warehouse zu laden. In allen anderen Szenarien ist dies hingegen problemlos möglich. |– |Ja, wenn **enableStaging** auf „TRUE“ festgelegt ist. |
+| path |Geben Sie den gewünschten Blob Storage-Pfad für die bereitgestellten Daten an. Wenn Sie keinen Pfad angeben, erstellt der Dienst einen Container zum Speichern der temporären Daten. <br/><br/> Geben Sie nur dann einen Pfad an, wenn Sie Storage mit einer Shared Access Signature verwenden oder sich die temporären Daten an einem bestimmten Speicherort befinden müssen. |– |Nein |
+| enableCompression |Gibt an, ob die Daten komprimiert werden sollen, bevor sie an das Ziel kopiert werden. Durch diese Einstellung wird die Menge der übertragenen Daten reduziert. |False |Nein |
 
 >[!NOTE]
 > Wenn Sie das gestaffelte Kopieren mit aktivierter Komprimierung verwenden, wird die Dienstprinzipal- oder MSI-Authentifizierung für das Staging eines verknüpften Blobdiensts nicht unterstützt.
@@ -228,182 +281,20 @@ Hier sehen Sie eine Beispieldefinition der Kopieraktivität mit den Eigenschafte
 ]
 ```
 
-### <a name="staged-copy-billing-impact"></a>Auswirkungen auf die Abrechnung von gestaffeltem Kopieren
+#### <a name="staged-copy-billing-impact"></a>Auswirkungen auf die Abrechnung von gestaffeltem Kopieren
 
 Die Abrechnung basiert auf zwei Aspekten: Dauer des Kopiervorgangs und Art der Kopie.
 
-* Wenn Sie einen Stagingspeicher während eines Cloudkopiervorgangs (Kopieren von Daten aus einem Clouddatenspeicher in einen anderen Clouddatenspeicher. Beide Phasen werden von Azure Integration Runtime unterstützt) verwenden, gilt folgende Formel: [Gesamtkopierdauer für Schritt 1 und 2] [Einzelpreis für Cloudkopien].
-* Wenn Sie Staging während eines Hybridkopiervorgangs (Kopieren von Daten aus einem lokalen Datenspeicher in einen Clouddatenspeicher. Eine Phase wird von der selbstgehosteten Integration Runtime-Infrastruktur unterstützt) verwenden, gilt folgende Formel: [Dauer des Hybridkopiervorgangs] [Einzelpreis für Hybridkopien] + [Dauer des Cloudkopiervorgangs] [Einzelpreis für Cloudkopien].
+* Wenn Sie einen Stagingspeicher während eines Cloudkopiervorgangs (d. h. Kopieren von Daten aus einem Clouddatenspeicher in einen anderen Clouddatenspeicher. Beide Phasen werden von Azure-Integration Runtime unterstützt) verwenden, gilt folgende Formel: [Gesamtkopierdauer für Schritt 1 und 2] [Einzelpreis für Cloudkopien].
+* Wenn Sie Staging während eines Hybridkopiervorgangs (d. h. Kopieren von Daten aus einem lokalen Datenspeicher in einen Clouddatenspeicher. Eine Phase wird von der selbstgehosteten Integration Runtime-Infrastruktur unterstützt) verwenden, gilt folgende Formel: [Dauer des Hybridkopiervorgangs] [Einzelpreis für Hybridkopien] + [Dauer des Cloudkopiervorgangs] [Einzelpreis für Cloudkopien].
 
-## <a name="performance-tuning-steps"></a>Schritte zur Optimierung der Leistung
-
-Wir empfehlen, die folgenden Schritte auszuführen, um die Leistung des Data Factory-Diensts mit der Kopieraktivität zu verbessern:
-
-1. **Einrichten einer Baseline**. Testen Sie Ihre Pipeline mit der Kopieraktivität in der Entwicklungsphase mit repräsentativen Beispieldaten. Sammeln Sie Ausführungsdetails und Leistungsmerkmale, und folgen Sie dabei der [Überwachung der Kopieraktivität](copy-activity-overview.md#monitoring).
-
-2. **Analysieren und Optimieren der Leistung** Sollte die Leistung in der Praxis nicht Ihren Erwartungen entsprechen, müssen Sie Leistungsengpässe identifizieren. Anschließend können Sie die Leistung optimieren, um Engpässe zu beseitigen oder deren Auswirkungen zu minimieren. 
-
-    In einigen Fällen werden bei der Ausführung einer Kopieraktivität in ADF direkt **Tipps zur Leistungsoptimierung** oben auf der [Seite zur Überwachung der Kopieraktivität](copy-activity-overview.md#monitor-visually) angezeigt, wie im folgenden Beispiel dargestellt. Es wird nicht nur der im jeweiligen Kopiervorgang identifizierte Engpass angezeigt, sondern Sie erfahren auch, welche Änderungen Sie zum Erhöhen des Durchsatzes durchführen müssen. Die Tipps zur Leistungsoptimierung enthalten derzeit Vorschläge wie die Verwendung von PolyBase beim Kopieren von Daten in das Azure SQL Data Warehouse, um die Anzahl der Azure Cosmos DB-sRU oder Azure SQL DB-DTUs zu erhöhen, wenn die Ressource auf der Datenspeicherseite der Engpass ist, um die unnötig bereitgestellte Kopie zu entfernen usw. Die Regeln für die Leistungsoptimierung werden auch schrittweise ergänzt werden.
-
-    **Beispiel: Kopieren in Azure SQL-Datenbank mit Tipps für die Leistungsoptimierung**
-
-    In diesem Beispiel bemerkt ADF während des Kopiervorgangs, dass die Senke der Azure SQL-DB eine hohe DTU-Auslastung erreicht, was die Schreibvorgänge verlangsamt. Daher wird vorgeschlagen, die Azure SQL DB-Ebene mit mehr DTU zu erhöhen. 
-
-    ![Überwachung des Kopiervorgangs mit Tipps für die Leistungsoptimierung](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
-
-    Im Folgenden finden Sie einige allgemeine Aspekte. Eine vollständige Beschreibung der Leistungsdiagnose würde den Rahmen dieses Artikels sprengen.
-
-   * Leistungsfeatures:
-     * [Parallele Kopie](#parallel-copy)
-     * [Datenintegrationseinheiten](#data-integration-units)
-     * [Gestaffeltes Kopieren](#staged-copy)
-     * [Skalierbarkeit der selbstgehosteten Integration Runtime-Infrastruktur](concepts-integration-runtime.md#self-hosted-integration-runtime)
-   * [Selbstgehostete Integration Runtime-Infrastruktur](#considerations-for-self-hosted-integration-runtime)
-   * [Quelle](#considerations-for-the-source)
-   * [Senke](#considerations-for-the-sink)
-   * [Serialisierung und Deserialisierung](#considerations-for-serialization-and-deserialization)
-   * [Komprimierung](#considerations-for-compression)
-   * [Spaltenzuordnung](#considerations-for-column-mapping)
-   * [Weitere Überlegungen](#other-considerations)
-
-3. **Erweitern der Konfiguration auf das gesamte Dataset** Wenn Sie mit den Ausführungsergebnissen und mit der Leistung zufrieden sind, können Sie die Definition und die Pipeline auf Ihr gesamtes Dataset erweitern.
-
-## <a name="considerations-for-self-hosted-integration-runtime"></a>Überlegungen zur selbstgehosteten Integration Runtime-Infrastruktur
-
-Beachten Sie Folgendes, wenn Ihre Kopieraktivität in einer selbstgehosteten Integration Runtime-Infrastruktur ausgeführt wird:
-
-**Setup**: Es wird empfohlen, Integration Runtime auf einem dedizierten Computer zu hosten. Weitere Informationen finden Sie unter [Considerations for using Self-hosted Integration Runtime (Überlegungen zur Verwendung der selbstgehosteten Integration Runtime-Infrastruktur)](concepts-integration-runtime.md).
-
-**Horizontales Skalieren**: In einer einzelnen, logischen, selbstgehosteten Integration Runtime-Infrastruktur mit einem oder mehreren Knoten können mehrere Kopieraktivitäten gleichzeitig parallel ausgeführt werden. Wenn Sie einen hohen Bedarf an Hybriddatenverschiebungen mit einer großen Anzahl an gleichzeitigen Ausführungen der Kopieraktivität oder mit einem umfangreichen Volumen an zu kopierenden Daten haben, sollten Sie [das horizontale Skalieren der selbstgehosteten Integration Runtime-Infrastruktur](create-self-hosted-integration-runtime.md#high-availability-and-scalability) erwägen, um für die Unterstützung des Kopierens weitere Ressourcen bereitzustellen.
-
-## <a name="considerations-for-the-source"></a>Hinweise zur Quelle
-
-### <a name="general"></a>Allgemein
-
-Stellen Sie sicher, dass der zugrundeliegende Datenspeicher nicht durch andere darauf oder dafür ausgeführte Workloads überlastet wird.
-
-Informationen zu Microsoft-Datenspeichern finden Sie in datenspeicherspezifischen [Themen zur Überwachung und Optimierung](#performance-reference). Hier können Sie sich über Leistungsmerkmale, die Minimierung von Antwortzeiten und die Maximierung des Durchsatzes informieren.
-
-* Wenn Sie Daten **aus einem Blob-Speicher in SQL Data Warehouse** kopieren, können Sie die Leistung ggf. mithilfe von **PolyBase** steigern. Details finden Sie unter [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
-* Wenn Sie Daten **aus HDFS in Azure Blob/Azure Data Lake Store** kopieren, können Sie die Leistung ggf. mithilfe von **DistCp** steigern. Weitere Informationen finden Sie unter [Use DistCp to copy data from HDFS (Verwenden von DistCp zum Kopieren von Daten aus HDFS)](connector-hdfs.md#use-distcp-to-copy-data-from-hdfs).
-* Wenn Sie Daten **aus Redshift in Azure SQL Data Warehouse/Azure Blob/Azure Data Lake Store** kopieren, können Sie die Leistung ggf. mithilfe von **UNLOAD** steigern. Weitere Informationen finden Sie unter [Use UNLOAD to copy data from Amazon Redshift (Verwenden von UNLOAD zum Kopieren von Daten aus Amazon Redshift)](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift).
-
-### <a name="file-based-data-stores"></a>Dateibasierte Datenspeicher
-
-* **Durchschnittliche Größe und Anzahl von Dateien:** Die Kopieraktivität überträgt Daten als einzelne Dateien. Aufgrund der Bootstrap-Phase für die einzelnen Dateien ist der Gesamtdurchsatz bei gleicher zu verschiebender Datenmenge geringer, wenn die Daten nicht aus einer geringen Anzahl großer Dateien, sondern aus zahlreichen kleinen Dateien bestehen. Kombinieren Sie kleine Dateien daher möglichst zu größeren Dateien, um einen höheren Durchsatz zu erzielen.
-* **Dateiformat und Komprimierung**: Weitere Methoden zur Verbesserung der Leistung finden Sie in den Abschnitten [Hinweise zur Serialisierung/Deserialisierung](#considerations-for-serialization-and-deserialization) und [Hinweise zur Komprimierung](#considerations-for-compression).
-
-### <a name="relational-data-stores"></a>Relationale Datenspeicher
-
-* **Datenmuster**: Ihr Tabellenschema hat Auswirkungen auf den Durchsatz beim Kopieren. Eine hohe Zeilengröße liefert zum Kopieren derselben Datenmenge eine bessere Leistung als eine niedrige. Der Grund ist, dass die Datenbank weniger Batches von Daten mit weniger Zeilen effizienter abrufen kann.
-* **Abfrage oder gespeicherte Prozedur**: Optimieren Sie die Logik der Abfrage oder gespeicherten Prozedur, die Sie in der Quelle der Kopieraktivität angeben, um Daten effizienter abzurufen.
-
-## <a name="considerations-for-the-sink"></a>Hinweise zur Senke
-
-### <a name="general"></a>Allgemein
-
-Stellen Sie sicher, dass der zugrundeliegende Datenspeicher nicht durch andere darauf oder dafür ausgeführte Workloads überlastet wird.
-
-Informationen zu Microsoft-Datenspeichern finden Sie in datenspeicherspezifischen [Themen zur Überwachung und Optimierung](#performance-reference) . Hier können Sie sich über Leistungsmerkmale, die Minimierung von Antwortzeiten und die Maximierung des Durchsatzes informieren.
-
-* Wenn Sie Daten **aus einem Blob-Speicher in SQL Data Warehouse** kopieren, können Sie die Leistung ggf. mithilfe von **PolyBase** steigern. Details finden Sie unter [Daten unter Verwendung von PolyBase in Azure SQL Data Warehouse laden](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse).
-* Wenn Sie Daten **aus HDFS in Azure Blob/Azure Data Lake Store** kopieren, können Sie die Leistung ggf. mithilfe von **DistCp** steigern. Weitere Informationen finden Sie unter [Use DistCp to copy data from HDFS (Verwenden von DistCp zum Kopieren von Daten aus HDFS)](connector-hdfs.md#use-distcp-to-copy-data-from-hdfs).
-* Wenn Sie Daten **aus Redshift in Azure SQL Data Warehouse/Azure Blob/Azure Data Lake Store** kopieren, können Sie die Leistung ggf. mithilfe von **UNLOAD** steigern. Weitere Informationen finden Sie unter [Use UNLOAD to copy data from Amazon Redshift (Verwenden von UNLOAD zum Kopieren von Daten aus Amazon Redshift)](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift).
-
-### <a name="file-based-data-stores"></a>Dateibasierte Datenspeicher
-
-* **Kopierverhalten:** Wenn Sie Daten aus einem anderen dateibasierten Datenspeicher kopieren, stehen über die **copyBehavior**-Eigenschaft drei Optionen für die Kopieraktivität zur Verfügung. Das Beibehalten oder Abflachen der Hierarchie verursacht nur einen geringen oder gar keinen Zusatzaufwand. Das Zusammenführen von Dateien ist hingegen mit einem gesteigerten Zusatzaufwand verbunden.
-* **Dateiformat und Komprimierung**: Weitere Methoden zur Verbesserung der Leistung finden Sie in den Abschnitten [Hinweise zur Serialisierung/Deserialisierung](#considerations-for-serialization-and-deserialization) und [Hinweise zur Komprimierung](#considerations-for-compression).
-
-### <a name="relational-data-stores"></a>Relationale Datenspeicher
-
-* **Kopierverhalten:** Daten werden von der Kopieraktivität abhängig von den für **sqlSink** konfigurierten Eigenschaften auf unterschiedliche Weise in die Zieldatenbank geschrieben.
-  * Standardmäßig verwendet der Datenverschiebungsdienst die API für Massenkopieren, um Daten im Anfügemodus einzufügen. Damit wird die beste Leistung erzielt.
-  * Wenn Sie in der Senke eine gespeicherte Prozedur konfigurieren, wendet die Datenbank die Daten nicht mittels Massenladen, sondern zeilenweise an. Dadurch verschlechtert sich die Leistung erheblich. Bei umfangreichen Datasets empfiehlt sich daher die Verwendung der Eigenschaft **preCopyScript**.
-  * Wenn Sie die Eigenschaft **preCopyScript** für jede Kopieraktivitätsausführung konfigurieren, löst der Dienst das Skript aus, und Sie fügen die Daten über die API für Massenkopieren ein. Beispiel: Um die gesamte Tabelle mit den neuesten Daten zu überschreiben, können Sie zunächst ein Skript zum Löschen aller Datensätze angeben und dann die neuen Daten durch Massenladen aus der Quelle einfügen.
-* **Datenmuster und Batchgröße**:
-  * Ihr Tabellenschema hat Auswirkungen auf den Durchsatz beim Kopieren. Beim Kopieren der gleichen Datenmenge erzielen Sie mit großen Zeilen eine bessere Leistung als mit kleinen Zeilen, da die Datenbank eine geringere Anzahl von Datenbatches effizienter committen kann.
-  * Die Kopieraktivität fügt Daten in einer Folge von Batches ein. Die Anzahl von Zeilen in einem Batch kann dabei mithilfe der **writeBatchSize** -Eigenschaft festgelegt werden. Wenn Ihre Daten kleine Zeilen enthalten, können Sie für die **writeBatchSize** -Eigenschaft einen höheren Wert festlegen, um den Batchaufwand zu verringern und den Durchsatz zu erhöhen. Bei umfangreichen Zeilen müssen Sie vorsichtig sein, wenn Sie den Wert von **writeBatchSize**erhöhen. Ein hoher Wert kann zu einer Datenbanküberlastung und dadurch zu Kopierfehlern führen.
-
-### <a name="nosql-stores"></a>NoSQL-Speicher
-
-* **Table Storage:**
-  * **Partition**: Das Schreiben von Daten in überlappende Partitionen beeinträchtigt die Leistung erheblich. Sortieren Sie Ihre Daten anhand des Partitionsschlüssels, sodass sie effizient partitionsweise eingefügt werden. Sie können die Logik auch so anpassen, dass die Daten in eine einzelne Partition geschrieben werden.
-
-## <a name="considerations-for-serialization-and-deserialization"></a>Hinweise zur Serialisierung und Deserialisierung
-
-Serialisierung und Deserialisierung können auftreten, wenn Ihr Eingabe- oder Ausgabedataset eine Datei ist. Weitere Informationen zu den unterstützten Dateiformaten für Kopieraktivitäten finden Sie unter [Unterstützte Datei- und Komprimierungsformate](supported-file-formats-and-compression-codecs.md).
-
-**Kopierverhalten:**
-
-* Beim Kopieren von Dateien zwischen dateibasierten Datenspeichern gilt Folgendes:
-  * Wenn sowohl das Eingabe- als auch das Ausgabedataset die gleichen oder keine Dateiformateinstellungen besitzen, führt der Datenverschiebungsdienst einen **binären Kopiervorgang** ohne Serialisierung oder Deserialisierung durch. Dadurch wird ein höherer Durchsatz erreicht als in einem Szenario mit unterschiedlichen Dateiformateinstellungen für Quelle und Senke.
-  * Wenn Eingabe- und Ausgabedataset im Textformat vorliegen und nur unterschiedlich codiert sind, konvertiert der Datenverschiebungsdienst nur die Codierung. Eine im Gegensatz zum binären Kopieren aufwändigere Serialisierung und Deserialisierung findet nicht statt.
-  * Wenn Eingabe- und Ausgabedataset unterschiedliche Dateiformate oder Konfigurationen (etwa Trennzeichen) besitzen, deserialisiert und transformiert der Datenverschiebungsdienst die zu streamenden Quelldaten und serialisiert sie anschließend in das von Ihnen angegebene Ausgabeformat. Dies ist im Vergleich zu anderen Szenarien mit einem wesentlich höheren Aufwand verbunden.
-* Wenn Sie Dateien in einen oder aus einem nicht dateibasierten Datenspeicher kopieren (etwa aus einem dateibasierten Speicher in einen relationalen Speicher), ist der Serialisierungs- oder Deserialisierungsschritt zwingend erforderlich. Dieser Schritt bedeutet einen erheblichen Mehraufwand.
-
-**Dateiformat:** Das von Ihnen gewählte Dateiformat beeinträchtigt unter Umständen die Leistung beim Kopieren. Avro ist beispielsweise ein kompaktes binäres Format, das nicht nur Daten, sondern auch Metadaten speichert. Es wird umfassend im Hadoop-System für Verarbeitungs- und Abfragevorgänge unterstützt. Avro verursacht jedoch einen höheren Aufwand bei der Serialisierung und Deserialisierung, was im Vergleich zum Textformat zu einem niedrigeren Durchsatz führt. Berücksichtigen Sie bei der Entscheidung für ein Dateiformat den gesamten Verarbeitungsablauf. Beginnen Sie dabei mit dem Format, in dem die Daten in Quellendatenspeichern gespeichert oder aus externen Systemen extrahiert werden, und überlegen Sie sich, welches Format am besten für die Speicherung, analytische Verarbeitung und Abfrage geeignet ist, und in welchem Format die Daten in Data Marts für die Berichterstellungs- und Visualisierungstools exportiert werden sollen. Manchmal stellt sich heraus, dass ein angesichts der Lese- und Schreibleistung eigentlich suboptimales Dateiformat bei Berücksichtigung des gesamten analytischen Prozesses trotzdem gut geeignet ist.
-
-## <a name="considerations-for-compression"></a>Hinweise zur Komprimierung
-
-Wenn Ihr Eingabe- oder Ausgabedataset eine Datei ist, können Sie die Kopieraktivität so konfigurieren, dass beim Schreiben von Daten in das Ziel eine Komprimierung oder Dekomprimierung ausgeführt wird. Wenn Sie sich für eine Komprimierung entscheiden, gehen Sie einen Kompromiss zwischen Eingabe/Ausgabe (E/A) und CPU ein. Das Komprimieren der Daten verursacht zusätzliche Kosten für die Computeressourcen. Im Gegenzug verringern sich aber die Kosten für Netzwerk-E/A und Speicher. Abhängig von Ihren Daten ergibt sich dadurch möglicherweise eine Verbesserung des Gesamtdurchsatzes.
-
-**Codec**: Jeder Komprimierungscodec hat seine Vorteile. BZIP2 bietet etwa den geringsten Durchsatz, im Gegenzug aber die beste Hive-Abfrageleistung, da sich dieser Typ für die Verarbeitung aufteilen lässt. GZIP ist die ausgewogenste Option und wird am häufigsten verwendet. Entscheiden Sie sich für den Codec, der am besten für Ihr End-to-End-Szenario geeignet ist.
-
-**Ebene**: Für jeden Komprimierungscodec stehen zwei Optionen zur Verfügung: schnellste Komprimierung und optimale Komprimierung. Bei der schnellsten Komprimierung werden die Daten schnellstmöglich komprimiert, auch wenn die resultierende Datei nicht optimal komprimiert ist. Die optimale Komprimierung dauert länger, liefert aber die kleinstmögliche Datenmenge. Sie können beide Optionen testen, um die in Ihrem Fall beste Gesamtleistung zu ermitteln.
-
-**Hinweis**: Verwenden Sie beim Kopieren umfangreicher Daten zwischen einem lokalen Datenspeicher und der Cloud ggf. das [gestaffelte Kopieren](#staged-copy) mit aktivierter Komprimierung. einen Blobzwischenspeicher mit Komprimierung.
-
-## <a name="considerations-for-column-mapping"></a>Hinweise zur Spaltenzuordnung
-
-Mit der **columnMappings** -Eigenschaft der Kopieraktivität können Eingabespalten ganz oder teilweise den Ausgabespalten zugeordnet werden. Nach dem Lesen der Daten aus der Quelle muss der Datenverschiebungsdienst eine Spaltenzuordnung für die Daten vornehmen, bevor sie in die Senke geschrieben werden. Dieser zusätzliche Verarbeitungsaufwand reduziert den Kopierdurchsatz.
-
-Falls es sich bei Ihrem Quelldatenspeicher um einen abfragbaren Speicher (beispielsweise um einen relationalen Speicher wie die SQL-Datenbank oder SQL Server) oder um einen NoSQL-Speicher (etwa um Table Storage oder Azure Cosmos DB) handelt, empfiehlt es sich unter Umständen, die Logik für Filterung und Neuanordnung von Spalten in die **query**-Eigenschaft auszulagern, anstatt die Spaltenzuordnung zu verwenden. Dadurch erfolgt die Projektion, während der Datenverschiebungsdienst Daten aus dem Quelldatenspeicher liest, was deutlich effizienter ist.
-
-Weitere Informationen finden Sie unter [Copy Activity schema mapping (Schemazuordnung der Kopieraktivität)](copy-activity-schema-and-type-mapping.md).
-
-## <a name="other-considerations"></a>Weitere Überlegungen
-
-Wenn die zu kopierenden Daten sehr umfangreich sind, können Sie Ihre Geschäftslogik so anpassen, dass die Daten weiter partitioniert werden. Planen Sie anschließend eine häufigere Ausführung der Kopieraktivität, um die Datengröße für jede Kopieraktivitätsausführung zu verringern.
-
-Seien Sie vorsichtig bei der Anzahl von Datasets und Kopieraktivitäten, für Data Factory gleichzeitig eine Verbindung mit dem gleichen Datenspeicher herstellen muss. Eine hohe Anzahl gleichzeitiger Kopieraufträge kann zu einer Drosselung eines Datenspeichers sowie zu einer Beeinträchtigung der Leistung, zu internen Wiederholungsversuchen bei Kopieraufträgen und in einigen Fällen zu Fehlern bei der Ausführung führen.
-
-## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Beispielszenario: Kopieren aus einer lokalen SQL Server-Instanz in Blob Storage
-
-**Szenario:** Es wird eine Pipeline erstellt, um Daten aus einer lokalen SQL Server-Instanz im CSV-Format in Blob Storage zu kopieren. Zur Beschleunigung des Kopierauftrags sollen die CSV-Dateien im BZIP2-Format komprimiert werden.
-
-**Test und Analyse**: Der Durchsatz der Kopieraktivität beträgt weniger als 2 MB/s und liegt damit deutlich unter dem Leistungsbenchmark.
-
-**Leistungsanalyse und -optimierung**: Zur Behebung des Leistungsproblems sehen wir uns zunächst einmal an, wie die Daten verarbeitet und verschoben werden.
-
-1. **Lesen der Daten**: Integration Runtime stellt eine Verbindung mit SQL Server her und sendet die Abfrage. SQL Server sendet daraufhin den Datenstrom über das Intranet an Integration Runtime.
-2. **Serialisieren und Komprimieren der Daten**: Integration Runtime serialisiert den Datenstrom im CSV-Format und komprimiert die Daten zu einem BZIP2-Datenstrom.
-3. **Schreiben der Daten**: Integration Runtime lädt den BZIP2-Datenstrom über das Internet in Blob Storage hoch.
-
-Wie Sie sehen, werden die Daten sequenziell mittels Streaming verarbeitet und verschoben: SQL Server -> LAN-> Gateway > WAN -> Blob Storage. **Die Gesamtleistung wird durch den minimalen Durchsatz der gesamten Pipeline begrenzt.**
-
-![Datenfluss](./media/copy-activity-performance/case-study-pic-1.png)
-
-Der Leistungsengpass kann auf folgende Faktoren zurückzuführen sein:
-
-* **Quelle**: SQL Server selbst hat aufgrund einer hohen Auslastung einen geringen Durchsatz.
-* **Selbstgehostete Integration Runtime-Infrastruktur**:
-  * **LAN**: Integration Runtime ist weit vom SQL Server-Computer entfernt, und es wird eine Verbindung mit geringer Bandbreite verwendet.
-  * **Integration Runtime**: Integration Runtime hat das Auslastungslimit erreicht, um die folgenden Vorgänge durchzuführen:
-    * **Serialisierung**: Der Datenstrom lässt sich nur mit geringem Durchsatz in das CSV-Format serialisieren.
-    * **Komprimierung**: Sie haben sich für einen langsamen Komprimierungscodec entschieden (z. B. für BZIP2, das 2,8 MB/s mit Core i7 entspricht).
-  * **WAN**: Zwischen dem Unternehmensnetzwerk und Ihren Azure-Diensten steht nur eine geringe Bandbreite zur Verfügung. (Beispiele: T1 = 1,544 KBit/s; T2 = 6,312 KBit/s).
-* **Senke**: Der Durchsatz von Blob Storage ist gering. (Dieses Szenario ist eher unwahrscheinlich, da das entsprechende SLA mindestens 60 MB/s garantiert.)
-
-In diesem Fall verlangsamt unter Umständen die BZIP2-Datenkomprimierung die gesamte Pipeline. Dieser Engpass lässt sich möglicherweise durch einen Wechsel zum GZIP-Komprimierungscodec beheben.
-
-## <a name="reference"></a>Verweis
+## <a name="references"></a>Referenzen
 
 Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einige der unterstützten Datenspeicher:
 
-* Azure Storage (einschließlich Blob Storage und Table Storage): [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/common/storage-scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage/common/storage-performance-checklist.md)
+* Azure Storage, einschließlich Blob Storage und Table Storage: [Skalierbarkeits- und Leistungsziele für Azure Storage](../storage/common/storage-scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage/common/storage-performance-checklist.md)
 * Azure SQL-Datenbank: Sie können [die Leistung überwachen](../sql-database/sql-database-single-database-monitor.md) und den prozentualen Anteil der Datenbanktransaktionseinheit (Database Transaction Unit, DTU) überprüfen.
-* Azure SQL Data Warehouse: Die Leistung wird in Data Warehouse-Einheiten (Data Warehouse Units, DWUs) gemessen. Weitere Informationen finden Sie unter [Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
+* Azure SQL Data Warehouse: Die Funktion wird in DWUs (Data Warehouse-Einheiten) gemessen. Siehe [Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [Leistungsebenen in Azure Cosmos DB](../cosmos-db/performance-levels.md)
 * Lokaler SQL Server: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx)
 * Lokaler Dateiserver: [Leistungsoptimierung für Dateiserver](https://msdn.microsoft.com/library/dn567661.aspx)
@@ -412,5 +303,5 @@ Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einig
 Weitere Informationen finden Sie in den anderen Artikeln zur Kopieraktivität:
 
 - [Kopieraktivität – Übersicht](copy-activity-overview.md)
-- [Copy Activity schema mapping (Schemazuordnung der Kopieraktivität)](copy-activity-schema-and-type-mapping.md)
-- [Copy activity fault tolerance (Fehlertoleranz der Kopieraktivität)](copy-activity-fault-tolerance.md)
+- [Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake oder Data Warehouse zu Azure](data-migration-guidance-overview.md)
+- [Migrieren von Daten aus Amazon S3 zu Azure Storage](data-migration-guidance-s3-azure-storage.md)

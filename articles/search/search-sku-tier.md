@@ -1,257 +1,235 @@
 ---
 title: Auswählen einer SKU oder eines Tarifs für den Azure Search-Dienst – Azure Search
-description: 'Azure Search kann unter folgenden SKUs bereitgestellt werden: Free, Basic und Standard. Standard ist mit verschiedenen Ressourcenkonfigurationen und Kapazitäten verfügbar.'
+description: 'Azure Search kann in folgenden SKUs bereitgestellt werden: „Free“, „Basic“ und „Standard“, wobei „Standard“ mit verschiedenen Ressourcenkonfigurationen und Kapazitäten verfügbar ist.'
 services: search
 author: HeidiSteen
-manager: cgronlun
-tags: azure-portal
+manager: nitinme
+tags: ''
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 08/15/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: da8c8adacfead598a8dec6280cf3518fb7b31f49
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1c86649a989b16d928a46d322af3d805b6fbf832
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270950"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69647343"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Auswählen eines Tarifs für Azure Search
 
-In Azure Search erfolgt das [Erstellen einer Ressource](search-create-service-portal.md) basierend auf einem Tarif oder einer SKU, der/die für die Lebensdauer des Diensts fest ist. Folgende Tarife sind verfügbar: **Free**, **Basic**, **Standard** und **Speicheroptimiert**.  **Standard** und **Speicheroptimiert** sind mit verschiedenen Konfigurationen und Kapazitäten verfügbar. 
+Beim Erstellen eines Azure Search-Diensts erfolgt das [Erstellen einer Ressource](search-create-service-portal.md) basierend auf einem Tarif (oder einer SKU), der für die Lebensdauer des Diensts festgelegt ist. Folgende Tarife sind verfügbar: „Free“, „Basic“, „Standard“ und „Speicheroptimiert“. „Standard“ und „Speicheroptimiert“ werden mit verschiedenen Konfigurationen und Kapazitäten bereitgestellt.
 
-Die meisten Kunden beginnen zu Evaluierungszwecken mit dem Tarif **Free** und wechseln dann für Entwicklungs- und Produktionsbereitstellungen zu einem der höheren kostenpflichtigen Tarife. Sie können alle Schnellstartanleitungen und Tutorials im Tarif **Free** absolvieren, einschließlich jener für ressourcenintensive kognitive Suchen.
+Die meisten Kunden starten mit dem Tarif „Free“, um den Dienst vorab zu testen. Nach der Auswertung wird oftmals ein zweiter Dienst mit einem der höheren Tarifen erstellst, der für Entwicklungs- und Produktionsbereitstellungen ist.
 
-> [!NOTE]
-> Die Tarife vom Typ „Speicheroptimiert“ sind derzeit als günstigere Vorschauversion zum Testen und Experimentieren erhältlich, um Feedback zu sammeln. Die endgültigen Preise werden später bekannt gegeben, wenn diese Tarife allgemein verfügbar sind. Wir raten davon ab, diese Tarife für Produktionsanwendungen zu verwenden.
+Obwohl alle Tarife, einschließlich des Tarifs „Free“, in der Regel Featureparität bieten, können größere Workloads höhere Tarife erforderlich machen. Beispielsweise enthält die [KI-Erweiterungen mit Cognitive Services](cognitive-search-concept-intro.md) Qualifikationen mit langer Laufzeit, die bei einem kostenlosen Dienst zu einem Timeout führen, sofern es sich nicht um ein kleines Dataset handelt.
+
+> [!NOTE] 
+> Eine Ausnahme bei der Featureparität bilden die [Indexer](search-indexer-overview.md), die in „S3 HD“ nicht verfügbar sind.
+>
+
+<!-- For Basic tier and up, you can [adjust replica and partition resources](search-capacity-planning.md) to increase or decrease scale. You could start with one or two of each and then temporarily raise your computational power for a heavy indexing workload. The ability to tune resource levels within a tier adds flexibility, but also slightly complicates your analysis. You might have to experiment to see whether a lower tier with more resources/replicas offers better value and performance than a higher tier with fewer resources. To learn more about when and why you would adjust capacity, see [Performance and optimization considerations](search-performance-optimization.md). -->
+
+## <a name="available-tiers"></a>Verfügbare Tarife
 
 Tarife geben die Merkmale der Hardware wieder, die den Dienst hostet (anstelle von Funktionen), und unterscheiden sich durch:
 
-+ Anzahl der Indizes, die Sie erstellen können
++ Anzahl der Indizes und Indexer, die erstellt werden können
 + Größe und Geschwindigkeit von Partitionen (physischer Speicher)
 
-Obwohl alle Tarife, einschließlich des Tarifs **Free**, in der Regel Featureparität anbieten, können größere Workloads Anforderungen für höhere Tarife diktieren. Beispielsweise ist die [KI-Indizierung mit Cognitive Services](cognitive-search-concept-intro.md) mit Vorgängen zum Ausführen von Qualifikationen mit langer Laufzeit verbunden, sodass bei einem kostenlosen Dienst ein Timeout auftritt, sofern es sich nicht um ein kleines Dataset handelt.
+Der ausgewählte Tarif bestimmt den abzurechnenden Preis. Im folgenden Screenshot aus dem Azure-Portal sind die verfügbaren Tarife ohne Preise aufgeführt (die Preise finden Sie im Portal und auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/search/)). **Free**, **Basic** und **Standard** sind die gängigsten Tarife.
 
-> [!NOTE] 
-> Die Ausnahme bei der Featureparität sind die [Indexer](search-indexer-overview.md), die bei S3HD nicht verfügbar sind.
->
+Im Tarif **Free** wird ein eingeschränkter Suchdienst in einem Cluster erstellt, der auch für andere Abonnenten freigegeben ist. Sie können kleine Projekte ausführen, einschließlich Schnellstarts und Tutorials, aber Sie können den Dienst nicht skalieren und keine größeren Workloads ausführen. **Basic** und **Standard** sind die am häufigsten verwendeten abrechenbaren Tarife, wobei **Standard** der vorgegebene Tarif ist.
 
-Innerhalb eines Tarifs können Sie [Replikat- und Partitionsressourcen anpassen](search-capacity-planning.md), um hoch- oder herunterzuskalieren. Sie können mit jeweils ein oder zwei Replikaten und Partitionen beginnen und Ihre Rechenleistung dann für eine hohe Indizierungsworkload vorübergehend erhöhen. Die Möglichkeit, Ressourcenniveaus innerhalb eines Tarifs zu optimieren, sorgt für mehr Flexibilität, verkompliziert aber auch etwas Ihre Analyse. Möglicherweise müssen Sie experimentieren, um herauszufinden, ob ein niedrigerer Tarif mit höheren Ressourcen-/Replikatangeboten einen besseren Wert und höhere Leistung bietet, als ein höherer Tarif mit weniger Ressourcen. Weitere Informationen dazu, wann und warum Sie Kapazität anpassen sollten, finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
+![Tarife von Azure Search](media/search-sku-tier/tiers.png "Tarife von Azure Search")
 
-## <a name="tiers-for-azure-search"></a>Tarife für Azure Search
+Einige Tarife sind für bestimmte Verwendungszwecke optimiert. **Standard 3 High Density (S3 HD)** ist beispielsweise ein *Hostingmodus* für S3. Die zugrunde liegende Hardware ist für eine große Anzahl kleinerer Indizes optimiert und für Szenarien mit Mehrinstanzenfähigkeit konzipiert. Die Gebühr pro Einheit unterscheidet sich zwischen „S3 HD“ und „S3“ nicht. Die Hardware ist bei „S3 HD“ jedoch für schnelle Dateilesevorgänge bei einer großen Anzahl kleinerer Indizes optimiert.
 
-In der folgenden Tabelle sind die verfügbaren Tarife aufgeführt. Informationen zu Tarifen finden Sie zudem auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/search/), unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md) und auf der Portalseite beim Bereitstellen eines Diensts.
+**Datenspeicheroptimierte** Tarife bieten eine höhere Speicherkapazität zu einem niedrigeren Preis pro TB als die Standard-Tarife. Der größte Nachteil ist die höhere Wartezeit. Diese müssen Sie bei Ihren spezifischen Anwendungsanforderungen berücksichtigen.  Weitere Informationen zu den Leistungsaspekten dieses Tarifs finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
 
-|Tarif | Capacity |
-|-----|-------------|
-|Kostenlos | Für andere Abonnenten freigegeben. Nicht skalierbar, auf 3 Indizes und 50 MB Speicher begrenzt. |
-|Basic | Dedizierte Computingressourcen für Produktionsworkloads mit geringerem Umfang. Eine 2-GB-Partition und bis zu drei Replikate. |
-|Standard 1 (S1) | Ab S1 werden dedizierte Computer mit höherer Speicher- und Verarbeitungskapazität auf jeder Ebene verwendet. Die Partitionsgröße liegt bei diesem Tarif bei 25 GB pro Partition (max. 300 GB pro Dienst). |
-|Standard 2 (S2) | Ähnlich wie S1, jedoch mit 100 GB pro Partition (max. 1,2 TB pro Dienst) |
-|Standard 3 (S3) | 200 GB pro Partition (max. 2,4 TB pro Dienst) |
-|Standard 3 High-density (S3-HD) | High-density ist ein *Hostingmodus* für S3. Die zugrunde liegende Hardware ist für eine große Anzahl kleinerer Indizes optimiert und für Szenarios mit Mehrmandantenfähigkeit konzipiert. Die Gebühr pro Einheit unterscheidet sich zwischen S3-HD und S3 nicht, die Hardware ist bei S3-HD jedoch für schnelle Dateilesevorgänge bei einer großen Anzahl kleinerer Indizes optimiert.|
-|Speicheroptimiert 1 (L1) | 1 TB pro Partition (max. 12 TB pro Dienst) |
-|Speicheroptimiert 2 (L2) | 2 TB pro Partition (max. 24 TB pro Dienst) |
+Weitere Informationen zu den verschiedenen Tarifen finden Sie auf der Seite [Azure Search – Preise](https://azure.microsoft.com/pricing/details/search/), im Artikel [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md) und auf der Portalseite beim Bereitstellen eines Diensts.
 
-> [!NOTE] 
-> Die speicheroptimierten Tarife bieten eine höhere Speicherkapazität zu einem niedrigeren Preis pro TB als die Standard-Tarife. Der größte Nachteil ist die höhere Wartezeit. Diese müssen Sie bei Ihren spezifischen Anwendungsanforderungen berücksichtigen.  Weitere Informationen zu den Leistungsaspekten dieses Tarifs finden Sie unter [Bereitstellungsstrategien und bewährte Methoden zur Optimierung der Leistung in Azure Search](search-performance-optimization.md).
->
+## <a name="billable-events"></a>Abrechenbare Ereignisse
 
-## <a name="how-billing-works"></a>Funktionsweise der Abrechnung
+Für eine auf Azure Search basierende Lösung können folgende Kosten anfallen:
 
-Bei Azure Search können auf drei verschiedene Weisen Kosten anfallen, und es gibt feste und variable Komponenten. Dieser Abschnitt befasst sich der Reihe nach mit jeder Abrechnungskomponente.
++ Basiskosten des Diensts bei minimaler Konfiguration (Erstellen eines Diensts)
++ Inkrementelle Kosten beim zentralen Hochskalieren (Hinzufügen von Replikaten oder Partitionen)
++ Bandbreitengebühren (ausgehende Datenübertragung) 
++ Kognitive Suche (Anfügen von Cognitive Services für KI-Anreicherung, Azure Storage für Wissensspeicher)
 
-### <a name="1-core-service-costs-fixed-and-variable"></a>1. Basiskosten für den Dienst (fest und variabel)
+### <a name="service-costs"></a>Dienstkosten
 
-Die Mindestgebühr für den Dienst selbst ist die erste Sucheinheit (1 Replikat x 1 Partition). Dieser Betrag bleibt für die gesamte Lebensdauer des Diensts konstant, da der Dienst nicht mit weniger als dieser Konfiguration ausgeführt werden kann. 
+Im Unterschied zu virtuellen Computern oder anderen Ressourcen, die angehalten werden können, um Gebühren zu vermeiden, ist ein Azure Search-Dienst immer auf der Hardware verfügbar, die für Ihre ausschließliche Nutzung bestimmt ist. Daher ist die Erstellung eines Diensts ein abrechenbares Ereignis, das mit dem Erstellen des Diensts beginnt und mit dem Löschen des Diensts endet. 
 
-Im folgenden Screenshot wird der Preis pro Einheit für die Tarife Free, Basic und S1 dargestellt (S2, S3, L1 und L2 sind nicht enthalten). Wenn Sie einen Dienst mit dem Tarif **Basic**, **Standard** oder **Speicheroptimiert** erstellt haben, belaufen sich Ihre monatlichen Kosten im Durchschnitt auf den Wert, der für *price-1* bzw. für *price-2* angegeben ist. Die Kosten pro Einheit steigen mit jedem Tarif, da sich bei den höheren Tarifen jeweils die Rechenleistung und die Speicherkapazität erhöhen.
+Die Mindestgebühr fällt zum abrechenbaren Preis für die erste Sucheinheit (ein Replikat × eine Partition) an. Dieser Betrag gilt für die Lebensdauer des Diensts, da der Dienst nicht mit weniger als dieser Konfiguration ausgeführt werden kann. Über dieses Minimum hinaus können Sie Replikate und Partitionen unabhängig voneinander hinzufügen. Inkrementelle Kapazitätserweiterungen durch Replikate und Partitionen erhöhen die Abrechnung basierend auf der folgenden Formel: [(Replikate × Partitionen × Preis)](#search-units). Der abgerechnete Preis hängt dabei von Ihrem ausgewählten Tarif ab.
 
-![Preise pro Einheit](./media/search-sku-tier/per-unit-pricing.png "Preise pro Einheit")
+Wenn Sie Ihre Kosten für eine Suchlösung abschätzen möchten, bedenken Sie, dass sich Preis und Kapazität nicht linear verhalten. (Bei einer Verdopplung der Kapazität fallen mehr als doppelt so hohe Kosten an.) Ein Beispiel zur Funktionsweise der Formel finden Sie unter [Zuordnen von Replikaten und Partitionen](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
-Für zusätzliche Replikate und Partitionen fallen zusätzliche Kosten zu den Basiskosten an. Ein Suchdienst benötigt ein Replikat und eine Partition, weshalb die Konfiguration aus mindestens einem Replikat und einer Partition bestehen muss. Über diese Mindestanforderung hinaus können Sie Replikate und Partitionen eigenständig hinzufügen. Beispielsweise könnten Sie nur Replikate oder nur Partitionen hinzufügen. 
+### <a name="bandwidth-charges"></a>Bandbreitengebühren
 
-Zusätzliche Replikate und Partitionen werden auf Grundlage einer [Formel](#search-units) abgerechnet. Die Kosten sind nicht linear (bei einer Verdopplung der Kapazität fallen mehr als doppelt so hohe Kosten an). Ein Beispiel zur Funktionsweise der Formel finden Sie unter [Zuordnen von Replikaten und Partitionen](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
+Die Verwendung von [Azure Search-Indexern](search-indexer-overview.md) kann je nach Standort der Dienste Auswirkungen auf die Kosten haben. Sie können die Gebühren für ausgehende Daten vollständig vermeiden, wenn Sie den Azure Search-Dienst in derselben Region wie Ihre Daten erstellen. Die folgenden Informationen stammen von der Seite [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/):
 
-### <a name="2-data-egress-charges-during-indexing"></a>2. Gebühren für ausgehende Daten während der Indizierung
++ Microsoft berechnet keine Gebühren für in beliebige Azure-Dienste eingehende Daten oder für ausgehende Daten aus Azure Search.
++ Bei Lösungen mit mehreren Diensten fallen keine Gebühren für Datenübertragungen an, wenn sich alle Dienste in derselben Region befinden.
 
-Die Verwendung von [Azure Search Indexer](search-indexer-overview.md) kann je nach Position der Dienste zu Auswirkungen auf die Abrechnung führen. Sie können die Gebühren für ausgehende Daten vollständig vermeiden, wenn Sie den Azure Search-Dienst in derselben Region wie Ihre Daten erstellen.
+Für ausgehende Daten fallen Gebühren an, wenn sich die Dienste in verschiedenen Regionen befinden. Diese Gebühren sind nicht Teil Ihrer eigentlichen Azure Search-Rechnung. Sie werden hier jedoch erwähnt, weil die Kosten für eine Datenübertragung per Pull aus unterschiedlichen Regionen mithilfe von Daten oder um KI erweiterte Indexer in Ihrer Gesamtrechnung aufgeführt werden.
 
-+ Keine Gebühren für eingehende Daten zu beliebigen Diensten von Azure.
+### <a name="cognitive-search-ai-enrichment-with-cognitive-services"></a>Kognitive Suche: KI-Anreicherung mit Cognitive Services
 
-+ Keine Gebühren für ausgehende Daten von Azure Search.
+Für die [KI-Erweiterung mit Cognitive Services](cognitive-search-concept-intro.md) sollten Sie eine [abrechenbare Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) in derselben Region wie Azure Search im S0-Tarif für die nutzungsbasierte Bezahlung der Verarbeitung anfügen. Durch das Anfügen von Cognitive Services fallen keine festen Kosten an. Sie bezahlen nur für die benötigte Verarbeitung.
 
-+ Keine Gebühren für Daten oder Dateien, die von SQL DB, Cosmos, Blob Storage (eingehend zu Azure Search) ausgehen, solange sich alle Dienste in derselben Region befinden.
-
-+ Für ausgehende Daten oder Dateien fallen Gebühren an, wenn sich Speicherung und Azure Search in verschiedenen Regionen befinden.
-
-Wenn Daten über Azure-Regionen geleitet werden, werden in der Rechnung für diese Ressourcen Kosten für die Bandbreite angezeigt. Diese Gebühren sind nicht Teil Ihrer Azure Search-Rechnung, aber sie werden hier erwähnt, denn wenn Sie Indexer verwenden, um Daten oder Dateien mithilfe von Pull zu übertragen, wird diese Gebühr in Ihrer Gesamtrechnung angezeigt.
-
-Wenn Sie keine Indexer verwenden, fallen keine Bandbreitengebühren an. 
-
-### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. Um KI erweiterte Indizierung unter Verwendung von Cognitive Services
-
-Nur bei der [KI-Indizierung mit Cognitive Services](cognitive-search-concept-intro.md) wird das Extrahieren von Bildern während der Dokumentaufschlüsselung basierend auf der Anzahl der aus Ihren Dokumenten extrahierten Bilder in Rechnung gestellt. Das Extrahieren von Text ist derzeit kostenlos. Andere auf [integrierten kognitiven Fähigkeiten](cognitive-search-predefined-skills.md) basierende Erweiterungen, wie die Verarbeitung natürlicher Sprache, werden für eine Cognitive Services-Ressource in Rechnung gestellt. Anreicherungen werden mit der gleichen Gebühr abgerechnet, als ob Sie die Aufgabe direkt mithilfe von Cognitive Services ausgeführt hätten.
+| Vorgang | Auswirkungen auf die Abrechnung |
+|-----------|----------------|
+| Dokumententschlüsselung, Textextraktion | Kostenlos |
+| Dokumententschlüsselung, Bildextraktion | Die Abrechnung erfolgt entsprechend der Anzahl von Bildern, die aus den Dokumenten extrahiert werden. In einer [Indexerkonfiguration](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) löst der Parameter **imageAction** die Bildextraktion aus. Ist **imageAction** auf „None“ festgelegt (Standardeinstellung), fallen keine Gebühren für die Bildextraktion an. Die Preise für die Bildextraktion sind auf der Seite [Azure Search – Preise](https://azure.microsoft.com/pricing/details/search/) dokumentiert.|
+| [Vorkonfigurierte kognitive Qualifikationen](cognitive-search-predefined-skills.md) | Wird zum gleichen Preis abgerechnet, als ob Sie die Aufgabe direkt mithilfe von Cognitive Services ausgeführt hätten. |
+| Benutzerdefinierte Qualifikationen | Bei einer benutzerdefinierten Qualifikation handelt es sich um die von Ihnen bereitgestellte Funktionalität. Die Kosten für die Verwendung einer benutzerdefinierten Qualifikation hängen ganz davon ab, ob mit dem benutzerdefinierten Code andere gebührenpflichtige Dienste aufgerufen werden. |
 
 <a name="search-units"></a>
 
-### <a name="billing-based-on-search-units"></a>Auf Sucheinheiten basierende Abrechnung
+## <a name="billing-formula-r-x-p--su"></a>Formel für die Abrechnung (R × P = SU)
 
-Für Azure Search-Vorgänge ist das wichtigste Abrechnungskonzept, das Sie verstehen sollten, eine *Sucheinheit* (Search Unit, SU). Da Azure Search bei der Indizierung und bei Abfragen sowohl von Replikaten als auch von Partitionen abhängig ist, ist es nicht sinnvoll, entweder nur nach dem einen oder nur nach dem anderen abzurechnen. Stattdessen basiert die Abrechnung auf einer Kombination beider. 
+Bei Azure Search-Vorgängen ist das wichtigste Abrechnungskonzept die *Sucheinheit* (Search Unit, SU). Da Azure Search bei der Indizierung und bei Abfragen sowohl von Replikaten als auch von Partitionen abhängig ist, ist es nicht sinnvoll, entweder nur nach dem einen oder nur nach dem anderen abzurechnen. Stattdessen basiert die Abrechnung auf einer Kombination beider.
 
-SU ist das Produkt der von einem Dienst verwendeten *Replikate* und *Partitionen*: **`(R X P = SU)`**
+Die SU ist das Produkt aus den von einem Dienst verwendeten *Replikaten* und *Partitionen*: **(R x P = SU)** .
 
-Jeder Dienst beginnt mit mindestens einer SU (einem Replikat multipliziert mit einer Partition). Das Maximum für jeden Dienst liegt bei 36 SUs. Dies lässt sich auf verschiedene Arten erreichen – beispielsweise mit sechs Partitionen mal sechs Replikate oder drei Partitionen mal 12 Replikate. Es ist üblich, weniger als die Gesamtkapazität zu verwenden. Z. B. ein Dienst mit 3 Replikaten und 3 Partitionen, abgerechnet als 9 SUs. In [diesem Diagramm](search-capacity-planning.md#chart) erkennen Sie gültige Kombinationen auf einen Blick.
+Jeder Dienst beginnt mit mindestens einer SU (einem Replikat multipliziert mit einer Partition). Die maximale Anzahl von SUs für einen Dienst beträgt 36. Dieser Höchstwert kann auf verschiedene Weise erreicht werden: beispielsweise mit 6 Partitionen x 6 Replikaten oder mit 3 Partitionen x 12 Replikaten. Üblicherweise werden weniger als die Gesamtkapazität an SUs verwendet (3 Replikate x 3 Partitionen werden beispielsweise als 9 SUs abgerechnet). Gültige Kombinationen finden Sie in der Tabelle [Partitions- und Replikatskombinationen](search-capacity-planning.md#chart).
 
-Es wird **stündlich pro SU** abgerechnet, wobei jeder Tarif einen progressiv steigenden Abrechnungssatz hat. Höhere Tarife enthalten größere und schnellere Partitionen, was zu einem insgesamt höheren Stundensatz für den jeweiligen Tarif beiträgt. Die Preise für die einzelnen Tarife finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/search/). 
+Der Preis wird stündlich pro SU abgerechnet. Dabei steigt der Preis mit jedem höheren Tarif an. Höhere Tarife enthalten größere und schnellere Partitionen, was zu einem insgesamt höheren Stundensatz für den jeweiligen Tarif führt. Die Preise für die einzelnen Tarife finden Sie auf der Seite [Azure Search – Preise](https://azure.microsoft.com/pricing/details/search/).
 
-Die meisten Kunden schalten nur einen Teil der Gesamtkapazität online und halten den Rest in Reserve. Im Hinblick auf die Abrechnung bestimmt die Anzahl der Partitionen und Replikate, die Sie online bringen, mithilfe der SU-Formel berechnet, was Sie tatsächlich stündlich bezahlen.
+Die meisten Kunden schalten nur einen Teil der Gesamtkapazität online und halten den Rest in Reserve. Die Anzahl der Partitionen und Replikate, die Sie online schalten, bestimmt (mit der SU-Formel berechnet) den stündlichen Preis.
 
-### <a name="billing-for-image-extraction-in-cognitive-search"></a>Abrechnung für das Extrahieren von Bildern bei der kognitiven Suche
+## <a name="how-to-manage-and-reduce-costs"></a>Verwalten und Reduzieren von Kosten
 
-Wenn Sie Bilder aus Dateien in einer Indizierungspipeline für die kognitive Suche extrahieren, wird Ihnen in Ihrer Azure Search-Rechnung dieser Vorgang in Rechnung gestellt. In einer [Indexerkonfiguration](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) ist **imageAction** der Parameter, der die Bildextraktion auslöst. Wenn **imageAction** auf „None“ festgelegt ist (Standardeinstellung), fallen keine Gebühren für die Bildextraktion an.
+Zusätzlich zu den folgenden Empfehlungen finden Sie weitere Informationen unter [Abrechnungs- und Kostenverwaltung](https://docs.microsoft.com/azure/billing/billing-getting-started).
 
-Die Preise können sich ändern, dies wird jedoch immer auf der [Seite „Azure Search – Preise“](https://azure.microsoft.com/pricing/details/search/) dokumentiert. 
+- Erstellen Sie alle Ressourcen in derselben Region oder in möglichst wenigen Regionen, um Bandbreitengebühren zu minimieren oder auszuschließen.
 
-### <a name="billing-for-built-in-skills-in-cognitive-search"></a>Abrechnung für integrierte Qualifikationen bei der kognitiven Suche
+- Führen Sie alle Dienste in einer Ressourcengruppe zusammen, z. B. Azure Search, Cognitive Services und alle anderen in Ihrer Lösung verwendeten Azure-Dienste. Navigieren Sie im Azure-Portal zu der Ressourcengruppe, und verwenden Sie die Befehle für **Kostenverwaltung**, um Einblicke in die tatsächlichen und projizierten Ausgaben zu erhalten.
 
-Beim Einrichten einer Anreicherungspipeline basieren alle in der Pipeline verwendeten [integrierten Qualifikationen](cognitive-search-predefined-skills.md) auf Machine Learning-Modellen. Diese Modelle werden von Cognitive Services bereitgestellt. Die Verwendung dieser Modelle während der Indizierung wird mit der gleichen Gebühr abgerechnet, als ob Sie die Ressource direkt angefordert hätten.
+- Sie können Azure App Service für Ihre Front-End-Anwendung verwenden, sodass Anforderungen und Antworten innerhalb der Grenzen des Rechenzentrums bleiben.
 
-Nehmen wir beispielsweise eine Pipeline an, die aus optischer Zeichenerkennung (Optical Character Recognition, OCR) für gescannte JPEG-Bilddateien besteht, wobei der resultierende Text mittels Push in einen Azure Search-Index für Freiform-Suchabfragen übertragen wird. Ihre Indizierungspipeline würde einen Indexer mit der [Qualifikation „OCR“](cognitive-search-skill-ocr.md) enthalten, und diese Qualifikation wäre [einer Cognitive Services-Ressource zugeordnet](cognitive-search-attach-cognitive-services.md). Wenn Sie den Indexer ausführen, werden die entsprechenden Gebühren auf Ihrer Rechnung der Cognitive Services-Ressourcen für die OCR-Ausführung aufgeführt.
+- Führen Sie die zentrale Hochskalierung für ressourcenintensive Vorgänge wie die Indizierung durch, und passen Sie die Skalierung anschließend für reguläre Abfrageworkloads wieder an. Beginnen Sie mit der Mindestkonfiguration für Azure Search (eine SU bestehend aus einer Partition und einem Replikat), und überwachen Sie dann die Benutzeraktivität, um Verwendungsmuster zu identifizieren, die auf die Notwendigkeit einer höheren Kapazität hindeuten. Wenn ein vorhersagbares Muster vorliegt, können Sie möglicherweise die Skalierung mit der Aktivität synchronisieren (um dies zu automatisieren, müssen Sie Code schreiben).
 
-## <a name="tips-for-reducing-costs"></a>Tipps zur Reduzierung von Kosten
+Sie können einen Suchdienst nicht herunterfahren, um die Kosten zu senken. Dedizierte Ressourcen werden für eine exklusive Nutzung während der gesamten Lebensdauer des Diensts ständig betrieben. Im Hinblick auf den Dienst selbst besteht die einzige Möglichkeit zur Kostenreduzierung darin, Replikate und Partitionen auf ein Niveau zu reduzieren, das immer noch eine akzeptable Leistung und [SLA-Konformität](https://azure.microsoft.com/support/legal/sla/search/v1_0/) bietet, oder einen Dienst mit einem niedrigeren Tarif zu erstellen. (Die Stundensätze von S1 sind niedriger als die von S2 oder S3.) Angenommen, Sie stellen einen Dienst am unteren Ende Ihrer voraussichtlichen Auslastungen bereit. Wenn dieser Dienst Ihre Anforderungen nicht mehr erfüllt, können Sie einen zweiten Dienst in einem höheren Tarif erstellen, Ihre Indizes für den zweiten Dienst neu erstellen und dann den ersten Dienst löschen.
 
-Sie können den Dienst nicht herunterfahren, um die Rechnung zu senken. Dedizierte Ressourcen werden während der gesamten Lebensdauer des Diensts 24-7 betrieben und sind für Ihre exklusive Nutzung zugeordnet. Die einzige Möglichkeit, um eine Rechnung zu senken, besteht darin, Replikate und Partitionen auf ein niedriges Niveau zu senken, das immer noch eine akzeptable Leistung und [SLA-Compliance](https://azure.microsoft.com/support/legal/sla/search/v1_0/) bietet. 
+## <a name="how-to-evaluate-capacity-requirements"></a>Auswerten von Kapazitätsanforderungen
 
-Ein Hebel zur Reduzierung der Kosten ist die Auswahl eines Tarifs mit einem niedrigeren Stundensatz. Stundensätze von S1 sind niedriger als die von S2 oder S3. Angenommen, Sie stellen einen Dienst bereit, der auf das untere Ende Ihrer projizierten Auslastungen abzielt. Wenn dieser Dienst Ihre Anforderungen nicht mehr erfüllt, können Sie einen zweiten Dienst in einem höheren Tarif erstellen, Ihre Indizes für diesen zweiten Dienst neu erstellen und dann den ersten Dienst löschen. 
+In Azure Search wird Kapazität in *Replikate* und *Partitionen* strukturiert.
 
-Wenn Sie eine Kapazitätsplanung für lokale Server durchgeführt haben, wissen Sie, dass es üblich ist, „aufzukaufen“, damit Sie projiziertes Wachstum kompensieren können. Bei einem Clouddienst können Sie jedoch bei den Kosteneinsparungen aggressiver vorgehen, da Sie nicht an einen bestimmten Kauf gebunden sind. Sie können jederzeit in einen Dienst mit höherem Tarif wechseln, wenn der aktuelle nicht ausreicht.
++ Replikate sind Instanzen des Suchdiensts. Jedes Replikat hostet die Kopie eines Index mit Lastenausgleich. Beispielsweise verfügt ein Dienst mit sechs Replikaten über sechs Kopien jedes in den Dienst geladenen Index.
 
-### <a name="capacity-drill-down"></a>Kapazitätsdrilldown
-
-In Azure Search wird Kapazität in *Replikate* und *Partitionen* strukturiert. 
-
-+ Replikate sind Instanzen des Suchdiensts, in denen jedes Replikat eine Lastenausgleichskopie eines Indexes hostet. Beispielsweise verfügt ein Dienst mit 6 Replikaten über 6 Kopien jedes in den Dienst geladenen Indexes. 
-
-+ Partitionen speichern Indizes und teilen durchsuchbare Daten automatisch auf: zwei Partitionen teilen den Index in Hälften, drei Partitionen in Drittel usw. Im Hinblick auf die Kapazität ist die *Partitionsgröße* das primäre unterscheidende Feature der Tarife.
++ Partitionen speichern Indizes und teilen automatisch durchsuchbare Daten. Zwei Partitionen teilen den Index in zwei Teile, drei Partitionen in drei Teile und so weiter. Im Hinblick auf die Kapazität ist die *Partitionsgröße* das primäre Unterscheidungsmerkmal für Tarife.
 
 > [!NOTE]
-> Alle Tarife vom Typ **Standard** und **Speicheroptimiert** unterstützen [flexible Kombinationen von Replikaten und Partitionen](search-capacity-planning.md#chart), sodass Sie durch Ändern der Balance [Ihr System nach Geschwindigkeit oder Speicher gewichten](search-performance-optimization.md) können. **Basic** bietet bis zu drei Replikate für Hochverfügbarkeit, enthält jedoch nur eine Partition. **Free**-Tarife bieten keine dedizierten Ressourcen: Computingressourcen werden von mehreren Abonnenten gemeinsam genutzt.
+> Alle Tarife vom Typ „Standard“ und „Speicheroptimiert“ unterstützen [flexible Partitions- und Replikatskombinationen](search-capacity-planning.md#chart), sodass Sie durch Ändern des Verhältnisses [Ihr System in Hinblick auf Geschwindigkeit oder Speicher optimieren](search-performance-optimization.md) können. Der Tarif „Basic“ bietet bis zu drei Replikate für Hochverfügbarkeit, enthält jedoch nur eine Partition. Die Tarife vom Typ „Free“ bieten keine dedizierten Ressourcen: Computeressourcen werden von mehreren Abonnenten gemeinsam genutzt.
 
-### <a name="more-about-service-limits"></a>Weitere Informationen zu Dienstgrenzwerten
+<!-- ## Consumption patterns
 
-Bedient Hostressourcen, z.B. Indizes, Indexer usw. Jeder Tarif erzwingt [Dienstgrenzwerte](search-limits-quotas-capacity.md) bezüglich der Menge an Ressourcen, die Sie erstellen können. Daher ist eine Obergrenze für die Anzahl der Indizes (und anderer Objekte) das zweite Unterscheidungsmerkmal zwischen Tarifen. Wenn Sie die einzelnen Optionen im Portal durchgehen, beachten Sie die Grenzwerte für die Anzahl der Indizes. Andere Ressourcen, z.B. Indexer, Datenquellen und Skillsets, sind an Indexgrenzwerte gebunden.
+On the low and high ends, Basic and S3 HD are for important but atypical consumption patterns. Basic is for small production workloads. It offers SLAs, dedicated resources, and high availability, but it provides modest storage, topping out at 2 GB total. This tier was engineered for customers that consistently underutilize available capacity. At the high end, S3 HD is for workloads typical of ISVs, partners, [multitenant solutions](search-modeling-multitenant-saas-applications.md), or any configuration that calls for a large number of small indexes. It's often clear when Basic or S3 HD is the right tier. If you want confirmation, you can post to [StackOverflow](https://stackoverflow.com/questions/tagged/azure-search) or [contact Azure support](https://azure.microsoft.com/support/options/) for guidance.
 
-## <a name="consumption-patterns"></a>Verbrauchsmuster
-
-Die meisten Kunden beginnen mit dem Tarif **Free**, den sie unbegrenzt behalten, und wählen dann einen der Tarife vom Typ **Standard** oder **Speicheroptimiert** für Entwicklungs- oder Produktionsworkloads aus. 
-
-![Azure Search-Tarife](./media/search-sku-tier/tiers.png "Azure Search-Tarife")
-
-An den jeweiligen Enden sind **Basic** und **S3 HD** für wichtige, aber untypische Verbrauchsmuster vorhanden. **Basic** ist für kleine Produktionsworkloads bestimmt: Er bietet SLA, dedizierte Ressourcen, hohe Verfügbarkeit, aber moderaten Speicher, der höchstens 2 GB insgesamt erreicht. Dieser Tarif wurde für Kunden entwickelt, die die verfügbare Kapazität konsistent unterschritten haben. Am anderen Ende ist **S3 HD** für Workloads vorgesehen, die für unabhängige Softwareanbieter, Partner, [mehrinstanzfähige Lösungen](search-modeling-multitenant-saas-applications.md) oder jede Konfiguration typisch sind, die eine große Anzahl kleiner Indizes aufruft. Es ist häufig klar, wenn der **Basic**- oder **S3 HD**-Tarif passend ist, aber zur Bestätigung können Sie in [StackOverflow](https://stackoverflow.com/questions/tagged/azure-search) posten oder den [Azure Support kontaktieren](https://azure.microsoft.com/support/options/), um weitere Hinweise zu erhalten.
-
-Betrachten wir nun die gebräuchlicheren Standardtarife: **S1-S3** bilden eine Steigerung mit zunehmenden Kapazitätsstufen, wobei die Wendepunkte bei Partitionsgröße und maximaler Anzahl von Indizes, Indexern und anderen folgerichtigen Ressourcen liegen:
+The more commonly used standard tiers, S1 through S3, make up a progression of increasing levels of capacity. There are inflection points on partition size and limits on numbers of indexes, indexers, and corollary resources:
 
 |  | S1 | S2 | S3 |  |  |  |  |
 |--|----|----|----|--|--|--|--|
-| Partitionsgröße|  25 GB | 100 GB | 200 GB |  |  |  |  |
-| Index und Indexergrenzwerte| 50 | 200 | 200 |  |  |  |  |
+| Partition size|  25 GB | 100 GB | 200 GB |  |  |  |  |
+| Index and indexer limits| 50 | 200 | 200 |  |  |  |  |
 
-**S1** ist eine gebräuchliche Wahl, wenn dedizierte Ressourcen und mehrere Partitionen zur Notwendigkeit werden. Mit Partitionen von 25 GB für bis zu 12 Partitionen liegt der Pro-Dienst-Grenzwert für **S1** bei 300 GB insgesamt, wenn Sie Partitionen über Replikate maximieren (Informationen über ausgewogenere Kompositionen finden Sie unter [Standard-Tarife: Partitions- und Replikatskombinationen](search-capacity-planning.md#chart).)
+S1 is a common choice for customers that need dedicated resources and multiple partitions. S1 offers partitions of 25 GB and up to 12 partitions, providing a per-service limit of 300 GB if you maximize partitions over replicas. (See [Allocate partitions and replicas](search-capacity-planning.md#chart) for more balanced allocations.)
 
-Portal- und Preisseiten legen den Schwerpunkt auf Partitionsgröße und Speicher, aber für jeden Tarif nehmen die Computefunktionen (Datenträgerkapazität, Geschwindigkeit, CPUs) linear mit dem Preis zu. Ein **S2**-Replikat ist schneller als **S1**, und **S3** ist schneller als **S2**. **S3**-Tarife durchbrechen das allgemeine lineare Computepreismuster mit überproportional schnellerer E/A. Wenn Sie einen E/A-Engpass befürchten, wählen Sie einen **S3**-Tarif, der Ihnen viel mehr IOPS bietet als niedrigere Tarife.
+The portal and pricing pages put the focus on partition size and storage, but, for each tier, all compute capabilities (disk capacity, speed, CPUs) generally increase linearly with price. An S2 replica is faster than S1, and S3 is faster than S2. S3 tiers break from the linear compute-pricing pattern with disproportionately faster I/O. If you expect I/O to be the bottleneck, keep in mind that you can get much more IOPS with S3 than you can get with lower tiers.
 
-**S3** und **S3 HD** werden durch eine Infrastruktur mit identischer hoher Kapazität unterstützt, aber jeder erreicht seinen maximalen Grenzwert auf unterschiedliche Weise. **S3** ist für eine kleinere Anzahl sehr umfangreicher Indizes ausgelegt. Damit ist der maximale Grenzwert ressourcengebunden (2,4 TB für jeden Dienst). **S3 HD** ist für eine große Zahl sehr kleiner Indizes ausgelegt. Bei 1.000 Indizes erreicht **S3 HD** seine Grenzwerte in Form von Indexeinschränkungen. Wenn Sie als **S3 HD**-Kunde mehr als 1.000 Indizes benötigen, erhalten Sie beim Microsoft-Support Informationen zur entsprechenden Vorgehensweise.
+S3 and S3 HD are backed by identical high-capacity infrastructure, but they reach their maximum limits in different ways. S3 targets a smaller number of very large indexes, so its maximum limit is resource-bound (2.4 TB for each service). S3 HD targets a large number of very small indexes. At 1,000 indexes, S3 HD reaches its limits in the form of index constraints. If you're an S3 HD customer and you need more than 1,000 indexes, contact Microsoft Support for information about how to proceed.
 
 > [!NOTE]
-> Bisher mussten Dokumentgrenzwerte berücksichtigt werden, doch bei neuen Diensten spielen sie keine Rolle mehr. Weitere Informationen zu Bedingungen, unter denen immer noch Dokumentgrenzwerte gelten, finden Sie unter [Dienstgrenzwerte: Dokumentgrenzwerte](search-limits-quotas-capacity.md#document-limits).
+> Document limits were a consideration at one time, but they're no longer applicable for new services. For information about conditions in which document limits still apply, see [Document limits](search-limits-quotas-capacity.md#document-limits).
 >
 
-Die speicheroptimierten Tarife **L1 und L2** sind ideal für Anwendungen mit hohen Datenanforderungen und relativ geringer Endbenutzeranzahl, bei denen die Minimierung der Abfragewartezeit nicht an erster Stelle steht.  
+Storage Optimized tiers, L1 and L2, are ideal for applications with large data requirements but a relatively low number of end users, when minimizing query latency isn't the top priority.  
 
 |  | L1 | L2 |  |  |  |  |  |
 |--|----|----|--|--|--|--|--|
-| Partitionsgröße|  1 TB | 2 TB |  |  |  |  |  |
-| Index und Indexergrenzwerte| 10 | 10 |  |  |  |  |  |
+| Partition size|  1 TB | 2 TB |  |  |  |  |  |
+| Index and indexer limits| 10 | 10 |  |  |  |  |  |
 
-*L2* bietet insgesamt eine doppelt so hohe Speicherkapazität wie *L1*.  Orientieren Sie sich bei der Wahl Ihres Tarifs an der maximalen Datenmenge, die für Ihren Index voraussichtlich erforderlich sein wird.  Die Partitionen des Tarifs *L1* können in 1-TB-Schritten auf maximal 12 TB hochskaliert werden. Bei *L2* ist eine Erhöhung in 2-TB-Schritten pro Partition auf bis zu 24 TB möglich.
+L2 offers twice the overall storage capacity of L1.  Choose your tier based on the maximum amount of data that you think your index needs. The L1 tier partitions scale up in 1-TB increments to a maximum of 12 TB. The L2 partitions increase by 2 TBs per partition up to a maximum of 24 TB. -->
 
-## <a name="evaluate-capacity"></a>Auswerten der Kapazität
+### <a name="evaluating-capacity"></a>Abschätzen der Kapazität
 
-Zwischen der Kapazität und den Kosten für die Dienstausführung besteht ein direkter Zusammenhang. Da Tarife Grenzwerte auf zwei Ebenen (Speicher und Ressourcen) erzwingen, sollten Sie beide berücksichtigen, da derjenige, den Sie zuerst erreichen, der effektive Grenzwert ist. 
+Zwischen der Kapazität und den Kosten für die Ausführung des Diensts besteht ein direkter Zusammenhang. Jeder Tarif enthält Grenzwerte auf zwei Ebenen: Speicher und Ressourcen. Der zuerst erreichte Grenzwert gilt – daher sollten Sie sich über beide Aspekte Gedanken machen.
 
-In der Regel diktieren geschäftliche Anforderungen die Anzahl der Indizes, die Sie benötigen. Beispiel: ein globaler Index für ein großes Repository von Dokumenten, oder vielleicht mehrere Indizes basierend auf Region, Anwendung oder Geschäftsnische.
+In der Regel diktieren Geschäftsanforderungen die erforderliche Anzahl der Indizes. Für ein großes Repository von Dokumenten benötigen Sie beispielsweise einen globalen Index. Oder Sie benötigen möglicherweise je nach Region, Anwendung oder Geschäftsnische mehrere Indizes.
 
-Um die Größe eines Indexes zu bestimmen, müssen Sie [einen erstellen](search-create-index-portal.md). Die Struktur der Daten in Azure Search ist in erster Linie ein [invertierter Index](https://en.wikipedia.org/wiki/Inverted_index), der über andere Eigenschaften als Quelldaten verfügt. Bei einem invertierten Index werden Größe und Komplexität vom Inhalt bestimmt, nicht notwendigerweise von der Menge der Daten, die Sie einspeisen. Aus einer großen Datenquelle mit massiver Redundanz könnte ein kleinerer Index resultieren als aus einem kleineren Dataset mit stark variierendem Inhalt. Daher ist es kaum möglich, die Indexgröße aus der Größe des ursprünglichen Datasets abzuleiten.
+Um die Größe eines Indexes zu bestimmen, müssen Sie [einen erstellen](search-create-index-portal.md). Die Daten in Azure Search entsprechen in erster Linie der Struktur eines [invertierten Index](https://en.wikipedia.org/wiki/Inverted_index), der über andere Eigenschaften als die Quelldaten verfügt. Bei einem invertierten Index werden Größe und Komplexität vom Inhalt bestimmt, nicht notwendigerweise von der Menge der Daten, die Sie eingeben. Eine große Datenquelle mit hoher Redundanz könnte einen kleineren Index ergeben als ein kleineres Dataset mit stark variierendem Inhalt. Daher ist es kaum möglich, die Indexgröße aus der Größe des ursprünglichen Datasets abzuleiten.
 
 > [!NOTE] 
-> Zwar mag sich das Abschätzen zukünftiger Anforderungen an Indizes und Speicher wie Mutmaßungen anfühlen, doch es lohnt sich. Wenn sich die Kapazität eines Tarifs als zu gering herausstellt, müssen Sie einen neuen Dienst in einem höheren Tarif bereitstellen und anschließend [die Indizes neu laden](search-howto-reindex.md). Für einen Dienst kann kein direktes SKU-Upgrade durchgeführt werden.
+> Auch wenn sich das Schätzen der künftig benötigten Indizes und des erforderlichen Speichers wie bloßes Mutmaßen anfühlt, lohnt sich der Aufwand. Stellt sich die Kapazität eines Tarifs als zu gering heraus, müssen Sie einen neuen Dienst in einem höheren Tarif bereitstellen und anschließend die [Indizes neu laden](search-howto-reindex.md). Für einen Dienst kann kein direktes SKU-Upgrade durchgeführt werden.
 >
 
-### <a name="step-1-develop-rough-estimates-using-the-free-tier"></a>Schritt 1: Entwickeln grober Schätzungen mit dem Free-Tarif
+### <a name="estimate-with-the-free-tier"></a>Schätzung mit dem Free-Tarif
 
-Eine Möglichkeit zum Schätzen der Kapazität ist, mit dem **Kostenlos**-Tarif zu beginnen. Bedenken Sie, dass der **Kostenlos**-Dienst bis zu 3 Indizes, 50 MB Speicherplatz und 2 Minuten Indizierungszeit bietet. Es kann schwierig sein, mit diesen Einschränkungen eine veranschlagte Indexgröße zu schätzen, aber das folgende Beispiel veranschaulicht eine Methode:
+Eine Möglichkeit zum Abschätzen der Kapazität besteht darin, mit dem Tarif „Free“ zu beginnen. Bedenken Sie, dass der Dienst vom Typ „Free“ bis zu drei Indizes, 50 MB Speicherplatz und 2 Minuten Indizierungszeit bietet. Es kann schwierig sein, mit diesen Einschränkungen eine voraussichtliche Indexgröße zu schätzen. Sie können es dennoch wie folgt versuchen:
 
-+ [Erstellen eines kostenlosen Diensts](search-create-service-portal.md)
-+ Bereiten Sie ein kleines, repräsentatives Dataset vor (gehen Sie von 5.000 Dokumenten und einer Beispielgröße von zehn Prozent aus).
-+ [Erstellen Sie einen anfänglichen Index](search-create-index-portal.md), und notieren Sie sich die Größe im Portal (angenommen 30 MB).
++ [Erstellen Sie einen kostenlosen Dienst](search-create-service-portal.md).
++ Bereiten Sie ein kleines repräsentatives Dataset vor.
++ [Erstellen Sie einen anfänglichen Index im Portal](search-create-index-portal.md), und notieren Sie sich die Größe. Funktionen und Attribute haben Auswirkungen auf den Speicher. Durch Hinzufügen von Vorschlagsfunktionen (typeahead) werden beispielsweise die Speicheranforderungen erhöht. Sie können mehrere Versionen eines Index unter Verwendung desselben Datasets erstellen und dabei verschiedene Attribute für die einzelnen Felder verwenden, um zu ermitteln, wie sich die Speicheranforderungen ändern. Weitere Informationen finden Sie [im Abschnitt „Hinweise zum Speicher“ unter „Erstellen eines einfachen Index“](search-what-is-an-index.md#storage-implications).
 
-Angenommen, dass das Beispiel repräsentativ ist und zehn Prozent der gesamten Datenquelle umfasst, dann werden aus einem Index von 30 MB ca. 300 MB, wenn alle Dokumente indiziert werden. Aufgrund dieses vorläufigen Werts könnten Sie die Menge auf ein Budget für zwei Indizes (Entwicklung und Produktion) auf Speicheranforderungen von insgesamt 600 MB verdoppeln. Da diese Anforderung mühelos vom **Basic**-Tarif erfüllt wird, würden Sie dort beginnen.
+Mit einer groben Schätzung können Sie die betreffende Größe für zwei Indizes verdoppeln (Entwicklung und Produktion) und dann Ihren Tarif entsprechend auswählen.
 
-### <a name="step-2-develop-refined-estimates-using-a-billable-tier"></a>Schritt 2: Entwickeln präziser Schätzungen mit einem kostenpflichtigen Tarif
+### <a name="estimate-with-a-billable-tier"></a>Schätzung mit einem abrechenbaren Tarif
 
-Einige Kunden bevorzugen, mit dedizierten Ressourcen zu beginnen, die für größere Sampling- und Verarbeitungszeiten geeignet sind, und entwickeln dann während der Entwicklung realistische Schätzungen von Indexmenge, Größe und Abfragevolumen. Zu Beginn wird ein Dienst basierend auf einer Schätzung bereitgestellt, und wenn das Entwicklungsprojekt fortgeschritten ist, wissen Teams in der Regel, ob der derzeitige Dienst für die voraussichtlichen Produktionsworkloads über- oder unterdimensioniert ist. 
+Dedizierte Ressourcen ermöglichen längere Sampling- und Verarbeitungszeiten und eignen sich besser für realistische Schätzungen bezüglich Indexmenge, Größe und Abfragevolumen während der Entwicklung. Einige Kunden beginnen direkt mit einem abrechenbaren Tarif und werten ihn im Lauf des Entwicklungsprojekts erneut aus.
 
-1. [Überprüfen Sie in jedem Tarif Dienstgrenzwerte](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits), um zu bestimmen, ob niedrigere Tarife die Menge der Indizes, die Sie benötigen, unterstützen können. In den Tarifen **Basic**-**S1**-**S2** betragen die Grenzwerte für Indizes jeweils 15-50-200.  Der Tarif **Speicheroptimiert** ist für eine geringe Anzahl sehr großer Indizes vorgesehen und daher auf zehn Indizes beschränkt.
+1. [Überprüfen Sie die Dienstgrenzwerte in jedem Tarif](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits), um festzustellen, ob niedrigere Tarife die Anzahl der benötigten Indizes unterstützen können. In den Tarifen „Basic“, „S1“ und „S2“ betragen die Grenzwerte für Indizes 15, 50 bzw. 200. Der Tarif „Speicheroptimiert“ ist auf zehn Indizes beschränkt, da er für eine geringe Anzahl sehr großer Indizes ausgelegt ist.
 
 1. [Erstellen Sie einen Dienst unter einem abzurechnenden Tarif](search-create-service-portal.md):
 
-    + Starten Sie niedrig, mit **Basic** oder **S1**, wenn Sie am Anfang des Lernprozesses stehen.
-    + Starten Sie hoch, mit **S2** oder sogar **S3**, wenn umfangreiche Indizierungs- und Abfrageworkloads auf der Hand liegen.
-    + Verwenden Sie einen speicheroptimierten Tarif (**L1** oder **L2**), wenn Sie sehr viele Daten indizieren und die Abfragelast relativ gering ist (etwa im Fall einer internen Geschäftsanwendung).
+    + Beginnen Sie mit einem niedrigen Tarif, z. B. „Basic“ oder „S1“, wenn Sie sich über die projizierte Last nicht sicher sind.
+    + Sind umfangreiche Indizierungs- und Abfragelasten vorgesehen, starten Sie mit einem höheren Tarif, wie „S2“ oder sogar „S3“.
+    + Beginnen Sie mit einem Tarif vom Typ „Speicheroptimiert“ („L1“ oder „L2“), wenn Sie sehr viele Daten indizieren möchten und die Abfragelast relativ gering ist (etwa im Fall einer internen Geschäftsanwendung).
 
 1. [Erstellen Sie einen anfänglichen Index](search-create-index-portal.md), um zu bestimmen, wie Quelldaten in einen Index übersetzt werden. Dies ist die einzige Möglichkeit, die Größe des Indexes zu schätzen.
 
-1. [Überwachen Sie Speicher, Dienstgrenzwerte, Abfragevolumen und Latenz](search-monitor-usage.md) im Portal. Das Portal zeigt die Abfragen pro Sekunde, gedrosselte Abfragen und die Wartezeit bei Suchvorgängen an. Auf der Grundlage dieser Werte können Sie entscheiden, ob Sie den passenden Tarif gewählt haben. Abgesehen von Portalmetriken können Sie umfassende Überwachung, z.B. die Durchklickanalyse, durch Aktivieren der [Datenverkehrsanalyse](search-traffic-analytics.md) konfigurieren. 
+1. [Überwachen Sie Speicher, Dienstgrenzwerte, Abfragevolumen und Latenz](search-monitor-usage.md) im Portal. Im Portal werden die Abfragen pro Sekunde, gedrosselte Abfragen und die Wartezeit bei Suchvorgängen angezeigt. Diese Werte können Ihnen dabei helfen, den richtigen Tarif auszuwählen. Sie können auch eine umfassende Überwachung von Werten, wie z. B. eine Analyse der Durchklickrate, durch Aktivieren der Option [Durchsuchen der Datenverkehrsanalyse](search-traffic-analytics.md) konfigurieren.
 
-Indexzahl und -größe sind gleichermaßen für die Analyse relevant, da die maximalen Grenzwerte durch vollständige Auslastung des Speichers (Partitionen) oder maximale Grenzwerte für Ressourcen (Indizes, Indexer usw.) erreicht werden, je nachdem, was zuerst eintritt. Im Portal können Sie beides verfolgen, da die aktuelle Verwendung und die maximalen Grenzwerte nebeneinander auf der Seite „Übersicht“ angezeigt werden.
+Anzahl und Größe von Indizes sind für die Analyse gleichermaßen wichtig. Die maximalen Grenzwerte werden durch vollständige Auslastung des Speichers (Partitionen) oder über die maximalen Grenzwerte von Ressourcen (Indizes, Indexer usw.) erreicht, je nachdem, was zuerst eintritt. Im Portal können Sie beides verfolgen, da die aktuelle Verwendung und die maximalen Grenzwerte nebeneinander auf der Seite „Übersicht“ angezeigt werden.
 
 > [!NOTE]
-> Der Speicherbedarf kann übermäßig zunehmen, wenn Dokumente überflüssige Daten enthalten. Im Idealfall enthalten Dokumente nur die Daten, die Sie für die Suchabfrage benötigen. Binärdaten sind nicht durchsuchbar und sollten separat (etwa in einer Azure-Tabelle oder in einem Blobspeicher) und mit einem Feld im Index gespeichert werden, das einen URL-Verweis auf die externen Daten enthält. Die maximale Größe eines einzelnen Dokuments beträgt 16 MB (oder weniger, wenn Sie im Rahmen einer einzelnen Anforderung mehrere Dokumente gleichzeitig hochladen). Weitere Informationen finden Sie unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md).
+> Der Speicherbedarf kann zunehmen, wenn Dokumente irrelevante Daten enthalten. Im Idealfall enthalten Dokumente nur die Daten, die Sie für die Suche benötigen. Binäre Daten sind nicht durchsuchbar und sollten separat gespeichert werden (beispielsweise in einer Azure-Tabelle oder in Azure Blob Storage). In diesem Fall sollte dem Index ein Feld mit einem URL-Verweis auf die externen Daten hinzugefügt werden. Die maximale Größe eines einzelnen Dokuments beträgt 16 MB (oder weniger, wenn Sie im Rahmen einer einzelnen Anforderung mehrere Dokumente gleichzeitig hochladen). Weitere Informationen finden Sie unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md).
 >
 
 **Überlegungen zum Abfragevolumen**
 
-Abfragen pro Sekunde (Queries-Per-Second, QPS) ist eine Metrik, die häufig bei der Leistungsoptimierung verwendet wird, aber im Allgemeinen bei der Tarifauswahl keine Rolle spielt, solange Sie nicht am Anfang ein hohes Abfragevolumen erwarten.
+„Abfragen pro Sekunde“ (Queries per Second, QPS) ist eine wichtige Metrik bei der Leistungsoptimierung, spielt aber im Allgemeinen bei der Tarifauswahl nur dann eine Rolle, wenn Sie zu Beginn ein hohes Abfragevolumen erwarten.
 
-Die Standardtarife können eine Ausgewogenheit zwischen Replikaten und Partitionen bieten, wobei kürzere Abfrageverarbeitungszeiten durch zusätzliche Replikate für den Lastenausgleich und zusätzliche Partitionen für die parallele Verarbeitung unterstützt werden. Sie können die Leistung optimieren, sobald der Dienst bereitgestellt wird.
+Die Tarife vom Typ „Standard“ bieten ein ausgewogenes Verhältnis von Replikaten und Partitionen. Durch Hinzufügen von Replikaten für den Lastenausgleich oder durch Hinzufügen von Partitionen für eine parallele Verarbeitung können Sie kürzere Abfrageverarbeitungszeiten erzielen. Nach der Bereitstellung des Diensts können Sie die Leistung optimieren.
 
-Kunden, die von Anfang an ein hohes durchgängiges Abfragevolumen erwarten, sollten höhere Tarife vom Typ **Standard** in Verbindung mit leistungsfähigerer Hardware in Erwägung ziehen. Sie können dann Partitionen und Replikate offline schalten oder auch zu einem niedrigeren Tarifdienst wechseln, wenn diese Abfragevolumen ausbleiben. Weitere Informationen zum Berechnen des Abfragedurchsatzes finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
+Ist von Anfang an ein hohes durchgängiges Abfragevolumen zu erwarten, sollten Sie höhere Tarife vom Typ „Standard“ in Verbindung mit einer leistungsfähigeren Hardware in Erwägung ziehen. Bleiben diese Abfragevolumen aus, können Sie Partitionen und Replikate offline schalten oder auch zu einem Dienst mit niedrigerem Tarif wechseln. Weitere Informationen zum Berechnen des Abfragedurchsatzes finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
 
-Die speicheroptimierten Tarife eigenen sich für Workloads mit großen Datenmengen und unterstützen insgesamt mehr verfügbaren Indexspeicher, allerdings dürfen die Anforderungen hinsichtlich der Abfragewartezeit nicht zu hoch sein.  Dabei sollten weiterhin zusätzliche Replikate für den Lastenausgleich und zusätzliche Partitionen für die parallele Verarbeitung genutzt werden. Sie können die Leistung optimieren, sobald der Dienst bereitgestellt wird.
+Die Tarife vom Typ „Speicheroptimiert“ eigenen sich für Workloads mit großen Datenmengen und unterstützen insgesamt mehr verfügbaren Indexspeicher bei niedrigeren Anforderungen an die Abfragewartezeit. Dabei sollten Sie weiterhin zusätzliche Replikate für den Lastenausgleich und zusätzliche Partitionen für die parallele Verarbeitung verwenden. Nach der Bereitstellung des Diensts können Sie die Leistung optimieren.
 
-**Vereinbarungen zum Servicelevel (SLAs)**
+**Vereinbarungen zum Servicelevel**
 
-Für Funktionen des **Kostenlos**-Tarifs und der Vorschauversion gelten keine [Vereinbarungen zum Servicelevel (Service Level Agreements, SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). Für alle abrechenbaren Tarife gelten SLAs, wenn Sie genügend Redundanz für Ihren Dienst bereitstellen. Zwei oder mehr Replikate sind für die Abfrage-SLA (Lesezugriff) erforderlich. Drei oder mehr Replikate sind für die Abfrage- und Indizierungs-SLA (Lese-/Schreibzugriff) erforderlich. Die Anzahl der Partitionen wird für die SLA nicht berücksichtigt. 
+Die Funktionen des Tarifs „Free“ und der Vorschauversion bieten keine [Vereinbarungen zum Servicelevel (Service Level Agreements, SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). Für alle abrechenbaren Tarife gelten SLAs, wenn Sie genügend Redundanz für Ihren Dienst bereitstellen. Für Abfrage-SLAs (Lesezugriff) benötigen Sie zwei oder mehr Replikate. Für Abfrage- und Indizierungs-SLAs (Lese-/Schreibzugriff) sind drei oder mehr Replikate erforderlich. Die Anzahl der Partitionen hat keine Auswirkungen auf die SLAs.
 
 ## <a name="tips-for-tier-evaluation"></a>Tipps zur Tarifbewertung
 
-+ Erfahren Sie, wie Sie effiziente Indizes erstellen, und welche Aktualisierungsmethoden die geringste Auswirkung haben. Wir empfehlen die [Datenverkehrsanalyse](search-traffic-analytics.md) für Erkenntnisse zur Abfrageaktivität.
++ Informieren Sie sich darüber, wie Sie effiziente Indizes erstellen und welche Aktualisierungsmethoden die geringsten Auswirkungen haben. Informieren Sie sich auch über Abfrageaktivitäten, indem Sie die Option [Durchsuchen der Datenverkehrsanalyse](search-traffic-analytics.md) verwenden.
 
-+ Erstellen Sie Metriken zu Abfragen, und sammeln Sie Daten zu Verwendungsmustern (Abfragen während der Geschäftszeiten, Indizierung außerhalb der Spitzenzeiten), und treffen Sie anhand dieser Daten Entscheidungen zur zukünftigen Dienstbereitstellung. Da ein stündliches oder tägliches Intervall nicht praktikabel ist, können Sie Partitionen und Ressourcen dynamisch anpassen, um geplante Änderungen von Abfragevolumen oder ungeplante, jedoch nachhaltige Änderungen zu berücksichtigen, wenn Ebenen beständig genug sind, um die Durchführung von Aktionen zu garantieren.
++ Erstellen Sie Metriken zu Abfragen, und sammeln Sie Daten zu Verwendungsmustern (Abfragen während der Geschäftszeiten, Indizierung außerhalb der Spitzenzeiten). Treffen Sie anhand dieser Daten Entscheidungen zur Dienstbereitstellung. Da ein stündliches oder tägliches Intervall ungeeignet ist, können Sie Partitionen und Ressourcen dynamisch so anpassen, dass geplante Änderungen von Abfragevolumen ermöglicht werden. Auch ungeplante, aber anhaltende Änderungen können berücksichtigt werden, wenn Ebenen beständig genug sind, um die Durchführung von Aktionen zu garantieren.
 
-+ Beachten Sie, dass der einzige Nachteil einer unterdimensionierten Bereitstellung ist, dass Sie ggf. einen Dienst entfernen müssen, wenn die tatsächlichen Anforderungen Ihre Schätzungen überschreiten. Um Dienstunterbrechungen zu vermeiden, sollten Sie einen neuen Dienst im gleichen Abonnement in einem höheren Tarif erstellen und parallel ausführen, bis alle Apps und Anforderungen auf den neuen Endpunkt abzielen.
++ Beachten Sie, dass der einzige Nachteil einer unterdimensionierten Bereitstellung darin besteht, dass Sie ggf. einen Dienst entfernen müssen, wenn die tatsächlichen Anforderungen Ihre Schätzungen überschreiten. Um Dienstunterbrechungen zu vermeiden, sollten Sie einen neuen Dienst im gleichen Abonnement in einem höheren Tarif erstellen und parallel ausführen, bis alle Apps und Anforderungen auf den neuen Endpunkt abzielen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Beginnen Sie mit einem **Kostenlos**-Tarif, und erstellen Sie einen anfänglichen Index mit einer Teilmenge der Daten, um deren Eigenschaften zu verstehen. Die Datenstruktur in Azure Search ist ein invertierter Index, wobei Größe und Komplexität des invertierten Indexes sich nach dem Inhalt richten. Denken Sie daran, dass hoch redundanter Inhalt eher zu einem kleineren Index tendiert als sehr unregelmäßiger Inhalt. Daher bestimmen eher die Inhaltseigenschaften als die Größe des Datasets die Indexspeicheranforderungen.
+Beginnen Sie mit einem Tarif vom Typ „Free“, und erstellen Sie einen anfänglichen Index mit einer Teilmenge Ihrer Daten, um deren Eigenschaften zu verstehen. Die Datenstruktur in Azure Search entspricht einem invertierten Index. Größe und Komplexität eines invertierten Index werden vom Inhalt bestimmt. Denken Sie daran, dass hoch redundanter Inhalt eher zu einem kleineren Index tendiert als sehr unregelmäßiger Inhalt. Daher werden die Speicheranforderungen für den Index durch die Inhaltseigenschaften und nicht durch die Größe des Datasets bestimmt.
 
-Sobald Sie eine erste Vorstellung von der Indexgröße haben, können Sie in einem der in diesem Artikel erläuterten Tarife (**Basic**, **Standard** oder **Speicheroptimiert**) [einen abrechenbaren Dienst bereitstellen](search-create-service-portal.md). Lockern Sie künstliche Einschränkungen im Zusammenhang mit der Dimensionierung von Daten, und [erstellen Sie den Index neu](search-howto-reindex.md), um alle Daten einzuschließen, die tatsächlich durchsuchbar sein sollen.
+Stellen Sie nach einer ersten Schätzung der Indexgröße [einen abrechenbaren Dienst](search-create-service-portal.md) in einem der folgenden Tarife bereit, die in diesem Artikel beschrieben werden: „Basic“, „Standard“ oder „Speicheroptimiert“. Lockern Sie künstliche Einschränkungen im Zusammenhang mit der Dimensionierung von Daten, und [erstellen Sie den Index neu](search-howto-reindex.md), um alle Daten einzuschließen, die durchsuchbar sein sollen.
 
 [Ordnen Sie Partitionen und Replikate zu](search-capacity-planning.md), wie es erforderlich ist, um die gewünschte Leistung und Skalierung zu erzielen.
 
-Wenn Leistung und Kapazität in Ordnung sind, haben Sie Ihr Ziel erreicht. Erstellen Sie andernfalls erneut einen Suchdienst in einem anderen Tarif, der Ihren Anforderungen eher entspricht.
+Wenn Sie mit der Leistung und Kapazität zufrieden sind, dann sind Sie fertig. Erstellen Sie andernfalls erneut einen Suchdienst in einem anderen Tarif, der Ihren Anforderungen eher entspricht.
 
 > [!NOTE]
-> Um weitere Hilfe zu Fragen zu erhalten, posten Sie in [StackOverflow](https://stackoverflow.com/questions/tagged/azure-search), oder [wenden Sie sich an den Azure-Support](https://azure.microsoft.com/support/options/).
+> Wenn Sie Fragen haben, posten Sie in [StackOverflow](https://stackoverflow.com/questions/tagged/azure-search), oder wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/options/).

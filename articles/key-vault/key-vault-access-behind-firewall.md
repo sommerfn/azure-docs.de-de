@@ -2,23 +2,19 @@
 title: 'Zugreifen auf den Key Vault hinter einer Firewall: Azure Key Vault | Microsoft-Dokumentation'
 description: Hier wird beschrieben, wie Sie aus einer Anwendung hinter einer Firewall auf Azure Key Vault zugreifen.
 services: key-vault
-documentationcenter: ''
 author: amitbapat
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
-ms.assetid: 50d21774-2ee1-4212-8995-570c9de603c5
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 01/07/2019
+ms.topic: tutorial
+ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 36b431d07ad517d495316963fd6710dafab6c297
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 57c5e3f2741f81bce2eff2d5ef2b0f2d029096e3
+ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108635"
+ms.lasthandoff: 08/13/2019
+ms.locfileid: "68976384"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Zugreifen auf Azure Key Vault hinter einer Firewall
 
@@ -54,8 +50,8 @@ Für die Schlüsseltresorverwaltung (CRUD und Festlegen der Zugriffsrichtlinie) 
 
 | Typ des Vorgangs | Endpunkt:Port |
 | --- | --- |
-| Vorgänge auf der Steuerungsebene des Schlüsseltresors<br>  mit Azure Resource Manager |**Global:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Deutschland:**<br>  management.microsoftazure.de:443 |
-| Azure Active Directory Graph-API |**Global:**<br> graph.windows.net:443<br><br> **Azure China:**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> graph.windows.net:443<br><br> **Azure Deutschland:**<br>  graph.cloudapi.de:443 |
+| Vorgänge auf der Steuerungsebene des Schlüsseltresors<br> mit Azure Resource Manager |**Global:**<br> management.azure.com:443<br><br> **Azure China:**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> management.usgovcloudapi.net:443<br><br> **Azure Deutschland:**<br> management.microsoftazure.de:443 |
+| Azure Active Directory Graph-API |**Global:**<br> graph.windows.net:443<br><br> **Azure China:**<br> graph.chinacloudapi.cn:443<br><br> **Azure US Government:**<br> graph.windows.net:443<br><br> **Azure Deutschland:**<br> graph.cloudapi.de:443 |
 
 ## <a name="key-vault-operations"></a>Schlüsseltresorvorgänge
 

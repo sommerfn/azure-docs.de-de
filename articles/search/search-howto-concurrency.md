@@ -2,19 +2,19 @@
 title: Verwalten gleichzeitiger Schreibvorgänge bei Ressourcen – Azure Search
 description: Verwenden Sie die optimistische Nebenläufigkeit, um während der Ausführung von Update- und Löschvorgängen Konflikte in Azure Search-Indizes, Indexern und Datenquellen zu vermeiden.
 author: HeidiSteen
-manager: cgronlun
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 07/21/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4599498918b7a01a1207f20135c26924c6758eb8
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 67f2dad016d3958dc10ba87e785d31694a1c94f5
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499424"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69656720"
 ---
 # <a name="how-to-manage-concurrency-in-azure-search"></a>Verwalten der Parallelität in Azure Search
 
@@ -27,7 +27,7 @@ Beim Verwalten von Azure Search-Ressourcen wie Indizes und Datenquellen ist es w
 
 Die optimistische Nebenläufigkeit ist über Prüfungen von Zugriffsbedingungen in API-Aufrufen implementiert, die in Indizes, Indexer, Datenquellen und synonymMap-Ressourcen schreiben.
 
-Alle Ressourcen verfügen über ein [*Entity Tag (ETag)*](https://en.wikipedia.org/wiki/HTTP_ETag), das Informationen zur Objektversion bereitstellt. Indem Sie zuerst das ETag überprüfen, können Sie in typischen Workflows (abrufen, lokal ändern, aktualisieren) gleichzeitige Updates vermeiden, indem Sie sicherstellen, dass das ETag der Ressource mit dem der lokalen Kopie übereinstimmt.
+Alle Ressourcen verfügen über ein [*Entity Tag (ETag)* ](https://en.wikipedia.org/wiki/HTTP_ETag), das Informationen zur Objektversion bereitstellt. Indem Sie zuerst das ETag überprüfen, können Sie in typischen Workflows (abrufen, lokal ändern, aktualisieren) gleichzeitige Updates vermeiden, indem Sie sicherstellen, dass das ETag der Ressource mit dem der lokalen Kopie übereinstimmt.
 
 + Die REST-API verwendet ein [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) im Anforderungsheader.
 + Das ETag wird vom .NET SDK über ein accessCondition-Objekt festgelegt, wobei der [If-Match | If-Match-None-Header](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) für die Ressource gesetzt wird. Alle Objekte, die von [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) erben, besitzen ein accessCondition-Objekt.
@@ -170,7 +170,7 @@ Der folgende Code veranschaulicht accessCondition-Prüfungen bei Updatevorgänge
 
 Ein Entwurfsmuster für die Implementierung der optimistischen Nebenläufigkeit muss eine Schleife enthalten, in der die Zugriffsbedingungsprüfung, ein Test der Zugriffsbedingung und optional ein Abruf der aktualisierten Ressource wiederholt werden, bevor versucht wird, die Änderungen erneut anzuwenden.
 
-Dieser Codeausschnitt veranschaulicht das Hinzufügen einer synonymMap zu einem bereits vorhandenen Index. Dieser Code stammt aus [Synonyme (Vorschauversion) – C#-Beispiel für Azure Search](search-synonyms-tutorial-sdk.md).
+Dieser Codeausschnitt veranschaulicht das Hinzufügen einer synonymMap zu einem bereits vorhandenen Index. Dieser Code stammt aus [Synonyme – C#-Beispiel für Azure Search](search-synonyms-tutorial-sdk.md).
 
 Im Codeausschnitt wird der Index „hotels“ abgerufen, in einem Updatevorgang die Objektversion überprüft, eine Ausnahme ausgelöst, wenn der Vorgang fehlschlägt, und der Vorgang dann (bis zu drei Mal) wiederholt, wobei zunächst der Index vom Server abgerufen wird, um die aktuelle Version zu erhalten.
 

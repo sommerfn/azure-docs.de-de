@@ -4,7 +4,7 @@ titlesuffix: Azure Load Balancer
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie über die Azure-Befehlszeilenschnittstelle einen öffentlichen Lastenausgleich erstellen.
 services: load-balancer
 documentationcenter: na
-author: KumudD
+author: asudbring
 manager: twooley
 tags: azure-resource-manager
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
@@ -15,13 +15,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
-ms.author: kumud
-ms.openlocfilehash: a947b5983f4a7d58878fc15785cfbcbcbba7f226
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.author: allensu
+ms.openlocfilehash: 67d137039778b7ec8d5e65acb017b84ad6df5cb2
+ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733840"
+ms.lasthandoff: 07/16/2019
+ms.locfileid: "68274227"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-azure-cli"></a>Schnellstart: Erstellen eines Load Balancers für den Lastenausgleich virtueller Computer mit der Azure CLI
 
@@ -146,7 +146,7 @@ Erstellen Sie eine Netzwerksicherheitsgruppen-Regel, um eingehende Verbindungen 
 ```
 ### <a name="create-nics"></a>Erstellen von NICs
 
-Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az-network-nic-create) drei Netzwerkschnittstellen, und ordnen Sie sie der öffentlichen IP-Adresse und der Netzwerksicherheitsgruppe zu. 
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az-network-nic-create) zwei Netzwerkschnittstellen, und ordnen Sie sie der öffentlichen IP-Adresse und der Netzwerksicherheitsgruppe zu. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -164,7 +164,7 @@ done
 
 ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
-In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Server für den Lastenausgleich verwendet werden. Außerdem installieren Sie NGINX auf den virtuellen Computern, um zu überprüfen, ob der Load Balancer erfolgreich erstellt wurde.
+In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Server für den Lastenausgleich verwendet werden. Außerdem installieren Sie NGINX auf den virtuellen Computern, um zu überprüfen, ob der Load Balancer erfolgreich erstellt wurde.
 
 ### <a name="create-an-availability-set"></a>Erstellen einer Verfügbarkeitsgruppe
 

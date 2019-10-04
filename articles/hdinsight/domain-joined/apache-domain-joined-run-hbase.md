@@ -1,20 +1,20 @@
 ---
-title: Konfigurieren von Apache HBase-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket – Azure
-description: Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für HBase in Azure HDInsight mit dem Enterprise-Sicherheitspaket konfigurieren.
-services: hdinsight
+title: 'Tutorial: Konfigurieren von Apache HBase mit dem Enterprise-Sicherheitspaket – Azure'
+description: 'Tutorial: Erfahren Sie, wie Sie Apache Ranger-Richtlinien für HBase in Azure HDInsight mit dem Enterprise-Sicherheitspaket konfigurieren.'
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 02/01/2019
-ms.openlocfilehash: 1421b142fbca83d2de46f52f8390d0c25f22780c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/04/2019
+ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117284"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037266"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Apache HBase-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschauversion)
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Tutorial: Konfigurieren von Apache HBase-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 
 Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Apache HBase-Cluster mit dem Enterprise-Sicherheitspaket (ESP) konfigurieren. Es werden Verbindungen von ESP-Clustern mit einer Domäne hergestellt, sodass Benutzer sich mit Anmeldeinformationen für die Domäne authentifizieren können. In diesem Tutorial erstellen Sie zwei Ranger-Richtlinien, um den Zugriff auf verschiedene Spaltenfamilien in einer HBase-Tabelle einzuschränken.
 
@@ -88,7 +88,8 @@ Sie können SSH verwenden, um eine Verbindung mit Apache HBase-Clustern herzuste
     ```hbaseshell
     scan 'Contacts'
     ```
-    ![HDInsight Hadoop HBase-Shell](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+
+    ![Ausgabe der HDInsight Hadoop HBase-Shell](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>Erstellen von Ranger-Richtlinien
 
@@ -96,11 +97,11 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
 
 1. Öffnen Sie die **Ranger-Administratoroberfläche**. Klicken Sie unter **HBase** auf **\<Clustername>_hbase**.
 
-   ![Apache Ranger-Administratoroberfläche](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![Apache Ranger-Administratoroberfläche in HDInsight](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
 2. Auf dem Bildschirm **Liste der Richtlinien** werden alle Ranger-Richtlinien angezeigt, die für diesen Cluster erstellt wurden. Möglicherweise ist eine vorkonfigurierte Richtlinie aufgelistet. Klicken Sie auf **Neue Richtlinie hinzufügen**.
 
-    ![Apache Ranger-Administratoroberfläche – Richtlinie erstellen](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Liste der Apache Ranger HBase-Richtlinien](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
 3. Geben Sie auf der Seite **Richtlinie erstellen** die folgenden Werte ein:
 
@@ -119,7 +120,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
    * `*` weist auf null oder mehr Vorkommen von Zeichen hin.
    * `?` weist auf ein einzelnes Zeichen hin.
 
-   ![Apache Ranger-Administratoroberfläche – Richtlinie erstellen](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![Apache Ranger-Richtlinienerstellung: „sales“](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
    >Warten Sie kurz, bis Ranger mit AAD synchronisiert ist, wenn unter **Benutzer auswählen** nicht automatisch ein Domänenbenutzer eingetragen wird.
@@ -138,7 +139,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
    |Benutzer auswählen  | marketing_user1 |
    |Berechtigungen  | Lesen |
 
-   ![Apache Ranger-Administratoroberfläche – Richtlinie erstellen](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![Apache Ranger-Richtlinienerstellung: „marketing“](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
 6. Klicken Sie auf **Hinzufügen**, um die Richtlinie zu speichern.
 
@@ -146,7 +147,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
 
 Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user1** alle Daten für die Spalten in den Spaltenfamilien `Name` und `Contact` anzeigen. **marketing_user1** kann nur Daten in der Spaltenfamilie `Contact` anzeigen.
 
-### <a name="access-data-as-salesuser1"></a>Zugreifen auf Daten als „sales_user1“
+### <a name="access-data-as-sales_user1"></a>Zugreifen auf Daten als „sales_user1“
 
 1. Stellen Sie eine neue SSH-Verbindung mit dem Cluster her. Verwenden Sie den folgenden Befehl, um sich bei dem Cluster anzumelden:
 
@@ -160,7 +161,7 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user1** alle Da
    kinit sales_user1
    ```
 
-2. Öffnen Sie die HBase-Shell, und sehen Sie sich die Tabelle `Customers` an:
+2. Öffnen Sie die HBase-Shell, und sehen Sie sich die Tabelle `Customers` an.
 
    ```hbaseshell
    hbase shell
@@ -188,7 +189,7 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user1** alle Da
     2 row(s) in 0.1000 seconds
     ```
 
-### <a name="access-data-as-marketinguser1"></a>Zugreifen auf Daten als „marketing_user1“
+### <a name="access-data-as-marketing_user1"></a>Zugreifen auf Daten als „marketing_user1“
 
 1. Stellen Sie eine neue SSH-Verbindung mit dem Cluster her. Führen Sie den folgenden Befehl aus, um sich als **marketing_user1** anzumelden:
 
@@ -202,14 +203,14 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user1** alle Da
    kinit marketing_user1
    ```
 
-2. Öffnen Sie die HBase-Shell, und sehen Sie sich die Tabelle `Customers` an:
+1. Öffnen Sie die HBase-Shell, und sehen Sie sich die Tabelle `Customers` an:
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-3. Beachten Sie, dass der Marketingbenutzer nur die fünf Spalten der Spaltenfamilie `Contact` anzeigen kann.
+1. Beachten Sie, dass der Marketingbenutzer nur die fünf Spalten der Spaltenfamilie `Contact` anzeigen kann.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -226,18 +227,18 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user1** alle Da
     2 row(s) in 0.0730 seconds
     ```
 
-9. Zeigen Sie die Überwachungszugriffsereignisse in der Ranger-Benutzeroberfläche an.
+1. Zeigen Sie die Überwachungszugriffsereignisse in der Ranger-Benutzeroberfläche an.
 
-   ![Ranger-Benutzeroberfläche – Richtlinienüberwachung](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![Ranger-Benutzeroberfläche in HDInsight – Richtlinienüberwachung](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den erstellten HBase-Cluster zu löschen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Geben Sie oben im Suchfeld**** den Suchbegriff **HDInsight** ein. 
+2. Geben Sie oben im **Suchfeld** den Suchbegriff **HDInsight** ein. 
 1. Wählen Sie unter **Dienste** die Option **HDInsight-Cluster** aus.
-1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem Cluster, den Sie für dieses Tutorial erstellt haben, auf die Auslassungspunkte (**...**). 
+1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem Cluster, den Sie für dieses Tutorial erstellt haben, auf die Auslassungspunkte ( **...** ). 
 1. Klicken Sie auf **Löschen**. Klicken Sie auf **Ja**.
 
 ## <a name="next-steps"></a>Nächste Schritte

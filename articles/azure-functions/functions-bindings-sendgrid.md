@@ -4,18 +4,17 @@ description: Referenz für SendGrid-Bindungen in Azure Functions
 services: functions
 documentationcenter: na
 author: craigshoemaker
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 663283c4dff16194dea78afbf5dd393f1fa833b1
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a0d12639ce074c3ed105513a3d90e323e30d1087
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823806"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155070"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-Bindungen in Azure Functions
 
@@ -32,6 +31,9 @@ Die SendGrid-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions
 ## <a name="packages---functions-2x"></a>Pakete: Functions 2.x
 
 Die SendGrid-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid), Version 3.x, bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/).
+
+> [!NOTE]
+> In Version 2.x wird das in der `ServiceBusTrigger`-Instanz konfigurierte Thema oder Abonnement nicht erstellt. Version 2.x basiert auf [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) und erledigt keine Warteschlangenverwaltung.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -259,9 +261,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction**|| Erforderlich – muss auf `out` festgelegt sein.|
 |**name**|| Erforderlich – der Variablenname, der im Funktionscode für die Anforderung oder den Anforderungstext verwendet wird. Dieser Wert ist ```$return```, wenn es nur einen Rückgabewert gibt. |
 |**apiKey**|**ApiKey**| Der Name einer App-Einstellung, die Ihren API-Schlüssel enthält. Wenn sie nicht festgelegt wird, lautet der Standardname der App-Einstellung „AzureWebJobsSendGridApiKey“.|
-|**to**|**An**| E-Mail-Adresse des Empfängers |
+|**to**|**To**| E-Mail-Adresse des Empfängers |
 |**from**|**From**| E-Mail-Adresse des Absenders |
-|**subject**|**Betreff**| Betreff der E-Mail |
+|**subject**|**Subject**| Betreff der E-Mail |
 |**text**|**Text**| Inhalt der E-Mail |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

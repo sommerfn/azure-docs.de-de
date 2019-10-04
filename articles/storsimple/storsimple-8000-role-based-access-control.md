@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785383"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "66159105"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Rollenbasierte Zugriffssteuerung für StorSimple
 
@@ -165,7 +165,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 Sie gewähren Zugriff aus der Ressource, der Ressourcengruppe oder dem Abonnement, die bzw. das als Bereich der Rollenzuweisung gilt. Bedenken Sie beim Gewähren von Zugriff, dass der Zugriff, der einem übergeordneten Knoten gewährt wird, von untergeordneten Knoten geerbt wird. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
 
-1. Wechseln Sie zu **Zugriffssteuerung (IAM)**. Klicken Sie auf dem Blatt für die Zugriffssteuerung auf **+ Hinzufügen**.
+1. Wechseln Sie zu **Zugriffssteuerung (IAM)** . Klicken Sie auf dem Blatt für die Zugriffssteuerung auf **+ Hinzufügen**.
 
     ![Hinzufügen von Zugriff zur RBAC-Rolle](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 

@@ -4,23 +4,25 @@ description: Dieser Artikel enthält Informationen zur Ausführung von Runbooks 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
+author: bobbytreed
+ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fab886de55cc524390093f7e7913c79f7af3fe78
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 100740e87c13887a3e7ac85aa5fce3d67c838ea0
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858138"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240322"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks auf einem Hybrid Runbook Worker
 
 Es gibt keine Unterschiede in der Struktur von Runbooks, die in Azure Automation oder auf einem Hybrid-Runbook-Worker ausgeführt werden. Die Runbooks, die Sie in beiden Fällen verwenden, unterscheiden sich dagegen wahrscheinlich erheblich. Dies liegt daran, dass Runbooks, die für einen Hybrid Runbook Worker konzipiert sind, in der Regel Ressourcen auf dem lokalen Computer selbst oder in der lokalen Umgebung verwalten, in der der Computer bereitgestellt wurde. Runbooks in Azure Automation verwalten üblicherweise Ressourcen in der Azure-Cloud.
 
-Wenn Sie Runbooks zur Ausführung auf einem Hybrid Runbook Worker erstellen, sollten Sie diese auf dem Computer testen, der den Hybridworker hostet. Auf dem Hostcomputer sind alle PowerShell-Module und der Netzwerkzugriff vorhanden, die Sie benötigen, um die lokalen Ressourcen zu verwalten und darauf zuzugreifen. Sobald ein Runbook auf dem Hybridworkercomputer getestet wurde, können Sie es in die Azure Automation-Umgebung hochladen, wo es zur Ausführung auf dem Hybridworker verfügbar ist. Sie müssen wissen, ob Aufträge im lokalen Systemkonto für Windows oder dem speziellen Benutzerkonto `nxautomation` unter Linux ausgeführt werden. Dieses Verhalten kann geringfügige Unterschiede beim Erstellen von Runbooks für einen Hybrid Runbook Worker bedeuten. Wenn Sie Ihre Runbooks schreiben, müssen Sie auf diese Änderungen achten.
+Wenn Sie Runbooks zur Ausführung auf einem Hybrid Runbook Worker erstellen, sollten Sie diese auf dem Computer testen, der den Hybridworker hostet. Auf dem Hostcomputer sind alle PowerShell-Module und der Netzwerkzugriff vorhanden, die Sie benötigen, um die lokalen Ressourcen zu verwalten und darauf zuzugreifen. Sobald ein Runbook auf dem Hybridworkercomputer getestet wurde, können Sie es in die Azure Automation-Umgebung hochladen, wo es zur Ausführung auf dem Hybridworker verfügbar ist. Sie müssen wissen, ob Aufträge im lokalen Systemkonto für Windows oder dem speziellen Benutzerkonto `nxautomation` unter Linux ausgeführt werden. Unter Linux bedeutet dies, dass Sie sicherstellen müssen, dass das `nxautomation`-Konto Zugriff auf den Speicherort hat, an dem Sie die Module speichern. Wenn Sie das Cmdlet [Install-Module](/powershell/module/powershellget/install-module) verwenden, geben Sie **AllUsers** für den Parameter `-Scope` an, um zu bestätigen, dass das `naxautomation`-Konto Zugriff hat.
+
+Weitere Informationen zu PowerShell unter Linux finden Sie unter [Bekannte Probleme bei PowerShell auf anderen Plattformen als Windows](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Starten eines Runbooks auf einem Hybrid Runbook Worker
 
@@ -39,8 +41,7 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 
 ## <a name="runbook-permissions"></a>Runbookberechtigungen
 
-Bei Runbooks, die auf einem Hybrid Runbook Worker ausgeführt werden, kann nicht dieselbe Methode verwendet werden, mit der Runbooks üblicherweise bei Azure-Ressourcen authentifiziert werden, da diese Runbooks auf Ressourcen zugreifen, die sich nicht in Azure befinden. Das Runbook kann entweder eine eigene Authentifizierung für lokale Ressourcen bereitstellen oder die Authentifizierung mithilfe von [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
-) konfigurieren. Alternativ hierzu können Sie auch ein ausführendes Konto angeben, um einen Benutzerkontext für alle Runbooks bereitzustellen.
+Bei Runbooks, die auf einem Hybrid Runbook Worker ausgeführt werden, kann nicht dieselbe Methode verwendet werden, mit der Runbooks üblicherweise bei Azure-Ressourcen authentifiziert werden, da diese Runbooks auf Ressourcen zugreifen, die sich nicht in Azure befinden. Das Runbook kann entweder eine eigene Authentifizierung für lokale Ressourcen bereitstellen oder die Authentifizierung mithilfe von [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager) konfigurieren. Alternativ hierzu können Sie auch ein ausführendes Konto angeben, um einen Benutzerkontext für alle Runbooks bereitzustellen.
 
 ### <a name="runbook-authentication"></a>Authentifizierung von Runbooks
 
@@ -59,7 +60,7 @@ Sie können auch [InlineScript](automation-powershell-workflow.md#inlinescript) 
 
 ### <a name="runas-account"></a>„RunAs“-Konto
 
-Standardmäßig verwendet der Hybrid Runbook Worker für die Runbookausführung das lokale System für Windows und ein spezielles Benutzerkonto `nxautomation` für Linux. Um zu vermeiden, dass Runbooks ihre eigene Authentifizierung für lokale Ressourcen bereitstellen müssen, können Sie für eine Hybrid Worker-Gruppe ein **RunAs**-Konto angeben. Sie geben ein [Anmeldeinformationsobjekt](automation-credentials.md) mit Zugriff auf lokale Ressourcen an. Alle Runbooks verwenden anschließend diese Anmeldeinformationen, wenn die Ausführung auf einem Hybrid Runbook Worker in der Gruppe erfolgt.
+Standardmäßig verwendet der Hybrid Runbook Worker für die Runbookausführung das lokale System für Windows und ein spezielles Benutzerkonto `nxautomation` für Linux. Um zu vermeiden, dass Runbooks ihre eigene Authentifizierung für lokale Ressourcen bereitstellen müssen, können Sie für eine Hybrid Worker-Gruppe ein **RunAs**-Konto angeben. Sie geben ein [Anmeldeinformationsobjekt](automation-credentials.md) mit Zugriff auf lokale Ressourcen (einschließlich Zertifikatspeicher) an. Alle Runbooks verwenden anschließend diese Anmeldeinformationen, wenn die Ausführung auf einem Hybrid Runbook Worker in der Gruppe erfolgt.
 
 Der Benutzername für die Anmeldeinformationen muss eines der folgenden Formate haben:
 
@@ -271,7 +272,7 @@ sudo gpg --generate-key
 
 GPG führt Sie durch die Schritte zur Erstellung des Schlüsselpaares. Sie müssen einen Namen, eine E-Mail-Adresse, eine Ablaufzeit, eine Passphrase und ein Kennwort angeben und auf dem Computer auf eine ausreichende Entropie warten, damit der Schlüssel generiert werden kann.
 
-Da das GPG-Verzeichnis mit sudo generiert wurde, müssen Sie seinen Besitzer in `nxautomation` ändern. 
+Da das GPG-Verzeichnis mit sudo generiert wurde, müssen Sie seinen Besitzer in `nxautomation` ändern.
 
 Führen Sie den folgenden Befehl aus, um den Besitzer zu ändern.
 
@@ -312,3 +313,4 @@ Das signierte Runbook kann jetzt in Azure Automation hochgeladen und wie ein nor
 * Weitere Informationen zu den verschiedenen Methoden, die zum Starten eines Runbooks verwendet werden können, finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
 * Informationen dazu, wie Sie auf unterschiedliche Weise in einem Text-Editor mit PowerShell-Runbooks in Azure Automation arbeiten, finden Sie unter [Bearbeiten eines Runbooks in Azure Automation](automation-edit-textual-runbook.md).
 * Wenn Ihre Runbooks nicht erfolgreich ausgeführt werden, lesen Sie den Problembehandlungsleitfaden zu [Fehlern bei der Ausführung von Runbooks](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
+* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodule, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/en-us/powershell/scripting/overview).

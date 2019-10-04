@@ -1,10 +1,10 @@
 ---
-title: Nutzungsbedingungen und Datenschutzerklärung für Azure AD-Apps | Microsoft-Dokumentation
+title: Nutzungsbedingungen und Datenschutzbestimmungen für Apps | Azure
 description: Erfahren Sie, wie Sie die Nutzungsbedingungen und die Datenschutzerklärung für Apps konfigurieren können, die zur Verwendung von Azure AD registriert sind.
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
-ms.author: celested
+ms.date: 05/22/2019
+ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3687d0b50add3301fb8e15b9c70569554b91c04
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b0a01b50573405964b09339d03e84c62dbdd8582
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193508"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "67482864"
 ---
-# <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>Nutzungsbedingungen und Datenschutzerklärung für registrierte Azure Active Directory-Apps
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Gewusst wie: Konfigurieren von Nutzungsbedingungen und Datenschutzbestimmungen für eine App
 
 Entwickler, die Apps erstellen und verwalten, die in Azure Active Directory (Azure AD) und Microsoft-Konten integriert sind, sollten Links zu den Nutzungsbedingungen und Datenschutzbestimmungen der Apps einfügen. Die Nutzungsbedingungen und Datenschutzbestimmungen werden auf der Oberfläche für die Benutzerzustimmung angezeigt. Auf diese Weise wissen Benutzer, dass sie Ihren Apps vertrauen können. Die Nutzungsbedingungen und Datenschutzbestimmungen sind besonders wichtig für benutzerseitige mehrinstanzenfähige Apps, d.h. Apps, die in mehreren Verzeichnissen verwendet werden oder für alle Microsoft-Konten verfügbar sind.
 
@@ -47,8 +47,8 @@ Bevor Sie Links zu den Dokumenten mit den Nutzungsbedingungen und Datenschutzbes
 | Vorgabe     | BESCHREIBUNG                           |
 |---------------|---------------------------------------|
 | Format        | Gültige URL                             |
-| Gültige Schemas | HTTP und HTTPS</br>Empfohlen wird HTTPS |
-| Max. Länge    | 2.048 Zeichen                       |
+| Gültige Schemas | HTTP und HTTPS<br/>Empfohlen wird HTTPS |
+| Max. Länge    | 2\.048 Zeichen                       |
 
 Beispiele: `https://myapp.com/terms-of-service` und `https://myapp.com/privacy-statement`
 
@@ -56,33 +56,20 @@ Beispiele: `https://myapp.com/terms-of-service` und `https://myapp.com/privacy-s
 
 Nachdem die Nutzungsbedingungen und Datenschutzbestimmungen fertig konfiguriert sind, können Sie diesen Dokumenten mit einer der folgenden Methoden Links in Ihrer App hinzufügen:
 
-* [Über das Azure-Portal](#registered-in-azure-portal)
-* [Im App-Registrierungsportal oder Dev Center](#registered-in-app-reg-portal)
+* [Über das Azure-Portal](#azure-portal)
 * [Mithilfe des JSON-Codes des App-Objekts](#app-object-json)
 * [Mithilfe der Betaversion der MSGraph-REST-API](#msgraph-beta-rest-api)
 
-### <a name="registered-in-azure-portal"></a>Bei Registrierung der App im Azure-Portal
-
-Führen Sie folgende Schritte aus, wenn Sie Ihre App im Azure-Portal registriert haben.
+### <a name="azure-portal"></a>Verwenden des Azure-Portals
+Führen Sie im Azure-Portal die folgenden Schritte aus.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Navigieren Sie zum Abschnitt **App-Registrierungen**, und wählen Sie Ihre App aus.
-3. Öffnen Sie den Abschnitt **Eigenschaften** der App.
+3. Öffnen Sie den Bereich **Branding**.
 4. Füllen Sie die Felder **URL zu den Vertragsbedingungen** und **URL zur Datenschutzerklärung** aus.
 5. Speichern Sie die Änderungen.
 
-    ![Abschnitt „Eigenschaften“ der App mit URLs zu den Nutzungsbedingungen und zur Datenschutzerklärung](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
-
-### <a name="registered-in-app-reg-portal"></a>Bei Registrierung der App im App-Registrierungsportal
-
-Gehen Sie folgendermaßen vor, wenn Sie Ihre App im App-Registrierungsportal oder Dev Center registriert haben.
-
-1. Melden Sie sich beim [App-Registrierungsportal](https://apps.dev.microsoft.com/) an.
-2. Wählen Sie Ihre App aus, und scrollen Sie zum Abschnitt **Profil**.
-3. Füllen Sie die Felder **URL zu den Vertragsbedingungen** und **URL zur Datenschutzerklärung** aus.
-4. Speichern Sie die Änderungen.
-
-    ![Abschnitt „Profil“ der App mit URLs zu den Nutzungsbedingungen und zur Datenschutzerklärung](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
+    ![Eigenschaften der App mit URLs zu den Nutzungsbedingungen und zur Datenschutzerklärung](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
 ### <a name="app-object-json"></a>Verwenden des JSON-Codes des App-Objekts
 

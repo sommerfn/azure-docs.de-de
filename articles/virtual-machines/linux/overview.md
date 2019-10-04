@@ -4,30 +4,29 @@ description: Beschreibt die Azure Compute-, Speicher- und Netzwerkdienste in Bez
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: rickstercdn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 7965a80f-ea24-4cc2-bc43-60b574101902
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: overview
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: a5203d75e673a7b8206446553414ff933e00b0b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 14ed21efec47e15663724bd782ad931903fb8f13
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008942"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082424"
 ---
 # <a name="azure-and-linux"></a>Azure und Linux
 Microsoft Azure ist eine wachsende Sammlung von integrierten Diensten der öffentlichen Cloud, z.B. für Analysen, virtuelle Computer, Datenbanken, mobile Geräte, Netzwerke, Speicher und Web. Azure eignet sich also perfekt zum Hosten Ihrer Lösungen.  Microsoft Azure stellt eine skalierbare Computingplattform bereit, bei der Sie nur für die tatsächliche gewünschte Nutzung bezahlen – ohne dass Sie in lokale Hardware investieren müssen.  Azure ist darauf ausgelegt, dass Sie Ihre Lösungen wie gewünscht vertikal und horizontal auf den Stand hochskalieren, der für die Erfüllung der Anforderungen Ihrer Kunden erforderlich ist.
 
 Wenn Sie mit den Funktionen der verschiedenen Amazon Web Services (AWS) vertraut sind, sehen Sie sich den [Vergleich der Dienste von Azure und AWS](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)an.
 
-## <a name="regions"></a>Regionen
+## <a name="regions"></a>Regions
 Microsoft Azure-Ressourcen sind auf mehrere geografische Regionen weltweit verteilt.  Eine „Region“ umfasst mehrere Rechenzentren in einem bestimmten geografischen Bereich. Azure verfügt aktuell (Stand: August 2018) über 42 allgemein verfügbare Regionen auf der ganzen Welt. Weitere 12 Regionen wurden bereits angekündigt. Das sind mehr globale Regionen als bei jedem anderen Cloudanbieter. Eine aktualisierte Liste mit vorhandenen und neu angekündigten Regionen finden Sie auf der folgenden Seite:
 
 * [Azure-Regionen](https://azure.microsoft.com/regions/)

@@ -1,19 +1,18 @@
 ---
 title: 'Schnellstart: Verwalten von Azure-Dateifreigaben mit dem Azure-Portal'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure Files über das Azure-Portal verwalten.
-services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ac78510a3f736d9d5a3f2aafcc1f77ef20e6d81a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fef3daf6e9e535736002e309e3d27491364dc553
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467764"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260284"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit dem Azure-Portal 
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können unter Windows, Linux und macOS bereitgestellt werden. In dieser Anleitung werden die Grundlagen der Arbeit mit Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com/) Schritt für Schritt beschrieben.
@@ -30,7 +29,7 @@ So erstellen Sie eine Azure-Dateifreigabe:
 2. Wählen Sie auf der Speicherkontoseite im Abschnitt **Dienste** die Option **Dateien**.
     ![Screenshot: Abschnitt „Dienste“ des Speicherkontos, Auswahl des Diensts „Dateien“](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-3. Klicken Sie im Menü oben auf der Seite **Dateidienst** auf **+ Dateifreigabe**. Die Seite **Neue Dateifreigabe** wird angezeigt.
+3. Klicken Sie im Menü oben auf der Seite **Dateidienst** auf **Dateifreigabe**. Die Seite **Neue Dateifreigabe** wird angezeigt.
 4. Geben Sie unter **Name** den Namen *myshare* ein.
 5. Klicken Sie auf **OK**, um die Azure-Dateifreigabe zu erstellen.
 

@@ -3,17 +3,18 @@ title: Verwenden einer verwalteten Identität mit Azure Container Instances
 description: Erfahren Sie, wie Sie eine verwaltete Identität zur Authentifizierung bei anderen Azure-Diensten über Azure Container Instances verwenden.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: ac0a84aa3121c6ebb91860c96c0f6692827c8a3f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 773650e5e5e85d4a5fca0b3755f3730921cc5f2e
+ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336523"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68325939"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Verwenden von verwalteten Identitäten mit Azure Container Instances
 
@@ -154,7 +155,7 @@ az container exec --resource-group myResourceGroup --name mycontainer --exec-com
 Führen Sie die folgenden Befehle in der Bash-Shell im Container aus. Rufen Sie mit dem folgenden Befehl ein Zugriffstoken ab, um Azure Active Directory für die Authentifizierung bei Key Vault zu verwenden:
 
 ```bash
-curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net%2F' -H Metadata:true -s
+curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true -s
 ```
 
 Ausgabe:
@@ -170,7 +171,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Nun verwenden Sie das Zugriffstoken zum Durchführen der Authentifizierung bei Key Vault und Lesen eines Geheimnisses. Denken Sie daran, den Namen Ihres Schlüsseltresors in der URL zu ersetzen (*https://mykeyvault.vault.azure.net/...*):
+Nun verwenden Sie das Zugriffstoken zum Durchführen der Authentifizierung bei Key Vault und Lesen eines Geheimnisses. Denken Sie daran, den Namen Ihres Schlüsseltresors in der URL zu ersetzen ( *https://mykeyvault.vault.azure.net/...* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
@@ -252,7 +253,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Nun verwenden Sie das Zugriffstoken zum Durchführen der Authentifizierung bei Key Vault und Lesen eines Geheimnisses. Denken Sie daran, den Namen Ihres Schlüsseltresors in der URL zu ersetzen (*https:\//mykeyvault.vault.azure.net/...*):
+Nun verwenden Sie das Zugriffstoken zum Durchführen der Authentifizierung bei Key Vault und Lesen eines Geheimnisses. Denken Sie daran, den Namen Ihres Schlüsseltresors in der URL zu ersetzen (*https:\//mykeyvault.vault.azure.net/...* ):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

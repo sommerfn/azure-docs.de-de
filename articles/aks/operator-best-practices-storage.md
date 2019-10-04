@@ -2,17 +2,17 @@
 title: Best Practices für Operatoren – Speicherung in Azure Kubernetes Service (AKS)
 description: Lernen Sie die bewährten Methoden für Speicherung, Datenverschlüsselung und Sicherungen in Azure Kubernetes Service (AKS) für Clusteroperatoren kennen.
 services: container-service
-author: iainfoulds
+author: mlearned
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 12/04/2018
-ms.author: iainfou
-ms.openlocfilehash: 7476747de31819907cf144e5a6b33cb29e1f866f
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.date: 5/6/2019
+ms.author: mlearned
+ms.openlocfilehash: b42cdae634a6c2d8d994225d4cb6b440a99918e5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496173"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "67614591"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Best Practices für Speicherung und Sicherungen in Azure Kubernetes Service (AKS)
 
@@ -34,12 +34,11 @@ Anwendungen erfordern häufig verschiedene Arten und von Speicher mit unterschie
 
 In der folgenden Tabelle sind die verfügbarer Speichertypen und ihre Fähigkeiten aufgeführt:
 
-| Anwendungsfall | Volume-Plug-In | Lese-/Schreibzugriff, einmal | Schreibgeschützt, mehrfach | Lese-/Schreibzugriff, mehrfach |
-|----------|---------------|-----------------|----------------|-----------------|
-| Freigegebene Konfiguration       | Azure Files   | Ja | Ja | Ja |
-| Strukturierte App-Daten        | Azure Disks   | Ja | Nein   | Nein   |
-| App-Daten, schreibgeschützte Freigaben | [Dysk (Vorschau)][dysk] | Ja | Ja | Nein   |
-| Unstrukturierte Daten, Dateisystemvorgänge | [BlobFuse (Vorschau)][blobfuse] | Ja | Ja | Ja |
+| Anwendungsfall | Volume-Plug-In | Lese-/Schreibzugriff, einmal | Schreibgeschützt, mehrfach | Lese-/Schreibzugriff, mehrfach | Unterstützung für Windows Server-Container |
+|----------|---------------|-----------------|----------------|-----------------|--------------------|
+| Freigegebene Konfiguration       | Azure Files   | Ja | Ja | Ja | Ja |
+| Strukturierte App-Daten        | Azure Disks   | Ja | Nein  | Nein  | Ja |
+| Unstrukturierte Daten, Dateisystemvorgänge | [BlobFuse (Vorschau)][blobfuse] | Ja | Ja | Ja | Nein |
 
 Die beiden primären Speichertypen, die für Volumes in AKS zur Verfügung stehen, werden durch Azure-Datenträger oder Azure Files gesichert. Um die Sicherheit zu verbessern, verwenden beide Speichertypen standardmäßig Azure-Speicherdienstverschlüsselung (Storage Service Encryption, SSE) zur Verschlüsselung von ruhenden Daten. Festplatten können derzeit nicht mit der Azure Disk Encryption auf AKS-Knotenebene verschlüsselt werden.
 
@@ -64,8 +63,8 @@ Wenn Ihre Anwendungen Azure-Datenträger als Speicherlösung benötigen, planen 
 
 | Knotentyp und -größe | vCPU | Arbeitsspeicher (GiB) | Max. Anzahl Datenträger | Maximale Anzahl nicht zwischengespeicherter Datenträger-IOPS | Maximaler nicht zwischengespeicherter Durchsatz (Mbit/s) |
 |--------------------|------|--------------|----------------|------------------------|--------------------------------|
-| Standard_B2ms      | 2    | 8            | 4              | 1.920                  | 22,5                           |
-| Standard_DS2_v2    | 2    | 7            | 8              | 6.400                  | 96                             |
+| Standard_B2ms      | 2    | 8            | 4              | 1\.920                  | 22,5                           |
+| Standard_DS2_v2    | 2    | 7            | 8              | 6\.400                  | 96                             |
 
 Hier ermöglicht die VM-Größe *Standard_DS2_v2* die doppelte Anzahl an angeschlossenen Datenträgern und bietet das Drei- bis Vierfache an IOPS und Datenträgerdurchsatz. Wenn Sie sich nur die wichtigsten Computeressourcen ansehen und die Kosten vergleichen, wählen Sie möglicherweise die VM-Größe *Standard_B2ms* aus und stellen dann eine schlechte Speicherleistung sowie Einschränkungen fest. Arbeiten Sie mit Ihrem Anwendungsentwicklungsteam zusammen, um ihren Speicherkapazitätsbedarf und ihre Leistungsanforderungen zu verstehen. Wählen Sie die geeignete VM-Größe für die AKS-Knoten aus, um ihre Leistungsanforderungen zu erfüllen oder zu überschreiten. Ermitteln Sie regelmäßig die Baseline von Anwendungen, um die VM-Größe bei Bedarf anzupassen.
 
@@ -95,7 +94,7 @@ Weitere Informationen zu Speicherklassenoptionen finden Sie unter [Richtlinien z
 
 Wenn Ihre Anwendungen Daten speichern und verbrauchen, die auf Festplatten oder in Dateien gespeichert sind, müssen Sie regelmäßig Sicherungen oder Momentaufnahmen dieser Daten erstellen. Azure-Datenträger können integrierte Momentaufnahmetechnologien verwenden. Möglicherweise benötigen Sie einen Hook für Ihre Anwendungen, damit Schreibzugriffe auf die Festplatte geleert werden, bevor Sie den Momentaufnahmevorgang ausführen. [Velero][velero] kann persistente Volumes zusammen mit zusätzlichen Clusterressourcen und -konfigurationen sichern. Wenn Sie [den Zustand nicht aus Ihren Anwendungen entfernen können][remove-state], sichern Sie die Daten von persistenten Volumes, und testen Sie die Wiederherstellungsvorgänge regelmäßig, um die Datenintegrität und die erforderlichen Prozesse zu überprüfen.
 
-Sie sollten die Grenzen der verschiedenen Ansätze für Datensicherungen kennen und wissen, ob Sie Ihre Daten vor dem erstellen der Momentaufnahme stilllegen müssen. Datensicherungen ermöglichen es Ihnen nicht unbedingt, Ihre Anwendungsumgebung der Clusterbereitstellung wiederherzustellen. Weitere Informationen zu diesen Szenarien finden Sie unter [Best Practices für das Business Continuity & Disaster Recovery in AKS][best-practices-multi-region].
+Sie sollten die Grenzen der verschiedenen Ansätze für Datensicherungen kennen und wissen, ob Sie Ihre Daten vor dem erstellen der Momentaufnahme stilllegen müssen. Datensicherungen ermöglichen es Ihnen nicht unbedingt, Ihre Anwendungsumgebung der Clusterbereitstellung wiederherzustellen. Weitere Informationen zu diesen Szenarien finden Sie unter [Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)][best-practices-multi-region].
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -103,7 +102,6 @@ Dieser Artikel konzentriert sich auf bewährte Speichermethoden in AKS. Weitere 
 
 <!-- LINKS - External -->
 [velero]: https://github.com/heptio/velero
-[dysk]: https://github.com/Azure/kubernetes-volume-drivers/tree/master/flexvolume/dysk
 [blobfuse]: https://github.com/Azure/azure-storage-fuse
 
 <!-- LINKS - Internal -->

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6838f4db240a0712eece7a97bc2cfe99efb87215
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 130ab6ee8e59b157d1fbdd8769f14814445dea18
+ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454943"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67202754"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Szenarien für die erweiterte Analyse in Azure Machine Learning
 Dieser Artikel beschreibt die verschiedenen Beispieldatenquellen und Zielszenarien, die mit dem [Team Data Science-Prozess (TDSP)](overview.md)verarbeitet werden können. Der TDSP bietet einen systematischen Ansatz für Teams zur Zusammenarbeit bei der Entwicklung intelligenter Anwendungen. Die hier gezeigten Szenarien veranschaulichen einige der Optionen im Datenverarbeitungs-Workflow, die von den Datenmerkmalen, Quellspeicherorten und Zielrepositorys in Azure abhängen.
@@ -239,7 +239,7 @@ Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu re
 1. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
 
 ## <a name="decisiontree"></a>Entscheidungsstruktur zur Auswahl des Szenarios
-- - -
+---
 Das folgende Diagramm fasst die oben beschriebenen Szenarien sowie die Advanced Analytics Process and Technology-Entscheidungen zusammen, die Sie zu jedem einzelnen Szenario führen. Beachten Sie, dass das Verarbeiten und Durchsuchen von Daten, die Entwicklung von Funktionen und das Erstellen von Stichproben in einer oder mehreren Methoden/Umgebungen – in der Quell-, Zwischen- und/oder Zielumgebung – erfolgen und nach Bedarf wiederholt durchgeführt werden kann. Das Diagramm dient nur zur Veranschaulichung einiger möglicher Abläufe und stellt keine erschöpfende Auflistung dar.
 
 ![Exemplarische Vorgehensweisen für den DS-Prozess][8]

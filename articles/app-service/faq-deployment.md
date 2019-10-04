@@ -4,24 +4,23 @@ description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Bereit
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 9d38e3caf3d835eaf73df90282157eed76c5ea25
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 0a01f25894d1226466473dec7333859c7415f1fd
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350639"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121203"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Bereitstellung von Web-Apps in Azure
 
@@ -38,16 +37,16 @@ Hier finden Sie einige Möglichkeiten für die Veröffentlichung Ihres Web-App-C
 
 Weitere Informationen finden Sie unter [Bereitstellen der App in App Service](deploy-local-git.md).
 
-## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Wenn ich die Bereitstellung über Visual Studio versuche, wird eine Fehlermeldung angezeigt. Wie löse ich dieses Problem?
+## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this-error"></a>Wenn ich die Bereitstellung über Visual Studio versuche, wird eine Fehlermeldung angezeigt. Wie kann ich diesen Fehler beheben?
 
-Wird Ihnen die folgende Meldung angezeigt, verwenden Sie möglicherweise eine ältere SDK-Version: „Error during deployment for resource 'YourResourceName' in resource group 'YourResourceGroup': MissingRegistrationForLocation: The subscription is not registered for the resource type 'components' in the location 'Central US'.“ („Während der Bereitstellung der Ressource 'NameIhrerRessource' in der Ressourcengruppe 'IhreRessourcengruppe' ist ein Fehler aufgetreten: FehlendeRegistrierungFürOrt: Das Abonnement ist für den Ressourcentyp 'Komponenten' am Ort 'USA, Mitte' nicht registriert.“). Bitte registrieren Sie sich erneut für diesen Anbieter, um Zugang zu diesem Ort zu erhalten.“ 
+Wird Ihnen die folgende Meldung angezeigt, verwenden Sie möglicherweise eine ältere SDK-Version: „Error during deployment for resource 'YourResourceName' in resource group 'YourResourceGroup': MissingRegistrationForLocation: The subscription is not registered for the resource type 'components' in the location 'Central US'.“ („Während der Bereitstellung der Ressource 'NameIhrerRessource' in der Ressourcengruppe 'IhreRessourcengruppe' ist ein Fehler aufgetreten: FehlendeRegistrierungFürOrt: Das Abonnement ist für den Ressourcentyp 'Komponenten' am Ort 'USA, Mitte' nicht registriert.“). Registrieren Sie sich erneut für diesen Anbieter, um Zugang zu diesem Ort zu erhalten.“ 
 
 Um diesen Fehler zu beheben, führen Sie eine Aktualisierung auf das [neueste SDK](https://azure.microsoft.com/downloads/) aus. Wenn diese Meldung angezeigt wird und Sie über das neueste SDK verfügen, senden Sie eine Supportanfrage.
 
 ## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>Wie stelle ich eine ASP.NET-Anwendung über Visual Studio in App Service bereit?
 <a id="deployasp"></a>
 
-Im Tutorial [Erstellen Ihrer ersten ASP.NET-Web-App in Azure in fünf Minuten](app-service-web-get-started-dotnet.md) erfahren Sie, wie Sie eine ASP.NET-Webanwendung mithilfe von Visual Studio 2017 in einer Web-App in App Service bereitstellen.
+Im Tutorial [Erstellen Ihrer ersten ASP.NET-Web-App in Azure in fünf Minuten](app-service-web-get-started-dotnet.md) erfahren Sie, wie Sie eine ASP.NET-Webanwendung mithilfe von Visual Studio in einer Web-App in App Service bereitstellen.
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>Welche verschiedenen Typen von Anmeldeinformationen für die Bereitstellung gibt es?
 
@@ -69,7 +68,7 @@ Sie können Continuous Deployment über mehrere Ressourcen einrichten, z.B. Azur
 
 Informationen zum Untersuchen von Problemen mit der kontinuierlichen Bereitstellung über GitHub oder Bitbucket finden Sie unter [Investigating continuous Deployment](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment) (Untersuchen der kontinuierlichen Bereitstellung).
 
-## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this"></a>Ich kann FTP nicht für meine Website verwenden und meinen Code veröffentlichen. Wie löse ich dieses Problem?
+## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this-issue"></a>Ich kann FTP nicht für meine Website verwenden und meinen Code veröffentlichen. Wie kann ich dieses Problem lösen?
 
 So beheben Sie FTP-Probleme:
 

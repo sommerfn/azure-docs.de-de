@@ -9,17 +9,16 @@ ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 08/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6ae7037ad4cd532b6661a56e6e37a88df3eb54a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 038178b3b73e9b07ce96e079403cb641f8efe8b1
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121705"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210058"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Sperren einer App Service-Umgebung
 
@@ -31,11 +30,26 @@ Die Abhängigkeiten der App Service-Umgebung für den ausgehenden Datenverkehr w
 
 Die Lösung zum Sichern ausgehender Adressen besteht in der Verwendung eines Firewallgeräts, das den ausgehenden Datenverkehr basierend auf Domänennamen kontrolliert. Azure Firewall kann ausgehenden HTTP- und HTTPS-Datenverkehr basierend auf den FQDN des Ziels beschränken.  
 
+## <a name="system-architecture"></a>Systemarchitektur
+
+Das Bereitstellen einer App Service-Umgebung (App Service Environment, ASE) mit ausgehendem Datenverkehr über ein Firewallgerät erfordert das Ändern von Routen im ASE-Subnetz. Routen funktionieren auf einer IP-Ebene. Wenn Sie die Routen nicht sorgfältig definieren, können Sie den TCP-Antwortdatenverkehr an die Quelle von einer anderen Adresse erzwingen. Wenn sich Ihre Antwortadresse von der Adresse unterscheidet, an die der Datenverkehr gesendet wurde, wird TCP durch dieses als asymmetrisches Routing bezeichnete Problem unterbrochen.
+
+Es müssen Routen definiert sein, damit der eingehende Datenverkehr an die ASE die Antwort auf die gleiche Weise zurücksenden kann, wie der Datenverkehr eintraf. Routen müssen für eingehende Verwaltungsanforderungen und für eingehende Anwendungsanforderungen definiert sein.
+
+Beim Datenverkehr an und von einer ASE müssen die folgenden Konventionen eingehalten werden:
+
+* Der Datenverkehr an Azure SQL, Storage und Event Hub wird bei Verwendung eines Firewallgeräts nicht unterstützt. Dieser Datenverkehr muss direkt an diese Dienste gesendet werden. Um dies zu ermöglichen, müssen Dienstendpunkte für diese drei Dienste konfiguriert werden. 
+* Es müssen Routingtabellenregeln definiert werden, die eingehenden Verwaltungsdatenverkehr an seinen Ursprungsort zurücksenden.
+* Es müssen Routingtabellenregeln definiert werden, die eingehenden Verwaltungsdatenverkehr an seinen Ursprungsort zurücksenden. 
+* Jeglicher sonstiger Datenverkehr von der ASE kann mit einer Routingtabellenregel an Ihr Firewallgerät gesendet werden.
+
+![ASE mit Azure Firewall: Verbindungsfluss][5]
+
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurieren von Azure Firewall mit Ihrer App Service-Umgebung 
 
 Gehen Sie wie folgt vor, um ausgehenden Datenverkehr Ihrer bestehenden App Service-Umgebung (App Service Environment, ASE) mit Azure Firewall zu sperren:
 
-1. Aktivieren Sie Dienstendpunkte für SQL, Storage und Event Hub in Ihrem ASE-Subnetz. Navigieren Sie dazu im Netzwerkportal zu „Subnetze“, und wählen Sie in der Dropdownliste „Dienstendpunkte“ die Optionen „Microsoft.EventHub“, „Microsoft.SQL“ und „Microsoft.Storage“ aus. Wenn Sie Dienstendpunkte für Azure SQL aktiviert haben, müssen alle Azure SQL-Abhängigkeiten Ihrer Apps ebenfalls mit Dienstendpunkten konfiguriert werden. 
+1. Aktivieren Sie Dienstendpunkte für SQL, Storage und Event Hub in Ihrem ASE-Subnetz. Um Dienstendpunkte zu aktivieren, navigieren Sie im Netzwerkportal zu „Subnetze“, und wählen Sie in der Dropdownliste „Dienstendpunkte“ die Optionen „Microsoft.EventHub“, „Microsoft.SQL“ und „Microsoft.Storage“ aus. Wenn Sie Dienstendpunkte für Azure SQL aktiviert haben, müssen alle Azure SQL-Abhängigkeiten Ihrer Apps ebenfalls mit Dienstendpunkten konfiguriert werden. 
 
    ![Auswählen von Dienstendpunkten][2]
   
@@ -69,8 +83,6 @@ Wenn Ihre Anwendungen Abhängigkeiten aufweisen, müssen diese Ihrer Azure Firew
 
 Wenn Sie den Adressbereich kennen, aus dem der von Ihrer Anwendung angeforderte Datenverkehr kommt, können Sie ihn der Routingtabelle hinzufügen, die dem Subnetz Ihrer App Service-Umgebung zugeordnet ist. Wenn der Adressbereich groß oder nicht angegeben ist, können Sie ein Netzwerkgerät wie Application Gateway verwenden, um eine Adresse Ihrer Routingtabelle hinzufügen zu können. Weitere Informationen zum Konfigurieren einer Application Gateway-Instanz mit dem internen Lastenausgleichsmodul der App Service-Umgebung finden Sie unter [Integrieren eines internen Lastenausgleichs einer App Service-Umgebung in eine Application Gateway-Instanz](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway).
 
-![ASE mit Azure Firewall: Verbindungsfluss][5]
-
 Diese Verwendung von Application Gateway ist nur ein Beispiel dafür, wie Sie Ihr System konfigurieren können. Bei der obigen Konfiguration müssten Sie der Routingtabelle für das ASE-Subnetz eine Route hinzufügen, damit der an die Application Gateway-Instanz gesendete Antwortdatenverkehr direkt an diese weitergeleitet wird. 
 
 ## <a name="logging"></a>Protokollierung 
@@ -79,7 +91,7 @@ Azure Firewall kann Protokolle an Azure Storage, Event Hub oder Azure Monitor-Pr
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-Die Integration Ihrer Azure Firewall-Instanz in Azure Monitor-Protokolle ist sehr nützlich, wenn Sie eine Anwendung erstmals einrichten und nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Die Integration Ihrer Azure Firewall-Instanz in Azure Monitor-Protokolle ist nützlich, wenn Sie eine Anwendung erstmals einrichten und nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
  
 ## <a name="dependencies"></a>Abhängigkeiten
 
@@ -169,11 +181,33 @@ Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgef�
 |flighting.cp.wd.microsoft.com:443 |
 |dmd.metaservices.microsoft.com:80 |
 |admin.core.windows.net:443 |
+|prod.warmpath.msftcloudes.com:443 |
+|prod.warmpath.msftcloudes.com:80 |
 |azureprofileruploads.blob.core.windows.net:443 |
 |azureprofileruploads2.blob.core.windows.net:443 |
 |azureprofileruploads3.blob.core.windows.net:443 |
 |azureprofileruploads4.blob.core.windows.net:443 |
 |azureprofileruploads5.blob.core.windows.net:443 |
+|azperfmerges.blob.core.windows.net:443 |
+|azprofileruploads1.blob.core.windows.net:443 |
+|azprofileruploads10.blob.core.windows.net:443 |
+|azprofileruploads2.blob.core.windows.net:443 |
+|azprofileruploads3.blob.core.windows.net:443 |
+|azprofileruploads4.blob.core.windows.net:443 |
+|azprofileruploads6.blob.core.windows.net:443 |
+|azprofileruploads7.blob.core.windows.net:443 |
+|azprofileruploads8.blob.core.windows.net:443 | 
+|azprofileruploads9.blob.core.windows.net:443 |
+|azureprofilerfrontdoor.cloudapp.net:443 |
+|settings-win.data.microsoft.com:443 |
+|maupdateaccount2.blob.core.windows.net:443 |
+|maupdateaccount3.blob.core.windows.net:443 |
+|dc.services.visualstudio.com:443 |
+|gmstorageprodsn1.blob.core.windows.net:443 |
+|gmstorageprodsn1.file.core.windows.net:443 |
+|gmstorageprodsn1.queue.core.windows.net:443 |
+|gmstorageprodsn1.table.core.windows.net:443 |
+|rteventservice.trafficmanager.net:443 |
 
 #### <a name="wildcard-httphttps-dependencies"></a>Platzhalter-HTTP/HTTPS-Abhängigkeiten 
 
@@ -183,6 +217,7 @@ Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgef�
 | \*.management.azure.com:443 |
 | \*.update.microsoft.com:443 |
 | \*.windowsupdate.microsoft.com:443 |
+| \*.identity.azure.net:443 |
 
 #### <a name="linux-dependencies"></a>Linux-Abhängigkeiten 
 
@@ -197,6 +232,145 @@ Mit einer Azure Firewall-Instanz erhalten Sie automatisch alle der unten aufgef�
 |download.mono-project.com:80 |
 |packages.treasuredata.com:80|
 |security.ubuntu.com:80 |
+| \*.cdn.mscr.io:443 |
+|mcr.microsoft.com:443 |
+|packages.fluentbit.io:80 |
+|packages.fluentbit.io:443 |
+|apt-mo.trafficmanager.net:80 |
+|apt-mo.trafficmanager.net:443 |
+|azure.archive.ubuntu.com:80 |
+|azure.archive.ubuntu.com:443 |
+|changelogs.ubuntu.com:80 |
+|13.74.252.37:11371 |
+|13.75.127.55:11371 |
+|13.76.190.189:11371 |
+|13.80.10.205:11371 |
+|13.91.48.226:11371 |
+|40.76.35.62:11371 |
+|104.215.95.108:11371 |
+
+## <a name="us-gov-dependencies"></a>US Gov-Abhängigkeiten
+
+Für US Gov müssen Sie weiterhin Dienstendpunkte für Storage, SQL und Event Hub festlegen.  Sie können auch Azure Firewall mit den Anweisungen verwenden, die weiter oben in diesem Dokument zu finden sind. Wenn Sie Ihr eigenes ausgehendes Firewallgerät nutzen müssen, verwenden Sie die nachstehend aufgeführten Endpunkte.
+
+| Endpunkt |
+|----------|
+| \*.ctldl.windowsupdate.com:80 |
+| \*.management.usgovcloudapi.net:80 |
+| \*.update.microsoft.com:80 |
+|admin.core.usgovcloudapi.net:80 |
+|azperfmerges.blob.core.windows.net:80 |
+|azperfmerges.blob.core.windows.net:80 |
+|azprofileruploads1.blob.core.windows.net:80 |
+|azprofileruploads10.blob.core.windows.net:80 |
+|azprofileruploads2.blob.core.windows.net:80 |
+|azprofileruploads3.blob.core.windows.net:80 |
+|azprofileruploads4.blob.core.windows.net:80 |
+|azprofileruploads5.blob.core.windows.net:80 |
+|azprofileruploads6.blob.core.windows.net:80 |
+|azprofileruploads7.blob.core.windows.net:80 |
+|azprofileruploads8.blob.core.windows.net:80 |
+|azprofileruploads9.blob.core.windows.net:80 |
+|azureprofilerfrontdoor.cloudapp.net:80 |
+|azurewatsonanalysis.usgovcloudapp.net:80 |
+|cacerts.digicert.com:80 |
+|client.wns.windows.com:80 |
+|crl.microsoft.com:80 |
+|crl.verisign.com:80 |
+|crl3.digicert.com:80 |
+|csc3-2009-2.crl.verisign.com:80 |
+|ctldl.windowsupdate.com:80 |
+|definitionupdates.microsoft.com:80 |
+|download.windowsupdate.com:80 |
+|fairfax.warmpath.usgovcloudapi.net:80 |
+|flighting.cp.wd.microsoft.com:80 |
+|gcwsprodgmdm2billing.queue.core.usgovcloudapi.net:80 |
+|gcwsprodgmdm2billing.table.core.usgovcloudapi.net:80 |
+|global.metrics.nsatc.net:80 |
+|go.microsoft.com:80 |
+|gr-gcws-prod-bd3.usgovcloudapp.net:80 |
+|gr-gcws-prod-bn1.usgovcloudapp.net:80 |
+|gr-gcws-prod-dd3.usgovcloudapp.net:80 |
+|gr-gcws-prod-dm2.usgovcloudapp.net:80 |
+|gr-gcws-prod-phx20.usgovcloudapp.net:80 |
+|gr-gcws-prod-sn5.usgovcloudapp.net:80 |
+|login.live.com:80 |
+|login.microsoftonline.us:80 |
+|management.core.usgovcloudapi.net:80 |
+|management.usgovcloudapi.net:80 |
+|maupdateaccountff.blob.core.usgovcloudapi.net:80 |
+|mscrl.microsoft.com
+|ocsp.digicert.0 |
+|ocsp.msocsp.co|
+|ocsp.verisign.0 |
+|rteventse.trafficmanager.net:80 |
+|settings-n.data.microsoft.com:80 |
+|shavamafestcdnprod1.azureedge.net:80 |
+|shavanifestcdnprod1.azureedge.net:80 |
+|v10ortex-win.data.microsoft.com:80 |
+|wp.microsoft.com:80 |
+|dcpalt.microsoft.com:80 |
+|www.microsoft.com:80 |
+|www.msftconnecttest.com:80 |
+|www.thawte.com:80 |
+|\*ctldl.windowsupdate.com:443 |
+|\*.management.usgovcloudapi.net:443 |
+|\*.update.microsoft.com:443 |
+|admin.core.usgovcloudapi.net:443 |
+|azperfmerges.blob.core.windows.net:443 |
+|azperfmerges.blob.core.windows.net:443 |
+|azprofileruploads1.blob.core.windows.net:443 |
+|azprofileruploads10.blob.core.windows.net:443 |
+|azprofileruploads2.blob.core.windows.net:443 |
+|azprofileruploads3.blob.core.windows.net:443 |
+|azprofileruploads4.blob.core.windows.net:443 |
+|azprofileruploads5.blob.core.windows.net:443 |
+|azprofileruploads6.blob.core.windows.net:443 |
+|azprofileruploads7.blob.core.windows.net:443 |
+|azprofileruploads8.blob.core.windows.net:443 |
+|azprofileruploads9.blob.core.windows.net:443 |
+|azureprofilerfrontdoor.cloudapp.net:443 |
+|azurewatsonanalysis.usgovcloudapp.net:443 |
+|cacerts.digicert.com:443 |
+|client.wns.windows.com:443 |
+|crl.microsoft.com:443 |
+|crl.verisign.com:443 |
+|crl3.digicert.com:443 |
+|csc3-2009-2.crl.verisign.com:443 |
+|ctldl.windowsupdate.com:443 |
+|definitionupdates.microsoft.com:443 |
+|download.windowsupdate.com:443 |
+|fairfax.warmpath.usgovcloudapi.net:443 |
+|flighting.cp.wd.microsoft.com:443 |
+|gcwsprodgmdm2billing.queue.core.usgovcloudapi.net:443 |
+|gcwsprodgmdm2billing.table.core.usgovcloudapi.net:443 |
+|global.metrics.nsatc.net:443 |
+|go.microsoft.com:443 |
+|gr-gcws-prod-bd3.usgovcloudapp.net:443 |
+|gr-gcws-prod-bn1.usgovcloudapp.net:443 |
+|gr-gcws-prod-dd3.usgovcloudapp.net:443 |
+|gr-gcws-prod-dm2.usgovcloudapp.net:443 |
+|gr-gcws-prod-phx20.usgovcloudapp.net:443 |
+|gr-gcws-prod-sn5.usgovcloudapp.net:443 |
+|login.live.com:443 |
+|login.microsoftonline.us:443 |
+|management.core.usgovcloudapi.net:443 |
+|management.usgovcloudapi.net:443 |
+|maupdateaccountff.blob.core.usgovcloudapi.net:443 |
+|mscrl.microsoft.com:443 |
+|ocsp.digicert.com:443 |
+|ocsp.msocsp.com:443 |
+|ocsp.verisign.com:443 |
+|rteventservice.trafficmanager.net:443 |
+|settings-win.data.microsoft.com:443 |
+|shavamanifestcdnprod1.azureedge.net:443 |
+|shavamanifestcdnprod1.azureedge.net:443 |
+|v10.vortex-win.data.microsoft.com:443 |
+|wdcp.microsoft.com:443 |
+|wdcpalt.microsoft.com:443 |
+|www.microsoft.com:443 |
+|www.msftconnecttest.com:443 |
+|www.thawte.com:443 |
 
 <!--Image references-->
 [1]: ./media/firewall-integration/firewall-apprule.png

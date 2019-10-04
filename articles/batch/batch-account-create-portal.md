@@ -4,23 +4,22 @@ description: Erfahren Sie, wie Sie ein Azure Batch-Konto im Azure-Portal erstell
 services: batch
 documentationcenter: ''
 author: laurenhughes
-manager: jeconnoc
+manager: gwallace
 editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86747b72c436c4dac3bbf0a752fee4d24cb47f60
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5cceb7cc179f78d6b6d7350e7c4f6c31bb9cbfed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773723"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095715"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
 
@@ -92,7 +91,7 @@ Wenn Sie Ihr erstes Batch-Konto im Modus „Benutzerabonnement“ erstellen, mü
 
     ![Registrieren des Microsoft.Batch-Anbieters][register_provider]
 
-1. Wählen Sie auf der Seite **Abonnement** die Optionen **Zugriffssteuerung (IAM)** > **Rollenzuweisungen** > **Rollenzuweisung hinzufügen** aus.
+1. Wählen Sie auf der Seite **Abonnement** die Optionen **Zugriffssteuerung (IAM)**  > **Rollenzuweisungen** > **Rollenzuweisung hinzufügen** aus.
 
     ![Abonnementzugriffssteuerung][subscription_access]
 
@@ -109,17 +108,21 @@ Wenn Sie Ihr erstes Batch-Konto im Modus „Benutzerabonnement“ erstellen, mü
 
 Im Modus „Benutzerabonnement“ wird ein Azure-Schlüsseltresor benötigt. Dieser muss der gleichen Ressourcengruppe angehören wie das zu erstellende Batch-Konto. Stellen Sie sicher, dass sich die Ressourcengruppe in einer Region befindet, in der Batch [verfügbar](https://azure.microsoft.com/regions/services/) ist und die von Ihrem Abonnement unterstützt wird.
 
-1. Klicken Sie im [Azure-Portal][azure_portal] auf **Neu** > **Sicherheit** > **Key Vault**.
+1. Wählen Sie im [Azure-Portal][azure_portal] **Neu** > **Sicherheit** > **Key Vault** aus.
 
 1. Geben Sie auf der Seite **Schlüsseltresor erstellen** einen Namen für den Schlüsseltresor ein, und erstellen Sie eine Ressourcengruppe in der Region, die Sie für Ihr Batch-Konto verwenden möchten. Behalten Sie bei den übrigen Einstellungen die Standardwerte bei, und klicken Sie auf **Erstellen**.
 
-Verwenden Sie beim Erstellen des Batch-Kontos im Modus „Benutzerabonnement“ die Ressourcengruppe für den Schlüsseltresor, geben Sie als Poolzuordnungsmodus **Benutzerabonnement** an, und wählen Sie den Schlüsseltresor aus.
+Wenn Sie das Batch-Konto im Benutzerabonnementmodus erstellen, verwenden Sie die Ressourcengruppe für den Schlüsseltresor. Geben Sie **Benutzerabonnement** als Poolzuordnungsmodus an, wählen Sie den Schlüsseltresor aus, und aktivieren Sie das Kontrollkästchen, um Azure Batch Zugriff auf den Schlüsseltresor zu gewähren. 
+
+Wenn Sie den Zugriff auf den Schlüsseltresor lieber manuell gewähren möchten, wechseln Sie zum Abschnitt **Zugriffsrichtlinien** des Schlüsseltresors, wählen Sie **Zugriffsrichtlinie hinzufügen** aus, und suchen Sie nach **Microsoft Azure Batch**. Nach Auswahl dieser Option müssen Sie die **Berechtigungen für Geheimnis** mithilfe des Dropdownmenüs konfigurieren. Azure Batch muss mindestens die Berechtigungen **Abrufen**, **Auflisten**, **Festlegen** und **Löschen** erhalten.
+
+![Berechtigungen für Geheimnis für Azure Batch](./media/batch-account-create-portal/secret-permissions.png)
 
 ### <a name="configure-subscription-quotas"></a>Konfigurieren von Abonnementkontingenten
 
 Für Batch-Konten vom Typ „Benutzerabonnement“ sind standardmäßig keine Kernkontingente festgelegt. Kernkontingente müssen manuell festgelegt werden, da Batch-Standardkernkontingente nicht für Konten im Modus „Benutzerabonnement“ gelten.
 
-1. Wählen Sie im [Azure-Portal][azure_portal] Ihr Batch-Konto im Modus „Benutzerabonnement“ aus, um die dazugehörigen Einstellungen und Eigenschaften anzuzeigen.
+1. Wählen Sie im [Azure-Portal][azure_portal] Ihr Batch-Konto im Benutzerabonnementmodus aus, um die dazugehörigen Einstellungen und Eigenschaften anzuzeigen.
 
 1. Wählen Sie im linken Menü die Option **Kontingente** aus, um die Kernkontingente für Ihr Batch-Konto anzuzeigen und zu konfigurieren.
 

@@ -1,6 +1,6 @@
 ---
-title: Streamingendpunkte in Azure Media Services | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, was Streamingendpunkte sind und wie sie in Azure Media Services verwendet werden.
+title: Streamingendpunkte (Ursprung) in Azure Media Services | Microsoft-Dokumentation
+description: In Azure Media Services stellt ein Streamingendpunkt (Ursprung) einen dynamischen Paketerstellungs- und Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt in einer Clientplayeranwendung oder einem Content Delivery Network (CDN) bereitstellen kann.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,23 +9,25 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: 2e715e5280794172451a333624a954340a1a60fe
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 831ba217e99d1610383320ddf5706c6acfcdf48a
+ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881017"
+ms.lasthandoff: 07/12/2019
+ms.locfileid: "67848900"
 ---
-# <a name="streaming-endpoints"></a>Streamingendpunkte
+# <a name="streaming-endpoints"></a>Streamingendpunkte 
 
-In Microsoft Azure Media Services (AMS) stellt die Entität [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints) einen Streamingdienst dar, der Inhalte zur weiteren Verteilung direkt für eine Clientwiedergabeanwendung oder ein Content Delivery Network (CDN) bereitstellen kann. Der ausgehende Stream des **Streamingendpunkt**-Diensts kann ein Livestream oder ein Video-on-Demand-Medienobjekt in Ihrem Media Services-Konto sein. Beim Erstellen eines Media Services-Kontos wird ein **Standard**-Streamingendpunkt mit dem Zustand „Beendet“ erstellt. Der **Standard**-Streamingendpunkt kann nicht gelöscht werden. Im Konto können zusätzliche Streamingendpunkte erstellt werden. 
+In Microsoft Azure Media Services stellt ein [Streamingendpunkt](https://docs.microsoft.com/rest/api/media/streamingendpoints) einen dynamischen (Just-In-Time-)Paketerstellungs- und Ursprungsdienst dar, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayeranwendung bereitstellen kann und dabei eines der allgemeinen Streamingmedienprotokolle (HLS oder DASH) verwendet. Zudem sorgt der **Streamingendpunkt** für eine dynamische (Just-In-Time-)Verschlüsselung zu branchenführenden DRMs.
+
+Beim Erstellen eines Media Services-Kontos wird ein **Standard**-Streamingendpunkt mit dem Zustand „Beendet“ erstellt. Der **Standard**-Streamingendpunkt kann nicht gelöscht werden. Im Konto können zusätzliche Streamingendpunkt erstellt werden (siehe [Kontingente und Einschränkungen](limits-quotas-constraints.md)). 
 
 > [!NOTE]
 > Um das Streaming von Videos zu starten, muss der **Streamingendpunkt**, von dem aus Sie das Video streamen möchten, gestartet werden. 
 >  
-> Abgerechnet werden nur ausgeführte Streamingendpunkte.
+> Es werden nur ausgeführte Streamingendpunkte abgerechnet.
 
 ## <a name="naming-convention"></a>Benennungskonvention
 
@@ -35,41 +37,42 @@ Für alle zusätzlichen Endpunkte: `{EndpointName}-{AccountName}-{DatacenterAbbr
 
 ## <a name="types"></a>Typen  
 
-Es gibt zwei **Streamingendpunkt**-Typen: **Standard** und **Premium**. Der Typ wird durch die Anzahl der Skalierungseinheiten (`scaleUnits`) definiert, die Sie für den Streamingendpunkt zuordnen. 
+Es gibt zwei **Streamingendpunkt**-Typen: **Standard** (Vorschau) und **Premium**. Der Typ wird durch die Anzahl der Skalierungseinheiten (`scaleUnits`) definiert, die Sie für den Streamingendpunkt zuordnen. 
 
 Die Typen werden in der folgenden Tabelle beschrieben:  
 
-|Type|Skalierungseinheiten|BESCHREIBUNG|
+|type|Skalierungseinheiten|BESCHREIBUNG|
 |--------|--------|--------|  
-|**Standard-Streamingendpunkt** (empfohlen)|0|Der standardmäßige Streamingendpunkt ist ein **Standard**-Typ, kann aber in den Premium-Typ geändert werden.<br/> Der Standard-Typ ist die empfohlene Option für nahezu alle Streamingszenarien und Zielgruppengrößen. Mit dem **Standard**-Typ wird die ausgehende Bandbreite automatisch skaliert. Der Durchsatz dieser Art von Streamingendpunkt beträgt bis zu 600 Mbit/s. Videofragmente, die im CDN zwischengespeichert sind, verwenden Sie nicht die Bandbreite des Streamingendpunkts.<br/>Für Kunden mit äußerst anspruchsvollen Anforderungen umfasst Media Services **Premium**-Streamingendpunkte, mit denen die Kapazität für die größten Internetzielgruppen horizontal hochskaliert werden kann. Wenn Sie von großen Zielgruppen und einer großen Anzahl von gleichzeitigen Benutzern ausgehen, wenden Sie sich unter „amsstreaming\@microsoft.com“ an uns, um Informationen darüber zu erhalten, ob Sie zum **Premium**-Typ wechseln müssen. |
-|**Premium-Streamingendpunkt**|>0|**Premium**-Streamingendpunkte eignen sich für komplexere Workloads und bieten eine dedizierte und skalierbare Bandbreitenkapazität. Zum **Premium**-Typ wechseln Sie, indem Sie `scaleUnits` anpassen. `scaleUnits` stellen eine dedizierte Ausgangskapazität bereit, die in Schritten von jeweils 200 MBit/s erworben werden kann. Bei Verwendung des **Premium**-Typs stellt jede aktivierte Einheit zusätzliche Bandbreitenkapazität für die Anwendung bereit. |
- 
-## <a name="comparing-streaming-types"></a>Vergleichen von Streamingtypen
+|**Standard**|0|Der standardmäßige Streamingendpunkt ist ein **Standard**-Typ, kann aber durch Anpassen der `scaleUnits` in den Premium-Typ geändert werden.|
+|**Premium**|>0|**Premium**-Streamingendpunkte eignen sich für komplexere Workloads und bieten eine dedizierte und skalierbare Bandbreitenkapazität. Zum **Premium**-Typ wechseln Sie, indem Sie `scaleUnits` (Streamingeinheiten) anpassen. `scaleUnits` stellen eine dedizierte Ausgangskapazität bereit, die in Schritten von jeweils 200 MBit/s erworben werden kann. Bei Verwendung des **Premium**-Typs stellt jede aktivierte Einheit zusätzliche Bandbreitenkapazität für die Anwendung bereit. |
 
-### <a name="features"></a>Features
+> [!NOTE]
+> Für Kunden, die Inhalte für große Zielgruppen im Internet bereitstellen möchten, empfehlen wir, ein CDN auf dem Streamingendpunkt zu aktivieren.
+
+SLA-Informationen finden Sie unter [Preise und SLA](https://azure.microsoft.com/pricing/details/media-services/).
+
+## <a name="comparing-streaming-types"></a>Vergleichen von Streamingtypen
 
 Feature|Standard|Premium
 ---|---|---
-Erste 15 Tage kostenlos| Ja |Nein 
-Throughput |Bis zu 600 Mbit/s, wenn Azure CDN nicht verwendet wird. Wird mit CDN skaliert.|200 Mbit/s pro Streamingeinheit. Wird mit CDN skaliert.
-SLA | 99,9|99,9 (200 Mbit/s pro Streamingeinheit).
+Throughput |Bis zu 600 MBit/s; kann einen deutlich höheren effektiven Durchsatz bereitstellen, wenn ein CDN verwendet wird.|200 Mbit/s pro Streamingeinheit. Kann einen deutlich höheren effektiven Durchsatz bereitstellen, wenn ein CDN verwendet wird.
 CDN|Azure CDN, CDN eines Drittanbieters oder kein CDN.|Azure CDN, CDN eines Drittanbieters oder kein CDN.
 Die Abrechnung erfolgt anteilsmäßig| Täglich|Täglich
 Dynamische Verschlüsselung|Ja|Ja
 Dynamische Paketerstellung|Ja|Ja
-Skalieren|Automatische Skalierung bis zum Zieldurchsatz.|Zusätzliche Streamingeinheiten
+Skalieren|Automatische Skalierung bis zum Zieldurchsatz.|Zusätzliche SUs
 IP-Filterung/G20/Benutzerdefinierter Host  <sup>1</sup>|Ja|Ja
 Progressiver Download|Ja|Ja
-Empfohlene Verwendung |Für den Großteil der Streamingszenarien empfohlen.|Professionelle Nutzung.<br/>Wenn Sie glauben, dass Ihre Anforderungen über „Standard“ hinausgehen. Kontaktieren Sie uns (amsstreaming@microsoft.com), wenn Sie eine Zielgruppe von mehr als 50.000 Teilnehmern gleichzeitig erwarten.
+Empfohlene Verwendung |Für den Großteil der Streamingszenarien empfohlen.|Professionelle Nutzung.
 
-<sup>1</sup> Wird nur direkt am Streamingendpunkt verwendet, wenn das CDN am Endpunkt nicht aktiviert ist.
+<sup>1</sup> Wird nur direkt am Streamingendpunkt verwendet, wenn das CDN am Endpunkt nicht aktiviert ist.<br/>
 
-## <a name="properties"></a>Eigenschaften 
+## <a name="properties"></a>Properties 
 
 Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunkt-Eigenschaften. Beispiele zum Erstellen eines neuen Streamingendpunkts und Beschreibungen aller Eigenschaften finden Sie unter [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints/create). 
 
-- `accessControl` – wird zum Konfigurieren der folgenden Sicherheitseinstellungen für den Streamingendpunkt verwendet: Authentifizierungsschlüssel und IP-Adressen im Signaturheader von Akamai, über die eine Verbindung mit dem Endpunkt zulässig ist.<br />Diese Eigenschaft kann nur festgelegt werden, wenn `cdnEnabled` auf FALSE festgelegt ist.
-- `cdnEnabled` – gibt an, ob die Azure CDN-Integration für den Streamingendpunkt aktiviert oder deaktiviert ist (standardmäßig deaktiviert). Wenn Sie `cdnEnabled` auf TRUE festlegen, werden die folgenden Konfigurationen deaktiviert: `customHostNames` und `accessControl`.
+- `accessControl` – Wird zum Konfigurieren der folgenden Sicherheitseinstellungen für den Streamingendpunkt verwendet: Authentifizierungsschlüssel und IP-Adressen im Signaturheader von Akamai, über die eine Verbindung mit dem Endpunkt zulässig ist.<br />Diese Eigenschaft kann nur festgelegt werden, wenn `cdnEnabled` auf FALSE festgelegt ist.
+- `cdnEnabled` – Gibt an, ob die Azure CDN-Integration für den Streamingendpunkt aktiviert oder deaktiviert ist (standardmäßig deaktiviert). Wenn Sie `cdnEnabled` auf TRUE festlegen, werden die folgenden Konfigurationen deaktiviert: `customHostNames` und `accessControl`.
   
     Nicht alle Rechenzentren unterstützen die Azure CDN-Integration. Gehen Sie wie folgt vor, um zu überprüfen, ob die Azure CDN-Integration in Ihrem Rechenzentrum zur Verfügung steht:
  
@@ -79,14 +82,14 @@ Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunk
     Wenn dieser Fehler angezeigt wird, wird das CDN im Rechenzentrum nicht unterstützt. Versuchen Sie es mit einem anderen Rechenzentrum.
 - `cdnProfile` – Wenn `cdnEnabled` auf TRUE festgelegt ist, können Sie auch `cdnProfile`-Werte übergeben. `cdnProfile` ist der Name des CDN-Profils, in dem der CDN-Endpunkt erstellt wird. Sie können eine vorhandene cdnProfile-Eigenschaft angeben oder eine neue verwenden. Wenn der Wert NULL ist und `cdnEnabled` auf TRUE festgelegt ist, wird der Standardwert „AzureMediaStreamingPlatformCdnProfile“ verwendet. Wenn die angegebene `cdnProfile`-Eigenschaft bereits vorhanden ist, wird ein Endpunkt unter dieser Eigenschaft erstellt. Wenn das Profil nicht vorhanden ist, wird automatisch ein neues Profil erstellt.
 - `cdnProvider` – Wenn das CDN aktiviert ist, können Sie auch `cdnProvider`-Werte übergeben. `cdnProvider` steuert, welcher Anbieter verwendet wird. Derzeit werden drei Werte unterstützt: „StandardVerizon“, „PremiumVerizon“ und „StandardAkamai“. Wenn kein Wert angegeben wird und `cdnEnabled` auf TRUE festgelegt ist, wird „StandardVerizon“ verwendet (d. h. der Standardwert).
-- `crossSiteAccessPolicies` – wird zum Angeben von websiteübergreifenden Zugriffsrichtlinien für verschiedene Clients verwendet. Weitere Informationen finden Sie unter [Cross-domain policy file specification](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) (Dateispezifikation für domänenübergreifende Richtlinien) und [Making a Service Available Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx) (Verfügbarmachen eines Diensts über Netzwerkgrenzen hinweg).<br/>Die Einstellungen gelten nur für Smooth Streaming.
-- `customHostNames` – wird verwendet, um einen Streamingendpunkt so zu konfigurieren, dass an einen benutzerdefinierten Hostnamen gerichteter Datenverkehr akzeptiert wird.  Diese Eigenschaft gilt für Standard- und Premium-Streamingendpunkte und kann festgelegt werden, wenn `cdnEnabled` FALSE ist.
+- `crossSiteAccessPolicies` – Wird zum Angeben von websiteübergreifenden Zugriffsrichtlinien für verschiedene Clients verwendet. Weitere Informationen finden Sie unter [Cross-domain policy file specification](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) (Dateispezifikation für domänenübergreifende Richtlinien) und [Making a Service Available Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx) (Verfügbarmachen eines Diensts über Netzwerkgrenzen hinweg).<br/>Die Einstellungen gelten nur für Smooth Streaming.
+- `customHostNames` – Wird verwendet, um einen Streamingendpunkt so zu konfigurieren, dass an einen benutzerdefinierten Hostnamen gerichteter Datenverkehr akzeptiert wird.  Diese Eigenschaft gilt für Standard- und Premium-Streamingendpunkte und kann festgelegt werden, wenn `cdnEnabled` FALSE ist.
     
     Der Besitz des Domänennamens muss in Media Services bestätigt werden. In Media Services wird der Besitz des Domänennamens durch Anfordern eines `CName`-Eintrags überprüft, der die Media Services-Konto-ID als Komponente enthält, die der verwendeten Domäne hinzuzufügen ist. Beispiel: Damit „sports.contoso.com“ als benutzerdefinierter Hostname für den Streamingendpunkt verwendet wird, muss ein Eintrag für `<accountId>.contoso.com` so konfiguriert werden, dass er auf einen der Media Services-Überprüfungshostnamen verweist. Der Überprüfungshostname setzt sich aus „verifydns.\<mediaservices-dns-zone>“ zusammen. 
 
     Im Folgenden sind die erwarteten DNS-Zonen aufgeführt, die im Überprüfungseintrag für verschiedene Azure-Regionen zu verwenden sind.
   
-  - Nordamerika, Europa, Singapur, Hongkong, Japan:
+  - Nordamerika, Europa, Singapur, Hongkong (SAR), Japan:
       
     - `media.azure.net`
     - `verifydns.media.azure.net`
@@ -107,7 +110,7 @@ Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunk
 
     Media Services unterstützt derzeit SSL mit benutzerdefinierten Domänen nicht. 
     
-- `maxCacheAge` – überschreibt den standardmäßigen Max-Age-HTTP-Cache Control Header, der vom Streamingendpunkt für Medienfragmente und On-Demand-Manifeste festgelegt wird. Der Wert wird in Sekunden festgelegt.
+- `maxCacheAge` – Überschreibt den standardmäßigen Max-Age-HTTP-Cache Control Header, der vom Streamingendpunkt für Medienfragmente und On-Demand-Manifeste festgelegt wird. Der Wert wird in Sekunden festgelegt.
 - `resourceState` -
 
     - Beendet – Der ursprüngliche Status eines Streamingendpunkts nach der Erstellung.
@@ -117,7 +120,7 @@ Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunk
     - Wird beendet – Der Streamingendpunkt geht über in den Status „Beendet“.
     - Wird gelöscht – Der Streamingendpunkt wird gelöscht.
     
-- `scaleUnits` – stellen eine dedizierte Ausgangskapazität bereit, die in Schritten von jeweils 200 MBit/s erworben werden kann. Wenn Sie zum **Premium**-Type wechseln möchten, passen Sie `scaleUnits` an.
+- `scaleUnits` – Stellen eine dedizierte Ausgangskapazität bereit, die in Schritten von jeweils 200 MBit/s erworben werden kann. Wenn Sie zum **Premium**-Type wechseln möchten, passen Sie `scaleUnits` an.
 
 ## <a name="working-with-cdn"></a>Arbeiten mit dem CDN
 
@@ -138,7 +141,7 @@ Sie müssen zudem die Funktionsweise des adaptiven Streamings berücksichtigen. 
 
 Nachdem ein Streamingendpunkt mit aktiviertem CDN bereitgestellt wurde, gibt es eine definierte Wartezeit auf Media Services, bevor das DNS-Update durchgeführt wird, um den Streamingendpunkt dem CDN-Endpunkt zuzuordnen.
 
-Wenn Sie das CDN später deaktivieren bzw. aktivieren möchten, muss Ihr Streamingendpunkt den Zustand **Beendet** haben. Es kann bis zu zwei Stunden dauern, bis die Azure CDN-Integration aktiviert ist und die Änderungen auf allen CDN-POPs aktiv sind. Sie können jedoch Ihren Streamingendpunkt starten und von ihm aus unterbrechungsfrei streamen. Sobald die Integration abgeschlossen ist, wird der Stream vom CDN übermittelt. Während der Bereitstellungsphase hat Ihr Streamingendpunkt den Zustand **Wird gestartet**, und seine Leistung ist ggf. eingeschränkt.
+Wenn Sie das CDN später deaktivieren bzw. aktivieren möchten, muss Ihr Streamingendpunkt den Zustand **Beendet** haben. Es kann bis zu zwei Stunden dauern, bis die Azure CDN-Integration aktiviert ist und die Änderungen auf allen CDN-POPs aktiv sind. Sie können jedoch Ihren Streamingendpunkt starten und von ihm aus unterbrechungsfrei streamen. Sobald die Integration abgeschlossen ist, wird der Stream vom CDN übermittelt. Während der Bereitstellungsphase hat Ihr Streamingendpunkt den Zustand **Wird gestartet**, und seine Leistung ist eventuell eingeschränkt.
 
 Wenn der standardmäßige Streamingendpunkt erstellt wird, ist er standardmäßig mit Verizon Standard konfiguriert. Sie können Verizon Premium- oder Akamai Standard-Anbieter über REST-APIs konfigurieren. 
 
@@ -150,6 +153,10 @@ Die CDN-Integration ist in allen Azure-Rechenzentren mit Ausnahme der Regionen C
 ### <a name="determine-if-dns-change-has-been-made"></a>Bestimmen, ob eine DNS-Änderung vorgenommen wurde
 
 Sie können mit https://www.digwebinterface.com feststellen, ob eine DNS-Änderung an einem Streamingendpunkt vorgenommen wurde (der Datenverkehr wird an das Azure CDN weitergeleitet). Wenn die Ergebnisse azureedge.net-Domänennamen in den Ergebnissen enthalten, wird der Datenverkehr nun auf das CDN geleitet.
+
+## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
+
+Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

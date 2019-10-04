@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 6dd5872d5ec3e79e3c76b1807aea946015fb0eac
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521022"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265169"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
 
@@ -43,9 +43,9 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 | **Verbundene Quelle** | **Unterstützung** | **Beschreibung** |
 | --- | --- | --- |
 | [Windows-Agents](../platform/agent-windows.md) | Ja | Die Lösung erfasst DNS-Informationen von Windows-Agents. |
-| [Linux-Agents](../learn/quick-collect-linux-computer.md) | Nein  | Die Lösung erfasst keine DNS-Informationen von direkten Linux-Agents. |
+| [Linux-Agents](../learn/quick-collect-linux-computer.md) | Nein | Die Lösung erfasst keine DNS-Informationen von direkten Linux-Agents. |
 | [System Center Operations Manager-Verwaltungsgruppe](../platform/om-agents.md) | Ja | Die Lösung erfasst DNS-Informationen von Agents in einer verbundenen Operations Manager-Verwaltungsgruppe. Es ist keine direkte Verbindung zwischen dem Operations Manager-Agent und Azure Monitor erforderlich. Daten werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet. |
-| [Azure-Speicherkonto](../platform/collect-azure-metrics-logs.md) | Nein  | Azure-Speicher wird von der Lösung nicht verwendet. |
+| [Azure-Speicherkonto](../platform/collect-azure-metrics-logs.md) | Nein | Azure-Speicher wird von der Lösung nicht verwendet. |
 
 ### <a name="data-collection-details"></a>Details zur Datensammlung
 
@@ -179,13 +179,16 @@ Auf der Protokollsucheseite können Sie eine Abfrage erstellen. Sie können die 
 1. Geben Sie im **Feld für die Suchabfrage** `DnsInventory` ein, um alle DNS-Inventardaten für die DNS-Server anzuzeigen, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für DNS-Server, DNS-Zonen und Ressourceneinträge auf.
 
     ![DnsInventory-Protokollsuche](./media/dns-analytics/log-search-dnsinventory.png)
+    
+### <a name="troubleshooting"></a>Problembehandlung
+
+Allgemeine Schritte zur Problembehandlung:
+
+1. Fehlende DNS-Lookupdaten: Um dieses Problem zu beheben, setzen Sie die Konfiguration zurück, oder laden Sie die Konfigurationsseite einfach ein Mal im Portal. Ändern Sie zum Zurücksetzen nur eine Einstellung in einen anderen Wert, und ändern Sie sie anschließend erneut in den ursprünglichen Wert. Speichern Sie die Konfiguration dann.
 
 ## <a name="feedback"></a>Feedback
 
-Sie haben zwei Möglichkeiten, Ihr Feedback zu senden:
-
-- **UserVoice**. Teilen Sie Ideen zu wünschenswerten DNS Analytics-Features mit. Rufen Sie die UserVoice-Seite für [Log Analytics](https://aka.ms/dnsanalyticsuservoice) auf.
-- **Treten Sie unserer Gruppe bei**. Wir sind immer an neuen Kunden interessiert, die unseren Gruppen beitreten, um früh Zugriff auf neue Features zu erhalten und uns bei der Verbesserung von DNS Analytics zu helfen. Wenn Sie den Gruppen beitreten möchten, füllen Sie diesen [kurzen Fragebogen](https://aka.ms/dnsanalyticssurvey) aus.
+Rufen Sie für Feedback die UserVoice-Seite für [Log Analytics](https://aka.ms/dnsanalyticsuservoice) auf, um Ideen zu wünschenswerten DNS Analytics-Features mitzuteilen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

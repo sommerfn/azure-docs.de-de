@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 5c81e94c-e127-4dd2-ae83-a236c4512345
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 5ed5e791cd6e611218769650115c78afd1869f67
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b59e4c570032bdd3341dc7d519f23f4cd86984c7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798775"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084447"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>VM-Erweiterung für den Network Watcher-Agent für Linux
 
@@ -41,11 +40,11 @@ Die VM-Erweiterung für den Network Watcher-Agent kann für folgende Linux-Distr
 | Ubuntu | 12+ |
 | Debian | 7 und 8 |
 | Red Hat | 6 und 7 |
-| Oracle Linux | 6.8 und höher und 7 |
+| Oracle Linux | 6.8+ und 7 |
 | SUSE Linux Enterprise Server | 11 und 12 |
-| OpenSUSE Leap | 42.3 und höher |
-| CentOS | 6.5 und höher und 7 |
-| CoreOS | 899.17.0 und höher |
+| OpenSUSE Leap | 42.3+ |
+| CentOS | 6.5+ und 7 |
+| CoreOS | 899.17.0+ |
 
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
@@ -79,7 +78,7 @@ Der folgende JSON-Code zeigt das Schema für die Network Watcher-Agent-Erweiteru
 | NAME | Wert/Beispiel |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
-| Herausgeber | Microsoft.Azure.NetworkWatcher |
+| publisher | Microsoft.Azure.NetworkWatcher |
 | type | NetworkWatcherAgentLinux |
 | typeHandlerVersion | 1.4 |
 

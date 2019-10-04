@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: rajani-janaki-ram
-ms.openlocfilehash: c22acb1ae82e5c1e781598e8545c7f1625cc1c09
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 06/18/2019
+ms.author: rajanaki
+ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
+ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122789"
+ms.lasthandoff: 07/15/2019
+ms.locfileid: "67875801"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Entfernen von Servern und Deaktivieren des Schutzes
 
@@ -151,6 +151,14 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
 > [!NOTE]
 > Bei beiden Optionen wird der Mobility Service nicht von den geschützten Servern deinstalliert. Sie müssen die Deinstallation manuell vornehmen. Wenn Sie den Server erneut mit demselben Konfigurationsserver schützen möchten, können Sie die Deinstallation des Mobility Service überspringen.
 
+> [!NOTE]
+> Wenn Sie bereits ein Failover für einen virtuellen Computer ausgeführt haben und dieser in Azure ausgeführt wird, sollten Sie beachten, dass dieser virtuelle Computer durch den deaktivierten Schutz nicht entfernt wird bzw. nicht davon betroffen ist.
+## <a name="disable-protection-for-a-azure-vm-azure-to-azure"></a>Deaktivieren des Schutzes für eine Azure-VM (Azure zu Azure)
+
+-  Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Replikation deaktivieren**.
+> [!NOTE]
+> Der Mobility Service wird nicht von den geschützten Servern deinstalliert, Sie müssen ihn manuell deinstallieren. Wenn Sie planen, den Server erneut zu schützen, können Sie die Deinstallation des Mobility Service überspringen.
+
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Deaktivieren des Schutzes für einen virtuellen Hyper-V-Computer (Hyper-V nach Azure)
 
 > [!NOTE]
@@ -161,8 +169,12 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
    - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet.
    - **Entfernen** – diese Option sollte nur verwendet werden, wenn die Quellumgebung gelöscht wurde oder darauf nicht zugegriffen werden kann (keine Verbindung). Dadurch wird das replizierte Element aus Azure Site Recovery entfernt (und die Abrechnung wird beendet). Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird **nicht** bereinigt. 
 
-     > [!NOTE]
+ > [!NOTE]
      > Wenn Sie die Option **Entfernen** ausgewählt haben, führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für den lokalen Hyper-V-Server zu bereinigen.
+
+> [!NOTE]
+> Wenn Sie bereits ein Failover für einen virtuellen Computer ausgeführt haben und dieser in Azure ausgeführt wird, sollten Sie beachten, dass dieser virtuelle Computer durch den deaktivierten Schutz nicht entfernt wird bzw. nicht davon betroffen ist.
+
 1. Entfernen Sie auf dem Hyper-V-Quellhostserver die Replikation für den virtuellen Computer. Ersetzen Sie SQLVM1 durch den Namen des virtuellen Computers, und führen Sie das Skript in einer administrativen PowerShell aus.
 
 ```powershell

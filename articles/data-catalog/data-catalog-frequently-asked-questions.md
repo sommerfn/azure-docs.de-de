@@ -1,19 +1,17 @@
 ---
 title: Häufig gestellte Fragen zu Azure Data Catalog
 description: Häufig gestellte Fragen zu Azure Data Catalog, einschließlich Funktionen für die Ermittlung von Datenquellen, Anmerkungen und Verwaltung.
-services: data-catalog
-author: markingmyname
-ms.author: maghan
-ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: f08825c17c1ba61fc09edc1d8f2c226af8d4266f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 08/01/2019
+ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231463"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898715"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Data Catalog
 Dieser Artikel bietet Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azure Data Catalog-Dienst.
@@ -27,7 +25,7 @@ Mit Data Catalog werden Probleme bei der Ermittlung von Datenquellen und „obsk
 ## <a name="what-are-its-target-audiences"></a>Was sind die Zielgruppen?
 Data Catalog ist für technische und nicht technische Benutzer gedacht, z.B.:
 
-* Datenentwickler, BI- und Analyseexperten: Mitarbeiter, die für die Produktion von Daten- und Analyseinhalten zuständig sind, die von anderen Benutzern verwendet werden.
+* Datenentwickler, BI- und Analyseexperten: Personen, die für die Produktion von Daten- und Analyseinhalten zur Verwendung durch andere Benutzer verantwortlich sind.
 * Data Stewards: Mitarbeiter, die über die Kenntnisse zu den Daten verfügen, ihre Bedeutung kennen und über die beabsichtigte Nutzung Bescheid wissen.
 * Datennutzer: Mitarbeiter, die Daten leicht ermitteln und verstehen und Verbindungen damit herstellen müssen, um ihre Aufgaben mit dem Tool ihrer Wahl zu erledigen.
 * Zentrale IT-Abteilung: Mitarbeite, die Hunderte von Datenquellen für die Ermittlung durch Sachbearbeiter bereitstellen und überwachen müssen, wie und von wem Daten verwendet werden.
@@ -36,7 +34,7 @@ Data Catalog ist für technische und nicht technische Benutzer gedacht, z.B.:
 Data Catalog-Dienste sind derzeit in den folgenden Rechenzentren verfügbar:
 
 * USA (Westen)
-* USA (Ost)
+* East US
 * Europa, Westen
 * Nordeuropa
 * Australien (Osten)
@@ -54,6 +52,15 @@ Eine Liste mit den derzeit unterstützten Datenquellen finden Sie in der [Liste 
 
 ## <a name="how-do-i-request-support-for-another-data-source"></a>Wie fordere ich die Unterstützung für eine andere Datenquelle an?
 Zum Übermitteln von Anfragen zu Features und anderem Feedback können Sie die [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources) verwenden.
+
+## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>Warum erhalte ich den Fehler *Katalog bereits vorhanden*, wenn ich versuche, einen neuen Katalog zu erstellen?
+
+Wenn Sie Office 365 E5 mit Power BI Pro Lizenz erwerben, erstellt Microsoft automatisch einen Standardkatalog in der Region des Abonnements. Dieser Katalog verwendet die kostenlose SKU. Die Office 365/Power BI-Benutzerlizenz wird auf der Verwaltungsseite für Office 365 verwaltet. 
+
+Dieser Datenkatalogtyp verfügt jedoch nicht über eine **Administratoroption** und ist im **Azure-Portal** nicht sichtbar. Dieser Datenkatalogtyp kann nicht gelöscht werden. Ebenso ist es nicht zulässig, den Datenkatalog umzubenennen, und Sie können ihn nicht in eine andere Region verschieben. 
+
+Benutzerkonten, denen automatisch eine Power BI Pro-Lizenz zugewiesen wird, haben per Lizenzvereinbarung Zugriff auf den Datenkatalog, wenn Sie sich für die Office 365 E5 mit Power BI Pro-Lizenz registriert haben. Dieser Benutzertyp hat uneingeschränkten Zugriff auf Datenkatalogobjekte ohne Administratorrechte. Dieser Benutzertyp gehört *nicht* zu der **Katalogbenutzer**-Rolle in Azure Data Catalog.
+
 
 ## <a name="how-do-i-get-started-with-data-catalog"></a>Wie beginne ich mit der Nutzung von Data Catalog?
 Unter [Erste Schritte mit Data Catalog](data-catalog-get-started.md) erfahren Sie, wie Sie am besten mit der Nutzung beginnen. Dieser Artikel enthält eine umfassende Übersicht der Funktionen des Diensts.
@@ -103,9 +110,6 @@ Nutzen Sie bitte [Azure Data Catalog-Forum](https://go.microsoft.com/fwlink/?Lin
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>Funktioniert der Katalog mit einer anderen Datenquelle, die mich interessiert?
 Wir arbeiten aktiv daran, Data Catalog weitere Datenquellen hinzuzufügen. Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie diese in den [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) vorschlagen (oder eine ggf. bereits vorhandene Anfrage unterstützen).
-
-## <a name="how-is-azure-data-catalog-related-to-the-data-catalog-in-power-bi-for-office-365"></a>Welche Verbindung besteht zwischen Azure Data Catalog und Data Catalog in Power BI für Office 365?
-Sie können sich Azure Data Catalog als Weiterentwicklung von Data Catalog in Power BI vorstellen. Ab Frühjahr 2017 ist mithilfe von Azure Data Catalog die gemeinsame Nutzung und die Ermittlung von Abfragen in Excel 2016 und Power Query für Excel möglich. Data Catalog-Funktionen in Excel sind für Benutzer mit Power BI Pro-Lizenzen verfügbar.
 
 ## <a name="what-permissions-do-i-need-to-register-assets-with-data-catalog"></a>Welche Berechtigungen benötige ich, um Datenobjekte bei Data Catalog registrieren zu können?
 Zum Ausführen des Azure Data Catalog-Registrierungstools benötigen Sie Berechtigungen für die Datenquelle, die Ihnen das Auslesen von Metadaten aus der Quelle ermöglicht. Um auch eine Vorschau hinzuzufügen, müssen Sie über Berechtigungen verfügen, die Ihnen das Einlesen der Daten aus den registrierten Objekten erlauben.

@@ -1,21 +1,21 @@
 ---
 title: 'Azure Backup: Wiederherstellen virtueller Azure-Computer mithilfe der REST-API'
 description: Verwalten von Wiederherstellungsvorgängen der Azure-VM-Sicherung mit der REST-API
-services: backup
-author: pvrk
-manager: shivamg
+ms.reviewer: pullabhk
+author: dcurwin
+manager: carmonm
 keywords: REST-API; Azure-VM-Sicherung; Azure-VM-Wiederherstellung;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.author: pullabhk
+ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: 4a65e8a855b9be797c1ceeacf4b74fea74697d00
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: bdbceec2f1d0a900ffdb392d8a0505ce11419036
+ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100197"
+ms.lasthandoff: 08/12/2019
+ms.locfileid: "68954906"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Wiederherstellen virtueller Azure-Computer mit der REST-API
 
@@ -37,7 +37,7 @@ Der *GET*-URI enthält alle erforderlichen Parameter. Ein zusätzlicher Anforder
 
 ### <a name="responses"></a>Antworten
 
-|NAME  |Type  |BESCHREIBUNG  |
+|NAME  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -137,9 +137,9 @@ Informationen zur Erstellung von `{containerName}` und `{protectedItemName}` fin
 
 Zum Auslösen einer Datenträgerwiederherstellung auf der Grundlage einer Azure-VM-Sicherung werden im Folgenden die Komponenten des Anforderungstexts angegeben.
 
-|NAME  |Type  |BESCHREIBUNG  |
+|NAME  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|Eigenschaften     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+|properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
 Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen der Wiederherstellung](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
 
@@ -171,7 +171,7 @@ Das Auslösen einer Datenträgerwiederherstellung ist ein [asynchroner Vorgang](
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |Type  |BESCHREIBUNG  |
+|NAME  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |202 – Akzeptiert     |         |     Zulässig    |
 

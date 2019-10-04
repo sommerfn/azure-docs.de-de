@@ -1,6 +1,6 @@
 ---
-title: Includedatei
-description: Includedatei
+title: include file
+description: include file
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 6345eca674086801f8bb0f45476009f04a10f2e3
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
+ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58214457"
+ms.lasthandoff: 06/18/2019
+ms.locfileid: "67178269"
 ---
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
@@ -39,14 +39,13 @@ Bei der ersten Anmeldung bei Ihrer Anwendung werden Sie zudem aufgefordert, Ihre
 
 ### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
 
-Nachdem Sie sich angemeldet haben, sollten Sie die Benutzerprofilinformationen sehen, die vom Aufruf der Microsoft Graph-API zurückgegeben werden. Die Ergebnisse werden im Feld **Ergebnisse des API-Aufrufs** angezeigt. Grundlegende Informationen über das Token, das durch den Aufruf von `AcquireTokenAsync` oder `AcquireTokenSilentAsync` abgerufen wurde, sollten im Feld **Tokeninformationen** angezeigt werden. Die Ergebnisse umfassen die folgenden Eigenschaften:
+Nachdem Sie sich angemeldet haben, sollten Sie die Benutzerprofilinformationen sehen, die vom Aufruf der Microsoft Graph-API zurückgegeben werden. Die Ergebnisse werden im Feld **Ergebnisse des API-Aufrufs** angezeigt. Grundlegende Informationen über das Token, das durch den Aufruf von `AcquireTokenInteractive` oder `AcquireTokenSilent` abgerufen wurde, sollten im Feld **Tokeninformationen** angezeigt werden. Die Ergebnisse umfassen die folgenden Eigenschaften:
 
 |Eigenschaft  |Format  |BESCHREIBUNG |
 |---------|---------|---------|
-|**Name** |Vollständiger Name des Benutzers |Vor- und Nachname des Benutzers|
-|**Benutzername** |<span>user@domain.com</span> |Der zur Identifizierung des Benutzers verwendete Benutzername|
-|**Ablaufdatum des Tokens** |DateTime |Uhrzeit, zu der das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|
-|**Zugriffstoken** |Zeichenfolge |Die Tokenzeichenfolge, die bei HTTP-Anforderungen gesendet wird, die einen *Autorisierungsheader* erfordern|
+
+|**Username** |<span>user@domain.com</span> |Der Benutzername, der zur Identifizierung des Benutzers verwendet wird.| |**Token Expires** |DateTime |Der Zeitpunkt, zu dem das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|
+
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Weitere Informationen zu Bereichen und delegierten Berechtigungen

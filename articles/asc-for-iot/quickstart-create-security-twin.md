@@ -1,46 +1,45 @@
 ---
-title: Erstellen eines Sicherheitsmodulzwillings für Azure Security Center für IoT (Vorschauversion) | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie einen Azure Security Center für IoT-Modulzwilling zur Verwendung mit ASC für IoT erstellen.
+title: Erstellen eines Sicherheitsmodulzwillings für Azure Security Center für IoT | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie einen Azure Security Center für IoT-Modulzwilling zur Verwendung mit Azure Security Center für IoT erstellen.
 services: asc-for-iot
-ms.service: ascforiot
+ms.service: asc-for-iot
 documentationcenter: na
 author: mlottner
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: c782692e-1284-4c54-9d76-567bc13787cc
+ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 16b5525973b93bc6b073c50c0c657dcbb4679040
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 92bf79aa5ae55bad16d68a26dc13d292285a4d46
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862215"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68597082"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Schnellstart: Erstellen eines Azure IoT-Sicherheitsmodulzwillings
 
-> [!IMPORTANT]
-> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-In dieser Schnellstartanleitung wird beschrieben, wie Sie individuelle _azureiotsecurity_-Modulzwillinge für neue Geräte oder im Batchmodus Modulzwillinge für alle Geräte eines IoT-Hubs erstellen.  
+In dieser Schnellstartanleitung wird beschrieben, wie Sie individuelle _azureiotsecurity_-Modulzwillinge für neue Geräte oder im Batchmodus Modulzwillinge für alle Geräte einer IoT Hub-Instanz erstellen.  
 
 ## <a name="understanding-azureiotsecurity-module-twins"></a>Grundlegendes zu azureiotsecurity-Modulzwillingen 
 
 Für in Azure erstellte IoT-Lösungen spielen Gerätezwillinge eine wichtige Rolle – sowohl bei der Geräteverwaltung als auch bei der Prozessautomatisierung. 
 
-Azure Security Center (ASC) für IoT ermöglicht die vollständige Integration in Ihre vorhandene Plattform für die IoT-Geräteverwaltung. Auf diese Weise können Sie Ihren Gerätesicherheitsstatus verwalten und die vorhandenen Funktionen für die Gerätesteuerung nutzen.
-Die ASC für IoT-Integration wird erreicht, indem der Mechanismus für IoT Hub-Zwillinge verwendet wird.  
+Azure Security Center für IoT ermöglicht die vollständige Integration in Ihre vorhandene Plattform für die IoT-Geräteverwaltung. Auf diese Weise können Sie Ihren Gerätesicherheitsstatus verwalten und die vorhandenen Funktionen für die Gerätesteuerung nutzen.
+Die Integration von Azure Security Center für IoT wird mithilfe des Mechanismus für IoT Hub-Zwillinge erreicht.  
 
 Weitere Informationen zum allgemeinen Konzept in Bezug auf Modulzwillinge in Azure IoT Hub finden Sie unter [Verstehen und Verwenden von Modulzwillingen in IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins). 
  
-Unter ASC für IoT wird der Mechanismus für Modulzwillinge genutzt und für jedes Gerät ein Sicherheitsmodulzwilling mit dem Namen _azureiotsecurity_ eingesetzt.
+Unter Azure Security Center für IoT wird der Mechanismus für Modulzwillinge genutzt und für jedes Gerät ein Sicherheitsmodulzwilling mit dem Namen _azureiotsecurity_ eingesetzt.
+
 Der Sicherheitsmodulzwilling enthält alle Informationen, die für die Gerätesicherheit Ihrer einzelnen Geräte jeweils relevant sind. 
  
-Zur vollständigen Nutzung von ASC für IoT-Features müssen Sie diese Sicherheitsmodulzwillinge für jedes Gerät des Diensts erstellen, konfigurieren und verwenden.  
+Zur vollständigen Nutzung der Features von Azure Security Center für IoT müssen Sie diese Sicherheitsmodulzwillinge für jedes Gerät des Diensts erstellen, konfigurieren und verwenden.  
 
 ## <a name="create-azureiotsecurity-module-twin"></a>Erstellen eines azureiotsecurity-Modulzwillings 
 
@@ -55,7 +54,7 @@ Informationen zum Modifizieren oder Ändern der Konfiguration eines vorhandenen 
 
 Verwenden Sie die folgende Anleitung, um für ein Gerät manuell einen neuen _azureiotsecurity_-Modulzwilling zu erstellen: 
 
-1. Suchen Sie auf Ihrem IoT-Hub nach dem Gerät, für das Sie einen Sicherheitsmodulzwilling erstellen möchten, und wählen Sie es aus.
+1. Suchen Sie in Ihrer IoT Hub-Instanz nach dem Gerät, für das Sie einen Sicherheitsmodulzwilling erstellen möchten, und wählen Sie es aus.
 1. Klicken Sie auf Ihr Gerät und dann auf **Modulidentität hinzufügen**.
 1. Geben Sie im Feld **Name der Modulidentität** den Namen **azureiotsecurity** ein.
 
@@ -73,7 +72,7 @@ Verwenden Sie die folgende Anleitung, um für ein Gerät manuell einen neuen _az
     ![Einem Gerät zugeordnete Module](./media/quickstart/verify-security-module-twin-3.png)
 
 
-Weitere Informationen zum Anpassen der Eigenschaften von ASC für IoT-Modulzwillingen finden Sie unter [Agent-Konfiguration](how-to-agent-configuration.md).
+Weitere Informationen zum Anpassen der Eigenschaften von Modulzwillingen in Azure Security Center für IoT finden Sie unter [Agent-Konfiguration](how-to-agent-configuration.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

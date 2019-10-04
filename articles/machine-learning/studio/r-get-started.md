@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 307636b019b53c8457c65261824adbf8e52ca0a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5c4fa2260b00043e016748010528926b1b9d74a3
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875514"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "64726549"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio"></a>Erste Schritte mit R in Azure Machine Learning Studio
 
@@ -930,7 +930,7 @@ outframe
 
 Die erste Codezeile ist etwas schwieriger, doch einige Erläuterungen sollten Ihnen helfen, sie zu verstehen. Wenn wir von innen nach außen vorgehen, erhalten wir Folgendes:
 
-1. Der '**[[**'-Operator wählt mit dem '**1**'-Argument den Vektor der Korrelationen an den Verzögerungen aus dem ersten Element der ccf-Objektliste aus.
+1. Der ' **[[** '-Operator wählt mit dem '**1**'-Argument den Vektor der Korrelationen an den Verzögerungen aus dem ersten Element der ccf-Objektliste aus.
 2. Die `do.call()`-Funktion wendet die `rbind()`-Funktion auf die Elemente der Liste an, die von `lapply()` zurückgegeben wird.
 3. Die `data.frame()`-Funktion wandelt das von `do.call()` erzeugte Ergebnis in ein Dataframe um.
 
@@ -1320,7 +1320,7 @@ Es gibt viele Bücher zu R, die Ihnen beim Einstieg helfen können. Hier finden 
 * **The Art of R Programming: A Tour of Statistical Software Design** von Norman Matloff ist eine ausgezeichnete Einführung in die Programmierung in R.  
 * Das Werk **R Cookbook** von Paul Teetor enthält Problemstellungen und Lösungen für die Verwendung von R.  
 * **R in Action** von Robert Kabacoff ist eine weitere nützliche Einführung. Die begleitende Website zu [Quick R](https://www.statmethods.net/) ist eine nützliche Ressource.
-* **R Inferno** von Patrick Burns ist ein erstaunlich humorvolles Buch, das sich mit einer Reihe von verzwickten und komplizierten Themen beschäftigt, die bei der Programmierung in R vorkommen können. Das Buch ist unter [The R Inferno](http://www.burns-stat.com/documents/books/the-r-inferno/) kostenlos erhältlich.
+* **R Inferno** von Patrick Burns ist ein erstaunlich humorvolles Buch, das sich mit einer Reihe von verzwickten und komplizierten Themen beschäftigt, die bei der Programmierung in R vorkommen können. Das Buch ist unter [The R Inferno](https://www.burns-stat.com/documents/books/the-r-inferno/) kostenlos erhältlich.
 * Wenn Sie eine gründliche Erörterung komplexerer Themen in R benötigen, werfen Sie einen Blick in das Buch **Advanced R** von Hadley Wickham. Die Onlineversion dieses Buchs ist unter [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/) kostenlos erhältlich.
 
 Einen Katalog mit R-Zeitreihenpaketen finden Sie unter [CRAN Task View: Time Series Analysis (CRAN-Tasks: Zeitreihenanalyse)](https://cran.r-project.org/web/views/TimeSeries.html). Informationen zu speziellen Zeitreihen-Objektpaketen finden Sie in der Dokumentation für das jeweilige Paket.

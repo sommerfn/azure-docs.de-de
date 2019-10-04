@@ -3,28 +3,32 @@ title: Aktualisieren von Containern in Azure Container Instances
 description: Hier erfahren Sie, wie Sie ausgeführte Container in Ihren Azure Container Instances-Containergruppen aktualisieren.
 services: container-instances
 author: dlepow
+manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/03/2019
 ms.author: danlep
-ms.openlocfilehash: 2df6a2724cbdcd6bbb6c6ca6636256b7e399da8e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 3103fe7fbf7dcd587f43b673ef53f32893908ecb
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854540"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307712"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Aktualisieren von Containern in Azure Container Instances
 
-Während des normalen Betriebs Ihrer Containerinstanzen ist es unter Umständen erforderlich, die Container in einer Containergruppe zu aktualisieren. Sie möchten beispielsweise die Imageversion aktualisieren, einen DNS-Namen ändern, Umgebungsvariablen aktualisieren oder den Container aktualisieren, dessen Anwendung abgestürzt ist.
+Während des normalen Betriebs Ihrer Containerinstanzen ist es unter Umständen erforderlich, die in einer [Containergruppe](container-instances-container-groups.md) ausgeführten Container zu aktualisieren. Sie möchten beispielsweise die Imageversion aktualisieren, einen DNS-Namen ändern, Umgebungsvariablen aktualisieren oder den Container aktualisieren, dessen Anwendung abgestürzt ist.
+
+> [!NOTE]
+> Beendete oder gelöschte Containergruppen können nicht aktualisiert werden. Nachdem eine Containergruppe beendet (Erfolgs- oder Fehlerstatus) oder gelöscht wurde, muss die Gruppe als neue Gruppe bereitgestellt werden.
 
 ## <a name="update-a-container-group"></a>Aktualisieren einer Containergruppe
 
-Aktualisieren Sie die Container in einer Containergruppe, indem Sie eine vorhandene Gruppe mit mindestens einer geänderten Eigenschaft erneut bereitstellen. Wenn Sie eine Containergruppe aktualisieren, werden alle ausgeführten Container in der Gruppe direkt neu gestartet.
+Aktualisieren Sie die in einer Containergruppe ausgeführten Container, indem Sie eine vorhandene Gruppe mit mindestens einer geänderten Eigenschaft erneut bereitstellen. Wenn Sie eine Containergruppe aktualisieren, werden alle ausgeführten Container in der Gruppe direkt neu gestartet. Dies erfolgt in der Regel auf demselben zugrunde liegenden Containerhost.
 
-Stellen Sie mit dem Befehl „create“ (oder über das Azure-Portal) eine vorhandene Containergruppe erneut bereit. Geben Sie dabei den Namen einer vorhandenen Gruppe an. Ändern Sie mindestens eine gültige Eigenschaft der Gruppe, wenn Sie den Befehl „create“ zum Auslösen der erneuten Bereitstellung ausgeben. Nicht alle Eigenschaften der Containergruppe sind für eine erneute Bereitstellung zulässig. Unter [Eigenschaften, für die eine Löschung der Container erforderlich ist](#properties-that-require-container-delete) finden Sie eine Liste der nicht unterstützten Eigenschaften.
+Stellen Sie mit dem Befehl „create“ (oder über das Azure-Portal) eine vorhandene Containergruppe erneut bereit. Geben Sie dabei den Namen einer vorhandenen Gruppe an. Ändern Sie mindestens eine gültige Eigenschaft der Gruppe, wenn Sie den Befehl „create“ ausgeben, um die erneute Bereitstellung zu initiieren, und lassen Sie die übrigen Eigenschaften unverändert (oder verwenden Sie weiterhin die Standardwerte). Nicht alle Eigenschaften der Containergruppe sind für eine erneute Bereitstellung zulässig. Unter [Eigenschaften, für die eine Löschung der Container erforderlich ist](#properties-that-require-container-delete) finden Sie eine Liste der nicht unterstützten Eigenschaften.
 
-Das folgende Azure CLI-Beispiel aktualisiert eine Containergruppe mit einer neuen DNS-Namensbezeichnung. Da die Eigenschaft der DNS-Namensbezeichnung der Gruppe geändert wurde, wird die Containergruppe erneut bereitgestellt, und ihre Container werden neu gestartet.
+Das folgende Azure CLI-Beispiel aktualisiert eine Containergruppe mit einer neuen DNS-Namensbezeichnung. Da die Eigenschaft der DNS-Namensbezeichnung der Gruppe geändert werden kann, wird die Containergruppe erneut bereitgestellt, und ihre Container werden neu gestartet.
 
 Erste Bereitstellung mit der DNS-Namensbezeichnung *myapplication-staging*:
 
@@ -34,10 +38,10 @@ az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication-staging
 ```
 
-Aktualisieren Sie die Containergruppe mit der neuen DNS-Namensbezeichnung *myapplication*:
+Aktualisieren Sie die Containergruppe mit der neuen DNS-Namensbezeichnung *myapplication*, und belassen Sie die übrigen Eigenschaften unverändert:
 
 ```azurecli-interactive
-# Update container group (restarts container)
+# Update DNS name label (restarts container), leave other properties unchanged
 az container create --resource-group myResourceGroup --name mycontainer \
     --image nginx:alpine --dns-name-label myapplication
 ```
@@ -80,10 +84,10 @@ Die **Containergruppe** wurde in diesem Artikel bereits mehrmals erwähnt. Jeder
 
 [Bereitstellen einer Containergruppe](container-instances-multi-container-group.md)
 
+[Manuelles Beenden oder Starten von Containern in Azure Container Instances](container-instances-stop-start.md)
+
 <!-- LINKS - External -->
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
-[az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
 [azure-cli-install]: /cli/azure/install-azure-cli

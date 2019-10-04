@@ -5,14 +5,14 @@ services: terraform
 author: tomarchermsft
 ms.service: azure
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: 7145a50bc53fd28afafd3de9c724b5e5f71624fa
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e9b447f4f4dc9d0ee090da9729e483cc17ac7c15
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762298"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169948"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>Speichern des Terraform-Status in Azure Storage
 
@@ -28,7 +28,7 @@ Terraform basiert auf dem Konzept eines Status-Back-Ends, der den Remotespeicher
 
 Bevor Sie Azure Storage als Back-End verwenden können, muss ein Speicherkonto erstellt werden. Das Speicherkonto kann mit dem Azure-Portal, PowerShell, der Azure CLI oder Terraform selbst erstellt werden. Verwenden Sie das folgende Beispiel, um das Speicherkonto mit der Azure CLI zu konfigurieren.
 
-```azurecli-interactive
+```azurecli
 #!/bin/bash
 
 RESOURCE_GROUP_NAME=tstate
@@ -67,21 +67,21 @@ Jeder dieser Werte kann in der Terraform-Konfigurationsdatei oder in der Befehls
 
 Erstellen Sie eine Umgebungsvariable namens `ARM_ACCESS_KEY` mit dem Wert des Azure Storage-Zugriffsschlüssels.
 
-```console
+```bash
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
 Um den Zugriffsschlüssel des Azure Storage-Kontos noch stärker zu schützen, speichern Sie ihn in Azure Key Vault. Die Umgebungsvariable kann dann mit einem Befehl ähnlich wie dem Folgenden festgelegt werden. Weitere Informationen zu Azure Key Vault finden Sie in der [Dokumentation zu Azure Key Vault][azure-key-vault].
 
-```console
+```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)
 ```
 
 Um Terraform für die Verwendung des Back-Ends zu konfigurieren, schließen Sie eine *backend*-Konfiguration vom Typ *azurerm* in die Terraform-Konfiguration ein. Fügen Sie die Werte von *storage_account_name*, *container_name* und *key* zum Konfigurationsblock hinzu.
 
-Im folgenden Beispiel wird ein Terraform-Back-End konfiguriert und eine Azure-Ressourcengruppe erstellt. Ersetzen Sie die Werte durch Werte aus Ihrer Umgebung.
+Das folgende Beispiel konfiguriert ein Terraform-Back-End und erstellt eine Azure-Ressourcengruppe. Ersetzen Sie die Werte durch Werte aus Ihrer Umgebung.
 
-```json
+```hcl
 terraform {
   backend "azurerm" {
     storage_account_name  = "tstate09762"
@@ -110,7 +110,7 @@ Die Sperre kann bei der Untersuchung des Blobs über das Azure-Portal oder ander
 
 Standardmäßig werden in einem Azure-Blob gespeicherte Daten verschlüsselt, bevor sie in der Speicherinfrastruktur gespeichert werden. Wenn Terraform den Status benötigt, wird dieser über das Back-End abgerufen und in Ihrem Entwicklungssystem im Arbeitsspeicher gespeichert. In dieser Konfiguration wird der Status in Azure Storage geschützt und nicht auf Ihren lokalen Datenträger geschrieben.
 
-Weitere Informationen zur Azure Storage-Dienstverschlüsselung finden Sie unter [Azure Storage-Dienstverschlüsselung für ruhende Daten][azure-storage-encryption].
+Weitere Informationen zur Azure Storage-Verschlüsselung finden Sie unter [Azure Storage-Dienstverschlüsselung für ruhende Daten][azure-storage-encryption].
 
 ## <a name="next-steps"></a>Nächste Schritte
 

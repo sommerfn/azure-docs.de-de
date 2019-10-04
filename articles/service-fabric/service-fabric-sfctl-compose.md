@@ -8,18 +8,17 @@ manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 4b5cbb4a24b61de7e64a52ef950deedab3eec263
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: dab844246d99b0ab80e1e86219c2064c79e74e4f
+ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667498"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69035116"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Ermöglicht es, Docker Compose Anwendungen zu erstellen, zu löschen und zu verwalten.
@@ -32,7 +31,7 @@ Ermöglicht es, Docker Compose Anwendungen zu erstellen, zu löschen und zu verw
 | list | Ruft die Liste der Compose-Bereitstellungen ab, die in dem Service Fabric-Cluster erstellt wurden. |
 | remove | Löscht eine vorhandene Service Fabric-Compose-Bereitstellung aus dem Cluster. |
 | status | Ruft Informationen zu einer Service Fabric-Compose-Bereitstellung ab. |
-| Upgrade | Startet ein Aktualisieren einer Compose-Bereitstellung im Service Fabric-Cluster. |
+| upgrade | Startet ein Aktualisieren einer Compose-Bereitstellung im Service Fabric-Cluster. |
 | upgrade-rollback | Startet das Rollback des Upgrades einer Compose-Bereitstellung im Service Fabric-Cluster. |
 | upgrade-status | Ruft Details zu dem neuesten Upgrade ab, das für diese Compose-Bereitstellung von Service Fabric durchgeführt wurde. |
 

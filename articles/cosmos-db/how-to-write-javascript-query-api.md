@@ -3,15 +3,15 @@ title: Schreiben von gespeicherten Prozeduren und Triggern mit der JavaScript-Ab
 description: Erfahren Sie, wie Sie gespeicherte Prozeduren und Trigger mit der JavaScript-Abfrage-API in Azure Cosmos DB schreiben.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
-ms.date: 12/11/2018
+ms.topic: conceptual
+ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 94f72b716e149b2fa5c31deabf92a8a443eb0bef
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 96ecd77cb955d5e63cdcae8657e3096bbbadba89
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043344"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092881"
 ---
 # <a name="how-to-write-stored-procedures-and-triggers-in-azure-cosmos-db-by-using-the-javascript-query-api"></a>Schreiben von gespeicherten Prozeduren und Triggern in Azure Cosmos DB mit der JavaScript-Abfrage-API
 
@@ -19,7 +19,7 @@ Mit Azure Cosmos DB können Sie optimierte Abfragen ausführen, indem Sie eine i
 
 ## <a id="stored-procedures"></a>Gespeicherte Prozedur mit der JavaScript-Abfrage-API
 
-Das folgende Codebeispiel zeigt, wie die JavaScript-Abfrage-API im Kontext einer gespeicherten Prozedur verwendet wird. Die gespeicherte Prozedur fügt ein Azure Cosmos DB-Element ein, das durch einen Eingabeparameter angegeben wird, und aktualisiert mit der `__.filter()`-Methode ein Metadatenelement, wobei „minSize“, „maxSize“ und „totalSize“ auf der size-Eigenschaft des Eingabeelements basieren.
+Das folgende Codebeispiel zeigt, wie die JavaScript-Abfrage-API im Kontext einer gespeicherten Prozedur verwendet wird. Die gespeicherte Prozedur fügt ein Azure Cosmos-Element ein, das durch einen Eingabeparameter angegeben wird, und aktualisiert mit der `__.filter()`-Methode ein Metadatenelement, wobei „minSize“, „maxSize“ und „totalSize“ auf der size-Eigenschaft des Eingabeelements basieren.
 
 > [!NOTE]
 > `__` (doppelter Unterstrich) ist bei Verwendung der JavaScript-Abfrage-API ein Alias für `getContext().getCollection()`.

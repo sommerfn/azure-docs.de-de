@@ -2,16 +2,17 @@
 title: 'Azure HDInsight: .NET-Beispiele'
 description: Enthält Informationen zu C#-.NET-Beispielen für häufige Aufgaben auf GitHub, für die das HDInsight SDK für .NET verwendet wird.
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 04/15/2019
-ms.author: hrasheed
-ms.openlocfilehash: 94e2f007f70d55387b641b3d9166fa84f26f16ba
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: c1365b39385a3dfb684628214765269ea3a225e9
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59580928"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076879"
 ---
 # <a name="azure-hdinsight-net-samples"></a>Azure HDInsight: .NET-Beispiele
 

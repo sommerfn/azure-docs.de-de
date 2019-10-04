@@ -1,21 +1,21 @@
 ---
 title: Referenz für die Textübersetzungs-API Version 3.0
-titlesuffix: Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Referenzdokumentation für die Textübersetzungs-API Version 3.0
 services: cognitive-services
-author: v-pawal
+author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
-ms.author: v-jansko
-ms.openlocfilehash: 4a5bed67252c3b87233c8d2e677e3c620adb8a17
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.author: swmachan
+ms.openlocfilehash: cb5a3b8572cebfd6c0731a9e572e966fda280be6
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918806"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772781"
 ---
 # <a name="translator-text-api-v30"></a>Textübersetzungs-API Version 3.0
 
@@ -31,20 +31,20 @@ Version 3 der Textübersetzungs-API umfasst eine moderne JSON-basierte Web-API. 
 
 ## <a name="base-urls"></a>Basis-URLs
 
-Der Microsoft Translator wird aus mehreren Rechenzentren unterstützt. Momentan befinden sie sich in 6 [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions):
+Der Microsoft Translator wird aus mehreren Rechenzentren unterstützt. Momentan befinden sie sich in 10 [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/regions):
 
-* **Amerika**: USA, Westen 2 und USA, Westen-Mitte 
-* **Asien-Pazifik:** Asien, Südosten und Südkorea, Süden
+* **Amerika**: „USA, Osten“, „USA, Süden-Mitte“, „USA, Westen-Mitte“ und „USA, Westen 2“ 
+* **Asien-Pazifik:** „Südkorea, Süden“, „Japan, Osten“, „Asien, Südosten“ und „Australien, Osten“
 * **Europa:** Europa, Norden und Europa, Westen
 
-Anforderungen an die Textübersetzungs-API von Microsoft werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Im Falle eines Rechenzentrumsausfalls kann die Anforderung außerhalb der Region weitergeleitet werden.
+Anforderungen an die Textübersetzungs-API von Microsoft werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Bei einem Rechenzentrumsausfall kann die Anforderung außerhalb der Azure-Geografie weitergeleitet werden.
 
-Um zu erzwingen, dass die Anforderung von einem bestimmten Rechenzentrum bearbeitet wird, ändern Sie den globalen Endpunkt in der API-Anforderung auf den gewünschten regionalen Endpunkt:
+Um zu erzwingen, dass die Anforderung von einer bestimmten Azure-Geografie bearbeitet wird, ändern Sie den globalen Endpunkt in der API-Anforderung auf den gewünschten regionalen Endpunkt:
 
-|BESCHREIBUNG|Region|Basis-URL|
+|BESCHREIBUNG|Azure-Geografie|Basis-URL|
 |:--|:--|:--|
-|Azure|Global|  api.cognitive.microsofttranslator.com|
-|Azure|Nordamerika|   api-nam.cognitive.microsofttranslator.com|
+|Azure|Global (nicht regional)|   api.cognitive.microsofttranslator.com|
+|Azure|USA|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asien-Pazifik|    api-apc.cognitive.microsofttranslator.com|
 
@@ -58,7 +58,7 @@ Es gibt drei Header, mit denen Sie Ihr Abonnement authentifizieren können. Dies
 |Header|BESCHREIBUNG|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*Verwendung mit Cognitive Services-Abonnement, wenn Sie Ihren geheimen Schlüssel übergeben*.<br/>Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für die Textübersetzungs-API.|
-|Autorisierung|*Verwendung mit dem Cognitive Services-Abonnement, wenn Sie ein Authentifizierungstoken übergeben.*<br/>Der Wert ist das Bearertoken: `Bearer <token>`.|
+|Authorization|*Verwendung mit dem Cognitive Services-Abonnement, wenn Sie ein Authentifizierungstoken übergeben.*<br/>Der Wert ist das Bearertoken: `Bearer <token>`.|
 |Ocp-Apim-Subscription-Region|*Verwendung mit dem Multi-Service-Abonnement von Cognitive Services, wenn Sie einen geheimen Multi-Service-Schlüssel übergeben.*<br/>Der Wert ist die Region des Multi-Service-Abonnements. Dieser Wert ist optional, wenn kein Multi-Service-Abonnement verwendet wird.|
 
 ###  <a name="secret-key"></a>Geheimer Schlüssel
@@ -99,7 +99,7 @@ Wenn Sie einen geheimen Multi-Service-Schlüssel verwenden, müssen Sie Ihrer An
 
 Die Region ist für das Abonnement der Multi-Service-Text-API erforderlich. Die von Ihnen ausgewählte Region ist die einzige Region, die Sie für die Textübersetzung verwenden können, wenn Sie den Multi-Service-Abonnementschlüssel verwenden, und muss sich um die gleiche Region handeln, die Sie bei der Registrierung für Ihr Multi-Service-Abonnement über das Azure-Portal ausgewählt haben.
 
-Diese Regionen sind verfügbar: `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus` und `westus2`.
+Verfügbare Regionen sind `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, `japaneast`, `japanwest`, `koreacentral`, `northcentralus`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, `westus2` und `southafricanorth`.
 
 Wenn Sie den geheimen Schlüssel in der Abfragezeichenfolge mit dem Parameter `Subscription-Key` übergeben, dann müssen Sie die Region mit dem Abfrageparameter `Subscription-Region` angeben.
 
@@ -144,7 +144,7 @@ Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode
 | 400036| Der Zielsprache (Feld „To“) fehlt oder ist ungültig.|
 | 400042| Eine der angegebenen Optionen (Feld „Optionen“) ist ungültig.|
 | 400043| Die Clientablaufverfolgungs-ID (Feld „ClientTraceId“ oder X-ClientTranceId-Header) fehlt oder ist ungültig.|
-| 400050| Der Eingabetext ist zu lang.|
+| 400050| Der Eingabetext ist zu lang. Informieren Sie sich unter [Anforderungsgrenzwerte](../request-limits.md).|
 | 400064| Der translation-Parameter fehlt oder ist ungültig.|
 | 400070| Die Anzahl der Zielskripts (ToScript-Parameter) entspricht nicht der Anzahl von Zielsprachen (To-Parameter).|
 | 400071| Der Wert ist für TextType ungültig.|
@@ -152,16 +152,18 @@ Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode
 | 400073| Der script-Parameter ist ungültig.|
 | 400074| Der Anforderungstext ist kein gültiger JSON-Code.|
 | 400075| Die Kombination aus Sprachpaar und Kategorie ist ungültig.|
-| 400077| Die maximale Anforderungsgröße wurde überschritten.|
+| 400077| Die maximale Anforderungsgröße wurde überschritten. Informieren Sie sich unter [Anforderungsgrenzwerte](../request-limits.md).|
 | 400079| Das für die Übersetzung zwischen Ausgangs- und Zielsprache angeforderte benutzerdefinierte System ist nicht vorhanden.|
+| 400080| Transliteration wird für die Sprache oder das Skript nicht unterstützt.|
 | 401000| Die Anforderung wurde nicht autorisiert, da die Anmeldeinformationen fehlen oder ungültig sind.|
 | 401015| „Die angegebenen Anmeldeinformationen gelten für die SAPI. Diese Anforderung erfordert Anmeldeinformationen für die Text-API. Verwenden Sie ein Abonnement für die Textübersetzungs-API.“|
 | 403000| Der Vorgang ist nicht zulässig.|
 | 403001| Der Vorgang ist nicht zulässig, da das kostenlose Kontingent für das Abonnement überschritten wurde.|
 | 405000| Die Anforderungsmethode wird für die angeforderte Ressource nicht unterstützt.|
-| 408001| Das angeforderte benutzerdefinierte Übersetzungssystem ist noch nicht verfügbar. Versuchen Sie es in einigen Minuten erneut.|
+| 408001| Das angeforderte Übersetzungssystem wird vorbereitet. Versuchen Sie es in einigen Minuten erneut.|
+| 408002| Anforderungstimeout beim Warten auf den eingehenden Datenstrom. Der Client hat innerhalb des Zeitraums, in dem der Server vorbereitet war, zu warten, keine Anforderung erzeugt. Der Client kann die Anforderung ohne Änderungen zu einem späteren Zeitpunkt wiederholen.|
 | 415000| Der Content-Type-Header fehlt oder ist ungültig.|
-| 429000, 429001, 429002| Der Server hat die Anforderung abgelehnt, da der Client zu viele Anforderungen sendet. Reduzieren Sie die Häufigkeit der Anforderungen, um eine Drosselung zu vermeiden.|
+| 429000, 429001, 429002| Der Server hat die Anforderung abgelehnt, da der Client die Anforderungsgrenzwerte überschritten hat.|
 | 500000| Ein unerwarteter Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie dabei Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Antwortheader X-RequestId und Clientbezeichner aus dem Anforderungsheader X-ClientTraceId.|
 | 503000| Service is temporarily unavailable. (Der Dienst ist vorübergehend nicht verfügbar.) Versuchen Sie es erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie dabei Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Antwortheader X-RequestId und Clientbezeichner aus dem Anforderungsheader X-ClientTraceId.|
 

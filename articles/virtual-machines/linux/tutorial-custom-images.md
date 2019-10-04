@@ -4,24 +4,23 @@ description: In diesem Tutorial erfahren Sie, wie Sie die Azure-Befehlszeilensch
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1c2be140e4d7156a1e23e1064436dda959c9cd14
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 83e378b9349bc3cec90bc0c80a801d452f2bf3db
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750000"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081742"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit der Azure CLI
 
@@ -51,6 +50,9 @@ Zum Erstellen eines Images eines virtuellen Computers müssen Sie den virtuellen
 ### <a name="deprovision-the-vm"></a>Aufheben der Bereitstellung des virtuellen Computers 
 
 Durch Aufheben der Bereitstellung werden computerspezifische Informationen entfernt und der virtuelle Computer dadurch generalisiert. Durch diese Generalisierung können viele virtuelle Computer aus einem einzelnen Image bereitgestellt werden. Beim Aufheben der Bereitstellung wird der Hostname auf *localhost.localdomain* zurückgesetzt. Ebenfalls gelöscht werden SSH-Hostschlüssel, Namenserverkonfigurationen, das Stammkennwort und zwischengespeicherte DHCP-Leases.
+
+> [!WARNING]
+> Durch das Aufheben der Bereitstellung und das Markieren der VM als generalisiert wird die Quell-VM unbrauchbar und kann nicht neu gestartet werden. 
 
 Verwenden Sie zum Aufheben der Bereitstellung des virtuellen Computers den Azure-VM-Agent (waagent). Der Azure-VM-Agent ist auf dem virtuellen Computer installiert und verwaltet die Bereitstellung und Interaktion mit dem Azure Fabric Controller. Weitere Informationen erhalten Sie im [Benutzerhandbuch für Azure Linux-Agent](../extensions/agent-linux.md).
 

@@ -1,5 +1,5 @@
 ---
-title: Genaue Textübereinstimmung
+title: 'Tutorial: Genaue Textübereinstimmung: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Abrufen von Daten, die mit einer vordefinierten Liste von Elementen übereinstimmen. Jedes Element auf der Liste kann Synonyme aufweisen, die ebenfalls exakt übereinstimmen
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 04/01/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 9083227dd81dca219666e07b70f487069413855d
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 25882f2aaa5d32dfb594d5f8fdb9cdc46f2ad958
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521270"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307609"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Tutorial: Abrufen von Daten mit genauer Textübereinstimmung aus einer Äußerung
 
@@ -108,11 +108,7 @@ Der primäre, _kanonische_ Name für jedes Element ist der Abteilungsname. Dies 
 
 1. Geben Sie auf der Seite mit der Abteilungsentität `Accounting` als neuen Wert ein.
 
-    [![Screenshot der Eingabe eines Werts](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Screenshot der Eingabe eines Werts")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
-
 1. Fügen Sie als Synonyme die Synonyme aus der vorhergehenden Tabelle ein.
-
-    [![Screenshot der Eingabe von Synonymen](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Screenshot der Eingabe von Synonymen")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
 1. Fahren Sie mit dem Hinzufügen aller kanonischen Namen und ihrer Synonyme fort. 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: 88fdaec9e19c082a6fe981dc4d9a0e015335f1e2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0960862da9e65cff4d957e97a7488dc7a245651a
+ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818617"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "68742119"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>Verwenden von Azure Event Hubs aus einer Python-Anwendung
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Weitere Informationen finden Sie unter [Einführung in Event Hubs](event-hubs-what-is-event-hubs.md). 
@@ -94,7 +94,8 @@ Der folgende Code zeigt Ihnen, wie Sie über eine Python-Anwendung Ereignisse vo
 client = EventHubClient(ADDRESS, debug=False, username=USER, password=KEY)
 
 # Add a receiver to the client
-receiver = client.add_receiver(CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
+receiver = client.add_receiver(
+    CONSUMER_GROUP, PARTITION, prefetch=5000, offset=OFFSET)
 
 # Run the Event Hubs client
 client.run()
@@ -156,13 +157,12 @@ def startProcessing(accountName, key, container):
             os.remove(cleanName)
         block_blob_service.delete_blob(container, blob.name)
 startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
-
 ```
 
 Ein vollständiges Tutorial zum Lesen erfasster Event Hubs-Daten in einem Azure-Blob-Speicher aus einer in Python geschriebenen Anwendung finden Sie in [diesem Artikel](event-hubs-capture-python.md).
 
 ## <a name="github-samples"></a>GitHub-Beispiele
-Weitere Python-Beispiele finden Sie im [Git-Repository azure-event-hubs-python](https://github.com/Azure/azure-event-hubs-python/).
+Weitere Python-Beispiele finden Sie im [Git-Repository azure-event-hubs-python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Lesen Sie die Artikel im Abschnitt „Konzepte“ ab [Event Hubs-Features im Überblick](event-hubs-features.md).

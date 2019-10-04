@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Konvertieren von Text in Sprache, .NET Core – Speech Services'
+title: 'Schnellstart: Konvertieren von Text in Sprache, .NET Core – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart erfahren Sie, wie Sie mit der Text-to-Speech-REST-API Text in Sprache konvertieren. Der Beispieltext in diesem Leitfaden ist als SSML (Speech Synthesis Markup Language) strukturiert. Auf diese Weise können Sie die Stimme und Sprache für die Sprachantwort auswählen.
 services: cognitive-services
@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: conceptual
-ms.date: 03/13/2019
+ms.topic: quickstart
+ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 5ae63b1738824095073ac6b9e1071f6b4a3e5ae1
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: a4c514cab274c395fbe3cbf0b2ff1cd9eb3d5134
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518846"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68554032"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>Schnellstart: Konvertieren von Text in Sprache mit .NET Core
 
@@ -48,7 +48,7 @@ Für diese Schnellstartanleitung wird C# 7.1 oder höher benötigt. Es gibt vers
 
 Öffnen Sie Ihr Projekt und anschließend `tts-sample.csproj`. Stellen Sie sicher, dass `LangVersion` auf 7.1 oder höher festgelegt ist. Wenn keine Eigenschaftengruppe für die Sprachversion vorhanden ist, fügen Sie diese Zeilen hinzu:
 
-```csharp
+```xml
 <PropertyGroup>
    <LangVersion>7.1</LangVersion>
 </PropertyGroup>

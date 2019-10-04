@@ -3,8 +3,8 @@ title: Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokoll
 description: Erfahren Sie, wie Sie häufige Kompatibilitätsprobleme mit dem Protokoll beim Hinzufügen einer Anwendung, die nicht aus dem Katalog stammt und die SCIM 2.0 unterstützt, in Azure AD beheben.
 services: active-directory
 documentationcenter: ''
-author: asmalser
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.author: asmalser
+ms.author: mimart
+ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2a2c1c415d0862b2631fa749241a9ae07df3b98
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880150"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65963180"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -44,7 +45,7 @@ In diesem Artikel werden aktuelle und ehemalige Probleme mit dem Bereitstellungs
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Wurden die beschriebenen Dienstkorrekturen automatisch auf meine vorhandene SCIM-App angewandt?
 
- Nein. Da dies einen Breaking Change für SCIM-Apps, die mit dem älteren Verhalten programmiert wurden, bedeutet hätte, wurden die Änderungen nicht automatisch auf vorhandene Apps angewandt.
+Nein. Da dies einen Breaking Change für SCIM-Apps, die mit dem älteren Verhalten programmiert wurden, bedeutet hätte, wurden die Änderungen nicht automatisch auf vorhandene Apps angewandt.
 
 Die Änderungen gelten für alle neuen [SCIM-Apps, die nicht im Katalog enthalten sind](configure-single-sign-on-non-gallery-applications.md) und nach dem Datum der Korrektur im Azure-Portal konfiguriert werden.
 

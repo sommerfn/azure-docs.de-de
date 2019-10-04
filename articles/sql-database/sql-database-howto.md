@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7db9c6400ac7d235153a59965e34e30d9b809a81
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 98c522f3d2718691e32b4e78180027b69f28289f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359694"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568008"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Verwenden von Azure SQL-Datenbank
 
@@ -25,7 +24,7 @@ In diesem Abschnitt sind verschiedene Anleitungen, Skripts und Erläuterungen au
 
 ## <a name="load-data"></a>Laden von Daten
 
-- [Kopieren von Einzeldatenbanken oder in einem Pool zusammengefassten Datenbanken innerhalb von Azure](sql-database-copy.md)
+- [Kopieren von Einzel- oder Pooldatenbanken innerhalb von Azure](sql-database-copy.md)
 - [Importieren einer Datenbank über eine BACPAC-Datei](sql-database-import.md)
 - [Exportieren einer Datenbank in eine BACPAC-Datei](sql-database-export.md)
 - [Laden von Daten mit BCP](sql-database-load-from-csv-with-bcp.md)

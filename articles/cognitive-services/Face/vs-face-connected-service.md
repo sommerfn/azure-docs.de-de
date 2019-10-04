@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Gesichtserkennungs-API, C#'
 titleSuffix: Azure Cognitive Services
-description: Erstellen Sie eine einfache Windows-App, die die Gesichtserkennungs-API von Cognitive Services verwendet, um Merkmale von Gesichtern in einem Bild zu erkennen.
+description: Hier erfahren Sie, wie Sie eine Windows-App erstellen, die die Gesichtserkennungs-API von Cognitive Services verwendet, um Merkmale von Gesichtern in einem Bild zu erkennen.
 services: cognitive-services
 author: ghogen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 07/03/2019
 ms.author: ghogen
-ms.openlocfilehash: aafa115ee1e270b903e958e5b43826dfb4ff8bdb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7907a79289149d9e165dd6df0c09bee596e624e2
+ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435225"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67606812"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Herstellen einer Verbindung mit der Gesichtserkennungs-API von Cognitive Services mithilfe der verbundenen Dienste in Visual Studio
 
@@ -25,8 +25,8 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **Ein Azure-Abonnement**. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/)registrieren.
-- **Visual Studio 2017, Version 15.7** mit installierter Workload **Webentwicklung**. [Jetzt herunterladen](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/)registrieren.
+- Eine Installation von Visual Studio 2017 (Version 15.7 oder höher) mit der Workload für **Webentwicklung**. [Jetzt herunterladen](https://www.visualstudio.com/downloads/).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 

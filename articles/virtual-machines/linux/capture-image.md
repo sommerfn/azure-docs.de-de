@@ -4,7 +4,7 @@ description: Erfassen Sie mit der Azure-Befehlszeilenschnittstelle (Azure CLI) e
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.assetid: e608116f-f478-41be-b787-c2ad91b5a802
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 5022d765b5dfa4f1f973b7fb4370d5314bb887b8
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 328748b9dd81834b9c69f81bc0bda60c9ad12cb0
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731936"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "68879972"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Vorgehensweise zum Erstellen eines Image von einem virtuellen Computer oder einer VHD
 
@@ -30,6 +30,8 @@ Um mehrere Kopien eines virtuellen Computers (Virtual Machine, VM) für die Verw
 
 Wenn Sie zum Sichern oder Debuggen eine Kopie Ihres vorhandenen virtuellen Linux-Computers erstellen oder eine spezielle Linux-VHD über einen lokalen virtuellen Computer hochladen möchten, lesen Sie [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage](upload-vhd.md).  
 
+Sie können den **Azure VM Image Builder (Public Preview)** -Dienst nutzen, um ein eigenes Bild zu erstellen, ohne vorher den Umgang mit Tools zu erlernen oder eine Buildpipeline einzurichten. Sie geben einfach nur eine Bildkonfiguration und der Image Builder erstellt das Bild. Weitere Informationen finden Sie unter [„Erste Schritte mit Azure VM Image Builder“](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
+
 Sie können Ihre benutzerdefinierte Konfiguration auch mit **Packer** erstellen. Weitere Informationen finden Sie unter [Vorgehensweise zum Erstellen von Images von virtuellen Linux-Computern in Azure mit Packer](build-image-with-packer.md).
 
 Damit Sie ein Image erstellen können, müssen die folgenden Voraussetzungen erfüllt sein:
@@ -38,9 +40,9 @@ Damit Sie ein Image erstellen können, müssen die folgenden Voraussetzungen erf
 
 * Die neueste Version von [Azure CLI](/cli/azure/install-az-cli2) muss installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index#az-login) bei einem Azure-Konto angemeldet sein.
 
-## <a name="quick-commands"></a>Schnellbefehle
+## <a name="prefer-a-tutorial-instead"></a>Bevorzugen Sie stattdessen ein Tutorial?
 
-Eine vereinfachte Version dieses Artikels sowie Informationen zum Testen und Auswerten oder zu VMs in Azure finden Sie unter [Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit der Azure-Befehlszeilenschnittstelle](tutorial-custom-images.md).
+Eine vereinfachte Version dieses Artikels sowie Informationen zum Testen und Auswerten oder zu VMs in Azure finden Sie unter [Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit der Azure-Befehlszeilenschnittstelle](tutorial-custom-images.md).  Lesen Sie andernfalls hier weiter, um das vollständige Bild zu erhalten.
 
 
 ## <a name="step-1-deprovision-the-vm"></a>Schritt 1: Aufheben der Bereitstellung des virtuellen Computers
@@ -56,18 +58,20 @@ Zuerst heben Sie die Bereitstellung des virtuellen Computers mithilfe des Azure-
    > Führen Sie diesen Befehl nur auf einem virtuellen Computer aus, den Sie als Image erfassen möchten. Die Ausführung dieses Befehls garantiert nicht, dass alle vertraulichen Informationen aus dem Image gelöscht werden oder dass es für eine erneute Verteilung geeignet ist. Der Parameter `+user` entfernt auch das zuletzt bereitgestellte Benutzerkonto. Wenn die Anmeldeinformationen des Benutzerkontos auf dem virtuellen Computer verbleiben sollen, verwenden Sie nur `-deprovision`.
  
 3. Geben Sie **y** ein, um fortzufahren. Sie können den Parameter `-force` hinzufügen, um diesen Bestätigungsschritt zu vermeiden.
-4. Geben Sie nach der Ausführung dieses Befehls den Befehl **exit** ein, um den SSH-Client zu schließen.
+4. Geben Sie nach der Ausführung dieses Befehls den Befehl **exit** ein, um den SSH-Client zu schließen.  Der virtuelle Computer wird zu diesem Zeitpunkt immer noch ausgeführt.
 
 ## <a name="step-2-create-vm-image"></a>Schritt 2: Erstellen des VM-Image
 Verwenden Sie Azure CLI, um die VM als generalisiert zu kennzeichnen und das Image zu erfassen. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u.a. *myResourceGroup*, *myVnet* und *myVM*.
 
-1. Heben Sie die Zuordnung des virtuellen Computers auf, dessen Bereitstellung Sie mit [az vm deallocate](/cli/azure/vm) aufgehoben haben. Im folgenden Beispiel wird die Zuordnung des virtuellen Computers *myVM* in der Ressourcengruppe *myResourceGroup* aufgehoben.
+1. Heben Sie die Zuordnung des virtuellen Computers auf, dessen Bereitstellung Sie mit [az vm deallocate](/cli/azure/vm) aufgehoben haben. Im folgenden Beispiel wird die Zuordnung des virtuellen Computers *myVM* in der Ressourcengruppe *myResourceGroup* aufgehoben.  
    
     ```azurecli
     az vm deallocate \
       --resource-group myResourceGroup \
       --name myVM
     ```
+    
+    Warten Sie, bis die Zuordnung des virtuellen Computers vollständig aufgehoben wurde. Dies kann einige Minuten in Anspruch nehmen.  Der virtuelle Computer wird während der Aufhebung der Zuordnung heruntergefahren.
 
 2. Kennzeichnen Sie die VM mit [az vm generalize](/cli/azure/vm) als generalisiert. Im folgenden Beispiel wird der virtuelle Computer *myVM* in der Ressourcengruppe *myResourceGroup* als generalisiert gekennzeichnet.
    
@@ -76,6 +80,8 @@ Verwenden Sie Azure CLI, um die VM als generalisiert zu kennzeichnen und das Ima
       --resource-group myResourceGroup \
       --name myVM
     ```
+
+    Eine VM, die generalisiert wurde, kann nicht mehr neu gestartet werden.
 
 3. Erstellen Sie ein Image der VM-Ressource mit [az image create](/cli/azure/image#az-image-create). Im folgenden Beispiel wird ein Image mit dem Namen *myImage* in der Ressourcengruppe *myResourceGroup* mit der VM-Ressource *myVM* erstellt.
    
@@ -89,6 +95,8 @@ Verwenden Sie Azure CLI, um die VM als generalisiert zu kennzeichnen und das Ima
    > Das Image wird in derselben Ressourcengruppe wie der virtuelle Quellcomputer erstellt. Sie können aus diesem Image virtuelle Computer in einer beliebigen Ressourcengruppe in Ihrem Abonnement erstellen. Angesichts der Verwaltung können Sie eine spezifische Ressourcengruppe für die VM-Ressourcen und Images erstellen.
    >
    > Wenn Sie das Image in Speicher mit Zonenresilienz speichern möchten, müssen Sie es in einer Region erstellen, die [Verfügbarkeitszonen](../../availability-zones/az-overview.md) unterstützt, und den `--zone-resilient true`-Parameter einbeziehen.
+   
+Dieser Befehl gibt JSON zurück, das das VM-Image beschreibt. Speichern Sie diese Ausgabe zur späteren Referenznahme.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>Schritt 3: Bereitstellen eines virtuellen Computers anhand des erfassten Images
 Erstellen Sie anhand des erstellten Images einen virtuellen Computer mit [az vm create](/cli/azure/vm). Im folgenden Beispiel wird ein virtueller Computer mit dem Namen *myVMDeployed* anhand des Images *myImage* erstellt.

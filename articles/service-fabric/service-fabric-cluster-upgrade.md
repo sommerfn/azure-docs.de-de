@@ -3,7 +3,7 @@ title: Upgrade eines Azure Service Fabric-Clusters | Microsoft Docs
 description: Hier erfahren Sie, wie Sie ein Upgrade für die Version oder Konfiguration eines Azure Service Fabric-Clusters durchführen.  In diesem Artikel wird beschrieben, wie Sie den Clusterupdatemodus festlegen, Zertifikatupgrades vornehmen, Anwendungsports hinzufügen und Betriebssystempatches anwenden. Außerdem wird erläutert, was Sie beim Durchführen der Upgrades erwarten können.
 services: service-fabric
 documentationcenter: .net
-author: aljo-microsoft
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
-ms.author: aljo
-ms.openlocfilehash: 3ddda89b19a04bdcd45f392f297ee5e930833538
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.author: atsenthi
+ms.openlocfilehash: 2c8465a3aba4a21efaa20a118807d739dd501b09
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663535"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68599784"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Upgrade und Update von Azure Service Fabric-Clustern
 
@@ -99,11 +99,11 @@ Sie können benutzerdefinierte Integritätsrichtlinien angeben oder die aktuelle
 Viele verschiedene Konfigurationseinstellungen wie Zuverlässigkeitsstufe des Clusters und Knoteneigenschaften können in einem Cluster angepasst werden. Weitere Informationen finden Sie unter [Anpassen von Service Fabric-Clustereinstellungen](service-fabric-cluster-fabric-settings.md).
 
 ## <a name="patch-the-os-in-the-cluster-nodes"></a>Betriebssystempatches für Clusterknoten
-Die Anwendung für die Patchorchestrierung (POA) ist eine Service Fabric-Anwendung, mit der das Aufspielen von Betriebssystempatches in einem Service Fabric-Cluster ohne Ausfallzeiten automatisiert werden kann. Die [Anwendung für die Patchorchestrierung für Windows](service-fabric-patch-orchestration-application.md) oder die [Anwendung für die Patchorchestrierung für Linux](service-fabric-patch-orchestration-application-linux.md) kann in Ihrem Cluster bereitgestellt werden, um Patches auf orchestrierte Weise zu installieren und dafür zu sorgen, dass die Dienste jederzeit verfügbar bleiben. 
+Die Anwendung für die Patchorchestrierung (POA) ist eine Service Fabric-Anwendung, mit der das Aufspielen von Betriebssystempatches in einem Service Fabric-Cluster ohne Ausfallzeiten automatisiert werden kann. Die [Anwendung für die Patchorchestrierung für Windows](service-fabric-patch-orchestration-application.md) kann in Ihrem Cluster bereitgestellt werden, um Patches auf orchestrierte Weise zu installieren und gleichzeitig dafür zu sorgen, dass die Dienste jederzeit verfügbar bleiben.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informieren Sie sich über die Vorgehensweise zum Anpassen einiger [Customize Service Fabric cluster settings and Fabric Upgrade policy](service-fabric-cluster-fabric-settings.md)
+* Informieren Sie sich über das [Anpassen von Service Fabric-Clustereinstellungen](service-fabric-cluster-fabric-settings.md).
 * Machen Sie sich mit der Vorgehensweise zum [Skalieren Ihres Clusters](service-fabric-cluster-scale-up-down.md)
 * Machen Sie sich mit [Anwendungsupgrades](service-fabric-application-upgrade.md)
 

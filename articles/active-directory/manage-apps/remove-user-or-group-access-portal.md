@@ -1,57 +1,53 @@
 ---
-title: Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App in Azure Active Directory | Microsoft-Dokumentation
+title: Entfernen von Benutzer- oder Gruppenzuweisungen aus einer App in Azure Active Directory | Microsoft-Dokumentation
 description: Entfernen der Zugriffszuweisung eines Benutzers oder einer Gruppe aus einer Unternehmens-App in Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: msmimart
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/14/2018
-ms.author: celested
+ms.date: 04/12/2019
+ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b72ec628e048560fbfb9da63123bbb7461811b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 380816283156969c47f45a9b47435688df91f4ca
+ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074283"
+ms.lasthandoff: 07/22/2019
+ms.locfileid: "68381046"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App in Azure Active Directory
-In Azure Active Directory (Azure AD) können Sie auf einfache Weise eine Benutzer- oder Gruppenzuweisung für den Zugriff auf eine Ihrer Unternehmensanwendungen entfernen. Sie benötigen die entsprechenden Berechtigungen zum Verwalten der Unternehmens-App, und Sie müssen globaler Administrator für das Verzeichnis sein.
+
+In Azure Active Directory (Azure AD) können Sie auf einfache Weise eine Benutzer- oder Gruppenzuweisung für den Zugriff auf eine Ihrer Unternehmensanwendungen entfernen. Sie müssen über die entsprechenden Berechtigungen zum Verwalten der Unternehmens-App verfügen. Außerdem müssen Sie ein globaler Administrator für das Verzeichnis sein.
 
 > [!NOTE]
 > Verwenden Sie für Microsoft-Anwendungen (etwa Office 365-Apps) PowerShell, um Benutzer aus einer Unternehmens-App zu entfernen.
 
 ## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-in-the-azure-portal"></a>Wie entferne ich im Azure-Portal eine Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App?
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Weitere Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
-3. Wählen Sie auf der Seite **Azure Active Directory – *Verzeichnisname*** (also der Azure AD-Seite für das Verzeichnis, das Sie verwalten) die Option **Unternehmensanwendungen** aus.
-
-    ![Öffnen von Unternehmens-Apps](./media/remove-user-or-group-access-portal/open-enterprise-apps.png)
-4. Wählen Sie auf der Seite **Unternehmensanwendungen** die Option **Alle Anwendungen** aus. Es wird eine Liste aller Apps angezeigt, die Sie verwalten können.
-5. Wählen Sie auf der Seite **Unternehmensanwendungen – Alle Anwendungen** eine App aus.
-6. Wählen Sie auf der Seite ***App-Name*** (der Seite mit dem Namen der ausgewählten App im Titel) die Option **Benutzer und Gruppen** aus.
-
-    ![Auswählen von Benutzern oder Gruppen](./media/remove-user-or-group-access-portal/remove-app-users.png)
-7. Wählen Sie auf der Seite ***App-Name*** **– Benutzer- und Gruppenzuweisung** mindestens einen Benutzer oder eine Gruppe aus, und klicken Sie dann auf den Befehl **Entfernen**. Bestätigen Sie Ihre Entscheidung, wenn Sie dazu aufgefordert werden.
-
-    ![Auswählen des Befehls „Entfernen“](./media/remove-user-or-group-access-portal/remove-users.png)
+1. Wählen Sie **Alle Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
+1. Wählen Sie auf der Seite **Azure Active Directory – *Verzeichnisname*** (also der Azure AD-Seite für das Verzeichnis, das Sie verwalten) die Option **Unternehmensanwendungen** aus.
+1. Auf der Seite **Unternehmensanwendungen – Alle Anwendungen** wird eine Liste der Apps angezeigt, die Sie verwalten können. Wählen Sie eine App aus.
+1. Wählen Sie auf der Übersichtsseite ***App-Name*** (also der Seite mit dem Namen der ausgewählten App im Titel) die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie auf der Seite ***App-Name*** **– Benutzer- und Gruppenzuweisung** mindestens einen Benutzer oder eine Gruppe aus, und klicken Sie dann auf den Befehl **Entfernen**. Bestätigen Sie Ihre Entscheidung, wenn Sie dazu aufgefordert werden.
 
 ## <a name="how-do-i-remove-a-user-or-group-assignment-to-an-enterprise-app-using-powershell"></a>Wie entferne ich mithilfe von PowerShell eine Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App?
+
 1. Öffnen Sie eine Windows PowerShell-Eingabeaufforderung mit erhöhten Rechten.
 
-    >[!NOTE] 
-    > Sie müssen das AzureAD-Modul installieren (verwenden Sie den Befehl `Install-Module -Name AzureAD`). Wenn Sie zum Installieren eines NuGet-Moduls oder des neuen Azure Active Directory V2-PowerShell-Moduls aufgefordert werden, geben Sie „J“ ein, und drücken Sie die EINGABETASTE.
+   > [!NOTE]
+   > Sie müssen das AzureAD-Modul installieren (verwenden Sie den Befehl `Install-Module -Name AzureAD`). Wenn Sie zum Installieren eines NuGet-Moduls oder des neuen Azure Active Directory V2-PowerShell-Moduls aufgefordert werden, geben Sie „J“ ein, und drücken Sie die EINGABETASTE.
 
-2. Führen Sie `Connect-AzureAD` aus, und melden Sie sich mit dem Benutzerkonto eines globalen Administrators an.
-3. Entfernen Sie mithilfe des folgenden Skripts einen Benutzer und eine Rolle aus einer Anwendung:
+1. Führen Sie `Connect-AzureAD` aus, und melden Sie sich mit dem Benutzerkonto eines globalen Administrators an.
+1. Entfernen Sie mithilfe des folgenden Skripts einen Benutzer und eine Rolle aus einer Anwendung:
 
     ```powershell
     # Store the proper parameters
@@ -66,8 +62,9 @@ In Azure Active Directory (Azure AD) können Sie auf einfache Weise eine Benutze
 
     #To remove the App role assignment run the following command.
     Remove-AzureADServiceAppRoleAssignment -ObjectId $spo.ObjectId -AppRoleAssignmentId $assignments[assignment #].ObjectId
-    ``` 
-   ## <a name="next-steps"></a>Nächste Schritte
+    ```
+
+## <a name="next-steps"></a>Nächste Schritte
 
 - [Alle meine Gruppen anzeigen](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](assign-user-or-group-access-portal.md)

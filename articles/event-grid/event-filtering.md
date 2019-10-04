@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 87599b05a3569bf6f28880352185a131f48a7f52
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470621"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390174"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements
 
@@ -43,7 +43,7 @@ Zum einfachen Filtern nach Betreff geben Sie einen Start- oder Endwert für den 
 
 Erstellen Sie beim Veröffentlichen von Ereignissen für benutzerdefinierte Themen Betreffinformationen für Ihre Ereignisse, an denen Abonnenten einfach erkennen können, ob Interesse am Ereignis besteht. Abonnenten verwenden die Betreffeigenschaft zum Filtern und Weiterleiten von Ereignissen. Erwägen Sie, den Pfad zum Ereignisort hinzuzufügen, damit Abonnenten nach Segmenten dieses Pfads filtern können. Mit dem Pfad können Abonnenten Ereignisse speziell oder allgemein filtern. Wenn Sie einen Pfad mit drei Segmenten im Betreff angeben, z.B. `/A/B/C`, können Abonnenten nach dem ersten Segment `/A` filtern, um eine umfassendere Gruppe von Ereignissen angezeigt zu bekommen. Diese Abonnenten erhalten Ereignisse mit Betreffinformationen wie `/A/B/C` oder `/A/D/E`. Andere Abonnenten können nach `/A/B` filtern, um eine eingeschränktere Gruppe mit Ereignissen zu erhalten.
 
-Die JSON-Syntax für das Filtern nach Ereignistyp lautet:
+Die JSON-Syntax für das Filtern nach Betreff lautet:
 
 ```json
 "filter": {
@@ -61,23 +61,40 @@ Um nach Werten in den Datenfeldern zu filtern und den Vergleichsoperator anzugeb
 * Schlüssel – Feld in den Ereignisdaten, die Sie für die Filterung verwenden. Sie können eine Zahl, boolescher Wert oder Zeichenfolge eingeben.
 * Wert oder Werte – Werte, die mit dem Schlüssel verglichen werden sollen.
 
-Die JSON-Syntax für die Verwendung der erweiterten Filterung lautet:
+Wenn Sie einen einzelnen Filter mit mehreren Werten angeben, wird ein **OR**-Vorgang ausgeführt, daher muss das Schlüsselfeld einen der folgenden Werte aufweisen. Beispiel:
 
 ```json
-"filter": {
-  "advancedFilters": [
+"advancedFilters": [
     {
-      "operatorType": "NumberGreaterThanOrEquals",
-      "key": "Data.Key1",
-      "value": 5
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/",
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
+    }
+]
+```
+
+Wenn Sie mehrere verschiedene Filter angeben, wird ein **AND**-Vorgang ausgeführt, sodass jede Filterbedingung erfüllt sein muss. Beispiel: 
+
+```json
+"advancedFilters": [
+    {
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/"
+        ]
     },
     {
-      "operatorType": "StringContains",
-      "key": "Subject",
-      "values": ["container1", "container2"]
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
     }
-  ]
-}
+]
 ```
 
 ### <a name="operator"></a>Operator
@@ -109,7 +126,7 @@ Verwenden Sie für Ereignisse im Event Grid-Schema die folgenden Werte für den 
 
 * id
 * Thema
-* Antragsteller
+* Subject
 * EventType
 * DataVersion
 * Ereignisdaten (z.B. Data.key1)
@@ -117,7 +134,7 @@ Verwenden Sie für Ereignisse im Event Grid-Schema die folgenden Werte für den 
 Verwenden Sie für Ereignisse im Cloud Events-Schema die folgenden Werte für den Schlüssel:
 
 * EventId
-* Quelle
+* `Source`
 * EventType
 * EventTypeVersion
 * Ereignisdaten (z.B. Data.key1)
@@ -131,7 +148,7 @@ Diese Werte sind möglich:
 * number
 * Zeichenfolge
 * boolean
-* Array
+* array
 
 ### <a name="limitations"></a>Einschränkungen
 
@@ -140,8 +157,6 @@ Für die erweiterte Filterung gelten folgende Einschränkungen:
 * Fünf erweiterte Filter pro Event Grid-Abonnement
 * 512 Zeichen pro Zeichenfolgenwert
 * Fünf Werte für **in**- und **not in**-Operatoren
-* Der Schlüssel darf nur eine Schachtelungsebene aufweisen (z.B. data.key1).
-* Benutzerdefinierte Ereignisschemas können nur nach Feldern der obersten Ebene gefiltert werden.
 
 Der gleiche Schlüssel kann in mehr als einem Filter verwendet werden.
 

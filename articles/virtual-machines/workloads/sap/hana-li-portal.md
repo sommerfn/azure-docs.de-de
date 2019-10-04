@@ -4,24 +4,23 @@ description: In diesem Artikel wird beschrieben, wie Sie sich über das Portal b
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/02/2019
+ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8240308b3e0955b1d4d3ef2e82cad215daf95b00
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 3c14ff9c4f6d2bc2b1a62d1874d01950d09491c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009367"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099819"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Steuerung von HANA in Azure (große Instanzen) über das Azure-Portal
 Dieses Dokument beschreibt, wie [HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) im [Azure-Portal](https://portal.azure.com) dargestellt wird und welche Aktivitäten Sie über das Azure-Portal mit den für Sie bereitgestellten Einheiten von HANA (große Instanzen) ausführen können. Die Sichtbarkeit von HANA (große Instanzen) im Azure-Portal wird über einen Azure-Ressourcenanbieter für HANA (große Instanzen) bereitgestellt. Diese Funktion befindet sich derzeit in der öffentlichen Vorschau.
@@ -73,14 +72,22 @@ Wenn Sie mehrere Mandanten für HANA (große Instanzen) unter demselben Azure-Ab
 ## <a name="look-at-attributes-of-single-hli-unit"></a>Anzeigen von Attributen einer einzelnen HLI-Einheit
 In der Liste der Einheiten von HANA (große Instanzen) können Sie auf eine einzelne Einheit klicken und zu den Details der einzelnen Einheit von HANA (große Instanzen) gelangen. 
 
-Auf der Übersichtsseite erhalten Sie eine Darstellung der Einheit, die in etwa folgendermaßen aussieht:
+Auf der Übersichtsseite erhalten Sie nach Klicken auf „Mehr anzeigen“ eine Darstellung der Einheit, die in etwa folgendermaßen aussieht:
 
 ![Anzeigen einer Übersicht über eine HLI-Einheit](./media/hana-li-portal/portal-show-overview.png)
 
 Wenn Sie die verschiedenen dargestellten Attribute betrachten, unterscheiden sich diese Attribute nicht wesentlich von Azure-VM-Attributen. Auf der linken Seite des Headers werden die Ressourcengruppe, die Azure-Region, der Abonnementname und die ID sowie einige von Ihnen hinzugefügte Tags angezeigt. Standardmäßig ist den Einheiten von HANA (große Instanzen) kein Tag zugewiesen. Auf der rechten Seite des Headers wird der Name der Einheit so aufgeführt, wie er bei der Bereitstellung zugewiesen wurde. Außerdem werden das Betriebssystem und die IP-Adresse angezeigt. Wie bei VMs wird auch der Einheitentyp von HANA (große Instanzen) mit der Anzahl von CPU-Threads und dem Arbeitsspeicher aufgeführt. Weitere Informationen zu den verschiedenen Einheiten von HANA (große Instanzen) finden Sie hier:
 
 - [Verfügbare SKUs für HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus)
-- [SAP HANA-Speicherarchitektur (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture) 
+- [Speicherarchitektur von SAP HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture) 
+
+Weitere Daten auf der rechten unteren Seite sind die Revision des Stamps von SAP HANA (große Instanzen). Mögliche Werte:
+
+- Revision 3
+- Revision 4
+
+Revision 4 ist die neueste Architektur von SAP HANA (große Instanzen) mit wesentlichen Verbesserungen in der Netzwerklatenz zwischen Azure-VMs und Einheiten von SAP HANA (große Instanzen), die in Revision 4-Stamps oder -Reihen bereitgestellt werden.
+Eine weitere sehr wichtige Information finden Sie in der rechten unteren Ecke der Übersicht mit dem Namen der Azure-Näherungsplatzierungsgruppe, die automatisch für jede bereitgestellte Einheit von SAP HANA (große Instanzen) erstellt wird. Diese Näherungsplatzierungsgruppe muss bei der Bereitstellung der Azure-VMs referenziert werden, die die SAP-Anwendungsschicht hosten. Durch die Verwendung der [Azure-Näherungsplatzierungsgruppe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location), die der Einheit von SAP HANA (große Instanzen) zugeordnet ist, stellen Sie sicher, dass die Azure-VMs in unmittelbarer Nähe der Einheit von SAP HANA (große Instanzen) bereitgestellt werden. Die Art und Weise, wie Näherungsplatzierungsgruppen verwendet werden können, um die SAP-Anwendungsschicht im gleichen Azure-Rechenzentrum wie die als Revision 4 gehosteten Einheiten von SAP HANA (große Instanzen) unterzubringen, ist in [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) beschrieben.
 
 Ein zusätzliches Feld in der rechten Spalte des Headers informiert Sie über den Energiezustand der Einheit von HANA (große Instanzen).
 
@@ -88,6 +95,7 @@ Ein zusätzliches Feld in der rechten Spalte des Headers informiert Sie über de
 > Der Energiezustand beschreibt, ob die Hardwareeinheit ein- oder ausgeschaltet ist. Er gibt keinen Aufschluss darüber, ob das Betriebssystem ausgeführt wird. Wenn Sie HANA (große Instanzen) neu starten, dauert es einen Augenblick, bis der Zustand der Einheit von **Wird gestartet** zu **Gestartet** wechselt. Der Zustand **Gestartet** weist darauf hin, dass das Betriebssystem gerade gestartet wird oder bereits vollständig gestartet wurde. Daher können Sie sich nach einem Neustart der Einheit möglicherweise nicht sofort bei der Einheit anmelden, sobald der Zustand zu **Gestartet** wechselt.
 > 
 
+Wenn Sie auf „Mehr anzeigen“ klicken, werden zusätzliche Informationen angezeigt. Eine zusätzliche Information zeigt die Revision des Stamps von SAP HANA (große Instanzen), wo die Einheit bereitgestellt wurde. Informationen zu den verschiedenen Revisionen der Stamps von SAP HANA (große Instanzen) finden Sie im Artikel [Was ist SAP HANA in Azure (große Instanzen)?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
 
 ## <a name="check-activities-of-a-single-hana-large-instance-unit"></a>Überprüfen von Aktivitäten einer einzelnen Einheit von HANA (große Instanzen) 
 Neben einem Überblick über HANA (große Instanzen) erhalten Sie auch die Möglichkeit, Aktivitäten der jeweiligen Einheit zu überprüfen. Ein Aktivitätsprotokoll könnte wie folgt aussehen:
@@ -136,7 +144,7 @@ Damit der Dienst von SAP HANA (große Instanzen) im nächsten Bildschirm aufgef�
 
 ![Auswählen aller Dienste im Azure-Portal](./media/hana-li-portal/portal-create-service-request.png)
 
-In der Liste der Dienste finden Sie den Dienst **SAP HANA (große Instanzen)**. Wenn Sie diesen Dienst auswählen, können Sie, wie dargestellt, bestimmte Problemtypen auswählen:
+In der Liste der Dienste finden Sie den Dienst **SAP HANA (große Instanzen)** . Wenn Sie diesen Dienst auswählen, können Sie, wie dargestellt, bestimmte Problemtypen auswählen:
 
 
 ![Auswählen der Problemklasse im Azure-Portal](./media/hana-li-portal/portal-select-problem-class.png)

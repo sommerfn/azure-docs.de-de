@@ -17,12 +17,12 @@
       href: quick-create-net.md
     - name: 'Festlegen und Abrufen eines Geheimnisses: .Node.js'
       href: quick-create-node.md
-    - name: 'Festlegen und Abrufen eines Geheimnisses: Azure Resource Manager-Vorlage'
+    - name: 'Festlegen und Abrufen eines Geheimnisses: Vorlage'
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: Lernprogramme
   items:
-    - name: 'Azure-Web-Apps '
+    - name: Azure-Web-Apps
       items:
         - name: Azure Key Vault mit Azure-Web-App in .NET
           href: tutorial-net-create-vault-azure-web-app.md
@@ -42,10 +42,12 @@
               href: tutorial-python-windows-virtual-machine.md
     - name: Speicherkontoschlüssel
       items:
-        - name: Verwaltete Speicherkontoschlüssel mit der Azure CLI
+        - name: Verwalten von Speicherkontoschlüsseln mit der Azure-Befehlszeilenschnittstelle
           href: key-vault-ovw-storage-keys.md
-        - name: Verwaltete Speicherkontoschlüssel mit PowerShell
+        - name: Verwalten von Speicherkontoschlüsseln mit PowerShell
           href: key-vault-overview-storage-keys-powershell.md
+        - name: Abrufen von Shared Access Signature-Token im Code
+          href: storage-keys-sas-tokens-code.md
     - name: Azure-Container
       href: ../container-instances/container-instances-managed-identity.md
     - name: Azure Resource Manager-Vorlage
@@ -58,23 +60,23 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=key-vault'
 - name: Konzepte
   items:
+    - name: Grundlegende Konzepte
+      href: basic-concepts.md
     - name: Sicherheit
       items:
         - name: Sicherheitsübersicht
           href: overview-security.md
-        - name: Allgemeine Sicherheitsattribute
-          href: key-vault-security-attributes.md
         - name: Sicherheitsumgebungen (Security Worlds)
           href: key-vault-ovw-security-worlds.md
         - name: Schützen einer Key Vault-Instanz
           href: key-vault-secure-your-key-vault.md
-    - name: Was ist Key Vault?
-      href: key-vault-whatis.md
+        - name: Integrierte Sicherheitskontrollen
+          href: key-vault-security-controls.md
     - name: Vorläufiges Löschen
       href: key-vault-ovw-soft-delete.md
     - name: Drosselung
       href: key-vault-ovw-throttling.md
-    - name: Dienstendpunkte im virtuellen Netzwerk
+    - name: VNET-Dienstendpunkte
       href: key-vault-overview-vnet-service-endpoints.md
     - name: 'Authentifizierung, Anforderungen und Antworten'
       href: authentication-requests-and-responses.md
@@ -90,10 +92,18 @@
           href: create-certificate.md
         - name: Überwachen und Verwalten der Zertifikaterstellung
           href: create-certificate-scenarios.md
-    - name: Allgemeine Azure-Sicherheitsattribute
-      href: key-vault-security-attributes.md
 - name: Anleitungen
   items:
+    - name: Sicherheit
+      items:
+        - name: Empfehlungen
+          href: security-recommendations.md
+    - name: Authentication
+      items:
+        - name: Verwenden einer verwalteten App Service-Identität
+          href: managed-identity.md
+        - name: Verwenden einer Zugriffssteuerungsrichtlinie
+          href: key-vault-group-permissions-for-apps.md
     - name: Azure Key Vault-Protokollierung
       href: key-vault-logging.md
     - name: Zugreifen hinter Firewalls
@@ -108,8 +118,6 @@
       href: key-vault-soft-delete-cli.md
     - name: Verwenden des vorläufigen Löschens in Key Vault mit Azure PowerShell
       href: key-vault-soft-delete-powershell.md
-    - name: Gewähren des Zugriffs mithilfe von Gruppen
-      href: key-vault-group-permissions-for-apps.md
     - name: Konfigurieren von Firewalls und virtuellen Netzwerken
       href: key-vault-network-security.md
     - name: Java-Entwicklung
@@ -164,8 +172,6 @@
       href: common-parameters-and-headers.md
     - name: Kundendaten
       href: key-vault-customer-data.md
-    - name: Versionsinformationen
-      href: key-vault-versions.md
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/key-vault/'
     - name: Regionale Verfügbarkeit

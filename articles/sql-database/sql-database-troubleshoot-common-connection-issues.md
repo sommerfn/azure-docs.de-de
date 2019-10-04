@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
+manager: dcscontentpm
 ms.author: daleche
 ms.reviewer: jrasnik
-manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d278fd6ed06b58db052154e632e565de36853e77
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cd0ab6d89d88c594d283dc0718c0f58ebb98bf43
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464890"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090800"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank
 
@@ -35,7 +35,7 @@ Verbindungsprobleme können folgende Ursachen haben:
 * Firewalleinstellungen
 * Verbindungstimeout
 * Falsche Anmeldeinformationen
-* Einige Azure SQL-Datenbankressourcen haben ihr maximales Limit erreicht
+* Einige Azure SQL-Datenbank-Ressourcen haben ihr maximales Limit erreicht
 
 Im Allgemeinen können Verbindungsprobleme mit der Azure SQL-Datenbank wie folgt klassifiziert werden:
 
@@ -83,7 +83,7 @@ Wenn die Anwendung dauerhaft keine Verbindung mit der Azure SQL-Datenbank herste
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchsuchen der Dokumentation zu Microsoft Azure](https://azure.microsoft.com/search/documentation/)
-* [Anzeigen der neuesten Updates zum Azure SQL-Datenbankdienst](https://azure.microsoft.com/updates/?service=sql-database)
+* [Anzeigen der neuesten Updates zum Azure SQL-Datenbank-Dienst](https://azure.microsoft.com/updates/?service=sql-database)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)

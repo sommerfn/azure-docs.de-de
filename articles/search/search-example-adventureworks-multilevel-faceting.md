@@ -1,19 +1,19 @@
 ---
 title: 'Beispiel: Facets auf mehreren Ebenen – Azure Search'
 description: Informationen zum Erstellen von Facetingstrukturen für Taxonomien mit mehreren Ebenen zum Erstellen einer geschachtelten Navigationsstruktur, die Sie in Anwendungsseiten einbeziehen können.
-author: cstone
-manager: cgronlun
+author: HeidiSteen
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/25/2019
-ms.author: chstone
-ms.openlocfilehash: 7fa17528931be40109d81edac0f15a6a6822ec01
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 05/02/2019
+ms.author: heidist
+ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194813"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274084"
 ---
 # <a name="example-multi-level-facets-in-azure-search"></a>Beispiel: Facets auf mehreren Ebenen in Azure Search
 
@@ -39,7 +39,7 @@ LEFT JOIN
 
 ## <a name="indexing-to-a-collection-field"></a>Indizierung nach einem Collection-Feld
 
-Erstellen Sie in dem Index, der diese Struktur enthält, im Azure Search-Schema zum Speichern dieser Daten ein **Collection(Edm.String)**-Feld, um sicherzustellen, dass die Feldattribute durchsuchbar, filterbar, facettierbar und abrufbar vorhanden sind.
+Erstellen Sie in dem Index, der diese Struktur enthält, im Azure Search-Schema zum Speichern dieser Daten ein **Collection(Edm.String)** -Feld, um sicherzustellen, dass die Feldattribute durchsuchbar, filterbar, facettierbar und abrufbar vorhanden sind.
 
 Senden Sie nun beim Indizieren von Inhalten, die sich auf eine bestimmte Taxonomiekategorie beziehen, die Taxonomie als Array mit Text aus jeder Ebene. Senden Sie z.B. für eine Entität mit `ProductCategoryId = 5 (Mountain Bikes)` das Feld als `[ "Bikes", "Bikes|Mountain Bikes"]`.
 
@@ -87,7 +87,7 @@ Mit dem **categories**-Objekt kann jetzt eine reduzierbare Taxonomiestruktur mit
   ![Facettierter Filter mit mehreren Ebenen](./media/search-example-adventureworks/multi-level-facet.png "Facettierter Filter mit mehreren Ebenen")
 
  
-Jeder Link in der Struktur sollte den verknüpften Filter anwenden. Beispiel: 
+Jeder Link in der Struktur sollte den verknüpften Filter anwenden. Beispiel:
 
 + **taxonomy/any**`(x:x eq 'Accessories')` gibt alle Dokumente in der Verzweigung „Accessories“ zurück
 + **taxonomy/any**`(x:x eq 'Accessories|Bike Racks')` gibt nur Dokumente mit einer Unterkategorie „Bike Racks“ unter der Verzweigung „Accessories“ zurück.

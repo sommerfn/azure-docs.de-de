@@ -4,23 +4,22 @@ description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Konfigu
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 88051c45f21bdf11807ffcc63d8248cba81ae70b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 68d0f693d0cc7d8db8e6f697ff8907400a7aca50
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118444"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121326"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -30,7 +29,7 @@ In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zu Konfigu
 
 ## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>Gibt es Einschränkungen, die ich berücksichtigen muss, wenn ich App Service-Ressourcen verschieben möchte?
 
-Wenn Sie App Service-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement verschieben möchten, sind einige Einschränkungen zu beachten. Weitere Informationen finden Sie unter [App Service-Einschränkungen](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations).
+Wenn Sie App Service-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement verschieben möchten, sind einige Einschränkungen zu beachten. Weitere Informationen finden Sie unter [App Service-Einschränkungen](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Wie verwende ich einen benutzerdefinierten Domänennamen für meine Web-App?
 
@@ -56,11 +55,11 @@ Informationen zum Erwerben und Einrichten eines SSL-Zertifikats für Ihre App Se
 
 Derzeit unterstützt Azure Application Insights keine Verschiebevorgänge. Wenn Ihre ursprüngliche Ressourcengruppe eine Application Insights-Ressource enthält, können Sie diese Ressource nicht verschieben. Wenn Sie die Application Insights-Ressource in den Versuch des Verschiebens einer App Service-App einschließen, misslingt der gesamte Verschiebevorgang. Application Insights und der App Service-Plan müssen sich allerdings nicht in derselben Ressourcengruppe wie die App befinden, damit die App ordnungsgemäß funktioniert.
 
-Weitere Informationen finden Sie unter [App Service-Einschränkungen](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations).
+Weitere Informationen finden Sie unter [App Service-Einschränkungen](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
 
 ## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>Wo kann ich eine Checkliste finden und mehr über Verschiebevorgänge von Ressourcen erfahren?
 
-Unter [App Service-Einschränkungen](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations) erfahren Sie, wie Sie Ressourcen in ein neues Abonnement oder eine neue Ressourcengruppe im gleichen Abonnement verschieben. Sie erhalten eine Checkliste für das Verschieben von Ressourcen, erfahren, welche Dienste den Verschiebevorgang unterstützen, und finden weitere Informationen zu App Service-Einschränkungen und anderen Themen.
+Unter [App Service-Einschränkungen](../azure-resource-manager/move-limitations/app-service-move-limitations.md) erfahren Sie, wie Sie Ressourcen in ein neues Abonnement oder eine neue Ressourcengruppe im gleichen Abonnement verschieben. Sie erhalten eine Checkliste für das Verschieben von Ressourcen, erfahren, welche Dienste den Verschiebevorgang unterstützen, und finden weitere Informationen zu App Service-Einschränkungen und anderen Themen.
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Wie richte ich die Serverzeitzone für meine Web-App ein?
 
@@ -72,7 +71,7 @@ So richten Sie die Serverzeitzone für Ihre Web-App ein
     * Wert = *Die gewünschte Zeitzone*
 3. Wählen Sie **Speichern** aus.
 
-Akzeptierte Werte finden Sie im Artikel [Standardzeitzonen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) in der Spalte **Zeitzone**.
+Akzeptierte Werte für App-Dienste unter Windows finden Sie im Artikel [Standardzeitzonen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) in der Spalte **Zeitzone**. Legen Sie für App-Dienste, die unter Linux ausgeführt werden, den [Namen der TZ-Datenbank](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) als Zeitzonenwert fest. Dies ist ein Beispiel für den Namen der TZ-Datenbank: America/Adak.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Warum misslingen meine fortlaufend ausgeführten WebJobs mitunter?
 
@@ -97,7 +96,7 @@ Beachten Sie, dass zum Verwenden einer dedizierten oder reservierten IP-Adresse 
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>Kann ich mein App Service-Zertifikat zur Verwendung außerhalb von Azure exportieren, z.B. für eine Website, die an anderer Stelle gehostet wird? 
 
-App Service-Zertifikate gelten als Azure-Ressourcen. Sie sind nicht für eine Nutzung außerhalb Ihrer Azure-Dienste vorgesehen. Sie können sie nicht zur Verwendung außerhalb von Azure exportieren. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu App Service-Zertifikaten und benutzerdefinierten Domänen](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
+Ja, Sie können diese Zertifikate zur Verwendung außerhalb von Azure exportieren. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu App Service-Zertifikaten und benutzerdefinierten Domänen](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview).
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>Kann ich mein App Service-Zertifikat zur Verwendung mit anderen Azure-Clouddiensten exportieren?
 
@@ -152,12 +151,9 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 Die Ausnahme wurde durch ein Problem beim Hybridverbindungs-Manager ausgelöst, das inzwischen behoben wurde. Achten Sie darauf, ein [Update Ihres Hybridverbindungs-Managers](https://go.microsoft.com/fwlink/?LinkID=841308) vorzunehmen, um dieses Problem zu beheben.
 
-## <a name="how-do-i-add-or-edit-a-url-rewrite-rule"></a>Wie kann ich eine URL-Rewrite-Regel hinzufügen oder bearbeiten?
+## <a name="how-do-i-add-a-url-rewrite-rule"></a>Wie kann ich eine URL-Rewrite-Regel hinzufügen?
 
-So können Sie eine URL-Rewrite-Regel hinzufügen oder bearbeiten
-
-1. Richten Sie Internetinformationsdienste-Manager (Internet Information Services, IIS) so ein, dass eine Verbindung mit Ihrer App Service-Web-App hergestellt wird. Informationen zum Herstellen einer Verbindung von IIS-Manager mit App Service finden Sie unter [Remoteverwaltung von Azure-Websites mithilfe des IIS-Managers](https://azure.microsoft.com/blog/remote-administration-of-windows-azure-websites-using-iis-manager/).
-2. Sie können die URL-Rewrite-Regel in IIS-Manager hinzufügen oder bearbeiten. Informationen zum Hinzufügen oder Bearbeiten einer URL-Rewrite-Regel finden Sie unter [Erstellen von Rewrite-Regeln für das URL-Rewrite-Modul](https://www.iis.net/learn/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module).
+Um eine URL-Rewrite-Regel (Regel zum erneuten Schreiben einer URL) hinzuzufügen, erstellen Sie eine „web.config“-Datei mit den entsprechenden Konfigurationseinträgen im Ordner **wwwroot**. Weitere Informationen finden Sie unter [Azure App Services: Understanding URL Re-write](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/).
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Wie steuere ich den in App Service eingehenden Datenverkehr?
 
@@ -170,7 +166,7 @@ Wenn Sie die App Service-Umgebung verwenden, können Sie die [Barracuda-Firewall
 
 ## <a name="how-do-i-block-ports-in-an-app-service-web-app"></a>Wie blockiere ich Ports in einer App Service-Web-App?
 
-In der gemeinsam genutzten Mandantenumgebung von App Service ist es aufgrund des Wesens der Infrastruktur nicht möglich, bestimmte Ports zu blockieren. Die TCP-Ports 4016, 4018 und 4020 sind möglicherweise zudem für das Remotedebuggen von Visual Studio geöffnet.
+In der gemeinsam genutzten Mandantenumgebung von App Service ist es aufgrund des Wesens der Infrastruktur nicht möglich, bestimmte Ports zu blockieren. Die TCP-Ports 4020, 4022 und 4024 sind möglicherweise zudem für das Remotedebuggen von Visual Studio geöffnet.
 
 In der App Service-Umgebung haben Sie die vollständige Kontrolle über ein- und ausgehenden Datenverkehr. Sie können Netzwerksicherheitsgruppen einsetzen, um bestimmte Ports einzuschränken oder zu blockieren. Weitere Informationen zur App Service-Umgebung finden Sie unter [Einführung in die App Service-Umgebung](https://azure.microsoft.com/blog/introducing-app-service-environment/).
 
@@ -254,7 +250,7 @@ Weitere Informationen zu geplanten WebJobs finden Sie unter [Erstellen eines gep
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>Wir führe ich Penetrationstests für meine App Service-App aus?
 
-Wenn Sie Penetrationstests ausführen möchten, [übermitteln Sie eine Anforderung](https://portal.msrc.microsoft.com/en-us/engage/pentest).
+Wenn Sie Penetrationstests ausführen möchten, [übermitteln Sie eine Anforderung](https://portal.msrc.microsoft.com/engage/pentest).
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Wie konfiguriere ich einen benutzerdefinierten Domänennamen für eine Azure App Service-Web-App, die Traffic Manager verwendet?
 

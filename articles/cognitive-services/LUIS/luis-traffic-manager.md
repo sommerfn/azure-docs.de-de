@@ -1,5 +1,5 @@
 ---
-title: Erhöhen des Endpunktkontingents
+title: 'Erhöhen des Endpunktkontingents: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Language Understanding Intelligent Service (LUIS) bietet die Möglichkeit, das Endpunkt-Anforderungskontingent über das Kontingent eines einzelnen Schlüssels hinaus zu erhöhen. Dies erfolgt, indem Sie mehrere Schlüssel für LUIS erstellen und diese der LUIS-Anwendung auf der Seite **Veröffentlichen** im Abschnitt **Resources and Keys** (Ressourcen und Schlüssel) hinzuzufügen.
 author: diberry
@@ -8,15 +8,15 @@ ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: article
-ms.date: 02/08/2019
+ms.topic: conceptual
+ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 31d8f54cb05bdbba7fe05249527db3dd50385087
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: c4ea9c5663755a4feb1693dd925d99b10c466140
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523408"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256605"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Verwenden von Microsoft Azure Traffic Manager zum Verwalten von Endpunktkontingenten über mehrere Schlüssel
 Language Understanding Intelligent Service (LUIS) bietet die Möglichkeit, das Endpunkt-Anforderungskontingent über das Kontingent eines einzelnen Schlüssels hinaus zu erhöhen. Dies erfolgt, indem Sie mehrere Schlüssel für LUIS erstellen und diese der LUIS-Anwendung auf der Seite **Veröffentlichen** im Abschnitt **Resources and Keys** (Ressourcen und Schlüssel) hinzuzufügen. 
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Screenshot des Azure-Portals mit zwei LUIS-Schlüsseln in der Ressourcengruppe luis-traffic-manager](./media/traffic-manager/luis-keys.png)
 
-2. Weisen Sie der App auf der [LUIS][LUIS]-Website auf der Seite **Schlüssel und Endpunkte** im Abschnitt **Verwalten** Schlüssel zu, und veröffentlichen Sie die App erneut, indem Sie im Menü rechts oben die Schaltfläche **Veröffentlichen** auswählen. 
+2. Weisen Sie der App auf der [LUIS][LUIS]-Website auf der Seite **Azure-Ressourcen** im Abschnitt **Verwalten** Schlüssel zu, und veröffentlichen Sie die App erneut, indem Sie im Menü rechts oben die Schaltfläche **Veröffentlichen** auswählen. 
 
     In der Beispiel-URL in der Spalte **Endpunkt** wird eine GET-Anforderung mit dem Endpunktschlüssel als Abfrageparameter verwendet. Kopieren Sie die Endpunkt-URLs der beiden neuen Schlüssel. Sie werden im Rahmen der Traffic Manager-Konfiguration weiter unten in diesem Artikel verwendet.
 
@@ -82,7 +82,7 @@ Das Erstellen des Traffic Manager-Profils für „USA, Osten“ umfasst mehrere 
     |--|--|--|
     |-Name|luis-profile-eastus|Traffic Manager-Name im Azure-Portal|
     |-ResourceGroupName|luis-traffic-manager|Im vorherigen Abschnitt erstellt|
-    |-TrafficRoutingMethod|Leistung|Weitere Informationen finden Sie unter [Traffic Manager-Routingmethoden][routing-methods]. Beim Verwenden von Leistungsfunktionen muss die URL-Anforderung an Traffic Manager aus der Region des Benutzers stammen. Wenn die Anforderung über einen Chatbot oder eine andere Anwendung erfolgt, muss diese die Region im Aufruf von Traffic Manager imitieren. |
+    |-TrafficRoutingMethod|Leistung|Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting][routing-methods]. Beim Verwenden von Leistungsfunktionen muss die URL-Anforderung an Traffic Manager aus der Region des Benutzers stammen. Wenn die Anforderung über einen Chatbot oder eine andere Anwendung erfolgt, muss diese die Region im Aufruf von Traffic Manager imitieren. |
     |-RelativeDnsName|luis-dns-eastus|Dies ist die Unterdomäne für den Dienst: luis-dns-eastus.trafficmanager.net|
     |-Ttl|30|Abrufintervall, 30 Sekunden|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Der Port und das Protokoll für LUIS lauten HTTPS und 443|
@@ -104,7 +104,7 @@ Das Erstellen des Traffic Manager-Profils für „USA, Osten“ umfasst mehrere 
     |-Type|ExternalEndpoints|Weitere Informationen finden Sie unter [Traffic Manager-Endpunkt][traffic-manager-endpoints]. |
     |-Target|eastus.api.cognitive.microsoft.com|Dies ist die Domäne für den LUIS-Endpunkt.|
     |-EndpointLocation|"eastus"|Region des Endpunkts|
-    |-EndpointStatus|Aktiviert|Endpunkt beim Erstellen aktivieren|
+    |-EndpointStatus|Enabled|Endpunkt beim Erstellen aktivieren|
 
     Eine erfolgreiche Antwort sieht wie folgt aus:
 
@@ -150,7 +150,7 @@ Das Erstellen des Traffic Manager-Profils für „USA, Westen“ umfasst die gle
     |--|--|--|
     |-Name|luis-profile-westus|Traffic Manager-Name im Azure-Portal|
     |-ResourceGroupName|luis-traffic-manager|Im vorherigen Abschnitt erstellt|
-    |-TrafficRoutingMethod|Leistung|Weitere Informationen finden Sie unter [Traffic Manager-Routingmethoden][routing-methods]. Beim Verwenden von Leistungsfunktionen muss die URL-Anforderung an Traffic Manager aus der Region des Benutzers stammen. Wenn die Anforderung über einen Chatbot oder eine andere Anwendung erfolgt, muss diese die Region im Aufruf von Traffic Manager imitieren. |
+    |-TrafficRoutingMethod|Leistung|Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting][routing-methods]. Beim Verwenden von Leistungsfunktionen muss die URL-Anforderung an Traffic Manager aus der Region des Benutzers stammen. Wenn die Anforderung über einen Chatbot oder eine andere Anwendung erfolgt, muss diese die Region im Aufruf von Traffic Manager imitieren. |
     |-RelativeDnsName|luis-dns-westus|Dies ist die Unterdomäne für den Dienst: luis-dns-westus.trafficmanager.net|
     |-Ttl|30|Abrufintervall, 30 Sekunden|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Der Port und das Protokoll für LUIS lauten HTTPS und 443|
@@ -173,7 +173,7 @@ Das Erstellen des Traffic Manager-Profils für „USA, Westen“ umfasst die gle
     |-Type|ExternalEndpoints|Weitere Informationen finden Sie unter [Traffic Manager-Endpunkt][traffic-manager-endpoints]. |
     |-Target|westus.api.cognitive.microsoft.com|Dies ist die Domäne für den LUIS-Endpunkt.|
     |-EndpointLocation|"westus"|Region des Endpunkts|
-    |-EndpointStatus|Aktiviert|Endpunkt beim Erstellen aktivieren|
+    |-EndpointStatus|Enabled|Endpunkt beim Erstellen aktivieren|
 
     Eine erfolgreiche Antwort sieht wie folgt aus:
 
@@ -217,7 +217,7 @@ Erstellen Sie das übergeordnete Traffic Manager-Profil, und verknüpfen Sie zwe
     |--|--|--|
     |-Name|luis-profile-parent|Traffic Manager-Name im Azure-Portal|
     |-ResourceGroupName|luis-traffic-manager|Im vorherigen Abschnitt erstellt|
-    |-TrafficRoutingMethod|Leistung|Weitere Informationen finden Sie unter [Traffic Manager-Routingmethoden][routing-methods]. Beim Verwenden von Leistungsfunktionen muss die URL-Anforderung an Traffic Manager aus der Region des Benutzers stammen. Wenn die Anforderung über einen Chatbot oder eine andere Anwendung erfolgt, muss diese die Region im Aufruf von Traffic Manager imitieren. |
+    |-TrafficRoutingMethod|Leistung|Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting][routing-methods]. Beim Verwenden von Leistungsfunktionen muss die URL-Anforderung an Traffic Manager aus der Region des Benutzers stammen. Wenn die Anforderung über einen Chatbot oder eine andere Anwendung erfolgt, muss diese die Region im Aufruf von Traffic Manager imitieren. |
     |-RelativeDnsName|luis-dns-parent|Dies ist die Unterdomäne für den Dienst: luis-dns-parent.trafficmanager.net|
     |-Ttl|30|Abrufintervall, 30 Sekunden|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Der Port und das Protokoll für LUIS lauten HTTPS und 443|
@@ -239,7 +239,7 @@ Erstellen Sie das übergeordnete Traffic Manager-Profil, und verknüpfen Sie zwe
     |-TrafficManagerProfile|$parentprofile|Profil, dem dieser Endpunkt zugewiesen werden soll|
     |-Type|NestedEndpoints|Weitere Informationen finden Sie unter [Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
     |-TargetResourceId|$eastprofile.Id|ID des untergeordneten Profils|
-    |-EndpointStatus|Aktiviert|Endpunktstatus nach dem Hinzufügen zum übergeordneten Element|
+    |-EndpointStatus|Enabled|Endpunktstatus nach dem Hinzufügen zum übergeordneten Element|
     |-EndpointLocation|"eastus"|[Name der Azure-Region](https://azure.microsoft.com/global-infrastructure/regions/) der Ressource|
     |-MinChildEndpoints|1|Minimale Anzahl von untergeordneten Endpunkten|
 
@@ -276,7 +276,7 @@ Erstellen Sie das übergeordnete Traffic Manager-Profil, und verknüpfen Sie zwe
     |-TrafficManagerProfile|$parentprofile|Profil, dem dieser Endpunkt zugewiesen werden soll|
     |-Type|NestedEndpoints|Weitere Informationen finden Sie unter [Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
     |-TargetResourceId|$westprofile.Id|ID des untergeordneten Profils|
-    |-EndpointStatus|Aktiviert|Endpunktstatus nach dem Hinzufügen zum übergeordneten Element|
+    |-EndpointStatus|Enabled|Endpunktstatus nach dem Hinzufügen zum übergeordneten Element|
     |-EndpointLocation|"westus"|[Name der Azure-Region](https://azure.microsoft.com/global-infrastructure/regions/) der Ressource|
     |-MinChildEndpoints|1|Minimale Anzahl von untergeordneten Endpunkten|
 

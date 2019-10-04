@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache, Python – Spracherkennungsdienste'
+title: 'Schnellstart: Erkennen von Sprache, Python – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In dieser Anleitung erfahren Sie, wie Sie eine Konsolenanwendung zur Spracherkennung erstellen, die das Speech SDK für Python verwendet. Danach können Sie das Mikrofon Ihres Computers verwenden, um Sprache in Echtzeit zu transkribieren.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 1464d1ca8fcf1ad5a955d69aa76caec9aa568dad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6cbe583ca59cb98ba233e58dc665c7e18c2a1f7f
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886116"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68559295"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Schnellstart: Erkennen von Sprache mit dem Speech SDK für Python
 
@@ -30,15 +30,24 @@ In diesem Artikel wird erläutert, wie die Speech-Dienste über das Speech SDK f
 * Das Python Speech SDK-Paket ist für die folgenden Betriebssysteme verfügbar:
     * Windows: x64 und x86.
     * Mac: macOS X Version 10.12 oder höher
-    * Linux: Ubuntu 16.04 oder 18.04 unter x64
-* Führen Sie unter Ubuntu die folgenden Befehle aus, um die erforderlichen Pakete zu installieren:
+    * Linux: Ubuntu 16.04, Ubuntu 18.04, Debian 9 unter x64
+* Führen Sie unter Linux die folgenden Befehle aus, um die erforderlichen Pakete zu installieren:
 
-  ```sh
-  sudo apt-get update
-  sudo apt-get install build-essential libssl1.0.0 libasound2 wget
-  ```
+  * Unter Ubuntu:
 
-* Unter Windows benötigen Sie auch [Visual C++ Redistributable für Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) für Ihre Plattform.
+    ```sh
+    sudo apt-get update
+    sudo apt-get install build-essential libssl1.0.0 libasound2
+    ```
+
+  * Unter Debian 9:
+
+    ```sh
+    sudo apt-get update
+    sudo apt-get install build-essential libssl1.0.2 libasound2
+    ```
+
+* Unter Windows benötigen Sie [Microsoft Visual C++ Redistributable für Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) für Ihre Plattform.
 
 ## <a name="install-the-speech-sdk"></a>Installieren des Speech SDK
 

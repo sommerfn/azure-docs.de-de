@@ -6,16 +6,15 @@ author: alexkarcher-msft
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00dedd069914384a1883a54bfb433857286fb49c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076733"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097577"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0-Metadatenunterstützung in Azure Functions (Vorschauversion)
 Metadatenunterstützung für OpenAPI 2.0 (ehemals Swagger) in Azure Functions ist eine Vorschaufunktion, mit der Sie eine OpenAPI 2.0-Definition in einer Funktions-App schreiben können. Diese Datei kann dann mit der Funktions-App gehostet werden.
@@ -75,7 +74,7 @@ In der folgenden Tabelle sind die Azure-Portaleinstellungen und die entsprechend
    1. Legen Sie **API-Definitionsquelle** auf **Funktion** fest.
    1. Klicken Sie auf **API-Definitionsvorlage generieren** und anschließend auf **Speichern**, um eine Vorlagendefinition zu erstellen, die Sie später ändern können.
    1. Notieren Sie sich die URL und den Schlüssel der API-Definition.
-1. [Einrichten von Continuous Integration/Continuous Deployment (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#continuous-deployment-requirements).
+1. [Einrichten von Continuous Integration/Continuous Deployment (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment).
 2. Ändern Sie „swagger.json“ in der Quellcodeverwaltung unter „\site\wwwroot\.azurefunctions\swagger\swagger.json“.
 
 Nun werden Änderungen an „swagger.json“ in Ihrem Repository von Ihrer Funktions-App unter der URL und mit dem Schlüssel der API-Definition gehostet, die Sie sich in Schritt 1.c notiert haben.

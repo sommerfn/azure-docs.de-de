@@ -1,28 +1,25 @@
 ---
-title: Workloadpriorität | Microsoft-Dokumentation
+title: Azure SQL Data Warehouse-Workloadpriorität | Microsoft-Dokumentation
 description: Anleitung zum Festlegen der Priorität von Abfragen in Azure SQL Data Warehouse
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: workload management
-ms.date: 03/13/2019
+ms.subservice: workload-management
+ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: e53a6fcefb0f5370f6e24cc50fad2ad4ad4c64e3
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 2a78f342d7e4b14700224bb63598f41ca95322a5
+ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57876225"
+ms.lasthandoff: 07/05/2019
+ms.locfileid: "67595408"
 ---
-# <a name="sql-data-warehouse-workload-importance-preview"></a>Workloadpriorität (Vorschauversion) für SQL Data Warehouse
+# <a name="azure-sql-data-warehouse-workload-importance"></a>Workloadpriorität für Azure SQL Data Warehouse
 
 In diesem Artikel wird erläutert, wie sich die Workloadpriorität auf die Ausführungsreihenfolge von SQL Data Warehouse-Anforderungen auswirkt.
-
-> [!Note]
-> Die Workloadpriorität ist für SQL Data Warehouse Gen2 verfügbar.
 
 ## <a name="importance"></a>Wichtigkeit
 
@@ -64,4 +61,8 @@ Da die Abfrage „Q5“ die Klasse „mediumrc“ aufweist, erfordert sie zwei P
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Workloadklassifizierung in SQL Data Warehouse finden Sie unter [SQL Data Warehouse Workload Classification](sql-data-warehouse-workload-classification.md) (Workloadklassifizierung in SQL Data Warehouse) und [Erstellen eines Workloadklassifizierers](quickstart-create-a-workload-classifier-tsql.md). Sie können die Abfragen und die zugewiesene Wichtigkeit unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) anzeigen.
+- Weitere Informationen zum Erstellen einer Klassifizierung finden Sie unter [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
+- Weitere Informationen zur Workloadklassifizierung in SQL Data Warehouse finden Sie unter [Workloadklassifizierung](sql-data-warehouse-workload-classification.md).  
+- Lesen Sie für die Erstellung eines Workloadklassifizierers den Schnellstart [Erstellen eines Workloadklassifizierers](quickstart-create-a-workload-classifier-tsql.md).
+- Lesen Sie die Anleitungsartikel zum [Konfigurieren der Workloadpriorität](sql-data-warehouse-how-to-configure-workload-importance.md) und zum [Verwalten und Überwachen der Workloadpriorität](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
+- Sie können die Abfragen und die zugewiesene Wichtigkeit unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) anzeigen.

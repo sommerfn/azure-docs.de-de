@@ -3,8 +3,8 @@ title: Anwendungstypen in v1.0 | Azure
 description: Beschreibt die App-Typen und Szenarien, die vom Azure Active Directory v2.0-Endpunkt unterstützt werden.
 services: active-directory
 documentationcenter: ''
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef180fb444e32e8b055837fd418e21162ff58339
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: efed9e35aed729c9efa39b0772b681d8c53ba7b8
+ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191468"
+ms.lasthandoff: 06/13/2019
+ms.locfileid: "65540667"
 ---
 # <a name="application-types-in-v10"></a>Anwendungstypen in v1.0
 
@@ -63,7 +63,7 @@ Jede Anwendung, deren Authentifizierung an Azure AD ausgelagert wird, muss in e
   * **Schlüssel**: Der Schlüssel, der bei der Authentifizierung zusammen mit einer Anwendungs-ID an Azure AD gesendet wird, um eine Web-API aufzurufen.
 * Azure AD muss überprüfen, ob die Anwendung unter anderem die erforderlichen Berechtigungen für den Zugriff auf Verzeichnisdaten und auf andere Anwendungen in Ihrer Organisation besitzt.
 
-Erfahren Sie, wie Sie [eine App mit dem Azure AD v1.0-Endpunkt registrieren](quickstart-v1-add-azure-ad-app.md).
+Nähere Informationen finden Sie im Artikel zum [Registrieren einer App](quickstart-register-app.md).
 
 ## <a name="single-tenant-and-multi-tenant-apps"></a>Apps mit nur einem Mandanten und mit mehreren Mandanten
 

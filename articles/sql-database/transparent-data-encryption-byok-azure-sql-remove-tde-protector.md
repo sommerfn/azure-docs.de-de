@@ -10,14 +10,13 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 73fcb2753fa7eb15f34b04ddc5bb0b55c4636623
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: dc117dd844a3a47cafa1b37170c95fe852bb82ef
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847801"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68566053"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Entfernen einer Transparent Data Encryption (TDE)-Schutzvorrichtung mithilfe von PowerShell
 
@@ -40,6 +39,12 @@ Die folgenden Verfahren sollten nur in Ausnahmefällen oder in Testumgebungen du
 Wenn der Verdacht besteht, dass ein Schlüssel kompromittiert ist, d.h ein Dienst oder Benutzer unautorisierten Zugriff auf den Schlüssel hat, empfiehlt es sich, den Schlüssel zu löschen.
 
 Denken Sie daran: Sobald die TDE-Schutzvorrichtung aus Key Vault gelöscht ist, **werden alle Verbindungen mit den verschlüsselten Datenbanken unter dem Server blockiert, und diese Datenbanken werden offline geschaltet und innerhalb von 24 Stunden gelöscht**. Auf alte Sicherungen, die mit dem kompromittierten Schlüssel verschlüsselt wurden, kann nicht mehr zugegriffen werden.
+
+In den folgenden Schritten wird beschrieben, wie Sie die Fingerabdrücke der TDE-Schutzvorrichtung überprüfen, die von den virtuellen Protokolldateien (Virtual Log Files, VLF) einer bestimmten Datenbank weiterhin verwendet werden. Der Fingerabdruck der aktuellen TDE-Schutzvorrichtung für die Datenbank und die Datenbank-ID können gefunden werden durch Ausführung von: SELECT [database_id],       [encryption_state], [encryptor_type], /*asymmetrischer Schlüssel bedeutet „AKV“, „Zertifikat“ bedeutet „vom Dienst verwaltete Schlüssel“* / [encryptor_thumbprint], FROM [sys].[dm_database_encryption_keys] 
+ 
+Die folgende Abfrage gibt die verwendeten VLFs und die der Verschlüsselung entsprechenden Fingerabdrücke zurück. Jeder andere Fingerabdruck bezieht sich auf einen anderen Schlüssel in Azure Key Vault (AKV): SELECT * FROM sys.dm_db_log_info (database_id) 
+
+Der PowerShell-Befehl „Get-AzureRmSqlServerKeyVaultKey“ stellt den Fingerabdruck der in der Abfrage verwendeten TDE-Schutzvorrichtung bereit, damit Sie sehen können, welche Schlüssel in AKV beibehalten und welche gelöscht werden müssen. Nur die von der Datenbank nicht mehr verwendeten Schlüssel können aus Azure Key Vault sicher gelöscht werden.
 
 In diesem Leitfaden werden zwei Ansätze behandelt, die jeweils vom gewünschten Ergebnis nach der Reaktion auf Vorfälle abhängen:
 
