@@ -5,15 +5,15 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/19/2019
+ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: fa1737a8627fe9561a2a84e7f0ef69aefb6deb14
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: ee3a1fef379e2950172dddc389b30e0a363127ae
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170620"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262125"
 ---
 # <a name="overview-of-azure-activity-log"></a>Übersicht über das Azure-Aktivitätsprotokoll
 
@@ -23,10 +23,10 @@ Verwenden Sie das Aktivitätsprotokoll zum Ermitteln der Antworten auf die Frage
 
 Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET) oder Vorgänge für Ressourcen, die das klassische Modell/RDFE-Modell verwenden.
 
-## <a name="comparison-to-diagnostic-logs"></a>Vergleich mit Diagnoseprotokollen
-Es gibt jeweils ein Aktivitätsprotokoll für jedes Azure-Abonnement. Es enthält Daten zu den externen Vorgängen einer Ressource („Steuerungsebene“). [Diagnoseprotokolle](diagnostic-logs-overview.md) werden von einer Ressource ausgegeben und enthalten Informationen zu den Vorgängen dieser Ressource („Datenebene“). Sie müssen die Diagnoseeinstellungen für jede Ressource aktivieren.
+## <a name="comparison-to-resource-logs"></a>Vergleich mit Ressourcenprotokollen
+Es gibt jeweils ein Aktivitätsprotokoll für jedes Azure-Abonnement. Es enthält Daten zu den externen Vorgängen einer Ressource („Steuerungsebene“). [Ressourcenprotokolle](resource-logs-overview.md) werden von einer Ressource ausgegeben und enthalten Informationen zu den Vorgängen dieser Ressource („Datenebene“). Zum Erfassen von Ressourcenprotokollen müssen Sie eine Diagnoseeinstellung für jede Ressource erstellen.
 
-![Vergleich: Aktivitätsprotokolle und Diagnoseprotokolle](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
+![Vergleich: Aktivitätsprotokolle und Ressourcenprotokolle](media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
 
 
 > [!NOTE]
@@ -54,7 +54,7 @@ Sie können eine Warnung erstellen, die ausgegeben wird, wenn im Aktivitätsprot
 ## <a name="categories-in-the-activity-log"></a>Kategorien im Aktivitätsprotokoll
 Jedes Ereignis im Aktivitätsprotokoll verfügt über eine bestimmte Kategorie. Die Kategorien sind in der folgenden Tabelle beschrieben. Umfassende Informationen zu den Schemas dieser Kategorien finden Sie unter [Ereignisschema des Azure-Aktivitätsprotokolls](activity-log-schema.md). 
 
-| Category (Kategorie) | BESCHREIBUNG |
+| Category | BESCHREIBUNG |
 |:---|:---|
 | Administrative | Enthält die Datensätze aller Erstellungs-, Aktualisierungs-, Lösch- und Aktionsvorgänge, die über Resource Manager ausgeführt wurden. Beispiele für Verwaltungsereignisse sind das _Erstellen des virtuellen Computers_ und das _Löschen der Netzwerksicherheitsgruppe_.<br><br>Jede Aktion, die von einem Benutzer oder einer Anwendung mit Resource Manager durchgeführt wird, wird als Vorgang basierend auf einem bestimmten Ressourcentyp modelliert. Wenn der Vorgangstyp _Schreiben_, _Löschen_ oder _Aktion_ lautet, werden die Datensätze zum Start und zum Erfolg oder Fehler dieses Vorgangs in der Kategorie „Verwaltung“ aufgezeichnet. Verwaltungsereignisse umfassen außerdem alle Änderungen an der rollenbasierten Zugriffssteuerung in einem Abonnement. |
 | Dienstintegrität | Enthält Datensätze zu allen Incidents im Zusammenhang mit der Dienstintegrität, die in Azure aufgetreten sind. Beispiel für ein Service Health-Ereignis: _Ausfallzeiten bei SQL Azure in der Region „USA, Osten“_ . <br><br>Es gibt sechs Typen von Service Health-Ereignissen: _Aktion erforderlich_, _Unterstützte Wiederherstellung_, _Incident_, _Wartung_, _Informationen_ und _Sicherheit_. Diese Ereignisse werden nur erstellt, wenn Sie über eine Ressource im Abonnement verfügen, die vom Ereignis betroffen wäre.

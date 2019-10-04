@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/20/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3b093b8d5f772bad759d3384405f4ca9f0cee15
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 21a68c1daa3c7a2ab6689a72e23100be7582de1e
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933772"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162187"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -120,7 +120,7 @@ Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf
 | disableAjaxTracking | false | Bei „true“ werden AJAX-Aufrufe nicht automatisch gesammelt. Die Standardeinstellung ist "false". |
 | disableFetchTracking | true | Bei „true“ werden Anforderungen zum Abrufen nicht automatisch gesammelt. Die Standardeinstellung ist „true“. |
 | overridePageViewDuration | false | Bei „true“ wird das Standardverhalten von „trackPageView“ geändert, um bei dessen Aufruf das Ende des Intervalls für die Seitenaufrufdauer aufzuzeichnen. Bei „false“ ohne Angabe eines benutzerdefinierten Zeitraums für „trackPageView“ wird die Seitenaufrufleistung mithilfe der Navigationszeit-API berechnet. Die Standardeinstellung ist "false". |
-| maxAjaxCallsPerView | 500 | Mit der Standardeinstellung „500“ wird gesteuert, wie viele AJAX-Aufrufe pro Seitenaufruf überwacht werden. Legen Sie „–1“ fest, wenn alle (unbegrenzt) AJAX-Aufrufe auf der Seite überwacht werden sollen. |
+| maxAjaxCallsPerView | 500 | Mit der Standardeinstellung „500“ wird gesteuert, wie viele Ajax-Aufrufe pro Seitenaufruf überwacht werden. Legen Sie „–1“ fest, wenn alle (unbegrenzt) Ajax-Aufrufe auf der Seite überwacht werden sollen. |
 | disableDataLossAnalysis | true | Bei „false“ werden interne Absenderpuffer für Telemetriedaten beim Start auf noch nicht gesendete Elemente überprüft. |
 | disableCorrelationHeaders | false | Bei „false“ fügt das SDK allen Abhängigkeitsanforderungen zwei Kopfzeilen (‚Request-Id‘ und ‚Request-Context‘) hinzu, um sie mit entsprechenden serverseitigen Anforderungen zu korrelieren. Die Standardeinstellung ist "false". |
 | correlationHeaderExcludedDomains |  | Korrelations-Header für bestimmte Domänen deaktivieren |
@@ -132,12 +132,16 @@ Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf
 | isRetryDisabled | false | Die Standardeinstellung ist „false“. Bei „false“ wiederholen Sie den Vorgang für 206 (teilweise erfolgreich), 408 (Timeout), 429 (zu viele Anforderungen), 500 (interner Serverfehler), 503 (Dienst nicht verfügbar) und 0 (offline, nur wenn erkannt). |
 | isStorageUseDisabled | false | Bei „true“ speichert und liest das SDK keine Daten aus dem lokalen Speicher und dem Sitzungsspeicher. Die Standardeinstellung ist "false". |
 | isBeaconApiDisabled | true | Bei „false“ sendet das SDK alle Telemetriedaten mithilfe der [Beacon-API](https://www.w3.org/TR/beacon). |
+| onunloadDisableBeacon | false | Die Standardeinstellung ist „false“. Wenn die Registerkarte geschlossen ist, sendet das SDK alle verbleibenden Telemetriedaten mithilfe der [Beacon-API](https://www.w3.org/TR/beacon). |
 | sdkExtension | null | Legt den Erweiterungsnamen „sdk“ fest. Hierbei sind nur alphabetische Zeichen zulässig. Der Erweiterungsname wird dem Tag ‚ai.internal.sdkVersion‘ als Präfix hinzugefügt (z.B. ‚ext_javascript:2.0.0‘). Der Standardwert lautet null. |
 | isBrowserLinkTrackingEnabled | false | Die Standardeinstellung ist "false". Bei „true“ wird das SDK alle Anforderungen vom Typ [Browserverknüpfung](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) nachverfolgen. |
 | appId | null | „AppId“ wird für die Korrelation zwischen AJAX-Abhängigkeiten verwendet, die clientseitig mit den serverseitigen Anforderungen erfolgt. Wenn die Beacon-API aktiviert ist, kann sie nicht automatisch verwendet werden. Sie kann aber in der Konfiguration manuell festgelegt werden. Die Standardeinstellung ist „null“. |
 | enableCorsCorrelation | false | Bei „true“ fügt das SDK allen CORS-Anforderungen zwei Kopfzeilen (‚Request-Id‘ und ‚Request-Context‘) hinzu, um ausgehende AJAX-Abhängigkeiten mit entsprechenden serverseitigen Anforderungen zu korrelieren. Die Standardeinstellung ist „false“. |
 | namePrefix | nicht definiert | Ein optionaler Wert, der als „name“-Postfix für „localStorage“ und den Cookienamen verwendet wird.
 | enableAutoRouteTracking | false | Routenänderungen in Single-Page-Webanwendungen (Single Page Applications, SPA) automatisch nachverfolgen. Bei „true“ sendet jede Routenänderung einen neuen Seitenaufruf an Application Insights. Hashroutenänderungen (`example.com/foo#bar`) werden ebenfalls als neue Seitenaufrufe aufgezeichnet.
+| enableRequestHeaderTracking | false | Bei „true“ werden AJAX- und Fetch-Anforderungsheader nachverfolgt.Der Standardwert ist „false“.
+| enableResponseHeaderTracking | false | Bei „true“ werden Antwortheader für AJAX- und Fetch-Anforderungen nachverfolgt.Der Standardwert ist „false“.
+| distributedTracingMode | `DistributedTracingModes.AI` | Legt den Modus für verteilte Ablaufverfolgung fest. Wenn der AI_AND_W3C-Modus oder der W3C-Modus festgelegt ist, werden Kontextheader für die W3C-Ablaufverfolgung (traceparent/tracestate) generiert und in alle ausgehenden Anforderungen eingeschlossen. AI_AND_W3C wird für Abwärtskompatibilität mit beliebigen mit älteren Application Insights-Versionen instrumentierten Diensten bereitgestellt.
 
 ## <a name="single-page-applications"></a>Single-Page-Webanwendungen
 

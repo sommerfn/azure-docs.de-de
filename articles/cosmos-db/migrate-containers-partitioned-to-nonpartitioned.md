@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie all Ihre vorhandenen nicht partitionierten Co
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: d51c200ebff0d92b1bcdf2c8e3e0325103e214b7
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 77d70aaa9c1ae5a111a47e08f259c0ce95fd7c92
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615025"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300116"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrieren nicht partitionierter Container zu partitionierten Containern
 
@@ -19,12 +19,12 @@ Azure Cosmos DB unterstützt das Erstellen von Containern ohne Partitionsschlüs
 
 Die nicht partitionierten Container sind veraltet. Sie sollten Ihre vorhandenen nicht partitionierten Container zu partitionierten Containern migrieren, um den Speicher und den Durchsatz zu skalieren. Azure Cosmos DB stellt einen systemdefinierten Mechanismus zum Migrieren Ihrer nicht partitionierten Container zu partitionierten Containern bereit. In diesem Artikel wird erläutert, wie Sie all Ihre vorhanden nicht partitionierten Container automatisch zu partitionierten Containern migrieren. Sie können das Feature für die automatische Migration nur verwenden, wenn Sie die V3-Version der SDKs für die jeweiligen Sprachen verwenden.
 
-> [!NOTE] 
-> Derzeit können Sie die in diesem Artikel beschriebenen Schritte nicht dazu nutzen, MongoDB- und Gremlin-API-Konten von Azure Cosmos DB zu migrieren. 
+> [!NOTE]
+> Derzeit können Sie die in diesem Artikel beschriebenen Schritte nicht dazu nutzen, MongoDB- und Gremlin-API-Konten von Azure Cosmos DB zu migrieren.
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>Migrieren von Containern mithilfe des systemdefinierten Partitionsschlüssels
 
-Azure Cosmos DB definiert einen systemdefinierten Partitionsschlüssel namens `/_partitionkey` für alle Container, die über keinen Partitionsschlüssel verfügen, um die Migration zu unterstützen. Sie können die Partitionsschlüsseldefinition nicht ändern, nachdem die Container migriert wurden. Die Definition eines Containers, der zu einem partitionierten Container migriert wird, lautet beispielsweise wie folgt: 
+Um die Migration zu unterstützen, bietet Azure Cosmos DB einen systemdefinierten Partitionsschlüssel namens `/_partitionkey` für alle Container, die keinen Partitionsschlüssel haben. Sie können die Partitionsschlüsseldefinition nicht ändern, nachdem die Container migriert wurden. Die Definition eines Containers, der zu einem partitionierten Container migriert wird, lautet beispielsweise wie folgt:
 
 ```json
 {
@@ -37,10 +37,10 @@ Azure Cosmos DB definiert einen systemdefinierten Partitionsschlüssel namens `/
   },
 }
 ```
- 
-Nachdem der Container migriert wurde, können Sie Dokumente erstellen, indem Sie die `_partitionKey`-Eigenschaft sowie die anderen Eigenschaften des Dokuments auffüllen. Die Eigenschaft `_partitionKey` stellt den Partitionsschlüssel Ihrer Dokumente dar. 
 
-Es ist wichtig, den richtigen Partitionsschlüssel auszuwählen, um den bereitgestellten Durchsatz optimal zu nutzen. Weitere Informationen finden Sie im Artikel [Partitionierung in Azure Cosmos DB](partitioning-overview.md). 
+Nachdem der Container migriert wurde, können Sie Dokumente erstellen, indem Sie die `_partitionKey`-Eigenschaft sowie die anderen Eigenschaften des Dokuments auffüllen. Die Eigenschaft `_partitionKey` stellt den Partitionsschlüssel Ihrer Dokumente dar.
+
+Es ist wichtig, den richtigen Partitionsschlüssel auszuwählen, um den bereitgestellten Durchsatz optimal zu nutzen. Weitere Informationen finden Sie im Artikel [Partitionierung in Azure Cosmos DB](partitioning-overview.md).
 
 > [!NOTE]
 > Sie können systemdefinierte Partitionsschlüssel nur nutzen, wenn Sie die neueste bzw. die V3-Version der SDKs für die jeweiligen Sprachen verwenden.
@@ -65,37 +65,37 @@ public class DeviceInformationItem
     [JsonProperty(PropertyName = "deviceId")]
     public string DeviceId { get; set; }
 
-    [JsonProperty(PropertyName = "_partitionKey")]
+    [JsonProperty(PropertyName = "_partitionKey", NullValueHandling = NullValueHandling.Ignore)]
     public string PartitionKey {get {return this.DeviceId; set; }
 }
 
 CosmosContainer migratedContainer = database.Containers["testContainer"];
 
 DeviceInformationItem deviceItem = new DeviceInformationItem() {
-  Id = "1234", 
+  Id = "1234",
   DeviceId = "3cf4c52d-cc67-4bb8-b02f-f6185007a808"
-} 
+}
 
-CosmosItemResponse<DeviceInformationItem > response = 
-  await migratedContainer.Items.CreateItemAsync(
+ItemResponse<DeviceInformationItem > response = 
+  await migratedContainer.CreateItemAsync<DeviceInformationItem>(
     deviceItem.PartitionKey, 
     deviceItem
   );
 
 // Read back the document providing the same partition key
-CosmosItemResponse<DeviceInformationItem> readResponse = 
-  await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>( 
+ItemResponse<DeviceInformationItem> readResponse = 
+  await migratedContainer.ReadItemAsync<DeviceInformationItem>( 
     partitionKey:deviceItem.PartitionKey, 
     id: device.Id
-  ); 
+  );
 
 ```
 
-Das vollständige Beispiel finden Sie im GitHub-Repository mit [.NET-Beispielen](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples). 
+Das vollständige Beispiel finden Sie im GitHub-Repository mit [.NET-Beispielen](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples).
                       
 ## <a name="migrate-the-documents"></a>Migrieren der Dokumente
 
-Während die Containerdefinition mit einer Partitionsschlüsseleigenschaft erweitert wird, werden die Dokumente im Container nicht automatisch migriert. Das heißt, der Pfad `/_partitionKey` der Partitionsschlüsseleigenschaft wird nicht automatisch zu den vorhandenen Dokumenten hinzugefügt. Sie müssen die vorhandenen Dokumente neu partitionieren, indem die Dokumente gelesen werden, die ohne einen Partitionsschlüssel erstellt wurden, und erneut mit der Eigenschaft `_partitionKey` in den Dokumenten geschrieben werden. 
+Während die Containerdefinition mit einer Partitionsschlüsseleigenschaft erweitert wird, werden die Dokumente im Container nicht automatisch migriert. Das heißt, der Pfad `/_partitionKey` der Partitionsschlüsseleigenschaft wird nicht automatisch zu den vorhandenen Dokumenten hinzugefügt. Sie müssen die vorhandenen Dokumente neu partitionieren, indem die Dokumente gelesen werden, die ohne einen Partitionsschlüssel erstellt wurden, und erneut mit der Eigenschaft `_partitionKey` in den Dokumenten geschrieben werden.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Zugreifen auf Dokumente ohne Partitionsschlüssel
 
@@ -104,7 +104,7 @@ Anwendungen können mithilfe einer speziellen Systemeigenschaft namens „Cosmos
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 
 await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>( 
-  partitionKey: CosmosContainerSettings.NonePartitionKeyValue, 
+  partitionKey: PartitionKey.None, 
   id: device.Id
 ); 
 

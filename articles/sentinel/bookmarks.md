@@ -1,5 +1,5 @@
 ---
-title: Behalten des Überblicks über Daten bei einer Bedrohungssuche in Azure Sentinel Preview mithilfe von Suchlesezeichen | Microsoft-Dokumentation
+title: Behalten des Überblicks über Daten beim Hunting in Azure Sentinel mithilfe von Hunting-Lesezeichen | Microsoft-Dokumentation
 description: In diesem Artikel ist beschrieben, wie Azure Sentinel-Suchlesezeichen verwendet werden können, um den Überblick über Daten zu behalten.
 services: sentinel
 documentationcenter: na
@@ -14,84 +14,135 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: aec04c4b9fd56b79a92c2774a48fd55f2f6a9d7a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: aa414e37470cc11b7dc83e7416590aa2babf6818
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620211"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240253"
 ---
-# <a name="keep-track-of-data-during-hunting"></a>Behalten des Überblicks über Daten bei einer Bedrohungssuche
+# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Behalten des Überblicks über Daten beim Hunting mit Azure Sentinel
 
-> [!IMPORTANT]
-> Azure Sentinel ist aktuell als Public Preview verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
- 
 Eine Bedrohungssuche erfordert in der Regel die Überprüfung sehr großer Mengen von Protokolldaten, um nach Beweisen für bösartiges Verhalten zu suchen. Während dieses Prozesses finden Ermittler Ereignisse, die sie sich merken, erneut besuchen und analysieren möchten, um mögliche Hypothesen zu validieren und die ganze Geschichte einer Gefährdung zu verstehen.
-Suchlesezeichen helfen Ihnen dabei, indem sie die Abfragen, die Sie in Log Analytics ausgeführt haben, sowie die Abfrageergebnisse, die Sie für relevant halten, konservieren. Sie können auch Ihre kontextbezogenen Beobachtungen aufzeichnen und Ihre Ergebnisse durch Hinzufügen von Anmerkungen und Tags referenzieren. Mit Lesezeichen markierte Daten sind für Sie und Ihre Teamkollegen zur einfachen Zusammenarbeit sichtbar.   
 
-Sie können Ihre mit Lesezeichen markierten Daten jederzeit auf der Seite **Suche** (Hunting) auf der Registerkarte **Lesezeichen** erneut besuchen. Sie können Filter- und Suchoptionen verwenden, um bestimmte Daten für Ihre aktuelle Untersuchung schnell zu finden. Alternativ können Sie Ihre mit Lesezeichen markierten Daten direkt in der Tabelle **HuntingBookmark** in Log Analytics anzeigen. Auf diese Weise können Sie mit Lesezeichen markierte Daten mit anderen Datenquellen filtern, zusammenfassen und verknüpfen, wodurch die Suche nach fundierten Beweisen vereinfacht wird.
+Hunting-Lesezeichen in Azure Sentinel helfen Ihnen dabei, indem sie die Abfragen, die Sie in Log Analytics ausgeführt haben, sowie die Abfrageergebnisse, die Sie für relevant halten, konservieren. Sie können auch Ihre kontextbezogenen Beobachtungen aufzeichnen und Ihre Ergebnisse durch Hinzufügen von Anmerkungen und Tags referenzieren. Mit Lesezeichen markierte Daten sind für Sie und Ihre Teamkollegen zur einfachen Zusammenarbeit sichtbar.
 
-Außerdem können Sie Ihre mit Lesezeichen markierten Daten visualisieren, indem Sie auf **Untersuchen** klicken. Dadurch wird der Untersuchungsvorgang gestartet, in dem Sie Ihre Ergebnisse mithilfe eines interaktiven Entität-Grafikdiagramms und einer Zeitachse anzeigen, untersuchen und visuell kommunizieren können.
+Sie können Ihre mit Lesezeichen markierten Daten jederzeit im Bereich **Suche** (Hunting) auf der Registerkarte **Lesezeichen** erneut besuchen. Sie können Filter- und Suchoptionen verwenden, um bestimmte Daten für Ihre aktuelle Untersuchung schnell zu finden. Alternativ können Sie Ihre mit Lesezeichen markierten Daten direkt in der Tabelle **HuntingBookmark** in Azure Monitor anzeigen. Auf diese Weise können Sie mit Lesezeichen markierte Daten mit anderen Datenquellen filtern, zusammenfassen und verknüpfen, wodurch die Suche nach fundierten Beweisen vereinfacht wird.
 
+Wenn Sie derzeit in der Vorschauversion etwas finden, das beim Hunting in Ihren Protokollen dringend behandelt werden muss, können Sie mit ein paar Klicks ein Lesezeichen erstellen und es zu einem Incident höher stufen oder das Lesezeichen zu einem bestehenden Incident hinzufügen. Weitere Informationen zu Incidents finden Sie unter [Tutorial: Untersuchen von Incidents mit Azure Sentinel](tutorial-investigate-cases.md). 
 
-## <a name="run-a-log-analytics-query-from-azure-sentinel"></a>Ausführen einer Log Analytics-Abfrage aus Azure Sentinel
-
-1. Klicken Sie im Azure Sentinel-Portal auf **Suche** (Hunting), um Abfragen zu verdächtigem und regelwidrigem Verhalten auszuführen.
-
-1. Um eine Bedrohungssuche auszuführen, wählen Sie eine Bedrohungsabfrage aus, und überprüfen Sie die Ergebnisse auf der linken Seite. 
-
-1. Klicken Sie auf **Abfrageergebnisse anzeigen** (View query results) auf der **Details**-Seite der Bedrohungsabfrage, um die Abfrageergebnisse in Log Analytics anzuzeigen. Es folgt ein Beispiel dafür, was Sie sehen, wenn Sie eine benutzerdefinierte SSH-Brute-Force-Angriffsabfrage ausführen.
-  
-   ![Ergebnisse anzeigen](./media/bookmarks/ssh-bruteforce-example.png)
+In der Vorschauversion können Sie auch Ihre mit Lesezeichen versehenen Daten darstellen, indem Sie in den Lesezeichendetails auf **Untersuchen** klicken. Dadurch wird der Untersuchungsvorgang gestartet, in dem Sie Ihre Ergebnisse mithilfe eines interaktiven Entität-Grafikdiagramms und einer Zeitachse anzeigen, untersuchen und visuell kommunizieren können.
 
 ## <a name="add-a-bookmark"></a>Hinzufügen eines Lesezeichens
 
-1. Erweitern Sie in der Liste der Log Analytics-Abfrageergebnisse die Zeile, die die Informationen enthält, an denen Sie interessiert sind.
+1. Navigieren Sie im Azure-Portal zu **Sentinel** > **Bedrohungsverwaltung** > **Hunting**, um Abfragen zu verdächtigem und ungewöhnlichem Verhalten auszuführen.
 
-4. Wählen Sie die Auslassungspunkte (...) am Ende der Zeile aus, und wählen **Suchlesezeichen hinzufügen** (Add hunting bookmarks) aus.
-5. Auf der rechts befindlichen Seite **Details** können Sie den Namen aktualisieren sowie Tags und Anmerkungen hinzufügen, damit Sie später erkennen können, was an dem Element interessant war.
-6. Klicken Sie auf **Speichern**, um die vorgenommenen Änderungen zu speichern. Alle mit Lesezeichen markierten Daten werden für andere Ermittler freigegeben, und dies ist ein erster Schritt in Richtung einer Umgebung für gemeinschaftliche Untersuchungen.
+2. Wählen Sie eine der Hunting-Abfragen und dann rechts in den Details der Hunting-Abfrage die Option **Abfrage ausführen** aus. 
 
-   ![Ergebnisse anzeigen](./media/bookmarks/add-bookmark-la.png)
+3. Wählen Sie **Abfrageergebnisse anzeigen** aus. Beispiel:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Anzeigen von Abfrageergebnissen von Azure Sentinel-Hunting](./media/bookmarks/new-processes-observed-example.png)
+    
+    Diese Aktion öffnet die Abfrageergebnisse im Bereich **Protokolle**.
+
+4. Erweitern Sie in der Ergebnisliste der Protokollabfrage die Zeile, die die für Sie interessanten Informationen enthält.
+
+5. Wählen Sie die Auslassungspunkte (...) auf der linken Seite und dann **Lesezeichen für Suche hinzufügen** aus:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Lesezeichen für Suche zur Abfrage hinzufügen](./media/bookmarks/add-hunting-bookmark.png)
+
+6. Aktualisieren Sie optional im rechten Bereich **Lesezeichen für Suche hinzufügen** den Lesezeichennamen, fügen Sie Tags und Anmerkungen hinzu, damit Sie später erkennen können, was an dem Element interessant war.
+
+7. Verwenden Sie im Abschnitt **Abfrageinformationen** die Dropdownlisten, um Informationen aus den Abfrageergebnissen für die Entitätstypen **Konto**, **Host** und **IP-Adresse** zu extrahieren. Diese Aktion ordnet den ausgewählten Entitätstyp einer bestimmten Spalte aus dem Abfrageergebnis zu. Beispiel:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Zuordnen von Entitätstypen für Hunting-Lesezeichen](./media/bookmarks/map-entity-types-bookmark.png)
+    
+    Um das Lesezeichen im Untersuchungsdiagramm (derzeit in der Vorschauversion) anzuzeigen, müssen Sie mindestens einen Entitätstyp zuordnen, der entweder **Konto**, **Host** oder **IP-Adresse** lautet. 
+
+5. Klicken Sie auf **Hinzufügen**, um Ihre Änderungen zu übernehmen und das Lesezeichen hinzuzufügen. Alle mit Lesezeichen markierten Daten werden für andere Ermittler freigegeben, und dies ist ein erster Schritt in Richtung einer Umgebung für gemeinschaftliche Untersuchungen.
 
  
 > [!NOTE]
-> Sie können auch Lesezeichen mit beliebigen Log Analytics-Abfragen, die über die Azure Sentinel-Seite für Log Analytics-Protokolle gestartet wurden, oder von Abfragen verwenden, die direkt auf der Log Analytics-Seite erstellt und über die Seite „Suche“ (Hunting) geöffnet wurden. Sie können kein Lesezeichen hinzufügen, wenn Sie Log Analytics außerhalb von Azure Sentinel starten. 
+> Die Ergebnisse der Protokollabfrage unterstützen Lesezeichen, wenn dieser Bereich von Azure Sentinel aus geöffnet wird. Sie wählen z. B. **Allgemein** > **Protokolle** auf der Navigationsleiste, dann Ereignislinks im Untersuchungsdiagramm oder eine Warnungs-ID aus den vollständigen Details eines Incidents aus (derzeit in der Vorschauversion). Sie können keine Lesezeichen erstellen, wenn der Bereich **Protokolle** von anderen Positionen aus geöffnet wird, z. B. direkt über Azure Monitor.
 
 ## <a name="view-and-update-bookmarks"></a>Anzeigen und Aktualisieren von Lesezeichen 
 
-1. Klicken Sie im Azure Sentinel-Portal auf **Suche** (Hunting). 
-2. Klicken Sie auf die Registerkarte **Lesezeichen** in der Mitte der Seite, um die Liste der Lesezeichen anzuzeigen.
-3. Verwenden Sie das Suchfeld oder Filteroptionen, um nach einem bestimmten Lesezeichen zu suchen.
-4. Wählen Sie ein einzelnes Lesezeichen im Raster unten aus, um die Lesezeichendetails im rechten Detailbereich anzuzeigen.
-5. Um Tags und Anmerkungen zu aktualisieren, klicken Sie auf die bearbeitbaren Textfelder, und klicken Sie auf **Speichern**, damit Ihre Änderungen beibehalten werden.
+1. Navigieren Sie im Azure-Portal zu **Sentinel** > **Bedrohungsverwaltung** > **Hunting**. 
 
-   ![Ergebnisse anzeigen](./media/bookmarks/view-update-bookmarks.png)
+2. Wählen Sie die Registerkarte **Lesezeichen** aus, um die Liste der Lesezeichen anzuzeigen.
 
-## <a name="view-bookmarked-data-in-log-analytics"></a>Anzeigen von mit Lesezeichen markierten Daten in Log Analytics 
+3. Um Ihnen bei der Suche nach einem bestimmten Lesezeichen zu helfen, verwenden Sie das Suchfeld oder die Filteroptionen.
 
-Es gibt mehrere Optionen zum Anzeigen Ihrer mit Lesezeichen markierten Daten in Log Analytics. 
+4. Wählen Sie einzelne Lesezeichen aus, um die Lesezeichendetails im rechten Detailbereich anzuzeigen.
 
-Die einfachste Möglichkeit zum Anzeigen von Abfragen, Ergebnissen oder Verläufen, die mit Lesezeichen markiert sind, besteht darin, das gewünschte Lesezeichen in der Tabelle **Lesezeichen** auszuwählen und die Links zu verwenden, die im Detailbereich bereitgestellt werden. Beispiele für Optionen: 
-- Klicken Sie auf **Abfrage anzeigen**, um die Quellabfrage in Log Analytics anzuzeigen.  
-- Klicken Sie auf **Lesezeichenverlauf anzeigen** (View bookmark history), um alle Lesezeichenmetadaten anzuzeigen: die Person, die die Aktualisierung vorgenommen hat, die aktualisierten Werte und die Uhrzeit, zu der die Aktualisierung erfolgt ist. 
+5. Nehmen Sie bei Bedarf Ihre Änderungen vor, die automatisch gespeichert werden.
 
-- Sie können auch die unformatierten Lesezeichendaten für alle Lesezeichen anzeigen, indem Sie auf **Lesezeichenprotokolle** (Bookmark logs) über dem Lesezeichenraster klicken. In dieser Ansicht werden alle Ihre Lesezeichen in der Suchlesezeichentabelle mit den zugehörigen Metadaten angezeigt. Sie können KQL-Abfragen verwenden, um nach der neuesten Version des bestimmten Lesezeichens zu filtern, das Sie suchen.  
+## <a name="exploring-bookmarks-in-the-investigation-graph"></a>Untersuchen von Lesezeichen im Untersuchungsdiagramm
 
+> [!IMPORTANT]
+> Das Untersuchen von Lesezeichen im Untersuchungsdiagramm sowie das Untersuchen des Untersuchungsdiagramms selbst befindet sich derzeit in der Public Preview.
+> Dieses Features werden ohne Vereinbarung zum Servicelevel bereitgestellt und sind nicht für Produktionsworkloads vorgesehen.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Sentinel** > **Bedrohungsverwaltung** > **Hunting** > **Lesezeichen**, und wählen Sie das bzw. die Lesezeichen aus, die Sie untersuchen möchten.
+
+2. Stellen Sie in den Lesezeichendetails sicher, dass mindestens eine Entität zugeordnet ist. Beispielsweise werden für **ENTITÄTEN** Einträge für **IP**, **Computer** oder **Konto** angezeigt.
+
+3. Klicken Sie auf **Untersuchen**, um das Lesezeichen im Untersuchungsdiagramm anzuzeigen.
+
+Anweisungen zur Verwendung des Untersuchungsdiagramms finden Sie unter [Ausführliche Untersuchung mit dem Untersuchungsdiagramm](tutorial-investigate-cases.md#use-the-investigation-graph-to-deep-dive).
+
+## <a name="add-bookmarks-to-a-new-or-existing-incident"></a>Hinzufügen von Lesezeichen zu einem neuen oder bestehenden Incident
+
+> [!IMPORTANT]
+> Das Hinzufügen von Lesezeichen zu einem neuen oder bestehenden Incident befindet sich derzeit in der Public Preview.
+> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Sentinel** > **Bedrohungsverwaltung** > **Hunting** > **Lesezeichen**, und wählen Sie das bzw. die Lesezeichen aus, die Sie zu einem Incident hinzufügen möchten.
+
+2. Wählen Sie **Incidentaktionen (Vorschauversion)** auf der Befehlsleiste aus:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Lesezeichen zu Incident hinzufügen](./media/bookmarks/incident-actions.png)
+
+3. Wählen Sie bei Bedarf entweder **Neuen Incident erstellen** oder **Zum vorhandenem Incident hinzufügen** aus. Führen Sie dann folgende Schritte aus:
+    
+    - Für einen neuen Incident: Aktualisieren Sie optional die Details für den Incident, und wählen Sie dann **Erstellen** aus.
+    - Zum Hinzufügen eines Lesezeichens zu einem vorhandenen Incident: Wählen Sie einen Incident und anschließend **Hinzufügen** aus. 
+
+So zeigen Sie das Lesezeichen innerhalb des Incidents an Navigieren Sie zu **Sentinel** > **Bedrohungsverwaltung** > **Incidents**, und wählen Sie den Incident mit Ihrem Lesezeichen aus. Wählen Sie **Alle Informationen anzeigen** und dann die Registerkarte **Lesezeichen** aus.
+
+## <a name="view-bookmarked-data-in-logs"></a>Anzeigen von mit Lesezeichen markierten Daten in Protokollen
+
+Wählen Sie das Lesezeichen auf der Registerkarte **Hunting** > **Lesezeichen** aus, um die mit Lesezeichen versehenen Abfragen, Ergebnisse oder deren Verlauf anzuzeigen, und verwenden Sie die im Detailbereich angegebenen Links: 
+
+- **Quellabfrage anzeigen**, um die Quellabfrage im Bereich **Protokolle** anzuzeigen.
+
+- **Lesezeichenprotokolle anzeigen**, um alle Lesezeichenmetadaten anzuzeigen, z. B. die Person, die die Aktualisierung vorgenommen hat, die aktualisierten Werte und die Uhrzeit, zu der die Aktualisierung erfolgt ist.
+
+Sie können auch die unformatierten Lesezeichendaten für alle Lesezeichen anzeigen, indem Sie **Lesezeichenprotokolle** auf der Registerkarte **Hunting** > **Lesezeichen** auf der Befehlsleiste auswählen:
+
+> [!div class="mx-imgBorder"]
+> ![Lesezeichenprotokolle](./media/bookmarks/bookmark-logs.png)
+
+In dieser Ansicht werden alle Ihre Lesezeichen mit den zugehörigen Metadaten angezeigt. Sie können KQL-Abfragen ([Keyword Query Language](https://docs.microsoft.com/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference)) verwenden, um nach der neuesten Version des bestimmten Lesezeichens zu filtern, das Sie suchen.
 
 > [!NOTE]
-> Es kann eine erhebliche Verzögerung (gemessen in Minuten) zwischen der Erstellung eines Lesezeichens und dem Zeitpunkt liegen, ab dem es in der **HuntingBookmark**-Tabelle angezeigt wird. Es wird empfohlen, zuerst Ihre Lesezeichen zu erstellen und sie dann zu analysieren, nachdem die Daten erfasst wurden. 
+> Es kann eine erhebliche Verzögerung (gemessen in Minuten) zwischen der Erstellung eines Lesezeichens und dem Zeitpunkt liegen, ab dem es auf der Registerkarte **Lesezeichen** angezeigt wird.
 
 ## <a name="delete-a-bookmark"></a>Löschen eines Lesezeichens
-Wenn Sie ein Lesezeichen löschen möchten, führen Sie folgende Schritte aus: 
-1.  Öffnen Sie die Registerkarte **Suchlesezeichen** (Hunting bookmark). 
-2.  Wählen Sie das Ziellesezeichen aus.
-3.  Wählen Sie die Auslassungspunkte (...) am Ende der Zeile aus, und wählen **Lesezeichen löschen** (Delete bookmark) aus.
+ 
+1.  Navigieren Sie im Azure-Portal zur Registerkarte **Sentinel** > **Bedrohungsverwaltung** > **Hunting** > **Lesezeichen**, und wählen Sie das bzw. die Lesezeichen aus, die Sie löschen möchten. 
+
+2. Wählen Sie die Auslassungspunkte (...) am Ende der Zeile aus, und wählen **Lesezeichen löschen** (Delete bookmark) aus.
     
-Das Löschen eines Lesezeichens bewirkt, dass das Lesezeichen aus der Liste auf der Registerkarte **Lesezeichen** (Bookmarks) entfernt wird.  In der Log Analytics-Tabelle „HuntingBookmark“ sind frühere Lesezeicheneinträge weiter enthalten, aber für den letzten Eintrag wird der Wert von **SoftDelete** in „true“ geändert, damit einfach nach alten Lesezeichen gefiltert werden kann.  Das Löschen eines Lesezeichens bewirkt nicht, dass irgendwelche Entitäten aus den Untersuchungsvorgängen entfernt werden, die mit anderen Lesezeichen oder Benachrichtigungen verknüpft sind. 
+Das Löschen eines Lesezeichens bewirkt, dass das Lesezeichen aus der Liste auf der Registerkarte **Lesezeichen** (Bookmarks) entfernt wird. In der Log Analytics-Tabelle **HuntingBookmark** sind frühere Lesezeicheneinträge weiter enthalten, aber für den letzten Eintrag wird der Wert von **SoftDelete** in „true“ geändert, damit einfach nach alten Lesezeichen gefiltert werden kann. Das Löschen eines Lesezeichens bewirkt nicht, dass irgendwelche Entitäten aus den Untersuchungsvorgängen entfernt werden, die mit anderen Lesezeichen oder Benachrichtigungen verknüpft sind. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

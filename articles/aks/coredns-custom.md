@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 909b32890ea7ff33d6b5b5db3bb55f36f7007c6b
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b4c771b406d635410c22db5c1c4687a34a2e6eb0
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018661"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130020"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Anpassen von CoreDNS mit Azure Kubernetes Service
 
@@ -20,7 +20,7 @@ Azure Kubernetes Service (AKS) verwendet das [CoreDNS][coredns]-Projekt für die
 
 Weil AKS ein verwalteter Dienst ist, können Sie die Hauptkonfiguration für CoreDNS (ein *CoreFile*) nicht ändern. Stattdessen verwenden Sie eine *ConfigMap* von Kubernetes, um die Standardeinstellungen zu überschreiben. Um die standardmäßigen AKS CoreDNS ConfigMaps anzuzeigen, verwenden Sie den Befehl `kubectl get configmaps --namespace=kube-system coredns -o yaml`.
 
-In diesem Artikel wird erläutert, wie Sie ConfigMaps für grundlegende Anpassungsoptionen von CoreDNS in AKS verwenden.
+In diesem Artikel wird erläutert, wie Sie ConfigMaps für grundlegende Anpassungsoptionen von CoreDNS in AKS verwenden. Diese Vorgehensweise unterscheidet sich von der Konfiguration von CoreDNS in anderen Kontexten wie der Verwendung von CoreFile. Überprüfen Sie die verwendete Version von CoreDNS, da sich die Konfigurationswerte zwischen den Versionen ändern können.
 
 > [!NOTE]
 > `kube-dns` bot verschiedene [Anpassungsoptionen][kubednsblog] über eine Kubernetes-Konfigurationszuordnung. CoreDNS ist **nicht** abwärtskompatibel zu kube-dns. Alle Anpassungen, die Sie zuvor verwendet haben, müssen für die Verwendung mit CoreDNS aktualisiert werden.
@@ -31,7 +31,7 @@ Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen 
 
 ## <a name="what-is-supportedunsupported"></a>Was wird unterstützt/nicht unterstützt?
 
-Alle integrierten CoreDNS-Plug-Ins werden unterstützt. Es werden keine Add-On-/Drittparteien-Plug-Ins unterstützt. 
+Alle integrierten CoreDNS-Plug-Ins werden unterstützt. Es werden keine Add-On-/Drittparteien-Plug-Ins unterstützt.
 
 ## <a name="rewrite-dns"></a>Erneutes Schreiben des DNS
 

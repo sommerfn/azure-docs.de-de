@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 43cb2f0c3ef0f845afcd309dccb35bc632ffd324
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 3bde609c83425d660c867939e034247d7e6898c5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390953"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300269"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Korrigieren falsch geschriebener Wörter mit der Bing-Rechtschreibprüfung
 
@@ -89,7 +89,13 @@ Die Endpunkt-URL enthält mehrere Werte, die ordnungsgemäß übergeben werden m
 ```
 
 ## <a name="ignore-spelling-mistakes"></a>Ignorieren von Rechtschreibfehlern
-Wenn Sie den Dienst Bing-Rechtschreibprüfungs-API V7 nicht verwenden möchten, können Sie Äußerungen mit Rechtschreibfehlern kennzeichnen, damit LUIS die richtige Schreibweise sowie Tippfehler erlernen kann. Diese Option erfordert einen höheren Aufwand für die Bezeichnung als die Verwendung einer Rechtschreibprüfung.
+
+Wenn Sie den Bing-Rechtschreibprüfungs-API v7-Dienst nicht nutzen möchten, müssen Sie die korrekte und falsche Rechtschreibung hinzufügen. 
+
+Zwei Lösungen sind:
+
+* Kennzeichnen Sie Beispieläußerungen, welche die verschiedenen Schreibweisen enthalten, damit LUIS sowohl die richtige Rechtschreibung als auch Tippfehler lernen kann. Diese Option erfordert einen höheren Aufwand für die Bezeichnung als die Verwendung einer Rechtschreibprüfung.
+* Erstellen Sie eine Phrasenliste mit allen Wortvariationen. Mit dieser Lösung müssen Sie die Wortvariationen in den Beispieläußerungen nicht kennzeichnen. 
 
 ## <a name="publishing-page"></a>Seite „Veröffentlichen“
 Die Seite [Veröffentlichen](luis-how-to-publish-app.md) enthält das Kontrollkästchen **Enable Bing spell checker** (Bing-Rechtschreibprüfung aktivieren). Dieses vereinfacht das Erstellen des Schlüssels und hilft zu verstehen, wie sich die Endpunkt-URL ändert. Sie müssen trotzdem die richtigen Endpunktparameter verwenden, damit die Rechtschreibung für jede Äußerung korrigiert wird. 

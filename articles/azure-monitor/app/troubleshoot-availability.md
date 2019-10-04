@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: c3f3d9437a6e796cc91ff1782b3a0774382c5f8b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067071"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146599"
 ---
 # <a name="troubleshooting"></a>Problembehandlung
 
@@ -46,10 +46,9 @@ Dieser Artikel soll Ihnen beim Behandeln von häufig bei der Verfügbarkeitsübe
 
 ## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Ein zeitweiliger Testfehler aufgrund einer Protokollverletzung
 
-|Symptom/Fehlermeldung| Mögliche Ursachen|
-|----|---------|
-Verletzung des Protokolls „Auf CR muss LF folgen“ | Dieses Problem entsteht, wenn falsch formatierte Header gefunden werden. Genauer gesagt geben einige Header unter Umständen das Zeilenende nicht mit CRLF an, was gegen die HTTP-Spezifikation verstößt. Daher schlägt die Validierung auf .NET-WebRequest-Ebene fehl.
- || Der Fehler kann außerdem durch Lastenausgleichsmodule oder CDNs verursacht werden.
+|Symptom/Fehlermeldung| Mögliche Ursachen| Mögliche Lösungen |
+|----|---------|-----|
+|Beim Server ist eine Protokollverletzung aufgetreten. Auf Section=ResponseHeader Detail=CR muss LF folgen. | Dieses Problem entsteht, wenn falsch formatierte Header gefunden werden. Genauer gesagt geben einige Header unter Umständen das Zeilenende nicht mit CRLF an, was gegen die HTTP-Spezifikation verstößt. Application Insights erzwingt diese HTTP-Spezifikation, und Antworten mit falsch formatierten Headern schlagen fehl.| a. Wenden Sie sich an den Website-Hostanbieter/CDN-Anbieter, um die fehlerhaften Server zu korrigieren. <br> b. Falls es sich bei den fehlgeschlagenen Anforderungen um Ressourcen (z.B. Formatdateien, Bilder, Skripts) handelt, empfiehlt es sich, das Analysieren abhängiger Anforderungen zu deaktivieren. Denken Sie daran, dass Sie in diesem Fall die Verfügbarkeit dieser Dateien nicht mehr überwachen können.
 
 > [!NOTE]
 > Bei der URL tritt in Browsern mit einer nicht so strengen Validierung von HTTP-Headern unter Umständen kein Fehler auf. Eine ausführliche Erläuterung des Problems finden Sie in diesem Blogbeitrag: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/.  

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: ce5f7ab1e6751a9ce68aa2d9c466a112c9cac182
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: af157204ad1e1b28639ae2d8f192b3122afa8147
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900607"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299240"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Überwachen von Abhängigkeiten, abgefangene Ausnahmen und Methodenausführungszeiten in Java-Web-Apps
 
@@ -25,19 +25,26 @@ ms.locfileid: "60900607"
 Wenn Sie [Ihre Java-Web-App mit Application Insights instrumentiert haben][java], können Sie den Java-Agent ohne Codeänderungen verwenden, um detailliertere Informationen zu erhalten:
 
 * **Abhängigkeiten**: Daten über Aufrufe der Anwendung an andere Komponenten, einschließlich:
-  * **REST-Aufrufe** über „HttpClient“, „OkHttp“ und „RestTemplate“ (Spring) werden erfasst.
+  * **Ausgehende HTTP-Aufrufe** über Apache HttpClient, OkHttp und `java.net.HttpURLConnection` werden erfasst.
   * **Redis-Aufrufe** über den Jedis-Client werden erfasst.
-  * **[JDBC-Aufrufe:](https://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** MySQL-, SQL Server- and Oracle DB-Befehle werden automatisch erfasst. Für MySQL gilt: Wenn der Aufruf länger als zehn Sekunden dauert, wird der Abfrageplan gemeldet.
-* **Abgefangene Ausnahmen**: Informationen zu Ausnahmen, die von Ihrem Code behandelt werden.
-* **Methodenausführungszeit**: Informationen zur Ausführungsdauer bestimmter Methoden.
+  * **JDBC-Abfragen**: Für MySQL und PostgreSQL gilt: Wenn der Aufruf länger als zehn Sekunden dauert, wird der Abfrageplan gemeldet.
+
+* **Anwendungsprotokollierung**: Sie können Ihre Anwendungsprotokolle erfassen und mit HTTP-Anforderungen und anderer Telemetrie in Beziehung setzen.
+  * **Log4j 1.2**
+  * **Log4j2**
+  * **Logback**
+
+* **Bessere Vorgangsbenennung:** (für die Aggregation von Anforderungen im Portal verwendet)
+  * **Spring** – basiert auf `@RequestMapping`.
+  * **JAX-RS** – basiert auf `@Path`. 
 
 Um den Java-Agent zu verwenden, installieren Sie ihn auf Ihrem Server. Ihre Web-Apps müssen mit dem [Application Insights Java SDK][java] instrumentiert werden. 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>Installieren des Application Insights-Agents für Java
 1. Laden Sie auf dem Computer, auf dem Ihr Java-Server ausgeführt wird, [den Agent herunter](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Die Version des heruntergeladenen Agents muss der Version der Core- und Webpakete des Application Insights Java SDKs entsprechen.
-2. Bearbeiten Sie das Startskript des Anwendungsservers, und fügen Sie die folgende JVM hinzu:
+2. Bearbeiten Sie das Startskript des Anwendungsservers, und fügen Sie das folgende JVM-Argument hinzu:
    
-    `javaagent:`*Vollständiger Pfad der JAR-Datei des Agents*
+    `-javaagent:<full path to the agent JAR file>`
    
     Beispielsweise in Tomcat auf einem Linux-Computer:
    
@@ -50,44 +57,32 @@ Erstellen Sie eine Datei mit dem Namen `AI-Agent.xml` , und speichern Sie sie im
 Legen Sie den Inhalt der XML-Datei fest. Bearbeiten Sie das folgende Beispiel, um Features Ihrer Wahl aufzunehmen oder nicht.
 
 ```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn enabled="true">
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <ApplicationInsightsAgent>
-      <Instrumentation>
+         <!-- capture logging via Log4j 1.2, Log4j2, and Logback, default is true -->
+         <Logging enabled="true" />
 
-        <!-- Collect remote dependency data -->
-        <BuiltIn enabled="true">
-           <!-- Disable Redis or alter threshold call duration above which arguments are sent.
-               Defaults: enabled, 10000 ms -->
-           <Jedis enabled="true" thresholdInMS="1000"/>
+         <!-- capture outgoing HTTP calls performed through Apache HttpClient, OkHttp,
+              and java.net.HttpURLConnection, default is true -->
+         <HTTP enabled="true" />
 
-           <!-- Set SQL query duration above which query plan is reported (MySQL, PostgreSQL). Default is 10000 ms. -->
-           <MaxStatementQueryLimitInMS>1000</MaxStatementQueryLimitInMS>
-        </BuiltIn>
+         <!-- capture JDBC queries, default is true -->
+         <JDBC enabled="true" />
 
-        <!-- Collect data about caught exceptions
-             and method execution times -->
+         <!-- capture Redis calls, default is true -->
+         <Jedis enabled="true" />
 
-        <Class name="com.myCompany.MyClass">
-           <Method name="methodOne"
-               reportCaughtExceptions="true"
-               reportExecutionTime="true"
-               />
-           <!-- Report on the particular signature
-                void methodTwo(String, int) -->
-           <Method name="methodTwo"
-              reportExecutionTime="true"
-              signature="(Ljava/lang/String;I)V" />
-        </Class>
+         <!-- capture query plans for JDBC queries that exceed this value (MySQL, PostgreSQL),
+              default is 10000 milliseconds -->
+         <MaxStatementQueryLimitInMS>1000</MaxStatementQueryLimitInMS>
 
-      </Instrumentation>
-    </ApplicationInsightsAgent>
-
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
 ```
-
-Sie müssen für einzelne Methoden die Berichtausnahmen und Methodenzeiten aktivieren.
-
-`reportExecutionTime` ist standardmäßig „true“, `reportCaughtExceptions` ist standardmäßig „false“.
 
 ## <a name="additional-config-spring-boot"></a>Zusätzliche Konfiguration (Spring Boot)
 
@@ -98,10 +93,10 @@ Führen Sie für Azure App Services die folgenden Schritte aus:
 * Wählen Sie „Einstellungen“ > „Anwendungseinstellungen“ aus.
 * Fügen Sie unter „App-Einstellungen“ ein neues Schlüssel-Wert-Paar hinzu:
 
-Schlüssel: `JAVA_OPTS` Wert: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.3.1-SNAPSHOT.jar`
+Schlüssel: `JAVA_OPTS` Wert: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
-Die neueste Version des Java-Agents finden Sie unter den Releases [hier](https://github.com/Microsoft/ApplicationInsights-Java/releases
-). 
+Die neueste Version des Java-Agent finden Sie [hier](https://github.com/Microsoft/ApplicationInsights-Java/releases
+) unter den Releases. 
 
 Der Agent muss als Ressource in Ihrem Projekt enthalten sein, sodass er sich letztendlich im Verzeichnis „D:/home/site/wwwroot/“ befindet. Sie können sich vergewissern, dass der Agent im richtigen App Service-Verzeichnis enthalten ist, indem Sie zu **Entwicklungstools** > **Erweiterte Tools** > **Debugging-Konsole** wechseln und den Inhalt des Siteverzeichnisses prüfen.    
 
@@ -110,33 +105,16 @@ Der Agent muss als Ressource in Ihrem Projekt enthalten sein, sodass er sich let
 > [!NOTE]
 > „AI-Agent.xml“ und die Agent-JAR-Datei sollten sich im selben Ordner befinden. Sie werden häufig zusammen im `/resources`-Ordner des Projekts platziert.  
 
-### <a name="spring-rest-template"></a>Spring-REST-Vorlage
-
-Damit Application Insights HTTP-Aufrufe über die Spring-REST-Vorlage erfolgreich instrumentieren kann, muss der Apache-HTTP-Client verwendet werden. Standardmäßig ist die REST-Vorlage von Spring nicht für die Verwendung des Apache-HTTP-Clients konfiguriert. Durch Angabe von [HttpComponentsClientHttpRequestfactory](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/client/HttpComponentsClientHttpRequestFactory.html) im Konstruktor einer Spring-REST-Vorlage wird Apache-HTTP verwendet.
-
-Hier ist ein Beispiel dazu mit Spring-Beans. Dies ist ein sehr einfaches Beispiel, in dem die Standardeinstellungen der Factoryklasse verwendet werden.
-
-```java
-@bean
-public ClientHttpRequestFactory httpRequestFactory() {
-return new HttpComponentsClientHttpRequestFactory()
-}
-@Bean(name = 'myRestTemplate')
-public RestTemplate dcrAccessRestTemplate() {
-    return new RestTemplate(httpRequestFactory())
-}
-```
-
 #### <a name="enable-w3c-distributed-tracing"></a>Aktivieren der verteilten W3C-Ablaufverfolgung
 
 Fügen Sie der Datei „AI-Agent.xml“ Folgendes hinzu:
 
 ```xml
 <Instrumentation>
-        <BuiltIn enabled="true">
-            <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
-        </BuiltIn>
-    </Instrumentation>
+   <BuiltIn enabled="true">
+      <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
+   </BuiltIn>
+</Instrumentation>
 ```
 
 > [!NOTE]

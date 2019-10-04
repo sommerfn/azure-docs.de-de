@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d3d09d466e05c97de215542c66987aa6b723afce
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9b78c18547ef61b388a56a1272b5621cada43806
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827991"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120490"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -30,6 +30,7 @@ Nach der Erstellung eines Azure Cosmos-Kontos unter Ihrem Abonnement können Sie
 | Maximale Anzahl unterschiedlicher (logischer) Partitionsschlüssel | Unbegrenzt |
 | Maximale Speicherkapazität pro Container | Unbegrenzt |
 | Maximale Speicherkapazität pro Datenbank | Unbegrenzt |
+| Maximale Anlagengröße pro Konto (Anlagenfeature wird eingestellt) | 2 GB | 
 
 > [!NOTE]
 > Bewährte Methoden für die Verwaltung von Workloads mit Partitionsschlüsseln, die höhere Grenzwerte für Speicher oder Durchsatz benötigen, finden Sie unter [Erstellen eines synthetischen Partitionsschlüssels](synthetic-partition-keys.md).

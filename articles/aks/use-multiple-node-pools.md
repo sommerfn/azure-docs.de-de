@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 92accf4317ef8d0e3837ce3789615b5aaf6f6919
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: c1b372dbeaea31e83c8ff42a84fc39d762b2ebdb
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996899"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212272"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vorschau – Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Fü
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 
-Um mehrere Knotenpools verwenden zu können, benötigen Sie mindestens Version 0.4.12 der CLI-Erweiterung *aks-preview*. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
+Um mehrere Knotenpools verwenden zu können, benötigen Sie mindestens Version 0.4.16 der CLI-Erweiterung *aks-preview*. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -79,6 +79,7 @@ Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS
 * Der Standardknotenpool (der erste) kann nicht gelöscht werden.
 * Das Add-On für das HTTP-Anwendungsrouting kann nicht verwendet werden.
 * Sie können Knotenpools nicht mit einer vorhandenen Resource Manager-Vorlage hinzufügen oder löschen wie mit den meisten Vorgängen. Stattdessen [verwenden Sie eine gesonderte Resource Manager-Vorlage](#manage-node-pools-using-a-resource-manager-template), um Änderungen an Knotenpools in einem AKS-Cluster vorzunehmen.
+* Der Name eines Knotenpools muss mit einem Kleinbuchstaben beginnen und darf nur alphanumerische Zeichen enthalten. Bei Linux-Knotenpools muss die Länge zwischen einem und zwölf Zeichen liegen. Bei Windows-Knotenpools muss die Länge zwischen einem und sechs Zeichen betragen.
 
 Während sich dieses Feature in der Vorschauversion befindet, gelten die folgenden zusätzlichen Einschränkungen:
 
@@ -131,6 +132,9 @@ az aks nodepool add \
     --kubernetes-version 1.12.7
 ```
 
+> [!NOTE]
+> Der Name eines Knotenpools muss mit einem Kleinbuchstaben beginnen und darf nur alphanumerische Zeichen enthalten. Bei Linux-Knotenpools muss die Länge zwischen einem und zwölf Zeichen liegen. Bei Windows-Knotenpools muss die Länge zwischen einem und sechs Zeichen betragen.
+
 Um den Status Ihrer Knotenpools anzuzeigen, verwenden Sie den Befehl [az aks node pool list][az-aks-nodepool-list], und geben Sie Ihre Ressourcengruppe und den Clusternamen an:
 
 ```azurecli-interactive
@@ -174,7 +178,9 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > [!NOTE]
 > Upgrade- und Skalierungsvorgänge für einen Cluster- oder Knotenpool können nicht gleichzeitig ausgeführt werden. Bei dem Versuch wird ein Fehler zurückgegeben. Stattdessen muss jeder Vorgangstyp für die Zielressource abgeschlossen sein, bevor eine neue Anforderung an dieselbe Ressource gerichtet werden kann. Weitere Informationen hierzu finden Sie in unserem [Leitfaden zur Problembehandlung](https://aka.ms/aks-pending-upgrade).
 
-Beim anfänglichen Erstellen Ihres AKS-Clusters im ersten Schritt wurde für `--kubernetes-version` der Wert *1.13.10* angegeben. Dadurch wurde die Kubernetes-Version sowohl für die Steuerungsebene als auch für den Standardknotenpool festgelegt. Mit den Befehlen in diesem Abschnitt wird gezeigt, wie ein Upgrade für einen einzelnen spezifischen Knotenpool durchgeführt wird. Die Beziehung zwischen dem Upgrade der Kubernetes-Version der Steuerungsebene und des Knotenpools wird im [Abschnitt weiter unten](#upgrade-a-cluster-control-plane-with-multiple-node-pools) erläutert.
+Beim anfänglichen Erstellen Ihres AKS-Clusters im ersten Schritt wurde für `--kubernetes-version` der Wert *1.13.10* angegeben. Dadurch wurde die Kubernetes-Version sowohl für die Steuerungsebene als auch für den Standardknotenpool festgelegt. Mit den Befehlen in diesem Abschnitt wird gezeigt, wie ein Upgrade für einen einzelnen spezifischen Knotenpool durchgeführt wird.
+
+Die Beziehung zwischen dem Upgrade der Kubernetes-Version der Steuerungsebene und des Knotenpools wird im [Abschnitt weiter unten](#upgrade-a-cluster-control-plane-with-multiple-node-pools) erläutert.
 
 > [!NOTE]
 > Die Betriebssystem-Imageversion des Knotenpools ist an die Kubernetes-Version des Clusters gebunden. Upgrades für Betriebssystemimages erhalten Sie nur nach einem Clusterupgrade.
@@ -189,9 +195,6 @@ az aks nodepool upgrade \
     --kubernetes-version 1.13.10 \
     --no-wait
 ```
-
-> [!Tip]
-> Führen Sie `az aks upgrade -k 1.14.6` aus, um die Steuerungsebene auf *1.14.6* zu aktualisieren. Weitere Informationen finden Sie unter [Aktualisieren einer Clustersteuerungsebene mit mehreren Knotenpools](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
 Listen Sie den Status Ihrer Knotenpools mit dem Befehl [az aks node pool list][az-aks-nodepool-list] erneut auf. Das folgende Beispiel zeigt, dass *mynodepool* den Zustand *Upgrading* (Wird aktualisiert) auf *1.13.10* aufweist:
 
@@ -228,7 +231,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 Es dauert einige Minuten, bis ein Upgrade der Knoten auf die angegebene Version erfolgt ist.
 
-Als bewährte Methode sollten Sie alle Knotenpools in einem AKS-Cluster auf dieselbe Kubernetes-Version aktualisieren. Durch die Möglichkeit, ein Upgrade für einzelne Knotenpools durchzuführen, können Sie ein paralleles Upgrade durchführen und Pods zwischen Knotenpools planen, um die Anwendungsbetriebszeit innerhalb der oben genannten Einschränkungen aufrechtzuerhalten.
+Als bewährte Methode sollten Sie alle Knotenpools in einem AKS-Cluster auf dieselbe Kubernetes-Version aktualisieren. Beim Standardverhalten von `az aks upgrade` werden alle Knotenpools gemeinsam mit der Steuerungsebene aktualisiert, um diese Anpassung zu erzielen. Durch die Möglichkeit, ein Upgrade für einzelne Knotenpools durchzuführen, können Sie ein paralleles Upgrade durchführen und Pods zwischen Knotenpools planen, um die Anwendungsbetriebszeit innerhalb der oben genannten Einschränkungen aufrechtzuerhalten.
 
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Aktualisieren einer Clustersteuerungsebene mit mehreren Knotenpools
 
@@ -239,17 +242,18 @@ Als bewährte Methode sollten Sie alle Knotenpools in einem AKS-Cluster auf dies
 > * Die Knotenpoolversion kann eine Nebenversion niedriger sein als die Version der Steuerungsebene.
 > * Die Knotenpoolversion kann eine beliebige Patchversion haben, solange die beiden anderen Bedingungen erfüllt sind.
 
-Ein AKS-Cluster verfügt über zwei Clusterressourcenobjekte. Beim ersten Objekt handelt es sich um eine Kubernetes-Version der Steuerungsebene. Das zweite ist ein Agent-Pool mit einer Kubernetes-Version. Eine Steuerungsebene ist einem oder mehreren Knotenpools zugeordnet und verfügt jeweils über eine eigene Kubernetes-Version. Das Verhalten eines Upgradevorgangs hängt davon ab, welche Ressource als Ziel dient und welche Version der zugrunde liegenden API aufgerufen wird.
+Ein AKS-Cluster verfügt über zwei Clusterressourcenobjekte mit zugeordneten Kubernetes-Versionen. Beim ersten Objekt handelt es sich um eine Kubernetes-Version der Steuerungsebene. Das zweite ist ein Agent-Pool mit einer Kubernetes-Version. Eine Steuerungsebene ist einem oder mehreren Knotenpools zugeordnet. Das Verhalten eines Upgradevorgangs hängt davon ab, welcher Azure CLI-Befehl verwendet wird.
 
 1. Zum Aktualisieren der Steuerungsebene muss `az aks upgrade` verwendet werden.
-   * Dadurch wird auch ein Upgrade aller Knotenpools im Cluster durchgeführt.
-1. Aktualisieren mit `az aks nodepool upgrade`
-   * Damit wird nur der Zielknotenpool mit der angegebenen Kubernetes-Version aktualisiert.
+   * Dadurch werden die Version der Steuerungsebene und alle Knotenpools im Cluster aktualisiert.
+   * Beim Übergeben von `az aks upgrade` mit dem Flag `--control-plane-only` wird nur die Clustersteuerungsebene aktualisiert und keiner der zugeordneten Knotenpools geändert. Das Flag `--control-plane-only` ist in **AKS-Vorschauerweiterung v0.4.16** oder höher verfügbar.
+1. Zum Aktualisieren einzelner Knotenpools muss `az aks nodepool upgrade` verwendet werden.
+   * Dadurch wird nur der Zielknotenpool mit der angegebenen Kubernetes-Version aktualisiert.
 
 Die Beziehung zwischen Kubernetes-Versionen von Knotenpools muss auch einem Satz von Regeln folgen.
 
 1. Sie können weder die Kubernetes-Version der Steuerungsebene noch die des Knotenpools herabstufen.
-1. Wenn keine Angabe der Kubernetes-Version des Knotenpools erfolgt, wird standardmäßig die Version der Steuerungsebene verwendet.
+1. Wenn die Kubernetes-Version eines Knotenpools nicht angegeben ist, hängt das Verhalten vom verwendeten Client ab. Bei der Deklaration in der ARM-Vorlage wird die für den Knotenpool definierte vorhandene Version verwendet. Wenn kein Wert festgelegt ist, wird die Version der Steuerungsebene verwendet.
 1. Sie können eine Steuerungsebene oder einen Knotenpool zu einem bestimmten Zeitpunkt aktualisieren oder skalieren. Die beiden Vorgänge können jedoch nicht gleichzeitig übermittelt werden.
 1. Die Kubernetes-Version eines Knotenpools muss der Hauptversion der Steuerungsebene entsprechen.
 1. Die Kubernetes-Version eines Knotenpools darf maximal zwei (2) Versionen niedriger sein als die der Steuerungsebene, aber niemals höher.
@@ -580,8 +584,8 @@ Es kann ein paar Minuten dauern, bis Ihr AKS-Cluster aktualisiert wird, abhängi
 
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Zuweisen einer öffentlichen IP-Adresse pro Knoten in einem Knotenpool
 
-> [!NOTE]
-> Während sich die Funktion zur Zuweisung einer öffentlichen IP-Adresse pro Knoten in der Vorschau befindet, kann sie nicht mit *Load Balancern der Standard-SKU in AKS* verwendet werden, weil Load Balancer-Regeln möglicherweise mit der VM-Bereitstellung in Konflikt stehen. Verwenden Sie in der Vorschauversion die *Load Balancer Basic-SKU*, wenn Sie eine öffentliche IP-Adresse pro Knoten zuweisen müssen.
+> [!WARNING]
+> Während sich die Funktion zur Zuweisung einer öffentlichen IP-Adresse pro Knoten in der Vorschau befindet, kann sie nicht mit *Load Balancern der Standard-SKU in AKS* verwendet werden, weil Load Balancer-Regeln möglicherweise mit der VM-Bereitstellung in Konflikt stehen. In der Vorschauversion müssen Sie die *Load-Balancer-SKU „Basic“* verwenden, wenn Sie eine öffentliche IP-Adresse pro Knoten zuweisen müssen.
 
 AKS-Knoten benötigen keine eigene öffentliche IP-Adresse für die Kommunikation. In einigen Szenarien müssen Knoten in einem Knotenpool jedoch möglicherweise jeweils über eine eigene öffentliche IP-Adresse verfügen. Ein Beispiel hierfür ist Gaming, bei dem eine Konsole eine direkte Verbindung mit einem virtuellen Cloudcomputer herstellen muss, um Hops zu minimieren. Dies kann erreicht werden, indem Sie sich für eine separate Previewfunktion für öffentliche IP-Adressen für Knoten (Node Public IP) (Vorschauversion) registrieren.
 

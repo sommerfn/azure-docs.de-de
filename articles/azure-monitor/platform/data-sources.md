@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: bwren
-ms.openlocfilehash: 673575d480b78c151e68963e4a935fc72e7e578b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dabc336a1f92169ab573e7cf29e1a7a069ae20b1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564754"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262049"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Quellen für Überwachungsdaten für Azure Monitor
 Azure Monitor basiert auf einer [allgemeinen Überwachungsdatenplattform](data-platform.md), die [Protokolle](data-platform-logs.md) und [Metriken](data-platform-metrics.md) umfasst. Das Sammeln von Daten auf dieser Plattform macht es möglich, Daten von mehreren Ressourcen zusammen mit einem gemeinsamen Satz von Tools in Azure Monitor zu analysieren. Überwachungsdaten werden ggf. auch zur Unterstützung bestimmter Szenarien an andere Speicherorte gesendet, und einige Ressourcen schreiben möglicherweise Daten an andere Speicherorte, bevor sie in Protokollen oder Metriken gesammelt werden können.
@@ -90,7 +90,7 @@ Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) enthält Service Hea
 
 
 ## <a name="azure-resources"></a>Azure-Ressourcen
-Diagnoseprotokolle auf Metriken- und Ressourcenebene enthalten Informationen zum _internen_ Betrieb der Azure-Ressourcen. Diese sind für die meisten Azure-Dienste verfügbar, und Überwachungslösungen und Insights bieten zusätzliche Daten für bestimmte Dienste.
+Metriken und Ressourcenprotokolle enthalten Informationen zum _internen_ Betrieb von Azure-Ressourcen. Diese sind für die meisten Azure-Dienste verfügbar, und Überwachungslösungen und Insights bieten zusätzliche Daten für bestimmte Dienste.
 
 ![Azure-Ressourcensammlung](media/data-sources/azure-resources.png)
 
@@ -101,19 +101,19 @@ Die meisten Azure-Dienste senden [Plattformmetriken](data-platform-metrics.md), 
 | Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
 | Azure Monitor-Metriken | Plattformmetriken werden ohne Konfiguration in die Azure Monitor-Metrikdatenbank geschrieben. Greifen Sie über den Metrik-Explorer auf Plattformmetriken zu.  | [Erste Schritte mit dem Azure-Metrik-Explorer](metrics-getting-started.md)<br>[Unterstützte Metriken von Azure Monitor](metrics-supported.md) |
-| Azure Monitor-Protokolle | Kopieren Sie Plattformmetriken in Protokolle zur Trend- und sonstigen Analyse mit Log Analytics. | [Azure-Diagnosen direkt an Log Analytics](diagnostic-logs-stream-log-store.md) |
+| Azure Monitor-Protokolle | Kopieren Sie Plattformmetriken in Protokolle zur Trend- und sonstigen Analyse mit Log Analytics. | [Azure-Diagnosen direkt an Log Analytics](resource-logs-collect-workspace.md) |
 | Event Hubs | Streamen Sie Metriken mithilfe von Event Hubs an andere Speicherorte. |[Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](stream-monitoring-data-event-hubs.md) |
 
-### <a name="diagnostic-logs"></a>Diagnoseprotokolle
-[Diagnoseprotokolle](diagnostic-logs-overview.md) bieten Einblicke in den _internen_ Betrieb einer Azure-Ressource.  Diagnoseprotokolle sind nicht standardmäßig aktiviert. Sie müssen sie aktivieren, und ein Ziel für jede Ressource angeben. 
+### <a name="resource-logs"></a>Ressourcenprotokolle
+[Ressourcenprotokolle](resource-logs-overview.md) bieten Einblicke in den _internen_ Betrieb einer Azure-Ressource.  Ressourcenprotokolle werden automatisch erstellt, doch müssen Sie eine Diagnoseeinstellung erstellen, um ein Ziel anzugeben, das für jede Ressource erfasst werden soll.
 
-Die Konfigurationsanforderungen und der Inhalt der Diagnoseprotokolle sind je nach Ressourcentyp verschieden, und noch nicht alle Dienste erstellen Diagnoseprotokolle. Ausführliche Informationen zu den einzelnen Diensten und Links zu detaillierten Konfigurationsverfahren finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](diagnostic-logs-schema.md). Wenn der Dienst in diesem Artikel nicht aufgeführt ist, wird von ihm derzeit nichts in Diagnoseprotokolle geschrieben.
+Die Konfigurationsanforderungen und der Inhalt der Ressourcenprotokolle sind je nach Ressourcentyp verschieden, und noch nicht alle Dienste erstellen diese. Ausführliche Informationen zu den einzelnen Diensten und Links zu detaillierten Konfigurationsverfahren finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle](diagnostic-logs-schema.md). Wenn der Dienst in diesem Artikel nicht aufgeführt ist, werden von ihm derzeit keine Ressourcenprotokolle erstellt.
 
 | Destination | BESCHREIBUNG | Verweis |
 |:---|:---|:---|
-| Azure Monitor-Protokolle | Senden Sie Diagnoseprotokolle zur Analyse mit anderen gesammelten Protokolldaten an Azure Monitor-Protokolle. Einige Ressourcen können direkt in Azure Monitor schreiben, während andere in ein Speicherkonto schreiben, bevor sie in einen Log Analytics-Arbeitsbereich importiert werden. | [Streamen von Azure-Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich in Azure Monitor](diagnostic-logs-stream-log-store.md)<br>[Verwenden des Azure-Portals zum Sammeln von Protokollen aus Azure Storage](azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage)  |
-| Storage | Senden Sie Diagnoseprotokolle zur Archivierung an Azure Storage. | [Archivieren von Azure-Diagnoseprotokollen](archive-diagnostic-logs.md) |
-| Event Hubs | Streamen Sie Diagnoseprotokolle mithilfe von Event Hubs an andere Speicherorte. |[Streamen von Azure-Diagnoseprotokollen an Event Hubs](diagnostic-logs-stream-event-hubs.md) |
+| Azure Monitor-Protokolle | Senden Sie Ressourcenprotokolle zur Analyse mit anderen gesammelten Protokolldaten an Azure Monitor-Protokolle. | [Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](resource-logs-collect-storage.md) |
+| Storage | Senden Sie Ressourcenprotokolle zur Archivierung an Azure Storage. | [Archivieren von Azure-Ressourcenprotokollen](resource-logs-collect-workspace.md) |
+| Event Hubs | Streamen Sie Ressourcenprotokolle mithilfe von Event Hubs an andere Speicherorte. |[Streamen von Azure-Ressourcenprotokollen an Event Hubs](resource-logs-stream-event-hubs.md) |
 
 ## <a name="operating-system-guest"></a>Betriebssystem (Gast)
 Computeressourcen in Azure, in anderen Clouds und lokal haben ein Gastbetriebssystem zu überwachen. Mit der Installation mindestens eines Agents können Sie Telemetriedaten aus dem Gastbetriebssystem in Azure Monitor sammeln, um sie mit denselben Überwachungstools wie die Azure-Dienste selbst zu analysieren.

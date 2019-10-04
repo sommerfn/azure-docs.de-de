@@ -3,23 +3,25 @@ title: Sicherheit von Notification Hubs
 description: In diesem Thema wird Sicherheit für Azure Notification Hubs erläutert.
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
-ms.assetid: 6506177c-e25c-4af7-8508-a3ddca9dc07c
+author: sethmanheim
+manager: femila
+editor: jwargo
+ms.assetid: ''
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/31/2019
-ms.author: jowargo
-ms.openlocfilehash: 73a6d0eaab286dec9d02bb55eb75f0781bcffcc4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.date: 09/23/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 09/23/2019
+ms.openlocfilehash: a9598f6a01e5536351fb20b7c352a5eaf5746042
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891589"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273617"
 ---
 # <a name="notification-hubs-security"></a>Sicherheit von Notification Hubs
 
@@ -27,13 +29,18 @@ ms.locfileid: "69891589"
 
 Dieses Thema beschreibt das Sicherheitsmodell von Azure Notification Hubs.
 
-## <a name="shared-access-signature-security-sas"></a>Shared Access Signature-Sicherheit (SAS)
+## <a name="shared-access-signature-security"></a>SAS-Sicherheit (Shared Access Signature)
 
-Notification Hubs implementieren ein Sicherheitsschema auf Entitätsebene, das SAS (Shared Access Signature) genannt wird. Jede Regel enthält einen Namen, einen Schlüsselwert (gemeinsamer geheimer Schlüssel) und eine Reihe von Rechten, wie im Abschnitt [Sicherheitsansprüche](#security-claims) erläutert. Beim Erstellen eines Notification Hubs werden automatisch zwei Regeln erstellt: eine mit **Lauschberechtigung** (von der Clientanwendung verwendet) und eine mit **allen** Berechtigungen (vom Back-End verwendet).
+Notification Hubs implementieren ein Sicherheitsschema auf Entitätsebene, das SAS (*Shared Access Signature*) genannt wird. Jede Regel enthält einen Namen, einen Schlüsselwert (gemeinsames Geheimnis) und eine Reihe von Rechten, wie später im Abschnitt [Sicherheitsansprüche](#security-claims) erläutert. 
+
+Beim Erstellen eines Hubs werden automatisch zwei Regeln erstellt: eine mit **Lauschberechtigung** (von der Clientanwendung verwendet) und eine mit **allen** Berechtigungen (vom Back-End verwendet):
+
+- **DefaultListenSharedAccessSignature** erteilt nur die **Lauschberechtigung**.
+- **DefaultFullSharedAccessSignature** erteilt die Berechtigungen **Lauschen**, **Verwalten** und **Senden**. Diese Richtlinie darf nur in Ihrem App-Back-End verwendet werden. Verwenden Sie sie nicht in Clientanwendungen. Verwenden Sie eine Richtlinie, die nur über den Zugriff zum **Lauschen** verfügt. Informationen zum Erstellen einer neuen benutzerdefinierten Zugriffsrichtlinie mit einem neuen SAS-Token finden Sie später in diesem Artikel unter [SAS-Token für Zugriffsrichtlinien](#sas-tokens-for-access-policies).
 
 Wenn eine Registrierungsverwaltung von Client-Apps aus durchgeführt wird und die über Benachrichtigungen gesendeten Informationen nicht vertraulich sind (z. B. aktuelle Wetterdaten), besteht eine gebräuchliche Möglichkeit zum Zugreifen auf einen Notification Hub darin, dem Schlüsselwert der Regel nur Lauschzugriff für die Client-App zu erteilen und dem Schlüsselwert der Regel Vollzugriff auf das Back-End zu gewähren.
 
-Apps sollten den Schlüsselwert nicht in Windows Store-Client-Apps einbetten, stattdessen sollte die Client-App ihn beim Start über das App-Back-End abrufen.
+Apps sollten den Schlüsselwert nicht in Windows Store-Client-Apps einbetten. Stattdessen sollte die Client-App ihn beim Start über das App-Back-End abrufen.
 
 Der Schlüssel mit **Lauschzugriff** ermöglicht einer Client-App, sich für jedes beliebige Tag zu registrieren. Wenn Ihre App Registrierungen auf bestimmte Tags für bestimmte Clients einschränken muss (wenn Tags z.B. für Benutzer-IDs stehen), muss das App-Back-End die Registrierungen ausführen. Weitere Informationen finden Sie unter [Registrierungsverwaltung](notification-hubs-push-notification-registration-management.md). Beachten Sie, dass die Clientanwendung auf diese Weise keinen direkten Zugriff auf Notification Hubs hat.
 
@@ -45,9 +52,33 @@ Der Schlüssel mit **Lauschzugriff** ermöglicht einer Client-App, sich für jed
 | ------- | ---------------------------------------------------- | ------------------ |
 | Lauschen  | Erstellen/Aktualisieren, Lesen und Löschen einzelner Registrierungen | Erstellen/Aktualisieren einer Registrierung<br><br>Lesen der Registrierung<br><br>Lesen aller Registrierungen für ein Handle<br><br>Löschen einer Registrierung |
 | Send    | Senden von Nachrichten an den Notification Hub                | Nachricht senden |
-| Verwalten  | CRUDs für Notification Hubs (einschließlich des Aktualisierens von PNS-Anmeldeinformationen und Sicherheitsschlüsseln) und Lesen von Registrierungen basierend auf Tags |Erstellen/Aktualisieren/Lesen/Löschen von Notification Hubs<br><br>Lesen von Registrierungen nach Tag |
+| Verwalten  | CRUDs für Notification Hubs (einschließlich des Aktualisierens von PNS-Anmeldeinformationen und Sicherheitsschlüsseln) und Lesen von Registrierungen basierend auf Tags |Erstellen/Aktualisieren/Lesen/Löschen von Hubs<br><br>Lesen von Registrierungen nach Tag |
 
-Notification Hubs akzeptiert Signaturtoken mit freigegebenen Schlüsseln, die direkt auf dem Notification Hub konfiguriert wurden.
+Notification Hubs akzeptiert SAS-Token mit freigegebenen Schlüsseln, die direkt auf dem Hub konfiguriert wurden.
 
 Es ist nicht möglich, eine Benachrichtigung an mehr als einen Namespace zu senden. Namespaces sind logische Container für Notification Hubs und nicht am Senden von Benachrichtigungen beteiligt.
-Die Zugriffsrichtlinien auf Namespaceebene (Anmeldeinformationen) können für Vorgänge auf Namespaceebene verwendet werden. Beispiel: Auflistung von Notification Hubs, Erstellen oder Löschen von Notification Hubs, usw. Nur die Zugriffsrichtlinien auf Hubebene würden es Ihnen gestatten, Benachrichtigungen zu senden.
+
+Verwenden Sie die Zugriffsrichtlinien auf Namespaceebene (Anmeldeinformationen) für Vorgänge auf Namespaceebene. Beispiel: Auflistung von Hubs, Erstellen oder Löschen von Hubs usw. Nur die Zugriffsrichtlinien auf Hubebene gestatten es Ihnen, Benachrichtigungen zu senden.
+
+### <a name="sas-tokens-for-access-policies"></a>SAS-Token für Zugriffsrichtlinien
+
+Gehen Sie wie folgt vor, um einen neuen Sicherheitsanspruch zu erstellen oder vorhandene SAS-Schlüssel anzuzeigen:
+
+1. Melden Sie sich beim Azure-Portal an.
+2. Wählen Sie **Alle Ressourcen**.
+3. Wählen Sie den Namen des Notification Hubs aus, für den Sie den Anspruch erstellen oder den SAS-Schlüssel anzeigen möchten.
+4. Wählen Sie im linken Menü **Zugriffsrichtlinien** aus.
+5. Wählen Sie **Neue Richtlinie** aus, um einen neuen Sicherheitsanspruch zu erstellen. Benennen Sie die Richtlinie, und wählen Sie die Berechtigungen aus, die Sie gewähren möchten. Wählen Sie dann **OK**aus.
+6. Die vollständige Verbindungszeichenfolge (einschließlich des neuen SAS-Schlüssels) wird im Fenster „Zugriffsrichtlinien“ angezeigt. Sie können diese Zeichenfolge zur späteren Verwendung in die Zwischenablage kopieren.
+
+Wenn Sie den SAS-Schlüssel aus einer bestimmten Richtlinie extrahieren möchten, wählen Sie die Schaltfläche **Kopieren** neben der Richtlinie aus, die den gewünschten SAS-Schlüssel enthält. Fügen Sie diesen Wert an einer temporären Position ein, und kopieren Sie dann den SAS-Schlüsselteil der Verbindungszeichenfolge. In diesem Beispiel wird ein Notification Hubs-Namespace namens **mytestnamespace1** und eine Richtlinie namens **policy2** verwendet. Der SAS-Schlüssel ist der Wert in der Nähe des Endes der Zeichenfolge, der durch **SharedAccessKey** angegeben wird:
+
+```shell
+Endpoint=sb://mytestnamespace1.servicebus.windows.net/;SharedAccessKeyName=policy2;SharedAccessKey=<SAS key value here>
+```
+
+![Abrufen von SAS-Schlüsseln](media/notification-hubs-push-notification-security/access1.png)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Übersicht über Notification Hubs](notification-hubs-push-notification-overview.md)

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: dbbe5a667b8d467b416e4a4a571d8d3599ec45b6
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: a8cffe83ec0f2cdfd2e71accfa55966e5dedcd89
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051819"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259136"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -1804,4 +1804,4 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 ## <a name="next-steps"></a>Nächste Schritte
 * [Informationen zu Metriken in Azure Monitor](data-platform.md)
 * [Erstellen von Warnungen zu Metriken](alerts-overview.md)
-* [Exportieren von Metriken in Storage, Event Hub oder Log Analytics](diagnostic-logs-overview.md)
+* [Exportieren von Metriken in Storage, Event Hub oder Log Analytics](resource-logs-overview.md)

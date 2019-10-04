@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2966f90dcb381e439c00a6540ef9a01bd24f8743
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: b4bfd984f1e169cb1044002118f9534c4efc9bd8
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561185"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169572"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Problembehandlung ohne Daten – Application Insights für .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Einige meiner Telemetriedaten fehlen
@@ -30,7 +30,7 @@ ms.locfileid: "67561185"
 
 * Überprüfen Sie, ob es im [Telemetriekanal](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost) zu Datenverlust kommt.
 
-* Suchen Sie nach bekannten Problemen im [Github-Repository](https://github.com/Microsoft/ApplicationInsights-dotnet/issues) zum Telemetriekanal.
+* Suchen Sie nach bekannten Problemen im [GitHub-Repository](https://github.com/Microsoft/ApplicationInsights-dotnet/issues) zum Telemetriekanal.
 
 *In der Konsolen-App oder in der Web-App kommt es beim Beenden der App zu Datenverlusten.*
 
@@ -236,24 +236,24 @@ Die neuste Version von Microsoft.ApplicationInsights.AspNetCore ist 2.7.1. Sie b
 4. Setzen Sie diese Änderungen zurück, wenn Sie fertig sind.
 
 
-## <a name="PerfView"></a> Sammeln Sie Protokolle mit PerfView
-[PerfView](https://github.com/Microsoft/perfview) ist ein kostenloses Diagnose- und Leistungsanalysetool, das durch die Sammlung und Visualisierung von Daten aus verschiedenen Quellen dabei hilft, CPU-, Speicher- und andere Probleme aufzuzeigen.
+## <a name="PerfView"></a> Sammeln von Protokollen mit PerfView
+[PerfView](https://github.com/Microsoft/perfview) ist ein kostenloses Diagnose- und Leistungsanalysetool, das durch Sammlung und Visualisierung von Diagnoseinformationen aus verschiedenen Quellen dabei hilft, CPU-, Arbeitsspeicher- und andere Probleme zu isolieren.
 
-Application Insights-SDK protokolliert EventSource-Protokolle zur eigenen Fehlerbehebung, die von PerfView festgehalten werden können.
+Das Application Insights SDK protokolliert EventSource-Protokolle zur eigenen Fehlerbehebung, die von PerfView erfasst werden können.
 
-Laden Sie PerfView herunter, um Protokolle zu erfassen, und führen Sie dann den folgenden Befehl aus:
+Laden Sie PerfView herunter, und führen Sie den folgenden Befehl aus, um Protokolle zu erfassen:
 ```cmd
-PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
+PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
 ```
 
-Sie können diese Parameter nach Bedarf ändern.
-- **MaxCollectSec**. Richten Sie dieses Parameter ein, damit PerfView nicht unbegrenzt läuft und die Leistung Ihres Servers beeinträchtigt.
-- **OnlyProviders**. Richten Sie dieses Parameter so ein, dass nur Protokolle aus dem SDK gesammelt werden. Sie können diese Liste basierend auf Ihren eigenen Untersuchungen anpassen. 
-- **NoGui**. Richten Sie dieses Parameter so ein, dass es Protokolle ohne die Gui sammelt.
+Sie können die folgenden Parameter nach Bedarf ändern:
+- **MaxCollectSec**. Legen Sie diesen Parameter fest, damit PerfView nicht unbegrenzt läuft und die Leistung Ihres Servers beeinträchtigt.
+- **OnlyProviders**. Legen Sie diesen Parameter so fest, dass nur Protokolle aus dem SDK gesammelt werden. Sie können diese Liste entsprechend Ihren jeweiligen Untersuchungen anpassen. 
+- **NoGui**. Legen Sie diesen Parameter so fest, dass Protokolle ohne grafische Benutzeroberfläche (GUI) gesammelt werden.
 
 
-Weitere Informationen erhalten Sie unter:
-- [Recording performance traces with PerfView (Aufzeichnung von Leistungsablaufverfolgungen mit PerfView)](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
+Weitere Informationen finden Sie unter:
+- [Recording performance traces with PerfView (Aufzeichnen von Leistungsnachverfolgungen mit PerfView)](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
 - [Application Insights-Ereignisquellen](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 
 ## <a name="still-not-working"></a>Noch nicht funktionsfähig ...

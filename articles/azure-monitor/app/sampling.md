@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: 4da91150999864c64ead28b74242e85d23a51ead
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: d43fe7f1f0fc63ab50821a345802a9e7e62881b2
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310451"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169482"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -459,6 +459,10 @@ Das clientseitige (JavaScript) SDK führt die Stichprobenerstellung mit festem P
 * Stellen Sie sicher, dass Sie die SDK-Version 2.0 oder höher verwenden.
 * Stellen Sie sicher, dass Sie auf Client und Server denselben Prozentsatz für die Stichprobenerstellung festgelegt haben.
 
+### <a name="sampling-in-azure-functions"></a>Erstellen von Stichproben in Azure Functions
+
+Befolgen Sie [diese](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling) Anweisungen, um die Stichprobenerstellung für Apps zu konfigurieren, die in Azure Functions ausgeführt werden.
+
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 *Was ist das Standardverhalten für die Stichprobenerstellung im ASP.NET und ASP.NET Core SDK?*
@@ -515,13 +519,19 @@ Das clientseitige (JavaScript) SDK führt die Stichprobenerstellung mit festem P
 
 *Es gibt einige seltene Ereignisse, die ich immer untersuchen möchte. Wie bekomme ich sie durch das Stichprobenmodul?*
 
-* Dies erreichen Sie am besten, indem Sie einen benutzerdefinierten [TelemetryProcessor](../../azure-monitor/app/api-filtering-sampling.md#filtering) schreiben, der `SamplingPercentage` für das Telemetriedatenelement, das Sie behalten möchten, auf 100 festlegt (wie unten veranschaulicht). Dadurch wird sichergestellt, dass alle Verfahren zur Stichprobenerstellung dieses Element in allen Überlegungen der Stichprobenerstellung ignorieren.
+* Dies erreichen Sie am besten, indem Sie einen benutzerdefinierten [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) schreiben, der `SamplingPercentage` für das Telemetriedatenelement, das Sie behalten möchten, auf 100 festlegt (wie unten veranschaulicht). Da Initialisierer garantiert vor Telemetrieprozessoren (einschließlich Stichprobenerstellung) ausgeführt werden, ist sichergestellt, dass alle Verfahren zur Stichprobenerstellung dieses Element bei jeglichen Überlegungen der Stichprobenerstellung ignorieren.
 
 ```csharp
-    if(somecondition)
-    {
-        ((ISupportSampling)item).SamplingPercentage = 100;
-    }
+     public class MyTelemetryInitializer : ITelemetryInitializer
+      {
+         public void Initialize(ITelemetry telemetry)
+        {
+            if(somecondition)
+            {
+                ((ISupportSampling)item).SamplingPercentage = 100;
+            }
+        }
+      }
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

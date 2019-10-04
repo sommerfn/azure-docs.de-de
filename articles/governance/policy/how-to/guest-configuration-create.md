@@ -3,16 +3,16 @@ title: 'Gewusst wie: Erstellen von Richtlinien für Gastkonfigurationen'
 description: Es wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows- oder Linux-VMs erstellen.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/26/2019
+ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ee8a17846495a122f7432e66c3e343a00dd0a015
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8fd50ed571e42a1eb6673c56a61314d2adfe27f2
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194628"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172465"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gewusst wie: Erstellen von Richtlinien für Gastkonfigurationen
 
@@ -54,9 +54,45 @@ Für Gastkonfigurationen wird das Ressourcenmodul **GuestConfiguration** verwend
    Get-Command -Module 'GuestConfiguration'
    ```
 
-## <a name="create-custom-guest-configuration-configuration"></a>Erstellen einer benutzerdefinierten Konfiguration für Gastkonfigurationen
+## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Erstellen einer benutzerdefinierten Konfiguration und von Ressourcen für Gastkonfigurationen
 
 Der erste Schritt zur Erstellung einer benutzerdefinierten Richtlinie für Gastkonfigurationen ist die Erstellung der DSC-Konfiguration. Eine Übersicht über DSC-Konzepte und die Terminologie finden Sie in der [Übersicht über PowerShell DSC](/powershell/dsc/overview/overview).
+
+Wenn Ihre Konfiguration nur Ressourcen erfordert, die mit der Installation des Gastkonfigurations-Agents erstellt wurden, müssen Sie nur eine MOF-Konfigurationsdatei erstellen. Wenn Sie ein zusätzliches Skript ausführen müssen, müssen Sie ein benutzerdefiniertes Ressourcenmodul erstellen.
+
+### <a name="requirements-for-guest-configuration-custom-resources"></a>Anforderungen für benutzerdefinierte Ressourcen der Gastkonfiguration
+
+Wenn die Gastkonfiguration einen Computer überwacht, führt sie zunächst `Test-TargetResource` aus, um festzustellen, ob er den richtigen Zustand aufweist. Der von der Funktion zurückgegebene boolesche Wert bestimmt, ob der Zustand von Azure Resource Manager für die Gastzuweisung konform/nicht konform sein soll. Wenn der boolesche Wert für eine Ressource in der Konfiguration `$false` ist, wird der Anbieter `Get-TargetResource` ausführen. Wenn der boolesche Wert `$true` ist, wird `Get-TargetResource` nicht aufgerufen.
+
+Die Funktion `Get-TargetResource` hat spezielle Anforderungen an die Gastkonfiguration, die für die Windows Desired State Configuration nicht benötigt wurden.
+
+- Die zurückgegebene Hashtabelle muss eine Eigenschaft namens **Reasons** enthalten.
+- Die Reasons-Eigenschaft muss ein Array sein.
+- Jedes Element im Array sollte eine Hashtabelle mit Schlüsseln namens **Code** und **Phrase** sein.
+
+Die Reasons-Eigenschaft wird vom Dienst verwendet, um die Darstellung von Informationen zu standardisieren, wenn ein Computer nicht mehr konform ist. Sie können sich jedes Element in Reasons als „Grund“ vorstellen, dass die Ressource nicht konform ist. Die Eigenschaft ist ein Array, da eine Ressource aus mehr als einem Grund nicht konform sein könnte.
+
+Die Eigenschaften **Code** und **Phrase** werden vom Dienst erwartet. Wenn Sie eine benutzerdefinierte Ressource erstellen, legen Sie den auszugebenden Text (typischerweise stdout) als Grund für die fehlende Konformität der Ressource als Wert für **Phrase** fest. **Code** weist bestimmte Formatierungsanforderungen auf, sodass die Berichterstellung eindeutig Informationen zur Ressource anzeigen kann, die für die Durchführung der Überwachung verwendet wurde. Diese Lösung macht die Gastkonfiguration erweiterbar. Jeder Befehl kann ausgeführt werden, um einen Computer zu überwachen, solange die Ausgabe erfasst und als Zeichenfolgenwert für die Eigenschaft **Phrase** zurückgegeben werden kann.
+
+- **Code** (Zeichenfolge): Der Name der Ressource, wiederholt, und dann ein Kurzname ohne Leerzeichen als Bezeichner für den Grund. Diese drei Werte sollten ohne Leerzeichen durch Doppelpunkte getrennt sein.
+  - Ein Beispiel wäre `registry:registry:keynotpresent`
+- **Phrase** (Zeichenfolge): Für Menschen lesbarer Text, um zu erläutern, warum die Einstellung nicht konform ist.
+  - Ein Beispiel wäre `The registry key $key is not present on the machine.`
+
+```powershell
+$reasons = @()
+$reasons += @{
+  Code = 'Name:Name:ReasonIdentifer'
+  Phrase = 'Explain why the setting is not compliant'
+}
+return @{
+    reasons = $reasons
+}
+```
+
+#### <a name="scaffolding-a-guest-configuration-project"></a>Gerüstbau für ein Gastkonfigurationsprojekt
+
+Für Entwickler, die den Prozess des Einstiegs und der Arbeit mit Beispielcode beschleunigen möchten, existiert ein Communityprojekt namens **Guest Configuration Project** (Gastkonfigurationsprojekt) als Vorlage für das PowerShell-Modul [Plaster](https://github.com/powershell/plaster). Dieses Tool kann verwendet werden, um ein Projekt mit einer funktionierenden Konfiguration und einer Beispielressource sowie einem Satz von [Pester](https://github.com/pester/pester)-Tests zur Überprüfung des Projekts einzurichten. Die Vorlage enthält auch Aufgabenausführungen für Visual Studio Code, um die Erstellung und Überprüfung des Gastkonfigurationspakets zu automatisieren. Weitere Informationen finden Sie im GitHub-Projekt [Guest Configuration Project](https://github.com/microsoft/guestconfigurationproject) (Gastkonfigurationsprojekt).
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Benutzerdefinierte Konfiguration für Gastkonfigurationen unter Linux
 
@@ -139,15 +175,23 @@ Das fertige Paket muss an einem Speicherort gespeichert werden, auf den von den 
 
 Bei Azure Policy-Gastkonfigurationen besteht die optimale Vorgehensweise zum Verwalten von zur Laufzeit verwendeten Geheimnissen darin, diese in Azure Key Vault zu speichern. Dieser Entwurf wird in benutzerdefinierten DSC-Ressourcen implementiert.
 
-Erstellen Sie zuerst in Azure eine verwaltete Identität, die dem Benutzer zugewiesen ist. Die Identität wird von Computern verwendet, um auf in Key Vault gespeicherte Geheimnisse zuzugreifen. Ausführliche Informationen zu den Schritten finden Sie unter [Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mit Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+1. Erstellen Sie zuerst in Azure eine verwaltete Identität, die dem Benutzer zugewiesen ist.
 
-Erstellen Sie als Nächstes eine Key Vault-Instanz. Ausführliche Informationen zu den Schritten finden Sie unter [Festlegen und Abrufen eines Geheimnisses: PowerShell](../../../key-vault/quick-create-powershell.md).
-Weisen Sie der Instanz Berechtigungen zu, um der dem Benutzer zugewiesenen Identität Zugriff auf die Geheimnisse zu gewähren, die in Key Vault gespeichert sind. Informationen zu den ausführlichen Schritten finden Sie unter [Festlegen und Abrufen eines Geheimnisses: .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
+   Die Identität wird von Computern verwendet, um auf in Key Vault gespeicherte Geheimnisse zuzugreifen. Ausführliche Informationen zu den Schritten finden Sie unter [Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mit Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
-Weisen Sie die benutzerseitig zugewiesene Identität dann Ihrem Computer zu. Ausführliche Informationen zu den Schritten finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von PowerShell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
-Verwenden Sie für die bedarfsabhängige Zuweisung dieser Identität Azure Resource Manager über Azure Policy. Ausführliche Informationen zu den Schritten finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe einer Vorlage](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
+1. Erstellen Sie eine Key Vault-Instanz.
 
-Verwenden Sie auf Ihrer benutzerdefinierten Ressource abschließend dann die oben generierte Client-ID, um auf Key Vault zuzugreifen, indem Sie das auf dem Computer verfügbare Token nutzen. Die `client_id` und die URL für die Key Vault-Instanz können als [Eigenschaften](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) an die Ressource übergeben werden, damit diese nicht für mehrere Umgebungen aktualisiert werden muss (oder wenn die Werte geändert werden müssen).
+   Ausführliche Informationen zu den Schritten finden Sie unter [Festlegen und Abrufen eines Geheimnisses: PowerShell](../../../key-vault/quick-create-powershell.md).
+   Weisen Sie der Instanz Berechtigungen zu, um der dem Benutzer zugewiesenen Identität Zugriff auf die Geheimnisse zu gewähren, die in Key Vault gespeichert sind. Informationen zu den ausführlichen Schritten finden Sie unter [Festlegen und Abrufen eines Geheimnisses: .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
+
+1. Weisen Sie die benutzerseitig zugewiesene Identität Ihrem Computer zu.
+
+   Ausführliche Informationen zu den Schritten finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von PowerShell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
+   Verwenden Sie für die bedarfsabhängige Zuweisung dieser Identität Azure Resource Manager über Azure Policy. Ausführliche Informationen zu den Schritten finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe einer Vorlage](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
+
+1. Verwenden Sie auf Ihrer benutzerdefinierten Ressource abschließend dann die oben generierte Client-ID, um auf Key Vault zuzugreifen, indem Sie das auf dem Computer verfügbare Token nutzen.
+
+   Die `client_id` und die URL für die Key Vault-Instanz können als [Eigenschaften](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) an die Ressource übergeben werden, damit diese nicht für mehrere Umgebungen aktualisiert werden muss (oder wenn die Werte geändert werden müssen).
 
 Das folgende Codebeispiel kann in einer benutzerdefinierten Ressource verwendet werden, um mit einer Identität, die dem Benutzer zugewiesen ist, Geheimnisse aus Key Vault abzurufen. Der von der Anforderung an Key Vault zurückgegebene Wert ist ein Nur-Text-Wert. Die bewährte Methode besteht darin, ihn in einem Objekt mit Anmeldeinformationen zu speichern.
 
@@ -226,8 +270,7 @@ Wenn Sie diesen Befehl verwenden möchten, um ein Gerüst für ein Projekt mit b
 
 Die Gastkonfiguration unterstützt das Außerkraftsetzen von Eigenschaften einer Konfiguration während der Laufzeit. Dieses Feature bewirkt, dass die Werte in der MOF-Datei im Paket nicht als statisch angesehen werden müssen. Die Überschreibungswerte werden über Azure Policy bereitgestellt und wirken sich nicht darauf aus, wie die Konfigurationen erstellt oder kompiliert werden.
 
-Die Cmdlets `New-GuestConfigurationPolicy` und `Test-GuestConfigurationPolicyPackage` enthalten einen Parameter mit dem Namen **Parameters**.
-Für diesen Parameter wird eine Hashtabellendefinition verwendet, die alle Details zu den einzelnen Parametern enthält, und es werden automatisch alle erforderlichen Abschnitte der Dateien erstellt, die für die Erstellung der einzelnen Azure Policy-Definitionen verwendet werden.
+Die Cmdlets `New-GuestConfigurationPolicy` und `Test-GuestConfigurationPolicyPackage` enthalten einen Parameter mit dem Namen **Parameters**. Für diesen Parameter wird eine Hashtabellendefinition verwendet, die alle Details zu den einzelnen Parametern enthält, und es werden automatisch alle erforderlichen Abschnitte der Dateien erstellt, die für die Erstellung der einzelnen Azure Policy-Definitionen verwendet werden.
 
 Im folgenden Beispiel wird eine Azure Policy-Richtlinie zum Überprüfen eines Diensts erstellt, bei der der Benutzer bei der Zuweisung der Richtlinie eine Auswahl aus einer Liste mit Diensten trifft.
 
@@ -256,7 +299,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-Fügen Sie für Linux-Richtlinien die `AttributesYmlContent`-Eigenschaft in Ihre Konfiguration ein, und überschreiben Sie die Werte entsprechend. Der Gastkonfigurations-Agent erstellt automatisch die YAML-Datei, die von InSpec zum Speichern der Attribute genutzt wird. Betrachten Sie das folgende Beispiel.
+Fügen Sie für Linux-Richtlinien die **AttributesYmlContent**-Eigenschaft in Ihre Konfiguration ein, und überschreiben Sie die Werte entsprechend. Der Gastkonfigurations-Agent erstellt automatisch die YAML-Datei, die von InSpec zum Speichern der Attribute genutzt wird. Betrachten Sie das folgende Beispiel.
 
 ```azurepowershell-interactive
 Configuration FirewalldEnabled {
@@ -318,18 +361,14 @@ Bei den in Azure erstellten Richtlinien- und Initiativendefinitionen ist der let
 
 Nachdem Sie eine benutzerdefinierte Azure Policy-Richtlinie über das benutzerdefinierte Inhaltspaket veröffentlicht haben, müssen Sie zwei Felder aktualisieren, falls Sie ein neues Release veröffentlichen möchten.
 
-- **Version**: Beim Ausführen des Cmdlets `New-GuestConfigurationPolicy` müssen Sie eine Versionsnummer angeben, die höher als die der derzeitigen Veröffentlichung ist.  Mit dieser Eigenschaft wird die Version der Gastkonfigurationszuweisung in der neuen Richtliniendatei aktualisiert, damit die Erweiterung erkennt, dass das Paket aktualisiert wurde.
-- **contentHash**: Diese Eigenschaft wird vom Cmdlet `New-GuestConfigurationPolicy` automatisch aktualisiert.  Es handelt sich um einen Hashwert des Pakets, das mit `New-GuestConfigurationPackage` erstellt wurde.  Diese Eigenschaft muss für die von Ihnen veröffentlichte Datei vom Typ `.zip` stimmen.  Falls nur die Eigenschaft `contentUri` aktualisiert wird, z. B. wenn über das Portal eine manuelle Änderung an der Richtliniendefinition vorgenommen werden kann, wird das Inhaltspaket von der Erweiterung nicht akzeptiert.
+- **Version**: Beim Ausführen des Cmdlets `New-GuestConfigurationPolicy` müssen Sie eine Versionsnummer angeben, die höher als die der derzeitigen Veröffentlichung ist. Mit dieser Eigenschaft wird die Version der Gastkonfigurationszuweisung in der neuen Richtliniendatei aktualisiert, damit die Erweiterung erkennt, dass das Paket aktualisiert wurde.
+- **contentHash**: Diese Eigenschaft wird vom Cmdlet `New-GuestConfigurationPolicy` automatisch aktualisiert. Es handelt sich um einen Hashwert des Pakets, das mit `New-GuestConfigurationPackage` erstellt wurde. Diese Eigenschaft muss für die von Ihnen veröffentlichte Datei vom Typ `.zip` stimmen. Falls nur die Eigenschaft **contentUri** aktualisiert wird, z. B. wenn über das Portal eine manuelle Änderung an der Richtliniendefinition vorgenommen werden kann, wird das Inhaltspaket von der Erweiterung nicht akzeptiert.
 
-Die einfachste Möglichkeit zum Freigeben eines aktualisierten Pakets ist das Wiederholen des Prozesses in diesem Artikel und das Angeben einer aktualisierten Versionsnummer.
-Mit dieser Vorgehensweise wird sichergestellt, dass alle Eigenschaften richtig aktualisiert wurden.
+Die einfachste Möglichkeit zum Freigeben eines aktualisierten Pakets ist das Wiederholen des Prozesses in diesem Artikel und das Angeben einer aktualisierten Versionsnummer. Mit dieser Vorgehensweise wird sichergestellt, dass alle Eigenschaften richtig aktualisiert wurden.
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Konvertieren des Inhalts der Windows-Gruppenrichtlinie in eine Azure Policy-Gastkonfiguration
 
-Bei der Überwachung von Windows-Computern ist die Gastkonfiguration eine Implementierung der Desired State Configuration-Syntax von PowerShell.
-Von der DSC-Community wurde ein Tool zum Konvertieren exportierter Gruppenrichtlinienvorlagen in das DSC-Format veröffentlicht.
-Sie können dieses Tool zusammen mit den oben beschriebenen Gastkonfigurations-Cmdlets verwenden, um den Inhalt der Windows-Gruppenrichtlinie zu konvertieren und zur Überwachung für Azure Policy zu packen und zu veröffentlichen.
-Ausführliche Informationen zur Verwendung des Tools finden Sie im Artikel [Schnellstart: Konvertieren von Gruppenrichtlinien in DSC](/powershell/dsc/quickstarts/gpo-quickstart).
+Bei der Überwachung von Windows-Computern ist die Gastkonfiguration eine Implementierung der Desired State Configuration-Syntax von PowerShell. Von der DSC-Community wurde ein Tool zum Konvertieren exportierter Gruppenrichtlinienvorlagen in das DSC-Format veröffentlicht. Sie können dieses Tool zusammen mit den oben beschriebenen Gastkonfigurations-Cmdlets verwenden, um den Inhalt der Windows-Gruppenrichtlinie zu konvertieren und zur Überwachung für Azure Policy zu packen und zu veröffentlichen. Ausführliche Informationen zur Verwendung des Tools finden Sie im Artikel [Schnellstart: Konvertieren von Gruppenrichtlinien in DSC](/powershell/dsc/quickstarts/gpo-quickstart).
 Nach dem Konvertieren des Inhalts sind die obigen Schritte, mit denen ein Paket erstellt und in Azure Policy veröffentlicht wird, die gleichen wie bei jedem anderen DSC-Inhalt.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>OPTIONAL: Signieren von Paketen für Gastkonfigurationen
@@ -365,15 +404,13 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 
 Eine gute Referenz zur Erstellung von GPG-Schlüsseln für die Nutzung mit Linux-Computern ist der Artikel [Generating a new GPG key](https://help.github.com/en/articles/generating-a-new-gpg-key) (Generieren eines neuen GPG-Schlüssels) auf GitHub.
 
-Fügen Sie nach dem Veröffentlichen Ihres Inhalts ein Tag mit dem Namen `GuestConfigPolicyCertificateValidation` und dem Wert `enabled` an alle virtuellen Computer an, für die das Codesignieren erforderlich ist. Dieses Tag kann mit Azure Policy bedarfsabhängig bereitgestellt werden. Informationen hierzu finden Sie im Beispiel unter [Anwenden von Tags und den zugehörigen Standardwerten](../samples/apply-tag-default-value.md).
-Wenn dieses Tag vorhanden ist, ermöglicht die Richtliniendefinition, die mit dem Cmdlet `New-GuestConfigurationPolicy` generiert wurde, die Anforderung über die Gastkonfigurationserweiterung.
+Fügen Sie nach dem Veröffentlichen Ihres Inhalts ein Tag mit dem Namen `GuestConfigPolicyCertificateValidation` und dem Wert `enabled` an alle virtuellen Computer an, für die das Codesignieren erforderlich ist. Dieses Tag kann mit Azure Policy bedarfsabhängig bereitgestellt werden. Informationen hierzu finden Sie im Beispiel unter [Anwenden von Tags und den zugehörigen Standardwerten](../samples/apply-tag-default-value.md). Wenn dieses Tag vorhanden ist, ermöglicht die Richtliniendefinition, die mit dem Cmdlet `New-GuestConfigurationPolicy` generiert wurde, die Anforderung über die Gastkonfigurationserweiterung.
 
 ## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>[VORSCHAU] Problembehandlung für Richtlinienzuweisungen für die Gastkonfiguration
 
-Es gibt eine Vorschauversion eines Tools, das Sie bei der Problembehandlung für Zuweisungen für die Azure Policy-Gastkonfiguration unterstützt.
-Das Tool befindet sich in der Vorschauphase und wurde als Modul namens [GuestConfigurationTroubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/) im PowerShell-Katalog veröffentlicht.
+Es gibt eine Vorschauversion eines Tools, das Sie bei der Problembehandlung für Zuweisungen für die Azure Policy-Gastkonfiguration unterstützt. Das Tool befindet sich in der Vorschauphase und wurde als Modul namens [GuestConfigurationTroubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/) im PowerShell-Katalog veröffentlicht.
 
-Verwenden Sie zum Abrufen weiterer Informationen zu den Cmdlets in diesem Tool den Befehl „Get-Help“ in PowerShell, um den integrierten Leitfaden anzuzeigen.  Da das Tool regelmäßig aktualisiert wird, ist dies die beste Option, um aktuelle Informationen zu erhalten.
+Verwenden Sie zum Abrufen weiterer Informationen zu den Cmdlets in diesem Tool den Befehl „Get-Help“ in PowerShell, um den integrierten Leitfaden anzuzeigen. Da das Tool regelmäßig aktualisiert wird, ist dies die beste Option, um aktuelle Informationen zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

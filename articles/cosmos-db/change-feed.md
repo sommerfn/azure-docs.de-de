@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: f50f1b3e2ee7f98d14d29f1e2205a97d76eaacc8
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615667"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219889"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Änderungsfeed in Azure Cosmos DB – Übersicht
 
@@ -42,7 +42,7 @@ Dieses Feature wird derzeit von den folgenden Azure Cosmos DB-APIs und Client-SD
 
 ## <a name="change-feed-and-different-operations"></a>Änderungsfeed und verschiedene Vorgänge
 
-Derzeit werden im Änderungsfeed alle Vorgänge angezeigt. Die Funktionalität, mit der Sie den Änderungsfeed für bestimmte Vorgänge steuern können, z.B. nur in Aktualisierungen und nicht in Einfügungen, steht noch nicht zur Verfügung. Sie können für das Element eine schwache Markierung für Aktualisierungen hinzufügen und dies bei der Verarbeitung von Elementen im Änderungsfeed entsprechend filtern. Aktuell protokollieren Änderungsfeeds keine Löschvorgänge. Ähnlich wie beim vorherigen Beispiel können Sie eine schwache Markierung für die Elemente hinzufügen, die gelöscht werden. Beispielweise können Sie im Element das Attribut „deleted“ hinzufügen und auf „true“ festlegen und eine Gültigkeitsdauer für das Element angeben, sodass es automatisch gelöscht werden kann. Sie können den Änderungsfeed nach früheren Elementen durchsuchen, z.B. nach Elementen, die vor fünf Jahren hinzugefügt wurden. Sofern Elemente nicht gelöscht wurden, können Sie den Änderungsfeed bis zurück zum Ursprung des Containers lesen.
+Derzeit werden im Änderungsfeed alle Vorgänge angezeigt. Die Funktionalität, mit der Sie den Änderungsfeed für bestimmte Vorgänge steuern können, z.B. nur in Aktualisierungen und nicht in Einfügungen, steht noch nicht zur Verfügung. Sie können für das Element eine schwache Markierung für Aktualisierungen hinzufügen und dies bei der Verarbeitung von Elementen im Änderungsfeed entsprechend filtern. Aktuell protokollieren Änderungsfeeds keine Löschvorgänge. Ähnlich wie beim vorherigen Beispiel können Sie eine schwache Markierung für die Elemente hinzufügen, die gelöscht werden. Beispielweise können Sie im Element das Attribut „deleted“ hinzufügen und auf „true“ festlegen und eine Gültigkeitsdauer für das Element angeben, sodass es automatisch gelöscht werden kann. Sie können den Änderungsfeed nach früheren Elementen durchsuchen (der letzten Änderung, die dem Element entspricht; zwischenzeitliche Änderungen sind nicht enthalten), z.B. nach Elementen, die vor fünf Jahren hinzugefügt wurden. Sofern Elemente nicht gelöscht wurden, können Sie den Änderungsfeed bis zurück zum Ursprung des Containers lesen.
 
 ### <a name="sort-order-of-items-in-change-feed"></a>Sortierreihenfolge der Elemente im Änderungsfeed
 

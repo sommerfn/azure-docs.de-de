@@ -8,32 +8,32 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: a5589828570455c61f857dbeadc896e8fef27178
+ms.openlocfilehash: c6f21ffdcf94f23d089073710f2e6c18fd20558d
 ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258380"
+ms.locfileid: "71262997"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Vorbereiten der Formatumstellung auf Azure Monitor-Diagnoseprotokolle, die in einem Speicherkonto archiviert werden
+# <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Vorbereiten der Formatumstellung auf Azure Monitor-Plattformprotokolle, die in einem Speicherkonto archiviert werden
 
 > [!WARNING]
-> Wenn Sie [mithilfe von Ressourcendiagnoseeinstellungen Azure-Ressourcendiagnoseprotokolle oder -metriken an ein Speicherkonto](./../../azure-monitor/platform/archive-diagnostic-logs.md) oder [Aktivitätsprotokolle mithilfe von Protokollprofilen an ein Speicherkonto](./../../azure-monitor/platform/archive-activity-log.md) senden, ändert sich das Format der Daten im Speicherkonto am 1. November 2018 in JSON Lines. Unten wird beschrieben, welche Auswirkungen sich ergeben und wie Sie Ihre Tools für die Verarbeitung des neuen Formats aktualisieren. 
+> Wenn Sie [mithilfe von Diagnoseeinstellungen Azure-Ressourcenprotokolle oder -metriken an ein Speicherkonto](resource-logs-collect-storage.md) oder [Aktivitätsprotokolle mithilfe von Protokollprofilen an ein Speicherkonto](activity-log-export.md) senden, wurde das Format der Daten im Speicherkonto am 1. November 2018 in JSON Lines geändert. Unten wird beschrieben, welche Auswirkungen sich ergeben und wie Sie Ihre Tools für die Verarbeitung des neuen Formats aktualisieren. 
 >
 > 
 
 ## <a name="what-is-changing"></a>Was ändert sich?
 
-Azure Monitor verfügt über eine Funktion, mit der Sie Ressourcendiagnosedaten und Aktivitätsprotokolldaten an ein Azure-Speicherkonto, einen Event Hubs-Namespace oder Log Analytics-Arbeitsbereich in Azure Monitor senden können. Am **1. November 2018 um Mitternacht (UTC)** ändert sich das Format der Protokolldaten, die an den Blobspeicher gesendet werden, um ein Problem mit der Systemleistung zu beheben. Falls Sie über Tools verfügen, mit denen Daten aus dem Blobspeicher gelesen werden, müssen Sie diese Tools aktualisieren, damit das neue Datenformat gelesen werden kann.
+Azure Monitor verfügt über eine Funktion, mit der Sie Ressourcenprotokolle und Aktivitätsprotokolle an ein Azure-Speicherkonto, einen Event Hubs-Namespace oder Log Analytics-Arbeitsbereich in Azure Monitor senden können. Am **1. November 2018 um Mitternacht (UTC)** ändert sich das Format der Protokolldaten, die an den Blobspeicher gesendet werden, um ein Problem mit der Systemleistung zu beheben. Falls Sie über Tools verfügen, mit denen Daten aus dem Blobspeicher gelesen werden, müssen Sie diese Tools aktualisieren, damit das neue Datenformat gelesen werden kann.
 
-* Am Donnerstag, den 1. November 2018, um Mitternacht (UTC) wird das Blobformat in [JSON Lines](http://jsonlines.org/) geändert. Dies bedeutet, dass die einzelnen Datensätze jeweils durch einen Zeilenumbruch getrennt sind und dass kein externes Datensatzarray und keine Kommas zwischen JSON-Datensätzen verwendet werden.
-* Das Blobformat wird für alle Diagnoseeinstellungen aller Abonnements auf einmal geändert. Die erste Datei „PT1H.json“, die für den 1. November ausgegeben wird, hat dieses neue Format. Die Blob- und Containernamen bleiben unverändert.
-* Wenn zwischen dem heutigen Datum und dem 1. November eine Diagnoseeinstellung festgelegt wird, werden die Daten bis zum 1. November weiterhin im derzeitigen Format ausgegeben.
-* Diese Änderung tritt für alle öffentlichen Cloudregionen gleichzeitig in Kraft. Die Änderung wird noch nicht für von 21Vianet betriebenen Microsoft Azure-, Azure Deutschland- oder Azure Government-Clouds durchgeführt.
+* Am Donnerstag, den 1. November 2018, um Mitternacht (UTC) wurde das Blobformat in [JSON Lines](http://jsonlines.org/) geändert. Dies bedeutet, dass die einzelnen Datensätze jeweils durch einen Zeilenumbruch getrennt sind und dass kein externes Datensatzarray und keine Kommas zwischen JSON-Datensätzen verwendet werden.
+* Das Blobformat wurde für alle Diagnoseeinstellungen aller Abonnements auf einmal geändert. Die erste Datei „PT1H.json“, die für den 1. November ausgegeben wurde, hat dieses neue Format. Die Blob- und Containernamen bleiben unverändert.
+* Bei Festlegen einer Diagnoseeinstellung vor dem 1. November wurden die Daten bis zum 1. November weiterhin im aktuellen Format ausgegeben.
+* Diese Änderung trat für alle öffentlichen Cloudregionen gleichzeitig in Kraft. Die Änderung wird noch nicht für von 21Vianet betriebenen Microsoft Azure-, Azure Deutschland- oder Azure Government-Clouds durchgeführt.
 * Diese Änderung wirkt sich auf die folgenden Datentypen aus:
-  * [Azure-Ressourcendiagnoseprotokolle](archive-diagnostic-logs.md) ([Liste mit Ressourcen](diagnostic-logs-schema.md))
+  * [Azure-Ressourcenprotokolle](archive-diagnostic-logs.md) ([Liste mit Ressourcen](diagnostic-logs-schema.md))
   * [Von Diagnoseeinstellungen exportierte Azure-Ressourcenmetriken](diagnostic-settings.md)
-  * [Von Protokollprofilen exportierte Azure-Aktivitätsprotokolldaten](archive-activity-log.md)
+  * [Von Protokollprofilen exportierte Azure-Aktivitätsprotokolldaten](activity-log-collect.md)
 * Diese Änderung wirkt sich nicht auf Folgendes aus:
   * Netzwerkflussprotokolle
   * Azure-Dienstprotokolle, die noch nicht über Azure Monitor verfügbar gemacht werden (z. B. Azure App Service-Diagnoseprotokolle, Speicheranalyseprotokolle)
@@ -42,16 +42,16 @@ Azure Monitor verfügt über eine Funktion, mit der Sie Ressourcendiagnosedaten 
 ### <a name="how-to-see-if-you-are-impacted"></a>Ermitteln der Auswirkungen für Sie
 
 Diese Änderung hat für Sie nur Auswirkungen, wenn Folgendes gilt:
-1. Sie senden Protokolldaten an ein Azure-Speicherkonto, indem Sie eine Ressourcendiagnoseeinstellung nutzen.
+1. Sie senden Protokolldaten an ein Azure-Speicherkonto, indem Sie eine Diagnoseeinstellung nutzen.
 2. Sie verfügen über Tools, die von der JSON-Struktur dieser Protokolle im Speicher abhängig sind.
  
-Um zu ermitteln, ob Sie über Ressourcendiagnoseeinstellungen verfügen, die Daten an ein Azure-Speicherkonto senden, können Sie wie folgt vorgehen: Navigieren Sie im Portal zum Abschnitt **Überwachen**, klicken Sie auf **Diagnoseeinstellungen**, und identifizieren Sie alle Ressourcen, für die **Diagnostic Status** (Diagnosestatus) auf **Aktiviert** festgelegt ist:
+Um zu ermitteln, ob Sie über Diagnoseeinstellungen verfügen, die Daten an ein Azure-Speicherkonto senden, können Sie wie folgt vorgehen: Navigieren Sie im Portal zum Abschnitt **Überwachen**, klicken Sie auf **Diagnoseeinstellungen**, und identifizieren Sie alle Ressourcen, für die **Diagnosestatus** auf **Aktiviert** festgelegt ist:
 
-![Blatt „Diagnoseeinstellungen“ von Azure Monitor](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
+![Blatt „Diagnoseeinstellungen“ von Azure Monitor](media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 
 Wenn der Diagnosestatus aktiviert ist, verfügen Sie über eine aktive Diagnoseeinstellung für diese Ressource. Klicken Sie auf die Ressource, um zu ermitteln, ob Diagnoseeinstellungen Daten an ein Speicherkonto senden:
 
-![Aktiviertes Speicherkonto](./media/diagnostic-logs-append-blobs/portal-storage-enabled.png)
+![Aktiviertes Speicherkonto](media/diagnostic-logs-append-blobs/portal-storage-enabled.png)
 
 Wenn bei Ihnen Ressourcen Daten an ein Speicherkonto senden, indem diese Ressourcendiagnoseeinstellungen verwendet werden, ist das Format der Daten im Speicherkonto von dieser Änderung betroffen. Die Formatänderung wirkt sich für Sie nur aus, wenn Sie über benutzerdefinierte Tools verfügen, die basierend auf diesen Speicherkonten genutzt werden.
 

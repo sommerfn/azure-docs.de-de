@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f22cb620bf8cf56110bec60a4dd809066393a8ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3becf5ef579acdc52a51f9ad618e37460491c2ec
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067656"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146744"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatisieren von benutzerdefinierten Berichten mit Azure Application Insights-Daten
 
@@ -95,7 +95,9 @@ availabilityResults
 5. Klicken Sie auf die Vorlage **_AppInsights: Geplante Übersicht_** .
 
      > [!NOTE]
-     > Standardmäßig werden Funktionen-Apps mit Runtimeversion 2.x erstellt. Sie müssen [Runtimeversion 1.x von Azure Functions als Ziel einstellen](https://docs.microsoft.com/azure/azure-functions/set-runtime-version), um die Vorlage „AppInsights: Geplante Übersicht“ zu verwenden.
+     > Standardmäßig werden Funktionen-Apps mit Runtimeversion 2.x erstellt. Sie müssen [Runtimeversion **1.x** von Azure Functions als Ziel einstellen](https://docs.microsoft.com/azure/azure-functions/set-runtime-version), um die Vorlage „AppInsights: Geplante Übersicht“ zu verwenden.  ![Screenshot: Runtime](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+
+
 
    ![Screenshot: Neue Funktion – Application Insights-Vorlage](./media/automate-custom-reports/function-app-04.png)
 
