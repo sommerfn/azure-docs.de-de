@@ -219,7 +219,7 @@ Installieren und Konfigurieren von Docker auf dem PC, auf dem die Simulation ver
 2. Starten Sie die Docker-Einstellungen, navigieren Sie zu den Optionen unter „Erweitert“, und konfigurieren Sie die Ressourcen so, dass mindestens 8 GB RAM vorhanden sind. Je mehr CPUs Sie Docker zuweisen können, desto schneller wird der Bake-Vorgang abgeschlossen.  
 ![Screenshot mit Beispiel zu Docker-Einstellungen](media/docker-settings.png)
 1. Navigieren Sie zu „Freigegebene Laufwerke“ und aktivieren Sie die Freigabe für das Laufwerk, das für die Verarbeitung verwendet wird.  
-![Screnshot mit Docker-Optionen für freigegebene Laufwerke](media/docker-shared-drives.png)
+![Screenshot mit Docker-Optionen für freigegebene Laufwerke](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>Ausführen eines lokalen Bake-Vorgangs
 1. Klicken Sie auf der Registerkarte **Bake** auf die Schaltfläche „Prepare Local Bake“ (Lokales Baking vorbereiten), und wählen Sie einen Ordner aus, in dem die Eingabedateien und Ausführungsskripts gespeichert werden. Sie können den Bake-Vorgang dann auf jedem beliebigen Computer ausführen, solange er die minimalen Hardwareanforderungen erfüllt und Docker installiert ist, indem Sie den Ordner auf diesen Computer kopieren.
