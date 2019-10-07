@@ -12,19 +12,37 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: 2703c97dc78983ef294b3aa50f7ace879c96f66d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ac9bd6021b5fcec36e3aadfdf4c30020971f3be5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061232"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299250"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights
 Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version 1.2 bzw. 2.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.
 
+## <a name="using-the-application-insights-java-agent"></a>Verwenden des Java-Agents von Application Insights
+
+Sie können den Java-Agent von Application Insights so konfigurieren, dass Ihre Protokolle automatisch erfasst werden, indem Sie das Feature in der `AI-Agent.xml`-Datei aktivieren:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn enabled="true">
+         <Logging enabled="true" />
+      </BuiltIn>
+   </Instrumentation>
+   <AgentLogger />
+</ApplicationInsightsAgent>
+```
+
+Alternativ können Sie die folgenden Anweisungen befolgen.
+
 ## <a name="install-the-java-sdk"></a>Installieren des Java SDK
 
-Befolgen Sie die Anweisungen zum Installieren des [Application Insights SDK für Java][java], falls noch nicht geschehen.
+Führen Sie die Anweisungen zum Installieren des [Application Insights SDK für Java][java] durch, sofern dies noch nicht geschehen ist.
 
 ## <a name="add-logging-libraries-to-your-project"></a>Hinzufügen von Protokollierungsbibliotheken zu Ihrem Projekt
 *Wählen Sie die geeignete Methode für Ihr Projekt.*

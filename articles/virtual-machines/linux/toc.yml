@@ -111,6 +111,14 @@
           href: acu.md
         - name: vCPU-Kontingente
           href: quotas.md
+        - name: Reservierte Instanzen
+          items:
+            - name: Vorauszahlung für virtuelle Computer
+              href: prepay-reserved-vm-instances.md
+            - name: Was sind Azure-Reservierungen?
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: Flexibilität bei der VM-Instanzgröße
+              href: reserved-vm-instance-size-flexibility.md
         - name: Benchmarkergebnisse
           href: compute-benchmark-scores.md
     - name: Unterstützte Distributionen
@@ -302,16 +310,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: Erstellen von Protokollwarnungen
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: Verwalten von Kosten
-      items:
-        - name: 'Vorauszahlen für virtuelle Computer: Azure-Reservierungen'
-          href: prepay-reserved-vm-instances.md
-        - name: Vorauszahlen für Azure-Softwarepläne
-          href: prepay-suse-software-charges.md
-        - name: Was sind Azure-Reservierungen?
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: Flexibilität bei der VM-Instanzgröße
-          href: reserved-vm-instance-size-flexibility.md
     - name: Verwenden von Images
       items:
         - name: Kataloge mit freigegebenen Images
@@ -378,8 +376,6 @@
           href: manage-availability.md
         - name: Erstellen einer Näherungsplatzierungsgruppe
           href: proximity-placement-groups.md
-        - name: Vertikales Skalieren
-          href: vertical-scaling-automation.md
         - name: Erstellen eines virtuellen Computers in einer Verfügbarkeitszone
           href: create-cli-availability-zone.md
     - name: Verwenden von Automatisierungstools
