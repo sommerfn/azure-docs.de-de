@@ -114,22 +114,34 @@
           href: sisense.md
     - name: Verwalten
       items:
-        - name: Überprüfen der Clusterintegrität
-          href: check-cluster-health.md
-        - name: Auswählen der VM-SKU eines Clusters
-          href: manage-cluster-choose-sku.md
-        - name: Verwalten von horizontaler Clusterskalierung
-          href: manage-cluster-horizontal-scaling.md
-        - name: Verwalten von vertikaler Clusterskalierung
-          href: manage-cluster-vertical-scaling.md
-        - name: Verwalten der Clustersicherheit
-          href: manage-cluster-security.md
-        - name: Verwalten von Datenbankberechtigungen
-          href: manage-database-permissions.md
-        - name: Löschen von Daten
-          href: delete-data.md
-        - name: Behandeln von doppelten Daten
-          href: dealing-with-duplicates.md
+        - name: Cluster
+          items:
+            - name: Auswählen der VM-SKU eines Clusters
+              href: manage-cluster-choose-sku.md
+            - name: Verwalten von horizontaler Clusterskalierung
+              href: manage-cluster-horizontal-scaling.md
+            - name: Verwalten von vertikaler Clusterskalierung
+              href: manage-cluster-vertical-scaling.md
+            - name: Verwalten der Clustersicherheit
+              href: manage-cluster-security.md
+            - name: Überprüfen der Clusterintegrität
+              href: check-cluster-health.md
+        - name: Datenbank
+          items:
+            - name: Verwalten von Datenbankberechtigungen
+              href: manage-database-permissions.md
+            - name: Richtlinien
+              items:
+                - name: 'C#'
+                  href: database-table-policies-csharp.md
+                - name: Python
+                  href: database-table-policies-python.md
+        - name: Data
+          items:
+            - name: Löschen von Daten
+              href: delete-data.md
+            - name: Behandeln von doppelten Daten
+              href: dealing-with-duplicates.md
     - name: Überwachen
       items:
         - name: Verwenden von Diagnoseprotokollen zum Überwachen der Erfassung

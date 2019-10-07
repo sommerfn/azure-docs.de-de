@@ -84,7 +84,7 @@
     - name: Resource Manager-Vorlagen
       href: template-samples.md
     - name: Codebeispiele
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid'
+      href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
 - name: Konzepte
   items:
     - name: Event Grid-Konzepte
