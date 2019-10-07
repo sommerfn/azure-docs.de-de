@@ -6,52 +6,73 @@
       href: resource-group-overview.md
     - name: Vorlagenübersicht
       href: template-deployment-overview.md
-- name: Schnellstarts
-  expanded: true
-  items:
-    - name: Erstellen von Vorlagen – Portal
-      href: resource-manager-quickstart-create-templates-use-the-portal.md
-    - name: Erstellen von Vorlagen – VS Code
-      href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-    - name: Erstellen von Vorlagen – Visual Studio
-      href: vs-azure-tools-update-deploy-script-to-az-powershell.md
-    - name: 'Erstellen von Vorlagen: IntelliJ IDEA'
-      href: resource-manager-quickstart-create-templates-use-intellij.md
 - name: Lernprogramme
   items:
-    - name: Nutzen der Vorlagenreferenz
-      href: resource-manager-tutorial-create-encrypted-storage-accounts.md
-    - name: Erstellen mehrerer Instanzen
-      displayName: 'iteration,copy'
-      href: resource-manager-tutorial-create-multiple-instances.md
-    - name: Festlegen der Reihenfolge für die Ressourcenbereitstellung
-      displayName: 'dependent resources, dependency'
-      href: resource-manager-tutorial-create-templates-with-dependent-resources.md
-    - name: Verwenden von Bedingungen
-      href: resource-manager-tutorial-use-conditions.md
-    - name: Integrieren von Key Vault
-      displayName: secrets
-      href: resource-manager-tutorial-use-key-vault.md
-    - name: Erstellen verknüpfter Vorlagen
-      href: resource-manager-tutorial-create-linked-templates.md
-    - name: Bereitstellen von VM-Erweiterungen
-      displayName: virtual machine extensions
-      href: resource-manager-tutorial-deploy-vm-extensions.md
-    - name: Bereitstellen von SQL-Erweiterungen
-      href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
-    - name: Schützen von Artefakten
-      href: resource-manager-tutorial-secure-artifacts.md
-    - name: Continuous Integration mit Azure Pipelines
-      displayName: DevOps
-      href: resource-manager-tutorial-use-azure-pipelines.md
-    - name: Verwenden von sicheren Bereitstellungsmethoden
-      displayName: adm
-      href: deployment-manager-tutorial.md
-    - name: Verwenden der Integritätsprüfung im Bereitstellungs-Manager
-      displayName: adm
-      href: deployment-manager-tutorial-health-check.md
-    - name: Problembehandlung bei der Vorlagenbereitstellung
-      href: resource-manager-tutorial-troubleshoot.md
+    - name: Anfänger
+      items:
+        - name: 1. Erstellen der ersten Vorlage
+          href: template-tutorial-create-first-template.md
+        - name: 2. Hinzufügen einer Ressource
+          href: template-tutorial-add-resource.md
+        - name: 3. Hinzufügen von Parametern
+          href: template-tutorial-add-parameters.md
+        - name: 4. Hinzufügen von Vorlagenfunktionen
+          href: template-tutorial-add-functions.md
+        - name: 5. Hinzufügen von Variablen
+          href: template-tutorial-add-variables.md
+        - name: 6. Hinzufügen von Ausgaben
+          href: template-tutorial-add-outputs.md
+        - name: 7. Verwenden einer exportierten Vorlage
+          href: template-tutorial-export-template.md
+        - name: 8. Verwenden einer Schnellstartvorlage
+          href: template-tutorial-quickstart-template.md
+        - name: 9. Hinzufügen von Tags
+          href: template-tutorial-add-tags.md
+        - name: 10. Verwenden einer Parameterdatei
+          href: template-tutorial-use-parameter-file.md
+    - name: Erweitert
+      items:
+        - name: Erstellen von Vorlagen – Portal
+          href: resource-manager-quickstart-create-templates-use-the-portal.md
+        - name: Erstellen von Vorlagen – VS Code
+          href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+        - name: Erstellen von Vorlagen – Visual Studio
+          href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+        - name: 'Erstellen von Vorlagen: IntelliJ IDEA'
+          href: resource-manager-quickstart-create-templates-use-intellij.md
+        - name: Nutzen der Vorlagenreferenz
+          href: resource-manager-tutorial-create-encrypted-storage-accounts.md
+        - name: Erstellen mehrerer Instanzen
+          displayName: 'iteration,copy'
+          href: resource-manager-tutorial-create-multiple-instances.md
+        - name: Festlegen der Reihenfolge für die Ressourcenbereitstellung
+          displayName: 'dependent resources, dependency'
+          href: resource-manager-tutorial-create-templates-with-dependent-resources.md
+        - name: Verwenden von Bedingungen
+          href: resource-manager-tutorial-use-conditions.md
+        - name: Integrieren von Key Vault
+          displayName: secrets
+          href: resource-manager-tutorial-use-key-vault.md
+        - name: Erstellen verknüpfter Vorlagen
+          href: resource-manager-tutorial-create-linked-templates.md
+        - name: Bereitstellen von VM-Erweiterungen
+          displayName: virtual machine extensions
+          href: resource-manager-tutorial-deploy-vm-extensions.md
+        - name: Bereitstellen von SQL-Erweiterungen
+          href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
+        - name: Schützen von Artefakten
+          href: resource-manager-tutorial-secure-artifacts.md
+        - name: Continuous Integration mit Azure Pipelines
+          displayName: DevOps
+          href: resource-manager-tutorial-use-azure-pipelines.md
+        - name: Verwenden von sicheren Bereitstellungsmethoden
+          displayName: adm
+          href: deployment-manager-tutorial.md
+        - name: Verwenden der Integritätsprüfung im Bereitstellungs-Manager
+          displayName: adm
+          href: deployment-manager-tutorial-health-check.md
+        - name: Problembehandlung bei der Vorlagenbereitstellung
+          href: resource-manager-tutorial-troubleshoot.md
 - name: Beispiele
   items:
     - name: Resource Manager-Vorlagen
@@ -76,8 +97,8 @@
           href: deployment-manager-health-check.md
     - name: Resource Manager-Bereitstellung und klassische Bereitstellung
       href: resource-manager-deployment-model.md
-    - name: Integrierte Sicherheitskontrollen
-      href: azure-resource-manager-security-controls.md
+    - name: Allgemeine Azure-Sicherheitsattribute
+      href: azure-resource-manager-security-attributes.md
 - name: Anleitung
   items:
     - name: Erstellen von Vorlagen
@@ -221,8 +242,6 @@
           href: resource-manager-common-deployment-errors.md
         - name: AccountNameInvalid
           href: resource-manager-storage-account-name-errors.md
-        - name: DeploymentQuotaExceeded
-          href: deployment-quota-exceeded.md
         - name: InvalidTemplate
           href: resource-manager-invalid-template-errors.md
         - name: Linux-Bereitstellungsprobleme

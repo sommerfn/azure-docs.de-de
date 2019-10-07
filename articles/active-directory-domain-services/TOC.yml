@@ -85,7 +85,7 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
-    - name: Bereitstellen von Anwendungen in Azure AD DS
+    - name: Bereitstellen von Anwendungen
       items:
         - name: Bereitstellen eines Azure AD-Anwendungsproxys
           href: deploy-azure-app-proxy.md
@@ -95,11 +95,17 @@
       items:
         - name: Häufige Fehler
           href: troubleshoot.md
-        - name: Fehler durch nicht übereinstimmende Mandanten
+        - name: Probleme beim Einbinden in eine Domäne
+          href: troubleshoot-domain-join.md
+        - name: Kontosperrungen
+          href: troubleshoot-account-lockout.md
+        - name: Probleme bei der Anmeldung
+          href: troubleshoot-sign-in.md
+        - name: Beheben von Fehlern durch nicht übereinstimmende Mandanten
           href: mismatched-tenant-error.md
         - name: Angehaltene Domänen
           href: suspension.md
-        - name: Sicheres LDAP (LDAPS)
+        - name: Probleme mit Secure LDAP
           href: tshoot-ldaps.md
         - name: Bekannte Probleme
           items:

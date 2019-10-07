@@ -33,7 +33,7 @@
       items:
         - name: Sicherheitsübersicht
           href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Speicherkontoverschlüsselung
+        - name: Azure Storage-Verschlüsselung
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Authorization
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
@@ -132,7 +132,7 @@
                   href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Verwenden der Azure Storage-REST-API
                   href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Konfigurieren der vom Kunden verwalteten Schlüssel für die Dienstverschlüsselung
+        - name: Verwenden der vom Kunden verwalteten Schlüssel für die Verschlüsselung
           items:
             - name: Portal
               href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json

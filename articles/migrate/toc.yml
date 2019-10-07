@@ -77,19 +77,21 @@
     - name: Erstellen einer Bewertung
       href: how-to-create-assessment.md
     - name: "Bewerten einer SQL\_Server-Datenbank"
-      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json&view=sql-server-2017'
+      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb'
     - name: Anpassen einer Bewertung
       href: how-to-modify-assessment.md
     - name: Hinzufügen von Migrationstools
       href: how-to-migrate.md
-    - name: Skalieren der Bewertung und Migration
-      items:
-        - name: Bewerten einer großen Anzahl von virtuellen VMware-Computern
-          href: scale-vmware-assessment.md
-        - name: Bewerten einer großen Anzahl von virtuellen Hyper-V-Computern
-          href: scale-hyper-v-assessment.md
-        - name: Automatisieren der Migration zahlreicher virtueller Computer
-          href: how-to-migrate-at-scale.md
+    - name: Vorbereiten von Computern für die Migration
+      href: prepare-for-migration.md
+- name: Skalieren der Bewertung und Migration
+  items:
+    - name: Bewerten einer großen Anzahl von virtuellen VMware-Computern
+      href: scale-vmware-assessment.md
+    - name: Bewerten einer großen Anzahl von virtuellen Hyper-V-Computern
+      href: scale-hyper-v-assessment.md
+    - name: Automatisieren der Migration zahlreicher virtueller Computer
+      href: how-to-migrate-at-scale.md
     - name: 'Migrationsbeispiele: Contoso-Serie'
       href: contoso-migration-overview.md
 - name: Problembehandlung

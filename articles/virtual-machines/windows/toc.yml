@@ -198,6 +198,14 @@
           href: compute-benchmark-scores.md
         - name: vCPU-Kontingente
           href: quotas.md
+        - name: Reservierte Instanzen
+          items:
+            - name: Vorauszahlung für virtuelle Computer
+              href: prepay-reserved-vm-instances.md
+            - name: Was sind Azure-Reservierungen?
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: Flexibilität bei der VM-Instanzgröße
+              href: reserved-vm-instance-size-flexibility.md
     - name: Dedizierte Hosts
       href: dedicated-hosts.md
     - name: Wartung und Updates
@@ -359,14 +367,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: Erstellen von Protokollwarnungen
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: Verwalten von Kosten
-      items:
-        - name: 'Vorauszahlen für virtuelle Computer: Azure-Reservierungen'
-          href: prepay-reserved-vm-instances.md
-        - name: Was sind Azure-Reservierungen?
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: Flexibilität bei der VM-Instanzgröße
-          href: reserved-vm-instance-size-flexibility.md
     - name: Verwenden von Images
       items:
         - name: Freigegebene Images
@@ -422,8 +422,6 @@
         - name: Erstellen einer Näherungsplatzierungsgruppe
           href: proximity-placement-groups.md
         - name: Vertikales Skalieren
-          href: vertical-scaling-automation.md
-        - name: Erstellen eines virtuellen Computers in einer Verfügbarkeitszone
           items:
             - name: PowerShell
               href: create-powershell-availability-zone.md

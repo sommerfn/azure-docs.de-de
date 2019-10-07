@@ -82,6 +82,8 @@
       href: functions-deployment-technologies.md
     - name: Ereignisse und Messaging
       items:
+        - name: Zuverlässige Ereignisverarbeitung
+          href: functions-reliable-event-processing.md
         - name: Entwerfen für identische Eingaben
           href: functions-idempotent.md
     - name: Trigger und Bindungen

@@ -241,6 +241,8 @@
           items:
             - name: Problembehandlung bei der Benutzerbereitstellung
               href: application-provisioning-config-problem.md
+            - name: Quarantänestatus
+              href: application-provisioning-quarantine-status.md
             - name: Bereitstellungsprotokolle
               href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
             - name: 'Synchronisieren eines Attributs für die Zuordnung: Katalog-App'
@@ -357,6 +359,8 @@
           href: provisioning-agent-release-version-history.md
     - name: Anwendungsproxy für lokale Apps
       items:
+        - name: 'Anwendungsproxy: häufig gestellte Fragen'
+          href: application-proxy-faq.md
         - name: Versionsverlauf des Anwendungsproxys
           href: application-proxy-release-version-history.md
 - name: Ressourcen
