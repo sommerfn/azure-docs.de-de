@@ -541,7 +541,7 @@ Die folgende Tabelle gilt für Spark, Hive, MapReduce, Pig und Hadoop Streaming.
 
 - **Ursache:** Dieser Fehler stammt von HDInsight.
 
-- **Empfehlung**: Dieser Fehler stammt vom HDInsight-Cluster. Weitere Informationen finden Sie auf den Seiten zu den Themen [Ambari-Benutzeroberfläche Fehler 502](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [Fehler 502 bei der Verbindung zum Spark Thrift Server](https://hdinsight.github.io/spark/spark-thriftserver-errors.html)[](https://hdinsight.github.io/spark/spark-thriftserver-errors.html) und [Fehlerbehebung bei ungültigen Gateway-Fehlern im Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502).
+- **Empfehlung**: Dieser Fehler stammt vom HDInsight-Cluster. Weitere Informationen finden Sie auf den Seiten zu den Themen [Ambari-Benutzeroberfläche Fehler 502](https://hdinsight.github.io/ambari/ambari-ui-502-error.html), [Fehler 502 bei der Verbindung zum Spark Thrift Server](https://hdinsight.github.io/spark/spark-thriftserver-errors.html) und [Fehlerbehebung bei ungültigen Gateway-Fehlern im Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-troubleshooting-502).
 
 <br/>
 
