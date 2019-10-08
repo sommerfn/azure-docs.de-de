@@ -92,8 +92,6 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Anfügen oder Trennen eines Katalogs mit freigegebenen Images
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-            - name: Aktivieren der geschachtelten Virtualisierung auf einem virtuellen Vorlagencomputer
-              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Erstellen und Konfigurieren von Classroom-Labs (Kursleiter)
           items:
             - name: Erstellen und Verwalten von Classroom-Labs
@@ -112,6 +110,8 @@
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
             - name: Festlegen oder Zurücksetzen von Kennwörtern für virtuelle Computer
               href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: Aktivieren der geschachtelten Virtualisierung auf einem virtuellen Vorlagencomputer
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Herstellen einer Verbindung mit virtuellen Computern in Classroom-Labs (Kursteilnehmer)
           items:
             - name: Zugreifen auf Classroom-Labs
