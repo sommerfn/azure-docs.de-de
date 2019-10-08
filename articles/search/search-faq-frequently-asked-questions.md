@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d4aae2f2ef9ccbc645647125682d999c11c99ab6
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 600c619134cae18e69b5a200cb03fbebd82dee0f
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649826"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719883"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search – Häufig gestellte Fragen (FAQ)
 
@@ -42,17 +42,27 @@ Sie können den Dienst nicht anhalten. Compute- und Speicherressourcen werden be
 
 ## <a name="indexing-operations"></a>Indizierungsvorgänge
 
-### <a name="backup-and-restore-or-download-and-move-indexes-or-index-snapshots"></a>Können Indizes oder Indexmomentaufnahmen gesichert und wiederhergestellt (oder heruntergeladen und verschoben) werden?
+### <a name="move-backup-and-restore-indexes-or-index-snapshots"></a>Können Indizes oder Indexmomentaufnahmen verschoben, gesichert und wiederhergestellt werden?
 
-Sie können zwar jederzeit [eine Indexdefinition abrufen](https://docs.microsoft.com/rest/api/searchservice/get-index), aber es ist kein Feature für die Indexextraktion, Momentaufnahmen oder Sicherung/Wiederherstellung vorhanden, mit dem ein in der Cloud ausgeführter *aufgefüllter* Index auf ein lokales System heruntergeladen oder in einen anderen Azure Search-Dienst verschoben werden kann.
+Während der Entwicklungsphase möchten Sie den Index möglicherweise zwischen den Suchdiensten verschieben. Beispielsweise möchten Sie einen Tarif „Basic“ oder „Free“ verwenden, um ihren Index zu entwickeln, und ihn dann für den Einsatz in der Produktionsumgebung in den Tarif „Standard“ oder einen höheren Tarif verschieben. 
 
-Indizes werden mit von Ihnen geschriebenem Code erstellt und aufgefüllt und nur in Azure Search in der Cloud ausgeführt. Normalerweise bearbeiten Kunden, die einen Index in einen anderen Dienst verschieben möchten, ihren Code so, dass ein neuer Endpunkt verwendet wird, und führen die Indizierung dann erneut aus. Wenn Sie sich eine Funktion zum Erstellen einer Momentaufnahme oder zum Sichern eines Index wünschen, können Sie bei [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index) Ihre Stimme dafür abgeben.
+Oder Sie möchten eine Indexmomentaufnahme in Dateien sichern, die später zum Wiederherzustellen verwendet werden können. 
+
+Für all dies können Sie den **index-backup-restore**-Beispielcode in diesem [Azure Search .NET-Beispielrepository](https://github.com/Azure-Samples/azure-search-dotnet-samples) verwenden. 
+
+Sie können auch jederzeit mit der Azure Search-REST-API eine [Indexdefinition abrufen](https://docs.microsoft.com/rest/api/searchservice/get-index).
+
+Zurzeit gibt es im Azure-Portal keine integrierten Features für Indexextrahierung, Momentaufnahme oder Sicherung/Wiederherstellung. Wir erwägen jedoch, in einem zukünftigen Release Funktionen für Sicherung und Wiederherstellung hinzuzufügen. Wenn Sie Ihre Unterstützung dieses Feature ausdrücken möchten, können Sie auf [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index) Ihre Stimme dafür abgeben.
 
 ### <a name="can-i-restore-my-index-or-service-once-it-is-deleted"></a>Kann ich meinen Index oder Dienst wiederherstellen, nachdem er gelöscht wurde?
 
-Nein, Indizes oder Dienste können Sie nicht wiederherstellen. Wenn Sie einen Azure Search-Index löschen, ist der Vorgang endgültig, weshalb der Index nicht wiederhergestellt werden kann. Wenn Sie einen Azure Search-Dienst löschen, werden alle Indizes im Dienst dauerhaft gelöscht. Wenn Sie eine Azure-Ressourcengruppe löschen, die einen oder mehrere Azure Search-Dienste enthält, werden alle Dienste dauerhaft gelöscht.  
+Nein, wenn Sie einen Azure Search-Index oder -dienst löschen, kann er nicht wiederhergestellt werden. Wenn Sie einen Azure Search-Dienst löschen, werden alle Indizes im Dienst dauerhaft gelöscht. Wenn Sie eine Azure-Ressourcengruppe löschen, die einen oder mehrere Azure Search-Dienste enthält, werden alle Dienste dauerhaft gelöscht.  
 
-Um Ressourcen wie Indizes, Indexer, Datenquellen und Qualifikationsgruppen wiederherzustellen, müssen Sie sie aus dem Code neu erstellen. Bei Indizes müssen Sie Daten aus externen Quellen neu indizieren. Aus diesem Grund wird nachdrücklich empfohlen, eine Masterkopie oder Sicherung der Originaldaten in einem anderen Datenspeicher, wie z.B. Azure SQL-Datenbank oder Cosmos DB, zu speichern.
+Um Ressourcen wie Indizes, Indexer, Datenquellen und Qualifikationsgruppen wiederherzustellen, müssen Sie sie aus dem Code neu erstellen. 
+
+Um einen Index neu zu erstellen, müssen Sie Daten aus externen Quellen neu indizieren. Aus diesem Grund wird empfohlen, eine Masterkopie oder Sicherung der Originaldaten in einem anderen Datenspeicher, wie z.B. Azure SQL-Datenbank oder Cosmos DB, zu speichern.
+
+Alternativ können Sie den **index-backup-restore**-Beispielcode in diesem [Azure Search .NET-Beispielrepository](https://github.com/Azure-Samples/azure-search-dotnet-samples) verwenden, um eine Indexdefinition und die Indexmomentaufnahme in einer Reihe von JSON-Dateien zu sichern. Später können Sie das Tool und die Dateien bei Bedarf verwenden, um den Index wiederherzustellen.  
 
 ### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsmicrosoftcomazuresearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>Kann ich die Indizierung von SQL-Datenbankreplikaten aus durchführen (gilt für [Azure SQL-Datenbank-Indexer](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))?
 

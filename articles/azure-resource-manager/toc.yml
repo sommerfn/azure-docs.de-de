@@ -134,8 +134,7 @@
           href: resource-group-linked-templates.md
         - name: Erstellen mehrerer Instanzen
           href: resource-group-create-multiple.md
-        - name: Erstellen von Ressourcengruppen und Ressourcen für ein Abonnement
-          displayName: subscription level deployment
+        - name: Ressourcen auf Abonnementebene
           href: deploy-to-subscription.md
     - name: Bereitstellen von Vorlagen
       items:

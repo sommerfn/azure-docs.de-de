@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 6e3045ba8363965fcfc198356ed68447a187308d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 4fd27acc58f5aaeb9b7680062ad97aaba22dec51
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123428"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686987"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -70,7 +70,7 @@ ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.m
 * Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.<br><br>**Die folgenden Dienste werden NICHT unterstützt**:
     * CDN
     * Azure Front Door
-    * Multi-Factor Authentication
+    * Multi-Factor Authentication-Server (Vorversion)
     * Traffic Manager
 
 ### <a name="public-peering"></a>Öffentliches Peering
@@ -84,13 +84,15 @@ ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.m
   **Die folgenden Dienste werden NICHT unterstützt**:
     * CDN
     * Azure Front Door
-    * Multi-Factor Authentication
+    * Multi-Factor Authentication-Server (Vorversion)
     * Traffic Manager
 
 ### <a name="is-dynamics-365-supported-on-expressroute"></a>Wird Dynamics 365 in ExpressRoute unterstützt?
 
 Dynamics 365- und Common Data Service (CDS)-Umgebungen werden in Azure gehostet, sodass Kunden von der zugrunde liegenden ExpressRoute-Unterstützung für Azure-Ressourcen profitieren. Sie können eine Verbindung mit ihren Dienstendpunkten herstellen, wenn Ihr Routerfilter die Azure-Regionen umfasst, in denen Ihre Dynamics 365/CDS-Umgebungen gehostet werden.
 
+> [!NOTE]
+> [ExpressRoute Premium](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-faqs#expressroute-premium) ist für Dynamics 365-Konnektivität über Azure ExpressRoute **nicht** erforderlich.
 
 ## <a name="data-and-connections"></a>Daten und Verbindungen
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 9c750522123995685191001988ae0081d9454ccf
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 090242cde79f6c31b0f70e1a75240778dca89fa7
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728359"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828582"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Sicherheitsrahmen: Kommunikationssicherheit | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -289,7 +289,7 @@ namespace CertificatePinningExample
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | .NET Framework 3 |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
 | **Schritte** | Die Anwendungskonfiguration muss sicherstellen, dass bei jedem Zugriff auf sensible Daten HTTPS verwendet wird.<ul><li>**ERLÄUTERUNG:** Wenn eine Anwendung sensible Informationen enthält und keine Verschlüsselung auf Nachrichtenebene verwendet, darf sie ausschließlich über einen verschlüsselten Transportkanal kommunizieren.</li><li>**EMPFEHLUNGEN:** Stellen Sie sicher, dass der HTTP-Transport deaktiviert ist, und aktivieren Sie stattdessen den HTTPS-Transport. Ersetzen Sie beispielsweise `<httpTransport/>` durch das Tag `<httpsTransport/>`. Verlassen Sie sich nicht auf eine Netzwerkkonfiguration (Firewall), um zu gewährleisten, dass auf die Anwendung nur über einen sicheren Kanal zugegriffen werden kann. In der Theorie darf die Sicherheit der Anwendung nicht vom Netzwerk abhängig sein.</li></ul><p>In der Praxis sind die für den Schutz des Netzwerks zuständigen Personen bei den Sicherheitsanforderungen der Anwendung nicht immer auf dem neuesten Stand.</p>|
 
 ## <a id="message-protection"></a>WCF: Legen Sie die Schutzebene für die Nachrichtensicherheit auf „EncryptAndSign“ fest.
@@ -301,7 +301,7 @@ namespace CertificatePinningExample
 | **Zutreffende Technologien** | .NET Framework 3 |
 | **Attribute**              | N/V  |
 | **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **Schritte** | <ul><li>**ERLÄUTERUNG:** Wenn die Schutzebene auf „none“ festgelegt wird, wird der Nachrichtenschutz deaktiviert. Vertraulichkeit und Integrität werden durch eine geeignete Ebeneneinstellung erreicht.</li><li>**EMPFEHLUNGEN:**<ul><li>`Mode=None`: Deaktiviert den Nachrichtenschutz.</li><li>`Mode=Sign`: Signiert die Nachricht, verschlüsselt sie aber nicht. Empfiehlt sich, wenn Datenintegrität wichtig ist.</li><li>`Mode=EncryptAndSign`: Signiert und verschlüsselt die Nachricht.</li></ul></li></ul><p>Wenn Sie lediglich die Integrität der Informationen gewährleisten müssen und die Vertraulichkeit keine Rolle spielt, können Sie die Verschlüsselung ggf. deaktivieren und Ihre Nachricht nur signieren. Dies ist unter Umständen bei Vorgängen oder Dienstverträgen hilfreich, bei denen Sie den ursprünglichen Absender überprüfen müssen, aber keine sensiblen Daten übertragen werden. Achten Sie beim Verringern der Schutzebene darauf, dass die Nachricht keine personenbezogenen Informationen enthält.</p>|
+| **Schritte** | <ul><li>**ERLÄUTERUNG:** Wenn die Schutzebene auf „none“ festgelegt wird, wird der Nachrichtenschutz deaktiviert. Vertraulichkeit und Integrität werden durch eine geeignete Ebeneneinstellung erreicht.</li><li>**EMPFEHLUNGEN:**<ul><li>`Mode=None`: Deaktiviert den Nachrichtenschutz.</li><li>`Mode=Sign`: Signiert die Nachricht, verschlüsselt sie aber nicht. Empfiehlt sich, wenn Datenintegrität wichtig ist.</li><li>`Mode=EncryptAndSign`: Signiert und verschlüsselt die Nachricht.</li></ul></li></ul><p>Wenn Sie lediglich die Integrität der Informationen gewährleisten müssen und die Vertraulichkeit keine Rolle spielt, können Sie die Verschlüsselung ggf. deaktivieren und Ihre Nachricht nur signieren. Dies ist unter Umständen bei Vorgängen oder Dienstverträgen hilfreich, bei denen Sie den ursprünglichen Absender überprüfen müssen, aber keine sensiblen Daten übertragen werden. Achten Sie beim Verringern der Schutzebene darauf, dass die Nachricht keine personenbezogenen Daten enthält.</p>|
 
 ### <a name="example"></a>Beispiel
 In den folgenden Beispielen wird gezeigt, wie Sie Dienst und Vorgang so konfiguriert, dass die Nachricht nur signiert wird. Dienstvertragsbeispiel mit `ProtectionLevel.Sign`: Das folgende Beispiel veranschaulicht die Verwendung von „ProtectionLevel.Sign“ auf Dienstvertragsebene: 

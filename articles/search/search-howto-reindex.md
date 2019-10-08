@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8a03472b72ea7c2dc69d79400e33d5ec65cc6126
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 863050b2646f6f7b3a3d9ba3487f11729bef22c8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647690"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719849"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Neuerstellen eines Azure Search-Indexes
 
@@ -33,7 +33,7 @@ Im Gegensatz zu Neuerstellungen, bei denen ein Index offlinegeschaltet wird, wir
 | Aktualisieren oder Löschen einer Analysetooldefinition in einem Index | Sie können eine bestehende Analysetoolkonfiguration (Analysetool, Tokenizer, Tokenfilter oder Zeichenfilter) im Index nicht löschen oder ändern, es sei denn, Sie erstellen den gesamten Index neu. |
 | Hinzufügen eines Felds zu einer Vorschlagsfunktion | Wenn ein Feld bereits vorhanden ist, und Sie es einer [Vorschlagsfunktion](index-add-suggesters.md) hinzufügen möchten, müssen Sie den Index neu erstellen. |
 | Löschen eines Felds | Um alle Spuren eines Felds physisch entfernen zu können, müssen Sie den Index neu erstellen. Wenn eine sofortige Wiederherstellung nicht sinnvoll ist, können Sie den Anwendungscode so ändern, dass der Zugriff auf das Feld „gelöscht“ deaktiviert wird. Die Felddefinition und die Inhalte bleiben physisch bis zur nächsten Neuerstellung im Index, wenn Sie ein Schema verwenden, bei dem das betreffende Feld ausgelassen wird. |
-| Wechseln zwischen Ebenen | Wenn Sie mehr Kapazität benötigen, gibt es kein direktes Upgrade. Am neuen Kapazitätspunkt wird ein neuer Dienst erstellt, und Indizes müssen von Grund auf für den neuen Dienst erstellt werden. |
+| Wechseln zwischen Ebenen | Wenn Sie mehr Kapazität benötigen, gibt es kein direktes Upgrade im Azure-Portal. Es muss ein neuer Dienst erstellt werden, und Indizes müssen von Grund auf für den neuen Dienst erstellt werden. Um diesen Prozess zu automatisieren, können Sie den **index-backup-restore**-Beispielcode in diesem [Azure Search .NET-Beispielrepository](https://github.com/Azure-Samples/azure-search-dotnet-samples) verwenden. Diese App sichert Ihren Index in einer Reihe von JSON-Dateien und erstellt ihn dann in einem Suchdienst, den Sie angeben, neu.|
 
 Alle übrigen Änderungen können ohne Auswirkungen auf die vorhandenen physischen Strukturen vorgenommen werden. Insbesondere ist für die folgenden Änderungen *keine* Indexneuerstellung erforderlich:
 

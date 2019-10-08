@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: be6c0f9a8874507433606903bcbd58c7723d6a8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5eaaa6d41b9dae97a2d6219ffa44fb75ed67e61
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118686"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350045"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch-Renderingfunktionen
 
@@ -32,13 +32,13 @@ Ein Beispiel für eine Poolkonfiguration finden Sie im [Tutorial zum Rendern von
 
 | Herausgeber | Angebot | Sku | Version |
 |---------|---------|---------|--------|
-| Batch | rendering-centos73 | Rendering | neueste |
-| Batch | rendering-windows2016 | Rendering | neueste |
+| Batch | rendering-centos73 | Rendering | latest |
+| Batch | rendering-windows2016 | Rendering | latest |
 
 Andere Optionen sind verfügbar, wenn weitere Anwendungen für die virtuellen Computer des Pools erforderlich sind:
 
-* Benutzerdefiniertes Image basierend auf einem Marketplace-Standardimage:
-  * Diese Option ermöglicht das Konfigurieren Ihrer VM mit den genauen Anwendungen und den jeweiligen Versionen, die Sie benötigen. Weitere Informationen finden Sie unter [Verwenden eines benutzerdefinierten Images zum Erstellen eines VM-Pools](https://docs.microsoft.com/azure/batch/batch-custom-images). Arnold und V-Ray wurden von Autodesk bzw. Chaos Group für einen Azure Batch-Lizenzierungsdienst angepasst. Stellen Sie sicher, dass Sie über die Versionen dieser Anwendungen mit der entsprechenden Unterstützung verfügen, da die Lizenzierung mit nutzungsbasierter Bezahlung andernfalls nicht funktioniert. Für die aktuellen Versionen von Maya oder 3ds Max wird kein Lizenzserver benötigt, wenn die Ausführung monitorlos erfolgt (im Batch-/Befehlszeilenmodus). Wenden Sie sich an den Azure-Support, wenn Sie nicht sicher sind, wie Sie bei dieser Option vorgehen sollen.
+* Ein benutzerdefiniertes Image aus Shared Image Gallery:
+  * Diese Option ermöglicht das Konfigurieren Ihrer VM mit den genauen Anwendungen und den jeweiligen Versionen, die Sie benötigen. Weitere Informationen finden Sie unter [Erstellen eines Pools mit Shared Image Gallery](batch-sig-images.md). Arnold und V-Ray wurden von Autodesk bzw. Chaos Group für einen Azure Batch-Lizenzierungsdienst angepasst. Stellen Sie sicher, dass Sie über die Versionen dieser Anwendungen mit der entsprechenden Unterstützung verfügen, da die Lizenzierung mit nutzungsbasierter Bezahlung andernfalls nicht funktioniert. Für die aktuellen Versionen von Maya oder 3ds Max wird kein Lizenzserver benötigt, wenn die Ausführung monitorlos erfolgt (im Batch-/Befehlszeilenmodus). Wenden Sie sich an den Azure-Support, wenn Sie nicht sicher sind, wie Sie bei dieser Option vorgehen sollen.
 * [Anwendungspakete:](https://docs.microsoft.com/azure/batch/batch-application-packages)
   * Packen Sie die Anwendungsdateien in einer oder mehreren ZIP-Dateien, laden Sie sie über das Azure-Portal hoch, und geben Sie das Paket in der Poolkonfiguration an. Wenn Pool-VMs erstellt werden, werden die ZIP-Dateien heruntergeladen und die Dateien extrahiert.
 * Ressourcendateien:

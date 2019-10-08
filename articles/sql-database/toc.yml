@@ -32,8 +32,10 @@
       items:
         - name: IP-Firewallregeln auf Serverebene
           href: sql-database-server-level-firewall-rule.md
-        - name: Konfigurieren des öffentlichen Endpunkts in der verwalteten Instanz
+        - name: Konfigurieren des öffentlichen Endpunkts in einer verwalteten Instanz
           href: sql-database-managed-instance-public-endpoint-configure.md
+        - name: Konfigurieren von Verbindungstypen in einer verwalteten Instanz
+          href: sql-database-managed-instance-connection-type.md
         - name: Client-VM-Verbindung mit einer verwalteten Instanz
           href: sql-database-managed-instance-configure-vm.md
         - name: Point-to-Site-Verbindung mit einer verwalteten Instanz

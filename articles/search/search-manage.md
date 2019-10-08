@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2c4b2a03e7e5c818453eaf4ad6881b2caba3b93c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647677"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719878"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Dienstverwaltung für Azure Search im Azure-Portal
 > [!div class="op_single_selector"]
@@ -79,10 +79,9 @@ Wenn Sie keine Indexer verwenden, können Sie Ihren Anwendungscode verwenden, um
 
 ## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
-Da Azure Search keine primäre Datenspeicherlösung ist, wird kein formales Verfahren für Self-Service-Sicherung und -Wiederherstellung bereitgestellt. Ihr Anwendungscode, der zum Erstellen und Auffüllung eines Index verwendet wird, ist de facto die Wiederherstellungsoption, wenn Sie aus Versehen einen Index löschen. 
+Da Azure Search keine primäre Datenspeicherlösung ist, wird kein formales Verfahren für Self-Service-Sicherung und -Wiederherstellung bereitgestellt. Sie können jedoch den **index-backup-restore**-Beispielcode in diesem [Azure Search .NET-Beispielrepository](https://github.com/Azure-Samples/azure-search-dotnet-samples) verwenden, um Ihre Indexdefinition und die Momentaufnahme in einer Reihe von JSON-Dateien zu sichern, und diese Dateien dann bei Bedarf zu verwenden, um den Index wiederherzustellen. Mit diesem Tool können Sie auch Indizes zwischen Dienstebenen verschieben.
 
-Um einen Index neu zu erstellen, würden Sie ihn (sofern vorhanden) löschen, den Index im Dienst wiederherstellen und ihn erneut laden, indem Sie Daten aus Ihrem primären Datenspeicher abrufen.
-
+Andernfalls ist Ihr Anwendungscode, der zum Erstellen und Auffüllung eines Index verwendet wird, de facto die Wiederherstellungsoption, wenn Sie aus Versehen einen Index löschen. Um einen Index neu zu erstellen, würden Sie ihn (sofern vorhanden) löschen, den Index im Dienst wiederherstellen und ihn erneut laden, indem Sie Daten aus Ihrem primären Datenspeicher abrufen.
 
 <a id="scale"></a>
 
