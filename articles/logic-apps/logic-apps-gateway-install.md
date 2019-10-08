@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: a070b224b0cb1378f0ba6729af33840715dc0a29
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7384f058c82699095e1209e677dc5c6f61b57178
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087723"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309852"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
@@ -58,7 +58,7 @@ Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installier
   * SSD-Speicher (Solid State Drive) für Spoolvorgang
 
   > [!NOTE]
-  > Das Gateway unterstützt Windows Server 2016 Core nicht.
+  > Das Gateway unterstützt Windows Server Core nicht.
 
 * **Damit zusammenhängende Überlegungen**
 
@@ -74,6 +74,8 @@ Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installier
   * Die Region, die Sie für Ihre Gatewayinstallation auswählen, ist die gleiche Region, die Sie auswählen müssen, wenn Sie später die Azure-Gatewayressource für Ihre Logik-App erstellen. Standardmäßig ist diese Region derselbe Standort wie Ihr Azure AD-Mandant, der Ihr Azure-Konto verwaltet. Der Standort kann jedoch während der Gatewayinstallation geändert werden.
 
   * Das Gateway verfügt über zwei Modi: Standardmodus und persönlicher Modus, der nur für Power BI gilt. Auf demselben Computer können nicht mehrere Gateways im gleichen Modus ausgeführt werden.
+
+  * Azure Logic Apps unterstützt Schreibvorgänge, einschließlich Einfügungen und Aktualisierungen, über das Gateway. Allerdings besitzen diese Vorgänge [Limits hinsichtlich Ihrer Nutzlastgröße](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="install-gateway"></a>
 

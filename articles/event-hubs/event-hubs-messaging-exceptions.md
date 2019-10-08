@@ -1,5 +1,5 @@
 ---
-title: 'Messagingausnahmen: Azure Event Hubs | Microsoft-Dokumentation'
+title: 'Messagingausnahmen für .NET: Azure Event Hubs | Microsoft-Dokumentation'
 description: Dieser Artikel stellt eine Liste von Azure Event Hubs-Messagingausnahmen und vorgeschlagenen Aktionen zur Verfügung.
 services: event-hubs
 documentationcenter: na
@@ -11,22 +11,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 09/25/2019
 ms.author: shvija
-ms.openlocfilehash: 7b6323e02225be3d954e4ee91ea06952bb3ce396
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6680902180a1d4a3c75080e232569cf760ba078
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66001763"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309846"
 ---
-# <a name="event-hubs-messaging-exceptions"></a>Event Hubs-Messagingausnahmen
+# <a name="event-hubs-messaging-exceptions---net"></a>Event Hubs-Messagingausnahmen – .NET
 
-In diesem Artikel werden einige der Ausnahmen aufgeführt, die von der Azure Service Bus-Messaging-API-Bibliothek generiert werden, einschließlich .NET Framework-Event Hubs-APIs. Diese Referenz kann geändert werden. Prüfen Sie darum bei Bedarf, ob Aktualisierungen vorgenommen wurden.
+In diesem Artikel werden einige der .NET-Ausnahmen aufgeführt, die von der .NET-API-Bibliothek für Azure Service Bus-Messaging generiert werden, einschließlich .NET Framework-Event Hubs-APIs. Diese Referenz kann geändert werden. Prüfen Sie darum bei Bedarf, ob Aktualisierungen vorgenommen wurden.
 
 ## <a name="exception-categories"></a>Ausnahmekategorien
 
-Die von den Event Hubs-APIs generierten Ausnahmen können – zusammen mit den zugehörigen Korrekturmaßnahmen – zu den folgenden Kategorien gehören.
+Die von den .NET-APIs von Event Hubs generierten Ausnahmen können – zusammen mit den zugehörigen Korrekturmaßnahmen – zu den folgenden Kategorien gehören.
 
 1. Codierfehler des Benutzers: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). Allgemeine Maßnahme: Korrigieren Sie den Code, bevor Sie fortfahren.
 2. Fehler bei der Einrichtung oder Konfiguration: [Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception), [Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception), [System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx). Allgemeine Maßnahme: Überprüfen Sie die Konfiguration, und ändern Sie diese gegebenenfalls.

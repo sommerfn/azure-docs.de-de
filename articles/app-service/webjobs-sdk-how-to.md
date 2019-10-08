@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 88664238fa7cf21381ad6f95e77e02ad89103556
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 67cd7f82597d306c8bf3c463d11457199aec7277
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850846"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815739"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -816,7 +816,7 @@ Informationen zum Umgang mit Abbruchtoken finden Sie in der Azure Functions-Doku
 
 Bei der Ausführung Ihrer Web-App auf mehreren Instanzen wird ein kontinuierlicher WebJob auf allen Instanzen ausgeführt, der Trigger überwacht und Funktionen aufruft. Die verschiedenen Triggerbindungen sind so konzipiert, dass die Arbeit effizient über mehrere Instanzen hinweg geteilt wird, sodass Sie bei einer Skalierung auf mehrere Instanzen mehr Last bewältigen können.
 
-Mit dem Warteschlangen- und Blob-Trigger wird automatisch verhindert, dass eine Funktion eine Warteschlangennachricht oder einen Blob mehrmals verarbeitet. Funktionen müssen nicht idempotent sein.
+Während manche Trigger zu einer Doppelverarbeitung führen können, hindern Warteschlangen- und Blob-Speichertrigger eine Funktion automatisch an der mehrmaligen Verarbeitung einer Warteschlangennachricht oder eines Blobs. Weitere Informationen finden Sie unter [Entwerfen für identische Eingaben](../azure-functions/functions-idempotent.md) in der Azure Functions-Dokumentation.
 
 Mit dem Zeitgebertrigger wird automatisch sichergestellt, dass jeweils nur eine Instanz des Zeitgebers ausgeführt wird, damit zu einem geplanten Zeitpunkt nicht mehrere Funktionsinstanzen ausgeführt werden.
 

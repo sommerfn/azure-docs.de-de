@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210113"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827579"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 In diesem Dokument wird die Azure App Service-Funktion für die Integration in ein virtuelles Netzwerk beschrieben, und Sie erfahren, wie Sie die Funktion mit Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) einrichten. Mit [Azure Virtual Networks][VNETOverview] (VNETs) können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann.  
@@ -277,7 +277,7 @@ Sollte das Problem weiterhin bestehen, überprüfen Sie zunächst Folgendes:
 **Regionale VNET-Integration**
 * Ist Ihr Ziel eine RFC 1918-Adresse?
 * Blockiert eine Netzwerksicherheitsgruppe ausgehenden Datenverkehr aus Ihrem Integrationssubnetz?
-* Bei Verwendung von ExpressRoute oder eines VPN: Ist das lokale Gateway zum Zurückleiten von Datenverkehr an Azure konfiguriert? Wenn Sie die Endpunkte in Ihrem VNET erreichen können, aber nicht lokal, ist es sinnvoll, dies zu überprüfen.
+* Bei einer Verbindung über ExpressRoute oder ein VPN: Ist Ihr lokales Gateway zum Zurückleiten von Datenverkehr an Azure konfiguriert? Wenn Sie die Endpunkte in Ihrem VNET erreichen können, aber nicht lokal, ist es sinnvoll, dies zu überprüfen.
 
 **VNET-Integration, die ein Gateway erfordert**
 * Liegt der Point-to-Site-Adressbereich in den RFC 1918-Bereichen (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255)?
@@ -343,6 +343,6 @@ Sie können App Service mithilfe von PowerShell in ein virtuelles Azure-Netzwerk
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
 [ASE]: environment/intro.md
-[creategatewaysubnet]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#gatewaysubnet
+[creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool

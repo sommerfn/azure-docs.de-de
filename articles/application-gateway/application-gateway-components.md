@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: d6d7b4cda4bd3b3246b9bc5573246546d8020b38
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597368"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348947"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-Komponenten
 
@@ -28,17 +28,17 @@ Eine Front-End-IP-Adresse ist die IP-Adresse, die einem Anwendungsgateway zugeor
 
 Die V2-SKU von Azure Application Gateway kann so konfiguriert werden, dass sowohl statische interne IP-Adressen als auch statische öffentliche IP-Adressen oder ausschließlich Letztere konfiguriert werden. Nur statische interne IP-Adressen werden nicht unterstützt.
 
-Die V1-SKU kann so konfiguriert werden, dass sowohl statische interne IP-Adressen als auch dynamische öffentliche IP-Adressen verwendet werden. Sie kann auch so eingestellt werden, dass nur statische interne IP-Adressen oder nur dynamische öffentliche IP-Adressen oder dass nur dynamische private IP-Adressen oder dynamische öffentliche IP-Adressen und dynamische private IP-Adressen verwendet werden. Die dynamische IP-Adresse der Application Gateway-Instanz ändert sich nicht, solange das Gateway aktiv ist. Sie kann sich nur dann ändern, wenn Sie das Gateway anhalten oder starten. Wenn beispielsweise Systemfehler auftreten oder Updates und Azure-Hostupdates durchgeführt werden, ändert sich die IP-Adresse nicht. 
+Die V1-SKU kann so konfiguriert werden, dass sowohl statische oder dynamische interne IP-Adressen als auch dynamische öffentliche IP-Adressen verwendet werden. Die dynamische IP-Adresse der Application Gateway-Instanz ändert sich nicht, solange das Gateway aktiv ist. Sie kann sich nur dann ändern, wenn Sie das Gateway anhalten oder starten. Wenn beispielsweise Systemfehler auftreten oder Updates und Azure-Hostupdates durchgeführt werden, ändert sich die IP-Adresse nicht. 
 
 Der einem Anwendungsgateway zugeordnete DNS-Name ändert sich während des Lebenszyklus des Gateways nicht. Daher wird empfohlen, einen CNAME-Alias zu verwenden und damit auf die DNS-Adresse des Anwendungsgateways zu verweisen.
 
 ## <a name="listeners"></a>Listener
 
-Ein Listener ist eine logische Entität, die auf eingehende Verbindungsanforderungen prüft. Ein Listener akzeptiert eine Anforderung, wenn das Protokoll, der Port, der Host und die IP-Adresse mit den entsprechenden Elementen der Listenerkonfiguration übereinstimmen.
+Ein Listener ist eine logische Entität, die auf eingehende Verbindungsanforderungen prüft. Ein Listener akzeptiert eine Anforderung, wenn das Protokoll, der Port, der Hostname und die IP-Adresse mit den entsprechenden Elementen der Listenerkonfiguration übereinstimmen.
 
 Bevor Sie ein Anwendungsgateway verwenden, müssen Sie mindestens einen Listener hinzufügen. An ein Anwendungsgateway können mehrere Listener angefügt sein, und sie können für dasselbe Protokoll verwendet werden.
 
-Wenn ein Listener eingehende Anforderungen von Clients erkannt hat, leitet das Anwendungsgateway diese Anforderungen an Mitglieder im Back-End-Pool weiter. Das Anwendungsgateway verwendet Routingregeln für Anforderungen, die für den Listener definiert sind, der die eingehende Anforderung empfangen hat.
+Wenn ein Listener eingehende Anforderungen von Clients erkannt hat, leitet das Anwendungsgateway diese Anforderungen an in der Regel konfigurierte Mitglieder im Back-End-Pool weiter.
 
 Listener unterstützen die folgenden Ports und Protokolle.
 
@@ -49,12 +49,13 @@ Ein Port wird von einem Listener auf die Clientanforderung überwacht. Sie könn
 ### <a name="protocols"></a>Protokolle
 
 Application Gateway unterstützt vier Protokolle: HTTP, HTTPS, HTTP/2 und WebSocket:
+>[!NOTE]
+>Die Unterstützung des HTTP/2-Protokolls ist nur für Clients verfügbar, die mit Application Gateway-Listenern verbunden sind. Die Kommunikation mit Back-End-Serverpools erfolgt immer über HTTP/1.1. Die HTTP/2-Unterstützung ist standardmäßig deaktiviert. Sie können es aktivieren.
 
 - Sie geben die Option für HTTP- und HTTPS-Protokolle in der Listenerkonfiguration an.
 - Unterstützung für [die Protokolle WebSocket und HTTP/2](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) wird systemintern bereitgestellt, und [WebSocket-Unterstützung](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) ist standardmäßig aktiviert. Die WebSocket-Unterstützung kann von Benutzern nicht selektiv aktiviert oder deaktiviert werden. Sie können das WebSocket-Protokoll sowohl mit HTTP- als auch mit HTTPS-Listenern verwenden.
-- Die Unterstützung des HTTP/2-Protokolls ist nur für Clients verfügbar, die mit Application Gateway-Listenern verbunden sind. Die Kommunikation mit Back-End-Serverpools erfolgt über HTTP/1.1. Die HTTP/2-Unterstützung ist standardmäßig deaktiviert. Sie können es aktivieren.
 
-Verwenden Sie einen HTTPS-Listener für die SSL-Terminierung. Ein HTTPS-Listener lagert die Ver- und Entschlüsselung an Ihr Anwendungsgateway aus, sodass Ihre Webserver mit diesem Overhead nicht belastet werden. Ihre Apps können sich ganz auf die Geschäftslogik konzentrieren.
+Verwenden Sie einen HTTPS-Listener für die SSL-Terminierung. Ein HTTPS-Listener lagert die Ver- und Entschlüsselung an Ihr Anwendungsgateway aus, sodass Ihre Webserver mit diesem Overhead nicht belastet werden.
 
 ### <a name="custom-error-pages"></a>Benutzerdefinierte Fehlerseiten
 
@@ -80,7 +81,7 @@ Application Gateway verarbeitet Listener in der gezeigten Reihenfolge. Wenn ein 
 
 Eine Anforderungsroutingregel ist eine wichtige Komponente eines Anwendungsgateways, da sie bestimmt, wie Datenverkehr im Listener weitergeleitet wird. Diese Regel bindet den Listener, den Back-End-Serverpool und die Back-End-HTTP-Einstellungen.
 
-Wenn ein Listener eine Anforderung akzeptiert, leitet die Anforderungsroutingregel die Anwendung an das Back-End weiter oder an einen anderen Ort um. Wenn die Anforderung an das Back-End weitergeleitet wird, definiert die Anforderungsroutingregel, an welchen Back-End-Serverpool die Weiterleitung erfolgen soll. Zudem legt die Anforderungsroutingregel fest, ob die Header in der Anforderung neu geschrieben werden sollen. Ein Listener kann mit genau einer Regel verknüpft werden.
+Wenn ein Listener eine Anforderung akzeptiert, leitet die Anforderungsroutingregel die Anwendung an das Back-End weiter oder an einen anderen Ort um. Wenn die Anforderung an das Back-End weitergeleitet wird, definiert die Anforderungsroutingregel, an welchen Back-End-Serverpool die Weiterleitung erfolgen soll. Die Anforderungsroutingregel legt fest, ob die Header in der Anforderung neu geschrieben werden sollen. Ein Listener kann mit genau einer Regel verknüpft werden.
 
 Es gibt zwei Arten von Anforderungsroutingregeln:
 

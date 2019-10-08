@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: df1b03d5fbb5b8ef8cda9407e4a595bc2de8ce54
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3311ca3665083ec8c71f48b28e7195aa8c14f13d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918956"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350672"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Referenz zu Trigger- und Aktionstypen in der Workflowdefinitionssprache für Azure Logic Apps.
 
@@ -1538,7 +1538,7 @@ Diese Aktion erstellt ein Array mit JSON-Objekten, indem Elemente aus einem ande
 |-------|------|-------------| 
 | <*array*> | Array | Das Array oder der Ausdruck, mit dem die Quellelemente bereitgestellt werden. Stellen Sie sicher, dass Sie einen Ausdruck in doppelte Anführungszeichen setzen. <p>**Hinweis**: Wenn das Quellarray leer ist, wird mit der Aktion ein leeres Array erstellt. | 
 | <*key-name*> | String | Eigenschaftenname, der dem Ergebnis über <*expression*>  zugewiesen wird<p>Geben Sie einen Schlüsselnamen (<*key-name*>) für diese Eigenschaft und einen Ausdruck (<*expression*>) für den Eigenschaftswert an, um für alle Objekte im Ausgabearray eine neue Eigenschaft hinzuzufügen. <p>Lassen Sie <*key-name*> für diese Eigenschaft weg, um eine Eigenschaft aus allen Objekten im Array zu entfernen. | 
-| <*expression*> | String | Ausdruck, mit dem das Element im Quellarray transformiert und das Ergebnis <*key-name*> zugewiesen wird | 
+| <*expression*> | Zeichenfolge | Ausdruck, mit dem das Element im Quellarray transformiert und das Ergebnis <*key-name*> zugewiesen wird | 
 |||| 
 
 Mit der Aktion **Select** wird ein Array als Ausgabe erstellt. Alle Aktionen, für die diese Ausgabe verwendet werden soll, müssen also entweder ein Array akzeptieren, oder Sie müssen das Array in den Typ konvertieren, der von der Consumeraktion akzeptiert wird. Um beispielsweise das Ausgabearray in eine Zeichenfolge zu konvertieren, können Sie dieses Array an die Aktion **Compose** übergeben und dann über die Aktion **Compose** in Ihren anderen Aktionen auf die Ausgabe verweisen.
@@ -2402,12 +2402,38 @@ Sie können das Standardverhalten für Trigger und Aktionen mit der `operationOp
 
 ### <a name="change-trigger-concurrency"></a>Ändern der Triggerparallelität
 
-Standardmäßig werden Logik-App-Instanzen gleichzeitig oder parallel bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Jede Triggerinstanz wird also ausgelöst, bevor die Ausführung der vorherigen Workflowinstanz beendet ist. Mit diesem Limit wird die Anzahl von Anforderungen gesteuert, die auf Back-End-Systemen eingehen. 
+Standardmäßig werden Logik-App-Instanzen gleichzeitig (oder parallel) bis zum [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) ausgeführt. Jede Triggerinstanz wird also ausgelöst, bevor die Ausführung der vorherigen Workflowinstanz beendet ist. Mit diesem Limit wird die Anzahl von Anforderungen gesteuert, die auf Back-End-Systemen eingehen. 
 
-Zum Ändern des Standardlimits können Sie entweder den Codeansicht-Editor oder den Logik-App-Designer nutzen, da durch das Ändern der Parallelitätseinstellung über den Designer die `runtimeConfiguration.concurrency.runs`-Eigenschaft in der zugrunde liegenden Triggerdefinition hinzugefügt bzw. aktualisiert wird (und umgekehrt). Diese Eigenschaft steuert die maximale Anzahl von Workflowinstanzen, die parallel ausgeführt werden können. 
+Zum Ändern des Standardlimits können Sie entweder den Codeansicht-Editor oder den Logik-App-Designer nutzen, da durch das Ändern der Parallelitätseinstellung über den Designer die `runtimeConfiguration.concurrency.runs`-Eigenschaft in der zugrunde liegenden Triggerdefinition hinzugefügt bzw. aktualisiert wird (und umgekehrt). Diese Eigenschaft steuert die maximale Anzahl von Workflowinstanzen, die parallel ausgeführt werden können. Hier finden Sie einige Erwägungen, wenn Sie die Parallelitätssteuerung verwenden:
 
-> [!NOTE] 
-> Wenn Sie für den Trigger die sequenzielle Ausführung festlegen, indem Sie entweder den Designer oder den Codeansicht-Editor verwenden, sollten Sie die `operationOptions`-Eigenschaft des Triggers im Codeansicht-Editor nicht auf `SingleInstance` festlegen. Andernfalls erhalten Sie einen Validierungsfehler. Weitere Informationen finden Sie unter [Sequenzielles Auslösen von Instanzen](#sequential-trigger).
+* Wenn Parallelität aktiviert ist, könnte eine Logik-App-Instanz mit langer Ausführungszeit dazu führen, dass neue Logik-App-Instanzen in den Wartezustand wechseln. Dieser Zustand verhindert, dass Azure Logic Apps neue Instanzen erstellt, und er tritt auch dann ein, wenn die Anzahl gleichzeitiger Ausführungen kleiner als die angegebene maximale Anzahl gleichzeitiger Ausführungen ist.
+
+  * Um diesen Zustand zu unterbrechen, brechen Sie die frühesten Instanzen ab, die *noch ausgeführt werden*.
+
+    1. Wählen Sie im Menü Ihrer Logik-App die Option **Übersicht** aus.
+
+    1. Wählen Sie im Abschnitt **Ausführungsverlauf** die früheste Instanz aus, die noch ausgeführt wird, z. B.:
+
+       ![Auswählen der frühesten ausgeführten Instanz](./media/logic-apps-workflow-actions-triggers/waiting-runs.png)
+
+       > [!TIP]
+       > Um nur Instanzen anzuzeigen, die noch ausgeführt werden, öffnen Sie die Liste **Alle**, und wählen Sie **Wird ausgeführt** aus.    
+
+    1. Wählen Sie unter **Logik-App-Ausführung** die Option **Ausführung abbrechen** aus.
+
+       ![Auffinden der frühesten ausgeführten Instanz](./media/logic-apps-workflow-actions-triggers/cancel-run.png)
+
+  * Um diese Möglichkeit zu umgehen, fügen Sie jeder Aktion einen Timeout hinzu, der diese Ausführungen aufhalten könnte. Wenn Sie im Code-Editor arbeiten, finden Sie weitere Informationen unter [Ändern der asynchronen Dauer](#asynchronous-limits). Andernfalls, wenn Sie den Designer verwenden, führen Sie diese Schritte aus:
+
+    1. Wählen Sie in Ihrer Logik-App bei der Aktion, der Sie einen Timeout hinzufügen möchten, in der oberen rechten Ecke die Auslassungspunkte ( **...** ) aus, und wählen Sie dann **Einstellungen** aus.
+
+       ![Öffnen der Aktionseinstellungen](./media/logic-apps-workflow-actions-triggers/action-settings.png)
+
+    1. Geben Sie unter **Timeout** die Timeoutdauer im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) an.
+
+       ![Angeben der Timeoutdauer](./media/logic-apps-workflow-actions-triggers/timeout.png)
+
+* Wenn Sie Ihre Logik-App sequenziell ausführen möchten, können Sie die Parallelität des Triggers entweder mithilfe des Codeansicht-Editors oder des Designers auf `1` festlegen. Legen Sie jedoch nicht auch die `operationOptions`-Eigenschaft des Triggers im Codeansicht-Editor auf `SingleInstance` fest. Andernfalls erhalten Sie einen Validierungsfehler. Weitere Informationen finden Sie unter [Sequenzielles Auslösen von Instanzen](#sequential-trigger).
 
 #### <a name="edit-in-code-view"></a>Bearbeiten in der Codeansicht 
 

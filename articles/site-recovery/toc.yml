@@ -371,7 +371,7 @@
               href: delete-vault.md
     - name: Notfallwiederherstellung für Apps
       items:
-        - name: Einrichten der Notfallwiederherstellung in Azure für lokale Apps
+        - name: Informationen zur Notfallwiederherstellung für lokale Apps
           href: site-recovery-workload.md
         - name: Active Directory und DNS
           href: site-recovery-active-directory.md

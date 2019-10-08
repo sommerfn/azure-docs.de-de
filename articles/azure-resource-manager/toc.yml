@@ -71,6 +71,8 @@
         - name: Verwenden der Integritätsprüfung im Bereitstellungs-Manager
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
+        - name: Aktualisieren des VS-Bereitstellungsskripts in Az Powershell
+          href: vs-azure-tools-update-deploy-script-to-az-powershell.md
         - name: Problembehandlung bei der Vorlagenbereitstellung
           href: resource-manager-tutorial-troubleshoot.md
 - name: Beispiele
@@ -141,14 +143,17 @@
           displayName: deployment
           href: resource-group-template-deploy-portal.md
         - name: 'Bereitstellen: CLI'
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy-cli.md
         - name: 'Bereitstellen: PowerShell'
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy.md
         - name: 'Bereitstellen: REST-API'
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy-rest.md
+        - name: Erneute Bereitstellung bei einem Fehler
+          displayName: rollback
+          href: rollback-on-error.md
         - name: Sichern einer Vorlage mit einem SAS-Token
           href: secure-template-with-sas-token.md
         - name: Bereitstellen in mehreren Ressourcengruppen oder Abonnements

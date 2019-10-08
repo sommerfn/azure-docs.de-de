@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 293f2a704fecb04bc6b65e49743ea80905f2394f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b365c914db0ce43da5dac4c5b889c854c0ea0639
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142670"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827403"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -260,6 +260,7 @@ Quarantäne von Images ist derzeit eine Previewfunktion von ACR. Sie können den
 - [Neue Benutzerberechtigungen gelten nach Aktualisierung möglicherweise nicht sofort](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Authentifizierungsinformationen sind für direkte Aufrufe der REST-API nicht im ordnungsgemäßen Format angegeben](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Warum werden im Azure-Portal nicht alle meine Repositorys oder Tags angezeigt?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
+- [Warum kann das Azure-Portal keine Repositorys oder Tags abrufen?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [Wie erfasse ich HTTP-Ablaufverfolgungen unter Windows?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>Überprüfen der Integrität mit `az acr check-health`
@@ -409,6 +410,17 @@ curl $redirect_url
 ### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Warum werden im Azure-Portal nicht alle meine Repositorys oder Tags angezeigt? 
 
 Wenn Sie Microsoft Edge oder Internet Explorer als Browser verwenden, werden maximal 100 Repositorys oder Tags angezeigt. Wenn Ihre Registrierung mehr als 100 Repositorys oder Tags enthält, empfehlen wir Ihnen, entweder Firefox oder Chrome als Browser zu verwenden, um alle aufzulisten.
+
+### <a name="why-does-the-azure-portal-fail-to-fetch-repositories-or-tags"></a>Warum kann das Azure-Portal keine Repositorys oder Tags abrufen?
+
+Der Browser ist möglicherweise nicht in der Lage, die Anforderung zum Abrufen von Repositorys oder Tags an den Server zu senden. Dies könnte verschiedene Ursachen haben, z. B.:
+
+* Fehlende Netzwerkverbindung
+* Firewall
+* Werbeblocker
+* DNS-Fehler
+
+Wenden Sie sich an Ihren Netzwerkadministrator, oder überprüfen Sie Ihre Netzwerkkonfiguration und -verbindungen. Außerdem könnten Sie es mit einer Inkognito- bzw. privaten Sitzung in Ihrem Browser probieren, um veraltete Browsercaches oder -cookies zu vermeiden.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Wie erfasse ich HTTP-Ablaufverfolgungen unter Windows?
 

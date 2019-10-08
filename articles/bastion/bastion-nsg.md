@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 09/30/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5312ad2593e732f4c84eb67ed263bc9e4666a67a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4f99b24435998fc4d0c7ab724c66a318586a80d4
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594189"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694944"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion-preview"></a>Arbeiten mit NSG-Zugriff und Azure Bastion (Vorschau)
 
@@ -46,7 +46,7 @@ Wenn Sie NSGs auf das **AzureBastionSubnet** anwenden, lassen Sie die folgenden 
 
 * **GatewayManager (nur Resource Manager)** : Dieses Tag gibt die Adresspräfixe des Azure Gateway Manager-Diensts an. Wenn Sie GatewayManager als Wert angeben, wird der Datenverkehr für GatewayManager zugelassen oder verweigert.  Wenn Sie NSGs für das Subnetz „AzureBastionSubnet“ erstellen, aktivieren Sie das GatewayManager-Tag für eingehenden Datenverkehr.
 
-* **AzureCloud (nur Resource Manager)** : Dieses Tag gibt den IP-Adressraum für Azure an, einschließlich aller öffentlichen IP-Adressen für das Datencenter. Wenn Sie AzureCloud als Wert angeben, wird der Datenverkehr für öffentliche Azure-IP-Adressen zugelassen oder verweigert. Falls Sie den Zugriff auf AzureCloud nur für eine bestimmte Region zulassen möchten, können Sie die Region angeben. Falls Sie den Zugriff auf AzureCloud von Azure beispielsweise nur für die Region „USA, Osten“ zulassen möchten, können Sie AzureCloud.EastUS als Diensttag angeben. Wenn Sie NSGs für das Subnetz „AzureBastionSubnet“ erstellen, aktivieren Sie das AzureCloud-Tag für ausgehenden Datenverkehr.
+* **AzureCloud (nur Resource Manager)** : Dieses Tag gibt den IP-Adressraum für Azure an, einschließlich aller öffentlichen IP-Adressen für das Datencenter. Wenn Sie AzureCloud als Wert angeben, wird der Datenverkehr für öffentliche Azure-IP-Adressen zugelassen oder verweigert. Falls Sie den Zugriff auf AzureCloud nur für eine bestimmte Region zulassen möchten, können Sie die Region angeben. Falls Sie den Zugriff auf AzureCloud von Azure beispielsweise nur für die Region „USA, Osten“ zulassen möchten, können Sie AzureCloud.EastUS als Diensttag angeben. Wenn Sie NSGs für das Subnetz „AzureBastionSubnet“ erstellen, aktivieren Sie das AzureCloud-Tag für ausgehenden Datenverkehr. Wenn Sie Port 443 für eingehenden Datenverkehr im Internet öffnen, sollte Sie das AzureCloud-Tag nicht für eingehenden Datenverkehr aktivieren müssen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,15 +11,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 10/01/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c4e97a96687e5fa1d934ab8c0317b52cb753f72c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d2823158192ae9fc9182f3f60f82d5bd9c050b09
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088176"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811625"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurieren der gegenseitigen TLS-Authentifizierung für Azure App Service
 
@@ -36,6 +36,15 @@ Zum Einrichten Ihrer App für die Anforderung von Clientzertifikaten müssen Sie
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
+
+## <a name="exclude-paths-from-requiring-authentication"></a>Ausschließen von Pfaden von der Anforderung der Authentifizierung
+
+Wenn Sie die gegenseitige Authentifizierung für Ihre Anwendung aktivieren, erfordern alle Pfade unter dem Stammverzeichnis Ihrer App ein Clientzertifikat für den Zugriff. Wenn Sie zulassen möchten, dass bestimmte Pfade für den anonymen Zugriff geöffnet bleiben, können Sie Ausschlusspfade als Teil ihrer Anwendungskonfiguration definieren.
+
+Ausschlusspfade lassen sich konfigurieren, indem Sie **Konfiguration** > **Allgemeine Einstellungen** auswählen und einen Ausschlusspfad definieren. In diesem Beispiel würde alles unterhalb des `/public`-Pfads kein Clientzertifikat für Ihre Anwendung anfordern.
+
+![Zertifikatausschlusspfade][exclusion-paths]
+
 
 ## <a name="access-client-certificate"></a>Zugreifen auf das Clientzertifikat
 
@@ -213,3 +222,5 @@ export class AuthorizationHandler {
     }
 }
 ```
+
+[exclusion-paths]: ./media/app-service-web-configure-tls-mutual-auth/exclusion-paths.png

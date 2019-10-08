@@ -1,77 +1,109 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Site Recovery-Dokumentation
+### YamlMime:Landing
+title: Azure Site Recovery-Dokumentation
+summary: Verwenden Sie Azure Site Recovery für die Notfallwiederherstellung lokaler Computer und Workloads in Azure sowie virtueller Azure-Computer in einer sekundären Azure-Region. Mit der Replikation in Azure können Sie bei Ausfällen ein Failover orchestrieren und weiterhin auf Workloads und Apps in Azure zugreifen. Wenn der primäre Standort wieder verfügbar ist, können Sie nach Bedarf ein Failback ausführen.
 metadata:
-  title: 'Dokumentation für Azure Site Recovery – Tutorials, API-Referenz | Microsoft-Dokumentation'
-  meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
-  services: site-recovery
-  author: carmonmills
-  manager: carmonm
+  title: Azure Site Recovery-Dokumentation
+  description: Verwenden Sie Azure Site Recovery für die Notfallwiederherstellung lokaler Computer und Workloads in Azure sowie virtueller Azure-Computer in einer sekundären Azure-Region. Mit der Replikation in Azure können Sie bei Ausfällen ein Failover orchestrieren und weiterhin auf Workloads und Apps in Azure zugreifen. Wenn der primäre Standort wieder verfügbar ist, können Sie nach Bedarf ein Failback ausführen.
   ms.service: site-recovery
   ms.topic: landing-page
-  ms.date: 11/27/2018
-  ms.author: carmonm
-abstract:
-  description: 'Azure Site Recovery orchestriert und verwaltet die Wiederherstellung im Notfall für Azure-VMs sowie lokale virtuelle Computer und physische Server. Erfahren Sie mit unseren Schnellstarts und Tutorials, wie Sie Replikationen, Failover und Failbacks durchführen.'
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: Schnelle Einrichtung der Wiederherstellung im Notfall für eine Azure-VM
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/site-recovery/media/index/portal.svg
-            text: Azure-Portal
-            href: /azure/site-recovery/azure-to-azure-quickstart
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: Informationen zum Einrichten der Notfallwiederherstellung für virtuelle Computer und physische Server.
-      - type: text
-        html: <h3>Azure zu Azure</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="azure-to-azure-tutorial-enable-replication">Einrichten der Notfallwiederherstellung</a>
-          - html: <a href="azure-to-azure-tutorial-dr-drill">Durchführen eines Notfallwiederherstellungsverfahrens</a>
-          - html: <a href="azure-to-azure-tutorial-failover-failback">Run failover and failback</a> (Ausführen von Failover und Failback)
-      - type: text
-        html: <h3>VMware</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">Vorbereiten von Azure</a>
-          - html: <a href="tutorial-prepare-on-premises-vmware">Prepare on-premises VMware</a> (Lokales Vorbereiten von VMware)
-          - html: <a href="tutorial-vmware-to-azure">Set-up disaster recovery</a> (Einrichten der Notfallwiederherstellung)
-          - html: <a href="tutorial-dr-drill-azure">Durchführen eines Notfallwiederherstellungsverfahrens</a>
-          - html: <a href="vmware-azure-tutorial-failover-failback">Run failover and failback</a> (Ausführen von Failover und Failback)
-      - type: text
-        html: <h3>Hyper-V</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">Vorbereiten von Azure</a>
-          - html: <a href="tutorial-prepare-on-premises-hyper-v">Vorbereiten lokaler Hyper-V-Instanzen</a>
-          - html: <a href="tutorial-hyper-v-to-azure">Einrichten der Notfallwiederherstellung für virtuelle Hyper-V-Computer</a>
-          - html: '<a href="tutorial-hyper-v-vmm-to-azure">Einrichten der Notfallwiederherstellung für virtuelle Hyper-V-Computer, die von System Center VMM verwaltet werden</a>'
-          - html: <a href="tutorial-dr-drill-azure">Durchführen eines Notfallwiederherstellungsverfahrens</a>
-          - html: <a href="tutorial-hyper-v-to-azure-failover-failback">Run failover and failback</a> (Ausführen von Failover und Failback)
-      - type: text
-        html: <h3>Migrieren zu Azure</h3>
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-azure">Prepare Azure</a> (Vorbereiten von Azure)
-          - html: <a href="tutorial-migrate-on-premises-to-azure">Migrate on-premises machines</a> (Migrieren von lokalen Computern) oder <a href="tutorial-migrate-aws-to-azure">AWS Instances to Azure</a> (AWS-Instanzen zu Azure)
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Befehlszeile
-            html: <p><a href="/powershell/module/az.recoveryservices/">Azure PowerShell</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/site-recovery/">REST-API-Referenz</a></p>
+  ms.collection: collection
+  author: rayne-wiselman
+  ms.author: raynew
+  ms.date: 10/07/2019
+  ms.openlocfilehash: 0d4405e447c7624e4d6cc714209ffc86451a74bd
+  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/07/2019
+  ms.locfileid: "72001096"
+landingContent:
+- title: Informationen zu Azure Site Recovery
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Site Recovery?
+      url: ./site-recovery-overview.md
+    - text: Neuerungen in Site Recovery
+      url: ./site-recovery-whats-new.md
+- title: Notfallwiederherstellung für virtuelle Azure-Computer
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Ausprobieren der Notfallwiederherstellung für einen virtuellen Azure-Computer
+      url: ./azure-to-azure-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Notfallwiederherstellung für virtuelle Azure-Computer
+      url: ./azure-to-azure-tutorial-enable-replication.md
+    - text: Verschieben virtueller Azure-Computer in eine andere Region
+      url: ./azure-to-azure-tutorial-migrate.md
+  - linkListType: learn
+    links:
+    - text: Architektur der Notfallwiederherstellung für virtuelle Azure-Computer
+      url: ./azure-to-azure-architecture.md
+    - text: Azure zu Azure – Supportmatrix
+      url: ./azure-to-azure-support-matrix.md
+    - text: Häufig gestellte Fragen
+      url: ./azure-to-azure-common-questions.md
+    - text: Informationen zum Verschieben von virtuellen Azure-Computern
+      url: ./azure-to-azure-move-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Netzwerk für die Notfallwiederherstellung für virtuelle Azure-Computer
+      url: ./azure-to-azure-about-networking.md
+    - text: Notfallwiederherstellung nach der Migration zu Azure
+      url: ./azure-to-azure-replicate-after-migration.md
+- title: Notfallwiederherstellung für lokale Computer
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Notfallwiederherstellung für virtuelle VMware-Computer
+      url: ./tutorial-prepare-azure.md
+    - text: Notfallwiederherstellung für virtuelle Hyper-V-Computer
+      url: ./tutorial-prepare-azure-for-hyperv.md
+    - text: Notfallwiederherstellung für physische Server
+      url: ./physical-azure-disaster-recovery.md
+  - linkListType: deploy
+    links:
+    - text: VMware-Unterstützungsmatrix
+      url: ./vmware-physical-azure-support-matrix.md
+    - text: Hyper-V-Unterstützungsmatrix
+      url: ./hyper-v-azure-support-matrix.md
+  - linkListType: learn
+    links:
+    - text: Architektur der VMware-Notfallwiederherstellung
+      url: ./vmware-azure-architecture.md
+    - text: Übersicht über die VMware-Notfallwiederherstellung
+      url: ./vmware-azure-about-disaster-recovery.md
+    - text: Allgemeine Fragen zur VMware-Notfallwiederherstellung
+      url: ./vmware-azure-common-questions.md
+    - text: Architektur der Hyper-V-Notfallwiederherstellung
+      url: ./hyper-v-azure-architecture.md
+  - linkListType: how-to-guide
+    links:
+    - text: Skalierbare VMware-Notfallwiederherstellung
+      url: ./vmware-physical-large-deployment.md
+    - text: Planen der VMware-Kapazität
+      url: ./site-recovery-plan-capacity-vmware.md
+    - text: Planen der Hyper-V-Kapazität
+      url: ./hyper-v-deployment-planner-overview.md
+- title: Verwalten
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwalten von Site Recovery-Updates
+      url: service-updates-how-to.md
+    - text: Überwachen von Azure Site Recovery
+      url: site-recovery-monitor-and-troubleshoot.md
+    - text: Überwachen von Site Recovery mit Azure Monitor-Protokollen
+      url: monitor-log-analytics.md
+- title: Beteiligen
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Anfordern einer Dienstfunktion
+      url: https://feedback.azure.com/forums/256299-site-recovery
+    - text: Stellen einer Forumsfrage
+      url: https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr
+    - text: Azure Tech Community
+      url: https://techcommunity.microsoft.com/t5/Azure/ct-p/Azure

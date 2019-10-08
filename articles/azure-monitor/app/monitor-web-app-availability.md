@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 8e9cc93a74c299be6fb4898b4af143a43fc079f5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3c7ba10525dedf213a416d9ce6b55c80539fedd7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067038"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812205"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Überwachen der Verfügbarkeit von Websites
 
@@ -31,7 +31,7 @@ Es gibt drei Arten von Verfügbarkeitstests:
 
 * [URL-Pingtest](#create-a-url-ping-test): Dies ist ein einfacher Test, den Sie im Azure-Portal erstellen können.
 * [Multi-step web test (Mehrstufiger Webtest):](availability-multistep.md) Eine Aufzeichnung einer Sequenz von Webanforderungen, die wiedergegeben werden kann, um komplexere Szenarios zu testen. Mehrstufige Webtests werden in Visual Studio Enterprise erstellt und zur Ausführung im Portal hochgeladen.
-* [Custom Track Availability Tests (Benutzerdefinierte Tests zum Nachverfolgen der Verfügbarkeit):](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) Die Methode `TrackAvailability()` kann verwendet werden, um eigene benutzerdefinierte Verfügbarkeitstests zu erstellen.
+* [Custom Track Availability Tests (Benutzerdefinierte Tests zum Nachverfolgen der Verfügbarkeit):](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) Wenn Sie eine benutzerdefinierte Anwendung zum Ausführen von Verfügbarkeitstests erstellen möchten, können Sie die `TrackAvailability()`-Methode verwenden, um die Ergebnisse an Application Insights zu senden.
 
 **Sie können bis zu 100 Verfügbarkeitstests pro Application Insights-Ressource erstellen.**
 

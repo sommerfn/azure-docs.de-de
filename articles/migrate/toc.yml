@@ -92,7 +92,7 @@
       href: scale-hyper-v-assessment.md
     - name: Automatisieren der Migration zahlreicher virtueller Computer
       href: how-to-migrate-at-scale.md
-    - name: 'Migrationsbeispiele: Contoso-Serie'
+    - name: Migrationsbeispiele (Contoso-Serie)
       href: contoso-migration-overview.md
 - name: Problembehandlung
   items:

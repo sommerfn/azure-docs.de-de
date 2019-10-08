@@ -12,12 +12,12 @@ metadata:
   author: KingdomOfEnds
   ms.author: v-adgera
   ms.date: 09/04/2019
-  ms.openlocfilehash: 46cea77843b388f128885891dcdbb9b01b6cd2f5
-  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.openlocfilehash: 14358c23bf9739c75915b66849a657633e2cc2db
+  ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/26/2019
-  ms.locfileid: "71289164"
+  ms.lasthandoff: 10/06/2019
+  ms.locfileid: "71978846"
 landingContent:
 - title: Informationen zu Azure Time Series Insights
   linkLists:
@@ -41,10 +41,8 @@ landingContent:
     links:
     - text: 'Azure Time Series Insights (Vorschauversion): Tutorial'
       url: time-series-insights-update-create-environment.md
-    - text: Erstellen einer Single-Page-Web-App
-      url: tutorial-create-tsi-sample-spa.md
-    - text: Time Series Insights-JavaScript-Clientbibliothek
-      url: tutorial-explore-js-client-lib.md
+    - text: 'Client-SDK: Beispielvisualisierung'
+      url: https://tsiclientsample.azurewebsites.net/
   - linkListType: how-to-guide
     links:
     - text: Bereitstellen und Verwalten
@@ -85,10 +83,8 @@ landingContent:
     links:
     - text: Erstellen einer Time Series Insights-Umgebung
       url: tutorial-create-populate-tsi-environment.md
-    - text: Erstellen einer Single-Page-Web-App
-      url: tutorial-create-tsi-sample-spa.md
-    - text: Time Series Insights-JavaScript-Clientbibliothek
-      url: tutorial-explore-js-client-lib.md
+    - text: 'Client-SDK: Beispielvisualisierung'
+      url: https://tsiclientsample.azurewebsites.net/
   - linkListType: how-to-guide
     links:
     - text: Erstellen einer Umgebung
