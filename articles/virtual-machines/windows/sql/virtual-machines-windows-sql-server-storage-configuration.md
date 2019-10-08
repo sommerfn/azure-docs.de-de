@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 2705b42849922ce7e3650162b8f1ff78723685c2
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309240"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828609"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Speicherkonfiguration für SQL Server-VMs
 
@@ -42,9 +42,28 @@ In den folgenden Abschnitten wird beschrieben, wie Speicher für neue virtuelle 
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Beim Bereitstellen einer Azure-VM mit einem SQL Server-Katalogimage können Sie auswählen, dass der Speicher für die neue VM automatisch konfiguriert wird. Sie geben die Speichergröße, die Leistungsgrenzwerte und den Workloadtyp an. Im folgenden Screenshot ist das Blatt für die Speicherkonfiguration dargestellt, das während der SQL-VM-Bereitstellung verwendet wird.
+Wenn Sie eine Azure-VM mithilfe eines SQL Server-Katalogimages bereitstellen, wählen Sie **Konfiguration ändern** auf der Registerkarte **SQL Server-Einstellungen** aus, um die Seite „Leistungsoptimierte Speicherkonfiguration“ zu öffnen. Sie können die Standardeinstellungen der Werte übernehmen oder den Typ der Datenträgerkonfiguration ändern, der den Anforderungen für Ihre Workload am besten entspricht. 
 
 ![SQL Server-VM-Speicherkonfiguration während der Bereitstellung](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
+
+Wählen Sie unter **Speicheroptimierung** den Typ der Workload aus, für den Sie SQL Server bereitstellen. Mit der Optimierungsoption **Allgemein** verfügen Sie standardmäßig über einen Datenträger mit maximal 5.000 IOPS, und Sie verwenden dasselbe Laufwerk für Ihre Daten, das Transaktionsprotokoll und den TempDB-Speicher. Wenn Sie entweder **Transaktionale Verarbeitung** (OLTP) oder **Data Warehousing** auswählen, wird ein separater Datenträger für Daten, ein separater Datenträger für das Transaktionsprotokoll und eine lokale SSD für TempDB erstellt. Es gibt keine Speicherunterschiede zwischen **Transaktionale Verarbeitung** und **Datenlagerung**, aber die jeweilige Option ändert Ihre [Stripesetkonfiguration und Ablaufverfolgungsflags](#workload-optimization-settings). Wenn Sie Storage Premium auswählen, wird die Zwischenspeicherung auf *Schreibgeschützt* für das Datenlaufwerk und *Keine* für das Protokolllaufwerk festgelegt, wie unter [Bewährte Methoden für die SQL Server-VM-Leistung](virtual-machines-windows-sql-performance.md) beschrieben. 
+
+![SQL Server-VM-Speicherkonfiguration während der Bereitstellung](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
+
+Die Datenträgerkonfiguration ist vollständig anpassbar, sodass Sie die Speichertopologie, den Datenträgertyp und den IOPs konfigurieren können, die Sie für Ihre SQL Server-VM-Workload benötigen. Sie haben auch die Möglichkeit, UltraSSD (Vorschau) als Option für den **Datenträgertyp** zu verwenden, wenn sich Ihre SQL Server-VM in einer der unterstützten Regionen (USA, Osten 2, Asien, Südosten und Europa, Norden) befindet und Sie [Ultra-Datenträger für Ihr Abonnement](/azure/virtual-machines/windows/disks-enable-ultra-ssd) aktiviert haben.  
+
+Zusätzlich haben Sie die Möglichkeit, die Zwischenspeicherung für die Datenträger festzulegen. Azure VMs verfügen über eine mehrschichtige Zwischenspeicherungstechnologie namens [Blobcache](/azure/virtual-machines/windows/premium-storage-performance#disk-caching), wenn sie mit [Premium-Datenträgern](/azure/virtual-machines/windows/disks-types#premium-ssd) verwendet werden. Blobcache verwendet für das Zwischenspeichern eine Kombination aus RAM des virtuellen Computers und lokalem SSD-Laufwerk. 
+
+Die Datenträgerzwischenspeicherung für SSD Premium kann die Werte *ReadOnly*, *ReadWrite* oder *None* aufweisen. 
+
+- Zwischenspeicherung vom Typ *ReadOnly* ist sehr vorteilhaft für SQL Server-Datendateien, die in Storage Premium gespeichert sind. Zwischenspeicherung vom Typ *ReadOnly* bringt niedrige Leselatenz, hohe Lese-IOPS und Durchsatz mit sich, da die Lesezugriffe aus dem Cache erfolgen, der sich im VM-Arbeitsspeicher und lokalen SSD befindet. Diese Lesezugriffe sind viel schneller als Lesezugriffe vom Datenträger, der aus dem Azure-Blobspeicher stammt. Storage Premium rechnet die aus dem Cache erfüllten Leseanforderungen nicht zur IOPS- und Durchsatzrate des Datenträgers. Aus diesem Grund kann Ihre Anwendung eine höhere Gesamtrate bei IOPS und Durchsatz erzielen. 
+- Die Cachekonfiguration *None* sollte für die Datenträger verwendet werden, auf denen sich die SQL Server-Protokolldatei befindet, da die Protokolldatei sequenziell geschrieben wird und nicht von *ReadOnly*-Zwischenspeicherung profitiert. 
+- Zwischenspeicherung vom Typ *ReadWrite* sollte nicht zum Hosten von SQL Server-Dateien verwendet werden, da SQL Server keine Datenkonsistenz mit dem *ReadWrite*-Cache unterstützt. Schreibvorgänge vergeuden die Kapazität des *ReadOnly*-Blobcaches, und die Latenzzeiten nehmen geringfügig zu, wenn die Schreibvorgänge durch *ReadOnly*-Blobcacheebenen erfolgen. 
+
+
+   > [!TIP]
+   > Stellen Sie sicher, dass Ihre Speicherkonfiguration mit den Einschränkungen der ausgewählten VM-Größe übereinstimmt. Die Auswahl von Speicherparametern, die die Leistungsgrenze der VM-Größe überschreiten, führt zu einem Fehler: `The desired performance might not be reached due to the maximum virtual machine disk performance cap.`. Verringern Sie den IOPS durch Ändern des Datenträgertyps, oder erhöhen Sie die Leistungsbegrenzung durch Vergrößern der VM-Größe. 
+
 
 Je nach Ihrer Auswahl führt Azure nach dem Erstellen der VM die folgenden Aufgaben der Speicherkonfiguration durch:
 
@@ -64,6 +83,13 @@ Wenn Sie die folgenden Resource Manager-Vorlagen verwenden, werden standardmäß
 * [Create VM with Automated Patching](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
 * [Create VM with AKV Integration](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-keyvault) (Erstellen eines virtuellen Computers mit AKV-Integration)
 
+### <a name="quickstart-template"></a>Schnellstartvorlage
+
+Sie können die folgende Schnellstartvorlage verwenden, um eine SQL Server-VM mithilfe von Speicheroptimierung bereitzustellen. 
+
+* [Erstellen einer VM mit Speicheroptimierung](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage/)
+* [Erstellen einer VM mit UltraSSD](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage-ultrassd)
+
 ## <a name="existing-vms"></a>Vorhandene virtuelle Computer
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
@@ -79,32 +105,11 @@ Wählen Sie zum Ändern der Speichereinstellungen **Konfigurieren** unter **Eins
 
 ![Konfigurieren von Speicher für vorhandene SQL Server-VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
-Die angezeigten Konfigurationsoptionen variieren in Abhängigkeit davon, ob Sie dieses Feature schon einmal verwendet haben. Wenn Sie es zum ersten Mal verwenden, können Sie die Speicheranforderungen für ein neues Laufwerk angeben. Falls Sie dieses Feature schon einmal zum Erstellen eines Laufwerks genutzt haben, können Sie den Speicher des Laufwerks bei Bedarf erweitern.
+Sie können die Datenträgereinstellungen für die Laufwerke ändern, die während des Erstellungsprozesses der SQL Server-VM konfiguriert wurden. Durch die Auswahl von **Laufwerk erweitern** wird die Seite zur Änderung des Laufwerks geöffnet, auf der Sie den Datenträgertyp ändern und zusätzliche Datenträger hinzufügen können. 
 
-### <a name="use-for-the-first-time"></a>Erstmalige Verwendung
+![Konfigurieren von Speicher für vorhandene SQL Server-VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-drive.png)
 
-Wenn Sie dieses Feature zum ersten Mal verwenden, können Sie die Speichergröße und die Leistungsgrenzwerte für ein neues Laufwerk angeben. Diese Oberfläche ist mit der Anzeige zur Bereitstellungszeit vergleichbar. Der Hauptunterschied besteht darin, dass Sie nicht berechtigt sind, den Workloadtyp anzugeben. Mit dieser Einschränkung wird verhindert, dass SQL Server-Konfigurationen, die auf dem virtuellen Computer vorhanden sind, beschädigt werden.
 
-In Azure wird ein neues Laufwerk basierend auf Ihren Spezifikationen erstellt. In diesem Szenario werden in Azure die folgenden Aufgaben der Speicherkonfiguration durchgeführt:
-
-* Erstellt Storage Premium-Datenträger und fügt sie an den virtuellen Computer an.
-* Konfiguriert die Datenträger so, dass sie für SQL Server zugänglich sind.
-* Konfiguriert die Datenträger in einem Speicherpool basierend auf der angegebenen Größe und den Leistungsanforderungen (IOPS und Durchsatz).
-* Ordnet dem Speicherpool ein neues Laufwerk auf dem virtuellen Computer zu.
-
-Weitere Details dazu, wie unter Azure Speichereinstellungen konfiguriert werden, finden Sie im [Abschnitt zur Speicherkonfiguration](#storage-configuration).
-
-### <a name="add-a-new-drive"></a>Hinzufügen eines neuen Laufwerks
-
-Wenn Sie auf Ihrer SQL Server-VM bereits Speicher konfiguriert haben, ergeben sich beim Erweitern des Speichers bis zu zwei neue Optionen. Die erste Option ist das Hinzufügen eines neuen Laufwerks, womit die Leistungsebene Ihrer VM gesteigert werden kann.
-
-Nach dem Hinzufügen des Laufwerks müssen Sie aber eine zusätzliche manuelle Konfiguration durchführen, um die Leistungssteigerung zu erzielen.
-
-### <a name="extend-the-drive"></a>Erweitern des Laufwerks
-
-Die andere Option für die Erweiterung des Speichers besteht darin, das vorhandene Laufwerk zu erweitern. Mit dieser Option wird der verfügbare Speicherplatz für Ihr Laufwerk erhöht, aber die Leistung wird nicht gesteigert. Bei Speicherpools können Sie die Anzahl von Spalten nach der Erstellung des Speicherpools nicht mehr ändern. Anhand der Anzahl von Spalten wird die Anzahl von parallelen Schreibvorgängen bestimmt, die auf die Datenträger verteilt werden können. Aus diesem Grund kann die Leistung durch das Hinzufügen von Datenträgern nicht erhöht werden. So kann nur mehr Speicher für die zu schreibenden Daten bereitgestellt werden. Diese Beschränkung bedeutet auch, dass die Anzahl von Spalten beim Erweitern des Laufwerks die minimale Anzahl von Datenträgern bestimmt, die Sie hinzufügen können. Wenn Sie einen Speicherpool mit vier Datenträgern erstellen, beträgt die Anzahl von Spalten also 4. Bei jeder Erweiterung des Speichers müssen Sie mindestens vier Datenträger hinzufügen.
-
-![Erweitern eines Laufwerks für eine SQL-VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
 
 ## <a name="storage-configuration"></a>Speicherkonfiguration
 

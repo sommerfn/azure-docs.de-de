@@ -1,22 +1,22 @@
 ---
-title: Windows Virtual Desktop-Umgebung (Vorschauversion) – Azure
-description: Enthält eine Beschreibung der grundlegenden Elemente einer Windows Virtual Desktop-Umgebung (Vorschauversion).
+title: 'Windows Virtual Desktop-Umgebung: Azure'
+description: Enthält eine Beschreibung der grundlegenden Elemente einer Windows Virtual Desktop-Umgebung.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 6aa6c7326759e480235df5fe9d4b0878cd11024d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23bf9be8e3e5f1c52546faa9ed5171c140eba59a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142380"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676620"
 ---
-# <a name="windows-virtual-desktop-preview-environment"></a>Windows Virtual Desktop-Umgebung (Vorschauversion)
+# <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop-Umgebung
 
-Windows Virtual Desktop (Vorschauversion) ist ein Dienst, mit dem Benutzer einfachen und sicheren Zugriff auf ihre virtualisierten Desktops und RemoteApps erhalten. In diesem Thema wird die allgemeine Struktur der Windows Virtual Desktop-Umgebung näher erläutert.
+Windows Virtual Desktop ist ein Dienst, mit dem Benutzer einfachen und sicheren Zugriff auf ihre virtualisierten Desktops und RemoteApps erhalten. In diesem Thema wird die allgemeine Struktur der Windows Virtual Desktop-Umgebung näher erläutert.
 
 ## <a name="tenants"></a>Mandanten
 
@@ -57,9 +57,9 @@ Nachdem Sie Benutzer ihren App-Gruppen zugewiesen haben, können diese mit den W
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich unter [Delegierter Zugriff in Windows Virtual Desktop (Vorschauversion)](delegated-access-virtual-desktop.md) weiter über den delegierten Zugriff und das Zuweisen von Rollen zu Benutzern.
+Informieren Sie sich unter [Delegierter Zugriff in Windows Virtual Desktop](delegated-access-virtual-desktop.md) weiter über den delegierten Zugriff und das Zuweisen von Rollen zu Benutzern.
 
-Informationen zur Einrichtung Ihres Windows Virtual Desktop-Mandanten finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop (Vorschauversion)](tenant-setup-azure-active-directory.md).
+Informationen zur Einrichtung Ihres Windows Virtual Desktop-Mandanten finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
 
 Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop finden Sie in einem der folgenden Artikel:
 

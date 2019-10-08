@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5806198968d98fea4c5cbf8731358ca4041f0935
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972871"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828178"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Bereitstellen von Knoten für die Azure VMware-Lösung von CloudSimple
 
@@ -40,7 +40,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 7. Geben Sie das Präfix ein, um die Knoten zu kennzeichnen.
 8. Wählen Sie den Standort für die Knotenressourcen aus.
 9. Wählen Sie den dedizierten Standort (Dedicated location) aus, in dem die Knotenressourcen gehostet werden sollen.
-10. Wählen Sie den Knotentyp aus. Sie können zwischen der [CS28- und CS36-Option](cloudsimple-node.md) wählen. Die zweite Option umfasst die maximale Compute- und Arbeitsspeicherkapazität.
+10. Wählen Sie den [Knotentyp](cloudsimple-node.md) aus.
 11. Wählen Sie die Anzahl der bereitzustellenden Knoten aus.
 12. Klicken Sie auf **Überprüfen + erstellen**.
 13. Überprüfen Sie die Einstellungen. Wenn Sie irgendwelche Einstellungen ändern möchten, klicken Sie auf **Zurück**.

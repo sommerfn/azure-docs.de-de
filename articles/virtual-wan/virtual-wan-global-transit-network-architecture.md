@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
-ms.openlocfilehash: 2376c77ecc328788c842e045aafb618cbad39b0e
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 0a5059382c26afd6120dc14a1ab2c7e5d281e7a1
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421427"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695267"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Architektur mit einem globalen Transitnetzwerk und Azure Virtual WAN
 
@@ -44,7 +44,7 @@ In diesem Modell kann eine Spoke Folgendes sein:
 
 **Abbildung 2: Hub-and-Spoke-Modell**
 
-In Abbildung 2 sehen Sie den logischen Aufbau des globalen Netzwerks, bei dem geografisch verteilte Benutzer, physische Standorte und virtuelle Netzwerke über einen in der Cloud gehosteten Netzwerkhub miteinander verbunden sind. Durch diese Architektur sind logische Transitverbindungen mit einem Hop zwischen den Netzwerkendpunkten möglich. Die Spokes sind über unterschiedliche Azure-Netzwerkdienste miteinander verbunden (z.B. ExpressRoute oder Site-to-Site-VPNs für physische Zweigstellen, VNET-Peering für virtuelle Netzwerke und Point-to-Site-VPNs für Remotebenutzer).
+In Abbildung 2 sehen Sie den logischen Aufbau des globalen Netzwerks, bei dem geografisch verteilte Benutzer, physische Standorte und virtuelle Netzwerke über einen in der Cloud gehosteten Netzwerkhub miteinander verbunden sind. Durch diese Architektur sind logische Transitverbindungen mit einem Hop zwischen den Netzwerkendpunkten möglich. Die Spokes sind über unterschiedliche Azure-Netzwerkdienste miteinander verbunden (z.B. ExpressRoute oder Site-to-Site-VPNs für physische Zweigstellen, VNET-Verbindungen für virtuelle Netzwerke und Point-to-Site-VPNs für Remotebenutzer).
 
 ## <a name="crossregion"></a>Regionsübergreifende Verbindungen
 
@@ -71,7 +71,7 @@ Azure Virtual WAN unterstützt die folgenden globalen Transitverbindungsarten. D
 
 ### <a name="branchvnet"></a>Zweigstelle-zu-VNET
 
-Pfade zwischen Zweigstellen und VNETs werden primär von Azure Virtual WAN unterstützt. Mit diesem Pfad können Sie Zweigstellen mit Azure-IaaS-Unternehmensworkloads vernetzen, die in Azure-VNETs bereitgestellt wurden. Zweigstellen können über ExpressRoute oder ein Site-to-Site-VPN mit einem virtuellen WAN vernetzt werden. Der Datenverkehr wird an VNETs übertragen, die mit den Hubs des virtuellen WAN über VNET-Verbindungen verbunden sind.
+Pfade zwischen Zweigstellen und VNETs werden primär von Azure Virtual WAN unterstützt. Mit diesem Pfad können Sie Zweigstellen mit Azure-IaaS-Unternehmensworkloads vernetzen, die in Azure-VNETs bereitgestellt wurden. Zweigstellen können über ExpressRoute oder ein Site-to-Site-VPN mit einem virtuellen WAN vernetzt werden. Für Datenverkehr findet ein Transit in VNETs statt, die über VNET-Verbindungen mit den virtuellen WAN-Hubs verbunden sind. [Gatewaytransit](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) ist für das virtuelle WAN nicht erforderlich, da das virtuelle WAN den Gatewaytransit zu Zweigstellenstandorten automatisch aktiviert.
 
 ### <a name="branchbranch"></a>Zweigstelle-zu-Zweigstelle
 
@@ -89,7 +89,7 @@ Mit dem Remotebenutzer-zu-Zweigstelle-Pfad können Remotebenutzer, die über ein
 
 ### <a name="vnetvnet"></a>VNET-zu-VNET mit VNET-Peering
 
-Verwenden Sie VNET-Peering, um VNETs miteinander zu verbinden, um mehrschichtige Anwendungen zu unterstützen, die in mehreren VNETs implementiert wurden. Ein VNET-zu-VNET-Transitszenario über Azure Virtual WAN wird aktuell nicht unterstützt, ist aber Teil der Azure-Roadmap. Verbinden von VNETs per VNET-Peering ist die empfohlene Lösung für VNETs, die miteinander verbunden werden müssen. [Gatewaytransit](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) (im Kontext von VNET-Peering) ist für Virtual WAN nicht erforderlich, da Virtual WAN automatisch Gatewaytransit aktiviert.
+Verwenden Sie VNET-Peering, um VNETs miteinander zu verbinden, um mehrschichtige Anwendungen zu unterstützen, die in mehreren VNETs implementiert wurden. Ein VNET-zu-VNET-Transitszenario über Azure Virtual WAN wird aktuell nicht unterstützt, ist aber Teil der Azure-Roadmap. Verbinden von VNETs per VNET-Peering ist die empfohlene Lösung für VNETs, die miteinander verbunden werden müssen. 
 
 ### <a name="globalreach"></a>ExpressRoute Global Reach
 

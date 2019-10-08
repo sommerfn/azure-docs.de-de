@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e39f294f7902eabef401d4c8145f4f19a07f267f
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: ee8a711a867f8abdc831b0d1d9d0b504b1104955
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71224579"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310129"
 ---
 # <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>Erstellen einer inkrementellen Momentaufnahme (Vorschau) für verwaltete Datenträger
 
@@ -27,6 +27,7 @@ Wenn Sie sich noch nicht für die Vorschau registriert haben und mit der Verwend
 
 ## <a name="restrictions"></a>Einschränkungen
 
+- Inkrementelle Momentaufnahmen sind zurzeit nur in der Region „USA, Westen-Mitte“ verfügbar.
 - Inkrementelle Momentaufnahmen können derzeit nicht erstellt werden, nachdem die Größe eines Datenträgers geändert wurde.
 - Inkrementelle Momentaufnahmen können derzeit nicht zwischen Abonnements verschoben werden.
 - Sie können zurzeit nur SAS-URIs mit jeweils bis zu fünf Momentaufnahmen einer bestimmten Momentaufnahmefamilie generieren.
@@ -36,7 +37,7 @@ Wenn Sie sich noch nicht für die Vorschau registriert haben und mit der Verwend
 
 ## <a name="powershell"></a>PowerShell
 
-Sie können Azure PowerShell verwenden, um eine inkrementelle Momentaufnahme zu erstellen. Sie können die neueste Version von PowerShell lokal installieren. Sie benötigen die aktuelle Version von Azure PowerShell. Mit dem folgenden Befehl wird sie installiert oder Ihre vorhandene Installation auf die neueste Version aktualisiert:
+Sie können Azure PowerShell verwenden, um eine inkrementelle Momentaufnahme zu erstellen. Sie benötigen die aktuelle Version von Azure PowerShell. Mit dem folgenden Befehl wird sie installiert oder Ihre vorhandene Installation auf die neueste Version aktualisiert:
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
@@ -44,22 +45,24 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 Melden Sie sich nach der Installation bei der PowerShell-Sitzung mit `az login` an.
 
+Um eine inkrementelle Momentaufnahme mit Azure PowerShell zu erstellen, legen Sie die Konfiguration mit [New-AzSnapShotConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) mit dem Parameter `-Incremental` fest und übergeben diese dann als Variable über den Parameter `-Snapshot` an [New-AzSnapshot](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0).
+
 Ersetzen Sie `<yourDiskNameHere>`, `<yourResourceGroupNameHere>` und `<yourDesiredSnapShotNameHere>` durch Ihre Werte. Anschließend können Sie das folgende Skript verwenden, um eine inkrementelle Momentaufnahme zu erstellen:
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
 $yourDisk = Get-AzDisk -DiskName <yourDiskNameHere> -ResourceGroupName <yourResourceGroupNameHere>
 
-# Create an incremental snapshot by setting:
-# 1. Incremental property
-# 2. SourceUri property with the value of the Id property of the disk
+# Create an incremental snapshot by setting the SourceUri property with the value of the Id property of the disk
 $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk.Location -CreateOption Copy -Incremental 
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
+```
 
-# You can identify incremental snapshots of the same disk by using the SourceResourceId and SourceUniqueId properties of snapshots. 
-# SourceResourceId is the Azure Resource Manager resource ID of the parent disk. 
-# SourceUniqueId is the value inherited from the UniqueId property of the disk. If you delete a disk and then create a disk with the same name, the value of the UniqueId property will change. 
-# Following script shows how to get all the incremental snapshots in a resource group of same disk
+Sie können inkrementelle Momentaufnahmen auf dem gleichen Datenträger mit den Eigenschaften `SourceResourceId` und `SourceUniqueId` der Momentaufnahmen identifizieren. `SourceResourceId` ist die Azure Resource Manager-Ressourcen-ID des übergeordneten Datenträgers. `SourceUniqueId` ist der Wert, der von der `UniqueId`-Eigenschaft des Datenträgers geerbt wird. Wenn Sie einen Datenträger löschen und dann einen Datenträger mit demselben Namen erstellen, ändert sich der Wert der `UniqueId`-Eigenschaft.
+
+Sie können `SourceResourceId` und `SourceUniqueId` verwenden, um eine Liste aller Momentaufnahmen zu erstellen, die einem bestimmten Datenträger zugeordnet sind. Ersetzen Sie `<yourResourceGroupNameHere>` durch Ihren Wert. Anschließend können Sie das folgende Beispiel verwenden, um Ihre vorhandenen inkrementellen Momentaufnahmen aufzulisten:
+
+```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
 
 $incrementalSnapshots = New-Object System.Collections.ArrayList
@@ -73,6 +76,46 @@ foreach ($snapshot in $snapshots)
 }
 
 $incrementalSnapshots
+```
+
+## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
+
+Sie können eine inkrementelle Momentaufnahme mit der Azure CLI erstellen. Sie benötigen dazu die aktuelle Version der Azure CLI. Mit dem folgenden Befehl wird sie installiert oder Ihre vorhandene Installation auf die neueste Version aktualisiert:
+
+```PowerShell
+Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
+```
+
+Um eine inkrementelle Momentaufnahme zu erstellen, verwenden Sie [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) mit dem Parameter `--incremental`.
+
+Das folgende Beispiel erstellt eine inkrementelle Momentaufnahme, ersetzt `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`, `<exampleDiskName>` und `<exampleLocation>` durch Ihre eigenen Werte und führt das Beispiel dann aus:
+
+```bash
+sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
+
+az snapshot create -g <yourResourceGroupNameHere> \
+-n <yourDesiredSnapShotNameHere> \
+-l <exampleLocation> \
+--source "$sourceResourceId" \
+--incremental
+```
+
+Sie können inkrementelle Momentaufnahmen auf dem gleichen Datenträger mit den Eigenschaften `SourceResourceId` und `SourceUniqueId` der Momentaufnahmen identifizieren. `SourceResourceId` ist die Azure Resource Manager-Ressourcen-ID des übergeordneten Datenträgers. `SourceUniqueId` ist der Wert, der von der `UniqueId`-Eigenschaft des Datenträgers geerbt wird. Wenn Sie einen Datenträger löschen und dann einen Datenträger mit demselben Namen erstellen, ändert sich der Wert der `UniqueId`-Eigenschaft.
+
+Sie können `SourceResourceId` und `SourceUniqueId` verwenden, um eine Liste aller Momentaufnahmen zu erstellen, die einem bestimmten Datenträger zugeordnet sind. Im folgenden Beispiel werden alle inkrementellen Momentaufnahmen aufgelistet, die einem bestimmten Datenträger zugeordnet sind. Dafür ist jedoch ein Setup erforderlich.
+
+In diesem Beispiel wird jq zum Abfragen der Daten verwendet. Um das Beispiel auszuführen, müssen Sie [jq installieren](https://stedolan.github.io/jq/download/).
+
+Ersetzen Sie `<yourResourceGroupNameHere>` und `<exampleDiskName>` durch Ihren Wert. Anschließend können Sie das folgende Beispiel verwenden, um Ihre vorhandenen inkrementellen Momentaufnahmen aufzulisten, wenn jq installiert ist:
+
+```bash
+sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
+
+ 
+sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
+
+az snapshot list -g <yourResourceGroupNameHere> -o json \
+| jq -cr --arg SUID "$sourceUniqueId" --arg SRID "$sourceResourceId" '.[] | select(.incremental==true and .creationData.sourceUniqueId==$SUID and .creationData.sourceResourceId==$SRID)'
 ```
 
 ## <a name="resource-manager-template"></a>Resource Manager-Vorlage
@@ -109,32 +152,6 @@ Sie können auch Azure Resource Manager-Vorlagen verwenden, um eine inkrementell
   }
   ]
 }
-```
-
-## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
-
-Sie können eine inkrementelle Momentaufnahme mit der Azure CLI erstellen, indem Sie [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) verwenden. Ein Beispielbefehl würde wie folgt aussehen:
-
-```bash
-az snapshot create -g <exampleResourceGroup> \
--n <exampleSnapshotName> \
--l <exampleLocation> \
---source <exampleVMId> \
---incremental
-```
-
-Mithilfe des Parameters `--query` für [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-show) können Sie auch ermitteln, welche Momentaufnahmen inkrementelle Momentaufnahmen in der CLI sind. Sie können diesen Parameter verwenden, um die Eigenschaften **SourceResourceId** und **SourceUniqueId** von Momentaufnahmen direkt abzufragen. SourceResourceId ist die Azure Resource Manager-Ressourcen-ID des übergeordneten Datenträgers. **SourceUniqueId** ist der Wert, der von der **UniqueId**-Eigenschaft des Datenträgers geerbt wird. Wenn Sie einen Datenträger löschen und dann einen Datenträger mit demselben Namen erstellen, ändert sich der Wert der Eigenschaft **UniqueId**.
-
-Beispiele für beide Abfragen würden wie folgt aussehen:
-
-```bash
-az snapshot show -g <exampleResourceGroup> \
--n <yourSnapShotName> \
---query [creationData.sourceResourceId] -o tsv
-
-az snapshot show -g <exampleResourceGroup> \
--n <yourSnapShotName> \
---query [creationData.sourceUniqueId] -o tsv
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

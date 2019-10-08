@@ -1,22 +1,22 @@
 ---
-title: Identifizieren von Problemen mit der Diagnosefunktion von Windows Virtual Desktop (Vorschauversion) – Azure
-description: Enthält eine Beschreibung der Diagnosefunktion für Windows Virtual Desktop (Vorschauversion) und ihrer Verwendung.
+title: 'Identifizieren von Problemen mit der Diagnosefunktion von Windows Virtual Desktop: Azure'
+description: Enthält eine Beschreibung der Diagnosefunktion für Windows Virtual Desktop und ihrer Verwendung.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: c07086feef1851f1a6e2a5cda2f541d52a50d91d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f041889f1594ef3852c8f2393be93bb7a6513b4c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163490"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676646"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Identifizieren von Problemen mit der Diagnosefunktion
 
-Windows Virtual Desktop (Vorschauversion) verfügt über eine Diagnosefunktion, mit der der Administrator Probleme über eine zentrale Benutzeroberfläche identifizieren kann. Die Windows Virtual Desktop-Rollen protokollieren jeweils eine Diagnoseaktivität, wenn ein Benutzer mit dem System interagiert. Jedes Protokoll enthält relevante Informationen, z. B. die an der Transaktion beteiligten Windows Virtual Desktop-Rollen, Fehlermeldungen, Mandanteninformationen und Benutzerinformationen. Diagnoseaktivitäten werden sowohl bei Endbenutzer- als auch bei Administratoraktionen erstellt und können in drei Buckets kategorisiert werden:
+Windows Virtual Desktop verfügt über eine Diagnosefunktion, mit der der Administrator Probleme über eine zentrale Benutzeroberfläche identifizieren kann. Die Windows Virtual Desktop-Rollen protokollieren jeweils eine Diagnoseaktivität, wenn ein Benutzer mit dem System interagiert. Jedes Protokoll enthält relevante Informationen, z. B. die an der Transaktion beteiligten Windows Virtual Desktop-Rollen, Fehlermeldungen, Mandanteninformationen und Benutzerinformationen. Diagnoseaktivitäten werden sowohl bei Endbenutzer- als auch bei Administratoraktionen erstellt und können in drei Buckets kategorisiert werden:
 
 * Feedabonnementaktivitäten: Der Endbenutzer löst diese Aktivitäten jeweils aus, wenn er versucht, über Microsoft-Remotedesktopanwendungen eine Verbindung mit seinem Feed herzustellen.
 * Verbindungsaktivitäten: Der Endbenutzer löst diese Aktivitäten jeweils aus, wenn er versucht, über Microsoft-Remotedesktopanwendungen eine Verbindung mit einem Desktop oder einer RemoteApp herzustellen.
@@ -136,7 +136,7 @@ Fehlerszenarien werden in die Bereiche „Dienstintern“ und „Außerhalb von 
 In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Administratoren ggf. auftreten können.
 
 >[!NOTE]
->Diese Vorschauversion enthält keine vollständige Kategorisierung der Fehler und wird regelmäßig aktualisiert. Damit Sie immer über die aktuellen Informationen verfügen, ist es ratsam, diesen Artikel mindestens einmal pro Monat aufzurufen.
+>Diese Liste enthält die häufigsten Fehler und wird in regelmäßigen Abständen aktualisiert. Damit Sie immer über die aktuellen Informationen verfügen, ist es ratsam, diesen Artikel mindestens einmal pro Monat aufzurufen.
 
 ### <a name="external-management-error-codes"></a>Externe Verwaltung: Fehlercodes
 
@@ -176,6 +176,6 @@ In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Adminis
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Rollen in Windows Virtual Desktop finden Sie unter [Windows Virtual Desktop-Umgebung (Vorschauversion)](environment-setup.md).
+Weitere Informationen zu Rollen in Windows Virtual Desktop finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup.md).
 
 Eine Liste mit verfügbaren PowerShell-Cmdlets für Windows Virtual Desktop finden Sie in der [PowerShell-Referenz](/powershell/windows-virtual-desktop/overview).

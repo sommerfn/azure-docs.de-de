@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 38fdbbf76806325e457f066e6b469a531c27b038
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e0bc4647476cd5c6aa0f38456ef8890b4ddcaa5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102228"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828792"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Bereitstellen eines virtuellen Windows-Computers mit SQL Server im Azure-Portal
 
@@ -54,17 +54,6 @@ Beim Erstellen eines virtuellen SQL Server-Computers können Sie eines von zahlr
 
 1. Klicken Sie auf **Erstellen**.
 
-
-## <a id="configure"></a> Konfigurationsoptionen
-
-Es sind mehrere Registerkarten zum Konfigurieren eines virtuellen SQL Server-Computers vorhanden. In diesem Leitfaden liegt der Schwerpunkt auf Folgendem: 
-
-| Schritt | BESCHREIBUNG |
-| --- | --- |
-| **Grundlagen** |[Grundeinstellungen konfigurieren](#1-configure-basic-settings) |
-| **Optionale Features** |[Optionale Features konfigurieren](#2-configure-optional-features) |
-| **SQL Server-Einstellungen** |[SQL Server-Einstellungen konfigurieren](#3-configure-sql-server-settings) |
-| **Bewerten + erstellen** | [Zusammenfassung prüfen](#4-review--create) |
 
 ## <a name="1-configure-basic-settings"></a>1. Grundeinstellungen konfigurieren
 
@@ -142,8 +131,6 @@ Konfigurieren Sie auf der Registerkarte **Überwachung** Überwachung und automa
 
 Konfigurieren Sie auf der Registerkarte **SQL Server-Einstellungen** die speziellen Einstellungen und Optimierungen für SQL Server. Zu den Einstellungen, die Sie für SQL Server konfigurieren können, zählen die folgenden:
 
-
-
 | Einstellung |
 | --- |
 | [Konnektivität](#connectivity) |
@@ -208,24 +195,19 @@ Weitere Informationen finden Sie unter [Konfigurieren der Azure-Schlüsseltresor
 
 ### <a name="storage-configuration"></a>Speicherkonfiguration
 
-Wählen Sie auf der Registerkarte **SQL Server-Einstellungen** unter **Speicherkonfiguration** die Option **Konfiguration ändern** aus, um die Speicheranforderungen anzugeben.
+Wählen Sie auf der Registerkarte **SQL Server-Einstellungen** unter **Speicherkonfiguration** die Option **Konfiguration ändern** aus, um die Seite „Leistungsoptimierte Speicherkonfiguration“ zu öffnen und die Speicheranforderungen anzugeben.
 
-
-> [!NOTE]
-> Wenn Sie Ihren virtuellen Computer manuell für die Verwendung von Standardspeicher konfiguriert haben, ist diese Option nicht verfügbar. Die automatische Speicheroptimierung ist nur für Storage Premium verfügbar.
-
-> [!TIP]
-> Die Anzahl von Unterteilungen sowie die Obergrenze der einzelnen Schieberegler sind abhängig von der Größe des gewählten virtuellen Computers. Größere und leistungsfähigere virtuelle Computer können weiter zentral hochskaliert werden.
-
-Sie können die Anforderungen als Eingabe-/Ausgabevorgänge pro Sekunde (IOPS), Durchsatz in MB/s und Gesamtspeichergröße angeben. Konfigurieren Sie diese Werte mit den Schiebereglern. Sie können diese Speichereinstellungen basierend auf der Workload ändern. Auf der Grundlage dieser Anforderungen berechnet das Portal automatisch die Anzahl anzufügender und zu konfigurierender Datenträger.
+![SQL-VM-Speicherkonfiguration](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
 Wählen Sie unter **Speicher optimiert für**eine der folgenden Optionen:
 
 * **Allgemein** ist die Standardeinstellung und bietet Unterstützung für die meisten Workloads.
-* **Transaktional** wird der Speicher für herkömmliche OLTP-Datenbankworkloads optimiert.
+* **Transaktionale Verarbeitung** optimiert den Speicher für herkömmliche OLTP-Datenbankworkloads.
 * **Data Warehousing** wird der Speicher für Analyse- und Berichterstellungsworkloads optimiert.
 
-![SQL-VM-Speicherkonfiguration](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-storage-configuration.png)
+![SQL-VM-Speicherkonfiguration](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
+
+Sie können entweder die Standardwerte beibehalten oder die Speichertopologie manuell an Ihre IOPS-Anforderungen anpassen. Weitere Informationen finden Sie unter [Speicherkonfiguration](virtual-machines-windows-sql-server-storage-configuration.md). 
 
 ### <a name="sql-server-license"></a>SQL Server-Lizenz
 Wenn Sie ein Software Assurance-Kunde sind, können Sie den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) nutzen, um Ihre eigene SQL Server-Lizenz mitzubringen und auf Ressourcen zu speichern. 

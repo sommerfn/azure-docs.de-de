@@ -1,22 +1,22 @@
 ---
-title: Herstellen einer Verbindung mit Windows Virtual Desktop (Vorschauversion) über einen Webbrowser – Azure
-description: Erfahren Sie, wie Sie mit einem Webbrowser eine Verbindung mit Windows Virtual Desktop (Vorschauversion) herstellen.
+title: 'Herstellen einer Verbindung mit Windows Virtual Desktop über einen Webbrowser: Azure'
+description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop mithilfe des Webclients.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 4f6bb7c414c38eaa605d259195218c461ddb0ca7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: e7fa1d2b21bfde6495a63676bc2aa1faa07e6bc5
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620161"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676753"
 ---
-# <a name="connect-from-a-web-browser"></a>Herstellen einer Verbindung über einen Webbrowser
+# <a name="connect-with-the-web-client"></a>Herstellen einer Verbindung mit dem Webclient
 
-Mit dem Webclient können Sie über einen Webbrowser auf Ihre Ressourcen von Windows Virtual Desktop (Vorschauversion) zugreifen, ohne den langwierigen Installationsvorgang durchführen zu müssen.
+Mit dem Webclient können Sie über einen Webbrowser auf Ihre Ressourcen von Windows Virtual Desktop zugreifen, ohne den langwierigen Installationsvorgang durchführen zu müssen.
 
 >[!NOTE]
 >Der Webclient verfügt derzeit nicht über Unterstützung für Mobilgerät-Betriebssysteme.

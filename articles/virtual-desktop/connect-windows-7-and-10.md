@@ -1,31 +1,39 @@
 ---
-title: 'Herstellen einer Verbindung mit Windows Virtual Desktop (Vorschauversion) von Windows 10 oder Windows 7: Azure'
-description: Erfahren Sie, wie Sie von Windows 10 oder Windows 7 eine Verbindung mit Windows Virtual Desktop (Vorschauversion) herstellen.
+title: 'Herstellen einer Verbindung mit Windows Virtual Desktop aus Windows 10 oder Windows 7: Azure'
+description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop mithilfe des Windows Desktop-Clients.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 66b423ea27cc0f9112349964fcfd0d75f08c12bd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 561dad566d7f1caaf609c8013fa075062e4471ea
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620121"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676746"
 ---
-# <a name="connect-from-windows-10-or-windows-7"></a>Herstellen einer Verbindung über Windows 10 oder Windows 7
+# <a name="connect-with-the-windows-desktop-client"></a>Herstellen einer Verbindung mit dem Windows-Desktopclient
 
-> Gilt für: Windows 7 und Windows 10.
+> Gilt für: Windows 7 und Windows 10
 
-Es ist ein Client als Download verfügbar, der den Zugriff auf Windows Virtual Desktop-Ressourcen (Vorschauversion) über Geräte ermöglicht, auf denen Windows 7 und Windows 10 ausgeführt wird.
+Mit dem Windows Desktop-Client können Sie auf Geräten mit Windows 7 oder Windows 10 auf Windows Virtual Desktop-Ressourcen zugreifen.
 
 > [!IMPORTANT]
-> Verwenden Sie nicht **RemoteApp- und Desktopverbindungen (RADC)** oder **Remotedesktopverbindung (MSTSC)** für den Zugriff auf Windows Virtual Desktop-Ressourcen, da Windows Virtual Desktop keinen von beiden Clients unterstützt.
+> Windows Virtual Desktop unterstützt nicht den RemoteApp-Client und den Client für Desktopverbindungen (RADC). Der Client für Remotedesktopverbindung (MSTSC) wird ebenfalls nicht unterstützt.
 
-## <a name="install-the-client"></a>Installieren des Clients
+## <a name="install-the-windows-desktop-client"></a>Installieren des Windows Desktop-Clients
 
-Führen Sie den [Download](https://go.microsoft.com/fwlink/?linkid=2068602) des Clients und dann die Installation auf Ihrem lokalen PC durch. Für die Installation sind Administratorrechte erforderlich.
+Dies folgenden Clients können Sie zurzeit herunterladen:
+
+- [Windows (64-Bit)](https://go.microsoft.com/fwlink/?linkid=2068602)
+
+Wir aktualisieren diese Liste, wenn der Client für weitere Versionen von Windows verfügbar wird.
+
+Sie können den Client für den aktuellen Benutzer installieren. Dafür sind keine Administratorrechte erforderlich. Der Administrator kann den Client aber auch so installieren und konfigurieren, dass alle Benutzer auf dem Gerät darauf zugreifen können.
+
+Nach der Installation kann der Client über das Startmenü gestartet werden, indem Sie nach **Remote Desktop** suchen.
 
 ## <a name="subscribe-to-a-feed"></a>Abonnieren eines Feeds
 
@@ -33,11 +41,11 @@ Rufen Sie die Liste mit den verfügbaren verwalteten Ressourcen ab, indem Sie de
 
 Abonnieren Sie einen Feed wie folgt:
 
-1. Starten Sie den Client aus der Liste „Alle Apps“, suchen Sie nach **Remotedesktop**.
-1. Wählen Sie auf der Hauptseite **Abonnieren** aus, um eine Verbindung mit dem Dienst herzustellen und Ihre Ressourcen abzurufen.
-1. **Melden Sie sich**  mit Ihrem Benutzerkonto an, wenn Sie dazu aufgefordert werden.
+1. Öffnen Sie den Windows Desktop-Client.
+2. Wählen Sie auf der Hauptseite **Abonnieren** aus, um eine Verbindung mit dem Dienst herzustellen und Ihre Ressourcen abzurufen.
+3. Melden Sie sich mit Ihrem Benutzerkonto an, wenn Sie dazu aufgefordert werden.
 
-Nach der erfolgreichen Authentifizierung sollte nun eine Liste mit den Ressourcen angezeigt werden, die Ihnen zur Verfügung stehen.
+Nachdem Sie sich erfolgreich angemeldet haben, wird eine Liste der Ressourcen angezeigt, auf die Sie zugreifen können.
 
 Sie können zwei Methoden nutzen, um Ressourcen zu starten.
 
@@ -47,31 +55,6 @@ Sie können zwei Methoden nutzen, um Ressourcen zu starten.
 
 Nachdem Sie einen Feed abonniert haben, wird der Inhalt des Feeds in regelmäßigen Abständen automatisch aktualisiert. Ressourcen können basierend auf Änderungen durch Ihren Administrator hinzugefügt, geändert oder entfernt werden.
 
-## <a name="view-the-details-of-a-feed"></a>Anzeigen von Details zu einem Feed
+## <a name="next-steps"></a>Nächste Schritte
 
-Nach Abschluss des Abonnements können Sie weitere Informationen zum Feed im Bereich „Details“ anzeigen.
-
-1. Wählen Sie auf der Hauptseite des Clients die Auslassungspunkte ( **...** ) rechts neben dem Feednamen aus.
-1. Wählen Sie im Dropdownmenü **Details** aus.
-1. Der Bereich „Details“ wird auf der rechten Seite des Clients angezeigt.
-
-Der Bereich „Details“ enthält nützliche Informationen zum Feed:
-
-- URL und Benutzername zum Abonnement
-- Anzahl der Apps und Desktops
-- Datum/Uhrzeit der letzten Aktualisierung
-- Status der letzten Aktualisierung
-
-Bei Bedarf können Sie ein manuelles Update starten, indem Sie **Jetzt aktualisieren** auswählen.
-
-## <a name="unsubscribe-from-a-feed"></a>Kündigen von Feeds
-
-In diesem Abschnitt erfahren Sie, wie Sie einen Feed kündigen. Sie können das Abonnement kündigen, um es mit einem anderen Konto zu erneuern oder um Ihre Ressourcen aus dem System zu entfernen.
-
-1. Wählen Sie auf der Hauptseite des Clients die Auslassungspunkte ( **...** ) rechts neben dem Feednamen aus.
-1. Wählen Sie im Dropdownmenü **Abbestellen** aus.
-1. Überprüfen Sie die Angaben, und wählen Sie im Dialogfeld **Weiter** aus.
-
-## <a name="update-the-client"></a>Aktualisieren des Clients
-
-Wenn eine neue Version des Clients verfügbar ist, werden Sie vom Client und über das Info-Center von Windows benachrichtigt. Wählen Sie die Benachrichtigung aus, um den Updateprozess zu starten.
+Weitere Informationen zur Verwendung des Windows Desktop-Clients finden Sie unter [Erste Schritte mit dem Windows Desktop-Client](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windowsdesktop).

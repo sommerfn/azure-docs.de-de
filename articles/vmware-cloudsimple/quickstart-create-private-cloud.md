@@ -8,16 +8,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845495"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828945"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Schnellstart: Konfigurieren einer privaten Cloudumgebung
 
 In diesem Artikel erfahren Sie, wie Sie eine private CloudSimple-Cloud erstellen und Ihre private Cloudumgebung einrichten.
+
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Lesen Sie [Voraussetzungen für Netzwerke](cloudsimple-network-checklist.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -38,7 +42,7 @@ Private Clouds werden über das CloudSimple-Portal verwaltet. Sie verfügen übe
 
 5. Geben Sie im CloudSimple-Portal einen Namen für Ihre private Cloud an.
 6. Wählen Sie den **Standort** Ihrer privaten Cloud aus.
-7. Wählen Sie den **Knotentyp** aus, der mit dem in Azure erworbenen Knotentyp übereinstimmt. Sie können zwischen der [CS28- und CS36-Option](cloudsimple-node.md#vmware-solution-by-cloudsimple-nodes-sku) wählen. Die zweite Option umfasst die maximale Compute- und Arbeitsspeicherkapazität.
+7. Wählen Sie den **Knotentyp** aus, der mit dem in Azure erworbenen Knotentyp übereinstimmt.
 8. Geben Sie die **Knotenanzahl** an.  Für das Erstellen einer privaten Cloud sind mindestens drei Knoten erforderlich.
 
     ![Erstellen einer privaten Cloud: grundlegende Informationen](media/create-private-cloud-basic-info.png)

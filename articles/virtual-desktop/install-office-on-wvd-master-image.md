@@ -1,18 +1,18 @@
 ---
 title: Installieren von Office für ein VHD-Masterimage – Azure
-description: Erfahren Sie, wie Sie Office auf einem Windows Virtual Desktop-Masterimage (Vorschauversion) in Azure installieren und anpassen.
+description: Erfahren Sie, wie Sie Office auf einem Windows Virtual Desktop-Masterimage in Azure installieren und anpassen.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 79fe541d1bb3bea8447cf095673111362cec74d2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 378be7ebc1cc04433d42b6a05d7eafc73a515568
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816435"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679520"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Installieren von Office für ein VHD-Masterimage
 
@@ -23,7 +23,7 @@ In diesem Artikel wird vorausgesetzt, dass Sie bereits eine VM (virtueller Compu
 In diesem Artikel wird außerdem davon ausgegangen, dass Sie über erhöhte Rechte für die VM verfügen, unabhängig davon, ob diese in Azure oder Hyper-V-Manager bereitgestellt wird. Wenn das nicht der Fall ist, führen Sie die Anweisungen unter [Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin) aus.
 
 >[!NOTE]
->Diese Anleitung gilt für eine Konfiguration, die für Windows Virtual Desktop (Vorschauversion) spezifisch ist und für die vorhandenen Prozesse Ihrer Organisation genutzt werden kann.
+>Diese Anweisungen beziehen sich auf eine spezielle Konfiguration für Windows Virtual Desktop, die mit den in Ihrer Organisation vorhandenen Prozessen verwendet werden kann.
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Installieren von Office im Modus „Aktivierung gemeinsam genutzter Computer“
 
@@ -45,7 +45,7 @@ Mit dieser von uns bereitgestellten XML-Beispieldatei für die Konfiguration wir
 - Aktivierung gemeinsam genutzter Computer
 
 >[!NOTE]
->Das Schablonensuchfeature in Visio funktioniert während der Konfiguration der Vorschau in Windows Virtual Desktop nicht.
+>Die Schablonensuchfunktion von Visio funktioniert unter Windows Virtual Desktop möglicherweise nicht wie erwartet.
 
 Folgendes wird dagegen von dieser XML-Beispielkonfigurationsdatei nicht erledigt:
 

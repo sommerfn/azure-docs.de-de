@@ -1,22 +1,22 @@
 ---
-title: Konfigurieren einer GPU für Windows Virtual Desktop (Vorschauversion) – Azure
-description: Erfahren Sie, wie Sie durch GPU beschleunigtes Rendering und schnellere Codierung in Windows Virtual Desktop (Vorschauversion) ermöglichen.
+title: 'Konfigurieren einer GPU für Windows Virtual Desktop: Azure'
+description: Erfahren Sie, wie Sie durch GPU beschleunigtes Rendering und schnellere Codierung in Windows Virtual Desktop ermöglichen.
 services: virtual-desktop
 author: gundarev
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: b6a4811f685803ecdc079a690d550618c071c4a6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 1059dd463529f4c357038225f2f9ef11d0092802
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620200"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679586"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-preview"></a>Konfigurieren Sie die Beschleunigung durch Graphics Processing Units (GPU) für Windows Virtual Desktop (Vorschauversion).
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurieren der Beschleunigung durch Graphics Processing Units (GPUs) für Windows Virtual Desktop
 
-Die Vorschauversion von Windows Virtual Desktop unterstützt durch GPU beschleunigtes Rendern und Codieren, um die Leistung und Skalierbarkeit von Apps zu erhöhen. Die GPU-Beschleunigung ist besonders für grafikintensive Apps essentiell.
+Windows Virtual Desktop unterstützt durch GPU beschleunigtes Rendern und Codieren, um die Leistung und Skalierbarkeit von Apps zu erhöhen. Die GPU-Beschleunigung ist besonders für grafikintensive Apps essentiell.
 
 Anhand der Anweisungen in diesem Artikel können Sie eine GPU-optimierte Azure-VM erstellen, ihrem Hostpool hinzufügen und so konfigurieren, dass sie die GPU-Beschleunigung zum Rendern und Codieren verwendet. In diesem Artikel wird vorausgesetzt, dass Sie den Windows Virtual Desktop-Mandanten bereits konfiguriert haben.
 
@@ -28,21 +28,21 @@ Azure bietet mehrere [GPU-optimierte VM-Größen](/azure/virtual-machines/window
 
 Erstellen Sie einen neuen Hostpool mit der gewählten VM-Größe. Anweisungen dazu finden Sie unter: [Tutorial: Erstellen eines Hostpools mit Azure Marketplace](/azure/virtual-desktop/create-host-pools-azure-marketplace).
 
-Die Vorschauversion von Windows Virtual Desktop unterstützt das durch GPU beschleunigte Rendern und Codieren für die folgenden Betriebssysteme:
+Windows Virtual Desktop unterstützt das durch GPU beschleunigte Rendern und Codieren für die folgenden Betriebssysteme:
 
 * Windows 10, Version 1511 und höher
 * Windows Server 2016 oder höher
 
-Außerdem müssen Sie eine App-Gruppe konfigurieren oder die Standarddesktop-App-Gruppe „Desktop Application Group“ verwenden, die automatisch erstellt wird, wenn Sie einen neuen Hostpool erstellen. Anweisungen dazu finden Sie unter: [Tutorial: Verwalten von App-Gruppen für Windows Virtual Desktop (Vorschauversion)](/azure/virtual-desktop/manage-app-groups).
+Außerdem müssen Sie eine App-Gruppe konfigurieren oder die Standarddesktop-App-Gruppe „Desktop Application Group“ verwenden, die automatisch erstellt wird, wenn Sie einen neuen Hostpool erstellen. Anweisungen dazu finden Sie unter: [Tutorial: Verwalten von App-Gruppen für Windows Virtual Desktop](/azure/virtual-desktop/manage-app-groups).
 
 >[!NOTE]
->Die Vorschauversion von Windows Virtual Desktop unterstützt für GPU-fähige Hostpools nur den App-Gruppentyp „Desktop“. App-Gruppen des Typs „RemoteApp“ werden für GPU-fähige Hostpools nicht unterstützt.
+>Windows Virtual Desktop unterstützt für GPU-fähige Hostpools nur den App-Gruppentyp „Desktop“. App-Gruppen des Typs „RemoteApp“ werden für GPU-fähige Hostpools nicht unterstützt.
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Installieren unterstützter Grafiktreiber auf Ihrer VM
 
-Nach der Bereitstellung müssen Sie NVIDIA-Grafiktreiber installieren, um die GPU-Funktionen virtueller Azure-Computern der N-Serie in der Vorschauversion von Windows Virtual Desktop nutzen zu können. Befolgen Sie die Anweisungen unter [Install NVIDIA GPU drivers on N-series VMs running Windows (Installieren von NVIDIA-GPU-Treibern auf Windows-VMs der N-Serie)](/azure/virtual-machines/windows/n-series-driver-setup), um die Treiber entweder manuell oder mit der [NVIDIA-GPU-Treibererweiterung](/azure/virtual-machines/extensions/hpccompute-gpu-windows) zu installieren.
+Nach der Bereitstellung müssen Sie NVIDIA-Grafiktreiber installieren, um die GPU-Funktionen virtueller Azure-Computern der N-Serie in Windows Virtual Desktop nutzen zu können. Befolgen Sie die Anweisungen unter [Install NVIDIA GPU drivers on N-series VMs running Windows (Installieren von NVIDIA-GPU-Treibern auf Windows-VMs der N-Serie)](/azure/virtual-machines/windows/n-series-driver-setup), um die Treiber entweder manuell oder mit der [NVIDIA-GPU-Treibererweiterung](/azure/virtual-machines/extensions/hpccompute-gpu-windows) zu installieren.
 
-Beachten Sie, dass nur von Azure angebotene [NVIDIA-GRID-Treiber](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) für Windows Virtual Desktop (Vorschauversion) unterstützt werden.
+Beachten Sie, dass nur von Azure angebotene [NVIDIA-GRID-Treiber](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) für Windows Virtual Desktop unterstützt werden.
 
 Wenn die Treiber installiert wurden, muss die VM neu gestartet werden. Überprüfen Sie anhand der oben aufgelisteten Schritte, dass die Grafiktreiber erfolgreich installiert wurden.
 

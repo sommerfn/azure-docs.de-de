@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: f75de635f08ae06db349387a436c636c149ec9f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df9b199c24301016b9f9da8a8dec52129bbf94bd
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720228"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703544"
 ---
 # <a name="how-to-specify-environment-variables-for-services-in-service-fabric"></a>Angeben von Umgebungsvariablen für Dienste in Service Fabric
 
@@ -28,30 +28,39 @@ In diesem Artikel erfahren Sie, wie Sie Umgebungsvariablen für einen Dienst ode
 In diesem Beispiel legen Sie eine Umgebungsvariable für einen Container fest. Für den Artikel wird davon ausgegangen, dass Sie bereits eine Anwendung und ein Dienstmanifest haben.
 
 1. Öffnen Sie die Datei „ServiceManifest.xml“.
-1. Fügen Sie im `CodePackage`-Element ein neues `EnvironmentVariables`-Element und für jede Umgebungsvariable ein `EnvironmentVariable`-Element hinzu.
+2. Fügen Sie im `CodePackage`-Element ein neues `EnvironmentVariables`-Element und für jede Umgebungsvariable ein `EnvironmentVariable`-Element hinzu.
 
     ```xml
-      <CodePackage Name="MyCode" Version="CodeVersion1">
-      ...
-        <EnvironmentVariables>
-          <EnvironmentVariable Name="MyEnvVariable" Value="DefaultValue"/>
-          <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
-        </EnvironmentVariables>
-      </CodePackage>
+    <CodePackage Name="MyCode" Version="CodeVersion1">
+            ...
+            <EnvironmentVariables>
+                  <EnvironmentVariable Name="MyEnvVariable" Value="DefaultValue"/>
+                  <EnvironmentVariable Name="HttpGatewayPort" Value="19080"/>
+            </EnvironmentVariables>
+    </CodePackage>
     ```
 
-    Umgebungsvariablen können im Anwendungsmanifest überschrieben werden.
+   Umgebungsvariablen können im Anwendungsmanifest überschrieben werden.
 
-1. Um die Umgebungsvariablen im Anwendungsmanifest zu überschreiben, verwenden Sie das `EnvironmentOverrides`-Element.
+3. Um die Umgebungsvariablen im Anwendungsmanifest zu überschreiben, verwenden Sie das `EnvironmentOverrides`-Element.
 
     ```xml
       <ServiceManifestImport>
-        <ServiceManifestRef ServiceManifestName="FrontEndServicePkg" ServiceManifestVersion="1.0.0" />
+        <ServiceManifestVersion="1.0.0" />
         <EnvironmentOverrides CodePackageRef="MyCode">
           <EnvironmentVariable Name="MyEnvVariable" Value="OverrideValue"/>
         </EnvironmentOverrides>
       </ServiceManifestImport>
     ```
+
+## <a name="specifying-environment-variables-dynamically-using-docker-compose"></a>Dynamisches Angeben von Umgebungsvariablen mithilfe von Docker Compose
+
+Service Fabric unterstützt die [Verwendung von Docker Compose für die Bereitstellung](service-fabric-docker-compose.md#supported-compose-directives). Compose-Dateien können Umgebungsvariablen aus der Shell als Quellen verwenden. Dieses Verhalten kann verwendet werden, um gewünschte Umgebungswerte dynamisch zu ersetzen:
+
+```yml
+environment:
+  - "hostname:${hostname}"
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu einigen der grundlegenden Konzepte, die in diesem Artikel behandelt werden, finden Sie im Artikel [Verwalten von Anwendungen für mehrere Umgebungen](service-fabric-manage-multiple-environment-app-configuration.md).

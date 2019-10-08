@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/13/2018
 ms.author: kumud
-ms.openlocfilehash: 41e9d88df49d153089e6dc7a12c5873ccc167279
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c964eaf3cae4f4f47724c59caf9ff60d9f4d2cd
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209462"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336313"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Übersicht über Azure DDoS Protection Standard
 
@@ -31,7 +31,19 @@ Azure DDoS Protection in Kombination mit bewährten Anwendungsentwurfsmethoden s
 - **Basic**: Als Teil der Azure-Plattform automatisch aktiviert. Die stets verfügbare Überwachung des Datenverkehrs und die Abwehr von häufig vorkommenden Angriffen auf Netzwerkebene in Echtzeit bieten die gleichen Schutzmaßnahmen wie die Onlinedienste von Microsoft. Das gesamte weltweite Netzwerk von Azure steht für die Verteilung und Abwehr des regionsübergreifenden Angriffsdatenverkehrs zur Verfügung. Schutz wird für [öffentliche Azure-IP-Adressen](virtual-network-public-ip-address.md) mit IPv4 und IPv6 bereitgestellt.
 - **Standard**: Stellt zusätzliche Funktionen zur Angriffsabwehr über die Basic-Dienstebene bereit, die speziell für virtuelle Azure-Netzwerkressourcen optimiert sind. DDoS Protection Standard kann leicht aktiviert werden und erfordert keine Änderung der Anwendung. Schutzrichtlinien werden über dedizierte Datenverkehrsüberwachung und Machine Learning-Algorithmen optimiert. Richtlinien werden auf öffentliche IP-Adressen angewendet, die in virtuellen Netzwerken bereitgestellten Ressourcen wie Azure Load Balancer, Azure Application Gateway und Azure Service Fabric-Instanzen zugeordnet sind. Dieser Schutz wird jedoch nicht auf App Service-Umgebungen angewendet. Über Azure Monitor-Ansichten steht Echtzeittelemetrie während eines Angriffs und für den Verlauf zur Verfügung. In den Diagnoseeinstellungen sind umfassende Analysefunktionen zur Entschärfung von Angriffen verfügbar. Der Schutz auf der Anwendungsschicht kann über die [Azure Application Gateway Web Application Firewall](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder per Installation einer Drittanbieter-Firewall über Azure Marketplace hinzugefügt werden. Schutz wird für [öffentliche Azure-IP-Adressen](virtual-network-public-ip-address.md) mit IPv4 und IPv6 bereitgestellt.
 
-![Vergleich: Azure DDoS Protection Basic und Standard](./media/ddos-protection-overview/ddoscomparison.png)
+|Feature                                         |DDoS Protection Basic                 |DDoS Protection Standard                      |
+|------------------------------------------------|--------------------------------------|----------------------------------------------|
+|Überwachung des aktiven Datenverkehrs und Always On-Erkennung |Ja                                   |Ja                                           |
+|Automatische Angriffsgegenmaßnahmen                    |Ja                                   |Ja                                           |
+|Verfügbarkeitsgarantie                          |Azure-Region                          |Anwendung                                   |
+|Risikominderungsrichtlinien                             |Optimiert für Volume der Azure-Datenverkehrsregion |Optimiert für Volume des Anwendungsdatenverkehrs          |
+|Metriken und Warnungen                                |Nein                                    |Angriffsmetriken in Echtzeit und Diagnoseprotokolle über Azure Monitor                                 |
+|Risikominderungsberichte                              |Nein                                    |Risikominderungsberichte nach dem Angriff                |
+|Protokolle des Risikominderungsflusses                            |Nein                                    |NRT-Protokollstream für die SIEM-Integration           |
+|Anpassungen der Migrationsrichtlinie                 |Nein                                    |Einbinden von DDoS-Experten                           |
+|Support                                         |Bestmögliche Leistung                           |Zugriff auf DDoS-Experten während eines aktiven Angriffs|
+|SLA                                             |Azure-Region                          |Anwendungsgarantie und Kostenschutz       |
+|Preise                                         |Kostenlos                                  |Monatlich und nutzungsbasiert                         |
 
 ## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>DDoS-Angriffstypen, die mit DDoS Protection Standard abgewehrt werden
 

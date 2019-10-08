@@ -1,22 +1,22 @@
 ---
 title: Erstellen eines FSLogix-Profilcontainers für einen Hostpool mit einer Dateifreigabe, die sich auf einem virtuellen Computer befindet – Azure
-description: Es wird beschrieben, wie Sie einen FSLogix-Profilcontainer für einen Windows Virtual Desktop-Hostpool (Vorschauversion) mit einer Dateifreigabe einrichten, die sich auf einem virtuellen Computer befindet.
+description: Es wird beschrieben, wie Sie einen FSLogix-Profilcontainer für einen Windows Virtual Desktop-Hostpool mit einer Dateifreigabe einrichten, die sich auf einem virtuellen Computer befindet.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: cf3d682e4d0c68822267a4e63846d80b632cbdcc
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9b187696524e96bc13254a24fd8f39d5aeb89e7d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876789"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676699"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Erstellen eines Profilcontainers für einen Hostpool mit einer Dateifreigabe
 
-Der Windows Virtual Desktop-Dienst (Vorschauversion) stellt FSLogix-Profilcontainer als empfohlene Lösung für Benutzerprofile bereit. Wir raten davon ab, die Lösung „Benutzerprofil-Datenträger“ (User Profile Disk, UPD) zu nutzen. Sie wird in den zukünftigen Versionen von Windows Virtual Desktop als veraltet eingestuft.
+Der Windows Virtual Desktop-Dienst stellt FSLogix-Profilcontainer als empfohlene Lösung für Benutzerprofile bereit. Wir raten davon ab, die Lösung „Benutzerprofil-Datenträger“ (User Profile Disk, UPD) zu nutzen. Sie wird in den zukünftigen Versionen von Windows Virtual Desktop als veraltet eingestuft.
 
 In diesem Artikel ist beschrieben, wie Sie eine FSLogix-Profilcontainerfreigabe für einen Hostpool mit einer Dateifreigabe einrichten, die sich auf einem virtuellen Computer befindet. Weitere FSLogix-Dokumentation finden Sie auf der [FSLogix-Website](https://docs.fslogix.com/).
 

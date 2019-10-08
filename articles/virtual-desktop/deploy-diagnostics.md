@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: 625515223da12751b7765baa795bc68d2a7b46b4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 07a45f54eb7c00e20abcfb05979e24493e5b9604
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233253"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676655"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Bereitstellen des Diagnosetools
 
@@ -189,8 +189,8 @@ So legen Sie den Umleitungs-URI fest
 
 Bevor Sie das Diagnosetool für Ihre Benutzer verfügbar machen, stellen Sie sicher, dass diese über die folgenden Berechtigungen verfügen:
 
-- Benutzer benötigen Lesezugriff für Log Analytics. Weitere Informationen finden Sie unter [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](/azure/azure-monitor/platform/roles-permissions-security).
--  Benutzer benötigen ferner Lesezugriff für den Windows Virtual Desktop-Mandanten (RDS-Rolle „Leser“). Weitere Informationen finden Sie unter [Delegierter Zugriff in Windows Virtual Desktop (Vorschauversion)](delegated-access-virtual-desktop.md).
+- Benutzer benötigen Lesezugriff für Log Analytics. Weitere Informationen finden Sie unter [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](/articles/azure-monitor/platform/roles-permissions-security.md).
+-  Benutzer benötigen ferner Lesezugriff für den Windows Virtual Desktop-Mandanten (RDS-Rolle „Leser“). Weitere Informationen finden Sie unter [Delegierter Zugriff in Windows Virtual Desktop](delegated-access-virtual-desktop.md).
 
 Sie müssen Ihren Benutzern außerdem noch folgende Informationen zur Verfügung stellen:
 

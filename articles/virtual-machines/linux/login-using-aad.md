@@ -3,7 +3,7 @@ title: Anmelden bei einem virtuellen Linux-Computer mit Azure Active Directory-A
 description: Es wird beschrieben, wie Sie eine Linux-VM erstellen und für die Anmeldung per Azure Active Directory-Authentifizierung konfigurieren.
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: cynthn
-ms.openlocfilehash: 946ccc61ead7f005667984a490761bc64560a69e
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: iainfou
+ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300731"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327091"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung
 
@@ -88,7 +88,7 @@ Das Erstellen des virtuellen Computers und der unterstützenden Ressourcen dauer
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Installieren der VM-Erweiterung für die Azure AD-Anmeldung
 
 > [!NOTE]
-> Wenn Sie diese Erweiterung für eine zuvor erstellte VM bereitstellen, stellen Sie sicher, dass auf dem Computer mindestens 1 GB Speicher zugeordnet ist, da die Erweiterung andernfalls nicht installiert werden kann.
+> Wenn Sie diese Erweiterung für eine zuvor erstellte VM bereitstellen, stellen Sie sicher, dass auf dem Computer mindestens 1 GB Arbeitsspeicher zugeordnet ist, da die Erweiterung andernfalls nicht installiert werden kann.
 
 Für die Anmeldung bei einem virtuellen Linux-Computer mit Azure Active Directory-Anmeldeinformationen müssen Sie die VM-Erweiterung für die Azure Active Directory-Anmeldung installieren. VM-Erweiterungen sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Verwenden Sie [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set), um die Erweiterung *AADLoginForLinux* auf dem virtuellen Computer *myVM* in der Ressourcengruppe *myResourceGroup* zu installieren:
 

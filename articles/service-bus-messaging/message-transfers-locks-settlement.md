@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: aschhab
-ms.openlocfilehash: a78409a15acb4e60fc4200778d0f33b3fb566e85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9aaada1ede8912b8b70f37c628ec918eca9be9d2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60403940"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676260"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Nachrichtenübertragungen, Sperren und Abgleich
 
@@ -98,9 +98,13 @@ Mit einem AMQP-Client auf niedriger Ebene akzeptiert Service Bus auch „vorab a
 
 Für Empfangsvorgänge ermöglichen die Service Bus-API-Clients zwei verschiedene explizite Modi: *Receive-and-Delete* und *Peek-Lock*.
 
+### <a name="receiveanddelete"></a>ReceiveAndDelete
+
 Im Modus [Receive-and-Delete](/dotnet/api/microsoft.servicebus.messaging.receivemode) wird der Broker angewiesen, alle an den empfangenden Client gesendeten Nachrichten nach dem Senden als abgeglichen einzustufen. Das bedeutet, dass eine Nachricht als verarbeitet gilt, sobald der Broker sie übertragen hat. Wenn bei der Nachrichtenübertragung ein Fehler auftritt, geht die Nachricht verloren.
 
 Der Vorteil dieses Modus besteht darin, dass der Empfänger keine weitere Aktion für die Nachricht ausführen muss und auch nicht dadurch verlangsamt wird, dass er auf das Ergebnis des Abgleichs warten muss. Wenn die in den einzelnen Nachrichten enthaltenen Daten einen geringen Wert haben und/oder nur für einen sehr kurzen Zeitraum aussagekräftig sind, ist dieser Modus sinnvoll.
+
+### <a name="peeklock"></a>PeekLock
 
 Im Modus [Peek-Lock](/dotnet/api/microsoft.servicebus.messaging.receivemode) wird der Broker angewiesen, dass der empfangende Client empfangene Nachrichten explizit abgleichen möchte. Die Nachricht wird für den Empfänger zur Verarbeitung verfügbar gemacht und gleichzeitig im Dienst exklusiv gesperrt, sodass andere konkurrierende Empfänger sie nicht sehen können. Die Dauer der Sperre wird anfänglich auf Warteschlangen- oder Abonnementebene definiert und kann von dem Client, der die Sperre besitzt, über den [RenewLock](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)-Vorgang erweitert werden.
 
@@ -121,6 +125,14 @@ Bei den **Complete**- oder **DeadLetter**-Vorgängen sowie den **RenewLock**-Vor
 Wenn bei **Complete** ein Fehler auftritt (normalerweise ganz am Ende der Nachrichtenverarbeitung und in einigen Fällen nach mehreren Minuten des Verarbeitungsvorgangs der Fall), kann die empfangende Anwendung entscheiden, ob sie den Status der Arbeit beibehält und die Nachricht ignoriert, wenn sie ein zweites Mal übertragen wird, oder ob sie das Arbeitsergebnis verwirft und den Vorgang bei der erneuten Übertragung der Nachricht wiederholt.
 
 Das typische Verfahren zum Identifizieren von doppelten Nachrichtenübertragungen besteht in der Überprüfung der Nachrichten-ID (message-id), die vom Sender auf einen eindeutigen Wert festgelegt werden kann und sollte, eventuell verbunden mit einem Bezeichner vom sendenden Prozess. Ein Auftragsplaner wird wahrscheinlich die message-id auf den Bezeichner des Auftrags, der einem Worker zugewiesen werden soll, mit dem gegebenen Worker festlegen, und der Worker wird das zweite Vorkommen der Auftragszuweisung ignorieren, sofern der Auftrag bereits abgeschlossen ist.
+
+> [!IMPORTANT]
+> Beachten Sie unbedingt, dass die Sperre, die PeekLock für die Nachricht abruft, flüchtig ist und unter den folgenden Bedingungen verloren gehen kann:
+>   * Dienstupdate
+>   * Betriebssystemupdate
+>   * Ändern von Eigenschaften für die Entität (Warteschlange, Thema, Abonnement) während der Sperre.
+>
+> Wenn die Sperre verloren geht, generiert Azure Service Bus eine LockLostException, die im Clientanwendungscode angezeigt wird. In diesem Fall sollte die standardmäßige Wiederholungslogik des Clients automatisch gestartet werden und den Vorgang wiederholen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

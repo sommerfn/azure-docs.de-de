@@ -7,18 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: fe45adc3eb65631c0b127872240f8d76400f9102
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5e52275cc7215f6c54c2ff6a11faf82114c414b4
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899659"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676594"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-Profilcontainer und Azure Files
 
-Der Windows Virtual Desktop-Dienst (Vorschauversion) empfiehlt FSLogix-Profilcontainer als Lösung für Benutzerprofile. FSLogix ist für das Roaming von Profilen in Remotecomputingumgebungen wie z.B. Windows Virtual Desktop konzipiert. Das Feature speichert ein vollständiges Benutzerprofil in einem einzelnen Container. Bei der Anmeldung wird der Container dynamisch an die Computingumgebung angefügt. Hierzu werden nativ unterstützte VHD (Virtual Hard Disk) und VHDX (Hyper-V Virtual Hard Disk) verwendet. Das Benutzerprofil ist sofort verfügbar und wird im System genau so angezeigt wie ein natives Benutzerprofil.
-
-In diesem Artikel beschreiben wir die FSLogix-Profilcontainer, die mit Azure Files verwendet werden. Die Informationen gelten im Kontext des Windows Virtual Desktop-Diensts, der [am 21.3. angekündigt wurde](https://www.microsoft.com/microsoft-365/blog/2019/03/21/windows-virtual-desktop-public-preview/).
+Der Windows Virtual Desktop-Dienst empfiehlt FSLogix-Profilcontainer als Lösung für Benutzerprofile. FSLogix ist für das Roaming von Profilen in Remotecomputingumgebungen wie z.B. Windows Virtual Desktop konzipiert. Das Feature speichert ein vollständiges Benutzerprofil in einem einzelnen Container. Bei der Anmeldung wird der Container dynamisch an die Computingumgebung angefügt. Hierzu werden nativ unterstützte VHD (Virtual Hard Disk) und VHDX (Hyper-V Virtual Hard Disk) verwendet. Das Benutzerprofil ist sofort verfügbar und wird im System genau so angezeigt wie ein natives Benutzerprofil. Dieser Artikel beschreibt, wie die mit Azure Files verwendeten FSLogix-Profilcontainer in Windows Virtual Desktop funktionieren.
 
 ## <a name="user-profiles"></a>Benutzerprofile
 
@@ -55,7 +53,7 @@ Die folgende Tabelle zeigt die Vorteile und Einschränkungen früherer Technolog
 
 #### <a name="performance"></a>Leistung
 
-UPD erfordert [Direkte Speicherplätze (Storage Spaces Direct, S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment), um Leistungsanforderungen zu erfüllen. UPD verwendet das Server Message Block-Protokoll (SMB). Die Technologie kopiert das Profil auf den virtuellen Computer, bei dem der Benutzer angemeldet ist. UPD mit S2D war die Lösung, die das RDS-Team während der Vorschau für Windows Virtual Desktop empfohlen hat.  
+UPD erfordert [Direkte Speicherplätze (Storage Spaces Direct, S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment), um Leistungsanforderungen zu erfüllen. UPD verwendet das Server Message Block-Protokoll (SMB). Die Technologie kopiert das Profil auf den virtuellen Computer, bei dem der Benutzer angemeldet ist. UPD mit S2D ist die Lösung, die für Windows Virtual Desktop empfohlen wird.  
 
 #### <a name="cost"></a>Kosten
 
@@ -81,7 +79,7 @@ FSLogix-Profilcontainer profitieren durch Bereitstellung von Leistung und Featur
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Best Practices für Windows Virtual Desktop
 
-Windows Virtual Desktop bietet vollständige Kontrolle über Größe, Typ und Anzahl der von Kunden genutzten VMs. Weitere Informationen finden Sie unter [Was ist Windows Virtual Desktop (Vorschauversion)?](overview.md).
+Windows Virtual Desktop bietet vollständige Kontrolle über Größe, Typ und Anzahl der von Kunden genutzten VMs. Weitere Informationen finden Sie unter [Was ist Windows Virtual Desktop?](overview.md)
 
 Um sicherzustellen, dass die Windows Virtual Desktop-Umgebung gemäß Best Practices funktioniert, müssen folgende Voraussetzungen erfüllt sein:
 

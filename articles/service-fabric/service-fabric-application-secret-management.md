@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: d151dbf20e68a2152e9d886a74e51786bb8fbfa6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9854ad7118684e1a5e57b0809d733d812ad64176
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614478"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828831"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Verwalten von verschlüsselten Geheimnissen in Service Fabric-Anwendungen
 In diesem Leitfaden werden die Schritte zum Verwalten von Geheimnissen in einer Service Fabric-Anwendung beschrieben. Geheimnisse beinhalten jegliche Art von vertraulichen Informationen (z.B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die nicht als Nur-Text verarbeitet werden sollen).
@@ -31,8 +31,8 @@ Die Verwendung von verschlüsselten Geheimnissen in einer Service Fabric-Anwendu
 
 ## <a name="set-up-an-encryption-certificate-and-encrypt-secrets"></a>Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen
 Das Einrichten eines Verschlüsselungszertifikats und das anschließende Verwenden zum Verschlüsseln von Geheimnissen unterscheidet sich unter Windows und Linux.
-* [Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Windows-Clustern][secret-management-windows-specific-link]
-* [Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Linux-Clustern][secret-management-linux-specific-link]
+* [Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Windows-Clustern.][secret-management-windows-specific-link]
+* [Einrichten eines Verschlüsselungszertifikats und Verschlüsseln von Geheimnissen in Linux-Clustern.][secret-management-linux-specific-link]
 
 ## <a name="specify-encrypted-secrets-in-an-application"></a>Angeben von verschlüsselten Geheimnissen in einer Anwendung
 Im vorherigen Schritt wird beschrieben, wie Sie ein Geheimnis mit einem Zertifikat verschlüsseln und eine Zeichenfolge mit Base64-Codierung erzeugen, die in einer Anwendung verwendet werden kann. Diese Base64-codierte Zeichenfolge kann als verschlüsselter [Parameter][parameters-link] in der Datei „Settings.xml“ eines Diensts oder als verschlüsselte [Umgebungsvariable][environment-variables-link] in der Datei „ServiceManifest.xml“ eines Diensts angegeben werden.
@@ -54,6 +54,17 @@ Geben Sie eine verschlüsselte [Umgebungsvariable][environment-variables-link] i
     <EnvironmentVariable Name="MyEnvVariable" Type="Encrypted" Value="I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM=" />
   </EnvironmentVariables>
 </CodePackage>
+```
+
+Die Geheimnisse können auch in Ihre Service Fabric-Anwendung eingebunden werden, indem Sie ein Zertifikat im Anwendungsmanifest angeben. Fügen Sie der Datei **ApplicationManifest.xml** ein **SecretsCertificate**-Element hinzu, und binden Sie den Fingerabdruck des gewünschten Zertifikats ein.
+
+```xml
+<ApplicationManifest … >
+  ...
+  <Certificates>
+    <SecretsCertificate Name="MyCert" X509FindType="FindByThumbprint" X509FindValue="[YourCertThumbrint]"/>
+  </Certificates>
+</ApplicationManifest>
 ```
 
 ### <a name="inject-application-secrets-into-application-instances"></a>Einfügen von Geheimnissen aus Anwendungen in Anwendungsinstanzen

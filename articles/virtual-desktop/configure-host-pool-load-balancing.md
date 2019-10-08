@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop (Vorschauversion) – Azure
+title: 'Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop: Azure'
 description: Es wird beschrieben, wie Sie die Lastenausgleichsmethode für eine Windows Virtual Desktop-Umgebung konfigurieren.
 services: virtual-desktop
 author: Heidilohr
@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: e1f1ea10dc68e501cfac7ef0cf0383ce78e8f380
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3a940dbf592087878cb9dd19f856f1a3d94291c5
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163766"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676778"
 ---
-# <a name="configure-the-windows-virtual-desktop-preview-load-balancing-method"></a>Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop (Vorschauversion)
+# <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop
 
-Beim Konfigurieren der Lastenausgleichsmethode für einen Hostpool können Sie die Windows Virtual Desktop-Umgebung (Vorschauversion) anpassen, damit Ihre Anforderungen besser erfüllt werden.
+Beim Konfigurieren der Lastenausgleichsmethode für einen Hostpool können Sie die Windows Virtual Desktop-Umgebung anpassen, damit Ihre Anforderungen besser erfüllt werden.
 
 >[!NOTE]
 > Dies gilt nicht für einen dauerhaften Desktophostpool, da Benutzer im Hostpool immer über eine 1:1-Zuordnung zu einem Sitzungshost verfügen.

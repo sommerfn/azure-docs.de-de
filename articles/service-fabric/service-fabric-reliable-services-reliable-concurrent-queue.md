@@ -1,6 +1,6 @@
 ---
 title: ReliableConcurrentQueue in Azure Service Fabric
-description: ReliableConcurrentQueue ist eine Warteschlange mit hohem Durchsatz, die ein gleichzeitiges Einreihen in und Entfernen aus der Warteschlange ermöglicht.
+description: ReliableConcurrentQueue ist eine Warteschlange mit hohem Durchsatz, die paralleles Einreihen in die und Entfernen aus der Warteschlange ermöglicht.
 services: service-fabric
 documentationcenter: .net
 author: athinanthny
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: atsenthi
-ms.openlocfilehash: 8cb35d6265bafe2b259774a55119d33f8ae94fe9
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 776d330e36e6bcafe610bbab54e13ff6c41e2edf
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599262"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350278"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Einführung in ReliableConcurrentQueue in Azure Service Fabric
 ReliableConcurrentQueue ist eine asynchrone, transaktionsbasierte und replizierte Warteschlange, die ein hohes Maß an Parallelität für Einreihungs- und Entfernungsvorgänge bietet. Die Warteschlange bietet hohen Durchsatz und niedrige Latenz, indem die strikte FIFO-Reihenfolge von [ReliableQueue](https://msdn.microsoft.com/library/azure/dn971527.aspx) gelockert wird. Stattdessen wird eine Reihenfolge nach dem Prinzip „beste Leistung“ angewendet.
@@ -45,12 +45,19 @@ Ein Beispiel für ReliableConcurrentQueue ist ein Szenario mit [Nachrichtenwarte
 * Die Warteschlange garantiert keine strikte FIFO-Reihenfolge.
 * Die Warteschlange liest die eigenen Schreibvorgänge nicht. Wenn ein Element innerhalb einer Transaktion in eine Warteschlange eingereiht wird, ist es für einen Dequeuer innerhalb derselben Transaktion nicht sichtbar.
 * Entfernungsvorgänge sind nicht voneinander isoliert. Wenn Element *A* in Transaktion *txnA* aus der Warteschlange entfernt wird, ist Element *A* für eine gleichzeitig ausgeführte Transaktion *txnB* nicht sichtbar, selbst wenn für *txnA* kein Commit ausgeführt wurde.  Wenn *txnA* abgebrochen wird, wird *A* sofort für *txnB* sichtbar.
-* Das *TryPeekAsync*-Verhalten kann implementiert werden, indem *TryDequeueAsync* verwendet und die Transaktion dann abgebrochen wird. Ein Beispiel hierfür finden Sie im Abschnitt „Muster für die Programmierung“.
+* Das *TryPeekAsync*-Verhalten kann implementiert werden, indem *TryDequeueAsync* verwendet und die Transaktion dann abgebrochen wird. Ein Beispiel für dieses Verhalten finden Sie im Abschnitt „Muster für die Programmierung“.
 * „Count“ ist nicht transaktional und kann verwendet werden, um die ungefähre Anzahl von Elementen in der Warteschlange zu ermitteln. Der Wert bezieht sich aber auf einen Zeitpunkt und ist daher nicht zuverlässig.
 * Die aus der Warteschlange entfernten Elemente sollten nicht umfangreich verarbeitet werden, während die Transaktion aktiv ist. So werden Transaktionen mit langer Ausführungsdauer vermieden, die sich negativ auf die Systemleistung auswirken können.
 
 ## <a name="code-snippets"></a>Codeausschnitte
 Sehen wir uns einige Codeausschnitte und die zugehörigen erwarteten Ausgaben an. Die Ausnahmebehandlung wird in diesem Abschnitt ignoriert.
+
+### <a name="instantiation"></a>Instanziierung
+Das Erstellen einer Instanz einer zuverlässigen gleichzeitigen Warteschlange ähnelt allen anderen zuverlässigen Sammlungen.
+
+```csharp
+IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IReliableConcurrentQueue<int>>("myQueue");
+```
 
 ### <a name="enqueueasync"></a>EnqueueAsync
 Hier finden Sie einige Codeausschnitte für die Verwendung von EnqueueAsync sowie die erwarteten Ausgaben.
@@ -174,7 +181,7 @@ Dasselbe gilt für alle Fälle, in denen für eine Transaktion kein *Commit* aus
 In diesen Abschnitt betrachten wir einige Muster für die Programmierung, die bei der Verwendung von ReliableConcurrentQueue nützlich sein können.
 
 ### <a name="batch-dequeues"></a>Entfernen aus der Warteschlange im Batch
-Ein empfohlenes Programmiermuster besteht darin, dass der Consumertask Elemente nicht nacheinander aus der Warteschlange entfernt, sondern den Entfernungsvorgang im Batch ausführt. Der Benutzer kann Verzögerungen zwischen jedem Batch oder die Batchgröße drosseln. Der folgende Codeausschnitt zeigt das Programmiermuster.  Beachten Sie, dass in diesem Beispiel die Verarbeitung nach dem Commit der Transaktion erfolgt. Wenn also während der Verarbeitung ein Fehler auftritt, gehen die nicht verarbeiteten Elemente ohne Verarbeitung verloren.  Alternativ dazu kann die Verarbeitung auch innerhalb des Geltungsbereichs der Transaktion erfolgen. Dies kann sich jedoch negativ auf die Leistung auswirken und erfordert eine Behandlung der Elemente, die bereits verarbeitet wurden.
+Ein empfohlenes Programmiermuster besteht darin, dass der Consumertask Elemente nicht nacheinander aus der Warteschlange entfernt, sondern den Entfernungsvorgang im Batch ausführt. Der Benutzer kann Verzögerungen zwischen jedem Batch oder die Batchgröße drosseln. Der folgende Codeausschnitt zeigt das Programmiermuster. Beachten Sie, dass in diesem Beispiel die Verarbeitung nach dem Commit der Transaktion erfolgt. Wenn also während der Verarbeitung ein Fehler auftritt, gehen die nicht verarbeiteten Elemente ohne Verarbeitung verloren.  Alternativ dazu kann die Verarbeitung auch innerhalb des Geltungsbereichs der Transaktion erfolgen. Dies kann sich jedoch negativ auf die Leistung auswirken und erfordert eine Behandlung der Elemente, die bereits verarbeitet wurden.
 
 ```
 int batchSize = 5;
@@ -268,7 +275,7 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-drain"></a>Leerung nach dem Prinzip „beste Leistung“
-Aufgrund der Gleichzeitigkeit der Datenstruktur kann eine Leerung der Warteschlange nicht garantiert werden.  Es ist möglich, dass – selbst wenn derzeit keine Benutzervorgänge in der Warteschlange ausgeführt werden – ein bestimmter Aufruf von „TryDequeueAsync“ kein Element zurückgibt, das zuvor in die Warteschlange eingereiht und per Commit zugesichert wurde.  Es ist garantiert, dass das eingereihte Element *letztlich* für die Entfernung aus der Warteschlange sichtbar wird. Ohne Out-of-Band-Kommunikationsmechanismus kann ein unabhängiger Consumer jedoch nicht wissen, dass die Warteschlange einen stabilen Zustand erreicht hat, auch wenn alle Producer angehalten wurden und keine neuen Einreihungsvorgänge zulässig sind. Daher wird beim Leerungsvorgang das Prinzip „beste Leistung“ angewendet, wie unten implementiert.
+Aufgrund der Gleichzeitigkeit der Datenstruktur kann eine Leerung der Warteschlange nicht garantiert werden.  Es ist möglich, dass (selbst wenn derzeit keine Benutzervorgänge in der Warteschlange ausgeführt werden) ein bestimmter Aufruf von TryDequeueAsync kein Element zurückgibt, das zuvor in die Warteschlange eingereiht und commitet wurde.  Es ist garantiert, dass das eingereihte Element *letztlich* für die Entfernung aus der Warteschlange sichtbar wird. Ohne Out-of-Band-Kommunikationsmechanismus kann ein unabhängiger Consumer jedoch nicht wissen, dass die Warteschlange einen stabilen Zustand erreicht hat, auch wenn alle Producer angehalten wurden und keine neuen Einreihungsvorgänge zulässig sind. Daher wird beim Leerungsvorgang das Prinzip „beste Leistung“ angewendet, wie unten implementiert.
 
 Der Benutzer muss alle weiteren Producer- und Consumertasks anhalten und darauf warten, dass sämtliche noch ausgeführten Transaktionen bestätigt oder abgebrochen werden, bevor er versucht, die Warteschlange zu leeren.  Wenn der Benutzer die erwartete Anzahl von Elementen in der Warteschlange kennt, kann er eine Benachrichtigung einrichten, die signalisiert, dass alle Elemente aus der Warteschlange entfernt wurden.
 
@@ -337,7 +344,7 @@ using (var txn = this.StateManager.CreateTransaction())
 ```
 
 ## <a name="must-read"></a>Wichtige Informationen
-* [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
+* [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
 * [Arbeiten mit Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services – Benachrichtigungen](service-fabric-reliable-services-notifications.md)
 * [Sichern und Wiederherstellen von Reliable Services (Notfallwiederherstellung)](service-fabric-reliable-services-backup-restore.md)

@@ -2,16 +2,18 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/27/2019
+ms.date: 09/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 11c9b2ea3ea054415f25f864651df28288aa0025
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 93a2554b5d3cc24e1b5fc1e3d0f18ed1bfe0579c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266839"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71692033"
 ---
-Sie können viele Möglichkeiten zum Überwachen Ihrer VMs nutzen, indem Sie Diagnose- und Protokolldaten sammeln, anzeigen und analysieren. Zum einfachen [Überwachen](../articles/azure-monitor/overview.md) Ihrer VM können Sie im Azure-Portal die Übersichtsseite für die VM verwenden. Sie können [Erweiterungen](../articles/virtual-machines/windows/extensions-features.md) verwenden, um die Diagnose für Ihre VMs so zu konfigurieren, dass zusätzliche Metrikdaten gesammelt werden. Sie können auch anspruchsvollere Überwachungsoptionen nutzen, z.B. [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) und [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
+Angesichts des starken Wachstums der in Azure gehosteten VMs ist es wichtig, Leistungs- und Integritätsprobleme zu identifizieren, die sich auf Anwendungen und Infrastrukturdienste auswirken, die sie unterstützen. Grundlegende Überwachung wird standardmäßig mit Azure durch die Metriktypen CPU-Auslastung, Datenträgerverwendung, Arbeitsspeicherauslastung und Netzwerkdatenverkehr bereitgestellt, die vom Hosthypervisor erfasst werden. Zusätzliche Metrik-und Protokolldaten können mit [Erweiterungen](../articles/virtual-machines/windows/extensions-features.md) erfasst werden, um die Diagnose für Ihre virtuellen Computer über das Gastbetriebssystem zu konfigurieren.
+
+Um Leistungs- und Integritätsprobleme mit dem Gastbetriebssystem, .NET-basierten oder Java-Webanwendungskomponenten, die innerhalb der VM ausgeführt werden, zu erkennen und zu diagnostizieren, bietet Azure Monitor eine zentrale Überwachung mit umfassenden Funktionen wie Azure Monitor für VMs und Application Insights.
 
 ## <a name="diagnostics-and-metrics"></a>Diagnose und Metriken 
 
@@ -27,11 +29,11 @@ Sie können die Sammlung von [Diagnosedaten](https://docs.microsoft.com/cli/azur
 
 - **Aktivieren der Sammlung von Diagnosedaten für das Gastbetriebssystem** Beim Erstellen einer VM können Sie auf der Seite mit den Einstellungen die Diagnose für das Gastbetriebssystem aktivieren. Wenn Sie die Sammlung von Diagnosedaten aktivieren, wird der VM die [IaaSDiagnostics-Erweiterung für Linux](../articles/virtual-machines/linux/diagnostic-extension.md) oder die [IaaSDiagnostics-Erweiterung für Windows](../articles/virtual-machines/windows/ps-extensions-diagnostics.md) hinzugefügt. Dies ermöglicht Ihnen die Erfassung von zusätzlichen Datenträger-, CPU- und Arbeitsspeicherdaten.
 
-    Mit den gesammelten Diagnosedaten können Sie für Ihre VMs die automatische Skalierung konfigurieren. Sie können auch Protokolle zum Speichern der Daten konfigurieren und Warnungen einrichten, damit Sie benachrichtigt werden, wenn die Leistung nicht optimal ist.
+    Mit den gesammelten Diagnosedaten können Sie für Ihre VMs die automatische Skalierung konfigurieren. Sie können auch [Azure Monitor-Protokolle](../articles/azure-monitor/platform/data-platform-logs.md) zum Speichern der Daten konfigurieren und Warnungen einrichten, damit Sie benachrichtigt werden, wenn die Leistung nicht optimal ist.
 
 ## <a name="alerts"></a>Alerts
 
-Sie können [Warnungen](../articles/azure-monitor/platform/alerts-overview.md) auf Grundlage von bestimmten Leistungsmetriken erstellen. Beispiele für die Probleme, über die Sie benachrichtigt werden können, sind das Überschreiten eines bestimmten Schwellenwerts für die durchschnittliche CPU-Auslastung oder das Fallen des verfügbaren freien Datenträger-Speicherplatzes unter einen bestimmten Wert. Warnungen können im [Azure-Portal](../articles/azure-monitor/platform/alerts-classic-portal.md), mit [Azure PowerShell](../articles/azure-monitor/platform/alerts-classic-portal.md#with-powershell) oder mit der [Azure CLI](../articles/azure-monitor/platform/alerts-classic-portal.md#with-azure-cli) konfiguriert werden.
+Sie können [Warnungen](../articles/azure-monitor/platform/alerts-overview.md) auf Grundlage von bestimmten Leistungsmetriken erstellen. Beispiele für die Probleme, über die Sie benachrichtigt werden können, sind das Überschreiten eines bestimmten Schwellenwerts für die durchschnittliche CPU-Auslastung oder das Fallen des verfügbaren freien Datenträger-Speicherplatzes unter einen bestimmten Wert. Warnungen können im [Azure-Portal](../articles/azure-monitor/platform/alerts-metric.md#create-with-azure-portal), mit [Azure Resource Manager-Vorlagen](../articles/azure-monitor/platform/alerts-metric-create-templates.md) oder mit der [Azure CLI](../articles/azure-monitor/platform/alerts-metric.md#with-azure-cli) konfiguriert werden.
 
 ## <a name="azure-service-health"></a>Azure Service Health
 
@@ -48,8 +50,8 @@ Das [Azure-Aktivitätsprotokoll](../articles/azure-monitor/platform/activity-log
 Hier sind einige Verwendungsmöglichkeiten für das Aktivitätsprotokoll aufgeführt:
 
 - [Erstellen einer Warnung zu einem Aktivitätsprotokollereignis](../articles/azure-monitor/platform/activity-logs-overview.md)
-- Streamen an einen [Event Hub](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI
-- [Analysieren in Power BI mit dem Power BI-Inhaltspaket](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)
+- [Streamen an einen Event Hub](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md) zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI.
+- Analysieren in Power BI mit dem [Power BI-Inhaltspaket](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/).
 - [Speichern unter einem Speicherkonto](../articles/azure-monitor/platform/archive-activity-log.md) zur Archivierung oder manuellen Untersuchung Sie können die Aufbewahrungsdauer (in Tagen) mithilfe des Protokollprofils angeben.
 
 Außerdem können Sie auf die Daten des Aktivitätsprotokolls zugreifen, indem Sie [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/), die [Azure CLI](https://docs.microsoft.com/cli/azure/monitor) oder [Monitor-REST-APIs](https://docs.microsoft.com/rest/api/monitor/) verwenden.
@@ -59,19 +61,17 @@ Außerdem können Sie auf die Daten des Aktivitätsprotokolls zugreifen, indem S
 Hier sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle aufgeführt:
 
 - Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem [Speicherkonto](../articles/azure-monitor/platform/archive-diagnostic-logs.md) gespeichert werden. Mithilfe der Diagnoseeinstellungen für Ressourcen können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
-- Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI an [Event Hubs streamen](../articles/azure-monitor/platform/resource-logs-stream-event-hubs.md).
+- Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI [an Event Hubs streamen](../articles/azure-monitor/platform/resource-logs-stream-event-hubs.md).
 - Analysieren Sie sie mit [Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
 
 ## <a name="advanced-monitoring"></a>Erweiterte Überwachung
 
-- [Azure Monitor](../articles/azure-monitor/overview.md) ist ein Dienst, der Ihre cloudbasierten und lokalen Umgebungen überwacht, um die Verfügbarkeit und Leistung sicherzustellen. Er bietet eine umfassende Lösung für das Sammeln, Analysieren und Behandeln von Telemetriedaten aus Ihren Cloud- und lokalen Umgebungen. Diese Lösung hilft Ihnen, die Leistung Ihrer Anwendungen zu verstehen, und erkennt proaktiv Probleme, die sich auf sie auswirken, und Ressourcen, von denen sie abhängen. Sie können eine Erweiterung auf einer [Linux-VM](../articles/virtual-machines/linux/extensions-oms.md) oder einer [Windows-VM](../articles/virtual-machines/windows/extensions-oms.md) installieren, die den Log Analytics-Agent installiert, damit dieser Daten sammelt und in einem Log Analytics-Arbeitsbereich speichert.
+Um die von der Azure-VM und den VM-Skalierungsgruppen unterstützte Anwendung oder den Dienst sichtbar zu machen, Probleme mit dem Gastbetriebssystem oder der in der VM ausgeführten Workload zu identifizieren, um zu verstehen, ob dies die Verfügbarkeit oder Leistung der Anwendung beeinträchtigt oder ein Problem mit der Anwendung ist, aktivieren Sie sowohl [Azure Monitor für VMs](../articles/azure-monitor/insights/vminsights-overview.md) als auch [Application Insights](../articles/azure-monitor/app/app-insights-overview.md).
 
-    Die empfohlene Methode zum Erfassen von Protokollen für Windows- und Linux-VMs ist die Installation des Log Analytics-Agents. Die einfachste Möglichkeit zum Installieren des Log Analytics-Agents auf einer VM ist die [Log Analytics-VM-Erweiterung](../articles/log-analytics/log-analytics-azure-vm-extension.md). Die Verwendung der Erweiterung vereinfacht den Installationsvorgang. Außerdem wird der Agent zum Senden von Daten an den angegebenen Log Analytics-Arbeitsbereich automatisch konfiguriert. Der Agent wird auch automatisch aktualisiert, damit Sie immer über die neuesten Features und Fixes verfügen.
-
-- Mit dem [Network Watcher](../articles/network-watcher/network-watcher-monitoring-overview.md) können Sie Ihre VM und die dazugehörigen Ressourcen überwachen, um zu ermitteln, welche Beziehung sie zum verwendeten Netzwerk aufweisen. Sie können die Network Watcher-Agent-Erweiterung auf einer [Linux-VM](../articles/virtual-machines/linux/extensions-nwa.md) oder [Windows-VM](../articles/virtual-machines/windows/extensions-nwa.md) installieren.
-
-- [Azure Monitor für VMs](../articles/azure-monitor/insights/vminsights-overview.md) überwacht Ihre Azure-VMs nach Maß durch Analysieren der Leistung und Integrität der Windows- und Linux-VMs, einschließlich der verschiedenen Prozesse und miteinander verbundenen Abhängigkeiten von anderen Ressourcen und externen Prozessen. 
+Azure Monitor für VMs überwacht Ihre virtuellen Azure-Computer im gewünschten Umfang, indem eine Analyse der Leistung und Integrität Ihrer Windows- und Linux-VMs durchgeführt wird. Dies schließt die verschiedenen Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen ein, die erkannt werden. Das Tool umfasst mehrere Trendleistungsdiagramme, die bei der Untersuchung von Problemen und der Bewertung der Kapazität ihrer VMs helfen. Die Abhängigkeitszuordnung zeigt überwachte und nicht überwachte Computer, ausgefallene und aktive Netzwerkverbindungen zwischen Prozessen und diesen Computern sowie Trenddiagramme mit Netzwerkverbindungs-Standardmetriken. In Kombination mit Application Insights überwachen Sie Ihre Anwendung und erfassen Telemetriedaten, etwa HTTP-Anforderungen, Ausnahmen usw., damit Sie Probleme zwischen den VMs und ihrer Anwendung korrelieren können. Konfigurieren Sie [Azure Monitor-Warnungen](../articles/azure-monitor/platform/alerts-overview.md), um Sie über wichtige Bedingungen zu informieren, die von den durch Azure Monitor für VMs erfassten Überwachungsdaten erkannt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Führen Sie die Schritte unter [Überwachen eines virtuellen Windows-Computers mit Azure PowerShell](../articles/virtual-machines/windows/tutorial-monitoring.md) oder [Überwachen eines virtuellen Linux-Computers mit der Azure CLI](../articles/virtual-machines/linux/tutorial-monitoring.md) aus.
+
 - Informieren Sie sich über die bewährten Methoden zum Durchführen der [Überwachung und Diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring).

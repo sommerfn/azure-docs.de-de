@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f892857d74150ee42cc2ea4b5c996feac3d1cfa2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 19e1a5f1534d09246ca85029f45ee918ec57e51f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695612"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828411"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI
 
@@ -142,4 +142,4 @@ Um einen erweiterten Datenträger zu verwenden, erweitern Sie die zugrunde liege
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Wenn Sie zusätzlichen Speicher benötigen, können Sie auch [Datenträger zu einer Linux-VM hinzufügen](add-disk.md). 
-* Weitere Informationen zur Datenträgerverschlüsselung finden Sie unter [Encrypt disks on a Linux VM using the Azure CLI (Verschlüsseln von Datenträgern auf einer Linux-VM mithilfe der Azure-Befehlszeilenschnittstelle)](encrypt-disks.md).
+* Weitere Informationen zur Datenträgerverschlüsselung finden Sie unter [Azure Disk Encryption für Linux-VMs](disk-encryption-overview.md).

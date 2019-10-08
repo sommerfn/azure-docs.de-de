@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/17/2019
+ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc1c6e4bf2e67d8945cf754aa47461b4ce8364a9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ab6139e1f87938edaa0a8a94453faa213d39e23f
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066822"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719009"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -120,7 +120,10 @@ Informationen zur Integration von Azure-Diensten in SAP-Komponenten finden Sie u
 
 
 ## <a name="change-log"></a>Änderungsprotokoll
-- 17.09.2019: Änderung im NetWeaver-Planungs- und Bereitstellungsleitfaden, um die Begriffe im Zusammenhang mit der VM-Erweiterung für SAP zu vereinheitlichen
+- 01.10.2019: Änderung in der Abbildung [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios), um eine klarere Darstellung zu erzielen.
+- 01.10.2019: Änderung der [SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations), um Aussagen über hochverfügbare NFS-Freigabe für /hana/shared zu korrigieren. 
+- 28.09.2019: Änderung in [Einrichten von Pacemaker unter Red Hat Enterprise Linux in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) zur Verdeutlichung, dass SBD als Fencingmechanismus nicht von RHEL-Clustern unterstützt wird.  
+- 17.09.2019: Änderung im NetWeaver-Planungs- und Bereitstellungsleitfaden, um die Begriffe im Zusammenhang mit der VM-Erweiterung für SAP zu vereinheitlichen  
 - 22.08.2019: Änderungen beim [Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) zum Aktualisieren der URLs für die benutzerdefinierte Rollenerstellung  
 - 16.08.2019: Änderungen an [Einrichten von Pacemaker unter Red Hat Enterprise Linux in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker), um Kunden daran zu erinnern, dass sie die Aktionen in der benutzerdefinierten Rolle aktualisieren müssen, wenn sie auf die neue Version des Azure Fence-Agents aktualisiert haben  
 - 15.08.2019: Änderungen an [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage), um die allgemeine Verfügbarkeit von Ultra-Datenträgern (früher SSD Ultra) zu berücksichtigen

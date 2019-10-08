@@ -1,22 +1,22 @@
 ---
-title: Erstellen eines Hostpools für die Vorschauversion von Windows Virtual Desktop mit PowerShell – Azure
-description: Es wird beschrieben, wie Sie in Windows Virtual Desktop (Vorschauversion) mit PowerShell-Cmdlets einen Hostpool erstellen.
+title: 'Erstellen eines Windows Virtual Desktop-Hostpools mit PowerShell: Azure'
+description: Informationen zum Erstellen eines Hostpools in Windows Virtual Desktop mit PowerShell-Cmdlets.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 1fb377d482277a4776214d08b879d99f4234ca40
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: a5e228417610a19c38acf9ce2db6e743ec122580
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163676"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679580"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Erstellen eines Hostpools mit PowerShell
 
-Hostpools sind eine Sammlung identischer virtueller Computer innerhalb von Mandantenumgebungen mit Windows Virtual Desktop (Vorschauversion). Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
+Hostpools sind eine Sammlung identischer virtueller Computer innerhalb von Mandantenumgebungen mit Windows Virtual Desktop. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>Verwenden Ihres PowerShell-Clients zum Erstellen eines Hostpools
 
@@ -48,7 +48,7 @@ Add-RdsAppGroupUser -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGr
 
 Das Cmdlet **Add-RdsAppGroupUser** weist keine Unterstützung für das Hinzufügen von Sicherheitsgruppen auf und fügt der App-Gruppe nur jeweils einen Benutzer hinzu. Falls Sie der App-Gruppe mehrere Benutzer hinzufügen möchten, können Sie das Cmdlet mit den passenden Benutzerprinzipalnamen erneut ausführen.
 
-Führen Sie das folgende Cmdlet aus, um das Registrierungstoken in eine Variable zu exportieren. Sie verwenden sie später unter [Registrieren der virtuellen Computer unter dem Windows Virtual Desktop-Hostpool (Vorschauversion)](#register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool).
+Führen Sie das folgende Cmdlet aus, um das Registrierungstoken in eine Variable zu exportieren. Sie verwenden sie später unter [Registrieren der virtuellen Computer unter dem Windows Virtual Desktop-Hostpool (Vorschauversion)](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool).
 
 ```powershell
 $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname>).Token
@@ -64,9 +64,12 @@ Sie können einen virtuellen Computer auf unterschiedliche Arten erstellen:
 - [Erstellen eines virtuellen Computers aus einem verwalteten Image](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
 - [Erstellen eines virtuellen Computers aus einem nicht verwalteten Image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
+>[!NOTE]
+>Wenn Sie einen virtuellen Computer mit Windows 7 als Hostbetriebssystem bereitstellen, ist der Erstellungs- und Bereitstellungsprozess ein wenig anders. Weitere Informationen finden Sie unter [Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop](deploy-windows-7-virtual-machine.md).
+
 Nachdem Sie Ihre virtuellen Sitzungshostcomputer erstellt haben, [wenden Sie eine Windows-Lizenz auf einen virtuellen Sitzungshostcomputer an](./apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm), um Ihre virtuellen Windows- oder Windows Server-Computer auszuführen, ohne für eine weitere Lizenz zu bezahlen. 
 
-## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-preview-agent-installations"></a>Vorbereiten der virtuellen Computer für Installationen von Windows Virtual Desktop-Agents (Vorschauversion)
+## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations"></a>Vorbereiten der virtuellen Computer für Installationen von Windows Virtual Desktop-Agents
 
 Sie müssen die folgenden Schritte zum Vorbereiten Ihrer virtuellen Computer ausführen, bevor Sie die Windows Virtual Desktop-Agents installieren und die virtuellen Computer für Ihren Windows Virtual Desktop-Hostpool registrieren können:
 
@@ -84,7 +87,7 @@ Führen Sie auf jedem virtuellen Computer die folgenden Schritte aus, damit der 
     >[!NOTE]
     > Wenn Sie Ihre VMs mit einer Azure Active Directory Domain Services (Azure AD DS)-Umgebung verknüpfen, stellen Sie sicher, dass Ihre Domänenbeitrittsbenutzer ebenfalls Mitglied der [Gruppe „AAD DC-Administratoren“](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group) ist.
 
-## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>Registrieren der virtuellen Computer für den Windows Virtual Desktop-Hostpool (Vorschauversion)
+## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>Registrieren der virtuellen Computer für den Windows Virtual Desktop-Hostpool
 
 Das Registrieren der virtuellen Computer für einen Windows Virtual Desktop-Hostpool ist so einfach wie das Installieren der Windows Virtual Desktop-Agents.
 

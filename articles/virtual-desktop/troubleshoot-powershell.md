@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 73fd9a989c72cb33baccefdfa512f34de5bb88bd
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 021560f9538d2a95492ee04467e8733caa226eec
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876733"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679420"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop: PowerShell
 
@@ -20,7 +20,7 @@ Verwenden Sie diesen Artikel, um Fehler und Probleme bei der Verwendung von Powe
 
 ## <a name="provide-feedback"></a>Feedback geben
 
-Solange sich Windows Virtual Desktop in der Vorschauphase befindet, werden noch keine Supportanfragen angenommen. In der [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) können Sie sich mit dem Produktteam und aktiven Communitymitgliedern über den Windows Virtual Desktop-Dienst austauschen.
+In der [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) können Sie sich mit dem Produktteam und aktiven Communitymitgliedern über den Windows Virtual Desktop-Dienst austauschen.
 
 ## <a name="powershell-commands-used-during-windows-virtual-desktop-setup"></a>Während der Installation von Windows Virtual Desktop verwendete PowerShell-Befehle
 
@@ -89,7 +89,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 - Informationen zur Problembehandlung beim Erstellen eines Mandanten- und Hostpools in einer Windows Virtual Desktop-Umgebung finden Sie unter [Mandanten- und Hostpoolerstellung](troubleshoot-set-up-issues.md).
 - Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Windows Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md).
 - Informationen zur Problembehandlung bei Problemen mit Windows Virtual Desktop-Clientverbindungen finden Sie unter [Remotedesktop-Clientverbindungen](troubleshoot-client-connection.md).
-- Weitere Informationen zum Vorschaudienst finden Sie unter [Windows Virtual Desktop-Umgebung (Vorschauversion)](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
 - Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
 - Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 - Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

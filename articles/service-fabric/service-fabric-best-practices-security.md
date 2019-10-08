@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 19ccd44888d64967baf82568c1cbb2540f3b3f68
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 75edb385a86be849ec7c165759d3b451eab804f6
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780341"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828509"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric-Sicherheit 
 
@@ -152,6 +152,18 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 
 Nachdem Sie Ihre geschützten Werte verschlüsselt haben, können Sie [verschlüsselte Geheimnisse in der Service Fabric-Anwendung angeben](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application) und [verschlüsselte Geheimnisse aus dem Dienstcode entschlüsseln](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code).
 
+## <a name="include-certificate-in-service-fabric-applications"></a>Einbinden eines Zertifikats in Service Fabric-Anwendungen
+
+Um Ihrer Anwendung Zugriff auf Geheimnisse zu gewähren, binden Sie das Zertifikat ein, indem Sie ein **SecretsCertificate**-Element zum Anwendungsmanifest hinzufügen.
+
+```xml
+<ApplicationManifest … >
+  ...
+  <Certificates>
+    <SecretsCertificate Name="MyCert" X509FindType="FindByThumbprint" X509FindValue="[YourCertThumbrint]"/>
+  </Certificates>
+</ApplicationManifest>
+```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Authentifizieren von Service Fabric-Anwendungen für Azure-Ressourcen per verwalteter Dienstidentität (Managed Service Identity, MSI)
 
 Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-it-work).

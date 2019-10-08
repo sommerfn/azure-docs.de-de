@@ -1,22 +1,22 @@
 ---
-title: Erstellen eines Windows Virtual Desktop-Hostpools (Vorschauversion) mit einer Azure Resource Manager-Vorlage – Azure
-description: Es wird beschrieben, wie Sie in Windows Virtual Desktop (Vorschauversion) mit einer Azure Resource Manager-Vorlage einen Hostpool erstellen.
+title: 'Erstellen eines Windows Virtual Desktop-Hostpools mit einer Azure Resource Manager-Vorlage: Azure'
+description: Beschreibt, wie Sie in Windows Virtual Desktop mit einer Azure Resource Manager-Vorlage einen Hostpool erstellen.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 27fe19c2b1f92b67e02b4e09d5fcd607759d8abd
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b96ecad93c481a762b81a7888940850ed3a73e5f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163740"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679609"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Erstellen eines Hostpools mit einer Azure Resource Manager-Vorlage
 
-Hostpools sind eine Sammlung identischer virtueller Computer innerhalb von Mandantenumgebungen mit Windows Virtual Desktop (Vorschauversion). Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
+Hostpools sind eine Sammlung identischer virtueller Computer innerhalb von Mandantenumgebungen mit Windows Virtual Desktop. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
 
 Befolgen Sie die Anleitung in diesem Abschnitt, um mit einer von Microsoft bereitgestellten Azure Resource Manager-Vorlage einen Hostpool für einen Windows Virtual Desktop-Mandanten zu erstellen. In diesem Artikel wird beschrieben, wie Sie in Windows Virtual Desktop einen Hostpool erstellen, eine Ressourcengruppe mit VMs unter einem Azure-Abonnement erstellen und diese VMs dann in die AD-Domäne einbinden und für Windows Virtual Desktop registrieren.
 

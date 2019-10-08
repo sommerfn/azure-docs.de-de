@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 58af69b401400c7b2f663a91de8bf38bc9a296a3
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8778a8bc27995cc9d0969762b6897f6cac0283a2
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877700"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828882"
 ---
 # <a name="cloudsimple-nodes-overview"></a>Übersicht über CloudSimple-Knoten
 
@@ -36,13 +36,14 @@ Gekaufte Knoten bieten Kapazität mit nutzungsbasierter Bezahlung. Durch den Kau
 
 Die folgenden Knotentypen können erworben oder reserviert werden.
 
-| SKU | CS28-Knoten | CS36-Knoten |
-|-----|-------------|-------------|
-| CPU | 2x2,2 GHz, 28 Kerne (56 HT) | 2x2,3 GHz, 36 Kerne (72 HT) |
-| RAM | 256 GB | 512 GB |
-| Cachedatenträger |  1,6 TB NVMe | 3,2 TB NVMe |
-| Datenträgerkapazität | 5,625 TB unformatiert | 11,25 TB unformatiert |
-| Speichertyp | Nur Flash | Nur Flash |
+| SKU           | CS28-Knoten                 | CS36-Knoten                 | CS36m-Knoten                |
+|---------------|-----------------------------|-----------------------------|-----------------------------|
+| Region        | USA, Osten; USA, Westen            | USA, Osten; USA, Westen            | Europa, Westen                 |
+| CPU           | 2x2,2 GHz, 28 Kerne (56 HT) | 2x2,3 GHz, 36 Kerne (72 HT) | 2x2,3 GHz, 36 Kerne (72 HT) |
+| RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
+| Cachedatenträger    | 1,6 TB NVMe                 | 3,2 TB NVMe                 | 3,2 TB NVMe                 |
+| Datenträgerkapazität | 5,625 TB unformatiert                | 11,25 TB unformatiert                | 13,36 TB unformatiert                |
+| Speichertyp  | Nur Flash                   | Nur Flash                   | Nur Flash                   |
 
 ## <a name="limits"></a>Einschränkungen
 

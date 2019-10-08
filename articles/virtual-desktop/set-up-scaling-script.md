@@ -1,22 +1,22 @@
 ---
-title: Automatisches Skalieren von Windows Virtual Desktop-Sitzungshosts (Vorschauversion) – Azure
-description: Es wird beschrieben, wie Sie das Skript für die automatische Skalierung für Windows Virtual Desktop-Sitzungshosts (Vorschauversion) einrichten.
+title: 'Automatisches Skalieren von Windows Virtual Desktop-Sitzungshosts: Azure'
+description: Beschreibt, wie Sie das Skript für die automatische Skalierung für Windows Virtual Desktop-Sitzungshosts einrichten.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 7babfca617ab42da615518726d1b1d4cafe112b5
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f0d847596ef21af67973b6572737e27e1d015991
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163234"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676488"
 ---
 # <a name="automatically-scale-session-hosts"></a>Automatisches Skalieren von Sitzungshosts
 
-Für viele Bereitstellungen von Windows Virtual Desktop (Vorschauversion) in Azure machen die Kosten für virtuelle Computer einen erheblichen Teil der Gesamtkosten einer Bereitstellung aus. Zur Kostenreduzierung ist es am besten, die virtuellen Computer (VMs) von Sitzungshosts außerhalb der Spitzenzeiten herunterzufahren und die Zuordnung dafür aufzuheben und sie für die Spitzenzeiten dann wieder neu zu starten.
+Für viele Bereitstellungen von Windows Virtual Desktop in Azure machen die Kosten für virtuelle Computer einen erheblichen Teil der Gesamtkosten einer Bereitstellung aus. Zur Kostenreduzierung ist es am besten, die virtuellen Computer (VMs) von Sitzungshosts außerhalb der Spitzenzeiten herunterzufahren und die Zuordnung dafür aufzuheben und sie für die Spitzenzeiten dann wieder neu zu starten.
 
 In diesem Artikel wird ein einfaches Skalierungsskript zum automatischen Skalieren der virtuellen Computer von Sitzungshosts in Ihrer Windows Virtual Desktop-Umgebung verwendet. Weitere Informationen zur Funktionsweise des Skalierungsskripts finden Sie im Abschnitt [Funktionsweise des Skalierungsskripts](#how-the-scaling-script-works).
 

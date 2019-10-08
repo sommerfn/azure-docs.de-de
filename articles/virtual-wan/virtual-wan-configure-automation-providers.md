@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/30/2019
 ms.author: cherylmc
-ms.openlocfilehash: f286c02e0eb6e801f62d4f2e16f1197a1e9d44ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72493f084b89d41c1e0d6ff60c35afa3491b0eda
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304543"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703457"
 ---
 # <a name="virtual-wan-partners"></a>Virtual WAN-Partner
 
@@ -36,9 +36,10 @@ Ein Zweigstellengerät (ein lokales VPN-Gerät des Kunden oder SDWAN CPE) verwen
   1. Normalerweise startet ein Virtual WAN-Benutzer den Prozess, indem er eine Virtual WAN-Ressource erstellt.
   2. Der Benutzer richtet einen dienstprinzipalbasierten Ressourcengruppenzugriff für das lokale System (Ihren Zweigstellencontroller oder Ihre VPN-Gerätebereitstellungssoftware) ein, um Zweigstelleninformationen in Azure Virtual WAN zu schreiben.
   3. Der Benutzer kann zu diesem Zeitpunkt entscheiden, sich bei Ihrer Benutzeroberfläche anzumelden und die Anmeldeinformationen für den Dienstprinzipal einzurichten. Sobald dies erfolgt ist, sollte Ihr Controller in der Lage sein, Zweigstelleninformationen mit der von Ihnen bereitgestellten Automatisierung hochzuladen. Das manuelle Gegenstück hierfür auf Azure-Seite ist „Standort erstellen“.
-  4. Sobald die Informationen zum Standort (Zweigstellengerät) in Azure verfügbar sind, ordnet der Benutzer den Standort einem Hub zu. Ein virtueller Hub ist ein von Microsoft verwaltetes virtuelles Netzwerk. Der Hub enthält verschiedene Dienstendpunkte zum Aktivieren der Konnektivität über Ihr lokales Netzwerk (vpnsite). Der Hub ist der Kern Ihres Netzwerks in einer Region. Es kann pro Azure-Region nur einen Hub geben, und der darin befindliche VPN-Endpunkt (VPN-Gateway) wird bei diesem Vorgang erzeugt. Das VPN Gateway ist ein skalierbares Gateway, das je nach Bandbreiten- und Verbindungsbedarf entsprechend dimensioniert ist. Sie können die Erstellung von virtuellen Hubs und VPN-Gateways über Ihr Dashboard für Zweigstellengeräte-Controller automatisieren.
+  4. Sobald die Informationen zum Standort (Zweigstellengerät) in Azure verfügbar sind, verbindet der Benutzer den Standort mit einem Hub. Ein virtueller Hub ist ein von Microsoft verwaltetes virtuelles Netzwerk. Der Hub enthält verschiedene Dienstendpunkte zum Aktivieren der Konnektivität über Ihr lokales Netzwerk (vpnsite). Der Hub ist der Kern Ihres Netzwerks in einer Region. Es kann pro Azure-Region nur einen Hub geben, und der darin befindliche VPN-Endpunkt (VPN-Gateway) wird bei diesem Vorgang erzeugt. Das VPN Gateway ist ein skalierbares Gateway, das je nach Bandbreiten- und Verbindungsbedarf entsprechend dimensioniert ist. Sie können die Erstellung von virtuellen Hubs und VPN-Gateways über Ihr Dashboard für Zweigstellengeräte-Controller automatisieren.
   5. Sobald der virtuelle Hub dem Standort zugeordnet ist, wird eine Konfigurationsdatei erstellt, die der Benutzer manuell herunterladen kann. Hier kommt Ihre Automatisierung ins Spiel, die die Benutzererfahrung nahtlos macht. Anstatt dass der Benutzer das Zweigstellengerät manuell herunterladen und konfigurieren muss, können Sie die Automatisierung so einrichten, so nur noch wenige Mausklicks auf Ihrer Benutzeroberfläche nötig sind. Dadurch werden typische Verbindungsprobleme wie Nichtübereinstimmung gemeinsam verwendeter Schlüssel und von IPSec-Parametern, Lesbarkeit von Konfigurationsdateien usw. vermieden.
   6. Am Ende dieses Schritts in Ihrer Lösung steht dem Benutzer eine nahtlose Site-to-Site Verbindung zwischen Zweigstellengerät und virtuellem Hub zur Verfügung. Sie können auch zusätzliche Verbindungen über andere Hubs einrichten. Jede Verbindung ist ein Aktiv/Aktiv-Tunnel. Ihr Kunde kann für jede der Anbindungen an den Tunnel einen anderen Internetdienstanbieter wählen.
+  7. Sie sollten Problembehandlungs- und Überwachungsfunktionen in der CPE-Verwaltungsschnittstelle bereitstellen. Typische Szenarien sind z.B. „Kunde kann aufgrund eines CPE-Problems nicht auf Azure-Ressourcen zugreifen“, „IPsec-Parameter auf der CPE-Seite anzeigen“ usw.
 
 ## <a name ="understand"></a>Grundlegendes zu Automatisierungsdetails
 
@@ -64,7 +65,7 @@ Dieser Schritt umfasst das Herunterladen der Azure-Konfiguration und Einrichten 
 **Konfigurationshinweise**
 
   * Wenn Azure-VNets an den virtuellen Hub angefügt sind, werden sie als ConnectedSubnets angezeigt.
-  * Für VPN-Konnektivität wird eine routenbasierte Konfiguration und IKEv2/IKEv1 verwendet.
+  * Für VPN-Konnektivität wird eine routenbasierte Konfiguration verwendet. Sie unterstützt die Protokolle IKEv1 und IKEv2.
 
 #### <a name="understanding-the-device-configuration-file"></a>Grundlegendes zur Gerätekonfigurationsdatei
 

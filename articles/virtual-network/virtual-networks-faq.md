@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 836a9fd0b441ff9669c224dc41537e3c177d7dde
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 1a3859e1831f64269e7684072ddf166f29566fd9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389710"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828969"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -200,9 +200,9 @@ Ja. Sie müssen für eine VM-Skalierungsgruppe eine Verbindung mit einem VNet he
 ### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Gibt es eine vollständige Liste der Azure-Dienste, über die ich Ressourcen in einem VNET bereitstellen kann?
 Ja. Ausführliche Informationen finden Sie unter [Integration virtueller Netzwerke für Azure-Dienste](virtual-network-for-azure-services.md).
 
-### <a name="which-azure-paas-resources-can-i-restrict-access-to-from-a-vnet"></a>Für welche Azure-PaaS-Ressourcen kann ich den Zugriff über ein VNET beschränken?
+### <a name="how-can-i-restrict-access-to-azure-paas-resources-from-a-vnet"></a>Wie kann ich den Zugriff auf Azure PaaS-Ressourcen über ein VNET einschränken?
 
-Über manche Azure-PaaS-Dienste (etwa Azure Storage und Azure SQL-Datenbank) bereitgestellte Ressourcen können durch die Verwendung von VNET-Dienstendpunkten den Netzwerkzugriff ausschließlich auf Ressourcen in einem VNET beschränken. Weitere Informationen finden Sie in der Übersicht über [VNET-Dienstendpunkte](virtual-network-service-endpoints-overview.md).
+Ressourcen, die über ausgewählte Azure PaaS-Dienste (wie Azure Storage und Azure SQL-Datenbank) bereitgestellt werden, können den Netzwerkzugriff auf das VNET durch die Verwendung von virtuellen Netzwerkdienstendpunkten oder Azure Private Link einschränken. Weitere Informationen finden Sie in der [Übersicht über VNET-Dienstendpunkte](virtual-network-service-endpoints-overview.md) und der [Übersicht über Azure Private Link](../private-link/private-link-overview.md).
 
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Können Dienste in und aus VNets verschoben werden?
 Nein. Sie können Dienste nicht in oder aus VNets verschieben. Wenn Sie eine Ressource in ein anderes VNET verschieben möchten, müssen Sie die Ressource löschen und neu bereitstellen.
@@ -395,7 +395,7 @@ Richtlinien für Dienstendpunkte in virtuellen Azure-Netzwerken (VNETs) ermögli
 
 ### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Unterstützt Azure Active Directory (Azure AD) VNet-Dienstendpunkte?
 
-Azure Active Directory (Azure AD) unterstützt nativ keine Dienstendpunkte. Eine vollständige Liste der Azure-Dienste, die VNet-Dienstendpunkte unterstützen, finden Sie [hier](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Beachten Sie, dass das „Microsoft.AzureActiveDirectory“-Tag, das in den dienstunterstützenden Dienstendpunkten aufgeführt ist, nur für die Unterstützung von Dienstendpunkten für ADLS Gen 1 verwendet wird. Bitte beachten Sie für ADLS Gen1, dass die Integration virtueller Netzwerke für Azure Data Lake Storage Gen1 die Sicherheit von VNET-Dienstendpunkten zwischen Ihrem virtuellen Netzwerk und Azure Active Directory (Azure AD) nutzt, um zusätzliche Sicherheitsansprüche im Zugriffstoken zu generieren. Diese Ansprüche werden dann genutzt, um Ihr virtuelles Netzwerk mit Ihrem Data Lake Storage Gen1-Konto zu authentifizieren und den Zugriff zu ermöglichen. Erfahren Sie mehr über [Azure Data Lake Store Gen 1 VNet-Integration](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+Azure Active Directory (Azure AD) unterstützt nativ keine Dienstendpunkte. Eine vollständige Liste der Azure-Dienste, die VNet-Dienstendpunkte unterstützen, finden Sie [hier](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Beachten Sie, dass das „Microsoft.AzureActiveDirectory“-Tag, das in den dienstunterstützenden Dienstendpunkten aufgeführt ist, nur für die Unterstützung von Dienstendpunkten für ADLS Gen 1 verwendet wird. Bitte beachten Sie für ADLS Gen1, dass die Integration virtueller Netzwerke für Azure Data Lake Storage Gen1 die Sicherheit von VNET-Dienstendpunkten zwischen Ihrem virtuellen Netzwerk und Azure Active Directory (Azure AD) nutzt, um zusätzliche Sicherheitsansprüche im Zugriffstoken zu generieren. Diese Ansprüche werden dann genutzt, um Ihr virtuelles Netzwerk mit Ihrem Data Lake Storage Gen1-Konto zu authentifizieren und den Zugriff zu ermöglichen. Erfahren Sie mehr über die [VNET-Integration für Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Gibt es eine Grenze für die Anzahl der VNET-Dienstendpunkte, die ich in meinem VNET einrichten kann?
 Für die Gesamtzahl von VNET-Dienstendpunkten in einem virtuellen Netzwerk gilt keine Beschränkung. Für die Ressource eines Azure-Diensts (z.B. ein Azure Storage-Konto) können Dienste Beschränkungen in Bezug auf die Anzahl von Subnetzen erzwingen, die zum Schützen der Ressource verwendet werden. Die folgende Tabelle zeigt einige Beispielgrenzwerte: 

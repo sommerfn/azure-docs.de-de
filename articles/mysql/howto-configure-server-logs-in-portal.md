@@ -1,17 +1,17 @@
 ---
 title: Konfigurieren von Protokollen für langsame Abfragen für Azure Database for MySQL und Zugreifen auf diese Protokolle im Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Sie die Protokolle für langsame Abfragen in Azure Database for MySQL im Azure-Portal konfigurieren und aus dem Portal auf die Protokolle zugreifen.
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: b16ac525d41eb2423828a647fdb75fd3f4a80a31
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 09/30/2019
+ms.openlocfilehash: b3986c19ec008437f3230b3674ce60d1dfba2024
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052720"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703435"
 ---
 # <a name="configure-and-access-slow-query-logs-in-the-azure-portal"></a>Konfigurieren der und Zugreifen auf die Protokolle für langsame Abfragen im Azure-Portal
 
@@ -60,6 +60,24 @@ Sobald die Protokollierung beginnt, können Sie eine Liste der verfügbaren Prot
 5. Laden Sie einzelne Protokolldateien wie gezeigt über die Schaltfläche **Download** (nach unten gerichtetes Pfeilsymbol) neben jeder Protokolldatei in der Tabellenzeile herunter:
 
    ![Klicken Sie auf das Symbol „Download“.](./media/howto-configure-server-logs-in-portal/5-download.png)
+
+## <a name="set-up-diagnostic-logs"></a>Einrichten von Diagnoseprotokollen
+
+1. Wählen Sie auf der Randleiste im Abschnitt **Überwachung** die Option **Diagnoseeinstellungen** aus.
+
+1. Klicken Sie auf „+ Diagnoseeinstellung hinzufügen“ ![Diagnoseeinstellung hinzufügen](./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png)
+
+1. Geben Sie einen Namen für die Diagnoseeinstellung ein.
+
+1. Geben Sie an, an welche Datensenken die langsamen Abfrageprotokolle gesendet werden sollen (Speicherkonto, Event Hub und/oder Log Analytics-Arbeitsbereich).
+
+1. Wählen Sie als Protokolltyp „MySqlSlowLogs“ aus.
+![Konfigurieren der Diagnoseeinstellung](./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png)
+
+1. Nachdem Sie die Datensenken für die langsamen Abfrageprotokolle konfiguriert haben, können Sie auf **Speichern** klicken.
+![Speichern der Diagnoseeinstellung](./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png)
+
+1. Greifen Sie auf die langsamen Abfrageprotokolle zu, indem Sie sie in den von Ihnen konfigurierten Datensenken einsehen. Es kann bis zu 10 Minuten dauern, bis die Protokolle angezeigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Lesen Sie [Konfigurieren der und Zugreifen auf die Protokolle für langsame Abfragen mithilfe der Azure CLI](howto-configure-server-logs-in-cli.md), um zu erfahren, wie Protokolle für langsame Abfragen programmgesteuert heruntergeladen werden können.

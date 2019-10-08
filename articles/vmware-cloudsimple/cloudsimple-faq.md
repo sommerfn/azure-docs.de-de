@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d1cbca20b9f1ee1d5f7eefb760ed60fa4d019050
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972845"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828914"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>Häufig gestellte Fragen (FAQ) zu VMware-Lösung von CloudSimple
 
@@ -29,7 +29,7 @@ Eine private CloudSimple-Cloud ist eine private, dedizierte Cloud, die aus einer
 
 **Wo ist der CloudSimple-Dienst verfügbar?**
 
-CloudSimple ist in den Regionen „USA, Osten“ und „USA, Westen“ verfügbar. Weitere Regionen sind in naher Zukunft geplant.
+CloudSimple ist in den Regionen „USA, Osten“ „USA, Westen“ und „Europa, Westen“ verfügbar. Weitere Regionen sind in naher Zukunft geplant.
 
 **Wie aktiviere ich mein Abonnement für CloudSimple?**
 
@@ -106,8 +106,9 @@ CloudSimple bietet die folgenden Sicherheitsfunktionen zur Sicherung Ihrer priva
 
 CloudSimple bietet die folgenden Hosttypen:
 
-* **CS28-Knoten:** CPU: 2 x 2,2 GHz, 28 Kerne insgesamt, 48 HT.  RAM: 256 GB.  Speicher: 1.600 GB NVMe-Cache, 5.760 GB Daten (All-Flash). Netzwerk: 2 x 25 GbE NIC
-* **CS36-Knoten:** CPU: 2 x 2,3 GHz, 36 Kerne insgesamt, 72 HT.  RAM: 512 GB.  Speicher: 3.200 GB NVMe-Cache 11.520 GB Daten (All-Flash).  Netzwerk: 2 x 25 GbE NIC
+* **CS28-Knoten:** CPU: 2 x 2,2 GHz, 28 Kerne insgesamt, 48 HT.  RAM: 256 GB.  Speicher: 1.600 GB NVMe-Cache, 5.760 GB Daten (All-Flash). Netzwerk: 4x25Gbe NIC
+* **CS36-Knoten:** CPU: 2 x 2,3 GHz, 36 Kerne insgesamt, 72 HT.  RAM: 512 GB.  Speicher: 3.200 GB NVMe-Cache 11.520 GB Daten (All-Flash).  Netzwerk: 4x25Gbe NIC
+* **CS36m-Knoten:** CPU: 2 x 2,3 GHz, 36 Kerne insgesamt, 72 HT.  RAM: 576 GB.  Speicher: 3200 GB NVMe-Cache 13360 GB Daten (All-Flash).  Netzwerk: 4x25Gbe NIC
 
 **Wie werden Hardwarefehler behandelt?**
 

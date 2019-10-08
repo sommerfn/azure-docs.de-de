@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 529a8b6136a5d9c69b044df2614644bdbd4fd4f4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: d86976ad191ffffa343ad7a94b8171759ad102c3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012130"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338356"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -83,10 +83,10 @@ Quellregionen sind in der folgenden Tabelle aufgeführt. Alle öffentlichen Regi
 | Australien (Osten)      | East US         | USA Nord Mitte | Indien, Westen      |
 | Australien, Südosten | USA (Ost) 2       | Nordeuropa     | USA (Westen)         |
 | Brasilien Süd        | USA, Osten 2 (EUAP)  | USA Süd Mitte | USA, Westen 2       |
-| Kanada, Mitte      | Frankreich, Mitte  | Indien (Süden)      |                 |
-| Kanada, Osten         | Frankreich, Süden    | Asien, Südosten   |                 |
-| Indien, Mitte       | Japan, Osten      | UK, Süden         |                 |
-| USA (Mitte)          | Japan, Westen      | UK, Westen          |                 |
+| Kanada, Mitte      | Frankreich, Mitte  | Indien (Süden)      | China, Osten      |
+| Kanada, Osten         | Frankreich, Süden    | Asien, Südosten   | China, Osten 2    |
+| Indien, Mitte       | Japan, Osten      | UK, Süden         | China, Norden     |
+| USA (Mitte)          | Japan, Westen      | UK, Westen          | China, Norden 2   |
 
 
 
@@ -106,8 +106,8 @@ Im Katalog mit freigegebenen Images können Sie die Anzahl der Replikate angeben
 
 Mit dem Katalog mit freigegebenen Images können Sie jetzt bis zu 1.000 VM-Instanzen in einer VM-Skalierungsgruppe bereitstellen (erhöht von 600 mit verwalteten Images). Imagereplikate bieten eine bessere Leistung, Zuverlässigkeit und Konsistenz bei der Bereitstellung.  Sie können in jeder Zielregion ein andere Replikatanzahl festlegen, basierend auf der für die Region erforderlichen Skalierung. Da jedes Replikat eine tiefe Kopie Ihres Images ist, hilft dies dabei, Ihre Bereitstellungen mit jedem zusätzlichen Replikat linear zu skalieren. Natürlich sind wir uns bewusst, dass keine zwei Images oder Regionen identisch sind, doch dies ist unsere allgemeine Richtlinie für die Verwendung von Replikaten in einer Region:
 
-- Pro 20 virtuelle Computer, die Sie gleichzeitig erstellen, empfehlen wir, dass Sie ein Replikat behalten. Wenn Sie beispielsweise 120 VMs gleichzeitig mit demselben Image in einer Region erstellen, empfehlen wir, dass Sie mindestens 6 Replikate Ihres Images behalten. 
-- Für jede Skalierungsgruppenbereitstellung mit bis zu 600 Instanzen empfehlen wir, dass Sie mindestens ein Replikat behalten. Wenn Sie beispielsweise 5 Skalierungsgruppen gleichzeitig erstellen, wobei jede davon 600 VM-Instanzen in einer Region enthält, die dasselbe Image verwenden, empfehlen wir, dass Sie mindestens 5 Replikate Ihres Images behalten. 
+- Bei Bereitstellungen ohne VM-Skalierungsgruppen (VMSS): Es empfiehlt sich, für je 20 VMs, die Sie gleichzeitig erstellen, ein Replikat beizubehalten. Wenn Sie beispielsweise 120 VMs gleichzeitig mit demselben Image in einer Region erstellen, empfehlen wir, dass Sie mindestens 6 Replikate Ihres Images behalten. 
+- Bei Bereitstellungen mit Skalierungsgruppen (VMSS): Für jede Skalierungsgruppenbereitstellung mit bis zu 600 Instanzen empfiehlt es sich, mindestens ein Replikat beizubehalten. Wenn Sie beispielsweise 5 Skalierungsgruppen gleichzeitig erstellen, wobei jede davon 600 VM-Instanzen in einer Region enthält, die dasselbe Image verwenden, empfehlen wir, dass Sie mindestens 5 Replikate Ihres Images behalten. 
 
 Wir empfehlen Ihnen stets, die Anzahl der Replikate überdimensioniert bereitzustellen, wegen Faktoren wie Größe, Inhalt und Betriebssystemtyp des Images.
 
